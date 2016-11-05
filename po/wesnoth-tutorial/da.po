@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4.x\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-07-24 20:27 UTC\n"
+"POT-Creation-Date: 2016-11-05 23:29 UTC\n"
 "PO-Revision-Date: 2009-01-16 13:15+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -117,7 +117,7 @@ msgstr ""
 #, fuzzy
 msgid ""
 "For this tutorial, you are playing Li’sar. You are standing on the keep, and "
-"your mentor Delfador is on the east side of the river. you can move the "
+"your mentor Delfador is on the east side of the river. You can move the "
 "mouse over a unit to see a summary of its abilities and stats on the right "
 "of the screen."
 msgstr ""
@@ -304,8 +304,8 @@ msgstr "Skal jeg trække mig tilbage?"
 msgid "female^Should I retreat?"
 msgstr "Skal jeg trække mig tilbage?"
 
-#. [message]: speaker=Delfador
 #. [message]: speaker=Galdrad
+#. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:370
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:675
 msgid "Good idea!"
@@ -607,8 +607,12 @@ msgstr "Jeg be'r dem om at bruge det angreb, som gør størst skade!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:601
+#, fuzzy
+#| msgid ""
+#| "And which would that be? The sword (5–4) or the bow (3–3)? I suppose "
+#| "you’ll find out..."
 msgid ""
-"And which would that be? The sword (5–4) or the bow (3–3)? I suppose you’ll "
+"And which would that be? The sword (5×4) or the bow (3×3)? I suppose you’ll "
 "find out..."
 msgstr ""
 "Og hvad er det for et? Sværdet (5-4) eller buen (3-3)? Jeg gætter, at du vil "
@@ -645,8 +649,8 @@ msgstr ""
 #| "attack was safer.\n"
 #| "End your turn, then attack again."
 msgid ""
-"Your elf used a sword (5–4; or 5 damage, 4 attacks), which is a <i>melee</i> "
-"attack. The quintain defended with its melee attack (3–5). The ranged attack "
+"Your elf used a sword (5×4; or 5 damage, 4 attacks), which is a <i>melee</i> "
+"attack. The quintain defended with its melee attack (3×5). The ranged attack "
 "(the bow) would have been safer."
 msgstr ""
 "Din elver brugte et sværd (5-4; eller 5 skade, 4 angreb), som er et "
@@ -658,7 +662,7 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:663
 #, fuzzy
 msgid ""
-"Your elf used a bow, which is a <i>ranged</i> attack (3–3; or 3 damage, 3 "
+"Your elf used a bow, which is a <i>ranged</i> attack (3×3; or 3 damage, 3 "
 "attacks). The quintain has no ranged attack, only a melee attack, so it "
 "could not defend itself."
 msgstr ""
@@ -1984,7 +1988,7 @@ msgstr "Kæmper"
 #. [unit_type]: id=Fighter, race=human
 #. [unit_type]: id=Fighteress, race=human
 #: data/campaigns/tutorial/units/Fighter.cfg:18
-#: data/campaigns/tutorial/units/Fighteress.cfg:21
+#: data/campaigns/tutorial/units/Fighteress.cfg:20
 msgid ""
 "Young and brash, Fighters are skilled with swords and are vulnerable to "
 "attack from enemies. However, they have the potential to become great "
@@ -2004,7 +2008,7 @@ msgid "female^Fighter"
 msgstr "Kæmper"
 
 #. [attack]: type=blade
-#: data/campaigns/tutorial/units/Fighteress.cfg:25
+#: data/campaigns/tutorial/units/Fighteress.cfg:24
 msgid "saber"
 msgstr "ryttersabel"
 
@@ -2014,7 +2018,7 @@ msgid "Quintain"
 msgstr "Quintan"
 
 #. [unit_type]: id=Quintain, race=mechanical
-#: data/campaigns/tutorial/units/Quintain.cfg:17
+#: data/campaigns/tutorial/units/Quintain.cfg:16
 msgid ""
 "Quintains are used to practice swordplay and jousting on. It would be "
 "extremely unusual to be attacked by one."
@@ -2023,7 +2027,7 @@ msgstr ""
 "blive angrebet af en."
 
 #. [attack]: type=impact
-#: data/campaigns/tutorial/units/Quintain.cfg:25
+#: data/campaigns/tutorial/units/Quintain.cfg:24
 msgid "flail"
 msgstr "plejl"
 

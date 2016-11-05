@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-help\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-07-24 23:26+0300\n"
+"POT-Creation-Date: 2016-11-06 02:27+0300\n"
 "PO-Revision-Date: 2012-04-01 16:53+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -22,20 +22,22 @@ msgstr ""
 "X-Associated-UI-Catalogs: wesnoth-lib wesnoth wesnoth-httt\n"
 
 #. [time]: id=underground
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:459
-#: data/core/macros/schedules.cfg:99
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:498
+#: data/core/macros/schedules.cfg:109
 msgid "Underground"
 msgstr "podzemlje"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:651
-#: data/core/macros/abilities.cfg:348
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:657
+#: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:657
+#: data/core/macros/abilities.cfg:346
 msgid "berserk"
 msgstr "bezglavost"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:653
-#: data/core/macros/abilities.cfg:349
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:659
+#: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:659
+#: data/core/macros/abilities.cfg:347
 #, fuzzy
 #| msgid ""
 #| "Berserk:\n"
@@ -51,14 +53,16 @@ msgstr ""
 "upetljana jedinica ne nastrada, ili prođe 30 rundi napada."
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:662
-#: data/core/macros/abilities.cfg:435
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:668
+#: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:668
+#: data/core/macros/abilities.cfg:433
 msgid "magical"
 msgstr "magičnost"
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:664
-#: data/core/macros/abilities.cfg:436
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:670
+#: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:670
+#: data/core/macros/abilities.cfg:434
 #, fuzzy
 #| msgid ""
 #| "Magical:\n"
@@ -73,16 +77,18 @@ msgstr ""
 "napadnute jedinice."
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:673
-#: data/core/macros/abilities.cfg:480
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:679
+#: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:679
+#: data/core/macros/abilities.cfg:478
 #, fuzzy
 #| msgid "firststrike"
 msgid "first strike"
 msgstr "prvi udar"
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:675
-#: data/core/macros/abilities.cfg:481
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:681
+#: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:681
+#: data/core/macros/abilities.cfg:479
 #, fuzzy
 #| msgid ""
 #| "First Strike:\n"
@@ -1296,66 +1302,66 @@ msgstr "Doba dana"
 
 #. [section]: id=introduction
 #. [topic]: id=..introduction
-#: data/core/help.cfg:17 data/core/help.cfg:97
+#: data/core/help.cfg:17 data/core/help.cfg:96
 msgid "Introduction"
 msgstr "Uvod"
 
 #. [section]: id=gameplay
 #. [topic]: id=..gameplay
-#: data/core/help.cfg:23 data/core/help.cfg:169
+#: data/core/help.cfg:23 data/core/help.cfg:168
 msgid "Gameplay"
 msgstr "Izvođenje"
 
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:29 data/core/help.cfg:398
+#: data/core/help.cfg:29 data/core/help.cfg:397
 msgid "Traits"
 msgstr "Osobine"
 
 #. [section]: id=units
 #. [topic]: id=..units
-#: data/core/help.cfg:38 data/core/help.cfg:120
+#: data/core/help.cfg:37 data/core/help.cfg:119
 msgid "Units"
 msgstr "Jedinice"
 
 #. [section]: id=abilities_section
 #. [topic]: id=..abilities_section
-#: data/core/help.cfg:47 data/core/help.cfg:140
+#: data/core/help.cfg:46 data/core/help.cfg:139
 msgid "Abilities"
 msgstr "Sposobnosti"
 
 #. [section]: id=weapon_specials
 #. [topic]: id=..weapon_specials
-#: data/core/help.cfg:55 data/core/help.cfg:149
+#: data/core/help.cfg:54 data/core/help.cfg:148
 msgid "Weapon Specials"
 msgstr "Svojstva oružja"
 
 #. [section]: id=eras_section
 #. [topic]: id=..eras_section
-#: data/core/help.cfg:63 data/core/help.cfg:129
+#: data/core/help.cfg:62 data/core/help.cfg:128
 msgid "Eras"
 msgstr ""
 
 #. [section]: id=terrains_section
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:72 data/core/help.cfg:535
+#: data/core/help.cfg:71 data/core/help.cfg:412
 msgid "Terrains"
 msgstr "Teren"
 
 #. [section]: id=addons
 #. [topic]: id=..addons
-#: data/core/help.cfg:80 data/core/help.cfg:588
+#: data/core/help.cfg:79 data/core/help.cfg:465
 msgid "Add-ons"
 msgstr ""
 
 #. [section]: id=commands
 #. [topic]: id=..commands
-#: data/core/help.cfg:86 data/core/help.cfg:655
+#: data/core/help.cfg:85 data/core/help.cfg:532
 msgid "Commands"
 msgstr "Naredbe"
 
 #. [topic]: id=..introduction
-#: data/core/help.cfg:98
+#: data/core/help.cfg:97
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -1391,12 +1397,12 @@ msgstr ""
 "izazovno njome zagospodariti."
 
 #. [topic]: id=about_game
-#: data/core/help.cfg:108
+#: data/core/help.cfg:107
 msgid "About the Game"
 msgstr "O igri"
 
 #. [topic]: id=about_game
-#: data/core/help.cfg:109
+#: data/core/help.cfg:108
 msgid ""
 "The game takes place on a hex-based game field, where your units battle "
 "against those controlled by the computer, friends who each take turns on the "
@@ -1419,7 +1425,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..units
-#: data/core/help.cfg:121
+#: data/core/help.cfg:120
 msgid ""
 "This section will list all the units you discover as you explore the world "
 "of Wesnoth. When you see a new unit during a campaign or multiplayer "
@@ -1430,7 +1436,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..eras_section
-#: data/core/help.cfg:130
+#: data/core/help.cfg:129
 msgid ""
 "A faction is a collection of units and leaders. Factions are assigned to "
 "sides in multiplayer games.\n"
@@ -1438,7 +1444,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..eras_section
-#: data/core/help.cfg:132
+#: data/core/help.cfg:131
 msgid ""
 "An era is a collection of factions, intended to be played against one "
 "another. Besides the mainline eras that come with the game, many user-made "
@@ -1447,7 +1453,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..abilities_section
-#: data/core/help.cfg:141
+#: data/core/help.cfg:140
 #, fuzzy
 #| msgid ""
 #| "Certain units have abilities that either directly affect other units, or "
@@ -1467,7 +1473,7 @@ msgstr ""
 "tumačene u ovom odijeljku, kako na njih budete nailazili.\n"
 
 #. [topic]: id=..weapon_specials
-#: data/core/help.cfg:150
+#: data/core/help.cfg:149
 msgid ""
 "Some weapons have special features that increase the effectiveness of "
 "attacking with them. When you see a new weapon special during a campaign or "
@@ -1478,12 +1484,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=.unknown_unit
-#: data/core/help.cfg:159
+#: data/core/help.cfg:158
 msgid "Unknown Unit"
 msgstr "nepoznata jedinica"
 
 #. [topic]: id=.unknown_unit
-#: data/core/help.cfg:160
+#: data/core/help.cfg:159
 msgid ""
 "\n"
 "\n"
@@ -1496,7 +1502,7 @@ msgstr ""
 "dopušteno da vidite njen opis."
 
 #. [topic]: id=..gameplay
-#: data/core/help.cfg:170
+#: data/core/help.cfg:169
 msgid ""
 "Wesnoth is comprised of a series of battles, called "
 "<italic>text='scenarios'</italic>, that pit your troops against the troops "
@@ -1519,7 +1525,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..gameplay
-#: data/core/help.cfg:177
+#: data/core/help.cfg:176
 #, fuzzy
 #| msgid "<header>text='Units of this race'</header>"
 msgid ""
@@ -1530,7 +1536,7 @@ msgid ""
 msgstr "<header>text='Jedinice ove rase'</header>"
 
 #. [topic]: id=..gameplay
-#: data/core/help.cfg:177
+#: data/core/help.cfg:176
 #, fuzzy
 #| msgid ""
 #| "While playing, keep in mind that if you mouse-over many items in the "
@@ -1551,12 +1557,12 @@ msgstr ""
 "<ref>dst='..abilities_section' text='sposobnostima'</ref>."
 
 #. [topic]: id=victory_and_defeat
-#: data/core/help.cfg:189
+#: data/core/help.cfg:188
 msgid "Victory and Defeat"
 msgstr "Pobjeda i poraz"
 
 #. [topic]: id=victory_and_defeat
-#: data/core/help.cfg:190
+#: data/core/help.cfg:189
 msgid ""
 "\n"
 "\n"
@@ -1573,7 +1579,7 @@ msgstr ""
 "višeigračkoj partiji) popričati sa saigračima."
 
 #. [topic]: id=victory_and_defeat
-#: data/core/help.cfg:190
+#: data/core/help.cfg:189
 #, fuzzy
 #| msgid ""
 #| "Pay careful attention to the <bold>text='Objectives'</bold> pop-up box at "
@@ -1600,12 +1606,12 @@ msgstr ""
 "ne prođe određen broj poteza, itd."
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:199
+#: data/core/help.cfg:198
 msgid "Recruiting and Recalling"
 msgstr "Unajmljivanje i sazivanje"
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:200
+#: data/core/help.cfg:199
 msgid ""
 "\n"
 "\n"
@@ -1623,7 +1629,7 @@ msgstr ""
 "trenutno na raspolaganju."
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:200
+#: data/core/help.cfg:199
 #, fuzzy
 #| msgid ""
 #| "Each side begins with one leader in their keep. At the start of any "
@@ -1661,7 +1667,7 @@ msgstr ""
 "italic> da je unajmite."
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:202
+#: data/core/help.cfg:201
 msgid ""
 "\n"
 "\n"
@@ -1674,7 +1680,7 @@ msgstr ""
 "text='osobine'</ref>, koje utiču na njihove karakteristike."
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:204
+#: data/core/help.cfg:203
 msgid ""
 "\n"
 "\n"
@@ -1689,7 +1695,7 @@ msgstr ""
 "preživjele iz prethodnih scenarija."
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:206
+#: data/core/help.cfg:205
 msgid ""
 "\n"
 "\n"
@@ -1704,12 +1710,12 @@ msgstr ""
 "text='Prihodi i izdaci'</ref> za više detalja."
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:215
+#: data/core/help.cfg:214
 msgid "Income and Upkeep"
 msgstr "Prihodi i izdaci"
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:216
+#: data/core/help.cfg:215
 msgid ""
 "\n"
 "\n"
@@ -1729,7 +1735,7 @@ msgstr ""
 "oduzimaju se izdaci, kako je navedeno ispod."
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:216
+#: data/core/help.cfg:215
 msgid ""
 "In Wesnoth, it is not enough simply to recruit units and fight. You must "
 "watch your gold as well, especially in campaigns, where you can carry extra "
@@ -1742,7 +1748,7 @@ msgstr ""
 "<italic>text='prihod'</italic> i <italic>text='izdaci'</italic>."
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:218
+#: data/core/help.cfg:217
 msgid ""
 "\n"
 "\n"
@@ -1762,7 +1768,7 @@ msgstr ""
 "prvog nivoa i 10 sela, plaćate 2 zlatnika na izdatke po potezu."
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:220
+#: data/core/help.cfg:219
 msgid ""
 "\n"
 "\n"
@@ -1776,7 +1782,7 @@ msgstr ""
 "10 sela, neto prihod bi bio 10 zlatnika po potezu."
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:222
+#: data/core/help.cfg:221
 msgid ""
 "\n"
 "\n"
@@ -1797,12 +1803,12 @@ msgstr ""
 "Konrad) gotovo uvijek je vođ."
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:231
+#: data/core/help.cfg:230
 msgid "Hitpoints and Experience"
 msgstr "Udarpoeni i iskustvo"
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:232
+#: data/core/help.cfg:231
 msgid ""
 "Each unit has a certain number of <italic>text='hitpoints'</italic> (HP). If "
 "the hitpoints of a unit drop below 1, the unit dies. Each unit also has a "
@@ -1816,7 +1822,7 @@ msgstr ""
 "iskustva, i dobijaju ga u borbi protiv neprijatelja."
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:236
+#: data/core/help.cfg:235
 msgid ""
 "The hitpoints and experience points are both indicated in the status pane "
 "using two numbers (the current value and the maximum value the unit can "
@@ -1826,7 +1832,7 @@ msgstr ""
 "tekuće vrijednosti i maksimuma koji jedinica može imati."
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:238
+#: data/core/help.cfg:237
 #, fuzzy
 #| msgid ""
 #| "The hitpoints are also indicated by an energy bar next to each unit, "
@@ -1845,14 +1851,14 @@ msgstr ""
 "<ref>dst='experience_and_advancement' text='napredovanju'</ref>."
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:245
+#: data/core/help.cfg:244
 #, fuzzy
 #| msgid "Advances to: "
 msgid "Advancement"
 msgstr "može postati: "
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:246
+#: data/core/help.cfg:245
 msgid ""
 "\n"
 "\n"
@@ -1869,7 +1875,7 @@ msgstr ""
 "slučajevima, daće vam se da izaberete pravac napredovanja."
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:246
+#: data/core/help.cfg:245
 msgid ""
 "If both units survive a combat, they gain a number of experience points "
 "equal to the level of the unit they’re fighting. If a unit kills another in "
@@ -1882,7 +1888,7 @@ msgstr ""
 "za nivo 1, 16 za nivo 2, 24 za nivo 3, i tako dalje."
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:248
+#: data/core/help.cfg:247
 msgid ""
 "\n"
 "\n"
@@ -1910,12 +1916,12 @@ msgstr ""
 "unapređenju jedinica nižeg nivoa."
 
 #. [topic]: id=movement
-#: data/core/help.cfg:257
+#: data/core/help.cfg:256
 msgid "Movement"
 msgstr "Kretanje"
 
 #. [topic]: id=movement
-#: data/core/help.cfg:258
+#: data/core/help.cfg:257
 msgid ""
 "\n"
 "\n"
@@ -1941,7 +1947,7 @@ msgstr ""
 "bold>, i pogledajte <bold>text='terenske modifikatore'</bold>."
 
 #. [topic]: id=movement
-#: data/core/help.cfg:258
+#: data/core/help.cfg:257
 msgid ""
 "Movement in <italic>text='Battle for Wesnoth'</italic> is simple. Click on "
 "the unit you wish to move to select it, then click on the hex you wish to "
@@ -1971,7 +1977,7 @@ msgstr ""
 "napadne."
 
 #. [topic]: id=movement
-#: data/core/help.cfg:260
+#: data/core/help.cfg:259
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2005,7 +2011,7 @@ msgstr ""
 "pojaseve."
 
 #. [topic]: id=movement
-#: data/core/help.cfg:262
+#: data/core/help.cfg:261
 msgid ""
 "\n"
 "\n"
@@ -2021,12 +2027,12 @@ msgstr ""
 "blokiraju."
 
 #. [topic]: id=shroud_and_fog
-#: data/core/help.cfg:271
+#: data/core/help.cfg:270
 msgid "Shroud and Fog of War"
 msgstr "Pokrov i magla rata"
 
 #. [topic]: id=shroud_and_fog
-#: data/core/help.cfg:272
+#: data/core/help.cfg:271
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
 "mechanisms that can be used separately or together. The "
@@ -2070,12 +2076,12 @@ msgstr ""
 "sada'</bold> (ili kraja vašeg poteza), i tako očuvati mogućnost opoziva."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:281
+#: data/core/help.cfg:280
 msgid "Combat"
 msgstr "Borba"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:282
+#: data/core/help.cfg:281
 msgid ""
 "\n"
 "\n"
@@ -2086,7 +2092,7 @@ msgstr ""
 "<header>text='Redoslijed i broj udara'</header>"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:282
+#: data/core/help.cfg:281
 msgid ""
 "Combat in <italic>text='Battle for Wesnoth'</italic> always takes place "
 "between units in adjacent hexes. Click on your unit, and click on the enemy "
@@ -2110,7 +2116,18 @@ msgstr ""
 "vatrenica."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:284
+#: data/core/help.cfg:283
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "The attacker gets the first strike, then the defender retaliates. Each "
+#| "strike either hits, doing a given amount of damage, or misses, doing no "
+#| "damage at all. Strikes alternate until each unit has used up all of its "
+#| "strikes. The number of strikes a unit has varies; for instance, an elvish "
+#| "fighter with a 5–4 attack may strike 4 times, each successful strike "
+#| "dealing 5 damage, while an orcish grunt with a 9–2 attack can only strike "
+#| "twice (but at 9 damage for each hit)."
 msgid ""
 "\n"
 "\n"
@@ -2118,8 +2135,8 @@ msgid ""
 "strike either hits, doing a given amount of damage, or misses, doing no "
 "damage at all. Strikes alternate until each unit has used up all of its "
 "strikes. The number of strikes a unit has varies; for instance, an elvish "
-"fighter with a 5–4 attack may strike 4 times, each successful strike dealing "
-"5 damage, while an orcish grunt with a 9–2 attack can only strike twice (but "
+"fighter with a 5×4 attack may strike 4 times, each successful strike dealing "
+"5 damage, while an orcish grunt with a 9×2 attack can only strike twice (but "
 "at 9 damage for each hit)."
 msgstr ""
 "\n"
@@ -2132,7 +2149,7 @@ msgstr ""
 "može udariti samo dvaput, ali nanoseći 9 štete pri pogotku."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:286
+#: data/core/help.cfg:285
 msgid ""
 "\n"
 "\n"
@@ -2143,7 +2160,7 @@ msgstr ""
 "<header>text='Izgledi za pogodak'</header>"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:288
+#: data/core/help.cfg:287
 msgid ""
 "\n"
 "\n"
@@ -2167,7 +2184,7 @@ msgstr ""
 "napadač nalazi."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:290
+#: data/core/help.cfg:289
 msgid ""
 "\n"
 "\n"
@@ -2185,7 +2202,7 @@ msgstr ""
 "70% izgleda da pogode, a oštrooki, kada se koriste ofanzivno, bar 60%."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:292
+#: data/core/help.cfg:291
 msgid ""
 "\n"
 "\n"
@@ -2196,12 +2213,23 @@ msgstr ""
 "<header>text=Šteta</header>"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:294
+#: data/core/help.cfg:293
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "Each strike which hits causes a base amount of damage depending on the "
+#| "attack type. For instance, an elvish fighter with a 5–4 attack does 5 "
+#| "base damage. This is usually modified by two things: "
+#| "<ref>dst='damage_types_and_resistance' text='resistance'</ref> and "
+#| "<ref>dst='time_of_day' text='time of day'</ref>. To see how base damage "
+#| "is modified by the circumstances, select <bold>text='Damage "
+#| "Calculations'</bold> in the attack selection menu."
 msgid ""
 "\n"
 "\n"
 "Each strike which hits causes a base amount of damage depending on the "
-"attack type. For instance, an elvish fighter with a 5–4 attack does 5 base "
+"attack type. For instance, an elvish fighter with a 5×4 attack does 5 base "
 "damage. This is usually modified by two things: "
 "<ref>dst='damage_types_and_resistance' text='resistance'</ref> and "
 "<ref>dst='time_of_day' text='time of day'</ref>. To see how base damage is "
@@ -2218,7 +2246,7 @@ msgstr ""
 "napada pogledajte <bold>text='Računanje štete'</bold>."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:296
+#: data/core/help.cfg:295
 msgid ""
 "\n"
 "\n"
@@ -2235,12 +2263,12 @@ msgstr ""
 "udvostručava oštećenje koje nanosi napadač, ali i ono koje nanosi branilac."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:304
+#: data/core/help.cfg:303
 msgid "Damage Types and Resistance"
 msgstr "Vidovi štete i otpornosti"
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:305
+#: data/core/help.cfg:304
 msgid ""
 "\n"
 "\n"
@@ -2259,7 +2287,7 @@ msgstr ""
 "bude pogođena takvim napadom."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:305
+#: data/core/help.cfg:304
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
 "attacks: <italic>text='blade, pierce, and impact damage'</italic>. "
@@ -2275,7 +2303,7 @@ msgstr ""
 "koje utiču na štetu koju im određeni tipovi napada mogu nanijeti."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:307
+#: data/core/help.cfg:306
 msgid ""
 "\n"
 "\n"
@@ -2289,7 +2317,7 @@ msgstr ""
 "ranjivi na udar i vatru, i izuzetno ranjivi na volšebnu štetu."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:309
+#: data/core/help.cfg:308
 msgid ""
 "\n"
 "\n"
@@ -2303,12 +2331,12 @@ msgstr ""
 "Ovo važi čak i kada je branilac 100% otporan na neki vid štete."
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:317
+#: data/core/help.cfg:316
 msgid "Orbs"
 msgstr "Kuglice"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:318
+#: data/core/help.cfg:317
 msgid ""
 "On top of the energy bar shown next to each unit of yours is an orb. For "
 "units you control, this orb is:"
@@ -2317,17 +2345,17 @@ msgstr ""
 "jedinice pod vašom upravom, kuglica je:"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:320
+#: data/core/help.cfg:319
 msgid " green if it hasn’t moved this turn,"
 msgstr " zelena, ako se jedinica nije pomjerila u toku poteza,"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:321
+#: data/core/help.cfg:320
 msgid " yellow if it has moved, but could still move further or attack, or"
 msgstr " žuta, ako se jeste pomjerila, ali se još može kretati ili napasti,"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:322
+#: data/core/help.cfg:321
 #, fuzzy
 #| msgid ""
 #| " red if it can no longer move or attack, or the user ended the unit’s "
@@ -2339,24 +2367,24 @@ msgstr ""
 "okončao potez, i"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:323
+#: data/core/help.cfg:322
 msgid " blue if the unit is an ally you do not control."
 msgstr " plava, ako je jedinica saveznik kojim ne upravljate."
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:324
+#: data/core/help.cfg:323
 #, fuzzy
 #| msgid " Enemy units have no orb on top of their energy bar."
 msgid " Enemy units have no orb on top of their energy bar."
 msgstr " Neprijateljske jedinice nemaju ovakve kuglice."
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:331
+#: data/core/help.cfg:330
 msgid "Time of Day"
 msgstr "Doba dana"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:332
+#: data/core/help.cfg:331
 #, fuzzy
 #| msgid ""
 #| "The time of day affects the damage of certain units as follows:\n"
@@ -2382,7 +2410,7 @@ msgstr ""
 "— dvojstvene jedinice nanose −25% štete i tokom dana i tokom noći."
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:337
+#: data/core/help.cfg:336
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2407,21 +2435,21 @@ msgstr ""
 #. [time]: id=dawn
 #. [time]: id=dawn_hour
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:341 data/core/macros/schedules.cfg:6
-#: data/core/macros/schedules.cfg:265 data/test/maps/pathfind_1.cfg:64
+#: data/core/help.cfg:340 data/core/macros/schedules.cfg:14
+#: data/core/macros/schedules.cfg:275 data/test/maps/pathfind_1.cfg:64
 msgid "Dawn"
 msgstr "zora"
 
 #. [time]: id=morning
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:342 data/core/macros/schedules.cfg:17
+#: data/core/help.cfg:341 data/core/macros/schedules.cfg:26
 #: data/test/maps/pathfind_1.cfg:75
 msgid "Morning"
 msgstr "jutro"
 
 #. [time]: id=afternoon
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:343 data/core/macros/schedules.cfg:35
+#: data/core/help.cfg:342 data/core/macros/schedules.cfg:44
 #: data/test/maps/pathfind_1.cfg:86
 msgid "Afternoon"
 msgstr "popodne"
@@ -2429,27 +2457,27 @@ msgstr "popodne"
 #. [time]: id=dusk
 #. [time]: id=dusk_hour
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:344 data/core/macros/schedules.cfg:44
-#: data/core/macros/schedules.cfg:377 data/test/maps/pathfind_1.cfg:97
+#: data/core/help.cfg:343 data/core/macros/schedules.cfg:53
+#: data/core/macros/schedules.cfg:396 data/test/maps/pathfind_1.cfg:97
 msgid "Dusk"
 msgstr "sumrak"
 
 #. [time]: id=first_watch
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:345 data/core/macros/schedules.cfg:55
+#: data/core/help.cfg:344 data/core/macros/schedules.cfg:65
 #: data/test/maps/pathfind_1.cfg:108
 msgid "First Watch"
 msgstr "prva straža"
 
 #. [time]: id=second_watch
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:346 data/core/macros/schedules.cfg:79
+#: data/core/help.cfg:345 data/core/macros/schedules.cfg:89
 #: data/test/maps/pathfind_1.cfg:119
 msgid "Second Watch"
 msgstr "druga straža"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:348
+#: data/core/help.cfg:347
 #, fuzzy
 #| msgid ""
 #| "Keep in mind that some scenarios take place underground, where it is "
@@ -2462,26 +2490,26 @@ msgstr ""
 "tama!"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:350
+#: data/core/help.cfg:349
 msgid ""
 "Some underground locations are illuminated. They are perpetually "
 "intermediate between day and night.\n"
 msgstr ""
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:352
+#: data/core/help.cfg:351
 msgid ""
 "Some role-playing scenarios take place indoors — these regions are similarly "
 "intermediate."
 msgstr ""
 
 #. [topic]: id=healing
-#: data/core/help.cfg:359
+#: data/core/help.cfg:358
 msgid "Healing"
 msgstr "Liječenje"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:360
+#: data/core/help.cfg:359
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2501,7 +2529,7 @@ msgstr ""
 "sljedećeg poteza."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:360
+#: data/core/help.cfg:359
 msgid ""
 "In combat, your units will inevitably take damage. There are several ways to "
 "heal your units. However, with the exception of resting, these do not stack; "
@@ -2509,7 +2537,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=healing
-#: data/core/help.cfg:362
+#: data/core/help.cfg:361
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2526,7 +2554,7 @@ msgstr ""
 "popuniće 8 UP."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:363
+#: data/core/help.cfg:362
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2543,7 +2571,7 @@ msgstr ""
 "(npr. trolovi) automatski dobijaju 8 UP u svakom potezu."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:364
+#: data/core/help.cfg:363
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2567,7 +2595,7 @@ msgstr ""
 "otrov da ošteti otrovanu jedinicu."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:365
+#: data/core/help.cfg:364
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2588,7 +2616,7 @@ msgstr ""
 "ima i tu sposobnost)."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:366
+#: data/core/help.cfg:365
 msgid ""
 "\n"
 "• <bold>text='Advancement'</bold>: When a unit <ref>dst='advancement' "
@@ -2597,7 +2625,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=healing
-#: data/core/help.cfg:367
+#: data/core/help.cfg:366
 msgid ""
 "\n"
 "\n"
@@ -2613,7 +2641,7 @@ msgstr ""
 "između scenarija."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:369
+#: data/core/help.cfg:368
 msgid ""
 "\n"
 "\n"
@@ -2621,7 +2649,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=healing
-#: data/core/help.cfg:371
+#: data/core/help.cfg:370
 msgid ""
 "\n"
 "\n"
@@ -2633,12 +2661,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=wrap_up
-#: data/core/help.cfg:379
+#: data/core/help.cfg:378
 msgid "Wrap Up"
 msgstr "Da zaokružimo"
 
 #. [topic]: id=wrap_up
-#: data/core/help.cfg:380
+#: data/core/help.cfg:379
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "basic strategy, or familiarize yourself with <ref>dst='..traits_section' "
@@ -2654,17 +2682,17 @@ msgstr ""
 "srećno!"
 
 #. [topic]: id=about
-#: data/core/help.cfg:385
+#: data/core/help.cfg:384
 msgid "ingame_help_item^Contributors"
 msgstr "Doprinosioci"
 
 #. [topic]: id=license
-#: data/core/help.cfg:391
+#: data/core/help.cfg:390
 msgid "License"
 msgstr "Uslovi korišćenja"
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:400
+#: data/core/help.cfg:399
 #, fuzzy
 #| msgid ""
 #| "Most units have two traits. However, undead units are assigned the single "
@@ -2686,7 +2714,7 @@ msgstr ""
 "dodjeljuju nasumično, pri unajmljivanju jedinice."
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:400
+#: data/core/help.cfg:399
 msgid ""
 "Traits are modifications that change a unit’s attributes slightly. They are "
 "usually randomly assigned to a unit when it is recruited. The traits "
@@ -2695,7 +2723,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:402
+#: data/core/help.cfg:401
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2720,7 +2748,7 @@ msgstr ""
 "<ref>dst='traits_strong' text='kršnost'</ref>."
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:404
+#: data/core/help.cfg:403
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2747,457 +2775,8 @@ msgstr ""
 "<ref>dst='traits_undead' text='nemrtvost'</ref>.\n"
 "\n"
 
-#. [topic]: id=traits_intelligent
-#: data/core/help.cfg:414
-msgid "Intelligent"
-msgstr "oštroumnost"
-
-#. [topic]: id=traits_intelligent
-#: data/core/help.cfg:415
-msgid ""
-"\n"
-"\n"
-"<italic>text='Intelligent'</italic> units are very useful at the beginning "
-"of a campaign as they can advance to higher levels more quickly. Later in "
-"campaigns Intelligent is not quite as useful because the <italic>text='After "
-"Maximum Level Advancement'</italic> (AMLA) is not as significant a change as "
-"advancing a level. If you have many ‘maximum level’ units you may wish to "
-"recall units with more desirable traits."
-msgstr ""
-"\n"
-"\n"
-"<italic>text='Oštroumne'</italic> jedinice su vrlo korisne na početku "
-"pohoda, pošto brže mogu dostići više nivoe. Kasnije u toku pohoda "
-"oštroumnost nije tako korisna, pošto <italic>text='napredovanje po najvećem "
-"nivou'</italic> (NAPON) nije tako značajno kao napredovanje u nivou. Ako "
-"imate mnogo takvih jedinica najvišeg nivoa, možda je bolje da sazivate "
-"jedinice sa poželjnijim osobinama."
-
-#. [topic]: id=traits_intelligent
-#: data/core/help.cfg:415
-msgid "Intelligent units require 20% less experience than usual to advance."
-msgstr ""
-"Oštroumnim jedinicama potrebno je 20% manje iskustva nego obično da bi "
-"napredovale."
-
-#. [topic]: id=traits_quick
-#: data/core/help.cfg:422
-msgid "Quick"
-msgstr "hitrost"
-
-#. [topic]: id=traits_quick
-#: data/core/help.cfg:423
-msgid ""
-"\n"
-"\n"
-"Quick is the most noticeable trait, particularly in slower moving units such "
-"as trolls or heavy infantry. Units with the quick trait often have greatly "
-"increased mobility in rough terrain, which can be important to consider when "
-"deploying your forces. Also, quick units aren’t quite as tough as units "
-"without this trait and are subsequently less good at holding contested "
-"positions."
-msgstr ""
-"\n"
-"\n"
-"Hitrost je najuočljivija osobina, posebno kod sporijih jedinica kakve su "
-"trolovi i teška pješadija. Hitre jedinice često imaju značajno uvećanu "
-"pokretljivost na nezgodnom terenu, što može biti važno za razmatranje kada "
-"raspoređujete snage. Takođe, ove jedinice nisu tako robusne kao one bez "
-"hitrosti, i stoga su manje pogodne za držanje položajâ pod stalnim napadom."
-
-#. [topic]: id=traits_quick
-#: data/core/help.cfg:423
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Quick'</italic> units have 1 extra movement point, but 5% "
-#| "less HP than usual."
-msgid ""
-"<italic>text='Quick'</italic> units have 1 extra movement point, but 5% less "
-"hitpoints than usual."
-msgstr ""
-"<italic>text='Hitre'</italic> jedinice imaju 1 dodatan poen na kretanje, ali "
-"5% manje UP nego obično."
-
-#. [topic]: id=traits_resilient
-#: data/core/help.cfg:430
-msgid "Resilient"
-msgstr "žilavost"
-
-#. [topic]: id=traits_resilient
-#: data/core/help.cfg:431
-msgid ""
-"\n"
-"\n"
-"Resilient units can be useful at all stages of a campaign, and this is a "
-"useful trait for all units. Resilient is often most helpful as a trait when "
-"it occurs in a unit that has some combination of low hitpoints, good "
-"defense, or high resistances. Resilient units are especially useful for "
-"holding strategic positions against opponents."
-msgstr ""
-"\n"
-"\n"
-"Žilave jedinice mogu biti korisne u svim etapama pohoda, i ova osobina je "
-"korisna za sve tipove jedinica. Žilavost je često od najveće pomoći "
-"jedinicama koje imaju neki splet niskih udarpoena, dobre odbrane, ili "
-"visokih otpornosti. Ovakve jedinice su posebno korisne za držanje strateških "
-"položaja van ruku protivnika."
-
-#. [topic]: id=traits_resilient
-#: data/core/help.cfg:431
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Resilient'</italic> units have 4 HP plus 1 HP per level "
-#| "more than usual."
-msgid ""
-"<italic>text='Resilient'</italic> units have an additional 4 hitpoints, and "
-"gain 1 more per level."
-msgstr ""
-"<italic>text='Žilave'</italic> jedinice imaju 4 UP plus 1 UP po nivou više "
-"nego obično."
-
-#. [topic]: id=traits_strong
-#: data/core/help.cfg:438
-msgid "Strong"
-msgstr "kršnost"
-
-#. [topic]: id=traits_strong
-#: data/core/help.cfg:439
-msgid ""
-"\n"
-"\n"
-"While useful for any close-combat unit, strong is most effective for units "
-"who have a high number of swings such as the elvish fighter. Strong units "
-"can be very useful when a tiny bit of extra damage is all that is needed to "
-"turn a damaging stroke into a killing blow."
-msgstr ""
-"\n"
-"\n"
-"Iako korisna bilo kojoj jedinici koja se bori blisko, kršnost je "
-"najznačajnija jedinicama sa velikim brojem udara u napadu, kakvi su npr. "
-"vilin-borci. Kršne jedinice mogu biti vrlo korisne kada je samo još zrnce "
-"više štete potrebno da se oštećujući udar pretvori u završni."
-
-#. [topic]: id=traits_strong
-#: data/core/help.cfg:439
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Strong'</italic> units do 1 more damage for every "
-#| "successful strike in melee combat, and have 1 more HP."
-msgid ""
-"<italic>text='Strong'</italic> units do 1 more damage for every successful "
-"strike in melee combat, and have 1 additional hitpoint."
-msgstr ""
-"<italic>text='Kršne'</italic> jedinice čine 1 poen štete više za svaki "
-"uspješan udar u bliskoj borbi, i imaju 1 UP više."
-
-#. [topic]: id=traits_fearless
-#: data/core/help.cfg:446
-msgid "Fearless"
-msgstr "neustrašivost"
-
-#. [topic]: id=traits_fearless
-#: data/core/help.cfg:447
-msgid "Aversion to light and dark holds no sway over these brave individuals."
-msgstr ""
-"Nesklonost bilo svjetlu bilo tami, nema uticaja na ove hrabre pojedince."
-
-#. [topic]: id=traits_feral
-#: data/core/help.cfg:452
-msgid "Feral"
-msgstr "neukroćenost"
-
-#. [topic]: id=traits_feral
-#: data/core/help.cfg:453
-msgid ""
-"Dwellings of sentient beings are not easily used for cover by feral "
-"creatures of low intelligence. As a result, <italic>text='feral'</italic> "
-"units receive a maximum of 50% defense in any land-based village regardless "
-"of base terrain."
-msgstr ""
-"Nastambe svesnih bića nisu prigodno sklonište divljim stvorenjima niske "
-"inteligencije. Zbog toga, <italic>text='neukroćene'</italic> jedinice "
-"dobijaju najviše 50% odbrane u svakom kopnenom selu, bez obzira na podložni "
-"teren."
-
-#. [topic]: id=traits_loyal
-#: data/core/help.cfg:458
-msgid "Loyal"
-msgstr "odanost"
-
-#. [topic]: id=traits_loyal
-#: data/core/help.cfg:459
-msgid ""
-"\n"
-"\n"
-"During campaigns, certain units may opt to join the player’s forces of their "
-"own volition. These units are marked with the loyal trait. Although they may "
-"require payment to be recalled, they never incur any upkeep costs. This can "
-"make them invaluable during a long campaign, when gold is in short supply. "
-"This trait is never given to recruited units, so it may be unwise to dismiss "
-"such units or to send them to a foolish death."
-msgstr ""
-"\n"
-"\n"
-"Tokom pohoda, određene jedinice mogu svojevoljno odlučiti da se pridruže "
-"vašim snagama. One će tada imati osobinu odanosti. Iako se mora platiti "
-"njihovo kasnije sazivanje, one ne prave izdatke u toku scenarija. Ovo ih "
-"može učiniti dragocjenim tokom dugog pohoda, kada je zlato stalno na izmaku. "
-"Unajmljene jedinice nikada nemaju ovu osobinu, tako da može biti nesmotreno "
-"otpuštati odane jedinice, ili ih slati u besmislenu smrt."
-
-#. [topic]: id=traits_loyal
-#: data/core/help.cfg:459
-msgid ""
-"<italic>text='Loyal'</italic> units don’t incur upkeep. Most units incur an "
-"upkeep cost at the end of every turn, which is equal to their level. Loyal "
-"units do not incur this cost."
-msgstr ""
-"<italic>text='Odane'</italic> jedinice ne prave izdatke. Većina jedinica ima "
-"izdatke na kraju svakog poteza, brojevno jednake njihovom nivou. Odane "
-"jedinice nemaju takvih zahtjeva."
-
-#. [topic]: id=traits_undead
-#: data/core/help.cfg:466
-msgid "trait^Undead"
-msgstr "nemrtvost"
-
-#. [topic]: id=traits_undead
-#: data/core/help.cfg:467
-msgid ""
-"\n"
-"\n"
-"Undead units generally have undead as their only trait. Since undead units "
-"are the bodies of the dead, risen to fight again, poison has no effect upon "
-"them. This can make them invaluable in dealing with foes who use poison in "
-"conjunction with their attacks."
-msgstr ""
-"\n"
-"\n"
-"Jedinice nemrtvih obično imaju nemrtvost kao jedinu osobinu. Pošto su ove "
-"jedinice nastale od tijela mrtvih, povraćenih da se ponovo bore, otrov nema "
-"uticaja na njih. Ovo ih može učiniti izuzetno korisnim pri obračunavanju sa "
-"protivnicima koji svoje napade podržavaju otrovima."
-
-#. [topic]: id=traits_undead
-#: data/core/help.cfg:467
-msgid ""
-"<italic>text='Undead'</italic> units are immune to poison, drain, and plague."
-msgstr ""
-"<italic>text='Nemrtve'</italic> jedinice su imune na otrov, crpljenje i kugu."
-
-#. [topic]: id=traits_mechanical
-#: data/core/help.cfg:474
-msgid "trait^Mechanical"
-msgstr "mehaničnost"
-
-#. [topic]: id=traits_mechanical
-#: data/core/help.cfg:475
-msgid ""
-"\n"
-"\n"
-"Mechanical units generally have mechanical as their only trait. Since "
-"mechanical units don’t really have life, drain, poison, and plague have no "
-"effect upon them."
-msgstr ""
-"\n"
-"\n"
-"Mehaničke jedinice obično imaju mehaničnost kao jedinu osobinu. Pošto one "
-"nisu zbilja žive, crpljenje, otrov i kuga ne utiču na njih."
-
-#. [topic]: id=traits_mechanical
-#: data/core/help.cfg:475
-msgid ""
-"<italic>text='Mechanical'</italic> units are immune to poison, drain, and "
-"plague."
-msgstr ""
-"<italic>text='Mehaničke'</italic> jedinice su imune na otrov, crpljenje i "
-"kugu."
-
-#. [topic]: id=traits_elemental
-#: data/core/help.cfg:482
-msgid "trait^Elemental"
-msgstr "elementarnost"
-
-#. [topic]: id=traits_elemental
-#: data/core/help.cfg:483
-msgid ""
-"\n"
-"\n"
-"Elemental units generally have elemental as their only trait. Since "
-"elemental units are energy-based beings, drain, poison, and plague have no "
-"effect upon them."
-msgstr ""
-"\n"
-"\n"
-"Elementarne jedinice obično imaju elementarnost kao svoju jedinu osobinu. "
-"Pošto su one bića energetskog sastava, crpljenje, otrov i kuga ne utiču na "
-"njih."
-
-#. [topic]: id=traits_elemental
-#: data/core/help.cfg:483
-msgid ""
-"<italic>text='Elemental'</italic> units are immune to poison, drain, and "
-"plague."
-msgstr ""
-"<italic>text='Elementarne'</italic> jedinice su imune na otrov, crpljenje i "
-"kugu."
-
-#. [topic]: id=traits_dextrous
-#: data/core/help.cfg:490
-msgid "Dextrous"
-msgstr "spretnost"
-
-#. [topic]: id=traits_dextrous
-#: data/core/help.cfg:491
-msgid ""
-"\n"
-"\n"
-"Dextrous is a trait possessed only by elves. The elven people are known for "
-"their uncanny grace, and their great facility with the bow. Some, however, "
-"are gifted with natural talent that exceeds their brethren. These elves "
-"inflict an additional point of damage with each arrow."
-msgstr ""
-"\n"
-"\n"
-"Spretnost je osobina koju posjeduju samo vilenjaci. Vilenjački narod je "
-"poznat po svojoj tajanstvenoj skladnosti i velikoj vještini u rukovanju "
-"lukom. Neki od njih, međutim, obdareni su talentom koji nadmašuje njihove "
-"sunarodnike. Takvi vilenjaci nanose dodatan poen štete svakom svojom "
-"strijelom."
-
-#. [topic]: id=traits_dextrous
-#: data/core/help.cfg:491
-msgid ""
-"<italic>text='Dextrous'</italic> units do 1 more damage for every successful "
-"strike in ranged combat."
-msgstr ""
-"<italic>text='Spretne'</italic> jedinice čine 1 poen štete više pri svakom "
-"uspješnom udaru u odstupnoj borbi."
-
-#. [topic]: id=traits_healthy
-#: data/core/help.cfg:498
-msgid "Healthy"
-msgstr "zdravlje"
-
-#. [topic]: id=traits_healthy
-#: data/core/help.cfg:499
-msgid ""
-"\n"
-"\n"
-"<italic>text='Healthy'</italic> units have 1 additional hitpoint, and gain 1 "
-"more per level. They will also heal 2 hitpoints each turn, regardless of "
-"whether they engaged in combat the turn before."
-msgstr ""
-
-#. [topic]: id=traits_healthy
-#: data/core/help.cfg:499
-#, fuzzy
-#| msgid ""
-#| "Renowned for their vitality, some dwarves are sturdier than others and "
-#| "can rest even when travelling."
-msgid ""
-"Renowned for their vitality, some dwarves are sturdier than others and can "
-"rest even when traveling."
-msgstr ""
-"Čuveni po svojoj krepkosti, neki patuljci su izdržljiviji od drugih i mogu "
-"se odmarati čak i dok putuju."
-
-#. [topic]: id=traits_dim
-#: data/core/help.cfg:506
-msgid "Dim"
-msgstr "priglupost"
-
-#. [topic]: id=traits_dim
-#: data/core/help.cfg:507
-msgid ""
-"\n"
-"\n"
-"Dim is a trait all too common in goblins and other lesser species. There are "
-"reasons these species are lesser, and this is one of them."
-msgstr ""
-"\n"
-"\n"
-"Ograničenosti je na pretek među goblinima i drugim nižim rasama. Ove se rase "
-"ne zovu niže bez razloga, a ovo je jedan od njih."
-
-#. [topic]: id=traits_dim
-#: data/core/help.cfg:507
-msgid ""
-"Units with trait <italic>text='dim'</italic> suffer a 20% increase in "
-"experience required to advance."
-msgstr ""
-"<italic>text='Priglupe'</italic> jedinice trpe 20% uvećanja neophodnog "
-"iskustva da bi isprednjačile."
-
-#. [topic]: id=traits_slow
-#: data/core/help.cfg:514
-msgid "Slow"
-msgstr "tromost"
-
-#. [topic]: id=traits_slow
-#: data/core/help.cfg:515
-msgid ""
-"\n"
-"\n"
-"Thick-bodied and clumsy, slow individuals of goblins and other species take "
-"a movement penalty but are compensated for it with a slight increase in "
-"endurance."
-msgstr ""
-"\n"
-"\n"
-"Zamašne tjelesine i nespretni, tromiji među goblinima i drugim rasama trpe "
-"na pokretnosti, ali nadomiještaju to ponešto uvećanom izdržljivošću."
-
-#. [topic]: id=traits_slow
-#: data/core/help.cfg:515
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Slow'</italic> units have −1 movement but 5% more hitpoints."
-msgid ""
-"<italic>text='Slow'</italic> units have 1 less movement point but 5% more "
-"hitpoints."
-msgstr ""
-"<italic>text='Trome'</italic> jedinice imaju −1 na kretanje, ali 5% više "
-"udarpoena."
-
-#. [topic]: id=traits_weak
-#: data/core/help.cfg:522
-msgid "Weak"
-msgstr "krhkost"
-
-#. [topic]: id=traits_weak
-#: data/core/help.cfg:523
-#, fuzzy
-#| msgid ""
-#| "Units with trait <italic>text='weak'</italic> get a −1 increment in "
-#| "hitpoints and melee damage."
-msgid ""
-"Units with the <italic>text='weak'</italic> trait receive a 1 point decrease "
-"in hitpoints and melee damage."
-msgstr ""
-"<italic>text='Krhke'</italic> jedinice trpe −1 na udarpoene i štetu u "
-"bliskoj borbi."
-
-#. [topic]: id=traits_aged
-#: data/core/help.cfg:528
-msgid "trait^Aged"
-msgstr "starost"
-
-#. [topic]: id=traits_aged
-#: data/core/help.cfg:529
-#, fuzzy
-#| msgid ""
-#| "Units with trait <italic>text='aged'</italic> get a −8 increment in "
-#| "hitpoints and a −1 increment in movement and melee damage."
-msgid ""
-"Units with the <italic>text='aged'</italic> trait have 8 hitpoints less and "
-"suffer from a 1 point decrease in movement and melee damage."
-msgstr ""
-"<italic>text='Ostarele'</italic> jedinice trpe −8 na udarpoene i −1 na "
-"kretanje i štetu u bliskoj borbi."
-
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:536
+#: data/core/help.cfg:413
 msgid ""
 "\n"
 "\n"
@@ -3206,7 +2785,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:536
+#: data/core/help.cfg:413
 #, fuzzy
 #| msgid ""
 #| "Game maps feature a variety of terrains that affect both unit movement "
@@ -3221,7 +2800,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:538
+#: data/core/help.cfg:415
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3237,7 +2816,7 @@ msgstr ""
 "<header>text='Izgledi za pogodak'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:540
+#: data/core/help.cfg:417
 msgid ""
 "\n"
 "\n"
@@ -3248,7 +2827,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:544
+#: data/core/help.cfg:421
 msgid ""
 "\n"
 "\n"
@@ -3258,7 +2837,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:546
+#: data/core/help.cfg:423
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3274,7 +2853,7 @@ msgstr ""
 "<header>text='Izgledi za pogodak'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:548
+#: data/core/help.cfg:425
 msgid ""
 "\n"
 "\n"
@@ -3288,7 +2867,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:552
+#: data/core/help.cfg:429
 msgid ""
 "\n"
 "\n"
@@ -3303,7 +2882,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:556
+#: data/core/help.cfg:433
 msgid ""
 "\n"
 "\n"
@@ -3314,7 +2893,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:560
+#: data/core/help.cfg:437
 msgid ""
 "\n"
 "\n"
@@ -3325,7 +2904,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:564
+#: data/core/help.cfg:441
 msgid ""
 "\n"
 "\n"
@@ -3335,7 +2914,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:566
+#: data/core/help.cfg:443
 msgid ""
 "\n"
 "\n"
@@ -3346,7 +2925,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:568
+#: data/core/help.cfg:445
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3362,7 +2941,7 @@ msgstr ""
 "<header>text='Izgledi za pogodak'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:570
+#: data/core/help.cfg:447
 msgid ""
 "\n"
 "\n"
@@ -3372,7 +2951,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:572
+#: data/core/help.cfg:449
 msgid ""
 "\n"
 "\n"
@@ -3383,7 +2962,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:574
+#: data/core/help.cfg:451
 msgid ""
 "\n"
 "\n"
@@ -3392,7 +2971,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:576
+#: data/core/help.cfg:453
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3409,7 +2988,7 @@ msgstr ""
 "<header>text='Izgledi za pogodak'</header>"
 
 #. [topic]: id=..addons
-#: data/core/help.cfg:589
+#: data/core/help.cfg:466
 msgid ""
 "The degree of customization offered by the Wesnoth engine allows players to "
 "create their own game content, including new scenarios, campaigns, and much "
@@ -3418,12 +2997,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:599
+#: data/core/help.cfg:476
 msgid "Using Add-ons"
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:600
+#: data/core/help.cfg:477
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3439,14 +3018,14 @@ msgstr ""
 "<header>text=Šteta</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:600
+#: data/core/help.cfg:477
 msgid ""
 "The game supports different types of add-on content, which are not all "
 "available in every gameplay mode."
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:602
+#: data/core/help.cfg:479
 msgid ""
 "\n"
 "\n"
@@ -3457,7 +3036,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:604
+#: data/core/help.cfg:481
 #, fuzzy
 #| msgid "<header>text='Units having this special attack'</header>"
 msgid ""
@@ -3467,7 +3046,7 @@ msgid ""
 msgstr "<header>text='Jedinice s ovim posebnim napadom'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:606
+#: data/core/help.cfg:483
 msgid ""
 "\n"
 "\n"
@@ -3477,7 +3056,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:608
+#: data/core/help.cfg:485
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3493,7 +3072,7 @@ msgstr ""
 "<header>text='Redoslijed i broj udara'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:610
+#: data/core/help.cfg:487
 msgid ""
 "\n"
 "\n"
@@ -3508,7 +3087,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:614
+#: data/core/help.cfg:491
 msgid ""
 "\n"
 "\n"
@@ -3517,7 +3096,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:616
+#: data/core/help.cfg:493
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3533,7 +3112,7 @@ msgstr ""
 "<header>text='Redoslijed i broj udara'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:618
+#: data/core/help.cfg:495
 msgid ""
 "\n"
 "\n"
@@ -3544,7 +3123,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:620
+#: data/core/help.cfg:497
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3560,7 +3139,7 @@ msgstr ""
 "<header>text='Izgledi za pogodak'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:622
+#: data/core/help.cfg:499
 msgid ""
 "\n"
 "\n"
@@ -3572,12 +3151,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:631
+#: data/core/help.cfg:508
 msgid "Installing Add-ons"
 msgstr ""
 
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:632
+#: data/core/help.cfg:509
 msgid ""
 "User-made add-ons can be obtained and updated through the <italic>text='Add-"
 "ons'</italic> option in the main menu. After connecting to the add-ons "
@@ -3603,12 +3182,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:645
+#: data/core/help.cfg:522
 msgid "Removing Add-ons"
 msgstr ""
 
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:646
+#: data/core/help.cfg:523
 msgid ""
 "To remove add-ons, choose <bold>text='Remove Add-ons'</bold> in the add-ons "
 "server connection dialog. You will be presented with options to remove any "
@@ -3622,7 +3201,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:661
+#: data/core/help.cfg:538
 #, fuzzy
 #| msgid "General commands"
 msgid "General Commands"
@@ -3631,7 +3210,7 @@ msgstr "Opšte naredbe"
 #. [topic]: id=general_commands
 #. [topic]: id=mp_commands
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:663 data/core/help.cfg:706 data/core/help.cfg:744
+#: data/core/help.cfg:540 data/core/help.cfg:583 data/core/help.cfg:621
 msgid ""
 "These commands can either be issued via the command line by prefixing them "
 "with ':' (as shown here) or via the chat by prefixing them with '/' (press "
@@ -3644,7 +3223,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:665
+#: data/core/help.cfg:542
 msgid ""
 "\n"
 "Clear chat messages.\n"
@@ -3654,7 +3233,7 @@ msgstr ""
 "čisti poruke u ćaskanju.\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:668
+#: data/core/help.cfg:545
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -3669,7 +3248,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:672
+#: data/core/help.cfg:549
 msgid ""
 "\n"
 "Set or toggle player on side between human and AI player. The player/client "
@@ -3688,7 +3267,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:675
+#: data/core/help.cfg:552
 msgid ""
 "\n"
 "Display the controller status of a side.\n"
@@ -3696,7 +3275,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:678
+#: data/core/help.cfg:555
 msgid ""
 "\n"
 "Toggle the display of the current frames per second.\n"
@@ -3707,7 +3286,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:681
+#: data/core/help.cfg:558
 msgid ""
 "\n"
 "Switch a log domain to a different log level.\n"
@@ -3718,7 +3297,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:684
+#: data/core/help.cfg:561
 msgid ""
 "\n"
 "Redraws the screen and reloads any image files that have been changed.\n"
@@ -3729,7 +3308,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:687
+#: data/core/help.cfg:564
 msgid ""
 "\n"
 "Bring up theme selection menu.\n"
@@ -3740,7 +3319,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:690
+#: data/core/help.cfg:567
 msgid ""
 "\n"
 "Quit the scenario (without prompting).\n"
@@ -3751,7 +3330,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:693
+#: data/core/help.cfg:570
 msgid ""
 "\n"
 "Save the game (without prompting).\n"
@@ -3762,7 +3341,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:696
+#: data/core/help.cfg:573
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
@@ -3771,14 +3350,14 @@ msgstr ""
 "napušta scenario uz upisivanje pozicije (bez pitanja)."
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:705
+#: data/core/help.cfg:582
 #, fuzzy
 #| msgid "Multiplayer commands"
 msgid "Multiplayer Commands"
 msgstr "Višeigračke naredbe"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:708
+#: data/core/help.cfg:585
 msgid ""
 "\n"
 "Ban a user in a multiplayer game by the IP address used by that username and "
@@ -3793,7 +3372,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:711
+#: data/core/help.cfg:588
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -3813,7 +3392,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:714
+#: data/core/help.cfg:591
 msgid ""
 "\n"
 "Launch a dialog to assist the host in changing the human controllers of "
@@ -3822,7 +3401,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:717
+#: data/core/help.cfg:594
 msgid ""
 "\n"
 "Toggle the idle state for a side. The host may make a side idle after a "
@@ -3831,7 +3410,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:720
+#: data/core/help.cfg:597
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. If you "
@@ -3846,7 +3425,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:723
+#: data/core/help.cfg:600
 msgid ""
 "\n"
 "Send a private message to a user. When in a game, it is not possible to send "
@@ -3860,7 +3439,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:726
+#: data/core/help.cfg:603
 msgid ""
 "\n"
 "Mute a specific observer. If no username is supplied the muted usernames are "
@@ -3873,7 +3452,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:729
+#: data/core/help.cfg:606
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off.\n"
@@ -3884,7 +3463,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:732
+#: data/core/help.cfg:609
 msgid ""
 "\n"
 "Unban a user in a multiplayer game by the IP address used by that username. "
@@ -3897,7 +3476,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:735
+#: data/core/help.cfg:612
 msgid ""
 "\n"
 "Unmute a specific observer. If no username is supplied the list of muted "
@@ -3908,14 +3487,14 @@ msgstr ""
 "se spisak utišanih posmatrača."
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:743
+#: data/core/help.cfg:620
 #, fuzzy
 #| msgid "Debug mode commands"
 msgid "Debug Mode Commands"
 msgstr "Ispravljačke naredbe"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:746
+#: data/core/help.cfg:623
 msgid ""
 "\n"
 "Brings up a menu for choosing a scenario to immediately advance to in a "
@@ -3927,7 +3506,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:749
+#: data/core/help.cfg:626
 msgid ""
 "\n"
 "Create a unit of the specified type on the selected hex.\n"
@@ -3938,7 +3517,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:752
+#: data/core/help.cfg:629
 msgid ""
 "\n"
 "Toggle fog/shroud for the current side.\n"
@@ -3949,7 +3528,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:755
+#: data/core/help.cfg:632
 msgid ""
 "\n"
 "Adds the specified amount to the current side’s gold.\n"
@@ -3960,7 +3539,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:758
+#: data/core/help.cfg:635
 msgid ""
 "\n"
 "Immediately advances to the next scenario in a campaign.\n"
@@ -3971,7 +3550,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:761
+#: data/core/help.cfg:638
 msgid ""
 "\n"
 "Manually set a gamestate variable to value.\n"
@@ -3982,7 +3561,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:764
+#: data/core/help.cfg:641
 msgid ""
 "\n"
 "Show a gamestate variable.\n"
@@ -3993,7 +3572,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:767
+#: data/core/help.cfg:644
 msgid ""
 "\n"
 "Manually fire the specified event.\n"
@@ -4004,7 +3583,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:770
+#: data/core/help.cfg:647
 msgid ""
 "\n"
 "Modifies the specified property of the selected unit. Example: :unit "
@@ -4017,7 +3596,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:773
+#: data/core/help.cfg:650
 msgid ""
 "\n"
 "Makes the selected unit level up N times. Example: :unit advances=2"
@@ -4364,17 +3943,17 @@ msgstr ""
 "prva otkrije zaronjenu, istog časa gubi svu preostalu pokretnost u potezu."
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:335
+#: data/core/macros/abilities.cfg:333
 msgid "feeding"
 msgstr "hranjenje"
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:336
+#: data/core/macros/abilities.cfg:334
 msgid "female^feeding"
 msgstr "hranjenje"
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:337
+#: data/core/macros/abilities.cfg:335
 #, fuzzy
 #| msgid ""
 #| " This unit gains 1 hitpoint added to its maximum whenever it kills a "
@@ -4387,12 +3966,12 @@ msgstr ""
 "jedinicu."
 
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:359
+#: data/core/macros/abilities.cfg:357
 msgid "backstab"
 msgstr "nož u leđa"
 
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:360
+#: data/core/macros/abilities.cfg:358
 #, fuzzy
 #| msgid ""
 #| "Backstab:\n"
@@ -4411,12 +3990,12 @@ msgstr ""
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:380 data/core/macros/abilities.cfg:391
+#: data/core/macros/abilities.cfg:378 data/core/macros/abilities.cfg:389
 msgid "plague"
 msgstr "kuga"
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
-#: data/core/macros/abilities.cfg:381
+#: data/core/macros/abilities.cfg:379
 #, fuzzy
 #| msgid ""
 #| "Plague:\n"
@@ -4434,7 +4013,7 @@ msgstr ""
 "jedinicama u selu."
 
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:392
+#: data/core/macros/abilities.cfg:390
 #, fuzzy
 #| msgid ""
 #| "Plague:\n"
@@ -4452,12 +4031,12 @@ msgstr ""
 "selu."
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:402
+#: data/core/macros/abilities.cfg:400
 msgid "slows"
 msgstr "usporavanje"
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:403
+#: data/core/macros/abilities.cfg:401
 #, fuzzy
 #| msgid ""
 #| "Slow:\n"
@@ -4477,12 +4056,12 @@ msgstr ""
 "Usporena jedinica nosiće ikonu puža u podacima sa strane kada se izabere."
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:412
+#: data/core/macros/abilities.cfg:410
 msgid "petrifies"
 msgstr "okamenjivanje"
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:413
+#: data/core/macros/abilities.cfg:411
 #, fuzzy
 #| msgid ""
 #| "Petrify:\n"
@@ -4497,12 +4076,12 @@ msgstr ""
 "napadati."
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:422
+#: data/core/macros/abilities.cfg:420
 msgid "marksman"
 msgstr "oštrookost"
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:423
+#: data/core/macros/abilities.cfg:421
 #, fuzzy
 #| msgid ""
 #| "Marksman:\n"
@@ -4515,12 +4094,12 @@ msgstr ""
 "Pri napadu, uvijek postoji barem 60% izgleda da dođe do pogotka."
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:447
+#: data/core/macros/abilities.cfg:445
 msgid "swarm"
 msgstr "roj"
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:448
+#: data/core/macros/abilities.cfg:446
 #, fuzzy
 #| msgid ""
 #| "Swarm:\n"
@@ -4540,12 +4119,12 @@ msgstr ""
 "imati. Na primjer, jedinica sa 3/4 punih UP imaće 3/4 udara pri napadu."
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:457
+#: data/core/macros/abilities.cfg:455
 msgid "charge"
 msgstr "juriš"
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:458
+#: data/core/macros/abilities.cfg:456
 #, fuzzy
 #| msgid ""
 #| "Charge:\n"
@@ -4561,12 +4140,12 @@ msgstr ""
 "dovodi do dvostrukog oštećenja ukoliko ciljana jedinica udari u protivnapadu."
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:470
+#: data/core/macros/abilities.cfg:468
 msgid "drains"
 msgstr "crpljenje"
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:471
+#: data/core/macros/abilities.cfg:469
 #, fuzzy
 #| msgid ""
 #| "Drain:\n"
@@ -4581,12 +4160,12 @@ msgstr ""
 "štete koju nanese (zaokruženo nadole)."
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:490
+#: data/core/macros/abilities.cfg:488
 msgid "poison"
 msgstr "otrov"
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:491
+#: data/core/macros/abilities.cfg:489
 #, fuzzy
 #| msgid ""
 #| "Poison:\n"
@@ -4610,218 +4189,218 @@ msgstr "Maks. bonus UP +3, maks. IP +20%"
 
 #. [time]: id=midday
 #. [time]: id=midday_hour
-#: data/core/macros/schedules.cfg:26 data/core/macros/schedules.cfg:312
+#: data/core/macros/schedules.cfg:35 data/core/macros/schedules.cfg:329
 msgid "Midday"
 msgstr "podne"
 
 #. [time]: id=midnight
 #. [time]: id=midnight_hour
-#: data/core/macros/schedules.cfg:67 data/core/macros/schedules.cfg:181
+#: data/core/macros/schedules.cfg:77 data/core/macros/schedules.cfg:191
 msgid "Midnight"
 msgstr "ponoć"
 
 #. [time]: id=indoors
-#: data/core/macros/schedules.cfg:91
+#: data/core/macros/schedules.cfg:101
 msgid "Indoors"
 msgstr "unutrašnjost"
 
 #. [time]: id=deep_underground
-#: data/core/macros/schedules.cfg:111
+#: data/core/macros/schedules.cfg:121
 msgid "Deep Underground"
 msgstr "duboko podzemlje"
 
 #. [time]: id=second_watch_hour1
-#: data/core/macros/schedules.cfg:193
+#: data/core/macros/schedules.cfg:203
 msgid "Second Watch — First Hour"
 msgstr "druga straža — prvi čas"
 
 #. [time]: id=second_watch_hour2
-#: data/core/macros/schedules.cfg:205
+#: data/core/macros/schedules.cfg:215
 msgid "Second Watch — Second Hour"
 msgstr "druga straža — drugi čas"
 
 #. [time]: id=second_watch_hour3
-#: data/core/macros/schedules.cfg:217
+#: data/core/macros/schedules.cfg:227
 msgid "Second Watch — Third Hour"
 msgstr "druga straža — treći čas"
 
 #. [time]: id=second_watch_hour4
-#: data/core/macros/schedules.cfg:229
+#: data/core/macros/schedules.cfg:239
 msgid "Second Watch — Fourth Hour"
 msgstr "druga straža — četvrti čas"
 
 #. [time]: id=second_watch_hour5
-#: data/core/macros/schedules.cfg:241
+#: data/core/macros/schedules.cfg:251
 msgid "Second Watch — Fifth Hour"
 msgstr "druga straža — peti čas"
 
 #. [time]: id=second_watch_hour6
-#: data/core/macros/schedules.cfg:253
+#: data/core/macros/schedules.cfg:263
 msgid "Second Watch — Sixth Hour"
 msgstr "druga straža — šesti čas"
 
 #. [time]: id=morning_hour1
-#: data/core/macros/schedules.cfg:276
+#: data/core/macros/schedules.cfg:287
 msgid "Morning — First Hour"
 msgstr "jutro — prvi čas"
 
 #. [time]: id=morning_hour2
-#: data/core/macros/schedules.cfg:285
+#: data/core/macros/schedules.cfg:299
 msgid "Morning — Second Hour"
 msgstr "jutro — drugi čas"
 
 #. [time]: id=morning_hour3
-#: data/core/macros/schedules.cfg:294
+#: data/core/macros/schedules.cfg:311
 msgid "Morning — Third Hour"
 msgstr "jutro — treći čas"
 
 #. [time]: id=morning_hour4
-#: data/core/macros/schedules.cfg:303
+#: data/core/macros/schedules.cfg:320
 msgid "Morning — Fourth Hour"
 msgstr "jutro — četvrti čas"
 
 #. [time]: id=afternoon_hour1
-#: data/core/macros/schedules.cfg:321
+#: data/core/macros/schedules.cfg:338
 msgid "Afternoon — First Hour"
 msgstr "popodne — prvi čas"
 
 #. [time]: id=afternoon_hour2
-#: data/core/macros/schedules.cfg:330
+#: data/core/macros/schedules.cfg:347
 msgid "Afternoon — Second Hour"
 msgstr "popodne — drugi čas"
 
 #. [time]: id=afternoon_hour3
-#: data/core/macros/schedules.cfg:339
+#: data/core/macros/schedules.cfg:356
 msgid "Afternoon — Third Hour"
 msgstr "popodne — treći čas"
 
 #. [time]: id=afternoon_hour4
-#: data/core/macros/schedules.cfg:348
+#: data/core/macros/schedules.cfg:365
 msgid "Afternoon — Fourth Hour"
 msgstr "popodne — četvrti čas"
 
 #. [time]: id=afternoon_hour5
-#: data/core/macros/schedules.cfg:357
+#: data/core/macros/schedules.cfg:374
 msgid "Afternoon — Fifth Hour"
 msgstr "popodne — peti čas"
 
 #. [time]: id=afternoon_hour6
-#: data/core/macros/schedules.cfg:366
+#: data/core/macros/schedules.cfg:385
 msgid "Afternoon — Sixth Hour"
 msgstr "popodne — šesti čas"
 
 #. [time]: id=first_watch_hour1
-#: data/core/macros/schedules.cfg:388
+#: data/core/macros/schedules.cfg:408
 msgid "First Watch — First Hour"
 msgstr "prva straža — prvi čas"
 
 #. [time]: id=first_watch_hour2
-#: data/core/macros/schedules.cfg:400
+#: data/core/macros/schedules.cfg:420
 msgid "First Watch — Second Hour"
 msgstr "prva straža — drugi čas"
 
 #. [time]: id=first_watch_hour3
-#: data/core/macros/schedules.cfg:412
+#: data/core/macros/schedules.cfg:432
 msgid "First Watch — Third Hour"
 msgstr "prva straža — treći čas"
 
 #. [time]: id=first_watch_hour4
-#: data/core/macros/schedules.cfg:424
+#: data/core/macros/schedules.cfg:444
 msgid "First Watch — Fourth Hour"
 msgstr "prva straža četvrti čas"
 
 #. [time]: id=dawn1
-#: data/core/macros/schedules.cfg:478
+#: data/core/macros/schedules.cfg:498
 #, fuzzy
 #| msgid "First Watch"
 msgid "First Dawn"
 msgstr "prva straža"
 
 #. [time]: id=dawn2
-#: data/core/macros/schedules.cfg:488
+#: data/core/macros/schedules.cfg:509
 #, fuzzy
 #| msgid "Second Watch"
 msgid "Second Dawn"
 msgstr "druga straža"
 
 #. [time]: id=morning1
-#: data/core/macros/schedules.cfg:498
+#: data/core/macros/schedules.cfg:520
 #, fuzzy
 #| msgid "Morning"
 msgid "First Morning"
 msgstr "jutro"
 
 #. [time]: id=morning2
-#: data/core/macros/schedules.cfg:507
+#: data/core/macros/schedules.cfg:532
 #, fuzzy
 #| msgid "Morning"
 msgid "Second Morning"
 msgstr "jutro"
 
 #. [time]: id=midday1
-#: data/core/macros/schedules.cfg:516
+#: data/core/macros/schedules.cfg:544
 #, fuzzy
 #| msgid "Midday"
 msgid "First Midday"
 msgstr "podne"
 
 #. [time]: id=midday2
-#: data/core/macros/schedules.cfg:525
+#: data/core/macros/schedules.cfg:556
 #, fuzzy
 #| msgid "Second Watch"
 msgid "Second Midday"
 msgstr "druga straža"
 
 #. [time]: id=afternoon1
-#: data/core/macros/schedules.cfg:534
+#: data/core/macros/schedules.cfg:568
 #, fuzzy
 #| msgid "Afternoon"
 msgid "First Afternoon"
 msgstr "popodne"
 
 #. [time]: id=afternoon2
-#: data/core/macros/schedules.cfg:543
+#: data/core/macros/schedules.cfg:580
 #, fuzzy
 #| msgid "Afternoon"
 msgid "Second Afternoon"
 msgstr "popodne"
 
 #. [time]: id=dusk1
-#: data/core/macros/schedules.cfg:552
+#: data/core/macros/schedules.cfg:592
 #, fuzzy
 #| msgid "firststrike"
 msgid "First Dusk"
 msgstr "prvi udar"
 
 #. [time]: id=dusk2
-#: data/core/macros/schedules.cfg:562
+#: data/core/macros/schedules.cfg:603
 #, fuzzy
 #| msgid "Second Watch"
 msgid "Second Dusk"
 msgstr "druga straža"
 
 #. [time]: id=short_dark
-#: data/core/macros/schedules.cfg:572
+#: data/core/macros/schedules.cfg:614
 msgid "The Short Dark"
 msgstr ""
 
 #. [time]: id=long_dark1
-#: data/core/macros/schedules.cfg:584
+#: data/core/macros/schedules.cfg:626
 msgid "The Long Dark (1)"
 msgstr ""
 
 #. [time]: id=long_dark2
-#: data/core/macros/schedules.cfg:596
+#: data/core/macros/schedules.cfg:638
 msgid "The Long Dark (2)"
 msgstr ""
 
 #. [time]: id=long_dark3
-#: data/core/macros/schedules.cfg:610
+#: data/core/macros/schedules.cfg:652
 msgid "The Long Dark (3)"
 msgstr ""
 
 #. [time]: id=long_dark4
-#: data/core/macros/schedules.cfg:622
+#: data/core/macros/schedules.cfg:664
 msgid "The Long Dark (4)"
 msgstr ""
 
@@ -5069,178 +4648,547 @@ msgstr "odanost"
 msgid "Zero upkeep"
 msgstr "bez izdataka"
 
+#. [trait]: id=loyal
+#: data/core/macros/traits.cfg:11
+msgid ""
+"\n"
+"\n"
+"During campaigns, certain units may opt to join the player’s forces of their "
+"own volition. These units are marked with the loyal trait. Although they may "
+"require payment to be recalled, they never incur any upkeep costs. This can "
+"make them invaluable during a long campaign, when gold is in short supply. "
+"This trait is never given to recruited units, so it may be unwise to dismiss "
+"such units or to send them to a foolish death."
+msgstr ""
+"\n"
+"\n"
+"Tokom pohoda, određene jedinice mogu svojevoljno odlučiti da se pridruže "
+"vašim snagama. One će tada imati osobinu odanosti. Iako se mora platiti "
+"njihovo kasnije sazivanje, one ne prave izdatke u toku scenarija. Ovo ih "
+"može učiniti dragocjenim tokom dugog pohoda, kada je zlato stalno na izmaku. "
+"Unajmljene jedinice nikada nemaju ovu osobinu, tako da može biti nesmotreno "
+"otpuštati odane jedinice, ili ih slati u besmislenu smrt."
+
+#. [trait]: id=loyal
+#: data/core/macros/traits.cfg:11
+msgid ""
+"<italic>text='Loyal'</italic> units don’t incur upkeep. Most units incur an "
+"upkeep cost at the end of every turn, which is equal to their level. Loyal "
+"units do not incur this cost."
+msgstr ""
+"<italic>text='Odane'</italic> jedinice ne prave izdatke. Većina jedinica ima "
+"izdatke na kraju svakog poteza, brojevno jednake njihovom nivou. Odane "
+"jedinice nemaju takvih zahtjeva."
+
 #. [trait]: id=undead
-#: data/core/macros/traits.cfg:22
+#: data/core/macros/traits.cfg:25
 msgid "undead"
 msgstr "nemrtvost"
 
 #. [trait]: id=undead
-#: data/core/macros/traits.cfg:23
+#: data/core/macros/traits.cfg:26
 msgid "female^undead"
 msgstr "nemrtvost"
 
 #. [trait]: id=undead
 #. [trait]: id=mechanical
 #. [trait]: id=elemental
-#: data/core/macros/traits.cfg:24 data/core/macros/traits.cfg:47
-#: data/core/macros/traits.cfg:70
+#: data/core/macros/traits.cfg:27 data/core/macros/traits.cfg:53
+#: data/core/macros/traits.cfg:79
 msgid "Immune to drain, poison, and plague"
 msgstr "imunitet na crpljenje, otrov i kugu"
 
+#. [trait]: id=undead
+#: data/core/macros/traits.cfg:28
+msgid ""
+"\n"
+"\n"
+"Undead units generally have undead as their only trait. Since undead units "
+"are the bodies of the dead, risen to fight again, poison has no effect upon "
+"them. This can make them invaluable in dealing with foes who use poison in "
+"conjunction with their attacks."
+msgstr ""
+"\n"
+"\n"
+"Jedinice nemrtvih obično imaju nemrtvost kao jedinu osobinu. Pošto su ove "
+"jedinice nastale od tijela mrtvih, povraćenih da se ponovo bore, otrov nema "
+"uticaja na njih. Ovo ih može učiniti izuzetno korisnim pri obračunavanju sa "
+"protivnicima koji svoje napade podržavaju otrovima."
+
+#. [trait]: id=undead
+#: data/core/macros/traits.cfg:28
+msgid ""
+"<italic>text='Undead'</italic> units are immune to poison, drain, and plague."
+msgstr ""
+"<italic>text='Nemrtve'</italic> jedinice su imune na otrov, crpljenje i kugu."
+
 #. [trait]: id=mechanical
-#: data/core/macros/traits.cfg:45
+#: data/core/macros/traits.cfg:51
 msgid "mechanical"
 msgstr "mehaničnost"
 
 #. [trait]: id=mechanical
-#: data/core/macros/traits.cfg:46
+#: data/core/macros/traits.cfg:52
 msgid "female^mechanical"
 msgstr "mehaničnost"
 
+#. [trait]: id=mechanical
+#: data/core/macros/traits.cfg:54
+msgid ""
+"\n"
+"\n"
+"Mechanical units generally have mechanical as their only trait. Since "
+"mechanical units don’t really have life, drain, poison, and plague have no "
+"effect upon them."
+msgstr ""
+"\n"
+"\n"
+"Mehaničke jedinice obično imaju mehaničnost kao jedinu osobinu. Pošto one "
+"nisu zbilja žive, crpljenje, otrov i kuga ne utiču na njih."
+
+#. [trait]: id=mechanical
+#: data/core/macros/traits.cfg:54
+msgid ""
+"<italic>text='Mechanical'</italic> units are immune to poison, drain, and "
+"plague."
+msgstr ""
+"<italic>text='Mehaničke'</italic> jedinice su imune na otrov, crpljenje i "
+"kugu."
+
 #. [trait]: id=elemental
-#: data/core/macros/traits.cfg:68
+#: data/core/macros/traits.cfg:77
 msgid "elemental"
 msgstr "elementarnost"
 
 #. [trait]: id=elemental
-#: data/core/macros/traits.cfg:69
+#: data/core/macros/traits.cfg:78
 msgid "female^elemental"
 msgstr "elementarnost"
 
+#. [trait]: id=elemental
+#: data/core/macros/traits.cfg:80
+msgid ""
+"\n"
+"\n"
+"Elemental units generally have elemental as their only trait. Since "
+"elemental units are energy-based beings, drain, poison, and plague have no "
+"effect upon them."
+msgstr ""
+"\n"
+"\n"
+"Elementarne jedinice obično imaju elementarnost kao svoju jedinu osobinu. "
+"Pošto su one bića energetskog sastava, crpljenje, otrov i kuga ne utiču na "
+"njih."
+
+#. [trait]: id=elemental
+#: data/core/macros/traits.cfg:80
+msgid ""
+"<italic>text='Elemental'</italic> units are immune to poison, drain, and "
+"plague."
+msgstr ""
+"<italic>text='Elementarne'</italic> jedinice su imune na otrov, crpljenje i "
+"kugu."
+
 #. [trait]: id=strong
-#: data/core/macros/traits.cfg:90
+#: data/core/macros/traits.cfg:102
 msgid "strong"
 msgstr "kršnost"
 
 #. [trait]: id=strong
-#: data/core/macros/traits.cfg:91
+#: data/core/macros/traits.cfg:103
 msgid "female^strong"
 msgstr "kršnost"
 
+#. [trait]: id=strong
+#: data/core/macros/traits.cfg:104
+msgid ""
+"\n"
+"\n"
+"While useful for any close-combat unit, strong is most effective for units "
+"who have a high number of swings such as the elvish fighter. Strong units "
+"can be very useful when a tiny bit of extra damage is all that is needed to "
+"turn a damaging stroke into a killing blow."
+msgstr ""
+"\n"
+"\n"
+"Iako korisna bilo kojoj jedinici koja se bori blisko, kršnost je "
+"najznačajnija jedinicama sa velikim brojem udara u napadu, kakvi su npr. "
+"vilin-borci. Kršne jedinice mogu biti vrlo korisne kada je samo još zrnce "
+"više štete potrebno da se oštećujući udar pretvori u završni."
+
+#. [trait]: id=strong
+#: data/core/macros/traits.cfg:104
+#, fuzzy
+#| msgid ""
+#| "<italic>text='Strong'</italic> units do 1 more damage for every "
+#| "successful strike in melee combat, and have 1 more HP."
+msgid ""
+"<italic>text='Strong'</italic> units do 1 more damage for every successful "
+"strike in melee combat, and have 1 additional hitpoint."
+msgstr ""
+"<italic>text='Kršne'</italic> jedinice čine 1 poen štete više za svaki "
+"uspješan udar u bliskoj borbi, i imaju 1 UP više."
+
 #. [trait]: id=dextrous
-#: data/core/macros/traits.cfg:108
+#: data/core/macros/traits.cfg:123
 msgid "dextrous"
 msgstr "spretnost"
 
 #. [trait]: id=dextrous
-#: data/core/macros/traits.cfg:109
+#: data/core/macros/traits.cfg:124
 msgid "female^dextrous"
 msgstr "spretnost"
 
+#. [trait]: id=dextrous
+#: data/core/macros/traits.cfg:125
+msgid ""
+"\n"
+"\n"
+"Dextrous is a trait possessed only by elves. The elven people are known for "
+"their uncanny grace, and their great facility with the bow. Some, however, "
+"are gifted with natural talent that exceeds their brethren. These elves "
+"inflict an additional point of damage with each arrow."
+msgstr ""
+"\n"
+"\n"
+"Spretnost je osobina koju posjeduju samo vilenjaci. Vilenjački narod je "
+"poznat po svojoj tajanstvenoj skladnosti i velikoj vještini u rukovanju "
+"lukom. Neki od njih, međutim, obdareni su talentom koji nadmašuje njihove "
+"sunarodnike. Takvi vilenjaci nanose dodatan poen štete svakom svojom "
+"strijelom."
+
+#. [trait]: id=dextrous
+#: data/core/macros/traits.cfg:125
+msgid ""
+"<italic>text='Dextrous'</italic> units do 1 more damage for every successful "
+"strike in ranged combat."
+msgstr ""
+"<italic>text='Spretne'</italic> jedinice čine 1 poen štete više pri svakom "
+"uspješnom udaru u odstupnoj borbi."
+
 #. [trait]: id=quick
-#: data/core/macros/traits.cfg:122
+#: data/core/macros/traits.cfg:140
 msgid "quick"
 msgstr "hitrost"
 
 #. [trait]: id=quick
-#: data/core/macros/traits.cfg:123
+#: data/core/macros/traits.cfg:141
 msgid "female^quick"
 msgstr "hitrost"
 
+#. [trait]: id=quick
+#: data/core/macros/traits.cfg:142
+msgid ""
+"\n"
+"\n"
+"Quick is the most noticeable trait, particularly in slower moving units such "
+"as trolls or heavy infantry. Units with the quick trait often have greatly "
+"increased mobility in rough terrain, which can be important to consider when "
+"deploying your forces. Also, quick units aren’t quite as tough as units "
+"without this trait and are subsequently less good at holding contested "
+"positions."
+msgstr ""
+"\n"
+"\n"
+"Hitrost je najuočljivija osobina, posebno kod sporijih jedinica kakve su "
+"trolovi i teška pješadija. Hitre jedinice često imaju značajno uvećanu "
+"pokretljivost na nezgodnom terenu, što može biti važno za razmatranje kada "
+"raspoređujete snage. Takođe, ove jedinice nisu tako robusne kao one bez "
+"hitrosti, i stoga su manje pogodne za držanje položajâ pod stalnim napadom."
+
+#. [trait]: id=quick
+#: data/core/macros/traits.cfg:142
+#, fuzzy
+#| msgid ""
+#| "<italic>text='Quick'</italic> units have 1 extra movement point, but 5% "
+#| "less HP than usual."
+msgid ""
+"<italic>text='Quick'</italic> units have 1 extra movement point, but 5% less "
+"hitpoints than usual."
+msgstr ""
+"<italic>text='Hitre'</italic> jedinice imaju 1 dodatan poen na kretanje, ali "
+"5% manje UP nego obično."
+
 #. [trait]: id=intelligent
-#: data/core/macros/traits.cfg:139
+#: data/core/macros/traits.cfg:160
 msgid "intelligent"
 msgstr "oštroumnost"
 
 #. [trait]: id=intelligent
-#: data/core/macros/traits.cfg:140
+#: data/core/macros/traits.cfg:161
 msgid "female^intelligent"
 msgstr "oštroumnost"
 
+#. [trait]: id=intelligent
+#: data/core/macros/traits.cfg:162
+msgid ""
+"\n"
+"\n"
+"<italic>text='Intelligent'</italic> units are very useful at the beginning "
+"of a campaign as they can advance to higher levels more quickly. Later in "
+"campaigns Intelligent is not quite as useful because the <italic>text='After "
+"Maximum Level Advancement'</italic> (AMLA) is not as significant a change as "
+"advancing a level. If you have many ‘maximum level’ units you may wish to "
+"recall units with more desirable traits."
+msgstr ""
+"\n"
+"\n"
+"<italic>text='Oštroumne'</italic> jedinice su vrlo korisne na početku "
+"pohoda, pošto brže mogu dostići više nivoe. Kasnije u toku pohoda "
+"oštroumnost nije tako korisna, pošto <italic>text='napredovanje po najvećem "
+"nivou'</italic> (NAPON) nije tako značajno kao napredovanje u nivou. Ako "
+"imate mnogo takvih jedinica najvišeg nivoa, možda je bolje da sazivate "
+"jedinice sa poželjnijim osobinama."
+
+#. [trait]: id=intelligent
+#: data/core/macros/traits.cfg:162
+msgid "Intelligent units require 20% less experience than usual to advance."
+msgstr ""
+"Oštroumnim jedinicama potrebno je 20% manje iskustva nego obično da bi "
+"napredovale."
+
 #. [trait]: id=resilient
-#: data/core/macros/traits.cfg:152
+#: data/core/macros/traits.cfg:176
 msgid "resilient"
 msgstr "žilavost"
 
 #. [trait]: id=resilient
-#: data/core/macros/traits.cfg:153
+#: data/core/macros/traits.cfg:177
 msgid "female^resilient"
 msgstr "žilavost"
 
+#. [trait]: id=resilient
+#: data/core/macros/traits.cfg:178
+msgid ""
+"\n"
+"\n"
+"Resilient units can be useful at all stages of a campaign, and this is a "
+"useful trait for all units. Resilient is often most helpful as a trait when "
+"it occurs in a unit that has some combination of low hitpoints, good "
+"defense, or high resistances. Resilient units are especially useful for "
+"holding strategic positions against opponents."
+msgstr ""
+"\n"
+"\n"
+"Žilave jedinice mogu biti korisne u svim etapama pohoda, i ova osobina je "
+"korisna za sve tipove jedinica. Žilavost je često od najveće pomoći "
+"jedinicama koje imaju neki splet niskih udarpoena, dobre odbrane, ili "
+"visokih otpornosti. Ovakve jedinice su posebno korisne za držanje strateških "
+"položaja van ruku protivnika."
+
+#. [trait]: id=resilient
+#: data/core/macros/traits.cfg:178
+#, fuzzy
+#| msgid ""
+#| "<italic>text='Resilient'</italic> units have 4 HP plus 1 HP per level "
+#| "more than usual."
+msgid ""
+"<italic>text='Resilient'</italic> units have an additional 4 hitpoints, and "
+"gain 1 more per level."
+msgstr ""
+"<italic>text='Žilave'</italic> jedinice imaju 4 UP plus 1 UP po nivou više "
+"nego obično."
+
 #. [trait]: id=healthy
-#: data/core/macros/traits.cfg:170
+#: data/core/macros/traits.cfg:197
 msgid "healthy"
 msgstr "zdravlje"
 
 #. [trait]: id=healthy
-#: data/core/macros/traits.cfg:171
+#: data/core/macros/traits.cfg:198
 msgid "female^healthy"
 msgstr "zdravlje"
 
 #. [trait]: id=healthy
-#: data/core/macros/traits.cfg:172
+#: data/core/macros/traits.cfg:199
 msgid "Always rest heals"
 msgstr "Uvijek se liječi na odmoru"
 
+#. [trait]: id=healthy
+#: data/core/macros/traits.cfg:200
+msgid ""
+"\n"
+"\n"
+"<italic>text='Healthy'</italic> units have 1 additional hitpoint, and gain 1 "
+"more per level. They will also heal 2 hitpoints each turn, regardless of "
+"whether they engaged in combat the turn before."
+msgstr ""
+
+#. [trait]: id=healthy
+#: data/core/macros/traits.cfg:200
+#, fuzzy
+#| msgid ""
+#| "Renowned for their vitality, some dwarves are sturdier than others and "
+#| "can rest even when travelling."
+msgid ""
+"Renowned for their vitality, some dwarves are sturdier than others and can "
+"rest even when traveling."
+msgstr ""
+"Čuveni po svojoj krepkosti, neki patuljci su izdržljiviji od drugih i mogu "
+"se odmarati čak i dok putuju."
+
 #. [trait]: id=fearless
-#: data/core/macros/traits.cfg:192 data/core/macros/traits.cfg:208
+#: data/core/macros/traits.cfg:222 data/core/macros/traits.cfg:239
 msgid "fearless"
 msgstr "neustrašivost"
 
 #. [trait]: id=fearless
-#: data/core/macros/traits.cfg:193 data/core/macros/traits.cfg:209
+#: data/core/macros/traits.cfg:223 data/core/macros/traits.cfg:240
 msgid "female^fearless"
 msgstr "neustrašivost"
 
 #. [trait]: id=fearless
-#: data/core/macros/traits.cfg:194 data/core/macros/traits.cfg:210
+#: data/core/macros/traits.cfg:224 data/core/macros/traits.cfg:241
 msgid "Fights normally during unfavorable times of day/night"
 msgstr "u boju bez zaostatka u nepovoljna doba dana/noći"
 
+#. [trait]: id=fearless
+#: data/core/macros/traits.cfg:225 data/core/macros/traits.cfg:242
+msgid "Aversion to light and dark holds no sway over these brave individuals."
+msgstr ""
+"Nesklonost bilo svjetlu bilo tami, nema uticaja na ove hrabre pojedince."
+
 #. [trait]: id=feral
-#: data/core/macros/traits.cfg:223
+#: data/core/macros/traits.cfg:255
 msgid "feral"
 msgstr "neukroćenost"
 
 #. [trait]: id=feral
-#: data/core/macros/traits.cfg:224
+#: data/core/macros/traits.cfg:256
 msgid "female^feral"
 msgstr "neukroćenost"
 
 #. [trait]: id=feral
-#: data/core/macros/traits.cfg:225
+#: data/core/macros/traits.cfg:257
 msgid "Receives only 50% defense in land-based villages"
 msgstr "samo 50% odbrane u kopnenim selima"
 
+#. [trait]: id=feral
+#: data/core/macros/traits.cfg:258
+msgid ""
+"Dwellings of sentient beings are not easily used for cover by feral "
+"creatures of low intelligence. As a result, <italic>text='feral'</italic> "
+"units receive a maximum of 50% defense in any land-based village regardless "
+"of base terrain."
+msgstr ""
+"Nastambe svesnih bića nisu prigodno sklonište divljim stvorenjima niske "
+"inteligencije. Zbog toga, <italic>text='neukroćene'</italic> jedinice "
+"dobijaju najviše 50% odbrane u svakom kopnenom selu, bez obzira na podložni "
+"teren."
+
 #. [trait]: id=weak
-#: data/core/macros/traits.cfg:241
+#: data/core/macros/traits.cfg:274
 msgid "weak"
 msgstr "nejakost"
 
 #. [trait]: id=weak
-#: data/core/macros/traits.cfg:242
+#: data/core/macros/traits.cfg:275
 msgid "female^weak"
 msgstr "nejakost"
 
+#. [trait]: id=weak
+#: data/core/macros/traits.cfg:276
+#, fuzzy
+#| msgid ""
+#| "Units with trait <italic>text='weak'</italic> get a −1 increment in "
+#| "hitpoints and melee damage."
+msgid ""
+"Units with the <italic>text='weak'</italic> trait receive a 1 point decrease "
+"in hitpoints and melee damage."
+msgstr ""
+"<italic>text='Krhke'</italic> jedinice trpe −1 na udarpoene i štetu u "
+"bliskoj borbi."
+
 #. [trait]: id=slow
-#: data/core/macros/traits.cfg:259
+#: data/core/macros/traits.cfg:293
 msgid "slow"
 msgstr "tromost"
 
 #. [trait]: id=slow
-#: data/core/macros/traits.cfg:260
+#: data/core/macros/traits.cfg:294
 msgid "female^slow"
 msgstr "tromost"
 
+#. [trait]: id=slow
+#: data/core/macros/traits.cfg:295
+msgid ""
+"\n"
+"\n"
+"Thick-bodied and clumsy, slow individuals of goblins and other species take "
+"a movement penalty but are compensated for it with a slight increase in "
+"endurance."
+msgstr ""
+"\n"
+"\n"
+"Zamašne tjelesine i nespretni, tromiji među goblinima i drugim rasama trpe "
+"na pokretnosti, ali nadomiještaju to ponešto uvećanom izdržljivošću."
+
+#. [trait]: id=slow
+#: data/core/macros/traits.cfg:295
+#, fuzzy
+#| msgid ""
+#| "<italic>text='Slow'</italic> units have −1 movement but 5% more hitpoints."
+msgid ""
+"<italic>text='Slow'</italic> units have 1 less movement point but 5% more "
+"hitpoints."
+msgstr ""
+"<italic>text='Trome'</italic> jedinice imaju −1 na kretanje, ali 5% više "
+"udarpoena."
+
 #. [trait]: id=dim
-#: data/core/macros/traits.cfg:276
+#: data/core/macros/traits.cfg:313
 msgid "dim"
 msgstr "priglupost"
 
 #. [trait]: id=dim
-#: data/core/macros/traits.cfg:277
+#: data/core/macros/traits.cfg:314
 msgid "female^dim"
 msgstr "priglupost"
 
+#. [trait]: id=dim
+#: data/core/macros/traits.cfg:315
+msgid ""
+"\n"
+"\n"
+"Dim is a trait all too common in goblins and other lesser species. There are "
+"reasons these species are lesser, and this is one of them."
+msgstr ""
+"\n"
+"\n"
+"Ograničenosti je na pretek među goblinima i drugim nižim rasama. Ove se rase "
+"ne zovu niže bez razloga, a ovo je jedan od njih."
+
+#. [trait]: id=dim
+#: data/core/macros/traits.cfg:315
+msgid ""
+"Units with trait <italic>text='dim'</italic> suffer a 20% increase in "
+"experience required to advance."
+msgstr ""
+"<italic>text='Priglupe'</italic> jedinice trpe 20% uvećanja neophodnog "
+"iskustva da bi isprednjačile."
+
 #. [trait]: id=aged
-#: data/core/macros/traits.cfg:289
+#: data/core/macros/traits.cfg:329
 msgid "aged"
 msgstr "starost"
 
 #. [trait]: id=aged
-#: data/core/macros/traits.cfg:290
+#: data/core/macros/traits.cfg:330
 msgid "female^aged"
 msgstr "starost"
+
+#. [trait]: id=aged
+#: data/core/macros/traits.cfg:331
+#, fuzzy
+#| msgid ""
+#| "Units with trait <italic>text='aged'</italic> get a −8 increment in "
+#| "hitpoints and a −1 increment in movement and melee damage."
+msgid ""
+"Units with the <italic>text='aged'</italic> trait have 8 hitpoints less and "
+"suffer from a 1 point decrease in movement and melee damage."
+msgstr ""
+"<italic>text='Ostarele'</italic> jedinice trpe −8 na udarpoene i −1 na "
+"kretanje i štetu u bliskoj borbi."
 
 #. [race]: id=bats
 #: data/core/units.cfg:43
@@ -6595,6 +6543,54 @@ msgstr "Pomoć „Boja za Vesnot“"
 #: src/help/help.cpp:241
 msgid "Parse error when parsing help text: "
 msgstr "Greška pri raščlanjivanju teksta pomoći: "
+
+#~ msgid "Intelligent"
+#~ msgstr "oštroumnost"
+
+#~ msgid "Quick"
+#~ msgstr "hitrost"
+
+#~ msgid "Resilient"
+#~ msgstr "žilavost"
+
+#~ msgid "Strong"
+#~ msgstr "kršnost"
+
+#~ msgid "Fearless"
+#~ msgstr "neustrašivost"
+
+#~ msgid "Feral"
+#~ msgstr "neukroćenost"
+
+#~ msgid "Loyal"
+#~ msgstr "odanost"
+
+#~ msgid "trait^Undead"
+#~ msgstr "nemrtvost"
+
+#~ msgid "trait^Mechanical"
+#~ msgstr "mehaničnost"
+
+#~ msgid "trait^Elemental"
+#~ msgstr "elementarnost"
+
+#~ msgid "Dextrous"
+#~ msgstr "spretnost"
+
+#~ msgid "Healthy"
+#~ msgstr "zdravlje"
+
+#~ msgid "Dim"
+#~ msgstr "priglupost"
+
+#~ msgid "Slow"
+#~ msgstr "tromost"
+
+#~ msgid "Weak"
+#~ msgstr "krhkost"
+
+#~ msgid "trait^Aged"
+#~ msgstr "starost"
 
 #, fuzzy
 #~| msgid ""

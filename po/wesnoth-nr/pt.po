@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12 (wesnoth-nr)\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-07-24 20:29 UTC\n"
+"POT-Creation-Date: 2016-11-05 23:31 UTC\n"
 "PO-Revision-Date: 2014-10-28 12:14-0000\n"
 "Last-Translator: trewe <sjrs456@yandex.com>\n"
 "Language-Team: wesn-pt-trans <wesn-pt-trans-users@lists.sourceforge.net>\n"
@@ -823,13 +823,13 @@ msgstr ""
 #
 #. [side]: type=Troll, id=Franik
 #. [side]: type=Troll, id=Henie
+#. [side]: type=Troll, id=Knash
+#. [side]: type=Troll, id=Krog
+#. [side]: type=Troll Warrior, id=Thung
 #. [side]: type=Troll Warrior, id=Tor
 #. [side]: type=Troll Warrior, id=Bor
 #. [side]: type=Troll Warrior, id=Oof
 #. [side]: type=Troll Warrior, id=Glu
-#. [side]: type=Troll, id=Knash
-#. [side]: type=Troll, id=Krog
-#. [side]: type=Troll Warrior, id=Thung
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:71
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:85
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:141
@@ -867,6 +867,9 @@ msgid "Hamel"
 msgstr "Hamel"
 
 #
+#. [side]: type=Death Knight, id=Mal Barath
+#. [side]: type=Death Knight, id=Delzath
+#. [side]: type=Death Knight, id=Mal Tath
 #. [side]: type=Ancient Lich, id=Malifor
 #. [side]: type=Draug, id=Thorin
 #. [side]: type=Draug, id=Herlin
@@ -877,9 +880,6 @@ msgstr "Hamel"
 #. [side]: type=Death Knight, id=Author
 #. [side]: type=Death Knight, id=Boblin
 #. [side]: type=Death Knight, id=Antrasis
-#. [side]: type=Death Knight, id=Mal Barath
-#. [side]: type=Death Knight, id=Delzath
-#. [side]: type=Death Knight, id=Mal Tath
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:126
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:156
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:173
@@ -1304,9 +1304,9 @@ msgstr ""
 "tenham uma conversa como o nosso chefe, o Lorde Hamel."
 
 #
+#. [message]: speaker=Tallin
 #. [message]: speaker=Father Morvin
 #. [message]: speaker=Ro'Arthian
-#. [message]: speaker=Tallin
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:648
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1306
@@ -1877,8 +1877,8 @@ msgstr "Quando finalmente chegaram às minas, não foram desapontados."
 
 #
 #. [side]
-#. [side]: type=Drake Burner, id=Krash
 #. [side]: type=Elvish Avenger, id=Sisal
+#. [side]: type=Drake Burner, id=Krash
 #. [side]: type=Lieutenant, id=Tallin
 #. [side]: type=Dwarvish Lord, id=Hamel
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:29
@@ -4584,8 +4584,8 @@ msgstr ""
 
 #
 #. [side]
-#. [side]: type=Dwarvish Lord, id=Stalrag
 #. [side]: type=Great Mage, id=Camerin
+#. [side]: type=Dwarvish Lord, id=Stalrag
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:43
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:130
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:148
@@ -4600,12 +4600,12 @@ msgstr "Aliança do Norte"
 #. [side]: type=Orcish Warlord, id=Drung
 #. [side]: type=Orcish Warlord, id=Poul
 #. [side]: type=Orcish Warlord, id=Atul
+#. [side]: type=Orcish Warlord, id=Ha'Tuil
 #. [side]: type=Troll Warrior, id=Gore
 #. [side]: type=Orcish Warlord, id=Carron
 #. [side]: type=Orcish Warlord, id=Rash
 #. [side]: type=Orcish Warlord, id=Al'Mar
 #. [side]: type=Orcish Warlord, id=Ha'Tang
-#. [side]: type=Orcish Warlord, id=Ha'Tuil
 #. [side]: type=Orcish Sovereign, id=Rakshas
 #. [side]: type=Orcish Warlord, id=Ar'Muff
 #. [side]: type=Orcish Warlord, id=Calter
@@ -5483,8 +5483,8 @@ msgid "(<i>Giggle</i>) Something like that."
 msgstr "(<i>Risada</i>) Algo assim."
 
 #
-#. [story]
 #. [message]: speaker=Tallin
+#. [story]
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:91
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:170
 msgid "(<i>Rolls eyes</i>)"
@@ -5582,8 +5582,8 @@ msgid "And so Tallin and his party set out to secure the help of the mages."
 msgstr "E assim, Tallin e o seu grupo partiram em busca da ajuda dos magos."
 
 #
-#. [side]: type=Dwarvish Lord, id=Stalrag
 #. [unit]: type=Dwarvish Lord, id=Stalrag
+#. [side]: type=Dwarvish Lord, id=Stalrag
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:153
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:107
 #: data/campaigns/Northern_Rebirth/utils/utils.cfg:79
@@ -5596,8 +5596,8 @@ msgid "Liches"
 msgstr ""
 
 #
-#. [side]: type=Ancient Lich, id=Ro'Arthian
 #. [unit]: type=Ancient Lich, id=Ro'Arthian
+#. [side]: type=Ancient Lich, id=Ro'Arthian
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:218
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:121
 msgid "Ro’Arthian"

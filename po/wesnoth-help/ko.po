@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-07-24 23:26+0300\n"
+"POT-Creation-Date: 2016-11-06 02:27+0300\n"
 "PO-Revision-Date: 2013-10-25 16:24+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -19,20 +19,22 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. [time]: id=underground
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:459
-#: data/core/macros/schedules.cfg:99
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:498
+#: data/core/macros/schedules.cfg:109
 msgid "Underground"
 msgstr "지하"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:651
-#: data/core/macros/abilities.cfg:348
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:657
+#: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:657
+#: data/core/macros/abilities.cfg:346
 msgid "berserk"
 msgstr "광전사"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:653
-#: data/core/macros/abilities.cfg:349
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:659
+#: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:659
+#: data/core/macros/abilities.cfg:347
 msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
@@ -41,14 +43,16 @@ msgstr ""
 "때까지 강제로 전투를 계속합니다."
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:662
-#: data/core/macros/abilities.cfg:435
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:668
+#: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:668
+#: data/core/macros/abilities.cfg:433
 msgid "magical"
 msgstr "마법"
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:664
-#: data/core/macros/abilities.cfg:436
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:670
+#: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:670
+#: data/core/macros/abilities.cfg:434
 msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the unit being attacked."
@@ -57,14 +61,16 @@ msgstr ""
 "다."
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:673
-#: data/core/macros/abilities.cfg:480
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:679
+#: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:679
+#: data/core/macros/abilities.cfg:478
 msgid "first strike"
 msgstr "선공"
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:675
-#: data/core/macros/abilities.cfg:481
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:681
+#: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:681
+#: data/core/macros/abilities.cfg:479
 msgid ""
 "This unit always strikes first with this attack, even if they are defending."
 msgstr ""
@@ -930,66 +936,66 @@ msgstr "시간대"
 
 #. [section]: id=introduction
 #. [topic]: id=..introduction
-#: data/core/help.cfg:17 data/core/help.cfg:97
+#: data/core/help.cfg:17 data/core/help.cfg:96
 msgid "Introduction"
 msgstr "소개"
 
 #. [section]: id=gameplay
 #. [topic]: id=..gameplay
-#: data/core/help.cfg:23 data/core/help.cfg:169
+#: data/core/help.cfg:23 data/core/help.cfg:168
 msgid "Gameplay"
 msgstr "게임 플레이"
 
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:29 data/core/help.cfg:398
+#: data/core/help.cfg:29 data/core/help.cfg:397
 msgid "Traits"
 msgstr "특성"
 
 #. [section]: id=units
 #. [topic]: id=..units
-#: data/core/help.cfg:38 data/core/help.cfg:120
+#: data/core/help.cfg:37 data/core/help.cfg:119
 msgid "Units"
 msgstr "유닛"
 
 #. [section]: id=abilities_section
 #. [topic]: id=..abilities_section
-#: data/core/help.cfg:47 data/core/help.cfg:140
+#: data/core/help.cfg:46 data/core/help.cfg:139
 msgid "Abilities"
 msgstr "능력"
 
 #. [section]: id=weapon_specials
 #. [topic]: id=..weapon_specials
-#: data/core/help.cfg:55 data/core/help.cfg:149
+#: data/core/help.cfg:54 data/core/help.cfg:148
 msgid "Weapon Specials"
 msgstr "특수 무기"
 
 #. [section]: id=eras_section
 #. [topic]: id=..eras_section
-#: data/core/help.cfg:63 data/core/help.cfg:129
+#: data/core/help.cfg:62 data/core/help.cfg:128
 msgid "Eras"
 msgstr ""
 
 #. [section]: id=terrains_section
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:72 data/core/help.cfg:535
+#: data/core/help.cfg:71 data/core/help.cfg:412
 msgid "Terrains"
 msgstr "지형"
 
 #. [section]: id=addons
 #. [topic]: id=..addons
-#: data/core/help.cfg:80 data/core/help.cfg:588
+#: data/core/help.cfg:79 data/core/help.cfg:465
 msgid "Add-ons"
 msgstr ""
 
 #. [section]: id=commands
 #. [topic]: id=..commands
-#: data/core/help.cfg:86 data/core/help.cfg:655
+#: data/core/help.cfg:85 data/core/help.cfg:532
 msgid "Commands"
 msgstr "명령어"
 
 #. [topic]: id=..introduction
-#: data/core/help.cfg:98
+#: data/core/help.cfg:97
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -1024,12 +1030,12 @@ msgstr ""
 "룰들이 전략의 풍부함을 가져오고, 배우기는 쉬워도 통달하기는 어렵게 만듭니다."
 
 #. [topic]: id=about_game
-#: data/core/help.cfg:108
+#: data/core/help.cfg:107
 msgid "About the Game"
 msgstr "본 게임에 대해서"
 
 #. [topic]: id=about_game
-#: data/core/help.cfg:109
+#: data/core/help.cfg:108
 msgid ""
 "The game takes place on a hex-based game field, where your units battle "
 "against those controlled by the computer, friends who each take turns on the "
@@ -1052,7 +1058,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..units
-#: data/core/help.cfg:121
+#: data/core/help.cfg:120
 msgid ""
 "This section will list all the units you discover as you explore the world "
 "of Wesnoth. When you see a new unit during a campaign or multiplayer "
@@ -1063,7 +1069,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..eras_section
-#: data/core/help.cfg:130
+#: data/core/help.cfg:129
 msgid ""
 "A faction is a collection of units and leaders. Factions are assigned to "
 "sides in multiplayer games.\n"
@@ -1071,7 +1077,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..eras_section
-#: data/core/help.cfg:132
+#: data/core/help.cfg:131
 msgid ""
 "An era is a collection of factions, intended to be played against one "
 "another. Besides the mainline eras that come with the game, many user-made "
@@ -1080,7 +1086,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..abilities_section
-#: data/core/help.cfg:141
+#: data/core/help.cfg:140
 msgid ""
 "Certain units have abilities that either directly affect other units or have "
 "an impact on how the unit interacts with other units. These abilities will "
@@ -1096,7 +1102,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..weapon_specials
-#: data/core/help.cfg:150
+#: data/core/help.cfg:149
 msgid ""
 "Some weapons have special features that increase the effectiveness of "
 "attacking with them. When you see a new weapon special during a campaign or "
@@ -1107,12 +1113,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=.unknown_unit
-#: data/core/help.cfg:159
+#: data/core/help.cfg:158
 msgid "Unknown Unit"
 msgstr "미지의 유닛"
 
 #. [topic]: id=.unknown_unit
-#: data/core/help.cfg:160
+#: data/core/help.cfg:159
 msgid ""
 "\n"
 "\n"
@@ -1125,7 +1131,7 @@ msgstr ""
 "만 이것의 설명을 볼 수 있습니다."
 
 #. [topic]: id=..gameplay
-#: data/core/help.cfg:170
+#: data/core/help.cfg:169
 msgid ""
 "Wesnoth is comprised of a series of battles, called "
 "<italic>text='scenarios'</italic>, that pit your troops against the troops "
@@ -1148,7 +1154,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..gameplay
-#: data/core/help.cfg:177
+#: data/core/help.cfg:176
 #, fuzzy
 #| msgid "<header>text='Units of this race'</header>"
 msgid ""
@@ -1159,7 +1165,7 @@ msgid ""
 msgstr "<header>text='이 종족 소속 유닛'</header>"
 
 #. [topic]: id=..gameplay
-#: data/core/help.cfg:177
+#: data/core/help.cfg:176
 #, fuzzy
 #| msgid ""
 #| "While playing, keep in mind that if you mouse-over many items in the "
@@ -1180,12 +1186,12 @@ msgstr ""
 "을 때 특히 유용합니다."
 
 #. [topic]: id=victory_and_defeat
-#: data/core/help.cfg:189
+#: data/core/help.cfg:188
 msgid "Victory and Defeat"
 msgstr "승리와 패배"
 
 #. [topic]: id=victory_and_defeat
-#: data/core/help.cfg:190
+#: data/core/help.cfg:189
 msgid ""
 "\n"
 "\n"
@@ -1202,7 +1208,7 @@ msgstr ""
 "습니다.(멀티플레이시)"
 
 #. [topic]: id=victory_and_defeat
-#: data/core/help.cfg:190
+#: data/core/help.cfg:189
 #, fuzzy
 #| msgid ""
 #| "Pay careful attention to the <bold>text='Objectives'</bold> pop-up box at "
@@ -1228,12 +1234,12 @@ msgstr ""
 "포위망 속에서 견뎌내기 같은 것 - 이 붙어 있을 수도 있습니다."
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:199
+#: data/core/help.cfg:198
 msgid "Recruiting and Recalling"
 msgstr "소집과 재소집"
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:200
+#: data/core/help.cfg:199
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -1259,7 +1265,7 @@ msgstr ""
 "자신이 가진 자금의 한도를 넘어서 소집할 수는 없습니다."
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:200
+#: data/core/help.cfg:199
 #, fuzzy
 #| msgid ""
 #| "Each side begins with one leader in their keep. At the start of any "
@@ -1297,7 +1303,7 @@ msgstr ""
 "집을 합니다."
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:202
+#: data/core/help.cfg:201
 msgid ""
 "\n"
 "\n"
@@ -1310,7 +1316,7 @@ msgstr ""
 "을 받는데, 이것은 기본 능력치에 변화를 줍니다."
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:204
+#: data/core/help.cfg:203
 msgid ""
 "\n"
 "\n"
@@ -1325,7 +1331,7 @@ msgstr ""
 "서 살아남은 모든 유닛의 목록을 보여줍니다."
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:206
+#: data/core/help.cfg:205
 msgid ""
 "\n"
 "\n"
@@ -1340,12 +1346,12 @@ msgstr ""
 "편을 보세요."
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:215
+#: data/core/help.cfg:214
 msgid "Income and Upkeep"
 msgstr "수입과 유지비"
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:216
+#: data/core/help.cfg:215
 msgid ""
 "\n"
 "\n"
@@ -1365,7 +1371,7 @@ msgstr ""
 "가 이 수입에서 빠지게 되는데, 아래에서 상세히 설명합니다."
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:216
+#: data/core/help.cfg:215
 msgid ""
 "In Wesnoth, it is not enough simply to recruit units and fight. You must "
 "watch your gold as well, especially in campaigns, where you can carry extra "
@@ -1379,7 +1385,7 @@ msgstr ""
 "italic> 과 <italic>text='유지비'</italic> 가 있습니다."
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:218
+#: data/core/help.cfg:217
 msgid ""
 "\n"
 "\n"
@@ -1400,7 +1406,7 @@ msgstr ""
 "게 됩니다."
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:220
+#: data/core/help.cfg:219
 msgid ""
 "\n"
 "\n"
@@ -1414,7 +1420,7 @@ msgstr ""
 "고 있으면 당신의 최종 수입은 매 턴 10 골드가 됩니다."
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:222
+#: data/core/help.cfg:221
 msgid ""
 "\n"
 "\n"
@@ -1435,12 +1441,12 @@ msgstr ""
 "입니다."
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:231
+#: data/core/help.cfg:230
 msgid "Hitpoints and Experience"
 msgstr "체력과 경험치"
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:232
+#: data/core/help.cfg:231
 msgid ""
 "Each unit has a certain number of <italic>text='hitpoints'</italic> (HP). If "
 "the hitpoints of a unit drop below 1, the unit dies. Each unit also has a "
@@ -1454,7 +1460,7 @@ msgstr ""
 "된 유닛은 0 XP로 시작하고, 적과 싸우면서 경험을 쌓아갑니다."
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:236
+#: data/core/help.cfg:235
 msgid ""
 "The hitpoints and experience points are both indicated in the status pane "
 "using two numbers (the current value and the maximum value the unit can "
@@ -1464,7 +1470,7 @@ msgstr ""
 "과 유닛이 가질 수 있는 최대 수치)로 표시되어 있습니다."
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:238
+#: data/core/help.cfg:237
 #, fuzzy
 #| msgid ""
 #| "The hitpoints are also indicated by an energy bar next to each unit, "
@@ -1483,14 +1489,14 @@ msgstr ""
 "하얀색으로 변해갑니다."
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:245
+#: data/core/help.cfg:244
 #, fuzzy
 #| msgid "Advances to: "
 msgid "Advancement"
 msgstr "해당 유닛으로 승급:"
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:246
+#: data/core/help.cfg:245
 msgid ""
 "\n"
 "\n"
@@ -1506,7 +1512,7 @@ msgstr ""
 "정에서 완전히 회복됩니다. 어떤 경우에는 승급 선택지가 나타나기도 합니다."
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:246
+#: data/core/help.cfg:245
 msgid ""
 "If both units survive a combat, they gain a number of experience points "
 "equal to the level of the unit they’re fighting. If a unit kills another in "
@@ -1519,7 +1525,7 @@ msgstr ""
 "8, 2 레벨은 16, 3 레벨은 24, 등등."
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:248
+#: data/core/help.cfg:247
 msgid ""
 "\n"
 "\n"
@@ -1547,12 +1553,12 @@ msgstr ""
 "벨 유닛을 승급시키는 편이 좀더 유용합니다."
 
 #. [topic]: id=movement
-#: data/core/help.cfg:257
+#: data/core/help.cfg:256
 msgid "Movement"
 msgstr "이동"
 
 #. [topic]: id=movement
-#: data/core/help.cfg:258
+#: data/core/help.cfg:257
 msgid ""
 "\n"
 "\n"
@@ -1578,7 +1584,7 @@ msgstr ""
 "얼마나 많은 이동력을 소모하는지를 알 수 있습니다."
 
 #. [topic]: id=movement
-#: data/core/help.cfg:258
+#: data/core/help.cfg:257
 msgid ""
 "Movement in <italic>text='Battle for Wesnoth'</italic> is simple. Click on "
 "the unit you wish to move to select it, then click on the hex you wish to "
@@ -1606,7 +1612,7 @@ msgstr ""
 "을 점령) 또한 이동력을 다 소모해버리지만, 공격은 할 수 있습니다."
 
 #. [topic]: id=movement
-#: data/core/help.cfg:260
+#: data/core/help.cfg:259
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -1638,7 +1644,7 @@ msgstr ""
 "게 쓸 수 있을까를 알아내는 것은 Wesnoth에서 중요한 부분입니다.."
 
 #. [topic]: id=movement
-#: data/core/help.cfg:262
+#: data/core/help.cfg:261
 msgid ""
 "\n"
 "\n"
@@ -1653,12 +1659,12 @@ msgstr ""
 "때 적이 이동가능한 영역을 보여줍니다."
 
 #. [topic]: id=shroud_and_fog
-#: data/core/help.cfg:271
+#: data/core/help.cfg:270
 msgid "Shroud and Fog of War"
 msgstr "장막과 안개"
 
 #. [topic]: id=shroud_and_fog
-#: data/core/help.cfg:272
+#: data/core/help.cfg:271
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
 "mechanisms that can be used separately or together. The "
@@ -1700,12 +1706,12 @@ msgstr ""
 "하게 함으로써 행동을 되돌릴 기회를 남겨줍니다."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:281
+#: data/core/help.cfg:280
 msgid "Combat"
 msgstr "전투"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:282
+#: data/core/help.cfg:281
 msgid ""
 "\n"
 "\n"
@@ -1716,7 +1722,7 @@ msgstr ""
 "<header>text='공격 순서와 타격 회수'</header>"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:282
+#: data/core/help.cfg:281
 msgid ""
 "Combat in <italic>text='Battle for Wesnoth'</italic> always takes place "
 "between units in adjacent hexes. Click on your unit, and click on the enemy "
@@ -1740,7 +1746,18 @@ msgstr ""
 "<italic>text='원격형'</italic>입니다."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:284
+#: data/core/help.cfg:283
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "The attacker gets the first strike, then the defender retaliates. Each "
+#| "strike either hits, doing a given amount of damage, or misses, doing no "
+#| "damage at all. Strikes alternate until each unit has used up all of its "
+#| "strikes. The number of strikes a unit has varies; for instance, an elvish "
+#| "fighter with a 5–4 attack may strike 4 times, each successful strike "
+#| "dealing 5 damage, while an orcish grunt with a 9–2 attack can only strike "
+#| "twice (but at 9 damage for each hit)."
 msgid ""
 "\n"
 "\n"
@@ -1748,8 +1765,8 @@ msgid ""
 "strike either hits, doing a given amount of damage, or misses, doing no "
 "damage at all. Strikes alternate until each unit has used up all of its "
 "strikes. The number of strikes a unit has varies; for instance, an elvish "
-"fighter with a 5–4 attack may strike 4 times, each successful strike dealing "
-"5 damage, while an orcish grunt with a 9–2 attack can only strike twice (but "
+"fighter with a 5×4 attack may strike 4 times, each successful strike dealing "
+"5 damage, while an orcish grunt with a 9×2 attack can only strike twice (but "
 "at 9 damage for each hit)."
 msgstr ""
 "\n"
@@ -1762,7 +1779,7 @@ msgstr ""
 "를 줍니다)."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:286
+#: data/core/help.cfg:285
 msgid ""
 "\n"
 "\n"
@@ -1773,7 +1790,7 @@ msgstr ""
 "<header>text='명중률'</header>"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:288
+#: data/core/help.cfg:287
 msgid ""
 "\n"
 "\n"
@@ -1796,7 +1813,7 @@ msgstr ""
 "있습니다."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:290
+#: data/core/help.cfg:289
 msgid ""
 "\n"
 "\n"
@@ -1814,7 +1831,7 @@ msgstr ""
 "지형에 관계없이 공격시에 최소 60%의 명중률을 보장받습니다."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:292
+#: data/core/help.cfg:291
 msgid ""
 "\n"
 "\n"
@@ -1825,12 +1842,23 @@ msgstr ""
 "<header>text=데미지</header>"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:294
+#: data/core/help.cfg:293
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "Each strike which hits causes a base amount of damage depending on the "
+#| "attack type. For instance, an elvish fighter with a 5–4 attack does 5 "
+#| "base damage. This is usually modified by two things: "
+#| "<ref>dst='damage_types_and_resistance' text='resistance'</ref> and "
+#| "<ref>dst='time_of_day' text='time of day'</ref>. To see how base damage "
+#| "is modified by the circumstances, select <bold>text='Damage "
+#| "Calculations'</bold> in the attack selection menu."
 msgid ""
 "\n"
 "\n"
 "Each strike which hits causes a base amount of damage depending on the "
-"attack type. For instance, an elvish fighter with a 5–4 attack does 5 base "
+"attack type. For instance, an elvish fighter with a 5×4 attack does 5 base "
 "damage. This is usually modified by two things: "
 "<ref>dst='damage_types_and_resistance' text='resistance'</ref> and "
 "<ref>dst='time_of_day' text='time of day'</ref>. To see how base damage is "
@@ -1847,7 +1875,7 @@ msgstr ""
 "에서 <bold>text='데미지 계산'</bold> 버튼을 클릭하세요."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:296
+#: data/core/help.cfg:295
 msgid ""
 "\n"
 "\n"
@@ -1864,12 +1892,12 @@ msgstr ""
 "을 가하면 공격자와 방어자가 서로에게 가하는 데미지가 모두 2배가 됩니다."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:304
+#: data/core/help.cfg:303
 msgid "Damage Types and Resistance"
 msgstr "피해 형태와 내성"
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:305
+#: data/core/help.cfg:304
 msgid ""
 "\n"
 "\n"
@@ -1888,7 +1916,7 @@ msgstr ""
 "는 피해가 100% 증가합니다."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:305
+#: data/core/help.cfg:304
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
 "attacks: <italic>text='blade, pierce, and impact damage'</italic>. "
@@ -1903,7 +1931,7 @@ msgstr ""
 "의 피해 정도를 증감시키는 내성을 가지고 있습니다."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:307
+#: data/core/help.cfg:306
 msgid ""
 "\n"
 "\n"
@@ -1917,7 +1945,7 @@ msgstr ""
 "는 약하며, 신령 피해에는 매우 취약합니다."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:309
+#: data/core/help.cfg:308
 msgid ""
 "\n"
 "\n"
@@ -1931,12 +1959,12 @@ msgstr ""
 "가 100%의 내성을 갖고 있더라도 마찬가지입니다."
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:317
+#: data/core/help.cfg:316
 msgid "Orbs"
 msgstr "구슬"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:318
+#: data/core/help.cfg:317
 msgid ""
 "On top of the energy bar shown next to each unit of yours is an orb. For "
 "units you control, this orb is:"
@@ -1945,17 +1973,17 @@ msgstr ""
 "닛들에게 이 구슬이 의미하는 바는:"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:320
+#: data/core/help.cfg:319
 msgid " green if it hasn’t moved this turn,"
 msgstr " 이번 턴에 움직이지 않았으면 초록색입니다."
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:321
+#: data/core/help.cfg:320
 msgid " yellow if it has moved, but could still move further or attack, or"
 msgstr " 움직였지만 더 갈 수 있거나 공격할 수 있으면 노란색이고,"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:322
+#: data/core/help.cfg:321
 #, fuzzy
 #| msgid ""
 #| " red if it can no longer move or attack, or the user ended the unit’s "
@@ -1967,24 +1995,24 @@ msgstr ""
 "입니다."
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:323
+#: data/core/help.cfg:322
 msgid " blue if the unit is an ally you do not control."
 msgstr " 만약 구슬이 파란색이면 당신이 조작할 수 없는 동맹 유닛입니다."
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:324
+#: data/core/help.cfg:323
 #, fuzzy
 #| msgid " Enemy units have no orb on top of their energy bar."
 msgid " Enemy units have no orb on top of their energy bar."
 msgstr " 적 유닛에게는 체력 바 위에 구슬이 없습니다."
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:331
+#: data/core/help.cfg:330
 msgid "Time of Day"
 msgstr "시간대"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:332
+#: data/core/help.cfg:331
 #, fuzzy
 #| msgid ""
 #| "The time of day affects the damage of certain units as follows:\n"
@@ -2010,7 +2038,7 @@ msgstr ""
 " Liminal units get −25% damage during both night and daytime."
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:337
+#: data/core/help.cfg:336
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2034,21 +2062,21 @@ msgstr ""
 #. [time]: id=dawn
 #. [time]: id=dawn_hour
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:341 data/core/macros/schedules.cfg:6
-#: data/core/macros/schedules.cfg:265 data/test/maps/pathfind_1.cfg:64
+#: data/core/help.cfg:340 data/core/macros/schedules.cfg:14
+#: data/core/macros/schedules.cfg:275 data/test/maps/pathfind_1.cfg:64
 msgid "Dawn"
 msgstr "새벽"
 
 #. [time]: id=morning
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:342 data/core/macros/schedules.cfg:17
+#: data/core/help.cfg:341 data/core/macros/schedules.cfg:26
 #: data/test/maps/pathfind_1.cfg:75
 msgid "Morning"
 msgstr "아침"
 
 #. [time]: id=afternoon
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:343 data/core/macros/schedules.cfg:35
+#: data/core/help.cfg:342 data/core/macros/schedules.cfg:44
 #: data/test/maps/pathfind_1.cfg:86
 msgid "Afternoon"
 msgstr "오후"
@@ -2056,27 +2084,27 @@ msgstr "오후"
 #. [time]: id=dusk
 #. [time]: id=dusk_hour
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:344 data/core/macros/schedules.cfg:44
-#: data/core/macros/schedules.cfg:377 data/test/maps/pathfind_1.cfg:97
+#: data/core/help.cfg:343 data/core/macros/schedules.cfg:53
+#: data/core/macros/schedules.cfg:396 data/test/maps/pathfind_1.cfg:97
 msgid "Dusk"
 msgstr "황혼"
 
 #. [time]: id=first_watch
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:345 data/core/macros/schedules.cfg:55
+#: data/core/help.cfg:344 data/core/macros/schedules.cfg:65
 #: data/test/maps/pathfind_1.cfg:108
 msgid "First Watch"
 msgstr "초경"
 
 #. [time]: id=second_watch
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:346 data/core/macros/schedules.cfg:79
+#: data/core/help.cfg:345 data/core/macros/schedules.cfg:89
 #: data/test/maps/pathfind_1.cfg:119
 msgid "Second Watch"
 msgstr "삼경"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:348
+#: data/core/help.cfg:347
 #, fuzzy
 #| msgid ""
 #| "Keep in mind that some scenarios take place underground, where it is "
@@ -2088,26 +2116,26 @@ msgstr ""
 "지하에서 진행되는 일부 시나리오에서는 영구적으로 밤이라는 사실을 기억하세요!"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:350
+#: data/core/help.cfg:349
 msgid ""
 "Some underground locations are illuminated. They are perpetually "
 "intermediate between day and night.\n"
 msgstr ""
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:352
+#: data/core/help.cfg:351
 msgid ""
 "Some role-playing scenarios take place indoors — these regions are similarly "
 "intermediate."
 msgstr ""
 
 #. [topic]: id=healing
-#: data/core/help.cfg:359
+#: data/core/help.cfg:358
 msgid "Healing"
 msgstr "회복"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:360
+#: data/core/help.cfg:359
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2126,7 +2154,7 @@ msgstr ""
 "다음 턴에 HP 2를 회복합니다."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:360
+#: data/core/help.cfg:359
 msgid ""
 "In combat, your units will inevitably take damage. There are several ways to "
 "heal your units. However, with the exception of resting, these do not stack; "
@@ -2134,7 +2162,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=healing
-#: data/core/help.cfg:362
+#: data/core/help.cfg:361
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2151,7 +2179,7 @@ msgstr ""
 "합니다."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:363
+#: data/core/help.cfg:362
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2168,7 +2196,7 @@ msgstr ""
 "턴 자동으로 HP 8을 회복합니다."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:364
+#: data/core/help.cfg:363
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2191,7 +2219,7 @@ msgstr ""
 "나 독의 피해를 막아줍니다."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:365
+#: data/core/help.cfg:364
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2211,7 +2239,7 @@ msgstr ""
 "의 두 능력이 모두 적용될 때는 치유가 우선합니다.)"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:366
+#: data/core/help.cfg:365
 msgid ""
 "\n"
 "• <bold>text='Advancement'</bold>: When a unit <ref>dst='advancement' "
@@ -2220,7 +2248,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=healing
-#: data/core/help.cfg:367
+#: data/core/help.cfg:366
 msgid ""
 "\n"
 "\n"
@@ -2235,7 +2263,7 @@ msgstr ""
 "유닛이 회복됩니다."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:369
+#: data/core/help.cfg:368
 msgid ""
 "\n"
 "\n"
@@ -2243,7 +2271,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=healing
-#: data/core/help.cfg:371
+#: data/core/help.cfg:370
 msgid ""
 "\n"
 "\n"
@@ -2255,12 +2283,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=wrap_up
-#: data/core/help.cfg:379
+#: data/core/help.cfg:378
 msgid "Wrap Up"
 msgstr "마무리"
 
 #. [topic]: id=wrap_up
-#: data/core/help.cfg:380
+#: data/core/help.cfg:379
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "basic strategy, or familiarize yourself with <ref>dst='..traits_section' "
@@ -2275,17 +2303,17 @@ msgstr ""
 "다. 부디 즐기시길 바라며, 행운을 빕니다!"
 
 #. [topic]: id=about
-#: data/core/help.cfg:385
+#: data/core/help.cfg:384
 msgid "ingame_help_item^Contributors"
 msgstr "기여해주신 여러분"
 
 #. [topic]: id=license
-#: data/core/help.cfg:391
+#: data/core/help.cfg:390
 msgid "License"
 msgstr "라이선스"
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:400
+#: data/core/help.cfg:399
 #, fuzzy
 #| msgid ""
 #| "Most units have two traits. However, undead units are assigned the single "
@@ -2307,7 +2335,7 @@ msgstr ""
 "통 유닛이 소집될때 무작위로 배정됩니다."
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:400
+#: data/core/help.cfg:399
 msgid ""
 "Traits are modifications that change a unit’s attributes slightly. They are "
 "usually randomly assigned to a unit when it is recruited. The traits "
@@ -2316,7 +2344,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:402
+#: data/core/help.cfg:401
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2341,7 +2369,7 @@ msgstr ""
 "<ref>dst='traits_strong' text='힘센'</ref> 입니다."
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:404
+#: data/core/help.cfg:403
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2368,442 +2396,8 @@ msgstr ""
 "<ref>dst='traits_undead' text='언데드'</ref> 입니다.\n"
 "\n"
 
-#. [topic]: id=traits_intelligent
-#: data/core/help.cfg:414
-msgid "Intelligent"
-msgstr "영리한"
-
-#. [topic]: id=traits_intelligent
-#: data/core/help.cfg:415
-msgid ""
-"\n"
-"\n"
-"<italic>text='Intelligent'</italic> units are very useful at the beginning "
-"of a campaign as they can advance to higher levels more quickly. Later in "
-"campaigns Intelligent is not quite as useful because the <italic>text='After "
-"Maximum Level Advancement'</italic> (AMLA) is not as significant a change as "
-"advancing a level. If you have many ‘maximum level’ units you may wish to "
-"recall units with more desirable traits."
-msgstr ""
-"\n"
-"\n"
-"<italic>text='영리한'</italic> 유닛은 더 빨리 높은 레벨로 승급할 수 있어서 캠"
-"페인의 초기에 매우 유용합니다. 하지만 캠페인의 후반으로 가면 영리함은 그렇게 "
-"좋은 특성은 아닌데, 그 이유는 <italic>text='최고레벨 이후 승급'</italic> "
-"(AMLA)이 주는 변화가 레벨을 올리는 것만큼 크지 않기 때문입니다. 당신이 다수"
-"의 '최고 레벨' 유닛을 가지고 있다면 좀더 좋은 특성을 가진 유닛들을 재소집하"
-"는 것을 더 선호하게 될 것입니다."
-
-#. [topic]: id=traits_intelligent
-#: data/core/help.cfg:415
-msgid "Intelligent units require 20% less experience than usual to advance."
-msgstr "영리한 유닛은 승급하는데 필요한 경험치가 원래의 경우보다 20% 적습니다."
-
-#. [topic]: id=traits_quick
-#: data/core/help.cfg:422
-msgid "Quick"
-msgstr "신속한"
-
-#. [topic]: id=traits_quick
-#: data/core/help.cfg:423
-msgid ""
-"\n"
-"\n"
-"Quick is the most noticeable trait, particularly in slower moving units such "
-"as trolls or heavy infantry. Units with the quick trait often have greatly "
-"increased mobility in rough terrain, which can be important to consider when "
-"deploying your forces. Also, quick units aren’t quite as tough as units "
-"without this trait and are subsequently less good at holding contested "
-"positions."
-msgstr ""
-"\n"
-"\n"
-"신속함은 가장 눈에 띄는 특성으로, 이것은 특히 트롤이나 중보병같은 느린 유닛에"
-"서 두드러집니다. 신속한 특성을 가진 유닛은 종종 거친 지형에서 매우 증진된 기"
-"동력을 갖게되며, 이 점은 당신이 병력을 배치할때 중요하게 고려할 사항입니다. "
-"신속한 유닛은 이 특성을 갖지 않은 유닛에 비해 조금 허약하므로 접전 지역에 배"
-"치하기에는 별로 좋지 않습니다."
-
-#. [topic]: id=traits_quick
-#: data/core/help.cfg:423
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Quick'</italic> units have 1 extra movement point, but 5% "
-#| "less HP than usual."
-msgid ""
-"<italic>text='Quick'</italic> units have 1 extra movement point, but 5% less "
-"hitpoints than usual."
-msgstr ""
-"<italic>text='신속한'</italic> 유닛은 1의 추가 이동력을 갖지만, 보통보다 5% "
-"적은 HP를 갖게 됩니다."
-
-#. [topic]: id=traits_resilient
-#: data/core/help.cfg:430
-msgid "Resilient"
-msgstr "튼튼한"
-
-#. [topic]: id=traits_resilient
-#: data/core/help.cfg:431
-msgid ""
-"\n"
-"\n"
-"Resilient units can be useful at all stages of a campaign, and this is a "
-"useful trait for all units. Resilient is often most helpful as a trait when "
-"it occurs in a unit that has some combination of low hitpoints, good "
-"defense, or high resistances. Resilient units are especially useful for "
-"holding strategic positions against opponents."
-msgstr ""
-"\n"
-"\n"
-"튼튼한 유닛은 캠페인의 모든 단계에서 유용합니다. 그리고 이것은 모든 유닛에게 "
-"유용한 특성입니다. 튼튼함은 낮은 체력과 좋은 방어도 또는 높은 저항의 조합을 "
-"가진 유닛에게 종종 가장 도움이 되는 특성입니다. 튼튼한 유닛은 적에 대한 전략"
-"적인 지점에 배치하기에 특히 좋습니다."
-
-#. [topic]: id=traits_resilient
-#: data/core/help.cfg:431
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Resilient'</italic> units have 4 HP plus 1 HP per level "
-#| "more than usual."
-msgid ""
-"<italic>text='Resilient'</italic> units have an additional 4 hitpoints, and "
-"gain 1 more per level."
-msgstr ""
-"<italic>text='튼튼한'</italic> 유닛은 다른 유닛보다 HP 4가 더 많고 레벨당 1"
-"의 HP를 추가로 더 받습니다."
-
-#. [topic]: id=traits_strong
-#: data/core/help.cfg:438
-msgid "Strong"
-msgstr "힘센"
-
-#. [topic]: id=traits_strong
-#: data/core/help.cfg:439
-msgid ""
-"\n"
-"\n"
-"While useful for any close-combat unit, strong is most effective for units "
-"who have a high number of swings such as the elvish fighter. Strong units "
-"can be very useful when a tiny bit of extra damage is all that is needed to "
-"turn a damaging stroke into a killing blow."
-msgstr ""
-"\n"
-"\n"
-"힘은 모든 근접 공격 유닛에게 유용하지만, 엘프 전사와 같이 높은 횟수의 타격을 "
-"가진 유닛에게 가장 유용합니다. 힘센 유닛은 명중한 타격을 치명타로 만들기 위"
-"해 아주 작은 추가 데미지가 필요할 경우에 매우 유용합니다."
-
-#. [topic]: id=traits_strong
-#: data/core/help.cfg:439
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Strong'</italic> units do 1 more damage for every "
-#| "successful strike in melee combat, and have 1 more HP."
-msgid ""
-"<italic>text='Strong'</italic> units do 1 more damage for every successful "
-"strike in melee combat, and have 1 additional hitpoint."
-msgstr ""
-"<italic>text='힘센'</italic> 유닛은 근접 공격의 성공시에 주는 데미지가 1 더 "
-"많고, HP 1을 더 받습니다."
-
-#. [topic]: id=traits_fearless
-#: data/core/help.cfg:446
-msgid "Fearless"
-msgstr "용맹한"
-
-#. [topic]: id=traits_fearless
-#: data/core/help.cfg:447
-msgid "Aversion to light and dark holds no sway over these brave individuals."
-msgstr "빛이나 어둠에 대한 혐오는 이 용감한 개개인들을 지배하지 못합니다."
-
-#. [topic]: id=traits_feral
-#: data/core/help.cfg:452
-msgid "Feral"
-msgstr "야생종"
-
-#. [topic]: id=traits_feral
-#: data/core/help.cfg:453
-msgid ""
-"Dwellings of sentient beings are not easily used for cover by feral "
-"creatures of low intelligence. As a result, <italic>text='feral'</italic> "
-"units receive a maximum of 50% defense in any land-based village regardless "
-"of base terrain."
-msgstr ""
-
-#. [topic]: id=traits_loyal
-#: data/core/help.cfg:458
-msgid "Loyal"
-msgstr "심복"
-
-#. [topic]: id=traits_loyal
-#: data/core/help.cfg:459
-msgid ""
-"\n"
-"\n"
-"During campaigns, certain units may opt to join the player’s forces of their "
-"own volition. These units are marked with the loyal trait. Although they may "
-"require payment to be recalled, they never incur any upkeep costs. This can "
-"make them invaluable during a long campaign, when gold is in short supply. "
-"This trait is never given to recruited units, so it may be unwise to dismiss "
-"such units or to send them to a foolish death."
-msgstr ""
-"\n"
-"\n"
-"캠페인을 하는 동안 특정 유닛이 플레이어의 군단에 자유 의지로 합류해 오는 경우"
-"가 있습니다. 이런 유닛들에는 심복 특성이 붙습니다. 비록 재소집시에는 비용이 "
-"들지만, 이들은 유지비를 전혀 요구하지 않습니다. 이것 때문에 이들은 긴 캠페인"
-"에서 자금의 공급이 딸리는 시점에 매우 소중합니다. 이 특성은 소집된 유닛에게"
-"는 절대 주어지지 않기 때문에, 이런 유닛들을 버리거나 허무한 죽음으로 내모는 "
-"것은 현명하지 못한 행동입니다."
-
-#. [topic]: id=traits_loyal
-#: data/core/help.cfg:459
-msgid ""
-"<italic>text='Loyal'</italic> units don’t incur upkeep. Most units incur an "
-"upkeep cost at the end of every turn, which is equal to their level. Loyal "
-"units do not incur this cost."
-msgstr ""
-"<italic>text='심복'</italic> 유닛은 유지비를 요구하지 않습니다. 대부분의 유닛"
-"은 턴이 끝날때마다 그들의 레벨만큼의 유지비용이 들어갑니다. 심복 유닛은 이 비"
-"용이 들지 않습니다."
-
-#. [topic]: id=traits_undead
-#: data/core/help.cfg:466
-msgid "trait^Undead"
-msgstr "언데드"
-
-#. [topic]: id=traits_undead
-#: data/core/help.cfg:467
-msgid ""
-"\n"
-"\n"
-"Undead units generally have undead as their only trait. Since undead units "
-"are the bodies of the dead, risen to fight again, poison has no effect upon "
-"them. This can make them invaluable in dealing with foes who use poison in "
-"conjunction with their attacks."
-msgstr ""
-"\n"
-"\n"
-"언데드 유닛들은 일반적으로 언데드 속성만을 갖습니다. 이들은 죽은자의 시체로"
-"서 일으켜져 싸우는 존재이므로 독은 이들에게 먹히지 않습니다. 이들은 독을 쓰"
-"는 적을 상대할 때 아주 유용합니다."
-
-#. [topic]: id=traits_undead
-#: data/core/help.cfg:467
-msgid ""
-"<italic>text='Undead'</italic> units are immune to poison, drain, and plague."
-msgstr ""
-"<italic>text='언데드'</italic> 유닛은 독, 흡수, 역병에 면역되어 있어 해당 효"
-"과가 먹히지 않습니다."
-
-#. [topic]: id=traits_mechanical
-#: data/core/help.cfg:474
-msgid "trait^Mechanical"
-msgstr "기계"
-
-#. [topic]: id=traits_mechanical
-#: data/core/help.cfg:475
-msgid ""
-"\n"
-"\n"
-"Mechanical units generally have mechanical as their only trait. Since "
-"mechanical units don’t really have life, drain, poison, and plague have no "
-"effect upon them."
-msgstr ""
-"\n"
-"\n"
-"기계 유닛들은 일반적으로 기계 속성만을 갖습니다. 이들은 생명을 가진 존재가 아"
-"니기 때문에 흡수, 독, 역병의 영향을 받지 않습니다."
-
-#. [topic]: id=traits_mechanical
-#: data/core/help.cfg:475
-msgid ""
-"<italic>text='Mechanical'</italic> units are immune to poison, drain, and "
-"plague."
-msgstr ""
-"<italic>text='기계'</italic> 유닛은 독, 흡수, 역병에 면역되어 있어 해당 효과"
-"가 먹히지 않습니다."
-
-#. [topic]: id=traits_elemental
-#: data/core/help.cfg:482
-msgid "trait^Elemental"
-msgstr "원소계"
-
-#. [topic]: id=traits_elemental
-#: data/core/help.cfg:483
-msgid ""
-"\n"
-"\n"
-"Elemental units generally have elemental as their only trait. Since "
-"elemental units are energy-based beings, drain, poison, and plague have no "
-"effect upon them."
-msgstr ""
-"\n"
-"\n"
-"원소계 유닛들은 일반적으로 원소계 속성만을 갖습니다. 이들은 에너지를 바탕으"
-"로 존재하기 때문에 흡수, 독, 역병은 이들에게 영향을 주지 못합니다."
-
-#. [topic]: id=traits_elemental
-#: data/core/help.cfg:483
-msgid ""
-"<italic>text='Elemental'</italic> units are immune to poison, drain, and "
-"plague."
-msgstr ""
-"<italic>text='원소계'</italic> 유닛은 독, 흡수, 역병에 면역되어 있어 해당 효"
-"과가 먹히지 않습니다."
-
-#. [topic]: id=traits_dextrous
-#: data/core/help.cfg:490
-msgid "Dextrous"
-msgstr "능란한"
-
-#. [topic]: id=traits_dextrous
-#: data/core/help.cfg:491
-msgid ""
-"\n"
-"\n"
-"Dextrous is a trait possessed only by elves. The elven people are known for "
-"their uncanny grace, and their great facility with the bow. Some, however, "
-"are gifted with natural talent that exceeds their brethren. These elves "
-"inflict an additional point of damage with each arrow."
-msgstr ""
-"\n"
-"\n"
-"능란함은 오직 엘프들에게만 있는 특성입니다. 엘프 종족은 묘한 품위와 함께 활"
-"을 다루는 엄청난 능력으로 잘 알려져 있습니다. 하지만 그 중에서도 일부는 동족"
-"들을 뛰어넘는 천부적인 재능을 갖고 있습니다. 이런 엘프들은 화살 한방마다 추가"
-"적인 데미지를 가할 수 있습니다."
-
-#. [topic]: id=traits_dextrous
-#: data/core/help.cfg:491
-msgid ""
-"<italic>text='Dextrous'</italic> units do 1 more damage for every successful "
-"strike in ranged combat."
-msgstr "<italic>text='능란한'</italic> 유닛은 원격 데미지가 1 많습니다."
-
-#. [topic]: id=traits_healthy
-#: data/core/help.cfg:498
-msgid "Healthy"
-msgstr "건강한"
-
-#. [topic]: id=traits_healthy
-#: data/core/help.cfg:499
-msgid ""
-"\n"
-"\n"
-"<italic>text='Healthy'</italic> units have 1 additional hitpoint, and gain 1 "
-"more per level. They will also heal 2 hitpoints each turn, regardless of "
-"whether they engaged in combat the turn before."
-msgstr ""
-
-#. [topic]: id=traits_healthy
-#: data/core/help.cfg:499
-#, fuzzy
-#| msgid ""
-#| "Renowned for their vitality, some dwarves are sturdier than others and "
-#| "can rest even when travelling."
-msgid ""
-"Renowned for their vitality, some dwarves are sturdier than others and can "
-"rest even when traveling."
-msgstr ""
-"강인한 생명력으로 유명한 드워프 중에서도 특히 기운이 넘치는 이들은 이동중에"
-"도 휴식을 취할수 있습니다."
-
-#. [topic]: id=traits_dim
-#: data/core/help.cfg:506
-msgid "Dim"
-msgstr "돌머리"
-
-#. [topic]: id=traits_dim
-#: data/core/help.cfg:507
-msgid ""
-"\n"
-"\n"
-"Dim is a trait all too common in goblins and other lesser species. There are "
-"reasons these species are lesser, and this is one of them."
-msgstr ""
-"\n"
-"\n"
-"돌머리는 고블린이나 기타 하등한 종족에서 매우 흔히 보이는 특성입니다. 이들 종"
-"족이 하등한 데는 다 이유가 있는데, 이것도 그 중 하나입니다."
-
-#. [topic]: id=traits_dim
-#: data/core/help.cfg:507
-msgid ""
-"Units with trait <italic>text='dim'</italic> suffer a 20% increase in "
-"experience required to advance."
-msgstr ""
-"<italic>text='돌머리'</italic> 유닛은 승급에 필요한 경험치가 20% 더 듭니다."
-
-#. [topic]: id=traits_slow
-#: data/core/help.cfg:514
-msgid "Slow"
-msgstr "둔한"
-
-#. [topic]: id=traits_slow
-#: data/core/help.cfg:515
-msgid ""
-"\n"
-"\n"
-"Thick-bodied and clumsy, slow individuals of goblins and other species take "
-"a movement penalty but are compensated for it with a slight increase in "
-"endurance."
-msgstr ""
-"\n"
-"\n"
-"고블린이나 다른 종족 중에서 두툼한 몸뚱이에 투박한 개체들은 이동 능력에 제한"
-"을 받지만 그 대신에 저항력이 약간 더 좋습니다."
-
-#. [topic]: id=traits_slow
-#: data/core/help.cfg:515
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Slow'</italic> units have −1 movement but 5% more hitpoints."
-msgid ""
-"<italic>text='Slow'</italic> units have 1 less movement point but 5% more "
-"hitpoints."
-msgstr ""
-"<italic>text='둔한'</italic> 유닛은 이동력이 1 적으나 5%의 체력 보너스를 갖습"
-"니다."
-
-#. [topic]: id=traits_weak
-#: data/core/help.cfg:522
-msgid "Weak"
-msgstr "약한"
-
-#. [topic]: id=traits_weak
-#: data/core/help.cfg:523
-#, fuzzy
-#| msgid ""
-#| "Units with trait <italic>text='weak'</italic> get a −1 increment in "
-#| "hitpoints and melee damage."
-msgid ""
-"Units with the <italic>text='weak'</italic> trait receive a 1 point decrease "
-"in hitpoints and melee damage."
-msgstr ""
-"<italic>text='약한'</italic> 유닛은 체력과 근접 데미지가 각각 1 적습니다."
-
-#. [topic]: id=traits_aged
-#: data/core/help.cfg:528
-msgid "trait^Aged"
-msgstr "늙은"
-
-#. [topic]: id=traits_aged
-#: data/core/help.cfg:529
-#, fuzzy
-#| msgid ""
-#| "Units with trait <italic>text='aged'</italic> get a −8 increment in "
-#| "hitpoints and a −1 increment in movement and melee damage."
-msgid ""
-"Units with the <italic>text='aged'</italic> trait have 8 hitpoints less and "
-"suffer from a 1 point decrease in movement and melee damage."
-msgstr ""
-"<italic>text='늙은'</italic> 유닛은 체력이 8 적으며 이동력과 근접 데미지가 각"
-"각 1 적습니다."
-
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:536
+#: data/core/help.cfg:413
 msgid ""
 "\n"
 "\n"
@@ -2812,7 +2406,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:536
+#: data/core/help.cfg:413
 #, fuzzy
 #| msgid ""
 #| "Game maps feature a variety of terrains that affect both unit movement "
@@ -2827,7 +2421,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:538
+#: data/core/help.cfg:415
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2843,7 +2437,7 @@ msgstr ""
 "<header>text='명중률'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:540
+#: data/core/help.cfg:417
 msgid ""
 "\n"
 "\n"
@@ -2854,7 +2448,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:544
+#: data/core/help.cfg:421
 msgid ""
 "\n"
 "\n"
@@ -2864,7 +2458,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:546
+#: data/core/help.cfg:423
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2880,7 +2474,7 @@ msgstr ""
 "<header>text='명중률'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:548
+#: data/core/help.cfg:425
 msgid ""
 "\n"
 "\n"
@@ -2894,7 +2488,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:552
+#: data/core/help.cfg:429
 msgid ""
 "\n"
 "\n"
@@ -2909,7 +2503,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:556
+#: data/core/help.cfg:433
 msgid ""
 "\n"
 "\n"
@@ -2920,7 +2514,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:560
+#: data/core/help.cfg:437
 msgid ""
 "\n"
 "\n"
@@ -2931,7 +2525,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:564
+#: data/core/help.cfg:441
 msgid ""
 "\n"
 "\n"
@@ -2941,7 +2535,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:566
+#: data/core/help.cfg:443
 msgid ""
 "\n"
 "\n"
@@ -2952,7 +2546,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:568
+#: data/core/help.cfg:445
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2968,7 +2562,7 @@ msgstr ""
 "<header>text='명중률'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:570
+#: data/core/help.cfg:447
 msgid ""
 "\n"
 "\n"
@@ -2978,7 +2572,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:572
+#: data/core/help.cfg:449
 msgid ""
 "\n"
 "\n"
@@ -2989,7 +2583,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:574
+#: data/core/help.cfg:451
 msgid ""
 "\n"
 "\n"
@@ -2998,7 +2592,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:576
+#: data/core/help.cfg:453
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3015,7 +2609,7 @@ msgstr ""
 "<header>text='명중률'</header>"
 
 #. [topic]: id=..addons
-#: data/core/help.cfg:589
+#: data/core/help.cfg:466
 msgid ""
 "The degree of customization offered by the Wesnoth engine allows players to "
 "create their own game content, including new scenarios, campaigns, and much "
@@ -3024,12 +2618,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:599
+#: data/core/help.cfg:476
 msgid "Using Add-ons"
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:600
+#: data/core/help.cfg:477
 msgid ""
 "\n"
 "\n"
@@ -3040,14 +2634,14 @@ msgstr ""
 "<header>text='캠페인과 시나리오'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:600
+#: data/core/help.cfg:477
 msgid ""
 "The game supports different types of add-on content, which are not all "
 "available in every gameplay mode."
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:602
+#: data/core/help.cfg:479
 msgid ""
 "\n"
 "\n"
@@ -3058,7 +2652,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:604
+#: data/core/help.cfg:481
 msgid ""
 "\n"
 "\n"
@@ -3069,7 +2663,7 @@ msgstr ""
 "<header>text='멀티플레이 캠페인, 시나리오와 맵 묶음'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:606
+#: data/core/help.cfg:483
 msgid ""
 "\n"
 "\n"
@@ -3079,7 +2673,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:608
+#: data/core/help.cfg:485
 msgid ""
 "\n"
 "\n"
@@ -3090,7 +2684,7 @@ msgstr ""
 "<header>text='멀티플레이 시대와 당파'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:610
+#: data/core/help.cfg:487
 msgid ""
 "\n"
 "\n"
@@ -3105,7 +2699,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:614
+#: data/core/help.cfg:491
 msgid ""
 "\n"
 "\n"
@@ -3114,7 +2708,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:616
+#: data/core/help.cfg:493
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3130,7 +2724,7 @@ msgstr ""
 "<header>text='멀티플레이 시대와 당파'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:618
+#: data/core/help.cfg:495
 msgid ""
 "\n"
 "\n"
@@ -3141,7 +2735,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:620
+#: data/core/help.cfg:497
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3157,7 +2751,7 @@ msgstr ""
 "<header>text='명중률'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:622
+#: data/core/help.cfg:499
 msgid ""
 "\n"
 "\n"
@@ -3169,12 +2763,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:631
+#: data/core/help.cfg:508
 msgid "Installing Add-ons"
 msgstr ""
 
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:632
+#: data/core/help.cfg:509
 msgid ""
 "User-made add-ons can be obtained and updated through the <italic>text='Add-"
 "ons'</italic> option in the main menu. After connecting to the add-ons "
@@ -3200,12 +2794,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:645
+#: data/core/help.cfg:522
 msgid "Removing Add-ons"
 msgstr ""
 
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:646
+#: data/core/help.cfg:523
 msgid ""
 "To remove add-ons, choose <bold>text='Remove Add-ons'</bold> in the add-ons "
 "server connection dialog. You will be presented with options to remove any "
@@ -3219,7 +2813,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:661
+#: data/core/help.cfg:538
 #, fuzzy
 #| msgid "General commands"
 msgid "General Commands"
@@ -3228,7 +2822,7 @@ msgstr "일반 명령어들"
 #. [topic]: id=general_commands
 #. [topic]: id=mp_commands
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:663 data/core/help.cfg:706 data/core/help.cfg:744
+#: data/core/help.cfg:540 data/core/help.cfg:583 data/core/help.cfg:621
 msgid ""
 "These commands can either be issued via the command line by prefixing them "
 "with ':' (as shown here) or via the chat by prefixing them with '/' (press "
@@ -3237,7 +2831,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:665
+#: data/core/help.cfg:542
 msgid ""
 "\n"
 "Clear chat messages.\n"
@@ -3248,7 +2842,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:668
+#: data/core/help.cfg:545
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -3258,7 +2852,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:672
+#: data/core/help.cfg:549
 msgid ""
 "\n"
 "Set or toggle player on side between human and AI player. The player/client "
@@ -3270,7 +2864,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:675
+#: data/core/help.cfg:552
 msgid ""
 "\n"
 "Display the controller status of a side.\n"
@@ -3278,7 +2872,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:678
+#: data/core/help.cfg:555
 msgid ""
 "\n"
 "Toggle the display of the current frames per second.\n"
@@ -3286,7 +2880,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:681
+#: data/core/help.cfg:558
 msgid ""
 "\n"
 "Switch a log domain to a different log level.\n"
@@ -3294,7 +2888,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:684
+#: data/core/help.cfg:561
 msgid ""
 "\n"
 "Redraws the screen and reloads any image files that have been changed.\n"
@@ -3302,7 +2896,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:687
+#: data/core/help.cfg:564
 msgid ""
 "\n"
 "Bring up theme selection menu.\n"
@@ -3313,7 +2907,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:690
+#: data/core/help.cfg:567
 msgid ""
 "\n"
 "Quit the scenario (without prompting).\n"
@@ -3324,7 +2918,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:693
+#: data/core/help.cfg:570
 msgid ""
 "\n"
 "Save the game (without prompting).\n"
@@ -3335,7 +2929,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:696
+#: data/core/help.cfg:573
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
@@ -3344,14 +2938,14 @@ msgstr ""
 "게임을 저장하고 시나리오에서 나갑니다 (묻는 창 뜨지 않음)."
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:705
+#: data/core/help.cfg:582
 #, fuzzy
 #| msgid "Multiplayer commands"
 msgid "Multiplayer Commands"
 msgstr "멀티플레이 명령어들"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:708
+#: data/core/help.cfg:585
 msgid ""
 "\n"
 "Ban a user in a multiplayer game by the IP address used by that username and "
@@ -3361,7 +2955,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:711
+#: data/core/help.cfg:588
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -3374,7 +2968,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:714
+#: data/core/help.cfg:591
 msgid ""
 "\n"
 "Launch a dialog to assist the host in changing the human controllers of "
@@ -3383,7 +2977,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:717
+#: data/core/help.cfg:594
 msgid ""
 "\n"
 "Toggle the idle state for a side. The host may make a side idle after a "
@@ -3392,7 +2986,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:720
+#: data/core/help.cfg:597
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. If you "
@@ -3402,7 +2996,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:723
+#: data/core/help.cfg:600
 msgid ""
 "\n"
 "Send a private message to a user. When in a game, it is not possible to send "
@@ -3412,7 +3006,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:726
+#: data/core/help.cfg:603
 msgid ""
 "\n"
 "Mute a specific observer. If no username is supplied the muted usernames are "
@@ -3421,7 +3015,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:729
+#: data/core/help.cfg:606
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off.\n"
@@ -3429,7 +3023,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:732
+#: data/core/help.cfg:609
 msgid ""
 "\n"
 "Unban a user in a multiplayer game by the IP address used by that username. "
@@ -3438,7 +3032,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:735
+#: data/core/help.cfg:612
 msgid ""
 "\n"
 "Unmute a specific observer. If no username is supplied the list of muted "
@@ -3446,14 +3040,14 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:743
+#: data/core/help.cfg:620
 #, fuzzy
 #| msgid "Debug mode commands"
 msgid "Debug Mode Commands"
 msgstr "디버그 모드 명령어들"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:746
+#: data/core/help.cfg:623
 msgid ""
 "\n"
 "Brings up a menu for choosing a scenario to immediately advance to in a "
@@ -3462,7 +3056,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:749
+#: data/core/help.cfg:626
 msgid ""
 "\n"
 "Create a unit of the specified type on the selected hex.\n"
@@ -3470,7 +3064,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:752
+#: data/core/help.cfg:629
 msgid ""
 "\n"
 "Toggle fog/shroud for the current side.\n"
@@ -3478,7 +3072,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:755
+#: data/core/help.cfg:632
 msgid ""
 "\n"
 "Adds the specified amount to the current side’s gold.\n"
@@ -3486,7 +3080,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:758
+#: data/core/help.cfg:635
 msgid ""
 "\n"
 "Immediately advances to the next scenario in a campaign.\n"
@@ -3494,7 +3088,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:761
+#: data/core/help.cfg:638
 msgid ""
 "\n"
 "Manually set a gamestate variable to value.\n"
@@ -3502,7 +3096,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:764
+#: data/core/help.cfg:641
 msgid ""
 "\n"
 "Show a gamestate variable.\n"
@@ -3510,7 +3104,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:767
+#: data/core/help.cfg:644
 msgid ""
 "\n"
 "Manually fire the specified event.\n"
@@ -3518,7 +3112,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:770
+#: data/core/help.cfg:647
 msgid ""
 "\n"
 "Modifies the specified property of the selected unit. Example: :unit "
@@ -3527,7 +3121,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:773
+#: data/core/help.cfg:650
 msgid ""
 "\n"
 "Makes the selected unit level up N times. Example: :unit advances=2"
@@ -3788,17 +3382,17 @@ msgstr ""
 "이 유닛을 처음 발견한 적은 즉시 모든 이동력을 상실합니다."
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:335
+#: data/core/macros/abilities.cfg:333
 msgid "feeding"
 msgstr "식귀"
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:336
+#: data/core/macros/abilities.cfg:334
 msgid "female^feeding"
 msgstr "식귀"
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:337
+#: data/core/macros/abilities.cfg:335
 #, fuzzy
 #| msgid ""
 #| "This unit gains 1 hitpoint added to its maximum whenever it kills a "
@@ -3809,12 +3403,12 @@ msgid ""
 msgstr "이 유닛은 생체 유닛을 하나 죽일때마다 최대 HP를 1 얻습니다."
 
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:359
+#: data/core/macros/abilities.cfg:357
 msgid "backstab"
 msgstr "뒷치기"
 
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:360
+#: data/core/macros/abilities.cfg:358
 msgid ""
 "When used offensively, this attack deals double damage if there is an enemy "
 "of the target on the opposite side of the target, and that unit is not "
@@ -3826,12 +3420,12 @@ msgstr ""
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:380 data/core/macros/abilities.cfg:391
+#: data/core/macros/abilities.cfg:378 data/core/macros/abilities.cfg:389
 msgid "plague"
 msgstr "역병"
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
-#: data/core/macros/abilities.cfg:381
+#: data/core/macros/abilities.cfg:379
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
 "identical to and on the same side as the unit with the Plague attack. This "
@@ -3841,7 +3435,7 @@ msgstr ""
 "다. 이 공격은 언데드나 마을에 있는 유닛에는 통하지 않습니다."
 
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:392
+#: data/core/macros/abilities.cfg:390
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a "
 "Walking Corpse on the same side as the unit with the Plague attack. This "
@@ -3851,12 +3445,12 @@ msgstr ""
 "됩니다. 이 공격은 언데드나 마을에 있는 유닛에는 통하지 않습니다."
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:402
+#: data/core/macros/abilities.cfg:400
 msgid "slows"
 msgstr "둔화"
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:403
+#: data/core/macros/abilities.cfg:401
 msgid ""
 "This attack slows the target until it ends a turn. Slow halves the damage "
 "caused by attacks and the movement cost for a slowed unit is doubled. A unit "
@@ -3868,12 +3462,12 @@ msgstr ""
 "이드바 정보에 달팽이 마크가 붙습니다."
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:412
+#: data/core/macros/abilities.cfg:410
 msgid "petrifies"
 msgstr "석화"
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:413
+#: data/core/macros/abilities.cfg:411
 msgid ""
 "This attack petrifies the target, turning it to stone. Units that have been "
 "petrified may not move or attack."
@@ -3881,24 +3475,24 @@ msgstr ""
 "이 공격은 목표를 석화시킵니다. 석화된 유닛은 움직이거나 공격할 수 없습니다."
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:422
+#: data/core/macros/abilities.cfg:420
 msgid "marksman"
 msgstr "저격"
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:423
+#: data/core/macros/abilities.cfg:421
 msgid ""
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr ""
 "방어가 아닌 공격에 이 무기를 사용하면 항상 60% 이상의 명중률을 갖습니다."
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:447
+#: data/core/macros/abilities.cfg:445
 msgid "swarm"
 msgstr "난무"
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:448
+#: data/core/macros/abilities.cfg:446
 msgid ""
 "The number of strikes of this attack decreases when the unit is wounded. The "
 "number of strikes is proportional to the percentage of its of maximum HP the "
@@ -3910,12 +3504,12 @@ msgstr ""
 "도 30%가 됩니다."
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:457
+#: data/core/macros/abilities.cfg:455
 msgid "charge"
 msgstr "돌격"
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:458
+#: data/core/macros/abilities.cfg:456
 msgid ""
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target’s counterattack."
@@ -3924,12 +3518,12 @@ msgstr ""
 "니다. 하지만 목표물이 반격할때 받는 데미지도 두 배가 됩니다."
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:470
+#: data/core/macros/abilities.cfg:468
 msgid "drains"
 msgstr "흡수"
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:471
+#: data/core/macros/abilities.cfg:469
 msgid ""
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
@@ -3938,12 +3532,12 @@ msgstr ""
 "니다.(소수점 이하 내림)"
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:490
+#: data/core/macros/abilities.cfg:488
 msgid "poison"
 msgstr "중독"
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:491
+#: data/core/macros/abilities.cfg:489
 #, fuzzy
 #| msgid ""
 #| "This attack poisons living targets. Poisoned units lose 8 HP every turn "
@@ -3964,218 +3558,218 @@ msgstr "최대 HP 3 증가, 필요 XP 20% 증가"
 
 #. [time]: id=midday
 #. [time]: id=midday_hour
-#: data/core/macros/schedules.cfg:26 data/core/macros/schedules.cfg:312
+#: data/core/macros/schedules.cfg:35 data/core/macros/schedules.cfg:329
 msgid "Midday"
 msgstr "정오"
 
 #. [time]: id=midnight
 #. [time]: id=midnight_hour
-#: data/core/macros/schedules.cfg:67 data/core/macros/schedules.cfg:181
+#: data/core/macros/schedules.cfg:77 data/core/macros/schedules.cfg:191
 msgid "Midnight"
 msgstr "자정"
 
 #. [time]: id=indoors
-#: data/core/macros/schedules.cfg:91
+#: data/core/macros/schedules.cfg:101
 msgid "Indoors"
 msgstr "건물 내부"
 
 #. [time]: id=deep_underground
-#: data/core/macros/schedules.cfg:111
+#: data/core/macros/schedules.cfg:121
 msgid "Deep Underground"
 msgstr "지하 심층"
 
 #. [time]: id=second_watch_hour1
-#: data/core/macros/schedules.cfg:193
+#: data/core/macros/schedules.cfg:203
 msgid "Second Watch — First Hour"
 msgstr "삼경 제 1시"
 
 #. [time]: id=second_watch_hour2
-#: data/core/macros/schedules.cfg:205
+#: data/core/macros/schedules.cfg:215
 msgid "Second Watch — Second Hour"
 msgstr "삼경 제 2시"
 
 #. [time]: id=second_watch_hour3
-#: data/core/macros/schedules.cfg:217
+#: data/core/macros/schedules.cfg:227
 msgid "Second Watch — Third Hour"
 msgstr "삼경 제 3시"
 
 #. [time]: id=second_watch_hour4
-#: data/core/macros/schedules.cfg:229
+#: data/core/macros/schedules.cfg:239
 msgid "Second Watch — Fourth Hour"
 msgstr "삼경 제 4시"
 
 #. [time]: id=second_watch_hour5
-#: data/core/macros/schedules.cfg:241
+#: data/core/macros/schedules.cfg:251
 msgid "Second Watch — Fifth Hour"
 msgstr "삼경 제 5시"
 
 #. [time]: id=second_watch_hour6
-#: data/core/macros/schedules.cfg:253
+#: data/core/macros/schedules.cfg:263
 msgid "Second Watch — Sixth Hour"
 msgstr "삼경 제 6시"
 
 #. [time]: id=morning_hour1
-#: data/core/macros/schedules.cfg:276
+#: data/core/macros/schedules.cfg:287
 msgid "Morning — First Hour"
 msgstr "아침 제 1시"
 
 #. [time]: id=morning_hour2
-#: data/core/macros/schedules.cfg:285
+#: data/core/macros/schedules.cfg:299
 msgid "Morning — Second Hour"
 msgstr "아침 제 2시"
 
 #. [time]: id=morning_hour3
-#: data/core/macros/schedules.cfg:294
+#: data/core/macros/schedules.cfg:311
 msgid "Morning — Third Hour"
 msgstr "아침 제 3시"
 
 #. [time]: id=morning_hour4
-#: data/core/macros/schedules.cfg:303
+#: data/core/macros/schedules.cfg:320
 msgid "Morning — Fourth Hour"
 msgstr "아침 제 4시"
 
 #. [time]: id=afternoon_hour1
-#: data/core/macros/schedules.cfg:321
+#: data/core/macros/schedules.cfg:338
 msgid "Afternoon — First Hour"
 msgstr "오후 제 1시"
 
 #. [time]: id=afternoon_hour2
-#: data/core/macros/schedules.cfg:330
+#: data/core/macros/schedules.cfg:347
 msgid "Afternoon — Second Hour"
 msgstr "오후 제 2시"
 
 #. [time]: id=afternoon_hour3
-#: data/core/macros/schedules.cfg:339
+#: data/core/macros/schedules.cfg:356
 msgid "Afternoon — Third Hour"
 msgstr "오후 제 3시"
 
 #. [time]: id=afternoon_hour4
-#: data/core/macros/schedules.cfg:348
+#: data/core/macros/schedules.cfg:365
 msgid "Afternoon — Fourth Hour"
 msgstr "오후 제 4시"
 
 #. [time]: id=afternoon_hour5
-#: data/core/macros/schedules.cfg:357
+#: data/core/macros/schedules.cfg:374
 msgid "Afternoon — Fifth Hour"
 msgstr "오후 제 5시"
 
 #. [time]: id=afternoon_hour6
-#: data/core/macros/schedules.cfg:366
+#: data/core/macros/schedules.cfg:385
 msgid "Afternoon — Sixth Hour"
 msgstr "오후 제 6시"
 
 #. [time]: id=first_watch_hour1
-#: data/core/macros/schedules.cfg:388
+#: data/core/macros/schedules.cfg:408
 msgid "First Watch — First Hour"
 msgstr "초경 제 1시"
 
 #. [time]: id=first_watch_hour2
-#: data/core/macros/schedules.cfg:400
+#: data/core/macros/schedules.cfg:420
 msgid "First Watch — Second Hour"
 msgstr "초경 제 2시"
 
 #. [time]: id=first_watch_hour3
-#: data/core/macros/schedules.cfg:412
+#: data/core/macros/schedules.cfg:432
 msgid "First Watch — Third Hour"
 msgstr "초경 제 3시"
 
 #. [time]: id=first_watch_hour4
-#: data/core/macros/schedules.cfg:424
+#: data/core/macros/schedules.cfg:444
 msgid "First Watch — Fourth Hour"
 msgstr "초경 제 4시"
 
 #. [time]: id=dawn1
-#: data/core/macros/schedules.cfg:478
+#: data/core/macros/schedules.cfg:498
 #, fuzzy
 #| msgid "First Watch"
 msgid "First Dawn"
 msgstr "초경"
 
 #. [time]: id=dawn2
-#: data/core/macros/schedules.cfg:488
+#: data/core/macros/schedules.cfg:509
 #, fuzzy
 #| msgid "Second Watch"
 msgid "Second Dawn"
 msgstr "삼경"
 
 #. [time]: id=morning1
-#: data/core/macros/schedules.cfg:498
+#: data/core/macros/schedules.cfg:520
 #, fuzzy
 #| msgid "Morning"
 msgid "First Morning"
 msgstr "아침"
 
 #. [time]: id=morning2
-#: data/core/macros/schedules.cfg:507
+#: data/core/macros/schedules.cfg:532
 #, fuzzy
 #| msgid "Morning"
 msgid "Second Morning"
 msgstr "아침"
 
 #. [time]: id=midday1
-#: data/core/macros/schedules.cfg:516
+#: data/core/macros/schedules.cfg:544
 #, fuzzy
 #| msgid "Midday"
 msgid "First Midday"
 msgstr "정오"
 
 #. [time]: id=midday2
-#: data/core/macros/schedules.cfg:525
+#: data/core/macros/schedules.cfg:556
 #, fuzzy
 #| msgid "Second Watch"
 msgid "Second Midday"
 msgstr "삼경"
 
 #. [time]: id=afternoon1
-#: data/core/macros/schedules.cfg:534
+#: data/core/macros/schedules.cfg:568
 #, fuzzy
 #| msgid "Afternoon"
 msgid "First Afternoon"
 msgstr "오후"
 
 #. [time]: id=afternoon2
-#: data/core/macros/schedules.cfg:543
+#: data/core/macros/schedules.cfg:580
 #, fuzzy
 #| msgid "Afternoon"
 msgid "Second Afternoon"
 msgstr "오후"
 
 #. [time]: id=dusk1
-#: data/core/macros/schedules.cfg:552
+#: data/core/macros/schedules.cfg:592
 #, fuzzy
 #| msgid "first strike"
 msgid "First Dusk"
 msgstr "선공"
 
 #. [time]: id=dusk2
-#: data/core/macros/schedules.cfg:562
+#: data/core/macros/schedules.cfg:603
 #, fuzzy
 #| msgid "Second Watch"
 msgid "Second Dusk"
 msgstr "삼경"
 
 #. [time]: id=short_dark
-#: data/core/macros/schedules.cfg:572
+#: data/core/macros/schedules.cfg:614
 msgid "The Short Dark"
 msgstr ""
 
 #. [time]: id=long_dark1
-#: data/core/macros/schedules.cfg:584
+#: data/core/macros/schedules.cfg:626
 msgid "The Long Dark (1)"
 msgstr ""
 
 #. [time]: id=long_dark2
-#: data/core/macros/schedules.cfg:596
+#: data/core/macros/schedules.cfg:638
 msgid "The Long Dark (2)"
 msgstr ""
 
 #. [time]: id=long_dark3
-#: data/core/macros/schedules.cfg:610
+#: data/core/macros/schedules.cfg:652
 msgid "The Long Dark (3)"
 msgstr ""
 
 #. [time]: id=long_dark4
-#: data/core/macros/schedules.cfg:622
+#: data/core/macros/schedules.cfg:664
 msgid "The Long Dark (4)"
 msgstr ""
 
@@ -4408,178 +4002,532 @@ msgstr "심복"
 msgid "Zero upkeep"
 msgstr "유지비 없음"
 
+#. [trait]: id=loyal
+#: data/core/macros/traits.cfg:11
+msgid ""
+"\n"
+"\n"
+"During campaigns, certain units may opt to join the player’s forces of their "
+"own volition. These units are marked with the loyal trait. Although they may "
+"require payment to be recalled, they never incur any upkeep costs. This can "
+"make them invaluable during a long campaign, when gold is in short supply. "
+"This trait is never given to recruited units, so it may be unwise to dismiss "
+"such units or to send them to a foolish death."
+msgstr ""
+"\n"
+"\n"
+"캠페인을 하는 동안 특정 유닛이 플레이어의 군단에 자유 의지로 합류해 오는 경우"
+"가 있습니다. 이런 유닛들에는 심복 특성이 붙습니다. 비록 재소집시에는 비용이 "
+"들지만, 이들은 유지비를 전혀 요구하지 않습니다. 이것 때문에 이들은 긴 캠페인"
+"에서 자금의 공급이 딸리는 시점에 매우 소중합니다. 이 특성은 소집된 유닛에게"
+"는 절대 주어지지 않기 때문에, 이런 유닛들을 버리거나 허무한 죽음으로 내모는 "
+"것은 현명하지 못한 행동입니다."
+
+#. [trait]: id=loyal
+#: data/core/macros/traits.cfg:11
+msgid ""
+"<italic>text='Loyal'</italic> units don’t incur upkeep. Most units incur an "
+"upkeep cost at the end of every turn, which is equal to their level. Loyal "
+"units do not incur this cost."
+msgstr ""
+"<italic>text='심복'</italic> 유닛은 유지비를 요구하지 않습니다. 대부분의 유닛"
+"은 턴이 끝날때마다 그들의 레벨만큼의 유지비용이 들어갑니다. 심복 유닛은 이 비"
+"용이 들지 않습니다."
+
 #. [trait]: id=undead
-#: data/core/macros/traits.cfg:22
+#: data/core/macros/traits.cfg:25
 msgid "undead"
 msgstr "언데드"
 
 #. [trait]: id=undead
-#: data/core/macros/traits.cfg:23
+#: data/core/macros/traits.cfg:26
 msgid "female^undead"
 msgstr "언데드"
 
 #. [trait]: id=undead
 #. [trait]: id=mechanical
 #. [trait]: id=elemental
-#: data/core/macros/traits.cfg:24 data/core/macros/traits.cfg:47
-#: data/core/macros/traits.cfg:70
+#: data/core/macros/traits.cfg:27 data/core/macros/traits.cfg:53
+#: data/core/macros/traits.cfg:79
 msgid "Immune to drain, poison, and plague"
 msgstr "흡수, 독, 역병에 면역"
 
+#. [trait]: id=undead
+#: data/core/macros/traits.cfg:28
+msgid ""
+"\n"
+"\n"
+"Undead units generally have undead as their only trait. Since undead units "
+"are the bodies of the dead, risen to fight again, poison has no effect upon "
+"them. This can make them invaluable in dealing with foes who use poison in "
+"conjunction with their attacks."
+msgstr ""
+"\n"
+"\n"
+"언데드 유닛들은 일반적으로 언데드 속성만을 갖습니다. 이들은 죽은자의 시체로"
+"서 일으켜져 싸우는 존재이므로 독은 이들에게 먹히지 않습니다. 이들은 독을 쓰"
+"는 적을 상대할 때 아주 유용합니다."
+
+#. [trait]: id=undead
+#: data/core/macros/traits.cfg:28
+msgid ""
+"<italic>text='Undead'</italic> units are immune to poison, drain, and plague."
+msgstr ""
+"<italic>text='언데드'</italic> 유닛은 독, 흡수, 역병에 면역되어 있어 해당 효"
+"과가 먹히지 않습니다."
+
 #. [trait]: id=mechanical
-#: data/core/macros/traits.cfg:45
+#: data/core/macros/traits.cfg:51
 msgid "mechanical"
 msgstr "기계"
 
 #. [trait]: id=mechanical
-#: data/core/macros/traits.cfg:46
+#: data/core/macros/traits.cfg:52
 msgid "female^mechanical"
 msgstr "기계"
 
+#. [trait]: id=mechanical
+#: data/core/macros/traits.cfg:54
+msgid ""
+"\n"
+"\n"
+"Mechanical units generally have mechanical as their only trait. Since "
+"mechanical units don’t really have life, drain, poison, and plague have no "
+"effect upon them."
+msgstr ""
+"\n"
+"\n"
+"기계 유닛들은 일반적으로 기계 속성만을 갖습니다. 이들은 생명을 가진 존재가 아"
+"니기 때문에 흡수, 독, 역병의 영향을 받지 않습니다."
+
+#. [trait]: id=mechanical
+#: data/core/macros/traits.cfg:54
+msgid ""
+"<italic>text='Mechanical'</italic> units are immune to poison, drain, and "
+"plague."
+msgstr ""
+"<italic>text='기계'</italic> 유닛은 독, 흡수, 역병에 면역되어 있어 해당 효과"
+"가 먹히지 않습니다."
+
 #. [trait]: id=elemental
-#: data/core/macros/traits.cfg:68
+#: data/core/macros/traits.cfg:77
 msgid "elemental"
 msgstr "원소계"
 
 #. [trait]: id=elemental
-#: data/core/macros/traits.cfg:69
+#: data/core/macros/traits.cfg:78
 msgid "female^elemental"
 msgstr "원소계"
 
+#. [trait]: id=elemental
+#: data/core/macros/traits.cfg:80
+msgid ""
+"\n"
+"\n"
+"Elemental units generally have elemental as their only trait. Since "
+"elemental units are energy-based beings, drain, poison, and plague have no "
+"effect upon them."
+msgstr ""
+"\n"
+"\n"
+"원소계 유닛들은 일반적으로 원소계 속성만을 갖습니다. 이들은 에너지를 바탕으"
+"로 존재하기 때문에 흡수, 독, 역병은 이들에게 영향을 주지 못합니다."
+
+#. [trait]: id=elemental
+#: data/core/macros/traits.cfg:80
+msgid ""
+"<italic>text='Elemental'</italic> units are immune to poison, drain, and "
+"plague."
+msgstr ""
+"<italic>text='원소계'</italic> 유닛은 독, 흡수, 역병에 면역되어 있어 해당 효"
+"과가 먹히지 않습니다."
+
 #. [trait]: id=strong
-#: data/core/macros/traits.cfg:90
+#: data/core/macros/traits.cfg:102
 msgid "strong"
 msgstr "힘센"
 
 #. [trait]: id=strong
-#: data/core/macros/traits.cfg:91
+#: data/core/macros/traits.cfg:103
 msgid "female^strong"
 msgstr "힘센"
 
+#. [trait]: id=strong
+#: data/core/macros/traits.cfg:104
+msgid ""
+"\n"
+"\n"
+"While useful for any close-combat unit, strong is most effective for units "
+"who have a high number of swings such as the elvish fighter. Strong units "
+"can be very useful when a tiny bit of extra damage is all that is needed to "
+"turn a damaging stroke into a killing blow."
+msgstr ""
+"\n"
+"\n"
+"힘은 모든 근접 공격 유닛에게 유용하지만, 엘프 전사와 같이 높은 횟수의 타격을 "
+"가진 유닛에게 가장 유용합니다. 힘센 유닛은 명중한 타격을 치명타로 만들기 위"
+"해 아주 작은 추가 데미지가 필요할 경우에 매우 유용합니다."
+
+#. [trait]: id=strong
+#: data/core/macros/traits.cfg:104
+#, fuzzy
+#| msgid ""
+#| "<italic>text='Strong'</italic> units do 1 more damage for every "
+#| "successful strike in melee combat, and have 1 more HP."
+msgid ""
+"<italic>text='Strong'</italic> units do 1 more damage for every successful "
+"strike in melee combat, and have 1 additional hitpoint."
+msgstr ""
+"<italic>text='힘센'</italic> 유닛은 근접 공격의 성공시에 주는 데미지가 1 더 "
+"많고, HP 1을 더 받습니다."
+
 #. [trait]: id=dextrous
-#: data/core/macros/traits.cfg:108
+#: data/core/macros/traits.cfg:123
 msgid "dextrous"
 msgstr "능란함"
 
 #. [trait]: id=dextrous
-#: data/core/macros/traits.cfg:109
+#: data/core/macros/traits.cfg:124
 msgid "female^dextrous"
 msgstr "능란함"
 
+#. [trait]: id=dextrous
+#: data/core/macros/traits.cfg:125
+msgid ""
+"\n"
+"\n"
+"Dextrous is a trait possessed only by elves. The elven people are known for "
+"their uncanny grace, and their great facility with the bow. Some, however, "
+"are gifted with natural talent that exceeds their brethren. These elves "
+"inflict an additional point of damage with each arrow."
+msgstr ""
+"\n"
+"\n"
+"능란함은 오직 엘프들에게만 있는 특성입니다. 엘프 종족은 묘한 품위와 함께 활"
+"을 다루는 엄청난 능력으로 잘 알려져 있습니다. 하지만 그 중에서도 일부는 동족"
+"들을 뛰어넘는 천부적인 재능을 갖고 있습니다. 이런 엘프들은 화살 한방마다 추가"
+"적인 데미지를 가할 수 있습니다."
+
+#. [trait]: id=dextrous
+#: data/core/macros/traits.cfg:125
+msgid ""
+"<italic>text='Dextrous'</italic> units do 1 more damage for every successful "
+"strike in ranged combat."
+msgstr "<italic>text='능란한'</italic> 유닛은 원격 데미지가 1 많습니다."
+
 #. [trait]: id=quick
-#: data/core/macros/traits.cfg:122
+#: data/core/macros/traits.cfg:140
 msgid "quick"
 msgstr "신속한"
 
 #. [trait]: id=quick
-#: data/core/macros/traits.cfg:123
+#: data/core/macros/traits.cfg:141
 msgid "female^quick"
 msgstr "신속한"
 
+#. [trait]: id=quick
+#: data/core/macros/traits.cfg:142
+msgid ""
+"\n"
+"\n"
+"Quick is the most noticeable trait, particularly in slower moving units such "
+"as trolls or heavy infantry. Units with the quick trait often have greatly "
+"increased mobility in rough terrain, which can be important to consider when "
+"deploying your forces. Also, quick units aren’t quite as tough as units "
+"without this trait and are subsequently less good at holding contested "
+"positions."
+msgstr ""
+"\n"
+"\n"
+"신속함은 가장 눈에 띄는 특성으로, 이것은 특히 트롤이나 중보병같은 느린 유닛에"
+"서 두드러집니다. 신속한 특성을 가진 유닛은 종종 거친 지형에서 매우 증진된 기"
+"동력을 갖게되며, 이 점은 당신이 병력을 배치할때 중요하게 고려할 사항입니다. "
+"신속한 유닛은 이 특성을 갖지 않은 유닛에 비해 조금 허약하므로 접전 지역에 배"
+"치하기에는 별로 좋지 않습니다."
+
+#. [trait]: id=quick
+#: data/core/macros/traits.cfg:142
+#, fuzzy
+#| msgid ""
+#| "<italic>text='Quick'</italic> units have 1 extra movement point, but 5% "
+#| "less HP than usual."
+msgid ""
+"<italic>text='Quick'</italic> units have 1 extra movement point, but 5% less "
+"hitpoints than usual."
+msgstr ""
+"<italic>text='신속한'</italic> 유닛은 1의 추가 이동력을 갖지만, 보통보다 5% "
+"적은 HP를 갖게 됩니다."
+
 #. [trait]: id=intelligent
-#: data/core/macros/traits.cfg:139
+#: data/core/macros/traits.cfg:160
 msgid "intelligent"
 msgstr "영리한"
 
 #. [trait]: id=intelligent
-#: data/core/macros/traits.cfg:140
+#: data/core/macros/traits.cfg:161
 msgid "female^intelligent"
 msgstr "영리한"
 
+#. [trait]: id=intelligent
+#: data/core/macros/traits.cfg:162
+msgid ""
+"\n"
+"\n"
+"<italic>text='Intelligent'</italic> units are very useful at the beginning "
+"of a campaign as they can advance to higher levels more quickly. Later in "
+"campaigns Intelligent is not quite as useful because the <italic>text='After "
+"Maximum Level Advancement'</italic> (AMLA) is not as significant a change as "
+"advancing a level. If you have many ‘maximum level’ units you may wish to "
+"recall units with more desirable traits."
+msgstr ""
+"\n"
+"\n"
+"<italic>text='영리한'</italic> 유닛은 더 빨리 높은 레벨로 승급할 수 있어서 캠"
+"페인의 초기에 매우 유용합니다. 하지만 캠페인의 후반으로 가면 영리함은 그렇게 "
+"좋은 특성은 아닌데, 그 이유는 <italic>text='최고레벨 이후 승급'</italic> "
+"(AMLA)이 주는 변화가 레벨을 올리는 것만큼 크지 않기 때문입니다. 당신이 다수"
+"의 '최고 레벨' 유닛을 가지고 있다면 좀더 좋은 특성을 가진 유닛들을 재소집하"
+"는 것을 더 선호하게 될 것입니다."
+
+#. [trait]: id=intelligent
+#: data/core/macros/traits.cfg:162
+msgid "Intelligent units require 20% less experience than usual to advance."
+msgstr "영리한 유닛은 승급하는데 필요한 경험치가 원래의 경우보다 20% 적습니다."
+
 #. [trait]: id=resilient
-#: data/core/macros/traits.cfg:152
+#: data/core/macros/traits.cfg:176
 msgid "resilient"
 msgstr "튼튼한"
 
 #. [trait]: id=resilient
-#: data/core/macros/traits.cfg:153
+#: data/core/macros/traits.cfg:177
 msgid "female^resilient"
 msgstr "튼튼한"
 
+#. [trait]: id=resilient
+#: data/core/macros/traits.cfg:178
+msgid ""
+"\n"
+"\n"
+"Resilient units can be useful at all stages of a campaign, and this is a "
+"useful trait for all units. Resilient is often most helpful as a trait when "
+"it occurs in a unit that has some combination of low hitpoints, good "
+"defense, or high resistances. Resilient units are especially useful for "
+"holding strategic positions against opponents."
+msgstr ""
+"\n"
+"\n"
+"튼튼한 유닛은 캠페인의 모든 단계에서 유용합니다. 그리고 이것은 모든 유닛에게 "
+"유용한 특성입니다. 튼튼함은 낮은 체력과 좋은 방어도 또는 높은 저항의 조합을 "
+"가진 유닛에게 종종 가장 도움이 되는 특성입니다. 튼튼한 유닛은 적에 대한 전략"
+"적인 지점에 배치하기에 특히 좋습니다."
+
+#. [trait]: id=resilient
+#: data/core/macros/traits.cfg:178
+#, fuzzy
+#| msgid ""
+#| "<italic>text='Resilient'</italic> units have 4 HP plus 1 HP per level "
+#| "more than usual."
+msgid ""
+"<italic>text='Resilient'</italic> units have an additional 4 hitpoints, and "
+"gain 1 more per level."
+msgstr ""
+"<italic>text='튼튼한'</italic> 유닛은 다른 유닛보다 HP 4가 더 많고 레벨당 1"
+"의 HP를 추가로 더 받습니다."
+
 #. [trait]: id=healthy
-#: data/core/macros/traits.cfg:170
+#: data/core/macros/traits.cfg:197
 msgid "healthy"
 msgstr "건강한"
 
 #. [trait]: id=healthy
-#: data/core/macros/traits.cfg:171
+#: data/core/macros/traits.cfg:198
 msgid "female^healthy"
 msgstr "건강한"
 
 #. [trait]: id=healthy
-#: data/core/macros/traits.cfg:172
+#: data/core/macros/traits.cfg:199
 msgid "Always rest heals"
 msgstr "항상 휴식 회복을 받는다"
 
+#. [trait]: id=healthy
+#: data/core/macros/traits.cfg:200
+msgid ""
+"\n"
+"\n"
+"<italic>text='Healthy'</italic> units have 1 additional hitpoint, and gain 1 "
+"more per level. They will also heal 2 hitpoints each turn, regardless of "
+"whether they engaged in combat the turn before."
+msgstr ""
+
+#. [trait]: id=healthy
+#: data/core/macros/traits.cfg:200
+#, fuzzy
+#| msgid ""
+#| "Renowned for their vitality, some dwarves are sturdier than others and "
+#| "can rest even when travelling."
+msgid ""
+"Renowned for their vitality, some dwarves are sturdier than others and can "
+"rest even when traveling."
+msgstr ""
+"강인한 생명력으로 유명한 드워프 중에서도 특히 기운이 넘치는 이들은 이동중에"
+"도 휴식을 취할수 있습니다."
+
 #. [trait]: id=fearless
-#: data/core/macros/traits.cfg:192 data/core/macros/traits.cfg:208
+#: data/core/macros/traits.cfg:222 data/core/macros/traits.cfg:239
 msgid "fearless"
 msgstr "용맹한"
 
 #. [trait]: id=fearless
-#: data/core/macros/traits.cfg:193 data/core/macros/traits.cfg:209
+#: data/core/macros/traits.cfg:223 data/core/macros/traits.cfg:240
 msgid "female^fearless"
 msgstr "용맹한"
 
 #. [trait]: id=fearless
-#: data/core/macros/traits.cfg:194 data/core/macros/traits.cfg:210
+#: data/core/macros/traits.cfg:224 data/core/macros/traits.cfg:241
 msgid "Fights normally during unfavorable times of day/night"
 msgstr "낮/밤 중 좋지 않은 시간대에도 평소처럼 싸울 수 있다"
 
+#. [trait]: id=fearless
+#: data/core/macros/traits.cfg:225 data/core/macros/traits.cfg:242
+msgid "Aversion to light and dark holds no sway over these brave individuals."
+msgstr "빛이나 어둠에 대한 혐오는 이 용감한 개개인들을 지배하지 못합니다."
+
 #. [trait]: id=feral
-#: data/core/macros/traits.cfg:223
+#: data/core/macros/traits.cfg:255
 msgid "feral"
 msgstr "야생종"
 
 #. [trait]: id=feral
-#: data/core/macros/traits.cfg:224
+#: data/core/macros/traits.cfg:256
 msgid "female^feral"
 msgstr "야생종"
 
 #. [trait]: id=feral
-#: data/core/macros/traits.cfg:225
+#: data/core/macros/traits.cfg:257
 msgid "Receives only 50% defense in land-based villages"
 msgstr "땅에 있는 마을에서 방어도가 50%"
 
+#. [trait]: id=feral
+#: data/core/macros/traits.cfg:258
+msgid ""
+"Dwellings of sentient beings are not easily used for cover by feral "
+"creatures of low intelligence. As a result, <italic>text='feral'</italic> "
+"units receive a maximum of 50% defense in any land-based village regardless "
+"of base terrain."
+msgstr ""
+
 #. [trait]: id=weak
-#: data/core/macros/traits.cfg:241
+#: data/core/macros/traits.cfg:274
 msgid "weak"
 msgstr "약한"
 
 #. [trait]: id=weak
-#: data/core/macros/traits.cfg:242
+#: data/core/macros/traits.cfg:275
 msgid "female^weak"
 msgstr "약한"
 
+#. [trait]: id=weak
+#: data/core/macros/traits.cfg:276
+#, fuzzy
+#| msgid ""
+#| "Units with trait <italic>text='weak'</italic> get a −1 increment in "
+#| "hitpoints and melee damage."
+msgid ""
+"Units with the <italic>text='weak'</italic> trait receive a 1 point decrease "
+"in hitpoints and melee damage."
+msgstr ""
+"<italic>text='약한'</italic> 유닛은 체력과 근접 데미지가 각각 1 적습니다."
+
 #. [trait]: id=slow
-#: data/core/macros/traits.cfg:259
+#: data/core/macros/traits.cfg:293
 msgid "slow"
 msgstr "둔한"
 
 #. [trait]: id=slow
-#: data/core/macros/traits.cfg:260
+#: data/core/macros/traits.cfg:294
 msgid "female^slow"
 msgstr "둔한"
 
+#. [trait]: id=slow
+#: data/core/macros/traits.cfg:295
+msgid ""
+"\n"
+"\n"
+"Thick-bodied and clumsy, slow individuals of goblins and other species take "
+"a movement penalty but are compensated for it with a slight increase in "
+"endurance."
+msgstr ""
+"\n"
+"\n"
+"고블린이나 다른 종족 중에서 두툼한 몸뚱이에 투박한 개체들은 이동 능력에 제한"
+"을 받지만 그 대신에 저항력이 약간 더 좋습니다."
+
+#. [trait]: id=slow
+#: data/core/macros/traits.cfg:295
+#, fuzzy
+#| msgid ""
+#| "<italic>text='Slow'</italic> units have −1 movement but 5% more hitpoints."
+msgid ""
+"<italic>text='Slow'</italic> units have 1 less movement point but 5% more "
+"hitpoints."
+msgstr ""
+"<italic>text='둔한'</italic> 유닛은 이동력이 1 적으나 5%의 체력 보너스를 갖습"
+"니다."
+
 #. [trait]: id=dim
-#: data/core/macros/traits.cfg:276
+#: data/core/macros/traits.cfg:313
 msgid "dim"
 msgstr "돌머리"
 
 #. [trait]: id=dim
-#: data/core/macros/traits.cfg:277
+#: data/core/macros/traits.cfg:314
 msgid "female^dim"
 msgstr "돌머리"
 
+#. [trait]: id=dim
+#: data/core/macros/traits.cfg:315
+msgid ""
+"\n"
+"\n"
+"Dim is a trait all too common in goblins and other lesser species. There are "
+"reasons these species are lesser, and this is one of them."
+msgstr ""
+"\n"
+"\n"
+"돌머리는 고블린이나 기타 하등한 종족에서 매우 흔히 보이는 특성입니다. 이들 종"
+"족이 하등한 데는 다 이유가 있는데, 이것도 그 중 하나입니다."
+
+#. [trait]: id=dim
+#: data/core/macros/traits.cfg:315
+msgid ""
+"Units with trait <italic>text='dim'</italic> suffer a 20% increase in "
+"experience required to advance."
+msgstr ""
+"<italic>text='돌머리'</italic> 유닛은 승급에 필요한 경험치가 20% 더 듭니다."
+
 #. [trait]: id=aged
-#: data/core/macros/traits.cfg:289
+#: data/core/macros/traits.cfg:329
 msgid "aged"
 msgstr "늙은"
 
 #. [trait]: id=aged
-#: data/core/macros/traits.cfg:290
+#: data/core/macros/traits.cfg:330
 msgid "female^aged"
 msgstr "늙은"
+
+#. [trait]: id=aged
+#: data/core/macros/traits.cfg:331
+#, fuzzy
+#| msgid ""
+#| "Units with trait <italic>text='aged'</italic> get a −8 increment in "
+#| "hitpoints and a −1 increment in movement and melee damage."
+msgid ""
+"Units with the <italic>text='aged'</italic> trait have 8 hitpoints less and "
+"suffer from a 1 point decrease in movement and melee damage."
+msgstr ""
+"<italic>text='늙은'</italic> 유닛은 체력이 8 적으며 이동력과 근접 데미지가 각"
+"각 1 적습니다."
 
 #. [race]: id=bats
 #: data/core/units.cfg:43
@@ -5412,6 +5360,54 @@ msgstr "Battle for Wesnoth 도움말"
 #: src/help/help.cpp:241
 msgid "Parse error when parsing help text: "
 msgstr ""
+
+#~ msgid "Intelligent"
+#~ msgstr "영리한"
+
+#~ msgid "Quick"
+#~ msgstr "신속한"
+
+#~ msgid "Resilient"
+#~ msgstr "튼튼한"
+
+#~ msgid "Strong"
+#~ msgstr "힘센"
+
+#~ msgid "Fearless"
+#~ msgstr "용맹한"
+
+#~ msgid "Feral"
+#~ msgstr "야생종"
+
+#~ msgid "Loyal"
+#~ msgstr "심복"
+
+#~ msgid "trait^Undead"
+#~ msgstr "언데드"
+
+#~ msgid "trait^Mechanical"
+#~ msgstr "기계"
+
+#~ msgid "trait^Elemental"
+#~ msgstr "원소계"
+
+#~ msgid "Dextrous"
+#~ msgstr "능란한"
+
+#~ msgid "Healthy"
+#~ msgstr "건강한"
+
+#~ msgid "Dim"
+#~ msgstr "돌머리"
+
+#~ msgid "Slow"
+#~ msgstr "둔한"
+
+#~ msgid "Weak"
+#~ msgstr "약한"
+
+#~ msgid "trait^Aged"
+#~ msgstr "늙은"
 
 #, fuzzy
 #~| msgid ""

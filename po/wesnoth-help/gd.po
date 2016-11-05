@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-07-24 23:26+0300\n"
+"POT-Creation-Date: 2016-11-06 02:27+0300\n"
 "PO-Revision-Date: 2014-10-30 18:51+0100\n"
 "Last-Translator: GunChleoc <fios@foramnagaidhlig.net>\n"
 "Language-Team: Fòram na Gàidhlig\n"
@@ -21,20 +21,22 @@ msgstr ""
 "X-Generator: Virtaal 0.7.1\n"
 
 #. [time]: id=underground
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:459
-#: data/core/macros/schedules.cfg:99
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:498
+#: data/core/macros/schedules.cfg:109
 msgid "Underground"
 msgstr "Fon talamh"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:651
-#: data/core/macros/abilities.cfg:348
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:657
+#: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:657
+#: data/core/macros/abilities.cfg:346
 msgid "berserk"
 msgstr "caothach a’ chatha"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:653
-#: data/core/macros/abilities.cfg:349
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:659
+#: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:659
+#: data/core/macros/abilities.cfg:347
 msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
@@ -44,14 +46,16 @@ msgstr ""
 "dh’ionnsaighean seachad."
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:662
-#: data/core/macros/abilities.cfg:435
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:668
+#: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:668
+#: data/core/macros/abilities.cfg:433
 msgid "magical"
 msgstr "draoidheach"
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:664
-#: data/core/macros/abilities.cfg:436
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:670
+#: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:670
+#: data/core/macros/abilities.cfg:434
 msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the unit being attacked."
@@ -60,14 +64,16 @@ msgstr ""
 "comas dìona a tha aig an aonad air an toir thu ionnsaigh."
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:673
-#: data/core/macros/abilities.cfg:480
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:679
+#: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:679
+#: data/core/macros/abilities.cfg:478
 msgid "first strike"
 msgstr "ciad bhuille"
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:675
-#: data/core/macros/abilities.cfg:481
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:681
+#: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:681
+#: data/core/macros/abilities.cfg:479
 msgid ""
 "This unit always strikes first with this attack, even if they are defending."
 msgstr ""
@@ -1327,66 +1333,66 @@ msgstr "Àm an latha"
 
 #. [section]: id=introduction
 #. [topic]: id=..introduction
-#: data/core/help.cfg:17 data/core/help.cfg:97
+#: data/core/help.cfg:17 data/core/help.cfg:96
 msgid "Introduction"
 msgstr "Ro-ràdh"
 
 #. [section]: id=gameplay
 #. [topic]: id=..gameplay
-#: data/core/help.cfg:23 data/core/help.cfg:169
+#: data/core/help.cfg:23 data/core/help.cfg:168
 msgid "Gameplay"
 msgstr "A’ cluiche a’ gheama"
 
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:29 data/core/help.cfg:398
+#: data/core/help.cfg:29 data/core/help.cfg:397
 msgid "Traits"
 msgstr "Feartan"
 
 #. [section]: id=units
 #. [topic]: id=..units
-#: data/core/help.cfg:38 data/core/help.cfg:120
+#: data/core/help.cfg:37 data/core/help.cfg:119
 msgid "Units"
 msgstr "Aonadan"
 
 #. [section]: id=abilities_section
 #. [topic]: id=..abilities_section
-#: data/core/help.cfg:47 data/core/help.cfg:140
+#: data/core/help.cfg:46 data/core/help.cfg:139
 msgid "Abilities"
 msgstr "Comasan"
 
 #. [section]: id=weapon_specials
 #. [topic]: id=..weapon_specials
-#: data/core/help.cfg:55 data/core/help.cfg:149
+#: data/core/help.cfg:54 data/core/help.cfg:148
 msgid "Weapon Specials"
 msgstr "Ionnsaighean sònraichte"
 
 #. [section]: id=eras_section
 #. [topic]: id=..eras_section
-#: data/core/help.cfg:63 data/core/help.cfg:129
+#: data/core/help.cfg:62 data/core/help.cfg:128
 msgid "Eras"
 msgstr ""
 
 #. [section]: id=terrains_section
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:72 data/core/help.cfg:535
+#: data/core/help.cfg:71 data/core/help.cfg:412
 msgid "Terrains"
 msgstr "Cruthan-tìre"
 
 #. [section]: id=addons
 #. [topic]: id=..addons
-#: data/core/help.cfg:80 data/core/help.cfg:588
+#: data/core/help.cfg:79 data/core/help.cfg:465
 msgid "Add-ons"
 msgstr "Tuilleadain"
 
 #. [section]: id=commands
 #. [topic]: id=..commands
-#: data/core/help.cfg:86 data/core/help.cfg:655
+#: data/core/help.cfg:85 data/core/help.cfg:532
 msgid "Commands"
 msgstr "Àitheantan"
 
 #. [topic]: id=..introduction
-#: data/core/help.cfg:98
+#: data/core/help.cfg:97
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -1424,12 +1430,12 @@ msgstr ""
 "e fhathast dùbhlanach a bhith ’nad mhaighstir air."
 
 #. [topic]: id=about_game
-#: data/core/help.cfg:108
+#: data/core/help.cfg:107
 msgid "About the Game"
 msgstr "Mun gheama"
 
 #. [topic]: id=about_game
-#: data/core/help.cfg:109
+#: data/core/help.cfg:108
 msgid ""
 "The game takes place on a hex-based game field, where your units battle "
 "against those controlled by the computer, friends who each take turns on the "
@@ -1452,7 +1458,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..units
-#: data/core/help.cfg:121
+#: data/core/help.cfg:120
 msgid ""
 "This section will list all the units you discover as you explore the world "
 "of Wesnoth. When you see a new unit during a campaign or multiplayer "
@@ -1471,7 +1477,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..eras_section
-#: data/core/help.cfg:130
+#: data/core/help.cfg:129
 msgid ""
 "A faction is a collection of units and leaders. Factions are assigned to "
 "sides in multiplayer games.\n"
@@ -1479,7 +1485,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..eras_section
-#: data/core/help.cfg:132
+#: data/core/help.cfg:131
 msgid ""
 "An era is a collection of factions, intended to be played against one "
 "another. Besides the mainline eras that come with the game, many user-made "
@@ -1488,7 +1494,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..abilities_section
-#: data/core/help.cfg:141
+#: data/core/help.cfg:140
 msgid ""
 "Certain units have abilities that either directly affect other units or have "
 "an impact on how the unit interacts with other units. These abilities will "
@@ -1505,7 +1511,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..weapon_specials
-#: data/core/help.cfg:150
+#: data/core/help.cfg:149
 msgid ""
 "Some weapons have special features that increase the effectiveness of "
 "attacking with them. When you see a new weapon special during a campaign or "
@@ -1524,12 +1530,12 @@ msgstr ""
 "\n"
 
 #. [topic]: id=.unknown_unit
-#: data/core/help.cfg:159
+#: data/core/help.cfg:158
 msgid "Unknown Unit"
 msgstr "Aonad neo-aithnichte"
 
 #. [topic]: id=.unknown_unit
-#: data/core/help.cfg:160
+#: data/core/help.cfg:159
 msgid ""
 "\n"
 "\n"
@@ -1542,7 +1548,7 @@ msgstr ""
 "mus fhaod thu a thuairisgeul fhaicinn."
 
 #. [topic]: id=..gameplay
-#: data/core/help.cfg:170
+#: data/core/help.cfg:169
 msgid ""
 "Wesnoth is comprised of a series of battles, called "
 "<italic>text='scenarios'</italic>, that pit your troops against the troops "
@@ -1565,7 +1571,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..gameplay
-#: data/core/help.cfg:177
+#: data/core/help.cfg:176
 #, fuzzy
 #| msgid "<header>text='Units of this race'</header>"
 msgid ""
@@ -1576,7 +1582,7 @@ msgid ""
 msgstr "<header>text='Aonadan aig a’ chinneadh seo'</header>"
 
 #. [topic]: id=..gameplay
-#: data/core/help.cfg:177
+#: data/core/help.cfg:176
 #, fuzzy
 #| msgid ""
 #| "While playing, keep in mind that if you mouse-over many items in the "
@@ -1598,12 +1604,12 @@ msgstr ""
 "airson a’ chiad turais."
 
 #. [topic]: id=victory_and_defeat
-#: data/core/help.cfg:189
+#: data/core/help.cfg:188
 msgid "Victory and Defeat"
 msgstr "Buaidh is ruaig"
 
 #. [topic]: id=victory_and_defeat
-#: data/core/help.cfg:190
+#: data/core/help.cfg:189
 msgid ""
 "\n"
 "\n"
@@ -1622,7 +1628,7 @@ msgstr ""
 "a’ phutan gus leantainn air adhart."
 
 #. [topic]: id=victory_and_defeat
-#: data/core/help.cfg:190
+#: data/core/help.cfg:189
 #, fuzzy
 #| msgid ""
 #| "Pay careful attention to the <bold>text='Objectives'</bold> pop-up box at "
@@ -1650,12 +1656,12 @@ msgstr ""
 "aghaidh sèiste fad àireimh sònraichte de chuairtean."
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:199
+#: data/core/help.cfg:198
 msgid "Recruiting and Recalling"
 msgstr "Trusadh is ais-ghairm"
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:200
+#: data/core/help.cfg:199
 msgid ""
 "\n"
 "\n"
@@ -1673,7 +1679,7 @@ msgstr ""
 "urrainn dhut barrachd òir na th’ agad a chosg air trusadh."
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:200
+#: data/core/help.cfg:199
 #, fuzzy
 #| msgid ""
 #| "Each side begins with one leader in their keep. At the start of any "
@@ -1713,7 +1719,7 @@ msgstr ""
 "<bold>text='trus'</bold> gus a thrusadh."
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:202
+#: data/core/help.cfg:201
 msgid ""
 "\n"
 "\n"
@@ -1726,7 +1732,7 @@ msgstr ""
 "gach aonad air trusadh a nì atharrachadh air an stadastaireachd."
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:204
+#: data/core/help.cfg:203
 msgid ""
 "\n"
 "\n"
@@ -1741,7 +1747,7 @@ msgstr ""
 "thu liosta de na h-aonadan uile a mhair beò ann an cnàmh-sgeulan roimhe."
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:206
+#: data/core/help.cfg:205
 msgid ""
 "\n"
 "\n"
@@ -1756,12 +1762,12 @@ msgstr ""
 "steach is beathachadh'</ref> airson barrachd fiosrachaidh."
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:215
+#: data/core/help.cfg:214
 msgid "Income and Upkeep"
 msgstr "Teachd a-steach is beathachadh"
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:216
+#: data/core/help.cfg:215
 msgid ""
 "\n"
 "\n"
@@ -1783,7 +1789,7 @@ msgstr ""
 "h-ìosal."
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:216
+#: data/core/help.cfg:215
 msgid ""
 "In Wesnoth, it is not enough simply to recruit units and fight. You must "
 "watch your gold as well, especially in campaigns, where you can carry extra "
@@ -1797,7 +1803,7 @@ msgstr ""
 "<italic>text='beathachadh'</italic>."
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:218
+#: data/core/help.cfg:217
 msgid ""
 "\n"
 "\n"
@@ -1820,7 +1826,7 @@ msgstr ""
 "bhonn òir de bheathachadh a phàigheadh sa chuairt."
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:220
+#: data/core/help.cfg:219
 msgid ""
 "\n"
 "\n"
@@ -1835,7 +1841,7 @@ msgstr ""
 "teachd a-steach de 10 buinn òir air fhàgail dhut sa chuairt."
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:222
+#: data/core/help.cfg:221
 msgid ""
 "\n"
 "\n"
@@ -1857,12 +1863,12 @@ msgstr ""
 "chluicheas tu fhèin (a leithid Conall) ’na cheannard mar as trice."
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:231
+#: data/core/help.cfg:230
 msgid "Hitpoints and Experience"
 msgstr "Puingean-beatha is eòlas"
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:232
+#: data/core/help.cfg:231
 msgid ""
 "Each unit has a certain number of <italic>text='hitpoints'</italic> (HP). If "
 "the hitpoints of a unit drop below 1, the unit dies. Each unit also has a "
@@ -1877,7 +1883,7 @@ msgstr ""
 "bith is buannaichidh e eòlas le sabaid an aghaidh nàimhdean."
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:236
+#: data/core/help.cfg:235
 msgid ""
 "The hitpoints and experience points are both indicated in the status pane "
 "using two numbers (the current value and the maximum value the unit can "
@@ -1888,7 +1894,7 @@ msgstr ""
 "bhith aig an aonad)."
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:238
+#: data/core/help.cfg:237
 #, fuzzy
 #| msgid ""
 #| "The hitpoints are also indicated by an energy bar next to each unit, "
@@ -1907,14 +1913,14 @@ msgstr ""
 "<ref>dst='experience_and_advancement' text='àrdachadh'</ref> fhaighinn."
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:245
+#: data/core/help.cfg:244
 #, fuzzy
 #| msgid "Advances to: "
 msgid "Advancement"
 msgstr "Àrdaichidh e gu: "
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:246
+#: data/core/help.cfg:245
 msgid ""
 "\n"
 "\n"
@@ -1933,7 +1939,7 @@ msgstr ""
 "roghainnean àrdachaidh."
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:246
+#: data/core/help.cfg:245
 msgid ""
 "If both units survive a combat, they gain a number of experience points "
 "equal to the level of the unit they’re fighting. If a unit kills another in "
@@ -1947,7 +1953,7 @@ msgstr ""
 "airson rang 3 is mar sin air adhart."
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:248
+#: data/core/help.cfg:247
 msgid ""
 "\n"
 "\n"
@@ -1978,12 +1984,12 @@ msgstr ""
 "agad àrdachadh."
 
 #. [topic]: id=movement
-#: data/core/help.cfg:257
+#: data/core/help.cfg:256
 msgid "Movement"
 msgstr "Gluasad"
 
 #. [topic]: id=movement
-#: data/core/help.cfg:258
+#: data/core/help.cfg:257
 msgid ""
 "\n"
 "\n"
@@ -2012,7 +2018,7 @@ msgstr ""
 "<bold>text='Atharraichearan crutha-thìre'</bold>."
 
 #. [topic]: id=movement
-#: data/core/help.cfg:258
+#: data/core/help.cfg:257
 msgid ""
 "Movement in <italic>text='Battle for Wesnoth'</italic> is simple. Click on "
 "the unit you wish to move to select it, then click on the hex you wish to "
@@ -2045,7 +2051,7 @@ msgstr ""
 "cuideachd, ach faodaidh tu fhathast ionnsaigh a thoirt air aonad ri thaobh."
 
 #. [topic]: id=movement
-#: data/core/help.cfg:260
+#: data/core/help.cfg:259
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2080,7 +2086,7 @@ msgstr ""
 "fhàgail dhan dàrna taobh."
 
 #. [topic]: id=movement
-#: data/core/help.cfg:262
+#: data/core/help.cfg:261
 msgid ""
 "\n"
 "\n"
@@ -2096,12 +2102,12 @@ msgstr ""
 "a’ mhapa gus a bhacadh."
 
 #. [topic]: id=shroud_and_fog
-#: data/core/help.cfg:271
+#: data/core/help.cfg:270
 msgid "Shroud and Fog of War"
 msgstr "Sgleò agus ceò cogaidh"
 
 #. [topic]: id=shroud_and_fog
-#: data/core/help.cfg:272
+#: data/core/help.cfg:271
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
 "mechanisms that can be used separately or together. The "
@@ -2148,12 +2154,12 @@ msgstr ""
 "na cuairte agad) is glèidhidh seo an comas agad gus neo-dhèanamh."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:281
+#: data/core/help.cfg:280
 msgid "Combat"
 msgstr "Sabaid"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:282
+#: data/core/help.cfg:281
 msgid ""
 "\n"
 "\n"
@@ -2164,7 +2170,7 @@ msgstr ""
 "<header>text='Òrdugh is àireamh nam buillean'</header>"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:282
+#: data/core/help.cfg:281
 msgid ""
 "Combat in <italic>text='Battle for Wesnoth'</italic> always takes place "
 "between units in adjacent hexes. Click on your unit, and click on the enemy "
@@ -2192,7 +2198,18 @@ msgstr ""
 "teine."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:284
+#: data/core/help.cfg:283
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "The attacker gets the first strike, then the defender retaliates. Each "
+#| "strike either hits, doing a given amount of damage, or misses, doing no "
+#| "damage at all. Strikes alternate until each unit has used up all of its "
+#| "strikes. The number of strikes a unit has varies; for instance, an elvish "
+#| "fighter with a 5–4 attack may strike 4 times, each successful strike "
+#| "dealing 5 damage, while an orcish grunt with a 9–2 attack can only strike "
+#| "twice (but at 9 damage for each hit)."
 msgid ""
 "\n"
 "\n"
@@ -2200,8 +2217,8 @@ msgid ""
 "strike either hits, doing a given amount of damage, or misses, doing no "
 "damage at all. Strikes alternate until each unit has used up all of its "
 "strikes. The number of strikes a unit has varies; for instance, an elvish "
-"fighter with a 5–4 attack may strike 4 times, each successful strike dealing "
-"5 damage, while an orcish grunt with a 9–2 attack can only strike twice (but "
+"fighter with a 5×4 attack may strike 4 times, each successful strike dealing "
+"5 damage, while an orcish grunt with a 9×2 attack can only strike twice (but "
 "at 9 damage for each hit)."
 msgstr ""
 "\n"
@@ -2218,7 +2235,7 @@ msgstr ""
 "le 9 dochainn le gach buille shoirbheachail)."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:286
+#: data/core/help.cfg:285
 msgid ""
 "\n"
 "\n"
@@ -2229,7 +2246,7 @@ msgstr ""
 "<header>text='Seans bualaidh'</header>"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:288
+#: data/core/help.cfg:287
 msgid ""
 "\n"
 "\n"
@@ -2254,7 +2271,7 @@ msgstr ""
 "a’ chruth-tìre air a bheil esan ’na sheasamh."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:290
+#: data/core/help.cfg:289
 msgid ""
 "\n"
 "\n"
@@ -2274,7 +2291,7 @@ msgstr ""
 "de 60% air a char as lugha aig gìomanaich ge b’ e dè an cruth-tìre."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:292
+#: data/core/help.cfg:291
 msgid ""
 "\n"
 "\n"
@@ -2285,12 +2302,23 @@ msgstr ""
 "<header>text=Dochann</header>"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:294
+#: data/core/help.cfg:293
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "Each strike which hits causes a base amount of damage depending on the "
+#| "attack type. For instance, an elvish fighter with a 5–4 attack does 5 "
+#| "base damage. This is usually modified by two things: "
+#| "<ref>dst='damage_types_and_resistance' text='resistance'</ref> and "
+#| "<ref>dst='time_of_day' text='time of day'</ref>. To see how base damage "
+#| "is modified by the circumstances, select <bold>text='Damage "
+#| "Calculations'</bold> in the attack selection menu."
 msgid ""
 "\n"
 "\n"
 "Each strike which hits causes a base amount of damage depending on the "
-"attack type. For instance, an elvish fighter with a 5–4 attack does 5 base "
+"attack type. For instance, an elvish fighter with a 5×4 attack does 5 base "
 "damage. This is usually modified by two things: "
 "<ref>dst='damage_types_and_resistance' text='resistance'</ref> and "
 "<ref>dst='time_of_day' text='time of day'</ref>. To see how base damage is "
@@ -2308,7 +2336,7 @@ msgstr ""
 "dochainn'</bold> ann an clàr-taice roghnachadh na h-ionnsaighe."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:296
+#: data/core/help.cfg:295
 msgid ""
 "\n"
 "\n"
@@ -2327,12 +2355,12 @@ msgstr ""
 "’na ionnsaighear."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:304
+#: data/core/help.cfg:303
 msgid "Damage Types and Resistance"
 msgstr "Seòrsaichean de dhochann is comas-seasaimh"
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:305
+#: data/core/help.cfg:304
 msgid ""
 "\n"
 "\n"
@@ -2353,7 +2381,7 @@ msgstr ""
 "leis an t-seòrsa dochainn sin."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:305
+#: data/core/help.cfg:304
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
 "attacks: <italic>text='blade, pierce, and impact damage'</italic>. "
@@ -2372,7 +2400,7 @@ msgstr ""
 "an dochann a gheibh iad bho sheòrsaichean ionnsaighe sònraichte."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:307
+#: data/core/help.cfg:306
 msgid ""
 "\n"
 "\n"
@@ -2387,7 +2415,7 @@ msgstr ""
 "bhualaidh is teine is uabhasach so-leònta an aghaidh dochainn dìomhair."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:309
+#: data/core/help.cfg:308
 msgid ""
 "\n"
 "\n"
@@ -2402,12 +2430,12 @@ msgstr ""
 "aig an dìonadair an aghaidh an t-seòrsa dochainn."
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:317
+#: data/core/help.cfg:316
 msgid "Orbs"
 msgstr "Cruinnichean"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:318
+#: data/core/help.cfg:317
 msgid ""
 "On top of the energy bar shown next to each unit of yours is an orb. For "
 "units you control, this orb is:"
@@ -2416,19 +2444,19 @@ msgstr ""
 "aonadan fo do smachd, tha an cruinne seo:"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:320
+#: data/core/help.cfg:319
 msgid " green if it hasn’t moved this turn,"
 msgstr " uaine mura h-eil an t-aonad air gluasad sa chuairt seo,"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:321
+#: data/core/help.cfg:320
 msgid " yellow if it has moved, but could still move further or attack, or"
 msgstr ""
 " buidhe ma tha e air gluasad, ach ma tha gluasad no ionnsaigh air fhàgail "
 "dha, no"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:322
+#: data/core/help.cfg:321
 #, fuzzy
 #| msgid ""
 #| " black if it can no longer move or attack, or the user ended the unit’s "
@@ -2440,24 +2468,24 @@ msgstr ""
 "chuir an cleachdaiche crìoch air cuairt an aonaid."
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:323
+#: data/core/help.cfg:322
 msgid " blue if the unit is an ally you do not control."
 msgstr " gorm mas e caidreabhach a th’ ann air nach eil smachd agad."
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:324
+#: data/core/help.cfg:323
 #, fuzzy
 #| msgid " Enemy units have a red orb on top of their energy bar."
 msgid " Enemy units have no orb on top of their energy bar."
 msgstr " Tha cruinne dearg os cionn a’ bhàir-lùiths aig aonadan nàmhad."
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:331
+#: data/core/help.cfg:330
 msgid "Time of Day"
 msgstr "Àm an latha"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:332
+#: data/core/help.cfg:331
 #, fuzzy
 #| msgid ""
 #| "The time of day affects the damage of certain units as follows:\n"
@@ -2486,7 +2514,7 @@ msgstr ""
 "an latha."
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:337
+#: data/core/help.cfg:336
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2511,21 +2539,21 @@ msgstr ""
 #. [time]: id=dawn
 #. [time]: id=dawn_hour
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:341 data/core/macros/schedules.cfg:6
-#: data/core/macros/schedules.cfg:265 data/test/maps/pathfind_1.cfg:64
+#: data/core/help.cfg:340 data/core/macros/schedules.cfg:14
+#: data/core/macros/schedules.cfg:275 data/test/maps/pathfind_1.cfg:64
 msgid "Dawn"
 msgstr "Camhanach"
 
 #. [time]: id=morning
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:342 data/core/macros/schedules.cfg:17
+#: data/core/help.cfg:341 data/core/macros/schedules.cfg:26
 #: data/test/maps/pathfind_1.cfg:75
 msgid "Morning"
 msgstr "Madainn"
 
 #. [time]: id=afternoon
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:343 data/core/macros/schedules.cfg:35
+#: data/core/help.cfg:342 data/core/macros/schedules.cfg:44
 #: data/test/maps/pathfind_1.cfg:86
 msgid "Afternoon"
 msgstr "Feasgar"
@@ -2533,27 +2561,27 @@ msgstr "Feasgar"
 #. [time]: id=dusk
 #. [time]: id=dusk_hour
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:344 data/core/macros/schedules.cfg:44
-#: data/core/macros/schedules.cfg:377 data/test/maps/pathfind_1.cfg:97
+#: data/core/help.cfg:343 data/core/macros/schedules.cfg:53
+#: data/core/macros/schedules.cfg:396 data/test/maps/pathfind_1.cfg:97
 msgid "Dusk"
 msgstr "Ciaradh"
 
 #. [time]: id=first_watch
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:345 data/core/macros/schedules.cfg:55
+#: data/core/help.cfg:344 data/core/macros/schedules.cfg:65
 #: data/test/maps/pathfind_1.cfg:108
 msgid "First Watch"
 msgstr "A’ chiad fhaire"
 
 #. [time]: id=second_watch
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:346 data/core/macros/schedules.cfg:79
+#: data/core/help.cfg:345 data/core/macros/schedules.cfg:89
 #: data/test/maps/pathfind_1.cfg:119
 msgid "Second Watch"
 msgstr "An dàrna faire"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:348
+#: data/core/help.cfg:347
 #, fuzzy
 #| msgid ""
 #| "Keep in mind that some scenarios take place underground, where it is "
@@ -2566,26 +2594,26 @@ msgstr ""
 "an oidhche ann an-còmhnaidh!"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:350
+#: data/core/help.cfg:349
 msgid ""
 "Some underground locations are illuminated. They are perpetually "
 "intermediate between day and night.\n"
 msgstr ""
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:352
+#: data/core/help.cfg:351
 msgid ""
 "Some role-playing scenarios take place indoors — these regions are similarly "
 "intermediate."
 msgstr ""
 
 #. [topic]: id=healing
-#: data/core/help.cfg:359
+#: data/core/help.cfg:358
 msgid "Healing"
 msgstr "Slànachadh"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:360
+#: data/core/help.cfg:359
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2604,7 +2632,7 @@ msgstr ""
 "a thoirt no dìon, slànaichidh e 2 PhB san ath chuairt aige."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:360
+#: data/core/help.cfg:359
 msgid ""
 "In combat, your units will inevitably take damage. There are several ways to "
 "heal your units. However, with the exception of resting, these do not stack; "
@@ -2612,7 +2640,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=healing
-#: data/core/help.cfg:362
+#: data/core/help.cfg:361
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2629,7 +2657,7 @@ msgstr ""
 "toiseach cuairte 8 PB."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:363
+#: data/core/help.cfg:362
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2647,7 +2675,7 @@ msgstr ""
 "obrachail."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:364
+#: data/core/help.cfg:363
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2671,7 +2699,7 @@ msgstr ""
 "bacadh air dochann bho phuinsean air an aonad seo."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:365
+#: data/core/help.cfg:364
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2692,7 +2720,7 @@ msgstr ""
 "aige cuideachd)."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:366
+#: data/core/help.cfg:365
 msgid ""
 "\n"
 "• <bold>text='Advancement'</bold>: When a unit <ref>dst='advancement' "
@@ -2701,7 +2729,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=healing
-#: data/core/help.cfg:367
+#: data/core/help.cfg:366
 msgid ""
 "\n"
 "\n"
@@ -2717,7 +2745,7 @@ msgstr ""
 "eadar cnàmh-sgeulan."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:369
+#: data/core/help.cfg:368
 msgid ""
 "\n"
 "\n"
@@ -2725,7 +2753,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=healing
-#: data/core/help.cfg:371
+#: data/core/help.cfg:370
 msgid ""
 "\n"
 "\n"
@@ -2737,12 +2765,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=wrap_up
-#: data/core/help.cfg:379
+#: data/core/help.cfg:378
 msgid "Wrap Up"
 msgstr "Facal-deiridh"
 
 #. [topic]: id=wrap_up
-#: data/core/help.cfg:380
+#: data/core/help.cfg:379
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "basic strategy, or familiarize yourself with <ref>dst='..traits_section' "
@@ -2758,17 +2786,17 @@ msgstr ""
 "tlachd is guma math a thèid leat!"
 
 #. [topic]: id=about
-#: data/core/help.cfg:385
+#: data/core/help.cfg:384
 msgid "ingame_help_item^Contributors"
 msgstr "Co-thabhartaichean"
 
 #. [topic]: id=license
-#: data/core/help.cfg:391
+#: data/core/help.cfg:390
 msgid "License"
 msgstr "Ceadachas"
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:400
+#: data/core/help.cfg:399
 #, fuzzy
 #| msgid ""
 #| "Most units have two traits. However, undead units are assigned the single "
@@ -2791,7 +2819,7 @@ msgstr ""
 "an toirt do dh’aonad air thuaiream nuair a thèid a thrusadh."
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:400
+#: data/core/help.cfg:399
 msgid ""
 "Traits are modifications that change a unit’s attributes slightly. They are "
 "usually randomly assigned to a unit when it is recruited. The traits "
@@ -2800,7 +2828,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:402
+#: data/core/help.cfg:401
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2825,7 +2853,7 @@ msgstr ""
 "<ref>dst='traits_strong' text='làidir'</ref>."
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:404
+#: data/core/help.cfg:403
 msgid ""
 "\n"
 "\n"
@@ -2838,468 +2866,8 @@ msgid ""
 "\n"
 msgstr ""
 
-#. [topic]: id=traits_intelligent
-#: data/core/help.cfg:414
-msgid "Intelligent"
-msgstr "Glic"
-
-#. [topic]: id=traits_intelligent
-#: data/core/help.cfg:415
-msgid ""
-"\n"
-"\n"
-"<italic>text='Intelligent'</italic> units are very useful at the beginning "
-"of a campaign as they can advance to higher levels more quickly. Later in "
-"campaigns Intelligent is not quite as useful because the <italic>text='After "
-"Maximum Level Advancement'</italic> (AMLA) is not as significant a change as "
-"advancing a level. If you have many ‘maximum level’ units you may wish to "
-"recall units with more desirable traits."
-msgstr ""
-"\n"
-"\n"
-"Tha aonadan <italic>text='glice'</italic> glè fheumail aig toiseach iomairte "
-"oir ruigidh iad rangan nas àirde nas luaithe. Nas fhaide air adhart san "
-"iomairt, chan eil glic a cheart cho feumail air sgàth ’s nach eil "
-"atharraichean mòra ann le <italic>text='Àrdachadh an dèidh an rang as "
-"àirde'</italic> (ÀDRÀ). Ma tha aonadan ‘as àirde ìre’ agad, ’s dòcha gum b’ "
-"fhearr leat aonadan le feartan na b’ ion-mhiannaichte ais-ghairm."
-
-#. [topic]: id=traits_intelligent
-#: data/core/help.cfg:415
-msgid "Intelligent units require 20% less experience than usual to advance."
-msgstr ""
-"Tha 20% as lugha a dhìth air aonadan glice na tha àbhaisteach de dh’eòlas "
-"gus àrdachadh."
-
-#. [topic]: id=traits_quick
-#: data/core/help.cfg:422
-msgid "Quick"
-msgstr "Luath"
-
-#. [topic]: id=traits_quick
-#: data/core/help.cfg:423
-msgid ""
-"\n"
-"\n"
-"Quick is the most noticeable trait, particularly in slower moving units such "
-"as trolls or heavy infantry. Units with the quick trait often have greatly "
-"increased mobility in rough terrain, which can be important to consider when "
-"deploying your forces. Also, quick units aren’t quite as tough as units "
-"without this trait and are subsequently less good at holding contested "
-"positions."
-msgstr ""
-"\n"
-"\n"
-"Is <italic>text='luath'</italic> am feart a mhothaicheas tu nas fhasa, gu h-"
-"àraidh le aonadan nach gluais astar mòr a leithid athaich no coisridh throm. "
-"Cuiridh am feart luath gu mòr ri gluasadachd an aonaid air cruth-tìre garbh "
-"agus tha e cudromach seo a chur ’nad chuimhne nuair a chuireas tu ro-"
-"innleachd airson an fheachd agad an gnìomh. A bharrachd air sin, chan eil "
-"aonadan luatha cho buan ’s a tha aonadan eile is chan eil iad cho math air "
-"seasamh ann an suidheachaidhean strìtheil."
-
-#. [topic]: id=traits_quick
-#: data/core/help.cfg:423
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Quick'</italic> units have 1 extra movement point, but 5% "
-#| "less HP than usual."
-msgid ""
-"<italic>text='Quick'</italic> units have 1 extra movement point, but 5% less "
-"hitpoints than usual."
-msgstr ""
-"Tha 1 phuing gluasaid a bharrachd air aonadan <italic>text='luatha'</"
-"italic>, ach tha 5% nas lugha de PhB aca na tha àbhaisteach."
-
-#. [topic]: id=traits_resilient
-#: data/core/help.cfg:430
-msgid "Resilient"
-msgstr "Spionnadail"
-
-#. [topic]: id=traits_resilient
-#: data/core/help.cfg:431
-msgid ""
-"\n"
-"\n"
-"Resilient units can be useful at all stages of a campaign, and this is a "
-"useful trait for all units. Resilient is often most helpful as a trait when "
-"it occurs in a unit that has some combination of low hitpoints, good "
-"defense, or high resistances. Resilient units are especially useful for "
-"holding strategic positions against opponents."
-msgstr ""
-"\n"
-"\n"
-"Faodaidh aonadan <italic>text='spionnadail'</italic> a bhith feumail anns "
-"gach suidheachadh iomairte is tha e ’na fheart feumail dha dh’aonad sam "
-"bith. Tha e feumail gu h-àraidh nuair a bhios e aig aonad aig a bheil "
-"measgachadh de dhìon math, comasan-seasaimh àrda no beagan phuingean-beatha. "
-"Tha aonadan spionnadail cianail fhèin feumail gus seasamh air àiteachan "
-"cudromach an aghaidh nan nàimhdean."
-
-#. [topic]: id=traits_resilient
-#: data/core/help.cfg:431
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Resilient'</italic> units have 4 HP plus 1 HP per level "
-#| "more than usual."
-msgid ""
-"<italic>text='Resilient'</italic> units have an additional 4 hitpoints, and "
-"gain 1 more per level."
-msgstr ""
-"Tha 4 PB agus 1 PhB gach rang a bharrachd na tha àbhaisteach aig aonadan "
-"<italic>text='spionnadail'</italic>."
-
-#. [topic]: id=traits_strong
-#: data/core/help.cfg:438
-msgid "Strong"
-msgstr "Làidir"
-
-#. [topic]: id=traits_strong
-#: data/core/help.cfg:439
-msgid ""
-"\n"
-"\n"
-"While useful for any close-combat unit, strong is most effective for units "
-"who have a high number of swings such as the elvish fighter. Strong units "
-"can be very useful when a tiny bit of extra damage is all that is needed to "
-"turn a damaging stroke into a killing blow."
-msgstr ""
-"\n"
-"\n"
-"Ged a tha e feumail do gach aonad aig a bheil ionnsaigh dlùth, tha am feart "
-"<italic>text='làidir'</italic> nas èifeachdaiche le aonadan aig a bheil "
-"iomadh ionnsaigh a leithid a’ chathaich shìthiche. Faodaidh aonadan làidir a "
-"bhith glè fheumail nuair nach eil ach glè bheag a bharrachd de dhochann a "
-"dhìth gus nàmhaid a sgrios."
-
-#. [topic]: id=traits_strong
-#: data/core/help.cfg:439
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Strong'</italic> units do 1 more damage for every "
-#| "successful strike in melee combat, and have 1 more HP."
-msgid ""
-"<italic>text='Strong'</italic> units do 1 more damage for every successful "
-"strike in melee combat, and have 1 additional hitpoint."
-msgstr ""
-"Nì aonadan <italic>text='làidir'</italic> 1 dhochann a bharrachd airson gach "
-"buille shoirbheachail ann an cath dlùth is tha 1 PhB a bharrachd aca."
-
-#. [topic]: id=traits_fearless
-#: data/core/help.cfg:446
-msgid "Fearless"
-msgstr "Neo-eagalach"
-
-#. [topic]: id=traits_fearless
-#: data/core/help.cfg:447
-msgid "Aversion to light and dark holds no sway over these brave individuals."
-msgstr ""
-"Tha na saighdearan calma seo coma mu dhèidhinn eagail ron dorchadas no solas."
-
-#. [topic]: id=traits_feral
-#: data/core/help.cfg:452
-msgid "Feral"
-msgstr "Allaidh"
-
-#. [topic]: id=traits_feral
-#: data/core/help.cfg:453
-msgid ""
-"Dwellings of sentient beings are not easily used for cover by feral "
-"creatures of low intelligence. As a result, <italic>text='feral'</italic> "
-"units receive a maximum of 50% defense in any land-based village regardless "
-"of base terrain."
-msgstr ""
-"Chan urrainn do chreutairean allaidh le tuigse bheag na h-àiteachan-"
-"còmhnaidh aig bithean mothachail a chleachdadh mar chòmhdachadh gu furasta. "
-"A thoradh air sin, gheibh aonadan <italic>text='allaidh'</italic> 50% de "
-"dhìon air a char as motha ann am baile air talamh, ge b’ e dè an cruth-tìre."
-
-#. [topic]: id=traits_loyal
-#: data/core/help.cfg:458
-msgid "Loyal"
-msgstr "Dìleas"
-
-#. [topic]: id=traits_loyal
-#: data/core/help.cfg:459
-msgid ""
-"\n"
-"\n"
-"During campaigns, certain units may opt to join the player’s forces of their "
-"own volition. These units are marked with the loyal trait. Although they may "
-"require payment to be recalled, they never incur any upkeep costs. This can "
-"make them invaluable during a long campaign, when gold is in short supply. "
-"This trait is never given to recruited units, so it may be unwise to dismiss "
-"such units or to send them to a foolish death."
-msgstr ""
-"\n"
-"\n"
-"Ann an iomairt, ’s mathaid gun roghnaich cuid a dh’aonadan gun lean iad am "
-"feachd agad le an toil fhèin. Tha am feart <italic>text='dìleas'</italic> "
-"aig na h-aonadan seo. Ged a bhiodh òr a dhìth ort fhathast gus an ath-"
-"ghairm, cha bhi cosgaisean beathachaidh ’nan lùib. Faodaidh seo an dèanamh "
-"fìor-luachmhor feadh iomairte faide nuair a dh’fhàsas an t-òr gann ort. Cha "
-"tèid am feart seo a thoirt do dh’aonadan air an trusadh idir, mar sin ’s mòr "
-"a ghabhainn mun cuirinn à dreuchd no do bhàs gòrach iad."
-
-#. [topic]: id=traits_loyal
-#: data/core/help.cfg:459
-msgid ""
-"<italic>text='Loyal'</italic> units don’t incur upkeep. Most units incur an "
-"upkeep cost at the end of every turn, which is equal to their level. Loyal "
-"units do not incur this cost."
-msgstr ""
-"Chan eil cosgais bheathachaidh an lùib aonadan <italic>text='dìleas'</"
-"italic>. Leis a’ mhòrchuid a dh’aonadan, feumaidh tu beathachadh a "
-"phàigheadh aig deireadh gach cuairte a tha co-ionnan ris an rang. Cha phàigh "
-"thu seo airson aonadan dìleas."
-
-#. [topic]: id=traits_undead
-#: data/core/help.cfg:466
-msgid "trait^Undead"
-msgstr "Closach"
-
-#. [topic]: id=traits_undead
-#: data/core/help.cfg:467
-msgid ""
-"\n"
-"\n"
-"Undead units generally have undead as their only trait. Since undead units "
-"are the bodies of the dead, risen to fight again, poison has no effect upon "
-"them. This can make them invaluable in dealing with foes who use poison in "
-"conjunction with their attacks."
-msgstr ""
-"\n"
-"\n"
-"’S e <italic>text='closach'</italic> an aon fheart a tha aig aonadan "
-"closaich. Bhon a tha aonadan closaich ’nam bodhaigean nam mairbh air an "
-"èirigh ach an dèan iad sabaid a-rithist, chan eil buaidh aig puinsean orra. "
-"Faodaidh iad a bhith fìor-luachmhor an aghaidh nàimhdean a chleachdas "
-"puinsean leis an ionnsaighean."
-
-#. [topic]: id=traits_undead
-#: data/core/help.cfg:467
-msgid ""
-"<italic>text='Undead'</italic> units are immune to poison, drain, and plague."
-msgstr ""
-"Tha dìonachd aig aonadan <italic>text='closaich'</italic> an aghaidh "
-"puinsein, sùigh is plàighe."
-
-#. [topic]: id=traits_mechanical
-#: data/core/help.cfg:474
-msgid "trait^Mechanical"
-msgstr "Innealach"
-
-#. [topic]: id=traits_mechanical
-#: data/core/help.cfg:475
-msgid ""
-"\n"
-"\n"
-"Mechanical units generally have mechanical as their only trait. Since "
-"mechanical units don’t really have life, drain, poison, and plague have no "
-"effect upon them."
-msgstr ""
-"\n"
-"\n"
-"’S e <italic>text='innealach'</italic> an aon fheart a tha aig aonadan "
-"innealach. Bhon nach eil beatha aig innealan, chan eil buaidh aig sùgh, "
-"puinsean no plàigh orra."
-
-#. [topic]: id=traits_mechanical
-#: data/core/help.cfg:475
-msgid ""
-"<italic>text='Mechanical'</italic> units are immune to poison, drain, and "
-"plague."
-msgstr ""
-"Tha dìonachd aig aonadan <italic>text='innealach'</italic> an aghaidh "
-"puinsein, sùigh is plàighe."
-
-#. [topic]: id=traits_elemental
-#: data/core/help.cfg:482
-msgid "trait^Elemental"
-msgstr "Dùileach"
-
-#. [topic]: id=traits_elemental
-#: data/core/help.cfg:483
-msgid ""
-"\n"
-"\n"
-"Elemental units generally have elemental as their only trait. Since "
-"elemental units are energy-based beings, drain, poison, and plague have no "
-"effect upon them."
-msgstr ""
-"\n"
-"\n"
-"’S e <italic>text='dùileach'</italic> an aon fheart a tha aig aonadan "
-"dùileach. Bhon a tha iad beò air bonn cumhachd, chan eil buaidh aig sùgh, "
-"puinsean no plàigh orra."
-
-#. [topic]: id=traits_elemental
-#: data/core/help.cfg:483
-msgid ""
-"<italic>text='Elemental'</italic> units are immune to poison, drain, and "
-"plague."
-msgstr ""
-"Tha dìonachd aig aonadan <italic>text='dùileach'</italic> an aghaidh "
-"puinsein, sùigh is plàighe."
-
-#. [topic]: id=traits_dextrous
-#: data/core/help.cfg:490
-msgid "Dextrous"
-msgstr "Teòma"
-
-#. [topic]: id=traits_dextrous
-#: data/core/help.cfg:491
-msgid ""
-"\n"
-"\n"
-"Dextrous is a trait possessed only by elves. The elven people are known for "
-"their uncanny grace, and their great facility with the bow. Some, however, "
-"are gifted with natural talent that exceeds their brethren. These elves "
-"inflict an additional point of damage with each arrow."
-msgstr ""
-"\n"
-"\n"
-"Chan fhaod ach aonadan nan sìthichean a bhith <italic>text='teòma'</italic>. "
-"Tha na sìthichean ainmeil airson an loinne drùidhtiche is an t-sàr-chomais "
-"aca leis a’ bhogha. Co-dhiù, tha tàlant nàdarra aig cuid a bheir barr air an "
-"corr. Nì na sìthichean seo puing dochainn a bharrachd le gach saighead."
-
-#. [topic]: id=traits_dextrous
-#: data/core/help.cfg:491
-msgid ""
-"<italic>text='Dextrous'</italic> units do 1 more damage for every successful "
-"strike in ranged combat."
-msgstr ""
-"Nì aonadan <italic>text='teòma'</italic> 1 dhochann a bharrachd airson gach "
-"buille shoirbheachail ann an sabaid astair."
-
-#. [topic]: id=traits_healthy
-#: data/core/help.cfg:498
-msgid "Healthy"
-msgstr "Fallain"
-
-#. [topic]: id=traits_healthy
-#: data/core/help.cfg:499
-msgid ""
-"\n"
-"\n"
-"<italic>text='Healthy'</italic> units have 1 additional hitpoint, and gain 1 "
-"more per level. They will also heal 2 hitpoints each turn, regardless of "
-"whether they engaged in combat the turn before."
-msgstr ""
-
-#. [topic]: id=traits_healthy
-#: data/core/help.cfg:499
-#, fuzzy
-#| msgid ""
-#| "Renowned for their vitality, some dwarves are sturdier than others and "
-#| "can rest even when travelling."
-msgid ""
-"Renowned for their vitality, some dwarves are sturdier than others and can "
-"rest even when traveling."
-msgstr ""
-"Cliùiteach airson am beòthalachd, tha cuid de na troichean nas buana na càch "
-"agus ’s urrainn dhaibh fois a ghabhail fiù ’s nuair a bhios iad a’ siubhal."
-
-#. [topic]: id=traits_dim
-#: data/core/help.cfg:506
-msgid "Dim"
-msgstr "Dùr"
-
-#. [topic]: id=traits_dim
-#: data/core/help.cfg:507
-msgid ""
-"\n"
-"\n"
-"Dim is a trait all too common in goblins and other lesser species. There are "
-"reasons these species are lesser, and this is one of them."
-msgstr ""
-"\n"
-"\n"
-"Tha am feart <italic>text='dùr'</italic> fiadhaich cumanta am measg ’nam "
-"bòcan is ’nan cinealan nas lugha eile. Tha adhbharan ann carson a tha iad "
-"beag agus ’s e seo aonan dhiubh."
-
-#. [topic]: id=traits_dim
-#: data/core/help.cfg:507
-msgid ""
-"Units with trait <italic>text='dim'</italic> suffer a 20% increase in "
-"experience required to advance."
-msgstr ""
-"Tha 20% de dh’eòlas a bharrachd a dhìth air aonadan <italic>text='dùra'</"
-"italic> gus àrdachadh."
-
-#. [topic]: id=traits_slow
-#: data/core/help.cfg:514
-msgid "Slow"
-msgstr "Slaodach"
-
-#. [topic]: id=traits_slow
-#: data/core/help.cfg:515
-msgid ""
-"\n"
-"\n"
-"Thick-bodied and clumsy, slow individuals of goblins and other species take "
-"a movement penalty but are compensated for it with a slight increase in "
-"endurance."
-msgstr ""
-"\n"
-"\n"
-"Le bodhaigean tiugha is cearbach, gheibh an fheadhainn "
-"<italic>text='slaodach'</italic> aig na bòcain is cinealan eile peanas "
-"gluasaid ach air an làimh eile tha beagan fulangais a bharrachd aca."
-
-#. [topic]: id=traits_slow
-#: data/core/help.cfg:515
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Slow'</italic> units have −1 movement but 5% more hitpoints."
-msgid ""
-"<italic>text='Slow'</italic> units have 1 less movement point but 5% more "
-"hitpoints."
-msgstr ""
-"Tha -1 gluasad aig aonadan <italic>text='slaodach'</italic> ach 5% a "
-"bharrachd de phuingean-beatha."
-
-#. [topic]: id=traits_weak
-#: data/core/help.cfg:522
-msgid "Weak"
-msgstr "Lag"
-
-#. [topic]: id=traits_weak
-#: data/core/help.cfg:523
-#, fuzzy
-#| msgid ""
-#| "Units with trait <italic>text='weak'</italic> get a −1 increment in "
-#| "hitpoints and melee damage."
-msgid ""
-"Units with the <italic>text='weak'</italic> trait receive a 1 point decrease "
-"in hitpoints and melee damage."
-msgstr ""
-"Gheibh aonadan leis an fheart <italic>text='lag'</italic> 1 phuing-bheatha "
-"nas lugha agus nì iad 1 phuing nas lugha de dhochann ann an sabaid dhlùth."
-
-#. [topic]: id=traits_aged
-#: data/core/help.cfg:528
-msgid "trait^Aged"
-msgstr "Aosta"
-
-#. [topic]: id=traits_aged
-#: data/core/help.cfg:529
-#, fuzzy
-#| msgid ""
-#| "Units with trait <italic>text='aged'</italic> get a −8 increment in "
-#| "hitpoints and a −1 increment in movement and melee damage."
-msgid ""
-"Units with the <italic>text='aged'</italic> trait have 8 hitpoints less and "
-"suffer from a 1 point decrease in movement and melee damage."
-msgstr ""
-"Gheibh aonadan leis an fheart <italic>text='aosta'</italic> 8 puingean-"
-"beatha is 1 phuing gluasaid as lugha agus nì iad 1 phuing as lugha de "
-"dhochann ann an sabaid dhlùth."
-
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:536
+#: data/core/help.cfg:413
 msgid ""
 "\n"
 "\n"
@@ -3308,7 +2876,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:536
+#: data/core/help.cfg:413
 msgid ""
 "Game maps feature a variety of terrains that affect both unit movement and a "
 "unit’s defensive capability in combat."
@@ -3317,7 +2885,7 @@ msgstr ""
 "air gluasad nan aonadan is an comas dìona aca ann an cath."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:538
+#: data/core/help.cfg:415
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3333,7 +2901,7 @@ msgstr ""
 "<header>text='Goireasan cruthachaidh'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:540
+#: data/core/help.cfg:417
 msgid ""
 "\n"
 "\n"
@@ -3344,7 +2912,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:544
+#: data/core/help.cfg:421
 msgid ""
 "\n"
 "\n"
@@ -3354,7 +2922,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:546
+#: data/core/help.cfg:423
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3370,7 +2938,7 @@ msgstr ""
 "<header>text='Goireasan cruthachaidh'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:548
+#: data/core/help.cfg:425
 msgid ""
 "\n"
 "\n"
@@ -3384,7 +2952,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:552
+#: data/core/help.cfg:429
 msgid ""
 "\n"
 "\n"
@@ -3399,7 +2967,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:556
+#: data/core/help.cfg:433
 msgid ""
 "\n"
 "\n"
@@ -3410,7 +2978,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:560
+#: data/core/help.cfg:437
 msgid ""
 "\n"
 "\n"
@@ -3421,7 +2989,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:564
+#: data/core/help.cfg:441
 msgid ""
 "\n"
 "\n"
@@ -3431,7 +2999,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:566
+#: data/core/help.cfg:443
 msgid ""
 "\n"
 "\n"
@@ -3442,7 +3010,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:568
+#: data/core/help.cfg:445
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3458,7 +3026,7 @@ msgstr ""
 "<header>text='Goireasan cruthachaidh'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:570
+#: data/core/help.cfg:447
 msgid ""
 "\n"
 "\n"
@@ -3468,7 +3036,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:572
+#: data/core/help.cfg:449
 msgid ""
 "\n"
 "\n"
@@ -3479,7 +3047,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:574
+#: data/core/help.cfg:451
 msgid ""
 "\n"
 "\n"
@@ -3488,7 +3056,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:576
+#: data/core/help.cfg:453
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3505,7 +3073,7 @@ msgstr ""
 "<header>text='Goireasan cruthachaidh'</header>"
 
 #. [topic]: id=..addons
-#: data/core/help.cfg:589
+#: data/core/help.cfg:466
 msgid ""
 "The degree of customization offered by the Wesnoth engine allows players to "
 "create their own game content, including new scenarios, campaigns, and much "
@@ -3519,12 +3087,12 @@ msgstr ""
 "\n"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:599
+#: data/core/help.cfg:476
 msgid "Using Add-ons"
 msgstr "A’ cleachdadh tuilleadain"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:600
+#: data/core/help.cfg:477
 msgid ""
 "\n"
 "\n"
@@ -3535,7 +3103,7 @@ msgstr ""
 "<header>text='Iomairtean agus cnàmh-sgeulan'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:600
+#: data/core/help.cfg:477
 msgid ""
 "The game supports different types of add-on content, which are not all "
 "available in every gameplay mode."
@@ -3544,7 +3112,7 @@ msgstr ""
 "dhiubh ri fhaighinn anns gach uile modh cluiche."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:602
+#: data/core/help.cfg:479
 msgid ""
 "\n"
 "\n"
@@ -3562,7 +3130,7 @@ msgstr ""
 "<italic>text='Iomairtean'</italic> air an sgrìn tiotail."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:604
+#: data/core/help.cfg:481
 msgid ""
 "\n"
 "\n"
@@ -3574,7 +3142,7 @@ msgstr ""
 "chluicheadair'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:606
+#: data/core/help.cfg:483
 msgid ""
 "\n"
 "\n"
@@ -3590,7 +3158,7 @@ msgstr ""
 "cuideachd a bheir seata de chnàmh-sgeulan ioma-chluicheadair fa leth dhut."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:608
+#: data/core/help.cfg:485
 msgid ""
 "\n"
 "\n"
@@ -3601,7 +3169,7 @@ msgstr ""
 "<header>text='Linntean agus buidhnean ioma-chluicheadair'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:610
+#: data/core/help.cfg:487
 msgid ""
 "\n"
 "\n"
@@ -3627,7 +3195,7 @@ msgstr ""
 "shuidhicheas iad na taobhan agus sgiobaidhean aca."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:614
+#: data/core/help.cfg:491
 msgid ""
 "\n"
 "\n"
@@ -3636,7 +3204,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:616
+#: data/core/help.cfg:493
 msgid ""
 "\n"
 "\n"
@@ -3647,7 +3215,7 @@ msgstr ""
 "<header>text='Atharraichean ioma-chluicheadair'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:618
+#: data/core/help.cfg:495
 msgid ""
 "\n"
 "\n"
@@ -3665,7 +3233,7 @@ msgstr ""
 "thaghadh ’s a rèiteachadh nuair a chruthaicheas tu geama ùr."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:620
+#: data/core/help.cfg:497
 msgid ""
 "\n"
 "\n"
@@ -3676,7 +3244,7 @@ msgstr ""
 "<header>text='Goireasan cruthachaidh'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:622
+#: data/core/help.cfg:499
 msgid ""
 "\n"
 "\n"
@@ -3696,12 +3264,12 @@ msgstr ""
 "nuair a luchdaicheas tu a-nuas iad ma bhios feum orra."
 
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:631
+#: data/core/help.cfg:508
 msgid "Installing Add-ons"
 msgstr "A’ stàladh tuilleadain"
 
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:632
+#: data/core/help.cfg:509
 msgid ""
 "User-made add-ons can be obtained and updated through the <italic>text='Add-"
 "ons'</italic> option in the main menu. After connecting to the add-ons "
@@ -3753,12 +3321,12 @@ msgstr ""
 "stàlaidh agus cànanan rim faighinn."
 
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:645
+#: data/core/help.cfg:522
 msgid "Removing Add-ons"
 msgstr "A’ toirt tuilleadain air falbh"
 
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:646
+#: data/core/help.cfg:523
 msgid ""
 "To remove add-ons, choose <bold>text='Remove Add-ons'</bold> in the add-ons "
 "server connection dialog. You will be presented with options to remove any "
@@ -3782,7 +3350,7 @@ msgstr ""
 "manaidsear fhaidhlichean an t-siostam-obrachaidh agad."
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:661
+#: data/core/help.cfg:538
 #, fuzzy
 #| msgid "General commands"
 msgid "General Commands"
@@ -3791,7 +3359,7 @@ msgstr "Àitheantan choitcheann"
 #. [topic]: id=general_commands
 #. [topic]: id=mp_commands
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:663 data/core/help.cfg:706 data/core/help.cfg:744
+#: data/core/help.cfg:540 data/core/help.cfg:583 data/core/help.cfg:621
 msgid ""
 "These commands can either be issued via the command line by prefixing them "
 "with ':' (as shown here) or via the chat by prefixing them with '/' (press "
@@ -3805,7 +3373,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:665
+#: data/core/help.cfg:542
 msgid ""
 "\n"
 "Clear chat messages.\n"
@@ -3816,7 +3384,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:668
+#: data/core/help.cfg:545
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -3833,7 +3401,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:672
+#: data/core/help.cfg:549
 msgid ""
 "\n"
 "Set or toggle player on side between human and AI player. The player/client "
@@ -3854,7 +3422,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:675
+#: data/core/help.cfg:552
 msgid ""
 "\n"
 "Display the controller status of a side.\n"
@@ -3865,7 +3433,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:678
+#: data/core/help.cfg:555
 msgid ""
 "\n"
 "Toggle the display of the current frames per second.\n"
@@ -3876,7 +3444,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:681
+#: data/core/help.cfg:558
 msgid ""
 "\n"
 "Switch a log domain to a different log level.\n"
@@ -3888,7 +3456,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:684
+#: data/core/help.cfg:561
 msgid ""
 "\n"
 "Redraws the screen and reloads any image files that have been changed.\n"
@@ -3900,7 +3468,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:687
+#: data/core/help.cfg:564
 msgid ""
 "\n"
 "Bring up theme selection menu.\n"
@@ -3911,7 +3479,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:690
+#: data/core/help.cfg:567
 msgid ""
 "\n"
 "Quit the scenario (without prompting).\n"
@@ -3922,7 +3490,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:693
+#: data/core/help.cfg:570
 msgid ""
 "\n"
 "Save the game (without prompting).\n"
@@ -3933,7 +3501,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:696
+#: data/core/help.cfg:573
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
@@ -3942,14 +3510,14 @@ msgstr ""
 "Sàbhail an geama is fàg an cnàmh-sgeul (gun mo bhrodadh)."
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:705
+#: data/core/help.cfg:582
 #, fuzzy
 #| msgid "Multiplayer commands"
 msgid "Multiplayer Commands"
 msgstr "Àitheantan ioma-chluicheadair"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:708
+#: data/core/help.cfg:585
 msgid ""
 "\n"
 "Ban a user in a multiplayer game by the IP address used by that username and "
@@ -3966,7 +3534,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:711
+#: data/core/help.cfg:588
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -3989,7 +3557,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:714
+#: data/core/help.cfg:591
 msgid ""
 "\n"
 "Launch a dialog to assist the host in changing the human controllers of "
@@ -4002,7 +3570,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:717
+#: data/core/help.cfg:594
 msgid ""
 "\n"
 "Toggle the idle state for a side. The host may make a side idle after a "
@@ -4015,7 +3583,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:720
+#: data/core/help.cfg:597
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. If you "
@@ -4031,7 +3599,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:723
+#: data/core/help.cfg:600
 msgid ""
 "\n"
 "Send a private message to a user. When in a game, it is not possible to send "
@@ -4046,7 +3614,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:726
+#: data/core/help.cfg:603
 msgid ""
 "\n"
 "Mute a specific observer. If no username is supplied the muted usernames are "
@@ -4060,7 +3628,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:729
+#: data/core/help.cfg:606
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off.\n"
@@ -4071,7 +3639,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:732
+#: data/core/help.cfg:609
 msgid ""
 "\n"
 "Unban a user in a multiplayer game by the IP address used by that username. "
@@ -4086,7 +3654,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:735
+#: data/core/help.cfg:612
 msgid ""
 "\n"
 "Unmute a specific observer. If no username is supplied the list of muted "
@@ -4098,14 +3666,14 @@ msgstr ""
 "cleachdaiche air am mùchadh fhalamhachadh."
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:743
+#: data/core/help.cfg:620
 #, fuzzy
 #| msgid "Debug mode commands"
 msgid "Debug Mode Commands"
 msgstr "Àitheantan a’ mhodh dhì-bhugachaidh"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:746
+#: data/core/help.cfg:623
 msgid ""
 "\n"
 "Brings up a menu for choosing a scenario to immediately advance to in a "
@@ -4118,7 +3686,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:749
+#: data/core/help.cfg:626
 msgid ""
 "\n"
 "Create a unit of the specified type on the selected hex.\n"
@@ -4130,7 +3698,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:752
+#: data/core/help.cfg:629
 msgid ""
 "\n"
 "Toggle fog/shroud for the current side.\n"
@@ -4141,7 +3709,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:755
+#: data/core/help.cfg:632
 msgid ""
 "\n"
 "Adds the specified amount to the current side’s gold.\n"
@@ -4153,7 +3721,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:758
+#: data/core/help.cfg:635
 msgid ""
 "\n"
 "Immediately advances to the next scenario in a campaign.\n"
@@ -4164,7 +3732,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:761
+#: data/core/help.cfg:638
 msgid ""
 "\n"
 "Manually set a gamestate variable to value.\n"
@@ -4175,7 +3743,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:764
+#: data/core/help.cfg:641
 msgid ""
 "\n"
 "Show a gamestate variable.\n"
@@ -4186,7 +3754,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:767
+#: data/core/help.cfg:644
 msgid ""
 "\n"
 "Manually fire the specified event.\n"
@@ -4197,7 +3765,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:770
+#: data/core/help.cfg:647
 msgid ""
 "\n"
 "Modifies the specified property of the selected unit. Example: :unit "
@@ -4210,7 +3778,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:773
+#: data/core/help.cfg:650
 msgid ""
 "\n"
 "Makes the selected unit level up N times. Example: :unit advances=2"
@@ -4483,17 +4051,17 @@ msgstr ""
 "a’ chiad aonad nàmhad a chì e a h-uile gluasad a bhiodh air fhàgail dha."
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:335
+#: data/core/macros/abilities.cfg:333
 msgid "feeding"
 msgstr "ithe"
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:336
+#: data/core/macros/abilities.cfg:334
 msgid "female^feeding"
 msgstr "ithe"
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:337
+#: data/core/macros/abilities.cfg:335
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a unit, "
 "except units that are immune to plague."
@@ -4502,12 +4070,12 @@ msgstr ""
 "mharbhas e aonad aig nach eil dìon an aghaidh plàighe."
 
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:359
+#: data/core/macros/abilities.cfg:357
 msgid "backstab"
 msgstr "cùl-shàthadh"
 
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:360
+#: data/core/macros/abilities.cfg:358
 msgid ""
 "When used offensively, this attack deals double damage if there is an enemy "
 "of the target on the opposite side of the target, and that unit is not "
@@ -4520,12 +4088,12 @@ msgstr ""
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:380 data/core/macros/abilities.cfg:391
+#: data/core/macros/abilities.cfg:378 data/core/macros/abilities.cfg:389
 msgid "plague"
 msgstr "plàigh"
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
-#: data/core/macros/abilities.cfg:381
+#: data/core/macros/abilities.cfg:379
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
 "identical to and on the same side as the unit with the Plague attack. This "
@@ -4536,7 +4104,7 @@ msgstr ""
 "plàighe. Chan obraich seo an aghaidh aonadan closaich no ann am baile."
 
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:392
+#: data/core/macros/abilities.cfg:390
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a "
 "Walking Corpse on the same side as the unit with the Plague attack. This "
@@ -4547,12 +4115,12 @@ msgstr ""
 "plàighe. Chan obraich seo an aghaidh aonadan closach no ann am baile."
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:402
+#: data/core/macros/abilities.cfg:400
 msgid "slows"
 msgstr "maille"
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:403
+#: data/core/macros/abilities.cfg:401
 msgid ""
 "This attack slows the target until it ends a turn. Slow halves the damage "
 "caused by attacks and the movement cost for a slowed unit is doubled. A unit "
@@ -4565,12 +4133,12 @@ msgstr ""
 "bàr-taoibh aige nuair a thaghas tu e."
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:412
+#: data/core/macros/abilities.cfg:410
 msgid "petrifies"
 msgstr "clach-thionndadh"
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:413
+#: data/core/macros/abilities.cfg:411
 msgid ""
 "This attack petrifies the target, turning it to stone. Units that have been "
 "petrified may not move or attack."
@@ -4579,12 +4147,12 @@ msgstr ""
 "dh’aonadan air an an tionndadh gu cloich gluasad no ionnsaighean a thoirt."
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:422
+#: data/core/macros/abilities.cfg:420
 msgid "marksman"
 msgstr "gìomanach"
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:423
+#: data/core/macros/abilities.cfg:421
 msgid ""
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr ""
@@ -4592,12 +4160,12 @@ msgstr ""
 "ann gum buail e gu soirbheachail."
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:447
+#: data/core/macros/abilities.cfg:445
 msgid "swarm"
 msgstr "sgaoth"
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:448
+#: data/core/macros/abilities.cfg:446
 msgid ""
 "The number of strikes of this attack decreases when the unit is wounded. The "
 "number of strikes is proportional to the percentage of its of maximum HP the "
@@ -4610,12 +4178,12 @@ msgstr ""
 "motha aig an aonad, chan fhaigh e ach 1/4 de na buillean aige."
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:457
+#: data/core/macros/abilities.cfg:455
 msgid "charge"
 msgstr "cruinn-leum"
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:458
+#: data/core/macros/abilities.cfg:456
 msgid ""
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target’s counterattack."
@@ -4625,12 +4193,12 @@ msgstr ""
 "uiread de dhochann bho fhrith-ionnsaigh leis an targaid."
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:470
+#: data/core/macros/abilities.cfg:468
 msgid "drains"
 msgstr "sùgh"
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:471
+#: data/core/macros/abilities.cfg:469
 msgid ""
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
@@ -4639,12 +4207,12 @@ msgstr ""
 "leis an dàrna leth de dhochann a nì e (air a chuairteachadh sìos)."
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:490
+#: data/core/macros/abilities.cfg:488
 msgid "poison"
 msgstr "puinsean"
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:491
+#: data/core/macros/abilities.cfg:489
 #, fuzzy
 #| msgid ""
 #| "This attack poisons living targets. Poisoned units lose 8 HP every turn "
@@ -4666,198 +4234,198 @@ msgstr "Duais PhB as motha +3, PE as motha +20%"
 
 #. [time]: id=midday
 #. [time]: id=midday_hour
-#: data/core/macros/schedules.cfg:26 data/core/macros/schedules.cfg:312
+#: data/core/macros/schedules.cfg:35 data/core/macros/schedules.cfg:329
 msgid "Midday"
 msgstr "Meadhan-latha"
 
 #. [time]: id=midnight
 #. [time]: id=midnight_hour
-#: data/core/macros/schedules.cfg:67 data/core/macros/schedules.cfg:181
+#: data/core/macros/schedules.cfg:77 data/core/macros/schedules.cfg:191
 msgid "Midnight"
 msgstr "Meadhan-oidhche"
 
 #. [time]: id=indoors
-#: data/core/macros/schedules.cfg:91
+#: data/core/macros/schedules.cfg:101
 msgid "Indoors"
 msgstr "Taobh a-staigh"
 
 #. [time]: id=deep_underground
-#: data/core/macros/schedules.cfg:111
+#: data/core/macros/schedules.cfg:121
 msgid "Deep Underground"
 msgstr "Fada fon talamh"
 
 #. [time]: id=second_watch_hour1
-#: data/core/macros/schedules.cfg:193
+#: data/core/macros/schedules.cfg:203
 msgid "Second Watch — First Hour"
 msgstr "An dàrna faire — a’ chiad uair"
 
 #. [time]: id=second_watch_hour2
-#: data/core/macros/schedules.cfg:205
+#: data/core/macros/schedules.cfg:215
 msgid "Second Watch — Second Hour"
 msgstr "An dàrna faire — an dàrna uair"
 
 #. [time]: id=second_watch_hour3
-#: data/core/macros/schedules.cfg:217
+#: data/core/macros/schedules.cfg:227
 msgid "Second Watch — Third Hour"
 msgstr "An dàrna faire — an treas uair"
 
 #. [time]: id=second_watch_hour4
-#: data/core/macros/schedules.cfg:229
+#: data/core/macros/schedules.cfg:239
 msgid "Second Watch — Fourth Hour"
 msgstr "An dàrna faire — a’ cheathramh uair"
 
 #. [time]: id=second_watch_hour5
-#: data/core/macros/schedules.cfg:241
+#: data/core/macros/schedules.cfg:251
 msgid "Second Watch — Fifth Hour"
 msgstr "An dàrna faire — a’ chòigeamh uair"
 
 #. [time]: id=second_watch_hour6
-#: data/core/macros/schedules.cfg:253
+#: data/core/macros/schedules.cfg:263
 msgid "Second Watch — Sixth Hour"
 msgstr "An dàrna faire — an t-siathamh uair"
 
 #. [time]: id=morning_hour1
-#: data/core/macros/schedules.cfg:276
+#: data/core/macros/schedules.cfg:287
 msgid "Morning — First Hour"
 msgstr "Madainn — a’ chiad uair"
 
 #. [time]: id=morning_hour2
-#: data/core/macros/schedules.cfg:285
+#: data/core/macros/schedules.cfg:299
 msgid "Morning — Second Hour"
 msgstr "Madainn — an dàrna uair"
 
 #. [time]: id=morning_hour3
-#: data/core/macros/schedules.cfg:294
+#: data/core/macros/schedules.cfg:311
 msgid "Morning — Third Hour"
 msgstr "Madainn — an treas uair"
 
 #. [time]: id=morning_hour4
-#: data/core/macros/schedules.cfg:303
+#: data/core/macros/schedules.cfg:320
 msgid "Morning — Fourth Hour"
 msgstr "Madainn — a’ cheathramh uair"
 
 #. [time]: id=afternoon_hour1
-#: data/core/macros/schedules.cfg:321
+#: data/core/macros/schedules.cfg:338
 msgid "Afternoon — First Hour"
 msgstr "Feasgar — a’ chiad uair"
 
 #. [time]: id=afternoon_hour2
-#: data/core/macros/schedules.cfg:330
+#: data/core/macros/schedules.cfg:347
 msgid "Afternoon — Second Hour"
 msgstr "Feasgar — an dàrna uair"
 
 #. [time]: id=afternoon_hour3
-#: data/core/macros/schedules.cfg:339
+#: data/core/macros/schedules.cfg:356
 msgid "Afternoon — Third Hour"
 msgstr "Feasgar — an treas uair"
 
 #. [time]: id=afternoon_hour4
-#: data/core/macros/schedules.cfg:348
+#: data/core/macros/schedules.cfg:365
 msgid "Afternoon — Fourth Hour"
 msgstr "Feasgar — a’ cheathramh uair"
 
 #. [time]: id=afternoon_hour5
-#: data/core/macros/schedules.cfg:357
+#: data/core/macros/schedules.cfg:374
 msgid "Afternoon — Fifth Hour"
 msgstr "Feasgar — a’ chòigeamh uair"
 
 #. [time]: id=afternoon_hour6
-#: data/core/macros/schedules.cfg:366
+#: data/core/macros/schedules.cfg:385
 msgid "Afternoon — Sixth Hour"
 msgstr "Feasgar — an t-siathamh uair"
 
 #. [time]: id=first_watch_hour1
-#: data/core/macros/schedules.cfg:388
+#: data/core/macros/schedules.cfg:408
 msgid "First Watch — First Hour"
 msgstr "A’ chiad fhaire — a’ chiad uair"
 
 #. [time]: id=first_watch_hour2
-#: data/core/macros/schedules.cfg:400
+#: data/core/macros/schedules.cfg:420
 msgid "First Watch — Second Hour"
 msgstr "A’ chiad fhaire — an dàrna uair"
 
 #. [time]: id=first_watch_hour3
-#: data/core/macros/schedules.cfg:412
+#: data/core/macros/schedules.cfg:432
 msgid "First Watch — Third Hour"
 msgstr "A’ chiad fhaire — an treas uair"
 
 #. [time]: id=first_watch_hour4
-#: data/core/macros/schedules.cfg:424
+#: data/core/macros/schedules.cfg:444
 msgid "First Watch — Fourth Hour"
 msgstr "A’ chiad fhaire — a’ cheathramh uair"
 
 #. [time]: id=dawn1
-#: data/core/macros/schedules.cfg:478
+#: data/core/macros/schedules.cfg:498
 msgid "First Dawn"
 msgstr "A’ chiad chamhanach"
 
 #. [time]: id=dawn2
-#: data/core/macros/schedules.cfg:488
+#: data/core/macros/schedules.cfg:509
 msgid "Second Dawn"
 msgstr "An dàrna camhanach"
 
 #. [time]: id=morning1
-#: data/core/macros/schedules.cfg:498
+#: data/core/macros/schedules.cfg:520
 msgid "First Morning"
 msgstr "A’ chiad madainn"
 
 #. [time]: id=morning2
-#: data/core/macros/schedules.cfg:507
+#: data/core/macros/schedules.cfg:532
 msgid "Second Morning"
 msgstr "An dàrna madainn"
 
 #. [time]: id=midday1
-#: data/core/macros/schedules.cfg:516
+#: data/core/macros/schedules.cfg:544
 msgid "First Midday"
 msgstr "A’ chiad mheadhan-latha"
 
 #. [time]: id=midday2
-#: data/core/macros/schedules.cfg:525
+#: data/core/macros/schedules.cfg:556
 msgid "Second Midday"
 msgstr "An dàrna meadhan-latha"
 
 #. [time]: id=afternoon1
-#: data/core/macros/schedules.cfg:534
+#: data/core/macros/schedules.cfg:568
 msgid "First Afternoon"
 msgstr "A’ chiad fheasgar"
 
 #. [time]: id=afternoon2
-#: data/core/macros/schedules.cfg:543
+#: data/core/macros/schedules.cfg:580
 msgid "Second Afternoon"
 msgstr "An dàrna feasgar"
 
 #. [time]: id=dusk1
-#: data/core/macros/schedules.cfg:552
+#: data/core/macros/schedules.cfg:592
 msgid "First Dusk"
 msgstr "A’ chiad chiaradh"
 
 #. [time]: id=dusk2
-#: data/core/macros/schedules.cfg:562
+#: data/core/macros/schedules.cfg:603
 msgid "Second Dusk"
 msgstr "An dàrna ciaradh"
 
 #. [time]: id=short_dark
-#: data/core/macros/schedules.cfg:572
+#: data/core/macros/schedules.cfg:614
 msgid "The Short Dark"
 msgstr "An dorchadas goirid"
 
 #. [time]: id=long_dark1
-#: data/core/macros/schedules.cfg:584
+#: data/core/macros/schedules.cfg:626
 msgid "The Long Dark (1)"
 msgstr "An dorchadas fada (1)"
 
 #. [time]: id=long_dark2
-#: data/core/macros/schedules.cfg:596
+#: data/core/macros/schedules.cfg:638
 msgid "The Long Dark (2)"
 msgstr "An dorchadas fada (2)"
 
 #. [time]: id=long_dark3
-#: data/core/macros/schedules.cfg:610
+#: data/core/macros/schedules.cfg:652
 msgid "The Long Dark (3)"
 msgstr "An dorchadas fada (3)"
 
 #. [time]: id=long_dark4
-#: data/core/macros/schedules.cfg:622
+#: data/core/macros/schedules.cfg:664
 msgid "The Long Dark (4)"
 msgstr "An dorchadas fada (4)"
 
@@ -5109,179 +4677,559 @@ msgstr "dìleas"
 msgid "Zero upkeep"
 msgstr "Gun bheathachadh"
 
+#. [trait]: id=loyal
+#: data/core/macros/traits.cfg:11
+msgid ""
+"\n"
+"\n"
+"During campaigns, certain units may opt to join the player’s forces of their "
+"own volition. These units are marked with the loyal trait. Although they may "
+"require payment to be recalled, they never incur any upkeep costs. This can "
+"make them invaluable during a long campaign, when gold is in short supply. "
+"This trait is never given to recruited units, so it may be unwise to dismiss "
+"such units or to send them to a foolish death."
+msgstr ""
+"\n"
+"\n"
+"Ann an iomairt, ’s mathaid gun roghnaich cuid a dh’aonadan gun lean iad am "
+"feachd agad le an toil fhèin. Tha am feart <italic>text='dìleas'</italic> "
+"aig na h-aonadan seo. Ged a bhiodh òr a dhìth ort fhathast gus an ath-"
+"ghairm, cha bhi cosgaisean beathachaidh ’nan lùib. Faodaidh seo an dèanamh "
+"fìor-luachmhor feadh iomairte faide nuair a dh’fhàsas an t-òr gann ort. Cha "
+"tèid am feart seo a thoirt do dh’aonadan air an trusadh idir, mar sin ’s mòr "
+"a ghabhainn mun cuirinn à dreuchd no do bhàs gòrach iad."
+
+#. [trait]: id=loyal
+#: data/core/macros/traits.cfg:11
+msgid ""
+"<italic>text='Loyal'</italic> units don’t incur upkeep. Most units incur an "
+"upkeep cost at the end of every turn, which is equal to their level. Loyal "
+"units do not incur this cost."
+msgstr ""
+"Chan eil cosgais bheathachaidh an lùib aonadan <italic>text='dìleas'</"
+"italic>. Leis a’ mhòrchuid a dh’aonadan, feumaidh tu beathachadh a "
+"phàigheadh aig deireadh gach cuairte a tha co-ionnan ris an rang. Cha phàigh "
+"thu seo airson aonadan dìleas."
+
 #. [trait]: id=undead
-#: data/core/macros/traits.cfg:22
+#: data/core/macros/traits.cfg:25
 msgid "undead"
 msgstr "closach"
 
 #. [trait]: id=undead
-#: data/core/macros/traits.cfg:23
+#: data/core/macros/traits.cfg:26
 msgid "female^undead"
 msgstr "closach"
 
 #. [trait]: id=undead
 #. [trait]: id=mechanical
 #. [trait]: id=elemental
-#: data/core/macros/traits.cfg:24 data/core/macros/traits.cfg:47
-#: data/core/macros/traits.cfg:70
+#: data/core/macros/traits.cfg:27 data/core/macros/traits.cfg:53
+#: data/core/macros/traits.cfg:79
 msgid "Immune to drain, poison, and plague"
 msgstr "Dìonachd an aghaidh puinsein, sùigh is plàighe."
 
+#. [trait]: id=undead
+#: data/core/macros/traits.cfg:28
+msgid ""
+"\n"
+"\n"
+"Undead units generally have undead as their only trait. Since undead units "
+"are the bodies of the dead, risen to fight again, poison has no effect upon "
+"them. This can make them invaluable in dealing with foes who use poison in "
+"conjunction with their attacks."
+msgstr ""
+"\n"
+"\n"
+"’S e <italic>text='closach'</italic> an aon fheart a tha aig aonadan "
+"closaich. Bhon a tha aonadan closaich ’nam bodhaigean nam mairbh air an "
+"èirigh ach an dèan iad sabaid a-rithist, chan eil buaidh aig puinsean orra. "
+"Faodaidh iad a bhith fìor-luachmhor an aghaidh nàimhdean a chleachdas "
+"puinsean leis an ionnsaighean."
+
+#. [trait]: id=undead
+#: data/core/macros/traits.cfg:28
+msgid ""
+"<italic>text='Undead'</italic> units are immune to poison, drain, and plague."
+msgstr ""
+"Tha dìonachd aig aonadan <italic>text='closaich'</italic> an aghaidh "
+"puinsein, sùigh is plàighe."
+
 #. [trait]: id=mechanical
-#: data/core/macros/traits.cfg:45
+#: data/core/macros/traits.cfg:51
 msgid "mechanical"
 msgstr "innealach"
 
 #. [trait]: id=mechanical
-#: data/core/macros/traits.cfg:46
+#: data/core/macros/traits.cfg:52
 msgid "female^mechanical"
 msgstr "innealach"
 
+#. [trait]: id=mechanical
+#: data/core/macros/traits.cfg:54
+msgid ""
+"\n"
+"\n"
+"Mechanical units generally have mechanical as their only trait. Since "
+"mechanical units don’t really have life, drain, poison, and plague have no "
+"effect upon them."
+msgstr ""
+"\n"
+"\n"
+"’S e <italic>text='innealach'</italic> an aon fheart a tha aig aonadan "
+"innealach. Bhon nach eil beatha aig innealan, chan eil buaidh aig sùgh, "
+"puinsean no plàigh orra."
+
+#. [trait]: id=mechanical
+#: data/core/macros/traits.cfg:54
+msgid ""
+"<italic>text='Mechanical'</italic> units are immune to poison, drain, and "
+"plague."
+msgstr ""
+"Tha dìonachd aig aonadan <italic>text='innealach'</italic> an aghaidh "
+"puinsein, sùigh is plàighe."
+
 #. [trait]: id=elemental
-#: data/core/macros/traits.cfg:68
+#: data/core/macros/traits.cfg:77
 msgid "elemental"
 msgstr "dùileach"
 
 #. [trait]: id=elemental
-#: data/core/macros/traits.cfg:69
+#: data/core/macros/traits.cfg:78
 msgid "female^elemental"
 msgstr "dùileach"
 
+#. [trait]: id=elemental
+#: data/core/macros/traits.cfg:80
+msgid ""
+"\n"
+"\n"
+"Elemental units generally have elemental as their only trait. Since "
+"elemental units are energy-based beings, drain, poison, and plague have no "
+"effect upon them."
+msgstr ""
+"\n"
+"\n"
+"’S e <italic>text='dùileach'</italic> an aon fheart a tha aig aonadan "
+"dùileach. Bhon a tha iad beò air bonn cumhachd, chan eil buaidh aig sùgh, "
+"puinsean no plàigh orra."
+
+#. [trait]: id=elemental
+#: data/core/macros/traits.cfg:80
+msgid ""
+"<italic>text='Elemental'</italic> units are immune to poison, drain, and "
+"plague."
+msgstr ""
+"Tha dìonachd aig aonadan <italic>text='dùileach'</italic> an aghaidh "
+"puinsein, sùigh is plàighe."
+
 #. [trait]: id=strong
-#: data/core/macros/traits.cfg:90
+#: data/core/macros/traits.cfg:102
 msgid "strong"
 msgstr "làidir"
 
 #. [trait]: id=strong
-#: data/core/macros/traits.cfg:91
+#: data/core/macros/traits.cfg:103
 msgid "female^strong"
 msgstr "làidir"
 
+#. [trait]: id=strong
+#: data/core/macros/traits.cfg:104
+msgid ""
+"\n"
+"\n"
+"While useful for any close-combat unit, strong is most effective for units "
+"who have a high number of swings such as the elvish fighter. Strong units "
+"can be very useful when a tiny bit of extra damage is all that is needed to "
+"turn a damaging stroke into a killing blow."
+msgstr ""
+"\n"
+"\n"
+"Ged a tha e feumail do gach aonad aig a bheil ionnsaigh dlùth, tha am feart "
+"<italic>text='làidir'</italic> nas èifeachdaiche le aonadan aig a bheil "
+"iomadh ionnsaigh a leithid a’ chathaich shìthiche. Faodaidh aonadan làidir a "
+"bhith glè fheumail nuair nach eil ach glè bheag a bharrachd de dhochann a "
+"dhìth gus nàmhaid a sgrios."
+
+#. [trait]: id=strong
+#: data/core/macros/traits.cfg:104
+#, fuzzy
+#| msgid ""
+#| "<italic>text='Strong'</italic> units do 1 more damage for every "
+#| "successful strike in melee combat, and have 1 more HP."
+msgid ""
+"<italic>text='Strong'</italic> units do 1 more damage for every successful "
+"strike in melee combat, and have 1 additional hitpoint."
+msgstr ""
+"Nì aonadan <italic>text='làidir'</italic> 1 dhochann a bharrachd airson gach "
+"buille shoirbheachail ann an cath dlùth is tha 1 PhB a bharrachd aca."
+
 #. [trait]: id=dextrous
-#: data/core/macros/traits.cfg:108
+#: data/core/macros/traits.cfg:123
 msgid "dextrous"
 msgstr "teòma"
 
 #. [trait]: id=dextrous
-#: data/core/macros/traits.cfg:109
+#: data/core/macros/traits.cfg:124
 msgid "female^dextrous"
 msgstr "teòma"
 
+#. [trait]: id=dextrous
+#: data/core/macros/traits.cfg:125
+msgid ""
+"\n"
+"\n"
+"Dextrous is a trait possessed only by elves. The elven people are known for "
+"their uncanny grace, and their great facility with the bow. Some, however, "
+"are gifted with natural talent that exceeds their brethren. These elves "
+"inflict an additional point of damage with each arrow."
+msgstr ""
+"\n"
+"\n"
+"Chan fhaod ach aonadan nan sìthichean a bhith <italic>text='teòma'</italic>. "
+"Tha na sìthichean ainmeil airson an loinne drùidhtiche is an t-sàr-chomais "
+"aca leis a’ bhogha. Co-dhiù, tha tàlant nàdarra aig cuid a bheir barr air an "
+"corr. Nì na sìthichean seo puing dochainn a bharrachd le gach saighead."
+
+#. [trait]: id=dextrous
+#: data/core/macros/traits.cfg:125
+msgid ""
+"<italic>text='Dextrous'</italic> units do 1 more damage for every successful "
+"strike in ranged combat."
+msgstr ""
+"Nì aonadan <italic>text='teòma'</italic> 1 dhochann a bharrachd airson gach "
+"buille shoirbheachail ann an sabaid astair."
+
 #. [trait]: id=quick
-#: data/core/macros/traits.cfg:122
+#: data/core/macros/traits.cfg:140
 msgid "quick"
 msgstr "luath"
 
 #. [trait]: id=quick
-#: data/core/macros/traits.cfg:123
+#: data/core/macros/traits.cfg:141
 msgid "female^quick"
 msgstr "luath"
 
+#. [trait]: id=quick
+#: data/core/macros/traits.cfg:142
+msgid ""
+"\n"
+"\n"
+"Quick is the most noticeable trait, particularly in slower moving units such "
+"as trolls or heavy infantry. Units with the quick trait often have greatly "
+"increased mobility in rough terrain, which can be important to consider when "
+"deploying your forces. Also, quick units aren’t quite as tough as units "
+"without this trait and are subsequently less good at holding contested "
+"positions."
+msgstr ""
+"\n"
+"\n"
+"Is <italic>text='luath'</italic> am feart a mhothaicheas tu nas fhasa, gu h-"
+"àraidh le aonadan nach gluais astar mòr a leithid athaich no coisridh throm. "
+"Cuiridh am feart luath gu mòr ri gluasadachd an aonaid air cruth-tìre garbh "
+"agus tha e cudromach seo a chur ’nad chuimhne nuair a chuireas tu ro-"
+"innleachd airson an fheachd agad an gnìomh. A bharrachd air sin, chan eil "
+"aonadan luatha cho buan ’s a tha aonadan eile is chan eil iad cho math air "
+"seasamh ann an suidheachaidhean strìtheil."
+
+#. [trait]: id=quick
+#: data/core/macros/traits.cfg:142
+#, fuzzy
+#| msgid ""
+#| "<italic>text='Quick'</italic> units have 1 extra movement point, but 5% "
+#| "less HP than usual."
+msgid ""
+"<italic>text='Quick'</italic> units have 1 extra movement point, but 5% less "
+"hitpoints than usual."
+msgstr ""
+"Tha 1 phuing gluasaid a bharrachd air aonadan <italic>text='luatha'</"
+"italic>, ach tha 5% nas lugha de PhB aca na tha àbhaisteach."
+
 #. [trait]: id=intelligent
-#: data/core/macros/traits.cfg:139
+#: data/core/macros/traits.cfg:160
 msgid "intelligent"
 msgstr "glic"
 
 #. [trait]: id=intelligent
-#: data/core/macros/traits.cfg:140
+#: data/core/macros/traits.cfg:161
 msgid "female^intelligent"
 msgstr "glic"
 
+#. [trait]: id=intelligent
+#: data/core/macros/traits.cfg:162
+msgid ""
+"\n"
+"\n"
+"<italic>text='Intelligent'</italic> units are very useful at the beginning "
+"of a campaign as they can advance to higher levels more quickly. Later in "
+"campaigns Intelligent is not quite as useful because the <italic>text='After "
+"Maximum Level Advancement'</italic> (AMLA) is not as significant a change as "
+"advancing a level. If you have many ‘maximum level’ units you may wish to "
+"recall units with more desirable traits."
+msgstr ""
+"\n"
+"\n"
+"Tha aonadan <italic>text='glice'</italic> glè fheumail aig toiseach iomairte "
+"oir ruigidh iad rangan nas àirde nas luaithe. Nas fhaide air adhart san "
+"iomairt, chan eil glic a cheart cho feumail air sgàth ’s nach eil "
+"atharraichean mòra ann le <italic>text='Àrdachadh an dèidh an rang as "
+"àirde'</italic> (ÀDRÀ). Ma tha aonadan ‘as àirde ìre’ agad, ’s dòcha gum b’ "
+"fhearr leat aonadan le feartan na b’ ion-mhiannaichte ais-ghairm."
+
+#. [trait]: id=intelligent
+#: data/core/macros/traits.cfg:162
+msgid "Intelligent units require 20% less experience than usual to advance."
+msgstr ""
+"Tha 20% as lugha a dhìth air aonadan glice na tha àbhaisteach de dh’eòlas "
+"gus àrdachadh."
+
 #. [trait]: id=resilient
-#: data/core/macros/traits.cfg:152
+#: data/core/macros/traits.cfg:176
 msgid "resilient"
 msgstr "spionnadail"
 
 #. [trait]: id=resilient
-#: data/core/macros/traits.cfg:153
+#: data/core/macros/traits.cfg:177
 msgid "female^resilient"
 msgstr "spionnadail"
 
+#. [trait]: id=resilient
+#: data/core/macros/traits.cfg:178
+msgid ""
+"\n"
+"\n"
+"Resilient units can be useful at all stages of a campaign, and this is a "
+"useful trait for all units. Resilient is often most helpful as a trait when "
+"it occurs in a unit that has some combination of low hitpoints, good "
+"defense, or high resistances. Resilient units are especially useful for "
+"holding strategic positions against opponents."
+msgstr ""
+"\n"
+"\n"
+"Faodaidh aonadan <italic>text='spionnadail'</italic> a bhith feumail anns "
+"gach suidheachadh iomairte is tha e ’na fheart feumail dha dh’aonad sam "
+"bith. Tha e feumail gu h-àraidh nuair a bhios e aig aonad aig a bheil "
+"measgachadh de dhìon math, comasan-seasaimh àrda no beagan phuingean-beatha. "
+"Tha aonadan spionnadail cianail fhèin feumail gus seasamh air àiteachan "
+"cudromach an aghaidh nan nàimhdean."
+
+#. [trait]: id=resilient
+#: data/core/macros/traits.cfg:178
+#, fuzzy
+#| msgid ""
+#| "<italic>text='Resilient'</italic> units have 4 HP plus 1 HP per level "
+#| "more than usual."
+msgid ""
+"<italic>text='Resilient'</italic> units have an additional 4 hitpoints, and "
+"gain 1 more per level."
+msgstr ""
+"Tha 4 PB agus 1 PhB gach rang a bharrachd na tha àbhaisteach aig aonadan "
+"<italic>text='spionnadail'</italic>."
+
 #. [trait]: id=healthy
-#: data/core/macros/traits.cfg:170
+#: data/core/macros/traits.cfg:197
 msgid "healthy"
 msgstr "fallain"
 
 #. [trait]: id=healthy
-#: data/core/macros/traits.cfg:171
+#: data/core/macros/traits.cfg:198
 msgid "female^healthy"
 msgstr "fallain"
 
 #. [trait]: id=healthy
-#: data/core/macros/traits.cfg:172
+#: data/core/macros/traits.cfg:199
 msgid "Always rest heals"
 msgstr "Slànaichidh e an-còmhnaidh mar an robh e ’na thàmh"
 
+#. [trait]: id=healthy
+#: data/core/macros/traits.cfg:200
+msgid ""
+"\n"
+"\n"
+"<italic>text='Healthy'</italic> units have 1 additional hitpoint, and gain 1 "
+"more per level. They will also heal 2 hitpoints each turn, regardless of "
+"whether they engaged in combat the turn before."
+msgstr ""
+
+#. [trait]: id=healthy
+#: data/core/macros/traits.cfg:200
+#, fuzzy
+#| msgid ""
+#| "Renowned for their vitality, some dwarves are sturdier than others and "
+#| "can rest even when travelling."
+msgid ""
+"Renowned for their vitality, some dwarves are sturdier than others and can "
+"rest even when traveling."
+msgstr ""
+"Cliùiteach airson am beòthalachd, tha cuid de na troichean nas buana na càch "
+"agus ’s urrainn dhaibh fois a ghabhail fiù ’s nuair a bhios iad a’ siubhal."
+
 #. [trait]: id=fearless
-#: data/core/macros/traits.cfg:192 data/core/macros/traits.cfg:208
+#: data/core/macros/traits.cfg:222 data/core/macros/traits.cfg:239
 msgid "fearless"
 msgstr "neo-eagalach"
 
 #. [trait]: id=fearless
-#: data/core/macros/traits.cfg:193 data/core/macros/traits.cfg:209
+#: data/core/macros/traits.cfg:223 data/core/macros/traits.cfg:240
 msgid "female^fearless"
 msgstr "neo-eagalach"
 
 #. [trait]: id=fearless
-#: data/core/macros/traits.cfg:194 data/core/macros/traits.cfg:210
+#: data/core/macros/traits.cfg:224 data/core/macros/traits.cfg:241
 msgid "Fights normally during unfavorable times of day/night"
 msgstr ""
 "Sabaididh e gu h-àbhaisteach aig amannan an oidhche no latha mì-fhàbharach"
 
+#. [trait]: id=fearless
+#: data/core/macros/traits.cfg:225 data/core/macros/traits.cfg:242
+msgid "Aversion to light and dark holds no sway over these brave individuals."
+msgstr ""
+"Tha na saighdearan calma seo coma mu dhèidhinn eagail ron dorchadas no solas."
+
 #. [trait]: id=feral
-#: data/core/macros/traits.cfg:223
+#: data/core/macros/traits.cfg:255
 msgid "feral"
 msgstr "allaidh"
 
 #. [trait]: id=feral
-#: data/core/macros/traits.cfg:224
+#: data/core/macros/traits.cfg:256
 msgid "female^feral"
 msgstr "allaidh"
 
 #. [trait]: id=feral
-#: data/core/macros/traits.cfg:225
+#: data/core/macros/traits.cfg:257
 msgid "Receives only 50% defense in land-based villages"
 msgstr "Chan fhaigh e ach 50% de dhìon ann am bailtean air talamh."
 
+#. [trait]: id=feral
+#: data/core/macros/traits.cfg:258
+msgid ""
+"Dwellings of sentient beings are not easily used for cover by feral "
+"creatures of low intelligence. As a result, <italic>text='feral'</italic> "
+"units receive a maximum of 50% defense in any land-based village regardless "
+"of base terrain."
+msgstr ""
+"Chan urrainn do chreutairean allaidh le tuigse bheag na h-àiteachan-"
+"còmhnaidh aig bithean mothachail a chleachdadh mar chòmhdachadh gu furasta. "
+"A thoradh air sin, gheibh aonadan <italic>text='allaidh'</italic> 50% de "
+"dhìon air a char as motha ann am baile air talamh, ge b’ e dè an cruth-tìre."
+
 #. [trait]: id=weak
-#: data/core/macros/traits.cfg:241
+#: data/core/macros/traits.cfg:274
 msgid "weak"
 msgstr "lag"
 
 #. [trait]: id=weak
-#: data/core/macros/traits.cfg:242
+#: data/core/macros/traits.cfg:275
 msgid "female^weak"
 msgstr "lag"
 
+#. [trait]: id=weak
+#: data/core/macros/traits.cfg:276
+#, fuzzy
+#| msgid ""
+#| "Units with trait <italic>text='weak'</italic> get a −1 increment in "
+#| "hitpoints and melee damage."
+msgid ""
+"Units with the <italic>text='weak'</italic> trait receive a 1 point decrease "
+"in hitpoints and melee damage."
+msgstr ""
+"Gheibh aonadan leis an fheart <italic>text='lag'</italic> 1 phuing-bheatha "
+"nas lugha agus nì iad 1 phuing nas lugha de dhochann ann an sabaid dhlùth."
+
 #. [trait]: id=slow
-#: data/core/macros/traits.cfg:259
+#: data/core/macros/traits.cfg:293
 msgid "slow"
 msgstr "slaodach"
 
 #. [trait]: id=slow
-#: data/core/macros/traits.cfg:260
+#: data/core/macros/traits.cfg:294
 msgid "female^slow"
 msgstr "slaodach"
 
+#. [trait]: id=slow
+#: data/core/macros/traits.cfg:295
+msgid ""
+"\n"
+"\n"
+"Thick-bodied and clumsy, slow individuals of goblins and other species take "
+"a movement penalty but are compensated for it with a slight increase in "
+"endurance."
+msgstr ""
+"\n"
+"\n"
+"Le bodhaigean tiugha is cearbach, gheibh an fheadhainn "
+"<italic>text='slaodach'</italic> aig na bòcain is cinealan eile peanas "
+"gluasaid ach air an làimh eile tha beagan fulangais a bharrachd aca."
+
+#. [trait]: id=slow
+#: data/core/macros/traits.cfg:295
+#, fuzzy
+#| msgid ""
+#| "<italic>text='Slow'</italic> units have −1 movement but 5% more hitpoints."
+msgid ""
+"<italic>text='Slow'</italic> units have 1 less movement point but 5% more "
+"hitpoints."
+msgstr ""
+"Tha -1 gluasad aig aonadan <italic>text='slaodach'</italic> ach 5% a "
+"bharrachd de phuingean-beatha."
+
 #. [trait]: id=dim
-#: data/core/macros/traits.cfg:276
+#: data/core/macros/traits.cfg:313
 msgid "dim"
 msgstr "dùr"
 
 #. [trait]: id=dim
-#: data/core/macros/traits.cfg:277
+#: data/core/macros/traits.cfg:314
 msgid "female^dim"
 msgstr "dùr"
 
+#. [trait]: id=dim
+#: data/core/macros/traits.cfg:315
+msgid ""
+"\n"
+"\n"
+"Dim is a trait all too common in goblins and other lesser species. There are "
+"reasons these species are lesser, and this is one of them."
+msgstr ""
+"\n"
+"\n"
+"Tha am feart <italic>text='dùr'</italic> fiadhaich cumanta am measg ’nam "
+"bòcan is ’nan cinealan nas lugha eile. Tha adhbharan ann carson a tha iad "
+"beag agus ’s e seo aonan dhiubh."
+
+#. [trait]: id=dim
+#: data/core/macros/traits.cfg:315
+msgid ""
+"Units with trait <italic>text='dim'</italic> suffer a 20% increase in "
+"experience required to advance."
+msgstr ""
+"Tha 20% de dh’eòlas a bharrachd a dhìth air aonadan <italic>text='dùra'</"
+"italic> gus àrdachadh."
+
 #. [trait]: id=aged
-#: data/core/macros/traits.cfg:289
+#: data/core/macros/traits.cfg:329
 msgid "aged"
 msgstr "aosta"
 
 #. [trait]: id=aged
-#: data/core/macros/traits.cfg:290
+#: data/core/macros/traits.cfg:330
 msgid "female^aged"
 msgstr "aosta"
+
+#. [trait]: id=aged
+#: data/core/macros/traits.cfg:331
+#, fuzzy
+#| msgid ""
+#| "Units with trait <italic>text='aged'</italic> get a −8 increment in "
+#| "hitpoints and a −1 increment in movement and melee damage."
+msgid ""
+"Units with the <italic>text='aged'</italic> trait have 8 hitpoints less and "
+"suffer from a 1 point decrease in movement and melee damage."
+msgstr ""
+"Gheibh aonadan leis an fheart <italic>text='aosta'</italic> 8 puingean-"
+"beatha is 1 phuing gluasaid as lugha agus nì iad 1 phuing as lugha de "
+"dhochann ann an sabaid dhlùth."
 
 #. [race]: id=bats
 #: data/core/units.cfg:43
@@ -6679,6 +6627,54 @@ msgstr "Cobhair aig Strì Bheasnaid"
 #: src/help/help.cpp:241
 msgid "Parse error when parsing help text: "
 msgstr "Mearachd parsaidh le parsadh an teacsa taice: "
+
+#~ msgid "Intelligent"
+#~ msgstr "Glic"
+
+#~ msgid "Quick"
+#~ msgstr "Luath"
+
+#~ msgid "Resilient"
+#~ msgstr "Spionnadail"
+
+#~ msgid "Strong"
+#~ msgstr "Làidir"
+
+#~ msgid "Fearless"
+#~ msgstr "Neo-eagalach"
+
+#~ msgid "Feral"
+#~ msgstr "Allaidh"
+
+#~ msgid "Loyal"
+#~ msgstr "Dìleas"
+
+#~ msgid "trait^Undead"
+#~ msgstr "Closach"
+
+#~ msgid "trait^Mechanical"
+#~ msgstr "Innealach"
+
+#~ msgid "trait^Elemental"
+#~ msgstr "Dùileach"
+
+#~ msgid "Dextrous"
+#~ msgstr "Teòma"
+
+#~ msgid "Healthy"
+#~ msgstr "Fallain"
+
+#~ msgid "Dim"
+#~ msgstr "Dùr"
+
+#~ msgid "Slow"
+#~ msgstr "Slaodach"
+
+#~ msgid "Weak"
+#~ msgstr "Lag"
+
+#~ msgid "trait^Aged"
+#~ msgstr "Aosta"
 
 #, fuzzy
 #~| msgid ""

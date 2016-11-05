@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en@shaw\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-07-24 20:29 UTC\n"
+"POT-Creation-Date: 2016-11-05 23:31 UTC\n"
 "PO-Revision-Date: 2009-10-13 12:15-0400\n"
 "Last-Translator: Arc Riley <arcriley@ubuntu.com>\n"
 "Language-Team: Shavian English <ubuntu-l10n-en-shaw@lists.launchpad.net>\n"
@@ -137,7 +137,7 @@ msgstr "·𐑮𐑳𐑜𐑯𐑻"
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:23
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:22
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:35
-#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:818
+#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:196
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:22
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:35
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:23
@@ -158,13 +158,13 @@ msgstr "·𐑣𐑭𐑤𐑛𐑮𐑦𐑒 𐑞 𐑕𐑧𐑒𐑩𐑯𐑛"
 msgid "Glildur"
 msgstr "·𐑜𐑤𐑦𐑤𐑛𐑻"
 
-#. [side]
-#. [side]: type=Elvish Marshal, id=Crintil
-#. [side]: type=Elvish Captain, id=Glildur
-#. [side]: type=Elvish Captain, id=Glindur
 #. [side]: type=Elvish Marshal, id=Gaenlar
 #. [side]: type=Elvish Marshal, id=Glinan
 #. [side]: type=Elvish Captain, id=Kalnar
+#. [side]: type=Elvish Captain, id=Glildur
+#. [side]: type=Elvish Captain, id=Glindur
+#. [side]
+#. [side]: type=Elvish Marshal, id=Crintil
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:76
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:42
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:41
@@ -237,11 +237,11 @@ msgstr "·𐑜𐑤𐑦𐑤𐑛𐑻"
 #. [objective]: condition=lose
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:132
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:82
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:579
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:588
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:102
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:352
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:585
-#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:261
+#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:521
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:145
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:420
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:526
@@ -252,8 +252,8 @@ msgstr "·𐑜𐑤𐑦𐑤𐑛𐑻"
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:368
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:409
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:187
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:465
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:844
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:468
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:870
 msgid "Death of Rugnur"
 msgstr "𐑛𐑧𐑔 𐑝 ·𐑮𐑳𐑜𐑯𐑻"
 
@@ -681,9 +681,9 @@ msgstr "Glindur"
 #. [side]
 #. [side]: type=Troll Warrior, type=Troll
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:53
-#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:878
-#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:940
-#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:1001
+#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:222
+#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:249
+#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:276
 msgid "Trolls"
 msgstr "𐑑𐑮𐑴𐑤𐑟"
 
@@ -710,7 +710,7 @@ msgstr "𐑒𐑦𐑤 𐑷𐑤 𐑧𐑤𐑝𐑟 𐑦𐑯 𐑞 𐑒𐑱𐑝𐑟 �
 
 #. [objective]: condition=lose
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:86
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:583
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:592
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:110
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:360
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:593
@@ -873,8 +873,8 @@ msgstr ""
 "stonecraft. 𐑢𐑰 𐑮𐑩𐑓𐑿𐑟 - 𐑯𐑬 𐑤𐑧𐑑'𐑕 𐑒𐑤𐑴𐑟 𐑞𐑰𐑟 𐑜𐑱𐑑𐑕!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:425
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:443
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:434
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:452
 msgid ""
 "But what about this entrance? The elves can come through it just as easily "
 "as the main gate, and it cannot be closed!"
@@ -883,8 +883,8 @@ msgstr ""
 "𐑯 𐑦𐑑 𐑒𐑨𐑯𐑪𐑑 𐑚𐑰 𐑒𐑤𐑴𐑟𐑛!"
 
 #. [message]: speaker=Baglur
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:429
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:447
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:438
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:456
 msgid ""
 "I think it can be sealed up somehow... Yes, look, activating that glyph "
 "seems to have closed up the gap."
@@ -893,12 +893,12 @@ msgstr ""
 "𐑒𐑤𐑴𐑟𐑛 𐑳𐑐 𐑞 𐑜𐑨𐑐."
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:490
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:499
 msgid "We have everyone positioned on the glyphs! What do we do now?"
 msgstr "𐑢𐑰 𐑣𐑨𐑝 𐑧𐑝𐑮𐑰𐑢𐑳𐑯 𐑐𐑩𐑟𐑦𐑖𐑩𐑯𐑛 𐑪𐑯 𐑞 ·𐑜𐑤𐑦𐑓𐑕! 𐑢𐑪𐑑 𐑛𐑵 𐑢𐑰 𐑛𐑵 𐑯𐑬?"
 
 #. [message]: speaker=Baglur
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:494
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:503
 #, fuzzy
 msgid ""
 "Just watch. The gates wi’ close very soon. Then the elves outside — and, "
@@ -908,7 +908,7 @@ msgstr ""
 "𐑛𐑢𐑹𐑝𐑟 𐑣𐑵 𐑸 𐑕𐑑𐑦𐑤 𐑬𐑑 𐑞𐑺 - 𐑢𐑦' 𐑚𐑦𐑒𐑳𐑥 𐑽𐑧𐑤𐑩𐑝𐑩𐑯𐑑."
 
 #. [message]: speaker=Glindur
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:527
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:536
 #, fuzzy
 msgid ""
 "Agh! Well, you have defeated me for now, but eventually you will have to "
@@ -919,14 +919,14 @@ msgstr ""
 "𐑑 𐑜𐑦𐑝 ·𐑣𐑭𐑤𐑛𐑮𐑦𐑒 𐑚𐑨𐑒 𐑣𐑦𐑟 𐑡𐑵𐑩𐑤. 𐑯 𐑢𐑧𐑯 𐑿 𐑛𐑵, 𐑢𐑰 𐑢𐑦𐑤 𐑚𐑰 𐑮𐑧𐑛𐑦 𐑓𐑹 𐑿."
 
 #. [message]: speaker=Baglur
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:531
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:540
 msgid ""
 "If that is what ye choose to do, fine, but be prepared to wait for many "
 "years."
 msgstr "𐑦𐑓 𐑞𐑨𐑑 𐑦𐑟 𐑢𐑪𐑑 𐑘𐑰 𐑗𐑵𐑟 𐑑 𐑛𐑵, 𐑓𐑲𐑯, 𐑚𐑳𐑑 𐑚𐑰 𐑐𐑮𐑦𐑐𐑺𐑛 𐑑 𐑢𐑱𐑑 𐑓𐑹 𐑥𐑧𐑯𐑦 𐑘𐑽𐑟."
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:566
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:575
 msgid ""
 "There are still some elves left in here. We have to eliminate them, too, "
 "unless they surrender."
@@ -934,27 +934,27 @@ msgstr ""
 "𐑞𐑺 𐑸 𐑕𐑑𐑦𐑤 𐑕𐑳𐑥 𐑧𐑤𐑝𐑟 𐑤𐑧𐑓𐑑 𐑦𐑯 𐑣𐑽. 𐑢𐑰 𐑣𐑨𐑝 𐑑 𐑩𐑤𐑦𐑥𐑦𐑯𐑱𐑑 𐑞𐑧𐑥, 𐑑𐑵, 𐑳𐑯𐑤𐑧𐑕 𐑞𐑱 𐑕𐑻𐑧𐑯𐑛𐑻."
 
 #. [message]
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:570
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:579
 msgid "You would have us be cowards! We do not surrender."
 msgstr "𐑿 𐑢𐑫𐑛 𐑣𐑨𐑝 𐑳𐑕 𐑚𐑰 𐑒𐑬𐑻𐑛𐑟! 𐑢𐑰 𐑛𐑵 𐑯𐑪𐑑 𐑕𐑻𐑧𐑯𐑛𐑻."
 
 #. [objective]: condition=win
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:575
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:584
 msgid "Kill all elves in the caves"
 msgstr "𐑒𐑦𐑤 𐑷𐑤 𐑧𐑤𐑝𐑟 𐑦𐑯 𐑞 𐑒𐑱𐑝𐑟"
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:598
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:607
 msgid "Well, now I should go down to the city and report. I’m late already..."
 msgstr "𐑢𐑧𐑤, 𐑯𐑬 𐑲 𐑖𐑫𐑛 𐑜𐑴 𐑛𐑬𐑯 𐑑 𐑞 𐑕𐑦𐑑𐑦 𐑯 𐑮𐑩𐑐𐑹𐑑. 𐑲'𐑧𐑥 𐑤𐑱𐑑 𐑷𐑤𐑮𐑧𐑛𐑦..."
 
 #. [message]: speaker=unit
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:611
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:620
 msgid "My glyph is on."
 msgstr "𐑥𐑲 ·𐑜𐑤𐑦𐑓 𐑦𐑟 𐑪𐑯."
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:698
+#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:707
 #, fuzzy
 msgid ""
 "That’s all of the elves. Now I should go down to the city and report. I’m "
@@ -1374,8 +1374,8 @@ msgstr ""
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:372
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:413
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:191
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:469
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:848
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:472
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:874
 msgid "Death of Krawg"
 msgstr "𐑛𐑧𐑔 𐑝 ·𐑒𐑮𐑷𐑜"
 
@@ -1516,7 +1516,7 @@ msgstr "𐑥𐑵𐑝 ·𐑞𐑻𐑕𐑨𐑜𐑨𐑯 𐑑 𐑞 𐑕𐑲𐑯𐑐�
 
 #. [objective]: condition=lose
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:601
-#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:265
+#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:525
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:157
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:432
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:538
@@ -1526,8 +1526,8 @@ msgstr "𐑥𐑵𐑝 ·𐑞𐑻𐑕𐑨𐑜𐑨𐑯 𐑑 𐑞 𐑕𐑲𐑯𐑐�
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:136
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:376
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:195
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:473
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:852
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:476
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:878
 msgid "Death of Thursagan"
 msgstr "𐑛𐑧𐑔 𐑝 ·𐑞𐑻𐑕𐑨𐑜𐑨𐑯"
 
@@ -1753,10 +1753,8 @@ msgstr ""
 msgid "M’ ’u!"
 msgstr "𐑧𐑥' '𐑿!"
 
-#. [settings]
 #. [scenario]: id=4_Gathering_Materials
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:3
-#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:21
 msgid "Gathering Materials"
 msgstr "·𐑜𐑨𐑞𐑼𐑦𐑙 ·𐑥𐑩𐑑𐑽𐑦𐑩𐑤𐑟"
 
@@ -1783,19 +1781,19 @@ msgstr ""
 "𐑞𐑱 𐑴𐑯𐑤𐑦 𐑢𐑳𐑯𐑕 𐑣𐑨𐑛 𐑑 𐑝𐑧𐑯𐑑𐑿𐑮 𐑦𐑯𐑑𐑫 𐑞 𐑝𐑧𐑮𐑦 𐑣𐑸𐑑 𐑝 𐑞 𐑑𐑮𐑴𐑤𐑟' 𐑑𐑧𐑮𐑦𐑑𐑼𐑦."
 
 #. [objective]: condition=win
-#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:253
+#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:513
 msgid ""
 "Bring the necessary gold and coal to create the sceptre to the starting "
 "castle"
 msgstr "𐑚𐑮𐑦𐑙 𐑞 𐑯𐑧𐑕𐑩𐑕𐑼𐑦 𐑜𐑴𐑤𐑛 𐑯 𐑒𐑴𐑤 𐑑 𐑒𐑮𐑰𐑱𐑑 𐑞 𐑕𐑧𐑐𐑑𐑻 𐑑 𐑞 𐑕𐑑𐑸𐑑𐑦𐑙 𐑒𐑨𐑕𐑩𐑤"
 
 #. [objective]: condition=win
-#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:257
+#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:517
 msgid "1 load of gold and 2 loads of coal are needed"
 msgstr "1 𐑤𐑴𐑛 𐑝 𐑜𐑴𐑤𐑛 𐑯 2 𐑤𐑴𐑛𐑟 𐑝 𐑒𐑴𐑤 𐑸 𐑯𐑰𐑛𐑩𐑛"
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:294
+#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:554
 #, fuzzy
 msgid ""
 "Well, these are the eastern mines. Trolls and ogres live here, be prepared "
@@ -1806,7 +1804,7 @@ msgstr ""
 "𐑐𐑮𐑦𐑐𐑺𐑛 𐑑 𐑕𐑐𐑧𐑯𐑛 𐑒𐑢𐑲𐑑 𐑕𐑳𐑥 𐑑𐑲𐑥 𐑣𐑽 - 𐑥𐑲𐑯𐑦𐑙 𐑒𐑨𐑯 𐑑𐑱𐑒 𐑩 𐑢𐑲𐑤."
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:298
+#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:558
 msgid ""
 "For me to make the artifact Haldric wants, I need a special type of gold. I "
 "do not know where it was found, but Baglur said these mines were the source "
@@ -1816,19 +1814,19 @@ msgstr ""
 "𐑢𐑺 𐑦𐑑 𐑢𐑪𐑟 𐑓𐑬𐑯𐑛, 𐑚𐑳𐑑 ·𐑚𐑨𐑜𐑤𐑻 𐑕𐑧𐑛 𐑞𐑰𐑟 𐑥𐑲𐑯𐑟 𐑢𐑻 𐑞 𐑕𐑹𐑕 𐑝 𐑦𐑑."
 
 #. [message]: speaker=Baglur
-#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:302
+#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:562
 msgid "Also, the only coal that wi’ melt this gold is here."
 msgstr "𐑷𐑤𐑕𐑴, 𐑞 𐑴𐑯𐑤𐑦 𐑒𐑴𐑤 𐑞𐑨𐑑 𐑢𐑦' 𐑥𐑧𐑤𐑑 𐑞𐑦𐑕 𐑜𐑴𐑤𐑛 𐑦𐑟 𐑣𐑽."
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:306
+#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:566
 msgid ""
 "So we’re down here to, what, mine this gold and coal? That should be easy "
 "enough."
 msgstr "𐑕𐑴 𐑢𐑰'𐑼 𐑛𐑬𐑯 𐑣𐑽 𐑑, 𐑢𐑪𐑑, 𐑥𐑲𐑯 𐑞𐑦𐑕 𐑜𐑴𐑤𐑛 𐑯 𐑒𐑴𐑤? 𐑞𐑨𐑑 𐑖𐑫𐑛 𐑚𐑰 𐑰𐑟𐑦 𐑦𐑯𐑳𐑓."
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:310
+#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:570
 #, fuzzy
 msgid ""
 "Yes, although we will have to hire the miners — they don’t work for free. "
@@ -1838,7 +1836,7 @@ msgstr ""
 "𐑑𐑮𐑴𐑤𐑟 𐑯 𐑕𐑳𐑗 𐑛𐑬𐑯 𐑣𐑽..."
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:327
+#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:587
 msgid ""
 "Don’t forget to recruit the miners. Our warriors can clear the tunnels of "
 "trolls and worse, but once we find the gold and coal we need the miners to "
@@ -1846,42 +1844,42 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:352
+#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:612
 msgid "Here is some of the coal that we need! Bring the miners to take it!"
 msgstr "𐑣𐑽 𐑦𐑟 𐑕𐑳𐑥 𐑝 𐑞 𐑒𐑴𐑤 𐑞𐑨𐑑 𐑢𐑰 𐑯𐑰𐑛! 𐑚𐑮𐑦𐑙 𐑞 𐑥𐑲𐑯𐑼𐑟 𐑑 𐑑𐑱𐑒 𐑦𐑑!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:377
-#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:414
-#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:535
+#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:637
+#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:674
+#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:795
 msgid "I have all the coal I can carry..."
 msgstr "𐑲 𐑣𐑨𐑝 𐑷𐑤 𐑞 𐑒𐑴𐑤 𐑲 𐑒𐑨𐑯 𐑒𐑨𐑮𐑦..."
 
 #. [message]: speaker=unit
-#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:446
+#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:706
 msgid "Here is the mine of precious gold! Send the miners this way."
 msgstr "𐑣𐑽 𐑦𐑟 𐑞 𐑥𐑲𐑯 𐑝 𐑐𐑮𐑧𐑖𐑩𐑕 𐑜𐑴𐑤𐑛! 𐑕𐑧𐑯𐑛 𐑞 𐑥𐑲𐑯𐑼𐑟 𐑞𐑦𐑕 𐑢𐑱."
 
 #. [message]: speaker=unit
-#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:471
-#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:609
+#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:731
+#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:869
 msgid "I have all the gold I can carry..."
 msgstr "𐑲 𐑣𐑨𐑝 𐑷𐑤 𐑞 𐑜𐑴𐑤𐑛 𐑲 𐑒𐑨𐑯 𐑒𐑨𐑮𐑦..."
 
 #. [message]: speaker=unit
-#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:650
+#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:910
 msgid "My load of coal is delivered!"
 msgstr "𐑥𐑲 𐑤𐑴𐑛 𐑝 𐑒𐑴𐑤 𐑦𐑟 𐑛𐑩𐑤𐑦𐑝𐑼𐑛!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:678
+#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:938
 #, fuzzy
 msgid "That’s the last load of coal we need."
 msgstr "𐑞𐑨𐑔'𐑕 𐑞 𐑤𐑭𐑕𐑑 𐑤𐑴𐑛 𐑝 𐑒𐑴𐑤 𐑢𐑰 𐑯𐑰𐑛."
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:688
-#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:749
+#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:948
+#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:1009
 msgid ""
 "This is all we need from these mines. Now we should go back further west, "
 "where there are no trolls and ogres, and mine there."
@@ -1890,7 +1888,7 @@ msgstr ""
 "𐑯 𐑴𐑜𐑻𐑟, 𐑯 𐑥𐑲𐑯 𐑞𐑺."
 
 #. [message]: speaker=unit
-#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:715
+#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:975
 #, fuzzy
 msgid "Here’s the gold."
 msgstr "𐑣𐑽'𐑟 𐑞 𐑜𐑴𐑤𐑛."
@@ -3313,24 +3311,24 @@ msgstr "𐑦𐑒𐑕𐑐𐑤𐑹 𐑨𐑟 𐑥𐑳𐑗 𐑝 𐑞 𐑒𐑱𐑝 �
 
 #. [unit]: type=Troll, role=Guardian
 #. [unit]: type=Orcish Warrior, role=Guardian
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:241
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:249
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:257
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:265
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:273
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:281
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:244
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:252
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:260
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:268
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:276
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:284
 msgid "Guardian"
 msgstr "𐑜𐑸𐑛𐑦𐑩𐑯"
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:286
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:289
 msgid ""
 "Well, I think we’ve gotten a good distance ahead of the elves. What do we do "
 "now?"
 msgstr "𐑢𐑧𐑤, 𐑲 𐑔𐑦𐑙𐑒 𐑢𐑰'𐑝 𐑜𐑪𐑑𐑩𐑯 𐑩 𐑜𐑫𐑛 𐑛𐑦𐑕𐑑𐑩𐑯𐑕 𐑩𐑣𐑧𐑛 𐑝 𐑞 𐑧𐑤𐑝𐑟. 𐑢𐑪𐑑 𐑛𐑵 𐑢𐑰 𐑛𐑵 𐑯𐑬?"
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:291
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:294
 msgid ""
 "We should keep going. Remember what Khrakrahs said, about this being a "
 "volcano? I think we should try to cause it to erupt. It will kill all the "
@@ -3341,17 +3339,17 @@ msgstr ""
 "𐑕𐑱𐑓 𐑐𐑤𐑱𐑕 𐑕𐑴 𐑞 𐑤𐑭𐑝𐑩 𐑛𐑳𐑟𐑯𐑑 𐑒𐑦𐑤 𐑳𐑕."
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:295
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:298
 msgid "This sounds... plausible."
 msgstr "𐑞𐑦𐑕 𐑕𐑬𐑯𐑛𐑟... 𐑐𐑤𐑪𐑟𐑩𐑚𐑩𐑤."
 
 #. [message]: speaker=Baglur
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:299
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:302
 msgid "Yes, an interesting plan. How do you propose we do this?"
 msgstr "𐑘𐑧𐑕, 𐑩𐑯 𐑦𐑯𐑑𐑼𐑩𐑕𐑑𐑦𐑙 𐑐𐑤𐑨𐑯. 𐑣𐑬 𐑛𐑵 𐑿 𐑐𐑮𐑩𐑐𐑴𐑟 𐑢𐑰 𐑛𐑵 𐑞𐑦𐑕?"
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:303
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:306
 msgid ""
 "I have a suspicion that there is an opening somewhere near here than leads "
 "to the surface. Somewhere near there, there is probably a magic object of "
@@ -3361,40 +3359,40 @@ msgstr ""
 "𐑯𐑽 𐑞𐑺, 𐑞𐑺 𐑦𐑟 𐑐𐑮𐑪𐑚𐑩𐑚𐑤𐑦 𐑩 𐑥𐑨𐑡𐑦𐑒 𐑩𐑚𐑡𐑧𐑒𐑑 𐑝 𐑕𐑳𐑥 𐑒𐑲𐑯𐑛 𐑞𐑨𐑑 𐑢𐑦𐑤 𐑒𐑷𐑟 𐑞 𐑤𐑭𐑝𐑩 𐑑 𐑓𐑤𐑴."
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:307
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:310
 msgid "Very well. We will continue to explore until we find it."
 msgstr "𐑝𐑧𐑮𐑦 𐑢𐑧𐑤. 𐑢𐑰 𐑢𐑦𐑤 𐑒𐑩𐑯𐑑𐑦𐑯𐑿 𐑑 𐑦𐑒𐑕𐑐𐑤𐑹 𐑳𐑯𐑑𐑦𐑤 𐑢𐑰 𐑓𐑲𐑯𐑛 𐑦𐑑."
 
 #. [message]: speaker=Krawg
 #. "Krawg smells orcs in this cave!"
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:312
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:315
 #, fuzzy
 msgid "Krawg sme’ o’cz in iz ’ave!"
 msgstr "·𐑒𐑮𐑷𐑜 sme' 𐑴'cz 𐑦𐑯 𐑦𐑟 '𐑨𐑝𐑩𐑯𐑵!"
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:316
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:319
 msgid "Indeed, there may be orcs lurking here. We should beware of them."
 msgstr "𐑦𐑯𐑛𐑰𐑛, 𐑞𐑺 𐑥𐑱 𐑚𐑰 𐑹𐑒𐑕 𐑤𐑻𐑒𐑦𐑙 𐑣𐑽. 𐑢𐑰 𐑖𐑫𐑛 𐑚𐑰𐑢𐑺 𐑝 𐑞𐑧𐑥."
 
 #. [unit]: type=Elvish Marshal, id=Aendan
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:341
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:344
 #, fuzzy
 msgid "Aendan"
 msgstr "Aendan"
 
 #. [message]: speaker=Aendan
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:347
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:350
 msgid "We have caught up to the dwarves. Now, prepare to destroy them!"
 msgstr "𐑢𐑰 𐑣𐑨𐑝 𐑒𐑷𐑑 𐑳𐑐 𐑑 𐑞 𐑛𐑢𐑹𐑝𐑟. 𐑯𐑬, 𐑐𐑮𐑰𐑐𐑺 𐑑 𐑛𐑩𐑕𐑑𐑮𐑶 𐑞𐑧𐑥!"
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:386
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:389
 msgid "Thursagan! The elves are right on our tail; what should we do?"
 msgstr "·𐑞𐑻𐑕𐑨𐑜𐑨𐑯! 𐑞 𐑧𐑤𐑝𐑟 𐑸 𐑮𐑲𐑑 𐑪𐑯 𐑬𐑼 𐑑𐑱𐑤; 𐑢𐑪𐑑 𐑖𐑫𐑛 𐑢𐑰 𐑛𐑵?"
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:390
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:393
 msgid ""
 "We could try to set off the volcano as soon as possible. Meanwhile, we "
 "should draw the elves further into the caves, so they can’t escape when it "
@@ -3404,34 +3402,34 @@ msgstr ""
 "𐑓𐑻𐑞𐑼 𐑦𐑯𐑑𐑫 𐑞 𐑒𐑱𐑝𐑟, 𐑕𐑴 𐑞𐑱 𐑒𐑭𐑯𐑑 𐑦𐑕𐑒𐑱𐑐 𐑢𐑧𐑯 𐑦𐑑 𐑛𐑳𐑟 𐑦𐑮𐑳𐑐𐑑."
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:452
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:455
 msgid "These orcs appear to be guarding something."
 msgstr "𐑞𐑰𐑟 𐑹𐑒𐑕 𐑩𐑐𐑽 𐑑 𐑚𐑰 𐑜𐑸𐑛𐑦𐑙 𐑕𐑳𐑥𐑔𐑦𐑙."
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:456
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:459
 msgid "It is probably the magical object. Attack them!"
 msgstr "𐑦𐑑 𐑦𐑟 𐑐𐑮𐑪𐑚𐑩𐑚𐑤𐑦 𐑞 𐑥𐑨𐑡𐑦𐑒𐑩𐑤 𐑪𐑚𐑡𐑧𐑒𐑑. 𐑩𐑑𐑨𐑒 𐑞𐑧𐑥!"
 
 #. [objective]: condition=win
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:461
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:464
 msgid "Move onto the glyph in the center of the volcano"
 msgstr "𐑥𐑵𐑝 𐑪𐑯𐑑𐑵 𐑞 ·𐑜𐑤𐑦𐑓 𐑦𐑯 𐑞 𐑕𐑧𐑯𐑑𐑼 𐑝 𐑞 𐑝𐑭𐑤𐑒𐑱𐑯𐑴"
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:522
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:525
 #, fuzzy
 msgid "That’s it! The volcano will erupt soon now that you’ve triggered it."
 msgstr "𐑞𐑨𐑔'𐑕 𐑦𐑑! 𐑞 𐑝𐑭𐑤𐑒𐑱𐑯𐑴 𐑢𐑦𐑤 𐑦𐑮𐑳𐑐𐑑 𐑕𐑵𐑯 𐑯𐑬 𐑞𐑨𐑑 𐑿'𐑝 𐑑𐑮𐑦𐑜𐑻𐑛 𐑦𐑑."
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:538
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:541
 msgid ""
 "Look, it has knocked down some of the walls! Those orcs have a way out now!"
 msgstr "𐑤𐑫𐑒, 𐑦𐑑 𐑣𐑨𐑟 𐑯𐑪𐑒𐑑 𐑛𐑬𐑯 𐑕𐑳𐑥 𐑝 𐑞 𐑢𐑷𐑤𐑟! 𐑞𐑴𐑟 𐑹𐑒𐑕 𐑣𐑨𐑝 𐑩 𐑢𐑱 𐑬𐑑 𐑯𐑬!"
 
 #. [message]: speaker=Baglur
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:547
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:550
 msgid ""
 "Well, we’ve succeeded in stopping the elves from getting the Sceptre, I "
 "would say. But what do we do now?!"
@@ -3440,12 +3438,12 @@ msgstr ""
 "𐑢𐑰 𐑛𐑵 𐑯𐑬?!"
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:553
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:556
 msgid "Now, we must fight the orcs until we die, it’s our only option."
 msgstr "𐑯𐑬, 𐑢𐑰 𐑥𐑳𐑕𐑑 𐑓𐑲𐑑 𐑞 𐑹𐑒𐑕 𐑳𐑯𐑑𐑦𐑤 𐑢𐑰 𐑛𐑲, 𐑦𐑑'𐑕 𐑬𐑼 𐑴𐑯𐑤𐑦 𐑪𐑐𐑖𐑩𐑯."
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:559
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:562
 msgid ""
 "We cannot let any of the elves or their mercenaries escape; they would tell "
 "where the Sceptre of Fire is. Make sure they all die!"
@@ -3454,7 +3452,7 @@ msgstr ""
 "𐑦𐑟. 𐑥𐑱𐑒 𐑖𐑫𐑼 𐑞𐑱 𐑷𐑤 𐑛𐑲!"
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:565
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:568
 msgid ""
 "We have to kill them quickly, before they realize what is happening. And "
 "remember, the lava spreads quickly, suddenly, and dangerously. The only "
@@ -3465,7 +3463,7 @@ msgstr ""
 "·𐑜𐑤𐑦𐑓."
 
 #. [message]: role=smartelf
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:597
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:600
 msgid ""
 "Wait, what’s going on? The volcano is going to erupt! Everyone, try to get "
 "out of these caves!"
@@ -3474,23 +3472,23 @@ msgstr ""
 "𐑒𐑱𐑝𐑟!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:612
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:615
 msgid "I must go report to my superiors!"
 msgstr "𐑲 𐑥𐑳𐑕𐑑 𐑜𐑴 𐑮𐑩𐑐𐑹𐑑 𐑑 𐑥𐑲 𐑕𐑵𐑐𐑽𐑰𐑻𐑟!"
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:616
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:619
 msgid "We have allowed an enemy to escape; we have failed."
 msgstr "𐑢𐑰 𐑣𐑨𐑝 𐑩𐑤𐑬𐑛 𐑩𐑯 𐑧𐑯𐑩𐑥𐑦 𐑑 𐑦𐑕𐑒𐑱𐑐; 𐑢𐑰 𐑣𐑨𐑝 𐑓𐑱𐑤𐑛."
 
 #. [message]: role=dumbelf
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:674
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:680
 #, fuzzy
 msgid "Aghh!! The volcano is erupting, and now our exit has been blocked off!!"
 msgstr "Aghh!!! 𐑞 𐑝𐑭𐑤𐑒𐑱𐑯𐑴 𐑦𐑟 𐑦𐑮𐑳𐑐𐑑𐑦𐑙, 𐑯 𐑯𐑬 𐑬𐑼 𐑧𐑜𐑟𐑦𐑑 𐑣𐑨𐑟 𐑚𐑰𐑯 𐑚𐑤𐑪𐑒𐑑 𐑪𐑓!!!"
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:699
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:705
 msgid ""
 "We have hidden the Sceptre well, but now the volcano is going to erupt and "
 "kill us all."
@@ -3498,13 +3496,13 @@ msgstr ""
 "𐑢𐑰 𐑣𐑨𐑝 𐑣𐑦𐑛𐑩𐑯 𐑞 𐑕𐑧𐑐𐑑𐑻 𐑢𐑧𐑤, 𐑚𐑳𐑑 𐑯𐑬 𐑞 𐑝𐑭𐑤𐑒𐑱𐑯𐑴 𐑦𐑟 𐑜𐑴𐑦𐑙 𐑑 𐑦𐑮𐑳𐑐𐑑 𐑯 𐑒𐑦𐑤 𐑳𐑕 𐑷𐑤."
 
 #. [objective]: condition=win
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:840
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:866
 msgid "Kill all of the elves before one of them escapes from the caves"
 msgstr "𐑒𐑦𐑤 𐑷𐑤 𐑝 𐑞 𐑧𐑤𐑝𐑟 𐑚𐑦𐑓𐑹 𐑢𐑳𐑯 𐑝 𐑞𐑧𐑥 𐑦𐑕𐑒𐑱𐑐𐑕 𐑓𐑮𐑪𐑥 𐑞 𐑒𐑱𐑝𐑟"
 
 #. [message]: speaker=Krawg
 #. "Hmmm, me leave now!"
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:953
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:988
 #, fuzzy
 msgid "Hm... Me le’ no’w!"
 msgstr "𐑣𐑥... 𐑥𐑰 𐑤𐑩' no'w!"
@@ -3785,7 +3783,7 @@ msgid "Caravan"
 msgstr "𐑒𐑨𐑮𐑩𐑝𐑨𐑯"
 
 #. [unit_type]: id=Caravan, race=mechanical
-#: data/campaigns/Sceptre_of_Fire/units/Caravan.cfg:18
+#: data/campaigns/Sceptre_of_Fire/units/Caravan.cfg:17
 msgid ""
 "Caravans are used to carry gold or supplies long distances. Because of the "
 "immense weight of the cargo this caravan carries, it moves very slowly."
@@ -3799,7 +3797,7 @@ msgid "Dwarvish Miner"
 msgstr "𐑛𐑢𐑹𐑝𐑦𐑖 𐑥𐑲𐑯𐑼"
 
 #. [unit_type]: id=Dwarvish Miner, race=dwarf
-#: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Miner.cfg:18
+#: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Miner.cfg:17
 msgid ""
 "Dwarvish miners are the grunt workers of Dwarvish society. They take the "
 "precious ores out of the ground, but do not ever take part in the crafting "
@@ -3809,7 +3807,7 @@ msgstr ""
 "𐑜𐑮𐑬𐑯𐑛, 𐑚𐑳𐑑 𐑛𐑵 𐑯𐑪𐑑 𐑧𐑝𐑼 𐑑𐑱𐑒 𐑐𐑸𐑑 𐑦𐑯 𐑞 𐑒𐑮𐑭𐑓𐑑𐑦𐑙 𐑝 𐑢𐑧𐑐𐑩𐑯𐑟 𐑹 𐑸𐑑𐑩𐑓𐑨𐑒𐑑𐑕."
 
 #. [attack]: type=pierce
-#: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Miner.cfg:23
+#: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Miner.cfg:22
 msgid "pick"
 msgstr "𐑐𐑦𐑒"
 

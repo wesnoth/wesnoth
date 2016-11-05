@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-07-24 20:29 UTC\n"
+"POT-Creation-Date: 2016-11-05 23:32 UTC\n"
 "PO-Revision-Date: 2014-10-21 20:49+0100\n"
 "Last-Translator: Josep Miralles i Belenguer <info@softwarevalencia.com>\n"
 "Language-Team: Software Valencià\n"
@@ -86,10 +86,10 @@ msgstr "Delfador"
 msgid "Urug-Telfar"
 msgstr "Urug-Telfar"
 
-#. [side]: id=Vanak, type=Orcish Ruler
 #. [side]: type=Orcish Warlord, id=Urug-Telfar
 #. [side]: type=Orcish Warlord, id=Knafa-Tan
 #. [side]: type=Orcish Warlord, id=Maga-Knafa
+#. [side]: id=Vanak, type=Orcish Ruler
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:98
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:112
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:130
@@ -386,16 +386,16 @@ msgstr "Llops"
 msgid "Whelps"
 msgstr "Cries"
 
+#. [set_menu_item]: id=m01_end_animals
 #. [event]
 #. [set_menu_item]: id=m01_end_swarm
-#. [set_menu_item]: id=m01_end_animals
-#. [set_menu_item]: id=m04_end_animals
 #. [set_menu_item]: id=m01_end_wolves
+#. [set_menu_item]: id=m04_end_animals
 #: data/ai/micro_ais/scenarios/animals.cfg:209
 #: data/ai/micro_ais/scenarios/dragon.cfg:48
 #: data/ai/micro_ais/scenarios/goto.cfg:382
 #: data/ai/micro_ais/scenarios/guardians.cfg:85
-#: data/ai/micro_ais/scenarios/lurkers.cfg:365
+#: data/ai/micro_ais/scenarios/lurkers.cfg:382
 #: data/ai/micro_ais/scenarios/patrols.cfg:177
 #: data/ai/micro_ais/scenarios/swarm.cfg:66
 #: data/ai/micro_ais/scenarios/wolves.cfg:95
@@ -552,7 +552,7 @@ msgstr "Val, compares. Cal parar-los els peus ad eixos orcos."
 
 #. [event]
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:87
-#: data/ai/micro_ais/scenarios/guardians.cfg:511
+#: data/ai/micro_ais/scenarios/guardians.cfg:514
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:135
 msgid "They there!  We them get!"
 msgstr "¡Allí estan! ¡Els tenim!"
@@ -752,8 +752,8 @@ msgid ""
 "or for your own tests."
 msgstr ""
 
-#. [test]: id=goto
 #. [event]
+#. [test]: id=goto
 #: data/ai/micro_ais/scenarios/goto.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:84
 msgid "Goto"
@@ -937,7 +937,7 @@ msgstr ""
 "mentres no els arraconem, nos deixaran en pau."
 
 #. [message]: speaker=messenger2
-#: data/ai/micro_ais/scenarios/goto.cfg:533
+#: data/ai/micro_ais/scenarios/goto.cfg:536
 msgid ""
 "I'll take the route straight through the mountains. It's much shorter than "
 "following the trail all the way around in the south."
@@ -946,7 +946,7 @@ msgstr ""
 "sender que dona la volta pel sur."
 
 #. [message]: speaker=messenger1
-#: data/ai/micro_ais/scenarios/goto.cfg:537
+#: data/ai/micro_ais/scenarios/goto.cfg:540
 msgid ""
 "You're crazy. It might be shorter as the crow flies, but it will take you "
 "forever to get through those mountains.\n"
@@ -961,12 +961,12 @@ msgstr ""
 "(anar a) que es diferencien en una simple llínea, «use_straight_line=yes/no»."
 
 #. [message]: speaker=unit
-#: data/ai/micro_ais/scenarios/goto.cfg:571
+#: data/ai/micro_ais/scenarios/goto.cfg:574
 msgid "I told you so!"
 msgstr "¡T'ho vaig dir!"
 
 #. [message]: speaker=leader5
-#: data/ai/micro_ais/scenarios/goto.cfg:581
+#: data/ai/micro_ais/scenarios/goto.cfg:584
 msgid ""
 "Men, head down to the River Fort and get your orders from Sergeant Aethubry. "
 "I want each and every one of you to report to him before going east to fight "
@@ -977,7 +977,7 @@ msgstr ""
 "l'est per a lluitar contra els saurio."
 
 #. [message]: speaker=leader6
-#: data/ai/micro_ais/scenarios/goto.cfg:590
+#: data/ai/micro_ais/scenarios/goto.cfg:593
 msgid ""
 "Hah, that's that pencil pusher Gadoc for you! Men, I want you to move toward "
 "the River Fort as well, but it's good enough for one of you to report to "
@@ -990,7 +990,7 @@ msgstr ""
 "directament."
 
 #. [message]: speaker=unit
-#: data/ai/micro_ais/scenarios/goto.cfg:608
+#: data/ai/micro_ais/scenarios/goto.cfg:611
 msgid ""
 "$unit.language_name $unit.name from Lieutenant Gadoc's squadron reporting "
 "for duty, sir."
@@ -999,17 +999,17 @@ msgstr ""
 "per al servici, senyor."
 
 #. [message]: speaker=fort_commander
-#: data/ai/micro_ais/scenarios/goto.cfg:624
+#: data/ai/micro_ais/scenarios/goto.cfg:627
 msgid "Ready to fight those saurians, soldier?"
 msgstr "¿Preparat per a lluitar contra eixos saurio, soldat?"
 
 #. [message]: speaker=unit
-#: data/ai/micro_ais/scenarios/goto.cfg:628
+#: data/ai/micro_ais/scenarios/goto.cfg:631
 msgid "Yes, sir."
 msgstr "Si, senyor."
 
 #. [message]: speaker=fort_commander
-#: data/ai/micro_ais/scenarios/goto.cfg:636
+#: data/ai/micro_ais/scenarios/goto.cfg:639
 msgid ""
 "Very good, $unit.language_name. Now go help your comrade get rid of that "
 "saurian infestation in the swamps."
@@ -1018,24 +1018,24 @@ msgstr ""
 "companyers per a fer-vos càrrec d'eixa invasió de saurio en la ciènaga."
 
 #. [message]: speaker=fort_commander
-#: data/ai/micro_ais/scenarios/goto.cfg:644
+#: data/ai/micro_ais/scenarios/goto.cfg:647
 msgid "Maybe if I ignore them, they'll just go away?"
 msgstr "¿Potser es marchen si els ignore?"
 
 #. [message]: speaker=unit
-#: data/ai/micro_ais/scenarios/goto.cfg:663
+#: data/ai/micro_ais/scenarios/goto.cfg:666
 msgid "Lieutenant Senvan's men reporting for duty, sir."
 msgstr "Els hòmens del tinent Senvan es presenten per al servici, senyor."
 
 #. [message]: speaker=fort_commander
-#: data/ai/micro_ais/scenarios/goto.cfg:667
+#: data/ai/micro_ais/scenarios/goto.cfg:670
 msgid ""
 "Ah, Lieutenant Senvan... Is every single one of you going to bother me "
 "individually as well?"
 msgstr "Ah, tinent Senvan... ¿També va a incordiar-me cadascun de vostés?"
 
 #. [message]: speaker=unit
-#: data/ai/micro_ais/scenarios/goto.cfg:671
+#: data/ai/micro_ais/scenarios/goto.cfg:674
 msgid ""
 "No, sir. Lieutenant Senvan ordered us to head into battle as soon as I have "
 "reported to you."
@@ -1044,7 +1044,7 @@ msgstr ""
 "pronte com yo li informara."
 
 #. [message]: speaker=fort_commander
-#: data/ai/micro_ais/scenarios/goto.cfg:675
+#: data/ai/micro_ais/scenarios/goto.cfg:678
 msgid ""
 "Well, that's a relief. Somebody knows how to use his ... I mean, very well, "
 "off you go then.\n"
@@ -1055,24 +1055,24 @@ msgstr ""
 "\n"
 
 #. [message]: speaker=fort_commander
-#: data/ai/micro_ais/scenarios/goto.cfg:677
+#: data/ai/micro_ais/scenarios/goto.cfg:680
 msgid ""
 "I wouldn't say anything negative about one of my superior officers now, "
 "would I?"
 msgstr "¿Veritat que yo mai diria res negatiu sobre cap dels meus superiors?"
 
 #. [message]: type=Vampire Bat
-#: data/ai/micro_ais/scenarios/goto.cfg:715
+#: data/ai/micro_ais/scenarios/goto.cfg:718
 msgid "We've all made it to the corners, let's get back together again."
 msgstr "Ya hem aplegat tots als cantons, tornem a juntar-nos de nou."
 
 #. [message]: type=Vampire Bat
-#: data/ai/micro_ais/scenarios/goto.cfg:756
+#: data/ai/micro_ais/scenarios/goto.cfg:759
 msgid "We're back together, let's head out to the corners again."
 msgstr "Ya tornem a estar junts, dirigim-nos als cantons de nou."
 
-#. [test]: id=guardians
 #. [event]
+#. [test]: id=guardians
 #: data/ai/micro_ais/scenarios/guardians.cfg:17
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:57
 msgid "Guardians"
@@ -1192,13 +1192,13 @@ msgstr "Lloc 2"
 
 #. [command]
 #. [set_menu_item]: id=m01_guardian
-#: data/ai/micro_ais/scenarios/guardians.cfg:422
-#: data/ai/micro_ais/scenarios/guardians.cfg:428
+#: data/ai/micro_ais/scenarios/guardians.cfg:425
+#: data/ai/micro_ais/scenarios/guardians.cfg:431
 msgid "Standard WML Guardian"
 msgstr "Guardià WML estàndart"
 
 #. [command]
-#: data/ai/micro_ais/scenarios/guardians.cfg:428
+#: data/ai/micro_ais/scenarios/guardians.cfg:431
 msgid ""
 "This is the built-in WML guardian coded using 'ai_special=guardian'. These "
 "guardians attack if there is an enemy within their movement range, otherwise "
@@ -1210,13 +1210,13 @@ msgstr ""
 
 #. [command]
 #. [set_menu_item]: id=m02_return
-#: data/ai/micro_ais/scenarios/guardians.cfg:433
-#: data/ai/micro_ais/scenarios/guardians.cfg:439
+#: data/ai/micro_ais/scenarios/guardians.cfg:436
+#: data/ai/micro_ais/scenarios/guardians.cfg:442
 msgid "Return Guardian"
 msgstr "Guàrdia que torna"
 
 #. [command]
-#: data/ai/micro_ais/scenarios/guardians.cfg:439
+#: data/ai/micro_ais/scenarios/guardians.cfg:442
 msgid ""
 "A 'return guardian' is a variation of the standard Wesnoth guardian. It has "
 "an assigned guard position (GP) to which it returns after attacks on "
@@ -1244,13 +1244,13 @@ msgstr ""
 
 #. [command]
 #. [set_menu_item]: id=m03_home
-#: data/ai/micro_ais/scenarios/guardians.cfg:449
-#: data/ai/micro_ais/scenarios/guardians.cfg:455
+#: data/ai/micro_ais/scenarios/guardians.cfg:452
+#: data/ai/micro_ais/scenarios/guardians.cfg:458
 msgid "Home Guard"
 msgstr "Guàrdia d'inici"
 
 #. [command]
-#: data/ai/micro_ais/scenarios/guardians.cfg:455
+#: data/ai/micro_ais/scenarios/guardians.cfg:458
 msgid ""
 "A 'home guard' is a variant on the 'guardian' AI special. With this variant, "
 "the unit has an assigned 'home' location, and will return there if not "
@@ -1283,13 +1283,13 @@ msgstr ""
 
 #. [command]
 #. [set_menu_item]: id=m04_stationed
-#: data/ai/micro_ais/scenarios/guardians.cfg:461
-#: data/ai/micro_ais/scenarios/guardians.cfg:467
+#: data/ai/micro_ais/scenarios/guardians.cfg:464
+#: data/ai/micro_ais/scenarios/guardians.cfg:470
 msgid "Stationed Guardian"
 msgstr "Guàrdia estacionat"
 
 #. [command]
-#: data/ai/micro_ais/scenarios/guardians.cfg:467
+#: data/ai/micro_ais/scenarios/guardians.cfg:470
 msgid ""
 "A 'stationed guardian' is another variation of the standard Wesnoth guardian "
 "with a somewhat more complex behavior than that of the 'return guardian'. "
@@ -1323,13 +1323,13 @@ msgstr ""
 
 #. [command]
 #. [set_menu_item]: id=m05_coward
-#: data/ai/micro_ais/scenarios/guardians.cfg:478
-#: data/ai/micro_ais/scenarios/guardians.cfg:484
+#: data/ai/micro_ais/scenarios/guardians.cfg:481
+#: data/ai/micro_ais/scenarios/guardians.cfg:487
 msgid "Coward"
 msgstr "Covart"
 
 #. [command]
-#: data/ai/micro_ais/scenarios/guardians.cfg:484
+#: data/ai/micro_ais/scenarios/guardians.cfg:487
 msgid ""
 "Cowards are units that, like guardians, sit around doing nothing until an "
 "enemy comes into range. Unlike guardians, however, they run away once "
@@ -1364,13 +1364,13 @@ msgstr ""
 
 #. [command]
 #. [set_menu_item]: id=m06_zone
-#: data/ai/micro_ais/scenarios/guardians.cfg:493
-#: data/ai/micro_ais/scenarios/guardians.cfg:499
+#: data/ai/micro_ais/scenarios/guardians.cfg:496
+#: data/ai/micro_ais/scenarios/guardians.cfg:502
 msgid "Zone Guardian"
 msgstr "Guàrdia de zona"
 
 #. [command]
-#: data/ai/micro_ais/scenarios/guardians.cfg:499
+#: data/ai/micro_ais/scenarios/guardians.cfg:502
 msgid ""
 "A zone guardian is a unit that, as the name says, guards a zone. It moves "
 "randomly inside this zone until an enemy enters it (or a separately defined "
@@ -1392,12 +1392,12 @@ msgstr ""
 "quan no queden enemics, tornarà a patrullar la seua zona guardada."
 
 #. [event]
-#: data/ai/micro_ais/scenarios/guardians.cfg:510
+#: data/ai/micro_ais/scenarios/guardians.cfg:513
 msgid "Kraahhh!!!!"
 msgstr "Kraahhh!"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/guardians.cfg:513
+#: data/ai/micro_ais/scenarios/guardians.cfg:516
 msgid ""
 "Gryphons of the High Plains, look at all these enemies. They don't behave "
 "normally. Most of them don't move at all unless we get close. Let's check "
@@ -1425,29 +1425,29 @@ msgstr ""
 "org/micro_ais per a més informació sobre el tema."
 
 #. [objectives]
-#: data/ai/micro_ais/scenarios/guardians.cfg:522
+#: data/ai/micro_ais/scenarios/guardians.cfg:525
 msgid "Move the Gryphons around to explore how the guardians react"
 msgstr ""
 "Moga als grifos per les afores per a comprovar com reaccionen els guàrdies"
 
 #. [objective]: condition=win
-#: data/ai/micro_ais/scenarios/guardians.cfg:524
+#: data/ai/micro_ais/scenarios/guardians.cfg:527
 #: data/ai/micro_ais/scenarios/patrols.cfg:233
 msgid "Defeat all enemy units"
 msgstr "Elimine totes les unitats enemigues"
 
 #. [objective]: condition=win
-#: data/ai/micro_ais/scenarios/guardians.cfg:528
+#: data/ai/micro_ais/scenarios/guardians.cfg:531
 msgid "Move Kraa to the signpost"
 msgstr "Moga a Kraa fins al poste indicador"
 
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/guardians.cfg:532
+#: data/ai/micro_ais/scenarios/guardians.cfg:535
 msgid "Death of Kraa"
 msgstr "Mort de Kraa"
 
 #. [note]
-#: data/ai/micro_ais/scenarios/guardians.cfg:536
+#: data/ai/micro_ais/scenarios/guardians.cfg:539
 msgid ""
 "Check out the right-click menu options for information on each guardian type"
 msgstr ""
@@ -1455,7 +1455,7 @@ msgstr ""
 "en informació sobre cada tipo de guàrdia"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/guardians.cfg:591
+#: data/ai/micro_ais/scenarios/guardians.cfg:594
 msgid ""
 "Gryphons of the High Plains, it is time to return to said plains. Follow me."
 msgstr "Grifos dels altiplans, ya és hora de tornar. Seguiu-me."
@@ -1606,72 +1606,72 @@ msgid "Argh!  They got us..."
 msgstr "¡Arg! Mos han pillat..."
 
 #. [test]: id=lurkers
-#: data/ai/micro_ais/scenarios/lurkers.cfg:172
+#: data/ai/micro_ais/scenarios/lurkers.cfg:184
 msgid "Lurkers of the Swamp"
 msgstr "Aguaitadors de les ciènages"
 
 #. [side]: id=Pekzs, type=Saurian Soothsayer
-#: data/ai/micro_ais/scenarios/lurkers.cfg:186
+#: data/ai/micro_ais/scenarios/lurkers.cfg:198
 msgid "Pekzs"
 msgstr "Pekzs"
 
 #. [side]: id=Pekzs, type=Saurian Soothsayer
-#: data/ai/micro_ais/scenarios/lurkers.cfg:192
+#: data/ai/micro_ais/scenarios/lurkers.cfg:204
 msgid "team_name^Pekzs"
 msgstr "Pekzs"
 
 #. [side]: type=Saurian Oracle
-#: data/ai/micro_ais/scenarios/lurkers.cfg:208
+#: data/ai/micro_ais/scenarios/lurkers.cfg:220
 msgid "Micro AI Lurkers (saurians, stationary)"
 msgstr "Micro IA «aguaitadors» (saurios, immòvils)"
 
 #. [side]: type=Saurian Oracle
-#: data/ai/micro_ais/scenarios/lurkers.cfg:224
+#: data/ai/micro_ais/scenarios/lurkers.cfg:236
 msgid "Micro AI Lurkers (saurians, wanderers)"
 msgstr "Micro IA «aguaitadors» (saurios, ambulants)"
 
 #. [side]: type=Naga Warrior
-#: data/ai/micro_ais/scenarios/lurkers.cfg:240
+#: data/ai/micro_ais/scenarios/lurkers.cfg:252
 msgid "Micro AI Lurkers (nagas)"
 msgstr "Micro IA «aguaitadors» (nagas)"
 
 #. [side]: type=Saurian Oracle
-#: data/ai/micro_ais/scenarios/lurkers.cfg:256
+#: data/ai/micro_ais/scenarios/lurkers.cfg:268
 msgid "WML Lurkers (saurians)"
 msgstr "WML «aguaitadors» (saurios)"
 
 #. [side]: type=Saurian Oracle
-#: data/ai/micro_ais/scenarios/lurkers.cfg:272
+#: data/ai/micro_ais/scenarios/lurkers.cfg:284
 msgid "Formula AI Lurkers (saurians)"
 msgstr "IA Formula de «aguaitadors» (saurios)"
 
 #. [set_menu_item]: id=m01_menu_lurker2
-#: data/ai/micro_ais/scenarios/lurkers.cfg:370
+#: data/ai/micro_ais/scenarios/lurkers.cfg:387
 msgid "Place a Side 2 lurker"
 msgstr "Crear un aguaitador per al costat 2"
 
 #. [set_menu_item]: id=m01_menu_lurker3
-#: data/ai/micro_ais/scenarios/lurkers.cfg:382
+#: data/ai/micro_ais/scenarios/lurkers.cfg:399
 msgid "Place a Side 3 lurker"
 msgstr "Crear un aguaitador per al costat 3"
 
 #. [set_menu_item]: id=m01_menu_lurker4
-#: data/ai/micro_ais/scenarios/lurkers.cfg:394
+#: data/ai/micro_ais/scenarios/lurkers.cfg:411
 msgid "Place a Side 4 lurker"
 msgstr "Crear un aguaitador per al costat 4"
 
 #. [set_menu_item]: id=m01_menu_lurker5
-#: data/ai/micro_ais/scenarios/lurkers.cfg:406
+#: data/ai/micro_ais/scenarios/lurkers.cfg:423
 msgid "Place a Side 5 lurker"
 msgstr "Crear un aguaitador per al costat 5"
 
 #. [set_menu_item]: id=m01_menu_lurker6
-#: data/ai/micro_ais/scenarios/lurkers.cfg:418
+#: data/ai/micro_ais/scenarios/lurkers.cfg:435
 msgid "Place a Side 6 lurker"
 msgstr "Crear un aguaitador per al costat 6"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/lurkers.cfg:433
+#: data/ai/micro_ais/scenarios/lurkers.cfg:450
 msgid ""
 "In this scenario we demonstrate the Lurker Micro AI. A lurker is a unit that "
 "is capable of moving across most terrains, but that only stops on and "
@@ -1694,7 +1694,7 @@ msgstr ""
 "(aguaita)."
 
 #. [event]
-#: data/ai/micro_ais/scenarios/lurkers.cfg:438
+#: data/ai/micro_ais/scenarios/lurkers.cfg:455
 msgid ""
 "Three different lurker behaviors are set up here using the [micro_ai] tag "
 "with different parameters:\n"
@@ -1727,14 +1727,14 @@ msgstr ""
 "codificat en WML (costat 5, gris) i IA Formula (costat 6, marró)."
 
 #. [event]
-#: data/ai/micro_ais/scenarios/lurkers.cfg:448
+#: data/ai/micro_ais/scenarios/lurkers.cfg:465
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:139
 #: data/ai/micro_ais/scenarios/patrols.cfg:217
 msgid "Notes"
 msgstr "Notes"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/lurkers.cfg:448
+#: data/ai/micro_ais/scenarios/lurkers.cfg:465
 msgid ""
 "You can use the right-click context menu to add additional lurkers.\n"
 "\n"
@@ -1759,34 +1759,34 @@ msgstr ""
 "org/Micro_AIs per a més informació sobre el tema."
 
 #. [objectives]
-#: data/ai/micro_ais/scenarios/lurkers.cfg:457
+#: data/ai/micro_ais/scenarios/lurkers.cfg:474
 msgid "Watch the lurkers move around and fight them if you want"
 msgstr "Observe com es mouen i barallen els aguaitadors si ho desija"
 
 #. [objective]: condition=win
-#: data/ai/micro_ais/scenarios/lurkers.cfg:459
+#: data/ai/micro_ais/scenarios/lurkers.cfg:476
 msgid "Defeat all lurkers"
 msgstr "Eliminar a tots els aguaitadors"
 
 #. [objective]: condition=win
-#: data/ai/micro_ais/scenarios/lurkers.cfg:463
+#: data/ai/micro_ais/scenarios/lurkers.cfg:480
 msgid "Move Pekzs to the signpost"
 msgstr "Moga a Pekzs fins al poste senyalisador"
 
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/lurkers.cfg:467
+#: data/ai/micro_ais/scenarios/lurkers.cfg:484
 msgid "Death of Pekzs"
 msgstr "Mort de Pekzs"
 
 #. [note]
-#: data/ai/micro_ais/scenarios/lurkers.cfg:471
+#: data/ai/micro_ais/scenarios/lurkers.cfg:488
 msgid "Right-click on unoccupied swamp hexes to add more lurkers"
 msgstr ""
 "Faça clic dret en un hexàgon de ciènaga desocupat per a afegir més "
 "aguaitadors"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/lurkers.cfg:516
+#: data/ai/micro_ais/scenarios/lurkers.cfg:533
 msgid ""
 "Zzanksss for helping me wizz zzossse lurkerss. Hope to sssee you again "
 "ssometime."
@@ -2369,8 +2369,8 @@ msgstr "Mugre el canijo"
 msgid "team_name^Grnk"
 msgstr "Mugre"
 
-#. [test]: id=swarm
 #. [event]
+#. [test]: id=swarm
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:51
 #: data/ai/micro_ais/scenarios/swarm.cfg:5
 msgid "Swarm"

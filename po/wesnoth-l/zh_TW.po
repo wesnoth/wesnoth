@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3.19+dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-07-24 20:26 UTC\n"
+"POT-Creation-Date: 2016-11-05 23:28 UTC\n"
 "PO-Revision-Date: 2009-05-24 18:51+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: none\n"
@@ -191,7 +191,7 @@ msgstr "地精抵達島本村"
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:92
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:320
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:399
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:615
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:617
 msgid "Death of Baldras"
 msgstr "博岞斯死亡"
 
@@ -454,13 +454,13 @@ msgstr ""
 msgid "Civil Disobedience"
 msgstr "公民反抗軍"
 
-#. [side]: type=Bandit, id=Baldras
-#. [side]: type=Shadow Lord, id=Helicrom
 #. [side]: type=Bandit_Peasant, id=Baldras
 #. [side]
+#. [side]: type=Bandit, id=Baldras
 #. [side]: type=Highwayman_Peasant, id=Relana
 #. [side]: type=General, id=Lord Maddock
 #. [side]: type=Rogue, id=Hans
+#. [side]: type=Shadow Lord, id=Helicrom
 #. [side]: type=Highwayman, id=Baldras
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:26
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:61
@@ -608,13 +608,13 @@ msgstr ""
 "了。"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:334
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:337
 msgid ""
 "Oh, no! We have run out of time, they have arrived with reinforcements..."
 msgstr "喔！不！他們的援軍到了，我們沒有時間了..."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:347
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:350
 msgid ""
 "They would be remembered only traitors rightly put down by the Queen’s "
 "lances. And in the dark years to come, woe betide any who questioned it."
@@ -635,11 +635,11 @@ msgstr ""
 msgid "Urk Delek"
 msgstr "烏克‧迪樂克"
 
+#. [side]: type=Orcish Warrior, id=Urk Delek
+#. [side]: type=Saurian Oracle, id=Thhsthss
 #. [side]: type=Necromancer, id=Mal-Jarrof
 #. [side]: type=Necromancer, id=Mal-Jerod
 #. [side]: type=Lich, id=Sel-Mana
-#. [side]: type=Orcish Warrior, id=Urk Delek
-#. [side]: type=Saurian Oracle, id=Thhsthss
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:89
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:111
 #: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:99
@@ -968,7 +968,7 @@ msgid "Could not convert a $stored_changers[$i].type, please report!"
 msgstr ""
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:583
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:598
 msgid ""
 "I cannot believe what my eyes are seeing! The flesh runs from their bones... "
 "these are not human warriors we fight. They are evil spirits masquerading as "
@@ -978,7 +978,7 @@ msgstr ""
 "他們是邪靈偽裝的人類。"
 
 #. [message]: speaker=Lord Maddock
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:594
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:609
 msgid ""
 "Their human aspect is returning! This is an evil manner of sorcery we face, "
 "but one that we may yet overcome. CHARGE!"
@@ -986,12 +986,12 @@ msgstr ""
 "他們的人類偽裝恢復了！我們面對的是邪惡的巫術，但我們遲早會克服它的。衝鋒！"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:608
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:623
 msgid "Who are you? What are you?"
 msgstr "你們是誰？你們怎麼了？"
 
 #. [message]: speaker=Kestrel
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:612
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:627
 #, fuzzy
 msgid ""
 "We are accursed. We were once under the command of Prince Eldred, the King’s "
@@ -1004,12 +1004,12 @@ msgstr ""
 "我們身上，但肉身的腐敗只是我們註定背負的贖罪之旅的開始。"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:623
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:638
 msgid "Lord Maddock, now that we are victorious, will you help us?"
 msgstr "麥達克領主，現在，我們獲勝了，你可以幫助我們了嗎？"
 
 #. [message]: speaker=Lord Maddock
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:627
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:642
 msgid ""
 "I will not. Unless you want me to round up the city’s thieves to fight for "
 "you, I do not have the troops to spare. However, I am not the only one who "
@@ -1019,19 +1019,19 @@ msgstr ""
 "了。然而，我並不是這韋諾一隅的唯一支配者。"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:631
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:646
 msgid "I don’t understand. There are no other noble lords in this area."
 msgstr "我不明白。這地方並沒有其他貴族領主。"
 
 #. [message]: speaker=Lord Maddock
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:635
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:650
 msgid ""
 "Southeast of here there is a town, and there you may find assistance of the "
 "type I cannot give."
 msgstr "東南方有一個城鎮，你在那裡會獲得我所無法提供的協助。"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:639
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:654
 msgid ""
 "Wish us well. If we are to resist the Wesnoth army a second time, we’re "
 "going to need more than clubs and slings against steel."
@@ -1040,14 +1040,14 @@ msgstr ""
 "些破銅爛鐵。"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:659
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:674
 msgid ""
 "Look, more riders come from the southeast. We cannot survive another "
 "assault. We are finished!"
 msgstr "看！更多騎兵從東南方逼近。我們無法抵擋這次突襲。我們完了！"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:672
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:687
 msgid ""
 "Indeed, Asheviere’s armies had mustered and struck before the nascent "
 "rebellion could even be planned. Her power and ruthlessness — and their toll "
@@ -1079,8 +1079,14 @@ msgstr "漢斯"
 msgid "Take Baldras to meet the leader of the insurgency"
 msgstr "讓博岞斯和起義頭目會晤"
 
+#. [note]
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:129
+msgid ""
+"Remember that in fog, units always see one hex further than they can move."
+msgstr ""
+
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:299
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:310
 msgid ""
 "Relentlessly pursued by riders patrolling the road to Elensefar, Baldras and "
 "his men traveled unseen along the swampy banks of the Great River to the "
@@ -1090,14 +1096,14 @@ msgstr ""
 "岸通往卡賽市。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:304
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:315
 msgid ""
 "They hid until nightfall, then crept out to find the help Lord Maddock "
 "hinted was here."
 msgstr "到了夜晚他們才從藏身處出來，然後悄悄的尋找麥達克領主所說得幫助。"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:352
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:363
 #, fuzzy
 msgid ""
 "I’m not sure where we’re supposed to go now. If we go into town we can start "
@@ -1105,17 +1111,17 @@ msgid ""
 msgstr "我不確定我們現在該走去哪。也許我們可以進鎮上問問路人一些情報。"
 
 #. [unit]: type=Thief, id=Link
-#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:368
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:379
 msgid "Link"
 msgstr "令克"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:373
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:384
 msgid "Who are you?"
 msgstr "你是誰？"
 
 #. [message]: speaker=Link
-#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:377
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:388
 msgid ""
 "I have come to find you. You must make it through the city without being "
 "seen. The soldiers are normally out hunting for my kind, but a company of "
@@ -1125,12 +1131,12 @@ msgstr ""
 "跡，但三天前一群重裝步兵接管了巡邏任務。"
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:381
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:392
 msgid "They’re looking for us."
 msgstr "他們正在搜索我們的行蹤。"
 
 #. [message]: speaker=Link
-#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:385
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:396
 #, fuzzy
 msgid ""
 "Well, good thing I found you first. Now hurry, you must make it past the "
@@ -1143,7 +1149,7 @@ msgstr ""
 "請您盡可能的避開那些士兵。"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:423
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:434
 msgid ""
 "Looks like these guards hold stationary posts, so if we’re careful enough we "
 "should be able to slip our way around them unnoticed."
@@ -1151,7 +1157,7 @@ msgstr ""
 "看來這些守衛只在固定地點放哨，如果我們夠小心的話，應該可以溜進監視網漏洞。"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:427
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:438
 msgid ""
 "Harper, you younger and faster folks need to be our eyes now. Scout ahead "
 "and try to find a way for us to get past the guards, but make sure to not "
@@ -1161,32 +1167,32 @@ msgstr ""
 "保你不被他們發現，不然我們就有大麻煩了。"
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:500
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:511
 #, fuzzy
 msgid "They’ve seen us! <i>Run</i>!"
 msgstr "他們發現我們了，快跑！"
 
 # yet xxxxx 似乎有再次的意思
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:517
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:528
 msgid "Fall back, quickly! Maybe we can yet lose them!"
 msgstr "快撤！也許我們可以再甩掉他們一次！"
 
 #. [message]: speaker=unit
-#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:533
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:544
 msgid ""
 "Gentlemen, please come this way and follow the path into the forest. Our "
 "leader is anxious to meet you."
 msgstr "閣下，請從這條路進到森林。我們的頭兒渴望見到您。"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:537
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:548
 msgid ""
 "As soon as we escape the Wesnoth death squad, we will be happy to oblige."
 msgstr "只要我們能從韋諾的死亡軍隊的魔掌中逃出，我們非常樂意效勞。"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:541
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:552
 msgid ""
 "I haven’t run this much in years. If you were to ask me to infiltrate a "
 "heavily guarded city relying on nothing but the cover of darkness and my "
@@ -1196,31 +1202,31 @@ msgstr ""
 "靈精怪，我會說你瘋了。"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:545
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:556
 msgid "As it turns out, I’m the crazy one. Let’s finish this folly."
 msgstr "隨著成功的到來，我也瘋了。讓我結束這鬧劇吧。"
 
 #. [message]: speaker=Hans
-#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:570
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:581
 msgid ""
 "You can come if you wish, but the leader is only interested in speaking to "
 "Baldras."
 msgstr "你想的話你可以跟過來，但是頭兒只想和博岞斯交談。"
 
 #. [message]: speaker=Hans
-#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:590
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:601
 #, fuzzy
 msgid "Fly, and we may yet evade them in the Grey Woods."
 msgstr "快，在灰森林中我們還沒辦法甩掉他們。"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:595
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:606
 #, fuzzy
 msgid "Lead the way."
 msgstr "順著這條路..."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:619
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:630
 #: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:427
 msgid ""
 "We have spent too much time here. Surely the Queen’s forces have returned to "
@@ -1821,7 +1827,7 @@ msgstr "斐須那"
 #. [objective]: condition=win
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:316
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:395
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:611
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:613
 msgid "Destroy the stronghold of Halstead"
 msgstr "摧毁霍司迪德的堡壘"
 
@@ -1838,7 +1844,7 @@ msgid ""
 msgstr "看，它真高阿！這些塔筆直的聳立於地上，好似直接從地裡拉出來一樣。"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:450
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:451
 msgid ""
 "That may not be too far from the truth. During the time of the Great Kings "
 "of Wesnoth, this land was tamed with powerful magic. Wizards of an ancient "
@@ -1848,13 +1854,13 @@ msgstr ""
 "代的術士使用地底的岩石鑄造霍司迪德的城牆。"
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:454
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:456
 msgid ""
 "I don’t see how we can bring it down. They are already invincible in there!"
 msgstr "我不知道要怎樣才能讓它倒下。他們在那裡是不可戰勝的！"
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:465
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:467
 msgid ""
 "No, my young friend. Halstead indeed has a weakness. Among my many assets is "
 "access to a wealth of secrets few in Wesnoth are privy to."
@@ -1863,7 +1869,7 @@ msgstr ""
 "的秘密。"
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:469
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:471
 msgid ""
 "You see, the mountain on which the fort was built is solid, but the castle "
 "on top has been built and rebuilt many times over the ages. It is not as "
@@ -1873,7 +1879,7 @@ msgstr ""
 "次。它並不如你所想得如此固若金湯。"
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:473
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:475
 msgid ""
 "Beneath the structure is a system of catacombs that connects all four towers "
 "to the central keep. Over time, after many wars, supports were required to "
@@ -1883,8 +1889,8 @@ msgstr ""
 "無數的戰爭，它需要支撐物來穩住中央的部份。"
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:477
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:503
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:479
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:505
 msgid ""
 "So... we can knock out the supports and bring down the stronghold of "
 "Halstead. Would it really work?"
@@ -1892,8 +1898,8 @@ msgstr "所以...我們可以藉由打破支撑物毀掉霍司迪德堡壘。真
 
 #. [message]: speaker=Helicrom
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:481
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:507
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:483
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:509
 msgid ""
 "I believe it will. Each tower has a passage down to the catacombs. If we can "
 "reach the center of each tower, one of our men can escape down to the bowels "
@@ -1905,17 +1911,17 @@ msgstr ""
 "四個支撐。"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:487
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:489
 msgid "No, young one. Halstead indeed has a weakness."
 msgstr "不，年輕人。霍司迪德其實有弱點。"
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:491
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:493
 msgid "How do you know?"
 msgstr "你怎麼知道的？"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:495
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:497
 msgid ""
 "When I was a boy, my father — your grandfather — brought your dad and me to "
 "live in Aldril after orcs massacred many in our village. We grew up around "
@@ -1925,7 +1931,7 @@ msgstr ""
 "們到奧最爾去生活。我們是在這裡長大的，而且也知道這裡許多的事。"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:499
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:501
 msgid ""
 "Beneath the structure is a system of catacombs that connects all four towers "
 "to the central keep. The catacombs growing over time, combined with "
@@ -1936,13 +1942,13 @@ msgstr ""
 "戰爭，使這些地下墓穴不斷擴建，而今它必須安裝支持物使中央穩定。"
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:513
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:515
 msgid ""
 "I hope you’re right. In a few hours, night will fall, and we will find out."
 msgstr "我希望你是對的。幾個小時候，夜晚會降臨，然後我們就會知道答案。"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:517
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:519
 msgid ""
 "We must be cautious. Look there, a substantial orc force is also advancing "
 "on Halstead. They must think Wesnoth’s army is spread out right now."
@@ -1951,42 +1957,42 @@ msgstr ""
 "諾的軍力已經分散開來了。"
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:521
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:523
 msgid "Heh. They’re in for a surprise. This may work to our advantage."
 msgstr "哼哼。他們會大吃一驚的。這會給我們優勢。"
 
 #. [message]: role=farseer
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:539
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:541
 msgid "Look in the distance... riders approach!"
 msgstr "看，遠方...有骑兵來了！"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:548
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:550
 msgid "Who is it?"
 msgstr "他是他一方的？"
 
 #. [message]: role=farseer
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:552
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:554
 msgid "Help, I hope. Circumstances cannot afford to get much more dire."
 msgstr "我希望是援軍。情況不會更糟。"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:558
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:560
 msgid "Riders approach from the northwest! Stand fast, men."
 msgstr "騎兵從西北方來了！大家撐住。"
 
 #. [unit]: type=Paladin, id=Sir Gwydion
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:567
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:569
 msgid "Sir Gwydion"
 msgstr "葛外迪恩爵士"
 
 #. [message]: type=Lancer
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:582
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:584
 msgid "Sound the advance!"
 msgstr "聽令！"
 
 #. [message]: speaker=Sir Gwydion
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:586
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:588
 #, fuzzy
 msgid ""
 "Knights of Elensefar, behold: the battle has already begun! Make camp here. "
@@ -1994,7 +2000,7 @@ msgid ""
 msgstr "埃崚瑟法的騎士們，看：戰鬥已經開始了！先在這裡紮營。然後，衝鋒！"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:599
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:601
 msgid ""
 "Amazing. Lord Maddock sent his house guards... his finest troops! Elensefar "
 "must be defenseless now. More hinges on this battle than I thought."
@@ -2003,7 +2009,7 @@ msgstr ""
 "剩無幾。這場戰役比我想的還重要。"
 
 #. [message]: role=farseer
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:604
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:606
 #, fuzzy
 msgid ""
 "Baldras, Gwydion is Lord Maddock’s son. This battle isn’t just about Annuvin "
@@ -2011,55 +2017,55 @@ msgid ""
 msgstr "博岞斯，葛外迪恩是麥達克領主的兒子。這場戰鬥不只跟阿寧芬有關。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:635
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:637
 msgid ""
 "That afternoon, another advance element of the main Wesnoth army arrived..."
 msgstr "下午，另一團韋諾主力的先鋒部隊抵達..."
 
 #. [message]: speaker=Dommel
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:705
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:707
 msgid ""
 "I think... I think they’re trying to storm Halstead itself... the fools!"
 msgstr "我想...我想他們妄想破壞霍司迪德...這群傻瓜！"
 
 #. [message]: speaker=Dommel
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:722
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:724
 msgid "They have breached the fortress gate! Repulse them!"
 msgstr "他們已經破壞大門了！擊退他們！"
 
 #. [message]: speaker=unit
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:738
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:740
 msgid "I’m inside the tower! I’m going down to the catacombs — cover me."
 msgstr "我潛入塔裏了！我正準備進入地下墓穴 － 掩護我。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:748
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:750
 msgid "After about an hour..."
 msgstr "大約一小時後..."
 
 #. [message]: speaker=unit
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:758
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:760
 msgid "It’s done."
 msgstr "搞定了。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:785
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:787
 msgid "The stronghold of Halstead began to shake..."
 msgstr "霍司迪德堡壘開始震動..."
 
 #. [message]: speaker=unit
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:790
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:792
 msgid "We cannot stay here. The fortress has started to collapse!"
 msgstr "我們不能繼續待在這裡。堡壘開始崩塌了！"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:821
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:823
 #, fuzzy
 msgid "I think it’s working! Everybody get clear <i>now</i>!"
 msgstr "我想搞定了！大家，快撤退！"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:845
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:847
 #, fuzzy
 msgid ""
 "With a thunderous roar and a vast billowing of dust, thousands of tons of "
@@ -2071,12 +2077,12 @@ msgstr ""
 "到峭壁下，剩餘的則是掉入數百呎深的地底，進入山脈中空的核心地帶。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:850
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:852
 msgid "No one inside the fortress would make it out alive."
 msgstr "任何在堡壘內的人都無法活著出來。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:920
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:922
 msgid ""
 "After more than a week of fierce fighting, the main body of Asheviere’s host "
 "arrived from Weldyn. The battle was soon finished. Every last man from the "
@@ -2086,29 +2092,29 @@ msgstr ""
 "了。阿寧芬省的倖存者都被處死。"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:950
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:952
 msgid "Men, help me out of here! I am trapped under this rubble."
 msgstr "哪個人，幫我脫離這裡！我陷在石堆中了。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:954
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:956
 msgid ""
 "No one was able to get to Baldras in time. He and many of his companions "
 "died that day beneath the stronghold of Halstead."
 msgstr "沒人能即時救出博岞斯。他和許多同伴都死在霍司迪德堡壘下面。"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:959
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:961
 msgid "I hope this sacrifice is not in vain... but we will never know."
 msgstr "我希望這犧牲不會白費...但我們永遠不會知道這答案了。"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:965
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:967
 msgid "Our dream of freedom... gone... Unngh."
 msgstr "我們的自由之夢...隨風而去...惡阿。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:972
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:974
 msgid ""
 "The rebellion had staked its all on victory at Halstead, but win or lose, "
 "there would be no help for the villagers, ground beneath the wheels of "
@@ -2116,22 +2122,22 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:988
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:990
 msgid "Uncle!"
 msgstr "叔叔！"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:992
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:994
 msgid "NO!"
 msgstr "不！"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:996
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:998
 msgid "I promised your father I would watch after you... and I failed."
 msgstr "我向你父親保證不讓你受任何傷害...但我失敗了。"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:1000
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:1002
 msgid ""
 "But we are so close to the end. We must finish this. I am sorry you will not "
 "be able to enjoy our freedom. Goodbye, Harper."
@@ -2140,19 +2146,19 @@ msgstr ""
 "了，哈魄。"
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:1013
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:1015
 msgid ""
 "Carry on, my friends. Fighting by your side is the most honorable thing I "
 "have done..."
 msgstr "繼續，我的朋友們。能和你們並肩作戰是我做過最光榮的事..."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:1060
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:1062
 msgid "Your reign of terror is over, General."
 msgstr "將軍，你的恐怖統治結束了。"
 
 #. [message]: speaker=Dommel
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:1065
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:1067
 msgid ""
 "You will never successfully oppose Asheviere. Her power is too great... This "
 "small victory today is but a reprieve from the unimaginable pain you will "
@@ -2162,20 +2168,20 @@ msgstr ""
 "利而已，當她憤怒的傾全力對付你時，你將會嚐到生不如死的而緩慢的痛苦。"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:1076
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:1078
 msgid ""
 "This was no small victory. You underestimate the power of love for freedom."
 msgstr "這可不是小勝而已。你低估了追求自由的力量。"
 
 #. [message]: speaker=Dommel
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:1081
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:1083
 #, fuzzy
 msgid ""
 "You... underestimate the... cruelty and ambition of your Queen... Uungh..."
 msgstr "你...低估了...女王的殘酷和野心...呃呃呃啊..."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:1087
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:1089
 msgid ""
 "Small victory? Bah! Now we will raze this fortress and bury it in the earth "
 "from whence it came."
@@ -2296,7 +2302,7 @@ msgid "Bone Knight"
 msgstr "骸骨騎士"
 
 #. [unit_type]: id=Bone Knight, race=undead
-#: data/campaigns/Liberty/units/Bone_Knight.cfg:27
+#: data/campaigns/Liberty/units/Bone_Knight.cfg:26
 msgid ""
 "Once great warriors across the plains, these mounted riders atop their "
 "skeletal horses were raised from the ground by unholy magic to spread fear "
@@ -2306,13 +2312,13 @@ msgstr ""
 "醒，散播著恐懼和毀滅。"
 
 #. [attack]: type=blade
-#: data/campaigns/Liberty/units/Bone_Knight.cfg:31
-#: data/campaigns/Liberty/units/Skeleton_Rider.cfg:41
+#: data/campaigns/Liberty/units/Bone_Knight.cfg:30
+#: data/campaigns/Liberty/units/Skeleton_Rider.cfg:40
 msgid "axe"
 msgstr "斧"
 
 #. [attack]: type=impact
-#: data/campaigns/Liberty/units/Bone_Knight.cfg:40
+#: data/campaigns/Liberty/units/Bone_Knight.cfg:39
 msgid "trample"
 msgstr "踐踏"
 
@@ -2322,7 +2328,7 @@ msgid "Death Squire"
 msgstr "死亡騎士扈從"
 
 #. [unit_type]: id=Death Squire, race=undead
-#: data/campaigns/Liberty/units/Death_Squire.cfg:27
+#: data/campaigns/Liberty/units/Death_Squire.cfg:26
 #, fuzzy
 msgid ""
 "Sometimes the mightiest warriors and generals, cursed with hate and angst, "
@@ -2336,7 +2342,7 @@ msgstr ""
 "將學會好好地應用死亡騎士的力量，還有領導部下的能力。"
 
 #. [attack]: type=blade
-#: data/campaigns/Liberty/units/Death_Squire.cfg:32
+#: data/campaigns/Liberty/units/Death_Squire.cfg:31
 msgid "sword"
 msgstr "剑"
 
@@ -2346,7 +2352,7 @@ msgid "Rogue Mage"
 msgstr "流浪法師"
 
 #. [unit_type]: id=Rogue Mage, race=human
-#: data/campaigns/Liberty/units/Rogue_Mage.cfg:19
+#: data/campaigns/Liberty/units/Rogue_Mage.cfg:18
 msgid ""
 "Some mages are thrown out of the mage’s guild for attempting to practice "
 "forbidden arts. Now completely outside the law, these rogue mages do "
@@ -2359,13 +2365,13 @@ msgstr ""
 "優秀，他們的魔法也頗為致命，而他們偶有的強盜行動也讓他們掌握了一些短劍的技巧"
 
 #. [attack]: type=blade
-#: data/campaigns/Liberty/units/Rogue_Mage.cfg:24
-#: data/campaigns/Liberty/units/Shadow_Mage.cfg:33
+#: data/campaigns/Liberty/units/Rogue_Mage.cfg:23
+#: data/campaigns/Liberty/units/Shadow_Mage.cfg:32
 msgid "short sword"
 msgstr "短剑"
 
 #. [attack]: type=cold
-#: data/campaigns/Liberty/units/Rogue_Mage.cfg:33
+#: data/campaigns/Liberty/units/Rogue_Mage.cfg:32
 msgid "ice blast"
 msgstr "冰風暴"
 
@@ -2375,7 +2381,7 @@ msgid "Shadow Lord"
 msgstr "光影領主"
 
 #. [unit_type]: id=Shadow Lord, race=human
-#: data/campaigns/Liberty/units/Shadow_Lord.cfg:23
+#: data/campaigns/Liberty/units/Shadow_Lord.cfg:22
 msgid ""
 "Few humans fathom the secrets of light and dark magic and retain their "
 "sanity. Those that can master that balance become Shadow Lords, fully "
@@ -2388,18 +2394,18 @@ msgstr ""
 "所敬畏。"
 
 #. [attack]: type=blade
-#: data/campaigns/Liberty/units/Shadow_Lord.cfg:35
+#: data/campaigns/Liberty/units/Shadow_Lord.cfg:34
 msgid "astral blade"
 msgstr "星刃"
 
 #. [attack]: type=cold
-#: data/campaigns/Liberty/units/Shadow_Lord.cfg:46
-#: data/campaigns/Liberty/units/Shadow_Mage.cfg:45
+#: data/campaigns/Liberty/units/Shadow_Lord.cfg:45
+#: data/campaigns/Liberty/units/Shadow_Mage.cfg:44
 msgid "shadow bolt"
 msgstr "暗影箭"
 
 #. [attack]: type=impact
-#: data/campaigns/Liberty/units/Shadow_Lord.cfg:58
+#: data/campaigns/Liberty/units/Shadow_Lord.cfg:57
 msgid "shadow blast"
 msgstr "暗影風暴"
 
@@ -2409,7 +2415,7 @@ msgid "Shadow Mage"
 msgstr "光影法師"
 
 #. [unit_type]: id=Shadow Mage, race=human
-#: data/campaigns/Liberty/units/Shadow_Mage.cfg:22
+#: data/campaigns/Liberty/units/Shadow_Mage.cfg:21
 msgid ""
 "Years of violence and brutality to support the study of forbidden magical "
 "arts have turned the shadow mages into feared fighters. Now completely "
@@ -2430,7 +2436,7 @@ msgid "Skeleton Rider"
 msgstr "骷髏騎兵"
 
 #. [unit_type]: id=Skeleton Rider, race=undead
-#: data/campaigns/Liberty/units/Skeleton_Rider.cfg:34
+#: data/campaigns/Liberty/units/Skeleton_Rider.cfg:33
 msgid ""
 "Once great warriors thundering across the plains, these mounted riders atop "
 "their skeletal horses were raised from the grave by unholy magic to spread "

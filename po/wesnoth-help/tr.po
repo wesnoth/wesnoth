@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-07-24 23:26+0300\n"
+"POT-Creation-Date: 2016-11-06 02:27+0300\n"
 "PO-Revision-Date: 2009-04-12 14:56+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <ceviri@belgeler.gen.tr>\n"
@@ -21,20 +21,22 @@ msgstr ""
 "X-Generator: KBabel 1.11.4\n"
 
 #. [time]: id=underground
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:459
-#: data/core/macros/schedules.cfg:99
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:498
+#: data/core/macros/schedules.cfg:109
 msgid "Underground"
 msgstr "Yeraltı"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:651
-#: data/core/macros/abilities.cfg:348
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:657
+#: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:657
+#: data/core/macros/abilities.cfg:346
 msgid "berserk"
 msgstr "cinnet"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:653
-#: data/core/macros/abilities.cfg:349
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:659
+#: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:659
+#: data/core/macros/abilities.cfg:347
 #, fuzzy
 #| msgid ""
 #| "Berserk:\n"
@@ -50,14 +52,16 @@ msgstr ""
 "veya 30 ellik saldırıya denk olana dek devam eder."
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:662
-#: data/core/macros/abilities.cfg:435
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:668
+#: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:668
+#: data/core/macros/abilities.cfg:433
 msgid "magical"
 msgstr "sihirli"
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:664
-#: data/core/macros/abilities.cfg:436
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:670
+#: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:670
+#: data/core/macros/abilities.cfg:434
 #, fuzzy
 #| msgid ""
 #| "Magical:\n"
@@ -71,16 +75,18 @@ msgstr ""
 "Bu saldırı her zaman (saldırı ve savunma) %70 isabet şansına sahiptir."
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:673
-#: data/core/macros/abilities.cfg:480
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:679
+#: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:679
+#: data/core/macros/abilities.cfg:478
 #, fuzzy
 #| msgid "firststrike"
 msgid "first strike"
 msgstr "ilk vuruş"
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:675
-#: data/core/macros/abilities.cfg:481
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:681
+#: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:681
+#: data/core/macros/abilities.cfg:479
 #, fuzzy
 #| msgid ""
 #| "First Strike:\n"
@@ -942,66 +948,66 @@ msgstr "Günün saati"
 
 #. [section]: id=introduction
 #. [topic]: id=..introduction
-#: data/core/help.cfg:17 data/core/help.cfg:97
+#: data/core/help.cfg:17 data/core/help.cfg:96
 msgid "Introduction"
 msgstr "Sunuş"
 
 #. [section]: id=gameplay
 #. [topic]: id=..gameplay
-#: data/core/help.cfg:23 data/core/help.cfg:169
+#: data/core/help.cfg:23 data/core/help.cfg:168
 msgid "Gameplay"
 msgstr "Oynanış"
 
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:29 data/core/help.cfg:398
+#: data/core/help.cfg:29 data/core/help.cfg:397
 msgid "Traits"
 msgstr "Karakterler"
 
 #. [section]: id=units
 #. [topic]: id=..units
-#: data/core/help.cfg:38 data/core/help.cfg:120
+#: data/core/help.cfg:37 data/core/help.cfg:119
 msgid "Units"
 msgstr "Birimler"
 
 #. [section]: id=abilities_section
 #. [topic]: id=..abilities_section
-#: data/core/help.cfg:47 data/core/help.cfg:140
+#: data/core/help.cfg:46 data/core/help.cfg:139
 msgid "Abilities"
 msgstr "Yetenekler"
 
 #. [section]: id=weapon_specials
 #. [topic]: id=..weapon_specials
-#: data/core/help.cfg:55 data/core/help.cfg:149
+#: data/core/help.cfg:54 data/core/help.cfg:148
 msgid "Weapon Specials"
 msgstr "Silah Özellikleri"
 
 #. [section]: id=eras_section
 #. [topic]: id=..eras_section
-#: data/core/help.cfg:63 data/core/help.cfg:129
+#: data/core/help.cfg:62 data/core/help.cfg:128
 msgid "Eras"
 msgstr ""
 
 #. [section]: id=terrains_section
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:72 data/core/help.cfg:535
+#: data/core/help.cfg:71 data/core/help.cfg:412
 msgid "Terrains"
 msgstr "Araziler"
 
 #. [section]: id=addons
 #. [topic]: id=..addons
-#: data/core/help.cfg:80 data/core/help.cfg:588
+#: data/core/help.cfg:79 data/core/help.cfg:465
 msgid "Add-ons"
 msgstr ""
 
 #. [section]: id=commands
 #. [topic]: id=..commands
-#: data/core/help.cfg:86 data/core/help.cfg:655
+#: data/core/help.cfg:85 data/core/help.cfg:532
 msgid "Commands"
 msgstr "Komutlar"
 
 #. [topic]: id=..introduction
-#: data/core/help.cfg:98
+#: data/core/help.cfg:97
 #, fuzzy
 msgid ""
 "\n"
@@ -1028,12 +1034,12 @@ msgstr ""
 "uzmanlaşması zor hale getiren zengin stratejiler ortaya çıkar."
 
 #. [topic]: id=about_game
-#: data/core/help.cfg:108
+#: data/core/help.cfg:107
 msgid "About the Game"
 msgstr "Oyun Hakkında"
 
 #. [topic]: id=about_game
-#: data/core/help.cfg:109
+#: data/core/help.cfg:108
 msgid ""
 "The game takes place on a hex-based game field, where your units battle "
 "against those controlled by the computer, friends who each take turns on the "
@@ -1056,7 +1062,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..units
-#: data/core/help.cfg:121
+#: data/core/help.cfg:120
 msgid ""
 "This section will list all the units you discover as you explore the world "
 "of Wesnoth. When you see a new unit during a campaign or multiplayer "
@@ -1067,7 +1073,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..eras_section
-#: data/core/help.cfg:130
+#: data/core/help.cfg:129
 msgid ""
 "A faction is a collection of units and leaders. Factions are assigned to "
 "sides in multiplayer games.\n"
@@ -1075,7 +1081,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..eras_section
-#: data/core/help.cfg:132
+#: data/core/help.cfg:131
 msgid ""
 "An era is a collection of factions, intended to be played against one "
 "another. Besides the mainline eras that come with the game, many user-made "
@@ -1084,7 +1090,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..abilities_section
-#: data/core/help.cfg:141
+#: data/core/help.cfg:140
 #, fuzzy
 #| msgid ""
 #| "Certain units have abilities that either directly affect other units, or "
@@ -1105,7 +1111,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..weapon_specials
-#: data/core/help.cfg:150
+#: data/core/help.cfg:149
 msgid ""
 "Some weapons have special features that increase the effectiveness of "
 "attacking with them. When you see a new weapon special during a campaign or "
@@ -1116,12 +1122,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=.unknown_unit
-#: data/core/help.cfg:159
+#: data/core/help.cfg:158
 msgid "Unknown Unit"
 msgstr "Bilinmeyen Birim"
 
 #. [topic]: id=.unknown_unit
-#: data/core/help.cfg:160
+#: data/core/help.cfg:159
 msgid ""
 "\n"
 "\n"
@@ -1134,7 +1140,7 @@ msgstr ""
 "keşfetmelisiniz."
 
 #. [topic]: id=..gameplay
-#: data/core/help.cfg:170
+#: data/core/help.cfg:169
 msgid ""
 "Wesnoth is comprised of a series of battles, called "
 "<italic>text='scenarios'</italic>, that pit your troops against the troops "
@@ -1157,7 +1163,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..gameplay
-#: data/core/help.cfg:177
+#: data/core/help.cfg:176
 #, fuzzy
 #| msgid "<header>text='Units of this race'</header>"
 msgid ""
@@ -1168,7 +1174,7 @@ msgid ""
 msgstr "<header>text='Bu ırkın birimleri'</header>"
 
 #. [topic]: id=..gameplay
-#: data/core/help.cfg:177
+#: data/core/help.cfg:176
 #, fuzzy
 #| msgid ""
 #| "While playing, keep in mind that if you mouse-over many items in the "
@@ -1189,12 +1195,12 @@ msgstr ""
 "defa karşılaşınca işe yarar."
 
 #. [topic]: id=victory_and_defeat
-#: data/core/help.cfg:189
+#: data/core/help.cfg:188
 msgid "Victory and Defeat"
 msgstr "Zafer ve Yenilgi"
 
 #. [topic]: id=victory_and_defeat
-#: data/core/help.cfg:190
+#: data/core/help.cfg:189
 #, fuzzy
 msgid ""
 "\n"
@@ -1212,7 +1218,7 @@ msgstr ""
 "oyundaysanız) diğer oyuncularla yazışabilirsiniz."
 
 #. [topic]: id=victory_and_defeat
-#: data/core/help.cfg:190
+#: data/core/help.cfg:189
 #, fuzzy
 msgid ""
 "Pay careful attention to the <bold>text='Objectives'</bold> pop-up box at "
@@ -1231,12 +1237,12 @@ msgstr ""
 "el dayanmanız istenebilir."
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:199
+#: data/core/help.cfg:198
 msgid "Recruiting and Recalling"
 msgstr "Askere Alma ve Geri Çağırma"
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:200
+#: data/core/help.cfg:199
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -1262,7 +1268,7 @@ msgstr ""
 "askere alırken o an sahip olduğunuzdan fazla altın harcayamazsınız."
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:200
+#: data/core/help.cfg:199
 #, fuzzy
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
@@ -1289,7 +1295,7 @@ msgstr ""
 "birimse Tamam düğmesine tıklayıp o birimi askere alabilirsiniz."
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:202
+#: data/core/help.cfg:201
 #, fuzzy
 msgid ""
 "\n"
@@ -1303,7 +1309,7 @@ msgstr ""
 "traits_section' text='karakterle'</ref> gelirler."
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:204
+#: data/core/help.cfg:203
 msgid ""
 "\n"
 "\n"
@@ -1318,7 +1324,7 @@ msgstr ""
 "önceki senaryolarda hayatta kalan birimlerin bir listesi gösterilir."
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:206
+#: data/core/help.cfg:205
 #, fuzzy
 msgid ""
 "\n"
@@ -1334,12 +1340,12 @@ msgstr ""
 "<ref>dst='income_and_upkeep' text='Gelir ve Gider'</ref>’i okuyunuz."
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:215
+#: data/core/help.cfg:214
 msgid "Income and Upkeep"
 msgstr "Gelir ve Gider"
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:216
+#: data/core/help.cfg:215
 #, fuzzy
 msgid ""
 "\n"
@@ -1359,7 +1365,7 @@ msgstr ""
 "gideriniz bu gelirden çıkartılır."
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:216
+#: data/core/help.cfg:215
 #, fuzzy
 msgid ""
 "In Wesnoth, it is not enough simply to recruit units and fight. You must "
@@ -1373,7 +1379,7 @@ msgstr ""
 "ve Gider."
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:218
+#: data/core/help.cfg:217
 #, fuzzy
 msgid ""
 "\n"
@@ -1395,7 +1401,7 @@ msgstr ""
 "bakım masrafı olarak her el iki altın hesabınızdan düşürülür."
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:220
+#: data/core/help.cfg:219
 #, fuzzy
 msgid ""
 "\n"
@@ -1410,7 +1416,7 @@ msgstr ""
 "var ise sonuçta geliriniz her el için 10 altın olacaktır."
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:222
+#: data/core/help.cfg:221
 #, fuzzy
 msgid ""
 "\n"
@@ -1432,12 +1438,12 @@ msgstr ""
 "daima bir lider olacaktır."
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:231
+#: data/core/help.cfg:230
 msgid "Hitpoints and Experience"
 msgstr "Yaşam Puanı ve Deneyim"
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:232
+#: data/core/help.cfg:231
 #, fuzzy
 msgid ""
 "Each unit has a certain number of <italic>text='hitpoints'</italic> (HP). If "
@@ -1452,7 +1458,7 @@ msgstr ""
 "savaşarak tecrübe kazanır."
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:236
+#: data/core/help.cfg:235
 msgid ""
 "The hitpoints and experience points are both indicated in the status pane "
 "using two numbers (the current value and the maximum value the unit can "
@@ -1462,7 +1468,7 @@ msgstr ""
 "birimin edinebileceği en fazla değer) gösterilmiştir."
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:238
+#: data/core/help.cfg:237
 #, fuzzy
 #| msgid ""
 #| "The hitpoints are also indicated by an energy bar next to each unit, "
@@ -1481,14 +1487,14 @@ msgstr ""
 "üzere iken beyaza dönüşen mavi bir tecrübe çubuğu vardır."
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:245
+#: data/core/help.cfg:244
 #, fuzzy
 #| msgid "Advances to: "
 msgid "Advancement"
 msgstr "Şuna terfi eder: "
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:246
+#: data/core/help.cfg:245
 msgid ""
 "\n"
 "\n"
@@ -1505,7 +1511,7 @@ msgstr ""
 "iyileşirler. Bazı durumlarda, üst seviyeye erişmek seçeneklidir."
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:246
+#: data/core/help.cfg:245
 msgid ""
 "If both units survive a combat, they gain a number of experience points "
 "equal to the level of the unit they’re fighting. If a unit kills another in "
@@ -1518,7 +1524,7 @@ msgstr ""
 "seviye 3 için 24 ve böyle devam eder."
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:248
+#: data/core/help.cfg:247
 #, fuzzy
 msgid ""
 "\n"
@@ -1547,12 +1553,12 @@ msgstr ""
 "seviye birimleri bir üst seviye çıkarmak için uğraşmak daha faydalıdır."
 
 #. [topic]: id=movement
-#: data/core/help.cfg:257
+#: data/core/help.cfg:256
 msgid "Movement"
 msgstr "Hareket"
 
 #. [topic]: id=movement
-#: data/core/help.cfg:258
+#: data/core/help.cfg:257
 #, fuzzy
 msgid ""
 "\n"
@@ -1580,7 +1586,7 @@ msgstr ""
 "ayarı'</italic>’na bakın."
 
 #. [topic]: id=movement
-#: data/core/help.cfg:258
+#: data/core/help.cfg:257
 #, fuzzy
 msgid ""
 "Movement in <italic>text='Battle for Wesnoth'</italic> is simple. Click on "
@@ -1610,7 +1616,7 @@ msgstr ""
 "hareket puanını sıfırlarsa da birim hala saldırı yapabilir."
 
 #. [topic]: id=movement
-#: data/core/help.cfg:260
+#: data/core/help.cfg:259
 #, fuzzy
 msgid ""
 "\n"
@@ -1633,7 +1639,7 @@ msgstr ""
 "alanından etkilenmezler."
 
 #. [topic]: id=movement
-#: data/core/help.cfg:262
+#: data/core/help.cfg:261
 msgid ""
 "\n"
 "\n"
@@ -1648,12 +1654,12 @@ msgstr ""
 "onları engellemese düşmanın nereye kadar hareket edebileceğini gösterir."
 
 #. [topic]: id=shroud_and_fog
-#: data/core/help.cfg:271
+#: data/core/help.cfg:270
 msgid "Shroud and Fog of War"
 msgstr "Örtü ve Savaş Dumanı"
 
 #. [topic]: id=shroud_and_fog
-#: data/core/help.cfg:272
+#: data/core/help.cfg:271
 #, fuzzy
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
@@ -1696,12 +1702,12 @@ msgstr ""
 "sağlayabilirsiniz."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:281
+#: data/core/help.cfg:280
 msgid "Combat"
 msgstr "Çarpışma"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:282
+#: data/core/help.cfg:281
 #, fuzzy
 msgid ""
 "\n"
@@ -1713,7 +1719,7 @@ msgstr ""
 "<header>text='Vuruşların sırası ve sayısı'</header>"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:282
+#: data/core/help.cfg:281
 #, fuzzy
 msgid ""
 "Combat in <italic>text='Battle for Wesnoth'</italic> always takes place "
@@ -1737,7 +1743,7 @@ msgstr ""
 "ve genellikle ok, mızrak ve ateş topu gibi silahları kapsayan menzilli."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:284
+#: data/core/help.cfg:283
 #, fuzzy
 msgid ""
 "\n"
@@ -1746,8 +1752,8 @@ msgid ""
 "strike either hits, doing a given amount of damage, or misses, doing no "
 "damage at all. Strikes alternate until each unit has used up all of its "
 "strikes. The number of strikes a unit has varies; for instance, an elvish "
-"fighter with a 5–4 attack may strike 4 times, each successful strike dealing "
-"5 damage, while an orcish grunt with a 9–2 attack can only strike twice (but "
+"fighter with a 5×4 attack may strike 4 times, each successful strike dealing "
+"5 damage, while an orcish grunt with a 9×2 attack can only strike twice (but "
 "at 9 damage for each hit)."
 msgstr ""
 "\n"
@@ -1760,7 +1766,7 @@ msgstr ""
 "gücünde)."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:286
+#: data/core/help.cfg:285
 #, fuzzy
 msgid ""
 "\n"
@@ -1772,7 +1778,7 @@ msgstr ""
 "<header>text='İsabet şansı'</header>"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:288
+#: data/core/help.cfg:287
 #, fuzzy
 msgid ""
 "\n"
@@ -1796,7 +1802,7 @@ msgstr ""
 "oranı da saldıranın bulunduğu araziyle alakalıdır."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:290
+#: data/core/help.cfg:289
 #, fuzzy
 msgid ""
 "\n"
@@ -1817,7 +1823,7 @@ msgstr ""
 "sahiptirler."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:292
+#: data/core/help.cfg:291
 msgid ""
 "\n"
 "\n"
@@ -1828,13 +1834,13 @@ msgstr ""
 "<header>text=Hasar</header>"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:294
+#: data/core/help.cfg:293
 #, fuzzy
 msgid ""
 "\n"
 "\n"
 "Each strike which hits causes a base amount of damage depending on the "
-"attack type. For instance, an elvish fighter with a 5–4 attack does 5 base "
+"attack type. For instance, an elvish fighter with a 5×4 attack does 5 base "
 "damage. This is usually modified by two things: "
 "<ref>dst='damage_types_and_resistance' text='resistance'</ref> and "
 "<ref>dst='time_of_day' text='time of day'</ref>. To see how base damage is "
@@ -1851,7 +1857,7 @@ msgstr ""
 "menüsünden <italic>text='Hasar Hesaplamaları'</italic>nı seçiniz."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:296
+#: data/core/help.cfg:295
 #, fuzzy
 msgid ""
 "\n"
@@ -1870,12 +1876,12 @@ msgstr ""
 "text='yükleme'</ref>dir."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:304
+#: data/core/help.cfg:303
 msgid "Damage Types and Resistance"
 msgstr "Hasar Türleri ve Direnç"
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:305
+#: data/core/help.cfg:304
 #, fuzzy
 msgid ""
 "\n"
@@ -1895,7 +1901,7 @@ msgstr ""
 "zaman %100 daha fazla hasar alır."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:305
+#: data/core/help.cfg:304
 #, fuzzy
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
@@ -1912,7 +1918,7 @@ msgstr ""
 "farklı olabilir."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:307
+#: data/core/help.cfg:306
 #, fuzzy
 msgid ""
 "\n"
@@ -1928,7 +1934,7 @@ msgstr ""
 "zayıftırlar."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:309
+#: data/core/help.cfg:308
 msgid ""
 "\n"
 "\n"
@@ -1942,12 +1948,12 @@ msgstr ""
 "karşı tarafın o hasar türüne %100 direnci olsa da geçerlidir."
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:317
+#: data/core/help.cfg:316
 msgid "Orbs"
 msgstr "Küreler"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:318
+#: data/core/help.cfg:317
 msgid ""
 "On top of the energy bar shown next to each unit of yours is an orb. For "
 "units you control, this orb is:"
@@ -1956,42 +1962,42 @@ msgstr ""
 "Kontrolünüzdeki birimler için bu küre:"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:320
+#: data/core/help.cfg:319
 #, fuzzy
 msgid " green if it hasn’t moved this turn,"
 msgstr " o el hiç hareket etmemişse yeşildir,"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:321
+#: data/core/help.cfg:320
 #, fuzzy
 msgid " yellow if it has moved, but could still move further or attack, or"
 msgstr " hareket etmiş ama devam edebilecek veya saldırabilecekse sarıdır,"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:322
+#: data/core/help.cfg:321
 msgid ""
 " red if it can no longer move or attack, or the user ended the unit’s turn."
 msgstr ""
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:323
+#: data/core/help.cfg:322
 #, fuzzy
 msgid " blue if the unit is an ally you do not control."
 msgstr " Müttefik olup senin idarende olmayan bir birimde küre mavidir."
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:324
+#: data/core/help.cfg:323
 #, fuzzy
 msgid " Enemy units have no orb on top of their energy bar."
 msgstr " Düşman birimlerinin enerji sütunlarının üstünde küre yoktur."
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:331
+#: data/core/help.cfg:330
 msgid "Time of Day"
 msgstr "Günün saati"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:332
+#: data/core/help.cfg:331
 #, fuzzy
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
@@ -2010,7 +2016,7 @@ msgstr ""
 " · Tarafsız birimler günün saatinden etkilenmezler."
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:337
+#: data/core/help.cfg:336
 #, fuzzy
 msgid ""
 "\n"
@@ -2029,21 +2035,21 @@ msgstr ""
 #. [time]: id=dawn
 #. [time]: id=dawn_hour
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:341 data/core/macros/schedules.cfg:6
-#: data/core/macros/schedules.cfg:265 data/test/maps/pathfind_1.cfg:64
+#: data/core/help.cfg:340 data/core/macros/schedules.cfg:14
+#: data/core/macros/schedules.cfg:275 data/test/maps/pathfind_1.cfg:64
 msgid "Dawn"
 msgstr "Şafak"
 
 #. [time]: id=morning
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:342 data/core/macros/schedules.cfg:17
+#: data/core/help.cfg:341 data/core/macros/schedules.cfg:26
 #: data/test/maps/pathfind_1.cfg:75
 msgid "Morning"
 msgstr "Sabah"
 
 #. [time]: id=afternoon
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:343 data/core/macros/schedules.cfg:35
+#: data/core/help.cfg:342 data/core/macros/schedules.cfg:44
 #: data/test/maps/pathfind_1.cfg:86
 msgid "Afternoon"
 msgstr "İkindi"
@@ -2051,27 +2057,27 @@ msgstr "İkindi"
 #. [time]: id=dusk
 #. [time]: id=dusk_hour
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:344 data/core/macros/schedules.cfg:44
-#: data/core/macros/schedules.cfg:377 data/test/maps/pathfind_1.cfg:97
+#: data/core/help.cfg:343 data/core/macros/schedules.cfg:53
+#: data/core/macros/schedules.cfg:396 data/test/maps/pathfind_1.cfg:97
 msgid "Dusk"
 msgstr "Akşam"
 
 #. [time]: id=first_watch
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:345 data/core/macros/schedules.cfg:55
+#: data/core/help.cfg:344 data/core/macros/schedules.cfg:65
 #: data/test/maps/pathfind_1.cfg:108
 msgid "First Watch"
 msgstr "Gece"
 
 #. [time]: id=second_watch
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:346 data/core/macros/schedules.cfg:79
+#: data/core/help.cfg:345 data/core/macros/schedules.cfg:89
 #: data/test/maps/pathfind_1.cfg:119
 msgid "Second Watch"
 msgstr "Sabaha Karşı"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:348
+#: data/core/help.cfg:347
 #, fuzzy
 #| msgid ""
 #| "Keep in mind that some scenarios take place underground, where it is "
@@ -2084,26 +2090,26 @@ msgstr ""
 "aklınızda bulunsun!"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:350
+#: data/core/help.cfg:349
 msgid ""
 "Some underground locations are illuminated. They are perpetually "
 "intermediate between day and night.\n"
 msgstr ""
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:352
+#: data/core/help.cfg:351
 msgid ""
 "Some role-playing scenarios take place indoors — these regions are similarly "
 "intermediate."
 msgstr ""
 
 #. [topic]: id=healing
-#: data/core/help.cfg:359
+#: data/core/help.cfg:358
 msgid "Healing"
 msgstr "Tedavi"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:360
+#: data/core/help.cfg:359
 #, fuzzy
 msgid ""
 "\n"
@@ -2117,7 +2123,7 @@ msgstr ""
 "saldırılmayan bir birim bir sonraki elde 2YP iyileşir."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:360
+#: data/core/help.cfg:359
 msgid ""
 "In combat, your units will inevitably take damage. There are several ways to "
 "heal your units. However, with the exception of resting, these do not stack; "
@@ -2125,7 +2131,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=healing
-#: data/core/help.cfg:362
+#: data/core/help.cfg:361
 #, fuzzy
 msgid ""
 "\n"
@@ -2137,7 +2143,7 @@ msgstr ""
 "<bold>text=Köyler:</bold> Bir köyde tura başlayan birim 8 YP tedavi olur."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:363
+#: data/core/help.cfg:362
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2154,7 +2160,7 @@ msgstr ""
 "gibi) her el kendiliğinden 8 YP tedavi olurlar."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:364
+#: data/core/help.cfg:363
 #, fuzzy
 msgid ""
 "\n"
@@ -2171,7 +2177,7 @@ msgstr ""
 "zehirin hasar vermesini önlerler."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:365
+#: data/core/help.cfg:364
 #, fuzzy
 msgid ""
 "\n"
@@ -2186,7 +2192,7 @@ msgstr ""
 "de sahipse zehirli birim için İlaç tercih edilir)."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:366
+#: data/core/help.cfg:365
 msgid ""
 "\n"
 "• <bold>text='Advancement'</bold>: When a unit <ref>dst='advancement' "
@@ -2195,7 +2201,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=healing
-#: data/core/help.cfg:367
+#: data/core/help.cfg:366
 msgid ""
 "\n"
 "\n"
@@ -2210,7 +2216,7 @@ msgstr ""
 "birimler senaryolar arasında tamamen iyileşir."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:369
+#: data/core/help.cfg:368
 msgid ""
 "\n"
 "\n"
@@ -2218,7 +2224,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=healing
-#: data/core/help.cfg:371
+#: data/core/help.cfg:370
 msgid ""
 "\n"
 "\n"
@@ -2230,12 +2236,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=wrap_up
-#: data/core/help.cfg:379
+#: data/core/help.cfg:378
 msgid "Wrap Up"
 msgstr "Konuyu toparlama"
 
 #. [topic]: id=wrap_up
-#: data/core/help.cfg:380
+#: data/core/help.cfg:379
 #, fuzzy
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
@@ -2251,17 +2257,17 @@ msgstr ""
 "her şeyi biliyorsunuz. İyi eğlenceler ve iyi şanslar!"
 
 #. [topic]: id=about
-#: data/core/help.cfg:385
+#: data/core/help.cfg:384
 msgid "ingame_help_item^Contributors"
 msgstr "Teşekkür"
 
 #. [topic]: id=license
-#: data/core/help.cfg:391
+#: data/core/help.cfg:390
 msgid "License"
 msgstr "Lisans"
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:400
+#: data/core/help.cfg:399
 #, fuzzy
 msgid ""
 "\n"
@@ -2277,7 +2283,7 @@ msgstr ""
 "bir birim askere alınırken verilirler."
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:400
+#: data/core/help.cfg:399
 msgid ""
 "Traits are modifications that change a unit’s attributes slightly. They are "
 "usually randomly assigned to a unit when it is recruited. The traits "
@@ -2286,7 +2292,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:402
+#: data/core/help.cfg:401
 #, fuzzy
 msgid ""
 "\n"
@@ -2304,7 +2310,7 @@ msgstr ""
 "birimlerce kullanılabilir."
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:404
+#: data/core/help.cfg:403
 #, fuzzy
 msgid ""
 "\n"
@@ -2324,451 +2330,8 @@ msgstr ""
 "<ref>dst='traits_dextrous' text='Maharetli'</ref>dir.\n"
 "\n"
 
-#. [topic]: id=traits_intelligent
-#: data/core/help.cfg:414
-msgid "Intelligent"
-msgstr "Zeki"
-
-#. [topic]: id=traits_intelligent
-#: data/core/help.cfg:415
-#, fuzzy
-msgid ""
-"\n"
-"\n"
-"<italic>text='Intelligent'</italic> units are very useful at the beginning "
-"of a campaign as they can advance to higher levels more quickly. Later in "
-"campaigns Intelligent is not quite as useful because the <italic>text='After "
-"Maximum Level Advancement'</italic> (AMLA) is not as significant a change as "
-"advancing a level. If you have many ‘maximum level’ units you may wish to "
-"recall units with more desirable traits."
-msgstr ""
-"\n"
-"\n"
-"Zeki birimler bir seferberliğin başında çok faydalıdırlar, çünkü üst "
-"seviyelere daha çabuk ulaşırlar. Seferberliğin ileri senaryolarında zeki "
-"birimler artık çok faydalı olmazlar çünkü en üst seviyeye ulaştıktan sonraki "
-"tecrübe puanları birimler için pek bir işe yaramaz. Eğer çok sayıda ‘en üst "
-"seviye’ birimine sahipseniz, işinize en çok yarayacak mizaca sahip olanları "
-"çağırmayı düşünebilirsiniz."
-
-#. [topic]: id=traits_intelligent
-#: data/core/help.cfg:415
-msgid "Intelligent units require 20% less experience than usual to advance."
-msgstr ""
-"Zeki birimlerin seviye atlaması normalden %20 daha az tecrübe gerektirir."
-
-#. [topic]: id=traits_quick
-#: data/core/help.cfg:422
-msgid "Quick"
-msgstr "Hızlı"
-
-#. [topic]: id=traits_quick
-#: data/core/help.cfg:423
-#, fuzzy
-msgid ""
-"\n"
-"\n"
-"Quick is the most noticeable trait, particularly in slower moving units such "
-"as trolls or heavy infantry. Units with the quick trait often have greatly "
-"increased mobility in rough terrain, which can be important to consider when "
-"deploying your forces. Also, quick units aren’t quite as tough as units "
-"without this trait and are subsequently less good at holding contested "
-"positions."
-msgstr ""
-"\n"
-"\n"
-"Hızlılık en çabuk farkedilebilen yetenektir, özellikle yavaş birimlerde "
-"mesela troller ve ağır piyade. Hızlı mizaçlı birimler genellikle zor "
-"bölgelerde arttırılmış hareket yeteneğine sahiptir bu yüzden birimlerinizi "
-"yayarken bunu dikkate almalısınız. Hızlı birimler bu yeteneğe sahip olmayan "
-"birimler kadar sağlam değillerdir ve bu yüzden karşı koyma durumlarında iyi "
-"değillerdir."
-
-#. [topic]: id=traits_quick
-#: data/core/help.cfg:423
-#, fuzzy
-msgid ""
-"<italic>text='Quick'</italic> units have 1 extra movement point, but 5% less "
-"hitpoints than usual."
-msgstr ""
-"Hızlı birimlerin normalden 1 fazla hareket puanına karşın %5 daha az yaşam "
-"puanı olur."
-
-#. [topic]: id=traits_resilient
-#: data/core/help.cfg:430
-msgid "Resilient"
-msgstr "Dayanıklı"
-
-#. [topic]: id=traits_resilient
-#: data/core/help.cfg:431
-msgid ""
-"\n"
-"\n"
-"Resilient units can be useful at all stages of a campaign, and this is a "
-"useful trait for all units. Resilient is often most helpful as a trait when "
-"it occurs in a unit that has some combination of low hitpoints, good "
-"defense, or high resistances. Resilient units are especially useful for "
-"holding strategic positions against opponents."
-msgstr ""
-"\n"
-"\n"
-"Dayanıklı birimler bir seferberliğin her bölümüne faydalıdırlar ve bu bütün "
-"birimler için en faydalı yetenektir. Dayanıklı mizaç az yaşam puanı, iyi "
-"savunma ve yüksek dirençliliğe sahip bir birim için çok faydalıdır. "
-"Dayanıklı birimler stratejik noktaları tutmak için idealdirler."
-
-#. [topic]: id=traits_resilient
-#: data/core/help.cfg:431
-#, fuzzy
-msgid ""
-"<italic>text='Resilient'</italic> units have an additional 4 hitpoints, and "
-"gain 1 more per level."
-msgstr ""
-"Dayanıklı birimlerin normalden +4 yaşam puanına ek olarak her seviye için +1 "
-"yaşam puanı vardır."
-
-#. [topic]: id=traits_strong
-#: data/core/help.cfg:438
-msgid "Strong"
-msgstr "Güçlü"
-
-#. [topic]: id=traits_strong
-#: data/core/help.cfg:439
-#, fuzzy
-msgid ""
-"\n"
-"\n"
-"While useful for any close-combat unit, strong is most effective for units "
-"who have a high number of swings such as the elvish fighter. Strong units "
-"can be very useful when a tiny bit of extra damage is all that is needed to "
-"turn a damaging stroke into a killing blow."
-msgstr ""
-"\n"
-"\n"
-"Herhangi bir yakın döğüş birimi için kullanışlı olmasına karşın güçlülük elf "
-"savaşçısı gibi fazla sayıda vuruş yapan birimlerde daha etkilidir. Güçlü "
-"birimler bir birimi öldürmek için verilebilecek olandan biraz fazla hasar "
-"gerektiği zaman çok faydalıdırlar."
-
-#. [topic]: id=traits_strong
-#: data/core/help.cfg:439
-#, fuzzy
-msgid ""
-"<italic>text='Strong'</italic> units do 1 more damage for every successful "
-"strike in melee combat, and have 1 additional hitpoint."
-msgstr ""
-"Güçlü birimler yakın döğüşte vuruş başına 1 fazla hasar verirler ve "
-"kendilerinin 1 fazla YP’leri vardır."
-
-#. [topic]: id=traits_fearless
-#: data/core/help.cfg:446
-msgid "Fearless"
-msgstr "Korkusuz"
-
-#. [topic]: id=traits_fearless
-#: data/core/help.cfg:447
-msgid "Aversion to light and dark holds no sway over these brave individuals."
-msgstr "Aydınlığın ve karanlığın bu cesur birimler üzerinde bir etkisi olmaz."
-
-#. [topic]: id=traits_feral
-#: data/core/help.cfg:452
-#, fuzzy
-msgid "Feral"
-msgstr "Toplam"
-
-#. [topic]: id=traits_feral
-#: data/core/help.cfg:453
-msgid ""
-"Dwellings of sentient beings are not easily used for cover by feral "
-"creatures of low intelligence. As a result, <italic>text='feral'</italic> "
-"units receive a maximum of 50% defense in any land-based village regardless "
-"of base terrain."
-msgstr ""
-
-#. [topic]: id=traits_loyal
-#: data/core/help.cfg:458
-msgid "Loyal"
-msgstr "Sadık"
-
-#. [topic]: id=traits_loyal
-#: data/core/help.cfg:459
-#, fuzzy
-msgid ""
-"\n"
-"\n"
-"During campaigns, certain units may opt to join the player’s forces of their "
-"own volition. These units are marked with the loyal trait. Although they may "
-"require payment to be recalled, they never incur any upkeep costs. This can "
-"make them invaluable during a long campaign, when gold is in short supply. "
-"This trait is never given to recruited units, so it may be unwise to dismiss "
-"such units or to send them to a foolish death."
-msgstr ""
-"\n"
-"\n"
-"Seferberlikler sırasında, bazı birimler kendi istekleriyle oyuncunun "
-"kuvvetlerine katılırlar. Bu birimler sadık mizaçlıdırlar. Her ne kadar "
-"çağrılmak için ödenek isterlerse de, asla herhangi bir bakım masrafına sebep "
-"olmazlar. Bu onları uzun seferberliklerde paranın kıt olduğu zamanlarda paha "
-"biçilmez yapar. Bu mizaç asla askere alınan birimlere verilmez, bu yüzden "
-"onları aptalca bir ölüme göndermek veya azletmek akıllıca bir iş değildir."
-
-#. [topic]: id=traits_loyal
-#: data/core/help.cfg:459
-#, fuzzy
-msgid ""
-"<italic>text='Loyal'</italic> units don’t incur upkeep. Most units incur an "
-"upkeep cost at the end of every turn, which is equal to their level. Loyal "
-"units do not incur this cost."
-msgstr ""
-"Sadık birimlerin gideri yoktur. Çoğu birim el sonunda seviyelerine eşit bir "
-"gidere yol açar. Sadık birimler bu gidere yol açmazlar."
-
-#. [topic]: id=traits_undead
-#: data/core/help.cfg:466
-msgid "trait^Undead"
-msgstr "Yarı Ölü"
-
-#. [topic]: id=traits_undead
-#: data/core/help.cfg:467
-#, fuzzy
-msgid ""
-"\n"
-"\n"
-"Undead units generally have undead as their only trait. Since undead units "
-"are the bodies of the dead, risen to fight again, poison has no effect upon "
-"them. This can make them invaluable in dealing with foes who use poison in "
-"conjunction with their attacks."
-msgstr ""
-"\n"
-"\n"
-"Yarı ölü birimler genellikle sadece ‘Yarı ölü’ mizaca sahiptirler. Yarı "
-"ölüler savaşmak için tekrar kaldırılan ölülerin cesetleri oldukları için "
-"zehir onlara karşı bir etki yapmaz. Bu onları zehirli saldırı yapan "
-"düşmanlarla savaşırken paha biçilmez yapar."
-
-#. [topic]: id=traits_undead
-#: data/core/help.cfg:467
-#, fuzzy
-msgid ""
-"<italic>text='Undead'</italic> units are immune to poison, drain, and plague."
-msgstr ""
-"Yarı ölü birimler zehire bağışık olmaktan başka veba ve sömürüye konu "
-"olmazlar."
-
-#. [topic]: id=traits_mechanical
-#: data/core/help.cfg:474
-msgid "trait^Mechanical"
-msgstr "Mekanik"
-
-#. [topic]: id=traits_mechanical
-#: data/core/help.cfg:475
-#, fuzzy
-msgid ""
-"\n"
-"\n"
-"Mechanical units generally have mechanical as their only trait. Since "
-"mechanical units don’t really have life, drain, poison, and plague have no "
-"effect upon them."
-msgstr ""
-"\n"
-"\n"
-"Mekanik birimlerin tek yeteneği ‘Mekanik’ olmaktır. Mekanik birimler yaşayan "
-"birimler olmadıklarından sömürü, zehir ve vebaya konu olmazlar."
-
-#. [topic]: id=traits_mechanical
-#: data/core/help.cfg:475
-#, fuzzy
-msgid ""
-"<italic>text='Mechanical'</italic> units are immune to poison, drain, and "
-"plague."
-msgstr ""
-"Mekanik birimler zehire bağışık olmaktan başka veba ve sömürüye konu "
-"olmazlar."
-
-#. [topic]: id=traits_elemental
-#: data/core/help.cfg:482
-#, fuzzy
-msgid "trait^Elemental"
-msgstr "gizlenir"
-
-#. [topic]: id=traits_elemental
-#: data/core/help.cfg:483
-#, fuzzy
-msgid ""
-"\n"
-"\n"
-"Elemental units generally have elemental as their only trait. Since "
-"elemental units are energy-based beings, drain, poison, and plague have no "
-"effect upon them."
-msgstr ""
-"\n"
-"\n"
-"Mekanik birimlerin tek yeteneği ‘Mekanik’ olmaktır. Mekanik birimler yaşayan "
-"birimler olmadıklarından sömürü, zehir ve vebaya konu olmazlar."
-
-#. [topic]: id=traits_elemental
-#: data/core/help.cfg:483
-#, fuzzy
-msgid ""
-"<italic>text='Elemental'</italic> units are immune to poison, drain, and "
-"plague."
-msgstr ""
-"Mekanik birimler zehire bağışık olmaktan başka veba ve sömürüye konu "
-"olmazlar."
-
-#. [topic]: id=traits_dextrous
-#: data/core/help.cfg:490
-msgid "Dextrous"
-msgstr "Becerikli"
-
-#. [topic]: id=traits_dextrous
-#: data/core/help.cfg:491
-#, fuzzy
-msgid ""
-"\n"
-"\n"
-"Dextrous is a trait possessed only by elves. The elven people are known for "
-"their uncanny grace, and their great facility with the bow. Some, however, "
-"are gifted with natural talent that exceeds their brethren. These elves "
-"inflict an additional point of damage with each arrow."
-msgstr ""
-"\n"
-"\n"
-"Becerikli mizacı sadece elflere aittir. Elf bireyleri esrarengiz zerafetleri "
-"ve okçuluktaki yetenekleri ile bilinir. İçlerinden bazıları diğerlerini çok "
-"aşan doğal bir yeteneğe sahiptir. Bu elfler her bir ok ile ek bir hasara "
-"sebebiyet verirler."
-
-#. [topic]: id=traits_dextrous
-#: data/core/help.cfg:491
-#, fuzzy
-msgid ""
-"<italic>text='Dextrous'</italic> units do 1 more damage for every successful "
-"strike in ranged combat."
-msgstr ""
-"Becerikli birimler menzilli döğüşte her isabet eden atışta 1 fazla hasar "
-"verirler."
-
-#. [topic]: id=traits_healthy
-#: data/core/help.cfg:498
-msgid "Healthy"
-msgstr "Sağlıklı"
-
-#. [topic]: id=traits_healthy
-#: data/core/help.cfg:499
-msgid ""
-"\n"
-"\n"
-"<italic>text='Healthy'</italic> units have 1 additional hitpoint, and gain 1 "
-"more per level. They will also heal 2 hitpoints each turn, regardless of "
-"whether they engaged in combat the turn before."
-msgstr ""
-
-#. [topic]: id=traits_healthy
-#: data/core/help.cfg:499
-#, fuzzy
-#| msgid ""
-#| "Renowned for their vitality, some dwarves are sturdier than others and "
-#| "can rest even when travelling."
-msgid ""
-"Renowned for their vitality, some dwarves are sturdier than others and can "
-"rest even when traveling."
-msgstr ""
-"Dayanıklılıkları ile tanınan cücelerin bazıları diğerlerinden daha sağlam "
-"bünyeli olup yolculuk ederken bile dinlenebilirler."
-
-#. [topic]: id=traits_dim
-#: data/core/help.cfg:506
-msgid "Dim"
-msgstr "Karartır"
-
-#. [topic]: id=traits_dim
-#: data/core/help.cfg:507
-msgid ""
-"\n"
-"\n"
-"Dim is a trait all too common in goblins and other lesser species. There are "
-"reasons these species are lesser, and this is one of them."
-msgstr ""
-"\n"
-"\n"
-"Karartma goblinler gibi düşük özelliklere sahip birimleri için ortak "
-"yetenektir. Bu özelliklerin düşük seviyeli olmasının birçok sebebi zardır ve "
-"bu da onlardan biridir."
-
-#. [topic]: id=traits_dim
-#: data/core/help.cfg:507
-#, fuzzy
-msgid ""
-"Units with trait <italic>text='dim'</italic> suffer a 20% increase in "
-"experience required to advance."
-msgstr ""
-"Karratma yeteneğine sahip birimlerin terfi etmesi için gereken tecrübe puanı "
-"%20 daha fazladır."
-
-#. [topic]: id=traits_slow
-#: data/core/help.cfg:514
-msgid "Slow"
-msgstr "Yavaş"
-
-#. [topic]: id=traits_slow
-#: data/core/help.cfg:515
-msgid ""
-"\n"
-"\n"
-"Thick-bodied and clumsy, slow individuals of goblins and other species take "
-"a movement penalty but are compensated for it with a slight increase in "
-"endurance."
-msgstr ""
-"\n"
-"\n"
-"Goblinlerin kalın zırhlı, hantal ve yavaş birimlerinin yavaşlıklarına karşın "
-"dayanıklılıklarında biraz artış vardır."
-
-#. [topic]: id=traits_slow
-#: data/core/help.cfg:515
-#, fuzzy
-msgid ""
-"<italic>text='Slow'</italic> units have 1 less movement point but 5% more "
-"hitpoints."
-msgstr ""
-"Yavaş birimlerin normalden 1 daha az hareket puanına karşın %5 daha fazla "
-"yaşam puanı olur."
-
-#. [topic]: id=traits_weak
-#: data/core/help.cfg:522
-msgid "Weak"
-msgstr "Zayıf"
-
-#. [topic]: id=traits_weak
-#: data/core/help.cfg:523
-#, fuzzy
-msgid ""
-"Units with the <italic>text='weak'</italic> trait receive a 1 point decrease "
-"in hitpoints and melee damage."
-msgstr ""
-"Zayıf birimler yaşam punlarında 1 azalmanın yanısıra yakın saldırı silahları "
-"da 1 puan daha az hasar verir."
-
-#. [topic]: id=traits_aged
-#: data/core/help.cfg:528
-#, fuzzy
-#| msgid "trait^Undead"
-msgid "trait^Aged"
-msgstr "Yarı Ölü"
-
-#. [topic]: id=traits_aged
-#: data/core/help.cfg:529
-#, fuzzy
-msgid ""
-"Units with the <italic>text='aged'</italic> trait have 8 hitpoints less and "
-"suffer from a 1 point decrease in movement and melee damage."
-msgstr ""
-"Zayıf birimler yaşam punlarında 1 azalmanın yanısıra yakın saldırı silahları "
-"da 1 puan daha az hasar verir."
-
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:536
+#: data/core/help.cfg:413
 msgid ""
 "\n"
 "\n"
@@ -2777,7 +2340,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:536
+#: data/core/help.cfg:413
 #, fuzzy
 #| msgid ""
 #| "Game maps feature a variety of terrains that affect both unit movement "
@@ -2792,7 +2355,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:538
+#: data/core/help.cfg:415
 #, fuzzy
 msgid ""
 "\n"
@@ -2804,7 +2367,7 @@ msgstr ""
 "<header>text='İsabet şansı'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:540
+#: data/core/help.cfg:417
 msgid ""
 "\n"
 "\n"
@@ -2815,7 +2378,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:544
+#: data/core/help.cfg:421
 msgid ""
 "\n"
 "\n"
@@ -2825,7 +2388,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:546
+#: data/core/help.cfg:423
 #, fuzzy
 msgid ""
 "\n"
@@ -2837,7 +2400,7 @@ msgstr ""
 "<header>text='İsabet şansı'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:548
+#: data/core/help.cfg:425
 msgid ""
 "\n"
 "\n"
@@ -2851,7 +2414,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:552
+#: data/core/help.cfg:429
 msgid ""
 "\n"
 "\n"
@@ -2866,7 +2429,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:556
+#: data/core/help.cfg:433
 msgid ""
 "\n"
 "\n"
@@ -2877,7 +2440,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:560
+#: data/core/help.cfg:437
 msgid ""
 "\n"
 "\n"
@@ -2888,7 +2451,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:564
+#: data/core/help.cfg:441
 msgid ""
 "\n"
 "\n"
@@ -2898,7 +2461,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:566
+#: data/core/help.cfg:443
 msgid ""
 "\n"
 "\n"
@@ -2909,7 +2472,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:568
+#: data/core/help.cfg:445
 #, fuzzy
 msgid ""
 "\n"
@@ -2921,7 +2484,7 @@ msgstr ""
 "<header>text='İsabet şansı'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:570
+#: data/core/help.cfg:447
 msgid ""
 "\n"
 "\n"
@@ -2931,7 +2494,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:572
+#: data/core/help.cfg:449
 msgid ""
 "\n"
 "\n"
@@ -2942,7 +2505,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:574
+#: data/core/help.cfg:451
 msgid ""
 "\n"
 "\n"
@@ -2951,7 +2514,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:576
+#: data/core/help.cfg:453
 #, fuzzy
 msgid ""
 "\n"
@@ -2964,7 +2527,7 @@ msgstr ""
 "<header>text='İsabet şansı'</header>"
 
 #. [topic]: id=..addons
-#: data/core/help.cfg:589
+#: data/core/help.cfg:466
 msgid ""
 "The degree of customization offered by the Wesnoth engine allows players to "
 "create their own game content, including new scenarios, campaigns, and much "
@@ -2973,12 +2536,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:599
+#: data/core/help.cfg:476
 msgid "Using Add-ons"
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:600
+#: data/core/help.cfg:477
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2994,14 +2557,14 @@ msgstr ""
 "<header>text=Hasar</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:600
+#: data/core/help.cfg:477
 msgid ""
 "The game supports different types of add-on content, which are not all "
 "available in every gameplay mode."
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:602
+#: data/core/help.cfg:479
 msgid ""
 "\n"
 "\n"
@@ -3012,7 +2575,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:604
+#: data/core/help.cfg:481
 #, fuzzy
 #| msgid "<header>text='Units having this special attack'</header>"
 msgid ""
@@ -3022,7 +2585,7 @@ msgid ""
 msgstr "<header>text='Bu özel saldırıya sahip birimler'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:606
+#: data/core/help.cfg:483
 msgid ""
 "\n"
 "\n"
@@ -3032,7 +2595,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:608
+#: data/core/help.cfg:485
 #, fuzzy
 msgid ""
 "\n"
@@ -3044,7 +2607,7 @@ msgstr ""
 "<header>text='Vuruşların sırası ve sayısı'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:610
+#: data/core/help.cfg:487
 msgid ""
 "\n"
 "\n"
@@ -3059,7 +2622,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:614
+#: data/core/help.cfg:491
 msgid ""
 "\n"
 "\n"
@@ -3068,7 +2631,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:616
+#: data/core/help.cfg:493
 #, fuzzy
 msgid ""
 "\n"
@@ -3080,7 +2643,7 @@ msgstr ""
 "<header>text='Vuruşların sırası ve sayısı'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:618
+#: data/core/help.cfg:495
 msgid ""
 "\n"
 "\n"
@@ -3091,7 +2654,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:620
+#: data/core/help.cfg:497
 #, fuzzy
 msgid ""
 "\n"
@@ -3103,7 +2666,7 @@ msgstr ""
 "<header>text='İsabet şansı'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:622
+#: data/core/help.cfg:499
 msgid ""
 "\n"
 "\n"
@@ -3115,12 +2678,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:631
+#: data/core/help.cfg:508
 msgid "Installing Add-ons"
 msgstr ""
 
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:632
+#: data/core/help.cfg:509
 msgid ""
 "User-made add-ons can be obtained and updated through the <italic>text='Add-"
 "ons'</italic> option in the main menu. After connecting to the add-ons "
@@ -3146,12 +2709,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:645
+#: data/core/help.cfg:522
 msgid "Removing Add-ons"
 msgstr ""
 
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:646
+#: data/core/help.cfg:523
 msgid ""
 "To remove add-ons, choose <bold>text='Remove Add-ons'</bold> in the add-ons "
 "server connection dialog. You will be presented with options to remove any "
@@ -3165,7 +2728,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:661
+#: data/core/help.cfg:538
 #, fuzzy
 #| msgid "General commands"
 msgid "General Commands"
@@ -3174,7 +2737,7 @@ msgstr "Genel Komutlar"
 #. [topic]: id=general_commands
 #. [topic]: id=mp_commands
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:663 data/core/help.cfg:706 data/core/help.cfg:744
+#: data/core/help.cfg:540 data/core/help.cfg:583 data/core/help.cfg:621
 msgid ""
 "These commands can either be issued via the command line by prefixing them "
 "with ':' (as shown here) or via the chat by prefixing them with '/' (press "
@@ -3183,7 +2746,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:665
+#: data/core/help.cfg:542
 msgid ""
 "\n"
 "Clear chat messages.\n"
@@ -3194,7 +2757,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:668
+#: data/core/help.cfg:545
 #, fuzzy
 msgid ""
 "\n"
@@ -3211,7 +2774,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:672
+#: data/core/help.cfg:549
 msgid ""
 "\n"
 "Set or toggle player on side between human and AI player. The player/client "
@@ -3230,7 +2793,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:675
+#: data/core/help.cfg:552
 msgid ""
 "\n"
 "Display the controller status of a side.\n"
@@ -3238,7 +2801,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:678
+#: data/core/help.cfg:555
 msgid ""
 "\n"
 "Toggle the display of the current frames per second.\n"
@@ -3250,7 +2813,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:681
+#: data/core/help.cfg:558
 msgid ""
 "\n"
 "Switch a log domain to a different log level.\n"
@@ -3261,7 +2824,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:684
+#: data/core/help.cfg:561
 msgid ""
 "\n"
 "Redraws the screen and reloads any image files that have been changed.\n"
@@ -3272,7 +2835,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:687
+#: data/core/help.cfg:564
 msgid ""
 "\n"
 "Bring up theme selection menu.\n"
@@ -3283,7 +2846,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:690
+#: data/core/help.cfg:567
 msgid ""
 "\n"
 "Quit the scenario (without prompting).\n"
@@ -3294,7 +2857,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:693
+#: data/core/help.cfg:570
 msgid ""
 "\n"
 "Save the game (without prompting).\n"
@@ -3305,7 +2868,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:696
+#: data/core/help.cfg:573
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
@@ -3314,14 +2877,14 @@ msgstr ""
 "Oyunu kayıt et ve senaryodan çık (sormaksızın)."
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:705
+#: data/core/help.cfg:582
 #, fuzzy
 #| msgid "Multiplayer commands"
 msgid "Multiplayer Commands"
 msgstr "Çokoyuncu komutları"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:708
+#: data/core/help.cfg:585
 #, fuzzy
 msgid ""
 "\n"
@@ -3336,7 +2899,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:711
+#: data/core/help.cfg:588
 #, fuzzy
 msgid ""
 "\n"
@@ -3356,7 +2919,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:714
+#: data/core/help.cfg:591
 msgid ""
 "\n"
 "Launch a dialog to assist the host in changing the human controllers of "
@@ -3365,7 +2928,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:717
+#: data/core/help.cfg:594
 msgid ""
 "\n"
 "Toggle the idle state for a side. The host may make a side idle after a "
@@ -3374,7 +2937,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:720
+#: data/core/help.cfg:597
 #, fuzzy
 msgid ""
 "\n"
@@ -3390,7 +2953,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:723
+#: data/core/help.cfg:600
 #, fuzzy
 msgid ""
 "\n"
@@ -3402,7 +2965,7 @@ msgstr ""
 "Özel ileti gönderir. Oyununuzda oynamayan oyunculara ileti gönderemezsiniz."
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:726
+#: data/core/help.cfg:603
 msgid ""
 "\n"
 "Mute a specific observer. If no username is supplied the muted usernames are "
@@ -3415,7 +2978,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:729
+#: data/core/help.cfg:606
 #, fuzzy
 msgid ""
 "\n"
@@ -3426,7 +2989,7 @@ msgstr ""
 "Tüm izleyicileri sessizleştirmeyi açar/kapar."
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:732
+#: data/core/help.cfg:609
 #, fuzzy
 msgid ""
 "\n"
@@ -3440,7 +3003,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:735
+#: data/core/help.cfg:612
 #, fuzzy
 msgid ""
 "\n"
@@ -3453,14 +3016,14 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:743
+#: data/core/help.cfg:620
 #, fuzzy
 #| msgid "Debug mode commands"
 msgid "Debug Mode Commands"
 msgstr "Hata Ayıklama Kipi Komutları"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:746
+#: data/core/help.cfg:623
 msgid ""
 "\n"
 "Brings up a menu for choosing a scenario to immediately advance to in a "
@@ -3473,7 +3036,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:749
+#: data/core/help.cfg:626
 msgid ""
 "\n"
 "Create a unit of the specified type on the selected hex.\n"
@@ -3484,7 +3047,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:752
+#: data/core/help.cfg:629
 msgid ""
 "\n"
 "Toggle fog/shroud for the current side.\n"
@@ -3495,7 +3058,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:755
+#: data/core/help.cfg:632
 msgid ""
 "\n"
 "Adds the specified amount to the current side’s gold.\n"
@@ -3506,7 +3069,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:758
+#: data/core/help.cfg:635
 msgid ""
 "\n"
 "Immediately advances to the next scenario in a campaign.\n"
@@ -3517,7 +3080,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:761
+#: data/core/help.cfg:638
 msgid ""
 "\n"
 "Manually set a gamestate variable to value.\n"
@@ -3528,7 +3091,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:764
+#: data/core/help.cfg:641
 msgid ""
 "\n"
 "Show a gamestate variable.\n"
@@ -3539,7 +3102,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:767
+#: data/core/help.cfg:644
 msgid ""
 "\n"
 "Manually fire the specified event.\n"
@@ -3550,7 +3113,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:770
+#: data/core/help.cfg:647
 #, fuzzy
 msgid ""
 "\n"
@@ -3563,7 +3126,7 @@ msgstr ""
 "hitpoins=100'</bold>"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:773
+#: data/core/help.cfg:650
 msgid ""
 "\n"
 "Makes the selected unit level up N times. Example: :unit advances=2"
@@ -3908,17 +3471,17 @@ msgstr ""
 "hareketi durur ve kalan hareket puanları sıfırlanır."
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:335
+#: data/core/macros/abilities.cfg:333
 msgid "feeding"
 msgstr "beslenme"
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:336
+#: data/core/macros/abilities.cfg:334
 msgid "female^feeding"
 msgstr " beslenir"
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:337
+#: data/core/macros/abilities.cfg:335
 #, fuzzy
 #| msgid ""
 #| " This unit gains 1 hitpoint added to its maximum whenever it kills a "
@@ -3931,12 +3494,12 @@ msgstr ""
 "eklenir."
 
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:359
+#: data/core/macros/abilities.cfg:357
 msgid "backstab"
 msgstr "destekli"
 
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:360
+#: data/core/macros/abilities.cfg:358
 #, fuzzy
 #| msgid ""
 #| "Backstab:\n"
@@ -3955,12 +3518,12 @@ msgstr ""
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:380 data/core/macros/abilities.cfg:391
+#: data/core/macros/abilities.cfg:378 data/core/macros/abilities.cfg:389
 msgid "plague"
 msgstr "veba"
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
-#: data/core/macros/abilities.cfg:381
+#: data/core/macros/abilities.cfg:379
 #, fuzzy
 #| msgid ""
 #| "Plague:\n"
@@ -3978,7 +3541,7 @@ msgstr ""
 "birimler için çalışmaz)."
 
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:392
+#: data/core/macros/abilities.cfg:390
 #, fuzzy
 #| msgid ""
 #| "Plague:\n"
@@ -3996,12 +3559,12 @@ msgstr ""
 "için çalışmaz)."
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:402
+#: data/core/macros/abilities.cfg:400
 msgid "slows"
 msgstr "yavaşlatır"
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:403
+#: data/core/macros/abilities.cfg:401
 #, fuzzy
 #| msgid ""
 #| "Slow:\n"
@@ -4022,13 +3585,13 @@ msgstr ""
 "sümüklü böcek simgesi gösterilir."
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:412
+#: data/core/macros/abilities.cfg:410
 #, fuzzy
 msgid "petrifies"
 msgstr "Vuruşlar"
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:413
+#: data/core/macros/abilities.cfg:411
 #, fuzzy
 msgid ""
 "This attack petrifies the target, turning it to stone. Units that have been "
@@ -4039,12 +3602,12 @@ msgstr ""
 "saldıramazlar."
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:422
+#: data/core/macros/abilities.cfg:420
 msgid "marksman"
 msgstr "nişancı"
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:423
+#: data/core/macros/abilities.cfg:421
 #, fuzzy
 #| msgid ""
 #| "Marksman:\n"
@@ -4058,12 +3621,12 @@ msgstr ""
 "sahiptir."
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:447
+#: data/core/macros/abilities.cfg:445
 msgid "swarm"
 msgstr "kaynaşma"
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:448
+#: data/core/macros/abilities.cfg:446
 #, fuzzy
 #| msgid ""
 #| "Swarm:\n"
@@ -4084,12 +3647,12 @@ msgstr ""
 "vuruş yapabilir."
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:457
+#: data/core/macros/abilities.cfg:455
 msgid "charge"
 msgstr "yükleme"
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:458
+#: data/core/macros/abilities.cfg:456
 #, fuzzy
 #| msgid ""
 #| "Charge:\n"
@@ -4105,12 +3668,12 @@ msgstr ""
 "Bununla beraber, bu birim de hedefin misillemesinden çifte hasar görür."
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:470
+#: data/core/macros/abilities.cfg:468
 msgid "drains"
 msgstr "sömürür"
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:471
+#: data/core/macros/abilities.cfg:469
 #, fuzzy
 #| msgid ""
 #| "Drain:\n"
@@ -4125,12 +3688,12 @@ msgstr ""
 "yuvarlanmış) yarısı kadar iyileşir."
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:490
+#: data/core/macros/abilities.cfg:488
 msgid "poison"
 msgstr "zehirler"
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:491
+#: data/core/macros/abilities.cfg:489
 #, fuzzy
 #| msgid ""
 #| "Poison:\n"
@@ -4155,230 +3718,230 @@ msgstr "Azami YP ödülü +3, Azami TP +%20"
 
 #. [time]: id=midday
 #. [time]: id=midday_hour
-#: data/core/macros/schedules.cfg:26 data/core/macros/schedules.cfg:312
+#: data/core/macros/schedules.cfg:35 data/core/macros/schedules.cfg:329
 msgid "Midday"
 msgstr ""
 
 #. [time]: id=midnight
 #. [time]: id=midnight_hour
-#: data/core/macros/schedules.cfg:67 data/core/macros/schedules.cfg:181
+#: data/core/macros/schedules.cfg:77 data/core/macros/schedules.cfg:191
 msgid "Midnight"
 msgstr ""
 
 #. [time]: id=indoors
-#: data/core/macros/schedules.cfg:91
+#: data/core/macros/schedules.cfg:101
 msgid "Indoors"
 msgstr ""
 
 #. [time]: id=deep_underground
-#: data/core/macros/schedules.cfg:111
+#: data/core/macros/schedules.cfg:121
 msgid "Deep Underground"
 msgstr "Derin Yeraltı"
 
 #. [time]: id=second_watch_hour1
-#: data/core/macros/schedules.cfg:193
+#: data/core/macros/schedules.cfg:203
 #, fuzzy
 #| msgid "Second Watch"
 msgid "Second Watch — First Hour"
 msgstr "Sabaha Karşı"
 
 #. [time]: id=second_watch_hour2
-#: data/core/macros/schedules.cfg:205
+#: data/core/macros/schedules.cfg:215
 #, fuzzy
 #| msgid "Second Watch"
 msgid "Second Watch — Second Hour"
 msgstr "Sabaha Karşı"
 
 #. [time]: id=second_watch_hour3
-#: data/core/macros/schedules.cfg:217
+#: data/core/macros/schedules.cfg:227
 #, fuzzy
 #| msgid "Second Watch"
 msgid "Second Watch — Third Hour"
 msgstr "Sabaha Karşı"
 
 #. [time]: id=second_watch_hour4
-#: data/core/macros/schedules.cfg:229
+#: data/core/macros/schedules.cfg:239
 #, fuzzy
 #| msgid "Second Watch"
 msgid "Second Watch — Fourth Hour"
 msgstr "Sabaha Karşı"
 
 #. [time]: id=second_watch_hour5
-#: data/core/macros/schedules.cfg:241
+#: data/core/macros/schedules.cfg:251
 #, fuzzy
 #| msgid "Second Watch"
 msgid "Second Watch — Fifth Hour"
 msgstr "Sabaha Karşı"
 
 #. [time]: id=second_watch_hour6
-#: data/core/macros/schedules.cfg:253
+#: data/core/macros/schedules.cfg:263
 #, fuzzy
 #| msgid "Second Watch"
 msgid "Second Watch — Sixth Hour"
 msgstr "Sabaha Karşı"
 
 #. [time]: id=morning_hour1
-#: data/core/macros/schedules.cfg:276
+#: data/core/macros/schedules.cfg:287
 msgid "Morning — First Hour"
 msgstr ""
 
 #. [time]: id=morning_hour2
-#: data/core/macros/schedules.cfg:285
+#: data/core/macros/schedules.cfg:299
 msgid "Morning — Second Hour"
 msgstr ""
 
 #. [time]: id=morning_hour3
-#: data/core/macros/schedules.cfg:294
+#: data/core/macros/schedules.cfg:311
 msgid "Morning — Third Hour"
 msgstr ""
 
 #. [time]: id=morning_hour4
-#: data/core/macros/schedules.cfg:303
+#: data/core/macros/schedules.cfg:320
 msgid "Morning — Fourth Hour"
 msgstr ""
 
 #. [time]: id=afternoon_hour1
-#: data/core/macros/schedules.cfg:321
+#: data/core/macros/schedules.cfg:338
 msgid "Afternoon — First Hour"
 msgstr ""
 
 #. [time]: id=afternoon_hour2
-#: data/core/macros/schedules.cfg:330
+#: data/core/macros/schedules.cfg:347
 msgid "Afternoon — Second Hour"
 msgstr ""
 
 #. [time]: id=afternoon_hour3
-#: data/core/macros/schedules.cfg:339
+#: data/core/macros/schedules.cfg:356
 msgid "Afternoon — Third Hour"
 msgstr ""
 
 #. [time]: id=afternoon_hour4
-#: data/core/macros/schedules.cfg:348
+#: data/core/macros/schedules.cfg:365
 msgid "Afternoon — Fourth Hour"
 msgstr ""
 
 #. [time]: id=afternoon_hour5
-#: data/core/macros/schedules.cfg:357
+#: data/core/macros/schedules.cfg:374
 msgid "Afternoon — Fifth Hour"
 msgstr ""
 
 #. [time]: id=afternoon_hour6
-#: data/core/macros/schedules.cfg:366
+#: data/core/macros/schedules.cfg:385
 msgid "Afternoon — Sixth Hour"
 msgstr ""
 
 #. [time]: id=first_watch_hour1
-#: data/core/macros/schedules.cfg:388
+#: data/core/macros/schedules.cfg:408
 msgid "First Watch — First Hour"
 msgstr ""
 
 #. [time]: id=first_watch_hour2
-#: data/core/macros/schedules.cfg:400
+#: data/core/macros/schedules.cfg:420
 msgid "First Watch — Second Hour"
 msgstr ""
 
 #. [time]: id=first_watch_hour3
-#: data/core/macros/schedules.cfg:412
+#: data/core/macros/schedules.cfg:432
 msgid "First Watch — Third Hour"
 msgstr ""
 
 #. [time]: id=first_watch_hour4
-#: data/core/macros/schedules.cfg:424
+#: data/core/macros/schedules.cfg:444
 msgid "First Watch — Fourth Hour"
 msgstr ""
 
 #. [time]: id=dawn1
-#: data/core/macros/schedules.cfg:478
+#: data/core/macros/schedules.cfg:498
 #, fuzzy
 #| msgid "First Watch"
 msgid "First Dawn"
 msgstr "Gece"
 
 #. [time]: id=dawn2
-#: data/core/macros/schedules.cfg:488
+#: data/core/macros/schedules.cfg:509
 #, fuzzy
 #| msgid "Second Watch"
 msgid "Second Dawn"
 msgstr "Sabaha Karşı"
 
 #. [time]: id=morning1
-#: data/core/macros/schedules.cfg:498
+#: data/core/macros/schedules.cfg:520
 #, fuzzy
 #| msgid "Morning"
 msgid "First Morning"
 msgstr "Sabah"
 
 #. [time]: id=morning2
-#: data/core/macros/schedules.cfg:507
+#: data/core/macros/schedules.cfg:532
 #, fuzzy
 #| msgid "Morning"
 msgid "Second Morning"
 msgstr "Sabah"
 
 #. [time]: id=midday1
-#: data/core/macros/schedules.cfg:516
+#: data/core/macros/schedules.cfg:544
 #, fuzzy
 #| msgid "First Watch"
 msgid "First Midday"
 msgstr "Gece"
 
 #. [time]: id=midday2
-#: data/core/macros/schedules.cfg:525
+#: data/core/macros/schedules.cfg:556
 #, fuzzy
 #| msgid "Second Watch"
 msgid "Second Midday"
 msgstr "Sabaha Karşı"
 
 #. [time]: id=afternoon1
-#: data/core/macros/schedules.cfg:534
+#: data/core/macros/schedules.cfg:568
 #, fuzzy
 #| msgid "Afternoon"
 msgid "First Afternoon"
 msgstr "İkindi"
 
 #. [time]: id=afternoon2
-#: data/core/macros/schedules.cfg:543
+#: data/core/macros/schedules.cfg:580
 #, fuzzy
 #| msgid "Afternoon"
 msgid "Second Afternoon"
 msgstr "İkindi"
 
 #. [time]: id=dusk1
-#: data/core/macros/schedules.cfg:552
+#: data/core/macros/schedules.cfg:592
 #, fuzzy
 #| msgid "firststrike"
 msgid "First Dusk"
 msgstr "ilk vuruş"
 
 #. [time]: id=dusk2
-#: data/core/macros/schedules.cfg:562
+#: data/core/macros/schedules.cfg:603
 #, fuzzy
 #| msgid "Second Watch"
 msgid "Second Dusk"
 msgstr "Sabaha Karşı"
 
 #. [time]: id=short_dark
-#: data/core/macros/schedules.cfg:572
+#: data/core/macros/schedules.cfg:614
 msgid "The Short Dark"
 msgstr ""
 
 #. [time]: id=long_dark1
-#: data/core/macros/schedules.cfg:584
+#: data/core/macros/schedules.cfg:626
 msgid "The Long Dark (1)"
 msgstr ""
 
 #. [time]: id=long_dark2
-#: data/core/macros/schedules.cfg:596
+#: data/core/macros/schedules.cfg:638
 msgid "The Long Dark (2)"
 msgstr ""
 
 #. [time]: id=long_dark3
-#: data/core/macros/schedules.cfg:610
+#: data/core/macros/schedules.cfg:652
 msgid "The Long Dark (3)"
 msgstr ""
 
 #. [time]: id=long_dark4
-#: data/core/macros/schedules.cfg:622
+#: data/core/macros/schedules.cfg:664
 msgid "The Long Dark (4)"
 msgstr ""
 
@@ -4623,186 +4186,545 @@ msgstr "sadık"
 msgid "Zero upkeep"
 msgstr "Masrafsız"
 
+#. [trait]: id=loyal
+#: data/core/macros/traits.cfg:11
+#, fuzzy
+msgid ""
+"\n"
+"\n"
+"During campaigns, certain units may opt to join the player’s forces of their "
+"own volition. These units are marked with the loyal trait. Although they may "
+"require payment to be recalled, they never incur any upkeep costs. This can "
+"make them invaluable during a long campaign, when gold is in short supply. "
+"This trait is never given to recruited units, so it may be unwise to dismiss "
+"such units or to send them to a foolish death."
+msgstr ""
+"\n"
+"\n"
+"Seferberlikler sırasında, bazı birimler kendi istekleriyle oyuncunun "
+"kuvvetlerine katılırlar. Bu birimler sadık mizaçlıdırlar. Her ne kadar "
+"çağrılmak için ödenek isterlerse de, asla herhangi bir bakım masrafına sebep "
+"olmazlar. Bu onları uzun seferberliklerde paranın kıt olduğu zamanlarda paha "
+"biçilmez yapar. Bu mizaç asla askere alınan birimlere verilmez, bu yüzden "
+"onları aptalca bir ölüme göndermek veya azletmek akıllıca bir iş değildir."
+
+#. [trait]: id=loyal
+#: data/core/macros/traits.cfg:11
+#, fuzzy
+msgid ""
+"<italic>text='Loyal'</italic> units don’t incur upkeep. Most units incur an "
+"upkeep cost at the end of every turn, which is equal to their level. Loyal "
+"units do not incur this cost."
+msgstr ""
+"Sadık birimlerin gideri yoktur. Çoğu birim el sonunda seviyelerine eşit bir "
+"gidere yol açar. Sadık birimler bu gidere yol açmazlar."
+
 #. [trait]: id=undead
-#: data/core/macros/traits.cfg:22
+#: data/core/macros/traits.cfg:25
 msgid "undead"
 msgstr "yarı ölü"
 
 #. [trait]: id=undead
-#: data/core/macros/traits.cfg:23
+#: data/core/macros/traits.cfg:26
 msgid "female^undead"
 msgstr "yarı ölü"
 
 #. [trait]: id=undead
 #. [trait]: id=mechanical
 #. [trait]: id=elemental
-#: data/core/macros/traits.cfg:24 data/core/macros/traits.cfg:47
-#: data/core/macros/traits.cfg:70
+#: data/core/macros/traits.cfg:27 data/core/macros/traits.cfg:53
+#: data/core/macros/traits.cfg:79
 msgid "Immune to drain, poison, and plague"
 msgstr "Zehire, vebaya ve sömürüye bağışık"
 
+#. [trait]: id=undead
+#: data/core/macros/traits.cfg:28
+#, fuzzy
+msgid ""
+"\n"
+"\n"
+"Undead units generally have undead as their only trait. Since undead units "
+"are the bodies of the dead, risen to fight again, poison has no effect upon "
+"them. This can make them invaluable in dealing with foes who use poison in "
+"conjunction with their attacks."
+msgstr ""
+"\n"
+"\n"
+"Yarı ölü birimler genellikle sadece ‘Yarı ölü’ mizaca sahiptirler. Yarı "
+"ölüler savaşmak için tekrar kaldırılan ölülerin cesetleri oldukları için "
+"zehir onlara karşı bir etki yapmaz. Bu onları zehirli saldırı yapan "
+"düşmanlarla savaşırken paha biçilmez yapar."
+
+#. [trait]: id=undead
+#: data/core/macros/traits.cfg:28
+#, fuzzy
+msgid ""
+"<italic>text='Undead'</italic> units are immune to poison, drain, and plague."
+msgstr ""
+"Yarı ölü birimler zehire bağışık olmaktan başka veba ve sömürüye konu "
+"olmazlar."
+
 #. [trait]: id=mechanical
-#: data/core/macros/traits.cfg:45
+#: data/core/macros/traits.cfg:51
 msgid "mechanical"
 msgstr "mekanik"
 
 #. [trait]: id=mechanical
-#: data/core/macros/traits.cfg:46
+#: data/core/macros/traits.cfg:52
 msgid "female^mechanical"
 msgstr "mekanik"
 
+#. [trait]: id=mechanical
+#: data/core/macros/traits.cfg:54
+#, fuzzy
+msgid ""
+"\n"
+"\n"
+"Mechanical units generally have mechanical as their only trait. Since "
+"mechanical units don’t really have life, drain, poison, and plague have no "
+"effect upon them."
+msgstr ""
+"\n"
+"\n"
+"Mekanik birimlerin tek yeteneği ‘Mekanik’ olmaktır. Mekanik birimler yaşayan "
+"birimler olmadıklarından sömürü, zehir ve vebaya konu olmazlar."
+
+#. [trait]: id=mechanical
+#: data/core/macros/traits.cfg:54
+#, fuzzy
+msgid ""
+"<italic>text='Mechanical'</italic> units are immune to poison, drain, and "
+"plague."
+msgstr ""
+"Mekanik birimler zehire bağışık olmaktan başka veba ve sömürüye konu "
+"olmazlar."
+
 #. [trait]: id=elemental
-#: data/core/macros/traits.cfg:68
+#: data/core/macros/traits.cfg:77
 #, fuzzy
 msgid "elemental"
 msgstr "gizlenir"
 
 #. [trait]: id=elemental
-#: data/core/macros/traits.cfg:69
+#: data/core/macros/traits.cfg:78
 #, fuzzy
 msgid "female^elemental"
 msgstr "sadık"
 
+#. [trait]: id=elemental
+#: data/core/macros/traits.cfg:80
+#, fuzzy
+msgid ""
+"\n"
+"\n"
+"Elemental units generally have elemental as their only trait. Since "
+"elemental units are energy-based beings, drain, poison, and plague have no "
+"effect upon them."
+msgstr ""
+"\n"
+"\n"
+"Mekanik birimlerin tek yeteneği ‘Mekanik’ olmaktır. Mekanik birimler yaşayan "
+"birimler olmadıklarından sömürü, zehir ve vebaya konu olmazlar."
+
+#. [trait]: id=elemental
+#: data/core/macros/traits.cfg:80
+#, fuzzy
+msgid ""
+"<italic>text='Elemental'</italic> units are immune to poison, drain, and "
+"plague."
+msgstr ""
+"Mekanik birimler zehire bağışık olmaktan başka veba ve sömürüye konu "
+"olmazlar."
+
 #. [trait]: id=strong
-#: data/core/macros/traits.cfg:90
+#: data/core/macros/traits.cfg:102
 msgid "strong"
 msgstr "güçlü"
 
 #. [trait]: id=strong
-#: data/core/macros/traits.cfg:91
+#: data/core/macros/traits.cfg:103
 msgid "female^strong"
 msgstr "güçlü"
 
+#. [trait]: id=strong
+#: data/core/macros/traits.cfg:104
+#, fuzzy
+msgid ""
+"\n"
+"\n"
+"While useful for any close-combat unit, strong is most effective for units "
+"who have a high number of swings such as the elvish fighter. Strong units "
+"can be very useful when a tiny bit of extra damage is all that is needed to "
+"turn a damaging stroke into a killing blow."
+msgstr ""
+"\n"
+"\n"
+"Herhangi bir yakın döğüş birimi için kullanışlı olmasına karşın güçlülük elf "
+"savaşçısı gibi fazla sayıda vuruş yapan birimlerde daha etkilidir. Güçlü "
+"birimler bir birimi öldürmek için verilebilecek olandan biraz fazla hasar "
+"gerektiği zaman çok faydalıdırlar."
+
+#. [trait]: id=strong
+#: data/core/macros/traits.cfg:104
+#, fuzzy
+msgid ""
+"<italic>text='Strong'</italic> units do 1 more damage for every successful "
+"strike in melee combat, and have 1 additional hitpoint."
+msgstr ""
+"Güçlü birimler yakın döğüşte vuruş başına 1 fazla hasar verirler ve "
+"kendilerinin 1 fazla YP’leri vardır."
+
 #. [trait]: id=dextrous
-#: data/core/macros/traits.cfg:108
+#: data/core/macros/traits.cfg:123
 msgid "dextrous"
 msgstr "becerikli"
 
 #. [trait]: id=dextrous
-#: data/core/macros/traits.cfg:109
+#: data/core/macros/traits.cfg:124
 msgid "female^dextrous"
 msgstr "hamarat"
 
+#. [trait]: id=dextrous
+#: data/core/macros/traits.cfg:125
+#, fuzzy
+msgid ""
+"\n"
+"\n"
+"Dextrous is a trait possessed only by elves. The elven people are known for "
+"their uncanny grace, and their great facility with the bow. Some, however, "
+"are gifted with natural talent that exceeds their brethren. These elves "
+"inflict an additional point of damage with each arrow."
+msgstr ""
+"\n"
+"\n"
+"Becerikli mizacı sadece elflere aittir. Elf bireyleri esrarengiz zerafetleri "
+"ve okçuluktaki yetenekleri ile bilinir. İçlerinden bazıları diğerlerini çok "
+"aşan doğal bir yeteneğe sahiptir. Bu elfler her bir ok ile ek bir hasara "
+"sebebiyet verirler."
+
+#. [trait]: id=dextrous
+#: data/core/macros/traits.cfg:125
+#, fuzzy
+msgid ""
+"<italic>text='Dextrous'</italic> units do 1 more damage for every successful "
+"strike in ranged combat."
+msgstr ""
+"Becerikli birimler menzilli döğüşte her isabet eden atışta 1 fazla hasar "
+"verirler."
+
 #. [trait]: id=quick
-#: data/core/macros/traits.cfg:122
+#: data/core/macros/traits.cfg:140
 msgid "quick"
 msgstr "hızlı"
 
 #. [trait]: id=quick
-#: data/core/macros/traits.cfg:123
+#: data/core/macros/traits.cfg:141
 msgid "female^quick"
 msgstr "atik"
 
+#. [trait]: id=quick
+#: data/core/macros/traits.cfg:142
+#, fuzzy
+msgid ""
+"\n"
+"\n"
+"Quick is the most noticeable trait, particularly in slower moving units such "
+"as trolls or heavy infantry. Units with the quick trait often have greatly "
+"increased mobility in rough terrain, which can be important to consider when "
+"deploying your forces. Also, quick units aren’t quite as tough as units "
+"without this trait and are subsequently less good at holding contested "
+"positions."
+msgstr ""
+"\n"
+"\n"
+"Hızlılık en çabuk farkedilebilen yetenektir, özellikle yavaş birimlerde "
+"mesela troller ve ağır piyade. Hızlı mizaçlı birimler genellikle zor "
+"bölgelerde arttırılmış hareket yeteneğine sahiptir bu yüzden birimlerinizi "
+"yayarken bunu dikkate almalısınız. Hızlı birimler bu yeteneğe sahip olmayan "
+"birimler kadar sağlam değillerdir ve bu yüzden karşı koyma durumlarında iyi "
+"değillerdir."
+
+#. [trait]: id=quick
+#: data/core/macros/traits.cfg:142
+#, fuzzy
+msgid ""
+"<italic>text='Quick'</italic> units have 1 extra movement point, but 5% less "
+"hitpoints than usual."
+msgstr ""
+"Hızlı birimlerin normalden 1 fazla hareket puanına karşın %5 daha az yaşam "
+"puanı olur."
+
 #. [trait]: id=intelligent
-#: data/core/macros/traits.cfg:139
+#: data/core/macros/traits.cfg:160
 msgid "intelligent"
 msgstr "zeki"
 
 #. [trait]: id=intelligent
-#: data/core/macros/traits.cfg:140
+#: data/core/macros/traits.cfg:161
 msgid "female^intelligent"
 msgstr "akıllı"
 
+#. [trait]: id=intelligent
+#: data/core/macros/traits.cfg:162
+#, fuzzy
+msgid ""
+"\n"
+"\n"
+"<italic>text='Intelligent'</italic> units are very useful at the beginning "
+"of a campaign as they can advance to higher levels more quickly. Later in "
+"campaigns Intelligent is not quite as useful because the <italic>text='After "
+"Maximum Level Advancement'</italic> (AMLA) is not as significant a change as "
+"advancing a level. If you have many ‘maximum level’ units you may wish to "
+"recall units with more desirable traits."
+msgstr ""
+"\n"
+"\n"
+"Zeki birimler bir seferberliğin başında çok faydalıdırlar, çünkü üst "
+"seviyelere daha çabuk ulaşırlar. Seferberliğin ileri senaryolarında zeki "
+"birimler artık çok faydalı olmazlar çünkü en üst seviyeye ulaştıktan sonraki "
+"tecrübe puanları birimler için pek bir işe yaramaz. Eğer çok sayıda ‘en üst "
+"seviye’ birimine sahipseniz, işinize en çok yarayacak mizaca sahip olanları "
+"çağırmayı düşünebilirsiniz."
+
+#. [trait]: id=intelligent
+#: data/core/macros/traits.cfg:162
+msgid "Intelligent units require 20% less experience than usual to advance."
+msgstr ""
+"Zeki birimlerin seviye atlaması normalden %20 daha az tecrübe gerektirir."
+
 #. [trait]: id=resilient
-#: data/core/macros/traits.cfg:152
+#: data/core/macros/traits.cfg:176
 msgid "resilient"
 msgstr "dayanıklı"
 
 #. [trait]: id=resilient
-#: data/core/macros/traits.cfg:153
+#: data/core/macros/traits.cfg:177
 msgid "female^resilient"
 msgstr "dayanıklı"
 
+#. [trait]: id=resilient
+#: data/core/macros/traits.cfg:178
+msgid ""
+"\n"
+"\n"
+"Resilient units can be useful at all stages of a campaign, and this is a "
+"useful trait for all units. Resilient is often most helpful as a trait when "
+"it occurs in a unit that has some combination of low hitpoints, good "
+"defense, or high resistances. Resilient units are especially useful for "
+"holding strategic positions against opponents."
+msgstr ""
+"\n"
+"\n"
+"Dayanıklı birimler bir seferberliğin her bölümüne faydalıdırlar ve bu bütün "
+"birimler için en faydalı yetenektir. Dayanıklı mizaç az yaşam puanı, iyi "
+"savunma ve yüksek dirençliliğe sahip bir birim için çok faydalıdır. "
+"Dayanıklı birimler stratejik noktaları tutmak için idealdirler."
+
+#. [trait]: id=resilient
+#: data/core/macros/traits.cfg:178
+#, fuzzy
+msgid ""
+"<italic>text='Resilient'</italic> units have an additional 4 hitpoints, and "
+"gain 1 more per level."
+msgstr ""
+"Dayanıklı birimlerin normalden +4 yaşam puanına ek olarak her seviye için +1 "
+"yaşam puanı vardır."
+
 #. [trait]: id=healthy
-#: data/core/macros/traits.cfg:170
+#: data/core/macros/traits.cfg:197
 msgid "healthy"
 msgstr "sağlıklı"
 
 #. [trait]: id=healthy
-#: data/core/macros/traits.cfg:171
+#: data/core/macros/traits.cfg:198
 msgid "female^healthy"
 msgstr "sağlıklı"
 
 #. [trait]: id=healthy
-#: data/core/macros/traits.cfg:172
+#: data/core/macros/traits.cfg:199
 msgid "Always rest heals"
 msgstr ""
 
+#. [trait]: id=healthy
+#: data/core/macros/traits.cfg:200
+msgid ""
+"\n"
+"\n"
+"<italic>text='Healthy'</italic> units have 1 additional hitpoint, and gain 1 "
+"more per level. They will also heal 2 hitpoints each turn, regardless of "
+"whether they engaged in combat the turn before."
+msgstr ""
+
+#. [trait]: id=healthy
+#: data/core/macros/traits.cfg:200
+#, fuzzy
+#| msgid ""
+#| "Renowned for their vitality, some dwarves are sturdier than others and "
+#| "can rest even when travelling."
+msgid ""
+"Renowned for their vitality, some dwarves are sturdier than others and can "
+"rest even when traveling."
+msgstr ""
+"Dayanıklılıkları ile tanınan cücelerin bazıları diğerlerinden daha sağlam "
+"bünyeli olup yolculuk ederken bile dinlenebilirler."
+
 #. [trait]: id=fearless
-#: data/core/macros/traits.cfg:192 data/core/macros/traits.cfg:208
+#: data/core/macros/traits.cfg:222 data/core/macros/traits.cfg:239
 msgid "fearless"
 msgstr "korkusuz"
 
 #. [trait]: id=fearless
-#: data/core/macros/traits.cfg:193 data/core/macros/traits.cfg:209
+#: data/core/macros/traits.cfg:223 data/core/macros/traits.cfg:240
 msgid "female^fearless"
 msgstr "korkusuz"
 
 #. [trait]: id=fearless
-#: data/core/macros/traits.cfg:194 data/core/macros/traits.cfg:210
+#: data/core/macros/traits.cfg:224 data/core/macros/traits.cfg:241
 msgid "Fights normally during unfavorable times of day/night"
 msgstr ""
 "Gündüz ve gecenin en berbat saatlerinden etkilenmeksizin normal olarak "
 "döğüşür"
 
+#. [trait]: id=fearless
+#: data/core/macros/traits.cfg:225 data/core/macros/traits.cfg:242
+msgid "Aversion to light and dark holds no sway over these brave individuals."
+msgstr "Aydınlığın ve karanlığın bu cesur birimler üzerinde bir etkisi olmaz."
+
 #. [trait]: id=feral
-#: data/core/macros/traits.cfg:223
+#: data/core/macros/traits.cfg:255
 #, fuzzy
 msgid "feral"
 msgstr "Toplam"
 
 #. [trait]: id=feral
-#: data/core/macros/traits.cfg:224
+#: data/core/macros/traits.cfg:256
 #, fuzzy
 msgid "female^feral"
 msgstr "tarafsız"
 
 #. [trait]: id=feral
-#: data/core/macros/traits.cfg:225
+#: data/core/macros/traits.cfg:257
 msgid "Receives only 50% defense in land-based villages"
 msgstr ""
 
+#. [trait]: id=feral
+#: data/core/macros/traits.cfg:258
+msgid ""
+"Dwellings of sentient beings are not easily used for cover by feral "
+"creatures of low intelligence. As a result, <italic>text='feral'</italic> "
+"units receive a maximum of 50% defense in any land-based village regardless "
+"of base terrain."
+msgstr ""
+
 #. [trait]: id=weak
-#: data/core/macros/traits.cfg:241
+#: data/core/macros/traits.cfg:274
 msgid "weak"
 msgstr "zayıf"
 
 #. [trait]: id=weak
-#: data/core/macros/traits.cfg:242
+#: data/core/macros/traits.cfg:275
 msgid "female^weak"
 msgstr "zayıf"
 
+#. [trait]: id=weak
+#: data/core/macros/traits.cfg:276
+#, fuzzy
+msgid ""
+"Units with the <italic>text='weak'</italic> trait receive a 1 point decrease "
+"in hitpoints and melee damage."
+msgstr ""
+"Zayıf birimler yaşam punlarında 1 azalmanın yanısıra yakın saldırı silahları "
+"da 1 puan daha az hasar verir."
+
 #. [trait]: id=slow
-#: data/core/macros/traits.cfg:259
+#: data/core/macros/traits.cfg:293
 msgid "slow"
 msgstr "yavaşlatır"
 
 #. [trait]: id=slow
-#: data/core/macros/traits.cfg:260
+#: data/core/macros/traits.cfg:294
 msgid "female^slow"
 msgstr "yavaşlatır"
 
+#. [trait]: id=slow
+#: data/core/macros/traits.cfg:295
+msgid ""
+"\n"
+"\n"
+"Thick-bodied and clumsy, slow individuals of goblins and other species take "
+"a movement penalty but are compensated for it with a slight increase in "
+"endurance."
+msgstr ""
+"\n"
+"\n"
+"Goblinlerin kalın zırhlı, hantal ve yavaş birimlerinin yavaşlıklarına karşın "
+"dayanıklılıklarında biraz artış vardır."
+
+#. [trait]: id=slow
+#: data/core/macros/traits.cfg:295
+#, fuzzy
+msgid ""
+"<italic>text='Slow'</italic> units have 1 less movement point but 5% more "
+"hitpoints."
+msgstr ""
+"Yavaş birimlerin normalden 1 daha az hareket puanına karşın %5 daha fazla "
+"yaşam puanı olur."
+
 #. [trait]: id=dim
-#: data/core/macros/traits.cfg:276
+#: data/core/macros/traits.cfg:313
 msgid "dim"
 msgstr "karartır"
 
 #. [trait]: id=dim
-#: data/core/macros/traits.cfg:277
+#: data/core/macros/traits.cfg:314
 msgid "female^dim"
 msgstr "karartır"
 
+#. [trait]: id=dim
+#: data/core/macros/traits.cfg:315
+msgid ""
+"\n"
+"\n"
+"Dim is a trait all too common in goblins and other lesser species. There are "
+"reasons these species are lesser, and this is one of them."
+msgstr ""
+"\n"
+"\n"
+"Karartma goblinler gibi düşük özelliklere sahip birimleri için ortak "
+"yetenektir. Bu özelliklerin düşük seviyeli olmasının birçok sebebi zardır ve "
+"bu da onlardan biridir."
+
+#. [trait]: id=dim
+#: data/core/macros/traits.cfg:315
+#, fuzzy
+msgid ""
+"Units with trait <italic>text='dim'</italic> suffer a 20% increase in "
+"experience required to advance."
+msgstr ""
+"Karratma yeteneğine sahip birimlerin terfi etmesi için gereken tecrübe puanı "
+"%20 daha fazladır."
+
 #. [trait]: id=aged
-#: data/core/macros/traits.cfg:289
+#: data/core/macros/traits.cfg:329
 #, fuzzy
 msgid "aged"
 msgstr "menzilli"
 
 #. [trait]: id=aged
-#: data/core/macros/traits.cfg:290
+#: data/core/macros/traits.cfg:330
 #, fuzzy
 msgid "female^aged"
 msgstr "karartır"
+
+#. [trait]: id=aged
+#: data/core/macros/traits.cfg:331
+#, fuzzy
+msgid ""
+"Units with the <italic>text='aged'</italic> trait have 8 hitpoints less and "
+"suffer from a 1 point decrease in movement and melee damage."
+msgstr ""
+"Zayıf birimler yaşam punlarında 1 azalmanın yanısıra yakın saldırı silahları "
+"da 1 puan daha az hasar verir."
 
 #. [race]: id=bats
 #: data/core/units.cfg:43
@@ -5821,6 +5743,58 @@ msgstr "Wesnoth Savaşı Yardımı"
 #: src/help/help.cpp:241
 msgid "Parse error when parsing help text: "
 msgstr "Yardım metni çözümlenirken ayrıştırma hatası: "
+
+#~ msgid "Intelligent"
+#~ msgstr "Zeki"
+
+#~ msgid "Quick"
+#~ msgstr "Hızlı"
+
+#~ msgid "Resilient"
+#~ msgstr "Dayanıklı"
+
+#~ msgid "Strong"
+#~ msgstr "Güçlü"
+
+#~ msgid "Fearless"
+#~ msgstr "Korkusuz"
+
+#, fuzzy
+#~ msgid "Feral"
+#~ msgstr "Toplam"
+
+#~ msgid "Loyal"
+#~ msgstr "Sadık"
+
+#~ msgid "trait^Undead"
+#~ msgstr "Yarı Ölü"
+
+#~ msgid "trait^Mechanical"
+#~ msgstr "Mekanik"
+
+#, fuzzy
+#~ msgid "trait^Elemental"
+#~ msgstr "gizlenir"
+
+#~ msgid "Dextrous"
+#~ msgstr "Becerikli"
+
+#~ msgid "Healthy"
+#~ msgstr "Sağlıklı"
+
+#~ msgid "Dim"
+#~ msgstr "Karartır"
+
+#~ msgid "Slow"
+#~ msgstr "Yavaş"
+
+#~ msgid "Weak"
+#~ msgstr "Zayıf"
+
+#, fuzzy
+#~| msgid "trait^Undead"
+#~ msgid "trait^Aged"
+#~ msgstr "Yarı Ölü"
 
 #, fuzzy
 #~| msgid ""

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6+dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-07-24 20:27 UTC\n"
+"POT-Creation-Date: 2016-11-05 23:28 UTC\n"
 "PO-Revision-Date: 2009-04-12 11:24-0000\n"
 "Last-Translator: Gabríel A. Pétursson <gabrielp@simnet.is>\n"
 "Language-Team: none\n"
@@ -25,24 +25,24 @@ msgid "Random"
 msgstr "Slembi"
 
 #. [era]: id=era_default, type=hybrid
-#: data/multiplayer/eras.cfg:54
+#: data/multiplayer/eras.cfg:53
 msgid "Default"
 msgstr ""
 
 #. [era]: id=era_default, type=hybrid
-#: data/multiplayer/eras.cfg:55
+#: data/multiplayer/eras.cfg:54
 msgid ""
 "The standard era for Wesnoth multiplayer. Consists of six factions and is "
 "generally balanced."
 msgstr ""
 
 #. [era]: id=era_heroes
-#: data/multiplayer/eras.cfg:76
+#: data/multiplayer/eras.cfg:75
 msgid "Age of Heroes"
 msgstr ""
 
 #. [era]: id=era_heroes
-#: data/multiplayer/eras.cfg:77
+#: data/multiplayer/eras.cfg:76
 msgid ""
 "An era with higher level units: level three leaders, with level one and two "
 "units available for recruit. Consists of six factions. Not considered "
@@ -50,12 +50,12 @@ msgid ""
 msgstr ""
 
 #. [era]: id=era_khalifate
-#: data/multiplayer/eras.cfg:84
+#: data/multiplayer/eras.cfg:83
 msgid "Default + Khalifate"
 msgstr ""
 
 #. [era]: id=era_khalifate
-#: data/multiplayer/eras.cfg:85
+#: data/multiplayer/eras.cfg:84
 msgid ""
 "An era featuring an additional faction besides the six factions from Default "
 "Era. Khalifate units use no magic, but instead rely on careful use of "
@@ -66,12 +66,12 @@ msgid ""
 msgstr ""
 
 #. [era]: id=era_khalifate_heroes
-#: data/multiplayer/eras.cfg:95
+#: data/multiplayer/eras.cfg:94
 msgid "Age of Heroes + Khalifate"
 msgstr ""
 
 #. [era]: id=era_khalifate_heroes
-#: data/multiplayer/eras.cfg:96
+#: data/multiplayer/eras.cfg:95
 msgid ""
 "An era featuring an additional faction besides the six factions from Age of "
 "Heroes Era. Khalifate units use no magic, but instead rely on careful use of "
@@ -110,8 +110,8 @@ msgid "Drakes"
 msgstr "Drekar"
 
 #. [multiplayer_side]: id=Drakes, type=random
-#: data/multiplayer/factions/drakes-aoh.cfg:15
-#: data/multiplayer/factions/drakes-default.cfg:15
+#: data/multiplayer/factions/drakes-aoh.cfg:14
+#: data/multiplayer/factions/drakes-default.cfg:14
 msgid ""
 "The <bold>text='Drakes'</bold> are a faction of dragon-like "
 "<ref>text='Drakes' dst='..race_drake'</ref> and their lizard "
@@ -129,8 +129,8 @@ msgid "Khalifate"
 msgstr ""
 
 #. [multiplayer_side]: id=Khalifate, type=random
-#: data/multiplayer/factions/khalifate-aoh.cfg:15
-#: data/multiplayer/factions/khalifate-default.cfg:15
+#: data/multiplayer/factions/khalifate-aoh.cfg:14
+#: data/multiplayer/factions/khalifate-default.cfg:14
 msgid ""
 "The <bold>text='Khalifate'</bold> are a faction of humans from the deserts "
 "and hills of the southern lands. Lacking magic users, the Khalifate instead "
@@ -148,8 +148,8 @@ msgid "Knalgan Alliance"
 msgstr ""
 
 #. [multiplayer_side]: id=Knalgan Alliance, type=random
-#: data/multiplayer/factions/knalgans-aoh.cfg:14
-#: data/multiplayer/factions/knalgans-default.cfg:14
+#: data/multiplayer/factions/knalgans-aoh.cfg:13
+#: data/multiplayer/factions/knalgans-default.cfg:13
 msgid ""
 "The <bold>text='Knalgan Alliance'</bold> is a faction of <ref>text='Dwarves' "
 "dst='..race_dwarf'</ref> and their outlaw <ref>text='Human' dst='.."
@@ -168,8 +168,8 @@ msgid "Loyalists"
 msgstr ""
 
 #. [multiplayer_side]: id=Loyalists, type=random
-#: data/multiplayer/factions/loyalists-aoh.cfg:15
-#: data/multiplayer/factions/loyalists-default.cfg:15
+#: data/multiplayer/factions/loyalists-aoh.cfg:14
+#: data/multiplayer/factions/loyalists-default.cfg:14
 msgid ""
 "The <bold>text='Loyalists'</bold> are a faction of <ref>text='Humans' dst='.."
 "race_human'</ref> who are loyal to the throne of Wesnoth. Humans are a "
@@ -185,8 +185,8 @@ msgid "Northerners"
 msgstr ""
 
 #. [multiplayer_side]: id=Northerners, type=random, description=<img>src='portraits/orcs/warlord.png~BG()' align='middle'</img>
-#: data/multiplayer/factions/northerners-aoh.cfg:17
-#: data/multiplayer/factions/northerners-default.cfg:16
+#: data/multiplayer/factions/northerners-aoh.cfg:16
+#: data/multiplayer/factions/northerners-default.cfg:15
 msgid ""
 "The <bold>text='Northerners'</bold> are a faction of <ref>text='Orcs' dst='.."
 "race_orc'</ref> and their allies who live in the north of the Great "
@@ -205,8 +205,8 @@ msgid "Rebels"
 msgstr ""
 
 #. [multiplayer_side]: id=Rebels, type=random
-#: data/multiplayer/factions/rebels-aoh.cfg:15
-#: data/multiplayer/factions/rebels-default.cfg:15
+#: data/multiplayer/factions/rebels-aoh.cfg:14
+#: data/multiplayer/factions/rebels-default.cfg:14
 msgid ""
 "The <bold>text='Rebels'</bold> are a faction of <ref>text='Elves' dst='.."
 "race_elf'</ref> and their various forest-dwelling allies. They get their "
@@ -228,8 +228,8 @@ msgid "Undead"
 msgstr "Ódauði"
 
 #. [multiplayer_side]: id=Undead, type=random
-#: data/multiplayer/factions/undead-aoh.cfg:15
-#: data/multiplayer/factions/undead-default.cfg:15
+#: data/multiplayer/factions/undead-aoh.cfg:14
+#: data/multiplayer/factions/undead-default.cfg:14
 msgid ""
 "The <bold>text='Undead'</bold> are a faction of <ref>text='undead' dst='.."
 "race_undead'</ref> creatures and <ref>text='human' dst='..race_human'</ref> "
@@ -334,9 +334,6 @@ msgid ""
 "The Great Mage Sulla has transported your armies to this bizarre nexus, and "
 "demands that you amuse her by doing battle.\n"
 "\n"
-"\n"
-"\n"
-"\n"
 "<span color='red'>Note:</span>\n"
 "\n"
 "<span color='green'>Units may not move into a hex with a rock cairn. They "
@@ -348,8 +345,8 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Aethermaw.cfg:315
-#: data/multiplayer/scenarios/2p_Aethermaw.cfg:332
+#: data/multiplayer/scenarios/2p_Aethermaw.cfg:312
+#: data/multiplayer/scenarios/2p_Aethermaw.cfg:329
 msgid "The Aethermaw growls."
 msgstr ""
 

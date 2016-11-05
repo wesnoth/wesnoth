@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4.2+dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-07-24 23:27+0300\n"
+"POT-Creation-Date: 2016-11-06 02:28+0300\n"
 "PO-Revision-Date: 2008-07-01 17:35-0000\n"
 "Last-Translator: amnay <amnay@operamail.com>\n"
 "Language-Team: none\n"
@@ -257,19 +257,19 @@ msgid "units"
 msgstr ""
 
 #. [menu]: id=switch_time
-#: data/themes/editor.cfg:454
+#: data/themes/editor.cfg:464
 msgid "Time Schedule Menu"
 msgstr ""
 
 #. [menu]: id=menu-playlist
-#: data/themes/editor.cfg:465
+#: data/themes/editor.cfg:475
 #, fuzzy
 #| msgid "Play"
 msgid "Playlist"
 msgstr "إلعب"
 
 #. [menu]: id=menu-editor-schedule
-#: data/themes/editor.cfg:471
+#: data/themes/editor.cfg:481
 msgid "Assign Time Schedule"
 msgstr ""
 
@@ -301,226 +301,221 @@ msgstr ""
 msgid "Recruit: "
 msgstr "تجنيد"
 
-#: src/editor/controller/editor_controller.cpp:177
+#: src/editor/controller/editor_controller.cpp:180
 msgid "Fatal error"
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:206
+#: src/editor/controller/editor_controller.cpp:209
 msgid "Do you really want to quit?"
 msgstr "أتريد فعلاً المغادرة؟"
 
-#: src/editor/controller/editor_controller.cpp:208
+#: src/editor/controller/editor_controller.cpp:211
 msgid ""
 "Do you really want to quit? Changes to this map since the last save will be "
 "lost."
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:210
+#: src/editor/controller/editor_controller.cpp:213
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:220
+#: src/editor/controller/editor_controller.cpp:223
 msgid "No editor time-of-day found."
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:1127
+#: src/editor/controller/editor_controller.cpp:1137
 #, fuzzy
 #| msgid "Change Unit Side (Debug!)"
 msgid "Change Unit ID"
 msgstr "تغيير طرف الوحدة (تنقيح!)"
 
-#: src/editor/controller/editor_controller.cpp:1128
+#: src/editor/controller/editor_controller.cpp:1138
 msgid "ID:"
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:1144
+#: src/editor/controller/editor_controller.cpp:1154
 msgid "Rename Unit"
 msgstr "إعادة تسمية الوحدة"
 
-#: src/editor/controller/editor_controller.cpp:1145
+#: src/editor/controller/editor_controller.cpp:1155
 #, fuzzy
 #| msgid "Name: "
 msgid "Name:"
 msgstr "الإسم:"
 
-#: src/editor/map/context_manager.cpp:126
-#: src/editor/map/context_manager.cpp:302
+#: src/editor/map/context_manager.cpp:130
+#: src/editor/map/context_manager.cpp:291
 #, fuzzy
 msgid "(New Map)"
 msgstr "إنشاء خريطة جديدة"
 
-#: src/editor/map/context_manager.cpp:189
-#, fuzzy
-msgid "Choose a File to Open"
-msgstr "لاعب"
+#: src/editor/map/context_manager.cpp:196
+msgid "Load Map"
+msgstr "تحميل خريطة"
 
-#: src/editor/map/context_manager.cpp:304
+#: src/editor/map/context_manager.cpp:293
 #, fuzzy
 msgid "(New Scenario)"
 msgstr "إنشاء خريطة جديدة"
 
-#: src/editor/map/context_manager.cpp:331
+#: src/editor/map/context_manager.cpp:320
 #, fuzzy
 #| msgid "Delete File"
 msgid "No Recent Files"
 msgstr "حذف الملف"
 
-#: src/editor/map/context_manager.cpp:368
+#: src/editor/map/context_manager.cpp:357
 #, fuzzy
 msgid "(Unnamed Area)"
 msgstr "إنشاء خريطة جديدة"
 
-#: src/editor/map/context_manager.cpp:397
+#: src/editor/map/context_manager.cpp:386
 #, fuzzy
 msgid "(New Side)"
 msgstr "إنشاء خريطة جديدة"
 
-#: src/editor/map/context_manager.cpp:463
+#: src/editor/map/context_manager.cpp:455
 #, fuzzy
-msgid "Choose a Mask to Apply"
-msgstr "لاعب"
+#| msgid "Apply"
+msgid "Apply Mask"
+msgstr "تطبيق"
 
-#: src/editor/map/context_manager.cpp:470
+#: src/editor/map/context_manager.cpp:464
 msgid "Error loading mask"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:489
+#: src/editor/map/context_manager.cpp:483
 msgid "Identifier:"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:489
+#: src/editor/map/context_manager.cpp:483
 #, fuzzy
 #| msgid "Rename Unit"
 msgid "Rename Area"
 msgstr "إعادة تسمية الوحدة"
 
-#: src/editor/map/context_manager.cpp:500
+#: src/editor/map/context_manager.cpp:497
 #, fuzzy
 msgid "Choose Target Map"
 msgstr "لاعب"
 
-#: src/editor/map/context_manager.cpp:507
-#: src/editor/map/context_manager.cpp:944
+#: src/editor/map/context_manager.cpp:506
+#: src/editor/map/context_manager.cpp:929
 msgid "Error loading map"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:624
+#: src/editor/map/context_manager.cpp:621
 #, fuzzy
-msgid "Save the Map As"
+msgid "Save Map As"
 msgstr "حفظ الخريطة"
 
-#: src/editor/map/context_manager.cpp:628
-#: src/editor/map/context_manager.cpp:656
-msgid "The file already exists. Do you want to overwrite it?"
-msgstr ""
-
-#: src/editor/map/context_manager.cpp:652
+#: src/editor/map/context_manager.cpp:642
 #, fuzzy
-msgid "Save the Scenario As"
+msgid "Save Scenario As"
 msgstr "حفظ الخريطة"
 
-#: src/editor/map/context_manager.cpp:691
+#: src/editor/map/context_manager.cpp:676
 msgid "No random map generators found."
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:704
-#: src/editor/map/context_manager.cpp:708
+#: src/editor/map/context_manager.cpp:689
+#: src/editor/map/context_manager.cpp:693
 msgid "Map creation failed."
 msgstr "فشل إعداد الخرطة"
 
-#: src/editor/map/context_manager.cpp:722
+#: src/editor/map/context_manager.cpp:707
 msgid "Unsaved Changes"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:723
+#: src/editor/map/context_manager.cpp:708
 msgid "Do you want to discard all changes made to the map since the last save?"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:822
+#: src/editor/map/context_manager.cpp:807
 #, fuzzy
 msgid "This scenario is already open."
 msgstr "هذا المفتاح مُستعمَلٌ"
 
-#: src/editor/map/context_manager.cpp:844
-#: src/editor/map/context_manager.cpp:899
+#: src/editor/map/context_manager.cpp:829
+#: src/editor/map/context_manager.cpp:884
 #, fuzzy
 msgid "This map is already open."
 msgstr "هذا المفتاح مُستعمَلٌ"
 
-#: src/editor/map/context_manager.cpp:865
+#: src/editor/map/context_manager.cpp:850
 #, fuzzy
 #| msgid "Scenario Objectives"
 msgid "Scenario saved."
 msgstr "أهداف السِيناريُو"
 
-#: src/editor/map/context_manager.cpp:879
+#: src/editor/map/context_manager.cpp:864
 msgid "Map saved."
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:922
+#: src/editor/map/context_manager.cpp:907
 msgid "Loaded embedded map data"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:923
-#: src/editor/map/context_manager.cpp:937
+#: src/editor/map/context_manager.cpp:908
+#: src/editor/map/context_manager.cpp:922
 msgid "Map loaded from scenario"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:933
+#: src/editor/map/context_manager.cpp:918
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:1022
+#: src/editor/map/context_manager.cpp:1007
 #, fuzzy
 msgid "New Map"
 msgstr "إنشاء خريطة جديدة"
 
-#: src/editor/map/context_manager.cpp:1022
+#: src/editor/map/context_manager.cpp:1007
 #, fuzzy
 msgid "New Scenario"
 msgstr "إنشاء خريطة جديدة"
 
-#: src/editor/map/editor_map.cpp:159
-#: src/editor/palette/location_palette.cpp:111
+#: src/editor/map/editor_map.cpp:149
+#: src/editor/palette/location_palette.cpp:112
 msgid "Player $side_num"
 msgstr ""
 
-#: src/editor/map/editor_map.cpp:274
+#: src/editor/map/editor_map.cpp:264
 msgid "The size of the target map is different from the current map"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:133
+#: src/editor/map/map_context.cpp:151
 msgid "File not found"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:139
+#: src/editor/map/map_context.cpp:157
 msgid "Empty file"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:188
+#: src/editor/map/map_context.cpp:206
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:528
+#: src/editor/map/map_context.cpp:541
 msgid "Could not save the scenario: $msg"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:555
+#: src/editor/map/map_context.cpp:568
 msgid "Could not save into scenario"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:563
+#: src/editor/map/map_context.cpp:576
 msgid "Could not save the map: $msg"
 msgstr ""
 
-#: src/editor/palette/editor_palettes.cpp:58
-#: src/editor/palette/editor_palettes.cpp:113
+#: src/editor/palette/editor_palettes.cpp:59
+#: src/editor/palette/editor_palettes.cpp:114
 msgid "(Unknown Group)"
 msgstr ""
 
@@ -532,19 +527,19 @@ msgstr ""
 msgid "Will not work in game without extra care."
 msgstr ""
 
-#: src/editor/palette/location_palette.cpp:250
+#: src/editor/palette/location_palette.cpp:247
 msgid "Go To"
 msgstr ""
 
-#: src/editor/palette/location_palette.cpp:257
+#: src/editor/palette/location_palette.cpp:254
 msgid "Add"
 msgstr ""
 
-#: src/editor/palette/location_palette.cpp:259
+#: src/editor/palette/location_palette.cpp:256
 msgid "New Location Identifer"
 msgstr ""
 
-#: src/editor/palette/location_palette.cpp:263
+#: src/editor/palette/location_palette.cpp:260
 msgid "Delete"
 msgstr ""
 
@@ -556,10 +551,16 @@ msgstr ""
 msgid "BG: "
 msgstr ""
 
-#: src/gui/dialogs/editor/custom_tod.cpp:118
+#: src/gui/dialogs/editor/custom_tod.cpp:119
 #, fuzzy
 msgid "Choose File"
 msgstr "لاعب"
+
+#: src/gui/dialogs/editor/custom_tod.cpp:120
+#, fuzzy
+#| msgid "Select All"
+msgid "Select"
+msgstr "انتقاء الكل"
 
 #: src/gui/dialogs/editor/set_starting_position.cpp:86
 #, fuzzy
@@ -569,6 +570,14 @@ msgstr "اللاعبون:"
 #: src/gui/dialogs/editor/set_starting_position.cpp:99
 msgid "Player $player_number"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Choose a File to Open"
+#~ msgstr "لاعب"
+
+#, fuzzy
+#~ msgid "Choose a Mask to Apply"
+#~ msgstr "لاعب"
 
 #, fuzzy
 #~ msgid "Player"
@@ -927,9 +936,6 @@ msgstr ""
 #~ msgid "User Interface Sounds"
 #~ msgstr "أصوات واجهة المُستخدِم"
 
-#~ msgid "Apply"
-#~ msgstr "تطبيق"
-
 #~ msgid "Show Unit Idle Animations"
 #~ msgstr "إظهار تحريكات الوحدات الساكنة"
 
@@ -1229,9 +1235,6 @@ msgstr ""
 #~ msgid "Skip animation"
 #~ msgstr "تخطّي التحريكة"
 
-#~ msgid "Load Map"
-#~ msgstr "تحميل خريطة"
-
 #~ msgid "Save Map"
 #~ msgstr "حفظ الخريطة"
 
@@ -1261,9 +1264,6 @@ msgstr ""
 
 #~ msgid "Revert from Disk"
 #~ msgstr "الرجوع إلى الإصدار المتوفر في القرص"
-
-#~ msgid "Select All"
-#~ msgstr "انتقاء الكل"
 
 #~ msgid "Draw Terrain"
 #~ msgstr "رسم الأرضية"

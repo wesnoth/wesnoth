@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-07-24 20:27 UTC\n"
+"POT-Creation-Date: 2016-11-05 23:29 UTC\n"
 "PO-Revision-Date: 2010-01-01 00:00+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
@@ -124,7 +124,7 @@ msgstr ""
 #| "side of the river."
 msgid ""
 "For this tutorial, you are playing Li’sar. You are standing on the keep, and "
-"your mentor Delfador is on the east side of the river. you can move the "
+"your mentor Delfador is on the east side of the river. You can move the "
 "mouse over a unit to see a summary of its abilities and stats on the right "
 "of the screen."
 msgstr ""
@@ -318,8 +318,8 @@ msgstr "Ar man atsitraukti?"
 msgid "female^Should I retreat?"
 msgstr "Ar man atsitraukti?"
 
-#. [message]: speaker=Delfador
 #. [message]: speaker=Galdrad
+#. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:370
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:675
 msgid "Good idea!"
@@ -623,8 +623,12 @@ msgstr "Liepsiu naudoti tą, kuris daro daugiausia žalos!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:601
+#, fuzzy
+#| msgid ""
+#| "And which would that be? The sword (5–4) or the bow (3–3)? I suppose "
+#| "you’ll find out..."
 msgid ""
-"And which would that be? The sword (5–4) or the bow (3–3)? I suppose you’ll "
+"And which would that be? The sword (5×4) or the bow (3×3)? I suppose you’ll "
 "find out..."
 msgstr "O kas tai būtų? Kalavijas (5–4), ar lankas (3–3)? Teks išsiaiškinti..."
 
@@ -657,8 +661,8 @@ msgstr ""
 #| "Your elf used a sword (5–4; or 5 damage, 4 attacks), which is a <i>melee</"
 #| "i> attack. The quintain defended with its melee attack (3–5)."
 msgid ""
-"Your elf used a sword (5–4; or 5 damage, 4 attacks), which is a <i>melee</i> "
-"attack. The quintain defended with its melee attack (3–5). The ranged attack "
+"Your elf used a sword (5×4; or 5 damage, 4 attacks), which is a <i>melee</i> "
+"attack. The quintain defended with its melee attack (3×5). The ranged attack "
 "(the bow) would have been safer."
 msgstr ""
 "Tavo elfas panaudojo kalaviją (5–4: 5 žalos, 4 smūgiai), atakavo iš <i>arti</"
@@ -666,8 +670,13 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:663
+#, fuzzy
+#| msgid ""
+#| "Your elf used a bow, which is a <i>ranged</i> attack (3–3; or 3 damage, 3 "
+#| "attacks). The quintain has no ranged attack, only a melee attack, so it "
+#| "could not defend itself."
 msgid ""
-"Your elf used a bow, which is a <i>ranged</i> attack (3–3; or 3 damage, 3 "
+"Your elf used a bow, which is a <i>ranged</i> attack (3×3; or 3 damage, 3 "
 "attacks). The quintain has no ranged attack, only a melee attack, so it "
 "could not defend itself."
 msgstr ""
@@ -2086,7 +2095,7 @@ msgstr "Kovotojas"
 #. [unit_type]: id=Fighter, race=human
 #. [unit_type]: id=Fighteress, race=human
 #: data/campaigns/tutorial/units/Fighter.cfg:18
-#: data/campaigns/tutorial/units/Fighteress.cfg:21
+#: data/campaigns/tutorial/units/Fighteress.cfg:20
 msgid ""
 "Young and brash, Fighters are skilled with swords and are vulnerable to "
 "attack from enemies. However, they have the potential to become great "
@@ -2106,7 +2115,7 @@ msgid "female^Fighter"
 msgstr "Kovotoja"
 
 #. [attack]: type=blade
-#: data/campaigns/tutorial/units/Fighteress.cfg:25
+#: data/campaigns/tutorial/units/Fighteress.cfg:24
 msgid "saber"
 msgstr "kardas"
 
@@ -2116,7 +2125,7 @@ msgid "Quintain"
 msgstr "Iškamša"
 
 #. [unit_type]: id=Quintain, race=mechanical
-#: data/campaigns/tutorial/units/Quintain.cfg:17
+#: data/campaigns/tutorial/units/Quintain.cfg:16
 msgid ""
 "Quintains are used to practice swordplay and jousting on. It would be "
 "extremely unusual to be attacked by one."
@@ -2125,7 +2134,7 @@ msgstr ""
 "jei tokia imtų ir užpultų."
 
 #. [attack]: type=impact
-#: data/campaigns/tutorial/units/Quintain.cfg:25
+#: data/campaigns/tutorial/units/Quintain.cfg:24
 msgid "flail"
 msgstr "kovos spragilas"
 

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-07-24 20:26 UTC\n"
+"POT-Creation-Date: 2016-11-05 23:28 UTC\n"
 "PO-Revision-Date: 2016-05-15 11:46+0000\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -226,13 +226,13 @@ msgstr ""
 
 #. [side]: type=Lieutenant, id=Gweddry
 #. [side]
-#. [side]: type=Dwarvish Steelclad, id=Knutan
 #. [side]: type=General, id=Konrad II
 #. [side]: type=Great Mage, id=Kaldor
+#. [side]: type=General, id=Gweddry
 #. [side]: type=General, id=Halrad
 #. [side]: type=General, id=Halric
 #. [side]: type=General, id=Halrod
-#. [side]: type=General, id=Gweddry
+#. [side]: type=Dwarvish Steelclad, id=Knutan
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:67
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:25
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:63
@@ -269,15 +269,9 @@ msgid "Wesnothians"
 msgstr "Wesnothiani"
 
 #. [side]: type=Lich Lord, id=Mal-Ravanal
-#. [side]: type=Dark Sorcerer, id=Mal-Sakkat
-#. [side]: type=Dark Sorcerer, id=Mal-Talar
-#. [side]: type=Lich, id=Mal-Uldhar
-#. [side]
 #. [side]: type=Dark Sorcerer, id=Mal-Skraat
 #. [side]: type=Dark Adept, id=Mal-Tar
 #. [side]: type=Dark Sorcerer, id=Mal-Kallat
-#. [side]: type=Bone Knight, id=Garnad
-#. [side]: type=Necromancer, id=Mal-un-Karad
 #. [side]: type=Necromancer, id=Mal-un-Darak
 #. [side]: type=Necromancer, id=Mal-un-Zanrad
 #. [side]: type=Necromancer, id=Mal-un-Xadrux
@@ -288,14 +282,20 @@ msgstr "Wesnothiani"
 #. [side]: type=Lich, id=Lich6
 #. [side]: type=Lich, id=Lich7
 #. [side]: type=Lich, id=Lich8
+#. [side]: type=Revenant, id=Lanar-Skal
 #. [side]: type=Lich, id=Mal-Telnarad
-#. [side]: type=Dark Sorcerer, id=Mal-Marak
-#. [side]: type=Dark Sorcerer, id=Mal-Galkar
-#. [side]: type=Death Knight, id=Ravanal-Guard
+#. [side]: type=Bone Knight, id=Garnad
+#. [side]: type=Necromancer, id=Mal-un-Karad
 #. [side]: type=Lich, id=Mal-Grekulak
 #. [side]: type=Lich, id=Mal-Xakralan
 #. [side]: type=Lich, id=Mal-Uknalu
-#. [side]: type=Revenant, id=Lanar-Skal
+#. [side]: type=Dark Sorcerer, id=Mal-Sakkat
+#. [side]: type=Dark Sorcerer, id=Mal-Talar
+#. [side]: type=Lich, id=Mal-Uldhar
+#. [side]
+#. [side]: type=Dark Sorcerer, id=Mal-Marak
+#. [side]: type=Dark Sorcerer, id=Mal-Galkar
+#. [side]: type=Death Knight, id=Ravanal-Guard
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:95
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:123
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:158
@@ -351,9 +351,9 @@ msgstr "Difendi l’avamposto"
 
 #. [objective]: condition=lose
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:213
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:432
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:146
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:357
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:440
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:151
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:362
 #: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:160
 #: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:118
 #: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:107
@@ -365,7 +365,7 @@ msgstr "Difendi l’avamposto"
 #: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:81
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:173
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:96
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1063
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1066
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:154
 #: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:140
 #: data/campaigns/Eastern_Invasion/scenarios/14_Approaching_Weldyn.cfg:132
@@ -377,9 +377,9 @@ msgstr "Morte di Gweddry"
 
 #. [objective]: condition=lose
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:217
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:436
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:150
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:361
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:444
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:155
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:366
 #: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:164
 #: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:122
 #: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:111
@@ -391,7 +391,7 @@ msgstr "Morte di Gweddry"
 #: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:85
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:177
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:100
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1067
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1070
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:158
 #: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:144
 #: data/campaigns/Eastern_Invasion/scenarios/14_Approaching_Weldyn.cfg:136
@@ -460,17 +460,17 @@ msgstr ""
 "Che cosa?! Dobbiamo tenere l’avamposto! E Dacyn, dove si è cacciato adesso?"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:384
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:386
 msgid "Gweddry? Good! You are still alive. Quickly, we must leave this place!"
 msgstr "Gweddry? Bene, sei ancora vivo! Presto, dobbiamo andarcene da qui!"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:389
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:391
 msgid "Where did you go?! And where did you come from?"
 msgstr "Dov’eri finito?! E da dove sei saltato fuori?"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:394
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:396
 msgid ""
 "There is no time to explain. If you wish to survive, you will escape through "
 "this trapdoor."
@@ -479,12 +479,12 @@ msgstr ""
 "passando per questa botola."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:399
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:401
 msgid "But what about the outpost?"
 msgstr "Ma che ne sarà dell’avamposto?"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:404
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:406
 msgid ""
 "This outpost is already lost. We must defeat this evil if Wesnoth is to "
 "survive. Now, come on, we do not have much time to spare!"
@@ -493,19 +493,19 @@ msgstr ""
 "sconfiggere questo male oscuro. Andiamo adesso: non c’è tempo da perdere!"
 
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:428
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:436
 msgid "Move Gweddry to the trapdoor"
 msgstr "Sposta Gweddry sulla botola"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:472
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:480
 msgid "Hurry! We cannot defeat this evil today! We must escape!"
 msgstr ""
 "Presto! Ora come ora non possiamo sconfiggere questo male oscuro! Dobbiamo "
 "fuggire!"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:481
+#: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:489
 msgid "Follow me, men! Through the trapdoor!"
 msgstr "Seguitemi, uomini! Entrate nella botola!"
 
@@ -514,11 +514,11 @@ msgstr "Seguitemi, uomini! Entrate nella botola!"
 msgid "The Escape Tunnel"
 msgstr "Il tunnel di fuga"
 
-#. [side]: type=Troll, id=Kabak
-#. [side]: type=Ogre, id=Grug
-#. [side]
 #. [side]: type=Troll Warrior, id=Darg
 #. [side]: type=Gryphon, id=Kraagak
+#. [side]: type=Ogre, id=Grug
+#. [side]
+#. [side]: type=Troll, id=Kabak
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:42
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:83
 #: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:69
@@ -538,23 +538,23 @@ msgid "Knutan"
 msgstr "Knutan"
 
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:142
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:353
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:147
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:358
 msgid "Move Gweddry to the tunnel exit"
 msgstr "Sposta Gweddry fino all’uscita del tunnel"
 
 #. [note]
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:163
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:168
 msgid "Get moving quickly."
 msgstr "Velocizziamo i movimenti."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:178
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:183
 msgid "Where are we? I can’t see where we are going."
 msgstr "Dove siamo? Non riesco a vedere dove stiamo andando."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:183
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:188
 msgid ""
 "This is an old escape tunnel for the outpost; unfortunately these caves are "
 "currently inhabited by trolls. Now hurry, we have to move quickly; the "
@@ -565,14 +565,14 @@ msgstr ""
 "muoverci alla svelta: di sicuro i non-morti ci seguiranno fin quaggiù."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:188
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:193
 msgid "Wait, before we go anywhere — who were those undead?"
 msgstr ""
 "Aspetta un attimo, prima di andare avanti alla cieca – chi erano quei non-"
 "morti?"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:193
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:198
 msgid ""
 "I will explain later. For now, suffice to say they are much too powerful for "
 "us; our only hope is to head north."
@@ -581,17 +581,17 @@ msgstr ""
 "per noi: la nostra unica speranza è dirigerci a nord."
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:207
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:212
 msgid "TROL TREZZUR HOLE: KEEP OWT"
 msgstr "BUCA DI TESSORO DI TROL: ALA LARGA!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:225
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:230
 msgid "Who goes there?"
 msgstr "Chi va là?"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:230
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:235
 msgid ""
 "We are soldiers of the king of Wesnoth. Will you help us fight these trolls?"
 msgstr ""
@@ -599,7 +599,7 @@ msgstr ""
 "questi troll?"
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:235
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:240
 msgid ""
 "Aye, we’ll help ye, for we have nae love for the trolls. Anyone attacked by "
 "them deserves some help, I think."
@@ -608,7 +608,7 @@ msgstr ""
 "da loro merita aiuto, secondo me."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:243
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:248
 msgid ""
 "Thank you. Now, I invite you to join us. Undead have followed us into these "
 "caves, and they will kill you if you stay behind."
@@ -617,7 +617,7 @@ msgstr ""
 "dentro queste caverne. Se rimanete indietro, vi uccideranno."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:249
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:254
 msgid ""
 "Thank you. Now, I invite you to join us. Undead are in these lands, and they "
 "will find these caves."
@@ -626,7 +626,7 @@ msgstr ""
 "e troveranno anche queste caverne."
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:256
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:261
 msgid ""
 "My clan ha’ lived in these caves for centuries. We’ll no’ be scattered now "
 "by a few undead."
@@ -635,12 +635,12 @@ msgstr ""
 "per colpa di qualche non-morto."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:261
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:266
 msgid "Very well. The best of luck in your battle."
 msgstr "Benissimo, allora. Vi auguro buona fortuna in battaglia."
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:280
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:285
 msgid ""
 "It seems these trolls were hiding some gold. I think I can count fifty gold "
 "pieces!"
@@ -649,17 +649,17 @@ msgstr ""
 "cinquanta pezzi d’oro! "
 
 #. [unit]: type=Necromancer, id=Mal-Bakral
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:331
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:336
 msgid "Mal-Bakral"
 msgstr "Mal-Bakral"
 
 #. [message]: speaker=Mal-Bakral
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:341
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:346
 msgid "We have found you, fleshbag! Prepare to die!"
 msgstr "Ti abbiamo trovato, ammasso di carne! Preparati a morire!"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:346
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:351
 msgid ""
 "They follow us... we must get out of this tunnel. It looks like it is "
 "leading east. That is unfortunate, for it will take us beyond the borders of "
@@ -670,7 +670,7 @@ msgstr ""
 "Wesnoth. Purtroppo, non abbiamo altra scelta."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:383
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:388
 msgid "We have reached the end of the tunnel. I see daylight above us!"
 msgstr ""
 "Abbiamo raggiunto l’uscita del tunnel. Riesco a vedere la luce del sole su "
@@ -1161,12 +1161,12 @@ msgid "Escape by defeating one of the dark sorcerers"
 msgstr "Fuggi dalla capitale uccidendo uno dei maghi oscuri"
 
 #. [unit]: type=Paladin, id=Terraent
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:225
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:227
 msgid "Terraent"
 msgstr "Terraent"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:262
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:265
 msgid ""
 "The Bitter Swamp’s ill reputation is, it seems, well merited. Mal-Ravanal’s "
 "capital lies before us!"
@@ -1175,7 +1175,7 @@ msgstr ""
 "Mal-Ravanal si erge di fronte a noi!"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:267
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:270
 msgid ""
 "Yes, but look! The undead forces are closing in behind us. As I said before "
 "we cannot kill Mal-Ravanal. It was foolish to come this far; we must turn "
@@ -1186,7 +1186,7 @@ msgstr ""
 "giungere fin qui: dobbiamo tornare indietro!"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:272
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:275
 msgid ""
 "Perhaps. To retreat, we must kill one of these dark sorcerers that follow "
 "us. But, perhaps we can kill this Mal-Ravanal. I might wish to try."
@@ -1196,7 +1196,7 @@ msgstr ""
 "tentare."
 
 #. [message]: speaker=Mal-Ravanal
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:277
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:280
 msgid ""
 "These humans have dared foolishly to come this far into my land. Crush them!"
 msgstr ""
@@ -1204,7 +1204,7 @@ msgstr ""
 "Fateli a pezzi!"
 
 #. [message]: speaker=$freed_prisoner.id
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:332
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:335
 msgid ""
 "Thank you for destroying that skeleton warrior! Every time you kill one of "
 "the Revenants, one of us knights is let free!"
@@ -1213,12 +1213,12 @@ msgstr ""
 "uccidete un guerriero redivivo, uno di noi cavalieri viene liberato!"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:337
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:340
 msgid "Why? Are you the undead’s prisoners?"
 msgstr "Perché? Siete prigionieri dei non-morti?"
 
 #. [message]: speaker=$freed_prisoner.id
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:342
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:345
 msgid ""
 "Yes. My allies and I were questing when we were ambushed by undead. The "
 "guard is playing a sick game — whenever one of their warriors dies, one of "
@@ -1230,7 +1230,7 @@ msgstr ""
 "siete voi a perdere un guerriero, uno di noi viene ucciso."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:347
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:350
 msgid ""
 "This sounds dangerous. We will try to free as many of you as possible before "
 "we escape from here."
@@ -1239,7 +1239,7 @@ msgstr ""
 "prigionieri prima di fuggire da qui."
 
 #. [message]: speaker=$freed_prisoner.id
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:352
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:355
 msgid ""
 "Five of my comrades are still imprisoned. We will gladly enter your service "
 "in appreciation for our freedom."
@@ -1248,7 +1248,7 @@ msgstr ""
 "volentieri al vostro servizio, in segno di gratitudine per averci liberati."
 
 #. [message]: speaker=Mal-Ravanal
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:483
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:486
 msgid ""
 "Wait! I recognize that magic! Dacyn, have you come to surrender to me? Or "
 "perhaps you wish to finish the duel we started so long ago?"
@@ -1258,7 +1258,7 @@ msgstr ""
 "fa?"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:488
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:491
 msgid ""
 "If I have one regret, it is that mercy slowed my hand thirty three years "
 "ago. Stop this madness and I will release you from your torment."
@@ -1268,7 +1268,7 @@ msgstr ""
 "tormento che ti affligge."
 
 #. [message]: speaker=Mal-Ravanal
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:493
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:496
 msgid ""
 "Torment?! You have no idea... but you soon will. Kill them all and bring "
 "Dacyn to me!"
@@ -1277,12 +1277,12 @@ msgstr ""
 "tutti e portate Dacyn al mio cospetto!"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:498
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:501
 msgid "You know this lich?"
 msgstr "Tu conosci questo lich?"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:503
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:506
 msgid ""
 "Yes... We studied together many years ago. He was most powerful then, but "
 "the dark power I sense today is far greater. We must escape immediately!"
@@ -1292,27 +1292,27 @@ msgstr ""
 "fuggire immediatamente!"
 
 #. [message]: speaker=Mal-Ravanal
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:519
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:522
 msgid "Ah, so you’ve decided to fight me."
 msgstr "Ah... E così hai deciso di combattere contro di me!"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:524
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:527
 msgid "I will atone for my failure thirty three years ago."
 msgstr "Riparerò all’errore da me commesso trentatré anni fa!"
 
 #. [message]: speaker=Mal-Ravanal
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:537
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:540
 msgid "Enough! You cannot possibly defeat me!"
 msgstr "Basta così! Non hai alcuna possibilità di sconfiggermi!"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:552
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:555
 msgid "Is he... dead?"
 msgstr "È... morto?"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:557
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:560
 msgid ""
 "Merely departed. He will return once he has recovered; we would best be away "
 "from here by then."
@@ -1321,7 +1321,7 @@ msgstr ""
 "ristabilito: faremmo meglio a rimanere lontano da qui, quando ciò accadrà."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:594
+#: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:597
 msgid ""
 "Gweddry’s men retreated swiftly from the Bitter Swamp, fleeing north and "
 "west as if their heels were winged. Finding a low pass through the northern "
@@ -1367,7 +1367,7 @@ msgstr "Sconfiggi il condottiero dei non-morti"
 #: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:89
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:181
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:104
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1071
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1074
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:162
 #: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:148
 #: data/campaigns/Eastern_Invasion/scenarios/14_Approaching_Weldyn.cfg:140
@@ -1560,11 +1560,11 @@ msgstr "I due sentieri"
 
 #. [side]: type=Orcish Warlord, id=Wak-Rano
 #. [side]: type=Dark Sorcerer, id=Mal-Arnai
+#. [side]
 #. [side]: type=Orcish Ruler, id=Draka-Kura
 #. [side]: type=Orcish Warlord, id=Varrak-Klar
 #. [side]: type=Troll Warrior, id=Unhk
 #. [side]: type=Orcish Warlord, id=Ran-Lar
-#. [side]
 #: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:38
 #: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:67
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:60
@@ -1778,7 +1778,7 @@ msgstr "Mortali, ora siete nostri!"
 msgid "They're closing in on us! We must get moving quickly."
 msgstr "Ci stanno raggiungendo! Dobbiamo accelerare."
 
-#. [unit]: type=Ancient Lich, id=Mal-Hakralan
+#. [unit]: type=Lich, id=Mal-Hakralan
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:223
 msgid "Mal-Hakralan"
 msgstr "Mal-Hakralan"
@@ -1895,7 +1895,7 @@ msgstr ""
 "Creature delle profondità, io vi evoco affinché distruggiate questi nemici!"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:224
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:220
 msgid ""
 "It seems as if in addition to summoning undead this foul sorcerer has "
 "learned to call up monsters from the deep!"
@@ -1904,22 +1904,22 @@ msgstr ""
 "imparato a richiamare anche i mostri d’acqua!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:265
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:261
 msgid "I failed my Master..."
 msgstr "Mio Padrone, ho fallito..."
 
 #. [message]
-#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:284
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:280
 msgid "<i>HISS!</i>"
 msgstr "<i>HISS!</i>"
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:294
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:290
 msgid "The sea creatures are gone!"
 msgstr "Le creature del mare sono sparite!"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:303
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:299
 msgid ""
 "We have no time to lose! Let's get moving quickly before the rest of their "
 "army catches up with us."
@@ -2014,42 +2014,42 @@ msgid "We have let one escape. Let’s hope they don’t all!"
 msgstr "Ce ne siamo lasciati scappare uno. Speriamo che non scappino tutti!"
 
 #. [value]
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:254
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:256
 msgid "$ogre_name surrender!"
 msgstr "$ogre_name si è arreso!"
 
 #. [value]
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:258
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:260
 msgid "Don't hurt $ogre_name|!"
 msgstr "Non fate male $ogre_name|!"
 
 #. [value]
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:262
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:264
 msgid "$ogre_name will be good! Promise!"
 msgstr "$ogre_name farà bravo! Promesso!"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:349
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:352
 msgid "We failed to capture any of them!"
 msgstr "Non siamo riusciti a catturare nessuno di loro!"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:358
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:361
 msgid "We only captured one ogre."
 msgstr "Abbiamo catturato un solo ogre."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:367
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:370
 msgid "We failed to capture more than two of the ogres."
 msgstr "Non siamo riusciti a catturare altro che due ogre."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:376
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:379
 msgid "We captured three ogres! I hope they will prove useful."
 msgstr "Abbiamo catturato tre ogre! Spero che si dimostrino utili."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:383
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:386
 msgid ""
 "We managed to capture many ogres! They will make a good addition to our "
 "troops."
@@ -2419,7 +2419,7 @@ msgid "Prisoners"
 msgstr "Prigionieri"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:411
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:414
 msgid ""
 "Several of Gweddry's men find themselves locked away in a crude orcish cell."
 msgstr ""
@@ -2427,29 +2427,29 @@ msgstr ""
 "nelle prigioni degli orchi."
 
 #. [message]: role=escapee sidekick 1
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:417
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:420
 msgid "We've got to get out of here!"
 msgstr "Dobbiamo uscire da qui!"
 
 #. [message]: role=escapee sidekick 2
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:422
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:425
 msgid "I'm sure the commander will come and save us!"
 msgstr "Di certo il nostro comandante verrà a salvarci!"
 
 #. [message]: role=escapee sidekick 1
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:427
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:430
 msgid "What? Didn't you see those huge trolls drag them away? It's hopeless!"
 msgstr ""
 "Cosa? Non hai visto che quegli enormi troll hanno trascinato via lui e gli "
 "altri? È tutto inutile!"
 
 #. [message]: role=escapee leader
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:432
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:435
 msgid "Be quiet, you two! There's something back here..."
 msgstr "Silenzio, voi due! Ho trovato qualcosa qui in fondo..."
 
 #. [message]: role=escapee leader
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:439
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:442
 msgid ""
 "Look! There's a gap in the wall over here. I think I can slip through if I "
 "clear away some of these rocks..."
@@ -2458,63 +2458,63 @@ msgstr ""
 "dall’altra parte, se riuscissi a rimuovere alcune di queste rocce..."
 
 #. [message]: role=escapee leader
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:475
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:478
 msgid "Come on! This way!"
 msgstr "Venite! Da questa parte!"
 
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:483
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:486
 msgid "Find Gweddry, Dacyn and Owaec"
 msgstr "Trova Gweddry, Dacyn e Owaec"
 
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:487
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:490
 msgid "Release the other prisoners"
 msgstr "Libera gli altri prigionieri"
 
 #. [objective]: condition=lose
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:491
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:494
 msgid "Death of the escapees"
 msgstr "Morte dei fuggitivi"
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:508
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:511
 msgid "The door won't open from this side."
 msgstr "La porta non si apre da questo lato."
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:526
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:529
 msgid "There's strange noises coming from those pits. I don't like this."
 msgstr ""
 "Strani rumori provengono da queste gallerie. La cosa non mi piace per "
 "niente..."
 
 #. [message]
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:537
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:540
 msgid "Neep! Neep!"
 msgstr "Neep! Neep!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:568
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:571
 msgid "Ack! Get away from me!"
 msgstr "Aah! Stai lontano da me!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:583
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:586
 msgid "This tunnel seems to go deeper into the caves. We can't go that way."
 msgstr ""
 "Pare che questo tunnel conduca più in profondità nelle caverne. Non possiamo "
 "andare da quella parte."
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:598
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:601
 msgid "There's a pile of orcish gear and trash here. The stench is wretched."
 msgstr ""
 "Qui c’è un mucchio di armamenti e altra robaccia orchesca. L’odore che emana "
 "è nauseabondo!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:624
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:627
 msgid ""
 "The other prison cells should be to the north of that chamber. If we can get "
 "past those trolls we could free our comrades."
@@ -2523,37 +2523,37 @@ msgstr ""
 "superare quei troll, potremmo liberare i nostri commilitoni."
 
 #. [message]
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:632
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:635
 msgid "But there's too many of them!"
 msgstr "Ma sono in troppi!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:637
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:640
 msgid "Hmm... I have an idea."
 msgstr "Uhm... Mi è venuta un’idea."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:652
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:655
 msgid "After a while..."
 msgstr "Poco dopo..."
 
 #. [message]: id=$unit.id
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:683
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:686
 msgid "So, how do I look?"
 msgstr "Allora, come sto?"
 
 #. [message]: id=$unit.id
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:688
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:691
 msgid "I'll try to slip past the trolls. You wait here."
 msgstr "Cercherò di passare sotto il naso dei troll. Voi aspettatemi qui."
 
 #. [message]: speaker=King Dra-Nak
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:725
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:728
 msgid "Ha-ha! These humans will make excellent slaves in my mines!"
 msgstr "Ah ah! Questi umani saranno eccellenti come schiavi nelle mie miniere!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:730
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:733
 msgid ""
 "Opening the cells should confuse the guards for a moment. But I better not "
 "get too close to them..."
@@ -2562,57 +2562,57 @@ msgstr ""
 "farei meglio a non avvicinarmi troppo a loro..."
 
 #. [message]
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:798
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:801
 msgid "Eh?"
 msgstr "Eh?"
 
 #. [message]: speaker=King Dra-Nak
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:810
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:813
 msgid "Hey! Who are you? Get her!"
 msgstr "Ehi! E tu chi sei? Prendetela!"
 
 #. [message]: speaker=King Dra-Nak
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:817
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:820
 msgid "Hey! Who are you? Get him!"
 msgstr "Ehi! E tu chi sei? Prendetelo!"
 
 #. [message]
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:824
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:827
 msgid "Uh oh!"
 msgstr "Oh-oh!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:855
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:858
 msgid "Here's one of the prison cells! Let me open it..."
 msgstr "Ecco una delle celle della prigione! Lasciate che apra la porta..."
 
 #. [message]
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:914
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:917
 msgid "Finally, we're rescued!"
 msgstr "Finalmente siamo in salvo!"
 
 #. [message]
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:936
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:939
 msgid "At last!"
 msgstr "Era ora!"
 
 #. [message]
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:958
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:961
 msgid "Now let's get out of here!"
 msgstr "E adesso, usciamo da qui!"
 
 #. [message]: speaker=King Dra-Nak
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:971
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:974
 msgid "What? Who's there? Get them!"
 msgstr "Cosa? Chi va là? Prendeteli!"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1009
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1012
 msgid "The guards are distracted! Now is the time to escape!"
 msgstr "Le guardie sono distratte! È il momento di fuggire!"
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1014
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1017
 msgid ""
 "The eastern entrance is teeming with orcs. We have to find another way to "
 "exit to the west!"
@@ -2621,7 +2621,7 @@ msgstr ""
 "verso ovest!"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1026
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1029
 msgid ""
 "We have to get our gold back first! It must have been taken to their "
 "treasury."
@@ -2630,22 +2630,22 @@ msgstr ""
 "tesoreria."
 
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1040
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1043
 msgid "Gweddry reaches the western exit"
 msgstr "Gweddry raggiunge l’uscita ad ovest"
 
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1044
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1047
 msgid "Retrieve the stolen gold"
 msgstr "Recupera l’oro rubato"
 
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1054
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1057
 msgid "Release the remaining prisoners"
 msgstr "Libera i prigionieri rimasti"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1141
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1144
 msgid ""
 "They have reinforcements pouring in from the eastern entrance! We have to "
 "get out of here quickly!"
@@ -2654,27 +2654,27 @@ msgstr ""
 "alla svelta!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1194
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1200
 msgid "All the gold the orcs took is in this chest!"
 msgstr "Questo forziere contiene tutto l’oro che gli orchi ci hanno sottratto!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1205
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1211
 msgid "You've regained $stored_player_gold gold!"
 msgstr "Hai riottenuto $stored_player_gold monete d’oro!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1238
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1244
 msgid "Phew! I made it."
 msgstr "Fiu! Ce l’ho fatta!"
 
 #. [message]
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1246
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1252
 msgid "Where are you going?! Come back!"
 msgstr "Dove andate, voi?! Tornate indietro!"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1265
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1271
 msgid "Good! We have escaped these accursed caves!"
 msgstr "Bene! Siamo fuggiti da quelle maledette caverne!"
 
@@ -3881,7 +3881,7 @@ msgid "Bone Knight"
 msgstr "Cavaliere scheletrico"
 
 #. [unit_type]: id=Bone Knight, race=undead
-#: data/campaigns/Eastern_Invasion/units/Bone_Knight.cfg:27
+#: data/campaigns/Eastern_Invasion/units/Bone_Knight.cfg:26
 msgid ""
 "Once great warriors across the plains, these mounted riders atop their "
 "skeletal horses were raised from the ground by unholy magic to spread fear "
@@ -3892,13 +3892,13 @@ msgstr ""
 "da una empio rituale magico, al solo scopo di spargere terrore e distruzione."
 
 #. [attack]: type=blade
-#: data/campaigns/Eastern_Invasion/units/Bone_Knight.cfg:31
-#: data/campaigns/Eastern_Invasion/units/Skeleton_Rider.cfg:41
+#: data/campaigns/Eastern_Invasion/units/Bone_Knight.cfg:30
+#: data/campaigns/Eastern_Invasion/units/Skeleton_Rider.cfg:40
 msgid "axe"
 msgstr "ascia"
 
 #. [attack]: type=impact
-#: data/campaigns/Eastern_Invasion/units/Bone_Knight.cfg:40
+#: data/campaigns/Eastern_Invasion/units/Bone_Knight.cfg:39
 msgid "trample"
 msgstr "calpestamento"
 
@@ -3908,7 +3908,7 @@ msgid "Horse Lord"
 msgstr "Signore a cavallo"
 
 #. [unit_type]: id=Horse Lord, race=human
-#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:20
+#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:19
 msgid ""
 "The greatest of the men of the plains, Horse Lords are heads of their houses "
 "and are respected by all, friend or foe. Their sword can kill most ordinary "
@@ -3920,15 +3920,15 @@ msgstr ""
 "loro mazza ferrata abbatte coloro che rimangono in piedi."
 
 #. [attack]: type=blade
-#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:24
-#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:23
+#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:23
+#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:22
 msgid "greatsword"
 msgstr "spadone"
 
 #. [attack]: type=impact
-#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:33
-#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:32
-#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:32
+#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:32
+#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:31
+#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:31
 msgid "morning star"
 msgstr "mazza ferrata"
 
@@ -3943,7 +3943,7 @@ msgid "Mounted Fighter"
 msgstr "Combattente a cavallo"
 
 #. [unit_type]: id=Mounted Fighter, race=human
-#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:19
+#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:18
 msgid ""
 "The nobles of the men of the plains are trained with the rest of the "
 "horsemen to become great warriors. However, they are also trained in "
@@ -3956,7 +3956,7 @@ msgstr ""
 "capitani degli eserciti dei vari clan."
 
 #. [attack]: type=blade
-#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:23
+#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:22
 msgid "sword"
 msgstr "spada"
 
@@ -3966,7 +3966,7 @@ msgid "Mounted Warrior"
 msgstr "Guerriero a cavallo"
 
 #. [unit_type]: id=Mounted Warrior, race=human
-#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:19
+#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:18
 msgid ""
 "Leaders of the plains, Mounted Warriors are skilled with the use of the "
 "sword and the morning star. Riding horses, they are able to move around the "
@@ -3984,7 +3984,7 @@ msgid "Skeleton Rider"
 msgstr "Scheletro cavallerizzo"
 
 #. [unit_type]: id=Skeleton Rider, race=undead
-#: data/campaigns/Eastern_Invasion/units/Skeleton_Rider.cfg:34
+#: data/campaigns/Eastern_Invasion/units/Skeleton_Rider.cfg:33
 msgid ""
 "Once great warriors thundering across the plains, these mounted riders atop "
 "their skeletal horses were raised from the grave by unholy magic to spread "
