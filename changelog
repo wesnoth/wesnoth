@@ -34,11 +34,6 @@ Version 1.13.5+dev:
    * Under the Burning Suns:
      * Redesign of all desert elf units (currently optional, selectable through
        the difficulty menu).
- * Language and i18n:
-   * Updated translations: Finnish, Polish, Russian
- * Music and sound effects:
-   * Added a preference to pause the music when the game loses focus.
-   * Now the music fades out between scenarios.
  * Graphics:
    * Improved or new terrain graphics:
      * New wooden floor variation and transitions.
@@ -50,6 +45,72 @@ Version 1.13.5+dev:
      keeps to be placed adjacent to walls without glitches in most cases.
    * New sprite for Tentacle of the Deep.
    * Tweaked colors for all time schedules.
+ * Language and i18n:
+   * Updated translations: Finnish, Polish, Russian
+ * Lua API:
+   * Upgrade to Lua 5.3.3+
+     Consult http://www.lua.org/ for a full change list and updated documenation.
+     * bit32 functions removed
+     * utf8 support added
+   * Added new function wesnoth.fire_event_by_id to fire an event with a given ID.
+   * Added new function wesnoth.remove_modifications, which removes applied
+     modifications of the chosen type from a unit. The most efficient use is to
+     remove all modifications with a specific duration value.
+     Also callable as u:remove_modifications.
+   * The built-in conditionals have_unit, have_location, and variable are now
+     present in the wesnoth.wml_conditionals table. This means they can be
+     directly called, extended with new features, or even overridden with custom
+     implementations.
+   * New recall_filter field in unit proxy returns the [filter_recall] config
+   * New variations field in unit_type proxy returns a list of unit variations
+     Each member is a full unit_type describing that variation.
+     The table is iterable with pairs().
+   * Lua side, unit_type, and unit attack proxies can now be compared with ==
+     with identity semantics. (Previously, each time such a proxy was obtained,
+     it would produce a new object that did not compare equal to any others.)
+   * Lua unit_type lists (wesnoth.unit_types and unit_type.variations) are now
+     countable with the Lua length operator.
+   * Lua dialog functions now support the stacked widget and the unit preview pane
+   * New wesnoth.show_menu function shows a dropdown menu at the mouse location
+   * Lua attack proxy has new read_only field which is true for unit_type attacks
+     If true, attempts to change the attack will result in an error.
+   * The name field in Lua attack proxy is now writable
+   * The attacks field in the Lua unit proxy is now writable
+     Specifically, attacks may be replaced, appended (by assigning a new ID or
+     the next valid index), or removed (by setting a field to nil).
+   * wesnoth.show_message_dialog supports second_portrait and second_mirror keys
+     in its first argument, which produces a dialog with two portraits.
+   * The callable userdata returned by wesnoth.textdomain can now be called with
+     an additional two parameters (a plural string and a count) in order to support
+     gettext plurals.
+   * New matches function in team and unit attack metatables, which test if the
+     side or weapon matches a filter.
+   * helper.lua metatables are now protected from external access; getmetatable()
+     will return a descriptive string instead of the metatable.
+   * ai.aspects.attacks no longer returns a full attacks analysis. Instead it
+     returns a table with "own" and "enemy" keys containing the valid units
+     for attackers and targets. The function ai.get_attacks() still returns the
+     full attack analysis.
+   * Aspect fetcher functions (eg ai.get_aggression()) are now deprecated in favour
+     of the ai.aspects table.
+   * The location_set iter and stable_iter functions can now be called with no argument.
+     In this case, they return an iterator suitable for use in a for loop.
+   * New wesnoth.wml_matches_filter function takes a WML table and a WML filter and tests
+     if the table matches the filter. The filter syntax is as with [filter_wml].
+ * Music and sound effects:
+   * Added a preference to pause the music when the game loses focus.
+   * Now the music fades out between scenarios.
+ * Networking
+   * Ported campaignd to use boost.asio instead of SDL_net.
+   * Removed unit tests for old networking stack. This was the last part that
+     depended on SDL_net
+ * Performance:
+   * When a heuristic determines that it's probably faster, the game predicts
+     battle
+     outcome by simulating a few thousand fights instead of calculating exact
+     probabilities. This method is inexact, but in very complex battles
+     (extremely high HP, drain, slow, berserk, etc.) it's significantly faster than the
+     default damage calculation method.
  * Units:
    * Changed the sound for the melee attack of the
      Loyalist Bowman, Orcish Crossbowman and Orcish Slurbow.
@@ -135,7 +196,7 @@ Version 1.13.5+dev:
      to [choice] (which is more accurate). The old name still works for now.
    * ~ADJUST_ALPHA() image path function now takes a WFL formula. It can access
      the following variables: x, y, width, height, red, green, blue, alpha.
-	 It no longer accepts a percentage (use ~O() for that).
+     It no longer accepts a percentage (use ~O() for that).
    * Fixed [rule] in [terrain_mask] ignoring use_old=yes
    * Fixed filter returning invalid locations if invalid locations were given
      in a variable that was used with find_in=
@@ -157,67 +218,6 @@ Version 1.13.5+dev:
      supported) keys
    * Individual [terrain_graphics] rotations can now be skipped entirely by
      using "skip" in the rotations= list.
- * Lua API:
-   * Upgrade to Lua 5.3.3+
-     Consult http://www.lua.org/ for a full change list and updated documenation.
-     * bit32 functions removed
-     * utf8 support added
-   * Added new function wesnoth.fire_event_by_id to fire an event with a given ID.
-   * Added new function wesnoth.remove_modifications, which removes applied
-     modifications of the chosen type from a unit. The most efficient use is to
-     remove all modifications with a specific duration value.
-     Also callable as u:remove_modifications.
-   * The built-in conditionals have_unit, have_location, and variable are now
-     present in the wesnoth.wml_conditionals table. This means they can be
-     directly called, extended with new features, or even overridden with custom
-     implementations.
-   * New recall_filter field in unit proxy returns the [filter_recall] config
-   * New variations field in unit_type proxy returns a list of unit variations
-     Each member is a full unit_type describing that variation.
-     The table is iterable with pairs().
-   * Lua side, unit_type, and unit attack proxies can now be compared with ==
-     with identity semantics. (Previously, each time such a proxy was obtained,
-     it would produce a new object that did not compare equal to any others.)
-   * Lua unit_type lists (wesnoth.unit_types and unit_type.variations) are now
-     countable with the Lua length operator.
-   * Lua dialog functions now support the stacked widget and the unit preview pane
-   * New wesnoth.show_menu function shows a dropdown menu at the mouse location
-   * Lua attack proxy has new read_only field which is true for unit_type attacks
-     If true, attempts to change the attack will result in an error.
-   * The name field in Lua attack proxy is now writable
-   * The attacks field in the Lua unit proxy is now writable
-     Specifically, attacks may be replaced, appended (by assigning a new ID or
-     the next valid index), or removed (by setting a field to nil).
-   * wesnoth.show_message_dialog supports second_portrait and second_mirror keys
-     in its first argument, which produces a dialog with two portraits.
-   * The callable userdata returned by wesnoth.textdomain can now be called with
-     an additional two parameters (a plural string and a count) in order to support
-     gettext plurals.
-   * New matches function in team and unit attack metatables, which test if the
-     side or weapon matches a filter.
-   * helper.lua metatables are now protected from external access; getmetatable()
-     will return a descriptive string instead of the metatable.
-   * ai.aspects.attacks no longer returns a full attacks analysis. Instead it
-     returns a table with "own" and "enemy" keys containing the valid units
-     for attackers and targets. The function ai.get_attacks() still returns the
-     full attack analysis.
-   * Aspect fetcher functions (eg ai.get_aggression()) are now deprecated in favour
-     of the ai.aspects table.
-   * The location_set iter and stable_iter functions can now be called with no argument.
-     In this case, they return an iterator suitable for use in a for loop.
-   * New wesnoth.wml_matches_filter function takes a WML table and a WML filter and tests
-     if the table matches the filter. The filter syntax is as with [filter_wml].
- * Networking
-   * Ported campaignd to use boost.asio instead of SDL_net.
-   * Removed unit tests for old networking stack. This was the last part that
-   depended on SDL_net
- * Performance:
-   * When a heuristic determines that it's probably faster, the game predicts
-     battle
-     outcome by simulating a few thousand fights instead of calculating exact
-     probabilities. This method is inexact, but in very complex battles
-     (extremely high HP, drain, slow, berserk, etc.) it's significantly faster than the
-     default damage calculation method.
  * Miscellaneous and bug fixes:
    * A new way to make units invulnerable for debugging: select the unit and type
      ";unit invulnerable=yes". This method operates by decreasing the opponent's hit

@@ -44,10 +44,6 @@ Version 1.13.5+dev:
    * Added a preference to pause the music when the game loses focus.
    * Now the music fades out between scenarios.
 
- * Units:
-   * Changed the sound for the melee attack of the
-     Loyalist Bowman, Orcish Crossbowman and Orcish Slurbow.
-
  * Performance:
    * When a heuristic determines that it's probably faster, the game predicts
      battle outcome by simulating a few thousand fights instead of calculating
@@ -55,6 +51,10 @@ Version 1.13.5+dev:
      (extremely high HP, drain, slow, berserk, etc.) it's significantly faster
      than the default damage calculation method.
    * Improved UI responsiveness.
+
+ * Units:
+   * Changed the sound for the melee attack of the
+     Loyalist Bowman, Orcish Crossbowman and Orcish Slurbow.
 
  * Miscellaneous and bug fixes:
    * Fixed a stray ; character appearing pre-entered in the command console.
