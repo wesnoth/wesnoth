@@ -420,8 +420,8 @@ class terrain_filterimpl
 {
 public:
 	using location_set = std::set<map_location>;
-	struct tno_start_set_yet {};
-	struct tno_filter
+	struct no_start_set_yet {};
+	struct no_filter
 	{
 		bool operator()(const map_location&) const { return true; }
 	};
@@ -444,7 +444,7 @@ public:
 			filter_final(src, dest, filter, f1, f2, [loc2](const map_location& loc) { return loc == loc2; });
 		}
 		else {
-			filter_final(src, dest, filter, f1, f2, tno_filter());
+			filter_final(src, dest, filter, f1, f2, no_filter());
 		}
 	}
 
@@ -456,7 +456,7 @@ public:
 			filter_special_loc(src, dest, filter, f1, [&area](const map_location& loc) { return area.find(loc) != area.end(); });
 		}
 		else {
-			filter_special_loc(src, dest, filter, f1, tno_filter());
+			filter_special_loc(src, dest, filter, f1, no_filter());
 		}
 	}
 
@@ -468,7 +468,7 @@ public:
 			filter_area(src, dest, filter, [&xy_vector](const map_location& loc) { return std::find(xy_vector.begin(), xy_vector.end(), loc) != xy_vector.end(); });
 		}
 		else {
-			filter_area(src, dest, filter, tno_filter());
+			filter_area(src, dest, filter, no_filter());
 		}
 	}
 };
@@ -501,11 +501,11 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 	}
 	else if (cfg_.has_attribute("x") || cfg_.has_attribute("y")) {
 		std::vector<map_location> xy_vector = fc_->get_disp_context().map().parse_location_range(cfg_["x"], cfg_["y"], with_border);
-		terrain_filterimpl::filter_area(xy_vector, match_set, *this, terrain_filterimpl::tno_filter());
+		terrain_filterimpl::filter_area(xy_vector, match_set, *this, terrain_filterimpl::no_filter());
 	}
 	else if (cfg_.has_attribute("area")) {
 		const std::set<map_location>& area = fc_->get_tod_man().get_area_by_id(cfg_["area"]);
-		terrain_filterimpl::filter_special_loc(area, match_set, *this, terrain_filterimpl::tno_filter(), terrain_filterimpl::tno_filter());
+		terrain_filterimpl::filter_special_loc(area, match_set, *this, terrain_filterimpl::no_filter(), terrain_filterimpl::no_filter());
 	}
 	else if (cfg_.has_attribute("location_id")) {
 		map_location loc2 = fc_->get_disp_context().map().special_location(cfg_["location_id"]);
