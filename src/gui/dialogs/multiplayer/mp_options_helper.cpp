@@ -50,6 +50,7 @@ void tmp_options_helper::update_all_options()
 {
 	visible_options_.clear();
 	node_data_map_.clear();
+	options_tree_.clear();
 
 	update_game_options();
 	update_era_options();
