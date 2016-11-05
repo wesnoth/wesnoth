@@ -105,9 +105,9 @@ class unit_map {
 	///Map of underlying_id to unit and a reference counter. Dead units have a unit pointer equal to nullptr.
 	///The map entry is removed iff the reference counter equals zero and there are no more
 	///iterators pointing to this unit.
-	typedef std::map<size_t, unit_pod> t_umap;
+	typedef std::map<size_t, unit_pod> umap;
 	///Map of location to umap iterator.
-	typedef std::unordered_map<map_location, t_umap::iterator> t_lmap;
+	typedef std::unordered_map<map_location, umap::iterator> lmap;
 
 public:
 
@@ -115,13 +115,13 @@ public:
 
 	struct standard_iter_types {
 		typedef unit_map container_type;
-		typedef unit_map::t_umap::iterator iterator_type;
+		typedef unit_map::umap::iterator iterator_type;
 		typedef unit value_type;
 	};
 
 	struct const_iter_types {
 		typedef unit_map const container_type;
-		typedef unit_map::t_umap::iterator iterator_type;
+		typedef unit_map::umap::iterator iterator_type;
 		typedef const unit value_type;
 	};
 
@@ -167,7 +167,7 @@ public:
 
 	private:
 		///Construct an iterator from the location map
-		iterator_base(t_lmap::iterator ui, container_type *m) : i_(ui->second), tank_(m) {
+		iterator_base(lmap::iterator ui, container_type *m) : i_(ui->second), tank_(m) {
 			inc();
 			valid_exit();
 		}
@@ -264,7 +264,7 @@ public:
 			}
 		}
 
-		unit_map::t_umap & the_map() const { return tank_->umap_; }
+		unit_map::umap & the_map() const { return tank_->umap_; }
 
 		friend class unit_map;
 
@@ -396,17 +396,17 @@ public:
 	bool has_unit(const unit * const u) const ;
 
 private:
-	t_umap::iterator begin_core() const ;
+	umap::iterator begin_core() const ;
 
-	bool is_valid(const t_umap::const_iterator &i) const {
+	bool is_valid(const umap::const_iterator &i) const {
 		return is_found(i) && (i->second.unit != nullptr);
 	}
-	bool is_valid(const t_lmap::const_iterator &i) const {
+	bool is_valid(const lmap::const_iterator &i) const {
 		return is_found(i) && (i->second->second.unit != nullptr);
 	}
 
-	bool is_found(const t_umap::const_iterator &i) const { return i != umap_.end(); }
-	bool is_found(const t_lmap::const_iterator &i) const { return i != lmap_.end(); }
+	bool is_found(const umap::const_iterator &i) const { return i != umap_.end(); }
+	bool is_found(const lmap::const_iterator &i) const { return i != lmap_.end(); }
 
 	template <typename X>
 	unit_map::unit_iterator make_unit_iterator(X const & i) {
@@ -423,12 +423,12 @@ private:
 	 * underlying_id -> unit_pod. This requires that underlying_id be
 	 * unique (which is enforced in unit_map::insert).
 	 */
-	mutable t_umap umap_;
+	mutable umap umap_;
 
 	/**
 	 * location -> umap::iterator.
 	 */
-	t_lmap lmap_;
+	lmap lmap_;
 
 };
 
