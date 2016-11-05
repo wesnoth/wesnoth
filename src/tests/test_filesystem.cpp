@@ -56,11 +56,11 @@ BOOST_AUTO_TEST_CASE( test_fs_base )
 	BOOST_CHECK( is_root("/.././../.") );
 	BOOST_CHECK( is_root("/.") );
 
-	BOOST_CHECK( is_root("/bin/..") );
-	BOOST_CHECK( is_root("/bin/../bin/../.") );
+	BOOST_CHECK( is_root("/etc/..") );
+	BOOST_CHECK( is_root("/etc/../etc/../.") );
 
-	BOOST_CHECK( !is_root("/bin") );
-	BOOST_CHECK( !is_root("/bin/../bin/.") );
+	BOOST_CHECK( !is_root("/etc") );
+	BOOST_CHECK( !is_root("/etc/../etc/.") );
 
 	BOOST_CHECK( is_relative(".") );
 	BOOST_CHECK( is_relative("..") );
@@ -194,8 +194,8 @@ BOOST_AUTO_TEST_CASE( test_fs_search )
 {
 	const std::string& userdata = get_user_data_dir();
 
-	BOOST_CHECK_EQUAL( normalize_path("/bin/./../././bin////", true, true), "/bin" );
-	BOOST_CHECK( normalize_path("/bin/./../THIS_HOPEFULLY_DOES_NOT_EXIST/.././bin////", true, true).empty() );
+	BOOST_CHECK_EQUAL( normalize_path("/etc/./../././etc////", true, true), "/etc" );
+	BOOST_CHECK( normalize_path("/etc/./../THIS_HOPEFULLY_DOES_NOT_EXIST/.././etc////", true, true).empty() );
 
 	BOOST_CHECK_EQUAL( nearest_extant_parent(userdata + "/THIS_DOES_NOT_EXIST/foo/bar"), userdata );
 
@@ -204,14 +204,14 @@ BOOST_AUTO_TEST_CASE( test_fs_search )
 	BOOST_CHECK_EQUAL( nearest_extant_parent(gamedata + "/data/core/THIS_DOES_NOT_EXIST/test"), gamedata + "/data/core" );
 
 	BOOST_CHECK_EQUAL( nearest_extant_parent("/THIS_HOPEFULLY_DOES_NOT_EXIST"), "/" );
-	BOOST_CHECK_EQUAL( nearest_extant_parent("/bin/THIS_HOPEFULLY_DOES_NOT_EXIST/foo/bar/."), "/bin" );
-	BOOST_CHECK_EQUAL( nearest_extant_parent("/bin/THIS_HOPEFULLY_DOES_NOT_EXIST/foo"), "/bin" );
-	BOOST_CHECK_EQUAL( nearest_extant_parent("/bin/THIS_HOPEFULLY_DOES_NOT_EXIST"), "/bin" );
+	BOOST_CHECK_EQUAL( nearest_extant_parent("/etc/THIS_HOPEFULLY_DOES_NOT_EXIST/foo/bar/."), "/etc" );
+	BOOST_CHECK_EQUAL( nearest_extant_parent("/etc/THIS_HOPEFULLY_DOES_NOT_EXIST/foo"), "/etc" );
+	BOOST_CHECK_EQUAL( nearest_extant_parent("/etc/THIS_HOPEFULLY_DOES_NOT_EXIST"), "/etc" );
 	// Directories that don't exist can't have a .. entry.
-	BOOST_CHECK_EQUAL( nearest_extant_parent("/bin/THIS_HOPEFULLY_DOES_NOT_EXIST/.."), "/bin" );
-	BOOST_CHECK_EQUAL( nearest_extant_parent("/bin/."), "/bin" );
-	BOOST_CHECK_EQUAL( nearest_extant_parent("/bin/./../bin/././"), "/bin" );
-	BOOST_CHECK_EQUAL( nearest_extant_parent("/bin/./../././"), "/" );
+	BOOST_CHECK_EQUAL( nearest_extant_parent("/etc/THIS_HOPEFULLY_DOES_NOT_EXIST/.."), "/etc" );
+	BOOST_CHECK_EQUAL( nearest_extant_parent("/etc/."), "/etc" );
+	BOOST_CHECK_EQUAL( nearest_extant_parent("/etc/./../etc/././"), "/etc" );
+	BOOST_CHECK_EQUAL( nearest_extant_parent("/etc/./../././"), "/" );
 }
 
 BOOST_AUTO_TEST_CASE( test_fs_fluff )
