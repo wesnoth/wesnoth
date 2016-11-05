@@ -257,11 +257,14 @@ void tgrid::request_reduce_width(const unsigned maximum_width)
 						*this, col, wanted_width);
 
 		if(width < col_width_[col]) {
-			DBG_GUI_L << LOG_HEADER << " reduced " << col_width_[col] - width
+			unsigned reduction = col_width_[col] - width;
+
+			DBG_GUI_L << LOG_HEADER << " reduced " << reduction
 					  << " pixels for column " << col << ".\n";
 
-			size.x -= col_width_[col] - width;
+			size.x -= reduction;
 			col_width_[col] = width;
+			reduced += reduction;
 		}
 
 		if(size.x <= static_cast<int>(maximum_width)) {
@@ -341,13 +344,15 @@ void tgrid::request_reduce_height(const unsigned maximum_height)
 				*this, row, wanted_height);
 
 		if(height < row_height_[row]) {
+			unsigned reduction = row_height_[row] - height;
+
 			DBG_GUI_L << LOG_HEADER << " row " << row << " height "
 					  << row_height_[row] << " want to reduce " << too_high
-					  << " reduced " << row_height_[row] - height
-					  << " pixels.\n";
+					  << " reduced " << reduction << " pixels.\n";
 
-			size.y -= row_height_[row] - height;
+			size.y -= reduction;
 			row_height_[row] = height;
+			reduced += reduction;
 		}
 
 		if(size.y <= static_cast<int>(maximum_height)) {
