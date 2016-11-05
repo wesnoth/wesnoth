@@ -201,13 +201,13 @@ protected:
 
 	/***** ***** ***** ***** expose some functions ***** ***** ***** *****/
 
-	gui2::tpoint get_cursor_position(const unsigned column,
+	gui2::point get_cursor_position(const unsigned column,
 									 const unsigned line = 0) const
 	{
 		return text_.get_cursor_position(column, line);
 	}
 
-	tpoint get_column_line(const tpoint& position) const
+	point get_column_line(const point& position) const
 	{
 		return text_.get_column_line(position);
 	}

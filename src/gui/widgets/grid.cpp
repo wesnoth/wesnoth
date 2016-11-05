@@ -207,7 +207,7 @@ void tgrid::reduce_width(const unsigned maximum_width)
 	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
 	DBG_GUI_L << LOG_HEADER << " maximum width " << maximum_width << ".\n";
 
-	tpoint size = get_best_size();
+	point size = get_best_size();
 	if(size.x <= static_cast<int>(maximum_width)) {
 		DBG_GUI_L << LOG_HEADER << " Already fits.\n";
 		return;
@@ -236,7 +236,7 @@ void tgrid::reduce_width(const unsigned maximum_width)
 
 void tgrid::request_reduce_width(const unsigned maximum_width)
 {
-	tpoint size = get_best_size();
+	point size = get_best_size();
 	if(size.x <= static_cast<int>(maximum_width)) {
 		/** @todo this point shouldn't be reached, find out why it does. */
 		return;
@@ -285,7 +285,7 @@ void tgrid::reduce_height(const unsigned maximum_height)
 	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
 	DBG_GUI_L << LOG_HEADER << " maximum height " << maximum_height << ".\n";
 
-	tpoint size = get_best_size();
+	point size = get_best_size();
 	if(size.y <= static_cast<int>(maximum_height)) {
 		DBG_GUI_L << LOG_HEADER << " Already fits.\n";
 		return;
@@ -314,7 +314,7 @@ void tgrid::reduce_height(const unsigned maximum_height)
 
 void tgrid::request_reduce_height(const unsigned maximum_height)
 {
-	tpoint size = get_best_size();
+	point size = get_best_size();
 	if(size.y <= static_cast<int>(maximum_height)) {
 		/** @todo this point shouldn't be reached, find out why it does. */
 		return;
@@ -377,14 +377,14 @@ void tgrid::demand_reduce_height(const unsigned /*maximum_height*/)
 	/** @todo Implement. */
 }
 
-tpoint tgrid::recalculate_best_size()
+point tgrid::recalculate_best_size()
 {
-	tpoint best_size = calculate_best_size();
+	point best_size = calculate_best_size();
 	set_layout_size(best_size);
 	return best_size;
 }
 
-tpoint tgrid::calculate_best_size() const
+point tgrid::calculate_best_size() const
 {
 	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
 
@@ -398,7 +398,7 @@ tpoint tgrid::calculate_best_size() const
 	for(unsigned row = 0; row < rows_; ++row) {
 		for(unsigned col = 0; col < cols_; ++col) {
 
-			const tpoint size = child(row, col).get_best_size();
+			const point size = child(row, col).get_best_size();
 
 			if(size.x > static_cast<int>(col_width_[col])) {
 				col_width_[col] = size.x;
@@ -420,7 +420,7 @@ tpoint tgrid::calculate_best_size() const
 				  << " will be " << col_width_[col] << ".\n";
 	}
 
-	const tpoint result(
+	const point result(
 			std::accumulate(col_width_.begin(), col_width_.end(), 0),
 			std::accumulate(row_height_.begin(), row_height_.end(), 0));
 
@@ -441,7 +441,7 @@ bool tgrid::can_wrap() const
 	return twidget::can_wrap();
 }
 
-void tgrid::place(const tpoint& origin, const tpoint& size)
+void tgrid::place(const point& origin, const point& size)
 {
 	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
 
@@ -454,7 +454,7 @@ void tgrid::place(const tpoint& origin, const tpoint& size)
 	}
 
 	// call the calculate so the size cache gets updated.
-	const tpoint best_size = calculate_best_size();
+	const point best_size = calculate_best_size();
 
 	assert(row_height_.size() == rows_);
 	assert(col_width_.size() == cols_);
@@ -548,9 +548,9 @@ void tgrid::place(const tpoint& origin, const tpoint& size)
 	return;
 }
 
-void tgrid::set_origin(const tpoint& origin)
+void tgrid::set_origin(const point& origin)
 {
-	const tpoint movement = {origin.x - get_x(), origin.y - get_y()};
+	const point movement = {origin.x - get_x(), origin.y - get_y()};
 
 	// Inherited.
 	twidget::set_origin(origin);
@@ -561,7 +561,7 @@ void tgrid::set_origin(const tpoint& origin)
 		twidget* widget = child.widget();
 		assert(widget);
 
-		widget->set_origin(tpoint(widget->get_x() + movement.x, widget->get_y() + movement.y));
+		widget->set_origin(point(widget->get_x() + movement.x, widget->get_y() + movement.y));
 	}
 }
 
@@ -604,13 +604,13 @@ void tgrid::child_populate_dirty_list(twindow& caller,
 	}
 }
 
-twidget* tgrid::find_at(const tpoint& coordinate, const bool must_be_active)
+twidget* tgrid::find_at(const point& coordinate, const bool must_be_active)
 {
 	return tgrid_implementation::find_at<twidget>(
 			*this, coordinate, must_be_active);
 }
 
-const twidget* tgrid::find_at(const tpoint& coordinate,
+const twidget* tgrid::find_at(const point& coordinate,
 							  const bool must_be_active) const
 {
 	return tgrid_implementation::find_at<const twidget>(
@@ -702,7 +702,7 @@ void tgrid::set_rows_cols(const unsigned rows, const unsigned cols)
 	children_.resize(rows_ * cols_);
 }
 
-tpoint tgrid::tchild::get_best_size() const
+point tgrid::tchild::get_best_size() const
 {
 	log_scope2(log_gui_layout, LOG_CHILD_SCOPE_HEADER)
 
@@ -716,10 +716,10 @@ tpoint tgrid::tchild::get_best_size() const
 		DBG_GUI_L << LOG_CHILD_HEADER << " has widget " << true
 				  << " widget visible " << false << " returning 0,0"
 				  << ".\n";
-		return tpoint();
+		return point();
 	}
 
-	const tpoint best_size = widget_->get_best_size() + border_space();
+	const point best_size = widget_->get_best_size() + border_space();
 
 	DBG_GUI_L << LOG_CHILD_HEADER << " has widget " << true
 			  << " widget visible " << true << " returning " << best_size
@@ -727,7 +727,7 @@ tpoint tgrid::tchild::get_best_size() const
 	return best_size;
 }
 
-void tgrid::tchild::place(tpoint origin, tpoint size)
+void tgrid::tchild::place(point origin, point size)
 {
 	assert(widget());
 	if(widget()->get_visible() == twidget::tvisible::invisible) {
@@ -754,7 +754,7 @@ void tgrid::tchild::place(tpoint origin, tpoint size)
 
 	// If size smaller or equal to best size set that size.
 	// No need to check > min size since this is what we got.
-	const tpoint best_size = widget()->get_best_size();
+	const point best_size = widget()->get_best_size();
 	if(size <= best_size) {
 		DBG_GUI_L << LOG_CHILD_HEADER
 				  << " in best size range setting widget to " << origin << " x "
@@ -765,13 +765,13 @@ void tgrid::tchild::place(tpoint origin, tpoint size)
 	}
 
 	const tcontrol* control = dynamic_cast<const tcontrol*>(widget());
-	const tpoint maximum_size = control ? control->get_config_maximum_size()
-										: tpoint();
+	const point maximum_size = control ? control->get_config_maximum_size()
+										: point();
 
 	if((flags_ & (HORIZONTAL_MASK | VERTICAL_MASK))
 	   == (HORIZONTAL_GROW_SEND_TO_CLIENT | VERTICAL_GROW_SEND_TO_CLIENT)) {
 
-		if(maximum_size == tpoint() || size <= maximum_size) {
+		if(maximum_size == point() || size <= maximum_size) {
 
 			DBG_GUI_L << LOG_CHILD_HEADER
 					  << " in maximum size range setting widget to " << origin
@@ -782,8 +782,8 @@ void tgrid::tchild::place(tpoint origin, tpoint size)
 		}
 	}
 
-	tpoint widget_size = tpoint(std::min(size.x, best_size.x), std::min(size.y, best_size.y));
-	tpoint widget_orig = origin;
+	point widget_size = point(std::min(size.x, best_size.x), std::min(size.y, best_size.y));
+	point widget_orig = origin;
 
 	const unsigned v_flag = flags_ & VERTICAL_MASK;
 
@@ -870,9 +870,9 @@ const std::string& tgrid::tchild::id() const
 	return widget_->id();
 }
 
-tpoint tgrid::tchild::border_space() const
+point tgrid::tchild::border_space() const
 {
-	tpoint result(0, 0);
+	point result(0, 0);
 
 	if(border_size_) {
 
@@ -890,13 +890,13 @@ tpoint tgrid::tchild::border_space() const
 	return result;
 }
 
-void tgrid::layout(const tpoint& origin)
+void tgrid::layout(const point& origin)
 {
-	tpoint orig = origin;
+	point orig = origin;
 	for(unsigned row = 0; row < rows_; ++row) {
 		for(unsigned col = 0; col < cols_; ++col) {
 
-			const tpoint size(col_width_[col], row_height_[row]);
+			const point size(col_width_[col], row_height_[row]);
 			DBG_GUI_L << LOG_HEADER << " set widget at " << row << ',' << col
 					  << " at origin " << orig << " with size " << size
 					  << ".\n";
@@ -958,7 +958,7 @@ unsigned tgrid_implementation::row_request_reduce_height(
 		tgrid::tchild& cell = grid.child(row, x);
 		cell_request_reduce_height(cell, maximum_height);
 
-		const tpoint size(cell.get_best_size());
+		const point size(cell.get_best_size());
 
 		if(required_height == 0 || static_cast<size_t>(size.y)
 								   > required_height) {
@@ -983,7 +983,7 @@ unsigned tgrid_implementation::column_request_reduce_width(
 		tgrid::tchild& cell = grid.child(y, column);
 		cell_request_reduce_width(cell, maximum_width);
 
-		const tpoint size(cell.get_best_size());
+		const point size(cell.get_best_size());
 
 		if(required_width == 0 || static_cast<size_t>(size.x)
 								  > required_width) {

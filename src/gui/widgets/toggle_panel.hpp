@@ -51,11 +51,11 @@ public:
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
 	/** See @ref twidget::find_at. */
-	virtual twidget* find_at(const tpoint& coordinate,
+	virtual twidget* find_at(const point& coordinate,
 							 const bool must_be_active) override;
 
 	/** See @ref twidget::find_at. */
-	virtual const twidget* find_at(const tpoint& coordinate,
+	virtual const twidget* find_at(const point& coordinate,
 								   const bool must_be_active) const override;
 
 	/** See @ref tcontrol::set_active. */
@@ -83,7 +83,7 @@ public:
 	 * tpanel_definition we need to override this function and do about the
 	 * same, look at a way to 'fix' that.
 	 */
-	virtual tpoint border_space() const override;
+	virtual point border_space() const override;
 
 	/** Inherited from tselectable_ */
 	unsigned get_value() const override

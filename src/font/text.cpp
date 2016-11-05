@@ -118,11 +118,11 @@ int ttext::get_height() const
 	return this->get_size().y;
 }
 
-gui2::tpoint ttext::get_size() const
+gui2::point ttext::get_size() const
 {
 	this->recalculate();
 
-	return gui2::tpoint(rect_.width, rect_.height);
+	return gui2::point(rect_.width, rect_.height);
 }
 
 bool ttext::is_truncated() const
@@ -163,7 +163,7 @@ unsigned ttext::insert_unicode(const unsigned offset, const ucs4::string& unicod
 	return this->insert_text(offset, insert);
 }
 
-gui2::tpoint ttext::get_cursor_position(
+gui2::point ttext::get_cursor_position(
 		const unsigned column, const unsigned line) const
 {
 	this->recalculate();
@@ -175,7 +175,7 @@ gui2::tpoint ttext::get_cursor_position(
 	// Go the wanted line.
 	if(line != 0) {
 		if(pango_layout_get_line_count(layout_) >= static_cast<int>(line)) {
-			return gui2::tpoint(0, 0);
+			return gui2::point(0, 0);
 		}
 
 		for(size_t i = 0; i < line; ++i) {
@@ -193,7 +193,7 @@ gui2::tpoint ttext::get_cursor_position(
 				break;
 			}
 			// We are beyond data.
-			return gui2::tpoint(0, 0);
+			return gui2::point(0, 0);
 		}
 	}
 
@@ -204,10 +204,10 @@ gui2::tpoint ttext::get_cursor_position(
 	PangoRectangle rect;
 	pango_layout_get_cursor_pos(layout_, offset, &rect, nullptr);
 
-	return gui2::tpoint(PANGO_PIXELS(rect.x), PANGO_PIXELS(rect.y));
+	return gui2::point(PANGO_PIXELS(rect.x), PANGO_PIXELS(rect.y));
 }
 
-std::string ttext::get_token(const gui2::tpoint & position, const char * delim) const
+std::string ttext::get_token(const gui2::point & position, const char * delim) const
 {
 	this->recalculate();
 
@@ -239,7 +239,7 @@ std::string ttext::get_token(const gui2::tpoint & position, const char * delim) 
 	return txt.substr(l,r-l);
 }
 
-std::string ttext::get_link(const gui2::tpoint & position) const
+std::string ttext::get_link(const gui2::point & position) const
 {
 	if (!link_aware_) {
 		return "";
@@ -254,7 +254,7 @@ std::string ttext::get_link(const gui2::tpoint & position) const
 	}
 }
 
-gui2::tpoint ttext::get_column_line(const gui2::tpoint& position) const
+gui2::point ttext::get_column_line(const gui2::point& position) const
 {
 	this->recalculate();
 
@@ -283,7 +283,7 @@ gui2::tpoint ttext::get_column_line(const gui2::tpoint& position) const
 		const int pos = this->get_cursor_position(i, line).x;
 
 		if(pos == offset) {
-			return  gui2::tpoint(i, line);
+			return  gui2::point(i, line);
 		}
 	}
 }

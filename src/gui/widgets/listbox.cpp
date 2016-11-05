@@ -165,7 +165,7 @@ void tlistbox::set_row_shown(const unsigned row, const bool shown)
 		twindow::tinvalidate_layout_blocker invalidate_layout_blocker(*window);
 
 		generator_->set_item_shown(row, shown);
-		tpoint best_size = generator_->calculate_best_size();
+		point best_size = generator_->calculate_best_size();
 		generator_->place(generator_->get_origin(), { std::max(best_size.x, content_visible_area().w), best_size.y });
 		resize_needed = !content_resize_request();
 	}
@@ -205,7 +205,7 @@ void tlistbox::set_row_shown(const boost::dynamic_bitset<>& shown)
 		for(size_t i = 0; i < shown.size(); ++i) {
 			generator_->set_item_shown(i, shown[i]);
 		}
-		tpoint best_size = generator_->calculate_best_size();
+		point best_size = generator_->calculate_best_size();
 		generator_->place(generator_->get_origin(), { std::max(best_size.x, content_visible_area().w), best_size.y });
 		resize_needed = !content_resize_request();
 	}
@@ -300,7 +300,7 @@ bool tlistbox::update_content_size()
 		return true;
 	}
 
-	if(get_size() == tpoint()) {
+	if(get_size() == point()) {
 		return false;
 	}
 
@@ -321,11 +321,11 @@ bool tlistbox::update_content_size()
 #pragma GCC diagnostic ignored "-Wmaybe-uninitialized"
 #endif
 
-void tlistbox::place(const tpoint& origin, const tpoint& size)
+void tlistbox::place(const point& origin, const point& size)
 {
 	boost::optional<unsigned> vertical_scrollbar_position, horizontal_scrollbar_position;
 	// Check if this is the first time placing the list box
-	if (get_origin() != tpoint{-1, -1})
+	if (get_origin() != point{-1, -1})
 	{
 		vertical_scrollbar_position = get_vertical_scrollbar_item_position();
 		horizontal_scrollbar_position = get_horizontal_scrollbar_item_position();
@@ -370,7 +370,7 @@ void tlistbox::resize_content(const int width_modification,
 	if(content_resize_request(width_modification, height_modification, width_modification_pos, height_modification_pos)) {
 
 		// Calculate new size.
-		tpoint size = content_grid()->get_size();
+		point size = content_grid()->get_size();
 		size.x += width_modification;
 		size.y += height_modification;
 
@@ -398,8 +398,8 @@ void tlistbox::resize_content(const twidget& row)
 	DBG_GUI_L << LOG_HEADER << " current size " << content_grid()->get_size()
 			  << " row size " << row.get_best_size() << ".\n";
 
-	const tpoint content = content_grid()->get_size();
-	tpoint size = row.get_best_size();
+	const point content = content_grid()->get_size();
+	point size = row.get_best_size();
 	if(size.x < content.x) {
 		size.x = 0;
 	} else {
@@ -674,13 +674,13 @@ const tlistbox::order_pair tlistbox::get_active_sorting_option()
 	return {-1, SORT_NONE};
 }
 
-void tlistbox::set_content_size(const tpoint& origin, const tpoint& size)
+void tlistbox::set_content_size(const point& origin, const point& size)
 {
 	/** @todo This function needs more testing. */
 	assert(content_grid());
 
 	const int best_height = content_grid()->get_best_size().y;
-	const tpoint s(size.x, size.y < best_height ? size.y : best_height);
+	const point s(size.x, size.y < best_height ? size.y : best_height);
 
 	content_grid()->place(origin, s);
 }

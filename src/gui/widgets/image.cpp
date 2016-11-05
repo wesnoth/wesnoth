@@ -36,7 +36,7 @@ namespace gui2
 
 REGISTER_WIDGET(image)
 
-tpoint timage::calculate_best_size() const
+point timage::calculate_best_size() const
 {
 	surface image(image::get_image(image::locator(label())));
 
@@ -45,10 +45,10 @@ tpoint timage::calculate_best_size() const
 		return get_config_default_size();
 	}
 
-	const tpoint minimum = get_config_default_size();
-	const tpoint maximum = get_config_maximum_size();
+	const point minimum = get_config_default_size();
+	const point maximum = get_config_maximum_size();
 
-	tpoint result = {image->w, image->h};
+	point result = {image->w, image->h};
 
 	if(minimum.x > 0 && result.x < minimum.x) {
 		DBG_GUI_L << LOG_HEADER << " increase width to minimum.\n";

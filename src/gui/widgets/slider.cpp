@@ -54,12 +54,12 @@ tslider::tslider()
 			std::bind(&tslider::signal_handler_left_button_up, this, _2, _3));
 }
 
-tpoint tslider::calculate_best_size() const
+point tslider::calculate_best_size() const
 {
 	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
 
 	// Inherited.
-	tpoint result = tcontrol::calculate_best_size();
+	point result = tcontrol::calculate_best_size();
 	if(best_slider_length_ != 0) {
 
 		// Override length.
@@ -190,7 +190,7 @@ unsigned tslider::offset_after() const
 	return conf->right_offset;
 }
 
-bool tslider::on_positioner(const tpoint& coordinate) const
+bool tslider::on_positioner(const point& coordinate) const
 {
 	// Note we assume the positioner is over the entire height of the widget.
 	return coordinate.x >= static_cast<int>(get_positioner_offset())
@@ -199,7 +199,7 @@ bool tslider::on_positioner(const tpoint& coordinate) const
 		   && coordinate.y > 0 && coordinate.y < static_cast<int>(get_height());
 }
 
-int tslider::on_bar(const tpoint& coordinate) const
+int tslider::on_bar(const point& coordinate) const
 {
 	const unsigned x = static_cast<size_t>(coordinate.x);
 	const unsigned y = static_cast<size_t>(coordinate.y);
@@ -219,14 +219,14 @@ int tslider::on_bar(const tpoint& coordinate) const
 	return 0;
 }
 
-bool tslider::in_orthogonal_range(const tpoint& coordinate) const
+bool tslider::in_orthogonal_range(const point& coordinate) const
 {
 	return static_cast<size_t>(coordinate.x) < (get_width() - offset_after());
 }
 
 /*void tslider::update_current_item_mouse_position()
 {
-	tpoint mouse = get_mouse_position();
+	point mouse = get_mouse_position();
 	mouse.x -= get_x();
 	mouse.y -= get_y();
 

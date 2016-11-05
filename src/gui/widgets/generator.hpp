@@ -271,13 +271,13 @@ public:
 			= 0;
 
 	/** See @ref twidget::calculate_best_size. */
-	virtual tpoint calculate_best_size() const override = 0;
+	virtual point calculate_best_size() const override = 0;
 
 	/** See @ref twidget::place. */
-	virtual void place(const tpoint& origin, const tpoint& size) override = 0;
+	virtual void place(const point& origin, const point& size) override = 0;
 
 	/** See @ref twidget::set_origin. */
-	virtual void set_origin(const tpoint& origin) override = 0;
+	virtual void set_origin(const point& origin) override = 0;
 
 	/** See @ref twidget::set_visible_rectangle. */
 	virtual void set_visible_rectangle(const SDL_Rect& rectangle) override = 0;
@@ -296,11 +296,11 @@ protected:
 
 public:
 	/** See @ref twidget::find_at. */
-	virtual twidget* find_at(const tpoint& coordinate,
+	virtual twidget* find_at(const point& coordinate,
 							 const bool must_be_active) override = 0;
 
 	/** See @ref twidget::find_at. */
-	virtual const twidget* find_at(const tpoint& coordinate,
+	virtual const twidget* find_at(const point& coordinate,
 								   const bool must_be_active) const override
 			= 0;
 

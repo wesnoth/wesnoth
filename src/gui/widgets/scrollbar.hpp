@@ -98,7 +98,7 @@ public:
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
 	/** See @ref twidget::place. */
-	virtual void place(const tpoint& origin, const tpoint& size) override;
+	virtual void place(const point& origin, const point& size) override;
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
@@ -182,7 +182,7 @@ protected:
 		return positioner_length_;
 	}
 
-	tpoint get_mouse_position_last_move() const
+	point get_mouse_position_last_move() const
 	{
 		return mouse_;
 	}
@@ -251,7 +251,7 @@ private:
 	 *
 	 * This is used during dragging the positioner.
 	 */
-	tpoint mouse_;
+	point mouse_;
 
 	/**
 	 * The start offset of the positioner.
@@ -298,7 +298,7 @@ private:
 	 *
 	 * @returns                   Whether the location on the positioner is.
 	 */
-	virtual bool on_positioner(const tpoint& coordinate) const = 0;
+	virtual bool on_positioner(const point& coordinate) const = 0;
 
 	/**
 	 * Is the coordinate on the bar?
@@ -311,7 +311,7 @@ private:
 	 * @retval 0                  Coordinate is not on the bar.
 	 * @retval 1                  Coordinate is on the bar after the positioner.
 	 */
-	virtual int on_bar(const tpoint& coordinate) const = 0;
+	virtual int on_bar(const point& coordinate) const = 0;
 
 	/**
 	 * Is the coordinate in the bar's orthogonal range?
@@ -321,7 +321,7 @@ private:
 	 * @returns                   Whether the location is in the bar's.
 	 *                            orthogonal range.
 	 */
-	virtual bool in_orthogonal_range(const tpoint& coordinate) const = 0;
+	virtual bool in_orthogonal_range(const point& coordinate) const = 0;
 
 	/**
 	 * Gets the relevant difference in between the two positions.
@@ -329,8 +329,8 @@ private:
 	 * This function is used to determine how much the positioner needs to  be
 	 * moved.
 	 */
-	virtual int get_length_difference(const tpoint& original,
-									  const tpoint& current) const = 0;
+	virtual int get_length_difference(const point& original,
+									  const point& current) const = 0;
 
 	/***** ***** ***** ***** Private functions ***** ***** ***** *****/
 
@@ -370,7 +370,7 @@ private:
 	void signal_handler_mouse_motion(const event::tevent event,
 									 bool& handled,
 									 bool& halt,
-									 const tpoint& coordinate);
+									 const point& coordinate);
 
 	void signal_handler_mouse_leave(const event::tevent event, bool& handled);
 

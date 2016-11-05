@@ -313,7 +313,7 @@ public:
 	 * @returns                      The best size for the widget.
 	 * @retval 0,0                   The best size is 0,0.
 	 */
-	tpoint get_best_size() const;
+	point get_best_size() const;
 
 private:
 	/**
@@ -326,7 +326,7 @@ private:
 	 * @returns                      The best size for the widget.
 	 * @retval 0,0                   The best size is 0,0.
 	 */
-	virtual tpoint calculate_best_size() const = 0;
+	virtual point calculate_best_size() const = 0;
 
 public:
 	/**
@@ -354,7 +354,7 @@ public:
 	 *
 	 * @param origin              The new origin.
 	 */
-	virtual void set_origin(const tpoint& origin);
+	virtual void set_origin(const point& origin);
 
 	/**
 	 * Sets the size of the widget.
@@ -365,7 +365,7 @@ public:
 	 *
 	 * @param size                The size of the widget.
 	 */
-	virtual void set_size(const tpoint& size);
+	virtual void set_size(const point& size);
 
 	/**
 	 * Places the widget.
@@ -376,7 +376,7 @@ public:
 	 * @param origin              The position of top left of the widget.
 	 * @param size                The size of the widget.
 	 */
-	virtual void place(const tpoint& origin, const tpoint& size);
+	virtual void place(const point& origin, const point& size);
 
 	/**
 	 * Moves a widget.
@@ -407,14 +407,14 @@ public:
 	 *
 	 * @returns                   The origin of the widget.
 	 */
-	tpoint get_origin() const;
+	point get_origin() const;
 
 	/**
 	 * Returns the size of the widget.
 	 *
 	 * @returns                   The size of the widget.
 	 */
-	tpoint get_size() const;
+	point get_size() const;
 
 	/**
 	 * Gets the bounding rectangle of the widget on the screen.
@@ -434,8 +434,8 @@ public:
 	unsigned get_height() const;
 
 protected:
-	void set_layout_size(const tpoint& size);
-	const tpoint& layout_size() const;
+	void set_layout_size(const point& size);
+	const point& layout_size() const;
 
 public:
 	void set_linked_group(const std::string& linked_group);
@@ -462,7 +462,7 @@ private:
 	 * wrapping or a scrollbar might change the best size for that widget.
 	 * This variable holds that best value.
 	 */
-	tpoint layout_size_;
+	point layout_size_;
 
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 
@@ -472,7 +472,7 @@ private:
 	 * We're mutable so calls can stay const and this is disabled in
 	 * production code.
 	 */
-	mutable tpoint last_best_size_;
+	mutable point last_best_size_;
 
 #endif
 
@@ -744,11 +744,11 @@ public:
 	 * @retval nullptr               No widget at the wanted coordinate found (or
 	 *                            not active if must_be_active was set).
 	 */
-	virtual twidget* find_at(const tpoint& coordinate,
+	virtual twidget* find_at(const point& coordinate,
 							 const bool must_be_active);
 
 	/** The constant version of @ref find_at. */
-	virtual const twidget* find_at(const tpoint& coordinate,
+	virtual const twidget* find_at(const point& coordinate,
 								   const bool must_be_active) const;
 
 	/**
@@ -787,7 +787,7 @@ public:
 
 private:
 	/** See @ref event::tdispatcher::is_at. */
-	virtual bool is_at(const tpoint& coordinate) const override;
+	virtual bool is_at(const point& coordinate) const override;
 
 	/**
 	 * Is the coordinate inside our area.
@@ -802,7 +802,7 @@ private:
 	 *
 	 * @returns                   Status.
 	 */
-	bool is_at(const tpoint& coordinate, const bool must_be_active) const;
+	bool is_at(const point& coordinate, const bool must_be_active) const;
 
 	/**
 	 * Is the widget and every single one of its parents visible?

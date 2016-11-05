@@ -49,7 +49,7 @@ public:
 	~tviewport();
 
 	/** See @ref twidget::place. */
-	virtual void place(const tpoint& origin, const tpoint& size) override;
+	virtual void place(const point& origin, const point& size) override;
 
 	/** See @ref twidget::layout_initialise. */
 	virtual void layout_initialise(const bool full_initialisation) override;
@@ -68,11 +68,11 @@ public:
 	virtual void request_reduce_width(const unsigned maximum_width) override;
 
 	/** See @ref twidget::find_at. */
-	virtual twidget* find_at(const tpoint& coordinate,
+	virtual twidget* find_at(const point& coordinate,
 							 const bool must_be_active) override;
 
 	/** See @ref twidget::find_at. */
-	virtual const twidget* find_at(const tpoint& coordinate,
+	virtual const twidget* find_at(const point& coordinate,
 								   const bool must_be_active) const override;
 
 	/** See @ref twidget::find. */
@@ -84,7 +84,7 @@ public:
 
 private:
 	/** See @ref twidget::calculate_best_size. */
-	virtual tpoint calculate_best_size() const override;
+	virtual point calculate_best_size() const override;
 
 public:
 	/** See @ref twidget::disable_click_dismiss. */

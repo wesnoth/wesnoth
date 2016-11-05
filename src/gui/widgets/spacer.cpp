@@ -28,9 +28,9 @@ namespace gui2
 
 REGISTER_WIDGET(spacer)
 
-tpoint tspacer::calculate_best_size() const
+point tspacer::calculate_best_size() const
 {
-	return best_size_ != tpoint() ? best_size_
+	return best_size_ != point() ? best_size_
 									  : tcontrol::calculate_best_size();
 }
 
@@ -153,7 +153,7 @@ twidget* tbuilder_spacer::build() const
 	const unsigned height = height_(size);
 
 	if(width || height) {
-		widget->set_best_size(tpoint(width, height));
+		widget->set_best_size(point(width, height));
 	}
 
 	DBG_GUI_G << "Window builder: placed spacer '" << id

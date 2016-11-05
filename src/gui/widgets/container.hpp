@@ -87,14 +87,14 @@ public:
 
 private:
 	/** See @ref twidget::calculate_best_size. */
-	virtual tpoint calculate_best_size() const override;
+	virtual point calculate_best_size() const override;
 
 public:
 	/** See @ref twidget::can_wrap. */
 	virtual bool can_wrap() const override;
 
 	/** See @ref twidget::place. */
-	virtual void place(const tpoint& origin, const tpoint& size) override;
+	virtual void place(const point& origin, const point& size) override;
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
@@ -102,7 +102,7 @@ public:
 	virtual bool has_widget(const twidget& widget) const override;
 
 	/** See @ref twidget::set_origin. */
-	virtual void set_origin(const tpoint& origin) override;
+	virtual void set_origin(const point& origin) override;
 
 	/** See @ref twidget::set_visible_rectangle. */
 	virtual void set_visible_rectangle(const SDL_Rect& rectangle) override;
@@ -123,11 +123,11 @@ protected:
 
 public:
 	/** See @ref twidget::find_at. */
-	virtual twidget* find_at(const tpoint& coordinate,
+	virtual twidget* find_at(const point& coordinate,
 							 const bool must_be_active) override;
 
 	/** See @ref twidget::find_at. */
-	virtual const twidget* find_at(const tpoint& coordinate,
+	virtual const twidget* find_at(const point& coordinate,
 								   const bool must_be_active) const override;
 
 	/** See @ref twidget::find. */
@@ -250,7 +250,7 @@ private:
 	}
 
 	/** Returns the space used by the border. */
-	virtual tpoint border_space() const;
+	virtual point border_space() const;
 
 	/**
 	 * Helper for set_active.

@@ -34,7 +34,7 @@ bool point_in_rect(int x, int y, const SDL_Rect& rect)
 	return x >= rect.x && y >= rect.y && x < rect.x + rect.w && y < rect.y + rect.h;
 }
 
-bool point_in_rect(const gui2::tpoint& point, const SDL_Rect& rect)
+bool point_in_rect(const gui2::point& point, const SDL_Rect& rect)
 {
 	return point.x >= rect.x && point.y >= rect.y && point.x < rect.x + rect.w && point.y < rect.y + rect.h;
 }

@@ -68,7 +68,7 @@ private:
 	virtual const std::string& get_control_type() const override;
 
 	/** See @ref tcontainer_::border_space. */
-	virtual tpoint border_space() const override;
+	virtual point border_space() const override;
 
 	/** See @ref tcontainer_::set_self_active. */
 	virtual void set_self_active(const bool active) override;

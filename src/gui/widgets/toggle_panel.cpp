@@ -98,7 +98,7 @@ void ttoggle_panel::set_child_members(
 		}
 	}
 }
-twidget* ttoggle_panel::find_at(const tpoint& coordinate,
+twidget* ttoggle_panel::find_at(const point& coordinate,
 								const bool must_be_active)
 {
 	/**
@@ -113,7 +113,7 @@ twidget* ttoggle_panel::find_at(const tpoint& coordinate,
 	return result ? result : tcontrol::find_at(coordinate, must_be_active);
 }
 
-const twidget* ttoggle_panel::find_at(const tpoint& coordinate,
+const twidget* ttoggle_panel::find_at(const point& coordinate,
 									  const bool must_be_active) const
 {
 	const twidget* result = tcontainer_::find_at(coordinate, must_be_active);
@@ -155,14 +155,14 @@ SDL_Rect ttoggle_panel::get_client_rect() const
 	return result;
 }
 
-tpoint ttoggle_panel::border_space() const
+point ttoggle_panel::border_space() const
 {
 	std::shared_ptr<const ttoggle_panel_definition::tresolution> conf
 			= std::static_pointer_cast<const ttoggle_panel_definition::
 												  tresolution>(config());
 	assert(conf);
 
-	return tpoint(conf->left_border + conf->right_border, conf->top_border + conf->bottom_border);
+	return point(conf->left_border + conf->right_border, conf->top_border + conf->bottom_border);
 }
 
 void ttoggle_panel::set_value(const unsigned selected)

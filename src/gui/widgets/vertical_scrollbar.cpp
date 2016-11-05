@@ -64,7 +64,7 @@ unsigned tvertical_scrollbar::offset_after() const
 	return conf->bottom_offset;
 }
 
-bool tvertical_scrollbar::on_positioner(const tpoint& coordinate) const
+bool tvertical_scrollbar::on_positioner(const point& coordinate) const
 {
 	// Note we assume the positioner is over the entire width of the widget.
 	return coordinate.y >= static_cast<int>(get_positioner_offset())
@@ -73,7 +73,7 @@ bool tvertical_scrollbar::on_positioner(const tpoint& coordinate) const
 		   && coordinate.x > 0 && coordinate.x < static_cast<int>(get_width());
 }
 
-int tvertical_scrollbar::on_bar(const tpoint& coordinate) const
+int tvertical_scrollbar::on_bar(const point& coordinate) const
 {
 	// Not on the widget, leave.
 	if(static_cast<size_t>(coordinate.x) > get_width()
@@ -92,7 +92,7 @@ int tvertical_scrollbar::on_bar(const tpoint& coordinate) const
 	}
 }
 
-bool tvertical_scrollbar::in_orthogonal_range(const tpoint& coordinate) const
+bool tvertical_scrollbar::in_orthogonal_range(const point& coordinate) const
 {
 	return static_cast<size_t>(coordinate.y) < get_height();
 }

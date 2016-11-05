@@ -82,7 +82,7 @@ public:
 		message_ = message;
 	}
 
-	void set_mouse(const tpoint& mouse)
+	void set_mouse(const point& mouse)
 	{
 		mouse_ = mouse;
 	}
@@ -100,7 +100,7 @@ private:
 	t_string message_;
 
 	/** The position of the mouse. */
-	tpoint mouse_;
+	point mouse_;
 
 	/** The size of the requestor. */
 	SDL_Rect source_rect_;
@@ -146,7 +146,7 @@ static ttip& tip()
 void show(CVideo& video,
 		  const std::string& window_id,
 		  const t_string& message,
-		  const tpoint& mouse,
+		  const point& mouse,
 		  const SDL_Rect& source_rect)
 {
 	/*

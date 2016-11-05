@@ -54,7 +54,7 @@ struct tmessage
 /** The message for MESSAGE_SHOW_TOOLTIP. */
 struct tmessage_show_tooltip : public tmessage
 {
-	tmessage_show_tooltip(const std::string& message_, const tpoint& location_, const SDL_Rect& source_rect_)
+	tmessage_show_tooltip(const std::string& message_, const point& location_, const SDL_Rect& source_rect_)
 		: message(message_), location(location_), source_rect(source_rect_)
 	{
 	}
@@ -63,7 +63,7 @@ struct tmessage_show_tooltip : public tmessage
 	const std::string message;
 
 	/** The location where to show the tooltip. */
-	const tpoint location;
+	const point location;
 
 	/** The size of the entity requesting to show a tooltip. */
 	const SDL_Rect source_rect;
@@ -72,7 +72,7 @@ struct tmessage_show_tooltip : public tmessage
 /** The message for MESSAGE_SHOW_HELPTIP. */
 struct tmessage_show_helptip : public tmessage
 {
-	tmessage_show_helptip(const std::string& message_, const tpoint& location_, const SDL_Rect& source_rect_)
+	tmessage_show_helptip(const std::string& message_, const point& location_, const SDL_Rect& source_rect_)
 		: message(message_), location(location_), source_rect(source_rect_)
 	{
 	}
@@ -81,7 +81,7 @@ struct tmessage_show_helptip : public tmessage
 	const std::string message;
 
 	/** The location where to show the helptip. */
-	const tpoint location;
+	const point location;
 
 	/** The size of the entity requesting to show a helptip. */
 	const SDL_Rect source_rect;

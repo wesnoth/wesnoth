@@ -209,7 +209,7 @@ public:
 	virtual unsigned get_state() const override;
 
 	/** See @ref twidget::place. */
-	virtual void place(const tpoint& origin, const tpoint& size) override;
+	virtual void place(const point& origin, const point& size) override;
 
 private:
 	/**
@@ -268,7 +268,7 @@ private:
 	void layout_children(const bool force);
 #if 0
 	/** Inherited from tscrollbar_container. */
-	virtual void set_content_size(const tpoint& origin, const tpoint& size);
+	virtual void set_content_size(const point& origin, const point& size);
 #endif
 	/** See @ref tcontainer_::set_self_active. */
 	virtual void set_self_active(const bool active) override;

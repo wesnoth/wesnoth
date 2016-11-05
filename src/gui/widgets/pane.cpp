@@ -45,13 +45,13 @@ struct tpane_implementation
 {
 	/**
 	 * Implementation for the wrappers for
-	 * [const] twidget* tpane::find_at(const tpoint&, const bool) [const].
+	 * [const] twidget* tpane::find_at(const point&, const bool) [const].
 	 *
 	 * @tparam W                  A pointer to the pane.
 	 */
 	template <class W>
 	static typename utils::tconst_clone<twidget, W>::pointer
-	find_at(W pane, tpoint coordinate, const bool must_be_active)
+	find_at(W pane, point coordinate, const bool must_be_active)
 	{
 
 		/*
@@ -164,7 +164,7 @@ unsigned tpane::create_item(const std::map<std::string, string_map>& item_data,
 	return item.id;
 }
 
-void tpane::place(const tpoint& origin, const tpoint& size)
+void tpane::place(const point& origin, const point& size)
 {
 	DBG_GUI_L << LOG_HEADER << '\n';
 	twidget::place(origin, size);
@@ -235,18 +235,18 @@ void tpane::request_reduce_width(const unsigned /*maximum_width*/)
 {
 }
 
-twidget* tpane::find_at(const tpoint& coordinate, const bool must_be_active)
+twidget* tpane::find_at(const point& coordinate, const bool must_be_active)
 {
 	return tpane_implementation::find_at(this, coordinate, must_be_active);
 }
 
-const twidget* tpane::find_at(const tpoint& coordinate,
+const twidget* tpane::find_at(const point& coordinate,
 							  const bool must_be_active) const
 {
 	return tpane_implementation::find_at(this, coordinate, must_be_active);
 }
 
-tpoint tpane::calculate_best_size() const
+point tpane::calculate_best_size() const
 {
 	prepare_placement();
 	return placer_->get_size();
@@ -285,7 +285,7 @@ void tpane::place_children()
 			continue;
 		}
 
-		const tpoint origin = placer_->get_origin(index);
+		const point origin = placer_->get_origin(index);
 		item.grid->place(origin, item.grid->get_best_size());
 		++index;
 	}
@@ -301,7 +301,7 @@ void tpane::set_origin_children()
 			continue;
 		}
 
-		const tpoint origin = placer_->get_origin(index);
+		const point origin = placer_->get_origin(index);
 		item.grid->set_origin(origin);
 		++index;
 	}
@@ -317,7 +317,7 @@ void tpane::place_or_set_origin_children()
 			continue;
 		}
 
-		const tpoint origin = placer_->get_origin(index);
+		const point origin = placer_->get_origin(index);
 		if(item.grid->get_size() != item.grid->get_best_size()) {
 			item.grid->place(origin, item.grid->get_best_size());
 		} else {
@@ -369,7 +369,7 @@ void tpane::signal_handler_request_placement(tdispatcher& dispatcher,
 					 * what seems to work properly when showing and hiding
 					 * items. Might fail with new items (haven't tested yet).
 					 */
-					item.grid->place(tpoint(), item.grid->get_best_size());
+					item.grid->place(point(), item.grid->get_best_size());
 				}
 				place_or_set_origin_children();
 				DBG_GUI_E << LOG_HEADER << ' ' << event << " handled.\n";

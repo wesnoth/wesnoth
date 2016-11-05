@@ -279,7 +279,7 @@ namespace {
 				gui2::tip::show(video
 						, id
 						, "Test messsage for a tooltip."
-						, gui2::tpoint(0, 0)
+						, gui2::point(0, 0)
 						, {0,0,0,0});
 			} catch(gui2::tlayout_exception_width_modified&) {
 				exception = "gui2::tlayout_exception_width_modified";

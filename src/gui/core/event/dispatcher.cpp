@@ -179,7 +179,7 @@ bool tdispatcher::fire(const tevent event, twidget& target)
 class ttrigger_mouse
 {
 public:
-	ttrigger_mouse(const tpoint& coordinate) : coordinate_(coordinate)
+	ttrigger_mouse(const point& coordinate) : coordinate_(coordinate)
 	{
 	}
 
@@ -193,11 +193,11 @@ public:
 	}
 
 private:
-	tpoint coordinate_;
+	point coordinate_;
 };
 
 bool
-tdispatcher::fire(const tevent event, twidget& target, const tpoint& coordinate)
+tdispatcher::fire(const tevent event, twidget& target, const point& coordinate)
 {
 	assert(find<tset_event_mouse>(event, tevent_in_set()));
 	return fire_event<tsignal_mouse_function>(event,

@@ -73,13 +73,13 @@ bool tcontainer_::can_wrap() const
 	return grid_.can_wrap() || twidget::can_wrap();
 }
 
-void tcontainer_::place(const tpoint& origin, const tpoint& size)
+void tcontainer_::place(const point& origin, const point& size)
 {
 	tcontrol::place(origin, size);
 
 	const SDL_Rect rect = get_client_rect();
-	const tpoint client_size(rect.w, rect.h);
-	const tpoint client_position(rect.x, rect.y);
+	const point client_size(rect.w, rect.h);
+	const point client_position(rect.x, rect.y);
 	grid_.place(client_position, client_size);
 }
 
@@ -88,13 +88,13 @@ bool tcontainer_::has_widget(const twidget& widget) const
 	return twidget::has_widget(widget) || grid_.has_widget(widget);
 }
 
-tpoint tcontainer_::calculate_best_size() const
+point tcontainer_::calculate_best_size() const
 {
 	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
 
-	tpoint result(grid_.get_best_size());
-	const tpoint border_size = border_space();
-	const tpoint minimum_size = get_config_minimum_size();
+	point result(grid_.get_best_size());
+	const point border_size = border_space();
+	const point minimum_size = get_config_minimum_size();
 
 	// If the best size has a value of 0 it's means no limit so don't
 	// add the border_size might set a very small best size.
@@ -119,13 +119,13 @@ tpoint tcontainer_::calculate_best_size() const
 	return result;
 }
 
-void tcontainer_::set_origin(const tpoint& origin)
+void tcontainer_::set_origin(const point& origin)
 {
 	// Inherited.
 	twidget::set_origin(origin);
 
 	const SDL_Rect rect = get_client_rect();
-	const tpoint client_position(rect.x, rect.y);
+	const point client_position(rect.x, rect.y);
 	grid_.set_origin(client_position);
 }
 
@@ -160,13 +160,13 @@ tcontainer_::child_populate_dirty_list(twindow& caller,
 	grid_.populate_dirty_list(caller, child_call_stack);
 }
 
-twidget* tcontainer_::find_at(const tpoint& coordinate,
+twidget* tcontainer_::find_at(const point& coordinate,
 							  const bool must_be_active)
 {
 	return grid_.find_at(coordinate, must_be_active);
 }
 
-const twidget* tcontainer_::find_at(const tpoint& coordinate,
+const twidget* tcontainer_::find_at(const point& coordinate,
 									const bool must_be_active) const
 {
 	return grid_.find_at(coordinate, must_be_active);
@@ -215,9 +215,9 @@ tcontainer_::init_grid(const std::shared_ptr<tbuilder_grid>& grid_builder)
 	grid_builder->build(&initial_grid());
 }
 
-tpoint tcontainer_::border_space() const
+point tcontainer_::border_space() const
 {
-	return tpoint();
+	return point();
 }
 
 } // namespace gui2

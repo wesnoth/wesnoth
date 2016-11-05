@@ -38,7 +38,7 @@ class CVideo;
 
 namespace gui2 { class twidget; }
 namespace gui2 { namespace event { struct tmessage; } }
-namespace gui2 { struct tpoint; }
+namespace gui2 { struct point; }
 
 namespace gui2
 {
@@ -278,11 +278,11 @@ public:
 	}
 
 	/** See @ref twidget::find_at. */
-	virtual twidget* find_at(const tpoint& coordinate,
+	virtual twidget* find_at(const point& coordinate,
 							 const bool must_be_active) override;
 
 	/** See @ref twidget::find_at. */
-	virtual const twidget* find_at(const tpoint& coordinate,
+	virtual const twidget* find_at(const point& coordinate,
 								   const bool must_be_active) const override;
 
 	/** Inherited from twidget. */
@@ -455,14 +455,14 @@ public:
 		variables_.add(key, value);
 		set_is_dirty(true);
 	}
-	tpoint get_linked_size(const std::string& linked_group_id) const
+	point get_linked_size(const std::string& linked_group_id) const
 	{
 		std::map<std::string, tlinked_size>::const_iterator it = linked_size_.find(linked_group_id);
 		if(it != linked_size_.end()) {
-			return tpoint(it->second.width, it->second.height);
+			return point(it->second.width, it->second.height);
 		}
 		else {
-			return tpoint(-1, -1);
+			return point(-1, -1);
 		}
 	}
 
@@ -759,7 +759,7 @@ private:
 
 	void signal_handler_sdl_video_resize(const event::tevent event,
 										 bool& handled,
-										 const tpoint& new_size);
+										 const point& new_size);
 
 	/**
 	 * The handler for the click dismiss mouse 'event'.

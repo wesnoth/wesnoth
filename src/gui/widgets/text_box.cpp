@@ -116,7 +116,7 @@ ttext_box::ttext_box()
 			&ttext_box::signal_handler_left_button_double_click, this, _2, _3));
 }
 
-void ttext_box::place(const tpoint& origin, const tpoint& size)
+void ttext_box::place(const point& origin, const point& size)
 {
 	// Inherited.
 	tcontrol::place(origin, size);
@@ -216,7 +216,7 @@ void ttext_box::delete_selection()
 	set_cursor(start, false);
 }
 
-void ttext_box::handle_mouse_selection(tpoint mouse, const bool start_selection)
+void ttext_box::handle_mouse_selection(point mouse, const bool start_selection)
 {
 	mouse.x -= get_x();
 	mouse.y -= get_y();
@@ -227,7 +227,7 @@ void ttext_box::handle_mouse_selection(tpoint mouse, const bool start_selection)
 		return;
 	}
 
-	int offset = get_column_line(tpoint(mouse.x - text_x_offset_, mouse.y - text_y_offset_)).x;
+	int offset = get_column_line(point(mouse.x - text_x_offset_, mouse.y - text_y_offset_)).x;
 
 	if(offset < 0) {
 		return;
@@ -348,7 +348,7 @@ const std::string& ttext_box::get_control_type() const
 
 void ttext_box::signal_handler_mouse_motion(const event::tevent event,
 											bool& handled,
-											const tpoint& coordinate)
+											const point& coordinate)
 {
 	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
 

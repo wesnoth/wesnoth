@@ -47,13 +47,13 @@ struct tgrid_implementation
 {
 	/**
 	 * Implementation for the wrappers for
-	 * [const] twidget* tgrid::find_at(const tpoint&, const bool) [const].
+	 * [const] twidget* tgrid::find_at(const point&, const bool) [const].
 	 *
 	 * @tparam W                  twidget or const twidget.
 	 */
 	template <class W>
 	static W* find_at(typename utils::tconst_clone<tgrid, W>::reference grid,
-					  const tpoint& coordinate,
+					  const point& coordinate,
 					  const bool must_be_active)
 	{
 		typedef typename utils::tconst_clone<tgrid::tchild, W>::type hack;

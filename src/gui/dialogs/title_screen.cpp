@@ -187,7 +187,7 @@ static bool launch_lua_console(twindow& window)
  * - 150 to test with a borderline to insanely huge tooltip placement.
  * - 180 to test with an insanely huge tooltip placement.
  */
-static void debug_tooltip(twindow& window, bool& handled, const tpoint& coordinate)
+static void debug_tooltip(twindow& window, bool& handled, const point& coordinate)
 {
 	std::string message = "Hello world.";
 

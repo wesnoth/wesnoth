@@ -74,14 +74,14 @@ void tpanel::impl_draw_foreground(surface& frame_buffer, int x_offset, int y_off
 				   calculate_blitting_rectangle(x_offset, y_offset));
 }
 
-tpoint tpanel::border_space() const
+point tpanel::border_space() const
 {
 	std::shared_ptr<const tpanel_definition::tresolution> conf
 			= std::static_pointer_cast<const tpanel_definition::tresolution>(
 					config());
 	assert(conf);
 
-	return tpoint(conf->left_border + conf->right_border, conf->top_border + conf->bottom_border);
+	return point(conf->left_border + conf->right_border, conf->top_border + conf->bottom_border);
 }
 
 const std::string& tpanel::get_control_type() const

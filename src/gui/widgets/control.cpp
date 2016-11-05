@@ -145,31 +145,31 @@ iterator::twalker_* tcontrol::create_walker()
 	return new iterator::walker::twidget(*this);
 }
 
-tpoint tcontrol::get_config_minimum_size() const
+point tcontrol::get_config_minimum_size() const
 {
 	assert(config_);
 
-	tpoint result(config_->min_width, config_->min_height);
+	point result(config_->min_width, config_->min_height);
 
 	DBG_GUI_L << LOG_HEADER << " result " << result << ".\n";
 	return result;
 }
 
-tpoint tcontrol::get_config_default_size() const
+point tcontrol::get_config_default_size() const
 {
 	assert(config_);
 
-	tpoint result(config_->default_width, config_->default_height);
+	point result(config_->default_width, config_->default_height);
 
 	DBG_GUI_L << LOG_HEADER << " result " << result << ".\n";
 	return result;
 }
 
-tpoint tcontrol::get_config_maximum_size() const
+point tcontrol::get_config_maximum_size() const
 {
 	assert(config_);
 
-	tpoint result(config_->max_width, config_->max_height);
+	point result(config_->max_width, config_->max_height);
 
 	DBG_GUI_L << LOG_HEADER << " result " << result << ".\n";
 	return result;
@@ -206,8 +206,8 @@ void tcontrol::request_reduce_width(const unsigned maximum_width)
 
 	if(!label_.empty() && can_wrap()) {
 
-		tpoint size = get_best_text_size(
-				tpoint(), tpoint(maximum_width - config_->text_extra_width, 0));
+		point size = get_best_text_size(
+				point(), point(maximum_width - config_->text_extra_width, 0));
 
 		size.x += config_->text_extra_width;
 		size.y += config_->text_extra_height;
@@ -224,7 +224,7 @@ void tcontrol::request_reduce_width(const unsigned maximum_width)
 	}
 }
 
-tpoint tcontrol::calculate_best_size() const
+point tcontrol::calculate_best_size() const
 {
 	assert(config_);
 	if(label_.empty()) {
@@ -232,20 +232,20 @@ tpoint tcontrol::calculate_best_size() const
 		return get_config_default_size();
 	}
 
-	const tpoint minimum = get_config_default_size();
-	const tpoint maximum = get_config_maximum_size();
+	const point minimum = get_config_default_size();
+	const point maximum = get_config_maximum_size();
 
 	/**
 	 * @todo The value send should subtract the border size
 	 * and read it after calculation to get the proper result.
 	 */
-	tpoint result = get_best_text_size(minimum, maximum);
+	point result = get_best_text_size(minimum, maximum);
 	DBG_GUI_L << LOG_HEADER << " label '" << debug_truncate(label_)
 			  << "' result " << result << ".\n";
 	return result;
 }
 
-void tcontrol::place(const tpoint& origin, const tpoint& size)
+void tcontrol::place(const point& origin, const point& size)
 {
 	// resize canvasses
 	for(auto & canvas : canvas_)
@@ -279,7 +279,7 @@ void tcontrol::load_config()
 	}
 }
 
-twidget* tcontrol::find_at(const tpoint& coordinate, const bool must_be_active)
+twidget* tcontrol::find_at(const point& coordinate, const bool must_be_active)
 {
 	return (twidget::find_at(coordinate, must_be_active)
 			&& (!must_be_active || get_active()))
@@ -287,7 +287,7 @@ twidget* tcontrol::find_at(const tpoint& coordinate, const bool must_be_active)
 				   : nullptr;
 }
 
-const twidget* tcontrol::find_at(const tpoint& coordinate,
+const twidget* tcontrol::find_at(const point& coordinate,
 								 const bool must_be_active) const
 {
 	return (twidget::find_at(coordinate, must_be_active)
@@ -332,7 +332,7 @@ void tcontrol::set_label(const t_string& label)
 	}
 
 	label_ = label;
-	set_layout_size(tpoint());
+	set_layout_size(point());
 	update_canvas();
 	set_is_dirty(true);
 }
@@ -437,15 +437,15 @@ void tcontrol::definition_load_configuration(const std::string& control_type)
 	update_canvas();
 }
 
-tpoint tcontrol::get_best_text_size(tpoint minimum_size,
-									tpoint maximum_size) const
+point tcontrol::get_best_text_size(point minimum_size,
+									point maximum_size) const
 {
 	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
 
 	assert(!label_.empty());
 
-	const tpoint border(config_->text_extra_width, config_->text_extra_height);
-	tpoint size = minimum_size - border;
+	const point border(config_->text_extra_width, config_->text_extra_height);
+	point size = minimum_size - border;
 
 	renderer_.set_link_aware(get_link_aware())
 			.set_link_color(get_link_color());
@@ -487,7 +487,7 @@ tpoint tcontrol::get_best_text_size(tpoint minimum_size,
 	if(renderer_.is_truncated() && !can_wrap()) {
 		// FIXME if maximum size is defined we should look at that
 		// but also we don't adjust for the extra text space yet!!!
-		maximum_size = tpoint(config_->max_width, config_->max_height);
+		maximum_size = point(config_->max_width, config_->max_height);
 		renderer_.set_maximum_width(maximum_size.x ? maximum_size.x - border.x
 												   : -1);
 	}
@@ -509,7 +509,7 @@ tpoint tcontrol::get_best_text_size(tpoint minimum_size,
 
 void tcontrol::signal_handler_show_tooltip(const event::tevent event,
 										   bool& handled,
-										   const tpoint& location)
+										   const point& location)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
@@ -532,7 +532,7 @@ void tcontrol::signal_handler_show_tooltip(const event::tevent event,
 
 void tcontrol::signal_handler_show_helptip(const event::tevent event,
 										   bool& handled,
-										   const tpoint& location)
+										   const point& location)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
@@ -557,12 +557,12 @@ void tcontrol::signal_handler_notify_remove_tooltip(const event::tevent event,
 	handled = true;
 }
 
-std::string tcontrol::get_label_token(const gui2::tpoint & position, const char * delim) const
+std::string tcontrol::get_label_token(const gui2::point & position, const char * delim) const
 {
 	return renderer_.get_token(position, delim);
 }
 
-std::string tcontrol::get_label_link(const gui2::tpoint & position) const
+std::string tcontrol::get_label_link(const gui2::point & position) const
 {
 	return renderer_.get_link(position);
 }

@@ -898,12 +898,12 @@ void twindow::invalidate_layout()
 		need_layout_ = true;
 	}
 }
-twidget* twindow::find_at(const tpoint& coordinate, const bool must_be_active)
+twidget* twindow::find_at(const point& coordinate, const bool must_be_active)
 {
 	return tpanel::find_at(coordinate, must_be_active);
 }
 
-const twidget* twindow::find_at(const tpoint& coordinate,
+const twidget* twindow::find_at(const point& coordinate,
 								const bool must_be_active) const
 {
 	return tpanel::find_at(coordinate, must_be_active);
@@ -980,7 +980,7 @@ void twindow::layout()
 
 	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
 
-	const tpoint mouse = get_mouse_position();
+	const point mouse = get_mouse_position();
 	variables_.add("mouse_x", variant(mouse.x));
 	variables_.add("mouse_y", variant(mouse.y));
 	variables_.add("window_width", variant(0));
@@ -1081,11 +1081,11 @@ void twindow::layout()
 	}
 
 	/***** Get the best location for the window *****/
-	tpoint size = get_best_size();
+	point size = get_best_size();
 
 	assert(size.x <= maximum_width && size.y <= maximum_height);
 
-	tpoint origin(0, 0);
+	point origin(0, 0);
 
 	if(automatic_placement_) {
 
@@ -1159,13 +1159,13 @@ void twindow::layout_linked_widgets()
 	for(auto & linked_size : linked_size_)
 	{
 
-		tpoint max_size(0, 0);
+		point max_size(0, 0);
 
 		// Determine the maximum size.
 		for(auto widget : linked_size.second.widgets)
 		{
 
-			const tpoint size = widget->get_best_size();
+			const point size = widget->get_best_size();
 
 			if(size.x > max_size.x) {
 				max_size.x = size.x;
@@ -1185,7 +1185,7 @@ void twindow::layout_linked_widgets()
 		for(auto widget : linked_size.second.widgets)
 		{
 
-			tpoint size = widget->get_best_size();
+			point size = widget->get_best_size();
 
 			if(linked_size.second.width != -1) {
 				size.x = max_size.x;
@@ -1288,7 +1288,7 @@ void twindow_implementation::layout(twindow& window,
 
 	try
 	{
-		tpoint size = window.get_best_size();
+		point size = window.get_best_size();
 
 		DBG_GUI_L << LOG_IMPL_HEADER << " best size : " << size
 				  << " maximum size : " << maximum_width << ','
@@ -1373,7 +1373,7 @@ void twindow::remove_from_keyboard_chain(twidget* widget)
 
 void twindow::signal_handler_sdl_video_resize(const event::tevent event,
 											  bool& handled,
-											  const tpoint& new_size)
+											  const point& new_size)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 

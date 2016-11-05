@@ -50,16 +50,16 @@ private:
 	unsigned offset_after() const override;
 
 	/** Inherited from tscrollbar. */
-	bool on_positioner(const tpoint& coordinate) const override;
+	bool on_positioner(const point& coordinate) const override;
 
 	/** Inherited from tscrollbar. */
-	int on_bar(const tpoint& coordinate) const override;
+	int on_bar(const point& coordinate) const override;
 
 	/** Inherited from tscrollbar. */
-	bool in_orthogonal_range(const tpoint& coordinate) const override;
+	bool in_orthogonal_range(const point& coordinate) const override;
 
 	/** Inherited from tscrollbar. */
-	int get_length_difference(const tpoint& original, const tpoint& current) const override
+	int get_length_difference(const point& original, const point& current) const override
 	{
 		return current.y - original.y;
 	}

@@ -164,7 +164,7 @@ void tlabel::signal_handler_left_button_click(const event::tevent /* event */, b
 	}
 
 
-	tpoint mouse = get_mouse_position();
+	point mouse = get_mouse_position();
 
 	mouse.x -= get_x();
 	mouse.y -= get_y();
@@ -193,7 +193,7 @@ void tlabel::signal_handler_right_button_click(const event::tevent /* event */, 
 		return ; // without marking event as "handled".
 	}
 
-	tpoint mouse = get_mouse_position();
+	point mouse = get_mouse_position();
 
 	mouse.x -= get_x();
 	mouse.y -= get_y();

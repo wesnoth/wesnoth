@@ -34,7 +34,7 @@ namespace gui2
 REGISTER_DIALOG(drop_down_list)
 
 namespace {
-	void click_callback(twindow& window, bool&, bool&, tpoint coordinate)
+	void click_callback(twindow& window, bool&, bool&, point coordinate)
 	{
 		/* FIXME: This dialog uses a listbox with 'has_minimum = false'. This allows a listbox to have 0 or more selections,
 		 * and selecting the same entry toggles that entry's state (ie, if it was selected, it will be deselected). Because

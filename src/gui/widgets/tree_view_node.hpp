@@ -154,11 +154,11 @@ public:
 	}
 
 	/** See @ref twidget::find_at. */
-	virtual twidget* find_at(const tpoint& coordinate,
+	virtual twidget* find_at(const point& coordinate,
 							 const bool must_be_active) override;
 
 	/** See @ref twidget::find_at. */
-	virtual const twidget* find_at(const tpoint& coordinate,
+	virtual const twidget* find_at(const point& coordinate,
 								   const bool must_be_active) const override;
 
 	/** See @ref twidget::find. */
@@ -304,26 +304,26 @@ private:
 								  const std::vector<twidget*>& call_stack);
 
 	/** See @ref twidget::calculate_best_size. */
-	virtual tpoint calculate_best_size() const override;
+	virtual point calculate_best_size() const override;
 
 	/** See @ref twidget::disable_click_dismiss. */
 	bool disable_click_dismiss() const override;
 
-	tpoint calculate_best_size(const int indentation_level,
+	point calculate_best_size(const int indentation_level,
 							   const unsigned indentation_step_size) const;
 	/** @param assume_visible: if false (default) it will return 0 if the parent node is folded*/
-	tpoint get_current_size(bool assume_visible = false) const;
-	tpoint get_folded_size() const;
-	tpoint get_unfolded_size() const;
+	point get_current_size(bool assume_visible = false) const;
+	point get_folded_size() const;
+	point get_unfolded_size() const;
 
 	/** See @ref twidget::set_origin. */
-	virtual void set_origin(const tpoint& origin) override;
+	virtual void set_origin(const point& origin) override;
 
 	/** See @ref twidget::place. */
-	virtual void place(const tpoint& origin, const tpoint& size) override;
+	virtual void place(const point& origin, const point& size) override;
 
 	unsigned
-	place(const unsigned indentation_step_size, tpoint origin, unsigned width);
+	place(const unsigned indentation_step_size, point origin, unsigned width);
 
 	/** See @ref twidget::set_visible_rectangle. */
 	virtual void set_visible_rectangle(const SDL_Rect& rectangle) override;

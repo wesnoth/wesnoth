@@ -21,21 +21,21 @@
 namespace gui2
 {
 
-tpoint& tpoint::operator+=(const tpoint& point)
+point& point::operator+=(const point& point)
 {
 	x += point.x;
 	y += point.y;
 	return *this;
 }
 
-tpoint& tpoint::operator-=(const tpoint& point)
+point& point::operator-=(const point& point)
 {
 	x -= point.x;
 	y -= point.y;
 	return *this;
 }
 
-std::ostream& operator<<(std::ostream& stream, const tpoint& point)
+std::ostream& operator<<(std::ostream& stream, const point& point)
 {
 	stream << point.x << ',' << point.y;
 	return stream;

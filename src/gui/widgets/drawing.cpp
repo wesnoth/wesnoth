@@ -31,9 +31,9 @@ namespace gui2
 
 REGISTER_WIDGET(drawing)
 
-tpoint tdrawing::calculate_best_size() const
+point tdrawing::calculate_best_size() const
 {
-	return best_size_ != tpoint() ? best_size_
+	return best_size_ != point() ? best_size_
 									  : tcontrol::calculate_best_size();
 }
 
@@ -169,7 +169,7 @@ twidget* tbuilder_drawing::build() const
 	const unsigned h = height(size);
 
 	if(w || h) {
-		widget->set_best_size(tpoint(w, h));
+		widget->set_best_size(point(w, h));
 	}
 
 	widget->canvas().front().set_cfg(draw);

@@ -36,7 +36,7 @@ public:
 
 private:
 	/** See @ref twidget::calculate_best_size. */
-	virtual tpoint calculate_best_size() const override;
+	virtual point calculate_best_size() const override;
 
 public:
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
@@ -138,16 +138,16 @@ private:
 	unsigned offset_after() const override;
 
 	/** Inherited from tscrollbar. */
-	bool on_positioner(const tpoint& coordinate) const override;
+	bool on_positioner(const point& coordinate) const override;
 
 	/** Inherited from tscrollbar. */
-	int on_bar(const tpoint& coordinate) const override;
+	int on_bar(const point& coordinate) const override;
 
 	/** Inherited from tscrollbar. */
-	bool in_orthogonal_range(const tpoint& coordinate) const override;
+	bool in_orthogonal_range(const point& coordinate) const override;
 
 	/** Inherited from tscrollbar. */
-	int get_length_difference(const tpoint& original, const tpoint& current) const override
+	int get_length_difference(const point& original, const point& current) const override
 	{
 		return current.x - original.x;
 	}
@@ -183,7 +183,7 @@ private:
 	 * this value is upda with the mouse position at the time. This allows the widget to track
 	 * how far the mouse has moved since setting the last value.
 	 */
-	tpoint current_item_mouse_position_;
+	point current_item_mouse_position_;
 
 	//void update_current_item_mouse_position();
 

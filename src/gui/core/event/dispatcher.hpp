@@ -30,7 +30,7 @@
 namespace gui2
 {
 
-struct tpoint;
+struct point;
 class twidget;
 
 namespace event
@@ -62,7 +62,7 @@ typedef std::function<void(tdispatcher& dispatcher,
 							 const tevent event,
 							 bool& handled,
 							 bool& halt,
-							 const tpoint& coordinate)> tsignal_mouse_function;
+							 const point& coordinate)> tsignal_mouse_function;
 
 /**
  * Callback function signature.
@@ -152,7 +152,7 @@ public:
 	 * @result                       True if inside an active widget, false
 	 *                               otherwise.
 	 */
-	virtual bool is_at(const tpoint& coordinate) const = 0;
+	virtual bool is_at(const point& coordinate) const = 0;
 
 	enum tevent_type {
 		pre = 1,
@@ -172,7 +172,7 @@ public:
 	 * @param target                 The widget that should receive the event.
 	 * @param coordinate             The mouse position for the event.
 	 */
-	bool fire(const tevent event, twidget& target, const tpoint& coordinate);
+	bool fire(const tevent event, twidget& target, const point& coordinate);
 
 	/**
 	 * Fires an event which takes keyboard parameters.

@@ -46,7 +46,7 @@ void tplacer_horizontal_list::initialise()
 	column_ = 0;
 }
 
-void tplacer_horizontal_list::add_item(const tpoint& size)
+void tplacer_horizontal_list::add_item(const point& size)
 {
 	if(size.x > columns_[column_].second) {
 		columns_[column_].second = size.x;
@@ -66,14 +66,14 @@ void tplacer_horizontal_list::add_item(const tpoint& size)
 	}
 }
 
-tpoint tplacer_horizontal_list::get_size() const
+point tplacer_horizontal_list::get_size() const
 {
 	const int width = columns_.back().first + columns_.back().second;
 	const int height = std::accumulate(rows_.begin(), rows_.end(), 0);
-	return tpoint(width, height);
+	return point(width, height);
 }
 
-tpoint tplacer_horizontal_list::get_origin(const unsigned index) const
+point tplacer_horizontal_list::get_origin(const unsigned index) const
 {
 	const unsigned row = index % maximum_rows_;
 	const unsigned column = index / maximum_rows_;
@@ -82,7 +82,7 @@ tpoint tplacer_horizontal_list::get_origin(const unsigned index) const
 			= row == 0 ? 0
 					   : std::accumulate(rows_.begin(), rows_.begin() + row, 0);
 
-	return tpoint(columns_[column].first, height);
+	return point(columns_[column].first, height);
 }
 
 } // namespace implementation

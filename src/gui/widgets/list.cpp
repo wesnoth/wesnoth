@@ -264,7 +264,7 @@ int tlist::get_selected_row() const
 	return generator_->get_selected_item();
 }
 
-void tlist::place(const tpoint& origin, const tpoint& size)
+void tlist::place(const point& origin, const point& size)
 {
 	// Inherited.
 	tcontainer_::place(origin, size);
@@ -303,7 +303,7 @@ void tlist::resize_content(
 	if(content_resize_request(width_modification, height_modification)) {
 
 		// Calculate new size.
-		tpoint size = content_grid()->get_size();
+		point size = content_grid()->get_size();
 		size.x += width_modification;
 		size.y += height_modification;
 

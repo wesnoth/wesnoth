@@ -42,7 +42,7 @@ public:
 
 private:
 	/** See @ref twidget::calculate_best_size. */
-	virtual tpoint calculate_best_size() const override;
+	virtual point calculate_best_size() const override;
 
 public:
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
@@ -61,7 +61,7 @@ public:
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	void set_best_size(const tpoint& best_size)
+	void set_best_size(const point& best_size)
 	{
 		best_size_ = best_size;
 	}
@@ -79,7 +79,7 @@ private:
 	};
 
 	/** When we're used as a fixed size item, this holds the best size. */
-	tpoint best_size_;
+	point best_size_;
 
 	/** See @ref tcontrol::get_control_type. */
 	virtual const std::string& get_control_type() const override;

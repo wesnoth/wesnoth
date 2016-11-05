@@ -228,11 +228,11 @@ public:
 	 *
 	 * @returns                   The newly calculated size.
 	 */
-	tpoint recalculate_best_size();
+	point recalculate_best_size();
 
 private:
 	/** See @ref twidget::calculate_best_size. */
-	virtual tpoint calculate_best_size() const override;
+	virtual point calculate_best_size() const override;
 
 public:
 	/** See @ref twidget::can_wrap. */
@@ -240,12 +240,12 @@ public:
 
 public:
 	/** See @ref twidget::place. */
-	virtual void place(const tpoint& origin, const tpoint& size) override;
+	virtual void place(const point& origin, const point& size) override;
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
 	/** See @ref twidget::set_origin. */
-	virtual void set_origin(const tpoint& origin) override;
+	virtual void set_origin(const point& origin) override;
 
 	/** See @ref twidget::set_visible_rectangle. */
 	virtual void set_visible_rectangle(const SDL_Rect& rectangle) override;
@@ -259,11 +259,11 @@ public:
 							  const std::vector<twidget*>& call_stack) override;
 
 	/** See @ref twidget::find_at. */
-	virtual twidget* find_at(const tpoint& coordinate,
+	virtual twidget* find_at(const point& coordinate,
 							 const bool must_be_active) override;
 
 	/** See @ref twidget::find_at. */
-	virtual const twidget* find_at(const tpoint& coordinate,
+	virtual const twidget* find_at(const point& coordinate,
 								   const bool must_be_active) const override;
 
 	/** See @ref twidget::find. */
@@ -319,7 +319,7 @@ private:
 		}
 
 		/** Returns the best size for the cell. */
-		tpoint get_best_size() const;
+		point get_best_size() const;
 
 		/**
 		 * Places the widget in the cell.
@@ -327,7 +327,7 @@ private:
 		 * @param origin          The origin (x, y) for the widget.
 		 * @param size            The size for the widget.
 		 */
-		void place(tpoint origin, tpoint size);
+		void place(point origin, point size);
 
 		/** Forwards @ref tgrid::layout_initialise to the cell. */
 		void layout_initialise(const bool full_initialisation);
@@ -392,7 +392,7 @@ private:
 		twidget* widget_;
 
 		/** Returns the space needed for the border. */
-		tpoint border_space() const;
+		point border_space() const;
 
 	}; // class tchild
 
@@ -484,7 +484,7 @@ private:
 	}
 
 	/** Layouts the children in the grid. */
-	void layout(const tpoint& origin);
+	void layout(const point& origin);
 
 	/** See @ref twidget::impl_draw_children. */
 	virtual void impl_draw_children(surface& frame_buffer,

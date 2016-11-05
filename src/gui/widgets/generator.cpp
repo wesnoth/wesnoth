@@ -119,10 +119,10 @@ void thorizontal_list::create_item(const unsigned /*index*/)
 	assert(false);
 }
 
-tpoint thorizontal_list::calculate_best_size() const
+point thorizontal_list::calculate_best_size() const
 {
 	// The best size is the sum of the widths and the greatest height.
-	tpoint result(0, 0);
+	point result(0, 0);
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
 		if(!get_item_shown(i)) {
@@ -130,7 +130,7 @@ tpoint thorizontal_list::calculate_best_size() const
 			continue;
 		}
 
-		const tpoint best_size = item(i).get_best_size();
+		const point best_size = item(i).get_best_size();
 
 		result.x += best_size.x;
 
@@ -142,7 +142,7 @@ tpoint thorizontal_list::calculate_best_size() const
 	return result;
 }
 
-void thorizontal_list::place(const tpoint& origin, const tpoint& size)
+void thorizontal_list::place(const point& origin, const point& size)
 {
 	/*
 	 * - Set every item to its best size.
@@ -152,7 +152,7 @@ void thorizontal_list::place(const tpoint& origin, const tpoint& size)
 	 *   width.
 	 */
 
-	tpoint current_origin = origin;
+	point current_origin = origin;
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
 		if(!get_item_shown(get_item_at_ordered(i))) {
@@ -161,7 +161,7 @@ void thorizontal_list::place(const tpoint& origin, const tpoint& size)
 		}
 
 		tgrid& grid = item_ordered(i);
-		tpoint best_size = grid.get_best_size();
+		point best_size = grid.get_best_size();
 		assert(best_size.y <= size.y);
 		// FIXME should we look at grow factors???
 		best_size.y = size.y;
@@ -178,9 +178,9 @@ void thorizontal_list::place(const tpoint& origin, const tpoint& size)
 	}
 }
 
-void thorizontal_list::set_origin(const tpoint& origin)
+void thorizontal_list::set_origin(const point& origin)
 {
-	tpoint current_origin = origin;
+	point current_origin = origin;
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
 		if(!get_item_shown(get_item_at_ordered(i))) {
@@ -209,7 +209,7 @@ void thorizontal_list::set_visible_rectangle(const SDL_Rect& rectangle)
 	}
 }
 
-twidget* thorizontal_list::find_at(const tpoint& coordinate,
+twidget* thorizontal_list::find_at(const point& coordinate,
 								   const bool must_be_active)
 {
 	assert(get_window());
@@ -230,7 +230,7 @@ twidget* thorizontal_list::find_at(const tpoint& coordinate,
 	return nullptr;
 }
 
-const twidget* thorizontal_list::find_at(const tpoint& coordinate,
+const twidget* thorizontal_list::find_at(const point& coordinate,
 										 const bool must_be_active) const
 {
 	assert(get_window());
@@ -342,10 +342,10 @@ void tvertical_list::create_item(const unsigned /*index*/)
 	assert(false);
 }
 
-tpoint tvertical_list::calculate_best_size() const
+point tvertical_list::calculate_best_size() const
 {
 	// The best size is the sum of the heights and the greatest width.
-	tpoint result(0, 0);
+	point result(0, 0);
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
 		if(!get_item_shown(i)) {
@@ -353,7 +353,7 @@ tpoint tvertical_list::calculate_best_size() const
 			continue;
 		}
 
-		const tpoint best_size = item(i).get_best_size();
+		const point best_size = item(i).get_best_size();
 
 		if(best_size.x > result.x) {
 			result.x = best_size.x;
@@ -365,7 +365,7 @@ tpoint tvertical_list::calculate_best_size() const
 	return result;
 }
 
-void tvertical_list::place(const tpoint& origin, const tpoint& size)
+void tvertical_list::place(const point& origin, const point& size)
 {
 	/*
 	 * - Set every item to its best size.
@@ -375,7 +375,7 @@ void tvertical_list::place(const tpoint& origin, const tpoint& size)
 	 *   height.
 	 */
 
-	tpoint current_origin = origin;
+	point current_origin = origin;
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
 		if(!get_item_shown(get_item_at_ordered(i))) {
@@ -384,7 +384,7 @@ void tvertical_list::place(const tpoint& origin, const tpoint& size)
 		}
 
 		tgrid& grid = item_ordered(i);
-		tpoint best_size = grid.get_best_size();
+		point best_size = grid.get_best_size();
 		assert(best_size.x <= size.x);
 		// FIXME should we look at grow factors???
 		best_size.x = size.x;
@@ -401,9 +401,9 @@ void tvertical_list::place(const tpoint& origin, const tpoint& size)
 	}
 }
 
-void tvertical_list::set_origin(const tpoint& origin)
+void tvertical_list::set_origin(const point& origin)
 {
-	tpoint current_origin = origin;
+	point current_origin = origin;
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
 		if(!get_item_shown(get_item_at_ordered(i))) {
@@ -432,7 +432,7 @@ void tvertical_list::set_visible_rectangle(const SDL_Rect& rectangle)
 	}
 }
 
-twidget* tvertical_list::find_at(const tpoint& coordinate,
+twidget* tvertical_list::find_at(const point& coordinate,
 								 const bool must_be_active)
 {
 	assert(get_window());
@@ -454,7 +454,7 @@ twidget* tvertical_list::find_at(const tpoint& coordinate,
 	return nullptr;
 }
 
-const twidget* tvertical_list::find_at(const tpoint& coordinate,
+const twidget* tvertical_list::find_at(const point& coordinate,
 									   const bool must_be_active) const
 {
 	assert(get_window());
@@ -565,7 +565,7 @@ void tmatrix::create_item(const unsigned /*index*/)
 	assert(false);
 }
 
-tpoint tmatrix::calculate_best_size() const
+point tmatrix::calculate_best_size() const
 {
 	// The best size is the one that minimizes aspect ratio of the enclosing rect
 	// We first calculate the best size of each item,
@@ -573,29 +573,29 @@ tpoint tmatrix::calculate_best_size() const
 	// We try a number of columns from 1 up to sqrt(visible_items) + 2
 	size_t n_items = get_item_count();
 	size_t max_cols = sqrt(n_items) + 2;
-	std::vector<tpoint> item_sizes;
+	std::vector<point> item_sizes;
 	for(size_t i = 0; i < n_items; i++) {
 		if(get_item_shown(i)) {
 			item_sizes.push_back(item(i).get_best_size());
 		}
 	}
 	if(item_sizes.empty()) {
-		return tpoint();
+		return point();
 	}
-	std::vector<tpoint> best_sizes(1);
-	best_sizes[0] = std::accumulate(item_sizes.begin(), item_sizes.end(), tpoint(), [](tpoint a, tpoint b) {
-		return tpoint(std::max(a.x, b.x), a.y + b.y);
+	std::vector<point> best_sizes(1);
+	best_sizes[0] = std::accumulate(item_sizes.begin(), item_sizes.end(), point(), [](point a, point b) {
+		return point(std::max(a.x, b.x), a.y + b.y);
 	});
-	int max_xtra = std::min_element(item_sizes.begin(), item_sizes.end(), [](tpoint a, tpoint b) {
+	int max_xtra = std::min_element(item_sizes.begin(), item_sizes.end(), [](point a, point b) {
 		return a.x < b.x;
 	})->x / 2;
 	for(size_t cells_in_1st_row = 2; cells_in_1st_row <= max_cols; cells_in_1st_row++) {
-		int row_min_width = std::accumulate(item_sizes.begin(), item_sizes.begin() + cells_in_1st_row, 0, [](int a, tpoint b) {
+		int row_min_width = std::accumulate(item_sizes.begin(), item_sizes.begin() + cells_in_1st_row, 0, [](int a, point b) {
 			return a + b.x;
 		});
 		int row_max_width = row_min_width + max_xtra;
 		int row = 0;
-		tpoint row_size, total_size;
+		point row_size, total_size;
 		for(size_t n = 0; n < item_sizes.size(); n++) {
 			if(row_size.x + item_sizes[n].x > row_max_width) {
 				// Start new row
@@ -604,7 +604,7 @@ tpoint tmatrix::calculate_best_size() const
 				if(total_size.x < row_size.x) {
 					total_size.x = row_size.x;
 				}
-				row_size = tpoint();
+				row_size = point();
 			}
 			row_size.x += item_sizes[n].x;
 			if(row_size.y < item_sizes[n].y) {
@@ -618,12 +618,12 @@ tpoint tmatrix::calculate_best_size() const
 		best_sizes.push_back(total_size);
 	}
 
-	return *std::min_element(best_sizes.begin(), best_sizes.end(), [](tpoint p1, tpoint p2) {
+	return *std::min_element(best_sizes.begin(), best_sizes.end(), [](point p1, point p2) {
 		return std::max<double>(p1.x, p1.y) / std::min<double>(p1.x, p1.y) < std::max<double>(p2.x, p2.y) / std::min<double>(p2.x, p2.y);
 	});
 }
 
-void tmatrix::place(const tpoint& origin, const tpoint& size)
+void tmatrix::place(const point& origin, const point& size)
 {
 	/*
 	 * - Set every item to its best size.
@@ -634,7 +634,7 @@ void tmatrix::place(const tpoint& origin, const tpoint& size)
 	 */
 
 	// TODO: Make sure all cells in a row are the same height
-	tpoint current_origin = origin;
+	point current_origin = origin;
 	int row_height = 0;
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
@@ -644,7 +644,7 @@ void tmatrix::place(const tpoint& origin, const tpoint& size)
 		}
 
 		tgrid& grid = item_ordered(i);
-		tpoint best_size = grid.get_best_size();
+		point best_size = grid.get_best_size();
 		// FIXME should we look at grow factors???
 
 		if(current_origin.x + best_size.x > origin.x + size.x) {
@@ -665,15 +665,15 @@ void tmatrix::place(const tpoint& origin, const tpoint& size)
 	// This block is supposed to correct for that, but doesn't work properly.
 	// To be more specific, it requires invalidating the layout to take effect.
 	if(current_origin.y + row_height != origin.y + size.y) {
-		tpoint better_size = size;
+		point better_size = size;
 		better_size.y -= current_origin.y + row_height - origin.y;
 		set_layout_size(better_size);
 	}
 }
 
-void tmatrix::set_origin(const tpoint& origin)
+void tmatrix::set_origin(const point& origin)
 {
-	tpoint current_origin = origin;
+	point current_origin = origin;
 	size_t row_height = 0;
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
@@ -713,7 +713,7 @@ void tmatrix::set_visible_rectangle(const SDL_Rect& rectangle)
 	}
 }
 
-twidget* tmatrix::find_at(const tpoint& coordinate,
+twidget* tmatrix::find_at(const point& coordinate,
 						  const bool must_be_active)
 {
 	assert(get_window());
@@ -734,7 +734,7 @@ twidget* tmatrix::find_at(const tpoint& coordinate,
 	return nullptr;
 }
 
-const twidget* tmatrix::find_at(const tpoint& coordinate,
+const twidget* tmatrix::find_at(const point& coordinate,
 								const bool must_be_active) const
 {
 	assert(get_window());
@@ -926,18 +926,18 @@ void tindependent::request_reduce_height(const unsigned maximum_height)
 	}
 }
 
-tpoint tindependent::calculate_best_size() const
+point tindependent::calculate_best_size() const
 {
 	/*
 	 * The best size is the combination of the greatest width and greatest
 	 * height.
 	 */
-	tpoint result(0, 0);
+	point result(0, 0);
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
 		const tgrid& grid = item(i);
 
-		const tpoint best_size = grid.get_best_size();
+		const point best_size = grid.get_best_size();
 
 		if(best_size.x > result.x) {
 			result.x = best_size.x;
@@ -951,7 +951,7 @@ tpoint tindependent::calculate_best_size() const
 	return result;
 }
 
-void tindependent::place(const tpoint& origin, const tpoint& size)
+void tindependent::place(const point& origin, const point& size)
 {
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
@@ -960,7 +960,7 @@ void tindependent::place(const tpoint& origin, const tpoint& size)
 	}
 }
 
-void tindependent::set_origin(const tpoint& origin)
+void tindependent::set_origin(const point& origin)
 {
 	/*
 	 * Set the origin for every item.
@@ -975,7 +975,7 @@ void tindependent::set_origin(const tpoint& origin)
 	}
 }
 
-twidget* tindependent::find_at(const tpoint& coordinate,
+twidget* tindependent::find_at(const point& coordinate,
 							   const bool must_be_active)
 {
 	assert(get_window());
@@ -989,7 +989,7 @@ twidget* tindependent::find_at(const tpoint& coordinate,
 	return grid.find_at(coordinate, must_be_active);
 }
 
-const twidget* tindependent::find_at(const tpoint& coordinate,
+const twidget* tindependent::find_at(const point& coordinate,
 									 const bool must_be_active) const
 {
 	assert(get_window());

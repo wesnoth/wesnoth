@@ -48,11 +48,11 @@ public:
 
 	virtual void initialise();
 
-	virtual void add_item(const tpoint& size);
+	virtual void add_item(const point& size);
 
-	virtual tpoint get_size() const;
+	virtual point get_size() const;
 
-	virtual tpoint get_origin(const unsigned index) const;
+	virtual point get_origin(const unsigned index) const;
 
 
 	/***** ***** Members. ***** *****/

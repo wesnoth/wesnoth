@@ -79,7 +79,7 @@ int ttree_view::remove_node(ttree_view_node* node)
 
 	siblings.erase(itor);
 
-	if(get_size() != tpoint()) {
+	if(get_size() != point()) {
 		// Don't shrink the width, need to think about a good algorithm to do so.
 		resize_content(0, -node->get_size().y);
 	}
@@ -131,7 +131,7 @@ void ttree_view::resize_content(const int width_modification,
 	if(content_resize_request(width_modification, height_modification, width__modification_pos, height_modification_pos)) {
 
 		// Calculate new size.
-		tpoint size = content_grid()->get_size();
+		point size = content_grid()->get_size();
 		size.x += width_modification;
 		size.y += height_modification;
 

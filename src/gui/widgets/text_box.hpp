@@ -147,7 +147,7 @@ protected:
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
 	/** See @ref twidget::place. */
-	virtual void place(const tpoint& origin, const tpoint& size) override;
+	virtual void place(const point& origin, const point& size) override;
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
@@ -172,7 +172,7 @@ protected:
 	/** Inherited from ttext_. */
 	void delete_selection() override;
 
-	void handle_mouse_selection(tpoint mouse, const bool start_selection);
+	void handle_mouse_selection(point mouse, const bool start_selection);
 
 private:
 	/** The history text for this widget. */
@@ -266,7 +266,7 @@ private:
 
 	void signal_handler_mouse_motion(const event::tevent event,
 									 bool& handled,
-									 const tpoint& coordinate);
+									 const point& coordinate);
 
 	void signal_handler_left_button_down(const event::tevent event,
 										 bool& handled);

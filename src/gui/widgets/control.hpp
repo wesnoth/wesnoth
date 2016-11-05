@@ -111,7 +111,7 @@ public:
 	 *
 	 * @returns                   The size.
 	 */
-	tpoint get_config_minimum_size() const;
+	point get_config_minimum_size() const;
 
 	/**
 	 * Gets the default size as defined in the config.
@@ -120,7 +120,7 @@ public:
 	 *
 	 * @returns                   The size.
 	 */
-	tpoint get_config_default_size() const;
+	point get_config_default_size() const;
 
 	/**
 	 * Gets the best size as defined in the config.
@@ -129,7 +129,7 @@ public:
 	 *
 	 * @returns                   The size.
 	 */
-	tpoint get_config_maximum_size() const;
+	point get_config_maximum_size() const;
 
 	/**
 	 * Returns the number of characters per line.
@@ -178,11 +178,11 @@ public:
 
 protected:
 	/** See @ref twidget::calculate_best_size. */
-	virtual tpoint calculate_best_size() const override;
+	virtual point calculate_best_size() const override;
 
 public:
 	/** See @ref twidget::place. */
-	virtual void place(const tpoint& origin, const tpoint& size) override;
+	virtual void place(const point& origin, const point& size) override;
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
@@ -210,11 +210,11 @@ private:
 
 public:
 	/** See @ref twidget::find_at. */
-	virtual twidget* find_at(const tpoint& coordinate,
+	virtual twidget* find_at(const point& coordinate,
 							 const bool must_be_active) override;
 
 	/** See @ref twidget::find_at. */
-	virtual const twidget* find_at(const tpoint& coordinate,
+	virtual const twidget* find_at(const point& coordinate,
 								   const bool must_be_active) const override;
 
 	/** See @ref twidget::find. */
@@ -440,9 +440,9 @@ protected:
 									  int y_offset) override;
 
 	/** Exposes font::ttext::get_token, for the text label of this control */
-	std::string get_label_token(const gui2::tpoint & position, const char * delimiters = " \n\r\t") const;
+	std::string get_label_token(const gui2::point & position, const char * delimiters = " \n\r\t") const;
 
-	std::string get_label_link(const gui2::tpoint & position) const;
+	std::string get_label_link(const gui2::point & position) const;
 
 private:
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
@@ -468,8 +468,8 @@ private:
 	 *
 	 * @returns                   The best size.
 	 */
-	tpoint get_best_text_size(tpoint minimum_size,
-							  tpoint maximum_size = {0, 0}) const;
+	point get_best_text_size(point minimum_size,
+							  point maximum_size = {0, 0}) const;
 
 	/**
 	 * Contains a helper cache for the rendering.
@@ -497,11 +497,11 @@ private:
 
 	void signal_handler_show_tooltip(const event::tevent event,
 									 bool& handled,
-									 const tpoint& location);
+									 const point& location);
 
 	void signal_handler_show_helptip(const event::tevent event,
 									 bool& handled,
-									 const tpoint& location);
+									 const point& location);
 
 	void signal_handler_notify_remove_tooltip(const event::tevent event,
 											  bool& handled);

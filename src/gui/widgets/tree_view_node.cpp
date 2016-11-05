@@ -147,16 +147,16 @@ ttree_view_node& ttree_view_node::add_child(
 		return *itor;
 	}
 
-	if(tree_view().get_size() == tpoint()) {
+	if(tree_view().get_size() == point()) {
 		return *itor;
 	}
 
 	assert(tree_view().content_grid());
-	const tpoint current_size = tree_view().content_grid()->get_size();
+	const point current_size = tree_view().content_grid()->get_size();
 
 	// Calculate width modification.
 	// This increases tree width if the width of the new node is greater than the current width.
-	tpoint best_size = itor->get_best_size();
+	point best_size = itor->get_best_size();
 	best_size.x += get_indentation_level() * tree_view().indentation_step_size_;
 	const int width_modification = best_size.x > current_size.x ? best_size.x - current_size.x : 0;
 
@@ -164,7 +164,7 @@ ttree_view_node& ttree_view_node::add_child(
 	// For this, we only increase height if the best size of the tree (that is, the size with the new node)
 	// is larger than its current size. This prevents the scrollbar being reserved even when there's obviously
 	// enough visual space.
-	const tpoint tree_best_size = tree_view().get_best_size();
+	const point tree_best_size = tree_view().get_best_size();
 	const int height_modification = tree_best_size.y > current_size.y ? tree_best_size.y - current_size.y : 0;
 	assert(height_modification >= 0);
 
@@ -238,8 +238,8 @@ void ttree_view_node::unfold(const bool recursive)
 
 void ttree_view_node::fold_internal()
 {
-	const tpoint current_size(get_current_size().x, get_unfolded_size().y);
-	const tpoint new_size = get_folded_size();
+	const point current_size(get_current_size().x, get_unfolded_size().y);
+	const point new_size = get_folded_size();
 
 	const int width_modification = std::max(0, new_size.x - current_size.x);
 	const int height_modification = new_size.y - current_size.y;
@@ -255,8 +255,8 @@ void ttree_view_node::fold_internal()
 
 void ttree_view_node::unfold_internal()
 {
-	const tpoint current_size(get_current_size().x, get_folded_size().y);
-	const tpoint new_size = get_unfolded_size();
+	const point current_size(get_current_size().x, get_folded_size().y);
+	const point new_size = get_unfolded_size();
 
 	const int width_modification = std::max(0, new_size.x - current_size.x);
 	const int height_modification = new_size.y - current_size.y;
@@ -297,7 +297,7 @@ private:
 	template <class W, class It>
 	static W* find_at_aux(It begin,
 						  It end,
-						  const tpoint& coordinate,
+						  const point& coordinate,
 						  const bool must_be_active)
 	{
 		for(It it = begin; it != end; ++it) {
@@ -311,7 +311,7 @@ private:
 public:
 	template <class W>
 	static W* find_at(typename utils::tconst_clone<ttree_view_node, W>::reference tree_view_node,
-					  const tpoint& coordinate,
+					  const point& coordinate,
 					  const bool must_be_active)
 	{
 		if(W* widget = tree_view_node.grid_.find_at(coordinate, must_be_active)) {
@@ -329,12 +329,12 @@ public:
 	}
 };
 
-twidget* ttree_view_node::find_at(const tpoint& coordinate, const bool must_be_active)
+twidget* ttree_view_node::find_at(const point& coordinate, const bool must_be_active)
 {
 	return ttree_view_node_implementation::find_at<twidget>(*this, coordinate, must_be_active);
 }
 
-const twidget* ttree_view_node::find_at(const tpoint& coordinate, const bool must_be_active) const
+const twidget* ttree_view_node::find_at(const point& coordinate, const bool must_be_active) const
 {
 	return ttree_view_node_implementation::find_at<const twidget>(*this, coordinate, must_be_active);
 }
@@ -366,7 +366,7 @@ void ttree_view_node::impl_populate_dirty_list(twindow& caller, const std::vecto
 	}
 }
 
-tpoint ttree_view_node::calculate_best_size() const
+point ttree_view_node::calculate_best_size() const
 {
 	return calculate_best_size(-1, tree_view().indentation_step_size_);
 }
@@ -376,13 +376,13 @@ bool ttree_view_node::disable_click_dismiss() const
 	return true;
 }
 
-tpoint ttree_view_node::get_current_size(bool assume_visible) const
+point ttree_view_node::get_current_size(bool assume_visible) const
 {
 	if(!assume_visible && parent_node_ && parent_node_->is_folded()) {
-		return tpoint();
+		return point();
 	}
 
-	tpoint size = get_folded_size();
+	point size = get_folded_size();
 	if(is_folded()) {
 		return size;
 	}
@@ -392,7 +392,7 @@ tpoint ttree_view_node::get_current_size(bool assume_visible) const
 			continue;
 		}
 
-		tpoint node_size = node.get_current_size();
+		point node_size = node.get_current_size();
 
 		size.y += node_size.y;
 		size.x = std::max(size.x, node_size.x);
@@ -401,18 +401,18 @@ tpoint ttree_view_node::get_current_size(bool assume_visible) const
 	return size;
 }
 
-tpoint ttree_view_node::get_folded_size() const
+point ttree_view_node::get_folded_size() const
 {
-	tpoint size = grid_.get_best_size();
+	point size = grid_.get_best_size();
 	if(get_indentation_level() > 1) {
 		size.x += (get_indentation_level() - 1) * tree_view().indentation_step_size_;
 	}
 	return size;
 }
 
-tpoint ttree_view_node::get_unfolded_size() const
+point ttree_view_node::get_unfolded_size() const
 {
-	tpoint size = grid_.get_best_size();
+	point size = grid_.get_best_size();
 	if(get_indentation_level() > 1) {
 		size.x += (get_indentation_level() - 1) * tree_view().indentation_step_size_;
 	}
@@ -422,7 +422,7 @@ tpoint ttree_view_node::get_unfolded_size() const
 			continue;
 		}
 
-		tpoint node_size = node.get_current_size(true);
+		point node_size = node.get_current_size(true);
 
 		size.y += node_size.y;
 		size.x = std::max(size.x, node_size.x);
@@ -431,12 +431,12 @@ tpoint ttree_view_node::get_unfolded_size() const
 	return size;
 }
 
-tpoint ttree_view_node::calculate_best_size(const int indentation_level,
+point ttree_view_node::calculate_best_size(const int indentation_level,
 											const unsigned indentation_step_size) const
 {
 	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
 
-	tpoint best_size = grid_.get_best_size();
+	point best_size = grid_.get_best_size();
 	if(indentation_level > 0) {
 		best_size.x += indentation_level * indentation_step_size;
 	}
@@ -448,7 +448,7 @@ tpoint ttree_view_node::calculate_best_size(const int indentation_level,
 			continue;
 		}
 
-		const tpoint node_size = node.calculate_best_size(indentation_level + 1, indentation_step_size);
+		const point node_size = node.calculate_best_size(indentation_level + 1, indentation_step_size);
 
 		if(!is_folded()) {
 			best_size.y += node_size.y;
@@ -461,7 +461,7 @@ tpoint ttree_view_node::calculate_best_size(const int indentation_level,
 	return best_size;
 }
 
-void ttree_view_node::set_origin(const tpoint& origin)
+void ttree_view_node::set_origin(const point& origin)
 {
 	// Inherited.
 	twidget::set_origin(origin);
@@ -470,7 +470,7 @@ void ttree_view_node::set_origin(const tpoint& origin)
 	place(tree_view().indentation_step_size_, origin, get_size().x);
 }
 
-void ttree_view_node::place(const tpoint& origin, const tpoint& size)
+void ttree_view_node::place(const point& origin, const point& size)
 {
 	// Inherited.
 	twidget::place(origin, size);
@@ -479,14 +479,14 @@ void ttree_view_node::place(const tpoint& origin, const tpoint& size)
 }
 
 unsigned ttree_view_node::place(const unsigned indentation_step_size,
-								tpoint origin,
+								point origin,
 								unsigned width)
 {
 	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
 	DBG_GUI_L << LOG_HEADER << " origin " << origin << ".\n";
 
 	const unsigned offset = origin.y;
-	tpoint best_size = grid_.get_best_size();
+	point best_size = grid_.get_best_size();
 	best_size.x = width;
 
 	grid_.place(origin, best_size);
@@ -510,7 +510,7 @@ unsigned ttree_view_node::place(const unsigned indentation_step_size,
 	}
 
 	// Inherited.
-	twidget::set_size(tpoint(width, origin.y - offset));
+	twidget::set_size(point(width, origin.y - offset));
 
 	DBG_GUI_L << LOG_HEADER << " result " << (origin.y - offset) << ".\n";
 	return origin.y - offset;

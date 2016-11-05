@@ -99,7 +99,7 @@ void tscrollbar_::scroll(const tscroll scroll)
 	fire(event::NOTIFY_MODIFIED, *this, nullptr);
 }
 
-void tscrollbar_::place(const tpoint& origin, const tpoint& size)
+void tscrollbar_::place(const point& origin, const point& size)
 {
 	// Inherited.
 	tcontrol::place(origin, size);
@@ -326,11 +326,11 @@ void tscrollbar_::signal_handler_mouse_enter(const event::tevent event,
 void tscrollbar_::signal_handler_mouse_motion(const event::tevent event,
 											  bool& handled,
 											  bool& halt,
-											  const tpoint& coordinate)
+											  const point& coordinate)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << " at " << coordinate << ".\n";
 
-	tpoint mouse = coordinate;
+	point mouse = coordinate;
 	mouse.x -= get_x();
 	mouse.y -= get_y();
 
@@ -386,7 +386,7 @@ void tscrollbar_::signal_handler_left_button_down(const event::tevent event,
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
-	tpoint mouse = get_mouse_position();
+	point mouse = get_mouse_position();
 	mouse.x -= get_x();
 	mouse.y -= get_y();
 
@@ -419,7 +419,7 @@ void tscrollbar_::signal_handler_left_button_up(const event::tevent event,
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
-	tpoint mouse = get_mouse_position();
+	point mouse = get_mouse_position();
 	mouse.x -= get_x();
 	mouse.y -= get_y();
 

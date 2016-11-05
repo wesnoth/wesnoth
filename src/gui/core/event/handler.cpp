@@ -172,7 +172,7 @@ private:
 	 *
 	 * @param new_size               The new size of the window.
 	 */
-	void video_resize(const tpoint& new_size);
+	void video_resize(const point& new_size);
 
 	/**
 	 * Fires a generic mouse event.
@@ -180,7 +180,7 @@ private:
 	 * @param event                  The event to fire.
 	 * @param position               The position of the mouse.
 	 */
-	void mouse(const tevent event, const tpoint& position);
+	void mouse(const tevent event, const point& position);
 
 	/**
 	 * Fires a mouse button up event.
@@ -189,7 +189,7 @@ private:
 	 * @param button                 The SDL id of the button that caused the
 	 *                               event.
 	 */
-	void mouse_button_up(const tpoint& position, const Uint8 button);
+	void mouse_button_up(const point& position, const Uint8 button);
 
 	/**
 	 * Fires a mouse button down event.
@@ -198,7 +198,7 @@ private:
 	 * @param button                 The SDL id of the button that caused the
 	 *                               event.
 	 */
-	void mouse_button_down(const tpoint& position, const Uint8 button);
+	void mouse_button_down(const point& position, const Uint8 button);
 
 	/**
 	 * Fires a mouse wheel event.
@@ -207,7 +207,7 @@ private:
 	 * @param scrollx                The amount of horizontal scrolling.
 	 * @param scrolly                The amount of vertical scrolling.
 	 */
-	void mouse_wheel(const tpoint& position, int scrollx, int scrolly);
+	void mouse_wheel(const point& position, int scrollx, int scrolly);
 
 	/**
 	 * Gets the dispatcher that wants to receive the keyboard input.
@@ -538,7 +538,7 @@ void thandler::draw(const bool force)
 	}
 }
 
-void thandler::video_resize(const tpoint& new_size)
+void thandler::video_resize(const point& new_size)
 {
 	DBG_GUI_E << "Firing: " << SDL_VIDEO_RESIZE << ".\n";
 
@@ -550,7 +550,7 @@ void thandler::video_resize(const tpoint& new_size)
 	}
 }
 
-void thandler::mouse(const tevent event, const tpoint& position)
+void thandler::mouse(const tevent event, const point& position)
 {
 	DBG_GUI_E << "Firing: " << event << ".\n";
 
@@ -581,7 +581,7 @@ void thandler::mouse(const tevent event, const tpoint& position)
 	}
 }
 
-void thandler::mouse_button_up(const tpoint& position, const Uint8 button)
+void thandler::mouse_button_up(const point& position, const Uint8 button)
 {
 	switch(button) {
 		case SDL_BUTTON_LEFT:
@@ -604,7 +604,7 @@ void thandler::mouse_button_up(const tpoint& position, const Uint8 button)
 	}
 }
 
-void thandler::mouse_button_down(const tpoint& position, const Uint8 button)
+void thandler::mouse_button_down(const point& position, const Uint8 button)
 {
 	// The wheel buttons generate and up and down event we handle the
 	// up event so ignore the mouse if it's a down event. Handle it
@@ -634,7 +634,7 @@ void thandler::mouse_button_down(const tpoint& position, const Uint8 button)
 	}
 }
 
-void thandler::mouse_wheel(const tpoint& position, int x, int y)
+void thandler::mouse_wheel(const point& position, int x, int y)
 {
 	if(x > 0) {
 		mouse(SDL_WHEEL_RIGHT, position);
@@ -792,7 +792,7 @@ void disconnect_dispatcher(tdispatcher* dispatcher)
 
 void init_mouse_location()
 {
-	tpoint mouse = get_mouse_position();
+	point mouse = get_mouse_position();
 
 	SDL_Event event;
 	event.type = SDL_MOUSEMOTION;
