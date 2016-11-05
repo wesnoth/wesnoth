@@ -118,8 +118,8 @@ namespace {
 		"flag_rgb", "language_name", "image", "image_icon"
 	};
 	//Sort the array to make set_difference below work.
-	struct t_internalized_attrs_sorter {
-		t_internalized_attrs_sorter()
+	struct internalized_attrs_sorter {
+		internalized_attrs_sorter()
 		{
 			std::sort(std::begin(internalized_attrs), std::end(internalized_attrs));
 		}

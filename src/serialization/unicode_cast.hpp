@@ -60,16 +60,16 @@ typename ucs4_convert_impl::enableif<TD, typename TS::value_type>::type unicode_
 	using namespace ucs4_convert_impl;
 	typedef typename convert_impl<typename TD::value_type>::type impl_writer;
 	typedef typename convert_impl<typename TS::value_type>::type impl_reader;
-	typedef typename std::back_insert_iterator<TD> t_outputitor;
-	typedef typename TS::const_iterator t_inputitor;
+	typedef typename std::back_insert_iterator<TD> output_itor;
+	typedef typename TS::const_iterator input_itor;
 
 	TD res;
 	try
 	{
-		t_outputitor inserter(res);
-		iteratorwriter<t_outputitor> dst(inserter);
-		t_inputitor i1 = source.begin();
-		t_inputitor i2 = source.end();
+		output_itor inserter(res);
+		iteratorwriter<output_itor> dst(inserter);
+		input_itor i1 = source.begin();
+		input_itor i2 = source.end();
 
 		while(i1 != i2) {
 			impl_writer::write (dst, impl_reader::read(i1, i2));
@@ -95,13 +95,13 @@ TD unicode_cast(ucs4::char_t onechar)
 	using namespace ucs4_convert_impl;
 	typedef typename convert_impl<typename TD::value_type>::type impl_writer;
 	typedef convert_impl<ucs4::char_t>::type impl_reader;
-	typedef typename std::back_insert_iterator<TD> t_outputitor;
+	typedef typename std::back_insert_iterator<TD> output_itor;
 
 	TD res;
 	try
 	{
-		t_outputitor inserter(res);
-		iteratorwriter<t_outputitor> dst(inserter);
+		output_itor inserter(res);
+		iteratorwriter<output_itor> dst(inserter);
 		impl_writer::write (dst, onechar);
 	}
 	catch(utf8::invalid_utf8_exception&)

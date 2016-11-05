@@ -49,18 +49,18 @@ static std::string best_str(bool best) {
 	return "<format>color='" + color_policy + "' text='" + lang_policy + "'</format>";
 }
 
-typedef t_translation::ter_list::const_iterator t_it;
+typedef t_translation::ter_list::const_iterator ter_iter;
 // Gets an english desription of a terrain ter_list alias behavior: "Best of cave, hills", "Worst of Swamp, Forest" etc.
-static std::string print_behavior_description(t_it start, t_it end, const tdata_cache & tdata, bool first_level = true, bool begin_best = true)
+static std::string print_behavior_description(ter_iter start, ter_iter end, const tdata_cache & tdata, bool first_level = true, bool begin_best = true)
 {
 
 	if (start == end) return "";
 	if (*start == t_translation::MINUS || *start == t_translation::PLUS) return print_behavior_description(start+1, end, tdata, first_level, *start == t_translation::PLUS); //absorb any leading mode changes by calling again, with a new default value begin_best.
 
-	boost::optional<t_it> last_change_pos;
+	boost::optional<ter_iter> last_change_pos;
 
 	bool best = begin_best;
-	for (t_it i = start; i != end; ++i) {
+	for (ter_iter i = start; i != end; ++i) {
 		if ((best && *i == t_translation::MINUS) || (!best && *i == t_translation::PLUS)) {
 			best = !best;
 			last_change_pos = i;
@@ -71,7 +71,7 @@ static std::string print_behavior_description(t_it start, t_it end, const tdata_
 
 	if (!last_change_pos) {
 		std::vector<std::string> names;
-		for (t_it i = start; i != end; ++i) {
+		for (ter_iter i = start; i != end; ++i) {
 			const terrain_type tt = tdata->get_terrain_info(*i);
 			if (!tt.editor_name().empty())
 				names.push_back(tt.editor_name());
@@ -91,7 +91,7 @@ static std::string print_behavior_description(t_it start, t_it end, const tdata_
 		if (!first_level) ss << " )";
 	} else {
 		std::vector<std::string> names;
-		for (t_it i = *last_change_pos+1; i != end; ++i) {
+		for (ter_iter i = *last_change_pos+1; i != end; ++i) {
 			const terrain_type tt = tdata->get_terrain_info(*i);
 			if (!tt.editor_name().empty())
 				names.push_back(tt.editor_name());

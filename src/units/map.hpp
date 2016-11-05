@@ -99,7 +99,7 @@ class unit_map {
 		}
 
 		unit_ptr unit;
-		mutable n_ref_counter::t_ref_counter<signed int> ref_count;
+		mutable n_ref_counter::ref_counter<signed int> ref_count;
 	};
 
 	///Map of underlying_id to unit and a reference counter. Dead units have a unit pointer equal to nullptr.
