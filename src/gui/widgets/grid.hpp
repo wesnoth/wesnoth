@@ -467,6 +467,9 @@ private:
 	/** The grow factor for all columns. */
 	std::vector<unsigned> col_grow_factor_;
 
+	/** Where the grid is placed. */
+	tpoint origin_;
+
 	/**
 	 * The child items.
 	 *

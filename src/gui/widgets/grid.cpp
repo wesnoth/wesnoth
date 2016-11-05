@@ -272,7 +272,8 @@ void tgrid::request_reduce_width(const unsigned maximum_width)
 		}
 	}
 
-	set_layout_size(calculate_best_size());
+	set_layout_size(size);
+	layout(origin_);
 }
 
 void tgrid::demand_reduce_width(const unsigned /*maximum_width*/)
@@ -360,12 +361,11 @@ void tgrid::request_reduce_height(const unsigned maximum_height)
 		}
 	}
 
-	size = calculate_best_size();
-
 	DBG_GUI_L << LOG_HEADER << " Requested maximum " << maximum_height
 			  << " resulting height " << size.y << ".\n";
 
 	set_layout_size(size);
+	layout(origin_);
 }
 
 void tgrid::demand_reduce_height(const unsigned /*maximum_height*/)
@@ -444,6 +444,8 @@ void tgrid::place(const tpoint& origin, const tpoint& size)
 	/***** INIT *****/
 
 	twidget::place(origin, size);
+
+	origin_ = origin;
 
 	if(!rows_ || !cols_) {
 		return;
@@ -546,6 +548,8 @@ void tgrid::place(const tpoint& origin, const tpoint& size)
 
 void tgrid::set_origin(const tpoint& origin)
 {
+	origin_ = origin;
+
 	const tpoint movement = {origin.x - get_x(), origin.y - get_y()};
 
 	// Inherited.
