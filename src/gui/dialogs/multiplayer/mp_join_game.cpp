@@ -52,11 +52,11 @@ namespace gui2
 
 REGISTER_DIALOG(mp_join_game)
 
-tmp_join_game::tmp_join_game(saved_game& state, lobby_info& lobby_info, twesnothd_connection& wesnothd_connection, const bool first_scenario, const bool observe_game)
+tmp_join_game::tmp_join_game(saved_game& state, lobby_info& lobby_info, wesnothd_connection& connection, const bool first_scenario, const bool observe_game)
 	: level_()
 	, state_(state)
 	, lobby_info_(lobby_info)
-	, wesnothd_connection_(wesnothd_connection)
+	, wesnothd_connection_(connection)
 	, update_timer_(0)
 	, first_scenario_(first_scenario)
 	, observe_game_(observe_game)

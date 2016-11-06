@@ -182,10 +182,10 @@ SDL_Color chat::color_message(const msg& message) {
 	return c;
 }
 
-ui::ui(CVideo& video, twesnothd_connection* wesnothd_connection, const std::string& title, const config& cfg, chat& c, config& gamelist) :
+ui::ui(CVideo& video, wesnothd_connection* connection, const std::string& title, const config& cfg, chat& c, config& gamelist) :
 	gui::widget(video),
 	video_(video),
-	wesnothd_connection_(wesnothd_connection),
+	wesnothd_connection_(connection),
 	initialized_(false),
 	gamelist_initialized_(false),
 

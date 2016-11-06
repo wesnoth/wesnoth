@@ -353,7 +353,7 @@ LEVEL_RESULT campaign_controller::play_game()
 		if (mp_info_ && !mp_info_->is_host) {
 			// Opens mp::connect dialog to get a new gamestate.
 			mp::ui::result wait_res = mp::goto_mp_wait(video_, state_,
-				game_config_, &mp_info_->wesnothd_connection, res == LEVEL_RESULT::OBSERVER_END);
+				game_config_, &mp_info_->connection, res == LEVEL_RESULT::OBSERVER_END);
 			if (wait_res == mp::ui::QUIT) {
 				return LEVEL_RESULT::QUIT;
 			}
@@ -377,7 +377,7 @@ LEVEL_RESULT campaign_controller::play_game()
 				if (!connect_engine->can_start_game() || (game_config::debug && game_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER)) {
 					// Opens mp::connect dialog to allow users to make an adjustments for scenario.
 					mp::ui::result connect_res = mp::goto_mp_connect(video_,
-						*connect_engine, game_config_, mp_info_ ? &mp_info_->wesnothd_connection : nullptr, state_.mp_settings().name);
+						*connect_engine, game_config_, mp_info_ ? &mp_info_->connection : nullptr, state_.mp_settings().name);
 					if (connect_res == mp::ui::QUIT) {
 						return LEVEL_RESULT::QUIT;
 					}

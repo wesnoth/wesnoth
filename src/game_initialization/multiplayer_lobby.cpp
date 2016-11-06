@@ -1025,8 +1025,8 @@ bool lobby::lobby_sorter::less(int column, const gui::menu::item& row1, const gu
 	return basic_sorter::less(column,row1,row2);
 }
 
-lobby::lobby(CVideo& v, twesnothd_connection* wesnothd_connection, const config& cfg, chat& c, config& gamelist, const std::vector<std::string> & installed_addons) :
-	mp::ui(v, wesnothd_connection, _("Game Lobby"), cfg, c, gamelist),
+lobby::lobby(CVideo& v, wesnothd_connection* connection, const config& cfg, chat& c, config& gamelist, const std::vector<std::string> & installed_addons) :
+	mp::ui(v, connection, _("Game Lobby"), cfg, c, gamelist),
 
 	current_turn(0),
 	game_vacant_slots_(),

@@ -34,7 +34,7 @@ class ttree_view_node;
 class tmp_join_game : public tdialog, private plugin_executor
 {
 public:
-	tmp_join_game(saved_game& state, lobby_info& lobby_info, twesnothd_connection& wesnothd_connection,
+	tmp_join_game(saved_game& state, lobby_info& lobby_info, wesnothd_connection& connection,
 		const bool first_scenario = true, const bool observe_game = false);
 
 	~tmp_join_game();
@@ -70,7 +70,7 @@ private:
 
 	lobby_info& lobby_info_;
 
-	twesnothd_connection& wesnothd_connection_;
+	wesnothd_connection& wesnothd_connection_;
 
 	size_t update_timer_;
 

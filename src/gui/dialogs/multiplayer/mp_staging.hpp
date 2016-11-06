@@ -35,7 +35,7 @@ class ttree_view_node;
 class tmp_staging : public tdialog, private plugin_executor
 {
 public:
-	tmp_staging(ng::connect_engine& connect_engine, lobby_info& lobby_info, twesnothd_connection* wesnothd_connection = nullptr);
+	tmp_staging(ng::connect_engine& connect_engine, lobby_info& lobby_info, wesnothd_connection* connection = nullptr);
 
 	~tmp_staging();
 
@@ -78,7 +78,7 @@ private:
 
 	lobby_info& lobby_info_;
 
-	twesnothd_connection* wesnothd_connection_;
+	wesnothd_connection* wesnothd_connection_;
 
 	size_t update_timer_;
 

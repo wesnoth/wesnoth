@@ -118,36 +118,36 @@ void tnetwork_transmission::wesnothd_dialog(CVideo& video, gui2::tnetwork_transm
 
 struct read_wesnothd_connection_data : public gui2::tnetwork_transmission::connection_data
 {
-	read_wesnothd_connection_data(twesnothd_connection& conn) : conn_(conn) {}
+	read_wesnothd_connection_data(wesnothd_connection& conn) : conn_(conn) {}
 	size_t total() override { return conn_.bytes_to_read(); }
 	virtual size_t current()  override { return conn_.bytes_read(); }
 	virtual bool finished() override { return conn_.has_data_received(); }
 	virtual void cancel() override { }
 	virtual void poll() override { conn_.poll(); }
-	twesnothd_connection& conn_;
+	wesnothd_connection& conn_;
 };
 
-bool tnetwork_transmission::wesnothd_receive_dialog(CVideo& video, const std::string& msg, config& cfg, twesnothd_connection& wesnothd_connection)
+bool tnetwork_transmission::wesnothd_receive_dialog(CVideo& video, const std::string& msg, config& cfg, wesnothd_connection& connection)
 {
 	assert(!msg.empty());
-	read_wesnothd_connection_data gui_data(wesnothd_connection);
+	read_wesnothd_connection_data gui_data(connection);
 	wesnothd_dialog(video, gui_data, msg);
-	return wesnothd_connection.receive_data(cfg);
+	return connection.receive_data(cfg);
 }
 
 struct connect_wesnothd_connection_data : public gui2::tnetwork_transmission::connection_data
 {
-	connect_wesnothd_connection_data(twesnothd_connection& conn) : conn_(conn) {}
+	connect_wesnothd_connection_data(wesnothd_connection& conn) : conn_(conn) {}
 	virtual bool finished() override { return conn_.handshake_finished(); }
 	virtual void cancel() override { }
 	virtual void poll() override { conn_.poll(); }
-	twesnothd_connection& conn_;
+	wesnothd_connection& conn_;
 };
 
-std::unique_ptr<twesnothd_connection> tnetwork_transmission::wesnothd_connect_dialog(CVideo& video, const std::string& msg, const std::string& hostname, int port)
+std::unique_ptr<wesnothd_connection> tnetwork_transmission::wesnothd_connect_dialog(CVideo& video, const std::string& msg, const std::string& hostname, int port)
 {
 	assert(!msg.empty());
-	std::unique_ptr<twesnothd_connection> res(new twesnothd_connection(hostname, std::to_string(port)));
+	std::unique_ptr<wesnothd_connection> res(new wesnothd_connection(hostname, std::to_string(port)));
 	connect_wesnothd_connection_data gui_data(*res);
 	wesnothd_dialog(video, gui_data, msg);
 	return res;

@@ -22,7 +22,7 @@
 #include <string>
 
 class config;
-class twesnothd_connection;
+class wesnothd_connection;
 
 namespace gui2
 {
@@ -74,7 +74,7 @@ public:
 
 	void set_lobby_info(lobby_info& i) { lobby_info_ = &i; }
 
-	void set_wesnothd_connection(twesnothd_connection& c) { wesnothd_connection_ = &c; }
+	void set_wesnothd_connection(wesnothd_connection& c) { wesnothd_connection_ = &c; }
 
 protected:
 	/**
@@ -129,7 +129,7 @@ private:
 
 	class lobby_info& lobby_info() { return *lobby_info_; }
 
-	twesnothd_connection* wesnothd_connection_;
+	wesnothd_connection* wesnothd_connection_;
 
 	/** See @ref tcontrol::get_control_type. */
 	virtual const std::string& get_control_type() const override;

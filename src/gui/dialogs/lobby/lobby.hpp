@@ -28,7 +28,7 @@ class display;
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 #include "gui/widgets/list.hpp"
 #endif
-class twesnothd_connection;
+class wesnothd_connection;
 namespace gui2
 {
 
@@ -70,7 +70,7 @@ struct tplayer_list
 class tlobby_main : public tdialog, public quit_confirmation, private plugin_executor
 {
 public:
-	tlobby_main(const config& game_config, lobby_info& info, twesnothd_connection &wesnothd_connection);
+	tlobby_main(const config& game_config, lobby_info& info, wesnothd_connection &connection);
 
 	~tlobby_main();
 
@@ -208,7 +208,7 @@ private:
 
 	bool gamelist_diff_update_;
 
-	twesnothd_connection &wesnothd_connection_;
+	wesnothd_connection &wesnothd_connection_;
 
 	/** Timer for updating the lobby. */
 	size_t lobby_update_timer_;

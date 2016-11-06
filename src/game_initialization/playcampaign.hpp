@@ -34,15 +34,15 @@ typedef std::shared_ptr<terrain_type_data> tdata_cache;
 
 class config;
 
-class twesnothd_connection;
+class wesnothd_connection;
 struct mp_campaign_info
 {
-	mp_campaign_info(twesnothd_connection& wdc)
+	mp_campaign_info(wesnothd_connection& wdc)
 		: connected_players()
 		, is_host()
 		, skip_replay_until_turn(0)
 		, skip_replay_blindfolded(false)
-		, wesnothd_connection(wdc)
+		, connection(wdc)
 	{
 
 	}
@@ -51,7 +51,7 @@ struct mp_campaign_info
 	bool is_host;
 	int skip_replay_until_turn;
 	bool skip_replay_blindfolded;
-	twesnothd_connection& wesnothd_connection;
+	wesnothd_connection& connection;
 };
 
 class campaign_controller

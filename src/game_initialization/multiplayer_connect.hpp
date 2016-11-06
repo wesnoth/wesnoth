@@ -92,7 +92,7 @@ public:
 
 	typedef std::vector<side> side_list;
 
-	connect(CVideo& v, twesnothd_connection* wesnothd_connection, const std::string& game_name,
+	connect(CVideo& v, wesnothd_connection* connection, const std::string& game_name,
 		const config& game_config, chat& c, config& gamelist,
 		ng::connect_engine& engine);
 	~connect();

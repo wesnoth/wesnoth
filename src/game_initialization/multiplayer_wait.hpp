@@ -25,7 +25,7 @@ namespace mp {
 class wait : public ui
 {
 public:
-	wait(CVideo& v, twesnothd_connection* wesnothd_connection, const config& cfg, saved_game& state, chat& c,
+	wait(CVideo& v, wesnothd_connection* connection, const config& cfg, saved_game& state, chat& c,
 		config& gamelist, const bool first_scenario = true);
 	~wait();
 	virtual void process_event();

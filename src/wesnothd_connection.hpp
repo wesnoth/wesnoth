@@ -37,7 +37,7 @@
 class config;
 
 /** A class that represents a TCP/IP connection to the wesnothd server. */
-class twesnothd_connection : boost::noncopyable
+class wesnothd_connection : boost::noncopyable
 {
 public:
 	using error = wesnothd_connection_error;
@@ -48,7 +48,7 @@ public:
 	 * @param host    Name of the host to connect to
 	 * @param service Service identifier such as "80" or "http"
 	 */
-	twesnothd_connection(const std::string& host, const std::string& service);
+	wesnothd_connection(const std::string& host, const std::string& service);
 
 	void send_data(const configr_of& request);
 

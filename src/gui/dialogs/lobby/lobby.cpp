@@ -122,7 +122,7 @@ bool tlobby_main::logout_prompt()
 	return show_prompt(_("Do you really want to log out?"));
 }
 
-tlobby_main::tlobby_main(const config& game_config, lobby_info& info, twesnothd_connection &wesnothd_connection)
+tlobby_main::tlobby_main(const config& game_config, lobby_info& info, wesnothd_connection &connection)
 	: quit_confirmation(&tlobby_main::logout_prompt)
 	, game_config_(game_config)
 	, gamelistbox_(nullptr)
@@ -140,7 +140,7 @@ tlobby_main::tlobby_main(const config& game_config, lobby_info& info, twesnothd_
 	, gamelist_dirty_(false)
 	, last_gamelist_update_(0)
 	, gamelist_diff_update_(true)
-	, wesnothd_connection_(wesnothd_connection)
+	, wesnothd_connection_(connection)
 	, lobby_update_timer_(0)
 	, gamelist_id_at_row_()
 	, delay_playerlist_update_(false)

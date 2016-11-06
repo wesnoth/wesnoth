@@ -281,7 +281,7 @@ void playmp_controller::wait_for_upload()
 	while(true) {
 		try {
 			const bool  res = gui2::tnetwork_transmission::wesnothd_receive_dialog(
-				gui_->video(), "next scenario", cfg, mp_info_->wesnothd_connection);
+				gui_->video(), "next scenario", cfg, mp_info_->connection);
 
 			if(res) {
 				if (turn_data_.process_network_data_from_reader() == turn_info::PROCESS_END_LINGER) {
@@ -483,13 +483,13 @@ bool playmp_controller::is_networked_mp() const
 void playmp_controller::send_to_wesnothd(const config& cfg, const std::string&) const
 {
 	if (mp_info_ != nullptr) {
-		mp_info_->wesnothd_connection.send_data(cfg);
+		mp_info_->connection.send_data(cfg);
 	}
 }
 bool playmp_controller::recieve_from_wesnothd(config& cfg) const
 {
 	if (mp_info_ != nullptr) {
-		return mp_info_->wesnothd_connection.receive_data(cfg);
+		return mp_info_->connection.receive_data(cfg);
 	}
 	else {
 		return false;

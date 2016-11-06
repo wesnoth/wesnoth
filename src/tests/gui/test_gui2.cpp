@@ -766,9 +766,9 @@ struct twrapper<gui2::tgamestate_inspector>
 
 struct twesnothd_connection_init
 {
-	twesnothd_connection_init(twesnothd_connection& conn)
+	twesnothd_connection_init(wesnothd_connection& conn)
 	{
-		//Swallow the 'cannot connect' execption so that the wesnothd_connection object doesn't throw while we test the dialog.
+		//Swallow the 'cannot connect' execption so that the connection object doesn't throw while we test the dialog.
 		try 
 		{
 			while (true) {
@@ -786,16 +786,16 @@ template<>
 struct twrapper<gui2::tlobby_main>
 {
 	config game_config;
-	twesnothd_connection wesnothd_connection;
+	wesnothd_connection connection;
 	twesnothd_connection_init wesnothd_connection_init;
 	std::vector<std::string> installed_addons;
 	lobby_info li;
-	twrapper() : wesnothd_connection("", ""), wesnothd_connection_init(wesnothd_connection), li(game_config, installed_addons)
+	twrapper() : connection("", ""), wesnothd_connection_init(connection), li(game_config, installed_addons)
 	{
 	}
 	gui2::tlobby_main* create()
 	{
-		return new gui2::tlobby_main(game_config, li, wesnothd_connection);
+		return new gui2::tlobby_main(game_config, li, connection);
 	}
 };
 
@@ -812,13 +812,13 @@ struct twrapper<gui2::tlobby_player_info>
 {
 	config c;
 	fake_chat_handler ch;
-	twesnothd_connection wesnothd_connection;
+	wesnothd_connection connection;
 	twesnothd_connection_init wesnothd_connection_init;
 	user_info ui;
 	std::vector<std::string> installed_addons;
 	lobby_info li;
 	twrapper()
-		: wesnothd_connection("", ""), wesnothd_connection_init(wesnothd_connection)
+		: connection("", ""), wesnothd_connection_init(connection)
 		, ui(c), li(c, installed_addons)
 	{
 	}

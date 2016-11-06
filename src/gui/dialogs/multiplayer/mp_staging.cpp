@@ -48,11 +48,11 @@ namespace gui2
 
 REGISTER_DIALOG(mp_staging)
 
-tmp_staging::tmp_staging(ng::connect_engine& connect_engine, lobby_info& lobby_info, twesnothd_connection* wesnothd_connection)
+tmp_staging::tmp_staging(ng::connect_engine& connect_engine, lobby_info& lobby_info, wesnothd_connection* connection)
 	: connect_engine_(connect_engine)
 	, ai_algorithms_(ai::configuration::get_available_ais())
 	, lobby_info_(lobby_info)
-	, wesnothd_connection_(wesnothd_connection)
+	, wesnothd_connection_(connection)
 	, update_timer_(0)
 	, state_changed_(false)
 	, team_tree_map_()

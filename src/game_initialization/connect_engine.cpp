@@ -350,14 +350,14 @@ bool connect_engine::can_start_game() const
 void connect_engine::send_to_server(const config& cfg) const
 {
 	if (campaign_info_) {
-		campaign_info_->wesnothd_connection.send_data(cfg);
+		campaign_info_->connection.send_data(cfg);
 	}
 }
 
 bool connect_engine::receive_from_server(config& dst) const
 {
 	if (campaign_info_) {
-		return campaign_info_->wesnothd_connection.receive_data(dst);
+		return campaign_info_->connection.receive_data(dst);
 	}
 	else {
 		return false;

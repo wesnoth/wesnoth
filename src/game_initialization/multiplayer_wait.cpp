@@ -56,9 +56,9 @@ static lg::log_domain log_mp("mp/main");
 
 namespace mp {
 
-wait::wait(CVideo& v, twesnothd_connection* wesnothd_connection, const config& cfg, saved_game& state,
+wait::wait(CVideo& v, wesnothd_connection* connection, const config& cfg, saved_game& state,
 	mp::chat& c, config& gamelist, const bool first_scenario) :
-	ui(v, wesnothd_connection, _("Game Lobby"), cfg, c, gamelist),
+	ui(v, connection, _("Game Lobby"), cfg, c, gamelist),
 	cancel_button_(video(), first_scenario ? _("Cancel") : _("Quit")),
 	start_label_(video(), _("Waiting for game to start..."), font::SIZE_SMALL, font::LOBBY_COLOR),
 	game_menu_(video(), std::vector<std::string>(), false, -1, -1, nullptr, &gui::menu::bluebg_style),
