@@ -134,7 +134,7 @@ public:
 	/**
 	 * Returns the number of characters per line.
 	 *
-	 * This value is used to call @ref ttext::set_characters_per_line
+	 * This value is used to call @ref pango_text::set_characters_per_line
 	 * (indirectly).
 	 *
 	 * @returns                   The characters per line. This implementation
@@ -146,7 +146,7 @@ public:
 	 * Returns whether the label should be link_aware, in
 	 * in rendering and in searching for links with get_link.
 	 *
-	 * This value is used to call @ref ttext::set_link_aware
+	 * This value is used to call @ref pango_text::set_link_aware
 	 * (indirectly).
 	 *
 	 * @returns		      The link aware status. This impl always
@@ -157,7 +157,7 @@ public:
 	/**
 	 * Returns the color string to be used with links.
 	 *
-	 * This value is used to call @ref ttext::set_link_color
+	 * This value is used to call @ref pango_text::set_link_color
 	 * (indirectly).
 	 *
 	 * @returns		      The link color string. This impl returns "#ffff00".
@@ -439,7 +439,7 @@ protected:
 									  int x_offset,
 									  int y_offset) override;
 
-	/** Exposes font::ttext::get_token, for the text label of this control */
+	/** Exposes font::pango_text::get_token, for the text label of this control */
 	std::string get_label_token(const gui2::point & position, const char * delimiters = " \n\r\t") const;
 
 	std::string get_label_link(const gui2::point & position) const;
@@ -474,7 +474,7 @@ private:
 	/**
 	 * Contains a helper cache for the rendering.
 	 *
-	 * Creating a ttext object is quite expensive and is done on various
+	 * Creating a pango_text object is quite expensive and is done on various
 	 * occasions so it's cached here.
 	 *
 	 * @todo Maybe if still too slow we might also copy this cache to the
@@ -482,7 +482,7 @@ private:
 	 * Unfortunately that would make the dependency between the classes bigger
 	 * as wanted.
 	 */
-	mutable font::ttext renderer_;
+	mutable font::pango_text renderer_;
 
 	/** The maximum width for the text in a control. */
 	int text_maximum_width_;

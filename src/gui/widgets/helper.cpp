@@ -50,23 +50,23 @@ SDL_Rect create_rect(const point& origin, const point& size)
 	return sdl::create_rect(origin.x, origin.y, size.x, size.y);
 }
 
-font::ttext::FONT_STYLE decode_font_style(const std::string& style)
+font::pango_text::FONT_STYLE decode_font_style(const std::string& style)
 {
-	static std::map<std::string, font::ttext::FONT_STYLE> font_style_map = {
-		{"normal",    font::ttext::STYLE_NORMAL},
-		{"bold",      font::ttext::STYLE_BOLD},
-		{"italic",    font::ttext::STYLE_ITALIC},
-		{"underline", font::ttext::STYLE_UNDERLINE},
-		{"light",     font::ttext::STYLE_LIGHT},
+	static std::map<std::string, font::pango_text::FONT_STYLE> font_style_map = {
+		{"normal",    font::pango_text::STYLE_NORMAL},
+		{"bold",      font::pango_text::STYLE_BOLD},
+		{"italic",    font::pango_text::STYLE_ITALIC},
+		{"underline", font::pango_text::STYLE_UNDERLINE},
+		{"light",     font::pango_text::STYLE_LIGHT},
 	};
 
 	if(style.empty()) {
-		return font::ttext::STYLE_NORMAL;
+		return font::pango_text::STYLE_NORMAL;
 	}
 
 	if(font_style_map.find(style) == font_style_map.end()) {
 		ERR_GUI_G << "Unknown style '" << style << "' using 'normal' instead." << std::endl;
-		return font::ttext::STYLE_NORMAL;
+		return font::pango_text::STYLE_NORMAL;
 	}
 
 	return font_style_map[style];

@@ -59,7 +59,7 @@ struct tresolution_definition_
 	unsigned text_extra_height;
 	unsigned text_font_size;
 	font::family_class text_font_family;
-	font::ttext::FONT_STYLE text_font_style;
+	font::pango_text::FONT_STYLE text_font_style;
 
 	std::vector<tstate_definition> state;
 };

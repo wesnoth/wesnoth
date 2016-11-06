@@ -2870,10 +2870,10 @@ void display::refresh_report(const std::string& report_name, const config * new_
 			if (used_ellipsis) goto skip_element;
 
 			// Draw a text element.
-			font::ttext text;
+			font::pango_text text;
 			if (item->font_rgb_set()) {
 				// font_rgb() has no alpha channel and uses a 0x00RRGGBB
-				// layout instead of 0xRRGGBBAA which is what ttext expects,
+				// layout instead of 0xRRGGBBAA which is what pango_text expects,
 				// so shift the value to the left and add fully-opaque alpha.
 				text.set_foreground_color((item->font_rgb() << 8) + 0xFF);
 			}

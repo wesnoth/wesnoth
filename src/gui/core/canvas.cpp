@@ -1174,7 +1174,7 @@ timage::tresize_mode timage::get_resize_mode(const std::string& resize_mode)
 /***** ***** ***** ***** ***** TEXT ***** ***** ***** ***** *****/
 
 /** Definition of a text shape. */
-class ttext : public tcanvas::tshape
+class text_shape : public tcanvas::tshape
 {
 public:
 	/**
@@ -1184,7 +1184,7 @@ public:
 	 *                            http://www.wesnoth.org/wiki/GUICanvasWML#Text
 	 *                            for more information.
 	 */
-	explicit ttext(const config& cfg);
+	explicit text_shape(const config& cfg);
 
 	/** Implement shape::draw(). */
 	void draw(surface& canvas,
@@ -1204,7 +1204,7 @@ private:
 	unsigned font_size_;
 
 	/** The style of the text. */
-	font::ttext::FONT_STYLE font_style_;
+	font::pango_text::FONT_STYLE font_style_;
 
 	/** The alignment of the text. */
 	tformula<PangoAlignment> text_alignment_;
@@ -1286,7 +1286,7 @@ private:
  * @end{parent}{name="generic/state/draw/"}
  */
 
-ttext::ttext(const config& cfg)
+text_shape::text_shape(const config& cfg)
 	: x_(cfg["x"])
 	, y_(cfg["y"])
 	, w_(cfg["w"])
@@ -1312,7 +1312,7 @@ ttext::ttext(const config& cfg)
 	}
 }
 
-void ttext::draw(surface& canvas,
+void text_shape::draw(surface& canvas,
 				 SDL_Renderer* /*renderer*/,
 				 const game_logic::map_formula_callable& variables)
 {
@@ -1328,7 +1328,7 @@ void ttext::draw(surface& canvas,
 		return;
 	}
 
-	static font::ttext text_renderer;
+	static font::pango_text text_renderer;
 
 	text_renderer.set_link_aware(link_aware_(variables))
 			.set_link_color(link_color_(variables));
@@ -1500,7 +1500,7 @@ void tcanvas::parse_cfg(const config& cfg)
 		} else if(type == "image") {
 			shapes_.push_back(std::make_shared<timage>(data));
 		} else if(type == "text") {
-			shapes_.push_back(std::make_shared<ttext>(data));
+			shapes_.push_back(std::make_shared<text_shape>(data));
 		} else if(type == "pre_commit") {
 
 			/* note this should get split if more preprocessing is used. */

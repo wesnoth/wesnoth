@@ -217,7 +217,7 @@ protected:
 		text_.set_font_size(font_size);
 	}
 
-	void set_font_style(const font::ttext::FONT_STYLE font_style)
+	void set_font_style(const font::pango_text::FONT_STYLE font_style)
 	{
 		text_.set_font_style(font_style);
 	}
@@ -280,7 +280,7 @@ private:
 	tstate state_;
 
 	/** The text entered in the widget. */
-	font::ttext text_;
+	font::pango_text text_;
 
 	/** Start of the selected text. */
 	size_t selection_start_;

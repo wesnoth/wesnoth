@@ -43,7 +43,7 @@ inline std::string escape_text(const std::string& text)
 	return result;
 }
 
-// Escape only the andpersands. This is used by ttext to try to recover from
+// Escape only the ampersands. This is used by pango_text to try to recover from
 // markup parsing failure.
 inline std::string semi_escape_text(const std::string & text) {
 	std::string semi_escaped;

@@ -98,7 +98,7 @@ std::string encode_text_alignment(const PangoAlignment alignment);
  *
  * @returns                       The font style.
  */
-font::ttext::FONT_STYLE decode_font_style(const std::string& style);
+font::pango_text::FONT_STYLE decode_font_style(const std::string& style);
 
 /**
  * Returns a default error message if a mandatory widget is omitted.

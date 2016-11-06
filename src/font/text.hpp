@@ -72,16 +72,16 @@ namespace font {
  * render the text. See http://pango.org for more info.
  *
  */
-class ttext
+class pango_text
 {
 public:
 
-	ttext();
+	pango_text();
 
-    ttext(const ttext &) = delete;
-    ttext & operator = (const ttext &) = delete;
+    pango_text(const pango_text &) = delete;
+    pango_text & operator = (const pango_text &) = delete;
 
-	~ttext();
+	~pango_text();
 
 	/**
 	 * Returns the rendered text.
@@ -218,33 +218,33 @@ public:
 
 	const std::string& text() const { return text_; }
 
-	ttext& set_family_class(font::family_class fclass);
+	pango_text& set_family_class(font::family_class fclass);
 
-	ttext& set_font_size(const unsigned font_size);
+	pango_text& set_font_size(const unsigned font_size);
 
-	ttext& set_font_style(const FONT_STYLE font_style);
+	pango_text& set_font_style(const FONT_STYLE font_style);
 
-	ttext& set_foreground_color(const Uint32 color);
+	pango_text& set_foreground_color(const Uint32 color);
 
-	ttext& set_foreground_color(const SDL_Color color);
+	pango_text& set_foreground_color(const SDL_Color color);
 
-	ttext& set_maximum_width(int width);
+	pango_text& set_maximum_width(int width);
 
-	ttext& set_characters_per_line(const unsigned characters_per_line);
+	pango_text& set_characters_per_line(const unsigned characters_per_line);
 
-	ttext& set_maximum_height(int height, bool multiline);
+	pango_text& set_maximum_height(int height, bool multiline);
 
-	ttext& set_ellipse_mode(const PangoEllipsizeMode ellipse_mode);
+	pango_text& set_ellipse_mode(const PangoEllipsizeMode ellipse_mode);
 
-	ttext& set_alignment(const PangoAlignment alignment);
+	pango_text& set_alignment(const PangoAlignment alignment);
 
-	ttext& set_maximum_length(const size_t maximum_length);
+	pango_text& set_maximum_length(const size_t maximum_length);
 
 	bool link_aware() const { return link_aware_; }
 
-	ttext& set_link_aware(bool b);
+	pango_text& set_link_aware(bool b);
 
-	ttext& set_link_color(const std::string & color);
+	pango_text& set_link_color(const std::string & color);
 private:
 
 	/***** ***** ***** *****  Pango variables ***** ***** ***** *****/
