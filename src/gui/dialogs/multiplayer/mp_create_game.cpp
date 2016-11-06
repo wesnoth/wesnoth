@@ -545,11 +545,11 @@ void tmp_create_game::display_games_of_type(twindow& window, ng::level::TYPE typ
 		list.add_row(data);
 	}
 
-	// Recalculate which rows should be visisble
-	on_filter_change<tslider>(window, "num_players");
-	on_filter_change<ttext_box>(window, "game_filter");
-
 	if(!level.empty() && !list.get_rows_shown().empty()) {
+		// Recalculate which rows should be visible
+		on_filter_change<tslider>(window, "num_players");
+		on_filter_change<ttext_box>(window, "game_filter");
+
 		int level_index = create_engine_.find_level_by_id(level);
 		if(level_index >= 0 && size_t(level_index) < list.get_item_count()) {
 			list.select_row(level_index);
