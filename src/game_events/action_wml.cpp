@@ -572,7 +572,7 @@ WML_HANDLER_FUNCTION(replace_map,, cfg)
 		const std::string log_map_name = cfg["map"].empty() ? cfg["file"] : std::string("from inline data");
 		lg::wml_error() << "replace_map: Unable to load map " << log_map_name << std::endl;
 		return;
-	} catch(twml_exception& e) {
+	} catch(wml_exception& e) {
 		e.show(resources::screen->video());
 		return;
 	}
@@ -834,7 +834,7 @@ WML_HANDLER_FUNCTION(terrain_mask,, cfg)
 	} catch(incorrect_map_format_error&) {
 		ERR_NG << "terrain mask is in the incorrect format, and couldn't be applied" << std::endl;
 		return;
-	} catch(twml_exception& e) {
+	} catch(wml_exception& e) {
 		e.show(resources::screen->video());
 		return;
 	}

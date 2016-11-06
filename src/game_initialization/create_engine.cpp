@@ -169,7 +169,7 @@ void scenario::set_metadata()
 		data_["description"] = _("Map could not be loaded: ") + e.message;
 
 		ERR_CF << "map could not be loaded: " << e.message << '\n';
-	} catch(twml_exception& e) {
+	} catch(wml_exception& e) {
 		data_["description"] = _("Map could not be loaded.");
 
 		ERR_CF << "map could not be loaded: " << e.dev_message << '\n';
@@ -1051,7 +1051,7 @@ void create_engine::init_all_levels()
 					e.message;
 
 				ERR_CF << "map could not be loaded: " << e.message << '\n';
-			} catch (twml_exception&) {
+			} catch (wml_exception&) {
 				add_map = false;
 				dep_index_offset++;
 			}

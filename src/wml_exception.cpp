@@ -30,7 +30,7 @@
 static lg::log_domain log_engine("engine");
 #define WRN_NG LOG_STREAM(warn, log_engine)
 
-void wml_exception(
+void throw_wml_exception(
 		  const char* cond
 		, const char* file
 		, const int line
@@ -51,10 +51,10 @@ void wml_exception(
 		sstr << " Extra development information: " << dev_message;
 	}
 
-	throw twml_exception(message, sstr.str());
+	throw wml_exception(message, sstr.str());
 }
 
-void twml_exception::show(CVideo &video)
+void wml_exception::show(CVideo &video)
 {
 	std::ostringstream sstr;
 

@@ -59,7 +59,7 @@
 #include "util.hpp"                     // for lexical_cast_default
 #include "video.hpp"                    // for CVideo
 #include "wesnothd_connection_error.hpp"
-#include "wml_exception.hpp"            // for twml_exception
+#include "wml_exception.hpp"            // for wml_exception
 
 #include <algorithm>                    // for copy, max, min, stable_sort
 #include <boost/optional.hpp>           // for optional
@@ -531,7 +531,7 @@ int game_launcher::unit_test()
 		if (!(res == LEVEL_RESULT::VICTORY) || lg::broke_strict()) {
 			return 1;
 		}
-	} catch(twml_exception& e) {
+	} catch(wml_exception& e) {
 		std::cerr << "Caught WML Exception:" << e.dev_message << std::endl;
 		return 1;
 	}
@@ -558,7 +558,7 @@ int game_launcher::unit_test()
 			std::cerr << "Observed failure on replay" << std::endl;
 			return 4;
 		}
-	} catch(twml_exception& e) {
+	} catch(wml_exception& e) {
 		std::cerr << "WML Exception while playing replay: " << e.dev_message << std::endl;
 		return 4; //failed with an error during the replay
 	}
@@ -652,7 +652,7 @@ bool game_launcher::load_game()
 			gui2::show_error_message(video(), _("The file you have tried to load is corrupt: '") + e.message + '\'');
 		}
 		return false;
-	} catch(twml_exception& e) {
+	} catch(wml_exception& e) {
 		e.show(video());
 		return false;
 	} catch(filesystem::io_exception& e) {
@@ -876,7 +876,7 @@ bool game_launcher::play_multiplayer(mp_selection res)
 	} catch (savegame::load_game_exception & e) {
 		load_data_.reset(new savegame::load_game_metadata(std::move(e.data_)));
 		//this will make it so next time through the title screen loop, this game is loaded
-	} catch(twml_exception& e) {
+	} catch(wml_exception& e) {
 		e.show(video());
 	} catch (game::error & e) {
 		std::cerr << "caught game::error...\n";
@@ -965,7 +965,7 @@ void game_launcher::launch_game(RELOAD_GAME_DATA reload)
 	} catch (savegame::load_game_exception &e) {
 		load_data_.reset(new savegame::load_game_metadata(std::move(e.data_)));
 		//this will make it so next time through the title screen loop, this game is loaded
-	} catch(twml_exception& e) {
+	} catch(wml_exception& e) {
 		e.show(video());
 	} catch(mapgen_exception& e) {
 		gui2::show_error_message(video(), _("Map generator error: ") + e.message);
@@ -981,7 +981,7 @@ void game_launcher::play_replay()
 	} catch (savegame::load_game_exception &e) {
 		load_data_.reset(new savegame::load_game_metadata(std::move(e.data_)));
 		//this will make it so next time through the title screen loop, this game is loaded
-	} catch(twml_exception& e) {
+	} catch(wml_exception& e) {
 		e.show(video());
 	}
 }

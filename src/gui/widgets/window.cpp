@@ -1037,7 +1037,7 @@ void twindow::layout()
 			 << maximum_width << ',' << maximum_height << " screen size "
 			 << settings::screen_width << ',' << settings::screen_height << '.';
 
-		throw twml_exception(_("Failed to show a dialog, "
+		throw wml_exception(_("Failed to show a dialog, "
 							   "which doesn't fit on the screen."),
 							 sstr.str());
 	}
@@ -1074,7 +1074,7 @@ void twindow::layout()
 				 << settings::screen_width << ',' << settings::screen_height
 				 << '.';
 
-			throw twml_exception(_("Failed to show a dialog, "
+			throw wml_exception(_("Failed to show a dialog, "
 								   "which doesn't fit on the screen."),
 								 sstr.str());
 		}

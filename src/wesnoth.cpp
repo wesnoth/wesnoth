@@ -57,7 +57,7 @@
 #include "video.hpp"                    // for CVideo
 #include "wesconfig.h"                  // for PACKAGE
 #include "widgets/button.hpp"           // for button
-#include "wml_exception.hpp"            // for twml_exception
+#include "wml_exception.hpp"            // for wml_exception
 
 #ifdef _WIN32
 #include "log_windows.hpp"
@@ -1074,7 +1074,7 @@ int main(int argc, char** argv)
 		std::cerr << "caught return_to_play_side_exception, please report this bug (quitting)\n";
 	} catch(quit_game_exception&) {
 		std::cerr << "caught quit_game_exception (quitting)\n";
-	} catch(twml_exception& e) {
+	} catch(wml_exception& e) {
 		std::cerr << "WML exception:\nUser message: "
 			<< e.user_message << "\nDev message: " << e.dev_message << '\n';
 		error_exit(1);

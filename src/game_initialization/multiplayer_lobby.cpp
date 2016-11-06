@@ -625,7 +625,7 @@ void gamebrowser::populate_game_item_map_info(gamebrowser::game_item & item, con
 		} catch (incorrect_map_format_error &e) {
 			ERR_CF << "illegal map: " << e.message << '\n';
 			verified = false;
-		} catch(twml_exception& e) {
+		} catch(wml_exception& e) {
 			ERR_CF <<  "map could not be loaded: " << e.dev_message << '\n';
 			verified = false;
 		}

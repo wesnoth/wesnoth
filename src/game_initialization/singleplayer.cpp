@@ -63,7 +63,7 @@ bool enter_create_mode(CVideo& video, const config& game_config, saved_game& sta
 
 			try {
 				dlg.show(video);
-			} catch(twml_exception& e) {
+			} catch(wml_exception& e) {
 				e.show(video);
 				return false;
 			}

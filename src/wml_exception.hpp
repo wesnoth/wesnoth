@@ -43,14 +43,14 @@ class CVideo;
 #define VALIDATE(cond, message)                                           \
 	do {                                                                  \
 		if(!(cond)) {                                                     \
-			wml_exception(#cond, __FILE__, __LINE__, __func__, message);  \
+			throw_wml_exception(#cond, __FILE__, __LINE__, __func__, message);  \
 		}                                                                 \
 	} while(0)
 
 #define VALIDATE_WITH_DEV_MESSAGE(cond, message, dev_message)             \
 	do {                                                                  \
 		if(!(cond)) {                                                     \
-			wml_exception(#cond                                           \
+			throw_wml_exception(#cond                                           \
 					, __FILE__                                            \
 					, __LINE__                                            \
 					, __func__                                            \
@@ -61,12 +61,12 @@ class CVideo;
 
 #define FAIL(message)                                                     \
 	do {                                                                  \
-		wml_exception(nullptr, __FILE__, __LINE__, __func__, message);       \
+		throw_wml_exception(nullptr, __FILE__, __LINE__, __func__, message);       \
 	} while(0)
 
 #define FAIL_WITH_DEV_MESSAGE(message, dev_message)                       \
 	do {                                                                  \
-		wml_exception(nullptr                                                \
+		throw_wml_exception(nullptr                                                \
 				, __FILE__                                                \
 				, __LINE__                                                \
 				, __func__                                                \
@@ -83,7 +83,7 @@ class CVideo;
  *  @param function     The function in which the test failed.
  *  @param message      The translated message to show the user.
  */
-NORETURN void wml_exception(
+NORETURN void throw_wml_exception(
 		  const char* cond
 		, const char* file
 		, int line
@@ -92,16 +92,16 @@ NORETURN void wml_exception(
 		, const std::string& dev_message = "");
 
 /** Helper class, don't construct this directly. */
-struct twml_exception
+struct wml_exception
 	: public lua_jailbreak_exception
 {
-	twml_exception(const std::string& user_msg, const std::string& dev_msg)
+	wml_exception(const std::string& user_msg, const std::string& dev_msg)
 		: user_message(user_msg)
 		, dev_message(dev_msg)
 	{
 	}
 
-	~twml_exception() throw() {}
+	~wml_exception() throw() {}
 
 	/**
 	 *  The message for the user explaining what went wrong. This message can
@@ -123,7 +123,7 @@ struct twml_exception
 	 */
 	void show(CVideo& video);
 private:
-	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(twml_exception)
+	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(wml_exception)
 };
 
 /**

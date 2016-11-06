@@ -306,7 +306,7 @@ LEVEL_RESULT campaign_controller::play_game()
 		} catch(config::error& e) {
 			gui2::show_error_message(video_, _("Error while reading the WML: ") + e.message);
 			return LEVEL_RESULT::QUIT;
-		} catch(twml_exception& e) {
+		} catch(wml_exception& e) {
 			e.show(video_);
 			return LEVEL_RESULT::QUIT;
 		}

@@ -198,7 +198,7 @@ namespace {
 				exception = "gui2::tlayout_exception_width_resize_failed";
 			} catch(gui2::tlayout_exception_height_resize_failed&) {
 				exception = "gui2::tlayout_exception_height_resize_failed";
-			} catch(twml_exception& e) {
+			} catch(wml_exception& e) {
 				exception = e.dev_message;
 			} catch(std::exception& e) {
 				exception = e.what();
@@ -240,7 +240,7 @@ namespace {
 					exception = "gui2::tlayout_exception_width_resize_failed";
 				} catch(gui2::tlayout_exception_height_resize_failed&) {
 					exception = "gui2::tlayout_exception_height_resize_failed";
-				} catch(twml_exception& e) {
+				} catch(wml_exception& e) {
 					exception = e.dev_message;
 				} catch(std::exception& e) {
 					exception = e.what();
@@ -287,7 +287,7 @@ namespace {
 				exception = "gui2::tlayout_exception_width_resize_failed";
 			} catch(gui2::tlayout_exception_height_resize_failed&) {
 				exception = "gui2::tlayout_exception_height_resize_failed";
-			} catch(twml_exception& e) {
+			} catch(wml_exception& e) {
 				exception = e.dev_message;
 			} catch(std::exception& e) {
 				exception = e.what();
@@ -512,7 +512,7 @@ BOOST_AUTO_TEST_CASE(test_make_test_fake)
 	try {
 		gui2::tmessage dlg("title", "message", true, false);
 		dlg.show(video, 1);
-	} catch(twml_exception& e) {
+	} catch(wml_exception& e) {
 		BOOST_CHECK(e.user_message == _("Failed to show a dialog, "
 					"which doesn't fit on the screen."));
 		return;
