@@ -109,7 +109,7 @@ bool string2rgb(const std::string& s, std::vector<uint32_t>& result) {
 						rgb_hex += (0x000000FF & (std::stoi(*c++)<<0)); //blue
 					}
 				}
-			} catch (bad_lexical_cast&) {
+			} catch (std::invalid_argument&) {
 				return false;
 			}
 		} else {
