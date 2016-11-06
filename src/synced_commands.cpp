@@ -261,7 +261,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(move, child,  use_undo, show, error_handler)
 
 	try {
 		read_locations(child,steps);
-	} catch (bad_lexical_cast &) {
+	} catch (std::invalid_argument&) {
 		WRN_REPLAY << "Warning: Path data contained something which could not be parsed to a sequence of locations:" << "\n config = " << child.debug() << std::endl;
 		return false;
 	}

@@ -451,7 +451,7 @@ void read_locations(const config& cfg, std::vector<map_location>& locs)
 	const std::vector<std::string> yvals = utils::split(cfg["y"]);
 
 	if (xvals.size() != yvals.size()) {
-		throw bad_lexical_cast();
+		throw std::invalid_argument("Number of x and y coordinates do not match.");
 	}
 
 	std::transform(xvals.begin(), xvals.end(), yvals.begin(), std::back_inserter(locs), &read_locations_helper);
