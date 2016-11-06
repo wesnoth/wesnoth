@@ -42,6 +42,7 @@
 #include "game_config.hpp"
 #include "preferences.hpp"
 #include "random_new.hpp"
+#include "util.hpp"
 #include <array>
 #include <cmath>
 #include <numeric>
@@ -100,19 +101,6 @@ namespace {
 
 namespace
 {
-
-/**
- * A shorthand utility for forcing a value between minimum and maximum values.
- */
-template<typename T>
-const T& limit(const T& val, const T& min, const T& max)
-{
-	if ( val < min )
-		return min;
-	if ( val > max )
-		return max;
-	return val;
-}
 
 /**
 * A struct to describe one possible combat scenario.
@@ -596,12 +584,12 @@ void prob_matrix::shift_cols_in_row(unsigned dst, unsigned src, unsigned row,
 		// calculation easier to parse.
 		int col_i = static_cast<int>(cols[col_x]);
 		int drain_amount = col_i*drain_percent/100 + drain_constant;
-		unsigned newrow = limit<int>(row_i + drain_amount, 1, max_row);
+		unsigned newrow = util::clamp(row_i + drain_amount, 1, max_row);
 		xfer(dst, src, newrow, 0, row, cols[col_x], prob);
 	}
 
 	// The remaining columns use the specified drainmax.
-	unsigned newrow = limit<int>(row_i + drainmax, 1, max_row);
+	unsigned newrow = util::clamp(row_i + drainmax, 1, max_row);
 	for ( ; col_x < cols.size(); ++col_x )
 		xfer(dst, src, newrow, cols[col_x] - damage, row, cols[col_x], prob);
 }
@@ -663,12 +651,12 @@ void prob_matrix::shift_rows_in_col(unsigned dst, unsigned src, unsigned col,
 		// calculation easier to parse.
 		int row_i = static_cast<int>(rows[row_x]);
 		int drain_amount = row_i*drain_percent/100 + drain_constant;
-		unsigned newcol = limit<int>(col_i + drain_amount, 1, max_col);
+		unsigned newcol = util::clamp(col_i + drain_amount, 1, max_col);
 		xfer(dst, src, 0, newcol, rows[row_x], col, prob);
 	}
 
 	// The remaining rows use the specified drainmax.
-	unsigned newcol = limit<int>(col_i + drainmax, 1, max_col);
+	unsigned newcol = util::clamp(col_i + drainmax, 1, max_col);
 	for ( ; row_x < rows.size(); ++row_x )
 		xfer(dst, src, rows[row_x] - damage, newcol, rows[row_x], col, prob);
 }
@@ -1328,7 +1316,7 @@ void monte_carlo_combat_matrix::simulate()
 						b_slowed |= a_slows_;
 
 						int drain_amount = (a_drain_percent_ * static_cast<signed>(damage) / 100 + a_drain_constant_);
-						a_hp = limit(a_hp + drain_amount, 1u, a_max_hp_);
+						a_hp = util::clamp(a_hp + drain_amount, 1u, a_max_hp_);
 
 						b_hp -= damage;
 
@@ -1351,7 +1339,7 @@ void monte_carlo_combat_matrix::simulate()
 						a_slowed |= b_slows_;
 
 						int drain_amount = (b_drain_percent_ * static_cast<signed>(damage) / 100 + b_drain_constant_);
-						b_hp = limit(b_hp + drain_amount, 1u, b_max_hp_);
+						b_hp = util::clamp(b_hp + drain_amount, 1u, b_max_hp_);
 
 						a_hp -= damage;
 
