@@ -173,7 +173,7 @@ tvertical_scrollbar_definition::tresolution::tresolution(const config& cfg)
 			 missing_mandatory_wml_key("resolution",
 									   "minimum_positioner_length"));
 
-	// Note the order should be the same as the enum tstate in scrollbar.hpp.
+	// Note the order should be the same as the enum state_t in scrollbar.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
 	state.push_back(tstate_definition(cfg.child("state_disabled")));
 	state.push_back(tstate_definition(cfg.child("state_pressed")));

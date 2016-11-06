@@ -32,7 +32,7 @@ twidget::twidget(gui2::twidget& widget) : widget_(&widget)
 {
 }
 
-twalker_::tstate twidget::next(const tlevel level)
+twalker_::state_t twidget::next(const tlevel level)
 {
 	if(at_end(level)) {
 		return fail;

@@ -109,7 +109,7 @@ tprogress_bar_definition::tprogress_bar_definition(const config& cfg)
 tprogress_bar_definition::tresolution::tresolution(const config& cfg)
 	: tresolution_definition_(cfg)
 {
-	// Note the order should be the same as the enum tstate in progress_bar.hpp.
+	// Note the order should be the same as the enum state_t in progress_bar.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
 }
 

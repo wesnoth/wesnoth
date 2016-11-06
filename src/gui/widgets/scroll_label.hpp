@@ -73,14 +73,14 @@ private:
 	 *
 	 * Note the order of the states must be the same as defined in settings.hpp.
 	 */
-	enum tstate {
+	enum state_t {
 		ENABLED,
 		DISABLED,
 		COUNT
 	};
 
 	// It's not needed for now so keep it disabled, no definition exists yet.
-	// void set_state(const tstate state);
+	// void set_state(const state_t state);
 
 	/**
 	 * Current state of the widget.
@@ -88,7 +88,7 @@ private:
 	 * The state of the widget determines what to render and how the widget
 	 * reacts to certain 'events'.
 	 */
-	tstate state_;
+	state_t state_;
 	bool wrap_on;
 
 	const std::string text_alignment;

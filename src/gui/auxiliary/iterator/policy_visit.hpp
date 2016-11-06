@@ -40,7 +40,7 @@ public:
 	/**
 	 * Acts like @ref twalker_::next for the level where the policy is used.
 	 */
-	twalker_::tstate next(twalker_&)
+	twalker_::state_t next(twalker_&)
 	{
 		return twalker_::fail;
 	}
@@ -74,7 +74,7 @@ public:
 	/**
 	 * Acts like @ref twalker_::next for the level where the policy is used.
 	 */
-	twalker_::tstate next(twalker_& visitor)
+	twalker_::state_t next(twalker_& visitor)
 	{
 		return visitor.next(level);
 	}

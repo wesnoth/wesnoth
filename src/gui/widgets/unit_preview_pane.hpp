@@ -110,7 +110,7 @@ private:
 	template<typename T> // This is only a template to avoid including units/attack.hpp
 	void print_attack_details(T attacks, ttree_view_node& parent_node);
 
-	enum tstate {
+	enum state_t {
 		ENABLED
 	};
 

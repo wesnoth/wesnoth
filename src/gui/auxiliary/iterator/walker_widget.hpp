@@ -38,7 +38,7 @@ public:
 	explicit twidget(gui2::twidget& widget);
 
 	/** Inherited from @ref gui2::iterator::twalker_. */
-	virtual tstate next(const tlevel level);
+	virtual state_t next(const tlevel level);
 
 	/** Inherited from @ref gui2::iterator::twalker_. */
 	virtual bool at_end(const tlevel level) const;

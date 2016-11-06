@@ -798,7 +798,7 @@ tlistbox_definition::tlistbox_definition(const config& cfg)
 tlistbox_definition::tresolution::tresolution(const config& cfg)
 	: tresolution_definition_(cfg), grid(nullptr)
 {
-	// Note the order should be the same as the enum tstate in listbox.hpp.
+	// Note the order should be the same as the enum state_t in listbox.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
 	state.push_back(tstate_definition(cfg.child("state_disabled")));
 

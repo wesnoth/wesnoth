@@ -90,14 +90,14 @@ private:
 	 * same and also that 'up' is before 'down'. 'up' has no suffix, 'down' has
 	 * the SELECTED suffix.
 	 */
-	enum tstate {
+	enum state_t {
 		ENABLED,
 		DISABLED,
 		FOCUSED,
 		COUNT
 	};
 
-	void set_state(const tstate state);
+	void set_state(const state_t state);
 
 	/**
 	 * Current state of the widget.
@@ -105,7 +105,7 @@ private:
 	 * The state of the widget determines what to render and how the widget
 	 * reacts to certain 'events'.
 	 */
-	tstate state_;
+	state_t state_;
 	/**
 	 *	Usually 1 for selected and 0 for not selected, can also have higher values in tristate buttons.
 	 */

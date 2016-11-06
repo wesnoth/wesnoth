@@ -79,7 +79,7 @@ unsigned tmenu_button::get_state() const
 	return state_;
 }
 
-void tmenu_button::set_state(const tstate state)
+void tmenu_button::set_state(const state_t state)
 {
 	if(state != state_) {
 		state_ = state;
@@ -238,7 +238,7 @@ tmenu_button_definition::tmenu_button_definition(const config& cfg)
 tmenu_button_definition::tresolution::tresolution(const config& cfg)
 	: tresolution_definition_(cfg)
 {
-	// Note the order should be the same as the enum tstate in menu_button.hpp.
+	// Note the order should be the same as the enum state_t in menu_button.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
 	state.push_back(tstate_definition(cfg.child("state_disabled")));
 	state.push_back(tstate_definition(cfg.child("state_pressed")));

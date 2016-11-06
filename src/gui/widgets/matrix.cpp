@@ -226,7 +226,7 @@ tmatrix_definition::tresolution::tresolution(const config& cfg)
 	: tresolution_definition_(cfg)
 	, content(new tbuilder_grid(cfg.child("content", "[matrix_definition]")))
 {
-	// Note the order should be the same as the enum tstate in matrix.hpp.
+	// Note the order should be the same as the enum state_t in matrix.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
 	state.push_back(tstate_definition(cfg.child("state_disabled")));
 }

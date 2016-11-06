@@ -85,7 +85,7 @@ unsigned trepeating_button::get_state() const
 	return state_;
 }
 
-void trepeating_button::set_state(const tstate state)
+void trepeating_button::set_state(const state_t state)
 {
 	if(state != state_) {
 		state_ = state;
@@ -207,7 +207,7 @@ trepeating_button_definition::trepeating_button_definition(const config& cfg)
 trepeating_button_definition::tresolution::tresolution(const config& cfg)
 	: tresolution_definition_(cfg)
 {
-	// Note the order should be the same as the enum tstate in
+	// Note the order should be the same as the enum state_t in
 	// repeating_button.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
 	state.push_back(tstate_definition(cfg.child("state_disabled")));

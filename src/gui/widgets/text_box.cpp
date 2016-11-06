@@ -446,7 +446,7 @@ ttext_box_definition::tresolution::tresolution(const config& cfg)
 	, text_x_offset(cfg["text_x_offset"])
 	, text_y_offset(cfg["text_y_offset"])
 {
-	// Note the order should be the same as the enum tstate in text_box.hpp.
+	// Note the order should be the same as the enum state_t in text_box.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
 	state.push_back(tstate_definition(cfg.child("state_disabled")));
 	state.push_back(tstate_definition(cfg.child("state_focused")));

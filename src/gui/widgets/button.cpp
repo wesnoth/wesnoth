@@ -72,7 +72,7 @@ unsigned tbutton::get_state() const
 	return state_;
 }
 
-void tbutton::set_state(const tstate state)
+void tbutton::set_state(const state_t state)
 {
 	if(state != state_) {
 		state_ = state;
@@ -187,7 +187,7 @@ tbutton_definition::tbutton_definition(const config& cfg)
 tbutton_definition::tresolution::tresolution(const config& cfg)
 	: tresolution_definition_(cfg)
 {
-	// Note the order should be the same as the enum tstate in button.hpp.
+	// Note the order should be the same as the enum state_t in button.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
 	state.push_back(tstate_definition(cfg.child("state_disabled")));
 	state.push_back(tstate_definition(cfg.child("state_pressed")));

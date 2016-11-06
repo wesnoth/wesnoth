@@ -304,7 +304,7 @@ ttree_view_definition::ttree_view_definition(const config& cfg)
 ttree_view_definition::tresolution::tresolution(const config& cfg)
 	: tresolution_definition_(cfg), grid(nullptr)
 {
-	// Note the order should be the same as the enum tstate is listbox.hpp.
+	// Note the order should be the same as the enum state_t is listbox.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
 	state.push_back(tstate_definition(cfg.child("state_disabled")));
 

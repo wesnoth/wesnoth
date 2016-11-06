@@ -179,7 +179,7 @@ void ttoggle_panel::set_retval(const int retval)
 	retval_ = retval;
 }
 
-void ttoggle_panel::set_state(const tstate state)
+void ttoggle_panel::set_state(const state_t state)
 {
 	if(state == state_) {
 		return;
@@ -368,7 +368,7 @@ ttoggle_panel_definition::tresolution::tresolution(const config& cfg)
 	, left_border(cfg["left_border"])
 	, right_border(cfg["right_border"])
 {
-	// Note the order should be the same as the enum tstate in toggle_panel.hpp.
+	// Note the order should be the same as the enum state_t in toggle_panel.hpp.
 	for(const auto& c : cfg.child_range("state"))
 	{
 		state.push_back(tstate_definition(c.child("enabled")));

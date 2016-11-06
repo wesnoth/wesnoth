@@ -101,7 +101,7 @@ tdrawing_definition::tresolution::tresolution(const config& cfg)
 	: tresolution_definition_(cfg)
 {
 	/*
-	 * Note the order should be the same as the enum tstate in drawing.hpp.
+	 * Note the order should be the same as the enum state_t in drawing.hpp.
 	 * Normally the [draw] section is in the config, but for this widget the
 	 * original draw section is ignored, so send a dummy.
 	 */

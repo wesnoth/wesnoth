@@ -40,7 +40,7 @@ public:
 	ttree_node(gui2::ttree_view_node& node, boost::ptr_vector<gui2::ttree_view_node>& children);
 
 	/** Inherited from @ref gui2::iterator::twalker_. */
-	virtual tstate next(const tlevel level);
+	virtual state_t next(const tlevel level);
 
 	/** Inherited from @ref gui2::iterator::twalker_. */
 	virtual bool at_end(const tlevel level) const;

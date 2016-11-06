@@ -48,7 +48,7 @@ public:
 	 *
 	 * The enum is used to return the state of @ref next.
 	 */
-	enum tstate {
+	enum state_t {
 		/**
 		 * When calling next the following it has the following results.
 		 *
@@ -89,7 +89,7 @@ public:
 	 *
 	 * @returns                   The status of the operation.
 	 */
-	virtual tstate next(const tlevel level) = 0;
+	virtual state_t next(const tlevel level) = 0;
 
 	/**
 	 * Returns whether the current widget is valid.

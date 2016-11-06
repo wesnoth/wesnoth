@@ -157,7 +157,7 @@ void tscrollbar_::update_canvas()
 	set_is_dirty(true);
 }
 
-void tscrollbar_::set_state(const tstate state)
+void tscrollbar_::set_state(const state_t state)
 {
 	if(state != state_) {
 		state_ = state;

@@ -189,7 +189,7 @@ tscroll_label_definition::tscroll_label_definition(const config& cfg)
 tscroll_label_definition::tresolution::tresolution(const config& cfg)
 	: tresolution_definition_(cfg), grid(nullptr)
 {
-	// Note the order should be the same as the enum tstate is scroll_label.hpp.
+	// Note the order should be the same as the enum state_t is scroll_label.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
 	state.push_back(tstate_definition(cfg.child("state_disabled")));
 

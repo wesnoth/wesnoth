@@ -131,7 +131,7 @@ void ttoggle_button::set_retval(const int retval)
 	set_wants_mouse_left_double_click(retval_ != 0);
 }
 
-void ttoggle_button::set_state(const tstate state)
+void ttoggle_button::set_state(const state_t state)
 {
 	if(state != state_) {
 		state_ = state;
@@ -243,7 +243,7 @@ ttoggle_button_definition::ttoggle_button_definition(const config& cfg)
 ttoggle_button_definition::tresolution::tresolution(const config& cfg)
 	: tresolution_definition_(cfg)
 {
-	// Note the order should be the same as the enum tstate in
+	// Note the order should be the same as the enum state_t in
 	// toggle_button.hpp.
 	for(const auto& c : cfg.child_range("state"))
 	{

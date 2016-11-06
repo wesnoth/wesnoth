@@ -30,7 +30,7 @@ ttree_node::ttree_node(gui2::ttree_view_node& node, boost::ptr_vector<gui2::ttre
 {
 }
 
-twalker_::tstate ttree_node::next(const tlevel level)
+twalker_::state_t ttree_node::next(const tlevel level)
 {
 	if(at_end(level)) {
 		return fail;

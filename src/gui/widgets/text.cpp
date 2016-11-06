@@ -244,7 +244,7 @@ void ttext_::set_selection(size_t start, int length)
 	update_canvas();
 }
 
-void ttext_::set_state(const tstate state)
+void ttext_::set_state(const state_t state)
 {
 	if(state != state_) {
 		state_ = state;

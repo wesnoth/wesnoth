@@ -29,7 +29,7 @@ tgrid::tgrid(gui2::tgrid& grid)
 {
 }
 
-twalker_::tstate tgrid::next(const tlevel level)
+twalker_::state_t tgrid::next(const tlevel level)
 {
 	if(at_end(level)) {
 		return fail;

@@ -88,7 +88,7 @@ private:
 	 *
 	 * Note the order of the states must be the same as defined in settings.hpp.
 	 */
-	enum tstate {
+	enum state_t {
 		ENABLED,
 		COUNT
 	};

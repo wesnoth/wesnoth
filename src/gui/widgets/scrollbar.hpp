@@ -116,7 +116,7 @@ public:
 	 *
 	 * Note the order of the states must be the same as defined in settings.hpp.
 	 */
-	enum tstate {
+	enum state_t {
 		ENABLED,
 		DISABLED,
 		PRESSED,
@@ -206,14 +206,14 @@ protected:
 	}
 
 private:
-	void set_state(const tstate state);
+	void set_state(const state_t state);
 	/**
 	 * Current state of the widget.
 	 *
 	 * The state of the widget determines what to render and how the widget
 	 * reacts to certain 'events'.
 	 */
-	tstate state_;
+	state_t state_;
 
 	/** The number of items the scrollbar 'holds'. */
 	unsigned item_count_;
