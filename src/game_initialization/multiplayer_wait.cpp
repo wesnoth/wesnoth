@@ -312,7 +312,7 @@ void wait::process_network_data(const config& data)
 		LOG_NW << "received change controller" << std::endl;
 		LOG_RG << "multiplayer_wait: [change_controller]" << std::endl;
 		LOG_RG << data.debug() << std::endl;
-		//const int side = lexical_cast<int>(change["side"]);
+		//const int side = std::stoi(change["side"]);
 
 		if (config & sidetochange = get_scenario().find_child("side", "side", change["side"])) {
 			LOG_RG << "found side : " << sidetochange.debug() << std::endl;

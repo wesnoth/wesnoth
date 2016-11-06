@@ -442,7 +442,7 @@ void write_location_range(const std::set<map_location>& locs, config& cfg)
 
 static map_location read_locations_helper(const std::string & xi, const std::string & yi)
 {
-	return map_location(lexical_cast<int>(xi)-1, lexical_cast<int>(yi)-1);
+	return map_location(std::stoi(xi)-1, std::stoi(yi)-1);
 }
 
 void read_locations(const config& cfg, std::vector<map_location>& locs)

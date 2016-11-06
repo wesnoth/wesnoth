@@ -411,7 +411,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_unit, child,  use_undo, /*show*/, /*error_
 		return false;
 	}
 	if (name == "advances" ) {
-		int int_value = lexical_cast<int>(value);
+		int int_value = std::stoi(value);
 		for (int levels=0; levels<int_value; levels++) {
 			i->set_experience(i->max_experience());
 

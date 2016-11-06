@@ -602,7 +602,7 @@ const std::string manager::internal_evaluate_command( side_number side, const st
 				history_item_counter_--;
 			}
 
-			int command = lexical_cast<int>(cmd.at(1));
+			int command = std::stoi(cmd.at(1));
 			std::deque< command_history_item >::reverse_iterator j = history_.rbegin();
 			//yes, the iterator could be precisely positioned (since command numbers go 1,2,3,4,..). will do it later.
 			while ( (j!=history_.rend()) && (j->get_number()!=command) ){

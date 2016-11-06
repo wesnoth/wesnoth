@@ -788,7 +788,7 @@ REGISTER_MOD_PARSER(BW, args)
 	const std::vector<std::string>& params = utils::split(args, ',');
 	if (params.size() == 1) {
 		try {
-			int threshold = lexical_cast<int>(params[0]);
+			int threshold = std::stoi(params[0]);
 			if (threshold < 0 || threshold > 255) {
 				ERR_DP << "~BW() argument out of range 0 - 255" << std::endl;
 				return nullptr;
@@ -797,7 +797,7 @@ REGISTER_MOD_PARSER(BW, args)
 				return new bw_modification(threshold);
 			}
 		}
-		catch (bad_lexical_cast) {
+		catch (std::invalid_argument) {
 			ERR_DP << "unsupported argument in ~BW() function" << std::endl;
 			return nullptr;
 		}
@@ -828,7 +828,7 @@ REGISTER_MOD_PARSER(NEG, args)
 			break;
 		case 1:
 			try {
-				int threshold = lexical_cast<int>(params[0]);
+				int threshold = std::stoi(params[0]);
 				if (threshold < -1 || threshold > 255) {
 					ERR_DP << "unsupported argument value in ~NEG() function" << std::endl;
 					return nullptr;
@@ -837,16 +837,16 @@ REGISTER_MOD_PARSER(NEG, args)
 					return new negative_modification(threshold, threshold, threshold);
 				}
 			}
-			catch (bad_lexical_cast) {
+			catch (std::invalid_argument) {
 				ERR_DP << "unsupported argument value in ~NEG() function" << std::endl;
 				return nullptr;
 			}
 			break;
 		case 3:
 			try {
-				int thresholdRed = lexical_cast<int>(params[0]);
-				int thresholdGreen = lexical_cast<int>(params[1]);
-				int thresholdBlue = lexical_cast<int>(params[2]);
+				int thresholdRed = std::stoi(params[0]);
+				int thresholdGreen = std::stoi(params[1]);
+				int thresholdBlue = std::stoi(params[2]);
 				if (thresholdRed < -1 || thresholdRed > 255 || thresholdGreen < -1 || thresholdGreen > 255 || thresholdBlue < -1 || thresholdBlue > 255) {
 					ERR_DP << "unsupported argument value in ~NEG() function" << std::endl;
 					return nullptr;
@@ -855,7 +855,7 @@ REGISTER_MOD_PARSER(NEG, args)
 					return new negative_modification(thresholdRed, thresholdGreen, thresholdBlue);
 				}
 			}
-			catch (bad_lexical_cast) {
+			catch (std::invalid_argument) {
 				ERR_DP << "unsupported argument value in ~NEG() function" << std::endl;
 				return nullptr;
 			}

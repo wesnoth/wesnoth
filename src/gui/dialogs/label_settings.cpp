@@ -86,7 +86,7 @@ void tlabel_settings::pre_show(twindow& window) {
 				// This means it's a hidden side, so don't show it.
 				continue;
 			}
-			int team = lexical_cast<int>(category.substr(5)) - 1;
+			int team = std::stoi(category.substr(5)) - 1;
 			Uint32 which_color = game_config::tc_info(viewer.teams()[team].color())[0];
 			std::ostringstream sout;
 			sout << "<span color='#" << std::hex << which_color << "'>" << name << "</span>";

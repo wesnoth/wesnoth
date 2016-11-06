@@ -231,7 +231,7 @@ CALLABLE_WRAPPER_FN2(id, save_id)
 CALLABLE_WRAPPER_FN(save_id)
 CALLABLE_WRAPPER_FN(gold)
 	if(key == "start_gold") {
-		return variant(lexical_cast<int>(object_.start_gold()));
+		return variant(object_.start_gold());
 	} else
 CALLABLE_WRAPPER_FN(base_income)
 CALLABLE_WRAPPER_FN(total_income)

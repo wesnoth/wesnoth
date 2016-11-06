@@ -257,7 +257,7 @@ bool attack_type::apply_modification(const config& cfg)
 	}
 
 	if(set_damage.empty() == false) {
-		damage_ = lexical_cast<int>(set_damage);
+		damage_ = std::stoi(set_damage);
 		if (damage_ < 0) {
 			damage_ = 0;
 		}
@@ -271,7 +271,7 @@ bool attack_type::apply_modification(const config& cfg)
 	}
 
 	if(set_attacks.empty() == false) {
-		num_attacks_ = lexical_cast<int>(set_attacks);
+		num_attacks_ = std::stoi(set_attacks);
 		if (num_attacks_ < 0) {
 			num_attacks_ = 0;
 		}
@@ -283,7 +283,7 @@ bool attack_type::apply_modification(const config& cfg)
 	}
 
 	if(set_accuracy.empty() == false) {
-		accuracy_ = lexical_cast<int>(set_accuracy);
+		accuracy_ = std::stoi(set_accuracy);
 	}
 
 	if(increase_accuracy.empty() == false) {
@@ -291,7 +291,7 @@ bool attack_type::apply_modification(const config& cfg)
 	}
 
 	if(set_parry.empty() == false) {
-		parry_ = lexical_cast<int>(set_parry);
+		parry_ = std::stoi(set_parry);
 	}
 
 	if(increase_parry.empty() == false) {
@@ -299,7 +299,7 @@ bool attack_type::apply_modification(const config& cfg)
 	}
 
 	if(set_movement.empty() == false) {
-		movement_used_ = lexical_cast<int>(set_movement);
+		movement_used_ = std::stoi(set_movement);
 	}
 
 	if(increase_movement.empty() == false) {
@@ -357,25 +357,25 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 
 		if(set_damage.empty() == false) {
 			add_and(desc);
-			int damage = lexical_cast<int>(increase_damage);
+			int damage = std::stoi(increase_damage);
 			desc << set_damage << " " << _n("damage","damage", damage);
 		}
 
 		if(increase_attacks.empty() == false) {
 			add_and(desc);
-			int inc_attacks = lexical_cast<int>(increase_attacks);
+			int inc_attacks = std::stoi(increase_attacks);
 			desc << utils::print_modifier(increase_attacks) << " "
 				 << _n("strike", "strikes", inc_attacks);
 		}
 
 		if(set_attacks.empty() == false) {
-			int num_attacks = lexical_cast<int>(set_attacks);
+			int num_attacks = std::stoi(set_attacks);
 			add_and(desc);
 			desc << set_attacks << " " << _n("strike", "strikes", num_attacks);
 		}
 
 		if(set_accuracy.empty() == false) {
-			int accuracy = lexical_cast<int>(set_accuracy);
+			int accuracy = std::stoi(set_accuracy);
 
 			add_and(desc);
 			// xgettext:no-c-format
@@ -384,14 +384,14 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 
 		if(increase_accuracy.empty() == false) {
 			add_and(desc);
-			int inc_acc = lexical_cast<int>(increase_accuracy);
+			int inc_acc = std::stoi(increase_accuracy);
 			// Help xgettext with a directive to recognize the string as a non C printf-like string
 			// xgettext:no-c-format
 			desc << utils::signed_value(inc_acc) << _("% accuracy");
 		}
 
 		if(set_parry.empty() == false) {
-			int parry = lexical_cast<int>(set_parry);
+			int parry = std::stoi(set_parry);
 
 			add_and(desc);
 			desc << parry << _(" parry");
@@ -399,13 +399,13 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 
 		if(increase_parry.empty() == false) {
 			add_and(desc);
-			int inc_parry = lexical_cast<int>(increase_parry);
+			int inc_parry = std::stoi(increase_parry);
 			// xgettext:no-c-format
 			desc << utils::signed_value(inc_parry) << _("% parry");
 		}
 
 		if(set_movement.empty() == false) {
-			int movement_used = lexical_cast<int>(set_movement);
+			int movement_used = std::stoi(set_movement);
 
 			add_and(desc);
 			desc << movement_used << " " << _n("movement point","movement points",movement_used);
@@ -413,7 +413,7 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 
 		if(increase_movement.empty() == false) {
 			add_and(desc);
-			int inc_move = lexical_cast<int>(increase_movement);
+			int inc_move = std::stoi(increase_movement);
 			desc << increase_movement << " " << _n("movement point","movement points",inc_move);
 		}
 

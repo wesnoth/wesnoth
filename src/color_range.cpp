@@ -100,13 +100,13 @@ bool string2rgb(const std::string& s, std::vector<uint32_t>& result) {
 		{
 			try {
 				// integer triplets, e.g. white="255,255,255"
-				rgb_hex =  (0x00FF0000 & ((lexical_cast<int>(*c++))<<16)); //red
+				rgb_hex =  (0x00FF0000 & (std::stoi(*c++))<<16); //red
 				if(c!=rgb_vec.end())
 				{
-					rgb_hex += (0x0000FF00 & ((lexical_cast<int>(*c++))<<8)); //green
+					rgb_hex += (0x0000FF00 & (std::stoi(*c++)<<8)); //green
 					if(c!=rgb_vec.end())
 					{
-						rgb_hex += (0x000000FF & ((lexical_cast<int>(*c++))<<0)); //blue
+						rgb_hex += (0x000000FF & (std::stoi(*c++)<<0)); //blue
 					}
 				}
 			} catch (bad_lexical_cast&) {

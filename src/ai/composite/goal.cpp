@@ -237,8 +237,8 @@ void protect_goal::on_create()
 	}
 	if (const config::attribute_value *v = cfg_.get("protect_radius")) {
 		try {
-			radius_ = lexical_cast<int>(*v);
-		} catch (bad_lexical_cast){
+			radius_ = std::stoi(v->str());
+		} catch (std::invalid_argument){
 			ERR_AI_GOAL << "bad protection radius of protect_goal"<<std::endl;
 			radius_ = 1;
 		}

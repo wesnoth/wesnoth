@@ -159,8 +159,8 @@ static component *find_component(component *root, const std::string &path, path_
 			pe.position = -2;
 		} else {
 			try {
-				pe.position = lexical_cast<int>(position);
-			} catch (bad_lexical_cast){
+				pe.position = std::stoi(position);
+			} catch (std::invalid_argument){
 				pe.position = -2;
 			}
 		}

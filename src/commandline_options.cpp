@@ -506,9 +506,9 @@ void commandline_options::parse_resolution_ ( const std::string& resolution_stri
 	int xres, yres;
 
 	try {
-		xres = lexical_cast<int>(tokens[0]);
-		yres = lexical_cast<int>(tokens[1]);
-	} catch(bad_lexical_cast &) {
+		xres = std::stoi(tokens[0]);
+		yres = std::stoi(tokens[1]);
+	} catch(std::invalid_argument &) {
 		throw bad_commandline_resolution(resolution_string);
 	}
 
