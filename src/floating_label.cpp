@@ -77,80 +77,6 @@ int floating_label::xpos(size_t width) const
 	return xpos;
 }
 
-#if 0
-sdl::timage floating_label::create_image()
-{
-	if (img_.null()) {
-		font::pango_text text;
-		text.set_foreground_color((color_.r << 24) | (color_.g << 16) | (color_.b << 8) | 255);
-		text.set_font_size(font_size_);
-		text.set_maximum_width(width_ < 0 ? clip_rect_.w : width_);
-		text.set_maximum_height(height_ < 0 ? clip_rect_.h : height_, true);
-
-		//ignore last '\n'
-		if(!text_.empty() && *(text_.rbegin()) == '\n'){
-			text.set_text(std::string(text_.begin(), text_.end()-1), use_markup_);
-		} else {
-			text.set_text(text_, use_markup_);
-		}
-
-		surface foreground = text.render();
-
-		if(foreground == nullptr) {
-			ERR_FT << "could not create floating label's text" << std::endl;
-			return sdl::timage();
-		}
-
-		// combine foreground text with its background
-		if(bgalpha_ != 0) {
-			// background is a dark tooltip box
-			surface background = create_neutral_surface(foreground->w + border_*2, foreground->h + border_*2);
-
-			if (background == nullptr) {
-				ERR_FT << "could not create tooltip box" << std::endl;
-				img_ = sdl::timage(foreground);
-				return img_;
-			}
-
-			Uint32 color = SDL_MapRGBA(foreground->format, bgcolor_.r,bgcolor_.g, bgcolor_.b, bgalpha_);
-			sdl::fill_rect(background,nullptr, color);
-
-			// we make the text less transparent, because the blitting on the
-			// dark background will darken the anti-aliased part.
-			// This 1.13 value seems to restore the brightness of version 1.4
-			// (where the text was blitted directly on screen)
-			adjust_surface_alpha(foreground, ftofxp(1.13));
-
-			SDL_Rect r = sdl::create_rect( border_, border_, 0, 0);
-			adjust_surface_alpha(foreground, SDL_ALPHA_OPAQUE);
-			sdl_blit(foreground, nullptr, background, &r);
-
-			img_ = sdl::timage(background);
-		}
-		else {
-			// background is blurred shadow of the text
-			surface background = create_neutral_surface
-				(foreground->w + 4, foreground->h + 4);
-			sdl::fill_rect(background, nullptr, 0);
-			SDL_Rect r = { 2, 2, 0, 0 };
-			sdl_blit(foreground, nullptr, background, &r);
-			background = shadow_image(background, false);
-
-			if (background == nullptr) {
-				ERR_FT << "could not create floating label's shadow" << std::endl;
-				img_ = sdl::timage(foreground);
-				return img_;
-			}
-			adjust_surface_alpha(foreground, SDL_ALPHA_OPAQUE);
-			sdl_blit(foreground, nullptr, background, &r);
-			img_ = sdl::timage(background);
-		}
-	}
-
-	return img_;
-}
-
-#else
 surface floating_label::create_surface()
 {
 	if (surf_.null()) {
@@ -227,7 +153,6 @@ surface floating_label::create_surface()
 
 	return surf_;
 }
-#endif
 
 void floating_label::draw(surface screen)
 {
@@ -334,21 +259,12 @@ void show_floating_label(int handle, bool value)
 SDL_Rect get_floating_label_rect(int handle)
 {
 	const label_map::iterator i = labels.find(handle);
-#if 0
-	if(i != labels.end()) {
-		const sdl::timage img = i->second.create_image();
-		if(!img.null()) {
-			return sdl::create_rect(0, 0, img.width(), img.height());
-		}
-	}
-#else
 	if(i != labels.end()) {
 		const surface surf = i->second.create_surface();
 		if(surf != nullptr) {
 			return sdl::create_rect(0, 0, surf->w, surf->h);
 		}
 	}
-#endif
 	return sdl::empty_rect;
 }
 

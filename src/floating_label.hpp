@@ -71,11 +71,7 @@ public:
 	void draw(surface screen);
 	void undraw(surface screen);
 
-#if 0
-	sdl::timage create_image();
-#else
 	surface create_surface();
-#endif
 
 	bool expired() const { return lifetime_ == 0; }
 
@@ -86,11 +82,7 @@ public:
 private:
 
 	int xpos(size_t width) const;
-#if 0
-	sdl::timage img_;
-#else
 	surface surf_, buf_;
-#endif
 	std::string text_;
 	int font_size_;
 	SDL_Color color_, bgcolor_;
