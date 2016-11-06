@@ -428,6 +428,13 @@ inline unsigned int count_leading_ones(N n) {
 
 namespace util {
 
+// NOTE: remove once we have C++17 support and can use std::clamp
+template<typename T>
+CONSTEXPR const T& clamp(const T& value, const T& min, const T& max)
+{
+	return std::max<T>(std::min<T>(value, max), min);
+}
+
 namespace detail {
 	/// A struct that exists to implement a generic wrapper for std::find.
 	/// Container should "look like" an STL container of Values.
