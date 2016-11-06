@@ -50,7 +50,7 @@ struct tpane_implementation
 	 * @tparam W                  A pointer to the pane.
 	 */
 	template <class W>
-	static typename utils::tconst_clone<twidget, W>::pointer
+	static typename utils::const_clone<twidget, W>::pointer
 	find_at(W pane, point coordinate, const bool must_be_active)
 	{
 
@@ -61,7 +61,7 @@ struct tpane_implementation
 			return nullptr;
 		}
 
-		typedef typename utils::tconst_clone<tpane::titem, W>::reference thack;
+		typedef typename utils::const_clone<tpane::titem, W>::reference thack;
 		for(thack item : pane->items_)
 		{
 
@@ -92,10 +92,10 @@ struct tpane_implementation
 	 * @tparam W                  A pointer to the pane.
 	 */
 	template <class W>
-	static typename utils::tconst_clone<tgrid, W>::pointer
+	static typename utils::const_clone<tgrid, W>::pointer
 	grid(W pane, const unsigned id)
 	{
-		typedef typename utils::tconst_clone<tpane::titem, W>::reference thack;
+		typedef typename utils::const_clone<tpane::titem, W>::reference thack;
 		for(thack item : pane->items_)
 		{
 

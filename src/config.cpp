@@ -68,7 +68,7 @@ struct config_implementation
 	 * @tparam T                  A pointer to the config.
 	 */
 	template<class T>
-	static typename utils::tconst_clone<config, T>::reference
+	static typename utils::const_clone<config, T>::reference
 	child(
 			  T config
 			, const std::string& key

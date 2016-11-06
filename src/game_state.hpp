@@ -68,7 +68,7 @@ public:
 	int first_human_team_; //needed to initialize the viewpoint during setup
 	bool has_human_sides() const { return first_human_team_ != -1; }
 
-	game_state(const config & level, play_controller &, const tdata_cache & tdata);
+	game_state(const config & level, play_controller &, const ter_data_cache & tdata);
 	/// The third parameter is an optimisation.
 	game_state(const config & level, play_controller &, game_board& board);
 

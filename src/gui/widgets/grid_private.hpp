@@ -52,11 +52,11 @@ struct tgrid_implementation
 	 * @tparam W                  twidget or const twidget.
 	 */
 	template <class W>
-	static W* find_at(typename utils::tconst_clone<tgrid, W>::reference grid,
+	static W* find_at(typename utils::const_clone<tgrid, W>::reference grid,
 					  const point& coordinate,
 					  const bool must_be_active)
 	{
-		typedef typename utils::tconst_clone<tgrid::tchild, W>::type hack;
+		typedef typename utils::const_clone<tgrid::tchild, W>::type hack;
 		for(hack & child : grid.children_)
 		{
 
@@ -82,7 +82,7 @@ struct tgrid_implementation
 	 * @tparam W                  twidget or const twidget.
 	 */
 	template <class W>
-	static W* find(typename utils::tconst_clone<tgrid, W>::reference grid,
+	static W* find(typename utils::const_clone<tgrid, W>::reference grid,
 				   const std::string& id,
 				   const bool must_be_active)
 	{
@@ -92,7 +92,7 @@ struct tgrid_implementation
 			return widget;
 		}
 
-		typedef typename utils::tconst_clone<tgrid::tchild, W>::type hack;
+		typedef typename utils::const_clone<tgrid::tchild, W>::type hack;
 		for(hack & child : grid.children_)
 		{
 

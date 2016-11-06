@@ -33,7 +33,7 @@ static lg::log_domain log_engine("enginerefac");
 static lg::log_domain log_engine_enemies("engine/enemies");
 #define DBG_EE LOG_STREAM(debug, log_engine_enemies)
 
-game_board::game_board(const tdata_cache & tdata, const config & level)
+game_board::game_board(const ter_data_cache & tdata, const config & level)
 	: teams_()
 	, map_(new gamemap(tdata, level["map_data"]))
 	, unit_id_manager_(level["next_underlying_unit_id"])

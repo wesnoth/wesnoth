@@ -51,7 +51,7 @@ static std::string best_str(bool best) {
 
 typedef t_translation::ter_list::const_iterator ter_iter;
 // Gets an english desription of a terrain ter_list alias behavior: "Best of cave, hills", "Worst of Swamp, Forest" etc.
-static std::string print_behavior_description(ter_iter start, ter_iter end, const tdata_cache & tdata, bool first_level = true, bool begin_best = true)
+static std::string print_behavior_description(ter_iter start, ter_iter end, const ter_data_cache & tdata, bool first_level = true, bool begin_best = true)
 {
 
 	if (start == end) return "";
@@ -128,7 +128,7 @@ std::string terrain_topic_generator::operator()() const {
 	else
 		ss << "\n";
 
-	tdata_cache tdata = load_terrain_types_data();
+	ter_data_cache tdata = load_terrain_types_data();
 
 	if (!tdata) {
 		WRN_HP << "When building terrain help topics, we couldn't acquire any terrain types data\n";
@@ -601,7 +601,7 @@ std::string unit_topic_generator::operator()() const {
 	}
 	ss << generate_table(resistance_table);
 
-	if (tdata_cache tdata = load_terrain_types_data()) {
+	if (ter_data_cache tdata = load_terrain_types_data()) {
 		// Print the terrain modifier table of the unit.
 		ss << "\n\n<header>text='" << escape(_("Terrain Modifiers"))
 			<< "'</header>\n\n";

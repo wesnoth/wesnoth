@@ -169,7 +169,7 @@ namespace {
 	 * The specialized versions are at the end of this file.
 	 */
 	template<class T>
-	struct twrapper
+	struct dialog_tester
 	{
 		T* create() { return new T(); }
 	};
@@ -183,7 +183,7 @@ namespace {
 		for(const tresolution& resolution : resolutions) {
 			CVideo& video = test_utils::get_fake_display(resolution.first, resolution.second).video();
 
-			twrapper<T> ctor;
+			dialog_tester<T> ctor;
 			const std::unique_ptr<gui2::tdialog> dlg(ctor.create());
 			BOOST_REQUIRE_MESSAGE(dlg.get(), "Failed to create a dialog.");
 
@@ -222,7 +222,7 @@ namespace {
 			for(const tresolution& resolution : resolutions) {
 				CVideo& video = test_utils::get_fake_display(resolution.first, resolution.second).video();
 
-				twrapper<T> ctor;
+				dialog_tester<T> ctor;
 				const std::unique_ptr<gui2::tpopup> dlg(ctor.create());
 				BOOST_REQUIRE_MESSAGE(dlg.get(), "Failed to create a dialog.");
 
@@ -524,7 +524,7 @@ BOOST_AUTO_TEST_CASE(test_make_test_fake)
 namespace {
 
 template<>
-struct twrapper<gui2::taddon_connect>
+struct dialog_tester<gui2::taddon_connect>
 {
 	std::string host_name = "host_name";
 	gui2::taddon_connect* create()
@@ -534,10 +534,10 @@ struct twrapper<gui2::taddon_connect>
 };
 
 template<>
-struct twrapper<gui2::taddon_list>
+struct dialog_tester<gui2::taddon_list>
 {
 	config cfg;
-	twrapper()
+	dialog_tester()
 	{
 		/** @todo Would nice to add one or more dummy addons in the list. */
 	}
@@ -548,7 +548,7 @@ struct twrapper<gui2::taddon_list>
 };
 
 template<>
-struct twrapper<gui2::tcampaign_difficulty>
+struct dialog_tester<gui2::tcampaign_difficulty>
 {
 	gui2::tcampaign_difficulty* create()
 	{
@@ -559,11 +559,11 @@ struct twrapper<gui2::tcampaign_difficulty>
 };
 
 template<>
-struct twrapper<gui2::tcampaign_selection>
+struct dialog_tester<gui2::tcampaign_selection>
 {
 	saved_game state;
 	ng::create_engine ng;
-	twrapper() : state(config_of("campaign_type", "scenario")), ng(test_utils::get_fake_display(-1, -1).video(), state)
+	dialog_tester() : state(config_of("campaign_type", "scenario")), ng(test_utils::get_fake_display(-1, -1).video(), state)
 	{
 	}
 	gui2::tcampaign_selection* create()
@@ -573,11 +573,11 @@ struct twrapper<gui2::tcampaign_selection>
 };
 
 template<>
-struct twrapper<gui2::tcampaign_settings>
+struct dialog_tester<gui2::tcampaign_settings>
 {
 	saved_game state;
 	ng::create_engine ng;
-	twrapper() : state(config_of("campaign_type", "scenario")), ng(test_utils::get_fake_display(-1, -1).video(), state)
+	dialog_tester() : state(config_of("campaign_type", "scenario")), ng(test_utils::get_fake_display(-1, -1).video(), state)
 	{
 	}
 	gui2::tcampaign_settings* create()
@@ -587,13 +587,13 @@ struct twrapper<gui2::tcampaign_settings>
 };
 
 template<>
-struct twrapper<gui2::tchat_log>
+struct dialog_tester<gui2::tchat_log>
 {
 	config cfg;
 	vconfig vcfg;
 	replay_recorder_base rbase;
 	replay r;
-	twrapper() : vcfg(cfg), r(rbase) {}
+	dialog_tester() : vcfg(cfg), r(rbase) {}
 	gui2::tchat_log* create()
 	{
 		return new gui2::tchat_log(vcfg, r);
@@ -601,10 +601,10 @@ struct twrapper<gui2::tchat_log>
 };
 
 template<>
-struct twrapper<gui2::tcore_selection>
+struct dialog_tester<gui2::tcore_selection>
 {
 	std::vector<config> cores;
-	twrapper()
+	dialog_tester()
 	{
 		cores.resize(1);
 	}
@@ -615,10 +615,10 @@ struct twrapper<gui2::tcore_selection>
 };
 
 template<>
-struct twrapper<gui2::tcustom_tod>
+struct dialog_tester<gui2::tcustom_tod>
 {
 	std::vector<time_of_day> times;
-	twrapper()
+	dialog_tester()
 	{
 		times.resize(1);
 	}
@@ -629,7 +629,7 @@ struct twrapper<gui2::tcustom_tod>
 };
 
 template<>
-struct twrapper<gui2::tedit_label>
+struct dialog_tester<gui2::tedit_label>
 {
 	std::string label = "Label text to modify";
 	bool team_only = false;
@@ -640,7 +640,7 @@ struct twrapper<gui2::tedit_label>
 };
 
 template<>
-struct twrapper<gui2::tedit_text>
+struct dialog_tester<gui2::tedit_text>
 {
 	std::string text = "text to modify";
 	gui2::tedit_text* create()
@@ -650,7 +650,7 @@ struct twrapper<gui2::tedit_text>
 };
 
 template<>
-struct twrapper<gui2::teditor_edit_label>
+struct dialog_tester<gui2::teditor_edit_label>
 {
 	std::string label = "Label text to modify";
 	std::string category = "test";
@@ -663,7 +663,7 @@ struct twrapper<gui2::teditor_edit_label>
 };
 
 template<>
-struct twrapper<gui2::teditor_edit_scenario>
+struct dialog_tester<gui2::teditor_edit_scenario>
 {
 	std::string id, name, descr;
 	int turns, xp_mod;
@@ -675,11 +675,11 @@ struct twrapper<gui2::teditor_edit_scenario>
 };
 
 template<>
-struct twrapper<gui2::teditor_edit_side>
+struct dialog_tester<gui2::teditor_edit_side>
 {
 	team t;
 	editor::editor_team_info info;
-	twrapper() : info(t) {}
+	dialog_tester() : info(t) {}
 	gui2::teditor_edit_side* create()
 	{
 		return new gui2::teditor_edit_side(info);
@@ -687,7 +687,7 @@ struct twrapper<gui2::teditor_edit_side>
 };
 
 template<>
-struct twrapper<gui2::tformula_debugger>
+struct dialog_tester<gui2::tformula_debugger>
 {
 	game_logic::formula_debugger debugger;
 	gui2::tformula_debugger* create()
@@ -697,11 +697,11 @@ struct twrapper<gui2::tformula_debugger>
 };
 
 template<>
-struct twrapper<gui2::tgame_load>
+struct dialog_tester<gui2::tgame_load>
 {
 	config cfg;
 	savegame::load_game_metadata data;
-	twrapper()
+	dialog_tester()
 	{
 		/** @todo Would be nice to add real data to the config. */
 	}
@@ -713,7 +713,7 @@ struct twrapper<gui2::tgame_load>
 };
 
 template<>
-struct twrapper<gui2::tgame_save>
+struct dialog_tester<gui2::tgame_save>
 {
 	std::string title = "Title";
 	std::string filename = "filename";
@@ -725,7 +725,7 @@ struct twrapper<gui2::tgame_save>
 };
 
 template<>
-struct twrapper<gui2::tgame_save_message>
+struct dialog_tester<gui2::tgame_save_message>
 {
 	std::string title = "Title";
 	std::string filename = "filename";
@@ -738,7 +738,7 @@ struct twrapper<gui2::tgame_save_message>
 };
 
 template<>
-struct twrapper<gui2::tgame_save_oos>
+struct dialog_tester<gui2::tgame_save_oos>
 {
 	bool ignore_all = false;
 	std::string title = "Title";
@@ -752,7 +752,7 @@ struct twrapper<gui2::tgame_save_oos>
 };
 
 template<>
-struct twrapper<gui2::tgamestate_inspector>
+struct dialog_tester<gui2::tgamestate_inspector>
 {
 	config vars;
 	game_events::manager events;
@@ -783,14 +783,14 @@ struct twesnothd_connection_init
 };
 
 template<>
-struct twrapper<gui2::tlobby_main>
+struct dialog_tester<gui2::tlobby_main>
 {
 	config game_config;
 	wesnothd_connection connection;
 	twesnothd_connection_init wesnothd_connection_init;
 	std::vector<std::string> installed_addons;
 	lobby_info li;
-	twrapper() : connection("", ""), wesnothd_connection_init(connection), li(game_config, installed_addons)
+	dialog_tester() : connection("", ""), wesnothd_connection_init(connection), li(game_config, installed_addons)
 	{
 	}
 	gui2::tlobby_main* create()
@@ -808,7 +808,7 @@ class fake_chat_handler : public events::chat_handler {
 };
 
 template<>
-struct twrapper<gui2::tlobby_player_info>
+struct dialog_tester<gui2::tlobby_player_info>
 {
 	config c;
 	fake_chat_handler ch;
@@ -817,7 +817,7 @@ struct twrapper<gui2::tlobby_player_info>
 	user_info ui;
 	std::vector<std::string> installed_addons;
 	lobby_info li;
-	twrapper()
+	dialog_tester()
 		: connection("", ""), wesnothd_connection_init(connection)
 		, ui(c), li(c, installed_addons)
 	{
@@ -829,7 +829,7 @@ struct twrapper<gui2::tlobby_player_info>
 };
 
 template<>
-struct twrapper<gui2::tlogging>
+struct dialog_tester<gui2::tlogging>
 {
 	gui2::tlogging* create()
 	{
@@ -838,7 +838,7 @@ struct twrapper<gui2::tlogging>
 };
 
 template<>
-struct twrapper<gui2::tmessage>
+struct dialog_tester<gui2::tmessage>
 {
 	gui2::tmessage* create()
 	{
@@ -847,7 +847,7 @@ struct twrapper<gui2::tmessage>
 };
 
 template<>
-struct twrapper<gui2::tmp_change_control>
+struct dialog_tester<gui2::tmp_change_control>
 {
 	gui2::tmp_change_control* create()
 	{
@@ -856,7 +856,7 @@ struct twrapper<gui2::tmp_change_control>
 };
 
 template<>
-struct twrapper<gui2::tmp_cmd_wrapper>
+struct dialog_tester<gui2::tmp_cmd_wrapper>
 {
 	gui2::tmp_cmd_wrapper* create()
 	{
@@ -865,11 +865,11 @@ struct twrapper<gui2::tmp_cmd_wrapper>
 };
 
 template<>
-struct twrapper<gui2::tmp_create_game>
+struct dialog_tester<gui2::tmp_create_game>
 {
 	saved_game state;
 	ng::create_engine engine;
-	twrapper() : state(config_of("campaign_type", "multiplayer")), engine(test_utils::get_fake_display(-1, -1).video(), state)
+	dialog_tester() : state(config_of("campaign_type", "multiplayer")), engine(test_utils::get_fake_display(-1, -1).video(), state)
 	{
 	}
 	gui2::tmp_create_game* create()
@@ -879,7 +879,7 @@ struct twrapper<gui2::tmp_create_game>
 };
 
 template<>
-struct twrapper<gui2::tmp_create_game_set_password>
+struct dialog_tester<gui2::tmp_create_game_set_password>
 {
 	std::string password;
 	gui2::tmp_create_game_set_password* create()
@@ -889,7 +889,7 @@ struct twrapper<gui2::tmp_create_game_set_password>
 };
 
 template<>
-struct twrapper<gui2::tmp_join_game_password_prompt>
+struct dialog_tester<gui2::tmp_join_game_password_prompt>
 {
 	std::string password;
 	gui2::tmp_join_game_password_prompt* create()
@@ -899,7 +899,7 @@ struct twrapper<gui2::tmp_join_game_password_prompt>
 };
 
 template<>
-struct twrapper<gui2::tdepcheck_confirm_change>
+struct dialog_tester<gui2::tdepcheck_confirm_change>
 {
 	std::vector<std::string> mods = {"mod_one", "some other", "more"};
 	gui2::tdepcheck_confirm_change* create()
@@ -909,7 +909,7 @@ struct twrapper<gui2::tdepcheck_confirm_change>
 };
 
 template<>
-struct twrapper<gui2::tdepcheck_select_new>
+struct dialog_tester<gui2::tdepcheck_select_new>
 {
 	std::vector<std::string> mods = {"mod_one", "some other", "more"};
 	gui2::tdepcheck_select_new* create()
@@ -919,7 +919,7 @@ struct twrapper<gui2::tdepcheck_select_new>
 };
 
 template<>
-struct twrapper<gui2::tmp_login>
+struct dialog_tester<gui2::tmp_login>
 {
 	gui2::tmp_login* create()
 	{
@@ -928,7 +928,7 @@ struct twrapper<gui2::tmp_login>
 };
 
 template<>
-struct twrapper<gui2::tsimple_item_selector>
+struct dialog_tester<gui2::tsimple_item_selector>
 {
 	gui2::tsimple_item_selector* create()
 	{
@@ -937,7 +937,7 @@ struct twrapper<gui2::tsimple_item_selector>
 };
 
 template<>
-struct twrapper<gui2::tscreenshot_notification>
+struct dialog_tester<gui2::tscreenshot_notification>
 {
 	gui2::tscreenshot_notification* create()
 	{
@@ -946,7 +946,7 @@ struct twrapper<gui2::tscreenshot_notification>
 };
 
 template<>
-struct twrapper<gui2::ttheme_list>
+struct dialog_tester<gui2::ttheme_list>
 {
 	theme_info make_theme(std::string name)
 	{
@@ -964,7 +964,7 @@ struct twrapper<gui2::ttheme_list>
 };
 
 template<>
-struct twrapper<gui2::teditor_generate_map>
+struct dialog_tester<gui2::teditor_generate_map>
 {
 	gui2::teditor_generate_map* create()
 	{
@@ -988,7 +988,7 @@ struct twrapper<gui2::teditor_generate_map>
 };
 
 template<>
-struct twrapper<gui2::teditor_new_map>
+struct dialog_tester<gui2::teditor_new_map>
 {
 	int width;
 	int height;
@@ -999,7 +999,7 @@ struct twrapper<gui2::teditor_new_map>
 };
 
 template<>
-struct twrapper<gui2::teditor_set_starting_position>
+struct dialog_tester<gui2::teditor_set_starting_position>
 {
 	std::vector<map_location> locations;
 	gui2::teditor_set_starting_position* create()
@@ -1009,7 +1009,7 @@ struct twrapper<gui2::teditor_set_starting_position>
 };
 
 template<>
-struct twrapper<gui2::teditor_resize_map>
+struct dialog_tester<gui2::teditor_resize_map>
 {
 	int width = 0;
 	int height = 0;
@@ -1022,7 +1022,7 @@ struct twrapper<gui2::teditor_resize_map>
 };
 
 template<>
-struct twrapper<gui2::tfile_dialog>
+struct dialog_tester<gui2::tfile_dialog>
 {
 	gui2::tfile_dialog* create()
 	{
@@ -1031,7 +1031,7 @@ struct twrapper<gui2::tfile_dialog>
 };
 
 template<>
-struct twrapper<gui2::tfolder_create>
+struct dialog_tester<gui2::tfolder_create>
 {
 	std::string folder_name;
 	gui2::tfolder_create* create()
@@ -1041,7 +1041,7 @@ struct twrapper<gui2::tfolder_create>
 };
 
 template<>
-struct twrapper<gui2::tmp_server_list>
+struct dialog_tester<gui2::tmp_server_list>
 {
 	static gui2::tdialog* create()
 	{
@@ -1050,7 +1050,7 @@ struct twrapper<gui2::tmp_server_list>
 };
 
 template<>
-struct twrapper<gui2::ttransient_message>
+struct dialog_tester<gui2::ttransient_message>
 {
 	gui2::ttransient_message* create()
 	{
@@ -1059,12 +1059,12 @@ struct twrapper<gui2::ttransient_message>
 };
 
 template<>
-struct twrapper<gui2::ttitle_screen>
+struct dialog_tester<gui2::ttitle_screen>
 {
 	std::vector<std::string> args;
 	commandline_options opts;
 	game_launcher game;
-	twrapper() : opts(args), game(opts, "unit_tests") {}
+	dialog_tester() : opts(args), game(opts, "unit_tests") {}
 	gui2::ttitle_screen* create()
 	{
 		return new gui2::ttitle_screen(game);
@@ -1072,7 +1072,7 @@ struct twrapper<gui2::ttitle_screen>
 };
 
 template<>
-struct twrapper<gui2::twml_error>
+struct dialog_tester<gui2::twml_error>
 {
 	std::vector<std::string> files = {"some", "files", "here"};
 	gui2::twml_error* create()
@@ -1082,7 +1082,7 @@ struct twrapper<gui2::twml_error>
 };
 
 template<>
-struct twrapper<gui2::twml_message_left>
+struct dialog_tester<gui2::twml_message_left>
 {
 	gui2::twml_message_left* create()
 	{
@@ -1091,7 +1091,7 @@ struct twrapper<gui2::twml_message_left>
 };
 
 template<>
-struct twrapper<gui2::twml_message_right>
+struct dialog_tester<gui2::twml_message_right>
 {
 	gui2::twml_message_right* create()
 	{
@@ -1100,7 +1100,7 @@ struct twrapper<gui2::twml_message_right>
 };
 
 template<>
-struct twrapper<gui2::twml_message_double>
+struct dialog_tester<gui2::twml_message_double>
 {
 	gui2::twml_message_double* create()
 	{
@@ -1109,13 +1109,13 @@ struct twrapper<gui2::twml_message_double>
 };
 
 template<>
-struct twrapper<gui2::tfaction_select>
+struct dialog_tester<gui2::tfaction_select>
 {
 	config era_cfg, side_cfg;
 	std::vector<const config*> eras;
 	ng::flg_manager flg;
 	std::string color;
-	twrapper()
+	dialog_tester()
 		: era_cfg(), side_cfg(), eras(1, &era_cfg) // TODO: Add an actual era definition
 		, flg(eras, side_cfg, false, false, false)
 		, color("teal")
@@ -1126,7 +1126,7 @@ struct twrapper<gui2::tfaction_select>
 };
 
 template<>
-struct twrapper<gui2::tgame_stats>
+struct dialog_tester<gui2::tgame_stats>
 {
 	int i;
 	gui2::tgame_stats* create()
@@ -1137,11 +1137,11 @@ struct twrapper<gui2::tgame_stats>
 };
 
 template<>
-struct twrapper<gui2::tgenerator_settings>
+struct dialog_tester<gui2::tgenerator_settings>
 {
 	config cfg;
 	generator_data data;
-	twrapper() : data(cfg) {}
+	dialog_tester() : data(cfg) {}
 	gui2::tgenerator_settings* create()
 	{
 		return new gui2::tgenerator_settings(data);
@@ -1149,11 +1149,11 @@ struct twrapper<gui2::tgenerator_settings>
 };
 
 template<>
-struct twrapper<gui2::tsp_options_configure>
+struct dialog_tester<gui2::tsp_options_configure>
 {
 	saved_game state;
 	ng::create_engine engine;
-	twrapper() : engine(test_utils::get_fake_display(-1, -1).video(), state) {}
+	dialog_tester() : engine(test_utils::get_fake_display(-1, -1).video(), state) {}
 	gui2::tsp_options_configure* create()
 	{
 		return new gui2::tsp_options_configure(engine);

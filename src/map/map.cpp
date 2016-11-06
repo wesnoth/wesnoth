@@ -105,7 +105,7 @@ void gamemap::write_terrain(const map_location &loc, config& cfg) const
 	cfg["terrain"] = t_translation::write_terrain_code(get_terrain(loc));
 }
 
-gamemap::gamemap(const tdata_cache& tdata, const std::string& data):
+gamemap::gamemap(const ter_data_cache& tdata, const std::string& data):
 		tiles_(1, 1),
 		tdata_(tdata),
 		villages_(),

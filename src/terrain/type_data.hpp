@@ -87,5 +87,5 @@ public:
 
 };
 
-typedef std::shared_ptr<terrain_type_data> tdata_cache;
+typedef std::shared_ptr<terrain_type_data> ter_data_cache;
 #endif

@@ -75,11 +75,11 @@ class theme
 		static ANCHORING read_anchor(const std::string& str);
 	};
 
-	struct tborder
+	struct border_t
 	{
 
-		tborder();
-		tborder(const config& cfg);
+		border_t();
+		border_t(const config& cfg);
 
 		double size;
 
@@ -289,7 +289,7 @@ public:
     static void set_known_themes(const config* cfg);
     static std::vector<theme_info> get_known_themes();
 
-	const tborder& border() const { return border_; }
+	const border_t& border() const { return border_; }
 
 	events::generic_event& theme_reset_event() { return theme_reset_event_; }
 
@@ -319,7 +319,7 @@ private:
 
 	object main_map_, mini_map_, unit_image_, palette_;
 
-	tborder border_;
+	border_t border_;
 };
 
 #endif

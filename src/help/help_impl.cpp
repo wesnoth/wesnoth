@@ -827,7 +827,7 @@ void generate_era_sections(const config* help_cfg, section & sec, int level)
 
 void generate_terrain_sections(const config* /*help_cfg*/, section& sec, int /*level*/)
 {
-	tdata_cache tdata = load_terrain_types_data();
+	ter_data_cache tdata = load_terrain_types_data();
 
 	if (!tdata) {
 		WRN_HP << "When building terrain help sections, couldn't acquire terrain types data, aborting.\n";
@@ -1539,13 +1539,13 @@ std::string escape(const std::string &s)
 }
 
 /// Load the appropriate terrain types data to use
-tdata_cache load_terrain_types_data() {
+ter_data_cache load_terrain_types_data() {
 	if (display::get_singleton()) {
 		return display::get_singleton()->get_disp_context().map().tdata();
 	} else if (game_config_manager::get()){
 		return game_config_manager::get()->terrain_types();
 	} else {
-		return tdata_cache();
+		return ter_data_cache();
 	}
 }
 

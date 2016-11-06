@@ -78,7 +78,7 @@ class play_controller : public controller_base, public events::observer, public 
 public:
 	play_controller(const config& level, saved_game& state_of_game,
 		const config& game_config,
-		const tdata_cache& tdata,
+		const ter_data_cache& tdata,
 		CVideo& video, bool skip_replay);
 	virtual ~play_controller();
 
@@ -305,7 +305,7 @@ private:
 
 protected:
 	//gamestate
-	const tdata_cache& tdata_;
+	const ter_data_cache& tdata_;
 	std::unique_ptr<game_state> gamestate_;
 	config level_;
 	saved_game& saved_game_;

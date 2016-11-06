@@ -137,7 +137,7 @@ static void clear_resources()
 }
 
 play_controller::play_controller(const config& level, saved_game& state_of_game,
-		const config& game_config, const tdata_cache& tdata,
+		const config& game_config, const ter_data_cache& tdata,
 		CVideo& video, bool skip_replay)
 	: controller_base(game_config, video)
 	, observer()

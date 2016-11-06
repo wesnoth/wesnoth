@@ -54,7 +54,7 @@ struct tscrollbar_container_implementation
 	 */
 	template <class W>
 	static W*
-	find_at(typename utils::tconst_clone<tscrollbar_container, W>::reference
+	find_at(typename utils::const_clone<tscrollbar_container, W>::reference
 					scrollbar_container,
 			const point& coordinate,
 			const bool must_be_active)
@@ -83,7 +83,7 @@ struct tscrollbar_container_implementation
 	 */
 	template <class W>
 	static W*
-	find(typename utils::tconst_clone<tscrollbar_container, W>::reference
+	find(typename utils::const_clone<tscrollbar_container, W>::reference
 				 scrollbar_container,
 		 const std::string& id,
 		 const bool must_be_active)

@@ -43,7 +43,7 @@ template<
 	, class S
 	, typename E = void
 	>
-struct tconst_clone
+struct const_clone
 {
 	/** The destination type, possibly const qualified. */
 	typedef D type;
@@ -56,7 +56,7 @@ struct tconst_clone
 };
 
 /**
- * The specialised version of @ref tconst_clone.
+ * The specialised version of @ref const_clone.
  *
  * This version is used when the @p S is const-qualified.
  */
@@ -64,7 +64,7 @@ template<
 	  class D
 	, class S
 	>
-struct tconst_clone<
+struct const_clone<
 	  D
 	, S
 	, typename std::enable_if<
