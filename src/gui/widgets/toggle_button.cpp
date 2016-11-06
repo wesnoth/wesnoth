@@ -102,7 +102,7 @@ void ttoggle_button::update_canvas()
 	tcontrol::update_canvas();
 
 	// set icon in canvases
-	std::vector<tcanvas>& canvases = tcontrol::canvas();
+	std::vector<canvas>& canvases = tcontrol::get_canvas();
 	for(auto & canvas : canvases)
 	{
 		canvas.set_variable("icon", variant(icon_name_));

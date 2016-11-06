@@ -236,13 +236,13 @@ void ttitle_screen::pre_show(twindow& window)
 	if(game_config::images::game_title.empty()) {
 		ERR_CF << "No title image defined" << std::endl;
 	} else {
-		window.canvas()[0].set_variable("title_image", variant(game_config::images::game_title));
+		window.get_canvas()[0].set_variable("title_image", variant(game_config::images::game_title));
 	}
 
 	if(game_config::images::game_title_background.empty()) {
 		ERR_CF << "No title background image defined" << std::endl;
 	} else {
-		window.canvas()[0].set_variable("background_image", variant(game_config::images::game_title_background));
+		window.get_canvas()[0].set_variable("background_image", variant(game_config::images::game_title_background));
 	}
 
 	find_widget<timage>(&window, "logo-bg", false).set_image(game_config::images::game_logo_background);
@@ -257,7 +257,7 @@ void ttitle_screen::pre_show(twindow& window)
 		version_label->set_label(version_string);
 	}
 
-	window.canvas()[0].set_variable("revision_number", variant(version_string));
+	window.get_canvas()[0].set_variable("revision_number", variant(version_string));
 
 	//
 	// Tip-of-the-day browser

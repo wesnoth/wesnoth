@@ -64,13 +64,13 @@ void tpanel::impl_draw_background(surface& frame_buffer, int x_offset, int y_off
 {
 	DBG_GUI_D << LOG_HEADER << " size " << get_rectangle() << ".\n";
 
-	canvas(0).blit(frame_buffer,
+	get_canvas(0).blit(frame_buffer,
 				   calculate_blitting_rectangle(x_offset, y_offset));
 }
 
 void tpanel::impl_draw_foreground(surface& frame_buffer, int x_offset, int y_offset)
 {
-	canvas(1).blit(frame_buffer,
+	get_canvas(1).blit(frame_buffer,
 				   calculate_blitting_rectangle(x_offset, y_offset));
 }
 

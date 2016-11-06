@@ -108,7 +108,7 @@ void tend_credits::pre_show(twindow& window)
 	}
 
 	// TODO: implement showing all available images as the credits scroll
-	window.canvas()[0].set_variable("background_image", variant(backgrounds_[0]));
+	window.get_canvas()[0].set_variable("background_image", variant(backgrounds_[0]));
 
 	text_widget_ = find_widget<tscroll_label>(&window, "text", false, true);
 

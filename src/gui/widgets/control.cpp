@@ -405,7 +405,7 @@ void tcontrol::impl_draw_background(surface& frame_buffer,
 	DBG_GUI_D << LOG_HEADER << " label '" << debug_truncate(label_) << "' size "
 			  << get_rectangle() << ".\n";
 
-	canvas(get_state()).blit(frame_buffer,
+	get_canvas(get_state()).blit(frame_buffer,
 							 calculate_blitting_rectangle(x_offset, y_offset));
 }
 
@@ -423,15 +423,15 @@ void tcontrol::definition_load_configuration(const std::string& control_type)
 	assert(!config());
 
 	set_config(get_control(control_type, definition_));
-	if(canvas().size() != config()->state.size())
+	if(get_canvas().size() != config()->state.size())
 	{
 		// TODO: Some widgets (toggle panel, toggle button) have a variable canvas count which is determined by its definition.
 		// I think we should remove the canvas_count from tcontrols constructor and always read it from the definition.
 		DBG_GUI_L << "Corrected canvas count to " << config()->state.size() << std::endl;
-		canvas() = std::vector<tcanvas>(config()->state.size());
+		get_canvas() = std::vector<canvas>(config()->state.size());
 	}
-	for(size_t i = 0; i < canvas().size(); ++i) {
-		canvas(i) = config()->state[i].canvas;
+	for(size_t i = 0; i < get_canvas().size(); ++i) {
+		get_canvas(i) = config()->state[i].canvas_;
 	}
 
 	update_canvas();

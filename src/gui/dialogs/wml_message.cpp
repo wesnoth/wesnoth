@@ -63,8 +63,8 @@ void twml_message_::pre_show(twindow& window)
 {
 	set_restore(true);
 
-	window.canvas(1).set_variable("portrait_image", variant(portrait_));
-	window.canvas(1).set_variable("portrait_mirror", variant(mirror_));
+	window.get_canvas(1).set_variable("portrait_image", variant(portrait_));
+	window.get_canvas(1).set_variable("portrait_mirror", variant(mirror_));
 
 	// Set the markup
 	tlabel& title = find_widget<tlabel>(&window, "title", false);
@@ -148,8 +148,8 @@ void twml_message_::post_show(twindow& window)
 void twml_message_double::pre_show(twindow& window)
 {
 	twml_message_left::pre_show(window);
-	window.canvas(1).set_variable("second_portrait_image", variant(second_portrait_));
-	window.canvas(1).set_variable("second_portrait_mirror", variant(second_mirror_));
+	window.get_canvas(1).set_variable("second_portrait_image", variant(second_portrait_));
+	window.get_canvas(1).set_variable("second_portrait_mirror", variant(second_mirror_));
 }
 
 REGISTER_DIALOG(wml_message_left)

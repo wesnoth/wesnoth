@@ -279,11 +279,11 @@ public:
 	}
 
 	// const versions will be added when needed
-	std::vector<tcanvas>& canvas()
+	std::vector<canvas>& get_canvas()
 	{
 		return canvas_;
 	}
-	tcanvas& canvas(const unsigned index)
+	canvas& get_canvas(const unsigned index)
 	{
 		assert(index < canvas_.size());
 		return canvas_[index];
@@ -383,7 +383,7 @@ private:
 	 * stored here. When drawing the state is determined and that canvas is
 	 * drawn.
 	 */
-	std::vector<tcanvas> canvas_;
+	std::vector<canvas> canvas_;
 
 	/**
 	 * Contains the pointer to the configuration.

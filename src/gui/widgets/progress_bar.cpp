@@ -54,7 +54,7 @@ void tprogress_bar::set_percentage(unsigned percentage)
 	if(percentage_ != percentage) {
 		percentage_ = percentage;
 
-		for(auto & c : canvas())
+		for(auto & c : get_canvas())
 		{
 			c.set_variable("percentage", variant(percentage));
 		}

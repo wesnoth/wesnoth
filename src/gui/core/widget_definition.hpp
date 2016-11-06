@@ -34,7 +34,7 @@ struct tstate_definition
 {
 	explicit tstate_definition(const config& cfg);
 
-	tcanvas canvas;
+	canvas canvas_;
 };
 
 

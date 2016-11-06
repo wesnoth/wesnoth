@@ -172,7 +172,7 @@ twidget* tbuilder_drawing::build() const
 		widget->set_best_size(point(w, h));
 	}
 
-	widget->canvas().front().set_cfg(draw);
+	widget->get_canvas().front().set_cfg(draw);
 
 	DBG_GUI_G << "Window builder: placed drawing '" << id
 			  << "' with definition '" << definition << "'.\n";

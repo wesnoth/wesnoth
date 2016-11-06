@@ -561,13 +561,13 @@ void load_settings()
  * @end{parent}{name="generic/"}
  *
  */
-tstate_definition::tstate_definition(const config& cfg) : canvas()
+tstate_definition::tstate_definition(const config& cfg) : canvas_()
 {
 	const config& draw = *(cfg ? &cfg.child("draw") : &cfg);
 
 	VALIDATE(draw, _("No state or draw section defined."));
 
-	canvas.set_cfg(draw);
+	canvas_.set_cfg(draw);
 }
 
 void register_widget(const std::string& id,

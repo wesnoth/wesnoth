@@ -263,7 +263,7 @@ void tslider::update_canvas()
 	// Inherited.
 	tscrollbar_::update_canvas();
 
-	for(auto & tmp : canvas())
+	for(auto & tmp : get_canvas())
 	{
 		tmp.set_variable("text", variant(get_value_label()));
 	}

@@ -147,7 +147,7 @@ void tdebug_clock::update_time(const bool force)
 	}
 
 	if(clock_) {
-		for(auto & canvas : clock_->canvas())
+		for(auto & canvas : clock_->get_canvas())
 		{
 			canvas.set_variable("hour", variant(hour_stamp));
 			canvas.set_variable("minute", variant(minute_stamp));

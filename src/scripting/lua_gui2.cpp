@@ -15,7 +15,7 @@
 #include "lua_gui2.hpp"
 
 #include "gui/auxiliary/old_markup.hpp"
-#include "gui/core/canvas.hpp"     // for tcanvas
+#include "gui/core/canvas.hpp"     // for canvas
 #include "gui/core/window_builder.hpp"  // for twindow_builder, etc
 #include "gui/dialogs/drop_down_list.hpp"
 #include "gui/dialogs/gamestate_inspector.hpp"
@@ -716,7 +716,7 @@ int intf_set_dialog_canvas(lua_State *L)
 	gui2::tcontrol *c = dynamic_cast<gui2::tcontrol *>(w);
 	if (!c) return luaL_argerror(L, lua_gettop(L), "unsupported widget");
 
-	std::vector<gui2::tcanvas> &cv = c->canvas();
+	std::vector<gui2::canvas> &cv = c->get_canvas();
 	if (i < 1 || unsigned(i) > cv.size())
 		return luaL_argerror(L, 1, "out of bounds");
 
