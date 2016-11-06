@@ -87,8 +87,6 @@
 #include "whiteboard/manager.hpp"
 #include "widgets/combo.hpp"
 
-#include <boost/range/algorithm/find_if.hpp>
-
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
 #define LOG_NG LOG_STREAM(info, log_engine)
@@ -1448,7 +1446,7 @@ void console_handler::do_control() {
 	try {
 		side_num = lexical_cast<unsigned int>(side);
 	} catch(bad_lexical_cast&) {
-		std::vector<team>::const_iterator it_t = boost::find_if(resources::gameboard->teams(), save_id_matches(side));
+		const auto it_t = std::find_if(resources::gameboard->teams().begin(), resources::gameboard->teams().end(), save_id_matches(side));
 		if(it_t == resources::gameboard->teams().end()) {
 			utils::string_map symbols;
 			symbols["side"] = side;
