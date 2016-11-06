@@ -64,11 +64,11 @@ std::string sound_slider_adjust = "";
 
 t_string has_helptip_message;
 
-static std::vector<ttip> tips;
+static std::vector<game_tip> tips;
 
-std::vector<ttip> get_tips()
+std::vector<game_tip> get_tips()
 {
-	return tips::shuffle(tips);
+	return tip_of_the_day::shuffle(tips);
 }
 
 } // namespace settings
@@ -155,7 +155,7 @@ private:
 
 	t_string has_helptip_message_;
 
-	std::vector<ttip> tips_;
+	std::vector<game_tip> tips_;
 };
 
 /*WIKI
@@ -410,7 +410,7 @@ const std::string& tgui_definition::read(const config& cfg)
 	VALIDATE(!has_helptip_message_.empty(),
 			 missing_mandatory_wml_key("[settings]", "has_helptip_message"));
 
-	tips_ = tips::load(cfg);
+	tips_ = tip_of_the_day::load(cfg);
 
 	return id;
 }

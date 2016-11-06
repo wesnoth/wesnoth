@@ -33,7 +33,7 @@ namespace gui2
 {
 
 struct tgui_definition;
-class ttip;
+class game_tip;
 
 /** Do we wish to use the new library or not. */
 extern bool new_widgets;
@@ -202,7 +202,7 @@ extern std::string sound_slider_adjust;
 
 extern t_string has_helptip_message;
 
-std::vector<ttip> get_tips();
+std::vector<game_tip> get_tips();
 }
 
 } // namespace gui2

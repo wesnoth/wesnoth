@@ -264,9 +264,9 @@ void ttitle_screen::pre_show(twindow& window)
 	//
 	tmulti_page& tip_pages = find_widget<tmulti_page>(&window, "tips", false);
 
-	std::vector<ttip> tips(settings::get_tips());
+	std::vector<game_tip> tips(settings::get_tips());
 	if(tips.empty()) {
-		WRN_CF << "There are not tips of day available." << std::endl;
+		WRN_CF << "There are no tips of day available." << std::endl;
 	}
 
 	for(const auto& tip : tips)	{
