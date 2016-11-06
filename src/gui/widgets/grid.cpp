@@ -273,6 +273,7 @@ void tgrid::request_reduce_width(const unsigned maximum_width)
 	}
 
 	set_layout_size(size);
+	set_size(size);
 	layout(origin_);
 }
 
@@ -365,6 +366,7 @@ void tgrid::request_reduce_height(const unsigned maximum_height)
 			  << " resulting height " << size.y << ".\n";
 
 	set_layout_size(size);
+	set_size(size);
 	layout(origin_);
 }
 
