@@ -25,6 +25,8 @@
 
 #include "resources.hpp"
 
+#include <memory>
+
 namespace editor {
 
 int editor_action::next_id_ = 1;
@@ -59,7 +61,7 @@ std::string editor_action::get_description() const
 
 editor_action* editor_action::perform(map_context& mc) const
 {
-	util::unique_ptr<editor_action> undo(new editor_action_whole_map(mc.get_map()));
+	std::unique_ptr<editor_action> undo(new editor_action_whole_map(mc.get_map()));
 	perform_without_undo(mc);
 	return undo.release();
 }
@@ -132,7 +134,7 @@ editor_action* editor_action_chain::pop_first_action() {
 	return last;
 }
 editor_action_chain* editor_action_chain::perform(map_context& mc) const {
-	util::unique_ptr<editor_action_chain> undo(new editor_action_chain());
+	std::unique_ptr<editor_action_chain> undo(new editor_action_chain());
 	for (editor_action* a : actions_) {
 		if (a != nullptr) {
 			undo->append_action(a->perform(mc));
@@ -166,7 +168,7 @@ void editor_action_paste::extend(const editor_map& map, const std::set<map_locat
 editor_action_paste* editor_action_paste::perform(map_context& mc) const
 {
 	map_fragment mf(mc.get_map(), paste_.get_offset_area(offset_));
-	util::unique_ptr<editor_action_paste> undo(new editor_action_paste(mf));
+	std::unique_ptr<editor_action_paste> undo(new editor_action_paste(mf));
 	perform_without_undo(mc);
 	return undo.release();
 }
@@ -185,7 +187,7 @@ editor_action_paint_area* editor_action_paint_area::clone() const
 editor_action_paste* editor_action_paint_area::perform(map_context& mc) const
 {
 	map_fragment mf(mc.get_map(), area_);
-	util::unique_ptr<editor_action_paste> undo(new editor_action_paste(mf));
+	std::unique_ptr<editor_action_paste> undo(new editor_action_paste(mf));
 	perform_without_undo(mc);
 	return undo.release();
 }
@@ -202,7 +204,7 @@ editor_action_fill* editor_action_fill::clone() const
 editor_action_paint_area* editor_action_fill::perform(map_context& mc) const
 {
 	std::set<map_location> to_fill = mc.get_map().get_contiguous_terrain_tiles(loc_);
-	util::unique_ptr<editor_action_paint_area> undo(new editor_action_paint_area(to_fill, mc.get_map().get_terrain(loc_)));
+	std::unique_ptr<editor_action_paint_area> undo(new editor_action_paint_area(to_fill, mc.get_map().get_terrain(loc_)));
 	mc.draw_terrain(t_, to_fill, one_layer_);
 	mc.set_needs_terrain_rebuild();
 	return undo.release();
@@ -220,7 +222,7 @@ editor_action_starting_position* editor_action_starting_position::clone() const
 }
 editor_action* editor_action_starting_position::perform(map_context& mc) const
 {
-	util::unique_ptr<editor_action> undo;
+	std::unique_ptr<editor_action> undo;
 	const std::string* old_loc_id = mc.get_map().is_starting_position(loc_);
 	map_location old_loc = mc.get_map().special_location(loc_id_);
 	if (old_loc_id != nullptr) {
@@ -289,7 +291,7 @@ editor_action_shuffle_area* editor_action_shuffle_area::clone() const
 editor_action_paste* editor_action_shuffle_area::perform(map_context& mc) const
 {
 	map_fragment mf(mc.get_map(), area_);
-	util::unique_ptr<editor_action_paste> undo(new editor_action_paste(mf));
+	std::unique_ptr<editor_action_paste> undo(new editor_action_paste(mf));
 	perform_without_undo(mc);
 	return undo.release();
 }

@@ -428,35 +428,6 @@ inline unsigned int count_leading_ones(N n) {
 
 namespace util {
 
-template<class T>
-class unique_ptr
-{
-	T *ptr_;
-	// Neither copyable nor assignable.
-	unique_ptr(const unique_ptr &);
-	unique_ptr &operator=(const unique_ptr &);
-public:
-	unique_ptr(T *p = nullptr): ptr_(p) {}
-	~unique_ptr() { delete ptr_; }
-
-	void reset(T *p = nullptr)
-	{
-		delete ptr_;
-		ptr_ = p;
-	}
-
-	T *release()
-	{
-		T *p = ptr_;
-		ptr_ = nullptr;
-		return p;
-	}
-
-	T *get() { return ptr_; }
-	T *operator->() const { return ptr_; }
-	T &operator*() const { return *ptr_; }
-};
-
 namespace detail {
 	/// A struct that exists to implement a generic wrapper for std::find.
 	/// Container should "look like" an STL container of Values.
