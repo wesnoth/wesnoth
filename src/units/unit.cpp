@@ -1755,7 +1755,7 @@ std::string unit::describe_builtin_effect(std::string apply_to, const config& ef
 		const std::string &increase = effect["increase"];
 
 		if(!increase.empty()) {
-			int n = lexical_cast<int>(increase);
+			int n = std::stoi(increase);
 			return utils::print_modifier(increase) + " " +
 				_n("move", "moves", n);
 		}
@@ -1784,7 +1784,7 @@ std::string unit::describe_builtin_effect(std::string apply_to, const config& ef
 		std::string description = utils::print_modifier(increase) + " ";
 		const char* const singular = N_("attack per turn");
 		const char* const plural = N_("attacks per turn");
-		if (increase[increase.size()-1] == '%' || abs(lexical_cast<int>(increase)) != 1) {
+		if (increase[increase.size()-1] == '%' || abs(std::stoi(increase)) != 1) {
 			description += t_string(plural, "wesnoth");
 		} else {
 			description += t_string(singular, "wesnoth");

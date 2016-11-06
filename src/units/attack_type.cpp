@@ -350,7 +350,7 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 
 		if(increase_damage.empty() == false) {
 			add_and(desc);
-			int inc_damage = lexical_cast<int>(increase_damage);
+			int inc_damage = std::stoi(increase_damage);
 			desc << utils::print_modifier(increase_damage) << " "
 				 << _n("damage","damage", inc_damage);
 		}
