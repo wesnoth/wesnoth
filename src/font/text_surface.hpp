@@ -17,7 +17,6 @@
 
 #include "font_id.hpp" // for text_chunk
 #include "sdl/utils.hpp"
-#include "sdl/image.hpp"
 
 #include <SDL_ttf.h>
 

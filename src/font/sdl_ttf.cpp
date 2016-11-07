@@ -27,7 +27,6 @@
 #include "preferences.hpp"
 #include "tooltips.hpp"
 
-#include "sdl/image.hpp"
 #include "sdl/rect.hpp"
 #include "sdl/utils.hpp"
 #include "serialization/unicode.hpp"

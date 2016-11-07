@@ -167,7 +167,6 @@ libcampaignd = env.Library("campaignd", libcampaignd_sources, OBJPREFIX = "campa
 
 libwesnoth_sdl_sources = Split("""
     sdl/exception.cpp
-    sdl/image.cpp
     sdl/rect.cpp
     sdl/utils.cpp
     sdl/window.cpp

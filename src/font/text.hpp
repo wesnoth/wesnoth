@@ -25,8 +25,6 @@
 #include <string>
 #include <vector>
 
-#include "sdl/image.hpp"
-
 /***
  * Note: This is the cairo-pango code path, not the SDL_TTF code path.
  */

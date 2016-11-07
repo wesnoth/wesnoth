@@ -14,9 +14,7 @@
 
 #include "sdl/window.hpp"
 
-
 #include "sdl/exception.hpp"
-#include "sdl/image.hpp"
 
 #include <SDL_render.h>
 

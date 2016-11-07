@@ -17,7 +17,6 @@
 
 #include "map/location.hpp"
 #include "sdl/utils.hpp"
-#include "sdl/image.hpp"
 #include "terrain/translation.hpp"
 #include "game_config.hpp"
 

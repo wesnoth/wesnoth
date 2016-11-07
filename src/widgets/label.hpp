@@ -19,7 +19,6 @@
 #include "font/standard_colors.hpp"
 #include "widget.hpp"
 #include <string>
-#include "sdl/image.hpp"
 
 namespace gui {
 

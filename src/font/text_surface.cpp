@@ -17,7 +17,6 @@
 #include "sdl_ttf.hpp"
 
 #include "sdl/utils.hpp"
-#include "sdl/image.hpp"
 
 #include "log.hpp"
 
