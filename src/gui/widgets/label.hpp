@@ -133,12 +133,12 @@ private:
 
 // }---------- DEFINITION ---------{
 
-struct tlabel_definition : public tcontrol_definition
+struct label_definition : public control_definition
 {
 
-	explicit tlabel_definition(const config& cfg);
+	explicit label_definition(const config& cfg);
 
-	struct tresolution : public tresolution_definition_
+	struct tresolution : public resolution_definition
 	{
 		explicit tresolution(const config& cfg);
 
@@ -152,11 +152,11 @@ struct tlabel_definition : public tcontrol_definition
 namespace implementation
 {
 
-struct tbuilder_label : public tbuilder_control
+struct builder_label : public builder_control
 {
-	tbuilder_label(const config& cfg);
+	builder_label(const config& cfg);
 
-	using tbuilder_control::build;
+	using builder_control::build;
 
 	twidget* build() const;
 

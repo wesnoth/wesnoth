@@ -34,7 +34,7 @@ REGISTER_WIDGET(stacked_widget)
 tstacked_widget::tstacked_widget()
 	: tcontainer_(1)
 	, generator_(
-			  tgenerator_::build(false, false, tgenerator_::independent, false))
+			  generator_base::build(false, false, generator_base::independent, false))
 	, selected_layer_(-1)
 {
 }
@@ -94,7 +94,7 @@ void swap_grid(tgrid* grid,
 } // namespace
 
 void
-tstacked_widget::finalize(std::vector<tbuilder_grid_const_ptr> widget_builder)
+tstacked_widget::finalize(std::vector<builder_grid_const_ptr> widget_builder)
 {
 	assert(generator_);
 	string_map empty_data;
@@ -161,8 +161,8 @@ tgrid* tstacked_widget::get_layer_grid(unsigned int i)
 
 // }---------- DEFINITION ---------{
 
-tstacked_widget_definition::tstacked_widget_definition(const config& cfg)
-	: tcontrol_definition(cfg)
+stacked_widget_definition::stacked_widget_definition(const config& cfg)
+	: control_definition(cfg)
 {
 	DBG_GUI_P << "Parsing stacked widget " << id << '\n';
 
@@ -189,17 +189,17 @@ tstacked_widget_definition::tstacked_widget_definition(const config& cfg)
  * @end{tag}{name="stacked_widget_definition"}
  * @end{parent}{name="gui/"}
  */
-tstacked_widget_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg), grid(nullptr)
+stacked_widget_definition::tresolution::tresolution(const config& cfg)
+	: resolution_definition(cfg), grid(nullptr)
 {
 	// Add a dummy state since every widget needs a state.
 	static config dummy("draw");
-	state.push_back(tstate_definition(dummy));
+	state.push_back(state_definition(dummy));
 
 	const config& child = cfg.child("grid");
 	VALIDATE(child, _("No grid defined."));
 
-	grid = std::make_shared<tbuilder_grid>(child);
+	grid = std::make_shared<builder_grid>(child);
 }
 
 // }---------- BUILDER -----------{
@@ -227,8 +227,8 @@ tstacked_widget_definition::tresolution::tresolution(const config& cfg)
 namespace implementation
 {
 
-tbuilder_stacked_widget::tbuilder_stacked_widget(const config& real_cfg)
-	: tbuilder_control(real_cfg), stack()
+builder_stacked_widget::builder_stacked_widget(const config& real_cfg)
+	: builder_control(real_cfg), stack()
 {
 	const config& cfg = real_cfg.has_child("stack") ? real_cfg.child("stack") : real_cfg;
 	if(&cfg != &real_cfg) {
@@ -237,11 +237,11 @@ tbuilder_stacked_widget::tbuilder_stacked_widget(const config& real_cfg)
 	VALIDATE(cfg.has_child("layer"), _("No stack layers defined."));
 	for(const auto & layer : cfg.child_range("layer"))
 	{
-		stack.push_back(std::make_shared<tbuilder_grid>(layer));
+		stack.push_back(std::make_shared<builder_grid>(layer));
 	}
 }
 
-twidget* tbuilder_stacked_widget::build() const
+twidget* builder_stacked_widget::build() const
 {
 	tstacked_widget* widget = new tstacked_widget();
 
@@ -250,8 +250,8 @@ twidget* tbuilder_stacked_widget::build() const
 	DBG_GUI_G << "Window builder: placed stacked widget '" << id
 			  << "' with definition '" << definition << "'.\n";
 
-	std::shared_ptr<const tstacked_widget_definition::tresolution>
-	conf = std::static_pointer_cast<const tstacked_widget_definition::tresolution>(
+	std::shared_ptr<const stacked_widget_definition::tresolution>
+	conf = std::static_pointer_cast<const stacked_widget_definition::tresolution>(
 					widget->config());
 	assert(conf);
 

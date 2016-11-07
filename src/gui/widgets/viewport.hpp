@@ -25,7 +25,7 @@ namespace gui2
 
 namespace implementation
 {
-struct tbuilder_viewport;
+struct builder_viewport;
 } // namespace implementation
 
 class tgrid;
@@ -39,12 +39,12 @@ public:
 	explicit tviewport(twidget& widget);
 
 private:
-	tviewport(const implementation::tbuilder_viewport& builder,
-			  const tbuilder_widget::treplacements& replacements);
+	tviewport(const implementation::builder_viewport& builder,
+			  const builder_widget::replacements_map& replacements);
 
 public:
-	static tviewport* build(const implementation::tbuilder_viewport& builder,
-							const tbuilder_widget::treplacements& replacements);
+	static tviewport* build(const implementation::builder_viewport& builder,
+							const builder_widget::replacements_map& replacements);
 
 	~tviewport();
 
@@ -104,15 +104,15 @@ private:
 namespace implementation
 {
 
-struct tbuilder_viewport : public tbuilder_widget
+struct builder_viewport : public builder_widget
 {
-	explicit tbuilder_viewport(const config& cfg);
+	explicit builder_viewport(const config& cfg);
 
 	twidget* build() const;
 
-	twidget* build(const treplacements& replacements) const;
+	twidget* build(const replacements_map& replacements) const;
 
-	tbuilder_widget_ptr widget;
+	builder_widget_ptr widget;
 };
 
 } // namespace implementation

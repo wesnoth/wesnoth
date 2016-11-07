@@ -76,8 +76,8 @@ const std::string& tprogress_bar::get_control_type() const
 
 // }---------- DEFINITION ---------{
 
-tprogress_bar_definition::tprogress_bar_definition(const config& cfg)
-	: tcontrol_definition(cfg)
+progress_bar_definition::progress_bar_definition(const config& cfg)
+	: control_definition(cfg)
 {
 	DBG_GUI_P << "Parsing progress bar " << id << '\n';
 
@@ -106,11 +106,11 @@ tprogress_bar_definition::tprogress_bar_definition(const config& cfg)
  * @end{tag}{name="progress_bar_definition"}
  * @end{parent}{name="gui/"}
  */
-tprogress_bar_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
+progress_bar_definition::tresolution::tresolution(const config& cfg)
+	: resolution_definition(cfg)
 {
 	// Note the order should be the same as the enum state_t in progress_bar.hpp.
-	state.push_back(tstate_definition(cfg.child("state_enabled")));
+	state.push_back(state_definition(cfg.child("state_enabled")));
 }
 
 // }---------- BUILDER -----------{
@@ -139,12 +139,12 @@ tprogress_bar_definition::tresolution::tresolution(const config& cfg)
 namespace implementation
 {
 
-tbuilder_progress_bar::tbuilder_progress_bar(const config& cfg)
-	: tbuilder_control(cfg)
+builder_progress_bar::builder_progress_bar(const config& cfg)
+	: builder_control(cfg)
 {
 }
 
-twidget* tbuilder_progress_bar::build() const
+twidget* builder_progress_bar::build() const
 {
 	tprogress_bar* widget = new tprogress_bar();
 

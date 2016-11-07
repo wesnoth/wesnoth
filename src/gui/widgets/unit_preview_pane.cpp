@@ -441,24 +441,24 @@ void tunit_preview_pane::set_self_active(const bool /*active*/)
 
 // }---------- DEFINITION ---------{
 
-tunit_preview_pane_definition::tunit_preview_pane_definition(const config& cfg)
-	: tcontrol_definition(cfg)
+unit_preview_pane_definition::unit_preview_pane_definition(const config& cfg)
+	: control_definition(cfg)
 {
 	DBG_GUI_P << "Parsing unit preview pane " << id << '\n';
 
 	load_resolutions<tresolution>(cfg);
 }
 
-tunit_preview_pane_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg), grid()
+unit_preview_pane_definition::tresolution::tresolution(const config& cfg)
+	: resolution_definition(cfg), grid()
 {
-	state.push_back(tstate_definition(cfg.child("background")));
-	state.push_back(tstate_definition(cfg.child("foreground")));
+	state.push_back(state_definition(cfg.child("background")));
+	state.push_back(state_definition(cfg.child("foreground")));
 
 	const config& child = cfg.child("grid");
 	VALIDATE(child, _("No grid defined."));
 
-	grid = std::make_shared<tbuilder_grid>(child);
+	grid = std::make_shared<builder_grid>(child);
 }
 
 // }---------- BUILDER -----------{
@@ -466,13 +466,13 @@ tunit_preview_pane_definition::tresolution::tresolution(const config& cfg)
 namespace implementation
 {
 
-tbuilder_unit_preview_pane::tbuilder_unit_preview_pane(const config& cfg)
-	: tbuilder_control(cfg)
+builder_unit_preview_pane::builder_unit_preview_pane(const config& cfg)
+	: builder_control(cfg)
 	, image_mods_(cfg["image_mods"])
 {
 }
 
-twidget* tbuilder_unit_preview_pane::build() const
+twidget* builder_unit_preview_pane::build() const
 {
 	tunit_preview_pane* widget = new tunit_preview_pane();
 
@@ -481,9 +481,9 @@ twidget* tbuilder_unit_preview_pane::build() const
 	DBG_GUI_G << "Window builder: placed unit preview pane '" << id
 			  << "' with definition '" << definition << "'.\n";
 
-	std::shared_ptr<const tunit_preview_pane_definition::tresolution> conf
+	std::shared_ptr<const unit_preview_pane_definition::tresolution> conf
 		= std::static_pointer_cast<
-			const tunit_preview_pane_definition::tresolution>(widget->config());
+			const unit_preview_pane_definition::tresolution>(widget->config());
 
 	assert(conf);
 

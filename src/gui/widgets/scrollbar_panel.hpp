@@ -27,7 +27,7 @@ namespace gui2
 
 namespace implementation
 {
-struct tbuilder_scrollbar_panel;
+struct builder_scrollbar_panel;
 }
 
 /**
@@ -38,7 +38,7 @@ struct tbuilder_scrollbar_panel;
  */
 class tscrollbar_panel : public tscrollbar_container
 {
-	friend struct implementation::tbuilder_scrollbar_panel;
+	friend struct implementation::builder_scrollbar_panel;
 
 public:
 	/**
@@ -67,16 +67,16 @@ private:
 
 // }---------- DEFINITION ---------{
 
-struct tscrollbar_panel_definition : public tcontrol_definition
+struct scrollbar_panel_definition : public control_definition
 {
 
-	explicit tscrollbar_panel_definition(const config& cfg);
+	explicit scrollbar_panel_definition(const config& cfg);
 
-	struct tresolution : public tresolution_definition_
+	struct tresolution : public resolution_definition
 	{
 		explicit tresolution(const config& cfg);
 
-		tbuilder_grid_ptr grid;
+		builder_grid_ptr grid;
 	};
 };
 
@@ -85,18 +85,18 @@ struct tscrollbar_panel_definition : public tcontrol_definition
 namespace implementation
 {
 
-struct tbuilder_scrollbar_panel : public tbuilder_control
+struct builder_scrollbar_panel : public builder_control
 {
-	explicit tbuilder_scrollbar_panel(const config& cfg);
+	explicit builder_scrollbar_panel(const config& cfg);
 
-	using tbuilder_control::build;
+	using builder_control::build;
 
 	twidget* build() const;
 
 	tscrollbar_container::tscrollbar_mode vertical_scrollbar_mode;
 	tscrollbar_container::tscrollbar_mode horizontal_scrollbar_mode;
 
-	tbuilder_grid_ptr grid;
+	builder_grid_ptr grid;
 };
 
 } // namespace implementation

@@ -116,11 +116,11 @@ private:
 
 // }---------- DEFINITION ---------{
 
-struct tbutton_definition : public tcontrol_definition
+struct button_definition : public control_definition
 {
-	explicit tbutton_definition(const config& cfg);
+	explicit button_definition(const config& cfg);
 
-	struct tresolution : public tresolution_definition_
+	struct tresolution : public resolution_definition
 	{
 		explicit tresolution(const config& cfg);
 	};
@@ -133,12 +133,12 @@ class tcontrol;
 namespace implementation
 {
 
-struct tbuilder_button : public tbuilder_control
+struct builder_button : public builder_control
 {
 public:
-	explicit tbuilder_button(const config& cfg);
+	explicit builder_button(const config& cfg);
 
-	using tbuilder_control::build;
+	using builder_control::build;
 
 	twidget* build() const;
 

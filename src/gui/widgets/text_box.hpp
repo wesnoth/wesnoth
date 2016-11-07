@@ -280,11 +280,11 @@ private:
 
 // }---------- DEFINITION ---------{
 
-struct ttext_box_definition : public tcontrol_definition
+struct text_box_definition : public control_definition
 {
-	explicit ttext_box_definition(const config& cfg);
+	explicit text_box_definition(const config& cfg);
 
-	struct tresolution : public tresolution_definition_
+	struct tresolution : public resolution_definition
 	{
 		explicit tresolution(const config& cfg);
 
@@ -298,12 +298,12 @@ struct ttext_box_definition : public tcontrol_definition
 namespace implementation
 {
 
-struct tbuilder_text_box : public tbuilder_control
+struct builder_text_box : public builder_control
 {
 public:
-	explicit tbuilder_text_box(const config& cfg);
+	explicit builder_text_box(const config& cfg);
 
-	using tbuilder_control::build;
+	using builder_control::build;
 
 	twidget* build() const;
 

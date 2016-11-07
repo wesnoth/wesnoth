@@ -40,9 +40,9 @@ REGISTER_WIDGET(listbox)
 
 tlist::tlist(const bool has_minimum,
 			 const bool has_maximum,
-			 const tgenerator_::tplacement placement,
+			 const generator_base::tplacement placement,
 			 const bool select,
-			 const tbuilder_grid_const_ptr list_builder)
+			 const builder_grid_const_ptr list_builder)
 	: tcontainer_(2) // FIXME magic number
 	, state_(ENABLED)
 	, generator_(nullptr)
@@ -52,7 +52,7 @@ tlist::tlist(const bool has_minimum,
 	assert(list_builder);
 
 	generator_
-			= tgenerator_::build(has_minimum, has_maximum, placement, select);
+			= generator_base::build(has_minimum, has_maximum, placement, select);
 	assert(generator_);
 
 	connect_signal<event::LEFT_BUTTON_DOWN>(
@@ -325,7 +325,7 @@ void tlist::resize_content(
 
 void tlist::init()
 {
-	init_grid(cast<tlistbox_definition::tresolution>(config()).grid);
+	init_grid(cast<listbox_definition::tresolution>(config()).grid);
 
 	set_single_child(find_widget<tgrid>(&grid(), "_list_grid", false),
 					 generator_);

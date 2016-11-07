@@ -65,8 +65,8 @@ const std::string& tdrawing::get_control_type() const
 
 // }---------- DEFINITION ---------{
 
-tdrawing_definition::tdrawing_definition(const config& cfg)
-	: tcontrol_definition(cfg)
+drawing_definition::drawing_definition(const config& cfg)
+	: control_definition(cfg)
 {
 	DBG_GUI_P << "Parsing drawing " << id << '\n';
 
@@ -97,8 +97,8 @@ tdrawing_definition::tdrawing_definition(const config& cfg)
  * @end{tag}{name="drawing_definition"}
  * @end{parent}{name="gui/"}
  */
-tdrawing_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
+drawing_definition::tresolution::tresolution(const config& cfg)
+	: resolution_definition(cfg)
 {
 	/*
 	 * Note the order should be the same as the enum state_t in drawing.hpp.
@@ -106,7 +106,7 @@ tdrawing_definition::tresolution::tresolution(const config& cfg)
 	 * original draw section is ignored, so send a dummy.
 	 */
 	static const config dummy("draw");
-	state.push_back(tstate_definition(dummy));
+	state.push_back(state_definition(dummy));
 }
 
 // }---------- BUILDER -----------{
@@ -148,8 +148,8 @@ tdrawing_definition::tresolution::tresolution(const config& cfg)
 namespace implementation
 {
 
-tbuilder_drawing::tbuilder_drawing(const config& cfg)
-	: tbuilder_control(cfg)
+builder_drawing::builder_drawing(const config& cfg)
+	: builder_control(cfg)
 	, width(cfg["width"])
 	, height(cfg["height"])
 	, draw(cfg.child("draw"))
@@ -157,7 +157,7 @@ tbuilder_drawing::tbuilder_drawing(const config& cfg)
 	assert(!draw.empty());
 }
 
-twidget* tbuilder_drawing::build() const
+twidget* builder_drawing::build() const
 {
 	tdrawing* widget = new tdrawing();
 

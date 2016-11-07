@@ -118,11 +118,11 @@ private:
 
 // }---------- DEFINITION ---------{
 
-struct trepeating_button_definition : public tcontrol_definition
+struct repeating_button_definition : public control_definition
 {
-	explicit trepeating_button_definition(const config& cfg);
+	explicit repeating_button_definition(const config& cfg);
 
-	struct tresolution : public tresolution_definition_
+	struct tresolution : public resolution_definition
 	{
 		explicit tresolution(const config& cfg);
 	};
@@ -133,12 +133,12 @@ struct trepeating_button_definition : public tcontrol_definition
 namespace implementation
 {
 
-struct tbuilder_repeating_button : public tbuilder_control
+struct builder_repeating_button : public builder_control
 {
 public:
-	explicit tbuilder_repeating_button(const config& cfg);
+	explicit builder_repeating_button(const config& cfg);
 
-	using tbuilder_control::build;
+	using builder_control::build;
 
 	twidget* build() const;
 };

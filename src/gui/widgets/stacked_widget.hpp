@@ -27,14 +27,14 @@ namespace gui2
 
 namespace implementation
 {
-struct tbuilder_stacked_widget;
+struct builder_stacked_widget;
 }
 
-class tgenerator_;
+class generator_base;
 
 class tstacked_widget : public tcontainer_
 {
-	friend struct implementation::tbuilder_stacked_widget;
+	friend struct implementation::builder_stacked_widget;
 	friend class tdebug_layout_graph;
 
 public:
@@ -82,7 +82,7 @@ private:
 	 * @param widget_builder      The builder to build the contents of the
 	 *                            widget.
 	 */
-	void finalize(std::vector<tbuilder_grid_const_ptr> widget_builder);
+	void finalize(std::vector<builder_grid_const_ptr> widget_builder);
 
 	/**
 	 * Contains a pointer to the generator.
@@ -91,7 +91,7 @@ private:
 	 * of the tscrollbar_container super class and freed when it's grid is
 	 * freed.
 	 */
-	tgenerator_* generator_;
+	generator_base* generator_;
 
 	/**
 	 * The number of the current selected layer.
@@ -112,15 +112,15 @@ private:
 
 // }---------- DEFINITION ---------{
 
-struct tstacked_widget_definition : public tcontrol_definition
+struct stacked_widget_definition : public control_definition
 {
-	explicit tstacked_widget_definition(const config& cfg);
+	explicit stacked_widget_definition(const config& cfg);
 
-	struct tresolution : public tresolution_definition_
+	struct tresolution : public resolution_definition
 	{
 		explicit tresolution(const config& cfg);
 
-		tbuilder_grid_ptr grid;
+		builder_grid_ptr grid;
 	};
 };
 
@@ -129,16 +129,16 @@ struct tstacked_widget_definition : public tcontrol_definition
 namespace implementation
 {
 
-struct tbuilder_stacked_widget : public tbuilder_control
+struct builder_stacked_widget : public builder_control
 {
-	explicit tbuilder_stacked_widget(const config& cfg);
+	explicit builder_stacked_widget(const config& cfg);
 
-	using tbuilder_control::build;
+	using builder_control::build;
 
 	twidget* build() const;
 
 	/** The builders for all layers of the stack .*/
-	std::vector<tbuilder_grid_const_ptr> stack;
+	std::vector<builder_grid_const_ptr> stack;
 };
 
 } // namespace implementation

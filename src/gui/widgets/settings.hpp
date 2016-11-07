@@ -32,7 +32,7 @@
 namespace gui2
 {
 
-struct tgui_definition;
+struct gui_definition;
 class game_tip;
 
 /** Do we wish to use the new library or not. */
@@ -81,7 +81,7 @@ class tunit_test_access_only
  * @param functor                 The function to load the definitions.
  */
 void register_widget(const std::string& id,
-					 std::function<void(tgui_definition& gui_definition,
+					 std::function<void(gui_definition& gui,
 										  const std::string& definition_type,
 										  const config& cfg,
 										  const char* key)> functor);
@@ -97,9 +97,9 @@ void register_widget(const std::string& id,
  *                                object.
  */
 void load_widget_definitions(
-		tgui_definition& gui_definition,
+		gui_definition& gui,
 		const std::string& definition_type,
-		const std::vector<tcontrol_definition_ptr>& definitions);
+		const std::vector<control_definition_ptr>& definitions);
 
 /**
  * Loads the definitions of a widget.
@@ -117,12 +117,12 @@ void load_widget_definitions(
  * @param key                     Optional id of the definition to load.
  */
 template <class T>
-void load_widget_definitions(tgui_definition& gui_definition,
+void load_widget_definitions(gui_definition& gui,
 							 const std::string& definition_type,
 							 const config& cfg,
 							 const char* key)
 {
-	std::vector<tcontrol_definition_ptr> definitions;
+	std::vector<control_definition_ptr> definitions;
 
 	for (const auto & definition :
 			cfg.child_range(key ? key : definition_type + "_definition"))
@@ -131,11 +131,11 @@ void load_widget_definitions(tgui_definition& gui_definition,
 		definitions.push_back(std::make_shared<T>(definition));
 	}
 
-	load_widget_definitions(gui_definition, definition_type, definitions);
+	load_widget_definitions(gui, definition_type, definitions);
 }
 
 
-tresolution_definition_ptr get_control(const std::string& control_type,
+resolution_definition_ptr get_control(const std::string& control_type,
 									   const std::string& definition);
 
 /** Helper struct to signal that get_window_builder failed. */
@@ -159,7 +159,7 @@ struct twindow_builder_invalid_id
  *
  * @returns                   An iterator to the requested builder.
  */
-std::vector<twindow_builder::tresolution>::const_iterator
+std::vector<builder_window::window_resolution>::const_iterator
 get_window_builder(const std::string& type);
 
 /** Loads the setting for the theme. */

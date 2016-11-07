@@ -34,7 +34,7 @@ REGISTER_WIDGET(multi_page)
 tmulti_page::tmulti_page()
 	: tcontainer_(0)
 	, generator_(
-			  tgenerator_::build(true, true, tgenerator_::independent, false))
+			  generator_base::build(true, true, generator_base::independent, false))
 	, page_builder_(nullptr)
 {
 }
@@ -180,8 +180,8 @@ void tmulti_page::set_self_active(const bool /*active*/)
 
 // }---------- DEFINITION ---------{
 
-tmulti_page_definition::tmulti_page_definition(const config& cfg)
-	: tcontrol_definition(cfg)
+multi_page_definition::multi_page_definition(const config& cfg)
+	: control_definition(cfg)
 {
 	DBG_GUI_P << "Parsing multipage " << id << '\n';
 
@@ -209,13 +209,13 @@ tmulti_page_definition::tmulti_page_definition(const config& cfg)
  * @end{parent}{name="gui/"}
  * A multipage has no states.
  */
-tmulti_page_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg), grid(nullptr)
+multi_page_definition::tresolution::tresolution(const config& cfg)
+	: resolution_definition(cfg), grid(nullptr)
 {
 	const config& child = cfg.child("grid");
 	VALIDATE(child, _("No grid defined."));
 
-	grid = std::make_shared<tbuilder_grid>(child);
+	grid = std::make_shared<builder_grid>(child);
 }
 
 // }---------- BUILDER -----------{
@@ -266,13 +266,13 @@ tmulti_page_definition::tresolution::tresolution(const config& cfg)
 namespace implementation
 {
 
-tbuilder_multi_page::tbuilder_multi_page(const config& cfg)
-	: implementation::tbuilder_control(cfg), builder(nullptr), data()
+builder_multi_page::builder_multi_page(const config& cfg)
+	: implementation::builder_control(cfg), builder(nullptr), data()
 {
 	const config& page = cfg.child("page_definition");
 
 	VALIDATE(page, _("No page defined."));
-	builder = std::make_shared<tbuilder_grid>(page);
+	builder = std::make_shared<builder_grid>(page);
 	assert(builder);
 
 	/** @todo This part is untested. */
@@ -301,7 +301,7 @@ tbuilder_multi_page::tbuilder_multi_page(const config& cfg)
 	}
 }
 
-twidget* tbuilder_multi_page::build() const
+twidget* builder_multi_page::build() const
 {
 	tmulti_page* widget = new tmulti_page();
 
@@ -312,8 +312,8 @@ twidget* tbuilder_multi_page::build() const
 	DBG_GUI_G << "Window builder: placed multi_page '" << id
 			  << "' with definition '" << definition << "'.\n";
 
-	std::shared_ptr<const tmulti_page_definition::tresolution>
-	conf = std::static_pointer_cast<const tmulti_page_definition::tresolution>(
+	std::shared_ptr<const multi_page_definition::tresolution>
+	conf = std::static_pointer_cast<const multi_page_definition::tresolution>(
 					widget->config());
 	assert(conf);
 

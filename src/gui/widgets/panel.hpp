@@ -76,11 +76,11 @@ private:
 
 // }---------- DEFINITION ---------{
 
-struct tpanel_definition : public tcontrol_definition
+struct panel_definition : public control_definition
 {
-	explicit tpanel_definition(const config& cfg);
+	explicit panel_definition(const config& cfg);
 
-	struct tresolution : public tresolution_definition_
+	struct tresolution : public resolution_definition
 	{
 		explicit tresolution(const config& cfg);
 
@@ -97,15 +97,15 @@ struct tpanel_definition : public tcontrol_definition
 namespace implementation
 {
 
-struct tbuilder_panel : public tbuilder_control
+struct builder_panel : public builder_control
 {
-	explicit tbuilder_panel(const config& cfg);
+	explicit builder_panel(const config& cfg);
 
-	using tbuilder_control::build;
+	using builder_control::build;
 
 	twidget* build() const;
 
-	tbuilder_grid_ptr grid;
+	builder_grid_ptr grid;
 };
 
 } // namespace implementation

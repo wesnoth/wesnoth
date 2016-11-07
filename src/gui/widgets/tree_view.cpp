@@ -37,7 +37,7 @@ namespace gui2
 
 REGISTER_WIDGET(tree_view)
 
-ttree_view::ttree_view(const std::vector<tnode_definition>& node_definitions)
+ttree_view::ttree_view(const std::vector<node_definition>& node_definitions)
 	: tscrollbar_container(2)
 	, node_definitions_(node_definitions)
 	, indentation_step_size_(0)
@@ -268,8 +268,8 @@ void ttree_view::handle_key_right_arrow(SDL_Keymod modifier, bool& handled)
 
 // }---------- DEFINITION ---------{
 
-ttree_view_definition::ttree_view_definition(const config& cfg)
-	: tcontrol_definition(cfg)
+tree_view_definition::tree_view_definition(const config& cfg)
+	: control_definition(cfg)
 {
 	DBG_GUI_P << "Parsing tree view " << id << '\n';
 
@@ -290,7 +290,7 @@ ttree_view_definition::ttree_view_definition(const config& cfg)
  * * state_enabled, the listbox is enabled.
  * * state_disabled, the listbox is disabled.
  * @begin{parent}{name="gui/"}
- * @begin{tag}{name="tree_view_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
+ * @begin{tag}{name="ree_view_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
  * @begin{tag}{name="resolution"}{min=0}{max=-1}{super="generic/widget_definition/resolution"}
  * @allow{link}{name="gui/window/resolution/grid"}
  * @begin{tag}{name="state_enabled"}{min=0}{max=1}{super="generic/state"}
@@ -298,20 +298,20 @@ ttree_view_definition::ttree_view_definition(const config& cfg)
  * @begin{tag}{name="state_disabled"}{min=0}{max=1}{super="generic/state"}
  * @end{tag}{name="state_disabled"}
  * @end{tag}{name="resolution"}
- * @end{tag}{name="tree_view_definition"}
+ * @end{tag}{name="ree_view_definition"}
  * @end{parent}{name="gui/"}
  */
-ttree_view_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg), grid(nullptr)
+tree_view_definition::tresolution::tresolution(const config& cfg)
+	: resolution_definition(cfg), grid(nullptr)
 {
 	// Note the order should be the same as the enum state_t is listbox.hpp.
-	state.push_back(tstate_definition(cfg.child("state_enabled")));
-	state.push_back(tstate_definition(cfg.child("state_disabled")));
+	state.push_back(state_definition(cfg.child("state_enabled")));
+	state.push_back(state_definition(cfg.child("state_disabled")));
 
 	const config& child = cfg.child("grid");
 	VALIDATE(child, _("No grid defined."));
 
-	grid = std::make_shared<tbuilder_grid>(child);
+	grid = std::make_shared<builder_grid>(child);
 }
 
 // }---------- BUILDER -----------{
@@ -372,8 +372,8 @@ ttree_view_definition::tresolution::tresolution(const config& cfg)
 namespace implementation
 {
 
-tbuilder_tree_view::tbuilder_tree_view(const config& cfg)
-	: tbuilder_control(cfg)
+builder_tree_view::builder_tree_view(const config& cfg)
+	: builder_control(cfg)
 	, vertical_scrollbar_mode(
 			  get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
 	, horizontal_scrollbar_mode(
@@ -390,7 +390,7 @@ tbuilder_tree_view::tbuilder_tree_view(const config& cfg)
 	VALIDATE(!nodes.empty(), _("No nodes defined for a tree view."));
 }
 
-twidget* tbuilder_tree_view::build() const
+twidget* builder_tree_view::build() const
 {
 	/*
 	 *  TODO see how much we can move in the constructor instead of
@@ -408,8 +408,8 @@ twidget* tbuilder_tree_view::build() const
 	DBG_GUI_G << "Window builder: placed tree_view '" << id
 			  << "' with definition '" << definition << "'.\n";
 
-	std::shared_ptr<const ttree_view_definition::tresolution>
-	conf = std::static_pointer_cast<const ttree_view_definition::tresolution>(
+	std::shared_ptr<const tree_view_definition::tresolution>
+	conf = std::static_pointer_cast<const tree_view_definition::tresolution>(
 					widget->config());
 	assert(conf);
 
@@ -433,7 +433,7 @@ ttree_node::ttree_node(const config& cfg)
 
 	VALIDATE(node_definition, _("No node defined."));
 
-	builder = std::make_shared<tbuilder_grid>(node_definition);
+	builder = std::make_shared<builder_grid>(node_definition);
 }
 
 } // namespace implementation

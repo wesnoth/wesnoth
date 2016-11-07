@@ -70,11 +70,11 @@ private:
 
 // }---------- DEFINITION ---------{
 
-struct tvertical_scrollbar_definition : public tcontrol_definition
+struct vertical_scrollbar_definition : public control_definition
 {
-	explicit tvertical_scrollbar_definition(const config& cfg);
+	explicit vertical_scrollbar_definition(const config& cfg);
 
-	struct tresolution : public tresolution_definition_
+	struct tresolution : public resolution_definition
 	{
 		explicit tresolution(const config& cfg);
 
@@ -91,11 +91,11 @@ struct tvertical_scrollbar_definition : public tcontrol_definition
 namespace implementation
 {
 
-struct tbuilder_vertical_scrollbar : public tbuilder_control
+struct builder_vertical_scrollbar : public builder_control
 {
-	explicit tbuilder_vertical_scrollbar(const config& cfg);
+	explicit builder_vertical_scrollbar(const config& cfg);
 
-	using tbuilder_control::build;
+	using builder_control::build;
 
 	twidget* build() const;
 };

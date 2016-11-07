@@ -28,15 +28,15 @@ namespace gui2
 
 namespace implementation
 {
-struct tbuilder_multi_page;
+struct builder_multi_page;
 }
 
-class tgenerator_;
+class generator_base;
 
 /** The multi page class. */
 class tmulti_page : public tcontainer_
 {
-	friend struct implementation::tbuilder_multi_page;
+	friend struct implementation::builder_multi_page;
 	friend class tdebug_layout_graph;
 
 public:
@@ -134,7 +134,7 @@ public:
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	void set_page_builder(tbuilder_grid_ptr page_builder)
+	void set_page_builder(builder_grid_ptr page_builder)
 	{
 		page_builder_ = page_builder;
 	}
@@ -154,10 +154,10 @@ private:
 	 * of the tscrollbar_container super class and freed when it's grid is
 	 * freed.
 	 */
-	tgenerator_* generator_;
+	generator_base* generator_;
 
 	/** Contains the builder for the new items. */
-	tbuilder_grid_const_ptr page_builder_;
+	builder_grid_const_ptr page_builder_;
 
 	/** See @ref twidget::impl_draw_background. */
 	virtual void impl_draw_background(surface& frame_buffer,
@@ -173,15 +173,15 @@ private:
 
 // }---------- DEFINITION ---------{
 
-struct tmulti_page_definition : public tcontrol_definition
+struct multi_page_definition : public control_definition
 {
-	explicit tmulti_page_definition(const config& cfg);
+	explicit multi_page_definition(const config& cfg);
 
-	struct tresolution : public tresolution_definition_
+	struct tresolution : public resolution_definition
 	{
 		explicit tresolution(const config& cfg);
 
-		tbuilder_grid_ptr grid;
+		builder_grid_ptr grid;
 	};
 };
 
@@ -190,15 +190,15 @@ struct tmulti_page_definition : public tcontrol_definition
 namespace implementation
 {
 
-struct tbuilder_multi_page : public tbuilder_control
+struct builder_multi_page : public builder_control
 {
-	explicit tbuilder_multi_page(const config& cfg);
+	explicit builder_multi_page(const config& cfg);
 
-	using tbuilder_control::build;
+	using builder_control::build;
 
 	twidget* build() const;
 
-	tbuilder_grid_ptr builder;
+	builder_grid_ptr builder;
 
 	/**
 	 * Multi page data.

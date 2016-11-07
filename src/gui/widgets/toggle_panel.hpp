@@ -71,7 +71,7 @@ public:
 	 * See @ref tcontainer_::get_client_rect.
 	 *
 	 * @todo only due to the fact our definition is slightly different from
-	 * tpanel_definition we need to override this function and do about the
+	 * panel_definition we need to override this function and do about the
 	 * same, look at a way to 'fix' that.
 	 */
 	virtual SDL_Rect get_client_rect() const override;
@@ -80,7 +80,7 @@ public:
 	 * See @ref tcontainer_::border_space.
 	 *
 	 * @todo only due to the fact our definition is slightly different from
-	 * tpanel_definition we need to override this function and do about the
+	 * panel_definition we need to override this function and do about the
 	 * same, look at a way to 'fix' that.
 	 */
 	virtual point border_space() const override;
@@ -188,11 +188,11 @@ private:
 
 // }---------- DEFINITION ---------{
 
-struct ttoggle_panel_definition : public tcontrol_definition
+struct toggle_panel_definition : public control_definition
 {
-	explicit ttoggle_panel_definition(const config& cfg);
+	explicit toggle_panel_definition(const config& cfg);
 
-	struct tresolution : public tresolution_definition_
+	struct tresolution : public resolution_definition
 	{
 		explicit tresolution(const config& cfg);
 
@@ -209,15 +209,15 @@ struct ttoggle_panel_definition : public tcontrol_definition
 namespace implementation
 {
 
-struct tbuilder_toggle_panel : public tbuilder_control
+struct builder_toggle_panel : public builder_control
 {
-	explicit tbuilder_toggle_panel(const config& cfg);
+	explicit builder_toggle_panel(const config& cfg);
 
-	using tbuilder_control::build;
+	using builder_control::build;
 
 	twidget* build() const;
 
-	tbuilder_grid_ptr grid;
+	builder_grid_ptr grid;
 
 private:
 	std::string retval_id_;

@@ -37,7 +37,7 @@ class ttext_box;
 
 namespace implementation
 {
-	struct tbuilder_chatbox;
+	struct builder_chatbox;
 }
 
 
@@ -54,7 +54,7 @@ struct tlobby_chat_window
 
 class tchatbox : public tcontainer_, public events::chat_handler
 {
-	friend struct implementation::tbuilder_chatbox;
+	friend struct implementation::builder_chatbox;
 
 public:
 	tchatbox();
@@ -258,16 +258,16 @@ public:
 
 // }---------- DEFINITION ---------{
 
-struct tchatbox_definition : public tcontrol_definition
+struct chatbox_definition : public control_definition
 {
 
-	explicit tchatbox_definition(const config& cfg);
+	explicit chatbox_definition(const config& cfg);
 
-	struct tresolution : public tresolution_definition_
+	struct tresolution : public resolution_definition
 	{
 		explicit tresolution(const config& cfg);
 
-		tbuilder_grid_ptr grid;
+		builder_grid_ptr grid;
 	};
 };
 
@@ -276,12 +276,12 @@ struct tchatbox_definition : public tcontrol_definition
 namespace implementation
 {
 
-struct tbuilder_chatbox : public tbuilder_control
+struct builder_chatbox : public builder_control
 {
 public:
-	explicit tbuilder_chatbox(const config& cfg);
+	explicit builder_chatbox(const config& cfg);
 
-	using tbuilder_control::build;
+	using builder_control::build;
 
 	twidget* build() const;
 

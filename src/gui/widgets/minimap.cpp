@@ -264,8 +264,8 @@ const std::string& tminimap::get_control_type() const
 
 // }---------- DEFINITION ---------{
 
-tminimap_definition::tminimap_definition(const config& cfg)
-	: tcontrol_definition(cfg)
+minimap_definition::minimap_definition(const config& cfg)
+	: control_definition(cfg)
 {
 	DBG_GUI_P << "Parsing minimap " << id << '\n';
 
@@ -291,11 +291,11 @@ tminimap_definition::tminimap_definition(const config& cfg)
  * @end{tag}{name="minimap_definition"}
  * @end{parent}{name="gui/"}
  */
-tminimap_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
+minimap_definition::tresolution::tresolution(const config& cfg)
+	: resolution_definition(cfg)
 {
 	// Note the order should be the same as the enum state_t in minimap.hpp.
-	state.push_back(tstate_definition(cfg.child("state_enabled")));
+	state.push_back(state_definition(cfg.child("state_enabled")));
 }
 
 // }---------- BUILDER -----------{
@@ -327,11 +327,11 @@ tminimap_definition::tresolution::tresolution(const config& cfg)
 namespace implementation
 {
 
-tbuilder_minimap::tbuilder_minimap(const config& cfg) : tbuilder_control(cfg)
+builder_minimap::builder_minimap(const config& cfg) : builder_control(cfg)
 {
 }
 
-twidget* tbuilder_minimap::build() const
+twidget* builder_minimap::build() const
 {
 	tminimap* widget = new tminimap();
 

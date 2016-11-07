@@ -66,7 +66,7 @@ tcontrol::tcontrol(const unsigned canvas_count)
 			&tcontrol::signal_handler_notify_remove_tooltip, this, _2, _3));
 }
 
-tcontrol::tcontrol(const implementation::tbuilder_control& builder,
+tcontrol::tcontrol(const implementation::builder_control& builder,
 				   const unsigned canvas_count,
 				   const std::string& control_type)
 	: twidget(builder)
@@ -647,8 +647,8 @@ std::string tcontrol::get_label_link(const gui2::point & position) const
 namespace implementation
 {
 
-tbuilder_control::tbuilder_control(const config& cfg)
-	: tbuilder_widget(cfg)
+builder_control::builder_control(const config& cfg)
+	: builder_widget(cfg)
 	, definition(cfg["definition"])
 	, label_string(cfg["label"].t_str())
 	, tooltip(cfg["tooltip"].t_str())
@@ -671,7 +671,7 @@ tbuilder_control::tbuilder_control(const config& cfg)
 			  << "' and definition '" << definition << "'.\n";
 }
 
-void tbuilder_control::init_control(tcontrol* control) const
+void builder_control::init_control(tcontrol* control) const
 {
 	assert(control);
 
@@ -689,7 +689,7 @@ void tbuilder_control::init_control(tcontrol* control) const
 #endif
 }
 
-twidget* tbuilder_control::build(const treplacements& /*replacements*/) const
+twidget* builder_control::build(const replacements_map& /*replacements*/) const
 {
 	return build();
 }

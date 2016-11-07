@@ -63,8 +63,8 @@ point tslider::calculate_best_size() const
 	if(best_slider_length_ != 0) {
 
 		// Override length.
-		std::shared_ptr<const tslider_definition::tresolution> conf
-				= std::static_pointer_cast<const tslider_definition::
+		std::shared_ptr<const slider_definition::tresolution> conf
+				= std::static_pointer_cast<const slider_definition::
 													  tresolution>(config());
 
 		assert(conf);
@@ -156,8 +156,8 @@ void tslider::child_callback_positioner_moved()
 
 unsigned tslider::minimum_positioner_length() const
 {
-	std::shared_ptr<const tslider_definition::tresolution>
-	conf = std::static_pointer_cast<const tslider_definition::tresolution>(
+	std::shared_ptr<const slider_definition::tresolution>
+	conf = std::static_pointer_cast<const slider_definition::tresolution>(
 			config());
 	assert(conf);
 	return conf->minimum_positioner_length;
@@ -165,8 +165,8 @@ unsigned tslider::minimum_positioner_length() const
 
 unsigned tslider::maximum_positioner_length() const
 {
-	std::shared_ptr<const tslider_definition::tresolution>
-	conf = std::static_pointer_cast<const tslider_definition::tresolution>(
+	std::shared_ptr<const slider_definition::tresolution>
+	conf = std::static_pointer_cast<const slider_definition::tresolution>(
 			config());
 	assert(conf);
 	return conf->maximum_positioner_length;
@@ -174,8 +174,8 @@ unsigned tslider::maximum_positioner_length() const
 
 unsigned tslider::offset_before() const
 {
-	std::shared_ptr<const tslider_definition::tresolution>
-	conf = std::static_pointer_cast<const tslider_definition::tresolution>(
+	std::shared_ptr<const slider_definition::tresolution>
+	conf = std::static_pointer_cast<const slider_definition::tresolution>(
 			config());
 	assert(conf);
 	return conf->left_offset;
@@ -183,8 +183,8 @@ unsigned tslider::offset_before() const
 
 unsigned tslider::offset_after() const
 {
-	std::shared_ptr<const tslider_definition::tresolution>
-	conf = std::static_pointer_cast<const tslider_definition::tresolution>(
+	std::shared_ptr<const slider_definition::tresolution>
+	conf = std::static_pointer_cast<const slider_definition::tresolution>(
 			config());
 	assert(conf);
 	return conf->right_offset;
@@ -343,8 +343,8 @@ void tslider::set_value_labels(const std::vector<t_string>& value_labels)
 
 // }---------- DEFINITION ---------{
 
-tslider_definition::tslider_definition(const config& cfg)
-	: tcontrol_definition(cfg)
+slider_definition::slider_definition(const config& cfg)
+	: control_definition(cfg)
 {
 	DBG_GUI_P << "Parsing slider " << id << '\n';
 
@@ -398,8 +398,8 @@ tslider_definition::tslider_definition(const config& cfg)
  * @end{tag}{name="slider_definition"}
  * @end{parent}{name="gui/"}
  */
-tslider_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
+slider_definition::tresolution::tresolution(const config& cfg)
+	: resolution_definition(cfg)
 	, minimum_positioner_length(cfg["minimum_positioner_length"])
 	, maximum_positioner_length(cfg["maximum_positioner_length"])
 	, left_offset(cfg["left_offset"])
@@ -410,10 +410,10 @@ tslider_definition::tresolution::tresolution(const config& cfg)
 									   "minimum_positioner_length"));
 
 	// Note the order should be the same as the enum state_t is slider.hpp.
-	state.push_back(tstate_definition(cfg.child("state_enabled")));
-	state.push_back(tstate_definition(cfg.child("state_disabled")));
-	state.push_back(tstate_definition(cfg.child("state_pressed")));
-	state.push_back(tstate_definition(cfg.child("state_focused")));
+	state.push_back(state_definition(cfg.child("state_enabled")));
+	state.push_back(state_definition(cfg.child("state_disabled")));
+	state.push_back(state_definition(cfg.child("state_pressed")));
+	state.push_back(state_definition(cfg.child("state_focused")));
 }
 
 // }---------- BUILDER -----------{
@@ -472,8 +472,8 @@ tslider_definition::tresolution::tresolution(const config& cfg)
 namespace implementation
 {
 
-tbuilder_slider::tbuilder_slider(const config& cfg)
-	: implementation::tbuilder_control(cfg)
+builder_slider::builder_slider(const config& cfg)
+	: implementation::builder_control(cfg)
 	, best_slider_length_(cfg["best_slider_length"])
 	, minimum_value_(cfg["minimum_value"])
 	, maximum_value_(cfg["maximum_value"])
@@ -494,7 +494,7 @@ tbuilder_slider::tbuilder_slider(const config& cfg)
 	}
 }
 
-twidget* tbuilder_slider::build() const
+twidget* builder_slider::build() const
 {
 	tslider* widget = new tslider();
 

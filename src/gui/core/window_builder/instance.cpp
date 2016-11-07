@@ -24,23 +24,23 @@ namespace gui2
 namespace implementation
 {
 
-tbuilder_instance::tbuilder_instance(const config& cfg)
-	: tbuilder_widget(cfg), configuration(cfg)
+builder_instance::builder_instance(const config& cfg)
+	: builder_widget(cfg), configuration(cfg)
 {
 }
 
-twidget* tbuilder_instance::build() const
+twidget* builder_instance::build() const
 {
-	return build(treplacements());
+	return build(replacements_map());
 }
 
-twidget* tbuilder_instance::build(const treplacements& replacements) const
+twidget* builder_instance::build(const replacements_map& replacements) const
 {
-	const treplacements::const_iterator itor = replacements.find(id);
+	const replacements_map::const_iterator itor = replacements.find(id);
 	if(itor != replacements.end()) {
 		return itor->second->build();
 	} else {
-		implementation::tbuilder_spacer builder(configuration);
+		implementation::builder_spacer builder(configuration);
 		return builder.build();
 	}
 }

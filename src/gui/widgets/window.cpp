@@ -85,14 +85,14 @@ namespace implementation
 {
 /** @todo See whether this hack can be removed. */
 // Needed to fix a compiler error in REGISTER_WIDGET.
-class tbuilder_window : public tbuilder_control
+class builder_window : public builder_control
 {
 public:
-	tbuilder_window(const config& cfg) : tbuilder_control(cfg)
+	builder_window(const config& cfg) : builder_control(cfg)
 	{
 	}
 
-	using tbuilder_control::build;
+	using builder_control::build;
 
 	twidget* build() const
 	{
@@ -302,8 +302,8 @@ twindow::twindow(CVideo& video,
 				 const unsigned maximum_width,
 				 const unsigned maximum_height,
 				 const std::string& definition,
-				 const twindow_builder::tresolution::ttip& tooltip,
-				 const twindow_builder::tresolution::ttip& helptip)
+				 const builder_window::window_resolution::ttip& tooltip,
+				 const builder_window::window_resolution::ttip& helptip)
 	: tpanel()
 	, cursor::setter(cursor::NORMAL)
 	, video_(video)
@@ -973,8 +973,8 @@ void twindow::layout()
 {
 	/***** Initialize. *****/
 
-	std::shared_ptr<const twindow_definition::tresolution>
-	conf = std::static_pointer_cast<const twindow_definition::tresolution>(
+	std::shared_ptr<const window_definition::tresolution>
+	conf = std::static_pointer_cast<const window_definition::tresolution>(
 			config());
 	assert(conf);
 
@@ -1260,7 +1260,7 @@ void swap_grid(tgrid* grid,
 
 } // namespace
 
-void twindow::finalize(const std::shared_ptr<tbuilder_grid>& content_grid)
+void twindow::finalize(const std::shared_ptr<builder_grid>& content_grid)
 {
 	swap_grid(nullptr, &grid(), content_grid->build(), "_window_content_grid");
 }
@@ -1479,23 +1479,23 @@ void twindow::signal_handler_request_placement(const event::event_t event,
  * @end{tag}{name="window_definition"}
  * @end{parent}{name="gui/"}
  */
-twindow_definition::twindow_definition(const config& cfg)
-	: tcontrol_definition(cfg)
+window_definition::window_definition(const config& cfg)
+	: control_definition(cfg)
 {
 	DBG_GUI_P << "Parsing window " << id << '\n';
 
 	load_resolutions<tresolution>(cfg);
 }
 
-twindow_definition::tresolution::tresolution(const config& cfg)
-	: tpanel_definition::tresolution(cfg), grid(nullptr)
+window_definition::tresolution::tresolution(const config& cfg)
+	: panel_definition::tresolution(cfg), grid(nullptr)
 {
 	const config& child = cfg.child("grid");
 	// VALIDATE(child, _("No grid defined."));
 
 	/** @todo Evaluate whether the grid should become mandatory. */
 	if(child) {
-		grid = std::make_shared<tbuilder_grid>(child);
+		grid = std::make_shared<builder_grid>(child);
 	}
 }
 

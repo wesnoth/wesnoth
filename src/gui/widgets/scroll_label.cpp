@@ -136,8 +136,8 @@ void tscroll_label::signal_handler_left_button_down(const event::event_t event)
 
 // }---------- DEFINITION ---------{
 
-tscroll_label_definition::tscroll_label_definition(const config& cfg)
-	: tcontrol_definition(cfg)
+scroll_label_definition::scroll_label_definition(const config& cfg)
+	: control_definition(cfg)
 {
 	DBG_GUI_P << "Parsing scroll label " << id << '\n';
 
@@ -186,17 +186,17 @@ tscroll_label_definition::tscroll_label_definition(const config& cfg)
  * @end{tag}{name="scroll_label_definition"}
  * @end{parent}{name="gui/"}
  */
-tscroll_label_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg), grid(nullptr)
+scroll_label_definition::tresolution::tresolution(const config& cfg)
+	: resolution_definition(cfg), grid(nullptr)
 {
 	// Note the order should be the same as the enum state_t is scroll_label.hpp.
-	state.push_back(tstate_definition(cfg.child("state_enabled")));
-	state.push_back(tstate_definition(cfg.child("state_disabled")));
+	state.push_back(state_definition(cfg.child("state_enabled")));
+	state.push_back(state_definition(cfg.child("state_disabled")));
 
 	const config& child = cfg.child("grid");
 	VALIDATE(child, _("No grid defined."));
 
-	grid = std::make_shared<tbuilder_grid>(child);
+	grid = std::make_shared<builder_grid>(child);
 }
 
 // }---------- BUILDER -----------{
@@ -237,8 +237,8 @@ tscroll_label_definition::tresolution::tresolution(const config& cfg)
 namespace implementation
 {
 
-tbuilder_scroll_label::tbuilder_scroll_label(const config& cfg)
-	: implementation::tbuilder_control(cfg)
+builder_scroll_label::builder_scroll_label(const config& cfg)
+	: implementation::builder_control(cfg)
 	, vertical_scrollbar_mode(
 			  get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
 	, horizontal_scrollbar_mode(
@@ -248,7 +248,7 @@ tbuilder_scroll_label::tbuilder_scroll_label(const config& cfg)
 {
 }
 
-twidget* tbuilder_scroll_label::build() const
+twidget* builder_scroll_label::build() const
 {
 	tscroll_label* widget = new tscroll_label(wrap_on, text_alignment);
 
@@ -257,8 +257,8 @@ twidget* tbuilder_scroll_label::build() const
 	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
 	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
 
-	std::shared_ptr<const tscroll_label_definition::tresolution>
-	conf = std::static_pointer_cast<const tscroll_label_definition::tresolution>(
+	std::shared_ptr<const scroll_label_definition::tresolution>
+	conf = std::static_pointer_cast<const scroll_label_definition::tresolution>(
 					widget->config());
 	assert(conf);
 

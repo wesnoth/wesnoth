@@ -61,7 +61,7 @@ class distributor;
 class twindow : public tpanel, public cursor::setter
 {
 	friend class tdebug_layout_graph;
-	friend twindow* build(CVideo&, const twindow_builder::tresolution*);
+	friend twindow* build(CVideo&, const builder_window::window_resolution*);
 	friend struct twindow_implementation;
 	friend class tinvalidate_layout_blocker;
 	friend class tpane;
@@ -80,8 +80,8 @@ public:
 			const unsigned maximum_width,
 			const unsigned maximum_height,
 			const std::string& definition,
-			const twindow_builder::tresolution::ttip& tooltip,
-			const twindow_builder::tresolution::ttip& helptip);
+			const builder_window::window_resolution::ttip& tooltip,
+			const builder_window::window_resolution::ttip& helptip);
 
 	~twindow();
 
@@ -582,10 +582,10 @@ private:
 	game_logic::function_symbol_table functions_;
 
 	/** The settings for the tooltip. */
-	twindow_builder::tresolution::ttip tooltip_;
+	builder_window::window_resolution::ttip tooltip_;
 
 	/** The settings for the helptip. */
-	twindow_builder::tresolution::ttip helptip_;
+	builder_window::window_resolution::ttip helptip_;
 
 	/**
 	 * Do we want to have easy close behavior?
@@ -711,7 +711,7 @@ private:
 	 *
 	 * @param content_grid        The new contents for the content grid.
 	 */
-	void finalize(const std::shared_ptr<tbuilder_grid>& content_grid);
+	void finalize(const std::shared_ptr<builder_grid>& content_grid);
 
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	tdebug_layout_graph* debug_layout_;
@@ -794,15 +794,15 @@ private:
 
 // }---------- DEFINITION ---------{
 
-struct twindow_definition : public tcontrol_definition
+struct window_definition : public control_definition
 {
-	explicit twindow_definition(const config& cfg);
+	explicit window_definition(const config& cfg);
 
-	struct tresolution : public tpanel_definition::tresolution
+	struct tresolution : public panel_definition::tresolution
 	{
 		explicit tresolution(const config& cfg);
 
-		tbuilder_grid_ptr grid;
+		builder_grid_ptr grid;
 	};
 };
 

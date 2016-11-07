@@ -32,7 +32,7 @@ namespace gui2
 
 namespace implementation
 {
-struct tbuilder_pane;
+struct builder_pane;
 } // namespace implementation
 
 class tgrid;
@@ -56,13 +56,13 @@ public:
 	typedef std::function<bool(const titem&)> tfilter_functor;
 
 	/** @deprecated Use the second overload. */
-	explicit tpane(const tbuilder_grid_ptr item_builder);
+	explicit tpane(const builder_grid_ptr item_builder);
 
 private:
-	explicit tpane(const implementation::tbuilder_pane& builder);
+	explicit tpane(const implementation::builder_pane& builder);
 
 public:
-	static tpane* build(const implementation::tbuilder_pane& builder);
+	static tpane* build(const implementation::builder_pane& builder);
 
 	/**
 	 * Creates a new item.
@@ -155,7 +155,7 @@ private:
 	std::list<titem> items_;
 
 	/** The builer for the items in the list. */
-	tbuilder_grid_ptr item_builder_;
+	builder_grid_ptr item_builder_;
 
 	/** The id generator for the items. */
 	unsigned item_id_generator_;
@@ -201,19 +201,19 @@ private:
 namespace implementation
 {
 
-struct tbuilder_pane : public tbuilder_widget
+struct builder_pane : public builder_widget
 {
-	explicit tbuilder_pane(const config& cfg);
+	explicit builder_pane(const config& cfg);
 
 	twidget* build() const;
 
-	twidget* build(const treplacements& replacements) const;
+	twidget* build(const replacements_map& replacements) const;
 
 	placer_base::tgrow_direction grow_direction;
 
 	unsigned parallel_items;
 
-	tbuilder_grid_ptr item_definition;
+	builder_grid_ptr item_definition;
 };
 
 } // namespace implementation

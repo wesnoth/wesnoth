@@ -37,7 +37,7 @@ class ttree_view_node : public twidget
 	friend class ttree_view;
 
 public:
-	using tnode_definition = implementation::ttree_node;
+	using node_definition = implementation::ttree_node;
 	using node_children_vector = boost::ptr_vector<ttree_view_node>;
 
 	bool operator==(const ttree_view_node& node)
@@ -47,7 +47,7 @@ public:
 
 	ttree_view_node(
 			const std::string& id,
-			const std::vector<tnode_definition>& node_definitions,
+			const std::vector<node_definition>& node_definitions,
 			ttree_view_node* parent_node,
 			ttree_view& parent_tree_view,
 			const std::map<std::string /* widget id */, string_map>& data);
@@ -283,7 +283,7 @@ private:
 	 * @todo Maybe store this list in the tree_view to avoid copying the
 	 * reference.
 	 */
-	const std::vector<tnode_definition>& node_definitions_;
+	const std::vector<node_definition>& node_definitions_;
 
 	/** The toggle for the folded state. */
 	tselectable_* toggle_;

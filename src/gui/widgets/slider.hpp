@@ -213,11 +213,11 @@ private:
 
 // }---------- DEFINITION ---------{
 
-struct tslider_definition : public tcontrol_definition
+struct slider_definition : public control_definition
 {
-	explicit tslider_definition(const config& cfg);
+	explicit slider_definition(const config& cfg);
 
-	struct tresolution : public tresolution_definition_
+	struct tresolution : public resolution_definition
 	{
 		explicit tresolution(const config& cfg);
 
@@ -234,11 +234,11 @@ struct tslider_definition : public tcontrol_definition
 namespace implementation
 {
 
-struct tbuilder_slider : public tbuilder_control
+struct builder_slider : public builder_control
 {
-	explicit tbuilder_slider(const config& cfg);
+	explicit builder_slider(const config& cfg);
 
-	using tbuilder_control::build;
+	using builder_control::build;
 
 	twidget* build() const;
 

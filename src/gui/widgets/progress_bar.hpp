@@ -77,11 +77,11 @@ private:
 
 // }---------- DEFINITION ---------{
 
-struct tprogress_bar_definition : public tcontrol_definition
+struct progress_bar_definition : public control_definition
 {
-	explicit tprogress_bar_definition(const config& cfg);
+	explicit progress_bar_definition(const config& cfg);
 
-	struct tresolution : public tresolution_definition_
+	struct tresolution : public resolution_definition
 	{
 		explicit tresolution(const config& cfg);
 	};
@@ -92,12 +92,12 @@ struct tprogress_bar_definition : public tcontrol_definition
 namespace implementation
 {
 
-struct tbuilder_progress_bar : public tbuilder_control
+struct builder_progress_bar : public builder_control
 {
 
-	explicit tbuilder_progress_bar(const config& cfg);
+	explicit builder_progress_bar(const config& cfg);
 
-	using tbuilder_control::build;
+	using builder_control::build;
 
 	twidget* build() const;
 };

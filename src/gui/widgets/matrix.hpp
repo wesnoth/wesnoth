@@ -29,7 +29,7 @@ namespace gui2
 
 namespace implementation
 {
-struct tbuilder_matrix;
+struct builder_matrix;
 }
 
 class tstate_default
@@ -69,7 +69,7 @@ template <class STATE>
 class tcontrol_NEW : public tcontrol, public STATE
 {
 public:
-	tcontrol_NEW(const implementation::tbuilder_control& builder,
+	tcontrol_NEW(const implementation::builder_control& builder,
 				 const std::string& control_type)
 		: tcontrol(builder, STATE::COUNT, control_type)
 
@@ -103,10 +103,10 @@ class tmatrix : public tbase
 	friend class tdebug_layout_graph;
 
 private:
-	explicit tmatrix(const implementation::tbuilder_matrix& builder);
+	explicit tmatrix(const implementation::builder_matrix& builder);
 
 public:
-	static tmatrix* build(const implementation::tbuilder_matrix& builder);
+	static tmatrix* build(const implementation::builder_matrix& builder);
 
 	/***** ***** ***** ***** Item handling. ***** ***** ****** *****/
 
@@ -232,16 +232,16 @@ private:
 
 // }---------- DEFINITION ---------{
 
-struct tmatrix_definition : public tcontrol_definition
+struct matrix_definition : public control_definition
 {
 
-	explicit tmatrix_definition(const config& cfg);
+	explicit matrix_definition(const config& cfg);
 
-	struct tresolution : public tresolution_definition_
+	struct tresolution : public resolution_definition
 	{
 		explicit tresolution(const config& cfg);
 
-		tbuilder_grid_ptr content;
+		builder_grid_ptr content;
 	};
 };
 
@@ -250,24 +250,24 @@ struct tmatrix_definition : public tcontrol_definition
 namespace implementation
 {
 
-struct tbuilder_matrix : public tbuilder_control
+struct builder_matrix : public builder_control
 {
-	explicit tbuilder_matrix(const config& cfg);
+	explicit builder_matrix(const config& cfg);
 
-	using tbuilder_control::build;
+	using builder_control::build;
 
 	twidget* build() const;
 
 	tscrollbar_container::tscrollbar_mode vertical_scrollbar_mode;
 	tscrollbar_container::tscrollbar_mode horizontal_scrollbar_mode;
 
-	tbuilder_grid_ptr builder_top;
-	tbuilder_grid_ptr builder_bottom;
+	builder_grid_ptr builder_top;
+	builder_grid_ptr builder_bottom;
 
-	tbuilder_grid_ptr builder_left;
-	tbuilder_grid_ptr builder_right;
+	builder_grid_ptr builder_left;
+	builder_grid_ptr builder_right;
 
-	tbuilder_widget_ptr builder_main;
+	builder_widget_ptr builder_main;
 };
 
 } // namespace implementation

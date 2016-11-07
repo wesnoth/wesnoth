@@ -46,8 +46,8 @@ namespace gui2
 // ------------ WIDGET -----------{
 
 REGISTER_WIDGET(listbox)
-REGISTER_WIDGET3(tlistbox_definition, horizontal_listbox, _4)
-REGISTER_WIDGET3(tlistbox_definition, grid_listbox, _4)
+REGISTER_WIDGET3(listbox_definition, horizontal_listbox, _4)
+REGISTER_WIDGET3(listbox_definition, grid_listbox, _4)
 
 namespace
 {
@@ -60,11 +60,11 @@ void callback_list_item_clicked(twidget& caller)
 
 tlistbox::tlistbox(const bool has_minimum,
 				   const bool has_maximum,
-				   const tgenerator_::tplacement placement,
+				   const generator_base::placement placement,
 				   const bool select)
 	: tscrollbar_container(2) // FIXME magic number
-	, generator_(tgenerator_::build(has_minimum, has_maximum, placement, select))
-	, is_horizonal_(placement == tgenerator_::horizontal_list)
+	, generator_(generator_base::build(has_minimum, has_maximum, placement, select))
+	, is_horizonal_(placement == generator_base::horizontal_list)
 	, list_builder_(nullptr)
 	, callback_value_changed_()
 	, need_layout_(false)
@@ -570,8 +570,8 @@ void swap_grid(tgrid* grid,
 
 } // namespace
 
-void tlistbox::finalize(tbuilder_grid_const_ptr header,
-						tbuilder_grid_const_ptr footer,
+void tlistbox::finalize(builder_grid_const_ptr header,
+						builder_grid_const_ptr footer,
 						const std::vector<std::map<std::string, string_map>>& list_data)
 {
 	// "Inherited."
@@ -623,14 +623,14 @@ void tlistbox::order_by_column(unsigned column, twidget& widget)
 		return;
 	}
 	if(selectable.get_value() == SORT_NONE) {
-		order_by(tgenerator_::torder_func(&default_sort));
+		order_by(generator_base::torder_func(&default_sort));
 	}
 	else {
 		order_by(orders_[column].second[selectable.get_value() - 1]);
 	}
 }
 
-void tlistbox::order_by(const tgenerator_::torder_func& func)
+void tlistbox::order_by(const generator_base::torder_func& func)
 {
 	generator_->set_order(func);
 
@@ -708,8 +708,8 @@ const std::string& tlistbox::get_control_type() const
 
 // }---------- DEFINITION ---------{
 
-tlistbox_definition::tlistbox_definition(const config& cfg)
-	: tcontrol_definition(cfg)
+listbox_definition::listbox_definition(const config& cfg)
+	: control_definition(cfg)
 {
 	DBG_GUI_P << "Parsing listbox " << id << '\n';
 
@@ -795,17 +795,17 @@ tlistbox_definition::tlistbox_definition(const config& cfg)
  * @macro = horizontal_listbox_description
  * The definition of a horizontal listbox is the same as for a normal listbox.
  */
-tlistbox_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg), grid(nullptr)
+listbox_definition::tresolution::tresolution(const config& cfg)
+	: resolution_definition(cfg), grid(nullptr)
 {
 	// Note the order should be the same as the enum state_t in listbox.hpp.
-	state.push_back(tstate_definition(cfg.child("state_enabled")));
-	state.push_back(tstate_definition(cfg.child("state_disabled")));
+	state.push_back(state_definition(cfg.child("state_enabled")));
+	state.push_back(state_definition(cfg.child("state_disabled")));
 
 	const config& child = cfg.child("grid");
 	VALIDATE(child, _("No grid defined."));
 
-	grid = std::make_shared<tbuilder_grid>(child);
+	grid = std::make_shared<builder_grid>(child);
 }
 
 // }---------- BUILDER -----------{
@@ -933,8 +933,8 @@ static std::vector<std::map<std::string, string_map>> parse_list_data(const conf
 	return list_data;
 }
 
-tbuilder_listbox::tbuilder_listbox(const config& cfg)
-	: tbuilder_control(cfg)
+builder_listbox::builder_listbox(const config& cfg)
+	: builder_control(cfg)
 	, vertical_scrollbar_mode(
 			  get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
 	, horizontal_scrollbar_mode(
@@ -947,17 +947,17 @@ tbuilder_listbox::tbuilder_listbox(const config& cfg)
 	, has_maximum_(cfg["has_maximum"].to_bool(true))
 {
 	if(const config& h = cfg.child("header")) {
-		header = std::make_shared<tbuilder_grid>(h);
+		header = std::make_shared<builder_grid>(h);
 	}
 
 	if(const config& f = cfg.child("footer")) {
-		footer = std::make_shared<tbuilder_grid>(f);
+		footer = std::make_shared<builder_grid>(f);
 	}
 
 	const config& l = cfg.child("list_definition");
 
 	VALIDATE(l, _("No list defined."));
-	list_builder = std::make_shared<tbuilder_grid>(l);
+	list_builder = std::make_shared<builder_grid>(l);
 	assert(list_builder);
 	VALIDATE(list_builder->rows == 1,
 			 _("A 'list_definition' should contain one row."));
@@ -967,11 +967,11 @@ tbuilder_listbox::tbuilder_listbox(const config& cfg)
 	}
 }
 
-twidget* tbuilder_listbox::build() const
+twidget* builder_listbox::build() const
 {
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	tlist* widget = new tlist(
-			true, true, tgenerator_::vertical_list, true, list_builder);
+			true, true, generator_base::vertical_list, true, list_builder);
 
 	init_control(widget);
 	if(!list_data.empty()) {
@@ -1008,7 +1008,7 @@ twidget* tbuilder_listbox::build() const
 	}
 
 	tlistbox* widget
-			= new tlistbox(has_minimum_, has_maximum_, tgenerator_::vertical_list, true);
+			= new tlistbox(has_minimum_, has_maximum_, generator_base::vertical_list, true);
 
 	init_control(widget);
 
@@ -1020,8 +1020,8 @@ twidget* tbuilder_listbox::build() const
 	DBG_GUI_G << "Window builder: placed listbox '" << id
 			  << "' with definition '" << definition << "'.\n";
 
-	std::shared_ptr<const tlistbox_definition::tresolution>
-	conf = std::static_pointer_cast<const tlistbox_definition::tresolution>(
+	std::shared_ptr<const listbox_definition::tresolution>
+	conf = std::static_pointer_cast<const listbox_definition::tresolution>(
 			widget->config());
 	assert(conf);
 
@@ -1096,8 +1096,8 @@ twidget* tbuilder_listbox::build() const
  * @end{parent}{name="gui/window/resolution/grid/row/column/"}
  */
 
-tbuilder_horizontal_listbox::tbuilder_horizontal_listbox(const config& cfg)
-	: tbuilder_control(cfg)
+builder_horizontal_listbox::builder_horizontal_listbox(const config& cfg)
+	: builder_control(cfg)
 	, vertical_scrollbar_mode(
 			  get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
 	, horizontal_scrollbar_mode(
@@ -1110,7 +1110,7 @@ tbuilder_horizontal_listbox::tbuilder_horizontal_listbox(const config& cfg)
 	const config& l = cfg.child("list_definition");
 
 	VALIDATE(l, _("No list defined."));
-	list_builder = std::make_shared<tbuilder_grid>(l);
+	list_builder = std::make_shared<builder_grid>(l);
 	assert(list_builder);
 	VALIDATE(list_builder->rows == 1,
 			 _("A 'list_definition' should contain one row."));
@@ -1120,11 +1120,11 @@ tbuilder_horizontal_listbox::tbuilder_horizontal_listbox(const config& cfg)
 	}
 }
 
-twidget* tbuilder_horizontal_listbox::build() const
+twidget* builder_horizontal_listbox::build() const
 {
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	tlist* widget = new tlist(
-			true, true, tgenerator_::horizontal_list, true, list_builder);
+			true, true, generator_base::horizontal_list, true, list_builder);
 
 	init_control(widget);
 	if(!list_data.empty()) {
@@ -1133,7 +1133,7 @@ twidget* tbuilder_horizontal_listbox::build() const
 	return widget;
 #else
 	tlistbox* widget
-			= new tlistbox(has_minimum_, has_maximum_, tgenerator_::horizontal_list, true);
+			= new tlistbox(has_minimum_, has_maximum_, generator_base::horizontal_list, true);
 
 	init_control(widget);
 
@@ -1145,8 +1145,8 @@ twidget* tbuilder_horizontal_listbox::build() const
 	DBG_GUI_G << "Window builder: placed listbox '" << id
 			  << "' with definition '" << definition << "'.\n";
 
-	std::shared_ptr<const tlistbox_definition::tresolution>
-	conf = std::static_pointer_cast<const tlistbox_definition::tresolution>(
+	std::shared_ptr<const listbox_definition::tresolution>
+	conf = std::static_pointer_cast<const listbox_definition::tresolution>(
 			widget->config());
 	assert(conf);
 
@@ -1221,8 +1221,8 @@ twidget* tbuilder_horizontal_listbox::build() const
  * @end{parent}{name="gui/window/resolution/grid/row/column/"}
  */
 
-tbuilder_grid_listbox::tbuilder_grid_listbox(const config& cfg)
-	: tbuilder_control(cfg)
+builder_grid_listbox::builder_grid_listbox(const config& cfg)
+	: builder_control(cfg)
 	, vertical_scrollbar_mode(
 			  get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
 	, horizontal_scrollbar_mode(
@@ -1235,7 +1235,7 @@ tbuilder_grid_listbox::tbuilder_grid_listbox(const config& cfg)
 	const config& l = cfg.child("list_definition");
 
 	VALIDATE(l, _("No list defined."));
-	list_builder = std::make_shared<tbuilder_grid>(l);
+	list_builder = std::make_shared<builder_grid>(l);
 	assert(list_builder);
 	VALIDATE(list_builder->rows == 1,
 			 _("A 'list_definition' should contain one row."));
@@ -1245,11 +1245,11 @@ tbuilder_grid_listbox::tbuilder_grid_listbox(const config& cfg)
 	}
 }
 
-twidget* tbuilder_grid_listbox::build() const
+twidget* builder_grid_listbox::build() const
 {
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	tlist* widget = new tlist(
-			true, true, tgenerator_::grid, true, list_builder);
+			true, true, generator_base::grid, true, list_builder);
 
 	init_control(widget);
 	if(!list_data.empty()) {
@@ -1258,7 +1258,7 @@ twidget* tbuilder_grid_listbox::build() const
 	return widget;
 #else
 	tlistbox* widget
-			= new tlistbox(has_minimum_, has_maximum_, tgenerator_::grid, true);
+			= new tlistbox(has_minimum_, has_maximum_, generator_base::grid, true);
 
 	init_control(widget);
 
@@ -1270,8 +1270,8 @@ twidget* tbuilder_grid_listbox::build() const
 	DBG_GUI_G << "Window builder: placed listbox '" << id
 			  << "' with definition '" << definition << "'.\n";
 
-	std::shared_ptr<const tlistbox_definition::tresolution>
-	conf = std::static_pointer_cast<const tlistbox_definition::tresolution>(
+	std::shared_ptr<const listbox_definition::tresolution>
+	conf = std::static_pointer_cast<const listbox_definition::tresolution>(
 			widget->config());
 	assert(conf);
 

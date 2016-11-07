@@ -27,7 +27,7 @@ namespace gui2
 
 namespace implementation
 {
-struct tbuilder_control;
+struct builder_control;
 } // namespace implementation
 
 /** Base class for all visible items. */
@@ -47,7 +47,7 @@ public:
 	 *
 	 * @param canvas_count        The number of canvasses in the control.
 	 */
-	tcontrol(const implementation::tbuilder_control& builder,
+	tcontrol(const implementation::builder_control& builder,
 			 const unsigned canvas_count,
 			 const std::string& control_type);
 
@@ -296,16 +296,16 @@ public:
 	}
 
 protected:
-	tresolution_definition_ptr config()
+	resolution_definition_ptr config()
 	{
 		return config_;
 	}
-	tresolution_definition_const_ptr config() const
+	resolution_definition_const_ptr config() const
 	{
 		return config_;
 	}
 
-	void set_config(tresolution_definition_ptr config)
+	void set_config(resolution_definition_ptr config)
 	{
 		config_ = config;
 	}
@@ -394,7 +394,7 @@ private:
 	 * on the resolution widgets can look different, use different fonts.
 	 * Windows can use extra scrollbars use abbreviations as text etc.
 	 */
-	tresolution_definition_ptr config_;
+	resolution_definition_ptr config_;
 
 	/**
 	 * Load class dependent config settings.
@@ -420,7 +420,7 @@ public:
 	/**
 	 * Returns the control_type of the control.
 	 *
-	 * The control_type parameter for tgui_definition::get_control() To keep the
+	 * The control_type parameter for gui_definition::get_control() To keep the
 	 * code more generic this type is required so the controls need to return
 	 * the proper string here.  Might be used at other parts as well the get the
 	 * type of
@@ -514,14 +514,14 @@ class tcontrol;
 namespace implementation
 {
 
-struct tbuilder_control : public tbuilder_widget
+struct builder_control : public builder_widget
 {
 public:
-	tbuilder_control(const config& cfg);
+	builder_control(const config& cfg);
 
-	using tbuilder_widget::build;
+	using builder_widget::build;
 
-	virtual twidget* build(const treplacements& replacements) const override;
+	virtual twidget* build(const replacements_map& replacements) const override;
 
 	/** @deprecated The control can initialize itself. */
 	void init_control(tcontrol* control) const;

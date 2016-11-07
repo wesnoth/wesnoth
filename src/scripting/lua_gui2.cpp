@@ -244,7 +244,7 @@ int show_dialog(lua_State *L, CVideo & video)
 {
 	config def_cfg = luaW_checkconfig(L, 1);
 
-	gui2::twindow_builder::tresolution def(def_cfg);
+	gui2::builder_window::window_resolution def(def_cfg);
 	scoped_dialog w(L, gui2::build(video, &def));
 
 	if (!lua_isnoneornil(L, 2)) {

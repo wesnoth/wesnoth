@@ -244,8 +244,8 @@ void ttext_box::update_offsets()
 {
 	assert(config());
 
-	std::shared_ptr<const ttext_box_definition::tresolution>
-	conf = std::static_pointer_cast<const ttext_box_definition::tresolution>(
+	std::shared_ptr<const text_box_definition::tresolution>
+	conf = std::static_pointer_cast<const text_box_definition::tresolution>(
 			config());
 
 	assert(conf);
@@ -328,8 +328,8 @@ void ttext_box::load_config_extra()
 {
 	assert(config());
 
-	std::shared_ptr<const ttext_box_definition::tresolution>
-	conf = std::static_pointer_cast<const ttext_box_definition::tresolution>(
+	std::shared_ptr<const text_box_definition::tresolution>
+	conf = std::static_pointer_cast<const text_box_definition::tresolution>(
 			config());
 
 	assert(conf);
@@ -397,8 +397,8 @@ ttext_box::signal_handler_left_button_double_click(const event::event_t event,
 
 // }---------- DEFINITION ---------{
 
-ttext_box_definition::ttext_box_definition(const config& cfg)
-	: tcontrol_definition(cfg)
+text_box_definition::text_box_definition(const config& cfg)
+	: control_definition(cfg)
 {
 	DBG_GUI_P << "Parsing text_box " << id << '\n';
 
@@ -414,7 +414,7 @@ ttext_box_definition::ttext_box_definition(const config& cfg)
  * The definition of a text box.
  *
  * @begin{parent}{name="gui/"}
- * @begin{tag}{name="text_box_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
+ * @begin{tag}{name="ext_box_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
  * The resolution for a text box also contains the following keys:
  * @begin{tag}{name="resolution"}{min=0}{max=-1}{super=generic/widget_definition/resolution}
  * @begin{table}{config}
@@ -438,18 +438,18 @@ ttext_box_definition::ttext_box_definition(const config& cfg)
  * @begin{tag}{name="state_focused"}{min=0}{max=1}{super="generic/state"}
  * @end{tag}{name="state_focused"}
  * @end{tag}{name="resolution"}
- * @end{tag}{name="text_box_definition"}
+ * @end{tag}{name="ext_box_definition"}
  * @end{parent}{name="gui/"}
  */
-ttext_box_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
+text_box_definition::tresolution::tresolution(const config& cfg)
+	: resolution_definition(cfg)
 	, text_x_offset(cfg["text_x_offset"])
 	, text_y_offset(cfg["text_y_offset"])
 {
 	// Note the order should be the same as the enum state_t in text_box.hpp.
-	state.push_back(tstate_definition(cfg.child("state_enabled")));
-	state.push_back(tstate_definition(cfg.child("state_disabled")));
-	state.push_back(tstate_definition(cfg.child("state_focused")));
+	state.push_back(state_definition(cfg.child("state_enabled")));
+	state.push_back(state_definition(cfg.child("state_disabled")));
+	state.push_back(state_definition(cfg.child("state_focused")));
 }
 
 // }---------- BUILDER -----------{
@@ -479,14 +479,14 @@ ttext_box_definition::tresolution::tresolution(const config& cfg)
 namespace implementation
 {
 
-tbuilder_text_box::tbuilder_text_box(const config& cfg)
-	: tbuilder_control(cfg)
+builder_text_box::builder_text_box(const config& cfg)
+	: builder_control(cfg)
 	, history(cfg["history"])
 	, max_input_length(cfg["max_input_length"])
 {
 }
 
-twidget* tbuilder_text_box::build() const
+twidget* builder_text_box::build() const
 {
 	ttext_box* widget = new ttext_box();
 

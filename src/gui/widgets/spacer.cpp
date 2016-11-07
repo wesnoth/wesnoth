@@ -71,8 +71,8 @@ const std::string& tspacer::get_control_type() const
 
 // }---------- DEFINITION ---------{
 
-tspacer_definition::tspacer_definition(const config& cfg)
-	: tcontrol_definition(cfg)
+spacer_definition::spacer_definition(const config& cfg)
+	: control_definition(cfg)
 {
 	DBG_GUI_P << "Parsing spacer " << id << '\n';
 
@@ -93,8 +93,8 @@ tspacer_definition::tspacer_definition(const config& cfg)
  * @end{tag}{name="spacer_definition"}
  * @end{parent}{name="gui/"}
  */
-tspacer_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
+spacer_definition::tresolution::tresolution(const config& cfg)
+	: resolution_definition(cfg)
 {
 }
 
@@ -136,12 +136,12 @@ tspacer_definition::tresolution::tresolution(const config& cfg)
 namespace implementation
 {
 
-tbuilder_spacer::tbuilder_spacer(const config& cfg)
-	: tbuilder_control(cfg), width_(cfg["width"]), height_(cfg["height"])
+builder_spacer::builder_spacer(const config& cfg)
+	: builder_control(cfg), width_(cfg["width"]), height_(cfg["height"])
 {
 }
 
-twidget* tbuilder_spacer::build() const
+twidget* builder_spacer::build() const
 {
 	tspacer* widget = new tspacer();
 

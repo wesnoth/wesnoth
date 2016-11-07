@@ -199,8 +199,8 @@ void tmenu_button::set_selected(int selected)
 
 // }---------- DEFINITION ---------{
 
-tmenu_button_definition::tmenu_button_definition(const config& cfg)
-	: tcontrol_definition(cfg)
+menu_button_definition::menu_button_definition(const config& cfg)
+	: control_definition(cfg)
 {
 	DBG_GUI_P << "Parsing menu_button " << id << '\n';
 
@@ -235,14 +235,14 @@ tmenu_button_definition::tmenu_button_definition(const config& cfg)
  * @end{tag}{name="menu_button_definition"}
  * @end{parent}{name="gui/"}
  */
-tmenu_button_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
+menu_button_definition::tresolution::tresolution(const config& cfg)
+	: resolution_definition(cfg)
 {
 	// Note the order should be the same as the enum state_t in menu_button.hpp.
-	state.push_back(tstate_definition(cfg.child("state_enabled")));
-	state.push_back(tstate_definition(cfg.child("state_disabled")));
-	state.push_back(tstate_definition(cfg.child("state_pressed")));
-	state.push_back(tstate_definition(cfg.child("state_focused")));
+	state.push_back(state_definition(cfg.child("state_enabled")));
+	state.push_back(state_definition(cfg.child("state_disabled")));
+	state.push_back(state_definition(cfg.child("state_pressed")));
+	state.push_back(state_definition(cfg.child("state_focused")));
 }
 
 // }---------- BUILDER -----------{
@@ -287,8 +287,8 @@ tmenu_button_definition::tresolution::tresolution(const config& cfg)
 namespace implementation
 {
 
-tbuilder_menu_button::tbuilder_menu_button(const config& cfg)
-	: tbuilder_control(cfg)
+builder_menu_button::builder_menu_button(const config& cfg)
+	: builder_control(cfg)
 	, retval_id_(cfg["return_value_id"])
 	, retval_(cfg["return_value"])
 	, options_()
@@ -298,7 +298,7 @@ tbuilder_menu_button::tbuilder_menu_button(const config& cfg)
 	}
 }
 
-twidget* tbuilder_menu_button::build() const
+twidget* builder_menu_button::build() const
 {
 	tmenu_button* widget = new tmenu_button();
 

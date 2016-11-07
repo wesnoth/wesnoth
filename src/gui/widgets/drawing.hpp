@@ -87,11 +87,11 @@ private:
 
 // }---------- DEFINITION ---------{
 
-struct tdrawing_definition : public tcontrol_definition
+struct drawing_definition : public control_definition
 {
-	explicit tdrawing_definition(const config& cfg);
+	explicit drawing_definition(const config& cfg);
 
-	struct tresolution : public tresolution_definition_
+	struct tresolution : public resolution_definition
 	{
 		explicit tresolution(const config& cfg);
 	};
@@ -102,11 +102,11 @@ struct tdrawing_definition : public tcontrol_definition
 namespace implementation
 {
 
-struct tbuilder_drawing : public tbuilder_control
+struct builder_drawing : public builder_control
 {
-	explicit tbuilder_drawing(const config& cfg);
+	explicit builder_drawing(const config& cfg);
 
-	using tbuilder_control::build;
+	using builder_control::build;
 
 	twidget* build() const;
 

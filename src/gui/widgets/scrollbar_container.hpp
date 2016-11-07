@@ -26,8 +26,8 @@ class tspacer;
 
 namespace implementation
 {
-struct tbuilder_scroll_label;
-struct tbuilder_scrollbar_panel;
+struct builder_scroll_label;
+struct builder_scrollbar_panel;
 }
 
 /**
@@ -42,8 +42,8 @@ class tscrollbar_container : public tcontainer_
 {
 	friend class tdebug_layout_graph;
 
-	friend struct implementation::tbuilder_scroll_label;
-	friend struct implementation::tbuilder_scrollbar_panel;
+	friend struct implementation::builder_scroll_label;
+	friend struct implementation::builder_scrollbar_panel;
 #ifndef GUI2_EXPERIMENTAL_LISTBOX
 	friend class tlistbox;
 #endif

@@ -145,11 +145,11 @@ private:
 
 // }---------- DEFINITION ---------{
 
-struct ttoggle_button_definition : public tcontrol_definition
+struct toggle_button_definition : public control_definition
 {
-	explicit ttoggle_button_definition(const config& cfg);
+	explicit toggle_button_definition(const config& cfg);
 
-	struct tresolution : public tresolution_definition_
+	struct tresolution : public resolution_definition
 	{
 		explicit tresolution(const config& cfg);
 	};
@@ -160,11 +160,11 @@ struct ttoggle_button_definition : public tcontrol_definition
 namespace implementation
 {
 
-struct tbuilder_toggle_button : public tbuilder_control
+struct builder_toggle_button : public builder_control
 {
-	explicit tbuilder_toggle_button(const config& cfg);
+	explicit builder_toggle_button(const config& cfg);
 
-	using tbuilder_control::build;
+	using builder_control::build;
 
 	twidget* build() const;
 

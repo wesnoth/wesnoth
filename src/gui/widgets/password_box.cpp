@@ -35,7 +35,7 @@ namespace gui2
 
 // ------------ WIDGET -----------{
 
-REGISTER_WIDGET3(ttext_box_definition, password_box, "text_box_definition")
+REGISTER_WIDGET3(text_box_definition, password_box, "ext_box_definition")
 
 void tpassword_box::set_value(const std::string& text)
 {
@@ -123,12 +123,12 @@ namespace implementation
  * @end{parent}{name="gui/window/resolution/grid/row/column/"}
  */
 
-tbuilder_password_box::tbuilder_password_box(const config& cfg)
-	: tbuilder_control(cfg), history_(cfg["history"])
+builder_password_box::builder_password_box(const config& cfg)
+	: builder_control(cfg), history_(cfg["history"])
 {
 }
 
-twidget* tbuilder_password_box::build() const
+twidget* builder_password_box::build() const
 {
 	tpassword_box* widget = new tpassword_box();
 

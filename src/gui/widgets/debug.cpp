@@ -245,7 +245,7 @@ void tdebug_layout_graph::widget_generate_info(std::ostream& out,
 			assert(listbox->generator_);
 		}
 
-		const tgenerator_* generator = dynamic_cast<const tgenerator_*>(widget);
+		const generator_base* generator = dynamic_cast<const generator_base*>(widget);
 
 		if(generator) {
 			for(size_t i = 0; i < generator->get_item_count(); ++i) {
@@ -536,7 +536,7 @@ std::string tdebug_layout_graph::get_type(const twidget* widget) const
 		return control->get_control_type();
 	} else {
 		const tgrid* grid = dynamic_cast<const tgrid*>(widget);
-		const tgenerator_* generator = dynamic_cast<const tgenerator_*>(widget);
+		const generator_base* generator = dynamic_cast<const generator_base*>(widget);
 
 		if(grid) {
 			return "grid";

@@ -49,7 +49,7 @@ twidget::twidget()
 	DBG_GUI_LF << "widget create: " << static_cast<void*>(this) << "\n";
 }
 
-twidget::twidget(const tbuilder_widget& builder)
+twidget::twidget(const builder_widget& builder)
 	: id_(builder.id)
 	, parent_(nullptr)
 	, x_(-1)

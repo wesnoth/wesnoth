@@ -197,8 +197,8 @@ void ttoggle_button::signal_handler_left_button_double_click(
 
 // }---------- DEFINITION ---------{
 
-ttoggle_button_definition::ttoggle_button_definition(const config& cfg)
-	: tcontrol_definition(cfg)
+toggle_button_definition::toggle_button_definition(const config& cfg)
+	: control_definition(cfg)
 {
 	DBG_GUI_P << "Parsing toggle button " << id << '\n';
 
@@ -222,7 +222,7 @@ ttoggle_button_definition::ttoggle_button_definition(const config& cfg)
  * * state_disabled_selected, the button is disabled and selected.
  * * state_focused_selected, the mouse is over the button and selected.
  * @begin{parent}{name="gui/"}
- * @begin{tag}{name="toggle_button_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
+ * @begin{tag}{name="oggle_button_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
  * @begin{tag}{name="resolution"}{min=0}{max=-1}{super="generic/widget_definition/resolution"}
  * @begin{tag}{name="state_enabled"}{min=0}{max=1}{super="generic/state"}
  * @end{tag}{name="state_enabled"}
@@ -237,19 +237,19 @@ ttoggle_button_definition::ttoggle_button_definition(const config& cfg)
  * @begin{tag}{name="state_focused_selected"}{min=0}{max=1}{super="generic/state"}
  * @end{tag}{name="state_focused_selected"}
  * @end{tag}{name="resolution"}
- * @end{tag}{name="toggle_button_definition"}
+ * @end{tag}{name="oggle_button_definition"}
  * @end{parent}{name="gui/"}
  */
-ttoggle_button_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
+toggle_button_definition::tresolution::tresolution(const config& cfg)
+	: resolution_definition(cfg)
 {
 	// Note the order should be the same as the enum state_t in
 	// toggle_button.hpp.
 	for(const auto& c : cfg.child_range("state"))
 	{
-		state.push_back(tstate_definition(c.child("enabled")));
-		state.push_back(tstate_definition(c.child("disabled")));
-		state.push_back(tstate_definition(c.child("focused")));
+		state.push_back(state_definition(c.child("enabled")));
+		state.push_back(state_definition(c.child("disabled")));
+		state.push_back(state_definition(c.child("focused")));
 	}
 }
 
@@ -278,15 +278,15 @@ ttoggle_button_definition::tresolution::tresolution(const config& cfg)
 namespace implementation
 {
 
-tbuilder_toggle_button::tbuilder_toggle_button(const config& cfg)
-	: tbuilder_control(cfg)
+builder_toggle_button::builder_toggle_button(const config& cfg)
+	: builder_control(cfg)
 	, icon_name_(cfg["icon"])
 	, retval_id_(cfg["return_value_id"])
 	, retval_(cfg["return_value"])
 {
 }
 
-twidget* tbuilder_toggle_button::build() const
+twidget* builder_toggle_button::build() const
 {
 	ttoggle_button* widget = new ttoggle_button();
 

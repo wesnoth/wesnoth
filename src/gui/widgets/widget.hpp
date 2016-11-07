@@ -30,7 +30,7 @@ typedef std::map<std::string, t_string> string_map;
 namespace gui2
 {
 
-struct tbuilder_widget;
+struct builder_widget;
 class tdialog;
 class twindow;
 
@@ -142,7 +142,7 @@ public:
 	 * @param builder             The builder object with the settings for the
 	 *                            object.
 	 */
-	explicit twidget(const tbuilder_widget& builder);
+	explicit twidget(const builder_widget& builder);
 
 	virtual ~twidget() override;
 

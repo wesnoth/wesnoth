@@ -33,7 +33,7 @@ namespace gui2
 
 ttree_view_node::ttree_view_node(
 		const std::string& id,
-		const std::vector<tnode_definition>& node_definitions,
+		const std::vector<node_definition>& node_definitions,
 		ttree_view_node* parent_node,
 		ttree_view& parent_tree_view,
 		const std::map<std::string /* widget id */, string_map>& data)

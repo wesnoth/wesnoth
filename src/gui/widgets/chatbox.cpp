@@ -730,34 +730,34 @@ bool tchatbox::process_network_data(const ::config& data)
 
 // }---------- DEFINITION ---------{
 
-tchatbox_definition::tchatbox_definition(const config& cfg)
-	: tcontrol_definition(cfg)
+chatbox_definition::chatbox_definition(const config& cfg)
+	: control_definition(cfg)
 {
 	load_resolutions<tresolution>(cfg);
 }
 
-tchatbox_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg), grid()
+chatbox_definition::tresolution::tresolution(const config& cfg)
+	: resolution_definition(cfg), grid()
 {
-	state.push_back(tstate_definition(cfg.child("background")));
-	state.push_back(tstate_definition(cfg.child("foreground")));
+	state.push_back(state_definition(cfg.child("background")));
+	state.push_back(state_definition(cfg.child("foreground")));
 
 	const config& child = cfg.child("grid");
 	VALIDATE(child, _("No grid defined."));
 
-	grid = std::make_shared<tbuilder_grid>(child);
+	grid = std::make_shared<builder_grid>(child);
 }
 // }---------- BUILDER -----------{
 
 namespace implementation
 {
 
-tbuilder_chatbox::tbuilder_chatbox(const config& cfg)
-	: tbuilder_control(cfg)
+builder_chatbox::builder_chatbox(const config& cfg)
+	: builder_control(cfg)
 {
 }
 
-twidget* tbuilder_chatbox::build() const
+twidget* builder_chatbox::build() const
 {
 	tchatbox* widget = new tchatbox();
 
@@ -766,9 +766,9 @@ twidget* tbuilder_chatbox::build() const
 	DBG_GUI_G << "Window builder: placed unit preview pane '" << id
 			  << "' with definition '" << definition << "'.\n";
 
-	std::shared_ptr<const tchatbox_definition::tresolution> conf
+	std::shared_ptr<const chatbox_definition::tresolution> conf
 		= std::static_pointer_cast<
-			const tchatbox_definition::tresolution>(widget->config());
+			const chatbox_definition::tresolution>(widget->config());
 
 	assert(conf);
 

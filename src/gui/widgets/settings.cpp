@@ -85,7 +85,7 @@ static std::vector<std::string>& registered_window_types()
 }
 
 typedef std::map<std::string,
-				 std::function<void(tgui_definition&,
+				 std::function<void(gui_definition&,
 									  const std::string&,
 									  const config&,
 									  const char* key)> >
@@ -97,9 +97,9 @@ static tregistered_widget_type& registred_widget_type()
 	return result;
 }
 
-struct tgui_definition
+struct gui_definition
 {
-	tgui_definition()
+	gui_definition()
 		: id()
 		, description()
 		, control_definition()
@@ -128,18 +128,18 @@ struct tgui_definition
 	void activate() const;
 
 	typedef std::map<std::string /*control type*/,
-					 std::map<std::string /*id*/, tcontrol_definition_ptr> >
+					 std::map<std::string /*id*/, control_definition_ptr> >
 	tcontrol_definition_map;
 
 	tcontrol_definition_map control_definition;
 
-	std::map<std::string, twindow_definition> windows;
+	std::map<std::string, window_definition> windows;
 
-	std::map<std::string, twindow_builder> window_types;
+	std::map<std::string, builder_window> window_types;
 
 	void load_widget_definitions(
 			const std::string& definition_type,
-			const std::vector<tcontrol_definition_ptr>& definitions);
+			const std::vector<control_definition_ptr>& definitions);
 
 private:
 	unsigned popup_show_delay_;
@@ -335,7 +335,7 @@ private:
  * @end{tag}{name="tip"}
  * @end{parent}{name="gui/"}
  */
-const std::string& tgui_definition::read(const config& cfg)
+const std::string& gui_definition::read(const config& cfg)
 {
 	id = cfg["id"].str();
 	description = cfg["description"];
@@ -356,7 +356,7 @@ const std::string& tgui_definition::read(const config& cfg)
 	/***** Window types *****/
 	for(const auto & w : cfg.child_range("window"))
 	{
-		std::pair<std::string, twindow_builder> child;
+		std::pair<std::string, builder_window> child;
 		child.first = child.second.read(w);
 		window_types.insert(child);
 	}
@@ -415,7 +415,7 @@ const std::string& tgui_definition::read(const config& cfg)
 	return id;
 }
 
-void tgui_definition::activate() const
+void gui_definition::activate() const
 {
 	settings::popup_show_delay = popup_show_delay_;
 	settings::popup_show_time = popup_show_time_;
@@ -430,9 +430,9 @@ void tgui_definition::activate() const
 	settings::tips = tips_;
 }
 
-void tgui_definition::load_widget_definitions(
+void gui_definition::load_widget_definitions(
 		const std::string& definition_type,
-		const std::vector<tcontrol_definition_ptr>& definitions)
+		const std::vector<control_definition_ptr>& definitions)
 {
 	for(const auto & def : definitions)
 	{
@@ -462,16 +462,16 @@ void tgui_definition::load_widget_definitions(
 }
 
 /** Map with all known windows, (the builder class builds a window). */
-static std::map<std::string, twindow_builder> windows;
+static std::map<std::string, builder_window> windows;
 
 /** Map with all known guis. */
-static std::map<std::string, tgui_definition> guis;
+static std::map<std::string, gui_definition> guis;
 
 /** Points to the current gui. */
-static std::map<std::string, tgui_definition>::const_iterator current_gui = guis.end();
+static std::map<std::string, gui_definition>::const_iterator current_gui = guis.end();
 
 /** Points to the default gui. */
-static std::map<std::string, tgui_definition>::const_iterator default_gui = guis.end();
+static std::map<std::string, gui_definition>::const_iterator default_gui = guis.end();
 
 void register_window(const std::string& id)
 {
@@ -525,7 +525,7 @@ void load_settings()
 	// Parse guis
 	for(const auto & g : cfg.child_range("gui"))
 	{
-		std::pair<std::string, tgui_definition> child;
+		std::pair<std::string, gui_definition> child;
 		child.first = child.second.read(g);
 		guis.insert(child);
 	}
@@ -561,7 +561,7 @@ void load_settings()
  * @end{parent}{name="generic/"}
  *
  */
-tstate_definition::tstate_definition(const config& cfg) : canvas_()
+state_definition::state_definition(const config& cfg) : canvas_()
 {
 	const config& draw = *(cfg ? &cfg.child("draw") : &cfg);
 
@@ -571,7 +571,7 @@ tstate_definition::tstate_definition(const config& cfg) : canvas_()
 }
 
 void register_widget(const std::string& id,
-					 std::function<void(tgui_definition& gui_definition,
+					 std::function<void(gui_definition& gui,
 										  const std::string& definition_type,
 										  const config& cfg,
 										  const char* key)> functor)
@@ -580,18 +580,18 @@ void register_widget(const std::string& id,
 }
 
 void
-load_widget_definitions(tgui_definition& gui_definition,
+load_widget_definitions(gui_definition& gui,
 						const std::string& definition_type,
-						const std::vector<tcontrol_definition_ptr>& definitions)
+						const std::vector<control_definition_ptr>& definitions)
 {
 	DBG_GUI_P << "Load definition '" << definition_type << "'.\n";
-	gui_definition.load_widget_definitions(definition_type, definitions);
+	gui.load_widget_definitions(definition_type, definitions);
 }
 
-tresolution_definition_ptr get_control(const std::string& control_type,
+resolution_definition_ptr get_control(const std::string& control_type,
 									   const std::string& definition)
 {
-	const tgui_definition::tcontrol_definition_map::const_iterator
+	const gui_definition::tcontrol_definition_map::const_iterator
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	control_definition
 			= (control_type == "list")
@@ -603,7 +603,7 @@ tresolution_definition_ptr get_control(const std::string& control_type,
 			= current_gui->second.control_definition.find(control_type);
 #endif
 
-	std::map<std::string, tcontrol_definition_ptr>::const_iterator control;
+	std::map<std::string, control_definition_ptr>::const_iterator control;
 
 	if(control_definition == current_gui->second.control_definition.end()) {
 		goto fallback;
@@ -638,7 +638,7 @@ tresolution_definition_ptr get_control(const std::string& control_type,
 		}
 	}
 
-	for(std::vector<tresolution_definition_ptr>::const_iterator itor
+	for(std::vector<resolution_definition_ptr>::const_iterator itor
 		= (*control->second).resolutions.begin(),
 		end = (*control->second).resolutions.end();
 		itor != end;
@@ -656,12 +656,12 @@ tresolution_definition_ptr get_control(const std::string& control_type,
 	FAIL(formatter() << "Control: type '" << control_type << "' definition '" << definition << "' has no resolutions.\n");
 }
 
-std::vector<twindow_builder::tresolution>::const_iterator
+std::vector<builder_window::window_resolution>::const_iterator
 get_window_builder(const std::string& type)
 {
 	twindow::update_screen_size();
 
-	std::map<std::string, twindow_builder>::const_iterator window
+	std::map<std::string, builder_window>::const_iterator window
 			= current_gui->second.window_types.find(type);
 
 	if(window == current_gui->second.window_types.end()) {
@@ -675,7 +675,7 @@ get_window_builder(const std::string& type)
 		}
 	}
 
-	for(std::vector<twindow_builder::tresolution>::const_iterator itor
+	for(std::vector<builder_window::window_resolution>::const_iterator itor
 		= window->second.resolutions.begin(),
 		end = window->second.resolutions.end();
 		itor != end;

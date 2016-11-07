@@ -49,9 +49,9 @@ public:
 	 */
 	tlist(const bool has_minimum,
 		  const bool has_maximum,
-		  const tgenerator_::tplacement placement,
+		  const generator_base::tplacement placement,
 		  const bool select,
-		  const tbuilder_grid_const_ptr list_builder);
+		  const builder_grid_const_ptr list_builder);
 
 	/***** ***** ***** ***** Row handling. ***** ***** ****** *****/
 	/**
@@ -238,10 +238,10 @@ private:
 	 * of the tscrollbar_container super class and freed when it's grid is
 	 * freed.
 	 */
-	tgenerator_* generator_;
+	generator_base* generator_;
 
 	/** Contains the builder for the new items. */
-	tbuilder_grid_const_ptr list_builder_;
+	builder_grid_const_ptr list_builder_;
 
 	bool need_layout_;
 #if 0

@@ -21,14 +21,14 @@ namespace gui2
 {
 
 namespace implementation {
-	struct tbuilder_tree_view;
+	struct builder_tree_view;
 	struct ttree_node
 	{
 		explicit ttree_node(const config& cfg);
 
 		std::string id;
 		bool unfolded;
-		tbuilder_grid_ptr builder;
+		builder_grid_ptr builder;
 	};
 }
 
@@ -38,13 +38,13 @@ class ttree_view_node;
 
 class ttree_view : public tscrollbar_container
 {
-	friend struct implementation::tbuilder_tree_view;
+	friend struct implementation::builder_tree_view;
 	friend class ttree_view_node;
 
 public:
-	typedef implementation::ttree_node tnode_definition;
+	typedef implementation::ttree_node node_definition;
 
-	explicit ttree_view(const std::vector<tnode_definition>& node_definitions);
+	explicit ttree_view(const std::vector<node_definition>& node_definitions);
 
 	~ttree_view();
 
@@ -119,7 +119,7 @@ private:
 	 * We no depend on the implementation, maybe the implementation should
 	 * depend on us instead.
 	 */
-	const std::vector<tnode_definition> node_definitions_;
+	const std::vector<node_definition> node_definitions_;
 
 	unsigned indentation_step_size_;
 
@@ -173,16 +173,16 @@ private:
 
 // }---------- DEFINITION ---------{
 
-struct ttree_view_definition : public tcontrol_definition
+struct tree_view_definition : public control_definition
 {
 
-	explicit ttree_view_definition(const config& cfg);
+	explicit tree_view_definition(const config& cfg);
 
-	struct tresolution : public tresolution_definition_
+	struct tresolution : public resolution_definition
 	{
 		explicit tresolution(const config& cfg);
 
-		tbuilder_grid_ptr grid;
+		builder_grid_ptr grid;
 	};
 };
 
@@ -191,11 +191,11 @@ struct ttree_view_definition : public tcontrol_definition
 namespace implementation
 {
 
-struct tbuilder_tree_view : public tbuilder_control
+struct builder_tree_view : public builder_control
 {
-	explicit tbuilder_tree_view(const config& cfg);
+	explicit builder_tree_view(const config& cfg);
 
-	using tbuilder_control::build;
+	using builder_control::build;
 
 	twidget* build() const;
 

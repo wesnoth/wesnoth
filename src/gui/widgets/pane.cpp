@@ -108,7 +108,7 @@ struct tpane_implementation
 	}
 };
 
-tpane::tpane(const tbuilder_grid_ptr item_builder)
+tpane::tpane(const builder_grid_ptr item_builder)
 	: twidget()
 	, items_()
 	, item_builder_(item_builder)
@@ -121,7 +121,7 @@ tpane::tpane(const tbuilder_grid_ptr item_builder)
 			event::dispatcher::back_pre_child);
 }
 
-tpane::tpane(const implementation::tbuilder_pane& builder)
+tpane::tpane(const implementation::builder_pane& builder)
 	: twidget(builder)
 	, items_()
 	, item_builder_(builder.item_definition)
@@ -134,7 +134,7 @@ tpane::tpane(const implementation::tbuilder_pane& builder)
 			event::dispatcher::back_pre_child);
 }
 
-tpane* tpane::build(const implementation::tbuilder_pane& builder)
+tpane* tpane::build(const implementation::builder_pane& builder)
 {
 	return new tpane(builder);
 }
@@ -423,22 +423,22 @@ void tpane::signal_handler_request_placement(dispatcher& dispatcher,
 namespace implementation
 {
 
-tbuilder_pane::tbuilder_pane(const config& cfg)
-	: tbuilder_widget(cfg)
+builder_pane::builder_pane(const config& cfg)
+	: builder_widget(cfg)
 	, grow_direction(
 			  lexical_cast<placer_base::tgrow_direction>(cfg["grow_direction"]))
 	, parallel_items(cfg["parallel_items"])
-	, item_definition(new tbuilder_grid(cfg.child("item_definition", "[pane]")))
+	, item_definition(new builder_grid(cfg.child("item_definition", "[pane]")))
 {
 	VALIDATE(parallel_items > 0, _("Need at least 1 parallel item."));
 }
 
-twidget* tbuilder_pane::build() const
+twidget* builder_pane::build() const
 {
-	return build(treplacements());
+	return build(replacements_map());
 }
 
-twidget* tbuilder_pane::build(const treplacements& /*replacements*/) const
+twidget* builder_pane::build(const replacements_map& /*replacements*/) const
 {
 	return tpane::build(*this);
 }

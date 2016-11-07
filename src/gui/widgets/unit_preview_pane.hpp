@@ -34,12 +34,12 @@ class ttree_view_node;
 
 namespace implementation
 {
-	struct tbuilder_unit_preview_pane;
+	struct builder_unit_preview_pane;
 }
 
 class tunit_preview_pane : public tcontainer_
 {
-	friend struct implementation::tbuilder_unit_preview_pane;
+	friend struct implementation::builder_unit_preview_pane;
 
 public:
 	tunit_preview_pane()
@@ -124,16 +124,16 @@ private:
 
 // }---------- DEFINITION ---------{
 
-struct tunit_preview_pane_definition : public tcontrol_definition
+struct unit_preview_pane_definition : public control_definition
 {
 
-	explicit tunit_preview_pane_definition(const config& cfg);
+	explicit unit_preview_pane_definition(const config& cfg);
 
-	struct tresolution : public tresolution_definition_
+	struct tresolution : public resolution_definition
 	{
 		explicit tresolution(const config& cfg);
 
-		tbuilder_grid_ptr grid;
+		builder_grid_ptr grid;
 	};
 };
 
@@ -142,12 +142,12 @@ struct tunit_preview_pane_definition : public tcontrol_definition
 namespace implementation
 {
 
-struct tbuilder_unit_preview_pane : public tbuilder_control
+struct builder_unit_preview_pane : public builder_control
 {
 public:
-	explicit tbuilder_unit_preview_pane(const config& cfg);
+	explicit builder_unit_preview_pane(const config& cfg);
 
-	using tbuilder_control::build;
+	using builder_control::build;
 
 	twidget* build() const;
 

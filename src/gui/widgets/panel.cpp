@@ -36,8 +36,8 @@ REGISTER_WIDGET(panel)
 
 SDL_Rect tpanel::get_client_rect() const
 {
-	std::shared_ptr<const tpanel_definition::tresolution> conf
-			= std::static_pointer_cast<const tpanel_definition::tresolution>(
+	std::shared_ptr<const panel_definition::tresolution> conf
+			= std::static_pointer_cast<const panel_definition::tresolution>(
 					config());
 	assert(conf);
 
@@ -76,8 +76,8 @@ void tpanel::impl_draw_foreground(surface& frame_buffer, int x_offset, int y_off
 
 point tpanel::border_space() const
 {
-	std::shared_ptr<const tpanel_definition::tresolution> conf
-			= std::static_pointer_cast<const tpanel_definition::tresolution>(
+	std::shared_ptr<const panel_definition::tresolution> conf
+			= std::static_pointer_cast<const panel_definition::tresolution>(
 					config());
 	assert(conf);
 
@@ -97,8 +97,8 @@ void tpanel::set_self_active(const bool /*active*/)
 
 // }---------- DEFINITION ---------{
 
-tpanel_definition::tpanel_definition(const config& cfg)
-	: tcontrol_definition(cfg)
+panel_definition::panel_definition(const config& cfg)
+	: control_definition(cfg)
 {
 	DBG_GUI_P << "Parsing panel " << id << '\n';
 
@@ -143,16 +143,16 @@ tpanel_definition::tpanel_definition(const config& cfg)
  * @end{tag}{name="panel_definition"}
  * @end{parent}{name="gui/"}
  */
-tpanel_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
+panel_definition::tresolution::tresolution(const config& cfg)
+	: resolution_definition(cfg)
 	, top_border(cfg["top_border"])
 	, bottom_border(cfg["bottom_border"])
 	, left_border(cfg["left_border"])
 	, right_border(cfg["right_border"])
 {
 	// The panel needs to know the order.
-	state.push_back(tstate_definition(cfg.child("background")));
-	state.push_back(tstate_definition(cfg.child("foreground")));
+	state.push_back(state_definition(cfg.child("background")));
+	state.push_back(state_definition(cfg.child("foreground")));
 }
 
 // }---------- BUILDER -----------{
@@ -188,17 +188,17 @@ tpanel_definition::tresolution::tresolution(const config& cfg)
 namespace implementation
 {
 
-tbuilder_panel::tbuilder_panel(const config& cfg)
-	: tbuilder_control(cfg), grid(nullptr)
+builder_panel::builder_panel(const config& cfg)
+	: builder_control(cfg), grid(nullptr)
 {
 	const config& c = cfg.child("grid");
 
 	VALIDATE(c, _("No grid defined."));
 
-	grid = std::make_shared<tbuilder_grid>(c);
+	grid = std::make_shared<builder_grid>(c);
 }
 
-twidget* tbuilder_panel::build() const
+twidget* builder_panel::build() const
 {
 	tpanel* widget = new tpanel();
 

@@ -57,14 +57,14 @@ unsigned tstate_default::get_state() const
 	return state_;
 }
 
-tmatrix::tmatrix(const implementation::tbuilder_matrix& builder)
+tmatrix::tmatrix(const implementation::builder_matrix& builder)
 	: tbase(builder, get_control_type()), content_(), pane_(nullptr)
 {
-	std::shared_ptr<const tmatrix_definition::tresolution>
-	cfg = std::static_pointer_cast<const tmatrix_definition::tresolution>(
+	std::shared_ptr<const matrix_definition::tresolution>
+	cfg = std::static_pointer_cast<const matrix_definition::tresolution>(
 			config());
 
-	tbuilder_widget::treplacements replacements;
+	builder_widget::replacements_map replacements;
 	replacements.insert(std::make_pair("_main", builder.builder_main));
 
 	if(builder.builder_top) {
@@ -89,7 +89,7 @@ tmatrix::tmatrix(const implementation::tbuilder_matrix& builder)
 	pane_ = find_widget<tpane>(&content_, "pane", false, true);
 }
 
-tmatrix* tmatrix::build(const implementation::tbuilder_matrix& builder)
+tmatrix* tmatrix::build(const implementation::builder_matrix& builder)
 {
 	return new tmatrix(builder);
 }
@@ -214,21 +214,21 @@ const std::string& tmatrix::get_control_type() const
  * @end{parent}{name="gui/"}
  */
 
-tmatrix_definition::tmatrix_definition(const config& cfg)
-	: tcontrol_definition(cfg)
+matrix_definition::matrix_definition(const config& cfg)
+	: control_definition(cfg)
 {
 	DBG_GUI_P << "Parsing matrix " << id << '\n';
 
 	load_resolutions<tresolution>(cfg);
 }
 
-tmatrix_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
-	, content(new tbuilder_grid(cfg.child("content", "[matrix_definition]")))
+matrix_definition::tresolution::tresolution(const config& cfg)
+	: resolution_definition(cfg)
+	, content(new builder_grid(cfg.child("content", "[matrix_definition]")))
 {
 	// Note the order should be the same as the enum state_t in matrix.hpp.
-	state.push_back(tstate_definition(cfg.child("state_enabled")));
-	state.push_back(tstate_definition(cfg.child("state_disabled")));
+	state.push_back(state_definition(cfg.child("state_enabled")));
+	state.push_back(state_definition(cfg.child("state_disabled")));
 }
 
 // }---------- BUILDER -----------{
@@ -273,8 +273,8 @@ tmatrix_definition::tresolution::tresolution(const config& cfg)
 namespace implementation
 {
 
-tbuilder_matrix::tbuilder_matrix(const config& cfg)
-	: tbuilder_control(cfg)
+builder_matrix::builder_matrix(const config& cfg)
+	: builder_control(cfg)
 	, vertical_scrollbar_mode(
 			  get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
 	, horizontal_scrollbar_mode(
@@ -286,23 +286,23 @@ tbuilder_matrix::tbuilder_matrix(const config& cfg)
 	, builder_main(create_builder_widget(cfg.child("main", "[matrix]")))
 {
 	if(const config& top = cfg.child("top")) {
-		builder_top = std::make_shared<tbuilder_grid>(top);
+		builder_top = std::make_shared<builder_grid>(top);
 	}
 
 	if(const config& bottom = cfg.child("bottom")) {
-		builder_bottom = std::make_shared<tbuilder_grid>(bottom);
+		builder_bottom = std::make_shared<builder_grid>(bottom);
 	}
 
 	if(const config& left = cfg.child("left")) {
-		builder_left = std::make_shared<tbuilder_grid>(left);
+		builder_left = std::make_shared<builder_grid>(left);
 	}
 
 	if(const config& right = cfg.child("right")) {
-		builder_right = std::make_shared<tbuilder_grid>(right);
+		builder_right = std::make_shared<builder_grid>(right);
 	}
 }
 
-twidget* tbuilder_matrix::build() const
+twidget* builder_matrix::build() const
 {
 	return tmatrix::build(*this);
 }

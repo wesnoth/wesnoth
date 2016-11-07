@@ -68,14 +68,14 @@ private:
 namespace implementation
 {
 
-// copy & paste from tbuilder_text_box...
+// copy & paste from builder_text_box...
 // does it make more sense to inherit from it?
-struct tbuilder_password_box : public tbuilder_control
+struct builder_password_box : public builder_control
 {
 public:
-	explicit tbuilder_password_box(const config& cfg);
+	explicit builder_password_box(const config& cfg);
 
-	using tbuilder_control::build;
+	using builder_control::build;
 
 	twidget* build() const;
 

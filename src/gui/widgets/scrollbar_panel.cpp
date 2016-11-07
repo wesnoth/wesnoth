@@ -55,8 +55,8 @@ void tscrollbar_panel::set_self_active(const bool /*active*/)
 
 // }---------- DEFINITION ---------{
 
-tscrollbar_panel_definition::tscrollbar_panel_definition(const config& cfg)
-	: tcontrol_definition(cfg)
+scrollbar_panel_definition::scrollbar_panel_definition(const config& cfg)
+	: control_definition(cfg)
 {
 	DBG_GUI_P << "Parsing scrollbar panel " << id << '\n';
 
@@ -88,17 +88,17 @@ tscrollbar_panel_definition::tscrollbar_panel_definition(const config& cfg)
  * @end{tag}{name="scrollbar_panel_definition"}
  * @end{parent}{name="gui/"}
  */
-tscrollbar_panel_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg), grid()
+scrollbar_panel_definition::tresolution::tresolution(const config& cfg)
+	: resolution_definition(cfg), grid()
 {
 	// The panel needs to know the order.
-	state.push_back(tstate_definition(cfg.child("background")));
-	state.push_back(tstate_definition(cfg.child("foreground")));
+	state.push_back(state_definition(cfg.child("background")));
+	state.push_back(state_definition(cfg.child("foreground")));
 
 	const config& child = cfg.child("grid");
 	VALIDATE(child, _("No grid defined."));
 
-	grid = std::make_shared<tbuilder_grid>(child);
+	grid = std::make_shared<builder_grid>(child);
 }
 
 // }---------- BUILDER -----------{
@@ -135,8 +135,8 @@ tscrollbar_panel_definition::tresolution::tresolution(const config& cfg)
 namespace implementation
 {
 
-tbuilder_scrollbar_panel::tbuilder_scrollbar_panel(const config& cfg)
-	: tbuilder_control(cfg)
+builder_scrollbar_panel::builder_scrollbar_panel(const config& cfg)
+	: builder_control(cfg)
 	, vertical_scrollbar_mode(
 			  get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
 	, horizontal_scrollbar_mode(
@@ -146,11 +146,11 @@ tbuilder_scrollbar_panel::tbuilder_scrollbar_panel(const config& cfg)
 	const config& grid_definition = cfg.child("definition");
 
 	VALIDATE(grid_definition, _("No list defined."));
-	grid = std::make_shared<tbuilder_grid>(grid_definition);
+	grid = std::make_shared<builder_grid>(grid_definition);
 	assert(grid);
 }
 
-twidget* tbuilder_scrollbar_panel::build() const
+twidget* builder_scrollbar_panel::build() const
 {
 	tscrollbar_panel* panel = new tscrollbar_panel();
 
@@ -162,8 +162,8 @@ twidget* tbuilder_scrollbar_panel::build() const
 	DBG_GUI_G << "Window builder: placed scrollbar_panel '" << id
 			  << "' with definition '" << definition << "'.\n";
 
-	std::shared_ptr<const tscrollbar_panel_definition::tresolution> conf
-			= std::static_pointer_cast<const tscrollbar_panel_definition::tresolution>(
+	std::shared_ptr<const scrollbar_panel_definition::tresolution> conf
+			= std::static_pointer_cast<const scrollbar_panel_definition::tresolution>(
 				panel->config());
 	assert(conf);
 

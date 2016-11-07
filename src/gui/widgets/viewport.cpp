@@ -82,8 +82,8 @@ tviewport::tviewport(twidget& widget) : widget_(widget), owns_widget_(false)
 	widget_.set_parent(this);
 }
 
-tviewport::tviewport(const implementation::tbuilder_viewport& builder,
-					 const tbuilder_widget::treplacements& replacements)
+tviewport::tviewport(const implementation::builder_viewport& builder,
+					 const builder_widget::replacements_map& replacements)
 	: twidget(builder)
 	, widget_(*builder.widget->build(replacements))
 	, owns_widget_(true)
@@ -98,8 +98,8 @@ tviewport::~tviewport()
 	}
 }
 
-tviewport* tviewport::build(const implementation::tbuilder_viewport& builder,
-							const tbuilder_widget::treplacements& replacements)
+tviewport* tviewport::build(const implementation::builder_viewport& builder,
+							const builder_widget::replacements_map& replacements)
 {
 	return new tviewport(builder, replacements);
 }
@@ -218,18 +218,18 @@ iterator::twalker_* tviewport::create_walker()
 namespace implementation
 {
 
-tbuilder_viewport::tbuilder_viewport(const config& cfg)
-	: tbuilder_widget(cfg)
+builder_viewport::builder_viewport(const config& cfg)
+	: builder_widget(cfg)
 	, widget(create_builder_widget(cfg.child("widget", "[viewport]")))
 {
 }
 
-twidget* tbuilder_viewport::build() const
+twidget* builder_viewport::build() const
 {
-	return build(treplacements());
+	return build(replacements_map());
 }
 
-twidget* tbuilder_viewport::build(const treplacements& replacements) const
+twidget* builder_viewport::build(const replacements_map& replacements) const
 {
 	return tviewport::build(*this, replacements);
 }

@@ -85,11 +85,11 @@ private:
 
 // }---------- DEFINITION ---------{
 
-struct tspacer_definition : public tcontrol_definition
+struct spacer_definition : public control_definition
 {
-	explicit tspacer_definition(const config& cfg);
+	explicit spacer_definition(const config& cfg);
 
-	struct tresolution : public tresolution_definition_
+	struct tresolution : public resolution_definition
 	{
 		explicit tresolution(const config& cfg);
 	};
@@ -100,11 +100,11 @@ struct tspacer_definition : public tcontrol_definition
 namespace implementation
 {
 
-struct tbuilder_spacer : public tbuilder_control
+struct builder_spacer : public builder_control
 {
-	explicit tbuilder_spacer(const config& cfg);
+	explicit builder_spacer(const config& cfg);
 
-	using tbuilder_control::build;
+	using builder_control::build;
 
 	twidget* build() const;
 

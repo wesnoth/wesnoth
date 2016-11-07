@@ -23,7 +23,7 @@
  *
  * See @ref gui2::load_widget_definitions for more information.
  *
- * @note When the type is tfoo_definition, the id "foo" and no special key best
+ * @note When the type is foo_definition, the id "foo" and no special key best
  * use RESISTER_WIDGET(foo) instead.
  *
  * @param type                    Class type of the window to register.
@@ -37,9 +37,9 @@
 	namespace ns_##type##id                                                    \
 	{                                                                          \
                                                                                \
-		struct tregister_helper                                                \
+		struct register_helper                                                 \
 		{                                                                      \
-			tregister_helper()                                                 \
+			register_helper()                                                  \
 			{                                                                  \
 				register_widget(#id,                                           \
 								std::bind(load_widget_definitions<type>,       \
@@ -51,20 +51,20 @@
 				register_builder_widget(                                       \
 						#id,                                                   \
 						std::bind(                                             \
-								build_widget<implementation::tbuilder_##id>,   \
+								build_widget<implementation::builder_##id>,    \
 								_1));                                          \
 			}                                                                  \
 		};                                                                     \
                                                                                \
-		static tregister_helper register_helper;                               \
+		static struct register_helper register_helper;                         \
 	}                                                                          \
 	}
 
 /**
  * Wrapper for REGISTER_WIDGET3.
  *
- * "Calls" REGISTER_WIDGET3(tid_definition, id, _4)
+ * "Calls" REGISTER_WIDGET3(id_definition, id, _4)
  */
-#define REGISTER_WIDGET(id) REGISTER_WIDGET3(t##id##_definition, id, _4)
+#define REGISTER_WIDGET(id) REGISTER_WIDGET3(id##_definition, id, _4)
 
 #endif

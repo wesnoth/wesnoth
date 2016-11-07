@@ -33,17 +33,17 @@ namespace gui2
 class tselectable_;
 namespace implementation
 {
-struct tbuilder_listbox;
-struct tbuilder_horizontal_listbox;
-struct tbuilder_grid_listbox;
+struct builder_listbox;
+struct builder_horizontal_listbox;
+struct builder_grid_listbox;
 }
 
 /** The listbox class. */
 class tlistbox : public tscrollbar_container
 {
-	friend struct implementation::tbuilder_listbox;
-	friend struct implementation::tbuilder_horizontal_listbox;
-	friend struct implementation::tbuilder_grid_listbox;
+	friend struct implementation::builder_listbox;
+	friend struct implementation::builder_horizontal_listbox;
+	friend struct implementation::builder_grid_listbox;
 	friend class tdebug_layout_graph;
 
 public:
@@ -60,7 +60,7 @@ public:
 	 */
 	tlistbox(const bool has_minimum,
 			 const bool has_maximum,
-			 const tgenerator_::tplacement placement,
+			 const generator_base::placement placement,
 			 const bool select);
 
 	/***** ***** ***** ***** Row handling. ***** ***** ****** *****/
@@ -240,12 +240,12 @@ public:
 		callback_value_changed_ = callback;
 	}
 
-	void set_list_builder(tbuilder_grid_ptr list_builder)
+	void set_list_builder(builder_grid_ptr list_builder)
 	{
 		list_builder_ = list_builder;
 	}
 
-	void order_by(const tgenerator_::torder_func& func);
+	void order_by(const generator_base::torder_func& func);
 
 	void set_column_order(unsigned col, const generator_sort_array& func);
 
@@ -319,8 +319,8 @@ private:
 	 * @param footer              Builder for the footer.
 	 * @param list_data           The initial data to fill the listbox with.
 	 */
-	void finalize(tbuilder_grid_const_ptr header,
-				  tbuilder_grid_const_ptr footer,
+	void finalize(builder_grid_const_ptr header,
+				  builder_grid_const_ptr footer,
 				  const std::vector<std::map<std::string, string_map>>& list_data);
 	/**
 	 * Contains a pointer to the generator.
@@ -329,12 +329,12 @@ private:
 	 * of the tscrollbar_container super class and freed when it's grid is
 	 * freed.
 	 */
-	tgenerator_* generator_;
+	generator_base* generator_;
 
 	const bool is_horizonal_;
 
 	/** Contains the builder for the new items. */
-	tbuilder_grid_const_ptr list_builder_;
+	builder_grid_const_ptr list_builder_;
 
 	/**
 	 * This callback is called when a list item is clicked (toggled).
@@ -399,16 +399,16 @@ private:
 
 // }---------- DEFINITION ---------{
 
-struct tlistbox_definition : public tcontrol_definition
+struct listbox_definition : public control_definition
 {
 
-	explicit tlistbox_definition(const config& cfg);
+	explicit listbox_definition(const config& cfg);
 
-	struct tresolution : public tresolution_definition_
+	struct tresolution : public resolution_definition
 	{
 		explicit tresolution(const config& cfg);
 
-		tbuilder_grid_ptr grid;
+		builder_grid_ptr grid;
 	};
 };
 
@@ -417,21 +417,21 @@ struct tlistbox_definition : public tcontrol_definition
 namespace implementation
 {
 
-struct tbuilder_listbox : public tbuilder_control
+struct builder_listbox : public builder_control
 {
-	explicit tbuilder_listbox(const config& cfg);
+	explicit builder_listbox(const config& cfg);
 
-	using tbuilder_control::build;
+	using builder_control::build;
 
 	twidget* build() const;
 
 	tscrollbar_container::tscrollbar_mode vertical_scrollbar_mode;
 	tscrollbar_container::tscrollbar_mode horizontal_scrollbar_mode;
 
-	tbuilder_grid_ptr header;
-	tbuilder_grid_ptr footer;
+	builder_grid_ptr header;
+	builder_grid_ptr footer;
 
-	tbuilder_grid_ptr list_builder;
+	builder_grid_ptr list_builder;
 
 	/**
 	 * Listbox data.
@@ -444,18 +444,18 @@ struct tbuilder_listbox : public tbuilder_control
 	bool has_minimum_, has_maximum_;
 };
 
-struct tbuilder_horizontal_listbox : public tbuilder_control
+struct builder_horizontal_listbox : public builder_control
 {
-	explicit tbuilder_horizontal_listbox(const config& cfg);
+	explicit builder_horizontal_listbox(const config& cfg);
 
-	using tbuilder_control::build;
+	using builder_control::build;
 
 	twidget* build() const;
 
 	tscrollbar_container::tscrollbar_mode vertical_scrollbar_mode;
 	tscrollbar_container::tscrollbar_mode horizontal_scrollbar_mode;
 
-	tbuilder_grid_ptr list_builder;
+	builder_grid_ptr list_builder;
 
 	/**
 	 * Listbox data.
@@ -468,18 +468,18 @@ struct tbuilder_horizontal_listbox : public tbuilder_control
 	bool has_minimum_, has_maximum_;
 };
 
-struct tbuilder_grid_listbox : public tbuilder_control
+struct builder_grid_listbox : public builder_control
 {
-	explicit tbuilder_grid_listbox(const config& cfg);
+	explicit builder_grid_listbox(const config& cfg);
 
-	using tbuilder_control::build;
+	using builder_control::build;
 
 	twidget* build() const;
 
 	tscrollbar_container::tscrollbar_mode vertical_scrollbar_mode;
 	tscrollbar_container::tscrollbar_mode horizontal_scrollbar_mode;
 
-	tbuilder_grid_ptr list_builder;
+	builder_grid_ptr list_builder;
 
 	/**
 	 * Listbox data.

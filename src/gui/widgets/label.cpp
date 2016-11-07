@@ -138,8 +138,8 @@ void tlabel::load_config_extra()
 {
 	assert(config());
 
-	std::shared_ptr<const tlabel_definition::tresolution>
-	conf = std::static_pointer_cast<const tlabel_definition::tresolution>(
+	std::shared_ptr<const label_definition::tresolution>
+	conf = std::static_pointer_cast<const label_definition::tresolution>(
 			config());
 
 	assert(conf);
@@ -215,8 +215,8 @@ void tlabel::signal_handler_right_button_click(const event::event_t /* event */,
 
 // }---------- DEFINITION ---------{
 
-tlabel_definition::tlabel_definition(const config& cfg)
-	: tcontrol_definition(cfg)
+label_definition::label_definition(const config& cfg)
+	: control_definition(cfg)
 {
 	DBG_GUI_P << "Parsing label " << id << '\n';
 
@@ -261,14 +261,14 @@ tlabel_definition::tlabel_definition(const config& cfg)
  * @end{tag}{name="label_definition"}
  * @end{parent}{name="gui/"}
  */
-tlabel_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
+label_definition::tresolution::tresolution(const config& cfg)
+	: resolution_definition(cfg)
 	, link_aware(cfg["link_aware"].to_bool(false))
 	, link_color(cfg["link_color"].str().size() > 0 ? cfg["link_color"].str() : "#ffff00")
 {
 	// Note the order should be the same as the enum state_t is label.hpp.
-	state.push_back(tstate_definition(cfg.child("state_enabled")));
-	state.push_back(tstate_definition(cfg.child("state_disabled")));
+	state.push_back(state_definition(cfg.child("state_enabled")));
+	state.push_back(state_definition(cfg.child("state_disabled")));
 }
 
 // }---------- BUILDER -----------{
@@ -313,15 +313,15 @@ tlabel_definition::tresolution::tresolution(const config& cfg)
 namespace implementation
 {
 
-tbuilder_label::tbuilder_label(const config& cfg)
-	: tbuilder_control(cfg)
+builder_label::builder_label(const config& cfg)
+	: builder_control(cfg)
 	, wrap(cfg["wrap"].to_bool())
 	, characters_per_line(cfg["characters_per_line"])
 	, text_alignment(decode_text_alignment(cfg["text_alignment"]))
 {
 }
 
-twidget* tbuilder_label::build() const
+twidget* builder_label::build() const
 {
 	tlabel* label = new tlabel();
 

@@ -141,8 +141,8 @@ unsigned ttoggle_panel::get_state() const
 
 SDL_Rect ttoggle_panel::get_client_rect() const
 {
-	std::shared_ptr<const ttoggle_panel_definition::tresolution> conf
-			= std::static_pointer_cast<const ttoggle_panel_definition::
+	std::shared_ptr<const toggle_panel_definition::tresolution> conf
+			= std::static_pointer_cast<const toggle_panel_definition::
 												  tresolution>(config());
 	assert(conf);
 
@@ -157,8 +157,8 @@ SDL_Rect ttoggle_panel::get_client_rect() const
 
 point ttoggle_panel::border_space() const
 {
-	std::shared_ptr<const ttoggle_panel_definition::tresolution> conf
-			= std::static_pointer_cast<const ttoggle_panel_definition::
+	std::shared_ptr<const toggle_panel_definition::tresolution> conf
+			= std::static_pointer_cast<const toggle_panel_definition::
 												  tresolution>(config());
 	assert(conf);
 
@@ -188,8 +188,8 @@ void ttoggle_panel::set_state(const state_t state)
 	state_ = state;
 	set_is_dirty(true);
 
-	std::shared_ptr<const ttoggle_panel_definition::tresolution> conf
-			= std::static_pointer_cast<const ttoggle_panel_definition::
+	std::shared_ptr<const toggle_panel_definition::tresolution> conf
+			= std::static_pointer_cast<const toggle_panel_definition::
 												  tresolution>(config());
 	assert(conf);
 }
@@ -304,8 +304,8 @@ void ttoggle_panel::signal_handler_left_button_double_click(
 
 // }---------- DEFINITION ---------{
 
-ttoggle_panel_definition::ttoggle_panel_definition(const config& cfg)
-	: tcontrol_definition(cfg)
+toggle_panel_definition::toggle_panel_definition(const config& cfg)
+	: control_definition(cfg)
 {
 	DBG_GUI_P << "Parsing toggle panel " << id << '\n';
 
@@ -319,7 +319,7 @@ ttoggle_panel_definition::ttoggle_panel_definition(const config& cfg)
  * == Toggle panel ==
  *
  * @begin{parent}{name="gui/"}
- * @begin{tag}{name="toggle_panel_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
+ * @begin{tag}{name="oggle_panel_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
  * The definition of a toggle panel. A toggle panel is like a toggle button, but
  * instead of being a button it's a panel. This means it can hold multiple child
  * items.
@@ -358,11 +358,11 @@ ttoggle_panel_definition::ttoggle_panel_definition(const config& cfg)
  * @begin{tag}{name="state_focused_selected"}{min=0}{max=1}{super="generic/state"}
  * @end{tag}{name="state_focused_selected"}
  * @end{tag}{name="resolution"}
- * @end{tag}{name="toggle_panel_definition"}
+ * @end{tag}{name="oggle_panel_definition"}
  * @end{parent}{name="gui/"}
  */
-ttoggle_panel_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
+toggle_panel_definition::tresolution::tresolution(const config& cfg)
+	: resolution_definition(cfg)
 	, top_border(cfg["top_border"])
 	, bottom_border(cfg["bottom_border"])
 	, left_border(cfg["left_border"])
@@ -371,9 +371,9 @@ ttoggle_panel_definition::tresolution::tresolution(const config& cfg)
 	// Note the order should be the same as the enum state_t in toggle_panel.hpp.
 	for(const auto& c : cfg.child_range("state"))
 	{
-		state.push_back(tstate_definition(c.child("enabled")));
-		state.push_back(tstate_definition(c.child("disabled")));
-		state.push_back(tstate_definition(c.child("focused")));
+		state.push_back(state_definition(c.child("enabled")));
+		state.push_back(state_definition(c.child("disabled")));
+		state.push_back(state_definition(c.child("focused")));
 	}
 }
 
@@ -410,8 +410,8 @@ ttoggle_panel_definition::tresolution::tresolution(const config& cfg)
 namespace implementation
 {
 
-tbuilder_toggle_panel::tbuilder_toggle_panel(const config& cfg)
-	: tbuilder_control(cfg)
+builder_toggle_panel::builder_toggle_panel(const config& cfg)
+	: builder_control(cfg)
 	, grid(nullptr)
 	, retval_id_(cfg["return_value_id"])
 	, retval_(cfg["return_value"])
@@ -420,10 +420,10 @@ tbuilder_toggle_panel::tbuilder_toggle_panel(const config& cfg)
 
 	VALIDATE(c, _("No grid defined."));
 
-	grid = std::make_shared<tbuilder_grid>(c);
+	grid = std::make_shared<builder_grid>(c);
 }
 
-twidget* tbuilder_toggle_panel::build() const
+twidget* builder_toggle_panel::build() const
 {
 	ttoggle_panel* widget = new ttoggle_panel();
 

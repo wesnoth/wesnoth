@@ -148,8 +148,8 @@ void tbutton::signal_handler_left_button_click(const event::event_t event,
 
 // }---------- DEFINITION ---------{
 
-tbutton_definition::tbutton_definition(const config& cfg)
-	: tcontrol_definition(cfg)
+button_definition::button_definition(const config& cfg)
+	: control_definition(cfg)
 {
 	DBG_GUI_P << "Parsing button " << id << '\n';
 
@@ -184,14 +184,14 @@ tbutton_definition::tbutton_definition(const config& cfg)
  * @end{tag}{name="button_definition"}
  * @end{parent}{name="gui/"}
  */
-tbutton_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
+button_definition::tresolution::tresolution(const config& cfg)
+	: resolution_definition(cfg)
 {
 	// Note the order should be the same as the enum state_t in button.hpp.
-	state.push_back(tstate_definition(cfg.child("state_enabled")));
-	state.push_back(tstate_definition(cfg.child("state_disabled")));
-	state.push_back(tstate_definition(cfg.child("state_pressed")));
-	state.push_back(tstate_definition(cfg.child("state_focused")));
+	state.push_back(state_definition(cfg.child("state_enabled")));
+	state.push_back(state_definition(cfg.child("state_disabled")));
+	state.push_back(state_definition(cfg.child("state_pressed")));
+	state.push_back(state_definition(cfg.child("state_focused")));
 }
 
 // }---------- BUILDER -----------{
@@ -237,14 +237,14 @@ tbutton_definition::tresolution::tresolution(const config& cfg)
 namespace implementation
 {
 
-tbuilder_button::tbuilder_button(const config& cfg)
-	: tbuilder_control(cfg)
+builder_button::builder_button(const config& cfg)
+	: builder_control(cfg)
 	, retval_id_(cfg["return_value_id"])
 	, retval_(cfg["return_value"])
 {
 }
 
-twidget* tbuilder_button::build() const
+twidget* builder_button::build() const
 {
 	tbutton* widget = new tbutton();
 

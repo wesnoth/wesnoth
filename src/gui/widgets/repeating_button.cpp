@@ -168,8 +168,8 @@ void trepeating_button::signal_handler_left_button_up(const event::event_t event
 
 // }---------- DEFINITION ---------{
 
-trepeating_button_definition::trepeating_button_definition(const config& cfg)
-	: tcontrol_definition(cfg)
+repeating_button_definition::repeating_button_definition(const config& cfg)
+	: control_definition(cfg)
 {
 	DBG_GUI_P << "Parsing repeating button " << id << '\n';
 
@@ -204,15 +204,15 @@ trepeating_button_definition::trepeating_button_definition(const config& cfg)
  * @end{tag}{name="repeating_button_definition"}
  * @end{parent}{name="gui/"}
  */
-trepeating_button_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
+repeating_button_definition::tresolution::tresolution(const config& cfg)
+	: resolution_definition(cfg)
 {
 	// Note the order should be the same as the enum state_t in
 	// repeating_button.hpp.
-	state.push_back(tstate_definition(cfg.child("state_enabled")));
-	state.push_back(tstate_definition(cfg.child("state_disabled")));
-	state.push_back(tstate_definition(cfg.child("state_pressed")));
-	state.push_back(tstate_definition(cfg.child("state_focused")));
+	state.push_back(state_definition(cfg.child("state_enabled")));
+	state.push_back(state_definition(cfg.child("state_disabled")));
+	state.push_back(state_definition(cfg.child("state_pressed")));
+	state.push_back(state_definition(cfg.child("state_focused")));
 }
 
 // }---------- BUILDER -----------{
@@ -242,12 +242,12 @@ trepeating_button_definition::tresolution::tresolution(const config& cfg)
 namespace implementation
 {
 
-tbuilder_repeating_button::tbuilder_repeating_button(const config& cfg)
-	: tbuilder_control(cfg)
+builder_repeating_button::builder_repeating_button(const config& cfg)
+	: builder_control(cfg)
 {
 }
 
-twidget* tbuilder_repeating_button::build() const
+twidget* builder_repeating_button::build() const
 {
 	trepeating_button* widget = new trepeating_button();
 

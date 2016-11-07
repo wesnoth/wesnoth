@@ -98,8 +98,8 @@ const std::string& timage::get_control_type() const
 
 // }---------- DEFINITION ---------{
 
-timage_definition::timage_definition(const config& cfg)
-	: tcontrol_definition(cfg)
+image_definition::image_definition(const config& cfg)
+	: control_definition(cfg)
 {
 	DBG_GUI_P << "Parsing image " << id << '\n';
 
@@ -129,11 +129,11 @@ timage_definition::timage_definition(const config& cfg)
  * @end{tag}{name="image_definition"}
  * @end{parent}{name="gui/"}
  */
-timage_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
+image_definition::tresolution::tresolution(const config& cfg)
+	: resolution_definition(cfg)
 {
 	// Note the order should be the same as the enum state_t in image.hpp.
-	state.push_back(tstate_definition(cfg.child("state_enabled")));
+	state.push_back(state_definition(cfg.child("state_enabled")));
 }
 
 // }---------- BUILDER -----------{
@@ -162,11 +162,11 @@ timage_definition::tresolution::tresolution(const config& cfg)
 namespace implementation
 {
 
-tbuilder_image::tbuilder_image(const config& cfg) : tbuilder_control(cfg)
+builder_image::builder_image(const config& cfg) : builder_control(cfg)
 {
 }
 
-twidget* tbuilder_image::build() const
+twidget* builder_image::build() const
 {
 	timage* widget = new timage();
 

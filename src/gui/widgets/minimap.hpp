@@ -111,11 +111,11 @@ private:
 
 // }---------- DEFINITION ---------{
 
-struct tminimap_definition : public tcontrol_definition
+struct minimap_definition : public control_definition
 {
-	explicit tminimap_definition(const config& cfg);
+	explicit minimap_definition(const config& cfg);
 
-	struct tresolution : public tresolution_definition_
+	struct tresolution : public resolution_definition
 	{
 		explicit tresolution(const config& cfg);
 	};
@@ -126,11 +126,11 @@ struct tminimap_definition : public tcontrol_definition
 namespace implementation
 {
 
-struct tbuilder_minimap : public tbuilder_control
+struct builder_minimap : public builder_control
 {
-	explicit tbuilder_minimap(const config& cfg);
+	explicit builder_minimap(const config& cfg);
 
-	using tbuilder_control::build;
+	using builder_control::build;
 
 	twidget* build() const;
 };

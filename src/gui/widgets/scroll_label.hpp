@@ -30,7 +30,7 @@ class tspacer;
 
 namespace implementation
 {
-struct tbuilder_scroll_label;
+struct builder_scroll_label;
 }
 
 /**
@@ -42,7 +42,7 @@ struct tbuilder_scroll_label;
  */
 class tscroll_label : public tscrollbar_container
 {
-	friend struct implementation::tbuilder_scroll_label;
+	friend struct implementation::builder_scroll_label;
 
 public:
 	tscroll_label(bool wrap, const std::string& text_alignment);
@@ -107,15 +107,15 @@ private:
 
 // }---------- DEFINITION ---------{
 
-struct tscroll_label_definition : public tcontrol_definition
+struct scroll_label_definition : public control_definition
 {
-	explicit tscroll_label_definition(const config& cfg);
+	explicit scroll_label_definition(const config& cfg);
 
-	struct tresolution : public tresolution_definition_
+	struct tresolution : public resolution_definition
 	{
 		explicit tresolution(const config& cfg);
 
-		tbuilder_grid_ptr grid;
+		builder_grid_ptr grid;
 	};
 };
 
@@ -124,11 +124,11 @@ struct tscroll_label_definition : public tcontrol_definition
 namespace implementation
 {
 
-struct tbuilder_scroll_label : public tbuilder_control
+struct builder_scroll_label : public builder_control
 {
-	explicit tbuilder_scroll_label(const config& cfg);
+	explicit builder_scroll_label(const config& cfg);
 
-	using tbuilder_control::build;
+	using builder_control::build;
 
 	twidget* build() const;
 

@@ -27,8 +27,8 @@ typedef std::map<std::string, t_string> string_map;
 namespace gui2
 {
 
-struct tbuilder_grid;
-typedef std::shared_ptr<const tbuilder_grid> tbuilder_grid_const_ptr;
+struct builder_grid;
+typedef std::shared_ptr<const builder_grid> builder_grid_const_ptr;
 
 class tgrid;
 
@@ -40,17 +40,17 @@ class tgrid;
  * the possible policies is documented in the build() function. This function
  * is the factory to generate the classes as well.
  */
-class tgenerator_ : public twidget
+class generator_base : public twidget
 {
 	friend class tdebug_layout_graph;
 
 public:
-	virtual ~tgenerator_()
+	virtual ~generator_base()
 	{
 	}
 
 	/** Determines how the items are placed. */
-	enum tplacement {
+	enum placement {
 		horizontal_list,
 		vertical_list,
 		grid,
@@ -72,9 +72,9 @@ public:
 	 * @returns                   A pointer to a new object. The caller gets
 	 *                            ownership of the new object.
 	 */
-	static tgenerator_* build(const bool has_minimum,
+	static generator_base* build(const bool has_minimum,
 							  const bool has_maximum,
-							  const tplacement placement,
+							  const placement placement,
 							  const bool select);
 
 	/**
@@ -178,7 +178,7 @@ public:
 	 * @returns                   A reference to the newly created grid.
 	 */
 	virtual tgrid& create_item(const int index,
-							   tbuilder_grid_const_ptr list_builder,
+							   builder_grid_const_ptr list_builder,
 							   const string_map& item_data,
 							   const std::function<void(twidget&)>& callback)
 			= 0;
@@ -202,7 +202,7 @@ public:
 	 */
 	virtual tgrid&
 	create_item(const int index,
-				tbuilder_grid_const_ptr list_builder,
+				builder_grid_const_ptr list_builder,
 				const std::map<std::string /* widget id */, string_map>& data,
 				const std::function<void(twidget&)>& callback) = 0;
 
@@ -222,7 +222,7 @@ public:
 	 *                            in the grid is (de)selected.
 	 */
 	virtual void create_items(const int index,
-							  tbuilder_grid_const_ptr list_builder,
+							  builder_grid_const_ptr list_builder,
 							  const std::vector<string_map>& data,
 							  const std::function<void(twidget&)>& callback)
 			= 0;
@@ -244,7 +244,7 @@ public:
 	 */
 	virtual void create_items(
 			const int index,
-			tbuilder_grid_const_ptr list_builder,
+			builder_grid_const_ptr list_builder,
 			const std::vector<std::map<std::string /*widget id*/, string_map> >&
 					data,
 			const std::function<void(twidget&)>& callback) = 0;
@@ -382,7 +382,7 @@ public:
 
 };
 
-using generator_sort_array = std::array<tgenerator_::torder_func, 2>;
+using generator_sort_array = std::array<generator_base::torder_func, 2>;
 
 } // namespace gui2
 

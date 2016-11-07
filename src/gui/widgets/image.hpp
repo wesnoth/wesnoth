@@ -99,11 +99,11 @@ private:
 
 // }---------- DEFINITION ---------{
 
-struct timage_definition : public tcontrol_definition
+struct image_definition : public control_definition
 {
-	explicit timage_definition(const config& cfg);
+	explicit image_definition(const config& cfg);
 
-	struct tresolution : public tresolution_definition_
+	struct tresolution : public resolution_definition
 	{
 		explicit tresolution(const config& cfg);
 	};
@@ -114,11 +114,11 @@ struct timage_definition : public tcontrol_definition
 namespace implementation
 {
 
-struct tbuilder_image : public tbuilder_control
+struct builder_image : public builder_control
 {
-	explicit tbuilder_image(const config& cfg);
+	explicit builder_image(const config& cfg);
 
-	using tbuilder_control::build;
+	using builder_control::build;
 
 	twidget* build() const;
 };
