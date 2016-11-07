@@ -20,10 +20,11 @@
  * Contains the SDL_Rect helper code.
  */
 
-#include <SDL_version.h>
+#include "global.hpp"
 #include "utils.hpp"
 
 #include <SDL_rect.h>
+#include <SDL_version.h>
 
 namespace gui2 {
 	struct tpoint;
@@ -32,7 +33,7 @@ namespace gui2 {
 namespace sdl
 {
 
-extern const SDL_Rect empty_rect;
+CONSTEXPR const SDL_Rect empty_rect = { 0, 0, 0, 0 };
 
 /**
  * Creates an empty SDL_Rect.

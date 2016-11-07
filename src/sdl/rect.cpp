@@ -12,15 +12,12 @@
    See the COPYING file for more details.
 */
 
-#include "global.hpp"
 #include "gui/core/point.hpp"
 #include "sdl/rect.hpp"
 #include "sdl/utils.hpp"
 
 namespace sdl
 {
-
-CONSTEXPR const SDL_Rect empty_rect = { 0, 0, 0, 0 };
 
 SDL_Rect create_rect(const int x, const int y, const int w, const int h)
 {
