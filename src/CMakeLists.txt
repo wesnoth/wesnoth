@@ -331,7 +331,6 @@ set(libwesnoth-lua_STAT_SRC
 	lua/ltablib.cpp
 	lua/lstrlib.cpp
 	lua/loadlib.cpp
-	lua/linit.cpp
 	lua/lutf8lib.cpp
 )
 # We explicitly want lua compiled as C++ version, so this line is required:
