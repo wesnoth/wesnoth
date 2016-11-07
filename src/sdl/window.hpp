@@ -20,9 +20,6 @@
  * Contains a wrapper class for the @ref SDL_Window class.
  */
 
-#include <SDL_version.h>
-
-
 #include "sdl/utils.hpp"
 
 #include <boost/noncopyable.hpp>

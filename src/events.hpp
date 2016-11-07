@@ -16,7 +16,6 @@
 #define EVENTS_HPP_INCLUDED
 
 #include <SDL_events.h>
-#include <SDL_version.h>
 #include <vector>
 #include <list>
 

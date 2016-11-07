@@ -24,7 +24,6 @@
 #include "utils.hpp"
 
 #include <SDL_rect.h>
-#include <SDL_version.h>
 
 namespace gui2 {
 	struct tpoint;
