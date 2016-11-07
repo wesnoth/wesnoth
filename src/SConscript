@@ -641,8 +641,6 @@ for env in [test_env, client_env, env]:
 
 wesnoth_objects = ["wesnoth.cpp", libwesnoth_extras, libwesnoth_core, libwesnoth,
                    libwesnoth_sdl, libwesnoth_extras, env["wesnoth_res"]]
-if env["host"] in ["x86_64-nacl", "i686-nacl"]:
-    wesnoth_objects += [SConscript("nacl/SConscript")]
 if env["PLATFORM"] == 'darwin':
 	wesnoth_objects.append("macosx/SDLMain.mm")
 client_env.WesnothProgram("wesnoth", wesnoth_objects, have_client_prereqs)

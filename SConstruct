@@ -467,10 +467,6 @@ else:
     client_env = env.Clone()
 
 
-if env['host'] in ['x86_64-nacl', 'i686-nacl']:
-  env['_LIBFLAGS'] = '-Wl,--start-group ' + env['_LIBFLAGS'] + ' -Wl,--end-group'
-  client_env['_LIBFLAGS'] = '-Wl,--start-group ' + client_env['_LIBFLAGS'] + ' -Wl,--end-group'
-
 have_msgfmt = env["MSGFMT"]
 if not have_msgfmt:
      env["nls"] = False
