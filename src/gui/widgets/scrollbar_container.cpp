@@ -92,28 +92,28 @@ tscrollbar_container::tscrollbar_container(const unsigned canvas_count)
 						this,
 						_2,
 						_3),
-			event::tdispatcher::back_post_child);
+			event::dispatcher::back_post_child);
 
 	connect_signal<event::SDL_WHEEL_DOWN>(
 			std::bind(&tscrollbar_container::signal_handler_sdl_wheel_down,
 						this,
 						_2,
 						_3),
-			event::tdispatcher::back_post_child);
+			event::dispatcher::back_post_child);
 
 	connect_signal<event::SDL_WHEEL_LEFT>(
 			std::bind(&tscrollbar_container::signal_handler_sdl_wheel_left,
 						this,
 						_2,
 						_3),
-			event::tdispatcher::back_post_child);
+			event::dispatcher::back_post_child);
 
 	connect_signal<event::SDL_WHEEL_RIGHT>(
 			std::bind(&tscrollbar_container::signal_handler_sdl_wheel_right,
 						this,
 						_2,
 						_3),
-			event::tdispatcher::back_post_child);
+			event::dispatcher::back_post_child);
 }
 
 void tscrollbar_container::layout_initialise(const bool full_initialisation)
@@ -225,7 +225,7 @@ void tscrollbar_container::request_reduce_height(const unsigned maximum_height)
 		DBG_GUI_L << LOG_HEADER
 				  << " resize modified the width, throw notification.\n";
 
-		throw tlayout_exception_width_modified();
+		throw layout_exception_width_modified();
 	}
 }
 
@@ -1164,7 +1164,7 @@ const std::string& tscrollbar_container::get_control_type() const
 }
 
 void
-tscrollbar_container::signal_handler_sdl_key_down(const event::tevent event,
+tscrollbar_container::signal_handler_sdl_key_down(const event::event_t event,
 												  bool& handled,
 												  const SDL_Keycode key,
 												  SDL_Keymod modifier)
@@ -1212,7 +1212,7 @@ tscrollbar_container::signal_handler_sdl_key_down(const event::tevent event,
 }
 
 void
-tscrollbar_container::signal_handler_sdl_wheel_up(const event::tevent event,
+tscrollbar_container::signal_handler_sdl_wheel_up(const event::event_t event,
 												  bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << event << ".\n";
@@ -1227,7 +1227,7 @@ tscrollbar_container::signal_handler_sdl_wheel_up(const event::tevent event,
 }
 
 void
-tscrollbar_container::signal_handler_sdl_wheel_down(const event::tevent event,
+tscrollbar_container::signal_handler_sdl_wheel_down(const event::event_t event,
 													bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << event << ".\n";
@@ -1242,7 +1242,7 @@ tscrollbar_container::signal_handler_sdl_wheel_down(const event::tevent event,
 }
 
 void
-tscrollbar_container::signal_handler_sdl_wheel_left(const event::tevent event,
+tscrollbar_container::signal_handler_sdl_wheel_left(const event::event_t event,
 													bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << event << ".\n";
@@ -1258,7 +1258,7 @@ tscrollbar_container::signal_handler_sdl_wheel_left(const event::tevent event,
 }
 
 void
-tscrollbar_container::signal_handler_sdl_wheel_right(const event::tevent event,
+tscrollbar_container::signal_handler_sdl_wheel_right(const event::event_t event,
 													 bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << event << ".\n";

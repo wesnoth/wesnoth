@@ -37,7 +37,7 @@
 class CVideo;
 
 namespace gui2 { class twidget; }
-namespace gui2 { namespace event { struct tmessage; } }
+namespace gui2 { namespace event { struct message; } }
 namespace gui2 { struct point; }
 
 namespace gui2
@@ -51,7 +51,7 @@ class tpane;
 
 namespace event
 {
-class tdistributor;
+class distributor;
 } // namespace event
 
 /**
@@ -265,13 +265,13 @@ public:
 	 */
 	void invalidate_layout();
 
-	/** Inherited from tevent_handler. */
+	/** Inherited from event_handler. */
 	twindow& get_window()
 	{
 		return *this;
 	}
 
-	/** Inherited from tevent_handler. */
+	/** Inherited from event_handler. */
 	const twindow& get_window() const
 	{
 		return *this;
@@ -727,7 +727,7 @@ private:
 	}
 #endif
 
-	event::tdistributor* event_distributor_;
+	event::distributor* event_distributor_;
 
 public:
 	// mouse and keyboard_capture should be renamed and stored in the
@@ -757,36 +757,36 @@ public:
 private:
 	/***** ***** ***** signal handlers ***** ****** *****/
 
-	void signal_handler_sdl_video_resize(const event::tevent event,
+	void signal_handler_sdl_video_resize(const event::event_t event,
 										 bool& handled,
 										 const point& new_size);
 
 	/**
 	 * The handler for the click dismiss mouse 'event'.
 	 *
-	 * @param event               See @ref event::tdispatcher::fire.
-	 * @param handled             See @ref event::tdispatcher::fire.
-	 * @param halt                See @ref event::tdispatcher::fire.
+	 * @param event               See @ref event::dispatcher::fire.
+	 * @param handled             See @ref event::dispatcher::fire.
+	 * @param halt                See @ref event::dispatcher::fire.
 	 * @param mouse_button_mask   Forwared to @ref click_dismiss.
 	 */
-	void signal_handler_click_dismiss(const event::tevent event,
+	void signal_handler_click_dismiss(const event::event_t event,
 									  bool& handled,
 									  bool& halt,
 									  const Uint8 mouse_button_mask);
 
-	void signal_handler_sdl_key_down(const event::tevent event,
+	void signal_handler_sdl_key_down(const event::event_t event,
 									 bool& handled,
 									 const SDL_Keycode key);
 
-	void signal_handler_message_show_tooltip(const event::tevent event,
+	void signal_handler_message_show_tooltip(const event::event_t event,
 											 bool& handled,
-											 event::tmessage& message);
+											 event::message& message);
 
-	void signal_handler_message_show_helptip(const event::tevent event,
+	void signal_handler_message_show_helptip(const event::event_t event,
 											 bool& handled,
-											 event::tmessage& message);
+											 event::message& message);
 
-	void signal_handler_request_placement(const event::tevent event,
+	void signal_handler_request_placement(const event::event_t event,
 										  bool& handled);
 
 	std::function<bool(twindow&)> exit_hook_ = [](twindow&)->bool { return true; };

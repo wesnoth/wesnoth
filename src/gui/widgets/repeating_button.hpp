@@ -40,7 +40,7 @@ public:
 	 *
 	 * @param signal              The signal to connect.
 	 */
-	void connect_signal_mouse_left_down(const event::tsignal_function& signal);
+	void connect_signal_mouse_left_down(const event::signal_function& signal);
 
 	/**
 	 * Disconnects a signal handler for a left mouse button down.
@@ -49,7 +49,7 @@ public:
 	 *                            as send to the connect call.
 	 */
 	void
-	disconnect_signal_mouse_left_down(const event::tsignal_function& signal);
+	disconnect_signal_mouse_left_down(const event::signal_function& signal);
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
@@ -63,13 +63,13 @@ public:
 	virtual unsigned get_state() const override;
 
 	/** Inherited from tclickable. */
-	void connect_click_handler(const event::tsignal_function& signal) override
+	void connect_click_handler(const event::signal_function& signal) override
 	{
 		connect_signal_mouse_left_down(signal);
 	}
 
 	/** Inherited from tclickable. */
-	void disconnect_click_handler(const event::tsignal_function& signal) override
+	void disconnect_click_handler(const event::signal_function& signal) override
 	{
 		disconnect_signal_mouse_left_down(signal);
 	}
@@ -105,14 +105,14 @@ private:
 
 	/***** ***** ***** signal handlers ***** ****** *****/
 
-	void signal_handler_mouse_enter(const event::tevent event, bool& handled);
+	void signal_handler_mouse_enter(const event::event_t event, bool& handled);
 
-	void signal_handler_mouse_leave(const event::tevent event, bool& handled);
+	void signal_handler_mouse_leave(const event::event_t event, bool& handled);
 
-	void signal_handler_left_button_down(const event::tevent event,
+	void signal_handler_left_button_down(const event::event_t event,
 										 bool& handled);
 
-	void signal_handler_left_button_up(const event::tevent event,
+	void signal_handler_left_button_up(const event::event_t event,
 									   bool& handled);
 };
 

@@ -475,17 +475,17 @@ private:
 
 	/***** ***** ***** signal handlers ***** ****** *****/
 
-	void signal_handler_middle_button_click(const event::tevent event,
+	void signal_handler_middle_button_click(const event::event_t event,
 											bool& handled);
 
-	void signal_handler_sdl_key_down(const event::tevent event,
+	void signal_handler_sdl_key_down(const event::event_t event,
 									 bool& handled,
 									 const SDL_Keycode key,
 									 SDL_Keymod modifier,
 									 const utf8::string& unicode);
 
-	void signal_handler_receive_keyboard_focus(const event::tevent event);
-	void signal_handler_lose_keyboard_focus(const event::tevent event);
+	void signal_handler_receive_keyboard_focus(const event::event_t event);
+	void signal_handler_lose_keyboard_focus(const event::event_t event);
 };
 
 } // namespace gui2

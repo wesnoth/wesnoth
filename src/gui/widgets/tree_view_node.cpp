@@ -84,7 +84,7 @@ ttree_view_node::ttree_view_node(
 					&ttree_view_node::signal_handler_left_button_click, this, _2));
 			toggle_widget->connect_signal<event::LEFT_BUTTON_CLICK>(std::bind(
 					&ttree_view_node::signal_handler_left_button_click, this, _2),
-					event::tdispatcher::back_post_child);
+					event::dispatcher::back_post_child);
 
 			if(unfolded_) {
 				toggle_->set_value(1);
@@ -97,10 +97,10 @@ ttree_view_node::ttree_view_node(
 		if(label_) {
 			label_widget->connect_signal<event::LEFT_BUTTON_CLICK>(std::bind(
 					&ttree_view_node::signal_handler_label_left_button_click, this, _2, _3, _4),
-					event::tdispatcher::front_child);
+					event::dispatcher::front_child);
 			label_widget->connect_signal<event::LEFT_BUTTON_CLICK>(std::bind(
 					&ttree_view_node::signal_handler_label_left_button_click, this, _2, _3, _4),
-					event::tdispatcher::front_pre_child);
+					event::dispatcher::front_pre_child);
 
 			if(!tree_view().selected_item_) {
 				tree_view().selected_item_ = this;
@@ -547,7 +547,7 @@ void ttree_view_node::impl_draw_children(surface& frame_buffer,
 	}
 }
 
-void ttree_view_node::signal_handler_left_button_click(const event::tevent event)
+void ttree_view_node::signal_handler_left_button_click(const event::event_t event)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
@@ -573,7 +573,7 @@ void ttree_view_node::signal_handler_left_button_click(const event::tevent event
 }
 
 void ttree_view_node::signal_handler_label_left_button_click(
-		const event::tevent event, bool& handled, bool& halt)
+		const event::event_t event, bool& handled, bool& halt)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 

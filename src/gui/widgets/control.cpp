@@ -507,7 +507,7 @@ point tcontrol::get_best_text_size(point minimum_size,
 	return size;
 }
 
-void tcontrol::signal_handler_show_tooltip(const event::tevent event,
+void tcontrol::signal_handler_show_tooltip(const event::event_t event,
 										   bool& handled,
 										   const point& location)
 {
@@ -525,24 +525,24 @@ void tcontrol::signal_handler_show_tooltip(const event::tevent event,
 									 settings::has_helptip_message, &symbols);
 		}
 
-		event::tmessage_show_tooltip message(tip, location, get_rectangle());
+		event::message_show_tooltip message(tip, location, get_rectangle());
 		handled = fire(event::MESSAGE_SHOW_TOOLTIP, *this, message);
 	}
 }
 
-void tcontrol::signal_handler_show_helptip(const event::tevent event,
+void tcontrol::signal_handler_show_helptip(const event::event_t event,
 										   bool& handled,
 										   const point& location)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
 	if(!help_message_.empty()) {
-		event::tmessage_show_helptip message(help_message_, location, get_rectangle());
+		event::message_show_helptip message(help_message_, location, get_rectangle());
 		handled = fire(event::MESSAGE_SHOW_HELPTIP, *this, message);
 	}
 }
 
-void tcontrol::signal_handler_notify_remove_tooltip(const event::tevent event,
+void tcontrol::signal_handler_notify_remove_tooltip(const event::event_t event,
 													bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";

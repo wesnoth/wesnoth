@@ -192,12 +192,12 @@ namespace {
 			std::string exception;
 			try {
 				dlg->show(video, 1);
-			} catch(gui2::tlayout_exception_width_modified&) {
-				exception = "gui2::tlayout_exception_width_modified";
-			} catch(gui2::tlayout_exception_width_resize_failed&) {
-				exception = "gui2::tlayout_exception_width_resize_failed";
-			} catch(gui2::tlayout_exception_height_resize_failed&) {
-				exception = "gui2::tlayout_exception_height_resize_failed";
+			} catch(gui2::layout_exception_width_modified&) {
+				exception = "gui2::layout_exception_width_modified";
+			} catch(gui2::layout_exception_width_resize_failed&) {
+				exception = "gui2::layout_exception_width_resize_failed";
+			} catch(gui2::layout_exception_height_resize_failed&) {
+				exception = "gui2::layout_exception_height_resize_failed";
 			} catch(wml_exception& e) {
 				exception = e.dev_message;
 			} catch(std::exception& e) {
@@ -234,12 +234,12 @@ namespace {
 					gui2::twindow* window = gui2::unit_test_window((*dlg.get()));
 					BOOST_REQUIRE_NE(window, static_cast<void*>(nullptr));
 					window->draw();
-				} catch(gui2::tlayout_exception_width_modified&) {
-					exception = "gui2::tlayout_exception_width_modified";
-				} catch(gui2::tlayout_exception_width_resize_failed&) {
-					exception = "gui2::tlayout_exception_width_resize_failed";
-				} catch(gui2::tlayout_exception_height_resize_failed&) {
-					exception = "gui2::tlayout_exception_height_resize_failed";
+				} catch(gui2::layout_exception_width_modified&) {
+					exception = "gui2::layout_exception_width_modified";
+				} catch(gui2::layout_exception_width_resize_failed&) {
+					exception = "gui2::layout_exception_width_resize_failed";
+				} catch(gui2::layout_exception_height_resize_failed&) {
+					exception = "gui2::layout_exception_height_resize_failed";
 				} catch(wml_exception& e) {
 					exception = e.dev_message;
 				} catch(std::exception& e) {
@@ -281,12 +281,12 @@ namespace {
 						, "Test messsage for a tooltip."
 						, gui2::point(0, 0)
 						, {0,0,0,0});
-			} catch(gui2::tlayout_exception_width_modified&) {
-				exception = "gui2::tlayout_exception_width_modified";
-			} catch(gui2::tlayout_exception_width_resize_failed&) {
-				exception = "gui2::tlayout_exception_width_resize_failed";
-			} catch(gui2::tlayout_exception_height_resize_failed&) {
-				exception = "gui2::tlayout_exception_height_resize_failed";
+			} catch(gui2::layout_exception_width_modified&) {
+				exception = "gui2::layout_exception_width_modified";
+			} catch(gui2::layout_exception_width_resize_failed&) {
+				exception = "gui2::layout_exception_width_resize_failed";
+			} catch(gui2::layout_exception_height_resize_failed&) {
+				exception = "gui2::layout_exception_height_resize_failed";
 			} catch(wml_exception& e) {
 				exception = e.dev_message;
 			} catch(std::exception& e) {

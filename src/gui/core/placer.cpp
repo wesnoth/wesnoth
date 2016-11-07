@@ -24,20 +24,20 @@
 namespace gui2
 {
 
-tplacer_* tplacer_::build(const tgrow_direction grow_direction,
+placer_base* placer_base::build(const tgrow_direction grow_direction,
 						  const unsigned parallel_items)
 {
 	switch(grow_direction.v) {
 		case tgrow_direction::horizontal:
-			return new implementation::tplacer_horizontal_list(parallel_items);
+			return new implementation::placer_horizontal_list(parallel_items);
 		case tgrow_direction::vertical:
-			return new implementation::tplacer_vertical_list(parallel_items);
+			return new implementation::placer_vertical_list(parallel_items);
 	};
 
 	throw "UNREACHABLE CODE REACHED";
 }
 
-tplacer_::~tplacer_()
+placer_base::~placer_base()
 {
 }
 

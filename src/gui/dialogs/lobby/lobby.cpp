@@ -183,7 +183,7 @@ void tlobby_main::post_build(twindow& window)
 	window.register_hotkey(hotkey::HOTKEY_FULLSCREEN, std::bind(fullscreen, std::ref(window.video())));
 
 	/*** Local hotkeys. ***/
-	window.register_hotkey(hotkey::HOTKEY_PREFERENCES, [this](event::tdispatcher& win, hotkey::HOTKEY_COMMAND)->bool {
+	window.register_hotkey(hotkey::HOTKEY_PREFERENCES, [this](event::dispatcher& win, hotkey::HOTKEY_COMMAND)->bool {
 		show_preferences_button_callback(dynamic_cast<twindow&>(win));
 		return true;
 	});
@@ -697,7 +697,7 @@ void tlobby_main::pre_show(twindow& window)
 	// A new key handler to deal with escape in a different manner.
 	window.connect_signal<event::SDL_KEY_DOWN>(
 		std::bind(&tlobby_main::signal_handler_key_down, this, _5, _3, _4),
-		event::tdispatcher::front_pre_child);
+		event::dispatcher::front_pre_child);
 
 	window_ = &window;
 

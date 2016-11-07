@@ -20,21 +20,21 @@
  * Contains the event distributor.
  *
  * The event distributor exists of several classes which are combined in one
- * templated tdistributor class. The classes are closely tight together.
+ * templated distributor class. The classes are closely tight together.
  *
  * All classes have direct access to each others members since they should act
  * as one. (Since the buttons are a templated subclass it's not possible to use
  * private subclasses.)
  *
- * The tmouse_motion class handles the mouse motion and holds the owner of us
+ * The mouse_motion class handles the mouse motion and holds the owner of us
  * since all classes virtually inherit us.
  *
- * The tmouse_button classes are templated classes per mouse button, the
+ * The mouse_button classes are templated classes per mouse button, the
  * template parameters are used to make the difference between the mouse
  * buttons. Although it's easily possible to add more mouse buttons in the
  * code several places only expect a left, middle and right button.
  *
- * tdistributor is the main class to be used in the user code. This class
+ * distributor is the main class to be used in the user code. This class
  * contains the handling of the keyboard as well.
  */
 
@@ -55,14 +55,14 @@ class twidget;
 namespace event
 {
 
-/***** ***** ***** ***** tmouse_motion ***** ***** ***** ***** *****/
+/***** ***** ***** ***** mouse_motion ***** ***** ***** ***** *****/
 
-class tmouse_motion
+class mouse_motion
 {
 public:
-	tmouse_motion(twidget& owner, const tdispatcher::tposition queue_position);
+	mouse_motion(twidget& owner, const dispatcher::queue_position queue_position);
 
-	~tmouse_motion();
+	~mouse_motion();
 
 	/**
 	 * Captures the mouse input.
@@ -130,39 +130,39 @@ private:
 	 * @param mouse_over          The widget that should receive the event.
 	 * @param coordinate          The current screen coordinate of the mouse.
 	 */
-	void mouse_motion(twidget* mouse_over, const point& coordinate);
+	void mouse_hover(twidget* mouse_over, const point& coordinate);
 
 	/** Called when the mouse wants the widget to show its tooltip. */
 	void show_tooltip();
 
 	bool signal_handler_sdl_mouse_motion_entered_;
-	void signal_handler_sdl_mouse_motion(const event::tevent event,
+	void signal_handler_sdl_mouse_motion(const event::event_t event,
 										 bool& handled,
 										 const point& coordinate);
 
-	void signal_handler_sdl_wheel(const event::tevent event,
+	void signal_handler_sdl_wheel(const event::event_t event,
 								  bool& handled,
 								  const point& coordinate);
 
-	void signal_handler_show_helptip(const event::tevent event,
+	void signal_handler_show_helptip(const event::event_t event,
 									 bool& handled,
 									 const point& coordinate);
 };
 
-/***** ***** ***** ***** tmouse_button ***** ***** ***** ***** *****/
+/***** ***** ***** ***** mouse_button ***** ***** ***** ***** *****/
 
-template <tevent sdl_button_down,
-		  tevent sdl_button_up,
-		  tevent button_down,
-		  tevent button_up,
-		  tevent button_click,
-		  tevent button_double_click>
-class tmouse_button : public virtual tmouse_motion
+template <event_t sdl_button_down,
+		  event_t sdl_button_up,
+		  event_t button_down,
+		  event_t button_up,
+		  event_t button_click,
+		  event_t button_double_click>
+class mouse_button : public virtual mouse_motion
 {
 public:
-	tmouse_button(const std::string& name_,
+	mouse_button(const std::string& name_,
 				  twidget& owner,
-				  const tdispatcher::tposition queue_position);
+				  const dispatcher::queue_position queue_position);
 
 	/**
 	 * Initializes the state of the button.
@@ -194,12 +194,12 @@ private:
 	bool is_down_;
 
 	bool signal_handler_sdl_button_down_entered_;
-	void signal_handler_sdl_button_down(const event::tevent event,
+	void signal_handler_sdl_button_down(const event::event_t event,
 										bool& handled,
 										const point& coordinate);
 
 	bool signal_handler_sdl_button_up_entered_;
-	void signal_handler_sdl_button_up(const event::tevent event,
+	void signal_handler_sdl_button_up(const event::event_t event,
 									  bool& handled,
 									  const point& coordinate);
 
@@ -207,39 +207,39 @@ private:
 	void mouse_button_click(twidget* widget);
 };
 
-/***** ***** ***** ***** tdistributor ***** ***** ***** ***** *****/
+/***** ***** ***** ***** distributor ***** ***** ***** ***** *****/
 
-typedef tmouse_button<SDL_LEFT_BUTTON_DOWN,
+typedef mouse_button<SDL_LEFT_BUTTON_DOWN,
 					  SDL_LEFT_BUTTON_UP,
 					  LEFT_BUTTON_DOWN,
 					  LEFT_BUTTON_UP,
 					  LEFT_BUTTON_CLICK,
-					  LEFT_BUTTON_DOUBLE_CLICK> tmouse_button_left;
+					  LEFT_BUTTON_DOUBLE_CLICK> mouse_button_left;
 
-typedef tmouse_button<SDL_MIDDLE_BUTTON_DOWN,
+typedef mouse_button<SDL_MIDDLE_BUTTON_DOWN,
 					  SDL_MIDDLE_BUTTON_UP,
 					  MIDDLE_BUTTON_DOWN,
 					  MIDDLE_BUTTON_UP,
 					  MIDDLE_BUTTON_CLICK,
-					  MIDDLE_BUTTON_DOUBLE_CLICK> tmouse_button_middle;
+					  MIDDLE_BUTTON_DOUBLE_CLICK> mouse_button_middle;
 
-typedef tmouse_button<SDL_RIGHT_BUTTON_DOWN,
+typedef mouse_button<SDL_RIGHT_BUTTON_DOWN,
 					  SDL_RIGHT_BUTTON_UP,
 					  RIGHT_BUTTON_DOWN,
 					  RIGHT_BUTTON_UP,
 					  RIGHT_BUTTON_CLICK,
-					  RIGHT_BUTTON_DOUBLE_CLICK> tmouse_button_right;
+					  RIGHT_BUTTON_DOUBLE_CLICK> mouse_button_right;
 
 
 /** The event handler class for the widget library. */
-class tdistributor : public tmouse_button_left,
-					 public tmouse_button_middle,
-					 public tmouse_button_right
+class distributor : public mouse_button_left,
+					 public mouse_button_middle,
+					 public mouse_button_right
 {
 public:
-	tdistributor(twidget& owner, const tdispatcher::tposition queue_position);
+	distributor(twidget& owner, const dispatcher::queue_position queue_position);
 
-	~tdistributor();
+	~distributor();
 
 	/**
 	 * Initializes the state of the keyboard and mouse.
@@ -326,7 +326,7 @@ private:
 									 const SDL_Keymod modifier,
 									 const utf8::string& unicode);
 
-	void signal_handler_notify_removal(tdispatcher& widget, const tevent event);
+	void signal_handler_notify_removal(dispatcher& widget, const event_t event);
 };
 
 } // namespace event

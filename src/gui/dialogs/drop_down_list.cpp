@@ -124,10 +124,10 @@ void tdrop_down_list::pre_show(twindow& window)
 	window.keyboard_capture(&list);
 
 	// Dismiss on click outside the window
-	window.connect_signal<event::SDL_LEFT_BUTTON_UP>(std::bind(&click_callback, std::ref(window), _3, _4, _5), event::tdispatcher::front_child);
+	window.connect_signal<event::SDL_LEFT_BUTTON_UP>(std::bind(&click_callback, std::ref(window), _3, _4, _5), event::dispatcher::front_child);
 
 	// Dismiss on resize
-	window.connect_signal<event::SDL_VIDEO_RESIZE>(std::bind(&resize_callback, std::ref(window)), event::tdispatcher::front_child);
+	window.connect_signal<event::SDL_VIDEO_RESIZE>(std::bind(&resize_callback, std::ref(window)), event::dispatcher::front_child);
 }
 
 void tdrop_down_list::post_show(twindow& window)

@@ -923,17 +923,17 @@ private:
 	 * If the image is smaller is needed it needs to resized, how is determined
 	 * by the value of this enum.
 	 */
-	enum tresize_mode {
+	enum resize_mode {
 		scale,
 		stretch,
 		tile
 	};
 
 	/** Converts a string to a resize mode. */
-	tresize_mode get_resize_mode(const std::string& resize_mode);
+	resize_mode get_resize_mode(const std::string& resize_mode);
 
 	/** The resize mode for an image. */
-	tresize_mode resize_mode_;
+	resize_mode resize_mode_;
 
 	/** Mirror the image over the vertical axis. */
 	tformula<bool> vertical_mirror_;
@@ -1156,7 +1156,7 @@ void image_shape::draw(surface& canvas,
 	blit_surface(surf, &src_clip, canvas, &dst_clip);
 }
 
-image_shape::tresize_mode image_shape::get_resize_mode(const std::string& resize_mode)
+image_shape::resize_mode image_shape::get_resize_mode(const std::string& resize_mode)
 {
 	if(resize_mode == "tile") {
 		return image_shape::tile;

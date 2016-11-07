@@ -57,13 +57,13 @@ trepeating_button::~trepeating_button()
 }
 
 void trepeating_button::connect_signal_mouse_left_down(
-		const event::tsignal_function& signal)
+		const event::signal_function& signal)
 {
 	connect_signal<event::LEFT_BUTTON_DOWN>(signal);
 }
 
 void trepeating_button::disconnect_signal_mouse_left_down(
-		const event::tsignal_function& signal)
+		const event::signal_function& signal)
 {
 	disconnect_signal<event::LEFT_BUTTON_DOWN>(signal);
 }
@@ -104,7 +104,7 @@ const std::string& trepeating_button::get_control_type() const
 	return type;
 }
 
-void trepeating_button::signal_handler_mouse_enter(const event::tevent event,
+void trepeating_button::signal_handler_mouse_enter(const event::event_t event,
 												   bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -113,7 +113,7 @@ void trepeating_button::signal_handler_mouse_enter(const event::tevent event,
 	handled = true;
 }
 
-void trepeating_button::signal_handler_mouse_leave(const event::tevent event,
+void trepeating_button::signal_handler_mouse_leave(const event::event_t event,
 												   bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -123,7 +123,7 @@ void trepeating_button::signal_handler_mouse_leave(const event::tevent event,
 }
 
 void
-trepeating_button::signal_handler_left_button_down(const event::tevent event,
+trepeating_button::signal_handler_left_button_down(const event::event_t event,
 												   bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -150,7 +150,7 @@ trepeating_button::signal_handler_left_button_down(const event::tevent event,
 	handled = true;
 }
 
-void trepeating_button::signal_handler_left_button_up(const event::tevent event,
+void trepeating_button::signal_handler_left_button_up(const event::event_t event,
 													  bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";

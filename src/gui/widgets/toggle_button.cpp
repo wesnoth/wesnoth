@@ -145,7 +145,7 @@ const std::string& ttoggle_button::get_control_type() const
 	return type;
 }
 
-void ttoggle_button::signal_handler_mouse_enter(const event::tevent event,
+void ttoggle_button::signal_handler_mouse_enter(const event::event_t event,
 												bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -153,7 +153,7 @@ void ttoggle_button::signal_handler_mouse_enter(const event::tevent event,
 	handled = true;
 }
 
-void ttoggle_button::signal_handler_mouse_leave(const event::tevent event,
+void ttoggle_button::signal_handler_mouse_leave(const event::event_t event,
 												bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -161,7 +161,7 @@ void ttoggle_button::signal_handler_mouse_leave(const event::tevent event,
 	handled = true;
 }
 
-void ttoggle_button::signal_handler_left_button_click(const event::tevent event,
+void ttoggle_button::signal_handler_left_button_click(const event::event_t event,
 													  bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -179,7 +179,7 @@ void ttoggle_button::signal_handler_left_button_click(const event::tevent event,
 }
 
 void ttoggle_button::signal_handler_left_button_double_click(
-		const event::tevent event, bool& handled)
+		const event::event_t event, bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 

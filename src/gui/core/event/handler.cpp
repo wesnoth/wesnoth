@@ -56,8 +56,8 @@ namespace event
 {
 
 /***** Static data. *****/
-class thandler;
-static thandler* handler = nullptr;
+class handler;
+static handler* handler_ = nullptr;
 static events::event_context* event_context = nullptr;
 
 #ifdef MAIN_EVENT_HANDLER
@@ -113,21 +113,21 @@ static Uint32 timer_sdl_poll_events(Uint32, void*)
 }
 #endif
 
-/***** thandler class. *****/
+/***** handler class. *****/
 
 /**
  * This singleton class handles all events.
  *
  * It's a new experimental class.
  */
-class thandler : public events::sdl_handler
+class handler : public events::sdl_handler
 {
 	friend bool gui2::is_in_dialog();
 
 public:
-	thandler();
+	handler();
 
-	~thandler();
+	~handler();
 
 	/** Inherited from events::sdl_handler. */
 	void handle_event(const SDL_Event& event);
@@ -140,17 +140,17 @@ public:
 	 *
 	 * @param dispatcher              The dispatcher to connect.
 	 */
-	void connect(tdispatcher* dispatcher);
+	void connect(dispatcher* dispatcher);
 
 	/**
 	 * Disconnects a dispatcher.
 	 *
 	 * @param dispatcher              The dispatcher to disconnect.
 	 */
-	void disconnect(tdispatcher* dispatcher);
+	void disconnect(dispatcher* dispatcher);
 
 	/** The dispatcher that captured the mouse focus. */
-	tdispatcher* mouse_focus;
+	dispatcher* mouse_focus;
 
 private:
 	/**
@@ -180,7 +180,7 @@ private:
 	 * @param event                  The event to fire.
 	 * @param position               The position of the mouse.
 	 */
-	void mouse(const tevent event, const point& position);
+	void mouse(const event_t event, const point& position);
 
 	/**
 	 * Fires a mouse button up event.
@@ -215,7 +215,7 @@ private:
 	 * @returns                   The dispatcher.
 	 * @retval nullptr               No dispatcher found.
 	 */
-	tdispatcher* keyboard_dispatcher();
+	dispatcher* keyboard_dispatcher();
 
 	/**
 	 * Handles a hat motion event.
@@ -274,7 +274,7 @@ private:
 	 *
 	 * @param event                  The event to fire.
 	 */
-	void keyboard(const tevent event);
+	void keyboard(const event_t event);
 
 	/**
 	 * The dispatchers.
@@ -283,18 +283,18 @@ private:
 	 * being the one completely in the background and the back item the one
 	 * completely in the foreground.
 	 */
-	std::vector<tdispatcher*> dispatchers_;
+	std::vector<dispatcher*> dispatchers_;
 
 	/**
 	 * Needed to determine which dispatcher gets the keyboard events.
 	 *
 	 * NOTE the keyboard events aren't really wired in yet so doesn't do much.
 	 */
-	tdispatcher* keyboard_focus_;
-	friend void capture_keyboard(tdispatcher*);
+	dispatcher* keyboard_focus_;
+	friend void capture_keyboard(dispatcher*);
 };
 
-thandler::thandler()
+handler::handler()
 	: events::sdl_handler(false)
 	, mouse_focus(nullptr)
 	, dispatchers_()
@@ -312,14 +312,14 @@ thandler::thandler()
 #endif
 }
 
-thandler::~thandler()
+handler::~handler()
 {
 #ifdef ENABLE
 	leave();
 #endif
 }
 
-void thandler::handle_event(const SDL_Event& event)
+void handler::handle_event(const SDL_Event& event)
 {
 	/** No dispatchers drop the event. */
 	if(dispatchers_.empty()) {
@@ -434,12 +434,12 @@ void thandler::handle_event(const SDL_Event& event)
 	}
 }
 
-void thandler::handle_window_event(const SDL_Event& event)
+void handler::handle_window_event(const SDL_Event& event)
 {
 	handle_event(event);
 }
 
-void thandler::connect(tdispatcher* dispatcher)
+void handler::connect(dispatcher* dispatcher)
 {
 	assert(std::find(dispatchers_.begin(), dispatchers_.end(), dispatcher)
 		   == dispatchers_.end());
@@ -452,20 +452,20 @@ void thandler::connect(tdispatcher* dispatcher)
 	dispatchers_.push_back(dispatcher);
 }
 
-void thandler::disconnect(tdispatcher* dispatcher)
+void handler::disconnect(dispatcher* disp)
 {
 	/***** Validate pre conditions. *****/
-	std::vector<tdispatcher*>::iterator itor
-			= std::find(dispatchers_.begin(), dispatchers_.end(), dispatcher);
+	std::vector<dispatcher*>::iterator itor
+			= std::find(dispatchers_.begin(), dispatchers_.end(), disp);
 	assert(itor != dispatchers_.end());
 
 	/***** Remove dispatcher. *****/
 	dispatchers_.erase(itor);
 
-	if(dispatcher == mouse_focus) {
+	if(disp == mouse_focus) {
 		mouse_focus = nullptr;
 	}
-	if(dispatcher == keyboard_focus_) {
+	if(disp == keyboard_focus_) {
 		keyboard_focus_ = nullptr;
 	}
 
@@ -478,7 +478,7 @@ void thandler::disconnect(tdispatcher* dispatcher)
 	activate();
 
 	/***** Validate post conditions. *****/
-	assert(std::find(dispatchers_.begin(), dispatchers_.end(), dispatcher)
+	assert(std::find(dispatchers_.begin(), dispatchers_.end(), disp)
 		   == dispatchers_.end());
 
 	if(dispatchers_.empty()) {
@@ -488,7 +488,7 @@ void thandler::disconnect(tdispatcher* dispatcher)
 	}
 }
 
-void thandler::activate()
+void handler::activate()
 {
 	for(auto dispatcher : dispatchers_)
 	{
@@ -497,7 +497,7 @@ void thandler::activate()
 	}
 }
 
-void thandler::draw(const bool force)
+void handler::draw(const bool force)
 {
 	// Don't display this event since it floods the screen
 	// DBG_GUI_E << "Firing " << DRAW << ".\n";
@@ -538,7 +538,7 @@ void thandler::draw(const bool force)
 	}
 }
 
-void thandler::video_resize(const point& new_size)
+void handler::video_resize(const point& new_size)
 {
 	DBG_GUI_E << "Firing: " << SDL_VIDEO_RESIZE << ".\n";
 
@@ -550,7 +550,7 @@ void thandler::video_resize(const point& new_size)
 	}
 }
 
-void thandler::mouse(const tevent event, const point& position)
+void handler::mouse(const event_t event, const point& position)
 {
 	DBG_GUI_E << "Firing: " << event << ".\n";
 
@@ -559,17 +559,17 @@ void thandler::mouse(const tevent event, const point& position)
 				event, dynamic_cast<twidget&>(*mouse_focus), position);
 	} else {
 
-		for(std::vector<tdispatcher*>::reverse_iterator ritor
+		for(std::vector<dispatcher*>::reverse_iterator ritor
 			= dispatchers_.rbegin();
 			ritor != dispatchers_.rend();
 			++ritor) {
 
-			if((**ritor).get_mouse_behavior() == tdispatcher::all) {
+			if((**ritor).get_mouse_behavior() == dispatcher::all) {
 				(**ritor)
 						.fire(event, dynamic_cast<twidget&>(**ritor), position);
 				break;
 			}
-			if((**ritor).get_mouse_behavior() == tdispatcher::none) {
+			if((**ritor).get_mouse_behavior() == dispatcher::none) {
 				continue;
 			}
 			if((**ritor).is_at(position)) {
@@ -581,7 +581,7 @@ void thandler::mouse(const tevent event, const point& position)
 	}
 }
 
-void thandler::mouse_button_up(const point& position, const Uint8 button)
+void handler::mouse_button_up(const point& position, const Uint8 button)
 {
 	switch(button) {
 		case SDL_BUTTON_LEFT:
@@ -604,7 +604,7 @@ void thandler::mouse_button_up(const point& position, const Uint8 button)
 	}
 }
 
-void thandler::mouse_button_down(const point& position, const Uint8 button)
+void handler::mouse_button_down(const point& position, const Uint8 button)
 {
 	// The wheel buttons generate and up and down event we handle the
 	// up event so ignore the mouse if it's a down event. Handle it
@@ -634,7 +634,7 @@ void thandler::mouse_button_down(const point& position, const Uint8 button)
 	}
 }
 
-void thandler::mouse_wheel(const point& position, int x, int y)
+void handler::mouse_wheel(const point& position, int x, int y)
 {
 	if(x > 0) {
 		mouse(SDL_WHEEL_RIGHT, position);
@@ -649,13 +649,13 @@ void thandler::mouse_wheel(const point& position, int x, int y)
 	}
 }
 
-tdispatcher* thandler::keyboard_dispatcher()
+dispatcher* handler::keyboard_dispatcher()
 {
 	if(keyboard_focus_) {
 		return keyboard_focus_;
 	}
 
-	for(std::vector<tdispatcher*>::reverse_iterator ritor
+	for(std::vector<dispatcher*>::reverse_iterator ritor
 		= dispatchers_.rbegin();
 		ritor != dispatchers_.rend();
 		++ritor) {
@@ -668,7 +668,7 @@ tdispatcher* thandler::keyboard_dispatcher()
 	return nullptr;
 }
 
-void thandler::hat_motion(const SDL_Event& event)
+void handler::hat_motion(const SDL_Event& event)
 {
 	const hotkey::hotkey_ptr& hk = hotkey::get_hotkey(event);
 	bool done = false;
@@ -681,7 +681,7 @@ void thandler::hat_motion(const SDL_Event& event)
 	}
 }
 
-void thandler::button_down(const SDL_Event& event)
+void handler::button_down(const SDL_Event& event)
 {
 	const hotkey::hotkey_ptr hk = hotkey::get_hotkey(event);
 	bool done = false;
@@ -694,7 +694,7 @@ void thandler::button_down(const SDL_Event& event)
 	}
 }
 
-void thandler::key_down(const SDL_Event& event)
+void handler::key_down(const SDL_Event& event)
 {
 	const hotkey::hotkey_ptr hk = hotkey::get_hotkey(event);
 	bool done = false;
@@ -708,14 +708,14 @@ void thandler::key_down(const SDL_Event& event)
 	}
 }
 
-void thandler::text_input(const std::string& unicode)
+void handler::text_input(const std::string& unicode)
 {
 	key_down(SDLK_UNKNOWN, static_cast<SDL_Keymod>(0), unicode);
 }
 
-bool thandler::hotkey_pressed(const hotkey::hotkey_ptr key)
+bool handler::hotkey_pressed(const hotkey::hotkey_ptr key)
 {
-	tdispatcher* dispatcher = keyboard_dispatcher();
+	dispatcher* dispatcher = keyboard_dispatcher();
 
 	if(!dispatcher) {
 		return false;
@@ -724,13 +724,13 @@ bool thandler::hotkey_pressed(const hotkey::hotkey_ptr key)
 	return dispatcher->execute_hotkey(hotkey::get_id(key->get_command()));
 }
 
-void thandler::key_down(const SDL_Keycode key,
+void handler::key_down(const SDL_Keycode key,
 						const SDL_Keymod modifier,
 						const utf8::string& unicode)
 {
 	DBG_GUI_E << "Firing: " << SDL_KEY_DOWN << ".\n";
 
-	if(tdispatcher* dispatcher = keyboard_dispatcher()) {
+	if(dispatcher* dispatcher = keyboard_dispatcher()) {
 		dispatcher->fire(SDL_KEY_DOWN,
 						 dynamic_cast<twidget&>(*dispatcher),
 						 key,
@@ -739,20 +739,20 @@ void thandler::key_down(const SDL_Keycode key,
 	}
 }
 
-void thandler::keyboard(const tevent event)
+void handler::keyboard(const event_t event)
 {
 	DBG_GUI_E << "Firing: " << event << ".\n";
 
-	if(tdispatcher* dispatcher = keyboard_dispatcher()) {
+	if(dispatcher* dispatcher = keyboard_dispatcher()) {
 		dispatcher->fire(event, dynamic_cast<twidget&>(*dispatcher));
 	}
 }
 
-/***** tmanager class. *****/
+/***** manager class. *****/
 
-tmanager::tmanager()
+manager::manager()
 {
-	handler = new thandler();
+	handler_ = new handler();
 
 #ifdef MAIN_EVENT_HANDLER
 	draw_interval = 30;
@@ -763,10 +763,10 @@ tmanager::tmanager()
 #endif
 }
 
-tmanager::~tmanager()
+manager::~manager()
 {
-	delete handler;
-	handler = nullptr;
+	delete handler_;
+	handler_ = nullptr;
 
 #ifdef MAIN_EVENT_HANDLER
 	draw_interval = 0;
@@ -776,18 +776,18 @@ tmanager::~tmanager()
 
 /***** free functions class. *****/
 
-void connect_dispatcher(tdispatcher* dispatcher)
+void connect_dispatcher(dispatcher* dispatcher)
 {
-	assert(handler);
+	assert(handler_);
 	assert(dispatcher);
-	handler->connect(dispatcher);
+	handler_->connect(dispatcher);
 }
 
-void disconnect_dispatcher(tdispatcher* dispatcher)
+void disconnect_dispatcher(dispatcher* dispatcher)
 {
-	assert(handler);
+	assert(handler_);
 	assert(dispatcher);
-	handler->disconnect(dispatcher);
+	handler_->disconnect(dispatcher);
 }
 
 void init_mouse_location()
@@ -803,32 +803,32 @@ void init_mouse_location()
 	SDL_PushEvent(&event);
 }
 
-void capture_mouse(tdispatcher* dispatcher)
+void capture_mouse(dispatcher* dispatcher)
 {
-	assert(handler);
+	assert(handler_);
 	assert(dispatcher);
-	handler->mouse_focus = dispatcher;
+	handler_->mouse_focus = dispatcher;
 }
 
-void release_mouse(tdispatcher* dispatcher)
+void release_mouse(dispatcher* dispatcher)
 {
-	assert(handler);
+	assert(handler_);
 	assert(dispatcher);
-	if(handler->mouse_focus == dispatcher) {
-		handler->mouse_focus = nullptr;
+	if(handler_->mouse_focus == dispatcher) {
+		handler_->mouse_focus = nullptr;
 	}
 }
 
-void capture_keyboard(tdispatcher* dispatcher)
+void capture_keyboard(dispatcher* dispatcher)
 {
-	assert(handler);
+	assert(handler_);
 	assert(dispatcher);
 	assert(dispatcher->get_want_keyboard_input());
 
-	handler->keyboard_focus_ = dispatcher;
+	handler_->keyboard_focus_ = dispatcher;
 }
 
-std::ostream& operator<<(std::ostream& stream, const tevent event)
+std::ostream& operator<<(std::ostream& stream, const event_t event)
 {
 	switch(event) {
 		case DRAW:

@@ -343,9 +343,9 @@ private:
 	std::function<void(twidget&)> callback_state_to_unfolded_;
 
 	// FIXME rename to icon
-	void signal_handler_left_button_click(const event::tevent event);
+	void signal_handler_left_button_click(const event::event_t event);
 
-	void signal_handler_label_left_button_click(const event::tevent event,
+	void signal_handler_label_left_button_click(const event::event_t event,
 												bool& handled,
 												bool& halt);
 

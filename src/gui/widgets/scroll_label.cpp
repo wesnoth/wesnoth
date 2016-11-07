@@ -48,7 +48,7 @@ tscroll_label::tscroll_label(bool wrap, const std::string& text_alignment)
 	connect_signal<event::LEFT_BUTTON_DOWN>(
 			std::bind(
 					&tscroll_label::signal_handler_left_button_down, this, _2),
-			event::tdispatcher::back_pre_child);
+			event::dispatcher::back_pre_child);
 }
 
 void tscroll_label::set_label(const t_string& label)
@@ -127,7 +127,7 @@ const std::string& tscroll_label::get_control_type() const
 	return type;
 }
 
-void tscroll_label::signal_handler_left_button_down(const event::tevent event)
+void tscroll_label::signal_handler_left_button_down(const event::event_t event)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 

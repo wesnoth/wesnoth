@@ -209,12 +209,12 @@ static bool helptip()
  * This is used to send event to the proper window, this allows windows to post
  * messages to themselves and let them delay for a certain amount of time.
  */
-class tmanager
+class manager
 {
-	tmanager();
+	manager();
 
 public:
-	static tmanager& instance();
+	static manager& instance();
 
 	void add(twindow& window);
 
@@ -230,24 +230,24 @@ private:
 	std::map<unsigned, twindow*> windows_;
 };
 
-tmanager::tmanager() : windows_()
+manager::manager() : windows_()
 {
 }
 
-tmanager& tmanager::instance()
+manager& manager::instance()
 {
-	static tmanager window_manager;
+	static manager window_manager;
 	return window_manager;
 }
 
-void tmanager::add(twindow& window)
+void manager::add(twindow& window)
 {
 	static unsigned id;
 	++id;
 	windows_[id] = &window;
 }
 
-void tmanager::remove(twindow& window)
+void manager::remove(twindow& window)
 {
 	for(std::map<unsigned, twindow*>::iterator itor = windows_.begin();
 		itor != windows_.end();
@@ -261,7 +261,7 @@ void tmanager::remove(twindow& window)
 	assert(false);
 }
 
-unsigned tmanager::get_id(twindow& window)
+unsigned manager::get_id(twindow& window)
 {
 	for(std::map<unsigned, twindow*>::iterator itor = windows_.begin();
 		itor != windows_.end();
@@ -276,7 +276,7 @@ unsigned tmanager::get_id(twindow& window)
 	return 0;
 }
 
-twindow* tmanager::window(const unsigned id)
+twindow* manager::window(const unsigned id)
 {
 	std::map<unsigned, twindow*>::iterator itor = windows_.find(id);
 
@@ -340,14 +340,14 @@ twindow::twindow(CVideo& video,
 	, debug_layout_(new tdebug_layout_graph(this))
 #endif
 	, event_distributor_(
-			  new event::tdistributor(*this, event::tdispatcher::front_child))
+			  new event::distributor(*this, event::dispatcher::front_child))
 {
 	// We load the config in here as exception.
 	// Our caller did update the screen size so no need for us to do that again.
 	set_definition(definition);
 	load_config();
 
-	tmanager::instance().add(*this);
+	manager::instance().add(*this);
 
 	connect();
 
@@ -360,7 +360,7 @@ twindow::twindow(CVideo& video,
 			&twindow::signal_handler_sdl_video_resize, this, _2, _3, _5));
 
 	connect_signal<event::SDL_ACTIVATE>(std::bind(
-			&event::tdistributor::initialize_state, event_distributor_));
+			&event::distributor::initialize_state, event_distributor_));
 
 	connect_signal<event::SDL_LEFT_BUTTON_UP>(
 			std::bind(&twindow::signal_handler_click_dismiss,
@@ -369,7 +369,7 @@ twindow::twindow(CVideo& video,
 						_3,
 						_4,
 						SDL_BUTTON_LMASK),
-			event::tdispatcher::front_child);
+			event::dispatcher::front_child);
 	connect_signal<event::SDL_MIDDLE_BUTTON_UP>(
 			std::bind(&twindow::signal_handler_click_dismiss,
 						this,
@@ -377,7 +377,7 @@ twindow::twindow(CVideo& video,
 						_3,
 						_4,
 						SDL_BUTTON_MMASK),
-			event::tdispatcher::front_child);
+			event::dispatcher::front_child);
 	connect_signal<event::SDL_RIGHT_BUTTON_UP>(
 			std::bind(&twindow::signal_handler_click_dismiss,
 						this,
@@ -385,12 +385,12 @@ twindow::twindow(CVideo& video,
 						_3,
 						_4,
 						SDL_BUTTON_RMASK),
-			event::tdispatcher::front_child);
+			event::dispatcher::front_child);
 
 	connect_signal<event::SDL_KEY_DOWN>(
 			std::bind(
 					&twindow::signal_handler_sdl_key_down, this, _2, _3, _5),
-			event::tdispatcher::back_post_child);
+			event::dispatcher::back_post_child);
 	connect_signal<event::SDL_KEY_DOWN>(std::bind(
 			&twindow::signal_handler_sdl_key_down, this, _2, _3, _5));
 
@@ -400,7 +400,7 @@ twindow::twindow(CVideo& video,
 						_2,
 						_3,
 						_5),
-			event::tdispatcher::back_pre_child);
+			event::dispatcher::back_pre_child);
 
 	connect_signal<event::MESSAGE_SHOW_HELPTIP>(
 			std::bind(&twindow::signal_handler_message_show_helptip,
@@ -408,12 +408,12 @@ twindow::twindow(CVideo& video,
 						_2,
 						_3,
 						_5),
-			event::tdispatcher::back_pre_child);
+			event::dispatcher::back_pre_child);
 
 	connect_signal<event::REQUEST_PLACEMENT>(
 			std::bind(
 					&twindow::signal_handler_request_placement, this, _2, _3),
-			event::tdispatcher::back_pre_child);
+			event::dispatcher::back_pre_child);
 
 	register_hotkey(hotkey::GLOBAL__HELPTIP, std::bind(gui2::helptip));
 }
@@ -444,7 +444,7 @@ twindow::~twindow()
 		tip::remove();
 	}
 
-	tmanager::instance().remove(*this);
+	manager::instance().remove(*this);
 
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 
@@ -456,7 +456,7 @@ twindow::~twindow()
 
 twindow* twindow::window_instance(const unsigned handle)
 {
-	return tmanager::instance().window(handle);
+	return manager::instance().window(handle);
 }
 
 void twindow::update_screen_size()
@@ -514,7 +514,7 @@ void twindow::show_tooltip(/*const unsigned auto_close_timeout*/)
 
 	assert(status_ == NEW);
 
-	set_mouse_behavior(event::tdispatcher::none);
+	set_mouse_behavior(event::dispatcher::none);
 	set_want_keyboard_input(false);
 
 	show_mode_ = tooltip;
@@ -536,7 +536,7 @@ void twindow::show_non_modal(/*const unsigned auto_close_timeout*/)
 
 	assert(status_ == NEW);
 
-	set_mouse_behavior(event::tdispatcher::hit);
+	set_mouse_behavior(event::dispatcher::hit);
 
 	show_mode_ = modal;
 
@@ -617,7 +617,7 @@ int twindow::show(const bool restore, const unsigned auto_close_timeout)
 		SDL_UserEvent data;
 
 		data.type = CLOSE_WINDOW_EVENT;
-		data.code = tmanager::instance().get_id(*this);
+		data.code = manager::instance().get_id(*this);
 		data.data1 = nullptr;
 		data.data2 = nullptr;
 
@@ -752,7 +752,7 @@ void twindow::draw()
 
 	if (dirty_list_.empty()) {
 		if (sunset_) {
-			/** @todo should probably be moved to event::thandler::draw. */
+			/** @todo should probably be moved to event::handler::draw. */
 			static unsigned i = 0;
 			if (++i % sunset_ == 0) {
 				SDL_Rect r = sdl::create_rect(
@@ -1025,7 +1025,7 @@ void twindow::layout()
 	{
 		twindow_implementation::layout(*this, maximum_width, maximum_height);
 	}
-	catch(tlayout_exception_resize_failed&)
+	catch(layout_exception_resize_failed&)
 	{
 
 		/** @todo implement the scrollbars on the window. */
@@ -1061,7 +1061,7 @@ void twindow::layout()
 			twindow_implementation::layout(
 					*this, maximum_width, maximum_height);
 		}
-		catch(tlayout_exception_resize_failed&)
+		catch(layout_exception_resize_failed&)
 		{
 
 			/** @todo implement the scrollbars on the window. */
@@ -1308,7 +1308,7 @@ void twindow_implementation::layout(twindow& window,
 				DBG_GUI_L << LOG_IMPL_HEADER << " Result: Resize width failed."
 						  << " Wanted width " << maximum_width
 						  << " resulting width " << size.x << ".\n";
-				throw tlayout_exception_width_resize_failed();
+				throw layout_exception_width_resize_failed();
 			}
 			DBG_GUI_L << LOG_IMPL_HEADER
 					  << " Status: Resize width succeeded.\n";
@@ -1322,7 +1322,7 @@ void twindow_implementation::layout(twindow& window,
 				DBG_GUI_L << LOG_IMPL_HEADER << " Result: Resize height failed."
 						  << " Wanted height " << maximum_height
 						  << " resulting height " << size.y << ".\n";
-				throw tlayout_exception_height_resize_failed();
+				throw layout_exception_height_resize_failed();
 			}
 			DBG_GUI_L << LOG_IMPL_HEADER
 					  << " Status: Resize height succeeded.\n";
@@ -1335,7 +1335,7 @@ void twindow_implementation::layout(twindow& window,
 		DBG_GUI_L << LOG_IMPL_HEADER << " Result: Resizing succeeded.\n";
 		return;
 	}
-	catch(tlayout_exception_width_modified&)
+	catch(layout_exception_width_modified&)
 	{
 		DBG_GUI_L << LOG_IMPL_HEADER
 				  << " Status: Width has been modified, rerun.\n";
@@ -1371,7 +1371,7 @@ void twindow::remove_from_keyboard_chain(twidget* widget)
 	event_distributor_->keyboard_remove_from_chain(widget);
 }
 
-void twindow::signal_handler_sdl_video_resize(const event::tevent event,
+void twindow::signal_handler_sdl_video_resize(const event::event_t event,
 											  bool& handled,
 											  const point& new_size)
 {
@@ -1386,7 +1386,7 @@ void twindow::signal_handler_sdl_video_resize(const event::tevent event,
 	handled = true;
 }
 
-void twindow::signal_handler_click_dismiss(const event::tevent event,
+void twindow::signal_handler_click_dismiss(const event::event_t event,
 										   bool& handled,
 										   bool& halt,
 										   const Uint8 mouse_button_mask)
@@ -1397,7 +1397,7 @@ void twindow::signal_handler_click_dismiss(const event::tevent event,
 	handled = halt = click_dismiss(mouse_button_mask);
 }
 
-void twindow::signal_handler_sdl_key_down(const event::tevent event,
+void twindow::signal_handler_sdl_key_down(const event::event_t event,
 										  bool& handled,
 										  SDL_Keycode key)
 {
@@ -1420,35 +1420,35 @@ void twindow::signal_handler_sdl_key_down(const event::tevent event,
 #endif
 }
 
-void twindow::signal_handler_message_show_tooltip(const event::tevent event,
+void twindow::signal_handler_message_show_tooltip(const event::event_t event,
 												  bool& handled,
-												  event::tmessage& message)
+												  event::message& message)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
-	event::tmessage_show_tooltip& request
-			= dynamic_cast<event::tmessage_show_tooltip&>(message);
+	event::message_show_tooltip& request
+			= dynamic_cast<event::message_show_tooltip&>(message);
 
 	tip::show(video_, tooltip_.id, request.message, request.location, request.source_rect);
 
 	handled = true;
 }
 
-void twindow::signal_handler_message_show_helptip(const event::tevent event,
+void twindow::signal_handler_message_show_helptip(const event::event_t event,
 												  bool& handled,
-												  event::tmessage& message)
+												  event::message& message)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
-	event::tmessage_show_helptip& request
-			= dynamic_cast<event::tmessage_show_helptip&>(message);
+	event::message_show_helptip& request
+			= dynamic_cast<event::message_show_helptip&>(message);
 
 	tip::show(video_, helptip_.id, request.message, request.location, request.source_rect);
 
 	handled = true;
 }
 
-void twindow::signal_handler_request_placement(const event::tevent event,
+void twindow::signal_handler_request_placement(const event::event_t event,
 											   bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -1640,11 +1640,11 @@ twindow_definition::tresolution::tresolution(const config& cfg)
  *         - Throw a layout height doesn't fit exception.
  * - End layout loop.
  *
- * - Catch @ref gui2::tlayout_exception_width_modified "width modified":
+ * - Catch @ref gui2::layout_exception_width_modified "width modified":
  *   - Goto relayout.
  *
  * - Catch
- *   @ref gui2::tlayout_exception_width_resize_failed "width resize failed":
+ *   @ref gui2::layout_exception_width_resize_failed "width resize failed":
  *   - If the window has a horizontal scrollbar which isn't shown but can be
  *     shown.
  *     - Show the scrollbar.
@@ -1652,7 +1652,7 @@ twindow_definition::tresolution::tresolution(const config& cfg)
  *   - Else show a layout failure message.
  *
  * - Catch
- *   @ref gui2::tlayout_exception_height_resize_failed "height resize failed":
+ *   @ref gui2::layout_exception_height_resize_failed "height resize failed":
  *   - If the window has a vertical scrollbar which isn't shown but can be
  *     shown:
  *     - Show the scrollbar.

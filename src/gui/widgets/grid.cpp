@@ -231,7 +231,7 @@ void tgrid::reduce_width(const unsigned maximum_width)
 
 	DBG_GUI_L << LOG_HEADER << " Resizing failed.\n";
 
-	throw tlayout_exception_width_resize_failed();
+	throw layout_exception_width_resize_failed();
 }
 
 void tgrid::request_reduce_width(const unsigned maximum_width)
@@ -309,7 +309,7 @@ void tgrid::reduce_height(const unsigned maximum_height)
 
 	DBG_GUI_L << LOG_HEADER << " Resizing failed.\n";
 
-	throw tlayout_exception_height_resize_failed();
+	throw layout_exception_height_resize_failed();
 }
 
 void tgrid::request_reduce_height(const unsigned maximum_height)

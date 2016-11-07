@@ -113,12 +113,12 @@ tpane::tpane(const tbuilder_grid_ptr item_builder)
 	, items_()
 	, item_builder_(item_builder)
 	, item_id_generator_(0)
-	, placer_(tplacer_::build(tplacer_::tgrow_direction::vertical, 1))
+	, placer_(placer_base::build(placer_base::tgrow_direction::vertical, 1))
 {
 	connect_signal<event::REQUEST_PLACEMENT>(
 			std::bind(
 					&tpane::signal_handler_request_placement, this, _1, _2, _3),
-			event::tdispatcher::back_pre_child);
+			event::dispatcher::back_pre_child);
 }
 
 tpane::tpane(const implementation::tbuilder_pane& builder)
@@ -126,12 +126,12 @@ tpane::tpane(const implementation::tbuilder_pane& builder)
 	, items_()
 	, item_builder_(builder.item_definition)
 	, item_id_generator_(0)
-	, placer_(tplacer_::build(builder.grow_direction, builder.parallel_items))
+	, placer_(placer_base::build(builder.grow_direction, builder.parallel_items))
 {
 	connect_signal<event::REQUEST_PLACEMENT>(
 			std::bind(
 					&tpane::signal_handler_request_placement, this, _1, _2, _3),
-			event::tdispatcher::back_pre_child);
+			event::dispatcher::back_pre_child);
 }
 
 tpane* tpane::build(const implementation::tbuilder_pane& builder)
@@ -158,7 +158,7 @@ unsigned tpane::create_item(const std::map<std::string, string_map>& item_data,
 
 	items_.push_back(item);
 
-	event::tmessage message;
+	event::message message;
 	fire(event::REQUEST_PLACEMENT, *this, message);
 
 	return item.id;
@@ -342,8 +342,8 @@ void tpane::prepare_placement() const
 	}
 }
 
-void tpane::signal_handler_request_placement(tdispatcher& dispatcher,
-											 const event::tevent event,
+void tpane::signal_handler_request_placement(dispatcher& dispatcher,
+											 const event::event_t event,
 											 bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -426,7 +426,7 @@ namespace implementation
 tbuilder_pane::tbuilder_pane(const config& cfg)
 	: tbuilder_widget(cfg)
 	, grow_direction(
-			  lexical_cast<tplacer_::tgrow_direction>(cfg["grow_direction"]))
+			  lexical_cast<placer_base::tgrow_direction>(cfg["grow_direction"]))
 	, parallel_items(cfg["parallel_items"])
 	, item_definition(new tbuilder_grid(cfg.child("item_definition", "[pane]")))
 {

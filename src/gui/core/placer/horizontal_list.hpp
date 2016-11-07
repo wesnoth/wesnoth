@@ -33,15 +33,15 @@ namespace implementation
 /**
  * The placement class for a horizontal list.
  *
- * See @ref tplacer_ for more information.
+ * See @ref placer_base for more information.
  */
-class tplacer_horizontal_list : public tplacer_
+class placer_horizontal_list : public placer_base
 {
 
 public:
 	/***** ***** Constructor, destructor, assignment. ***** *****/
 
-	explicit tplacer_horizontal_list(const unsigned maximum_rows);
+	explicit placer_horizontal_list(const unsigned maximum_rows);
 
 
 	/***** ***** Inherited operations. ***** *****/
@@ -62,7 +62,7 @@ private:
 	 * The maximum number of rows to use.
 	 *
 	 * This value is determined by the @p parallel_items parameter of
-	 * @ref tplacer_::build).
+	 * @ref placer_base::build).
 	 */
 	unsigned maximum_rows_;
 

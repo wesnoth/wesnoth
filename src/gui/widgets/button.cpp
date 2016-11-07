@@ -86,7 +86,7 @@ const std::string& tbutton::get_control_type() const
 	return type;
 }
 
-void tbutton::signal_handler_mouse_enter(const event::tevent event,
+void tbutton::signal_handler_mouse_enter(const event::event_t event,
 										 bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -95,7 +95,7 @@ void tbutton::signal_handler_mouse_enter(const event::tevent event,
 	handled = true;
 }
 
-void tbutton::signal_handler_mouse_leave(const event::tevent event,
+void tbutton::signal_handler_mouse_leave(const event::event_t event,
 										 bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -104,7 +104,7 @@ void tbutton::signal_handler_mouse_leave(const event::tevent event,
 	handled = true;
 }
 
-void tbutton::signal_handler_left_button_down(const event::tevent event,
+void tbutton::signal_handler_left_button_down(const event::event_t event,
 											  bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -118,7 +118,7 @@ void tbutton::signal_handler_left_button_down(const event::tevent event,
 	handled = true;
 }
 
-void tbutton::signal_handler_left_button_up(const event::tevent event,
+void tbutton::signal_handler_left_button_up(const event::event_t event,
 											bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -127,7 +127,7 @@ void tbutton::signal_handler_left_button_up(const event::tevent event,
 	handled = true;
 }
 
-void tbutton::signal_handler_left_button_click(const event::tevent event,
+void tbutton::signal_handler_left_button_click(const event::event_t event,
 											   bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";

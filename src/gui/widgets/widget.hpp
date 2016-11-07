@@ -47,8 +47,8 @@ class twalker_;
  * be implemented by classes deriving from this class.
  */
 class twidget : private boost::noncopyable,
-				public tevent_executor,
-				public event::tdispatcher
+				public event_executor,
+				public event::dispatcher
 {
 	friend class tdebug_layout_graph;
 	friend class twindow; // needed for modifying the layout_size.
@@ -786,7 +786,7 @@ public:
 	virtual bool has_widget(const twidget& widget) const;
 
 private:
-	/** See @ref event::tdispatcher::is_at. */
+	/** See @ref event::dispatcher::is_at. */
 	virtual bool is_at(const point& coordinate) const override;
 
 	/**

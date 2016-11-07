@@ -44,7 +44,7 @@ public:
 		members_.emplace(value, widget);
 
 		dynamic_cast<twidget*>(widget)->connect_signal<event::LEFT_BUTTON_CLICK>(std::bind(
-			&tgroup::group_operator, this), event::tdispatcher::front_child);
+			&tgroup::group_operator, this), event::dispatcher::front_child);
 	}
 
 	/**

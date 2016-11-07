@@ -313,7 +313,7 @@ void tscrollbar_::load_config_extra()
 	}
 }
 
-void tscrollbar_::signal_handler_mouse_enter(const event::tevent event,
+void tscrollbar_::signal_handler_mouse_enter(const event::event_t event,
 											 bool& handled,
 											 bool& halt)
 {
@@ -323,7 +323,7 @@ void tscrollbar_::signal_handler_mouse_enter(const event::tevent event,
 	signal_handler_mouse_motion(event, handled, halt, get_mouse_position());
 }
 
-void tscrollbar_::signal_handler_mouse_motion(const event::tevent event,
+void tscrollbar_::signal_handler_mouse_motion(const event::event_t event,
 											  bool& handled,
 											  bool& halt,
 											  const point& coordinate)
@@ -369,7 +369,7 @@ void tscrollbar_::signal_handler_mouse_motion(const event::tevent event,
 	handled = true;
 }
 
-void tscrollbar_::signal_handler_mouse_leave(const event::tevent event,
+void tscrollbar_::signal_handler_mouse_leave(const event::event_t event,
 											 bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -381,7 +381,7 @@ void tscrollbar_::signal_handler_mouse_leave(const event::tevent event,
 }
 
 
-void tscrollbar_::signal_handler_left_button_down(const event::tevent event,
+void tscrollbar_::signal_handler_left_button_down(const event::event_t event,
 												  bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -414,7 +414,7 @@ void tscrollbar_::signal_handler_left_button_down(const event::tevent event,
 	handled = true;
 }
 
-void tscrollbar_::signal_handler_left_button_up(const event::tevent event,
+void tscrollbar_::signal_handler_left_button_up(const event::event_t event,
 												bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";

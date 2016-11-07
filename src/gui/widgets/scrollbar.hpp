@@ -363,21 +363,21 @@ private:
 
 	/***** ***** ***** signal handlers ***** ****** *****/
 
-	void signal_handler_mouse_enter(const event::tevent event,
+	void signal_handler_mouse_enter(const event::event_t event,
 									bool& handled,
 									bool& halt);
 
-	void signal_handler_mouse_motion(const event::tevent event,
+	void signal_handler_mouse_motion(const event::event_t event,
 									 bool& handled,
 									 bool& halt,
 									 const point& coordinate);
 
-	void signal_handler_mouse_leave(const event::tevent event, bool& handled);
+	void signal_handler_mouse_leave(const event::event_t event, bool& handled);
 
-	void signal_handler_left_button_down(const event::tevent event,
+	void signal_handler_left_button_down(const event::event_t event,
 										 bool& handled);
 
-	void signal_handler_left_button_up(const event::tevent event,
+	void signal_handler_left_button_up(const event::event_t event,
 									   bool& handled);
 };
 

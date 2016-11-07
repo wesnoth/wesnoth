@@ -278,17 +278,17 @@ private:
 
 	/***** ***** ***** signal handlers ***** ****** *****/
 
-	void signal_handler_left_button_down(const event::tevent event);
+	void signal_handler_left_button_down(const event::event_t event);
 
 	void signal_handler_pre_child_left_button_click(tgrid* grid,
-													const event::tevent event,
+													const event::event_t event,
 													bool& handled,
 													bool& halt);
 
 	void signal_handler_left_button_click(tgrid* grid,
-										  const event::tevent event);
+										  const event::event_t event);
 
-	void signal_handler_sdl_key_down(const event::tevent event,
+	void signal_handler_sdl_key_down(const event::event_t event,
 									 bool& handled,
 									 const SDL_Keycode key,
 									 SDL_Keymod modifier);

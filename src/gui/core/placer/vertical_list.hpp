@@ -33,14 +33,14 @@ namespace implementation
 /**
  * The placement class for a vertical list.
  *
- * See @ref tplacer_ for more information.
+ * See @ref placer_base for more information.
  */
-class tplacer_vertical_list : public tplacer_
+class placer_vertical_list : public placer_base
 {
 public:
 	/***** ***** Constructor, destructor, assignment. ***** *****/
 
-	explicit tplacer_vertical_list(const unsigned maximum_columns);
+	explicit placer_vertical_list(const unsigned maximum_columns);
 
 
 	/***** ***** Inherited operations. ***** *****/
@@ -61,7 +61,7 @@ private:
 	 * The maximum number of columns to use.
 	 *
 	 * This value is determined by the @p parallel_items parameter of
-	 * @ref tplacer_::build).
+	 * @ref placer_base::build).
 	 */
 	unsigned maximum_columns_;
 

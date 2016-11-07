@@ -152,14 +152,14 @@ using btn_callback = std::function<void(twindow&)>;
 static void register_button(twindow& window, const std::string& id, hotkey::HOTKEY_COMMAND hk, btn_callback callback)
 {
 	if(hk != hotkey::HOTKEY_NULL) {
-		window.register_hotkey(hk, [callback](event::tdispatcher& win, hotkey::HOTKEY_COMMAND) {
+		window.register_hotkey(hk, [callback](event::dispatcher& win, hotkey::HOTKEY_COMMAND) {
 			callback(dynamic_cast<twindow&>(win));
 			return true;
 		});
 	}
 
 	event::connect_signal_mouse_left_click(find_widget<tbutton>(&window, id, false),
-		[callback](event::tdispatcher& win, event::tevent, bool&, bool&) { callback(dynamic_cast<twindow&>(win)); });
+		[callback](event::dispatcher& win, event::event_t, bool&, bool&) { callback(dynamic_cast<twindow&>(win)); });
 }
 
 static bool fullscreen(CVideo& video)
@@ -214,7 +214,7 @@ void ttitle_screen::pre_show(twindow& window)
 #ifdef DEBUG_TOOLTIP
 	window.connect_signal<event::SDL_MOUSE_MOTION>(
 			std::bind(debug_tooltip, std::ref(window), _3, _5),
-			event::tdispatcher::front_child);
+			event::dispatcher::front_child);
 #endif
 
 	window.connect_signal<event::SDL_VIDEO_RESIZE>(std::bind(&ttitle_screen::on_resize, this, std::ref(window)));
@@ -222,7 +222,7 @@ void ttitle_screen::pre_show(twindow& window)
 	//
 	// General hotkeys
 	//
-	window.register_hotkey(hotkey::TITLE_SCREEN__RELOAD_WML, [this](event::tdispatcher& win, hotkey::HOTKEY_COMMAND) {
+	window.register_hotkey(hotkey::TITLE_SCREEN__RELOAD_WML, [this](event::dispatcher& win, hotkey::HOTKEY_COMMAND) {
 		dynamic_cast<twindow&>(win).set_retval(RELOAD_GAME_DATA);
 		return true;
 	});

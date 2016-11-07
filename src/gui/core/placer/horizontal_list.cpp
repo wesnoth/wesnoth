@@ -27,7 +27,7 @@ namespace gui2
 namespace implementation
 {
 
-tplacer_horizontal_list::tplacer_horizontal_list(const unsigned maximum_rows)
+placer_horizontal_list::placer_horizontal_list(const unsigned maximum_rows)
 	: maximum_rows_(maximum_rows)
 	, rows_(maximum_rows, 0)
 	, columns_(1, std::make_pair(0, 0))
@@ -37,7 +37,7 @@ tplacer_horizontal_list::tplacer_horizontal_list(const unsigned maximum_rows)
 	assert(maximum_rows_ > 0);
 }
 
-void tplacer_horizontal_list::initialise()
+void placer_horizontal_list::initialise()
 {
 	std::fill(rows_.begin(), rows_.end(), 0);
 	columns_.clear();
@@ -46,7 +46,7 @@ void tplacer_horizontal_list::initialise()
 	column_ = 0;
 }
 
-void tplacer_horizontal_list::add_item(const point& size)
+void placer_horizontal_list::add_item(const point& size)
 {
 	if(size.x > columns_[column_].second) {
 		columns_[column_].second = size.x;
@@ -66,14 +66,14 @@ void tplacer_horizontal_list::add_item(const point& size)
 	}
 }
 
-point tplacer_horizontal_list::get_size() const
+point placer_horizontal_list::get_size() const
 {
 	const int width = columns_.back().first + columns_.back().second;
 	const int height = std::accumulate(rows_.begin(), rows_.end(), 0);
 	return point(width, height);
 }
 
-point tplacer_horizontal_list::get_origin(const unsigned index) const
+point placer_horizontal_list::get_origin(const unsigned index) const
 {
 	const unsigned row = index % maximum_rows_;
 	const unsigned column = index / maximum_rows_;

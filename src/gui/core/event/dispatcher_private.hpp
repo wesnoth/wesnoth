@@ -29,7 +29,7 @@ namespace gui2
 namespace event
 {
 
-struct tdispatcher_implementation
+struct dispatcher_implementation
 {
 /**
  * Helper macro to implement the various event_signal functions.
@@ -37,11 +37,11 @@ struct tdispatcher_implementation
  * Implements two helper functions as documented in the macro.
  *
  * @param SET                     The set in which the event type needs to be
- *                                eg the @ref gui2::event::tset_event or a
+ *                                eg the @ref gui2::event::set_event or a
  *                                similar set defined in that header.
  * @param FUNCTION                The function signature to validate the
  *                                implementation function SFINAE against eg the
- *                                @ref gui2::event::tsignal_function or another
+ *                                @ref gui2::event::signal_function or another
  *                                one in that header.
  * @param QUEUE                   The queue in which the @p event is slotted.
  */
@@ -52,17 +52,17 @@ struct tdispatcher_implementation
 	 * There are several functions that only overload the return value, in     \
 	 * order to do so they use SFINAE.                                         \
 	 *                                                                         \
-	 * @tparam F                  tsignal_function.                            \
+	 * @tparam F                  signal_function.                             \
 	 * @param dispatcher          The dispatcher whose signal queue is used.   \
 	 * @param event               The event to get the signal for.             \
 	 *                                                                         \
 	 * @returns                   The signal of the type                       \
-	 *                            tdispatcher::tsignal<FUNCTION>               \
+	 *                            dispatcher::signal_type<FUNCTION>            \
 	 */                                                                        \
 	template <class F>                                                         \
 	static typename std::enable_if<std::is_same<F, FUNCTION>::value,           \
-									 tdispatcher::tsignal<FUNCTION> >::type&   \
-	event_signal(tdispatcher& dispatcher, const tevent event)                  \
+									 dispatcher::signal_type<FUNCTION> >::type&\
+	event_signal(dispatcher& dispatcher, const event_t event)                  \
 	{                                                                          \
 		return dispatcher.QUEUE.queue[event];                                  \
 	}                                                                          \
@@ -73,23 +73,23 @@ struct tdispatcher_implementation
 	 * There are several functions that only overload the return value, in     \
 	 * order to do so they use SFINAE.                                         \
 	 *                                                                         \
-	 * @tparam K                  A key in tset_event.                         \
+	 * @tparam K                  A key in set_event.                          \
 	 * @param dispatcher          The dispatcher whose signal queue is used.   \
 	 * @param event               The event to get the signal for.             \
 	 *                                                                         \
 	 * @returns                   The signal of the type                       \
-	 *                            tdispatcher::tsignal<FUNCTION>               \
+	 *                            dispatcher::signal_type<FUNCTION>            \
 	 */                                                                        \
 	template <class K>                                                         \
 	static typename std::enable_if<boost::mpl::has_key<SET, K>::value,         \
-									 tdispatcher::tsignal<FUNCTION> >::type&   \
-	event_signal(tdispatcher& dispatcher, const tevent event)                  \
+									 dispatcher::signal_type<FUNCTION> >::type&\
+	event_signal(dispatcher& dispatcher, const event_t event)                  \
 	{                                                                          \
 		return dispatcher.QUEUE.queue[event];                                  \
 	}
 
 
-	IMPLEMENT_EVENT_SIGNAL(tset_event, tsignal_function, signal_queue_)
+	IMPLEMENT_EVENT_SIGNAL(set_event, signal_function, signal_queue_)
 
 /**
  * Small helper macro to wrap @ref IMPLEMENT_EVENT_SIGNAL.
@@ -101,8 +101,8 @@ struct tdispatcher_implementation
  *                                IMPLEMENT_EVENT_SIGNAL.
  */
 #define IMPLEMENT_EVENT_SIGNAL_WRAPPER(TYPE)                                   \
-	IMPLEMENT_EVENT_SIGNAL(tset_event_##TYPE,                                  \
-						   tsignal_##TYPE##_function,                          \
+	IMPLEMENT_EVENT_SIGNAL(set_event_##TYPE,                                  \
+						   signal_##TYPE##_function,                          \
 						   signal_##TYPE##_queue_)
 
 	IMPLEMENT_EVENT_SIGNAL_WRAPPER(mouse)
@@ -117,7 +117,7 @@ struct tdispatcher_implementation
 	 * A helper class to find out whether dispatcher has an handler for a
 	 * certain event.
 	 */
-	class thas_handler
+	class has_handler
 	{
 	public:
 		/**
@@ -126,8 +126,8 @@ struct tdispatcher_implementation
 		 * @param event_type      The type of event to look for.
 		* @param dispatcher      The dispatcher whose signal queue is used.
 		 */
-		thas_handler(const tdispatcher::tevent_type event_type,
-					 tdispatcher& dispatcher)
+		has_handler(const dispatcher::event_queue_type event_type,
+					 dispatcher& dispatcher)
 			: event_type_(event_type), dispatcher_(dispatcher)
 		{
 		}
@@ -147,17 +147,17 @@ struct tdispatcher_implementation
 		// not called operator() to work around a problem in MSVC
 		// (known to affect all versions up to 2015)
 		template <class T>
-		bool oper(tevent event)
+		bool oper(event_t event)
 		{
-			if((event_type_ & tdispatcher::pre)
+			if((event_type_ & dispatcher::pre)
 			   && !event_signal<T>(dispatcher_, event).pre_child.empty()) {
 				return true;
 			}
-			if((event_type_ & tdispatcher::child)
+			if((event_type_ & dispatcher::child)
 			   && !event_signal<T>(dispatcher_, event).child.empty()) {
 				return true;
 			}
-			if((event_type_ & tdispatcher::post)
+			if((event_type_ & dispatcher::post)
 			   && !event_signal<T>(dispatcher_, event).post_child.empty()) {
 				return true;
 			}
@@ -165,8 +165,8 @@ struct tdispatcher_implementation
 		}
 
 	private:
-		tdispatcher::tevent_type event_type_;
-		tdispatcher& dispatcher_;
+		dispatcher::event_queue_type event_type_;
+		dispatcher& dispatcher_;
 	};
 };
 
@@ -201,9 +201,9 @@ struct find<false>
 		if(boost::get(x) == event) {
 			return functor.template oper<item>(event);
 		} else {
-			typedef typename boost::mpl::next<itor>::type titor;
-			return find<std::is_same<titor, end>::value>::execute(
-					static_cast<titor*>(nullptr),
+			typedef typename boost::mpl::next<itor>::type itor_t;
+			return find<std::is_same<itor_t, end>::value>::execute(
+					static_cast<itor_t*>(nullptr),
 					static_cast<end*>(nullptr),
 					event,
 					functor);
@@ -295,21 +295,21 @@ namespace implementation
  *                                * dispatcher
  */
 template <class T>
-inline std::vector<std::pair<twidget*, tevent> >
-build_event_chain(const tevent event, twidget* dispatcher, twidget* widget)
+inline std::vector<std::pair<twidget*, event_t> >
+build_event_chain(const event_t event, twidget* dispatcher, twidget* widget)
 {
 	assert(dispatcher);
 	assert(widget);
 
-	std::vector<std::pair<twidget*, tevent> > result;
+	std::vector<std::pair<twidget*, event_t> > result;
 
 	while(widget != dispatcher) {
 		widget = widget->parent();
 		assert(widget);
 
 		if(widget->has_event(event,
-							 tdispatcher::tevent_type(tdispatcher::pre
-													  | tdispatcher::post))) {
+							 dispatcher::event_queue_type(dispatcher::pre
+													  | dispatcher::post))) {
 
 			result.push_back(std::make_pair(widget, event));
 		}
@@ -319,7 +319,7 @@ build_event_chain(const tevent event, twidget* dispatcher, twidget* widget)
 }
 
 /**
- * Build the event chain for tsignal_notification_function.
+ * Build the event chain for signal_notification_function.
  *
  * The notification is only send to the receiver it returns an empty chain.
  * Since the pre and post queues are unused, it validates whether they are
@@ -328,8 +328,8 @@ build_event_chain(const tevent event, twidget* dispatcher, twidget* widget)
  * @returns                       An empty vector.
  */
 template <>
-inline std::vector<std::pair<twidget*, tevent> >
-build_event_chain<tsignal_notification_function>(const tevent event,
+inline std::vector<std::pair<twidget*, event_t> >
+build_event_chain<signal_notification_function>(const event_t event,
 												 twidget* dispatcher,
 												 twidget* widget)
 {
@@ -337,10 +337,10 @@ build_event_chain<tsignal_notification_function>(const tevent event,
 	assert(widget);
 
 	assert(!widget->has_event(event,
-							  tdispatcher::tevent_type(tdispatcher::pre
-													   | tdispatcher::post)));
+							  dispatcher::event_queue_type(dispatcher::pre
+													   | dispatcher::post)));
 
-	return std::vector<std::pair<twidget*, tevent> >();
+	return std::vector<std::pair<twidget*, event_t> >();
 }
 
 #ifdef _MSC_VER
@@ -348,7 +348,7 @@ build_event_chain<tsignal_notification_function>(const tevent event,
 #pragma warning(disable : 4706)
 #endif
 /**
- * Build the event chain for tsignal_message_function.
+ * Build the event chain for signal_message_function.
  *
  * This function expects that the widget sending it is also the receiver. This
  * assumption might change, but is valid for now. The function doesn't build an
@@ -365,8 +365,8 @@ build_event_chain<tsignal_notification_function>(const tevent event,
  *                                * container 2
  */
 template <>
-inline std::vector<std::pair<twidget*, tevent> >
-build_event_chain<tsignal_message_function>(const tevent event,
+inline std::vector<std::pair<twidget*, event_t> >
+build_event_chain<signal_message_function>(const event_t event,
 											twidget* dispatcher,
 											twidget* widget)
 {
@@ -374,15 +374,15 @@ build_event_chain<tsignal_message_function>(const tevent event,
 	assert(widget);
 	assert(widget == dispatcher);
 
-	std::vector<std::pair<twidget*, tevent> > result;
+	std::vector<std::pair<twidget*, event_t> > result;
 
 	/* We only should add the parents of the widget to the chain. */
 	while((widget = widget->parent())) {
 		assert(widget);
 
 		if(widget->has_event(event,
-							 tdispatcher::tevent_type(tdispatcher::pre
-													  | tdispatcher::post))) {
+							 dispatcher::event_queue_type(dispatcher::pre
+													  | dispatcher::post))) {
 
 			result.insert(result.begin(), std::make_pair(widget, event));
 		}
@@ -401,8 +401,8 @@ build_event_chain<tsignal_message_function>(const tevent event,
  * event_chain, which contains the widgets with the events to call for them.
  */
 template <class T, class F>
-inline bool fire_event(const tevent event,
-					   std::vector<std::pair<twidget*, tevent> >& event_chain,
+inline bool fire_event(const event_t event,
+					   std::vector<std::pair<twidget*, event_t> >& event_chain,
 					   twidget* dispatcher,
 					   twidget* widget,
 					   F functor)
@@ -411,13 +411,13 @@ inline bool fire_event(const tevent event,
 	bool halt = false;
 
 	/***** ***** ***** Pre ***** ***** *****/
-	for(std::vector<std::pair<twidget*, tevent> >::reverse_iterator ritor_widget
+	for(std::vector<std::pair<twidget*, event_t> >::reverse_iterator ritor_widget
 		= event_chain.rbegin();
 		ritor_widget != event_chain.rend();
 		++ritor_widget) {
 
-		tdispatcher::tsignal<T>& signal
-				= tdispatcher_implementation::event_signal<T>(
+		dispatcher::signal_type<T>& signal
+				= dispatcher_implementation::event_signal<T>(
 						*ritor_widget->first, ritor_widget->second);
 
 		for(typename std::vector<T>::iterator itor = signal.pre_child.begin();
@@ -437,10 +437,10 @@ inline bool fire_event(const tevent event,
 	}
 
 	/***** ***** ***** Child ***** ***** *****/
-	if(widget->has_event(event, tdispatcher::child)) {
+	if(widget->has_event(event, dispatcher::child)) {
 
-		tdispatcher::tsignal<T>& signal
-				= tdispatcher_implementation::event_signal<T>(*widget, event);
+		dispatcher::signal_type<T>& signal
+				= dispatcher_implementation::event_signal<T>(*widget, event);
 
 		for(typename std::vector<T>::iterator itor = signal.child.begin();
 			itor != signal.child.end();
@@ -460,13 +460,13 @@ inline bool fire_event(const tevent event,
 	}
 
 	/***** ***** ***** Post ***** ***** *****/
-	for(std::vector<std::pair<twidget*, tevent> >::iterator itor_widget
+	for(std::vector<std::pair<twidget*, event_t> >::iterator itor_widget
 		= event_chain.begin();
 		itor_widget != event_chain.end();
 		++itor_widget) {
 
-		tdispatcher::tsignal<T>& signal
-				= tdispatcher_implementation::event_signal<T>(
+		dispatcher::signal_type<T>& signal
+				= dispatcher_implementation::event_signal<T>(
 						*itor_widget->first, itor_widget->second);
 
 		for(typename std::vector<T>::iterator itor = signal.post_child.begin();
@@ -517,21 +517,21 @@ inline bool fire_event(const tevent event,
  */
 template <class T, class F>
 inline bool
-fire_event(const tevent event, twidget* dispatcher, twidget* widget, F functor)
+fire_event(const event_t event, twidget* dispatcher, twidget* widget, F functor)
 {
 	assert(dispatcher);
 	assert(widget);
 
-	std::vector<std::pair<twidget*, tevent> > event_chain
+	std::vector<std::pair<twidget*, event_t> > event_chain
 			= implementation::build_event_chain<T>(event, dispatcher, widget);
 
 	return implementation::fire_event<T>(
 			event, event_chain, dispatcher, widget, functor);
 }
 
-template <tevent click,
-		  tevent double_click,
-		  bool (tevent_executor::*wants_double_click)() const,
+template <event_t click,
+		  event_t double_click,
+		  bool (event_executor::*wants_double_click)() const,
 		  class T,
 		  class F>
 inline bool
@@ -540,7 +540,7 @@ fire_event_double_click(twidget* dispatcher, twidget* widget, F functor)
 	assert(dispatcher);
 	assert(widget);
 
-	std::vector<std::pair<twidget*, tevent> > event_chain;
+	std::vector<std::pair<twidget*, event_t> > event_chain;
 	twidget* w = widget;
 	while(w != dispatcher) {
 		w = w->parent();
@@ -549,15 +549,15 @@ fire_event_double_click(twidget* dispatcher, twidget* widget, F functor)
 		if((w->*wants_double_click)()) {
 
 			if(w->has_event(double_click,
-							tdispatcher::tevent_type(tdispatcher::pre
-													 | tdispatcher::post))) {
+							dispatcher::event_queue_type(dispatcher::pre
+													 | dispatcher::post))) {
 
 				event_chain.push_back(std::make_pair(w, double_click));
 			}
 		} else {
 			if(w->has_event(click,
-							tdispatcher::tevent_type(tdispatcher::pre
-													 | tdispatcher::post))) {
+							dispatcher::event_queue_type(dispatcher::pre
+													 | dispatcher::post))) {
 
 				event_chain.push_back(std::make_pair(w, click));
 			}

@@ -52,7 +52,7 @@ ttree_view::ttree_view(const std::vector<tnode_definition>& node_definitions)
 {
 	connect_signal<event::LEFT_BUTTON_DOWN>(
 			std::bind(&ttree_view::signal_handler_left_button_down, this, _2),
-			event::tdispatcher::back_pre_child);
+			event::dispatcher::back_pre_child);
 }
 ttree_view::~ttree_view()
 {
@@ -187,7 +187,7 @@ const std::string& ttree_view::get_control_type() const
 	return type;
 }
 
-void ttree_view::signal_handler_left_button_down(const event::tevent event)
+void ttree_view::signal_handler_left_button_down(const event::event_t event)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 

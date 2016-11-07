@@ -33,22 +33,22 @@ static void print(std::stringstream& sstr
 	sstr << queue << ':' << id << '\n';
 }
 
-template<gui2::event::tevent E>
+template<gui2::event::event_t E>
 void connect_queue(
 		  std::stringstream& sstr
 		, gui2::twidget& widget)
 {
 	widget.connect_signal<E>(
 			  std::bind(print, std::ref(sstr), "pre", widget.id())
-			, gui2::event::tdispatcher::back_pre_child);
+			, gui2::event::dispatcher::back_pre_child);
 
 	widget.connect_signal<E>(
 			  std::bind(print, std::ref(sstr), "child", widget.id())
-			, gui2::event::tdispatcher::back_child);
+			, gui2::event::dispatcher::back_child);
 
 	widget.connect_signal<E>(
 			  std::bind(print, std::ref(sstr), "post", widget.id())
-			, gui2::event::tdispatcher::back_post_child);
+			, gui2::event::dispatcher::back_post_child);
 }
 
 static void connect_signals(

@@ -50,7 +50,7 @@ public:
 	 *
 	 * @param signal              The signal to connect.
 	 */
-	virtual void connect_click_handler(const event::tsignal_function& signal)
+	virtual void connect_click_handler(const event::signal_function& signal)
 			= 0;
 
 	/**
@@ -61,7 +61,7 @@ public:
 	 * @param signal              The signal to disconnect (should be the same
 	 *                            as send to the connect call.
 	 */
-	virtual void disconnect_click_handler(const event::tsignal_function& signal)
+	virtual void disconnect_click_handler(const event::signal_function& signal)
 			= 0;
 };
 

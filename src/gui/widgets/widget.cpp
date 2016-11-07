@@ -455,7 +455,7 @@ void twidget::set_visible(const tvisible visible)
 
 	if(need_resize) {
 		if(new_widgets) {
-			event::tmessage message;
+			event::message message;
 			fire(event::REQUEST_PLACEMENT, *this, message);
 		} else {
 			twindow* window = get_window();

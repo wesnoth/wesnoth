@@ -631,7 +631,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 #endif
 
 	gui2::init();
-	const gui2::event::tmanager gui_event_manager;
+	const gui2::event::manager gui_event_manager;
 
 	game_config_manager config_manager(cmdline_opts, game->video(),
 	    game->jump_to_editor());

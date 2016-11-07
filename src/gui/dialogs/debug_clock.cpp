@@ -105,7 +105,7 @@ void tdebug_clock::pre_show(twindow& window)
 
 	signal_ = std::bind(&tdebug_clock::update_time, this, false);
 	window.connect_signal<event::DRAW>(signal_,
-									   event::tdispatcher::front_child);
+									   event::dispatcher::front_child);
 
 	time_.set_current_time();
 	update_time(true);

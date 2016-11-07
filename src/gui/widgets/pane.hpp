@@ -161,7 +161,7 @@ private:
 	unsigned item_id_generator_;
 
 	/** Helper to do the placement. */
-	std::unique_ptr<tplacer_> placer_;
+	std::unique_ptr<placer_base> placer_;
 
 	/** Places the children on the pane. */
 	void place_children();
@@ -191,8 +191,8 @@ private:
 
 	/***** ***** ***** signal handlers ***** ****** *****/
 
-	void signal_handler_request_placement(tdispatcher& dispatcher,
-										  const event::tevent event,
+	void signal_handler_request_placement(dispatcher& dispatcher,
+										  const event::event_t event,
 										  bool& handled);
 };
 
@@ -209,7 +209,7 @@ struct tbuilder_pane : public tbuilder_widget
 
 	twidget* build(const treplacements& replacements) const;
 
-	tplacer_::tgrow_direction grow_direction;
+	placer_base::tgrow_direction grow_direction;
 
 	unsigned parallel_items;
 

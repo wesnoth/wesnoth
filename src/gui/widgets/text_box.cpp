@@ -346,7 +346,7 @@ const std::string& ttext_box::get_control_type() const
 	return type;
 }
 
-void ttext_box::signal_handler_mouse_motion(const event::tevent event,
+void ttext_box::signal_handler_mouse_motion(const event::event_t event,
 											bool& handled,
 											const point& coordinate)
 {
@@ -359,7 +359,7 @@ void ttext_box::signal_handler_mouse_motion(const event::tevent event,
 	handled = true;
 }
 
-void ttext_box::signal_handler_left_button_down(const event::tevent event,
+void ttext_box::signal_handler_left_button_down(const event::event_t event,
 												bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -376,7 +376,7 @@ void ttext_box::signal_handler_left_button_down(const event::tevent event,
 	handled = true;
 }
 
-void ttext_box::signal_handler_left_button_up(const event::tevent event,
+void ttext_box::signal_handler_left_button_up(const event::event_t event,
 											  bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -386,7 +386,7 @@ void ttext_box::signal_handler_left_button_up(const event::tevent event,
 }
 
 void
-ttext_box::signal_handler_left_button_double_click(const event::tevent event,
+ttext_box::signal_handler_left_button_double_click(const event::event_t event,
 												   bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";

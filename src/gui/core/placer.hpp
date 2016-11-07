@@ -49,7 +49,7 @@ struct point;
  * list with two columns the position of the second column depends on the width
  * of the first and a later row may have a wider column 1 as an earlier row.
  */
-class tplacer_
+class placer_base
 {
 public:
 	/***** ***** Types. ***** *****/
@@ -77,10 +77,10 @@ public:
 	 *                            only horizontally or vertically placed items
 	 *                            the value should be 1.
 	 */
-	static tplacer_* build(const tgrow_direction grow_direction,
+	static placer_base* build(const tgrow_direction grow_direction,
 						   const unsigned parallel_items);
 
-	virtual ~tplacer_();
+	virtual ~placer_base();
 
 
 	/***** ***** Operations. ***** *****/

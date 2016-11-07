@@ -56,7 +56,7 @@ ttoggle_panel::ttoggle_panel()
 			std::bind(&ttoggle_panel::signal_handler_pre_left_button_click,
 						this,
 						_2),
-			event::tdispatcher::back_pre_child);
+			event::dispatcher::back_pre_child);
 #endif
 	connect_signal<event::LEFT_BUTTON_CLICK>(std::bind(
 			&ttoggle_panel::signal_handler_left_button_click, this, _2, _3));
@@ -65,7 +65,7 @@ ttoggle_panel::ttoggle_panel()
 						this,
 						_2,
 						_3),
-			event::tdispatcher::back_post_child);
+			event::dispatcher::back_post_child);
 	connect_signal<event::LEFT_BUTTON_DOUBLE_CLICK>(
 			std::bind(&ttoggle_panel::signal_handler_left_button_double_click,
 						this,
@@ -76,7 +76,7 @@ ttoggle_panel::ttoggle_panel()
 						this,
 						_2,
 						_3),
-			event::tdispatcher::back_post_child);
+			event::dispatcher::back_post_child);
 }
 
 unsigned ttoggle_panel::num_states() const
@@ -218,7 +218,7 @@ const std::string& ttoggle_panel::get_control_type() const
 	return type;
 }
 
-void ttoggle_panel::signal_handler_mouse_enter(const event::tevent event,
+void ttoggle_panel::signal_handler_mouse_enter(const event::event_t event,
 											   bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -227,7 +227,7 @@ void ttoggle_panel::signal_handler_mouse_enter(const event::tevent event,
 	handled = true;
 }
 
-void ttoggle_panel::signal_handler_mouse_leave(const event::tevent event,
+void ttoggle_panel::signal_handler_mouse_leave(const event::event_t event,
 											   bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -237,7 +237,7 @@ void ttoggle_panel::signal_handler_mouse_leave(const event::tevent event,
 }
 
 void
-ttoggle_panel::signal_handler_pre_left_button_click(const event::tevent event)
+ttoggle_panel::signal_handler_pre_left_button_click(const event::event_t event)
 {
 	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
 
@@ -267,7 +267,7 @@ ttoggle_panel::signal_handler_pre_left_button_click(const event::tevent event)
 #endif
 }
 
-void ttoggle_panel::signal_handler_left_button_click(const event::tevent event,
+void ttoggle_panel::signal_handler_left_button_click(const event::event_t event,
 													 bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -285,7 +285,7 @@ void ttoggle_panel::signal_handler_left_button_click(const event::tevent event,
 }
 
 void ttoggle_panel::signal_handler_left_button_double_click(
-		const event::tevent event, bool& handled)
+		const event::event_t event, bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 

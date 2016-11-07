@@ -85,16 +85,16 @@ static Uint32 popup_callback(Uint32 /*interval*/, void* /*param*/)
  * To prevent that those functions check the lock and exit when the lock is
  * held otherwise grab the lock here.
  */
-class tlock
+class locker
 {
 public:
-	tlock(bool& locked) : locked_(locked)
+	locker(bool& locked) : locked_(locked)
 	{
 		assert(!locked_);
 		locked_ = true;
 	}
 
-	~tlock()
+	~locker()
 	{
 		assert(locked_);
 		locked_ = false;
@@ -105,12 +105,12 @@ private:
 };
 
 
-/***** ***** ***** ***** tmouse_motion ***** ***** ***** ***** *****/
+/***** ***** ***** ***** mouse_motion ***** ***** ***** ***** *****/
 
 #define LOG_HEADER "distributor mouse motion [" << owner_.id() << "]: "
 
-tmouse_motion::tmouse_motion(twidget& owner,
-							 const tdispatcher::tposition queue_position)
+mouse_motion::mouse_motion(twidget& owner,
+							 const dispatcher::queue_position queue_position)
 	: mouse_focus_(nullptr)
 	, mouse_captured_(false)
 	, owner_(owner)
@@ -121,7 +121,7 @@ tmouse_motion::tmouse_motion(twidget& owner,
 	, signal_handler_sdl_mouse_motion_entered_(false)
 {
 	owner.connect_signal<event::SDL_MOUSE_MOTION>(
-			std::bind(&tmouse_motion::signal_handler_sdl_mouse_motion,
+			std::bind(&mouse_motion::signal_handler_sdl_mouse_motion,
 						this,
 						_2,
 						_3,
@@ -129,16 +129,16 @@ tmouse_motion::tmouse_motion(twidget& owner,
 			queue_position);
 
 	owner_.connect_signal<event::SDL_WHEEL_UP>(std::bind(
-			&tmouse_motion::signal_handler_sdl_wheel, this, _2, _3, _5));
+			&mouse_motion::signal_handler_sdl_wheel, this, _2, _3, _5));
 	owner_.connect_signal<event::SDL_WHEEL_DOWN>(std::bind(
-			&tmouse_motion::signal_handler_sdl_wheel, this, _2, _3, _5));
+			&mouse_motion::signal_handler_sdl_wheel, this, _2, _3, _5));
 	owner_.connect_signal<event::SDL_WHEEL_LEFT>(std::bind(
-			&tmouse_motion::signal_handler_sdl_wheel, this, _2, _3, _5));
+			&mouse_motion::signal_handler_sdl_wheel, this, _2, _3, _5));
 	owner_.connect_signal<event::SDL_WHEEL_RIGHT>(std::bind(
-			&tmouse_motion::signal_handler_sdl_wheel, this, _2, _3, _5));
+			&mouse_motion::signal_handler_sdl_wheel, this, _2, _3, _5));
 
 	owner.connect_signal<event::SHOW_HELPTIP>(
-			std::bind(&tmouse_motion::signal_handler_show_helptip,
+			std::bind(&mouse_motion::signal_handler_show_helptip,
 						this,
 						_2,
 						_3,
@@ -146,32 +146,32 @@ tmouse_motion::tmouse_motion(twidget& owner,
 			queue_position);
 }
 
-tmouse_motion::~tmouse_motion()
+mouse_motion::~mouse_motion()
 {
 	stop_hover_timer();
 }
 
-void tmouse_motion::capture_mouse(const bool capture)
+void mouse_motion::capture_mouse(const bool capture)
 {
 	assert(mouse_focus_);
 	mouse_captured_ = capture;
 }
 
-void tmouse_motion::signal_handler_sdl_mouse_motion(const event::tevent event,
+void mouse_motion::signal_handler_sdl_mouse_motion(const event::event_t event,
 													bool& handled,
 													const point& coordinate)
 {
 	if(signal_handler_sdl_mouse_motion_entered_) {
 		return;
 	}
-	tlock lock(signal_handler_sdl_mouse_motion_entered_);
+	locker lock(signal_handler_sdl_mouse_motion_entered_);
 
 	DBG_GUI_E << LOG_HEADER << event << ".\n";
 
 	if(mouse_captured_) {
 		assert(mouse_focus_);
 		if(!owner_.fire(event, *mouse_focus_, coordinate)) {
-			mouse_motion(mouse_focus_, coordinate);
+			mouse_hover(mouse_focus_, coordinate);
 		}
 	} else {
 		twidget* mouse_over = owner_.find_at(coordinate, true);
@@ -190,7 +190,7 @@ void tmouse_motion::signal_handler_sdl_mouse_motion(const event::tevent event,
 		} else if(mouse_focus_ && !mouse_over) {
 			mouse_leave();
 		} else if(mouse_focus_ && mouse_focus_ == mouse_over) {
-			mouse_motion(mouse_over, coordinate);
+			mouse_hover(mouse_over, coordinate);
 		} else if(mouse_focus_ && mouse_over) {
 			// moved from one widget to the next
 			mouse_leave();
@@ -202,7 +202,7 @@ void tmouse_motion::signal_handler_sdl_mouse_motion(const event::tevent event,
 	handled = true;
 }
 
-void tmouse_motion::signal_handler_sdl_wheel(const event::tevent event,
+void mouse_motion::signal_handler_sdl_wheel(const event::event_t event,
 											 bool& handled,
 											 const point& coordinate)
 {
@@ -220,7 +220,7 @@ void tmouse_motion::signal_handler_sdl_wheel(const event::tevent event,
 	handled = true;
 }
 
-void tmouse_motion::signal_handler_show_helptip(const event::tevent event,
+void mouse_motion::signal_handler_show_helptip(const event::event_t event,
 												bool& handled,
 												const point& coordinate)
 {
@@ -244,7 +244,7 @@ void tmouse_motion::signal_handler_show_helptip(const event::tevent event,
 	handled = true;
 }
 
-void tmouse_motion::mouse_enter(twidget* mouse_over)
+void mouse_motion::mouse_enter(twidget* mouse_over)
 {
 	DBG_GUI_E << LOG_HEADER << "Firing: " << event::MOUSE_ENTER << ".\n";
 
@@ -257,7 +257,7 @@ void tmouse_motion::mouse_enter(twidget* mouse_over)
 	start_hover_timer(mouse_over, get_mouse_position());
 }
 
-void tmouse_motion::mouse_motion(twidget* mouse_over, const point& coordinate)
+void mouse_motion::mouse_hover(twidget* mouse_over, const point& coordinate)
 {
 	DBG_GUI_E << LOG_HEADER << "Firing: " << event::MOUSE_MOTION << ".\n";
 
@@ -275,12 +275,12 @@ void tmouse_motion::mouse_motion(twidget* mouse_over, const point& coordinate)
 	}
 }
 
-void tmouse_motion::show_tooltip()
+void mouse_motion::show_tooltip()
 {
 	DBG_GUI_E << LOG_HEADER << "Firing: " << event::SHOW_TOOLTIP << ".\n";
 
 	if(!hover_widget_) {
-		// See tmouse_motion::stop_hover_timer.
+		// See mouse_motion::stop_hover_timer.
 		ERR_GUI_E << LOG_HEADER << event::SHOW_TOOLTIP
 				  << " bailing out, no hover widget.\n";
 		return;
@@ -300,7 +300,7 @@ void tmouse_motion::show_tooltip()
 	hover_position_ = point();
 }
 
-void tmouse_motion::mouse_leave()
+void mouse_motion::mouse_leave()
 {
 	DBG_GUI_E << LOG_HEADER << "Firing: " << event::MOUSE_LEAVE << ".\n";
 
@@ -316,7 +316,7 @@ void tmouse_motion::mouse_leave()
 	stop_hover_timer();
 }
 
-void tmouse_motion::start_hover_timer(twidget* widget, const point& coordinate)
+void mouse_motion::start_hover_timer(twidget* widget, const point& coordinate)
 {
 	assert(widget);
 	stop_hover_timer();
@@ -329,7 +329,7 @@ void tmouse_motion::start_hover_timer(twidget* widget, const point& coordinate)
 			  << "' at address " << widget << ".\n";
 
 	hover_timer_
-			= add_timer(50, std::bind(&tmouse_motion::show_tooltip, this));
+			= add_timer(50, std::bind(&mouse_motion::show_tooltip, this));
 
 	if(hover_timer_) {
 		hover_widget_ = widget;
@@ -339,7 +339,7 @@ void tmouse_motion::start_hover_timer(twidget* widget, const point& coordinate)
 	}
 }
 
-void tmouse_motion::stop_hover_timer()
+void mouse_motion::stop_hover_timer()
 {
 	if(hover_timer_) {
 		assert(hover_widget_);
@@ -358,28 +358,28 @@ void tmouse_motion::stop_hover_timer()
 	}
 }
 
-/***** ***** ***** ***** tmouse_button ***** ***** ***** ***** *****/
+/***** ***** ***** ***** mouse_button ***** ***** ***** ***** *****/
 
 #undef LOG_HEADER
 #define LOG_HEADER                                                             \
 	"distributor mouse button " << name_ << " [" << owner_.id() << "]: "
 
-template <tevent sdl_button_down,
-		  tevent sdl_button_up,
-		  tevent button_down,
-		  tevent button_up,
-		  tevent button_click,
-		  tevent button_double_click>
-tmouse_button<sdl_button_down,
+template <event_t sdl_button_down,
+		  event_t sdl_button_up,
+		  event_t button_down,
+		  event_t button_up,
+		  event_t button_click,
+		  event_t button_double_click>
+mouse_button<sdl_button_down,
 			  sdl_button_up,
 			  button_down,
 			  button_up,
 			  button_click,
-			  button_double_click>::tmouse_button(const std::string& name_,
+			  button_double_click>::mouse_button(const std::string& name_,
 												  twidget& owner,
-												  const tdispatcher::tposition
+												  const dispatcher::queue_position
 														  queue_position)
-	: tmouse_motion(owner, queue_position)
+	: mouse_motion(owner, queue_position)
 	, last_click_stamp_(0)
 	, last_clicked_widget_(nullptr)
 	, focus_(0)
@@ -389,7 +389,7 @@ tmouse_button<sdl_button_down,
 	, signal_handler_sdl_button_up_entered_(false)
 {
 	owner_.connect_signal<sdl_button_down>(
-			std::bind(&tmouse_button<sdl_button_down,
+			std::bind(&mouse_button<sdl_button_down,
 									   sdl_button_up,
 									   button_down,
 									   button_up,
@@ -402,7 +402,7 @@ tmouse_button<sdl_button_down,
 						_5),
 			queue_position);
 	owner_.connect_signal<sdl_button_up>(
-			std::bind(&tmouse_button<sdl_button_down,
+			std::bind(&mouse_button<sdl_button_down,
 									   sdl_button_up,
 									   button_down,
 									   button_up,
@@ -416,13 +416,13 @@ tmouse_button<sdl_button_down,
 			queue_position);
 }
 
-template <tevent sdl_button_down,
-		  tevent sdl_button_up,
-		  tevent button_down,
-		  tevent button_up,
-		  tevent button_click,
-		  tevent button_double_click>
-void tmouse_button<sdl_button_down,
+template <event_t sdl_button_down,
+		  event_t sdl_button_up,
+		  event_t button_down,
+		  event_t button_up,
+		  event_t button_click,
+		  event_t button_double_click>
+void mouse_button<sdl_button_down,
 				   sdl_button_up,
 				   button_down,
 				   button_up,
@@ -435,26 +435,26 @@ void tmouse_button<sdl_button_down,
 	is_down_ = is_down;
 }
 
-template <tevent sdl_button_down,
-		  tevent sdl_button_up,
-		  tevent button_down,
-		  tevent button_up,
-		  tevent button_click,
-		  tevent button_double_click>
-void tmouse_button<sdl_button_down,
+template <event_t sdl_button_down,
+		  event_t sdl_button_up,
+		  event_t button_down,
+		  event_t button_up,
+		  event_t button_click,
+		  event_t button_double_click>
+void mouse_button<sdl_button_down,
 				   sdl_button_up,
 				   button_down,
 				   button_up,
 				   button_click,
 				   button_double_click>::
-		signal_handler_sdl_button_down(const event::tevent event,
+		signal_handler_sdl_button_down(const event::event_t event,
 									   bool& handled,
 									   const point& coordinate)
 {
 	if(signal_handler_sdl_button_down_entered_) {
 		return;
 	}
-	tlock lock(signal_handler_sdl_button_down_entered_);
+	locker lock(signal_handler_sdl_button_down_entered_);
 
 	DBG_GUI_E << LOG_HEADER << event << ".\n";
 
@@ -500,26 +500,26 @@ void tmouse_button<sdl_button_down,
 	handled = true;
 }
 
-template <tevent sdl_button_down,
-		  tevent sdl_button_up,
-		  tevent button_down,
-		  tevent button_up,
-		  tevent button_click,
-		  tevent button_double_click>
-void tmouse_button<sdl_button_down,
+template <event_t sdl_button_down,
+		  event_t sdl_button_up,
+		  event_t button_down,
+		  event_t button_up,
+		  event_t button_click,
+		  event_t button_double_click>
+void mouse_button<sdl_button_down,
 				   sdl_button_up,
 				   button_down,
 				   button_up,
 				   button_click,
 				   button_double_click>::
-		signal_handler_sdl_button_up(const event::tevent event,
+		signal_handler_sdl_button_up(const event::event_t event,
 									 bool& handled,
 									 const point& coordinate)
 {
 	if(signal_handler_sdl_button_up_entered_) {
 		return;
 	}
-	tlock lock(signal_handler_sdl_button_up_entered_);
+	locker lock(signal_handler_sdl_button_up_entered_);
 
 	DBG_GUI_E << LOG_HEADER << event << ".\n";
 
@@ -564,13 +564,13 @@ void tmouse_button<sdl_button_down,
 	handled = true;
 }
 
-template <tevent sdl_button_down,
-		  tevent sdl_button_up,
-		  tevent button_down,
-		  tevent button_up,
-		  tevent button_click,
-		  tevent button_double_click>
-void tmouse_button<sdl_button_down,
+template <event_t sdl_button_down,
+		  event_t sdl_button_up,
+		  event_t button_down,
+		  event_t button_up,
+		  event_t button_click,
+		  event_t button_double_click>
+void mouse_button<sdl_button_down,
 				   sdl_button_up,
 				   button_down,
 				   button_up,
@@ -596,7 +596,7 @@ void tmouse_button<sdl_button_down,
 	}
 }
 
-/***** ***** ***** ***** tdistributor ***** ***** ***** ***** *****/
+/***** ***** ***** ***** distributor ***** ***** ***** ***** *****/
 
 #undef LOG_HEADER
 #define LOG_HEADER "distributor mouse motion [" << owner_.id() << "]: "
@@ -605,12 +605,12 @@ void tmouse_button<sdl_button_down,
  * @todo Test whether the state is properly tracked when an input blocker is
  * used.
  */
-tdistributor::tdistributor(twidget& owner,
-						   const tdispatcher::tposition queue_position)
-	: tmouse_motion(owner, queue_position)
-	, tmouse_button_left("left", owner, queue_position)
-	, tmouse_button_middle("middle", owner, queue_position)
-	, tmouse_button_right("right", owner, queue_position)
+distributor::distributor(twidget& owner,
+						   const dispatcher::queue_position queue_position)
+	: mouse_motion(owner, queue_position)
+	, mouse_button_left("left", owner, queue_position)
+	, mouse_button_middle("middle", owner, queue_position)
+	, mouse_button_right("right", owner, queue_position)
 #if 0
 	, hover_pending_(false)
 	, hover_id_(0)
@@ -629,35 +629,35 @@ tdistributor::tdistributor(twidget& owner,
 	}
 
 	owner_.connect_signal<event::SDL_KEY_DOWN>(std::bind(
-			&tdistributor::signal_handler_sdl_key_down, this, _5, _6, _7));
+			&distributor::signal_handler_sdl_key_down, this, _5, _6, _7));
 
 	owner_.connect_signal<event::NOTIFY_REMOVAL>(std::bind(
-			&tdistributor::signal_handler_notify_removal, this, _1, _2));
+			&distributor::signal_handler_notify_removal, this, _1, _2));
 
 	initialize_state();
 }
 
-tdistributor::~tdistributor()
+distributor::~distributor()
 {
 	owner_.disconnect_signal<event::SDL_KEY_DOWN>(std::bind(
-			&tdistributor::signal_handler_sdl_key_down, this, _5, _6, _7));
+			&distributor::signal_handler_sdl_key_down, this, _5, _6, _7));
 
 	owner_.disconnect_signal<event::NOTIFY_REMOVAL>(std::bind(
-			&tdistributor::signal_handler_notify_removal, this, _1, _2));
+			&distributor::signal_handler_notify_removal, this, _1, _2));
 }
 
-void tdistributor::initialize_state()
+void distributor::initialize_state()
 {
 	const Uint8 button_state = SDL_GetMouseState(nullptr, nullptr);
 
-	tmouse_button_left::initialize_state((button_state & SDL_BUTTON(1)) != 0);
-	tmouse_button_middle::initialize_state((button_state & SDL_BUTTON(2)) != 0);
-	tmouse_button_right::initialize_state((button_state & SDL_BUTTON(3)) != 0);
+	mouse_button_left::initialize_state((button_state & SDL_BUTTON(1)) != 0);
+	mouse_button_middle::initialize_state((button_state & SDL_BUTTON(2)) != 0);
+	mouse_button_right::initialize_state((button_state & SDL_BUTTON(3)) != 0);
 
 	init_mouse_location();
 }
 
-void tdistributor::keyboard_capture(twidget* widget)
+void distributor::keyboard_capture(twidget* widget)
 {
 	if(keyboard_focus_) {
 		DBG_GUI_E << LOG_HEADER << "Firing: " << event::LOSE_KEYBOARD_FOCUS
@@ -676,7 +676,7 @@ void tdistributor::keyboard_capture(twidget* widget)
 	}
 }
 
-void tdistributor::keyboard_add_to_chain(twidget* widget)
+void distributor::keyboard_add_to_chain(twidget* widget)
 {
 	assert(widget);
 	assert(std::find(keyboard_focus_chain_.begin(),
@@ -686,7 +686,7 @@ void tdistributor::keyboard_add_to_chain(twidget* widget)
 	keyboard_focus_chain_.push_back(widget);
 }
 
-void tdistributor::keyboard_remove_from_chain(twidget* widget)
+void distributor::keyboard_remove_from_chain(twidget* widget)
 {
 	assert(widget);
 	std::vector<twidget*>::iterator itor = std::find(
@@ -697,7 +697,7 @@ void tdistributor::keyboard_remove_from_chain(twidget* widget)
 	}
 }
 
-void tdistributor::signal_handler_sdl_key_down(const SDL_Keycode key,
+void distributor::signal_handler_sdl_key_down(const SDL_Keycode key,
 											   const SDL_Keymod modifier,
 											   const utf8::string& unicode)
 {
@@ -762,8 +762,8 @@ void tdistributor::signal_handler_sdl_key_down(const SDL_Keycode key,
 	}
 }
 
-void tdistributor::signal_handler_notify_removal(tdispatcher& widget,
-												 const tevent event)
+void distributor::signal_handler_notify_removal(dispatcher& widget,
+												 const event_t event)
 {
 	DBG_GUI_E << LOG_HEADER << event << ".\n";
 
@@ -778,25 +778,25 @@ void tdistributor::signal_handler_notify_removal(tdispatcher& widget,
 		stop_hover_timer();
 	}
 
-	if(tmouse_button_left::last_clicked_widget_ == &widget) {
-		tmouse_button_left::last_clicked_widget_ = nullptr;
+	if(mouse_button_left::last_clicked_widget_ == &widget) {
+		mouse_button_left::last_clicked_widget_ = nullptr;
 	}
-	if(tmouse_button_left::focus_ == &widget) {
-		tmouse_button_left::focus_ = nullptr;
-	}
-
-	if(tmouse_button_middle::last_clicked_widget_ == &widget) {
-		tmouse_button_middle::last_clicked_widget_ = nullptr;
-	}
-	if(tmouse_button_middle::focus_ == &widget) {
-		tmouse_button_middle::focus_ = nullptr;
+	if(mouse_button_left::focus_ == &widget) {
+		mouse_button_left::focus_ = nullptr;
 	}
 
-	if(tmouse_button_right::last_clicked_widget_ == &widget) {
-		tmouse_button_right::last_clicked_widget_ = nullptr;
+	if(mouse_button_middle::last_clicked_widget_ == &widget) {
+		mouse_button_middle::last_clicked_widget_ = nullptr;
 	}
-	if(tmouse_button_right::focus_ == &widget) {
-		tmouse_button_right::focus_ = nullptr;
+	if(mouse_button_middle::focus_ == &widget) {
+		mouse_button_middle::focus_ = nullptr;
+	}
+
+	if(mouse_button_right::last_clicked_widget_ == &widget) {
+		mouse_button_right::last_clicked_widget_ = nullptr;
+	}
+	if(mouse_button_right::focus_ == &widget) {
+		mouse_button_right::focus_ = nullptr;
 	}
 
 	if(mouse_focus_ == &widget) {

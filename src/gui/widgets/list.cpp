@@ -57,7 +57,7 @@ tlist::tlist(const bool has_minimum,
 
 	connect_signal<event::LEFT_BUTTON_DOWN>(
 			std::bind(&tlist::signal_handler_left_button_down, this, _2),
-			event::tdispatcher::back_pre_child);
+			event::dispatcher::back_pre_child);
 
 	connect_signal<event::SDL_KEY_DOWN>(std::bind(
 			&tlist::signal_handler_sdl_key_down, this, _2, _3, _5, _6));
@@ -65,7 +65,7 @@ tlist::tlist(const bool has_minimum,
 	connect_signal<event::SDL_KEY_DOWN>(
 			std::bind(
 					&tlist::signal_handler_sdl_key_down, this, _2, _3, _5, _6),
-			event::tdispatcher::back_pre_child);
+			event::dispatcher::back_pre_child);
 }
 
 void tlist::add_row(const string_map& item, const int index)
@@ -96,7 +96,7 @@ tlist::add_row(const std::map<std::string /* widget id */, string_map>& data,
 								 _2,
 								 _3,
 								 _4),
-						 event::tdispatcher::back_pre_child);
+						 event::dispatcher::back_pre_child);
 
 		// Post widget for panel.
 		dynamic_cast<twidget&>(*selectable)
@@ -105,7 +105,7 @@ tlist::add_row(const std::map<std::string /* widget id */, string_map>& data,
 									 this,
 									 &grid,
 									 _2),
-						 event::tdispatcher::back_post_child);
+						 event::dispatcher::back_post_child);
 
 		// Post widget for button and widgets on the panel.
 		dynamic_cast<twidget&>(*selectable)
@@ -114,7 +114,7 @@ tlist::add_row(const std::map<std::string /* widget id */, string_map>& data,
 									 this,
 									 &grid,
 									 _2),
-						 event::tdispatcher::back_child);
+						 event::dispatcher::back_child);
 	}
 }
 
@@ -385,7 +385,7 @@ const std::string& tlist::get_control_type() const
 	return type;
 }
 
-void tlist::signal_handler_left_button_down(const event::tevent event)
+void tlist::signal_handler_left_button_down(const event::event_t event)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
@@ -394,7 +394,7 @@ void tlist::signal_handler_left_button_down(const event::tevent event)
 }
 
 void tlist::signal_handler_pre_child_left_button_click(
-		tgrid* grid, const event::tevent event, bool& handled, bool& halt)
+		tgrid* grid, const event::event_t event, bool& handled, bool& halt)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
@@ -427,7 +427,7 @@ void tlist::signal_handler_pre_child_left_button_click(
 }
 
 void tlist::signal_handler_left_button_click(tgrid* grid,
-											 const event::tevent event)
+											 const event::event_t event)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 	assert(grid);
@@ -442,7 +442,7 @@ void tlist::signal_handler_left_button_click(tgrid* grid,
 	}
 }
 
-void tlist::signal_handler_sdl_key_down(const event::tevent event,
+void tlist::signal_handler_sdl_key_down(const event::event_t event,
 										bool& handled,
 										const SDL_Keycode key,
 										SDL_Keymod modifier)

@@ -94,8 +94,8 @@ create_image_blend(const surface& src, const std::string& root)
 			, std::bind(&create_image_blend_functor, _1, root, _2, _3));
 }
 
-typedef void (*tfunctor) (const surface&, const std::string&);
-typedef std::pair<std::string, tfunctor> tcreator;
+typedef void (*functor_t) (const surface&, const std::string&);
+typedef std::pair<std::string, functor_t> tcreator;
 
 static const tcreator creators[] =
 {

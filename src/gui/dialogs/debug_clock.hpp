@@ -75,7 +75,7 @@ private:
 	twindow* window_;
 
 	/** The signal patched in the drawing routine. */
-	event::tsignal_function signal_;
+	event::signal_function signal_;
 
 	/** Helper struct to keep track of the time. */
 	struct ttime

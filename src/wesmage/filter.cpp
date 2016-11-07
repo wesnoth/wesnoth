@@ -37,12 +37,12 @@ struct tfilter
 				  surface& surf
 				, const std::string& parameters
 			)>
-			tfunctor;
+			functor_t;
 
 	tfilter(
 			  const std::string& name__
 			, const std::string& description__
-			, const tfunctor& functor__)
+			, const functor_t& functor__)
 		: name(name__)
 		, description(description__)
 		, functor(functor__)
@@ -64,7 +64,7 @@ struct tfilter
 	tfilter_description description;
 
 	/** The functor to call for the filter. */
-	tfunctor functor;
+	functor_t functor;
 };
 
 /**
