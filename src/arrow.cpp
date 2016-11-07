@@ -252,7 +252,7 @@ void arrow::update_symbols()
 				exit = exit + "_ending";
 			}
 
-			assert(abs(enter_dir - exit_dir) > 1); //impossible turn?
+			assert(std::abs(enter_dir - exit_dir) > 1); //impossible turn?
 			if (enter_dir < exit_dir)
 			{
 				prefix = enter;

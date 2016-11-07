@@ -235,7 +235,7 @@ pathfind::plain_route formula_ai::shortest_path_calculator(const map_location &s
                 }
 
                 static const size_t NDIRECTIONS = map_location::NDIRECTIONS;
-                unsigned int difference = abs(int(preferred - n));
+                unsigned int difference = std::abs(int(preferred - n));
                 if(difference > NDIRECTIONS/2) {
                         difference = NDIRECTIONS - difference;
                 }

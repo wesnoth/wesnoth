@@ -1119,7 +1119,7 @@ double readonly_context_impl::power_projection(const map_location& loc, const mo
 			} else if(un.alignment() == unit_type::ALIGNMENT::CHAOTIC) {
 				tod_modifier = -lawful_bonus;
 			} else if(un.alignment() == unit_type::ALIGNMENT::LIMINAL) {
-				tod_modifier = -(abs(lawful_bonus));
+				tod_modifier = -(std::abs(lawful_bonus));
 			}
 
 			// The 0.5 power avoids underestimating too much the damage of a wounded unit.

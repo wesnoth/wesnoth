@@ -207,7 +207,7 @@ void movetype::terrain_info::data::merge(const config & new_values, bool overwri
 			// provided value, capped between minimum and maximum, then
 			// given the sign of the old value.
 			// (Think defenses for why we might have negative values.)
-			int value = abs(old) + a.second.to_int(0);
+			int value = std::abs(old) + a.second.to_int(0);
 			value = std::max(params_.min_value, std::min(value, params_.max_value));
 			if ( old < 0 )
 				value = -value;

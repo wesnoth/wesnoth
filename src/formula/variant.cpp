@@ -948,7 +948,7 @@ variant variant::build_range(const variant& v) const {
 	v.must_be(TYPE_INT);
 
 	int lhs = as_int(), rhs = v.as_int();
-	int len = abs(rhs - lhs) + 1;
+	int len = std::abs(rhs - lhs) + 1;
 
 	std::vector< variant > res;
 	res.reserve(len);
@@ -1004,7 +1004,7 @@ void variant::serialize_to_string(std::string& str) const
 
 		s << integer << ".";
 
-		fractional = abs(fractional);
+		fractional = std::abs(fractional);
 
 		if( fractional < 100) {
 			if( fractional < 10)
@@ -1102,7 +1102,7 @@ std::string variant::string_cast() const
 
 		s << integer << ".";
 
-		fractional = abs(fractional);
+		fractional = std::abs(fractional);
 
 		if( fractional < 100) {
 			if( fractional < 10)
@@ -1175,7 +1175,7 @@ std::string variant::to_debug_string(std::vector<const game_logic::formula_calla
 			s << '-';
 		s << integer << ".";
 
-		fractional = abs(fractional);
+		fractional = std::abs(fractional);
 
 		if( fractional < 100) {
 			if( fractional < 10)

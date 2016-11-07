@@ -317,8 +317,8 @@ height_map default_map_generator_job::generate_height_map(size_t width, size_t h
 
 		// We have to check whether this is actually a valley
 		if(island_size != 0) {
-			const size_t diffx = abs(x1 - int(center_x));
-			const size_t diffy = abs(y1 - int(center_y));
+			const size_t diffx = std::abs(x1 - int(center_x));
+			const size_t diffy = std::abs(y1 - int(center_y));
 			const size_t dist = size_t(std::sqrt(double(diffx*diffx + diffy*diffy)));
 			is_valley = dist > island_size;
 		}

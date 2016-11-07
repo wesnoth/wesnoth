@@ -344,7 +344,7 @@ private:
 					if ( diff > enemy_tollerancy) {
 						valid = false;
 						break;
-					} else if( abs(diff) < enemy_border_tollerancy )
+					} else if( std::abs(diff) < enemy_border_tollerancy )
 						enemy_border = true;
 				}
 

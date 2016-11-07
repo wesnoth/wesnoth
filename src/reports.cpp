@@ -1127,7 +1127,7 @@ static config time_of_day_at(reports::context & rc, const map_location& mouseove
 		<< _("Chaotic units: ") << "<span foreground=\"" << chaotic_color << "\">"
 		<< utils::signed_percent(-b) << "</span>\n"
 		<< _("Liminal units: ") << "<span foreground=\"" << liminal_color << "\">"
-		<< utils::signed_percent(-(abs(b))) << "</span>\n";
+		<< utils::signed_percent(-(std::abs(b))) << "</span>\n";
 
 	std::string tod_image = tod.image;
 	if (tod.bonus_modified > 0) tod_image += "~BRIGHTEN()";
@@ -1176,7 +1176,7 @@ static config unit_box_at(reports::context & rc, const map_location& mouseover_h
 		<< _("Chaotic units: ") << "<span foreground=\"" << chaotic_color << "\">"
 		<< utils::signed_percent(-bonus) << "</span>\n"
 		<< _("Liminal units: ") << "<span foreground=\"" << liminal_color << "\">"
-		<< utils::signed_percent(-(abs(bonus))) << "</span>\n";
+		<< utils::signed_percent(-(std::abs(bonus))) << "</span>\n";
 
 	std::string local_tod_image  = "themes/classic/" + local_tod.image;
 	std::string global_tod_image = "themes/classic/" + global_tod.image;

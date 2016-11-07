@@ -427,11 +427,11 @@ map_location mouse_handler::current_unit_attacks_from(const map_location& loc) c
 		if (current_paths_.destinations.contains(adj[n]))
 		{
 			static const size_t NDIRECTIONS = map_location::NDIRECTIONS;
-			unsigned int difference = abs(int(preferred - n));
+			unsigned int difference = std::abs(int(preferred - n));
 			if(difference > NDIRECTIONS/2) {
 				difference = NDIRECTIONS - difference;
 			}
-			unsigned int second_difference = abs(int(second_preferred - n));
+			unsigned int second_difference = std::abs(int(second_preferred - n));
 			if(second_difference > NDIRECTIONS/2) {
 				second_difference = NDIRECTIONS - second_difference;
 			}

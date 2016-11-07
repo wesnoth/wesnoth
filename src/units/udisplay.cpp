@@ -605,7 +605,7 @@ void unit_attack(display * disp, game_board & board,
 	unit_ability_list helpers = defender.get_abilities("resistance");
 
 	std::string text   = number_and_text(damage, hit_text);
-	std::string text_2 = number_and_text(abs(drain_amount), att_text);
+	std::string text_2 = number_and_text(std::abs(drain_amount), att_text);
 
 	unit_animation::hit_type hit_type;
 	if(damage >= defender.hitpoints()) {

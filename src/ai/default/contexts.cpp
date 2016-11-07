@@ -262,8 +262,8 @@ std::vector<target> default_ai_context_impl::find_targets(const move_map& enemy_
 				continue;
 			}
 
-			const double distance = abs(j->loc.x - i->loc.x) +
-						abs(j->loc.y - i->loc.y);
+			const double distance = std::abs(j->loc.x - i->loc.x) +
+						std::abs(j->loc.y - i->loc.y);
 			new_values.back() += j->value/(distance*distance);
 		}
 	}

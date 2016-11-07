@@ -266,8 +266,8 @@ void tmouse_motion::mouse_motion(twidget* mouse_over, const tpoint& coordinate)
 	owner_.fire(event::MOUSE_MOTION, *mouse_over, coordinate);
 
 	if(hover_timer_) {
-		if((abs(hover_position_.x - coordinate.x) > 5)
-		   || (abs(hover_position_.y - coordinate.y) > 5)) {
+		if((std::abs(hover_position_.x - coordinate.x) > 5)
+		   || (std::abs(hover_position_.y - coordinate.y) > 5)) {
 
 			stop_hover_timer();
 			start_hover_timer(mouse_over, coordinate);

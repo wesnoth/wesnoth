@@ -521,8 +521,8 @@ void pump()
 					static const int DoubleClickTime = 500;
 					static const int DoubleClickMaxMove = 3;
 					if(last_mouse_down >= 0 && info.ticks() - last_mouse_down < DoubleClickTime &&
-					   abs(event.button.x - last_click_x) < DoubleClickMaxMove &&
-					   abs(event.button.y - last_click_y) < DoubleClickMaxMove) {
+					   std::abs(event.button.x - last_click_x) < DoubleClickMaxMove &&
+					   std::abs(event.button.y - last_click_y) < DoubleClickMaxMove) {
 						SDL_UserEvent user_event;
 						user_event.type = DOUBLE_CLICK_EVENT;
 						user_event.code = 0;

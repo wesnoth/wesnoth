@@ -145,10 +145,10 @@ BOOST_AUTO_TEST_CASE(test_formula_function_concatenate)
 
 BOOST_AUTO_TEST_CASE(test_formula_function_math)
 {
-	BOOST_CHECK_EQUAL(formula("abs(5)").evaluate().as_int(), 5);
-	BOOST_CHECK_EQUAL(formula("abs(-5)").evaluate().as_int(), 5);
-	BOOST_CHECK_EQUAL(formula("abs(5.0)").evaluate().as_int(), 5);
-	BOOST_CHECK_EQUAL(formula("abs(-5.0)").evaluate().as_int(), 5);
+	BOOST_CHECK_EQUAL(formula("std::abs(5)").evaluate().as_int(), 5);
+	BOOST_CHECK_EQUAL(formula("std::abs(-5)").evaluate().as_int(), 5);
+	BOOST_CHECK_EQUAL(formula("std::abs(5.0)").evaluate().as_int(), 5);
+	BOOST_CHECK_EQUAL(formula("std::abs(-5.0)").evaluate().as_int(), 5);
 	
 	BOOST_CHECK_EQUAL(formula("min(3,5)").evaluate().as_int(), 3);
 	BOOST_CHECK_EQUAL(formula("min(5,2)").evaluate().as_int(), 2);

@@ -451,7 +451,7 @@ void display::fill_images_list(const std::string& prefix, std::vector<std::strin
 const std::string& display::get_variant(const std::vector<std::string>& variants, const map_location &loc) const
 {
 	//TODO use better noise function
-	return variants[abs(loc.x + loc.y) % variants.size()];
+	return variants[std::abs(loc.x + loc.y) % variants.size()];
 }
 
 void display::rebuild_all()
@@ -1963,14 +1963,14 @@ bool display::scroll(int xmove, int ymove, bool force)
 		SDL_Rect r = map_area();
 		if(dy < 0)
 			r.y = r.y + r.h + dy;
-		r.h = abs(dy);
+		r.h = std::abs(dy);
 		invalidate_locations_in_rect(r);
 	}
 	if (dx != 0) {
 		SDL_Rect r = map_area();
 		if (dx < 0)
 			r.x = r.x + r.w + dx;
-		r.w = abs(dx);
+		r.w = std::abs(dx);
 		invalidate_locations_in_rect(r);
 	}
 	scroll_event_.notify_observers();
