@@ -1348,6 +1348,7 @@ if(ENABLE_TESTS)
 		tests/test_lexical_cast.cpp
 		tests/test_map_location.cpp
 		tests/test_make_enum.cpp
+		tests/test_recall_list.cpp
 		tests/test_rng.cpp
 		tests/test_mp_connect.cpp
 		tests/test_sdl_utils.cpp
