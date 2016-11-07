@@ -387,7 +387,6 @@ set(wesnoth-sdl_SRC
 	sdl/rect.cpp
 	sdl/window.cpp
 	sdl/utils.cpp
-	sdl/shader.cpp
 	xBRZ/xbrz.cpp
 )
 
