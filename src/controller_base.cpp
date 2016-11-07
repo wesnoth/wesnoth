@@ -182,8 +182,8 @@ bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags, dou
 				const double x_diff = (mousex - original_loc.x);
 				const double y_diff = (mousey - original_loc.y);
 
-				if (fabs(x_diff) > snap_dist || fabs(y_diff) <= snap_dist) dx += speed * x_diff;
-				if (fabs(y_diff) > snap_dist || fabs(x_diff) <= snap_dist) dy += speed * y_diff;
+				if (std::fabs(x_diff) > snap_dist || std::fabs(y_diff) <= snap_dist) dx += speed * x_diff;
+				if (std::fabs(y_diff) > snap_dist || std::fabs(x_diff) <= snap_dist) dy += speed * y_diff;
 			}
 		}
 		else { // Event may fire mouse down out of order with respect to initial click
