@@ -233,12 +233,6 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Server\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\server\input_stream.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Server\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Server\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Server\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Server\</ObjectFileName>
-    </ClCompile>
     <ClCompile Include="..\..\src\server\metrics.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Server\</ObjectFileName>
@@ -301,7 +295,6 @@
     <ClInclude Include="..\..\src\server\ban.hpp" />
     <ClInclude Include="..\..\src\server\forum_user_handler.hpp" />
     <ClInclude Include="..\..\src\server\game.hpp" />
-    <ClInclude Include="..\..\src\server\input_stream.hpp" />
     <ClInclude Include="..\..\src\server\metrics.hpp" />
     <ClInclude Include="..\..\src\server\player.hpp" />
     <ClInclude Include="..\..\src\server\player_connection.hpp" />

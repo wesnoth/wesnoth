@@ -1043,9 +1043,6 @@
     <ClCompile Include="..\..\src\tests\test_mp_connect.cpp">
       <Filter>Tests</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\tests\test_network_worker.cpp">
-      <Filter>Tests</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\tests\test_recall_list.cpp">
       <Filter>Tests</Filter>
     </ClCompile>
@@ -2938,7 +2935,6 @@
     <ClInclude Include="..\..\src\team.hpp" />
     <ClInclude Include="..\..\src\teambuilder.hpp" />
     <ClInclude Include="..\..\src\theme.hpp" />
-    <ClInclude Include="..\..\src\thread.hpp" />
     <ClInclude Include="..\..\src\time_of_day.hpp" />
     <ClInclude Include="..\..\src\tod_manager.hpp" />
     <ClInclude Include="..\..\src\tooltips.hpp" />
@@ -3023,9 +3019,6 @@
       <Filter>Tests\Utils</Filter>
     </CustomBuild>
     <CustomBuild Include="..\..\src\tests\utils\play_scenario.hpp">
-      <Filter>Tests\Utils</Filter>
-    </CustomBuild>
-    <CustomBuild Include="..\..\src\tests\utils\predicate.hpp">
       <Filter>Tests\Utils</Filter>
     </CustomBuild>
   </ItemGroup>
