@@ -31,28 +31,28 @@ namespace gui2
 // ------------ WIDGET -----------{
 
 REGISTER_WIDGET(multi_page)
-tmulti_page::tmulti_page()
-	: tcontainer_(0)
+multi_page::multi_page()
+	: container_base(0)
 	, generator_(
 			  generator_base::build(true, true, generator_base::independent, false))
 	, page_builder_(nullptr)
 {
 }
 
-void tmulti_page::add_page(const string_map& item)
+void multi_page::add_page(const string_map& item)
 {
 	assert(generator_);
 	generator_->create_item(-1, page_builder_, item, nullptr);
 }
 
-void tmulti_page::add_page(
+void multi_page::add_page(
 		const std::map<std::string /* widget id */, string_map>& data)
 {
 	assert(generator_);
 	generator_->create_item(-1, page_builder_, data, nullptr);
 }
 
-void tmulti_page::remove_page(const unsigned page, unsigned count)
+void multi_page::remove_page(const unsigned page, unsigned count)
 {
 	assert(generator_);
 
@@ -69,48 +69,48 @@ void tmulti_page::remove_page(const unsigned page, unsigned count)
 	}
 }
 
-void tmulti_page::clear()
+void multi_page::clear()
 {
 	assert(generator_);
 	generator_->clear();
 }
 
-unsigned tmulti_page::get_page_count() const
+unsigned multi_page::get_page_count() const
 {
 	assert(generator_);
 	return generator_->get_item_count();
 }
 
-void tmulti_page::select_page(const unsigned page, const bool select)
+void multi_page::select_page(const unsigned page, const bool select)
 {
 	assert(generator_);
 	generator_->select_item(page, select);
 }
 
-int tmulti_page::get_selected_page() const
+int multi_page::get_selected_page() const
 {
 	assert(generator_);
 	return generator_->get_selected_item();
 }
 
-const tgrid& tmulti_page::page_grid(const unsigned page) const
+const grid& multi_page::page_grid(const unsigned page) const
 {
 	assert(generator_);
 	return generator_->item(page);
 }
 
-tgrid& tmulti_page::page_grid(const unsigned page)
+grid& multi_page::page_grid(const unsigned page)
 {
 	assert(generator_);
 	return generator_->item(page);
 }
 
-bool tmulti_page::get_active() const
+bool multi_page::get_active() const
 {
 	return true;
 }
 
-unsigned tmulti_page::get_state() const
+unsigned multi_page::get_state() const
 {
 	return 0;
 }
@@ -120,9 +120,9 @@ namespace
 
 /**
  * Swaps an item in a grid for another one.*/
-void swap_grid(tgrid* grid,
-			   tgrid* content_grid,
-			   twidget* widget,
+void swap_grid(grid* g,
+			   grid* content_grid,
+			   widget* widget,
 			   const std::string& id)
 {
 	assert(content_grid);
@@ -132,14 +132,14 @@ void swap_grid(tgrid* grid,
 	widget->set_id(id);
 
 	// Get the container containing the wanted widget.
-	tgrid* parent_grid = nullptr;
-	if(grid) {
-		parent_grid = find_widget<tgrid>(grid, id, false, false);
+	grid* parent_grid = nullptr;
+	if(g) {
+		parent_grid = find_widget<grid>(g, id, false, false);
 	}
 	if(!parent_grid) {
-		parent_grid = find_widget<tgrid>(content_grid, id, true, false);
+		parent_grid = find_widget<grid>(content_grid, id, true, false);
 	}
-	parent_grid = dynamic_cast<tgrid*>(parent_grid->parent());
+	parent_grid = dynamic_cast<grid*>(parent_grid->parent());
 	assert(parent_grid);
 
 	// Replace the child.
@@ -151,14 +151,14 @@ void swap_grid(tgrid* grid,
 
 } // namespace
 
-void tmulti_page::finalize(const std::vector<string_map>& page_data)
+void multi_page::finalize(const std::vector<string_map>& page_data)
 {
 	assert(generator_);
 	generator_->create_items(-1, page_builder_, page_data, nullptr);
-	swap_grid(nullptr, &grid(), generator_, "_content_grid");
+	swap_grid(nullptr, &get_grid(), generator_, "_content_grid");
 }
 
-void tmulti_page::impl_draw_background(surface& /*frame_buffer*/
+void multi_page::impl_draw_background(surface& /*frame_buffer*/
 									   ,
 									   int /*x_offset*/
 									   ,
@@ -167,13 +167,13 @@ void tmulti_page::impl_draw_background(surface& /*frame_buffer*/
 	/* DO NOTHING */
 }
 
-const std::string& tmulti_page::get_control_type() const
+const std::string& multi_page::get_control_type() const
 {
 	static const std::string type = "multi_page";
 	return type;
 }
 
-void tmulti_page::set_self_active(const bool /*active*/)
+void multi_page::set_self_active(const bool /*active*/)
 {
 	/* DO NOTHING */
 }
@@ -301,9 +301,9 @@ builder_multi_page::builder_multi_page(const config& cfg)
 	}
 }
 
-twidget* builder_multi_page::build() const
+widget* builder_multi_page::build() const
 {
-	tmulti_page* widget = new tmulti_page();
+	multi_page* widget = new multi_page();
 
 	init_control(widget);
 

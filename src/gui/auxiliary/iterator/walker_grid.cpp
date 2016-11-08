@@ -24,26 +24,26 @@ namespace gui2
 namespace iterator
 {
 
-tgrid::tgrid(gui2::tgrid& grid)
+grid::grid(gui2::grid& grid)
 	: grid_(grid), widget_(&grid), itor_(grid.begin())
 {
 }
 
-twalker_::state_t tgrid::next(const tlevel level)
+twalker_::state_t grid::next(const tlevel level)
 {
 	if(at_end(level)) {
 		return fail;
 	}
 
 	switch(level) {
-		case widget:
+		case self:
 			if(widget_) {
 				widget_ = nullptr;
 				return invalid;
 			} else {
 				/* FALL DOWN */
 			}
-		case grid:
+		case internal:
 			assert(false);
 			return fail;
 		case child:
@@ -59,12 +59,12 @@ twalker_::state_t tgrid::next(const tlevel level)
 	return fail;
 }
 
-bool tgrid::at_end(const tlevel level) const
+bool grid::at_end(const tlevel level) const
 {
 	switch(level) {
-		case widget:
+		case self:
 			return widget_ == nullptr;
-		case grid:
+		case internal:
 			return true;
 		case child:
 			return (itor_ == grid_.end());
@@ -74,12 +74,12 @@ bool tgrid::at_end(const tlevel level) const
 	return true;
 }
 
-gui2::twidget* tgrid::get(const tlevel level)
+gui2::widget* grid::get(const tlevel level)
 {
 	switch(level) {
-		case widget:
+		case self:
 			return widget_;
-		case grid:
+		case internal:
 			return nullptr;
 		case child:
 			if(itor_ == grid_.end()) {

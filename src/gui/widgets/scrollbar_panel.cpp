@@ -32,23 +32,23 @@ namespace gui2
 
 REGISTER_WIDGET(scrollbar_panel)
 
-bool tscrollbar_panel::get_active() const
+bool scrollbar_panel::get_active() const
 {
 	return true;
 }
 
-unsigned tscrollbar_panel::get_state() const
+unsigned scrollbar_panel::get_state() const
 {
 	return 0;
 }
 
-const std::string& tscrollbar_panel::get_control_type() const
+const std::string& scrollbar_panel::get_control_type() const
 {
 	static const std::string type = "scrollbar_panel";
 	return type;
 }
 
-void tscrollbar_panel::set_self_active(const bool /*active*/)
+void scrollbar_panel::set_self_active(const bool /*active*/)
 {
 	/* DO NOTHING */
 }
@@ -141,18 +141,18 @@ builder_scrollbar_panel::builder_scrollbar_panel(const config& cfg)
 			  get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
 	, horizontal_scrollbar_mode(
 			  get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
-	, grid(nullptr)
+	, grid_(nullptr)
 {
 	const config& grid_definition = cfg.child("definition");
 
 	VALIDATE(grid_definition, _("No list defined."));
-	grid = std::make_shared<builder_grid>(grid_definition);
-	assert(grid);
+	grid_ = std::make_shared<builder_grid>(grid_definition);
+	assert(grid_);
 }
 
-twidget* builder_scrollbar_panel::build() const
+widget* builder_scrollbar_panel::build() const
 {
-	tscrollbar_panel* panel = new tscrollbar_panel();
+	scrollbar_panel* panel = new scrollbar_panel();
 
 	init_control(panel);
 
@@ -171,29 +171,29 @@ twidget* builder_scrollbar_panel::build() const
 	panel->finalize_setup();
 
 	/*** Fill the content grid. ***/
-	tgrid* content_grid = panel->content_grid();
+	grid* content_grid = panel->content_grid();
 	assert(content_grid);
 
-	const unsigned rows = grid->rows;
-	const unsigned cols = grid->cols;
+	const unsigned rows = grid_->rows;
+	const unsigned cols = grid_->cols;
 
 	content_grid->set_rows_cols(rows, cols);
 
 	for(unsigned x = 0; x < rows; ++x) {
-		content_grid->set_row_grow_factor(x, grid->row_grow_factor[x]);
+		content_grid->set_row_grow_factor(x, grid_->row_grow_factor[x]);
 		for(unsigned y = 0; y < cols; ++y) {
 
 			if(x == 0) {
 				content_grid->set_column_grow_factor(y,
-													 grid->col_grow_factor[y]);
+													 grid_->col_grow_factor[y]);
 			}
 
-			twidget* widget = grid->widgets[x * cols + y]->build();
+			widget* widget = grid_->widgets[x * cols + y]->build();
 			content_grid->set_child(widget,
 									x,
 									y,
-									grid->flags[x * cols + y],
-									grid->border_size[x * cols + y]);
+									grid_->flags[x * cols + y],
+									grid_->border_size[x * cols + y]);
 		}
 	}
 

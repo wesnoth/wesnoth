@@ -68,14 +68,14 @@ namespace gui2
  *
  */
 
-template <class D, class V, void (V::*fptr)(twindow&)>
-void dialog_view_callback(twidget& caller)
+template <class D, class V, void (V::*fptr)(window&)>
+void dialog_view_callback(widget& caller)
 {
 	D* dialog = dynamic_cast<D*>(caller.dialog());
 	assert(dialog);
-	twindow* window = dynamic_cast<twindow*>(caller.get_window());
-	assert(window);
-	(*(dialog->get_view()).*fptr)(*window);
+	window* win = dynamic_cast<window*>(caller.get_window());
+	assert(win);
+	(*(dialog->get_view()).*fptr)(*win);
 }
 
 /**
@@ -89,8 +89,8 @@ public:
 	{
 	}
 
-	tlistbox* sides_list;
-	tlistbox* nicks_list;
+	listbox* sides_list;
+	listbox* nicks_list;
 
 	// contains the mapping from listbox labels to actual sides
 	// (note that due to hidden= attribute nth list item doesn't have to be nth
@@ -320,7 +320,7 @@ public:
 	{
 	}
 
-	void pre_show(twindow& window)
+	void pre_show(window& window)
 	{
 		model_.clear_sides();
 		controller_.show_sides_list();
@@ -329,25 +329,25 @@ public:
 		window.invalidate_layout(); // workaround for assertion failure
 	}
 
-	void handle_sides_list_item_clicked(twindow& window)
+	void handle_sides_list_item_clicked(window& window)
 	{
 		controller_.handle_sides_list_item_clicked();
 		window.invalidate_layout(); // workaround for assertion failure
 	}
 
-	void handle_nicks_list_item_clicked(twindow& window)
+	void handle_nicks_list_item_clicked(window& window)
 	{
 		controller_.handle_nicks_list_item_clicked();
 		window.invalidate_layout(); // workaround for assertion failure
 	}
 
-	void bind(twindow& window)
+	void bind(window& window)
 	{
 		DBG_GUI << "Main: Binding widgets and callbacks\n";
 		model_.sides_list
-				= &find_widget<tlistbox>(&window, "sides_list", false);
+				= &find_widget<listbox>(&window, "sides_list", false);
 		model_.nicks_list
-				= &find_widget<tlistbox>(&window, "nicks_list", false);
+				= &find_widget<listbox>(&window, "nicks_list", false);
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 		connect_signal_notify_modified(
@@ -380,7 +380,7 @@ public:
 
 	void post_show(int retval, events::menu_handler* mh)
 	{
-		if(retval == twindow::OK) {
+		if(retval == window::OK) {
 			controller_.change_control(mh);
 		}
 	}
@@ -402,13 +402,13 @@ std::shared_ptr<tmp_change_control::view> tmp_change_control::get_view()
 	return view_;
 }
 
-void tmp_change_control::pre_show(twindow& window)
+void tmp_change_control::pre_show(window& window)
 {
 	view_->bind(window);
 	view_->pre_show(window);
 }
 
-void tmp_change_control::post_show(twindow& /*window*/)
+void tmp_change_control::post_show(window& /*window*/)
 {
 	view_->post_show(get_retval(), menu_handler_);
 }

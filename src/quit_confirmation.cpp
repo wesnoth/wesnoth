@@ -54,7 +54,7 @@ void quit_confirmation::quit_to_desktop()
 bool quit_confirmation::show_prompt(const std::string& message)
 {
 	return gui2::show_message(CVideo::get_singleton(), _("Quit"), message,
-		gui2::tmessage::yes_no_buttons) != gui2::twindow::CANCEL;
+		gui2::tmessage::yes_no_buttons) != gui2::window::CANCEL;
 }
 
 bool quit_confirmation::default_prompt()

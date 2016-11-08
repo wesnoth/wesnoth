@@ -367,18 +367,18 @@ void taddon_description::copy_url_callback()
 	desktop::clipboard::copy_to_clipboard(feedback_url_, false);
 }
 
-void taddon_description::pre_show(twindow& window)
+void taddon_description::pre_show(window& window)
 {
-	tcontrol& url_none = find_widget<tcontrol>(&window, "url_none", false);
-	tbutton& url_go_button = find_widget<tbutton>(&window, "url_go", false);
-	tbutton& url_copy_button = find_widget<tbutton>(&window, "url_copy", false);
-	ttext_box& url_textbox = find_widget<ttext_box>(&window, "url", false);
+	control& url_none = find_widget<control>(&window, "url_none", false);
+	button& url_go_button = find_widget<button>(&window, "url_go", false);
+	button& url_copy_button = find_widget<button>(&window, "url_copy", false);
+	text_box& url_textbox = find_widget<text_box>(&window, "url", false);
 
 	url_textbox.set_value(feedback_url_);
 	url_textbox.set_active(false);
 
 	if(!feedback_url_.empty()) {
-		url_none.set_visible(tcontrol::tvisible::invisible);
+		url_none.set_visible(control::tvisible::invisible);
 
 		connect_signal_mouse_left_click(
 				url_go_button,
@@ -396,15 +396,15 @@ void taddon_description::pre_show(twindow& window)
 		url_go_button.set_active(false);
 		url_copy_button.set_active(false);
 
-		url_go_button.set_visible(tcontrol::tvisible::invisible);
-		url_copy_button.set_visible(tcontrol::tvisible::invisible);
-		url_textbox.set_visible(tcontrol::tvisible::invisible);
+		url_go_button.set_visible(control::tvisible::invisible);
+		url_copy_button.set_visible(control::tvisible::invisible);
+		url_textbox.set_visible(control::tvisible::invisible);
 	}
 
 	if(!desktop::open_object_is_supported()) {
 		// No point in displaying the button on platforms that can't do
 		// open_object().
-		url_go_button.set_visible(tcontrol::tvisible::invisible);
+		url_go_button.set_visible(control::tvisible::invisible);
 	}
 }
 

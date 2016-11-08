@@ -18,7 +18,7 @@
 namespace gui2
 {
 
-class twidget;
+class widget;
 
 namespace iterator
 {
@@ -34,12 +34,10 @@ public:
 	/** The level to walk at. */
 	enum tlevel {
 		/** Visit the widget itself. */
-		widget
+		self,
 		/** Visit its nested grid. */
-		,
-		grid
+		internal,
 		/** Visit the children of its nested grid. */
-		,
 		child
 	};
 
@@ -113,7 +111,7 @@ public:
 	 *
 	 * @returns                   Pointer to the current widget.
 	 */
-	virtual gui2::twidget* get(const tlevel level) = 0;
+	virtual gui2::widget* get(const tlevel level) = 0;
 };
 
 } // namespace iterator

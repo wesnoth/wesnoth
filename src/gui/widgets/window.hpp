@@ -36,7 +36,7 @@
 
 class CVideo;
 
-namespace gui2 { class twidget; }
+namespace gui2 { class widget; }
 namespace gui2 { namespace event { struct message; } }
 namespace gui2 { struct point; }
 
@@ -46,8 +46,8 @@ namespace gui2
 // ------------ WIDGET -----------{
 
 class tdialog;
-class tdebug_layout_graph;
-class tpane;
+class debug_layout_graph;
+class pane;
 
 namespace event
 {
@@ -58,16 +58,16 @@ class distributor;
  * base class of top level items, the only item
  * which needs to store the final canvases to draw on
  */
-class twindow : public tpanel, public cursor::setter
+class window : public panel, public cursor::setter
 {
-	friend class tdebug_layout_graph;
-	friend twindow* build(CVideo&, const builder_window::window_resolution*);
-	friend struct twindow_implementation;
+	friend class debug_layout_graph;
+	friend window* build(CVideo&, const builder_window::window_resolution*);
+	friend struct window_implementation;
 	friend class tinvalidate_layout_blocker;
-	friend class tpane;
+	friend class pane;
 
 public:
-	twindow(CVideo& video,
+	window(CVideo& video,
 			tformula<unsigned> x,
 			tformula<unsigned> y,
 			tformula<unsigned> w,
@@ -83,7 +83,7 @@ public:
 			const builder_window::window_resolution::ttip& tooltip,
 			const builder_window::window_resolution::ttip& helptip);
 
-	~twindow();
+	~window();
 
 	/**
 	 * Update the size of the screen variables in settings.
@@ -102,7 +102,7 @@ public:
 	 *
 	 * @returns                   The window or nullptr.
 	 */
-	static twindow* window_instance(const unsigned handle);
+	static window* window_instance(const unsigned handle);
 
 	/**
 	 * Default return values.
@@ -209,7 +209,7 @@ public:
 	 * @param call_stack          The list of widgets traversed to get to the
 	 *                            dirty widget.
 	 */
-	void add_to_dirty_list(const std::vector<twidget*>& call_stack)
+	void add_to_dirty_list(const std::vector<widget*>& call_stack)
 	{
 		dirty_list_.push_back(call_stack);
 	}
@@ -249,11 +249,11 @@ public:
 	class tinvalidate_layout_blocker
 	{
 	public:
-		tinvalidate_layout_blocker(twindow& window);
+		tinvalidate_layout_blocker(window& window);
 		~tinvalidate_layout_blocker();
 
 	private:
-		twindow& window_;
+		window& window_;
 	};
 
 	/**
@@ -266,36 +266,36 @@ public:
 	void invalidate_layout();
 
 	/** Inherited from event_handler. */
-	twindow& get_window()
+	window& get_window()
 	{
 		return *this;
 	}
 
 	/** Inherited from event_handler. */
-	const twindow& get_window() const
+	const window& get_window() const
 	{
 		return *this;
 	}
 
-	/** See @ref twidget::find_at. */
-	virtual twidget* find_at(const point& coordinate,
+	/** See @ref widget::find_at. */
+	virtual widget* find_at(const point& coordinate,
 							 const bool must_be_active) override;
 
-	/** See @ref twidget::find_at. */
-	virtual const twidget* find_at(const point& coordinate,
+	/** See @ref widget::find_at. */
+	virtual const widget* find_at(const point& coordinate,
 								   const bool must_be_active) const override;
 
-	/** Inherited from twidget. */
+	/** Inherited from widget. */
 	tdialog* dialog()
 	{
 		return owner_;
 	}
 
-	/** See @ref twidget::find. */
-	twidget* find(const std::string& id, const bool must_be_active) override;
+	/** See @ref widget::find. */
+	widget* find(const std::string& id, const bool must_be_active) override;
 
-	/** See @ref twidget::find. */
-	const twidget* find(const std::string& id,
+	/** See @ref widget::find. */
+	const widget* find(const std::string& id,
 						const bool must_be_active) const override;
 
 #if 0
@@ -391,7 +391,7 @@ public:
 	 * @param id                  The id of the group.
 	 * @param widget              The widget to add to the group.
 	 */
-	void add_linked_widget(const std::string& id, twidget* widget);
+	void add_linked_widget(const std::string& id, widget* widget);
 
 	/**
 	 * Removes a widget from a linked size group.
@@ -403,7 +403,7 @@ public:
 	 * @param id                  The id of the group.
 	 * @param widget              The widget to remove from the group.
 	 */
-	void remove_linked_widget(const std::string& id, const twidget* widget);
+	void remove_linked_widget(const std::string& id, const widget* widget);
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
@@ -473,14 +473,14 @@ public:
 	 *
 	 * @param window                       The current window.
 	 */
-	void set_exit_hook(std::function<bool(twindow&)> func)
+	void set_exit_hook(std::function<bool(window&)> func)
 	{
 		exit_hook_ = func;
 	}
 
-	void set_exit_hook_ok_only(std::function<bool(twindow&)> func)
+	void set_exit_hook_ok_only(std::function<bool(window&)> func)
 	{
-		exit_hook_ = [func](twindow& w)->bool {
+		exit_hook_ = [func](window& w)->bool {
 			if(w.get_retval() == OK) {
 				return func(w);
 			}
@@ -545,7 +545,7 @@ private:
 	 * Sets the horizontal placement.
 	 *
 	 * Only used if automatic_placement_ is true.
-	 * The value should be a tgrid placement flag.
+	 * The value should be a grid placement flag.
 	 */
 	const unsigned horizontal_placement_;
 
@@ -553,7 +553,7 @@ private:
 	 * Sets the vertical placement.
 	 *
 	 * Only used if automatic_placement_ is true.
-	 * The value should be a tgrid placement flag.
+	 * The value should be a grid placement flag.
 	 */
 	const unsigned vertical_placement_;
 
@@ -636,7 +636,7 @@ private:
 		}
 
 		/** The widgets linked. */
-		std::vector<twidget*> widgets;
+		std::vector<widget*> widgets;
 
 		/** the current width of all widgets in the intis group, -1 if the width is not linked*/
 		int width;
@@ -695,7 +695,7 @@ private:
 	 */
 	Uint8 mouse_button_state_;
 
-	/** See @ref tcontrol::get_control_type. */
+	/** See @ref control::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 
 	/**
@@ -704,7 +704,7 @@ private:
 	 * When drawing only the widgets that are dirty are updated. The draw()
 	 * function has more information about the dirty_list_.
 	 */
-	std::vector<std::vector<twidget*> > dirty_list_;
+	std::vector<std::vector<widget*> > dirty_list_;
 
 	/**
 	 * Finishes the initialization of the grid.
@@ -714,10 +714,10 @@ private:
 	void finalize(const std::shared_ptr<builder_grid>& content_grid);
 
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
-	tdebug_layout_graph* debug_layout_;
+	debug_layout_graph* debug_layout_;
 
 public:
-	/** wrapper for tdebug_layout_graph::generate_dot_file. */
+	/** wrapper for debug_layout_graph::generate_dot_file. */
 	void generate_dot_file(const std::string& generator, const unsigned domain);
 
 private:
@@ -733,7 +733,7 @@ public:
 	// mouse and keyboard_capture should be renamed and stored in the
 	// dispatcher. Chaining probably should remain exclusive to windows.
 	void mouse_capture(const bool capture = true);
-	void keyboard_capture(twidget* widget);
+	void keyboard_capture(widget* widget);
 
 	/**
 	 * Adds the widget to the keyboard chain.
@@ -743,7 +743,7 @@ public:
 	 *                            should be valid widget, which hasn't been
 	 *                            added to the chain yet.
 	 */
-	void add_to_keyboard_chain(twidget* widget);
+	void add_to_keyboard_chain(widget* widget);
 
 	/**
 	 * Remove the widget from the keyboard chain.
@@ -752,7 +752,7 @@ public:
 	 *
 	 * @param widget              The widget to be removed from the chain.
 	 */
-	void remove_from_keyboard_chain(twidget* widget);
+	void remove_from_keyboard_chain(widget* widget);
 
 private:
 	/***** ***** ***** signal handlers ***** ****** *****/
@@ -789,7 +789,7 @@ private:
 	void signal_handler_request_placement(const event::event_t event,
 										  bool& handled);
 
-	std::function<bool(twindow&)> exit_hook_ = [](twindow&)->bool { return true; };
+	std::function<bool(window&)> exit_hook_ = [](window&)->bool { return true; };
 };
 
 // }---------- DEFINITION ---------{

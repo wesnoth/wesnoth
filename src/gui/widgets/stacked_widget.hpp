@@ -32,23 +32,23 @@ struct builder_stacked_widget;
 
 class generator_base;
 
-class tstacked_widget : public tcontainer_
+class stacked_widget : public container_base
 {
 	friend struct implementation::builder_stacked_widget;
-	friend class tdebug_layout_graph;
+	friend class debug_layout_graph;
 
 public:
-	tstacked_widget();
+	stacked_widget();
 
 	/***** ***** ***** inherited ***** ****** *****/
 
-	/** See @ref tcontrol::get_active. */
+	/** See @ref control::get_active. */
 	virtual bool get_active() const override;
 
-	/** See @ref tcontrol::get_state. */
+	/** See @ref control::get_state. */
 	virtual unsigned get_state() const override;
 
-	/** See @ref twidget::layout_children. */
+	/** See @ref widget::layout_children. */
 	virtual void layout_children() override;
 
 	/**
@@ -73,7 +73,7 @@ public:
 	 */
 	unsigned int get_layer_count() const;
 
-	tgrid* get_layer_grid(unsigned int i);
+	grid* get_layer_grid(unsigned int i);
 
 private:
 	/**
@@ -88,7 +88,7 @@ private:
 	 * Contains a pointer to the generator.
 	 *
 	 * The pointer is not owned by this class, it's stored in the content_grid_
-	 * of the tscrollbar_container super class and freed when it's grid is
+	 * of the scrollbar_container super class and freed when it's grid is
 	 * freed.
 	 */
 	generator_base* generator_;
@@ -103,10 +103,10 @@ private:
 	 */
 	void select_layer_internal(const unsigned int layer, const bool select) const;
 
-	/** See @ref tcontrol::get_control_type. */
+	/** See @ref control::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 
-	/** See @ref tcontainer_::set_self_active. */
+	/** See @ref container_base::set_self_active. */
 	virtual void set_self_active(const bool active) override;
 };
 
@@ -135,7 +135,7 @@ struct builder_stacked_widget : public builder_control
 
 	using builder_control::build;
 
-	twidget* build() const;
+	widget* build() const;
 
 	/** The builders for all layers of the stack .*/
 	std::vector<builder_grid_const_ptr> stack;

@@ -57,7 +57,7 @@ unsigned tstate_default::get_state() const
 	return state_;
 }
 
-tmatrix::tmatrix(const implementation::builder_matrix& builder)
+matrix::matrix(const implementation::builder_matrix& builder)
 	: tbase(builder, get_control_type()), content_(), pane_(nullptr)
 {
 	std::shared_ptr<const matrix_definition::tresolution>
@@ -86,98 +86,98 @@ tmatrix::tmatrix(const implementation::builder_matrix& builder)
 	cfg->content->build(content_, replacements);
 	content_.set_parent(this);
 
-	pane_ = find_widget<tpane>(&content_, "pane", false, true);
+	pane_ = find_widget<pane>(&content_, "pane", false, true);
 }
 
-tmatrix* tmatrix::build(const implementation::builder_matrix& builder)
+matrix* matrix::build(const implementation::builder_matrix& builder)
 {
-	return new tmatrix(builder);
+	return new matrix(builder);
 }
 
 unsigned
-tmatrix::create_item(const std::map<std::string, string_map>& item_data,
+matrix::create_item(const std::map<std::string, string_map>& item_data,
 					 const std::map<std::string, std::string>& tags)
 {
 	return pane_->create_item(item_data, tags);
 }
 
-void tmatrix::place(const point& origin, const point& size)
+void matrix::place(const point& origin, const point& size)
 {
-	twidget::place(origin, size);
+	widget::place(origin, size);
 
 	content_.place(origin, size);
 }
 
-void tmatrix::layout_initialise(const bool full_initialisation)
+void matrix::layout_initialise(const bool full_initialisation)
 {
 	content_.layout_initialise(full_initialisation);
 }
 
 void
-tmatrix::impl_draw_children(surface& frame_buffer, int x_offset, int y_offset)
+matrix::impl_draw_children(surface& frame_buffer, int x_offset, int y_offset)
 {
 	content_.draw_children(frame_buffer, x_offset, y_offset);
 }
 
-void tmatrix::layout_children()
+void matrix::layout_children()
 {
 	content_.layout_children();
 }
 
-void tmatrix::child_populate_dirty_list(twindow& caller,
-										const std::vector<twidget*>& call_stack)
+void matrix::child_populate_dirty_list(window& caller,
+										const std::vector<widget*>& call_stack)
 {
-	std::vector<twidget*> child_call_stack = call_stack;
+	std::vector<widget*> child_call_stack = call_stack;
 	content_.populate_dirty_list(caller, child_call_stack);
 }
 
-void tmatrix::request_reduce_width(const unsigned /*maximum_width*/)
+void matrix::request_reduce_width(const unsigned /*maximum_width*/)
 {
 }
 
-twidget* tmatrix::find_at(const point& coordinate, const bool must_be_active)
+widget* matrix::find_at(const point& coordinate, const bool must_be_active)
 {
 	return content_.find_at(coordinate, must_be_active);
 }
 
-const twidget* tmatrix::find_at(const point& coordinate,
+const widget* matrix::find_at(const point& coordinate,
 								const bool must_be_active) const
 {
 	return content_.find_at(coordinate, must_be_active);
 }
 
-twidget* tmatrix::find(const std::string& id, const bool must_be_active)
+widget* matrix::find(const std::string& id, const bool must_be_active)
 {
-	if(twidget* result = twidget::find(id, must_be_active)) {
+	if(widget* result = widget::find(id, must_be_active)) {
 		return result;
 	} else {
 		return content_.find(id, must_be_active);
 	}
 }
 
-const twidget* tmatrix::find(const std::string& id, const bool must_be_active)
+const widget* matrix::find(const std::string& id, const bool must_be_active)
 		const
 {
-	if(const twidget* result = twidget::find(id, must_be_active)) {
+	if(const widget* result = widget::find(id, must_be_active)) {
 		return result;
 	} else {
 		return content_.find(id, must_be_active);
 	}
 }
 
-point tmatrix::calculate_best_size() const
+point matrix::calculate_best_size() const
 {
 	point size = content_.get_best_size();
 
 	return size;
 }
 
-bool tmatrix::disable_click_dismiss() const
+bool matrix::disable_click_dismiss() const
 {
 	return false;
 }
 
-iterator::twalker_* tmatrix::create_walker()
+iterator::twalker_* matrix::create_walker()
 {
 	/**
 	 * @todo Implement properly.
@@ -185,7 +185,7 @@ iterator::twalker_* tmatrix::create_walker()
 	return nullptr;
 }
 
-const std::string& tmatrix::get_control_type() const
+const std::string& matrix::get_control_type() const
 {
 	static const std::string type = "matrix";
 	return type;
@@ -302,9 +302,9 @@ builder_matrix::builder_matrix(const config& cfg)
 	}
 }
 
-twidget* builder_matrix::build() const
+widget* builder_matrix::build() const
 {
-	return tmatrix::build(*this);
+	return matrix::build(*this);
 }
 
 } // namespace implementation

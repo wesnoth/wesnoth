@@ -27,11 +27,11 @@ namespace gui2
 {
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
-class tlist;
+class list_view;
 #else
-class tlistbox;
+class listbox;
 #endif
-class tstacked_widget;
+class stacked_widget;
 
 class tgame_version : public tdialog
 {
@@ -75,7 +75,7 @@ private:
 	virtual const std::string& window_id() const;
 
 	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	void pre_show(window& window);
 
 	//
 	// Widget event callbacks.
@@ -84,7 +84,7 @@ private:
 	/**
 	 * Callback function called when switching tabs.
 	 */
-	void tab_switch_callback(twindow& window);
+	void tab_switch_callback(window& window);
 
 	/**
 	 * Callback function for the dialog-wide copy-to-clipboard button.

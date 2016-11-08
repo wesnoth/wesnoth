@@ -106,12 +106,12 @@ void tloadscreen::close()
 	}
 }
 
-twindow* tloadscreen::build_window(CVideo& video) const
+window* tloadscreen::build_window(CVideo& video) const
 {
 	return build(video, window_id());
 }
 
-void tloadscreen::pre_show(twindow& window)
+void tloadscreen::pre_show(window& window)
 {
 	if (work_) {
 		worker_.reset(new boost::thread([this]() {
@@ -125,14 +125,14 @@ void tloadscreen::pre_show(twindow& window)
 	}
 	timer_id_ = add_timer(100, std::bind(&tloadscreen::timer_callback, this, std::ref(window)), true);
 	cursor_setter_.reset(new cursor::setter(cursor::WAIT));
-	progress_stage_label_ = &find_widget<tlabel>(&window, "status", false);
-	animation_label_ = &find_widget<tlabel>(&window, "test_animation", false);
+	progress_stage_label_ = &find_widget<label>(&window, "status", false);
+	animation_label_ = &find_widget<label>(&window, "test_animation", false);
 	
 	window.set_enter_disabled(true);
 	window.set_escape_disabled(true);
 }
 
-void tloadscreen::post_show(twindow& /*window*/)
+void tloadscreen::post_show(window& /*window*/)
 {
 	worker_.reset();
 	clear_timer();
@@ -156,7 +156,7 @@ void tloadscreen::progress(const char* stage)
 
 tloadscreen* tloadscreen::current_load = nullptr;
 
-void tloadscreen::timer_callback(twindow& window)
+void tloadscreen::timer_callback(window& window)
 {
 	if (!work_ || !worker_ || worker_->timed_join(boost::posix_time::milliseconds(0))) {
 		if (exception_) {

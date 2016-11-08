@@ -989,7 +989,7 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 
 	dlg.show(gui_->video());
 
-	if(dlg.get_retval() == gui2::twindow::OK) {
+	if(dlg.get_retval() == gui2::window::OK) {
 		return dlg.get_selected_weapon();
 	}
 

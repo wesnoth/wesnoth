@@ -307,7 +307,7 @@ bool CVideo::init_window()
 	}
 
 	// Initialize window
-	window.reset(new sdl::twindow("", x, y, w, h, video_flags, SDL_RENDERER_SOFTWARE));
+	window.reset(new sdl::window("", x, y, w, h, video_flags, SDL_RENDERER_SOFTWARE));
 
 	std::cerr << "Setting mode to " << w << "x" << h << std::endl;
 
@@ -444,13 +444,13 @@ void CVideo::set_window_icon(surface& icon)
 	window->set_icon(icon);
 }
 
-sdl::twindow *CVideo::get_window()
+sdl::window *CVideo::get_window()
 {
 	return window.get();
 }
 
 
-static int sdl_display_index(sdl::twindow* window)
+static int sdl_display_index(sdl::window* window)
 {
 	if(window) {
 		return SDL_GetWindowDisplayIndex(*window);

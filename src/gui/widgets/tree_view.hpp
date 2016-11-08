@@ -34,47 +34,47 @@ namespace implementation {
 
 // ------------ WIDGET -----------{
 
-class ttree_view_node;
+class tree_view_node;
 
-class ttree_view : public tscrollbar_container
+class tree_view : public scrollbar_container
 {
 	friend struct implementation::builder_tree_view;
-	friend class ttree_view_node;
+	friend class tree_view_node;
 
 public:
 	typedef implementation::ttree_node node_definition;
 
-	explicit ttree_view(const std::vector<node_definition>& node_definitions);
+	explicit tree_view(const std::vector<node_definition>& node_definitions);
 
-	~ttree_view();
+	~tree_view();
 
-	using tscrollbar_container::finalize_setup;
+	using scrollbar_container::finalize_setup;
 
-	ttree_view_node& get_root_node()
+	tree_view_node& get_root_node()
 	{
 		return *root_node_;
 	}
 
-	ttree_view_node&
+	tree_view_node&
 	add_node(const std::string& id,
 			 const std::map<std::string /* widget id */, string_map>& data,
 			 const int index = -1);
 
-	int remove_node(ttree_view_node* tree_view_node);
+	int remove_node(tree_view_node* tree_view_node);
 
 	void clear();
 
-	/** See @ref twidget::child_populate_dirty_list. */
+	/** See @ref widget::child_populate_dirty_list. */
 	virtual void
-	child_populate_dirty_list(twindow& caller,
-							  const std::vector<twidget*>& call_stack) override;
+	child_populate_dirty_list(window& caller,
+							  const std::vector<widget*>& call_stack) override;
 
-	/** See @ref tcontainer_::set_self_active. */
+	/** See @ref container_base::set_self_active. */
 	virtual void set_self_active(const bool active) override;
 
 	bool empty() const;
 
-	/** See @ref twidget::layout_children. */
+	/** See @ref widget::layout_children. */
 	virtual void layout_children() override;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
@@ -84,33 +84,33 @@ public:
 		indentation_step_size_ = indentation_step_size;
 	}
 
-	ttree_view_node* selected_item()
+	tree_view_node* selected_item()
 	{
 		return selected_item_;
 	}
 
-	const ttree_view_node* selected_item() const
+	const tree_view_node* selected_item() const
 	{
 		return selected_item_;
 	}
 
-	void set_selection_change_callback(std::function<void(twidget&)> callback)
+	void set_selection_change_callback(std::function<void(widget&)> callback)
 	{
 		selection_change_callback_ = callback;
 	}
 
 protected:
 /***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
-	/** Inherited from tscrollbar_container. */
+	/** Inherited from scrollbar_container. */
 	void handle_key_up_arrow(SDL_Keymod modifier, bool& handled) override;
 
-	/** Inherited from tscrollbar_container. */
+	/** Inherited from scrollbar_container. */
 	void handle_key_down_arrow(SDL_Keymod modifier, bool& handled) override;
 
-	/** Inherited from tscrollbar_container. */
+	/** Inherited from scrollbar_container. */
 	void handle_key_left_arrow(SDL_Keymod modifier, bool& handled) override;
 
-	/** Inherited from tscrollbar_container. */
+	/** Inherited from scrollbar_container. */
 	void handle_key_right_arrow(SDL_Keymod modifier, bool& handled) override;
 private:
 	/**
@@ -125,11 +125,11 @@ private:
 
 	bool need_layout_;
 
-	ttree_view_node* root_node_;
+	tree_view_node* root_node_;
 
-	ttree_view_node* selected_item_;
+	tree_view_node* selected_item_;
 
-	std::function<void(twidget&)> selection_change_callback_;
+	std::function<void(widget&)> selection_change_callback_;
 
 	/**
 	 * Resizes the content.
@@ -154,20 +154,20 @@ private:
 	/** Layouts the children if needed. */
 	void layout_children(const bool force);
 
-	/** Inherited from tcontainer_. */
+	/** Inherited from container_base. */
 	virtual void finalize_setup();
 
-	/** See @ref tcontrol::get_control_type. */
+	/** See @ref control::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 
 	/***** ***** ***** signal handlers ***** ****** *****/
 
 	void signal_handler_left_button_down(const event::event_t event);
 
-	template<ttree_view_node* (ttree_view_node::*func) ()>
-	ttree_view_node* get_next_node();
+	template<tree_view_node* (tree_view_node::*func) ()>
+	tree_view_node* get_next_node();
 	
-	template<ttree_view_node* (ttree_view_node::*func) ()>
+	template<tree_view_node* (tree_view_node::*func) ()>
 	bool handle_up_down_arrow();
 };
 
@@ -197,10 +197,10 @@ struct builder_tree_view : public builder_control
 
 	using builder_control::build;
 
-	twidget* build() const;
+	widget* build() const;
 
-	tscrollbar_container::tscrollbar_mode vertical_scrollbar_mode;
-	tscrollbar_container::tscrollbar_mode horizontal_scrollbar_mode;
+	scrollbar_container::tscrollbar_mode vertical_scrollbar_mode;
+	scrollbar_container::tscrollbar_mode horizontal_scrollbar_mode;
 
 	unsigned indentation_step_size;
 

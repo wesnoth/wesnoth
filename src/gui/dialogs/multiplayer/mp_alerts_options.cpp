@@ -62,9 +62,9 @@ namespace gui2
  * @end{table}
  */
 
-static ttoggle_button * setup_pref_toggle_button(const std::string & id, bool def, twindow & window)
+static toggle_button * setup_pref_toggle_button(const std::string & id, bool def, window & window)
 {
-	ttoggle_button * b = &find_widget<ttoggle_button>(&window, id, false);
+	toggle_button * b = &find_widget<toggle_button>(&window, id, false);
 	b->set_value(preferences::get(id, def));
 
 	//ensure we have yes / no for the toggle button, so that the preference matches the toggle button for sure.
@@ -75,18 +75,18 @@ static ttoggle_button * setup_pref_toggle_button(const std::string & id, bool de
 	//Needed to disambiguate overloaded function
 	void (*set) (const std::string &, bool) = &preferences::set;
 
-	connect_signal_mouse_left_click(*b, std::bind(set, id, std::bind(&ttoggle_button::get_value_bool, b)));
+	connect_signal_mouse_left_click(*b, std::bind(set, id, std::bind(&toggle_button::get_value_bool, b)));
 
 	return b;
 }
 
-static void setup_item(const std::string & item, twindow & window)
+static void setup_item(const std::string & item, window & window)
 {
 	// Set up the sound checkbox
 	setup_pref_toggle_button(item+"_sound", mp_ui_alerts::get_def_pref_sound(item), window);
 
 	// Set up the notification checkbox
-	ttoggle_button * notif = setup_pref_toggle_button(item+"_notif", mp_ui_alerts::get_def_pref_notif(item), window);
+	toggle_button * notif = setup_pref_toggle_button(item+"_notif", mp_ui_alerts::get_def_pref_notif(item), window);
 
 	// Check if desktop notifications are available
 	if (!desktop::notifications::available()) {
@@ -101,14 +101,14 @@ static void setup_item(const std::string & item, twindow & window)
 	setup_pref_toggle_button(item+"_lobby", mp_ui_alerts::get_def_pref_lobby(item), window);
 }
 
-static void set_pref_and_button(const std::string & id, bool value, twindow & window)
+static void set_pref_and_button(const std::string & id, bool value, window & window)
 {
 	preferences::set(id,value);
-	ttoggle_button * button = &find_widget<ttoggle_button>(&window, id, false);
+	toggle_button * button = &find_widget<toggle_button>(&window, id, false);
 	button->set_value(value);
 }
 
-static void revert_to_default_pref_values(twindow & window)
+static void revert_to_default_pref_values(window & window)
 {
 	for (const std::string & i : mp_ui_alerts::items) {
 		set_pref_and_button(i+"_sound", mp_ui_alerts::get_def_pref_sound(i), window);
@@ -123,36 +123,36 @@ tmp_alerts_options::tmp_alerts_options()
 {
 }
 
-void tmp_alerts_options::pre_show(twindow& window)
+void tmp_alerts_options::pre_show(window& window)
 {
 	for (const std::string & i : mp_ui_alerts::items) {
 		setup_item(i, window);
 	}
 
 	if (!desktop::notifications::available()) {
-		tlabel * nlabel = &find_widget<tlabel>(&window, "notification_label", false);
+		label * nlabel = &find_widget<label>(&window, "notification_label", false);
 		nlabel->set_tooltip(_("This build of wesnoth does not include support for desktop notifications, contact your package manager"));
 	}
 
-	ttoggle_button * in_lobby;
-	in_lobby = &find_widget<ttoggle_button>(&window,"ready_for_start_lobby", false);
-	in_lobby->set_visible(twidget::tvisible::invisible);
+	toggle_button * in_lobby;
+	in_lobby = &find_widget<toggle_button>(&window,"ready_for_start_lobby", false);
+	in_lobby->set_visible(widget::tvisible::invisible);
 
-	in_lobby = &find_widget<ttoggle_button>(&window,"game_has_begun_lobby", false);
-	in_lobby->set_visible(twidget::tvisible::invisible);
+	in_lobby = &find_widget<toggle_button>(&window,"game_has_begun_lobby", false);
+	in_lobby->set_visible(widget::tvisible::invisible);
 
-	in_lobby = &find_widget<ttoggle_button>(&window,"turn_changed_sound", false); // If we get a sound for this then don't remove this button
-	in_lobby->set_visible(twidget::tvisible::invisible);
+	in_lobby = &find_widget<toggle_button>(&window,"turn_changed_sound", false); // If we get a sound for this then don't remove this button
+	in_lobby->set_visible(widget::tvisible::invisible);
 
-	in_lobby = &find_widget<ttoggle_button>(&window,"turn_changed_lobby", false);
-	in_lobby->set_visible(twidget::tvisible::invisible);
+	in_lobby = &find_widget<toggle_button>(&window,"turn_changed_lobby", false);
+	in_lobby->set_visible(widget::tvisible::invisible);
 
-	tbutton * defaults;
-	defaults = &find_widget<tbutton>(&window,"revert_to_defaults", false);
+	button * defaults;
+	defaults = &find_widget<button>(&window,"revert_to_defaults", false);
 	connect_signal_mouse_left_click(*defaults, std::bind(&revert_to_default_pref_values, std::ref(window)));
 }
 
-void tmp_alerts_options::post_show(twindow& /*window*/)
+void tmp_alerts_options::post_show(window& /*window*/)
 {
 }
 

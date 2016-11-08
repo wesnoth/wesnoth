@@ -79,13 +79,13 @@ tscreenshot_notification::tscreenshot_notification(const std::string& path)
 				   false);
 }
 
-void tscreenshot_notification::pre_show(twindow& window)
+void tscreenshot_notification::pre_show(window& window)
 {
-	ttext_box& path_box = find_widget<ttext_box>(&window, "path", false);
+	text_box& path_box = find_widget<text_box>(&window, "path", false);
 	path_box.set_value(filesystem::base_name(path_));
 	path_box.set_active(false);
 
-	tbutton& copy_b = find_widget<tbutton>(&window, "copy", false);
+	button& copy_b = find_widget<button>(&window, "copy", false);
 	connect_signal_mouse_left_click(
 			copy_b, std::bind(&desktop::clipboard::copy_to_clipboard, std::ref(path_), false));
 
@@ -94,11 +94,11 @@ void tscreenshot_notification::pre_show(twindow& window)
 		copy_b.set_tooltip(_("Clipboard support not found, contact your packager"));
 	}
 
-	tbutton& open_b = find_widget<tbutton>(&window, "open", false);
+	button& open_b = find_widget<button>(&window, "open", false);
 	connect_signal_mouse_left_click(
 			open_b, bind_void(&desktop::open_object, std::ref(path_)));
 
-	tbutton& bdir_b = find_widget<tbutton>(&window, "browse_dir", false);
+	button& bdir_b = find_widget<button>(&window, "browse_dir", false);
 	connect_signal_mouse_left_click(
 			bdir_b,
 			bind_void(&desktop::open_object,

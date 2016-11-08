@@ -32,22 +32,22 @@ namespace gui2
 
 REGISTER_WIDGET(progress_bar)
 
-void tprogress_bar::set_active(const bool /*active*/)
+void progress_bar::set_active(const bool /*active*/)
 {
 	/* DO NOTHING */
 }
 
-bool tprogress_bar::get_active() const
+bool progress_bar::get_active() const
 {
 	return true;
 }
 
-unsigned tprogress_bar::get_state() const
+unsigned progress_bar::get_state() const
 {
 	return ENABLED;
 }
 
-void tprogress_bar::set_percentage(unsigned percentage)
+void progress_bar::set_percentage(unsigned percentage)
 {
 	percentage = std::min<unsigned>(percentage, 100);
 
@@ -63,12 +63,12 @@ void tprogress_bar::set_percentage(unsigned percentage)
 	}
 }
 
-bool tprogress_bar::disable_click_dismiss() const
+bool progress_bar::disable_click_dismiss() const
 {
 	return false;
 }
 
-const std::string& tprogress_bar::get_control_type() const
+const std::string& progress_bar::get_control_type() const
 {
 	static const std::string type = "progress_bar";
 	return type;
@@ -144,9 +144,9 @@ builder_progress_bar::builder_progress_bar(const config& cfg)
 {
 }
 
-twidget* builder_progress_bar::build() const
+widget* builder_progress_bar::build() const
 {
-	tprogress_bar* widget = new tprogress_bar();
+	progress_bar* widget = new progress_bar();
 
 	init_control(widget);
 

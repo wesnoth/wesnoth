@@ -58,16 +58,16 @@ private:
 
 	unit_const_ptr get_leader(const int side);
 
-	void on_tab_select(twindow& window);
+	void on_tab_select(window& window);
 
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
 	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	void pre_show(window& window);
 
 	/** Inherited from tdialog. */
-	void post_show(twindow& window);
+	void post_show(window& window);
 };
 
 } // namespace gui2

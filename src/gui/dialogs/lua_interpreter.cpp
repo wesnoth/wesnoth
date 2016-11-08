@@ -78,16 +78,16 @@ REGISTER_DIALOG(lua_interpreter)
 
 class tlua_interpreter::view {
 private:
-	tscroll_label* msg_label; //the view is extremely simple, it's pretty much just this one widget that gets updated
+	scroll_label* msg_label; //the view is extremely simple, it's pretty much just this one widget that gets updated
 
 public:
 	view() : msg_label(nullptr) {}
 
 	/** Bind the scroll label widget to my pointer, and configure */
-	void bind(twindow& window) {
-		msg_label = &find_widget<tscroll_label>(&window, "msg", false);
+	void bind(window& window) {
+		msg_label = &find_widget<scroll_label>(&window, "msg", false);
 		msg_label->set_use_markup(true);
-		msg_label->set_vertical_scrollbar_mode(tscrollbar_container::ALWAYS_VISIBLE);
+		msg_label->set_vertical_scrollbar_mode(scrollbar_container::ALWAYS_VISIBLE);
 		msg_label->set_label("");
 	}
 
@@ -97,19 +97,19 @@ public:
 		assert(msg_label);
 
 		msg_label->set_label(str);
-		msg_label->scroll_vertical_scrollbar(tscrollbar_::END);
+		msg_label->scroll_vertical_scrollbar(scrollbar_base::END);
 	}
 
 	void pg_up()
 	{
 		assert(msg_label);
-		msg_label->scroll_vertical_scrollbar(tscrollbar_::JUMP_BACKWARDS);
+		msg_label->scroll_vertical_scrollbar(scrollbar_base::JUMP_BACKWARDS);
 	}
 
 	void pg_down()
 	{
 		assert(msg_label);
-		msg_label->scroll_vertical_scrollbar(tscrollbar_::JUMP_FORWARD);
+		msg_label->scroll_vertical_scrollbar(scrollbar_base::JUMP_FORWARD);
 	}
 };
 
@@ -361,10 +361,10 @@ public:
  */
 class tlua_interpreter::controller {
 private:
-	tbutton* copy_button;
-	tbutton* clear_button;
+	button* copy_button;
+	button* clear_button;
 
-	ttext_box* text_entry;
+	text_box* text_entry;
 	std::string text_entry_;
 
 	const std::unique_ptr<tlua_interpreter::lua_model> lua_model_;
@@ -385,15 +385,15 @@ public:
 	{}
 
 	/** Bind my pointers to the widgets found in the window */
-	void bind(twindow& window);
+	void bind(window& window);
 
-	void handle_copy_button_clicked(twindow & window);
-	void handle_clear_button_clicked(twindow & window);
+	void handle_copy_button_clicked(window & window);
+	void handle_clear_button_clicked(window & window);
 
 	void input_keypress_callback(bool& handled,
 						   bool& halt,
 						   const SDL_Keycode key,
-						   twindow& window);
+						   window& window);
 
 	void update_view(); ///< Update the view based on the model
 
@@ -438,13 +438,13 @@ void tlua_interpreter::controller::update_view()
 }
 
 /** Find all the widgets managed by the controller and connect them to handler methods. */
-void tlua_interpreter::controller::bind(twindow& window)
+void tlua_interpreter::controller::bind(window& window)
 {
 	LOG_LUA << "Entering tlua_interpreter::controller::bind" << std::endl;
 	assert(view_);
 	view_->bind(window);
 
-	text_entry = &find_widget<ttext_box>(&window, "text_entry", false);
+	text_entry = &find_widget<text_box>(&window, "text_entry", false);
 	//text_entry->set_text_changed_callback(
 	//		std::bind(&view::filter, this, std::ref(window)));
 	window.keyboard_capture(text_entry);
@@ -460,14 +460,14 @@ void tlua_interpreter::controller::bind(twindow& window)
 						_5,
 						std::ref(window)));
 
-	copy_button = &find_widget<tbutton>(&window, "copy", false);
+	copy_button = &find_widget<button>(&window, "copy", false);
 	connect_signal_mouse_left_click(
 			*copy_button,
 			std::bind(&tlua_interpreter::controller::handle_copy_button_clicked,
 						this,
 						std::ref(window)));
 
-	clear_button = &find_widget<tbutton>(&window, "clear", false);
+	clear_button = &find_widget<button>(&window, "clear", false);
 	connect_signal_mouse_left_click(
 			*clear_button,
 			std::bind(&tlua_interpreter::controller::handle_clear_button_clicked,
@@ -483,14 +483,14 @@ void tlua_interpreter::controller::bind(twindow& window)
 }
 
 /** Copy text to the clipboard */
-void tlua_interpreter::controller::handle_copy_button_clicked(twindow & /*window*/)
+void tlua_interpreter::controller::handle_copy_button_clicked(window & /*window*/)
 {
 	assert(lua_model_);
 	desktop::clipboard::copy_to_clipboard(lua_model_->get_log(), false);
 }
 
 /** Clear the text */
-void tlua_interpreter::controller::handle_clear_button_clicked(twindow & /*window*/)
+void tlua_interpreter::controller::handle_clear_button_clicked(window & /*window*/)
 {
 	assert(lua_model_);
 	lua_model_->clear_log();
@@ -502,7 +502,7 @@ void tlua_interpreter::controller::handle_clear_button_clicked(twindow & /*windo
 void tlua_interpreter::controller::input_keypress_callback(bool& handled,
 							   bool& halt,
 							   const SDL_Keycode key,
-							   twindow& /*window*/)
+							   window& /*window*/)
 {
 	assert(lua_model_);
 	assert(text_entry);
@@ -687,19 +687,19 @@ void tlua_interpreter::display(CVideo& video, tlua_interpreter::WHICH_KERNEL whi
 }
 
 /** Call inherited method */
-twindow* tlua_interpreter::build_window(CVideo& video)
+window* tlua_interpreter::build_window(CVideo& video)
 {
 	return build(video, window_id());
 }
 
 /** Bind the controller, initialize one of the static labels with info about this kernel, and update the view. */
-void tlua_interpreter::pre_show(twindow& window)
+void tlua_interpreter::pre_show(window& window)
 {
 	LOG_LUA << "Entering tlua_interpreter::view::pre_show" << std::endl;
 	register_text("text_entry", false, controller_->text_entry_, true);
 	controller_->bind(window);
 
-	tlabel *kernel_type_label = &find_widget<tlabel>(&window, "kernel_type", false);
+	label *kernel_type_label = &find_widget<label>(&window, "kernel_type", false);
 	kernel_type_label->set_label(controller_->lua_model_->get_name());
 
 	controller_->update_view();

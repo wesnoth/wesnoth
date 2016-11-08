@@ -36,7 +36,7 @@ namespace gui2
  * The class is a helper to avoid recompilation and only has static
  * functions.
  */
-struct twindow_implementation
+struct window_implementation
 {
 	/**
 	 * Layouts the window.
@@ -49,7 +49,7 @@ struct twindow_implementation
 	 * @param maximum_width       The maximum width of the window.
 	 * @param maximum_height      The maximum height of the window.
 	 */
-	static void layout(twindow& window,
+	static void layout(window& window,
 					   const unsigned maximum_width,
 					   const unsigned maximum_height);
 };

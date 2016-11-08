@@ -50,50 +50,50 @@ tlobby_player_info::~tlobby_player_info()
 {
 }
 
-void tlobby_player_info::pre_show(twindow& window)
+void tlobby_player_info::pre_show(window& window)
 {
-	relation_ = find_widget<tlabel>(&window, "relation_info", false, true);
+	relation_ = find_widget<label>(&window, "relation_info", false, true);
 	connect_signal_mouse_left_click(
-			find_widget<tbutton>(&window, "start_whisper", false),
+			find_widget<button>(&window, "start_whisper", false),
 			std::bind(&tlobby_player_info::start_whisper_button_callback,
 						this,
 						std::ref(window)));
 
-	add_to_friends_ = &find_widget<tbutton>(&window, "add_to_friends", false);
+	add_to_friends_ = &find_widget<button>(&window, "add_to_friends", false);
 	connect_signal_mouse_left_click(
 			*add_to_friends_,
 			std::bind(&tlobby_player_info::add_to_friends_button_callback, this));
 
-	add_to_ignores_ = &find_widget<tbutton>(&window, "add_to_ignores", false);
+	add_to_ignores_ = &find_widget<button>(&window, "add_to_ignores", false);
 	connect_signal_mouse_left_click(
 			*add_to_ignores_,
 			std::bind(&tlobby_player_info::add_to_ignores_button_callback, this));
 
 	remove_from_list_
-			= &find_widget<tbutton>(&window, "remove_from_list", false);
+			= &find_widget<button>(&window, "remove_from_list", false);
 	connect_signal_mouse_left_click(
 			*remove_from_list_,
 			std::bind(&tlobby_player_info::remove_from_list_button_callback, this));
 
 	connect_signal_mouse_left_click(
-			find_widget<tbutton>(&window, "check_status", false),
+			find_widget<button>(&window, "check_status", false),
 			std::bind(&tlobby_player_info::check_status_button_callback,
 						this,
 						std::ref(window)));
 
 	connect_signal_mouse_left_click(
-			find_widget<tbutton>(&window, "kick", false),
+			find_widget<button>(&window, "kick", false),
 			std::bind(&tlobby_player_info::kick_button_callback,
 						this,
 						std::ref(window)));
 
 	connect_signal_mouse_left_click(
-			find_widget<tbutton>(&window, "kick_ban", false),
+			find_widget<button>(&window, "kick_ban", false),
 			std::bind(&tlobby_player_info::kick_ban_button_callback,
 						this,
 						std::ref(window)));
 
-	find_widget<tlabel>(&window, "player_name", false).set_label(info_.name);
+	find_widget<label>(&window, "player_name", false).set_label(info_.name);
 
 	std::stringstream loc;
 	const game_info* game = lobby_info_.get_game_by_id(info_.game_id);
@@ -108,20 +108,20 @@ void tlobby_player_info::pre_show(twindow& window)
 		loc << _("In lobby");
 	}
 
-	time_ = find_widget<ttext_box>(&window, "time", false, true);
-	reason_ = find_widget<ttext_box>(&window, "reason", false, true);
+	time_ = find_widget<text_box>(&window, "time", false, true);
+	reason_ = find_widget<text_box>(&window, "reason", false, true);
 
-	find_widget<tlabel>(&window, "location_info", false).set_label(loc.str());
+	find_widget<label>(&window, "location_info", false).set_label(loc.str());
 
 	update_relation();
 
 	if(!preferences::is_authenticated()) {
-		twidget* aw = window.find("admin", false);
-		aw->set_visible(twidget::tvisible::invisible);
+		widget* aw = window.find("admin", false);
+		aw->set_visible(widget::tvisible::invisible);
 	}
 }
 
-void tlobby_player_info::post_show(twindow& /*window*/)
+void tlobby_player_info::post_show(window& /*window*/)
 {
 }
 
@@ -175,25 +175,25 @@ void tlobby_player_info::remove_from_list_button_callback()
 	update_relation();
 }
 
-void tlobby_player_info::start_whisper_button_callback(twindow& w)
+void tlobby_player_info::start_whisper_button_callback(window& w)
 {
 	result_open_whisper_ = true;
 	w.close();
 }
 
-void tlobby_player_info::check_status_button_callback(twindow& w)
+void tlobby_player_info::check_status_button_callback(window& w)
 {
 	chat_.send_command("query", "status " + info_.name);
 	w.close();
 }
 
-void tlobby_player_info::kick_button_callback(twindow& w)
+void tlobby_player_info::kick_button_callback(window& w)
 {
 	do_kick_ban(false);
 	w.close();
 }
 
-void tlobby_player_info::kick_ban_button_callback(twindow& w)
+void tlobby_player_info::kick_ban_button_callback(window& w)
 {
 	do_kick_ban(true);
 	w.close();

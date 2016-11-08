@@ -28,7 +28,7 @@ namespace gui2 {
  * Default value getter for selectable widgets (like toggle buttons)
  */
 template<typename T>
-static inline typename std::enable_if<std::is_base_of<tselectable_, T>::value, std::string>::type
+static inline typename std::enable_if<std::is_base_of<selectable_item, T>::value, std::string>::type
 default_value_getter(T& w)
 {
 	return w.get_value_bool() ? _("yes") : _("no");
@@ -38,7 +38,7 @@ default_value_getter(T& w)
  * Default value getter for integer-based widgets (like sliders)
  */
 template<typename T>
-static inline typename std::enable_if<std::is_base_of<tinteger_selector_, T>::value, std::string>::type
+static inline typename std::enable_if<std::is_base_of<integer_selector, T>::value, std::string>::type
 default_value_getter(T& w)
 {
 	return w.get_value_label();
@@ -53,14 +53,14 @@ default_value_getter(T& w)
  * that event.
  */
 template<typename W>
-std::function<void()> bind_status_label(twidget& find_in, const std::string& id,
+std::function<void()> bind_status_label(widget& find_in, const std::string& id,
 		const std::function<std::string(W&)> value_getter = default_value_getter<W>,
 		const std::string& label_id = "")
 {
 	const std::string label_id_ = label_id.empty() ? id + "_label" : label_id;
 
 	W& source = find_widget<W>(&find_in, id, false);
-	tcontrol& label = find_widget<tcontrol>(&find_in, label_id_, false);
+	control& label = find_widget<control>(&find_in, label_id_, false);
 
 	const auto update_label = [&, value_getter]() {
 		const std::string value = value_getter(source);

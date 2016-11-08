@@ -34,7 +34,7 @@
 
 namespace
 {
-bool unchecked_bool_field_finder(gui2::twindow& window,
+bool unchecked_bool_field_finder(gui2::window& window,
 								 gui2::tfield_bool* bool_field)
 {
 	return bool_field->get_widget_value(window) == false;
@@ -161,7 +161,7 @@ void taddon_filter_options::read_types_vector(const boost::dynamic_bitset<>& v)
 }
 
 void taddon_filter_options::toggle_all_displayed_types_button_callback(
-		twindow& window)
+		window& window)
 {
 	const bool have_any_unchecked
 			= displayed_types_fields_.end()
@@ -187,9 +187,9 @@ void taddon_filter_options::toggle_dir_callback()
 	dir_ = dir_tgroup_.get_active_member_value();
 }
 
-void taddon_filter_options::pre_show(twindow& window)
+void taddon_filter_options::pre_show(window& window)
 {
-	tlistbox& list = find_widget<tlistbox>(&window, "statuses_list", false);
+	listbox& list = find_widget<listbox>(&window, "statuses_list", false);
 	window.keyboard_capture(&list);
 
 	for(unsigned k = ADDON_STATUS_FILTER(); k < FILTER_COUNT; ++k) {
@@ -205,7 +205,7 @@ void taddon_filter_options::pre_show(twindow& window)
 	list.select_row(displayed_status_);
 
 	connect_signal_mouse_left_click(
-			find_widget<tbutton>(&window, "toggle_all_displayed_types", false),
+			find_widget<button>(&window, "toggle_all_displayed_types", false),
 			std::bind(&taddon_filter_options::
 								 toggle_all_displayed_types_button_callback,
 						this,
@@ -221,12 +221,12 @@ void taddon_filter_options::pre_show(twindow& window)
 	register_dir_toggle(window, "descending", DIRECTION_DESCENDING);
 }
 
-void taddon_filter_options::register_sort_toggle(twindow& window,
+void taddon_filter_options::register_sort_toggle(window& window,
 												 const std::string& toggle_id,
 												 ADDON_SORT value)
 {
-	ttoggle_button* b
-			= &find_widget<ttoggle_button>(&window, "sort_" + toggle_id, false);
+	toggle_button* b
+			= &find_widget<toggle_button>(&window, "sort_" + toggle_id, false);
 
 	b->set_value(value == sort_);
 
@@ -237,12 +237,12 @@ void taddon_filter_options::register_sort_toggle(twindow& window,
 			std::bind(&taddon_filter_options::toggle_sort_callback, this));
 }
 
-void taddon_filter_options::register_dir_toggle(twindow& window,
+void taddon_filter_options::register_dir_toggle(window& window,
 												const std::string& toggle_id,
 												ADDON_SORT_DIRECTION value)
 {
-	ttoggle_button* b
-			= &find_widget<ttoggle_button>(&window, "sort_" + toggle_id, false);
+	toggle_button* b
+			= &find_widget<toggle_button>(&window, "sort_" + toggle_id, false);
 
 	b->set_value(value == dir_);
 
@@ -253,14 +253,14 @@ void taddon_filter_options::register_dir_toggle(twindow& window,
 			std::bind(&taddon_filter_options::toggle_dir_callback, this));
 }
 
-void taddon_filter_options::post_show(twindow& window)
+void taddon_filter_options::post_show(window& window)
 {
 	// Sorting and direction options are handled in widget
 	// callbacks.
 	sort_tgroup_.clear();
 	dir_tgroup_.clear();
 
-	tlistbox& list = find_widget<tlistbox>(&window, "statuses_list", false);
+	listbox& list = find_widget<listbox>(&window, "statuses_list", false);
 	const int selected = list.get_selected_row();
 
 	if(selected != -1) {

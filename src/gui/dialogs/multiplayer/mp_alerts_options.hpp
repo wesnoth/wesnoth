@@ -19,7 +19,7 @@
 
 namespace gui2
 {
-class tlabel;
+class label;
 
 class tmp_alerts_options : public tdialog
 {
@@ -42,10 +42,10 @@ private:
 	virtual const std::string& window_id() const;
 
 	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	void pre_show(window& window);
 
 	/** Inherited from tdialog. */
-	void post_show(twindow& window);
+	void post_show(window& window);
 };
 
 }

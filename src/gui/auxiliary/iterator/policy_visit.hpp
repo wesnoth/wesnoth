@@ -56,7 +56,7 @@ public:
 	/**
 	 * Acts like @ref twalker_::get for the level where the policy is used.
 	 */
-	gui2::twidget* get(twalker_&)
+	gui2::widget* get(twalker_&)
 	{
 		return nullptr;
 	}
@@ -90,7 +90,7 @@ public:
 	/**
 	 * Acts like @ref twalker_::get for the level where the policy is used.
 	 */
-	gui2::twidget* get(twalker_& visitor)
+	gui2::widget* get(twalker_& visitor)
 	{
 		return visitor.get(level);
 	}

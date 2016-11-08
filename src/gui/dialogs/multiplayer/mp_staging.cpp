@@ -71,22 +71,22 @@ tmp_staging::~tmp_staging()
 	}
 }
 
-void tmp_staging::pre_show(twindow& window)
+void tmp_staging::pre_show(window& window)
 {
 	window.set_enter_disabled(true);
 
 	//
 	// Set title and status widget states
 	//
-	tlabel& title = find_widget<tlabel>(&window, "title", false);
-	title.set_label((formatter() << title.label() << " " << font::unicode_em_dash << " " << connect_engine_.scenario()["name"].t_str()).str());
+	label& title = find_widget<label>(&window, "title", false);
+	title.set_label((formatter() << title.get_label() << " " << font::unicode_em_dash << " " << connect_engine_.scenario()["name"].t_str()).str());
 
 	update_status_label_and_buttons(window);
 
 	//
 	// Set up sides list
 	//
-	ttree_view& tree = find_widget<ttree_view>(&window, "side_list", false);
+	tree_view& tree = find_widget<tree_view>(&window, "side_list", false);
 	const std::map<std::string, string_map> empty_map;
 
 	for(const auto& side : connect_engine_.side_engines()) {
@@ -102,7 +102,7 @@ void tmp_staging::pre_show(twindow& window)
 			item["label"] = (formatter() << _("Team:") << " " << side->user_team_name()).str();
 			data.emplace("tree_view_node_label", item);
 
-			ttree_view_node& team_node = tree.add_node("team_header", data);
+			tree_view_node& team_node = tree.add_node("team_header", data);
 			team_node.add_sibling("side_spacer", empty_map);
 
 			team_tree_map_[side->team_name()] = &team_node;
@@ -114,7 +114,7 @@ void tmp_staging::pre_show(twindow& window)
 	//
 	// Initialize chatbox and game rooms
 	//
-	tchatbox& chat = find_widget<tchatbox>(&window, "chat", false);
+	chatbox& chat = find_widget<chatbox>(&window, "chat", false);
 
 	chat.set_lobby_info(lobby_info_);
 
@@ -142,12 +142,12 @@ void tmp_staging::pre_show(twindow& window)
 	//
 	plugins_context_.reset(new plugins_context("Multiplayer Staging"));
 
-	plugins_context_->set_callback("launch", [&window](const config&) { window.set_retval(twindow::OK); }, false);
-	plugins_context_->set_callback("quit",   [&window](const config&) { window.set_retval(twindow::CANCEL); }, false);
+	plugins_context_->set_callback("launch", [&window](const config&) { window.set_retval(window::OK); }, false);
+	plugins_context_->set_callback("quit",   [&window](const config&) { window.set_retval(window::CANCEL); }, false);
 	plugins_context_->set_callback("chat",   [&chat](const config& cfg) { chat.send_chat_message(cfg["message"], false); }, true);
 }
 
-void tmp_staging::add_side_node(twindow& window, ng::side_engine_ptr side)
+void tmp_staging::add_side_node(window& window, ng::side_engine_ptr side)
 {
 	std::map<std::string, string_map> data;
 	string_map item;
@@ -162,11 +162,11 @@ void tmp_staging::add_side_node(twindow& window, ng::side_engine_ptr side)
 	item["label"] = "icons/icon-random.png";
 	data.emplace("leader_gender", item);
 
-	ttree_view_node& node = team_tree_map_[side->team_name()]->add_child("side_panel", data);
+	tree_view_node& node = team_tree_map_[side->team_name()]->add_child("side_panel", data);
 
 	side_tree_map_[side] = &node;
 
-	tgrid& row_grid = node.get_grid();
+	grid& row_grid = node.get_grid();
 
 	update_leader_display(side, row_grid);
 
@@ -196,7 +196,7 @@ void tmp_staging::add_side_node(twindow& window, ng::side_engine_ptr side)
 		}
 	}
 
-	tmenu_button& ai_selection = find_widget<tmenu_button>(&row_grid, "ai_controller", false);
+	menu_button& ai_selection = find_widget<menu_button>(&row_grid, "ai_controller", false);
 
 	ai_selection.set_values(ai_options, selection);
 	ai_selection.connect_click_handler(std::bind(&tmp_staging::on_ai_select, this, side, std::ref(ai_selection)));
@@ -211,7 +211,7 @@ void tmp_staging::add_side_node(twindow& window, ng::side_engine_ptr side)
 		controller_names.push_back(config_of("label", controller.second));
 	}
 
-	tmenu_button& controller_selection = find_widget<tmenu_button>(&row_grid, "controller", false);
+	menu_button& controller_selection = find_widget<menu_button>(&row_grid, "controller", false);
 
 	controller_selection.set_values(controller_names, side->current_controller_index());
 	controller_selection.set_active(controller_names.size() > 1);
@@ -222,7 +222,7 @@ void tmp_staging::add_side_node(twindow& window, ng::side_engine_ptr side)
 	//
 	// Leader controls
 	//
-	tbutton& leader_select = find_widget<tbutton>(&row_grid, "select_leader", false);
+	button& leader_select = find_widget<button>(&row_grid, "select_leader", false);
 
 	leader_select.set_active(!saved_game);
 
@@ -237,7 +237,7 @@ void tmp_staging::add_side_node(twindow& window, ng::side_engine_ptr side)
 		team_names.push_back(config_of("label", team));
 	}
 
-	tmenu_button& team_selection = find_widget<tmenu_button>(&row_grid, "side_team", false);
+	menu_button& team_selection = find_widget<menu_button>(&row_grid, "side_team", false);
 
 	// HACK: side->team() does not get its index from side->player_teams(), but rather side->team_names().
 	// As such, the index is off if there is only 1 playable team. This is a hack to make sure the menu_button
@@ -258,7 +258,7 @@ void tmp_staging::add_side_node(twindow& window, ng::side_engine_ptr side)
 		);
 	}
 
-	tmenu_button& color_selection = find_widget<tmenu_button>(&row_grid, "side_color", false);
+	menu_button& color_selection = find_widget<menu_button>(&row_grid, "side_color", false);
 
 	color_selection.set_values(color_options, side->color());
 	color_selection.set_active(!saved_game);
@@ -268,13 +268,13 @@ void tmp_staging::add_side_node(twindow& window, ng::side_engine_ptr side)
 	//
 	// Gold and Income
 	//
-	tslider& slider_gold = find_widget<tslider>(&row_grid, "side_gold_slider", false);
+	slider& slider_gold = find_widget<slider>(&row_grid, "side_gold_slider", false);
 	slider_gold.set_value(side->cfg()["gold"].to_int(100));
 
 	connect_signal_notify_modified(slider_gold, std::bind(
 		&tmp_staging::on_side_slider_change<&ng::side_engine::set_gold>, this, side, std::ref(slider_gold)));
 
-	tslider& slider_income = find_widget<tslider>(&row_grid, "side_income_slider", false);
+	slider& slider_income = find_widget<slider>(&row_grid, "side_income_slider", false);
 	slider_income.set_value(side->cfg()["income"]);
 
 	connect_signal_notify_modified(slider_income, std::bind(
@@ -282,8 +282,8 @@ void tmp_staging::add_side_node(twindow& window, ng::side_engine_ptr side)
 
 	// TODO: maybe display the saved values
 	if(saved_game) {
-		slider_gold.set_visible(twidget::tvisible::invisible);
-		slider_income.set_visible(twidget::tvisible::invisible);
+		slider_gold.set_visible(widget::tvisible::invisible);
+		slider_income.set_visible(widget::tvisible::invisible);
 	}
 
 	//
@@ -298,9 +298,9 @@ void tmp_staging::add_side_node(twindow& window, ng::side_engine_ptr side)
 	}
 }
 
-void tmp_staging::update_player_list(twindow& window)
+void tmp_staging::update_player_list(window& window)
 {
-	tlistbox& player_list = find_widget<tlistbox>(&window, "player_list", false);
+	listbox& player_list = find_widget<listbox>(&window, "player_list", false);
 
 	player_list.clear();
 
@@ -315,40 +315,40 @@ void tmp_staging::update_player_list(twindow& window)
 	}
 }
 
-void tmp_staging::on_controller_select(ng::side_engine_ptr side, tgrid& row_grid)
+void tmp_staging::on_controller_select(ng::side_engine_ptr side, grid& row_grid)
 {
-	tmenu_button& ai_selection         = find_widget<tmenu_button>(&row_grid, "ai_controller", false);
-	tmenu_button& controller_selection = find_widget<tmenu_button>(&row_grid, "controller", false);
+	menu_button& ai_selection         = find_widget<menu_button>(&row_grid, "ai_controller", false);
+	menu_button& controller_selection = find_widget<menu_button>(&row_grid, "controller", false);
 
 	if(side->controller_changed(controller_selection.get_value())) {
-		ai_selection.set_visible(side->controller() == ng::CNTR_COMPUTER ? twidget::tvisible::visible : twidget::tvisible::hidden);
+		ai_selection.set_visible(side->controller() == ng::CNTR_COMPUTER ? widget::tvisible::visible : widget::tvisible::hidden);
 
 		set_state_changed();
 	}
 }
 
-void tmp_staging::on_ai_select(ng::side_engine_ptr side, tmenu_button& ai_menu)
+void tmp_staging::on_ai_select(ng::side_engine_ptr side, menu_button& ai_menu)
 {
 	side->set_ai_algorithm(ai_algorithms_[ai_menu.get_value()]->id);
 
 	set_state_changed();
 }
 
-void tmp_staging::on_color_select(ng::side_engine_ptr side, tgrid& row_grid)
+void tmp_staging::on_color_select(ng::side_engine_ptr side, grid& row_grid)
 {
-	side->set_color(find_widget<tmenu_button>(&row_grid, "side_color", false).get_value());
+	side->set_color(find_widget<menu_button>(&row_grid, "side_color", false).get_value());
 
 	update_leader_display(side, row_grid);
 
 	set_state_changed();
 }
 
-void tmp_staging::on_team_select(twindow& window, ng::side_engine_ptr side, tmenu_button& team_menu, bool& handled, bool& halt)
+void tmp_staging::on_team_select(window& window, ng::side_engine_ptr side, menu_button& team_menu, bool& handled, bool& halt)
 {
 	side->set_team(team_menu.get_value());
 
 	// First, remove the node from the tree
-	find_widget<ttree_view>(&window, "side_list", false).remove_node(side_tree_map_[side]);
+	find_widget<tree_view>(&window, "side_list", false).remove_node(side_tree_map_[side]);
 
 	// Then add a new node as a child to the appropriate team's node
 	add_side_node(window, side);
@@ -359,12 +359,12 @@ void tmp_staging::on_team_select(twindow& window, ng::side_engine_ptr side, tmen
 	halt = true;
 }
 
-void tmp_staging::select_leader_callback(twindow& window, ng::side_engine_ptr side, tgrid& row_grid)
+void tmp_staging::select_leader_callback(window& window, ng::side_engine_ptr side, grid& row_grid)
 {
 	gui2::tfaction_select dlg(side->flg(), std::to_string(side->color() + 1), side->index() + 1);
 	dlg.show(window.video());
 
-	if(dlg.get_retval() == twindow::OK) {
+	if(dlg.get_retval() == window::OK) {
 		update_leader_display(side, row_grid);
 
 		set_state_changed();
@@ -372,14 +372,14 @@ void tmp_staging::select_leader_callback(twindow& window, ng::side_engine_ptr si
 }
 
 template<void(ng::side_engine::*fptr)(int)>
-void tmp_staging::on_side_slider_change(ng::side_engine_ptr side, tslider& slider)
+void tmp_staging::on_side_slider_change(ng::side_engine_ptr side, slider& slider)
 {
 	((*side).*fptr)(slider.get_value());
 
 	set_state_changed();
 }
 
-void tmp_staging::update_leader_display(ng::side_engine_ptr side, tgrid& row_grid)
+void tmp_staging::update_leader_display(ng::side_engine_ptr side, grid& row_grid)
 {
 	const std::string current_faction = (*side->flg().choosable_factions()[side->flg().current_faction_index()])["name"];
 
@@ -403,39 +403,39 @@ void tmp_staging::update_leader_display(ng::side_engine_ptr side, tgrid& row_gri
 		current_leader = type.type_name();
 	}
 
-	find_widget<timage>(&row_grid, "leader_image", false).set_label(new_image);
+	find_widget<image>(&row_grid, "leader_image", false).set_label(new_image);
 
 	// Faction and leader
 	if(!side->cfg()["name"].empty()) {
 		current_leader = formatter() << side->cfg()["name"] << " (<i>" << current_leader << "</i>)";
 	}
 
-	find_widget<tlabel>(&row_grid, "leader_type", false).set_label(current_leader);
-	find_widget<tlabel>(&row_grid, "leader_faction", false).set_label("<span color='#a69275'>" + current_faction + "</span>");
+	find_widget<label>(&row_grid, "leader_type", false).set_label(current_leader);
+	find_widget<label>(&row_grid, "leader_faction", false).set_label("<span color='#a69275'>" + current_faction + "</span>");
 
 	// Gender
 	if(current_gender != font::unicode_em_dash) {
 		const std::string gender_icon = formatter() << "icons/icon-" << current_gender << ".png";
 
-		timage& icon = find_widget<timage>(&row_grid, "leader_gender", false);
+		image& icon = find_widget<image>(&row_grid, "leader_gender", false);
 
 		icon.set_label(gender_icon);
 		icon.set_tooltip(current_gender);
 	}
 }
 
-void tmp_staging::update_status_label_and_buttons(twindow& window)
+void tmp_staging::update_status_label_and_buttons(window& window)
 {
-	find_widget<tlabel>(&window, "status_label", false).set_label(
+	find_widget<label>(&window, "status_label", false).set_label(
 		connect_engine_.can_start_game() ? "" : connect_engine_.sides_available()
 			? _("Waiting for players to join...")
 			: _("Waiting for players to choose factions...")
 	);
 
-	find_widget<tbutton>(&window, "ok", false).set_active(connect_engine_.can_start_game());
+	find_widget<button>(&window, "ok", false).set_active(connect_engine_.can_start_game());
 }
 
-void tmp_staging::network_handler(twindow& window)
+void tmp_staging::network_handler(window& window)
 {
 	// First, send off any changes if they've been accumulated
 	if(state_changed_) {
@@ -449,7 +449,7 @@ void tmp_staging::network_handler(twindow& window)
 	}
 
 	// Update chat
-	find_widget<tchatbox>(&window, "chat", false).process_network_data(data);
+	find_widget<chatbox>(&window, "chat", false).process_network_data(data);
 
 	// TODO: why is this needed...
 	const bool was_able_to_start = connect_engine_.can_start_game();
@@ -458,7 +458,7 @@ void tmp_staging::network_handler(twindow& window)
 	std::tie(quit_signal_recieved, std::ignore) = connect_engine_.process_network_data(data);
 
 	if(quit_signal_recieved) {
-		window.set_retval(twindow::CANCEL);
+		window.set_retval(window::CANCEL);
 	}
 
 	// Update side leader displays
@@ -466,7 +466,7 @@ void tmp_staging::network_handler(twindow& window)
 	for(auto& tree_entry : side_tree_map_) {
 		ng::side_engine_ptr side = tree_entry.first;
 
-		tgrid& row_grid = tree_entry.second->get_grid();
+		grid& row_grid = tree_entry.second->get_grid();
 
 		update_leader_display(side, row_grid);
 
@@ -475,7 +475,7 @@ void tmp_staging::network_handler(twindow& window)
 			controller_names.push_back(config_of("label", controller.second));
 		}
 
-		tmenu_button& controller_selection = find_widget<tmenu_button>(&row_grid, "controller", false);
+		menu_button& controller_selection = find_widget<menu_button>(&row_grid, "controller", false);
 
 		controller_selection.set_values(controller_names, side->current_controller_index());
 		controller_selection.set_active(controller_names.size() > 1);
@@ -495,14 +495,14 @@ void tmp_staging::network_handler(twindow& window)
 	state_changed_ = false;
 }
 
-void tmp_staging::post_show(twindow& window)
+void tmp_staging::post_show(window& window)
 {
 	if(update_timer_ != 0) {
 		remove_timer(update_timer_);
 		update_timer_ = 0;
 	}
 
-	if(window.get_retval() == twindow::OK) {
+	if(window.get_retval() == window::OK) {
 		connect_engine_.start_game();
 	} else {
 		connect_engine_.leave_game();

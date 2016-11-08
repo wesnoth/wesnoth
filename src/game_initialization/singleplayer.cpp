@@ -68,7 +68,7 @@ bool enter_create_mode(CVideo& video, const config& game_config, saved_game& sta
 				return false;
 			}
 
-			if(dlg.get_retval() != gui2::twindow::OK) {
+			if(dlg.get_retval() != gui2::window::OK) {
 				return false;
 			}
 

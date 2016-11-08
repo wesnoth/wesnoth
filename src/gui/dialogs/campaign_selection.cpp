@@ -82,11 +82,11 @@ namespace gui2
 
 REGISTER_DIALOG(campaign_selection)
 
-void tcampaign_selection::campaign_selected(twindow& window)
+void tcampaign_selection::campaign_selected(window& window)
 {
 	if(new_widgets || true) {
-		ttree_view& tree
-				= find_widget<ttree_view>(&window, "campaign_tree", false);
+		tree_view& tree
+				= find_widget<tree_view>(&window, "campaign_tree", false);
 
 		if(tree.empty()) {
 			return;
@@ -97,20 +97,20 @@ void tcampaign_selection::campaign_selected(twindow& window)
 			const unsigned choice
 				= lexical_cast<unsigned>(tree.selected_item()->id());
 
-			tmulti_page& multi_page
-				= find_widget<tmulti_page>(&window, "campaign_details", false);
-			multi_page.select_page(choice);
+			multi_page& pages
+				= find_widget<multi_page>(&window, "campaign_details", false);
+			pages.select_page(choice);
 			engine_.set_current_level(choice);
 		}
 	} else {
 		const int selected_row
-				= find_widget<tlistbox>(&window, "campaign_list", false)
+				= find_widget<listbox>(&window, "campaign_list", false)
 						  .get_selected_row();
 
-		tmulti_page& multi_page
-				= find_widget<tmulti_page>(&window, "campaign_details", false);
+		multi_page& pages
+				= find_widget<multi_page>(&window, "campaign_details", false);
 
-		multi_page.select_page(selected_row);
+		pages.select_page(selected_row);
 		engine_.set_current_level(selected_row);
 	}
 }
@@ -120,12 +120,12 @@ void tcampaign_selection::show_settings(CVideo& video) {
 	settings_dlg.show(video);
 }
 
-void tcampaign_selection::pre_show(twindow& window)
+void tcampaign_selection::pre_show(window& window)
 {
 	if(new_widgets || true) {
 		/***** Setup campaign tree. *****/
-		ttree_view& tree
-				= find_widget<ttree_view>(&window, "campaign_tree", false);
+		tree_view& tree
+				= find_widget<tree_view>(&window, "campaign_tree", false);
 
 		tree.set_selection_change_callback(
 				std::bind(&tcampaign_selection::campaign_selected,
@@ -137,8 +137,8 @@ void tcampaign_selection::pre_show(twindow& window)
 		string_map tree_group_field;
 		std::map<std::string, string_map> tree_group_item;
 		/***** Setup campaign details. *****/
-		tmulti_page& multi_page
-				= find_widget<tmulti_page>(&window, "campaign_details", false);
+		multi_page& pages
+				= find_widget<multi_page>(&window, "campaign_details", false);
 
 		unsigned id = 0;
 		for(const auto & level : engine_.get_levels_by_type_unfiltered(ng::level::TYPE::SP_CAMPAIGN))
@@ -173,14 +173,14 @@ void tcampaign_selection::pre_show(twindow& window)
 			detail_item["label"] = campaign["image"];
 			detail_page.emplace("image", detail_item);
 
-			multi_page.add_page(detail_page);
+			pages.add_page(detail_page);
 		}
 		if (!engine_.get_const_extras_by_type(ng::create_engine::MOD).empty()) {
 
 			tree_group_field["label"] = "Modifications";
 			tree_group_item["tree_view_node_label"] = tree_group_field;
 			//tree_group_item["tree_view_node_label"] = tree_group_field;
-			ttree_view_node& mods_node = tree.add_node("campaign_group", tree_group_item);
+			tree_view_node& mods_node = tree.add_node("campaign_group", tree_group_item);
 			std::vector<std::string> enabled = engine_.active_mods();
 
 			id = 0;
@@ -192,8 +192,8 @@ void tcampaign_selection::pre_show(twindow& window)
 				tree_group_field["label"] = mod->name;
 				tree_group_item["checkb"] = tree_group_field;
 
-				ttree_view_node & node = mods_node.add_child("modification", tree_group_item);
-				ttoggle_button* checkbox = dynamic_cast<ttoggle_button*>(node.find("checkb", true));
+				tree_view_node & node = mods_node.add_child("modification", tree_group_item);
+				toggle_button* checkbox = dynamic_cast<toggle_button*>(node.find("checkb", true));
 				VALIDATE(checkbox, missing_widget("checkb"));
 				checkbox->set_value(active);
 				checkbox->set_label(mod->name);
@@ -203,14 +203,14 @@ void tcampaign_selection::pre_show(twindow& window)
 		}
 	} else {
 		/***** Hide the tree view. *****/
-		if(ttree_view* tree
-		   = find_widget<ttree_view>(&window, "campaign_tree", false, false)) {
+		if(tree_view* tree
+		   = find_widget<tree_view>(&window, "campaign_tree", false, false)) {
 
-			tree->set_visible(twidget::tvisible::invisible);
+			tree->set_visible(widget::tvisible::invisible);
 		}
 
 		/***** Setup campaign list. *****/
-		tlistbox& list = find_widget<tlistbox>(&window, "campaign_list", false);
+		listbox& list = find_widget<listbox>(&window, "campaign_list", false);
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 		connect_signal_notify_modified(
 				list,
@@ -225,8 +225,8 @@ void tcampaign_selection::pre_show(twindow& window)
 		window.keyboard_capture(&list);
 
 		/***** Setup campaign details. *****/
-		tmulti_page& multi_page
-				= find_widget<tmulti_page>(&window, "campaign_details", false);
+		multi_page& pages
+				= find_widget<multi_page>(&window, "campaign_details", false);
 
 		for(const auto & level : engine_.get_levels_by_type_unfiltered(ng::level::TYPE::SP_CAMPAIGN))
 		{
@@ -242,12 +242,12 @@ void tcampaign_selection::pre_show(twindow& window)
 			list_item["label"] = campaign["name"];
 			list_item_item.emplace("name", list_item);
 
-			tgrid* grid = &list.add_row(list_item_item);
+			grid* grid = &list.add_row(list_item_item);
 			assert(grid);
 
-			twidget* widget = grid->find("victory", false);
+			widget* widget = grid->find("victory", false);
 			if(widget && !campaign["completed"].to_bool()) {
-				widget->set_visible(twidget::tvisible::hidden);
+				widget->set_visible(widget::tvisible::hidden);
 			}
 
 			/*** Add detail item ***/
@@ -262,25 +262,25 @@ void tcampaign_selection::pre_show(twindow& window)
 			detail_item["label"] = campaign["image"];
 			detail_page.emplace("image", detail_item);
 
-			multi_page.add_page(detail_page);
+			pages.add_page(detail_page);
 		}
 	}
 	campaign_selected(window);
 
 	/***** Setup advanced settings button *****/
-	tbutton* advanced_settings_button =
-			find_widget<tbutton>(&window, "advanced_settings", false, false);
+	button* advanced_settings_button =
+			find_widget<button>(&window, "advanced_settings", false, false);
 	if(advanced_settings_button) {
 		advanced_settings_button->connect_click_handler(
 			std::bind(&tcampaign_selection::show_settings, this, std::ref(window.video())));
 	}
 }
 
-void tcampaign_selection::post_show(twindow& window)
+void tcampaign_selection::post_show(window& window)
 {
 	if(new_widgets || true) {
-		ttree_view& tree
-				= find_widget<ttree_view>(&window, "campaign_tree", false);
+		tree_view& tree
+				= find_widget<tree_view>(&window, "campaign_tree", false);
 
 		if(tree.empty()) {
 			return;
@@ -290,21 +290,21 @@ void tcampaign_selection::post_show(twindow& window)
 		if(tree.selected_item()->id() != "") {
 			choice_ = lexical_cast<unsigned>(tree.selected_item()->id());
 		}
-		deterministic_ = find_widget<ttoggle_button>(&window,
+		deterministic_ = find_widget<toggle_button>(&window,
 													 "checkbox_deterministic",
 													 false).get_value_bool();
 
 		preferences::set_modifications(engine_.active_mods(), false);
 	} else {
-		choice_ = find_widget<tlistbox>(&window, "campaign_list", false)
+		choice_ = find_widget<listbox>(&window, "campaign_list", false)
 						  .get_selected_row();
-		deterministic_ = find_widget<ttoggle_button>(&window,
+		deterministic_ = find_widget<toggle_button>(&window,
 													 "checkbox_deterministic",
 													 false).get_value_bool();
 	}
 }
 
-void tcampaign_selection::mod_toggled(int id, twidget &)
+void tcampaign_selection::mod_toggled(int id, widget &)
 {
 	engine_.set_current_mod_index(id);
 	engine_.toggle_current_mod();

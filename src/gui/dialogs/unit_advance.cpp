@@ -45,9 +45,9 @@ tunit_advance::tunit_advance(const unit_ptr_vector& samples, size_t real)
 {
 }
 
-void tunit_advance::pre_show(twindow& window)
+void tunit_advance::pre_show(window& window)
 {
-	tlistbox& list = find_widget<tlistbox>(&window, "advance_choice", false);
+	listbox& list = find_widget<listbox>(&window, "advance_choice", false);
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	connect_signal_notify_modified(*list,
@@ -62,7 +62,7 @@ void tunit_advance::pre_show(twindow& window)
 	window.keyboard_capture(&list);
 
 	connect_signal_mouse_left_click(
-		find_widget<tbutton>(&window, "show_help", false),
+		find_widget<button>(&window, "show_help", false),
 		std::bind(&tunit_advance::show_help, this, std::ref(window)));
 
 	for(size_t i = 0; i < previews_.size(); i++) {
@@ -105,28 +105,28 @@ void tunit_advance::pre_show(twindow& window)
 	window.set_escape_disabled(true);
 }
 
-void tunit_advance::list_item_clicked(twindow& window)
+void tunit_advance::list_item_clicked(window& window)
 {
 	const int selected_row
-		= find_widget<tlistbox>(&window, "advance_choice", false).get_selected_row();
+		= find_widget<listbox>(&window, "advance_choice", false).get_selected_row();
 
 	if(selected_row == -1) {
 		return;
 	}
 
-	find_widget<tunit_preview_pane>(&window, "advancement_details", false)
+	find_widget<unit_preview_pane>(&window, "advancement_details", false)
 		.set_displayed_unit(*previews_[selected_row]);
 }
 
-void tunit_advance::show_help(twindow& window)
+void tunit_advance::show_help(window& window)
 {
 	help::show_help(window.video(), "advancement");
 }
 
-void tunit_advance::post_show(twindow& window)
+void tunit_advance::post_show(window& window)
 {
-	if(get_retval() == twindow::OK) {
-		selected_index_ = find_widget<tlistbox>(&window, "advance_choice", false)
+	if(get_retval() == window::OK) {
+		selected_index_ = find_widget<listbox>(&window, "advance_choice", false)
 			.get_selected_row();
 	}
 }

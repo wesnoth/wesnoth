@@ -28,7 +28,7 @@ namespace gui2
 
 REGISTER_WIDGET(vertical_scrollbar)
 
-unsigned tvertical_scrollbar::minimum_positioner_length() const
+unsigned vertical_scrollbar::minimum_positioner_length() const
 {
 	std::shared_ptr<const vertical_scrollbar_definition::tresolution> conf
 			= std::static_pointer_cast<const vertical_scrollbar_definition::
@@ -37,7 +37,7 @@ unsigned tvertical_scrollbar::minimum_positioner_length() const
 	return conf->minimum_positioner_length;
 }
 
-unsigned tvertical_scrollbar::maximum_positioner_length() const
+unsigned vertical_scrollbar::maximum_positioner_length() const
 {
 	std::shared_ptr<const vertical_scrollbar_definition::tresolution> conf
 			= std::static_pointer_cast<const vertical_scrollbar_definition::
@@ -46,7 +46,7 @@ unsigned tvertical_scrollbar::maximum_positioner_length() const
 	return conf->maximum_positioner_length;
 }
 
-unsigned tvertical_scrollbar::offset_before() const
+unsigned vertical_scrollbar::offset_before() const
 {
 	std::shared_ptr<const vertical_scrollbar_definition::tresolution> conf
 			= std::static_pointer_cast<const vertical_scrollbar_definition::
@@ -55,7 +55,7 @@ unsigned tvertical_scrollbar::offset_before() const
 	return conf->top_offset;
 }
 
-unsigned tvertical_scrollbar::offset_after() const
+unsigned vertical_scrollbar::offset_after() const
 {
 	std::shared_ptr<const vertical_scrollbar_definition::tresolution> conf
 			= std::static_pointer_cast<const vertical_scrollbar_definition::
@@ -64,7 +64,7 @@ unsigned tvertical_scrollbar::offset_after() const
 	return conf->bottom_offset;
 }
 
-bool tvertical_scrollbar::on_positioner(const point& coordinate) const
+bool vertical_scrollbar::on_positioner(const point& coordinate) const
 {
 	// Note we assume the positioner is over the entire width of the widget.
 	return coordinate.y >= static_cast<int>(get_positioner_offset())
@@ -73,7 +73,7 @@ bool tvertical_scrollbar::on_positioner(const point& coordinate) const
 		   && coordinate.x > 0 && coordinate.x < static_cast<int>(get_width());
 }
 
-int tvertical_scrollbar::on_bar(const point& coordinate) const
+int vertical_scrollbar::on_bar(const point& coordinate) const
 {
 	// Not on the widget, leave.
 	if(static_cast<size_t>(coordinate.x) > get_width()
@@ -92,12 +92,12 @@ int tvertical_scrollbar::on_bar(const point& coordinate) const
 	}
 }
 
-bool tvertical_scrollbar::in_orthogonal_range(const point& coordinate) const
+bool vertical_scrollbar::in_orthogonal_range(const point& coordinate) const
 {
 	return static_cast<size_t>(coordinate.y) < get_height();
 }
 
-const std::string& tvertical_scrollbar::get_control_type() const
+const std::string& vertical_scrollbar::get_control_type() const
 {
 	static const std::string type = "vertical_scrollbar";
 	return type;
@@ -203,9 +203,9 @@ builder_vertical_scrollbar::builder_vertical_scrollbar(const config& cfg)
 {
 }
 
-twidget* builder_vertical_scrollbar::build() const
+widget* builder_vertical_scrollbar::build() const
 {
-	tvertical_scrollbar* widget = new tvertical_scrollbar();
+	vertical_scrollbar* widget = new vertical_scrollbar();
 
 	init_control(widget);
 

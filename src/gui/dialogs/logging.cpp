@@ -50,11 +50,11 @@ tlogging::tlogging()
 	}
 }
 
-void tlogging::pre_show(twindow& window)
+void tlogging::pre_show(window& window)
 {
 	set_restore(true); //why is this done manually?
 
-	tlistbox& logger_box = find_widget<tlistbox>(&window, "logger_listbox", false);
+	listbox& logger_box = find_widget<listbox>(&window, "logger_listbox", false);
 
 	for(unsigned int i = 0; i < domain_list_.size(); i++){
 		std::string this_domain = domain_list_[i];
@@ -65,12 +65,12 @@ void tlogging::pre_show(twindow& window)
 		data["label"] = item;
 
 		logger_box.add_row(data);
-		tgroup<std::string>& group = groups_[this_domain];
+		group<std::string>& group = groups_[this_domain];
 
-		tgrid* this_grid = logger_box.get_row_grid(i);
+		grid* this_grid = logger_box.get_row_grid(i);
 		for(std::string this_id : widget_id_){
-			twidget* this_widget = this_grid->find(this_id, false);
-			ttoggle_button* button = dynamic_cast<ttoggle_button*>(this_widget);
+			widget* this_widget = this_grid->find(this_id, false);
+			toggle_button* button = dynamic_cast<toggle_button*>(this_widget);
 			if(button != nullptr) {
 				group.add_member(button, this_id);
 			}
@@ -82,7 +82,7 @@ void tlogging::pre_show(twindow& window)
 	}
 }
 
-void tlogging::post_show(twindow& /*window*/)
+void tlogging::post_show(window& /*window*/)
 {
 	for(std::string this_domain : domain_list_){
 		set_logger(this_domain);

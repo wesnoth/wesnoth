@@ -69,16 +69,16 @@ teditor_generate_map::teditor_generate_map()
 {
 }
 
-void teditor_generate_map::do_generator_selected(twindow& window)
+void teditor_generate_map::do_generator_selected(window& window)
 {
-	tlistbox& list = find_widget<tlistbox>(&window, "generators_list", false);
+	listbox& list = find_widget<listbox>(&window, "generators_list", false);
 	const int current = list.get_selected_row();
 
 	if(current == -1 || unsigned(current) > map_generators_.size()) {
 		return; // shouldn't happen!
 	}
 
-	tbutton& settings = find_widget<tbutton>(&window, "settings", false);
+	button& settings = find_widget<button>(&window, "settings", false);
 	settings.set_active(map_generators_[current]->allow_user_config());
 
 	current_map_generator_ = current;
@@ -101,13 +101,13 @@ void teditor_generate_map::select_map_generator(map_generator* mg)
 	last_map_generator_ = mg;
 }
 
-void teditor_generate_map::pre_show(twindow& window)
+void teditor_generate_map::pre_show(window& window)
 {
 	assert(!map_generators_.empty());
 
 	register_text("seed_textbox", false, random_seed_, false);
 
-	tlistbox& list = find_widget<tlistbox>(&window, "generators_list", false);
+	listbox& list = find_widget<listbox>(&window, "generators_list", false);
 	window.keyboard_capture(&list);
 
 	std::map<std::string, string_map> lrow;
@@ -134,7 +134,7 @@ void teditor_generate_map::pre_show(twindow& window)
 	list.set_callback_item_change(
 			std::bind(&teditor_generate_map::do_generator_selected, this, std::ref(window)));
 
-	tbutton& settings_button = find_widget<tbutton>(&window, "settings", false);
+	button& settings_button = find_widget<button>(&window, "settings", false);
 	connect_signal_mouse_left_click(
 			settings_button,
 			std::bind(&teditor_generate_map::do_settings,this));

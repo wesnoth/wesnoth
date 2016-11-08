@@ -35,32 +35,32 @@ namespace gui2
  * Since we're a kind of dummy class we're always active, our drawing does
  * nothing.
  */
-class tspacer : public tcontrol
+class spacer : public control
 {
 public:
-	tspacer() : tcontrol(0), best_size_(0, 0)
+	spacer() : control(0), best_size_(0, 0)
 	{
 	}
 
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
 private:
-	/** See @ref twidget::calculate_best_size. */
+	/** See @ref widget::calculate_best_size. */
 	virtual point calculate_best_size() const override;
 
 public:
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
-	/** See @ref tcontrol::set_active. */
+	/** See @ref control::set_active. */
 	virtual void set_active(const bool active) override;
 
-	/** See @ref tcontrol::get_active. */
+	/** See @ref control::get_active. */
 	virtual bool get_active() const override;
 
-	/** See @ref tcontrol::get_state. */
+	/** See @ref control::get_state. */
 	virtual unsigned get_state() const override;
 
-	/** See @ref twidget::disable_click_dismiss. */
+	/** See @ref widget::disable_click_dismiss. */
 	bool disable_click_dismiss() const override;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
@@ -74,12 +74,12 @@ private:
 	/** When we're used as a fixed size item, this holds the best size. */
 	point best_size_;
 
-	/** See @ref twidget::impl_draw_background. */
+	/** See @ref widget::impl_draw_background. */
 	virtual void impl_draw_background(surface& frame_buffer,
 									  int x_offset,
 									  int y_offset) override;
 
-	/** See @ref tcontrol::get_control_type. */
+	/** See @ref control::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 };
 
@@ -106,7 +106,7 @@ struct builder_spacer : public builder_control
 
 	using builder_control::build;
 
-	twidget* build() const;
+	widget* build() const;
 
 private:
 	tformula<unsigned> width_;

@@ -70,11 +70,11 @@ builder_widget_lookup()
  * be tuned. This page will describe what can be tuned.
  *
  */
-twindow* build(CVideo& video, const builder_window::window_resolution* definition)
+window* build(CVideo& video, const builder_window::window_resolution* definition)
 {
 	// We set the values from the definition since we can only determine the
 	// best size (if needed) after all widgets have been placed.
-	twindow* window = new twindow(video,
+	window* win = new window(video,
 								  definition->x,
 								  definition->y,
 								  definition->width,
@@ -89,44 +89,44 @@ twindow* build(CVideo& video, const builder_window::window_resolution* definitio
 								  definition->definition,
 								  definition->tooltip,
 								  definition->helptip);
-	assert(window);
+	assert(win);
 
 	for(const auto & lg : definition->linked_groups)
 	{
 
-		if(window->has_linked_size_group(lg.id)) {
+		if(win->has_linked_size_group(lg.id)) {
 			t_string msg = vgettext("Linked '$id' group has multiple definitions.", {{"id", lg.id}});
 
 			FAIL(msg);
 		}
 
-		window->init_linked_size_group(lg.id, lg.fixed_width, lg.fixed_height);
+		win->init_linked_size_group(lg.id, lg.fixed_width, lg.fixed_height);
 	}
 
-	window->set_click_dismiss(definition->click_dismiss);
+	win->set_click_dismiss(definition->click_dismiss);
 
 	std::shared_ptr<const window_definition::tresolution>
 	conf = std::static_pointer_cast<const window_definition::tresolution>(
-			window->config());
+			win->config());
 	assert(conf);
 
 	if(conf->grid) {
-		window->init_grid(conf->grid);
-		window->finalize(definition->grid);
+		win->init_grid(conf->grid);
+		win->finalize(definition->grid);
 	} else {
-		window->init_grid(definition->grid);
+		win->init_grid(definition->grid);
 	}
 
-	window->add_to_keyboard_chain(window);
+	win->add_to_keyboard_chain(win);
 
-	return window;
+	return win;
 }
 
-twindow* build(CVideo& video, const std::string& type)
+window* build(CVideo& video, const std::string& type)
 {
 	std::vector<builder_window::window_resolution>::const_iterator definition
 			= get_window_builder(type);
-	twindow* window = build(video, &*definition);
+	window* window = build(video, &*definition);
 	window->set_id(type);
 	return window;
 }
@@ -559,19 +559,19 @@ builder_grid::builder_grid(const config& cfg)
 			  << " columns.\n";
 }
 
-tgrid* builder_grid::build() const
+grid* builder_grid::build() const
 {
-	return build(new tgrid());
+	return build(new grid());
 }
 
-twidget* builder_grid::build(const replacements_map& replacements) const
+widget* builder_grid::build(const replacements_map& replacements) const
 {
-	tgrid* result = new tgrid();
+	grid* result = new grid();
 	build(*result, replacements);
 	return result;
 }
 
-tgrid* builder_grid::build(tgrid* grid) const
+grid* builder_grid::build(grid* grid) const
 {
 	grid->set_id(id);
 	grid->set_linked_group(linked_group);
@@ -593,7 +593,7 @@ tgrid* builder_grid::build(tgrid* grid) const
 			DBG_GUI_G << "Window builder: adding child at " << x << ',' << y
 					  << ".\n";
 
-			twidget* widget = widgets[x * cols + y]->build();
+			widget* widget = widgets[x * cols + y]->build();
 			grid->set_child(widget,
 							x,
 							y,
@@ -605,7 +605,7 @@ tgrid* builder_grid::build(tgrid* grid) const
 	return grid;
 }
 
-void builder_grid::build(tgrid& grid, const replacements_map& replacements) const
+void builder_grid::build(grid& grid, const replacements_map& replacements) const
 {
 	grid.set_id(id);
 	grid.set_linked_group(linked_group);

@@ -70,22 +70,22 @@ namespace gui2
 
 REGISTER_DIALOG(core_selection)
 
-void tcore_selection::core_selected(twindow& window)
+void tcore_selection::core_selected(window& window)
 {
 	const int selected_row
-			= find_widget<tlistbox>(&window, "core_list", false)
+			= find_widget<listbox>(&window, "core_list", false)
 					  .get_selected_row();
 
-	tmulti_page& multi_page
-			= find_widget<tmulti_page>(&window, "core_details", false);
+	multi_page& pages
+			= find_widget<multi_page>(&window, "core_details", false);
 
-	multi_page.select_page(selected_row);
+	pages.select_page(selected_row);
 }
 
-void tcore_selection::pre_show(twindow& window)
+void tcore_selection::pre_show(window& window)
 {
 	/***** Setup core list. *****/
-	tlistbox& list = find_widget<tlistbox>(&window, "core_list", false);
+	listbox& list = find_widget<listbox>(&window, "core_list", false);
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	connect_signal_notify_modified(
 			list,
@@ -100,8 +100,8 @@ void tcore_selection::pre_show(twindow& window)
 	window.keyboard_capture(&list);
 
 	/***** Setup core details. *****/
-	tmulti_page& multi_page
-			= find_widget<tmulti_page>(&window, "core_details", false);
+	multi_page& pages
+			= find_widget<multi_page>(&window, "core_details", false);
 
 	for(const auto & core : cores_)
 	{
@@ -115,7 +115,7 @@ void tcore_selection::pre_show(twindow& window)
 		list_item["label"] = core["name"];
 		list_item_item.emplace("name", list_item);
 
-		tgrid* grid = &list.add_row(list_item_item);
+		grid* grid = &list.add_row(list_item_item);
 		assert(grid);
 
 		/*** Add detail item ***/
@@ -126,16 +126,16 @@ void tcore_selection::pre_show(twindow& window)
 		detail_item["use_markup"] = "true";
 		detail_page.emplace("description", detail_item);
 
-		multi_page.add_page(detail_page);
+		pages.add_page(detail_page);
 	}
 	list.select_row(choice_, true);
 
 	core_selected(window);
 }
 
-void tcore_selection::post_show(twindow& window)
+void tcore_selection::post_show(window& window)
 {
-	choice_ = find_widget<tlistbox>(&window, "core_list", false)
+	choice_ = find_widget<listbox>(&window, "core_list", false)
 					  .get_selected_row();
 }
 

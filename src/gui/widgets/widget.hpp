@@ -32,7 +32,7 @@ namespace gui2
 
 struct builder_widget;
 class tdialog;
-class twindow;
+class window;
 
 namespace iterator
 {
@@ -46,12 +46,12 @@ class twalker_;
  * info needed for a real widget and some pure abstract functions which need to
  * be implemented by classes deriving from this class.
  */
-class twidget : private boost::noncopyable,
+class widget : private boost::noncopyable,
 				public event_executor,
 				public event::dispatcher
 {
-	friend class tdebug_layout_graph;
-	friend class twindow; // needed for modifying the layout_size.
+	friend class debug_layout_graph;
+	friend class window; // needed for modifying the layout_size.
 
 
 	/***** ***** ***** ***** ***** Types. ***** ***** ***** ***** *****/
@@ -78,7 +78,7 @@ public:
 		 * * @ref find_at 'sees' the widget if active is @c false.
 		 * * The widget doesn't handle events (and doesn't send events to
 		 *   its children).
-		 * * The widget doesn't add itself @ref twindow::dirty_list_ when
+		 * * The widget doesn't add itself @ref window::dirty_list_ when
 		 *   @ref populate_dirty_list is called (nor does it send the
 		 *   request to its children).
 		 */
@@ -90,7 +90,7 @@ public:
 		 * * @ref find_at never 'sees' the widget.
 		 * * The widget doesn't handle events (and doesn't send events to
 		 *   its children).
-		 * * The widget doesn't add itself @ref twindow::dirty_list_ when
+		 * * The widget doesn't add itself @ref window::dirty_list_ when
 		 *   @ref populate_dirty_list is called (nor does it send the
 		 *   request to its children).
 		 */
@@ -134,7 +134,7 @@ public:
 
 public:
 	/** @deprecated use the second overload. */
-	twidget();
+	widget();
 
 	/**
 	 * Constructor.
@@ -142,9 +142,9 @@ public:
 	 * @param builder             The builder object with the settings for the
 	 *                            object.
 	 */
-	explicit twidget(const builder_widget& builder);
+	explicit widget(const builder_widget& builder);
 
-	virtual ~twidget() override;
+	virtual ~widget() override;
 
 
 	/***** ***** ***** ***** ID functions. ***** ***** ***** *****/
@@ -178,10 +178,10 @@ public:
 	 * @returns                   Pointer to parent window.
 	 * @retval nullptr               No parent window found.
 	 */
-	twindow* get_window();
+	window* get_window();
 
 	/** The constant version of @ref get_window. */
-	const twindow* get_window() const;
+	const window* get_window() const;
 
 	/**
 	 * Returns the top-level dialogue.
@@ -201,8 +201,8 @@ public:
 
 	/*** *** *** *** *** *** Setters and getters. *** *** *** *** *** ***/
 
-	void set_parent(twidget* parent);
-	twidget* parent();
+	void set_parent(widget* parent);
+	widget* parent();
 
 	/*** *** *** *** *** *** *** *** Members. *** *** *** *** *** *** *** ***/
 
@@ -213,7 +213,7 @@ private:
 	 * If the widget has a parent it contains a pointer to the parent, else it
 	 * is set to @c nullptr.
 	 */
-	twidget* parent_;
+	widget* parent_;
 
 
 	/***** ***** ***** ***** Size and layout functions. ***** ***** ***** *****/
@@ -603,7 +603,7 @@ public:
 	/**
 	 * Adds a widget to the dirty list if it is dirty.
 	 *
-	 * See @ref twindow::dirty_list_ for more information regarding the dirty
+	 * See @ref window::dirty_list_ for more information regarding the dirty
 	 * list.
 	 *
 	 * If the widget is not dirty and has children it should add itself to the
@@ -614,8 +614,8 @@ public:
 	 * @param call_stack          The call-stack of widgets traversed to reach
 	 *                            this function.
 	 */
-	void populate_dirty_list(twindow& caller,
-							 std::vector<twidget*>& call_stack);
+	void populate_dirty_list(window& caller,
+							 std::vector<widget*>& call_stack);
 
 private:
 	/**
@@ -630,8 +630,8 @@ private:
 	 *                            this function.
 	 */
 	virtual void
-	child_populate_dirty_list(twindow& caller,
-							  const std::vector<twidget*>& call_stack);
+	child_populate_dirty_list(window& caller,
+							  const std::vector<widget*>& call_stack);
 
 public:
 	/**
@@ -744,11 +744,11 @@ public:
 	 * @retval nullptr               No widget at the wanted coordinate found (or
 	 *                            not active if must_be_active was set).
 	 */
-	virtual twidget* find_at(const point& coordinate,
+	virtual widget* find_at(const point& coordinate,
 							 const bool must_be_active);
 
 	/** The constant version of @ref find_at. */
-	virtual const twidget* find_at(const point& coordinate,
+	virtual const widget* find_at(const point& coordinate,
 								   const bool must_be_active) const;
 
 	/**
@@ -766,10 +766,10 @@ public:
 	 * @retval nullptr               No widget with the id found (or not active if
 	 *                            must_be_active was set).
 	 */
-	virtual twidget* find(const std::string& id, const bool must_be_active);
+	virtual widget* find(const std::string& id, const bool must_be_active);
 
 	/** The constant version of @ref find. */
-	virtual const twidget* find(const std::string& id,
+	virtual const widget* find(const std::string& id,
 								const bool must_be_active) const;
 
 	/**
@@ -783,7 +783,7 @@ public:
 	 *
 	 * @returns                   Whether or not the @p widget was found.
 	 */
-	virtual bool has_widget(const twidget& widget) const;
+	virtual bool has_widget(const widget& widget) const;
 
 private:
 	/** See @ref event::dispatcher::is_at. */
@@ -814,7 +814,7 @@ private:
 	 *
 	 * @returns                   Status.
 	 */
-	bool recursive_is_visible(const twidget* widget, const bool must_be_active) const;
+	bool recursive_is_visible(const widget* widget, const bool must_be_active) const;
 
 	/***** ***** ***** ***** Miscellaneous ***** ***** ****** *****/
 

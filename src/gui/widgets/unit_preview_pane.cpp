@@ -60,40 +60,40 @@ namespace gui2
 
 REGISTER_WIDGET(unit_preview_pane)
 
-void tunit_preview_pane::finalize_setup()
+void unit_preview_pane::finalize_setup()
 {
 	// Icons
-	icon_type_              = find_widget<timage>(this, "type_image", false, false);
-	icon_race_              = find_widget<timage>(this, "type_race", false, false);
-	icon_alignment_         = find_widget<timage>(this, "type_alignment", false, false);
+	icon_type_              = find_widget<image>(this, "type_image", false, false);
+	icon_race_              = find_widget<image>(this, "type_race", false, false);
+	icon_alignment_         = find_widget<image>(this, "type_alignment", false, false);
 
 	// Labels
-	label_name_             = find_widget<tlabel>(this, "type_name", false, false);
-	label_level_            = find_widget<tlabel>(this, "type_level", false, false);
-	label_race_             = find_widget<tlabel>(this, "type_race_label", false, false);
-	label_details_          = find_widget<tcontrol>(this, "type_details", false, false);
-	label_details_minimal_  = find_widget<tcontrol>(this, "type_details_minimal", false, false);
+	label_name_             = find_widget<label>(this, "type_name", false, false);
+	label_level_            = find_widget<label>(this, "type_level", false, false);
+	label_race_             = find_widget<label>(this, "type_race_label", false, false);
+	label_details_          = find_widget<control>(this, "type_details", false, false);
+	label_details_minimal_  = find_widget<control>(this, "type_details_minimal", false, false);
 
-	tree_details_           = find_widget<ttree_view>(this, "tree_details", false, false);
+	tree_details_           = find_widget<tree_view>(this, "tree_details", false, false);
 
 	// Profile button
-	button_profile_ = find_widget<tbutton>(this, "type_profile", false, false);
+	button_profile_ = find_widget<button>(this, "type_profile", false, false);
 
 	if(button_profile_) {
 		connect_signal_mouse_left_click(*button_profile_,
-			std::bind(&tunit_preview_pane::profile_button_callback, this));
+			std::bind(&unit_preview_pane::profile_button_callback, this));
 	}
 }
 
-static inline ttree_view_node& add_name_tree_node(ttree_view_node& header_node, const std::string& type, const t_string& label, const t_string& tooltip = "")
+static inline tree_view_node& add_name_tree_node(tree_view_node& header_node, const std::string& type, const t_string& label, const t_string& tooltip = "")
 {
 	/* Note: We have to pass data instead of just doing 'child_label.set_label(label)' below
-	 * because the ttree_view_node::add_child needs to have the correct size of the
+	 * because the tree_view_node::add_child needs to have the correct size of the
 	 * node child widgets for its internal size calculations.
 	 * Same is true for 'use_markup'
 	 */
 	auto& child_node = header_node.add_child(type, { { "name",{ { "label", label },{ "use_markup", "true" } } } });
-	auto& child_label = find_widget<tcontrol>(&child_node, "name", true);
+	auto& child_label = find_widget<control>(&child_node, "name", true);
 
 	child_label.set_tooltip(tooltip);
 	return child_node;
@@ -104,7 +104,7 @@ static inline ttree_view_node& add_name_tree_node(ttree_view_node& header_node, 
  * attack data, meaning we can keep this as a helper function.
  */
 template<typename T>
-void tunit_preview_pane::print_attack_details(T attacks, ttree_view_node& parent_node)
+void unit_preview_pane::print_attack_details(T attacks, tree_view_node& parent_node)
 {
 	if (attacks.empty()) {
 		return;
@@ -142,7 +142,7 @@ void tunit_preview_pane::print_attack_details(T attacks, ttree_view_node& parent
 	}
 }
 
-void tunit_preview_pane::set_displayed_type(const unit_type& type)
+void unit_preview_pane::set_displayed_type(const unit_type& type)
 {
 	// Sets the current type id for the profile button callback to use
 	current_type_ = type.id();
@@ -215,7 +215,7 @@ void tunit_preview_pane::set_displayed_type(const unit_type& type)
 
 		// Print trait details
 		{
-			ttree_view_node* header_node = nullptr;
+			tree_view_node* header_node = nullptr;
 
 			for(const auto& tr : type.possible_traits()) {
 				t_string name = tr[type.genders().front() == unit_race::FEMALE ? "female_name" : "male_name"];
@@ -260,7 +260,7 @@ void tunit_preview_pane::set_displayed_type(const unit_type& type)
 	}
 }
 
-void tunit_preview_pane::set_displayed_unit(const unit& u)
+void unit_preview_pane::set_displayed_unit(const unit& u)
 {
 	// Sets the current type id for the profile button callback to use
 	current_type_ = u.type_id();
@@ -401,40 +401,40 @@ void tunit_preview_pane::set_displayed_unit(const unit& u)
 	}
 }
 
-void tunit_preview_pane::profile_button_callback()
+void unit_preview_pane::profile_button_callback()
 {
 	if(get_window()) {
 		help::show_unit_help((*get_window()).video(), current_type_);
 	}
 }
 
-void tunit_preview_pane::set_image_mods(const std::string& mods)
+void unit_preview_pane::set_image_mods(const std::string& mods)
 {
 	image_mods_ = mods;
 }
 
-void tunit_preview_pane::set_active(const bool /*active*/)
+void unit_preview_pane::set_active(const bool /*active*/)
 {
 	/* DO NOTHING */
 }
 
-bool tunit_preview_pane::get_active() const
+bool unit_preview_pane::get_active() const
 {
 	return true;
 }
 
-unsigned tunit_preview_pane::get_state() const
+unsigned unit_preview_pane::get_state() const
 {
 	return ENABLED;
 }
 
-const std::string& tunit_preview_pane::get_control_type() const
+const std::string& unit_preview_pane::get_control_type() const
 {
 	static const std::string type = "unit_preview_pane";
 	return type;
 }
 
-void tunit_preview_pane::set_self_active(const bool /*active*/)
+void unit_preview_pane::set_self_active(const bool /*active*/)
 {
 	/* DO NOTHING */
 }
@@ -472,9 +472,9 @@ builder_unit_preview_pane::builder_unit_preview_pane(const config& cfg)
 {
 }
 
-twidget* builder_unit_preview_pane::build() const
+widget* builder_unit_preview_pane::build() const
 {
-	tunit_preview_pane* widget = new tunit_preview_pane();
+	unit_preview_pane* widget = new unit_preview_pane();
 
 	init_control(widget);
 

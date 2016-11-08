@@ -21,7 +21,7 @@
 namespace gui2
 {
 
-class tbutton;
+class button;
 
 /**
  * Main class to show messages to the user.
@@ -79,7 +79,7 @@ public:
 							const std::string& caption);
 
 	void set_button_visible(const tbutton_id button,
-							const twidget::tvisible visible);
+							const widget::tvisible visible);
 
 	void set_button_retval(const tbutton_id button, const int retval);
 
@@ -107,10 +107,10 @@ public:
 
 protected:
 	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	void pre_show(window& window);
 
 	/** Inherited from tdialog. */
-	void post_show(twindow& window);
+	void post_show(window& window);
 
 private:
 	/** The title for the dialog. */
@@ -139,9 +139,9 @@ private:
 	{
 		tbutton_status();
 
-		tbutton* button;
+		button* button;
 		std::string caption;
-		twidget::tvisible visible;
+		widget::tvisible visible;
 		int retval;
 	};
 

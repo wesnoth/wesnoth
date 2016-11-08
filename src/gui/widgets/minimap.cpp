@@ -46,17 +46,17 @@ namespace gui2
 
 REGISTER_WIDGET(minimap)
 
-void tminimap::set_active(const bool /*active*/)
+void minimap::set_active(const bool /*active*/)
 {
 	/* DO NOTHING */
 }
 
-bool tminimap::get_active() const
+bool minimap::get_active() const
 {
 	return true;
 }
 
-unsigned tminimap::get_state() const
+unsigned minimap::get_state() const
 {
 	return 0;
 }
@@ -176,12 +176,12 @@ static void shrink_cache()
 #endif
 }
 
-bool tminimap::disable_click_dismiss() const
+bool minimap::disable_click_dismiss() const
 {
 	return false;
 }
 
-const surface tminimap::get_image(const int w, const int h) const
+const surface minimap::get_image(const int w, const int h) const
 {
 	if(!terrain_) {
 		return nullptr;
@@ -232,7 +232,7 @@ const surface tminimap::get_image(const int w, const int h) const
 	return nullptr;
 }
 
-void tminimap::impl_draw_background(surface& frame_buffer,
+void minimap::impl_draw_background(surface& frame_buffer,
 									int x_offset,
 									int y_offset)
 {
@@ -256,7 +256,7 @@ void tminimap::impl_draw_background(surface& frame_buffer,
 	}
 }
 
-const std::string& tminimap::get_control_type() const
+const std::string& minimap::get_control_type() const
 {
 	static const std::string type = "minimap";
 	return type;
@@ -331,9 +331,9 @@ builder_minimap::builder_minimap(const config& cfg) : builder_control(cfg)
 {
 }
 
-twidget* builder_minimap::build() const
+widget* builder_minimap::build() const
 {
-	tminimap* widget = new tminimap();
+	minimap* widget = new minimap();
 
 	init_control(widget);
 

@@ -25,10 +25,10 @@
 
 namespace gui2
 {
-class ttext_;
-class ttext_box;
+class text_box_base;
+class text_box;
 class pane;
-class tselectable_;
+class selectable_item;
 
 /** Shows the list of addons on the server. */
 class taddon_list : public tdialog
@@ -37,16 +37,16 @@ public:
 	explicit taddon_list(const config& cfg);
 
 private:
-	void on_filtertext_changed(ttext_* textbox, const std::string& text);
+	void on_filtertext_changed(text_box_base* textbox, const std::string& text);
 
-	std::vector<tselectable_*> orders_;
+	std::vector<selectable_item*> orders_;
 
-	void on_addon_select(twindow& window);
+	void on_addon_select(window& window);
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
 	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	void pre_show(window& window);
 
 	/** Config which contains the list with the campaigns. */
 	const config& cfg_;
@@ -62,10 +62,10 @@ private:
 
 	std::vector<std::string> ids_;
 
-	void browse_url_callback(ttext_box& url_box);
-	void copy_url_callback(ttext_box& url_box);
-	void options_button_callback(twindow& window);
-	void show_help(twindow& window);
+	void browse_url_callback(text_box& url_box);
+	void copy_url_callback(text_box& url_box);
+	void options_button_callback(window& window);
+	void show_help(window& window);
 };
 
 } // namespace gui2

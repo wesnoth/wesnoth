@@ -109,7 +109,7 @@ private:
 
 #define LOG_HEADER "distributor mouse motion [" << owner_.id() << "]: "
 
-mouse_motion::mouse_motion(twidget& owner,
+mouse_motion::mouse_motion(widget& owner,
 							 const dispatcher::queue_position queue_position)
 	: mouse_focus_(nullptr)
 	, mouse_captured_(false)
@@ -174,7 +174,7 @@ void mouse_motion::signal_handler_sdl_mouse_motion(const event::event_t event,
 			mouse_hover(mouse_focus_, coordinate);
 		}
 	} else {
-		twidget* mouse_over = owner_.find_at(coordinate, true);
+		widget* mouse_over = owner_.find_at(coordinate, true);
 		while(mouse_over && !mouse_over->can_mouse_focus() && mouse_over->parent()) {
 			mouse_over = mouse_over->parent();
 		}
@@ -212,7 +212,7 @@ void mouse_motion::signal_handler_sdl_wheel(const event::event_t event,
 		assert(mouse_focus_);
 		owner_.fire(event, *mouse_focus_, coordinate);
 	} else {
-		twidget* mouse_over = owner_.find_at(coordinate, true);
+		widget* mouse_over = owner_.find_at(coordinate, true);
 		if(mouse_over) {
 			owner_.fire(event, *mouse_over, coordinate);
 		}
@@ -232,7 +232,7 @@ void mouse_motion::signal_handler_show_helptip(const event::event_t event,
 			stop_hover_timer();
 		}
 	} else {
-		twidget* mouse_over = owner_.find_at(coordinate, true);
+		widget* mouse_over = owner_.find_at(coordinate, true);
 		if(mouse_over) {
 			DBG_GUI_E << LOG_HEADER << "Firing: " << event << ".\n";
 			if(owner_.fire(event, *mouse_over, coordinate)) {
@@ -244,7 +244,7 @@ void mouse_motion::signal_handler_show_helptip(const event::event_t event,
 	handled = true;
 }
 
-void mouse_motion::mouse_enter(twidget* mouse_over)
+void mouse_motion::mouse_enter(widget* mouse_over)
 {
 	DBG_GUI_E << LOG_HEADER << "Firing: " << event::MOUSE_ENTER << ".\n";
 
@@ -257,7 +257,7 @@ void mouse_motion::mouse_enter(twidget* mouse_over)
 	start_hover_timer(mouse_over, get_mouse_position());
 }
 
-void mouse_motion::mouse_hover(twidget* mouse_over, const point& coordinate)
+void mouse_motion::mouse_hover(widget* mouse_over, const point& coordinate)
 {
 	DBG_GUI_E << LOG_HEADER << "Firing: " << event::MOUSE_MOTION << ".\n";
 
@@ -304,8 +304,8 @@ void mouse_motion::mouse_leave()
 {
 	DBG_GUI_E << LOG_HEADER << "Firing: " << event::MOUSE_LEAVE << ".\n";
 
-	tcontrol* control = dynamic_cast<tcontrol*>(mouse_focus_);
-	if(!control || control->get_active()) {
+	control* ctrl = dynamic_cast<control*>(mouse_focus_);
+	if(!ctrl || ctrl->get_active()) {
 		owner_.fire(event::MOUSE_LEAVE, *mouse_focus_);
 	}
 
@@ -316,7 +316,7 @@ void mouse_motion::mouse_leave()
 	stop_hover_timer();
 }
 
-void mouse_motion::start_hover_timer(twidget* widget, const point& coordinate)
+void mouse_motion::start_hover_timer(widget* widget, const point& coordinate)
 {
 	assert(widget);
 	stop_hover_timer();
@@ -376,7 +376,7 @@ mouse_button<sdl_button_down,
 			  button_up,
 			  button_click,
 			  button_double_click>::mouse_button(const std::string& name_,
-												  twidget& owner,
+												  widget& owner,
 												  const dispatcher::queue_position
 														  queue_position)
 	: mouse_motion(owner, queue_position)
@@ -477,7 +477,7 @@ void mouse_button<sdl_button_down,
 			owner_.fire(button_down, *mouse_focus_);
 		}
 	} else {
-		twidget* mouse_over = owner_.find_at(coordinate, true);
+		widget* mouse_over = owner_.find_at(coordinate, true);
 		if(!mouse_over) {
 			return;
 		}
@@ -538,7 +538,7 @@ void mouse_button<sdl_button_down,
 		}
 	}
 
-	twidget* mouse_over = owner_.find_at(coordinate, true);
+	widget* mouse_over = owner_.find_at(coordinate, true);
 	if(mouse_captured_) {
 		const unsigned mask = SDL_BUTTON_LMASK | SDL_BUTTON_MMASK
 							  | SDL_BUTTON_RMASK;
@@ -575,7 +575,7 @@ void mouse_button<sdl_button_down,
 				   button_down,
 				   button_up,
 				   button_click,
-				   button_double_click>::mouse_button_click(twidget* widget)
+				   button_double_click>::mouse_button_click(widget* widget)
 {
 	Uint32 stamp = SDL_GetTicks();
 	if(last_click_stamp_ + settings::double_click_time >= stamp
@@ -605,7 +605,7 @@ void mouse_button<sdl_button_down,
  * @todo Test whether the state is properly tracked when an input blocker is
  * used.
  */
-distributor::distributor(twidget& owner,
+distributor::distributor(widget& owner,
 						   const dispatcher::queue_position queue_position)
 	: mouse_motion(owner, queue_position)
 	, mouse_button_left("left", owner, queue_position)
@@ -657,7 +657,7 @@ void distributor::initialize_state()
 	init_mouse_location();
 }
 
-void distributor::keyboard_capture(twidget* widget)
+void distributor::keyboard_capture(widget* widget)
 {
 	if(keyboard_focus_) {
 		DBG_GUI_E << LOG_HEADER << "Firing: " << event::LOSE_KEYBOARD_FOCUS
@@ -676,7 +676,7 @@ void distributor::keyboard_capture(twidget* widget)
 	}
 }
 
-void distributor::keyboard_add_to_chain(twidget* widget)
+void distributor::keyboard_add_to_chain(widget* widget)
 {
 	assert(widget);
 	assert(std::find(keyboard_focus_chain_.begin(),
@@ -686,11 +686,11 @@ void distributor::keyboard_add_to_chain(twidget* widget)
 	keyboard_focus_chain_.push_back(widget);
 }
 
-void distributor::keyboard_remove_from_chain(twidget* widget)
+void distributor::keyboard_remove_from_chain(widget* w)
 {
-	assert(widget);
-	std::vector<twidget*>::iterator itor = std::find(
-			keyboard_focus_chain_.begin(), keyboard_focus_chain_.end(), widget);
+	assert(w);
+	std::vector<widget*>::iterator itor = std::find(
+			keyboard_focus_chain_.begin(), keyboard_focus_chain_.end(), w);
 
 	if(itor != keyboard_focus_chain_.end()) {
 		keyboard_focus_chain_.erase(itor);
@@ -709,8 +709,8 @@ void distributor::signal_handler_sdl_key_down(const SDL_Keycode key,
 		// Attempt to cast to control, to avoid sending events if the
 		// widget is disabled. If the cast fails, we assume the widget
 		// is enabled and ready to receive events.
-		tcontrol* control = dynamic_cast<tcontrol*>(keyboard_focus_);
-		if(!control || control->get_active()) {
+		control* ctrl = dynamic_cast<control*>(keyboard_focus_);
+		if(!ctrl || ctrl->get_active()) {
 			DBG_GUI_E << LOG_HEADER << "Firing: " << event::SDL_KEY_DOWN
 					  << ".\n";
 			if(owner_.fire(event::SDL_KEY_DOWN,
@@ -723,7 +723,7 @@ void distributor::signal_handler_sdl_key_down(const SDL_Keycode key,
 		}
 	}
 
-	for(std::vector<twidget*>::reverse_iterator ritor
+	for(std::vector<widget*>::reverse_iterator ritor
 		= keyboard_focus_chain_.rbegin();
 		ritor != keyboard_focus_chain_.rend();
 		++ritor) {
@@ -749,8 +749,8 @@ void distributor::signal_handler_sdl_key_down(const SDL_Keycode key,
 		// Attempt to cast to control, to avoid sending events if the
 		// widget is disabled. If the cast fails, we assume the widget
 		// is enabled and ready to receive events.
-		tcontrol* control = dynamic_cast<tcontrol*>(keyboard_focus_);
-		if(control != nullptr && !control->get_active()) {
+		control* ctrl = dynamic_cast<control*>(keyboard_focus_);
+		if(ctrl != nullptr && !ctrl->get_active()) {
 			continue;
 		}
 
@@ -762,7 +762,7 @@ void distributor::signal_handler_sdl_key_down(const SDL_Keycode key,
 	}
 }
 
-void distributor::signal_handler_notify_removal(dispatcher& widget,
+void distributor::signal_handler_notify_removal(dispatcher& w,
 												 const event_t event)
 {
 	DBG_GUI_E << LOG_HEADER << event << ".\n";
@@ -774,42 +774,42 @@ void distributor::signal_handler_notify_removal(dispatcher& widget,
 	 * functions...
 	 */
 
-	if(hover_widget_ == &widget) {
+	if(hover_widget_ == &w) {
 		stop_hover_timer();
 	}
 
-	if(mouse_button_left::last_clicked_widget_ == &widget) {
+	if(mouse_button_left::last_clicked_widget_ == &w) {
 		mouse_button_left::last_clicked_widget_ = nullptr;
 	}
-	if(mouse_button_left::focus_ == &widget) {
+	if(mouse_button_left::focus_ == &w) {
 		mouse_button_left::focus_ = nullptr;
 	}
 
-	if(mouse_button_middle::last_clicked_widget_ == &widget) {
+	if(mouse_button_middle::last_clicked_widget_ == &w) {
 		mouse_button_middle::last_clicked_widget_ = nullptr;
 	}
-	if(mouse_button_middle::focus_ == &widget) {
+	if(mouse_button_middle::focus_ == &w) {
 		mouse_button_middle::focus_ = nullptr;
 	}
 
-	if(mouse_button_right::last_clicked_widget_ == &widget) {
+	if(mouse_button_right::last_clicked_widget_ == &w) {
 		mouse_button_right::last_clicked_widget_ = nullptr;
 	}
-	if(mouse_button_right::focus_ == &widget) {
+	if(mouse_button_right::focus_ == &w) {
 		mouse_button_right::focus_ = nullptr;
 	}
 
-	if(mouse_focus_ == &widget) {
+	if(mouse_focus_ == &w) {
 		mouse_focus_ = nullptr;
 	}
 
-	if(keyboard_focus_ == &widget) {
+	if(keyboard_focus_ == &w) {
 		keyboard_focus_ = nullptr;
 	}
-	const std::vector<twidget*>::iterator itor
+	const std::vector<widget*>::iterator itor
 			= std::find(keyboard_focus_chain_.begin(),
 						keyboard_focus_chain_.end(),
-						&widget);
+						&w);
 	if(itor != keyboard_focus_chain_.end()) {
 		keyboard_focus_chain_.erase(itor);
 	}

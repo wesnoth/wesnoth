@@ -29,7 +29,7 @@ public:
 	 * @param [in, out] password  The parameter's usage is:
 	 *                            - Input: The initial value for the password.
 	 *                            - Output: The password input by the user
-	 *                              if the dialog returns @ref twindow::OK,
+	 *                              if the dialog returns @ref window::OK,
 	 *                              undefined otherwise.
 	 */
 	explicit tmp_join_game_password_prompt(std::string& password);

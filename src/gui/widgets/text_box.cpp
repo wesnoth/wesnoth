@@ -35,14 +35,14 @@ namespace gui2
 
 REGISTER_WIDGET(text_box)
 
-ttext_history ttext_history::get_history(const std::string& id,
+text_history text_history::get_history(const std::string& id,
 										 const bool enabled)
 {
 	std::vector<std::string>* vec = preferences::get_history(id);
-	return ttext_history(vec, enabled);
+	return text_history(vec, enabled);
 }
 
-void ttext_history::push(const std::string& text)
+void text_history::push(const std::string& text)
 {
 	if(!enabled_) {
 		return;
@@ -55,7 +55,7 @@ void ttext_history::push(const std::string& text)
 	}
 }
 
-std::string ttext_history::up(const std::string& text)
+std::string text_history::up(const std::string& text)
 {
 
 	if(!enabled_) {
@@ -73,7 +73,7 @@ std::string ttext_history::up(const std::string& text)
 	return get_value();
 }
 
-std::string ttext_history::down(const std::string& text)
+std::string text_history::down(const std::string& text)
 {
 	if(!enabled_) {
 		return "";
@@ -86,7 +86,7 @@ std::string ttext_history::down(const std::string& text)
 	return get_value();
 }
 
-std::string ttext_history::get_value() const
+std::string text_history::get_value() const
 {
 	if(!enabled_ || pos_ == history_->size()) {
 		return "";
@@ -95,8 +95,8 @@ std::string ttext_history::get_value() const
 	}
 }
 
-ttext_box::ttext_box()
-	: ttext_()
+text_box::text_box()
+	: text_box_base()
 	, history_()
 	, max_input_length_(0)
 	, text_x_offset_(0)
@@ -107,19 +107,19 @@ ttext_box::ttext_box()
 	set_wants_mouse_left_double_click();
 
 	connect_signal<event::MOUSE_MOTION>(std::bind(
-			&ttext_box::signal_handler_mouse_motion, this, _2, _3, _5));
+			&text_box::signal_handler_mouse_motion, this, _2, _3, _5));
 	connect_signal<event::LEFT_BUTTON_DOWN>(std::bind(
-			&ttext_box::signal_handler_left_button_down, this, _2, _3));
+			&text_box::signal_handler_left_button_down, this, _2, _3));
 	connect_signal<event::LEFT_BUTTON_UP>(std::bind(
-			&ttext_box::signal_handler_left_button_up, this, _2, _3));
+			&text_box::signal_handler_left_button_up, this, _2, _3));
 	connect_signal<event::LEFT_BUTTON_DOUBLE_CLICK>(std::bind(
-			&ttext_box::signal_handler_left_button_double_click, this, _2, _3));
+			&text_box::signal_handler_left_button_double_click, this, _2, _3));
 }
 
-void ttext_box::place(const point& origin, const point& size)
+void text_box::place(const point& origin, const point& size)
 {
 	// Inherited.
-	tcontrol::place(origin, size);
+	control::place(origin, size);
 
 	set_maximum_width(get_text_maximum_width());
 	set_maximum_height(get_text_maximum_height(), false);
@@ -129,7 +129,7 @@ void ttext_box::place(const point& origin, const point& size)
 	update_offsets();
 }
 
-void ttext_box::update_canvas()
+void text_box::update_canvas()
 {
 	/***** Gather the info *****/
 
@@ -185,7 +185,7 @@ void ttext_box::update_canvas()
 	}
 }
 
-void ttext_box::delete_char(const bool before_cursor)
+void text_box::delete_char(const bool before_cursor)
 {
 	if(before_cursor) {
 		set_cursor(get_selection_start() - 1, false);
@@ -196,7 +196,7 @@ void ttext_box::delete_char(const bool before_cursor)
 	delete_selection();
 }
 
-void ttext_box::delete_selection()
+void text_box::delete_selection()
 {
 	if(get_selection_length() == 0) {
 		return;
@@ -216,7 +216,7 @@ void ttext_box::delete_selection()
 	set_cursor(start, false);
 }
 
-void ttext_box::handle_mouse_selection(point mouse, const bool start_selection)
+void text_box::handle_mouse_selection(point mouse, const bool start_selection)
 {
 	mouse.x -= get_x();
 	mouse.y -= get_y();
@@ -240,7 +240,7 @@ void ttext_box::handle_mouse_selection(point mouse, const bool start_selection)
 	dragging_ |= start_selection;
 }
 
-void ttext_box::update_offsets()
+void text_box::update_offsets()
 {
 	assert(config());
 
@@ -272,7 +272,7 @@ void ttext_box::update_offsets()
 	update_canvas();
 }
 
-bool ttext_box::history_up()
+bool text_box::history_up()
 {
 	if(!history_.get_enabled()) {
 		return false;
@@ -285,7 +285,7 @@ bool ttext_box::history_up()
 	return true;
 }
 
-bool ttext_box::history_down()
+bool text_box::history_down()
 {
 	if(!history_.get_enabled()) {
 		return false;
@@ -298,7 +298,7 @@ bool ttext_box::history_down()
 	return true;
 }
 
-void ttext_box::handle_key_default(bool& handled,
+void text_box::handle_key_default(bool& handled,
 								   SDL_Keycode key,
 								   SDL_Keymod modifier,
 								   const utf8::string& unicode)
@@ -313,18 +313,18 @@ void ttext_box::handle_key_default(bool& handled,
 
 	if(!handled) {
 		// Inherited.
-		ttext_::handle_key_default(handled, key, modifier, unicode);
+		text_box_base::handle_key_default(handled, key, modifier, unicode);
 	}
 }
 
-void ttext_box::handle_key_clear_line(SDL_Keymod /*modifier*/, bool& handled)
+void text_box::handle_key_clear_line(SDL_Keymod /*modifier*/, bool& handled)
 {
 	handled = true;
 
 	set_value("");
 }
 
-void ttext_box::load_config_extra()
+void text_box::load_config_extra()
 {
 	assert(config());
 
@@ -340,13 +340,13 @@ void ttext_box::load_config_extra()
 	update_offsets();
 }
 
-const std::string& ttext_box::get_control_type() const
+const std::string& text_box::get_control_type() const
 {
 	static const std::string type = "text_box";
 	return type;
 }
 
-void ttext_box::signal_handler_mouse_motion(const event::event_t event,
+void text_box::signal_handler_mouse_motion(const event::event_t event,
 											bool& handled,
 											const point& coordinate)
 {
@@ -359,7 +359,7 @@ void ttext_box::signal_handler_mouse_motion(const event::event_t event,
 	handled = true;
 }
 
-void ttext_box::signal_handler_left_button_down(const event::event_t event,
+void text_box::signal_handler_left_button_down(const event::event_t event,
 												bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -376,7 +376,7 @@ void ttext_box::signal_handler_left_button_down(const event::event_t event,
 	handled = true;
 }
 
-void ttext_box::signal_handler_left_button_up(const event::event_t event,
+void text_box::signal_handler_left_button_up(const event::event_t event,
 											  bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -386,7 +386,7 @@ void ttext_box::signal_handler_left_button_up(const event::event_t event,
 }
 
 void
-ttext_box::signal_handler_left_button_double_click(const event::event_t event,
+text_box::signal_handler_left_button_double_click(const event::event_t event,
 												   bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -486,9 +486,9 @@ builder_text_box::builder_text_box(const config& cfg)
 {
 }
 
-twidget* builder_text_box::build() const
+widget* builder_text_box::build() const
 {
-	ttext_box* widget = new ttext_box();
+	text_box* widget = new text_box();
 
 	init_control(widget);
 

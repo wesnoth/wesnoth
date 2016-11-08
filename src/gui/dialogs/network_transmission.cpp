@@ -41,20 +41,20 @@ void tnetwork_transmission::pump_monitor::process(events::pump_info&)
 		return;
 	connection_->poll();
 	if(connection_->finished()) {
-		window_.get().set_retval(twindow::OK);
+		window_.get().set_retval(window::OK);
 	} else {
 		size_t completed, total;
 			completed = connection_->current();
 			total = connection_->total();
 		if(total) {
-			find_widget<tprogress_bar>(&(window_.get()), "progress", false)
+			find_widget<progress_bar>(&(window_.get()), "progress", false)
 					.set_percentage((completed * 100.) / total);
 
 			std::stringstream ss;
 			ss << utils::si_string(completed, true, _("unit_byte^B")) << "/"
 			   << utils::si_string(total, true, _("unit_byte^B"));
 
-			find_widget<tlabel>(&(window_.get()), "numeric_progress", false)
+			find_widget<label>(&(window_.get()), "numeric_progress", false)
 					.set_label(ss.str());
 			window_->invalidate_layout();
 		}
@@ -78,12 +78,12 @@ void tnetwork_transmission::set_subtitle(const std::string& subtitle)
 	subtitle_ = subtitle;
 }
 
-void tnetwork_transmission::pre_show(twindow& window)
+void tnetwork_transmission::pre_show(window& window)
 {
 	// ***** ***** ***** ***** Set up the widgets ***** ***** ***** *****
 	if(!subtitle_.empty()) {
-		tlabel& subtitle_label
-				= find_widget<tlabel>(&window, "subtitle", false);
+		label& subtitle_label
+				= find_widget<label>(&window, "subtitle", false);
 		subtitle_label.set_label(subtitle_);
 		subtitle_label.set_use_markup(true);
 	}
@@ -91,7 +91,7 @@ void tnetwork_transmission::pre_show(twindow& window)
 	pump_monitor_.window_ = window;
 }
 
-void tnetwork_transmission::post_show(twindow& /*window*/)
+void tnetwork_transmission::post_show(window& /*window*/)
 {
 	pump_monitor_.window_.reset();
 	connection_->cancel();

@@ -28,7 +28,7 @@ class unit_type;
 namespace gui2
 {
 
-class ttext_;
+class text_box_base;
 
 class tunit_create : public tdialog
 {
@@ -66,17 +66,17 @@ private:
 	virtual const std::string& window_id() const;
 
 	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	void pre_show(window& window);
 
 	/** Inherited from tdialog. */
-	void post_show(twindow& window);
+	void post_show(window& window);
 
 	/** Callbacks */
-	void list_item_clicked(twindow& window);
-	void filter_text_changed(ttext_* textbox, const std::string& text);
-	void gender_toggle_callback(twindow& window);
+	void list_item_clicked(window& window);
+	void filter_text_changed(text_box_base* textbox, const std::string& text);
+	void gender_toggle_callback(window& window);
 
-	tgroup<unit_race::GENDER> gender_toggle;
+	group<unit_race::GENDER> gender_toggle;
 };
 }
 

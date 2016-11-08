@@ -24,10 +24,10 @@ namespace gui2
  * Parts of the engine inherit this class so we can have generic
  * widgets to select an integer value.
  */
-class tinteger_selector_
+class integer_selector
 {
 public:
-	virtual ~tinteger_selector_()
+	virtual ~integer_selector()
 	{
 	}
 

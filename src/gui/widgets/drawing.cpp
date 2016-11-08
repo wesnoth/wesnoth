@@ -31,33 +31,33 @@ namespace gui2
 
 REGISTER_WIDGET(drawing)
 
-point tdrawing::calculate_best_size() const
+point drawing::calculate_best_size() const
 {
 	return best_size_ != point() ? best_size_
-									  : tcontrol::calculate_best_size();
+									  : control::calculate_best_size();
 }
 
-void tdrawing::set_active(const bool /*active*/)
+void drawing::set_active(const bool /*active*/)
 {
 	/* DO NOTHING */
 }
 
-bool tdrawing::get_active() const
+bool drawing::get_active() const
 {
 	return true;
 }
 
-unsigned tdrawing::get_state() const
+unsigned drawing::get_state() const
 {
 	return 0;
 }
 
-bool tdrawing::disable_click_dismiss() const
+bool drawing::disable_click_dismiss() const
 {
 	return false;
 }
 
-const std::string& tdrawing::get_control_type() const
+const std::string& drawing::get_control_type() const
 {
 	static const std::string type = "drawing";
 	return type;
@@ -157,9 +157,9 @@ builder_drawing::builder_drawing(const config& cfg)
 	assert(!draw.empty());
 }
 
-twidget* builder_drawing::build() const
+widget* builder_drawing::build() const
 {
-	tdrawing* widget = new tdrawing();
+	drawing* widget = new drawing();
 
 	init_control(widget);
 

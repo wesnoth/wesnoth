@@ -151,7 +151,7 @@ private:
 class stuff_list_adder
 {
 public:
-	stuff_list_adder(ttree_view_node& stuff_list, const std::string& defn)
+	stuff_list_adder(tree_view_node& stuff_list, const std::string& defn)
 		: stuff_list_(stuff_list)
 		, defn_(defn)
 	{
@@ -171,7 +171,7 @@ public:
 	}
 
 private:
-	ttree_view_node& stuff_list_;
+	tree_view_node& stuff_list_;
 	const std::string defn_;
 	std::map<std::string, string_map> data_;
 };
@@ -179,16 +179,16 @@ private:
 class tgamestate_inspector::view
 {
 public:
-	view(twindow& window)
-		: stuff_list_(find_widget<ttree_view>(&window, "stuff_list", false, true))
-		, inspect_(find_widget<tcontrol>(&window, "inspect", false, true))
-		, pages_(find_widget<tcontrol>(&window, "page_count", false, true))
-		, left_(find_widget<tcontrol>(&window, "page_left", false, true))
-		, right_(find_widget<tcontrol>(&window, "page_right", false, true))
+	view(window& window)
+		: stuff_list_(find_widget<tree_view>(&window, "stuff_list", false, true))
+		, inspect_(find_widget<control>(&window, "inspect", false, true))
+		, pages_(find_widget<control>(&window, "page_count", false, true))
+		, left_(find_widget<control>(&window, "page_left", false, true))
+		, right_(find_widget<control>(&window, "page_right", false, true))
 	{
 	}
 
-	stuff_list_adder stuff_list_entry(ttree_view_node* parent, const std::string defn)
+	stuff_list_adder stuff_list_entry(tree_view_node* parent, const std::string defn)
 	{
 		return stuff_list_adder(parent ? *parent : stuff_list_->get_root_node(), defn);
 	}
@@ -202,12 +202,12 @@ public:
 			std::ostringstream out;
 			out << current_page_ + 1 << '/' << n_pages;
 			pages_->set_label(out.str());
-			left_->set_visible(twidget::tvisible::visible);
-			right_->set_visible(twidget::tvisible::visible);
+			left_->set_visible(widget::tvisible::visible);
+			right_->set_visible(widget::tvisible::visible);
 		} else {
 			pages_->set_label("");
-			left_->set_visible(twidget::tvisible::invisible);
-			right_->set_visible(twidget::tvisible::invisible);
+			left_->set_visible(widget::tvisible::invisible);
+			right_->set_visible(widget::tvisible::invisible);
 		}
 	}
 
@@ -215,8 +215,8 @@ public:
 	{
 		stuff_list_->clear();
 		pages_->set_label("");
-		left_->set_visible(twidget::tvisible::invisible);
-		right_->set_visible(twidget::tvisible::invisible);
+		left_->set_visible(widget::tvisible::invisible);
+		right_->set_visible(widget::tvisible::invisible);
 	}
 
 	void page(int where)
@@ -226,11 +226,11 @@ public:
 
 private:
 	int current_page_ = 0;
-	ttree_view* stuff_list_;
-	tcontrol* inspect_;
-	tcontrol* pages_;
-	tcontrol* left_;
-	tcontrol* right_;
+	tree_view* stuff_list_;
+	control* inspect_;
+	control* pages_;
+	control* left_;
+	control* right_;
 };
 
 class single_mode_controller
@@ -261,17 +261,17 @@ public:
 	{
 	}
 
-	void show_list(ttree_view_node& node);
-	void show_var(ttree_view_node& node);
-	void show_array(ttree_view_node& node);
+	void show_list(tree_view_node& node);
+	void show_var(tree_view_node& node);
+	void show_array(tree_view_node& node);
 };
 
 class event_mode_controller : public single_mode_controller
 {
 public:
 	event_mode_controller(tgamestate_inspector::controller& c);
-	void show_list(ttree_view_node& node, bool is_wmi);
-	void show_event(ttree_view_node& node, bool is_wmi);
+	void show_list(tree_view_node& node, bool is_wmi);
+	void show_event(tree_view_node& node, bool is_wmi);
 
 private:
 	config events;
@@ -285,8 +285,8 @@ public:
 	{
 	}
 
-	void show_list(ttree_view_node& node);
-	void show_unit(ttree_view_node& node);
+	void show_list(tree_view_node& node);
+	void show_unit(tree_view_node& node);
 };
 
 class team_mode_controller : public single_mode_controller
@@ -297,14 +297,14 @@ public:
 	{
 	}
 
-	void show_list(ttree_view_node& node, int side);
-	void show_ai(ttree_view_node& node, int side);
-	void show_ai_components(ttree_view_node& node, int side);
-	void show_ai_tree(ttree_view_node& node, int side);
-	void show_recall(ttree_view_node& node, int side);
-	void show_recall_unit(ttree_view_node& node, int side);
-	void show_units(ttree_view_node& node, int side);
-	void show_unit(ttree_view_node& node, int side);
+	void show_list(tree_view_node& node, int side);
+	void show_ai(tree_view_node& node, int side);
+	void show_ai_components(tree_view_node& node, int side);
+	void show_ai_tree(tree_view_node& node, int side);
+	void show_recall(tree_view_node& node, int side);
+	void show_recall_unit(tree_view_node& node, int side);
+	void show_units(tree_view_node& node, int side);
+	void show_unit(tree_view_node& node, int side);
 };
 
 class tgamestate_inspector::controller
@@ -317,9 +317,9 @@ public:
 	{
 	}
 
-	void handle_stuff_list_item_clicked(twidget& tree)
+	void handle_stuff_list_item_clicked(widget& tree)
 	{
-		ttree_view_node* selected = dynamic_cast<ttree_view&>(tree).selected_item();
+		tree_view_node* selected = dynamic_cast<tree_view&>(tree).selected_item();
 		callbacks[selected->describe_path()](*selected);
 
 		// We recursively fold, but non-recursively unfold.
@@ -343,7 +343,7 @@ public:
 		desktop::clipboard::copy_to_clipboard(model_.get_data_full(), false);
 	}
 
-	void handle_lua_button_clicked(twindow& window)
+	void handle_lua_button_clicked(window& window)
 	{
 		tlua_interpreter::display(window.video(), tlua_interpreter::GAME);
 		// The game state could've changed, so reset the dialog
@@ -375,26 +375,26 @@ public:
 	}
 
 	template<typename C>
-	void set_node_callback(const std::vector<int>& node_path, void (C::* fcn)(ttree_view_node&))
+	void set_node_callback(const std::vector<int>& node_path, void (C::* fcn)(tree_view_node&))
 	{
 		C& sub_controller = get_controller<C>();
 		callbacks.emplace(node_path, std::bind(fcn, sub_controller, _1));
 	}
 
 	template<typename C, typename T>
-	void set_node_callback(const std::vector<int>& node_path, void (C::* fcn)(ttree_view_node&, T), T param)
+	void set_node_callback(const std::vector<int>& node_path, void (C::* fcn)(tree_view_node&, T), T param)
 	{
 		C& sub_controller = get_controller<C>();
 		callbacks.emplace(node_path, std::bind(fcn, sub_controller, _1, param));
 	}
 
-	void bind(twindow& window)
+	void bind(window& window)
 	{
-		auto stuff_list = find_widget<ttree_view>(&window, "stuff_list", false, true);
-		auto copy_button = find_widget<tbutton>(&window, "copy", false, true);
-		auto lua_button = find_widget<tbutton>(&window, "lua", false, true);
-		auto left_button = find_widget<tbutton>(&window, "page_left", false, true);
-		auto right_button = find_widget<tbutton>(&window, "page_right", false, true);
+		auto stuff_list = find_widget<tree_view>(&window, "stuff_list", false, true);
+		auto copy_button = find_widget<button>(&window, "copy", false, true);
+		auto lua_button = find_widget<button>(&window, "lua", false, true);
+		auto left_button = find_widget<button>(&window, "page_left", false, true);
+		auto right_button = find_widget<button>(&window, "page_right", false, true);
 
 		stuff_list->set_selection_change_callback(std::bind(&tgamestate_inspector::controller::handle_stuff_list_item_clicked, this, _1));
 
@@ -418,8 +418,8 @@ public:
 				std::bind(&tgamestate_inspector::controller::handle_page_button_clicked,
 					this, true));
 
-		left_button->set_visible(twidget::tvisible::invisible);
-		right_button->set_visible(twidget::tvisible::invisible);
+		left_button->set_visible(widget::tvisible::invisible);
+		right_button->set_visible(widget::tvisible::invisible);
 
 		if (!desktop::clipboard::available()) {
 			copy_button->set_active(false);
@@ -429,7 +429,7 @@ public:
 		build_stuff_list(window);
 	}
 
-	void build_stuff_list(twindow& window)
+	void build_stuff_list(window& window)
 	{
 		set_node_callback(
 			view_.stuff_list_entry(nullptr, "basic")
@@ -469,13 +469,13 @@ public:
 				side);
 		}
 		// Expand initially selected node
-		callbacks[{0}](find_widget<ttree_view>(&window, "stuff_list", false).get_root_node().get_child_at(0));
+		callbacks[{0}](find_widget<tree_view>(&window, "stuff_list", false).get_root_node().get_child_at(0));
 	}
 
 private:
 	model& model_;
 	view& view_;
-	using node_callback = std::function<void(ttree_view_node&)>;
+	using node_callback = std::function<void(tree_view_node&)>;
 	using node_callback_map = std::map<std::vector<int>, node_callback>;
 	std::vector<single_mode_controller*> controllers;
 	node_callback_map callbacks;
@@ -510,7 +510,7 @@ event_mode_controller::event_mode_controller(tgamestate_inspector::controller& c
 	single_mode_controller::events().write_events(events);
 }
 
-void variable_mode_controller::show_list(ttree_view_node& node)
+void variable_mode_controller::show_list(tree_view_node& node)
 {
 	model().clear_data();
 
@@ -544,19 +544,19 @@ void variable_mode_controller::show_list(ttree_view_node& node)
 	}
 }
 
-void variable_mode_controller::show_var(ttree_view_node& node)
+void variable_mode_controller::show_var(tree_view_node& node)
 {
-	twidget* w = node.find("name", false);
-	if(tlabel* label = dynamic_cast<tlabel*>(w)) {
-		model().set_data(vars()[label->label()]);
+	widget* w = node.find("name", false);
+	if(label* lbl = dynamic_cast<label*>(w)) {
+		model().set_data(vars()[lbl->get_label()]);
 	}
 }
 
-void variable_mode_controller::show_array(ttree_view_node& node)
+void variable_mode_controller::show_array(tree_view_node& node)
 {
-	twidget* w = node.find("name", false);
-	if(tlabel* label = dynamic_cast<tlabel*>(w)) {
-		const std::string& var = label->label();
+	widget* w = node.find("name", false);
+	if(label* lbl = dynamic_cast<label*>(w)) {
+		const std::string& var = lbl->get_label();
 		size_t n_start = var.find_last_of('[') + 1;
 		size_t n_len = var.size() - n_start - 1;
 		int n = std::stoi(var.substr(n_start, n_len));
@@ -564,7 +564,7 @@ void variable_mode_controller::show_array(ttree_view_node& node)
 	}
 }
 
-void event_mode_controller::show_list(ttree_view_node& node, bool is_wmi)
+void event_mode_controller::show_list(tree_view_node& node, bool is_wmi)
 {
 	model().clear_data();
 
@@ -592,7 +592,7 @@ void event_mode_controller::show_list(ttree_view_node& node, bool is_wmi)
 
 }
 
-void event_mode_controller::show_event(ttree_view_node& node, bool is_wmi)
+void event_mode_controller::show_event(tree_view_node& node, bool is_wmi)
 {
 	int n = node.describe_path().back();
 	model().set_data(config_to_string(events.child(is_wmi ? "menu_item" : "event", n)));
@@ -639,7 +639,7 @@ static stuff_list_adder add_unit_entry(stuff_list_adder& progress, const unit& u
 	return progress;
 }
 
-void unit_mode_controller::show_list(ttree_view_node& node)
+void unit_mode_controller::show_list(tree_view_node& node)
 {
 	model().clear_data();
 
@@ -654,7 +654,7 @@ void unit_mode_controller::show_list(ttree_view_node& node)
 	}
 }
 
-void unit_mode_controller::show_unit(ttree_view_node& node)
+void unit_mode_controller::show_unit(tree_view_node& node)
 {
 	int i = node.describe_path().back();
 	unit_map::const_iterator u = dc().units().begin();
@@ -664,7 +664,7 @@ void unit_mode_controller::show_unit(ttree_view_node& node)
 	model().set_data(config_to_string(c_unit));
 }
 
-void team_mode_controller::show_list(ttree_view_node& node, int side)
+void team_mode_controller::show_list(tree_view_node& node, int side)
 {
 	config&& cfg = dc().get_team(side).to_config();
 	cfg.clear_children("ai");
@@ -694,7 +694,7 @@ void team_mode_controller::show_list(ttree_view_node& node, int side)
 		side);
 }
 
-void team_mode_controller::show_ai(ttree_view_node& node, int side)
+void team_mode_controller::show_ai(tree_view_node& node, int side)
 {
 	model().set_data(ai::manager::get_active_ai_overview_for_side(side));
 
@@ -734,17 +734,17 @@ void team_mode_controller::show_ai(ttree_view_node& node, int side)
 		side);
 }
 
-void team_mode_controller::show_ai_components(ttree_view_node& node, int side)
+void team_mode_controller::show_ai_components(tree_view_node& node, int side)
 {
-	twidget* w = node.find("name", false);
-	if(tlabel* label = dynamic_cast<tlabel*>(w)) {
-		std::string tag = label->label();
+	widget* w = node.find("name", false);
+	if(label* lbl = dynamic_cast<label*>(w)) {
+		std::string tag = lbl->get_label();
 		tag.pop_back();
 		model().set_data(config_to_string(ai::manager::to_config(side), tag));
 	}
 }
 
-void team_mode_controller::show_recall(ttree_view_node& node, int side)
+void team_mode_controller::show_recall(tree_view_node& node, int side)
 {
 	model().clear_data();
 
@@ -759,7 +759,7 @@ void team_mode_controller::show_recall(ttree_view_node& node, int side)
 	}
 }
 
-void team_mode_controller::show_recall_unit(ttree_view_node& node, int side)
+void team_mode_controller::show_recall_unit(tree_view_node& node, int side)
 {
 	int i = node.describe_path().back();
 	auto u = dc().get_team(side).recall_list().begin();
@@ -769,12 +769,12 @@ void team_mode_controller::show_recall_unit(ttree_view_node& node, int side)
 	model().set_data(config_to_string(c_unit));
 }
 
-void team_mode_controller::show_ai_tree(ttree_view_node&, int side)
+void team_mode_controller::show_ai_tree(tree_view_node&, int side)
 {
 	model().set_data(ai::manager::get_active_ai_structure_for_side(side));
 }
 
-void team_mode_controller::show_units(ttree_view_node&, int side)
+void team_mode_controller::show_units(tree_view_node&, int side)
 {
 	std::ostringstream s;
 	for(unit_map::const_iterator i = dc().units().begin(); i != dc().units().end();
@@ -811,13 +811,13 @@ tgamestate_inspector::tgamestate_inspector(const config& vars, const game_events
 	model_.reset(new model);
 }
 
-void tgamestate_inspector::pre_show(twindow& window)
+void tgamestate_inspector::pre_show(window& window)
 {
 	view_.reset(new view(window));
 	controller_.reset(new controller(*model_, *view_, vars_, events_, dc_));
 
 	if(!title_.empty()) {
-		find_widget<tcontrol>(&window, "inspector_name", false).set_label(title_);
+		find_widget<control>(&window, "inspector_name", false).set_label(title_);
 	}
 	controller_->bind(window);
 	view_->update(*model_);

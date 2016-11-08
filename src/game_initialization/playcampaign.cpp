@@ -345,7 +345,7 @@ LEVEL_RESULT campaign_controller::play_game()
 				_("This scenario has ended. Do you want to continue the campaign?"),
 				gui2::tmessage::yes_no_buttons);
 
-			if(dlg_res == gui2::twindow::CANCEL) {
+			if(dlg_res == gui2::window::CANCEL) {
 				return res;
 			}
 		}

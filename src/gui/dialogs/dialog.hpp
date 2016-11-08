@@ -153,7 +153,7 @@ public:
 	 *                            there's no guarantee about how fast it closes
 	 *                            after the minimum.
 	 *
-	 * @returns                   Whether the final retval_ == twindow::OK
+	 * @returns                   Whether the final retval_ == window::OK
 	 */
 	bool show(CVideo& video, const unsigned auto_close_time = 0);
 
@@ -210,7 +210,7 @@ protected:
 				  const bool mandatory,
 				  const std::function<bool()> callback_load_value = nullptr,
 				  const std::function<void(bool)> callback_save_value = nullptr,
-				  const std::function<void(twidget&)> callback_change = nullptr,
+				  const std::function<void(widget&)> callback_change = nullptr,
 				  const bool initial_fire = false);
 
 	/**
@@ -232,7 +232,7 @@ protected:
 	register_bool(const std::string& id,
 				  const bool mandatory,
 				  bool& linked_variable,
-				  const std::function<void(twidget&)> callback_change = nullptr,
+				  const std::function<void(widget&)> callback_change = nullptr,
 				  const bool initial_fire = false);
 
 	/**
@@ -280,7 +280,7 @@ protected:
 	 * Registers a new control as a label.
 	 *
 	 * The label is used for a control to set the 'label' since it calls the
-	 * @ref tcontrol::set_label it can also be used for the @ref timage since
+	 * @ref control::set_label it can also be used for the @ref image since
 	 * there this sets the filename. (The @p use_markup makes no sense in an
 	 * image but that's a detail.)
 	 *
@@ -313,7 +313,7 @@ private:
 	/**
 	 * Always save the fields upon closing.
 	 *
-	 * Normally fields are only saved when the twindow::OK button is pressed.
+	 * Normally fields are only saved when the window::OK button is pressed.
 	 * With this flag set is always saves. Be careful with the flag since it
 	 * also updates upon canceling, which can be a problem when the field sets
 	 * a preference.
@@ -371,7 +371,7 @@ private:
 	 *                            upon.
 	 * @returns                   The window to show.
 	 */
-	twindow* build_window(CVideo& video) const;
+	window* build_window(CVideo& video) const;
 
 	/**
 	 * Actions to be taken directly after the window is build.
@@ -382,7 +382,7 @@ private:
 	 *                            upon.
 	 * @param window              The window just created.
 	 */
-	virtual void post_build(twindow& window);
+	virtual void post_build(window& window);
 
 	/**
 	 * Actions to be taken before showing the window.
@@ -392,7 +392,7 @@ private:
 	 *
 	 * @param window              The window to be shown.
 	 */
-	virtual void pre_show(twindow& window);
+	virtual void pre_show(window& window);
 
 	/**
 	 * Actions to be taken after the window has been shown.
@@ -402,14 +402,14 @@ private:
 	 *
 	 * @param window              The window which has been shown.
 	 */
-	virtual void post_show(twindow& window);
+	virtual void post_show(window& window);
 
 	/**
 	 * Initializes all fields in the dialog and set the keyboard focus.
 	 *
 	 * @param window              The window which has been shown.
 	 */
-	virtual void init_fields(twindow& window);
+	virtual void init_fields(window& window);
 
 	/**
 	 * When the dialog is closed with the OK status saves all fields.
@@ -419,7 +419,7 @@ private:
 	 * @param window              The window which has been shown.
 	 * @param save_fields         Does the value in the fields need to be saved?
 	 */
-	virtual void finalize_fields(twindow& window, const bool save_fields);
+	virtual void finalize_fields(window& window, const bool save_fields);
 };
 
 } // namespace gui2

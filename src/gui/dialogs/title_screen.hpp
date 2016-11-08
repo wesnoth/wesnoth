@@ -77,9 +77,9 @@ private:
 	virtual const std::string& window_id() const;
 
 	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	void pre_show(window& window);
 
-	void on_resize(twindow& window);
+	void on_resize(window& window);
 
 	/** Holds the debug clock dialog. */
 	tpopup* debug_clock_;
@@ -90,7 +90,7 @@ private:
 	 * @param window              The window being shown.
 	 * @param previous            Show the previous tip, else shows the next one.
 	 */
-	void update_tip(twindow& window, const bool previous);
+	void update_tip(window& window, const bool previous);
 
 	/** Shows the debug clock. */
 	void show_debug_clock_window(CVideo& video);

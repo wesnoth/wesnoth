@@ -22,7 +22,7 @@ class CVideo;
 namespace gui2
 {
 
-class twindow;
+class window;
 
 /**
  * The popup class shows windows that are shown non-modal.
@@ -46,7 +46,7 @@ class tpopup
 	 * This is used in the unit tests, but these implementation details
 	 * shouldn't be used in the normal code.
 	 */
-	friend twindow* unit_test_window(const tpopup& dialog);
+	friend window* unit_test_window(const tpopup& dialog);
 
 public:
 	tpopup();
@@ -82,7 +82,7 @@ public:
 
 private:
 	/** The window, used in show. */
-	twindow* window_;
+	window* window_;
 
 	/** The id of the window to build. */
 	virtual const std::string& window_id() const = 0;
@@ -97,7 +97,7 @@ private:
 	 *                            upon.
 	 * @returns                   The window to show.
 	 */
-	twindow* build_window(CVideo& video) const;
+	window* build_window(CVideo& video) const;
 
 	/**
 	 * Actions to be taken directly after the window is build.
@@ -106,7 +106,7 @@ private:
 	 *                            upon.
 	 * @param window              The window just created.
 	 */
-	virtual void post_build(twindow& window);
+	virtual void post_build(window& window);
 
 	/**
 	 * Actions to be taken before showing the window.
@@ -115,7 +115,7 @@ private:
 	 *                            upon.
 	 * @param window              The window to be shown.
 	 */
-	virtual void pre_show(twindow& window);
+	virtual void pre_show(window& window);
 };
 
 } // namespace gui2

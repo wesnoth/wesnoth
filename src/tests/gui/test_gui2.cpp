@@ -143,7 +143,7 @@ std::string unit_test_mark_popup_as_tested(const tpopup& dialog)
 	return dialog.window_id();
 }
 
-twindow* unit_test_window(const tpopup& dialog)
+window* unit_test_window(const tpopup& dialog)
 {
 	return dialog.window_;
 }
@@ -231,7 +231,7 @@ namespace {
 				std::string exception;
 				try {
 					dlg->show(video, interact);
-					gui2::twindow* window = gui2::unit_test_window((*dlg.get()));
+					gui2::window* window = gui2::unit_test_window((*dlg.get()));
 					BOOST_REQUIRE_NE(window, static_cast<void*>(nullptr));
 					window->draw();
 				} catch(gui2::layout_exception_width_modified&) {

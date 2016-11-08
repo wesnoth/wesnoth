@@ -25,57 +25,57 @@
 namespace gui2
 {
 
-SDL_Rect tcontainer_::get_client_rect() const
+SDL_Rect container_base::get_client_rect() const
 {
 	return get_rectangle();
 }
 
-void tcontainer_::layout_initialise(const bool full_initialisation)
+void container_base::layout_initialise(const bool full_initialisation)
 {
 	// Inherited.
-	tcontrol::layout_initialise(full_initialisation);
+	control::layout_initialise(full_initialisation);
 
 	grid_.layout_initialise(full_initialisation);
 }
 
-void tcontainer_::reduce_width(const unsigned maximum_width)
+void container_base::reduce_width(const unsigned maximum_width)
 {
 	grid_.reduce_width(maximum_width - border_space().x);
 }
 
-void tcontainer_::request_reduce_width(const unsigned maximum_width)
+void container_base::request_reduce_width(const unsigned maximum_width)
 {
 	grid_.request_reduce_width(maximum_width - border_space().x);
 }
 
-void tcontainer_::demand_reduce_width(const unsigned maximum_width)
+void container_base::demand_reduce_width(const unsigned maximum_width)
 {
 	grid_.demand_reduce_width(maximum_width - border_space().x);
 }
 
-void tcontainer_::reduce_height(const unsigned maximum_height)
+void container_base::reduce_height(const unsigned maximum_height)
 {
 	grid_.reduce_height(maximum_height - border_space().y);
 }
 
-void tcontainer_::request_reduce_height(const unsigned maximum_height)
+void container_base::request_reduce_height(const unsigned maximum_height)
 {
 	grid_.request_reduce_height(maximum_height - border_space().y);
 }
 
-void tcontainer_::demand_reduce_height(const unsigned maximum_height)
+void container_base::demand_reduce_height(const unsigned maximum_height)
 {
 	grid_.demand_reduce_height(maximum_height - border_space().y);
 }
 
-bool tcontainer_::can_wrap() const
+bool container_base::can_wrap() const
 {
-	return grid_.can_wrap() || twidget::can_wrap();
+	return grid_.can_wrap() || widget::can_wrap();
 }
 
-void tcontainer_::place(const point& origin, const point& size)
+void container_base::place(const point& origin, const point& size)
 {
-	tcontrol::place(origin, size);
+	control::place(origin, size);
 
 	const SDL_Rect rect = get_client_rect();
 	const point client_size(rect.w, rect.h);
@@ -83,12 +83,12 @@ void tcontainer_::place(const point& origin, const point& size)
 	grid_.place(client_position, client_size);
 }
 
-bool tcontainer_::has_widget(const twidget& widget) const
+bool container_base::has_widget(const widget& widget) const
 {
-	return twidget::has_widget(widget) || grid_.has_widget(widget);
+	return widget::has_widget(widget) || grid_.has_widget(widget);
 }
 
-point tcontainer_::calculate_best_size() const
+point container_base::calculate_best_size() const
 {
 	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
 
@@ -119,73 +119,73 @@ point tcontainer_::calculate_best_size() const
 	return result;
 }
 
-void tcontainer_::set_origin(const point& origin)
+void container_base::set_origin(const point& origin)
 {
 	// Inherited.
-	twidget::set_origin(origin);
+	widget::set_origin(origin);
 
 	const SDL_Rect rect = get_client_rect();
 	const point client_position(rect.x, rect.y);
 	grid_.set_origin(client_position);
 }
 
-void tcontainer_::set_visible_rectangle(const SDL_Rect& rectangle)
+void container_base::set_visible_rectangle(const SDL_Rect& rectangle)
 {
 	// Inherited.
-	twidget::set_visible_rectangle(rectangle);
+	widget::set_visible_rectangle(rectangle);
 
 	grid_.set_visible_rectangle(rectangle);
 }
 
-void tcontainer_::impl_draw_children(surface& frame_buffer,
+void container_base::impl_draw_children(surface& frame_buffer,
 									 int x_offset,
 									 int y_offset)
 {
-	assert(get_visible() == twidget::tvisible::visible
-		   && grid_.get_visible() == twidget::tvisible::visible);
+	assert(get_visible() == widget::tvisible::visible
+		   && grid_.get_visible() == widget::tvisible::visible);
 
 	grid_.draw_children(frame_buffer, x_offset, y_offset);
 }
 
-void tcontainer_::layout_children()
+void container_base::layout_children()
 {
 	grid_.layout_children();
 }
 
 void
-tcontainer_::child_populate_dirty_list(twindow& caller,
-									   const std::vector<twidget*>& call_stack)
+container_base::child_populate_dirty_list(window& caller,
+									   const std::vector<widget*>& call_stack)
 {
-	std::vector<twidget*> child_call_stack = call_stack;
+	std::vector<widget*> child_call_stack = call_stack;
 	grid_.populate_dirty_list(caller, child_call_stack);
 }
 
-twidget* tcontainer_::find_at(const point& coordinate,
+widget* container_base::find_at(const point& coordinate,
 							  const bool must_be_active)
 {
 	return grid_.find_at(coordinate, must_be_active);
 }
 
-const twidget* tcontainer_::find_at(const point& coordinate,
+const widget* container_base::find_at(const point& coordinate,
 									const bool must_be_active) const
 {
 	return grid_.find_at(coordinate, must_be_active);
 }
 
-twidget* tcontainer_::find(const std::string& id, const bool must_be_active)
+widget* container_base::find(const std::string& id, const bool must_be_active)
 {
-	twidget* result = tcontrol::find(id, must_be_active);
+	widget* result = control::find(id, must_be_active);
 	return result ? result : grid_.find(id, must_be_active);
 }
 
-const twidget* tcontainer_::find(const std::string& id,
+const widget* container_base::find(const std::string& id,
 								 const bool must_be_active) const
 {
-	const twidget* result = tcontrol::find(id, must_be_active);
+	const widget* result = control::find(id, must_be_active);
 	return result ? result : grid_.find(id, must_be_active);
 }
 
-void tcontainer_::set_active(const bool active)
+void container_base::set_active(const bool active)
 {
 	// Not all our children might have the proper state so let them run
 	// unconditionally.
@@ -200,13 +200,13 @@ void tcontainer_::set_active(const bool active)
 	set_self_active(active);
 }
 
-bool tcontainer_::disable_click_dismiss() const
+bool container_base::disable_click_dismiss() const
 {
-	return tcontrol::disable_click_dismiss() && grid_.disable_click_dismiss();
+	return control::disable_click_dismiss() && grid_.disable_click_dismiss();
 }
 
 void
-tcontainer_::init_grid(const std::shared_ptr<builder_grid>& grid_builder)
+container_base::init_grid(const std::shared_ptr<builder_grid>& grid_builder)
 {
 	log_scope2(log_gui_general, LOG_SCOPE_HEADER);
 
@@ -215,7 +215,7 @@ tcontainer_::init_grid(const std::shared_ptr<builder_grid>& grid_builder)
 	grid_builder->build(&initial_grid());
 }
 
-point tcontainer_::border_space() const
+point container_base::border_space() const
 {
 	return point();
 }

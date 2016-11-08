@@ -39,47 +39,47 @@ namespace gui2
 
 REGISTER_WIDGET(menu_button)
 
-tmenu_button::tmenu_button()
-	: tcontrol(COUNT)
-	, tselectable_()
+menu_button::menu_button()
+	: control(COUNT)
+	, selectable_item()
 	, state_(ENABLED)
 	, retval_(0)
 	, values_()
 	, selected_()
 {
-	values_.push_back(config_of("label", this->label()));
+	values_.push_back(config_of("label", this->get_label()));
 
 	connect_signal<event::MOUSE_ENTER>(
-			std::bind(&tmenu_button::signal_handler_mouse_enter, this, _2, _3));
+			std::bind(&menu_button::signal_handler_mouse_enter, this, _2, _3));
 	connect_signal<event::MOUSE_LEAVE>(
-			std::bind(&tmenu_button::signal_handler_mouse_leave, this, _2, _3));
+			std::bind(&menu_button::signal_handler_mouse_leave, this, _2, _3));
 
 	connect_signal<event::LEFT_BUTTON_DOWN>(std::bind(
-			&tmenu_button::signal_handler_left_button_down, this, _2, _3));
+			&menu_button::signal_handler_left_button_down, this, _2, _3));
 	connect_signal<event::LEFT_BUTTON_UP>(
-			std::bind(&tmenu_button::signal_handler_left_button_up, this, _2, _3));
+			std::bind(&menu_button::signal_handler_left_button_up, this, _2, _3));
 	connect_signal<event::LEFT_BUTTON_CLICK>(std::bind(
-			&tmenu_button::signal_handler_left_button_click, this, _2, _3));
+			&menu_button::signal_handler_left_button_click, this, _2, _3));
 }
 
-void tmenu_button::set_active(const bool active)
+void menu_button::set_active(const bool active)
 {
 	if(get_active() != active) {
 		set_state(active ? ENABLED : DISABLED);
 	}
 }
 
-bool tmenu_button::get_active() const
+bool menu_button::get_active() const
 {
 	return state_ != DISABLED;
 }
 
-unsigned tmenu_button::get_state() const
+unsigned menu_button::get_state() const
 {
 	return state_;
 }
 
-void tmenu_button::set_state(const state_t state)
+void menu_button::set_state(const state_t state)
 {
 	if(state != state_) {
 		state_ = state;
@@ -87,13 +87,13 @@ void tmenu_button::set_state(const state_t state)
 	}
 }
 
-const std::string& tmenu_button::get_control_type() const
+const std::string& menu_button::get_control_type() const
 {
 	static const std::string type = "menu_button";
 	return type;
 }
 
-void tmenu_button::signal_handler_mouse_enter(const event::event_t event,
+void menu_button::signal_handler_mouse_enter(const event::event_t event,
 										 bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -102,7 +102,7 @@ void tmenu_button::signal_handler_mouse_enter(const event::event_t event,
 	handled = true;
 }
 
-void tmenu_button::signal_handler_mouse_leave(const event::event_t event,
+void menu_button::signal_handler_mouse_leave(const event::event_t event,
 										 bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -111,12 +111,12 @@ void tmenu_button::signal_handler_mouse_leave(const event::event_t event,
 	handled = true;
 }
 
-void tmenu_button::signal_handler_left_button_down(const event::event_t event,
+void menu_button::signal_handler_left_button_down(const event::event_t event,
 											  bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
-	twindow* window = get_window();
+	window* window = get_window();
 	if(window) {
 		window->mouse_capture();
 	}
@@ -125,7 +125,7 @@ void tmenu_button::signal_handler_left_button_down(const event::event_t event,
 	handled = true;
 }
 
-void tmenu_button::signal_handler_left_button_up(const event::event_t event,
+void menu_button::signal_handler_left_button_up(const event::event_t event,
 											bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -134,7 +134,7 @@ void tmenu_button::signal_handler_left_button_up(const event::event_t event,
 	handled = true;
 }
 
-void tmenu_button::signal_handler_left_button_click(const event::event_t event,
+void menu_button::signal_handler_left_button_click(const event::event_t event,
 											   bool& handled)
 {
 	assert(get_window());
@@ -165,7 +165,7 @@ void tmenu_button::signal_handler_left_button_click(const event::event_t event,
 		}
 
 		if(retval_ != 0) {
-			if(twindow* window = get_window()) {
+			if(window* window = get_window()) {
 				window->set_retval(retval_);
 				return;
 			}
@@ -175,7 +175,7 @@ void tmenu_button::signal_handler_left_button_click(const event::event_t event,
 	handled = true;
 }
 
-void tmenu_button::set_values(const std::vector<::config>& values, int selected)
+void menu_button::set_values(const std::vector<::config>& values, int selected)
 {
 	assert(static_cast<size_t>(selected) < values.size());
 	assert(static_cast<size_t>(selected_) < values_.size());
@@ -186,7 +186,7 @@ void tmenu_button::set_values(const std::vector<::config>& values, int selected)
 	selected_ = selected;
 	set_label(values_[selected_]["label"]);
 }
-void tmenu_button::set_selected(int selected)
+void menu_button::set_selected(int selected)
 {
 	assert(static_cast<size_t>(selected) < values_.size());
 	assert(static_cast<size_t>(selected_) < values_.size());
@@ -298,9 +298,9 @@ builder_menu_button::builder_menu_button(const config& cfg)
 	}
 }
 
-twidget* builder_menu_button::build() const
+widget* builder_menu_button::build() const
 {
-	tmenu_button* widget = new tmenu_button();
+	menu_button* widget = new menu_button();
 
 	init_control(widget);
 

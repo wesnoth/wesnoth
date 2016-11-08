@@ -83,19 +83,19 @@ tgame_cache_options::tgame_cache_options()
 {
 }
 
-void tgame_cache_options::pre_show(twindow& window)
+void tgame_cache_options::pre_show(window& window)
 {
-	clean_button_ = &find_widget<tbutton>(&window, "clean", false);
-	purge_button_ = &find_widget<tbutton>(&window, "purge", false);
-	size_label_ = &find_widget<tlabel>(&window, "size", false);
+	clean_button_ = &find_widget<button>(&window, "clean", false);
+	purge_button_ = &find_widget<button>(&window, "purge", false);
+	size_label_ = &find_widget<label>(&window, "size", false);
 
 	update_cache_size_display();
 
-	ttext_& path_box = find_widget<ttext_>(&window, "path", false);
+	text_box_base& path_box = find_widget<text_box_base>(&window, "path", false);
 	path_box.set_value(cache_path_);
 	path_box.set_active(false);
 
-	tbutton& copy = find_widget<tbutton>(&window, "copy", false);
+	button& copy = find_widget<button>(&window, "copy", false);
 	connect_signal_mouse_left_click(copy,
 									std::bind(&tgame_cache_options::copy_to_clipboard_callback,
 												this));
@@ -104,7 +104,7 @@ void tgame_cache_options::pre_show(twindow& window)
 		copy.set_tooltip(_("Clipboard support not found, contact your packager"));
 	}
 
-	tbutton& browse = find_widget<tbutton>(&window, "browse", false);
+	button& browse = find_widget<button>(&window, "browse", false);
 	connect_signal_mouse_left_click(browse,
 									std::bind(&tgame_cache_options::browse_cache_callback,
 												this));
@@ -120,7 +120,7 @@ void tgame_cache_options::pre_show(twindow& window)
 												std::ref(window.video())));
 }
 
-void tgame_cache_options::post_show(twindow& /*window*/)
+void tgame_cache_options::post_show(window& /*window*/)
 {
 	size_label_ = nullptr;
 }

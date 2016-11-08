@@ -39,27 +39,27 @@ namespace gui2
 
 REGISTER_WIDGET(scroll_label)
 
-tscroll_label::tscroll_label(bool wrap, const std::string& text_alignment)
-	: tscrollbar_container(COUNT)
+scroll_label::scroll_label(bool wrap, const std::string& text_alignment)
+	: scrollbar_container(COUNT)
 	, state_(ENABLED)
 	, wrap_on(wrap)
 	, text_alignment(text_alignment)
 {
 	connect_signal<event::LEFT_BUTTON_DOWN>(
 			std::bind(
-					&tscroll_label::signal_handler_left_button_down, this, _2),
+					&scroll_label::signal_handler_left_button_down, this, _2),
 			event::dispatcher::back_pre_child);
 }
 
-void tscroll_label::set_label(const t_string& label)
+void scroll_label::set_label(const t_string& lbl)
 {
 	// Inherit.
-	tcontrol::set_label(label);
+	control::set_label(lbl);
 
 	if(content_grid()) {
-		tlabel* widget
-				= find_widget<tlabel>(content_grid(), "_label", false, true);
-		widget->set_label(label);
+		label* widget
+				= find_widget<label>(content_grid(), "_label", false, true);
+		widget->set_label(lbl);
 
 		// We want the width to stay cosistent
 		widget->request_reduce_width(widget->get_size().x);
@@ -68,66 +68,66 @@ void tscroll_label::set_label(const t_string& label)
 	}
 }
 
-void tscroll_label::set_use_markup(bool use_markup)
+void scroll_label::set_use_markup(bool use_markup)
 {
 	// Inherit.
-	tcontrol::set_use_markup(use_markup);
+	control::set_use_markup(use_markup);
 
 	if(content_grid()) {
-		tlabel* widget
-				= find_widget<tlabel>(content_grid(), "_label", false, true);
+		label* widget
+				= find_widget<label>(content_grid(), "_label", false, true);
 		widget->set_use_markup(use_markup);
 	}
 }
 
-void tscroll_label::set_self_active(const bool active)
+void scroll_label::set_self_active(const bool active)
 {
 	state_ = active ? ENABLED : DISABLED;
 }
 
-bool tscroll_label::get_active() const
+bool scroll_label::get_active() const
 {
 	return state_ != DISABLED;
 }
 
-unsigned tscroll_label::get_state() const
+unsigned scroll_label::get_state() const
 {
 	return state_;
 }
 
-void tscroll_label::finalize_subclass()
+void scroll_label::finalize_subclass()
 {
 	assert(content_grid());
-	tlabel* lbl = dynamic_cast<tlabel*>(content_grid()->find("_label", false));
+	label* lbl = dynamic_cast<label*>(content_grid()->find("_label", false));
 
 	assert(lbl);
-	lbl->set_label(label());
+	lbl->set_label(get_label());
 	lbl->set_can_wrap(wrap_on);
 	lbl->set_text_alignment(decode_text_alignment(text_alignment));
 }
 
-void tscroll_label::set_can_wrap(bool can_wrap)
+void scroll_label::set_can_wrap(bool can_wrap)
 {
 	assert(content_grid());
-	tlabel* lbl = dynamic_cast<tlabel*>(content_grid()->find("_label", false));
+	label* lbl = dynamic_cast<label*>(content_grid()->find("_label", false));
 
 	assert(lbl);
 	wrap_on = can_wrap;
 	lbl->set_can_wrap(wrap_on);
 }
 
-bool tscroll_label::can_wrap() const
+bool scroll_label::can_wrap() const
 {
 	return wrap_on;
 }
 
-const std::string& tscroll_label::get_control_type() const
+const std::string& scroll_label::get_control_type() const
 {
 	static const std::string type = "scroll_label";
 	return type;
 }
 
-void tscroll_label::signal_handler_left_button_down(const event::event_t event)
+void scroll_label::signal_handler_left_button_down(const event::event_t event)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
@@ -248,9 +248,9 @@ builder_scroll_label::builder_scroll_label(const config& cfg)
 {
 }
 
-twidget* builder_scroll_label::build() const
+widget* builder_scroll_label::build() const
 {
-	tscroll_label* widget = new tscroll_label(wrap_on, text_alignment);
+	scroll_label* widget = new scroll_label(wrap_on, text_alignment);
 
 	init_control(widget);
 

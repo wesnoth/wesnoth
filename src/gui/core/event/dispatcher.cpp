@@ -141,7 +141,7 @@ public:
 	}
 };
 
-bool dispatcher::fire(const event_t event, twidget& target)
+bool dispatcher::fire(const event_t event, widget& target)
 {
 	assert(find<set_event>(event, event_in_set()));
 	switch(event) {
@@ -151,7 +151,7 @@ bool dispatcher::fire(const event_t event, twidget& target)
 										   &event_executor::
 													wants_mouse_left_double_click,
 										   signal_function>(
-					dynamic_cast<twidget*>(this), &target, trigger());
+					dynamic_cast<widget*>(this), &target, trigger());
 
 		case MIDDLE_BUTTON_DOUBLE_CLICK:
 			return fire_event_double_click<MIDDLE_BUTTON_CLICK,
@@ -159,7 +159,7 @@ bool dispatcher::fire(const event_t event, twidget& target)
 										   &event_executor::
 													wants_mouse_middle_double_click,
 										   signal_function>(
-					dynamic_cast<twidget*>(this), &target, trigger());
+					dynamic_cast<widget*>(this), &target, trigger());
 
 		case RIGHT_BUTTON_DOUBLE_CLICK:
 			return fire_event_double_click<RIGHT_BUTTON_CLICK,
@@ -167,11 +167,11 @@ bool dispatcher::fire(const event_t event, twidget& target)
 										   &event_executor::
 													wants_mouse_right_double_click,
 										   signal_function>(
-					dynamic_cast<twidget*>(this), &target, trigger());
+					dynamic_cast<widget*>(this), &target, trigger());
 
 		default:
 			return fire_event<signal_function>(
-					event, dynamic_cast<twidget*>(this), &target, trigger());
+					event, dynamic_cast<widget*>(this), &target, trigger());
 	}
 }
 
@@ -197,11 +197,11 @@ private:
 };
 
 bool
-dispatcher::fire(const event_t event, twidget& target, const point& coordinate)
+dispatcher::fire(const event_t event, widget& target, const point& coordinate)
 {
 	assert(find<set_event_mouse>(event, event_in_set()));
 	return fire_event<signal_mouse_function>(event,
-											  dynamic_cast<twidget*>(this),
+											  dynamic_cast<widget*>(this),
 											  &target,
 											  trigger_mouse(coordinate));
 }
@@ -233,7 +233,7 @@ private:
 };
 
 bool dispatcher::fire(const event_t event,
-					   twidget& target,
+					   widget& target,
 					   const SDL_Keycode key,
 					   const SDL_Keymod modifier,
 					   const utf8::string& unicode)
@@ -241,7 +241,7 @@ bool dispatcher::fire(const event_t event,
 	assert(find<set_event_keyboard>(event, event_in_set()));
 	return fire_event<signal_keyboard_function>(
 			event,
-			dynamic_cast<twidget*>(this),
+			dynamic_cast<widget*>(this),
 			&target,
 			trigger_keyboard(key, modifier, unicode));
 }
@@ -260,12 +260,12 @@ public:
 	}
 };
 
-bool dispatcher::fire(const event_t event, twidget& target, void*)
+bool dispatcher::fire(const event_t event, widget& target, void*)
 {
 	assert(find<set_event_notification>(event, event_in_set()));
 	return fire_event<signal_notification_function>(
 			event,
-			dynamic_cast<twidget*>(this),
+			dynamic_cast<widget*>(this),
 			&target,
 			trigger_notification());
 }
@@ -291,11 +291,11 @@ private:
 	message& message_;
 };
 
-bool dispatcher::fire(const event_t event, twidget& target, message& msg)
+bool dispatcher::fire(const event_t event, widget& target, message& msg)
 {
 	assert(find<set_event_message>(event, event_in_set()));
 	return fire_event<signal_message_function>(event,
-												dynamic_cast<twidget*>(this),
+												dynamic_cast<widget*>(this),
 												&target,
 												trigger_message(msg));
 }

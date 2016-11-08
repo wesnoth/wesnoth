@@ -33,10 +33,10 @@ public:
 	tlua_interpreter(lua_kernel_base & lk);
 
 	/** Inherited from tdialog. */
-	twindow* build_window(CVideo& video);
+	window* build_window(CVideo& video);
 
 	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	void pre_show(window& window);
 
 	enum WHICH_KERNEL { APP, GAME };
 	static void display(CVideo& video, lua_kernel_base * lk);

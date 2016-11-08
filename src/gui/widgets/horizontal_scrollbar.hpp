@@ -26,10 +26,10 @@ namespace gui2
 // ------------ WIDGET -----------{
 
 /** A horizontal scrollbar. */
-class thorizontal_scrollbar : public tscrollbar_
+class horizontal_scrollbar : public scrollbar_base
 {
 public:
-	thorizontal_scrollbar() : tscrollbar_()
+	horizontal_scrollbar() : scrollbar_base()
 	{
 	}
 
@@ -67,7 +67,7 @@ private:
 		return current.x - original.x;
 	}
 
-	/** See @ref tcontrol::get_control_type. */
+	/** See @ref control::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 };
 
@@ -100,7 +100,7 @@ struct builder_horizontal_scrollbar : public builder_control
 
 	using builder_control::build;
 
-	twidget* build() const;
+	widget* build() const;
 };
 
 } // namespace implementation

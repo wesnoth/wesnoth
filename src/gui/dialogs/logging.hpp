@@ -20,8 +20,8 @@
 
 namespace gui2
 {
-class tlabel;
-class ttoggle_button;
+class label;
+class toggle_button;
 
 class tlogging : public tdialog
 {
@@ -43,17 +43,17 @@ public:
 private:
 	void set_logger(const std::basic_string<char> log_domain);
 
-	std::map<std::string, tgroup<std::string> > groups_;
+	std::map<std::string, group<std::string> > groups_;
 	std::vector<std::string> domain_list_, widget_id_;
 
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
 	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	void pre_show(window& window);
 
 	/** Inherited from tdialog. */
-	void post_show(twindow& window);
+	void post_show(window& window);
 
 };
 

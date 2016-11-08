@@ -27,42 +27,42 @@ namespace gui2
 // ------------ WIDGET -----------{
 
 /** A slider. */
-class tslider : public tscrollbar_, public tinteger_selector_
+class slider : public scrollbar_base, public integer_selector
 {
 public:
-	tslider();
+	slider();
 
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
 private:
-	/** See @ref twidget::calculate_best_size. */
+	/** See @ref widget::calculate_best_size. */
 	virtual point calculate_best_size() const override;
 
 public:
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
-	/** Inherited from tinteger_selector_. */
+	/** Inherited from integer_selector. */
 	void set_value(const int value) override;
 
-	/** Inherited from tinteger_selector_. */
+	/** Inherited from integer_selector. */
 	int get_value() const override
 	{
 		return minimum_value_ + get_item_position() * get_step_size();
 	}
 
-	/** Inherited from tinteger_selector_. */
+	/** Inherited from integer_selector. */
 	void set_minimum_value(const int minimum_value) override;
 
-	/** Inherited from tinteger_selector_. */
+	/** Inherited from integer_selector. */
 	int get_minimum_value() const override
 	{
 		return minimum_value_;
 	}
 
-	/** Inherited from tinteger_selector_. */
+	/** Inherited from integer_selector. */
 	void set_maximum_value(const int maximum_value) override;
 
-	/** Inherited from tinteger_selector_. */
+	/** Inherited from integer_selector. */
 	int get_maximum_value() const override
 	// The number of items needs to include the begin and end so count - 1.
 	{
@@ -155,7 +155,7 @@ private:
 	/** Inherited from tscrollbar. */
 	//void move_positioner(const int distance) override;
 
-	/** See @ref tcontrol::update_canvas. */
+	/** See @ref control::update_canvas. */
 	virtual void update_canvas() override;
 
 	/**
@@ -187,7 +187,7 @@ private:
 
 	//void update_current_item_mouse_position();
 
-	/** See @ref tcontrol::get_control_type. */
+	/** See @ref control::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 
 	/**
@@ -240,7 +240,7 @@ struct builder_slider : public builder_control
 
 	using builder_control::build;
 
-	twidget* build() const;
+	widget* build() const;
 
 private:
 	unsigned best_slider_length_;

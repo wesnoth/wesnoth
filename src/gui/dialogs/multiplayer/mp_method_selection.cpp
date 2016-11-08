@@ -54,26 +54,26 @@ namespace gui2
 
 REGISTER_DIALOG(mp_method_selection)
 
-void tmp_method_selection::pre_show(twindow& window)
+void tmp_method_selection::pre_show(window& window)
 {
 	user_name_ = preferences::login();
-	ttext_box* user_widget
-			= find_widget<ttext_box>(&window, "user_name", false, true);
+	text_box* user_widget
+			= find_widget<text_box>(&window, "user_name", false, true);
 	user_widget->set_value(user_name_);
 	user_widget->set_maximum_length(mp::max_login_size);
 	window.keyboard_capture(user_widget);
 
-	tlistbox* list = find_widget<tlistbox>(&window, "method_list", false, true);
+	listbox* list = find_widget<listbox>(&window, "method_list", false, true);
 
 	window.add_to_keyboard_chain(list);
 }
 
-void tmp_method_selection::post_show(twindow& window)
+void tmp_method_selection::post_show(window& window)
 {
-	if(get_retval() == twindow::OK) {
-		ttext_box& user_widget
-				= find_widget<ttext_box>(&window, "user_name", false);
-		tlistbox& list = find_widget<tlistbox>(&window, "method_list", false);
+	if(get_retval() == window::OK) {
+		text_box& user_widget
+				= find_widget<text_box>(&window, "user_name", false);
+		listbox& list = find_widget<listbox>(&window, "method_list", false);
 
 		choice_ = list.get_selected_row();
 

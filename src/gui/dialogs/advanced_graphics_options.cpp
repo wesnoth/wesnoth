@@ -52,13 +52,13 @@ tadvanced_graphics_options::SCALING_ALGORITHM tadvanced_graphics_options::get_sc
 	return algo;
 }
 	
-void tadvanced_graphics_options::setup_scale_case(const std::string & case_id, twindow & window)
+void tadvanced_graphics_options::setup_scale_case(const std::string & case_id, window & window)
 {
 	std::string pref_id = "scale_" + case_id;
-	tgroup<SCALING_ALGORITHM>& group = groups_[case_id];
+	group<SCALING_ALGORITHM>& group = groups_[case_id];
 	for (size_t x = 0; x < SCALING_ALGORITHM::count; ++x) {
 		SCALING_ALGORITHM scale = SCALING_ALGORITHM::from_int(x);
-		ttoggle_button* button = &find_widget<ttoggle_button>(&window, pref_id + "_" + scale.to_string(), false);
+		toggle_button* button = &find_widget<toggle_button>(&window, pref_id + "_" + scale.to_string(), false);
 		group.add_member(button, scale);
 	}
 	group.set_member_states(get_scale_pref(pref_id));
@@ -78,22 +78,22 @@ tadvanced_graphics_options::tadvanced_graphics_options()
 {
 }
 
-void tadvanced_graphics_options::pre_show(twindow& window)
+void tadvanced_graphics_options::pre_show(window& window)
 {
 	for(const std::string & i : scale_cases) {
 		setup_scale_case(i, window);
 	}
 
 	/*
-	tbutton * defaults;
-	defaults = &find_widget<tbutton>(&window,"revert_to_defaults", false);
+	button * defaults;
+	defaults = &find_widget<button>(&window,"revert_to_defaults", false);
 	connect_signal_mouse_left_click(*defaults, std::bind(&revert_to_default_pref_values, std::ref(window)));
 	*/
 }
 
-void tadvanced_graphics_options::post_show(twindow& /*window*/)
+void tadvanced_graphics_options::post_show(window& /*window*/)
 {
-	if(get_retval() == twindow::OK) {
+	if(get_retval() == window::OK) {
 		for(const std::string & i : scale_cases) {
 			update_scale_case(i);
 		}

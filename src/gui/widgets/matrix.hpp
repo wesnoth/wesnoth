@@ -66,47 +66,47 @@ private:
 };
 
 template <class STATE>
-class tcontrol_NEW : public tcontrol, public STATE
+class control_NEW : public control, public STATE
 {
 public:
-	tcontrol_NEW(const implementation::builder_control& builder,
+	control_NEW(const implementation::builder_control& builder,
 				 const std::string& control_type)
-		: tcontrol(builder, STATE::COUNT, control_type)
+		: control(builder, STATE::COUNT, control_type)
 
 	{
 	}
 
-	/** See @ref tcontrol::set_active. */
+	/** See @ref control::set_active. */
 	virtual void set_active(const bool active) override
 	{
 		STATE::set_active(active);
 	}
 
-	/** See @ref tcontrol::get_active. */
+	/** See @ref control::get_active. */
 	virtual bool get_active() const override
 	{
 		return STATE::get_active();
 	}
 
-	/** See @ref tcontrol::get_state. */
+	/** See @ref control::get_state. */
 	virtual unsigned get_state() const override
 	{
 		return STATE::get_state();
 	}
 };
 
-typedef tcontrol_NEW<tstate_default> tbase;
+typedef control_NEW<tstate_default> tbase;
 
 /** The matrix class. */
-class tmatrix : public tbase
+class matrix : public tbase
 {
-	friend class tdebug_layout_graph;
+	friend class debug_layout_graph;
 
 private:
-	explicit tmatrix(const implementation::builder_matrix& builder);
+	explicit matrix(const implementation::builder_matrix& builder);
 
 public:
-	static tmatrix* build(const implementation::builder_matrix& builder);
+	static matrix* build(const implementation::builder_matrix& builder);
 
 	/***** ***** ***** ***** Item handling. ***** ***** ****** *****/
 
@@ -116,41 +116,41 @@ public:
 
 	/***** ***** ***** ***** Inherited operations. ***** ***** ****** *****/
 
-	/** See @ref twidget::place. */
+	/** See @ref widget::place. */
 	virtual void place(const point& origin, const point& size) override;
 
-	/** See @ref twidget::layout_initialise. */
+	/** See @ref widget::layout_initialise. */
 	virtual void layout_initialise(const bool full_initialisation) override;
 
-	/** See @ref twidget::impl_draw_children. */
+	/** See @ref widget::impl_draw_children. */
 	virtual void impl_draw_children(surface& frame_buffer,
 									int x_offset,
 									int y_offset) override;
 
-	/** See @ref twidget::layout_children. */
+	/** See @ref widget::layout_children. */
 	virtual void layout_children() override;
 
-	/** See @ref twidget::child_populate_dirty_list. */
+	/** See @ref widget::child_populate_dirty_list. */
 	virtual void
-	child_populate_dirty_list(twindow& caller,
-							  const std::vector<twidget*>& call_stack) override;
+	child_populate_dirty_list(window& caller,
+							  const std::vector<widget*>& call_stack) override;
 
-	/** See @ref twidget::request_reduce_width. */
+	/** See @ref widget::request_reduce_width. */
 	virtual void request_reduce_width(const unsigned maximum_width) override;
 
-	/** See @ref twidget::find_at. */
-	virtual twidget* find_at(const point& coordinate,
+	/** See @ref widget::find_at. */
+	virtual widget* find_at(const point& coordinate,
 							 const bool must_be_active) override;
 
-	/** See @ref twidget::find_at. */
-	virtual const twidget* find_at(const point& coordinate,
+	/** See @ref widget::find_at. */
+	virtual const widget* find_at(const point& coordinate,
 								   const bool must_be_active) const override;
 
-	/** See @ref twidget::find. */
-	twidget* find(const std::string& id, const bool must_be_active) override;
+	/** See @ref widget::find. */
+	widget* find(const std::string& id, const bool must_be_active) override;
 
-	/** See @ref twidget::find. */
-	const twidget* find(const std::string& id,
+	/** See @ref widget::find. */
+	const widget* find(const std::string& id,
 						const bool must_be_active) const override;
 
 	/***** ***** ***** ***** Forwarded to pane_. ***** ***** ****** *****/
@@ -159,7 +159,7 @@ public:
 	 *
 	 * @param compare_functor     The functor to use to sort the items.
 	 */
-	void sort(const tpane::tcompare_functor& compare_functor)
+	void sort(const pane::tcompare_functor& compare_functor)
 	{
 		/********************** OUTLINE *******************/
 		pane_->sort(compare_functor);
@@ -174,21 +174,21 @@ public:
 	 * @param filter_functor      The functor to determine whether an item
 	 *                            should be shown or hidden.
 	 */
-	void filter(const tpane::tfilter_functor& filter_functor)
+	void filter(const pane::tfilter_functor& filter_functor)
 	{
 		/********************** OUTLINE *******************/
 		pane_->filter(filter_functor);
 	}
 
 private:
-	/** See @ref twidget::calculate_best_size. */
+	/** See @ref widget::calculate_best_size. */
 	virtual point calculate_best_size() const override;
 
 public:
-	/** See @ref twidget::disable_click_dismiss. */
+	/** See @ref widget::disable_click_dismiss. */
 	bool disable_click_dismiss() const override;
 
-	/** See @ref twidget::create_walker. */
+	/** See @ref widget::create_walker. */
 	virtual iterator::twalker_* create_walker() override;
 
 	/**
@@ -201,7 +201,7 @@ public:
 	 * @returns                   The wanted grid.
 	 * @retval nullptr               The id isn't associated with an item.
 	 */
-	tgrid* grid(const unsigned id);
+	grid* get_grid(const unsigned id);
 
 	/**
 	 * Returns a grid in the pane.
@@ -213,20 +213,20 @@ public:
 	 * @returns                   The wanted grid.
 	 * @retval nullptr               The id isn't associated with an item.
 	 */
-	const tgrid* grid(const unsigned id) const;
+	const grid* get_grid(const unsigned id) const;
 
 private:
 	/** The grid containing our children. */
-	tgrid content_;
+	grid content_;
 
 	/**
 	 * Contains the pane used for adding new items to the matrix.
 	 *
 	 * The pane is owned by a grid in the content layer.
 	 */
-	tpane* pane_;
+	pane* pane_;
 
-	/** See @ref tcontrol::get_control_type. */
+	/** See @ref control::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 };
 
@@ -256,10 +256,10 @@ struct builder_matrix : public builder_control
 
 	using builder_control::build;
 
-	twidget* build() const;
+	widget* build() const;
 
-	tscrollbar_container::tscrollbar_mode vertical_scrollbar_mode;
-	tscrollbar_container::tscrollbar_mode horizontal_scrollbar_mode;
+	scrollbar_container::tscrollbar_mode vertical_scrollbar_mode;
+	scrollbar_container::tscrollbar_mode horizontal_scrollbar_mode;
 
 	builder_grid_ptr builder_top;
 	builder_grid_ptr builder_bottom;

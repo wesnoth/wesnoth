@@ -19,8 +19,8 @@
 
 namespace gui2
 {
-class tlabel;
-class tbutton;
+class label;
+class button;
 
 class tgame_cache_options : public tdialog
 {
@@ -41,9 +41,9 @@ public:
 private:
 	std::string cache_path_;
 
-	tbutton* clean_button_;
-	tbutton* purge_button_;
-	tlabel* size_label_;
+	button* clean_button_;
+	button* purge_button_;
+	label* size_label_;
 
 	void clean_cache_callback(CVideo& video);
 	bool clean_cache();
@@ -61,10 +61,10 @@ private:
 	virtual const std::string& window_id() const;
 
 	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	void pre_show(window& window);
 
 	/** Inherited from tdialog. */
-	void post_show(twindow& window);
+	void post_show(window& window);
 };
 
 }

@@ -26,7 +26,7 @@ class display;
 namespace gui2
 {
 
-class tscroll_label;
+class scroll_label;
 
 class tend_credits : public tdialog
 {
@@ -45,7 +45,7 @@ private:
 	virtual const std::string& window_id() const;
 
 	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	void pre_show(window& window);
 
 	void timer_callback();
 	void key_press_callback(bool&, bool&, const SDL_Keycode key);
@@ -56,7 +56,7 @@ private:
 
 	size_t timer_id_;
 
-	tscroll_label* text_widget_;
+	scroll_label* text_widget_;
 
 	// The speed of auto-scrolling, specified as px/s
 	int scroll_speed_;

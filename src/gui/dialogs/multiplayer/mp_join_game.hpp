@@ -29,7 +29,7 @@ class CVideo;
 namespace gui2
 {
 
-class ttree_view_node;
+class tree_view_node;
 
 class tmp_join_game : public tdialog, private plugin_executor
 {
@@ -51,16 +51,16 @@ private:
 	virtual const std::string& window_id() const;
 
 	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	void pre_show(window& window);
 
 	/** Inherited from tdialog. */
-	void post_show(twindow& window);
+	void post_show(window& window);
 
-	void generate_side_list(twindow& window);
+	void generate_side_list(window& window);
 
-	void update_player_list(twindow& window);
+	void update_player_list(window& window);
 
-	void network_handler(twindow& window);
+	void network_handler(window& window);
 
 	config& get_scenario();
 
@@ -79,7 +79,7 @@ private:
 
 	bool stop_updates_;
 
-	std::map<std::string, ttree_view_node*> team_tree_map_;
+	std::map<std::string, tree_view_node*> team_tree_map_;
 };
 
 } // namespace gui2

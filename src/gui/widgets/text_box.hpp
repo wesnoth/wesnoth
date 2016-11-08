@@ -29,7 +29,7 @@ namespace gui2
  * handles that. Every item needs an id by which the history is loaded and
  * saved.
  */
-class ttext_history
+class text_history
 {
 public:
 	/**
@@ -40,9 +40,9 @@ public:
 	 *
 	 * @returns                   The history object.
 	 */
-	static ttext_history get_history(const std::string& id, const bool enabled);
+	static text_history get_history(const std::string& id, const bool enabled);
 
-	ttext_history() : history_(0), pos_(0), enabled_(false)
+	text_history() : history_(0), pos_(0), enabled_(false)
 	{
 	}
 
@@ -99,7 +99,7 @@ public:
 	}
 
 private:
-	ttext_history(std::vector<std::string>* history, const bool enabled)
+	text_history(std::vector<std::string>* history, const bool enabled)
 		: history_(history), pos_(history->size()), enabled_(enabled)
 	{
 	}
@@ -115,10 +115,10 @@ private:
 };
 
 /** Class for a single line text area. */
-class ttext_box : public ttext_
+class text_box : public text_box_base
 {
 public:
-	ttext_box();
+	text_box();
 
 	/** Saves the text in the widget to the history. */
 	void save_to_history()
@@ -130,7 +130,7 @@ public:
 
 	void set_history(const std::string& id)
 	{
-		history_ = ttext_history::get_history(id, true);
+		history_ = text_history::get_history(id, true);
 	}
 
 	void set_max_input_length(const size_t length)
@@ -146,37 +146,37 @@ public:
 protected:
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
-	/** See @ref twidget::place. */
+	/** See @ref widget::place. */
 	virtual void place(const point& origin, const point& size) override;
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
-	/** See @ref tcontrol::update_canvas. */
+	/** See @ref control::update_canvas. */
 	virtual void update_canvas() override;
 
-	/** Inherited from ttext_. */
+	/** Inherited from text_box_base. */
 	void goto_end_of_line(const bool select = false) override
 	{
 		goto_end_of_data(select);
 	}
 
-	/** Inherited from ttext_. */
+	/** Inherited from text_box_base. */
 	void goto_start_of_line(const bool select = false) override
 	{
 		goto_start_of_data(select);
 	}
 
-	/** Inherited from ttext_. */
+	/** Inherited from text_box_base. */
 	void delete_char(const bool before_cursor) override;
 
-	/** Inherited from ttext_. */
+	/** Inherited from text_box_base. */
 	void delete_selection() override;
 
 	void handle_mouse_selection(point mouse, const bool start_selection);
 
 private:
 	/** The history text for this widget. */
-	ttext_history history_;
+	text_history history_;
 
 	/** The maximum length of the text input. */
 	size_t max_input_length_;
@@ -210,7 +210,7 @@ private:
 	bool dragging_;
 
 	/**
-	 * Inherited from ttext_.
+	 * Inherited from text_box_base.
 	 *
 	 * Unmodified                 Unhandled.
 	 * Control                    Ignored.
@@ -222,7 +222,7 @@ private:
 	}
 
 	/**
-	 * Inherited from ttext_.
+	 * Inherited from text_box_base.
 	 *
 	 * Unmodified                 Unhandled.
 	 * Control                    Ignored.
@@ -247,19 +247,19 @@ private:
 	 */
 	bool history_down();
 
-	/** Inherited from ttext_. */
+	/** Inherited from text_box_base. */
 	void handle_key_default(bool& handled,
 							SDL_Keycode key,
 							SDL_Keymod modifier,
 							const utf8::string& unicode) override;
 
-	/** Inherited from ttext_. */
+	/** Inherited from text_box_base. */
 	void handle_key_clear_line(SDL_Keymod modifier, bool& handled) override;
 
-	/** See @ref tcontrol::get_control_type. */
+	/** See @ref control::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 
-	/** Inherited from tcontrol. */
+	/** Inherited from control. */
 	void load_config_extra() override;
 
 	/***** ***** ***** signal handlers ***** ****** *****/
@@ -305,7 +305,7 @@ public:
 
 	using builder_control::build;
 
-	twidget* build() const;
+	widget* build() const;
 
 	std::string history;
 

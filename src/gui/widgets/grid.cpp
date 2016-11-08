@@ -23,18 +23,18 @@
 
 #include <numeric>
 
-#define LOG_SCOPE_HEADER "tgrid [" + id() + "] " + __func__
+#define LOG_SCOPE_HEADER "grid [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
-#define LOG_IMPL_HEADER "tgrid [" + grid.id() + "] " + __func__ + ':'
+#define LOG_IMPL_HEADER "grid [" + grid.id() + "] " + __func__ + ':'
 
 #define LOG_CHILD_SCOPE_HEADER                                                 \
-	"tgrid::tchild [" + (widget_ ? widget_->id() : "-") + "] " + __func__
+	"grid::tchild [" + (widget_ ? widget_->id() : "-") + "] " + __func__
 #define LOG_CHILD_HEADER LOG_CHILD_SCOPE_HEADER + ':'
 
 namespace gui2
 {
 
-tgrid::tgrid(const unsigned rows, const unsigned cols)
+grid::grid(const unsigned rows, const unsigned cols)
 	: rows_(rows)
 	, cols_(cols)
 	, row_height_()
@@ -45,17 +45,17 @@ tgrid::tgrid(const unsigned rows, const unsigned cols)
 {
 }
 
-tgrid::~tgrid()
+grid::~grid()
 {
 	// Delete the children in this destructor since resizing a vector copies the
 	// children and thus frees the child prematurely.
 	for(auto & child : children_)
 	{
-		delete child.widget();
+		delete child.get_widget();
 	}
 }
 
-unsigned tgrid::add_row(const unsigned count)
+unsigned grid::add_row(const unsigned count)
 {
 	assert(count);
 
@@ -66,7 +66,7 @@ unsigned tgrid::add_row(const unsigned count)
 	return result;
 }
 
-void tgrid::set_child(twidget* widget,
+void grid::set_child(widget* widget,
 					  const unsigned row,
 					  const unsigned col,
 					  const unsigned flags,
@@ -79,29 +79,29 @@ void tgrid::set_child(twidget* widget,
 	tchild& cell = child(row, col);
 
 	// clear old child if any
-	if(cell.widget()) {
+	if(cell.get_widget()) {
 		// free a child when overwriting it
 		WRN_GUI_G << LOG_HEADER << " child '" << cell.id() << "' at cell '"
 				  << row << ',' << col << "' will be replaced.\n";
-		delete cell.widget();
+		delete cell.get_widget();
 	}
 
 	// copy data
 	cell.set_flags(flags);
 	cell.set_border_size(border_size);
 	cell.set_widget(widget);
-	if(cell.widget()) {
+	if(cell.get_widget()) {
 		// make sure the new child is valid before deferring
-		cell.widget()->set_parent(this);
+		cell.get_widget()->set_parent(this);
 	}
 }
 
-twidget* tgrid::swap_child(const std::string& id,
-						   twidget* widget,
+widget* grid::swap_child(const std::string& id,
+						   widget* w,
 						   const bool recurse,
-						   twidget* new_parent)
+						   widget* new_parent)
 {
-	assert(widget);
+	assert(w);
 
 	for(auto & child : children_)
 	{
@@ -109,10 +109,10 @@ twidget* tgrid::swap_child(const std::string& id,
 
 			if(recurse) {
 				// decent in the nested grids.
-				tgrid* grid = dynamic_cast<tgrid*>(child.widget());
-				if(grid) {
+				grid* g = dynamic_cast<grid*>(child.get_widget());
+				if(g) {
 
-					twidget* old = grid->swap_child(id, widget, true);
+					widget* old = g->swap_child(id, w, true);
 					if(old) {
 						return old;
 					}
@@ -123,13 +123,13 @@ twidget* tgrid::swap_child(const std::string& id,
 		}
 
 		// When find the widget there should be a widget.
-		twidget* old = child.widget();
+		widget* old = child.get_widget();
 		assert(old);
 		old->set_parent(new_parent);
 
-		widget->set_parent(this);
-		widget->set_visible(old->get_visible());
-		child.set_widget(widget);
+		w->set_parent(this);
+		w->set_visible(old->get_visible());
+		child.set_widget(w);
 
 		return old;
 	}
@@ -137,25 +137,25 @@ twidget* tgrid::swap_child(const std::string& id,
 	return nullptr;
 }
 
-void tgrid::remove_child(const unsigned row, const unsigned col)
+void grid::remove_child(const unsigned row, const unsigned col)
 {
 	assert(row < rows_ && col < cols_);
 
 	tchild& cell = child(row, col);
 
-	if(cell.widget()) {
-		delete cell.widget();
+	if(cell.get_widget()) {
+		delete cell.get_widget();
 	}
 	cell.set_widget(nullptr);
 }
 
-void tgrid::remove_child(const std::string& id, const bool find_all)
+void grid::remove_child(const std::string& id, const bool find_all)
 {
 	for(auto & child : children_)
 	{
 
 		if(child.id() == id) {
-			delete child.widget();
+			delete child.get_widget();
 			child.set_widget(nullptr);
 
 			if(!find_all) {
@@ -165,33 +165,33 @@ void tgrid::remove_child(const std::string& id, const bool find_all)
 	}
 }
 
-void tgrid::set_active(const bool active)
+void grid::set_active(const bool active)
 {
 	for(auto & child : children_)
 	{
 
-		twidget* widget = child.widget();
+		widget* widget = child.get_widget();
 		if(!widget) {
 			continue;
 		}
 
-		tgrid* grid = dynamic_cast<tgrid*>(widget);
-		if(grid) {
-			grid->set_active(active);
+		grid* g = dynamic_cast<grid*>(widget);
+		if(g) {
+			g->set_active(active);
 			continue;
 		}
 
-		tcontrol* control = dynamic_cast<tcontrol*>(widget);
-		if(control) {
-			control->set_active(active);
+		control* ctrl = dynamic_cast<control*>(widget);
+		if(ctrl) {
+			ctrl->set_active(active);
 		}
 	}
 }
 
-void tgrid::layout_initialise(const bool full_initialisation)
+void grid::layout_initialise(const bool full_initialisation)
 {
 	// Inherited.
-	twidget::layout_initialise(full_initialisation);
+	widget::layout_initialise(full_initialisation);
 
 	// Clear child caches.
 	for(auto & child : children_)
@@ -201,7 +201,7 @@ void tgrid::layout_initialise(const bool full_initialisation)
 	}
 }
 
-void tgrid::reduce_width(const unsigned maximum_width)
+void grid::reduce_width(const unsigned maximum_width)
 {
 	/***** ***** ***** ***** INIT ***** ***** ***** *****/
 	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
@@ -234,7 +234,7 @@ void tgrid::reduce_width(const unsigned maximum_width)
 	throw layout_exception_width_resize_failed();
 }
 
-void tgrid::request_reduce_width(const unsigned maximum_width)
+void grid::request_reduce_width(const unsigned maximum_width)
 {
 	point size = get_best_size();
 	if(size.x <= static_cast<int>(maximum_width)) {
@@ -253,7 +253,7 @@ void tgrid::request_reduce_width(const unsigned maximum_width)
 
 		const unsigned wanted_width = col_width_[col] - (too_wide - reduced);
 		const unsigned width
-				= tgrid_implementation::column_request_reduce_width(
+				= grid_implementation::column_request_reduce_width(
 						*this, col, wanted_width);
 
 		if(width < col_width_[col]) {
@@ -274,12 +274,12 @@ void tgrid::request_reduce_width(const unsigned maximum_width)
 	set_layout_size(calculate_best_size());
 }
 
-void tgrid::demand_reduce_width(const unsigned /*maximum_width*/)
+void grid::demand_reduce_width(const unsigned /*maximum_width*/)
 {
 	/** @todo Implement. */
 }
 
-void tgrid::reduce_height(const unsigned maximum_height)
+void grid::reduce_height(const unsigned maximum_height)
 {
 	/***** ***** ***** ***** INIT ***** ***** ***** *****/
 	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
@@ -312,7 +312,7 @@ void tgrid::reduce_height(const unsigned maximum_height)
 	throw layout_exception_height_resize_failed();
 }
 
-void tgrid::request_reduce_height(const unsigned maximum_height)
+void grid::request_reduce_height(const unsigned maximum_height)
 {
 	point size = get_best_size();
 	if(size.y <= static_cast<int>(maximum_height)) {
@@ -345,7 +345,7 @@ void tgrid::request_reduce_height(const unsigned maximum_height)
 		Thus, it's perfectly correct that tgrid::calculate_best_size() that we
 		call later calls get_best_size() for child widgets as if size reduction
 		had never happened. */
-		const unsigned height = tgrid_implementation::row_request_reduce_height(
+		const unsigned height = grid_implementation::row_request_reduce_height(
 				*this, row, wanted_height);
 
 		if(height < row_height_[row]) {
@@ -372,19 +372,19 @@ void tgrid::request_reduce_height(const unsigned maximum_height)
 	set_layout_size(size);
 }
 
-void tgrid::demand_reduce_height(const unsigned /*maximum_height*/)
+void grid::demand_reduce_height(const unsigned /*maximum_height*/)
 {
 	/** @todo Implement. */
 }
 
-point tgrid::recalculate_best_size()
+point grid::recalculate_best_size()
 {
 	point best_size = calculate_best_size();
 	set_layout_size(best_size);
 	return best_size;
 }
 
-point tgrid::calculate_best_size() const
+point grid::calculate_best_size() const
 {
 	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
 
@@ -428,7 +428,7 @@ point tgrid::calculate_best_size() const
 	return result;
 }
 
-bool tgrid::can_wrap() const
+bool grid::can_wrap() const
 {
 	for(const auto & child : children_)
 	{
@@ -438,16 +438,16 @@ bool tgrid::can_wrap() const
 	}
 
 	// Inherited.
-	return twidget::can_wrap();
+	return widget::can_wrap();
 }
 
-void tgrid::place(const point& origin, const point& size)
+void grid::place(const point& origin, const point& size)
 {
 	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
 
 	/***** INIT *****/
 
-	twidget::place(origin, size);
+	widget::place(origin, size);
 
 	if(!rows_ || !cols_) {
 		return;
@@ -476,7 +476,7 @@ void tgrid::place(const point& origin, const point& size)
 		std::stringstream out;
 		out << " Failed to place a grid, we have " << size << " space but we need " << best_size << " space.";
 		out << " This happened at a grid with the id '" << id() << "'";
-		twidget* pw = parent();
+		widget* pw = parent();
 		while(pw != nullptr) {
 			out << " in a '" << typeid(*pw).name() << "' with the id '" << pw->id() << "'";
 			pw = pw->parent();
@@ -548,110 +548,110 @@ void tgrid::place(const point& origin, const point& size)
 	return;
 }
 
-void tgrid::set_origin(const point& origin)
+void grid::set_origin(const point& origin)
 {
 	const point movement = {origin.x - get_x(), origin.y - get_y()};
 
 	// Inherited.
-	twidget::set_origin(origin);
+	widget::set_origin(origin);
 
 	for(auto & child : children_)
 	{
 
-		twidget* widget = child.widget();
+		widget* widget = child.get_widget();
 		assert(widget);
 
 		widget->set_origin(point(widget->get_x() + movement.x, widget->get_y() + movement.y));
 	}
 }
 
-void tgrid::set_visible_rectangle(const SDL_Rect& rectangle)
+void grid::set_visible_rectangle(const SDL_Rect& rectangle)
 {
 	// Inherited.
-	twidget::set_visible_rectangle(rectangle);
+	widget::set_visible_rectangle(rectangle);
 
 	for(auto & child : children_)
 	{
 
-		twidget* widget = child.widget();
+		widget* widget = child.get_widget();
 		assert(widget);
 
 		widget->set_visible_rectangle(rectangle);
 	}
 }
 
-void tgrid::layout_children()
+void grid::layout_children()
 {
 	for(auto & child : children_)
 	{
-		assert(child.widget());
-		child.widget()->layout_children();
+		assert(child.get_widget());
+		child.get_widget()->layout_children();
 	}
 }
 
-void tgrid::child_populate_dirty_list(twindow& caller,
-									  const std::vector<twidget*>& call_stack)
+void grid::child_populate_dirty_list(window& caller,
+									  const std::vector<widget*>& call_stack)
 {
 	assert(!call_stack.empty() && call_stack.back() == this);
 
 	for(auto & child : children_)
 	{
 
-		assert(child.widget());
+		assert(child.get_widget());
 
-		std::vector<twidget*> child_call_stack = call_stack;
-		child.widget()->populate_dirty_list(caller, child_call_stack);
+		std::vector<widget*> child_call_stack = call_stack;
+		child.get_widget()->populate_dirty_list(caller, child_call_stack);
 	}
 }
 
-twidget* tgrid::find_at(const point& coordinate, const bool must_be_active)
+widget* grid::find_at(const point& coordinate, const bool must_be_active)
 {
-	return tgrid_implementation::find_at<twidget>(
+	return grid_implementation::find_at<widget>(
 			*this, coordinate, must_be_active);
 }
 
-const twidget* tgrid::find_at(const point& coordinate,
+const widget* grid::find_at(const point& coordinate,
 							  const bool must_be_active) const
 {
-	return tgrid_implementation::find_at<const twidget>(
+	return grid_implementation::find_at<const widget>(
 			*this, coordinate, must_be_active);
 }
 
-twidget* tgrid::find(const std::string& id, const bool must_be_active)
+widget* grid::find(const std::string& id, const bool must_be_active)
 {
-	return tgrid_implementation::find<twidget>(*this, id, must_be_active);
+	return grid_implementation::find<widget>(*this, id, must_be_active);
 }
 
-const twidget* tgrid::find(const std::string& id, const bool must_be_active)
+const widget* grid::find(const std::string& id, const bool must_be_active)
 		const
 {
-	return tgrid_implementation::find<const twidget>(*this, id, must_be_active);
+	return grid_implementation::find<const widget>(*this, id, must_be_active);
 }
 
-bool tgrid::has_widget(const twidget& widget) const
+bool grid::has_widget(const widget& widget) const
 {
-	if(twidget::has_widget(widget)) {
+	if(widget::has_widget(widget)) {
 		return true;
 	}
 
 	for(const auto & child : children_)
 	{
-		if(child.widget()->has_widget(widget)) {
+		if(child.get_widget()->has_widget(widget)) {
 			return true;
 		}
 	}
 	return false;
 }
 
-bool tgrid::disable_click_dismiss() const
+bool grid::disable_click_dismiss() const
 {
-	if(get_visible() != twidget::tvisible::visible) {
+	if(get_visible() != widget::tvisible::visible) {
 		return false;
 	}
 
 	for(const auto & child : children_)
 	{
-		const twidget* widget = child.widget();
+		const widget* widget = child.get_widget();
 		assert(widget);
 
 		if(widget->disable_click_dismiss()) {
@@ -661,12 +661,12 @@ bool tgrid::disable_click_dismiss() const
 	return false;
 }
 
-iterator::twalker_* tgrid::create_walker()
+iterator::twalker_* grid::create_walker()
 {
-	return new gui2::iterator::tgrid(*this);
+	return new gui2::iterator::grid(*this);
 }
 
-void tgrid::set_rows(const unsigned rows)
+void grid::set_rows(const unsigned rows)
 {
 	if(rows == rows_) {
 		return;
@@ -675,7 +675,7 @@ void tgrid::set_rows(const unsigned rows)
 	set_rows_cols(rows, cols_);
 }
 
-void tgrid::set_cols(const unsigned cols)
+void grid::set_cols(const unsigned cols)
 {
 	if(cols == cols_) {
 		return;
@@ -684,7 +684,7 @@ void tgrid::set_cols(const unsigned cols)
 	set_rows_cols(rows_, cols);
 }
 
-void tgrid::set_rows_cols(const unsigned rows, const unsigned cols)
+void grid::set_rows_cols(const unsigned rows, const unsigned cols)
 {
 	if(rows == rows_ && cols == cols_) {
 		return;
@@ -702,7 +702,7 @@ void tgrid::set_rows_cols(const unsigned rows, const unsigned cols)
 	children_.resize(rows_ * cols_);
 }
 
-point tgrid::tchild::get_best_size() const
+point grid::tchild::get_best_size() const
 {
 	log_scope2(log_gui_layout, LOG_CHILD_SCOPE_HEADER)
 
@@ -712,7 +712,7 @@ point tgrid::tchild::get_best_size() const
 		return border_space();
 	}
 
-	if(widget_->get_visible() == twidget::tvisible::invisible) {
+	if(widget_->get_visible() == widget::tvisible::invisible) {
 		DBG_GUI_L << LOG_CHILD_HEADER << " has widget " << true
 				  << " widget visible " << false << " returning 0,0"
 				  << ".\n";
@@ -727,10 +727,10 @@ point tgrid::tchild::get_best_size() const
 	return best_size;
 }
 
-void tgrid::tchild::place(point origin, point size)
+void grid::tchild::place(point origin, point size)
 {
-	assert(widget());
-	if(widget()->get_visible() == twidget::tvisible::invisible) {
+	assert(get_widget());
+	if(get_widget()->get_visible() == widget::tvisible::invisible) {
 		return;
 	}
 
@@ -754,18 +754,18 @@ void tgrid::tchild::place(point origin, point size)
 
 	// If size smaller or equal to best size set that size.
 	// No need to check > min size since this is what we got.
-	const point best_size = widget()->get_best_size();
+	const point best_size = get_widget()->get_best_size();
 	if(size <= best_size) {
 		DBG_GUI_L << LOG_CHILD_HEADER
 				  << " in best size range setting widget to " << origin << " x "
 				  << size << ".\n";
 
-		widget()->place(origin, size);
+		get_widget()->place(origin, size);
 		return;
 	}
 
-	const tcontrol* control = dynamic_cast<const tcontrol*>(widget());
-	const point maximum_size = control ? control->get_config_maximum_size()
+	const control* ctrl = dynamic_cast<const control*>(get_widget());
+	const point maximum_size = ctrl ? ctrl->get_config_maximum_size()
 										: point();
 
 	if((flags_ & (HORIZONTAL_MASK | VERTICAL_MASK))
@@ -777,7 +777,7 @@ void tgrid::tchild::place(point origin, point size)
 					  << " in maximum size range setting widget to " << origin
 					  << " x " << size << ".\n";
 
-			widget()->place(origin, size);
+			get_widget()->place(origin, size);
 			return;
 		}
 	}
@@ -852,25 +852,25 @@ void tgrid::tchild::place(point origin, point size)
 	DBG_GUI_L << LOG_CHILD_HEADER << " resize widget to " << widget_orig
 			  << " x " << widget_size << ".\n";
 
-	widget()->place(widget_orig, widget_size);
+	get_widget()->place(widget_orig, widget_size);
 }
 
-void tgrid::tchild::layout_initialise(const bool full_initialisation)
+void grid::tchild::layout_initialise(const bool full_initialisation)
 {
 	assert(widget_);
 
-	if(widget_->get_visible() != twidget::tvisible::invisible) {
+	if(widget_->get_visible() != widget::tvisible::invisible) {
 		widget_->layout_initialise(full_initialisation);
 	}
 }
 
-const std::string& tgrid::tchild::id() const
+const std::string& grid::tchild::id() const
 {
 	assert(widget_);
 	return widget_->id();
 }
 
-point tgrid::tchild::border_space() const
+point grid::tchild::border_space() const
 {
 	point result(0, 0);
 
@@ -890,7 +890,7 @@ point tgrid::tchild::border_space() const
 	return result;
 }
 
-void tgrid::layout(const point& origin)
+void grid::layout(const point& origin)
 {
 	point orig = origin;
 	for(unsigned row = 0; row < rows_; ++row) {
@@ -901,7 +901,7 @@ void tgrid::layout(const point& origin)
 					  << " at origin " << orig << " with size " << size
 					  << ".\n";
 
-			if(child(row, col).widget()) {
+			if(child(row, col).get_widget()) {
 				child(row, col).place(orig, size);
 			}
 
@@ -912,7 +912,7 @@ void tgrid::layout(const point& origin)
 	}
 }
 
-void tgrid::impl_draw_children(surface& frame_buffer, int x_offset, int y_offset)
+void grid::impl_draw_children(surface& frame_buffer, int x_offset, int y_offset)
 {
 	/*
 	 * The call to SDL_PumpEvents seems a bit like black magic.
@@ -924,20 +924,20 @@ void tgrid::impl_draw_children(surface& frame_buffer, int x_offset, int y_offset
 	 * the area not used for resizing the screen, this call `fixes' that.
 	 */
 
-	assert(get_visible() == twidget::tvisible::visible);
+	assert(get_visible() == widget::tvisible::visible);
 	set_is_dirty(false);
 
 	for(auto & child : children_)
 	{
 
-		twidget* widget = child.widget();
+		widget* widget = child.get_widget();
 		assert(widget);
 
-		if(widget->get_visible() != twidget::tvisible::visible) {
+		if(widget->get_visible() != widget::tvisible::visible) {
 			continue;
 		}
 
-		if(widget->get_drawing_action() == twidget::tredraw_action::none) {
+		if(widget->get_drawing_action() == widget::tredraw_action::none) {
 			continue;
 		}
 
@@ -948,14 +948,14 @@ void tgrid::impl_draw_children(surface& frame_buffer, int x_offset, int y_offset
 	}
 }
 
-unsigned tgrid_implementation::row_request_reduce_height(
-		tgrid& grid, const unsigned row, const unsigned maximum_height)
+unsigned grid_implementation::row_request_reduce_height(
+		grid& grid, const unsigned row, const unsigned maximum_height)
 {
 	// The minimum height required.
 	unsigned required_height = 0;
 
 	for(size_t x = 0; x < grid.cols_; ++x) {
-		tgrid::tchild& cell = grid.child(row, x);
+		grid::tchild& cell = grid.child(row, x);
 		cell_request_reduce_height(cell, maximum_height);
 
 		const point size(cell.get_best_size());
@@ -973,14 +973,14 @@ unsigned tgrid_implementation::row_request_reduce_height(
 	return required_height;
 }
 
-unsigned tgrid_implementation::column_request_reduce_width(
-		tgrid& grid, const unsigned column, const unsigned maximum_width)
+unsigned grid_implementation::column_request_reduce_width(
+		grid& grid, const unsigned column, const unsigned maximum_width)
 {
 	// The minimum width required.
 	unsigned required_width = 0;
 
 	for(size_t y = 0; y < grid.rows_; ++y) {
-		tgrid::tchild& cell = grid.child(y, column);
+		grid::tchild& cell = grid.child(y, column);
 		cell_request_reduce_width(cell, maximum_width);
 
 		const point size(cell.get_best_size());
@@ -999,12 +999,12 @@ unsigned tgrid_implementation::column_request_reduce_width(
 }
 
 void
-tgrid_implementation::cell_request_reduce_height(tgrid::tchild& child,
+grid_implementation::cell_request_reduce_height(grid::tchild& child,
 												 const unsigned maximum_height)
 {
 	assert(child.widget_);
 
-	if(child.widget_->get_visible() == twidget::tvisible::invisible) {
+	if(child.widget_->get_visible() == widget::tvisible::invisible) {
 		return;
 	}
 
@@ -1013,26 +1013,26 @@ tgrid_implementation::cell_request_reduce_height(tgrid::tchild& child,
 }
 
 void
-tgrid_implementation::cell_request_reduce_width(tgrid::tchild& child,
+grid_implementation::cell_request_reduce_width(grid::tchild& child,
 												const unsigned maximum_width)
 {
 	assert(child.widget_);
 
-	if(child.widget_->get_visible() == twidget::tvisible::invisible) {
+	if(child.widget_->get_visible() == widget::tvisible::invisible) {
 		return;
 	}
 
 	child.widget_->request_reduce_width(maximum_width - child.border_space().x);
 }
 
-void set_single_child(tgrid& grid, twidget* widget)
+void set_single_child(grid& grid, widget* widget)
 {
 	grid.set_rows_cols(1, 1);
 	grid.set_child(widget,
 				   0,
 				   0,
-				   tgrid::HORIZONTAL_GROW_SEND_TO_CLIENT
-				   | tgrid::VERTICAL_GROW_SEND_TO_CLIENT,
+				   grid::HORIZONTAL_GROW_SEND_TO_CLIENT
+				   | grid::VERTICAL_GROW_SEND_TO_CLIENT,
 				   0);
 }
 

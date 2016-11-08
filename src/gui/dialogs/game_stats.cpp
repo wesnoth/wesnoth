@@ -73,10 +73,10 @@ unit_const_ptr tgame_stats::get_leader(const int side)
 	return nullptr;
 }
 
-void tgame_stats::pre_show(twindow& window)
+void tgame_stats::pre_show(window& window)
 {
-	tlistbox& stats_list    = find_widget<tlistbox>(&window, "game_stats_list", false);
-	tlistbox& settings_list = find_widget<tlistbox>(&window, "scenario_settings_list", false);
+	listbox& stats_list    = find_widget<listbox>(&window, "game_stats_list", false);
+	listbox& settings_list = find_widget<listbox>(&window, "scenario_settings_list", false);
 
 	for(const auto& team : board_.teams()) {
 		if(team.hidden()) {
@@ -228,7 +228,7 @@ void tgame_stats::pre_show(twindow& window)
 	//
 	// Set up tab control
 	//
-	tlistbox& tab_bar = find_widget<tlistbox>(&window, "tab_bar", false);
+	listbox& tab_bar = find_widget<listbox>(&window, "tab_bar", false);
 
 	window.keyboard_capture(&tab_bar);
 
@@ -244,25 +244,25 @@ void tgame_stats::pre_show(twindow& window)
 	on_tab_select(window);
 }
 
-void tgame_stats::on_tab_select(twindow& window)
+void tgame_stats::on_tab_select(window& window)
 {
-	const int i = find_widget<tlistbox>(&window, "tab_bar", false).get_selected_row();
+	const int i = find_widget<listbox>(&window, "tab_bar", false).get_selected_row();
 
-	find_widget<tstacked_widget>(&window, "pager", false).select_layer(i);
+	find_widget<stacked_widget>(&window, "pager", false).select_layer(i);
 
 	// There are only two tabs, so this is simple
-	find_widget<tlabel>(&window, "title", false).set_label(
+	find_widget<label>(&window, "title", false).set_label(
 		i == 0 ? _("Current Status") : _("Scenario Settings")
 	);
 }
 
-void tgame_stats::post_show(twindow& window)
+void tgame_stats::post_show(window& window)
 {
-	if(get_retval() == twindow::OK) {
-		const int selected_tab = find_widget<tlistbox>(&window, "tab_bar", false).get_selected_row();
+	if(get_retval() == window::OK) {
+		const int selected_tab = find_widget<listbox>(&window, "tab_bar", false).get_selected_row();
 
 		const std::string list_id = selected_tab == 0 ? "game_stats_list" : "scenario_settings_list";
-		selected_index_ = find_widget<tlistbox>(&window, list_id, false).get_selected_row();
+		selected_index_ = find_widget<listbox>(&window, list_id, false).get_selected_row();
 	}
 }
 

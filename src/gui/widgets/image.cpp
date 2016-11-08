@@ -36,9 +36,9 @@ namespace gui2
 
 REGISTER_WIDGET(image)
 
-point timage::calculate_best_size() const
+point image::calculate_best_size() const
 {
-	surface image(image::get_image(image::locator(label())));
+	surface image(::image::get_image(::image::locator(get_label())));
 
 	if(!image) {
 		DBG_GUI_L << LOG_HEADER << " empty image return default.\n";
@@ -70,27 +70,27 @@ point timage::calculate_best_size() const
 	return result;
 }
 
-void timage::set_active(const bool /*active*/)
+void image::set_active(const bool /*active*/)
 {
 	/* DO NOTHING */
 }
 
-bool timage::get_active() const
+bool image::get_active() const
 {
 	return true;
 }
 
-unsigned timage::get_state() const
+unsigned image::get_state() const
 {
 	return ENABLED;
 }
 
-bool timage::disable_click_dismiss() const
+bool image::disable_click_dismiss() const
 {
 	return false;
 }
 
-const std::string& timage::get_control_type() const
+const std::string& image::get_control_type() const
 {
 	static const std::string type = "image";
 	return type;
@@ -166,9 +166,9 @@ builder_image::builder_image(const config& cfg) : builder_control(cfg)
 {
 }
 
-twidget* builder_image::build() const
+widget* builder_image::build() const
 {
-	timage* widget = new timage();
+	image* widget = new image();
 
 	init_control(widget);
 

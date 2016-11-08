@@ -682,7 +682,7 @@ void context_manager::generate_map_dialog()
 	dialog.set_map_generators(map_generators_);
 	dialog.select_map_generator(last_map_generator_);
 	dialog.show(gui_.video());
-	if (dialog.get_retval() == gui2::twindow::OK) {
+	if (dialog.get_retval() == gui2::window::OK) {
 		std::string map_string;
 		map_generator* const map_generator = dialog.get_selected_map_generator();
 		try {
@@ -708,7 +708,7 @@ bool context_manager::confirm_discard()
 	if (get_map_context().modified()) {
 		const int res = gui2::show_message(gui_.video(), _("Unsaved Changes"),
 				_("Do you want to discard all changes made to the map since the last save?"), gui2::tmessage::yes_no_buttons);
-		return gui2::twindow::CANCEL != res;
+		return gui2::window::CANCEL != res;
 	} else {
 		return true;
 	}

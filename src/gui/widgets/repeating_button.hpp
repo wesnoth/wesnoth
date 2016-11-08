@@ -26,11 +26,11 @@ namespace gui2
 
 // ------------ WIDGET -----------{
 
-class trepeating_button : public tcontrol, public tclickable_
+class repeating_button : public control, public clickable_item
 {
 public:
-	trepeating_button();
-	~trepeating_button();
+	repeating_button();
+	~repeating_button();
 
 	/**
 	 * Connects a signal handler for a left mouse button down.
@@ -53,13 +53,13 @@ public:
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
-	/** See @ref tcontrol::set_active. */
+	/** See @ref control::set_active. */
 	virtual void set_active(const bool active) override;
 
-	/** See @ref tcontrol::get_active. */
+	/** See @ref control::get_active. */
 	virtual bool get_active() const override;
 
-	/** See @ref tcontrol::get_state. */
+	/** See @ref control::get_state. */
 	virtual unsigned get_state() const override;
 
 	/** Inherited from tclickable. */
@@ -100,7 +100,7 @@ private:
 	/** The timer for the repeating events. */
 	size_t repeat_timer_;
 
-	/** See @ref tcontrol::get_control_type. */
+	/** See @ref control::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 
 	/***** ***** ***** signal handlers ***** ****** *****/
@@ -140,7 +140,7 @@ public:
 
 	using builder_control::build;
 
-	twidget* build() const;
+	widget* build() const;
 };
 
 } // namespace implementation

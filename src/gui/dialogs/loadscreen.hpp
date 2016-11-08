@@ -32,8 +32,8 @@ namespace cursor
 namespace gui2
 {
 
-class tlabel;
-class twindow;
+class label;
+class window;
 
 class tloadscreen : public tdialog
 {
@@ -56,7 +56,7 @@ public:
 	 */
 	void close();
 private:
-	twindow* window_;
+	window* window_;
 	size_t timer_id_;
 	int animation_counter_;
 	std::function<void()> work_;
@@ -65,20 +65,20 @@ private:
 	std::exception_ptr exception_;
 	void clear_timer();
 
-	twindow* build_window(CVideo& video) const;
+	window* build_window(CVideo& video) const;
 
 	virtual const std::string& window_id() const;
 
-	void timer_callback(twindow& window);
+	void timer_callback(window& window);
 
 	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	void pre_show(window& window);
 
 	/** Inherited from tdialog. */
-	void post_show(twindow& window);
+	void post_show(window& window);
 
-	tlabel* progress_stage_label_;
-	tlabel* animation_label_;
+	label* progress_stage_label_;
+	label* animation_label_;
 	static tloadscreen* current_load;
 
 #if defined(_MSC_VER) && _MSC_VER < 1900

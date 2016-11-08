@@ -109,12 +109,12 @@ private:
 	virtual const std::string& window_id() const;
 
 	/** Inherited from tpopup. */
-	void pre_show(twindow& window);
+	void pre_show(window& window);
 };
 
-void ttip::pre_show(twindow& window)
+void ttip::pre_show(window& window)
 {
-	find_widget<tcontrol>(&window, "label", false).set_label(message_);
+	find_widget<control>(&window, "label", false).set_label(message_);
 
 	window.set_variable("mouse_x", variant(mouse_.x));
 	window.set_variable("mouse_y", variant(mouse_.y));

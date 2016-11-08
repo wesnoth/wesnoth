@@ -34,19 +34,19 @@ public:
 
 private:
 	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	void pre_show(window& window);
 
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
 	/***** ***** button callbacks ***** *****/
-	void callback_continue_button(twindow& window);
+	void callback_continue_button(window& window);
 
-	void callback_next_button(twindow& window);
+	void callback_next_button(window& window);
 
-	void callback_step_button(twindow& window);
+	void callback_step_button(window& window);
 
-	void callback_stepout_button(twindow& window);
+	void callback_stepout_button(window& window);
 
 	game_logic::formula_debugger& fdb_;
 };

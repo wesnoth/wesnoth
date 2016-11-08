@@ -34,7 +34,7 @@ namespace gui2
 
 REGISTER_WIDGET(panel)
 
-SDL_Rect tpanel::get_client_rect() const
+SDL_Rect panel::get_client_rect() const
 {
 	std::shared_ptr<const panel_definition::tresolution> conf
 			= std::static_pointer_cast<const panel_definition::tresolution>(
@@ -50,17 +50,17 @@ SDL_Rect tpanel::get_client_rect() const
 	return result;
 }
 
-bool tpanel::get_active() const
+bool panel::get_active() const
 {
 	return true;
 }
 
-unsigned tpanel::get_state() const
+unsigned panel::get_state() const
 {
 	return 0;
 }
 
-void tpanel::impl_draw_background(surface& frame_buffer, int x_offset, int y_offset)
+void panel::impl_draw_background(surface& frame_buffer, int x_offset, int y_offset)
 {
 	DBG_GUI_D << LOG_HEADER << " size " << get_rectangle() << ".\n";
 
@@ -68,13 +68,13 @@ void tpanel::impl_draw_background(surface& frame_buffer, int x_offset, int y_off
 				   calculate_blitting_rectangle(x_offset, y_offset));
 }
 
-void tpanel::impl_draw_foreground(surface& frame_buffer, int x_offset, int y_offset)
+void panel::impl_draw_foreground(surface& frame_buffer, int x_offset, int y_offset)
 {
 	get_canvas(1).blit(frame_buffer,
 				   calculate_blitting_rectangle(x_offset, y_offset));
 }
 
-point tpanel::border_space() const
+point panel::border_space() const
 {
 	std::shared_ptr<const panel_definition::tresolution> conf
 			= std::static_pointer_cast<const panel_definition::tresolution>(
@@ -84,13 +84,13 @@ point tpanel::border_space() const
 	return point(conf->left_border + conf->right_border, conf->top_border + conf->bottom_border);
 }
 
-const std::string& tpanel::get_control_type() const
+const std::string& panel::get_control_type() const
 {
 	static const std::string type = "panel";
 	return type;
 }
 
-void tpanel::set_self_active(const bool /*active*/)
+void panel::set_self_active(const bool /*active*/)
 {
 	/* DO NOTHING */
 }
@@ -198,9 +198,9 @@ builder_panel::builder_panel(const config& cfg)
 	grid = std::make_shared<builder_grid>(c);
 }
 
-twidget* builder_panel::build() const
+widget* builder_panel::build() const
 {
-	tpanel* widget = new tpanel();
+	panel* widget = new panel();
 
 	init_control(widget);
 

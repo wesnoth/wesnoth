@@ -75,9 +75,9 @@ teditor_set_starting_position::teditor_set_starting_position(
 	}
 }
 
-void teditor_set_starting_position::pre_show(twindow& window)
+void teditor_set_starting_position::pre_show(window& window)
 {
-	tlistbox& list = find_widget<tlistbox>(&window, "listbox", false);
+	listbox& list = find_widget<listbox>(&window, "listbox", false);
 	window.keyboard_capture(&list);
 
 	std::map<std::string, string_map> data;
@@ -111,13 +111,13 @@ void teditor_set_starting_position::pre_show(twindow& window)
 	list.select_row(selection_);
 }
 
-void teditor_set_starting_position::post_show(twindow& window)
+void teditor_set_starting_position::post_show(window& window)
 {
-	if(get_retval() != twindow::OK) {
+	if(get_retval() != window::OK) {
 		return;
 	}
 
-	tlistbox& list = find_widget<tlistbox>(&window, "listbox", false);
+	listbox& list = find_widget<listbox>(&window, "listbox", false);
 	selection_ = list.get_selected_row();
 }
 }

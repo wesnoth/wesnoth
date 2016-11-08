@@ -37,8 +37,8 @@ namespace gui2
 
 REGISTER_WIDGET(toggle_panel)
 
-ttoggle_panel::ttoggle_panel()
-	: tpanel(COUNT)
+toggle_panel::toggle_panel()
+	: panel(COUNT)
 	, state_(ENABLED)
 	, state_num_(0)
 	, retval_(0)
@@ -48,38 +48,38 @@ ttoggle_panel::ttoggle_panel()
 	set_wants_mouse_left_double_click();
 
 	connect_signal<event::MOUSE_ENTER>(std::bind(
-			&ttoggle_panel::signal_handler_mouse_enter, this, _2, _3));
+			&toggle_panel::signal_handler_mouse_enter, this, _2, _3));
 	connect_signal<event::MOUSE_LEAVE>(std::bind(
-			&ttoggle_panel::signal_handler_mouse_leave, this, _2, _3));
+			&toggle_panel::signal_handler_mouse_leave, this, _2, _3));
 #if 0
 	connect_signal<event::LEFT_BUTTON_CLICK>(
-			std::bind(&ttoggle_panel::signal_handler_pre_left_button_click,
+			std::bind(&toggle_panel::signal_handler_pre_left_button_click,
 						this,
 						_2),
 			event::dispatcher::back_pre_child);
 #endif
 	connect_signal<event::LEFT_BUTTON_CLICK>(std::bind(
-			&ttoggle_panel::signal_handler_left_button_click, this, _2, _3));
+			&toggle_panel::signal_handler_left_button_click, this, _2, _3));
 	connect_signal<event::LEFT_BUTTON_CLICK>(
-			std::bind(&ttoggle_panel::signal_handler_left_button_click,
+			std::bind(&toggle_panel::signal_handler_left_button_click,
 						this,
 						_2,
 						_3),
 			event::dispatcher::back_post_child);
 	connect_signal<event::LEFT_BUTTON_DOUBLE_CLICK>(
-			std::bind(&ttoggle_panel::signal_handler_left_button_double_click,
+			std::bind(&toggle_panel::signal_handler_left_button_double_click,
 						this,
 						_2,
 						_3));
 	connect_signal<event::LEFT_BUTTON_DOUBLE_CLICK>(
-			std::bind(&ttoggle_panel::signal_handler_left_button_double_click,
+			std::bind(&toggle_panel::signal_handler_left_button_double_click,
 						this,
 						_2,
 						_3),
 			event::dispatcher::back_post_child);
 }
 
-unsigned ttoggle_panel::num_states() const
+unsigned toggle_panel::num_states() const
 {
 	std::div_t res = std::div(this->config()->state.size(), COUNT);
 	assert(res.rem == 0);
@@ -87,18 +87,18 @@ unsigned ttoggle_panel::num_states() const
 	return res.quot;
 }
 
-void ttoggle_panel::set_child_members(
+void toggle_panel::set_child_members(
 		const std::map<std::string /* widget id */, string_map>& data)
 {
 	for(const auto & item : data)
 	{
-		tcontrol* control = dynamic_cast<tcontrol*>(find(item.first, false));
-		if(control) {
-			control->set_members(item.second);
+		control* ctrl = dynamic_cast<control*>(find(item.first, false));
+		if(ctrl) {
+			ctrl->set_members(item.second);
 		}
 	}
 }
-twidget* ttoggle_panel::find_at(const point& coordinate,
+widget* toggle_panel::find_at(const point& coordinate,
 								const bool must_be_active)
 {
 	/**
@@ -109,18 +109,18 @@ twidget* ttoggle_panel::find_at(const point& coordinate,
 	 * as well and also add a handled flag for them.
 	 */
 
-	twidget* result = tcontainer_::find_at(coordinate, must_be_active);
-	return result ? result : tcontrol::find_at(coordinate, must_be_active);
+	widget* result = container_base::find_at(coordinate, must_be_active);
+	return result ? result : control::find_at(coordinate, must_be_active);
 }
 
-const twidget* ttoggle_panel::find_at(const point& coordinate,
+const widget* toggle_panel::find_at(const point& coordinate,
 									  const bool must_be_active) const
 {
-	const twidget* result = tcontainer_::find_at(coordinate, must_be_active);
-	return result ? result : tcontrol::find_at(coordinate, must_be_active);
+	const widget* result = container_base::find_at(coordinate, must_be_active);
+	return result ? result : control::find_at(coordinate, must_be_active);
 }
 
-void ttoggle_panel::set_active(const bool active)
+void toggle_panel::set_active(const bool active)
 {
 	if(active) {
 		set_state(ENABLED);
@@ -129,17 +129,17 @@ void ttoggle_panel::set_active(const bool active)
 	}
 }
 
-bool ttoggle_panel::get_active() const
+bool toggle_panel::get_active() const
 {
 	return state_ != DISABLED;
 }
 
-unsigned ttoggle_panel::get_state() const
+unsigned toggle_panel::get_state() const
 {
 	return state_ + COUNT * state_num_;
 }
 
-SDL_Rect ttoggle_panel::get_client_rect() const
+SDL_Rect toggle_panel::get_client_rect() const
 {
 	std::shared_ptr<const toggle_panel_definition::tresolution> conf
 			= std::static_pointer_cast<const toggle_panel_definition::
@@ -155,7 +155,7 @@ SDL_Rect ttoggle_panel::get_client_rect() const
 	return result;
 }
 
-point ttoggle_panel::border_space() const
+point toggle_panel::border_space() const
 {
 	std::shared_ptr<const toggle_panel_definition::tresolution> conf
 			= std::static_pointer_cast<const toggle_panel_definition::
@@ -165,7 +165,7 @@ point ttoggle_panel::border_space() const
 	return point(conf->left_border + conf->right_border, conf->top_border + conf->bottom_border);
 }
 
-void ttoggle_panel::set_value(const unsigned selected)
+void toggle_panel::set_value(const unsigned selected)
 {
 	if(selected == get_value()) {
 		return;
@@ -174,12 +174,12 @@ void ttoggle_panel::set_value(const unsigned selected)
 	set_is_dirty(true);
 }
 
-void ttoggle_panel::set_retval(const int retval)
+void toggle_panel::set_retval(const int retval)
 {
 	retval_ = retval;
 }
 
-void ttoggle_panel::set_state(const state_t state)
+void toggle_panel::set_state(const state_t state)
 {
 	if(state == state_) {
 		return;
@@ -194,31 +194,31 @@ void ttoggle_panel::set_state(const state_t state)
 	assert(conf);
 }
 
-void ttoggle_panel::impl_draw_background(surface& frame_buffer,
+void toggle_panel::impl_draw_background(surface& frame_buffer,
 										 int x_offset,
 										 int y_offset)
 {
 	// We don't have a fore and background and need to draw depending on
 	// our state, like a control. So we use the controls drawing method.
-	tcontrol::impl_draw_background(frame_buffer, x_offset, y_offset);
+	control::impl_draw_background(frame_buffer, x_offset, y_offset);
 }
 
-void ttoggle_panel::impl_draw_foreground(surface& frame_buffer,
+void toggle_panel::impl_draw_foreground(surface& frame_buffer,
 										 int x_offset,
 										 int y_offset)
 {
 	// We don't have a fore and background and need to draw depending on
 	// our state, like a control. So we use the controls drawing method.
-	tcontrol::impl_draw_foreground(frame_buffer, x_offset, y_offset);
+	control::impl_draw_foreground(frame_buffer, x_offset, y_offset);
 }
 
-const std::string& ttoggle_panel::get_control_type() const
+const std::string& toggle_panel::get_control_type() const
 {
 	static const std::string type = "toggle_panel";
 	return type;
 }
 
-void ttoggle_panel::signal_handler_mouse_enter(const event::event_t event,
+void toggle_panel::signal_handler_mouse_enter(const event::event_t event,
 											   bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -227,7 +227,7 @@ void ttoggle_panel::signal_handler_mouse_enter(const event::event_t event,
 	handled = true;
 }
 
-void ttoggle_panel::signal_handler_mouse_leave(const event::event_t event,
+void toggle_panel::signal_handler_mouse_leave(const event::event_t event,
 											   bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -237,7 +237,7 @@ void ttoggle_panel::signal_handler_mouse_leave(const event::event_t event,
 }
 
 void
-ttoggle_panel::signal_handler_pre_left_button_click(const event::event_t event)
+toggle_panel::signal_handler_pre_left_button_click(const event::event_t event)
 {
 	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
 
@@ -250,7 +250,7 @@ ttoggle_panel::signal_handler_pre_left_button_click(const event::event_t event)
 	 * since that code is still experimental, prefer to fix a real issue caused
 	 * by it.
 	 *
-	 * The issue is that the gui2::tlistbox::add_row code was changed to
+	 * The issue is that the gui2::listbox::add_row code was changed to
 	 * increase the content size. Before the list was shown the list was
 	 * cleared. The clear operation did not reduce the size (since the widgets
 	 * were not shown yet). The add operation afterwards again reserved the
@@ -267,7 +267,7 @@ ttoggle_panel::signal_handler_pre_left_button_click(const event::event_t event)
 #endif
 }
 
-void ttoggle_panel::signal_handler_left_button_click(const event::event_t event,
+void toggle_panel::signal_handler_left_button_click(const event::event_t event,
 													 bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -284,13 +284,13 @@ void ttoggle_panel::signal_handler_left_button_click(const event::event_t event,
 	handled = true;
 }
 
-void ttoggle_panel::signal_handler_left_button_double_click(
+void toggle_panel::signal_handler_left_button_double_click(
 		const event::event_t event, bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
 	if(retval_) {
-		twindow* window = get_window();
+		window* window = get_window();
 		assert(window);
 
 		window->set_retval(retval_);
@@ -423,9 +423,9 @@ builder_toggle_panel::builder_toggle_panel(const config& cfg)
 	grid = std::make_shared<builder_grid>(c);
 }
 
-twidget* builder_toggle_panel::build() const
+widget* builder_toggle_panel::build() const
 {
-	ttoggle_panel* widget = new ttoggle_panel();
+	toggle_panel* widget = new toggle_panel();
 
 	init_control(widget);
 

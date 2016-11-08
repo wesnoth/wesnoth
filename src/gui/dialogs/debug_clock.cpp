@@ -75,31 +75,31 @@ namespace gui2
 
 REGISTER_DIALOG(debug_clock)
 
-void tdebug_clock::pre_show(twindow& window)
+void tdebug_clock::pre_show(window& window)
 {
-	hour_percentage_ = find_widget<tprogress_bar>(
+	hour_percentage_ = find_widget<progress_bar>(
 			&window, "hour_percentage", false, false);
-	minute_percentage_ = find_widget<tprogress_bar>(
+	minute_percentage_ = find_widget<progress_bar>(
 			&window, "minute_percentage", false, false);
-	second_percentage_ = find_widget<tprogress_bar>(
+	second_percentage_ = find_widget<progress_bar>(
 			&window, "second_percentage", false, false);
 
-	hour_ = find_widget<tinteger_selector_>(&window, "hour", false, false);
-	if(tcontrol *hour = dynamic_cast<tcontrol*>(hour_)) { //Note that the standard specifies that a dynamic cast of a null pointer is null
+	hour_ = find_widget<integer_selector>(&window, "hour", false, false);
+	if(control *hour = dynamic_cast<control*>(hour_)) { //Note that the standard specifies that a dynamic cast of a null pointer is null
 		hour->set_active(false);
 	}
-	minute_ = find_widget<tinteger_selector_>(&window, "minute", false, false);
-	if(tcontrol *minute = dynamic_cast<tcontrol*>(minute_)) {
+	minute_ = find_widget<integer_selector>(&window, "minute", false, false);
+	if(control *minute = dynamic_cast<control*>(minute_)) {
 		minute->set_active(false);
 	}
-	second_ = find_widget<tinteger_selector_>(&window, "second", false, false);
-	if(tcontrol *second = dynamic_cast<tcontrol*>(second_)) {
+	second_ = find_widget<integer_selector>(&window, "second", false, false);
+	if(control *second = dynamic_cast<control*>(second_)) {
 		second->set_active(false);
 	}
 
-	pane_ = find_widget<tpane>(&window, "pane", false, false);
+	pane_ = find_widget<pane>(&window, "pane", false, false);
 
-	clock_ = find_widget<tcontrol>(&window, "clock", false, false);
+	clock_ = find_widget<control>(&window, "clock", false, false);
 
 	window_ = &window;
 

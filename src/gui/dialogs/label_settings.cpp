@@ -73,9 +73,9 @@ tlabel_settings::tlabel_settings(display_context& dc) : viewer(dc) {
 	}
 }
 
-void tlabel_settings::pre_show(twindow& window) {
+void tlabel_settings::pre_show(window& window) {
 	std::map<std::string, string_map> list_data;
-	tlistbox& cats_listbox = find_widget<tlistbox>(&window, "label_types", false);
+	listbox& cats_listbox = find_widget<listbox>(&window, "label_types", false);
 	for(const auto & label_entry : all_labels) {
 		const std::string& category = label_entry.first;
 		const bool& visible = label_entry.second;
@@ -94,15 +94,15 @@ void tlabel_settings::pre_show(twindow& window) {
 		}
 
 		list_data["cat_name"]["label"] = name;
-		tgrid* grid = &cats_listbox.add_row(list_data);
+		grid* grid = &cats_listbox.add_row(list_data);
 
-		ttoggle_button& status = find_widget<ttoggle_button>(grid, "cat_status", false);
+		toggle_button& status = find_widget<toggle_button>(grid, "cat_status", false);
 		status.set_value(visible);
 		status.set_callback_state_change(std::bind(&tlabel_settings::toggle_category, this, _1, category));
 
 		if(category.substr(0,5) == "side:") {
-			tlabel& label = find_widget<tlabel>(grid, "cat_name", false);
-			label.set_use_markup(true);
+			label& cat_name = find_widget<label>(grid, "cat_name", false);
+			cat_name.set_use_markup(true);
 		}
 	}
 }
@@ -120,7 +120,7 @@ bool tlabel_settings::execute(display_context& dc, CVideo& video) {
 	return true;
 }
 
-void tlabel_settings::toggle_category(twidget& box, std::string category) {
-	all_labels[category] = (static_cast<ttoggle_button&>(box).get_value() != 0);
+void tlabel_settings::toggle_category(widget& box, std::string category) {
+	all_labels[category] = (static_cast<toggle_button&>(box).get_value() != 0);
 }
 }

@@ -29,44 +29,44 @@ namespace gui2
  * A toggle button is a button with two states 'up' and 'down' or 'selected' and
  * 'deselected'. When the mouse is pressed on it the state changes.
  */
-class ttoggle_button : public tcontrol, public tselectable_
+class toggle_button : public control, public selectable_item
 {
 public:
-	ttoggle_button();
+	toggle_button();
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
-	/** See @ref tcontrol::set_members. */
+	/** See @ref control::set_members. */
 	void set_members(const string_map& data) override;
 
-	/** See @ref tcontrol::set_active. */
+	/** See @ref control::set_active. */
 	virtual void set_active(const bool active) override;
 
-	/** See @ref tcontrol::get_active. */
+	/** See @ref control::get_active. */
 	virtual bool get_active() const override;
 
-	/** See @ref tcontrol::get_state. */
+	/** See @ref control::get_state. */
 	virtual unsigned get_state() const override;
 
-	/** Inherited from tcontrol. */
+	/** Inherited from control. */
 	void update_canvas() override;
 
-	/** Inherited from tselectable_ */
+	/** Inherited from selectable_item */
 	unsigned get_value() const override
 	{
 		return state_num_;
 	}
-	/** Inherited from tselectable_ */
+	/** Inherited from selectable_item */
 	unsigned num_states() const override;
-	/** Inherited from tselectable_ */
+	/** Inherited from selectable_item */
 	void set_value(const unsigned selected) override;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	void set_retval(const int retval);
 
-	/** Inherited from tselectable_. */
-	void set_callback_state_change(std::function<void(twidget&)> callback) override
+	/** Inherited from selectable_item. */
+	void set_callback_state_change(std::function<void(widget&)> callback) override
 	{
 		callback_state_change_ = callback;
 	}
@@ -118,16 +118,16 @@ private:
 	 */
 	int retval_;
 
-	/** See tselectable_::set_callback_state_change. */
-	std::function<void(twidget&)> callback_state_change_;
+	/** See selectable_item::set_callback_state_change. */
+	std::function<void(widget&)> callback_state_change_;
 
 	/**
 	 * The toggle button can contain an icon next to the text.
-	 * Maybe this will move the the tcontrol class if deemed needed.
+	 * Maybe this will move the the control class if deemed needed.
 	 */
 	std::string icon_name_;
 
-	/** See @ref tcontrol::get_control_type. */
+	/** See @ref control::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 
 	/***** ***** ***** signal handlers ***** ****** *****/
@@ -166,7 +166,7 @@ struct builder_toggle_button : public builder_control
 
 	using builder_control::build;
 
-	twidget* build() const;
+	widget* build() const;
 
 private:
 	std::string icon_name_;

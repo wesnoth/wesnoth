@@ -33,7 +33,7 @@ namespace gui2
 
 REGISTER_WIDGET(horizontal_scrollbar)
 
-unsigned thorizontal_scrollbar::minimum_positioner_length() const
+unsigned horizontal_scrollbar::minimum_positioner_length() const
 {
 	std::shared_ptr<const horizontal_scrollbar_definition::tresolution>
 	conf = std::static_pointer_cast<const horizontal_scrollbar_definition::
@@ -43,7 +43,7 @@ unsigned thorizontal_scrollbar::minimum_positioner_length() const
 	return conf->minimum_positioner_length;
 }
 
-unsigned thorizontal_scrollbar::maximum_positioner_length() const
+unsigned horizontal_scrollbar::maximum_positioner_length() const
 {
 	std::shared_ptr<const horizontal_scrollbar_definition::tresolution>
 	conf = std::static_pointer_cast<const horizontal_scrollbar_definition::
@@ -53,7 +53,7 @@ unsigned thorizontal_scrollbar::maximum_positioner_length() const
 	return conf->maximum_positioner_length;
 }
 
-unsigned thorizontal_scrollbar::offset_before() const
+unsigned horizontal_scrollbar::offset_before() const
 {
 	std::shared_ptr<const horizontal_scrollbar_definition::tresolution>
 	conf = std::static_pointer_cast<const horizontal_scrollbar_definition::
@@ -63,7 +63,7 @@ unsigned thorizontal_scrollbar::offset_before() const
 	return conf->left_offset;
 }
 
-unsigned thorizontal_scrollbar::offset_after() const
+unsigned horizontal_scrollbar::offset_after() const
 {
 	std::shared_ptr<const horizontal_scrollbar_definition::tresolution>
 	conf = std::static_pointer_cast<const horizontal_scrollbar_definition::
@@ -73,7 +73,7 @@ unsigned thorizontal_scrollbar::offset_after() const
 	return conf->right_offset;
 }
 
-bool thorizontal_scrollbar::on_positioner(const point& coordinate) const
+bool horizontal_scrollbar::on_positioner(const point& coordinate) const
 {
 	// Note we assume the positioner is over the entire height of the widget.
 	return coordinate.x >= static_cast<int>(get_positioner_offset())
@@ -82,7 +82,7 @@ bool thorizontal_scrollbar::on_positioner(const point& coordinate) const
 		   && coordinate.y > 0 && coordinate.y < static_cast<int>(get_height());
 }
 
-int thorizontal_scrollbar::on_bar(const point& coordinate) const
+int horizontal_scrollbar::on_bar(const point& coordinate) const
 {
 	// Not on the widget, leave.
 	if(static_cast<size_t>(coordinate.x) > get_width()
@@ -102,12 +102,12 @@ int thorizontal_scrollbar::on_bar(const point& coordinate) const
 	}
 }
 
-bool thorizontal_scrollbar::in_orthogonal_range(const point& coordinate) const
+bool horizontal_scrollbar::in_orthogonal_range(const point& coordinate) const
 {
 	return static_cast<size_t>(coordinate.x) < get_width();
 }
 
-const std::string& thorizontal_scrollbar::get_control_type() const
+const std::string& horizontal_scrollbar::get_control_type() const
 {
 	static const std::string type = "horizontal_scrollbar";
 	return type;
@@ -223,9 +223,9 @@ builder_horizontal_scrollbar::builder_horizontal_scrollbar(const config& cfg)
 {
 }
 
-twidget* builder_horizontal_scrollbar::build() const
+widget* builder_horizontal_scrollbar::build() const
 {
-	thorizontal_scrollbar* widget = new thorizontal_scrollbar();
+	horizontal_scrollbar* widget = new horizontal_scrollbar();
 
 	init_control(widget);
 

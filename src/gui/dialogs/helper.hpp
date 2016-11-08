@@ -27,12 +27,12 @@ namespace gui2
  * widget->set_callback(dialog_callback<my_dialog_class,
  * &my_dialog_class::member_function>);
  */
-template <class D, void (D::*fptr)(twindow&)>
-void dialog_callback(twidget& caller)
+template <class D, void (D::*fptr)(window&)>
+void dialog_callback(widget& caller)
 {
 	D* dialog = dynamic_cast<D*>(caller.dialog());
 	assert(dialog);
-	twindow* window = caller.get_window();
+	window* window = caller.get_window();
 	assert(window);
 	(dialog->*fptr)(*window);
 }

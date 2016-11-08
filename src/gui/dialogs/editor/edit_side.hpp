@@ -23,7 +23,7 @@
 namespace gui2
 {
 
-class ttoggle_button;
+class toggle_button;
 
 class teditor_edit_side : public tdialog
 {
@@ -37,14 +37,14 @@ public:
 	}
 
 private:
-	void pre_show(twindow& window);
-	void post_show(twindow& window);
+	void pre_show(window& window);
+	void post_show(window& window);
 
 	team::CONTROLLER& controller_;
-	tgroup<team::CONTROLLER> controller_group;
+	group<team::CONTROLLER> controller_group;
 
 	team::SHARE_VISION& share_vision_;
-	tgroup<team::SHARE_VISION> vision_group;
+	group<team::SHARE_VISION> vision_group;
 
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;

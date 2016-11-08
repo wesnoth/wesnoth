@@ -91,11 +91,11 @@ tmp_cmd_wrapper::tmp_cmd_wrapper(const t_string& user)
 	set_always_save_fields(true);
 }
 
-void tmp_cmd_wrapper::pre_show(twindow& window)
+void tmp_cmd_wrapper::pre_show(window& window)
 {
 #if defined(_WIN32) || defined(__APPLE__)
-	ttext_box* message
-			= find_widget<ttext_box>(&window, "message", false, false);
+	text_box* message
+			= find_widget<text_box>(&window, "message", false, false);
 	if(message) {
 		/**
 		 * @todo For some reason the text wrapping fails on Windows and Mac,
@@ -109,9 +109,9 @@ void tmp_cmd_wrapper::pre_show(twindow& window)
 
 	const bool authenticated = preferences::is_authenticated();
 
-	if(tgrid* g = find_widget<tgrid>(&window, "mod_options", false, false)) {
+	if(grid* g = find_widget<grid>(&window, "mod_options", false, false)) {
 		g->set_active(authenticated);
-		g->set_visible(authenticated ? twidget::tvisible::visible : twidget::tvisible::invisible);
+		g->set_visible(authenticated ? widget::tvisible::visible : widget::tvisible::invisible);
 	}
 
 	/**
@@ -119,27 +119,27 @@ void tmp_cmd_wrapper::pre_show(twindow& window)
 	 * some more thought. Therefore separated the set_retval from the
 	 * set_active code.
 	 */
-	if(tbutton* b = find_widget<tbutton>(&window, "add_friend", false, false)) {
+	if(button* b = find_widget<button>(&window, "add_friend", false, false)) {
 		b->set_retval(1);
 	}
 
-	if(tbutton* b = find_widget<tbutton>(&window, "add_ignore", false, false)) {
+	if(button* b = find_widget<button>(&window, "add_ignore", false, false)) {
 		b->set_retval(2);
 	}
 
-	if(tbutton* b = find_widget<tbutton>(&window, "remove", false, false)) {
+	if(button* b = find_widget<button>(&window, "remove", false, false)) {
 		b->set_retval(3);
 	}
 
-	if(tbutton* b = find_widget<tbutton>(&window, "status", false, false)) {
+	if(button* b = find_widget<button>(&window, "status", false, false)) {
 		b->set_retval(4);
 	}
 
-	if(tbutton* b = find_widget<tbutton>(&window, "kick", false, false)) {
+	if(button* b = find_widget<button>(&window, "kick", false, false)) {
 		b->set_retval(5);
 	}
 
-	if(tbutton* b = find_widget<tbutton>(&window, "ban", false, false)) {
+	if(button* b = find_widget<button>(&window, "ban", false, false)) {
 		b->set_retval(6);
 	}
 }

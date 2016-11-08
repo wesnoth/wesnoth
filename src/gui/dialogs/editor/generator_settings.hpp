@@ -20,8 +20,8 @@
 namespace gui2
 {
 
-class tlabel;
-class tslider;
+class label;
+class slider;
 
 class tgenerator_settings : public tdialog
 {
@@ -35,9 +35,9 @@ public:
 	}
 
 private:
-	void pre_show(twindow& window);
+	void pre_show(window& window);
 
-	void adjust_minimum_size_by_players(twindow& window);
+	void adjust_minimum_size_by_players(window& window);
 
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;

@@ -51,10 +51,10 @@ protected:
 	virtual const std::string& window_id() const;
 
 	/** Inherited from tdialog */
-	virtual void pre_show(twindow& window);
+	virtual void pre_show(window& window);
 
 	/** Inherited from tdialog */
-	virtual void post_show(twindow& window);
+	virtual void post_show(window& window);
 
 private:
 	/** the options available */

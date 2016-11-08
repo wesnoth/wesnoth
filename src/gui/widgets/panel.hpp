@@ -31,46 +31,46 @@ namespace gui2
  * This widget can draw items beyond the widgets it holds and in front of them.
  * A panel is always active so these functions return dummy values.
  */
-class tpanel : public tcontainer_
+class panel : public container_base
 {
 
 public:
 	/**
 	 * Constructor.
 	 *
-	 * @param canvas_count        The canvas count for tcontrol.
+	 * @param canvas_count        The canvas count for control.
 	 */
-	explicit tpanel(const unsigned canvas_count = 2) : tcontainer_(canvas_count)
+	explicit panel(const unsigned canvas_count = 2) : container_base(canvas_count)
 	{
 	}
 
-	/** See @ref tcontainer_::get_client_rect. */
+	/** See @ref container_base::get_client_rect. */
 	virtual SDL_Rect get_client_rect() const override;
 
-	/** See @ref tcontrol::get_active. */
+	/** See @ref control::get_active. */
 	virtual bool get_active() const override;
 
-	/** See @ref tcontrol::get_state. */
+	/** See @ref control::get_state. */
 	virtual unsigned get_state() const override;
 
 private:
-	/** See @ref twidget::impl_draw_background. */
+	/** See @ref widget::impl_draw_background. */
 	virtual void impl_draw_background(surface& frame_buffer,
 									  int x_offset,
 									  int y_offset) override;
 
-	/** See @ref twidget::impl_draw_foreground. */
+	/** See @ref widget::impl_draw_foreground. */
 	virtual void impl_draw_foreground(surface& frame_buffer,
 									  int x_offset,
 									  int y_offset) override;
 
-	/** See @ref tcontrol::get_control_type. */
+	/** See @ref control::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 
-	/** See @ref tcontainer_::border_space. */
+	/** See @ref container_base::border_space. */
 	virtual point border_space() const override;
 
-	/** See @ref tcontainer_::set_self_active. */
+	/** See @ref container_base::set_self_active. */
 	virtual void set_self_active(const bool active) override;
 };
 
@@ -103,7 +103,7 @@ struct builder_panel : public builder_control
 
 	using builder_control::build;
 
-	twidget* build() const;
+	widget* build() const;
 
 	builder_grid_ptr grid;
 };

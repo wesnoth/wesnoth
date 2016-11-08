@@ -120,7 +120,7 @@ static std::unique_ptr<wesnothd_connection> open_connection(CVideo& video, const
 		gui2::tmp_connect dlg;
 
 		dlg.show(video);
-		if(dlg.get_retval() == gui2::twindow::OK) {
+		if(dlg.get_retval() == gui2::window::OK) {
 			h = preferences::network_host();
 		} else {
 			return 0;
@@ -243,7 +243,7 @@ static std::unique_ptr<wesnothd_connection> open_connection(CVideo& video, const
 					warning_msg += "\n\n";
 					warning_msg += _("Do you want to continue?");
 
-					if(gui2::show_message(video, _("Warning"), warning_msg, gui2::tmessage::yes_no_buttons) != gui2::twindow::OK) {
+					if(gui2::show_message(video, _("Warning"), warning_msg, gui2::tmessage::yes_no_buttons) != gui2::window::OK) {
 						return 0;
 					}
 				}
@@ -257,7 +257,7 @@ static std::unique_ptr<wesnothd_connection> open_connection(CVideo& video, const
 					std::string password = preferences::password();
 
 					bool fall_through = (*error)["force_confirmation"].to_bool() ?
-						(gui2::show_message(video, _("Confirm"), (*error)["message"], gui2::tmessage::ok_cancel_buttons) == gui2::twindow::CANCEL) :
+						(gui2::show_message(video, _("Confirm"), (*error)["message"], gui2::tmessage::ok_cancel_buttons) == gui2::window::CANCEL) :
 						false;
 
 					const bool is_pw_request = !((*error)["password_request"].empty()) && !(password.empty());
@@ -362,7 +362,7 @@ static std::unique_ptr<wesnothd_connection> open_connection(CVideo& video, const
 
 					switch(dlg.get_retval()) {
 						//Log in with password
-						case gui2::twindow::OK:
+						case gui2::window::OK:
 							break;
 						//Request a password reminder
 						case 1:
@@ -435,7 +435,7 @@ static void enter_wait_mode(CVideo& video, const config& game_config, saved_game
 
 			dlg.show(video);
 
-			if(dlg.get_retval() == gui2::twindow::OK) {
+			if(dlg.get_retval() == gui2::window::OK) {
 				campaign_controller controller(video, state, game_config, game_config_manager::get()->terrain_types());
 				controller.set_mp_info(campaign_info.get());
 				controller.play_game();
@@ -505,7 +505,7 @@ static bool enter_connect_mode(CVideo& video, const config& game_config,
 			gui2::tmp_staging dlg(*connect_engine, li, connection);
 			dlg.show(video);
 
-			if(dlg.get_retval() == gui2::twindow::OK) {
+			if(dlg.get_retval() == gui2::window::OK) {
 				campaign_controller controller(video, state, game_config, game_config_manager::get()->terrain_types());
 				controller.set_mp_info(campaign_info.get());
 				controller.play_game();
@@ -577,7 +577,7 @@ static void enter_create_mode(CVideo& video, const config& game_config,
 
 		dlg.show(video);
 
-		if(dlg.get_retval() != gui2::twindow::CANCEL) {
+		if(dlg.get_retval() != gui2::window::CANCEL) {
 			enter_connect_mode(video, game_config, state, connection, li, local_players_only);
 		} else if(connection) {
 			connection->send_data(config("refresh_lobby"));

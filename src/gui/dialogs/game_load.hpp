@@ -25,8 +25,8 @@
 namespace gui2
 {
 
-class tlistbox;
-class ttext_;
+class listbox;
+class text_box_base;
 
 class tgame_load : public tdialog
 {
@@ -45,15 +45,15 @@ public:
 
 private:
 	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	void pre_show(window& window);
 
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	void filter_text_changed(ttext_* textbox, const std::string& text);
-	void delete_button_callback(twindow& window);
+	void filter_text_changed(text_box_base* textbox, const std::string& text);
+	void delete_button_callback(window& window);
 
-	void display_savegame(twindow& window);
+	void display_savegame(window& window);
 	void evaluate_summary_string(std::stringstream& str, const config& cfg_summary);
 
 	std::string& filename_;

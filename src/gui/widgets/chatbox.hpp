@@ -29,11 +29,11 @@ namespace gui2
 
 // ------------ WIDGET -----------{
 
-class tbutton;
-class tlistbox;
-class tlabel;
-class tmulti_page;
-class ttext_box;
+class button;
+class listbox;
+class label;
+class multi_page;
+class text_box;
 
 namespace implementation
 {
@@ -52,20 +52,20 @@ struct tlobby_chat_window
 	int pending_messages;
 };
 
-class tchatbox : public tcontainer_, public events::chat_handler
+class chatbox : public container_base, public events::chat_handler
 {
 	friend struct implementation::builder_chatbox;
 
 public:
-	tchatbox();
+	chatbox();
 
-	/** See @ref tcontrol::set_active. */
+	/** See @ref control::set_active. */
 	virtual void set_active(const bool active) override;
 
-	/** See @ref tcontrol::get_active. */
+	/** See @ref control::get_active. */
 	virtual bool get_active() const override;
 
-	/** See @ref tcontrol::get_state. */
+	/** See @ref control::get_state. */
 	virtual unsigned get_state() const override { return 0; };
 
 	void send_to_server(const ::config& cfg) override;
@@ -113,11 +113,11 @@ protected:
 
 
 private:
-	tlistbox* roomlistbox_;
+	listbox* roomlistbox_;
 
-	tmulti_page* chat_log_container_;
+	multi_page* chat_log_container_;
 
-	ttext_box* chat_input_;
+	text_box* chat_input_;
 
 	std::vector<tlobby_chat_window> open_windows_;
 
@@ -131,10 +131,10 @@ private:
 
 	wesnothd_connection* wesnothd_connection_;
 
-	/** See @ref tcontrol::get_control_type. */
+	/** See @ref control::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 
-	/** See @ref tcontainer_::set_self_active. */
+	/** See @ref container_base::set_self_active. */
 	virtual void set_self_active(const bool active) override;
 
 	void chat_input_keypress_callback(bool& handled, bool& halt, const SDL_Keycode key);
@@ -283,7 +283,7 @@ public:
 
 	using builder_control::build;
 
-	twidget* build() const;
+	widget* build() const;
 
 private:
 };

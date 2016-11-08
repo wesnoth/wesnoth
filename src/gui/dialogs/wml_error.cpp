@@ -203,20 +203,20 @@ twml_error::twml_error(const std::string& summary,
 	register_label("details", true, details);
 }
 
-void twml_error::pre_show(twindow& window)
+void twml_error::pre_show(window& window)
 {
 	if(!have_files_) {
-		tcontrol& filelist = find_widget<tcontrol>(&window, "files", false);
-		filelist.set_visible(tcontrol::tvisible::invisible);
+		control& filelist = find_widget<control>(&window, "files", false);
+		filelist.set_visible(control::tvisible::invisible);
 	}
 
 	if(!have_post_summary_) {
-		tcontrol& post_summary
-				= find_widget<tcontrol>(&window, "post_summary", false);
-		post_summary.set_visible(tcontrol::tvisible::invisible);
+		control& post_summary
+				= find_widget<control>(&window, "post_summary", false);
+		post_summary.set_visible(control::tvisible::invisible);
 	}
 
-	tbutton& copy_button = find_widget<tbutton>(&window, "copy", false);
+	button& copy_button = find_widget<button>(&window, "copy", false);
 
 	connect_signal_mouse_left_click(
 			copy_button, std::bind(&twml_error::copy_report_callback, this));

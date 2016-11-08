@@ -22,9 +22,9 @@
 namespace gui2
 {
 
-class tbutton;
-class tlabel;
-class ttext_box;
+class button;
+class label;
+class text_box;
 
 class tlobby_player_info : public tdialog
 {
@@ -45,10 +45,10 @@ private:
 	virtual const std::string& window_id() const;
 
 	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	void pre_show(window& window);
 
 	/** Inherited from tdialog. */
-	void post_show(twindow& window);
+	void post_show(window& window);
 
 	void update_relation();
 
@@ -58,13 +58,13 @@ private:
 
 	void remove_from_list_button_callback();
 
-	void start_whisper_button_callback(twindow& w);
+	void start_whisper_button_callback(window& w);
 
-	void check_status_button_callback(twindow& w);
+	void check_status_button_callback(window& w);
 
-	void kick_button_callback(twindow& w);
+	void kick_button_callback(window& w);
 
-	void kick_ban_button_callback(twindow& w);
+	void kick_ban_button_callback(window& w);
 
 	void do_kick_ban(bool ban);
 
@@ -72,17 +72,17 @@ private:
 
 	user_info& info_;
 
-	ttext_box* reason_;
+	text_box* reason_;
 
-	ttext_box* time_;
+	text_box* time_;
 
-	tlabel* relation_;
+	label* relation_;
 
-	tbutton* add_to_friends_;
+	button* add_to_friends_;
 
-	tbutton* add_to_ignores_;
+	button* add_to_ignores_;
 
-	tbutton* remove_from_list_;
+	button* remove_from_list_;
 
 	bool result_open_whisper_;
 

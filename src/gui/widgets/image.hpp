@@ -26,10 +26,10 @@ namespace gui2
 // ------------ WIDGET -----------{
 
 /** An image. */
-class timage : public tcontrol
+class image : public control
 {
 public:
-	timage() : tcontrol(COUNT)
+	image() : control(COUNT)
 	{
 	}
 
@@ -56,7 +56,7 @@ public:
 	 */
 	t_string get_image() const
 	{
-		return label();
+		return get_label();
 	}
 
 	virtual bool can_mouse_focus() const override { return !tooltip().empty(); }
@@ -64,22 +64,22 @@ public:
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
 private:
-	/** See @ref twidget::calculate_best_size. */
+	/** See @ref widget::calculate_best_size. */
 	virtual point calculate_best_size() const override;
 
 public:
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
-	/** See @ref tcontrol::set_active. */
+	/** See @ref control::set_active. */
 	virtual void set_active(const bool active) override;
 
-	/** See @ref tcontrol::get_active. */
+	/** See @ref control::get_active. */
 	virtual bool get_active() const override;
 
-	/** See @ref tcontrol::get_state. */
+	/** See @ref control::get_state. */
 	virtual unsigned get_state() const override;
 
-	/** See @ref twidget::disable_click_dismiss. */
+	/** See @ref widget::disable_click_dismiss. */
 	bool disable_click_dismiss() const override;
 
 private:
@@ -93,7 +93,7 @@ private:
 		COUNT
 	};
 
-	/** See @ref tcontrol::get_control_type. */
+	/** See @ref control::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 };
 
@@ -120,7 +120,7 @@ struct builder_image : public builder_control
 
 	using builder_control::build;
 
-	twidget* build() const;
+	widget* build() const;
 };
 
 } // namespace implementation

@@ -56,11 +56,11 @@ namespace iterator
  * @section gui2_iterator_walker Walker
  *
  * The is a group of classes inheriting from @ref gui2::iterator::twalker_
- * the objects are created from @ref gui2::twidget::create_walker. The
+ * the objects are created from @ref gui2::widget::create_walker. The
  * walker allows to visit the several levels of the widget. This means
  * several widgets need to override the function in a subclass. For example
  * most @em simple widgets don't have a grid or children so they can use the
- * walker created from @ref gui2::tcontrol. But containers need to create a
+ * walker created from @ref gui2::control. But containers need to create a
  * different walker.
  *
  *

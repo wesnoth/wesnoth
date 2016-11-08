@@ -368,9 +368,9 @@ void handler::handle_event(const SDL_Event& event)
 			/** @todo Convert this to a proper new style event. */
 			DBG_GUI_E << "Firing " << CLOSE_WINDOW << ".\n";
 
-			twindow* window = twindow::window_instance(event.user.code);
+			window* window = window::window_instance(event.user.code);
 			if(window) {
-				window->set_retval(twindow::AUTO_CLOSE);
+				window->set_retval(window::AUTO_CLOSE);
 			}
 		} break;
 
@@ -472,7 +472,7 @@ void handler::disconnect(dispatcher* disp)
 	/***** Set proper state for the other dispatchers. *****/
 	for(auto d : dispatchers_)
 	{
-		dynamic_cast<twidget&>(*d).set_is_dirty(true);
+		dynamic_cast<widget&>(*d).set_is_dirty(true);
 	}
 
 	activate();
@@ -493,7 +493,7 @@ void handler::activate()
 	for(auto dispatcher : dispatchers_)
 	{
 		dispatcher->fire(
-				SDL_ACTIVATE, dynamic_cast<twidget&>(*dispatcher), nullptr);
+				SDL_ACTIVATE, dynamic_cast<widget&>(*dispatcher), nullptr);
 	}
 }
 
@@ -523,16 +523,16 @@ void handler::draw(const bool force)
 			 * causes black borders around the window. So there's the choice
 			 * between two evils.
 			 */
-			dynamic_cast<twidget&>(*dispatcher).set_is_dirty(true);
+			dynamic_cast<widget&>(*dispatcher).set_is_dirty(true);
 		} else {
 			first = false;
 		}
 
-		dispatcher->fire(DRAW, dynamic_cast<twidget&>(*dispatcher));
+		dispatcher->fire(DRAW, dynamic_cast<widget&>(*dispatcher));
 	}
 
 	if(!dispatchers_.empty()) {
-		CVideo& video = dynamic_cast<twindow&>(*dispatchers_.back()).video();
+		CVideo& video = dynamic_cast<window&>(*dispatchers_.back()).video();
 
 		video.flip();
 	}
@@ -545,7 +545,7 @@ void handler::video_resize(const point& new_size)
 	for(auto dispatcher : dispatchers_)
 	{
 		dispatcher->fire(SDL_VIDEO_RESIZE,
-						 dynamic_cast<twidget&>(*dispatcher),
+						 dynamic_cast<widget&>(*dispatcher),
 						 new_size);
 	}
 }
@@ -556,7 +556,7 @@ void handler::mouse(const event_t event, const point& position)
 
 	if(mouse_focus) {
 		mouse_focus->fire(
-				event, dynamic_cast<twidget&>(*mouse_focus), position);
+				event, dynamic_cast<widget&>(*mouse_focus), position);
 	} else {
 
 		for(std::vector<dispatcher*>::reverse_iterator ritor
@@ -566,7 +566,7 @@ void handler::mouse(const event_t event, const point& position)
 
 			if((**ritor).get_mouse_behavior() == dispatcher::all) {
 				(**ritor)
-						.fire(event, dynamic_cast<twidget&>(**ritor), position);
+						.fire(event, dynamic_cast<widget&>(**ritor), position);
 				break;
 			}
 			if((**ritor).get_mouse_behavior() == dispatcher::none) {
@@ -574,7 +574,7 @@ void handler::mouse(const event_t event, const point& position)
 			}
 			if((**ritor).is_at(position)) {
 				(**ritor)
-						.fire(event, dynamic_cast<twidget&>(**ritor), position);
+						.fire(event, dynamic_cast<widget&>(**ritor), position);
 				break;
 			}
 		}
@@ -732,7 +732,7 @@ void handler::key_down(const SDL_Keycode key,
 
 	if(dispatcher* dispatcher = keyboard_dispatcher()) {
 		dispatcher->fire(SDL_KEY_DOWN,
-						 dynamic_cast<twidget&>(*dispatcher),
+						 dynamic_cast<widget&>(*dispatcher),
 						 key,
 						 modifier,
 						 unicode);
@@ -744,7 +744,7 @@ void handler::keyboard(const event_t event)
 	DBG_GUI_E << "Firing: " << event << ".\n";
 
 	if(dispatcher* dispatcher = keyboard_dispatcher()) {
-		dispatcher->fire(event, dynamic_cast<twidget&>(*dispatcher));
+		dispatcher->fire(event, dynamic_cast<widget&>(*dispatcher));
 	}
 }
 
@@ -962,7 +962,7 @@ std::ostream& operator<<(std::ostream& stream, const event_t event)
 
 } // namespace event
 
-std::vector<twindow*> open_window_stack {};
+std::vector<window*> open_window_stack {};
 
 bool is_in_dialog()
 {

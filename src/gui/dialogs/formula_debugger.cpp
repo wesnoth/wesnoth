@@ -66,11 +66,11 @@ namespace gui2
 
 REGISTER_DIALOG(formula_debugger)
 
-void tformula_debugger::pre_show(twindow& window)
+void tformula_debugger::pre_show(window& window)
 {
 	// stack label
-	tscroll_label* stack_label
-			= find_widget<tscroll_label>(&window, "stack", false, true);
+	scroll_label* stack_label
+			= find_widget<scroll_label>(&window, "stack", false, true);
 
 	std::stringstream stack_text;
 	std::string indent = "  ";
@@ -88,12 +88,12 @@ void tformula_debugger::pre_show(twindow& window)
 
 	stack_label->set_use_markup(true);
 	stack_label->set_label(stack_text.str());
-	stack_label->scroll_vertical_scrollbar(tscrollbar_::END);
+	stack_label->scroll_vertical_scrollbar(scrollbar_base::END);
 	window.keyboard_capture(stack_label);
 
 	// execution trace label
-	tscroll_label* execution_label
-			= find_widget<tscroll_label>(&window, "execution", false, true);
+	scroll_label* execution_label
+			= find_widget<scroll_label>(&window, "execution", false, true);
 
 	std::stringstream execution_text;
 	for(const auto & i : fdb_.get_execution_trace())
@@ -117,7 +117,7 @@ void tformula_debugger::pre_show(twindow& window)
 
 	execution_label->set_use_markup(true);
 	execution_label->set_label(execution_text.str());
-	execution_label->scroll_vertical_scrollbar(tscrollbar_::END);
+	execution_label->scroll_vertical_scrollbar(scrollbar_base::END);
 	// state
 	std::string state_str;
 	bool is_end = false;
@@ -130,31 +130,31 @@ void tformula_debugger::pre_show(twindow& window)
 		}
 	}
 
-	find_widget<tcontrol>(&window, "state", false).set_label(state_str);
+	find_widget<control>(&window, "state", false).set_label(state_str);
 
 	// callbacks
-	tbutton& step_button = find_widget<tbutton>(&window, "step", false);
+	button& step_button = find_widget<button>(&window, "step", false);
 	connect_signal_mouse_left_click(
 			step_button,
 			std::bind(&tformula_debugger::callback_step_button,
 						this,
 						std::ref(window)));
 
-	tbutton& stepout_button = find_widget<tbutton>(&window, "stepout", false);
+	button& stepout_button = find_widget<button>(&window, "stepout", false);
 	connect_signal_mouse_left_click(
 			stepout_button,
 			std::bind(&tformula_debugger::callback_stepout_button,
 						this,
 						std::ref(window)));
 
-	tbutton& next_button = find_widget<tbutton>(&window, "next", false);
+	button& next_button = find_widget<button>(&window, "next", false);
 	connect_signal_mouse_left_click(
 			next_button,
 			std::bind(&tformula_debugger::callback_next_button,
 						this,
 						std::ref(window)));
 
-	tbutton& continue_button = find_widget<tbutton>(&window, "continue", false);
+	button& continue_button = find_widget<button>(&window, "continue", false);
 	connect_signal_mouse_left_click(
 			continue_button,
 			std::bind(&tformula_debugger::callback_continue_button,
@@ -169,28 +169,28 @@ void tformula_debugger::pre_show(twindow& window)
 	}
 }
 
-void tformula_debugger::callback_continue_button(twindow& window)
+void tformula_debugger::callback_continue_button(window& window)
 {
 	fdb_.add_breakpoint_continue_to_end();
-	window.set_retval(twindow::OK);
+	window.set_retval(window::OK);
 }
 
-void tformula_debugger::callback_next_button(twindow& window)
+void tformula_debugger::callback_next_button(window& window)
 {
 	fdb_.add_breakpoint_next();
-	window.set_retval(twindow::OK);
+	window.set_retval(window::OK);
 }
 
-void tformula_debugger::callback_step_button(twindow& window)
+void tformula_debugger::callback_step_button(window& window)
 {
 	fdb_.add_breakpoint_step_into();
-	window.set_retval(twindow::OK);
+	window.set_retval(window::OK);
 }
 
-void tformula_debugger::callback_stepout_button(twindow& window)
+void tformula_debugger::callback_stepout_button(window& window)
 {
 	fdb_.add_breakpoint_step_out();
-	window.set_retval(twindow::OK);
+	window.set_retval(window::OK);
 }
 
 } // end of namespace gui2

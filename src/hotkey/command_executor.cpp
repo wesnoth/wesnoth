@@ -370,7 +370,7 @@ void command_executor::show_menu(const std::vector<std::string>& items_arg, int 
 		SDL_Rect pos = {xloc, yloc, 1, 1};
 		gui2::tdrop_down_list mmenu(pos, menu, -1, false);
 		mmenu.show(gui.video());
-		if(mmenu.get_retval() == gui2::twindow::OK) {
+		if(mmenu.get_retval() == gui2::window::OK) {
 			res = mmenu.selected_item();
 		}
 	} // This will kill the dialog.

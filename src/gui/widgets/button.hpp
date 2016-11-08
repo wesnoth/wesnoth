@@ -29,20 +29,20 @@ namespace gui2
 /**
  * Simple push button.
  */
-class tbutton : public tcontrol, public tclickable_
+class button : public control, public clickable_item
 {
 public:
-	tbutton();
+	button();
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
-	/** See @ref tcontrol::set_active. */
+	/** See @ref control::set_active. */
 	virtual void set_active(const bool active) override;
 
-	/** See @ref tcontrol::get_active. */
+	/** See @ref control::get_active. */
 	virtual bool get_active() const override;
 
-	/** See @ref tcontrol::get_state. */
+	/** See @ref control::get_state. */
 	virtual unsigned get_state() const override;
 
 	/** Inherited from tclickable. */
@@ -95,7 +95,7 @@ private:
 	 */
 	int retval_;
 
-	/** See @ref tcontrol::get_control_type. */
+	/** See @ref control::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 
 	/***** ***** ***** signal handlers ***** ****** *****/
@@ -128,7 +128,7 @@ struct button_definition : public control_definition
 
 // }---------- BUILDER -----------{
 
-class tcontrol;
+class control;
 
 namespace implementation
 {
@@ -140,7 +140,7 @@ public:
 
 	using builder_control::build;
 
-	twidget* build() const;
+	widget* build() const;
 
 private:
 	std::string retval_id_;

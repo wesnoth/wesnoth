@@ -40,16 +40,16 @@ public:
 
 private:
 	/** Called when another core is selected. */
-	void core_selected(twindow& window);
+	void core_selected(window& window);
 
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
 	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	void pre_show(window& window);
 
 	/** Inherited from tdialog. */
-	void post_show(twindow& window);
+	void post_show(window& window);
 
 	/** Contains the config objects for all cores. */
 	const std::vector<config>& cores_;

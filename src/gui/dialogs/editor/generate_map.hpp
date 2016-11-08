@@ -25,8 +25,8 @@ class display;
 namespace gui2
 {
 
-class tlabel;
-class ttext_box;
+class label;
+class text_box;
 
 /** The dialog for selecting which random generator to use in the editor. */
 class teditor_generate_map : public tdialog
@@ -55,10 +55,10 @@ private:
 	virtual const std::string& window_id() const;
 
 	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	void pre_show(window& window);
 
 	/** Callback for generator list selection changes. */
-	void do_generator_selected(twindow& window);
+	void do_generator_selected(window& window);
 
 	/** Callback for the generator settings button. */
 	void do_settings();

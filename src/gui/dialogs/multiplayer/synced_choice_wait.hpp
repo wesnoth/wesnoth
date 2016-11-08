@@ -20,8 +20,8 @@
 #include "generic_event.hpp"
 namespace gui2
 {
-class tlabel;
-class twindow;
+class label;
+class window;
 class tsynced_choice_wait : public tdialog, public events::observer
 {
 public:
@@ -29,13 +29,13 @@ public:
 	~tsynced_choice_wait();
 private:
 	user_choice_manager& mgr_;
-	tlabel* message_;
-	twindow* window_;
+	label* message_;
+	window* window_;
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
 	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	void pre_show(window& window);
 
 	virtual void handle_generic_event(const std::string& event_name);
 };

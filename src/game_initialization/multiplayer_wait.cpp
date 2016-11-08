@@ -226,7 +226,7 @@ void wait::join_game(bool observe)
 			gui2::tfaction_select dlg(flg, color, side_num + 1);
 			dlg.show(video());
 
-			if(dlg.get_retval() != gui2::twindow::OK) {
+			if(dlg.get_retval() != gui2::window::OK) {
 				set_result(QUIT);
 				return;
 			}

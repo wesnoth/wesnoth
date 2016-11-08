@@ -37,12 +37,12 @@ namespace gui2
 
 REGISTER_WIDGET(tree_view)
 
-ttree_view::ttree_view(const std::vector<node_definition>& node_definitions)
-	: tscrollbar_container(2)
+tree_view::tree_view(const std::vector<node_definition>& node_definitions)
+	: scrollbar_container(2)
 	, node_definitions_(node_definitions)
 	, indentation_step_size_(0)
 	, need_layout_(false)
-	, root_node_(new ttree_view_node("root",
+	, root_node_(new tree_view_node("root",
 									 node_definitions_,
 									 nullptr,
 									 *this,
@@ -51,16 +51,16 @@ ttree_view::ttree_view(const std::vector<node_definition>& node_definitions)
 	, selection_change_callback_()
 {
 	connect_signal<event::LEFT_BUTTON_DOWN>(
-			std::bind(&ttree_view::signal_handler_left_button_down, this, _2),
+			std::bind(&tree_view::signal_handler_left_button_down, this, _2),
 			event::dispatcher::back_pre_child);
 }
-ttree_view::~ttree_view()
+tree_view::~tree_view()
 {
 	if (root_node_) {
 		root_node_->clear_before_destruct();
 	}
 }
-ttree_view_node& ttree_view::add_node(
+tree_view_node& tree_view::add_node(
 		const std::string& id,
 		const std::map<std::string /* widget id */, string_map>& data,
 		const int index)
@@ -68,11 +68,11 @@ ttree_view_node& ttree_view::add_node(
 	return get_root_node().add_child(id, data, index);
 }
 
-int ttree_view::remove_node(ttree_view_node* node)
+int tree_view::remove_node(tree_view_node* node)
 {
 	assert(node && node != root_node_ && node->parent_node_);
 
-	ttree_view_node::node_children_vector& siblings = node->parent_node_->children_;
+	tree_view_node::node_children_vector& siblings = node->parent_node_->children_;
 
 	auto itor = std::find(siblings.begin(), siblings.end(), *node);
 	assert(itor != siblings.end());
@@ -87,39 +87,39 @@ int ttree_view::remove_node(ttree_view_node* node)
 	return itor - siblings.begin();
 }
 
-void ttree_view::clear()
+void tree_view::clear()
 {
 	get_root_node().clear();
 	resize_content(0, -content_grid()->get_size().y);
 }
 
 void
-ttree_view::child_populate_dirty_list(twindow& caller,
-									  const std::vector<twidget*>& call_stack)
+tree_view::child_populate_dirty_list(window& caller,
+									  const std::vector<widget*>& call_stack)
 {
 	// Inherited.
-	tscrollbar_container::child_populate_dirty_list(caller, call_stack);
+	scrollbar_container::child_populate_dirty_list(caller, call_stack);
 
 	assert(root_node_);
 	root_node_->impl_populate_dirty_list(caller, call_stack);
 }
 
-void ttree_view::set_self_active(const bool /*active*/)
+void tree_view::set_self_active(const bool /*active*/)
 {
 	/* DO NOTHING */
 }
 
-bool ttree_view::empty() const
+bool tree_view::empty() const
 {
 	return root_node_->empty();
 }
 
-void ttree_view::layout_children()
+void tree_view::layout_children()
 {
 	layout_children(false);
 }
 
-void ttree_view::resize_content(const int width_modification,
+void tree_view::resize_content(const int width_modification,
 								const int height_modification,
 						const int width__modification_pos,
 						const int height_modification_pos)
@@ -151,7 +151,7 @@ void ttree_view::resize_content(const int width_modification,
 	}
 }
 
-void ttree_view::layout_children(const bool force)
+void tree_view::layout_children(const bool force)
 {
 	assert(root_node_ && content_grid());
 
@@ -166,51 +166,51 @@ void ttree_view::layout_children(const bool force)
 	}
 }
 
-void ttree_view::finalize_setup()
+void tree_view::finalize_setup()
 {
 	// Inherited.
-	tscrollbar_container::finalize_setup();
+	scrollbar_container::finalize_setup();
 
 	assert(content_grid());
 	content_grid()->set_rows_cols(1, 1);
 	content_grid()->set_child(root_node_,
 							  0,
 							  0,
-							  tgrid::VERTICAL_GROW_SEND_TO_CLIENT
-							  | tgrid::HORIZONTAL_GROW_SEND_TO_CLIENT,
+							  grid::VERTICAL_GROW_SEND_TO_CLIENT
+							  | grid::HORIZONTAL_GROW_SEND_TO_CLIENT,
 							  0);
 }
 
-const std::string& ttree_view::get_control_type() const
+const std::string& tree_view::get_control_type() const
 {
 	static const std::string type = "tree_view";
 	return type;
 }
 
-void ttree_view::signal_handler_left_button_down(const event::event_t event)
+void tree_view::signal_handler_left_button_down(const event::event_t event)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
 	get_window()->keyboard_capture(this);
 }
-template<ttree_view_node* (ttree_view_node::*func) ()>
-ttree_view_node* ttree_view::get_next_node()
+template<tree_view_node* (tree_view_node::*func) ()>
+tree_view_node* tree_view::get_next_node()
 {
-	ttree_view_node* selected = selected_item();
+	tree_view_node* selected = selected_item();
 	if(!selected) {
 		return nullptr;
 	}
-	ttree_view_node* visible = selected->get_last_visible_parent_node();
+	tree_view_node* visible = selected->get_last_visible_parent_node();
 	if(visible != selected) {
 		return visible;
 	}
 	return (selected->*func)();
 }
 
-template<ttree_view_node* (ttree_view_node::*func) ()>
-bool ttree_view::handle_up_down_arrow()
+template<tree_view_node* (tree_view_node::*func) ()>
+bool tree_view::handle_up_down_arrow()
 {
-	if(ttree_view_node* next = get_next_node<func>())
+	if(tree_view_node* next = get_next_node<func>())
 	{
 		next->select_node();
 		SDL_Rect visible = content_visible_area();
@@ -223,43 +223,43 @@ bool ttree_view::handle_up_down_arrow()
 	return false;
 }
 
-void ttree_view::handle_key_up_arrow(SDL_Keymod modifier, bool& handled)
+void tree_view::handle_key_up_arrow(SDL_Keymod modifier, bool& handled)
 {
-	if(handle_up_down_arrow<&ttree_view_node::get_selectable_node_above>()) {
+	if(handle_up_down_arrow<&tree_view_node::get_selectable_node_above>()) {
 		handled = true;
 	}
 	else {
-		tscrollbar_container::handle_key_up_arrow(modifier, handled);
+		scrollbar_container::handle_key_up_arrow(modifier, handled);
 	}
 }
 
-void ttree_view::handle_key_down_arrow(SDL_Keymod modifier, bool& handled)
+void tree_view::handle_key_down_arrow(SDL_Keymod modifier, bool& handled)
 {
-	if(handle_up_down_arrow<&ttree_view_node::get_selectable_node_below>()) {
+	if(handle_up_down_arrow<&tree_view_node::get_selectable_node_below>()) {
 		handled = true;
 	}
 	else {
-		tscrollbar_container::handle_key_down_arrow(modifier, handled);
+		scrollbar_container::handle_key_down_arrow(modifier, handled);
 	}
 }
 
 
-void ttree_view::handle_key_left_arrow(SDL_Keymod modifier, bool& handled)
+void tree_view::handle_key_left_arrow(SDL_Keymod modifier, bool& handled)
 {
-	ttree_view_node* selected = selected_item();
+	tree_view_node* selected = selected_item();
 	if(!selected || selected->is_folded()) {
-		tscrollbar_container::handle_key_left_arrow(modifier, handled);
+		scrollbar_container::handle_key_left_arrow(modifier, handled);
 		return;
 	}
 	selected->fold();
 	handled = true;
 }
 
-void ttree_view::handle_key_right_arrow(SDL_Keymod modifier, bool& handled)
+void tree_view::handle_key_right_arrow(SDL_Keymod modifier, bool& handled)
 {
-	ttree_view_node* selected = selected_item();
+	tree_view_node* selected = selected_item();
 	if(!selected || !selected->is_folded()) {
-		tscrollbar_container::handle_key_right_arrow(modifier, handled);
+		scrollbar_container::handle_key_right_arrow(modifier, handled);
 		return;
 	}
 	selected->unfold();
@@ -390,13 +390,13 @@ builder_tree_view::builder_tree_view(const config& cfg)
 	VALIDATE(!nodes.empty(), _("No nodes defined for a tree view."));
 }
 
-twidget* builder_tree_view::build() const
+widget* builder_tree_view::build() const
 {
 	/*
 	 *  TODO see how much we can move in the constructor instead of
 	 *  building in several steps.
 	 */
-	ttree_view* widget = new ttree_view(nodes);
+	tree_view* widget = new tree_view(nodes);
 
 	init_control(widget);
 

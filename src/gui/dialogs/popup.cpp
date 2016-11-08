@@ -67,17 +67,17 @@ void tpopup::hide()
 	}
 }
 
-twindow* tpopup::build_window(CVideo& video) const
+window* tpopup::build_window(CVideo& video) const
 {
 	return build(video, window_id());
 }
 
-void tpopup::post_build(twindow& /*window*/)
+void tpopup::post_build(window& /*window*/)
 {
 	/* DO NOTHING */
 }
 
-void tpopup::pre_show(twindow& /*window*/)
+void tpopup::pre_show(window& /*window*/)
 {
 	/* DO NOTHING */
 }

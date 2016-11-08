@@ -29,9 +29,9 @@ class config;
 namespace gui2
 {
 
-class ttoggle_button;
-class ttoggle_panel;
-class twidget;
+class toggle_button;
+class toggle_panel;
+class widget;
 
 class tmp_create_game : public tdialog, private plugin_executor
 {
@@ -45,10 +45,10 @@ private:
 	virtual const std::string& window_id() const;
 
 	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	void pre_show(window& window);
 
 	/** Inherited from tdialog. */
-	void post_show(twindow& window);
+	void post_show(window& window);
 
 	const config& cfg_;
 
@@ -76,11 +76,11 @@ private:
 	 */
 	std::vector<mp_game_settings::RANDOM_FACTION_MODE> rfm_types_;
 
-	void update_games_list(twindow& window);
-	void display_games_of_type(twindow& window, ng::level::TYPE type, const std::string& level);
+	void update_games_list(window& window);
+	void display_games_of_type(window& window, ng::level::TYPE type, const std::string& level);
 
-	void show_generator_settings(twindow& window);
-	void regenerate_random_map(twindow& window);
+	void show_generator_settings(window& window);
+	void regenerate_random_map(window& window);
 
 	/**
 	 * All fields are also in the normal field vector, but they need to be
@@ -107,30 +107,30 @@ private:
 	tfield_integer* action_bonus_;
 
 	template<typename widget>
-	void on_filter_change(twindow& window, const std::string& id);
+	void on_filter_change(window& window, const std::string& id);
 
-	void on_game_select(twindow& window);
-	void on_tab_select(twindow& window);
-	void on_mod_select(twindow& window);
-	void on_era_select(twindow& window);
+	void on_game_select(window& window);
+	void on_tab_select(window& window);
+	void on_mod_select(window& window);
+	void on_era_select(window& window);
 	void on_mod_toggle(const int index);
-	void on_random_faction_mode_select(twindow& window);
+	void on_random_faction_mode_select(window& window);
 
-	void show_description(twindow& window, const std::string& new_description);
+	void show_description(window& window, const std::string& new_description);
 
-	void update_details(twindow& window);
-	void update_map_settings(twindow& window);
+	void update_details(window& window);
+	void update_map_settings(window& window);
 
 	/**
 	 * Dialog exit hook to bring up the difficulty dialog when starting a campaign.
 	 * This only fires when the retval is OK (ie, creating a game), meaning it does not fire
 	 * when loading a saved game.
 	 */
-	bool dialog_exit_hook(twindow&);
+	bool dialog_exit_hook(window&);
 
 	int convert_to_game_filtered_index(const int initial_index);
 
-	void load_game_callback(twindow& window);
+	void load_game_callback(window& window);
 
 	enum tab { TAB_GENERAL, TAB_OPTIONS, TAB_SETTINGS };
 };

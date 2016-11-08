@@ -205,7 +205,7 @@ bool tmp_join_game::fetch_game_config(CVideo& video)
 		gui2::tfaction_select dlg(flg, color, side_num);
 		dlg.show(video);
 
-		if(dlg.get_retval() != gui2::twindow::OK) {
+		if(dlg.get_retval() != gui2::window::OK) {
 			return false;
 		}
 
@@ -249,15 +249,15 @@ static std::string generate_user_description(const config& side)
 	}
 }
 
-void tmp_join_game::pre_show(twindow& window)
+void tmp_join_game::pre_show(window& window)
 {
 	window.set_enter_disabled(true);
 
 	//
 	// Set title
 	//
-	tlabel& title = find_widget<tlabel>(&window, "title", false);
-	title.set_label((formatter() << title.label() << " " << font::unicode_em_dash << " " << get_scenario()["name"].t_str()).str());
+	label& title = find_widget<label>(&window, "title", false);
+	title.set_label((formatter() << title.get_label() << " " << font::unicode_em_dash << " " << get_scenario()["name"].t_str()).str());
 
 	//
 	// Set up sides list
@@ -267,7 +267,7 @@ void tmp_join_game::pre_show(twindow& window)
 	//
 	// Initialize chatbox and game rooms
 	//
-	tchatbox& chat = find_widget<tchatbox>(&window, "chat", false);
+	chatbox& chat = find_widget<chatbox>(&window, "chat", false);
 
 	chat.set_lobby_info(lobby_info_);
 	chat.set_wesnothd_connection(wesnothd_connection_);
@@ -290,21 +290,21 @@ void tmp_join_game::pre_show(twindow& window)
 	//
 	plugins_context_.reset(new plugins_context("Multiplayer Join Game"));
 
-	plugins_context_->set_callback("launch", [&window](const config&) { window.set_retval(twindow::OK); }, false);
-	plugins_context_->set_callback("quit",   [&window](const config&) { window.set_retval(twindow::CANCEL); }, false);
+	plugins_context_->set_callback("launch", [&window](const config&) { window.set_retval(window::OK); }, false);
+	plugins_context_->set_callback("quit",   [&window](const config&) { window.set_retval(window::CANCEL); }, false);
 	plugins_context_->set_callback("chat",   [&chat](const config& cfg) { chat.send_chat_message(cfg["message"], false); }, true);
 
 	// TODO: the old mp wait dialog didn't have an OK button. Evaluate if we want to add one. Hiding it for now
-	find_widget<tbutton>(&window, "ok", false).set_visible(twidget::tvisible::hidden);
+	find_widget<button>(&window, "ok", false).set_visible(widget::tvisible::hidden);
 }
 
-void tmp_join_game::generate_side_list(twindow& window)
+void tmp_join_game::generate_side_list(window& window)
 {
 	if(stop_updates_) {
 		return;
 	}
 
-	ttree_view& tree = find_widget<ttree_view>(&window, "side_list", false);
+	tree_view& tree = find_widget<tree_view>(&window, "side_list", false);
 
 	window.keyboard_capture(&tree);
 
@@ -325,7 +325,7 @@ void tmp_join_game::generate_side_list(twindow& window)
 			item["label"] = (formatter() << _("Team:") << " " << side["user_team_name"]).str();
 			data.emplace("tree_view_node_label", item);
 
-			ttree_view_node& team_node = tree.add_node("team_header", data);
+			tree_view_node& team_node = tree.add_node("team_header", data);
 			team_node.add_sibling("side_spacer", empty_map);
 
 			team_tree_map_[side["team_name"].str()] = &team_node;
@@ -401,20 +401,20 @@ void tmp_join_game::generate_side_list(twindow& window)
 			data.emplace("side_income", item);
 		}
 
-		ttree_view_node& node = team_tree_map_[side["team_name"].str()]->add_child("side_panel", data);
+		tree_view_node& node = team_tree_map_[side["team_name"].str()]->add_child("side_panel", data);
 
-		tgrid& row_grid = node.get_grid();
+		grid& row_grid = node.get_grid();
 
 		if(income_amt == 0) {
-			find_widget<timage>(&row_grid, "income_icon", false).set_visible(twidget::tvisible::invisible);
-			find_widget<tlabel>(&row_grid, "side_income", false).set_visible(twidget::tvisible::invisible);
+			find_widget<image>(&row_grid, "income_icon", false).set_visible(widget::tvisible::invisible);
+			find_widget<label>(&row_grid, "side_income", false).set_visible(widget::tvisible::invisible);
 		}
 	}
 }
 
-void tmp_join_game::update_player_list(twindow& window)
+void tmp_join_game::update_player_list(window& window)
 {
-	tlistbox& player_list = find_widget<tlistbox>(&window, "player_list", false);
+	listbox& player_list = find_widget<listbox>(&window, "player_list", false);
 
 	player_list.clear();
 
@@ -429,7 +429,7 @@ void tmp_join_game::update_player_list(twindow& window)
 	}
 }
 
-void tmp_join_game::network_handler(twindow& window)
+void tmp_join_game::network_handler(window& window)
 {
 	config data;
 	if(!wesnothd_connection_.receive_data(data)) {
@@ -437,18 +437,18 @@ void tmp_join_game::network_handler(twindow& window)
 	}
 
 	// Update chat
-	find_widget<tchatbox>(&window, "chat", false).process_network_data(data);
+	find_widget<chatbox>(&window, "chat", false).process_network_data(data);
 
 	if(!data["message"].empty()) {
 		gui2::show_transient_message(window.video(), _("Response") , data["message"]);
 	}
 
 	if(data["failed"].to_bool()) {
-		window.set_retval(twindow::CANCEL);
+		window.set_retval(window::CANCEL);
 	} else if(data.child("start_game")) {
-		window.set_retval(twindow::OK);
+		window.set_retval(window::OK);
 	} else if(data.child("leave_game")) {
-		window.set_retval(twindow::CANCEL);
+		window.set_retval(window::CANCEL);
 	}
 
 	if(data.child("stop_updates")) {
@@ -484,14 +484,14 @@ config& tmp_join_game::get_scenario()
 	return level_;
 }
 
-void tmp_join_game::post_show(twindow& window)
+void tmp_join_game::post_show(window& window)
 {
 	if(update_timer_ != 0) {
 		remove_timer(update_timer_);
 		update_timer_ = 0;
 	}
 
-	if(window.get_retval() == twindow::OK) {
+	if(window.get_retval() == window::OK) {
 		if(const config& stats = level_.child("statistics")) {
 			statistics::fresh_stats();
 			statistics::read_stats(stats);

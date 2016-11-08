@@ -22,10 +22,10 @@
 namespace gui2
 {
 
-class tcontrol;
-class tpane;
-class tprogress_bar;
-class tinteger_selector_;
+class control;
+class pane;
+class progress_bar;
+class integer_selector;
 
 /** Clock to test the draw events. */
 class tdebug_clock : public tpopup
@@ -49,30 +49,30 @@ public:
 
 private:
 	/** Progress bar for displaying the hours as a percentage. */
-	tprogress_bar* hour_percentage_;
+	progress_bar* hour_percentage_;
 
 	/** Progress bar for displaying the minutes as a percentage. */
-	tprogress_bar* minute_percentage_;
+	progress_bar* minute_percentage_;
 
 	/** Progress bar for displaying the seconds as a percentage. */
-	tprogress_bar* second_percentage_;
+	progress_bar* second_percentage_;
 
 	/** An integer selector to display the total seconds. */
-	tinteger_selector_* hour_;
+	integer_selector* hour_;
 
 	/** An integer selector to display the total seconds this hour. */
-	tinteger_selector_* minute_;
+	integer_selector* minute_;
 
 	/** An integer selector to display the seconds this minute. */
-	tinteger_selector_* second_;
+	integer_selector* second_;
 
-	tpane* pane_;
+	pane* pane_;
 
 	/** A widget that can display the time. */
-	tcontrol* clock_;
+	control* clock_;
 
 	/** The window being shown. */
-	twindow* window_;
+	window* window_;
 
 	/** The signal patched in the drawing routine. */
 	event::signal_function signal_;
@@ -128,7 +128,7 @@ private:
 	virtual const std::string& window_id() const;
 
 	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	void pre_show(window& window);
 
 	/** Inherited from tdialog. */
 	void post_show(CVideo& video);

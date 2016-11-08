@@ -35,9 +35,9 @@ namespace implementation
 struct builder_pane;
 } // namespace implementation
 
-class tgrid;
+class grid;
 
-class tpane : public twidget
+class pane : public widget
 {
 	friend struct tpane_implementation;
 
@@ -48,7 +48,7 @@ public:
 		unsigned id;
 		std::map<std::string, std::string> tags;
 
-		tgrid* grid;
+		grid* grid;
 	};
 
 	typedef std::function<bool(const titem&, const titem&)> tcompare_functor;
@@ -56,13 +56,13 @@ public:
 	typedef std::function<bool(const titem&)> tfilter_functor;
 
 	/** @deprecated Use the second overload. */
-	explicit tpane(const builder_grid_ptr item_builder);
+	explicit pane(const builder_grid_ptr item_builder);
 
 private:
-	explicit tpane(const implementation::builder_pane& builder);
+	explicit pane(const implementation::builder_pane& builder);
 
 public:
-	static tpane* build(const implementation::builder_pane& builder);
+	static pane* build(const implementation::builder_pane& builder);
 
 	/**
 	 * Creates a new item.
@@ -70,31 +70,31 @@ public:
 	unsigned create_item(const std::map<std::string, string_map>& item_data,
 						 const std::map<std::string, std::string>& tags);
 
-	/** See @ref twidget::place. */
+	/** See @ref widget::place. */
 	virtual void place(const point& origin, const point& size) override;
 
-	/** See @ref twidget::layout_initialise. */
+	/** See @ref widget::layout_initialise. */
 	virtual void layout_initialise(const bool full_initialisation) override;
 
-	/** See @ref twidget::impl_draw_children. */
+	/** See @ref widget::impl_draw_children. */
 	virtual void impl_draw_children(surface& frame_buffer,
 									int x_offset,
 									int y_offset) override;
 
-	/** See @ref twidget::child_populate_dirty_list. */
+	/** See @ref widget::child_populate_dirty_list. */
 	virtual void
-	child_populate_dirty_list(twindow& caller,
-							  const std::vector<twidget*>& call_stack) override;
+	child_populate_dirty_list(window& caller,
+							  const std::vector<widget*>& call_stack) override;
 
-	/** See @ref twidget::request_reduce_width. */
+	/** See @ref widget::request_reduce_width. */
 	virtual void request_reduce_width(const unsigned maximum_width) override;
 
-	/** See @ref twidget::find_at. */
-	virtual twidget* find_at(const point& coordinate,
+	/** See @ref widget::find_at. */
+	virtual widget* find_at(const point& coordinate,
 							 const bool must_be_active) override;
 
-	/** See @ref twidget::find_at. */
-	virtual const twidget* find_at(const point& coordinate,
+	/** See @ref widget::find_at. */
+	virtual const widget* find_at(const point& coordinate,
 								   const bool must_be_active) const override;
 
 	/**
@@ -116,14 +116,14 @@ public:
 	void filter(const tfilter_functor& filter_functor);
 
 private:
-	/** See @ref twidget::calculate_best_size. */
+	/** See @ref widget::calculate_best_size. */
 	virtual point calculate_best_size() const override;
 
 public:
-	/** See @ref twidget::disable_click_dismiss. */
+	/** See @ref widget::disable_click_dismiss. */
 	bool disable_click_dismiss() const override;
 
-	/** See @ref twidget::create_walker. */
+	/** See @ref widget::create_walker. */
 	virtual iterator::twalker_* create_walker() override;
 
 	/**
@@ -136,7 +136,7 @@ public:
 	 * @returns                   The wanted grid.
 	 * @retval nullptr               The id isn't associated with an item.
 	 */
-	tgrid* grid(const unsigned id);
+	grid* get_grid(const unsigned id);
 
 	/**
 	 * Returns a grid in the pane.
@@ -148,7 +148,7 @@ public:
 	 * @returns                   The wanted grid.
 	 * @retval nullptr               The id isn't associated with an item.
 	 */
-	const tgrid* grid(const unsigned id) const;
+	const grid* get_grid(const unsigned id) const;
 
 private:
 	/** The items in the pane. */
@@ -205,9 +205,9 @@ struct builder_pane : public builder_widget
 {
 	explicit builder_pane(const config& cfg);
 
-	twidget* build() const;
+	widget* build() const;
 
-	twidget* build(const replacements_map& replacements) const;
+	widget* build(const replacements_map& replacements) const;
 
 	placer_base::tgrow_direction grow_direction;
 

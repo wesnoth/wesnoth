@@ -47,7 +47,7 @@ public:
 
 private:
 	/** Called when another campaign is selected. */
-	void campaign_selected(twindow& window);
+	void campaign_selected(window& window);
 
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
@@ -55,13 +55,13 @@ private:
 	void show_settings(CVideo& video);
 
 	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	void pre_show(window& window);
 
 	/** Inherited from tdialog. */
-	void post_show(twindow& window);
+	void post_show(window& window);
 
 
-	void mod_toggled(int id, twidget &);
+	void mod_toggled(int id, widget &);
 
 	ng::create_engine& engine_;
 

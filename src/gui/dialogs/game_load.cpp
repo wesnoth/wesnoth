@@ -100,16 +100,16 @@ tgame_load::tgame_load(const config& cache_config, savegame::load_game_metadata&
 {
 }
 
-void tgame_load::pre_show(twindow& window)
+void tgame_load::pre_show(window& window)
 {
-	find_widget<tminimap>(&window, "minimap", false).set_config(&cache_config_);
+	find_widget<minimap>(&window, "minimap", false).set_config(&cache_config_);
 
-	ttext_box* filter = find_widget<ttext_box>(&window, "txtFilter", false, true);
+	text_box* filter = find_widget<text_box>(&window, "txtFilter", false, true);
 
 	filter->set_text_changed_callback(
 			std::bind(&tgame_load::filter_text_changed, this, _1, _2));
 
-	tlistbox& list = find_widget<tlistbox>(&window, "savegame_list", false);
+	listbox& list = find_widget<listbox>(&window, "savegame_list", false);
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	connect_signal_notify_modified(list,
@@ -143,17 +143,17 @@ void tgame_load::pre_show(twindow& window)
 	list.register_sorting_option(1, [this](const int i) { return games_[i].modified(); });
 
 	connect_signal_mouse_left_click(
-			find_widget<tbutton>(&window, "delete", false),
+			find_widget<button>(&window, "delete", false),
 			std::bind(&tgame_load::delete_button_callback,
 					this, std::ref(window)));
 
 	display_savegame(window);
 }
 
-void tgame_load::display_savegame(twindow& window)
+void tgame_load::display_savegame(window& window)
 {
 	const int selected_row =
-		find_widget<tlistbox>(&window, "savegame_list", false).get_selected_row();
+		find_widget<listbox>(&window, "savegame_list", false).get_selected_row();
 
 	if(selected_row == -1) {
 		return;
@@ -163,13 +163,13 @@ void tgame_load::display_savegame(twindow& window)
 	filename_ = game.name();
 	summary_  = game.summary();
 
-	find_widget<tminimap>(&window, "minimap", false)
+	find_widget<minimap>(&window, "minimap", false)
 			.set_map_data(summary_["map_data"]);
 
-	find_widget<tlabel>(&window, "lblScenario", false)
+	find_widget<label>(&window, "lblScenario", false)
 			.set_label(summary_["label"]);
 
-	tlistbox& leader_list = find_widget<tlistbox>(&window, "leader_list", false);
+	listbox& leader_list = find_widget<listbox>(&window, "leader_list", false);
 
 	leader_list.clear();
 
@@ -181,7 +181,7 @@ void tgame_load::display_savegame(twindow& window)
 		// If not, we try getting a binary-path independent path. If that still doesn't
 		// work, we fallback on unknown-unit.png.
 		std::string leader_image = leader["leader_image"].str();
-		if(!image::exists(leader_image)) {
+		if(!::image::exists(leader_image)) {
 			leader_image = filesystem::get_independent_image_path(leader_image);
 		}
 
@@ -202,11 +202,11 @@ void tgame_load::display_savegame(twindow& window)
 	str << game.format_time_local() << "\n";
 	evaluate_summary_string(str, summary_);
 
-	find_widget<tlabel>(&window, "lblSummary", false).set_label(str.str());
+	find_widget<label>(&window, "lblSummary", false).set_label(str.str());
 
-	ttoggle_button& replay_toggle            = dynamic_cast<ttoggle_button&>(*show_replay_->widget());
-	ttoggle_button& cancel_orders_toggle     = dynamic_cast<ttoggle_button&>(*cancel_orders_->widget());
-	ttoggle_button& change_difficulty_toggle = dynamic_cast<ttoggle_button&>(*change_difficulty_->widget());
+	toggle_button& replay_toggle            = dynamic_cast<toggle_button&>(*show_replay_->get_widget());
+	toggle_button& cancel_orders_toggle     = dynamic_cast<toggle_button&>(*cancel_orders_->get_widget());
+	toggle_button& change_difficulty_toggle = dynamic_cast<toggle_button&>(*change_difficulty_->get_widget());
 
 	const bool is_replay = savegame::loadgame::is_replay_save(summary_);
 	const bool is_scenario_start = summary_["turn"].empty();
@@ -222,11 +222,11 @@ void tgame_load::display_savegame(twindow& window)
 	change_difficulty_toggle.set_active(!is_replay && is_scenario_start);
 }
 
-void tgame_load::filter_text_changed(ttext_* textbox, const std::string& text)
+void tgame_load::filter_text_changed(text_box_base* textbox, const std::string& text)
 {
-	twindow& window = *textbox->get_window();
+	window& window = *textbox->get_window();
 
-	tlistbox& list = find_widget<tlistbox>(&window, "savegame_list", false);
+	listbox& list = find_widget<listbox>(&window, "savegame_list", false);
 
 	const std::vector<std::string> words = utils::split(text, ' ');
 
@@ -239,20 +239,20 @@ void tgame_load::filter_text_changed(ttext_* textbox, const std::string& text)
 
 	if(!text.empty()) {
 		for(unsigned int i = 0; i < list.get_item_count(); i++) {
-			tgrid* row = list.get_row_grid(i);
+			grid* row = list.get_row_grid(i);
 
-			tgrid::iterator it = row->begin();
-			tlabel& filename_label = find_widget<tlabel>(*it, "filename", false);
+			grid::iterator it = row->begin();
+			label& filename_label = find_widget<label>(*it, "filename", false);
 
 			bool found = false;
 			for(const auto & word : words)
 			{
-				found = std::search(filename_label.label().str().begin(),
-									filename_label.label().str().end(),
+				found = std::search(filename_label.get_label().str().begin(),
+									filename_label.get_label().str().end(),
 									word.begin(),
 									word.end(),
 									chars_equal_insensitive)
-						!= filename_label.label().str().end();
+						!= filename_label.get_label().str().end();
 
 				if(!found) {
 					// one word doesn't match, we don't reach words.end()
@@ -269,7 +269,7 @@ void tgame_load::filter_text_changed(ttext_* textbox, const std::string& text)
 	const bool any_shown = list.any_rows_shown();
 
 	// Disable Load button if no games are available
-	find_widget<tbutton>(&window, "ok", false).set_active(any_shown);
+	find_widget<button>(&window, "ok", false).set_active(any_shown);
 
 	// Diable 'Enter' loading if no games are available
 	window.set_enter_disabled(!any_shown);
@@ -345,9 +345,9 @@ void tgame_load::evaluate_summary_string(std::stringstream& str, const config& c
 	}
 }
 
-void tgame_load::delete_button_callback(twindow& window)
+void tgame_load::delete_button_callback(window& window)
 {
-	tlistbox& list = find_widget<tlistbox>(&window, "savegame_list", false);
+	listbox& list = find_widget<listbox>(&window, "savegame_list", false);
 
 	const size_t index = size_t(list.get_selected_row());
 	if(index < games_.size()) {
@@ -369,7 +369,7 @@ void tgame_load::delete_button_callback(twindow& window)
 
 		// Close the dialog if there are no more saves
 		if(list.get_item_count() == 0) {
-			window.set_retval(twindow::CANCEL);
+			window.set_retval(window::CANCEL);
 		}
 
 		display_savegame(window);

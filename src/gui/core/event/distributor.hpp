@@ -50,7 +50,7 @@
 namespace gui2
 {
 
-class twidget;
+class widget;
 
 namespace event
 {
@@ -60,7 +60,7 @@ namespace event
 class mouse_motion
 {
 public:
-	mouse_motion(twidget& owner, const dispatcher::queue_position queue_position);
+	mouse_motion(widget& owner, const dispatcher::queue_position queue_position);
 
 	~mouse_motion();
 
@@ -71,24 +71,24 @@ public:
 	 *
 	 * @param capture             Set or release the capturing.
 	 */
-	void capture_mouse( // twidget* widget);
+	void capture_mouse( // widget* widget);
 			const bool capture = true);
 
 protected:
 	/** The widget that currently has the mouse focus_. */
-	twidget* mouse_focus_;
+	widget* mouse_focus_;
 
 	/** Did the current widget capture the focus_? */
 	bool mouse_captured_;
 
 	/** The widget that owns us. */
-	twidget& owner_;
+	widget& owner_;
 
 	/** The timer for the hover event. */
 	size_t hover_timer_;
 
 	/** The widget which should get the hover event. */
-	twidget* hover_widget_;
+	widget* hover_widget_;
 
 	/** The anchor point of the hover event. */
 	point hover_position_;
@@ -108,7 +108,7 @@ protected:
 	 * @param widget                 The widget that wants the tooltip.
 	 * @param coordinate             The anchor coordinate.
 	 */
-	void start_hover_timer(twidget* widget, const point& coordinate);
+	void start_hover_timer(widget* widget, const point& coordinate);
 
 	/** Stops the current hover timer. */
 	void stop_hover_timer();
@@ -118,7 +118,7 @@ protected:
 	 *
 	 * @param mouse_over          The widget that should receive the event.
 	 */
-	void mouse_enter(twidget* mouse_over);
+	void mouse_enter(widget* mouse_over);
 
 	/** Called when the mouse leaves the current widget. */
 	void mouse_leave();
@@ -130,7 +130,7 @@ private:
 	 * @param mouse_over          The widget that should receive the event.
 	 * @param coordinate          The current screen coordinate of the mouse.
 	 */
-	void mouse_hover(twidget* mouse_over, const point& coordinate);
+	void mouse_hover(widget* mouse_over, const point& coordinate);
 
 	/** Called when the mouse wants the widget to show its tooltip. */
 	void show_tooltip();
@@ -161,7 +161,7 @@ class mouse_button : public virtual mouse_motion
 {
 public:
 	mouse_button(const std::string& name_,
-				  twidget& owner,
+				  widget& owner,
 				  const dispatcher::queue_position queue_position);
 
 	/**
@@ -177,14 +177,14 @@ protected:
 	Uint32 last_click_stamp_;
 
 	/** The widget the last click was on, used for double clicking. */
-	twidget* last_clicked_widget_;
+	widget* last_clicked_widget_;
 
 	/**
 	 * If the mouse isn't captured we need to verify the up is on the same
 	 * widget as the down so we send a proper click, also needed to send the
 	 * up to the right widget.
 	 */
-	twidget* focus_;
+	widget* focus_;
 
 private:
 	/** used for debug messages. */
@@ -204,7 +204,7 @@ private:
 									  const point& coordinate);
 
 
-	void mouse_button_click(twidget* widget);
+	void mouse_button_click(widget* widget);
 };
 
 /***** ***** ***** ***** distributor ***** ***** ***** ***** *****/
@@ -237,7 +237,7 @@ class distributor : public mouse_button_left,
 					 public mouse_button_right
 {
 public:
-	distributor(twidget& owner, const dispatcher::queue_position queue_position);
+	distributor(widget& owner, const dispatcher::queue_position queue_position);
 
 	~distributor();
 
@@ -254,7 +254,7 @@ public:
 	 * @param widget              The widget which should capture the keyboard.
 	 *                            Sending nullptr releases the capturing.
 	 */
-	void keyboard_capture(twidget* widget);
+	void keyboard_capture(widget* widget);
 
 	/**
 	 * Adds the widget to the keyboard chain.
@@ -263,14 +263,14 @@ public:
 	 *                            should be valid widget, which hasn't been
 	 *                            added to the chain yet.
 	 */
-	void keyboard_add_to_chain(twidget* widget);
+	void keyboard_add_to_chain(widget* widget);
 
 	/**
 	 * Remove the widget from the keyboard chain.
 	 *
 	 * @param widget              The widget to be removed from the chain.
 	 */
-	void keyboard_remove_from_chain(twidget* widget);
+	void keyboard_remove_from_chain(widget* widget);
 
 private:
 	class layer : public video2::draw_layering
@@ -297,13 +297,13 @@ private:
 										*/
 
 	/** The widget of the currently active tooltip. */
-	twidget* tooltip_;
+	widget* tooltip_;
 
 	/** The widget of the currently active help popup. */
-	twidget* help_popup_;
+	widget* help_popup_;
 #endif
 	/** The widget that holds the keyboard focus_. */
-	twidget* keyboard_focus_;
+	widget* keyboard_focus_;
 
 	/**
 	 * Fall back keyboard focus_ items.
@@ -315,7 +315,7 @@ private:
 	 * the window, so it will be the last handler and can dispatch the hotkeys
 	 * registered.
 	 */
-	std::vector<twidget*> keyboard_focus_chain_;
+	std::vector<widget*> keyboard_focus_chain_;
 
 	/**
 	 * Set of functions that handle certain events and sends them to the proper

@@ -21,8 +21,8 @@
 
 namespace gui2
 {
-class tlabel;
-class ttoggle_button;
+class label;
+class toggle_button;
 
 class tadvanced_graphics_options : public tdialog
 {
@@ -56,16 +56,16 @@ private:
 	virtual const std::string& window_id() const;
 
 	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	void pre_show(window& window);
 
 	/** Inherited from tdialog. */
-	void post_show(twindow& window);
+	void post_show(window& window);
 
-	void setup_scale_case(const std::string &, twindow &);
+	void setup_scale_case(const std::string &, window &);
 	void update_scale_case(const std::string &);
 	SCALING_ALGORITHM get_scale_pref(const std::string& pref_id);
 	
-	std::map<std::string,tgroup<SCALING_ALGORITHM> > groups_;
+	std::map<std::string,group<SCALING_ALGORITHM> > groups_;
 };
 
 } // end namespace gui2

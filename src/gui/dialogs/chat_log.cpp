@@ -86,16 +86,16 @@ public:
 	}
 
 	vconfig cfg;
-	tcontrol* msg_label;
+	control* msg_label;
 	const std::vector<chat_msg>& chat_log_history;
 	int page;
 	static const int COUNT_PER_PAGE = 100;
-	tslider* page_number;
-	tcontrol* page_label;
-	tbutton* previous_page;
-	tbutton* next_page;
-	ttext_box* filter;
-	tbutton* copy_button;
+	slider* page_number;
+	control* page_label;
+	button* previous_page;
+	button* next_page;
+	text_box* filter;
+	button* copy_button;
 
 	void clear_chat_msg_list()
 	{
@@ -202,7 +202,7 @@ public:
 		// one might want to continue reading the conversation in order.
 		//
 		// TODO: look into implementing the above suggestion
-		dynamic_cast<tscroll_label*>(msg_label)->scroll_vertical_scrollbar(tscrollbar_::END);
+		dynamic_cast<scroll_label*>(msg_label)->scroll_vertical_scrollbar(scrollbar_base::END);
 	}
 
 	void chat_message_list_to_clipboard(int first, int last)
@@ -379,36 +379,36 @@ public:
 		controller_.filter();
 	}
 
-	void handle_copy_button_clicked(twindow& /*window*/)
+	void handle_copy_button_clicked(window& /*window*/)
 	{
 		controller_.handle_copy_button_clicked();
 	}
 
-	void bind(twindow& window)
+	void bind(window& window)
 	{
 		LOG_CHAT_LOG << "Entering tchat_log::view::bind" << std::endl;
-		model_.msg_label = &find_widget<tcontrol>(&window, "msg", false);
+		model_.msg_label = &find_widget<control>(&window, "msg", false);
 		model_.page_number
-				= &find_widget<tslider>(&window, "page_number", false);
+				= &find_widget<slider>(&window, "page_number", false);
 		connect_signal_notify_modified(
 				*model_.page_number,
 				std::bind(&view::handle_page_number_changed, this));
 
 		model_.previous_page
-				= &find_widget<tbutton>(&window, "previous_page", false);
+				= &find_widget<button>(&window, "previous_page", false);
 		model_.previous_page->connect_click_handler(
 				std::bind(&view::previous_page, this));
 
-		model_.next_page = &find_widget<tbutton>(&window, "next_page", false);
+		model_.next_page = &find_widget<button>(&window, "next_page", false);
 		model_.next_page->connect_click_handler(
 				std::bind(&view::next_page, this));
 
-		model_.filter = &find_widget<ttext_box>(&window, "filter", false);
+		model_.filter = &find_widget<text_box>(&window, "filter", false);
 		model_.filter->set_text_changed_callback(
 				std::bind(&view::filter, this));
 		window.keyboard_capture(model_.filter);
 
-		model_.copy_button = &find_widget<tbutton>(&window, "copy", false);
+		model_.copy_button = &find_widget<button>(&window, "copy", false);
 		connect_signal_mouse_left_click(
 				*model_.copy_button,
 				std::bind(&view::handle_copy_button_clicked,
@@ -419,7 +419,7 @@ public:
 			model_.copy_button->set_tooltip(_("Clipboard support not found, contact your packager"));
 		}
 
-		model_.page_label = &find_widget<tcontrol>(&window, "page_label", false);
+		model_.page_label = &find_widget<control>(&window, "page_label", false);
 
 		LOG_CHAT_LOG << "Exiting tchat_log::view::bind" << std::endl;
 	}
@@ -442,12 +442,12 @@ std::shared_ptr<tchat_log::view> tchat_log::get_view()
 	return view_;
 }
 
-twindow* tchat_log::build_window(CVideo& video)
+window* tchat_log::build_window(CVideo& video)
 {
 	return build(video, window_id());
 }
 
-void tchat_log::pre_show(twindow& window)
+void tchat_log::pre_show(window& window)
 {
 	LOG_CHAT_LOG << "Entering tchat_log::pre_show" << std::endl;
 	view_->bind(window);

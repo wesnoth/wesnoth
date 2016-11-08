@@ -39,7 +39,7 @@
 #include "gui/dialogs/transient_message.hpp"  // for show_transient_message
 #include "gui/dialogs/title_screen.hpp"  // for show_debug_clock_button
 #include "gui/widgets/settings.hpp"     // for new_widgets
-#include "gui/widgets/window.hpp"       // for twindow, etc
+#include "gui/widgets/window.hpp"       // for window, etc
 #include "intro.hpp"
 #include "language.hpp"                 // for language_def, etc
 #include "log.hpp"                      // for LOG_STREAM, logger, general, etc
@@ -914,7 +914,7 @@ bool game_launcher::change_language()
 {
 	gui2::tlanguage_selection dlg;
 	dlg.show(video());
-	if (dlg.get_retval() != gui2::twindow::OK) return false;
+	if (dlg.get_retval() != gui2::window::OK) return false;
 
 	if (!(cmdline_opts_.nogui || cmdline_opts_.headless_unit_test)) {
 		video().set_window_title(game_config::get_default_title_string());

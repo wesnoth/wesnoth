@@ -268,7 +268,7 @@ void menu_handler::recruit(int side_num, const map_location &last_hex)
 
 	dlg.show(gui_->video());
 
-	if(dlg.get_retval() == gui2::twindow::OK) {
+	if(dlg.get_retval() == gui2::window::OK) {
 		do_recruit(sample_units[dlg.get_selected_index()]->id(), side_num, last_hex);
 	}
 }
@@ -364,7 +364,7 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 
 	dlg.show(gui_->video());
 
-	if(dlg.get_retval() != gui2::twindow::OK) {
+	if(dlg.get_retval() != gui2::window::OK) {
 		return;
 	}
 
@@ -522,21 +522,21 @@ bool menu_handler::end_turn(int side_num)
 	          units_alive(side_num, units()) )
 	{
 		const int res = gui2::show_message((*gui_).video(), "", _("You have not started your turn yet. Do you really want to end your turn?"), gui2::tmessage::yes_no_buttons);
-		if(res == gui2::twindow::CANCEL) {
+		if(res == gui2::window::CANCEL) {
 			return false;
 		}
 	}
 	// Ask for confirmation if units still have some movement left.
 	else if ( preferences::yellow_confirm() && partmoved_units(side_num, units(), board(), pc_.get_whiteboard()) ) {
 		const int res = gui2::show_message((*gui_).video(), "", _("Some units have movement left. Do you really want to end your turn?"), gui2::tmessage::yes_no_buttons);
-		if(res == gui2::twindow::CANCEL) {
+		if(res == gui2::window::CANCEL) {
 			return false;
 		}
 	}
 	// Ask for confirmation if units still have all movement left.
 	else if ( preferences::green_confirm() && unmoved_units(side_num, units(), board(), pc_.get_whiteboard()) ) {
 		const int res = gui2::show_message((*gui_).video(), "", _("Some units have not moved. Do you really want to end your turn?"), gui2::tmessage::yes_no_buttons);
-		if(res == gui2::twindow::CANCEL) {
+		if(res == gui2::window::CANCEL) {
 			return false;
 		}
 	}
@@ -1502,7 +1502,7 @@ void console_handler::do_clear() {
 void console_handler::do_sunset() {
 	int delay = lexical_cast_default<int>(get_data());
 	menu_handler_.gui_->sunset(delay);
-	gui2::twindow::set_sunset(delay);
+	gui2::window::set_sunset(delay);
 }
 void console_handler::do_foreground() {
 	menu_handler_.gui_->toggle_debug_foreground();
@@ -1728,7 +1728,7 @@ void console_handler::do_unsafe_lua()
 	}
 	if (gui2::show_message(menu_handler_.gui_->video(), _("Unsafe Lua scripts."),
 		_("You are about to open a security breach in Wesnoth. Are you sure you want to continue? If you have downloaded add-ons, do not click 'ok'! They would instantly take over your computer. You have been warned."),
-		gui2::tmessage::ok_cancel_buttons) == gui2::twindow::OK)
+		gui2::tmessage::ok_cancel_buttons) == gui2::window::OK)
 	{
 		print(get_cmd(), _("Unsafe mode enabled!"));
 		menu_handler_.gamestate().lua_kernel_->load_package();
@@ -1829,7 +1829,7 @@ void console_handler::do_discover() {
 
 void console_handler::do_undiscover() {
 	const int res = gui2::show_message((*menu_handler_.gui_).video(), "Undiscover", _("Do you wish to clear all of your discovered units from help?"), gui2::tmessage::yes_no_buttons);
-	if(res != gui2::twindow::CANCEL) {
+	if(res != gui2::window::CANCEL) {
 		preferences::encountered_units().clear();
 	}
 }

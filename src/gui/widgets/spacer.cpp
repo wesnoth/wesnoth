@@ -28,33 +28,33 @@ namespace gui2
 
 REGISTER_WIDGET(spacer)
 
-point tspacer::calculate_best_size() const
+point spacer::calculate_best_size() const
 {
 	return best_size_ != point() ? best_size_
-									  : tcontrol::calculate_best_size();
+									  : control::calculate_best_size();
 }
 
-void tspacer::set_active(const bool /*active*/)
+void spacer::set_active(const bool /*active*/)
 {
 	/* DO NOTHING */
 }
 
-bool tspacer::get_active() const
+bool spacer::get_active() const
 {
 	return true;
 }
 
-unsigned tspacer::get_state() const
+unsigned spacer::get_state() const
 {
 	return 0;
 }
 
-bool tspacer::disable_click_dismiss() const
+bool spacer::disable_click_dismiss() const
 {
 	return false;
 }
 
-void tspacer::impl_draw_background(surface& /*frame_buffer*/
+void spacer::impl_draw_background(surface& /*frame_buffer*/
 								   ,
 								   int /*x_offset*/
 								   ,
@@ -63,7 +63,7 @@ void tspacer::impl_draw_background(surface& /*frame_buffer*/
 	/* DO NOTHING */
 }
 
-const std::string& tspacer::get_control_type() const
+const std::string& spacer::get_control_type() const
 {
 	static const std::string type = "spacer";
 	return type;
@@ -141,9 +141,9 @@ builder_spacer::builder_spacer(const config& cfg)
 {
 }
 
-twidget* builder_spacer::build() const
+widget* builder_spacer::build() const
 {
-	tspacer* widget = new tspacer();
+	spacer* widget = new spacer();
 
 	init_control(widget);
 

@@ -20,7 +20,7 @@
 namespace gui2
 {
 
-class ttoggle_button;
+class toggle_button;
 
 class teditor_resize_map : public tdialog
 {
@@ -43,18 +43,18 @@ public:
 	 * @param [in, out] width     The parameter's usage is:
 	 *                            - Input: The initial width of the map.
 	 *                            - Output: The selected width of the map if
-	 *                              the dialog returns @ref twindow::OK
+	 *                              the dialog returns @ref window::OK
 	 *                              undefined otherwise.
 	 *
 	 * @param [in, out] height    The parameter's usage is:
 	 *                            - Input: The initial height of the map.
 	 *                            - Output: The selected height of the map if
-	 *                              the dialog returns @ref twindow::OK
+	 *                              the dialog returns @ref window::OK
 	 *                              undefined otherwise.
 	 *
 	 * @param [out] expand_direction
 	 *                            The selected expand direction if the dialog
-	 *                            returns  @ref twindow::OK undefined
+	 *                            returns  @ref window::OK undefined
 	 *                            otherwise.
 	 *
 	 * @param [in, out] copy_edge_terrain
@@ -63,7 +63,7 @@ public:
 	 *                              toggle.
 	 *                            - Output: The final value of the copy edge
 	 *                              toggle if the dialog returns @ref
-	 *                              twindow::OK undefined otherwise.
+	 *                              window::OK undefined otherwise.
 	 */
 	teditor_resize_map(int& width,
 					   int& height,
@@ -104,14 +104,14 @@ private:
 	 * Allows both so select a direction and visually show the effect of the
 	 * selection.
 	 */
-	ttoggle_button* direction_buttons_[9];
+	toggle_button* direction_buttons_[9];
 
-	void update_expand_direction(twindow& window);
+	void update_expand_direction(window& window);
 
 	void set_direction_icon(int index, std::string icon);
 
 	/** Inherited from tdialog */
-	void pre_show(twindow& window);
+	void pre_show(window& window);
 
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;

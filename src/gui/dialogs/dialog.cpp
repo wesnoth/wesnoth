@@ -44,7 +44,7 @@ bool tdialog::show(CVideo& video, const unsigned auto_close_time)
 		if (pm && pm->any_running())
 		{
 			plugins_context pc("Dialog");
-			pc.set_callback("skip_dialog", [this](config) { retval_ = twindow::OK; }, false);
+			pc.set_callback("skip_dialog", [this](config) { retval_ = window::OK; }, false);
 			pc.set_callback("quit", [](config) {}, false);
 			pc.play_slice();
 		}
@@ -52,7 +52,7 @@ bool tdialog::show(CVideo& video, const unsigned auto_close_time)
 		return false;
 	}
 
-	std::unique_ptr<twindow> window(build_window(video));
+	std::unique_ptr<window> window(build_window(video));
 	assert(window.get());
 
 	post_build(*window);
@@ -83,14 +83,14 @@ bool tdialog::show(CVideo& video, const unsigned auto_close_time)
 	 */
 	SDL_FlushEvent(DOUBLE_CLICK_EVENT);
 
-	finalize_fields(*window, (retval_ == twindow::OK || always_save_fields_));
+	finalize_fields(*window, (retval_ == window::OK || always_save_fields_));
 
 	post_show(*window);
 
 	// post_show may have updated the windoe retval. Update it here.
 	retval_ = window->get_retval();
 
-	return retval_ == twindow::OK;
+	return retval_ == window::OK;
 }
 
 tfield_bool* tdialog::register_bool(
@@ -98,7 +98,7 @@ tfield_bool* tdialog::register_bool(
 		const bool mandatory,
 		const std::function<bool()> callback_load_value,
 		const std::function<void(bool)> callback_save_value,
-		const std::function<void(twidget&)> callback_change,
+		const std::function<void(widget&)> callback_change,
 		const bool initial_fire)
 {
 	tfield_bool* field = new tfield_bool(id,
@@ -116,7 +116,7 @@ tfield_bool*
 tdialog::register_bool(const std::string& id,
 					   const bool mandatory,
 					   bool& linked_variable,
-					   const std::function<void(twidget&)> callback_change,
+					   const std::function<void(widget&)> callback_change,
 					   const bool initial_fire)
 {
 	tfield_bool* field
@@ -193,27 +193,27 @@ tfield_label* tdialog::register_label(const std::string& id,
 	return field;
 }
 
-twindow* tdialog::build_window(CVideo& video) const
+window* tdialog::build_window(CVideo& video) const
 {
 	return build(video, window_id());
 }
 
-void tdialog::post_build(twindow& /*window*/)
+void tdialog::post_build(window& /*window*/)
 {
 	/* DO NOTHING */
 }
 
-void tdialog::pre_show(twindow& /*window*/)
+void tdialog::pre_show(window& /*window*/)
 {
 	/* DO NOTHING */
 }
 
-void tdialog::post_show(twindow& /*window*/)
+void tdialog::post_show(window& /*window*/)
 {
 	/* DO NOTHING */
 }
 
-void tdialog::init_fields(twindow& window)
+void tdialog::init_fields(window& window)
 {
 	for(auto field : fields_)
 	{
@@ -222,13 +222,13 @@ void tdialog::init_fields(twindow& window)
 	}
 
 	if(!focus_.empty()) {
-		if(twidget* widget = window.find(focus_, false)) {
+		if(widget* widget = window.find(focus_, false)) {
 			window.keyboard_capture(widget);
 		}
 	}
 }
 
-void tdialog::finalize_fields(twindow& window, const bool save_fields)
+void tdialog::finalize_fields(window& window, const bool save_fields)
 {
 	for(auto field : fields_)
 	{

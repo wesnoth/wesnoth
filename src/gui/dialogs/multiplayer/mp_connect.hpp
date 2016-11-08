@@ -33,7 +33,7 @@ private:
 	virtual const std::string& window_id() const;
 
 	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	void pre_show(window& window);
 
 	/** The host name of the selected servef. */
 	tfield_text* host_name_;

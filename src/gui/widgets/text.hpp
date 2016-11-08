@@ -40,21 +40,21 @@ namespace gui2
  * Common signal handlers:
  * - connect_signal_pre_key_press
  */
-class ttext_ : public tcontrol
+class text_box_base : public control
 {
 
 public:
-	ttext_();
+	text_box_base();
 
-	~ttext_();
+	~text_box_base();
 
-	/** See @ref tcontrol::set_active. */
+	/** See @ref control::set_active. */
 	virtual void set_active(const bool active) override;
 
-	/** See @ref tcontrol::get_active. */
+	/** See @ref control::get_active. */
 	virtual bool get_active() const override;
 
-	/** See @ref tcontrol::get_state. */
+	/** See @ref control::get_state. */
 	virtual unsigned get_state() const override;
 
 	/***** ***** ***** ***** expose some functions ***** ***** ***** *****/
@@ -69,7 +69,7 @@ public:
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	/**
-	 * The set_value is virtual for the @ref tpassword_box class.
+	 * The set_value is virtual for the @ref password_box class.
 	 *
 	 * That class overrides the set_value function to replace it with asterisk.
 	 * There might be more generic way to do it when more classes are needed.
@@ -87,7 +87,7 @@ public:
 
 	/** Set the text_changed callback. */
 	void set_text_changed_callback(
-			std::function<void(ttext_* textbox, const std::string text)> cb)
+			std::function<void(text_box_base* textbox, const std::string text)> cb)
 	{
 		text_changed_callback_ = cb;
 	}
@@ -470,7 +470,7 @@ private:
 	 * - The widget invoking the callback
 	 * - The new text of the textbox.
 	 */
-	std::function<void(ttext_* textbox, const std::string text)>
+	std::function<void(text_box_base* textbox, const std::string text)>
 	text_changed_callback_;
 
 	/***** ***** ***** signal handlers ***** ****** *****/

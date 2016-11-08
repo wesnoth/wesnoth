@@ -495,7 +495,7 @@ void load_settings()
 	LOG_GUI_G << "Setting: init gui.\n";
 
 	// Init.
-	twindow::update_screen_size();
+	window::update_screen_size();
 
 	// Read file.
 	config cfg;
@@ -659,7 +659,7 @@ resolution_definition_ptr get_control(const std::string& control_type,
 std::vector<builder_window::window_resolution>::const_iterator
 get_window_builder(const std::string& type)
 {
-	twindow::update_screen_size();
+	window::update_screen_size();
 
 	std::map<std::string, builder_window>::const_iterator window
 			= current_gui->second.window_types.find(type);

@@ -32,8 +32,8 @@
 namespace gui2
 {
 
-ttext_::ttext_()
-	: tcontrol(COUNT)
+text_box_base::text_box_base()
+	: control(COUNT)
 	, state_(ENABLED)
 	, text_()
 	, selection_start_(0)
@@ -46,44 +46,44 @@ ttext_::ttext_()
 #ifdef __unix__
 	// pastes on UNIX systems.
 	connect_signal<event::MIDDLE_BUTTON_CLICK>(std::bind(
-			&ttext_::signal_handler_middle_button_click, this, _2, _3));
+			&text_box_base::signal_handler_middle_button_click, this, _2, _3));
 
 #endif
 
 	connect_signal<event::SDL_KEY_DOWN>(std::bind(
-			&ttext_::signal_handler_sdl_key_down, this, _2, _3, _5, _6, _7));
+			&text_box_base::signal_handler_sdl_key_down, this, _2, _3, _5, _6, _7));
 
 	connect_signal<event::RECEIVE_KEYBOARD_FOCUS>(std::bind(
-			&ttext_::signal_handler_receive_keyboard_focus, this, _2));
+			&text_box_base::signal_handler_receive_keyboard_focus, this, _2));
 	connect_signal<event::LOSE_KEYBOARD_FOCUS>(
-			std::bind(&ttext_::signal_handler_lose_keyboard_focus, this, _2));
+			std::bind(&text_box_base::signal_handler_lose_keyboard_focus, this, _2));
 
 	toggle_cursor_timer(true);
 }
 
-ttext_::~ttext_()
+text_box_base::~text_box_base()
 {
 	toggle_cursor_timer(false);
 }
 
-void ttext_::set_active(const bool active)
+void text_box_base::set_active(const bool active)
 {
 	if(get_active() != active) {
 		set_state(active ? ENABLED : DISABLED);
 	}
 }
 
-bool ttext_::get_active() const
+bool text_box_base::get_active() const
 {
 	return state_ != DISABLED;
 }
 
-unsigned ttext_::get_state() const
+unsigned text_box_base::get_state() const
 {
 	return state_;
 }
 
-void ttext_::set_maximum_length(const size_t maximum_length)
+void text_box_base::set_maximum_length(const size_t maximum_length)
 {
 	if(maximum_length == 0) {
 		return;
@@ -105,7 +105,7 @@ void ttext_::set_maximum_length(const size_t maximum_length)
 	}
 }
 
-void ttext_::set_value(const std::string& text)
+void text_box_base::set_value(const std::string& text)
 {
 	if(text != text_.text()) {
 		text_.set_text(text, false);
@@ -118,7 +118,7 @@ void ttext_::set_value(const std::string& text)
 	}
 }
 
-void ttext_::set_cursor(const size_t offset, const bool select)
+void text_box_base::set_cursor(const size_t offset, const bool select)
 {
 	reset_cursor_state();
 
@@ -147,7 +147,7 @@ void ttext_::set_cursor(const size_t offset, const bool select)
 	}
 }
 
-void ttext_::insert_char(const utf8::string& unicode)
+void text_box_base::insert_char(const utf8::string& unicode)
 {
 	delete_selection();
 
@@ -160,7 +160,7 @@ void ttext_::insert_char(const utf8::string& unicode)
 	}
 }
 
-void ttext_::copy_selection(const bool mouse)
+void text_box_base::copy_selection(const bool mouse)
 {
 	if(selection_length_ == 0) {
 		return;
@@ -180,7 +180,7 @@ void ttext_::copy_selection(const bool mouse)
 	desktop::clipboard::copy_to_clipboard(txt.substr(start, end - start), mouse);
 }
 
-void ttext_::paste_selection(const bool mouse)
+void text_box_base::paste_selection(const bool mouse)
 {
 	const std::string& text = desktop::clipboard::copy_from_clipboard(mouse);
 	if(text.empty()) {
@@ -196,7 +196,7 @@ void ttext_::paste_selection(const bool mouse)
 	fire(event::NOTIFY_MODIFIED, *this, nullptr);
 }
 
-void ttext_::set_selection_start(const size_t selection_start)
+void text_box_base::set_selection_start(const size_t selection_start)
 {
 	if(selection_start != selection_start_) {
 		selection_start_ = selection_start;
@@ -204,7 +204,7 @@ void ttext_::set_selection_start(const size_t selection_start)
 	}
 }
 
-void ttext_::set_selection_length(const int selection_length)
+void text_box_base::set_selection_length(const int selection_length)
 {
 	if(selection_length != selection_length_) {
 		selection_length_ = selection_length;
@@ -212,7 +212,7 @@ void ttext_::set_selection_length(const int selection_length)
 	}
 }
 
-void ttext_::set_selection(size_t start, int length)
+void text_box_base::set_selection(size_t start, int length)
 {
 	const size_t text_size = text_.get_length();
 
@@ -244,7 +244,7 @@ void ttext_::set_selection(size_t start, int length)
 	update_canvas();
 }
 
-void ttext_::set_state(const state_t state)
+void text_box_base::set_state(const state_t state)
 {
 	if(state != state_) {
 		state_ = state;
@@ -252,7 +252,7 @@ void ttext_::set_state(const state_t state)
 	}
 }
 
-void ttext_::toggle_cursor_timer(bool enable)
+void text_box_base::toggle_cursor_timer(bool enable)
 {
 	if(!cursor_blink_rate_ms_) {
 		return;
@@ -263,11 +263,11 @@ void ttext_::toggle_cursor_timer(bool enable)
 	}
 
 	cursor_timer_ = enable
-			? add_timer(cursor_blink_rate_ms_, std::bind(&ttext_::cursor_timer_callback, this), true)
+			? add_timer(cursor_blink_rate_ms_, std::bind(&text_box_base::cursor_timer_callback, this), true)
 			: 0;
 }
 
-void ttext_::cursor_timer_callback()
+void text_box_base::cursor_timer_callback()
 {
 	switch(state_) {
 		case DISABLED:
@@ -287,7 +287,7 @@ void ttext_::cursor_timer_callback()
 	set_is_dirty(true);
 }
 
-void ttext_::reset_cursor_state()
+void text_box_base::reset_cursor_state()
 {
 	if(!cursor_blink_rate_ms_) {
 		return;
@@ -303,7 +303,7 @@ void ttext_::reset_cursor_state()
 	toggle_cursor_timer(true);
 }
 
-void ttext_::handle_key_left_arrow(SDL_Keymod modifier, bool& handled)
+void text_box_base::handle_key_left_arrow(SDL_Keymod modifier, bool& handled)
 {
 	/** @todo implement the ctrl key. */
 	DBG_GUI_E << LOG_SCOPE_HEADER << '\n';
@@ -315,7 +315,7 @@ void ttext_::handle_key_left_arrow(SDL_Keymod modifier, bool& handled)
 	}
 }
 
-void ttext_::handle_key_right_arrow(SDL_Keymod modifier, bool& handled)
+void text_box_base::handle_key_right_arrow(SDL_Keymod modifier, bool& handled)
 {
 	/** @todo implement the ctrl key. */
 	DBG_GUI_E << LOG_SCOPE_HEADER << '\n';
@@ -327,7 +327,7 @@ void ttext_::handle_key_right_arrow(SDL_Keymod modifier, bool& handled)
 	}
 }
 
-void ttext_::handle_key_home(SDL_Keymod modifier, bool& handled)
+void text_box_base::handle_key_home(SDL_Keymod modifier, bool& handled)
 {
 	DBG_GUI_E << LOG_SCOPE_HEADER << '\n';
 
@@ -339,7 +339,7 @@ void ttext_::handle_key_home(SDL_Keymod modifier, bool& handled)
 	}
 }
 
-void ttext_::handle_key_end(SDL_Keymod modifier, bool& handled)
+void text_box_base::handle_key_end(SDL_Keymod modifier, bool& handled)
 {
 	DBG_GUI_E << LOG_SCOPE_HEADER << '\n';
 
@@ -351,7 +351,7 @@ void ttext_::handle_key_end(SDL_Keymod modifier, bool& handled)
 	}
 }
 
-void ttext_::handle_key_backspace(SDL_Keymod /*modifier*/, bool& handled)
+void text_box_base::handle_key_backspace(SDL_Keymod /*modifier*/, bool& handled)
 {
 	DBG_GUI_E << LOG_SCOPE_HEADER << '\n';
 
@@ -364,7 +364,7 @@ void ttext_::handle_key_backspace(SDL_Keymod /*modifier*/, bool& handled)
 	fire(event::NOTIFY_MODIFIED, *this, nullptr);
 }
 
-void ttext_::handle_key_delete(SDL_Keymod /*modifier*/, bool& handled)
+void text_box_base::handle_key_delete(SDL_Keymod /*modifier*/, bool& handled)
 {
 	DBG_GUI_E << LOG_SCOPE_HEADER << '\n';
 
@@ -377,7 +377,7 @@ void ttext_::handle_key_delete(SDL_Keymod /*modifier*/, bool& handled)
 	fire(event::NOTIFY_MODIFIED, *this, nullptr);
 }
 
-void ttext_::handle_key_default(bool& handled,
+void text_box_base::handle_key_default(bool& handled,
 								SDL_Keycode /*key*/,
 								SDL_Keymod /*modifier*/,
 								const utf8::string& unicode)
@@ -391,7 +391,7 @@ void ttext_::handle_key_default(bool& handled,
 	}
 }
 
-void ttext_::signal_handler_middle_button_click(const event::event_t event,
+void text_box_base::signal_handler_middle_button_click(const event::event_t event,
 												bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -401,7 +401,7 @@ void ttext_::signal_handler_middle_button_click(const event::event_t event,
 	handled = true;
 }
 
-void ttext_::signal_handler_sdl_key_down(const event::event_t event,
+void text_box_base::signal_handler_sdl_key_down(const event::event_t event,
 										 bool& handled,
 										 const SDL_Keycode key,
 										 SDL_Keymod modifier,
@@ -531,14 +531,14 @@ void ttext_::signal_handler_sdl_key_down(const event::event_t event,
 	}
 }
 
-void ttext_::signal_handler_receive_keyboard_focus(const event::event_t event)
+void text_box_base::signal_handler_receive_keyboard_focus(const event::event_t event)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
 	set_state(FOCUSED);
 }
 
-void ttext_::signal_handler_lose_keyboard_focus(const event::event_t event)
+void text_box_base::signal_handler_lose_keyboard_focus(const event::event_t event)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 

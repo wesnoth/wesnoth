@@ -52,10 +52,10 @@ tfolder_create::tfolder_create(std::string& folder_name)
 	register_text("name", true, folder_name, true);
 }
 
-void tfolder_create::pre_show(twindow& window)
+void tfolder_create::pre_show(window& window)
 {
 	if(bookmark_mode_) {
-		find_widget<tcontrol>(&window, "title", false).set_label(_("New Bookmark"));
+		find_widget<control>(&window, "title", false).set_label(_("New Bookmark"));
 	}
 }
 

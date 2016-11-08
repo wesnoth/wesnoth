@@ -34,13 +34,13 @@ struct builder_multi_page;
 class generator_base;
 
 /** The multi page class. */
-class tmulti_page : public tcontainer_
+class multi_page : public container_base
 {
 	friend struct implementation::builder_multi_page;
-	friend class tdebug_layout_graph;
+	friend class debug_layout_graph;
 
 public:
-	tmulti_page();
+	multi_page();
 
 	/***** ***** ***** ***** Page handling. ***** ***** ****** *****/
 
@@ -112,7 +112,7 @@ public:
 	 *
 	 * @returns                   The grid of the wanted page.
 	 */
-	const tgrid& page_grid(const unsigned page) const;
+	const grid& page_grid(const unsigned page) const;
 
 	/**
 	 * Returns the grid for the page.
@@ -122,14 +122,14 @@ public:
 	 *
 	 * @returns                   The grid of the wanted page.
 	 */
-	tgrid& page_grid(const unsigned page);
+	grid& page_grid(const unsigned page);
 
 	/***** ***** ***** inherited ***** ****** *****/
 
-	/** See @ref tcontrol::get_active. */
+	/** See @ref control::get_active. */
 	virtual bool get_active() const override;
 
-	/** See @ref tcontrol::get_state. */
+	/** See @ref control::get_state. */
 	virtual unsigned get_state() const override;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
@@ -151,7 +151,7 @@ private:
 	 * Contains a pointer to the generator.
 	 *
 	 * The pointer is not owned by this class, it's stored in the content_grid_
-	 * of the tscrollbar_container super class and freed when it's grid is
+	 * of the scrollbar_container super class and freed when it's grid is
 	 * freed.
 	 */
 	generator_base* generator_;
@@ -159,15 +159,15 @@ private:
 	/** Contains the builder for the new items. */
 	builder_grid_const_ptr page_builder_;
 
-	/** See @ref twidget::impl_draw_background. */
+	/** See @ref widget::impl_draw_background. */
 	virtual void impl_draw_background(surface& frame_buffer,
 									  int x_offset,
 									  int y_offset) override;
 
-	/** See @ref tcontrol::get_control_type. */
+	/** See @ref control::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 
-	/** See @ref tcontainer_::set_self_active. */
+	/** See @ref container_base::set_self_active. */
 	virtual void set_self_active(const bool active) override;
 };
 
@@ -196,7 +196,7 @@ struct builder_multi_page : public builder_control
 
 	using builder_control::build;
 
-	twidget* build() const;
+	widget* build() const;
 
 	builder_grid_ptr builder;
 

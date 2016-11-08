@@ -59,7 +59,7 @@ void twml_message_::set_option_list(const std::vector<twml_message_option>& opti
  * ugly. There needs to be a clean interface to set whether a widget has a
  * markup and what kind of markup. These fixes will be post 1.6.
  */
-void twml_message_::pre_show(twindow& window)
+void twml_message_::pre_show(window& window)
 {
 	set_restore(true);
 
@@ -67,12 +67,12 @@ void twml_message_::pre_show(twindow& window)
 	window.get_canvas(1).set_variable("portrait_mirror", variant(mirror_));
 
 	// Set the markup
-	tlabel& title = find_widget<tlabel>(&window, "title", false);
+	label& title = find_widget<label>(&window, "title", false);
 	title.set_label(title_);
 	title.set_use_markup(true);
 	title.set_can_wrap(true);
 
-	tcontrol& message = find_widget<tcontrol>(&window, "message", false);
+	control& message = find_widget<control>(&window, "message", false);
 	message.set_label(message_);
 	message.set_use_markup(true);
 	// The message label might not always be a scroll_label but the capturing
@@ -80,8 +80,8 @@ void twml_message_::pre_show(twindow& window)
 	window.keyboard_capture(&message);
 
 	// Find the input box related fields.
-	tlabel& caption = find_widget<tlabel>(&window, "input_caption", false);
-	ttext_box& input = find_widget<ttext_box>(&window, "input", true);
+	label& caption = find_widget<label>(&window, "input_caption", false);
+	text_box& input = find_widget<text_box>(&window, "input", true);
 
 	if(has_input_) {
 		caption.set_label(input_caption_);
@@ -92,12 +92,12 @@ void twml_message_::pre_show(twindow& window)
 		window.set_click_dismiss(false);
 		window.set_escape_disabled(true);
 	} else {
-		caption.set_visible(twidget::tvisible::invisible);
-		input.set_visible(twidget::tvisible::invisible);
+		caption.set_visible(widget::tvisible::invisible);
+		input.set_visible(widget::tvisible::invisible);
 	}
 
 	// Find the option list related fields.
-	tlistbox& options = find_widget<tlistbox>(&window, "input_list", true);
+	listbox& options = find_widget<listbox>(&window, "input_list", true);
 
 	if(!option_list_.empty()) {
 		std::map<std::string, string_map> data;
@@ -127,25 +127,25 @@ void twml_message_::pre_show(twindow& window)
 			// click_dismiss has been disabled due to the input.
 		}
 	} else {
-		options.set_visible(twidget::tvisible::invisible);
+		options.set_visible(widget::tvisible::invisible);
 	}
 	window.set_click_dismiss(!has_input_ && option_list_.empty());
 }
 
-void twml_message_::post_show(twindow& window)
+void twml_message_::post_show(window& window)
 {
 	if(has_input_) {
 		*input_text_
-				= find_widget<ttext_box>(&window, "input", true).get_value();
+				= find_widget<text_box>(&window, "input", true).get_value();
 	}
 
 	if(!option_list_.empty()) {
-		*chosen_option_ = find_widget<tlistbox>(&window, "input_list", true)
+		*chosen_option_ = find_widget<listbox>(&window, "input_list", true)
 								  .get_selected_row();
 	}
 }
 
-void twml_message_double::pre_show(twindow& window)
+void twml_message_double::pre_show(window& window)
 {
 	twml_message_left::pre_show(window);
 	window.get_canvas(1).set_variable("second_portrait_image", variant(second_portrait_));

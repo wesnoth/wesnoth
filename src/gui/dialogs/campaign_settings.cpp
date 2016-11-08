@@ -83,25 +83,25 @@ tcampaign_settings::tcampaign_settings(ng::create_engine& eng)
 { }
 
 
-void tcampaign_settings::change_era(twindow& window)
+void tcampaign_settings::change_era(window& window)
 {
-	tlistbox& list = find_widget<tlistbox>(&window, "era_list", false);
+	listbox& list = find_widget<listbox>(&window, "era_list", false);
 	engine_.set_current_era_index(list.get_selected_row());
 }
 
-void tcampaign_settings::change_mod(size_t index, twindow&)
+void tcampaign_settings::change_mod(size_t index, window&)
 {
 	engine_.set_current_mod_index(index);
 	// force toggle mod.
 	engine_.toggle_current_mod(true);
 }
 
-void tcampaign_settings::update_lists(twindow& window)
+void tcampaign_settings::update_lists(window& window)
 {
-	tlistbox& era_list = find_widget<tlistbox>(&window, "era_list", false);
-	tlistbox& mod_list = find_widget<tlistbox>(&window, "modification_list", false);
-	tlabel& era_label = find_widget<tlabel>(&window, "era_label", false);
-	tlabel& mod_label = find_widget<tlabel>(&window, "mod_label", false);
+	listbox& era_list = find_widget<listbox>(&window, "era_list", false);
+	listbox& mod_list = find_widget<listbox>(&window, "modification_list", false);
+	label& era_label = find_widget<label>(&window, "era_label", false);
+	label& mod_label = find_widget<label>(&window, "mod_label", false);
 
 	era_list.clear();
 
@@ -149,17 +149,17 @@ void tcampaign_settings::update_lists(twindow& window)
 	}
 }
 
-void tcampaign_settings::pre_show(twindow& window)
+void tcampaign_settings::pre_show(window& window)
 {
-	find_widget<ttoggle_button>(&window, "mp_connect", false).set_value(
+	find_widget<toggle_button>(&window, "mp_connect", false).set_value(
 		engine_.get_state().mp_settings().show_connect);
 
 	update_lists(window);
 
-	tlistbox& era_list = find_widget<tlistbox>(&window, "era_list", false);
-	tlistbox& mod_list = find_widget<tlistbox>(&window, "modification_list", false);
+	listbox& era_list = find_widget<listbox>(&window, "era_list", false);
+	listbox& mod_list = find_widget<listbox>(&window, "modification_list", false);
 
-	ttoggle_button& connect_toggle = find_widget<ttoggle_button>(&window, "mp_connect", false);
+	toggle_button& connect_toggle = find_widget<toggle_button>(&window, "mp_connect", false);
 
 	const config::attribute_value& show_connect = engine_.current_level().data()["show_connect"];
 	if (show_connect.blank() || show_connect.str() == "user") {
@@ -175,10 +175,10 @@ void tcampaign_settings::pre_show(twindow& window)
 			std::bind(&tcampaign_settings::change_mod, this, _1, std::ref(window)));
 }
 
-void tcampaign_settings::post_show(twindow& window)
+void tcampaign_settings::post_show(window& window)
 {
 	engine_.get_state().mp_settings().show_connect =
-		find_widget<ttoggle_button>(&window, "mp_connect", false).get_value_bool();
+		find_widget<toggle_button>(&window, "mp_connect", false).get_value_bool();
 }
 
 } // end namespace gui2

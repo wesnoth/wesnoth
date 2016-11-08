@@ -27,7 +27,7 @@
 #include "game_preferences.hpp"
 #include "game_data.hpp" //resources::gamedata->phase()
 #include "gui/dialogs/unit_advance.hpp"
-#include "gui/widgets/window.hpp" //gui2::twindow::OK
+#include "gui/widgets/window.hpp" //gui2::window::OK
 #include "log.hpp"
 #include "play_controller.hpp" //resources::controller
 #include "random_new.hpp"
@@ -82,7 +82,7 @@ namespace
 
 			dlg.show(CVideo::get_singleton());
 
-			if (dlg.get_retval() == gui2::twindow::OK) {
+			if (dlg.get_retval() == gui2::window::OK) {
 				return dlg.get_selected_index();
 			}
 

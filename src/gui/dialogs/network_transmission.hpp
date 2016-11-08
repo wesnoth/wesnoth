@@ -66,7 +66,7 @@ private:
 		{
 		}
 
-		boost::optional<twindow&> window_;
+		boost::optional<window&> window_;
 	} pump_monitor_;
 
 public:
@@ -82,10 +82,10 @@ public:
 
 protected:
 	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	void pre_show(window& window);
 
 	/** Inherited from tdialog. */
-	void post_show(twindow& window);
+	void post_show(window& window);
 
 private:
 	/**

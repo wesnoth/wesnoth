@@ -26,7 +26,7 @@ class CVideo;
 namespace gui2
 {
 
-class twindow;
+class window;
 
 /**
  * Builds a window.
@@ -35,7 +35,7 @@ class twindow;
  * @param type                    The type id string of the window, this window
  *                                must be registered at startup.
  */
-twindow* build(CVideo& video, const std::string& type);
+window* build(CVideo& video, const std::string& type);
 
 /** Contains the info needed to instantiate a widget. */
 struct builder_widget
@@ -57,9 +57,9 @@ public:
 	{
 	}
 
-	virtual twidget* build() const = 0;
+	virtual widget* build() const = 0;
 
-	virtual twidget* build(const replacements_map& replacements) const = 0;
+	virtual widget* build(const replacements_map& replacements) const = 0;
 
 	/** Parameters for the widget. */
 	std::string id;
@@ -137,12 +137,12 @@ public:
 	/** The widgets per grid cell. */
 	std::vector<builder_widget_ptr> widgets;
 
-	tgrid* build() const;
-	twidget* build(const replacements_map& replacements) const;
+	grid* build() const;
+	widget* build(const replacements_map& replacements) const;
 
 
-	tgrid* build(tgrid* grid) const;
-	void build(tgrid& grid, const replacements_map& replacements) const;
+	grid* build(grid* grid) const;
+	void build(grid& grid, const replacements_map& replacements) const;
 };
 
 typedef std::shared_ptr<builder_grid> builder_grid_ptr;
@@ -222,7 +222,7 @@ private:
 /**
  * Builds a window.
  */
-twindow* build(CVideo& video, const builder_window::window_resolution* res);
+window* build(CVideo& video, const builder_window::window_resolution* res);
 
 } // namespace gui2
 

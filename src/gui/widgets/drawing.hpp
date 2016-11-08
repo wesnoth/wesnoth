@@ -31,32 +31,32 @@ namespace gui2
  * This widget has a fixed size like the spacer, but allows the user to
  * manual draw items. The widget is display only.
  */
-class tdrawing : public tcontrol
+class drawing : public control
 {
 public:
-	tdrawing() : tcontrol(COUNT), best_size_(0, 0)
+	drawing() : control(COUNT), best_size_(0, 0)
 	{
 	}
 
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
 private:
-	/** See @ref twidget::calculate_best_size. */
+	/** See @ref widget::calculate_best_size. */
 	virtual point calculate_best_size() const override;
 
 public:
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
-	/** See @ref tcontrol::set_active. */
+	/** See @ref control::set_active. */
 	virtual void set_active(const bool active) override;
 
-	/** See @ref tcontrol::get_active. */
+	/** See @ref control::get_active. */
 	virtual bool get_active() const override;
 
-	/** See @ref tcontrol::get_state. */
+	/** See @ref control::get_state. */
 	virtual unsigned get_state() const override;
 
-	/** See @ref twidget::disable_click_dismiss. */
+	/** See @ref widget::disable_click_dismiss. */
 	bool disable_click_dismiss() const override;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
@@ -81,7 +81,7 @@ private:
 	/** When we're used as a fixed size item, this holds the best size. */
 	point best_size_;
 
-	/** See @ref tcontrol::get_control_type. */
+	/** See @ref control::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 };
 
@@ -108,7 +108,7 @@ struct builder_drawing : public builder_control
 
 	using builder_control::build;
 
-	twidget* build() const;
+	widget* build() const;
 
 	/** The width of the widget. */
 	tformula<unsigned> width;

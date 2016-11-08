@@ -31,13 +31,13 @@ struct builder_control;
 } // namespace implementation
 
 /** Base class for all visible items. */
-class tcontrol : public twidget
+class control : public widget
 {
-	friend class tdebug_layout_graph;
+	friend class debug_layout_graph;
 
 public:
 	/** @deprecated Used the second overload. */
-	explicit tcontrol(const unsigned canvas_count);
+	explicit control(const unsigned canvas_count);
 
 	/**
 	 * Constructor.
@@ -47,7 +47,7 @@ public:
 	 *
 	 * @param canvas_count        The number of canvasses in the control.
 	 */
-	tcontrol(const implementation::builder_control& builder,
+	control(const implementation::builder_control& builder,
 			 const unsigned canvas_count,
 			 const std::string& control_type);
 
@@ -73,7 +73,7 @@ public:
 	 * Sets the control's state.
 	 *
 	 *  Sets the control in the active state, when inactive a control can't be
-	 *  used and doesn't react to events. (Note read-only for a ttext_ is a
+	 *  used and doesn't react to events. (Note read-only for a text_box_base is a
 	 *  different state.)
 	 */
 	virtual void set_active(const bool active) = 0;
@@ -92,14 +92,14 @@ public:
 	/***** ***** ***** ***** Easy close handling ***** ***** ***** *****/
 
 	/**
-	 * See @ref twidget::disable_click_dismiss.
+	 * See @ref widget::disable_click_dismiss.
 	 *
 	 * The default behavior is that a widget blocks easy close, if not it
 	 * should override this function.
 	 */
 	bool disable_click_dismiss() const override;
 
-	/** See @ref twidget::create_walker. */
+	/** See @ref widget::create_walker. */
 	virtual iterator::twalker_* create_walker() override;
 
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
@@ -166,22 +166,22 @@ public:
 	virtual std::string get_link_color() const;
 
 	/**
-	 * See @ref twidget::layout_initialise.
+	 * See @ref widget::layout_initialise.
 	 *
 	 * @todo Also handle the tooltip state.
 	 * Handle if shrunken_ && use_tooltip_on_label_overflow_.
 	 */
 	virtual void layout_initialise(const bool full_initialisation) override;
 
-	/** See @ref twidget::request_reduce_width. */
+	/** See @ref widget::request_reduce_width. */
 	virtual void request_reduce_width(const unsigned maximum_width) override;
 
 protected:
-	/** See @ref twidget::calculate_best_size. */
+	/** See @ref widget::calculate_best_size. */
 	virtual point calculate_best_size() const override;
 
 public:
-	/** See @ref twidget::place. */
+	/** See @ref widget::place. */
 	virtual void place(const point& origin, const point& size) override;
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
@@ -206,22 +206,22 @@ private:
 	 * more code and call load_config in the ctor, removing the use case for
 	 * the window. That however is a longer termine refactoring.
 	 */
-	friend class twindow;
+	friend class window;
 
 public:
-	/** See @ref twidget::find_at. */
-	virtual twidget* find_at(const point& coordinate,
+	/** See @ref widget::find_at. */
+	virtual widget* find_at(const point& coordinate,
 							 const bool must_be_active) override;
 
-	/** See @ref twidget::find_at. */
-	virtual const twidget* find_at(const point& coordinate,
+	/** See @ref widget::find_at. */
+	virtual const widget* find_at(const point& coordinate,
 								   const bool must_be_active) const override;
 
-	/** See @ref twidget::find. */
-	twidget* find(const std::string& id, const bool must_be_active) override;
+	/** See @ref widget::find. */
+	widget* find(const std::string& id, const bool must_be_active) override;
 
-	/** See @ref twidget::find. */
-	const twidget* find(const std::string& id,
+	/** See @ref widget::find. */
+	const widget* find(const std::string& id,
 						const bool must_be_active) const override;
 
 	/**
@@ -245,7 +245,7 @@ public:
 		use_tooltip_on_label_overflow_ = use_tooltip;
 	}
 
-	const t_string& label() const
+	const t_string& get_label() const
 	{
 		return label_;
 	}
@@ -429,12 +429,12 @@ public:
 	virtual const std::string& get_control_type() const = 0;
 
 protected:
-	/** See @ref twidget::impl_draw_background. */
+	/** See @ref widget::impl_draw_background. */
 	virtual void impl_draw_background(surface& frame_buffer,
 									  int x_offset,
 									  int y_offset) override;
 
-	/** See @ref twidget::impl_draw_foreground. */
+	/** See @ref widget::impl_draw_foreground. */
 	virtual void impl_draw_foreground(surface& frame_buffer,
 									  int x_offset,
 									  int y_offset) override;
@@ -509,7 +509,7 @@ private:
 
 // }---------- BUILDER -----------{
 
-class tcontrol;
+class control;
 
 namespace implementation
 {
@@ -521,10 +521,10 @@ public:
 
 	using builder_widget::build;
 
-	virtual twidget* build(const replacements_map& replacements) const override;
+	virtual widget* build(const replacements_map& replacements) const override;
 
 	/** @deprecated The control can initialize itself. */
-	void init_control(tcontrol* control) const;
+	void init_control(control* control) const;
 
 	/** Parameters for the control. */
 	std::string definition;

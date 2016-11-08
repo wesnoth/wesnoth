@@ -25,8 +25,8 @@ namespace gui2
 
 // ------------ WIDGET -----------{
 
-class tlabel;
-class tspacer;
+class label;
+class spacer;
 
 namespace implementation
 {
@@ -40,28 +40,28 @@ struct builder_scroll_label;
  * scrolling features. In general this widget is slower as the normal label so
  * the normal label should be preferred.
  */
-class tscroll_label : public tscrollbar_container
+class scroll_label : public scrollbar_container
 {
 	friend struct implementation::builder_scroll_label;
 
 public:
-	tscroll_label(bool wrap, const std::string& text_alignment);
+	scroll_label(bool wrap, const std::string& text_alignment);
 
-	/** See @ref tcontrol::set_label. */
+	/** See @ref control::set_label. */
 	virtual void set_label(const t_string& label) override;
 
-	/** See @ref tcontrol::set_use_markup. */
+	/** See @ref control::set_use_markup. */
 	virtual void set_use_markup(bool use_markup) override;
 
-	/** See @ref tcontainer_::set_self_active. */
+	/** See @ref container_base::set_self_active. */
 	virtual void set_self_active(const bool active) override;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	/** See @ref tcontrol::get_active. */
+	/** See @ref control::get_active. */
 	virtual bool get_active() const override;
 
-	/** See @ref tcontrol::get_state. */
+	/** See @ref control::get_state. */
 	virtual unsigned get_state() const override;
 	
 	bool can_wrap() const override;
@@ -97,7 +97,7 @@ private:
 
 	/***** ***** ***** inherited ****** *****/
 
-	/** See @ref tcontrol::get_control_type. */
+	/** See @ref control::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 
 	/***** ***** ***** signal handlers ***** ****** *****/
@@ -130,10 +130,10 @@ struct builder_scroll_label : public builder_control
 
 	using builder_control::build;
 
-	twidget* build() const;
+	widget* build() const;
 
-	tscrollbar_container::tscrollbar_mode vertical_scrollbar_mode;
-	tscrollbar_container::tscrollbar_mode horizontal_scrollbar_mode;
+	scrollbar_container::tscrollbar_mode vertical_scrollbar_mode;
+	scrollbar_container::tscrollbar_mode horizontal_scrollbar_mode;
 	bool wrap_on;
 	const std::string text_alignment;
 };

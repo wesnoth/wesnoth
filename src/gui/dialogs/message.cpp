@@ -45,24 +45,24 @@ struct tmessage_implementation
 	 * @param button_status       The button status to modify.
 	 * @param id                  The id of the button.
 	 */
-	static void init_button(twindow& window,
+	static void init_button(window& window,
 							tmessage::tbutton_status& button_status,
 							const std::string& id)
 	{
-		button_status.button = find_widget<tbutton>(&window, id, false, true);
+		button_status.button = find_widget<button>(&window, id, false, true);
 		button_status.button->set_visible(button_status.visible);
 
 		if(!button_status.caption.empty()) {
 			button_status.button->set_label(button_status.caption);
 		}
 
-		if(button_status.retval != twindow::NONE) {
+		if(button_status.retval != window::NONE) {
 			button_status.button->set_retval(button_status.retval);
 		}
 	}
 };
 
-void tmessage::pre_show(twindow& window)
+void tmessage::pre_show(window& window)
 {
 	set_restore(true);
 
@@ -74,21 +74,21 @@ void tmessage::pre_show(twindow& window)
 			window, buttons_[right_1], "right_side");
 
 	// ***** ***** ***** ***** Set up the widgets ***** ***** ***** *****
-	tcontrol& title_widget = find_widget<tlabel>(&window, "title", false);
+	control& title_widget = find_widget<label>(&window, "title", false);
 	if(!title_.empty()) {
 		title_widget.set_label(title_);
 	} else {
-		title_widget.set_visible(twidget::tvisible::invisible);
+		title_widget.set_visible(widget::tvisible::invisible);
 	}
 
-	tcontrol& img_widget = find_widget<timage>(&window, "image", false);
+	control& img_widget = find_widget<image>(&window, "image", false);
 	if(!image_.empty()) {
 		img_widget.set_label(image_);
 	} else {
-		img_widget.set_visible(twidget::tvisible::invisible);
+		img_widget.set_visible(widget::tvisible::invisible);
 	}
 
-	tcontrol& label = find_widget<tcontrol>(&window, "label", false);
+	control& label = find_widget<control>(&window, "label", false);
 	label.set_label(message_);
 	label.set_use_markup(message_use_markup_);
 
@@ -100,7 +100,7 @@ void tmessage::pre_show(twindow& window)
 	window.set_click_dismiss(auto_close_);
 }
 
-void tmessage::post_show(twindow& /*window*/)
+void tmessage::post_show(window& /*window*/)
 {
 	for(auto & button_status : buttons_)
 	{
@@ -118,7 +118,7 @@ void tmessage::set_button_caption(const tbutton_id button,
 }
 
 void tmessage::set_button_visible(const tbutton_id button,
-								  const twidget::tvisible visible)
+								  const widget::tvisible visible)
 {
 	buttons_[button].visible = visible;
 	if(buttons_[button].button) {
@@ -137,8 +137,8 @@ void tmessage::set_button_retval(const tbutton_id button, const int retval)
 tmessage::tbutton_status::tbutton_status()
 	: button(nullptr)
 	, caption()
-	, visible(twidget::tvisible::invisible)
-	, retval(twindow::NONE)
+	, visible(widget::tvisible::invisible)
+	, retval(window::NONE)
 {
 }
 
@@ -170,25 +170,25 @@ int show_message(CVideo& video,
 		case tmessage::auto_close:
 			break;
 		case tmessage::ok_button:
-			dlg.set_button_visible(tmessage::ok, twidget::tvisible::visible);
+			dlg.set_button_visible(tmessage::ok, widget::tvisible::visible);
 			dlg.set_button_caption(tmessage::ok, _("OK"));
 			break;
 		case tmessage::close_button:
-			dlg.set_button_visible(tmessage::ok, twidget::tvisible::visible);
+			dlg.set_button_visible(tmessage::ok, widget::tvisible::visible);
 			break;
 		case tmessage::ok_cancel_buttons:
-			dlg.set_button_visible(tmessage::ok, twidget::tvisible::visible);
+			dlg.set_button_visible(tmessage::ok, widget::tvisible::visible);
 			dlg.set_button_caption(tmessage::ok, _("OK"));
 		/* FALL DOWN */
 		case tmessage::cancel_button:
 			dlg.set_button_visible(tmessage::cancel,
-								   twidget::tvisible::visible);
+								   widget::tvisible::visible);
 			break;
 		case tmessage::yes_no_buttons:
-			dlg.set_button_visible(tmessage::ok, twidget::tvisible::visible);
+			dlg.set_button_visible(tmessage::ok, widget::tvisible::visible);
 			dlg.set_button_caption(tmessage::ok, _("Yes"));
 			dlg.set_button_visible(tmessage::cancel,
-								   twidget::tvisible::visible);
+								   widget::tvisible::visible);
 			dlg.set_button_caption(tmessage::cancel, _("No"));
 			break;
 	}

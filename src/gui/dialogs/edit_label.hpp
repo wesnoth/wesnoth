@@ -29,14 +29,14 @@ public:
 	 * @param [in, out] label     The parameter's usage is:
 	 *                            - Input: The initial value of the label.
 	 *                            - Output: The label text the user entered if
-	 *                              the dialog returns @ref twindow::OK
+	 *                              the dialog returns @ref window::OK
 	 *                              undefined otherwise.
 	 * @param [in, out] team_only The parameter's usage is:
 	 *                            - Input: The initial value of the team only
 	 *                              toggle.
 	 *                            - Output: The final value of the team only
 	 *                              toggle if the dialog returns @ref
-	 *                              twindow::OK undefined otherwise.
+	 *                              window::OK undefined otherwise.
 	 */
 	tedit_label(std::string& label, bool& team_only);
 

@@ -37,7 +37,7 @@ namespace gui2
 
 REGISTER_WIDGET3(text_box_definition, password_box, "ext_box_definition")
 
-void tpassword_box::set_value(const std::string& text)
+void password_box::set_value(const std::string& text)
 {
 	real_value_ = text;
 	size_t sz = utf8::size(text);
@@ -45,10 +45,10 @@ void tpassword_box::set_value(const std::string& text)
 	for(size_t i = 0; i < sz; i++) {
 		passwd.append("•");
 	}
-	ttext_box::set_value(passwd);
+	text_box::set_value(passwd);
 }
 
-void tpassword_box::delete_selection()
+void password_box::delete_selection()
 {
 	int len = get_selection_length();
 	if(len == 0) {
@@ -65,7 +65,7 @@ void tpassword_box::delete_selection()
 	set_cursor(start, false);
 }
 
-void tpassword_box::insert_char(const utf8::string& unicode)
+void password_box::insert_char(const utf8::string& unicode)
 {
 	int len = get_selection_length();
 	unsigned sel = get_selection_start();
@@ -76,19 +76,19 @@ void tpassword_box::insert_char(const utf8::string& unicode)
 
 	size_t sz = utf8::size(unicode);
 	if(sz == 1) {
-		ttext_box::insert_char("•");
+		text_box::insert_char("•");
 	} else {
 		utf8::string passwd;
 		for(size_t i = 0; i < sz; i++) {
 			passwd.append("•");
 		}
-		ttext_box::insert_char(passwd);
+		text_box::insert_char(passwd);
 		set_cursor(sel + sz, false);
 	}
 	utf8::insert(real_value_, sel, unicode);
 }
 
-void tpassword_box::paste_selection(const bool mouse)
+void password_box::paste_selection(const bool mouse)
 {
 	const std::string& text = desktop::clipboard::copy_from_clipboard(mouse);
 	if(text.empty()) {
@@ -97,7 +97,7 @@ void tpassword_box::paste_selection(const bool mouse)
 	insert_char(text);
 }
 
-const std::string& tpassword_box::get_control_type() const
+const std::string& password_box::get_control_type() const
 {
 	static const std::string type = "password_box";
 	return type;
@@ -128,9 +128,9 @@ builder_password_box::builder_password_box(const config& cfg)
 {
 }
 
-twidget* builder_password_box::build() const
+widget* builder_password_box::build() const
 {
-	tpassword_box* widget = new tpassword_box();
+	password_box* widget = new password_box();
 
 	init_control(widget);
 

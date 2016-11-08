@@ -31,7 +31,7 @@ namespace gui2
 {
 
 struct point;
-class twidget;
+class widget;
 
 namespace event
 {
@@ -118,8 +118,8 @@ typedef std::function<bool(dispatcher& dispatcher,
  * track the mouse location and fire MOUSE_ENTER and MOUSE_LEAVE events to the
  * widgets involved.
  *
- * [1] Not really sure whether it will be a base clase for a twidget or
- * tcontrol yet.
+ * [1] Not really sure whether it will be a base clase for a widget or
+ * control yet.
  */
 class dispatcher
 {
@@ -163,7 +163,7 @@ public:
 	bool has_event(const event_t event, const event_queue_type event_type);
 
 	/** Fires an event which has no extra parameters. */
-	bool fire(const event_t event, twidget& target);
+	bool fire(const event_t event, widget& target);
 
 	/**
 	 * Fires an event which takes a coordinate parameter.
@@ -172,7 +172,7 @@ public:
 	 * @param target                 The widget that should receive the event.
 	 * @param coordinate             The mouse position for the event.
 	 */
-	bool fire(const event_t event, twidget& target, const point& coordinate);
+	bool fire(const event_t event, widget& target, const point& coordinate);
 
 	/**
 	 * Fires an event which takes keyboard parameters.
@@ -184,7 +184,7 @@ public:
 	 * @param unicode                The unicode value for the key pressed.
 	 */
 	bool fire(const event_t event,
-			  twidget& target,
+			  widget& target,
 			  const SDL_Keycode key,
 			  const SDL_Keymod modifier,
 			  const utf8::string& unicode);
@@ -197,7 +197,7 @@ public:
 	 * @param event                  The event to fire.
 	 * @param target                 The widget that should receive the event.
 	 */
-	bool fire(const event_t event, twidget& target, void*);
+	bool fire(const event_t event, widget& target, void*);
 
 	/**
 	 * Fires an event which takes message parameters.
@@ -210,7 +210,7 @@ public:
 	 *                               (or another widget in the chain) to handle
 	 *                               the message.
 	 */
-	bool fire(const event_t event, twidget& target, message& msg);
+	bool fire(const event_t event, widget& target, message& msg);
 
 	/**
 	 * The position where to add a new callback in the signal handler.

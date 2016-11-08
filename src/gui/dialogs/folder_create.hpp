@@ -31,7 +31,7 @@ public:
 	 *                            - Input: A suggested folder name.
 	 *                            - Output: The folder name the user actually
 	 *                              entered if the dialog returns @ref
-	 *                              twindow::OK; undefined otherwise.
+	 *                              window::OK; undefined otherwise.
 	 */
 	tfolder_create(std::string& folder_name);
 
@@ -57,7 +57,7 @@ private:
 	virtual const std::string& window_id() const;
 
 	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	void pre_show(window& window);
 };
 
 class tbookmark_create

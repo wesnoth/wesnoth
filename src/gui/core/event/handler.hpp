@@ -28,7 +28,7 @@
 namespace gui2
 {
 
-class twindow;
+class window;
 
 namespace event
 {
@@ -331,7 +331,7 @@ std::ostream& operator<<(std::ostream& stream, const event_t event);
  * order in which they were opened. Currently only used as a helper for is_in_dialog(),
  * but could potentially be useful for other things in the future.
  */
-extern std::vector<twindow*> open_window_stack;
+extern std::vector<window*> open_window_stack;
 
 /**
  * Is a dialog open?

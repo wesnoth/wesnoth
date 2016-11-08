@@ -104,16 +104,16 @@ teditor_resize_map::teditor_resize_map(int& width,
 	register_label("old_height", false, std::to_string(height));
 }
 
-void teditor_resize_map::pre_show(twindow& window)
+void teditor_resize_map::pre_show(window& window)
 {
-	tslider& height = find_widget<tslider>(&window, "height", false);
+	slider& height = find_widget<slider>(&window, "height", false);
 	connect_signal_notify_modified(
 			height,
 			std::bind(&teditor_resize_map::update_expand_direction,
 						this,
 						std::ref(window)));
 
-	tslider& width = find_widget<tslider>(&window, "width", false);
+	slider& width = find_widget<slider>(&window, "width", false);
 	connect_signal_notify_modified(
 			width,
 			std::bind(&teditor_resize_map::update_expand_direction,
@@ -124,7 +124,7 @@ void teditor_resize_map::pre_show(twindow& window)
 	for(int i = 0; i < 9; ++i) {
 		std::string name = name_prefix + std::to_string(i);
 		direction_buttons_[i]
-				= find_widget<ttoggle_button>(&window, name, false, true);
+				= find_widget<toggle_button>(&window, name, false, true);
 
 		direction_buttons_[i]->set_callback_state_change(
 				dialog_callback<teditor_resize_map,
@@ -155,7 +155,7 @@ void teditor_resize_map::set_direction_icon(int index, std::string icon)
 	}
 }
 
-void teditor_resize_map::update_expand_direction(twindow& window)
+void teditor_resize_map::update_expand_direction(window& window)
 {
 	for(int i = 0; i < 9; ++i) {
 		if(direction_buttons_[i]->get_value()

@@ -28,25 +28,25 @@ namespace iterator
 namespace walker
 {
 
-twidget::twidget(gui2::twidget& widget) : widget_(&widget)
+widget::widget(gui2::widget& widget) : widget_(&widget)
 {
 }
 
-twalker_::state_t twidget::next(const tlevel level)
+twalker_::state_t widget::next(const tlevel level)
 {
 	if(at_end(level)) {
 		return fail;
 	}
 
 	switch(level) {
-		case widget:
+		case self:
 			if(widget_) {
 				widget_ = nullptr;
 				return invalid;
 			} else {
 				/* FALL DOWN */
 			}
-		case grid:  /* FALL DOWN */
+		case internal:  /* FALL DOWN */
 		case child: /* FALL DOWN */
 			;
 	}
@@ -55,12 +55,12 @@ twalker_::state_t twidget::next(const tlevel level)
 	return fail;
 }
 
-bool twidget::at_end(const tlevel level) const
+bool widget::at_end(const tlevel level) const
 {
 	switch(level) {
-		case widget:
+		case self:
 			return widget_ == nullptr;
-		case grid: /* FALL DOWN */
+		case internal: /* FALL DOWN */
 		case child:
 			return true;
 	}
@@ -69,12 +69,12 @@ bool twidget::at_end(const tlevel level) const
 	return true;
 }
 
-gui2::twidget* twidget::get(const tlevel level)
+gui2::widget* widget::get(const tlevel level)
 {
 	switch(level) {
-		case widget:
+		case self:
 			return widget_;
-		case grid: /* FALL DOWN */
+		case internal: /* FALL DOWN */
 		case child:
 			return nullptr;
 	}

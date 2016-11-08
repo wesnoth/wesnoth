@@ -295,23 +295,23 @@ namespace implementation
  *                                * dispatcher
  */
 template <class T>
-inline std::vector<std::pair<twidget*, event_t> >
-build_event_chain(const event_t event, twidget* dispatcher, twidget* widget)
+inline std::vector<std::pair<widget*, event_t> >
+build_event_chain(const event_t event, widget* dispatcher, widget* w)
 {
 	assert(dispatcher);
-	assert(widget);
+	assert(w);
 
-	std::vector<std::pair<twidget*, event_t> > result;
+	std::vector<std::pair<widget*, event_t> > result;
 
-	while(widget != dispatcher) {
-		widget = widget->parent();
-		assert(widget);
+	while(w != dispatcher) {
+		w = w->parent();
+		assert(w);
 
-		if(widget->has_event(event,
+		if(w->has_event(event,
 							 dispatcher::event_queue_type(dispatcher::pre
 													  | dispatcher::post))) {
 
-			result.push_back(std::make_pair(widget, event));
+			result.push_back(std::make_pair(w, event));
 		}
 	}
 
@@ -328,19 +328,19 @@ build_event_chain(const event_t event, twidget* dispatcher, twidget* widget)
  * @returns                       An empty vector.
  */
 template <>
-inline std::vector<std::pair<twidget*, event_t> >
+inline std::vector<std::pair<widget*, event_t> >
 build_event_chain<signal_notification_function>(const event_t event,
-												 twidget* dispatcher,
-												 twidget* widget)
+												 widget* dispatcher,
+												 widget* w)
 {
 	assert(dispatcher);
-	assert(widget);
+	assert(w);
 
-	assert(!widget->has_event(event,
+	assert(!w->has_event(event,
 							  dispatcher::event_queue_type(dispatcher::pre
 													   | dispatcher::post)));
 
-	return std::vector<std::pair<twidget*, event_t> >();
+	return std::vector<std::pair<widget*, event_t> >();
 }
 
 #ifdef _MSC_VER
@@ -365,26 +365,26 @@ build_event_chain<signal_notification_function>(const event_t event,
  *                                * container 2
  */
 template <>
-inline std::vector<std::pair<twidget*, event_t> >
+inline std::vector<std::pair<widget*, event_t> >
 build_event_chain<signal_message_function>(const event_t event,
-											twidget* dispatcher,
-											twidget* widget)
+											widget* dispatcher,
+											widget* w)
 {
 	assert(dispatcher);
-	assert(widget);
-	assert(widget == dispatcher);
+	assert(w);
+	assert(w == dispatcher);
 
-	std::vector<std::pair<twidget*, event_t> > result;
+	std::vector<std::pair<widget*, event_t> > result;
 
 	/* We only should add the parents of the widget to the chain. */
-	while((widget = widget->parent())) {
-		assert(widget);
+	while((w = w->parent())) {
+		assert(w);
 
-		if(widget->has_event(event,
+		if(w->has_event(event,
 							 dispatcher::event_queue_type(dispatcher::pre
 													  | dispatcher::post))) {
 
-			result.insert(result.begin(), std::make_pair(widget, event));
+			result.insert(result.begin(), std::make_pair(w, event));
 		}
 	}
 
@@ -402,16 +402,16 @@ build_event_chain<signal_message_function>(const event_t event,
  */
 template <class T, class F>
 inline bool fire_event(const event_t event,
-					   std::vector<std::pair<twidget*, event_t> >& event_chain,
-					   twidget* dispatcher,
-					   twidget* widget,
+					   std::vector<std::pair<widget*, event_t> >& event_chain,
+					   widget* dispatcher,
+					   widget* w,
 					   F functor)
 {
 	bool handled = false;
 	bool halt = false;
 
 	/***** ***** ***** Pre ***** ***** *****/
-	for(std::vector<std::pair<twidget*, event_t> >::reverse_iterator ritor_widget
+	for(std::vector<std::pair<widget*, event_t> >::reverse_iterator ritor_widget
 		= event_chain.rbegin();
 		ritor_widget != event_chain.rend();
 		++ritor_widget) {
@@ -437,10 +437,10 @@ inline bool fire_event(const event_t event,
 	}
 
 	/***** ***** ***** Child ***** ***** *****/
-	if(widget->has_event(event, dispatcher::child)) {
+	if(w->has_event(event, dispatcher::child)) {
 
 		dispatcher::signal_type<T>& signal
-				= dispatcher_implementation::event_signal<T>(*widget, event);
+				= dispatcher_implementation::event_signal<T>(*w, event);
 
 		for(typename std::vector<T>::iterator itor = signal.child.begin();
 			itor != signal.child.end();
@@ -460,7 +460,7 @@ inline bool fire_event(const event_t event,
 	}
 
 	/***** ***** ***** Post ***** ***** *****/
-	for(std::vector<std::pair<twidget*, event_t> >::iterator itor_widget
+	for(std::vector<std::pair<widget*, event_t> >::iterator itor_widget
 		= event_chain.begin();
 		itor_widget != event_chain.end();
 		++itor_widget) {
@@ -517,16 +517,16 @@ inline bool fire_event(const event_t event,
  */
 template <class T, class F>
 inline bool
-fire_event(const event_t event, twidget* dispatcher, twidget* widget, F functor)
+fire_event(const event_t event, widget* dispatcher, widget* w, F functor)
 {
 	assert(dispatcher);
-	assert(widget);
+	assert(w);
 
-	std::vector<std::pair<twidget*, event_t> > event_chain
-			= implementation::build_event_chain<T>(event, dispatcher, widget);
+	std::vector<std::pair<widget*, event_t> > event_chain
+			= implementation::build_event_chain<T>(event, dispatcher, w);
 
 	return implementation::fire_event<T>(
-			event, event_chain, dispatcher, widget, functor);
+			event, event_chain, dispatcher, w, functor);
 }
 
 template <event_t click,
@@ -535,13 +535,13 @@ template <event_t click,
 		  class T,
 		  class F>
 inline bool
-fire_event_double_click(twidget* dispatcher, twidget* widget, F functor)
+fire_event_double_click(widget* dispatcher, widget* wgt, F functor)
 {
 	assert(dispatcher);
-	assert(widget);
+	assert(wgt);
 
-	std::vector<std::pair<twidget*, event_t> > event_chain;
-	twidget* w = widget;
+	std::vector<std::pair<widget*, event_t> > event_chain;
+	widget* w = wgt;
 	while(w != dispatcher) {
 		w = w->parent();
 		assert(w);
@@ -564,12 +564,12 @@ fire_event_double_click(twidget* dispatcher, twidget* widget, F functor)
 		}
 	}
 
-	if((widget->*wants_double_click)()) {
+	if((wgt->*wants_double_click)()) {
 		return implementation::fire_event<T>(
-				double_click, event_chain, dispatcher, widget, functor);
+				double_click, event_chain, dispatcher, wgt, functor);
 	} else {
 		return implementation::fire_event<T>(
-				click, event_chain, dispatcher, widget, functor);
+				click, event_chain, dispatcher, wgt, functor);
 	}
 }
 

@@ -40,39 +40,39 @@ namespace gui2
 
 REGISTER_WIDGET(button)
 
-tbutton::tbutton() : tcontrol(COUNT), tclickable_(), state_(ENABLED), retval_(0)
+button::button() : control(COUNT), clickable_item(), state_(ENABLED), retval_(0)
 {
 	connect_signal<event::MOUSE_ENTER>(
-			std::bind(&tbutton::signal_handler_mouse_enter, this, _2, _3));
+			std::bind(&button::signal_handler_mouse_enter, this, _2, _3));
 	connect_signal<event::MOUSE_LEAVE>(
-			std::bind(&tbutton::signal_handler_mouse_leave, this, _2, _3));
+			std::bind(&button::signal_handler_mouse_leave, this, _2, _3));
 
 	connect_signal<event::LEFT_BUTTON_DOWN>(std::bind(
-			&tbutton::signal_handler_left_button_down, this, _2, _3));
+			&button::signal_handler_left_button_down, this, _2, _3));
 	connect_signal<event::LEFT_BUTTON_UP>(
-			std::bind(&tbutton::signal_handler_left_button_up, this, _2, _3));
+			std::bind(&button::signal_handler_left_button_up, this, _2, _3));
 	connect_signal<event::LEFT_BUTTON_CLICK>(std::bind(
-			&tbutton::signal_handler_left_button_click, this, _2, _3));
+			&button::signal_handler_left_button_click, this, _2, _3));
 }
 
-void tbutton::set_active(const bool active)
+void button::set_active(const bool active)
 {
 	if(get_active() != active) {
 		set_state(active ? ENABLED : DISABLED);
 	}
 }
 
-bool tbutton::get_active() const
+bool button::get_active() const
 {
 	return state_ != DISABLED;
 }
 
-unsigned tbutton::get_state() const
+unsigned button::get_state() const
 {
 	return state_;
 }
 
-void tbutton::set_state(const state_t state)
+void button::set_state(const state_t state)
 {
 	if(state != state_) {
 		state_ = state;
@@ -80,13 +80,13 @@ void tbutton::set_state(const state_t state)
 	}
 }
 
-const std::string& tbutton::get_control_type() const
+const std::string& button::get_control_type() const
 {
 	static const std::string type = "button";
 	return type;
 }
 
-void tbutton::signal_handler_mouse_enter(const event::event_t event,
+void button::signal_handler_mouse_enter(const event::event_t event,
 										 bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -95,7 +95,7 @@ void tbutton::signal_handler_mouse_enter(const event::event_t event,
 	handled = true;
 }
 
-void tbutton::signal_handler_mouse_leave(const event::event_t event,
+void button::signal_handler_mouse_leave(const event::event_t event,
 										 bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -104,12 +104,12 @@ void tbutton::signal_handler_mouse_leave(const event::event_t event,
 	handled = true;
 }
 
-void tbutton::signal_handler_left_button_down(const event::event_t event,
+void button::signal_handler_left_button_down(const event::event_t event,
 											  bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
-	twindow* window = get_window();
+	window* window = get_window();
 	if(window) {
 		window->mouse_capture();
 	}
@@ -118,7 +118,7 @@ void tbutton::signal_handler_left_button_down(const event::event_t event,
 	handled = true;
 }
 
-void tbutton::signal_handler_left_button_up(const event::event_t event,
+void button::signal_handler_left_button_up(const event::event_t event,
 											bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -127,7 +127,7 @@ void tbutton::signal_handler_left_button_up(const event::event_t event,
 	handled = true;
 }
 
-void tbutton::signal_handler_left_button_click(const event::event_t event,
+void button::signal_handler_left_button_click(const event::event_t event,
 											   bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -136,7 +136,7 @@ void tbutton::signal_handler_left_button_click(const event::event_t event,
 
 	// If a button has a retval do the default handling.
 	if(retval_ != 0) {
-		twindow* window = get_window();
+		window* window = get_window();
 		if(window) {
 			window->set_retval(retval_);
 			return;
@@ -244,9 +244,9 @@ builder_button::builder_button(const config& cfg)
 {
 }
 
-twidget* builder_button::build() const
+widget* builder_button::build() const
 {
-	tbutton* widget = new tbutton();
+	button* widget = new button();
 
 	init_control(widget);
 

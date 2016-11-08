@@ -29,7 +29,7 @@ public:
 	 * @param [in, out] password  The parameter's usage is:
 	 *                            - Input: The initial value for the password.
 	 *                            - Output: The password selected by the user
-	 *                              if the dialog returns @ref twindow::OK
+	 *                              if the dialog returns @ref window::OK
 	 *                              undefined otherwise.
 	 */
 	explicit tmp_create_game_set_password(std::string& password);

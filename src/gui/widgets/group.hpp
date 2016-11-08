@@ -26,10 +26,10 @@ namespace gui2
 {
 
 template <class T>
-class tgroup
+class group
 {
 public:
-	typedef typename std::map<T, tselectable_*>  group_map;
+	typedef typename std::map<T, selectable_item*>  group_map;
 	typedef typename group_map::iterator         group_iterator;
 	typedef typename group_map::const_iterator   group_iterator_const;
 
@@ -39,12 +39,12 @@ public:
 	 * happens before individual widget handlers fire, meaning that the
 	 * clicked widget will remain the only one selected.
 	 */
-	void add_member(tselectable_* widget, const T& value)
+	void add_member(selectable_item* w, const T& value)
 	{
-		members_.emplace(value, widget);
+		members_.emplace(value, w);
 
-		dynamic_cast<twidget*>(widget)->connect_signal<event::LEFT_BUTTON_CLICK>(std::bind(
-			&tgroup::group_operator, this), event::dispatcher::front_child);
+		dynamic_cast<widget*>(w)->connect_signal<event::LEFT_BUTTON_CLICK>(std::bind(
+			&group::group_operator, this), event::dispatcher::front_child);
 	}
 
 	/**
@@ -111,11 +111,11 @@ public:
 	/**
 	 * Sets a common callback function for all members.
 	 */
-	void set_callback_on_value_change(const std::function<void(twidget&)>& func)
+	void set_callback_on_value_change(const std::function<void(widget&)>& func)
 	{
 		// Ensure this callback is only called on the member being activated
-		const auto callback = [func](twidget& widget)->void {
-			if(dynamic_cast<tselectable_*>(&widget)->get_value_bool()) {
+		const auto callback = [func](widget& widget)->void {
+			if(dynamic_cast<selectable_item*>(&widget)->get_value_bool()) {
 				func(widget);
 			}
 		};
@@ -136,8 +136,8 @@ public:
 			return;
 		}
 
-		tselectable_& w = *members_[value];
-		dynamic_cast<tcontrol&>(w).set_active(active);
+		selectable_item& w = *members_[value];
+		dynamic_cast<control&>(w).set_active(active);
 
 		// Only select another member this was selected
 		if(!w.get_value_bool()) {
@@ -148,7 +148,7 @@ public:
 
 		// Look for the first active member to select
 		for(auto& member : members_) {
-			if(dynamic_cast<tcontrol&>(*member.second).get_active()) {
+			if(dynamic_cast<control&>(*member.second).get_active()) {
 				member.second->set_value_bool(true);
 				break;
 			}

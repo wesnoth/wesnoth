@@ -29,9 +29,9 @@ struct builder_instance : public builder_widget
 {
 	explicit builder_instance(const config& cfg);
 
-	twidget* build() const;
+	widget* build() const;
 
-	twidget* build(const replacements_map& replacements) const;
+	widget* build(const replacements_map& replacements) const;
 
 	/**
 	 * Holds a copy of the cfg parameter in the constructor.

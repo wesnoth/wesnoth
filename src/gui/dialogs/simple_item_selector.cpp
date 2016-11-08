@@ -78,9 +78,9 @@ tsimple_item_selector::tsimple_item_selector(const std::string& title,
 	register_label("message", true, message, message_uses_markup);
 }
 
-void tsimple_item_selector::pre_show(twindow& window)
+void tsimple_item_selector::pre_show(window& window)
 {
-	tlistbox& list = find_widget<tlistbox>(&window, "listbox", false);
+	listbox& list = find_widget<listbox>(&window, "listbox", false);
 	window.keyboard_capture(&list);
 
 	for(const auto & it : items_)
@@ -100,8 +100,8 @@ void tsimple_item_selector::pre_show(twindow& window)
 
 	index_ = -1;
 
-	tbutton& button_ok = find_widget<tbutton>(&window, "ok", false);
-	tbutton& button_cancel = find_widget<tbutton>(&window, "cancel", false);
+	button& button_ok = find_widget<button>(&window, "ok", false);
+	button& button_cancel = find_widget<button>(&window, "cancel", false);
 
 	if(!ok_label_.empty()) {
 		button_ok.set_label(ok_label_);
@@ -112,17 +112,17 @@ void tsimple_item_selector::pre_show(twindow& window)
 	}
 
 	if(single_button_) {
-		button_cancel.set_visible(gui2::twidget::tvisible::invisible);
+		button_cancel.set_visible(gui2::widget::tvisible::invisible);
 	}
 }
 
-void tsimple_item_selector::post_show(twindow& window)
+void tsimple_item_selector::post_show(window& window)
 {
-	if(get_retval() != twindow::OK) {
+	if(get_retval() != window::OK) {
 		return;
 	}
 
-	tlistbox& list = find_widget<tlistbox>(&window, "listbox", false);
+	listbox& list = find_widget<listbox>(&window, "listbox", false);
 	index_ = list.get_selected_row();
 }
 }

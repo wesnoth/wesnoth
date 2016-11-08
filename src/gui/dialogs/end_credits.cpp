@@ -69,7 +69,7 @@ static void parse_about_tags(const config& cfg, std::stringstream& ss)
 	}
 }
 
-void tend_credits::pre_show(twindow& window)
+void tend_credits::pre_show(window& window)
 {
 	timer_id_ = add_timer(10, std::bind(&tend_credits::timer_callback, this), true);
 
@@ -110,7 +110,7 @@ void tend_credits::pre_show(twindow& window)
 	// TODO: implement showing all available images as the credits scroll
 	window.get_canvas()[0].set_variable("background_image", variant(backgrounds_[0]));
 
-	text_widget_ = find_widget<tscroll_label>(&window, "text", false, true);
+	text_widget_ = find_widget<scroll_label>(&window, "text", false, true);
 
 	text_widget_->set_use_markup(true);
 	text_widget_->set_label((focus_ss.str().empty() ? ss : focus_ss).str());
@@ -118,10 +118,10 @@ void tend_credits::pre_show(twindow& window)
 	// HACK: always hide the scrollbar, even if it's needed.
 	// This should probably be implemented as a scrollbar mode.
 	// Also, for some reason hiding the whole grid doesn't work, and the elements need to be hidden manually
-	if(tgrid* v_grid = dynamic_cast<tgrid*>(text_widget_->find("_vertical_scrollbar_grid", false))) {
-		find_widget<tscrollbar_>(v_grid, "_vertical_scrollbar", false).set_visible(twidget::tvisible::hidden);
-		find_widget<trepeating_button>(v_grid, "_half_page_up", false).set_visible(twidget::tvisible::hidden);
-		find_widget<trepeating_button>(v_grid, "_half_page_down", false).set_visible(twidget::tvisible::hidden);
+	if(grid* v_grid = dynamic_cast<grid*>(text_widget_->find("_vertical_scrollbar_grid", false))) {
+		find_widget<scrollbar_base>(v_grid, "_vertical_scrollbar", false).set_visible(widget::tvisible::hidden);
+		find_widget<repeating_button>(v_grid, "_half_page_up", false).set_visible(widget::tvisible::hidden);
+		find_widget<repeating_button>(v_grid, "_half_page_down", false).set_visible(widget::tvisible::hidden);
 	}
 }
 

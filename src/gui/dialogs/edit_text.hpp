@@ -31,7 +31,7 @@ public:
 	 * @param [in, out] text      The parameter's usage is:
 	 *                            - Input: The initial value of the text field.
 	 *                            - Output: The new unit name the user entered
-	 *                              if the dialog returns @ref twindow::OK,
+	 *                              if the dialog returns @ref window::OK,
 	 *                              undefined otherwise.
 	 */
 	tedit_text(const std::string& title,

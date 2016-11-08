@@ -103,7 +103,7 @@ bool loadgame::show_difficulty_dialog()
 		difficulty_dlg.show(video_);
 
 		// Return if canceled, since otherwise load_data_.difficulty will be set to 'CANCEL'
-		if (difficulty_dlg.get_retval() != gui2::twindow::OK) {
+		if (difficulty_dlg.get_retval() != gui2::window::OK) {
 			return false;
 		}
 
@@ -251,7 +251,7 @@ bool loadgame::check_version_compatibility(const version_info & save_version, CV
 		symbols["version_number"] = save_version.str();
 		const int res = gui2::show_message(video, _("Load Game"), utils::interpolate_variables_into_string(message, &symbols),
 			gui2::tmessage::yes_no_buttons);
-		return res == gui2::twindow::OK;
+		return res == gui2::window::OK;
 	}
 
 	return true;
@@ -359,7 +359,7 @@ bool savegame::save_game_interactive(CVideo& video, const std::string& message, 
 		throw_quit_game_exception(); //Quit game
 	}
 
-	if (res == gui2::twindow::OK && check_overwrite(video)) {
+	if (res == gui2::window::OK && check_overwrite(video)) {
 		return save_game(&video);
 	}
 
@@ -384,7 +384,7 @@ int savegame::show_save_dialog(CVideo& video, const std::string& message, DIALOG
 	set_filename(filename_);
 
 	if (!check_filename(filename_, video)) {
-		res = gui2::twindow::CANCEL;
+		res = gui2::window::CANCEL;
 	}
 
 	return res;
@@ -399,7 +399,7 @@ bool savegame::check_overwrite(CVideo& video)
 	std::ostringstream message;
 	message << _("Save already exists. Do you want to overwrite it?") << "\n" << _("Name: ") << filename_;
 	const int res = gui2::show_message(video, _("Overwrite?"), message.str(), gui2::tmessage::yes_no_buttons);
-	return res == gui2::twindow::OK;
+	return res == gui2::window::OK;
 
 }
 
@@ -608,7 +608,7 @@ int oos_savegame::show_save_dialog(CVideo& video, const std::string& message, DI
 	set_filename(filename);
 
 	if (!check_filename(filename, video)) {
-		res = gui2::twindow::CANCEL;
+		res = gui2::window::CANCEL;
 	}
 
 	return res;

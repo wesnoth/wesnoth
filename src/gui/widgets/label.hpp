@@ -26,33 +26,33 @@ namespace gui2
 // ------------ WIDGET -----------{
 
 /** Label showing a text. */
-class tlabel : public tcontrol
+class label : public control
 {
 public:
-	tlabel();
+	label();
 
-	/** See @ref twidget::can_wrap. */
+	/** See @ref widget::can_wrap. */
 	virtual bool can_wrap() const override;
 
-	/** See @ref tcontrol::get_characters_per_line. */
+	/** See @ref control::get_characters_per_line. */
 	virtual unsigned get_characters_per_line() const override;
 
-	/** See @ref tcontrol::get_link_aware. */
+	/** See @ref control::get_link_aware. */
 	virtual bool get_link_aware() const override;
 
-	/** See @ref tcontrol::get_link_aware. */
+	/** See @ref control::get_link_aware. */
 	virtual std::string get_link_color() const override;
 
-	/** See @ref tcontrol::set_active. */
+	/** See @ref control::set_active. */
 	virtual void set_active(const bool active) override;
 
-	/** See @ref tcontrol::get_active. */
+	/** See @ref control::get_active. */
 	virtual bool get_active() const override;
 
-	/** See @ref tcontrol::get_state. */
+	/** See @ref control::get_state. */
 	virtual unsigned get_state() const override;
 
-	/** See @ref twidget::disable_click_dismiss. */
+	/** See @ref widget::disable_click_dismiss. */
 	bool disable_click_dismiss() const override;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
@@ -112,10 +112,10 @@ private:
 	 */
 	std::string link_color_;
 
-	/** See @ref tcontrol::get_control_type. */
+	/** See @ref control::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 
-	/** Inherited from tcontrol. */
+	/** Inherited from control. */
 	void load_config_extra() override;
 
 	/***** ***** ***** signal handlers ***** ****** *****/
@@ -158,7 +158,7 @@ struct builder_label : public builder_control
 
 	using builder_control::build;
 
-	twidget* build() const;
+	widget* build() const;
 
 	bool wrap;
 

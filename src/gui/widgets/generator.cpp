@@ -160,7 +160,7 @@ void horizontal_list::place(const point& origin, const point& size)
 			continue;
 		}
 
-		tgrid& grid = item_ordered(i);
+		grid& grid = item_ordered(i);
 		point best_size = grid.get_best_size();
 		assert(best_size.y <= size.y);
 		// FIXME should we look at grow factors???
@@ -188,7 +188,7 @@ void horizontal_list::set_origin(const point& origin)
 			continue;
 		}
 
-		tgrid& grid = item_ordered(i);
+		grid& grid = item_ordered(i);
 		grid.set_origin(current_origin);
 		current_origin.x += grid.get_width();
 	}
@@ -199,17 +199,17 @@ void horizontal_list::set_visible_rectangle(const SDL_Rect& rectangle)
 	/*
 	 * Note for most implementations this function could work only for the
 	 * independent class it probably fails. Evaluate to make a generic
-	 * function in the tgenerator template class and call it from the wanted
+	 * function in the generator template class and call it from the wanted
 	 * placement functions.
 	 */
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
-		tgrid& grid = item_ordered(i);
+		grid& grid = item_ordered(i);
 		grid.set_visible_rectangle(rectangle);
 	}
 }
 
-twidget* horizontal_list::find_at(const point& coordinate,
+widget* horizontal_list::find_at(const point& coordinate,
 								   const bool must_be_active)
 {
 	assert(get_window());
@@ -221,7 +221,7 @@ twidget* horizontal_list::find_at(const point& coordinate,
 			continue;
 		}
 
-		twidget* widget = item(i).find_at(coordinate, must_be_active);
+		widget* widget = item(i).find_at(coordinate, must_be_active);
 
 		if(widget) {
 			return widget;
@@ -230,7 +230,7 @@ twidget* horizontal_list::find_at(const point& coordinate,
 	return nullptr;
 }
 
-const twidget* horizontal_list::find_at(const point& coordinate,
+const widget* horizontal_list::find_at(const point& coordinate,
 										 const bool must_be_active) const
 {
 	assert(get_window());
@@ -242,7 +242,7 @@ const twidget* horizontal_list::find_at(const point& coordinate,
 			continue;
 		}
 
-		const twidget* widget = item(i).find_at(coordinate, must_be_active);
+		const widget* widget = item(i).find_at(coordinate, must_be_active);
 
 		if(widget) {
 			return widget;
@@ -281,8 +281,8 @@ void horizontal_list::handle_key_left_arrow(SDL_Keymod /*modifier*/, bool& handl
 
 		// NOTE we check the first widget to be active since grids have no
 		// active flag. This method might not be entirely reliable.
-		tcontrol* control = dynamic_cast<tcontrol*>(item(get_item_at_ordered(i)).widget(0, 0));
-		if(control && control->get_active()) {
+		control* ctrl = dynamic_cast<control*>(item(get_item_at_ordered(i)).get_widget(0, 0));
+		if(ctrl && ctrl->get_active()) {
 			select_item(get_item_at_ordered(i), true);
 			return;
 		}
@@ -320,8 +320,8 @@ void horizontal_list::handle_key_right_arrow(SDL_Keymod /*modifier*/,
 
 		// NOTE we check the first widget to be active since grids have no
 		// active flag. This method might not be entirely reliable.
-		tcontrol* control = dynamic_cast<tcontrol*>(item(get_item_at_ordered(i)).widget(0, 0));
-		if(control && control->get_active()) {
+		control* ctrl = dynamic_cast<control*>(item(get_item_at_ordered(i)).get_widget(0, 0));
+		if(ctrl && ctrl->get_active()) {
 			select_item(get_item_at_ordered(i), true);
 			return;
 		}
@@ -383,7 +383,7 @@ void vertical_list::place(const point& origin, const point& size)
 			continue;
 		}
 
-		tgrid& grid = item_ordered(i);
+		grid& grid = item_ordered(i);
 		point best_size = grid.get_best_size();
 		assert(best_size.x <= size.x);
 		// FIXME should we look at grow factors???
@@ -411,7 +411,7 @@ void vertical_list::set_origin(const point& origin)
 			continue;
 		}
 
-		tgrid& grid = item_ordered(i);
+		grid& grid = item_ordered(i);
 		grid.set_origin(current_origin);
 		current_origin.y += grid.get_height();
 	}
@@ -422,17 +422,17 @@ void vertical_list::set_visible_rectangle(const SDL_Rect& rectangle)
 	/*
 	 * Note for most implementations this function could work only for the
 	 * independent class it probably fails. Evaluate to make a generic
-	 * function in the tgenerator template class and call it from the wanted
+	 * function in the generator template class and call it from the wanted
 	 * placement functions.
 	 */
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
-		tgrid& grid = item(i);
+		grid& grid = item(i);
 		grid.set_visible_rectangle(rectangle);
 	}
 }
 
-twidget* vertical_list::find_at(const point& coordinate,
+widget* vertical_list::find_at(const point& coordinate,
 								 const bool must_be_active)
 {
 	assert(get_window());
@@ -445,7 +445,7 @@ twidget* vertical_list::find_at(const point& coordinate,
 		}
 
 
-		twidget* widget = item(i).find_at(coordinate, must_be_active);
+		widget* widget = item(i).find_at(coordinate, must_be_active);
 
 		if(widget) {
 			return widget;
@@ -454,7 +454,7 @@ twidget* vertical_list::find_at(const point& coordinate,
 	return nullptr;
 }
 
-const twidget* vertical_list::find_at(const point& coordinate,
+const widget* vertical_list::find_at(const point& coordinate,
 									   const bool must_be_active) const
 {
 	assert(get_window());
@@ -466,7 +466,7 @@ const twidget* vertical_list::find_at(const point& coordinate,
 			continue;
 		}
 
-		const twidget* widget = item(i).find_at(coordinate, must_be_active);
+		const widget* widget = item(i).find_at(coordinate, must_be_active);
 
 		if(widget) {
 			return widget;
@@ -505,8 +505,8 @@ void vertical_list::handle_key_up_arrow(SDL_Keymod /*modifier*/, bool& handled)
 
 		// NOTE we check the first widget to be active since grids have no
 		// active flag. This method might not be entirely reliable.
-		tcontrol* control = dynamic_cast<tcontrol*>(item_ordered(i).widget(0, 0));
-		if(control && control->get_active()) {
+		control* ctrl = dynamic_cast<control*>(item_ordered(i).get_widget(0, 0));
+		if(ctrl && ctrl->get_active()) {
 			select_item(get_item_at_ordered(i), true);
 			return;
 		}
@@ -543,8 +543,8 @@ void vertical_list::handle_key_down_arrow(SDL_Keymod /*modifier*/, bool& handled
 
 		// NOTE we check the first widget to be active since grids have no
 		// active flag. This method might not be entirely reliable.
-		tcontrol* control = dynamic_cast<tcontrol*>(item_ordered(i).widget(0, 0));
-		if(control && control->get_active()) {
+		control* ctrl = dynamic_cast<control*>(item_ordered(i).get_widget(0, 0));
+		if(ctrl && ctrl->get_active()) {
 			select_item(get_item_at_ordered(i), true);
 			return;
 		}
@@ -643,7 +643,7 @@ void table::place(const point& origin, const point& size)
 			continue;
 		}
 
-		tgrid& grid = item_ordered(i);
+		grid& grid = item_ordered(i);
 		point best_size = grid.get_best_size();
 		// FIXME should we look at grow factors???
 
@@ -682,7 +682,7 @@ void table::set_origin(const point& origin)
 			continue;
 		}
 
-		tgrid& grid = item_ordered(i);
+		grid& grid = item_ordered(i);
 		if(current_origin.x + grid.get_width() > origin.x + get_width()) {
 			current_origin.x = origin.x;
 			current_origin.y += row_height;
@@ -703,17 +703,17 @@ void table::set_visible_rectangle(const SDL_Rect& rectangle)
 	/*
 	 * Note for most implementations this function could work only for the
 	 * independent class it probably fails. Evaluate to make a generic
-	 * function in the tgenerator template class and call it from the wanted
+	 * function in the generator template class and call it from the wanted
 	 * placement functions.
 	 */
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
-		tgrid& grid = item(i);
+		grid& grid = item(i);
 		grid.set_visible_rectangle(rectangle);
 	}
 }
 
-twidget* table::find_at(const point& coordinate,
+widget* table::find_at(const point& coordinate,
 						  const bool must_be_active)
 {
 	assert(get_window());
@@ -725,7 +725,7 @@ twidget* table::find_at(const point& coordinate,
 			continue;
 		}
 
-		twidget* widget = item(i).find_at(coordinate, must_be_active);
+		widget* widget = item(i).find_at(coordinate, must_be_active);
 
 		if(widget) {
 			return widget;
@@ -734,7 +734,7 @@ twidget* table::find_at(const point& coordinate,
 	return nullptr;
 }
 
-const twidget* table::find_at(const point& coordinate,
+const widget* table::find_at(const point& coordinate,
 								const bool must_be_active) const
 {
 	assert(get_window());
@@ -746,7 +746,7 @@ const twidget* table::find_at(const point& coordinate,
 			continue;
 		}
 
-		const twidget* widget = item(i).find_at(coordinate, must_be_active);
+		const widget* widget = item(i).find_at(coordinate, must_be_active);
 
 		if(widget) {
 			return widget;
@@ -785,8 +785,8 @@ void table::handle_key_up_arrow(SDL_Keymod /*modifier*/, bool& handled)
 
 		// NOTE we check the first widget to be active since grids have no
 		// active flag. This method might not be entirely reliable.
-		tcontrol* control = dynamic_cast<tcontrol*>(item_ordered(i).widget(0, 0));
-		if(control && control->get_active()) {
+		control* ctrl = dynamic_cast<control*>(item_ordered(i).get_widget(0, 0));
+		if(ctrl && ctrl->get_active()) {
 			select_item(get_item_at_ordered(i), true);
 			return;
 		}
@@ -823,8 +823,8 @@ void table::handle_key_down_arrow(SDL_Keymod /*modifier*/, bool& handled)
 
 		// NOTE we check the first widget to be active since grids have no
 		// active flag. This method might not be entirely reliable.
-		tcontrol* control = dynamic_cast<tcontrol*>(item_ordered(i).widget(0, 0));
-		if(control && control->get_active()) {
+		control* ctrl = dynamic_cast<control*>(item_ordered(i).get_widget(0, 0));
+		if(ctrl && ctrl->get_active()) {
 			select_item(get_item_at_ordered(i), true);
 			return;
 		}
@@ -861,8 +861,8 @@ void table::handle_key_left_arrow(SDL_Keymod /*modifier*/, bool& handled)
 
 		// NOTE we check the first widget to be active since grids have no
 		// active flag. This method might not be entirely reliable.
-		tcontrol* control = dynamic_cast<tcontrol*>(item(get_item_at_ordered(i)).widget(0, 0));
-		if(control && control->get_active()) {
+		control* ctrl = dynamic_cast<control*>(item(get_item_at_ordered(i)).get_widget(0, 0));
+		if(ctrl && ctrl->get_active()) {
 			select_item(get_item_at_ordered(i), true);
 			return;
 		}
@@ -900,8 +900,8 @@ void table::handle_key_right_arrow(SDL_Keymod /*modifier*/,
 
 		// NOTE we check the first widget to be active since grids have no
 		// active flag. This method might not be entirely reliable.
-		tcontrol* control = dynamic_cast<tcontrol*>(item(get_item_at_ordered(i)).widget(0, 0));
-		if(control && control->get_active()) {
+		control* ctrl = dynamic_cast<control*>(item(get_item_at_ordered(i)).get_widget(0, 0));
+		if(ctrl && ctrl->get_active()) {
 			select_item(get_item_at_ordered(i), true);
 			return;
 		}
@@ -912,7 +912,7 @@ void independent::request_reduce_width(const unsigned maximum_width)
 {
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
-		tgrid& grid = item(i);
+		grid& grid = item(i);
 		grid.request_reduce_width(maximum_width);
 	}
 }
@@ -921,7 +921,7 @@ void independent::request_reduce_height(const unsigned maximum_height)
 {
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
-		tgrid& grid = item(i);
+		grid& grid = item(i);
 		grid.request_reduce_height(maximum_height);
 	}
 }
@@ -935,7 +935,7 @@ point independent::calculate_best_size() const
 	point result(0, 0);
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
-		const tgrid& grid = item(i);
+		const grid& grid = item(i);
 
 		const point best_size = grid.get_best_size();
 
@@ -955,7 +955,7 @@ void independent::place(const point& origin, const point& size)
 {
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
-		tgrid& grid = item(i);
+		grid& grid = item(i);
 		grid.place(origin, size);
 	}
 }
@@ -970,12 +970,12 @@ void independent::set_origin(const point& origin)
 	 */
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
-		tgrid& grid = item(i);
+		grid& grid = item(i);
 		grid.set_origin(origin);
 	}
 }
 
-twidget* independent::find_at(const point& coordinate,
+widget* independent::find_at(const point& coordinate,
 							   const bool must_be_active)
 {
 	assert(get_window());
@@ -985,11 +985,11 @@ twidget* independent::find_at(const point& coordinate,
 		return nullptr;
 	}
 
-	tgrid& grid = item(selected_item);
+	grid& grid = item(selected_item);
 	return grid.find_at(coordinate, must_be_active);
 }
 
-const twidget* independent::find_at(const point& coordinate,
+const widget* independent::find_at(const point& coordinate,
 									 const bool must_be_active) const
 {
 	assert(get_window());
@@ -999,15 +999,15 @@ const twidget* independent::find_at(const point& coordinate,
 		return nullptr;
 	}
 
-	const tgrid& grid = item(selected_item);
+	const grid& grid = item(selected_item);
 	return grid.find_at(coordinate, must_be_active);
 }
 
-twidget* independent::find(const std::string& id, const bool must_be_active)
+widget* independent::find(const std::string& id, const bool must_be_active)
 {
 	for(size_t i = 0; i < get_item_count(); ++i) {
 		if(is_selected(i)) {
-			if(twidget* widget = item(i).find(id, must_be_active)) {
+			if(widget* widget = item(i).find(id, must_be_active)) {
 				return widget;
 			}
 		}
@@ -1015,12 +1015,12 @@ twidget* independent::find(const std::string& id, const bool must_be_active)
 	return nullptr;
 }
 
-const twidget* independent::find(const std::string& id,
+const widget* independent::find(const std::string& id,
 								  const bool must_be_active) const
 {
 	for(size_t i = 0; i < get_item_count(); ++i) {
 		if(is_selected(i)) {
-			if(const twidget* widget = item(i).find(id, must_be_active)) {
+			if(const widget* widget = item(i).find(id, must_be_active)) {
 
 				return widget;
 			}
@@ -1039,7 +1039,7 @@ void independent::set_visible_rectangle(const SDL_Rect& rectangle)
 	 */
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
-		tgrid& grid = item(i);
+		grid& grid = item(i);
 		grid.set_visible_rectangle(rectangle);
 	}
 }
@@ -1051,27 +1051,27 @@ void independent::set_visible_rectangle(const SDL_Rect& rectangle)
 namespace select_action
 {
 
-void selection::select(tgrid& grid, const bool select)
+void selection::select(grid& grid, const bool select)
 {
-	tselectable_* selectable = dynamic_cast<tselectable_*>(grid.widget(0, 0));
+	selectable_item* selectable = dynamic_cast<selectable_item*>(grid.get_widget(0, 0));
 	assert(selectable);
 
 	selectable->set_value(select);
 }
 
 void
-selection::init(tgrid* grid,
+selection::init(grid* g,
 			  const std::map<std::string /* widget id */, string_map>& data,
-			  const std::function<void(twidget&)>& callback)
+			  const std::function<void(widget&)>& callback)
 {
-	for(unsigned row = 0; row < grid->get_rows(); ++row) {
-		for(unsigned col = 0; col < grid->get_cols(); ++col) {
-			twidget* widget = grid->widget(row, col);
+	for(unsigned row = 0; row < g->get_rows(); ++row) {
+		for(unsigned col = 0; col < g->get_cols(); ++col) {
+			widget* widget = g->get_widget(row, col);
 			assert(widget);
 
-			tgrid* child_grid = dynamic_cast<tgrid*>(widget);
-			ttoggle_button* btn = dynamic_cast<ttoggle_button*>(widget);
-			ttoggle_panel* panel = dynamic_cast<ttoggle_panel*>(widget);
+			grid* child_grid = dynamic_cast<grid*>(widget);
+			toggle_button* btn = dynamic_cast<toggle_button*>(widget);
+			toggle_panel* panel = dynamic_cast<toggle_panel*>(widget);
 
 			if(btn) {
 				btn->set_callback_state_change(callback);
@@ -1096,9 +1096,9 @@ selection::init(tgrid* grid,
 	}
 }
 
-void show::init(tgrid* grid,
+void show::init(grid* grid,
 				 const std::map<std::string /* widget id */, string_map>& data,
-				 const std::function<void(twidget&)>& callback)
+				 const std::function<void(widget&)>& callback)
 {
 	assert(!callback);
 
@@ -1107,18 +1107,18 @@ void show::init(tgrid* grid,
 		if(item.first.empty()) {
 			for(unsigned row = 0; row < grid->get_rows(); ++row) {
 				for(unsigned col = 0; col < grid->get_cols(); ++col) {
-					if(tcontrol* control
-					   = dynamic_cast<tcontrol*>(grid->widget(row, col))) {
+					if(control* ctrl
+					   = dynamic_cast<control*>(grid->get_widget(row, col))) {
 
-						control->set_members(item.second);
+						ctrl->set_members(item.second);
 					}
 				}
 			}
 		} else {
-			tcontrol* control
-					= dynamic_cast<tcontrol*>(grid->find(item.first, false));
-			if(control) {
-				control->set_members(item.second);
+			control* ctrl
+					= dynamic_cast<control*>(grid->find(item.first, false));
+			if(ctrl) {
+				ctrl->set_members(item.second);
 			}
 		}
 	}
@@ -1136,25 +1136,25 @@ char compile_assert[0];
 #define GENERATE_PLACEMENT                                                     \
 	switch(placement) {                                                        \
 		case generator_base::horizontal_list:                                     \
-			result = new tgenerator<minimum,                                   \
+			result = new generator<minimum,                                   \
 									maximum,                                   \
 									policy::placement::horizontal_list,       \
 									select_action>;                            \
 			break;                                                             \
 		case generator_base::vertical_list:                                       \
-			result = new tgenerator<minimum,                                   \
+			result = new generator<minimum,                                   \
 									maximum,                                   \
 									policy::placement::vertical_list,         \
 									select_action>;                            \
 			break;                                                             \
-		case generator_base::grid:                                                \
-			result = new tgenerator<minimum,                                   \
+		case generator_base::table:                                                \
+			result = new generator<minimum,                                   \
 									maximum,                                   \
 									policy::placement::table,                \
 									select_action>;                            \
 			break;                                                             \
 		case generator_base::independent:                                         \
-			result = new tgenerator<minimum,                                   \
+			result = new generator<minimum,                                   \
 									maximum,                                   \
 									policy::placement::independent,           \
 									select_action>;                            \
@@ -1245,28 +1245,28 @@ void pointer_test()
 
 void direct_test()
 {
-	tgenerator
+	generator
 		< policy::minimum_selection::one_item
 		, policy::maximum_selection::one_item
 		, policy::placement::vertical_list
 		, policy::select_action::selection
 		> a;
 
-	tgenerator
+	generator
 		< policy::minimum_selection::one_item
 		, policy::maximum_selection::many_items
 		, policy::placement::vertical_list
 		, policy::select_action::selection
 		> b;
 
-	tgenerator
+	generator
 		< policy::minimum_selection::no_item
 		, policy::maximum_selection::one_item
 		, policy::placement::vertical_list
 		, policy::select_action::selection
 		> c;
 
-	tgenerator
+	generator
 		< policy::minimum_selection::no_item
 		, policy::maximum_selection::many_items
 		, policy::placement::vertical_list

@@ -68,13 +68,13 @@ tsynced_choice_wait::~tsynced_choice_wait()
 	mgr_.changed_event_.detach_handler(this);
 }
 
-void tsynced_choice_wait::pre_show(twindow& window)
+void tsynced_choice_wait::pre_show(window& window)
 {
 	window_ = &window;
-	message_ = find_widget<tlabel>(&window, "lblMessage", false, true);
+	message_ = find_widget<label>(&window, "lblMessage", false, true);
 
 
-	tbutton& quit_button = find_widget<tbutton>(
+	button& quit_button = find_widget<button>(
 				&window, "btn_quit_game", false);
 
 	connect_signal_mouse_left_click(quit_button,

@@ -40,16 +40,16 @@ ttransient_message::ttransient_message(const std::string& title,
 	register_image("image", true, image);
 }
 
-void ttransient_message::pre_show(twindow& window)
+void ttransient_message::pre_show(window& window)
 {
 	if(hide_title_) {
-		twidget& title = find_widget<twidget>(&window, "title", false);
-		title.set_visible(twidget::tvisible::invisible);
+		widget& title = find_widget<widget>(&window, "title", false);
+		title.set_visible(widget::tvisible::invisible);
 	}
 
 	if(hide_image_) {
-		twidget& image = find_widget<twidget>(&window, "image", false);
-		image.set_visible(twidget::tvisible::invisible);
+		widget& image = find_widget<widget>(&window, "image", false);
+		image.set_visible(widget::tvisible::invisible);
 	}
 }
 

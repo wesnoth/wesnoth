@@ -14,7 +14,7 @@
 
 /**
  * @file
- * Define the common filters for the @ref gui2::tpane class.
+ * Define the common filters for the @ref gui2::pane class.
  */
 
 #ifndef GUI_AUXILIARY_FILTER_HPP_INCLUDED
@@ -30,8 +30,8 @@ namespace gui2
 {
 
 template <class T>
-inline bool sort(const tpane::titem& lhs,
-				 const tpane::titem& rhs,
+inline bool sort(const pane::titem& lhs,
+				 const pane::titem& rhs,
 				 const std::string& tag,
 				 const bool ascending)
 {
@@ -50,7 +50,7 @@ inline bool sort(const tpane::titem& lhs,
  * The comparison is a lower-case comparison.
  *
  * The function is expected to be used as a functor for
- * @ref gui2::tpane::filter().
+ * @ref gui2::pane::filter().
  *
  * @param item                    The pane item to search in.
  * @param tag                     The tag of the field containing the text to
@@ -63,9 +63,9 @@ inline bool sort(const tpane::titem& lhs,
  *
  * @returns                       Whether or not the comparison found a match.
  */
-inline bool contains(const tpane::titem& item,
+inline bool contains(const pane::titem& item,
 					 const std::string& tag,
-					 const ttext_box& text_box)
+					 const text_box& text_box)
 {
 	return item.tags.at(tag).find(utf8::lowercase(text_box.text()))
 		   != std::string::npos;

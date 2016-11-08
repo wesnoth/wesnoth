@@ -44,7 +44,7 @@ public:
 	 *
 	 * @param root                The widget where to start the iteration.
 	 */
-	titerator(twidget& root) : order(root)
+	titerator(widget& root) : order(root)
 	{
 	}
 
@@ -89,13 +89,13 @@ public:
 	 *
 	 * @returns                   The current widget.
 	 */
-	twidget& operator*()
+	widget& operator*()
 	{
 		return order::operator*();
 	}
 
 	/** See @ref operator*. */
-	twidget* operator->()
+	widget* operator->()
 	{
 		return &(operator*());
 	}

@@ -34,7 +34,7 @@
 #include "gui/auxiliary/old_markup.hpp"
 #include "gui/dialogs/message.hpp" // for gui2::show_message
 #include "gui/dialogs/multiplayer/mp_join_game_password_prompt.hpp"
-#include "gui/widgets/window.hpp" // for gui2::twindow::OK
+#include "gui/widgets/window.hpp" // for gui2::window::OK
 #include "lobby_reload_request_exception.hpp"
 #include "log.hpp"
 #include "sound.hpp"
@@ -1227,7 +1227,7 @@ static void handle_addon_requirements_gui(CVideo & v, const std::vector<required
 		}
 		assert(needs_download.size() > 0);
 
-		if (gui2::show_message(v, e_title, err_msg, gui2::tmessage::yes_no_buttons) == gui2::twindow::OK) {
+		if (gui2::show_message(v, e_title, err_msg, gui2::tmessage::yes_no_buttons) == gui2::window::OK) {
 			ad_hoc_addon_fetch_session(v, needs_download);
 			throw lobby_reload_request_exception();
 		}

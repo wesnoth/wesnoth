@@ -51,18 +51,18 @@ REGISTER_WIDGET3(listbox_definition, grid_listbox, _4)
 
 namespace
 {
-void callback_list_item_clicked(twidget& caller)
+void callback_list_item_clicked(widget& caller)
 {
-	get_parent<tlistbox>(caller).list_item_clicked(caller);
+	get_parent<listbox>(caller).list_item_clicked(caller);
 }
 
 } // namespace
 
-tlistbox::tlistbox(const bool has_minimum,
+listbox::listbox(const bool has_minimum,
 				   const bool has_maximum,
 				   const generator_base::placement placement,
 				   const bool select)
-	: tscrollbar_container(2) // FIXME magic number
+	: scrollbar_container(2) // FIXME magic number
 	, generator_(generator_base::build(has_minimum, has_maximum, placement, select))
 	, is_horizonal_(placement == generator_base::horizontal_list)
 	, list_builder_(nullptr)
@@ -72,10 +72,10 @@ tlistbox::tlistbox(const bool has_minimum,
 {
 }
 
-tgrid& tlistbox::add_row(const string_map& item, const int index)
+grid& listbox::add_row(const string_map& item, const int index)
 {
 	assert(generator_);
-	tgrid& row = generator_->create_item(
+	grid& row = generator_->create_item(
 			index, list_builder_, item, callback_list_item_clicked);
 
 	resize_content(row);
@@ -83,11 +83,11 @@ tgrid& tlistbox::add_row(const string_map& item, const int index)
 	return row;
 }
 
-tgrid& tlistbox::add_row(const std::map<std::string /* widget id */, string_map>& data,
+grid& listbox::add_row(const std::map<std::string /* widget id */, string_map>& data,
 				  const int index)
 {
 	assert(generator_);
-	tgrid& row = generator_->create_item(
+	grid& row = generator_->create_item(
 			index, list_builder_, data, callback_list_item_clicked);
 
 	resize_content(row);
@@ -95,7 +95,7 @@ tgrid& tlistbox::add_row(const std::map<std::string /* widget id */, string_map>
 	return row;
 }
 
-void tlistbox::remove_row(const unsigned row, unsigned count)
+void listbox::remove_row(const unsigned row, unsigned count)
 {
 	assert(generator_);
 
@@ -132,37 +132,37 @@ void tlistbox::remove_row(const unsigned row, unsigned count)
 	}
 }
 
-void tlistbox::clear()
+void listbox::clear()
 {
 	// Due to the removing from the linked group, don't use
 	// generator_->clear() directly.
 	remove_row(0, 0);
 }
 
-unsigned tlistbox::get_item_count() const
+unsigned listbox::get_item_count() const
 {
 	assert(generator_);
 	return generator_->get_item_count();
 }
 
-void tlistbox::set_row_active(const unsigned row, const bool active)
+void listbox::set_row_active(const unsigned row, const bool active)
 {
 	assert(generator_);
 	generator_->item(row).set_active(active);
 }
 
-void tlistbox::set_row_shown(const unsigned row, const bool shown)
+void listbox::set_row_shown(const unsigned row, const bool shown)
 {
 	assert(generator_);
 
-	twindow* window = get_window();
+	window* window = get_window();
 	assert(window);
 
 	const int selected_row = get_selected_row();
 
 	bool resize_needed;
 	{
-		twindow::tinvalidate_layout_blocker invalidate_layout_blocker(*window);
+		window::tinvalidate_layout_blocker invalidate_layout_blocker(*window);
 
 		generator_->set_item_shown(row, shown);
 		point best_size = generator_->calculate_best_size();
@@ -182,7 +182,7 @@ void tlistbox::set_row_shown(const unsigned row, const bool shown)
 	}
 }
 
-void tlistbox::set_row_shown(const boost::dynamic_bitset<>& shown)
+void listbox::set_row_shown(const boost::dynamic_bitset<>& shown)
 {
 	assert(generator_);
 	assert(shown.size() == get_item_count());
@@ -193,14 +193,14 @@ void tlistbox::set_row_shown(const boost::dynamic_bitset<>& shown)
 		return;
 	}
 
-	twindow* window = get_window();
+	window* window = get_window();
 	assert(window);
 
 	const int selected_row = get_selected_row();
 
 	bool resize_needed;
 	{
-		twindow::tinvalidate_layout_blocker invalidate_layout_blocker(*window);
+		window::tinvalidate_layout_blocker invalidate_layout_blocker(*window);
 
 		for(size_t i = 0; i < shown.size(); ++i) {
 			generator_->set_item_shown(i, shown[i]);
@@ -222,12 +222,12 @@ void tlistbox::set_row_shown(const boost::dynamic_bitset<>& shown)
 	}
 }
 
-boost::dynamic_bitset<> tlistbox::get_rows_shown() const
+boost::dynamic_bitset<> listbox::get_rows_shown() const
 {
 	return generator_->get_items_shown();
 }
 
-bool tlistbox::any_rows_shown() const
+bool listbox::any_rows_shown() const
 {
 	for(size_t i = 0; i < get_item_count(); i++) {
 		if(generator_->get_item_shown(i)) {
@@ -237,20 +237,20 @@ bool tlistbox::any_rows_shown() const
 	return false;
 }
 
-const tgrid* tlistbox::get_row_grid(const unsigned row) const
+const grid* listbox::get_row_grid(const unsigned row) const
 {
 	assert(generator_);
 	// rename this function and can we return a reference??
 	return &generator_->item(row);
 }
 
-tgrid* tlistbox::get_row_grid(const unsigned row)
+grid* listbox::get_row_grid(const unsigned row)
 {
 	assert(generator_);
 	return &generator_->item(row);
 }
 
-bool tlistbox::select_row(const unsigned row, const bool select)
+bool listbox::select_row(const unsigned row, const bool select)
 {
 	assert(generator_);
 
@@ -259,14 +259,14 @@ bool tlistbox::select_row(const unsigned row, const bool select)
 	return true; // FIXME test what result should have been!!!
 }
 
-int tlistbox::get_selected_row() const
+int listbox::get_selected_row() const
 {
 	assert(generator_);
 
 	return generator_->get_selected_item();
 }
 
-void tlistbox::list_item_clicked(twidget& caller)
+void listbox::list_item_clicked(widget& caller)
 {
 	assert(generator_);
 
@@ -289,14 +289,14 @@ void tlistbox::list_item_clicked(twidget& caller)
 	assert(false);
 }
 
-void tlistbox::set_self_active(const bool /*active*/)
+void listbox::set_self_active(const bool /*active*/)
 {
 	/* DO NOTHING */
 }
 
-bool tlistbox::update_content_size()
+bool listbox::update_content_size()
 {
-	if(get_visible() == twidget::tvisible::invisible) {
+	if(get_visible() == widget::tvisible::invisible) {
 		return true;
 	}
 
@@ -321,7 +321,7 @@ bool tlistbox::update_content_size()
 #pragma GCC diagnostic ignored "-Wmaybe-uninitialized"
 #endif
 
-void tlistbox::place(const point& origin, const point& size)
+void listbox::place(const point& origin, const point& size)
 {
 	boost::optional<unsigned> vertical_scrollbar_position, horizontal_scrollbar_position;
 	// Check if this is the first time placing the list box
@@ -332,7 +332,7 @@ void tlistbox::place(const point& origin, const point& size)
 	}
 
 	// Inherited.
-	tscrollbar_container::place(origin, size);
+	scrollbar_container::place(origin, size);
 
 	const int selected_item = generator_->get_selected_item();
 	if (vertical_scrollbar_position && horizontal_scrollbar_position)
@@ -358,7 +358,7 @@ void tlistbox::place(const point& origin, const point& size)
 #pragma GCC diagnostic pop
 #endif
 
-void tlistbox::resize_content(const int width_modification,
+void listbox::resize_content(const int width_modification,
 							  const int height_modification,
 							  const int width_modification_pos,
 							  const int height_modification_pos)
@@ -389,7 +389,7 @@ void tlistbox::resize_content(const int width_modification,
 	}
 }
 
-void tlistbox::resize_content(const twidget& row)
+void listbox::resize_content(const widget& row)
 {
 	if(row.get_visible() == tvisible::invisible) {
 		return;
@@ -409,24 +409,24 @@ void tlistbox::resize_content(const twidget& row)
 	resize_content(size.x, size.y);
 }
 
-void tlistbox::layout_children()
+void listbox::layout_children()
 {
 	layout_children(false);
 }
 
 void
-tlistbox::child_populate_dirty_list(twindow& caller,
-									const std::vector<twidget*>& call_stack)
+listbox::child_populate_dirty_list(window& caller,
+									const std::vector<widget*>& call_stack)
 {
 	// Inherited.
-	tscrollbar_container::child_populate_dirty_list(caller, call_stack);
+	scrollbar_container::child_populate_dirty_list(caller, call_stack);
 
 	assert(generator_);
-	std::vector<twidget*> child_call_stack = call_stack;
+	std::vector<widget*> child_call_stack = call_stack;
 	generator_->populate_dirty_list(caller, child_call_stack);
 }
 
-void tlistbox::handle_key_up_arrow(SDL_Keymod modifier, bool& handled)
+void listbox::handle_key_up_arrow(SDL_Keymod modifier, bool& handled)
 {
 	assert(generator_);
 
@@ -449,11 +449,11 @@ void tlistbox::handle_key_up_arrow(SDL_Keymod modifier, bool& handled)
 		}
 	} else {
 		// Inherited.
-		tscrollbar_container::handle_key_up_arrow(modifier, handled);
+		scrollbar_container::handle_key_up_arrow(modifier, handled);
 	}
 }
 
-void tlistbox::handle_key_down_arrow(SDL_Keymod modifier, bool& handled)
+void listbox::handle_key_down_arrow(SDL_Keymod modifier, bool& handled)
 {
 	assert(generator_);
 
@@ -476,11 +476,11 @@ void tlistbox::handle_key_down_arrow(SDL_Keymod modifier, bool& handled)
 		}
 	} else {
 		// Inherited.
-		tscrollbar_container::handle_key_up_arrow(modifier, handled);
+		scrollbar_container::handle_key_up_arrow(modifier, handled);
 	}
 }
 
-void tlistbox::handle_key_left_arrow(SDL_Keymod modifier, bool& handled)
+void listbox::handle_key_left_arrow(SDL_Keymod modifier, bool& handled)
 {
 	assert(generator_);
 
@@ -503,11 +503,11 @@ void tlistbox::handle_key_left_arrow(SDL_Keymod modifier, bool& handled)
 			callback_value_changed_(*this);
 		}
 	} else {
-		tscrollbar_container::handle_key_left_arrow(modifier, handled);
+		scrollbar_container::handle_key_left_arrow(modifier, handled);
 	}
 }
 
-void tlistbox::handle_key_right_arrow(SDL_Keymod modifier, bool& handled)
+void listbox::handle_key_right_arrow(SDL_Keymod modifier, bool& handled)
 {
 	assert(generator_);
 
@@ -530,7 +530,7 @@ void tlistbox::handle_key_right_arrow(SDL_Keymod modifier, bool& handled)
 			callback_value_changed_(*this);
 		}
 	} else {
-		tscrollbar_container::handle_key_left_arrow(modifier, handled);
+		scrollbar_container::handle_key_left_arrow(modifier, handled);
 	}
 }
 
@@ -539,53 +539,53 @@ namespace
 
 /**
  * Swaps an item in a grid for another one.*/
-void swap_grid(tgrid* grid,
-			   tgrid* content_grid,
-			   twidget* widget,
+void swap_grid(grid* g,
+			   grid* content_grid,
+			   widget* wgt,
 			   const std::string& id)
 {
 	assert(content_grid);
-	assert(widget);
+	assert(wgt);
 
 	// Make sure the new child has same id.
-	widget->set_id(id);
+	wgt->set_id(id);
 
 	// Get the container containing the wanted widget.
-	tgrid* parent_grid = nullptr;
-	if(grid) {
-		parent_grid = find_widget<tgrid>(grid, id, false, false);
+	grid* parent_grid = nullptr;
+	if(g) {
+		parent_grid = find_widget<grid>(g, id, false, false);
 	}
 	if(!parent_grid) {
-		parent_grid = find_widget<tgrid>(content_grid, id, true, false);
+		parent_grid = find_widget<grid>(content_grid, id, true, false);
 	}
-	parent_grid = dynamic_cast<tgrid*>(parent_grid->parent());
+	parent_grid = dynamic_cast<grid*>(parent_grid->parent());
 	assert(parent_grid);
 
 	// Replace the child.
-	widget = parent_grid->swap_child(id, widget, false);
-	assert(widget);
+	wgt = parent_grid->swap_child(id, wgt, false);
+	assert(wgt);
 
-	delete widget;
+	delete wgt;
 }
 
 } // namespace
 
-void tlistbox::finalize(builder_grid_const_ptr header,
+void listbox::finalize(builder_grid_const_ptr header,
 						builder_grid_const_ptr footer,
 						const std::vector<std::map<std::string, string_map>>& list_data)
 {
 	// "Inherited."
-	tscrollbar_container::finalize_setup();
+	scrollbar_container::finalize_setup();
 
 	assert(generator_);
 
 	if(header) {
-		swap_grid(&grid(), content_grid(), header->build(), "_header_grid");
+		swap_grid(&get_grid(), content_grid(), header->build(), "_header_grid");
 	}
-	tgrid& p = find_widget<tgrid>(this, "_header_grid", false);
+	grid& p = find_widget<grid>(this, "_header_grid", false);
 	for(unsigned i = 0, max = std::max(p.get_cols(), p.get_rows()); i < max; ++i) {
-		if(tselectable_* selectable = find_widget<tselectable_>(&p, "sort_" +  std::to_string(i), false, false)) {
-			selectable->set_callback_state_change(std::bind(&tlistbox::order_by_column, this, i, _1));
+		if(selectable_item* selectable = find_widget<selectable_item>(&p, "sort_" +  std::to_string(i), false, false)) {
+			selectable->set_callback_state_change(std::bind(&listbox::order_by_column, this, i, _1));
 			if(orders_.size() < max ) {
 				orders_.resize(max);
 			}
@@ -593,7 +593,7 @@ void tlistbox::finalize(builder_grid_const_ptr header,
 		}
 	}
 	if(footer) {
-		swap_grid(&grid(), content_grid(), footer->build(), "_footer_grid");
+		swap_grid(&get_grid(), content_grid(), footer->build(), "_footer_grid");
 	}
 
 	generator_->create_items(
@@ -607,9 +607,9 @@ namespace {
 	}
 }
 
-void tlistbox::order_by_column(unsigned column, twidget& widget)
+void listbox::order_by_column(unsigned column, widget& widget)
 {
-	tselectable_& selectable = dynamic_cast<tselectable_&>(widget);
+	selectable_item& selectable = dynamic_cast<selectable_item&>(widget);
 	if(column >= orders_.size()) {
 		return;
 	}
@@ -630,7 +630,7 @@ void tlistbox::order_by_column(unsigned column, twidget& widget)
 	}
 }
 
-void tlistbox::order_by(const generator_base::torder_func& func)
+void listbox::order_by(const generator_base::torder_func& func)
 {
 	generator_->set_order(func);
 
@@ -638,7 +638,7 @@ void tlistbox::order_by(const generator_base::torder_func& func)
 	need_layout_ = true;
 }
 
-void tlistbox::set_column_order(unsigned col, const generator_sort_array& func)
+void listbox::set_column_order(unsigned col, const generator_sort_array& func)
 {
 	if(col >= orders_.size()) {
 		orders_.resize(col + 1);
@@ -646,24 +646,24 @@ void tlistbox::set_column_order(unsigned col, const generator_sort_array& func)
 	orders_[col].second = func;
 }
 
-void tlistbox::set_active_sorting_option(const order_pair& sort_by, const bool select_first)
+void listbox::set_active_sorting_option(const order_pair& sort_by, const bool select_first)
 {
 	// TODO: should this be moved to a public header_grid() getter function?
-	tgrid& header_grid = find_widget<tgrid>(this, "_header_grid", false);
+	grid& header_grid = find_widget<grid>(this, "_header_grid", false);
 
-	tselectable_& widget = find_widget<tselectable_>(&header_grid, "sort_" +  std::to_string(sort_by.first), false);
-	widget.set_value(static_cast<int>(sort_by.second));
+	selectable_item& wgt = find_widget<selectable_item>(&header_grid, "sort_" +  std::to_string(sort_by.first), false);
+	wgt.set_value(static_cast<int>(sort_by.second));
 
-	order_by_column(sort_by.first, dynamic_cast<twidget&>(widget));
+	order_by_column(sort_by.first, dynamic_cast<widget&>(wgt));
 
 	if(select_first) {
 		select_row(generator_->get_item_at_ordered(0));
 	}
 }
 
-const tlistbox::order_pair tlistbox::get_active_sorting_option()
+const listbox::order_pair listbox::get_active_sorting_option()
 {
-	const auto iter = std::find_if(orders_.begin(), orders_.end(), [](const std::pair<tselectable_*, generator_sort_array>& option) {
+	const auto iter = std::find_if(orders_.begin(), orders_.end(), [](const std::pair<selectable_item*, generator_sort_array>& option) {
 		return option.first != nullptr && option.first->get_value() != SORT_NONE;
 	});
 
@@ -674,7 +674,7 @@ const tlistbox::order_pair tlistbox::get_active_sorting_option()
 	return {-1, SORT_NONE};
 }
 
-void tlistbox::set_content_size(const point& origin, const point& size)
+void listbox::set_content_size(const point& origin, const point& size)
 {
 	/** @todo This function needs more testing. */
 	assert(content_grid());
@@ -685,7 +685,7 @@ void tlistbox::set_content_size(const point& origin, const point& size)
 	content_grid()->place(origin, s);
 }
 
-void tlistbox::layout_children(const bool force)
+void listbox::layout_children(const bool force)
 {
 	assert(content_grid());
 
@@ -700,7 +700,7 @@ void tlistbox::layout_children(const bool force)
 	}
 }
 
-const std::string& tlistbox::get_control_type() const
+const std::string& listbox::get_control_type() const
 {
 	static const std::string type = "listbox";
 	return type;
@@ -967,10 +967,10 @@ builder_listbox::builder_listbox(const config& cfg)
 	}
 }
 
-twidget* builder_listbox::build() const
+widget* builder_listbox::build() const
 {
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
-	tlist* widget = new tlist(
+	list_view* widget = new list_view(
 			true, true, generator_base::vertical_list, true, list_builder);
 
 	init_control(widget);
@@ -981,34 +981,34 @@ twidget* builder_listbox::build() const
 #else
 	if(new_widgets) {
 
-		tpane* pane = new tpane(list_builder);
-		pane->set_id(id);
+		pane* p = new pane(list_builder);
+		p->set_id(id);
 
 
-		tgrid* grid = new tgrid();
-		grid->set_rows_cols(1, 1);
+		grid* g = new grid();
+		g->set_rows_cols(1, 1);
 #if 0
-		grid->set_child(
-				  pane
+		g->set_child(
+				  p
 				, 0
 				, 0
-				, tgrid::VERTICAL_GROW_SEND_TO_CLIENT
-					| tgrid::HORIZONTAL_GROW_SEND_TO_CLIENT
-				, tgrid::BORDER_ALL);
+				, grid::VERTICAL_GROW_SEND_TO_CLIENT
+					| grid::HORIZONTAL_GROW_SEND_TO_CLIENT
+				, grid::BORDER_ALL);
 #else
-		tviewport* viewport = new tviewport(*pane);
-		grid->set_child(viewport,
+		viewport* view = new viewport(*p);
+		g->set_child(view,
 						0,
 						0,
-						tgrid::VERTICAL_GROW_SEND_TO_CLIENT
-						| tgrid::HORIZONTAL_GROW_SEND_TO_CLIENT,
-						tgrid::BORDER_ALL);
+						grid::VERTICAL_GROW_SEND_TO_CLIENT
+						| grid::HORIZONTAL_GROW_SEND_TO_CLIENT,
+						grid::BORDER_ALL);
 #endif
-		return grid;
+		return g;
 	}
 
-	tlistbox* widget
-			= new tlistbox(has_minimum_, has_maximum_, generator_base::vertical_list, true);
+	listbox* widget
+			= new listbox(has_minimum_, has_maximum_, generator_base::vertical_list, true);
 
 	init_control(widget);
 
@@ -1120,10 +1120,10 @@ builder_horizontal_listbox::builder_horizontal_listbox(const config& cfg)
 	}
 }
 
-twidget* builder_horizontal_listbox::build() const
+widget* builder_horizontal_listbox::build() const
 {
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
-	tlist* widget = new tlist(
+	list_view* widget = new list_view(
 			true, true, generator_base::horizontal_list, true, list_builder);
 
 	init_control(widget);
@@ -1132,8 +1132,8 @@ twidget* builder_horizontal_listbox::build() const
 	}
 	return widget;
 #else
-	tlistbox* widget
-			= new tlistbox(has_minimum_, has_maximum_, generator_base::horizontal_list, true);
+	listbox* widget
+			= new listbox(has_minimum_, has_maximum_, generator_base::horizontal_list, true);
 
 	init_control(widget);
 
@@ -1245,10 +1245,10 @@ builder_grid_listbox::builder_grid_listbox(const config& cfg)
 	}
 }
 
-twidget* builder_grid_listbox::build() const
+widget* builder_grid_listbox::build() const
 {
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
-	tlist* widget = new tlist(
+	list_view* widget = new list_view(
 			true, true, generator_base::grid, true, list_builder);
 
 	init_control(widget);
@@ -1257,8 +1257,8 @@ twidget* builder_grid_listbox::build() const
 	}
 	return widget;
 #else
-	tlistbox* widget
-			= new tlistbox(has_minimum_, has_maximum_, generator_base::grid, true);
+	listbox* widget
+			= new listbox(has_minimum_, has_maximum_, generator_base::table, true);
 
 	init_control(widget);
 

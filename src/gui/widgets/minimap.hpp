@@ -33,25 +33,25 @@ namespace gui2
  * This minimap can only show a minimap, but it can't be interacted with. For
  * that the tminimap_interactive class will be created.
  */
-class tminimap : public tcontrol
+class minimap : public control
 {
 public:
-	tminimap() : tcontrol(1), map_data_(), terrain_(nullptr)
+	minimap() : control(1), map_data_(), terrain_(nullptr)
 	{
 	}
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
-	/** See @ref tcontrol::set_active. */
+	/** See @ref control::set_active. */
 	virtual void set_active(const bool active) override;
 
-	/** See @ref tcontrol::get_active. */
+	/** See @ref control::get_active. */
 	virtual bool get_active() const override;
 
-	/** See @ref tcontrol::get_state. */
+	/** See @ref control::get_state. */
 	virtual unsigned get_state() const override;
 
-	/** See @ref twidget::disable_click_dismiss. */
+	/** See @ref widget::disable_click_dismiss. */
 	bool disable_click_dismiss() const override;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
@@ -100,12 +100,12 @@ private:
 	 */
 	const surface get_image(const int w, const int h) const;
 
-	/** See @ref twidget::impl_draw_background. */
+	/** See @ref widget::impl_draw_background. */
 	virtual void impl_draw_background(surface& frame_buffer,
 									  int x_offset,
 									  int y_offset) override;
 
-	/** See @ref tcontrol::get_control_type. */
+	/** See @ref control::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 };
 
@@ -132,7 +132,7 @@ struct builder_minimap : public builder_control
 
 	using builder_control::build;
 
-	twidget* build() const;
+	widget* build() const;
 };
 
 } // namespace implementation

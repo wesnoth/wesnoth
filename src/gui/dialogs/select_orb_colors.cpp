@@ -41,7 +41,7 @@ tselect_orb_colors::tselect_orb_colors()
 {
 }
 
-void tselect_orb_colors::pre_show(twindow& window)
+void tselect_orb_colors::pre_show(window& window)
 {
 	setup_orb_group("unmoved", show_unmoved_, preferences::unmoved_color(), window);
 	setup_orb_group("partial", show_partial_, preferences::partial_color(), window);
@@ -49,16 +49,16 @@ void tselect_orb_colors::pre_show(twindow& window)
 	setup_orb_group("ally", show_ally_, preferences::allied_color(), window);
 	setup_orb_group("enemy", show_enemy_, preferences::enemy_color(), window);
 	
-	tbutton& reset = find_widget<tbutton>(&window, "orb_defaults", false);
+	button& reset = find_widget<button>(&window, "orb_defaults", false);
 	connect_signal_mouse_left_click(reset, std::bind(
 		&tselect_orb_colors::handle_reset_click,
 		this, std::ref(window)
 	));
 }
 
-void tselect_orb_colors::post_show(twindow&)
+void tselect_orb_colors::post_show(window&)
 {
-	if(get_retval() == twindow::OK) {
+	if(get_retval() == window::OK) {
 		preferences::set_show_unmoved_orb(show_unmoved_);
 		preferences::set_show_partial_orb(show_partial_);
 		preferences::set_show_moved_orb(show_moved_);
@@ -73,10 +73,10 @@ void tselect_orb_colors::post_show(twindow&)
 	}
 }
 
-void tselect_orb_colors::setup_orb_group(const std::string& base_id, bool& shown, const std::string& initial, twindow& window, bool connect)
+void tselect_orb_colors::setup_orb_group(const std::string& base_id, bool& shown, const std::string& initial, window& window, bool connect)
 {
 	std::string prefix = "orb_" + base_id + "_";
-	ttoggle_button& toggle = find_widget<ttoggle_button>(&window, prefix + "show", false);
+	toggle_button& toggle = find_widget<toggle_button>(&window, prefix + "show", false);
 	toggle.set_value_bool(shown);
 	if(connect) {
 		connect_signal_mouse_left_click(toggle, std::bind(
@@ -86,14 +86,14 @@ void tselect_orb_colors::setup_orb_group(const std::string& base_id, bool& shown
 		));
 	}
 
-	tgrid& selection = find_widget<tgrid>(&window, prefix + "selection", false);
-	tgroup<std::string>& group = groups_[base_id];
+	grid& selection = find_widget<grid>(&window, prefix + "selection", false);
+	group<std::string>& group = groups_[base_id];
 
 	using iterator::twalker_;
 	twalker_* iter = selection.create_walker();
 	while(!iter->at_end(twalker_::child)) {
-		twidget* next = iter->get(twalker_::child);
-		if(ttoggle_button* button = dynamic_cast<ttoggle_button*>(next)) {
+		widget* next = iter->get(twalker_::child);
+		if(toggle_button* button = dynamic_cast<toggle_button*>(next)) {
 			const std::string& id = button->id();
 			group.add_member(button, id.substr(prefix.size()));
 		}
@@ -107,7 +107,7 @@ void tselect_orb_colors::handle_toggle_click(bool& storage)
 	storage = !storage;
 }
 
-void tselect_orb_colors::handle_reset_click(twindow& window)
+void tselect_orb_colors::handle_reset_click(window& window)
 {
 	show_unmoved_ = game_config::show_unmoved_orb;
 	show_partial_ = game_config::show_partial_orb;

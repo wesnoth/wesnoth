@@ -35,16 +35,16 @@ namespace order
 {
 
 template <bool visit_widget, bool visit_grid, bool visit_child>
-class tbottom_up : public tvisit<visit_widget, twalker_::widget>,
-				   public tvisit<visit_grid, twalker_::grid>,
+class tbottom_up : public tvisit<visit_widget, twalker_::self>,
+				   public tvisit<visit_grid, twalker_::internal>,
 				   public tvisit<visit_child, twalker_::child>
 {
-	typedef tvisit<visit_widget, twalker_::widget> tvisit_widget;
-	typedef tvisit<visit_grid, twalker_::grid> tvisit_grid;
+	typedef tvisit<visit_widget, twalker_::self> tvisit_widget;
+	typedef tvisit<visit_grid, twalker_::internal> tvisit_grid;
 	typedef tvisit<visit_child, twalker_::child> tvisit_child;
 
 public:
-	explicit tbottom_up(twidget& root) : root_(root.create_walker()), stack_()
+	explicit tbottom_up(widget& root) : root_(root.create_walker()), stack_()
 	{
 		TST_GUI_I << "Constructor: ";
 		while(!tvisit_child::at_end(*root_)) {
@@ -170,7 +170,7 @@ public:
 		return true;
 	}
 
-	twidget& operator*()
+	widget& operator*()
 	{
 		if(at_end()) {
 			ERR_GUI_I << "Tried to defer beyond end its "
@@ -198,16 +198,16 @@ private:
 };
 
 template <bool visit_widget, bool visit_grid, bool visit_child>
-class ttop_down : public tvisit<visit_widget, twalker_::widget>,
-				  public tvisit<visit_grid, twalker_::grid>,
+class ttop_down : public tvisit<visit_widget, twalker_::self>,
+				  public tvisit<visit_grid, twalker_::internal>,
 				  public tvisit<visit_child, twalker_::child>
 {
-	typedef tvisit<visit_widget, twalker_::widget> tvisit_widget;
-	typedef tvisit<visit_grid, twalker_::grid> tvisit_grid;
+	typedef tvisit<visit_widget, twalker_::self> tvisit_widget;
+	typedef tvisit<visit_grid, twalker_::internal> tvisit_grid;
 	typedef tvisit<visit_child, twalker_::child> tvisit_child;
 
 public:
-	explicit ttop_down(twidget& root) : root_(root.create_walker()), stack_()
+	explicit ttop_down(widget& root) : root_(root.create_walker()), stack_()
 	{
 	}
 
@@ -302,7 +302,7 @@ public:
 		return false;
 	}
 
-	twidget& operator*()
+	widget& operator*()
 	{
 		if(at_end()) {
 			ERR_GUI_I << "Tried to defer beyond end of the iteration "

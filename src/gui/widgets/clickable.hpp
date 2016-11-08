@@ -36,10 +36,10 @@ namespace gui2
  * - connect_signal_mouse_left_click
  * - disconnect_signal_mouse_left_click
  */
-class tclickable_
+class clickable_item
 {
 public:
-	virtual ~tclickable_()
+	virtual ~clickable_item()
 	{
 	}
 

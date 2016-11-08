@@ -40,10 +40,10 @@ private:
 	virtual const std::string& window_id() const;
 
 	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	void pre_show(window& window);
 
 	/** Callback for toggling a checkbox state. */
-	void toggle_category(twidget& box, std::string category);
+	void toggle_category(widget& box, std::string category);
 };
 }
 

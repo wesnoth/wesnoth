@@ -30,20 +30,20 @@ namespace gui2
 /**
  * Simple push button.
  */
-class tmenu_button : public tcontrol, public tselectable_
+class menu_button : public control, public selectable_item
 {
 public:
-	tmenu_button();
+	menu_button();
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
-	/** See @ref tcontrol::set_active. */
+	/** See @ref control::set_active. */
 	virtual void set_active(const bool active) override;
 
-	/** See @ref tcontrol::get_active. */
+	/** See @ref control::get_active. */
 	virtual bool get_active() const override;
 
-	/** See @ref tcontrol::get_state. */
+	/** See @ref control::get_state. */
 	virtual unsigned get_state() const override;
 
 	/** Inherited from tclickable. */
@@ -67,20 +67,20 @@ public:
 	void set_values(const std::vector<::config>& values, int selected = 0);
 	void set_selected(int selected);
 
-	/** See tselectable_::set_callback_state_change. */
-	std::function<void(twidget&)> callback_state_change_;
+	/** See selectable_item::set_callback_state_change. */
+	std::function<void(widget&)> callback_state_change_;
 
-	/** Inherited from tselectable_ */
+	/** Inherited from selectable_item */
 	virtual unsigned get_value() const override { return selected_; }
 
-	/** Inherited from tselectable_ */
+	/** Inherited from selectable_item */
 	virtual void set_value(const unsigned value ) override { set_selected(value); }
 
-	/** Inherited from tselectable_ */
+	/** Inherited from selectable_item */
 	virtual unsigned num_states() const override { return values_.size(); }
 
-	/** Inherited from tselectable_ */
-	virtual void set_callback_state_change(std::function<void(twidget&)> callback) override
+	/** Inherited from selectable_item */
+	virtual void set_callback_state_change(std::function<void(widget&)> callback) override
 	{
 		callback_state_change_ = callback;
 	}
@@ -125,7 +125,7 @@ private:
 	 */
 	int selected_;
 
-	/** See @ref tcontrol::get_control_type. */
+	/** See @ref control::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 
 	/***** ***** ***** signal handlers ***** ****** *****/
@@ -158,7 +158,7 @@ struct menu_button_definition : public control_definition
 
 // }---------- BUILDER -----------{
 
-class tcontrol;
+class control;
 
 namespace implementation
 {
@@ -170,7 +170,7 @@ public:
 
 	using builder_control::build;
 
-	twidget* build() const;
+	widget* build() const;
 
 private:
 	std::string retval_id_;

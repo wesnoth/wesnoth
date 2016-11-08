@@ -119,9 +119,9 @@ tcampaign_difficulty::tcampaign_difficulty(const config& campaign)
 	difficulties_ = generate_difficulty_config(campaign);
 }
 
-void tcampaign_difficulty::pre_show(twindow& window)
+void tcampaign_difficulty::pre_show(window& window)
 {
-	tlistbox& list = find_widget<tlistbox>(&window, "listbox", false);
+	listbox& list = find_widget<listbox>(&window, "listbox", false);
 	window.keyboard_capture(&list);
 
 	std::map<std::string, string_map> data;
@@ -143,24 +143,24 @@ void tcampaign_difficulty::pre_show(twindow& window)
 			list.select_row(this_row);
 		}
 
-		tgrid* grid = list.get_row_grid(this_row);
+		grid* grid = list.get_row_grid(this_row);
 		assert(grid);
 
-		twidget *widget = grid->find("victory", false);
+		widget *widget = grid->find("victory", false);
 		if (widget && !preferences::is_campaign_completed(campaign_id_, d["define"])) {
-			widget->set_visible(twidget::tvisible::hidden);
+			widget->set_visible(widget::tvisible::hidden);
 		}
 	}
 }
 
-void tcampaign_difficulty::post_show(twindow& window)
+void tcampaign_difficulty::post_show(window& window)
 {
-	if(get_retval() != twindow::OK) {
+	if(get_retval() != window::OK) {
 		selected_difficulty_ = "CANCEL";
 		return;
 	}
 
-	tlistbox& list = find_widget<tlistbox>(&window, "listbox", false);
+	listbox& list = find_widget<listbox>(&window, "listbox", false);
 	selected_difficulty_ = difficulties_.child("difficulty", list.get_selected_row())["define"].str();
 }
 }

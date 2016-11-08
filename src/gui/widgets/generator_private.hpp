@@ -22,14 +22,14 @@
 #include "gui/widgets/selectable.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/toggle_panel.hpp"
-#include "gui/widgets/window.hpp" // For twindow::tvisible
+#include "gui/widgets/window.hpp" // For window::tvisible
 #include "wml_exception.hpp"
 
 namespace gui2
 {
 
 /**
- * Contains the policies for the tgenerator class.
+ * Contains the policies for the generator class.
  */
 namespace policy
 {
@@ -195,25 +195,25 @@ struct horizontal_list : public virtual generator_base
 	/* Also make the overload from the generator_ visible. */
 	using generator_base::create_item;
 
-	/** See @ref twidget::request_reduce_width. */
+	/** See @ref widget::request_reduce_width. */
 	virtual void request_reduce_width(const unsigned /*maximum_width*/) override
 	{
 		/* DO NOTHING */
 	}
 
-	/** See @ref twidget::request_reduce_height. */
+	/** See @ref widget::request_reduce_height. */
 	virtual void request_reduce_height(const unsigned /*maximum_height*/) override
 	{
 		/* DO NOTHING */
 	}
 
-	/** See @ref twidget::calculate_best_size. */
+	/** See @ref widget::calculate_best_size. */
 	virtual point calculate_best_size() const override;
 
-	/** See @ref twidget::place. */
+	/** See @ref widget::place. */
 	virtual void place(const point& origin, const point& size) override;
 
-	/** See @ref twidget::set_origin. */
+	/** See @ref widget::set_origin. */
 	virtual void set_origin(const point& origin) override;
 
 	/**
@@ -223,12 +223,12 @@ struct horizontal_list : public virtual generator_base
 	 */
 	void set_visible_rectangle(const SDL_Rect& rectangle) override;
 
-	/** See @ref twidget::find_at. */
-	virtual twidget* find_at(const point& coordinate,
+	/** See @ref widget::find_at. */
+	virtual widget* find_at(const point& coordinate,
 							 const bool must_be_active) override;
 
-	/** See @ref twidget::find_at. */
-	virtual const twidget* find_at(const point& coordinate,
+	/** See @ref widget::find_at. */
+	virtual const widget* find_at(const point& coordinate,
 								   const bool must_be_active) const override;
 
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
@@ -273,36 +273,36 @@ struct vertical_list : public virtual generator_base
 	/* Also make the overload from the generator_ visible. */
 	using generator_base::create_item;
 
-	/** See @ref twidget::request_reduce_width. */
+	/** See @ref widget::request_reduce_width. */
 	virtual void request_reduce_width(const unsigned /*maximum_width*/) override
 	{
 		/* DO NOTHING */
 	}
 
-	/** See @ref twidget::request_reduce_height. */
+	/** See @ref widget::request_reduce_height. */
 	virtual void request_reduce_height(const unsigned /*maximum_height*/) override
 	{
 		/* DO NOTHING */
 	}
 
-	/** See @ref twidget::calculate_best_size. */
+	/** See @ref widget::calculate_best_size. */
 	virtual point calculate_best_size() const override;
 
-	/** See @ref twidget::place. */
+	/** See @ref widget::place. */
 	virtual void place(const point& origin, const point& size) override;
 
-	/** See @ref twidget::set_origin. */
+	/** See @ref widget::set_origin. */
 	virtual void set_origin(const point& origin) override;
 
 	/** See @ref horizontal_list::set_visible_rectangle(). */
 	void set_visible_rectangle(const SDL_Rect& rectangle) override;
 
-	/** See @ref twidget::find_at. */
-	virtual twidget* find_at(const point& coordinate,
+	/** See @ref widget::find_at. */
+	virtual widget* find_at(const point& coordinate,
 							 const bool must_be_active) override;
 
-	/** See @ref twidget::find_at. */
-	virtual const twidget* find_at(const point& coordinate,
+	/** See @ref widget::find_at. */
+	virtual const widget* find_at(const point& coordinate,
 								   const bool must_be_active) const override;
 
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
@@ -357,37 +357,37 @@ struct table : public virtual generator_base
 	/* Also make the overload from the generator_ visible. */
 	using generator_base::create_item;
 
-	/** See @ref twidget::request_reduce_width. */
+	/** See @ref widget::request_reduce_width. */
 	virtual void request_reduce_width(const unsigned /*maximum_width*/) override
 	{
 		/* DO NOTHING */
 	}
 
-	/** See @ref twidget::request_reduce_height. */
+	/** See @ref widget::request_reduce_height. */
 	virtual void request_reduce_height(const unsigned /*maximum_height*/) override
 	{
 		/* DO NOTHING */
 	}
 
-	/** See @ref twidget::calculate_best_size. */
+	/** See @ref widget::calculate_best_size. */
 	virtual point calculate_best_size() const override;
 
-	/** See @ref twidget::place. */
+	/** See @ref widget::place. */
 	virtual void place(const point& /*origin*/
 					   , const point& /*size*/) override;
 
-	/** See @ref twidget::set_origin. */
+	/** See @ref widget::set_origin. */
 	virtual void set_origin(const point& /*origin*/) override;
 
 	/** See @ref horizontal_list::set_visible_rectangle(). */
 	void set_visible_rectangle(const SDL_Rect& /*rectangle*/) override;
 
-	/** See @ref twidget::find_at. */
-	virtual twidget* find_at(const point& /*coordinate*/
+	/** See @ref widget::find_at. */
+	virtual widget* find_at(const point& /*coordinate*/
 							 , const bool /*must_be_active*/) override;
 
-	/** See @ref twidget::find_at. */
-	virtual const twidget* find_at(const point& /*coordinate*/
+	/** See @ref widget::find_at. */
+	virtual const widget* find_at(const point& /*coordinate*/
 								   , const bool /*must_be_active*/) const override;
 
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
@@ -432,37 +432,37 @@ struct independent : public virtual generator_base
 	/* Also make the overload from the generator_ visible. */
 	using generator_base::create_item;
 
-	/** See @ref twidget::request_reduce_width. */
+	/** See @ref widget::request_reduce_width. */
 	virtual void request_reduce_width(const unsigned maximum_width) override;
 
 	/** See horizontal_list::request_reduce_height. */
 	virtual void request_reduce_height(const unsigned maximum_height) override;
 
-	/** See @ref twidget::calculate_best_size. */
+	/** See @ref widget::calculate_best_size. */
 	virtual point calculate_best_size() const override;
 
-	/** See @ref twidget::place. */
+	/** See @ref widget::place. */
 	virtual void place(const point& origin, const point& size) override;
 
-	/** See @ref twidget::set_origin. */
+	/** See @ref widget::set_origin. */
 	virtual void set_origin(const point& origin) override;
 
 	/** See @ref horizontal_list::set_visible_rectangle(). */
 	void set_visible_rectangle(const SDL_Rect& rectangle) override;
 
-	/** See @ref twidget::find_at. */
-	virtual twidget* find_at(const point& coordinate,
+	/** See @ref widget::find_at. */
+	virtual widget* find_at(const point& coordinate,
 							 const bool must_be_active) override;
 
-	/** See @ref twidget::find_at. */
-	virtual const twidget* find_at(const point& coordinate,
+	/** See @ref widget::find_at. */
+	virtual const widget* find_at(const point& coordinate,
 								   const bool must_be_active) const override;
 
-	/** See @ref twidget::find. */
-	twidget* find(const std::string& id, const bool must_be_active) override;
+	/** See @ref widget::find. */
+	widget* find(const std::string& id, const bool must_be_active) override;
 
-	/** See @ref twidget::find. */
-	const twidget* find(const std::string& id,
+	/** See @ref widget::find. */
+	const widget* find(const std::string& id,
 						const bool must_be_active) const override;
 
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
@@ -503,10 +503,10 @@ struct independent : public virtual generator_base
 namespace select_action
 {
 
-/** Select the item, this requires the grid to contain a tselectable_. */
+/** Select the item, this requires the grid to contain a selectable_item. */
 struct selection : public virtual generator_base
 {
-	void select(tgrid& grid, const bool select);
+	void select(grid& grid, const bool select);
 
 	/**
 	 * Helper function to initialize a grid.
@@ -517,18 +517,18 @@ struct selection : public virtual generator_base
 	 * @param callback            The callback function to call when an item
 	 *                            in the grid is (de)selected.
 	 */
-	void init(tgrid* grid,
+	void init(grid* grid,
 			  const std::map<std::string /* widget id */, string_map>& data,
-			  const std::function<void(twidget&)>& callback);
+			  const std::function<void(widget&)>& callback);
 };
 
 /** Show the item. */
 struct show : public virtual generator_base
 {
-	void select(tgrid& grid, const bool show)
+	void select(grid& grid, const bool show)
 	{
-		grid.set_visible(show ? twidget::tvisible::visible
-							  : twidget::tvisible::hidden);
+		grid.set_visible(show ? widget::tvisible::visible
+							  : widget::tvisible::hidden);
 	}
 
 	/**
@@ -541,16 +541,16 @@ struct show : public virtual generator_base
 	 * @param callback            The callback function is not used and
 	 *                            should be nullptr.
 	 */
-	void init(tgrid* grid,
+	void init(grid* grid,
 			  const std::map<std::string /* widget id */, string_map>& data,
-			  const std::function<void(twidget&)>& callback);
+			  const std::function<void(widget&)>& callback);
 };
 
 } // namespace select_action
 
 } // namespace policy
 
-/***** ***** ***** ***** tgenerator ***** ***** ***** *****/
+/***** ***** ***** ***** generator ***** ***** ***** *****/
 
 /**
  * Basic template class to generate new items.
@@ -561,13 +561,13 @@ template <class minimum_selection,
 		  class maximum_selection,
 		  class placement,
 		  class select_action>
-class tgenerator : public minimum_selection,
+class generator : public minimum_selection,
 				   public maximum_selection,
 				   public placement,
 				   public select_action
 {
 public:
-	tgenerator()
+	generator()
 		: minimum_selection()
 		, maximum_selection()
 		, placement()
@@ -581,7 +581,7 @@ public:
 	{
 	}
 
-	~tgenerator()
+	~generator()
 	{
 		clear();
 	}
@@ -651,8 +651,8 @@ public:
 			/*** Set the proper visible state. ***/
 			items_[index]->shown = show;
 			items_[index]
-					->grid.set_visible(show ? twidget::tvisible::visible
-											: twidget::tvisible::invisible);
+					->grid.set_visible(show ? widget::tvisible::visible
+											: widget::tvisible::invisible);
 
 			/*** Update the selection. ***/
 			minimum_selection::set_item_shown(index, show);
@@ -663,7 +663,7 @@ public:
 	virtual bool get_item_shown(const unsigned index) const override
 	{
 		assert(index < items_.size());
-		return items_[index]->shown && items_[index]->grid.get_visible() != twindow::tvisible::invisible;
+		return items_[index]->shown && items_[index]->grid.get_visible() != window::tvisible::invisible;
 	}
 
 
@@ -703,21 +703,21 @@ public:
 	}
 
 	/** Inherited from generator_base. */
-	tgrid& item(const unsigned index) override
+	grid& item(const unsigned index) override
 	{
 		assert(index < items_.size());
 		return items_[index]->grid;
 	}
 
 	/** Inherited from generator_base. */
-	const tgrid& item(const unsigned index) const override
+	const grid& item(const unsigned index) const override
 	{
 		assert(index < items_.size());
 		return items_[index]->grid;
 	}
 
 	/** Inherited from generator_base. */
-	tgrid& item_ordered(const unsigned index) override
+	grid& item_ordered(const unsigned index) override
 	{
 		calculate_order();
 		assert(index < items_.size());
@@ -725,7 +725,7 @@ public:
 	}
 
 	/** Inherited from generator_base. */
-	const tgrid& item_ordered(const unsigned index) const override
+	const grid& item_ordered(const unsigned index) const override
 	{
 		calculate_order();
 		assert(index < items_.size());
@@ -734,10 +734,10 @@ public:
 
 
 	/** Inherited from generator_base. */
-	tgrid& create_item(const int index,
+	grid& create_item(const int index,
 					   builder_grid_const_ptr list_builder,
 					   const string_map& item_data,
-					   const std::function<void(twidget&)>& callback) override
+					   const std::function<void(widget&)>& callback) override
 	{
 		std::map<std::string, string_map> data;
 
@@ -746,11 +746,11 @@ public:
 	}
 
 	/** Inherited from generator_base. */
-	tgrid& create_item(
+	grid& create_item(
 			const int index,
 			builder_grid_const_ptr list_builder,
 			const std::map<std::string /* widget id */, string_map>& item_data,
-			const std::function<void(twidget&)>& callback) override
+			const std::function<void(widget&)>& callback) override
 	{
 		assert(list_builder);
 		assert(index == -1 || static_cast<unsigned>(index) < items_.size());
@@ -777,7 +777,7 @@ public:
 			builder_grid_const_ptr list_builder,
 			const std::vector<std::map<std::string /*widget id*/, string_map> >&
 					data,
-			const std::function<void(twidget&)>& callback) override
+			const std::function<void(widget&)>& callback) override
 	{
 		impl_create_items(index, list_builder, data, callback);
 	}
@@ -786,17 +786,17 @@ public:
 	virtual void create_items(const int index,
 							  builder_grid_const_ptr list_builder,
 							  const std::vector<string_map>& data,
-							  const std::function<void(twidget&)>& callback) override
+							  const std::function<void(widget&)>& callback) override
 	{
 		impl_create_items(index, list_builder, data, callback);
 	}
 
-	/** See @ref twidget::layout_initialise. */
+	/** See @ref widget::layout_initialise. */
 	virtual void layout_initialise(const bool full_initialisation) override
 	{
 		for(auto item : items_)
 		{
-			if(item->grid.get_visible() != twidget::tvisible::invisible
+			if(item->grid.get_visible() != widget::tvisible::invisible
 			   && item->shown) {
 
 				item->grid.layout_initialise(full_initialisation);
@@ -804,59 +804,59 @@ public:
 		}
 	}
 
-	/** See @ref twidget::request_reduce_width. */
+	/** See @ref widget::request_reduce_width. */
 	virtual void request_reduce_width(const unsigned maximum_width) override
 	{
 		placement::request_reduce_width(maximum_width);
 	}
 
-	/** See @ref twidget::request_reduce_height. */
+	/** See @ref widget::request_reduce_height. */
 	virtual void request_reduce_height(const unsigned maximum_height) override
 	{
 		placement::request_reduce_height(maximum_height);
 	}
 
-	/** See @ref twidget::calculate_best_size. */
+	/** See @ref widget::calculate_best_size. */
 	virtual point calculate_best_size() const override
 	{
 		return placement::calculate_best_size();
 	}
 
-	/** See @ref twidget::place. */
+	/** See @ref widget::place. */
 	virtual void place(const point& origin, const point& size) override
 	{
 		// Inherited, so we get useful debug info.
-		twidget::place(origin, size);
+		widget::place(origin, size);
 
 		placement::place(origin, size);
 	}
 
-	/** See @ref twidget::set_origin. */
+	/** See @ref widget::set_origin. */
 	virtual void set_origin(const point& origin) override
 	{
 		// Inherited.
-		twidget::set_origin(origin);
+		widget::set_origin(origin);
 
 		placement::set_origin(origin);
 	}
 
-	/** See @ref twidget::set_visible_rectangle. */
+	/** See @ref widget::set_visible_rectangle. */
 	virtual void set_visible_rectangle(const SDL_Rect& rectangle) override
 	{
 		placement::set_visible_rectangle(rectangle);
 	}
 
-	/** See @ref twidget::impl_draw_children. */
+	/** See @ref widget::impl_draw_children. */
 	virtual void impl_draw_children(surface& frame_buffer,
 									int x_offset,
 									int y_offset) override
 	{
-		assert(this->get_visible() == twidget::tvisible::visible);
+		assert(this->get_visible() == widget::tvisible::visible);
 		calculate_order();
 		for(auto index : order_)
 		{
 			titem* item = items_[index];
-			if(item->grid.get_visible() == twidget::tvisible::visible
+			if(item->grid.get_visible() == widget::tvisible::visible
 			   && item->shown) {
 
 				item->grid.draw_children(frame_buffer, x_offset, y_offset);
@@ -864,33 +864,33 @@ public:
 		}
 	}
 
-	/** See @ref twidget::child_populate_dirty_list. */
+	/** See @ref widget::child_populate_dirty_list. */
 	virtual void
-	child_populate_dirty_list(twindow& caller,
-							  const std::vector<twidget*>& call_stack) override
+	child_populate_dirty_list(window& caller,
+							  const std::vector<widget*>& call_stack) override
 	{
 		for(auto item : items_)
 		{
-			std::vector<twidget*> child_call_stack = call_stack;
+			std::vector<widget*> child_call_stack = call_stack;
 			item->grid.populate_dirty_list(caller, child_call_stack);
 		}
 	}
 
-	/** See @ref twidget::find_at. */
-	virtual twidget* find_at(const point& coordinate,
+	/** See @ref widget::find_at. */
+	virtual widget* find_at(const point& coordinate,
 							 const bool must_be_active) override
 	{
 		return placement::find_at(coordinate, must_be_active);
 	}
 
-	/** See @ref twidget::find_at. */
-	virtual const twidget* find_at(const point& coordinate,
+	/** See @ref widget::find_at. */
+	virtual const widget* find_at(const point& coordinate,
 								   const bool must_be_active) const override
 	{
 		return placement::find_at(coordinate, must_be_active);
 	}
 
-	/** See @ref twidget::disable_click_dismiss. */
+	/** See @ref widget::disable_click_dismiss. */
 	bool disable_click_dismiss() const override
 	{
 		for(auto item : items_)
@@ -903,7 +903,7 @@ public:
 	}
 
 	/**
-	 * See @ref twidget::create_walker.
+	 * See @ref widget::create_walker.
 	 *
 	 * @todo Implement properly.
 	 */
@@ -967,7 +967,7 @@ private:
 		}
 
 		/** The grid containing the widgets. */
-		tgrid grid;
+		grid grid;
 
 		/** Is the item selected or not. */
 		bool selected;
@@ -1098,7 +1098,7 @@ private:
 	void impl_create_items(const int index,
 						   builder_grid_const_ptr list_builder,
 						   const std::vector<T>& data,
-						   const std::function<void(twidget&)>& callback)
+						   const std::function<void(widget&)>& callback)
 	{
 		int i = index;
 		for(const auto & item_data : data)
@@ -1122,9 +1122,9 @@ private:
 	 * @param callback            The callback function to call when an item
 	 *                            in the grid is (de)selected.
 	 */
-	void init(tgrid* grid,
+	void init(grid* grid,
 			  const std::map<std::string /* widget id */, string_map>& data,
-			  const std::function<void(twidget&)>& callback)
+			  const std::function<void(widget&)>& callback)
 	{
 		assert(grid);
 		grid->set_parent(this);

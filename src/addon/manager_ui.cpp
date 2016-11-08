@@ -190,7 +190,7 @@ addon_op_result do_resolve_addon_dependencies(CVideo& v, addons_client& client, 
 			broken_deps_report += "\n    " + font::unicode_bullet + " " + make_addon_title(broken_dep_id);
 		}
 
-		if(gui2::show_message(v, _("Broken Dependencies"), broken_deps_report, gui2::tmessage::yes_no_buttons) != gui2::twindow::OK) {
+		if(gui2::show_message(v, _("Broken Dependencies"), broken_deps_report, gui2::tmessage::yes_no_buttons) != gui2::window::OK) {
 			result.outcome = ABORT;
 			return result; // canceled by user
 		}
@@ -279,7 +279,7 @@ addon_op_result do_resolve_addon_dependencies(CVideo& v, addons_client& client, 
 			"The following dependencies could not be installed. Do you still wish to continue?",
 			failed_titles.size()) + std::string("\n\n") + utils::bullet_list(failed_titles);
 
-		result.outcome = gui2::show_message(v, _("Dependencies Installation Failed"), failed_deps_report, gui2::tmessage::yes_no_buttons) == gui2::twindow::OK ? SUCCESS : ABORT; // If the user cancels, return ABORT. Otherwise, return SUCCESS, since the user chose to ignore the failure.
+		result.outcome = gui2::show_message(v, _("Dependencies Installation Failed"), failed_deps_report, gui2::tmessage::yes_no_buttons) == gui2::window::OK ? SUCCESS : ABORT; // If the user cancels, return ABORT. Otherwise, return SUCCESS, since the user chose to ignore the failure.
 		return result;
 	}
 
@@ -317,7 +317,7 @@ bool do_check_before_overwriting_addon(CVideo& video, const addon_info& addon)
 	text += utils::bullet_list(extra_items) + "\n\n";
 	text += _("Do you really wish to continue?");
 
-	return gui2::show_message(video, _("Confirm"), text, gui2::tmessage::yes_no_buttons) == gui2::twindow::OK;
+	return gui2::show_message(video, _("Confirm"), text, gui2::tmessage::yes_no_buttons) == gui2::window::OK;
 }
 
 /** Do a 'smart' fetch of an add-on, checking to avoid overwrites for devs and resolving dependencies, using gui interaction to handle issues that arise
@@ -362,7 +362,7 @@ void do_remote_addon_delete(CVideo& video, addons_client& client, const std::str
 	const int res = gui2::show_message(
 		video, _("Confirm"), text, gui2::tmessage::yes_no_buttons);
 
-	if(res != gui2::twindow::OK) {
+	if(res != gui2::window::OK) {
 		return;
 	}
 
@@ -392,7 +392,7 @@ void do_remote_addon_publish(CVideo& video, addons_client& client, const std::st
 			_("The remote version of this add-on is greater or equal to the version being uploaded. Do you really wish to continue?"),
 			gui2::tmessage::yes_no_buttons);
 
-		if(res != gui2::twindow::OK) {
+		if(res != gui2::window::OK) {
 			return;
 		}
 	}
@@ -403,7 +403,7 @@ void do_remote_addon_publish(CVideo& video, addons_client& client, const std::st
 		gui2::show_error_message(video,
 			_("The server responded with an error:") + "\n" +
 			client.get_last_server_error());
-	} else if(gui2::show_message(video, _("Terms"), server_msg, gui2::tmessage::ok_cancel_buttons) == gui2::twindow::OK) {
+	} else if(gui2::show_message(video, _("Terms"), server_msg, gui2::tmessage::ok_cancel_buttons) == gui2::window::OK) {
 		if(!client.upload_addon(addon_id, server_msg, cfg)) {
 			gui2::show_error_message(video,
 				_("The server responded with an error:") + "\n" +
@@ -1145,7 +1145,7 @@ bool uninstall_local_addons(CVideo& v)
 				, _("Confirm")
 				, confirm_message
 				, gui2::tmessage::yes_no_buttons);
-	} while (res != gui2::twindow::OK);
+	} while (res != gui2::window::OK);
 
 	std::set<std::string> failed_names, skipped_names, succeeded_names;
 
@@ -1211,7 +1211,7 @@ bool manage_addons(CVideo& v)
 	addon_dlg.show(v);
 	int res = addon_dlg.get_retval();
 
-	if(res == gui2::twindow::OK) {
+	if(res == gui2::window::OK) {
 		res = addon_download;
 	}
 

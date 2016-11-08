@@ -36,22 +36,22 @@ private:
 
 	const int side_;
 
-	tgroup<std::string> gender_toggle_;
+	group<std::string> gender_toggle_;
 
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
 	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	void pre_show(window& window);
 
 	/** Callbacks */
-	void on_faction_select(twindow& window);
+	void on_faction_select(window& window);
 
-	void on_leader_select(twindow& window);
+	void on_leader_select(window& window);
 
-	void on_gender_select(twindow& window);
+	void on_gender_select(window& window);
 
-	void update_leader_image(twindow& window);
+	void update_leader_image(window& window);
 };
 
 }

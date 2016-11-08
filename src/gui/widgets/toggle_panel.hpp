@@ -26,21 +26,21 @@ namespace gui2
 /**
  * Class for a toggle button.
  *
- * Quite some code looks like ttoggle_button maybe we should inherit from that
+ * Quite some code looks like toggle_button maybe we should inherit from that
  * but let's test first.  the problem is that the toggle_button has an icon we
  * don't want, but maybe look at refactoring later.  but maybe we should also
  * ditch the icon, not sure however since it's handy for checkboxes...
  */
-class ttoggle_panel : public tpanel, public tselectable_
+class toggle_panel : public panel, public selectable_item
 {
 public:
-	ttoggle_panel();
+	toggle_panel();
 
 	/**
 	 * Sets the members of the child controls.
 	 *
 	 * Sets the members for all controls which have the proper member id. See
-	 * tcontrol::set_members for more info.
+	 * control::set_members for more info.
 	 *
 	 * @param data                Map with the key value pairs to set the
 	 *                            members.
@@ -50,25 +50,25 @@ public:
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
-	/** See @ref twidget::find_at. */
-	virtual twidget* find_at(const point& coordinate,
+	/** See @ref widget::find_at. */
+	virtual widget* find_at(const point& coordinate,
 							 const bool must_be_active) override;
 
-	/** See @ref twidget::find_at. */
-	virtual const twidget* find_at(const point& coordinate,
+	/** See @ref widget::find_at. */
+	virtual const widget* find_at(const point& coordinate,
 								   const bool must_be_active) const override;
 
-	/** See @ref tcontrol::set_active. */
+	/** See @ref control::set_active. */
 	virtual void set_active(const bool active) override;
 
-	/** See @ref tcontrol::get_active. */
+	/** See @ref control::get_active. */
 	virtual bool get_active() const override;
 
-	/** See @ref tcontrol::get_state. */
+	/** See @ref control::get_state. */
 	virtual unsigned get_state() const override;
 
 	/**
-	 * See @ref tcontainer_::get_client_rect.
+	 * See @ref container_base::get_client_rect.
 	 *
 	 * @todo only due to the fact our definition is slightly different from
 	 * panel_definition we need to override this function and do about the
@@ -77,7 +77,7 @@ public:
 	virtual SDL_Rect get_client_rect() const override;
 
 	/**
-	 * See @ref tcontainer_::border_space.
+	 * See @ref container_base::border_space.
 	 *
 	 * @todo only due to the fact our definition is slightly different from
 	 * panel_definition we need to override this function and do about the
@@ -85,30 +85,30 @@ public:
 	 */
 	virtual point border_space() const override;
 
-	/** Inherited from tselectable_ */
+	/** Inherited from selectable_item */
 	unsigned get_value() const override
 	{
 		return state_num_;;
 	}
 
-	/** Inherited from tselectable_ */
+	/** Inherited from selectable_item */
 	void set_value(const unsigned selected) override;
 
-	/** Inherited from tselectable_ */
+	/** Inherited from selectable_item */
 	unsigned num_states() const override;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	void set_retval(const int retval);
 
-	/** Inherited from tselectable_. */
-	void set_callback_state_change(std::function<void(twidget&)> callback) override
+	/** Inherited from selectable_item. */
+	void set_callback_state_change(std::function<void(widget&)> callback) override
 	{
 		callback_state_change_ = callback;
 	}
 
 	void set_callback_mouse_left_double_click(
-			std::function<void(twidget&)> callback)
+			std::function<void(widget&)> callback)
 	{
 		callback_mouse_left_double_click_ = callback;
 	}
@@ -152,23 +152,23 @@ private:
 	 */
 	int retval_;
 
-	/** See tselectable_::set_callback_state_change. */
-	std::function<void(twidget&)> callback_state_change_;
+	/** See selectable_item::set_callback_state_change. */
+	std::function<void(widget&)> callback_state_change_;
 
 	/** Mouse left double click callback */
-	std::function<void(twidget&)> callback_mouse_left_double_click_;
+	std::function<void(widget&)> callback_mouse_left_double_click_;
 
-	/** See @ref twidget::impl_draw_background. */
+	/** See @ref widget::impl_draw_background. */
 	virtual void impl_draw_background(surface& frame_buffer,
 									  int x_offset,
 									  int y_offset) override;
 
-	/** See @ref twidget::impl_draw_foreground. */
+	/** See @ref widget::impl_draw_foreground. */
 	virtual void impl_draw_foreground(surface& frame_buffer,
 									  int x_offset,
 									  int y_offset) override;
 
-	/** See @ref tcontrol::get_control_type. */
+	/** See @ref control::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 
 	/***** ***** ***** signal handlers ***** ****** *****/
@@ -215,7 +215,7 @@ struct builder_toggle_panel : public builder_control
 
 	using builder_control::build;
 
-	twidget* build() const;
+	widget* build() const;
 
 	builder_grid_ptr grid;
 

@@ -33,15 +33,15 @@ tsp_options_configure::tsp_options_configure(ng::create_engine& create_engine)
 	config_engine_->update_initial_cfg(create_engine_.current_level().data());
 }
 
-void tsp_options_configure::pre_show(twindow& window)
+void tsp_options_configure::pre_show(window& window)
 {
 	options_manager_.reset(new tmp_options_helper(window, create_engine_));
 	options_manager_->update_all_options();
 }
 
-void tsp_options_configure::post_show(twindow& window)
+void tsp_options_configure::post_show(window& window)
 {
-	if(window.get_retval() == twindow::OK) {
+	if(window.get_retval() == window::OK) {
 		config_engine_->set_options(options_manager_->get_options_config());
 	}
 }

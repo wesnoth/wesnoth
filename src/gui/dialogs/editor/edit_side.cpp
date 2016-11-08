@@ -72,22 +72,22 @@ teditor_edit_side::teditor_edit_side(editor::editor_team_info& info)
 	register_bool("hidden", true, info.hidden);
 }
 
-void teditor_edit_side::pre_show(twindow& window)
+void teditor_edit_side::pre_show(window& window)
 {
-	controller_group.add_member(&find_widget<ttoggle_button>(&window, "controller_human", false), team::CONTROLLER::HUMAN);
-	controller_group.add_member(&find_widget<ttoggle_button>(&window, "controller_ai", false),    team::CONTROLLER::AI);
-	controller_group.add_member(&find_widget<ttoggle_button>(&window, "controller_null", false),  team::CONTROLLER::EMPTY);
+	controller_group.add_member(&find_widget<toggle_button>(&window, "controller_human", false), team::CONTROLLER::HUMAN);
+	controller_group.add_member(&find_widget<toggle_button>(&window, "controller_ai", false),    team::CONTROLLER::AI);
+	controller_group.add_member(&find_widget<toggle_button>(&window, "controller_null", false),  team::CONTROLLER::EMPTY);
 
 	controller_group.set_member_states(controller_);
 
-	vision_group.add_member(&find_widget<ttoggle_button>(&window, "vision_all", false),    team::SHARE_VISION::ALL);
-	vision_group.add_member(&find_widget<ttoggle_button>(&window, "vision_shroud", false), team::SHARE_VISION::SHROUD);
-	vision_group.add_member(&find_widget<ttoggle_button>(&window, "vision_null", false),   team::SHARE_VISION::NONE);
+	vision_group.add_member(&find_widget<toggle_button>(&window, "vision_all", false),    team::SHARE_VISION::ALL);
+	vision_group.add_member(&find_widget<toggle_button>(&window, "vision_shroud", false), team::SHARE_VISION::SHROUD);
+	vision_group.add_member(&find_widget<toggle_button>(&window, "vision_null", false),   team::SHARE_VISION::NONE);
 
 	vision_group.set_member_states(share_vision_);
 }
 
-void teditor_edit_side::post_show(twindow&)
+void teditor_edit_side::post_show(window&)
 {
 	controller_ = controller_group.get_active_member_value();
 	share_vision_ = vision_group.get_active_member_value();
