@@ -23,7 +23,6 @@
 #include "sdl/utils.hpp"
 #include "sdl/rect.hpp"
 
-#include "neon.hpp"
 #include "video.hpp"
 #include "xBRZ/xbrz.hpp"
 
