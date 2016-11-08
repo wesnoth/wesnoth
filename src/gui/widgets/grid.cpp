@@ -263,7 +263,6 @@ void tgrid::request_reduce_width(const unsigned maximum_width)
 					  << " pixels for column " << col << ".\n";
 
 			size.x -= reduction;
-			col_width_[col] = width;
 			reduced += reduction;
 		}
 
@@ -340,6 +339,12 @@ void tgrid::request_reduce_height(const unsigned maximum_height)
 			wanted_height = 1;
 		}
 
+		/* Reducing the height of a widget causes the widget to save its new size
+		in twidget::layout_size_. After that, get_best_size() will return that
+		size and not the originally calculated optimal size.
+		Thus, it's perfectly correct that tgrid::calculate_best_size() that we
+		call later calls get_best_size() for child widgets as if size reduction
+		had never happened. */
 		const unsigned height = tgrid_implementation::row_request_reduce_height(
 				*this, row, wanted_height);
 
@@ -351,7 +356,6 @@ void tgrid::request_reduce_height(const unsigned maximum_height)
 					  << " reduced " << reduction << " pixels.\n";
 
 			size.y -= reduction;
-			row_height_[row] = height;
 			reduced += reduction;
 		}
 
