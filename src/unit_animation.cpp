@@ -1095,7 +1095,10 @@ std::ostream& operator << (std::ostream& outstream, const unit_animation& u_anim
 	std::cout << "[";
 	int i=0;
 	BOOST_FOREACH(std::string event, u_animation.event_) {
-		if (i>0) std::cout << ','; i++;
+		if(i > 0) {
+			std::cout << ',';
+		}
+		i++;
 		std::cout << event;
 	}
 	std::cout << "]\n";
@@ -1106,7 +1109,10 @@ std::ostream& operator << (std::ostream& outstream, const unit_animation& u_anim
 		std::cout << "\thits=";
 		i=0;
 		BOOST_FOREACH(const unit_animation::hit_type hit_type, u_animation.hits_) {
-			if (i>0) std::cout << ','; i++;
+			if(i > 0) {
+				std::cout << ',';
+			}
+			i++;
 			switch (hit_type) {
 				case (unit_animation::HIT)     : std::cout << "hit"; break;
 				case (unit_animation::MISS)    : std::cout << "miss"; break;
@@ -1120,7 +1126,10 @@ std::ostream& operator << (std::ostream& outstream, const unit_animation& u_anim
 		std::cout << "\tdirections=";
 		i=0;
 		BOOST_FOREACH(const map_location::DIRECTION direction, u_animation.directions_) {
-			if (i>0) std::cout << ','; i++;
+			if(i > 0) {
+				std::cout << ',';
+			}
+			i++;
 			switch (direction) {
 				case (map_location::NORTH)     : std::cout << "n"; break;
 				case (map_location::NORTH_EAST): std::cout << "ne"; break;
@@ -1137,7 +1146,10 @@ std::ostream& operator << (std::ostream& outstream, const unit_animation& u_anim
 		i=0;
 		std::cout << "\tterrain=";
 		BOOST_FOREACH(const t_translation::t_terrain terrain, u_animation.terrain_types_) {
-			if (i>0) std::cout << ','; i++;
+			if(i > 0) {
+				std::cout << ',';
+			}
+			i++;
 			std::cout << terrain;
 		}
 		std::cout << '\n';
@@ -1199,7 +1211,10 @@ std::ostream& operator << (std::ostream& outstream, const unit_animation& u_anim
 	std::cout << "[/";
 	i=0;
 	BOOST_FOREACH(std::string event, u_animation.event_) {
-		if (i>0) std::cout << ','; i++;
+		if(i > 0) {
+			std::cout << ',';
+		}
+		i++;
 		std::cout << event;
 	}
 	std::cout << "]\n";
