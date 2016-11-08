@@ -272,7 +272,9 @@ void tgrid::request_reduce_width(const unsigned maximum_width)
 		}
 	}
 
-	set_layout_size(calculate_best_size());
+	set_layout_size(size);
+	set_size(size);
+	layout(origin_);
 }
 
 void tgrid::demand_reduce_width(const unsigned /*maximum_width*/)
@@ -360,12 +362,12 @@ void tgrid::request_reduce_height(const unsigned maximum_height)
 		}
 	}
 
-	size = calculate_best_size();
-
 	DBG_GUI_L << LOG_HEADER << " Requested maximum " << maximum_height
 			  << " resulting height " << size.y << ".\n";
 
 	set_layout_size(size);
+	set_size(size);
+	layout(origin_);
 }
 
 void tgrid::demand_reduce_height(const unsigned /*maximum_height*/)
@@ -445,6 +447,8 @@ void tgrid::place(const tpoint& origin, const tpoint& size)
 
 	twidget::place(origin, size);
 
+	origin_ = origin;
+
 	if(!rows_ || !cols_) {
 		return;
 	}
@@ -468,7 +472,8 @@ void tgrid::place(const tpoint& origin, const tpoint& size)
 	}
 
 	if(best_size.x > size.x || best_size.y > size.y) {
-		// The assertion below fails quite often so try to give as much information as possible.
+		// This situation isn't necessarily a problem, as the grid can and often is shrunk afterwards
+		// with request_reduce_width() and request_reduce_height().
 		std::stringstream out;
 		out << " Failed to place a grid, we have " << size << " space but we need " << best_size << " space.";
 		out << " This happened at a grid with the id '" << id() << "'";
@@ -477,7 +482,7 @@ void tgrid::place(const tpoint& origin, const tpoint& size)
 			out << " in a '" << typeid(*pw).name() << "' with the id '" << pw->id() << "'";
 			pw = pw->parent();
 		}
-		ERR_GUI_L << LOG_HEADER << out.str() << ".\n";
+		LOG_GUI_L << LOG_HEADER << out.str() << ".\n";
 
 		return;
 	}
@@ -546,6 +551,8 @@ void tgrid::place(const tpoint& origin, const tpoint& size)
 
 void tgrid::set_origin(const tpoint& origin)
 {
+	origin_ = origin;
+
 	const tpoint movement = {origin.x - get_x(), origin.y - get_y()};
 
 	// Inherited.
