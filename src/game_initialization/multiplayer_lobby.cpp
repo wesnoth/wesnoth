@@ -548,7 +548,7 @@ void gamebrowser::populate_game_item_campaign_or_scenario_info(gamebrowser::game
 			assert(difficulties.size() == difficulty_options.size());
 			for (const std::string& difficulty : difficulties) {
 				if (difficulty == game["difficulty_define"]) {
-					gui2::tlegacy_menu_item menu_item(difficulty_options[index]);
+					gui2::legacy_menu_item menu_item(difficulty_options[index]);
 					item.map_info += " — ";
 					item.map_info += menu_item.label();
 					item.map_info += " ";

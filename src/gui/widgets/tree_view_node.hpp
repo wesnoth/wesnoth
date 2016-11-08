@@ -143,7 +143,7 @@ public:
 	 *
 	 * @todo Implement properly.
 	 */
-	virtual iterator::twalker_* create_walker() override
+	virtual iterator::walker_base* create_walker() override
 	{
 		return new gui2::iterator::tree_node(*this, children_);
 	}

@@ -177,7 +177,7 @@ bool matrix::disable_click_dismiss() const
 	return false;
 }
 
-iterator::twalker_* matrix::create_walker()
+iterator::walker_base* matrix::create_walker()
 {
 	/**
 	 * @todo Implement properly.

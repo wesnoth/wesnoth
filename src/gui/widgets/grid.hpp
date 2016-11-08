@@ -280,7 +280,7 @@ public:
 	bool disable_click_dismiss() const override;
 
 	/** See @ref widget::create_walker. */
-	virtual iterator::twalker_* create_walker() override;
+	virtual iterator::walker_base* create_walker() override;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 

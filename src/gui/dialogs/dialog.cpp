@@ -93,7 +93,7 @@ bool tdialog::show(CVideo& video, const unsigned auto_close_time)
 	return retval_ == window::OK;
 }
 
-tfield_bool* tdialog::register_bool(
+field_bool* tdialog::register_bool(
 		const std::string& id,
 		const bool mandatory,
 		const std::function<bool()> callback_load_value,
@@ -101,7 +101,7 @@ tfield_bool* tdialog::register_bool(
 		const std::function<void(widget&)> callback_change,
 		const bool initial_fire)
 {
-	tfield_bool* field = new tfield_bool(id,
+	field_bool* field = new field_bool(id,
 										 mandatory,
 										 callback_load_value,
 										 callback_save_value,
@@ -112,51 +112,51 @@ tfield_bool* tdialog::register_bool(
 	return field;
 }
 
-tfield_bool*
+field_bool*
 tdialog::register_bool(const std::string& id,
 					   const bool mandatory,
 					   bool& linked_variable,
 					   const std::function<void(widget&)> callback_change,
 					   const bool initial_fire)
 {
-	tfield_bool* field
-			= new tfield_bool(id, mandatory, linked_variable, callback_change, initial_fire);
+	field_bool* field
+			= new field_bool(id, mandatory, linked_variable, callback_change, initial_fire);
 
 	fields_.push_back(field);
 	return field;
 }
 
-tfield_integer* tdialog::register_integer(
+field_integer* tdialog::register_integer(
 		const std::string& id,
 		const bool mandatory,
 		const std::function<int()> callback_load_value,
 		const std::function<void(const int)> callback_save_value)
 {
-	tfield_integer* field = new tfield_integer(
+	field_integer* field = new field_integer(
 			id, mandatory, callback_load_value, callback_save_value);
 
 	fields_.push_back(field);
 	return field;
 }
 
-tfield_integer* tdialog::register_integer(const std::string& id,
+field_integer* tdialog::register_integer(const std::string& id,
 										  const bool mandatory,
 										  int& linked_variable)
 {
-	tfield_integer* field = new tfield_integer(id, mandatory, linked_variable);
+	field_integer* field = new field_integer(id, mandatory, linked_variable);
 
 	fields_.push_back(field);
 	return field;
 }
 
-tfield_text* tdialog::register_text(
+field_text* tdialog::register_text(
 		const std::string& id,
 		const bool mandatory,
 		const std::function<std::string()> callback_load_value,
 		const std::function<void(const std::string&)> callback_save_value,
 		const bool capture_focus)
 {
-	tfield_text* field = new tfield_text(
+	field_text* field = new field_text(
 			id, mandatory, callback_load_value, callback_save_value);
 
 	if(capture_focus) {
@@ -167,12 +167,12 @@ tfield_text* tdialog::register_text(
 	return field;
 }
 
-tfield_text* tdialog::register_text(const std::string& id,
+field_text* tdialog::register_text(const std::string& id,
 									const bool mandatory,
 									std::string& linked_variable,
 									const bool capture_focus)
 {
-	tfield_text* field = new tfield_text(id, mandatory, linked_variable);
+	field_text* field = new field_text(id, mandatory, linked_variable);
 
 	if(capture_focus) {
 		focus_ = id;
@@ -182,12 +182,12 @@ tfield_text* tdialog::register_text(const std::string& id,
 	return field;
 }
 
-tfield_label* tdialog::register_label(const std::string& id,
+field_label* tdialog::register_label(const std::string& id,
 									  const bool mandatory,
 									  const std::string& text,
 									  const bool use_markup)
 {
-	tfield_label* field = new tfield_label(id, mandatory, text, use_markup);
+	field_label* field = new field_label(id, mandatory, text, use_markup);
 
 	fields_.push_back(field);
 	return field;

@@ -26,16 +26,16 @@ namespace gui2
 class widget;
 class window;
 
-class tfield_;
-class tfield_bool;
-class tfield_label;
-class tfield_text;
+class field_base;
+class field_bool;
+class field_label;
+class field_text;
 
 // NOTE the const must be in the template else things fail :/ bug in gcc?
 template <class T, class W, class CT = const T>
-class tfield;
+class field;
 class integer_selector;
-typedef tfield<int, integer_selector> tfield_integer;
+typedef field<int, integer_selector> field_integer;
 
 } // namespace gui2
 

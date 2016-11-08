@@ -111,10 +111,10 @@ struct builder_drawing : public builder_control
 	widget* build() const;
 
 	/** The width of the widget. */
-	tformula<unsigned> width;
+	typed_formula<unsigned> width;
 
 	/** The height of the widget. */
-	tformula<unsigned> height;
+	typed_formula<unsigned> height;
 
 	/** Config containing what to draw on the widgets canvas. */
 	config draw;

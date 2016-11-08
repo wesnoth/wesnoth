@@ -36,7 +36,7 @@ private:
 	void pre_show(window& window);
 
 	/** The host name of the selected servef. */
-	tfield_text* host_name_;
+	field_text* host_name_;
 
 	/**
 	 * The unit test needs to be able to test the tmp_connect dialog.

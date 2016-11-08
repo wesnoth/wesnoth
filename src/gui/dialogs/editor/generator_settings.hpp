@@ -43,9 +43,9 @@ private:
 	virtual const std::string& window_id() const;
 
 	/** We need to own these fields to access the underlying widget */
-	tfield_integer* players_;
-	tfield_integer* width_;
-	tfield_integer* height_;
+	field_integer* players_;
+	field_integer* width_;
+	field_integer* height_;
 
 	std::function<void()> update_width_label_, update_height_label_;
 };

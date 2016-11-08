@@ -30,7 +30,7 @@ tree_node::tree_node(gui2::tree_view_node& node, boost::ptr_vector<gui2::tree_vi
 {
 }
 
-twalker_::state_t tree_node::next(const tlevel level)
+walker_base::state_t tree_node::next(const level level)
 {
 	if(at_end(level)) {
 		return fail;
@@ -60,7 +60,7 @@ twalker_::state_t tree_node::next(const tlevel level)
 	return fail;
 }
 
-bool tree_node::at_end(const tlevel level) const
+bool tree_node::at_end(const level level) const
 {
 	switch(level) {
 		case self:
@@ -75,7 +75,7 @@ bool tree_node::at_end(const tlevel level) const
 	return true;
 }
 
-gui2::widget* tree_node::get(const tlevel level)
+gui2::widget* tree_node::get(const level level)
 {
 	switch(level) {
 		case self:

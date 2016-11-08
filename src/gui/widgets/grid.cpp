@@ -661,7 +661,7 @@ bool grid::disable_click_dismiss() const
 	return false;
 }
 
-iterator::twalker_* grid::create_walker()
+iterator::walker_base* grid::create_walker()
 {
 	return new gui2::iterator::grid(*this);
 }

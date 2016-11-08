@@ -148,7 +148,7 @@ public:
 	 *
 	 * @todo Implement properly.
 	 */
-	virtual iterator::twalker_* create_walker() override
+	virtual iterator::walker_base* create_walker() override
 	{
 		return nullptr;
 	}

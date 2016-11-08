@@ -126,7 +126,7 @@ static void test_control()
 	T control;
 
 	{
-		gui2::iterator::titerator< gui2::iterator::policy::order::ttop_down<
+		gui2::iterator::iterator< gui2::iterator::policy::order::top_down<
 				true
 				, true
 				, true> >
@@ -146,7 +146,7 @@ static void test_control()
 
 	}
 	{
-		gui2::iterator::titerator< gui2::iterator::policy::order::ttop_down<
+		gui2::iterator::iterator< gui2::iterator::policy::order::top_down<
 				false
 				, true
 				, true> >
@@ -158,11 +158,11 @@ static void test_control()
 	}
 
 	{
-		gui2::iterator::titerator<gui2::iterator::policy::order::tbottom_up<true, true, true> > iterator(control);
+		gui2::iterator::iterator<gui2::iterator::policy::order::bottom_up<true, true, true> > iterator(control);
 		BOOST_CHECK_EQUAL(iterator.at_end(), false);
 	}
 	{
-		gui2::iterator::titerator<gui2::iterator::policy::order::tbottom_up<false, false, false> > iterator(control);
+		gui2::iterator::iterator<gui2::iterator::policy::order::bottom_up<false, false, false> > iterator(control);
 		BOOST_CHECK_EQUAL(iterator.at_end(), true);
 	}
 }
@@ -198,7 +198,7 @@ static void test_grid()
 		std::stringstream sstr;
 		lg::redirect_output_setter redirect_output(sstr);
 
-		gui2::iterator::titerator<gui2::iterator::policy::order::ttop_down<
+		gui2::iterator::iterator<gui2::iterator::policy::order::top_down<
 				true
 				, true
 				, true> >
@@ -214,7 +214,7 @@ static void test_grid()
 		std::stringstream sstr;
 		lg::redirect_output_setter redirect_output(sstr);
 
-		gui2::iterator::titerator<gui2::iterator::policy::order::ttop_down<
+		gui2::iterator::iterator<gui2::iterator::policy::order::top_down<
 				true
 				, true
 				, true> >
@@ -230,7 +230,7 @@ static void test_grid()
 		std::stringstream sstr;
 		lg::redirect_output_setter redirect_output(sstr);
 
-		gui2::iterator::titerator<gui2::iterator::policy::order::tbottom_up<
+		gui2::iterator::iterator<gui2::iterator::policy::order::bottom_up<
 				true
 				, true
 				, true> >
@@ -246,7 +246,7 @@ static void test_grid()
 		std::stringstream sstr;
 		lg::redirect_output_setter redirect_output(sstr);
 
-		gui2::iterator::titerator<gui2::iterator::policy::order::tbottom_up<
+		gui2::iterator::iterator<gui2::iterator::policy::order::bottom_up<
 				true
 				, true
 				, true> >

@@ -41,7 +41,7 @@ namespace gui2
  * gui2::widget. This name widget is a generic name and fits, however some
  * functions used are first declared in a control.
  */
-class tfield_
+class field_base
 {
 public:
 	/**
@@ -51,12 +51,12 @@ public:
 	 *                            A widget can only be connected once.
 	 * @param mandatory           Is the widget mandatory
 	 */
-	tfield_(const std::string& id, const bool mandatory)
+	field_base(const std::string& id, const bool mandatory)
 		: id_(id), mandatory_(mandatory), widget_(nullptr)
 	{
 	}
 
-	virtual ~tfield_()
+	virtual ~field_base()
 	{
 	}
 
@@ -258,7 +258,7 @@ private:
  *                                or not).
  */
 template <class T, class W, class CT>
-class tfield : public tfield_
+class field : public field_base
 {
 public:
 	/**
@@ -277,11 +277,11 @@ public:
 	 *                            some variable in the engine after the window
 	 *                            is closed with OK.
 	 */
-	tfield(const std::string& id,
+	field(const std::string& id,
 		   const bool mandatory,
 		   const std::function<T()>& callback_load_value,
 		   const std::function<void(CT)>& callback_save_value)
-		: tfield_(id, mandatory)
+		: field_base(id, mandatory)
 		, value_(T())
 		, link_(value_)
 		, callback_load_value_(callback_load_value)
@@ -304,8 +304,8 @@ public:
 	 *                                the widget.
 	 *                              * else, its value is undefined.
 	 */
-	tfield(const std::string& id, const bool mandatory, T& linked_variable)
-		: tfield_(id, mandatory)
+	field(const std::string& id, const bool mandatory, T& linked_variable)
+		: field_base(id, mandatory)
 		, value_(T())
 		, link_(linked_variable)
 		, callback_load_value_(std::function<T()>())
@@ -331,8 +331,8 @@ public:
 	 *                            A widget can only be connected once.
 	 * @param value               The value of the widget.
 	 */
-	tfield(const std::string& id, const bool mandatory, const T& value)
-		: tfield_(id, mandatory)
+	field(const std::string& id, const bool mandatory, const T& value)
+		: field_base(id, mandatory)
 		, value_(value)
 		, link_(value_)
 		, callback_load_value_(std::function<T()>())
@@ -341,7 +341,7 @@ public:
 		static_assert((std::is_same<control, W>::value), "Second template argument must be control");
 	}
 
-	/** Inherited from tfield_. */
+	/** Inherited from field_base. */
 	void widget_restore(window& window)
 	{
 		validate_widget(window);
@@ -377,7 +377,7 @@ public:
 		value_ = value;
 	}
 
-	/** Inherited from tfield_. */
+	/** Inherited from field_base. */
 	void widget_save(window& window)
 	{
 		save(window, false);
@@ -423,7 +423,7 @@ private:
 	 */
 	std::function<T()> callback_load_value_;
 
-	/** Inherited from tfield_. */
+	/** Inherited from field_base. */
 	void init_generic(window& window)
 	{
 		validate_widget(window);
@@ -437,7 +437,7 @@ private:
 		restore(window);
 	}
 
-	/** Inherited from tfield_. */
+	/** Inherited from field_base. */
 	void finalize_generic(window& window)
 	{
 		save(window, true);
@@ -488,7 +488,7 @@ private:
 };
 
 template <class T, class W, class CT>
-void tfield<T, W, CT>::save(window& window, const bool must_be_active)
+void field<T, W, CT>::save(window& window, const bool must_be_active)
 {
 	const W* widget
 			= find_widget<const W>(&window, id(), must_be_active, false);
@@ -499,7 +499,7 @@ void tfield<T, W, CT>::save(window& window, const bool must_be_active)
 }
 
 template <>
-inline void tfield<bool, selectable_item>::save(
+inline void field<bool, selectable_item>::save(
 		window& window, const bool must_be_active)
 {
 	const selectable_item* selectable
@@ -511,7 +511,7 @@ inline void tfield<bool, selectable_item>::save(
 }
 
 template <>
-inline void tfield<std::string, control, const std::string&>::save(
+inline void field<std::string, control, const std::string&>::save(
 		window& window, const bool must_be_active)
 {
 	const control* ctrl
@@ -523,7 +523,7 @@ inline void tfield<std::string, control, const std::string&>::save(
 }
 
 template <class T, class W, class CT>
-void tfield<T, W, CT>::restore(window& window)
+void field<T, W, CT>::restore(window& window)
 {
 	W* widget = find_widget<W>(&window, id(), false, false);
 
@@ -534,7 +534,7 @@ void tfield<T, W, CT>::restore(window& window)
 
 template <>
 inline void
-tfield<std::string, control, const std::string&>::restore(window& window)
+field<std::string, control, const std::string&>::restore(window& window)
 {
 	control* ctrl = find_widget<control>(&window, id(), false, false);
 
@@ -544,35 +544,35 @@ tfield<std::string, control, const std::string&>::restore(window& window)
 }
 
 /** Specialized field class for boolean. */
-class tfield_bool : public tfield<bool, selectable_item>
+class field_bool : public field<bool, selectable_item>
 {
 public:
-	tfield_bool(const std::string& id,
+	field_bool(const std::string& id,
 				const bool mandatory,
 				const std::function<bool()>& callback_load_value,
 				const std::function<void(const bool)>& callback_save_value,
 				const std::function<void(widget&)>& callback_change,
 				const bool initial_fire)
-		: tfield<bool, gui2::selectable_item>(
+		: field<bool, gui2::selectable_item>(
 				  id, mandatory, callback_load_value, callback_save_value)
 		, callback_change_(callback_change)
 		, initial_fire_(initial_fire)
 	{
 	}
 
-	tfield_bool(const std::string& id,
+	field_bool(const std::string& id,
 				const bool mandatory,
 				bool& linked_variable,
 				const std::function<void(widget&)>& callback_change,
 				const bool initial_fire)
-		: tfield<bool, gui2::selectable_item>(id, mandatory, linked_variable)
+		: field<bool, gui2::selectable_item>(id, mandatory, linked_variable)
 		, callback_change_(callback_change)
 		, initial_fire_(initial_fire)
 	{
 	}
 
 private:
-	/** Overridden from tfield_. */
+	/** Overridden from field_base. */
 	void init_specialized(window& window)
 	{
 		if(callback_change_) {
@@ -592,29 +592,29 @@ private:
 };
 
 /** Specialized field class for text. */
-class tfield_text : public tfield<std::string, text_box_base, const std::string&>
+class field_text : public field<std::string, text_box_base, const std::string&>
 {
 public:
-	tfield_text(const std::string& id,
+	field_text(const std::string& id,
 				const bool mandatory,
 				const std::function<std::string()>& callback_load_value,
 				const std::function<void(const std::string&)>&
 						callback_save_value)
-		: tfield<std::string, text_box_base, const std::string&>(
+		: field<std::string, text_box_base, const std::string&>(
 				  id, mandatory, callback_load_value, callback_save_value)
 	{
 	}
 
-	tfield_text(const std::string& id,
+	field_text(const std::string& id,
 				const bool mandatory,
 				std::string& linked_variable)
-		: tfield<std::string, text_box_base, const std::string&>(
+		: field<std::string, text_box_base, const std::string&>(
 				  id, mandatory, linked_variable)
 	{
 	}
 
 private:
-	/** Overridden from tfield_. */
+	/** Overridden from field_base. */
 	void finalize_specialized(window& window)
 	{
 		text_box* widget = dynamic_cast<text_box*>(window.find(id(), false));
@@ -626,14 +626,14 @@ private:
 };
 
 /** Specialized field class for a control, used for labels and images. */
-class tfield_label : public tfield<std::string, control, const std::string&>
+class field_label : public field<std::string, control, const std::string&>
 {
 public:
-	tfield_label(const std::string& id,
+	field_label(const std::string& id,
 				 const bool mandatory,
 				 const std::string& text,
 				 const bool use_markup)
-		: tfield<std::string, control, const std::string&>(id, mandatory, text)
+		: field<std::string, control, const std::string&>(id, mandatory, text)
 		, use_markup_(use_markup)
 
 	{
@@ -643,7 +643,7 @@ private:
 	/** Whether or not the label uses markup. */
 	bool use_markup_;
 
-	/** Overridden from tfield_. */
+	/** Overridden from field_base. */
 	void init_specialized(window& window)
 	{
 		find_widget<control>(&window, id(), false).set_use_markup(use_markup_);

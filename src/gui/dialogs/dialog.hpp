@@ -205,7 +205,7 @@ protected:
 	 *
 	 * @returns                   Pointer to the created widget.
 	 */
-	tfield_bool*
+	field_bool*
 	register_bool(const std::string& id,
 				  const bool mandatory,
 				  const std::function<bool()> callback_load_value = nullptr,
@@ -222,13 +222,13 @@ protected:
 	 * @param id                  Id of the widget, same value as in WML.
 	 * @param mandatory            Is the widget mandatory or mandatory.
 	 * @param linked_variable     The variable the widget is linked to. See
-	 *                            @ref tfield::tfield for more information.
+	 *                            @ref field::field for more information.
 	 * @param callback_change     When the value of the widget changes this
 	 *                            callback is called.
 	 *
 	 * @returns                   Pointer to the created widget.
 	 */
-	tfield_bool*
+	field_bool*
 	register_bool(const std::string& id,
 				  const bool mandatory,
 				  bool& linked_variable,
@@ -240,7 +240,7 @@ protected:
 	 *
 	 * See @ref register_bool for more info.
 	 */
-	tfield_integer*
+	field_integer*
 	register_integer(const std::string& id,
 					 const bool mandatory,
 					 const std::function<int()> callback_load_value = nullptr,
@@ -251,7 +251,7 @@ protected:
 	 *
 	 * See @ref register_bool for more info.
 	 */
-	tfield_integer* register_integer(const std::string& id,
+	field_integer* register_integer(const std::string& id,
 									 const bool mandatory,
 									 int& linked_variable);
 	/**
@@ -259,7 +259,7 @@ protected:
 	 *
 	 * See @ref register_bool for more info.
 	 */
-	tfield_text* register_text(
+	field_text* register_text(
 			const std::string& id,
 			const bool mandatory,
 			const std::function<std::string()> callback_load_value = nullptr,
@@ -271,7 +271,7 @@ protected:
 	 *
 	 * See @ref register_bool for more info.
 	 */
-	tfield_text* register_text(const std::string& id,
+	field_text* register_text(const std::string& id,
 							   const bool mandatory,
 							   std::string& linked_variable,
 							   const bool capture_focus = false);
@@ -293,13 +293,13 @@ protected:
 	 * @param text                The text for the label.
 	 * @param use_markup          Whether or not use markup for the label.
 	 */
-	tfield_label* register_label(const std::string& id,
+	field_label* register_label(const std::string& id,
 								 const bool mandatory,
 								 const std::string& text,
 								 const bool use_markup = false);
 
 	/** Registers a new control as image. */
-	tfield_label* register_image(const std::string& id,
+	field_label* register_image(const std::string& id,
 								 const bool mandatory,
 								 const std::string& filename)
 	{
@@ -327,7 +327,7 @@ private:
 	 * functions defined we don't offer access to the vector. If access is
 	 * needed the creator should store a copy of the pointer.
 	 */
-	std::vector<tfield_*> fields_;
+	std::vector<field_base*> fields_;
 
 	/**
 	 * Contains the widget that should get the focus when the window is shown.

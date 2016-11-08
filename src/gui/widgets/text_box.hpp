@@ -288,8 +288,8 @@ struct text_box_definition : public control_definition
 	{
 		explicit tresolution(const config& cfg);
 
-		tformula<unsigned> text_x_offset;
-		tformula<unsigned> text_y_offset;
+		typed_formula<unsigned> text_x_offset;
+		typed_formula<unsigned> text_y_offset;
 	};
 };
 

@@ -23,7 +23,7 @@ namespace gui2
 /**
  * Implements simple parsing of legacy GUI1 item markup.
  */
-class tlegacy_menu_item
+class legacy_menu_item
 {
 	/*
 	 * Legacy options/menu items have some special markup:
@@ -40,7 +40,7 @@ class tlegacy_menu_item
 	 * with special meanings for certain characters.
 	 */
 public:
-	explicit tlegacy_menu_item(const std::string& str = std::string());
+	explicit legacy_menu_item(const std::string& str = std::string());
 
 	const std::string& icon() const
 	{
@@ -62,7 +62,7 @@ public:
 		return default_;
 	}
 
-	tlegacy_menu_item& operator=(const tlegacy_menu_item& rhs)
+	legacy_menu_item& operator=(const legacy_menu_item& rhs)
 	{
 		if(&rhs != this) {
 			icon_ = rhs.icon_;

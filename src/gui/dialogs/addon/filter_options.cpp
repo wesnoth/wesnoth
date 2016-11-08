@@ -35,7 +35,7 @@
 namespace
 {
 bool unchecked_bool_field_finder(gui2::window& window,
-								 gui2::tfield_bool* bool_field)
+								 gui2::field_bool* bool_field)
 {
 	return bool_field->get_widget_value(window) == false;
 }

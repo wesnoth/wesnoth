@@ -62,7 +62,7 @@ private:
 	std::vector<level_type_info> level_types_;
 
 	/* We keep and work with a vector of the RFM types since it's the easiest way to get a value for the
-	 * config_engine and preferences setters, since menu_buttons aren't supported by tfield. Even if they
+	 * config_engine and preferences setters, since menu_buttons aren't supported by field. Even if they
 	 * were, the above functions take a RANDOM_FACTION_MODE value, not an index. Even if we try to keep a
 	 * copy of the selected RFM type index in a int value and update it every time you perform a selection,
 	 * there's still the problem of getting an initial value from preferences, which again is provided as a
@@ -87,24 +87,24 @@ private:
 	 * manually controlled as well so add the pointers here as well.
 	 */
 
-	tfield_bool* use_map_settings_;
-	tfield_bool* fog_;
-	tfield_bool* shroud_;
-	tfield_bool* start_time_;
-	tfield_bool* time_limit_;
-	tfield_bool* shuffle_sides_;
-	tfield_bool* observers_;
-	tfield_bool* registered_users_;
-	tfield_bool* strict_sync_;
+	field_bool* use_map_settings_;
+	field_bool* fog_;
+	field_bool* shroud_;
+	field_bool* start_time_;
+	field_bool* time_limit_;
+	field_bool* shuffle_sides_;
+	field_bool* observers_;
+	field_bool* registered_users_;
+	field_bool* strict_sync_;
 
-	tfield_integer* turns_;
-	tfield_integer* gold_;
-	tfield_integer* support_;
-	tfield_integer* experience_;
-	tfield_integer* init_turn_limit_;
-	tfield_integer* turn_bonus_;
-	tfield_integer* reservoir_;
-	tfield_integer* action_bonus_;
+	field_integer* turns_;
+	field_integer* gold_;
+	field_integer* support_;
+	field_integer* experience_;
+	field_integer* init_turn_limit_;
+	field_integer* turn_bonus_;
+	field_integer* reservoir_;
+	field_integer* action_bonus_;
 
 	template<typename widget>
 	void on_filter_change(window& window, const std::string& id);

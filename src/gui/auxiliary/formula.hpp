@@ -45,7 +45,7 @@ namespace gui2
  *                                this header.
  */
 template <class T>
-class tformula
+class typed_formula
 {
 public:
 	/**
@@ -56,7 +56,7 @@ public:
 	 *                            be converted to the type T.
 	 * @param value               The default value for the object.
 	 */
-	explicit tformula<T>(const std::string& str, const T value = T());
+	explicit typed_formula<T>(const std::string& str, const T value = T());
 
 	/**
 	 * Returns the value, can only be used if the data is no formula.
@@ -136,7 +136,7 @@ private:
 };
 
 template <class T>
-tformula<T>::tformula(const std::string& str, const T value)
+typed_formula<T>::typed_formula(const std::string& str, const T value)
 	: formula_(), value_(value)
 {
 	if(str.empty()) {
@@ -151,7 +151,7 @@ tformula<T>::tformula(const std::string& str, const T value)
 }
 
 template <class T>
-inline T tformula<T>::
+inline T typed_formula<T>::
 operator()(const game_logic::map_formula_callable& variables,
 		   game_logic::function_symbol_table* functions) const
 {
@@ -167,7 +167,7 @@ operator()(const game_logic::map_formula_callable& variables,
 
 template <>
 inline bool
-tformula<bool>::execute(const game_logic::map_formula_callable& variables,
+typed_formula<bool>::execute(const game_logic::map_formula_callable& variables,
 						game_logic::function_symbol_table* functions) const
 {
 	return game_logic::formula(formula_, functions)
@@ -177,7 +177,7 @@ tformula<bool>::execute(const game_logic::map_formula_callable& variables,
 
 template <>
 inline int
-tformula<int>::execute(const game_logic::map_formula_callable& variables,
+typed_formula<int>::execute(const game_logic::map_formula_callable& variables,
 					   game_logic::function_symbol_table* functions) const
 {
 	return game_logic::formula(formula_, functions)
@@ -187,7 +187,7 @@ tformula<int>::execute(const game_logic::map_formula_callable& variables,
 
 template <>
 inline unsigned
-tformula<unsigned>::execute(const game_logic::map_formula_callable& variables,
+typed_formula<unsigned>::execute(const game_logic::map_formula_callable& variables,
 							game_logic::function_symbol_table* functions) const
 {
 	return game_logic::formula(formula_, functions)
@@ -196,7 +196,7 @@ tformula<unsigned>::execute(const game_logic::map_formula_callable& variables,
 }
 
 template <>
-inline std::string tformula<std::string>::execute(
+inline std::string typed_formula<std::string>::execute(
 		const game_logic::map_formula_callable& variables,
 		game_logic::function_symbol_table* functions) const
 {
@@ -207,7 +207,7 @@ inline std::string tformula<std::string>::execute(
 
 template <>
 inline t_string
-tformula<t_string>::execute(const game_logic::map_formula_callable& variables,
+typed_formula<t_string>::execute(const game_logic::map_formula_callable& variables,
 							game_logic::function_symbol_table* functions) const
 {
 	return game_logic::formula(formula_, functions)
@@ -216,7 +216,7 @@ tformula<t_string>::execute(const game_logic::map_formula_callable& variables,
 }
 
 template <>
-inline PangoAlignment tformula<PangoAlignment>::execute(
+inline PangoAlignment typed_formula<PangoAlignment>::execute(
 		const game_logic::map_formula_callable& variables,
 		game_logic::function_symbol_table* functions) const
 {
@@ -227,42 +227,42 @@ inline PangoAlignment tformula<PangoAlignment>::execute(
 
 template <class T>
 inline T
-tformula<T>::execute(const game_logic::map_formula_callable& /*variables*/
+typed_formula<T>::execute(const game_logic::map_formula_callable& /*variables*/
 					 ,
 					 game_logic::function_symbol_table* /*functions*/) const
 {
 	// Every type needs its own execute function avoid instantiation of the
 	// default execute.
-	static_assert(sizeof(T) == 0, "tformula: Missing execute specialization");
+	static_assert(sizeof(T) == 0, "typed_formula: Missing execute specialization");
 	return T();
 }
 
 template <>
-inline void tformula<bool>::convert(const std::string& str)
+inline void typed_formula<bool>::convert(const std::string& str)
 {
 	value_ = utils::string_bool(str);
 }
 
 template <>
-inline void tformula<std::string>::convert(const std::string& str)
+inline void typed_formula<std::string>::convert(const std::string& str)
 {
 	value_ = str;
 }
 
 template <>
-inline void tformula<t_string>::convert(const std::string& str)
+inline void typed_formula<t_string>::convert(const std::string& str)
 {
 	value_ = str;
 }
 
 template <>
-inline void tformula<PangoAlignment>::convert(const std::string& str)
+inline void typed_formula<PangoAlignment>::convert(const std::string& str)
 {
 	value_ = decode_text_alignment(str);
 }
 
 template <class T>
-inline void tformula<T>::convert(const std::string& str)
+inline void typed_formula<T>::convert(const std::string& str)
 {
 	value_ = lexical_cast_default<T>(str);
 }

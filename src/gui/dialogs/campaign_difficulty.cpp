@@ -93,7 +93,7 @@ config generate_difficulty_config(const config& source)
 		for(std::size_t i = 0; i < difficulty_opts.size(); i++)
 		{
 			config temp;
-			gui2::tlegacy_menu_item parsed(difficulty_opts[i]);
+			gui2::legacy_menu_item parsed(difficulty_opts[i]);
 
 			temp["define"] = difficulty_list[i];
 			temp["image"] = parsed.icon();

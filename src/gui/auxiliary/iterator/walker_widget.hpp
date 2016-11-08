@@ -27,7 +27,7 @@ namespace walker
 {
 
 /** A walker for a @ref gui2::control. */
-class widget : public twalker_
+class widget : public walker_base
 {
 public:
 	/**
@@ -37,14 +37,14 @@ public:
 	 */
 	explicit widget(gui2::widget& widget);
 
-	/** Inherited from @ref gui2::iterator::twalker_. */
-	virtual state_t next(const tlevel level);
+	/** Inherited from @ref gui2::iterator::walker_base. */
+	virtual state_t next(const level level);
 
-	/** Inherited from @ref gui2::iterator::twalker_. */
-	virtual bool at_end(const tlevel level) const;
+	/** Inherited from @ref gui2::iterator::walker_base. */
+	virtual bool at_end(const level level) const;
 
-	/** Inherited from @ref gui2::iterator::twalker_. */
-	virtual gui2::widget* get(const tlevel level);
+	/** Inherited from @ref gui2::iterator::walker_base. */
+	virtual gui2::widget* get(const level level);
 
 private:
 	/** The control which the walker is attached to. */

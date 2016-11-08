@@ -821,7 +821,7 @@ void tmp_create_game::post_show(window& window)
 
 		config_engine_->set_random_faction_mode(rfm_types_[selected_rfm_index_]);
 
-		// Since we don't have a tfield handling this option, we need to save the value manually
+		// Since we don't have a field handling this option, we need to save the value manually
 		prefs::set_random_faction_mode(mp_game_settings::RANDOM_FACTION_MODE::enum_to_string(rfm_types_[selected_rfm_index_]));
 
 		// Save custom option settings

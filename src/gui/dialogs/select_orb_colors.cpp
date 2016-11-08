@@ -89,15 +89,15 @@ void tselect_orb_colors::setup_orb_group(const std::string& base_id, bool& shown
 	grid& selection = find_widget<grid>(&window, prefix + "selection", false);
 	group<std::string>& group = groups_[base_id];
 
-	using iterator::twalker_;
-	twalker_* iter = selection.create_walker();
-	while(!iter->at_end(twalker_::child)) {
-		widget* next = iter->get(twalker_::child);
+	using iterator::walker_base;
+	walker_base* iter = selection.create_walker();
+	while(!iter->at_end(walker_base::child)) {
+		widget* next = iter->get(walker_base::child);
 		if(toggle_button* button = dynamic_cast<toggle_button*>(next)) {
 			const std::string& id = button->id();
 			group.add_member(button, id.substr(prefix.size()));
 		}
-		iter->next(twalker_::child);
+		iter->next(walker_base::child);
 	}
 	group.set_member_states(initial);
 }

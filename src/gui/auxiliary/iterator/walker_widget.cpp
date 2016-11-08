@@ -32,7 +32,7 @@ widget::widget(gui2::widget& widget) : widget_(&widget)
 {
 }
 
-twalker_::state_t widget::next(const tlevel level)
+walker_base::state_t widget::next(const level level)
 {
 	if(at_end(level)) {
 		return fail;
@@ -55,7 +55,7 @@ twalker_::state_t widget::next(const tlevel level)
 	return fail;
 }
 
-bool widget::at_end(const tlevel level) const
+bool widget::at_end(const level level) const
 {
 	switch(level) {
 		case self:
@@ -69,7 +69,7 @@ bool widget::at_end(const tlevel level) const
 	return true;
 }
 
-gui2::widget* widget::get(const tlevel level)
+gui2::widget* widget::get(const level level)
 {
 	switch(level) {
 		case self:

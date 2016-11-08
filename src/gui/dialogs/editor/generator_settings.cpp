@@ -72,7 +72,7 @@ void tgenerator_settings::adjust_minimum_size_by_players(window& window)
 {
 	const int extra_size = (players_->get_widget_value(window) - 2) * extra_size_per_player;
 
-	const auto update_dimension_slider = [&](tfield_integer* field) {
+	const auto update_dimension_slider = [&](field_integer* field) {
 		slider& w = dynamic_cast<slider&>(*field->get_widget());
 		w.set_minimum_value(min_size + extra_size);
 	};

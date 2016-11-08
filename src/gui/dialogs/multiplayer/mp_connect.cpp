@@ -150,7 +150,7 @@ void tmp_server_list::post_show(window& window)
 REGISTER_DIALOG(mp_connect)
 
 static void
-show_server_list(CVideo& video, window& window, tfield_text* host_name)
+show_server_list(CVideo& video, window& window, field_text* host_name)
 {
 	assert(host_name);
 

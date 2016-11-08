@@ -36,7 +36,7 @@ class window;
 
 namespace iterator
 {
-class twalker_;
+class walker_base;
 } // namespace iterator
 
 /**
@@ -823,7 +823,7 @@ public:
 	virtual bool disable_click_dismiss() const = 0;
 
 	/** Creates a new walker object on the heap. */
-	virtual iterator::twalker_* create_walker() = 0;
+	virtual iterator::walker_base* create_walker() = 0;
 };
 
 } // namespace gui2

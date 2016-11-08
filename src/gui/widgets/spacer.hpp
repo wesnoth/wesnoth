@@ -109,8 +109,8 @@ struct builder_spacer : public builder_control
 	widget* build() const;
 
 private:
-	tformula<unsigned> width_;
-	tformula<unsigned> height_;
+	typed_formula<unsigned> width_;
+	typed_formula<unsigned> height_;
 };
 
 } // namespace implementation

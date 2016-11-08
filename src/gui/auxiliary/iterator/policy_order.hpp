@@ -34,22 +34,22 @@ namespace policy
 namespace order
 {
 
-template <bool visit_widget, bool visit_grid, bool visit_child>
-class tbottom_up : public tvisit<visit_widget, twalker_::self>,
-				   public tvisit<visit_grid, twalker_::internal>,
-				   public tvisit<visit_child, twalker_::child>
+template <bool VW, bool VG, bool VC>
+class bottom_up : public visit_level<VW, walker_base::self>,
+				   public visit_level<VG, walker_base::internal>,
+				   public visit_level<VC, walker_base::child>
 {
-	typedef tvisit<visit_widget, twalker_::self> tvisit_widget;
-	typedef tvisit<visit_grid, twalker_::internal> tvisit_grid;
-	typedef tvisit<visit_child, twalker_::child> tvisit_child;
+	typedef visit_level<VW, walker_base::self> visit_widget;
+	typedef visit_level<VG, walker_base::internal> visit_grid;
+	typedef visit_level<VC, walker_base::child> visit_child;
 
 public:
-	explicit tbottom_up(widget& root) : root_(root.create_walker()), stack_()
+	explicit bottom_up(widget& root) : root_(root.create_walker()), stack_()
 	{
 		TST_GUI_I << "Constructor: ";
-		while(!tvisit_child::at_end(*root_)) {
+		while(!visit_child::at_end(*root_)) {
 			stack_.push_back(root_);
-			root_ = tvisit_child::get(*root_)->create_walker();
+			root_ = visit_child::get(*root_)->create_walker();
 			TST_GUI_I << " Down widget '" << operator*().id() << "'.";
 		}
 
@@ -60,10 +60,10 @@ public:
 		}
 	}
 
-	~tbottom_up()
+	~bottom_up()
 	{
 		delete root_;
-		for(std::vector<iterator::twalker_*>::iterator itor = stack_.begin();
+		for(std::vector<iterator::walker_base*>::iterator itor = stack_.begin();
 			itor != stack_.end();
 			++itor) {
 
@@ -73,8 +73,8 @@ public:
 
 	bool at_end() const
 	{
-		return tvisit_widget::at_end(*root_) && tvisit_grid::at_end(*root_)
-			   && tvisit_child::at_end(*root_);
+		return visit_widget::at_end(*root_) && visit_grid::at_end(*root_)
+			   && visit_child::at_end(*root_);
 	}
 
 	bool next()
@@ -82,26 +82,26 @@ public:
 		if(at_end()) {
 			ERR_GUI_I << "Tried to move beyond end of the iteration range."
 					  << std::endl;
-			throw trange_error("Tried to move beyond end of range.");
+			throw range_error("Tried to move beyond end of range.");
 		}
 
 		TST_GUI_I << "At '" << operator*().id() << "'.";
 
 		/***** WIDGET *****/
 		TST_GUI_I << " Iterate widget:";
-		if(!tvisit_widget::at_end(*root_)) {
-			switch(tvisit_widget::next(*root_)) {
-				case twalker_::valid:
+		if(!visit_widget::at_end(*root_)) {
+			switch(visit_widget::next(*root_)) {
+				case walker_base::valid:
 					TST_GUI_I << " visit '" << operator*().id() << "'.\n";
 					return true;
-				case twalker_::invalid:
+				case walker_base::invalid:
 					TST_GUI_I << " reached the end.";
 					break;
-				case twalker_::fail:
+				case walker_base::fail:
 					TST_GUI_I << "\n";
 					ERR_GUI_E << "Tried to move beyond end of "
 								 "the widget iteration range.\n";
-					throw trange_error("Tried to move beyond end of range.");
+					throw range_error("Tried to move beyond end of range.");
 			}
 		} else {
 			TST_GUI_I << " failed.";
@@ -109,19 +109,19 @@ public:
 
 		/***** GRID *****/
 		TST_GUI_I << " Iterate grid:";
-		if(!tvisit_grid::at_end(*root_)) {
-			switch(tvisit_grid::next(*root_)) {
-				case twalker_::valid:
+		if(!visit_grid::at_end(*root_)) {
+			switch(visit_grid::next(*root_)) {
+				case walker_base::valid:
 					TST_GUI_I << " visit '" << operator*().id() << "'.\n";
 					return true;
-				case twalker_::invalid:
+				case walker_base::invalid:
 					TST_GUI_I << " reached the end.";
 					break;
-				case twalker_::fail:
+				case walker_base::fail:
 					TST_GUI_I << "\n";
 					ERR_GUI_E << "Tried to move beyond end of "
 								 "the grid iteration range.\n";
-					throw trange_error("Tried to move beyond end of range.");
+					throw range_error("Tried to move beyond end of range.");
 			}
 		} else {
 			TST_GUI_I << " failed.";
@@ -130,7 +130,7 @@ public:
 		/***** TRAVERSE CHILDREN *****/
 
 		TST_GUI_I << " Iterate child:";
-		if(tvisit_child::at_end(*root_)) {
+		if(visit_child::at_end(*root_)) {
 			if(stack_.empty()) {
 				TST_GUI_I << " Finished iteration.\n";
 				return false;
@@ -143,27 +143,27 @@ public:
 			}
 		}
 		TST_GUI_I << " Iterate child:";
-		if(!tvisit_child::at_end(*root_)) {
-			switch(tvisit_child::next(*root_)) {
-				case twalker_::valid:
+		if(!visit_child::at_end(*root_)) {
+			switch(visit_child::next(*root_)) {
+				case walker_base::valid:
 					TST_GUI_I << " visit '" << operator*().id() << "'.";
 					break;
-				case twalker_::invalid:
+				case walker_base::invalid:
 					TST_GUI_I << " reached the end.";
 					break;
-				case twalker_::fail:
+				case walker_base::fail:
 					TST_GUI_I << "\n";
 					ERR_GUI_E << "Tried to move beyond end of "
 								 "the child iteration range.\n";
-					throw trange_error("Tried to move beyond end of range.");
+					throw range_error("Tried to move beyond end of range.");
 			}
 		} else {
 			TST_GUI_I << " already at the end.";
 		}
 
-		while(!tvisit_child::at_end(*root_)) {
+		while(!visit_child::at_end(*root_)) {
 			stack_.push_back(root_);
-			root_ = tvisit_child::get(*root_)->create_walker();
+			root_ = visit_child::get(*root_)->create_walker();
 			TST_GUI_I << " Down widget '" << operator*().id() << "'.";
 		}
 		TST_GUI_I << " Visit '" << operator*().id() << "'.\n";
@@ -175,46 +175,46 @@ public:
 		if(at_end()) {
 			ERR_GUI_I << "Tried to defer beyond end its "
 						 "iteration range iterator.\n";
-			throw tlogic_error("Tried to defer an invalid iterator.");
+			throw logic_error("Tried to defer an invalid iterator.");
 		}
-		if(!tvisit_widget::at_end(*root_)) {
-			return *tvisit_widget::get(*root_);
+		if(!visit_widget::at_end(*root_)) {
+			return *visit_widget::get(*root_);
 		}
-		if(!tvisit_grid::at_end(*root_)) {
-			return *tvisit_grid::get(*root_);
+		if(!visit_grid::at_end(*root_)) {
+			return *visit_grid::get(*root_);
 		}
-		if(!tvisit_child::at_end(*root_)) {
-			return *tvisit_child::get(*root_);
+		if(!visit_child::at_end(*root_)) {
+			return *visit_child::get(*root_);
 		}
 		ERR_GUI_I << "The iterator ended in an unknown "
 					 "state while deferring itself.\n";
-		throw tlogic_error("Tried to defer an invalid iterator.");
+		throw logic_error("Tried to defer an invalid iterator.");
 	}
 
 private:
-	iterator::twalker_* root_;
+	iterator::walker_base* root_;
 
-	std::vector<iterator::twalker_*> stack_;
+	std::vector<iterator::walker_base*> stack_;
 };
 
-template <bool visit_widget, bool visit_grid, bool visit_child>
-class ttop_down : public tvisit<visit_widget, twalker_::self>,
-				  public tvisit<visit_grid, twalker_::internal>,
-				  public tvisit<visit_child, twalker_::child>
+template <bool VW, bool VG, bool VC>
+class top_down : public visit_level<VW, walker_base::self>,
+				  public visit_level<VG, walker_base::internal>,
+				  public visit_level<VC, walker_base::child>
 {
-	typedef tvisit<visit_widget, twalker_::self> tvisit_widget;
-	typedef tvisit<visit_grid, twalker_::internal> tvisit_grid;
-	typedef tvisit<visit_child, twalker_::child> tvisit_child;
+	typedef visit_level<VW, walker_base::self> visit_widget;
+	typedef visit_level<VG, walker_base::internal> visit_grid;
+	typedef visit_level<VC, walker_base::child> visit_child;
 
 public:
-	explicit ttop_down(widget& root) : root_(root.create_walker()), stack_()
+	explicit top_down(widget& root) : root_(root.create_walker()), stack_()
 	{
 	}
 
-	~ttop_down()
+	~top_down()
 	{
 		delete root_;
-		for(std::vector<iterator::twalker_*>::iterator itor = stack_.begin();
+		for(std::vector<iterator::walker_base*>::iterator itor = stack_.begin();
 			itor != stack_.end();
 			++itor) {
 
@@ -224,8 +224,8 @@ public:
 
 	bool at_end() const
 	{
-		return tvisit_widget::at_end(*root_) && tvisit_grid::at_end(*root_)
-			   && tvisit_child::at_end(*root_);
+		return visit_widget::at_end(*root_) && visit_grid::at_end(*root_)
+			   && visit_child::at_end(*root_);
 	}
 
 	bool next()
@@ -233,26 +233,26 @@ public:
 		if(at_end()) {
 			ERR_GUI_I << "Tried to move beyond end of the iteration range."
 					  << std::endl;
-			throw trange_error("Tried to move beyond end of range.");
+			throw range_error("Tried to move beyond end of range.");
 		}
 
 		TST_GUI_I << "At '" << operator*().id() << "'.";
 
 		/***** WIDGET *****/
 		TST_GUI_I << " Iterate widget:";
-		if(!tvisit_widget::at_end(*root_)) {
-			switch(tvisit_widget::next(*root_)) {
-				case twalker_::valid:
+		if(!visit_widget::at_end(*root_)) {
+			switch(visit_widget::next(*root_)) {
+				case walker_base::valid:
 					TST_GUI_I << " visit '" << operator*().id() << "'.\n";
 					return true;
-				case twalker_::invalid:
+				case walker_base::invalid:
 					TST_GUI_I << " reached the end.";
 					break;
-				case twalker_::fail:
+				case walker_base::fail:
 					TST_GUI_I << "\n";
 					ERR_GUI_E << "Tried to move beyond end of the "
 								 "widget iteration range.\n";
-					throw trange_error("Tried to move beyond end of range.");
+					throw range_error("Tried to move beyond end of range.");
 			}
 		} else {
 			TST_GUI_I << " failed.";
@@ -260,19 +260,19 @@ public:
 
 		/***** GRID *****/
 		TST_GUI_I << " Iterate grid:";
-		if(!tvisit_grid::at_end(*root_)) {
-			switch(tvisit_grid::next(*root_)) {
-				case twalker_::valid:
+		if(!visit_grid::at_end(*root_)) {
+			switch(visit_grid::next(*root_)) {
+				case walker_base::valid:
 					TST_GUI_I << " visit '" << operator*().id() << "'.\n";
 					return true;
-				case twalker_::invalid:
+				case walker_base::invalid:
 					TST_GUI_I << " reached the end.";
 					break;
-				case twalker_::fail:
+				case walker_base::fail:
 					TST_GUI_I << "\n";
 					ERR_GUI_E << "Tried to move beyond end of the grid "
 								 "iteration range.\n";
-					throw trange_error("Tried to move beyond end of range.");
+					throw range_error("Tried to move beyond end of range.");
 			}
 		} else {
 			TST_GUI_I << " failed.";
@@ -281,16 +281,16 @@ public:
 		/***** TRAVERSE CHILDREN *****/
 
 		TST_GUI_I << " Iterate child:";
-		if(tvisit_child::at_end(*root_)) {
+		if(visit_child::at_end(*root_)) {
 			TST_GUI_I << " reached the end.";
 			up();
 		} else {
 			TST_GUI_I << " proceed.";
 		}
 
-		if(!tvisit_child::at_end(*root_)) {
+		if(!visit_child::at_end(*root_)) {
 			stack_.push_back(root_);
-			root_ = tvisit_child::get(*root_)->create_walker();
+			root_ = visit_child::get(*root_)->create_walker();
 
 			assert(root_);
 			assert(!at_end());
@@ -307,20 +307,20 @@ public:
 		if(at_end()) {
 			ERR_GUI_I << "Tried to defer beyond end of the iteration "
 						 "range iterator.\n";
-			throw tlogic_error("Tried to defer an invalid iterator.");
+			throw logic_error("Tried to defer an invalid iterator.");
 		}
-		if(!tvisit_widget::at_end(*root_)) {
-			return *tvisit_widget::get(*root_);
+		if(!visit_widget::at_end(*root_)) {
+			return *visit_widget::get(*root_);
 		}
-		if(!tvisit_grid::at_end(*root_)) {
-			return *tvisit_grid::get(*root_);
+		if(!visit_grid::at_end(*root_)) {
+			return *visit_grid::get(*root_);
 		}
-		if(!tvisit_child::at_end(*root_)) {
-			return *tvisit_child::get(*root_);
+		if(!visit_child::at_end(*root_)) {
+			return *visit_child::get(*root_);
 		}
 		ERR_GUI_I << "The iterator ended in an unknown "
 					 "state while deferring iteself.\n";
-		throw tlogic_error("Tried to defer an invalid iterator.");
+		throw logic_error("Tried to defer an invalid iterator.");
 	}
 
 private:
@@ -332,23 +332,23 @@ private:
 			root_ = stack_.back();
 			stack_.pop_back();
 			TST_GUI_I << " Up widget '" << operator*().id() << "'. Iterate:";
-			switch(tvisit_child::next(*root_)) {
-				case twalker_::valid:
+			switch(visit_child::next(*root_)) {
+				case walker_base::valid:
 					TST_GUI_I << " reached '" << operator*().id() << "'.";
 					return true;
-				case twalker_::invalid:
+				case walker_base::invalid:
 					TST_GUI_I << " failed.";
 					break;
-				case twalker_::fail:
-					throw trange_error("Tried to move beyond end of range.");
+				case walker_base::fail:
+					throw range_error("Tried to move beyond end of range.");
 			}
 		}
 		return true;
 	}
 
-	iterator::twalker_* root_;
+	iterator::walker_base* root_;
 
-	std::vector<iterator::twalker_*> stack_;
+	std::vector<iterator::walker_base*> stack_;
 };
 
 } // namespace order

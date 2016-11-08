@@ -98,7 +98,7 @@ private:
 	label* current_tod_sound_;
 	label* current_tod_number_;
 
-	tfield_integer* lawful_bonus_field_;
+	field_integer* lawful_bonus_field_;
 	slider* tod_red_field_;
 	slider* tod_green_field_;
 	slider* tod_blue_field_;

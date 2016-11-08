@@ -34,29 +34,29 @@ namespace visit
 /**
  * This policy skips the current level.
  */
-class tskip
+class skip_level
 {
 public:
 	/**
-	 * Acts like @ref twalker_::next for the level where the policy is used.
+	 * Acts like @ref walker_base::next for the level where the policy is used.
 	 */
-	twalker_::state_t next(twalker_&)
+	walker_base::state_t next(walker_base&)
 	{
-		return twalker_::fail;
+		return walker_base::fail;
 	}
 
 	/**
-	 * Acts like @ref twalker_::at_end for the level where the policy is used.
+	 * Acts like @ref walker_base::at_end for the level where the policy is used.
 	 */
-	bool at_end(const twalker_&) const
+	bool at_end(const walker_base&) const
 	{
 		return true;
 	}
 
 	/**
-	 * Acts like @ref twalker_::get for the level where the policy is used.
+	 * Acts like @ref walker_base::get for the level where the policy is used.
 	 */
-	gui2::widget* get(twalker_&)
+	gui2::widget* get(walker_base&)
 	{
 		return nullptr;
 	}
@@ -67,30 +67,30 @@ public:
  *
  * @tparam level                  The level to visit.
  */
-template <twalker_::tlevel level>
-class tvisit
+template <walker_base::level level>
+class visit_level
 {
 public:
 	/**
-	 * Acts like @ref twalker_::next for the level where the policy is used.
+	 * Acts like @ref walker_base::next for the level where the policy is used.
 	 */
-	twalker_::state_t next(twalker_& visitor)
+	walker_base::state_t next(walker_base& visitor)
 	{
 		return visitor.next(level);
 	}
 
 	/**
-	 * Acts like @ref twalker_::at_end for the level where the policy is used.
+	 * Acts like @ref walker_base::at_end for the level where the policy is used.
 	 */
-	bool at_end(const twalker_& visitor) const
+	bool at_end(const walker_base& visitor) const
 	{
 		return visitor.at_end(level);
 	}
 
 	/**
-	 * Acts like @ref twalker_::get for the level where the policy is used.
+	 * Acts like @ref walker_base::get for the level where the policy is used.
 	 */
-	gui2::widget* get(twalker_& visitor)
+	gui2::widget* get(walker_base& visitor)
 	{
 		return visitor.get(level);
 	}
@@ -103,20 +103,20 @@ public:
  *
  * @tparam level                  The level to determine the policy for.
  */
-template <bool, twalker_::tlevel level>
-class tvisit
+template <bool, walker_base::level level>
+class visit_level
 {
 };
 
-/** Specialized to select the @ref visit::tskip policy. */
-template <twalker_::tlevel level>
-class tvisit<false, level> : public visit::tskip
+/** Specialized to select the @ref visit::skip_level policy. */
+template <walker_base::level level>
+class visit_level<false, level> : public visit::skip_level
 {
 };
 
-/** Specialized to select the @ref visit::tvisit policy. */
-template <twalker_::tlevel level>
-class tvisit<true, level> : public visit::tvisit<level>
+/** Specialized to select the @ref visit::visit_level policy. */
+template <walker_base::level level>
+class visit_level<true, level> : public visit::visit_level<level>
 {
 };
 

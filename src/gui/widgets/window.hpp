@@ -68,11 +68,11 @@ class window : public panel, public cursor::setter
 
 public:
 	window(CVideo& video,
-			tformula<unsigned> x,
-			tformula<unsigned> y,
-			tformula<unsigned> w,
-			tformula<unsigned> h,
-			tformula<bool> reevaluate_best_size,
+			typed_formula<unsigned> x,
+			typed_formula<unsigned> y,
+			typed_formula<unsigned> w,
+			typed_formula<unsigned> h,
+			typed_formula<bool> reevaluate_best_size,
 			const game_logic::function_symbol_table& functions,
 			const bool automatic_placement,
 			const unsigned horizontal_placement,
@@ -564,19 +564,19 @@ private:
 	unsigned maximum_height_;
 
 	/** The formula to calulate the x value of the dialog. */
-	tformula<unsigned> x_;
+	typed_formula<unsigned> x_;
 
 	/** The formula to calulate the y value of the dialog. */
-	tformula<unsigned> y_;
+	typed_formula<unsigned> y_;
 
 	/** The formula to calulate the width of the dialog. */
-	tformula<unsigned> w_;
+	typed_formula<unsigned> w_;
 
 	/** The formula to calulate the height of the dialog. */
-	tformula<unsigned> h_;
+	typed_formula<unsigned> h_;
 
 	/** The formula to determine whether the size is good. */
-	tformula<bool> reevaluate_best_size_;
+	typed_formula<bool> reevaluate_best_size_;
 
 	/** The formula definitions available for the calulation formulas. */
 	game_logic::function_symbol_table functions_;

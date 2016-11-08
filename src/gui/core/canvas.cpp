@@ -221,7 +221,7 @@ public:
 			  const game_logic::map_formula_callable& variables);
 
 private:
-	tformula<unsigned> x1_, /**< The start x coordinate of the line. */
+	typed_formula<unsigned> x1_, /**< The start x coordinate of the line. */
 			y1_,			/**< The start y coordinate of the line. */
 			x2_,			/**< The end x coordinate of the line. */
 			y2_,			/**< The end y coordinate of the line. */
@@ -628,7 +628,7 @@ public:
 			  const game_logic::map_formula_callable& variables);
 
 private:
-	tformula<int> x_, /**< The x coordinate of the rectangle. */
+	typed_formula<int> x_, /**< The x coordinate of the rectangle. */
 			y_,			   /**< The y coordinate of the rectangle. */
 			w_,			   /**< The width of the rectangle. */
 			h_;			   /**< The height of the rectangle. */
@@ -782,7 +782,7 @@ public:
 			  const game_logic::map_formula_callable& variables);
 
 private:
-	tformula<unsigned> x_, /**< The center x coordinate of the circle. */
+	typed_formula<unsigned> x_, /**< The center x coordinate of the circle. */
 			y_,			   /**< The center y coordinate of the circle. */
 			radius_;	   /**< The radius of the circle. */
 
@@ -895,7 +895,7 @@ public:
 			  const game_logic::map_formula_callable& variables);
 
 private:
-	tformula<unsigned> x_, /**< The x coordinate of the image. */
+	typed_formula<unsigned> x_, /**< The x coordinate of the image. */
 			y_,			   /**< The y coordinate of the image. */
 			w_,			   /**< The width of the image. */
 			h_;			   /**< The height of the image. */
@@ -915,7 +915,7 @@ private:
 	 * formula the image will be loaded in the constructor. If it's a formula it
 	 * will be loaded every draw cycles. This allows 'changing' images.
 	 */
-	tformula<std::string> image_name_;
+	typed_formula<std::string> image_name_;
 
 	/**
 	 * Determines the way an image will be resized.
@@ -936,7 +936,7 @@ private:
 	resize_mode resize_mode_;
 
 	/** Mirror the image over the vertical axis. */
-	tformula<bool> vertical_mirror_;
+	typed_formula<bool> vertical_mirror_;
 };
 
 /*WIKI
@@ -1192,7 +1192,7 @@ public:
 			  const game_logic::map_formula_callable& variables);
 
 private:
-	tformula<unsigned> x_, /**< The x coordinate of the text. */
+	typed_formula<unsigned> x_, /**< The x coordinate of the text. */
 			y_,			   /**< The y coordinate of the text. */
 			w_,			   /**< The width of the text. */
 			h_;			   /**< The height of the text. */
@@ -1207,31 +1207,31 @@ private:
 	font::pango_text::FONT_STYLE font_style_;
 
 	/** The alignment of the text. */
-	tformula<PangoAlignment> text_alignment_;
+	typed_formula<PangoAlignment> text_alignment_;
 
 	/** The color of the text. */
 	Uint32 color_;
 
 	/** The text to draw. */
-	tformula<t_string> text_;
+	typed_formula<t_string> text_;
 
 	/** The text markup switch of the text. */
-	tformula<bool> text_markup_;
+	typed_formula<bool> text_markup_;
 
 	/** The link aware switch of the text. */
-	tformula<bool> link_aware_;
+	typed_formula<bool> link_aware_;
 
 	/** The link color of the text. */
-	tformula<std::string> link_color_;
+	typed_formula<std::string> link_color_;
 
 	/** The maximum width for the text. */
-	tformula<int> maximum_width_;
+	typed_formula<int> maximum_width_;
 
 	/** The number of characters per line. */
 	unsigned characters_per_line_;
 
 	/** The maximum height for the text. */
-	tformula<int> maximum_height_;
+	typed_formula<int> maximum_height_;
 };
 
 /*WIKI

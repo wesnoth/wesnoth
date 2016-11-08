@@ -77,7 +77,7 @@ public:
 private:
 	ADDON_STATUS_FILTER displayed_status_;
 	std::array<bool, ADDON_TYPES_COUNT> displayed_types_;
-	std::vector<tfield_bool*> displayed_types_fields_;
+	std::vector<field_bool*> displayed_types_fields_;
 
 	ADDON_SORT sort_;
 	ADDON_SORT_DIRECTION dir_;

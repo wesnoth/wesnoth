@@ -140,7 +140,7 @@ bool control::disable_click_dismiss() const
 	return get_visible() == widget::tvisible::visible && get_active();
 }
 
-iterator::twalker_* control::create_walker()
+iterator::walker_base* control::create_walker()
 {
 	return new iterator::walker::widget(*this);
 }

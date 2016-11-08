@@ -291,12 +291,12 @@ int show_message_dialog(lua_State *L, CVideo & video)
 			t_string short_opt;
 			config opt;
 			if(luaW_totstring(L, -1, short_opt)) {
-				// Note: Although this currently uses the tlegacy_menu_item class
+				// Note: Although this currently uses the legacy_menu_item class
 				// for the deprecated syntax, this branch should still be retained
 				// when the deprecated syntax is removed, as a simpler method
 				// of specifying options when only a single string is needed.
 				const std::string& opt_str = short_opt;
-				gui2::tlegacy_menu_item item(opt_str);
+				gui2::legacy_menu_item item(opt_str);
 				opt["image"] = item.icon();
 				opt["label"] = item.label();
 				opt["description"] = item.description();

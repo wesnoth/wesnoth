@@ -46,16 +46,16 @@ namespace iterator
  *
  * @section gui2_iterator_level Level
  *
- * The levels are defined in @ref gui2::iterator::twalker_::tlevel. The
+ * The levels are defined in @ref gui2::iterator::walker_base::level. The
  * level allows the user to only visit a part of the widget tree.
  *
- * @note At the moment when gui2::iterator::twalker_::widget is skipped the
+ * @note At the moment when gui2::iterator::walker_base::widget is skipped the
  * child class also skips its children. This behavior might change.
  *
  *
  * @section gui2_iterator_walker Walker
  *
- * The is a group of classes inheriting from @ref gui2::iterator::twalker_
+ * The is a group of classes inheriting from @ref gui2::iterator::walker_base
  * the objects are created from @ref gui2::widget::create_walker. The
  * walker allows to visit the several levels of the widget. This means
  * several widgets need to override the function in a subclass. For example
@@ -68,8 +68,8 @@ namespace iterator
  *
  * This policy simply defines whether or not to visit the widgets at a
  * certain level. There are two visit policies:
- * - @ref gui2::iterator::policy::visit::tvisit visits the widget at the level.
- * - @ref gui2::iterator::policy::visit::tskip skips the widget at the level.
+ * - @ref gui2::iterator::policy::visit::visit_level visits the widget at the level.
+ * - @ref gui2::iterator::policy::visit::skip_level skips the widget at the level.
  *
  * There are no more visit policies expected for the future. These policies
  * are normally not used directly, but set from the @ref
@@ -82,8 +82,8 @@ namespace iterator
  * first, this level before diving down etc. @ref tests/gui/iterator.cpp
  * shows more information.
  * The following policies have been defined:
- * - @ref gui2::iterator::policy::order::ttop_down
- * - @ref gui2::iterator::policy::order::tbottom_up
+ * - @ref gui2::iterator::policy::order::top_down
+ * - @ref gui2::iterator::policy::order::bottom_up
  *
  * The next sections describe in which order the widgets are visited. In the
  * description we use the following widget tree.
@@ -139,7 +139,7 @@ namespace iterator
  * can be used. It the policy visits the widget, it's certain there is at least
  * one widget to visit. Below some sample code:
 @code
-titerator<policy> itor(root);
+iterator<policy> itor(root);
 assert(!itor.at_end());
 do {
 	...
@@ -149,7 +149,7 @@ do {
  *
  * When there might be no widget to visit a simple for loop can be used:
 @code
-for(titerator<policy> itor(root); !itor.at_end(); ++itor) {
+for(iterator<policy> itor(root); !itor.at_end(); ++itor) {
 	...
 	...
 }

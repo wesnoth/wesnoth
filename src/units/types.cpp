@@ -991,7 +991,7 @@ namespace { // Helpers for set_config()
 			// Don't replace if the key already exists in the config (even if empty).
 			return;
 		}
-		gui2::tformula<int> formula(formula_str);
+		gui2::typed_formula<int> formula(formula_str);
 		game_logic::map_formula_callable original;
 		boost::sregex_iterator m(formula_str.begin(), formula_str.end(), fai_identifier);
 		for (const boost::sregex_iterator::value_type& p : std::make_pair(m, boost::sregex_iterator())) {

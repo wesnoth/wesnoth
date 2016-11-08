@@ -290,11 +290,11 @@ window* manager::get_window(const unsigned id)
 } // namespace
 
 window::window(CVideo& video,
-				 tformula<unsigned> x,
-				 tformula<unsigned> y,
-				 tformula<unsigned> w,
-				 tformula<unsigned> h,
-				 tformula<bool> reevaluate_best_size,
+				 typed_formula<unsigned> x,
+				 typed_formula<unsigned> y,
+				 typed_formula<unsigned> w,
+				 typed_formula<unsigned> h,
+				 typed_formula<bool> reevaluate_best_size,
 				 const game_logic::function_symbol_table& functions,
 				 const bool automatic_placement,
 				 const unsigned horizontal_placement,

@@ -84,10 +84,10 @@ public:
 
 private:
 	/** The currently selected width. */
-	tfield_integer* width_;
+	field_integer* width_;
 
 	/** The currently selected height. */
-	tfield_integer* height_;
+	field_integer* height_;
 
 	/** The original width. */
 	int old_width_;

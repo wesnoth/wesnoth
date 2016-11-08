@@ -58,9 +58,9 @@ private:
 
 	std::string& filename_;
 
-	tfield_bool* change_difficulty_;
-	tfield_bool* show_replay_;
-	tfield_bool* cancel_orders_;
+	field_bool* change_difficulty_;
+	field_bool* show_replay_;
+	field_bool* cancel_orders_;
 
 	config& summary_;
 
