@@ -39,10 +39,10 @@ class grid;
 
 class pane : public widget
 {
-	friend struct tpane_implementation;
+	friend struct pane_implementation;
 
 public:
-	struct titem
+	struct item
 	{
 
 		unsigned id;
@@ -51,9 +51,9 @@ public:
 		grid* grid;
 	};
 
-	typedef std::function<bool(const titem&, const titem&)> tcompare_functor;
+	typedef std::function<bool(const item&, const item&)> tcompare_functor;
 
-	typedef std::function<bool(const titem&)> tfilter_functor;
+	typedef std::function<bool(const item&)> tfilter_functor;
 
 	/** @deprecated Use the second overload. */
 	explicit pane(const builder_grid_ptr item_builder);
@@ -152,7 +152,7 @@ public:
 
 private:
 	/** The items in the pane. */
-	std::list<titem> items_;
+	std::list<item> items_;
 
 	/** The builer for the items in the list. */
 	builder_grid_ptr item_builder_;

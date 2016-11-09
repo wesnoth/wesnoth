@@ -105,8 +105,8 @@ window* build(CVideo& video, const builder_window::window_resolution* definition
 
 	win->set_click_dismiss(definition->click_dismiss);
 
-	std::shared_ptr<const window_definition::tresolution>
-	conf = std::static_pointer_cast<const window_definition::tresolution>(
+	std::shared_ptr<const window_definition::resolution>
+	conf = std::static_pointer_cast<const window_definition::resolution>(
 			win->config());
 	assert(conf);
 

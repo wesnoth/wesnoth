@@ -72,9 +72,9 @@ struct scrollbar_panel_definition : public control_definition
 
 	explicit scrollbar_panel_definition(const config& cfg);
 
-	struct tresolution : public resolution_definition
+	struct resolution : public resolution_definition
 	{
-		explicit tresolution(const config& cfg);
+		explicit resolution(const config& cfg);
 
 		builder_grid_ptr grid;
 	};
@@ -93,8 +93,8 @@ struct builder_scrollbar_panel : public builder_control
 
 	widget* build() const;
 
-	scrollbar_container::tscrollbar_mode vertical_scrollbar_mode;
-	scrollbar_container::tscrollbar_mode horizontal_scrollbar_mode;
+	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
+	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;
 
 	builder_grid_ptr grid_;
 };

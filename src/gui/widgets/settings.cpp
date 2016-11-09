@@ -485,7 +485,7 @@ void register_window(const std::string& id)
 	}
 }
 
-std::vector<std::string> tunit_test_access_only::get_registered_window_list()
+std::vector<std::string> unit_test_access_only::get_registered_window_list()
 {
 	return gui2::registered_window_types();
 }
@@ -668,10 +668,10 @@ get_window_builder(const std::string& type)
 		if(current_gui != default_gui) {
 			window = default_gui->second.window_types.find(type);
 			if(window == default_gui->second.window_types.end()) {
-				throw twindow_builder_invalid_id();
+				throw window_builder_invalid_id();
 			}
 		} else if(window == current_gui->second.window_types.end()) {
-			throw twindow_builder_invalid_id();
+			throw window_builder_invalid_id();
 		}
 	}
 

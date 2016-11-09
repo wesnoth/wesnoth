@@ -67,7 +67,7 @@ tree_view_node::tree_view_node(
 		init_grid(&grid_, data);
 
 		if(parent_node_ && parent_node_->toggle_) {
-			dynamic_cast<widget&>(*parent_node_->toggle_).set_visible(widget::tvisible::visible);
+			dynamic_cast<widget&>(*parent_node_->toggle_).set_visible(widget::visibility::visible);
 		}
 
 		if(node_definition.unfolded) {
@@ -78,7 +78,7 @@ tree_view_node::tree_view_node(
 		toggle_ = dynamic_cast<selectable_item*>(toggle_widget);
 
 		if(toggle_) {
-			toggle_widget->set_visible(widget::tvisible::hidden);
+			toggle_widget->set_visible(widget::visibility::hidden);
 
 			toggle_widget->connect_signal<event::LEFT_BUTTON_CLICK>(std::bind(
 					&tree_view_node::signal_handler_left_button_click, this, _2));
@@ -388,7 +388,7 @@ point tree_view_node::get_current_size(bool assume_visible) const
 	}
 
 	for(const auto& node : children_) {
-		if(node.grid_.get_visible() == widget::tvisible::invisible) {
+		if(node.grid_.get_visible() == widget::visibility::invisible) {
 			continue;
 		}
 
@@ -418,7 +418,7 @@ point tree_view_node::get_unfolded_size() const
 	}
 
 	for(const auto& node : children_) {
-		if(node.grid_.get_visible() == widget::tvisible::invisible) {
+		if(node.grid_.get_visible() == widget::visibility::invisible) {
 			continue;
 		}
 
@@ -444,7 +444,7 @@ point tree_view_node::calculate_best_size(const int indentation_level,
 	DBG_GUI_L << LOG_HEADER << " own grid best size " << best_size << ".\n";
 
 	for(const auto& node : children_) {
-		if(node.grid_.get_visible() == widget::tvisible::invisible) {
+		if(node.grid_.get_visible() == widget::visibility::invisible) {
 			continue;
 		}
 

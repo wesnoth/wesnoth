@@ -30,36 +30,36 @@ REGISTER_WIDGET(vertical_scrollbar)
 
 unsigned vertical_scrollbar::minimum_positioner_length() const
 {
-	std::shared_ptr<const vertical_scrollbar_definition::tresolution> conf
+	std::shared_ptr<const vertical_scrollbar_definition::resolution> conf
 			= std::static_pointer_cast<const vertical_scrollbar_definition::
-												  tresolution>(config());
+												  resolution>(config());
 	assert(conf);
 	return conf->minimum_positioner_length;
 }
 
 unsigned vertical_scrollbar::maximum_positioner_length() const
 {
-	std::shared_ptr<const vertical_scrollbar_definition::tresolution> conf
+	std::shared_ptr<const vertical_scrollbar_definition::resolution> conf
 			= std::static_pointer_cast<const vertical_scrollbar_definition::
-												  tresolution>(config());
+												  resolution>(config());
 	assert(conf);
 	return conf->maximum_positioner_length;
 }
 
 unsigned vertical_scrollbar::offset_before() const
 {
-	std::shared_ptr<const vertical_scrollbar_definition::tresolution> conf
+	std::shared_ptr<const vertical_scrollbar_definition::resolution> conf
 			= std::static_pointer_cast<const vertical_scrollbar_definition::
-												  tresolution>(config());
+												  resolution>(config());
 	assert(conf);
 	return conf->top_offset;
 }
 
 unsigned vertical_scrollbar::offset_after() const
 {
-	std::shared_ptr<const vertical_scrollbar_definition::tresolution> conf
+	std::shared_ptr<const vertical_scrollbar_definition::resolution> conf
 			= std::static_pointer_cast<const vertical_scrollbar_definition::
-												  tresolution>(config());
+												  resolution>(config());
 	assert(conf);
 	return conf->bottom_offset;
 }
@@ -111,7 +111,7 @@ vertical_scrollbar_definition::vertical_scrollbar_definition(
 {
 	DBG_GUI_P << "Parsing vertical scrollbar " << id << '\n';
 
-	load_resolutions<tresolution>(cfg);
+	load_resolutions<resolution>(cfg);
 }
 
 /*WIKI
@@ -162,7 +162,7 @@ vertical_scrollbar_definition::vertical_scrollbar_definition(
  * @end{tag}{name="vertical_scrollbar_definition"}
  * @end{parent}{name="gui/"}
  */
-vertical_scrollbar_definition::tresolution::tresolution(const config& cfg)
+vertical_scrollbar_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 	, minimum_positioner_length(cfg["minimum_positioner_length"])
 	, maximum_positioner_length(cfg["maximum_positioner_length"])

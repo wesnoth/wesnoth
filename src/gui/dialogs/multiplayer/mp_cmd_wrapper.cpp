@@ -113,7 +113,7 @@ void mp_cmd_wrapper::pre_show(window& window)
 
 	if(grid* g = find_widget<grid>(&window, "mod_options", false, false)) {
 		g->set_active(authenticated);
-		g->set_visible(authenticated ? widget::tvisible::visible : widget::tvisible::invisible);
+		g->set_visible(authenticated ? widget::visibility::visible : widget::visibility::invisible);
 	}
 
 	/**

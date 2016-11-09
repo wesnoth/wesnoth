@@ -67,7 +67,7 @@ void lobby_info::delete_games()
 }
 namespace gui2
 {
-void do_mp_notify(t_notify_mode mode, const std::string & sender, const std::string & message)
+void do_mp_notify(notify_mode mode, const std::string & sender, const std::string & message)
 {
 	switch (mode) {
 	case NOTIFY_WHISPER:

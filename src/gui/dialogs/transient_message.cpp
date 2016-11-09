@@ -46,12 +46,12 @@ void transient_message::pre_show(window& window)
 {
 	if(hide_title_) {
 		widget& title = find_widget<widget>(&window, "title", false);
-		title.set_visible(widget::tvisible::invisible);
+		title.set_visible(widget::visibility::invisible);
 	}
 
 	if(hide_image_) {
 		widget& image = find_widget<widget>(&window, "image", false);
-		image.set_visible(widget::tvisible::invisible);
+		image.set_visible(widget::visibility::invisible);
 	}
 }
 } // namespace dialogs

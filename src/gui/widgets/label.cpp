@@ -138,8 +138,8 @@ void label::load_config_extra()
 {
 	assert(config());
 
-	std::shared_ptr<const label_definition::tresolution>
-	conf = std::static_pointer_cast<const label_definition::tresolution>(
+	std::shared_ptr<const label_definition::resolution>
+	conf = std::static_pointer_cast<const label_definition::resolution>(
 			config());
 
 	assert(conf);
@@ -220,7 +220,7 @@ label_definition::label_definition(const config& cfg)
 {
 	DBG_GUI_P << "Parsing label " << id << '\n';
 
-	load_resolutions<tresolution>(cfg);
+	load_resolutions<resolution>(cfg);
 }
 
 /*WIKI
@@ -261,7 +261,7 @@ label_definition::label_definition(const config& cfg)
  * @end{tag}{name="label_definition"}
  * @end{parent}{name="gui/"}
  */
-label_definition::tresolution::tresolution(const config& cfg)
+label_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 	, link_aware(cfg["link_aware"].to_bool(false))
 	, link_color(cfg["link_color"].str().size() > 0 ? cfg["link_color"].str() : "#ffff00")

@@ -62,9 +62,9 @@ unsigned minimap::get_state() const
 }
 
 /** Key type for the cache. */
-struct tkey
+struct key_type
 {
-	tkey(const int w, const int h, const std::string& map_data)
+	key_type(const int w, const int h, const std::string& map_data)
 		: w(w), h(h), map_data(map_data)
 	{
 	}
@@ -79,7 +79,7 @@ struct tkey
 	const std::string map_data;
 };
 
-static bool operator<(const tkey& lhs, const tkey& rhs)
+static bool operator<(const key_type& lhs, const key_type& rhs)
 {
 	return lhs.w < rhs.w
 		   || (lhs.w == rhs.w
@@ -88,9 +88,9 @@ static bool operator<(const tkey& lhs, const tkey& rhs)
 }
 
 /** Value type for the cache. */
-struct tvalue
+struct value_type
 {
-	tvalue(const surface& surf) : surf(surf), age(1)
+	value_type(const surface& surf) : surf(surf), age(1)
 	{
 	}
 
@@ -134,7 +134,7 @@ static const size_t cache_max_size = 100;
 static const ::config* terrain = nullptr;
 
 /** The cache. */
-typedef std::map<tkey, tvalue> tcache;
+typedef std::map<key_type, value_type> tcache;
 static tcache cache;
 
 static bool compare(const std::pair<unsigned, tcache::iterator>& lhs,
@@ -197,7 +197,7 @@ const surface minimap::get_image(const int w, const int h) const
 		cache.clear();
 	}
 
-	const tkey key(w, h, map_data_);
+	const key_type key(w, h, map_data_);
 	tcache::iterator itor = cache.find(key);
 
 	if(itor != cache.end()) {
@@ -216,7 +216,7 @@ const surface minimap::get_image(const int w, const int h) const
 	{
 		const gamemap map(std::make_shared<terrain_type_data>(*terrain_), map_data_);
 		const surface surf = image::getMinimap(w, h, map, nullptr);
-		cache.insert(std::make_pair(key, tvalue(surf)));
+		cache.insert(std::make_pair(key, value_type(surf)));
 #ifdef DEBUG_MINIMAP_CACHE
 		std::cerr << '-';
 #endif
@@ -269,7 +269,7 @@ minimap_definition::minimap_definition(const config& cfg)
 {
 	DBG_GUI_P << "Parsing minimap " << id << '\n';
 
-	load_resolutions<tresolution>(cfg);
+	load_resolutions<resolution>(cfg);
 }
 
 /*WIKI
@@ -291,7 +291,7 @@ minimap_definition::minimap_definition(const config& cfg)
  * @end{tag}{name="minimap_definition"}
  * @end{parent}{name="gui/"}
  */
-minimap_definition::tresolution::tresolution(const config& cfg)
+minimap_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 {
 	// Note the order should be the same as the enum state_t in minimap.hpp.

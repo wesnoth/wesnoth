@@ -192,9 +192,9 @@ struct toggle_panel_definition : public control_definition
 {
 	explicit toggle_panel_definition(const config& cfg);
 
-	struct tresolution : public resolution_definition
+	struct resolution : public resolution_definition
 	{
-		explicit tresolution(const config& cfg);
+		explicit resolution(const config& cfg);
 
 		unsigned top_border;
 		unsigned bottom_border;

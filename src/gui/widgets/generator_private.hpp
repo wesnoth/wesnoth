@@ -22,7 +22,7 @@
 #include "gui/widgets/selectable.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/toggle_panel.hpp"
-#include "gui/widgets/window.hpp" // For window::tvisible
+#include "gui/widgets/window.hpp" // For window::visibility
 #include "wml_exception.hpp"
 
 namespace gui2
@@ -527,8 +527,8 @@ struct show : public virtual generator_base
 {
 	void select(grid& grid, const bool show)
 	{
-		grid.set_visible(show ? widget::tvisible::visible
-							  : widget::tvisible::hidden);
+		grid.set_visible(show ? widget::visibility::visible
+							  : widget::visibility::hidden);
 	}
 
 	/**
@@ -651,8 +651,8 @@ public:
 			/*** Set the proper visible state. ***/
 			items_[index]->shown = show;
 			items_[index]
-					->grid.set_visible(show ? widget::tvisible::visible
-											: widget::tvisible::invisible);
+					->grid.set_visible(show ? widget::visibility::visible
+											: widget::visibility::invisible);
 
 			/*** Update the selection. ***/
 			minimum_selection::set_item_shown(index, show);
@@ -663,7 +663,7 @@ public:
 	virtual bool get_item_shown(const unsigned index) const override
 	{
 		assert(index < items_.size());
-		return items_[index]->shown && items_[index]->grid.get_visible() != window::tvisible::invisible;
+		return items_[index]->shown && items_[index]->grid.get_visible() != window::visibility::invisible;
 	}
 
 
@@ -755,7 +755,7 @@ public:
 		assert(list_builder);
 		assert(index == -1 || static_cast<unsigned>(index) < items_.size());
 
-		titem* item = new titem;
+		child* item = new child;
 		list_builder->build(&item->grid);
 		init(&item->grid, item_data, callback);
 
@@ -796,7 +796,7 @@ public:
 	{
 		for(auto item : items_)
 		{
-			if(item->grid.get_visible() != widget::tvisible::invisible
+			if(item->grid.get_visible() != widget::visibility::invisible
 			   && item->shown) {
 
 				item->grid.layout_initialise(full_initialisation);
@@ -851,12 +851,12 @@ public:
 									int x_offset,
 									int y_offset) override
 	{
-		assert(this->get_visible() == widget::tvisible::visible);
+		assert(this->get_visible() == widget::visibility::visible);
 		calculate_order();
 		for(auto index : order_)
 		{
-			titem* item = items_[index];
-			if(item->grid.get_visible() == widget::tvisible::visible
+			child* item = items_[index];
+			if(item->grid.get_visible() == widget::visibility::visible
 			   && item->shown) {
 
 				item->grid.draw_children(frame_buffer, x_offset, y_offset);
@@ -959,10 +959,10 @@ protected:
 
 private:
 	/** Definition of an item. */
-	struct titem
+	struct child
 	{
 
-		titem() : grid(), selected(false), shown(true), ordered_index(0)
+		child() : grid(), selected(false), shown(true), ordered_index(0)
 		{
 		}
 
@@ -993,8 +993,8 @@ private:
 	int last_selected_item_;
 
 	/** The items in the generator. */
-	typedef std::vector<titem*> titems;
-	titems items_;
+	typedef std::vector<child*> child_list;
+	child_list items_;
 
 	/** the elements of order_ are indexes to items_ */
 	mutable std::vector<size_t> order_;
@@ -1015,9 +1015,9 @@ private:
 	struct calculate_order_helper
 	{
 		const torder_func& order_func_;
-		const titems& items_;
+		const child_list& items_;
 
-		calculate_order_helper(const torder_func& order_func, const titems& items)
+		calculate_order_helper(const torder_func& order_func, const child_list& items)
 			: order_func_(order_func)
 			, items_(items)
 		{

@@ -28,7 +28,7 @@
 #define LOG_IMPL_HEADER "grid [" + grid.id() + "] " + __func__ + ':'
 
 #define LOG_CHILD_SCOPE_HEADER                                                 \
-	"grid::tchild [" + (widget_ ? widget_->id() : "-") + "] " + __func__
+	"grid::child [" + (widget_ ? widget_->id() : "-") + "] " + __func__
 #define LOG_CHILD_HEADER LOG_CHILD_SCOPE_HEADER + ':'
 
 namespace gui2
@@ -76,7 +76,7 @@ void grid::set_child(widget* widget,
 	assert(flags & VERTICAL_MASK);
 	assert(flags & HORIZONTAL_MASK);
 
-	tchild& cell = child(row, col);
+	child& cell = get_child(row, col);
 
 	// clear old child if any
 	if(cell.get_widget()) {
@@ -141,7 +141,7 @@ void grid::remove_child(const unsigned row, const unsigned col)
 {
 	assert(row < rows_ && col < cols_);
 
-	tchild& cell = child(row, col);
+	child& cell = get_child(row, col);
 
 	if(cell.get_widget()) {
 		delete cell.get_widget();
@@ -398,7 +398,7 @@ point grid::calculate_best_size() const
 	for(unsigned row = 0; row < rows_; ++row) {
 		for(unsigned col = 0; col < cols_; ++col) {
 
-			const point size = child(row, col).get_best_size();
+			const point size = get_child(row, col).get_best_size();
 
 			if(size.x > static_cast<int>(col_width_[col])) {
 				col_width_[col] = size.x;
@@ -645,7 +645,7 @@ bool grid::has_widget(const widget& widget) const
 
 bool grid::disable_click_dismiss() const
 {
-	if(get_visible() != widget::tvisible::visible) {
+	if(get_visible() != widget::visibility::visible) {
 		return false;
 	}
 
@@ -702,7 +702,7 @@ void grid::set_rows_cols(const unsigned rows, const unsigned cols)
 	children_.resize(rows_ * cols_);
 }
 
-point grid::tchild::get_best_size() const
+point grid::child::get_best_size() const
 {
 	log_scope2(log_gui_layout, LOG_CHILD_SCOPE_HEADER)
 
@@ -712,7 +712,7 @@ point grid::tchild::get_best_size() const
 		return border_space();
 	}
 
-	if(widget_->get_visible() == widget::tvisible::invisible) {
+	if(widget_->get_visible() == widget::visibility::invisible) {
 		DBG_GUI_L << LOG_CHILD_HEADER << " has widget " << true
 				  << " widget visible " << false << " returning 0,0"
 				  << ".\n";
@@ -727,10 +727,10 @@ point grid::tchild::get_best_size() const
 	return best_size;
 }
 
-void grid::tchild::place(point origin, point size)
+void grid::child::place(point origin, point size)
 {
 	assert(get_widget());
-	if(get_widget()->get_visible() == widget::tvisible::invisible) {
+	if(get_widget()->get_visible() == widget::visibility::invisible) {
 		return;
 	}
 
@@ -855,22 +855,22 @@ void grid::tchild::place(point origin, point size)
 	get_widget()->place(widget_orig, widget_size);
 }
 
-void grid::tchild::layout_initialise(const bool full_initialisation)
+void grid::child::layout_initialise(const bool full_initialisation)
 {
 	assert(widget_);
 
-	if(widget_->get_visible() != widget::tvisible::invisible) {
+	if(widget_->get_visible() != widget::visibility::invisible) {
 		widget_->layout_initialise(full_initialisation);
 	}
 }
 
-const std::string& grid::tchild::id() const
+const std::string& grid::child::id() const
 {
 	assert(widget_);
 	return widget_->id();
 }
 
-point grid::tchild::border_space() const
+point grid::child::border_space() const
 {
 	point result(0, 0);
 
@@ -901,8 +901,8 @@ void grid::layout(const point& origin)
 					  << " at origin " << orig << " with size " << size
 					  << ".\n";
 
-			if(child(row, col).get_widget()) {
-				child(row, col).place(orig, size);
+			if(get_child(row, col).get_widget()) {
+				get_child(row, col).place(orig, size);
 			}
 
 			orig.x += col_width_[col];
@@ -924,7 +924,7 @@ void grid::impl_draw_children(surface& frame_buffer, int x_offset, int y_offset)
 	 * the area not used for resizing the screen, this call `fixes' that.
 	 */
 
-	assert(get_visible() == widget::tvisible::visible);
+	assert(get_visible() == widget::visibility::visible);
 	set_is_dirty(false);
 
 	for(auto & child : children_)
@@ -933,11 +933,11 @@ void grid::impl_draw_children(surface& frame_buffer, int x_offset, int y_offset)
 		widget* widget = child.get_widget();
 		assert(widget);
 
-		if(widget->get_visible() != widget::tvisible::visible) {
+		if(widget->get_visible() != widget::visibility::visible) {
 			continue;
 		}
 
-		if(widget->get_drawing_action() == widget::tredraw_action::none) {
+		if(widget->get_drawing_action() == widget::redraw_action::none) {
 			continue;
 		}
 
@@ -955,7 +955,7 @@ unsigned grid_implementation::row_request_reduce_height(
 	unsigned required_height = 0;
 
 	for(size_t x = 0; x < grid.cols_; ++x) {
-		grid::tchild& cell = grid.child(row, x);
+		grid::child& cell = grid.get_child(row, x);
 		cell_request_reduce_height(cell, maximum_height);
 
 		const point size(cell.get_best_size());
@@ -980,7 +980,7 @@ unsigned grid_implementation::column_request_reduce_width(
 	unsigned required_width = 0;
 
 	for(size_t y = 0; y < grid.rows_; ++y) {
-		grid::tchild& cell = grid.child(y, column);
+		grid::child& cell = grid.get_child(y, column);
 		cell_request_reduce_width(cell, maximum_width);
 
 		const point size(cell.get_best_size());
@@ -999,12 +999,12 @@ unsigned grid_implementation::column_request_reduce_width(
 }
 
 void
-grid_implementation::cell_request_reduce_height(grid::tchild& child,
+grid_implementation::cell_request_reduce_height(grid::child& child,
 												 const unsigned maximum_height)
 {
 	assert(child.widget_);
 
-	if(child.widget_->get_visible() == widget::tvisible::invisible) {
+	if(child.widget_->get_visible() == widget::visibility::invisible) {
 		return;
 	}
 
@@ -1013,12 +1013,12 @@ grid_implementation::cell_request_reduce_height(grid::tchild& child,
 }
 
 void
-grid_implementation::cell_request_reduce_width(grid::tchild& child,
+grid_implementation::cell_request_reduce_width(grid::child& child,
 												const unsigned maximum_width)
 {
 	assert(child.widget_);
 
-	if(child.widget_->get_visible() == widget::tvisible::invisible) {
+	if(child.widget_->get_visible() == widget::visibility::invisible) {
 		return;
 	}
 

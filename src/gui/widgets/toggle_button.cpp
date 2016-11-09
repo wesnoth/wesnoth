@@ -202,7 +202,7 @@ toggle_button_definition::toggle_button_definition(const config& cfg)
 {
 	DBG_GUI_P << "Parsing toggle button " << id << '\n';
 
-	load_resolutions<tresolution>(cfg);
+	load_resolutions<resolution>(cfg);
 }
 
 /*WIKI
@@ -240,7 +240,7 @@ toggle_button_definition::toggle_button_definition(const config& cfg)
  * @end{tag}{name="oggle_button_definition"}
  * @end{parent}{name="gui/"}
  */
-toggle_button_definition::tresolution::tresolution(const config& cfg)
+toggle_button_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 {
 	// Note the order should be the same as the enum state_t in

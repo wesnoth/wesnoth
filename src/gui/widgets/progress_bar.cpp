@@ -81,7 +81,7 @@ progress_bar_definition::progress_bar_definition(const config& cfg)
 {
 	DBG_GUI_P << "Parsing progress bar " << id << '\n';
 
-	load_resolutions<tresolution>(cfg);
+	load_resolutions<resolution>(cfg);
 }
 
 /*WIKI
@@ -106,7 +106,7 @@ progress_bar_definition::progress_bar_definition(const config& cfg)
  * @end{tag}{name="progress_bar_definition"}
  * @end{parent}{name="gui/"}
  */
-progress_bar_definition::tresolution::tresolution(const config& cfg)
+progress_bar_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 {
 	// Note the order should be the same as the enum state_t in progress_bar.hpp.

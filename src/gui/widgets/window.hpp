@@ -63,7 +63,7 @@ class window : public panel, public cursor::setter
 	friend class debug_layout_graph;
 	friend window* build(CVideo&, const builder_window::window_resolution*);
 	friend struct window_implementation;
-	friend class tinvalidate_layout_blocker;
+	friend class invalidate_layout_blocker;
 	friend class pane;
 
 public:
@@ -115,7 +115,7 @@ public:
 	 * include the button, while it should be and implementation detail for most
 	 * callers.
 	 */
-	enum tretval {
+	enum retval {
 		NONE = 0, /**<
 				   * Dialog is closed with no return
 				   * value, should be rare but eg a
@@ -134,7 +134,7 @@ public:
 	};
 
 	/** Gets the retval for the default buttons. */
-	static tretval get_retval_by_id(const std::string& id);
+	static retval get_retval_by_id(const std::string& id);
 
 	/**
 	 * @todo Clean up the show functions.
@@ -154,7 +154,7 @@ public:
 	 *                            after the minimum.
 	 *
 	 * @returns                   The close code of the window, predefined
-	 *                            values are listed in tretval.
+	 *                            values are listed in retval.
 	 */
 	int show(const bool restore = true, const unsigned auto_close_timeout = 0);
 
@@ -215,7 +215,7 @@ public:
 	}
 
 	/** The status of the window. */
-	enum tstatus {
+	enum status {
 		NEW,		   /**< The window is new and not yet shown. */
 		SHOWING,	   /**< The window is being shown. */
 		REQUEST_CLOSE, /**< The window has been requested to be
@@ -246,11 +246,11 @@ public:
 	 *
 	 * @note The class can't be used recursively.
 	 */
-	class tinvalidate_layout_blocker
+	class invalidate_layout_blocker
 	{
 	public:
-		tinvalidate_layout_blocker(window& window);
-		~tinvalidate_layout_blocker();
+		invalidate_layout_blocker(window& window);
+		~invalidate_layout_blocker();
 
 	private:
 		window& window_;
@@ -457,7 +457,7 @@ public:
 	}
 	point get_linked_size(const std::string& linked_group_id) const
 	{
-		std::map<std::string, tlinked_size>::const_iterator it = linked_size_.find(linked_group_id);
+		std::map<std::string, linked_size>::const_iterator it = linked_size_.find(linked_group_id);
 		if(it != linked_size_.end()) {
 			return point(it->second.width, it->second.height);
 		}
@@ -494,9 +494,9 @@ private:
 	CVideo& video_;
 
 	/** The status of the window. */
-	tstatus status_;
+	status status_;
 
-	enum tshow_mode {
+	enum show_mode {
 		none,
 		modal,
 		tooltip
@@ -507,7 +507,7 @@ private:
 	 *
 	 * This is used to determine whether or not to remove the tip.
 	 */
-	tshow_mode show_mode_;
+	show_mode show_mode_;
 
 	// return value of the window, 0 default.
 	int retval_;
@@ -526,7 +526,7 @@ private:
 	/** The variables of the canvas. */
 	game_logic::map_formula_callable variables_;
 
-	/** Is invalidate layout blocked see tinvalidate_layout_blocker. */
+	/** Is invalidate layout blocked see invalidate_layout_blocker. */
 	bool invalidate_layout_blocked_;
 
 	/** Avoid drawing the window.  */
@@ -628,9 +628,9 @@ private:
 	 * can especially be useful for listboxes, but can also be used for other
 	 * applications.
 	 */
-	struct tlinked_size
+	struct linked_size
 	{
-		tlinked_size(const bool width = false, const bool height = false)
+		linked_size(const bool width = false, const bool height = false)
 			: widgets(), width(width ? 0 : -1), height(height ? 0 : -1)
 		{
 		}
@@ -646,7 +646,7 @@ private:
 	};
 
 	/** List of the widgets, whose size are linked together. */
-	std::map<std::string, tlinked_size> linked_size_;
+	std::map<std::string, linked_size> linked_size_;
 
 	/**
 	 * Layouts the window.
@@ -798,9 +798,9 @@ struct window_definition : public control_definition
 {
 	explicit window_definition(const config& cfg);
 
-	struct tresolution : public panel_definition::tresolution
+	struct resolution : public panel_definition::resolution
 	{
-		explicit tresolution(const config& cfg);
+		explicit resolution(const config& cfg);
 
 		builder_grid_ptr grid;
 	};

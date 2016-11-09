@@ -121,9 +121,9 @@ void end_credits::pre_show(window& window)
 	// This should probably be implemented as a scrollbar mode.
 	// Also, for some reason hiding the whole grid doesn't work, and the elements need to be hidden manually
 	if(grid* v_grid = dynamic_cast<grid*>(text_widget_->find("_vertical_scrollbar_grid", false))) {
-		find_widget<scrollbar_base>(v_grid, "_vertical_scrollbar", false).set_visible(widget::tvisible::hidden);
-		find_widget<repeating_button>(v_grid, "_half_page_up", false).set_visible(widget::tvisible::hidden);
-		find_widget<repeating_button>(v_grid, "_half_page_down", false).set_visible(widget::tvisible::hidden);
+		find_widget<scrollbar_base>(v_grid, "_vertical_scrollbar", false).set_visible(widget::visibility::hidden);
+		find_widget<repeating_button>(v_grid, "_half_page_up", false).set_visible(widget::visibility::hidden);
+		find_widget<repeating_button>(v_grid, "_half_page_down", false).set_visible(widget::visibility::hidden);
 	}
 }
 

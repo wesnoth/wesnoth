@@ -44,7 +44,7 @@ public:
 	}
 
 private:
-	friend class tbookmark_create;
+	friend class bookmark_create;
 
 	bool bookmark_mode_;
 
@@ -62,7 +62,7 @@ private:
 	void pre_show(window& window);
 };
 
-class tbookmark_create
+class bookmark_create
 {
 public:
 	/** The execute function; see @ref modal_dialog for more information. */

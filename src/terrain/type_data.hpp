@@ -62,7 +62,7 @@ public:
 	bool is_keep(const t_translation::terrain_code & terrain) const
 		{ return get_terrain_info(terrain).is_keep(); }
 
-	enum tmerge_mode {
+	enum merge_mode {
 		BASE,
 		OVERLAY,
 		BOTH
@@ -76,7 +76,7 @@ public:
 	 * (using the default base if new terrain is an overlay terrain)
 	 * Will return the resulting terrain or NONE_TERRAIN if merging failed
 	 */
-	t_translation::terrain_code merge_terrains(const t_translation::terrain_code & old_t, const t_translation::terrain_code & new_t, const tmerge_mode mode, bool replace_if_failed = false);
+	t_translation::terrain_code merge_terrains(const t_translation::terrain_code & old_t, const t_translation::terrain_code & new_t, const merge_mode mode, bool replace_if_failed = false);
 
 	/**
 	 * Tries to find out if "terrain" can be created by combining two existing

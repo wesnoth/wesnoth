@@ -114,7 +114,7 @@ void simple_item_selector::pre_show(window& window)
 	}
 
 	if(single_button_) {
-		button_cancel.set_visible(gui2::widget::tvisible::invisible);
+		button_cancel.set_visible(gui2::widget::visibility::invisible);
 	}
 }
 

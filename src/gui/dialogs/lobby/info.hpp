@@ -119,7 +119,7 @@ private:
 	boost::dynamic_bitset<> games_visibility_;
 };
 
-enum t_notify_mode {
+enum notify_mode {
 	NOTIFY_NONE,
 	NOTIFY_MESSAGE,
 	NOTIFY_MESSAGE_OTHER_WINDOW,
@@ -135,7 +135,7 @@ enum t_notify_mode {
 
 namespace gui2
 {
-	void do_mp_notify(t_notify_mode mode, const std::string & sender, const std::string & message);
-	inline void do_mp_notify(t_notify_mode mode) { do_mp_notify(mode, "", ""); }
+	void do_mp_notify(notify_mode mode, const std::string & sender, const std::string & message);
+	inline void do_mp_notify(notify_mode mode) { do_mp_notify(mode, "", ""); }
 }
 #endif

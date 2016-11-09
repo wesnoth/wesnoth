@@ -37,22 +37,22 @@ namespace gui2
 REGISTER_WIDGET(matrix)
 
 
-tstate_default::tstate_default() : state_(ENABLED)
+state_default::state_default() : state_(ENABLED)
 {
 }
-void tstate_default::set_active(const bool active)
+void state_default::set_active(const bool active)
 {
 	if(get_active() != active) {
 		state_ = active ? ENABLED : DISABLED;
 	}
 }
 
-bool tstate_default::get_active() const
+bool state_default::get_active() const
 {
 	return state_ != DISABLED;
 }
 
-unsigned tstate_default::get_state() const
+unsigned state_default::get_state() const
 {
 	return state_;
 }
@@ -60,8 +60,8 @@ unsigned tstate_default::get_state() const
 matrix::matrix(const implementation::builder_matrix& builder)
 	: tbase(builder, get_control_type()), content_(), pane_(nullptr)
 {
-	std::shared_ptr<const matrix_definition::tresolution>
-	cfg = std::static_pointer_cast<const matrix_definition::tresolution>(
+	std::shared_ptr<const matrix_definition::resolution>
+	cfg = std::static_pointer_cast<const matrix_definition::resolution>(
 			config());
 
 	builder_widget::replacements_map replacements;
@@ -219,10 +219,10 @@ matrix_definition::matrix_definition(const config& cfg)
 {
 	DBG_GUI_P << "Parsing matrix " << id << '\n';
 
-	load_resolutions<tresolution>(cfg);
+	load_resolutions<resolution>(cfg);
 }
 
-matrix_definition::tresolution::tresolution(const config& cfg)
+matrix_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 	, content(new builder_grid(cfg.child("content", "[matrix_definition]")))
 {

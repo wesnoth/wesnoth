@@ -141,9 +141,9 @@ unsigned toggle_panel::get_state() const
 
 SDL_Rect toggle_panel::get_client_rect() const
 {
-	std::shared_ptr<const toggle_panel_definition::tresolution> conf
+	std::shared_ptr<const toggle_panel_definition::resolution> conf
 			= std::static_pointer_cast<const toggle_panel_definition::
-												  tresolution>(config());
+												  resolution>(config());
 	assert(conf);
 
 	SDL_Rect result = get_rectangle();
@@ -157,9 +157,9 @@ SDL_Rect toggle_panel::get_client_rect() const
 
 point toggle_panel::border_space() const
 {
-	std::shared_ptr<const toggle_panel_definition::tresolution> conf
+	std::shared_ptr<const toggle_panel_definition::resolution> conf
 			= std::static_pointer_cast<const toggle_panel_definition::
-												  tresolution>(config());
+												  resolution>(config());
 	assert(conf);
 
 	return point(conf->left_border + conf->right_border, conf->top_border + conf->bottom_border);
@@ -188,9 +188,9 @@ void toggle_panel::set_state(const state_t state)
 	state_ = state;
 	set_is_dirty(true);
 
-	std::shared_ptr<const toggle_panel_definition::tresolution> conf
+	std::shared_ptr<const toggle_panel_definition::resolution> conf
 			= std::static_pointer_cast<const toggle_panel_definition::
-												  tresolution>(config());
+												  resolution>(config());
 	assert(conf);
 }
 
@@ -309,7 +309,7 @@ toggle_panel_definition::toggle_panel_definition(const config& cfg)
 {
 	DBG_GUI_P << "Parsing toggle panel " << id << '\n';
 
-	load_resolutions<tresolution>(cfg);
+	load_resolutions<resolution>(cfg);
 }
 
 /*WIKI
@@ -361,7 +361,7 @@ toggle_panel_definition::toggle_panel_definition(const config& cfg)
  * @end{tag}{name="oggle_panel_definition"}
  * @end{parent}{name="gui/"}
  */
-toggle_panel_definition::tresolution::tresolution(const config& cfg)
+toggle_panel_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 	, top_border(cfg["top_border"])
 	, bottom_border(cfg["bottom_border"])

@@ -141,8 +141,8 @@ void container_base::impl_draw_children(surface& frame_buffer,
 									 int x_offset,
 									 int y_offset)
 {
-	assert(get_visible() == widget::tvisible::visible
-		   && grid_.get_visible() == widget::tvisible::visible);
+	assert(get_visible() == widget::visibility::visible
+		   && grid_.get_visible() == widget::visibility::visible);
 
 	grid_.draw_children(frame_buffer, x_offset, y_offset);
 }

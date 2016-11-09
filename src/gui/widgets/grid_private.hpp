@@ -56,7 +56,7 @@ struct grid_implementation
 					  const point& coordinate,
 					  const bool must_be_active)
 	{
-		typedef typename utils::const_clone<grid::tchild, W>::type hack;
+		typedef typename utils::const_clone<grid::child, W>::type hack;
 		for(hack & child : grid.children_)
 		{
 
@@ -92,7 +92,7 @@ struct grid_implementation
 			return widget;
 		}
 
-		typedef typename utils::const_clone<grid::tchild, W>::type hack;
+		typedef typename utils::const_clone<grid::child, W>::type hack;
 		for(hack & child : grid.children_)
 		{
 
@@ -143,7 +143,7 @@ private:
 	 * @param child               The cell whose widget needs to be resized.
 	 * @param maximum_height      The wanted maximum height.
 	 */
-	static void cell_request_reduce_height(grid::tchild& child,
+	static void cell_request_reduce_height(grid::child& child,
 										   const unsigned maximum_height);
 
 	/**
@@ -152,7 +152,7 @@ private:
 	 * @param child               The cell whose widget needs to be resized.
 	 * @param maximum_width      The wanted maximum width.
 	 */
-	static void cell_request_reduce_width(grid::tchild& child,
+	static void cell_request_reduce_width(grid::child& child,
 										  const unsigned maximum_width);
 };
 

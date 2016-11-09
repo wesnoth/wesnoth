@@ -70,7 +70,7 @@ drawing_definition::drawing_definition(const config& cfg)
 {
 	DBG_GUI_P << "Parsing drawing " << id << '\n';
 
-	load_resolutions<tresolution>(cfg);
+	load_resolutions<resolution>(cfg);
 }
 
 /*WIKI
@@ -97,7 +97,7 @@ drawing_definition::drawing_definition(const config& cfg)
  * @end{tag}{name="drawing_definition"}
  * @end{parent}{name="gui/"}
  */
-drawing_definition::tresolution::tresolution(const config& cfg)
+drawing_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 {
 	/*

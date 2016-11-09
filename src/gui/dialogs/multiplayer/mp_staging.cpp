@@ -284,8 +284,8 @@ void mp_staging::add_side_node(window& window, ng::side_engine_ptr side)
 
 	// TODO: maybe display the saved values
 	if(saved_game) {
-		slider_gold.set_visible(widget::tvisible::invisible);
-		slider_income.set_visible(widget::tvisible::invisible);
+		slider_gold.set_visible(widget::visibility::invisible);
+		slider_income.set_visible(widget::visibility::invisible);
 	}
 
 	//
@@ -323,7 +323,7 @@ void mp_staging::on_controller_select(ng::side_engine_ptr side, grid& row_grid)
 	menu_button& controller_selection = find_widget<menu_button>(&row_grid, "controller", false);
 
 	if(side->controller_changed(controller_selection.get_value())) {
-		ai_selection.set_visible(side->controller() == ng::CNTR_COMPUTER ? widget::tvisible::visible : widget::tvisible::hidden);
+		ai_selection.set_visible(side->controller() == ng::CNTR_COMPUTER ? widget::visibility::visible : widget::visibility::hidden);
 
 		set_state_changed();
 	}

@@ -282,7 +282,7 @@ static std::pair<int, int> get_map_size(const char* begin, const char* end)
 	return{ w, h };
 }
 
-ter_map read_game_map(const std::string& str, tstarting_positions& starting_positions, coordinate border_offset)
+ter_map read_game_map(const std::string& str, starting_positions& starting_positions, coordinate border_offset)
 {
 	size_t offset = 0;
 	int x = 0, y = 0, width = 0;
@@ -317,7 +317,7 @@ ter_map read_game_map(const std::string& str, tstarting_positions& starting_posi
 			if (starting_positions.left.find(starting_position) != starting_positions.left.end()) {
 				WRN_G << "Starting position " << starting_position << " is redefined." << std::endl;
 			}
-			starting_positions.insert(tstarting_positions::value_type(starting_position, coordinate(x - border_offset.x, y - border_offset.y)));
+			starting_positions.insert(starting_positions::value_type(starting_position, coordinate(x - border_offset.x, y - border_offset.y)));
 		}
 
 		if(result.w <= x || result.h <= y) {
@@ -380,7 +380,7 @@ ter_map read_game_map(const std::string& str, tstarting_positions& starting_posi
 	return result;
 }
 
-std::string write_game_map(const ter_map& map, const tstarting_positions& starting_positions, coordinate border_offset)
+std::string write_game_map(const ter_map& map, const starting_positions& starting_positions, coordinate border_offset)
 {
 	std::stringstream str;
 

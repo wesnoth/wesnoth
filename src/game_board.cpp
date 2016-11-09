@@ -302,7 +302,7 @@ bool game_board::change_terrain(const map_location &loc, const std::string &t_st
 	t_translation::terrain_code terrain = t_translation::read_terrain_code(t_str);
 	if (terrain == t_translation::NONE_TERRAIN) return false;
 
-	terrain_type_data::tmerge_mode mode = terrain_type_data::BOTH;
+	terrain_type_data::merge_mode mode = terrain_type_data::BOTH;
 
 	if (mode_str == "base") mode = terrain_type_data::BASE;
 	else if (mode_str == "overlay") mode = terrain_type_data::OVERLAY;

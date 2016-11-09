@@ -230,9 +230,9 @@ static int special_locations_len(lua_State *L)
 
 static int special_locations_next(lua_State *L)
 {
-	const t_translation::tstarting_positions::left_map& left = lua_kernel_base::get_lua_kernel<game_lua_kernel>(L).map().special_locations().left;
+	const t_translation::starting_positions::left_map& left = lua_kernel_base::get_lua_kernel<game_lua_kernel>(L).map().special_locations().left;
 
-	t_translation::tstarting_positions::left_const_iterator it;
+	t_translation::starting_positions::left_const_iterator it;
 	if (lua_isnoneornil(L, 2)) {
 		it = left.begin();
 	}
@@ -261,7 +261,7 @@ static int special_locations_pairs(lua_State *L)
 
 static int special_locations_index(lua_State *L)
 {
-	const t_translation::tstarting_positions::left_map& left = lua_kernel_base::get_lua_kernel<game_lua_kernel>(L).map().special_locations().left;
+	const t_translation::starting_positions::left_map& left = lua_kernel_base::get_lua_kernel<game_lua_kernel>(L).map().special_locations().left;
 	auto it = left.find(luaL_checkstring(L, 2));
 	if (it == left.end()) {
 		return 0;

@@ -171,7 +171,7 @@ private:
 	 * @param id                  The dof-file-id of the child.
 	 */
 	void child_generate_info(std::ostream& out,
-							 const grid::tchild& child,
+							 const grid::child& child,
 							 const std::string& id) const;
 
 	/***** ***** Helper ***** *****/

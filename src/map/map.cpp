@@ -215,7 +215,7 @@ namespace
 	{
 		t_translation::ter_list old_;
 		t_translation::ter_list new_;
-		terrain_type_data::tmerge_mode mode_;
+		terrain_type_data::merge_mode mode_;
 		boost::optional<t_translation::terrain_code> terrain_;
 		bool use_old_;
 		bool replace_if_failed_;
@@ -295,7 +295,7 @@ void gamemap::overlay(const gamemap& m, const config& rules_cfg, map_location lo
 	if (!rules_cfg["ignore_special_locations"].to_bool(false)) {
 		for(auto& pair : m.starting_positions_.left) {
 			starting_positions_.left.erase(pair.first);
-			starting_positions_.insert(tstarting_positions::value_type(pair.first, t_translation::coordinate(pair.second.x + xpos, pair.second.y + ypos+ ((xpos & 1) && (pair.second.x & 1) ? 1 : 0))));
+			starting_positions_.insert(starting_positions::value_type(pair.first, t_translation::coordinate(pair.second.x + xpos, pair.second.y + ypos+ ((xpos & 1) && (pair.second.x & 1) ? 1 : 0))));
 		}
 	}
 }
@@ -380,7 +380,7 @@ bool gamemap::on_board_with_border(const map_location& loc) const
 	       loc.y >= -border_size() &&  loc.y < h_ + border_size();
 }
 
-void gamemap::set_terrain(const map_location& loc, const t_translation::terrain_code & terrain, const terrain_type_data::tmerge_mode mode, bool replace_if_failed) {
+void gamemap::set_terrain(const map_location& loc, const t_translation::terrain_code & terrain, const terrain_type_data::merge_mode mode, bool replace_if_failed) {
 	if(!on_board_with_border(loc)) {
 		// off the map: ignore request
 		return;

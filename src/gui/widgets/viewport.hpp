@@ -32,7 +32,7 @@ class grid;
 
 class viewport : public widget
 {
-	friend struct tviewport_implementation;
+	friend struct viewport_implementation;
 
 public:
 	/** @deprecated use the second overload. */

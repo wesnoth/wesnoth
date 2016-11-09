@@ -35,7 +35,7 @@ namespace gui2
  * functions. It also facilitates to create duplicates of functions for a const
  * and a non-const member function.
  */
-struct tviewport_implementation
+struct viewport_implementation
 {
 	/**
 	 * Implementation for the wrappers for
@@ -115,7 +115,7 @@ void viewport::layout_initialise(const bool full_initialisation)
 {
 	widget::layout_initialise(full_initialisation);
 
-	if(widget_.get_visible() != widget::tvisible::invisible) {
+	if(widget_.get_visible() != widget::visibility::invisible) {
 		widget_.layout_initialise(full_initialisation);
 	}
 }
@@ -126,7 +126,7 @@ viewport::impl_draw_children(surface& frame_buffer, int x_offset, int y_offset)
 	x_offset += get_x();
 	y_offset += get_y();
 
-	if(widget_.get_visible() != widget::tvisible::invisible) {
+	if(widget_.get_visible() != widget::visibility::invisible) {
 		widget_.draw_background(frame_buffer, x_offset, y_offset);
 		widget_.draw_children(frame_buffer, x_offset, y_offset);
 		widget_.draw_foreground(frame_buffer, x_offset, y_offset);
@@ -148,24 +148,24 @@ void viewport::request_reduce_width(const unsigned /*maximum_width*/)
 
 widget* viewport::find_at(const point& coordinate, const bool must_be_active)
 {
-	return tviewport_implementation::find_at(this, coordinate, must_be_active);
+	return viewport_implementation::find_at(this, coordinate, must_be_active);
 }
 
 const widget* viewport::find_at(const point& coordinate,
 								  const bool must_be_active) const
 {
-	return tviewport_implementation::find_at(this, coordinate, must_be_active);
+	return viewport_implementation::find_at(this, coordinate, must_be_active);
 }
 
 widget* viewport::find(const std::string& id, const bool must_be_active)
 {
-	return tviewport_implementation::find(this, id, must_be_active);
+	return viewport_implementation::find(this, id, must_be_active);
 }
 
 const widget* viewport::find(const std::string& id, const bool must_be_active)
 		const
 {
-	return tviewport_implementation::find(this, id, must_be_active);
+	return viewport_implementation::find(this, id, must_be_active);
 }
 
 point viewport::calculate_best_size() const

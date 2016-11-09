@@ -164,7 +164,7 @@ void show(CVideo& video,
 	{
 		t.show(video);
 	}
-	catch(twindow_builder_invalid_id&)
+	catch(window_builder_invalid_id&)
 	{
 		ERR_CFG << "Tip with the requested id '" << window_id
 				<< "' doesn't exist, fall back to the default.\n";
@@ -173,7 +173,7 @@ void show(CVideo& video,
 		{
 			t.show(video);
 		}
-		catch(twindow_builder_invalid_id&)
+		catch(window_builder_invalid_id&)
 		{
 			ERR_CFG << "Default tooltip doesn't exist, no message shown."
 					<< std::endl;

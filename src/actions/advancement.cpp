@@ -314,7 +314,7 @@ unit_ptr get_amla_unit(const unit &u, const config &mod_option)
 }
 
 
-void advance_unit(map_location loc, const tadvancement_option &advance_to, bool fire_event)
+void advance_unit(map_location loc, const advancement_option &advance_to, bool fire_event)
 {
 	unit_map::unit_iterator u = resources::units->find(loc);
 	if(!u.valid()) {

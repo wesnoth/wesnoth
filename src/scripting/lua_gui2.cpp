@@ -617,7 +617,7 @@ namespace { // helpers of intf_set_dialog_callback()
 	}
 
 	/** Helper struct for intf_set_dialog_callback. */
-	struct tdialog_callback_wrapper
+	struct dialog_callback_wrapper
 	{
 		void forward(gui2::widget* widget)
 		{
@@ -651,17 +651,17 @@ int intf_set_dialog_callback(lua_State *L)
 	if (lua_isnil(L, 1)) return 0;
 
 	if (gui2::clickable_item *c = dynamic_cast<gui2::clickable_item *>(w)) {
-		static tdialog_callback_wrapper wrapper;
-		c->connect_click_handler(std::bind(&tdialog_callback_wrapper::forward, wrapper, w));
+		static dialog_callback_wrapper wrapper;
+		c->connect_click_handler(std::bind(&dialog_callback_wrapper::forward, wrapper, w));
 	} else if (gui2::selectable_item *s = dynamic_cast<gui2::selectable_item *>(w)) {
 		s->set_callback_state_change(&dialog_callback);
 	}
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	else if (gui2::list_view *l = dynamic_cast<gui2::list_view *>(w)) {
-		static tdialog_callback_wrapper wrapper;
+		static dialog_callback_wrapper wrapper;
 		connect_signal_notify_modified(*l
 				, std::bind(
-					  &tdialog_callback_wrapper::forward
+					  &dialog_callback_wrapper::forward
 					, wrapper
 					, w));
 	}
@@ -760,25 +760,25 @@ int intf_set_dialog_active(lua_State *L)
  */
 int intf_set_dialog_visible(lua_State *L)
 {
-	typedef gui2::control::tvisible tvisible;
+	typedef gui2::control::visibility visibility;
 
-	tvisible flag = tvisible::visible;
+	visibility flag = visibility::visible;
 
 	switch (lua_type(L, 1)) {
 		case LUA_TBOOLEAN:
 			flag = luaW_toboolean(L, 1)
-					? tvisible::visible
-					: tvisible::invisible;
+					? visibility::visible
+					: visibility::invisible;
 			break;
 		case LUA_TSTRING:
 			{
 				const std::string& str = lua_tostring(L, 1);
 				if(str == "visible") {
-					flag = tvisible::visible;
+					flag = visibility::visible;
 				} else if(str == "hidden") {
-					flag = tvisible::hidden;
+					flag = visibility::hidden;
 				} else if(str == "invisible") {
-					flag = tvisible::invisible;
+					flag = visibility::invisible;
 				} else {
 					return luaL_argerror(L, 1, "string must be one of: visible, hidden, invisible");
 				}
@@ -794,7 +794,7 @@ int intf_set_dialog_visible(lua_State *L)
 
 	c->set_visible(flag);
 
-	if(flag == tvisible::hidden) {
+	if(flag == visibility::hidden) {
 		// HACK: this is needed to force the widget to be repainted immediately
 		//       to get rid of its ghost image.
 		scoped_dialog::current->window->invalidate_layout();

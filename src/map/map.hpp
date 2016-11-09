@@ -167,7 +167,7 @@ public:
 	 * Clobbers over the terrain at location 'loc', with the given terrain.
 	 * Uses mode and replace_if_failed like merge_terrains().
 	 */
-	void set_terrain(const map_location& loc, const t_translation::terrain_code & terrain, const terrain_type_data::tmerge_mode mode=terrain_type_data::BOTH, bool replace_if_failed = false);
+	void set_terrain(const map_location& loc, const t_translation::terrain_code & terrain, const terrain_type_data::merge_mode mode=terrain_type_data::BOTH, bool replace_if_failed = false);
 
 	/**
 	 * Maximum number of players supported.
@@ -184,8 +184,8 @@ public:
 	std::vector<map_location> parse_location_range(const std::string& xvals,
 	const std::string &yvals, bool with_border = false) const;
 
-	using tstarting_positions = t_translation::tstarting_positions;
-	const tstarting_positions& special_locations() const { return starting_positions_; }
+	using starting_positions = t_translation::starting_positions;
+	const starting_positions& special_locations() const { return starting_positions_; }
 
 	template<typename F>
 	void for_each_loc(const F& f) const
@@ -210,7 +210,7 @@ public:
 protected:
 	t_translation::ter_map tiles_;
 
-	tstarting_positions starting_positions_;
+	starting_positions starting_positions_;
 
 private:
 

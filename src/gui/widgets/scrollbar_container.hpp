@@ -59,7 +59,7 @@ public:
 	}
 
 	/** The way to handle the showing or hiding of the scrollbar. */
-	enum tscrollbar_mode {
+	enum scrollbar_mode {
 		/**
 		 * The scrollbar is always shown, whether needed or not.
 		 */
@@ -147,15 +147,15 @@ public:
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	/** @note shouldn't be called after being shown in a dialog. */
-	void set_vertical_scrollbar_mode(const tscrollbar_mode scrollbar_mode);
-	tscrollbar_mode get_vertical_scrollbar_mode() const
+	void set_vertical_scrollbar_mode(const scrollbar_mode scrollbar_mode);
+	scrollbar_mode get_vertical_scrollbar_mode() const
 	{
 		return vertical_scrollbar_mode_;
 	}
 
 	/** @note shouldn't be called after being shown in a dialog. */
-	void set_horizontal_scrollbar_mode(const tscrollbar_mode scrollbar_mode);
-	tscrollbar_mode get_horizontal_scrollbar_mode() const
+	void set_horizontal_scrollbar_mode(const scrollbar_mode scrollbar_mode);
+	scrollbar_mode get_horizontal_scrollbar_mode() const
 	{
 		return horizontal_scrollbar_mode_;
 	}
@@ -212,14 +212,14 @@ public:
 	 *
 	 * @param scroll              The position to scroll to.
 	 */
-	void scroll_vertical_scrollbar(const scrollbar_base::tscroll scroll);
+	void scroll_vertical_scrollbar(const scrollbar_base::scroll_mode scroll);
 
 	/**
 	 * Scrolls the horizontal scrollbar.
 	 *
 	 * @param scroll              The position to scroll to.
 	 */
-	void scroll_horizontal_scrollbar(const scrollbar_base::tscroll scroll);
+	void scroll_horizontal_scrollbar(const scrollbar_base::scroll_mode scroll);
 
 	/**
 	 * Callback when the scrollbar moves (NOTE maybe only one callback needed).
@@ -473,7 +473,7 @@ private:
 	 * This value should only be modified before showing, doing it while
 	 * showing results in UB.
 	 */
-	tscrollbar_mode vertical_scrollbar_mode_, horizontal_scrollbar_mode_;
+	scrollbar_mode vertical_scrollbar_mode_, horizontal_scrollbar_mode_;
 
 	/** These are valid after finalize_setup(). */
 	grid* vertical_scrollbar_grid_, *horizontal_scrollbar_grid_;

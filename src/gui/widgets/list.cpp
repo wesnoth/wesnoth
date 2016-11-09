@@ -140,7 +140,7 @@ void list_view::remove_row(const unsigned row, unsigned count)
 
 	unsigned height_reduced = 0;
 	for(; count; --count) {
-		if(generator_->item(row).get_visible() != tvisible::invisible) {
+		if(generator_->item(row).get_visible() != visibility::invisible) {
 			height_reduced += generator_->item(row).get_height();
 		}
 		generator_->delete_item(row);
@@ -181,7 +181,7 @@ void list_view::set_row_shown(const unsigned row, const bool shown)
 
 	bool resize_needed = false;
 	{
-		window::tinvalidate_layout_blocker invalidate_layout_blocker(*window);
+		window::invalidate_layout_blocker invalidate_layout_blocker(*window);
 
 		generator_->set_item_shown(row, shown);
 		generator_->place(generator_->get_origin(),
@@ -213,7 +213,7 @@ void list_view::set_row_shown(const boost::dynamic_bitset<>& shown)
 
 	bool resize_needed = false;
 	{
-		window::tinvalidate_layout_blocker invalidate_layout_blocker(*window);
+		window::invalidate_layout_blocker invalidate_layout_blocker(*window);
 
 		for(size_t i = 0; i < shown.size(); ++i) {
 			generator_->set_item_shown(i, shown[i]);
@@ -325,7 +325,7 @@ void list_view::resize_content(
 
 void list_view::init()
 {
-	init_grid(cast<listbox_definition::tresolution>(config()).grid);
+	init_grid(cast<listbox_definition::resolution>(config()).grid);
 
 	set_single_child(find_widget<grid>(&grid(), "_list_grid", false),
 					 generator_);
@@ -336,19 +336,19 @@ void list_view::init()
 	 */
 	grid* g = find_widget<grid>(&grid(), "_header_grid", false, false);
 	if(g)
-		g->set_visible(widget::tvisible::invisible);
+		g->set_visible(widget::visibility::invisible);
 
 	g = find_widget<grid>(&grid(), "_footer_grid", false, false);
 	if(g)
-		g->set_visible(widget::tvisible::invisible);
+		g->set_visible(widget::visibility::invisible);
 
 	g = find_widget<grid>(&grid(), "_vertical_scrollbar_grid", false, false);
 	if(g)
-		g->set_visible(widget::tvisible::invisible);
+		g->set_visible(widget::visibility::invisible);
 
 	g = find_widget<grid>(&grid(), "_horizontal_scrollbar_grid", false, false);
 	if(g)
-		g->set_visible(widget::tvisible::invisible);
+		g->set_visible(widget::visibility::invisible);
 }
 
 bool list_view::get_active() const

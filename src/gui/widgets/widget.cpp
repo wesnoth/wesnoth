@@ -38,8 +38,8 @@ widget::widget()
 #endif
 	, linked_group_()
 	, is_dirty_(true)
-	, visible_(tvisible::visible)
-	, redraw_action_(tredraw_action::full)
+	, visible_(visibility::visible)
+	, redraw_action_(redraw_action::full)
 	, clipping_rectangle_()
 #ifndef LOW_MEM
 	, debug_border_mode_(0)
@@ -62,8 +62,8 @@ widget::widget(const builder_widget& builder)
 #endif
 	, linked_group_(builder.linked_group)
 	, is_dirty_(true)
-	, visible_(tvisible::visible)
-	, redraw_action_(tredraw_action::full)
+	, visible_(visibility::visible)
+	, redraw_action_(redraw_action::full)
 	, clipping_rectangle_()
 #ifndef LOW_MEM
 	, debug_border_mode_(builder.debug_border_mode)
@@ -161,7 +161,7 @@ widget* widget::parent()
 
 void widget::layout_initialise(const bool /*full_initialisation*/)
 {
-	assert(visible_ != tvisible::invisible);
+	assert(visible_ != visibility::invisible);
 	assert(get_window());
 
 	layout_size_ = point();
@@ -187,7 +187,7 @@ void widget::demand_reduce_height(const unsigned /*maximum_height*/)
 
 point widget::get_best_size() const
 {
-	assert(visible_ != tvisible::invisible);
+	assert(visible_ != visibility::invisible);
 
 	point result = layout_size_;
 	if(result == point()) {
@@ -338,9 +338,9 @@ SDL_Rect widget::calculate_clipping_rectangle(const int x_offset,
 
 void widget::draw_background(surface& frame_buffer, int x_offset, int y_offset)
 {
-	assert(visible_ == tvisible::visible);
+	assert(visible_ == visibility::visible);
 
-	if(redraw_action_ == tredraw_action::partly) {
+	if(redraw_action_ == redraw_action::partly) {
 		const SDL_Rect clipping_rectangle
 				= calculate_clipping_rectangle(x_offset, y_offset);
 
@@ -355,9 +355,9 @@ void widget::draw_background(surface& frame_buffer, int x_offset, int y_offset)
 
 void widget::draw_children(surface& frame_buffer, int x_offset, int y_offset)
 {
-	assert(visible_ == tvisible::visible);
+	assert(visible_ == visibility::visible);
 
-	if(redraw_action_ == tredraw_action::partly) {
+	if(redraw_action_ == redraw_action::partly) {
 		const SDL_Rect clipping_rectangle
 				= calculate_clipping_rectangle(x_offset, y_offset);
 
@@ -370,9 +370,9 @@ void widget::draw_children(surface& frame_buffer, int x_offset, int y_offset)
 
 void widget::draw_foreground(surface& frame_buffer, int x_offset, int y_offset)
 {
-	assert(visible_ == tvisible::visible);
+	assert(visible_ == visibility::visible);
 
-	if(redraw_action_ == tredraw_action::partly) {
+	if(redraw_action_ == redraw_action::partly) {
 		const SDL_Rect clipping_rectangle
 				= calculate_clipping_rectangle(x_offset, y_offset);
 
@@ -388,11 +388,11 @@ void widget::populate_dirty_list(window& caller,
 {
 	assert(call_stack.empty() || call_stack.back() != this);
 
-	if(visible_ != tvisible::visible) {
+	if(visible_ != visibility::visible) {
 		return;
 	}
 
-	if(get_drawing_action() == tredraw_action::none) {
+	if(get_drawing_action() == redraw_action::none) {
 		return;
 	}
 
@@ -415,7 +415,7 @@ widget::child_populate_dirty_list(window& /*caller*/
 
 SDL_Rect widget::get_dirty_rectangle() const
 {
-	return redraw_action_ == tredraw_action::full ? get_rectangle()
+	return redraw_action_ == redraw_action::full ? get_rectangle()
 												  : clipping_rectangle_;
 }
 
@@ -424,11 +424,11 @@ void widget::set_visible_rectangle(const SDL_Rect& rectangle)
 	clipping_rectangle_ = sdl::intersect_rects(rectangle, get_rectangle());
 
 	if(clipping_rectangle_ == get_rectangle()) {
-		redraw_action_ = tredraw_action::full;
+		redraw_action_ = redraw_action::full;
 	} else if(clipping_rectangle_ == sdl::empty_rect) {
-		redraw_action_ = tredraw_action::none;
+		redraw_action_ = redraw_action::none;
 	} else {
-		redraw_action_ = tredraw_action::partly;
+		redraw_action_ = redraw_action::partly;
 	}
 }
 
@@ -442,15 +442,15 @@ bool widget::get_is_dirty() const
 	return is_dirty_;
 }
 
-void widget::set_visible(const tvisible visible)
+void widget::set_visible(const visibility visible)
 {
 	if(visible == visible_) {
 		return;
 	}
 
 	// Switching to or from invisible should invalidate the layout.
-	const bool need_resize = visible_ == tvisible::invisible
-							 || visible == tvisible::invisible;
+	const bool need_resize = visible_ == visibility::invisible
+							 || visible == visibility::invisible;
 	visible_ = visible;
 
 	if(need_resize) {
@@ -468,14 +468,14 @@ void widget::set_visible(const tvisible visible)
 	}
 }
 
-widget::tvisible widget::get_visible() const
+widget::visibility widget::get_visible() const
 {
 	return visible_;
 }
 
-widget::tredraw_action widget::get_drawing_action() const
+widget::redraw_action widget::get_drawing_action() const
 {
-	return (width_ == 0 || height_ == 0) ? tredraw_action::none
+	return (width_ == 0 || height_ == 0) ? redraw_action::none
 										 : redraw_action_;
 }
 
@@ -493,7 +493,7 @@ void widget::set_debug_border_colour(const unsigned debug_border_colour)
 
 void widget::draw_debug_border(surface& frame_buffer)
 {
-	SDL_Rect r = redraw_action_ == tredraw_action::partly ? clipping_rectangle_
+	SDL_Rect r = redraw_action_ == redraw_action::partly ? clipping_rectangle_
 														  : get_rectangle();
 
 	switch(debug_border_mode_) {
@@ -517,7 +517,7 @@ void widget::draw_debug_border(surface& frame_buffer)
 void
 widget::draw_debug_border(surface& frame_buffer, int x_offset, int y_offset)
 {
-	SDL_Rect r = redraw_action_ == tredraw_action::partly
+	SDL_Rect r = redraw_action_ == redraw_action::partly
 						 ? calculate_clipping_rectangle(x_offset, y_offset)
 						 : calculate_blitting_rectangle(x_offset, y_offset);
 
@@ -579,8 +579,8 @@ bool widget::is_at(const point& coordinate) const
 bool widget::recursive_is_visible(const widget* widget, const bool must_be_active) const
 {
 	while(widget) {
-		if(widget->visible_ == tvisible::invisible
-		   || (widget->visible_ == tvisible::hidden && must_be_active)) {
+		if(widget->visible_ == visibility::invisible
+		   || (widget->visible_ == visibility::hidden && must_be_active)) {
 			return false;
 		}
 

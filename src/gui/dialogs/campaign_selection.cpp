@@ -208,7 +208,7 @@ void campaign_selection::pre_show(window& window)
 		if(tree_view* tree
 		   = find_widget<tree_view>(&window, "campaign_tree", false, false)) {
 
-			tree->set_visible(widget::tvisible::invisible);
+			tree->set_visible(widget::visibility::invisible);
 		}
 
 		/***** Setup campaign list. *****/
@@ -249,7 +249,7 @@ void campaign_selection::pre_show(window& window)
 
 			widget* widget = grid->find("victory", false);
 			if(widget && !campaign["completed"].to_bool()) {
-				widget->set_visible(widget::tvisible::hidden);
+				widget->set_visible(widget::visibility::hidden);
 			}
 
 			/*** Add detail item ***/

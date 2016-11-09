@@ -129,9 +129,9 @@ struct unit_preview_pane_definition : public control_definition
 
 	explicit unit_preview_pane_definition(const config& cfg);
 
-	struct tresolution : public resolution_definition
+	struct resolution : public resolution_definition
 	{
-		explicit tresolution(const config& cfg);
+		explicit resolution(const config& cfg);
 
 		builder_grid_ptr grid;
 	};

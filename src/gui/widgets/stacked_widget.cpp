@@ -138,12 +138,12 @@ void stacked_widget::select_layer(const int layer)
 			// Select current layer, leave the rest unselected.
 			select_layer_internal(i, selected);
 			generator_->item(i).set_visible(selected
-											? widget::tvisible::visible
-											: widget::tvisible::hidden);
+											? widget::visibility::visible
+											: widget::visibility::hidden);
 		} else {
 			// Select everything.
 			select_layer_internal(i, true);
-			generator_->item(i).set_visible(widget::tvisible::visible);
+			generator_->item(i).set_visible(widget::visibility::visible);
 		}
 	}
 }
@@ -166,7 +166,7 @@ stacked_widget_definition::stacked_widget_definition(const config& cfg)
 {
 	DBG_GUI_P << "Parsing stacked widget " << id << '\n';
 
-	load_resolutions<tresolution>(cfg);
+	load_resolutions<resolution>(cfg);
 }
 
 /*WIKI
@@ -189,7 +189,7 @@ stacked_widget_definition::stacked_widget_definition(const config& cfg)
  * @end{tag}{name="stacked_widget_definition"}
  * @end{parent}{name="gui/"}
  */
-stacked_widget_definition::tresolution::tresolution(const config& cfg)
+stacked_widget_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg), grid(nullptr)
 {
 	// Add a dummy state since every widget needs a state.
@@ -250,8 +250,8 @@ widget* builder_stacked_widget::build() const
 	DBG_GUI_G << "Window builder: placed stacked widget '" << id
 			  << "' with definition '" << definition << "'.\n";
 
-	std::shared_ptr<const stacked_widget_definition::tresolution>
-	conf = std::static_pointer_cast<const stacked_widget_definition::tresolution>(
+	std::shared_ptr<const stacked_widget_definition::resolution>
+	conf = std::static_pointer_cast<const stacked_widget_definition::resolution>(
 					widget->config());
 	assert(conf);
 

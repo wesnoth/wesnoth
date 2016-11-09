@@ -111,9 +111,9 @@ struct scroll_label_definition : public control_definition
 {
 	explicit scroll_label_definition(const config& cfg);
 
-	struct tresolution : public resolution_definition
+	struct resolution : public resolution_definition
 	{
-		explicit tresolution(const config& cfg);
+		explicit resolution(const config& cfg);
 
 		builder_grid_ptr grid;
 	};
@@ -132,8 +132,8 @@ struct builder_scroll_label : public builder_control
 
 	widget* build() const;
 
-	scrollbar_container::tscrollbar_mode vertical_scrollbar_mode;
-	scrollbar_container::tscrollbar_mode horizontal_scrollbar_mode;
+	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
+	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;
 	bool wrap_on;
 	const std::string text_alignment;
 };

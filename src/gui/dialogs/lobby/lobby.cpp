@@ -240,7 +240,7 @@ void modify_grid_with_data(grid* grid, const std::map<std::string, string_map>& 
 void set_visible_if_exists(grid* grid, const std::string& id, bool visible)
 {
 	if(widget* w = grid->find(id, false)) {
-		w->set_visible(visible ? widget::tvisible::visible : widget::tvisible::invisible);
+		w->set_visible(visible ? widget::visibility::visible : widget::visibility::invisible);
 	}
 }
 
@@ -1093,7 +1093,7 @@ void lobby_main::user_dialog_callback(user_info* info)
 	delay_playerlist_update_ = true;
 
 	if(dlg.result_open_whisper()) {
-		tlobby_chat_window* t = chatbox_->whisper_window_open(info->name, true);
+		lobby_chat_window* t = chatbox_->whisper_window_open(info->name, true);
 		chatbox_->switch_to_window(t);
 	}
 

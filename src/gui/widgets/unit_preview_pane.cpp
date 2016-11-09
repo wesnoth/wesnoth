@@ -446,10 +446,10 @@ unit_preview_pane_definition::unit_preview_pane_definition(const config& cfg)
 {
 	DBG_GUI_P << "Parsing unit preview pane " << id << '\n';
 
-	load_resolutions<tresolution>(cfg);
+	load_resolutions<resolution>(cfg);
 }
 
-unit_preview_pane_definition::tresolution::tresolution(const config& cfg)
+unit_preview_pane_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg), grid()
 {
 	state.push_back(state_definition(cfg.child("background")));
@@ -481,9 +481,9 @@ widget* builder_unit_preview_pane::build() const
 	DBG_GUI_G << "Window builder: placed unit preview pane '" << id
 			  << "' with definition '" << definition << "'.\n";
 
-	std::shared_ptr<const unit_preview_pane_definition::tresolution> conf
+	std::shared_ptr<const unit_preview_pane_definition::resolution> conf
 		= std::static_pointer_cast<
-			const unit_preview_pane_definition::tresolution>(widget->config());
+			const unit_preview_pane_definition::resolution>(widget->config());
 
 	assert(conf);
 

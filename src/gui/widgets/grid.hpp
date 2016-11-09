@@ -175,13 +175,13 @@ public:
 	/** Returns the widget in the selected cell. */
 	const widget* get_widget(const unsigned row, const unsigned col) const
 	{
-		return child(row, col).get_widget();
+		return get_child(row, col).get_widget();
 	}
 
 	/** Returns the widget in the selected cell. */
 	widget* get_widget(const unsigned row, const unsigned col)
 	{
-		return child(row, col).get_widget();
+		return get_child(row, col).get_widget();
 	}
 
 	virtual bool can_mouse_focus() const override { return false; }
@@ -306,12 +306,12 @@ public:
 
 private:
 	/** Child item of the grid. */
-	class tchild
+	class child
 	{
 		friend struct grid_implementation;
 
 	public:
-		tchild() : flags_(0), border_size_(0), widget_(nullptr)
+		child() : flags_(0), border_size_(0), widget_(nullptr)
 
 		// Fixme make a class where we can store some properties in the cache
 		// regarding size etc.
@@ -394,15 +394,15 @@ private:
 		/** Returns the space needed for the border. */
 		point border_space() const;
 
-	}; // class tchild
+	}; // class child
 
 public:
-	/** Iterator for the tchild items. */
+	/** Iterator for the child items. */
 	class iterator
 	{
 
 	public:
-		iterator(std::vector<tchild>::iterator itor) : itor_(itor)
+		iterator(std::vector<child>::iterator itor) : itor_(itor)
 		{
 		}
 
@@ -434,7 +434,7 @@ public:
 		}
 
 	private:
-		std::vector<tchild>::iterator itor_;
+		std::vector<child>::iterator itor_;
 	};
 
 	iterator begin()
@@ -473,12 +473,12 @@ private:
 	 * All children are stored in a 1D vector and the formula to access a cell
 	 * is: rows_ * col + row. All other vectors use the same access formula.
 	 */
-	std::vector<tchild> children_;
-	const tchild& child(const unsigned row, const unsigned col) const
+	std::vector<child> children_;
+	const child& get_child(const unsigned row, const unsigned col) const
 	{
 		return children_[rows_ * col + row];
 	}
-	tchild& child(const unsigned row, const unsigned col)
+	child& get_child(const unsigned row, const unsigned col)
 	{
 		return children_[rows_ * col + row];
 	}

@@ -120,7 +120,7 @@ namespace gui2 {
 std::vector<std::string>& unit_test_registered_window_list()
 {
 	static std::vector<std::string> result =
-			tunit_test_access_only::get_registered_window_list();
+			unit_test_access_only::get_registered_window_list();
 
 	return result;
 }
@@ -176,13 +176,13 @@ namespace {
 		T* create() { return new T(); }
 	};
 
-	typedef std::pair<unsigned, unsigned> tresolution;
+	typedef std::pair<unsigned, unsigned> resolution;
 	typedef std::vector<std::pair<unsigned, unsigned> > tresolution_list;
 
 	template<class T>
 	void test_resolutions(const tresolution_list& resolutions)
 	{
-		for(const tresolution& resolution : resolutions) {
+		for(const resolution& resolution : resolutions) {
 			CVideo& video = test_utils::get_fake_display(resolution.first, resolution.second).video();
 
 			dialog_tester<T> ctor;
@@ -221,7 +221,7 @@ namespace {
 	{
 		bool interact = false;
 		for(int i = 0; i < 2; ++i) {
-			for(const tresolution& resolution : resolutions) {
+			for(const resolution& resolution : resolutions) {
 				CVideo& video = test_utils::get_fake_display(resolution.first, resolution.second).video();
 
 				dialog_tester<T> ctor;
@@ -268,7 +268,7 @@ namespace {
 	void test_tip_resolutions(const tresolution_list& resolutions
 			, const std::string& id)
 	{
-		for(const tresolution& resolution : resolutions) {
+		for(const resolution& resolution : resolutions) {
 			
 			CVideo& video = test_utils::get_fake_display(resolution.first, resolution.second).video();
 
@@ -766,9 +766,9 @@ struct dialog_tester<gamestate_inspector>
 
 };
 
-struct twesnothd_connection_init
+struct wesnothd_connection_init
 {
-	twesnothd_connection_init(wesnothd_connection& conn)
+	wesnothd_connection_init(wesnothd_connection& conn)
 	{
 		//Swallow the 'cannot connect' execption so that the connection object doesn't throw while we test the dialog.
 		try 
@@ -789,7 +789,7 @@ struct dialog_tester<lobby_main>
 {
 	config game_config;
 	wesnothd_connection connection;
-	twesnothd_connection_init wesnothd_connection_init;
+	wesnothd_connection_init wesnothd_connection_init;
 	std::vector<std::string> installed_addons;
 	lobby_info li;
 	dialog_tester() : connection("", ""), wesnothd_connection_init(connection), li(game_config, installed_addons)
@@ -815,7 +815,7 @@ struct dialog_tester<lobby_player_info>
 	config c;
 	fake_chat_handler ch;
 	wesnothd_connection connection;
-	twesnothd_connection_init wesnothd_connection_init;
+	wesnothd_connection_init wesnothd_connection_init;
 	user_info ui;
 	std::vector<std::string> installed_addons;
 	lobby_info li;

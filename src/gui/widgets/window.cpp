@@ -493,7 +493,7 @@ void window::update_screen_size()
  * * cancel cancels the dialog.
  *
  */
-window::tretval window::get_retval_by_id(const std::string& id)
+window::retval window::get_retval_by_id(const std::string& id)
 {
 	// Note it might change to a map later depending on the number
 	// of items.
@@ -568,10 +568,10 @@ int window::show(const bool restore, const unsigned auto_close_timeout)
 	 * We need to make sure we restore the value when the function ends, be it
 	 * normally or due to an exception.
 	 */
-	class tdraw_interval_setter
+	class draw_interval_setter
 	{
 	public:
-		tdraw_interval_setter() : interval_(draw_interval)
+		draw_interval_setter() : interval_(draw_interval)
 		{
 			if(interval_ == 0) {
 				draw_interval = 20;
@@ -583,7 +583,7 @@ int window::show(const bool restore, const unsigned auto_close_timeout)
 			}
 		}
 
-		~tdraw_interval_setter()
+		~draw_interval_setter()
 		{
 			draw_interval = interval_;
 		}
@@ -598,7 +598,7 @@ int window::show(const bool restore, const unsigned auto_close_timeout)
 
 	assert(status_ == NEW);
 
-	tdraw_interval_setter draw_interval_setter;
+	draw_interval_setter draw_interval_setter;
 
 	/*
 	 * Before show has been called, some functions might have done some testing
@@ -802,8 +802,8 @@ void window::draw()
 		 *
 		 * Before drawing there needs to be determined whether a dirty widget
 		 * really needs to be redrawn. If the widget doesn't need to be
-		 * redrawing either being not tvisible::visible or has status
-		 * widget::tredraw_action::none. If it's not drawn it's still set not
+		 * redrawing either being not visibility::visible or has status
+		 * widget::redraw_action::none. If it's not drawn it's still set not
 		 * dirty to avoid it keep getting on the dirty list.
 		 */
 
@@ -811,9 +811,9 @@ void window::draw()
 			itor != item.end();
 			++itor) {
 
-			if((**itor).get_visible() != widget::tvisible::visible
+			if((**itor).get_visible() != widget::visibility::visible
 			   || (**itor).get_drawing_action()
-				  == widget::tredraw_action::none) {
+				  == widget::redraw_action::none) {
 
 				for(std::vector<widget*>::iterator citor = itor;
 					citor != item.end();
@@ -879,14 +879,14 @@ void window::undraw()
 	}
 }
 
-window::tinvalidate_layout_blocker::tinvalidate_layout_blocker(window& window)
+window::invalidate_layout_blocker::invalidate_layout_blocker(window& window)
 	: window_(window)
 {
 	assert(!window_.invalidate_layout_blocked_);
 	window_.invalidate_layout_blocked_ = true;
 }
 
-window::tinvalidate_layout_blocker::~tinvalidate_layout_blocker()
+window::invalidate_layout_blocker::~invalidate_layout_blocker()
 {
 	assert(window_.invalidate_layout_blocked_);
 	window_.invalidate_layout_blocked_ = false;
@@ -927,7 +927,7 @@ void window::init_linked_size_group(const std::string& id,
 	assert(fixed_width || fixed_height);
 	assert(!has_linked_size_group(id));
 
-	linked_size_[id] = tlinked_size(fixed_width, fixed_height);
+	linked_size_[id] = linked_size(fixed_width, fixed_height);
 }
 
 bool window::has_linked_size_group(const std::string& id)
@@ -973,8 +973,8 @@ void window::layout()
 {
 	/***** Initialize. *****/
 
-	std::shared_ptr<const window_definition::tresolution>
-	conf = std::static_pointer_cast<const window_definition::tresolution>(
+	std::shared_ptr<const window_definition::resolution>
+	conf = std::static_pointer_cast<const window_definition::resolution>(
 			config());
 	assert(conf);
 
@@ -1003,12 +1003,12 @@ void window::layout()
 	if((click_dismiss_button
 		= find_widget<button>(this, "click_dismiss", false, false))) {
 
-		click_dismiss_button->set_visible(widget::tvisible::invisible);
+		click_dismiss_button->set_visible(widget::visibility::invisible);
 	}
 	if(click_dismiss_) {
 		button* btn = find_widget<button>(this, "ok", false, false);
 		if(btn) {
-			btn->set_visible(widget::tvisible::invisible);
+			btn->set_visible(widget::visibility::invisible);
 			click_dismiss_button = btn;
 		}
 		VALIDATE(click_dismiss_button,
@@ -1045,7 +1045,7 @@ void window::layout()
 	/****** Validate click dismiss status. *****/
 	if(click_dismiss_ && disable_click_dismiss()) {
 		assert(click_dismiss_button);
-		click_dismiss_button->set_visible(widget::tvisible::visible);
+		click_dismiss_button->set_visible(widget::visibility::visible);
 
 		connect_signal_mouse_left_click(
 				*click_dismiss_button,
@@ -1484,11 +1484,11 @@ window_definition::window_definition(const config& cfg)
 {
 	DBG_GUI_P << "Parsing window " << id << '\n';
 
-	load_resolutions<tresolution>(cfg);
+	load_resolutions<resolution>(cfg);
 }
 
-window_definition::tresolution::tresolution(const config& cfg)
-	: panel_definition::tresolution(cfg), grid(nullptr)
+window_definition::resolution::resolution(const config& cfg)
+	: panel_definition::resolution(cfg), grid(nullptr)
 {
 	const config& child = cfg.child("grid");
 	// VALIDATE(child, _("No grid defined."));
@@ -1524,7 +1524,7 @@ window_definition::tresolution::tresolution(const config& cfg)
  *   one or more widgets.  Several widgets have a grid in them to hold
  *   multiple widgets eg panels and windows.
  *
- * - @ref gui2::grid::tchild "Grid cell"; Every widget which is in a grid is
+ * - @ref gui2::grid::child "Grid cell"; Every widget which is in a grid is
  *   put in a grid cell. These cells also hold the information about the gaps
  *   between widgets the behavior on growing etc. All grid cells must have a
  *   widget inside them.
@@ -1533,7 +1533,7 @@ window_definition::tresolution::tresolution(const config& cfg)
  *   grid with its children. The window handles the sizing of the window and
  *   makes sure everything fits.
  *
- * - @ref gui2::window::tlinked_size "Shared size group"; A shared size
+ * - @ref gui2::window::linked_size "Shared size group"; A shared size
  *   group is a number of widgets which share width and or height. These
  *   widgets are handled separately in the layout algorithm. All grid cells
  *   width such a widget will get the same height and or width and these
@@ -1544,14 +1544,14 @@ window_definition::tresolution::tresolution(const config& cfg)
  *   layout property must be set by the engine after validation.
  *
  * - All visible grid cells; A grid cell is visible when the widget inside
- *   of it doesn't have the state tvisible::invisible. Widgets which have the
- *   state @ref tvisible::hidden are sized properly since when they become
- *   @ref tvisible::visible the layout shouldn't be invalidated. A grid cell
+ *   of it doesn't have the state visibility::invisible. Widgets which have the
+ *   state @ref visibility::hidden are sized properly since when they become
+ *   @ref visibility::visible the layout shouldn't be invalidated. A grid cell
  *   that's invisible has size 0,0.
  *
  * - All resizable grid cells; A grid cell is resizable under the following
  *   conditions:
- *   - The widget is tvisible::visible.
+ *   - The widget is visibility::visible.
  *   - The widget is not in a shared size group.
  *
  * There are two layout algorithms with a different purpose.
@@ -1573,7 +1573,7 @@ window_definition::tresolution::tresolution(const config& cfg)
  *   (@ref gui2::widget::layout_initialise (full_initialisation = true)):
  *   - Clear the internal best size cache for all widgets.
  *   - For widgets with scrollbars hide them unless the
- *     @ref gui2::scrollbar_container::tscrollbar_mode "scrollbar_mode" is
+ *     @ref gui2::scrollbar_container::scrollbar_mode "scrollbar_mode" is
  *     ALWAYS_VISIBLE or AUTO_VISIBLE.
  * - Handle shared sizes:
  *   - Height and width:

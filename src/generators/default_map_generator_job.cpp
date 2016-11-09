@@ -525,7 +525,7 @@ map_location default_map_generator_job::random_point_at_side(size_t width, size_
 
 /** Function which, given the map will output it in a valid format. */
 static std::string output_map(const terrain_map& terrain,
-		t_translation::tstarting_positions& starting_positions)
+		t_translation::starting_positions& starting_positions)
 {
 	// Remember that we only want the middle 1/9th of the map.
 	// All other segments of the map are there only to give
@@ -783,7 +783,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 		}
 	}
 
-	t_translation::tstarting_positions starting_positions;
+	t_translation::starting_positions starting_positions;
 	LOG_NG << output_map(terrain, starting_positions);
 	LOG_NG << "Placed landforms. " << (SDL_GetTicks() - ticks) << " ticks elapsed" << "\n";
 	ticks = SDL_GetTicks();
@@ -1148,7 +1148,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 		const int y = c->y;
 		const int player = c - castles.begin() + 1;
 		const t_translation::coordinate coord(x, y);
-		starting_positions.insert(t_translation::tstarting_positions::value_type(std::to_string(player), coord));
+		starting_positions.insert(t_translation::starting_positions::value_type(std::to_string(player), coord));
 		terrain[x][y] = t_translation::HUMAN_KEEP;
 
 		const int castle_array[13][2] = {

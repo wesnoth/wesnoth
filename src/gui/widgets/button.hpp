@@ -120,9 +120,9 @@ struct button_definition : public control_definition
 {
 	explicit button_definition(const config& cfg);
 
-	struct tresolution : public resolution_definition
+	struct resolution : public resolution_definition
 	{
-		explicit tresolution(const config& cfg);
+		explicit resolution(const config& cfg);
 	};
 };
 

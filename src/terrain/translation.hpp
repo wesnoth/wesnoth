@@ -217,7 +217,7 @@ namespace t_translation {
 	 */
 	std::string write_list(const ter_list& list);
 
-	using tstarting_positions = boost::bimaps::bimap<boost::bimaps::set_of<std::string>, boost::bimaps::multiset_of<coordinate>>;
+	using starting_positions = boost::bimaps::bimap<boost::bimaps::set_of<std::string>, boost::bimaps::multiset_of<coordinate>>;
 	/**
 	 * Reads a gamemap string into a 2D vector
 	 *
@@ -250,7 +250,7 @@ namespace t_translation {
 	 * @returns			A 2D vector with the terrains found the vector data is stored
 	 *					like result[x][y] where x the column number is and y the row number.
 	 */
-	ter_map read_game_map(const std::string& str, tstarting_positions& starting_positions, coordinate border_offset = coordinate{ 0, 0 });
+	ter_map read_game_map(const std::string& str, starting_positions& positions, coordinate border_offset = coordinate{ 0, 0 });
 
 	/**
 	 * Write a gamemap in to a vector string.
@@ -262,7 +262,7 @@ namespace t_translation {
 	 *					For readability the map is padded to groups of 12 chars,
 	 *					followed by a comma and space.
 	 */
-	std::string write_game_map(const ter_map& map, const tstarting_positions& starting_positions = tstarting_positions(), coordinate border_offset = coordinate{ 0, 0 });
+	std::string write_game_map(const ter_map& map, const starting_positions& positions = starting_positions(), coordinate border_offset = coordinate{ 0, 0 });
 
 	/**
 	 * Tests whether a specific terrain matches a list of expressions.

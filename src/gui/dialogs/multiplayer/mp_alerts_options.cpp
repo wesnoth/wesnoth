@@ -137,16 +137,16 @@ void mp_alerts_options::pre_show(window& window)
 
 	toggle_button * in_lobby;
 	in_lobby = &find_widget<toggle_button>(&window,"ready_for_start_lobby", false);
-	in_lobby->set_visible(widget::tvisible::invisible);
+	in_lobby->set_visible(widget::visibility::invisible);
 
 	in_lobby = &find_widget<toggle_button>(&window,"game_has_begun_lobby", false);
-	in_lobby->set_visible(widget::tvisible::invisible);
+	in_lobby->set_visible(widget::visibility::invisible);
 
 	in_lobby = &find_widget<toggle_button>(&window,"turn_changed_sound", false); // If we get a sound for this then don't remove this button
-	in_lobby->set_visible(widget::tvisible::invisible);
+	in_lobby->set_visible(widget::visibility::invisible);
 
 	in_lobby = &find_widget<toggle_button>(&window,"turn_changed_lobby", false);
-	in_lobby->set_visible(widget::tvisible::invisible);
+	in_lobby->set_visible(widget::visibility::invisible);
 
 	button * defaults;
 	defaults = &find_widget<button>(&window,"revert_to_defaults", false);

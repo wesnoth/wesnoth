@@ -380,7 +380,7 @@ void addon_description::pre_show(window& window)
 	url_textbox.set_active(false);
 
 	if(!feedback_url_.empty()) {
-		url_none.set_visible(control::tvisible::invisible);
+		url_none.set_visible(control::visibility::invisible);
 
 		connect_signal_mouse_left_click(
 				url_go_button,
@@ -398,15 +398,15 @@ void addon_description::pre_show(window& window)
 		url_go_button.set_active(false);
 		url_copy_button.set_active(false);
 
-		url_go_button.set_visible(control::tvisible::invisible);
-		url_copy_button.set_visible(control::tvisible::invisible);
-		url_textbox.set_visible(control::tvisible::invisible);
+		url_go_button.set_visible(control::visibility::invisible);
+		url_copy_button.set_visible(control::visibility::invisible);
+		url_textbox.set_visible(control::visibility::invisible);
 	}
 
 	if(!desktop::open_object_is_supported()) {
 		// No point in displaying the button on platforms that can't do
 		// open_object().
-		url_go_button.set_visible(control::tvisible::invisible);
+		url_go_button.set_visible(control::visibility::invisible);
 	}
 }
 

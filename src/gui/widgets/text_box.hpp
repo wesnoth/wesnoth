@@ -284,9 +284,9 @@ struct text_box_definition : public control_definition
 {
 	explicit text_box_definition(const config& cfg);
 
-	struct tresolution : public resolution_definition
+	struct resolution : public resolution_definition
 	{
-		explicit tresolution(const config& cfg);
+		explicit resolution(const config& cfg);
 
 		typed_formula<unsigned> text_x_offset;
 		typed_formula<unsigned> text_y_offset;

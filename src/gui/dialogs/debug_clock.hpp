@@ -81,9 +81,9 @@ private:
 	event::signal_function signal_;
 
 	/** Helper struct to keep track of the time. */
-	struct ttime
+	struct time
 	{
-		ttime();
+		time();
 
 		/**
 		 * Sets the fields to the current time.
@@ -125,7 +125,7 @@ private:
 	 * @note Since the dialog is used to test the drawing routine by keeping
 	 * track of the calls to the drawing routine, the clock might be off.
 	 */
-	ttime time_;
+	time time_;
 
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;

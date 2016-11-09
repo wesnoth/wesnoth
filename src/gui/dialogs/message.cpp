@@ -80,14 +80,14 @@ void message::pre_show(window& window)
 	if(!title_.empty()) {
 		title_widget.set_label(title_);
 	} else {
-		title_widget.set_visible(widget::tvisible::invisible);
+		title_widget.set_visible(widget::visibility::invisible);
 	}
 
 	control& img_widget = find_widget<image>(&window, "image", false);
 	if(!image_.empty()) {
 		img_widget.set_label(image_);
 	} else {
-		img_widget.set_visible(widget::tvisible::invisible);
+		img_widget.set_visible(widget::visibility::invisible);
 	}
 
 	control& label = find_widget<control>(&window, "label", false);
@@ -120,7 +120,7 @@ void message::set_button_caption(const button_id button,
 }
 
 void message::set_button_visible(const button_id button,
-								  const widget::tvisible visible)
+								  const widget::visibility visible)
 {
 	buttons_[button].visible = visible;
 	if(buttons_[button].button) {
@@ -139,7 +139,7 @@ void message::set_button_retval(const button_id button, const int retval)
 message::tbutton_status::tbutton_status()
 	: button(nullptr)
 	, caption()
-	, visible(widget::tvisible::invisible)
+	, visible(widget::visibility::invisible)
 	, retval(window::NONE)
 {
 }
@@ -176,25 +176,25 @@ int show_message(CVideo& video,
 		case message::auto_close:
 			break;
 		case message::ok_button:
-			dlg.set_button_visible(message::ok, widget::tvisible::visible);
+			dlg.set_button_visible(message::ok, widget::visibility::visible);
 			dlg.set_button_caption(message::ok, _("OK"));
 			break;
 		case message::close_button:
-			dlg.set_button_visible(message::ok, widget::tvisible::visible);
+			dlg.set_button_visible(message::ok, widget::visibility::visible);
 			break;
 		case message::ok_cancel_buttons:
-			dlg.set_button_visible(message::ok, widget::tvisible::visible);
+			dlg.set_button_visible(message::ok, widget::visibility::visible);
 			dlg.set_button_caption(message::ok, _("OK"));
 		/* FALL DOWN */
 		case message::cancel_button:
 			dlg.set_button_visible(message::cancel,
-								   widget::tvisible::visible);
+								   widget::visibility::visible);
 			break;
 		case message::yes_no_buttons:
-			dlg.set_button_visible(message::ok, widget::tvisible::visible);
+			dlg.set_button_visible(message::ok, widget::visibility::visible);
 			dlg.set_button_caption(message::ok, _("Yes"));
 			dlg.set_button_visible(message::cancel,
-								   widget::tvisible::visible);
+								   widget::visibility::visible);
 			dlg.set_button_caption(message::cancel, _("No"));
 			break;
 	}

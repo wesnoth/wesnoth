@@ -404,9 +404,9 @@ struct listbox_definition : public control_definition
 
 	explicit listbox_definition(const config& cfg);
 
-	struct tresolution : public resolution_definition
+	struct resolution : public resolution_definition
 	{
-		explicit tresolution(const config& cfg);
+		explicit resolution(const config& cfg);
 
 		builder_grid_ptr grid;
 	};
@@ -425,8 +425,8 @@ struct builder_listbox : public builder_control
 
 	widget* build() const;
 
-	scrollbar_container::tscrollbar_mode vertical_scrollbar_mode;
-	scrollbar_container::tscrollbar_mode horizontal_scrollbar_mode;
+	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
+	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;
 
 	builder_grid_ptr header;
 	builder_grid_ptr footer;
@@ -452,8 +452,8 @@ struct builder_horizontal_listbox : public builder_control
 
 	widget* build() const;
 
-	scrollbar_container::tscrollbar_mode vertical_scrollbar_mode;
-	scrollbar_container::tscrollbar_mode horizontal_scrollbar_mode;
+	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
+	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;
 
 	builder_grid_ptr list_builder;
 
@@ -476,8 +476,8 @@ struct builder_grid_listbox : public builder_control
 
 	widget* build() const;
 
-	scrollbar_container::tscrollbar_mode vertical_scrollbar_mode;
-	scrollbar_container::tscrollbar_mode horizontal_scrollbar_mode;
+	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
+	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;
 
 	builder_grid_ptr list_builder;
 

@@ -32,10 +32,10 @@ namespace implementation
 struct builder_matrix;
 }
 
-class tstate_default
+class state_default
 {
 public:
-	tstate_default();
+	state_default();
 
 	void set_active(const bool active);
 
@@ -95,7 +95,7 @@ public:
 	}
 };
 
-typedef control_NEW<tstate_default> tbase;
+typedef control_NEW<state_default> tbase;
 
 /** The matrix class. */
 class matrix : public tbase
@@ -237,9 +237,9 @@ struct matrix_definition : public control_definition
 
 	explicit matrix_definition(const config& cfg);
 
-	struct tresolution : public resolution_definition
+	struct resolution : public resolution_definition
 	{
-		explicit tresolution(const config& cfg);
+		explicit resolution(const config& cfg);
 
 		builder_grid_ptr content;
 	};
@@ -258,8 +258,8 @@ struct builder_matrix : public builder_control
 
 	widget* build() const;
 
-	scrollbar_container::tscrollbar_mode vertical_scrollbar_mode;
-	scrollbar_container::tscrollbar_mode horizontal_scrollbar_mode;
+	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
+	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;
 
 	builder_grid_ptr builder_top;
 	builder_grid_ptr builder_bottom;

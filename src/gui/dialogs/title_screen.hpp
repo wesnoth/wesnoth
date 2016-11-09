@@ -46,7 +46,7 @@ public:
 	 * Values for actions which leave the title screen.
 	 * Actions that merely show a dialog are not included here.
 	 */
-	enum tresult {
+	enum result {
 		// Start playing a single-player game, such as the tutorial or a campaign
 		LAUNCH_GAME,
 		// Connect to an MP server

@@ -82,7 +82,7 @@ public:
 							const std::string& caption);
 
 	void set_button_visible(const button_id button,
-							const widget::tvisible visible);
+							const widget::visibility visible);
 
 	void set_button_retval(const button_id button, const int retval);
 
@@ -144,7 +144,7 @@ private:
 
 		button* button;
 		std::string caption;
-		widget::tvisible visible;
+		widget::visibility visible;
 		int retval;
 	};
 

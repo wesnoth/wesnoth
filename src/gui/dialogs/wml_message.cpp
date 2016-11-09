@@ -94,8 +94,8 @@ void wml_message_base::pre_show(window& window)
 		window.set_click_dismiss(false);
 		window.set_escape_disabled(true);
 	} else {
-		caption.set_visible(widget::tvisible::invisible);
-		input.set_visible(widget::tvisible::invisible);
+		caption.set_visible(widget::visibility::invisible);
+		input.set_visible(widget::visibility::invisible);
 	}
 
 	// Find the option list related fields.
@@ -129,7 +129,7 @@ void wml_message_base::pre_show(window& window)
 			// click_dismiss has been disabled due to the input.
 		}
 	} else {
-		options.set_visible(widget::tvisible::invisible);
+		options.set_visible(widget::visibility::invisible);
 	}
 	window.set_click_dismiss(!has_input_ && option_list_.empty());
 }

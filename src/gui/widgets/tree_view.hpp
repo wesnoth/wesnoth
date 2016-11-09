@@ -22,9 +22,9 @@ namespace gui2
 
 namespace implementation {
 	struct builder_tree_view;
-	struct ttree_node
+	struct tree_node
 	{
-		explicit ttree_node(const config& cfg);
+		explicit tree_node(const config& cfg);
 
 		std::string id;
 		bool unfolded;
@@ -42,7 +42,7 @@ class tree_view : public scrollbar_container
 	friend class tree_view_node;
 
 public:
-	typedef implementation::ttree_node node_definition;
+	typedef implementation::tree_node node_definition;
 
 	explicit tree_view(const std::vector<node_definition>& node_definitions);
 
@@ -178,9 +178,9 @@ struct tree_view_definition : public control_definition
 
 	explicit tree_view_definition(const config& cfg);
 
-	struct tresolution : public resolution_definition
+	struct resolution : public resolution_definition
 	{
-		explicit tresolution(const config& cfg);
+		explicit resolution(const config& cfg);
 
 		builder_grid_ptr grid;
 	};
@@ -199,8 +199,8 @@ struct builder_tree_view : public builder_control
 
 	widget* build() const;
 
-	scrollbar_container::tscrollbar_mode vertical_scrollbar_mode;
-	scrollbar_container::tscrollbar_mode horizontal_scrollbar_mode;
+	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
+	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;
 
 	unsigned indentation_step_size;
 
@@ -210,7 +210,7 @@ struct builder_tree_view : public builder_control
 	 * Since we expect the amount of nodes to remain low it's stored in a
 	 * vector and not in a map.
 	 */
-	std::vector<ttree_node> nodes;
+	std::vector<tree_node> nodes;
 
 	/*
 	 * NOTE this class doesn't have a data section, so it can only be filled

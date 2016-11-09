@@ -170,13 +170,13 @@ void debug_clock::update_time(const bool force)
 	}
 }
 
-debug_clock::ttime::ttime() : hour(0), minute(0), second(0), millisecond(0)
+debug_clock::time::time() : hour(0), minute(0), second(0), millisecond(0)
 {
 }
 
-void debug_clock::ttime::set_current_time()
+void debug_clock::time::set_current_time()
 {
-	time_t now = time(nullptr);
+	time_t now = ::time(nullptr);
 	tm* stamp = localtime(&now);
 
 	hour = stamp->tm_hour;
@@ -185,7 +185,7 @@ void debug_clock::ttime::set_current_time()
 	millisecond = 0;
 }
 
-bool debug_clock::ttime::step(const unsigned milliseconds)
+bool debug_clock::time::step(const unsigned milliseconds)
 {
 	millisecond += milliseconds;
 

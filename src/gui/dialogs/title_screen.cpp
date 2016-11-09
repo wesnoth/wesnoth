@@ -417,7 +417,7 @@ void title_screen::pre_show(window& win)
 	});
 
 	if(game_config_manager::get()->game_config().child_range("core").size() <= 1) {
-		find_widget<button>(&win, "cores", false).set_visible(window::tvisible::invisible);
+		find_widget<button>(&win, "cores", false).set_visible(window::visibility::invisible);
 	}
 
 	//
@@ -457,8 +457,8 @@ void title_screen::pre_show(window& win)
 		std::bind(&title_screen::show_debug_clock_window, this, std::ref(win.video())));
 
 	find_widget<button>(&win, "clock", false).set_visible(show_debug_clock_button
-		? widget::tvisible::visible
-		: widget::tvisible::invisible);
+		? widget::visibility::visible
+		: widget::visibility::invisible);
 }
 
 void title_screen::on_resize(window& win)

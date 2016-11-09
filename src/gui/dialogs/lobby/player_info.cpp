@@ -119,7 +119,7 @@ void lobby_player_info::pre_show(window& window)
 
 	if(!preferences::is_authenticated()) {
 		widget* aw = window.find("admin", false);
-		aw->set_visible(widget::tvisible::invisible);
+		aw->set_visible(widget::visibility::invisible);
 	}
 }
 

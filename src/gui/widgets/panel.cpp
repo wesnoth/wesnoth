@@ -36,8 +36,8 @@ REGISTER_WIDGET(panel)
 
 SDL_Rect panel::get_client_rect() const
 {
-	std::shared_ptr<const panel_definition::tresolution> conf
-			= std::static_pointer_cast<const panel_definition::tresolution>(
+	std::shared_ptr<const panel_definition::resolution> conf
+			= std::static_pointer_cast<const panel_definition::resolution>(
 					config());
 	assert(conf);
 
@@ -76,8 +76,8 @@ void panel::impl_draw_foreground(surface& frame_buffer, int x_offset, int y_offs
 
 point panel::border_space() const
 {
-	std::shared_ptr<const panel_definition::tresolution> conf
-			= std::static_pointer_cast<const panel_definition::tresolution>(
+	std::shared_ptr<const panel_definition::resolution> conf
+			= std::static_pointer_cast<const panel_definition::resolution>(
 					config());
 	assert(conf);
 
@@ -102,7 +102,7 @@ panel_definition::panel_definition(const config& cfg)
 {
 	DBG_GUI_P << "Parsing panel " << id << '\n';
 
-	load_resolutions<tresolution>(cfg);
+	load_resolutions<resolution>(cfg);
 }
 
 /*WIKI
@@ -143,7 +143,7 @@ panel_definition::panel_definition(const config& cfg)
  * @end{tag}{name="panel_definition"}
  * @end{parent}{name="gui/"}
  */
-panel_definition::tresolution::tresolution(const config& cfg)
+panel_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 	, top_border(cfg["top_border"])
 	, bottom_border(cfg["bottom_border"])

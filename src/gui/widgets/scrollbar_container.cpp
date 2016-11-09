@@ -45,9 +45,9 @@ static const std::string button_down_names[]
  * Returns a map with the names of all buttons and the scrollbar jump they're
  * supposed to execute.
  */
-const std::map<std::string, scrollbar_base::tscroll>& scroll_lookup()
+const std::map<std::string, scrollbar_base::scroll_mode>& scroll_lookup()
 {
-	static std::map<std::string, scrollbar_base::tscroll> lookup;
+	static std::map<std::string, scrollbar_base::scroll_mode> lookup;
 	if(lookup.empty()) {
 		lookup["_begin"] = scrollbar_base::BEGIN;
 		lookup["_line_up"] = scrollbar_base::ITEM_BACKWARDS;
@@ -127,34 +127,34 @@ void scrollbar_container::layout_initialise(const bool full_initialisation)
 		switch(vertical_scrollbar_mode_) {
 			case ALWAYS_VISIBLE:
 				vertical_scrollbar_grid_->set_visible(
-						widget::tvisible::visible);
+						widget::visibility::visible);
 				break;
 
 			case AUTO_VISIBLE:
 				vertical_scrollbar_grid_->set_visible(
-						widget::tvisible::hidden);
+						widget::visibility::hidden);
 				break;
 
 			default:
 				vertical_scrollbar_grid_->set_visible(
-						widget::tvisible::invisible);
+						widget::visibility::invisible);
 		}
 
 		assert(horizontal_scrollbar_grid_);
 		switch(horizontal_scrollbar_mode_) {
 			case ALWAYS_VISIBLE:
 				horizontal_scrollbar_grid_->set_visible(
-						widget::tvisible::visible);
+						widget::visibility::visible);
 				break;
 
 			case AUTO_VISIBLE:
 				horizontal_scrollbar_grid_->set_visible(
-						widget::tvisible::hidden);
+						widget::visibility::hidden);
 				break;
 
 			default:
 				horizontal_scrollbar_grid_->set_visible(
-						widget::tvisible::invisible);
+						widget::visibility::invisible);
 		}
 	}
 
@@ -174,7 +174,7 @@ void scrollbar_container::request_reduce_height(const unsigned maximum_height)
 	const unsigned offset
 			= horizontal_scrollbar_grid_
 					  && horizontal_scrollbar_grid_->get_visible()
-						 != widget::tvisible::invisible
+						 != widget::visibility::invisible
 					  ? horizontal_scrollbar_grid_->get_best_size().y
 					  : 0;
 
@@ -195,16 +195,16 @@ void scrollbar_container::request_reduce_height(const unsigned maximum_height)
 
 	assert(vertical_scrollbar_grid_);
 	const bool resized = vertical_scrollbar_grid_->get_visible()
-						 == widget::tvisible::invisible;
+						 == widget::visibility::invisible;
 
 	// Always set the bar visible, is a nop is already visible.
-	vertical_scrollbar_grid_->set_visible(widget::tvisible::visible);
+	vertical_scrollbar_grid_->set_visible(widget::visibility::visible);
 
 	const point scrollbar_size = vertical_scrollbar_grid_->get_best_size();
 
 	// If showing the scrollbar increased the height, hide and abort.
 	if(resized && scrollbar_size.y > size.y) {
-		vertical_scrollbar_grid_->set_visible(widget::tvisible::invisible);
+		vertical_scrollbar_grid_->set_visible(widget::visibility::invisible);
 		DBG_GUI_L << LOG_HEADER << " request failed, showing the scrollbar"
 				  << " increased the height to " << scrollbar_size.y << ".\n";
 		return;
@@ -239,7 +239,7 @@ void scrollbar_container::request_reduce_width(const unsigned maximum_width)
 	const unsigned offset
 			= vertical_scrollbar_grid_
 					  && vertical_scrollbar_grid_->get_visible()
-						 != widget::tvisible::invisible
+						 != widget::visibility::invisible
 					  ? vertical_scrollbar_grid_->get_best_size().x
 					  : 0;
 
@@ -260,7 +260,7 @@ void scrollbar_container::request_reduce_width(const unsigned maximum_width)
 
 	// Always set the bar visible, is a nop when it's already visible.
 	assert(horizontal_scrollbar_grid_);
-	horizontal_scrollbar_grid_->set_visible(widget::tvisible::visible);
+	horizontal_scrollbar_grid_->set_visible(widget::visibility::visible);
 	size = get_best_size();
 
 	point scrollbar_size = horizontal_scrollbar_grid_->get_best_size();
@@ -270,7 +270,7 @@ void scrollbar_container::request_reduce_width(const unsigned maximum_width)
 	 * minimum size.
 	 */
 	if(vertical_scrollbar_grid_->get_visible()
-	   != widget::tvisible::invisible) {
+	   != widget::visibility::invisible) {
 
 		scrollbar_size.x += vertical_scrollbar_grid_->get_best_size().x;
 	}
@@ -279,7 +279,7 @@ void scrollbar_container::request_reduce_width(const unsigned maximum_width)
 	if(horizontal_scrollbar_mode_ == AUTO_VISIBLE_FIRST_RUN && scrollbar_size.x
 															   > size.x) {
 
-		horizontal_scrollbar_grid_->set_visible(widget::tvisible::invisible);
+		horizontal_scrollbar_grid_->set_visible(widget::visibility::invisible);
 		DBG_GUI_L << LOG_HEADER << " request failed, showing the scrollbar"
 				  << " increased the width to " << scrollbar_size.x << ".\n";
 		return;
@@ -309,14 +309,14 @@ point scrollbar_container::calculate_best_size() const
 	/***** get vertical scrollbar size *****/
 	const point vertical_scrollbar
 			= vertical_scrollbar_grid_->get_visible()
-					  == widget::tvisible::invisible
+					  == widget::visibility::invisible
 					  ? point()
 					  : vertical_scrollbar_grid_->get_best_size();
 
 	/***** get horizontal scrollbar size *****/
 	const point horizontal_scrollbar
 			= horizontal_scrollbar_grid_->get_visible()
-					  == widget::tvisible::invisible
+					  == widget::visibility::invisible
 					  ? point()
 					  : horizontal_scrollbar_grid_->get_best_size();
 
@@ -350,14 +350,14 @@ point scrollbar_container::calculate_best_size() const
 static void
 set_scrollbar_mode(grid* scrollbar_grid,
 				   scrollbar_base* scrollbar,
-				   scrollbar_container::tscrollbar_mode& scrollbar_mode,
+				   scrollbar_container::scrollbar_mode& scrollbar_mode,
 				   const unsigned items,
 				   const unsigned visible_items)
 {
 	assert(scrollbar_grid && scrollbar);
 
 	if(scrollbar_mode == scrollbar_container::ALWAYS_INVISIBLE) {
-		scrollbar_grid->set_visible(widget::tvisible::invisible);
+		scrollbar_grid->set_visible(widget::visibility::invisible);
 		return;
 	}
 
@@ -370,8 +370,8 @@ set_scrollbar_mode(grid* scrollbar_grid,
 		const bool scrollbar_needed = items > visible_items;
 
 		scrollbar_grid->set_visible(scrollbar_needed
-											? widget::tvisible::visible
-											: widget::tvisible::hidden);
+											? widget::visibility::visible
+											: widget::visibility::hidden);
 	}
 }
 static bool is_inserted_before(unsigned insertion_pos, unsigned old_item_count, unsigned old_position, unsigned visible_items)
@@ -389,7 +389,7 @@ static bool is_inserted_before(unsigned insertion_pos, unsigned old_item_count, 
 static void
 adjust_scrollbar_mode(grid* scrollbar_grid,
 				   scrollbar_base* scrollbar,
-				   scrollbar_container::tscrollbar_mode& scrollbar_mode,
+				   scrollbar_container::scrollbar_mode& scrollbar_mode,
 				   const unsigned items_before,
 				   const unsigned items_after,
 				   const int insertion_pos,
@@ -405,7 +405,7 @@ adjust_scrollbar_mode(grid* scrollbar_grid,
 	const bool inserted_before_visible_area = is_inserted_before(static_cast<unsigned>(insertion_pos), items_before, previous_item_position, visible_items);
 
 	if(scrollbar_mode == scrollbar_container::ALWAYS_INVISIBLE) {
-		scrollbar_grid->set_visible(widget::tvisible::invisible);
+		scrollbar_grid->set_visible(widget::visibility::invisible);
 		return;
 	}
 
@@ -419,8 +419,8 @@ adjust_scrollbar_mode(grid* scrollbar_grid,
 		const bool scrollbar_needed = items_after > visible_items;
 
 		scrollbar_grid->set_visible(scrollbar_needed
-											? widget::tvisible::visible
-											: widget::tvisible::hidden);
+											? widget::visibility::visible
+											: widget::visibility::hidden);
 	}
 }
 
@@ -579,7 +579,7 @@ bool scrollbar_container::content_resize_request(const bool force_sizing)
 		if(horizontal_scrollbar_mode_ == ALWAYS_INVISIBLE
 		   || (horizontal_scrollbar_mode_ == AUTO_VISIBLE_FIRST_RUN
 			   && horizontal_scrollbar_grid_->get_visible()
-				  == widget::tvisible::invisible)) {
+				  == widget::visibility::invisible)) {
 
 			DBG_GUI_L << LOG_HEADER
 					  << " can't use horizontal scrollbar, ask window.\n";
@@ -595,7 +595,7 @@ bool scrollbar_container::content_resize_request(const bool force_sizing)
 		if(vertical_scrollbar_mode_ == ALWAYS_INVISIBLE
 		   || (vertical_scrollbar_mode_ == AUTO_VISIBLE_FIRST_RUN
 			   && vertical_scrollbar_grid_->get_visible()
-				  == widget::tvisible::invisible)) {
+				  == widget::visibility::invisible)) {
 
 			DBG_GUI_L << LOG_HEADER
 					  << " can't use vertical scrollbar, ask window.\n";
@@ -681,7 +681,7 @@ bool scrollbar_container::content_resize_width(const int width_modification, con
 	if(horizontal_scrollbar_mode_ == ALWAYS_INVISIBLE
 	   || (horizontal_scrollbar_mode_ == AUTO_VISIBLE_FIRST_RUN
 		   && horizontal_scrollbar_grid_->get_visible()
-			  == widget::tvisible::invisible)) {
+			  == widget::visibility::invisible)) {
 
 		DBG_GUI_L << " can't use horizontal scrollbar, ask window.\n";
 		window* window = get_window();
@@ -733,7 +733,7 @@ bool scrollbar_container::content_resize_height(const int height_modification, c
 	if(vertical_scrollbar_mode_ == ALWAYS_INVISIBLE
 	   || (vertical_scrollbar_mode_ == AUTO_VISIBLE_FIRST_RUN
 		   && vertical_scrollbar_grid_->get_visible()
-			  == widget::tvisible::invisible)) {
+			  == widget::visibility::invisible)) {
 
 		DBG_GUI_L << " can't use vertical scrollbar, ask window.\n";
 		window* window = get_window();
@@ -822,7 +822,7 @@ void scrollbar_container::finalize_setup()
 }
 
 void scrollbar_container::set_vertical_scrollbar_mode(
-		const tscrollbar_mode scrollbar_mode)
+		const scrollbar_mode scrollbar_mode)
 {
 	if(vertical_scrollbar_mode_ != scrollbar_mode) {
 		vertical_scrollbar_mode_ = scrollbar_mode;
@@ -830,7 +830,7 @@ void scrollbar_container::set_vertical_scrollbar_mode(
 }
 
 void scrollbar_container::set_horizontal_scrollbar_mode(
-		const tscrollbar_mode scrollbar_mode)
+		const scrollbar_mode scrollbar_mode)
 {
 	if(horizontal_scrollbar_mode_ != scrollbar_mode) {
 		horizontal_scrollbar_mode_ = scrollbar_mode;
@@ -841,8 +841,8 @@ void scrollbar_container::impl_draw_children(surface& frame_buffer,
 											  int x_offset,
 											  int y_offset)
 {
-	assert(get_visible() == widget::tvisible::visible
-		   && content_grid_->get_visible() == widget::tvisible::visible);
+	assert(get_visible() == widget::visibility::visible
+		   && content_grid_->get_visible() == widget::visibility::visible);
 
 	// Inherited.
 	container_base::impl_draw_children(frame_buffer, x_offset, y_offset);
@@ -1025,7 +1025,7 @@ void scrollbar_container::set_horizontal_scrollbar_item_position(
 }
 
 void scrollbar_container::scroll_vertical_scrollbar(
-		const scrollbar_base::tscroll scroll)
+		const scrollbar_base::scroll_mode scroll)
 {
 	assert(vertical_scrollbar_);
 
@@ -1034,7 +1034,7 @@ void scrollbar_container::scroll_vertical_scrollbar(
 }
 
 void scrollbar_container::scroll_horizontal_scrollbar(
-		const scrollbar_base::tscroll scroll)
+		const scrollbar_base::scroll_mode scroll)
 {
 	assert(horizontal_scrollbar_);
 
@@ -1219,7 +1219,7 @@ scrollbar_container::signal_handler_sdl_wheel_up(const event::event_t event,
 
 	assert(vertical_scrollbar_grid_ && vertical_scrollbar_);
 
-	if(vertical_scrollbar_grid_->get_visible() == widget::tvisible::visible) {
+	if(vertical_scrollbar_grid_->get_visible() == widget::visibility::visible) {
 		vertical_scrollbar_->scroll(scrollbar_base::HALF_JUMP_BACKWARDS);
 		scrollbar_moved();
 		handled = true;
@@ -1234,7 +1234,7 @@ scrollbar_container::signal_handler_sdl_wheel_down(const event::event_t event,
 
 	assert(vertical_scrollbar_grid_ && vertical_scrollbar_);
 
-	if(vertical_scrollbar_grid_->get_visible() == widget::tvisible::visible) {
+	if(vertical_scrollbar_grid_->get_visible() == widget::visibility::visible) {
 		vertical_scrollbar_->scroll(scrollbar_base::HALF_JUMP_FORWARD);
 		scrollbar_moved();
 		handled = true;
@@ -1250,7 +1250,7 @@ scrollbar_container::signal_handler_sdl_wheel_left(const event::event_t event,
 	assert(horizontal_scrollbar_grid_ && horizontal_scrollbar_);
 
 	if(horizontal_scrollbar_grid_->get_visible()
-	   == widget::tvisible::visible) {
+	   == widget::visibility::visible) {
 		horizontal_scrollbar_->scroll(scrollbar_base::HALF_JUMP_BACKWARDS);
 		scrollbar_moved();
 		handled = true;
@@ -1266,7 +1266,7 @@ scrollbar_container::signal_handler_sdl_wheel_right(const event::event_t event,
 	assert(horizontal_scrollbar_grid_ && horizontal_scrollbar_);
 
 	if(horizontal_scrollbar_grid_->get_visible()
-	   == widget::tvisible::visible) {
+	   == widget::visibility::visible) {
 		horizontal_scrollbar_->scroll(scrollbar_base::HALF_JUMP_FORWARD);
 		scrollbar_moved();
 		handled = true;

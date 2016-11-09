@@ -52,7 +52,7 @@ public:
 	 * When scrolling we always scroll a 'fixed' amount, these are the
 	 * parameters for these amounts.
 	 */
-	enum tscroll {
+	enum scroll_mode {
 		BEGIN,				 /**< Go to begin position. */
 		ITEM_BACKWARDS,		 /**< Go one item towards the begin. */
 		HALF_JUMP_BACKWARDS, /**< Go half the visible items towards the begin.
@@ -71,7 +71,7 @@ public:
 	 *
 	 * @param scroll              'step size' to scroll.
 	 */
-	void scroll(const tscroll scroll);
+	void scroll(const scroll_mode scroll);
 
 	/** Is the positioner at the beginning of the scrollbar? */
 	bool at_begin() const

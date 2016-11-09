@@ -297,7 +297,7 @@ void mp_join_game::pre_show(window& window)
 	plugins_context_->set_callback("chat",   [&chat](const config& cfg) { chat.send_chat_message(cfg["message"], false); }, true);
 
 	// TODO: the old mp wait dialog didn't have an OK button. Evaluate if we want to add one. Hiding it for now
-	find_widget<button>(&window, "ok", false).set_visible(widget::tvisible::hidden);
+	find_widget<button>(&window, "ok", false).set_visible(widget::visibility::hidden);
 }
 
 void mp_join_game::generate_side_list(window& window)
@@ -408,8 +408,8 @@ void mp_join_game::generate_side_list(window& window)
 		grid& row_grid = node.get_grid();
 
 		if(income_amt == 0) {
-			find_widget<image>(&row_grid, "income_icon", false).set_visible(widget::tvisible::invisible);
-			find_widget<label>(&row_grid, "side_income", false).set_visible(widget::tvisible::invisible);
+			find_widget<image>(&row_grid, "income_icon", false).set_visible(widget::visibility::invisible);
+			find_widget<label>(&row_grid, "side_income", false).set_visible(widget::visibility::invisible);
 		}
 	}
 }

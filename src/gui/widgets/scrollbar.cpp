@@ -51,7 +51,7 @@ scrollbar_base::scrollbar_base()
 			&scrollbar_base::signal_handler_left_button_up, this, _2, _3));
 }
 
-void scrollbar_base::scroll(const tscroll scroll)
+void scrollbar_base::scroll(const scroll_mode scroll)
 {
 	switch(scroll) {
 		case BEGIN:

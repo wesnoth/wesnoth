@@ -153,19 +153,19 @@ void unit_list::pre_show(window& window)
 		// NOTE: this needs to be done *after* the row is added
 		// TODO: show custom statuses
 		if(!unit->get_state(unit::STATE_PETRIFIED)) {
-			find_widget<image>(row_grid, "unit_status_petrified", false).set_visible(widget::tvisible::invisible);
+			find_widget<image>(row_grid, "unit_status_petrified", false).set_visible(widget::visibility::invisible);
 		}
 
 		if(!unit->get_state(unit::STATE_POISONED)) {
-			find_widget<image>(row_grid, "unit_status_poisoned", false).set_visible(widget::tvisible::invisible);
+			find_widget<image>(row_grid, "unit_status_poisoned", false).set_visible(widget::visibility::invisible);
 		}
 
 		if(!unit->get_state(unit::STATE_SLOWED)) {
-			find_widget<image>(row_grid, "unit_status_slowed", false).set_visible(widget::tvisible::invisible);
+			find_widget<image>(row_grid, "unit_status_slowed", false).set_visible(widget::visibility::invisible);
 		}
 
 		if(!unit->invisible(unit->get_location(), *resources::gameboard, false)) {
-			find_widget<image>(row_grid, "unit_status_invisible", false).set_visible(widget::tvisible::invisible);
+			find_widget<image>(row_grid, "unit_status_invisible", false).set_visible(widget::visibility::invisible);
 		}
 	}
 

@@ -28,7 +28,7 @@ namespace gui2
 namespace implementation
 {
 
-using scrollbar_mode = scrollbar_container::tscrollbar_mode;
+using scrollbar_mode = scrollbar_container::scrollbar_mode;
 
 /**
  * Returns the vertical alignment.

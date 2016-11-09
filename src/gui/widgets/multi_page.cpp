@@ -185,7 +185,7 @@ multi_page_definition::multi_page_definition(const config& cfg)
 {
 	DBG_GUI_P << "Parsing multipage " << id << '\n';
 
-	load_resolutions<tresolution>(cfg);
+	load_resolutions<resolution>(cfg);
 }
 
 /*WIKI
@@ -209,7 +209,7 @@ multi_page_definition::multi_page_definition(const config& cfg)
  * @end{parent}{name="gui/"}
  * A multipage has no states.
  */
-multi_page_definition::tresolution::tresolution(const config& cfg)
+multi_page_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg), grid(nullptr)
 {
 	const config& child = cfg.child("grid");
@@ -312,8 +312,8 @@ widget* builder_multi_page::build() const
 	DBG_GUI_G << "Window builder: placed multi_page '" << id
 			  << "' with definition '" << definition << "'.\n";
 
-	std::shared_ptr<const multi_page_definition::tresolution>
-	conf = std::static_pointer_cast<const multi_page_definition::tresolution>(
+	std::shared_ptr<const multi_page_definition::resolution>
+	conf = std::static_pointer_cast<const multi_page_definition::resolution>(
 					widget->config());
 	assert(conf);
 

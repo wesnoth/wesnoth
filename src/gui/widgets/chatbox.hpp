@@ -41,9 +41,9 @@ namespace implementation
 }
 
 
-struct tlobby_chat_window
+struct lobby_chat_window
 {
-	tlobby_chat_window(const std::string& name, bool whisper)
+	lobby_chat_window(const std::string& name, bool whisper)
 		: name(name), whisper(whisper), pending_messages(0)
 	{
 	}
@@ -119,7 +119,7 @@ private:
 
 	text_box* chat_input_;
 
-	std::vector<tlobby_chat_window> open_windows_;
+	std::vector<lobby_chat_window> open_windows_;
 
 	size_t active_window_;
 
@@ -205,7 +205,7 @@ public:
 	* Switch to the window given by a valid pointer (e.g. received from a call
 	* to *_window_open)
 	*/
-	void switch_to_window(tlobby_chat_window* t);
+	void switch_to_window(lobby_chat_window* t);
 
 	void switch_to_window(size_t id);
 
@@ -223,7 +223,7 @@ public:
 	* 'close' button will be disabled.
 	* @return valid ptr if the window was found or added, null otherwise
 	*/
-	tlobby_chat_window* room_window_open(const std::string& room,
+	lobby_chat_window* room_window_open(const std::string& room,
 		const bool open_new, const bool allow_close = true);
 
 	/**
@@ -231,18 +231,18 @@ public:
 	* then it will be created if not found.
 	* @return valid ptr if the window was found or added, null otherwise
 	*/
-	tlobby_chat_window* whisper_window_open(const std::string& name,
+	lobby_chat_window* whisper_window_open(const std::string& name,
 		bool open_new);
 
 	/**
 	* Helper function to find and open a new window, used by *_window_open
 	*/
-	tlobby_chat_window* search_create_window(const std::string& name, const bool whisper, const bool open_new, const bool allow_close);
+	lobby_chat_window* search_create_window(const std::string& name, const bool whisper, const bool open_new, const bool allow_close);
 
-	void do_notify(t_notify_mode mode) { do_notify(mode, "", ""); }
-	void do_notify(t_notify_mode mode, const std::string & sender, const std::string & message) { do_mp_notify(mode, sender, message); }
+	void do_notify(notify_mode mode) { do_notify(mode, "", ""); }
+	void do_notify(notify_mode mode, const std::string & sender, const std::string & message) { do_mp_notify(mode, sender, message); }
 
-	void close_window_button_callback(tlobby_chat_window& chat_window, bool& handled, bool& halt);
+	void close_window_button_callback(lobby_chat_window& chat_window, bool& handled, bool& halt);
 
 
 	void process_room_join(const ::config& data);
@@ -263,9 +263,9 @@ struct chatbox_definition : public control_definition
 
 	explicit chatbox_definition(const config& cfg);
 
-	struct tresolution : public resolution_definition
+	struct resolution : public resolution_definition
 	{
-		explicit tresolution(const config& cfg);
+		explicit resolution(const config& cfg);
 
 		builder_grid_ptr grid;
 	};

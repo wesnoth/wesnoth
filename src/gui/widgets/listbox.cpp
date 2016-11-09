@@ -114,7 +114,7 @@ void listbox::remove_row(const unsigned row, unsigned count)
 	int row_pos_y = is_horizonal_ ? -1 : generator_->item(row).get_y()  - content_grid_->get_y();
 	int row_pos_x = is_horizonal_ ? -1 : 0;
 	for(; count; --count) {
-		if(generator_->item(row).get_visible() != tvisible::invisible) {
+		if(generator_->item(row).get_visible() != visibility::invisible) {
 			if(is_horizonal_) {
 				width_reduced += generator_->item(row).get_width();
 			}
@@ -162,7 +162,7 @@ void listbox::set_row_shown(const unsigned row, const bool shown)
 
 	bool resize_needed;
 	{
-		window::tinvalidate_layout_blocker invalidate_layout_blocker(*window);
+		window::invalidate_layout_blocker invalidate_layout_blocker(*window);
 
 		generator_->set_item_shown(row, shown);
 		point best_size = generator_->calculate_best_size();
@@ -200,7 +200,7 @@ void listbox::set_row_shown(const boost::dynamic_bitset<>& shown)
 
 	bool resize_needed;
 	{
-		window::tinvalidate_layout_blocker invalidate_layout_blocker(*window);
+		window::invalidate_layout_blocker invalidate_layout_blocker(*window);
 
 		for(size_t i = 0; i < shown.size(); ++i) {
 			generator_->set_item_shown(i, shown[i]);
@@ -296,7 +296,7 @@ void listbox::set_self_active(const bool /*active*/)
 
 bool listbox::update_content_size()
 {
-	if(get_visible() == widget::tvisible::invisible) {
+	if(get_visible() == widget::visibility::invisible) {
 		return true;
 	}
 
@@ -391,7 +391,7 @@ void listbox::resize_content(const int width_modification,
 
 void listbox::resize_content(const widget& row)
 {
-	if(row.get_visible() == tvisible::invisible) {
+	if(row.get_visible() == visibility::invisible) {
 		return;
 	}
 
@@ -713,7 +713,7 @@ listbox_definition::listbox_definition(const config& cfg)
 {
 	DBG_GUI_P << "Parsing listbox " << id << '\n';
 
-	load_resolutions<tresolution>(cfg);
+	load_resolutions<resolution>(cfg);
 }
 
 /*WIKI
@@ -795,7 +795,7 @@ listbox_definition::listbox_definition(const config& cfg)
  * @macro = horizontal_listbox_description
  * The definition of a horizontal listbox is the same as for a normal listbox.
  */
-listbox_definition::tresolution::tresolution(const config& cfg)
+listbox_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg), grid(nullptr)
 {
 	// Note the order should be the same as the enum state_t in listbox.hpp.
@@ -1020,8 +1020,8 @@ widget* builder_listbox::build() const
 	DBG_GUI_G << "Window builder: placed listbox '" << id
 			  << "' with definition '" << definition << "'.\n";
 
-	std::shared_ptr<const listbox_definition::tresolution>
-	conf = std::static_pointer_cast<const listbox_definition::tresolution>(
+	std::shared_ptr<const listbox_definition::resolution>
+	conf = std::static_pointer_cast<const listbox_definition::resolution>(
 			widget->config());
 	assert(conf);
 
@@ -1145,8 +1145,8 @@ widget* builder_horizontal_listbox::build() const
 	DBG_GUI_G << "Window builder: placed listbox '" << id
 			  << "' with definition '" << definition << "'.\n";
 
-	std::shared_ptr<const listbox_definition::tresolution>
-	conf = std::static_pointer_cast<const listbox_definition::tresolution>(
+	std::shared_ptr<const listbox_definition::resolution>
+	conf = std::static_pointer_cast<const listbox_definition::resolution>(
 			widget->config());
 	assert(conf);
 
@@ -1270,8 +1270,8 @@ widget* builder_grid_listbox::build() const
 	DBG_GUI_G << "Window builder: placed listbox '" << id
 			  << "' with definition '" << definition << "'.\n";
 
-	std::shared_ptr<const listbox_definition::tresolution>
-	conf = std::static_pointer_cast<const listbox_definition::tresolution>(
+	std::shared_ptr<const listbox_definition::resolution>
+	conf = std::static_pointer_cast<const listbox_definition::resolution>(
 			widget->config());
 	assert(conf);
 

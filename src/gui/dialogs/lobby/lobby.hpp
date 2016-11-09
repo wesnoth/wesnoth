@@ -108,8 +108,8 @@ public:
 		CREATE
 	};
 
-	void do_notify(t_notify_mode mode) { do_notify(mode, "", ""); }
-	void do_notify(t_notify_mode mode, const std::string & sender, const std::string & message) { do_mp_notify(mode, sender, message); }
+	void do_notify(notify_mode mode) { do_notify(mode, "", ""); }
+	void do_notify(notify_mode mode, const std::string & sender, const std::string & message) { do_mp_notify(mode, sender, message); }
 
 protected:
 

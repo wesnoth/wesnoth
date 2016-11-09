@@ -204,12 +204,12 @@ public:
 			std::ostringstream out;
 			out << current_page_ + 1 << '/' << n_pages;
 			pages_->set_label(out.str());
-			left_->set_visible(widget::tvisible::visible);
-			right_->set_visible(widget::tvisible::visible);
+			left_->set_visible(widget::visibility::visible);
+			right_->set_visible(widget::visibility::visible);
 		} else {
 			pages_->set_label("");
-			left_->set_visible(widget::tvisible::invisible);
-			right_->set_visible(widget::tvisible::invisible);
+			left_->set_visible(widget::visibility::invisible);
+			right_->set_visible(widget::visibility::invisible);
 		}
 	}
 
@@ -217,8 +217,8 @@ public:
 	{
 		stuff_list_->clear();
 		pages_->set_label("");
-		left_->set_visible(widget::tvisible::invisible);
-		right_->set_visible(widget::tvisible::invisible);
+		left_->set_visible(widget::visibility::invisible);
+		right_->set_visible(widget::visibility::invisible);
 	}
 
 	void page(int where)
@@ -420,8 +420,8 @@ public:
 				std::bind(&gamestate_inspector::controller::handle_page_button_clicked,
 					this, true));
 
-		left_button->set_visible(widget::tvisible::invisible);
-		right_button->set_visible(widget::tvisible::invisible);
+		left_button->set_visible(widget::visibility::invisible);
+		right_button->set_visible(widget::visibility::invisible);
 
 		if (!desktop::clipboard::available()) {
 			copy_button->set_active(false);

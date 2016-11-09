@@ -141,7 +141,7 @@ scroll_label_definition::scroll_label_definition(const config& cfg)
 {
 	DBG_GUI_P << "Parsing scroll label " << id << '\n';
 
-	load_resolutions<tresolution>(cfg);
+	load_resolutions<resolution>(cfg);
 }
 
 /*WIKI
@@ -186,7 +186,7 @@ scroll_label_definition::scroll_label_definition(const config& cfg)
  * @end{tag}{name="scroll_label_definition"}
  * @end{parent}{name="gui/"}
  */
-scroll_label_definition::tresolution::tresolution(const config& cfg)
+scroll_label_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg), grid(nullptr)
 {
 	// Note the order should be the same as the enum state_t is scroll_label.hpp.
@@ -257,8 +257,8 @@ widget* builder_scroll_label::build() const
 	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
 	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
 
-	std::shared_ptr<const scroll_label_definition::tresolution>
-	conf = std::static_pointer_cast<const scroll_label_definition::tresolution>(
+	std::shared_ptr<const scroll_label_definition::resolution>
+	conf = std::static_pointer_cast<const scroll_label_definition::resolution>(
 					widget->config());
 	assert(conf);
 

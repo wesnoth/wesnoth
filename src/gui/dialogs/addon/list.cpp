@@ -402,7 +402,7 @@ void addon_manager::pre_show(window& window)
 	if(!desktop::open_object_is_supported()) {
 		// No point in displaying the button on platforms that can't do
 		// open_object().
-		url_go_button.set_visible(control::tvisible::invisible);
+		url_go_button.set_visible(control::visibility::invisible);
 	}
 
 	connect_signal_mouse_left_click(

@@ -60,7 +60,7 @@ scrollbar_panel_definition::scrollbar_panel_definition(const config& cfg)
 {
 	DBG_GUI_P << "Parsing scrollbar panel " << id << '\n';
 
-	load_resolutions<tresolution>(cfg);
+	load_resolutions<resolution>(cfg);
 }
 
 /*WIKI
@@ -88,7 +88,7 @@ scrollbar_panel_definition::scrollbar_panel_definition(const config& cfg)
  * @end{tag}{name="scrollbar_panel_definition"}
  * @end{parent}{name="gui/"}
  */
-scrollbar_panel_definition::tresolution::tresolution(const config& cfg)
+scrollbar_panel_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg), grid()
 {
 	// The panel needs to know the order.
@@ -162,8 +162,8 @@ widget* builder_scrollbar_panel::build() const
 	DBG_GUI_G << "Window builder: placed scrollbar_panel '" << id
 			  << "' with definition '" << definition << "'.\n";
 
-	std::shared_ptr<const scrollbar_panel_definition::tresolution> conf
-			= std::static_pointer_cast<const scrollbar_panel_definition::tresolution>(
+	std::shared_ptr<const scrollbar_panel_definition::resolution> conf
+			= std::static_pointer_cast<const scrollbar_panel_definition::resolution>(
 				panel->config());
 	assert(conf);
 

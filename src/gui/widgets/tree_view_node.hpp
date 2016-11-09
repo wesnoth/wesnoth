@@ -25,7 +25,7 @@ namespace gui2
 {
 
 namespace implementation {
-	struct ttree_node;
+	struct tree_node;
 }
 
 class selectable_item;
@@ -37,7 +37,7 @@ class tree_view_node : public widget
 	friend class tree_view;
 
 public:
-	using node_definition = implementation::ttree_node;
+	using node_definition = implementation::tree_node;
 	using node_children_vector = boost::ptr_vector<tree_view_node>;
 
 	bool operator==(const tree_view_node& node)
@@ -128,7 +128,7 @@ public:
 
 #if 0
 	// TODO: implement if different expand modes become necessary
-	enum texpand_mode {
+	enum expand_mode {
 		recursive_restore, // recursively restores collapse mode
 		recursive_expand, // recursively expands the children
 		not_recursive

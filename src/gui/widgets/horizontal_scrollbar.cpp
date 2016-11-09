@@ -35,9 +35,9 @@ REGISTER_WIDGET(horizontal_scrollbar)
 
 unsigned horizontal_scrollbar::minimum_positioner_length() const
 {
-	std::shared_ptr<const horizontal_scrollbar_definition::tresolution>
+	std::shared_ptr<const horizontal_scrollbar_definition::resolution>
 	conf = std::static_pointer_cast<const horizontal_scrollbar_definition::
-											   tresolution>(config());
+											   resolution>(config());
 
 	assert(conf);
 	return conf->minimum_positioner_length;
@@ -45,9 +45,9 @@ unsigned horizontal_scrollbar::minimum_positioner_length() const
 
 unsigned horizontal_scrollbar::maximum_positioner_length() const
 {
-	std::shared_ptr<const horizontal_scrollbar_definition::tresolution>
+	std::shared_ptr<const horizontal_scrollbar_definition::resolution>
 	conf = std::static_pointer_cast<const horizontal_scrollbar_definition::
-											   tresolution>(config());
+											   resolution>(config());
 
 	assert(conf);
 	return conf->maximum_positioner_length;
@@ -55,9 +55,9 @@ unsigned horizontal_scrollbar::maximum_positioner_length() const
 
 unsigned horizontal_scrollbar::offset_before() const
 {
-	std::shared_ptr<const horizontal_scrollbar_definition::tresolution>
+	std::shared_ptr<const horizontal_scrollbar_definition::resolution>
 	conf = std::static_pointer_cast<const horizontal_scrollbar_definition::
-											   tresolution>(config());
+											   resolution>(config());
 
 	assert(conf);
 	return conf->left_offset;
@@ -65,9 +65,9 @@ unsigned horizontal_scrollbar::offset_before() const
 
 unsigned horizontal_scrollbar::offset_after() const
 {
-	std::shared_ptr<const horizontal_scrollbar_definition::tresolution>
+	std::shared_ptr<const horizontal_scrollbar_definition::resolution>
 	conf = std::static_pointer_cast<const horizontal_scrollbar_definition::
-											   tresolution>(config());
+											   resolution>(config());
 	assert(conf);
 
 	return conf->right_offset;
@@ -121,7 +121,7 @@ horizontal_scrollbar_definition::horizontal_scrollbar_definition(
 {
 	DBG_GUI_P << "Parsing horizontal scrollbar " << id << '\n';
 
-	load_resolutions<tresolution>(cfg);
+	load_resolutions<resolution>(cfg);
 }
 
 /*WIKI
@@ -172,7 +172,7 @@ horizontal_scrollbar_definition::horizontal_scrollbar_definition(
  * @end{tag}{name="horizontal_scrollbar_definition"}
  * @end{parent}{name="gui/"}
  */
-horizontal_scrollbar_definition::tresolution::tresolution(const config& cfg)
+horizontal_scrollbar_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 	, minimum_positioner_length(cfg["minimum_positioner_length"])
 	, maximum_positioner_length(cfg["maximum_positioner_length"])

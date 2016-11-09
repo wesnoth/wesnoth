@@ -58,7 +58,7 @@ class widget : private boost::noncopyable,
 
 public:
 	/** Visibility settings done by the user. */
-	enum class tvisible 
+	enum class visibility 
 	{
 		/**
 		 * The user sets the widget visible, that means:
@@ -100,10 +100,10 @@ public:
 	/**
 	 * Visibility set by the engine.
 	 *
-	 * This state only will be used if @ref visible_ is @ref tvisible::visible
+	 * This state only will be used if @ref visible_ is @ref visibility::visible
 	 * depending on this state the widget might not be visible after all.
 	 */
-	enum class tredraw_action
+	enum class redraw_action
 	{
 		/**
 		 * The widget is fully visible.
@@ -245,7 +245,7 @@ public:
 	 *
 	 * @param full_initialisation For widgets with scrollbars it hides them
 	 *                            unless the mode is
-	 *                            @ref tscrollbar_mode::ALWAYS_VISIBLE. For
+	 *                            @ref scrollbar_mode::ALWAYS_VISIBLE. For
 	 *                            other widgets this flag is a @em NOP.
 	 */
 	virtual void layout_initialise(const bool full_initialisation);
@@ -510,7 +510,7 @@ public:
 	 * Calculates the clipping rectangle of the widget.
 	 *
 	 * The clipping rectangle is used then the @ref redraw_action_ is
-	 * @ref tredraw_action::partly. Since the drawing can be offsetted it also
+	 * @ref redraw_action::partly. Since the drawing can be offsetted it also
 	 * needs offset paramters.
 	 *
 	 * @param x_offset            The offset in the x-direction when drawn.
@@ -659,10 +659,10 @@ public:
 	void set_is_dirty(const bool is_dirty);
 	bool get_is_dirty() const;
 
-	void set_visible(const tvisible visible);
-	tvisible get_visible() const;
+	void set_visible(const visibility visible);
+	visibility get_visible() const;
 
-	tredraw_action get_drawing_action() const;
+	redraw_action get_drawing_action() const;
 
 #ifndef LOW_MEM
 
@@ -687,10 +687,10 @@ private:
 	bool is_dirty_;
 
 	/** Field for the status of the visibility. */
-	tvisible visible_;
+	visibility visible_;
 
 	/** Field for the action to do on a drawing request. */
-	tredraw_action redraw_action_;
+	redraw_action redraw_action_;
 
 	/** The clipping rectangle if a widget is partly visible. */
 	SDL_Rect clipping_rectangle_;

@@ -273,7 +273,7 @@ tree_view_definition::tree_view_definition(const config& cfg)
 {
 	DBG_GUI_P << "Parsing tree view " << id << '\n';
 
-	load_resolutions<tresolution>(cfg);
+	load_resolutions<resolution>(cfg);
 }
 
 /*WIKI
@@ -301,7 +301,7 @@ tree_view_definition::tree_view_definition(const config& cfg)
  * @end{tag}{name="ree_view_definition"}
  * @end{parent}{name="gui/"}
  */
-tree_view_definition::tresolution::tresolution(const config& cfg)
+tree_view_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg), grid(nullptr)
 {
 	// Note the order should be the same as the enum state_t is listbox.hpp.
@@ -384,7 +384,7 @@ builder_tree_view::builder_tree_view(const config& cfg)
 
 	for(const auto & node : cfg.child_range("node"))
 	{
-		nodes.push_back(ttree_node(node));
+		nodes.push_back(tree_node(node));
 	}
 
 	VALIDATE(!nodes.empty(), _("No nodes defined for a tree view."));
@@ -408,8 +408,8 @@ widget* builder_tree_view::build() const
 	DBG_GUI_G << "Window builder: placed tree_view '" << id
 			  << "' with definition '" << definition << "'.\n";
 
-	std::shared_ptr<const tree_view_definition::tresolution>
-	conf = std::static_pointer_cast<const tree_view_definition::tresolution>(
+	std::shared_ptr<const tree_view_definition::resolution>
+	conf = std::static_pointer_cast<const tree_view_definition::resolution>(
 					widget->config());
 	assert(conf);
 
@@ -419,7 +419,7 @@ widget* builder_tree_view::build() const
 	return widget;
 }
 
-ttree_node::ttree_node(const config& cfg)
+tree_node::tree_node(const config& cfg)
 	: id(cfg["id"])
 	, unfolded(cfg["unfolded"].to_bool(false))
 	, builder(nullptr)

@@ -174,7 +174,7 @@ bool terrain_type_data::try_merge_terrains(const t_translation::terrain_code & t
 	return true; // Terrain already exists, nothing to do
 }
 
-t_translation::terrain_code terrain_type_data::merge_terrains(const t_translation::terrain_code & old_t, const t_translation::terrain_code & new_t, const tmerge_mode mode, bool replace_if_failed) {
+t_translation::terrain_code terrain_type_data::merge_terrains(const t_translation::terrain_code & old_t, const t_translation::terrain_code & new_t, const merge_mode mode, bool replace_if_failed) {
 	t_translation::terrain_code result = t_translation::NONE_TERRAIN;
 
 	if(mode == OVERLAY) {

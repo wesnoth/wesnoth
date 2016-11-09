@@ -131,7 +131,7 @@ int mp_options_helper::remove_nodes_for_type(const std::string& type)
 void mp_options_helper::update_status_label()
 {
 	// No custom options, display a message
-	no_options_notice_.set_visible(options_tree_.empty() ? window::tvisible::visible : window::tvisible::invisible);
+	no_options_notice_.set_visible(options_tree_.empty() ? window::visibility::visible : window::visibility::invisible);
 }
 
 template<typename T>

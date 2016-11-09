@@ -150,7 +150,7 @@ void campaign_difficulty::pre_show(window& window)
 
 		widget *widget = grid->find("victory", false);
 		if (widget && !preferences::is_campaign_completed(campaign_id_, d["define"])) {
-			widget->set_visible(widget::tvisible::hidden);
+			widget->set_visible(widget::visibility::hidden);
 		}
 	}
 }

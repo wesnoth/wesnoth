@@ -153,7 +153,7 @@ button_definition::button_definition(const config& cfg)
 {
 	DBG_GUI_P << "Parsing button " << id << '\n';
 
-	load_resolutions<tresolution>(cfg);
+	load_resolutions<resolution>(cfg);
 }
 
 /*WIKI
@@ -184,7 +184,7 @@ button_definition::button_definition(const config& cfg)
  * @end{tag}{name="button_definition"}
  * @end{parent}{name="gui/"}
  */
-button_definition::tresolution::tresolution(const config& cfg)
+button_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 {
 	// Note the order should be the same as the enum state_t in button.hpp.

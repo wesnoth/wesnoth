@@ -30,8 +30,8 @@ namespace gui2
 {
 
 template <class T>
-inline bool sort(const pane::titem& lhs,
-				 const pane::titem& rhs,
+inline bool sort(const pane::item& lhs,
+				 const pane::item& rhs,
 				 const std::string& tag,
 				 const bool ascending)
 {
@@ -63,7 +63,7 @@ inline bool sort(const pane::titem& lhs,
  *
  * @returns                       Whether or not the comparison found a match.
  */
-inline bool contains(const pane::titem& item,
+inline bool contains(const pane::item& item,
 					 const std::string& tag,
 					 const text_box& text_box)
 {

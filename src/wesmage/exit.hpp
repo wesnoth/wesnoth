@@ -23,12 +23,12 @@
 /**
  * This exception when throw should terminate the application.
  *
- * The application should terminate with @ref texit::status as its exit
+ * The application should terminate with @ref exiter::status as its exit
  * status.
  */
-struct texit
+struct exiter
 {
-	texit(const int status__);
+	exiter(const int status__);
 
 	/** The exit status for the application. */
 	int status;

@@ -244,8 +244,8 @@ void text_box::update_offsets()
 {
 	assert(config());
 
-	std::shared_ptr<const text_box_definition::tresolution>
-	conf = std::static_pointer_cast<const text_box_definition::tresolution>(
+	std::shared_ptr<const text_box_definition::resolution>
+	conf = std::static_pointer_cast<const text_box_definition::resolution>(
 			config());
 
 	assert(conf);
@@ -328,8 +328,8 @@ void text_box::load_config_extra()
 {
 	assert(config());
 
-	std::shared_ptr<const text_box_definition::tresolution>
-	conf = std::static_pointer_cast<const text_box_definition::tresolution>(
+	std::shared_ptr<const text_box_definition::resolution>
+	conf = std::static_pointer_cast<const text_box_definition::resolution>(
 			config());
 
 	assert(conf);
@@ -402,7 +402,7 @@ text_box_definition::text_box_definition(const config& cfg)
 {
 	DBG_GUI_P << "Parsing text_box " << id << '\n';
 
-	load_resolutions<tresolution>(cfg);
+	load_resolutions<resolution>(cfg);
 }
 
 /*WIKI
@@ -441,7 +441,7 @@ text_box_definition::text_box_definition(const config& cfg)
  * @end{tag}{name="ext_box_definition"}
  * @end{parent}{name="gui/"}
  */
-text_box_definition::tresolution::tresolution(const config& cfg)
+text_box_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 	, text_x_offset(cfg["text_x_offset"])
 	, text_y_offset(cfg["text_y_offset"])

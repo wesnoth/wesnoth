@@ -176,7 +176,7 @@ void file_dialog::pre_show(window& window)
 	title.set_label(title_);
 
 	if(msg_.empty()) {
-		message.set_visible(gui2::widget::tvisible::invisible);
+		message.set_visible(gui2::widget::visibility::invisible);
 	} else {
 		message.set_label(msg_);
 		message.set_use_markup(true);
@@ -263,8 +263,8 @@ void file_dialog::pre_show(window& window)
 		mkdir_button.set_active(false);
 		rm_button.set_active(false);
 
-		mkdir_button.set_visible(widget::tvisible::invisible);
-		rm_button.set_visible(widget::tvisible::invisible);
+		mkdir_button.set_visible(widget::visibility::invisible);
+		rm_button.set_visible(widget::visibility::invisible);
 	}
 
 	refresh_fileview(window);
@@ -662,7 +662,7 @@ void file_dialog::on_bookmark_add_cmd(window& window)
 
 	std::string label = default_label;
 
-	const bool confirm = tbookmark_create::execute(label, window.video());
+	const bool confirm = bookmark_create::execute(label, window.video());
 	if(!confirm) {
 		return;
 	}

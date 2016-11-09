@@ -137,7 +137,7 @@ void control::set_members(const string_map& data)
 
 bool control::disable_click_dismiss() const
 {
-	return get_visible() == widget::tvisible::visible && get_active();
+	return get_visible() == widget::visibility::visible && get_active();
 }
 
 iterator::walker_base* control::create_walker()

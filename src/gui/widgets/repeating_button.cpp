@@ -173,7 +173,7 @@ repeating_button_definition::repeating_button_definition(const config& cfg)
 {
 	DBG_GUI_P << "Parsing repeating button " << id << '\n';
 
-	load_resolutions<tresolution>(cfg);
+	load_resolutions<resolution>(cfg);
 }
 
 /*WIKI
@@ -204,7 +204,7 @@ repeating_button_definition::repeating_button_definition(const config& cfg)
  * @end{tag}{name="repeating_button_definition"}
  * @end{parent}{name="gui/"}
  */
-repeating_button_definition::tresolution::tresolution(const config& cfg)
+repeating_button_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 {
 	// Note the order should be the same as the enum state_t in

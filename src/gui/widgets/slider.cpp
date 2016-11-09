@@ -63,9 +63,9 @@ point slider::calculate_best_size() const
 	if(best_slider_length_ != 0) {
 
 		// Override length.
-		std::shared_ptr<const slider_definition::tresolution> conf
+		std::shared_ptr<const slider_definition::resolution> conf
 				= std::static_pointer_cast<const slider_definition::
-													  tresolution>(config());
+													  resolution>(config());
 
 		assert(conf);
 
@@ -156,8 +156,8 @@ void slider::child_callback_positioner_moved()
 
 unsigned slider::minimum_positioner_length() const
 {
-	std::shared_ptr<const slider_definition::tresolution>
-	conf = std::static_pointer_cast<const slider_definition::tresolution>(
+	std::shared_ptr<const slider_definition::resolution>
+	conf = std::static_pointer_cast<const slider_definition::resolution>(
 			config());
 	assert(conf);
 	return conf->minimum_positioner_length;
@@ -165,8 +165,8 @@ unsigned slider::minimum_positioner_length() const
 
 unsigned slider::maximum_positioner_length() const
 {
-	std::shared_ptr<const slider_definition::tresolution>
-	conf = std::static_pointer_cast<const slider_definition::tresolution>(
+	std::shared_ptr<const slider_definition::resolution>
+	conf = std::static_pointer_cast<const slider_definition::resolution>(
 			config());
 	assert(conf);
 	return conf->maximum_positioner_length;
@@ -174,8 +174,8 @@ unsigned slider::maximum_positioner_length() const
 
 unsigned slider::offset_before() const
 {
-	std::shared_ptr<const slider_definition::tresolution>
-	conf = std::static_pointer_cast<const slider_definition::tresolution>(
+	std::shared_ptr<const slider_definition::resolution>
+	conf = std::static_pointer_cast<const slider_definition::resolution>(
 			config());
 	assert(conf);
 	return conf->left_offset;
@@ -183,8 +183,8 @@ unsigned slider::offset_before() const
 
 unsigned slider::offset_after() const
 {
-	std::shared_ptr<const slider_definition::tresolution>
-	conf = std::static_pointer_cast<const slider_definition::tresolution>(
+	std::shared_ptr<const slider_definition::resolution>
+	conf = std::static_pointer_cast<const slider_definition::resolution>(
 			config());
 	assert(conf);
 	return conf->right_offset;
@@ -348,7 +348,7 @@ slider_definition::slider_definition(const config& cfg)
 {
 	DBG_GUI_P << "Parsing slider " << id << '\n';
 
-	load_resolutions<tresolution>(cfg);
+	load_resolutions<resolution>(cfg);
 }
 
 /*WIKI
@@ -398,7 +398,7 @@ slider_definition::slider_definition(const config& cfg)
  * @end{tag}{name="slider_definition"}
  * @end{parent}{name="gui/"}
  */
-slider_definition::tresolution::tresolution(const config& cfg)
+slider_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 	, minimum_positioner_length(cfg["minimum_positioner_length"])
 	, maximum_positioner_length(cfg["maximum_positioner_length"])

@@ -180,7 +180,7 @@ void game_version::pre_show(window& window)
 		if(!desktop::open_object_is_supported()) {
 			// No point in displaying these on platforms that can't do
 			// open_object().
-			browse_w.set_visible(control::tvisible::invisible);
+			browse_w.set_visible(control::visibility::invisible);
 		}
 
 		if(!desktop::clipboard::available()) {
@@ -192,7 +192,7 @@ void game_version::pre_show(window& window)
 #ifndef _WIN32
 	grid& w32_options_grid
 			= find_widget<grid>(&window, "win32_paths", false);
-	w32_options_grid.set_visible(widget::tvisible::invisible);
+	w32_options_grid.set_visible(widget::visibility::invisible);
 #else
 	button& stderr_button
 			= find_widget<button>(&window, "open_stderr", false);

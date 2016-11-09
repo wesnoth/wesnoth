@@ -103,7 +103,7 @@ image_definition::image_definition(const config& cfg)
 {
 	DBG_GUI_P << "Parsing image " << id << '\n';
 
-	load_resolutions<tresolution>(cfg);
+	load_resolutions<resolution>(cfg);
 }
 
 /*WIKI
@@ -129,7 +129,7 @@ image_definition::image_definition(const config& cfg)
  * @end{tag}{name="image_definition"}
  * @end{parent}{name="gui/"}
  */
-image_definition::tresolution::tresolution(const config& cfg)
+image_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 {
 	// Note the order should be the same as the enum state_t in image.hpp.

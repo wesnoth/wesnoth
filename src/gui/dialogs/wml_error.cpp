@@ -209,13 +209,13 @@ void wml_error::pre_show(window& window)
 {
 	if(!have_files_) {
 		control& filelist = find_widget<control>(&window, "files", false);
-		filelist.set_visible(control::tvisible::invisible);
+		filelist.set_visible(control::visibility::invisible);
 	}
 
 	if(!have_post_summary_) {
 		control& post_summary
 				= find_widget<control>(&window, "post_summary", false);
-		post_summary.set_visible(control::tvisible::invisible);
+		post_summary.set_visible(control::visibility::invisible);
 	}
 
 	button& copy_button = find_widget<button>(&window, "copy", false);

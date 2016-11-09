@@ -442,7 +442,7 @@ void debug_layout_graph::grid_generate_info(std::ostream& out,
 }
 
 void debug_layout_graph::child_generate_info(std::ostream& out,
-											  const grid::tchild& child,
+											  const grid::child& child,
 											  const std::string& id) const
 {
 	assert(!id.empty());

@@ -60,7 +60,7 @@ void register_window(const std::string& id);
  * This is used in the unit tests, but these implementation details shouldn't
  * be used in the normal code.
  */
-class tunit_test_access_only
+class unit_test_access_only
 {
 	friend std::vector<std::string>& unit_test_registered_window_list();
 
@@ -139,7 +139,7 @@ resolution_definition_ptr get_control(const std::string& control_type,
 									   const std::string& definition);
 
 /** Helper struct to signal that get_window_builder failed. */
-struct twindow_builder_invalid_id
+struct window_builder_invalid_id
 {
 };
 
@@ -152,7 +152,7 @@ struct twindow_builder_invalid_id
  * @pre                       There is a valid builder for @p type at the
  *                            current resolution.
  *
- * @throw twindow_builder_invalid_id
+ * @throw window_builder_invalid_id
  *                            When the precondition is violated.
  *
  * @param type                The type of builder window to get.

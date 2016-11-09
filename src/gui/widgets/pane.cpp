@@ -41,7 +41,7 @@ namespace gui2
  * functions. It also facilitates to create duplicates of functions for a const
  * and a non-const member function.
  */
-struct tpane_implementation
+struct pane_implementation
 {
 	/**
 	 * Implementation for the wrappers for
@@ -61,11 +61,10 @@ struct tpane_implementation
 			return nullptr;
 		}
 
-		typedef typename utils::const_clone<pane::titem, W>::reference thack;
-		for(thack item : pane->items_)
+		for(auto item : pane->items_)
 		{
 
-			if(item.grid->get_visible() == widget::tvisible::invisible) {
+			if(item.grid->get_visible() == widget::visibility::invisible) {
 				continue;
 			}
 
@@ -95,8 +94,7 @@ struct tpane_implementation
 	static typename utils::const_clone<grid, W>::pointer
 	get_grid(W pane, const unsigned id)
 	{
-		typedef typename utils::const_clone<pane::titem, W>::reference thack;
-		for(thack item : pane->items_)
+		for(auto item : pane->items_)
 		{
 
 			if(item.id == id) {
@@ -142,7 +140,7 @@ pane* pane::build(const implementation::builder_pane& builder)
 unsigned pane::create_item(const std::map<std::string, string_map>& item_data,
 							const std::map<std::string, std::string>& tags)
 {
-	titem item = { item_id_generator_++, tags, item_builder_->build() };
+	item item = { item_id_generator_++, tags, item_builder_->build() };
 
 	item.grid->set_parent(this);
 
@@ -183,7 +181,7 @@ void pane::layout_initialise(const bool full_initialisation)
 
 	for(auto & item : items_)
 	{
-		if(item.grid->get_visible() != widget::tvisible::invisible) {
+		if(item.grid->get_visible() != widget::visibility::invisible) {
 			item.grid->layout_initialise(full_initialisation);
 		}
 	}
@@ -196,7 +194,7 @@ pane::impl_draw_children(surface& frame_buffer, int x_offset, int y_offset)
 
 	for(auto & item : items_)
 	{
-		if(item.grid->get_visible() != widget::tvisible::invisible) {
+		if(item.grid->get_visible() != widget::visibility::invisible) {
 			item.grid->draw_children(frame_buffer, x_offset, y_offset);
 		}
 	}
@@ -224,8 +222,8 @@ void pane::filter(const tfilter_functor& filter_functor)
 	for(auto & item : items_)
 	{
 		item.grid->set_visible(filter_functor(item)
-									   ? widget::tvisible::visible
-									   : widget::tvisible::invisible);
+									   ? widget::visibility::visible
+									   : widget::visibility::invisible);
 	}
 
 	set_origin_children();
@@ -237,13 +235,13 @@ void pane::request_reduce_width(const unsigned /*maximum_width*/)
 
 widget* pane::find_at(const point& coordinate, const bool must_be_active)
 {
-	return tpane_implementation::find_at(this, coordinate, must_be_active);
+	return pane_implementation::find_at(this, coordinate, must_be_active);
 }
 
 const widget* pane::find_at(const point& coordinate,
 							  const bool must_be_active) const
 {
-	return tpane_implementation::find_at(this, coordinate, must_be_active);
+	return pane_implementation::find_at(this, coordinate, must_be_active);
 }
 
 point pane::calculate_best_size() const
@@ -267,12 +265,12 @@ iterator::walker_base* pane::create_walker()
 
 grid* pane::get_grid(const unsigned id)
 {
-	return tpane_implementation::get_grid(this, id);
+	return pane_implementation::get_grid(this, id);
 }
 
 const grid* pane::get_grid(const unsigned id) const
 {
-	return tpane_implementation::get_grid(this, id);
+	return pane_implementation::get_grid(this, id);
 }
 
 void pane::place_children()
@@ -281,7 +279,7 @@ void pane::place_children()
 	unsigned index = 0;
 	for(auto & item : items_)
 	{
-		if(item.grid->get_visible() == widget::tvisible::invisible) {
+		if(item.grid->get_visible() == widget::visibility::invisible) {
 			continue;
 		}
 
@@ -297,7 +295,7 @@ void pane::set_origin_children()
 	unsigned index = 0;
 	for(auto & item : items_)
 	{
-		if(item.grid->get_visible() == widget::tvisible::invisible) {
+		if(item.grid->get_visible() == widget::visibility::invisible) {
 			continue;
 		}
 
@@ -313,7 +311,7 @@ void pane::place_or_set_origin_children()
 	unsigned index = 0;
 	for(auto & item : items_)
 	{
-		if(item.grid->get_visible() == widget::tvisible::invisible) {
+		if(item.grid->get_visible() == widget::visibility::invisible) {
 			continue;
 		}
 
@@ -334,7 +332,7 @@ void pane::prepare_placement() const
 
 	for(const auto & item : items_)
 	{
-		if(item.grid->get_visible() == widget::tvisible::invisible) {
+		if(item.grid->get_visible() == widget::visibility::invisible) {
 			continue;
 		}
 
@@ -353,7 +351,7 @@ void pane::signal_handler_request_placement(dispatcher& dispatcher,
 		for(auto & item : items_)
 		{
 			if(item.grid->has_widget(*wgt)) {
-				if(item.grid->get_visible() != widget::tvisible::invisible) {
+				if(item.grid->get_visible() != widget::visibility::invisible) {
 
 					/*
 					 * This time we call init layout but also the linked widget
