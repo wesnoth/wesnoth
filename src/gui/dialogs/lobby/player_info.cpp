@@ -27,10 +27,12 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
 REGISTER_DIALOG(lobby_player_info)
 
-tlobby_player_info::tlobby_player_info(events::chat_handler& chat,
+lobby_player_info::lobby_player_info(events::chat_handler& chat,
 									   user_info& info,
 									   const lobby_info& li)
 	: chat_(chat)
@@ -46,50 +48,50 @@ tlobby_player_info::tlobby_player_info(events::chat_handler& chat,
 {
 }
 
-tlobby_player_info::~tlobby_player_info()
+lobby_player_info::~lobby_player_info()
 {
 }
 
-void tlobby_player_info::pre_show(window& window)
+void lobby_player_info::pre_show(window& window)
 {
 	relation_ = find_widget<label>(&window, "relation_info", false, true);
 	connect_signal_mouse_left_click(
 			find_widget<button>(&window, "start_whisper", false),
-			std::bind(&tlobby_player_info::start_whisper_button_callback,
+			std::bind(&lobby_player_info::start_whisper_button_callback,
 						this,
 						std::ref(window)));
 
 	add_to_friends_ = &find_widget<button>(&window, "add_to_friends", false);
 	connect_signal_mouse_left_click(
 			*add_to_friends_,
-			std::bind(&tlobby_player_info::add_to_friends_button_callback, this));
+			std::bind(&lobby_player_info::add_to_friends_button_callback, this));
 
 	add_to_ignores_ = &find_widget<button>(&window, "add_to_ignores", false);
 	connect_signal_mouse_left_click(
 			*add_to_ignores_,
-			std::bind(&tlobby_player_info::add_to_ignores_button_callback, this));
+			std::bind(&lobby_player_info::add_to_ignores_button_callback, this));
 
 	remove_from_list_
 			= &find_widget<button>(&window, "remove_from_list", false);
 	connect_signal_mouse_left_click(
 			*remove_from_list_,
-			std::bind(&tlobby_player_info::remove_from_list_button_callback, this));
+			std::bind(&lobby_player_info::remove_from_list_button_callback, this));
 
 	connect_signal_mouse_left_click(
 			find_widget<button>(&window, "check_status", false),
-			std::bind(&tlobby_player_info::check_status_button_callback,
+			std::bind(&lobby_player_info::check_status_button_callback,
 						this,
 						std::ref(window)));
 
 	connect_signal_mouse_left_click(
 			find_widget<button>(&window, "kick", false),
-			std::bind(&tlobby_player_info::kick_button_callback,
+			std::bind(&lobby_player_info::kick_button_callback,
 						this,
 						std::ref(window)));
 
 	connect_signal_mouse_left_click(
 			find_widget<button>(&window, "kick_ban", false),
-			std::bind(&tlobby_player_info::kick_ban_button_callback,
+			std::bind(&lobby_player_info::kick_ban_button_callback,
 						this,
 						std::ref(window)));
 
@@ -121,11 +123,11 @@ void tlobby_player_info::pre_show(window& window)
 	}
 }
 
-void tlobby_player_info::post_show(window& /*window*/)
+void lobby_player_info::post_show(window& /*window*/)
 {
 }
 
-void tlobby_player_info::update_relation()
+void lobby_player_info::update_relation()
 {
 	add_to_friends_->set_active(false);
 	add_to_ignores_->set_active(false);
@@ -154,52 +156,52 @@ void tlobby_player_info::update_relation()
 	}
 }
 
-void tlobby_player_info::add_to_friends_button_callback()
+void lobby_player_info::add_to_friends_button_callback()
 {
 	preferences::add_acquaintance(info_.name, "friend", "");
 	info_.relation = user_info::FRIEND;
 	update_relation();
 }
 
-void tlobby_player_info::add_to_ignores_button_callback()
+void lobby_player_info::add_to_ignores_button_callback()
 {
 	preferences::add_acquaintance(info_.name, "ignore", "");
 	info_.relation = user_info::IGNORED;
 	update_relation();
 }
 
-void tlobby_player_info::remove_from_list_button_callback()
+void lobby_player_info::remove_from_list_button_callback()
 {
 	preferences::remove_acquaintance(info_.name);
 	info_.relation = user_info::NEUTRAL;
 	update_relation();
 }
 
-void tlobby_player_info::start_whisper_button_callback(window& w)
+void lobby_player_info::start_whisper_button_callback(window& w)
 {
 	result_open_whisper_ = true;
 	w.close();
 }
 
-void tlobby_player_info::check_status_button_callback(window& w)
+void lobby_player_info::check_status_button_callback(window& w)
 {
 	chat_.send_command("query", "status " + info_.name);
 	w.close();
 }
 
-void tlobby_player_info::kick_button_callback(window& w)
+void lobby_player_info::kick_button_callback(window& w)
 {
 	do_kick_ban(false);
 	w.close();
 }
 
-void tlobby_player_info::kick_ban_button_callback(window& w)
+void lobby_player_info::kick_ban_button_callback(window& w)
 {
 	do_kick_ban(true);
 	w.close();
 }
 
-void tlobby_player_info::do_kick_ban(bool ban)
+void lobby_player_info::do_kick_ban(bool ban)
 {
 	std::stringstream ss;
 	ss << (ban ? "kban" : "kick ") << info_.name;
@@ -213,4 +215,5 @@ void tlobby_player_info::do_kick_ban(bool ban)
 	chat_.send_command("query", ss.str());
 }
 
-} // end namespace gui2
+} // namespace dialogs
+} // namespace gui2

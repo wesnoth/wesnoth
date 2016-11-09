@@ -26,6 +26,8 @@ class CVideo;
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /**
  * Registers a window.
@@ -47,15 +49,15 @@ namespace gui2
 	namespace ns_##id                                                          \
 	{                                                                          \
                                                                                \
-		struct tregister_helper                                                \
+		struct register_helper                                                \
 		{                                                                      \
-			tregister_helper()                                                 \
+			register_helper()                                                 \
 			{                                                                  \
 				register_window(#id);                                          \
 			}                                                                  \
 		};                                                                     \
                                                                                \
-		tregister_helper register_helper;                                      \
+		struct register_helper register_helper;                                \
 	}                                                                          \
 	}
 
@@ -65,7 +67,7 @@ namespace gui2
  * Call this function to register a window. In the header of the class it adds
  * the following code:
  *@code
- *  // Inherited from tdialog, implemented by REGISTER_DIALOG.
+ *  // Inherited from modal_dialog, implemented by REGISTER_DIALOG.
  *	virtual const std::string& id() const;
  *@endcode
  * Then use this macro in the implementation, inside the gui2 namespace.
@@ -88,12 +90,12 @@ namespace gui2
 /**
  * Wrapper for REGISTER_DIALOG2.
  *
- * "Calls" REGISTER_DIALOG2(twindow_id, window_id)
+ * "Calls" REGISTER_DIALOG2(window_id, window_id)
  */
-#define REGISTER_DIALOG(window_id) REGISTER_DIALOG2(t##window_id, window_id)
+#define REGISTER_DIALOG(window_id) REGISTER_DIALOG2(window_id, window_id)
 
 /**
- * Abstract base class for all dialogs.
+ * Abstract base class for all modal dialogs.
  *
  * A dialog shows a certain window instance to the user. The subclasses of this
  * class will hold the parameters used for a certain window, eg a server
@@ -106,7 +108,7 @@ namespace gui2
  * add a static member called @p execute. The parameters to the function are:
  * - references to in + out parameters by reference
  * - references to the in parameters
- * - the parameters for @ref tdialog::show.
+ * - the parameters for @ref modal_dialog::show.
  *
  * The 'in + out parameters' are used as initial value and final value when the
  * OK button is pressed. The 'in parameters' are just extra parameters for
@@ -115,10 +117,10 @@ namespace gui2
  * When a function only has 'in parameters' it should return a void value and
  * the function should be called @p display, if it has 'in + out parameters' it
  * must return a bool value. This value indicates whether or not the OK button
- * was pressed to close the dialog. See @ref teditor_new_map::execute for an
+ * was pressed to close the dialog. See @ref editor_new_map::execute for an
  * example.
  */
-class tdialog
+class modal_dialog
 {
 	/**
 	 * Special helper function to get the id of the window.
@@ -126,10 +128,10 @@ class tdialog
 	 * This is used in the unit tests, but these implementation details
 	 * shouldn't be used in the normal code.
 	 */
-	friend std::string unit_test_mark_as_tested(const tdialog& dialog);
+	friend std::string unit_test_mark_as_tested(const modal_dialog& dialog);
 
 public:
-	tdialog()
+	modal_dialog()
 		: retval_(0)
 		, always_save_fields_(false)
 		, fields_()
@@ -140,7 +142,7 @@ public:
 	{
 	}
 
-	virtual ~tdialog();
+	virtual ~modal_dialog();
 
 	/**
 	 * Shows the window.
@@ -189,7 +191,7 @@ protected:
 	/**
 	 * Creates a new boolean field.
 	 *
-	 * The field created is owned by tdialog, the returned pointer can be used
+	 * The field created is owned by modal_dialog, the returned pointer can be used
 	 * in the child classes as access to a field.
 	 *
 	 * @param id                  Id of the widget, same value as in WML.
@@ -216,7 +218,7 @@ protected:
 	/**
 	 * Creates a new boolean field.
 	 *
-	 * The field created is owned by tdialog, the returned pointer can be used
+	 * The field created is owned by modal_dialog, the returned pointer can be used
 	 * in the child classes as access to a field.
 	 *
 	 * @param id                  Id of the widget, same value as in WML.
@@ -422,6 +424,7 @@ private:
 	virtual void finalize_fields(window& window, const bool save_fields);
 };
 
+} // namespace dialogs
 } // namespace gui2
 
 #endif

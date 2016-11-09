@@ -30,7 +30,7 @@
 #include "generators/map_generator.hpp" // for mapgen_exception
 #include "gettext.hpp"                  // for _
 #include "gui/dialogs/end_credits.hpp"
-#include "gui/dialogs/language_selection.hpp"  // for tlanguage_selection
+#include "gui/dialogs/language_selection.hpp"  // for language_selection
 #include "gui/dialogs/loadscreen.hpp"
 #include "gui/dialogs/message.hpp" //for show error message
 #include "gui/dialogs/multiplayer/mp_host_game_prompt.hpp" //for host game prompt
@@ -170,7 +170,7 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts, const char
 		}
 	}
 	if (cmdline_opts_.clock)
-		gui2::show_debug_clock_button = true;
+		gui2::dialogs::show_debug_clock_button = true;
 	if (cmdline_opts_.debug) {
 		game_config::debug = true;
 		game_config::mp_debug = true;
@@ -912,7 +912,7 @@ bool game_launcher::play_multiplayer_commandline()
 
 bool game_launcher::change_language()
 {
-	gui2::tlanguage_selection dlg;
+	gui2::dialogs::language_selection dlg;
 	dlg.show(video());
 	if (dlg.get_retval() != gui2::window::OK) return false;
 
@@ -925,7 +925,7 @@ bool game_launcher::change_language()
 
 void game_launcher::show_preferences()
 {
-	gui2::tpreferences::display(video(),  game_config_manager::get()->game_config());
+	gui2::dialogs::preferences_dialog::display(video(),  game_config_manager::get()->game_config());
 }
 
 void game_launcher::launch_game(RELOAD_GAME_DATA reload)
@@ -937,9 +937,9 @@ void game_launcher::launch_game(RELOAD_GAME_DATA reload)
 		return;
 	}
 
-	gui2::tloadscreen::display(video(), [this, reload]() {
+	gui2::dialogs::loading_screen::display(video(), [this, reload]() {
 
-		gui2::tloadscreen::progress("load data");
+		gui2::dialogs::loading_screen::progress("load data");
 		if(reload == RELOAD_DATA) {
 			try {
 				game_config_manager::get()->
@@ -959,7 +959,7 @@ void game_launcher::launch_game(RELOAD_GAME_DATA reload)
 			preferences::add_completed_campaign(state_.classification().campaign, state_.classification().difficulty);
 			the_end(video(), state_.classification().end_text, state_.classification().end_text_duration);
 			if(state_.classification().end_credits) {
-				gui2::tend_credits::display(video(), state_.classification().campaign);
+				gui2::dialogs::end_credits::display(video(), state_.classification().campaign);
 			}
 		}
 	} catch (savegame::load_game_exception &e) {

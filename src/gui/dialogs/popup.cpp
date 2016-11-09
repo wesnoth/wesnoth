@@ -21,17 +21,19 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
-tpopup::tpopup() : window_(nullptr)
+modeless_dialog::modeless_dialog() : window_(nullptr)
 {
 }
 
-tpopup::~tpopup()
+modeless_dialog::~modeless_dialog()
 {
 	hide();
 }
 
-void tpopup::show(CVideo& video,
+void modeless_dialog::show(CVideo& video,
 				  const bool allow_interaction,
 				  const unsigned /*auto_close_time*/)
 {
@@ -58,7 +60,7 @@ void tpopup::show(CVideo& video,
 	open_window_stack.pop_back();
 }
 
-void tpopup::hide()
+void modeless_dialog::hide()
 {
 	if(window_) {
 		window_->undraw();
@@ -67,19 +69,20 @@ void tpopup::hide()
 	}
 }
 
-window* tpopup::build_window(CVideo& video) const
+window* modeless_dialog::build_window(CVideo& video) const
 {
 	return build(video, window_id());
 }
 
-void tpopup::post_build(window& /*window*/)
+void modeless_dialog::post_build(window& /*window*/)
 {
 	/* DO NOTHING */
 }
 
-void tpopup::pre_show(window& /*window*/)
+void modeless_dialog::pre_show(window& /*window*/)
 {
 	/* DO NOTHING */
 }
 
+} // namespace dialogs
 } // namespace gui2

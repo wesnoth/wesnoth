@@ -109,7 +109,7 @@ bool show_theme_dialog(CVideo& video)
 		return false;
 	}
 
-	gui2::ttheme_list dlg(themes);
+	gui2::dialogs::theme_list dlg(themes);
 
 	for (size_t k = 0; k < themes.size(); ++k) {
 		if(themes[k].id == preferences::theme()) {
@@ -147,7 +147,7 @@ void show_wesnothd_server_search(CVideo& video)
 	const std::string msg = vgettext(
 			  "The <b>$filename</b> server application provides multiplayer server functionality and is required for hosting local network games. It will normally be found in the same folder as the game executable.", {{"filename", filename}});
 
-	gui2::tfile_dialog dlg;
+	gui2::dialogs::file_dialog dlg;
 
 	dlg.set_title(_("Find Server Application"))
 	   .set_message(msg)

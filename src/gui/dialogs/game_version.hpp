@@ -33,22 +33,25 @@ class listbox;
 #endif
 class stacked_widget;
 
-class tgame_version : public tdialog
+namespace dialogs
+{
+
+class game_version : public modal_dialog
 {
 public:
 	/**
 	 * Constructor.
 	 */
-	tgame_version();
+	game_version();
 
 	/**
 	 * The display function.
 	 *
-	 * See @ref tdialog for more information.
+	 * See @ref modal_dialog for more information.
 	 */
 	static void display(CVideo& video)
 	{
-		tgame_version().show(video);
+		game_version().show(video);
 	}
 
 private:
@@ -71,10 +74,10 @@ private:
 
 	void generate_plain_text_report();
 
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void pre_show(window& window);
 
 	//
@@ -105,6 +108,7 @@ private:
 	 */
 	void browse_directory_callback(const std::string& path);
 };
-}
+} // namespace dialogs
+} // namespace gui2
 
 #endif

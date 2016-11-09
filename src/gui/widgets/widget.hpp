@@ -31,7 +31,7 @@ namespace gui2
 {
 
 struct builder_widget;
-class tdialog;
+namespace dialogs { class modal_dialog; }
 class window;
 
 namespace iterator
@@ -184,20 +184,20 @@ public:
 	const window* get_window() const;
 
 	/**
-	 * Returns the top-level dialogue.
+	 * Returns the top-level dialog.
 	 *
-	 * A window is most of the time created by a dialogue, this function returns
-	 * that dialogue.
+	 * A window is most of the time created by a dialog, this function returns
+	 * that dialog.
 	 *
 	 * @deprecated The function was used to install callbacks to member
-	 * functions of the dialogue. Once all widgets are converted to signals this
+	 * functions of the dialog. Once all widgets are converted to signals this
 	 * function will be removed.
 	 *
-	 * @returns                   The top-level dialogue.
+	 * @returns                   The top-level dialog.
 	 * @retval nullptr               No top-level window or the top-level window is
-	 *                            not owned by a dialogue.
+	 *                            not owned by a dialog.
 	 */
-	tdialog* dialog();
+	dialogs::modal_dialog* dialog();
 
 	/*** *** *** *** *** *** Setters and getters. *** *** *** *** *** ***/
 

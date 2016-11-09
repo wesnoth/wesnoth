@@ -52,6 +52,8 @@ static lg::log_domain log_display("display");
 
 namespace gui2
 {
+namespace dialogs
+{
 
 // Index 2 is by-level
 static listbox::order_pair sort_last    = {-1, listbox::SORT_NONE};
@@ -59,7 +61,7 @@ static listbox::order_pair sort_default = { 2, listbox::SORT_DESCENDING};
 
 REGISTER_DIALOG(unit_recall)
 
-tunit_recall::tunit_recall(recalls_ptr_vector& recall_list, team& team)
+unit_recall::unit_recall(recalls_ptr_vector& recall_list, team& team)
 	: recall_list_(recall_list)
 	, team_(team)
 	, selected_index_()
@@ -143,7 +145,7 @@ static std::string get_title_suffix(int side_num)
 	return msg.str();
 }
 
-void tunit_recall::pre_show(window& window)
+void unit_recall::pre_show(window& window)
 {
 	label& title = find_widget<label>(&window, "title", true);
 	title.set_label(title.get_label() + get_title_suffix(team_.side()));
@@ -152,17 +154,17 @@ void tunit_recall::pre_show(window& window)
 			= find_widget<text_box>(&window, "filter_box", false, true);
 
 	filter->set_text_changed_callback(
-			std::bind(&tunit_recall::filter_text_changed, this, _1, _2));
+			std::bind(&unit_recall::filter_text_changed, this, _1, _2));
 
 	listbox& list = find_widget<listbox>(&window, "recall_list", false);
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	connect_signal_notify_modified(*list,
-			std::bind(&tunit_recall::list_item_clicked,
+			std::bind(&unit_recall::list_item_clicked,
 				*this, std::ref(window)));
 #else
 	list.set_callback_value_change(
-			dialog_callback<tunit_recall, &tunit_recall::list_item_clicked>);
+			dialog_callback<unit_recall, &unit_recall::list_item_clicked>);
 #endif
 
 	list.clear();
@@ -172,11 +174,11 @@ void tunit_recall::pre_show(window& window)
 
 	connect_signal_mouse_left_click(
 		find_widget<button>(&window, "dismiss", false),
-		std::bind(&tunit_recall::dismiss_unit, this, std::ref(window)));
+		std::bind(&unit_recall::dismiss_unit, this, std::ref(window)));
 
 	connect_signal_mouse_left_click(
 		find_widget<button>(&window, "show_help", false),
-		std::bind(&tunit_recall::show_help, this, std::ref(window)));
+		std::bind(&unit_recall::show_help, this, std::ref(window)));
 
 	for(const unit_const_ptr& unit : recall_list_) {
 		std::map<std::string, string_map> row_data;
@@ -247,7 +249,7 @@ void tunit_recall::pre_show(window& window)
 	list_item_clicked(window);
 }
 
-void tunit_recall::dismiss_unit(window& window)
+void unit_recall::dismiss_unit(window& window)
 {
 	LOG_DP << "Recall list units:\n"; dump_recall_list_to_console(recall_list_);
 
@@ -275,7 +277,7 @@ void tunit_recall::dismiss_unit(window& window)
 	}
 
 	if(!message.str().empty()) {
-		const int res = gui2::show_message(window.video(), _("Dismiss Unit"), message.str(), gui2::tmessage::yes_no_buttons);
+		const int res = gui2::show_message(window.video(), _("Dismiss Unit"), message.str(), message::yes_no_buttons);
 
 		if(res != gui2::window::OK) {
 			return;
@@ -309,12 +311,12 @@ void tunit_recall::dismiss_unit(window& window)
 	}
 }
 
-void tunit_recall::show_help(window& window)
+void unit_recall::show_help(window& window)
 {
 	help::show_help(window.video(), "recruit_and_recall");
 }
 
-void tunit_recall::list_item_clicked(window& window)
+void unit_recall::list_item_clicked(window& window)
 {
 	const int selected_row
 		= find_widget<listbox>(&window, "recall_list", false).get_selected_row();
@@ -327,7 +329,7 @@ void tunit_recall::list_item_clicked(window& window)
 		.set_displayed_unit(*recall_list_[selected_row].get());
 }
 
-void tunit_recall::post_show(window& window)
+void unit_recall::post_show(window& window)
 {
 	listbox& list = find_widget<listbox>(&window, "recall_list", false);
 	sort_last = list.get_active_sorting_option();
@@ -337,7 +339,7 @@ void tunit_recall::post_show(window& window)
 	}
 }
 
-void tunit_recall::filter_text_changed(text_box_base* textbox, const std::string& text)
+void unit_recall::filter_text_changed(text_box_base* textbox, const std::string& text)
 {
 	window& window = *textbox->get_window();
 
@@ -377,4 +379,5 @@ void tunit_recall::filter_text_changed(text_box_base* textbox, const std::string
 	list.set_row_shown(show_items);
 }
 
-}
+} // namespace dialogs
+} // namespace gui2

@@ -64,13 +64,16 @@
 #include "utils/functional.hpp"
 #include <boost/math/common_factor_rt.hpp>
 
-namespace gui2 {
+namespace gui2
+{
+namespace dialogs
+{
 
 using namespace preferences;
 
-REGISTER_DIALOG(preferences)
+REGISTER_DIALOG(preferences_dialog)
 
-tpreferences::tpreferences(CVideo& video, const config& game_cfg, const PREFERENCE_VIEW& initial_view)
+preferences_dialog::preferences_dialog(CVideo& video, const config& game_cfg, const PREFERENCE_VIEW& initial_view)
 	: resolutions_(video.get_available_resolutions(true))
 	, adv_preferences_cfg_()
 	, last_selected_item_(0)
@@ -89,7 +92,7 @@ tpreferences::tpreferences(CVideo& video, const config& game_cfg, const PREFEREN
 }
 
 // Helper function to refresh resolution list
-void tpreferences::set_resolution_list(menu_button& res_list, CVideo& video)
+void preferences_dialog::set_resolution_list(menu_button& res_list, CVideo& video)
 {
 	resolutions_ = video.get_available_resolutions(true);
 
@@ -114,7 +117,7 @@ void tpreferences::set_resolution_list(menu_button& res_list, CVideo& video)
 	res_list.set_values(options, current_res);
 }
 
-std::map<std::string, string_map> tpreferences::get_friends_list_row_data(const acquaintance& entry)
+std::map<std::string, string_map> preferences_dialog::get_friends_list_row_data(const acquaintance& entry)
 {
 	std::map<std::string, string_map> data;
 	string_map item;
@@ -146,7 +149,7 @@ std::map<std::string, string_map> tpreferences::get_friends_list_row_data(const 
 	return data;
 }
 
-void tpreferences::on_friends_list_select(listbox& list, text_box& textbox)
+void preferences_dialog::on_friends_list_select(listbox& list, text_box& textbox)
 {
 	const int num_friends = get_acquaintances().size();
 	const int sel = list.get_selected_row();
@@ -161,7 +164,7 @@ void tpreferences::on_friends_list_select(listbox& list, text_box& textbox)
 	textbox.set_value(who->second.get_nick() + " " + who->second.get_notes());
 }
 
-void tpreferences::update_friends_list_controls(window& window, listbox& list)
+void preferences_dialog::update_friends_list_controls(window& window, listbox& list)
 {
 	const bool list_empty = list.get_item_count() == 0;
 
@@ -175,7 +178,7 @@ void tpreferences::update_friends_list_controls(window& window, listbox& list)
 		list_empty ? window::tvisible::visible : window::tvisible::invisible);
 }
 
-void tpreferences::add_friend_list_entry(const bool is_friend, text_box& textbox, window& window)
+void preferences_dialog::add_friend_list_entry(const bool is_friend, text_box& textbox, window& window)
 {
 	std::string username = textbox.text();
 	if(username.empty()) {
@@ -205,7 +208,7 @@ void tpreferences::add_friend_list_entry(const bool is_friend, text_box& textbox
 	update_friends_list_controls(window, list);
 }
 
-void tpreferences::remove_friend_list_entry(listbox& friends_list, text_box& textbox, window& window)
+void preferences_dialog::remove_friend_list_entry(listbox& friends_list, text_box& textbox, window& window)
 {
 	const int selected_row = std::max(0, friends_list.get_selected_row());
 
@@ -248,7 +251,7 @@ static void disable_widget_on_toggle(window& window, widget& w, const std::strin
 /**
  * Sets up states and callbacks for each of the widgets
  */
-void tpreferences::post_build(window& window)
+void preferences_dialog::post_build(window& window)
 {
 	//
 	// GENERAL PANEL
@@ -320,7 +323,7 @@ void tpreferences::post_build(window& window)
 
 	/* CACHE MANAGE */
 	connect_signal_mouse_left_click(find_widget<button>(&window, "cachemg", false),
-			std::bind(&gui2::tgame_cache_options::display,
+			std::bind(&gui2::dialogs::game_cache_options::display,
 			std::ref(window.video())));
 
 	//
@@ -335,7 +338,7 @@ void tpreferences::post_build(window& window)
 
 	// We bind a special callback function, so setup_single_toggle() is not used
 	connect_signal_mouse_left_click(toggle_fullscreen, std::bind(
-			&tpreferences::fullscreen_toggle_callback,
+			&preferences_dialog::fullscreen_toggle_callback,
 			this, std::ref(window)));
 
 	/* SET RESOLUTION */
@@ -347,7 +350,7 @@ void tpreferences::post_build(window& window)
 	set_resolution_list(res_list, window.video());
 
 	res_list.connect_click_handler(
-			std::bind(&tpreferences::handle_res_select,
+			std::bind(&preferences_dialog::handle_res_select,
 			this, std::ref(window)));
 
 	/* SHOW FLOATING LABELS */
@@ -482,28 +485,28 @@ void tpreferences::post_build(window& window)
 
 	connect_signal_mouse_left_click(
 		find_widget<button>(&window, "add_friend", false), std::bind(
-			&tpreferences::add_friend_list_entry,
+			&preferences_dialog::add_friend_list_entry,
 			this, true,
 			std::ref(textbox),
 			std::ref(window)));
 
 	connect_signal_mouse_left_click(
 		find_widget<button>(&window, "add_ignored", false), std::bind(
-			&tpreferences::add_friend_list_entry,
+			&preferences_dialog::add_friend_list_entry,
 			this, false,
 			std::ref(textbox),
 			std::ref(window)));
 
 	connect_signal_mouse_left_click(
 		find_widget<button>(&window, "remove", false), std::bind(
-			&tpreferences::remove_friend_list_entry,
+			&preferences_dialog::remove_friend_list_entry,
 			this,
 			std::ref(friends_list),
 			std::ref(textbox),
 			std::ref(window)));
 
 	friends_list.set_callback_value_change(std::bind(
-			&tpreferences::on_friends_list_select,
+			&preferences_dialog::on_friends_list_select,
 			this,
 			std::ref(friends_list),
 			std::ref(textbox)));
@@ -511,7 +514,7 @@ void tpreferences::post_build(window& window)
 	/* ALERTS */
 	connect_signal_mouse_left_click(
 			find_widget<button>(&window, "mp_alerts", false),
-			std::bind(&gui2::tmp_alerts_options::display,
+			std::bind(&gui2::dialogs::mp_alerts_options::display,
 			std::ref(window.video())));
 
 	/* SET WESNOTHD PATH */
@@ -659,7 +662,7 @@ void tpreferences::post_build(window& window)
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	connect_signal_notify_modified(advanced, std::bind(
-		&tpreferences::on_advanced_prefs_list_select,
+		&preferences_dialog::on_advanced_prefs_list_select,
 		this,
 		std::ref(advanced),
 		std::ref(window)));
@@ -743,24 +746,24 @@ void tpreferences::post_build(window& window)
 
 	connect_signal_mouse_left_click(
 		find_widget<button>(&window, "btn_add_hotkey", false), std::bind(
-			&tpreferences::add_hotkey_callback,
+			&preferences_dialog::add_hotkey_callback,
 			this,
 			std::ref(hotkey_list)));
 
 	connect_signal_mouse_left_click(
 		find_widget<button>(&window, "btn_clear_hotkey", false), std::bind(
-			&tpreferences::remove_hotkey_callback,
+			&preferences_dialog::remove_hotkey_callback,
 			this,
 			std::ref(hotkey_list)));
 
 	connect_signal_mouse_left_click(
 		find_widget<button>(&window, "btn_reset_hotkeys", false), std::bind(
-			&tpreferences::default_hotkey_callback,
+			&preferences_dialog::default_hotkey_callback,
 			this,
 			std::ref(window)));
 }
 
-void tpreferences::setup_hotkey_list(window& window)
+void preferences_dialog::setup_hotkey_list(window& window)
 {
 	const std::string& default_icon = "misc/empty.png~CROP(0,0,15,15)";
 
@@ -810,7 +813,7 @@ void tpreferences::setup_hotkey_list(window& window)
 	}
 }
 
-void tpreferences::add_hotkey_callback(listbox& hotkeys)
+void preferences_dialog::add_hotkey_callback(listbox& hotkeys)
 {
 	CVideo& video = hotkeys.get_window()->video();
 	int row_number = hotkeys.get_selected_row();
@@ -843,7 +846,7 @@ void tpreferences::add_hotkey_callback(listbox& hotkeys)
 			{"new_hotkey_action", hotkey::get_description(newhk->get_command())}
 		});
 
-		const int res = gui2::show_message(video, _("Reassign Hotkey"), text, gui2::tmessage::yes_no_buttons, true);
+		const int res = gui2::show_message(video, _("Reassign Hotkey"), text, gui2::dialogs::message::yes_no_buttons, true);
 		if(res != gui2::window::OK) {
 			return;
 		}
@@ -858,7 +861,7 @@ void tpreferences::add_hotkey_callback(listbox& hotkeys)
 	}
 }
 
-void tpreferences::default_hotkey_callback(window& window)
+void preferences_dialog::default_hotkey_callback(window& window)
 {
 	gui2::show_transient_message(window.video(), _("Hotkeys Reset"), _("All hotkeys have been reset to their default values."),
 			std::string(), false, false, true);
@@ -867,7 +870,7 @@ void tpreferences::default_hotkey_callback(window& window)
 	window.invalidate_layout();
 }
 
-void tpreferences::remove_hotkey_callback(listbox& hotkeys)
+void preferences_dialog::remove_hotkey_callback(listbox& hotkeys)
 {
 	int row_number = hotkeys.get_selected_row();
 	const hotkey::hotkey_command& hotkey_item = *visible_hotkeys_[row_number];
@@ -875,7 +878,7 @@ void tpreferences::remove_hotkey_callback(listbox& hotkeys)
 	find_widget<label>(hotkeys.get_row_grid(row_number), "lbl_hotkey", false).set_label(hotkey::get_names(hotkey_item.command));
 }
 
-void tpreferences::on_advanced_prefs_list_select(listbox& list, window& window)
+void preferences_dialog::on_advanced_prefs_list_select(listbox& list, window& window)
 {
 	const int selected_row = list.get_selected_row();
 
@@ -886,11 +889,11 @@ void tpreferences::on_advanced_prefs_list_select(listbox& list, window& window)
 
 	if(selected_type == ADVANCED_PREF_TYPE::SPECIAL) {
 		if(selected_field == "advanced_graphic_options") {
-			gui2::tadvanced_graphics_options::display(window.video());
+			gui2::dialogs::advanced_graphics_options::display(window.video());
 		} else if(selected_field == "logging") {
-			gui2::tlogging::display(window.video());
+			gui2::dialogs::log_settings::display(window.video());
 		} else if(selected_field == "orb_color") {
-			gui2::tselect_orb_colors::display(window.video());
+			gui2::dialogs::select_orb_colors::display(window.video());
 		} else {
 			WRN_GUI_L << "Invalid or unimplemented custom advanced prefs option: " << selected_field << "\n";
 		}
@@ -913,7 +916,7 @@ void tpreferences::on_advanced_prefs_list_select(listbox& list, window& window)
 	}
 }
 
-void tpreferences::initialize_tabs(window& /*window*/, listbox& selector)
+void preferences_dialog::initialize_tabs(window& /*window*/, listbox& selector)
 {
 	//
 	// MULTIPLAYER TABS
@@ -921,12 +924,12 @@ void tpreferences::initialize_tabs(window& /*window*/, listbox& selector)
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	connect_signal_notify_modified(selector, std::bind(
-			&tpreferences::on_tab_select,
+			&preferences_dialog::on_tab_select,
 			this,
 			std::ref(window)));
 #else
 	selector.set_callback_value_change(dialog_callback
-			<tpreferences, &tpreferences::on_tab_select>);
+			<preferences_dialog, &preferences_dialog::on_tab_select>);
 #endif
 }
 
@@ -937,7 +940,7 @@ static int index_in_pager_range(const int& first, const stacked_widget& pager)
 	return std::min<int>(std::max(0, first), pager.get_layer_count() - 1);
 }
 
-void tpreferences::pre_show(window& window)
+void preferences_dialog::pre_show(window& window)
 {
 	set_always_save_fields(true);
 
@@ -964,12 +967,12 @@ void tpreferences::pre_show(window& window)
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	connect_signal_notify_modified(selector, std::bind(
-			&tpreferences::on_page_select,
+			&preferences_dialog::on_page_select,
 			this,
 			std::ref(window)));
 #else
 	selector.set_callback_value_change(dialog_callback
-			<tpreferences, &tpreferences::on_page_select>);
+			<preferences_dialog, &preferences_dialog::on_page_select>);
 #endif
 	window.keyboard_capture(&selector);
 
@@ -1006,13 +1009,13 @@ void tpreferences::pre_show(window& window)
 	pager.select_layer(main_index);
 }
 
-void tpreferences::set_visible_page(window& window, unsigned int page, const std::string& pager_id)
+void preferences_dialog::set_visible_page(window& window, unsigned int page, const std::string& pager_id)
 {
 	find_widget<stacked_widget>(&window, pager_id, false).select_layer(page);
 }
 
 // Special fullsceen callback
-void tpreferences::fullscreen_toggle_callback(window& window)
+void preferences_dialog::fullscreen_toggle_callback(window& window)
 {
 	const bool ison = find_widget<toggle_button>(&window, "fullscreen", false).get_value_bool();
 	window.video().set_fullscreen(ison);
@@ -1023,7 +1026,7 @@ void tpreferences::fullscreen_toggle_callback(window& window)
 	res_list.set_active(!ison);
 }
 
-void tpreferences::handle_res_select(window& window)
+void preferences_dialog::handle_res_select(window& window)
 {
 	menu_button& res_list = find_widget<menu_button>(&window, "resolution_set", false);
 	const int choice = res_list.get_value();
@@ -1037,7 +1040,7 @@ void tpreferences::handle_res_select(window& window)
 	set_resolution_list(res_list, window.video());
 }
 
-void tpreferences::on_page_select(window& window)
+void preferences_dialog::on_page_select(window& window)
 {
 	const int selected_row =
 		std::max(0, find_widget<listbox>(&window, "selector", false).get_selected_row());
@@ -1049,16 +1052,17 @@ void tpreferences::on_page_select(window& window)
 	}
 }
 
-void tpreferences::on_tab_select(window& window)
+void preferences_dialog::on_tab_select(window& window)
 {
 	const int selected_row =
 		std::max(0, find_widget<listbox>(&window, "tab_selector", false).get_selected_row());
 	set_visible_page(window, static_cast<unsigned int>(selected_row), "tab_pager");
 }
 
-void tpreferences::post_show(window& /*window*/)
+void preferences_dialog::post_show(window& /*window*/)
 {
 	save_hotkeys();
 }
 
-} // end namespace gui2
+} // namespace dialogs
+} // namespace gui2

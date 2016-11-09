@@ -21,8 +21,10 @@ class game_launcher;
 
 namespace gui2
 {
+namespace dialogs
+{
 
-class tpopup;
+class modeless_dialog;
 
 /** Do we wish to show the button for the debug clock. */
 extern bool show_debug_clock_button;
@@ -33,12 +35,12 @@ extern bool show_debug_clock_button;
  * The menu buttons return a result back to the caller with the button pressed.
  * So at the moment it only handles the tips itself.
  */
-class ttitle_screen : public tdialog
+class title_screen : public modal_dialog
 {
 public:
-	ttitle_screen(game_launcher& game);
+	title_screen(game_launcher& game);
 
-	~ttitle_screen();
+	~title_screen();
 
 	/**
 	 * Values for actions which leave the title screen.
@@ -73,16 +75,16 @@ private:
 
 	bool redraw_background_;
 
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void pre_show(window& window);
 
 	void on_resize(window& window);
 
 	/** Holds the debug clock dialog. */
-	tpopup* debug_clock_;
+	modeless_dialog* debug_clock_;
 
 	/**
 	 * Updates the tip of day widget.
@@ -96,6 +98,7 @@ private:
 	void show_debug_clock_window(CVideo& video);
 };
 
+} // namespace dialogs
 } // namespace gui2
 
 #endif

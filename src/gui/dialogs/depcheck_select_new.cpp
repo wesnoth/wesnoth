@@ -28,6 +28,8 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -58,7 +60,7 @@ namespace gui2
 
 REGISTER_DIALOG(depcheck_select_new)
 
-tdepcheck_select_new::tdepcheck_select_new(
+depcheck_select_new::depcheck_select_new(
 		ng::depcheck::component_type name,
 		const std::vector<std::string>& items)
 	: items_(items), result_(-1)
@@ -87,7 +89,7 @@ tdepcheck_select_new::tdepcheck_select_new(
 	register_label("message", false, message);
 }
 
-void tdepcheck_select_new::pre_show(window& window)
+void depcheck_select_new::pre_show(window& window)
 {
 	listbox& items = find_widget<listbox>(&window, "itemlist", false);
 
@@ -102,11 +104,12 @@ void tdepcheck_select_new::pre_show(window& window)
 	items.select_row(0);
 }
 
-void tdepcheck_select_new::post_show(window& window)
+void depcheck_select_new::post_show(window& window)
 {
 	if(get_retval() == window::OK) {
 		listbox& items = find_widget<listbox>(&window, "itemlist", false);
 		result_ = items.get_selected_row();
 	}
 }
-}
+} // namespace dialogs
+} // namespace gui2

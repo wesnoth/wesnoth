@@ -32,21 +32,24 @@ class menu_button;
 class slider;
 class tree_view_node;
 
-class tmp_staging : public tdialog, private plugin_executor
+namespace dialogs
+{
+
+class mp_staging : public modal_dialog, private plugin_executor
 {
 public:
-	tmp_staging(ng::connect_engine& connect_engine, lobby_info& lobby_info, wesnothd_connection* connection = nullptr);
+	mp_staging(ng::connect_engine& connect_engine, lobby_info& lobby_info, wesnothd_connection* connection = nullptr);
 
-	~tmp_staging();
+	~mp_staging();
 
 private:
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void pre_show(window& window);
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void post_show(window& window);
 
 	void add_side_node(window& window, ng::side_engine_ptr side);
@@ -88,6 +91,7 @@ private:
 	std::map<ng::side_engine_ptr, tree_view_node*> side_tree_map_;
 };
 
+} // namespace dialogs
 } // namespace gui2
 
 #endif

@@ -35,7 +35,8 @@
 
 namespace gui2
 {
-
+namespace dialogs
+{
 /*WIKI
  * @page = GUIWindowDefinitionWML
  * @order = 2_mp_alerts_options
@@ -119,11 +120,11 @@ static void revert_to_default_pref_values(window & window)
 
 REGISTER_DIALOG(mp_alerts_options)
 
-tmp_alerts_options::tmp_alerts_options()
+mp_alerts_options::mp_alerts_options()
 {
 }
 
-void tmp_alerts_options::pre_show(window& window)
+void mp_alerts_options::pre_show(window& window)
 {
 	for (const std::string & i : mp_ui_alerts::items) {
 		setup_item(i, window);
@@ -152,8 +153,9 @@ void tmp_alerts_options::pre_show(window& window)
 	connect_signal_mouse_left_click(*defaults, std::bind(&revert_to_default_pref_values, std::ref(window)));
 }
 
-void tmp_alerts_options::post_show(window& /*window*/)
+void mp_alerts_options::post_show(window& /*window*/)
 {
 }
 
-} // end namespace gui2
+} // namespace dialogs
+} // namespace gui2

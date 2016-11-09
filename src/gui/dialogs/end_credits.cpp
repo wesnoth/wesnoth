@@ -34,10 +34,12 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
 REGISTER_DIALOG(end_credits)
 
-tend_credits::tend_credits(const std::string& campaign)
+end_credits::end_credits(const std::string& campaign)
 	: focus_on_(campaign)
 	, backgrounds_()
 	, timer_id_()
@@ -46,7 +48,7 @@ tend_credits::tend_credits(const std::string& campaign)
 {
 }
 
-tend_credits::~tend_credits()
+end_credits::~end_credits()
 {
 	if(timer_id_ != 0) {
 		remove_timer(timer_id_);
@@ -69,14 +71,14 @@ static void parse_about_tags(const config& cfg, std::stringstream& ss)
 	}
 }
 
-void tend_credits::pre_show(window& window)
+void end_credits::pre_show(window& window)
 {
-	timer_id_ = add_timer(10, std::bind(&tend_credits::timer_callback, this), true);
+	timer_id_ = add_timer(10, std::bind(&end_credits::timer_callback, this), true);
 
 	// Delay a little before beginning the scrolling
 	last_scroll_ = SDL_GetTicks() + 3000;
 
-	connect_signal_pre_key_press(window, std::bind(&tend_credits::key_press_callback, this, _3, _4, _5));
+	connect_signal_pre_key_press(window, std::bind(&end_credits::key_press_callback, this, _3, _4, _5));
 
 	std::stringstream ss;
 	std::stringstream focus_ss;
@@ -125,7 +127,7 @@ void tend_credits::pre_show(window& window)
 	}
 }
 
-void tend_credits::timer_callback()
+void end_credits::timer_callback()
 {
 	uint32_t now = SDL_GetTicks();
 	if(last_scroll_ > now) {
@@ -149,7 +151,7 @@ void tend_credits::timer_callback()
 	}
 }
 
-void tend_credits::key_press_callback(bool&, bool&, const SDL_Keycode key)
+void end_credits::key_press_callback(bool&, bool&, const SDL_Keycode key)
 {
 	if(key == SDLK_UP && scroll_speed_ < 400) {
 		scroll_speed_ <<= 1;
@@ -160,4 +162,5 @@ void tend_credits::key_press_callback(bool&, bool&, const SDL_Keycode key)
 	}
 }
 
+} // namespace dialogs
 } // namespace gui2

@@ -55,6 +55,8 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
 // Special retval value for loading a game
 static const int LOAD_GAME = 100;
@@ -64,7 +66,7 @@ namespace prefs = preferences;
 
 REGISTER_DIALOG(mp_create_game)
 
-tmp_create_game::tmp_create_game(const config& cfg, ng::create_engine& create_eng)
+mp_create_game::mp_create_game(const config& cfg, ng::create_engine& create_eng)
 	: cfg_(cfg)
 	, create_engine_(create_eng)
 	, config_engine_()
@@ -72,12 +74,12 @@ tmp_create_game::tmp_create_game(const config& cfg, ng::create_engine& create_en
 	, selected_game_index_(-1)
 	, selected_rfm_index_(-1)
 	, use_map_settings_(register_bool( "use_map_settings", true, prefs::use_map_settings, prefs::set_use_map_settings,
-		dialog_callback<tmp_create_game, &tmp_create_game::update_map_settings>))
+		dialog_callback<mp_create_game, &mp_create_game::update_map_settings>))
 	, fog_(register_bool("fog", true, prefs::fog, prefs::set_fog))
 	, shroud_(register_bool("shroud", true, prefs::shroud, prefs::set_shroud))
 	, start_time_(register_bool("random_start_time", true, prefs::random_start_time, prefs::set_random_start_time))
 	, time_limit_(register_bool("time_limit", true, prefs::countdown, prefs::set_countdown,
-		dialog_callback<tmp_create_game, &tmp_create_game::update_map_settings>))
+		dialog_callback<mp_create_game, &mp_create_game::update_map_settings>))
 	, shuffle_sides_(register_bool("shuffle_sides", true, prefs::shuffle_sides, prefs::set_shuffle_sides))
 	, observers_(register_bool("observers", true, prefs::allow_observers, prefs::set_allow_observers))
 	, registered_users_(register_bool("registered_users", true, prefs::registered_users_only, prefs::set_registered_users_only))
@@ -125,7 +127,7 @@ tmp_create_game::tmp_create_game(const config& cfg, ng::create_engine& create_en
 	set_allow_plugin_skip(false);
 }
 
-void tmp_create_game::pre_show(window& win)
+void mp_create_game::pre_show(window& win)
 {
 	find_widget<minimap>(&win, "minimap", false).set_config(&cfg_);
 
@@ -133,15 +135,15 @@ void tmp_create_game::pre_show(window& win)
 
 	connect_signal_mouse_left_click(
 		find_widget<button>(&win, "random_map_regenerate", false),
-		std::bind(&tmp_create_game::regenerate_random_map, this, std::ref(win)));
+		std::bind(&mp_create_game::regenerate_random_map, this, std::ref(win)));
 
 	connect_signal_mouse_left_click(
 		find_widget<button>(&win, "random_map_settings", false),
-		std::bind(&tmp_create_game::show_generator_settings, this, std::ref(win)));
+		std::bind(&mp_create_game::show_generator_settings, this, std::ref(win)));
 
 	connect_signal_mouse_left_click(
 		find_widget<button>(&win, "load_game", false),
-		std::bind(&tmp_create_game::load_game_callback, this, std::ref(win)));
+		std::bind(&mp_create_game::load_game_callback, this, std::ref(win)));
 
 	// Custom dialog close hook
 	win.set_exit_hook_ok_only([this](window& w)->bool { return dialog_exit_hook(w); });
@@ -149,18 +151,18 @@ void tmp_create_game::pre_show(window& win)
 	//
 	// Set up the options manager. Needs to be done before selecting an initial tab
 	//
-	options_manager_.reset(new tmp_options_helper(win, create_engine_));
+	options_manager_.reset(new mp_options_helper(win, create_engine_));
 
 	//
 	// Set up filtering
 	//
 	connect_signal_notify_modified(find_widget<slider>(&win, "num_players", false),
-		std::bind(&tmp_create_game::on_filter_change<slider>, this, std::ref(win), "num_players"));
+		std::bind(&mp_create_game::on_filter_change<slider>, this, std::ref(win), "num_players"));
 
 	text_box& filter = find_widget<text_box>(&win, "game_filter", false);
 
 	filter.set_text_changed_callback(
-		std::bind(&tmp_create_game::on_filter_change<text_box>, this, std::ref(win), "game_filter"));
+		std::bind(&mp_create_game::on_filter_change<text_box>, this, std::ref(win), "game_filter"));
 
 	// Note this cannot be in the keyboard chain or it will capture focus from other text boxes
 	win.keyboard_capture(&filter);
@@ -194,7 +196,7 @@ void tmp_create_game::pre_show(window& win)
 	};
 
 	game_menu_button.set_values(game_types, get_initial_type_index());
-	game_menu_button.connect_click_handler(std::bind(&tmp_create_game::update_games_list, this, std::ref(win)));
+	game_menu_button.connect_click_handler(std::bind(&mp_create_game::update_games_list, this, std::ref(win)));
 
 	//
 	// Set up eras menu_button
@@ -212,7 +214,7 @@ void tmp_create_game::pre_show(window& win)
 	}
 
 	eras_menu_button.set_values(era_names);
-	eras_menu_button.connect_click_handler(std::bind(&tmp_create_game::on_era_select, this, std::ref(win)));
+	eras_menu_button.connect_click_handler(std::bind(&mp_create_game::on_era_select, this, std::ref(win)));
 
 	const int era_selection = create_engine_.find_extra_by_id(ng::create_engine::ERA, preferences::era());
 	if(era_selection >= 0) {
@@ -246,16 +248,16 @@ void tmp_create_game::pre_show(window& win)
 			mog_toggle.set_value_bool(true);
 		}
 
-		mog_toggle.set_callback_state_change(std::bind(&tmp_create_game::on_mod_toggle, this, i));
+		mog_toggle.set_callback_state_change(std::bind(&mp_create_game::on_mod_toggle, this, i));
 	}
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	connect_signal_notify_modified(*mod_list,
-			std::bind(&tmp_create_game::on_mod_select,
+			std::bind(&mp_create_game::on_mod_select,
 				*this, std::ref(win)));
 #else
 	mod_list.set_callback_value_change(
-			dialog_callback<tmp_create_game, &tmp_create_game::on_mod_select>);
+			dialog_callback<mp_create_game, &mp_create_game::on_mod_select>);
 #endif
 
 	// No mods, hide the header
@@ -285,7 +287,7 @@ void tmp_create_game::pre_show(window& win)
 	menu_button& rfm_menu_button = find_widget<menu_button>(&win, "random_faction_mode", false);
 
 	rfm_menu_button.set_values(rfm_options, initial_index);
-	rfm_menu_button.connect_click_handler(std::bind(&tmp_create_game::on_random_faction_mode_select, this, std::ref(win)));
+	rfm_menu_button.connect_click_handler(std::bind(&mp_create_game::on_random_faction_mode_select, this, std::ref(win)));
 
 	on_random_faction_mode_select(win);
 
@@ -309,11 +311,11 @@ void tmp_create_game::pre_show(window& win)
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	connect_signal_notify_modified(*tab_bar,
-			std::bind(&tmp_create_game::on_tab_select,
+			std::bind(&mp_create_game::on_tab_select,
 				*this, std::ref(win)));
 #else
 	tab_bar.set_callback_value_change(
-			dialog_callback<tmp_create_game, &tmp_create_game::on_tab_select>);
+			dialog_callback<mp_create_game, &mp_create_game::on_tab_select>);
 #endif
 
 	on_tab_select(win);
@@ -325,11 +327,11 @@ void tmp_create_game::pre_show(window& win)
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	connect_signal_notify_modified(list,
-		std::bind(&tmp_create_game::on_game_select,
+		std::bind(&mp_create_game::on_game_select,
 			*this, std::ref(win)));
 #else
 	list.set_callback_value_change(
-			dialog_callback<tmp_create_game, &tmp_create_game::on_game_select>);
+			dialog_callback<mp_create_game, &mp_create_game::on_game_select>);
 #endif
 
 	win.add_to_keyboard_chain(&list);
@@ -419,7 +421,7 @@ void tmp_create_game::pre_show(window& win)
 }
 
 template<typename widget>
-void tmp_create_game::on_filter_change(window& window, const std::string& id)
+void mp_create_game::on_filter_change(window& window, const std::string& id)
 {
 	create_engine_.apply_level_filter(find_widget<widget>(&window, id, false).get_value());
 
@@ -435,7 +437,7 @@ void tmp_create_game::on_filter_change(window& window, const std::string& id)
 	on_game_select(window);
 }
 
-void tmp_create_game::on_game_select(window& window)
+void mp_create_game::on_game_select(window& window)
 {
 	const int selected_game = find_widget<listbox>(&window, "games_list", false).get_selected_row();
 
@@ -470,18 +472,18 @@ void tmp_create_game::on_game_select(window& window)
 	update_map_settings(window);
 }
 
-void tmp_create_game::on_tab_select(window& window)
+void mp_create_game::on_tab_select(window& window)
 {
 	const int i = find_widget<listbox>(&window, "tab_bar", false).get_selected_row();
 	find_widget<stacked_widget>(&window, "pager", false).select_layer(i);
 }
 
-void tmp_create_game::on_mod_select(window& window)
+void mp_create_game::on_mod_select(window& window)
 {
 	create_engine_.set_current_mod_index(find_widget<listbox>(&window, "mod_list", false).get_selected_row());
 }
 
-void tmp_create_game::on_mod_toggle(const int index)
+void mp_create_game::on_mod_toggle(const int index)
 {
 	create_engine_.set_current_mod_index(index);
 	create_engine_.toggle_current_mod();
@@ -489,7 +491,7 @@ void tmp_create_game::on_mod_toggle(const int index)
 	options_manager_->update_mod_options();
 }
 
-void tmp_create_game::on_era_select(window& window)
+void mp_create_game::on_era_select(window& window)
 {
 	create_engine_.set_current_era_index(find_widget<menu_button>(&window, "eras", false).get_value());
 
@@ -498,12 +500,12 @@ void tmp_create_game::on_era_select(window& window)
 	options_manager_->update_era_options();
 }
 
-void tmp_create_game::on_random_faction_mode_select(window& window)
+void mp_create_game::on_random_faction_mode_select(window& window)
 {
 	selected_rfm_index_ = find_widget<menu_button>(&window, "random_faction_mode", false).get_value();
 }
 
-void tmp_create_game::show_description(window& window, const std::string& new_description)
+void mp_create_game::show_description(window& window, const std::string& new_description)
 {
 	control& description = find_widget<control>(&window, "description", false);
 
@@ -511,14 +513,14 @@ void tmp_create_game::show_description(window& window, const std::string& new_de
 	description.set_use_markup(true);
 }
 
-void tmp_create_game::update_games_list(window& window)
+void mp_create_game::update_games_list(window& window)
 {
 	const int index = find_widget<menu_button>(&window, "game_types", false).get_value();
 
 	display_games_of_type(window, level_types_[index].first, create_engine_.current_level().id());
 }
 
-void tmp_create_game::display_games_of_type(window& window, ng::level::TYPE type, const std::string& level)
+void mp_create_game::display_games_of_type(window& window, ng::level::TYPE type, const std::string& level)
 {
 	create_engine_.set_current_level_type(type);
 
@@ -567,27 +569,27 @@ void tmp_create_game::display_games_of_type(window& window, ng::level::TYPE type
 	on_game_select(window);
 }
 
-void tmp_create_game::show_generator_settings(window& window)
+void mp_create_game::show_generator_settings(window& window)
 {
 	create_engine_.generator_user_config();
 
 	regenerate_random_map(window);
 }
 
-void tmp_create_game::regenerate_random_map(window& window)
+void mp_create_game::regenerate_random_map(window& window)
 {
 	create_engine_.init_generated_level_data();
 
 	update_details(window);
 }
 
-int tmp_create_game::convert_to_game_filtered_index(const int initial_index)
+int mp_create_game::convert_to_game_filtered_index(const int initial_index)
 {
 	const std::vector<size_t>& filtered_indices = create_engine_.get_filtered_level_indices(create_engine_.current_level_type());
 	return std::find(filtered_indices.begin(), filtered_indices.end(), initial_index) - filtered_indices.begin();
 }
 
-void tmp_create_game::update_details(window& win)
+void mp_create_game::update_details(window& win)
 {
 	control& players = find_widget<control>(&win, "map_num_players", false);
 	control& map_size = find_widget<control>(&win, "map_size", false);
@@ -662,7 +664,7 @@ void tmp_create_game::update_details(window& win)
 	}
 }
 
-void tmp_create_game::update_map_settings(window& window)
+void mp_create_game::update_map_settings(window& window)
 {
 	if(config_engine_->force_lock_settings()) {
 		use_map_settings_->widget_set_enabled(window, false, false);
@@ -703,7 +705,7 @@ void tmp_create_game::update_map_settings(window& window)
 	}
 }
 
-void tmp_create_game::load_game_callback(window& window)
+void mp_create_game::load_game_callback(window& window)
 {
 	savegame::loadgame load(window.video(), cfg_, create_engine_.get_state());
 
@@ -718,7 +720,7 @@ void tmp_create_game::load_game_callback(window& window)
 	window.set_retval(LOAD_GAME);
 }
 
-bool tmp_create_game::dialog_exit_hook(window&) {
+bool mp_create_game::dialog_exit_hook(window&) {
 	if(create_engine_.current_level_type() != ng::level::TYPE::CAMPAIGN &&
 	   create_engine_.current_level_type() != ng::level::TYPE::SP_CAMPAIGN
 	) {
@@ -728,7 +730,7 @@ bool tmp_create_game::dialog_exit_hook(window&) {
 	return create_engine_.select_campaign_difficulty() != "CANCEL";
 }
 
-void tmp_create_game::post_show(window& window)
+void mp_create_game::post_show(window& window)
 {
 	plugins_context_.reset();
 
@@ -781,7 +783,7 @@ void tmp_create_game::post_show(window& window)
 		}
 
 		if(entry_points.size() > 1) {
-			gui2::tsimple_item_selector dlg(_("Choose Starting Scenario"), _("Select at which point to begin this campaign."), entry_point_titles);
+			gui2::dialogs::simple_item_selector dlg(_("Choose Starting Scenario"), _("Select at which point to begin this campaign."), entry_point_titles);
 
 			dlg.set_single_button(true);
 			dlg.show(window.video());
@@ -844,4 +846,5 @@ void tmp_create_game::post_show(window& window)
 	}
 }
 
+} // namespace dialogs
 } // namespace gui2

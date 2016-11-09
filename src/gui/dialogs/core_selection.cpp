@@ -34,6 +34,8 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -70,7 +72,7 @@ namespace gui2
 
 REGISTER_DIALOG(core_selection)
 
-void tcore_selection::core_selected(window& window)
+void core_selection::core_selected(window& window)
 {
 	const int selected_row
 			= find_widget<listbox>(&window, "core_list", false)
@@ -82,20 +84,20 @@ void tcore_selection::core_selected(window& window)
 	pages.select_page(selected_row);
 }
 
-void tcore_selection::pre_show(window& window)
+void core_selection::pre_show(window& window)
 {
 	/***** Setup core list. *****/
 	listbox& list = find_widget<listbox>(&window, "core_list", false);
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	connect_signal_notify_modified(
 			list,
-			std::bind(&tcore_selection::core_selected,
+			std::bind(&core_selection::core_selected,
 						this,
 						std::ref(window)));
 #else
 	list.set_callback_value_change(
-			dialog_callback<tcore_selection,
-							&tcore_selection::core_selected>);
+			dialog_callback<core_selection,
+							&core_selection::core_selected>);
 #endif
 	window.keyboard_capture(&list);
 
@@ -133,10 +135,11 @@ void tcore_selection::pre_show(window& window)
 	core_selected(window);
 }
 
-void tcore_selection::post_show(window& window)
+void core_selection::post_show(window& window)
 {
 	choice_ = find_widget<listbox>(&window, "core_list", false)
 					  .get_selected_row();
 }
 
+} // namespace dialogs
 } // namespace gui2

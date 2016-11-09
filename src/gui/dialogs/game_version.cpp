@@ -57,6 +57,8 @@ const std::string text_feature_off = "<span color='#f00'>&#9679;</span>";
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -87,7 +89,7 @@ namespace gui2
 
 REGISTER_DIALOG(game_version)
 
-tgame_version::tgame_version()
+game_version::game_version()
 	: path_wid_stem_("path_")
 	, copy_wid_stem_("copy_")
 	, browse_wid_stem_("browse_")
@@ -124,7 +126,7 @@ tgame_version::tgame_version()
 	generate_plain_text_report();
 }
 
-void tgame_version::pre_show(window& window)
+void game_version::pre_show(window& window)
 {
 	string_map i18n_syms;
 
@@ -143,7 +145,7 @@ void tgame_version::pre_show(window& window)
 	button& copy_all = find_widget<button>(&window, "copy_all", false);
 	connect_signal_mouse_left_click(
 			copy_all,
-			std::bind(&tgame_version::report_copy_callback, this));
+			std::bind(&game_version::report_copy_callback, this));
 
 	//
 	// Game paths tab.
@@ -166,12 +168,12 @@ void tgame_version::pre_show(window& window)
 
 		connect_signal_mouse_left_click(
 				copy_w,
-				std::bind(&tgame_version::copy_to_clipboard_callback,
+				std::bind(&game_version::copy_to_clipboard_callback,
 							this,
 							path_path));
 		connect_signal_mouse_left_click(
 				browse_w,
-				std::bind(&tgame_version::browse_directory_callback,
+				std::bind(&game_version::browse_directory_callback,
 							this,
 							path_path));
 
@@ -196,7 +198,7 @@ void tgame_version::pre_show(window& window)
 			= find_widget<button>(&window, "open_stderr", false);
 	connect_signal_mouse_left_click(
 			stderr_button,
-			std::bind(&tgame_version::browse_directory_callback,
+			std::bind(&game_version::browse_directory_callback,
 						this,
 						log_path_));
 	stderr_button.set_active(!log_path_.empty());
@@ -274,14 +276,14 @@ void tgame_version::pre_show(window& window)
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	connect_signal_notify_modified(tab_bar,
-		std::bind(&tgame_version::tab_switch_callback, *this, std::ref(window)));
+		std::bind(&game_version::tab_switch_callback, *this, std::ref(window)));
 #else
 	tab_bar.set_callback_value_change(
-		dialog_callback<tgame_version, &tgame_version::tab_switch_callback>);
+		dialog_callback<game_version, &game_version::tab_switch_callback>);
 #endif
 }
 
-void tgame_version::tab_switch_callback(window& window)
+void game_version::tab_switch_callback(window& window)
 {
 	stacked_widget& pager
 			= find_widget<stacked_widget>(&window, "tabs_container", false);
@@ -291,22 +293,22 @@ void tgame_version::tab_switch_callback(window& window)
 	pager.select_layer(std::max<int>(0, tab_bar.get_selected_row()));
 }
 
-void tgame_version::browse_directory_callback(const std::string& path)
+void game_version::browse_directory_callback(const std::string& path)
 {
 	desktop::open_object(path);
 }
 
-void tgame_version::copy_to_clipboard_callback(const std::string& path)
+void game_version::copy_to_clipboard_callback(const std::string& path)
 {
 	desktop::clipboard::copy_to_clipboard(path, false);
 }
 
-void tgame_version::report_copy_callback()
+void game_version::report_copy_callback()
 {
 	desktop::clipboard::copy_to_clipboard(report_, false);
 }
 
-void tgame_version::generate_plain_text_report()
+void game_version::generate_plain_text_report()
 {
 	std::ostringstream o;
 
@@ -336,5 +338,5 @@ void tgame_version::generate_plain_text_report()
 	report_ = o.str();
 }
 
-
-} // end namespace gui2
+} // namespace dialogs
+} // namespace gui2

@@ -28,11 +28,14 @@ namespace gui2
 class label;
 class text_box;
 
+namespace dialogs
+{
+
 /** The dialog for selecting which random generator to use in the editor. */
-class teditor_generate_map : public tdialog
+class editor_generate_map : public modal_dialog
 {
 public:
-	teditor_generate_map();
+	editor_generate_map();
 
 	void set_map_generators(std::vector<map_generator*> mg)
 	{
@@ -51,10 +54,10 @@ public:
 	boost::optional<uint32_t> get_seed();
 
 private:
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void pre_show(window& window);
 
 	/** Callback for generator list selection changes. */
@@ -76,6 +79,7 @@ private:
 	std::string random_seed_;
 };
 
+} // namespace dialogs
 } // namespace gui2
 
 #endif

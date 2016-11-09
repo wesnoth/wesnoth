@@ -19,11 +19,13 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
-class teditor_edit_scenario : public tdialog
+class editor_edit_scenario : public modal_dialog
 {
 public:
-	teditor_edit_scenario(std::string& id,
+	editor_edit_scenario(std::string& id,
 						  std::string& name,
 						  std::string& description,
 						  int& turns,
@@ -31,7 +33,7 @@ public:
 						  bool& victory_when_enemies_defeated,
 						  bool& random_start_time);
 
-	/** The execute function see @ref tdialog for more information. */
+	/** The execute function see @ref modal_dialog for more information. */
 	static bool execute(std::string& id,
 						std::string& name,
 						std::string& description,
@@ -41,7 +43,7 @@ public:
 						bool& random_start_time,
 						CVideo& video)
 	{
-		return teditor_edit_scenario(id,
+		return editor_edit_scenario(id,
 									 name,
 									 description,
 									 turns,
@@ -51,9 +53,10 @@ public:
 	}
 
 private:
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 };
-}
+} // namespace dialogs
+} // namespace gui2
 
 #endif /* ! GUI_DIALOGS_EDIT_LABEL_INCLUDED */

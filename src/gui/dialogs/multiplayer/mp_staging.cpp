@@ -45,10 +45,12 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
 REGISTER_DIALOG(mp_staging)
 
-tmp_staging::tmp_staging(ng::connect_engine& connect_engine, lobby_info& lobby_info, wesnothd_connection* connection)
+mp_staging::mp_staging(ng::connect_engine& connect_engine, lobby_info& lobby_info, wesnothd_connection* connection)
 	: connect_engine_(connect_engine)
 	, ai_algorithms_(ai::configuration::get_available_ais())
 	, lobby_info_(lobby_info)
@@ -63,7 +65,7 @@ tmp_staging::tmp_staging(ng::connect_engine& connect_engine, lobby_info& lobby_i
 	assert(!ai_algorithms_.empty());
 }
 
-tmp_staging::~tmp_staging()
+mp_staging::~mp_staging()
 {
 	if(update_timer_ != 0) {
 		remove_timer(update_timer_);
@@ -71,7 +73,7 @@ tmp_staging::~tmp_staging()
 	}
 }
 
-void tmp_staging::pre_show(window& window)
+void mp_staging::pre_show(window& window)
 {
 	window.set_enter_disabled(true);
 
@@ -133,7 +135,7 @@ void tmp_staging::pre_show(window& window)
 	//
 	// Set up the network handling
 	//
-	update_timer_ = add_timer(game_config::lobby_network_timer, std::bind(&tmp_staging::network_handler, this, std::ref(window)), true);
+	update_timer_ = add_timer(game_config::lobby_network_timer, std::bind(&mp_staging::network_handler, this, std::ref(window)), true);
 
 	network_handler(window);
 
@@ -147,7 +149,7 @@ void tmp_staging::pre_show(window& window)
 	plugins_context_->set_callback("chat",   [&chat](const config& cfg) { chat.send_chat_message(cfg["message"], false); }, true);
 }
 
-void tmp_staging::add_side_node(window& window, ng::side_engine_ptr side)
+void mp_staging::add_side_node(window& window, ng::side_engine_ptr side)
 {
 	std::map<std::string, string_map> data;
 	string_map item;
@@ -199,7 +201,7 @@ void tmp_staging::add_side_node(window& window, ng::side_engine_ptr side)
 	menu_button& ai_selection = find_widget<menu_button>(&row_grid, "ai_controller", false);
 
 	ai_selection.set_values(ai_options, selection);
-	ai_selection.connect_click_handler(std::bind(&tmp_staging::on_ai_select, this, side, std::ref(ai_selection)));
+	ai_selection.connect_click_handler(std::bind(&mp_staging::on_ai_select, this, side, std::ref(ai_selection)));
 
 	on_ai_select(side, ai_selection);
 
@@ -215,7 +217,7 @@ void tmp_staging::add_side_node(window& window, ng::side_engine_ptr side)
 
 	controller_selection.set_values(controller_names, side->current_controller_index());
 	controller_selection.set_active(controller_names.size() > 1);
-	controller_selection.connect_click_handler(std::bind(&tmp_staging::on_controller_select, this, side, std::ref(row_grid)));
+	controller_selection.connect_click_handler(std::bind(&mp_staging::on_controller_select, this, side, std::ref(row_grid)));
 
 	on_controller_select(side, row_grid);
 
@@ -227,7 +229,7 @@ void tmp_staging::add_side_node(window& window, ng::side_engine_ptr side)
 	leader_select.set_active(!saved_game);
 
 	connect_signal_mouse_left_click(leader_select,
-		std::bind(&tmp_staging::select_leader_callback, this, std::ref(window), side, std::ref(row_grid)));
+		std::bind(&mp_staging::select_leader_callback, this, std::ref(window), side, std::ref(row_grid)));
 
 	//
 	// Team
@@ -245,7 +247,7 @@ void tmp_staging::add_side_node(window& window, ng::side_engine_ptr side)
 	// dialog is dropped
 	team_selection.set_values(team_names, std::min<int>(team_names.size() - 1, side->team()));
 	team_selection.set_active(!saved_game);
-	team_selection.connect_click_handler(std::bind(&tmp_staging::on_team_select, this, std::ref(window), side, std::ref(team_selection), _3, _4));
+	team_selection.connect_click_handler(std::bind(&mp_staging::on_team_select, this, std::ref(window), side, std::ref(team_selection), _3, _4));
 
 	//
 	// Colors
@@ -263,7 +265,7 @@ void tmp_staging::add_side_node(window& window, ng::side_engine_ptr side)
 	color_selection.set_values(color_options, side->color());
 	color_selection.set_active(!saved_game);
 	color_selection.set_use_markup(true);
-	color_selection.connect_click_handler(std::bind(&tmp_staging::on_color_select, this, side, std::ref(row_grid)));
+	color_selection.connect_click_handler(std::bind(&mp_staging::on_color_select, this, side, std::ref(row_grid)));
 
 	//
 	// Gold and Income
@@ -272,13 +274,13 @@ void tmp_staging::add_side_node(window& window, ng::side_engine_ptr side)
 	slider_gold.set_value(side->cfg()["gold"].to_int(100));
 
 	connect_signal_notify_modified(slider_gold, std::bind(
-		&tmp_staging::on_side_slider_change<&ng::side_engine::set_gold>, this, side, std::ref(slider_gold)));
+		&mp_staging::on_side_slider_change<&ng::side_engine::set_gold>, this, side, std::ref(slider_gold)));
 
 	slider& slider_income = find_widget<slider>(&row_grid, "side_income_slider", false);
 	slider_income.set_value(side->cfg()["income"]);
 
 	connect_signal_notify_modified(slider_income, std::bind(
-		&tmp_staging::on_side_slider_change<&ng::side_engine::set_income>, this, side, std::ref(slider_income)));
+		&mp_staging::on_side_slider_change<&ng::side_engine::set_income>, this, side, std::ref(slider_income)));
 
 	// TODO: maybe display the saved values
 	if(saved_game) {
@@ -298,7 +300,7 @@ void tmp_staging::add_side_node(window& window, ng::side_engine_ptr side)
 	}
 }
 
-void tmp_staging::update_player_list(window& window)
+void mp_staging::update_player_list(window& window)
 {
 	listbox& player_list = find_widget<listbox>(&window, "player_list", false);
 
@@ -315,7 +317,7 @@ void tmp_staging::update_player_list(window& window)
 	}
 }
 
-void tmp_staging::on_controller_select(ng::side_engine_ptr side, grid& row_grid)
+void mp_staging::on_controller_select(ng::side_engine_ptr side, grid& row_grid)
 {
 	menu_button& ai_selection         = find_widget<menu_button>(&row_grid, "ai_controller", false);
 	menu_button& controller_selection = find_widget<menu_button>(&row_grid, "controller", false);
@@ -327,14 +329,14 @@ void tmp_staging::on_controller_select(ng::side_engine_ptr side, grid& row_grid)
 	}
 }
 
-void tmp_staging::on_ai_select(ng::side_engine_ptr side, menu_button& ai_menu)
+void mp_staging::on_ai_select(ng::side_engine_ptr side, menu_button& ai_menu)
 {
 	side->set_ai_algorithm(ai_algorithms_[ai_menu.get_value()]->id);
 
 	set_state_changed();
 }
 
-void tmp_staging::on_color_select(ng::side_engine_ptr side, grid& row_grid)
+void mp_staging::on_color_select(ng::side_engine_ptr side, grid& row_grid)
 {
 	side->set_color(find_widget<menu_button>(&row_grid, "side_color", false).get_value());
 
@@ -343,7 +345,7 @@ void tmp_staging::on_color_select(ng::side_engine_ptr side, grid& row_grid)
 	set_state_changed();
 }
 
-void tmp_staging::on_team_select(window& window, ng::side_engine_ptr side, menu_button& team_menu, bool& handled, bool& halt)
+void mp_staging::on_team_select(window& window, ng::side_engine_ptr side, menu_button& team_menu, bool& handled, bool& halt)
 {
 	side->set_team(team_menu.get_value());
 
@@ -359,9 +361,9 @@ void tmp_staging::on_team_select(window& window, ng::side_engine_ptr side, menu_
 	halt = true;
 }
 
-void tmp_staging::select_leader_callback(window& window, ng::side_engine_ptr side, grid& row_grid)
+void mp_staging::select_leader_callback(window& window, ng::side_engine_ptr side, grid& row_grid)
 {
-	gui2::tfaction_select dlg(side->flg(), std::to_string(side->color() + 1), side->index() + 1);
+	gui2::dialogs::faction_select dlg(side->flg(), std::to_string(side->color() + 1), side->index() + 1);
 	dlg.show(window.video());
 
 	if(dlg.get_retval() == window::OK) {
@@ -372,14 +374,14 @@ void tmp_staging::select_leader_callback(window& window, ng::side_engine_ptr sid
 }
 
 template<void(ng::side_engine::*fptr)(int)>
-void tmp_staging::on_side_slider_change(ng::side_engine_ptr side, slider& slider)
+void mp_staging::on_side_slider_change(ng::side_engine_ptr side, slider& slider)
 {
 	((*side).*fptr)(slider.get_value());
 
 	set_state_changed();
 }
 
-void tmp_staging::update_leader_display(ng::side_engine_ptr side, grid& row_grid)
+void mp_staging::update_leader_display(ng::side_engine_ptr side, grid& row_grid)
 {
 	const std::string current_faction = (*side->flg().choosable_factions()[side->flg().current_faction_index()])["name"];
 
@@ -424,7 +426,7 @@ void tmp_staging::update_leader_display(ng::side_engine_ptr side, grid& row_grid
 	}
 }
 
-void tmp_staging::update_status_label_and_buttons(window& window)
+void mp_staging::update_status_label_and_buttons(window& window)
 {
 	find_widget<label>(&window, "status_label", false).set_label(
 		connect_engine_.can_start_game() ? "" : connect_engine_.sides_available()
@@ -435,7 +437,7 @@ void tmp_staging::update_status_label_and_buttons(window& window)
 	find_widget<button>(&window, "ok", false).set_active(connect_engine_.can_start_game());
 }
 
-void tmp_staging::network_handler(window& window)
+void mp_staging::network_handler(window& window)
 {
 	// First, send off any changes if they've been accumulated
 	if(state_changed_) {
@@ -495,7 +497,7 @@ void tmp_staging::network_handler(window& window)
 	state_changed_ = false;
 }
 
-void tmp_staging::post_show(window& window)
+void mp_staging::post_show(window& window)
 {
 	if(update_timer_ != 0) {
 		remove_timer(update_timer_);
@@ -509,4 +511,5 @@ void tmp_staging::post_show(window& window)
 	}
 }
 
+} // namespace dialogs
 } // namespace gui2

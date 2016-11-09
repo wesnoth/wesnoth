@@ -59,6 +59,8 @@ static lg::log_domain log_config("config");
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -131,7 +133,7 @@ REGISTER_DIALOG(title_screen)
 
 bool show_debug_clock_button = false;
 
-ttitle_screen::ttitle_screen(game_launcher& game)
+title_screen::title_screen(game_launcher& game)
 	: game_(game)
 	, redraw_background_(true)
 	, debug_clock_(nullptr)
@@ -142,7 +144,7 @@ ttitle_screen::ttitle_screen(game_launcher& game)
 	set_allow_plugin_skip(false);
 }
 
-ttitle_screen::~ttitle_screen()
+title_screen::~title_screen()
 {
 	delete debug_clock_;
 }
@@ -170,7 +172,7 @@ static bool fullscreen(CVideo& video)
 
 static bool launch_lua_console(window& window)
 {
-	gui2::tlua_interpreter::display(window.video(), gui2::tlua_interpreter::APP);
+	gui2::dialogs::lua_interpreter::display(window.video(), gui2::dialogs::lua_interpreter::APP);
 	return true;
 }
 
@@ -202,7 +204,7 @@ static void debug_tooltip(window& window, bool& handled, const point& coordinate
 }
 #endif
 
-void ttitle_screen::pre_show(window& win)
+void title_screen::pre_show(window& win)
 {
 	win.set_click_dismiss(false);
 	win.set_enter_disabled(true);
@@ -217,7 +219,7 @@ void ttitle_screen::pre_show(window& win)
 			event::dispatcher::front_child);
 #endif
 
-	win.connect_signal<event::SDL_VIDEO_RESIZE>(std::bind(&ttitle_screen::on_resize, this, std::ref(win)));
+	win.connect_signal<event::SDL_VIDEO_RESIZE>(std::bind(&title_screen::on_resize, this, std::ref(win)));
 
 	//
 	// General hotkeys
@@ -287,9 +289,9 @@ void ttitle_screen::pre_show(window& win)
 	update_tip(win, true);
 
 	register_button(win, "next_tip", hotkey::TITLE_SCREEN__NEXT_TIP,
-		std::bind(&ttitle_screen::update_tip, this, std::ref(win), true));
+		std::bind(&title_screen::update_tip, this, std::ref(win), true));
 	register_button(win, "previous_tip", hotkey::TITLE_SCREEN__PREVIOUS_TIP,
-		std::bind(&ttitle_screen::update_tip, this, std::ref(win), false));
+		std::bind(&title_screen::update_tip, this, std::ref(win), false));
 
 	//
 	// Help
@@ -302,7 +304,7 @@ void ttitle_screen::pre_show(window& win)
 	//
 	// About
 	//
-	register_button(win, "about", hotkey::HOTKEY_NULL, std::bind(&tgame_version::display, std::ref(win.video())));
+	register_button(win, "about", hotkey::HOTKEY_NULL, std::bind(&game_version::display, std::ref(win.video())));
 
 	//
 	// Tutorial
@@ -326,7 +328,7 @@ void ttitle_screen::pre_show(window& win)
 	//
 	register_button(win, "multiplayer", hotkey::TITLE_SCREEN__MULTIPLAYER, [this](window& w) {
 		while(true) {
-			gui2::tmp_method_selection dlg;
+			gui2::dialogs::mp_method_selection dlg;
 			dlg.show(game_.video());
 
 			if(dlg.get_retval() != gui2::window::OK) {
@@ -336,7 +338,7 @@ void ttitle_screen::pre_show(window& win)
 			const int res = dlg.get_choice();
 
 			if(res == 2 && preferences::mp_server_warning_disabled() < 2) {
-				if(!gui2::tmp_host_game_prompt::execute(game_.video())) {
+				if(!gui2::dialogs::mp_host_game_prompt::execute(game_.video())) {
 					continue;
 				}
 			}
@@ -405,7 +407,7 @@ void ttitle_screen::pre_show(window& win)
 			}
 		}
 
-		gui2::tcore_selection core_dlg(cores, current);
+		gui2::dialogs::core_selection core_dlg(cores, current);
 		if(core_dlg.show(game_.video())) {
 			const std::string& core_id = cores[core_dlg.get_choice()]["id"];
 
@@ -452,20 +454,20 @@ void ttitle_screen::pre_show(window& win)
 	// Debug clock
 	//
 	register_button(win, "clock", hotkey::HOTKEY_NULL,
-		std::bind(&ttitle_screen::show_debug_clock_window, this, std::ref(win.video())));
+		std::bind(&title_screen::show_debug_clock_window, this, std::ref(win.video())));
 
 	find_widget<button>(&win, "clock", false).set_visible(show_debug_clock_button
 		? widget::tvisible::visible
 		: widget::tvisible::invisible);
 }
 
-void ttitle_screen::on_resize(window& win)
+void title_screen::on_resize(window& win)
 {
 	redraw_background_ = true;
 	win.close();
 }
 
-void ttitle_screen::update_tip(window& win, const bool previous)
+void title_screen::update_tip(window& win, const bool previous)
 {
 	multi_page& tips = find_widget<multi_page>(&win, "tips", false);
 	if(tips.get_page_count() == 0) {
@@ -497,7 +499,7 @@ void ttitle_screen::update_tip(window& win, const bool previous)
 	win.set_is_dirty(true);
 }
 
-void ttitle_screen::show_debug_clock_window(CVideo& video)
+void title_screen::show_debug_clock_window(CVideo& video)
 {
 	assert(show_debug_clock_button);
 
@@ -505,9 +507,10 @@ void ttitle_screen::show_debug_clock_window(CVideo& video)
 		delete debug_clock_;
 		debug_clock_ = nullptr;
 	} else {
-		debug_clock_ = new tdebug_clock();
+		debug_clock_ = new debug_clock();
 		debug_clock_->show(video, true);
 	}
 }
 
+} // namespace dialogs
 } // namespace gui2

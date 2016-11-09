@@ -30,6 +30,8 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -75,7 +77,7 @@ namespace gui2
 
 REGISTER_DIALOG(debug_clock)
 
-void tdebug_clock::pre_show(window& window)
+void debug_clock::pre_show(window& window)
 {
 	hour_percentage_ = find_widget<progress_bar>(
 			&window, "hour_percentage", false, false);
@@ -103,7 +105,7 @@ void tdebug_clock::pre_show(window& window)
 
 	window_ = &window;
 
-	signal_ = std::bind(&tdebug_clock::update_time, this, false);
+	signal_ = std::bind(&debug_clock::update_time, this, false);
 	window.connect_signal<event::DRAW>(signal_,
 									   event::dispatcher::front_child);
 
@@ -111,12 +113,12 @@ void tdebug_clock::pre_show(window& window)
 	update_time(true);
 }
 
-void tdebug_clock::post_show(CVideo& /*video*/)
+void debug_clock::post_show(CVideo& /*video*/)
 {
 	window_->disconnect_signal<event::DRAW>(signal_);
 }
 
-void tdebug_clock::update_time(const bool force)
+void debug_clock::update_time(const bool force)
 {
 	if(!time_.step() && !force) {
 		return;
@@ -168,11 +170,11 @@ void tdebug_clock::update_time(const bool force)
 	}
 }
 
-tdebug_clock::ttime::ttime() : hour(0), minute(0), second(0), millisecond(0)
+debug_clock::ttime::ttime() : hour(0), minute(0), second(0), millisecond(0)
 {
 }
 
-void tdebug_clock::ttime::set_current_time()
+void debug_clock::ttime::set_current_time()
 {
 	time_t now = time(nullptr);
 	tm* stamp = localtime(&now);
@@ -183,7 +185,7 @@ void tdebug_clock::ttime::set_current_time()
 	millisecond = 0;
 }
 
-bool tdebug_clock::ttime::step(const unsigned milliseconds)
+bool debug_clock::ttime::step(const unsigned milliseconds)
 {
 	millisecond += milliseconds;
 
@@ -213,4 +215,5 @@ bool tdebug_clock::ttime::step(const unsigned milliseconds)
 	return true;
 }
 
+} // namespace dialogs
 } // namespace gui2

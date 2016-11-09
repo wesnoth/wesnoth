@@ -276,13 +276,13 @@ int show_message_dialog(lua_State *L, CVideo & video)
 	config txt_cfg;
 	const bool has_input = !lua_isnoneornil(L, 3) && luaW_toconfig(L, 3, txt_cfg) && !txt_cfg.empty();
 
-	gui2::twml_message_input input;
+	gui2::dialogs::wml_message_input input;
 	input.caption = txt_cfg["label"].str();
 	input.text = txt_cfg["text"].str();
 	input.maximum_length = txt_cfg["max_length"].to_int(256);
 	input.text_input_was_specified = has_input;
 
-	gui2::twml_message_options options;
+	gui2::dialogs::wml_message_options options;
 	if (!lua_isnoneornil(L, 2)) {
 		luaL_checktype(L, 2, LUA_TTABLE);
 		size_t n = lua_rawlen(L, 2);
@@ -316,7 +316,7 @@ int show_message_dialog(lua_State *L, CVideo & video)
 				error << i << " was a " << lua_typename(L, lua_type(L, -1));
 				return luaL_argerror(L, 2, error.str().c_str());
 			}
-			gui2::twml_message_option option(opt["label"], opt["description"], opt["image"]);
+			gui2::dialogs::wml_message_option option(opt["label"], opt["description"], opt["image"]);
 			if(opt["default"].to_bool(false)) {
 				options.chosen_option = i - 1;
 			}
@@ -340,7 +340,7 @@ int show_message_dialog(lua_State *L, CVideo & video)
 	const std::string& title = def_cfg["title"];
 	const std::string& message = def_cfg["message"];
 
-	using portrait = gui2::twml_message_portrait;
+	using portrait = gui2::dialogs::wml_message_portrait;
 	std::unique_ptr<portrait> left;
 	std::unique_ptr<portrait> right;
 	const bool is_double = def_cfg.has_attribute("second_portrait");
@@ -355,7 +355,7 @@ int show_message_dialog(lua_State *L, CVideo & video)
 		right.reset(new portrait {def_cfg["second_portrait"], def_cfg["second_mirror"].to_bool(false)});
 	}
 
-	int dlg_result = gui2::show_wml_message(video, title, message, left.get(), right.get(), options, input);
+	int dlg_result = gui2::dialogs::show_wml_message(video, title, message, left.get(), right.get(), options, input);
 
 	if (!has_input && options.option_list.empty()) {
 		lua_pushinteger(L, dlg_result);
@@ -408,7 +408,7 @@ int show_menu(lua_State* L, CVideo& video) {
 		markup = luaW_toboolean(L, 2);
 	}
 
-	gui2::tdrop_down_list menu(pos, items, initial, markup);
+	gui2::dialogs::drop_down_menu menu(pos, items, initial, markup);
 	menu.show(video);
 	lua_pushinteger(L, menu.selected_item() + 1);
 	return 1;
@@ -805,13 +805,13 @@ int intf_set_dialog_visible(lua_State *L)
 
 int show_lua_console(lua_State * /*L*/, CVideo & video, lua_kernel_base * lk)
 {
-	gui2::tlua_interpreter::display(video, lk);
+	gui2::dialogs::lua_interpreter::display(video, lk);
 	return 0;
 }
 
 int show_gamestate_inspector(CVideo & video, const vconfig & cfg, const game_data& data, const game_state& state)
 {
-	gui2::tgamestate_inspector inspect_dialog(data.get_variables(), *state.events_manager_, state.board_, cfg["name"]);
+	gui2::dialogs::gamestate_inspector inspect_dialog(data.get_variables(), *state.events_manager_, state.board_, cfg["name"]);
 	inspect_dialog.show(video);
 	return 0;
 }

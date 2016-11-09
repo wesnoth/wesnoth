@@ -59,7 +59,7 @@ bool enter_create_mode(CVideo& video, const config& game_config, saved_game& sta
 
 		// No campaign selected from command line
 		if(jump_to_campaign.campaign_id_.empty()) {
-			gui2::tcampaign_selection dlg(create_eng);
+			gui2::dialogs::campaign_selection dlg(create_eng);
 
 			try {
 				dlg.show(video);
@@ -130,7 +130,7 @@ bool enter_create_mode(CVideo& video, const config& game_config, saved_game& sta
 
 bool enter_configure_mode(CVideo& video, const config& game_config, saved_game& state, ng::create_engine& create_eng, bool local_players_only)
 {
-	if(!gui2::tsp_options_configure::execute(create_eng, video)) {
+	if(!gui2::dialogs::sp_options_configure::execute(create_eng, video)) {
 		return false;
 	}
 

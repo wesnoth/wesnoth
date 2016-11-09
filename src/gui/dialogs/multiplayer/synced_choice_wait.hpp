@@ -22,23 +22,26 @@ namespace gui2
 {
 class label;
 class window;
-class tsynced_choice_wait : public tdialog, public events::observer
+namespace dialogs
+{
+class synched_choice_wait : public modal_dialog, public events::observer
 {
 public:
-	explicit tsynced_choice_wait(user_choice_manager& mgr);
-	~tsynced_choice_wait();
+	explicit synched_choice_wait(user_choice_manager& mgr);
+	~synched_choice_wait();
 private:
 	user_choice_manager& mgr_;
 	label* message_;
 	window* window_;
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void pre_show(window& window);
 
 	virtual void handle_generic_event(const std::string& event_name);
 };
-}
+} // namespace dialogs
+} // namespace gui2
 
 #endif

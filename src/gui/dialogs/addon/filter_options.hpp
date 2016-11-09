@@ -29,10 +29,13 @@ namespace gui2
 
 class toggle_button;
 
-class taddon_filter_options : public tdialog
+namespace dialogs
+{
+
+class addon_filter_options : public modal_dialog
 {
 public:
-	taddon_filter_options();
+	addon_filter_options();
 
 	boost::dynamic_bitset<> displayed_types() const
 	{
@@ -106,19 +109,19 @@ private:
 	void toggle_sort_callback();
 	void toggle_dir_callback();
 
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void pre_show(window& window);
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void post_show(window& window);
 
 	static std::string status_label(ADDON_STATUS_FILTER s);
 };
 
-
+} // namespace dialogs
 } // end namespace gui2
 
 #endif

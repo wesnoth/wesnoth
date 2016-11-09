@@ -27,6 +27,8 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -62,7 +64,7 @@ namespace gui2
 
 REGISTER_DIALOG(mp_login)
 
-tmp_login::tmp_login(const std::string& label, const bool focus_password)
+mp_login::mp_login(const std::string& label, const bool focus_password)
 {
 	register_label("login_label", false, label);
 	register_text("user_name",
@@ -84,7 +86,7 @@ tmp_login::tmp_login(const std::string& label, const bool focus_password)
 				  &preferences::set_remember_password);
 }
 
-void tmp_login::pre_show(window& win)
+void mp_login::pre_show(window& win)
 {
 	if(button* btn
 	   = find_widget<button>(&win, "password_reminder", false, false)) {
@@ -99,7 +101,7 @@ void tmp_login::pre_show(window& win)
 	}
 }
 
-void tmp_login::post_show(window& win)
+void mp_login::post_show(window& win)
 {
 	if(get_retval() == window::OK) {
 		preferences::set_password(
@@ -108,4 +110,5 @@ void tmp_login::post_show(window& win)
 	}
 }
 
+} // namespace dialogs
 } // namespace gui2

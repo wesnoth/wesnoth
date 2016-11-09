@@ -117,7 +117,7 @@ static std::unique_ptr<wesnothd_connection> open_connection(CVideo& video, const
 	std::string h = original_host;
 
 	if(h.empty()) {
-		gui2::tmp_connect dlg;
+		gui2::dialogs::mp_connect dlg;
 
 		dlg.show(video);
 		if(dlg.get_retval() == gui2::window::OK) {
@@ -147,7 +147,7 @@ static std::unique_ptr<wesnothd_connection> open_connection(CVideo& video, const
 	shown_hosts.insert(hostpair(host, port));
 
 	config data;
-	sock = gui2::tnetwork_transmission::wesnothd_connect_dialog(video, "connect to server", host, port);
+	sock = gui2::dialogs::network_transmission::wesnothd_connect_dialog(video, "connect to server", host, port);
 	do {
 
 		if (!sock) {
@@ -155,7 +155,7 @@ static std::unique_ptr<wesnothd_connection> open_connection(CVideo& video, const
 		}
 
 		data.clear();
-		gui2::tnetwork_transmission::wesnothd_receive_dialog(video, "waiting", data, *sock);
+		gui2::dialogs::network_transmission::wesnothd_receive_dialog(video, "waiting", data, *sock);
 		//mp::check_response(data_res, data);
 
 		if (data.has_child("reject") || data.has_attribute("version")) {
@@ -185,7 +185,7 @@ static std::unique_ptr<wesnothd_connection> open_connection(CVideo& video, const
 			}
 			shown_hosts.insert(hostpair(host, port));
 			sock.release();
-			sock = gui2::tnetwork_transmission::wesnothd_connect_dialog(video, "redirect", host, port);
+			sock = gui2::dialogs::network_transmission::wesnothd_connect_dialog(video, "redirect", host, port);
 			continue;
 		}
 
@@ -222,7 +222,7 @@ static std::unique_ptr<wesnothd_connection> open_connection(CVideo& video, const
 					sp["selective_ping"] = true;
 				}
 				sock->send_data(response);
-				gui2::tnetwork_transmission::wesnothd_receive_dialog(video, "login response", data, *sock);
+				gui2::dialogs::network_transmission::wesnothd_receive_dialog(video, "login response", data, *sock);
 				config *warning = &data.child("warning");
 
 				if(*warning) {
@@ -243,7 +243,7 @@ static std::unique_ptr<wesnothd_connection> open_connection(CVideo& video, const
 					warning_msg += "\n\n";
 					warning_msg += _("Do you want to continue?");
 
-					if(gui2::show_message(video, _("Warning"), warning_msg, gui2::tmessage::yes_no_buttons) != gui2::window::OK) {
+					if(gui2::show_message(video, _("Warning"), warning_msg, gui2::dialogs::message::yes_no_buttons) != gui2::window::OK) {
 						return 0;
 					}
 				}
@@ -257,7 +257,7 @@ static std::unique_ptr<wesnothd_connection> open_connection(CVideo& video, const
 					std::string password = preferences::password();
 
 					bool fall_through = (*error)["force_confirmation"].to_bool() ?
-						(gui2::show_message(video, _("Confirm"), (*error)["message"], gui2::tmessage::ok_cancel_buttons) == gui2::window::CANCEL) :
+						(gui2::show_message(video, _("Confirm"), (*error)["message"], gui2::dialogs::message::ok_cancel_buttons) == gui2::window::CANCEL) :
 						false;
 
 					const bool is_pw_request = !((*error)["password_request"].empty()) && !(password.empty());
@@ -302,7 +302,7 @@ static std::unique_ptr<wesnothd_connection> open_connection(CVideo& video, const
 
 						// Once again send our request...
 						sock->send_data(response);
-						gui2::tnetwork_transmission::wesnothd_receive_dialog(video, "login response", data, *sock);
+						gui2::dialogs::network_transmission::wesnothd_receive_dialog(video, "login response", data, *sock);
 
 
 						error = &data.child("error");
@@ -357,7 +357,7 @@ static std::unique_ptr<wesnothd_connection> open_connection(CVideo& video, const
 						error_message = (*error)["message"].str();
 					}
 
-					gui2::tmp_login dlg(error_message, !((*error)["password_request"].empty()));
+					gui2::dialogs::mp_login dlg(error_message, !((*error)["password_request"].empty()));
 					dlg.show(video);
 
 					switch(dlg.get_retval()) {
@@ -427,7 +427,7 @@ static void enter_wait_mode(CVideo& video, const config& game_config, saved_game
 	{
 		if(preferences::new_lobby()) {
 
-			gui2::tmp_join_game dlg(state, li, *connection, true, observe);
+			gui2::dialogs::mp_join_game dlg(state, li, *connection, true, observe);
 
 			if(!dlg.fetch_game_config(video)) {
 				return;
@@ -502,7 +502,7 @@ static bool enter_connect_mode(CVideo& video, const config& game_config,
 		ng::connect_engine_ptr connect_engine(new ng::connect_engine(state, true, campaign_info.get()));
 
 		if(preferences::new_lobby()) {
-			gui2::tmp_staging dlg(*connect_engine, li, connection);
+			gui2::dialogs::mp_staging dlg(*connect_engine, li, connection);
 			dlg.show(video);
 
 			if(dlg.get_retval() == gui2::window::OK) {
@@ -573,7 +573,7 @@ static void enter_create_mode(CVideo& video, const config& game_config,
 	if(preferences::new_lobby()) {
 		ng::create_engine create_eng(video, state);
 
-		gui2::tmp_create_game dlg(game_config, create_eng);
+		gui2::dialogs::mp_create_game dlg(game_config, create_eng);
 
 		dlg.show(video);
 
@@ -662,7 +662,7 @@ static bool enter_configure_mode(CVideo& video, const config& game_config,
 static void do_preferences_dialog(CVideo& video, const config& game_config)
 {
 	DBG_MP << "displaying preferences dialog" << std::endl;
-	gui2::tpreferences::display(video, game_config);
+	gui2::dialogs::preferences_dialog::display(video, game_config);
 
 	/**
 	 * The screen size might have changed force an update of the size.
@@ -710,20 +710,20 @@ static void enter_lobby_mode(CVideo& video, const config& game_config,
 		sdl::fill_rect(video.getSurface(), nullptr, color);
 
 		if(preferences::new_lobby()) {
-			gui2::tlobby_main dlg(game_config, li, *connection);
+			gui2::dialogs::lobby_main dlg(game_config, li, *connection);
 			dlg.set_preferences_callback(
 				std::bind(do_preferences_dialog,
 					std::ref(video), std::ref(game_config)));
 			dlg.show(video);
 			//ugly kludge for launching other dialogs like the old lobby
 			switch(dlg.get_retval()) {
-				case gui2::tlobby_main::CREATE:
+				case gui2::dialogs::lobby_main::CREATE:
 					res = mp::ui::CREATE;
 					break;
-				case gui2::tlobby_main::JOIN:
+				case gui2::dialogs::lobby_main::JOIN:
 					res = mp::ui::JOIN;
 					break;
-				case gui2::tlobby_main::OBSERVE:
+				case gui2::dialogs::lobby_main::OBSERVE:
 					res = mp::ui::OBSERVE;
 					break;
 				default:

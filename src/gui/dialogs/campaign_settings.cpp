@@ -33,6 +33,8 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -78,25 +80,25 @@ namespace gui2
 
 REGISTER_DIALOG(campaign_settings)
 
-tcampaign_settings::tcampaign_settings(ng::create_engine& eng)
+campaign_settings::campaign_settings(ng::create_engine& eng)
 		: engine_(eng)
 { }
 
 
-void tcampaign_settings::change_era(window& window)
+void campaign_settings::change_era(window& window)
 {
 	listbox& list = find_widget<listbox>(&window, "era_list", false);
 	engine_.set_current_era_index(list.get_selected_row());
 }
 
-void tcampaign_settings::change_mod(size_t index, window&)
+void campaign_settings::change_mod(size_t index, window&)
 {
 	engine_.set_current_mod_index(index);
 	// force toggle mod.
 	engine_.toggle_current_mod(true);
 }
 
-void tcampaign_settings::update_lists(window& window)
+void campaign_settings::update_lists(window& window)
 {
 	listbox& era_list = find_widget<listbox>(&window, "era_list", false);
 	listbox& mod_list = find_widget<listbox>(&window, "modification_list", false);
@@ -149,7 +151,7 @@ void tcampaign_settings::update_lists(window& window)
 	}
 }
 
-void tcampaign_settings::pre_show(window& window)
+void campaign_settings::pre_show(window& window)
 {
 	find_widget<toggle_button>(&window, "mp_connect", false).set_value(
 		engine_.get_state().mp_settings().show_connect);
@@ -170,15 +172,16 @@ void tcampaign_settings::pre_show(window& window)
 	}
 
 	era_list.set_callback_item_change(
-			std::bind(&tcampaign_settings::change_era, this, std::ref(window)));
+			std::bind(&campaign_settings::change_era, this, std::ref(window)));
 	mod_list.set_callback_item_change(
-			std::bind(&tcampaign_settings::change_mod, this, _1, std::ref(window)));
+			std::bind(&campaign_settings::change_mod, this, _1, std::ref(window)));
 }
 
-void tcampaign_settings::post_show(window& window)
+void campaign_settings::post_show(window& window)
 {
 	engine_.get_state().mp_settings().show_connect =
 		find_widget<toggle_button>(&window, "mp_connect", false).get_value_bool();
 }
 
-} // end namespace gui2
+} // namespace dialogs
+} // namespace gui2

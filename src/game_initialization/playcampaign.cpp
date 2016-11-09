@@ -343,7 +343,7 @@ LEVEL_RESULT campaign_controller::play_game()
 		{
 			const int dlg_res = gui2::show_message(video_, _("Game Over"),
 				_("This scenario has ended. Do you want to continue the campaign?"),
-				gui2::tmessage::yes_no_buttons);
+				gui2::dialogs::message::yes_no_buttons);
 
 			if(dlg_res == gui2::window::CANCEL) {
 				return res;

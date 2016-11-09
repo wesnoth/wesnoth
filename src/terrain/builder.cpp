@@ -968,7 +968,7 @@ void terrain_builder::parse_config(const config &cfg, bool local)
 
 		n++;
 		if(n % 10 == 0) {
-			gui2::tloadscreen::progress();
+			gui2::dialogs::loading_screen::progress();
 		}
 	}
 

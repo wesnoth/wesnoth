@@ -29,19 +29,23 @@ namespace cursor
 {
 	struct setter;
 }
+
 namespace gui2
 {
 
 class label;
 class window;
 
-class tloadscreen : public tdialog
+namespace dialogs
+{
+
+class loading_screen : public modal_dialog
 {
 public:
 
-	tloadscreen(std::function<void()> f);
+	loading_screen(std::function<void()> f);
 
-	~tloadscreen();
+	~loading_screen();
 
 	static void display(CVideo& video, std::function<void()> f);
 	static bool displaying() { return current_load != nullptr; }
@@ -71,15 +75,15 @@ private:
 
 	void timer_callback(window& window);
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void pre_show(window& window);
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void post_show(window& window);
 
 	label* progress_stage_label_;
 	label* animation_label_;
-	static tloadscreen* current_load;
+	static loading_screen* current_load;
 
 #if defined(_MSC_VER) && _MSC_VER < 1900
 	// std::atomic is buggy in MSVC 2013 - doesn't work for cv types
@@ -92,4 +96,5 @@ private:
 	std::map<std::string, t_string>::const_iterator current_visible_stage_;
 };
 
+} // namespace dialogs
 } // namespace gui2

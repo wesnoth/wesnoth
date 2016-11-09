@@ -19,6 +19,8 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -41,10 +43,11 @@ namespace gui2
 
 REGISTER_DIALOG(editor_new_map)
 
-teditor_new_map::teditor_new_map(int& width, int& height)
+editor_new_map::editor_new_map(int& width, int& height)
 {
 	register_integer("width", true, width);
 	register_integer("height", true, height);
 }
 
+} // namespace dialogs
 } // namespace gui2

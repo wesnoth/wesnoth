@@ -36,16 +36,16 @@
 
 class CVideo;
 
-namespace gui2 { class widget; }
-namespace gui2 { namespace event { struct message; } }
-namespace gui2 { struct point; }
-
 namespace gui2
 {
 
+class widget;
+namespace event { struct message; }
+struct point;
+
 // ------------ WIDGET -----------{
 
-class tdialog;
+namespace dialogs { class modal_dialog; }
 class debug_layout_graph;
 class pane;
 
@@ -80,8 +80,8 @@ public:
 			const unsigned maximum_width,
 			const unsigned maximum_height,
 			const std::string& definition,
-			const builder_window::window_resolution::ttip& tooltip,
-			const builder_window::window_resolution::ttip& helptip);
+			const builder_window::window_resolution::tooltip_info& tooltip,
+			const builder_window::window_resolution::tooltip_info& helptip);
 
 	~window();
 
@@ -286,7 +286,7 @@ public:
 								   const bool must_be_active) const override;
 
 	/** Inherited from widget. */
-	tdialog* dialog()
+	dialogs::modal_dialog* dialog()
 	{
 		return owner_;
 	}
@@ -430,7 +430,7 @@ public:
 		return retval_;
 	}
 
-	void set_owner(tdialog* owner)
+	void set_owner(dialogs::modal_dialog* owner)
 	{
 		owner_ = owner;
 	}
@@ -513,7 +513,7 @@ private:
 	int retval_;
 
 	/** The dialog that owns the window. */
-	tdialog* owner_;
+	dialogs::modal_dialog* owner_;
 
 	/**
 	 * When set the form needs a full layout redraw cycle.
@@ -582,10 +582,10 @@ private:
 	game_logic::function_symbol_table functions_;
 
 	/** The settings for the tooltip. */
-	builder_window::window_resolution::ttip tooltip_;
+	builder_window::window_resolution::tooltip_info tooltip_;
 
 	/** The settings for the helptip. */
-	builder_window::window_resolution::ttip helptip_;
+	builder_window::window_resolution::tooltip_info helptip_;
 
 	/**
 	 * Do we want to have easy close behavior?

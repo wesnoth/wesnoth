@@ -27,12 +27,15 @@ class pane;
 class progress_bar;
 class integer_selector;
 
+namespace dialogs
+{
+
 /** Clock to test the draw events. */
-class tdebug_clock : public tpopup
+class debug_clock : public modeless_dialog
 {
 public:
-	tdebug_clock()
-		: tpopup()
+	debug_clock()
+		: modeless_dialog()
 		, hour_percentage_(nullptr)
 		, minute_percentage_(nullptr)
 		, second_percentage_(nullptr)
@@ -124,13 +127,13 @@ private:
 	 */
 	ttime time_;
 
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void pre_show(window& window);
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void post_show(CVideo& video);
 
 	/**
@@ -145,6 +148,7 @@ private:
 	void update_time(const bool force);
 };
 
+} // namespace dialogs
 } // namespace gui2
 
 #endif

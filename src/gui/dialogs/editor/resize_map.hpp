@@ -22,7 +22,10 @@ namespace gui2
 
 class toggle_button;
 
-class teditor_resize_map : public tdialog
+namespace dialogs
+{
+
+class editor_resize_map : public modal_dialog
 {
 public:
 	enum EXPAND_DIRECTION {
@@ -65,19 +68,19 @@ public:
 	 *                              toggle if the dialog returns @ref
 	 *                              window::OK undefined otherwise.
 	 */
-	teditor_resize_map(int& width,
+	editor_resize_map(int& width,
 					   int& height,
 					   EXPAND_DIRECTION& expand_direction,
 					   bool& copy_edge_terrain);
 
-	/** The execute function see @ref tdialog for more information. */
+	/** The execute function see @ref modal_dialog for more information. */
 	static bool execute(int& width,
 						int& height,
 						EXPAND_DIRECTION& expand_direction,
 						bool& copy_edge_terrain,
 						CVideo& video)
 	{
-		return teditor_resize_map(
+		return editor_resize_map(
 					   width, height, expand_direction, copy_edge_terrain)
 				.show(video);
 	}
@@ -110,13 +113,14 @@ private:
 
 	void set_direction_icon(int index, std::string icon);
 
-	/** Inherited from tdialog */
+	/** Inherited from modal_dialog */
 	void pre_show(window& window);
 
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 };
 
+} // namespace dialogs
 } // namespace gui2
 
 #endif

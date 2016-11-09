@@ -552,7 +552,7 @@ void control::signal_handler_notify_remove_tooltip(const event::event_t event,
 	 * alternative is to add a message to the window to remove the tip.
 	 * Might be done later.
 	 */
-	tip::remove();
+	dialogs::tip::remove();
 
 	handled = true;
 }

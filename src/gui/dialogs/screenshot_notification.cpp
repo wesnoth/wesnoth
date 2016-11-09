@@ -31,6 +31,8 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -63,7 +65,7 @@ namespace gui2
 
 REGISTER_DIALOG(screenshot_notification)
 
-tscreenshot_notification::tscreenshot_notification(const std::string& path)
+screenshot_notification::screenshot_notification(const std::string& path)
 	: path_(path), screenshots_dir_path_(filesystem::get_screenshot_dir())
 {
 	const int filesize = filesystem::file_size(path);
@@ -79,7 +81,7 @@ tscreenshot_notification::tscreenshot_notification(const std::string& path)
 				   false);
 }
 
-void tscreenshot_notification::pre_show(window& window)
+void screenshot_notification::pre_show(window& window)
 {
 	text_box& path_box = find_widget<text_box>(&window, "path", false);
 	path_box.set_value(filesystem::base_name(path_));
@@ -104,4 +106,5 @@ void tscreenshot_notification::pre_show(window& window)
 			bind_void(&desktop::open_object,
 						std::ref(screenshots_dir_path_)));
 }
-}
+} // namespace dialogs
+} // namespace gui2

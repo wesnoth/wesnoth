@@ -29,10 +29,13 @@ class tree_view;
 class tree_view_node;
 class window;
 
-class tmp_options_helper
+namespace dialogs
+{
+
+class mp_options_helper
 {
 public:
-	tmp_options_helper(window& window, ng::create_engine& create_engine);
+	mp_options_helper(window& window, ng::create_engine& create_engine);
 
 	void update_all_options();
 
@@ -99,6 +102,7 @@ private:
 	std::map<std::string, config> options_data_;
 };
 
+} // namespace dialogs
 } // namespace gui2
 
 #endif

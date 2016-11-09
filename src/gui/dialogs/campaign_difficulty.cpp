@@ -37,6 +37,8 @@ static lg::log_domain log_wml("wml");
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -109,7 +111,7 @@ config generate_difficulty_config(const config& source)
 	return result;
 }
 
-tcampaign_difficulty::tcampaign_difficulty(const config& campaign)
+campaign_difficulty::campaign_difficulty(const config& campaign)
 	: difficulties_()
 	, campaign_id_(campaign["id"])
 	, selected_difficulty_()
@@ -119,7 +121,7 @@ tcampaign_difficulty::tcampaign_difficulty(const config& campaign)
 	difficulties_ = generate_difficulty_config(campaign);
 }
 
-void tcampaign_difficulty::pre_show(window& window)
+void campaign_difficulty::pre_show(window& window)
 {
 	listbox& list = find_widget<listbox>(&window, "listbox", false);
 	window.keyboard_capture(&list);
@@ -153,7 +155,7 @@ void tcampaign_difficulty::pre_show(window& window)
 	}
 }
 
-void tcampaign_difficulty::post_show(window& window)
+void campaign_difficulty::post_show(window& window)
 {
 	if(get_retval() != window::OK) {
 		selected_difficulty_ = "CANCEL";
@@ -163,4 +165,5 @@ void tcampaign_difficulty::post_show(window& window)
 	listbox& list = find_widget<listbox>(&window, "listbox", false);
 	selected_difficulty_ = difficulties_.child("difficulty", list.get_selected_row())["define"].str();
 }
-}
+} // namespace dialogs
+} // namespace gui2

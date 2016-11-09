@@ -447,7 +447,7 @@ builder_window::window_resolution::window_resolution(const config& cfg)
 	}
 }
 
-builder_window::window_resolution::ttip::ttip(const config& cfg, const std::string& tagname) : id(cfg["id"])
+builder_window::window_resolution::tooltip_info::tooltip_info(const config& cfg, const std::string& tagname) : id(cfg["id"])
 {
 	VALIDATE(!id.empty(),
 			 missing_mandatory_wml_key("[window][resolution][" + tagname + "]", "id"));

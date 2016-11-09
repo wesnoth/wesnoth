@@ -22,29 +22,32 @@ class replay;
 
 namespace gui2
 {
+namespace dialogs
+{
 
-class tchat_log : public tdialog
+class chat_log : public modal_dialog
 {
 public:
 	class model;
 	class view;
 	class controller;
-	tchat_log(const vconfig& cfg, const replay& replay);
+	chat_log(const vconfig& cfg, const replay& replay);
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	window* build_window(CVideo& video);
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void pre_show(window& window);
 
 	std::shared_ptr<view> get_view();
 
 private:
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
 	std::shared_ptr<view> view_;
 };
-}
+} // namespace dialogs
+} // namespace gui2
 
 #endif /* ! GUI_DIALOGS_CHAT_LOG_HPP_INCLUDED */

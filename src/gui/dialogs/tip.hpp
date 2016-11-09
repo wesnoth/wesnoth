@@ -26,6 +26,9 @@ namespace gui2
 
 struct point;
 
+namespace dialogs
+{
+
 namespace tip
 {
 
@@ -55,7 +58,7 @@ void show(CVideo& video,
 void remove();
 
 } // namespace tip
-
+} // namespace dialogs
 } // namespace gui2
 
 #endif

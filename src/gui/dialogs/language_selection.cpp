@@ -29,6 +29,8 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -58,7 +60,7 @@ namespace gui2
 
 REGISTER_DIALOG(language_selection)
 
-void tlanguage_selection::pre_show(window& window)
+void language_selection::pre_show(window& window)
 {
 	listbox& list = find_widget<listbox>(&window, "language_list", false);
 	window.keyboard_capture(&list);
@@ -78,7 +80,7 @@ void tlanguage_selection::pre_show(window& window)
 	}
 }
 
-void tlanguage_selection::post_show(window& window)
+void language_selection::post_show(window& window)
 {
 	if(get_retval() == window::OK) {
 		const int res = find_widget<listbox>(&window, "language_list", false)
@@ -92,4 +94,5 @@ void tlanguage_selection::post_show(window& window)
 	}
 }
 
+} // namespace dialogs
 } // namespace gui2

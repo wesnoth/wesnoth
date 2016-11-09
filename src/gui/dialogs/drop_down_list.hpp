@@ -21,11 +21,13 @@ class config;
 
 namespace gui2
 {
+namespace dialogs
+{
 ///Used by the menu_button widget.
-class tdrop_down_list : public tdialog
+class drop_down_menu : public modal_dialog
 {
 public:
-	tdrop_down_list(SDL_Rect button_pos, const std::vector<config>& items, int selected_item, bool use_markup)
+	drop_down_menu(SDL_Rect button_pos, const std::vector<config>& items, int selected_item, bool use_markup)
 		: button_pos_(button_pos)
 		, items_(items)
 		, selected_item_(selected_item)
@@ -42,14 +44,15 @@ private:
 	std::vector<config> items_;
 	int selected_item_;
 	bool use_markup_;
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void pre_show(window& window);
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void post_show(window& window);
 };
 
+} // namespace dialogs
 } // namespace gui2

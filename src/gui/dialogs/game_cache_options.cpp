@@ -36,6 +36,8 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -75,7 +77,7 @@ namespace gui2
 
 REGISTER_DIALOG(game_cache_options)
 
-tgame_cache_options::tgame_cache_options()
+game_cache_options::game_cache_options()
 	: cache_path_(filesystem::get_cache_dir())
 	, clean_button_(nullptr)
 	, purge_button_(nullptr)
@@ -83,7 +85,7 @@ tgame_cache_options::tgame_cache_options()
 {
 }
 
-void tgame_cache_options::pre_show(window& window)
+void game_cache_options::pre_show(window& window)
 {
 	clean_button_ = &find_widget<button>(&window, "clean", false);
 	purge_button_ = &find_widget<button>(&window, "purge", false);
@@ -97,7 +99,7 @@ void tgame_cache_options::pre_show(window& window)
 
 	button& copy = find_widget<button>(&window, "copy", false);
 	connect_signal_mouse_left_click(copy,
-									std::bind(&tgame_cache_options::copy_to_clipboard_callback,
+									std::bind(&game_cache_options::copy_to_clipboard_callback,
 												this));
 	if (!desktop::clipboard::available()) {
 		copy.set_active(false);
@@ -106,26 +108,26 @@ void tgame_cache_options::pre_show(window& window)
 
 	button& browse = find_widget<button>(&window, "browse", false);
 	connect_signal_mouse_left_click(browse,
-									std::bind(&tgame_cache_options::browse_cache_callback,
+									std::bind(&game_cache_options::browse_cache_callback,
 												this));
 
 	connect_signal_mouse_left_click(*clean_button_,
-									std::bind(&tgame_cache_options::clean_cache_callback,
+									std::bind(&game_cache_options::clean_cache_callback,
 												this,
 												std::ref(window.video())));
 
 	connect_signal_mouse_left_click(*purge_button_,
-									std::bind(&tgame_cache_options::purge_cache_callback,
+									std::bind(&game_cache_options::purge_cache_callback,
 												this,
 												std::ref(window.video())));
 }
 
-void tgame_cache_options::post_show(window& /*window*/)
+void game_cache_options::post_show(window& /*window*/)
 {
 	size_label_ = nullptr;
 }
 
-void tgame_cache_options::update_cache_size_display()
+void game_cache_options::update_cache_size_display()
 {
 	if(!size_label_) {
 		return;
@@ -146,17 +148,17 @@ void tgame_cache_options::update_cache_size_display()
 	}
 }
 
-void tgame_cache_options::copy_to_clipboard_callback()
+void game_cache_options::copy_to_clipboard_callback()
 {
 	desktop::clipboard::copy_to_clipboard(cache_path_, false);
 }
 
-void tgame_cache_options::browse_cache_callback()
+void game_cache_options::browse_cache_callback()
 {
 	desktop::open_object(cache_path_);
 }
 
-void tgame_cache_options::clean_cache_callback(CVideo& video)
+void game_cache_options::clean_cache_callback(CVideo& video)
 {
 	if(clean_cache()) {
 		show_message(video,
@@ -170,13 +172,13 @@ void tgame_cache_options::clean_cache_callback(CVideo& video)
 	update_cache_size_display();
 }
 
-bool tgame_cache_options::clean_cache()
+bool game_cache_options::clean_cache()
 {
 	const cursor::setter cs(cursor::WAIT);
 	return game_config::config_cache::instance().clean_cache();
 }
 
-void tgame_cache_options::purge_cache_callback(CVideo& video)
+void game_cache_options::purge_cache_callback(CVideo& video)
 {
 	if(purge_cache()) {
 		show_message(video,
@@ -190,10 +192,11 @@ void tgame_cache_options::purge_cache_callback(CVideo& video)
 	update_cache_size_display();
 }
 
-bool tgame_cache_options::purge_cache()
+bool game_cache_options::purge_cache()
 {
 	const cursor::setter cs(cursor::WAIT);
 	return game_config::config_cache::instance().purge_cache();
 }
 
-} // end namespace gui2
+} // namespace dialogs
+} // namespace gui2

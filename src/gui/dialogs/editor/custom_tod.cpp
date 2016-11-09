@@ -36,6 +36,8 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -85,7 +87,7 @@ namespace gui2
 
 REGISTER_DIALOG(custom_tod)
 
-tcustom_tod::tcustom_tod(display& display,
+custom_tod::custom_tod(display& display,
 						 const std::vector<time_of_day>& tods)
 	: tods_(tods)
 	, current_tod_(0)
@@ -103,7 +105,7 @@ tcustom_tod::tcustom_tod(display& display,
 {
 }
 
-void tcustom_tod::select_file(const std::string& filename,
+void custom_tod::select_file(const std::string& filename,
 							  const std::string& default_dir,
 							  const std::string& attribute,
 							  window& window)
@@ -114,7 +116,7 @@ void tcustom_tod::select_file(const std::string& filename,
 		dn = default_dir;
 	}
 
-	gui2::tfile_dialog dlg;
+	gui2::dialogs::file_dialog dlg;
 
 	dlg.set_title(_("Choose File"))
 	   .set_ok_label(_("Select"))
@@ -135,25 +137,25 @@ void tcustom_tod::select_file(const std::string& filename,
 	update_selected_tod_info(window);
 }
 
-void tcustom_tod::do_next_tod(window& window)
+void custom_tod::do_next_tod(window& window)
 {
 	current_tod_ = (current_tod_ + 1) % tods_.size();
 	update_selected_tod_info(window);
 }
 
-void tcustom_tod::do_prev_tod(window& window)
+void custom_tod::do_prev_tod(window& window)
 {
 	current_tod_ = (current_tod_ ? current_tod_ : tods_.size()) - 1;
 	update_selected_tod_info(window);
 }
 
-void tcustom_tod::do_new_tod(window& window)
+void custom_tod::do_new_tod(window& window)
 {
 	tods_.insert(tods_.begin() + current_tod_, time_of_day());
 	update_selected_tod_info(window);
 }
 
-void tcustom_tod::do_delete_tod(window& window)
+void custom_tod::do_delete_tod(window& window)
 {
 	assert(tods_.begin() + current_tod_ < tods_.end());
 	if(tods_.size() == 1) {
@@ -168,13 +170,13 @@ void tcustom_tod::do_delete_tod(window& window)
 	update_selected_tod_info(window);
 }
 
-const time_of_day& tcustom_tod::get_selected_tod() const
+const time_of_day& custom_tod::get_selected_tod() const
 {
 	assert(static_cast<size_t>(current_tod_) < tods_.size());
 	return tods_[current_tod_];
 }
 
-void tcustom_tod::update_tod_display(window& window)
+void custom_tod::update_tod_display(window& window)
 {
 	::image::set_color_adjustment(tod_red_field_->get_value(),
 								tod_green_field_->get_value(),
@@ -203,13 +205,13 @@ void tcustom_tod::update_tod_display(window& window)
 	window.invalidate_layout();
 }
 
-void tcustom_tod::update_lawful_bonus(window& window)
+void custom_tod::update_lawful_bonus(window& window)
 {
 	tods_[current_tod_].lawful_bonus
 			= lawful_bonus_field_->get_widget_value(window);
 }
 
-void tcustom_tod::update_selected_tod_info(window& window)
+void custom_tod::update_selected_tod_info(window& window)
 {
 	current_tod_name_->set_value(get_selected_tod().name);
 	current_tod_id_->set_value(get_selected_tod().id);
@@ -230,7 +232,7 @@ void tcustom_tod::update_selected_tod_info(window& window)
 	update_tod_display(window);
 }
 
-void tcustom_tod::pre_show(window& window)
+void custom_tod::pre_show(window& window)
 {
 	assert(!tods_.empty());
 
@@ -261,7 +263,7 @@ void tcustom_tod::pre_show(window& window)
 			= find_widget<label>(&window, "tod_number", false, true);
 
 	connect_signal_mouse_left_click(find_widget<button>(&window, "image_button", false),
-			std::bind(&tcustom_tod::select_file,
+			std::bind(&custom_tod::select_file,
 					this,
 					get_selected_tod().image,
 					"data/core/images/misc",
@@ -269,7 +271,7 @@ void tcustom_tod::pre_show(window& window)
 					std::ref(window)));
 
 	connect_signal_mouse_left_click(find_widget<button>(&window, "mask_button", false),
-			std::bind(&tcustom_tod::select_file,
+			std::bind(&custom_tod::select_file,
 					this,
 					get_selected_tod().image_mask,
 					"data/core/images",
@@ -277,7 +279,7 @@ void tcustom_tod::pre_show(window& window)
 					std::ref(window)));
 
 	connect_signal_mouse_left_click(find_widget<button>(&window, "sound_button", false),
-			std::bind(&tcustom_tod::select_file,
+			std::bind(&custom_tod::select_file,
 					this,
 					get_selected_tod().sounds,
 					"data/core/sounds/ambient",
@@ -286,41 +288,41 @@ void tcustom_tod::pre_show(window& window)
 
 	connect_signal_mouse_left_click(
 			find_widget<button>(&window, "next_tod", false),
-			std::bind(&tcustom_tod::do_next_tod, this, std::ref(window)));
+			std::bind(&custom_tod::do_next_tod, this, std::ref(window)));
 
 	connect_signal_mouse_left_click(
 			find_widget<button>(&window, "previous_tod", false),
-			std::bind(&tcustom_tod::do_prev_tod, this, std::ref(window)));
+			std::bind(&custom_tod::do_prev_tod, this, std::ref(window)));
 
 	connect_signal_mouse_left_click(
 			find_widget<button>(&window, "new", false),
-			std::bind(&tcustom_tod::do_new_tod, this, std::ref(window)));
+			std::bind(&custom_tod::do_new_tod, this, std::ref(window)));
 
 	connect_signal_mouse_left_click(
 			find_widget<button>(&window, "delete", false),
-			std::bind(&tcustom_tod::do_delete_tod, this, std::ref(window)));
+			std::bind(&custom_tod::do_delete_tod, this, std::ref(window)));
 
 	connect_signal_notify_modified(
 			*(lawful_bonus_field_->get_widget()),
-			std::bind(&tcustom_tod::update_lawful_bonus,
+			std::bind(&custom_tod::update_lawful_bonus,
 					this,
 					std::ref(window)));
 
 	connect_signal_notify_modified(
 			*tod_red_field_,
-			std::bind(&tcustom_tod::update_tod_display,
+			std::bind(&custom_tod::update_tod_display,
 					this,
 					std::ref(window)));
 
 	connect_signal_notify_modified(
 			*tod_green_field_,
-			std::bind(&tcustom_tod::update_tod_display,
+			std::bind(&custom_tod::update_tod_display,
 					this,
 					std::ref(window)));
 
 	connect_signal_notify_modified(
 			*tod_blue_field_,
-			std::bind(&tcustom_tod::update_tod_display,
+			std::bind(&custom_tod::update_tod_display,
 					this,
 					std::ref(window)));
 
@@ -339,7 +341,7 @@ void tcustom_tod::pre_show(window& window)
 	update_selected_tod_info(window);
 }
 
-void tcustom_tod::post_show(window& window)
+void custom_tod::post_show(window& window)
 {
 	update_tod_display(window);
 	
@@ -348,4 +350,5 @@ void tcustom_tod::post_show(window& window)
 	}
 }
 
+} // namespace dialogs
 } // namespace gui2

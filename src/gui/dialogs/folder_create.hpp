@@ -19,8 +19,10 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
-class tfolder_create : public tdialog
+class folder_create : public modal_dialog
 {
 public:
 	/**
@@ -33,12 +35,12 @@ public:
 	 *                              entered if the dialog returns @ref
 	 *                              window::OK; undefined otherwise.
 	 */
-	tfolder_create(std::string& folder_name);
+	folder_create(std::string& folder_name);
 
-	/** The execute function; see @ref tdialog for more information. */
+	/** The execute function; see @ref modal_dialog for more information. */
 	static bool execute(std::string& folder_name, CVideo& video)
 	{
-		return tfolder_create(folder_name).show(video);
+		return folder_create(folder_name).show(video);
 	}
 
 private:
@@ -47,29 +49,30 @@ private:
 	bool bookmark_mode_;
 
 	/** Changes the dialog caption so it can be used for naming bookmarks. */
-	tfolder_create& enable_bookmark_mode()
+	folder_create& enable_bookmark_mode()
 	{
 		bookmark_mode_ = true;
 		return *this;
 	}
 
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void pre_show(window& window);
 };
 
 class tbookmark_create
 {
 public:
-	/** The execute function; see @ref tdialog for more information. */
+	/** The execute function; see @ref modal_dialog for more information. */
 	static bool execute(std::string& bookmark_name, CVideo& video)
 	{
-		return tfolder_create(bookmark_name).enable_bookmark_mode().show(video);
+		return folder_create(bookmark_name).enable_bookmark_mode().show(video);
 	}
 };
 
-}
+} // namespace dialogs
+} // namespace gui2
 
 #endif /* ! GUI_DIALOGS_EDIT_LABEL_INCLUDED */

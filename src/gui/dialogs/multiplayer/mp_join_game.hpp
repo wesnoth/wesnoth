@@ -31,13 +31,16 @@ namespace gui2
 
 class tree_view_node;
 
-class tmp_join_game : public tdialog, private plugin_executor
+namespace dialogs
+{
+
+class mp_join_game : public modal_dialog, private plugin_executor
 {
 public:
-	tmp_join_game(saved_game& state, lobby_info& lobby_info, wesnothd_connection& connection,
+	mp_join_game(saved_game& state, lobby_info& lobby_info, wesnothd_connection& connection,
 		const bool first_scenario = true, const bool observe_game = false);
 
-	~tmp_join_game();
+	~mp_join_game();
 
 	/**
 	 * FIXME: We shouldn't need to pass a CVideo argument here. Optimally, this would be done in
@@ -47,13 +50,13 @@ public:
 	bool fetch_game_config(CVideo& video);
 
 private:
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void pre_show(window& window);
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void post_show(window& window);
 
 	void generate_side_list(window& window);
@@ -82,6 +85,7 @@ private:
 	std::map<std::string, tree_view_node*> team_tree_map_;
 };
 
+} // namespace dialogs
 } // namespace gui2
 
 #endif

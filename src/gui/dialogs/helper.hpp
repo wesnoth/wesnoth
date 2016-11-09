@@ -21,6 +21,8 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /**
  * Template for dialog callbacks. Example usage:
@@ -37,6 +39,7 @@ void dialog_callback(widget& caller)
 	(dialog->*fptr)(*window);
 }
 
+} // namespace dialogs
 } // namespace gui2
 
 #endif

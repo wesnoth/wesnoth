@@ -30,11 +30,13 @@ struct team_data;
 
 namespace gui2
 {
+namespace dialogs
+{
 
-class tgame_stats : public tdialog
+class game_stats : public modal_dialog
 {
 public:
-	tgame_stats(const display_context& board, const int viewing_team, int& selected_index);
+	game_stats(const display_context& board, const int viewing_team, int& selected_index);
 
 	static bool execute(game_board& board, const int viewing_team, int& selected_index, CVideo& video)
 	{
@@ -43,7 +45,7 @@ public:
 			return false;
 		}
 
-		return tgame_stats(board, viewing_team, selected_index).show(video);
+		return game_stats(board, viewing_team, selected_index).show(video);
 	}
 
 private:
@@ -60,16 +62,17 @@ private:
 
 	void on_tab_select(window& window);
 
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void pre_show(window& window);
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void post_show(window& window);
 };
 
+} // namespace dialogs
 } // namespace gui2
 
 #endif /* ! GUI_DIALOGS_GAME_STATS_HPP_INCLUDED */

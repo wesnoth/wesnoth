@@ -43,6 +43,8 @@ bool unchecked_bool_field_finder(gui2::window& window,
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -115,7 +117,7 @@ namespace gui2
 
 REGISTER_DIALOG(addon_filter_options)
 
-taddon_filter_options::taddon_filter_options()
+addon_filter_options::addon_filter_options()
 	: displayed_status_()
 	, displayed_types_()
 	, displayed_types_fields_()
@@ -145,14 +147,14 @@ taddon_filter_options::taddon_filter_options()
 	register_displayed_type_field("show_other", ADDON_OTHER);
 }
 
-void taddon_filter_options::register_displayed_type_field(
+void addon_filter_options::register_displayed_type_field(
 		const std::string& field_id, ADDON_TYPE addon_type)
 {
 	displayed_types_fields_.push_back(
 			register_bool(field_id, true, displayed_types_[addon_type]));
 }
 
-void taddon_filter_options::read_types_vector(const boost::dynamic_bitset<>& v)
+void addon_filter_options::read_types_vector(const boost::dynamic_bitset<>& v)
 {
 	for(size_t k = 0; k < displayed_types_.size(); ++k) {
 		// All unspecified types default to visible.
@@ -160,7 +162,7 @@ void taddon_filter_options::read_types_vector(const boost::dynamic_bitset<>& v)
 	}
 }
 
-void taddon_filter_options::toggle_all_displayed_types_button_callback(
+void addon_filter_options::toggle_all_displayed_types_button_callback(
 		window& window)
 {
 	const bool have_any_unchecked
@@ -177,17 +179,17 @@ void taddon_filter_options::toggle_all_displayed_types_button_callback(
 	}
 }
 
-void taddon_filter_options::toggle_sort_callback()
+void addon_filter_options::toggle_sort_callback()
 {
 	sort_ = sort_tgroup_.get_active_member_value();
 }
 
-void taddon_filter_options::toggle_dir_callback()
+void addon_filter_options::toggle_dir_callback()
 {
 	dir_ = dir_tgroup_.get_active_member_value();
 }
 
-void taddon_filter_options::pre_show(window& window)
+void addon_filter_options::pre_show(window& window)
 {
 	listbox& list = find_widget<listbox>(&window, "statuses_list", false);
 	window.keyboard_capture(&list);
@@ -206,7 +208,7 @@ void taddon_filter_options::pre_show(window& window)
 
 	connect_signal_mouse_left_click(
 			find_widget<button>(&window, "toggle_all_displayed_types", false),
-			std::bind(&taddon_filter_options::
+			std::bind(&addon_filter_options::
 								 toggle_all_displayed_types_button_callback,
 						this,
 						std::ref(window)));
@@ -221,7 +223,7 @@ void taddon_filter_options::pre_show(window& window)
 	register_dir_toggle(window, "descending", DIRECTION_DESCENDING);
 }
 
-void taddon_filter_options::register_sort_toggle(window& window,
+void addon_filter_options::register_sort_toggle(window& window,
 												 const std::string& toggle_id,
 												 ADDON_SORT value)
 {
@@ -234,10 +236,10 @@ void taddon_filter_options::register_sort_toggle(window& window,
 
 	connect_signal_mouse_left_click(
 			*b,
-			std::bind(&taddon_filter_options::toggle_sort_callback, this));
+			std::bind(&addon_filter_options::toggle_sort_callback, this));
 }
 
-void taddon_filter_options::register_dir_toggle(window& window,
+void addon_filter_options::register_dir_toggle(window& window,
 												const std::string& toggle_id,
 												ADDON_SORT_DIRECTION value)
 {
@@ -250,10 +252,10 @@ void taddon_filter_options::register_dir_toggle(window& window,
 
 	connect_signal_mouse_left_click(
 			*b,
-			std::bind(&taddon_filter_options::toggle_dir_callback, this));
+			std::bind(&addon_filter_options::toggle_dir_callback, this));
 }
 
-void taddon_filter_options::post_show(window& window)
+void addon_filter_options::post_show(window& window)
 {
 	// Sorting and direction options are handled in widget
 	// callbacks.
@@ -268,7 +270,7 @@ void taddon_filter_options::post_show(window& window)
 	}
 }
 
-std::string taddon_filter_options::status_label(ADDON_STATUS_FILTER s)
+std::string addon_filter_options::status_label(ADDON_STATUS_FILTER s)
 {
 	switch(s) {
 		case FILTER_NOT_INSTALLED:
@@ -282,4 +284,5 @@ std::string taddon_filter_options::status_label(ADDON_STATUS_FILTER s)
 	}
 }
 
-} // end namespace gui2
+} // namespace dialogs
+} // namespace gui2

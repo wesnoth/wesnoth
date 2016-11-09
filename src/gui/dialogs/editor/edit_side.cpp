@@ -24,6 +24,8 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -50,7 +52,7 @@ namespace gui2
 
 REGISTER_DIALOG(editor_edit_side)
 
-teditor_edit_side::teditor_edit_side(editor::editor_team_info& info)
+editor_edit_side::editor_edit_side(editor::editor_team_info& info)
 	: controller_(info.controller)
 	, share_vision_(info.share_vision)
 {
@@ -72,7 +74,7 @@ teditor_edit_side::teditor_edit_side(editor::editor_team_info& info)
 	register_bool("hidden", true, info.hidden);
 }
 
-void teditor_edit_side::pre_show(window& window)
+void editor_edit_side::pre_show(window& window)
 {
 	controller_group.add_member(&find_widget<toggle_button>(&window, "controller_human", false), team::CONTROLLER::HUMAN);
 	controller_group.add_member(&find_widget<toggle_button>(&window, "controller_ai", false),    team::CONTROLLER::AI);
@@ -87,10 +89,11 @@ void teditor_edit_side::pre_show(window& window)
 	vision_group.set_member_states(share_vision_);
 }
 
-void teditor_edit_side::post_show(window&)
+void editor_edit_side::post_show(window&)
 {
 	controller_ = controller_group.get_active_member_value();
 	share_vision_ = vision_group.get_active_member_value();
 }
 
-} // end namespace gui2
+} // namespace dialogs
+} // namespace gui2

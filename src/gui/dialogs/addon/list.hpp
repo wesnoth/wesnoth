@@ -29,12 +29,14 @@ class text_box_base;
 class text_box;
 class pane;
 class selectable_item;
+namespace dialogs
+{
 
 /** Shows the list of addons on the server. */
-class taddon_list : public tdialog
+class addon_manager : public modal_dialog
 {
 public:
-	explicit taddon_list(const config& cfg);
+	explicit addon_manager(const config& cfg);
 
 private:
 	void on_filtertext_changed(text_box_base* textbox, const std::string& text);
@@ -42,10 +44,10 @@ private:
 	std::vector<selectable_item*> orders_;
 
 	void on_addon_select(window& window);
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void pre_show(window& window);
 
 	/** Config which contains the list with the campaigns. */
@@ -68,6 +70,7 @@ private:
 	void show_help(window& window);
 };
 
+} // namespace dialogs
 } // namespace gui2
 
 #endif

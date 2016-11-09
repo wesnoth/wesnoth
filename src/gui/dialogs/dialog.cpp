@@ -24,8 +24,10 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
-tdialog::~tdialog()
+modal_dialog::~modal_dialog()
 {
 	for(auto field : fields_)
 	{
@@ -33,7 +35,7 @@ tdialog::~tdialog()
 	}
 }
 
-bool tdialog::show(CVideo& video, const unsigned auto_close_time)
+bool modal_dialog::show(CVideo& video, const unsigned auto_close_time)
 {
 	if(video.faked() && !show_even_without_video_) {
 		if(!allow_plugin_skip_) {
@@ -93,7 +95,7 @@ bool tdialog::show(CVideo& video, const unsigned auto_close_time)
 	return retval_ == window::OK;
 }
 
-field_bool* tdialog::register_bool(
+field_bool* modal_dialog::register_bool(
 		const std::string& id,
 		const bool mandatory,
 		const std::function<bool()> callback_load_value,
@@ -113,7 +115,7 @@ field_bool* tdialog::register_bool(
 }
 
 field_bool*
-tdialog::register_bool(const std::string& id,
+modal_dialog::register_bool(const std::string& id,
 					   const bool mandatory,
 					   bool& linked_variable,
 					   const std::function<void(widget&)> callback_change,
@@ -126,7 +128,7 @@ tdialog::register_bool(const std::string& id,
 	return field;
 }
 
-field_integer* tdialog::register_integer(
+field_integer* modal_dialog::register_integer(
 		const std::string& id,
 		const bool mandatory,
 		const std::function<int()> callback_load_value,
@@ -139,7 +141,7 @@ field_integer* tdialog::register_integer(
 	return field;
 }
 
-field_integer* tdialog::register_integer(const std::string& id,
+field_integer* modal_dialog::register_integer(const std::string& id,
 										  const bool mandatory,
 										  int& linked_variable)
 {
@@ -149,7 +151,7 @@ field_integer* tdialog::register_integer(const std::string& id,
 	return field;
 }
 
-field_text* tdialog::register_text(
+field_text* modal_dialog::register_text(
 		const std::string& id,
 		const bool mandatory,
 		const std::function<std::string()> callback_load_value,
@@ -167,7 +169,7 @@ field_text* tdialog::register_text(
 	return field;
 }
 
-field_text* tdialog::register_text(const std::string& id,
+field_text* modal_dialog::register_text(const std::string& id,
 									const bool mandatory,
 									std::string& linked_variable,
 									const bool capture_focus)
@@ -182,7 +184,7 @@ field_text* tdialog::register_text(const std::string& id,
 	return field;
 }
 
-field_label* tdialog::register_label(const std::string& id,
+field_label* modal_dialog::register_label(const std::string& id,
 									  const bool mandatory,
 									  const std::string& text,
 									  const bool use_markup)
@@ -193,27 +195,27 @@ field_label* tdialog::register_label(const std::string& id,
 	return field;
 }
 
-window* tdialog::build_window(CVideo& video) const
+window* modal_dialog::build_window(CVideo& video) const
 {
 	return build(video, window_id());
 }
 
-void tdialog::post_build(window& /*window*/)
+void modal_dialog::post_build(window& /*window*/)
 {
 	/* DO NOTHING */
 }
 
-void tdialog::pre_show(window& /*window*/)
+void modal_dialog::pre_show(window& /*window*/)
 {
 	/* DO NOTHING */
 }
 
-void tdialog::post_show(window& /*window*/)
+void modal_dialog::post_show(window& /*window*/)
 {
 	/* DO NOTHING */
 }
 
-void tdialog::init_fields(window& window)
+void modal_dialog::init_fields(window& window)
 {
 	for(auto field : fields_)
 	{
@@ -228,7 +230,7 @@ void tdialog::init_fields(window& window)
 	}
 }
 
-void tdialog::finalize_fields(window& window, const bool save_fields)
+void modal_dialog::finalize_fields(window& window, const bool save_fields)
 {
 	for(auto field : fields_)
 	{
@@ -239,6 +241,7 @@ void tdialog::finalize_fields(window& window, const bool save_fields)
 	}
 }
 
+} // namespace dialogs
 } // namespace gui2
 
 

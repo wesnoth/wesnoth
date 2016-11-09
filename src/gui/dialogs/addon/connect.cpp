@@ -27,6 +27,8 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -53,7 +55,7 @@ namespace gui2
 
 REGISTER_DIALOG(addon_connect)
 
-taddon_connect::taddon_connect(std::string& host_name,
+addon_connect::addon_connect(std::string& host_name,
 							   const bool allow_remove)
 	: allow_remove_(allow_remove)
 {
@@ -61,24 +63,24 @@ taddon_connect::taddon_connect(std::string& host_name,
 	register_text("host_name", false, host_name, true);
 }
 
-void taddon_connect::help_button_callback(window& window)
+void addon_connect::help_button_callback(window& window)
 {
 	help::show_help(window.video(), "installing_addons");
 }
 
-void taddon_connect::pre_show(window& window)
+void addon_connect::pre_show(window& window)
 {
 	find_widget<button>(&window, "remove_addons", false)
 			.set_active(allow_remove_);
 
 	connect_signal_mouse_left_click(
 			find_widget<button>(&window, "show_help", false),
-			std::bind(&taddon_connect::help_button_callback,
+			std::bind(&addon_connect::help_button_callback,
 						this,
 						std::ref(window)));
 }
 
-void taddon_connect::post_show(window& window)
+void addon_connect::post_show(window& window)
 {
 	if(get_retval() == window::OK) {
 		text_box& host_widget
@@ -88,4 +90,5 @@ void taddon_connect::post_show(window& window)
 	}
 }
 
+} // namespace dialogs
 } // namespace gui2

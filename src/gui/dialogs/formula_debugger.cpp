@@ -29,6 +29,8 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -66,7 +68,7 @@ namespace gui2
 
 REGISTER_DIALOG(formula_debugger)
 
-void tformula_debugger::pre_show(window& window)
+void formula_debugger::pre_show(window& window)
 {
 	// stack label
 	scroll_label* stack_label
@@ -136,28 +138,28 @@ void tformula_debugger::pre_show(window& window)
 	button& step_button = find_widget<button>(&window, "step", false);
 	connect_signal_mouse_left_click(
 			step_button,
-			std::bind(&tformula_debugger::callback_step_button,
+			std::bind(&formula_debugger::callback_step_button,
 						this,
 						std::ref(window)));
 
 	button& stepout_button = find_widget<button>(&window, "stepout", false);
 	connect_signal_mouse_left_click(
 			stepout_button,
-			std::bind(&tformula_debugger::callback_stepout_button,
+			std::bind(&formula_debugger::callback_stepout_button,
 						this,
 						std::ref(window)));
 
 	button& next_button = find_widget<button>(&window, "next", false);
 	connect_signal_mouse_left_click(
 			next_button,
-			std::bind(&tformula_debugger::callback_next_button,
+			std::bind(&formula_debugger::callback_next_button,
 						this,
 						std::ref(window)));
 
 	button& continue_button = find_widget<button>(&window, "continue", false);
 	connect_signal_mouse_left_click(
 			continue_button,
-			std::bind(&tformula_debugger::callback_continue_button,
+			std::bind(&formula_debugger::callback_continue_button,
 						this,
 						std::ref(window)));
 
@@ -169,28 +171,29 @@ void tformula_debugger::pre_show(window& window)
 	}
 }
 
-void tformula_debugger::callback_continue_button(window& window)
+void formula_debugger::callback_continue_button(window& window)
 {
 	fdb_.add_breakpoint_continue_to_end();
 	window.set_retval(window::OK);
 }
 
-void tformula_debugger::callback_next_button(window& window)
+void formula_debugger::callback_next_button(window& window)
 {
 	fdb_.add_breakpoint_next();
 	window.set_retval(window::OK);
 }
 
-void tformula_debugger::callback_step_button(window& window)
+void formula_debugger::callback_step_button(window& window)
 {
 	fdb_.add_breakpoint_step_into();
 	window.set_retval(window::OK);
 }
 
-void tformula_debugger::callback_stepout_button(window& window)
+void formula_debugger::callback_stepout_button(window& window)
 {
 	fdb_.add_breakpoint_step_out();
 	window.set_retval(window::OK);
 }
 
-} // end of namespace gui2
+} // namespace dialogs
+} // namespace gui2

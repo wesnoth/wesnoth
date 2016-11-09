@@ -27,6 +27,8 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
 REGISTER_DIALOG(message)
 
@@ -36,7 +38,7 @@ REGISTER_DIALOG(message)
  * The class is a helper to avoid recompilation and only has static
  * functions.
  */
-struct tmessage_implementation
+struct message_implementation
 {
 	/**
 	 * Initialiazes a button.
@@ -46,7 +48,7 @@ struct tmessage_implementation
 	 * @param id                  The id of the button.
 	 */
 	static void init_button(window& window,
-							tmessage::tbutton_status& button_status,
+							message::tbutton_status& button_status,
 							const std::string& id)
 	{
 		button_status.button = find_widget<button>(&window, id, false, true);
@@ -62,15 +64,15 @@ struct tmessage_implementation
 	}
 };
 
-void tmessage::pre_show(window& window)
+void message::pre_show(window& window)
 {
 	set_restore(true);
 
 	// ***** Validate the required buttons ***** ***** ***** *****
-	tmessage_implementation::init_button(window, buttons_[left_1], "left_side");
-	tmessage_implementation::init_button(window, buttons_[cancel], "cancel");
-	tmessage_implementation::init_button(window, buttons_[ok], "ok");
-	tmessage_implementation::init_button(
+	message_implementation::init_button(window, buttons_[left_1], "left_side");
+	message_implementation::init_button(window, buttons_[cancel], "cancel");
+	message_implementation::init_button(window, buttons_[ok], "ok");
+	message_implementation::init_button(
 			window, buttons_[right_1], "right_side");
 
 	// ***** ***** ***** ***** Set up the widgets ***** ***** ***** *****
@@ -100,7 +102,7 @@ void tmessage::pre_show(window& window)
 	window.set_click_dismiss(auto_close_);
 }
 
-void tmessage::post_show(window& /*window*/)
+void message::post_show(window& /*window*/)
 {
 	for(auto & button_status : buttons_)
 	{
@@ -108,7 +110,7 @@ void tmessage::post_show(window& /*window*/)
 	}
 }
 
-void tmessage::set_button_caption(const tbutton_id button,
+void message::set_button_caption(const button_id button,
 								  const std::string& caption)
 {
 	buttons_[button].caption = caption;
@@ -117,7 +119,7 @@ void tmessage::set_button_caption(const tbutton_id button,
 	}
 }
 
-void tmessage::set_button_visible(const tbutton_id button,
+void message::set_button_visible(const button_id button,
 								  const widget::tvisible visible)
 {
 	buttons_[button].visible = visible;
@@ -126,7 +128,7 @@ void tmessage::set_button_visible(const tbutton_id button,
 	}
 }
 
-void tmessage::set_button_retval(const tbutton_id button, const int retval)
+void message::set_button_retval(const button_id button, const int retval)
 {
 	buttons_[button].retval = retval;
 	if(buttons_[button].button) {
@@ -134,7 +136,7 @@ void tmessage::set_button_retval(const tbutton_id button, const int retval)
 	}
 }
 
-tmessage::tbutton_status::tbutton_status()
+message::tbutton_status::tbutton_status()
 	: button(nullptr)
 	, caption()
 	, visible(widget::tvisible::invisible)
@@ -142,54 +144,58 @@ tmessage::tbutton_status::tbutton_status()
 {
 }
 
+} // namespace dialogs
+
+using namespace dialogs;
+
 void show_message(CVideo& video,
 				  const std::string& title,
-				  const std::string& message,
+				  const std::string& msg,
 				  const std::string& button_caption,
 				  const bool auto_close,
 				  const bool message_use_markup)
 {
-	tmessage dlg(title, message, auto_close, message_use_markup);
-	dlg.set_button_caption(tmessage::ok, button_caption);
+	message dlg(title, msg, auto_close, message_use_markup);
+	dlg.set_button_caption(message::ok, button_caption);
 	dlg.show(video);
 }
 
 int show_message(CVideo& video,
 				 const std::string& title,
-				 const std::string& message,
-				 const tmessage::tbutton_style button_style,
+				 const std::string& msg,
+				 const message::button_style button_style,
 				 bool message_use_markup,
 				 bool /*message_title_mode*/)
 {
-	tmessage dlg(title,
-				 message,
-				 button_style == tmessage::auto_close,
+	message dlg(title,
+				 msg,
+				 button_style == message::auto_close,
 				 message_use_markup);
 
 	switch(button_style) {
-		case tmessage::auto_close:
+		case message::auto_close:
 			break;
-		case tmessage::ok_button:
-			dlg.set_button_visible(tmessage::ok, widget::tvisible::visible);
-			dlg.set_button_caption(tmessage::ok, _("OK"));
+		case message::ok_button:
+			dlg.set_button_visible(message::ok, widget::tvisible::visible);
+			dlg.set_button_caption(message::ok, _("OK"));
 			break;
-		case tmessage::close_button:
-			dlg.set_button_visible(tmessage::ok, widget::tvisible::visible);
+		case message::close_button:
+			dlg.set_button_visible(message::ok, widget::tvisible::visible);
 			break;
-		case tmessage::ok_cancel_buttons:
-			dlg.set_button_visible(tmessage::ok, widget::tvisible::visible);
-			dlg.set_button_caption(tmessage::ok, _("OK"));
+		case message::ok_cancel_buttons:
+			dlg.set_button_visible(message::ok, widget::tvisible::visible);
+			dlg.set_button_caption(message::ok, _("OK"));
 		/* FALL DOWN */
-		case tmessage::cancel_button:
-			dlg.set_button_visible(tmessage::cancel,
+		case message::cancel_button:
+			dlg.set_button_visible(message::cancel,
 								   widget::tvisible::visible);
 			break;
-		case tmessage::yes_no_buttons:
-			dlg.set_button_visible(tmessage::ok, widget::tvisible::visible);
-			dlg.set_button_caption(tmessage::ok, _("Yes"));
-			dlg.set_button_visible(tmessage::cancel,
+		case message::yes_no_buttons:
+			dlg.set_button_visible(message::ok, widget::tvisible::visible);
+			dlg.set_button_caption(message::ok, _("Yes"));
+			dlg.set_button_visible(message::cancel,
 								   widget::tvisible::visible);
-			dlg.set_button_caption(tmessage::cancel, _("No"));
+			dlg.set_button_caption(message::cancel, _("No"));
 			break;
 	}
 
@@ -198,15 +204,14 @@ int show_message(CVideo& video,
 }
 
 void show_error_message(CVideo& video,
-						const std::string& message,
+						const std::string& msg,
 						bool message_use_markup)
 {
-	LOG_STREAM(err, lg::general()) << message << '\n';
+	LOG_STREAM(err, lg::general()) << msg << '\n';
 	show_message(video,
 				 _("Error"),
-				 message,
-				 tmessage::ok_button,
+				 msg,
+				 message::ok_button,
 				 message_use_markup);
 }
-
 } // namespace gui2

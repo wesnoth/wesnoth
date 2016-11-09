@@ -68,6 +68,8 @@ inline std::string config_to_string(const config& cfg, std::string only_children
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -94,7 +96,7 @@ namespace gui2
  * @end{table}
  */
 
-class tgamestate_inspector::model
+class gamestate_inspector::model
 {
 public:
 	std::string name;
@@ -176,7 +178,7 @@ private:
 	std::map<std::string, string_map> data_;
 };
 
-class tgamestate_inspector::view
+class gamestate_inspector::view
 {
 public:
 	view(window& window)
@@ -236,7 +238,7 @@ private:
 class single_mode_controller
 {
 public:
-	single_mode_controller(tgamestate_inspector::controller& c) : c(c)
+	single_mode_controller(gamestate_inspector::controller& c) : c(c)
 	{
 	}
 
@@ -245,9 +247,9 @@ public:
 	}
 
 protected:
-	tgamestate_inspector::model& model();
-	tgamestate_inspector::view& view();
-	tgamestate_inspector::controller& c;
+	gamestate_inspector::model& model();
+	gamestate_inspector::view& view();
+	gamestate_inspector::controller& c;
 	const config& vars();
 	const game_events::manager& events();
 	const display_context& dc();
@@ -256,7 +258,7 @@ protected:
 class variable_mode_controller : public single_mode_controller
 {
 public:
-	variable_mode_controller(tgamestate_inspector::controller& c)
+	variable_mode_controller(gamestate_inspector::controller& c)
 		: single_mode_controller(c)
 	{
 	}
@@ -269,7 +271,7 @@ public:
 class event_mode_controller : public single_mode_controller
 {
 public:
-	event_mode_controller(tgamestate_inspector::controller& c);
+	event_mode_controller(gamestate_inspector::controller& c);
 	void show_list(tree_view_node& node, bool is_wmi);
 	void show_event(tree_view_node& node, bool is_wmi);
 
@@ -280,7 +282,7 @@ private:
 class unit_mode_controller : public single_mode_controller
 {
 public:
-	unit_mode_controller(tgamestate_inspector::controller& c)
+	unit_mode_controller(gamestate_inspector::controller& c)
 		: single_mode_controller(c)
 	{
 	}
@@ -292,7 +294,7 @@ public:
 class team_mode_controller : public single_mode_controller
 {
 public:
-	team_mode_controller(tgamestate_inspector::controller& c)
+	team_mode_controller(gamestate_inspector::controller& c)
 		: single_mode_controller(c)
 	{
 	}
@@ -307,7 +309,7 @@ public:
 	void show_unit(tree_view_node& node, int side);
 };
 
-class tgamestate_inspector::controller
+class gamestate_inspector::controller
 {
 	friend class single_mode_controller;
 public:
@@ -345,7 +347,7 @@ public:
 
 	void handle_lua_button_clicked(window& window)
 	{
-		tlua_interpreter::display(window.video(), tlua_interpreter::GAME);
+		lua_interpreter::display(window.video(), lua_interpreter::GAME);
 		// The game state could've changed, so reset the dialog
 		callbacks.clear();
 		controllers.clear();
@@ -396,26 +398,26 @@ public:
 		auto left_button = find_widget<button>(&window, "page_left", false, true);
 		auto right_button = find_widget<button>(&window, "page_right", false, true);
 
-		stuff_list->set_selection_change_callback(std::bind(&tgamestate_inspector::controller::handle_stuff_list_item_clicked, this, _1));
+		stuff_list->set_selection_change_callback(std::bind(&gamestate_inspector::controller::handle_stuff_list_item_clicked, this, _1));
 
 		connect_signal_mouse_left_click(
 				*copy_button,
-				std::bind(&tgamestate_inspector::controller::handle_copy_button_clicked,
+				std::bind(&gamestate_inspector::controller::handle_copy_button_clicked,
 					this));
 
 		connect_signal_mouse_left_click(
 				*lua_button,
-				std::bind(&tgamestate_inspector::controller::handle_lua_button_clicked,
+				std::bind(&gamestate_inspector::controller::handle_lua_button_clicked,
 					this, std::ref(window)));
 
 		connect_signal_mouse_left_click(
 				*left_button,
-				std::bind(&tgamestate_inspector::controller::handle_page_button_clicked,
+				std::bind(&gamestate_inspector::controller::handle_page_button_clicked,
 					this, false));
 
 		connect_signal_mouse_left_click(
 				*right_button,
-				std::bind(&tgamestate_inspector::controller::handle_page_button_clicked,
+				std::bind(&gamestate_inspector::controller::handle_page_button_clicked,
 					this, true));
 
 		left_button->set_visible(widget::tvisible::invisible);
@@ -484,11 +486,11 @@ private:
 	const display_context& dc_;
 };
 
-tgamestate_inspector::model& single_mode_controller::model() {
+gamestate_inspector::model& single_mode_controller::model() {
 	return c.model_;
 }
 
-tgamestate_inspector::view& single_mode_controller::view() {
+gamestate_inspector::view& single_mode_controller::view() {
 	return c.view_;
 }
 
@@ -504,7 +506,7 @@ const display_context& single_mode_controller::dc() {
 	return c.dc_;
 }
 
-event_mode_controller::event_mode_controller(tgamestate_inspector::controller& c)
+event_mode_controller::event_mode_controller(gamestate_inspector::controller& c)
 	: single_mode_controller(c)
 {
 	single_mode_controller::events().write_events(events);
@@ -802,7 +804,7 @@ void team_mode_controller::show_units(tree_view_node&, int side)
 
 REGISTER_DIALOG(gamestate_inspector)
 
-tgamestate_inspector::tgamestate_inspector(const config& vars, const game_events::manager& events, const display_context& dc, const std::string& title)
+gamestate_inspector::gamestate_inspector(const config& vars, const game_events::manager& events, const display_context& dc, const std::string& title)
 	: title_(title)
 	, vars_(vars)
 	, events_(events)
@@ -811,7 +813,7 @@ tgamestate_inspector::tgamestate_inspector(const config& vars, const game_events
 	model_.reset(new model);
 }
 
-void tgamestate_inspector::pre_show(window& window)
+void gamestate_inspector::pre_show(window& window)
 {
 	view_.reset(new view(window));
 	controller_.reset(new controller(*model_, *view_, vars_, events_, dc_));
@@ -823,4 +825,5 @@ void tgamestate_inspector::pre_show(window& window)
 	view_->update(*model_);
 }
 
-} // end of namespace gui2
+} // namespace dialogs
+} // namespace gui2

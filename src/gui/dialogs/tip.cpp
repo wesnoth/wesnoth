@@ -27,6 +27,8 @@ static lg::log_domain log_config("config");
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -65,10 +67,10 @@ REGISTER_WINDOW(tooltip_large)
  * * tooltip
  * * helptip
  */
-class ttip : public tpopup
+class tooltip : public modeless_dialog
 {
 public:
-	ttip() : tpopup(), window_id_(), message_(), mouse_()
+	tooltip() : modeless_dialog(), window_id_(), message_(), mouse_()
 	{
 	}
 
@@ -105,14 +107,14 @@ private:
 	/** The size of the requestor. */
 	SDL_Rect source_rect_;
 
-	/** Inherited from tpopup. */
+	/** Inherited from modeless_dialog. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tpopup. */
+	/** Inherited from modeless_dialog. */
 	void pre_show(window& window);
 };
 
-void ttip::pre_show(window& window)
+void tooltip::pre_show(window& window)
 {
 	find_widget<control>(&window, "label", false).set_label(message_);
 
@@ -125,7 +127,7 @@ void ttip::pre_show(window& window)
 	window.set_variable("source_h", variant(source_rect_.h));
 }
 
-const std::string& ttip::window_id() const
+const std::string& tooltip::window_id() const
 {
 	return window_id_;
 }
@@ -133,13 +135,13 @@ const std::string& ttip::window_id() const
 namespace tip
 {
 
-static ttip& tip()
+static tooltip& tip()
 {
 	/*
 	 * Allocating a static tip object causes a segmentation fault when Wesnoth
 	 * terminates. So instead create an object on the heap and never free it.
 	 */
-	static ttip* t = new ttip();
+	static tooltip* t = new tooltip();
 	return *t;
 }
 
@@ -153,7 +155,7 @@ void show(CVideo& video,
 	 * For now allow invalid tip names, might turn them to invalid wml messages
 	 * later on.
 	 */
-	ttip& t = tip();
+	tooltip& t = tip();
 	t.set_window_id(window_id);
 	t.set_message(message);
 	t.set_mouse(mouse);
@@ -186,4 +188,5 @@ void remove()
 
 } // namespace tip
 
+} // namespace dialogs
 } // namespace gui2

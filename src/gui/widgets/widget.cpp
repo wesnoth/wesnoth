@@ -141,7 +141,7 @@ const window* widget::get_window() const
 	return dynamic_cast<const window*>(result);
 }
 
-tdialog* widget::dialog()
+dialogs::modal_dialog* widget::dialog()
 {
 	window* window = get_window();
 	return window ? window->dialog() : nullptr;

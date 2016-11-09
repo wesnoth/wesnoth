@@ -225,6 +225,8 @@ std::string make_display_dependencies(const std::string& addon_id,
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -303,7 +305,7 @@ namespace gui2
 
 REGISTER_DIALOG(addon_description)
 
-taddon_description::taddon_description(const std::string& addon_id,
+addon_description::addon_description(const std::string& addon_id,
 									   const addons_list& addons_list,
 									   const addons_tracking_list& addon_states)
 	: feedback_url_()
@@ -355,19 +357,19 @@ taddon_description::taddon_description(const std::string& addon_id,
 	}
 }
 
-void taddon_description::browse_url_callback()
+void addon_description::browse_url_callback()
 {
 	/* TODO: ask for confirmation */
 
 	desktop::open_object(feedback_url_);
 }
 
-void taddon_description::copy_url_callback()
+void addon_description::copy_url_callback()
 {
 	desktop::clipboard::copy_to_clipboard(feedback_url_, false);
 }
 
-void taddon_description::pre_show(window& window)
+void addon_description::pre_show(window& window)
 {
 	control& url_none = find_widget<control>(&window, "url_none", false);
 	button& url_go_button = find_widget<button>(&window, "url_go", false);
@@ -382,11 +384,11 @@ void taddon_description::pre_show(window& window)
 
 		connect_signal_mouse_left_click(
 				url_go_button,
-				std::bind(&taddon_description::browse_url_callback, this));
+				std::bind(&addon_description::browse_url_callback, this));
 
 		connect_signal_mouse_left_click(
 				url_copy_button,
-				std::bind(&taddon_description::copy_url_callback, this));
+				std::bind(&addon_description::copy_url_callback, this));
 
 		if (!desktop::clipboard::available()) {
 			url_copy_button.set_active(false);
@@ -408,4 +410,5 @@ void taddon_description::pre_show(window& window)
 	}
 }
 
-} // namespace  gui2
+} // namespace dialogs
+} // namespace gui2

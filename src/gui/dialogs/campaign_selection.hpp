@@ -21,11 +21,13 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
-class tcampaign_selection : public tdialog
+class campaign_selection : public modal_dialog
 {
 public:
-	explicit tcampaign_selection(ng::create_engine& eng) :
+	explicit campaign_selection(ng::create_engine& eng) :
 		engine_(eng),
 		choice_(-1),
 		deterministic_(false)
@@ -49,15 +51,15 @@ private:
 	/** Called when another campaign is selected. */
 	void campaign_selected(window& window);
 
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
 	void show_settings(CVideo& video);
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void pre_show(window& window);
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void post_show(window& window);
 
 
@@ -72,6 +74,7 @@ private:
 	bool deterministic_;
 };
 
+} // namespace dialogs
 } // namespace gui2
 
 #endif

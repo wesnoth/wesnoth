@@ -31,6 +31,8 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -63,7 +65,7 @@ namespace gui2
 
 REGISTER_DIALOG(editor_set_starting_position)
 
-teditor_set_starting_position::teditor_set_starting_position(
+editor_set_starting_position::editor_set_starting_position(
 		unsigned current_player,
 		unsigned maximum_players,
 		const std::vector<map_location>& starting_positions)
@@ -75,7 +77,7 @@ teditor_set_starting_position::teditor_set_starting_position(
 	}
 }
 
-void teditor_set_starting_position::pre_show(window& window)
+void editor_set_starting_position::pre_show(window& window)
 {
 	listbox& list = find_widget<listbox>(&window, "listbox", false);
 	window.keyboard_capture(&list);
@@ -111,7 +113,7 @@ void teditor_set_starting_position::pre_show(window& window)
 	list.select_row(selection_);
 }
 
-void teditor_set_starting_position::post_show(window& window)
+void editor_set_starting_position::post_show(window& window)
 {
 	if(get_retval() != window::OK) {
 		return;
@@ -120,4 +122,5 @@ void teditor_set_starting_position::post_show(window& window)
 	listbox& list = find_widget<listbox>(&window, "listbox", false);
 	selection_ = list.get_selected_row();
 }
-}
+} // namespace dialogs
+} // namespace gui2

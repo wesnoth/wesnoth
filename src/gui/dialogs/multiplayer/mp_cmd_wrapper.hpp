@@ -21,8 +21,10 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
-class tmp_cmd_wrapper : public tdialog
+class mp_cmd_wrapper : public modal_dialog
 {
 public:
 	/**
@@ -30,7 +32,7 @@ public:
 	 *
 	 * The text which shows the selected user.
 	 */
-	explicit tmp_cmd_wrapper(const t_string& user);
+	explicit mp_cmd_wrapper(const t_string& user);
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
@@ -57,13 +59,14 @@ private:
 	/** The duration of a ban. */
 	std::string time_;
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void pre_show(window& window);
 
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 };
 
+} // namespace dialogs
 } // namespace gui2
 
 #endif // GUI_DIALOGS_MP_CMD_WRAPPER_HPP_INCLUDED

@@ -26,6 +26,8 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -51,12 +53,12 @@ namespace gui2
 
 REGISTER_DIALOG(theme_list)
 
-ttheme_list::ttheme_list(const std::vector<theme_info>& themes, int selection)
+theme_list::theme_list(const std::vector<theme_info>& themes, int selection)
 	: index_(selection), themes_(themes)
 {
 }
 
-void ttheme_list::pre_show(window& window)
+void theme_list::pre_show(window& window)
 {
 	listbox& list = find_widget<listbox>(&window, "themes", false);
 	window.keyboard_capture(&list);
@@ -86,7 +88,7 @@ void ttheme_list::pre_show(window& window)
 	index_ = -1;
 }
 
-void ttheme_list::post_show(window& window)
+void theme_list::post_show(window& window)
 {
 	if(get_retval() != window::OK) {
 		return;
@@ -95,4 +97,5 @@ void ttheme_list::post_show(window& window)
 	listbox& list = find_widget<listbox>(&window, "themes", false);
 	index_ = list.get_selected_row();
 }
-}
+} // namespace dialogs
+} // namespace gui2

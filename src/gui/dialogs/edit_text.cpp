@@ -20,6 +20,8 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -40,7 +42,7 @@ namespace gui2
 REGISTER_DIALOG(edit_text)
 
 //TODO: add  a way to disallow certain chracters (like spaces or ")
-tedit_text::tedit_text(const std::string& title,
+edit_text::edit_text(const std::string& title,
 					   const std::string& label,
 					   std::string& text)
 {
@@ -48,4 +50,5 @@ tedit_text::tedit_text(const std::string& title,
 	register_label("label", true, label, true);
 	register_text("text", true, text, true);
 }
-}
+} // namespace dialogs
+} // namespace gui2

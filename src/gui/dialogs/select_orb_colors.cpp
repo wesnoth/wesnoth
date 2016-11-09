@@ -29,10 +29,13 @@
 
 #include "utils/functional.hpp"
 
-namespace gui2 {
+namespace gui2
+{
+namespace dialogs
+{
 REGISTER_DIALOG(select_orb_colors);
 
-tselect_orb_colors::tselect_orb_colors()
+select_orb_colors::select_orb_colors()
 	: show_unmoved_(preferences::show_unmoved_orb())
 	, show_partial_(preferences::show_partial_orb())
 	, show_moved_(preferences::show_moved_orb())
@@ -41,7 +44,7 @@ tselect_orb_colors::tselect_orb_colors()
 {
 }
 
-void tselect_orb_colors::pre_show(window& window)
+void select_orb_colors::pre_show(window& window)
 {
 	setup_orb_group("unmoved", show_unmoved_, preferences::unmoved_color(), window);
 	setup_orb_group("partial", show_partial_, preferences::partial_color(), window);
@@ -51,12 +54,12 @@ void tselect_orb_colors::pre_show(window& window)
 	
 	button& reset = find_widget<button>(&window, "orb_defaults", false);
 	connect_signal_mouse_left_click(reset, std::bind(
-		&tselect_orb_colors::handle_reset_click,
+		&select_orb_colors::handle_reset_click,
 		this, std::ref(window)
 	));
 }
 
-void tselect_orb_colors::post_show(window&)
+void select_orb_colors::post_show(window&)
 {
 	if(get_retval() == window::OK) {
 		preferences::set_show_unmoved_orb(show_unmoved_);
@@ -73,14 +76,14 @@ void tselect_orb_colors::post_show(window&)
 	}
 }
 
-void tselect_orb_colors::setup_orb_group(const std::string& base_id, bool& shown, const std::string& initial, window& window, bool connect)
+void select_orb_colors::setup_orb_group(const std::string& base_id, bool& shown, const std::string& initial, window& window, bool connect)
 {
 	std::string prefix = "orb_" + base_id + "_";
 	toggle_button& toggle = find_widget<toggle_button>(&window, prefix + "show", false);
 	toggle.set_value_bool(shown);
 	if(connect) {
 		connect_signal_mouse_left_click(toggle, std::bind(
-			&tselect_orb_colors::handle_toggle_click,
+			&select_orb_colors::handle_toggle_click,
 			this,
 			std::ref(shown)
 		));
@@ -102,12 +105,12 @@ void tselect_orb_colors::setup_orb_group(const std::string& base_id, bool& shown
 	group.set_member_states(initial);
 }
 
-void tselect_orb_colors::handle_toggle_click(bool& storage)
+void select_orb_colors::handle_toggle_click(bool& storage)
 {
 	storage = !storage;
 }
 
-void tselect_orb_colors::handle_reset_click(window& window)
+void select_orb_colors::handle_reset_click(window& window)
 {
 	show_unmoved_ = game_config::show_unmoved_orb;
 	show_partial_ = game_config::show_partial_orb;
@@ -122,4 +125,5 @@ void tselect_orb_colors::handle_reset_click(window& window)
 	setup_orb_group("enemy", show_enemy_, game_config::colors::enemy_orb_color, window, false);
 }
 
-}
+} // namespace dialogs
+} // namespace gui2

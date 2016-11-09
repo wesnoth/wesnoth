@@ -21,21 +21,23 @@ namespace gui2
 {
 class label;
 class button;
+namespace dialogs
+{
 
-class tgame_cache_options : public tdialog
+class game_cache_options : public modal_dialog
 {
 public:
 	/** Constructor. */
-	tgame_cache_options();
+	game_cache_options();
 
 	/**
      * The display function.
 	 *
-	 * See @ref tdialog for more information.
+	 * See @ref modal_dialog for more information.
      */
 	static void display(CVideo& video)
 	{
-		tgame_cache_options().show(video);
+		game_cache_options().show(video);
 	}
 
 private:
@@ -57,16 +59,17 @@ private:
 
 	void update_cache_size_display();
 
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void pre_show(window& window);
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void post_show(window& window);
 };
 
-}
+} // namespace dialogs
+} // namespace gui2
 
 #endif

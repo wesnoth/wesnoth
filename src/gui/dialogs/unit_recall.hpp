@@ -31,12 +31,15 @@ namespace gui2
 
 class text_box_base;
 
-class tunit_recall : public tdialog
+namespace dialogs
+{
+
+class unit_recall : public modal_dialog
 {
 	typedef std::vector<unit_const_ptr> recalls_ptr_vector;
 
 public:
-	tunit_recall(recalls_ptr_vector& recall_list, team& team);
+	unit_recall(recalls_ptr_vector& recall_list, team& team);
 
 	int get_selected_index() const
 	{
@@ -59,16 +62,17 @@ private:
 	void dismiss_unit(window& window);
 	void show_help(window& window);
 
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void pre_show(window& window);
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void post_show(window& window);
 };
 
+} // namespace dialogs
 } // namespace gui2
 
 #endif /* ! GUI_DIALOGS_UNIT_RECALL_HPP_INCLUDED */

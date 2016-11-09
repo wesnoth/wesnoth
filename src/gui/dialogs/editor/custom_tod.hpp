@@ -38,15 +38,18 @@ class image;
 class slider;
 class text_box;
 
-class tcustom_tod : public tdialog
+namespace dialogs
+{
+
+class custom_tod : public modal_dialog
 {
 public:
-	tcustom_tod(display& display,
+	custom_tod(display& display,
 				const std::vector<time_of_day>& tods);
 
 	static bool execute(display& display, const std::vector<time_of_day>& tods)
 	{
-		return tcustom_tod(display, tods).show(display.video());
+		return custom_tod(display, tods).show(display.video());
 	}
 
 private:
@@ -74,13 +77,13 @@ private:
 
 	void update_selected_tod_info(window& window);
 
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void pre_show(window& window);
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void post_show(window& window);
 
 	/** Current map generator index */
@@ -109,6 +112,7 @@ private:
 	display& display_;
 };
 
+} // namespace dialogs
 } // namespace gui2
 
 #endif

@@ -60,10 +60,12 @@ static lg::log_domain log_lobby("lobby");
 
 namespace gui2
 {
+namespace dialogs
+{
 
 REGISTER_DIALOG(lobby_main)
 
-void tsub_player_list::init(window& w, const std::string& lbl, const bool unfolded)
+void sub_player_list::init(window& w, const std::string& lbl, const bool unfolded)
 {
 	tree_view& parent_tree = find_widget<tree_view>(&w, "player_tree", false);
 
@@ -83,7 +85,7 @@ void tsub_player_list::init(window& w, const std::string& lbl, const bool unfold
 	assert(label_player_count);
 }
 
-void tsub_player_list::update_player_count_label()
+void sub_player_list::update_player_count_label()
 {
 	assert(tree);
 	assert(label_player_count);
@@ -98,7 +100,7 @@ void tsub_player_list::update_player_count_label()
 	label_player_count->set_label((formatter() << "(" << tree->count_children() << ")").str());
 }
 
-void tplayer_list::init(window& w)
+void player_list::init(window& w)
 {
 	active_game.init(w, _("Selected Game"));
 	other_games.init(w, _("Other Games"));
@@ -111,19 +113,19 @@ void tplayer_list::init(window& w)
 	tree = find_widget<tree_view>(&w, "player_tree", false, true);
 }
 
-void tplayer_list::update_sort_icons()
+void player_list::update_sort_icons()
 {
 	sort_by_name->set_icon_name(sort_by_name->get_value() ? "lobby/sort-az.png" : "lobby/sort-az-off.png");
 	sort_by_relation->set_icon_name(sort_by_relation->get_value() ? "lobby/sort-friend.png" : "lobby/sort-friend-off.png");
 }
 
-bool tlobby_main::logout_prompt()
+bool lobby_main::logout_prompt()
 {
 	return show_prompt(_("Do you really want to log out?"));
 }
 
-tlobby_main::tlobby_main(const config& game_config, lobby_info& info, wesnothd_connection &connection)
-	: quit_confirmation(&tlobby_main::logout_prompt)
+lobby_main::lobby_main(const config& game_config, lobby_info& info, wesnothd_connection &connection)
+	: quit_confirmation(&lobby_main::logout_prompt)
 	, game_config_(game_config)
 	, gamelistbox_(nullptr)
 	, window_(nullptr)
@@ -153,7 +155,7 @@ tlobby_main::tlobby_main(const config& game_config, lobby_info& info, wesnothd_c
 
 struct lobby_delay_gamelist_update_guard
 {
-	lobby_delay_gamelist_update_guard(tlobby_main& l) : l(l)
+	lobby_delay_gamelist_update_guard(lobby_main& l) : l(l)
 	{
 		l.delay_gamelist_update_ = true;
 	}
@@ -161,10 +163,10 @@ struct lobby_delay_gamelist_update_guard
 	{
 		l.delay_gamelist_update_ = false;
 	}
-	tlobby_main& l;
+	lobby_main& l;
 };
 
-tlobby_main::~tlobby_main()
+lobby_main::~lobby_main()
 {
 	if(lobby_update_timer_) {
 		remove_timer(lobby_update_timer_);
@@ -177,7 +179,7 @@ static bool fullscreen(CVideo& video)
 	return true;
 }
 
-void tlobby_main::post_build(window& win)
+void lobby_main::post_build(window& win)
 {
 	/** @todo Should become a global hotkey after 1.8, then remove it here. */
 	win.register_hotkey(hotkey::HOTKEY_FULLSCREEN, std::bind(fullscreen, std::ref(win.video())));
@@ -249,7 +251,7 @@ std::string colorize(const std::string& str, const std::string& color)
 
 } // end anonymous namespace
 
-void tlobby_main::update_gamelist()
+void lobby_main::update_gamelist()
 {
 	SCOPE_LB;
 	gamelistbox_->clear();
@@ -284,7 +286,7 @@ void tlobby_main::update_gamelist()
 	gamelistbox_->set_row_shown(lobby_info_.games_visibility());
 }
 
-void tlobby_main::update_gamelist_diff()
+void lobby_main::update_gamelist_diff()
 {
 	SCOPE_LB;
 	lobby_info_.make_games_vector();
@@ -384,7 +386,7 @@ void tlobby_main::update_gamelist_diff()
 	gamelistbox_->set_row_shown(lobby_info_.games_visibility());
 }
 
-void tlobby_main::update_gamelist_header()
+void lobby_main::update_gamelist_header()
 {
 #ifndef GUI2_EXPERIMENTAL_LISTBOX
 	const std::string games_string = vgettext("Games: showing $num_shown out of $num_total", {
@@ -396,7 +398,7 @@ void tlobby_main::update_gamelist_header()
 #endif
 }
 
-std::map<std::string, string_map> tlobby_main::make_game_row_data(const game_info& game)
+std::map<std::string, string_map> lobby_main::make_game_row_data(const game_info& game)
 {
 	std::map<std::string, string_map> data;
 
@@ -447,7 +449,7 @@ std::map<std::string, string_map> tlobby_main::make_game_row_data(const game_inf
 	return data;
 }
 
-void tlobby_main::adjust_game_row_contents(const game_info& game,
+void lobby_main::adjust_game_row_contents(const game_info& game,
 										   int idx,
 										   grid* grid)
 {
@@ -457,7 +459,7 @@ void tlobby_main::adjust_game_row_contents(const game_info& game,
 	toggle_panel& row_panel = find_widget<toggle_panel>(grid, "panel", false);
 
 	row_panel.set_callback_mouse_left_double_click(
-			std::bind(&tlobby_main::join_or_observe, this, idx));
+			std::bind(&lobby_main::join_or_observe, this, idx));
 
 	set_visible_if_exists(grid, "time_limit_icon",   !game.time_limit.empty());
 	set_visible_if_exists(grid, "vision_fog",         game.fog);
@@ -476,7 +478,7 @@ void tlobby_main::adjust_game_row_contents(const game_info& game,
 	if(button* join_button = dynamic_cast<button*>(grid->find("join", false))) {
 		connect_signal_mouse_left_click(
 				*join_button,
-				std::bind(&tlobby_main::join_global_button_callback,
+				std::bind(&lobby_main::join_global_button_callback,
 							this,
 							std::ref(*window_)));
 		join_button->set_active(game.can_join());
@@ -485,7 +487,7 @@ void tlobby_main::adjust_game_row_contents(const game_info& game,
 	if(button* observe_button = dynamic_cast<button*>(grid->find("observe", false))) {
 		connect_signal_mouse_left_click(
 				*observe_button,
-				std::bind(&tlobby_main::observe_global_button_callback,
+				std::bind(&lobby_main::observe_global_button_callback,
 							this,
 							std::ref(*window_)));
 		observe_button->set_active(game.can_observe());
@@ -497,9 +499,9 @@ void tlobby_main::adjust_game_row_contents(const game_info& game,
 	}
 }
 
-void tlobby_main::update_gamelist_filter()
+void lobby_main::update_gamelist_filter()
 {
-	DBG_LB << "tlobby_main::update_gamelist_filter\n";
+	DBG_LB << "lobby_main::update_gamelist_filter\n";
 	lobby_info_.apply_game_filter();
 	DBG_LB << "Games in lobby_info: " << lobby_info_.games().size()
 		   << ", games in listbox: " << gamelistbox_->get_item_count() << "\n";
@@ -509,7 +511,7 @@ void tlobby_main::update_gamelist_filter()
 	update_gamelist_header();
 }
 
-void tlobby_main::update_playerlist()
+void lobby_main::update_playerlist()
 {
 	if(delay_playerlist_update_) {
 		return;
@@ -540,7 +542,7 @@ void tlobby_main::update_playerlist()
 
 	for(auto userptr : lobby_info_.users_sorted()) {
 		user_info& user = *userptr;
-		tsub_player_list* target_list(nullptr);
+		sub_player_list* target_list(nullptr);
 		std::map<std::string, string_map> data;
 
 		std::string name = user.name;
@@ -621,7 +623,7 @@ void tlobby_main::update_playerlist()
 		tree_view_node& player = target_list->tree->add_child("player", tree_group_item);
 
 		find_widget<toggle_panel>(&player, "tree_view_node_label", false)
-				.set_callback_mouse_left_double_click(std::bind(&tlobby_main::user_dialog_callback, this, userptr));
+				.set_callback_mouse_left_double_click(std::bind(&lobby_main::user_dialog_callback, this, userptr));
 	}
 
 	player_list_.active_game.update_player_count_label();
@@ -632,7 +634,7 @@ void tlobby_main::update_playerlist()
 	player_list_dirty_ = false;
 }
 
-void tlobby_main::update_selected_game()
+void lobby_main::update_selected_game()
 {
 	const int idx = gamelistbox_->get_selected_row();
 	bool can_join = false, can_observe = false;
@@ -652,7 +654,7 @@ void tlobby_main::update_selected_game()
 	player_list_dirty_ = true;
 }
 
-void tlobby_main::signal_handler_key_down(SDL_Keycode key, bool& handled, bool& halt)
+void lobby_main::signal_handler_key_down(SDL_Keycode key, bool& handled, bool& halt)
 {
 	if(key == SDLK_ESCAPE) {
 		if(quit()) {
@@ -664,7 +666,7 @@ void tlobby_main::signal_handler_key_down(SDL_Keycode key, bool& handled, bool& 
 	}
 }
 
-void tlobby_main::pre_show(window& window)
+void lobby_main::pre_show(window& window)
 {
 	SCOPE_LB;
 
@@ -672,10 +674,10 @@ void tlobby_main::pre_show(window& window)
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	connect_signal_notify_modified(
 			*gamelistbox_,
-			std::bind(&tlobby_main::gamelist_change_callback, *this, std::ref(window)));
+			std::bind(&lobby_main::gamelist_change_callback, *this, std::ref(window)));
 #else
 	gamelistbox_->set_callback_value_change(
-			dialog_callback<tlobby_main, &tlobby_main::gamelist_change_callback>);
+			dialog_callback<lobby_main, &lobby_main::gamelist_change_callback>);
 #endif
 
 	window.keyboard_capture(gamelistbox_);
@@ -687,16 +689,16 @@ void tlobby_main::pre_show(window& window)
 	player_list_.update_sort_icons();
 
 	player_list_.sort_by_name->set_callback_state_change(
-			std::bind(&tlobby_main::player_filter_callback, this, _1));
+			std::bind(&lobby_main::player_filter_callback, this, _1));
 	player_list_.sort_by_relation->set_callback_state_change(
-			std::bind(&tlobby_main::player_filter_callback, this, _1));
+			std::bind(&lobby_main::player_filter_callback, this, _1));
 
 	window.set_enter_disabled(true);
 	window.set_escape_disabled(true);
 
 	// A new key handler to deal with escape in a different manner.
 	window.connect_signal<event::SDL_KEY_DOWN>(
-		std::bind(&tlobby_main::signal_handler_key_down, this, _5, _3, _4),
+		std::bind(&lobby_main::signal_handler_key_down, this, _5, _3, _4),
 		event::dispatcher::front_pre_child);
 
 	window_ = &window;
@@ -710,21 +712,21 @@ void tlobby_main::pre_show(window& window)
 
 	connect_signal_mouse_left_click(
 		find_widget<button>(&window, "refresh", false),
-		std::bind(&tlobby_main::refresh_button_callback, this, std::ref(window)));
+		std::bind(&lobby_main::refresh_button_callback, this, std::ref(window)));
 
 	connect_signal_mouse_left_click(
 		find_widget<button>(&window, "show_preferences", false),
-		std::bind(&tlobby_main::show_preferences_button_callback, this, std::ref(window)));
+		std::bind(&lobby_main::show_preferences_button_callback, this, std::ref(window)));
 
 	connect_signal_mouse_left_click(
 		find_widget<button>(&window, "join_global", false),
-		std::bind(&tlobby_main::join_global_button_callback, this, std::ref(window)));
+		std::bind(&lobby_main::join_global_button_callback, this, std::ref(window)));
 
 	find_widget<button>(&window, "join_global", false).set_active(false);
 
 	connect_signal_mouse_left_click(
 		find_widget<button>(&window, "observe_global", false),
-		std::bind(&tlobby_main::observe_global_button_callback, this, std::ref(window)));
+		std::bind(&lobby_main::observe_global_button_callback, this, std::ref(window)));
 
 	find_widget<button>(&window, "observe_global", false).set_active(false);
 
@@ -739,7 +741,7 @@ void tlobby_main::pre_show(window& window)
 	}
 
 	replay_options.connect_click_handler(
-			std::bind(&tlobby_main::skip_replay_changed_callback, this, std::ref(window)));
+			std::bind(&lobby_main::skip_replay_changed_callback, this, std::ref(window)));
 
 	filter_friends_ = find_widget<toggle_button>(&window, "filter_with_friends", false, true);
 	filter_ignored_ = find_widget<toggle_button>(&window, "filter_without_ignored", false, true);
@@ -748,25 +750,25 @@ void tlobby_main::pre_show(window& window)
 	filter_text_    = find_widget<text_box>(&window, "filter_text", false, true);
 
 	filter_friends_->set_callback_state_change(
-			std::bind(&tlobby_main::game_filter_change_callback, this, _1));
+			std::bind(&lobby_main::game_filter_change_callback, this, _1));
 	filter_ignored_->set_callback_state_change(
-			std::bind(&tlobby_main::game_filter_change_callback, this, _1));
+			std::bind(&lobby_main::game_filter_change_callback, this, _1));
 	filter_slots_->set_callback_state_change(
-			std::bind(&tlobby_main::game_filter_change_callback, this, _1));
+			std::bind(&lobby_main::game_filter_change_callback, this, _1));
 	filter_invert_->set_callback_state_change(
-			std::bind(&tlobby_main::game_filter_change_callback, this, _1));
+			std::bind(&lobby_main::game_filter_change_callback, this, _1));
 	connect_signal_pre_key_press(
 			*filter_text_,
-			std::bind(&tlobby_main::game_filter_keypress_callback, this, _5));
+			std::bind(&lobby_main::game_filter_keypress_callback, this, _5));
 
 	chatbox_->room_window_open("lobby", true, false);
 	chatbox_->active_window_changed();
 	game_filter_reload();
 
 	// Force first update to be directly.
-	tlobby_main::network_handler();
+	lobby_main::network_handler();
 	lobby_update_timer_ = add_timer(
-		game_config::lobby_network_timer, std::bind(&tlobby_main::network_handler, this), true);
+		game_config::lobby_network_timer, std::bind(&lobby_main::network_handler, this), true);
 
 	// Set up Lua plugin context
 	plugins_context_.reset(new plugins_context("Multiplayer Lobby"));
@@ -795,7 +797,7 @@ void tlobby_main::pre_show(window& window)
 	plugins_context_->set_accessor("game_config", [this](const config&) { return game_config_; });
 }
 
-void tlobby_main::post_show(window& /*window*/)
+void lobby_main::post_show(window& /*window*/)
 {
 	window_ = nullptr;
 	remove_timer(lobby_update_timer_);
@@ -803,7 +805,7 @@ void tlobby_main::post_show(window& /*window*/)
 	plugins_context_.reset();
 }
 
-void tlobby_main::network_handler()
+void lobby_main::network_handler()
 {
 	try {
 		config data;
@@ -830,7 +832,7 @@ void tlobby_main::network_handler()
 	}
 }
 
-void tlobby_main::process_network_data(const config& data)
+void lobby_main::process_network_data(const config& data)
 {
 	if(const config& error = data.child("error")) {
 		throw wesnothd_error(error["message"]);
@@ -843,7 +845,7 @@ void tlobby_main::process_network_data(const config& data)
 	chatbox_->process_network_data(data);
 }
 
-void tlobby_main::process_gamelist(const config& data)
+void lobby_main::process_gamelist(const config& data)
 {
 	lobby_info_.process_gamelist(data);
 	DBG_LB << "Received gamelist\n";
@@ -851,7 +853,7 @@ void tlobby_main::process_gamelist(const config& data)
 	gamelist_diff_update_ = false;
 }
 
-void tlobby_main::process_gamelist_diff(const config& data)
+void lobby_main::process_gamelist_diff(const config& data)
 {
 	if(lobby_info_.process_gamelist_diff(data)) {
 		DBG_LB << "Received gamelist diff\n";
@@ -871,21 +873,21 @@ void tlobby_main::process_gamelist_diff(const config& data)
 	}
 }
 
-void tlobby_main::observe_global_button_callback(window& window)
+void lobby_main::observe_global_button_callback(window& window)
 {
 	if(do_game_join(gamelistbox_->get_selected_row(), true)) {
 		window.set_retval(OBSERVE);
 	}
 }
 
-void tlobby_main::join_global_button_callback(window& window)
+void lobby_main::join_global_button_callback(window& window)
 {
 	if(do_game_join(gamelistbox_->get_selected_row(), false)) {
 		window.set_retval(JOIN);
 	}
 }
 
-void tlobby_main::join_or_observe(int idx)
+void lobby_main::join_or_observe(int idx)
 {
 	const game_info& game = *lobby_info_.games()[idx];
 	if(do_game_join(idx, !game.can_join())) {
@@ -908,7 +910,7 @@ static bool handle_addon_requirements_gui(CVideo& v, const std::vector<game_info
 				err_msg += "• " + a.message + "\n";
 			}
 		}
-		gui2::show_message(v, e_title, err_msg, gui2::tmessage::auto_close);
+		gui2::show_message(v, e_title, err_msg, message::auto_close);
 
 		return false;
 	} else if(addon_outcome == game_info::NEED_DOWNLOAD) {
@@ -930,7 +932,7 @@ static bool handle_addon_requirements_gui(CVideo& v, const std::vector<game_info
 
 		assert(needs_download.size() > 0);
 
-		if(gui2::show_message(v, e_title, err_msg, gui2::tmessage::yes_no_buttons, true) == gui2::window::OK) {
+		if(gui2::show_message(v, e_title, err_msg, message::yes_no_buttons, true) == gui2::window::OK) {
 			// Begin download session
 			ad_hoc_addon_fetch_session(v, needs_download);
 
@@ -945,7 +947,7 @@ static bool handle_addon_requirements_gui(CVideo& v, const std::vector<game_info
 	return false;
 }
 
-bool tlobby_main::do_game_join(int idx, bool observe)
+bool lobby_main::do_game_join(int idx, bool observe)
 {
 	if(idx < 0 || idx >= static_cast<int>(lobby_info_.games().size())) {
 		ERR_LB << "Requested join/observe of a game with index out of range: "
@@ -983,7 +985,7 @@ bool tlobby_main::do_game_join(int idx, bool observe)
 	join["observe"] = observe;
 	if(join && !observe && game.password_required) {
 		std::string password;
-		if(!gui2::tmp_join_game_password_prompt::execute(password, window_->video())) {
+		if(!gui2::dialogs::mp_join_game_password_prompt::execute(password, window_->video())) {
 			return false;
 		}
 
@@ -997,12 +999,12 @@ bool tlobby_main::do_game_join(int idx, bool observe)
 	return true;
 }
 
-void tlobby_main::refresh_button_callback(window& /*window*/)
+void lobby_main::refresh_button_callback(window& /*window*/)
 {
 	wesnothd_connection_.send_data(config("refresh_lobby"));
 }
 
-void tlobby_main::show_preferences_button_callback(window& window)
+void lobby_main::show_preferences_button_callback(window& window)
 {
 	if(preferences_callback_) {
 		preferences_callback_();
@@ -1018,7 +1020,7 @@ void tlobby_main::show_preferences_button_callback(window& window)
 	}
 }
 
-void tlobby_main::game_filter_reload()
+void lobby_main::game_filter_reload()
 {
 	lobby_info_.clear_game_filter();
 
@@ -1050,7 +1052,7 @@ void tlobby_main::game_filter_reload()
 	lobby_info_.set_game_filter_invert(filter_invert_->get_value_bool());
 }
 
-void tlobby_main::game_filter_keypress_callback(const SDL_Keycode key)
+void lobby_main::game_filter_keypress_callback(const SDL_Keycode key)
 {
 	if(key == SDLK_RETURN || key == SDLK_KP_ENTER) {
 		game_filter_reload();
@@ -1058,18 +1060,18 @@ void tlobby_main::game_filter_keypress_callback(const SDL_Keycode key)
 	}
 }
 
-void tlobby_main::game_filter_change_callback(gui2::widget& /*widget*/)
+void lobby_main::game_filter_change_callback(gui2::widget& /*widget*/)
 {
 	game_filter_reload();
 	update_gamelist_filter();
 }
 
-void tlobby_main::gamelist_change_callback(window& /*window*/)
+void lobby_main::gamelist_change_callback(window& /*window*/)
 {
 	update_selected_game();
 }
 
-void tlobby_main::player_filter_callback(gui2::widget& /*widget*/)
+void lobby_main::player_filter_callback(gui2::widget& /*widget*/)
 {
 	player_list_.update_sort_icons();
 
@@ -1080,9 +1082,9 @@ void tlobby_main::player_filter_callback(gui2::widget& /*widget*/)
 	// window_->invalidate_layout();
 }
 
-void tlobby_main::user_dialog_callback(user_info* info)
+void lobby_main::user_dialog_callback(user_info* info)
 {
-	tlobby_player_info dlg(*chatbox_, *info, lobby_info_);
+	lobby_player_info dlg(*chatbox_, *info, lobby_info_);
 
 	lobby_delay_gamelist_update_guard g(*this);
 
@@ -1119,7 +1121,7 @@ void tlobby_main::user_dialog_callback(user_info* info)
 	wesnothd_connection_.send_data(config("refresh_lobby"));
 }
 
-void tlobby_main::skip_replay_changed_callback(window& window)
+void lobby_main::skip_replay_changed_callback(window& window)
 {
 	// TODO: this prefence should probably be controlled with an enum
 	const int value = find_widget<menu_button>(&window, "replay_options", false).get_value();
@@ -1127,7 +1129,7 @@ void tlobby_main::skip_replay_changed_callback(window& window)
 	preferences::set_blindfold_replay(value == 2);
 }
 
-int tlobby_main::get_game_index_from_id(const int game_id) const
+int lobby_main::get_game_index_from_id(const int game_id) const
 {
 	if(game_info* game = lobby_info_.get_game_by_id(game_id)) {
 		return std::find(lobby_info_.games().begin(), lobby_info_.games().end(), game) - lobby_info_.games().begin();
@@ -1136,4 +1138,5 @@ int tlobby_main::get_game_index_from_id(const int game_id) const
 	return -1;
 }
 
+} // namespace dialogs
 } // namespace gui2

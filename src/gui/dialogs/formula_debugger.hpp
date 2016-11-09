@@ -24,19 +24,21 @@ class formula_debugger;
 
 namespace gui2
 {
+namespace dialogs
+{
 
-class tformula_debugger : public tdialog
+class formula_debugger : public modal_dialog
 {
 public:
-	explicit tformula_debugger(game_logic::formula_debugger& fdb) : fdb_(fdb)
+	explicit formula_debugger(game_logic::formula_debugger& fdb) : fdb_(fdb)
 	{
 	}
 
 private:
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void pre_show(window& window);
 
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
 	/***** ***** button callbacks ***** *****/
@@ -51,6 +53,7 @@ private:
 	game_logic::formula_debugger& fdb_;
 };
 
+} // namespace dialogs
 } // namespace gui2
 
 #endif /* ! GUI_DIALOGS_FORMULA_DEBUGGER_HPP_INCLUDED */

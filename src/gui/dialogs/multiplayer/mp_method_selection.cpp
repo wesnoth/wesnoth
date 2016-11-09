@@ -31,6 +31,8 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -54,7 +56,7 @@ namespace gui2
 
 REGISTER_DIALOG(mp_method_selection)
 
-void tmp_method_selection::pre_show(window& window)
+void mp_method_selection::pre_show(window& window)
 {
 	user_name_ = preferences::login();
 	text_box* user_widget
@@ -68,7 +70,7 @@ void tmp_method_selection::pre_show(window& window)
 	window.add_to_keyboard_chain(list);
 }
 
-void tmp_method_selection::post_show(window& window)
+void mp_method_selection::post_show(window& window)
 {
 	if(get_retval() == window::OK) {
 		text_box& user_widget
@@ -83,4 +85,5 @@ void tmp_method_selection::post_show(window& window)
 	}
 }
 
+} // namespace dialogs
 } // namespace gui2

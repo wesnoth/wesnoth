@@ -373,7 +373,7 @@ void configure::process_event_impl(const process_event_data & data)
 	}
 
 	if(password_button_.pressed()) {
-		gui2::tmp_create_game_set_password::execute(
+		gui2::dialogs::mp_create_game_set_password::execute(
 				  parameters_.password
 				, video());
 	}

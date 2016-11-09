@@ -18,6 +18,8 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -37,10 +39,11 @@ namespace gui2
 
 REGISTER_DIALOG(mp_join_game_password_prompt)
 
-tmp_join_game_password_prompt::tmp_join_game_password_prompt(
+mp_join_game_password_prompt::mp_join_game_password_prompt(
 		std::string& password)
 {
 	register_text("password", true, password, true);
 }
 
-} // end namespace gui2
+} // namespace dialogs
+} // namespace gui2

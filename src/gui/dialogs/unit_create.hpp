@@ -30,10 +30,13 @@ namespace gui2
 
 class text_box_base;
 
-class tunit_create : public tdialog
+namespace dialogs
+{
+
+class unit_create : public modal_dialog
 {
 public:
-	tunit_create();
+	unit_create();
 
 	/** Unit type choice from the user. */
 	const std::string& choice() const
@@ -62,13 +65,13 @@ private:
 
 	std::vector<std::string> last_words_;
 
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void pre_show(window& window);
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void post_show(window& window);
 
 	/** Callbacks */
@@ -78,6 +81,7 @@ private:
 
 	group<unit_race::GENDER> gender_toggle;
 };
-}
+} // namespace dialogs
+} // namespace gui2
 
 #endif /* ! GUI_DIALOGS_UNIT_CREATE_HPP_INCLUDED */

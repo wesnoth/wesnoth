@@ -20,6 +20,8 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -46,7 +48,7 @@ namespace gui2
 
 REGISTER_DIALOG(editor_edit_scenario)
 
-teditor_edit_scenario::teditor_edit_scenario(
+editor_edit_scenario::editor_edit_scenario(
 		std::string& id,
 		std::string& name,
 		std::string& description,
@@ -65,4 +67,5 @@ teditor_edit_scenario::teditor_edit_scenario(
 				  victory_when_enemies_defeated);
 	register_bool("random_start_time", true, random_start_time);
 }
-}
+} // namespace dialogs
+} // namespace gui2

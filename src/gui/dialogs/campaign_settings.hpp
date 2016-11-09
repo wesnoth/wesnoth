@@ -24,11 +24,13 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
-class tcampaign_settings : public tdialog
+class campaign_settings : public modal_dialog
 {
 public:
-	tcampaign_settings(ng::create_engine& eng);
+	campaign_settings(ng::create_engine& eng);
 
 	// whether configure is enabled
 	bool enable_configure();
@@ -50,16 +52,17 @@ private:
 	// populate era and mod lists
 	void update_lists(window& window);
 
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void pre_show(window& window);
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void post_show(window& window);
 
 };
 
+} // namespace dialogs
 } // end namespace gui2
 #endif

@@ -48,6 +48,8 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -88,7 +90,7 @@ namespace gui2
 
 REGISTER_DIALOG(game_load)
 
-tgame_load::tgame_load(const config& cache_config, savegame::load_game_metadata& data)
+game_load::game_load(const config& cache_config, savegame::load_game_metadata& data)
 	: filename_(data.filename)
 	, change_difficulty_(register_bool("change_difficulty", true, data.select_difficulty))
 	, show_replay_(register_bool("show_replay", true, data.show_replay))
@@ -100,23 +102,23 @@ tgame_load::tgame_load(const config& cache_config, savegame::load_game_metadata&
 {
 }
 
-void tgame_load::pre_show(window& window)
+void game_load::pre_show(window& window)
 {
 	find_widget<minimap>(&window, "minimap", false).set_config(&cache_config_);
 
 	text_box* filter = find_widget<text_box>(&window, "txtFilter", false, true);
 
 	filter->set_text_changed_callback(
-			std::bind(&tgame_load::filter_text_changed, this, _1, _2));
+			std::bind(&game_load::filter_text_changed, this, _1, _2));
 
 	listbox& list = find_widget<listbox>(&window, "savegame_list", false);
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	connect_signal_notify_modified(list,
-			std::bind(&tgame_load::display_savegame, *this, std::ref(window)));
+			std::bind(&game_load::display_savegame, *this, std::ref(window)));
 #else
 	list.set_callback_value_change(
-			dialog_callback<tgame_load, &tgame_load::display_savegame>);
+			dialog_callback<game_load, &game_load::display_savegame>);
 #endif
 
 	window.keyboard_capture(filter);
@@ -144,13 +146,13 @@ void tgame_load::pre_show(window& window)
 
 	connect_signal_mouse_left_click(
 			find_widget<button>(&window, "delete", false),
-			std::bind(&tgame_load::delete_button_callback,
+			std::bind(&game_load::delete_button_callback,
 					this, std::ref(window)));
 
 	display_savegame(window);
 }
 
-void tgame_load::display_savegame(window& window)
+void game_load::display_savegame(window& window)
 {
 	const int selected_row =
 		find_widget<listbox>(&window, "savegame_list", false).get_selected_row();
@@ -222,7 +224,7 @@ void tgame_load::display_savegame(window& window)
 	change_difficulty_toggle.set_active(!is_replay && is_scenario_start);
 }
 
-void tgame_load::filter_text_changed(text_box_base* textbox, const std::string& text)
+void game_load::filter_text_changed(text_box_base* textbox, const std::string& text)
 {
 	window& window = *textbox->get_window();
 
@@ -275,7 +277,7 @@ void tgame_load::filter_text_changed(text_box_base* textbox, const std::string& 
 	window.set_enter_disabled(!any_shown);
 }
 
-void tgame_load::evaluate_summary_string(std::stringstream& str, const config& cfg_summary)
+void game_load::evaluate_summary_string(std::stringstream& str, const config& cfg_summary)
 {
 	if(cfg_summary["corrupt"].to_bool()) {
 		str << "\n<span color='#f00'>" << _("(Invalid)") << "</span>";
@@ -345,7 +347,7 @@ void tgame_load::evaluate_summary_string(std::stringstream& str, const config& c
 	}
 }
 
-void tgame_load::delete_button_callback(window& window)
+void game_load::delete_button_callback(window& window)
 {
 	listbox& list = find_widget<listbox>(&window, "savegame_list", false);
 
@@ -354,7 +356,7 @@ void tgame_load::delete_button_callback(window& window)
 
 		// See if we should ask the user for deletion confirmation
 		if(preferences::ask_delete_saves()) {
-			if(!gui2::tgame_delete::execute(window.video())) {
+			if(!gui2::dialogs::game_delete::execute(window.video())) {
 				return;
 			}
 		}
@@ -376,4 +378,5 @@ void tgame_load::delete_button_callback(window& window)
 	}
 }
 
+} // namespace dialogs
 } // namespace gui2

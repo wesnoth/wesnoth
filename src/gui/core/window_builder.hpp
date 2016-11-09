@@ -199,15 +199,15 @@ public:
 		std::vector<linked_group> linked_groups;
 
 		/** Helper struct to store information about the tips. */
-		struct ttip
+		struct tooltip_info
 		{
-			ttip(const config& cfg, const std::string& tagname);
+			tooltip_info(const config& cfg, const std::string& tagname);
 
 			std::string id;
 		};
 
-		ttip tooltip;
-		ttip helptip;
+		tooltip_info tooltip;
+		tooltip_info helptip;
 
 		builder_grid_ptr grid;
 	};

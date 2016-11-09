@@ -19,8 +19,10 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
-class teditor_new_map : public tdialog
+class editor_new_map : public modal_dialog
 {
 public:
 	/**
@@ -37,19 +39,20 @@ public:
 	 *                              the dialog returns @ref window::OK
 	 *                              undefined otherwise.
 	 */
-	teditor_new_map(int& width, int& height);
+	editor_new_map(int& width, int& height);
 
-	/** The execute function see @ref tdialog for more information. */
+	/** The execute function see @ref modal_dialog for more information. */
 	static bool execute(int& width, int& height, CVideo& video)
 	{
-		return teditor_new_map(width, height).show(video);
+		return editor_new_map(width, height).show(video);
 	}
 
 private:
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 };
 
+} // namespace dialogs
 } // namespace gui2
 
 #endif

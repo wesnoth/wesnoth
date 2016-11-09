@@ -21,8 +21,10 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
-class taddon_uninstall_list : public tdialog
+class addon_uninstall_list : public modal_dialog
 {
 public:
 	/**
@@ -32,7 +34,7 @@ public:
 	 *                        Internal id <-> user-visible title mappings for
 	 *                        the add-ons to display.
 	 */
-	explicit taddon_uninstall_list(
+	explicit addon_uninstall_list(
 			const std::map<std::string, std::string>& addon_titles_map)
 		: titles_map_(addon_titles_map), ids_(), selections_()
 	{
@@ -45,16 +47,17 @@ private:
 	std::vector<std::string> ids_;
 	std::map<std::string, bool> selections_;
 
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void pre_show(window& window);
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void post_show(window& window);
 };
 
+} // namespace dialogs
 } // namespace gui2
 
 #endif

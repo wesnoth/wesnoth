@@ -302,8 +302,8 @@ window::window(CVideo& video,
 				 const unsigned maximum_width,
 				 const unsigned maximum_height,
 				 const std::string& definition,
-				 const builder_window::window_resolution::ttip& tooltip,
-				 const builder_window::window_resolution::ttip& helptip)
+				 const builder_window::window_resolution::tooltip_info& tooltip,
+				 const builder_window::window_resolution::tooltip_info& helptip)
 	: panel()
 	, cursor::setter(cursor::NORMAL)
 	, video_(video)
@@ -441,7 +441,7 @@ window::~window()
 	 * unrendered properly can capture the mouse and make playing impossible.
 	 */
 	if(show_mode_ == modal) {
-		tip::remove();
+		dialogs::tip::remove();
 	}
 
 	manager::instance().remove(*this);
@@ -557,7 +557,7 @@ int window::show(const bool restore, const unsigned auto_close_timeout)
 	 * Removes the old tip if one shown. The show_tip doesn't remove
 	 * the tip, since it's the tip.
 	 */
-	tip::remove();
+	dialogs::tip::remove();
 
 	show_mode_ = modal;
 	restore_ = restore;
@@ -1429,7 +1429,7 @@ void window::signal_handler_message_show_tooltip(const event::event_t event,
 	event::message_show_tooltip& request
 			= dynamic_cast<event::message_show_tooltip&>(message);
 
-	tip::show(video_, tooltip_.id, request.message, request.location, request.source_rect);
+	dialogs::tip::show(video_, tooltip_.id, request.message, request.location, request.source_rect);
 
 	handled = true;
 }
@@ -1443,7 +1443,7 @@ void window::signal_handler_message_show_helptip(const event::event_t event,
 	event::message_show_helptip& request
 			= dynamic_cast<event::message_show_helptip&>(message);
 
-	tip::show(video_, helptip_.id, request.message, request.location, request.source_rect);
+	dialogs::tip::show(video_, helptip_.id, request.message, request.location, request.source_rect);
 
 	handled = true;
 }

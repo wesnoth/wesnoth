@@ -307,7 +307,7 @@ void ui::process_event()
 
 void ui::handle_event(const SDL_Event& event)
 {
-	if (gui2::tloadscreen::displaying()) {
+	if (gui2::dialogs::loading_screen::displaying()) {
 		return;
 	}
 	gui::widget::handle_event(event);
@@ -332,7 +332,7 @@ void ui::handle_event(const SDL_Event& event)
 		/** @todo find out why the help string stays visible and fix it */
 		video().clear_all_help_strings();
 
-		gui2::tmp_cmd_wrapper dlg(_("Selected user: ") + usr_text);
+		gui2::dialogs::mp_cmd_wrapper dlg(_("Selected user: ") + usr_text);
 		dlg.show(video());
 
 		std::stringstream msg;

@@ -25,15 +25,18 @@ namespace gui2
 
 class toggle_button;
 
-class teditor_edit_side : public tdialog
+namespace dialogs
+{
+
+class editor_edit_side : public modal_dialog
 {
 public:
-	explicit teditor_edit_side(editor::editor_team_info& info);
+	explicit editor_edit_side(editor::editor_team_info& info);
 
-	/** The execute function see @ref tdialog for more information. */
+	/** The execute function see @ref modal_dialog for more information. */
 	static bool execute(editor::editor_team_info& info, CVideo& video)
 	{
-		return teditor_edit_side(info).show(video);
+		return editor_edit_side(info).show(video);
 	}
 
 private:
@@ -46,9 +49,10 @@ private:
 	team::SHARE_VISION& share_vision_;
 	group<team::SHARE_VISION> vision_group;
 
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 };
-}
+} // namespace dialogs
+} // namespace gui2
 
 #endif /* ! GUI_DIALOGS_EDIT_LABEL_INCLUDED */

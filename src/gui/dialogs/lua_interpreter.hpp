@@ -21,8 +21,10 @@ class lua_kernel_base;
 
 namespace gui2
 {
+namespace dialogs
+{
 
-class tlua_interpreter : public tdialog
+class lua_interpreter : public modal_dialog
 {
 public:
 	class lua_model;
@@ -30,12 +32,12 @@ public:
 	class view;
 	class controller;
 
-	tlua_interpreter(lua_kernel_base & lk);
+	lua_interpreter(lua_kernel_base & lk);
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	window* build_window(CVideo& video);
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void pre_show(window& window);
 
 	enum WHICH_KERNEL { APP, GAME };
@@ -44,10 +46,11 @@ public:
 private:
 	const std::unique_ptr<controller> controller_;
 
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 };
 
-}
+} // namespace dialogs
+} // namespace gui2
 
 #endif /* ! GUI_DIALOGS_LUA_INT_HPP_INCLUDED */

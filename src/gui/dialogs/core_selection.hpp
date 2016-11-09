@@ -21,11 +21,13 @@ class config;
 
 namespace gui2
 {
+namespace dialogs
+{
 
-class tcore_selection : public tdialog
+class core_selection : public modal_dialog
 {
 public:
-	explicit tcore_selection(const std::vector<config>& cores, int choice)
+	explicit core_selection(const std::vector<config>& cores, int choice)
 		: cores_(cores), choice_(choice)
 
 	{
@@ -42,13 +44,13 @@ private:
 	/** Called when another core is selected. */
 	void core_selected(window& window);
 
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void pre_show(window& window);
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void post_show(window& window);
 
 	/** Contains the config objects for all cores. */
@@ -58,6 +60,7 @@ private:
 	int choice_;
 };
 
+} // namespace dialogs
 } // namespace gui2
 
 #endif

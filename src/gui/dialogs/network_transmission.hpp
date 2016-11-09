@@ -25,6 +25,8 @@ class wesnothd_connection;
 
 namespace gui2
 {
+namespace dialogs
+{
 
 
 /**
@@ -33,7 +35,7 @@ namespace gui2
  * It shows upload/download progress and allows the user
  * to cancel the transmission.
  */
-class tnetwork_transmission : public tdialog
+class network_transmission : public modal_dialog
 {
 public:
 	//A wrapper of either a wesnothd_connection or a network_asio::connection
@@ -52,7 +54,7 @@ public:
 	static std::unique_ptr<wesnothd_connection> wesnothd_connect_dialog(CVideo& video, const std::string& msg, const std::string& hostname, int port);
 
 private:
-	static void wesnothd_dialog(CVideo& video, gui2::tnetwork_transmission::connection_data& conn, const std::string& msg);
+	static void wesnothd_dialog(CVideo& video, connection_data& conn, const std::string& msg);
 	connection_data* connection_;
 
 	class pump_monitor : public events::pump_monitor
@@ -70,7 +72,7 @@ private:
 	} pump_monitor_;
 
 public:
-	tnetwork_transmission(connection_data& connection,
+	network_transmission(connection_data& connection,
 						  const std::string& title,
 						  const std::string& subtitle);
 
@@ -81,10 +83,10 @@ public:
 	}
 
 protected:
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void pre_show(window& window);
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void post_show(window& window);
 
 private:
@@ -96,10 +98,11 @@ private:
 	 */
 	std::string subtitle_;
 
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 };
 
+} // namespace dialogs
 } // namespace gui2
 
 #endif

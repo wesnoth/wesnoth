@@ -21,28 +21,31 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
-class tmp_change_control : public tdialog
+class mp_change_control : public modal_dialog
 {
 public:
 	class model;
 	class view;
 	class controller;
 
-	explicit tmp_change_control(events::menu_handler* mh);
+	explicit mp_change_control(events::menu_handler* mh);
 	std::shared_ptr<view> get_view();
 
 private:
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void pre_show(window& window);
 	void post_show(window& window);
 
 	events::menu_handler* menu_handler_;
 	std::shared_ptr<view> view_;
 };
-}
+} // namespace dialogs
+} // namespace gui2
 
 #endif /* ! GUI_DIALOGS_MP_CHANGE_CONTROL_HPP_INCLUDED */

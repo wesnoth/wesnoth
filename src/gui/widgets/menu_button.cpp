@@ -143,7 +143,7 @@ void menu_button::signal_handler_left_button_click(const event::event_t event,
 	sound::play_UI_sound(settings::sound_button_click);
 
 	// If a button has a retval do the default handling.
-	tdrop_down_list droplist(this->get_rectangle(), this->values_, this->selected_, this->get_use_markup());
+	dialogs::drop_down_menu droplist(this->get_rectangle(), this->values_, this->selected_, this->get_use_markup());
 
 	if(droplist.show(get_window()->video())) {
 		const int selected = droplist.selected_item();

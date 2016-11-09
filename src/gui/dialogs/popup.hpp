@@ -24,13 +24,16 @@ namespace gui2
 
 class window;
 
+namespace dialogs
+{
+
 /**
  * The popup class shows windows that are shown non-modal.
  *
  * At the moment these windows also don't capture the mouse and keyboard so can
  * only be used for things like tooltips. This behavior might change later.
  */
-class tpopup
+class modeless_dialog
 {
 	/**
 	 * Special helper function to get the id of the window.
@@ -38,7 +41,7 @@ class tpopup
 	 * This is used in the unit tests, but these implementation details
 	 * shouldn't be used in the normal code.
 	 */
-	friend std::string unit_test_mark_popup_as_tested(const tpopup& dialog);
+	friend std::string unit_test_mark_popup_as_tested(const modeless_dialog& dialog);
 
 	/**
 	 * Special helper function for the unit test to the the window.
@@ -46,12 +49,12 @@ class tpopup
 	 * This is used in the unit tests, but these implementation details
 	 * shouldn't be used in the normal code.
 	 */
-	friend window* unit_test_window(const tpopup& dialog);
+	friend window* unit_test_window(const modeless_dialog& dialog);
 
 public:
-	tpopup();
+	modeless_dialog();
 
-	virtual ~tpopup();
+	virtual ~modeless_dialog();
 
 	/**
 	 * Shows the window.
@@ -118,6 +121,7 @@ private:
 	virtual void pre_show(window& window);
 };
 
+} // namespace dialogs
 } // namespace gui2
 
 #endif

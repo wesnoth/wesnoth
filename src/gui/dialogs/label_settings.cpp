@@ -34,10 +34,13 @@
 #include "gui/widgets/label.hpp"
 #include "formula/string_utils.hpp"
 
-namespace gui2 {
+namespace gui2
+{
+namespace dialogs
+{
 REGISTER_DIALOG(label_settings);
 
-tlabel_settings::tlabel_settings(display_context& dc) : viewer(dc) {
+label_settings::label_settings(display_context& dc) : viewer(dc) {
 	const std::vector<std::string>& all_categories = resources::screen->labels().all_categories();
 	const std::vector<std::string>& hidden_categories = viewer.hidden_label_categories();
 
@@ -73,7 +76,7 @@ tlabel_settings::tlabel_settings(display_context& dc) : viewer(dc) {
 	}
 }
 
-void tlabel_settings::pre_show(window& window) {
+void label_settings::pre_show(window& window) {
 	std::map<std::string, string_map> list_data;
 	listbox& cats_listbox = find_widget<listbox>(&window, "label_types", false);
 	for(const auto & label_entry : all_labels) {
@@ -98,7 +101,7 @@ void tlabel_settings::pre_show(window& window) {
 
 		toggle_button& status = find_widget<toggle_button>(grid, "cat_status", false);
 		status.set_value(visible);
-		status.set_callback_state_change(std::bind(&tlabel_settings::toggle_category, this, _1, category));
+		status.set_callback_state_change(std::bind(&label_settings::toggle_category, this, _1, category));
 
 		if(category.substr(0,5) == "side:") {
 			label& cat_name = find_widget<label>(grid, "cat_name", false);
@@ -107,8 +110,8 @@ void tlabel_settings::pre_show(window& window) {
 	}
 }
 
-bool tlabel_settings::execute(display_context& dc, CVideo& video) {
-	tlabel_settings window(dc);
+bool label_settings::execute(display_context& dc, CVideo& video) {
+	label_settings window(dc);
 	if(!window.show(video)) return false;
 	std::vector<std::string> hidden_categories;
 	for(auto lbl : window.all_labels) {
@@ -120,7 +123,8 @@ bool tlabel_settings::execute(display_context& dc, CVideo& video) {
 	return true;
 }
 
-void tlabel_settings::toggle_category(widget& box, std::string category) {
+void label_settings::toggle_category(widget& box, std::string category) {
 	all_labels[category] = (static_cast<toggle_button&>(box).get_value() != 0);
 }
-}
+} // namespace dialogs
+} // namespace gui2

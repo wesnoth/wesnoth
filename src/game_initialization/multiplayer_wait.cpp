@@ -223,7 +223,7 @@ void wait::join_game(bool observe)
 				}
 			}
 
-			gui2::tfaction_select dlg(flg, color, side_num + 1);
+			gui2::dialogs::faction_select dlg(flg, color, side_num + 1);
 			dlg.show(video());
 
 			if(dlg.get_retval() != gui2::window::OK) {
@@ -480,7 +480,7 @@ bool wait::download_level_data()
 	bool has_scenario_and_controllers = false;
 	while (!has_scenario_and_controllers) {
 		config revc;
-		bool data_res = gui2::tnetwork_transmission::wesnothd_receive_dialog(
+		bool data_res = gui2::dialogs::network_transmission::wesnothd_receive_dialog(
 			video(), "download level data", revc, *wesnothd_connection_);
 
 		if (!data_res) {

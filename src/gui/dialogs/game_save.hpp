@@ -19,27 +19,29 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
-class tgame_save : public tdialog
+class game_save : public modal_dialog
 {
 public:
-	tgame_save(std::string& filename, const std::string& title);
+	game_save(std::string& filename, const std::string& title);
 
 	static bool
 	execute(std::string& filename, const std::string& title, CVideo& video)
 	{
-		return tgame_save(filename, title).show(video);
+		return game_save(filename, title).show(video);
 	}
 
 private:
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 };
 
-class tgame_save_message : public tdialog
+class game_save_message : public modal_dialog
 {
 public:
-	tgame_save_message(std::string& filename,
+	game_save_message(std::string& filename,
 					   const std::string& title,
 					   const std::string& message);
 
@@ -48,18 +50,18 @@ public:
 						const std::string& message,
 						CVideo& video)
 	{
-		return tgame_save_message(filename, title, message).show(video);
+		return game_save_message(filename, title, message).show(video);
 	}
 
 private:
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 };
 
-class tgame_save_oos : public tdialog
+class game_save_oos : public modal_dialog
 {
 public:
-	tgame_save_oos(bool& ignore_all,
+	game_save_oos(bool& ignore_all,
 				   std::string& filename,
 				   const std::string& title,
 				   const std::string& message);
@@ -70,13 +72,14 @@ public:
 						const std::string& message,
 						CVideo& video)
 	{
-		return tgame_save_oos(ignore_all, filename, title, message).show(video);
+		return game_save_oos(ignore_all, filename, title, message).show(video);
 	}
 
 private:
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 };
-}
+} // namespace dialogs
+} // namespace gui2
 
 #endif

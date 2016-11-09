@@ -362,7 +362,7 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 				<< game["mp_scenario_name"];
 
 			// Difficulty
-			config difficulties = gui2::generate_difficulty_config(level_cfg);
+			config difficulties = gui2::dialogs::generate_difficulty_config(level_cfg);
 			for(const config& difficulty : difficulties.child_range("difficulty")) {
 				if(difficulty["define"] == game["difficulty_define"]) {
 					campaign_text << " — " << difficulty["description"];

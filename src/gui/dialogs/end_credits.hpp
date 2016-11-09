@@ -28,23 +28,26 @@ namespace gui2
 
 class scroll_label;
 
-class tend_credits : public tdialog
+namespace dialogs
+{
+
+class end_credits : public modal_dialog
 {
 public:
-	explicit tend_credits(const std::string& campaign);
+	explicit end_credits(const std::string& campaign);
 
-	~tend_credits();
+	~end_credits();
 
 	static void display(CVideo& video, const std::string& campaign = "")
 	{
-		tend_credits(campaign).show(video);
+		end_credits(campaign).show(video);
 	}
 
 private:
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void pre_show(window& window);
 
 	void timer_callback();
@@ -64,6 +67,7 @@ private:
 	uint32_t last_scroll_;
 };
 
+} // namespace dialogs
 } // namespace gui2
 
 #endif /* ! GUI_DIALOGS_END_CREDITS_HPP_INCLUDED */

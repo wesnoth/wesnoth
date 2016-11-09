@@ -41,6 +41,8 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -82,7 +84,7 @@ namespace gui2
 
 REGISTER_DIALOG(campaign_selection)
 
-void tcampaign_selection::campaign_selected(window& window)
+void campaign_selection::campaign_selected(window& window)
 {
 	if(new_widgets || true) {
 		tree_view& tree
@@ -115,12 +117,12 @@ void tcampaign_selection::campaign_selected(window& window)
 	}
 }
 
-void tcampaign_selection::show_settings(CVideo& video) {
-	tcampaign_settings settings_dlg(engine_);
+void campaign_selection::show_settings(CVideo& video) {
+	campaign_settings settings_dlg(engine_);
 	settings_dlg.show(video);
 }
 
-void tcampaign_selection::pre_show(window& window)
+void campaign_selection::pre_show(window& window)
 {
 	if(new_widgets || true) {
 		/***** Setup campaign tree. *****/
@@ -128,7 +130,7 @@ void tcampaign_selection::pre_show(window& window)
 				= find_widget<tree_view>(&window, "campaign_tree", false);
 
 		tree.set_selection_change_callback(
-				std::bind(&tcampaign_selection::campaign_selected,
+				std::bind(&campaign_selection::campaign_selected,
 							this,
 							std::ref(window)));
 
@@ -197,7 +199,7 @@ void tcampaign_selection::pre_show(window& window)
 				VALIDATE(checkbox, missing_widget("checkb"));
 				checkbox->set_value(active);
 				checkbox->set_label(mod->name);
-				checkbox->set_callback_state_change(std::bind(&tcampaign_selection::mod_toggled, this, id, _1));
+				checkbox->set_callback_state_change(std::bind(&campaign_selection::mod_toggled, this, id, _1));
 				++id;
 			}
 		}
@@ -214,13 +216,13 @@ void tcampaign_selection::pre_show(window& window)
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 		connect_signal_notify_modified(
 				list,
-				std::bind(&tcampaign_selection::campaign_selected,
+				std::bind(&campaign_selection::campaign_selected,
 							this,
 							std::ref(window)));
 #else
 		list.set_callback_value_change(
-				dialog_callback<tcampaign_selection,
-								&tcampaign_selection::campaign_selected>);
+				dialog_callback<campaign_selection,
+								&campaign_selection::campaign_selected>);
 #endif
 		window.keyboard_capture(&list);
 
@@ -272,11 +274,11 @@ void tcampaign_selection::pre_show(window& window)
 			find_widget<button>(&window, "advanced_settings", false, false);
 	if(advanced_settings_button) {
 		advanced_settings_button->connect_click_handler(
-			std::bind(&tcampaign_selection::show_settings, this, std::ref(window.video())));
+			std::bind(&campaign_selection::show_settings, this, std::ref(window.video())));
 	}
 }
 
-void tcampaign_selection::post_show(window& window)
+void campaign_selection::post_show(window& window)
 {
 	if(new_widgets || true) {
 		tree_view& tree
@@ -304,10 +306,11 @@ void tcampaign_selection::post_show(window& window)
 	}
 }
 
-void tcampaign_selection::mod_toggled(int id, widget &)
+void campaign_selection::mod_toggled(int id, widget &)
 {
 	engine_.set_current_mod_index(id);
 	engine_.toggle_current_mod();
 }
 
+} // namespace dialogs
 } // namespace gui2

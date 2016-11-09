@@ -28,10 +28,13 @@ namespace gui2
 class listbox;
 class text_box_base;
 
-class tgame_load : public tdialog
+namespace dialogs
+{
+
+class game_load : public modal_dialog
 {
 public:
-	tgame_load(const config& cache_config, savegame::load_game_metadata& data);
+	game_load(const config& cache_config, savegame::load_game_metadata& data);
 
 	static bool execute(const config& cache_config, savegame::load_game_metadata& data, CVideo& video)
 	{
@@ -40,14 +43,14 @@ public:
 			return false;
 		}
 
-		return tgame_load(cache_config, data).show(video);
+		return game_load(cache_config, data).show(video);
 	}
 
 private:
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void pre_show(window& window);
 
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
 	void filter_text_changed(text_box_base* textbox, const std::string& text);
@@ -69,6 +72,7 @@ private:
 
 	std::vector<std::string> last_words_;
 };
-}
+} // namespace dialogs
+} // namespace gui2
 
 #endif

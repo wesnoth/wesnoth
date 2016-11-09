@@ -61,7 +61,7 @@ void make_screenshot(const std::string& name, CVideo& video, const TFunc& func)
 	filename = filesystem::get_next_filename(filename, ext);
 	const bool res = func(filename, video);
 	if (res) {
-		gui2::tscreenshot_notification::display(filename, video);
+		gui2::dialogs::screenshot_notification::display(filename, video);
 	} else {
 		gui2::show_error_message(video,
 			_("Screenshot creation failed.\n\n"
@@ -368,7 +368,7 @@ void command_executor::show_menu(const std::vector<std::string>& items_arg, int 
 	int res = -1;
 	{
 		SDL_Rect pos = {xloc, yloc, 1, 1};
-		gui2::tdrop_down_list mmenu(pos, menu, -1, false);
+		gui2::dialogs::drop_down_menu mmenu(pos, menu, -1, false);
 		mmenu.show(gui.video());
 		if(mmenu.get_retval() == gui2::window::OK) {
 			res = mmenu.selected_item();
@@ -724,7 +724,7 @@ CVideo& command_executor_default::get_video()
 void command_executor_default::lua_console()
 {
 	if (get_display().in_game()) {
-		gui2::tlua_interpreter::display(get_video(), gui2::tlua_interpreter::GAME);
+		gui2::dialogs::lua_interpreter::display(get_video(), gui2::dialogs::lua_interpreter::GAME);
 	} else {
 		command_executor::lua_console();
 	}
@@ -732,7 +732,7 @@ void command_executor_default::lua_console()
 }
 void command_executor::lua_console()
 {
-	gui2::tlua_interpreter::display(get_video(), gui2::tlua_interpreter::APP);
+	gui2::dialogs::lua_interpreter::display(get_video(), gui2::dialogs::lua_interpreter::APP);
 }
 
 void command_executor_default::zoom_in()

@@ -24,6 +24,8 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -46,17 +48,18 @@ namespace gui2
 
 REGISTER_DIALOG(folder_create)
 
-tfolder_create::tfolder_create(std::string& folder_name)
+folder_create::folder_create(std::string& folder_name)
 	: bookmark_mode_(false)
 {
 	register_text("name", true, folder_name, true);
 }
 
-void tfolder_create::pre_show(window& window)
+void folder_create::pre_show(window& window)
 {
 	if(bookmark_mode_) {
 		find_widget<control>(&window, "title", false).set_label(_("New Bookmark"));
 	}
 }
 
-}
+} // namespace dialogs
+} // namespace gui2

@@ -1205,7 +1205,7 @@ static void handle_addon_requirements_gui(CVideo & v, const std::vector<required
 				err_msg += "\n";
 			}
 		}
-		gui2::show_message(v, e_title, err_msg, gui2::tmessage::auto_close);
+		gui2::show_message(v, e_title, err_msg, gui2::dialogs::message::auto_close);
 	} else if (addon_outcome == NEED_DOWNLOAD) {
 		std::string e_title = _("Missing user-made content.");
 		std::string err_msg = _("This game requires one or more user-made addons to be installed or updated in order to join. Do you want to try to install them?");
@@ -1227,7 +1227,7 @@ static void handle_addon_requirements_gui(CVideo & v, const std::vector<required
 		}
 		assert(needs_download.size() > 0);
 
-		if (gui2::show_message(v, e_title, err_msg, gui2::tmessage::yes_no_buttons) == gui2::window::OK) {
+		if (gui2::show_message(v, e_title, err_msg, gui2::dialogs::message::yes_no_buttons) == gui2::window::OK) {
 			ad_hoc_addon_fetch_session(v, needs_download);
 			throw lobby_reload_request_exception();
 		}
@@ -1284,7 +1284,7 @@ void lobby::process_event_impl(const process_event_data & data)
 
 			std::string password;
 			if(join && game.password_required) {
-				if(!gui2::tmp_join_game_password_prompt::execute(password, video())) {
+				if(!gui2::dialogs::mp_join_game_password_prompt::execute(password, video())) {
 					return;
 				}
 			}

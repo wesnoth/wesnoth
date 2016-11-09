@@ -3252,7 +3252,7 @@ void display::handle_window_event(const SDL_Event& event) {
 }
 
 void display::handle_event(const SDL_Event& event) {
-	if (gui2::tloadscreen::displaying()) {
+	if (gui2::dialogs::loading_screen::displaying()) {
 		return;
 	}
 	if (event.type == DRAW_ALL_EVENT) {

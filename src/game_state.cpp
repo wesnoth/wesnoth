@@ -166,7 +166,7 @@ void game_state::place_sides_in_preferred_locations(const config& level)
 void game_state::init(const config& level, play_controller & pc)
 {
 	events_manager_->read_scenario(level);
-	gui2::tloadscreen::progress("init teams");
+	gui2::dialogs::loading_screen::progress("init teams");
 	if (level["modify_placing"].to_bool()) {
 		LOG_NG << "modifying placing..." << std::endl;
 		place_sides_in_preferred_locations(level);

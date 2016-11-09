@@ -29,6 +29,8 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -54,7 +56,7 @@ namespace gui2
 
 REGISTER_DIALOG(addon_uninstall_list)
 
-void taddon_uninstall_list::pre_show(window& window)
+void addon_uninstall_list::pre_show(window& window)
 {
 	set_restore(true);
 
@@ -81,7 +83,7 @@ void taddon_uninstall_list::pre_show(window& window)
 	}
 }
 
-void taddon_uninstall_list::post_show(window& window)
+void addon_uninstall_list::post_show(window& window)
 {
 	const listbox& list = find_widget<listbox>(&window, "addons_list", false);
 	const unsigned rows = list.get_item_count();
@@ -100,7 +102,7 @@ void taddon_uninstall_list::post_show(window& window)
 	}
 }
 
-std::vector<std::string> taddon_uninstall_list::selected_addons() const
+std::vector<std::string> addon_uninstall_list::selected_addons() const
 {
 	std::vector<std::string> retv;
 
@@ -114,5 +116,5 @@ std::vector<std::string> taddon_uninstall_list::selected_addons() const
 	return retv;
 }
 
-
+} // namespace dialogs
 } // namespace gui2

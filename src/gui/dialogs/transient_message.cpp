@@ -25,10 +25,12 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
 REGISTER_DIALOG(transient_message)
 
-ttransient_message::ttransient_message(const std::string& title,
+transient_message::transient_message(const std::string& title,
 									   const bool title_use_markup,
 									   const std::string& message,
 									   const bool message_use_markup,
@@ -40,7 +42,7 @@ ttransient_message::ttransient_message(const std::string& title,
 	register_image("image", true, image);
 }
 
-void ttransient_message::pre_show(window& window)
+void transient_message::pre_show(window& window)
 {
 	if(hide_title_) {
 		widget& title = find_widget<widget>(&window, "title", false);
@@ -52,6 +54,7 @@ void ttransient_message::pre_show(window& window)
 		image.set_visible(widget::tvisible::invisible);
 	}
 }
+} // namespace dialogs
 
 void show_transient_message(CVideo& video,
 							const std::string& title,
@@ -61,7 +64,7 @@ void show_transient_message(CVideo& video,
 							const bool title_use_markup,
 							const bool restore_background)
 {
-	ttransient_message dlg(
+	dialogs::transient_message dlg(
 			title, title_use_markup, message, message_use_markup, image);
 
 	dlg.set_restore(restore_background);

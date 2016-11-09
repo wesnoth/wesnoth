@@ -94,7 +94,7 @@ void do_mp_notify(t_notify_mode mode, const std::string & sender, const std::str
 		break;
 	}
 }
-}
+} // namespace gui2
 namespace
 {
 

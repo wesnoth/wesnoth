@@ -35,35 +35,37 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
 REGISTER_DIALOG(unit_advance)
 
-tunit_advance::tunit_advance(const unit_ptr_vector& samples, size_t real)
+unit_advance::unit_advance(const unit_ptr_vector& samples, size_t real)
 	: previews_(samples)
 	, selected_index_(0)
 	, last_real_advancement_(real)
 {
 }
 
-void tunit_advance::pre_show(window& window)
+void unit_advance::pre_show(window& window)
 {
 	listbox& list = find_widget<listbox>(&window, "advance_choice", false);
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	connect_signal_notify_modified(*list,
-		std::bind(&tunit_advance::list_item_clicked,
+		std::bind(&unit_advance::list_item_clicked,
 		*this,
 		std::ref(window)));
 #else
 	list.set_callback_value_change(
-		dialog_callback<tunit_advance, &tunit_advance::list_item_clicked>);
+		dialog_callback<unit_advance, &unit_advance::list_item_clicked>);
 #endif
 
 	window.keyboard_capture(&list);
 
 	connect_signal_mouse_left_click(
 		find_widget<button>(&window, "show_help", false),
-		std::bind(&tunit_advance::show_help, this, std::ref(window)));
+		std::bind(&unit_advance::show_help, this, std::ref(window)));
 
 	for(size_t i = 0; i < previews_.size(); i++) {
 		const unit& sample = *previews_[i];
@@ -105,7 +107,7 @@ void tunit_advance::pre_show(window& window)
 	window.set_escape_disabled(true);
 }
 
-void tunit_advance::list_item_clicked(window& window)
+void unit_advance::list_item_clicked(window& window)
 {
 	const int selected_row
 		= find_widget<listbox>(&window, "advance_choice", false).get_selected_row();
@@ -118,12 +120,12 @@ void tunit_advance::list_item_clicked(window& window)
 		.set_displayed_unit(*previews_[selected_row]);
 }
 
-void tunit_advance::show_help(window& window)
+void unit_advance::show_help(window& window)
 {
 	help::show_help(window.video(), "advancement");
 }
 
-void tunit_advance::post_show(window& window)
+void unit_advance::post_show(window& window)
 {
 	if(get_retval() == window::OK) {
 		selected_index_ = find_widget<listbox>(&window, "advance_choice", false)
@@ -131,4 +133,5 @@ void tunit_advance::post_show(window& window)
 	}
 }
 
+} // namespace dialogs
 } // namespace gui2

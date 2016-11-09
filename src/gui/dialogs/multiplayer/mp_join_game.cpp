@@ -49,10 +49,12 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
 REGISTER_DIALOG(mp_join_game)
 
-tmp_join_game::tmp_join_game(saved_game& state, lobby_info& lobby_info, wesnothd_connection& connection, const bool first_scenario, const bool observe_game)
+mp_join_game::mp_join_game(saved_game& state, lobby_info& lobby_info, wesnothd_connection& connection, const bool first_scenario, const bool observe_game)
 	: level_()
 	, state_(state)
 	, lobby_info_(lobby_info)
@@ -65,7 +67,7 @@ tmp_join_game::tmp_join_game(saved_game& state, lobby_info& lobby_info, wesnothd
 	set_show_even_without_video(true);
 }
 
-tmp_join_game::~tmp_join_game()
+mp_join_game::~mp_join_game()
 {
 	if(update_timer_ != 0) {
 		remove_timer(update_timer_);
@@ -76,7 +78,7 @@ tmp_join_game::~tmp_join_game()
 /*
  * Fetch the selected game's config from the server and prompts an initial faction selection.
  */
-bool tmp_join_game::fetch_game_config(CVideo& video)
+bool mp_join_game::fetch_game_config(CVideo& video)
 {
 	// Ask for the next scenario data, if applicable
 	if(!first_scenario_) {
@@ -86,7 +88,7 @@ bool tmp_join_game::fetch_game_config(CVideo& video)
 	bool has_scenario_and_controllers = false;
 	while(!has_scenario_and_controllers) {
 		config revc;
-		const bool data_res = gui2::tnetwork_transmission::wesnothd_receive_dialog(
+		const bool data_res = gui2::dialogs::network_transmission::wesnothd_receive_dialog(
 			video, "download level data", revc, wesnothd_connection_);
 
 		if(!data_res) {
@@ -202,7 +204,7 @@ bool tmp_join_game::fetch_game_config(CVideo& video)
 
 		ng::flg_manager flg(era_factions, *side_choice, lock_settings, use_map_settings, saved_game);
 
-		gui2::tfaction_select dlg(flg, color, side_num);
+		gui2::dialogs::faction_select dlg(flg, color, side_num);
 		dlg.show(video);
 
 		if(dlg.get_retval() != gui2::window::OK) {
@@ -249,7 +251,7 @@ static std::string generate_user_description(const config& side)
 	}
 }
 
-void tmp_join_game::pre_show(window& window)
+void mp_join_game::pre_show(window& window)
 {
 	window.set_enter_disabled(true);
 
@@ -283,7 +285,7 @@ void tmp_join_game::pre_show(window& window)
 	//
 	// Set up the network handling
 	//
-	update_timer_ = add_timer(game_config::lobby_network_timer, std::bind(&tmp_join_game::network_handler, this, std::ref(window)), true);
+	update_timer_ = add_timer(game_config::lobby_network_timer, std::bind(&mp_join_game::network_handler, this, std::ref(window)), true);
 
 	//
 	// Set up the Lua plugin context
@@ -298,7 +300,7 @@ void tmp_join_game::pre_show(window& window)
 	find_widget<button>(&window, "ok", false).set_visible(widget::tvisible::hidden);
 }
 
-void tmp_join_game::generate_side_list(window& window)
+void mp_join_game::generate_side_list(window& window)
 {
 	if(stop_updates_) {
 		return;
@@ -412,7 +414,7 @@ void tmp_join_game::generate_side_list(window& window)
 	}
 }
 
-void tmp_join_game::update_player_list(window& window)
+void mp_join_game::update_player_list(window& window)
 {
 	listbox& player_list = find_widget<listbox>(&window, "player_list", false);
 
@@ -429,7 +431,7 @@ void tmp_join_game::update_player_list(window& window)
 	}
 }
 
-void tmp_join_game::network_handler(window& window)
+void mp_join_game::network_handler(window& window)
 {
 	config data;
 	if(!wesnothd_connection_.receive_data(data)) {
@@ -473,7 +475,7 @@ void tmp_join_game::network_handler(window& window)
 	update_player_list(window);
 }
 
-config& tmp_join_game::get_scenario()
+config& mp_join_game::get_scenario()
 {
 	if(config& scenario = level_.child("scenario")) {
 		return scenario;
@@ -484,7 +486,7 @@ config& tmp_join_game::get_scenario()
 	return level_;
 }
 
-void tmp_join_game::post_show(window& window)
+void mp_join_game::post_show(window& window)
 {
 	if(update_timer_ != 0) {
 		remove_timer(update_timer_);
@@ -505,4 +507,5 @@ void tmp_join_game::post_show(window& window)
 	}
 }
 
+} // namespace dialogs
 } // namespace gui2

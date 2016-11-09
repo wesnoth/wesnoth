@@ -29,6 +29,8 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -63,7 +65,7 @@ namespace gui2
 
 REGISTER_DIALOG(simple_item_selector)
 
-tsimple_item_selector::tsimple_item_selector(const std::string& title,
+simple_item_selector::simple_item_selector(const std::string& title,
 											 const std::string& message,
 											 list_type const& items,
 											 bool title_uses_markup,
@@ -78,7 +80,7 @@ tsimple_item_selector::tsimple_item_selector(const std::string& title,
 	register_label("message", true, message, message_uses_markup);
 }
 
-void tsimple_item_selector::pre_show(window& window)
+void simple_item_selector::pre_show(window& window)
 {
 	listbox& list = find_widget<listbox>(&window, "listbox", false);
 	window.keyboard_capture(&list);
@@ -116,7 +118,7 @@ void tsimple_item_selector::pre_show(window& window)
 	}
 }
 
-void tsimple_item_selector::post_show(window& window)
+void simple_item_selector::post_show(window& window)
 {
 	if(get_retval() != window::OK) {
 		return;
@@ -125,4 +127,5 @@ void tsimple_item_selector::post_show(window& window)
 	listbox& list = find_widget<listbox>(&window, "listbox", false);
 	index_ = list.get_selected_row();
 }
-}
+} // namespace dialogs
+} // namespace gui2

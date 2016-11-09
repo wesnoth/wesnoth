@@ -43,7 +43,10 @@ class multi_page;
 class toggle_button;
 class chatbox;
 
-struct tsub_player_list
+namespace dialogs
+{
+
+struct sub_player_list
 {
 	void init(window& w, const std::string& label, const bool unfolded = false);
 	void update_player_count_label();
@@ -52,14 +55,14 @@ struct tsub_player_list
 	label* label_player_count;
 };
 
-struct tplayer_list
+struct player_list
 {
 	void init(window& w);
 	void update_sort_icons();
-	tsub_player_list active_game;
-	tsub_player_list active_room;
-	tsub_player_list other_rooms;
-	tsub_player_list other_games;
+	sub_player_list active_game;
+	sub_player_list active_room;
+	sub_player_list other_rooms;
+	sub_player_list other_games;
 
 	toggle_button* sort_by_name;
 	toggle_button* sort_by_relation;
@@ -67,12 +70,12 @@ struct tplayer_list
 	tree_view* tree;
 };
 
-class tlobby_main : public tdialog, public quit_confirmation, private plugin_executor
+class lobby_main : public modal_dialog, public quit_confirmation, private plugin_executor
 {
 public:
-	tlobby_main(const config& game_config, lobby_info& info, wesnothd_connection &connection);
+	lobby_main(const config& game_config, lobby_info& info, wesnothd_connection &connection);
 
-	~tlobby_main();
+	~lobby_main();
 
 	/**
 	 * Set the callback used to show the preferences.
@@ -162,16 +165,16 @@ private:
 
 	int get_game_index_from_id(const int game_id) const;
 
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const override;
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	virtual void post_build(window& window) override;
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void pre_show(window& window) override;
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void post_show(window& window) override;
 
 	const config& game_config_;
@@ -198,7 +201,7 @@ private:
 
 	int selected_game_id_;
 
-	tplayer_list player_list_;
+	player_list player_list_;
 
 	bool player_list_dirty_;
 
@@ -222,6 +225,7 @@ private:
 	friend struct lobby_delay_gamelist_update_guard;
 };
 
+} // namespace dialogs
 } // namespace gui2
 
 #endif

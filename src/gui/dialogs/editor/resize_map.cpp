@@ -25,6 +25,8 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -88,7 +90,7 @@ namespace gui2
 
 REGISTER_DIALOG(editor_resize_map)
 
-teditor_resize_map::teditor_resize_map(int& width,
+editor_resize_map::editor_resize_map(int& width,
 									   int& height,
 									   EXPAND_DIRECTION& expand_direction,
 									   bool& copy_edge_terrain)
@@ -104,19 +106,19 @@ teditor_resize_map::teditor_resize_map(int& width,
 	register_label("old_height", false, std::to_string(height));
 }
 
-void teditor_resize_map::pre_show(window& window)
+void editor_resize_map::pre_show(window& window)
 {
 	slider& height = find_widget<slider>(&window, "height", false);
 	connect_signal_notify_modified(
 			height,
-			std::bind(&teditor_resize_map::update_expand_direction,
+			std::bind(&editor_resize_map::update_expand_direction,
 						this,
 						std::ref(window)));
 
 	slider& width = find_widget<slider>(&window, "width", false);
 	connect_signal_notify_modified(
 			width,
-			std::bind(&teditor_resize_map::update_expand_direction,
+			std::bind(&editor_resize_map::update_expand_direction,
 						this,
 						std::ref(window)));
 
@@ -127,8 +129,8 @@ void teditor_resize_map::pre_show(window& window)
 				= find_widget<toggle_button>(&window, name, false, true);
 
 		direction_buttons_[i]->set_callback_state_change(
-				dialog_callback<teditor_resize_map,
-								&teditor_resize_map::update_expand_direction>);
+				dialog_callback<editor_resize_map,
+								&editor_resize_map::update_expand_direction>);
 	}
 	direction_buttons_[0]->set_value(true);
 	update_expand_direction(window);
@@ -147,7 +149,7 @@ static int resize_grid_xy_to_idx(const int x, const int y)
 	}
 }
 
-void teditor_resize_map::set_direction_icon(int index, std::string icon)
+void editor_resize_map::set_direction_icon(int index, std::string icon)
 {
 	if(index < 9) {
 		direction_buttons_[index]->set_icon_name("icons/arrows/arrows_blank_"
@@ -155,7 +157,7 @@ void teditor_resize_map::set_direction_icon(int index, std::string icon)
 	}
 }
 
-void teditor_resize_map::update_expand_direction(window& window)
+void editor_resize_map::update_expand_direction(window& window)
 {
 	for(int i = 0; i < 9; ++i) {
 		if(direction_buttons_[i]->get_value()
@@ -212,4 +214,5 @@ void teditor_resize_map::update_expand_direction(window& window)
 	}
 }
 
+} // namespace dialogs
 } // namespace gui2

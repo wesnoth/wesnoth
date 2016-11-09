@@ -32,10 +32,12 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
 REGISTER_DIALOG(network_transmission)
 
-void tnetwork_transmission::pump_monitor::process(events::pump_info&)
+void network_transmission::pump_monitor::process(events::pump_info&)
 {
 	if(!window_)
 		return;
@@ -61,7 +63,7 @@ void tnetwork_transmission::pump_monitor::process(events::pump_info&)
 	}
 }
 
-tnetwork_transmission::tnetwork_transmission(
+network_transmission::network_transmission(
 		connection_data& connection,
 		const std::string& title,
 		const std::string& subtitle)
@@ -73,12 +75,12 @@ tnetwork_transmission::tnetwork_transmission(
 	set_restore(true);
 }
 
-void tnetwork_transmission::set_subtitle(const std::string& subtitle)
+void network_transmission::set_subtitle(const std::string& subtitle)
 {
 	subtitle_ = subtitle;
 }
 
-void tnetwork_transmission::pre_show(window& window)
+void network_transmission::pre_show(window& window)
 {
 	// ***** ***** ***** ***** Set up the widgets ***** ***** ***** *****
 	if(!subtitle_.empty()) {
@@ -91,13 +93,13 @@ void tnetwork_transmission::pre_show(window& window)
 	pump_monitor_.window_ = window;
 }
 
-void tnetwork_transmission::post_show(window& /*window*/)
+void network_transmission::post_show(window& /*window*/)
 {
 	pump_monitor_.window_.reset();
 	connection_->cancel();
 }
 
-void tnetwork_transmission::wesnothd_dialog(CVideo& video, gui2::tnetwork_transmission::connection_data& conn, const std::string& msg)
+void network_transmission::wesnothd_dialog(CVideo& video, network_transmission::connection_data& conn, const std::string& msg)
 {
 	if (video.faked()) {
 		while (!conn.finished()) {
@@ -106,8 +108,8 @@ void tnetwork_transmission::wesnothd_dialog(CVideo& video, gui2::tnetwork_transm
 		}
 	}
 	else {
-		gui2::tloadscreen::display(video, [&]() {
-			gui2::tloadscreen::progress(msg.c_str());
+		loading_screen::display(video, [&]() {
+			loading_screen::progress(msg.c_str());
 			while(!conn.finished()) {
 				conn.poll();
 				SDL_Delay(1);
@@ -116,7 +118,7 @@ void tnetwork_transmission::wesnothd_dialog(CVideo& video, gui2::tnetwork_transm
 	}
 }
 
-struct read_wesnothd_connection_data : public gui2::tnetwork_transmission::connection_data
+struct read_wesnothd_connection_data : public network_transmission::connection_data
 {
 	read_wesnothd_connection_data(wesnothd_connection& conn) : conn_(conn) {}
 	size_t total() override { return conn_.bytes_to_read(); }
@@ -127,7 +129,7 @@ struct read_wesnothd_connection_data : public gui2::tnetwork_transmission::conne
 	wesnothd_connection& conn_;
 };
 
-bool tnetwork_transmission::wesnothd_receive_dialog(CVideo& video, const std::string& msg, config& cfg, wesnothd_connection& connection)
+bool network_transmission::wesnothd_receive_dialog(CVideo& video, const std::string& msg, config& cfg, wesnothd_connection& connection)
 {
 	assert(!msg.empty());
 	read_wesnothd_connection_data gui_data(connection);
@@ -135,7 +137,7 @@ bool tnetwork_transmission::wesnothd_receive_dialog(CVideo& video, const std::st
 	return connection.receive_data(cfg);
 }
 
-struct connect_wesnothd_connection_data : public gui2::tnetwork_transmission::connection_data
+struct connect_wesnothd_connection_data : public network_transmission::connection_data
 {
 	connect_wesnothd_connection_data(wesnothd_connection& conn) : conn_(conn) {}
 	virtual bool finished() override { return conn_.handshake_finished(); }
@@ -144,7 +146,7 @@ struct connect_wesnothd_connection_data : public gui2::tnetwork_transmission::co
 	wesnothd_connection& conn_;
 };
 
-std::unique_ptr<wesnothd_connection> tnetwork_transmission::wesnothd_connect_dialog(CVideo& video, const std::string& msg, const std::string& hostname, int port)
+std::unique_ptr<wesnothd_connection> network_transmission::wesnothd_connect_dialog(CVideo& video, const std::string& msg, const std::string& hostname, int port)
 {
 	assert(!msg.empty());
 	std::unique_ptr<wesnothd_connection> res(new wesnothd_connection(hostname, std::to_string(port)));
@@ -153,5 +155,5 @@ std::unique_ptr<wesnothd_connection> tnetwork_transmission::wesnothd_connect_dia
 	return res;
 }
 
-
+} // namespace dialogs
 } // namespace gui2

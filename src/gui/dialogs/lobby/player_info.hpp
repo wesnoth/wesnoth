@@ -26,14 +26,17 @@ class button;
 class label;
 class text_box;
 
-class tlobby_player_info : public tdialog
+namespace dialogs
+{
+
+class lobby_player_info : public modal_dialog
 {
 public:
-	tlobby_player_info(events::chat_handler& chat,
+	lobby_player_info(events::chat_handler& chat,
 					   user_info& info,
 					   const lobby_info& li);
 
-	~tlobby_player_info();
+	~lobby_player_info();
 
 	bool result_open_whisper() const
 	{
@@ -41,13 +44,13 @@ public:
 	}
 
 private:
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void pre_show(window& window);
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void post_show(window& window);
 
 	void update_relation();
@@ -89,6 +92,7 @@ private:
 	const lobby_info& lobby_info_;
 };
 
+} // namespace dialogs
 } // end namespace gui2
 
 #endif

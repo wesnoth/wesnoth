@@ -30,8 +30,10 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
-REGISTER_DIALOG(drop_down_list)
+REGISTER_DIALOG(drop_down_menu)
 
 namespace {
 	void click_callback(window& window, bool&, bool&, point coordinate)
@@ -70,7 +72,7 @@ namespace {
 	}
 }
 
-void tdrop_down_list::pre_show(window& window)
+void drop_down_menu::pre_show(window& window)
 {
 	window.set_variable("button_x", variant(button_pos_.x));
 	window.set_variable("button_y", variant(button_pos_.y));
@@ -130,9 +132,10 @@ void tdrop_down_list::pre_show(window& window)
 	window.connect_signal<event::SDL_VIDEO_RESIZE>(std::bind(&resize_callback, std::ref(window)), event::dispatcher::front_child);
 }
 
-void tdrop_down_list::post_show(window& window)
+void drop_down_menu::post_show(window& window)
 {
 	selected_item_ = find_widget<listbox>(&window, "list", true).get_selected_row();
 }
 
+} // namespace dialogs
 } // namespace gui2

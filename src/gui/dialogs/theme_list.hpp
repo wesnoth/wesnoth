@@ -21,11 +21,13 @@ struct theme_info;
 
 namespace gui2
 {
+namespace dialogs
+{
 
-class ttheme_list : public tdialog
+class theme_list : public modal_dialog
 {
 public:
-	explicit ttheme_list(const std::vector<theme_info>& themes,
+	explicit theme_list(const std::vector<theme_info>& themes,
 						 int selection = -1);
 
 	/**
@@ -48,15 +50,16 @@ private:
 
 	std::vector<theme_info> themes_;
 
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void pre_show(window& window);
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void post_show(window& window);
 };
-}
+} // namespace dialogs
+} // namespace gui2
 
 #endif

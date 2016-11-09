@@ -47,10 +47,12 @@ static lg::log_domain log_display("display");
 
 namespace gui2
 {
+namespace dialogs
+{
 
 REGISTER_DIALOG(unit_list)
 
-tunit_list::tunit_list(unit_ptr_vector& unit_list, map_location& scroll_to)
+unit_list::unit_list(unit_ptr_vector& unit_list, map_location& scroll_to)
 	: unit_list_(unit_list)
 	, scroll_to_(scroll_to)
 {
@@ -94,17 +96,17 @@ static std::string format_movement_string(unit_const_ptr u)
 	return formatter() << "<span color='" << color << "'>" << moves_left << "/" << moves_max << "</span>";
 }
 
-void tunit_list::pre_show(window& window)
+void unit_list::pre_show(window& window)
 {
 	listbox& list = find_widget<listbox>(&window, "units_list", false);
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	connect_signal_notify_modified(*list,
-			std::bind(&tunit_list::list_item_clicked,
+			std::bind(&unit_list::list_item_clicked,
 				*this, std::ref(window)));
 #else
 	list.set_callback_value_change(
-			dialog_callback<tunit_list, &tunit_list::list_item_clicked>);
+			dialog_callback<unit_list, &unit_list::list_item_clicked>);
 #endif
 
 	list.clear();
@@ -179,7 +181,7 @@ void tunit_list::pre_show(window& window)
 	list_item_clicked(window);
 }
 
-void tunit_list::list_item_clicked(window& window)
+void unit_list::list_item_clicked(window& window)
 {
 	const int selected_row
 		= find_widget<listbox>(&window, "units_list", false).get_selected_row();
@@ -192,7 +194,7 @@ void tunit_list::list_item_clicked(window& window)
 		.set_displayed_unit(*unit_list_[selected_row].get());
 }
 
-void tunit_list::post_show(window& window)
+void unit_list::post_show(window& window)
 {
 	if(get_retval() == window::OK) {
 		const int selected_row = find_widget<listbox>(&window, "units_list", false).get_selected_row();
@@ -215,10 +217,11 @@ void show_unit_list(display& gui)
 		unit_list.push_back(i.get_shared_ptr());
 	}
 
-	if(gui2::tunit_list::execute(unit_list, scroll_to, gui.video())) {
+	if(unit_list::execute(unit_list, scroll_to, gui.video())) {
 		gui.scroll_to_tile(scroll_to, display::WARP);
 		gui.select_hex(scroll_to);
 	}
 }
 
-}
+} // namespace dialogs
+} // namespace gui2

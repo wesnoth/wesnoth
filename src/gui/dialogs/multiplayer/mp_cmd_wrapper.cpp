@@ -26,6 +26,8 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -80,7 +82,7 @@ namespace gui2
 
 REGISTER_DIALOG(mp_cmd_wrapper)
 
-tmp_cmd_wrapper::tmp_cmd_wrapper(const t_string& user)
+mp_cmd_wrapper::mp_cmd_wrapper(const t_string& user)
 	: message_(), reason_(), time_()
 {
 	register_text("message", false, message_, true);
@@ -91,7 +93,7 @@ tmp_cmd_wrapper::tmp_cmd_wrapper(const t_string& user)
 	set_always_save_fields(true);
 }
 
-void tmp_cmd_wrapper::pre_show(window& window)
+void mp_cmd_wrapper::pre_show(window& window)
 {
 #if defined(_WIN32) || defined(__APPLE__)
 	text_box* message
@@ -144,4 +146,5 @@ void tmp_cmd_wrapper::pre_show(window& window)
 	}
 }
 
+} // namespace dialogs
 } // namespace gui2

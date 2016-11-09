@@ -23,21 +23,23 @@ namespace gui2
 {
 class label;
 class toggle_button;
+namespace dialogs
+{
 
-class tadvanced_graphics_options : public tdialog
+class advanced_graphics_options : public modal_dialog
 {
 public:
 	/** Constructor. */
-	tadvanced_graphics_options();
+	advanced_graphics_options();
 
 	/**
 	 * The display function.
 	 *
-	 * See @ref tdialog for more information.
+	 * See @ref modal_dialog for more information.
 	 */
 	static void display(CVideo& video)
 	{
-		tadvanced_graphics_options().show(video);
+		advanced_graphics_options().show(video);
 	}
 
 	// These names must match the infixes of the widget ids in advanced_graphics_options.cfg
@@ -52,13 +54,13 @@ public:
 	)
 
 private:
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void pre_show(window& window);
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void post_show(window& window);
 
 	void setup_scale_case(const std::string &, window &);
@@ -68,6 +70,7 @@ private:
 	std::map<std::string,group<SCALING_ALGORITHM> > groups_;
 };
 
+} // namespace dialogs
 } // end namespace gui2
 
 #endif

@@ -33,28 +33,31 @@ class toggle_button;
 class toggle_panel;
 class widget;
 
-class tmp_create_game : public tdialog, private plugin_executor
+namespace dialogs
+{
+
+class mp_create_game : public modal_dialog, private plugin_executor
 {
 	typedef std::pair<ng::level::TYPE, std::string> level_type_info;
 
 public:
-	tmp_create_game(const config& cfg, ng::create_engine& create_eng);
+	mp_create_game(const config& cfg, ng::create_engine& create_eng);
 
 private:
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void pre_show(window& window);
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void post_show(window& window);
 
 	const config& cfg_;
 
 	ng::create_engine& create_engine_;
 	std::unique_ptr<ng::configure_engine> config_engine_;
-	std::unique_ptr<tmp_options_helper> options_manager_;
+	std::unique_ptr<mp_options_helper> options_manager_;
 
 	int selected_game_index_;
 	int selected_rfm_index_;
@@ -135,6 +138,7 @@ private:
 	enum tab { TAB_GENERAL, TAB_OPTIONS, TAB_SETTINGS };
 };
 
+} // namespace dialogs
 } // namespace gui2
 
 #endif

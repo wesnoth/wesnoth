@@ -45,6 +45,8 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -74,7 +76,7 @@ namespace gui2
 
 REGISTER_DIALOG(unit_attack)
 
-tunit_attack::tunit_attack(const unit_map::iterator& attacker_itor,
+unit_attack::unit_attack(const unit_map::iterator& attacker_itor,
 						   const unit_map::iterator& defender_itor,
 						   const std::vector<battle_context>& weapons,
 						   const int best_weapon)
@@ -86,7 +88,7 @@ tunit_attack::tunit_attack(const unit_map::iterator& attacker_itor,
 {
 }
 
-void tunit_attack::damage_calc_callback(window& window)
+void unit_attack::damage_calc_callback(window& window)
 {
 	const size_t index
 		= find_widget<listbox>(&window, "weapon_list", false).get_selected_row();
@@ -97,11 +99,11 @@ void tunit_attack::damage_calc_callback(window& window)
 	gui::show_dialog(resources::screen->video(), nullptr, _("Damage Calculations"), "", gui::OK_ONLY, nullptr, &preview_panes);
 }
 
-void tunit_attack::pre_show(window& window)
+void unit_attack::pre_show(window& window)
 {
 	connect_signal_mouse_left_click(
 			find_widget<button>(&window, "damage_calculation", false),
-			std::bind(&tunit_attack::damage_calc_callback, this, std::ref(window)));
+			std::bind(&unit_attack::damage_calc_callback, this, std::ref(window)));
 
 	find_widget<unit_preview_pane>(&window, "attacker_pane", false)
 		.set_displayed_unit(*attacker_itor_);
@@ -189,11 +191,12 @@ void tunit_attack::pre_show(window& window)
 	weapon_list.select_row(std::min(best_weapon_, last_item));
 }
 
-void tunit_attack::post_show(window& window)
+void unit_attack::post_show(window& window)
 {
 	if(get_retval() == window::OK) {
 		selected_weapon_ = find_widget<listbox>(&window, "weapon_list", false).get_selected_row();
 	}
 }
 
+} // namespace dialogs
 } // namespace gui2

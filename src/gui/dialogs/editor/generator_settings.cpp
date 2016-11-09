@@ -26,6 +26,8 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
 static int max_coastal = 5;
 static int extra_size_per_player = 2;
@@ -33,7 +35,7 @@ static int min_size = 20;
 
 REGISTER_DIALOG(generator_settings)
 
-tgenerator_settings::tgenerator_settings(generator_data& data)
+generator_settings::generator_settings(generator_data& data)
 	: players_(register_integer("players", true, data.nplayers))
 	, width_(register_integer("width",     true, data.width))
 	, height_(register_integer("height",   true, data.height))
@@ -50,12 +52,12 @@ tgenerator_settings::tgenerator_settings(generator_data& data)
 	register_bool("show_labels",     true, data.show_labels);
 }
 
-void tgenerator_settings::pre_show(window& window)
+void generator_settings::pre_show(window& window)
 {
 	// We adjust the minimum values of the width and height sliders when the number of players changes.
 	// This is done because the map generator needs more space to generate more castles for more players.
 	connect_signal_notify_modified(*players_->get_widget(), std::bind(
-		&tgenerator_settings::adjust_minimum_size_by_players, this, std::ref(window)));
+		&generator_settings::adjust_minimum_size_by_players, this, std::ref(window)));
 
 	gui2::bind_status_label<slider>(window, "players");
 
@@ -68,7 +70,7 @@ void tgenerator_settings::pre_show(window& window)
 		return s.get_value() == 0 ? _("Inland") : (s.get_value() < max_coastal ? _("Coastal") : _("Island")); });
 }
 
-void tgenerator_settings::adjust_minimum_size_by_players(window& window)
+void generator_settings::adjust_minimum_size_by_players(window& window)
 {
 	const int extra_size = (players_->get_widget_value(window) - 2) * extra_size_per_player;
 
@@ -84,4 +86,5 @@ void tgenerator_settings::adjust_minimum_size_by_players(window& window)
 	update_height_label_();
 }
 
-} // end namespace gui2
+} // namespace dialogs
+} // namespace gui2

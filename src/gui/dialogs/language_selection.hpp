@@ -19,25 +19,28 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
-class tlanguage_selection : public tdialog
+class language_selection : public modal_dialog
 {
 public:
-	tlanguage_selection()
+	language_selection()
 	{
 	}
 
 private:
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void pre_show(window& window);
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void post_show(window& window);
 };
 
+} // namespace dialogs
 } // namespace gui2
 
 #endif

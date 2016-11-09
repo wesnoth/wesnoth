@@ -132,6 +132,8 @@ std::string format_file_list(const std::vector<std::string>& files_original)
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -168,7 +170,7 @@ namespace gui2
 
 REGISTER_DIALOG(wml_error)
 
-twml_error::twml_error(const std::string& summary,
+wml_error::wml_error(const std::string& summary,
 					   const std::string& post_summary,
 					   const std::vector<std::string>& files,
 					   const std::string& details)
@@ -203,7 +205,7 @@ twml_error::twml_error(const std::string& summary,
 	register_label("details", true, details);
 }
 
-void twml_error::pre_show(window& window)
+void wml_error::pre_show(window& window)
 {
 	if(!have_files_) {
 		control& filelist = find_widget<control>(&window, "files", false);
@@ -219,7 +221,7 @@ void twml_error::pre_show(window& window)
 	button& copy_button = find_widget<button>(&window, "copy", false);
 
 	connect_signal_mouse_left_click(
-			copy_button, std::bind(&twml_error::copy_report_callback, this));
+			copy_button, std::bind(&wml_error::copy_report_callback, this));
 
 	if (!desktop::clipboard::available()) {
 		copy_button.set_active(false);
@@ -227,9 +229,10 @@ void twml_error::pre_show(window& window)
 	}
 }
 
-void twml_error::copy_report_callback()
+void wml_error::copy_report_callback()
 {
 	desktop::clipboard::copy_to_clipboard(report_, false);
 }
 
+} // end namespace dialogs
 } // end namespace gui2

@@ -32,6 +32,8 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
 namespace
 {
@@ -58,10 +60,10 @@ namespace
  * @end{table}
  */
 
-class tmp_server_list : public tdialog
+class mp_server_list : public modal_dialog
 {
 public:
-	tmp_server_list() : host_name_()
+	mp_server_list() : host_name_()
 	{
 	}
 
@@ -73,19 +75,19 @@ public:
 private:
 	std::string host_name_;
 
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void pre_show(window& window);
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void post_show(window& window);
 };
 
 REGISTER_DIALOG(mp_server_list)
 
-void tmp_server_list::pre_show(window& window)
+void mp_server_list::pre_show(window& window)
 {
 	set_restore(true);
 
@@ -112,7 +114,7 @@ void tmp_server_list::pre_show(window& window)
 	}
 }
 
-void tmp_server_list::post_show(window& window)
+void mp_server_list::post_show(window& window)
 {
 	if(get_retval() == window::OK) {
 
@@ -154,7 +156,7 @@ show_server_list(CVideo& video, window& window, field_text* host_name)
 {
 	assert(host_name);
 
-	tmp_server_list dlg;
+	mp_server_list dlg;
 	dlg.show(video);
 
 	if(dlg.get_retval() == window::OK) {
@@ -162,7 +164,7 @@ show_server_list(CVideo& video, window& window, field_text* host_name)
 	}
 }
 
-tmp_connect::tmp_connect()
+mp_connect::mp_connect()
 	: host_name_(register_text("host_name",
 							   true,
 							   preferences::network_host,
@@ -172,7 +174,7 @@ tmp_connect::tmp_connect()
 	set_restore(true);
 }
 
-void tmp_connect::pre_show(window& win)
+void mp_connect::pre_show(window& win)
 {
 	assert(host_name_);
 
@@ -187,9 +189,10 @@ void tmp_connect::pre_show(window& win)
 	}
 }
 
-tdialog* tmp_connect::mp_server_list_for_unit_test()
+modal_dialog* mp_connect::mp_server_list_for_unit_test()
 {
-	return new tmp_server_list();
+	return new mp_server_list();
 }
 
+} // namespace dialogs
 } // namespace gui2

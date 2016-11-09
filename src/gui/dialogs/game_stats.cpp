@@ -49,10 +49,12 @@ static lg::log_domain log_display("display");
 
 namespace gui2
 {
+namespace dialogs
+{
 
 REGISTER_DIALOG(game_stats)
 
-tgame_stats::tgame_stats(const display_context& board, const int viewing_team, int& selected_index)
+game_stats::game_stats(const display_context& board, const int viewing_team, int& selected_index)
 	: board_(board)
 	, viewing_team_(board_.teams()[viewing_team])
 	, selected_index_(selected_index)
@@ -62,7 +64,7 @@ tgame_stats::tgame_stats(const display_context& board, const int viewing_team, i
 	}
 }
 
-unit_const_ptr tgame_stats::get_leader(const int side)
+unit_const_ptr game_stats::get_leader(const int side)
 {
 	unit_map::const_iterator leader = board_.units().find_leader(side);
 
@@ -73,7 +75,7 @@ unit_const_ptr tgame_stats::get_leader(const int side)
 	return nullptr;
 }
 
-void tgame_stats::pre_show(window& window)
+void game_stats::pre_show(window& window)
 {
 	listbox& stats_list    = find_widget<listbox>(&window, "game_stats_list", false);
 	listbox& settings_list = find_widget<listbox>(&window, "scenario_settings_list", false);
@@ -234,17 +236,17 @@ void tgame_stats::pre_show(window& window)
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	connect_signal_notify_modified(*tab_bar,
-			std::bind(&tgame_stats::on_tab_select,
+			std::bind(&game_stats::on_tab_select,
 				*this, std::ref(window)));
 #else
 	tab_bar.set_callback_value_change(
-			dialog_callback<tgame_stats, &tgame_stats::on_tab_select>);
+			dialog_callback<game_stats, &game_stats::on_tab_select>);
 #endif
 
 	on_tab_select(window);
 }
 
-void tgame_stats::on_tab_select(window& window)
+void game_stats::on_tab_select(window& window)
 {
 	const int i = find_widget<listbox>(&window, "tab_bar", false).get_selected_row();
 
@@ -256,7 +258,7 @@ void tgame_stats::on_tab_select(window& window)
 	);
 }
 
-void tgame_stats::post_show(window& window)
+void game_stats::post_show(window& window)
 {
 	if(get_retval() == window::OK) {
 		const int selected_tab = find_widget<listbox>(&window, "tab_bar", false).get_selected_row();
@@ -266,4 +268,5 @@ void tgame_stats::post_show(window& window)
 	}
 }
 
-}
+} // namespace dialogs
+} // namespace gui2

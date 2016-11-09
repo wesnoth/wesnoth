@@ -395,7 +395,7 @@ static void wait_ingame(user_choice_manager& man)
 
 static void wait_prestart(user_choice_manager& man)
 {
-	gui2::tsynced_choice_wait scw(man);
+	gui2::dialogs::synched_choice_wait scw(man);
 	scw.show(resources::screen->video());
 }
 

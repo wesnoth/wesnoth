@@ -32,10 +32,16 @@
 namespace gui2
 {
 
-class tfile_dialog : public tdialog
+class listbox;
+class text_box;
+
+namespace dialogs
+{
+
+class file_dialog : public modal_dialog
 {
 public:
-	tfile_dialog();
+	file_dialog();
 
 	/**
 	 * Gets the current dialog title text.
@@ -48,7 +54,7 @@ public:
 	/**
 	 * Sets the current dialog title text.
 	 */
-	tfile_dialog& set_title(const std::string& value)
+	file_dialog& set_title(const std::string& value)
 	{
 		title_ = value;
 		return *this;
@@ -67,7 +73,7 @@ public:
 	 *
 	 * The message text may contain Pango markup.
 	 */
-	tfile_dialog& set_message(const std::string& value)
+	file_dialog& set_message(const std::string& value)
 	{
 		msg_ = value;
 		return *this;
@@ -93,7 +99,7 @@ public:
 	 * If you want to set an initial file name hint/template, use set_filename()
 	 * <b>after</b> calling this method.
 	 */
-	tfile_dialog& set_path(const std::string& value);
+	file_dialog& set_path(const std::string& value);
 
 	/**
 	 * Sets the initial file name input but not the path.
@@ -103,7 +109,7 @@ public:
 	 * If this is used before set_path() and the path passed there points to a
 	 * file, that file name will replace the one given here.
 	 */
-	tfile_dialog& set_filename(const std::string& value);
+	file_dialog& set_filename(const std::string& value);
 
 	/**
 	 * Sets the default file extension for file names in save mode.
@@ -117,7 +123,7 @@ public:
 	 * The value provided to this method should be preceded by a dot if
 	 * applicable (e.g. ".cfg").
 	 */
-	tfile_dialog& set_extension(const std::string& value)
+	file_dialog& set_extension(const std::string& value)
 	{
 		extension_ = value;
 		return *this;
@@ -136,7 +142,7 @@ public:
 	 *
 	 * This is initially disabled.
 	 */
-	tfile_dialog& set_read_only(bool value)
+	file_dialog& set_read_only(bool value)
 	{
 		read_only_ = value;
 		return *this;
@@ -161,7 +167,7 @@ public:
 	 * need not exist already (but their parent directories still do). Otherwise,
 	 * the user is only able to select existing files.
 	 */
-	tfile_dialog& set_save_mode(bool value)
+	file_dialog& set_save_mode(bool value)
 	{
 		save_mode_ = value;
 		return *this;
@@ -174,7 +180,7 @@ public:
 	 * Calling this method with an empty string will reset the label to the
 	 * default.
 	 */
-	tfile_dialog& set_ok_label(const std::string& value)
+	file_dialog& set_ok_label(const std::string& value)
 	{
 		ok_label_ = value;
 		return *this;
@@ -199,10 +205,10 @@ private:
 	int current_bookmark_;
 	int user_bookmarks_begin_;
 
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tdialog. */
+	/** Inherited from modal_dialog. */
 	void pre_show(window& window);
 
 	/** Handles dialog exit events and decides whether to proceed or not. */
@@ -307,7 +313,7 @@ private:
 	void push_fileview_row(class listbox& filelist, const std::string& name, const std::string& icon, bool check_selection = true);
 };
 
-
-}
+} // namespace dialogs
+} // namespace gui2
 
 #endif

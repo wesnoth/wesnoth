@@ -99,7 +99,7 @@ bool loadgame::show_difficulty_dialog()
 			continue;
 		}
 
-		gui2::tcampaign_difficulty difficulty_dlg(campaign);
+		gui2::dialogs::campaign_difficulty difficulty_dlg(campaign);
 		difficulty_dlg.show(video_);
 
 		// Return if canceled, since otherwise load_data_.difficulty will be set to 'CANCEL'
@@ -124,7 +124,7 @@ bool loadgame::load_game_ingame()
 		return false;
 	}
 
-	if(!gui2::tgame_load::execute(game_config_, load_data_, video_)) {
+	if(!gui2::dialogs::game_load::execute(game_config_, load_data_, video_)) {
 		return false;
 	}
 
@@ -162,7 +162,7 @@ bool loadgame::load_game()
 	bool skip_version_check = true;
 
 	if(load_data_.filename.empty()){
-		if(!gui2::tgame_load::execute(game_config_, load_data_, video_)) {
+		if(!gui2::dialogs::game_load::execute(game_config_, load_data_, video_)) {
 			return false;
 		}
 		skip_version_check = false;
@@ -250,7 +250,7 @@ bool loadgame::check_version_compatibility(const version_info & save_version, CV
 		utils::string_map symbols;
 		symbols["version_number"] = save_version.str();
 		const int res = gui2::show_message(video, _("Load Game"), utils::interpolate_variables_into_string(message, &symbols),
-			gui2::tmessage::yes_no_buttons);
+			gui2::dialogs::message::yes_no_buttons);
 		return res == gui2::window::OK;
 	}
 
@@ -264,7 +264,7 @@ void loadgame::set_gamestate()
 
 bool loadgame::load_multiplayer_game()
 {
-	if(!gui2::tgame_load::execute(game_config_, load_data_, video_)) {
+	if(!gui2::dialogs::game_load::execute(game_config_, load_data_, video_)) {
 		return false;
 	}
 
@@ -371,12 +371,12 @@ int savegame::show_save_dialog(CVideo& video, const std::string& message, DIALOG
 	int res = 0;
 
 	if (dialog_type == OK_CANCEL){
-		gui2::tgame_save dlg(filename_, title_);
+		gui2::dialogs::game_save dlg(filename_, title_);
 		dlg.show(video);
 		res = dlg.get_retval();
 	}
 	else if (dialog_type == YES_NO){
-		gui2::tgame_save_message dlg(filename_, title_, message);
+		gui2::dialogs::game_save_message dlg(filename_, title_, message);
 		dlg.show(video);
 		res = dlg.get_retval();
 	}
@@ -398,7 +398,7 @@ bool savegame::check_overwrite(CVideo& video)
 
 	std::ostringstream message;
 	message << _("Save already exists. Do you want to overwrite it?") << "\n" << _("Name: ") << filename_;
-	const int res = gui2::show_message(video, _("Overwrite?"), message.str(), gui2::tmessage::yes_no_buttons);
+	const int res = gui2::show_message(video, _("Overwrite?"), message.str(), gui2::dialogs::message::yes_no_buttons);
 	return res == gui2::window::OK;
 
 }
@@ -600,7 +600,7 @@ int oos_savegame::show_save_dialog(CVideo& video, const std::string& message, DI
 	std::string filename = this->filename();
 
 	if (!ignore_){
-		gui2::tgame_save_oos dlg(ignore_, filename, title(), message);
+		gui2::dialogs::game_save_oos dlg(ignore_, filename, title(), message);
 		dlg.show(video);
 		res = dlg.get_retval();
 	}

@@ -26,10 +26,12 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
-REGISTER_DIALOG(logging)
+REGISTER_DIALOG(log_settings)
 
-tlogging::tlogging()
+log_settings::log_settings()
 {
 	//list of names must match those in logging.cfg
 	widget_id_.push_back("err");
@@ -50,7 +52,7 @@ tlogging::tlogging()
 	}
 }
 
-void tlogging::pre_show(window& window)
+void log_settings::pre_show(window& window)
 {
 	set_restore(true); //why is this done manually?
 
@@ -82,14 +84,14 @@ void tlogging::pre_show(window& window)
 	}
 }
 
-void tlogging::post_show(window& /*window*/)
+void log_settings::post_show(window& /*window*/)
 {
 	for(std::string this_domain : domain_list_){
 		set_logger(this_domain);
 	}
 }
 
-void tlogging::set_logger(const std::string log_domain)
+void log_settings::set_logger(const std::string log_domain)
 {
 	std::string active_value = groups_[log_domain].get_active_member_value();
 
@@ -104,4 +106,5 @@ void tlogging::set_logger(const std::string log_domain)
 	}
 }
 
-} // end namespace gui2
+} // namespace dialogs
+} // namespace gui2
