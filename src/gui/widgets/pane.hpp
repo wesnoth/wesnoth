@@ -48,7 +48,7 @@ public:
 		unsigned id;
 		std::map<std::string, std::string> tags;
 
-		grid* grid;
+		grid* item_grid;
 	};
 
 	typedef std::function<bool(const item&, const item&)> tcompare_functor;

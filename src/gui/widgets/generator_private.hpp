@@ -651,7 +651,7 @@ public:
 			/*** Set the proper visible state. ***/
 			items_[index]->shown = show;
 			items_[index]
-					->grid.set_visible(show ? widget::visibility::visible
+					->child_grid.set_visible(show ? widget::visibility::visible
 											: widget::visibility::invisible);
 
 			/*** Update the selection. ***/
@@ -663,7 +663,7 @@ public:
 	virtual bool get_item_shown(const unsigned index) const override
 	{
 		assert(index < items_.size());
-		return items_[index]->shown && items_[index]->grid.get_visible() != window::visibility::invisible;
+		return items_[index]->shown && items_[index]->child_grid.get_visible() != window::visibility::invisible;
 	}
 
 
@@ -706,14 +706,14 @@ public:
 	grid& item(const unsigned index) override
 	{
 		assert(index < items_.size());
-		return items_[index]->grid;
+		return items_[index]->child_grid;
 	}
 
 	/** Inherited from generator_base. */
 	const grid& item(const unsigned index) const override
 	{
 		assert(index < items_.size());
-		return items_[index]->grid;
+		return items_[index]->child_grid;
 	}
 
 	/** Inherited from generator_base. */
@@ -721,7 +721,7 @@ public:
 	{
 		calculate_order();
 		assert(index < items_.size());
-		return items_[order_[index]]->grid;
+		return items_[order_[index]]->child_grid;
 	}
 
 	/** Inherited from generator_base. */
@@ -729,7 +729,7 @@ public:
 	{
 		calculate_order();
 		assert(index < items_.size());
-		return items_[order_[index]]->grid;
+		return items_[order_[index]]->child_grid;
 	}
 
 
@@ -756,8 +756,8 @@ public:
 		assert(index == -1 || static_cast<unsigned>(index) < items_.size());
 
 		child* item = new child;
-		list_builder->build(&item->grid);
-		init(&item->grid, item_data, callback);
+		list_builder->build(&item->child_grid);
+		init(&item->child_grid, item_data, callback);
 
 		const unsigned item_index = index == -1 ? items_.size() : index;
 
@@ -766,9 +766,9 @@ public:
 		minimum_selection::create_item(item_index);
 		placement::create_item(item_index);
 		if(!is_selected(item_index)) {
-			select_action::select(item->grid, false);
+			select_action::select(item->child_grid, false);
 		}
-		return item->grid;
+		return item->child_grid;
 	}
 
 	/** Inherited from generator_base. */
@@ -796,10 +796,10 @@ public:
 	{
 		for(auto item : items_)
 		{
-			if(item->grid.get_visible() != widget::visibility::invisible
+			if(item->child_grid.get_visible() != widget::visibility::invisible
 			   && item->shown) {
 
-				item->grid.layout_initialise(full_initialisation);
+				item->child_grid.layout_initialise(full_initialisation);
 			}
 		}
 	}
@@ -856,10 +856,10 @@ public:
 		for(auto index : order_)
 		{
 			child* item = items_[index];
-			if(item->grid.get_visible() == widget::visibility::visible
+			if(item->child_grid.get_visible() == widget::visibility::visible
 			   && item->shown) {
 
-				item->grid.draw_children(frame_buffer, x_offset, y_offset);
+				item->child_grid.draw_children(frame_buffer, x_offset, y_offset);
 			}
 		}
 	}
@@ -872,7 +872,7 @@ public:
 		for(auto item : items_)
 		{
 			std::vector<widget*> child_call_stack = call_stack;
-			item->grid.populate_dirty_list(caller, child_call_stack);
+			item->child_grid.populate_dirty_list(caller, child_call_stack);
 		}
 	}
 
@@ -895,7 +895,7 @@ public:
 	{
 		for(auto item : items_)
 		{
-			if(item->grid.disable_click_dismiss()) {
+			if(item->child_grid.disable_click_dismiss()) {
 				return true;
 			}
 		}
@@ -962,12 +962,12 @@ private:
 	struct child
 	{
 
-		child() : grid(), selected(false), shown(true), ordered_index(0)
+		child() : child_grid(), selected(false), shown(true), ordered_index(0)
 		{
 		}
 
 		/** The grid containing the widgets. */
-		grid grid;
+		grid child_grid;
 
 		/** Is the item selected or not. */
 		bool selected;
@@ -1076,7 +1076,7 @@ private:
 		assert(index < items_.size());
 
 		(*items_[index]).selected = selected;
-		select_action::select((*items_[index]).grid, selected);
+		select_action::select((*items_[index]).child_grid, selected);
 	}
 
 	/**

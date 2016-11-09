@@ -112,7 +112,7 @@ struct builder_viewport : public builder_widget
 
 	widget* build(const replacements_map& replacements) const;
 
-	builder_widget_ptr widget;
+	builder_widget_ptr widget_;
 };
 
 } // namespace implementation

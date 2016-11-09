@@ -142,7 +142,7 @@ private:
 	{
 		tbutton_status();
 
-		button* button;
+		button* ptr;
 		std::string caption;
 		widget::visibility visible;
 		int retval;

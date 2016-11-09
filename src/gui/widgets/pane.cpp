@@ -64,7 +64,7 @@ struct pane_implementation
 		for(auto item : pane->items_)
 		{
 
-			if(item.grid->get_visible() == widget::visibility::invisible) {
+			if(item.item_grid->get_visible() == widget::visibility::invisible) {
 				continue;
 			}
 
@@ -72,12 +72,12 @@ struct pane_implementation
 			 * If the adjusted coordinate is in the item's grid let the grid
 			 * resolve the coordinate.
 			 */
-			const SDL_Rect rect = item.grid->get_rectangle();
+			const SDL_Rect rect = item.item_grid->get_rectangle();
 			if(coordinate.x >= rect.x && coordinate.y >= rect.y
 			   && coordinate.x < rect.x + rect.w
 			   && coordinate.y < rect.y + rect.h) {
 
-				return item.grid->find_at(coordinate, must_be_active);
+				return item.item_grid->find_at(coordinate, must_be_active);
 			}
 		}
 
@@ -98,7 +98,7 @@ struct pane_implementation
 		{
 
 			if(item.id == id) {
-				return item.grid;
+				return item.item_grid;
 			}
 		}
 
@@ -142,12 +142,12 @@ unsigned pane::create_item(const std::map<std::string, string_map>& item_data,
 {
 	item item = { item_id_generator_++, tags, item_builder_->build() };
 
-	item.grid->set_parent(this);
+	item.item_grid->set_parent(this);
 
 	for(const auto & data : item_data)
 	{
 		control* ctrl
-				= find_widget<control>(item.grid, data.first, false, false);
+				= find_widget<control>(item.item_grid, data.first, false, false);
 
 		if(ctrl) {
 			ctrl->set_members(data.second);
@@ -181,8 +181,8 @@ void pane::layout_initialise(const bool full_initialisation)
 
 	for(auto & item : items_)
 	{
-		if(item.grid->get_visible() != widget::visibility::invisible) {
-			item.grid->layout_initialise(full_initialisation);
+		if(item.item_grid->get_visible() != widget::visibility::invisible) {
+			item.item_grid->layout_initialise(full_initialisation);
 		}
 	}
 }
@@ -194,8 +194,8 @@ pane::impl_draw_children(surface& frame_buffer, int x_offset, int y_offset)
 
 	for(auto & item : items_)
 	{
-		if(item.grid->get_visible() != widget::visibility::invisible) {
-			item.grid->draw_children(frame_buffer, x_offset, y_offset);
+		if(item.item_grid->get_visible() != widget::visibility::invisible) {
+			item.item_grid->draw_children(frame_buffer, x_offset, y_offset);
 		}
 	}
 }
@@ -206,7 +206,7 @@ void pane::child_populate_dirty_list(window& caller,
 	for(auto & item : items_)
 	{
 		std::vector<widget*> child_call_stack = call_stack;
-		item.grid->populate_dirty_list(caller, child_call_stack);
+		item.item_grid->populate_dirty_list(caller, child_call_stack);
 	}
 }
 
@@ -221,7 +221,7 @@ void pane::filter(const tfilter_functor& filter_functor)
 {
 	for(auto & item : items_)
 	{
-		item.grid->set_visible(filter_functor(item)
+		item.item_grid->set_visible(filter_functor(item)
 									   ? widget::visibility::visible
 									   : widget::visibility::invisible);
 	}
@@ -279,12 +279,12 @@ void pane::place_children()
 	unsigned index = 0;
 	for(auto & item : items_)
 	{
-		if(item.grid->get_visible() == widget::visibility::invisible) {
+		if(item.item_grid->get_visible() == widget::visibility::invisible) {
 			continue;
 		}
 
 		const point origin = placer_->get_origin(index);
-		item.grid->place(origin, item.grid->get_best_size());
+		item.item_grid->place(origin, item.item_grid->get_best_size());
 		++index;
 	}
 }
@@ -295,12 +295,12 @@ void pane::set_origin_children()
 	unsigned index = 0;
 	for(auto & item : items_)
 	{
-		if(item.grid->get_visible() == widget::visibility::invisible) {
+		if(item.item_grid->get_visible() == widget::visibility::invisible) {
 			continue;
 		}
 
 		const point origin = placer_->get_origin(index);
-		item.grid->set_origin(origin);
+		item.item_grid->set_origin(origin);
 		++index;
 	}
 }
@@ -311,15 +311,15 @@ void pane::place_or_set_origin_children()
 	unsigned index = 0;
 	for(auto & item : items_)
 	{
-		if(item.grid->get_visible() == widget::visibility::invisible) {
+		if(item.item_grid->get_visible() == widget::visibility::invisible) {
 			continue;
 		}
 
 		const point origin = placer_->get_origin(index);
-		if(item.grid->get_size() != item.grid->get_best_size()) {
-			item.grid->place(origin, item.grid->get_best_size());
+		if(item.item_grid->get_size() != item.item_grid->get_best_size()) {
+			item.item_grid->place(origin, item.item_grid->get_best_size());
 		} else {
-			item.grid->set_origin(origin);
+			item.item_grid->set_origin(origin);
 		}
 		++index;
 	}
@@ -332,11 +332,11 @@ void pane::prepare_placement() const
 
 	for(const auto & item : items_)
 	{
-		if(item.grid->get_visible() == widget::visibility::invisible) {
+		if(item.item_grid->get_visible() == widget::visibility::invisible) {
 			continue;
 		}
 
-		placer_->add_item(item.grid->get_best_size());
+		placer_->add_item(item.item_grid->get_best_size());
 	}
 }
 
@@ -350,8 +350,8 @@ void pane::signal_handler_request_placement(dispatcher& dispatcher,
 	if(wgt) {
 		for(auto & item : items_)
 		{
-			if(item.grid->has_widget(*wgt)) {
-				if(item.grid->get_visible() != widget::visibility::invisible) {
+			if(item.item_grid->has_widget(*wgt)) {
+				if(item.item_grid->get_visible() != widget::visibility::invisible) {
 
 					/*
 					 * This time we call init layout but also the linked widget
@@ -359,7 +359,7 @@ void pane::signal_handler_request_placement(dispatcher& dispatcher,
 					 * addon_list. This code can use some more tuning,
 					 * polishing and testing.
 					 */
-					item.grid->layout_initialise(false);
+					item.item_grid->layout_initialise(false);
 					get_window()->layout_linked_widgets();
 
 					/*
@@ -367,7 +367,7 @@ void pane::signal_handler_request_placement(dispatcher& dispatcher,
 					 * what seems to work properly when showing and hiding
 					 * items. Might fail with new items (haven't tested yet).
 					 */
-					item.grid->place(point(), item.grid->get_best_size());
+					item.item_grid->place(point(), item.item_grid->get_best_size());
 				}
 				place_or_set_origin_children();
 				DBG_GUI_E << LOG_HEADER << ' ' << event << " handled.\n";

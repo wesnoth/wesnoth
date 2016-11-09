@@ -51,15 +51,15 @@ struct message_implementation
 							message::tbutton_status& button_status,
 							const std::string& id)
 	{
-		button_status.button = find_widget<button>(&window, id, false, true);
-		button_status.button->set_visible(button_status.visible);
+		button_status.ptr = find_widget<button>(&window, id, false, true);
+		button_status.ptr->set_visible(button_status.visible);
 
 		if(!button_status.caption.empty()) {
-			button_status.button->set_label(button_status.caption);
+			button_status.ptr->set_label(button_status.caption);
 		}
 
 		if(button_status.retval != window::NONE) {
-			button_status.button->set_retval(button_status.retval);
+			button_status.ptr->set_retval(button_status.retval);
 		}
 	}
 };
@@ -106,7 +106,7 @@ void message::post_show(window& /*window*/)
 {
 	for(auto & button_status : buttons_)
 	{
-		button_status.button = nullptr;
+		button_status.ptr = nullptr;
 	}
 }
 
@@ -114,8 +114,8 @@ void message::set_button_caption(const button_id button,
 								  const std::string& caption)
 {
 	buttons_[button].caption = caption;
-	if(buttons_[button].button) {
-		buttons_[button].button->set_label(caption);
+	if(buttons_[button].ptr) {
+		buttons_[button].ptr->set_label(caption);
 	}
 }
 
@@ -123,21 +123,21 @@ void message::set_button_visible(const button_id button,
 								  const widget::visibility visible)
 {
 	buttons_[button].visible = visible;
-	if(buttons_[button].button) {
-		buttons_[button].button->set_visible(visible);
+	if(buttons_[button].ptr) {
+		buttons_[button].ptr->set_visible(visible);
 	}
 }
 
 void message::set_button_retval(const button_id button, const int retval)
 {
 	buttons_[button].retval = retval;
-	if(buttons_[button].button) {
-		buttons_[button].button->set_retval(retval);
+	if(buttons_[button].ptr) {
+		buttons_[button].ptr->set_retval(retval);
 	}
 }
 
 message::tbutton_status::tbutton_status()
-	: button(nullptr)
+	: ptr(nullptr)
 	, caption()
 	, visible(widget::visibility::invisible)
 	, retval(window::NONE)

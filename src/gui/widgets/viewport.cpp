@@ -85,7 +85,7 @@ viewport::viewport(widget& widget) : widget_(widget), owns_widget_(false)
 viewport::viewport(const implementation::builder_viewport& builder,
 					 const builder_widget::replacements_map& replacements)
 	: widget(builder)
-	, widget_(*builder.widget->build(replacements))
+	, widget_(*builder.widget_->build(replacements))
 	, owns_widget_(true)
 {
 	widget_.set_parent(this);
@@ -220,7 +220,7 @@ namespace implementation
 
 builder_viewport::builder_viewport(const config& cfg)
 	: builder_widget(cfg)
-	, widget(create_builder_widget(cfg.child("widget", "[viewport]")))
+	, widget_(create_builder_widget(cfg.child("widget", "[viewport]")))
 {
 }
 
