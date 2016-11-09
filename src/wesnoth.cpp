@@ -932,12 +932,7 @@ static void restart_process(const std::vector<std::string>& commandline)
 #define error_exit(res) return res
 #endif
 
-#if defined(__native_client__) || defined(__APPLE__)
-extern "C" int wesnoth_main(int argc, char** argv);
-int wesnoth_main(int argc, char** argv)
-#else
 int main(int argc, char** argv)
-#endif
 {
 
 #ifdef HAVE_VISUAL_LEAK_DETECTOR
