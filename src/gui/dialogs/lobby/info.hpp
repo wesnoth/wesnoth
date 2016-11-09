@@ -75,7 +75,7 @@ public:
 
 	user_info& get_user(const std::string& name);
 
-	chat_log& get_whisper_log(const std::string& name);
+	chat_session& get_whisper_log(const std::string& name);
 
 	void update_user_statuses(int game_id, const room_info* room);
 
@@ -113,7 +113,7 @@ private:
 	std::vector<game_info*> games_filtered_;
 	std::vector<user_info> users_;
 	std::vector<user_info*> users_sorted_;
-	std::map<std::string, chat_log> whispers_;
+	std::map<std::string, chat_session> whispers_;
 	std::vector<game_filter_func> game_filters_;
 	bool game_filter_invert_;
 	boost::dynamic_bitset<> games_visibility_;

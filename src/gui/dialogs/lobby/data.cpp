@@ -49,11 +49,11 @@ chat_message::chat_message(const time_t& timestamp,
 {
 }
 
-chat_log::chat_log() : history_()
+chat_session::chat_session() : history_()
 {
 }
 
-void chat_log::add_message(const time_t& timestamp,
+void chat_session::add_message(const time_t& timestamp,
 						   const std::string& user,
 						   const std::string& message)
 {
@@ -61,12 +61,12 @@ void chat_log::add_message(const time_t& timestamp,
 }
 
 
-void chat_log::add_message(const std::string& user, const std::string& message)
+void chat_session::add_message(const std::string& user, const std::string& message)
 {
 	add_message(time(nullptr), user, message);
 }
 
-void chat_log::clear()
+void chat_session::clear()
 {
 	history_.clear();
 }

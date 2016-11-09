@@ -80,7 +80,7 @@ struct wesnoth_global_fixture {
 		test_utils::get_fake_display(1024, 768);
 
 		gui2::init();
-		static const gui2::event::tmanager gui_event_manager;
+		static const gui2::event::manager gui_event_manager;
 
 
 

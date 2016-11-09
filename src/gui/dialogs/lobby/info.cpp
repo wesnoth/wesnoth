@@ -301,7 +301,7 @@ bool lobby_info::has_room(const std::string& name) const
 	return get_room(name) != nullptr;
 }
 
-chat_log& lobby_info::get_whisper_log(const std::string& name)
+chat_session& lobby_info::get_whisper_log(const std::string& name)
 {
 	return whispers_[name];
 }

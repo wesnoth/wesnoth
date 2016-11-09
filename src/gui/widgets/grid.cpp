@@ -340,9 +340,9 @@ void grid::request_reduce_height(const unsigned maximum_height)
 		}
 
 		/* Reducing the height of a widget causes the widget to save its new size
-		in twidget::layout_size_. After that, get_best_size() will return that
+		in widget::layout_size_. After that, get_best_size() will return that
 		size and not the originally calculated optimal size.
-		Thus, it's perfectly correct that tgrid::calculate_best_size() that we
+		Thus, it's perfectly correct that grid::calculate_best_size() that we
 		call later calls get_best_size() for child widgets as if size reduction
 		had never happened. */
 		const unsigned height = grid_implementation::row_request_reduce_height(

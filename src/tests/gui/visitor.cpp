@@ -24,20 +24,20 @@
 #include <iostream>
 #include <typeinfo>
 
-static void add_widget(gui2::tgrid& grid
-		, gui2::twidget* widget
+static void add_widget(gui2::grid& grid
+		, gui2::widget* widget
 		, const std::string& id
 		, const unsigned row
 		, const unsigned column)
 {
-	BOOST_REQUIRE_NE(widget, static_cast<gui2::twidget*>(nullptr));
+	BOOST_REQUIRE_NE(widget, static_cast<gui2::widget*>(nullptr));
 
 	widget->set_id(id);
 	grid.set_child(widget
 			, row
 			, column
-			, gui2::tgrid::VERTICAL_GROW_SEND_TO_CLIENT
-				| gui2::tgrid::HORIZONTAL_GROW_SEND_TO_CLIENT
+			, gui2::grid::VERTICAL_GROW_SEND_TO_CLIENT
+				| gui2::grid::HORIZONTAL_GROW_SEND_TO_CLIENT
 			, 0);
 }
 
@@ -53,53 +53,53 @@ static void test_control()
 
 	/***** INITIAL STATE *****/
 
-	BOOST_CHECK_EQUAL(visitor->at_end(gui2::iterator::walker_base::widget), false);
-	BOOST_CHECK_EQUAL(visitor->at_end(gui2::iterator::walker_base::grid), true);
+	BOOST_CHECK_EQUAL(visitor->at_end(gui2::iterator::walker_base::self), false);
+	BOOST_CHECK_EQUAL(visitor->at_end(gui2::iterator::walker_base::internal), true);
 	BOOST_CHECK_EQUAL(visitor->at_end(gui2::iterator::walker_base::child), true);
 
-	BOOST_CHECK_EQUAL(visitor->get(gui2::iterator::walker_base::widget), &control);
-	BOOST_CHECK_EQUAL(visitor->get(gui2::iterator::walker_base::grid), static_cast<void*>(nullptr));
+	BOOST_CHECK_EQUAL(visitor->get(gui2::iterator::walker_base::self), &control);
+	BOOST_CHECK_EQUAL(visitor->get(gui2::iterator::walker_base::internal), static_cast<void*>(nullptr));
 	BOOST_CHECK_EQUAL(visitor->get(gui2::iterator::walker_base::child), static_cast<void*>(nullptr));
 
 	/***** VISITING WIDGET *****/
 
-	BOOST_CHECK_EQUAL(visitor->next(gui2::iterator::walker_base::widget), gui2::iterator::walker_base::invalid);
-	BOOST_CHECK_EQUAL(visitor->next(gui2::iterator::walker_base::grid), gui2::iterator::walker_base::fail);
+	BOOST_CHECK_EQUAL(visitor->next(gui2::iterator::walker_base::self), gui2::iterator::walker_base::invalid);
+	BOOST_CHECK_EQUAL(visitor->next(gui2::iterator::walker_base::internal), gui2::iterator::walker_base::fail);
 	BOOST_CHECK_EQUAL(visitor->next(gui2::iterator::walker_base::child), gui2::iterator::walker_base::fail);
 
-	BOOST_CHECK_EQUAL(visitor->at_end(gui2::iterator::walker_base::widget), true);
-	BOOST_CHECK_EQUAL(visitor->at_end(gui2::iterator::walker_base::grid), true);
+	BOOST_CHECK_EQUAL(visitor->at_end(gui2::iterator::walker_base::self), true);
+	BOOST_CHECK_EQUAL(visitor->at_end(gui2::iterator::walker_base::internal), true);
 	BOOST_CHECK_EQUAL(visitor->at_end(gui2::iterator::walker_base::child), true);
 
-	BOOST_CHECK_EQUAL(visitor->get(gui2::iterator::walker_base::widget), static_cast<void*>(nullptr));
-	BOOST_CHECK_EQUAL(visitor->get(gui2::iterator::walker_base::grid), static_cast<void*>(nullptr));
+	BOOST_CHECK_EQUAL(visitor->get(gui2::iterator::walker_base::self), static_cast<void*>(nullptr));
+	BOOST_CHECK_EQUAL(visitor->get(gui2::iterator::walker_base::internal), static_cast<void*>(nullptr));
 	BOOST_CHECK_EQUAL(visitor->get(gui2::iterator::walker_base::child), static_cast<void*>(nullptr));
 
 	/***** POST END *****/
 
-	BOOST_CHECK_EQUAL(visitor->next(gui2::iterator::walker_base::widget), gui2::iterator::walker_base::fail);
+	BOOST_CHECK_EQUAL(visitor->next(gui2::iterator::walker_base::self), gui2::iterator::walker_base::fail);
 }
 
 static void test_control()
 {
 	/* Could add more widgets to the list. */
-	test_control<gui2::tlabel>();
+	test_control<gui2::label>();
 
 }
 
 static void test_grid()
 {
 	/* An empty grid behaves the same as a control so test here. */
-	test_control<gui2::tgrid>();
+	test_control<gui2::grid>();
 
 	//std::cerr << __func__ << ": Detailed test.\n";
 
 	/* Test the child part here. */
-	gui2::tgrid grid(2 ,2);
-	add_widget(grid, new gui2::tlabel(), "(1,1)", 0, 0);
-	add_widget(grid, new gui2::tlabel(), "(1,2)", 0, 1);
-	add_widget(grid, new gui2::tlabel(), "(2,1)", 1, 0);
-	add_widget(grid, new gui2::tlabel(), "(2,2)", 1, 1);
+	gui2::grid grid(2 ,2);
+	add_widget(grid, new gui2::label(), "(1,1)", 0, 0);
+	add_widget(grid, new gui2::label(), "(1,2)", 0, 1);
+	add_widget(grid, new gui2::label(), "(2,1)", 1, 0);
+	add_widget(grid, new gui2::label(), "(2,2)", 1, 1);
 
 	const std::unique_ptr<gui2::iterator::walker_base> visitor(grid.create_walker());
 

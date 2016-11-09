@@ -33,7 +33,7 @@
 #include "gui/widgets/tree_view.hpp"
 #include "gui/widgets/tree_view_node.hpp"
 #include "gui/widgets/unit_preview_pane.hpp"
-#include "gui/widgets/widget.hpp"       // for twidget
+#include "gui/widgets/widget.hpp"       // for widget
 #include "gui/widgets/window.hpp"       // for window
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX

@@ -115,6 +115,8 @@
 
 #include <memory>
 
+using namespace gui2::dialogs;
+
 namespace gui2 {
 
 std::vector<std::string>& unit_test_registered_window_list()
@@ -124,6 +126,8 @@ std::vector<std::string>& unit_test_registered_window_list()
 
 	return result;
 }
+
+namespace dialogs {
 
 std::string unit_test_mark_as_tested(const modal_dialog& dialog)
 {
@@ -155,9 +159,8 @@ modal_dialog* unit_test_mp_server_list()
 	return mp_connect::mp_server_list_for_unit_test();
 }
 
+} // namespace dialogs
 } // namespace gui2
-
-using namespace gui2::dialogs;
 
 namespace {
 
@@ -189,7 +192,7 @@ namespace {
 			const std::unique_ptr<modal_dialog> dlg(ctor.create());
 			BOOST_REQUIRE_MESSAGE(dlg.get(), "Failed to create a dialog.");
 
-			const std::string id = gui2::unit_test_mark_as_tested(*(dlg.get()));
+			const std::string id = unit_test_mark_as_tested(*(dlg.get()));
 
 			std::string exception;
 			try {
@@ -228,12 +231,12 @@ namespace {
 				const std::unique_ptr<modeless_dialog> dlg(ctor.create());
 				BOOST_REQUIRE_MESSAGE(dlg.get(), "Failed to create a dialog.");
 
-				const std::string id = gui2::unit_test_mark_popup_as_tested(*(dlg.get()));
+				const std::string id = unit_test_mark_popup_as_tested(*(dlg.get()));
 
 				std::string exception;
 				try {
 					dlg->show(video, interact);
-					gui2::window* window = gui2::unit_test_window((*dlg.get()));
+					gui2::window* window = unit_test_window((*dlg.get()));
 					BOOST_REQUIRE_NE(window, static_cast<void*>(nullptr));
 					window->draw();
 				} catch(gui2::layout_exception_width_modified&) {

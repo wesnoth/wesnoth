@@ -74,7 +74,7 @@ namespace implementation {
 		, typename ToEnable = void
 		, typename FromEnable = void
 	>
-	struct lexical_cast;
+	struct lexical_caster;
 
 } // namespace implementation
 
@@ -91,7 +91,7 @@ namespace implementation {
 template<typename To, typename From>
 inline To lexical_cast(From value)
 {
-	return implementation::lexical_cast<To, From>().operator()(value);
+	return implementation::lexical_caster<To, From>().operator()(value);
 }
 
 /** Thrown when a lexical_cast fails. */
@@ -116,7 +116,7 @@ template<
 	, typename ToEnable
 	, typename FromEnable
 >
-struct lexical_cast
+struct lexical_caster
 {
 	To operator()(From value)
 	{
@@ -140,7 +140,7 @@ struct lexical_cast
  * integral type.
  */
 template <typename From>
-struct lexical_cast<
+struct lexical_caster<
 	  std::string
 	, From
 	, void
@@ -166,7 +166,7 @@ struct lexical_cast<
  * performance penalty at 32 bit systems.
  */
 template <class From>
-struct lexical_cast<
+struct lexical_caster<
 	  long long
 	, From
 	, void
@@ -197,7 +197,7 @@ struct lexical_cast<
  * performance penalty at 32 bit systems.
  */
 template <>
-struct lexical_cast<
+struct lexical_caster<
 	  long long
 	, std::string
 	>
@@ -216,7 +216,7 @@ struct lexical_cast<
  * Specialized for returning a signed type from a (const) char*.
  */
 template <class To, class From>
-struct lexical_cast<
+struct lexical_caster<
 	  To
 	, From
 	, typename std::enable_if<std::is_signed<To>::value >::type
@@ -245,7 +245,7 @@ struct lexical_cast<
  * Specialized for returning a signed type from a std::string.
  */
 template <class To>
-struct lexical_cast<
+struct lexical_caster<
 	  To
 	, std::string
 	, typename std::enable_if<std::is_signed<To>::value >::type
@@ -267,7 +267,7 @@ struct lexical_cast<
  * has a performance penalty at 32 bit systems.
  */
 template <class From>
-struct lexical_cast<
+struct lexical_caster<
 	  unsigned long long
 	, From
 	, void
@@ -299,7 +299,7 @@ struct lexical_cast<
  * has a performance penalty at 32 bit systems.
  */
 template <>
-struct lexical_cast<
+struct lexical_caster<
 	  unsigned long long
 	, std::string
 	>
@@ -318,7 +318,7 @@ struct lexical_cast<
  * Specialized for returning a unsigned type from a (const) char*.
  */
 template <class To, class From>
-struct lexical_cast<
+struct lexical_caster<
 	  To
 	, From
 	, typename std::enable_if<std::is_unsigned<To>::value >::type
@@ -347,7 +347,7 @@ struct lexical_cast<
  * Specialized for returning a unsigned type from a std::string.
  */
 template <class To>
-struct lexical_cast<
+struct lexical_caster<
 	  To
 	, std::string
 	, typename std::enable_if<std::is_unsigned<To>::value >::type
