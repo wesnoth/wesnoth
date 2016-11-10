@@ -169,6 +169,7 @@ libwesnoth_sdl_sources = Split("""
     sdl/exception.cpp
     sdl/rect.cpp
     sdl/utils.cpp
+    sdl/utils_basic.cpp
     sdl/window.cpp
     tracer.cpp
     xBRZ/xbrz.cpp
@@ -694,6 +695,13 @@ schema_generator_sources = Split("""
     """)
 client_env.WesnothProgram("schema_generator", schema_generator_sources + [libwesnoth_core, libdummy_video], have_client_prereqs)
 
+schema_validator_sources = Split("""
+	tools/validator/validator_tool.cpp
+	config_cache.cpp
+	utils/sha1.cpp
+    """)
+client_env.WesnothProgram("schema_validator", schema_validator_sources + [libwesnoth_core, libwesnoth_extras], have_client_prereqs)
+
 test_utils_sources = Split("""
     tests/utils/fake_display.cpp
     tests/utils/fake_event_source.cpp
@@ -701,17 +709,13 @@ test_utils_sources = Split("""
     """)
 
 wesmage_sources = Split("""
-    sdl/utils.cpp
-    sdl/window.cpp
-    tools/dummy_video.cpp
     tools/exploder_utils.cpp
-    tracer.cpp
     wesmage/exit.cpp
     wesmage/filter.cpp
     wesmage/options.cpp
     wesmage/wesmage.cpp
     """)
-client_env.WesnothProgram("wesmage", wesmage_sources + [libwesnoth_core], have_client_prereqs, OBJPREFIX = "wesmage_", LIBS = ["$LIBS", "png"])
+client_env.WesnothProgram("wesmage", wesmage_sources + [libwesnoth_core, libwesnoth_sdl], have_client_prereqs, OBJPREFIX = "wesmage_", LIBS = ["$LIBS", "png"])
 
 libtest_utils = test_env.Library("test_utils", test_utils_sources)
 
@@ -751,15 +755,11 @@ test_sources.extend(test_env.Object("tests/test_config_cache.cpp"))
 test = test_env.WesnothProgram("test", test_sources +  [libtest_utils, libwesnoth_extras, libwesnoth_core, libwesnoth, libwesnoth_sdl, libwesnoth_extras], have_test_prereqs)
 
 create_images_sources = Split("""
-    sdl/utils.cpp
-    sdl/window.cpp
     tests/create_images.cpp
-    tools/dummy_video.cpp
     tools/exploder_utils.cpp
-    tracer.cpp
 """)
 
-env.WesnothProgram("create_images", create_images_sources + [libwesnoth_core], have_server_prereqs, OBJPREFIX = "create_images_", LIBS = ["$LIBS", "png"])
+client_env.WesnothProgram("create_images", create_images_sources + [libwesnoth_core, libwesnoth_sdl], have_client_prereqs, OBJPREFIX = "create_images_", LIBS = ["$LIBS", "png"])
 
 if env.get("have_autorevision"):
     game_config_env.Append(CPPDEFINES = 'LOAD_REVISION')
