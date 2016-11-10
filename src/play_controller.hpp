@@ -45,8 +45,8 @@ namespace actions {
 }
 
 namespace game_events {
-	class pump;
 	class manager;
+	class wml_event_pump;
 	class wml_menu_item;
 } // namespace game_events
 
@@ -201,7 +201,7 @@ public:
 	int get_server_request_number() const { return gamestate().server_request_number_; }
 	void increase_server_request_number() { ++gamestate().server_request_number_; }
 
-	game_events::pump& pump();
+	game_events::wml_event_pump& pump();
 
 	int get_ticks();
 

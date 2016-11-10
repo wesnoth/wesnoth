@@ -496,7 +496,7 @@ int intf_set_dialog_value(lua_State *L)
 	else
 	{
 		t_string v = luaW_checktstring(L, 1);
-		gui2::control *c = dynamic_cast<gui2::control *>(w);
+		gui2::styled_widget *c = dynamic_cast<gui2::styled_widget *>(w);
 		if (!c) return luaL_argerror(L, lua_gettop(L), "unsupported widget");
 		c->set_label(v);
 	}
@@ -696,7 +696,7 @@ int intf_set_dialog_markup(lua_State *L)
 {
 	bool b = luaW_toboolean(L, 1);
 	gui2::widget *w = find_widget(L, 2, true);
-	gui2::control *c = dynamic_cast<gui2::control *>(w);
+	gui2::styled_widget *c = dynamic_cast<gui2::styled_widget *>(w);
 	if (!c) return luaL_argerror(L, lua_gettop(L), "unsupported widget");
 
 	c->set_use_markup(b);
@@ -713,7 +713,7 @@ int intf_set_dialog_canvas(lua_State *L)
 {
 	int i = luaL_checkinteger(L, 1);
 	gui2::widget *w = find_widget(L, 3, true);
-	gui2::control *c = dynamic_cast<gui2::control *>(w);
+	gui2::styled_widget *c = dynamic_cast<gui2::styled_widget *>(w);
 	if (!c) return luaL_argerror(L, lua_gettop(L), "unsupported widget");
 
 	std::vector<gui2::canvas> &cv = c->get_canvas();
@@ -746,7 +746,7 @@ int intf_set_dialog_active(lua_State *L)
 {
 	const bool b = luaW_toboolean(L, 1);
 	gui2::widget *w = find_widget(L, 2, true);
-	gui2::control *c = dynamic_cast<gui2::control *>(w);
+	gui2::styled_widget *c = dynamic_cast<gui2::styled_widget *>(w);
 	if (!c) return luaL_argerror(L, lua_gettop(L), "unsupported widget");
 
 	c->set_active(b);
@@ -760,7 +760,7 @@ int intf_set_dialog_active(lua_State *L)
  */
 int intf_set_dialog_visible(lua_State *L)
 {
-	typedef gui2::control::visibility visibility;
+	typedef gui2::styled_widget::visibility visibility;
 
 	visibility flag = visibility::visible;
 
@@ -789,7 +789,7 @@ int intf_set_dialog_visible(lua_State *L)
 	}
 
 	gui2::widget *w = find_widget(L, 2, true);
-	gui2::control *c = dynamic_cast<gui2::control *>(w);
+	gui2::styled_widget *c = dynamic_cast<gui2::styled_widget *>(w);
 	if (!c) return luaL_argerror(L, lua_gettop(L), "unsupported widget");
 
 	c->set_visible(flag);

@@ -33,7 +33,7 @@ static void print(std::stringstream& sstr
 	sstr << queue << ':' << id << '\n';
 }
 
-template<gui2::event::event_t E>
+template<gui2::event::ui_event E>
 void connect_queue(
 		  std::stringstream& sstr
 		, gui2::widget& widget)

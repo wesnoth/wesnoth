@@ -35,7 +35,7 @@ namespace gui2
 
 // ------------ WIDGET -----------{
 
-REGISTER_WIDGET3(text_box_definition, password_box, "ext_box_definition")
+REGISTER_WIDGET3(text_box_definition, password_box, "text_box_definition")
 
 void password_box::set_value(const std::string& text)
 {

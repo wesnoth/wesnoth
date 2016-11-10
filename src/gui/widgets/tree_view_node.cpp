@@ -617,16 +617,16 @@ void tree_view_node::init_grid(
 			} else if(grid* child_grid = dynamic_cast<grid*>(wgt)) {
 				init_grid(child_grid, data);
 			} else if(styled_widget* control = dynamic_cast<styled_widget*>(wgt)) {
-				auto itor = data.find(ctrl->id());
+				auto itor = data.find(control->id());
 
 				if(itor == data.end()) {
 					itor = data.find("");
 				}
 
 				if(itor != data.end()) {
-					ctrl->set_members(itor->second);
+					control->set_members(itor->second);
 				}
-				// ctrl->set_members(data);
+				// control->set_members(data);
 			} else {
 				// ERROR_LOG("Widget type '" << typeid(*widget).name() << "'.");
 			}
