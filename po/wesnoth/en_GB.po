@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2016-11-06 02:31+0300\n"
-"PO-Revision-Date: 2016-07-25 12:37+1000\n"
+"PO-Revision-Date: 2016-11-07 20:23+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.8\n"
+"X-Generator: Poedit 1.8.11\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -163,21 +163,17 @@ msgstr ""
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:136
-#, fuzzy
-#| msgid "Experimental multiplayer lobby"
 msgid "Experimental multiplayer UI"
-msgstr "Experimental multiplayer lobby"
+msgstr "Experimental multiplayer UI"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:137
-#, fuzzy
-#| msgid ""
-#| "Replace the classic multiplayer lobby with a newer, experimental interface"
 msgid ""
 "Replace the classic multiplayer lobby and game setup UI with a newer, "
 "experimental interface"
 msgstr ""
-"Replace the classic multiplayer lobby with a newer, experimental interface"
+"Replace the classic multiplayer lobby and game setup UI with a newer, "
+"experimental interface"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:144
@@ -219,7 +215,7 @@ msgstr "Logging"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:181
 msgid "Allow damage calculation with Monte Carlo simulation"
-msgstr ""
+msgstr "Allow damage calculation with Monte Carlo simulation"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:182
@@ -227,18 +223,18 @@ msgid ""
 "Allow the damage calculation window to simulate fights instead of using "
 "exact probability calculations"
 msgstr ""
+"Allow the damage calculation window to simulate fights instead of using "
+"exact probability calculations"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:189
-#, fuzzy
-#| msgid "Sound Effects"
 msgid "Show haloing effects"
-msgstr "Sound Effects"
+msgstr "Show haloing effects"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:190
 msgid "Show special unit graphical effects"
-msgstr ""
+msgstr "Show special unit graphical effects"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:198
@@ -1631,10 +1627,8 @@ msgid "holy water^Leave it"
 msgstr "Leave it"
 
 #: data/core/macros/items.cfg:276
-#, fuzzy
-#| msgid "I am not suited to the use of this item! Let another take it."
 msgid "$unit.name has no need for this Holy Water! Let another take it."
-msgstr "I am not suited to the use of this item! Let another take it."
+msgstr "$unit.name has no need for this Holy Water! Let another take it."
 
 #. [object]
 #: data/core/macros/items.cfg:281
@@ -1717,6 +1711,8 @@ msgid ""
 "$unit.name cannot use this Storm Trident! Let one of the merfolk who can "
 "wield it have it."
 msgstr ""
+"$unit.name cannot use this Storm Trident! Let one of the merfolk who can "
+"wield it have it."
 
 #. [object]
 #: data/core/macros/items.cfg:521
@@ -3212,7 +3208,7 @@ msgstr "This is the last scenario."
 #. [note]: description=<b>
 #: data/core/macros/objective-utils.cfg:54
 msgid "No turn limit"
-msgstr ""
+msgstr "No turn limit"
 
 #. [message]: speaker=narrator
 #: data/core/macros/scenario-utils.cfg:58
@@ -3226,179 +3222,167 @@ msgstr ""
 #. [music]
 #: data/core/macros/sound-utils.cfg:282
 msgid "Battle Epic"
-msgstr ""
+msgstr "Battle Epic"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:288
 msgid "Battle Music"
-msgstr ""
+msgstr "Battle Music"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:294
 msgid "Breaking the Chains"
-msgstr ""
+msgstr "Breaking the Chains"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:300
 msgid "Casualties of War"
-msgstr ""
+msgstr "Casualties of War"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:306
 msgid "Elf Land"
-msgstr ""
+msgstr "Elf Land"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:312
 msgid "Elvish theme"
-msgstr ""
+msgstr "Elvish theme"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:318
 msgid "Frantic"
-msgstr ""
+msgstr "Frantic"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:324
 msgid "Heroes Rite"
-msgstr ""
+msgstr "Heroes Rite"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:330
 msgid "Into the Shadows"
-msgstr ""
+msgstr "Into the Shadows"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:336
 msgid "Journey’s End"
-msgstr ""
+msgstr "Journey’s End"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:342
 msgid "Knalgan Theme"
-msgstr ""
+msgstr "Knalgan Theme"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:348
 msgid "The Knolls of Doldesh"
-msgstr ""
+msgstr "The Knolls of Doldesh"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:354
 msgid "Legends of the North"
-msgstr ""
+msgstr "Legends of the North"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:360
 msgid "Love Theme"
-msgstr ""
+msgstr "Love Theme"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:366
 msgid "Loyalists"
-msgstr ""
+msgstr "Loyalists"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:372
 msgid "Over the Northern Mountains"
-msgstr ""
+msgstr "Over the Northern Mountains"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:378
-#, fuzzy
-#| msgid "North West"
 msgid "Northerners"
-msgstr "North West"
+msgstr "Northerners"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:384
 msgid "Nunc Dimittis"
-msgstr ""
+msgstr "Nunc Dimittis"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:390
-#, fuzzy
-#| msgid "Red Potion"
 msgid "Revelation"
-msgstr "Red Potion"
+msgstr "Revelation"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:396
-#, fuzzy
-#| msgid "Sand"
 msgid "Sad"
-msgstr "Sand"
+msgstr "Sad"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:402
 msgid "Siege of Laurelmor"
-msgstr ""
+msgstr "Siege of Laurelmor"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:408
 msgid "Silvan Sanctuary"
-msgstr ""
+msgstr "Silvan Sanctuary"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:414
 msgid "Suspense"
-msgstr ""
+msgstr "Suspense"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:420
 msgid "The City Falls"
-msgstr ""
+msgstr "The City Falls"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:426
 msgid "The Dangerous Symphony"
-msgstr ""
+msgstr "The Dangerous Symphony"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:432
-#, fuzzy
-#| msgid "Deep water"
 msgid "The Deep Path"
-msgstr "Deep water"
+msgstr "The Deep Path"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:438
-#, fuzzy
-#| msgid "The game is over."
 msgid "The King is Dead"
-msgstr "The game is over."
+msgstr "The King is Dead"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:444
 msgid "Transience"
-msgstr ""
+msgstr "Transience"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:450
 msgid "Traveling Minstrels"
-msgstr ""
+msgstr "Travelling Minstrels"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:456
 msgid "Underground"
-msgstr ""
+msgstr "Underground"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:462
 msgid "Vengeful Pursuit"
-msgstr ""
+msgstr "Vengeful Pursuit"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:468
 msgid "Still Another Wanderer"
-msgstr ""
+msgstr "Still Another Wanderer"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:474
-#, fuzzy
-#| msgid "Bright orange"
 msgid "Weight of Revenge"
-msgstr "Bright orange"
+msgstr "Weight of Revenge"
 
 #. [message]: speaker=narrator
 #: data/core/macros/utils.cfg:688
@@ -3748,6 +3732,10 @@ msgid ""
 "\t\tmain=$base {bridge_type}|$base{!}’s {bridge_type}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tbridge_type=Bridge|Crossing\n"
+"\t\tmain=$base {bridge_type}|$base{!}’s {bridge_type}\n"
+"\t"
 
 #. [naming]
 #: data/english.cfg:41
@@ -3757,6 +3745,10 @@ msgid ""
 "\t\tmain=$base{!}’s {road_type}|{road_type} of $base\n"
 "\t"
 msgstr ""
+"\n"
+"\t\troad_type=Highway|Pass|Path|Road|Way|Trail\n"
+"\t\tmain=$base{!}’s {road_type}|{road_type} of $base\n"
+"\t"
 
 #. [naming]
 #: data/english.cfg:45
@@ -3766,6 +3758,10 @@ msgid ""
 "\t\tmain=$base {river_type}|{river_type} $base\n"
 "\t"
 msgstr ""
+"\n"
+"\t\triver_type=River|River|River|Creek|Creek|Stream|Canal\n"
+"\t\tmain=$base {river_type}|{river_type} $base\n"
+"\t"
 
 #. [naming]
 #: data/english.cfg:49
@@ -3775,6 +3771,10 @@ msgid ""
 "\t\tmain=$base {forest_type}|$base{!}’s {forest_type}|{forest_type} $base\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tforest_type=Forest|Forest|Wood\n"
+"\t\tmain=$base {forest_type}|$base{!}’s {forest_type}|{forest_type} $base\n"
+"\t"
 
 #. [naming]
 #: data/english.cfg:53
@@ -3784,16 +3784,21 @@ msgid ""
 "\t\tmain=$base {lake_type}|{lake_type} $base\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tlake_type=Lake|Lake|Lake|Loch|Sea\n"
+"\t\tmain=$base {lake_type}|{lake_type} $base\n"
+"\t"
 
 #. [naming]
 #: data/english.cfg:57
-#, fuzzy
-#| msgid " main=$base{!}’s Peak|Mount $base "
 msgid ""
 "\n"
 "\t\tmain=$base{!}’s Peak|$base Peak|Mount $base|Mount $base\n"
 "\t"
-msgstr " main=$base{!}’s Peak|Mount $base "
+msgstr ""
+"\n"
+"\t\tmain=$base{!}’s Peak|$base Peak|Mount $base|Mount $base\n"
+"\t"
 
 #. [naming]
 #: data/english.cfg:60
@@ -3803,6 +3808,10 @@ msgid ""
 "\t\tmain=$base{!}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tsuffix=’s Swamp|marsh|fen\n"
+"\t\tmain=$base{!}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #: data/english.cfg:67
@@ -3812,6 +3821,10 @@ msgid ""
 "\t\tmain=$base{!}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tsuffix=bury|bury|ham|ton|ville\n"
+"\t\tmain=$base{!}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #: data/english.cfg:71
@@ -3822,6 +3835,11 @@ msgid ""
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tprefix=$base{!}|$lake{!}\n"
+"\t\tsuffix=harbor|port\n"
+"\t\tmain={prefix}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #: data/english.cfg:76
@@ -3833,6 +3851,12 @@ msgid ""
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tprefix=$base{!}|$river{!}\n"
+"\t\triver=$river{!}|River\n"
+"\t\tsuffix=ham|ford|cross| on {river} \n"
+"\t\tmain={prefix}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #: data/english.cfg:82
@@ -3843,6 +3867,11 @@ msgid ""
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tprefix=$base{!}|$river{!}|$bridge{!}\n"
+"\t\tsuffix=bridge|bridge|ham|ton\n"
+"\t\tmain={prefix}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #: data/english.cfg:87
@@ -3852,6 +3881,10 @@ msgid ""
 "\t\tmain=$base{!}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tsuffix=ham|ton|field\n"
+"\t\tmain=$base{!}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #: data/english.cfg:91
@@ -3862,6 +3895,11 @@ msgid ""
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tprefix=$base{!}|$forest{!}\n"
+"\t\tsuffix=ham|ton|wood| Forest\n"
+"\t\tmain={prefix}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #: data/english.cfg:96
@@ -3871,6 +3909,10 @@ msgid ""
 "\t\tmain=$base{!}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tsuffix=ham|bury|ton|hill|crest\n"
+"\t\tmain=$base{!}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #: data/english.cfg:100
@@ -3881,6 +3923,11 @@ msgid ""
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tprefix=$base{!}|$mountain{!}\n"
+"\t\tsuffix=mont|cliff|bury|ham\n"
+"\t\tmain={prefix}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #: data/english.cfg:105
@@ -3890,6 +3937,10 @@ msgid ""
 "\t\tmain=$base{!}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tsuffix=ham|bury|ton|mont|mont|cliff|cliff\n"
+"\t\tmain=$base{!}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #: data/english.cfg:109
@@ -3900,6 +3951,11 @@ msgid ""
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tprefix=$road{!}|$road{!}|$base{!}\n"
+"\t\tsuffix=’s Rest|’s Waypoint|bury|bury|ham|ham\n"
+"\t\tmain={prefix}{suffix}\n"
+"\t"
 
 #. [village_naming]
 #: data/english.cfg:114
@@ -3910,6 +3966,11 @@ msgid ""
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tprefix=$base{!}|$swamp{!}\n"
+"\t\tsuffix=bury|ham|ton\n"
+"\t\tmain={prefix}{suffix}\n"
+"\t"
 
 #. [server]
 #: data/game_config.cfg:4
@@ -3927,6 +3988,8 @@ msgid ""
 "There are no custom options available for the selected era, game, or "
 "modification."
 msgstr ""
+"There are no custom options available for the selected era, game, or "
+"modification."
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=reset_option_values
@@ -4014,12 +4077,10 @@ msgstr "Defeat:"
 
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:71
-#, fuzzy
-#| msgid "(this turn left)"
 msgid "(this turn left)"
 msgid_plural "(%d turns left)"
 msgstr[0] "(this turn left)"
-msgstr[1] "(this turn left)"
+msgstr[1] "(%d turns left)"
 
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:125
@@ -5089,6 +5150,9 @@ msgid ""
 "of 20 gold. In a campaign, always check if recalling a unit of the same type "
 "may be cheaper."
 msgstr ""
+"The recruitment cost of some units may exceed the usual recall expenditure "
+"of 20 gold. In a campaign, always check if recalling a unit of the same type "
+"may be cheaper."
 
 #. [tip]
 #: data/tips.cfg:253
@@ -6042,16 +6106,12 @@ msgid "Connection timed out"
 msgstr "Connection timed out"
 
 #: src/game_initialization/multiplayer.cpp:173
-#, fuzzy
-#| msgid ""
-#| "The server accepts versions '$version1' while you are using version "
-#| "'$version2'"
 msgid ""
 "The server accepts versions '$required_version', but you are using version "
 "'$your_version'"
 msgstr ""
-"The server accepts versions '$version1' while you are using version "
-"'$version2'"
+"The server accepts versions '$required_version', but you are using version "
+"'$your_version'"
 
 #: src/game_initialization/multiplayer.cpp:184
 msgid "Server-side redirect loop"
@@ -6924,10 +6984,8 @@ msgid "Unknown scenario: '$scenario|'"
 msgstr "Unknown scenario: '$scenario|'"
 
 #: src/game_initialization/singleplayer.cpp:54
-#, fuzzy
-#| msgid "No campaigns are available.\n"
 msgid "No campaigns are available."
-msgstr "No campaigns are available.\n"
+msgstr "No campaigns are available."
 
 #: src/game_launcher.cpp:649 src/game_launcher.cpp:667
 msgid "The file you have tried to load is corrupt"
@@ -6952,10 +7010,8 @@ msgid "Error while starting server: "
 msgstr "Error while starting server: "
 
 #: src/generators/default_map_generator_job.cpp:707
-#, fuzzy
-#| msgid "Random maps with an odd width aren't supported."
 msgid "Random maps with an odd data.width aren't supported."
-msgstr "Random maps with an odd width aren't supported."
+msgstr "Random maps with an odd data.width aren't supported."
 
 #: src/generators/default_map_generator_job.cpp:973
 msgid ""
@@ -6966,46 +7022,36 @@ msgstr ""
 "check the 'max hill size' parameter)"
 
 #: src/gui/dialogs/lobby/data.cpp:276
-#, fuzzy
-#| msgid " (missing)"
 msgid "(missing)"
-msgstr " (missing)"
+msgstr "(missing)"
 
 #: src/gui/dialogs/lobby/data.cpp:322
 msgid "(S)"
-msgstr ""
+msgstr "(S)"
 
 #: src/gui/dialogs/lobby/data.cpp:360
 msgid "(C)"
-msgstr ""
+msgstr "(C)"
 
 #: src/gui/dialogs/lobby/data.cpp:409 src/savegame.cpp:627
 msgid "Turn"
 msgstr "Turn"
 
 #: src/gui/dialogs/lobby/data.cpp:467
-#, fuzzy
-#| msgid ""
-#| "Host's version of $addon is too old: host's version $host_ver < your "
-#| "version $local_ver."
 msgid ""
 "The host's version of <i>$addon</i> is incompatible. They have version <b>"
 "$host_ver</b> while you have version <b>$local_ver</b>."
 msgstr ""
-"Host's version of $addon is too old: host's version $host_ver < your version "
-"$local_ver."
+"The host's version of <i>$addon</i> is incompatible. They have version <b>"
+"$host_ver</b> while you have version <b>$local_ver</b>."
 
 #: src/gui/dialogs/lobby/data.cpp:482
-#, fuzzy
-#| msgid ""
-#| "Your version of $addon is out of date: host's version $host_ver > your "
-#| "version $local_ver."
 msgid ""
 "Your version of <i>$addon</i> is incompatible. You have version <b>"
 "$local_ver</b> while the host has version <b>$host_ver</b>."
 msgstr ""
-"Your version of $addon is out of date: host's version $host_ver > your "
-"version $local_ver."
+"Your version of <i>$addon</i> is incompatible. You have version <b>"
+"$local_ver</b> while the host has version <b>$host_ver</b>."
 
 #: src/gui/dialogs/lobby/player_info.cpp:101
 msgid "In game:"
@@ -7089,20 +7135,16 @@ msgid "Recruits"
 msgstr "Recruits"
 
 #: src/help/help_impl.cpp:707 src/help/help_impl.cpp:709
-#, fuzzy
-#| msgid "Ability: "
 msgid "Availability: "
-msgstr "Ability: "
+msgstr "Availability: "
 
 #: src/help/help_impl.cpp:707
 msgid "Must-have"
-msgstr ""
+msgstr "Must-have"
 
 #: src/help/help_impl.cpp:709
-#, fuzzy
-#| msgid "not available."
 msgid "Unavailable"
-msgstr "not available."
+msgstr "Unavailable"
 
 #: src/help/help_impl.cpp:793 src/help/help_impl.cpp:968
 #: src/help/help_topic_generators.cpp:387
@@ -7357,10 +7399,8 @@ msgid "Statistics"
 msgstr "Statistics"
 
 #: src/menu_events.cpp:170
-#, fuzzy
-#| msgid "Save the Map As"
 msgid "Save Map As"
-msgstr "Save the Map As"
+msgstr "Save Map As"
 
 #: src/menu_events.cpp:181
 msgid "Map saved."
@@ -7667,10 +7707,8 @@ msgid "Toggle overlaying of terrain codes on hexes."
 msgstr "Toggle overlaying of terrain codes on hexes."
 
 #: src/menu_events.cpp:1191
-#, fuzzy
-#| msgid "Toggle overlaying of terrain codes on hexes."
 msgid "Toggle overlaying of number of bitmaps on hexes."
-msgstr "Toggle overlaying of terrain codes on hexes."
+msgstr "Toggle overlaying of number of bitmaps on hexes."
 
 #: src/menu_events.cpp:1194
 msgid "Toggle planning mode."
