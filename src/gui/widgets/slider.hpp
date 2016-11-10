@@ -199,15 +199,15 @@ private:
 	/**
 	 * Signal handlers:
 	 */
-	void signal_handler_sdl_key_down(const event::event_t event,
+	void signal_handler_sdl_key_down(const event::ui_event event,
 									 bool& handled,
 									 const SDL_Keycode key);
 
-	//void signal_handler_left_button_down(const event::event_t event, bool& handled);
+	//void signal_handler_left_button_down(const event::ui_event event, bool& handled);
 
 	// In this subclass, only used to grab keyboard focus -
 	// see tscrollbar class for more handling of this event.
-	void signal_handler_left_button_up(const event::event_t event,
+	void signal_handler_left_button_up(const event::ui_event event,
 									   bool& handled);
 };
 

@@ -757,7 +757,7 @@ public:
 private:
 	/***** ***** ***** signal handlers ***** ****** *****/
 
-	void signal_handler_sdl_video_resize(const event::event_t event,
+	void signal_handler_sdl_video_resize(const event::ui_event event,
 										 bool& handled,
 										 const point& new_size);
 
@@ -769,24 +769,24 @@ private:
 	 * @param halt                See @ref event::dispatcher::fire.
 	 * @param mouse_button_mask   Forwared to @ref click_dismiss.
 	 */
-	void signal_handler_click_dismiss(const event::event_t event,
+	void signal_handler_click_dismiss(const event::ui_event event,
 									  bool& handled,
 									  bool& halt,
 									  const Uint8 mouse_button_mask);
 
-	void signal_handler_sdl_key_down(const event::event_t event,
+	void signal_handler_sdl_key_down(const event::ui_event event,
 									 bool& handled,
 									 const SDL_Keycode key);
 
-	void signal_handler_message_show_tooltip(const event::event_t event,
+	void signal_handler_message_show_tooltip(const event::ui_event event,
 											 bool& handled,
 											 event::message& message);
 
-	void signal_handler_message_show_helptip(const event::event_t event,
+	void signal_handler_message_show_helptip(const event::ui_event event,
 											 bool& handled,
 											 event::message& message);
 
-	void signal_handler_request_placement(const event::event_t event,
+	void signal_handler_request_placement(const event::ui_event event,
 										  bool& handled);
 
 	std::function<bool(window&)> exit_hook_ = [](window&)->bool { return true; };

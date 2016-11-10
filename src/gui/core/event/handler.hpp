@@ -54,7 +54,7 @@ public:
  *
  * @note When adding a new entry to the enum also add a unit test.
  */
-enum event_t {
+enum ui_event {
 	DRAW /**< Periodic redraw request. */
 	,
 	CLOSE_WINDOW /**< A request to close the current window. */
@@ -322,7 +322,7 @@ void release_mouse(dispatcher* dispatcher);
  */
 void capture_keyboard(dispatcher* dispatcher);
 
-std::ostream& operator<<(std::ostream& stream, const event_t event);
+std::ostream& operator<<(std::ostream& stream, const ui_event event);
 
 } // namespace event
 

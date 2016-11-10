@@ -102,7 +102,7 @@ private:
 
 	/***** ***** ***** signal handlers ***** ****** *****/
 
-	void signal_handler_left_button_down(const event::event_t event);
+	void signal_handler_left_button_down(const event::ui_event event);
 };
 
 // }---------- DEFINITION ---------{

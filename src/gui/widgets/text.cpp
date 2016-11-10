@@ -391,7 +391,7 @@ void text_box_base::handle_key_default(bool& handled,
 	}
 }
 
-void text_box_base::signal_handler_middle_button_click(const event::event_t event,
+void text_box_base::signal_handler_middle_button_click(const event::ui_event event,
 												bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -401,7 +401,7 @@ void text_box_base::signal_handler_middle_button_click(const event::event_t even
 	handled = true;
 }
 
-void text_box_base::signal_handler_sdl_key_down(const event::event_t event,
+void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 										 bool& handled,
 										 const SDL_Keycode key,
 										 SDL_Keymod modifier,
@@ -531,14 +531,14 @@ void text_box_base::signal_handler_sdl_key_down(const event::event_t event,
 	}
 }
 
-void text_box_base::signal_handler_receive_keyboard_focus(const event::event_t event)
+void text_box_base::signal_handler_receive_keyboard_focus(const event::ui_event event)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
 	set_state(FOCUSED);
 }
 
-void text_box_base::signal_handler_lose_keyboard_focus(const event::event_t event)
+void text_box_base::signal_handler_lose_keyboard_focus(const event::ui_event event)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 

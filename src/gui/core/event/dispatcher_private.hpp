@@ -62,7 +62,7 @@ struct dispatcher_implementation
 	template <class F>                                                         \
 	static typename std::enable_if<std::is_same<F, FUNCTION>::value,           \
 									 dispatcher::signal_type<FUNCTION> >::type&\
-	event_signal(dispatcher& dispatcher, const event_t event)                  \
+	event_signal(dispatcher& dispatcher, const ui_event event)                  \
 	{                                                                          \
 		return dispatcher.QUEUE.queue[event];                                  \
 	}                                                                          \
@@ -83,7 +83,7 @@ struct dispatcher_implementation
 	template <class K>                                                         \
 	static typename std::enable_if<boost::mpl::has_key<SET, K>::value,         \
 									 dispatcher::signal_type<FUNCTION> >::type&\
-	event_signal(dispatcher& dispatcher, const event_t event)                  \
+	event_signal(dispatcher& dispatcher, const ui_event event)                  \
 	{                                                                          \
 		return dispatcher.QUEUE.queue[event];                                  \
 	}
@@ -147,7 +147,7 @@ struct dispatcher_implementation
 		// not called operator() to work around a problem in MSVC
 		// (known to affect all versions up to 2015)
 		template <class T>
-		bool oper(event_t event)
+		bool oper(ui_event event)
 		{
 			if((event_type_ & dispatcher::pre)
 			   && !event_signal<T>(dispatcher_, event).pre_child.empty()) {
@@ -295,13 +295,13 @@ namespace implementation
  *                                * dispatcher
  */
 template <class T>
-inline std::vector<std::pair<widget*, event_t> >
-build_event_chain(const event_t event, widget* dispatcher, widget* w)
+inline std::vector<std::pair<widget*, ui_event> >
+build_event_chain(const ui_event event, widget* dispatcher, widget* w)
 {
 	assert(dispatcher);
 	assert(w);
 
-	std::vector<std::pair<widget*, event_t> > result;
+	std::vector<std::pair<widget*, ui_event> > result;
 
 	while(w != dispatcher) {
 		w = w->parent();
@@ -328,8 +328,8 @@ build_event_chain(const event_t event, widget* dispatcher, widget* w)
  * @returns                       An empty vector.
  */
 template <>
-inline std::vector<std::pair<widget*, event_t> >
-build_event_chain<signal_notification_function>(const event_t event,
+inline std::vector<std::pair<widget*, ui_event> >
+build_event_chain<signal_notification_function>(const ui_event event,
 												 widget* dispatcher,
 												 widget* w)
 {
@@ -340,7 +340,7 @@ build_event_chain<signal_notification_function>(const event_t event,
 							  dispatcher::event_queue_type(dispatcher::pre
 													   | dispatcher::post)));
 
-	return std::vector<std::pair<widget*, event_t> >();
+	return std::vector<std::pair<widget*, ui_event> >();
 }
 
 #ifdef _MSC_VER
@@ -365,8 +365,8 @@ build_event_chain<signal_notification_function>(const event_t event,
  *                                * container 2
  */
 template <>
-inline std::vector<std::pair<widget*, event_t> >
-build_event_chain<signal_message_function>(const event_t event,
+inline std::vector<std::pair<widget*, ui_event> >
+build_event_chain<signal_message_function>(const ui_event event,
 											widget* dispatcher,
 											widget* w)
 {
@@ -374,7 +374,7 @@ build_event_chain<signal_message_function>(const event_t event,
 	assert(w);
 	assert(w == dispatcher);
 
-	std::vector<std::pair<widget*, event_t> > result;
+	std::vector<std::pair<widget*, ui_event> > result;
 
 	/* We only should add the parents of the widget to the chain. */
 	while((w = w->parent())) {
@@ -401,8 +401,8 @@ build_event_chain<signal_message_function>(const event_t event,
  * event_chain, which contains the widgets with the events to call for them.
  */
 template <class T, class F>
-inline bool fire_event(const event_t event,
-					   std::vector<std::pair<widget*, event_t> >& event_chain,
+inline bool fire_event(const ui_event event,
+					   std::vector<std::pair<widget*, ui_event> >& event_chain,
 					   widget* dispatcher,
 					   widget* w,
 					   F functor)
@@ -411,7 +411,7 @@ inline bool fire_event(const event_t event,
 	bool halt = false;
 
 	/***** ***** ***** Pre ***** ***** *****/
-	for(std::vector<std::pair<widget*, event_t> >::reverse_iterator ritor_widget
+	for(std::vector<std::pair<widget*, ui_event> >::reverse_iterator ritor_widget
 		= event_chain.rbegin();
 		ritor_widget != event_chain.rend();
 		++ritor_widget) {
@@ -460,7 +460,7 @@ inline bool fire_event(const event_t event,
 	}
 
 	/***** ***** ***** Post ***** ***** *****/
-	for(std::vector<std::pair<widget*, event_t> >::iterator itor_widget
+	for(std::vector<std::pair<widget*, ui_event> >::iterator itor_widget
 		= event_chain.begin();
 		itor_widget != event_chain.end();
 		++itor_widget) {
@@ -517,20 +517,20 @@ inline bool fire_event(const event_t event,
  */
 template <class T, class F>
 inline bool
-fire_event(const event_t event, widget* dispatcher, widget* w, F functor)
+fire_event(const ui_event event, widget* dispatcher, widget* w, F functor)
 {
 	assert(dispatcher);
 	assert(w);
 
-	std::vector<std::pair<widget*, event_t> > event_chain
+	std::vector<std::pair<widget*, ui_event> > event_chain
 			= implementation::build_event_chain<T>(event, dispatcher, w);
 
 	return implementation::fire_event<T>(
 			event, event_chain, dispatcher, w, functor);
 }
 
-template <event_t click,
-		  event_t double_click,
+template <ui_event click,
+		  ui_event double_click,
 		  bool (event_executor::*wants_double_click)() const,
 		  class T,
 		  class F>
@@ -540,7 +540,7 @@ fire_event_double_click(widget* dispatcher, widget* wgt, F functor)
 	assert(dispatcher);
 	assert(wgt);
 
-	std::vector<std::pair<widget*, event_t> > event_chain;
+	std::vector<std::pair<widget*, ui_event> > event_chain;
 	widget* w = wgt;
 	while(w != dispatcher) {
 		w = w->parent();

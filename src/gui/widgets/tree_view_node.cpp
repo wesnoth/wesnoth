@@ -547,7 +547,7 @@ void tree_view_node::impl_draw_children(surface& frame_buffer,
 	}
 }
 
-void tree_view_node::signal_handler_left_button_click(const event::event_t event)
+void tree_view_node::signal_handler_left_button_click(const event::ui_event event)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
@@ -573,7 +573,7 @@ void tree_view_node::signal_handler_left_button_click(const event::event_t event
 }
 
 void tree_view_node::signal_handler_label_left_button_click(
-		const event::event_t event, bool& handled, bool& halt)
+		const event::ui_event event, bool& handled, bool& halt)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 

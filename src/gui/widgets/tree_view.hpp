@@ -162,7 +162,7 @@ private:
 
 	/***** ***** ***** signal handlers ***** ****** *****/
 
-	void signal_handler_left_button_down(const event::event_t event);
+	void signal_handler_left_button_down(const event::ui_event event);
 
 	template<tree_view_node* (tree_view_node::*func) ()>
 	tree_view_node* get_next_node();

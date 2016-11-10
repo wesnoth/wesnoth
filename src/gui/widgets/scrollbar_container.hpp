@@ -538,17 +538,17 @@ private:
 
 	/***** ***** ***** signal handlers ***** ****** *****/
 
-	void signal_handler_sdl_key_down(const event::event_t event,
+	void signal_handler_sdl_key_down(const event::ui_event event,
 									 bool& handled,
 									 const SDL_Keycode key,
 									 SDL_Keymod modifier);
 
-	void signal_handler_sdl_wheel_up(const event::event_t event, bool& handled);
-	void signal_handler_sdl_wheel_down(const event::event_t event,
+	void signal_handler_sdl_wheel_up(const event::ui_event event, bool& handled);
+	void signal_handler_sdl_wheel_down(const event::ui_event event,
 									   bool& handled);
-	void signal_handler_sdl_wheel_left(const event::event_t event,
+	void signal_handler_sdl_wheel_left(const event::ui_event event,
 									   bool& handled);
-	void signal_handler_sdl_wheel_right(const event::event_t event,
+	void signal_handler_sdl_wheel_right(const event::ui_event event,
 										bool& handled);
 
 public:

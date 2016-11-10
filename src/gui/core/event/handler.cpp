@@ -56,8 +56,7 @@ namespace event
 {
 
 /***** Static data. *****/
-class handler;
-static handler* handler_ = nullptr;
+static class sdl_event_handler* handler_ = nullptr;
 static events::event_context* event_context = nullptr;
 
 #ifdef MAIN_EVENT_HANDLER
@@ -120,14 +119,14 @@ static Uint32 timer_sdl_poll_events(Uint32, void*)
  *
  * It's a new experimental class.
  */
-class handler : public events::sdl_handler
+class sdl_event_handler : public events::sdl_handler
 {
 	friend bool gui2::is_in_dialog();
 
 public:
-	handler();
+	sdl_event_handler();
 
-	~handler();
+	~sdl_event_handler();
 
 	/** Inherited from events::sdl_handler. */
 	void handle_event(const SDL_Event& event);
@@ -180,7 +179,7 @@ private:
 	 * @param event                  The event to fire.
 	 * @param position               The position of the mouse.
 	 */
-	void mouse(const event_t event, const point& position);
+	void mouse(const ui_event event, const point& position);
 
 	/**
 	 * Fires a mouse button up event.
@@ -274,7 +273,7 @@ private:
 	 *
 	 * @param event                  The event to fire.
 	 */
-	void keyboard(const event_t event);
+	void keyboard(const ui_event event);
 
 	/**
 	 * The dispatchers.
@@ -294,7 +293,7 @@ private:
 	friend void capture_keyboard(dispatcher*);
 };
 
-handler::handler()
+sdl_event_handler::sdl_event_handler()
 	: events::sdl_handler(false)
 	, mouse_focus(nullptr)
 	, dispatchers_()
@@ -312,14 +311,14 @@ handler::handler()
 #endif
 }
 
-handler::~handler()
+sdl_event_handler::~sdl_event_handler()
 {
 #ifdef ENABLE
 	leave();
 #endif
 }
 
-void handler::handle_event(const SDL_Event& event)
+void sdl_event_handler::handle_event(const SDL_Event& event)
 {
 	/** No dispatchers drop the event. */
 	if(dispatchers_.empty()) {
@@ -434,12 +433,12 @@ void handler::handle_event(const SDL_Event& event)
 	}
 }
 
-void handler::handle_window_event(const SDL_Event& event)
+void sdl_event_handler::handle_window_event(const SDL_Event& event)
 {
 	handle_event(event);
 }
 
-void handler::connect(dispatcher* dispatcher)
+void sdl_event_handler::connect(dispatcher* dispatcher)
 {
 	assert(std::find(dispatchers_.begin(), dispatchers_.end(), dispatcher)
 		   == dispatchers_.end());
@@ -452,7 +451,7 @@ void handler::connect(dispatcher* dispatcher)
 	dispatchers_.push_back(dispatcher);
 }
 
-void handler::disconnect(dispatcher* disp)
+void sdl_event_handler::disconnect(dispatcher* disp)
 {
 	/***** Validate pre conditions. *****/
 	std::vector<dispatcher*>::iterator itor
@@ -488,7 +487,7 @@ void handler::disconnect(dispatcher* disp)
 	}
 }
 
-void handler::activate()
+void sdl_event_handler::activate()
 {
 	for(auto dispatcher : dispatchers_)
 	{
@@ -497,7 +496,7 @@ void handler::activate()
 	}
 }
 
-void handler::draw(const bool force)
+void sdl_event_handler::draw(const bool force)
 {
 	// Don't display this event since it floods the screen
 	// DBG_GUI_E << "Firing " << DRAW << ".\n";
@@ -538,7 +537,7 @@ void handler::draw(const bool force)
 	}
 }
 
-void handler::video_resize(const point& new_size)
+void sdl_event_handler::video_resize(const point& new_size)
 {
 	DBG_GUI_E << "Firing: " << SDL_VIDEO_RESIZE << ".\n";
 
@@ -550,7 +549,7 @@ void handler::video_resize(const point& new_size)
 	}
 }
 
-void handler::mouse(const event_t event, const point& position)
+void sdl_event_handler::mouse(const ui_event event, const point& position)
 {
 	DBG_GUI_E << "Firing: " << event << ".\n";
 
@@ -581,7 +580,7 @@ void handler::mouse(const event_t event, const point& position)
 	}
 }
 
-void handler::mouse_button_up(const point& position, const Uint8 button)
+void sdl_event_handler::mouse_button_up(const point& position, const Uint8 button)
 {
 	switch(button) {
 		case SDL_BUTTON_LEFT:
@@ -604,7 +603,7 @@ void handler::mouse_button_up(const point& position, const Uint8 button)
 	}
 }
 
-void handler::mouse_button_down(const point& position, const Uint8 button)
+void sdl_event_handler::mouse_button_down(const point& position, const Uint8 button)
 {
 	// The wheel buttons generate and up and down event we handle the
 	// up event so ignore the mouse if it's a down event. Handle it
@@ -634,7 +633,7 @@ void handler::mouse_button_down(const point& position, const Uint8 button)
 	}
 }
 
-void handler::mouse_wheel(const point& position, int x, int y)
+void sdl_event_handler::mouse_wheel(const point& position, int x, int y)
 {
 	if(x > 0) {
 		mouse(SDL_WHEEL_RIGHT, position);
@@ -649,7 +648,7 @@ void handler::mouse_wheel(const point& position, int x, int y)
 	}
 }
 
-dispatcher* handler::keyboard_dispatcher()
+dispatcher* sdl_event_handler::keyboard_dispatcher()
 {
 	if(keyboard_focus_) {
 		return keyboard_focus_;
@@ -668,7 +667,7 @@ dispatcher* handler::keyboard_dispatcher()
 	return nullptr;
 }
 
-void handler::hat_motion(const SDL_Event& event)
+void sdl_event_handler::hat_motion(const SDL_Event& event)
 {
 	const hotkey::hotkey_ptr& hk = hotkey::get_hotkey(event);
 	bool done = false;
@@ -681,7 +680,7 @@ void handler::hat_motion(const SDL_Event& event)
 	}
 }
 
-void handler::button_down(const SDL_Event& event)
+void sdl_event_handler::button_down(const SDL_Event& event)
 {
 	const hotkey::hotkey_ptr hk = hotkey::get_hotkey(event);
 	bool done = false;
@@ -694,7 +693,7 @@ void handler::button_down(const SDL_Event& event)
 	}
 }
 
-void handler::key_down(const SDL_Event& event)
+void sdl_event_handler::key_down(const SDL_Event& event)
 {
 	const hotkey::hotkey_ptr hk = hotkey::get_hotkey(event);
 	bool done = false;
@@ -708,12 +707,12 @@ void handler::key_down(const SDL_Event& event)
 	}
 }
 
-void handler::text_input(const std::string& unicode)
+void sdl_event_handler::text_input(const std::string& unicode)
 {
 	key_down(SDLK_UNKNOWN, static_cast<SDL_Keymod>(0), unicode);
 }
 
-bool handler::hotkey_pressed(const hotkey::hotkey_ptr key)
+bool sdl_event_handler::hotkey_pressed(const hotkey::hotkey_ptr key)
 {
 	dispatcher* dispatcher = keyboard_dispatcher();
 
@@ -724,7 +723,7 @@ bool handler::hotkey_pressed(const hotkey::hotkey_ptr key)
 	return dispatcher->execute_hotkey(hotkey::get_id(key->get_command()));
 }
 
-void handler::key_down(const SDL_Keycode key,
+void sdl_event_handler::key_down(const SDL_Keycode key,
 						const SDL_Keymod modifier,
 						const utf8::string& unicode)
 {
@@ -739,7 +738,7 @@ void handler::key_down(const SDL_Keycode key,
 	}
 }
 
-void handler::keyboard(const event_t event)
+void sdl_event_handler::keyboard(const ui_event event)
 {
 	DBG_GUI_E << "Firing: " << event << ".\n";
 
@@ -752,7 +751,7 @@ void handler::keyboard(const event_t event)
 
 manager::manager()
 {
-	handler_ = new handler();
+	handler_ = new sdl_event_handler();
 
 #ifdef MAIN_EVENT_HANDLER
 	draw_interval = 30;
@@ -828,7 +827,7 @@ void capture_keyboard(dispatcher* dispatcher)
 	handler_->keyboard_focus_ = dispatcher;
 }
 
-std::ostream& operator<<(std::ostream& stream, const event_t event)
+std::ostream& operator<<(std::ostream& stream, const ui_event event)
 {
 	switch(event) {
 		case DRAW:

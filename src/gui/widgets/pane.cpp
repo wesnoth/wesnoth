@@ -341,7 +341,7 @@ void pane::prepare_placement() const
 }
 
 void pane::signal_handler_request_placement(dispatcher& dispatcher,
-											 const event::event_t event,
+											 const event::ui_event event,
 											 bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";

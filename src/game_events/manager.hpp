@@ -30,7 +30,7 @@ class unit_map;
 
 namespace game_events {
 
-	class pump;
+	class wml_event_pump;
 
 	class event_handlers;
 
@@ -97,7 +97,7 @@ namespace game_events {
 		const std::unique_ptr<event_handlers> event_handlers_;
 		std::set<std::string> unit_wml_ids_;
 
-		const std::unique_ptr<game_events::pump> pump_;
+		const std::unique_ptr<game_events::wml_event_pump> pump_;
 		game_events::wmi_container wml_menu_items_;
 
 	public:
@@ -116,7 +116,7 @@ namespace game_events {
 		                const std::string& type = std::string());
 		void write_events(config& cfg) const;
 
-		game_events::pump & pump();
+		game_events::wml_event_pump & pump();
 	};
 }
 

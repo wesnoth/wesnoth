@@ -752,7 +752,7 @@ void window::draw()
 
 	if (dirty_list_.empty()) {
 		if (sunset_) {
-			/** @todo should probably be moved to event::handler::draw. */
+			/** @todo should probably be moved to event::sdl_event_handler::draw. */
 			static unsigned i = 0;
 			if (++i % sunset_ == 0) {
 				SDL_Rect r = sdl::create_rect(
@@ -1371,7 +1371,7 @@ void window::remove_from_keyboard_chain(widget* widget)
 	event_distributor_->keyboard_remove_from_chain(widget);
 }
 
-void window::signal_handler_sdl_video_resize(const event::event_t event,
+void window::signal_handler_sdl_video_resize(const event::ui_event event,
 											  bool& handled,
 											  const point& new_size)
 {
@@ -1386,7 +1386,7 @@ void window::signal_handler_sdl_video_resize(const event::event_t event,
 	handled = true;
 }
 
-void window::signal_handler_click_dismiss(const event::event_t event,
+void window::signal_handler_click_dismiss(const event::ui_event event,
 										   bool& handled,
 										   bool& halt,
 										   const Uint8 mouse_button_mask)
@@ -1397,7 +1397,7 @@ void window::signal_handler_click_dismiss(const event::event_t event,
 	handled = halt = click_dismiss(mouse_button_mask);
 }
 
-void window::signal_handler_sdl_key_down(const event::event_t event,
+void window::signal_handler_sdl_key_down(const event::ui_event event,
 										  bool& handled,
 										  SDL_Keycode key)
 {
@@ -1420,7 +1420,7 @@ void window::signal_handler_sdl_key_down(const event::event_t event,
 #endif
 }
 
-void window::signal_handler_message_show_tooltip(const event::event_t event,
+void window::signal_handler_message_show_tooltip(const event::ui_event event,
 												  bool& handled,
 												  event::message& message)
 {
@@ -1434,7 +1434,7 @@ void window::signal_handler_message_show_tooltip(const event::event_t event,
 	handled = true;
 }
 
-void window::signal_handler_message_show_helptip(const event::event_t event,
+void window::signal_handler_message_show_helptip(const event::ui_event event,
 												  bool& handled,
 												  event::message& message)
 {
@@ -1448,7 +1448,7 @@ void window::signal_handler_message_show_helptip(const event::event_t event,
 	handled = true;
 }
 
-void window::signal_handler_request_placement(const event::event_t event,
+void window::signal_handler_request_placement(const event::ui_event event,
 											   bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";

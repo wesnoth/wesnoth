@@ -495,15 +495,15 @@ private:
 
 	/***** ***** ***** signal handlers ***** ****** *****/
 
-	void signal_handler_show_tooltip(const event::event_t event,
+	void signal_handler_show_tooltip(const event::ui_event event,
 									 bool& handled,
 									 const point& location);
 
-	void signal_handler_show_helptip(const event::event_t event,
+	void signal_handler_show_helptip(const event::ui_event event,
 									 bool& handled,
 									 const point& location);
 
-	void signal_handler_notify_remove_tooltip(const event::event_t event,
+	void signal_handler_notify_remove_tooltip(const event::ui_event event,
 											  bool& handled);
 };
 

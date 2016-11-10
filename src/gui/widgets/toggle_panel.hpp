@@ -173,16 +173,16 @@ private:
 
 	/***** ***** ***** signal handlers ***** ****** *****/
 
-	void signal_handler_mouse_enter(const event::event_t event, bool& handled);
+	void signal_handler_mouse_enter(const event::ui_event event, bool& handled);
 
-	void signal_handler_mouse_leave(const event::event_t event, bool& handled);
+	void signal_handler_mouse_leave(const event::ui_event event, bool& handled);
 
-	void signal_handler_pre_left_button_click(const event::event_t event);
+	void signal_handler_pre_left_button_click(const event::ui_event event);
 
-	void signal_handler_left_button_click(const event::event_t event,
+	void signal_handler_left_button_click(const event::ui_event event,
 										  bool& handled);
 
-	void signal_handler_left_button_double_click(const event::event_t event,
+	void signal_handler_left_button_double_click(const event::ui_event event,
 												 bool& handled);
 };
 

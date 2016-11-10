@@ -127,7 +127,7 @@ const std::string& scroll_label::get_control_type() const
 	return type;
 }
 
-void scroll_label::signal_handler_left_button_down(const event::event_t event)
+void scroll_label::signal_handler_left_button_down(const event::ui_event event)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 

@@ -85,16 +85,16 @@ static Uint32 popup_callback(Uint32 /*interval*/, void* /*param*/)
  * To prevent that those functions check the lock and exit when the lock is
  * held otherwise grab the lock here.
  */
-class locker
+class resource_locker
 {
 public:
-	locker(bool& locked) : locked_(locked)
+	resource_locker(bool& locked) : locked_(locked)
 	{
 		assert(!locked_);
 		locked_ = true;
 	}
 
-	~locker()
+	~resource_locker()
 	{
 		assert(locked_);
 		locked_ = false;
@@ -157,14 +157,14 @@ void mouse_motion::capture_mouse(const bool capture)
 	mouse_captured_ = capture;
 }
 
-void mouse_motion::signal_handler_sdl_mouse_motion(const event::event_t event,
+void mouse_motion::signal_handler_sdl_mouse_motion(const event::ui_event event,
 													bool& handled,
 													const point& coordinate)
 {
 	if(signal_handler_sdl_mouse_motion_entered_) {
 		return;
 	}
-	locker lock(signal_handler_sdl_mouse_motion_entered_);
+	resource_locker lock(signal_handler_sdl_mouse_motion_entered_);
 
 	DBG_GUI_E << LOG_HEADER << event << ".\n";
 
@@ -202,7 +202,7 @@ void mouse_motion::signal_handler_sdl_mouse_motion(const event::event_t event,
 	handled = true;
 }
 
-void mouse_motion::signal_handler_sdl_wheel(const event::event_t event,
+void mouse_motion::signal_handler_sdl_wheel(const event::ui_event event,
 											 bool& handled,
 											 const point& coordinate)
 {
@@ -220,7 +220,7 @@ void mouse_motion::signal_handler_sdl_wheel(const event::event_t event,
 	handled = true;
 }
 
-void mouse_motion::signal_handler_show_helptip(const event::event_t event,
+void mouse_motion::signal_handler_show_helptip(const event::ui_event event,
 												bool& handled,
 												const point& coordinate)
 {
@@ -364,12 +364,12 @@ void mouse_motion::stop_hover_timer()
 #define LOG_HEADER                                                             \
 	"distributor mouse button " << name_ << " [" << owner_.id() << "]: "
 
-template <event_t sdl_button_down,
-		  event_t sdl_button_up,
-		  event_t button_down,
-		  event_t button_up,
-		  event_t button_click,
-		  event_t button_double_click>
+template <ui_event sdl_button_down,
+		  ui_event sdl_button_up,
+		  ui_event button_down,
+		  ui_event button_up,
+		  ui_event button_click,
+		  ui_event button_double_click>
 mouse_button<sdl_button_down,
 			  sdl_button_up,
 			  button_down,
@@ -416,12 +416,12 @@ mouse_button<sdl_button_down,
 			queue_position);
 }
 
-template <event_t sdl_button_down,
-		  event_t sdl_button_up,
-		  event_t button_down,
-		  event_t button_up,
-		  event_t button_click,
-		  event_t button_double_click>
+template <ui_event sdl_button_down,
+		  ui_event sdl_button_up,
+		  ui_event button_down,
+		  ui_event button_up,
+		  ui_event button_click,
+		  ui_event button_double_click>
 void mouse_button<sdl_button_down,
 				   sdl_button_up,
 				   button_down,
@@ -435,26 +435,26 @@ void mouse_button<sdl_button_down,
 	is_down_ = is_down;
 }
 
-template <event_t sdl_button_down,
-		  event_t sdl_button_up,
-		  event_t button_down,
-		  event_t button_up,
-		  event_t button_click,
-		  event_t button_double_click>
+template <ui_event sdl_button_down,
+		  ui_event sdl_button_up,
+		  ui_event button_down,
+		  ui_event button_up,
+		  ui_event button_click,
+		  ui_event button_double_click>
 void mouse_button<sdl_button_down,
 				   sdl_button_up,
 				   button_down,
 				   button_up,
 				   button_click,
 				   button_double_click>::
-		signal_handler_sdl_button_down(const event::event_t event,
+		signal_handler_sdl_button_down(const event::ui_event event,
 									   bool& handled,
 									   const point& coordinate)
 {
 	if(signal_handler_sdl_button_down_entered_) {
 		return;
 	}
-	locker lock(signal_handler_sdl_button_down_entered_);
+	resource_locker lock(signal_handler_sdl_button_down_entered_);
 
 	DBG_GUI_E << LOG_HEADER << event << ".\n";
 
@@ -500,26 +500,26 @@ void mouse_button<sdl_button_down,
 	handled = true;
 }
 
-template <event_t sdl_button_down,
-		  event_t sdl_button_up,
-		  event_t button_down,
-		  event_t button_up,
-		  event_t button_click,
-		  event_t button_double_click>
+template <ui_event sdl_button_down,
+		  ui_event sdl_button_up,
+		  ui_event button_down,
+		  ui_event button_up,
+		  ui_event button_click,
+		  ui_event button_double_click>
 void mouse_button<sdl_button_down,
 				   sdl_button_up,
 				   button_down,
 				   button_up,
 				   button_click,
 				   button_double_click>::
-		signal_handler_sdl_button_up(const event::event_t event,
+		signal_handler_sdl_button_up(const event::ui_event event,
 									 bool& handled,
 									 const point& coordinate)
 {
 	if(signal_handler_sdl_button_up_entered_) {
 		return;
 	}
-	locker lock(signal_handler_sdl_button_up_entered_);
+	resource_locker lock(signal_handler_sdl_button_up_entered_);
 
 	DBG_GUI_E << LOG_HEADER << event << ".\n";
 
@@ -564,12 +564,12 @@ void mouse_button<sdl_button_down,
 	handled = true;
 }
 
-template <event_t sdl_button_down,
-		  event_t sdl_button_up,
-		  event_t button_down,
-		  event_t button_up,
-		  event_t button_click,
-		  event_t button_double_click>
+template <ui_event sdl_button_down,
+		  ui_event sdl_button_up,
+		  ui_event button_down,
+		  ui_event button_up,
+		  ui_event button_click,
+		  ui_event button_double_click>
 void mouse_button<sdl_button_down,
 				   sdl_button_up,
 				   button_down,
@@ -763,7 +763,7 @@ void distributor::signal_handler_sdl_key_down(const SDL_Keycode key,
 }
 
 void distributor::signal_handler_notify_removal(dispatcher& w,
-												 const event_t event)
+												 const ui_event event)
 {
 	DBG_GUI_E << LOG_HEADER << event << ".\n";
 

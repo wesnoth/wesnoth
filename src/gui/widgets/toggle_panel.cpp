@@ -218,7 +218,7 @@ const std::string& toggle_panel::get_control_type() const
 	return type;
 }
 
-void toggle_panel::signal_handler_mouse_enter(const event::event_t event,
+void toggle_panel::signal_handler_mouse_enter(const event::ui_event event,
 											   bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -227,7 +227,7 @@ void toggle_panel::signal_handler_mouse_enter(const event::event_t event,
 	handled = true;
 }
 
-void toggle_panel::signal_handler_mouse_leave(const event::event_t event,
+void toggle_panel::signal_handler_mouse_leave(const event::ui_event event,
 											   bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -237,7 +237,7 @@ void toggle_panel::signal_handler_mouse_leave(const event::event_t event,
 }
 
 void
-toggle_panel::signal_handler_pre_left_button_click(const event::event_t event)
+toggle_panel::signal_handler_pre_left_button_click(const event::ui_event event)
 {
 	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
 
@@ -267,7 +267,7 @@ toggle_panel::signal_handler_pre_left_button_click(const event::event_t event)
 #endif
 }
 
-void toggle_panel::signal_handler_left_button_click(const event::event_t event,
+void toggle_panel::signal_handler_left_button_click(const event::ui_event event,
 													 bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -285,7 +285,7 @@ void toggle_panel::signal_handler_left_button_click(const event::event_t event,
 }
 
 void toggle_panel::signal_handler_left_button_double_click(
-		const event::event_t event, bool& handled)
+		const event::ui_event event, bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 

@@ -385,7 +385,7 @@ const std::string& list_view::get_control_type() const
 	return type;
 }
 
-void list_view::signal_handler_left_button_down(const event::event_t event)
+void list_view::signal_handler_left_button_down(const event::ui_event event)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
@@ -394,7 +394,7 @@ void list_view::signal_handler_left_button_down(const event::event_t event)
 }
 
 void list_view::signal_handler_pre_child_left_button_click(
-		grid* grid, const event::event_t event, bool& handled, bool& halt)
+		grid* grid, const event::ui_event event, bool& handled, bool& halt)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
@@ -427,7 +427,7 @@ void list_view::signal_handler_pre_child_left_button_click(
 }
 
 void list_view::signal_handler_left_button_click(grid* grid,
-											 const event::event_t event)
+											 const event::ui_event event)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 	assert(grid);
@@ -442,7 +442,7 @@ void list_view::signal_handler_left_button_click(grid* grid,
 	}
 }
 
-void list_view::signal_handler_sdl_key_down(const event::event_t event,
+void list_view::signal_handler_sdl_key_down(const event::ui_event event,
 										bool& handled,
 										const SDL_Keycode key,
 										SDL_Keymod modifier)

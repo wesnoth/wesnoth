@@ -136,27 +136,27 @@ private:
 	void show_tooltip();
 
 	bool signal_handler_sdl_mouse_motion_entered_;
-	void signal_handler_sdl_mouse_motion(const event::event_t event,
+	void signal_handler_sdl_mouse_motion(const event::ui_event event,
 										 bool& handled,
 										 const point& coordinate);
 
-	void signal_handler_sdl_wheel(const event::event_t event,
+	void signal_handler_sdl_wheel(const event::ui_event event,
 								  bool& handled,
 								  const point& coordinate);
 
-	void signal_handler_show_helptip(const event::event_t event,
+	void signal_handler_show_helptip(const event::ui_event event,
 									 bool& handled,
 									 const point& coordinate);
 };
 
 /***** ***** ***** ***** mouse_button ***** ***** ***** ***** *****/
 
-template <event_t sdl_button_down,
-		  event_t sdl_button_up,
-		  event_t button_down,
-		  event_t button_up,
-		  event_t button_click,
-		  event_t button_double_click>
+template <ui_event sdl_button_down,
+		  ui_event sdl_button_up,
+		  ui_event button_down,
+		  ui_event button_up,
+		  ui_event button_click,
+		  ui_event button_double_click>
 class mouse_button : public virtual mouse_motion
 {
 public:
@@ -194,12 +194,12 @@ private:
 	bool is_down_;
 
 	bool signal_handler_sdl_button_down_entered_;
-	void signal_handler_sdl_button_down(const event::event_t event,
+	void signal_handler_sdl_button_down(const event::ui_event event,
 										bool& handled,
 										const point& coordinate);
 
 	bool signal_handler_sdl_button_up_entered_;
-	void signal_handler_sdl_button_up(const event::event_t event,
+	void signal_handler_sdl_button_up(const event::ui_event event,
 									  bool& handled,
 									  const point& coordinate);
 
@@ -326,7 +326,7 @@ private:
 									 const SDL_Keymod modifier,
 									 const utf8::string& unicode);
 
-	void signal_handler_notify_removal(dispatcher& widget, const event_t event);
+	void signal_handler_notify_removal(dispatcher& widget, const ui_event event);
 };
 
 } // namespace event

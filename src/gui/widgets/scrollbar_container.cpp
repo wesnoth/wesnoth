@@ -1164,7 +1164,7 @@ const std::string& scrollbar_container::get_control_type() const
 }
 
 void
-scrollbar_container::signal_handler_sdl_key_down(const event::event_t event,
+scrollbar_container::signal_handler_sdl_key_down(const event::ui_event event,
 												  bool& handled,
 												  const SDL_Keycode key,
 												  SDL_Keymod modifier)
@@ -1212,7 +1212,7 @@ scrollbar_container::signal_handler_sdl_key_down(const event::event_t event,
 }
 
 void
-scrollbar_container::signal_handler_sdl_wheel_up(const event::event_t event,
+scrollbar_container::signal_handler_sdl_wheel_up(const event::ui_event event,
 												  bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << event << ".\n";
@@ -1227,7 +1227,7 @@ scrollbar_container::signal_handler_sdl_wheel_up(const event::event_t event,
 }
 
 void
-scrollbar_container::signal_handler_sdl_wheel_down(const event::event_t event,
+scrollbar_container::signal_handler_sdl_wheel_down(const event::ui_event event,
 													bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << event << ".\n";
@@ -1242,7 +1242,7 @@ scrollbar_container::signal_handler_sdl_wheel_down(const event::event_t event,
 }
 
 void
-scrollbar_container::signal_handler_sdl_wheel_left(const event::event_t event,
+scrollbar_container::signal_handler_sdl_wheel_left(const event::ui_event event,
 													bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << event << ".\n";
@@ -1258,7 +1258,7 @@ scrollbar_container::signal_handler_sdl_wheel_left(const event::event_t event,
 }
 
 void
-scrollbar_container::signal_handler_sdl_wheel_right(const event::event_t event,
+scrollbar_container::signal_handler_sdl_wheel_right(const event::ui_event event,
 													 bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << event << ".\n";

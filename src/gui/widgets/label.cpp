@@ -149,7 +149,7 @@ void label::load_config_extra()
 }
 
 
-void label::signal_handler_left_button_click(const event::event_t /* event */, bool & handled)
+void label::signal_handler_left_button_click(const event::ui_event /* event */, bool & handled)
 {
 	DBG_GUI_E << "label click" << std::endl;
 
@@ -185,7 +185,7 @@ void label::signal_handler_left_button_click(const event::event_t /* event */, b
 	handled = true;
 }
 
-void label::signal_handler_right_button_click(const event::event_t /* event */, bool & handled)
+void label::signal_handler_right_button_click(const event::ui_event /* event */, bool & handled)
 {
 	DBG_GUI_E << "label right click" << std::endl;
 

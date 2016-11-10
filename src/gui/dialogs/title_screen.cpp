@@ -161,7 +161,7 @@ static void register_button(window& win, const std::string& id, hotkey::HOTKEY_C
 	}
 
 	event::connect_signal_mouse_left_click(find_widget<button>(&win, id, false),
-		[callback](event::dispatcher& w, event::event_t, bool&, bool&) { callback(dynamic_cast<window&>(w)); });
+		[callback](event::dispatcher& w, event::ui_event, bool&, bool&) { callback(dynamic_cast<window&>(w)); });
 }
 
 static bool fullscreen(CVideo& video)

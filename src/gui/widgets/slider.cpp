@@ -293,7 +293,7 @@ void slider::handle_key_increase(bool& handled)
 	scroll(scrollbar_base::ITEM_FORWARD);
 }
 
-void slider::signal_handler_sdl_key_down(const event::event_t event,
+void slider::signal_handler_sdl_key_down(const event::ui_event event,
 										  bool& handled,
 										  const SDL_Keycode key)
 {
@@ -309,7 +309,7 @@ void slider::signal_handler_sdl_key_down(const event::event_t event,
 	}
 }
 
-/*void slider::signal_handler_left_button_down(const event::event_t event, bool& handled)
+/*void slider::signal_handler_left_button_down(const event::ui_event event, bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
@@ -318,7 +318,7 @@ void slider::signal_handler_sdl_key_down(const event::event_t event,
 	handled = true;
 }*/
 
-void slider::signal_handler_left_button_up(const event::event_t event,
+void slider::signal_handler_left_button_up(const event::ui_event event,
 											bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";

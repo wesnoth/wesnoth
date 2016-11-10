@@ -274,7 +274,7 @@ static void on_replay_error(const std::string& message, bool /*b*/)
 WML_HANDLER_FUNCTION(do_command,, cfg)
 {
 	// Doing this in a whiteboard applied context will cause bugs
-	// Note that even though game_events::pump() will always apply the real unit map
+	// Note that even though game_events::wml_event_pump() will always apply the real unit map
 	// It is still possible get a wml commands to run in a whiteboard applied context
 	// With the theme_items lua callbacks
 	if(resources::whiteboard->has_planned_unit_map())

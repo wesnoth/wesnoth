@@ -69,7 +69,7 @@ const handler_ptr manager::get_event_handler_by_id(const std::string & id)
 manager::manager()
 	: event_handlers_(new event_handlers())
 	, unit_wml_ids_()
-	, pump_(new game_events::pump(*this))
+	, pump_(new game_events::wml_event_pump(*this))
 	, wml_menu_items_()
 {
 }
@@ -196,7 +196,7 @@ void manager::write_events(config& cfg) const
 	wml_menu_items_.to_config(cfg);
 }
 
-game_events::pump & manager::pump()
+game_events::wml_event_pump & manager::pump()
 {
 	return *pump_;
 }

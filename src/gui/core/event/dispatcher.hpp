@@ -36,7 +36,7 @@ class widget;
 namespace event
 {
 
-template<typename K, event_t E>
+template<typename K, ui_event E>
 using has_key = boost::mpl::has_key<K, boost::mpl::int_<E>>;
 
 struct message;
@@ -50,7 +50,7 @@ struct message;
  * This function is used for the callbacks in set_event.
  */
 typedef std::function<void(
-		dispatcher& dispatcher, const event_t event, bool& handled, bool& halt)>
+		dispatcher& dispatcher, const ui_event event, bool& handled, bool& halt)>
 signal_function;
 
 /**
@@ -59,7 +59,7 @@ signal_function;
  * This function is used for the callbacks in set_event_mouse.
  */
 typedef std::function<void(dispatcher& dispatcher,
-							 const event_t event,
+							 const ui_event event,
 							 bool& handled,
 							 bool& halt,
 							 const point& coordinate)> signal_mouse_function;
@@ -70,7 +70,7 @@ typedef std::function<void(dispatcher& dispatcher,
  * This function is used for the callbacks in set_event_keyboard.
  */
 typedef std::function<void(dispatcher& dispatcher,
-							 const event_t event,
+							 const ui_event event,
 							 bool& handled,
 							 bool& halt,
 							 const SDL_Keycode key,
@@ -86,7 +86,7 @@ signal_keyboard_function;
  * signature as signal_function's callback.
  */
 typedef std::function<void(dispatcher& dispatcher,
-							 const event_t event,
+							 const ui_event event,
 							 bool& handled,
 							 bool& halt,
 							 void*)> signal_notification_function;
@@ -97,7 +97,7 @@ typedef std::function<void(dispatcher& dispatcher,
  * This function is used for the callbacks in set_event_message.
  */
 typedef std::function<void(dispatcher& dispatcher,
-							 const event_t event,
+							 const ui_event event,
 							 bool& handled,
 							 bool& halt,
 							 message& message)> signal_message_function;
@@ -160,10 +160,10 @@ public:
 		post = 4
 	};
 
-	bool has_event(const event_t event, const event_queue_type event_type);
+	bool has_event(const ui_event event, const event_queue_type event_type);
 
 	/** Fires an event which has no extra parameters. */
-	bool fire(const event_t event, widget& target);
+	bool fire(const ui_event event, widget& target);
 
 	/**
 	 * Fires an event which takes a coordinate parameter.
@@ -172,7 +172,7 @@ public:
 	 * @param target                 The widget that should receive the event.
 	 * @param coordinate             The mouse position for the event.
 	 */
-	bool fire(const event_t event, widget& target, const point& coordinate);
+	bool fire(const ui_event event, widget& target, const point& coordinate);
 
 	/**
 	 * Fires an event which takes keyboard parameters.
@@ -183,7 +183,7 @@ public:
 	 * @param modifier               The SDL key modifiers used.
 	 * @param unicode                The unicode value for the key pressed.
 	 */
-	bool fire(const event_t event,
+	bool fire(const ui_event event,
 			  widget& target,
 			  const SDL_Keycode key,
 			  const SDL_Keymod modifier,
@@ -197,7 +197,7 @@ public:
 	 * @param event                  The event to fire.
 	 * @param target                 The widget that should receive the event.
 	 */
-	bool fire(const event_t event, widget& target, void*);
+	bool fire(const ui_event event, widget& target, void*);
 
 	/**
 	 * Fires an event which takes message parameters.
@@ -210,7 +210,7 @@ public:
 	 *                               (or another widget in the chain) to handle
 	 *                               the message.
 	 */
-	bool fire(const event_t event, widget& target, message& msg);
+	bool fire(const ui_event event, widget& target, message& msg);
 
 	/**
 	 * The position where to add a new callback in the signal handler.
@@ -274,7 +274,7 @@ public:
 	 * @param signal                 The callback function.
 	 * @param position               The position to place the callback.
 	 */
-	template <event_t E>
+	template <ui_event E>
 	typename std::enable_if<has_key<set_event, E>::value>::type
 	connect_signal(const signal_function& signal,
 				   const queue_position position = back_child)
@@ -292,7 +292,7 @@ public:
 	 *                               place. (The function doesn't care whether
 	 *                               was added in front or back.)
 	 */
-	template <event_t E>
+	template <ui_event E>
 	typename std::enable_if<has_key<set_event, E>::value>::type
 	disconnect_signal(const signal_function& signal,
 					  const queue_position position = back_child)
@@ -307,7 +307,7 @@ public:
 	 * @param signal                 The callback function.
 	 * @param position               The position to place the callback.
 	 */
-	template <event_t E>
+	template <ui_event E>
 	typename std::enable_if<has_key<set_event_mouse, E>::value>::type
 	connect_signal(const signal_mouse_function& signal,
 				   const queue_position position = back_child)
@@ -325,7 +325,7 @@ public:
 	 *                               place. (The function doesn't care whether
 	 *                               was added in front or back.)
 	 */
-	template <event_t E>
+	template <ui_event E>
 	typename std::enable_if<has_key<set_event_mouse, E>::value>::type
 	disconnect_signal(const signal_mouse_function& signal,
 					  const queue_position position = back_child)
@@ -340,7 +340,7 @@ public:
 	 * @param signal                 The callback function.
 	 * @param position               The position to place the callback.
 	 */
-	template <event_t E>
+	template <ui_event E>
 	typename std::enable_if<has_key<set_event_keyboard, E>::value>::type
 	connect_signal(const signal_keyboard_function& signal,
 				   const queue_position position = back_child)
@@ -358,7 +358,7 @@ public:
 	 *                               place. (The function doesn't care whether
 	 *                               was added in front or back.)
 	 */
-	template <event_t E>
+	template <ui_event E>
 	typename std::enable_if<has_key<set_event_keyboard, E>::value>::type
 	disconnect_signal(const signal_keyboard_function& signal,
 					  const queue_position position = back_child)
@@ -376,7 +376,7 @@ public:
 	 *                               the pre and post positions make no sense
 	 *                               and shouldn't be used.
 	 */
-	template <event_t E>
+	template <ui_event E>
 	typename std::enable_if<has_key<set_event_notification, E>::value>::type
 	connect_signal(const signal_notification_function& signal,
 				   const queue_position position = back_child)
@@ -399,7 +399,7 @@ public:
 	 *                               front_child and remove with
 	 *                               front_pre_child)
 	 */
-	template <event_t E>
+	template <ui_event E>
 	typename std::enable_if<has_key<set_event_notification, E>::value>::type
 	disconnect_signal(const signal_notification_function& signal,
 					  const queue_position position = back_child)
@@ -417,7 +417,7 @@ public:
 	 *                               the pre and post positions make no sense
 	 *                               and shouldn't be used.
 	 */
-	template <event_t E>
+	template <ui_event E>
 	typename std::enable_if<has_key<set_event_message, E>::value>::type
 	connect_signal(const signal_message_function& signal,
 				   const queue_position position = back_child)
@@ -440,7 +440,7 @@ public:
 	 *                               front_child and remove with
 	 *                               front_pre_child)
 	 */
-	template <event_t E>
+	template <ui_event E>
 	typename std::enable_if<has_key<set_event_message, E>::value>::type
 	disconnect_signal(const signal_message_function& signal,
 					  const queue_position position = back_child)
@@ -526,9 +526,9 @@ public:
 		{
 		}
 
-		std::map<event_t, signal_type<T> > queue;
+		std::map<ui_event, signal_type<T> > queue;
 
-		void connect_signal(const event_t event,
+		void connect_signal(const ui_event event,
 							const queue_position position,
 							const T& signal)
 		{
@@ -559,7 +559,7 @@ public:
 			}
 		}
 
-		void disconnect_signal(const event_t event,
+		void disconnect_signal(const ui_event event,
 							   const queue_position position,
 							   const T& signal)
 		{

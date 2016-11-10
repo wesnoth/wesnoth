@@ -187,7 +187,7 @@ const std::string& tree_view::get_control_type() const
 	return type;
 }
 
-void tree_view::signal_handler_left_button_down(const event::event_t event)
+void tree_view::signal_handler_left_button_down(const event::ui_event event)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 

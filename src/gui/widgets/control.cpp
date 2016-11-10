@@ -507,7 +507,7 @@ point control::get_best_text_size(point minimum_size,
 	return size;
 }
 
-void control::signal_handler_show_tooltip(const event::event_t event,
+void control::signal_handler_show_tooltip(const event::ui_event event,
 										   bool& handled,
 										   const point& location)
 {
@@ -530,7 +530,7 @@ void control::signal_handler_show_tooltip(const event::event_t event,
 	}
 }
 
-void control::signal_handler_show_helptip(const event::event_t event,
+void control::signal_handler_show_helptip(const event::ui_event event,
 										   bool& handled,
 										   const point& location)
 {
@@ -542,7 +542,7 @@ void control::signal_handler_show_helptip(const event::event_t event,
 	}
 }
 
-void control::signal_handler_notify_remove_tooltip(const event::event_t event,
+void control::signal_handler_notify_remove_tooltip(const event::ui_event event,
 													bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
