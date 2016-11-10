@@ -480,12 +480,18 @@ for env in [test_env, client_env, env]:
         if env['sanitize']:
             env.AppendUnique(CCFLAGS = ["-fsanitize=" + env["sanitize"]], LINKFLAGS = ["-fsanitize=" + env["sanitize"]])
 
+        env.Append(CCFLAGS = ["-ffunction-sections", "-Wl,-gc-sections"])
+        env.Append(CXXFLAGS = ["-ffunction-sections", "-Wl,-gc-sections"])
+
         env["OPT_FLAGS"] = "-O2"
         env["DEBUG_FLAGS"] = Split("-O0 -DDEBUG -ggdb3")
 
     if "clang" in env["CXX"]:
         # Silence warnings about unused -I options and unknown warning switches.
         env.AppendUnique(CCFLAGS = Split("-Qunused-arguments -Wno-unknown-warning-option"))
+
+        env.Append(CCFLAGS = ["-ffunction-sections", "-Wl,-gc-sections"])
+        env.Append(CXXFLAGS = ["-ffunction-sections", "-Wl,-gc-sections"])
 
     if "suncc" in env["TOOLS"]:
         env["OPT_FLAGS"] = "-g0"
