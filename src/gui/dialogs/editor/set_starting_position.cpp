@@ -47,10 +47,10 @@ namespace dialogs
  * listbox & & listbox & m &
  *         Listbox displaying player choices. $
  *
- * -player & & control & m &
+ * -player & & styled_widget & m &
  *         Widget which shows a player item label. $
  *
- * -location & & control & m &
+ * -location & & styled_widget & m &
  *         Widget which shows the coordinates to the current
  *         starting position for a player if it exists. $
  *

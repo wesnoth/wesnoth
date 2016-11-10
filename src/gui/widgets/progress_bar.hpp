@@ -25,10 +25,10 @@ namespace gui2
 
 // ------------ WIDGET -----------{
 
-class progress_bar : public control
+class progress_bar : public styled_widget
 {
 public:
-	progress_bar() : control(COUNT), percentage_(static_cast<unsigned>(-1))
+	progress_bar() : styled_widget(COUNT), percentage_(static_cast<unsigned>(-1))
 	{
 		// Force canvas update
 		set_percentage(0);
@@ -36,13 +36,13 @@ public:
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
-	/** See @ref control::set_active. */
+	/** See @ref styled_widget::set_active. */
 	virtual void set_active(const bool active) override;
 
-	/** See @ref control::get_active. */
+	/** See @ref styled_widget::get_active. */
 	virtual bool get_active() const override;
 
-	/** See @ref control::get_state. */
+	/** See @ref styled_widget::get_state. */
 	virtual unsigned get_state() const override;
 
 	/** See @ref widget::disable_click_dismiss. */
@@ -71,13 +71,13 @@ private:
 	/** The percentage done. */
 	unsigned percentage_;
 
-	/** See @ref control::get_control_type. */
+	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 };
 
 // }---------- DEFINITION ---------{
 
-struct progress_bar_definition : public control_definition
+struct progress_bar_definition : public styled_widget_definition
 {
 	explicit progress_bar_definition(const config& cfg);
 
@@ -92,12 +92,12 @@ struct progress_bar_definition : public control_definition
 namespace implementation
 {
 
-struct builder_progress_bar : public builder_control
+struct builder_progress_bar : public builder_styled_widget
 {
 
 	explicit builder_progress_bar(const config& cfg);
 
-	using builder_control::build;
+	using builder_styled_widget::build;
 
 	widget* build() const;
 };

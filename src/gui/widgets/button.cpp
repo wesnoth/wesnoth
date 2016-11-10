@@ -40,7 +40,7 @@ namespace gui2
 
 REGISTER_WIDGET(button)
 
-button::button() : control(COUNT), clickable_item(), state_(ENABLED), retval_(0)
+button::button() : styled_widget(COUNT), clickable_item(), state_(ENABLED), retval_(0)
 {
 	connect_signal<event::MOUSE_ENTER>(
 			std::bind(&button::signal_handler_mouse_enter, this, _2, _3));
@@ -149,7 +149,7 @@ void button::signal_handler_left_button_click(const event::ui_event event,
 // }---------- DEFINITION ---------{
 
 button_definition::button_definition(const config& cfg)
-	: control_definition(cfg)
+	: styled_widget_definition(cfg)
 {
 	DBG_GUI_P << "Parsing button " << id << '\n';
 
@@ -199,7 +199,7 @@ button_definition::resolution::resolution(const config& cfg)
 /*WIKI_MACRO
  * @begin{macro}{button_description}
  *
- *        A button is a control that can be pushed to start an action or close
+ *        A button is a styled_widget that can be pushed to start an action or close
  *        a dialog.
  * @end{macro}
  */
@@ -238,7 +238,7 @@ namespace implementation
 {
 
 builder_button::builder_button(const config& cfg)
-	: builder_control(cfg)
+	: builder_styled_widget(cfg)
 	, retval_id_(cfg["return_value_id"])
 	, retval_(cfg["return_value"])
 {

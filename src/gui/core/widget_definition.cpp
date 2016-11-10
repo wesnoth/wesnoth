@@ -132,12 +132,12 @@ resolution_definition::resolution_definition(const config& cfg)
  * @end{tag}{name=widget_definition}
  * @end{parent}{name="generic/"}
  */
-control_definition::control_definition(const config& cfg)
+styled_widget_definition::styled_widget_definition(const config& cfg)
 	: id(cfg["id"]), description(cfg["description"].t_str()), resolutions()
 {
-	VALIDATE(!id.empty(), missing_mandatory_wml_key("control", "id"));
+	VALIDATE(!id.empty(), missing_mandatory_wml_key("styled_widget", "id"));
 	VALIDATE(!description.empty(),
-			 missing_mandatory_wml_key("control", "description"));
+			 missing_mandatory_wml_key("styled_widget", "description"));
 
 	/*
 	 * Do this validation here instead of in load_resolutions so the

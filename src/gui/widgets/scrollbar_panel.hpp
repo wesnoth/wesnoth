@@ -44,21 +44,21 @@ public:
 	/**
 	 * Constructor.
 	 *
-	 * @param canvas_count        The canvas count for control.
+	 * @param canvas_count        The canvas count for styled_widget.
 	 */
 	explicit scrollbar_panel(const unsigned canvas_count = 2)
 		: scrollbar_container(canvas_count)
 	{
 	}
 
-	/** See @ref control::get_active. */
+	/** See @ref styled_widget::get_active. */
 	virtual bool get_active() const override;
 
-	/** See @ref control::get_state. */
+	/** See @ref styled_widget::get_state. */
 	virtual unsigned get_state() const override;
 
 private:
-	/** See @ref control::get_control_type. */
+	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 
 	/** See @ref container_base::set_self_active. */
@@ -67,7 +67,7 @@ private:
 
 // }---------- DEFINITION ---------{
 
-struct scrollbar_panel_definition : public control_definition
+struct scrollbar_panel_definition : public styled_widget_definition
 {
 
 	explicit scrollbar_panel_definition(const config& cfg);
@@ -85,11 +85,11 @@ struct scrollbar_panel_definition : public control_definition
 namespace implementation
 {
 
-struct builder_scrollbar_panel : public builder_control
+struct builder_scrollbar_panel : public builder_styled_widget
 {
 	explicit builder_scrollbar_panel(const config& cfg);
 
-	using builder_control::build;
+	using builder_styled_widget::build;
 
 	widget* build() const;
 

@@ -29,20 +29,20 @@ namespace gui2
 /**
  * Simple push button.
  */
-class button : public control, public clickable_item
+class button : public styled_widget, public clickable_item
 {
 public:
 	button();
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
-	/** See @ref control::set_active. */
+	/** See @ref styled_widget::set_active. */
 	virtual void set_active(const bool active) override;
 
-	/** See @ref control::get_active. */
+	/** See @ref styled_widget::get_active. */
 	virtual bool get_active() const override;
 
-	/** See @ref control::get_state. */
+	/** See @ref styled_widget::get_state. */
 	virtual unsigned get_state() const override;
 
 	/** Inherited from tclickable. */
@@ -95,7 +95,7 @@ private:
 	 */
 	int retval_;
 
-	/** See @ref control::get_control_type. */
+	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 
 	/***** ***** ***** signal handlers ***** ****** *****/
@@ -116,7 +116,7 @@ private:
 
 // }---------- DEFINITION ---------{
 
-struct button_definition : public control_definition
+struct button_definition : public styled_widget_definition
 {
 	explicit button_definition(const config& cfg);
 
@@ -128,17 +128,17 @@ struct button_definition : public control_definition
 
 // }---------- BUILDER -----------{
 
-class control;
+class styled_widget;
 
 namespace implementation
 {
 
-struct builder_button : public builder_control
+struct builder_button : public builder_styled_widget
 {
 public:
 	explicit builder_button(const config& cfg);
 
-	using builder_control::build;
+	using builder_styled_widget::build;
 
 	widget* build() const;
 

@@ -40,7 +40,7 @@ namespace gui2
 REGISTER_WIDGET(menu_button)
 
 menu_button::menu_button()
-	: control(COUNT)
+	: styled_widget(COUNT)
 	, selectable_item()
 	, state_(ENABLED)
 	, retval_(0)
@@ -200,7 +200,7 @@ void menu_button::set_selected(int selected)
 // }---------- DEFINITION ---------{
 
 menu_button_definition::menu_button_definition(const config& cfg)
-	: control_definition(cfg)
+	: styled_widget_definition(cfg)
 {
 	DBG_GUI_P << "Parsing menu_button " << id << '\n';
 
@@ -250,7 +250,7 @@ menu_button_definition::resolution::resolution(const config& cfg)
 /*WIKI_MACRO
  * @begin{macro}{menu_button_description}
  *
- *        A menu_button is a control to choose an element from a list of elements.
+ *        A menu_button is a styled_widget to choose an element from a list of elements.
  * @end{macro}
  */
 
@@ -288,7 +288,7 @@ namespace implementation
 {
 
 builder_menu_button::builder_menu_button(const config& cfg)
-	: builder_control(cfg)
+	: builder_styled_widget(cfg)
 	, retval_id_(cfg["return_value_id"])
 	, retval_(cfg["return_value"])
 	, options_()

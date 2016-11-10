@@ -283,7 +283,7 @@ void debug_layout_graph::widget_generate_basic_info(std::ostream& out,
 {
 	std::string header_background
 			= level_ & (SIZE_INFO | STATE_INFO) ? " bgcolor=\"gray\"" : "";
-	const control* control = dynamic_cast<const control*>(widget);
+	const styled_widget* styled_widget = dynamic_cast<const styled_widget*>(widget);
 
 	out << "<tr><td" << header_background << ">" << '\n'
 		<< "type=" << get_type(widget) << '\n' << "</td></tr>" << '\n'
@@ -305,7 +305,7 @@ void debug_layout_graph::widget_generate_state_info(std::ostream& out,
 													 const widget* widget)
 		const
 {
-	const control* control = dynamic_cast<const control*>(widget);
+	const styled_widget* control = dynamic_cast<const control*>(widget);
 	if(!control) {
 		return;
 	}
@@ -365,7 +365,7 @@ void debug_layout_graph::widget_generate_size_info(std::ostream& out,
 		<< "layout_size_=" << widget->layout_size_ << '\n' << "</td></tr>\n";
 
 
-	const control* control = dynamic_cast<const control*>(widget);
+	const styled_widget* control = dynamic_cast<const control*>(widget);
 
 	if(control) {
 		out << "<tr><td>\n"
@@ -531,7 +531,7 @@ void debug_layout_graph::child_generate_info(std::ostream& out,
 
 std::string debug_layout_graph::get_type(const widget* widget) const
 {
-	const control* control = dynamic_cast<const control*>(widget);
+	const styled_widget* control = dynamic_cast<const control*>(widget);
 	if(control) {
 		return control->get_control_type();
 	} else {

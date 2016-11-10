@@ -37,9 +37,9 @@ namespace gui2
 /**
  * Abstract base class for the fields.
  *
- * @note In this context a widget is a @ref gui2::control and not a @ref
+ * @note In this context a widget is a @ref gui2::styled_widget and not a @ref
  * gui2::widget. This name widget is a generic name and fits, however some
- * functions used are first declared in a control.
+ * functions used are first declared in a styled_widget.
  */
 class field_base
 {
@@ -79,7 +79,7 @@ public:
 	void attach_to_window(window& window)
 	{
 		assert(!widget_);
-		widget_ = find_widget<control>(&window, id(), false, mandatory_);
+		widget_ = find_widget<styled_widget>(&window, id(), false, mandatory_);
 	}
 
 	/**
@@ -171,7 +171,7 @@ public:
 	 */
 	void widget_set_enabled(window& window, const bool enable, const bool sync)
 	{
-		control* widget = dynamic_cast<control*>(window.find(id(), false));
+		styled_widget* widget = dynamic_cast<styled_widget*>(window.find(id(), false));
 
 		if(!widget) {
 			return;
@@ -205,12 +205,12 @@ public:
 		return mandatory_;
 	}
 
-	control* get_widget()
+	styled_widget* get_widget()
 	{
 		return widget_;
 	}
 
-	const control* get_widget() const
+	const styled_widget* get_widget() const
 	{
 		return widget_;
 	}
@@ -223,7 +223,7 @@ private:
 	const bool mandatory_;
 
 	/** The widget attached to the field. */
-	control* widget_;
+	styled_widget* widget_;
 
 	/** See widget_init. */
 	virtual void init_generic(window& window) = 0;
@@ -287,7 +287,7 @@ public:
 		, callback_load_value_(callback_load_value)
 		, callback_save_value_(callback_save_value)
 	{
-		static_assert((!std::is_same<control, W>::value), "Second template argument cannot be control");
+		static_assert((!std::is_same<styled_widget, W>::value), "Second template argument cannot be styled_widget");
 	}
 
 	/**
@@ -311,7 +311,7 @@ public:
 		, callback_load_value_(std::function<T()>())
 		, callback_save_value_(std::function<void(CT)>())
 	{
-		static_assert((!std::is_same<control, W>::value), "Second template argument cannot be control");
+		static_assert((!std::is_same<styled_widget, W>::value), "Second template argument cannot be styled_widget");
 	}
 
 	/**
@@ -322,7 +322,7 @@ public:
 	 * @note The difference between this constructor and the one above is the
 	 * sending of the third parameter as const ref instead of a non-const ref.
 	 * So it feels a bit tricky. Since this constructor is only used for a
-	 * the @ref control class and the other constructors not the issue is
+	 * the @ref styled_widget class and the other constructors not the issue is
 	 * solved by using static asserts to test whether the proper constructor
 	 * is used.
 	 *
@@ -338,7 +338,7 @@ public:
 		, callback_load_value_(std::function<T()>())
 		, callback_save_value_(std::function<void(CT)>())
 	{
-		static_assert((std::is_same<control, W>::value), "Second template argument must be control");
+		static_assert((std::is_same<styled_widget, W>::value), "Second template argument must be styled_widget");
 	}
 
 	/** Inherited from field_base. */
@@ -511,14 +511,14 @@ inline void field<bool, selectable_item>::save(
 }
 
 template <>
-inline void field<std::string, control, const std::string&>::save(
+inline void field<std::string, styled_widget, const std::string&>::save(
 		window& window, const bool must_be_active)
 {
-	const control* ctrl
-			= find_widget<const control>(&window, id(), must_be_active, false);
+	const styled_widget* control
+			= find_widget<const styled_widget>(&window, id(), must_be_active, false);
 
-	if(ctrl) {
-		value_ = ctrl->get_label();
+	if(control) {
+		value_ = control->get_label();
 	}
 }
 
@@ -534,12 +534,12 @@ void field<T, W, CT>::restore(window& window)
 
 template <>
 inline void
-field<std::string, control, const std::string&>::restore(window& window)
+field<std::string, styled_widget, const std::string&>::restore(window& window)
 {
-	control* ctrl = find_widget<control>(&window, id(), false, false);
+	styled_widget* control = find_widget<styled_widget>(&window, id(), false, false);
 
-	if(ctrl) {
-		ctrl->set_label(value_);
+	if(control) {
+		control->set_label(value_);
 	}
 }
 
@@ -625,15 +625,15 @@ private:
 	}
 };
 
-/** Specialized field class for a control, used for labels and images. */
-class field_label : public field<std::string, control, const std::string&>
+/** Specialized field class for a styled_widget, used for labels and images. */
+class field_label : public field<std::string, styled_widget, const std::string&>
 {
 public:
 	field_label(const std::string& id,
 				 const bool mandatory,
 				 const std::string& text,
 				 const bool use_markup)
-		: field<std::string, control, const std::string&>(id, mandatory, text)
+		: field<std::string, styled_widget, const std::string&>(id, mandatory, text)
 		, use_markup_(use_markup)
 
 	{
@@ -646,7 +646,7 @@ private:
 	/** Overridden from field_base. */
 	void init_specialized(window& window)
 	{
-		find_widget<control>(&window, id(), false).set_use_markup(use_markup_);
+		find_widget<styled_widget>(&window, id(), false).set_use_markup(use_markup_);
 	}
 };
 

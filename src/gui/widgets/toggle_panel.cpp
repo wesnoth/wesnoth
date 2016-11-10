@@ -92,9 +92,9 @@ void toggle_panel::set_child_members(
 {
 	for(const auto & item : data)
 	{
-		control* ctrl = dynamic_cast<control*>(find(item.first, false));
-		if(ctrl) {
-			ctrl->set_members(item.second);
+		styled_widget* control = dynamic_cast<styled_widget*>(find(item.first, false));
+		if(control) {
+			control->set_members(item.second);
 		}
 	}
 }
@@ -110,14 +110,14 @@ widget* toggle_panel::find_at(const point& coordinate,
 	 */
 
 	widget* result = container_base::find_at(coordinate, must_be_active);
-	return result ? result : control::find_at(coordinate, must_be_active);
+	return result ? result : styled_widget::find_at(coordinate, must_be_active);
 }
 
 const widget* toggle_panel::find_at(const point& coordinate,
 									  const bool must_be_active) const
 {
 	const widget* result = container_base::find_at(coordinate, must_be_active);
-	return result ? result : control::find_at(coordinate, must_be_active);
+	return result ? result : styled_widget::find_at(coordinate, must_be_active);
 }
 
 void toggle_panel::set_active(const bool active)
@@ -199,8 +199,8 @@ void toggle_panel::impl_draw_background(surface& frame_buffer,
 										 int y_offset)
 {
 	// We don't have a fore and background and need to draw depending on
-	// our state, like a control. So we use the controls drawing method.
-	control::impl_draw_background(frame_buffer, x_offset, y_offset);
+	// our state, like a styled_widget. So we use the styled_widget's drawing method.
+	styled_widget::impl_draw_background(frame_buffer, x_offset, y_offset);
 }
 
 void toggle_panel::impl_draw_foreground(surface& frame_buffer,
@@ -208,8 +208,8 @@ void toggle_panel::impl_draw_foreground(surface& frame_buffer,
 										 int y_offset)
 {
 	// We don't have a fore and background and need to draw depending on
-	// our state, like a control. So we use the controls drawing method.
-	control::impl_draw_foreground(frame_buffer, x_offset, y_offset);
+	// our state, like a styled_widget. So we use the styled_widget's drawing method.
+	styled_widget::impl_draw_foreground(frame_buffer, x_offset, y_offset);
 }
 
 const std::string& toggle_panel::get_control_type() const
@@ -305,7 +305,7 @@ void toggle_panel::signal_handler_left_button_double_click(
 // }---------- DEFINITION ---------{
 
 toggle_panel_definition::toggle_panel_definition(const config& cfg)
-	: control_definition(cfg)
+	: styled_widget_definition(cfg)
 {
 	DBG_GUI_P << "Parsing toggle panel " << id << '\n';
 
@@ -411,7 +411,7 @@ namespace implementation
 {
 
 builder_toggle_panel::builder_toggle_panel(const config& cfg)
-	: builder_control(cfg)
+	: builder_styled_widget(cfg)
 	, grid(nullptr)
 	, retval_id_(cfg["return_value_id"])
 	, retval_(cfg["return_value"])

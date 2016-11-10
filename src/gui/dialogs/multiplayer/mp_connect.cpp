@@ -51,10 +51,10 @@ namespace
  * server_list & & listbox & m &
  *         Listbox with the predefined servers to connect to. $
  *
- * -name & & control & o &
+ * -name & & styled_widget & o &
  *         Widget which shows the name of the server. $
  *
- * -address & & control & m &
+ * -address & & styled_widget & m &
  *         The address/host_name of the server. $
  *
  * @end{table}
@@ -124,7 +124,7 @@ void mp_server_list::post_show(window& window)
 		const grid* row = list.get_row_grid(list.get_selected_row());
 		assert(row);
 
-		host_name_ = find_widget<const control>(row, "address", false).get_label();
+		host_name_ = find_widget<const styled_widget>(row, "address", false).get_label();
 	}
 }
 

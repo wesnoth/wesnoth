@@ -47,10 +47,10 @@ class scroll_label : public scrollbar_container
 public:
 	scroll_label(bool wrap, const std::string& text_alignment);
 
-	/** See @ref control::set_label. */
+	/** See @ref styled_widget::set_label. */
 	virtual void set_label(const t_string& label) override;
 
-	/** See @ref control::set_use_markup. */
+	/** See @ref styled_widget::set_use_markup. */
 	virtual void set_use_markup(bool use_markup) override;
 
 	/** See @ref container_base::set_self_active. */
@@ -58,10 +58,10 @@ public:
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	/** See @ref control::get_active. */
+	/** See @ref styled_widget::get_active. */
 	virtual bool get_active() const override;
 
-	/** See @ref control::get_state. */
+	/** See @ref styled_widget::get_state. */
 	virtual unsigned get_state() const override;
 	
 	bool can_wrap() const override;
@@ -97,7 +97,7 @@ private:
 
 	/***** ***** ***** inherited ****** *****/
 
-	/** See @ref control::get_control_type. */
+	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 
 	/***** ***** ***** signal handlers ***** ****** *****/
@@ -107,7 +107,7 @@ private:
 
 // }---------- DEFINITION ---------{
 
-struct scroll_label_definition : public control_definition
+struct scroll_label_definition : public styled_widget_definition
 {
 	explicit scroll_label_definition(const config& cfg);
 
@@ -124,11 +124,11 @@ struct scroll_label_definition : public control_definition
 namespace implementation
 {
 
-struct builder_scroll_label : public builder_control
+struct builder_scroll_label : public builder_styled_widget
 {
 	explicit builder_scroll_label(const config& cfg);
 
-	using builder_control::build;
+	using builder_styled_widget::build;
 
 	widget* build() const;
 

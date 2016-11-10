@@ -36,7 +36,7 @@ namespace gui2
 REGISTER_WIDGET(repeating_button)
 
 repeating_button::repeating_button()
-	: control(COUNT), clickable_item(), state_(ENABLED), repeat_timer_(0)
+	: styled_widget(COUNT), clickable_item(), state_(ENABLED), repeat_timer_(0)
 {
 	connect_signal<event::MOUSE_ENTER>(std::bind(
 			&repeating_button::signal_handler_mouse_enter, this, _2, _3));
@@ -169,7 +169,7 @@ void repeating_button::signal_handler_left_button_up(const event::ui_event event
 // }---------- DEFINITION ---------{
 
 repeating_button_definition::repeating_button_definition(const config& cfg)
-	: control_definition(cfg)
+	: styled_widget_definition(cfg)
 {
 	DBG_GUI_P << "Parsing repeating button " << id << '\n';
 
@@ -220,7 +220,7 @@ repeating_button_definition::resolution::resolution(const config& cfg)
 /*WIKI_MACRO
  * @begin{macro}{repeating_button_description}
  *
- *        A repeating_button is a control that can be pushed down and repeat a
+ *        A repeating_button is a styled_widget that can be pushed down and repeat a
  *        certain action. Once the button is down every x milliseconds it is
  *        down a new down event is triggered.
  * @end{macro}
@@ -243,7 +243,7 @@ namespace implementation
 {
 
 builder_repeating_button::builder_repeating_button(const config& cfg)
-	: builder_control(cfg)
+	: builder_styled_widget(cfg)
 {
 }
 

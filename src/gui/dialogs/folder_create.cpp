@@ -38,7 +38,7 @@ namespace dialogs
  *
  * @begin{table}{dialog_widgets}
  *
- * title & & control & m &
+ * title & & styled_widget & m &
  *         Label with the dialog caption. Changed in bookmark mode. $
  * name & & text_box & m &
  *         Input field for the new folder/bookmark name. $
@@ -57,7 +57,7 @@ folder_create::folder_create(std::string& folder_name)
 void folder_create::pre_show(window& window)
 {
 	if(bookmark_mode_) {
-		find_widget<control>(&window, "title", false).set_label(_("New Bookmark"));
+		find_widget<styled_widget>(&window, "title", false).set_label(_("New Bookmark"));
 	}
 }
 

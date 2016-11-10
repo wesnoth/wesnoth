@@ -28,7 +28,7 @@ namespace gui2
 {
 
 scrollbar_base::scrollbar_base()
-	: control(COUNT)
+	: styled_widget(COUNT)
 	, state_(ENABLED)
 	, item_count_(0)
 	, item_position_(0)
@@ -102,7 +102,7 @@ void scrollbar_base::scroll(const scroll_mode scroll)
 void scrollbar_base::place(const point& origin, const point& size)
 {
 	// Inherited.
-	control::place(origin, size);
+	styled_widget::place(origin, size);
 
 	recalculate();
 }

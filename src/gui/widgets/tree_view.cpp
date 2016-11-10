@@ -269,7 +269,7 @@ void tree_view::handle_key_right_arrow(SDL_Keymod modifier, bool& handled)
 // }---------- DEFINITION ---------{
 
 tree_view_definition::tree_view_definition(const config& cfg)
-	: control_definition(cfg)
+	: styled_widget_definition(cfg)
 {
 	DBG_GUI_P << "Parsing tree view " << id << '\n';
 
@@ -319,7 +319,7 @@ tree_view_definition::resolution::resolution(const config& cfg)
 /*WIKI_MACRO
  * @begin{macro}{tree_view_description}
  *
- *        A tree view is a control that holds several items of the same or
+ *        A tree view is a styled_widget that holds several items of the same or
  *        different types. The items shown are called tree view nodes and when
  *        a node has children, these can be shown or hidden. Nodes that contain
  *        children need to provide a clickable button in order to fold or
@@ -373,7 +373,7 @@ namespace implementation
 {
 
 builder_tree_view::builder_tree_view(const config& cfg)
-	: builder_control(cfg)
+	: builder_styled_widget(cfg)
 	, vertical_scrollbar_mode(
 			  get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
 	, horizontal_scrollbar_mode(

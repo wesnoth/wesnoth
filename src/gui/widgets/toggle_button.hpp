@@ -29,26 +29,26 @@ namespace gui2
  * A toggle button is a button with two states 'up' and 'down' or 'selected' and
  * 'deselected'. When the mouse is pressed on it the state changes.
  */
-class toggle_button : public control, public selectable_item
+class toggle_button : public styled_widget, public selectable_item
 {
 public:
 	toggle_button();
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
-	/** See @ref control::set_members. */
+	/** See @ref styled_widget::set_members. */
 	void set_members(const string_map& data) override;
 
-	/** See @ref control::set_active. */
+	/** See @ref styled_widget::set_active. */
 	virtual void set_active(const bool active) override;
 
-	/** See @ref control::get_active. */
+	/** See @ref styled_widget::get_active. */
 	virtual bool get_active() const override;
 
-	/** See @ref control::get_state. */
+	/** See @ref styled_widget::get_state. */
 	virtual unsigned get_state() const override;
 
-	/** Inherited from control. */
+	/** Inherited from styled_widget. */
 	void update_canvas() override;
 
 	/** Inherited from selectable_item */
@@ -123,11 +123,11 @@ private:
 
 	/**
 	 * The toggle button can contain an icon next to the text.
-	 * Maybe this will move the the control class if deemed needed.
+	 * Maybe this will move the the styled_widget class if deemed needed.
 	 */
 	std::string icon_name_;
 
-	/** See @ref control::get_control_type. */
+	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 
 	/***** ***** ***** signal handlers ***** ****** *****/
@@ -145,7 +145,7 @@ private:
 
 // }---------- DEFINITION ---------{
 
-struct toggle_button_definition : public control_definition
+struct toggle_button_definition : public styled_widget_definition
 {
 	explicit toggle_button_definition(const config& cfg);
 
@@ -160,11 +160,11 @@ struct toggle_button_definition : public control_definition
 namespace implementation
 {
 
-struct builder_toggle_button : public builder_control
+struct builder_toggle_button : public builder_styled_widget
 {
 	explicit builder_toggle_button(const config& cfg);
 
-	using builder_control::build;
+	using builder_styled_widget::build;
 
 	widget* build() const;
 

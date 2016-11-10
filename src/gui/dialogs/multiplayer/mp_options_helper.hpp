@@ -22,7 +22,7 @@ class config;
 namespace gui2
 {
 
-class control;
+class styled_widget;
 class menu_button;
 class toggle_button;
 class tree_view;
@@ -80,7 +80,7 @@ private:
 	ng::create_engine& create_engine_;
 
 	tree_view& options_tree_;
-	control& no_options_notice_;
+	styled_widget& no_options_notice_;
 
 	using node_vector = std::vector<tree_view_node*>;
 

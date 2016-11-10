@@ -41,7 +41,7 @@ namespace gui2
 REGISTER_WIDGET(label)
 
 label::label()
-		: control(COUNT)
+		: styled_widget(COUNT)
 		, state_(ENABLED)
 		, can_wrap_(false)
 		, characters_per_line_(0)
@@ -216,7 +216,7 @@ void label::signal_handler_right_button_click(const event::ui_event /* event */,
 // }---------- DEFINITION ---------{
 
 label_definition::label_definition(const config& cfg)
-	: control_definition(cfg)
+	: styled_widget_definition(cfg)
 {
 	DBG_GUI_P << "Parsing label " << id << '\n';
 
@@ -314,7 +314,7 @@ namespace implementation
 {
 
 builder_label::builder_label(const config& cfg)
-	: builder_control(cfg)
+	: builder_styled_widget(cfg)
 	, wrap(cfg["wrap"].to_bool())
 	, characters_per_line(cfg["characters_per_line"])
 	, text_alignment(decode_text_alignment(cfg["text_alignment"]))

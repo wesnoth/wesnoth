@@ -119,7 +119,7 @@ typedef std::function<bool(dispatcher& dispatcher,
  * widgets involved.
  *
  * [1] Not really sure whether it will be a base clase for a widget or
- * control yet.
+ * styled_widget yet.
  */
 class dispatcher
 {

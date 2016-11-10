@@ -164,7 +164,7 @@ public:
 	/**
 	 * Activates all children.
 	 *
-	 * If a child inherits from control or is a grid it will call
+	 * If a child inherits from styled_widget or is a grid it will call
 	 * set_active() for the child otherwise it ignores the widget.
 	 *
 	 * @param active              Parameter for set_active.

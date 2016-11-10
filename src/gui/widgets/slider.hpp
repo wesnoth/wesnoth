@@ -155,7 +155,7 @@ private:
 	/** Inherited from tscrollbar. */
 	//void move_positioner(const int distance) override;
 
-	/** See @ref control::update_canvas. */
+	/** See @ref styled_widget::update_canvas. */
 	virtual void update_canvas() override;
 
 	/**
@@ -187,7 +187,7 @@ private:
 
 	//void update_current_item_mouse_position();
 
-	/** See @ref control::get_control_type. */
+	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 
 	/**
@@ -213,7 +213,7 @@ private:
 
 // }---------- DEFINITION ---------{
 
-struct slider_definition : public control_definition
+struct slider_definition : public styled_widget_definition
 {
 	explicit slider_definition(const config& cfg);
 
@@ -234,11 +234,11 @@ struct slider_definition : public control_definition
 namespace implementation
 {
 
-struct builder_slider : public builder_control
+struct builder_slider : public builder_styled_widget
 {
 	explicit builder_slider(const config& cfg);
 
-	using builder_control::build;
+	using builder_styled_widget::build;
 
 	widget* build() const;
 

@@ -137,7 +137,7 @@ public:
 		}
 
 		selectable_item& w = *members_[value];
-		dynamic_cast<control&>(w).set_active(active);
+		dynamic_cast<styled_widget&>(w).set_active(active);
 
 		// Only select another member this was selected
 		if(!w.get_value_bool()) {
@@ -148,7 +148,7 @@ public:
 
 		// Look for the first active member to select
 		for(auto& member : members_) {
-			if(dynamic_cast<control&>(*member.second).get_active()) {
+			if(dynamic_cast<styled_widget&>(*member.second).get_active()) {
 				member.second->set_value_bool(true);
 				break;
 			}

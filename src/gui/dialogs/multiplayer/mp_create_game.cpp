@@ -262,7 +262,7 @@ void mp_create_game::pre_show(window& win)
 
 	// No mods, hide the header
 	if(mod_list.get_item_count() <= 0) {
-		find_widget<control>(&win, "mods_header", false).set_visible(window::visibility::invisible);
+		find_widget<styled_widget>(&win, "mods_header", false).set_visible(window::visibility::invisible);
 	} else {
 		on_mod_select(win);
 	}
@@ -507,7 +507,7 @@ void mp_create_game::on_random_faction_mode_select(window& window)
 
 void mp_create_game::show_description(window& window, const std::string& new_description)
 {
-	control& description = find_widget<control>(&window, "description", false);
+	styled_widget& description = find_widget<styled_widget>(&window, "description", false);
 
 	description.set_label(!new_description.empty() ? new_description : _("No description available"));
 	description.set_use_markup(true);
@@ -591,8 +591,8 @@ int mp_create_game::convert_to_game_filtered_index(const int initial_index)
 
 void mp_create_game::update_details(window& win)
 {
-	control& players = find_widget<control>(&win, "map_num_players", false);
-	control& map_size = find_widget<control>(&win, "map_size", false);
+	styled_widget& players = find_widget<styled_widget>(&win, "map_num_players", false);
+	styled_widget& map_size = find_widget<styled_widget>(&win, "map_size", false);
 
 	if(create_engine_.current_level_type() == ng::level::TYPE::RANDOM_MAP) {
 		// If the current random map doesn't have data, generate it
@@ -613,7 +613,7 @@ void mp_create_game::update_details(window& win)
 	// Set the title, with newlines replaced. Newlines are sometimes found in SP Campaign names
 	std::string title = create_engine_.current_level().name();
 	boost::replace_all(title, "\n", " " + font::unicode_em_dash + " ");
-	find_widget<control>(&win, "game_title", false).set_label(title);
+	find_widget<styled_widget>(&win, "game_title", false).set_label(title);
 
 	show_description(win, create_engine_.current_level().description());
 

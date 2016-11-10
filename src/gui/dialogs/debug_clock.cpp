@@ -51,26 +51,26 @@ namespace dialogs
  *         This shows the seconds as a percentage, where 60 seconds is 100%. $
  *
  * hour              & & integer_selector & o &
- *         This shows the seconds since the beginning of the day. The control
+ *         This shows the seconds since the beginning of the day. The styled_widget
  *         should have a ''minimum_value'' of 0 and a ''maximum_value'' of 86399
  *         (24 * 60 * 60 - 1). $
  *
  * minute            & & integer_selector & o &
  *         This shows the seconds since the beginning of the current hour. The
- *         control should have a ''minimum_value'' of 0 and a ''maximum_value''
+ *         styled_widget should have a ''minimum_value'' of 0 and a ''maximum_value''
  *         of 3599 (60 * 60 - 1). $
  *
  * minute            & & integer_selector & o &
  *         This shows the seconds since the beginning of the current minute. The
- *         control should have a ''minimum_value'' of 0 and a ''maximum_value''
+ *         styled_widget should have a ''minimum_value'' of 0 and a ''maximum_value''
  *         of 59. $
  *
- * clock             & & control          & o &
- *         A control which will have set three variables in its canvas:
+ * clock             & & styled_widget          & o &
+ *         A styled_widget which will have set three variables in its canvas:
  *         @* hour, the same value as the hour integer_selector.
  *         @* minute, the same value as the minute integer_selector.
  *         @* second, the same value as the second integer_selector.
- *         @- the control can then should the time in its own preferred
+ *         @- the styled_widget can then should the time in its own preferred
  *         format(s). $
  * @end{table}
  */
@@ -87,21 +87,21 @@ void debug_clock::pre_show(window& window)
 			&window, "second_percentage", false, false);
 
 	hour_ = find_widget<integer_selector>(&window, "hour", false, false);
-	if(control *hour = dynamic_cast<control*>(hour_)) { //Note that the standard specifies that a dynamic cast of a null pointer is null
+	if(styled_widget *hour = dynamic_cast<styled_widget*>(hour_)) { //Note that the standard specifies that a dynamic cast of a null pointer is null
 		hour->set_active(false);
 	}
 	minute_ = find_widget<integer_selector>(&window, "minute", false, false);
-	if(control *minute = dynamic_cast<control*>(minute_)) {
+	if(styled_widget *minute = dynamic_cast<styled_widget*>(minute_)) {
 		minute->set_active(false);
 	}
 	second_ = find_widget<integer_selector>(&window, "second", false, false);
-	if(control *second = dynamic_cast<control*>(second_)) {
+	if(styled_widget *second = dynamic_cast<styled_widget*>(second_)) {
 		second->set_active(false);
 	}
 
 	pane_ = find_widget<pane>(&window, "pane", false, false);
 
-	clock_ = find_widget<control>(&window, "clock", false, false);
+	clock_ = find_widget<styled_widget>(&window, "clock", false, false);
 
 	window_ = &window;
 

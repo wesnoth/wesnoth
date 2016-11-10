@@ -27,17 +27,17 @@ namespace gui2
 
 namespace implementation
 {
-struct builder_control;
+struct builder_styled_widget;
 } // namespace implementation
 
 /** Base class for all visible items. */
-class control : public widget
+class styled_widget : public widget
 {
 	friend class debug_layout_graph;
 
 public:
 	/** @deprecated Used the second overload. */
-	explicit control(const unsigned canvas_count);
+	explicit styled_widget(const unsigned canvas_count);
 
 	/**
 	 * Constructor.
@@ -45,14 +45,14 @@ public:
 	 * @param builder             The builder object with the settings for the
 	 *                            object.
 	 *
-	 * @param canvas_count        The number of canvasses in the control.
+	 * @param canvas_count        The number of canvasses in the styled_widget.
 	 */
-	control(const implementation::builder_control& builder,
+	styled_widget(const implementation::builder_styled_widget& builder,
 			 const unsigned canvas_count,
 			 const std::string& control_type);
 
 	/**
-	 * Sets the members of the control.
+	 * Sets the members of the styled_widget.
 	 *
 	 * The map contains named members it can set, controls inheriting from us
 	 * can add additional members to set by this function. The following
@@ -70,15 +70,15 @@ public:
 	/***** ***** ***** ***** State handling ***** ***** ***** *****/
 
 	/**
-	 * Sets the control's state.
+	 * Sets the styled_widget's state.
 	 *
-	 *  Sets the control in the active state, when inactive a control can't be
+	 *  Sets the styled_widget in the active state, when inactive a styled_widget can't be
 	 *  used and doesn't react to events. (Note read-only for a text_box_base is a
 	 *  different state.)
 	 */
 	virtual void set_active(const bool active) = 0;
 
-	/** Gets the active state of the control. */
+	/** Gets the active state of the styled_widget. */
 	virtual bool get_active() const = 0;
 
 protected:
@@ -227,7 +227,7 @@ public:
 	/**
 	 * Sets the definition.
 	 *
-	 * This function sets the definition of a control and should be called soon
+	 * This function sets the definition of a styled_widget and should be called soon
 	 * after creating the object since a lot of internal functions depend on the
 	 * definition.
 	 *
@@ -346,7 +346,7 @@ private:
 	 */
 	std::string definition_;
 
-	/** Contain the non-editable text associated with control. */
+	/** Contain the non-editable text associated with styled_widget. */
 	t_string label_;
 
 	/** Use markup for the label? */
@@ -376,9 +376,9 @@ private:
 	t_string help_message_;
 
 	/**
-	 * Holds all canvas objects for a control.
+	 * Holds all canvas objects for a styled_widget.
 	 *
-	 * A control can have multiple states, which are defined in the classes
+	 * A styled_widget can have multiple states, which are defined in the classes
 	 * inheriting from us. For every state there is a separate canvas, which is
 	 * stored here. When drawing the state is determined and that canvas is
 	 * drawn.
@@ -388,7 +388,7 @@ private:
 	/**
 	 * Contains the pointer to the configuration.
 	 *
-	 * Every control has a definition of how it should look, this contains a
+	 * Every styled_widget has a definition of how it should look, this contains a
 	 * pointer to the definition. The definition is resolution dependent, where
 	 * the resolution is the size of the Wesnoth application window. Depending
 	 * on the resolution widgets can look different, use different fonts.
@@ -418,13 +418,13 @@ private:
 
 public:
 	/**
-	 * Returns the control_type of the control.
+	 * Returns the control_type of the styled_widget.
 	 *
 	 * The control_type parameter for gui_definition::get_control() To keep the
 	 * code more generic this type is required so the controls need to return
 	 * the proper string here.  Might be used at other parts as well the get the
 	 * type of
-	 * control involved.
+	 * styled_widget involved.
 	 */
 	virtual const std::string& get_control_type() const = 0;
 
@@ -439,7 +439,7 @@ protected:
 									  int x_offset,
 									  int y_offset) override;
 
-	/** Exposes font::pango_text::get_token, for the text label of this control */
+	/** Exposes font::pango_text::get_token, for the text label of this styled_widget */
 	std::string get_label_token(const gui2::point & position, const char * delimiters = " \n\r\t") const;
 
 	std::string get_label_link(const gui2::point & position) const;
@@ -447,7 +447,7 @@ protected:
 private:
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	/**
-	 * Initializes the control.
+	 * Initializes the styled_widget.
 	 *
 	 * Not everything can be code in the constructor since virtual functions
 	 * can't be used. So after construction this function needs to be called and
@@ -484,10 +484,10 @@ private:
 	 */
 	mutable font::pango_text renderer_;
 
-	/** The maximum width for the text in a control. */
+	/** The maximum width for the text in a styled_widget. */
 	int text_maximum_width_;
 
-	/** The alignment of the text in a control. */
+	/** The alignment of the text in a styled_widget. */
 	PangoAlignment text_alignment_;
 
 	/** Is the widget smaller as it's best size? */
@@ -509,24 +509,24 @@ private:
 
 // }---------- BUILDER -----------{
 
-class control;
+class styled_widget;
 
 namespace implementation
 {
 
-struct builder_control : public builder_widget
+struct builder_styled_widget : public builder_widget
 {
 public:
-	builder_control(const config& cfg);
+	builder_styled_widget(const config& cfg);
 
 	using builder_widget::build;
 
 	virtual widget* build(const replacements_map& replacements) const override;
 
-	/** @deprecated The control can initialize itself. */
-	void init_control(control* control) const;
+	/** @deprecated The styled_widget can initialize itself. */
+	void init_control(styled_widget* styled_widget) const;
 
-	/** Parameters for the control. */
+	/** Parameters for the styled_widget. */
 	std::string definition;
 	t_string label_string;
 	t_string tooltip;

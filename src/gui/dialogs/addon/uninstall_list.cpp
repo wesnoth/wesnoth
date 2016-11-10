@@ -48,7 +48,7 @@ namespace dialogs
  * -checkbox & & toggle_button & m &
  *     A toggle button allowing the user to mark/unmark the add-on. $
  *
- * -name & & control & o &
+ * -name & & styled_widget & o &
  *     The name of the add-on. $
  *
  * @end{table}

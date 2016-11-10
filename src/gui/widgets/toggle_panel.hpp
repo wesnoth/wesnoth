@@ -40,7 +40,7 @@ public:
 	 * Sets the members of the child controls.
 	 *
 	 * Sets the members for all controls which have the proper member id. See
-	 * control::set_members for more info.
+	 * styled_widget::set_members for more info.
 	 *
 	 * @param data                Map with the key value pairs to set the
 	 *                            members.
@@ -58,13 +58,13 @@ public:
 	virtual const widget* find_at(const point& coordinate,
 								   const bool must_be_active) const override;
 
-	/** See @ref control::set_active. */
+	/** See @ref styled_widget::set_active. */
 	virtual void set_active(const bool active) override;
 
-	/** See @ref control::get_active. */
+	/** See @ref styled_widget::get_active. */
 	virtual bool get_active() const override;
 
-	/** See @ref control::get_state. */
+	/** See @ref styled_widget::get_state. */
 	virtual unsigned get_state() const override;
 
 	/**
@@ -168,7 +168,7 @@ private:
 									  int x_offset,
 									  int y_offset) override;
 
-	/** See @ref control::get_control_type. */
+	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 
 	/***** ***** ***** signal handlers ***** ****** *****/
@@ -188,7 +188,7 @@ private:
 
 // }---------- DEFINITION ---------{
 
-struct toggle_panel_definition : public control_definition
+struct toggle_panel_definition : public styled_widget_definition
 {
 	explicit toggle_panel_definition(const config& cfg);
 
@@ -209,11 +209,11 @@ struct toggle_panel_definition : public control_definition
 namespace implementation
 {
 
-struct builder_toggle_panel : public builder_control
+struct builder_toggle_panel : public builder_styled_widget
 {
 	explicit builder_toggle_panel(const config& cfg);
 
-	using builder_control::build;
+	using builder_styled_widget::build;
 
 	widget* build() const;
 

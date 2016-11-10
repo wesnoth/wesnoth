@@ -31,10 +31,10 @@ namespace gui2
  * This widget has a fixed size like the spacer, but allows the user to
  * manual draw items. The widget is display only.
  */
-class drawing : public control
+class drawing : public styled_widget
 {
 public:
-	drawing() : control(COUNT), best_size_(0, 0)
+	drawing() : styled_widget(COUNT), best_size_(0, 0)
 	{
 	}
 
@@ -47,13 +47,13 @@ private:
 public:
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
-	/** See @ref control::set_active. */
+	/** See @ref styled_widget::set_active. */
 	virtual void set_active(const bool active) override;
 
-	/** See @ref control::get_active. */
+	/** See @ref styled_widget::get_active. */
 	virtual bool get_active() const override;
 
-	/** See @ref control::get_state. */
+	/** See @ref styled_widget::get_state. */
 	virtual unsigned get_state() const override;
 
 	/** See @ref widget::disable_click_dismiss. */
@@ -81,13 +81,13 @@ private:
 	/** When we're used as a fixed size item, this holds the best size. */
 	point best_size_;
 
-	/** See @ref control::get_control_type. */
+	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 };
 
 // }---------- DEFINITION ---------{
 
-struct drawing_definition : public control_definition
+struct drawing_definition : public styled_widget_definition
 {
 	explicit drawing_definition(const config& cfg);
 
@@ -102,11 +102,11 @@ struct drawing_definition : public control_definition
 namespace implementation
 {
 
-struct builder_drawing : public builder_control
+struct builder_drawing : public builder_styled_widget
 {
 	explicit builder_drawing(const config& cfg);
 
-	using builder_control::build;
+	using builder_styled_widget::build;
 
 	widget* build() const;
 

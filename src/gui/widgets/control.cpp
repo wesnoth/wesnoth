@@ -34,7 +34,7 @@
 #include <iomanip>
 
 #define LOG_SCOPE_HEADER                                                       \
-	"control(" + get_control_type() + ") [" + id() + "] " + __func__
+	"styled_widget(" + get_control_type() + ") [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
 
 namespace gui2
@@ -42,7 +42,7 @@ namespace gui2
 
 // ------------ WIDGET -----------{
 
-control::control(const unsigned canvas_count)
+styled_widget::styled_widget(const unsigned canvas_count)
 	: definition_("default")
 	, label_()
 	, use_markup_(false)
@@ -57,16 +57,16 @@ control::control(const unsigned canvas_count)
 	, shrunken_(false)
 {
 	connect_signal<event::SHOW_TOOLTIP>(std::bind(
-			&control::signal_handler_show_tooltip, this, _2, _3, _5));
+			&styled_widget::signal_handler_show_tooltip, this, _2, _3, _5));
 
 	connect_signal<event::SHOW_HELPTIP>(std::bind(
-			&control::signal_handler_show_helptip, this, _2, _3, _5));
+			&styled_widget::signal_handler_show_helptip, this, _2, _3, _5));
 
 	connect_signal<event::NOTIFY_REMOVE_TOOLTIP>(std::bind(
-			&control::signal_handler_notify_remove_tooltip, this, _2, _3));
+			&styled_widget::signal_handler_notify_remove_tooltip, this, _2, _3));
 }
 
-control::control(const implementation::builder_control& builder,
+styled_widget::styled_widget(const implementation::builder_styled_widget& builder,
 				   const unsigned canvas_count,
 				   const std::string& control_type)
 	: widget(builder)
@@ -86,16 +86,16 @@ control::control(const implementation::builder_control& builder,
 	definition_load_configuration(control_type);
 
 	connect_signal<event::SHOW_TOOLTIP>(std::bind(
-			&control::signal_handler_show_tooltip, this, _2, _3, _5));
+			&styled_widget::signal_handler_show_tooltip, this, _2, _3, _5));
 
 	connect_signal<event::SHOW_HELPTIP>(std::bind(
-			&control::signal_handler_show_helptip, this, _2, _3, _5));
+			&styled_widget::signal_handler_show_helptip, this, _2, _3, _5));
 
 	connect_signal<event::NOTIFY_REMOVE_TOOLTIP>(std::bind(
-			&control::signal_handler_notify_remove_tooltip, this, _2, _3));
+			&styled_widget::signal_handler_notify_remove_tooltip, this, _2, _3));
 }
 
-void control::set_members(const string_map& data)
+void styled_widget::set_members(const string_map& data)
 {
 	/** @todo document this feature on the wiki. */
 	/** @todo do we need to add the debug colors here as well? */
@@ -135,17 +135,17 @@ void control::set_members(const string_map& data)
 	}
 }
 
-bool control::disable_click_dismiss() const
+bool styled_widget::disable_click_dismiss() const
 {
 	return get_visible() == widget::visibility::visible && get_active();
 }
 
-iterator::walker_base* control::create_walker()
+iterator::walker_base* styled_widget::create_walker()
 {
 	return new iterator::walker::widget(*this);
 }
 
-point control::get_config_minimum_size() const
+point styled_widget::get_config_minimum_size() const
 {
 	assert(config_);
 
@@ -155,7 +155,7 @@ point control::get_config_minimum_size() const
 	return result;
 }
 
-point control::get_config_default_size() const
+point styled_widget::get_config_default_size() const
 {
 	assert(config_);
 
@@ -165,7 +165,7 @@ point control::get_config_default_size() const
 	return result;
 }
 
-point control::get_config_maximum_size() const
+point styled_widget::get_config_maximum_size() const
 {
 	assert(config_);
 
@@ -175,22 +175,22 @@ point control::get_config_maximum_size() const
 	return result;
 }
 
-unsigned control::get_characters_per_line() const
+unsigned styled_widget::get_characters_per_line() const
 {
 	return 0;
 }
 
-bool control::get_link_aware() const
+bool styled_widget::get_link_aware() const
 {
 	return false;
 }
 
-std::string control::get_link_color() const
+std::string styled_widget::get_link_color() const
 {
 	return "#ffff00";
 }
 
-void control::layout_initialise(const bool full_initialisation)
+void styled_widget::layout_initialise(const bool full_initialisation)
 {
 	// Inherited.
 	widget::layout_initialise(full_initialisation);
@@ -200,7 +200,7 @@ void control::layout_initialise(const bool full_initialisation)
 	}
 }
 
-void control::request_reduce_width(const unsigned maximum_width)
+void styled_widget::request_reduce_width(const unsigned maximum_width)
 {
 	assert(config_);
 
@@ -224,7 +224,7 @@ void control::request_reduce_width(const unsigned maximum_width)
 	}
 }
 
-point control::calculate_best_size() const
+point styled_widget::calculate_best_size() const
 {
 	assert(config_);
 	if(label_.empty()) {
@@ -245,7 +245,7 @@ point control::calculate_best_size() const
 	return result;
 }
 
-void control::place(const point& origin, const point& size)
+void styled_widget::place(const point& origin, const point& size)
 {
 	// resize canvasses
 	for(auto & canvas : canvas_)
@@ -269,7 +269,7 @@ void control::place(const point& origin, const point& size)
 	update_canvas();
 }
 
-void control::load_config()
+void styled_widget::load_config()
 {
 	if(!config()) {
 
@@ -279,7 +279,7 @@ void control::load_config()
 	}
 }
 
-widget* control::find_at(const point& coordinate, const bool must_be_active)
+widget* styled_widget::find_at(const point& coordinate, const bool must_be_active)
 {
 	return (widget::find_at(coordinate, must_be_active)
 			&& (!must_be_active || get_active()))
@@ -287,7 +287,7 @@ widget* control::find_at(const point& coordinate, const bool must_be_active)
 				   : nullptr;
 }
 
-const widget* control::find_at(const point& coordinate,
+const widget* styled_widget::find_at(const point& coordinate,
 								 const bool must_be_active) const
 {
 	return (widget::find_at(coordinate, must_be_active)
@@ -296,7 +296,7 @@ const widget* control::find_at(const point& coordinate,
 				   : nullptr;
 }
 
-widget* control::find(const std::string& id, const bool must_be_active)
+widget* styled_widget::find(const std::string& id, const bool must_be_active)
 {
 	return (widget::find(id, must_be_active)
 			&& (!must_be_active || get_active()))
@@ -304,7 +304,7 @@ widget* control::find(const std::string& id, const bool must_be_active)
 				   : nullptr;
 }
 
-const widget* control::find(const std::string& id, const bool must_be_active)
+const widget* styled_widget::find(const std::string& id, const bool must_be_active)
 		const
 {
 	return (widget::find(id, must_be_active)
@@ -313,7 +313,7 @@ const widget* control::find(const std::string& id, const bool must_be_active)
 				   : nullptr;
 }
 
-void control::set_definition(const std::string& definition)
+void styled_widget::set_definition(const std::string& definition)
 {
 	assert(!config());
 	definition_ = definition;
@@ -325,7 +325,7 @@ void control::set_definition(const std::string& definition)
 #endif
 }
 
-void control::set_label(const t_string& label)
+void styled_widget::set_label(const t_string& label)
 {
 	if(label == label_) {
 		return;
@@ -337,7 +337,7 @@ void control::set_label(const t_string& label)
 	set_is_dirty(true);
 }
 
-void control::set_use_markup(bool use_markup)
+void styled_widget::set_use_markup(bool use_markup)
 {
 	if(use_markup == use_markup_) {
 		return;
@@ -348,7 +348,7 @@ void control::set_use_markup(bool use_markup)
 	set_is_dirty(true);
 }
 
-void control::set_text_alignment(const PangoAlignment text_alignment)
+void styled_widget::set_text_alignment(const PangoAlignment text_alignment)
 {
 	if(text_alignment_ == text_alignment) {
 		return;
@@ -359,7 +359,7 @@ void control::set_text_alignment(const PangoAlignment text_alignment)
 	set_is_dirty(true);
 }
 
-void control::update_canvas()
+void styled_widget::update_canvas()
 {
 	const int max_width = get_text_maximum_width();
 	const int max_height = get_text_maximum_height();
@@ -383,7 +383,7 @@ void control::update_canvas()
 	}
 }
 
-int control::get_text_maximum_width() const
+int styled_widget::get_text_maximum_width() const
 {
 	assert(config_);
 
@@ -391,14 +391,14 @@ int control::get_text_maximum_width() const
 									: get_width() - config_->text_extra_width;
 }
 
-int control::get_text_maximum_height() const
+int styled_widget::get_text_maximum_height() const
 {
 	assert(config_);
 
 	return get_height() - config_->text_extra_height;
 }
 
-void control::impl_draw_background(surface& frame_buffer,
+void styled_widget::impl_draw_background(surface& frame_buffer,
 									int x_offset,
 									int y_offset)
 {
@@ -409,7 +409,7 @@ void control::impl_draw_background(surface& frame_buffer,
 							 calculate_blitting_rectangle(x_offset, y_offset));
 }
 
-void control::impl_draw_foreground(surface& /*frame_buffer*/
+void styled_widget::impl_draw_foreground(surface& /*frame_buffer*/
 									,
 									int /*x_offset*/
 									,
@@ -418,7 +418,7 @@ void control::impl_draw_foreground(surface& /*frame_buffer*/
 	/* DO NOTHING */
 }
 
-void control::definition_load_configuration(const std::string& control_type)
+void styled_widget::definition_load_configuration(const std::string& control_type)
 {
 	assert(!config());
 
@@ -437,7 +437,7 @@ void control::definition_load_configuration(const std::string& control_type)
 	update_canvas();
 }
 
-point control::get_best_text_size(point minimum_size,
+point styled_widget::get_best_text_size(point minimum_size,
 									point maximum_size) const
 {
 	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
@@ -507,7 +507,7 @@ point control::get_best_text_size(point minimum_size,
 	return size;
 }
 
-void control::signal_handler_show_tooltip(const event::ui_event event,
+void styled_widget::signal_handler_show_tooltip(const event::ui_event event,
 										   bool& handled,
 										   const point& location)
 {
@@ -530,7 +530,7 @@ void control::signal_handler_show_tooltip(const event::ui_event event,
 	}
 }
 
-void control::signal_handler_show_helptip(const event::ui_event event,
+void styled_widget::signal_handler_show_helptip(const event::ui_event event,
 										   bool& handled,
 										   const point& location)
 {
@@ -542,7 +542,7 @@ void control::signal_handler_show_helptip(const event::ui_event event,
 	}
 }
 
-void control::signal_handler_notify_remove_tooltip(const event::ui_event event,
+void styled_widget::signal_handler_notify_remove_tooltip(const event::ui_event event,
 													bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -557,12 +557,12 @@ void control::signal_handler_notify_remove_tooltip(const event::ui_event event,
 	handled = true;
 }
 
-std::string control::get_label_token(const gui2::point & position, const char * delim) const
+std::string styled_widget::get_label_token(const gui2::point & position, const char * delim) const
 {
 	return renderer_.get_token(position, delim);
 }
 
-std::string control::get_label_link(const gui2::point & position) const
+std::string styled_widget::get_label_link(const gui2::point & position) const
 {
 	return renderer_.get_link(position);
 }
@@ -596,7 +596,7 @@ std::string control::get_label_link(const gui2::point & position) const
  *                                     title label when the label is used as
  *                                     title. $
  *
- *     linked_group & string & "" &    The linked group the control belongs
+ *     linked_group & string & "" &    The linked group the styled_widget belongs
  *                                     to. $
  *
  *     label & t_string & "" &          Most widgets have some text associated
@@ -647,7 +647,7 @@ std::string control::get_label_link(const gui2::point & position) const
 namespace implementation
 {
 
-builder_control::builder_control(const config& cfg)
+builder_styled_widget::builder_styled_widget(const config& cfg)
 	: builder_widget(cfg)
 	, definition(cfg["definition"])
 	, label_string(cfg["label"].t_str())
@@ -667,11 +667,11 @@ builder_control::builder_control(const config& cfg)
 						 << "' helptip '" << help << "'.");
 
 
-	DBG_GUI_P << "Window builder: found control with id '" << id
+	DBG_GUI_P << "Window builder: found styled_widget with id '" << id
 			  << "' and definition '" << definition << "'.\n";
 }
 
-void builder_control::init_control(control* control) const
+void builder_styled_widget::init_control(styled_widget* control) const
 {
 	assert(control);
 
@@ -689,7 +689,7 @@ void builder_control::init_control(control* control) const
 #endif
 }
 
-widget* builder_control::build(const replacements_map& /*replacements*/) const
+widget* builder_styled_widget::build(const replacements_map& /*replacements*/) const
 {
 	return build();
 }

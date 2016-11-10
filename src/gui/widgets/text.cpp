@@ -33,7 +33,7 @@ namespace gui2
 {
 
 text_box_base::text_box_base()
-	: control(COUNT)
+	: styled_widget(COUNT)
 	, state_(ENABLED)
 	, text_()
 	, selection_start_(0)
@@ -451,7 +451,7 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 				break;
 			}
 
-			// If ctrl-a is used for home drop the control modifier
+			// If ctrl-a is used for home drop the styled_widget modifier
 			modifier = static_cast<SDL_Keymod>(modifier & ~KMOD_CTRL);
 		/* FALL DOWN */
 
@@ -465,7 +465,7 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 				break;
 			}
 
-			// If ctrl-e is used for end drop the control modifier
+			// If ctrl-e is used for end drop the styled_widget modifier
 			modifier = static_cast<SDL_Keymod>(modifier & ~KMOD_CTRL);
 		/* FALL DOWN */
 

@@ -31,7 +31,7 @@ REGISTER_WIDGET(spacer)
 point spacer::calculate_best_size() const
 {
 	return best_size_ != point() ? best_size_
-									  : control::calculate_best_size();
+									  : styled_widget::calculate_best_size();
 }
 
 void spacer::set_active(const bool /*active*/)
@@ -72,7 +72,7 @@ const std::string& spacer::get_control_type() const
 // }---------- DEFINITION ---------{
 
 spacer_definition::spacer_definition(const config& cfg)
-	: control_definition(cfg)
+	: styled_widget_definition(cfg)
 {
 	DBG_GUI_P << "Parsing spacer " << id << '\n';
 
@@ -137,7 +137,7 @@ namespace implementation
 {
 
 builder_spacer::builder_spacer(const config& cfg)
-	: builder_control(cfg), width_(cfg["width"]), height_(cfg["height"])
+	: builder_styled_widget(cfg), width_(cfg["width"]), height_(cfg["height"])
 {
 }
 

@@ -181,9 +181,9 @@ void grid::set_active(const bool active)
 			continue;
 		}
 
-		control* ctrl = dynamic_cast<control*>(widget);
-		if(ctrl) {
-			ctrl->set_active(active);
+		styled_widget* control = dynamic_cast<styled_widget*>(widget);
+		if(control) {
+			control->set_active(active);
 		}
 	}
 }
@@ -764,8 +764,8 @@ void grid::child::place(point origin, point size)
 		return;
 	}
 
-	const control* ctrl = dynamic_cast<const control*>(get_widget());
-	const point maximum_size = ctrl ? ctrl->get_config_maximum_size()
+	const styled_widget* control = dynamic_cast<const styled_widget*>(get_widget());
+	const point maximum_size = control ? control->get_config_maximum_size()
 										: point();
 
 	if((flags_ & (HORIZONTAL_MASK | VERTICAL_MASK))

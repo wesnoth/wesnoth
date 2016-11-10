@@ -36,10 +36,10 @@ public:
 	{
 	}
 
-	/** Is the control selected? */
+	/** Is the styled_widget selected? */
 	virtual unsigned get_value() const = 0;
 
-	/** Select the control. */
+	/** Select the styled_widget. */
 	virtual void set_value(const unsigned) = 0;
 
 	/** The number of states, that is 2 for normal buttons, 3 for tristate buttons. */

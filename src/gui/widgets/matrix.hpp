@@ -66,29 +66,29 @@ private:
 };
 
 template <class STATE>
-class control_NEW : public control, public STATE
+class control_NEW : public styled_widget, public STATE
 {
 public:
-	control_NEW(const implementation::builder_control& builder,
+	control_NEW(const implementation::builder_styled_widget& builder,
 				 const std::string& control_type)
-		: control(builder, STATE::COUNT, control_type)
+		: styled_widget(builder, STATE::COUNT, control_type)
 
 	{
 	}
 
-	/** See @ref control::set_active. */
+	/** See @ref styled_widget::set_active. */
 	virtual void set_active(const bool active) override
 	{
 		STATE::set_active(active);
 	}
 
-	/** See @ref control::get_active. */
+	/** See @ref styled_widget::get_active. */
 	virtual bool get_active() const override
 	{
 		return STATE::get_active();
 	}
 
-	/** See @ref control::get_state. */
+	/** See @ref styled_widget::get_state. */
 	virtual unsigned get_state() const override
 	{
 		return STATE::get_state();
@@ -226,13 +226,13 @@ private:
 	 */
 	pane* pane_;
 
-	/** See @ref control::get_control_type. */
+	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 };
 
 // }---------- DEFINITION ---------{
 
-struct matrix_definition : public control_definition
+struct matrix_definition : public styled_widget_definition
 {
 
 	explicit matrix_definition(const config& cfg);
@@ -250,11 +250,11 @@ struct matrix_definition : public control_definition
 namespace implementation
 {
 
-struct builder_matrix : public builder_control
+struct builder_matrix : public builder_styled_widget
 {
 	explicit builder_matrix(const config& cfg);
 
-	using builder_control::build;
+	using builder_styled_widget::build;
 
 	widget* build() const;
 

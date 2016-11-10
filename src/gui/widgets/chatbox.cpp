@@ -417,7 +417,7 @@ lobby_chat_window* chatbox::search_create_window(const std::string& name,
 		std::bind(&chatbox::close_window_button_callback, this, open_windows_.back(), _3, _4));
 
 	if(!allow_close) {
-		close_button.set_visible(control::visibility::hidden);
+		close_button.set_visible(styled_widget::visibility::hidden);
 	}
 
 	return &open_windows_.back();
@@ -731,7 +731,7 @@ bool chatbox::process_network_data(const ::config& data)
 // }---------- DEFINITION ---------{
 
 chatbox_definition::chatbox_definition(const config& cfg)
-	: control_definition(cfg)
+	: styled_widget_definition(cfg)
 {
 	load_resolutions<resolution>(cfg);
 }
@@ -753,7 +753,7 @@ namespace implementation
 {
 
 builder_chatbox::builder_chatbox(const config& cfg)
-	: builder_control(cfg)
+	: builder_styled_widget(cfg)
 {
 }
 

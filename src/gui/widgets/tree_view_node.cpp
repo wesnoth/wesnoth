@@ -616,7 +616,7 @@ void tree_view_node::init_grid(
 				panel->set_child_members(data);
 			} else if(grid* child_grid = dynamic_cast<grid*>(wgt)) {
 				init_grid(child_grid, data);
-			} else if(control* ctrl = dynamic_cast<control*>(wgt)) {
+			} else if(styled_widget* control = dynamic_cast<styled_widget*>(wgt)) {
 				auto itor = data.find(ctrl->id());
 
 				if(itor == data.end()) {

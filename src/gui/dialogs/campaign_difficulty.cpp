@@ -59,13 +59,13 @@ namespace dialogs
  * listbox & & listbox & m &
  *         Listbox displaying user choices, defined by WML for each campaign. $
  *
- * -icon & & control & m &
+ * -icon & & styled_widget & m &
  *         Widget which shows a listbox item icon, first item markup column. $
  *
- * -label & & control & m &
+ * -label & & styled_widget & m &
  *         Widget which shows a listbox item label, second item markup column. $
  *
- * -description & & control & m &
+ * -description & & styled_widget & m &
  *         Widget which shows a listbox item description, third item markup
  *         column. $
  *

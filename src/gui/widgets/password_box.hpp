@@ -59,7 +59,7 @@ private:
 
 	std::string real_value_;
 
-	/** See @ref control::get_control_type. */
+	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 };
 
@@ -70,12 +70,12 @@ namespace implementation
 
 // copy & paste from builder_text_box...
 // does it make more sense to inherit from it?
-struct builder_password_box : public builder_control
+struct builder_password_box : public builder_styled_widget
 {
 public:
 	explicit builder_password_box(const config& cfg);
 
-	using builder_control::build;
+	using builder_styled_widget::build;
 
 	widget* build() const;
 

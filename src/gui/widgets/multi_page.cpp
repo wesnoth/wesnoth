@@ -181,7 +181,7 @@ void multi_page::set_self_active(const bool /*active*/)
 // }---------- DEFINITION ---------{
 
 multi_page_definition::multi_page_definition(const config& cfg)
-	: control_definition(cfg)
+	: styled_widget_definition(cfg)
 {
 	DBG_GUI_P << "Parsing multipage " << id << '\n';
 
@@ -223,7 +223,7 @@ multi_page_definition::resolution::resolution(const config& cfg)
 /*WIKI_MACRO
  * @begin{macro}{multi_page_description}
  *
- *        A multi page is a control that contains several 'pages' of which
+ *        A multi page is a styled_widget that contains several 'pages' of which
  *        only one is visible. The pages can contain the same widgets containing
  *        the same 'kind' of data or look completely different.
  * @end{macro}
@@ -267,7 +267,7 @@ namespace implementation
 {
 
 builder_multi_page::builder_multi_page(const config& cfg)
-	: implementation::builder_control(cfg), builder(nullptr), data()
+	: implementation::builder_styled_widget(cfg), builder(nullptr), data()
 {
 	const config& page = cfg.child("page_definition");
 

@@ -33,7 +33,7 @@ SDL_Rect container_base::get_client_rect() const
 void container_base::layout_initialise(const bool full_initialisation)
 {
 	// Inherited.
-	control::layout_initialise(full_initialisation);
+	styled_widget::layout_initialise(full_initialisation);
 
 	grid_.layout_initialise(full_initialisation);
 }
@@ -75,7 +75,7 @@ bool container_base::can_wrap() const
 
 void container_base::place(const point& origin, const point& size)
 {
-	control::place(origin, size);
+	styled_widget::place(origin, size);
 
 	const SDL_Rect rect = get_client_rect();
 	const point client_size(rect.w, rect.h);
@@ -174,14 +174,14 @@ const widget* container_base::find_at(const point& coordinate,
 
 widget* container_base::find(const std::string& id, const bool must_be_active)
 {
-	widget* result = control::find(id, must_be_active);
+	widget* result = styled_widget::find(id, must_be_active);
 	return result ? result : grid_.find(id, must_be_active);
 }
 
 const widget* container_base::find(const std::string& id,
 								 const bool must_be_active) const
 {
-	const widget* result = control::find(id, must_be_active);
+	const widget* result = styled_widget::find(id, must_be_active);
 	return result ? result : grid_.find(id, must_be_active);
 }
 
@@ -202,7 +202,7 @@ void container_base::set_active(const bool active)
 
 bool container_base::disable_click_dismiss() const
 {
-	return control::disable_click_dismiss() && grid_.disable_click_dismiss();
+	return styled_widget::disable_click_dismiss() && grid_.disable_click_dismiss();
 }
 
 void

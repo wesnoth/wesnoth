@@ -126,10 +126,10 @@ public:
 
 	/***** ***** ***** inherited ***** ****** *****/
 
-	/** See @ref control::get_active. */
+	/** See @ref styled_widget::get_active. */
 	virtual bool get_active() const override;
 
-	/** See @ref control::get_state. */
+	/** See @ref styled_widget::get_state. */
 	virtual unsigned get_state() const override;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
@@ -164,7 +164,7 @@ private:
 									  int x_offset,
 									  int y_offset) override;
 
-	/** See @ref control::get_control_type. */
+	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 
 	/** See @ref container_base::set_self_active. */
@@ -173,7 +173,7 @@ private:
 
 // }---------- DEFINITION ---------{
 
-struct multi_page_definition : public control_definition
+struct multi_page_definition : public styled_widget_definition
 {
 	explicit multi_page_definition(const config& cfg);
 
@@ -190,11 +190,11 @@ struct multi_page_definition : public control_definition
 namespace implementation
 {
 
-struct builder_multi_page : public builder_control
+struct builder_multi_page : public builder_styled_widget
 {
 	explicit builder_multi_page(const config& cfg);
 
-	using builder_control::build;
+	using builder_styled_widget::build;
 
 	widget* build() const;
 

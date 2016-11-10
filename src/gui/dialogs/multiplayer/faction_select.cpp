@@ -167,7 +167,7 @@ void faction_select::on_faction_select(window& window)
 		return translation::compare(s1, s2) < 0;
 	});
 
-	find_widget<control>(&window, "recruits", false).set_label(utils::join(recruit_names, "\n"));
+	find_widget<styled_widget>(&window, "recruits", false).set_label(utils::join(recruit_names, "\n"));
 }
 
 void faction_select::on_leader_select(window& window)

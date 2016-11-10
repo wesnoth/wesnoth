@@ -35,7 +35,7 @@ namespace dialogs
 mp_options_helper::mp_options_helper(window& window, ng::create_engine& create_engine)
 	: create_engine_(create_engine)
 	, options_tree_(find_widget<tree_view>(&window, "custom_options", false))
-	, no_options_notice_(find_widget<control>(&window, "no_options_notice", false))
+	, no_options_notice_(find_widget<styled_widget>(&window, "no_options_notice", false))
 	, node_data_map_()
 	, visible_options_()
 	, options_data_()

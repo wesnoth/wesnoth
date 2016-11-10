@@ -281,8 +281,8 @@ void horizontal_list::handle_key_left_arrow(SDL_Keymod /*modifier*/, bool& handl
 
 		// NOTE we check the first widget to be active since grids have no
 		// active flag. This method might not be entirely reliable.
-		control* ctrl = dynamic_cast<control*>(item(get_item_at_ordered(i)).get_widget(0, 0));
-		if(ctrl && ctrl->get_active()) {
+		styled_widget* control = dynamic_cast<styled_widget*>(item(get_item_at_ordered(i)).get_widget(0, 0));
+		if(control && control->get_active()) {
 			select_item(get_item_at_ordered(i), true);
 			return;
 		}
@@ -320,8 +320,8 @@ void horizontal_list::handle_key_right_arrow(SDL_Keymod /*modifier*/,
 
 		// NOTE we check the first widget to be active since grids have no
 		// active flag. This method might not be entirely reliable.
-		control* ctrl = dynamic_cast<control*>(item(get_item_at_ordered(i)).get_widget(0, 0));
-		if(ctrl && ctrl->get_active()) {
+		styled_widget* control = dynamic_cast<styled_widget*>(item(get_item_at_ordered(i)).get_widget(0, 0));
+		if(control && control->get_active()) {
 			select_item(get_item_at_ordered(i), true);
 			return;
 		}
@@ -505,8 +505,8 @@ void vertical_list::handle_key_up_arrow(SDL_Keymod /*modifier*/, bool& handled)
 
 		// NOTE we check the first widget to be active since grids have no
 		// active flag. This method might not be entirely reliable.
-		control* ctrl = dynamic_cast<control*>(item_ordered(i).get_widget(0, 0));
-		if(ctrl && ctrl->get_active()) {
+		styled_widget* control = dynamic_cast<styled_widget*>(item_ordered(i).get_widget(0, 0));
+		if(control && control->get_active()) {
 			select_item(get_item_at_ordered(i), true);
 			return;
 		}
@@ -543,8 +543,8 @@ void vertical_list::handle_key_down_arrow(SDL_Keymod /*modifier*/, bool& handled
 
 		// NOTE we check the first widget to be active since grids have no
 		// active flag. This method might not be entirely reliable.
-		control* ctrl = dynamic_cast<control*>(item_ordered(i).get_widget(0, 0));
-		if(ctrl && ctrl->get_active()) {
+		styled_widget* control = dynamic_cast<styled_widget*>(item_ordered(i).get_widget(0, 0));
+		if(control && control->get_active()) {
 			select_item(get_item_at_ordered(i), true);
 			return;
 		}
@@ -785,8 +785,8 @@ void table::handle_key_up_arrow(SDL_Keymod /*modifier*/, bool& handled)
 
 		// NOTE we check the first widget to be active since grids have no
 		// active flag. This method might not be entirely reliable.
-		control* ctrl = dynamic_cast<control*>(item_ordered(i).get_widget(0, 0));
-		if(ctrl && ctrl->get_active()) {
+		styled_widget* control = dynamic_cast<styled_widget*>(item_ordered(i).get_widget(0, 0));
+		if(control && control->get_active()) {
 			select_item(get_item_at_ordered(i), true);
 			return;
 		}
@@ -823,8 +823,8 @@ void table::handle_key_down_arrow(SDL_Keymod /*modifier*/, bool& handled)
 
 		// NOTE we check the first widget to be active since grids have no
 		// active flag. This method might not be entirely reliable.
-		control* ctrl = dynamic_cast<control*>(item_ordered(i).get_widget(0, 0));
-		if(ctrl && ctrl->get_active()) {
+		styled_widget* control = dynamic_cast<styled_widget*>(item_ordered(i).get_widget(0, 0));
+		if(control && control->get_active()) {
 			select_item(get_item_at_ordered(i), true);
 			return;
 		}
@@ -861,8 +861,8 @@ void table::handle_key_left_arrow(SDL_Keymod /*modifier*/, bool& handled)
 
 		// NOTE we check the first widget to be active since grids have no
 		// active flag. This method might not be entirely reliable.
-		control* ctrl = dynamic_cast<control*>(item(get_item_at_ordered(i)).get_widget(0, 0));
-		if(ctrl && ctrl->get_active()) {
+		styled_widget* control = dynamic_cast<styled_widget*>(item(get_item_at_ordered(i)).get_widget(0, 0));
+		if(control && control->get_active()) {
 			select_item(get_item_at_ordered(i), true);
 			return;
 		}
@@ -900,8 +900,8 @@ void table::handle_key_right_arrow(SDL_Keymod /*modifier*/,
 
 		// NOTE we check the first widget to be active since grids have no
 		// active flag. This method might not be entirely reliable.
-		control* ctrl = dynamic_cast<control*>(item(get_item_at_ordered(i)).get_widget(0, 0));
-		if(ctrl && ctrl->get_active()) {
+		styled_widget* control = dynamic_cast<styled_widget*>(item(get_item_at_ordered(i)).get_widget(0, 0));
+		if(control && control->get_active()) {
 			select_item(get_item_at_ordered(i), true);
 			return;
 		}
@@ -1107,18 +1107,18 @@ void show::init(grid* grid,
 		if(item.first.empty()) {
 			for(unsigned row = 0; row < grid->get_rows(); ++row) {
 				for(unsigned col = 0; col < grid->get_cols(); ++col) {
-					if(control* ctrl
-					   = dynamic_cast<control*>(grid->get_widget(row, col))) {
+					if(styled_widget* control
+					   = dynamic_cast<styled_widget*>(grid->get_widget(row, col))) {
 
-						ctrl->set_members(item.second);
+						control->set_members(item.second);
 					}
 				}
 			}
 		} else {
-			control* ctrl
-					= dynamic_cast<control*>(grid->find(item.first, false));
-			if(ctrl) {
-				ctrl->set_members(item.second);
+			styled_widget* control
+					= dynamic_cast<styled_widget*>(grid->find(item.first, false));
+			if(control) {
+				control->set_members(item.second);
 			}
 		}
 	}

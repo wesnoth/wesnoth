@@ -77,7 +77,7 @@ const std::string& progress_bar::get_control_type() const
 // }---------- DEFINITION ---------{
 
 progress_bar_definition::progress_bar_definition(const config& cfg)
-	: control_definition(cfg)
+	: styled_widget_definition(cfg)
 {
 	DBG_GUI_P << "Parsing progress bar " << id << '\n';
 
@@ -140,7 +140,7 @@ namespace implementation
 {
 
 builder_progress_bar::builder_progress_bar(const config& cfg)
-	: builder_control(cfg)
+	: builder_styled_widget(cfg)
 {
 }
 

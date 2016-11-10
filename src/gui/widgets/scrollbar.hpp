@@ -38,7 +38,7 @@ namespace gui2
  * Common signal handlers:
  * - connect_signal_notify_modified
  */
-class scrollbar_base : public control
+class scrollbar_base : public styled_widget
 {
 	/** @todo Abstract the code so this friend is no longer needed. */
 	friend class slider;
@@ -102,13 +102,13 @@ public:
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
-	/** See @ref control::set_active. */
+	/** See @ref styled_widget::set_active. */
 	virtual void set_active(const bool active) override;
 
-	/** See @ref control::get_active. */
+	/** See @ref styled_widget::get_active. */
 	virtual bool get_active() const override;
 
-	/** See @ref control::get_state. */
+	/** See @ref styled_widget::get_state. */
 	virtual unsigned get_state() const override;
 
     /**
@@ -188,7 +188,7 @@ protected:
 	}
 
 	/**
-	 * See @ref control::update_canvas.
+	 * See @ref styled_widget::update_canvas.
 	 *
 	 * After a recalculation the canvasses also need to be updated.
 	 */
@@ -358,7 +358,7 @@ private:
 	*/
 	virtual void move_positioner(const int distance);
 
-	/** Inherited from control. */
+	/** Inherited from styled_widget. */
 	void load_config_extra() override;
 
 	/***** ***** ***** signal handlers ***** ****** *****/

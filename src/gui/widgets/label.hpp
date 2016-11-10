@@ -26,7 +26,7 @@ namespace gui2
 // ------------ WIDGET -----------{
 
 /** Label showing a text. */
-class label : public control
+class label : public styled_widget
 {
 public:
 	label();
@@ -34,22 +34,22 @@ public:
 	/** See @ref widget::can_wrap. */
 	virtual bool can_wrap() const override;
 
-	/** See @ref control::get_characters_per_line. */
+	/** See @ref styled_widget::get_characters_per_line. */
 	virtual unsigned get_characters_per_line() const override;
 
-	/** See @ref control::get_link_aware. */
+	/** See @ref styled_widget::get_link_aware. */
 	virtual bool get_link_aware() const override;
 
-	/** See @ref control::get_link_aware. */
+	/** See @ref styled_widget::get_link_aware. */
 	virtual std::string get_link_color() const override;
 
-	/** See @ref control::set_active. */
+	/** See @ref styled_widget::set_active. */
 	virtual void set_active(const bool active) override;
 
-	/** See @ref control::get_active. */
+	/** See @ref styled_widget::get_active. */
 	virtual bool get_active() const override;
 
-	/** See @ref control::get_state. */
+	/** See @ref styled_widget::get_state. */
 	virtual unsigned get_state() const override;
 
 	/** See @ref widget::disable_click_dismiss. */
@@ -112,10 +112,10 @@ private:
 	 */
 	std::string link_color_;
 
-	/** See @ref control::get_control_type. */
+	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 
-	/** Inherited from control. */
+	/** Inherited from styled_widget. */
 	void load_config_extra() override;
 
 	/***** ***** ***** signal handlers ***** ****** *****/
@@ -133,7 +133,7 @@ private:
 
 // }---------- DEFINITION ---------{
 
-struct label_definition : public control_definition
+struct label_definition : public styled_widget_definition
 {
 
 	explicit label_definition(const config& cfg);
@@ -152,11 +152,11 @@ struct label_definition : public control_definition
 namespace implementation
 {
 
-struct builder_label : public builder_control
+struct builder_label : public builder_styled_widget
 {
 	builder_label(const config& cfg);
 
-	using builder_control::build;
+	using builder_styled_widget::build;
 
 	widget* build() const;
 

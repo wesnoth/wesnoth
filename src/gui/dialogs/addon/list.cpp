@@ -76,19 +76,19 @@ namespace dialogs
  * addons & & listbox & m &
  *        A listbox that will contain the info about all addons on the server. $
  *
- * -name & & control & o &
+ * -name & & styled_widget & o &
  *        The name of the addon. $
  *
- * -version & & control & o &
+ * -version & & styled_widget & o &
  *        The version number of the addon. $
  *
- * -author & & control & o &
+ * -author & & styled_widget & o &
  *        The author of the addon. $
  *
- * -downloads & & control & o &
+ * -downloads & & styled_widget & o &
  *        The number of times the addon has been downloaded. $
  *
- * -size & & control & o &
+ * -size & & styled_widget & o &
  *        The size of the addon. $
  *
  * @end{table}
@@ -402,7 +402,7 @@ void addon_manager::pre_show(window& window)
 	if(!desktop::open_object_is_supported()) {
 		// No point in displaying the button on platforms that can't do
 		// open_object().
-		url_go_button.set_visible(control::visibility::invisible);
+		url_go_button.set_visible(styled_widget::visibility::invisible);
 	}
 
 	connect_signal_mouse_left_click(
@@ -485,20 +485,20 @@ void addon_manager::on_addon_select(window& window)
 
 	find_widget<drawing>(&window, "image", false).set_label(info.display_icon());
 
-	find_widget<control>(&window, "title", false).set_label(info.display_title());
-	find_widget<control>(&window, "description", false).set_label(info.description);
-	find_widget<control>(&window, "version", false).set_label(info.version.str());
-	find_widget<control>(&window, "author", false).set_label(info.author);
-	find_widget<control>(&window, "type", false).set_label(info.display_type());
+	find_widget<styled_widget>(&window, "title", false).set_label(info.display_title());
+	find_widget<styled_widget>(&window, "description", false).set_label(info.description);
+	find_widget<styled_widget>(&window, "version", false).set_label(info.version.str());
+	find_widget<styled_widget>(&window, "author", false).set_label(info.author);
+	find_widget<styled_widget>(&window, "type", false).set_label(info.display_type());
 
-	control& status = find_widget<control>(&window, "status", false);
+	styled_widget& status = find_widget<styled_widget>(&window, "status", false);
 	status.set_label(describe_status_verbose(tracking_info_[info.id]));
 	status.set_use_markup(true);
 
-	find_widget<control>(&window, "size", false).set_label(size_display_string(info.size));
-	find_widget<control>(&window, "downloads", false).set_label(std::to_string(info.downloads));
-	find_widget<control>(&window, "created", false).set_label(format_addon_time(info.created));
-	find_widget<control>(&window, "updated", false).set_label(format_addon_time(info.updated));
+	find_widget<styled_widget>(&window, "size", false).set_label(size_display_string(info.size));
+	find_widget<styled_widget>(&window, "downloads", false).set_label(std::to_string(info.downloads));
+	find_widget<styled_widget>(&window, "created", false).set_label(format_addon_time(info.created));
+	find_widget<styled_widget>(&window, "updated", false).set_label(format_addon_time(info.updated));
 
 	const std::string& feedback_url = info.feedback_url;
 

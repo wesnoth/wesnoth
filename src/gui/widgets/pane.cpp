@@ -146,11 +146,11 @@ unsigned pane::create_item(const std::map<std::string, string_map>& item_data,
 
 	for(const auto & data : item_data)
 	{
-		control* ctrl
-				= find_widget<control>(item.item_grid, data.first, false, false);
+		styled_widget* control
+				= find_widget<styled_widget>(item.item_grid, data.first, false, false);
 
-		if(ctrl) {
-			ctrl->set_members(data.second);
+		if(control) {
+			control->set_members(data.second);
 		}
 	}
 

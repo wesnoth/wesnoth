@@ -64,13 +64,13 @@ private:
 		return current.y - original.y;
 	}
 
-	/** See @ref control::get_control_type. */
+	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 };
 
 // }---------- DEFINITION ---------{
 
-struct vertical_scrollbar_definition : public control_definition
+struct vertical_scrollbar_definition : public styled_widget_definition
 {
 	explicit vertical_scrollbar_definition(const config& cfg);
 
@@ -91,11 +91,11 @@ struct vertical_scrollbar_definition : public control_definition
 namespace implementation
 {
 
-struct builder_vertical_scrollbar : public builder_control
+struct builder_vertical_scrollbar : public builder_styled_widget
 {
 	explicit builder_vertical_scrollbar(const config& cfg);
 
-	using builder_control::build;
+	using builder_styled_widget::build;
 
 	widget* build() const;
 };

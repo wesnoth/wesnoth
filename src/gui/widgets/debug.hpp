@@ -179,13 +179,13 @@ private:
 	/**
 	 * Returns the control_type of a widget.
 	 *
-	 * This is a small wrapper around control::get_control_type() since a
-	 * grid is no control and used rather frequently, so we want to give it a
+	 * This is a small wrapper around styled_widget::get_control_type() since a
+	 * grid is no styled_widget and used rather frequently, so we want to give it a
 	 * type.
 	 *
 	 * @param widget              The widget to get the type of.
 	 *
-	 * @returns                   If the widget is a control it returns its
+	 * @returns                   If the widget is a styled_widget it returns its
 	 *                            type. If the widget is a grid it returns
 	 *                            'grid', otherwise 'unknown' will be returned.
 	 */

@@ -145,20 +145,20 @@ namespace dialogs
  *
  * @begin{table}{dialog_widgets}
  *
- * summary & & control & m &
+ * summary & & styled_widget & m &
  *         Label used for displaying a brief summary of the error(s). $
  *
- * files & & control & m &
+ * files & & styled_widget & m &
  *         Label used to display the list of affected add-ons or files, if
  *         applicable. It is hidden otherwise. It is recommended to place it
  *         after the summary label. $
  *
- * post_summary & & control & m &
+ * post_summary & & styled_widget & m &
  *         Label used for displaying instructions for reporting the error.
  *         It is recommended to place it after the file list label. It may be
  *         hidden if empty. $
  *
- * details & & control & m &
+ * details & & styled_widget & m &
  *         Full report of the parser or preprocessor error(s) found. $
  *
  * copy & & button & m &
@@ -208,14 +208,14 @@ wml_error::wml_error(const std::string& summary,
 void wml_error::pre_show(window& window)
 {
 	if(!have_files_) {
-		control& filelist = find_widget<control>(&window, "files", false);
-		filelist.set_visible(control::visibility::invisible);
+		styled_widget& filelist = find_widget<styled_widget>(&window, "files", false);
+		filelist.set_visible(styled_widget::visibility::invisible);
 	}
 
 	if(!have_post_summary_) {
-		control& post_summary
-				= find_widget<control>(&window, "post_summary", false);
-		post_summary.set_visible(control::visibility::invisible);
+		styled_widget& post_summary
+				= find_widget<styled_widget>(&window, "post_summary", false);
+		post_summary.set_visible(styled_widget::visibility::invisible);
 	}
 
 	button& copy_button = find_widget<button>(&window, "copy", false);

@@ -98,7 +98,7 @@ void panel::set_self_active(const bool /*active*/)
 // }---------- DEFINITION ---------{
 
 panel_definition::panel_definition(const config& cfg)
-	: control_definition(cfg)
+	: styled_widget_definition(cfg)
 {
 	DBG_GUI_P << "Parsing panel " << id << '\n';
 
@@ -189,7 +189,7 @@ namespace implementation
 {
 
 builder_panel::builder_panel(const config& cfg)
-	: builder_control(cfg), grid(nullptr)
+	: builder_styled_widget(cfg), grid(nullptr)
 {
 	const config& c = cfg.child("grid");
 

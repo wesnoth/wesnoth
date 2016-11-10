@@ -34,7 +34,7 @@ REGISTER_WIDGET(drawing)
 point drawing::calculate_best_size() const
 {
 	return best_size_ != point() ? best_size_
-									  : control::calculate_best_size();
+									  : styled_widget::calculate_best_size();
 }
 
 void drawing::set_active(const bool /*active*/)
@@ -66,7 +66,7 @@ const std::string& drawing::get_control_type() const
 // }---------- DEFINITION ---------{
 
 drawing_definition::drawing_definition(const config& cfg)
-	: control_definition(cfg)
+	: styled_widget_definition(cfg)
 {
 	DBG_GUI_P << "Parsing drawing " << id << '\n';
 
@@ -149,7 +149,7 @@ namespace implementation
 {
 
 builder_drawing::builder_drawing(const config& cfg)
-	: builder_control(cfg)
+	: builder_styled_widget(cfg)
 	, width(cfg["width"])
 	, height(cfg["height"])
 	, draw(cfg.child("draw"))

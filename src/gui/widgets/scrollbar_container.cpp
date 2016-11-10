@@ -932,7 +932,7 @@ void scrollbar_container::set_scrollbar_button_status()
 		/***** set scroll up button status *****/
 		for(const auto & name : button_up_names)
 		{
-			control* button = find_widget<control>(
+			styled_widget* button = find_widget<styled_widget>(
 					vertical_scrollbar_grid_, name, false, false);
 
 			if(button) {
@@ -943,7 +943,7 @@ void scrollbar_container::set_scrollbar_button_status()
 		/***** set scroll down status *****/
 		for(const auto & name : button_down_names)
 		{
-			control* button = find_widget<control>(
+			styled_widget* button = find_widget<styled_widget>(
 					vertical_scrollbar_grid_, name, false, false);
 
 			if(button) {
@@ -960,7 +960,7 @@ void scrollbar_container::set_scrollbar_button_status()
 		/***** Set scroll left button status *****/
 		for(const auto & name : button_up_names)
 		{
-			control* button = find_widget<control>(
+			styled_widget* button = find_widget<styled_widget>(
 					horizontal_scrollbar_grid_, name, false, false);
 
 			if(button) {
@@ -971,7 +971,7 @@ void scrollbar_container::set_scrollbar_button_status()
 		/***** Set scroll right button status *****/
 		for(const auto & name : button_down_names)
 		{
-			control* button = find_widget<control>(
+			styled_widget* button = find_widget<styled_widget>(
 					horizontal_scrollbar_grid_, name, false, false);
 
 			if(button) {

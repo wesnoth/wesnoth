@@ -67,10 +67,10 @@ namespace dialogs
  * savegame_list & & listbox & m &
  *         List of savegames. $
  *
- * -filename & & control & m &
+ * -filename & & styled_widget & m &
  *         Name of the savegame. $
  *
- * -date & & control & o &
+ * -date & & styled_widget & o &
  *         Date the savegame was created. $
  *
  * -minimap & & minimap & m &

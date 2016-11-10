@@ -71,8 +71,8 @@ void unit_preview_pane::finalize_setup()
 	label_name_             = find_widget<label>(this, "type_name", false, false);
 	label_level_            = find_widget<label>(this, "type_level", false, false);
 	label_race_             = find_widget<label>(this, "type_race_label", false, false);
-	label_details_          = find_widget<control>(this, "type_details", false, false);
-	label_details_minimal_  = find_widget<control>(this, "type_details_minimal", false, false);
+	label_details_          = find_widget<styled_widget>(this, "type_details", false, false);
+	label_details_minimal_  = find_widget<styled_widget>(this, "type_details_minimal", false, false);
 
 	tree_details_           = find_widget<tree_view>(this, "tree_details", false, false);
 
@@ -93,7 +93,7 @@ static inline tree_view_node& add_name_tree_node(tree_view_node& header_node, co
 	 * Same is true for 'use_markup'
 	 */
 	auto& child_node = header_node.add_child(type, { { "name",{ { "label", label },{ "use_markup", "true" } } } });
-	auto& child_label = find_widget<control>(&child_node, "name", true);
+	auto& child_label = find_widget<styled_widget>(&child_node, "name", true);
 
 	child_label.set_tooltip(tooltip);
 	return child_node;
@@ -442,7 +442,7 @@ void unit_preview_pane::set_self_active(const bool /*active*/)
 // }---------- DEFINITION ---------{
 
 unit_preview_pane_definition::unit_preview_pane_definition(const config& cfg)
-	: control_definition(cfg)
+	: styled_widget_definition(cfg)
 {
 	DBG_GUI_P << "Parsing unit preview pane " << id << '\n';
 
@@ -467,7 +467,7 @@ namespace implementation
 {
 
 builder_unit_preview_pane::builder_unit_preview_pane(const config& cfg)
-	: builder_control(cfg)
+	: builder_styled_widget(cfg)
 	, image_mods_(cfg["image_mods"])
 {
 }

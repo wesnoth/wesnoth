@@ -26,14 +26,14 @@ namespace iterator
 namespace walker
 {
 
-/** A walker for a @ref gui2::control. */
+/** A walker for a @ref gui2::styled_widget. */
 class widget : public walker_base
 {
 public:
 	/**
 	 * Constructor.
 	 *
-	 * @param widget              The control which the walker is attached to.
+	 * @param widget              The styled_widget which the walker is attached to.
 	 */
 	explicit widget(gui2::widget& widget);
 
@@ -47,7 +47,7 @@ public:
 	virtual gui2::widget* get(const level level);
 
 private:
-	/** The control which the walker is attached to. */
+	/** The styled_widget which the walker is attached to. */
 	gui2::widget* widget_;
 };
 

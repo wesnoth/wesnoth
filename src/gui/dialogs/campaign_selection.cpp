@@ -61,7 +61,7 @@ namespace dialogs
  * -icon & & image & o &
  *         The icon for the campaign. $
  *
- * -name & & control & o &
+ * -name & & styled_widget & o &
  *         The name of the campaign. $
  *
  * -victory & & image & o &
@@ -76,7 +76,7 @@ namespace dialogs
  * -image & & image & o &
  *         The image for the campaign. $
  *
- * -description & & control & o &
+ * -description & & styled_widget & o &
  *         The description of the campaign. $
  *
  * @end{table}

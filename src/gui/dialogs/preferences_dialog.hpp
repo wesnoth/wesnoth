@@ -57,7 +57,7 @@ namespace gui2
 
 class listbox;
 class menu_button;
-class control;
+class styled_widget;
 class slider;
 class text_box;
 class toggle_button;

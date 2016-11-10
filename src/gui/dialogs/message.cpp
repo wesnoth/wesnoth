@@ -76,21 +76,21 @@ void message::pre_show(window& window)
 			window, buttons_[right_1], "right_side");
 
 	// ***** ***** ***** ***** Set up the widgets ***** ***** ***** *****
-	control& title_widget = find_widget<label>(&window, "title", false);
+	styled_widget& title_widget = find_widget<label>(&window, "title", false);
 	if(!title_.empty()) {
 		title_widget.set_label(title_);
 	} else {
 		title_widget.set_visible(widget::visibility::invisible);
 	}
 
-	control& img_widget = find_widget<image>(&window, "image", false);
+	styled_widget& img_widget = find_widget<image>(&window, "image", false);
 	if(!image_.empty()) {
 		img_widget.set_label(image_);
 	} else {
 		img_widget.set_visible(widget::visibility::invisible);
 	}
 
-	control& label = find_widget<control>(&window, "label", false);
+	styled_widget& label = find_widget<styled_widget>(&window, "label", false);
 	label.set_label(message_);
 	label.set_use_markup(message_use_markup_);
 

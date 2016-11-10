@@ -42,13 +42,13 @@ namespace dialogs
  *
  * @begin{table}{dialog_widgets}
  *
- * stack & & control & m &
+ * stack & & styled_widget & m &
  *         A stack. $
  *
- * execution & & control & m &
+ * execution & & styled_widget & m &
  *         Execution trace label. $
  *
- * state & & control & m &
+ * state & & styled_widget & m &
  *         The state. $
  *
  * step & & button & m &
@@ -132,7 +132,7 @@ void formula_debugger::pre_show(window& window)
 		}
 	}
 
-	find_widget<control>(&window, "state", false).set_label(state_str);
+	find_widget<styled_widget>(&window, "state", false).set_label(state_str);
 
 	// callbacks
 	button& step_button = find_widget<button>(&window, "step", false);

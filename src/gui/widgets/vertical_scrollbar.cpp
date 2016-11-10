@@ -107,7 +107,7 @@ const std::string& vertical_scrollbar::get_control_type() const
 
 vertical_scrollbar_definition::vertical_scrollbar_definition(
 		const config& cfg)
-	: control_definition(cfg)
+	: styled_widget_definition(cfg)
 {
 	DBG_GUI_P << "Parsing vertical scrollbar " << id << '\n';
 
@@ -199,7 +199,7 @@ namespace implementation
 {
 
 builder_vertical_scrollbar::builder_vertical_scrollbar(const config& cfg)
-	: builder_control(cfg)
+	: builder_styled_widget(cfg)
 {
 }
 

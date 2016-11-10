@@ -26,10 +26,10 @@ namespace gui2
 // ------------ WIDGET -----------{
 
 /** An image. */
-class image : public control
+class image : public styled_widget
 {
 public:
-	image() : control(COUNT)
+	image() : styled_widget(COUNT)
 	{
 	}
 
@@ -70,13 +70,13 @@ private:
 public:
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
-	/** See @ref control::set_active. */
+	/** See @ref styled_widget::set_active. */
 	virtual void set_active(const bool active) override;
 
-	/** See @ref control::get_active. */
+	/** See @ref styled_widget::get_active. */
 	virtual bool get_active() const override;
 
-	/** See @ref control::get_state. */
+	/** See @ref styled_widget::get_state. */
 	virtual unsigned get_state() const override;
 
 	/** See @ref widget::disable_click_dismiss. */
@@ -93,13 +93,13 @@ private:
 		COUNT
 	};
 
-	/** See @ref control::get_control_type. */
+	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 };
 
 // }---------- DEFINITION ---------{
 
-struct image_definition : public control_definition
+struct image_definition : public styled_widget_definition
 {
 	explicit image_definition(const config& cfg);
 
@@ -114,11 +114,11 @@ struct image_definition : public control_definition
 namespace implementation
 {
 
-struct builder_image : public builder_control
+struct builder_image : public builder_styled_widget
 {
 	explicit builder_image(const config& cfg);
 
-	using builder_control::build;
+	using builder_styled_widget::build;
 
 	widget* build() const;
 };

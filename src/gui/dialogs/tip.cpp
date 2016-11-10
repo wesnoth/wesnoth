@@ -42,7 +42,7 @@ namespace dialogs
  *
  * @begin{table}{dialog_widgets}
  *
- * label & & control & m &
+ * label & & styled_widget & m &
  *         This text contains the message to show in the tip. $
  *
  * @end{table}
@@ -116,7 +116,7 @@ private:
 
 void tooltip::pre_show(window& window)
 {
-	find_widget<control>(&window, "label", false).set_label(message_);
+	find_widget<styled_widget>(&window, "label", false).set_label(message_);
 
 	window.set_variable("mouse_x", variant(mouse_.x));
 	window.set_variable("mouse_y", variant(mouse_.y));

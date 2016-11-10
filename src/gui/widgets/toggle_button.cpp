@@ -37,7 +37,7 @@ namespace gui2
 REGISTER_WIDGET(toggle_button)
 
 toggle_button::toggle_button()
-	: control(COUNT)
+	: styled_widget(COUNT)
 	, state_(ENABLED)
 	, state_num_(0)
 	, retval_(0)
@@ -69,7 +69,7 @@ unsigned toggle_button::num_states() const
 void toggle_button::set_members(const string_map& data)
 {
 	// Inherit
-	control::set_members(data);
+	styled_widget::set_members(data);
 
 	string_map::const_iterator itor = data.find("icon");
 	if(itor != data.end()) {
@@ -99,10 +99,10 @@ unsigned toggle_button::get_state() const
 void toggle_button::update_canvas()
 {
 	// Inherit.
-	control::update_canvas();
+	styled_widget::update_canvas();
 
 	// set icon in canvases
-	std::vector<canvas>& canvases = control::get_canvas();
+	std::vector<canvas>& canvases = styled_widget::get_canvas();
 	for(auto & canvas : canvases)
 	{
 		canvas.set_variable("icon", variant(icon_name_));
@@ -198,7 +198,7 @@ void toggle_button::signal_handler_left_button_double_click(
 // }---------- DEFINITION ---------{
 
 toggle_button_definition::toggle_button_definition(const config& cfg)
-	: control_definition(cfg)
+	: styled_widget_definition(cfg)
 {
 	DBG_GUI_P << "Parsing toggle button " << id << '\n';
 
@@ -279,7 +279,7 @@ namespace implementation
 {
 
 builder_toggle_button::builder_toggle_button(const config& cfg)
-	: builder_control(cfg)
+	: builder_styled_widget(cfg)
 	, icon_name_(cfg["icon"])
 	, retval_id_(cfg["return_value_id"])
 	, retval_(cfg["return_value"])

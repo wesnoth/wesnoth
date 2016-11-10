@@ -46,10 +46,10 @@ namespace dialogs
  * themes & & listbox & m &
  *         Listbox displaying user choices. $
  *
- * -name & & control & m &
+ * -name & & styled_widget & m &
  *         Widget which shows a theme item name. $
  *
- * -description & & control & m &
+ * -description & & styled_widget & m &
  *         Widget which shows a theme item description. $
  *
  * @end{table}

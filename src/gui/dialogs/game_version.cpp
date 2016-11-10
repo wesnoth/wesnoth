@@ -134,11 +134,11 @@ void game_version::pre_show(window& window)
 	// General information.
 	//
 
-	control& version_label = find_widget<control>(&window, "version", false);
+	styled_widget& version_label = find_widget<styled_widget>(&window, "version", false);
 	i18n_syms["version"] = game_config::revision;
 	version_label.set_label(VGETTEXT("Version $version", i18n_syms));
 
-	control& os_label = find_widget<control>(&window, "os", false);
+	styled_widget& os_label = find_widget<styled_widget>(&window, "os", false);
 	i18n_syms["os"] = desktop::os_version();
 	os_label.set_label(VGETTEXT("Running on $os", i18n_syms));
 
@@ -180,7 +180,7 @@ void game_version::pre_show(window& window)
 		if(!desktop::open_object_is_supported()) {
 			// No point in displaying these on platforms that can't do
 			// open_object().
-			browse_w.set_visible(control::visibility::invisible);
+			browse_w.set_visible(styled_widget::visibility::invisible);
 		}
 
 		if(!desktop::clipboard::available()) {

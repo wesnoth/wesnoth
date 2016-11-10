@@ -38,7 +38,7 @@ public:
 	/**
 	 * Constructor.
 	 *
-	 * @param canvas_count        The canvas count for control.
+	 * @param canvas_count        The canvas count for styled_widget.
 	 */
 	explicit panel(const unsigned canvas_count = 2) : container_base(canvas_count)
 	{
@@ -47,10 +47,10 @@ public:
 	/** See @ref container_base::get_client_rect. */
 	virtual SDL_Rect get_client_rect() const override;
 
-	/** See @ref control::get_active. */
+	/** See @ref styled_widget::get_active. */
 	virtual bool get_active() const override;
 
-	/** See @ref control::get_state. */
+	/** See @ref styled_widget::get_state. */
 	virtual unsigned get_state() const override;
 
 private:
@@ -64,7 +64,7 @@ private:
 									  int x_offset,
 									  int y_offset) override;
 
-	/** See @ref control::get_control_type. */
+	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 
 	/** See @ref container_base::border_space. */
@@ -76,7 +76,7 @@ private:
 
 // }---------- DEFINITION ---------{
 
-struct panel_definition : public control_definition
+struct panel_definition : public styled_widget_definition
 {
 	explicit panel_definition(const config& cfg);
 
@@ -97,11 +97,11 @@ struct panel_definition : public control_definition
 namespace implementation
 {
 
-struct builder_panel : public builder_control
+struct builder_panel : public builder_styled_widget
 {
 	explicit builder_panel(const config& cfg);
 
-	using builder_control::build;
+	using builder_styled_widget::build;
 
 	widget* build() const;
 

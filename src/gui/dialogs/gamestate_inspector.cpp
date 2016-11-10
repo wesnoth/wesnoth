@@ -81,13 +81,13 @@ namespace dialogs
  *
  * @begin{table}{dialog_widgets}
  *
- * inspector_name & & control & m &
+ * inspector_name & & styled_widget & m &
  *         Name of the inspector. $
  *
- * stuff_list & & control & m &
+ * stuff_list & & styled_widget & m &
  *         List of various stuff that can be viewed. $
  *
- * inspect & & control & m &
+ * inspect & & styled_widget & m &
  *         The state of the variable or event. $
  *
  * copy & & button & m &
@@ -183,10 +183,10 @@ class gamestate_inspector::view
 public:
 	view(window& window)
 		: stuff_list_(find_widget<tree_view>(&window, "stuff_list", false, true))
-		, inspect_(find_widget<control>(&window, "inspect", false, true))
-		, pages_(find_widget<control>(&window, "page_count", false, true))
-		, left_(find_widget<control>(&window, "page_left", false, true))
-		, right_(find_widget<control>(&window, "page_right", false, true))
+		, inspect_(find_widget<styled_widget>(&window, "inspect", false, true))
+		, pages_(find_widget<styled_widget>(&window, "page_count", false, true))
+		, left_(find_widget<styled_widget>(&window, "page_left", false, true))
+		, right_(find_widget<styled_widget>(&window, "page_right", false, true))
 	{
 	}
 
@@ -229,10 +229,10 @@ public:
 private:
 	int current_page_ = 0;
 	tree_view* stuff_list_;
-	control* inspect_;
-	control* pages_;
-	control* left_;
-	control* right_;
+	styled_widget* inspect_;
+	styled_widget* pages_;
+	styled_widget* left_;
+	styled_widget* right_;
 };
 
 class single_mode_controller
@@ -819,7 +819,7 @@ void gamestate_inspector::pre_show(window& window)
 	controller_.reset(new controller(*model_, *view_, vars_, events_, dc_));
 
 	if(!title_.empty()) {
-		find_widget<control>(&window, "inspector_name", false).set_label(title_);
+		find_widget<styled_widget>(&window, "inspector_name", false).set_label(title_);
 	}
 	controller_->bind(window);
 	view_->update(*model_);

@@ -88,12 +88,12 @@ public:
 	}
 
 	vconfig cfg;
-	control* msg_label;
+	styled_widget* msg_label;
 	const std::vector<chat_msg>& chat_log_history;
 	int page;
 	static const int COUNT_PER_PAGE = 100;
 	slider* page_number;
-	control* page_label;
+	styled_widget* page_label;
 	button* previous_page;
 	button* next_page;
 	text_box* filter;
@@ -389,7 +389,7 @@ public:
 	void bind(window& window)
 	{
 		LOG_CHAT_LOG << "Entering chat_log::view::bind" << std::endl;
-		model_.msg_label = &find_widget<control>(&window, "msg", false);
+		model_.msg_label = &find_widget<styled_widget>(&window, "msg", false);
 		model_.page_number
 				= &find_widget<slider>(&window, "page_number", false);
 		connect_signal_notify_modified(
@@ -421,7 +421,7 @@ public:
 			model_.copy_button->set_tooltip(_("Clipboard support not found, contact your packager"));
 		}
 
-		model_.page_label = &find_widget<control>(&window, "page_label", false);
+		model_.page_label = &find_widget<styled_widget>(&window, "page_label", false);
 
 		LOG_CHAT_LOG << "Exiting chat_log::view::bind" << std::endl;
 	}

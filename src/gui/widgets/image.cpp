@@ -99,7 +99,7 @@ const std::string& image::get_control_type() const
 // }---------- DEFINITION ---------{
 
 image_definition::image_definition(const config& cfg)
-	: control_definition(cfg)
+	: styled_widget_definition(cfg)
 {
 	DBG_GUI_P << "Parsing image " << id << '\n';
 
@@ -162,7 +162,7 @@ image_definition::resolution::resolution(const config& cfg)
 namespace implementation
 {
 
-builder_image::builder_image(const config& cfg) : builder_control(cfg)
+builder_image::builder_image(const config& cfg) : builder_styled_widget(cfg)
 {
 }
 

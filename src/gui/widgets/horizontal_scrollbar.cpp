@@ -117,7 +117,7 @@ const std::string& horizontal_scrollbar::get_control_type() const
 
 horizontal_scrollbar_definition::horizontal_scrollbar_definition(
 		const config& cfg)
-	: control_definition(cfg)
+	: styled_widget_definition(cfg)
 {
 	DBG_GUI_P << "Parsing horizontal scrollbar " << id << '\n';
 
@@ -219,7 +219,7 @@ namespace implementation
 {
 
 builder_horizontal_scrollbar::builder_horizontal_scrollbar(const config& cfg)
-	: builder_control(cfg)
+	: builder_styled_widget(cfg)
 {
 }
 

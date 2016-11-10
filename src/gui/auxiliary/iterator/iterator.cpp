@@ -60,7 +60,7 @@ namespace iterator
  * walker allows to visit the several levels of the widget. This means
  * several widgets need to override the function in a subclass. For example
  * most @em simple widgets don't have a grid or children so they can use the
- * walker created from @ref gui2::control. But containers need to create a
+ * walker created from @ref gui2::styled_widget. But containers need to create a
  * different walker.
  *
  *
@@ -96,7 +96,7 @@ namespace iterator
  *
  * The types are:
  * - grid 0, 1
- * - control 2, 3, 4, 6, 7, 8
+ * - styled_widget 2, 3, 4, 6, 7, 8
  *
  * The examples assume all levels will be visited.
  *

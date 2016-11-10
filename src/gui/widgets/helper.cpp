@@ -117,7 +117,7 @@ std::string encode_text_alignment(const PangoAlignment alignment)
 			return "center";
 	}
 	assert(false);
-	// FIXME: without this "control reaches end of non-void function" in release
+	// FIXME: without this "styled_widget reaches end of non-void function" in release
 	// mode
 	throw "Control should not reach this point.";
 }

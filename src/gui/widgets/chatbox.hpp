@@ -59,13 +59,13 @@ class chatbox : public container_base, public events::chat_handler
 public:
 	chatbox();
 
-	/** See @ref control::set_active. */
+	/** See @ref styled_widget::set_active. */
 	virtual void set_active(const bool active) override;
 
-	/** See @ref control::get_active. */
+	/** See @ref styled_widget::get_active. */
 	virtual bool get_active() const override;
 
-	/** See @ref control::get_state. */
+	/** See @ref styled_widget::get_state. */
 	virtual unsigned get_state() const override { return 0; };
 
 	void send_to_server(const ::config& cfg) override;
@@ -131,7 +131,7 @@ private:
 
 	wesnothd_connection* wesnothd_connection_;
 
-	/** See @ref control::get_control_type. */
+	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 
 	/** See @ref container_base::set_self_active. */
@@ -258,7 +258,7 @@ public:
 
 // }---------- DEFINITION ---------{
 
-struct chatbox_definition : public control_definition
+struct chatbox_definition : public styled_widget_definition
 {
 
 	explicit chatbox_definition(const config& cfg);
@@ -276,12 +276,12 @@ struct chatbox_definition : public control_definition
 namespace implementation
 {
 
-struct builder_chatbox : public builder_control
+struct builder_chatbox : public builder_styled_widget
 {
 public:
 	explicit builder_chatbox(const config& cfg);
 
-	using builder_control::build;
+	using builder_styled_widget::build;
 
 	widget* build() const;
 

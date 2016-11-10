@@ -709,7 +709,7 @@ const std::string& listbox::get_control_type() const
 // }---------- DEFINITION ---------{
 
 listbox_definition::listbox_definition(const config& cfg)
-	: control_definition(cfg)
+	: styled_widget_definition(cfg)
 {
 	DBG_GUI_P << "Parsing listbox " << id << '\n';
 
@@ -813,7 +813,7 @@ listbox_definition::resolution::resolution(const config& cfg)
 /*WIKI_MACRO
  * @begin{macro}{listbox_description}
  *
- *        A listbox is a control that holds several items of the same type.
+ *        A listbox is a styled_widget that holds several items of the same type.
  *        Normally the items in a listbox are ordered in rows, this version
  *        might allow more options for ordering the items in the future.
  * @end{macro}
@@ -934,7 +934,7 @@ static std::vector<std::map<std::string, string_map>> parse_list_data(const conf
 }
 
 builder_listbox::builder_listbox(const config& cfg)
-	: builder_control(cfg)
+	: builder_styled_widget(cfg)
 	, vertical_scrollbar_mode(
 			  get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
 	, horizontal_scrollbar_mode(
@@ -1036,7 +1036,7 @@ widget* builder_listbox::build() const
 /*WIKI_MACRO
  * @begin{macro}{horizontal_listbox_description}
  *
- *        A horizontal listbox is a control that holds several items of the
+ *        A horizontal listbox is a styled_widget that holds several items of the
  *        same type.  Normally the items in a listbox are ordered in rows,
  *        this version orders them in columns instead.
  * @end{macro}
@@ -1097,7 +1097,7 @@ widget* builder_listbox::build() const
  */
 
 builder_horizontal_listbox::builder_horizontal_listbox(const config& cfg)
-	: builder_control(cfg)
+	: builder_styled_widget(cfg)
 	, vertical_scrollbar_mode(
 			  get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
 	, horizontal_scrollbar_mode(
@@ -1161,7 +1161,7 @@ widget* builder_horizontal_listbox::build() const
 /*WIKI_MACRO
  * @begin{macro}{grid_listbox_description}
  *
- *        A grid listbox is a control that holds several items of the
+ *        A grid listbox is a styled_widget that holds several items of the
  *        same type.  Normally the items in a listbox are ordered in rows,
  *        this version orders them in a grid instead.
  * @end{macro}
@@ -1222,7 +1222,7 @@ widget* builder_horizontal_listbox::build() const
  */
 
 builder_grid_listbox::builder_grid_listbox(const config& cfg)
-	: builder_control(cfg)
+	: builder_styled_widget(cfg)
 	, vertical_scrollbar_mode(
 			  get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
 	, horizontal_scrollbar_mode(

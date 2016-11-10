@@ -56,7 +56,7 @@ void scrollbar_panel::set_self_active(const bool /*active*/)
 // }---------- DEFINITION ---------{
 
 scrollbar_panel_definition::scrollbar_panel_definition(const config& cfg)
-	: control_definition(cfg)
+	: styled_widget_definition(cfg)
 {
 	DBG_GUI_P << "Parsing scrollbar panel " << id << '\n';
 
@@ -136,7 +136,7 @@ namespace implementation
 {
 
 builder_scrollbar_panel::builder_scrollbar_panel(const config& cfg)
-	: builder_control(cfg)
+	: builder_styled_widget(cfg)
 	, vertical_scrollbar_mode(
 			  get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
 	, horizontal_scrollbar_mode(

@@ -45,13 +45,13 @@ namespace dialogs
  * title & & label & m &
  *         Dialog title label. $
  *
- * message & & control & m &
+ * message & & styled_widget & m &
  *         Text label displaying a description or instructions. $
  *
  * listbox & & listbox & m &
  *         Listbox displaying user choices. $
  *
- * -item & & control & m &
+ * -item & & styled_widget & m &
  *         Widget which shows a listbox item label. $
  *
  * ok & & button & m &

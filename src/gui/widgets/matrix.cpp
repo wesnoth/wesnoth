@@ -215,7 +215,7 @@ const std::string& matrix::get_control_type() const
  */
 
 matrix_definition::matrix_definition(const config& cfg)
-	: control_definition(cfg)
+	: styled_widget_definition(cfg)
 {
 	DBG_GUI_P << "Parsing matrix " << id << '\n';
 
@@ -274,7 +274,7 @@ namespace implementation
 {
 
 builder_matrix::builder_matrix(const config& cfg)
-	: builder_control(cfg)
+	: builder_styled_widget(cfg)
 	, vertical_scrollbar_mode(
 			  get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
 	, horizontal_scrollbar_mode(

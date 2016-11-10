@@ -85,14 +85,14 @@ namespace implementation
 {
 /** @todo See whether this hack can be removed. */
 // Needed to fix a compiler error in REGISTER_WIDGET.
-class builder_window : public builder_control
+class builder_window : public builder_styled_widget
 {
 public:
-	builder_window(const config& cfg) : builder_control(cfg)
+	builder_window(const config& cfg) : builder_styled_widget(cfg)
 	{
 	}
 
-	using builder_control::build;
+	using builder_styled_widget::build;
 
 	widget* build() const
 	{
@@ -1480,7 +1480,7 @@ void window::signal_handler_request_placement(const event::ui_event event,
  * @end{parent}{name="gui/"}
  */
 window_definition::window_definition(const config& cfg)
-	: control_definition(cfg)
+	: styled_widget_definition(cfg)
 {
 	DBG_GUI_P << "Parsing window " << id << '\n';
 

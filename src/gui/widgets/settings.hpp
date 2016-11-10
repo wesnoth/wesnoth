@@ -99,7 +99,7 @@ void register_widget(const std::string& id,
 void load_widget_definitions(
 		gui_definition& gui,
 		const std::string& definition_type,
-		const std::vector<control_definition_ptr>& definitions);
+		const std::vector<styled_widget_definition_ptr>& definitions);
 
 /**
  * Loads the definitions of a widget.
@@ -122,7 +122,7 @@ void load_widget_definitions(gui_definition& gui,
 							 const config& cfg,
 							 const char* key)
 {
-	std::vector<control_definition_ptr> definitions;
+	std::vector<styled_widget_definition_ptr> definitions;
 
 	for (const auto & definition :
 			cfg.child_range(key ? key : definition_type + "_definition"))

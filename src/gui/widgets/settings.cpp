@@ -127,11 +127,11 @@ struct gui_definition
 	/** Activates a gui. */
 	void activate() const;
 
-	typedef std::map<std::string /*control type*/,
-					 std::map<std::string /*id*/, control_definition_ptr> >
-	tcontrol_definition_map;
+	typedef std::map<std::string /*styled_widget type*/,
+					 std::map<std::string /*id*/, styled_widget_definition_ptr> >
+	styled_widget_definition_map;
 
-	tcontrol_definition_map control_definition;
+	styled_widget_definition_map control_definition;
 
 	std::map<std::string, window_definition> windows;
 
@@ -139,7 +139,7 @@ struct gui_definition
 
 	void load_widget_definitions(
 			const std::string& definition_type,
-			const std::vector<control_definition_ptr>& definitions);
+			const std::vector<styled_widget_definition_ptr>& definitions);
 
 private:
 	unsigned popup_show_delay_;
@@ -216,7 +216,7 @@ private:
  * Slider &                       @macro = slider_description $
  * Spacer &                       @macro = spacer_description $
  * Stacked_widget &
- *     A stacked widget is a control several widgets can be stacked on top of
+ *     A stacked widget is a styled_widget where several widgets can be stacked on top of
  *     each other in the same space. This is mainly intended for over- and
  *     underlays. (The widget is still experimental.) $
  *
@@ -432,13 +432,13 @@ void gui_definition::activate() const
 
 void gui_definition::load_widget_definitions(
 		const std::string& definition_type,
-		const std::vector<control_definition_ptr>& definitions)
+		const std::vector<styled_widget_definition_ptr>& definitions)
 {
 	for(const auto & def : definitions)
 	{
 
 		if(control_definition[definition_type].find(def->id) != control_definition[definition_type].end()) {
-			ERR_GUI_P << "Skipping duplicate control definition '" << def->id << "' for '" << definition_type << "'\n";
+			ERR_GUI_P << "Skipping duplicate styled_widget definition '" << def->id << "' for '" << definition_type << "'\n";
 			continue;
 		}
 
@@ -582,7 +582,7 @@ void register_widget(const std::string& id,
 void
 load_widget_definitions(gui_definition& gui,
 						const std::string& definition_type,
-						const std::vector<control_definition_ptr>& definitions)
+						const std::vector<styled_widget_definition_ptr>& definitions)
 {
 	DBG_GUI_P << "Load definition '" << definition_type << "'.\n";
 	gui.load_widget_definitions(definition_type, definitions);
@@ -591,7 +591,7 @@ load_widget_definitions(gui_definition& gui,
 resolution_definition_ptr get_control(const std::string& control_type,
 									   const std::string& definition)
 {
-	const gui_definition::tcontrol_definition_map::const_iterator
+	const gui_definition::styled_widget_definition_map::const_iterator
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	control_definition
 			= (control_type == "list")
@@ -603,7 +603,7 @@ resolution_definition_ptr get_control(const std::string& control_type,
 			= current_gui->second.control_definition.find(control_type);
 #endif
 
-	std::map<std::string, control_definition_ptr>::const_iterator control;
+	std::map<std::string, styled_widget_definition_ptr>::const_iterator control;
 
 	if(control_definition == current_gui->second.control_definition.end()) {
 		goto fallback;
@@ -634,7 +634,7 @@ resolution_definition_ptr get_control(const std::string& control_type,
 						  << definition << "' not found, falling back to 'default'.\n";
 				return get_control(control_type, "default");
 			}
-			FAIL(formatter() << "default definition not found for control " << control_type);
+			FAIL(formatter() << "default definition not found for styled_widget " << control_type);
 		}
 	}
 

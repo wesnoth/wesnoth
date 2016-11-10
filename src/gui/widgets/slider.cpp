@@ -59,7 +59,7 @@ point slider::calculate_best_size() const
 	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
 
 	// Inherited.
-	point result = control::calculate_best_size();
+	point result = styled_widget::calculate_best_size();
 	if(best_slider_length_ != 0) {
 
 		// Override length.
@@ -344,7 +344,7 @@ void slider::set_value_labels(const std::vector<t_string>& value_labels)
 // }---------- DEFINITION ---------{
 
 slider_definition::slider_definition(const config& cfg)
-	: control_definition(cfg)
+	: styled_widget_definition(cfg)
 {
 	DBG_GUI_P << "Parsing slider " << id << '\n';
 
@@ -420,7 +420,7 @@ slider_definition::resolution::resolution(const config& cfg)
 
 /*WIKI_MACRO
  * @begin{macro}{slider_description}
- * A slider is a control that can select a value by moving a grip on a groove.
+ * A slider is a styled_widget that can select a value by moving a grip on a groove.
  * @end{macro}
  */
 
@@ -473,7 +473,7 @@ namespace implementation
 {
 
 builder_slider::builder_slider(const config& cfg)
-	: implementation::builder_control(cfg)
+	: implementation::builder_styled_widget(cfg)
 	, best_slider_length_(cfg["best_slider_length"])
 	, minimum_value_(cfg["minimum_value"])
 	, maximum_value_(cfg["maximum_value"])

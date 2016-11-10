@@ -54,7 +54,7 @@ namespace dialogs
  * -icon & & image & o &
  *         The icon for the core. $
  *
- * -name & & control & o &
+ * -name & & styled_widget & o &
  *         The name of the core. $
  *
  * core_details & & multi_page & m &
@@ -64,7 +64,7 @@ namespace dialogs
  * -image & & image & o &
  *         The image for the core. $
  *
- * -description & & control & o &
+ * -description & & styled_widget & o &
  *         The description of the core. $
  *
  * @end{table}

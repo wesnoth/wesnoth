@@ -87,9 +87,9 @@ const T& cast(resolution_definition_const_ptr ptr)
 	return *conf;
 }
 
-struct control_definition
+struct styled_widget_definition
 {
-	explicit control_definition(const config& cfg);
+	explicit styled_widget_definition(const config& cfg);
 
 	template <class T>
 	void load_resolutions(const config& cfg)
@@ -106,7 +106,7 @@ struct control_definition
 	std::vector<resolution_definition_ptr> resolutions;
 };
 
-typedef std::shared_ptr<control_definition> control_definition_ptr;
+typedef std::shared_ptr<styled_widget_definition> styled_widget_definition_ptr;
 
 } // namespace gui2
 

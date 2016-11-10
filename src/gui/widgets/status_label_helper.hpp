@@ -60,7 +60,7 @@ std::function<void()> bind_status_label(widget& find_in, const std::string& id,
 	const std::string label_id_ = label_id.empty() ? id + "_label" : label_id;
 
 	W& source = find_widget<W>(&find_in, id, false);
-	control& label = find_widget<control>(&find_in, label_id_, false);
+	styled_widget& label = find_widget<styled_widget>(&find_in, label_id_, false);
 
 	const auto update_label = [&, value_getter]() {
 		const std::string value = value_getter(source);

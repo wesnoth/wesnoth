@@ -222,7 +222,7 @@ void modify_grid_with_data(grid* grid, const std::map<std::string, string_map>& 
 			continue;
 		}
 
-		control* c = dynamic_cast<control*>(w);
+		styled_widget* c = dynamic_cast<styled_widget*>(w);
 		if(!c) {
 			continue;
 		}
@@ -453,8 +453,8 @@ void lobby_main::adjust_game_row_contents(const game_info& game,
 										   int idx,
 										   grid* grid)
 {
-	find_widget<control>(grid, "name", false).set_use_markup(true);
-	find_widget<control>(grid, "status", false).set_use_markup(true);
+	find_widget<styled_widget>(grid, "name", false).set_use_markup(true);
+	find_widget<styled_widget>(grid, "status", false).set_use_markup(true);
 
 	toggle_panel& row_panel = find_widget<toggle_panel>(grid, "panel", false);
 

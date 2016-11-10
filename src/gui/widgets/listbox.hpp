@@ -391,7 +391,7 @@ private:
 	/** Inherited from scrollbar_container. */
 	virtual void set_content_size(const point& origin, const point& size) override;
 
-	/** See @ref control::get_control_type. */
+	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 
 	void order_by_column(unsigned column, widget& widget);
@@ -399,7 +399,7 @@ private:
 
 // }---------- DEFINITION ---------{
 
-struct listbox_definition : public control_definition
+struct listbox_definition : public styled_widget_definition
 {
 
 	explicit listbox_definition(const config& cfg);
@@ -417,11 +417,11 @@ struct listbox_definition : public control_definition
 namespace implementation
 {
 
-struct builder_listbox : public builder_control
+struct builder_listbox : public builder_styled_widget
 {
 	explicit builder_listbox(const config& cfg);
 
-	using builder_control::build;
+	using builder_styled_widget::build;
 
 	widget* build() const;
 
@@ -444,11 +444,11 @@ struct builder_listbox : public builder_control
 	bool has_minimum_, has_maximum_;
 };
 
-struct builder_horizontal_listbox : public builder_control
+struct builder_horizontal_listbox : public builder_styled_widget
 {
 	explicit builder_horizontal_listbox(const config& cfg);
 
-	using builder_control::build;
+	using builder_styled_widget::build;
 
 	widget* build() const;
 
@@ -468,11 +468,11 @@ struct builder_horizontal_listbox : public builder_control
 	bool has_minimum_, has_maximum_;
 };
 
-struct builder_grid_listbox : public builder_control
+struct builder_grid_listbox : public builder_styled_widget
 {
 	explicit builder_grid_listbox(const config& cfg);
 
-	using builder_control::build;
+	using builder_styled_widget::build;
 
 	widget* build() const;
 

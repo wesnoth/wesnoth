@@ -157,7 +157,7 @@ private:
 	/** Inherited from container_base. */
 	virtual void finalize_setup();
 
-	/** See @ref control::get_control_type. */
+	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 
 	/***** ***** ***** signal handlers ***** ****** *****/
@@ -173,7 +173,7 @@ private:
 
 // }---------- DEFINITION ---------{
 
-struct tree_view_definition : public control_definition
+struct tree_view_definition : public styled_widget_definition
 {
 
 	explicit tree_view_definition(const config& cfg);
@@ -191,11 +191,11 @@ struct tree_view_definition : public control_definition
 namespace implementation
 {
 
-struct builder_tree_view : public builder_control
+struct builder_tree_view : public builder_styled_widget
 {
 	explicit builder_tree_view(const config& cfg);
 
-	using builder_control::build;
+	using builder_styled_widget::build;
 
 	widget* build() const;
 

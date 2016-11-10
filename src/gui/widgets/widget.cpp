@@ -96,7 +96,7 @@ widget::~widget()
 
 void widget::set_id(const std::string& id)
 {
-	control* this_ctrl = dynamic_cast<control*>(this);
+	styled_widget* this_ctrl = dynamic_cast<styled_widget*>(this);
 
 	DBG_GUI_LF
 	<< "set id of " << static_cast<void*>(this) << " to '" << id << "' "

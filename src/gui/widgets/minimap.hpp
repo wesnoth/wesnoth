@@ -33,22 +33,22 @@ namespace gui2
  * This minimap can only show a minimap, but it can't be interacted with. For
  * that the tminimap_interactive class will be created.
  */
-class minimap : public control
+class minimap : public styled_widget
 {
 public:
-	minimap() : control(1), map_data_(), terrain_(nullptr)
+	minimap() : styled_widget(1), map_data_(), terrain_(nullptr)
 	{
 	}
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
-	/** See @ref control::set_active. */
+	/** See @ref styled_widget::set_active. */
 	virtual void set_active(const bool active) override;
 
-	/** See @ref control::get_active. */
+	/** See @ref styled_widget::get_active. */
 	virtual bool get_active() const override;
 
-	/** See @ref control::get_state. */
+	/** See @ref styled_widget::get_state. */
 	virtual unsigned get_state() const override;
 
 	/** See @ref widget::disable_click_dismiss. */
@@ -105,13 +105,13 @@ private:
 									  int x_offset,
 									  int y_offset) override;
 
-	/** See @ref control::get_control_type. */
+	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 };
 
 // }---------- DEFINITION ---------{
 
-struct minimap_definition : public control_definition
+struct minimap_definition : public styled_widget_definition
 {
 	explicit minimap_definition(const config& cfg);
 
@@ -126,11 +126,11 @@ struct minimap_definition : public control_definition
 namespace implementation
 {
 
-struct builder_minimap : public builder_control
+struct builder_minimap : public builder_styled_widget
 {
 	explicit builder_minimap(const config& cfg);
 
-	using builder_control::build;
+	using builder_styled_widget::build;
 
 	widget* build() const;
 };

@@ -279,10 +279,10 @@ protected:
 							   const bool capture_focus = false);
 
 	/**
-	 * Registers a new control as a label.
+	 * Registers a new styled_widget as a label.
 	 *
-	 * The label is used for a control to set the 'label' since it calls the
-	 * @ref control::set_label it can also be used for the @ref image since
+	 * The label is used for a styled_widget to set the 'label' since it calls the
+	 * @ref styled_widget::set_label it can also be used for the @ref image since
 	 * there this sets the filename. (The @p use_markup makes no sense in an
 	 * image but that's a detail.)
 	 *
@@ -300,7 +300,7 @@ protected:
 								 const std::string& text,
 								 const bool use_markup = false);
 
-	/** Registers a new control as image. */
+	/** Registers a new styled_widget as image. */
 	field_label* register_image(const std::string& id,
 								 const bool mandatory,
 								 const std::string& filename)
@@ -356,7 +356,7 @@ private:
 	/**
 	 * Show the dialog even with --nogui?
 	 * Some dialogs need to be shown even when --nogui is specified if the game is being driven by a plugin.
-	 * Those dialogs allow the plugin to control them by creating a plugin context in pre_show().
+	 * Those dialogs allow the plugin to styled_widget them by creating a plugin context in pre_show().
 	 */
 	bool show_even_without_video_;
 

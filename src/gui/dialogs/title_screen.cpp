@@ -122,7 +122,7 @@ namespace dialogs
  * logo & & image & o &
  *         The Wesnoth logo. $
  *
- * revision_number & & control & o &
+ * revision_number & & styled_widget & o &
  *         A widget to show the version number when the version number is
  *         known. $
  *

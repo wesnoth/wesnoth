@@ -304,8 +304,8 @@ void mouse_motion::mouse_leave()
 {
 	DBG_GUI_E << LOG_HEADER << "Firing: " << event::MOUSE_LEAVE << ".\n";
 
-	control* ctrl = dynamic_cast<control*>(mouse_focus_);
-	if(!ctrl || ctrl->get_active()) {
+	styled_widget* control = dynamic_cast<styled_widget*>(mouse_focus_);
+	if(!control || control->get_active()) {
 		owner_.fire(event::MOUSE_LEAVE, *mouse_focus_);
 	}
 
@@ -706,11 +706,11 @@ void distributor::signal_handler_sdl_key_down(const SDL_Keycode key,
 	DBG_GUI_E << LOG_HEADER << event::SDL_KEY_DOWN << ".\n";
 
 	if(keyboard_focus_) {
-		// Attempt to cast to control, to avoid sending events if the
+		// Attempt to cast to styled_widget, to avoid sending events if the
 		// widget is disabled. If the cast fails, we assume the widget
 		// is enabled and ready to receive events.
-		control* ctrl = dynamic_cast<control*>(keyboard_focus_);
-		if(!ctrl || ctrl->get_active()) {
+		styled_widget* control = dynamic_cast<styled_widget*>(keyboard_focus_);
+		if(!control || control->get_active()) {
 			DBG_GUI_E << LOG_HEADER << "Firing: " << event::SDL_KEY_DOWN
 					  << ".\n";
 			if(owner_.fire(event::SDL_KEY_DOWN,
@@ -746,11 +746,11 @@ void distributor::signal_handler_sdl_key_down(const SDL_Keycode key,
 			continue;
 		}
 
-		// Attempt to cast to control, to avoid sending events if the
+		// Attempt to cast to styled_widget, to avoid sending events if the
 		// widget is disabled. If the cast fails, we assume the widget
 		// is enabled and ready to receive events.
-		control* ctrl = dynamic_cast<control*>(keyboard_focus_);
-		if(ctrl != nullptr && !ctrl->get_active()) {
+		styled_widget* control = dynamic_cast<styled_widget*>(keyboard_focus_);
+		if(control != nullptr && !control->get_active()) {
 			continue;
 		}
 

@@ -238,50 +238,50 @@ namespace dialogs
  *
  * @begin{table}{dialog_widgets}
  *
- * image & & control & m &
+ * image & & styled_widget & m &
  *         Label for displaying the add-on icon, in a 72x72 area. $
  *
- * title & & control & m &
+ * title & & styled_widget & m &
  *         Dialog title label, corresponding to the add-on name. $
  *
- * type & & control & m &
+ * type & & styled_widget & m &
  *         Label for displaying the add-on's type. $
  *
- * version & & control & m &
+ * version & & styled_widget & m &
  *         Label for displaying the add-on version number. $
  *
- * status & & control & m &
+ * status & & styled_widget & m &
  *         Label for displaying the current installation/upgradability status. $
  *
- * author & & control & m &
+ * author & & styled_widget & m &
  *         Label for displaying the add-on author/maintainer name. $
  *
- * size & & control & m &
+ * size & & styled_widget & m &
  *         Label for displaying the add-on package size. $
  *
- * downloads & & control & m &
+ * downloads & & styled_widget & m &
  *         Label for displaying the add-on's download count. $
  *
- * description & & control & m &
- *         Text label for displaying the add-on's description. The control can
+ * description & & styled_widget & m &
+ *         Text label for displaying the add-on's description. The styled_widget can
  *         be given a text, this text is shown when the addon has no
  *         description. If the addon has a description this field shows the
  *         description of the addon. $
  *
- * translations & & control & m &
+ * translations & & styled_widget & m &
  *         Label for displaying a list of translations provided by the add-on.
  *         Like the ''description'' it can also show a default text if no
  *         translations are available. $
  *
- * dependencies & & control & m &
+ * dependencies & & styled_widget & m &
  *         Label for displaying a list of dependencies of the add-on. Like the
  *         ''description'' it can also show a default text if no dependencies
  *         are defined. $
  *
- * updated & & control & m &
+ * updated & & styled_widget & m &
  *         Label displaying the add-on's last upload date. $
  *
- * created & & control & m &
+ * created & & styled_widget & m &
  *         Label displaying the add-on's first upload date. $
  *
  * url & & text_box & m &
@@ -296,7 +296,7 @@ namespace dialogs
  *         Button for copying the add-on's feedback page URL to clipboard if
  *         provided by the server. $
  *
- * url_none & & control & m &
+ * url_none & & styled_widget & m &
  *         Label displayed instead of the other url_* widgets when no URL is
  *         provided by the server.
  *
@@ -371,7 +371,7 @@ void addon_description::copy_url_callback()
 
 void addon_description::pre_show(window& window)
 {
-	control& url_none = find_widget<control>(&window, "url_none", false);
+	styled_widget& url_none = find_widget<styled_widget>(&window, "url_none", false);
 	button& url_go_button = find_widget<button>(&window, "url_go", false);
 	button& url_copy_button = find_widget<button>(&window, "url_copy", false);
 	text_box& url_textbox = find_widget<text_box>(&window, "url", false);
@@ -380,7 +380,7 @@ void addon_description::pre_show(window& window)
 	url_textbox.set_active(false);
 
 	if(!feedback_url_.empty()) {
-		url_none.set_visible(control::visibility::invisible);
+		url_none.set_visible(styled_widget::visibility::invisible);
 
 		connect_signal_mouse_left_click(
 				url_go_button,
@@ -398,15 +398,15 @@ void addon_description::pre_show(window& window)
 		url_go_button.set_active(false);
 		url_copy_button.set_active(false);
 
-		url_go_button.set_visible(control::visibility::invisible);
-		url_copy_button.set_visible(control::visibility::invisible);
-		url_textbox.set_visible(control::visibility::invisible);
+		url_go_button.set_visible(styled_widget::visibility::invisible);
+		url_copy_button.set_visible(styled_widget::visibility::invisible);
+		url_textbox.set_visible(styled_widget::visibility::invisible);
 	}
 
 	if(!desktop::open_object_is_supported()) {
 		// No point in displaying the button on platforms that can't do
 		// open_object().
-		url_go_button.set_visible(control::visibility::invisible);
+		url_go_button.set_visible(styled_widget::visibility::invisible);
 	}
 }
 

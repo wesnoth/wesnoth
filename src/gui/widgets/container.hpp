@@ -29,13 +29,13 @@ namespace gui2
  * widget.
  *
  */
-class container_base : public control
+class container_base : public styled_widget
 {
 	friend class debug_layout_graph;
 
 public:
 	explicit container_base(const unsigned canvas_count)
-		: control(canvas_count), grid_()
+		: styled_widget(canvas_count), grid_()
 	{
 		grid_.set_parent(this);
 	}
@@ -137,7 +137,7 @@ public:
 	const widget* find(const std::string& id,
 						const bool must_be_active) const override;
 
-	/** See @ref control::set_active. */
+	/** See @ref styled_widget::set_active. */
 	virtual void set_active(const bool active) override;
 
 	/** See @ref widget::disable_click_dismiss. */
@@ -255,7 +255,7 @@ private:
 	/**
 	 * Helper for set_active.
 	 *
-	 * This function should set the control itself active. It's called by
+	 * This function should set the styled_widget itself active. It's called by
 	 * set_active if the state needs to change. The widget is set to dirty() by
 	 * set_active so we only need to change the state.
 	 */

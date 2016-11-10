@@ -40,7 +40,7 @@ namespace gui2
  * Common signal handlers:
  * - connect_signal_pre_key_press
  */
-class text_box_base : public control
+class text_box_base : public styled_widget
 {
 
 public:
@@ -48,13 +48,13 @@ public:
 
 	~text_box_base();
 
-	/** See @ref control::set_active. */
+	/** See @ref styled_widget::set_active. */
 	virtual void set_active(const bool active) override;
 
-	/** See @ref control::get_active. */
+	/** See @ref styled_widget::get_active. */
 	virtual bool get_active() const override;
 
-	/** See @ref control::get_state. */
+	/** See @ref styled_widget::get_state. */
 	virtual unsigned get_state() const override;
 
 	/***** ***** ***** ***** expose some functions ***** ***** ***** *****/
@@ -466,7 +466,7 @@ private:
 	 * Text changed callback.
 	 *
 	 * This callback is called in key_press after the key_press event has been
-	 * handled by the control. The parameters to the function are:
+	 * handled by the styled_widget. The parameters to the function are:
 	 * - The widget invoking the callback
 	 * - The new text of the textbox.
 	 */

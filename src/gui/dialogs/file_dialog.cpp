@@ -169,9 +169,9 @@ file_dialog& file_dialog::set_filename(const std::string& value)
 
 void file_dialog::pre_show(window& window)
 {
-	control& title = find_widget<control>(&window, "title", false);
-	control& message = find_widget<control>(&window, "message", false);
-	control& ok = find_widget<control>(&window, "ok", false);
+	styled_widget& title = find_widget<styled_widget>(&window, "title", false);
+	styled_widget& message = find_widget<styled_widget>(&window, "message", false);
+	styled_widget& ok = find_widget<styled_widget>(&window, "ok", false);
 
 	title.set_label(title_);
 
@@ -530,7 +530,7 @@ void file_dialog::refresh_fileview(window& window)
 		push_fileview_row(filelist, file, icon_file);
 	}
 
-	find_widget<control>(&window, "current_dir", false).set_label(current_dir_);
+	find_widget<styled_widget>(&window, "current_dir", false).set_label(current_dir_);
 	set_input_text(find_widget<text_box>(&window, "filename", false), current_entry_);
 }
 

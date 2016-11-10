@@ -47,7 +47,7 @@ namespace dialogs
  * language_list & & listbox & m &
  *         This listbox contains the list with available languages. $
  *
- * - & & control & o &
+ * - & & styled_widget & o &
  *         Show the name of the language in the current row. $
  *
  * @end{table}

@@ -74,7 +74,7 @@ void wml_message_base::pre_show(window& window)
 	title.set_use_markup(true);
 	title.set_can_wrap(true);
 
-	control& message = find_widget<control>(&window, "message", false);
+	styled_widget& message = find_widget<styled_widget>(&window, "message", false);
 	message.set_label(message_);
 	message.set_use_markup(true);
 	// The message label might not always be a scroll_label but the capturing

@@ -119,7 +119,7 @@ text_box::text_box()
 void text_box::place(const point& origin, const point& size)
 {
 	// Inherited.
-	control::place(origin, size);
+	styled_widget::place(origin, size);
 
 	set_maximum_width(get_text_maximum_width());
 	set_maximum_height(get_text_maximum_height(), false);
@@ -398,7 +398,7 @@ text_box::signal_handler_left_button_double_click(const event::ui_event event,
 // }---------- DEFINITION ---------{
 
 text_box_definition::text_box_definition(const config& cfg)
-	: control_definition(cfg)
+	: styled_widget_definition(cfg)
 {
 	DBG_GUI_P << "Parsing text_box " << id << '\n';
 
@@ -480,7 +480,7 @@ namespace implementation
 {
 
 builder_text_box::builder_text_box(const config& cfg)
-	: builder_control(cfg)
+	: builder_styled_widget(cfg)
 	, history(cfg["history"])
 	, max_input_length(cfg["max_input_length"])
 {

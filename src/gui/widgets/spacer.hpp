@@ -35,10 +35,10 @@ namespace gui2
  * Since we're a kind of dummy class we're always active, our drawing does
  * nothing.
  */
-class spacer : public control
+class spacer : public styled_widget
 {
 public:
-	spacer() : control(0), best_size_(0, 0)
+	spacer() : styled_widget(0), best_size_(0, 0)
 	{
 	}
 
@@ -51,13 +51,13 @@ private:
 public:
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
-	/** See @ref control::set_active. */
+	/** See @ref styled_widget::set_active. */
 	virtual void set_active(const bool active) override;
 
-	/** See @ref control::get_active. */
+	/** See @ref styled_widget::get_active. */
 	virtual bool get_active() const override;
 
-	/** See @ref control::get_state. */
+	/** See @ref styled_widget::get_state. */
 	virtual unsigned get_state() const override;
 
 	/** See @ref widget::disable_click_dismiss. */
@@ -79,13 +79,13 @@ private:
 									  int x_offset,
 									  int y_offset) override;
 
-	/** See @ref control::get_control_type. */
+	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 };
 
 // }---------- DEFINITION ---------{
 
-struct spacer_definition : public control_definition
+struct spacer_definition : public styled_widget_definition
 {
 	explicit spacer_definition(const config& cfg);
 
@@ -100,11 +100,11 @@ struct spacer_definition : public control_definition
 namespace implementation
 {
 
-struct builder_spacer : public builder_control
+struct builder_spacer : public builder_styled_widget
 {
 	explicit builder_spacer(const config& cfg);
 
-	using builder_control::build;
+	using builder_styled_widget::build;
 
 	widget* build() const;
 

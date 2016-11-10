@@ -356,8 +356,8 @@ private:
 	/**
 	 * Returns the control_type of the @ref tree_view_node.
 	 *
-	 * This class does not derive from @ref control but the function behaves
-	 * similar as @ref control::get_control_type.
+	 * This class does not derive from @ref styled_widget but the function behaves
+	 * similar as @ref styled_widget::get_control_type.
 	 */
 	const std::string& get_control_type() const;
 };

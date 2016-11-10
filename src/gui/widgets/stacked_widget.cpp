@@ -162,7 +162,7 @@ grid* stacked_widget::get_layer_grid(unsigned int i)
 // }---------- DEFINITION ---------{
 
 stacked_widget_definition::stacked_widget_definition(const config& cfg)
-	: control_definition(cfg)
+	: styled_widget_definition(cfg)
 {
 	DBG_GUI_P << "Parsing stacked widget " << id << '\n';
 
@@ -228,7 +228,7 @@ namespace implementation
 {
 
 builder_stacked_widget::builder_stacked_widget(const config& real_cfg)
-	: builder_control(real_cfg), stack()
+	: builder_styled_widget(real_cfg), stack()
 {
 	const config& cfg = real_cfg.has_child("stack") ? real_cfg.child("stack") : real_cfg;
 	if(&cfg != &real_cfg) {

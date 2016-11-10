@@ -72,10 +72,10 @@ namespace dialogs
  * unit_type_list & & listbox & m &
  *         Listbox displaying existing unit types sorted by name and race. $
  *
- * -unit_type & & control & m &
+ * -unit_type & & styled_widget & m &
  *         Widget which shows the unit type name label. $
  *
- * -race & & control & m &
+ * -race & & styled_widget & m &
  *         Widget which shows the unit race name label. $
  *
  * @end{table}

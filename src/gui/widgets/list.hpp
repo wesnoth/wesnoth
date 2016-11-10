@@ -202,10 +202,10 @@ public:
 	/** Inherited from tcontrol_. */
 	void init();
 
-	/** See @ref control::get_active. */
+	/** See @ref styled_widget::get_active. */
 	virtual bool get_active() const override;
 
-	/** See @ref control::get_state. */
+	/** See @ref styled_widget::get_state. */
 	virtual unsigned get_state() const override;
 
 	/** See @ref widget::place. */
@@ -273,7 +273,7 @@ private:
 	/** See @ref container_base::set_self_active. */
 	virtual void set_self_active(const bool active) override;
 
-	/** See @ref control::get_control_type. */
+	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 
 	/***** ***** ***** signal handlers ***** ****** *****/

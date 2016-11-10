@@ -54,7 +54,7 @@ scroll_label::scroll_label(bool wrap, const std::string& text_alignment)
 void scroll_label::set_label(const t_string& lbl)
 {
 	// Inherit.
-	control::set_label(lbl);
+	styled_widget::set_label(lbl);
 
 	if(content_grid()) {
 		label* widget
@@ -71,7 +71,7 @@ void scroll_label::set_label(const t_string& lbl)
 void scroll_label::set_use_markup(bool use_markup)
 {
 	// Inherit.
-	control::set_use_markup(use_markup);
+	styled_widget::set_use_markup(use_markup);
 
 	if(content_grid()) {
 		label* widget
@@ -137,7 +137,7 @@ void scroll_label::signal_handler_left_button_down(const event::ui_event event)
 // }---------- DEFINITION ---------{
 
 scroll_label_definition::scroll_label_definition(const config& cfg)
-	: control_definition(cfg)
+	: styled_widget_definition(cfg)
 {
 	DBG_GUI_P << "Parsing scroll label " << id << '\n';
 
@@ -238,7 +238,7 @@ namespace implementation
 {
 
 builder_scroll_label::builder_scroll_label(const config& cfg)
-	: implementation::builder_control(cfg)
+	: implementation::builder_styled_widget(cfg)
 	, vertical_scrollbar_mode(
 			  get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
 	, horizontal_scrollbar_mode(

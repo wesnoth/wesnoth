@@ -695,7 +695,7 @@ private:
 	 */
 	Uint8 mouse_button_state_;
 
-	/** See @ref control::get_control_type. */
+	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 
 	/**
@@ -794,7 +794,7 @@ private:
 
 // }---------- DEFINITION ---------{
 
-struct window_definition : public control_definition
+struct window_definition : public styled_widget_definition
 {
 	explicit window_definition(const config& cfg);
 

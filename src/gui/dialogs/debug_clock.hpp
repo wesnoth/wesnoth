@@ -22,7 +22,7 @@
 namespace gui2
 {
 
-class control;
+class styled_widget;
 class pane;
 class progress_bar;
 class integer_selector;
@@ -72,7 +72,7 @@ private:
 	pane* pane_;
 
 	/** A widget that can display the time. */
-	control* clock_;
+	styled_widget* clock_;
 
 	/** The window being shown. */
 	window* window_;

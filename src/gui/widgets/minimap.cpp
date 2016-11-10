@@ -265,7 +265,7 @@ const std::string& minimap::get_control_type() const
 // }---------- DEFINITION ---------{
 
 minimap_definition::minimap_definition(const config& cfg)
-	: control_definition(cfg)
+	: styled_widget_definition(cfg)
 {
 	DBG_GUI_P << "Parsing minimap " << id << '\n';
 
@@ -327,7 +327,7 @@ minimap_definition::resolution::resolution(const config& cfg)
 namespace implementation
 {
 
-builder_minimap::builder_minimap(const config& cfg) : builder_control(cfg)
+builder_minimap::builder_minimap(const config& cfg) : builder_styled_widget(cfg)
 {
 }
 

@@ -151,7 +151,7 @@ protected:
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
-	/** See @ref control::update_canvas. */
+	/** See @ref styled_widget::update_canvas. */
 	virtual void update_canvas() override;
 
 	/** Inherited from text_box_base. */
@@ -256,10 +256,10 @@ private:
 	/** Inherited from text_box_base. */
 	void handle_key_clear_line(SDL_Keymod modifier, bool& handled) override;
 
-	/** See @ref control::get_control_type. */
+	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 
-	/** Inherited from control. */
+	/** Inherited from styled_widget. */
 	void load_config_extra() override;
 
 	/***** ***** ***** signal handlers ***** ****** *****/
@@ -280,7 +280,7 @@ private:
 
 // }---------- DEFINITION ---------{
 
-struct text_box_definition : public control_definition
+struct text_box_definition : public styled_widget_definition
 {
 	explicit text_box_definition(const config& cfg);
 
@@ -298,12 +298,12 @@ struct text_box_definition : public control_definition
 namespace implementation
 {
 
-struct builder_text_box : public builder_control
+struct builder_text_box : public builder_styled_widget
 {
 public:
 	explicit builder_text_box(const config& cfg);
 
-	using builder_control::build;
+	using builder_styled_widget::build;
 
 	widget* build() const;
 

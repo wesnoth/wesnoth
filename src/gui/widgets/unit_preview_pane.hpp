@@ -71,13 +71,13 @@ public:
 	/** Callback for the profile button */
 	void profile_button_callback();
 
-	/** See @ref control::set_active. */
+	/** See @ref styled_widget::set_active. */
 	virtual void set_active(const bool active) override;
 
-	/** See @ref control::get_active. */
+	/** See @ref styled_widget::get_active. */
 	virtual bool get_active() const override;
 
-	/** See @ref control::get_state. */
+	/** See @ref styled_widget::get_state. */
 	virtual unsigned get_state() const override;
 
 protected:
@@ -99,8 +99,8 @@ private:
 	label* label_level_;
 	label* label_race_;
 
-	control* label_details_;
-	control* label_details_minimal_;
+	styled_widget* label_details_;
+	styled_widget* label_details_minimal_;
 	tree_view* tree_details_;
 
 	button* button_profile_;
@@ -114,7 +114,7 @@ private:
 		ENABLED
 	};
 
-	/** See @ref control::get_control_type. */
+	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 
 	/** See @ref container_base::set_self_active. */
@@ -124,7 +124,7 @@ private:
 
 // }---------- DEFINITION ---------{
 
-struct unit_preview_pane_definition : public control_definition
+struct unit_preview_pane_definition : public styled_widget_definition
 {
 
 	explicit unit_preview_pane_definition(const config& cfg);
@@ -142,12 +142,12 @@ struct unit_preview_pane_definition : public control_definition
 namespace implementation
 {
 
-struct builder_unit_preview_pane : public builder_control
+struct builder_unit_preview_pane : public builder_styled_widget
 {
 public:
 	explicit builder_unit_preview_pane(const config& cfg);
 
-	using builder_control::build;
+	using builder_styled_widget::build;
 
 	widget* build() const;
 
