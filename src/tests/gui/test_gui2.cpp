@@ -792,10 +792,10 @@ struct dialog_tester<lobby_main>
 {
 	config game_config;
 	wesnothd_connection connection;
-	wesnothd_connection_init wesnothd_connection_init;
+	wesnothd_connection_init init;
 	std::vector<std::string> installed_addons;
 	lobby_info li;
-	dialog_tester() : connection("", ""), wesnothd_connection_init(connection), li(game_config, installed_addons)
+	dialog_tester() : connection("", ""), init(connection), li(game_config, installed_addons)
 	{
 	}
 	lobby_main* create()
@@ -818,12 +818,12 @@ struct dialog_tester<lobby_player_info>
 	config c;
 	fake_chat_handler ch;
 	wesnothd_connection connection;
-	wesnothd_connection_init wesnothd_connection_init;
+	wesnothd_connection_init init;
 	user_info ui;
 	std::vector<std::string> installed_addons;
 	lobby_info li;
 	dialog_tester()
-		: connection("", ""), wesnothd_connection_init(connection)
+		: connection("", ""), init(connection)
 		, ui(c), li(c, installed_addons)
 	{
 	}
