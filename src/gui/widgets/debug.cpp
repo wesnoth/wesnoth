@@ -225,7 +225,7 @@ void debug_layout_graph::widget_generate_info(std::ostream& out,
 
 		if(container) {
 
-			widget_generate_info(out, &container->grid(), id + "_G", true);
+			widget_generate_info(out, &container->get_grid(), id + "_G", true);
 			out << "\t" << id << " -> " << id << "_G"
 				<< " [label=\"(grid)\"];\n";
 		}

@@ -192,7 +192,7 @@ void list_view::set_row_shown(const unsigned row, const bool shown)
 	if(resize_needed) {
 		window->invalidate_layout();
 	} else {
-		// grid().set_visible_rectangle(content_visible_rectangle());
+		// get_grid().set_visible_rectangle(content_visible_rectangle());
 		set_is_dirty(true);
 	}
 
@@ -327,26 +327,26 @@ void list_view::init()
 {
 	init_grid(cast<listbox_definition::resolution>(config()).grid);
 
-	set_single_child(find_widget<grid>(&grid(), "_list_grid", false),
+	set_single_child(find_widget<grid>(&get_grid(), "_list_grid", false),
 					 generator_);
 
 	/*
 	 * These items should be managed by the new listbox class.
 	 * So make them invisible for now.
 	 */
-	grid* g = find_widget<grid>(&grid(), "_header_grid", false, false);
+	grid* g = find_widget<grid>(&get_grid(), "_header_grid", false, false);
 	if(g)
 		g->set_visible(widget::visibility::invisible);
 
-	g = find_widget<grid>(&grid(), "_footer_grid", false, false);
+	g = find_widget<grid>(&get_grid(), "_footer_grid", false, false);
 	if(g)
 		g->set_visible(widget::visibility::invisible);
 
-	g = find_widget<grid>(&grid(), "_vertical_scrollbar_grid", false, false);
+	g = find_widget<grid>(&get_grid(), "_vertical_scrollbar_grid", false, false);
 	if(g)
 		g->set_visible(widget::visibility::invisible);
 
-	g = find_widget<grid>(&grid(), "_horizontal_scrollbar_grid", false, false);
+	g = find_widget<grid>(&get_grid(), "_horizontal_scrollbar_grid", false, false);
 	if(g)
 		g->set_visible(widget::visibility::invisible);
 }
@@ -364,10 +364,10 @@ unsigned list_view::get_state() const
 void list_view::layout_children(const bool force)
 {
 	if(need_layout_ || force) {
-		grid().place(grid().get_origin(), grid().get_size());
+		get_grid().place(get_grid().get_origin(), get_grid().get_size());
 
 		/*
-				grid().set_visible_rectangle(content_visible_area_);
+				get_grid().set_visible_rectangle(content_visible_area_);
 		*/
 		need_layout_ = false;
 		set_is_dirty(true);

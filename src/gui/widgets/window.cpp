@@ -427,9 +427,9 @@ window::~window()
 	 * this point the member of window are destroyed and we enter UB. (For
 	 * some reason the bug didn't trigger on g++ but it does on MSVC.
 	 */
-	for(unsigned row = 0; row < grid().get_rows(); ++row) {
-		for(unsigned col = 0; col < grid().get_cols(); ++col) {
-			grid().remove_child(row, col);
+	for(unsigned row = 0; row < get_grid().get_rows(); ++row) {
+		for(unsigned col = 0; col < get_grid().get_cols(); ++col) {
+			get_grid().remove_child(row, col);
 		}
 	}
 
