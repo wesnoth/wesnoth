@@ -664,13 +664,9 @@ public:
 
 	redraw_action get_drawing_action() const;
 
-#ifndef LOW_MEM
-
 	void set_debug_border_mode(const unsigned debug_border_mode);
 
 	void set_debug_border_colour(const unsigned debug_border_colour);
-
-#endif
 
 	/*** *** *** *** *** *** *** *** Members. *** *** *** *** *** *** *** ***/
 
@@ -695,8 +691,6 @@ private:
 	/** The clipping rectangle if a widget is partly visible. */
 	SDL_Rect clipping_rectangle_;
 
-#ifndef LOW_MEM
-
 	/**
 	 * Mode for drawing the debug border.
 	 *
@@ -715,18 +709,6 @@ private:
 
 	void draw_debug_border(surface& frame_buffer);
 	void draw_debug_border(surface& frame_buffer, int x_offset, int y_offset);
-
-#else
-
-	void draw_debug_border(surface&)
-	{
-	}
-	void draw_debug_border(surface&, int, int)
-	{
-	}
-
-#endif
-
 
 	/***** ***** ***** ***** Query functions ***** ***** ***** *****/
 

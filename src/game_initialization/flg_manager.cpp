@@ -29,18 +29,11 @@ static lg::log_domain log_mp_connect_engine("mp/connect/engine");
 
 namespace ng  {
 
-#ifdef LOW_MEM
-std::string get_RC_suffix(const std::string&, const int)
-{
-	return "";
-}
-#else
 std::string get_RC_suffix(const std::string& unit_color, const std::string& color)
 {
 	return "~RC(" + unit_color + ">" + color  +
 		")";
 }
-#endif
 
 
 flg_manager::flg_manager(const std::vector<const config*>& era_factions,

@@ -108,21 +108,12 @@ struct value_type
 	unsigned age;
 };
 
-#ifdef LOW_MEM
-/**
- * Maximum number of items in the cache (multiple of 4).
- *
- * As small as possible for low mem.
- */
-static const size_t cache_max_size = 4;
-#else
 /**
  * Maximum number of items in the cache (multiple of 4).
  *
  * No testing on the optimal number is done, just seems a nice number.
  */
 static const size_t cache_max_size = 100;
-#endif
 
 /**
  * The terrain used to create the cache.

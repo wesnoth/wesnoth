@@ -407,15 +407,11 @@ void wait::generate_menu()
 			const unit_type &utg = ut->get_gender_unit_type(gender_id);
 
 			leader_name = utg.type_name();
-#ifdef LOW_MEM
-			leader_image = utg.image();
-#else
 			std::string RCcolor = sd["color"];
 
 			if (RCcolor.empty())
 				RCcolor = sd["side"].str();
 			leader_image = utg.image() + std::string("~RC(") + utg.flag_rgb() + ">" + RCcolor + ")";
-#endif
 		} else {
 			leader_image = ng::random_enemy_picture;
 		}

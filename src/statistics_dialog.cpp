@@ -29,11 +29,7 @@ static const int BUTTON_TOGGLE = 102;
 
 namespace {
 
-#ifdef LOW_MEM
-std::vector<std::string> create_unit_table(const statistics::stats::str_int_map& m, unsigned int /*team*/)
-#else
 std::vector<std::string> create_unit_table(const statistics::stats::str_int_map& m, unsigned int team)
-#endif
 {
 	std::vector<std::string> table;
 	for(statistics::stats::str_int_map::const_iterator i = m.begin(); i != m.end(); ++i) {
@@ -43,9 +39,7 @@ std::vector<std::string> create_unit_table(const statistics::stats::str_int_map&
 		std::stringstream str;
 
 		str << IMAGE_PREFIX << type->image();
-#ifndef LOW_MEM
 		str << "~RC(" << type->flag_rgb() << ">" << team << ")";
-#endif
 		str << COLUMN_SEPARATOR	<< type->type_name() << COLUMN_SEPARATOR << i->second << "\n";
 		table.push_back(str.str());
 	}

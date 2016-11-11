@@ -51,7 +51,6 @@ option(ENABLE_TOOLS "Enable building and installation of tools for artists and W
 option(ENABLE_SDL2_TOOLS "Enable building and installation of tools for testing with SDL2" OFF)
 option(ENABLE_TESTS "Build unit tests")
 option(ENABLE_NLS "Enable building of translations" ON)
-option(ENABLE_LOW_MEM "Reduce memory usage by removing extra functionality" OFF)
 option(ENABLE_OMP "Enables OpenMP, and has additional dependencies" OFF)
 option(ENABLE_LIBPNG "Enable support for writing png files (screenshots, images)" ON)
 option(ENABLE_LIBINTL "Enable using libintl for translations instead of Boost.Locale library (not recommended)" OFF)
@@ -533,10 +532,6 @@ if(DEFAULT_PREFS_FILE)
 		add_definitions(-DHAS_RELATIVE_DEFPREF)
 	endif(NOT DEFAULT_PREFS_FILE MATCHES "^/")
 endif(DEFAULT_PREFS_FILE)
-
-if(ENABLE_LOW_MEM)
-	add_definitions(-DLOW_MEM)
-endif(ENABLE_LOW_MEM)
 
 if(ENABLE_OMP)
 	find_package(OpenMP REQUIRED)
