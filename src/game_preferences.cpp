@@ -404,11 +404,6 @@ void _set_lobby_joins(int show)
 	}
 }
 
-bool new_lobby()
-{
-	return get("new_mp_ui", true);
-}
-
 const std::vector<game_config::server_info>& server_list()
 {
 	static std::vector<game_config::server_info> pref_servers;

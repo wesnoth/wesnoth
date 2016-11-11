@@ -63,8 +63,6 @@ class acquaintance;
 	void _set_lobby_joins(int show);
 	enum LOBBY_JOINS { SHOW_NONE, SHOW_FRIENDS, SHOW_ALL };
 
-	bool new_lobby();
-
 	const std::map<std::string, acquaintance> & get_acquaintances();
 	std::map<std::string, std::string> get_acquaintances_nice(const std::string& filter);
 	preferences::acquaintance* add_acquaintance(const std::string& nick, const std::string& mode, const std::string& notes);
