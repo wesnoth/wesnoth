@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-#include "exploder_cutter.hpp"
+#include "tools/exploder_cutter.hpp"
 #include "filesystem.hpp"
 #include "sdl/rect.hpp"
 #include "serialization/parser.hpp"

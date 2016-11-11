@@ -18,7 +18,7 @@
  *  than the usual Markov chain generator
  */
 
-#include "context_free_grammar_generator.hpp"
+#include "utils/context_free_grammar_generator.hpp"
 
 #include "log.hpp"
 #include "random_new.hpp"

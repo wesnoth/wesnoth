@@ -18,7 +18,7 @@
  */
 
 #include "global.hpp"
-#include "map_generator.hpp"
+#include "generators/map_generator.hpp"
 
 #include "config.hpp"
 #include "gettext.hpp"

@@ -11,7 +11,7 @@
 
    See the COPYING file for more details.
 */
-#include "flg_manager.hpp"
+#include "game_initialization/flg_manager.hpp"
 
 #include "config.hpp"
 #include "formula/string_utils.hpp"

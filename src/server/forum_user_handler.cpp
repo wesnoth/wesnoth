@@ -14,7 +14,7 @@
 
 #ifdef HAVE_MYSQLPP
 
-#include "forum_user_handler.hpp"
+#include "server/forum_user_handler.hpp"
 #include "hash.hpp"
 #include "log.hpp"
 #include "config.hpp"

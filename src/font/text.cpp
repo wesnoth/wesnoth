@@ -14,15 +14,15 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "text.hpp"
+#include "font/text.hpp"
 
-#include "font_config.hpp"
+#include "font/font_config.hpp"
 
-#include "pango/escape.hpp"
-#include "pango/font.hpp"
-#include "pango/hyperlink.hpp"
-#include "pango/iter.hpp"
-#include "pango/stream_ops.hpp"
+#include "font/pango/escape.hpp"
+#include "font/pango/font.hpp"
+#include "font/pango/hyperlink.hpp"
+#include "font/pango/iter.hpp"
+#include "font/pango/stream_ops.hpp"
 
 #include "gettext.hpp"
 #include "gui/widgets/helper.hpp"

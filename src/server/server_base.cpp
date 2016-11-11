@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-#include "server_base.hpp"
+#include "server/server_base.hpp"
 
 #include "log.hpp"
 #include "util.hpp"
@@ -29,7 +29,7 @@ static lg::log_domain log_config("config");
 #define ERR_CONFIG LOG_STREAM(err, log_config)
 #define WRN_CONFIG LOG_STREAM(warn, log_config)
 
-#include "send_receive_wml_helpers.ipp"
+#include "server/send_receive_wml_helpers.ipp"
 
 server_base::server_base(unsigned short port, bool keep_alive) :
 	port_(port),

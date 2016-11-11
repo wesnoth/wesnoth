@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-#include "help_impl.hpp"
+#include "help/help_impl.hpp"
 
 #include "about.hpp"                    // for get_text
 #include "display.hpp"                  // for display
@@ -21,7 +21,7 @@
 #include "game_config_manager.hpp"      // for game_config_manager
 #include "game_preferences.hpp"         // for encountered_terrains, etc
 #include "gettext.hpp"                  // for _, gettext, N_
-#include "help_topic_generators.hpp"
+#include "help/help_topic_generators.hpp"
 #include "hotkey/hotkey_command.hpp"    // for is_scope_active, etc
 #include "image.hpp"                    // for get_image, locator
 #include "log.hpp"                      // for LOG_STREAM, logger, etc

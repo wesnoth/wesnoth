@@ -26,7 +26,7 @@
 #include "scripting/game_lua_kernel.hpp"
 #include "scripting/lua_unit.hpp"
 #include "scripting/push_check.hpp"
-#include "lua_object.hpp" // (Nephro)
+#include "ai/lua/lua_object.hpp" // (Nephro)
 
 #include "attack_prediction.hpp"
 #include "game_display.hpp"

@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-#include "help_topic_generators.hpp"
+#include "help/help_topic_generators.hpp"
 
 #include "font/sdl_ttf.hpp"             // for line_width
 #include "game_config.hpp"              // for debug, menu_contract, etc

@@ -18,7 +18,7 @@
  */
 
 #include "global.hpp"
-#include "entity_location.hpp"
+#include "game_events/entity_location.hpp"
 
 #include "resources.hpp"
 #include "units/unit.hpp"

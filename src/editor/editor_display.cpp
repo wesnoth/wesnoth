@@ -13,7 +13,7 @@
 */
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
-#include "editor_display.hpp"
+#include "editor/editor_display.hpp"
 #include "reports.hpp"
 #include "terrain/builder.hpp"
 #include "units/map.hpp"

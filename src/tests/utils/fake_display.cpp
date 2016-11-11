@@ -14,7 +14,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-test"
 
-#include "fake_display.hpp"
+#include "tests/utils/fake_display.hpp"
 
 #include "game_board.hpp"
 #include "game_display.hpp"

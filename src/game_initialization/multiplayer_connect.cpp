@@ -16,7 +16,7 @@
  * @file
  * Prepare to join a multiplayer-game.
  */
-#include "multiplayer_connect.hpp"
+#include "game_initialization/multiplayer_connect.hpp"
 
 #include "ai/configuration.hpp"
 #include "construct_dialog.hpp"

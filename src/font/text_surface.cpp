@@ -12,9 +12,9 @@
    See the COPYING file for more details.
 */
 
-#include "text_surface.hpp"
+#include "font/text_surface.hpp"
 
-#include "sdl_ttf.hpp"
+#include "font/sdl_ttf.hpp"
 
 #include "sdl/utils.hpp"
 

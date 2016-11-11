@@ -16,12 +16,12 @@
  * @file
  */
 
-#include "move.hpp"
+#include "whiteboard/move.hpp"
 
-#include "visitor.hpp"
-#include "manager.hpp"
-#include "side_actions.hpp"
-#include "utility.hpp"
+#include "whiteboard/visitor.hpp"
+#include "whiteboard/manager.hpp"
+#include "whiteboard/side_actions.hpp"
+#include "whiteboard/utility.hpp"
 
 #include "arrow.hpp"
 #include "config.hpp"

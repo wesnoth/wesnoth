@@ -23,7 +23,7 @@
 #include <boost/iostreams/filter/counter.hpp>
 #include <boost/iostreams/filter/gzip.hpp>
 
-#include "simple_wml.hpp"
+#include "server/simple_wml.hpp"
 
 #include "log.hpp"
 

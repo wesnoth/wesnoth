@@ -16,10 +16,10 @@
 
 #include "game_events/manager.hpp"
 
-#include "handlers.hpp"
-#include "manager_impl.hpp"
-#include "menu_item.hpp"
-#include "pump.hpp"
+#include "game_events/handlers.hpp"
+#include "game_events/manager_impl.hpp"
+#include "game_events/menu_item.hpp"
+#include "game_events/pump.hpp"
 
 #include "filter_context.hpp"
 #include "formula/string_utils.hpp"

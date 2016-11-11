@@ -13,7 +13,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "label_settings.hpp"
+#include "gui/dialogs/label_settings.hpp"
 
 #include <vector>
 #include "utils/functional.hpp"

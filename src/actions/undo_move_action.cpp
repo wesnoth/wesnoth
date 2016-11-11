@@ -1,5 +1,5 @@
-#include "undo_move_action.hpp"
-#include "move.hpp"
+#include "actions/undo_move_action.hpp"
+#include "actions/move.hpp"
 
 #include "resources.hpp"
 #include "replay.hpp"

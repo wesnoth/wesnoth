@@ -18,7 +18,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
-#include "terrain_palettes.hpp"
+#include "editor/palette/terrain_palettes.hpp"
 
 #include "gettext.hpp"
 #include "formula/string_utils.hpp"

@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-#include "lua_unit_attacks.hpp"
+#include "scripting/lua_unit_attacks.hpp"
 
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_unit.hpp"

@@ -11,7 +11,7 @@
    See the COPYING file for more details.
 */
 
-#include "singleplayer.hpp"
+#include "game_initialization/singleplayer.hpp"
 #include "config.hpp"
 #include "config_assign.hpp"
 #include "game_config_manager.hpp"
@@ -19,11 +19,11 @@
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/sp_options_configure.hpp"
 #include "gui/widgets/window.hpp"
-#include "multiplayer.hpp"
-#include "multiplayer_configure.hpp"
-#include "multiplayer_connect.hpp"
-#include "multiplayer_ui.hpp"
-#include "playcampaign.hpp"
+#include "game_initialization/multiplayer.hpp"
+#include "game_initialization/multiplayer_configure.hpp"
+#include "game_initialization/multiplayer_connect.hpp"
+#include "game_initialization/multiplayer_ui.hpp"
+#include "game_initialization/playcampaign.hpp"
 #include "wml_exception.hpp"
 
 static lg::log_domain log_engine("engine");

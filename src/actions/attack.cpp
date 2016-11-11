@@ -17,10 +17,10 @@
  * Fighting.
  */
 
-#include "attack.hpp"
+#include "actions/attack.hpp"
 
-#include "advancement.hpp"
-#include "vision.hpp"
+#include "actions/advancement.hpp"
+#include "actions/vision.hpp"
 
 #include "ai/lua/aspect_advancements.hpp"
 #include "attack_prediction.hpp"

@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-#include "exploder_utils.hpp"
+#include "tools/exploder_utils.hpp"
 #include "game_config.hpp"
 #include "serialization/string_utils.hpp"
 #include <cstdio> //for FILE

@@ -12,7 +12,7 @@
  * See the COPYING file for more details.
  */
 
-#include "lua_preferences.hpp"
+#include "scripting/lua_preferences.hpp"
 
 #include "config.hpp"
 #include "lua/lua.h"

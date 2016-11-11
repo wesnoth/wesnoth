@@ -16,12 +16,12 @@
  * @file
  */
 
-#include "action.hpp"
-#include "move.hpp"
-#include "attack.hpp"
-#include "recruit.hpp"
-#include "recall.hpp"
-#include "suppose_dead.hpp"
+#include "whiteboard/action.hpp"
+#include "whiteboard/move.hpp"
+#include "whiteboard/attack.hpp"
+#include "whiteboard/recruit.hpp"
+#include "whiteboard/recall.hpp"
+#include "whiteboard/suppose_dead.hpp"
 
 #include "config.hpp"
 #include "game_board.hpp"

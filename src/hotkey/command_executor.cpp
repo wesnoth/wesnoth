@@ -12,8 +12,8 @@
    See the COPYING file for more details.
 */
 
-#include "command_executor.hpp"
-#include "hotkey_item.hpp"
+#include "hotkey/command_executor.hpp"
+#include "hotkey/hotkey_item.hpp"
 
 #include "gui/dialogs/lua_interpreter.hpp"
 #include "gui/dialogs/message.hpp"

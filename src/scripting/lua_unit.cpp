@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-#include "lua_unit.hpp"
+#include "scripting/lua_unit.hpp"
 
 #include "game_board.hpp"
 #include "log.hpp"

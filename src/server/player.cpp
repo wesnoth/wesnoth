@@ -14,7 +14,7 @@
 
 #include "global.hpp"
 
-#include "player.hpp"
+#include "server/player.hpp"
 #include "serialization/string_utils.hpp"
 #include "util.hpp"
 

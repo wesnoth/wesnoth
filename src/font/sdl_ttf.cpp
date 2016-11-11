@@ -12,13 +12,13 @@
    See the COPYING file for more details.
 */
 
-#include "sdl_ttf.hpp"
+#include "font/sdl_ttf.hpp"
 
 #include "font/error.hpp"
-#include "font_config.hpp"
-#include "font_id.hpp"
-#include "text_cache.hpp"
-#include "text_surface.hpp"
+#include "font/font_config.hpp"
+#include "font/font_id.hpp"
+#include "font/text_cache.hpp"
+#include "font/text_surface.hpp"
 
 #include "filesystem.hpp"
 #include "game_config.hpp"

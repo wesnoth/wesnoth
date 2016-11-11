@@ -20,7 +20,7 @@
 
 #include "global.hpp"
 
-#include "binary_or_text.hpp"
+#include "serialization/binary_or_text.hpp"
 #include "config.hpp"
 #include "log.hpp"
 #include "wesconfig.h"

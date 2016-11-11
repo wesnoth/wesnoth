@@ -23,7 +23,7 @@
 #include <string>
 #include <time.h>
 
-#include "simple_wml.hpp"
+#include "server/simple_wml.hpp"
 
 class metrics
 {

@@ -16,10 +16,10 @@
  * @file
  */
 
-#include "attack.hpp"
+#include "whiteboard/attack.hpp"
 
-#include "visitor.hpp"
-#include "utility.hpp"
+#include "whiteboard/visitor.hpp"
+#include "whiteboard/utility.hpp"
 
 #include "arrow.hpp"
 #include "config.hpp"

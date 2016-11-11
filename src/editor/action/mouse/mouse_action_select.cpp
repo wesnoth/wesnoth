@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-#include "mouse_action_select.hpp"
+#include "editor/action/mouse/mouse_action_select.hpp"
 #include "editor/action/action_select.hpp"
 
 #include "editor/editor_display.hpp"

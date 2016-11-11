@@ -16,7 +16,7 @@
 
 #include <cassert>
 
-#include "debug_lua.hpp"
+#include "scripting/debug_lua.hpp"
 
 #include "log.hpp"
 

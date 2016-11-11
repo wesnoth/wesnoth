@@ -19,11 +19,11 @@
  */
 
 #include "global.hpp"
-#include "handlers.hpp"
-#include "manager.hpp"
-#include "manager_impl.hpp"
-#include "menu_item.hpp"
-#include "pump.hpp"
+#include "game_events/handlers.hpp"
+#include "game_events/manager.hpp"
+#include "game_events/manager_impl.hpp"
+#include "game_events/menu_item.hpp"
+#include "game_events/pump.hpp"
 
 #include "formula/string_utils.hpp"
 #include "game_data.hpp"

@@ -14,7 +14,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "control.hpp"
+#include "gui/widgets/control.hpp"
 
 #include "formula/string_utils.hpp"
 #include "gui/auxiliary/iterator/walker_widget.hpp"

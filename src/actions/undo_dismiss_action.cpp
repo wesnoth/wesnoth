@@ -1,5 +1,5 @@
 #include "game_board.hpp"
-#include "undo_dismiss_action.hpp"
+#include "actions/undo_dismiss_action.hpp"
 #include "resources.hpp"
 #include "team.hpp"
 #include "replay.hpp"

@@ -16,12 +16,12 @@
  * @file
  */
 
-#include "recall.hpp"
+#include "whiteboard/recall.hpp"
 
-#include "manager.hpp"
-#include "side_actions.hpp"
-#include "utility.hpp"
-#include "visitor.hpp"
+#include "whiteboard/manager.hpp"
+#include "whiteboard/side_actions.hpp"
+#include "whiteboard/utility.hpp"
+#include "whiteboard/visitor.hpp"
 
 #include "actions/create.hpp"
 #include "fake_unit_manager.hpp"

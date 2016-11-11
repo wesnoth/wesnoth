@@ -16,7 +16,7 @@
 
 #include "global.hpp"
 
-#include "tristate_button.hpp"
+#include "editor/palette/tristate_button.hpp"
 
 #include "font/constants.hpp"
 #include "font/sdl_ttf.hpp"

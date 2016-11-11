@@ -20,7 +20,7 @@
 #define GETTEXT_DOMAIN "wesnoth-help"
 
 #include "global.hpp"
-#include "help.hpp"
+#include "help/help.hpp"
 
 #include "config.hpp"                   // for config, etc
 #include "events.hpp"                   // for raise_draw_event, pump, etc
@@ -28,8 +28,8 @@
 #include "game_preferences.hpp"
 #include "gettext.hpp"                  // for _
 #include "gui/dialogs/transient_message.hpp"
-#include "help_browser.hpp"             // for help_browser
-#include "help_impl.hpp"                // for hidden_symbol, toplevel, etc
+#include "help/help_browser.hpp"             // for help_browser
+#include "help/help_impl.hpp"                // for hidden_symbol, toplevel, etc
 #include "key.hpp"                      // for CKey
 #include "log.hpp"                      // for LOG_STREAM, log_domain
 #include "sdl/utils.hpp"                // for surface

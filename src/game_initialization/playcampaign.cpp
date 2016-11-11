@@ -20,7 +20,7 @@
 
 #include "global.hpp"
 
-#include "playcampaign.hpp"
+#include "game_initialization/playcampaign.hpp"
 
 #include "carryover.hpp"
 #include "game_config.hpp"
@@ -36,9 +36,9 @@
 #include "log.hpp"
 #include "map/map.hpp"
 #include "map/exception.hpp"
-#include "mp_game_utils.hpp"
-#include "multiplayer.hpp"
-#include "connect_engine.hpp"
+#include "game_initialization/mp_game_utils.hpp"
+#include "game_initialization/multiplayer.hpp"
+#include "game_initialization/connect_engine.hpp"
 #include "gettext.hpp"
 #include "resources.hpp"
 #include "savegame.hpp"

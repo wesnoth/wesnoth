@@ -16,7 +16,7 @@
 #include "resources.hpp"
 #include "team.hpp"
 
-#include "context_manager.hpp"
+#include "editor/map/context_manager.hpp"
 #include "display.hpp"
 #include "filesystem.hpp"
 #include "formula/string_utils.hpp"
@@ -24,7 +24,7 @@
 #include "gettext.hpp"
 #include "generators/map_create.hpp"
 #include "generators/map_generator.hpp"
-#include "map_context.hpp"
+#include "editor/map/map_context.hpp"
 
 #include "editor/action/action.hpp"
 #include "editor/controller/editor_controller.hpp"

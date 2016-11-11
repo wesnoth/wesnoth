@@ -12,7 +12,7 @@
  * See the COPYING file for more details.
  */
 
-#include "standard_colors.hpp"
+#include "font/standard_colors.hpp"
 
 #include "sdl/utils.hpp"
 

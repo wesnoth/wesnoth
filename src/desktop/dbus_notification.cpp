@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-#include "dbus_notification.hpp"
+#include "desktop/dbus_notification.hpp"
 #include "global.hpp"
 
 #include "filesystem.hpp"

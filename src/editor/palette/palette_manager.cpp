@@ -14,7 +14,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
-#include "palette_manager.hpp"
+#include "editor/palette/palette_manager.hpp"
 #include "widgets/widget.hpp"
 
 #include "tooltips.hpp"
