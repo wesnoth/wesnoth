@@ -59,6 +59,8 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -74,19 +76,19 @@ namespace gui2
  * addons & & listbox & m &
  *        A listbox that will contain the info about all addons on the server. $
  *
- * -name & & control & o &
+ * -name & & styled_widget & o &
  *        The name of the addon. $
  *
- * -version & & control & o &
+ * -version & & styled_widget & o &
  *        The version number of the addon. $
  *
- * -author & & control & o &
+ * -author & & styled_widget & o &
  *        The author of the addon. $
  *
- * -downloads & & control & o &
+ * -downloads & & styled_widget & o &
  *        The number of times the addon has been downloaded. $
  *
- * -size & & control & o &
+ * -size & & styled_widget & o &
  *        The size of the addon. $
  *
  * @end{table}
@@ -155,9 +157,9 @@ namespace {
 	}
 }
 
-REGISTER_DIALOG(addon_list)
+REGISTER_DIALOG(addon_manager)
 
-taddon_list::taddon_list(const config& cfg)
+addon_manager::addon_manager(const config& cfg)
 	: orders_()
 	, cfg_(cfg)
 	, cfg_iterators_(cfg_.child_range("campaign"))
@@ -168,16 +170,16 @@ taddon_list::taddon_list(const config& cfg)
 	read_addons_list(cfg, addons_);
 }
 
-void taddon_list::on_filtertext_changed(ttext_* textbox, const std::string& text)
+void addon_manager::on_filtertext_changed(text_box_base* textbox, const std::string& text)
 {
-	tlistbox& listbox = find_widget<tlistbox>(textbox->get_window(), "addons", true);
+	listbox& addons = find_widget<listbox>(textbox->get_window(), "addons", true);
 	filter_transform filter(utils::split(text, ' '));
 	boost::dynamic_bitset<> res;
 	for(const auto& child : cfg_.child_range("campaign"))
 	{
 		res.push_back(filter(child));
 	}
-	listbox.set_row_shown(res);
+	addons.set_row_shown(res);
 }
 
 static std::string colorify_addon_state_string(const std::string& str,
@@ -312,9 +314,9 @@ static std::string describe_status_verbose(const addon_tracking_info& state)
 	return colorify_addon_state_string(s, state);
 }
 
-void taddon_list::pre_show(twindow& window)
+void addon_manager::pre_show(window& window)
 {
-	tlistbox& list = find_widget<tlistbox>(&window, "addons", false);
+	listbox& list = find_widget<listbox>(&window, "addons", false);
 
 	for(const auto & c : cfg_.child_range("campaign"))
 	{
@@ -351,9 +353,9 @@ void taddon_list::pre_show(twindow& window)
 		item["label"] = info.display_type();
 		data.emplace("type", item);
 
-		tgrid* row_grid = &list.add_row(data);
+		grid* row_grid = &list.add_row(data);
 
-		tstacked_widget& install_update_stack = find_widget<tstacked_widget>(row_grid, "install_update_stack", false);
+		stacked_widget& install_update_stack = find_widget<stacked_widget>(row_grid, "install_update_stack", false);
 
 		const bool is_updatable = tracking_info_[info.id].state == ADDON_INSTALLED_UPGRADABLE;
 		const bool is_installed = tracking_info_[info.id].state == ADDON_INSTALLED;
@@ -361,10 +363,10 @@ void taddon_list::pre_show(twindow& window)
 		install_update_stack.select_layer(is_updatable);
 
 		if(!is_updatable) {
-			find_widget<tbutton>(row_grid, "single_install", false).set_active(!is_installed);
+			find_widget<button>(row_grid, "single_install", false).set_active(!is_installed);
 		}
 
-		find_widget<tbutton>(row_grid, "single_uninstall", false).set_active(is_installed);
+		find_widget<button>(row_grid, "single_uninstall", false).set_active(is_installed);
 	}
 
 	list.register_sorting_option(0, [this](const int i) { return addon_at(ids_[i], addons_).title; });
@@ -373,22 +375,22 @@ void taddon_list::pre_show(twindow& window)
 	list.register_sorting_option(3, [this](const int i) { return addon_at(ids_[i], addons_).downloads; });
 	list.register_sorting_option(4, [this](const int i) { return addon_at(ids_[i], addons_).type; });
 
-	find_widget<ttext_box>(&window, "filter", false).set_text_changed_callback(
-		std::bind(&taddon_list::on_filtertext_changed, this, _1, _2));
+	find_widget<text_box>(&window, "filter", false).set_text_changed_callback(
+		std::bind(&addon_manager::on_filtertext_changed, this, _1, _2));
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	connect_signal_notify_modified(list,
-			std::bind(&taddon_list::on_addon_select,
+			std::bind(&addon_manager::on_addon_select,
 			*this,
 			std::ref(window)));
 #else
 	list.set_callback_value_change(
-			dialog_callback<taddon_list, &taddon_list::on_addon_select>);
+			dialog_callback<addon_manager, &addon_manager::on_addon_select>);
 #endif
 
-	tbutton& url_go_button = find_widget<tbutton>(&window, "url_go", false);
-	tbutton& url_copy_button = find_widget<tbutton>(&window, "url_copy", false);
-	ttext_box& url_textbox = find_widget<ttext_box>(&window, "url", false);
+	button& url_go_button = find_widget<button>(&window, "url_go", false);
+	button& url_copy_button = find_widget<button>(&window, "url_copy", false);
+	text_box& url_textbox = find_widget<text_box>(&window, "url", false);
 
 	url_textbox.set_active(false);
 
@@ -400,32 +402,32 @@ void taddon_list::pre_show(twindow& window)
 	if(!desktop::open_object_is_supported()) {
 		// No point in displaying the button on platforms that can't do
 		// open_object().
-		url_go_button.set_visible(tcontrol::tvisible::invisible);
+		url_go_button.set_visible(styled_widget::visibility::invisible);
 	}
 
 	connect_signal_mouse_left_click(
 			url_go_button,
-			std::bind(&taddon_list::browse_url_callback, this, std::ref(url_textbox)));
+			std::bind(&addon_manager::browse_url_callback, this, std::ref(url_textbox)));
 
 	connect_signal_mouse_left_click(
 			url_copy_button,
-			std::bind(&taddon_list::copy_url_callback, this, std::ref(url_textbox)));
+			std::bind(&addon_manager::copy_url_callback, this, std::ref(url_textbox)));
 
 	connect_signal_mouse_left_click(
-			find_widget<tbutton>(&window, "options", false),
-			std::bind(&taddon_list::options_button_callback, this, std::ref(window)));
+			find_widget<button>(&window, "options", false),
+			std::bind(&addon_manager::options_button_callback, this, std::ref(window)));
 
 	connect_signal_mouse_left_click(
-			find_widget<tbutton>(&window, "show_help", false),
-			std::bind(&taddon_list::show_help, this, std::ref(window)));
+			find_widget<button>(&window, "show_help", false),
+			std::bind(&addon_manager::show_help, this, std::ref(window)));
 
 	on_addon_select(window);
 }
 
-void taddon_list::options_button_callback(twindow& window)
+void addon_manager::options_button_callback(window& window)
 {
 	// TODO
-	//gui2::taddon_filter_options dlg;
+	//gui2::addon_filter_options dlg;
 
 	//dlg.set_displayed_status(f_.status);
 	//dlg.set_displayed_types(f_.types);
@@ -436,19 +438,19 @@ void taddon_list::options_button_callback(twindow& window)
 	UNUSED(window); // Remove this once the code works.
 }
 
-void taddon_list::show_help(twindow& window)
+void addon_manager::show_help(window& window)
 {
 	help::show_help(window.video(), "installing_addons");
 }
 
-void taddon_list::browse_url_callback(ttext_box& url_box)
+void addon_manager::browse_url_callback(text_box& url_box)
 {
 	/* TODO: ask for confirmation */
 
 	desktop::open_object(url_box.get_value());
 }
 
-void taddon_list::copy_url_callback(ttext_box& url_box)
+void addon_manager::copy_url_callback(text_box& url_box)
 {
 	desktop::clipboard::copy_to_clipboard(url_box.get_value(), false);
 }
@@ -471,9 +473,9 @@ static std::string format_addon_time(time_t time)
 	return font::unicode_em_dash;
 }
 
-void taddon_list::on_addon_select(twindow& window)
+void addon_manager::on_addon_select(window& window)
 {
-	const int index = find_widget<tlistbox>(&window, "addons", false).get_selected_row();
+	const int index = find_widget<listbox>(&window, "addons", false).get_selected_row();
 
 	if(index == -1) {
 		return;
@@ -481,33 +483,34 @@ void taddon_list::on_addon_select(twindow& window)
 
 	const addon_info& info = addon_at(ids_[index], addons_);
 
-	find_widget<tdrawing>(&window, "image", false).set_label(info.display_icon());
+	find_widget<drawing>(&window, "image", false).set_label(info.display_icon());
 
-	find_widget<tcontrol>(&window, "title", false).set_label(info.display_title());
-	find_widget<tcontrol>(&window, "description", false).set_label(info.description);
-	find_widget<tcontrol>(&window, "version", false).set_label(info.version.str());
-	find_widget<tcontrol>(&window, "author", false).set_label(info.author);
-	find_widget<tcontrol>(&window, "type", false).set_label(info.display_type());
+	find_widget<styled_widget>(&window, "title", false).set_label(info.display_title());
+	find_widget<styled_widget>(&window, "description", false).set_label(info.description);
+	find_widget<styled_widget>(&window, "version", false).set_label(info.version.str());
+	find_widget<styled_widget>(&window, "author", false).set_label(info.author);
+	find_widget<styled_widget>(&window, "type", false).set_label(info.display_type());
 
-	tcontrol& status = find_widget<tcontrol>(&window, "status", false);
+	styled_widget& status = find_widget<styled_widget>(&window, "status", false);
 	status.set_label(describe_status_verbose(tracking_info_[info.id]));
 	status.set_use_markup(true);
 
-	find_widget<tcontrol>(&window, "size", false).set_label(size_display_string(info.size));
-	find_widget<tcontrol>(&window, "downloads", false).set_label(std::to_string(info.downloads));
-	find_widget<tcontrol>(&window, "created", false).set_label(format_addon_time(info.created));
-	find_widget<tcontrol>(&window, "updated", false).set_label(format_addon_time(info.updated));
+	find_widget<styled_widget>(&window, "size", false).set_label(size_display_string(info.size));
+	find_widget<styled_widget>(&window, "downloads", false).set_label(std::to_string(info.downloads));
+	find_widget<styled_widget>(&window, "created", false).set_label(format_addon_time(info.created));
+	find_widget<styled_widget>(&window, "updated", false).set_label(format_addon_time(info.updated));
 
 	const std::string& feedback_url = info.feedback_url;
 
 	if(!feedback_url.empty()) {
-		find_widget<tstacked_widget>(&window, "feedback_stack", false).select_layer(1);
-		find_widget<ttext_box>(&window, "url", false).set_value(feedback_url);
+		find_widget<stacked_widget>(&window, "feedback_stack", false).select_layer(1);
+		find_widget<text_box>(&window, "url", false).set_value(feedback_url);
 	} else {
-		find_widget<tstacked_widget>(&window, "feedback_stack", false).select_layer(0);
+		find_widget<stacked_widget>(&window, "feedback_stack", false).select_layer(0);
 	}
 
-	find_widget<tbutton>(&window, "uninstall", false).set_active(tracking_info_[info.id].state == ADDON_INSTALLED);
+	find_widget<button>(&window, "uninstall", false).set_active(tracking_info_[info.id].state == ADDON_INSTALLED);
 }
 
+} // namespace dialogs
 } // namespace gui2

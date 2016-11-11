@@ -34,10 +34,10 @@ namespace gui2
 
 REGISTER_WIDGET(panel)
 
-SDL_Rect tpanel::get_client_rect() const
+SDL_Rect panel::get_client_rect() const
 {
-	std::shared_ptr<const tpanel_definition::tresolution> conf
-			= std::static_pointer_cast<const tpanel_definition::tresolution>(
+	std::shared_ptr<const panel_definition::resolution> conf
+			= std::static_pointer_cast<const panel_definition::resolution>(
 					config());
 	assert(conf);
 
@@ -50,59 +50,59 @@ SDL_Rect tpanel::get_client_rect() const
 	return result;
 }
 
-bool tpanel::get_active() const
+bool panel::get_active() const
 {
 	return true;
 }
 
-unsigned tpanel::get_state() const
+unsigned panel::get_state() const
 {
 	return 0;
 }
 
-void tpanel::impl_draw_background(surface& frame_buffer, int x_offset, int y_offset)
+void panel::impl_draw_background(surface& frame_buffer, int x_offset, int y_offset)
 {
 	DBG_GUI_D << LOG_HEADER << " size " << get_rectangle() << ".\n";
 
-	canvas(0).blit(frame_buffer,
+	get_canvas(0).blit(frame_buffer,
 				   calculate_blitting_rectangle(x_offset, y_offset));
 }
 
-void tpanel::impl_draw_foreground(surface& frame_buffer, int x_offset, int y_offset)
+void panel::impl_draw_foreground(surface& frame_buffer, int x_offset, int y_offset)
 {
-	canvas(1).blit(frame_buffer,
+	get_canvas(1).blit(frame_buffer,
 				   calculate_blitting_rectangle(x_offset, y_offset));
 }
 
-tpoint tpanel::border_space() const
+point panel::border_space() const
 {
-	std::shared_ptr<const tpanel_definition::tresolution> conf
-			= std::static_pointer_cast<const tpanel_definition::tresolution>(
+	std::shared_ptr<const panel_definition::resolution> conf
+			= std::static_pointer_cast<const panel_definition::resolution>(
 					config());
 	assert(conf);
 
-	return tpoint(conf->left_border + conf->right_border, conf->top_border + conf->bottom_border);
+	return point(conf->left_border + conf->right_border, conf->top_border + conf->bottom_border);
 }
 
-const std::string& tpanel::get_control_type() const
+const std::string& panel::get_control_type() const
 {
 	static const std::string type = "panel";
 	return type;
 }
 
-void tpanel::set_self_active(const bool /*active*/)
+void panel::set_self_active(const bool /*active*/)
 {
 	/* DO NOTHING */
 }
 
 // }---------- DEFINITION ---------{
 
-tpanel_definition::tpanel_definition(const config& cfg)
-	: tcontrol_definition(cfg)
+panel_definition::panel_definition(const config& cfg)
+	: styled_widget_definition(cfg)
 {
 	DBG_GUI_P << "Parsing panel " << id << '\n';
 
-	load_resolutions<tresolution>(cfg);
+	load_resolutions<resolution>(cfg);
 }
 
 /*WIKI
@@ -143,16 +143,16 @@ tpanel_definition::tpanel_definition(const config& cfg)
  * @end{tag}{name="panel_definition"}
  * @end{parent}{name="gui/"}
  */
-tpanel_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
+panel_definition::resolution::resolution(const config& cfg)
+	: resolution_definition(cfg)
 	, top_border(cfg["top_border"])
 	, bottom_border(cfg["bottom_border"])
 	, left_border(cfg["left_border"])
 	, right_border(cfg["right_border"])
 {
 	// The panel needs to know the order.
-	state.push_back(tstate_definition(cfg.child("background")));
-	state.push_back(tstate_definition(cfg.child("foreground")));
+	state.push_back(state_definition(cfg.child("background")));
+	state.push_back(state_definition(cfg.child("foreground")));
 }
 
 // }---------- BUILDER -----------{
@@ -188,19 +188,19 @@ tpanel_definition::tresolution::tresolution(const config& cfg)
 namespace implementation
 {
 
-tbuilder_panel::tbuilder_panel(const config& cfg)
-	: tbuilder_control(cfg), grid(nullptr)
+builder_panel::builder_panel(const config& cfg)
+	: builder_styled_widget(cfg), grid(nullptr)
 {
 	const config& c = cfg.child("grid");
 
 	VALIDATE(c, _("No grid defined."));
 
-	grid = std::make_shared<tbuilder_grid>(c);
+	grid = std::make_shared<builder_grid>(c);
 }
 
-twidget* tbuilder_panel::build() const
+widget* builder_panel::build() const
 {
-	tpanel* widget = new tpanel();
+	panel* widget = new panel();
 
 	init_control(widget);
 

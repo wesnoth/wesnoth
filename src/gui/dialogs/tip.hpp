@@ -24,7 +24,10 @@ class t_string;
 namespace gui2
 {
 
-struct tpoint;
+struct point;
+
+namespace dialogs
+{
 
 namespace tip
 {
@@ -44,7 +47,7 @@ namespace tip
 void show(CVideo& video,
 		  const std::string& window_id,
 		  const t_string& message,
-		  const tpoint& mouse,
+		  const point& mouse,
 		  const SDL_Rect& source_rect);
 
 /**
@@ -55,7 +58,7 @@ void show(CVideo& video,
 void remove();
 
 } // namespace tip
-
+} // namespace dialogs
 } // namespace gui2
 
 #endif

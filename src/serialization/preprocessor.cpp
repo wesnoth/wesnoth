@@ -47,8 +47,7 @@ static std::string current_file_str = "CURRENT_FILE";
 static std::string current_dir_str = "CURRENT_DIRECTORY";
 
 // map associating each filename encountered to a number
-typedef std::map<std::string, int> t_file_number_map;
-static t_file_number_map file_number_map;
+static std::map<std::string, int> file_number_map;
 
 static bool encode_filename = true;
 
@@ -64,7 +63,7 @@ static std::string get_filename(const std::string& file_code){
 	int n = 0;
 	s >> std::hex >> n;
 
-	for(const t_file_number_map::value_type& p : file_number_map) {
+	for(const auto& p : file_number_map) {
 		if(p.second == n)
 			return p.first;
 	}

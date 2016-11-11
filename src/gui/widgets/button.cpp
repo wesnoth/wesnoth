@@ -40,39 +40,39 @@ namespace gui2
 
 REGISTER_WIDGET(button)
 
-tbutton::tbutton() : tcontrol(COUNT), tclickable_(), state_(ENABLED), retval_(0)
+button::button() : styled_widget(COUNT), clickable_item(), state_(ENABLED), retval_(0)
 {
 	connect_signal<event::MOUSE_ENTER>(
-			std::bind(&tbutton::signal_handler_mouse_enter, this, _2, _3));
+			std::bind(&button::signal_handler_mouse_enter, this, _2, _3));
 	connect_signal<event::MOUSE_LEAVE>(
-			std::bind(&tbutton::signal_handler_mouse_leave, this, _2, _3));
+			std::bind(&button::signal_handler_mouse_leave, this, _2, _3));
 
 	connect_signal<event::LEFT_BUTTON_DOWN>(std::bind(
-			&tbutton::signal_handler_left_button_down, this, _2, _3));
+			&button::signal_handler_left_button_down, this, _2, _3));
 	connect_signal<event::LEFT_BUTTON_UP>(
-			std::bind(&tbutton::signal_handler_left_button_up, this, _2, _3));
+			std::bind(&button::signal_handler_left_button_up, this, _2, _3));
 	connect_signal<event::LEFT_BUTTON_CLICK>(std::bind(
-			&tbutton::signal_handler_left_button_click, this, _2, _3));
+			&button::signal_handler_left_button_click, this, _2, _3));
 }
 
-void tbutton::set_active(const bool active)
+void button::set_active(const bool active)
 {
 	if(get_active() != active) {
 		set_state(active ? ENABLED : DISABLED);
 	}
 }
 
-bool tbutton::get_active() const
+bool button::get_active() const
 {
 	return state_ != DISABLED;
 }
 
-unsigned tbutton::get_state() const
+unsigned button::get_state() const
 {
 	return state_;
 }
 
-void tbutton::set_state(const tstate state)
+void button::set_state(const state_t state)
 {
 	if(state != state_) {
 		state_ = state;
@@ -80,13 +80,13 @@ void tbutton::set_state(const tstate state)
 	}
 }
 
-const std::string& tbutton::get_control_type() const
+const std::string& button::get_control_type() const
 {
 	static const std::string type = "button";
 	return type;
 }
 
-void tbutton::signal_handler_mouse_enter(const event::tevent event,
+void button::signal_handler_mouse_enter(const event::ui_event event,
 										 bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -95,7 +95,7 @@ void tbutton::signal_handler_mouse_enter(const event::tevent event,
 	handled = true;
 }
 
-void tbutton::signal_handler_mouse_leave(const event::tevent event,
+void button::signal_handler_mouse_leave(const event::ui_event event,
 										 bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -104,12 +104,12 @@ void tbutton::signal_handler_mouse_leave(const event::tevent event,
 	handled = true;
 }
 
-void tbutton::signal_handler_left_button_down(const event::tevent event,
+void button::signal_handler_left_button_down(const event::ui_event event,
 											  bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
-	twindow* window = get_window();
+	window* window = get_window();
 	if(window) {
 		window->mouse_capture();
 	}
@@ -118,7 +118,7 @@ void tbutton::signal_handler_left_button_down(const event::tevent event,
 	handled = true;
 }
 
-void tbutton::signal_handler_left_button_up(const event::tevent event,
+void button::signal_handler_left_button_up(const event::ui_event event,
 											bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -127,7 +127,7 @@ void tbutton::signal_handler_left_button_up(const event::tevent event,
 	handled = true;
 }
 
-void tbutton::signal_handler_left_button_click(const event::tevent event,
+void button::signal_handler_left_button_click(const event::ui_event event,
 											   bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -136,7 +136,7 @@ void tbutton::signal_handler_left_button_click(const event::tevent event,
 
 	// If a button has a retval do the default handling.
 	if(retval_ != 0) {
-		twindow* window = get_window();
+		window* window = get_window();
 		if(window) {
 			window->set_retval(retval_);
 			return;
@@ -148,12 +148,12 @@ void tbutton::signal_handler_left_button_click(const event::tevent event,
 
 // }---------- DEFINITION ---------{
 
-tbutton_definition::tbutton_definition(const config& cfg)
-	: tcontrol_definition(cfg)
+button_definition::button_definition(const config& cfg)
+	: styled_widget_definition(cfg)
 {
 	DBG_GUI_P << "Parsing button " << id << '\n';
 
-	load_resolutions<tresolution>(cfg);
+	load_resolutions<resolution>(cfg);
 }
 
 /*WIKI
@@ -184,14 +184,14 @@ tbutton_definition::tbutton_definition(const config& cfg)
  * @end{tag}{name="button_definition"}
  * @end{parent}{name="gui/"}
  */
-tbutton_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
+button_definition::resolution::resolution(const config& cfg)
+	: resolution_definition(cfg)
 {
-	// Note the order should be the same as the enum tstate in button.hpp.
-	state.push_back(tstate_definition(cfg.child("state_enabled")));
-	state.push_back(tstate_definition(cfg.child("state_disabled")));
-	state.push_back(tstate_definition(cfg.child("state_pressed")));
-	state.push_back(tstate_definition(cfg.child("state_focused")));
+	// Note the order should be the same as the enum state_t in button.hpp.
+	state.push_back(state_definition(cfg.child("state_enabled")));
+	state.push_back(state_definition(cfg.child("state_disabled")));
+	state.push_back(state_definition(cfg.child("state_pressed")));
+	state.push_back(state_definition(cfg.child("state_focused")));
 }
 
 // }---------- BUILDER -----------{
@@ -199,7 +199,7 @@ tbutton_definition::tresolution::tresolution(const config& cfg)
 /*WIKI_MACRO
  * @begin{macro}{button_description}
  *
- *        A button is a control that can be pushed to start an action or close
+ *        A button is a styled_widget that can be pushed to start an action or close
  *        a dialog.
  * @end{macro}
  */
@@ -237,16 +237,16 @@ tbutton_definition::tresolution::tresolution(const config& cfg)
 namespace implementation
 {
 
-tbuilder_button::tbuilder_button(const config& cfg)
-	: tbuilder_control(cfg)
+builder_button::builder_button(const config& cfg)
+	: builder_styled_widget(cfg)
 	, retval_id_(cfg["return_value_id"])
 	, retval_(cfg["return_value"])
 {
 }
 
-twidget* tbuilder_button::build() const
+widget* builder_button::build() const
 {
-	tbutton* widget = new tbutton();
+	button* widget = new button();
 
 	init_control(widget);
 

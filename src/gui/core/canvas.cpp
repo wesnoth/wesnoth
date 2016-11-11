@@ -203,7 +203,7 @@ static void draw_circle(surface& canvas,
 /***** ***** ***** ***** ***** LINE ***** ***** ***** ***** *****/
 
 /** Definition of a line shape. */
-class tline : public tcanvas::tshape
+class line_shape : public canvas::shape
 {
 public:
 	/**
@@ -213,7 +213,7 @@ public:
 	 *                            http://www.wesnoth.org/wiki/GUICanvasWML#Line
 	 *                            for more information.
 	 */
-	explicit tline(const config& cfg);
+	explicit line_shape(const config& cfg);
 
 	/** Implement shape::draw(). */
 	void draw(surface& canvas,
@@ -221,7 +221,7 @@ public:
 			  const game_logic::map_formula_callable& variables);
 
 private:
-	tformula<unsigned> x1_, /**< The start x coordinate of the line. */
+	typed_formula<unsigned> x1_, /**< The start x coordinate of the line. */
 			y1_,			/**< The start y coordinate of the line. */
 			x2_,			/**< The end x coordinate of the line. */
 			y2_,			/**< The end y coordinate of the line. */
@@ -553,7 +553,7 @@ private:
  * @end{table}
  */
 
-tline::tline(const config& cfg)
+line_shape::line_shape(const config& cfg)
 	: x1_(cfg["x1"])
 	, y1_(cfg["y1"])
 	, x2_(cfg["x2"])
@@ -568,7 +568,7 @@ tline::tline(const config& cfg)
 	}
 }
 
-void tline::draw(surface& canvas,
+void line_shape::draw(surface& canvas,
 				 SDL_Renderer* renderer,
 				 const game_logic::map_formula_callable& variables)
 {
@@ -610,7 +610,7 @@ void tline::draw(surface& canvas,
 /***** ***** ***** ***** ***** Rectangle ***** ***** ***** ***** *****/
 
 /** Definition of a rectangle shape. */
-class trectangle : public tcanvas::tshape
+class rectangle_shape : public canvas::shape
 {
 public:
 	/**
@@ -620,7 +620,7 @@ public:
 	 *                            http://www.wesnoth.org/wiki/GUICanvasWML#Rectangle
 	 *                            for more information.
 	 */
-	explicit trectangle(const config& cfg);
+	explicit rectangle_shape(const config& cfg);
 
 	/** Implement shape::draw(). */
 	void draw(surface& canvas,
@@ -628,7 +628,7 @@ public:
 			  const game_logic::map_formula_callable& variables);
 
 private:
-	tformula<int> x_, /**< The x coordinate of the rectangle. */
+	typed_formula<int> x_, /**< The x coordinate of the rectangle. */
 			y_,			   /**< The y coordinate of the rectangle. */
 			w_,			   /**< The width of the rectangle. */
 			h_;			   /**< The height of the rectangle. */
@@ -688,7 +688,7 @@ private:
  * See [[#general_variables|Line]].
  *
  */
-trectangle::trectangle(const config& cfg)
+rectangle_shape::rectangle_shape(const config& cfg)
 	: x_(cfg["x"])
 	, y_(cfg["y"])
 	, w_(cfg["w"])
@@ -707,7 +707,7 @@ trectangle::trectangle(const config& cfg)
 	}
 }
 
-void trectangle::draw(surface& canvas,
+void rectangle_shape::draw(surface& canvas,
 					  SDL_Renderer* renderer,
 					  const game_logic::map_formula_callable& variables)
 {
@@ -764,7 +764,7 @@ void trectangle::draw(surface& canvas,
 /***** ***** ***** ***** ***** CIRCLE ***** ***** ***** ***** *****/
 
 /** Definition of a circle shape. */
-class tcircle : public tcanvas::tshape
+class circle_shape : public canvas::shape
 {
 public:
 	/**
@@ -774,7 +774,7 @@ public:
 	 *                            http://www.wesnoth.org/wiki/GUICanvasWML#Circle
 	 *                            for more information.
 	 */
-	explicit tcircle(const config& cfg);
+	explicit circle_shape(const config& cfg);
 
 	/** Implement shape::draw(). */
 	void draw(surface& canvas,
@@ -782,7 +782,7 @@ public:
 			  const game_logic::map_formula_callable& variables);
 
 private:
-	tformula<unsigned> x_, /**< The center x coordinate of the circle. */
+	typed_formula<unsigned> x_, /**< The center x coordinate of the circle. */
 			y_,			   /**< The center y coordinate of the circle. */
 			radius_;	   /**< The radius of the circle. */
 
@@ -817,7 +817,7 @@ private:
  * Drawing outside the area will result in unpredictable results including
  * crashing. (That should be fixed, when encountered.)
  */
-tcircle::tcircle(const config& cfg)
+circle_shape::circle_shape(const config& cfg)
 	: x_(cfg["x"])
 	, y_(cfg["y"])
 	, radius_(cfg["radius"])
@@ -829,7 +829,7 @@ tcircle::tcircle(const config& cfg)
 	}
 }
 
-void tcircle::draw(surface& canvas,
+void circle_shape::draw(surface& canvas,
 				   SDL_Renderer* renderer,
 				   const game_logic::map_formula_callable& variables)
 {
@@ -877,7 +877,7 @@ void tcircle::draw(surface& canvas,
 /***** ***** ***** ***** ***** IMAGE ***** ***** ***** ***** *****/
 
 /** Definition of an image shape. */
-class timage : public tcanvas::tshape
+class image_shape : public canvas::shape
 {
 public:
 	/**
@@ -887,7 +887,7 @@ public:
 	 *                            http://www.wesnoth.org/wiki/GUICanvasWML#Image
 	 *                            for more information.
 	 */
-	explicit timage(const config& cfg);
+	explicit image_shape(const config& cfg);
 
 	/** Implement shape::draw(). */
 	void draw(surface& canvas,
@@ -895,7 +895,7 @@ public:
 			  const game_logic::map_formula_callable& variables);
 
 private:
-	tformula<unsigned> x_, /**< The x coordinate of the image. */
+	typed_formula<unsigned> x_, /**< The x coordinate of the image. */
 			y_,			   /**< The y coordinate of the image. */
 			w_,			   /**< The width of the image. */
 			h_;			   /**< The height of the image. */
@@ -915,7 +915,7 @@ private:
 	 * formula the image will be loaded in the constructor. If it's a formula it
 	 * will be loaded every draw cycles. This allows 'changing' images.
 	 */
-	tformula<std::string> image_name_;
+	typed_formula<std::string> image_name_;
 
 	/**
 	 * Determines the way an image will be resized.
@@ -923,20 +923,20 @@ private:
 	 * If the image is smaller is needed it needs to resized, how is determined
 	 * by the value of this enum.
 	 */
-	enum tresize_mode {
+	enum resize_mode {
 		scale,
 		stretch,
 		tile
 	};
 
 	/** Converts a string to a resize mode. */
-	tresize_mode get_resize_mode(const std::string& resize_mode);
+	resize_mode get_resize_mode(const std::string& resize_mode);
 
 	/** The resize mode for an image. */
-	tresize_mode resize_mode_;
+	resize_mode resize_mode_;
 
 	/** Mirror the image over the vertical axis. */
-	tformula<bool> vertical_mirror_;
+	typed_formula<bool> vertical_mirror_;
 };
 
 /*WIKI
@@ -995,7 +995,7 @@ private:
  * @end{table}
  * Also the general variables are available, see [[#general_variables|Line]].
  */
-timage::timage(const config& cfg)
+image_shape::image_shape(const config& cfg)
 	: x_(cfg["x"])
 	, y_(cfg["y"])
 	, w_(cfg["w"])
@@ -1012,7 +1012,7 @@ timage::timage(const config& cfg)
 	}
 }
 
-void timage::draw(surface& canvas,
+void image_shape::draw(surface& canvas,
 				  SDL_Renderer* /*renderer*/,
 				  const game_logic::map_formula_callable& variables)
 {
@@ -1156,25 +1156,25 @@ void timage::draw(surface& canvas,
 	blit_surface(surf, &src_clip, canvas, &dst_clip);
 }
 
-timage::tresize_mode timage::get_resize_mode(const std::string& resize_mode)
+image_shape::resize_mode image_shape::get_resize_mode(const std::string& resize_mode)
 {
 	if(resize_mode == "tile") {
-		return timage::tile;
+		return image_shape::tile;
 	} else if(resize_mode == "stretch") {
-		return timage::stretch;
+		return image_shape::stretch;
 	} else {
 		if(!resize_mode.empty() && resize_mode != "scale") {
 			ERR_GUI_E << "Invalid resize mode '" << resize_mode
 					  << "' falling back to 'scale'.\n";
 		}
-		return timage::scale;
+		return image_shape::scale;
 	}
 }
 
 /***** ***** ***** ***** ***** TEXT ***** ***** ***** ***** *****/
 
 /** Definition of a text shape. */
-class ttext : public tcanvas::tshape
+class text_shape : public canvas::shape
 {
 public:
 	/**
@@ -1184,7 +1184,7 @@ public:
 	 *                            http://www.wesnoth.org/wiki/GUICanvasWML#Text
 	 *                            for more information.
 	 */
-	explicit ttext(const config& cfg);
+	explicit text_shape(const config& cfg);
 
 	/** Implement shape::draw(). */
 	void draw(surface& canvas,
@@ -1192,7 +1192,7 @@ public:
 			  const game_logic::map_formula_callable& variables);
 
 private:
-	tformula<unsigned> x_, /**< The x coordinate of the text. */
+	typed_formula<unsigned> x_, /**< The x coordinate of the text. */
 			y_,			   /**< The y coordinate of the text. */
 			w_,			   /**< The width of the text. */
 			h_;			   /**< The height of the text. */
@@ -1204,34 +1204,34 @@ private:
 	unsigned font_size_;
 
 	/** The style of the text. */
-	font::ttext::FONT_STYLE font_style_;
+	font::pango_text::FONT_STYLE font_style_;
 
 	/** The alignment of the text. */
-	tformula<PangoAlignment> text_alignment_;
+	typed_formula<PangoAlignment> text_alignment_;
 
 	/** The color of the text. */
 	Uint32 color_;
 
 	/** The text to draw. */
-	tformula<t_string> text_;
+	typed_formula<t_string> text_;
 
 	/** The text markup switch of the text. */
-	tformula<bool> text_markup_;
+	typed_formula<bool> text_markup_;
 
 	/** The link aware switch of the text. */
-	tformula<bool> link_aware_;
+	typed_formula<bool> link_aware_;
 
 	/** The link color of the text. */
-	tformula<std::string> link_color_;
+	typed_formula<std::string> link_color_;
 
 	/** The maximum width for the text. */
-	tformula<int> maximum_width_;
+	typed_formula<int> maximum_width_;
 
 	/** The number of characters per line. */
 	unsigned characters_per_line_;
 
 	/** The maximum height for the text. */
-	tformula<int> maximum_height_;
+	typed_formula<int> maximum_height_;
 };
 
 /*WIKI
@@ -1286,7 +1286,7 @@ private:
  * @end{parent}{name="generic/state/draw/"}
  */
 
-ttext::ttext(const config& cfg)
+text_shape::text_shape(const config& cfg)
 	: x_(cfg["x"])
 	, y_(cfg["y"])
 	, w_(cfg["w"])
@@ -1312,7 +1312,7 @@ ttext::ttext(const config& cfg)
 	}
 }
 
-void ttext::draw(surface& canvas,
+void text_shape::draw(surface& canvas,
 				 SDL_Renderer* /*renderer*/,
 				 const game_logic::map_formula_callable& variables)
 {
@@ -1328,7 +1328,7 @@ void ttext::draw(surface& canvas,
 		return;
 	}
 
-	static font::ttext text_renderer;
+	static font::pango_text text_renderer;
 
 	text_renderer.set_link_aware(link_aware_(variables))
 			.set_link_color(link_color_(variables));
@@ -1402,7 +1402,7 @@ void ttext::draw(surface& canvas,
 
 /***** ***** ***** ***** ***** CANVAS ***** ***** ***** ***** *****/
 
-tcanvas::tcanvas()
+canvas::canvas()
 	: shapes_()
 	, blur_depth_(0)
 	, w_(0)
@@ -1414,13 +1414,13 @@ tcanvas::tcanvas()
 {
 }
 
-tcanvas::~tcanvas()
+canvas::~canvas()
 {
 	SDL_DestroyRenderer(renderer_);
 
 }
 
-void tcanvas::draw(const bool force)
+void canvas::draw(const bool force)
 {
 	log_scope2(log_gui_draw, "Canvas: drawing.");
 	if(!is_dirty_ && !force) {
@@ -1455,7 +1455,7 @@ void tcanvas::draw(const bool force)
 	is_dirty_ = false;
 }
 
-void tcanvas::blit(surface& surf, SDL_Rect rect)
+void canvas::blit(surface& surf, SDL_Rect rect)
 {
 	draw();
 
@@ -1479,7 +1479,7 @@ void tcanvas::blit(surface& surf, SDL_Rect rect)
 	sdl_blit(canvas_, nullptr, surf, &rect);
 }
 
-void tcanvas::parse_cfg(const config& cfg)
+void canvas::parse_cfg(const config& cfg)
 {
 	log_scope2(log_gui_parse, "Canvas: parsing config.");
 	shapes_.clear();
@@ -1492,15 +1492,15 @@ void tcanvas::parse_cfg(const config& cfg)
 		DBG_GUI_P << "Canvas: found shape of the type " << type << ".\n";
 
 		if(type == "line") {
-			shapes_.push_back(std::make_shared<tline>(data));
+			shapes_.push_back(std::make_shared<line_shape>(data));
 		} else if(type == "rectangle") {
-			shapes_.push_back(std::make_shared<trectangle>(data));
+			shapes_.push_back(std::make_shared<rectangle_shape>(data));
 		} else if(type == "circle") {
-			shapes_.push_back(std::make_shared<tcircle>(data));
+			shapes_.push_back(std::make_shared<circle_shape>(data));
 		} else if(type == "image") {
-			shapes_.push_back(std::make_shared<timage>(data));
+			shapes_.push_back(std::make_shared<image_shape>(data));
 		} else if(type == "text") {
-			shapes_.push_back(std::make_shared<ttext>(data));
+			shapes_.push_back(std::make_shared<text_shape>(data));
 		} else if(type == "pre_commit") {
 
 			/* note this should get split if more preprocessing is used. */

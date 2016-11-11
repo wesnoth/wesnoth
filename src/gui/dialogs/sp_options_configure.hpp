@@ -23,11 +23,13 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
-class tsp_options_configure : public tdialog, private plugin_executor
+class sp_options_configure : public modal_dialog, private plugin_executor
 {
 public:
-	explicit tsp_options_configure(ng::create_engine& create_engine);
+	explicit sp_options_configure(ng::create_engine& create_engine);
 
 	/**
 	 * Execute function. We only want to show the dialog if there are active mods and
@@ -44,24 +46,25 @@ public:
 			return true;
 		}
 
-		return tsp_options_configure(create_engine).show(video);
+		return sp_options_configure(create_engine).show(video);
 	}
 
 private:
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	/** Inherited from modal_dialog. */
+	void pre_show(window& window);
 
-	/** Inherited from tdialog. */
-	void post_show(twindow& window);
+	/** Inherited from modal_dialog. */
+	void post_show(window& window);
 
 	ng::create_engine& create_engine_;
 	std::unique_ptr<ng::configure_engine> config_engine_;
-	std::unique_ptr<tmp_options_helper> options_manager_;
+	std::unique_ptr<mp_options_helper> options_manager_;
 };
 
+} // namespace dialogs
 } // namespace gui2
 
 #endif

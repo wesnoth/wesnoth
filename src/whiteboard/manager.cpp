@@ -1100,7 +1100,7 @@ void manager::options_dlg()
 			options.push_back(vgettext("Hide plans for $player", t_vars));
 	}
 
-	gui2::tsimple_item_selector dlg("", _("Whiteboard Options"), options);
+	gui2::dialogs::simple_item_selector dlg("", _("Whiteboard Options"), options);
 	dlg.show(resources::screen->video());
 	selection = dlg.selected_index();
 

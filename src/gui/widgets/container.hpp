@@ -29,13 +29,13 @@ namespace gui2
  * widget.
  *
  */
-class tcontainer_ : public tcontrol
+class container_base : public styled_widget
 {
-	friend class tdebug_layout_graph;
+	friend class debug_layout_graph;
 
 public:
-	explicit tcontainer_(const unsigned canvas_count)
-		: tcontrol(canvas_count), grid_()
+	explicit container_base(const unsigned canvas_count)
+		: styled_widget(canvas_count), grid_()
 	{
 		grid_.set_parent(this);
 	}
@@ -52,7 +52,7 @@ public:
 
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
-	/** See @ref twidget::layout_initialise. */
+	/** See @ref widget::layout_initialise. */
 	virtual void layout_initialise(const bool full_initialisation) override;
 
 	/**
@@ -64,10 +64,10 @@ public:
 	 */
 	void reduce_width(const unsigned maximum_width);
 
-	/** See @ref twidget::request_reduce_width. */
+	/** See @ref widget::request_reduce_width. */
 	virtual void request_reduce_width(const unsigned maximum_width) override;
 
-	/** See @ref twidget::demand_reduce_width. */
+	/** See @ref widget::demand_reduce_width. */
 	virtual void demand_reduce_width(const unsigned maximum_width) override;
 
 	/**
@@ -79,76 +79,76 @@ public:
 	 */
 	void reduce_height(const unsigned maximum_height);
 
-	/** See @ref twidget::request_reduce_height. */
+	/** See @ref widget::request_reduce_height. */
 	virtual void request_reduce_height(const unsigned maximum_height) override;
 
-	/** See @ref twidget::demand_reduce_height. */
+	/** See @ref widget::demand_reduce_height. */
 	virtual void demand_reduce_height(const unsigned maximum_height) override;
 
 private:
-	/** See @ref twidget::calculate_best_size. */
-	virtual tpoint calculate_best_size() const override;
+	/** See @ref widget::calculate_best_size. */
+	virtual point calculate_best_size() const override;
 
 public:
-	/** See @ref twidget::can_wrap. */
+	/** See @ref widget::can_wrap. */
 	virtual bool can_wrap() const override;
 
-	/** See @ref twidget::place. */
-	virtual void place(const tpoint& origin, const tpoint& size) override;
+	/** See @ref widget::place. */
+	virtual void place(const point& origin, const point& size) override;
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
-	/** See @ref twidget::has_widget. */
-	virtual bool has_widget(const twidget& widget) const override;
+	/** See @ref widget::has_widget. */
+	virtual bool has_widget(const widget& widget) const override;
 
-	/** See @ref twidget::set_origin. */
-	virtual void set_origin(const tpoint& origin) override;
+	/** See @ref widget::set_origin. */
+	virtual void set_origin(const point& origin) override;
 
-	/** See @ref twidget::set_visible_rectangle. */
+	/** See @ref widget::set_visible_rectangle. */
 	virtual void set_visible_rectangle(const SDL_Rect& rectangle) override;
 
-	/** See @ref twidget::impl_draw_children. */
+	/** See @ref widget::impl_draw_children. */
 	virtual void impl_draw_children(surface& frame_buffer,
 									int x_offset,
 									int y_offset) override;
 
 protected:
-	/** See @ref twidget::layout_children. */
+	/** See @ref widget::layout_children. */
 	virtual void layout_children() override;
 
-	/** See @ref twidget::child_populate_dirty_list. */
+	/** See @ref widget::child_populate_dirty_list. */
 	virtual void
-	child_populate_dirty_list(twindow& caller,
-							  const std::vector<twidget*>& call_stack) override;
+	child_populate_dirty_list(window& caller,
+							  const std::vector<widget*>& call_stack) override;
 
 public:
-	/** See @ref twidget::find_at. */
-	virtual twidget* find_at(const tpoint& coordinate,
+	/** See @ref widget::find_at. */
+	virtual widget* find_at(const point& coordinate,
 							 const bool must_be_active) override;
 
-	/** See @ref twidget::find_at. */
-	virtual const twidget* find_at(const tpoint& coordinate,
+	/** See @ref widget::find_at. */
+	virtual const widget* find_at(const point& coordinate,
 								   const bool must_be_active) const override;
 
-	/** See @ref twidget::find. */
-	twidget* find(const std::string& id, const bool must_be_active) override;
+	/** See @ref widget::find. */
+	widget* find(const std::string& id, const bool must_be_active) override;
 
-	/** See @ref twidget::find. */
-	const twidget* find(const std::string& id,
+	/** See @ref widget::find. */
+	const widget* find(const std::string& id,
 						const bool must_be_active) const override;
 
-	/** See @ref tcontrol::set_active. */
+	/** See @ref styled_widget::set_active. */
 	virtual void set_active(const bool active) override;
 
-	/** See @ref twidget::disable_click_dismiss. */
+	/** See @ref widget::disable_click_dismiss. */
 	bool disable_click_dismiss() const override;
 
 	/**
-	 * See @ref twidget::create_walker.
+	 * See @ref widget::create_walker.
 	 *
 	 * @todo Implement properly.
 	 */
-	virtual iterator::twalker_* create_walker() override
+	virtual iterator::walker_base* create_walker() override
 	{
 		return nullptr;
 	}
@@ -161,15 +161,15 @@ public:
 	 *
 	 * @param grid_builder        The builder for the grid.
 	 */
-	void init_grid(const std::shared_ptr<tbuilder_grid>& grid_builder);
+	void init_grid(const std::shared_ptr<builder_grid>& grid_builder);
 
 	/***** **** ***** ***** wrappers to the grid **** ********* *****/
 
-	tgrid::iterator begin()
+	grid::iterator begin()
 	{
 		return grid_.begin();
 	}
-	tgrid::iterator end()
+	grid::iterator end()
 	{
 		return grid_.end();
 	}
@@ -202,7 +202,7 @@ public:
 		grid_.set_rows_cols(rows, cols);
 	}
 
-	void set_child(twidget* widget,
+	void set_child(widget* widget,
 				   const unsigned row,
 				   const unsigned col,
 				   const unsigned flags,
@@ -226,36 +226,36 @@ public:
 
 	// Public due to the fact that window needs to be able to swap the
 	// children, might be protected again later.
-	const tgrid& grid() const
+	const grid& get_grid() const
 	{
 		return grid_;
 	}
-	tgrid& grid()
+	grid& get_grid()
 	{
 		return grid_;
 	}
 
 private:
 	/** The grid which holds the child objects. */
-	tgrid grid_;
+	grid grid_;
 
 	/**
 	 * Returns the grid to initialize while building.
 	 *
 	 * @todo Evaluate whether this function is overridden if not remove.
 	 */
-	virtual tgrid& initial_grid()
+	virtual grid& initial_grid()
 	{
 		return grid_;
 	}
 
 	/** Returns the space used by the border. */
-	virtual tpoint border_space() const;
+	virtual point border_space() const;
 
 	/**
 	 * Helper for set_active.
 	 *
-	 * This function should set the control itself active. It's called by
+	 * This function should set the styled_widget itself active. It's called by
 	 * set_active if the state needs to change. The widget is set to dirty() by
 	 * set_active so we only need to change the state.
 	 */

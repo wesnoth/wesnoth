@@ -299,7 +299,7 @@ static int impl_unit_get(lua_State *L)
 	}
 
 	if(strcmp(m, "upkeep") == 0) {
-		unit::t_upkeep upkeep = u.upkeep_raw();
+		unit::upkeep_t upkeep = u.upkeep_raw();
 		if(boost::get<unit::upkeep_full>(&upkeep) != nullptr){
 			lua_pushstring(L, "full");
 		} else if(boost::get<unit::upkeep_loyal>(&upkeep) != nullptr){

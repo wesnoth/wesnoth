@@ -39,27 +39,27 @@ namespace gui2
 
 REGISTER_WIDGET(scroll_label)
 
-tscroll_label::tscroll_label(bool wrap, const std::string& text_alignment)
-	: tscrollbar_container(COUNT)
+scroll_label::scroll_label(bool wrap, const std::string& text_alignment)
+	: scrollbar_container(COUNT)
 	, state_(ENABLED)
 	, wrap_on(wrap)
 	, text_alignment(text_alignment)
 {
 	connect_signal<event::LEFT_BUTTON_DOWN>(
 			std::bind(
-					&tscroll_label::signal_handler_left_button_down, this, _2),
-			event::tdispatcher::back_pre_child);
+					&scroll_label::signal_handler_left_button_down, this, _2),
+			event::dispatcher::back_pre_child);
 }
 
-void tscroll_label::set_label(const t_string& label)
+void scroll_label::set_label(const t_string& lbl)
 {
 	// Inherit.
-	tcontrol::set_label(label);
+	styled_widget::set_label(lbl);
 
 	if(content_grid()) {
-		tlabel* widget
-				= find_widget<tlabel>(content_grid(), "_label", false, true);
-		widget->set_label(label);
+		label* widget
+				= find_widget<label>(content_grid(), "_label", false, true);
+		widget->set_label(lbl);
 
 		// We want the width to stay cosistent
 		widget->request_reduce_width(widget->get_size().x);
@@ -68,66 +68,66 @@ void tscroll_label::set_label(const t_string& label)
 	}
 }
 
-void tscroll_label::set_use_markup(bool use_markup)
+void scroll_label::set_use_markup(bool use_markup)
 {
 	// Inherit.
-	tcontrol::set_use_markup(use_markup);
+	styled_widget::set_use_markup(use_markup);
 
 	if(content_grid()) {
-		tlabel* widget
-				= find_widget<tlabel>(content_grid(), "_label", false, true);
+		label* widget
+				= find_widget<label>(content_grid(), "_label", false, true);
 		widget->set_use_markup(use_markup);
 	}
 }
 
-void tscroll_label::set_self_active(const bool active)
+void scroll_label::set_self_active(const bool active)
 {
 	state_ = active ? ENABLED : DISABLED;
 }
 
-bool tscroll_label::get_active() const
+bool scroll_label::get_active() const
 {
 	return state_ != DISABLED;
 }
 
-unsigned tscroll_label::get_state() const
+unsigned scroll_label::get_state() const
 {
 	return state_;
 }
 
-void tscroll_label::finalize_subclass()
+void scroll_label::finalize_subclass()
 {
 	assert(content_grid());
-	tlabel* lbl = dynamic_cast<tlabel*>(content_grid()->find("_label", false));
+	label* lbl = dynamic_cast<label*>(content_grid()->find("_label", false));
 
 	assert(lbl);
-	lbl->set_label(label());
+	lbl->set_label(get_label());
 	lbl->set_can_wrap(wrap_on);
 	lbl->set_text_alignment(decode_text_alignment(text_alignment));
 }
 
-void tscroll_label::set_can_wrap(bool can_wrap)
+void scroll_label::set_can_wrap(bool can_wrap)
 {
 	assert(content_grid());
-	tlabel* lbl = dynamic_cast<tlabel*>(content_grid()->find("_label", false));
+	label* lbl = dynamic_cast<label*>(content_grid()->find("_label", false));
 
 	assert(lbl);
 	wrap_on = can_wrap;
 	lbl->set_can_wrap(wrap_on);
 }
 
-bool tscroll_label::can_wrap() const
+bool scroll_label::can_wrap() const
 {
 	return wrap_on;
 }
 
-const std::string& tscroll_label::get_control_type() const
+const std::string& scroll_label::get_control_type() const
 {
 	static const std::string type = "scroll_label";
 	return type;
 }
 
-void tscroll_label::signal_handler_left_button_down(const event::tevent event)
+void scroll_label::signal_handler_left_button_down(const event::ui_event event)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
@@ -136,12 +136,12 @@ void tscroll_label::signal_handler_left_button_down(const event::tevent event)
 
 // }---------- DEFINITION ---------{
 
-tscroll_label_definition::tscroll_label_definition(const config& cfg)
-	: tcontrol_definition(cfg)
+scroll_label_definition::scroll_label_definition(const config& cfg)
+	: styled_widget_definition(cfg)
 {
 	DBG_GUI_P << "Parsing scroll label " << id << '\n';
 
-	load_resolutions<tresolution>(cfg);
+	load_resolutions<resolution>(cfg);
 }
 
 /*WIKI
@@ -186,17 +186,17 @@ tscroll_label_definition::tscroll_label_definition(const config& cfg)
  * @end{tag}{name="scroll_label_definition"}
  * @end{parent}{name="gui/"}
  */
-tscroll_label_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg), grid(nullptr)
+scroll_label_definition::resolution::resolution(const config& cfg)
+	: resolution_definition(cfg), grid(nullptr)
 {
-	// Note the order should be the same as the enum tstate is scroll_label.hpp.
-	state.push_back(tstate_definition(cfg.child("state_enabled")));
-	state.push_back(tstate_definition(cfg.child("state_disabled")));
+	// Note the order should be the same as the enum state_t is scroll_label.hpp.
+	state.push_back(state_definition(cfg.child("state_enabled")));
+	state.push_back(state_definition(cfg.child("state_disabled")));
 
 	const config& child = cfg.child("grid");
 	VALIDATE(child, _("No grid defined."));
 
-	grid = std::make_shared<tbuilder_grid>(child);
+	grid = std::make_shared<builder_grid>(child);
 }
 
 // }---------- BUILDER -----------{
@@ -237,8 +237,8 @@ tscroll_label_definition::tresolution::tresolution(const config& cfg)
 namespace implementation
 {
 
-tbuilder_scroll_label::tbuilder_scroll_label(const config& cfg)
-	: implementation::tbuilder_control(cfg)
+builder_scroll_label::builder_scroll_label(const config& cfg)
+	: implementation::builder_styled_widget(cfg)
 	, vertical_scrollbar_mode(
 			  get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
 	, horizontal_scrollbar_mode(
@@ -248,17 +248,17 @@ tbuilder_scroll_label::tbuilder_scroll_label(const config& cfg)
 {
 }
 
-twidget* tbuilder_scroll_label::build() const
+widget* builder_scroll_label::build() const
 {
-	tscroll_label* widget = new tscroll_label(wrap_on, text_alignment);
+	scroll_label* widget = new scroll_label(wrap_on, text_alignment);
 
 	init_control(widget);
 
 	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
 	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
 
-	std::shared_ptr<const tscroll_label_definition::tresolution>
-	conf = std::static_pointer_cast<const tscroll_label_definition::tresolution>(
+	std::shared_ptr<const scroll_label_definition::resolution>
+	conf = std::static_pointer_cast<const scroll_label_definition::resolution>(
 					widget->config());
 	assert(conf);
 

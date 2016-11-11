@@ -48,6 +48,8 @@ static lg::log_domain log_gui("gui/dialogs/mp_change_control");
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -68,29 +70,29 @@ namespace gui2
  *
  */
 
-template <class D, class V, void (V::*fptr)(twindow&)>
-void dialog_view_callback(twidget& caller)
+template <class D, class V, void (V::*fptr)(window&)>
+void dialog_view_callback(widget& caller)
 {
 	D* dialog = dynamic_cast<D*>(caller.dialog());
 	assert(dialog);
-	twindow* window = dynamic_cast<twindow*>(caller.get_window());
-	assert(window);
-	(*(dialog->get_view()).*fptr)(*window);
+	window* win = dynamic_cast<window*>(caller.get_window());
+	assert(win);
+	(*(dialog->get_view()).*fptr)(*win);
 }
 
 /**
  * The model is an interface defining the data to be displayed or otherwise
  * acted upon in the user interface.
  */
-class tmp_change_control::model
+class mp_change_control::model
 {
 public:
 	model() : sides_list(nullptr), nicks_list(nullptr), sides(), nicks()
 	{
 	}
 
-	tlistbox* sides_list;
-	tlistbox* nicks_list;
+	listbox* sides_list;
+	listbox* nicks_list;
 
 	// contains the mapping from listbox labels to actual sides
 	// (note that due to hidden= attribute nth list item doesn't have to be nth
@@ -146,7 +148,7 @@ class side_controller
 {
 public:
 	side_controller(const std::string& name,
-					tmp_change_control::model& m,
+					mp_change_control::model& m,
 					int side_number)
 		: model_(m), name_(name), side_number_(side_number)
 	{
@@ -216,7 +218,7 @@ public:
 	}
 
 private:
-	tmp_change_control::model& model_;
+	mp_change_control::model& model_;
 	const std::string name_;
 	int side_number_;
 };
@@ -227,7 +229,7 @@ private:
  * It retrieves data from repositories, persists it, manipulates it, and
  * determines how it will be displayed in the view.
  */
-class tmp_change_control::controller
+class mp_change_control::controller
 {
 public:
 	typedef std::vector<std::shared_ptr<side_controller> >
@@ -313,14 +315,14 @@ private:
  * The view is an interface that displays data (the model) and routes user
  * commands to the controller to act upon that data.
  */
-class tmp_change_control::view
+class mp_change_control::view
 {
 public:
 	view() : model_(), controller_(model_)
 	{
 	}
 
-	void pre_show(twindow& window)
+	void pre_show(window& window)
 	{
 		model_.clear_sides();
 		controller_.show_sides_list();
@@ -329,58 +331,58 @@ public:
 		window.invalidate_layout(); // workaround for assertion failure
 	}
 
-	void handle_sides_list_item_clicked(twindow& window)
+	void handle_sides_list_item_clicked(window& window)
 	{
 		controller_.handle_sides_list_item_clicked();
 		window.invalidate_layout(); // workaround for assertion failure
 	}
 
-	void handle_nicks_list_item_clicked(twindow& window)
+	void handle_nicks_list_item_clicked(window& window)
 	{
 		controller_.handle_nicks_list_item_clicked();
 		window.invalidate_layout(); // workaround for assertion failure
 	}
 
-	void bind(twindow& window)
+	void bind(window& window)
 	{
 		DBG_GUI << "Main: Binding widgets and callbacks\n";
 		model_.sides_list
-				= &find_widget<tlistbox>(&window, "sides_list", false);
+				= &find_widget<listbox>(&window, "sides_list", false);
 		model_.nicks_list
-				= &find_widget<tlistbox>(&window, "nicks_list", false);
+				= &find_widget<listbox>(&window, "nicks_list", false);
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 		connect_signal_notify_modified(
 				*model_.sides_list,
-				std::bind(&tmp_change_control::view::
+				std::bind(&mp_change_control::view::
 									 handle_sides_list_item_clicked,
 							this,
 							std::ref(window)));
 
 		connect_signal_notify_modified(
 				*model_.nicks_list,
-				std::bind(&tmp_change_control::view::
+				std::bind(&mp_change_control::view::
 									 handle_nicks_list_item_clicked,
 							this,
 							std::ref(window)));
 #else
 		model_.sides_list->set_callback_value_change(
-				dialog_view_callback<tmp_change_control,
-									 tmp_change_control::view,
-									 &tmp_change_control::view::
+				dialog_view_callback<mp_change_control,
+									 mp_change_control::view,
+									 &mp_change_control::view::
 											  handle_sides_list_item_clicked>);
 
 		model_.nicks_list->set_callback_value_change(
-				dialog_view_callback<tmp_change_control,
-									 tmp_change_control::view,
-									 &tmp_change_control::view::
+				dialog_view_callback<mp_change_control,
+									 mp_change_control::view,
+									 &mp_change_control::view::
 											  handle_nicks_list_item_clicked>);
 #endif
 	}
 
 	void post_show(int retval, events::menu_handler* mh)
 	{
-		if(retval == twindow::OK) {
+		if(retval == window::OK) {
 			controller_.change_control(mh);
 		}
 	}
@@ -392,25 +394,26 @@ private:
 
 REGISTER_DIALOG(mp_change_control)
 
-tmp_change_control::tmp_change_control(events::menu_handler* mh)
+mp_change_control::mp_change_control(events::menu_handler* mh)
 	: menu_handler_(mh), view_(new view)
 {
 }
 
-std::shared_ptr<tmp_change_control::view> tmp_change_control::get_view()
+std::shared_ptr<mp_change_control::view> mp_change_control::get_view()
 {
 	return view_;
 }
 
-void tmp_change_control::pre_show(twindow& window)
+void mp_change_control::pre_show(window& window)
 {
 	view_->bind(window);
 	view_->pre_show(window);
 }
 
-void tmp_change_control::post_show(twindow& /*window*/)
+void mp_change_control::post_show(window& /*window*/)
 {
 	view_->post_show(get_retval(), menu_handler_);
 }
 
-} // end of namespace gui2
+} // namespace dialogs
+} // namespace gui2

@@ -40,21 +40,21 @@ namespace gui2
  * Common signal handlers:
  * - connect_signal_pre_key_press
  */
-class ttext_ : public tcontrol
+class text_box_base : public styled_widget
 {
 
 public:
-	ttext_();
+	text_box_base();
 
-	~ttext_();
+	~text_box_base();
 
-	/** See @ref tcontrol::set_active. */
+	/** See @ref styled_widget::set_active. */
 	virtual void set_active(const bool active) override;
 
-	/** See @ref tcontrol::get_active. */
+	/** See @ref styled_widget::get_active. */
 	virtual bool get_active() const override;
 
-	/** See @ref tcontrol::get_state. */
+	/** See @ref styled_widget::get_state. */
 	virtual unsigned get_state() const override;
 
 	/***** ***** ***** ***** expose some functions ***** ***** ***** *****/
@@ -69,7 +69,7 @@ public:
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	/**
-	 * The set_value is virtual for the @ref tpassword_box class.
+	 * The set_value is virtual for the @ref password_box class.
 	 *
 	 * That class overrides the set_value function to replace it with asterisk.
 	 * There might be more generic way to do it when more classes are needed.
@@ -87,7 +87,7 @@ public:
 
 	/** Set the text_changed callback. */
 	void set_text_changed_callback(
-			std::function<void(ttext_* textbox, const std::string text)> cb)
+			std::function<void(text_box_base* textbox, const std::string text)> cb)
 	{
 		text_changed_callback_ = cb;
 	}
@@ -201,13 +201,13 @@ protected:
 
 	/***** ***** ***** ***** expose some functions ***** ***** ***** *****/
 
-	gui2::tpoint get_cursor_position(const unsigned column,
+	gui2::point get_cursor_position(const unsigned column,
 									 const unsigned line = 0) const
 	{
 		return text_.get_cursor_position(column, line);
 	}
 
-	tpoint get_column_line(const tpoint& position) const
+	point get_column_line(const point& position) const
 	{
 		return text_.get_column_line(position);
 	}
@@ -217,7 +217,7 @@ protected:
 		text_.set_font_size(font_size);
 	}
 
-	void set_font_style(const font::ttext::FONT_STYLE font_style)
+	void set_font_style(const font::pango_text::FONT_STYLE font_style)
 	{
 		text_.set_font_style(font_style);
 	}
@@ -255,14 +255,14 @@ protected:
 private:
 	/** Note the order of the states must be the same as defined in
 	 * settings.hpp. */
-	enum tstate {
+	enum state_t {
 		ENABLED,
 		DISABLED,
 		FOCUSED,
 		COUNT
 	};
 
-	void set_state(const tstate state);
+	void set_state(const state_t state);
 
 	virtual void toggle_cursor_timer(bool enable);
 
@@ -277,10 +277,10 @@ private:
 	 * The state of the widget determines what to render and how the widget
 	 * reacts to certain 'events'.
 	 */
-	tstate state_;
+	state_t state_;
 
 	/** The text entered in the widget. */
-	font::ttext text_;
+	font::pango_text text_;
 
 	/** Start of the selected text. */
 	size_t selection_start_;
@@ -466,26 +466,26 @@ private:
 	 * Text changed callback.
 	 *
 	 * This callback is called in key_press after the key_press event has been
-	 * handled by the control. The parameters to the function are:
+	 * handled by the styled_widget. The parameters to the function are:
 	 * - The widget invoking the callback
 	 * - The new text of the textbox.
 	 */
-	std::function<void(ttext_* textbox, const std::string text)>
+	std::function<void(text_box_base* textbox, const std::string text)>
 	text_changed_callback_;
 
 	/***** ***** ***** signal handlers ***** ****** *****/
 
-	void signal_handler_middle_button_click(const event::tevent event,
+	void signal_handler_middle_button_click(const event::ui_event event,
 											bool& handled);
 
-	void signal_handler_sdl_key_down(const event::tevent event,
+	void signal_handler_sdl_key_down(const event::ui_event event,
 									 bool& handled,
 									 const SDL_Keycode key,
 									 SDL_Keymod modifier,
 									 const utf8::string& unicode);
 
-	void signal_handler_receive_keyboard_focus(const event::tevent event);
-	void signal_handler_lose_keyboard_focus(const event::tevent event);
+	void signal_handler_receive_keyboard_focus(const event::ui_event event);
+	void signal_handler_lose_keyboard_focus(const event::ui_event event);
 };
 
 } // namespace gui2

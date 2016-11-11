@@ -19,8 +19,10 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
-class tedit_text : public tdialog
+class edit_text : public modal_dialog
 {
 public:
 	/**
@@ -31,16 +33,16 @@ public:
 	 * @param [in, out] text      The parameter's usage is:
 	 *                            - Input: The initial value of the text field.
 	 *                            - Output: The new unit name the user entered
-	 *                              if the dialog returns @ref twindow::OK,
+	 *                              if the dialog returns @ref window::OK,
 	 *                              undefined otherwise.
 	 */
-	tedit_text(const std::string& title,
+	edit_text(const std::string& title,
 			   const std::string& label,
 			   std::string& text);
 
 	/**
 	 * Executes the dialog.
-	 * See @ref tdialog for more information.
+	 * See @ref modal_dialog for more information.
 	 *
 	 * @param [in, out] text      The parameter's usage is:
 	 *                            - Input:  The initial value of the unit name.
@@ -53,13 +55,14 @@ public:
 						std::string& text,
 						CVideo& video)
 	{
-		return tedit_text(title, label, text).show(video);
+		return edit_text(title, label, text).show(video);
 	}
 
 private:
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 };
-}
+} // namespace dialogs
+} // namespace gui2
 
 #endif /* ! GUI_DIALOGS_EDIT_TEXT_INCLUDED */

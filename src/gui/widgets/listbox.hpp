@@ -30,21 +30,21 @@ namespace gui2
 
 // ------------ WIDGET -----------{
 
-class tselectable_;
+class selectable_item;
 namespace implementation
 {
-struct tbuilder_listbox;
-struct tbuilder_horizontal_listbox;
-struct tbuilder_grid_listbox;
+struct builder_listbox;
+struct builder_horizontal_listbox;
+struct builder_grid_listbox;
 }
 
 /** The listbox class. */
-class tlistbox : public tscrollbar_container
+class listbox : public scrollbar_container
 {
-	friend struct implementation::tbuilder_listbox;
-	friend struct implementation::tbuilder_horizontal_listbox;
-	friend struct implementation::tbuilder_grid_listbox;
-	friend class tdebug_layout_graph;
+	friend struct implementation::builder_listbox;
+	friend struct implementation::builder_horizontal_listbox;
+	friend struct implementation::builder_grid_listbox;
+	friend class debug_layout_graph;
 
 public:
 	/**
@@ -58,9 +58,9 @@ public:
 	 * @param select              Select an item when selected, if false it
 	 *                            changes the visible state instead.
 	 */
-	tlistbox(const bool has_minimum,
+	listbox(const bool has_minimum,
 			 const bool has_maximum,
-			 const tgenerator_::tplacement placement,
+			 const generator_base::placement placement,
 			 const bool select);
 
 	/***** ***** ***** ***** Row handling. ***** ***** ****** *****/
@@ -74,7 +74,7 @@ public:
 	 * @param index               The item before which to add the new item,
 	 *                            0 == begin, -1 == end.
 	 */
-	tgrid& add_row(const string_map& item, const int index = -1);
+	grid& add_row(const string_map& item, const int index = -1);
 
 	/**
 	 * Adds single row to the grid.
@@ -93,7 +93,7 @@ public:
 	 * @param index               The item before which to add the new item,
 	 *                            0 == begin, -1 == end.
 	 */
-	tgrid& add_row(const std::map<std::string /* widget id */, string_map>& data,
+	grid& add_row(const std::map<std::string /* widget id */, string_map>& data,
 				 const int index = -1);
 
 	/**
@@ -165,7 +165,7 @@ public:
 	 *                            to make sure the row is a valid row.
 	 * @returns                   The grid of the wanted row.
 	 */
-	const tgrid* get_row_grid(const unsigned row) const;
+	const grid* get_row_grid(const unsigned row) const;
 
 	/**
 	 * The possibly-giving-problems nonconst version of get_row_grid
@@ -174,7 +174,7 @@ public:
 	 *                            to make sure the row is a valid row.
 	 * @returns                   The grid of the wanted row.
 	 */
-	tgrid* get_row_grid(const unsigned row);
+	grid* get_row_grid(const unsigned row);
 
 	/**
 	 * Selectes a row.
@@ -193,9 +193,9 @@ public:
 	int get_selected_row() const;
 
 	/** Function to call after the user clicked on a row. */
-	void list_item_clicked(twidget& caller);
+	void list_item_clicked(widget& caller);
 
-	/** See @ref tcontainer_::set_self_active. */
+	/** See @ref container_base::set_self_active. */
 	virtual void set_self_active(const bool active) override;
 
 	/**
@@ -203,7 +203,7 @@ public:
 	 *
 	 * When a resize is required the container first can try to handle it
 	 * itself. If it can't honor the request the function will call @ref
-	 * twindow::invalidate_layout().
+	 * window::invalidate_layout().
 	 *
 	 * @note Calling this function on a widget with size == (0, 0) results
 	 * false but doesn't call invalidate_layout, the engine expects to be in
@@ -216,16 +216,16 @@ public:
 
 	/***** ***** ***** ***** inherited ***** ***** ****** *****/
 
-	/** See @ref twidget::place. */
-	virtual void place(const tpoint& origin, const tpoint& size) override;
+	/** See @ref widget::place. */
+	virtual void place(const point& origin, const point& size) override;
 
-	/** See @ref twidget::layout_children. */
+	/** See @ref widget::layout_children. */
 	virtual void layout_children() override;
 
-	/** See @ref twidget::child_populate_dirty_list. */
+	/** See @ref widget::child_populate_dirty_list. */
 	virtual void
-	child_populate_dirty_list(twindow& caller,
-							  const std::vector<twidget*>& call_stack) override;
+	child_populate_dirty_list(window& caller,
+							  const std::vector<widget*>& call_stack) override;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 	void
@@ -235,17 +235,17 @@ public:
 	}
 
 	void
-	set_callback_value_change(const std::function<void(twidget&)>& callback)
+	set_callback_value_change(const std::function<void(widget&)>& callback)
 	{
 		callback_value_changed_ = callback;
 	}
 
-	void set_list_builder(tbuilder_grid_ptr list_builder)
+	void set_list_builder(builder_grid_ptr list_builder)
 	{
 		list_builder_ = list_builder;
 	}
 
-	void order_by(const tgenerator_::torder_func& func);
+	void order_by(const generator_base::torder_func& func);
 
 	void set_column_order(unsigned col, const generator_sort_array& func);
 
@@ -268,7 +268,7 @@ public:
 
 	/**
 	 * Sorts the listbox by a pre-set sorting option. The corresponding header widget will also be toggled.
-	 * The sorting option should already have been registered by @ref tlistbox::register_sorting_option().
+	 * The sorting option should already have been registered by @ref listbox::register_sorting_option().
 	 *
 	 * @param sort_by         Pair of column index and sort direction. The column (first arguemnt)
 	 *                        argument will be sorted in the specified direction (second argument)
@@ -284,16 +284,16 @@ public:
 protected:
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 
-	/** Inherited from tscrollbar_container. */
+	/** Inherited from scrollbar_container. */
 	void handle_key_up_arrow(SDL_Keymod modifier, bool& handled) override;
 
-	/** Inherited from tscrollbar_container. */
+	/** Inherited from scrollbar_container. */
 	void handle_key_down_arrow(SDL_Keymod modifier, bool& handled) override;
 
-	/** Inherited from tscrollbar_container. */
+	/** Inherited from scrollbar_container. */
 	void handle_key_left_arrow(SDL_Keymod modifier, bool& handled) override;
 
-	/** Inherited from tscrollbar_container. */
+	/** Inherited from scrollbar_container. */
 	void handle_key_right_arrow(SDL_Keymod modifier, bool& handled) override;
 
 private:
@@ -319,22 +319,22 @@ private:
 	 * @param footer              Builder for the footer.
 	 * @param list_data           The initial data to fill the listbox with.
 	 */
-	void finalize(tbuilder_grid_const_ptr header,
-				  tbuilder_grid_const_ptr footer,
+	void finalize(builder_grid_const_ptr header,
+				  builder_grid_const_ptr footer,
 				  const std::vector<std::map<std::string, string_map>>& list_data);
 	/**
 	 * Contains a pointer to the generator.
 	 *
 	 * The pointer is not owned by this class, it's stored in the content_grid_
-	 * of the tscrollbar_container super class and freed when it's grid is
+	 * of the scrollbar_container super class and freed when it's grid is
 	 * freed.
 	 */
-	tgenerator_* generator_;
+	generator_base* generator_;
 
 	const bool is_horizonal_;
 
 	/** Contains the builder for the new items. */
-	tbuilder_grid_const_ptr list_builder_;
+	builder_grid_const_ptr list_builder_;
 
 	/**
 	 * This callback is called when a list item is clicked (toggled).
@@ -350,11 +350,11 @@ private:
 	 * there might be too many calls. That might happen if an arrow up didn't
 	 * change the selected item.
 	 */
-	std::function<void(twidget&)> callback_value_changed_;
+	std::function<void(widget&)> callback_value_changed_;
 
 	bool need_layout_;
 
-	typedef std::vector<std::pair<tselectable_*, generator_sort_array > > torder_list;
+	typedef std::vector<std::pair<selectable_item*, generator_sort_array > > torder_list;
 	torder_list orders_;
 	/**
 	 * Resizes the content.
@@ -383,32 +383,32 @@ private:
 	 *
 	 * @param row                 The new row added to the listbox.
 	 */
-	void resize_content(const twidget& row);
+	void resize_content(const widget& row);
 
 	/** Layouts the children if needed. */
 	void layout_children(const bool force);
 
-	/** Inherited from tscrollbar_container. */
-	virtual void set_content_size(const tpoint& origin, const tpoint& size) override;
+	/** Inherited from scrollbar_container. */
+	virtual void set_content_size(const point& origin, const point& size) override;
 
-	/** See @ref tcontrol::get_control_type. */
+	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 
-	void order_by_column(unsigned column, twidget& widget);
+	void order_by_column(unsigned column, widget& widget);
 };
 
 // }---------- DEFINITION ---------{
 
-struct tlistbox_definition : public tcontrol_definition
+struct listbox_definition : public styled_widget_definition
 {
 
-	explicit tlistbox_definition(const config& cfg);
+	explicit listbox_definition(const config& cfg);
 
-	struct tresolution : public tresolution_definition_
+	struct resolution : public resolution_definition
 	{
-		explicit tresolution(const config& cfg);
+		explicit resolution(const config& cfg);
 
-		tbuilder_grid_ptr grid;
+		builder_grid_ptr grid;
 	};
 };
 
@@ -417,21 +417,21 @@ struct tlistbox_definition : public tcontrol_definition
 namespace implementation
 {
 
-struct tbuilder_listbox : public tbuilder_control
+struct builder_listbox : public builder_styled_widget
 {
-	explicit tbuilder_listbox(const config& cfg);
+	explicit builder_listbox(const config& cfg);
 
-	using tbuilder_control::build;
+	using builder_styled_widget::build;
 
-	twidget* build() const;
+	widget* build() const;
 
-	tscrollbar_container::tscrollbar_mode vertical_scrollbar_mode;
-	tscrollbar_container::tscrollbar_mode horizontal_scrollbar_mode;
+	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
+	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;
 
-	tbuilder_grid_ptr header;
-	tbuilder_grid_ptr footer;
+	builder_grid_ptr header;
+	builder_grid_ptr footer;
 
-	tbuilder_grid_ptr list_builder;
+	builder_grid_ptr list_builder;
 
 	/**
 	 * Listbox data.
@@ -444,18 +444,18 @@ struct tbuilder_listbox : public tbuilder_control
 	bool has_minimum_, has_maximum_;
 };
 
-struct tbuilder_horizontal_listbox : public tbuilder_control
+struct builder_horizontal_listbox : public builder_styled_widget
 {
-	explicit tbuilder_horizontal_listbox(const config& cfg);
+	explicit builder_horizontal_listbox(const config& cfg);
 
-	using tbuilder_control::build;
+	using builder_styled_widget::build;
 
-	twidget* build() const;
+	widget* build() const;
 
-	tscrollbar_container::tscrollbar_mode vertical_scrollbar_mode;
-	tscrollbar_container::tscrollbar_mode horizontal_scrollbar_mode;
+	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
+	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;
 
-	tbuilder_grid_ptr list_builder;
+	builder_grid_ptr list_builder;
 
 	/**
 	 * Listbox data.
@@ -468,18 +468,18 @@ struct tbuilder_horizontal_listbox : public tbuilder_control
 	bool has_minimum_, has_maximum_;
 };
 
-struct tbuilder_grid_listbox : public tbuilder_control
+struct builder_grid_listbox : public builder_styled_widget
 {
-	explicit tbuilder_grid_listbox(const config& cfg);
+	explicit builder_grid_listbox(const config& cfg);
 
-	using tbuilder_control::build;
+	using builder_styled_widget::build;
 
-	twidget* build() const;
+	widget* build() const;
 
-	tscrollbar_container::tscrollbar_mode vertical_scrollbar_mode;
-	tscrollbar_container::tscrollbar_mode horizontal_scrollbar_mode;
+	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
+	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;
 
-	tbuilder_grid_ptr list_builder;
+	builder_grid_ptr list_builder;
 
 	/**
 	 * Listbox data.

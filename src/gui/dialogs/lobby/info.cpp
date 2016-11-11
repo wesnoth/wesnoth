@@ -67,7 +67,7 @@ void lobby_info::delete_games()
 }
 namespace gui2
 {
-void do_mp_notify(t_notify_mode mode, const std::string & sender, const std::string & message)
+void do_mp_notify(notify_mode mode, const std::string & sender, const std::string & message)
 {
 	switch (mode) {
 	case NOTIFY_WHISPER:
@@ -94,7 +94,7 @@ void do_mp_notify(t_notify_mode mode, const std::string & sender, const std::str
 		break;
 	}
 }
-}
+} // namespace gui2
 namespace
 {
 
@@ -301,7 +301,7 @@ bool lobby_info::has_room(const std::string& name) const
 	return get_room(name) != nullptr;
 }
 
-chat_log& lobby_info::get_whisper_log(const std::string& name)
+chat_session& lobby_info::get_whisper_log(const std::string& name)
 {
 	return whispers_[name];
 }

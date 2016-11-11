@@ -23,11 +23,13 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
-class tfaction_select : public tdialog
+class faction_select : public modal_dialog
 {
 public:
-	tfaction_select(ng::flg_manager& flg_manager, const std::string& color, const int side);
+	faction_select(ng::flg_manager& flg_manager, const std::string& color, const int side);
 
 private:
 	ng::flg_manager& flg_manager_;
@@ -36,24 +38,25 @@ private:
 
 	const int side_;
 
-	tgroup<std::string> gender_toggle_;
+	group<std::string> gender_toggle_;
 
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	/** Inherited from modal_dialog. */
+	void pre_show(window& window);
 
 	/** Callbacks */
-	void on_faction_select(twindow& window);
+	void on_faction_select(window& window);
 
-	void on_leader_select(twindow& window);
+	void on_leader_select(window& window);
 
-	void on_gender_select(twindow& window);
+	void on_gender_select(window& window);
 
-	void update_leader_image(twindow& window);
+	void update_leader_image(window& window);
 };
 
-}
+} // namespace dialogs
+} // namespace gui2
 
 #endif /* ! GUI_DIALOGS_FACTION_SELECT_HPP_INCLUDED */

@@ -24,8 +24,10 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
-tdialog::~tdialog()
+modal_dialog::~modal_dialog()
 {
 	for(auto field : fields_)
 	{
@@ -33,7 +35,7 @@ tdialog::~tdialog()
 	}
 }
 
-bool tdialog::show(CVideo& video, const unsigned auto_close_time)
+bool modal_dialog::show(CVideo& video, const unsigned auto_close_time)
 {
 	if(video.faked() && !show_even_without_video_) {
 		if(!allow_plugin_skip_) {
@@ -44,7 +46,7 @@ bool tdialog::show(CVideo& video, const unsigned auto_close_time)
 		if (pm && pm->any_running())
 		{
 			plugins_context pc("Dialog");
-			pc.set_callback("skip_dialog", [this](config) { retval_ = twindow::OK; }, false);
+			pc.set_callback("skip_dialog", [this](config) { retval_ = window::OK; }, false);
 			pc.set_callback("quit", [](config) {}, false);
 			pc.play_slice();
 		}
@@ -52,7 +54,7 @@ bool tdialog::show(CVideo& video, const unsigned auto_close_time)
 		return false;
 	}
 
-	std::unique_ptr<twindow> window(build_window(video));
+	std::unique_ptr<window> window(build_window(video));
 	assert(window.get());
 
 	post_build(*window);
@@ -83,25 +85,25 @@ bool tdialog::show(CVideo& video, const unsigned auto_close_time)
 	 */
 	SDL_FlushEvent(DOUBLE_CLICK_EVENT);
 
-	finalize_fields(*window, (retval_ == twindow::OK || always_save_fields_));
+	finalize_fields(*window, (retval_ == window::OK || always_save_fields_));
 
 	post_show(*window);
 
 	// post_show may have updated the windoe retval. Update it here.
 	retval_ = window->get_retval();
 
-	return retval_ == twindow::OK;
+	return retval_ == window::OK;
 }
 
-tfield_bool* tdialog::register_bool(
+field_bool* modal_dialog::register_bool(
 		const std::string& id,
 		const bool mandatory,
 		const std::function<bool()> callback_load_value,
 		const std::function<void(bool)> callback_save_value,
-		const std::function<void(twidget&)> callback_change,
+		const std::function<void(widget&)> callback_change,
 		const bool initial_fire)
 {
-	tfield_bool* field = new tfield_bool(id,
+	field_bool* field = new field_bool(id,
 										 mandatory,
 										 callback_load_value,
 										 callback_save_value,
@@ -112,51 +114,51 @@ tfield_bool* tdialog::register_bool(
 	return field;
 }
 
-tfield_bool*
-tdialog::register_bool(const std::string& id,
+field_bool*
+modal_dialog::register_bool(const std::string& id,
 					   const bool mandatory,
 					   bool& linked_variable,
-					   const std::function<void(twidget&)> callback_change,
+					   const std::function<void(widget&)> callback_change,
 					   const bool initial_fire)
 {
-	tfield_bool* field
-			= new tfield_bool(id, mandatory, linked_variable, callback_change, initial_fire);
+	field_bool* field
+			= new field_bool(id, mandatory, linked_variable, callback_change, initial_fire);
 
 	fields_.push_back(field);
 	return field;
 }
 
-tfield_integer* tdialog::register_integer(
+field_integer* modal_dialog::register_integer(
 		const std::string& id,
 		const bool mandatory,
 		const std::function<int()> callback_load_value,
 		const std::function<void(const int)> callback_save_value)
 {
-	tfield_integer* field = new tfield_integer(
+	field_integer* field = new field_integer(
 			id, mandatory, callback_load_value, callback_save_value);
 
 	fields_.push_back(field);
 	return field;
 }
 
-tfield_integer* tdialog::register_integer(const std::string& id,
+field_integer* modal_dialog::register_integer(const std::string& id,
 										  const bool mandatory,
 										  int& linked_variable)
 {
-	tfield_integer* field = new tfield_integer(id, mandatory, linked_variable);
+	field_integer* field = new field_integer(id, mandatory, linked_variable);
 
 	fields_.push_back(field);
 	return field;
 }
 
-tfield_text* tdialog::register_text(
+field_text* modal_dialog::register_text(
 		const std::string& id,
 		const bool mandatory,
 		const std::function<std::string()> callback_load_value,
 		const std::function<void(const std::string&)> callback_save_value,
 		const bool capture_focus)
 {
-	tfield_text* field = new tfield_text(
+	field_text* field = new field_text(
 			id, mandatory, callback_load_value, callback_save_value);
 
 	if(capture_focus) {
@@ -167,12 +169,12 @@ tfield_text* tdialog::register_text(
 	return field;
 }
 
-tfield_text* tdialog::register_text(const std::string& id,
+field_text* modal_dialog::register_text(const std::string& id,
 									const bool mandatory,
 									std::string& linked_variable,
 									const bool capture_focus)
 {
-	tfield_text* field = new tfield_text(id, mandatory, linked_variable);
+	field_text* field = new field_text(id, mandatory, linked_variable);
 
 	if(capture_focus) {
 		focus_ = id;
@@ -182,38 +184,38 @@ tfield_text* tdialog::register_text(const std::string& id,
 	return field;
 }
 
-tfield_label* tdialog::register_label(const std::string& id,
+field_label* modal_dialog::register_label(const std::string& id,
 									  const bool mandatory,
 									  const std::string& text,
 									  const bool use_markup)
 {
-	tfield_label* field = new tfield_label(id, mandatory, text, use_markup);
+	field_label* field = new field_label(id, mandatory, text, use_markup);
 
 	fields_.push_back(field);
 	return field;
 }
 
-twindow* tdialog::build_window(CVideo& video) const
+window* modal_dialog::build_window(CVideo& video) const
 {
 	return build(video, window_id());
 }
 
-void tdialog::post_build(twindow& /*window*/)
+void modal_dialog::post_build(window& /*window*/)
 {
 	/* DO NOTHING */
 }
 
-void tdialog::pre_show(twindow& /*window*/)
+void modal_dialog::pre_show(window& /*window*/)
 {
 	/* DO NOTHING */
 }
 
-void tdialog::post_show(twindow& /*window*/)
+void modal_dialog::post_show(window& /*window*/)
 {
 	/* DO NOTHING */
 }
 
-void tdialog::init_fields(twindow& window)
+void modal_dialog::init_fields(window& window)
 {
 	for(auto field : fields_)
 	{
@@ -222,13 +224,13 @@ void tdialog::init_fields(twindow& window)
 	}
 
 	if(!focus_.empty()) {
-		if(twidget* widget = window.find(focus_, false)) {
+		if(widget* widget = window.find(focus_, false)) {
 			window.keyboard_capture(widget);
 		}
 	}
 }
 
-void tdialog::finalize_fields(twindow& window, const bool save_fields)
+void modal_dialog::finalize_fields(window& window, const bool save_fields)
 {
 	for(auto field : fields_)
 	{
@@ -239,6 +241,7 @@ void tdialog::finalize_fields(twindow& window, const bool save_fields)
 	}
 }
 
+} // namespace dialogs
 } // namespace gui2
 
 

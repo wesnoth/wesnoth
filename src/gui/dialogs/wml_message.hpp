@@ -19,13 +19,15 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /**
  *  Helper class for message options
  */
-class twml_message_option {
+class wml_message_option {
 public:
-	explicit twml_message_option(std::string label, std::string description = "", std::string image = "")
+	explicit wml_message_option(std::string label, std::string description = "", std::string image = "")
 		: label_(label)
 		, description_(description)
 		, image_(image)
@@ -42,10 +44,10 @@ private:
  *
  * We have a separate sub class for left and right images.
  */
-class twml_message_ : public tdialog
+class wml_message_base : public modal_dialog
 {
 public:
-	twml_message_(const std::string& title,
+	wml_message_base(const std::string& title,
 				  const std::string& message,
 				  const std::string& portrait,
 				  const bool mirror)
@@ -82,7 +84,7 @@ public:
 	 *                               selected option; after showing, the
 	 *                               chosen option.
 	 */
-	void set_option_list(const std::vector<twml_message_option>& option_list,
+	void set_option_list(const std::vector<wml_message_option>& option_list,
 						 int* chosen_option);
 
 private:
@@ -117,76 +119,76 @@ private:
 	unsigned input_maximum_length_;
 
 	/** The list of options the user can choose. */
-	std::vector<twml_message_option> option_list_;
+	std::vector<wml_message_option> option_list_;
 
 	/** The chosen option. */
 	int* chosen_option_;
 
 protected:
-	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	/** Inherited from modal_dialog. */
+	void pre_show(window& window);
 
 private:
-	/** Inherited from tdialog. */
-	void post_show(twindow& window);
+	/** Inherited from modal_dialog. */
+	void post_show(window& window);
 };
 
 /** Shows a dialog with the portrait on the left side. */
-class twml_message_left : public twml_message_
+class wml_message_left : public wml_message_base
 {
 public:
-	twml_message_left(const std::string& title,
+	wml_message_left(const std::string& title,
 					  const std::string& message,
 					  const std::string& portrait,
 					  const bool mirror)
-		: twml_message_(title, message, portrait, mirror)
+		: wml_message_base(title, message, portrait, mirror)
 	{
 	}
 
 private:
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 };
 
 /** Shows a dialog with the portrait on the right side. */
-class twml_message_right : public twml_message_
+class wml_message_right : public wml_message_base
 {
 public:
-	twml_message_right(const std::string& title,
+	wml_message_right(const std::string& title,
 					   const std::string& message,
 					   const std::string& portrait,
 					   const bool mirror)
-		: twml_message_(title, message, portrait, mirror)
+		: wml_message_base(title, message, portrait, mirror)
 	{
 	}
 
 private:
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 };
 
 /** Shows a dialog with two portraits, one on each side. */
-class twml_message_double : public twml_message_left
+class wml_message_double : public wml_message_left
 {
 public:
-	twml_message_double(const std::string& title,
+	wml_message_double(const std::string& title,
 					   const std::string& message,
 					   const std::string& portrait,
 					   const bool mirror,
 					   const std::string& second_portrait,
 					   const bool second_mirror)
-		: twml_message_left(title, message, portrait, mirror)
+		: wml_message_left(title, message, portrait, mirror)
 		, second_portrait_(second_portrait)
 		, second_mirror_(second_mirror)
 	{
 	}
 
 private:
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	/** Inherited from modal_dialog. */
+	void pre_show(window& window);
 
 	std::string second_portrait_;
 
@@ -196,10 +198,10 @@ private:
 /**
  * Parameter pack for message list input options
  */
-struct twml_message_options
+struct wml_message_options
 {
 	/// A list of options to select in the dialog.
-	std::vector<twml_message_option> option_list;
+	std::vector<wml_message_option> option_list;
 	/// The initially chosen option.
 	/// Will be set to the chosen option when the dialog closes.
 	mutable int chosen_option;
@@ -208,7 +210,7 @@ struct twml_message_options
 /**
  * Parameter pack for message text input options
  */
-struct twml_message_input
+struct wml_message_input
 {
 	/// The caption for the optional input text box.
 	/// If empty, there is no input box.
@@ -225,7 +227,7 @@ struct twml_message_input
 /**
  * Parameter pack for message portrait
  */
-struct twml_message_portrait
+struct wml_message_portrait
 {
 	/// FIlename of the portrait.
 	std::string portrait;
@@ -247,12 +249,12 @@ struct twml_message_portrait
 int show_wml_message(CVideo& video,
 					 const std::string& title,
 					 const std::string& message,
-					 const twml_message_portrait* left,
-					 const twml_message_portrait* right,
-					 const twml_message_options& options,
-					 const twml_message_input& input);
+					 const wml_message_portrait* left,
+					 const wml_message_portrait* right,
+					 const wml_message_options& options,
+					 const wml_message_input& input);
 
-
+} // namespace dialogs
 } // namespace gui2
 
 #endif

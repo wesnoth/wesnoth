@@ -33,27 +33,27 @@ static void print(std::stringstream& sstr
 	sstr << queue << ':' << id << '\n';
 }
 
-template<gui2::event::tevent E>
+template<gui2::event::ui_event E>
 void connect_queue(
 		  std::stringstream& sstr
-		, gui2::twidget& widget)
+		, gui2::widget& widget)
 {
 	widget.connect_signal<E>(
 			  std::bind(print, std::ref(sstr), "pre", widget.id())
-			, gui2::event::tdispatcher::back_pre_child);
+			, gui2::event::dispatcher::back_pre_child);
 
 	widget.connect_signal<E>(
 			  std::bind(print, std::ref(sstr), "child", widget.id())
-			, gui2::event::tdispatcher::back_child);
+			, gui2::event::dispatcher::back_child);
 
 	widget.connect_signal<E>(
 			  std::bind(print, std::ref(sstr), "post", widget.id())
-			, gui2::event::tdispatcher::back_post_child);
+			, gui2::event::dispatcher::back_post_child);
 }
 
 static void connect_signals(
 		  std::stringstream& sstr
-		, gui2::twidget& widget)
+		, gui2::widget& widget)
 {
 	/** @todo Add the rest of the events. */
 	connect_queue<gui2::event::DRAW>(sstr, widget);
@@ -74,20 +74,20 @@ static void connect_signals(
 	connect_queue<gui2::event::RIGHT_BUTTON_DOUBLE_CLICK>(sstr, widget);
 }
 
-static void add_widget(gui2::tgrid& grid
-		, gui2::twidget* widget
+static void add_widget(gui2::grid& grid
+		, gui2::widget* widget
 		, const std::string& id
 		, const unsigned row
 		, const unsigned column)
 {
-	BOOST_REQUIRE_NE(widget, static_cast<gui2::twidget*>(nullptr));
+	BOOST_REQUIRE_NE(widget, static_cast<gui2::widget*>(nullptr));
 
 	widget->set_id(id);
 	grid.set_child(widget
 			, row
 			, column
-			, gui2::tgrid::VERTICAL_GROW_SEND_TO_CLIENT
-				| gui2::tgrid::HORIZONTAL_GROW_SEND_TO_CLIENT
+			, gui2::grid::VERTICAL_GROW_SEND_TO_CLIENT
+				| gui2::grid::HORIZONTAL_GROW_SEND_TO_CLIENT
 			, 0);
 }
 
@@ -125,15 +125,15 @@ BOOST_AUTO_TEST_CASE(test_fire_event)
 	std::stringstream sstr;
 
 	/**** Initialize the grid. *****/
-	gui2::tgrid grid(1, 1);
+	gui2::grid grid(1, 1);
 	grid.set_id("root");
 	connect_signals(sstr, grid);
 
-	gui2::tgrid *child_grid = new gui2::tgrid(1, 1);
+	gui2::grid *child_grid = new gui2::grid(1, 1);
 	add_widget(grid, child_grid, "level 1", 0, 0);
 	connect_signals(sstr, *child_grid);
 
-	gui2::twidget *child = new gui2::tgrid(1, 1);
+	gui2::widget *child = new gui2::grid(1, 1);
 	add_widget(*child_grid, child, "level 2", 0, 0);
 	connect_signals(sstr, *child);
 

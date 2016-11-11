@@ -61,8 +61,8 @@ class modification
 public:
 
 	/** Exception thrown by the operator() when an error occurs. */
-	struct texception
-		: public tlua_jailbreak_exception
+	struct imod_exception
+		: public lua_jailbreak_exception
 	{
 		/**
 		 * Constructor.
@@ -72,7 +72,7 @@ public:
 		 * @param message_stream  Stream with the error message regarding
 		 *                        the failed operation.
 		 */
-		texception(const std::stringstream& message_stream);
+		imod_exception(const std::stringstream& message_stream);
 
 		/**
 		 * Constructor.
@@ -82,16 +82,16 @@ public:
 		 * @param message         String with the error message regarding
 		 *                        the failed operation.
 		 */
-		texception(const std::string& message);
+		imod_exception(const std::string& message);
 
-		~texception() throw() {}
+		~imod_exception() throw() {}
 
 		/** The error message regarding the failed operation. */
 		const std::string message;
 
 	private:
 
-		IMPLEMENT_LUA_JAILBREAK_EXCEPTION(texception)
+		IMPLEMENT_LUA_JAILBREAK_EXCEPTION(imod_exception)
 	};
 
 	/// Decodes modifications from a modification string

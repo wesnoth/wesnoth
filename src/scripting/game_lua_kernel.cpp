@@ -230,9 +230,9 @@ static int special_locations_len(lua_State *L)
 
 static int special_locations_next(lua_State *L)
 {
-	const t_translation::tstarting_positions::left_map& left = lua_kernel_base::get_lua_kernel<game_lua_kernel>(L).map().special_locations().left;
+	const t_translation::starting_positions::left_map& left = lua_kernel_base::get_lua_kernel<game_lua_kernel>(L).map().special_locations().left;
 
-	t_translation::tstarting_positions::left_const_iterator it;
+	t_translation::starting_positions::left_const_iterator it;
 	if (lua_isnoneornil(L, 2)) {
 		it = left.begin();
 	}
@@ -261,7 +261,7 @@ static int special_locations_pairs(lua_State *L)
 
 static int special_locations_index(lua_State *L)
 {
-	const t_translation::tstarting_positions::left_map& left = lua_kernel_base::get_lua_kernel<game_lua_kernel>(L).map().special_locations().left;
+	const t_translation::starting_positions::left_map& left = lua_kernel_base::get_lua_kernel<game_lua_kernel>(L).map().special_locations().left;
 	auto it = left.find(luaL_checkstring(L, 2));
 	if (it == left.end()) {
 		return 0;
@@ -801,7 +801,7 @@ int game_lua_kernel::intf_get_terrain(lua_State *L)
 {
 	map_location loc = luaW_checklocation(L, 1);
 
-	t_translation::t_terrain const &t = board().map().
+	t_translation::terrain_code const &t = board().map().
 		get_terrain(loc);
 	lua_pushstring(L, t_translation::write_terrain_code(t).c_str());
 	return 1;
@@ -848,7 +848,7 @@ int game_lua_kernel::intf_set_terrain(lua_State *L)
 int game_lua_kernel::intf_get_terrain_info(lua_State *L)
 {
 	char const *m = luaL_checkstring(L, 1);
-	t_translation::t_terrain t = t_translation::read_terrain_code(m);
+	t_translation::terrain_code t = t_translation::read_terrain_code(m);
 	if (t == t_translation::NONE_TERRAIN) return 0;
 	terrain_type const &info = board().map().tdata()->get_terrain_info(t);
 
@@ -2214,7 +2214,7 @@ static int intf_unit_movement_cost(lua_State *L)
 {
 	const unit& u = luaW_checkunit(L, 1);
 	char const *m = luaL_checkstring(L, 2);
-	t_translation::t_terrain t = t_translation::read_terrain_code(m);
+	t_translation::terrain_code t = t_translation::read_terrain_code(m);
 	lua_pushinteger(L, u.movement_cost(t));
 	return 1;
 }
@@ -2229,7 +2229,7 @@ static int intf_unit_vision_cost(lua_State *L)
 {
 	const unit& u = luaW_checkunit(L, 1);
 	char const *m = luaL_checkstring(L, 2);
-	t_translation::t_terrain t = t_translation::read_terrain_code(m);
+	t_translation::terrain_code t = t_translation::read_terrain_code(m);
 	lua_pushinteger(L, u.vision_cost(t));
 	return 1;
 }
@@ -2244,7 +2244,7 @@ static int intf_unit_jamming_cost(lua_State *L)
 {
 	const unit& u = luaW_checkunit(L, 1);
 	char const *m = luaL_checkstring(L, 2);
-	t_translation::t_terrain t = t_translation::read_terrain_code(m);
+	t_translation::terrain_code t = t_translation::read_terrain_code(m);
 	lua_pushinteger(L, u.jamming_cost(t));
 	return 1;
 }
@@ -2259,7 +2259,7 @@ static int intf_unit_defense(lua_State *L)
 {
 	const unit& u = luaW_checkunit(L, 1);
 	char const *m = luaL_checkstring(L, 2);
-	t_translation::t_terrain t = t_translation::read_terrain_code(m);
+	t_translation::terrain_code t = t_translation::read_terrain_code(m);
 	lua_pushinteger(L, u.defense_modifier(t));
 	return 1;
 }
@@ -3200,8 +3200,8 @@ int game_lua_kernel::intf_delay(lua_State *L)
 namespace { // Types
 
 	class recursion_preventer {
-		typedef std::map<map_location, int> t_counter;
-		static t_counter counter_;
+		typedef std::map<map_location, int> counter;
+		static counter counter_;
 		static const int max_recursion = 10;
 
 		map_location loc_;
@@ -3212,13 +3212,13 @@ namespace { // Types
 			loc_(loc),
 			too_many_recursions_(false)
 		{
-			t_counter::iterator inserted = counter_.insert(std::make_pair(loc_, 0)).first;
+			counter::iterator inserted = counter_.insert(std::make_pair(loc_, 0)).first;
 			++inserted->second;
 			too_many_recursions_ = inserted->second >= max_recursion;
 		}
 		~recursion_preventer()
 		{
-			t_counter::iterator itor = counter_.find(loc_);
+			counter::iterator itor = counter_.find(loc_);
 			if (--itor->second == 0)
 			{
 				counter_.erase(itor);
@@ -3229,7 +3229,7 @@ namespace { // Types
 			return too_many_recursions_;
 		}
 	};
-	recursion_preventer::t_counter recursion_preventer::counter_;
+	recursion_preventer::counter recursion_preventer::counter_;
 	typedef std::unique_ptr<recursion_preventer> recursion_preventer_ptr;
 } // end anonymouse namespace (types)
 

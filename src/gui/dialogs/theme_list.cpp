@@ -26,6 +26,8 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -40,10 +42,10 @@ namespace gui2
  * themes & & listbox & m &
  *         Listbox displaying user choices. $
  *
- * -name & & control & m &
+ * -name & & styled_widget & m &
  *         Widget which shows a theme item name. $
  *
- * -description & & control & m &
+ * -description & & styled_widget & m &
  *         Widget which shows a theme item description. $
  *
  * @end{table}
@@ -51,14 +53,14 @@ namespace gui2
 
 REGISTER_DIALOG(theme_list)
 
-ttheme_list::ttheme_list(const std::vector<theme_info>& themes, int selection)
+theme_list::theme_list(const std::vector<theme_info>& themes, int selection)
 	: index_(selection), themes_(themes)
 {
 }
 
-void ttheme_list::pre_show(twindow& window)
+void theme_list::pre_show(window& window)
 {
-	tlistbox& list = find_widget<tlistbox>(&window, "themes", false);
+	listbox& list = find_widget<listbox>(&window, "themes", false);
 	window.keyboard_capture(&list);
 
 	for(const auto & t : themes_)
@@ -86,13 +88,14 @@ void ttheme_list::pre_show(twindow& window)
 	index_ = -1;
 }
 
-void ttheme_list::post_show(twindow& window)
+void theme_list::post_show(window& window)
 {
-	if(get_retval() != twindow::OK) {
+	if(get_retval() != window::OK) {
 		return;
 	}
 
-	tlistbox& list = find_widget<tlistbox>(&window, "themes", false);
+	listbox& list = find_widget<listbox>(&window, "themes", false);
 	index_ = list.get_selected_row();
 }
-}
+} // namespace dialogs
+} // namespace gui2

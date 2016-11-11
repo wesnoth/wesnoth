@@ -70,7 +70,7 @@ private:
 		~terrain_filter_cache();
 
 		//parsed_terrain: optimizes handling of terrain="..."
-		t_translation::t_match *parsed_terrain;
+		t_translation::ter_match *parsed_terrain;
 
 		//adjacent_matches: optimize handling of [filter_adjacent_location] for get_locations()
 		std::vector< std::set<map_location> > *adjacent_matches;

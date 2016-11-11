@@ -825,7 +825,7 @@ public:
 	 * the layers should be safe.
 	 * If needed in WML use the name and map that to the enum value.
 	 */
-	enum tdrawing_layer{
+	enum drawing_layer{
 		LAYER_TERRAIN_BG,          /**<
 		                            * Layer for the terrain drawn behind the
 		                            * unit.
@@ -884,7 +884,7 @@ public:
 	 * submerged: the amount of the unit out of 1.0 that is submerged
 	 *            (presumably under water) and thus shouldn't be drawn
 	 */
-	void render_image(int x, int y, const display::tdrawing_layer drawing_layer,
+	void render_image(int x, int y, const display::drawing_layer drawing_layer,
 			const map_location& loc, surface image,
 			bool hreverse=false, bool greyscale=false,
 			fixed_t alpha=ftofxp(1.0), Uint32 blendto=0,
@@ -895,7 +895,7 @@ public:
 	 * The font size is adjusted to the zoom factor.
 	 */
 	void draw_text_in_hex(const map_location& loc,
-		const tdrawing_layer layer, const std::string& text, size_t font_size,
+		const drawing_layer layer, const std::string& text, size_t font_size,
 		SDL_Color color, double x_in_hex=0.5, double y_in_hex=0.5);
 
 protected:
@@ -935,27 +935,27 @@ protected:
 	private:
 		unsigned int key_;
 
-		static const tdrawing_layer layer_groups[];
+		static const drawing_layer layer_groups[];
 		static const unsigned int max_layer_group;
 
 	public:
-		drawing_buffer_key(const map_location &loc, tdrawing_layer layer);
+		drawing_buffer_key(const map_location &loc, drawing_layer layer);
 
 		bool operator<(const drawing_buffer_key &rhs) const { return key_ < rhs.key_; }
 	};
 
 	/** Helper structure for rendering the terrains. */
-	class tblit
+	class blit_helper
 	{
 	public:
-		tblit(const tdrawing_layer layer, const map_location& loc,
+		blit_helper(const drawing_layer layer, const map_location& loc,
 				const int x, const int y, const surface& surf,
 				const SDL_Rect& clip)
 			: x_(x), y_(y), surf_(1, surf), clip_(clip),
 			key_(loc, layer)
 		{}
 
-		tblit(const tdrawing_layer layer, const map_location& loc,
+		blit_helper(const drawing_layer layer, const map_location& loc,
 				const int x, const int y, const std::vector<surface>& surf,
 				const SDL_Rect& clip)
 			: x_(x), y_(y), surf_(surf), clip_(clip),
@@ -967,7 +967,7 @@ protected:
 		const std::vector<surface> &surf() const { return surf_; }
 		const SDL_Rect &clip() const { return clip_; }
 
-		bool operator<(const tblit &rhs) const { return key_ < rhs.key_; }
+		bool operator<(const blit_helper &rhs) const { return key_ < rhs.key_; }
 
 	private:
 		int x_;                      /**< x screen coordinate to render at. */
@@ -980,8 +980,8 @@ protected:
 		drawing_buffer_key key_;
 	};
 
-	typedef std::list<tblit> tdrawing_buffer;
-	tdrawing_buffer drawing_buffer_;
+	typedef std::list<blit_helper> drawing_buffer;
+	drawing_buffer drawing_buffer_;
 
 public:
 	/**
@@ -991,11 +991,11 @@ public:
 	 * @param loc                The hex the image belongs to, needed for the
 	 *                           drawing order.
 	 */
-	void drawing_buffer_add(const tdrawing_layer layer,
+	void drawing_buffer_add(const drawing_layer layer,
 			const map_location& loc, int x, int y, const surface& surf,
 			const SDL_Rect &clip = SDL_Rect());
 
-	void drawing_buffer_add(const tdrawing_layer layer,
+	void drawing_buffer_add(const drawing_layer layer,
 			const map_location& loc, int x, int y,
 			const std::vector<surface> &surf,
 			const SDL_Rect &clip = SDL_Rect());

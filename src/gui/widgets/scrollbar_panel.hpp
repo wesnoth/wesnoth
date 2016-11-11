@@ -27,7 +27,7 @@ namespace gui2
 
 namespace implementation
 {
-struct tbuilder_scrollbar_panel;
+struct builder_scrollbar_panel;
 }
 
 /**
@@ -36,47 +36,47 @@ struct tbuilder_scrollbar_panel;
  * This widget can draw items beyond the widgets it holds and in front of
  * them. A panel is always active so these functions return dummy values.
  */
-class tscrollbar_panel : public tscrollbar_container
+class scrollbar_panel : public scrollbar_container
 {
-	friend struct implementation::tbuilder_scrollbar_panel;
+	friend struct implementation::builder_scrollbar_panel;
 
 public:
 	/**
 	 * Constructor.
 	 *
-	 * @param canvas_count        The canvas count for tcontrol.
+	 * @param canvas_count        The canvas count for styled_widget.
 	 */
-	explicit tscrollbar_panel(const unsigned canvas_count = 2)
-		: tscrollbar_container(canvas_count)
+	explicit scrollbar_panel(const unsigned canvas_count = 2)
+		: scrollbar_container(canvas_count)
 	{
 	}
 
-	/** See @ref tcontrol::get_active. */
+	/** See @ref styled_widget::get_active. */
 	virtual bool get_active() const override;
 
-	/** See @ref tcontrol::get_state. */
+	/** See @ref styled_widget::get_state. */
 	virtual unsigned get_state() const override;
 
 private:
-	/** See @ref tcontrol::get_control_type. */
+	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 
-	/** See @ref tcontainer_::set_self_active. */
+	/** See @ref container_base::set_self_active. */
 	virtual void set_self_active(const bool active) override;
 };
 
 // }---------- DEFINITION ---------{
 
-struct tscrollbar_panel_definition : public tcontrol_definition
+struct scrollbar_panel_definition : public styled_widget_definition
 {
 
-	explicit tscrollbar_panel_definition(const config& cfg);
+	explicit scrollbar_panel_definition(const config& cfg);
 
-	struct tresolution : public tresolution_definition_
+	struct resolution : public resolution_definition
 	{
-		explicit tresolution(const config& cfg);
+		explicit resolution(const config& cfg);
 
-		tbuilder_grid_ptr grid;
+		builder_grid_ptr grid;
 	};
 };
 
@@ -85,18 +85,18 @@ struct tscrollbar_panel_definition : public tcontrol_definition
 namespace implementation
 {
 
-struct tbuilder_scrollbar_panel : public tbuilder_control
+struct builder_scrollbar_panel : public builder_styled_widget
 {
-	explicit tbuilder_scrollbar_panel(const config& cfg);
+	explicit builder_scrollbar_panel(const config& cfg);
 
-	using tbuilder_control::build;
+	using builder_styled_widget::build;
 
-	twidget* build() const;
+	widget* build() const;
 
-	tscrollbar_container::tscrollbar_mode vertical_scrollbar_mode;
-	tscrollbar_container::tscrollbar_mode horizontal_scrollbar_mode;
+	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
+	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;
 
-	tbuilder_grid_ptr grid;
+	builder_grid_ptr grid_;
 };
 
 } // namespace implementation

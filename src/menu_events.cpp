@@ -147,14 +147,14 @@ void menu_handler::show_statistics(int side_num)
 
 void menu_handler::unit_list()
 {
-	gui2::show_unit_list(*gui_);
+	gui2::dialogs::show_unit_list(*gui_);
 }
 
 void menu_handler::status_table()
 {
 	int selected_index;
 
-	if(gui2::tgame_stats::execute(board(), gui_->viewing_team(), selected_index, gui_->video())) {
+	if(gui2::dialogs::game_stats::execute(board(), gui_->viewing_team(), selected_index, gui_->video())) {
 		gui_->scroll_to_leader(teams()[selected_index].side());
 	}
 }
@@ -163,7 +163,7 @@ void menu_handler::save_map()
 {
 	const std::string& input_name = filesystem::get_dir(filesystem::get_dir(filesystem::get_user_data_dir() + "/editor") + "/maps/");
 
-	gui2::tfile_dialog dlg;
+	gui2::dialogs::file_dialog dlg;
 
 	dlg.set_title(_("Save Map As"))
 	   .set_save_mode(true)
@@ -187,7 +187,7 @@ void menu_handler::save_map()
 
 void menu_handler::preferences()
 {
-	gui2::tpreferences::display(gui_->video(), game_config_);
+	gui2::dialogs::preferences_dialog::display(gui_->video(), game_config_);
 	// Needed after changing fullscreen/windowed mode or display resolution
 	gui_->redraw_everything();
 }
@@ -196,7 +196,7 @@ void menu_handler::show_chat_log()
 {
 	config c;
 	c["name"] = "prototype of chat log";
-	gui2::tchat_log chat_log_dialog(vconfig(c), *resources::recorder);
+	gui2::dialogs::chat_log chat_log_dialog(vconfig(c), *resources::recorder);
 	chat_log_dialog.show(gui_->video());
 	//std::string text = resources::recorder->build_chat_log();
 	//gui::show_dialog(*gui_,nullptr,_("Chat Log"),"",gui::CLOSE_ONLY,nullptr,nullptr,"",&text);
@@ -264,11 +264,11 @@ void menu_handler::recruit(int side_num, const map_location &last_hex)
 		return;
 	}
 
-	gui2::tunit_recruit dlg(sample_units, teams()[side_num - 1]);
+	gui2::dialogs::unit_recruit dlg(sample_units, teams()[side_num - 1]);
 
 	dlg.show(gui_->video());
 
-	if(dlg.get_retval() == gui2::twindow::OK) {
+	if(dlg.get_retval() == gui2::window::OK) {
 		do_recruit(sample_units[dlg.get_selected_index()]->id(), side_num, last_hex);
 	}
 }
@@ -360,11 +360,11 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 		return;
 	}
 
-	gui2::tunit_recall dlg(recall_list_team, current_team);
+	gui2::dialogs::unit_recall dlg(recall_list_team, current_team);
 
 	dlg.show(gui_->video());
 
-	if(dlg.get_retval() != gui2::twindow::OK) {
+	if(dlg.get_retval() != gui2::window::OK) {
 		return;
 	}
 
@@ -521,22 +521,22 @@ bool menu_handler::end_turn(int side_num)
 	          (!pc_.get_whiteboard() || !pc_.get_whiteboard()->current_side_has_actions())  &&
 	          units_alive(side_num, units()) )
 	{
-		const int res = gui2::show_message((*gui_).video(), "", _("You have not started your turn yet. Do you really want to end your turn?"), gui2::tmessage::yes_no_buttons);
-		if(res == gui2::twindow::CANCEL) {
+		const int res = gui2::show_message((*gui_).video(), "", _("You have not started your turn yet. Do you really want to end your turn?"), gui2::dialogs::message::yes_no_buttons);
+		if(res == gui2::window::CANCEL) {
 			return false;
 		}
 	}
 	// Ask for confirmation if units still have some movement left.
 	else if ( preferences::yellow_confirm() && partmoved_units(side_num, units(), board(), pc_.get_whiteboard()) ) {
-		const int res = gui2::show_message((*gui_).video(), "", _("Some units have movement left. Do you really want to end your turn?"), gui2::tmessage::yes_no_buttons);
-		if(res == gui2::twindow::CANCEL) {
+		const int res = gui2::show_message((*gui_).video(), "", _("Some units have movement left. Do you really want to end your turn?"), gui2::dialogs::message::yes_no_buttons);
+		if(res == gui2::window::CANCEL) {
 			return false;
 		}
 	}
 	// Ask for confirmation if units still have all movement left.
 	else if ( preferences::green_confirm() && unmoved_units(side_num, units(), board(), pc_.get_whiteboard()) ) {
-		const int res = gui2::show_message((*gui_).video(), "", _("Some units have not moved. Do you really want to end your turn?"), gui2::tmessage::yes_no_buttons);
-		if(res == gui2::twindow::CANCEL) {
+		const int res = gui2::show_message((*gui_).video(), "", _("Some units have not moved. Do you really want to end your turn?"), gui2::dialogs::message::yes_no_buttons);
+		if(res == gui2::window::CANCEL) {
 			return false;
 		}
 	}
@@ -590,7 +590,7 @@ void menu_handler::rename_unit()
 	const std::string title(N_("Rename Unit"));
 	const std::string label(N_("Name:"));
 
-	if(gui2::tedit_text::execute(title, label, name, gui_->video())) {
+	if(gui2::dialogs::edit_text::execute(title, label, name, gui_->video())) {
 		resources::recorder->add_rename(name, un->get_location());
 		un->rename(name);
 		gui_->invalidate_unit();
@@ -628,7 +628,7 @@ namespace { // Helpers for create_unit()
 		// The unit creation dialog makes sure unit types
 		// are properly cached.
 		//
-		gui2::tunit_create create_dlg;
+		gui2::dialogs::unit_create create_dlg;
 		create_dlg.show(gui.video());
 
 		if(create_dlg.no_choice()) {
@@ -732,7 +732,7 @@ void menu_handler::label_terrain(mouse_handler& mousehandler, bool team_only)
 	const terrain_label* old_label = gui_->labels().get_label(loc);
 	std::string label = old_label ? old_label->text() : "";
 
-	if(gui2::tedit_label::execute(label, team_only, gui_->video())) {
+	if(gui2::dialogs::edit_label::execute(label, team_only, gui_->video())) {
 		std::string team_name;
 		SDL_Color color = font::LABEL_COLOR;
 
@@ -758,7 +758,7 @@ void menu_handler::clear_labels()
 }
 
 void menu_handler::label_settings() {
-	if(gui2::tlabel_settings::execute(board(), gui_->video()))
+	if(gui2::dialogs::label_settings::execute(board(), gui_->video()))
 		gui_->labels().recalculate_labels();
 }
 
@@ -1312,7 +1312,7 @@ void menu_handler::do_search(const std::string& new_search)
 		symbols["search"] = last_search_;
 		const std::string msg = vgettext("Could not find label or unit "
 				"containing the string ‘$search’.", symbols);
-		gui2::show_message(gui_->video(), "", msg, gui2::tmessage::auto_close);
+		gui2::show_message(gui_->video(), "", msg, gui2::dialogs::message::auto_close);
 	}
 }
 
@@ -1502,7 +1502,7 @@ void console_handler::do_clear() {
 void console_handler::do_sunset() {
 	int delay = lexical_cast_default<int>(get_data());
 	menu_handler_.gui_->sunset(delay);
-	gui2::twindow::set_sunset(delay);
+	gui2::window::set_sunset(delay);
 }
 void console_handler::do_foreground() {
 	menu_handler_.gui_->toggle_debug_foreground();
@@ -1668,7 +1668,7 @@ void console_handler::do_choose_level() {
 	std::sort(options.begin(), options.end());
 	int choice = std::lower_bound(options.begin(), options.end(), next) - options.begin();
 	{
-		gui2::tsimple_item_selector dlg(_("Choose Scenario (Debug!)"), "", options);
+		gui2::dialogs::simple_item_selector dlg(_("Choose Scenario (Debug!)"), "", options);
 		dlg.set_selected_index(choice);
 		dlg.show(menu_handler_.gui_->video());
 		choice = dlg.selected_index();
@@ -1728,7 +1728,7 @@ void console_handler::do_unsafe_lua()
 	}
 	if (gui2::show_message(menu_handler_.gui_->video(), _("Unsafe Lua scripts."),
 		_("You are about to open a security breach in Wesnoth. Are you sure you want to continue? If you have downloaded add-ons, do not click 'ok'! They would instantly take over your computer. You have been warned."),
-		gui2::tmessage::ok_cancel_buttons) == gui2::twindow::OK)
+		gui2::dialogs::message::ok_cancel_buttons) == gui2::window::OK)
 	{
 		print(get_cmd(), _("Unsafe mode enabled!"));
 		menu_handler_.gamestate().lua_kernel_->load_package();
@@ -1784,13 +1784,13 @@ void console_handler::do_show_var() {
 
 void console_handler::do_inspect() {
 	vconfig cfg = vconfig::empty_vconfig();
-	gui2::tgamestate_inspector inspect_dialog(resources::gamedata->get_variables(), *resources::game_events, *resources::gameboard);
+	gui2::dialogs::gamestate_inspector inspect_dialog(resources::gamedata->get_variables(), *resources::game_events, *resources::gameboard);
 	inspect_dialog.show(menu_handler_.gui_->video());
 }
 
 void console_handler::do_control_dialog()
 {
-	gui2::tmp_change_control mp_change_control(&menu_handler_);
+	gui2::dialogs::mp_change_control mp_change_control(&menu_handler_);
 	mp_change_control.show(menu_handler_.gui_->video());
 }
 
@@ -1828,8 +1828,8 @@ void console_handler::do_discover() {
 }
 
 void console_handler::do_undiscover() {
-	const int res = gui2::show_message((*menu_handler_.gui_).video(), "Undiscover", _("Do you wish to clear all of your discovered units from help?"), gui2::tmessage::yes_no_buttons);
-	if(res != gui2::twindow::CANCEL) {
+	const int res = gui2::show_message((*menu_handler_.gui_).video(), "Undiscover", _("Do you wish to clear all of your discovered units from help?"), gui2::dialogs::message::yes_no_buttons);
+	if(res != gui2::window::CANCEL) {
 		preferences::encountered_units().clear();
 	}
 }

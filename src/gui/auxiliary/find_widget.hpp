@@ -26,16 +26,16 @@ namespace gui2
 /**
  * Returns the first parent of a widget with a certain type.
  *
- * @param widget                  The widget to get the parent from,
+ * @param child                   The widget to get the parent from,
  * @tparam T                      The class of the widget to return.
  *
  * @returns                       The parent widget.
  */
 template <class T>
-T& get_parent(twidget& widget)
+T& get_parent(widget& child)
 {
 	T* result;
-	twidget* w = &widget;
+	widget* w = &child;
 	do {
 		w = w->parent();
 		result = dynamic_cast<T*>(w);
@@ -66,7 +66,7 @@ T& get_parent(twidget& widget)
  * @returns                   The widget with the id.
  */
 template <class T>
-T* find_widget(typename utils::tconst_clone<twidget, T>::pointer widget,
+T* find_widget(typename utils::const_clone<widget, T>::pointer widget,
 			   const std::string& id,
 			   const bool must_be_active,
 			   const bool must_exist)
@@ -93,7 +93,7 @@ T* find_widget(typename utils::tconst_clone<twidget, T>::pointer widget,
  * @returns                   The widget with the id.
  */
 template <class T>
-T& find_widget(typename utils::tconst_clone<twidget, T>::pointer widget,
+T& find_widget(typename utils::const_clone<widget, T>::pointer widget,
 			   const std::string& id,
 			   const bool must_be_active)
 {

@@ -30,8 +30,10 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
-void twml_message_::set_input(const std::string& caption,
+void wml_message_base::set_input(const std::string& caption,
 							  std::string* text,
 							  const unsigned maximum_length)
 {
@@ -43,7 +45,7 @@ void twml_message_::set_input(const std::string& caption,
 	input_maximum_length_ = maximum_length;
 }
 
-void twml_message_::set_option_list(const std::vector<twml_message_option>& option_list,
+void wml_message_base::set_option_list(const std::vector<wml_message_option>& option_list,
 									int* chosen_option)
 {
 	assert(!option_list.empty());
@@ -59,20 +61,20 @@ void twml_message_::set_option_list(const std::vector<twml_message_option>& opti
  * ugly. There needs to be a clean interface to set whether a widget has a
  * markup and what kind of markup. These fixes will be post 1.6.
  */
-void twml_message_::pre_show(twindow& window)
+void wml_message_base::pre_show(window& window)
 {
 	set_restore(true);
 
-	window.canvas(1).set_variable("portrait_image", variant(portrait_));
-	window.canvas(1).set_variable("portrait_mirror", variant(mirror_));
+	window.get_canvas(1).set_variable("portrait_image", variant(portrait_));
+	window.get_canvas(1).set_variable("portrait_mirror", variant(mirror_));
 
 	// Set the markup
-	tlabel& title = find_widget<tlabel>(&window, "title", false);
+	label& title = find_widget<label>(&window, "title", false);
 	title.set_label(title_);
 	title.set_use_markup(true);
 	title.set_can_wrap(true);
 
-	tcontrol& message = find_widget<tcontrol>(&window, "message", false);
+	styled_widget& message = find_widget<styled_widget>(&window, "message", false);
 	message.set_label(message_);
 	message.set_use_markup(true);
 	// The message label might not always be a scroll_label but the capturing
@@ -80,8 +82,8 @@ void twml_message_::pre_show(twindow& window)
 	window.keyboard_capture(&message);
 
 	// Find the input box related fields.
-	tlabel& caption = find_widget<tlabel>(&window, "input_caption", false);
-	ttext_box& input = find_widget<ttext_box>(&window, "input", true);
+	label& caption = find_widget<label>(&window, "input_caption", false);
+	text_box& input = find_widget<text_box>(&window, "input", true);
 
 	if(has_input_) {
 		caption.set_label(input_caption_);
@@ -92,16 +94,16 @@ void twml_message_::pre_show(twindow& window)
 		window.set_click_dismiss(false);
 		window.set_escape_disabled(true);
 	} else {
-		caption.set_visible(twidget::tvisible::invisible);
-		input.set_visible(twidget::tvisible::invisible);
+		caption.set_visible(widget::visibility::invisible);
+		input.set_visible(widget::visibility::invisible);
 	}
 
 	// Find the option list related fields.
-	tlistbox& options = find_widget<tlistbox>(&window, "input_list", true);
+	listbox& options = find_widget<listbox>(&window, "input_list", true);
 
 	if(!option_list_.empty()) {
 		std::map<std::string, string_map> data;
-		for(const twml_message_option& item : option_list_) {
+		for(const wml_message_option& item : option_list_) {
 			// Add the data.
 			data["icon"]["label"] = item.image();
 			data["label"]["label"] = item.label();
@@ -127,29 +129,29 @@ void twml_message_::pre_show(twindow& window)
 			// click_dismiss has been disabled due to the input.
 		}
 	} else {
-		options.set_visible(twidget::tvisible::invisible);
+		options.set_visible(widget::visibility::invisible);
 	}
 	window.set_click_dismiss(!has_input_ && option_list_.empty());
 }
 
-void twml_message_::post_show(twindow& window)
+void wml_message_base::post_show(window& window)
 {
 	if(has_input_) {
 		*input_text_
-				= find_widget<ttext_box>(&window, "input", true).get_value();
+				= find_widget<text_box>(&window, "input", true).get_value();
 	}
 
 	if(!option_list_.empty()) {
-		*chosen_option_ = find_widget<tlistbox>(&window, "input_list", true)
+		*chosen_option_ = find_widget<listbox>(&window, "input_list", true)
 								  .get_selected_row();
 	}
 }
 
-void twml_message_double::pre_show(twindow& window)
+void wml_message_double::pre_show(window& window)
 {
-	twml_message_left::pre_show(window);
-	window.canvas(1).set_variable("second_portrait_image", variant(second_portrait_));
-	window.canvas(1).set_variable("second_portrait_mirror", variant(second_mirror_));
+	wml_message_left::pre_show(window);
+	window.get_canvas(1).set_variable("second_portrait_image", variant(second_portrait_));
+	window.get_canvas(1).set_variable("second_portrait_mirror", variant(second_mirror_));
 }
 
 REGISTER_DIALOG(wml_message_left)
@@ -161,18 +163,18 @@ REGISTER_DIALOG(wml_message_double)
 int show_wml_message(CVideo& video,
 					 const std::string& title,
 					 const std::string& message,
-					 const twml_message_portrait* left,
-					 const twml_message_portrait* right,
-					 const twml_message_options& options,
-					 const twml_message_input& input)
+					 const wml_message_portrait* left,
+					 const wml_message_portrait* right,
+					 const wml_message_options& options,
+					 const wml_message_input& input)
 {
-	std::shared_ptr<twml_message_> dlg;
+	std::shared_ptr<wml_message_base> dlg;
 	if(left && !right) {
-		dlg.reset(new twml_message_left(title, message, left->portrait, left->mirror));
+		dlg.reset(new wml_message_left(title, message, left->portrait, left->mirror));
 	} else if(!left && right) {
-		dlg.reset(new twml_message_right(title, message, right->portrait, right->mirror));
+		dlg.reset(new wml_message_right(title, message, right->portrait, right->mirror));
 	} else {
-		dlg.reset(new twml_message_double(title, message, left->portrait, left->mirror, right->portrait, right->mirror));
+		dlg.reset(new wml_message_double(title, message, left->portrait, left->mirror, right->portrait, right->mirror));
 	}
 	assert(dlg.get());
 
@@ -188,4 +190,5 @@ int show_wml_message(CVideo& video,
 	return dlg->get_retval();
 }
 
+} // namespace dialogs
 } // namespace gui2

@@ -22,7 +22,10 @@ class CVideo;
 namespace gui2
 {
 
-class twindow;
+class window;
+
+namespace dialogs
+{
 
 /**
  * The popup class shows windows that are shown non-modal.
@@ -30,7 +33,7 @@ class twindow;
  * At the moment these windows also don't capture the mouse and keyboard so can
  * only be used for things like tooltips. This behavior might change later.
  */
-class tpopup
+class modeless_dialog
 {
 	/**
 	 * Special helper function to get the id of the window.
@@ -38,7 +41,7 @@ class tpopup
 	 * This is used in the unit tests, but these implementation details
 	 * shouldn't be used in the normal code.
 	 */
-	friend std::string unit_test_mark_popup_as_tested(const tpopup& dialog);
+	friend std::string unit_test_mark_popup_as_tested(const modeless_dialog& dialog);
 
 	/**
 	 * Special helper function for the unit test to the the window.
@@ -46,12 +49,12 @@ class tpopup
 	 * This is used in the unit tests, but these implementation details
 	 * shouldn't be used in the normal code.
 	 */
-	friend twindow* unit_test_window(const tpopup& dialog);
+	friend window* unit_test_window(const modeless_dialog& dialog);
 
 public:
-	tpopup();
+	modeless_dialog();
 
-	virtual ~tpopup();
+	virtual ~modeless_dialog();
 
 	/**
 	 * Shows the window.
@@ -82,7 +85,7 @@ public:
 
 private:
 	/** The window, used in show. */
-	twindow* window_;
+	window* window_;
 
 	/** The id of the window to build. */
 	virtual const std::string& window_id() const = 0;
@@ -97,7 +100,7 @@ private:
 	 *                            upon.
 	 * @returns                   The window to show.
 	 */
-	twindow* build_window(CVideo& video) const;
+	window* build_window(CVideo& video) const;
 
 	/**
 	 * Actions to be taken directly after the window is build.
@@ -106,7 +109,7 @@ private:
 	 *                            upon.
 	 * @param window              The window just created.
 	 */
-	virtual void post_build(twindow& window);
+	virtual void post_build(window& window);
 
 	/**
 	 * Actions to be taken before showing the window.
@@ -115,9 +118,10 @@ private:
 	 *                            upon.
 	 * @param window              The window to be shown.
 	 */
-	virtual void pre_show(twindow& window);
+	virtual void pre_show(window& window);
 };
 
+} // namespace dialogs
 } // namespace gui2
 
 #endif

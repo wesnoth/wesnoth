@@ -38,28 +38,30 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
 REGISTER_DIALOG(faction_select)
 
-tfaction_select::tfaction_select(ng::flg_manager& flg_manager, const std::string& color, const int side)
+faction_select::faction_select(ng::flg_manager& flg_manager, const std::string& color, const int side)
 	: flg_manager_(flg_manager)
 	, tc_color_(color)
 	, side_(side)
 {
 }
 
-void tfaction_select::pre_show(twindow& window)
+void faction_select::pre_show(window& window)
 {
 	window.set_escape_disabled(true);
 
-	find_widget<tlabel>(&window, "starting_pos", false).set_label(std::to_string(side_));
+	find_widget<label>(&window, "starting_pos", false).set_label(std::to_string(side_));
 
 	//
 	// Set up gender radio buttons
 	//
-	ttoggle_button& gender_rand = find_widget<ttoggle_button>(&window, "gender_random", false);
-	ttoggle_button& gender_male = find_widget<ttoggle_button>(&window, "gender_male", false);
-	ttoggle_button& gender_female = find_widget<ttoggle_button>(&window, "gender_female", false);
+	toggle_button& gender_rand = find_widget<toggle_button>(&window, "gender_random", false);
+	toggle_button& gender_male = find_widget<toggle_button>(&window, "gender_male", false);
+	toggle_button& gender_female = find_widget<toggle_button>(&window, "gender_female", false);
 
 	gender_toggle_.add_member(&gender_rand,   "random");
 	gender_toggle_.add_member(&gender_male,   unit_race::s_male);
@@ -68,28 +70,28 @@ void tfaction_select::pre_show(twindow& window)
 	gender_toggle_.set_member_states("random");
 
 	gender_toggle_.set_callback_on_value_change(
-			dialog_callback<tfaction_select, &tfaction_select::on_gender_select>);
+			dialog_callback<faction_select, &faction_select::on_gender_select>);
 
 	//
 	// Set up leader menu button
 	//
-	find_widget<tmenu_button>(&window, "leader_menu", false).connect_click_handler(
-		std::bind(&tfaction_select::on_leader_select, this, std::ref(window)));
+	find_widget<menu_button>(&window, "leader_menu", false).connect_click_handler(
+		std::bind(&faction_select::on_leader_select, this, std::ref(window)));
 
 	//
 	// Set up faction list
 	//
-	tlistbox& list = find_widget<tlistbox>(&window, "faction_list", false);
+	listbox& list = find_widget<listbox>(&window, "faction_list", false);
 
 	window.keyboard_capture(&list);
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	connect_signal_notify_modified(*list,
-	   std::bind(&tfaction_select::on_faction_select,
+	   std::bind(&faction_select::on_faction_select,
 			*this, std::ref(window)));
 #else
 	list.set_callback_value_change(
-		dialog_callback<tfaction_select, &tfaction_select::on_faction_select>);
+		dialog_callback<faction_select, &faction_select::on_faction_select>);
 #endif
 
 	for(const config *s : flg_manager_.choosable_factions()) {
@@ -113,9 +115,9 @@ void tfaction_select::pre_show(twindow& window)
 	on_faction_select(window);
 }
 
-void tfaction_select::on_faction_select(twindow& window)
+void faction_select::on_faction_select(window& window)
 {
-	const int selected_row = find_widget<tlistbox>(&window, "faction_list", false).get_selected_row();
+	const int selected_row = find_widget<listbox>(&window, "faction_list", false).get_selected_row();
 
 	if(selected_row == -1) {
 		return;
@@ -144,7 +146,7 @@ void tfaction_select::on_faction_select(twindow& window)
 		}
 	}
 
-	tmenu_button& leader_dropdown = find_widget<tmenu_button>(&window, "leader_menu", false);
+	menu_button& leader_dropdown = find_widget<menu_button>(&window, "leader_menu", false);
 
 	leader_dropdown.set_values(leaders, std::min<int>(leaders.size() - 1, previous_leader_selection));
 	leader_dropdown.set_active(leaders.size() > 1 && !flg_manager_.is_saved_game());
@@ -165,12 +167,12 @@ void tfaction_select::on_faction_select(twindow& window)
 		return translation::compare(s1, s2) < 0;
 	});
 
-	find_widget<tcontrol>(&window, "recruits", false).set_label(utils::join(recruit_names, "\n"));
+	find_widget<styled_widget>(&window, "recruits", false).set_label(utils::join(recruit_names, "\n"));
 }
 
-void tfaction_select::on_leader_select(twindow& window)
+void faction_select::on_leader_select(window& window)
 {
-	flg_manager_.set_current_leader(find_widget<tmenu_button>(&window, "leader_menu", false).get_value());
+	flg_manager_.set_current_leader(find_widget<menu_button>(&window, "leader_menu", false).get_value());
 
 	auto gender_available = [this](const std::string gender)->bool {
 		const std::vector<std::string>& genders = flg_manager_.choosable_genders();
@@ -184,14 +186,14 @@ void tfaction_select::on_leader_select(twindow& window)
 	update_leader_image(window);
 }
 
-void tfaction_select::on_gender_select(twindow& window)
+void faction_select::on_gender_select(window& window)
 {
 	flg_manager_.set_current_gender(gender_toggle_.get_active_member_value());
 
 	update_leader_image(window);
 }
 
-void tfaction_select::update_leader_image(twindow& window)
+void faction_select::update_leader_image(window& window)
 {
 	std::string leader_image = "units/random-dice.png";
 
@@ -200,7 +202,8 @@ void tfaction_select::update_leader_image(twindow& window)
 		leader_image = formatter() << utg.image() << "~RC(" << utg.flag_rgb() << ">" << tc_color_ << ")" << "~SCALE_INTO_SHARP(144,144)";
 	}
 
-	find_widget<timage>(&window, "leader_image", false).set_label(leader_image);
+	find_widget<image>(&window, "leader_image", false).set_label(leader_image);
 }
 
-}
+} // namespace dialogs
+} // namespace gui2

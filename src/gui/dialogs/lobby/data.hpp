@@ -37,10 +37,10 @@ struct chat_message
 };
 
 /** this class memorizes a chat session. */
-class chat_log
+class chat_session
 {
 public:
-	chat_log();
+	chat_session();
 
 	void add_message(const time_t& timestamp,
 					 const std::string& user,
@@ -80,11 +80,11 @@ public:
 	void remove_member(const std::string& user);
 	void process_room_members(const config& data);
 
-	const chat_log& log() const
+	const chat_session& log() const
 	{
 		return log_;
 	}
-	chat_log& log()
+	chat_session& log()
 	{
 		return log_;
 	}
@@ -92,7 +92,7 @@ public:
 private:
 	std::string name_;
 	std::set<std::string> members_;
-	chat_log log_;
+	chat_session log_;
 };
 
 

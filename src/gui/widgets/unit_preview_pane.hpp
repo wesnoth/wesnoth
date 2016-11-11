@@ -26,24 +26,24 @@ namespace gui2
 
 // ------------ WIDGET -----------{
 
-class tbutton;
-class timage;
-class tlabel;
-class ttree_view;
-class ttree_view_node;
+class button;
+class image;
+class label;
+class tree_view;
+class tree_view_node;
 
 namespace implementation
 {
-	struct tbuilder_unit_preview_pane;
+	struct builder_unit_preview_pane;
 }
 
-class tunit_preview_pane : public tcontainer_
+class unit_preview_pane : public container_base
 {
-	friend struct implementation::tbuilder_unit_preview_pane;
+	friend struct implementation::builder_unit_preview_pane;
 
 public:
-	tunit_preview_pane()
-		: tcontainer_(1)
+	unit_preview_pane()
+		: container_base(1)
 		, current_type_()
 		, icon_type_(nullptr)
 		, icon_race_(nullptr)
@@ -71,13 +71,13 @@ public:
 	/** Callback for the profile button */
 	void profile_button_callback();
 
-	/** See @ref tcontrol::set_active. */
+	/** See @ref styled_widget::set_active. */
 	virtual void set_active(const bool active) override;
 
-	/** See @ref tcontrol::get_active. */
+	/** See @ref styled_widget::get_active. */
 	virtual bool get_active() const override;
 
-	/** See @ref tcontrol::get_state. */
+	/** See @ref styled_widget::get_state. */
 	virtual unsigned get_state() const override;
 
 protected:
@@ -91,49 +91,49 @@ protected:
 private:
 	std::string current_type_;
 
-	timage* icon_type_;
-	timage* icon_race_;
-	timage* icon_alignment_;
+	image* icon_type_;
+	image* icon_race_;
+	image* icon_alignment_;
 
-	tlabel* label_name_;
-	tlabel* label_level_;
-	tlabel* label_race_;
+	label* label_name_;
+	label* label_level_;
+	label* label_race_;
 
-	tcontrol* label_details_;
-	tcontrol* label_details_minimal_;
-	ttree_view* tree_details_;
+	styled_widget* label_details_;
+	styled_widget* label_details_minimal_;
+	tree_view* tree_details_;
 
-	tbutton* button_profile_;
+	button* button_profile_;
 
 	std::string image_mods_;
 
 	template<typename T> // This is only a template to avoid including units/attack.hpp
-	void print_attack_details(T attacks, ttree_view_node& parent_node);
+	void print_attack_details(T attacks, tree_view_node& parent_node);
 
-	enum tstate {
+	enum state_t {
 		ENABLED
 	};
 
-	/** See @ref tcontrol::get_control_type. */
+	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 
-	/** See @ref tcontainer_::set_self_active. */
+	/** See @ref container_base::set_self_active. */
 	virtual void set_self_active(const bool active) override;
 
 };
 
 // }---------- DEFINITION ---------{
 
-struct tunit_preview_pane_definition : public tcontrol_definition
+struct unit_preview_pane_definition : public styled_widget_definition
 {
 
-	explicit tunit_preview_pane_definition(const config& cfg);
+	explicit unit_preview_pane_definition(const config& cfg);
 
-	struct tresolution : public tresolution_definition_
+	struct resolution : public resolution_definition
 	{
-		explicit tresolution(const config& cfg);
+		explicit resolution(const config& cfg);
 
-		tbuilder_grid_ptr grid;
+		builder_grid_ptr grid;
 	};
 };
 
@@ -142,14 +142,14 @@ struct tunit_preview_pane_definition : public tcontrol_definition
 namespace implementation
 {
 
-struct tbuilder_unit_preview_pane : public tbuilder_control
+struct builder_unit_preview_pane : public builder_styled_widget
 {
 public:
-	explicit tbuilder_unit_preview_pane(const config& cfg);
+	explicit builder_unit_preview_pane(const config& cfg);
 
-	using tbuilder_control::build;
+	using builder_styled_widget::build;
 
-	twidget* build() const;
+	widget* build() const;
 
 private:
 	const std::string image_mods_;

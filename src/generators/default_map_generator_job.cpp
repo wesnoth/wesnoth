@@ -41,7 +41,7 @@ static lg::log_domain log_mapgen("mapgen");
 #define LOG_NG LOG_STREAM(info, log_mapgen)
 
 typedef std::vector<std::vector<int> > height_map;
-typedef t_translation::t_map terrain_map;
+typedef t_translation::ter_map terrain_map;
 
 namespace {
 
@@ -77,7 +77,7 @@ namespace {
 		const config& cfg_;
 		int windiness_;
 		int seed_;
-		mutable std::map<t_translation::t_terrain, double> cache_;
+		mutable std::map<t_translation::terrain_code, double> cache_;
 	};
 
 	double road_path_calculator::cost(const map_location& loc, const double /*so_far*/) const
@@ -110,8 +110,8 @@ namespace {
 			windiness += noise;
 		}
 
-		const t_translation::t_terrain c = map_[loc.x][loc.y];
-		const std::map<t_translation::t_terrain, double>::const_iterator itor = cache_.find(c);
+		const t_translation::terrain_code c = map_[loc.x][loc.y];
+		const std::map<t_translation::terrain_code, double>::const_iterator itor = cache_.find(c);
 		if(itor != cache_.end()) {
 			return itor->second*windiness;
 		}
@@ -123,21 +123,21 @@ namespace {
 			res = child["cost"].to_double();
 		}
 
-		cache_.insert(std::pair<t_translation::t_terrain, double>(c,res));
+		cache_.insert(std::pair<t_translation::terrain_code, double>(c,res));
 		return windiness*res;
 	}
 
 
 	struct is_valid_terrain
 	{
-		is_valid_terrain(const t_translation::t_map& map, const t_translation::t_list& terrain_list);
+		is_valid_terrain(const t_translation::ter_map& map, const t_translation::ter_list& terrain_list);
 		bool operator()(int x, int y) const;
 	private:
-		t_translation::t_map map_;
-		const t_translation::t_list& terrain_;
+		t_translation::ter_map map_;
+		const t_translation::ter_list& terrain_;
 	};
 
-	is_valid_terrain::is_valid_terrain(const t_translation::t_map& map, const t_translation::t_list& terrain_list)
+	is_valid_terrain::is_valid_terrain(const t_translation::ter_map& map, const t_translation::ter_list& terrain_list)
 		: map_(map), terrain_(terrain_list)
 	{
 	}
@@ -168,11 +168,11 @@ namespace {
 		explicit terrain_height_mapper(const config& cfg);
 
 		bool convert_terrain(const int height) const;
-		t_translation::t_terrain convert_to() const;
+		t_translation::terrain_code convert_to() const;
 
 	private:
 		int terrain_height;
-		t_translation::t_terrain to;
+		t_translation::terrain_code to;
 	};
 
 	terrain_height_mapper::terrain_height_mapper(const config& cfg) :
@@ -190,7 +190,7 @@ namespace {
 		return height >= terrain_height;
 	}
 
-	t_translation::t_terrain terrain_height_mapper::convert_to() const
+	t_translation::terrain_code terrain_height_mapper::convert_to() const
 	{
 		return to;
 	}
@@ -201,13 +201,13 @@ namespace {
 	public:
 		explicit terrain_converter(const config& cfg);
 
-		bool convert_terrain(const t_translation::t_terrain & terrain, const int height, const int temperature) const;
-		t_translation::t_terrain convert_to() const;
+		bool convert_terrain(const t_translation::terrain_code & terrain, const int height, const int temperature) const;
+		t_translation::terrain_code convert_to() const;
 
 	private:
 		int min_temp, max_temp, min_height, max_height;
-		t_translation::t_list from;
-		t_translation::t_terrain to;
+		t_translation::ter_list from;
+		t_translation::terrain_code to;
 	};
 
 	terrain_converter::terrain_converter(const config& cfg)
@@ -224,13 +224,13 @@ namespace {
 		}
 	}
 
-	bool terrain_converter::convert_terrain(const t_translation::t_terrain & terrain,
+	bool terrain_converter::convert_terrain(const t_translation::terrain_code & terrain,
 			const int height, const int temperature) const
 	{
 		return std::find(from.begin(),from.end(),terrain) != from.end() && height >= min_height && height <= max_height && temperature >= min_temp && temperature <= max_temp && to != t_translation::NONE_TERRAIN;
 	}
 
-	t_translation::t_terrain terrain_converter::convert_to() const
+	t_translation::terrain_code terrain_converter::convert_to() const
 	{
 		return to;
 	}
@@ -525,7 +525,7 @@ map_location default_map_generator_job::random_point_at_side(size_t width, size_
 
 /** Function which, given the map will output it in a valid format. */
 static std::string output_map(const terrain_map& terrain,
-		t_translation::tstarting_positions& starting_positions)
+		t_translation::starting_positions& starting_positions)
 {
 	// Remember that we only want the middle 1/9th of the map.
 	// All other segments of the map are there only to give
@@ -614,9 +614,9 @@ static int rank_castle_location(int x, int y, const is_valid_terrain& valid_terr
 	return surrounding_ranking + current_ranking;
 }
 
-typedef std::map<t_translation::t_terrain, t_translation::t_list> tcode_list_cache;
+typedef std::map<t_translation::terrain_code, t_translation::ter_list> tcode_list_cache;
 
-static map_location place_village(const t_translation::t_map& map,
+static map_location place_village(const t_translation::ter_map& map,
 	const size_t x, const size_t y, const size_t radius, const config& cfg,
 	tcode_list_cache &adj_liked_cache)
 {
@@ -632,11 +632,11 @@ static map_location place_village(const t_translation::t_map& map,
 			continue;
 		}
 
-		const t_translation::t_terrain t = map[i.x][i.y];
+		const t_translation::terrain_code t = map[i.x][i.y];
 		const std::string str = t_translation::write_terrain_code(t);
 		if(const config &child = cfg.find_child("village", "terrain", str)) {
 			tcode_list_cache::iterator l = adj_liked_cache.find(t);
-			t_translation::t_list *adjacent_liked;
+			t_translation::ter_list *adjacent_liked;
 			if(l != adj_liked_cache.end()) {
 				adjacent_liked = &(l->second);
 			} else {
@@ -655,7 +655,7 @@ static map_location place_village(const t_translation::t_map& map,
 					continue;
 				}
 
-				const t_translation::t_terrain t2 = map[adj[n].x][adj[n].y];
+				const t_translation::terrain_code t2 = map[adj[n].x][adj[n].y];
 				rating += std::count(adjacent_liked->begin(),adjacent_liked->end(),t2);
 			}
 
@@ -671,7 +671,7 @@ static map_location place_village(const t_translation::t_map& map,
 
 // "flood fill" a tile name to adjacent tiles of certain terrain
 static void flood_name(const map_location& start, const std::string& name, std::map<map_location,std::string>& tile_names,
-	const t_translation::t_match& tile_types, const terrain_map& terrain,
+	const t_translation::ter_match& tile_types, const terrain_map& terrain,
 	unsigned width, unsigned height,
 	size_t label_count, std::map<map_location,std::string>* labels, const std::string& full_name) {
 	map_location adj[6];
@@ -685,7 +685,7 @@ static void flood_name(const map_location& start, const std::string& name, std::
 			continue;
 		}
 
-		const t_translation::t_terrain terr = terrain[adj[n].x + (width / 3)][adj[n].y + (height / 3)];
+		const t_translation::terrain_code terr = terrain[adj[n].x + (width / 3)][adj[n].y + (height / 3)];
 		const map_location loc(adj[n].x, adj[n].y);
 		if((t_translation::terrain_matches(terr, tile_types)) && (tile_names.find(loc) == tile_names.end())) {
 			tile_names.insert(std::pair<map_location, std::string>(loc, name));
@@ -764,7 +764,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 		flatland = t_translation::write_terrain_code(t_translation::GRASS_LAND);
 	}
 
-	const t_translation::t_terrain grassland = t_translation::read_terrain_code(flatland);
+	const t_translation::terrain_code grassland = t_translation::read_terrain_code(flatland);
 
 	std::vector<terrain_height_mapper> height_conversion;
 	for(const config& h : cfg.child_range("height")) {
@@ -783,7 +783,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 		}
 	}
 
-	t_translation::tstarting_positions starting_positions;
+	t_translation::starting_positions starting_positions;
 	LOG_NG << output_map(terrain, starting_positions);
 	LOG_NG << "Placed landforms. " << (SDL_GetTicks() - ticks) << " ticks elapsed" << "\n";
 	ticks = SDL_GetTicks();
@@ -921,7 +921,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 	 * Castle configuration tag contains a 'valid_terrain' attribute which is a
 	 * list of terrains that the castle may appear on.
 	 */
-	const t_translation::t_list list =
+	const t_translation::ter_list list =
 		t_translation::read_list(castle_config["valid_terrain"]);
 
 	const is_valid_terrain terrain_tester(terrain, list);
@@ -1122,7 +1122,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 			// Just a plain terrain substitution for a road
 			const std::string& convert_to = child["convert_to"];
 			if(!convert_to.empty()) {
-				const t_translation::t_terrain letter = t_translation::read_terrain_code(convert_to);
+				const t_translation::terrain_code letter = t_translation::read_terrain_code(convert_to);
 				if(misc_labels != nullptr && terrain[x][y] != letter && name_count++ == name_frequency && !on_bridge) {
 					misc_labels->insert(std::pair<map_location,std::string>(map_location(x-data.width/3,y-data.height/3),road_name));
 					name_count = 0;
@@ -1148,7 +1148,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 		const int y = c->y;
 		const int player = c - castles.begin() + 1;
 		const t_translation::coordinate coord(x, y);
-		starting_positions.insert(t_translation::tstarting_positions::value_type(std::to_string(player), coord));
+		starting_positions.insert(t_translation::starting_positions::value_type(std::to_string(player), coord));
 		terrain[x][y] = t_translation::HUMAN_KEEP;
 
 		const int castle_array[13][2] = {
@@ -1181,7 +1181,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 			for(int y = data.height / 3; y < (data.height / 3) * 2;y++) {
 				//check the terrain of the tile
 				const map_location loc(x - data.width / 3, y - data.height / 3);
-				const t_translation::t_terrain terr = terrain[x][y];
+				const t_translation::terrain_code terr = terrain[x][y];
 				std::string name, base_name;
 				std::set<std::string> used_names;
 
@@ -1310,11 +1310,11 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 				get_adjacent_tiles(loc,adj);
 
 				std::string name_type = "village";
-				const t_translation::t_list
-					field	 = t_translation::t_list(1, t_translation::GRASS_LAND),
-					forest   = t_translation::t_list(1, t_translation::FOREST),
-					mountain = t_translation::t_list(1, t_translation::MOUNTAIN),
-					hill	 = t_translation::t_list(1, t_translation::HILL);
+				const t_translation::ter_list
+					field	 = t_translation::ter_list(1, t_translation::GRASS_LAND),
+					forest   = t_translation::ter_list(1, t_translation::FOREST),
+					mountain = t_translation::ter_list(1, t_translation::MOUNTAIN),
+					hill	 = t_translation::ter_list(1, t_translation::HILL);
 
 				size_t field_count = 0, forest_count = 0, mountain_count = 0, hill_count = 0;
 
@@ -1372,7 +1372,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 						break;
 					}
 
-					const t_translation::t_terrain terr = terrain[adj[n].x+data.width/3][adj[n].y+data.height/3];
+					const t_translation::terrain_code terr = terrain[adj[n].x+data.width/3][adj[n].y+data.height/3];
 
 					if(std::count(field.begin(),field.end(),terr) > 0) {
 						++field_count;

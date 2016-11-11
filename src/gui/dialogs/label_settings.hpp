@@ -19,16 +19,19 @@
 #include "display_context.hpp"
 #include "tstring.hpp"
 
-namespace gui2 {
+namespace gui2
+{
+namespace dialogs
+{
 
-class tlabel_settings : public tdialog {
+class label_settings : public modal_dialog {
 public:
-	tlabel_settings(display_context& dc);
+	label_settings(display_context& dc);
 
 	/**
 	 * The execute function.
 	 *
-	 * See @ref tdialog for more information.
+	 * See @ref modal_dialog for more information.
 	 */
 	static bool execute(display_context& dc, CVideo& video);
 private:
@@ -36,15 +39,16 @@ private:
 	std::map<std::string, t_string> labels_display;
 	display_context& viewer;
 
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	/** Inherited from modal_dialog. */
+	void pre_show(window& window);
 
 	/** Callback for toggling a checkbox state. */
-	void toggle_category(twidget& box, std::string category);
+	void toggle_category(widget& box, std::string category);
 };
-}
+} // namespace dialogs
+} // namespace gui2
 
 #endif

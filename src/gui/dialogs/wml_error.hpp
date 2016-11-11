@@ -19,9 +19,11 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /** WML preprocessor/parser error report dialog. */
-class twml_error : public tdialog
+class wml_error : public modal_dialog
 {
 public:
 	/**
@@ -33,22 +35,22 @@ public:
 	 * @param files        List of WML files on which errors were detected.
 	 * @param details      Detailed WML preprocessor/parser error report.
 	 */
-	twml_error(const std::string& summary,
+	wml_error(const std::string& summary,
 			   const std::string& post_summary,
 			   const std::vector<std::string>& files,
 			   const std::string& details);
 
-	/** The display function; see @ref tdialog for more information. */
+	/** The display function; see @ref modal_dialog for more information. */
 	static void display(const std::string& summary,
 						const std::string& post_summary,
 						const std::vector<std::string>& files,
 						const std::string& details,
 						CVideo& video)
 	{
-		twml_error(summary, post_summary, files, details).show(video);
+		wml_error(summary, post_summary, files, details).show(video);
 	}
 
-	/** The display function; see @ref tdialog for more information. */
+	/** The display function; see @ref modal_dialog for more information. */
 	static void display(const std::string& summary,
 						const std::string& details,
 						CVideo& video)
@@ -61,15 +63,16 @@ private:
 	bool have_post_summary_;
 	std::string report_; // Plain text report for copying to clipboard.
 
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	/** Inherited from modal_dialog. */
+	void pre_show(window& window);
 
 	void copy_report_callback();
 };
 
+} // end namespace dialogs
 } // end namespace gui2
 
 #endif

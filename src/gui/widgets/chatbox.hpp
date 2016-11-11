@@ -22,28 +22,28 @@
 #include <string>
 
 class config;
-class twesnothd_connection;
+class wesnothd_connection;
 
 namespace gui2
 {
 
 // ------------ WIDGET -----------{
 
-class tbutton;
-class tlistbox;
-class tlabel;
-class tmulti_page;
-class ttext_box;
+class button;
+class listbox;
+class label;
+class multi_page;
+class text_box;
 
 namespace implementation
 {
-	struct tbuilder_chatbox;
+	struct builder_chatbox;
 }
 
 
-struct tlobby_chat_window
+struct lobby_chat_window
 {
-	tlobby_chat_window(const std::string& name, bool whisper)
+	lobby_chat_window(const std::string& name, bool whisper)
 		: name(name), whisper(whisper), pending_messages(0)
 	{
 	}
@@ -52,20 +52,20 @@ struct tlobby_chat_window
 	int pending_messages;
 };
 
-class tchatbox : public tcontainer_, public events::chat_handler
+class chatbox : public container_base, public events::chat_handler
 {
-	friend struct implementation::tbuilder_chatbox;
+	friend struct implementation::builder_chatbox;
 
 public:
-	tchatbox();
+	chatbox();
 
-	/** See @ref tcontrol::set_active. */
+	/** See @ref styled_widget::set_active. */
 	virtual void set_active(const bool active) override;
 
-	/** See @ref tcontrol::get_active. */
+	/** See @ref styled_widget::get_active. */
 	virtual bool get_active() const override;
 
-	/** See @ref tcontrol::get_state. */
+	/** See @ref styled_widget::get_state. */
 	virtual unsigned get_state() const override { return 0; };
 
 	void send_to_server(const ::config& cfg) override;
@@ -74,7 +74,7 @@ public:
 
 	void set_lobby_info(lobby_info& i) { lobby_info_ = &i; }
 
-	void set_wesnothd_connection(twesnothd_connection& c) { wesnothd_connection_ = &c; }
+	void set_wesnothd_connection(wesnothd_connection& c) { wesnothd_connection_ = &c; }
 
 protected:
 	/**
@@ -113,13 +113,13 @@ protected:
 
 
 private:
-	tlistbox* roomlistbox_;
+	listbox* roomlistbox_;
 
-	tmulti_page* chat_log_container_;
+	multi_page* chat_log_container_;
 
-	ttext_box* chat_input_;
+	text_box* chat_input_;
 
-	std::vector<tlobby_chat_window> open_windows_;
+	std::vector<lobby_chat_window> open_windows_;
 
 	size_t active_window_;
 
@@ -129,12 +129,12 @@ private:
 
 	class lobby_info& lobby_info() { return *lobby_info_; }
 
-	twesnothd_connection* wesnothd_connection_;
+	wesnothd_connection* wesnothd_connection_;
 
-	/** See @ref tcontrol::get_control_type. */
+	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 
-	/** See @ref tcontainer_::set_self_active. */
+	/** See @ref container_base::set_self_active. */
 	virtual void set_self_active(const bool active) override;
 
 	void chat_input_keypress_callback(bool& handled, bool& halt, const SDL_Keycode key);
@@ -205,7 +205,7 @@ public:
 	* Switch to the window given by a valid pointer (e.g. received from a call
 	* to *_window_open)
 	*/
-	void switch_to_window(tlobby_chat_window* t);
+	void switch_to_window(lobby_chat_window* t);
 
 	void switch_to_window(size_t id);
 
@@ -223,7 +223,7 @@ public:
 	* 'close' button will be disabled.
 	* @return valid ptr if the window was found or added, null otherwise
 	*/
-	tlobby_chat_window* room_window_open(const std::string& room,
+	lobby_chat_window* room_window_open(const std::string& room,
 		const bool open_new, const bool allow_close = true);
 
 	/**
@@ -231,18 +231,18 @@ public:
 	* then it will be created if not found.
 	* @return valid ptr if the window was found or added, null otherwise
 	*/
-	tlobby_chat_window* whisper_window_open(const std::string& name,
+	lobby_chat_window* whisper_window_open(const std::string& name,
 		bool open_new);
 
 	/**
 	* Helper function to find and open a new window, used by *_window_open
 	*/
-	tlobby_chat_window* search_create_window(const std::string& name, const bool whisper, const bool open_new, const bool allow_close);
+	lobby_chat_window* search_create_window(const std::string& name, const bool whisper, const bool open_new, const bool allow_close);
 
-	void do_notify(t_notify_mode mode) { do_notify(mode, "", ""); }
-	void do_notify(t_notify_mode mode, const std::string & sender, const std::string & message) { do_mp_notify(mode, sender, message); }
+	void do_notify(notify_mode mode) { do_notify(mode, "", ""); }
+	void do_notify(notify_mode mode, const std::string & sender, const std::string & message) { do_mp_notify(mode, sender, message); }
 
-	void close_window_button_callback(tlobby_chat_window& chat_window, bool& handled, bool& halt);
+	void close_window_button_callback(lobby_chat_window& chat_window, bool& handled, bool& halt);
 
 
 	void process_room_join(const ::config& data);
@@ -258,16 +258,16 @@ public:
 
 // }---------- DEFINITION ---------{
 
-struct tchatbox_definition : public tcontrol_definition
+struct chatbox_definition : public styled_widget_definition
 {
 
-	explicit tchatbox_definition(const config& cfg);
+	explicit chatbox_definition(const config& cfg);
 
-	struct tresolution : public tresolution_definition_
+	struct resolution : public resolution_definition
 	{
-		explicit tresolution(const config& cfg);
+		explicit resolution(const config& cfg);
 
-		tbuilder_grid_ptr grid;
+		builder_grid_ptr grid;
 	};
 };
 
@@ -276,14 +276,14 @@ struct tchatbox_definition : public tcontrol_definition
 namespace implementation
 {
 
-struct tbuilder_chatbox : public tbuilder_control
+struct builder_chatbox : public builder_styled_widget
 {
 public:
-	explicit tbuilder_chatbox(const config& cfg);
+	explicit builder_chatbox(const config& cfg);
 
-	using tbuilder_control::build;
+	using builder_styled_widget::build;
 
-	twidget* build() const;
+	widget* build() const;
 
 private:
 };

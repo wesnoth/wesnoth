@@ -21,7 +21,10 @@
 namespace gui2
 {
 
-class tbutton;
+class button;
+
+namespace dialogs
+{
 
 /**
  * Main class to show messages to the user.
@@ -29,12 +32,12 @@ class tbutton;
  * It can be used to show a message or ask a result from the user. For the
  * most common usage cases there are helper functions defined.
  */
-class tmessage : public tdialog
+class message : public modal_dialog
 {
-	friend struct tmessage_implementation;
+	friend struct message_implementation;
 
 public:
-	tmessage(const std::string& title,
+	message(const std::string& title,
 			 const std::string& message,
 			 const bool auto_close,
 			 const bool message_use_markup)
@@ -47,7 +50,7 @@ public:
 	{
 	}
 
-	enum tbutton_id {
+	enum button_id {
 		left_1 = 0,
 		cancel,
 		ok,
@@ -61,7 +64,7 @@ public:
 	 * These values are not directly implemented in this class but are used
 	 * by our helper functions.
 	 */
-	enum tbutton_style {
+	enum button_style {
 		auto_close /**< Enables auto close. */
 		,
 		ok_button /**< Shows an ok button. */
@@ -75,13 +78,13 @@ public:
 		yes_no_buttons /**< Shows a yes and no button. */
 	};
 
-	void set_button_caption(const tbutton_id button,
+	void set_button_caption(const button_id button,
 							const std::string& caption);
 
-	void set_button_visible(const tbutton_id button,
-							const twidget::tvisible visible);
+	void set_button_visible(const button_id button,
+							const widget::visibility visible);
 
-	void set_button_retval(const tbutton_id button, const int retval);
+	void set_button_retval(const button_id button, const int retval);
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
@@ -106,11 +109,11 @@ public:
 	}
 
 protected:
-	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	/** Inherited from modal_dialog. */
+	void pre_show(window& window);
 
-	/** Inherited from tdialog. */
-	void post_show(twindow& window);
+	/** Inherited from modal_dialog. */
+	void post_show(window& window);
 
 private:
 	/** The title for the dialog. */
@@ -139,18 +142,19 @@ private:
 	{
 		tbutton_status();
 
-		tbutton* button;
+		button* ptr;
 		std::string caption;
-		twidget::tvisible visible;
+		widget::visibility visible;
 		int retval;
 	};
 
 	/** Holds a pointer to the buttons. */
 	std::vector<tbutton_status> buttons_;
 
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 };
+} // namespace dialogs
 
 /**
  * Shows a message to the user.
@@ -192,7 +196,7 @@ void show_message(CVideo& video,
 int show_message(CVideo& video,
 				 const std::string& title,
 				 const std::string& message,
-				 const tmessage::tbutton_style button_style,
+				 const dialogs::message::button_style button_style,
 				 bool message_use_markup = false,
 				 bool title_use_markup = false);
 

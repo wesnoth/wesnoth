@@ -26,29 +26,29 @@ namespace iterator
 namespace walker
 {
 
-/** A walker for a @ref gui2::tcontrol. */
-class twidget : public twalker_
+/** A walker for a @ref gui2::styled_widget. */
+class widget : public walker_base
 {
 public:
 	/**
 	 * Constructor.
 	 *
-	 * @param widget              The control which the walker is attached to.
+	 * @param widget              The styled_widget which the walker is attached to.
 	 */
-	explicit twidget(gui2::twidget& widget);
+	explicit widget(gui2::widget& widget);
 
-	/** Inherited from @ref gui2::iterator::twalker_. */
-	virtual tstate next(const tlevel level);
+	/** Inherited from @ref gui2::iterator::walker_base. */
+	virtual state_t next(const level level);
 
-	/** Inherited from @ref gui2::iterator::twalker_. */
-	virtual bool at_end(const tlevel level) const;
+	/** Inherited from @ref gui2::iterator::walker_base. */
+	virtual bool at_end(const level level) const;
 
-	/** Inherited from @ref gui2::iterator::twalker_. */
-	virtual gui2::twidget* get(const tlevel level);
+	/** Inherited from @ref gui2::iterator::walker_base. */
+	virtual gui2::widget* get(const level level);
 
 private:
-	/** The control which the walker is attached to. */
-	gui2::twidget* widget_;
+	/** The styled_widget which the walker is attached to. */
+	gui2::widget* widget_;
 };
 
 } //  namespace walker

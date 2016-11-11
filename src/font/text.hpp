@@ -32,7 +32,7 @@
 struct language_def;
 
 namespace gui2 {
-	struct tpoint;
+	struct point;
 } // namespace gui2;
 
 namespace font {
@@ -72,16 +72,16 @@ namespace font {
  * render the text. See http://pango.org for more info.
  *
  */
-class ttext
+class pango_text
 {
 public:
 
-	ttext();
+	pango_text();
 
-    ttext(const ttext &) = delete;
-    ttext & operator = (const ttext &) = delete;
+    pango_text(const pango_text &) = delete;
+    pango_text & operator = (const pango_text &) = delete;
 
-	~ttext();
+	~pango_text();
 
 	/**
 	 * Returns the rendered text.
@@ -98,7 +98,7 @@ public:
 	int get_height() const;
 
 	/** Returns the pixel size needed for the text. */
-	gui2::tpoint get_size() const;
+	gui2::point get_size() const;
 
 	/** Has the text been truncated? This happens if it exceeds max width or height. */
 	bool is_truncated() const;
@@ -157,7 +157,7 @@ public:
 	 *                            requested location is out of range 0,0 is
 	 *                            returned.
 	 */
-	gui2::tpoint get_cursor_position(
+	gui2::point get_cursor_position(
 		const unsigned column, const unsigned line = 0) const;
 
 	/**
@@ -170,7 +170,7 @@ public:
 	 * 			      delimiter characters. If position is out of bounds,
 	 *			      it returns the empty string.
 	 */
-	std::string get_token(const gui2::tpoint & position, const char * delimiters = " \n\r\t") const;
+	std::string get_token(const gui2::point & position, const char * delimiters = " \n\r\t") const;
 
 	/**
 	 * Checks if position points to a character in a link in the text, returns it
@@ -179,7 +179,7 @@ public:
 	 *
 	 * @returns                   The link if one is found, the empty string otherwise.
 	 */
-	std::string get_link(const gui2::tpoint & position) const;
+	std::string get_link(const gui2::point & position) const;
 
 	/**
 	 * Gets the column of line of the character at the position.
@@ -190,7 +190,7 @@ public:
 	 *                            value the line of the character found (or last
 	 *                            character if not found.
 	 */
-	gui2::tpoint get_column_line(const gui2::tpoint& position) const;
+	gui2::point get_column_line(const gui2::point& position) const;
 
 	/**
 	 * Gets the length of the text in bytes.
@@ -218,33 +218,33 @@ public:
 
 	const std::string& text() const { return text_; }
 
-	ttext& set_family_class(font::family_class fclass);
+	pango_text& set_family_class(font::family_class fclass);
 
-	ttext& set_font_size(const unsigned font_size);
+	pango_text& set_font_size(const unsigned font_size);
 
-	ttext& set_font_style(const FONT_STYLE font_style);
+	pango_text& set_font_style(const FONT_STYLE font_style);
 
-	ttext& set_foreground_color(const Uint32 color);
+	pango_text& set_foreground_color(const Uint32 color);
 
-	ttext& set_foreground_color(const SDL_Color color);
+	pango_text& set_foreground_color(const SDL_Color color);
 
-	ttext& set_maximum_width(int width);
+	pango_text& set_maximum_width(int width);
 
-	ttext& set_characters_per_line(const unsigned characters_per_line);
+	pango_text& set_characters_per_line(const unsigned characters_per_line);
 
-	ttext& set_maximum_height(int height, bool multiline);
+	pango_text& set_maximum_height(int height, bool multiline);
 
-	ttext& set_ellipse_mode(const PangoEllipsizeMode ellipse_mode);
+	pango_text& set_ellipse_mode(const PangoEllipsizeMode ellipse_mode);
 
-	ttext& set_alignment(const PangoAlignment alignment);
+	pango_text& set_alignment(const PangoAlignment alignment);
 
-	ttext& set_maximum_length(const size_t maximum_length);
+	pango_text& set_maximum_length(const size_t maximum_length);
 
 	bool link_aware() const { return link_aware_; }
 
-	ttext& set_link_aware(bool b);
+	pango_text& set_link_aware(bool b);
 
-	ttext& set_link_color(const std::string & color);
+	pango_text& set_link_color(const std::string & color);
 private:
 
 	/***** ***** ***** *****  Pango variables ***** ***** ***** *****/

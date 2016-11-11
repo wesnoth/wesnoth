@@ -21,7 +21,7 @@
 namespace gui2
 {
 
-class twidget;
+class widget;
 
 /**
  * Small abstract helper class.
@@ -29,17 +29,17 @@ class twidget;
  * Parts of the engine inherit this class so we can have generic
  * selectable items.
  */
-class tselectable_
+class selectable_item
 {
 public:
-	virtual ~tselectable_()
+	virtual ~selectable_item()
 	{
 	}
 
-	/** Is the control selected? */
+	/** Is the styled_widget selected? */
 	virtual unsigned get_value() const = 0;
 
-	/** Select the control. */
+	/** Select the styled_widget. */
 	virtual void set_value(const unsigned) = 0;
 
 	/** The number of states, that is 2 for normal buttons, 3 for tristate buttons. */
@@ -61,7 +61,7 @@ public:
 	 * fired. Most of the time it will be a left click on the widget.
 	 */
 	virtual void
-	set_callback_state_change(std::function<void(twidget&)> callback) = 0;
+	set_callback_state_change(std::function<void(widget&)> callback) = 0;
 };
 
 } // namespace gui2

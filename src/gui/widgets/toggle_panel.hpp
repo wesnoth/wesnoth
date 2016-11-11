@@ -26,21 +26,21 @@ namespace gui2
 /**
  * Class for a toggle button.
  *
- * Quite some code looks like ttoggle_button maybe we should inherit from that
+ * Quite some code looks like toggle_button maybe we should inherit from that
  * but let's test first.  the problem is that the toggle_button has an icon we
  * don't want, but maybe look at refactoring later.  but maybe we should also
  * ditch the icon, not sure however since it's handy for checkboxes...
  */
-class ttoggle_panel : public tpanel, public tselectable_
+class toggle_panel : public panel, public selectable_item
 {
 public:
-	ttoggle_panel();
+	toggle_panel();
 
 	/**
 	 * Sets the members of the child controls.
 	 *
 	 * Sets the members for all controls which have the proper member id. See
-	 * tcontrol::set_members for more info.
+	 * styled_widget::set_members for more info.
 	 *
 	 * @param data                Map with the key value pairs to set the
 	 *                            members.
@@ -50,65 +50,65 @@ public:
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
-	/** See @ref twidget::find_at. */
-	virtual twidget* find_at(const tpoint& coordinate,
+	/** See @ref widget::find_at. */
+	virtual widget* find_at(const point& coordinate,
 							 const bool must_be_active) override;
 
-	/** See @ref twidget::find_at. */
-	virtual const twidget* find_at(const tpoint& coordinate,
+	/** See @ref widget::find_at. */
+	virtual const widget* find_at(const point& coordinate,
 								   const bool must_be_active) const override;
 
-	/** See @ref tcontrol::set_active. */
+	/** See @ref styled_widget::set_active. */
 	virtual void set_active(const bool active) override;
 
-	/** See @ref tcontrol::get_active. */
+	/** See @ref styled_widget::get_active. */
 	virtual bool get_active() const override;
 
-	/** See @ref tcontrol::get_state. */
+	/** See @ref styled_widget::get_state. */
 	virtual unsigned get_state() const override;
 
 	/**
-	 * See @ref tcontainer_::get_client_rect.
+	 * See @ref container_base::get_client_rect.
 	 *
 	 * @todo only due to the fact our definition is slightly different from
-	 * tpanel_definition we need to override this function and do about the
+	 * panel_definition we need to override this function and do about the
 	 * same, look at a way to 'fix' that.
 	 */
 	virtual SDL_Rect get_client_rect() const override;
 
 	/**
-	 * See @ref tcontainer_::border_space.
+	 * See @ref container_base::border_space.
 	 *
 	 * @todo only due to the fact our definition is slightly different from
-	 * tpanel_definition we need to override this function and do about the
+	 * panel_definition we need to override this function and do about the
 	 * same, look at a way to 'fix' that.
 	 */
-	virtual tpoint border_space() const override;
+	virtual point border_space() const override;
 
-	/** Inherited from tselectable_ */
+	/** Inherited from selectable_item */
 	unsigned get_value() const override
 	{
 		return state_num_;;
 	}
 
-	/** Inherited from tselectable_ */
+	/** Inherited from selectable_item */
 	void set_value(const unsigned selected) override;
 
-	/** Inherited from tselectable_ */
+	/** Inherited from selectable_item */
 	unsigned num_states() const override;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	void set_retval(const int retval);
 
-	/** Inherited from tselectable_. */
-	void set_callback_state_change(std::function<void(twidget&)> callback) override
+	/** Inherited from selectable_item. */
+	void set_callback_state_change(std::function<void(widget&)> callback) override
 	{
 		callback_state_change_ = callback;
 	}
 
 	void set_callback_mouse_left_double_click(
-			std::function<void(twidget&)> callback)
+			std::function<void(widget&)> callback)
 	{
 		callback_mouse_left_double_click_ = callback;
 	}
@@ -122,14 +122,14 @@ private:
 	 * same and also that 'up' is before 'down'. 'up' has no suffix, 'down' has
 	 * the SELECTED suffix.
 	 */
-	enum tstate {
+	enum state_t {
 		ENABLED,
 		DISABLED,
 		FOCUSED,
 		COUNT
 	};
 
-	void set_state(const tstate state);
+	void set_state(const state_t state);
 
 	/**
 	 * Current state of the widget.
@@ -137,7 +137,7 @@ private:
 	 * The state of the widget determines what to render and how the widget
 	 * reacts to certain 'events'.
 	 */
-	tstate state_;
+	state_t state_;
 
 	/**
 	 *	Usually 1 for selected and 0 for not selected, can also have higher values in tristate buttons.
@@ -152,49 +152,49 @@ private:
 	 */
 	int retval_;
 
-	/** See tselectable_::set_callback_state_change. */
-	std::function<void(twidget&)> callback_state_change_;
+	/** See selectable_item::set_callback_state_change. */
+	std::function<void(widget&)> callback_state_change_;
 
 	/** Mouse left double click callback */
-	std::function<void(twidget&)> callback_mouse_left_double_click_;
+	std::function<void(widget&)> callback_mouse_left_double_click_;
 
-	/** See @ref twidget::impl_draw_background. */
+	/** See @ref widget::impl_draw_background. */
 	virtual void impl_draw_background(surface& frame_buffer,
 									  int x_offset,
 									  int y_offset) override;
 
-	/** See @ref twidget::impl_draw_foreground. */
+	/** See @ref widget::impl_draw_foreground. */
 	virtual void impl_draw_foreground(surface& frame_buffer,
 									  int x_offset,
 									  int y_offset) override;
 
-	/** See @ref tcontrol::get_control_type. */
+	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 
 	/***** ***** ***** signal handlers ***** ****** *****/
 
-	void signal_handler_mouse_enter(const event::tevent event, bool& handled);
+	void signal_handler_mouse_enter(const event::ui_event event, bool& handled);
 
-	void signal_handler_mouse_leave(const event::tevent event, bool& handled);
+	void signal_handler_mouse_leave(const event::ui_event event, bool& handled);
 
-	void signal_handler_pre_left_button_click(const event::tevent event);
+	void signal_handler_pre_left_button_click(const event::ui_event event);
 
-	void signal_handler_left_button_click(const event::tevent event,
+	void signal_handler_left_button_click(const event::ui_event event,
 										  bool& handled);
 
-	void signal_handler_left_button_double_click(const event::tevent event,
+	void signal_handler_left_button_double_click(const event::ui_event event,
 												 bool& handled);
 };
 
 // }---------- DEFINITION ---------{
 
-struct ttoggle_panel_definition : public tcontrol_definition
+struct toggle_panel_definition : public styled_widget_definition
 {
-	explicit ttoggle_panel_definition(const config& cfg);
+	explicit toggle_panel_definition(const config& cfg);
 
-	struct tresolution : public tresolution_definition_
+	struct resolution : public resolution_definition
 	{
-		explicit tresolution(const config& cfg);
+		explicit resolution(const config& cfg);
 
 		unsigned top_border;
 		unsigned bottom_border;
@@ -209,15 +209,15 @@ struct ttoggle_panel_definition : public tcontrol_definition
 namespace implementation
 {
 
-struct tbuilder_toggle_panel : public tbuilder_control
+struct builder_toggle_panel : public builder_styled_widget
 {
-	explicit tbuilder_toggle_panel(const config& cfg);
+	explicit builder_toggle_panel(const config& cfg);
 
-	using tbuilder_control::build;
+	using builder_styled_widget::build;
 
-	twidget* build() const;
+	widget* build() const;
 
-	tbuilder_grid_ptr grid;
+	builder_grid_ptr grid;
 
 private:
 	std::string retval_id_;

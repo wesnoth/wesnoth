@@ -19,35 +19,38 @@
 
 namespace gui2
 {
-class tlabel;
+class label;
+namespace dialogs
+{
 
-class tmp_alerts_options : public tdialog
+class mp_alerts_options : public modal_dialog
 {
 public:
 	/** Constructor. */
-	tmp_alerts_options();
+	mp_alerts_options();
 
 	/**
 	 * The display function.
 	 *
-	 * See @ref tdialog for more information.
+	 * See @ref modal_dialog for more information.
 	 */
 	static void display(CVideo& video)
 	{
-		tmp_alerts_options().show(video);
+		mp_alerts_options().show(video);
 	}
 
 private:
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	/** Inherited from modal_dialog. */
+	void pre_show(window& window);
 
-	/** Inherited from tdialog. */
-	void post_show(twindow& window);
+	/** Inherited from modal_dialog. */
+	void post_show(window& window);
 };
 
-}
+} // namespace dialogs
+} // namespace gui2
 
 #endif

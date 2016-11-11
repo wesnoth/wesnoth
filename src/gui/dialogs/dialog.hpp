@@ -26,6 +26,8 @@ class CVideo;
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /**
  * Registers a window.
@@ -47,15 +49,15 @@ namespace gui2
 	namespace ns_##id                                                          \
 	{                                                                          \
                                                                                \
-		struct tregister_helper                                                \
+		struct register_helper                                                \
 		{                                                                      \
-			tregister_helper()                                                 \
+			register_helper()                                                 \
 			{                                                                  \
 				register_window(#id);                                          \
 			}                                                                  \
 		};                                                                     \
                                                                                \
-		tregister_helper register_helper;                                      \
+		struct register_helper register_helper;                                \
 	}                                                                          \
 	}
 
@@ -65,7 +67,7 @@ namespace gui2
  * Call this function to register a window. In the header of the class it adds
  * the following code:
  *@code
- *  // Inherited from tdialog, implemented by REGISTER_DIALOG.
+ *  // Inherited from modal_dialog, implemented by REGISTER_DIALOG.
  *	virtual const std::string& id() const;
  *@endcode
  * Then use this macro in the implementation, inside the gui2 namespace.
@@ -88,12 +90,12 @@ namespace gui2
 /**
  * Wrapper for REGISTER_DIALOG2.
  *
- * "Calls" REGISTER_DIALOG2(twindow_id, window_id)
+ * "Calls" REGISTER_DIALOG2(window_id, window_id)
  */
-#define REGISTER_DIALOG(window_id) REGISTER_DIALOG2(t##window_id, window_id)
+#define REGISTER_DIALOG(window_id) REGISTER_DIALOG2(window_id, window_id)
 
 /**
- * Abstract base class for all dialogs.
+ * Abstract base class for all modal dialogs.
  *
  * A dialog shows a certain window instance to the user. The subclasses of this
  * class will hold the parameters used for a certain window, eg a server
@@ -106,7 +108,7 @@ namespace gui2
  * add a static member called @p execute. The parameters to the function are:
  * - references to in + out parameters by reference
  * - references to the in parameters
- * - the parameters for @ref tdialog::show.
+ * - the parameters for @ref modal_dialog::show.
  *
  * The 'in + out parameters' are used as initial value and final value when the
  * OK button is pressed. The 'in parameters' are just extra parameters for
@@ -115,10 +117,10 @@ namespace gui2
  * When a function only has 'in parameters' it should return a void value and
  * the function should be called @p display, if it has 'in + out parameters' it
  * must return a bool value. This value indicates whether or not the OK button
- * was pressed to close the dialog. See @ref teditor_new_map::execute for an
+ * was pressed to close the dialog. See @ref editor_new_map::execute for an
  * example.
  */
-class tdialog
+class modal_dialog
 {
 	/**
 	 * Special helper function to get the id of the window.
@@ -126,10 +128,10 @@ class tdialog
 	 * This is used in the unit tests, but these implementation details
 	 * shouldn't be used in the normal code.
 	 */
-	friend std::string unit_test_mark_as_tested(const tdialog& dialog);
+	friend std::string unit_test_mark_as_tested(const modal_dialog& dialog);
 
 public:
-	tdialog()
+	modal_dialog()
 		: retval_(0)
 		, always_save_fields_(false)
 		, fields_()
@@ -140,7 +142,7 @@ public:
 	{
 	}
 
-	virtual ~tdialog();
+	virtual ~modal_dialog();
 
 	/**
 	 * Shows the window.
@@ -153,7 +155,7 @@ public:
 	 *                            there's no guarantee about how fast it closes
 	 *                            after the minimum.
 	 *
-	 * @returns                   Whether the final retval_ == twindow::OK
+	 * @returns                   Whether the final retval_ == window::OK
 	 */
 	bool show(CVideo& video, const unsigned auto_close_time = 0);
 
@@ -189,7 +191,7 @@ protected:
 	/**
 	 * Creates a new boolean field.
 	 *
-	 * The field created is owned by tdialog, the returned pointer can be used
+	 * The field created is owned by modal_dialog, the returned pointer can be used
 	 * in the child classes as access to a field.
 	 *
 	 * @param id                  Id of the widget, same value as in WML.
@@ -205,34 +207,34 @@ protected:
 	 *
 	 * @returns                   Pointer to the created widget.
 	 */
-	tfield_bool*
+	field_bool*
 	register_bool(const std::string& id,
 				  const bool mandatory,
 				  const std::function<bool()> callback_load_value = nullptr,
 				  const std::function<void(bool)> callback_save_value = nullptr,
-				  const std::function<void(twidget&)> callback_change = nullptr,
+				  const std::function<void(widget&)> callback_change = nullptr,
 				  const bool initial_fire = false);
 
 	/**
 	 * Creates a new boolean field.
 	 *
-	 * The field created is owned by tdialog, the returned pointer can be used
+	 * The field created is owned by modal_dialog, the returned pointer can be used
 	 * in the child classes as access to a field.
 	 *
 	 * @param id                  Id of the widget, same value as in WML.
 	 * @param mandatory            Is the widget mandatory or mandatory.
 	 * @param linked_variable     The variable the widget is linked to. See
-	 *                            @ref tfield::tfield for more information.
+	 *                            @ref field::field for more information.
 	 * @param callback_change     When the value of the widget changes this
 	 *                            callback is called.
 	 *
 	 * @returns                   Pointer to the created widget.
 	 */
-	tfield_bool*
+	field_bool*
 	register_bool(const std::string& id,
 				  const bool mandatory,
 				  bool& linked_variable,
-				  const std::function<void(twidget&)> callback_change = nullptr,
+				  const std::function<void(widget&)> callback_change = nullptr,
 				  const bool initial_fire = false);
 
 	/**
@@ -240,7 +242,7 @@ protected:
 	 *
 	 * See @ref register_bool for more info.
 	 */
-	tfield_integer*
+	field_integer*
 	register_integer(const std::string& id,
 					 const bool mandatory,
 					 const std::function<int()> callback_load_value = nullptr,
@@ -251,7 +253,7 @@ protected:
 	 *
 	 * See @ref register_bool for more info.
 	 */
-	tfield_integer* register_integer(const std::string& id,
+	field_integer* register_integer(const std::string& id,
 									 const bool mandatory,
 									 int& linked_variable);
 	/**
@@ -259,7 +261,7 @@ protected:
 	 *
 	 * See @ref register_bool for more info.
 	 */
-	tfield_text* register_text(
+	field_text* register_text(
 			const std::string& id,
 			const bool mandatory,
 			const std::function<std::string()> callback_load_value = nullptr,
@@ -271,16 +273,16 @@ protected:
 	 *
 	 * See @ref register_bool for more info.
 	 */
-	tfield_text* register_text(const std::string& id,
+	field_text* register_text(const std::string& id,
 							   const bool mandatory,
 							   std::string& linked_variable,
 							   const bool capture_focus = false);
 
 	/**
-	 * Registers a new control as a label.
+	 * Registers a new styled_widget as a label.
 	 *
-	 * The label is used for a control to set the 'label' since it calls the
-	 * @ref tcontrol::set_label it can also be used for the @ref timage since
+	 * The label is used for a styled_widget to set the 'label' since it calls the
+	 * @ref styled_widget::set_label it can also be used for the @ref image since
 	 * there this sets the filename. (The @p use_markup makes no sense in an
 	 * image but that's a detail.)
 	 *
@@ -293,13 +295,13 @@ protected:
 	 * @param text                The text for the label.
 	 * @param use_markup          Whether or not use markup for the label.
 	 */
-	tfield_label* register_label(const std::string& id,
+	field_label* register_label(const std::string& id,
 								 const bool mandatory,
 								 const std::string& text,
 								 const bool use_markup = false);
 
-	/** Registers a new control as image. */
-	tfield_label* register_image(const std::string& id,
+	/** Registers a new styled_widget as image. */
+	field_label* register_image(const std::string& id,
 								 const bool mandatory,
 								 const std::string& filename)
 	{
@@ -313,7 +315,7 @@ private:
 	/**
 	 * Always save the fields upon closing.
 	 *
-	 * Normally fields are only saved when the twindow::OK button is pressed.
+	 * Normally fields are only saved when the window::OK button is pressed.
 	 * With this flag set is always saves. Be careful with the flag since it
 	 * also updates upon canceling, which can be a problem when the field sets
 	 * a preference.
@@ -327,7 +329,7 @@ private:
 	 * functions defined we don't offer access to the vector. If access is
 	 * needed the creator should store a copy of the pointer.
 	 */
-	std::vector<tfield_*> fields_;
+	std::vector<field_base*> fields_;
 
 	/**
 	 * Contains the widget that should get the focus when the window is shown.
@@ -354,7 +356,7 @@ private:
 	/**
 	 * Show the dialog even with --nogui?
 	 * Some dialogs need to be shown even when --nogui is specified if the game is being driven by a plugin.
-	 * Those dialogs allow the plugin to control them by creating a plugin context in pre_show().
+	 * Those dialogs allow the plugin to styled_widget them by creating a plugin context in pre_show().
 	 */
 	bool show_even_without_video_;
 
@@ -371,7 +373,7 @@ private:
 	 *                            upon.
 	 * @returns                   The window to show.
 	 */
-	twindow* build_window(CVideo& video) const;
+	window* build_window(CVideo& video) const;
 
 	/**
 	 * Actions to be taken directly after the window is build.
@@ -382,7 +384,7 @@ private:
 	 *                            upon.
 	 * @param window              The window just created.
 	 */
-	virtual void post_build(twindow& window);
+	virtual void post_build(window& window);
 
 	/**
 	 * Actions to be taken before showing the window.
@@ -392,7 +394,7 @@ private:
 	 *
 	 * @param window              The window to be shown.
 	 */
-	virtual void pre_show(twindow& window);
+	virtual void pre_show(window& window);
 
 	/**
 	 * Actions to be taken after the window has been shown.
@@ -402,14 +404,14 @@ private:
 	 *
 	 * @param window              The window which has been shown.
 	 */
-	virtual void post_show(twindow& window);
+	virtual void post_show(window& window);
 
 	/**
 	 * Initializes all fields in the dialog and set the keyboard focus.
 	 *
 	 * @param window              The window which has been shown.
 	 */
-	virtual void init_fields(twindow& window);
+	virtual void init_fields(window& window);
 
 	/**
 	 * When the dialog is closed with the OK status saves all fields.
@@ -419,9 +421,10 @@ private:
 	 * @param window              The window which has been shown.
 	 * @param save_fields         Does the value in the fields need to be saved?
 	 */
-	virtual void finalize_fields(twindow& window, const bool save_fields);
+	virtual void finalize_fields(window& window, const bool save_fields);
 };
 
+} // namespace dialogs
 } // namespace gui2
 
 #endif

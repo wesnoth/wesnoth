@@ -23,20 +23,22 @@ class display_context;
 
 namespace gui2
 {
+namespace dialogs
+{
 
-class tgamestate_inspector : public tdialog
+class gamestate_inspector : public modal_dialog
 {
 public:
 	class model;
 	class view;
 	class controller;
-	tgamestate_inspector(const config& vars, const game_events::manager& events, const display_context& dc, const std::string& title = "");
+	gamestate_inspector(const config& vars, const game_events::manager& events, const display_context& dc, const std::string& title = "");
 
 private:
-	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	/** Inherited from modal_dialog. */
+	void pre_show(window& window);
 
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
 	std::shared_ptr<view> view_;
@@ -47,6 +49,7 @@ private:
 	const game_events::manager& events_;
 	const display_context& dc_;
 };
-}
+} // namespace dialogs
+} // namespace gui2
 
 #endif /* ! GUI_DIALOGS_GAMESTATE_INSPECTOR_HPP_INCLUDED */

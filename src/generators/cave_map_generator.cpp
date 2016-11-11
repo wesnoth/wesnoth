@@ -89,7 +89,7 @@ cave_map_generator::cave_map_generator_job::cave_map_generator_job(const cave_ma
 	: params(pparams)
 	, flipx_(false)
 	, flipy_(false)
-	, map_(t_translation::t_map(params.width_ + 2 * gamemap::default_border, params.height_ + 2 * gamemap::default_border/*, params.wall_*/))
+	, map_(t_translation::ter_map(params.width_ + 2 * gamemap::default_border, params.height_ + 2 * gamemap::default_border/*, params.wall_*/))
 	, starting_positions_()
 	, chamber_ids_()
 	, chambers_()
@@ -279,8 +279,8 @@ void cave_map_generator::cave_map_generator_job::place_chamber(const chamber& c)
 
 struct passage_path_calculator : pathfind::cost_calculator
 {
-	passage_path_calculator(const t_translation::t_map& mapdata,
-	                        const t_translation::t_terrain & wall,
+	passage_path_calculator(const t_translation::ter_map& mapdata,
+	                        const t_translation::terrain_code & wall,
 	                        double laziness, size_t windiness,
 							boost::random::mt19937& rng) :
 		map_(mapdata), wall_(wall), laziness_(laziness), windiness_(windiness), rng_(rng)
@@ -288,8 +288,8 @@ struct passage_path_calculator : pathfind::cost_calculator
 
 	virtual double cost(const map_location& loc, const double so_far) const;
 private:
-	const t_translation::t_map& map_;
-	t_translation::t_terrain wall_;
+	const t_translation::ter_map& map_;
+	t_translation::terrain_code wall_;
 	double laziness_;
 	size_t windiness_;
 	boost::random::mt19937& rng_;
@@ -336,10 +336,10 @@ void cave_map_generator::cave_map_generator_job::place_passage(const passage& p)
 	}
 }
 
-void cave_map_generator::cave_map_generator_job::set_terrain(map_location loc, const t_translation::t_terrain & t)
+void cave_map_generator::cave_map_generator_job::set_terrain(map_location loc, const t_translation::terrain_code & t)
 {
 	if (params.on_board(loc)) {
-		t_translation::t_terrain& c = map_.get(loc.x + gamemap::default_border, loc.y + gamemap::default_border);
+		t_translation::terrain_code& c = map_.get(loc.x + gamemap::default_border, loc.y + gamemap::default_border);
 
 		if(c == params.clear_ || c == params.wall_ || c == params.village_) {
 			// Change this terrain.
@@ -360,7 +360,7 @@ void cave_map_generator::cave_map_generator_job::place_castle(int starting_posit
 		t_translation::coordinate coord(
 				  loc.x + gamemap::default_border
 				, loc.y + gamemap::default_border);
-		starting_positions_.insert(t_translation::tstarting_positions::value_type(std::to_string(starting_position), coord));
+		starting_positions_.insert(t_translation::starting_positions::value_type(std::to_string(starting_position), coord));
 	}
 
 	map_location adj[6];

@@ -25,10 +25,10 @@ namespace gui2
 
 // ------------ WIDGET -----------{
 
-class tprogress_bar : public tcontrol
+class progress_bar : public styled_widget
 {
 public:
-	tprogress_bar() : tcontrol(COUNT), percentage_(static_cast<unsigned>(-1))
+	progress_bar() : styled_widget(COUNT), percentage_(static_cast<unsigned>(-1))
 	{
 		// Force canvas update
 		set_percentage(0);
@@ -36,16 +36,16 @@ public:
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
-	/** See @ref tcontrol::set_active. */
+	/** See @ref styled_widget::set_active. */
 	virtual void set_active(const bool active) override;
 
-	/** See @ref tcontrol::get_active. */
+	/** See @ref styled_widget::get_active. */
 	virtual bool get_active() const override;
 
-	/** See @ref tcontrol::get_state. */
+	/** See @ref styled_widget::get_state. */
 	virtual unsigned get_state() const override;
 
-	/** See @ref twidget::disable_click_dismiss. */
+	/** See @ref widget::disable_click_dismiss. */
 	bool disable_click_dismiss() const override;
 
 
@@ -63,7 +63,7 @@ private:
 	 *
 	 * Note the order of the states must be the same as defined in settings.hpp.
 	 */
-	enum tstate {
+	enum state_t {
 		ENABLED,
 		COUNT
 	};
@@ -71,19 +71,19 @@ private:
 	/** The percentage done. */
 	unsigned percentage_;
 
-	/** See @ref tcontrol::get_control_type. */
+	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 };
 
 // }---------- DEFINITION ---------{
 
-struct tprogress_bar_definition : public tcontrol_definition
+struct progress_bar_definition : public styled_widget_definition
 {
-	explicit tprogress_bar_definition(const config& cfg);
+	explicit progress_bar_definition(const config& cfg);
 
-	struct tresolution : public tresolution_definition_
+	struct resolution : public resolution_definition
 	{
-		explicit tresolution(const config& cfg);
+		explicit resolution(const config& cfg);
 	};
 };
 
@@ -92,14 +92,14 @@ struct tprogress_bar_definition : public tcontrol_definition
 namespace implementation
 {
 
-struct tbuilder_progress_bar : public tbuilder_control
+struct builder_progress_bar : public builder_styled_widget
 {
 
-	explicit tbuilder_progress_bar(const config& cfg);
+	explicit builder_progress_bar(const config& cfg);
 
-	using tbuilder_control::build;
+	using builder_styled_widget::build;
 
-	twidget* build() const;
+	widget* build() const;
 };
 
 } // namespace implementation

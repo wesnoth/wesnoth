@@ -29,32 +29,35 @@ class config;
 namespace gui2
 {
 
-class ttoggle_button;
-class ttoggle_panel;
-class twidget;
+class toggle_button;
+class toggle_panel;
+class widget;
 
-class tmp_create_game : public tdialog, private plugin_executor
+namespace dialogs
+{
+
+class mp_create_game : public modal_dialog, private plugin_executor
 {
 	typedef std::pair<ng::level::TYPE, std::string> level_type_info;
 
 public:
-	tmp_create_game(const config& cfg, ng::create_engine& create_eng);
+	mp_create_game(const config& cfg, ng::create_engine& create_eng);
 
 private:
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	/** Inherited from modal_dialog. */
+	void pre_show(window& window);
 
-	/** Inherited from tdialog. */
-	void post_show(twindow& window);
+	/** Inherited from modal_dialog. */
+	void post_show(window& window);
 
 	const config& cfg_;
 
 	ng::create_engine& create_engine_;
 	std::unique_ptr<ng::configure_engine> config_engine_;
-	std::unique_ptr<tmp_options_helper> options_manager_;
+	std::unique_ptr<mp_options_helper> options_manager_;
 
 	int selected_game_index_;
 	int selected_rfm_index_;
@@ -62,7 +65,7 @@ private:
 	std::vector<level_type_info> level_types_;
 
 	/* We keep and work with a vector of the RFM types since it's the easiest way to get a value for the
-	 * config_engine and preferences setters, since menu_buttons aren't supported by tfield. Even if they
+	 * config_engine and preferences setters, since menu_buttons aren't supported by field. Even if they
 	 * were, the above functions take a RANDOM_FACTION_MODE value, not an index. Even if we try to keep a
 	 * copy of the selected RFM type index in a int value and update it every time you perform a selection,
 	 * there's still the problem of getting an initial value from preferences, which again is provided as a
@@ -76,65 +79,66 @@ private:
 	 */
 	std::vector<mp_game_settings::RANDOM_FACTION_MODE> rfm_types_;
 
-	void update_games_list(twindow& window);
-	void display_games_of_type(twindow& window, ng::level::TYPE type, const std::string& level);
+	void update_games_list(window& window);
+	void display_games_of_type(window& window, ng::level::TYPE type, const std::string& level);
 
-	void show_generator_settings(twindow& window);
-	void regenerate_random_map(twindow& window);
+	void show_generator_settings(window& window);
+	void regenerate_random_map(window& window);
 
 	/**
 	 * All fields are also in the normal field vector, but they need to be
 	 * manually controlled as well so add the pointers here as well.
 	 */
 
-	tfield_bool* use_map_settings_;
-	tfield_bool* fog_;
-	tfield_bool* shroud_;
-	tfield_bool* start_time_;
-	tfield_bool* time_limit_;
-	tfield_bool* shuffle_sides_;
-	tfield_bool* observers_;
-	tfield_bool* registered_users_;
-	tfield_bool* strict_sync_;
+	field_bool* use_map_settings_;
+	field_bool* fog_;
+	field_bool* shroud_;
+	field_bool* start_time_;
+	field_bool* time_limit_;
+	field_bool* shuffle_sides_;
+	field_bool* observers_;
+	field_bool* registered_users_;
+	field_bool* strict_sync_;
 
-	tfield_integer* turns_;
-	tfield_integer* gold_;
-	tfield_integer* support_;
-	tfield_integer* experience_;
-	tfield_integer* init_turn_limit_;
-	tfield_integer* turn_bonus_;
-	tfield_integer* reservoir_;
-	tfield_integer* action_bonus_;
+	field_integer* turns_;
+	field_integer* gold_;
+	field_integer* support_;
+	field_integer* experience_;
+	field_integer* init_turn_limit_;
+	field_integer* turn_bonus_;
+	field_integer* reservoir_;
+	field_integer* action_bonus_;
 
 	template<typename widget>
-	void on_filter_change(twindow& window, const std::string& id);
+	void on_filter_change(window& window, const std::string& id);
 
-	void on_game_select(twindow& window);
-	void on_tab_select(twindow& window);
-	void on_mod_select(twindow& window);
-	void on_era_select(twindow& window);
+	void on_game_select(window& window);
+	void on_tab_select(window& window);
+	void on_mod_select(window& window);
+	void on_era_select(window& window);
 	void on_mod_toggle(const int index);
-	void on_random_faction_mode_select(twindow& window);
+	void on_random_faction_mode_select(window& window);
 
-	void show_description(twindow& window, const std::string& new_description);
+	void show_description(window& window, const std::string& new_description);
 
-	void update_details(twindow& window);
-	void update_map_settings(twindow& window);
+	void update_details(window& window);
+	void update_map_settings(window& window);
 
 	/**
 	 * Dialog exit hook to bring up the difficulty dialog when starting a campaign.
 	 * This only fires when the retval is OK (ie, creating a game), meaning it does not fire
 	 * when loading a saved game.
 	 */
-	bool dialog_exit_hook(twindow&);
+	bool dialog_exit_hook(window&);
 
 	int convert_to_game_filtered_index(const int initial_index);
 
-	void load_game_callback(twindow& window);
+	void load_game_callback(window& window);
 
 	enum tab { TAB_GENERAL, TAB_OPTIONS, TAB_SETTINGS };
 };
 
+} // namespace dialogs
 } // namespace gui2
 
 #endif

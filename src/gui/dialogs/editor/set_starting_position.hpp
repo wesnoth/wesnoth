@@ -23,11 +23,13 @@ struct map_location;
 
 namespace gui2
 {
+namespace dialogs
+{
 
-class teditor_set_starting_position : public tdialog
+class editor_set_starting_position : public modal_dialog
 {
 public:
-	teditor_set_starting_position(
+	editor_set_starting_position(
 			unsigned current_player,
 			unsigned maximum_players,
 			const std::vector<map_location>& starting_positions);
@@ -41,15 +43,16 @@ private:
 	unsigned selection_;
 	std::vector<map_location> starting_positions_;
 
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	/** Inherited from modal_dialog. */
+	void pre_show(window& window);
 
-	/** Inherited from tdialog. */
-	void post_show(twindow& window);
+	/** Inherited from modal_dialog. */
+	void post_show(window& window);
 };
-}
+} // namespace dialogs
+} // namespace gui2
 
 #endif /* ! GUI_DIALOGS_EDITOR_SET_STARTING_POSITION_HPP_INCLUDED */

@@ -30,30 +30,30 @@ namespace gui2
 /**
  * Simple push button.
  */
-class tmenu_button : public tcontrol, public tselectable_
+class menu_button : public styled_widget, public selectable_item
 {
 public:
-	tmenu_button();
+	menu_button();
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
-	/** See @ref tcontrol::set_active. */
+	/** See @ref styled_widget::set_active. */
 	virtual void set_active(const bool active) override;
 
-	/** See @ref tcontrol::get_active. */
+	/** See @ref styled_widget::get_active. */
 	virtual bool get_active() const override;
 
-	/** See @ref tcontrol::get_state. */
+	/** See @ref styled_widget::get_state. */
 	virtual unsigned get_state() const override;
 
 	/** Inherited from tclickable. */
-	void connect_click_handler(const event::tsignal_function& signal)
+	void connect_click_handler(const event::signal_function& signal)
 	{
 		connect_signal_mouse_left_click(*this, signal);
 	}
 
 	/** Inherited from tclickable. */
-	void disconnect_click_handler(const event::tsignal_function& signal)
+	void disconnect_click_handler(const event::signal_function& signal)
 	{
 		disconnect_signal_mouse_left_click(*this, signal);
 	}
@@ -67,20 +67,20 @@ public:
 	void set_values(const std::vector<::config>& values, int selected = 0);
 	void set_selected(int selected);
 
-	/** See tselectable_::set_callback_state_change. */
-	std::function<void(twidget&)> callback_state_change_;
+	/** See selectable_item::set_callback_state_change. */
+	std::function<void(widget&)> callback_state_change_;
 
-	/** Inherited from tselectable_ */
+	/** Inherited from selectable_item */
 	virtual unsigned get_value() const override { return selected_; }
 
-	/** Inherited from tselectable_ */
+	/** Inherited from selectable_item */
 	virtual void set_value(const unsigned value ) override { set_selected(value); }
 
-	/** Inherited from tselectable_ */
+	/** Inherited from selectable_item */
 	virtual unsigned num_states() const override { return values_.size(); }
 
-	/** Inherited from tselectable_ */
-	virtual void set_callback_state_change(std::function<void(twidget&)> callback) override
+	/** Inherited from selectable_item */
+	virtual void set_callback_state_change(std::function<void(widget&)> callback) override
 	{
 		callback_state_change_ = callback;
 	}
@@ -94,7 +94,7 @@ private:
 	 *
 	 * Note the order of the states must be the same as defined in settings.hpp.
 	 */
-	enum tstate {
+	enum state_t {
 		ENABLED,
 		DISABLED,
 		PRESSED,
@@ -102,14 +102,14 @@ private:
 		COUNT
 	};
 
-	void set_state(const tstate state);
+	void set_state(const state_t state);
 	/**
 	 * Current state of the widget.
 	 *
 	 * The state of the widget determines what to render and how the widget
 	 * reacts to certain 'events'.
 	 */
-	tstate state_;
+	state_t state_;
 
 	/**
 	 * The return value of the button.
@@ -125,52 +125,52 @@ private:
 	 */
 	int selected_;
 
-	/** See @ref tcontrol::get_control_type. */
+	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 
 	/***** ***** ***** signal handlers ***** ****** *****/
 
-	void signal_handler_mouse_enter(const event::tevent event, bool& handled);
+	void signal_handler_mouse_enter(const event::ui_event event, bool& handled);
 
-	void signal_handler_mouse_leave(const event::tevent event, bool& handled);
+	void signal_handler_mouse_leave(const event::ui_event event, bool& handled);
 
-	void signal_handler_left_button_down(const event::tevent event,
+	void signal_handler_left_button_down(const event::ui_event event,
 										 bool& handled);
 
-	void signal_handler_left_button_up(const event::tevent event,
+	void signal_handler_left_button_up(const event::ui_event event,
 									   bool& handled);
 
-	void signal_handler_left_button_click(const event::tevent event,
+	void signal_handler_left_button_click(const event::ui_event event,
 										  bool& handled);
 };
 
 // }---------- DEFINITION ---------{
 
-struct tmenu_button_definition : public tcontrol_definition
+struct menu_button_definition : public styled_widget_definition
 {
-	explicit tmenu_button_definition(const config& cfg);
+	explicit menu_button_definition(const config& cfg);
 
-	struct tresolution : public tresolution_definition_
+	struct resolution : public resolution_definition
 	{
-		explicit tresolution(const config& cfg);
+		explicit resolution(const config& cfg);
 	};
 };
 
 // }---------- BUILDER -----------{
 
-class tcontrol;
+class styled_widget;
 
 namespace implementation
 {
 
-struct tbuilder_menu_button : public tbuilder_control
+struct builder_menu_button : public builder_styled_widget
 {
 public:
-	explicit tbuilder_menu_button(const config& cfg);
+	explicit builder_menu_button(const config& cfg);
 
-	using tbuilder_control::build;
+	using builder_styled_widget::build;
 
-	twidget* build() const;
+	widget* build() const;
 
 private:
 	std::string retval_id_;

@@ -18,28 +18,26 @@
 namespace gui2
 {
 
-class twidget;
+class widget;
 
 namespace iterator
 {
 
 /** The walker abstract base class. */
-class twalker_
+class walker_base
 {
 public:
-	virtual ~twalker_()
+	virtual ~walker_base()
 	{
 	}
 
 	/** The level to walk at. */
-	enum tlevel {
+	enum level {
 		/** Visit the widget itself. */
-		widget
+		self,
 		/** Visit its nested grid. */
-		,
-		grid
+		internal,
 		/** Visit the children of its nested grid. */
-		,
 		child
 	};
 
@@ -48,7 +46,7 @@ public:
 	 *
 	 * The enum is used to return the state of @ref next.
 	 */
-	enum tstate {
+	enum state_t {
 		/**
 		 * When calling next the following it has the following results.
 		 *
@@ -89,7 +87,7 @@ public:
 	 *
 	 * @returns                   The status of the operation.
 	 */
-	virtual tstate next(const tlevel level) = 0;
+	virtual state_t next(const level level) = 0;
 
 	/**
 	 * Returns whether the current widget is valid.
@@ -100,7 +98,7 @@ public:
 	 *
 	 * @returns                   Whether the current widget is valid.
 	 */
-	virtual bool at_end(const tlevel level) const = 0;
+	virtual bool at_end(const level level) const = 0;
 
 	/**
 	 * Returns a pointer to the current widget.
@@ -113,7 +111,7 @@ public:
 	 *
 	 * @returns                   Pointer to the current widget.
 	 */
-	virtual gui2::twidget* get(const tlevel level) = 0;
+	virtual gui2::widget* get(const level level) = 0;
 };
 
 } // namespace iterator

@@ -28,43 +28,43 @@ namespace gui2
 
 REGISTER_WIDGET(vertical_scrollbar)
 
-unsigned tvertical_scrollbar::minimum_positioner_length() const
+unsigned vertical_scrollbar::minimum_positioner_length() const
 {
-	std::shared_ptr<const tvertical_scrollbar_definition::tresolution> conf
-			= std::static_pointer_cast<const tvertical_scrollbar_definition::
-												  tresolution>(config());
+	std::shared_ptr<const vertical_scrollbar_definition::resolution> conf
+			= std::static_pointer_cast<const vertical_scrollbar_definition::
+												  resolution>(config());
 	assert(conf);
 	return conf->minimum_positioner_length;
 }
 
-unsigned tvertical_scrollbar::maximum_positioner_length() const
+unsigned vertical_scrollbar::maximum_positioner_length() const
 {
-	std::shared_ptr<const tvertical_scrollbar_definition::tresolution> conf
-			= std::static_pointer_cast<const tvertical_scrollbar_definition::
-												  tresolution>(config());
+	std::shared_ptr<const vertical_scrollbar_definition::resolution> conf
+			= std::static_pointer_cast<const vertical_scrollbar_definition::
+												  resolution>(config());
 	assert(conf);
 	return conf->maximum_positioner_length;
 }
 
-unsigned tvertical_scrollbar::offset_before() const
+unsigned vertical_scrollbar::offset_before() const
 {
-	std::shared_ptr<const tvertical_scrollbar_definition::tresolution> conf
-			= std::static_pointer_cast<const tvertical_scrollbar_definition::
-												  tresolution>(config());
+	std::shared_ptr<const vertical_scrollbar_definition::resolution> conf
+			= std::static_pointer_cast<const vertical_scrollbar_definition::
+												  resolution>(config());
 	assert(conf);
 	return conf->top_offset;
 }
 
-unsigned tvertical_scrollbar::offset_after() const
+unsigned vertical_scrollbar::offset_after() const
 {
-	std::shared_ptr<const tvertical_scrollbar_definition::tresolution> conf
-			= std::static_pointer_cast<const tvertical_scrollbar_definition::
-												  tresolution>(config());
+	std::shared_ptr<const vertical_scrollbar_definition::resolution> conf
+			= std::static_pointer_cast<const vertical_scrollbar_definition::
+												  resolution>(config());
 	assert(conf);
 	return conf->bottom_offset;
 }
 
-bool tvertical_scrollbar::on_positioner(const tpoint& coordinate) const
+bool vertical_scrollbar::on_positioner(const point& coordinate) const
 {
 	// Note we assume the positioner is over the entire width of the widget.
 	return coordinate.y >= static_cast<int>(get_positioner_offset())
@@ -73,7 +73,7 @@ bool tvertical_scrollbar::on_positioner(const tpoint& coordinate) const
 		   && coordinate.x > 0 && coordinate.x < static_cast<int>(get_width());
 }
 
-int tvertical_scrollbar::on_bar(const tpoint& coordinate) const
+int vertical_scrollbar::on_bar(const point& coordinate) const
 {
 	// Not on the widget, leave.
 	if(static_cast<size_t>(coordinate.x) > get_width()
@@ -92,12 +92,12 @@ int tvertical_scrollbar::on_bar(const tpoint& coordinate) const
 	}
 }
 
-bool tvertical_scrollbar::in_orthogonal_range(const tpoint& coordinate) const
+bool vertical_scrollbar::in_orthogonal_range(const point& coordinate) const
 {
 	return static_cast<size_t>(coordinate.y) < get_height();
 }
 
-const std::string& tvertical_scrollbar::get_control_type() const
+const std::string& vertical_scrollbar::get_control_type() const
 {
 	static const std::string type = "vertical_scrollbar";
 	return type;
@@ -105,13 +105,13 @@ const std::string& tvertical_scrollbar::get_control_type() const
 
 // }---------- DEFINITION ---------{
 
-tvertical_scrollbar_definition::tvertical_scrollbar_definition(
+vertical_scrollbar_definition::vertical_scrollbar_definition(
 		const config& cfg)
-	: tcontrol_definition(cfg)
+	: styled_widget_definition(cfg)
 {
 	DBG_GUI_P << "Parsing vertical scrollbar " << id << '\n';
 
-	load_resolutions<tresolution>(cfg);
+	load_resolutions<resolution>(cfg);
 }
 
 /*WIKI
@@ -162,8 +162,8 @@ tvertical_scrollbar_definition::tvertical_scrollbar_definition(
  * @end{tag}{name="vertical_scrollbar_definition"}
  * @end{parent}{name="gui/"}
  */
-tvertical_scrollbar_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
+vertical_scrollbar_definition::resolution::resolution(const config& cfg)
+	: resolution_definition(cfg)
 	, minimum_positioner_length(cfg["minimum_positioner_length"])
 	, maximum_positioner_length(cfg["maximum_positioner_length"])
 	, top_offset(cfg["top_offset"])
@@ -173,11 +173,11 @@ tvertical_scrollbar_definition::tresolution::tresolution(const config& cfg)
 			 missing_mandatory_wml_key("resolution",
 									   "minimum_positioner_length"));
 
-	// Note the order should be the same as the enum tstate in scrollbar.hpp.
-	state.push_back(tstate_definition(cfg.child("state_enabled")));
-	state.push_back(tstate_definition(cfg.child("state_disabled")));
-	state.push_back(tstate_definition(cfg.child("state_pressed")));
-	state.push_back(tstate_definition(cfg.child("state_focused")));
+	// Note the order should be the same as the enum state_t in scrollbar.hpp.
+	state.push_back(state_definition(cfg.child("state_enabled")));
+	state.push_back(state_definition(cfg.child("state_disabled")));
+	state.push_back(state_definition(cfg.child("state_pressed")));
+	state.push_back(state_definition(cfg.child("state_focused")));
 }
 
 // }---------- BUILDER -----------{
@@ -198,14 +198,14 @@ tvertical_scrollbar_definition::tresolution::tresolution(const config& cfg)
 namespace implementation
 {
 
-tbuilder_vertical_scrollbar::tbuilder_vertical_scrollbar(const config& cfg)
-	: tbuilder_control(cfg)
+builder_vertical_scrollbar::builder_vertical_scrollbar(const config& cfg)
+	: builder_styled_widget(cfg)
 {
 }
 
-twidget* tbuilder_vertical_scrollbar::build() const
+widget* builder_vertical_scrollbar::build() const
 {
-	tvertical_scrollbar* widget = new tvertical_scrollbar();
+	vertical_scrollbar* widget = new vertical_scrollbar();
 
 	init_control(widget);
 

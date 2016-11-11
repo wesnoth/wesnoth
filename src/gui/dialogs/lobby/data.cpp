@@ -49,11 +49,11 @@ chat_message::chat_message(const time_t& timestamp,
 {
 }
 
-chat_log::chat_log() : history_()
+chat_session::chat_session() : history_()
 {
 }
 
-void chat_log::add_message(const time_t& timestamp,
+void chat_session::add_message(const time_t& timestamp,
 						   const std::string& user,
 						   const std::string& message)
 {
@@ -61,12 +61,12 @@ void chat_log::add_message(const time_t& timestamp,
 }
 
 
-void chat_log::add_message(const std::string& user, const std::string& message)
+void chat_session::add_message(const std::string& user, const std::string& message)
 {
 	add_message(time(nullptr), user, message);
 }
 
-void chat_log::clear()
+void chat_session::clear()
 {
 	history_.clear();
 }
@@ -299,7 +299,7 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 		} catch(incorrect_map_format_error& e) {
 			ERR_CF << "illegal map: " << e.message << std::endl;
 			verified = false;
-		} catch(twml_exception& e) {
+		} catch(wml_exception& e) {
 			ERR_CF << "map could not be loaded: " << e.dev_message << '\n';
 			verified = false;
 		}
@@ -362,7 +362,7 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 				<< game["mp_scenario_name"];
 
 			// Difficulty
-			config difficulties = gui2::generate_difficulty_config(level_cfg);
+			config difficulties = gui2::dialogs::generate_difficulty_config(level_cfg);
 			for(const config& difficulty : difficulties.child_range("difficulty")) {
 				if(difficulty["define"] == game["difficulty_define"]) {
 					campaign_text << " — " << difficulty["description"];

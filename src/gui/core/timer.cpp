@@ -24,9 +24,9 @@
 namespace gui2
 {
 
-struct ttimer
+struct timer
 {
-	ttimer() : sdl_id(0), interval(0), callback()
+	timer() : sdl_id(0), interval(0), callback()
 	{
 	}
 
@@ -39,7 +39,7 @@ struct ttimer
 static size_t next_timer_id = 0;
 
 /** The active timers. */
-static std::map<size_t, ttimer> timers;
+static std::map<size_t, timer> timers;
 
 /** The id of the event being executed, 0 if none. */
 static size_t executing_id = 0;
@@ -60,16 +60,16 @@ static bool executing_id_removed = false;
  * since the execution function needs to know whether or not the event was
  * removed.
  */
-class texecutor
+class executor
 {
 public:
-	texecutor(size_t id)
+	executor(size_t id)
 	{
 		executing_id = id;
 		executing_id_removed = false;
 	}
 
-	~texecutor()
+	~executor()
 	{
 		const size_t id = executing_id;
 		executing_id = 0;
@@ -85,7 +85,7 @@ static Uint32 timer_callback(Uint32, void* id)
 {
 	DBG_GUI_E << "Pushing timer event in queue.\n";
 
-	std::map<size_t, ttimer>::iterator itor
+	std::map<size_t, timer>::iterator itor
 			= timers.find(reinterpret_cast<size_t>(id));
 	if(itor == timers.end()) {
 		return 0;
@@ -121,7 +121,7 @@ size_t add_timer(const Uint32 interval,
 		++next_timer_id;
 	} while(next_timer_id == 0 || timers.find(next_timer_id) != timers.end());
 
-	ttimer timer;
+	timer timer;
 	timer.sdl_id = SDL_AddTimer(
 			interval, timer_callback, reinterpret_cast<void*>(next_timer_id));
 	if(timer.sdl_id == 0) {
@@ -145,7 +145,7 @@ bool remove_timer(const size_t id)
 {
 	DBG_GUI_E << "Removing timer " << id << ".\n";
 
-	std::map<size_t, ttimer>::iterator itor = timers.find(id);
+	std::map<size_t, timer>::iterator itor = timers.find(id);
 	if(itor == timers.end()) {
 		LOG_GUI_E << "Can't remove timer since it no longer exists.\n";
 		return false;
@@ -176,14 +176,14 @@ bool execute_timer(const size_t id)
 {
 	DBG_GUI_E << "Executing timer " << id << ".\n";
 
-	std::map<size_t, ttimer>::iterator itor = timers.find(id);
+	std::map<size_t, timer>::iterator itor = timers.find(id);
 	if(itor == timers.end()) {
 		LOG_GUI_E << "Can't execute timer since it no longer exists.\n";
 		return false;
 	}
 
 	{
-		texecutor executor(id);
+		executor executor(id);
 		itor->second.callback(id);
 	}
 

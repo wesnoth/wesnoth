@@ -32,10 +32,16 @@
 namespace gui2
 {
 
-class tfile_dialog : public tdialog
+class listbox;
+class text_box;
+
+namespace dialogs
+{
+
+class file_dialog : public modal_dialog
 {
 public:
-	tfile_dialog();
+	file_dialog();
 
 	/**
 	 * Gets the current dialog title text.
@@ -48,7 +54,7 @@ public:
 	/**
 	 * Sets the current dialog title text.
 	 */
-	tfile_dialog& set_title(const std::string& value)
+	file_dialog& set_title(const std::string& value)
 	{
 		title_ = value;
 		return *this;
@@ -67,7 +73,7 @@ public:
 	 *
 	 * The message text may contain Pango markup.
 	 */
-	tfile_dialog& set_message(const std::string& value)
+	file_dialog& set_message(const std::string& value)
 	{
 		msg_ = value;
 		return *this;
@@ -93,7 +99,7 @@ public:
 	 * If you want to set an initial file name hint/template, use set_filename()
 	 * <b>after</b> calling this method.
 	 */
-	tfile_dialog& set_path(const std::string& value);
+	file_dialog& set_path(const std::string& value);
 
 	/**
 	 * Sets the initial file name input but not the path.
@@ -103,7 +109,7 @@ public:
 	 * If this is used before set_path() and the path passed there points to a
 	 * file, that file name will replace the one given here.
 	 */
-	tfile_dialog& set_filename(const std::string& value);
+	file_dialog& set_filename(const std::string& value);
 
 	/**
 	 * Sets the default file extension for file names in save mode.
@@ -117,7 +123,7 @@ public:
 	 * The value provided to this method should be preceded by a dot if
 	 * applicable (e.g. ".cfg").
 	 */
-	tfile_dialog& set_extension(const std::string& value)
+	file_dialog& set_extension(const std::string& value)
 	{
 		extension_ = value;
 		return *this;
@@ -136,7 +142,7 @@ public:
 	 *
 	 * This is initially disabled.
 	 */
-	tfile_dialog& set_read_only(bool value)
+	file_dialog& set_read_only(bool value)
 	{
 		read_only_ = value;
 		return *this;
@@ -161,7 +167,7 @@ public:
 	 * need not exist already (but their parent directories still do). Otherwise,
 	 * the user is only able to select existing files.
 	 */
-	tfile_dialog& set_save_mode(bool value)
+	file_dialog& set_save_mode(bool value)
 	{
 		save_mode_ = value;
 		return *this;
@@ -174,7 +180,7 @@ public:
 	 * Calling this method with an empty string will reset the label to the
 	 * default.
 	 */
-	tfile_dialog& set_ok_label(const std::string& value)
+	file_dialog& set_ok_label(const std::string& value)
 	{
 		ok_label_ = value;
 		return *this;
@@ -199,26 +205,26 @@ private:
 	int current_bookmark_;
 	int user_bookmarks_begin_;
 
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	/** Inherited from modal_dialog. */
+	void pre_show(window& window);
 
 	/** Handles dialog exit events and decides whether to proceed or not. */
-	bool on_exit(twindow& window);
+	bool on_exit(window& window);
 	/** Handles file/directory selection on single-click. */
-	void on_row_selected(twindow& window);
+	void on_row_selected(window& window);
 	/** Handles selection or deselection of bookmarks. */
-	void on_bookmark_selected(twindow& window);
+	void on_bookmark_selected(window& window);
 	/** Handles Add Bookmark button press events. */
-	void on_bookmark_add_cmd(twindow& window);
+	void on_bookmark_add_cmd(window& window);
 	/** Handles Remove Bookmark button press events. */
-	void on_bookmark_del_cmd(twindow& window);
+	void on_bookmark_del_cmd(window& window);
 	/** Handles New Folder button press events. */
-	void on_dir_create_cmd(twindow& window);
+	void on_dir_create_cmd(window& window);
 	/** Handles Delete button press events. */
-	void on_file_delete_cmd(twindow& window);
+	void on_file_delete_cmd(window& window);
 
 	/**
 	 * Processes file view selection in reaction to row double-click events.
@@ -229,7 +235,7 @@ private:
 	 * @returns Whether to exit the dialog successfully (@a true) or continue
 	 *          (@a false).
 	 */
-	bool process_fileview_submit(twindow& window);
+	bool process_fileview_submit(window& window);
 
 	/**
 	 * Processes textbox input in reaction to OK button/Enter key events.
@@ -240,16 +246,16 @@ private:
 	 * @returns Whether to exit the dialog successfully (@a true) or continue
 	 *          (@a false).
 	 */
-	bool process_textbox_submit(twindow& window);
+	bool process_textbox_submit(window& window);
 
-	bool process_submit_common(twindow& window, const std::string& name);
+	bool process_submit_common(window& window, const std::string& name);
 
 	/**
 	 * Updates the bookmarks bar state to reflect the internal state.
 	 */
-	void sync_bookmarks_bar(twindow& window);
+	void sync_bookmarks_bar(window& window);
 
-	std::string get_filelist_selection(class tlistbox& filelist);
+	std::string get_filelist_selection(class listbox& filelist);
 
 	enum SELECTION_TYPE
 	{
@@ -275,7 +281,7 @@ private:
 	 * @returns @a true if the selection does not refer to an existing file or the
 	 *          user accepted the overwrite prompt; @a false otherwise.
 	 */
-	bool confirm_overwrite(twindow& window, SELECTION_TYPE stype);
+	bool confirm_overwrite(window& window, SELECTION_TYPE stype);
 
 	/**
 	 * Updates the internal state and returns the type of the selection.
@@ -285,13 +291,13 @@ private:
 	 */
 	SELECTION_TYPE register_new_selection(const std::string& name);
 
-	void set_input_text(class ttext_box& t, const std::string& value);
-	void clear_input_text(class ttext_box& t);
+	void set_input_text(class text_box& t, const std::string& value);
+	void clear_input_text(class text_box& t);
 
 	/**
 	 * Updates the dialog contents to match the internal state.
 	 */
-	void refresh_fileview(twindow& window);
+	void refresh_fileview(window& window);
 
 	/**
 	 * Row building helper for refresh_fileview().
@@ -304,10 +310,10 @@ private:
 	 *                        file name in the internal state matches the row's
 	 *                        label/name.
 	 */
-	void push_fileview_row(class tlistbox& filelist, const std::string& name, const std::string& icon, bool check_selection = true);
+	void push_fileview_row(class listbox& filelist, const std::string& name, const std::string& icon, bool check_selection = true);
 };
 
-
-}
+} // namespace dialogs
+} // namespace gui2
 
 #endif

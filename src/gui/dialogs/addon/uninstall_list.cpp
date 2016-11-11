@@ -29,6 +29,8 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -46,7 +48,7 @@ namespace gui2
  * -checkbox & & toggle_button & m &
  *     A toggle button allowing the user to mark/unmark the add-on. $
  *
- * -name & & control & o &
+ * -name & & styled_widget & o &
  *     The name of the add-on. $
  *
  * @end{table}
@@ -54,11 +56,11 @@ namespace gui2
 
 REGISTER_DIALOG(addon_uninstall_list)
 
-void taddon_uninstall_list::pre_show(twindow& window)
+void addon_uninstall_list::pre_show(window& window)
 {
 	set_restore(true);
 
-	tlistbox& list = find_widget<tlistbox>(&window, "addons_list", false);
+	listbox& list = find_widget<listbox>(&window, "addons_list", false);
 	window.keyboard_capture(&list);
 
 	this->selections_.clear();
@@ -81,26 +83,26 @@ void taddon_uninstall_list::pre_show(twindow& window)
 	}
 }
 
-void taddon_uninstall_list::post_show(twindow& window)
+void addon_uninstall_list::post_show(window& window)
 {
-	const tlistbox& list = find_widget<tlistbox>(&window, "addons_list", false);
+	const listbox& list = find_widget<listbox>(&window, "addons_list", false);
 	const unsigned rows = list.get_item_count();
 
 	assert(rows == this->ids_.size() && rows == this->titles_map_.size());
 
-	if(!rows || get_retval() != twindow::OK) {
+	if(!rows || get_retval() != window::OK) {
 		return;
 	}
 
 	for(unsigned k = 0; k < rows; ++k) {
-		tgrid const* g = list.get_row_grid(k);
-		const ttoggle_button& checkbox
-				= find_widget<const ttoggle_button>(g, "checkbox", false);
+		grid const* g = list.get_row_grid(k);
+		const toggle_button& checkbox
+				= find_widget<const toggle_button>(g, "checkbox", false);
 		this->selections_[this->ids_[k]] = checkbox.get_value_bool();
 	}
 }
 
-std::vector<std::string> taddon_uninstall_list::selected_addons() const
+std::vector<std::string> addon_uninstall_list::selected_addons() const
 {
 	std::vector<std::string> retv;
 
@@ -114,5 +116,5 @@ std::vector<std::string> taddon_uninstall_list::selected_addons() const
 	return retv;
 }
 
-
+} // namespace dialogs
 } // namespace gui2

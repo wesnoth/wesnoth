@@ -36,10 +36,10 @@ public:
 	static void send_user_choice();
 private:
 	friend class syncmp_handler;
-	typedef std::vector<syncmp_handler*> t_handlers;
+	typedef std::vector<syncmp_handler*> handler_list;
 	static void remove_handler(syncmp_handler* handler);
 	static void add_handler(syncmp_handler* handler);
-	static t_handlers& handlers();
+	static handler_list& handlers();
 };
 
 #endif

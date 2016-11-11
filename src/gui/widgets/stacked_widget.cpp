@@ -31,25 +31,25 @@ namespace gui2
 
 REGISTER_WIDGET(stacked_widget)
 
-tstacked_widget::tstacked_widget()
-	: tcontainer_(1)
+stacked_widget::stacked_widget()
+	: container_base(1)
 	, generator_(
-			  tgenerator_::build(false, false, tgenerator_::independent, false))
+			  generator_base::build(false, false, generator_base::independent, false))
 	, selected_layer_(-1)
 {
 }
 
-bool tstacked_widget::get_active() const
+bool stacked_widget::get_active() const
 {
 	return true;
 }
 
-unsigned tstacked_widget::get_state() const
+unsigned stacked_widget::get_state() const
 {
 	return 0;
 }
 
-void tstacked_widget::layout_children()
+void stacked_widget::layout_children()
 {
 	assert(generator_);
 	for(unsigned i = 0; i < generator_->get_item_count(); ++i) {
@@ -62,9 +62,9 @@ namespace
 
 /**
  * Swaps an item in a grid for another one.*/
-void swap_grid(tgrid* grid,
-			   tgrid* content_grid,
-			   twidget* widget,
+void swap_grid(grid* g,
+			   grid* content_grid,
+			   widget* widget,
 			   const std::string& id)
 {
 	assert(content_grid);
@@ -74,14 +74,14 @@ void swap_grid(tgrid* grid,
 	widget->set_id(id);
 
 	// Get the container containing the wanted widget.
-	tgrid* parent_grid = nullptr;
-	if(grid) {
-		parent_grid = find_widget<tgrid>(grid, id, false, false);
+	grid* parent_grid = nullptr;
+	if(g) {
+		parent_grid = find_widget<grid>(g, id, false, false);
 	}
 	if(!parent_grid) {
-		parent_grid = find_widget<tgrid>(content_grid, id, true, false);
+		parent_grid = find_widget<grid>(content_grid, id, true, false);
 	}
-	parent_grid = dynamic_cast<tgrid*>(parent_grid->parent());
+	parent_grid = dynamic_cast<grid*>(parent_grid->parent());
 	assert(parent_grid);
 
 	// Replace the child.
@@ -94,7 +94,7 @@ void swap_grid(tgrid* grid,
 } // namespace
 
 void
-tstacked_widget::finalize(std::vector<tbuilder_grid_const_ptr> widget_builder)
+stacked_widget::finalize(std::vector<builder_grid_const_ptr> widget_builder)
 {
 	assert(generator_);
 	string_map empty_data;
@@ -102,23 +102,23 @@ tstacked_widget::finalize(std::vector<tbuilder_grid_const_ptr> widget_builder)
 	{
 		generator_->create_item(-1, builder, empty_data, nullptr);
 	}
-	swap_grid(nullptr, &grid(), generator_, "_content_grid");
+	swap_grid(nullptr, &get_grid(), generator_, "_content_grid");
 
 	select_layer(-1);
 }
 
-const std::string& tstacked_widget::get_control_type() const
+const std::string& stacked_widget::get_control_type() const
 {
 	static const std::string type = "stacked_widget";
 	return type;
 }
 
-void tstacked_widget::set_self_active(const bool /*active*/)
+void stacked_widget::set_self_active(const bool /*active*/)
 {
 	/* DO NOTHING */
 }
 
-void tstacked_widget::select_layer_internal(const unsigned int layer, const bool select) const
+void stacked_widget::select_layer_internal(const unsigned int layer, const bool select) const
 {
 	// Selecting a layer that's already selected appears to actually deselect
 	// it, so make sure to only perform changes we want.
@@ -127,7 +127,7 @@ void tstacked_widget::select_layer_internal(const unsigned int layer, const bool
 	}
 }
 
-void tstacked_widget::select_layer(const int layer)
+void stacked_widget::select_layer(const int layer)
 {
 	const unsigned int num_layers = generator_->get_item_count();
 	selected_layer_ = std::max(-1, std::min<int>(layer, num_layers - 1));
@@ -138,22 +138,22 @@ void tstacked_widget::select_layer(const int layer)
 			// Select current layer, leave the rest unselected.
 			select_layer_internal(i, selected);
 			generator_->item(i).set_visible(selected
-											? twidget::tvisible::visible
-											: twidget::tvisible::hidden);
+											? widget::visibility::visible
+											: widget::visibility::hidden);
 		} else {
 			// Select everything.
 			select_layer_internal(i, true);
-			generator_->item(i).set_visible(twidget::tvisible::visible);
+			generator_->item(i).set_visible(widget::visibility::visible);
 		}
 	}
 }
 
-unsigned int tstacked_widget::get_layer_count() const
+unsigned int stacked_widget::get_layer_count() const
 {
 	return generator_->get_item_count();
 }
 
-tgrid* tstacked_widget::get_layer_grid(unsigned int i)
+grid* stacked_widget::get_layer_grid(unsigned int i)
 {
 	assert(generator_);
 	return &generator_->item(i);
@@ -161,12 +161,12 @@ tgrid* tstacked_widget::get_layer_grid(unsigned int i)
 
 // }---------- DEFINITION ---------{
 
-tstacked_widget_definition::tstacked_widget_definition(const config& cfg)
-	: tcontrol_definition(cfg)
+stacked_widget_definition::stacked_widget_definition(const config& cfg)
+	: styled_widget_definition(cfg)
 {
 	DBG_GUI_P << "Parsing stacked widget " << id << '\n';
 
-	load_resolutions<tresolution>(cfg);
+	load_resolutions<resolution>(cfg);
 }
 
 /*WIKI
@@ -189,17 +189,17 @@ tstacked_widget_definition::tstacked_widget_definition(const config& cfg)
  * @end{tag}{name="stacked_widget_definition"}
  * @end{parent}{name="gui/"}
  */
-tstacked_widget_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg), grid(nullptr)
+stacked_widget_definition::resolution::resolution(const config& cfg)
+	: resolution_definition(cfg), grid(nullptr)
 {
 	// Add a dummy state since every widget needs a state.
 	static config dummy("draw");
-	state.push_back(tstate_definition(dummy));
+	state.push_back(state_definition(dummy));
 
 	const config& child = cfg.child("grid");
 	VALIDATE(child, _("No grid defined."));
 
-	grid = std::make_shared<tbuilder_grid>(child);
+	grid = std::make_shared<builder_grid>(child);
 }
 
 // }---------- BUILDER -----------{
@@ -227,8 +227,8 @@ tstacked_widget_definition::tresolution::tresolution(const config& cfg)
 namespace implementation
 {
 
-tbuilder_stacked_widget::tbuilder_stacked_widget(const config& real_cfg)
-	: tbuilder_control(real_cfg), stack()
+builder_stacked_widget::builder_stacked_widget(const config& real_cfg)
+	: builder_styled_widget(real_cfg), stack()
 {
 	const config& cfg = real_cfg.has_child("stack") ? real_cfg.child("stack") : real_cfg;
 	if(&cfg != &real_cfg) {
@@ -237,21 +237,21 @@ tbuilder_stacked_widget::tbuilder_stacked_widget(const config& real_cfg)
 	VALIDATE(cfg.has_child("layer"), _("No stack layers defined."));
 	for(const auto & layer : cfg.child_range("layer"))
 	{
-		stack.push_back(std::make_shared<tbuilder_grid>(layer));
+		stack.push_back(std::make_shared<builder_grid>(layer));
 	}
 }
 
-twidget* tbuilder_stacked_widget::build() const
+widget* builder_stacked_widget::build() const
 {
-	tstacked_widget* widget = new tstacked_widget();
+	stacked_widget* widget = new stacked_widget();
 
 	init_control(widget);
 
 	DBG_GUI_G << "Window builder: placed stacked widget '" << id
 			  << "' with definition '" << definition << "'.\n";
 
-	std::shared_ptr<const tstacked_widget_definition::tresolution>
-	conf = std::static_pointer_cast<const tstacked_widget_definition::tresolution>(
+	std::shared_ptr<const stacked_widget_definition::resolution>
+	conf = std::static_pointer_cast<const stacked_widget_definition::resolution>(
 					widget->config());
 	assert(conf);
 

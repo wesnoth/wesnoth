@@ -25,13 +25,13 @@ namespace gui2
 namespace implementation
 {
 
-struct tbuilder_instance : public tbuilder_widget
+struct builder_instance : public builder_widget
 {
-	explicit tbuilder_instance(const config& cfg);
+	explicit builder_instance(const config& cfg);
 
-	twidget* build() const;
+	widget* build() const;
 
-	twidget* build(const treplacements& replacements) const;
+	widget* build(const replacements_map& replacements) const;
 
 	/**
 	 * Holds a copy of the cfg parameter in the constructor.

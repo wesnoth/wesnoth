@@ -29,7 +29,7 @@ class game_lua_kernel;
 class reports;
 
 namespace game_events { class manager; class wmi_container; }
-namespace game_events { struct t_context; }
+namespace game_events { struct event_context; }
 
 namespace pathfind { class manager; }
 
@@ -55,8 +55,7 @@ public:
 	const std::unique_ptr<actions::undo_list> undo_stack_;
 	int player_number_;
 
-	typedef boost::optional<end_level_data> t_possible_end_level_data;
-	t_possible_end_level_data end_level_data_;
+	boost::optional<end_level_data> end_level_data_;
 	bool init_side_done_;
 	bool start_event_fired_;
 	// used to sync with the mpserver
@@ -69,7 +68,7 @@ public:
 	int first_human_team_; //needed to initialize the viewpoint during setup
 	bool has_human_sides() const { return first_human_team_ != -1; }
 
-	game_state(const config & level, play_controller &, const tdata_cache & tdata);
+	game_state(const config & level, play_controller &, const ter_data_cache & tdata);
 	/// The third parameter is an optimisation.
 	game_state(const config & level, play_controller &, game_board& board);
 

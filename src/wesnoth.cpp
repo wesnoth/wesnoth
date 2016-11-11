@@ -33,7 +33,7 @@
 #include "gui/core/event/handler.hpp"  	// for tmanager
 #include "gui/dialogs/end_credits.hpp"
 #include "gui/dialogs/loadscreen.hpp"
-#include "gui/dialogs/title_screen.hpp"  // for ttitle_screen, etc
+#include "gui/dialogs/title_screen.hpp"  // for title_screen, etc
 #include "gui/dialogs/message.hpp" 		// for show_error_message
 #include "gui/widgets/helper.hpp"       // for init
 #include "image.hpp"                    // for flush_cache, etc
@@ -42,7 +42,7 @@
 #include "scripting/application_lua_kernel.hpp"
 #include "scripting/plugins/context.hpp"
 #include "scripting/plugins/manager.hpp"
-#include "sdl/exception.hpp"            // for texception
+#include "sdl/exception.hpp"            // for exception
 #include "sdl/rect.hpp"
 #include "serialization/binary_or_text.hpp"  // for config_writer
 #include "serialization/parser.hpp"     // for read
@@ -57,7 +57,7 @@
 #include "video.hpp"                    // for CVideo
 #include "wesconfig.h"                  // for PACKAGE
 #include "widgets/button.hpp"           // for button
-#include "wml_exception.hpp"            // for twml_exception
+#include "wml_exception.hpp"            // for wml_exception
 
 #ifdef _WIN32
 #include "log_windows.hpp"
@@ -631,20 +631,20 @@ static int do_gameloop(const std::vector<std::string>& args)
 #endif
 
 	gui2::init();
-	const gui2::event::tmanager gui_event_manager;
+	const gui2::event::manager gui_event_manager;
 
 	game_config_manager config_manager(cmdline_opts, game->video(),
 	    game->jump_to_editor());
 
-	gui2::tloadscreen::display(game->video(), [&res, &config_manager]() {
-		gui2::tloadscreen::progress("load config");
+	gui2::dialogs::loading_screen::display(game->video(), [&res, &config_manager]() {
+		gui2::dialogs::loading_screen::progress("load config");
 		res = config_manager.init_game_config(game_config_manager::NO_FORCE_RELOAD);
 
 		if(res == false) {
 			std::cerr << "could not initialize game config\n";
 			return;
 		}
-		gui2::tloadscreen::progress("init fonts");
+		gui2::dialogs::loading_screen::progress("init fonts");
 
 		res = font::load_font_config();
 		if(res == false) {
@@ -652,7 +652,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 			return;
 	}
 
-		gui2::tloadscreen::progress("refresh addons");
+		gui2::dialogs::loading_screen::progress("refresh addons");
 		refresh_addon_version_info_cache();
 	});
 
@@ -771,7 +771,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 			continue;
 		}
 
-		gui2::ttitle_screen dlg(*game);
+		gui2::dialogs::title_screen dlg(*game);
 
 		/*
 		 * Quick explanation of the titlscreen loop:
@@ -788,40 +788,40 @@ static int do_gameloop(const std::vector<std::string>& args)
 		}
 
 		switch(dlg.get_retval()) {
-		case gui2::ttitle_screen::QUIT_GAME:
+		case gui2::dialogs::title_screen::QUIT_GAME:
 			LOG_GENERAL << "quitting game...\n";
 			return 0;
-		case gui2::ttitle_screen::MP_CONNECT:
+		case gui2::dialogs::title_screen::MP_CONNECT:
 			game_config::debug = game_config::mp_debug;
 			if(!game->play_multiplayer(game_launcher::MP_CONNECT)) {
 				continue;
 			}
 			break;
-		case gui2::ttitle_screen::MP_HOST:
+		case gui2::dialogs::title_screen::MP_HOST:
 			game_config::debug = game_config::mp_debug;
 			if(!game->play_multiplayer(game_launcher::MP_HOST)) {
 				continue;
 			}
 			break;
-		case gui2::ttitle_screen::MP_LOCAL:
+		case gui2::dialogs::title_screen::MP_LOCAL:
 			game_config::debug = game_config::mp_debug;
 			if(!game->play_multiplayer(game_launcher::MP_LOCAL)) {
 				continue;
 			}
 			break;
-		case gui2::ttitle_screen::RELOAD_GAME_DATA:
-			gui2::tloadscreen::display(game->video(), [&config_manager]() {
+		case gui2::dialogs::title_screen::RELOAD_GAME_DATA:
+			gui2::dialogs::loading_screen::display(game->video(), [&config_manager]() {
 				config_manager.reload_changed_game_config();
 				image::flush_cache();
 			});
 			break;
-		case gui2::ttitle_screen::MAP_EDITOR:
+		case gui2::dialogs::title_screen::MAP_EDITOR:
 			game->start_editor();
 			break;
-		case gui2::ttitle_screen::SHOW_ABOUT:
-			gui2::tend_credits::display(game->video());
+		case gui2::dialogs::title_screen::SHOW_ABOUT:
+			gui2::dialogs::end_credits::display(game->video());
 			break;
-		case gui2::ttitle_screen::LAUNCH_GAME:
+		case gui2::dialogs::title_screen::LAUNCH_GAME:
 			game->launch_game(should_reload);
 			break;
 		}
@@ -1074,7 +1074,7 @@ int main(int argc, char** argv)
 		std::cerr << "caught return_to_play_side_exception, please report this bug (quitting)\n";
 	} catch(quit_game_exception&) {
 		std::cerr << "caught quit_game_exception (quitting)\n";
-	} catch(twml_exception& e) {
+	} catch(wml_exception& e) {
 		std::cerr << "WML exception:\nUser message: "
 			<< e.user_message << "\nDev message: " << e.dev_message << '\n';
 		error_exit(1);
@@ -1082,7 +1082,7 @@ int main(int argc, char** argv)
 		std::cerr << e.what()
 			<< "\n\nGame will be aborted.\n";
 		error_exit(1);
-	} catch(const sdl::texception& e) {
+	} catch(const sdl::exception& e) {
 		std::cerr << e.what();
 		error_exit(1);
 	} catch(game::error &) {

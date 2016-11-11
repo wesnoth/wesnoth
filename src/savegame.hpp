@@ -75,17 +75,17 @@ struct load_game_metadata {
 * and to load another game instead.
 */
 class load_game_exception
-	: public tlua_jailbreak_exception, public std::exception
+	: public lua_jailbreak_exception, public std::exception
 {
 public:
 	load_game_exception(const std::string& fname)
-		: tlua_jailbreak_exception()
+		: lua_jailbreak_exception()
 		, data_(fname)
 	{
 	}
 
 	load_game_exception(load_game_metadata&& data)
-		: tlua_jailbreak_exception()
+		: lua_jailbreak_exception()
 		, data_(data)
 	{
 	}

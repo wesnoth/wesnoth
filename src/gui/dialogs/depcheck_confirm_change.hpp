@@ -21,8 +21,10 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
-class tdepcheck_confirm_change : public tdialog
+class depcheck_confirm_change : public modal_dialog
 {
 public:
 	/**
@@ -34,15 +36,16 @@ public:
 	 * @param requester 	the name of the component which requests the change
 	 *
 	 */
-	tdepcheck_confirm_change(bool action,
+	depcheck_confirm_change(bool action,
 								const std::vector<std::string>& mods,
 								const std::string& requester);
 
 protected:
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 };
 
+} // namespace dialogs
 } // namespace gui2
 
 #endif

@@ -25,7 +25,7 @@
 namespace sdl
 {
 
-struct texception : public game::error
+struct exception : public game::error
 {
 	/**
 	 * Constructor.
@@ -36,7 +36,7 @@ struct texception : public game::error
 	 *                            @p operation is the error message for the
 	 *                            exception.
 	 */
-	texception(const std::string& operation, const bool use_sdl_error);
+	exception(const std::string& operation, const bool use_sdl_error);
 };
 
 

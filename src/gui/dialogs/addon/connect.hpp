@@ -21,9 +21,11 @@ class display;
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /** Addon connect dialog. */
-class taddon_connect : public tdialog
+class addon_connect : public modal_dialog
 {
 public:
 	/**
@@ -32,31 +34,32 @@ public:
 	 * @param [in, out]host_name  The parameter's usage is:
 	 *                            - Input: The initial value for the host_name.
 	 *                            - Output :The final value of the host_name if
-	 *                              the dialog returns @ref twindow::OK or 3
+	 *                              the dialog returns @ref window::OK or 3
 	 *                              undefined otherwise.
 	 * @param allow_remove        Sets @ref allow_remove_.
 	 * @param disp                The display object used for showing the
 	 *                            in-game help when requested.
 	 */
-	taddon_connect(std::string& host_name,
+	addon_connect(std::string& host_name,
 				   const bool allow_remove);
 
 private:
 	/** Enable the addon remove button? */
 	bool allow_remove_;
 
-	void help_button_callback(twindow& window);
+	void help_button_callback(window& window);
 
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	/** Inherited from modal_dialog. */
+	void pre_show(window& window);
 
-	/** Inherited from tdialog. */
-	void post_show(twindow& window);
+	/** Inherited from modal_dialog. */
+	void post_show(window& window);
 };
 
+} // namespace dialogs
 } // namespace gui2
 
 #endif

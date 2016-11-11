@@ -22,6 +22,8 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /**
  * Helper function to convert old difficulty markup. Declared outside class to allow other
@@ -29,13 +31,13 @@ namespace gui2
  */
 config generate_difficulty_config(const config& source);
 
-class tcampaign_difficulty : public tdialog
+class campaign_difficulty : public modal_dialog
 {
 public:
 	/**
 	 * @param config of the campaign difficulty is being chosen for
 	 */
-	tcampaign_difficulty(const config& campaign);
+	campaign_difficulty(const config& campaign);
 
 	/**
 	 * Returns the selected difficulty define after displaying.
@@ -51,15 +53,16 @@ private:
 	std::string campaign_id_;
 	std::string selected_difficulty_;
 
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	/** Inherited from modal_dialog. */
+	void pre_show(window& window);
 
-	/** Inherited from tdialog. */
-	void post_show(twindow& window);
+	/** Inherited from modal_dialog. */
+	void post_show(window& window);
 };
-}
+} // namespace dialogs
+} // namespace gui2
 
 #endif /* ! GUI_DIALOGS_CAMPAIGN_DIFFICULTY_HPP_INCLUDED */

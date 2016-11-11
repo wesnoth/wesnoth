@@ -36,43 +36,43 @@
 
 class CVideo;
 
-namespace gui2 { class twidget; }
-namespace gui2 { namespace event { struct tmessage; } }
-namespace gui2 { struct tpoint; }
-
 namespace gui2
 {
 
+class widget;
+namespace event { struct message; }
+struct point;
+
 // ------------ WIDGET -----------{
 
-class tdialog;
-class tdebug_layout_graph;
-class tpane;
+namespace dialogs { class modal_dialog; }
+class debug_layout_graph;
+class pane;
 
 namespace event
 {
-class tdistributor;
+class distributor;
 } // namespace event
 
 /**
  * base class of top level items, the only item
  * which needs to store the final canvases to draw on
  */
-class twindow : public tpanel, public cursor::setter
+class window : public panel, public cursor::setter
 {
-	friend class tdebug_layout_graph;
-	friend twindow* build(CVideo&, const twindow_builder::tresolution*);
-	friend struct twindow_implementation;
-	friend class tinvalidate_layout_blocker;
-	friend class tpane;
+	friend class debug_layout_graph;
+	friend window* build(CVideo&, const builder_window::window_resolution*);
+	friend struct window_implementation;
+	friend class invalidate_layout_blocker;
+	friend class pane;
 
 public:
-	twindow(CVideo& video,
-			tformula<unsigned> x,
-			tformula<unsigned> y,
-			tformula<unsigned> w,
-			tformula<unsigned> h,
-			tformula<bool> reevaluate_best_size,
+	window(CVideo& video,
+			typed_formula<unsigned> x,
+			typed_formula<unsigned> y,
+			typed_formula<unsigned> w,
+			typed_formula<unsigned> h,
+			typed_formula<bool> reevaluate_best_size,
 			const game_logic::function_symbol_table& functions,
 			const bool automatic_placement,
 			const unsigned horizontal_placement,
@@ -80,10 +80,10 @@ public:
 			const unsigned maximum_width,
 			const unsigned maximum_height,
 			const std::string& definition,
-			const twindow_builder::tresolution::ttip& tooltip,
-			const twindow_builder::tresolution::ttip& helptip);
+			const builder_window::window_resolution::tooltip_info& tooltip,
+			const builder_window::window_resolution::tooltip_info& helptip);
 
-	~twindow();
+	~window();
 
 	/**
 	 * Update the size of the screen variables in settings.
@@ -102,7 +102,7 @@ public:
 	 *
 	 * @returns                   The window or nullptr.
 	 */
-	static twindow* window_instance(const unsigned handle);
+	static window* window_instance(const unsigned handle);
 
 	/**
 	 * Default return values.
@@ -115,7 +115,7 @@ public:
 	 * include the button, while it should be and implementation detail for most
 	 * callers.
 	 */
-	enum tretval {
+	enum retval {
 		NONE = 0, /**<
 				   * Dialog is closed with no return
 				   * value, should be rare but eg a
@@ -134,7 +134,7 @@ public:
 	};
 
 	/** Gets the retval for the default buttons. */
-	static tretval get_retval_by_id(const std::string& id);
+	static retval get_retval_by_id(const std::string& id);
 
 	/**
 	 * @todo Clean up the show functions.
@@ -154,7 +154,7 @@ public:
 	 *                            after the minimum.
 	 *
 	 * @returns                   The close code of the window, predefined
-	 *                            values are listed in tretval.
+	 *                            values are listed in retval.
 	 */
 	int show(const bool restore = true, const unsigned auto_close_timeout = 0);
 
@@ -209,13 +209,13 @@ public:
 	 * @param call_stack          The list of widgets traversed to get to the
 	 *                            dirty widget.
 	 */
-	void add_to_dirty_list(const std::vector<twidget*>& call_stack)
+	void add_to_dirty_list(const std::vector<widget*>& call_stack)
 	{
 		dirty_list_.push_back(call_stack);
 	}
 
 	/** The status of the window. */
-	enum tstatus {
+	enum status {
 		NEW,		   /**< The window is new and not yet shown. */
 		SHOWING,	   /**< The window is being shown. */
 		REQUEST_CLOSE, /**< The window has been requested to be
@@ -246,14 +246,14 @@ public:
 	 *
 	 * @note The class can't be used recursively.
 	 */
-	class tinvalidate_layout_blocker
+	class invalidate_layout_blocker
 	{
 	public:
-		tinvalidate_layout_blocker(twindow& window);
-		~tinvalidate_layout_blocker();
+		invalidate_layout_blocker(window& window);
+		~invalidate_layout_blocker();
 
 	private:
-		twindow& window_;
+		window& window_;
 	};
 
 	/**
@@ -265,37 +265,37 @@ public:
 	 */
 	void invalidate_layout();
 
-	/** Inherited from tevent_handler. */
-	twindow& get_window()
+	/** Inherited from event_handler. */
+	window& get_window()
 	{
 		return *this;
 	}
 
-	/** Inherited from tevent_handler. */
-	const twindow& get_window() const
+	/** Inherited from event_handler. */
+	const window& get_window() const
 	{
 		return *this;
 	}
 
-	/** See @ref twidget::find_at. */
-	virtual twidget* find_at(const tpoint& coordinate,
+	/** See @ref widget::find_at. */
+	virtual widget* find_at(const point& coordinate,
 							 const bool must_be_active) override;
 
-	/** See @ref twidget::find_at. */
-	virtual const twidget* find_at(const tpoint& coordinate,
+	/** See @ref widget::find_at. */
+	virtual const widget* find_at(const point& coordinate,
 								   const bool must_be_active) const override;
 
-	/** Inherited from twidget. */
-	tdialog* dialog()
+	/** Inherited from widget. */
+	dialogs::modal_dialog* dialog()
 	{
 		return owner_;
 	}
 
-	/** See @ref twidget::find. */
-	twidget* find(const std::string& id, const bool must_be_active) override;
+	/** See @ref widget::find. */
+	widget* find(const std::string& id, const bool must_be_active) override;
 
-	/** See @ref twidget::find. */
-	const twidget* find(const std::string& id,
+	/** See @ref widget::find. */
+	const widget* find(const std::string& id,
 						const bool must_be_active) const override;
 
 #if 0
@@ -391,7 +391,7 @@ public:
 	 * @param id                  The id of the group.
 	 * @param widget              The widget to add to the group.
 	 */
-	void add_linked_widget(const std::string& id, twidget* widget);
+	void add_linked_widget(const std::string& id, widget* widget);
 
 	/**
 	 * Removes a widget from a linked size group.
@@ -403,7 +403,7 @@ public:
 	 * @param id                  The id of the group.
 	 * @param widget              The widget to remove from the group.
 	 */
-	void remove_linked_widget(const std::string& id, const twidget* widget);
+	void remove_linked_widget(const std::string& id, const widget* widget);
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
@@ -430,7 +430,7 @@ public:
 		return retval_;
 	}
 
-	void set_owner(tdialog* owner)
+	void set_owner(dialogs::modal_dialog* owner)
 	{
 		owner_ = owner;
 	}
@@ -455,14 +455,14 @@ public:
 		variables_.add(key, value);
 		set_is_dirty(true);
 	}
-	tpoint get_linked_size(const std::string& linked_group_id) const
+	point get_linked_size(const std::string& linked_group_id) const
 	{
-		std::map<std::string, tlinked_size>::const_iterator it = linked_size_.find(linked_group_id);
+		std::map<std::string, linked_size>::const_iterator it = linked_size_.find(linked_group_id);
 		if(it != linked_size_.end()) {
-			return tpoint(it->second.width, it->second.height);
+			return point(it->second.width, it->second.height);
 		}
 		else {
-			return tpoint(-1, -1);
+			return point(-1, -1);
 		}
 	}
 
@@ -473,14 +473,14 @@ public:
 	 *
 	 * @param window                       The current window.
 	 */
-	void set_exit_hook(std::function<bool(twindow&)> func)
+	void set_exit_hook(std::function<bool(window&)> func)
 	{
 		exit_hook_ = func;
 	}
 
-	void set_exit_hook_ok_only(std::function<bool(twindow&)> func)
+	void set_exit_hook_ok_only(std::function<bool(window&)> func)
 	{
-		exit_hook_ = [func](twindow& w)->bool {
+		exit_hook_ = [func](window& w)->bool {
 			if(w.get_retval() == OK) {
 				return func(w);
 			}
@@ -494,9 +494,9 @@ private:
 	CVideo& video_;
 
 	/** The status of the window. */
-	tstatus status_;
+	status status_;
 
-	enum tshow_mode {
+	enum show_mode {
 		none,
 		modal,
 		tooltip
@@ -507,13 +507,13 @@ private:
 	 *
 	 * This is used to determine whether or not to remove the tip.
 	 */
-	tshow_mode show_mode_;
+	show_mode show_mode_;
 
 	// return value of the window, 0 default.
 	int retval_;
 
 	/** The dialog that owns the window. */
-	tdialog* owner_;
+	dialogs::modal_dialog* owner_;
 
 	/**
 	 * When set the form needs a full layout redraw cycle.
@@ -526,7 +526,7 @@ private:
 	/** The variables of the canvas. */
 	game_logic::map_formula_callable variables_;
 
-	/** Is invalidate layout blocked see tinvalidate_layout_blocker. */
+	/** Is invalidate layout blocked see invalidate_layout_blocker. */
 	bool invalidate_layout_blocked_;
 
 	/** Avoid drawing the window.  */
@@ -545,7 +545,7 @@ private:
 	 * Sets the horizontal placement.
 	 *
 	 * Only used if automatic_placement_ is true.
-	 * The value should be a tgrid placement flag.
+	 * The value should be a grid placement flag.
 	 */
 	const unsigned horizontal_placement_;
 
@@ -553,7 +553,7 @@ private:
 	 * Sets the vertical placement.
 	 *
 	 * Only used if automatic_placement_ is true.
-	 * The value should be a tgrid placement flag.
+	 * The value should be a grid placement flag.
 	 */
 	const unsigned vertical_placement_;
 
@@ -564,28 +564,28 @@ private:
 	unsigned maximum_height_;
 
 	/** The formula to calulate the x value of the dialog. */
-	tformula<unsigned> x_;
+	typed_formula<unsigned> x_;
 
 	/** The formula to calulate the y value of the dialog. */
-	tformula<unsigned> y_;
+	typed_formula<unsigned> y_;
 
 	/** The formula to calulate the width of the dialog. */
-	tformula<unsigned> w_;
+	typed_formula<unsigned> w_;
 
 	/** The formula to calulate the height of the dialog. */
-	tformula<unsigned> h_;
+	typed_formula<unsigned> h_;
 
 	/** The formula to determine whether the size is good. */
-	tformula<bool> reevaluate_best_size_;
+	typed_formula<bool> reevaluate_best_size_;
 
 	/** The formula definitions available for the calulation formulas. */
 	game_logic::function_symbol_table functions_;
 
 	/** The settings for the tooltip. */
-	twindow_builder::tresolution::ttip tooltip_;
+	builder_window::window_resolution::tooltip_info tooltip_;
 
 	/** The settings for the helptip. */
-	twindow_builder::tresolution::ttip helptip_;
+	builder_window::window_resolution::tooltip_info helptip_;
 
 	/**
 	 * Do we want to have easy close behavior?
@@ -628,15 +628,15 @@ private:
 	 * can especially be useful for listboxes, but can also be used for other
 	 * applications.
 	 */
-	struct tlinked_size
+	struct linked_size
 	{
-		tlinked_size(const bool width = false, const bool height = false)
+		linked_size(const bool width = false, const bool height = false)
 			: widgets(), width(width ? 0 : -1), height(height ? 0 : -1)
 		{
 		}
 
 		/** The widgets linked. */
-		std::vector<twidget*> widgets;
+		std::vector<widget*> widgets;
 
 		/** the current width of all widgets in the intis group, -1 if the width is not linked*/
 		int width;
@@ -646,7 +646,7 @@ private:
 	};
 
 	/** List of the widgets, whose size are linked together. */
-	std::map<std::string, tlinked_size> linked_size_;
+	std::map<std::string, linked_size> linked_size_;
 
 	/**
 	 * Layouts the window.
@@ -695,7 +695,7 @@ private:
 	 */
 	Uint8 mouse_button_state_;
 
-	/** See @ref tcontrol::get_control_type. */
+	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 
 	/**
@@ -704,20 +704,20 @@ private:
 	 * When drawing only the widgets that are dirty are updated. The draw()
 	 * function has more information about the dirty_list_.
 	 */
-	std::vector<std::vector<twidget*> > dirty_list_;
+	std::vector<std::vector<widget*> > dirty_list_;
 
 	/**
 	 * Finishes the initialization of the grid.
 	 *
 	 * @param content_grid        The new contents for the content grid.
 	 */
-	void finalize(const std::shared_ptr<tbuilder_grid>& content_grid);
+	void finalize(const std::shared_ptr<builder_grid>& content_grid);
 
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
-	tdebug_layout_graph* debug_layout_;
+	debug_layout_graph* debug_layout_;
 
 public:
-	/** wrapper for tdebug_layout_graph::generate_dot_file. */
+	/** wrapper for debug_layout_graph::generate_dot_file. */
 	void generate_dot_file(const std::string& generator, const unsigned domain);
 
 private:
@@ -727,13 +727,13 @@ private:
 	}
 #endif
 
-	event::tdistributor* event_distributor_;
+	event::distributor* event_distributor_;
 
 public:
 	// mouse and keyboard_capture should be renamed and stored in the
 	// dispatcher. Chaining probably should remain exclusive to windows.
 	void mouse_capture(const bool capture = true);
-	void keyboard_capture(twidget* widget);
+	void keyboard_capture(widget* widget);
 
 	/**
 	 * Adds the widget to the keyboard chain.
@@ -743,7 +743,7 @@ public:
 	 *                            should be valid widget, which hasn't been
 	 *                            added to the chain yet.
 	 */
-	void add_to_keyboard_chain(twidget* widget);
+	void add_to_keyboard_chain(widget* widget);
 
 	/**
 	 * Remove the widget from the keyboard chain.
@@ -752,57 +752,57 @@ public:
 	 *
 	 * @param widget              The widget to be removed from the chain.
 	 */
-	void remove_from_keyboard_chain(twidget* widget);
+	void remove_from_keyboard_chain(widget* widget);
 
 private:
 	/***** ***** ***** signal handlers ***** ****** *****/
 
-	void signal_handler_sdl_video_resize(const event::tevent event,
+	void signal_handler_sdl_video_resize(const event::ui_event event,
 										 bool& handled,
-										 const tpoint& new_size);
+										 const point& new_size);
 
 	/**
 	 * The handler for the click dismiss mouse 'event'.
 	 *
-	 * @param event               See @ref event::tdispatcher::fire.
-	 * @param handled             See @ref event::tdispatcher::fire.
-	 * @param halt                See @ref event::tdispatcher::fire.
+	 * @param event               See @ref event::dispatcher::fire.
+	 * @param handled             See @ref event::dispatcher::fire.
+	 * @param halt                See @ref event::dispatcher::fire.
 	 * @param mouse_button_mask   Forwared to @ref click_dismiss.
 	 */
-	void signal_handler_click_dismiss(const event::tevent event,
+	void signal_handler_click_dismiss(const event::ui_event event,
 									  bool& handled,
 									  bool& halt,
 									  const Uint8 mouse_button_mask);
 
-	void signal_handler_sdl_key_down(const event::tevent event,
+	void signal_handler_sdl_key_down(const event::ui_event event,
 									 bool& handled,
 									 const SDL_Keycode key);
 
-	void signal_handler_message_show_tooltip(const event::tevent event,
+	void signal_handler_message_show_tooltip(const event::ui_event event,
 											 bool& handled,
-											 event::tmessage& message);
+											 event::message& message);
 
-	void signal_handler_message_show_helptip(const event::tevent event,
+	void signal_handler_message_show_helptip(const event::ui_event event,
 											 bool& handled,
-											 event::tmessage& message);
+											 event::message& message);
 
-	void signal_handler_request_placement(const event::tevent event,
+	void signal_handler_request_placement(const event::ui_event event,
 										  bool& handled);
 
-	std::function<bool(twindow&)> exit_hook_ = [](twindow&)->bool { return true; };
+	std::function<bool(window&)> exit_hook_ = [](window&)->bool { return true; };
 };
 
 // }---------- DEFINITION ---------{
 
-struct twindow_definition : public tcontrol_definition
+struct window_definition : public styled_widget_definition
 {
-	explicit twindow_definition(const config& cfg);
+	explicit window_definition(const config& cfg);
 
-	struct tresolution : public tpanel_definition::tresolution
+	struct resolution : public panel_definition::resolution
 	{
-		explicit tresolution(const config& cfg);
+		explicit resolution(const config& cfg);
 
-		tbuilder_grid_ptr grid;
+		builder_grid_ptr grid;
 	};
 };
 

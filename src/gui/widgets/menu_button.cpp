@@ -39,47 +39,47 @@ namespace gui2
 
 REGISTER_WIDGET(menu_button)
 
-tmenu_button::tmenu_button()
-	: tcontrol(COUNT)
-	, tselectable_()
+menu_button::menu_button()
+	: styled_widget(COUNT)
+	, selectable_item()
 	, state_(ENABLED)
 	, retval_(0)
 	, values_()
 	, selected_()
 {
-	values_.push_back(config_of("label", this->label()));
+	values_.push_back(config_of("label", this->get_label()));
 
 	connect_signal<event::MOUSE_ENTER>(
-			std::bind(&tmenu_button::signal_handler_mouse_enter, this, _2, _3));
+			std::bind(&menu_button::signal_handler_mouse_enter, this, _2, _3));
 	connect_signal<event::MOUSE_LEAVE>(
-			std::bind(&tmenu_button::signal_handler_mouse_leave, this, _2, _3));
+			std::bind(&menu_button::signal_handler_mouse_leave, this, _2, _3));
 
 	connect_signal<event::LEFT_BUTTON_DOWN>(std::bind(
-			&tmenu_button::signal_handler_left_button_down, this, _2, _3));
+			&menu_button::signal_handler_left_button_down, this, _2, _3));
 	connect_signal<event::LEFT_BUTTON_UP>(
-			std::bind(&tmenu_button::signal_handler_left_button_up, this, _2, _3));
+			std::bind(&menu_button::signal_handler_left_button_up, this, _2, _3));
 	connect_signal<event::LEFT_BUTTON_CLICK>(std::bind(
-			&tmenu_button::signal_handler_left_button_click, this, _2, _3));
+			&menu_button::signal_handler_left_button_click, this, _2, _3));
 }
 
-void tmenu_button::set_active(const bool active)
+void menu_button::set_active(const bool active)
 {
 	if(get_active() != active) {
 		set_state(active ? ENABLED : DISABLED);
 	}
 }
 
-bool tmenu_button::get_active() const
+bool menu_button::get_active() const
 {
 	return state_ != DISABLED;
 }
 
-unsigned tmenu_button::get_state() const
+unsigned menu_button::get_state() const
 {
 	return state_;
 }
 
-void tmenu_button::set_state(const tstate state)
+void menu_button::set_state(const state_t state)
 {
 	if(state != state_) {
 		state_ = state;
@@ -87,13 +87,13 @@ void tmenu_button::set_state(const tstate state)
 	}
 }
 
-const std::string& tmenu_button::get_control_type() const
+const std::string& menu_button::get_control_type() const
 {
 	static const std::string type = "menu_button";
 	return type;
 }
 
-void tmenu_button::signal_handler_mouse_enter(const event::tevent event,
+void menu_button::signal_handler_mouse_enter(const event::ui_event event,
 										 bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -102,7 +102,7 @@ void tmenu_button::signal_handler_mouse_enter(const event::tevent event,
 	handled = true;
 }
 
-void tmenu_button::signal_handler_mouse_leave(const event::tevent event,
+void menu_button::signal_handler_mouse_leave(const event::ui_event event,
 										 bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -111,12 +111,12 @@ void tmenu_button::signal_handler_mouse_leave(const event::tevent event,
 	handled = true;
 }
 
-void tmenu_button::signal_handler_left_button_down(const event::tevent event,
+void menu_button::signal_handler_left_button_down(const event::ui_event event,
 											  bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
-	twindow* window = get_window();
+	window* window = get_window();
 	if(window) {
 		window->mouse_capture();
 	}
@@ -125,7 +125,7 @@ void tmenu_button::signal_handler_left_button_down(const event::tevent event,
 	handled = true;
 }
 
-void tmenu_button::signal_handler_left_button_up(const event::tevent event,
+void menu_button::signal_handler_left_button_up(const event::ui_event event,
 											bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -134,7 +134,7 @@ void tmenu_button::signal_handler_left_button_up(const event::tevent event,
 	handled = true;
 }
 
-void tmenu_button::signal_handler_left_button_click(const event::tevent event,
+void menu_button::signal_handler_left_button_click(const event::ui_event event,
 											   bool& handled)
 {
 	assert(get_window());
@@ -143,7 +143,7 @@ void tmenu_button::signal_handler_left_button_click(const event::tevent event,
 	sound::play_UI_sound(settings::sound_button_click);
 
 	// If a button has a retval do the default handling.
-	tdrop_down_list droplist(this->get_rectangle(), this->values_, this->selected_, this->get_use_markup());
+	dialogs::drop_down_menu droplist(this->get_rectangle(), this->values_, this->selected_, this->get_use_markup());
 
 	if(droplist.show(get_window()->video())) {
 		const int selected = droplist.selected_item();
@@ -165,7 +165,7 @@ void tmenu_button::signal_handler_left_button_click(const event::tevent event,
 		}
 
 		if(retval_ != 0) {
-			if(twindow* window = get_window()) {
+			if(window* window = get_window()) {
 				window->set_retval(retval_);
 				return;
 			}
@@ -175,7 +175,7 @@ void tmenu_button::signal_handler_left_button_click(const event::tevent event,
 	handled = true;
 }
 
-void tmenu_button::set_values(const std::vector<::config>& values, int selected)
+void menu_button::set_values(const std::vector<::config>& values, int selected)
 {
 	assert(static_cast<size_t>(selected) < values.size());
 	assert(static_cast<size_t>(selected_) < values_.size());
@@ -186,7 +186,7 @@ void tmenu_button::set_values(const std::vector<::config>& values, int selected)
 	selected_ = selected;
 	set_label(values_[selected_]["label"]);
 }
-void tmenu_button::set_selected(int selected)
+void menu_button::set_selected(int selected)
 {
 	assert(static_cast<size_t>(selected) < values_.size());
 	assert(static_cast<size_t>(selected_) < values_.size());
@@ -199,12 +199,12 @@ void tmenu_button::set_selected(int selected)
 
 // }---------- DEFINITION ---------{
 
-tmenu_button_definition::tmenu_button_definition(const config& cfg)
-	: tcontrol_definition(cfg)
+menu_button_definition::menu_button_definition(const config& cfg)
+	: styled_widget_definition(cfg)
 {
 	DBG_GUI_P << "Parsing menu_button " << id << '\n';
 
-	load_resolutions<tresolution>(cfg);
+	load_resolutions<resolution>(cfg);
 }
 
 /*WIKI
@@ -235,14 +235,14 @@ tmenu_button_definition::tmenu_button_definition(const config& cfg)
  * @end{tag}{name="menu_button_definition"}
  * @end{parent}{name="gui/"}
  */
-tmenu_button_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
+menu_button_definition::resolution::resolution(const config& cfg)
+	: resolution_definition(cfg)
 {
-	// Note the order should be the same as the enum tstate in menu_button.hpp.
-	state.push_back(tstate_definition(cfg.child("state_enabled")));
-	state.push_back(tstate_definition(cfg.child("state_disabled")));
-	state.push_back(tstate_definition(cfg.child("state_pressed")));
-	state.push_back(tstate_definition(cfg.child("state_focused")));
+	// Note the order should be the same as the enum state_t in menu_button.hpp.
+	state.push_back(state_definition(cfg.child("state_enabled")));
+	state.push_back(state_definition(cfg.child("state_disabled")));
+	state.push_back(state_definition(cfg.child("state_pressed")));
+	state.push_back(state_definition(cfg.child("state_focused")));
 }
 
 // }---------- BUILDER -----------{
@@ -250,7 +250,7 @@ tmenu_button_definition::tresolution::tresolution(const config& cfg)
 /*WIKI_MACRO
  * @begin{macro}{menu_button_description}
  *
- *        A menu_button is a control to choose an element from a list of elements.
+ *        A menu_button is a styled_widget to choose an element from a list of elements.
  * @end{macro}
  */
 
@@ -287,8 +287,8 @@ tmenu_button_definition::tresolution::tresolution(const config& cfg)
 namespace implementation
 {
 
-tbuilder_menu_button::tbuilder_menu_button(const config& cfg)
-	: tbuilder_control(cfg)
+builder_menu_button::builder_menu_button(const config& cfg)
+	: builder_styled_widget(cfg)
 	, retval_id_(cfg["return_value_id"])
 	, retval_(cfg["return_value"])
 	, options_()
@@ -298,9 +298,9 @@ tbuilder_menu_button::tbuilder_menu_button(const config& cfg)
 	}
 }
 
-twidget* tbuilder_menu_button::build() const
+widget* builder_menu_button::build() const
 {
-	tmenu_button* widget = new tmenu_button();
+	menu_button* widget = new menu_button();
 
 	init_control(widget);
 

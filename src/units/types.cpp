@@ -991,7 +991,7 @@ namespace { // Helpers for set_config()
 			// Don't replace if the key already exists in the config (even if empty).
 			return;
 		}
-		gui2::tformula<int> formula(formula_str);
+		gui2::typed_formula<int> formula(formula_str);
 		game_logic::map_formula_callable original;
 		boost::sregex_iterator m(formula_str.begin(), formula_str.end(), fai_identifier);
 		for (const boost::sregex_iterator::value_type& p : std::make_pair(m, boost::sregex_iterator())) {
@@ -1019,14 +1019,14 @@ void unit_type_data::set_config(config &cfg)
 	for (const config &mt : cfg.child_range("movetype"))
 	{
 		movement_types_.insert(std::make_pair(mt["name"].str(), movetype(mt)));
-		gui2::tloadscreen::progress();
+		gui2::dialogs::loading_screen::progress();
 	}
 
 	for (const config &r : cfg.child_range("race"))
 	{
 		const unit_race race(r);
 		races_.insert(std::pair<std::string,unit_race>(race.id(),race));
-		gui2::tloadscreen::progress();
+		gui2::dialogs::loading_screen::progress();
 	}
 
 	// Movetype resistance patching
@@ -1108,7 +1108,7 @@ void unit_type_data::set_config(config &cfg)
 			if ( !id.empty() ) {
 				std::vector<std::string> base_tree(1, id);
 				apply_base_unit(ut, cfg, base_tree);
-				gui2::tloadscreen::progress();
+				gui2::dialogs::loading_screen::progress();
 			}
 		}
 	}
@@ -1143,7 +1143,7 @@ void unit_type_data::set_config(config &cfg)
 			ERR_CF << "Multiple [unit_type]s with id=" << id << " encountered." << std::endl;
 		}
 
-		gui2::tloadscreen::progress();
+		gui2::dialogs::loading_screen::progress();
 	}
 
 	// Build all unit types. (This was not done within the loop for performance.)
@@ -1209,7 +1209,7 @@ void unit_type_data::build_all(unit_type::BUILD_STATUS status)
 
 	for (unit_type_map::iterator u = types_.begin(), u_end = types_.end(); u != u_end; ++u) {
 		build_unit_type(u->second, status);
-		gui2::tloadscreen::progress();
+		gui2::dialogs::loading_screen::progress();
 	}
 	// Handle [advancefrom] (once) after building to (at least) the CREATED level.
 	// (Currently, this could be simply a test for build_status_ == NOT_BUILT,

@@ -27,10 +27,10 @@ typedef std::map<std::string, t_string> string_map;
 namespace gui2
 {
 
-struct tbuilder_grid;
-typedef std::shared_ptr<const tbuilder_grid> tbuilder_grid_const_ptr;
+struct builder_grid;
+typedef std::shared_ptr<const builder_grid> builder_grid_const_ptr;
 
-class tgrid;
+class grid;
 
 /**
  * Abstract base class for the generator.
@@ -40,20 +40,20 @@ class tgrid;
  * the possible policies is documented in the build() function. This function
  * is the factory to generate the classes as well.
  */
-class tgenerator_ : public twidget
+class generator_base : public widget
 {
-	friend class tdebug_layout_graph;
+	friend class debug_layout_graph;
 
 public:
-	virtual ~tgenerator_()
+	virtual ~generator_base()
 	{
 	}
 
 	/** Determines how the items are placed. */
-	enum tplacement {
+	enum placement {
 		horizontal_list,
 		vertical_list,
-		grid,
+		table,
 		independent
 	};
 
@@ -72,9 +72,9 @@ public:
 	 * @returns                   A pointer to a new object. The caller gets
 	 *                            ownership of the new object.
 	 */
-	static tgenerator_* build(const bool has_minimum,
+	static generator_base* build(const bool has_minimum,
 							  const bool has_maximum,
-							  const tplacement placement,
+							  const placement placement,
 							  const bool select);
 
 	/**
@@ -144,7 +144,7 @@ public:
 	 * Else is goes through all selected items and returns the first one
 	 * selected.
 	 *
-	 * @note tstacked_widget depends on that behavior it always has all items
+	 * @note stacked_widget depends on that behavior it always has all items
 	 * selected and thus shown and by default the last selected item (the top
 	 * one) is active.
 	 *
@@ -153,10 +153,10 @@ public:
 	virtual int get_selected_item() const = 0;
 
 	/** Gets the grid of an item. */
-	virtual tgrid& item(const unsigned index) = 0;
+	virtual grid& item(const unsigned index) = 0;
 
 	/** Gets the grid of an item. */
-	virtual const tgrid& item(const unsigned index) const = 0;
+	virtual const grid& item(const unsigned index) const = 0;
 
 	/***** ***** ***** ***** Create items ***** ***** ***** *****/
 
@@ -177,10 +177,10 @@ public:
 	 *
 	 * @returns                   A reference to the newly created grid.
 	 */
-	virtual tgrid& create_item(const int index,
-							   tbuilder_grid_const_ptr list_builder,
+	virtual grid& create_item(const int index,
+							   builder_grid_const_ptr list_builder,
 							   const string_map& item_data,
-							   const std::function<void(twidget&)>& callback)
+							   const std::function<void(widget&)>& callback)
 			= 0;
 
 	/**
@@ -200,11 +200,11 @@ public:
 	 *
 	 * @returns                   A reference to the newly created grid.
 	 */
-	virtual tgrid&
+	virtual grid&
 	create_item(const int index,
-				tbuilder_grid_const_ptr list_builder,
+				builder_grid_const_ptr list_builder,
 				const std::map<std::string /* widget id */, string_map>& data,
-				const std::function<void(twidget&)>& callback) = 0;
+				const std::function<void(widget&)>& callback) = 0;
 
 	/**
 	 * Creates one or more new item(s).
@@ -222,9 +222,9 @@ public:
 	 *                            in the grid is (de)selected.
 	 */
 	virtual void create_items(const int index,
-							  tbuilder_grid_const_ptr list_builder,
+							  builder_grid_const_ptr list_builder,
 							  const std::vector<string_map>& data,
-							  const std::function<void(twidget&)>& callback)
+							  const std::function<void(widget&)>& callback)
 			= 0;
 
 	/**
@@ -244,10 +244,10 @@ public:
 	 */
 	virtual void create_items(
 			const int index,
-			tbuilder_grid_const_ptr list_builder,
+			builder_grid_const_ptr list_builder,
 			const std::vector<std::map<std::string /*widget id*/, string_map> >&
 					data,
-			const std::function<void(twidget&)>& callback) = 0;
+			const std::function<void(widget&)>& callback) = 0;
 
 	typedef std::function<bool (unsigned, unsigned)> torder_func;
 	virtual void set_order(const torder_func& order) = 0;
@@ -259,48 +259,48 @@ public:
 	 * become pure virtuals.
 	 */
 
-	/** See @ref twidget::layout_initialise. */
+	/** See @ref widget::layout_initialise. */
 	virtual void layout_initialise(const bool full_initialisation) override = 0;
 
-	/** See @ref twidget::request_reduce_width. */
+	/** See @ref widget::request_reduce_width. */
 	virtual void request_reduce_width(const unsigned maximum_width) override
 			= 0;
 
-	/** See @ref twidget::request_reduce_height. */
+	/** See @ref widget::request_reduce_height. */
 	virtual void request_reduce_height(const unsigned maximum_height) override
 			= 0;
 
-	/** See @ref twidget::calculate_best_size. */
-	virtual tpoint calculate_best_size() const override = 0;
+	/** See @ref widget::calculate_best_size. */
+	virtual point calculate_best_size() const override = 0;
 
-	/** See @ref twidget::place. */
-	virtual void place(const tpoint& origin, const tpoint& size) override = 0;
+	/** See @ref widget::place. */
+	virtual void place(const point& origin, const point& size) override = 0;
 
-	/** See @ref twidget::set_origin. */
-	virtual void set_origin(const tpoint& origin) override = 0;
+	/** See @ref widget::set_origin. */
+	virtual void set_origin(const point& origin) override = 0;
 
-	/** See @ref twidget::set_visible_rectangle. */
+	/** See @ref widget::set_visible_rectangle. */
 	virtual void set_visible_rectangle(const SDL_Rect& rectangle) override = 0;
 
-	/** See @ref twidget::impl_draw_children. */
+	/** See @ref widget::impl_draw_children. */
 	virtual void impl_draw_children(surface& frame_buffer,
 									int x_offset,
 									int y_offset) override = 0;
 
 protected:
-	/** See @ref twidget::child_populate_dirty_list. */
+	/** See @ref widget::child_populate_dirty_list. */
 	virtual void
-	child_populate_dirty_list(twindow& caller,
-							  const std::vector<twidget*>& call_stack) override
+	child_populate_dirty_list(window& caller,
+							  const std::vector<widget*>& call_stack) override
 			= 0;
 
 public:
-	/** See @ref twidget::find_at. */
-	virtual twidget* find_at(const tpoint& coordinate,
+	/** See @ref widget::find_at. */
+	virtual widget* find_at(const point& coordinate,
 							 const bool must_be_active) override = 0;
 
-	/** See @ref twidget::find_at. */
-	virtual const twidget* find_at(const tpoint& coordinate,
+	/** See @ref widget::find_at. */
+	virtual const widget* find_at(const point& coordinate,
 								   const bool must_be_active) const override
 			= 0;
 
@@ -370,10 +370,10 @@ protected:
 	virtual void do_deselect_item(const unsigned index) = 0;
 
 	/** Gets the grid of an item. */
-	virtual tgrid& item_ordered(const unsigned index) = 0;
+	virtual grid& item_ordered(const unsigned index) = 0;
 
 	/** Gets the grid of an item. */
-	virtual const tgrid& item_ordered(const unsigned index) const = 0;
+	virtual const grid& item_ordered(const unsigned index) const = 0;
 
 public:
 	virtual unsigned get_ordered_index(unsigned index) const = 0;
@@ -382,7 +382,7 @@ public:
 
 };
 
-using generator_sort_array = std::array<tgenerator_::torder_func, 2>;
+using generator_sort_array = std::array<generator_base::torder_func, 2>;
 
 } // namespace gui2
 

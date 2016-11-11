@@ -306,7 +306,7 @@ LEVEL_RESULT campaign_controller::play_game()
 		} catch(config::error& e) {
 			gui2::show_error_message(video_, _("Error while reading the WML: ") + e.message);
 			return LEVEL_RESULT::QUIT;
-		} catch(twml_exception& e) {
+		} catch(wml_exception& e) {
 			e.show(video_);
 			return LEVEL_RESULT::QUIT;
 		}
@@ -343,9 +343,9 @@ LEVEL_RESULT campaign_controller::play_game()
 		{
 			const int dlg_res = gui2::show_message(video_, _("Game Over"),
 				_("This scenario has ended. Do you want to continue the campaign?"),
-				gui2::tmessage::yes_no_buttons);
+				gui2::dialogs::message::yes_no_buttons);
 
-			if(dlg_res == gui2::twindow::CANCEL) {
+			if(dlg_res == gui2::window::CANCEL) {
 				return res;
 			}
 		}
@@ -353,7 +353,7 @@ LEVEL_RESULT campaign_controller::play_game()
 		if (mp_info_ && !mp_info_->is_host) {
 			// Opens mp::connect dialog to get a new gamestate.
 			mp::ui::result wait_res = mp::goto_mp_wait(video_, state_,
-				game_config_, &mp_info_->wesnothd_connection, res == LEVEL_RESULT::OBSERVER_END);
+				game_config_, &mp_info_->connection, res == LEVEL_RESULT::OBSERVER_END);
 			if (wait_res == mp::ui::QUIT) {
 				return LEVEL_RESULT::QUIT;
 			}
@@ -377,7 +377,7 @@ LEVEL_RESULT campaign_controller::play_game()
 				if (!connect_engine->can_start_game() || (game_config::debug && game_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER)) {
 					// Opens mp::connect dialog to allow users to make an adjustments for scenario.
 					mp::ui::result connect_res = mp::goto_mp_connect(video_,
-						*connect_engine, game_config_, mp_info_ ? &mp_info_->wesnothd_connection : nullptr, state_.mp_settings().name);
+						*connect_engine, game_config_, mp_info_ ? &mp_info_->connection : nullptr, state_.mp_settings().name);
 					if (connect_res == mp::ui::QUIT) {
 						return LEVEL_RESULT::QUIT;
 					}

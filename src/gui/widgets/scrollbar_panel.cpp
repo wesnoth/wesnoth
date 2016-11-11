@@ -32,35 +32,35 @@ namespace gui2
 
 REGISTER_WIDGET(scrollbar_panel)
 
-bool tscrollbar_panel::get_active() const
+bool scrollbar_panel::get_active() const
 {
 	return true;
 }
 
-unsigned tscrollbar_panel::get_state() const
+unsigned scrollbar_panel::get_state() const
 {
 	return 0;
 }
 
-const std::string& tscrollbar_panel::get_control_type() const
+const std::string& scrollbar_panel::get_control_type() const
 {
 	static const std::string type = "scrollbar_panel";
 	return type;
 }
 
-void tscrollbar_panel::set_self_active(const bool /*active*/)
+void scrollbar_panel::set_self_active(const bool /*active*/)
 {
 	/* DO NOTHING */
 }
 
 // }---------- DEFINITION ---------{
 
-tscrollbar_panel_definition::tscrollbar_panel_definition(const config& cfg)
-	: tcontrol_definition(cfg)
+scrollbar_panel_definition::scrollbar_panel_definition(const config& cfg)
+	: styled_widget_definition(cfg)
 {
 	DBG_GUI_P << "Parsing scrollbar panel " << id << '\n';
 
-	load_resolutions<tresolution>(cfg);
+	load_resolutions<resolution>(cfg);
 }
 
 /*WIKI
@@ -88,17 +88,17 @@ tscrollbar_panel_definition::tscrollbar_panel_definition(const config& cfg)
  * @end{tag}{name="scrollbar_panel_definition"}
  * @end{parent}{name="gui/"}
  */
-tscrollbar_panel_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg), grid()
+scrollbar_panel_definition::resolution::resolution(const config& cfg)
+	: resolution_definition(cfg), grid()
 {
 	// The panel needs to know the order.
-	state.push_back(tstate_definition(cfg.child("background")));
-	state.push_back(tstate_definition(cfg.child("foreground")));
+	state.push_back(state_definition(cfg.child("background")));
+	state.push_back(state_definition(cfg.child("foreground")));
 
 	const config& child = cfg.child("grid");
 	VALIDATE(child, _("No grid defined."));
 
-	grid = std::make_shared<tbuilder_grid>(child);
+	grid = std::make_shared<builder_grid>(child);
 }
 
 // }---------- BUILDER -----------{
@@ -135,24 +135,24 @@ tscrollbar_panel_definition::tresolution::tresolution(const config& cfg)
 namespace implementation
 {
 
-tbuilder_scrollbar_panel::tbuilder_scrollbar_panel(const config& cfg)
-	: tbuilder_control(cfg)
+builder_scrollbar_panel::builder_scrollbar_panel(const config& cfg)
+	: builder_styled_widget(cfg)
 	, vertical_scrollbar_mode(
 			  get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
 	, horizontal_scrollbar_mode(
 			  get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
-	, grid(nullptr)
+	, grid_(nullptr)
 {
 	const config& grid_definition = cfg.child("definition");
 
 	VALIDATE(grid_definition, _("No list defined."));
-	grid = std::make_shared<tbuilder_grid>(grid_definition);
-	assert(grid);
+	grid_ = std::make_shared<builder_grid>(grid_definition);
+	assert(grid_);
 }
 
-twidget* tbuilder_scrollbar_panel::build() const
+widget* builder_scrollbar_panel::build() const
 {
-	tscrollbar_panel* panel = new tscrollbar_panel();
+	scrollbar_panel* panel = new scrollbar_panel();
 
 	init_control(panel);
 
@@ -162,8 +162,8 @@ twidget* tbuilder_scrollbar_panel::build() const
 	DBG_GUI_G << "Window builder: placed scrollbar_panel '" << id
 			  << "' with definition '" << definition << "'.\n";
 
-	std::shared_ptr<const tscrollbar_panel_definition::tresolution> conf
-			= std::static_pointer_cast<const tscrollbar_panel_definition::tresolution>(
+	std::shared_ptr<const scrollbar_panel_definition::resolution> conf
+			= std::static_pointer_cast<const scrollbar_panel_definition::resolution>(
 				panel->config());
 	assert(conf);
 
@@ -171,29 +171,29 @@ twidget* tbuilder_scrollbar_panel::build() const
 	panel->finalize_setup();
 
 	/*** Fill the content grid. ***/
-	tgrid* content_grid = panel->content_grid();
+	grid* content_grid = panel->content_grid();
 	assert(content_grid);
 
-	const unsigned rows = grid->rows;
-	const unsigned cols = grid->cols;
+	const unsigned rows = grid_->rows;
+	const unsigned cols = grid_->cols;
 
 	content_grid->set_rows_cols(rows, cols);
 
 	for(unsigned x = 0; x < rows; ++x) {
-		content_grid->set_row_grow_factor(x, grid->row_grow_factor[x]);
+		content_grid->set_row_grow_factor(x, grid_->row_grow_factor[x]);
 		for(unsigned y = 0; y < cols; ++y) {
 
 			if(x == 0) {
 				content_grid->set_column_grow_factor(y,
-													 grid->col_grow_factor[y]);
+													 grid_->col_grow_factor[y]);
 			}
 
-			twidget* widget = grid->widgets[x * cols + y]->build();
+			widget* widget = grid_->widgets[x * cols + y]->build();
 			content_grid->set_child(widget,
 									x,
 									y,
-									grid->flags[x * cols + y],
-									grid->border_size[x * cols + y]);
+									grid_->flags[x * cols + y],
+									grid_->border_size[x * cols + y]);
 		}
 	}
 

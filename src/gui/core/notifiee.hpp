@@ -21,7 +21,7 @@ namespace gui2
 {
 
 template <class T>
-class tnotifier;
+class notifier;
 
 /**
  * Helper class to implement callbacks with lifetime management.
@@ -29,17 +29,17 @@ class tnotifier;
  * This part manages the lifetime off the callback.
  */
 template <class FUNCTOR>
-class tnotifiee
+class notifiee
 {
 public:
-	typedef FUNCTOR tfunctor;
-	friend class tnotifier<tfunctor>;
+	typedef FUNCTOR functor_t;
+	friend class notifier<functor_t>;
 
-	tnotifiee() : notifier_(nullptr)
+	notifiee() : notifier_(nullptr)
 	{
 	}
 
-	~tnotifiee()
+	~notifiee()
 	{
 		if(notifier_) {
 			notifier_->disconnect_notifiee(*this);
@@ -47,8 +47,8 @@ public:
 	}
 
 private:
-	/** Pointer the the tnotifier that's linked to us. */
-	tnotifier<tfunctor>* notifier_;
+	/** Pointer the the notifier that's linked to us. */
+	notifier<functor_t>* notifier_;
 };
 
 } // namespace gui2

@@ -20,43 +20,46 @@
 
 namespace gui2
 {
-class tlabel;
-class ttoggle_button;
+class label;
+class toggle_button;
+namespace dialogs
+{
 
-class tlogging : public tdialog
+class log_settings : public modal_dialog
 {
 public:
 	/** Constructor. */
-	tlogging();
+	log_settings();
 
 	/**
 	 * The display function.
 	 *
-	 * See @ref tdialog for more information.
+	 * See @ref modal_dialog for more information.
 	 */
 	static void display(CVideo& video)
 	{
-		tlogging().show(video);
+		log_settings().show(video);
 	}
 
 
 private:
 	void set_logger(const std::basic_string<char> log_domain);
 
-	std::map<std::string, tgroup<std::string> > groups_;
+	std::map<std::string, group<std::string> > groups_;
 	std::vector<std::string> domain_list_, widget_id_;
 
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	/** Inherited from modal_dialog. */
+	void pre_show(window& window);
 
-	/** Inherited from tdialog. */
-	void post_show(twindow& window);
+	/** Inherited from modal_dialog. */
+	void post_show(window& window);
 
 };
 
+} // namespace dialogs
 } // end namespace gui2
 
 #endif

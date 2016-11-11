@@ -14,7 +14,7 @@
 
 /**
  * @file
- * Contains the exceptions throw by the @ref gui2::iterator::titerator classes.
+ * Contains the exceptions throw by the @ref gui2::iterator::iterator classes.
  */
 
 #ifndef GUI_WIDGETS_AUXILIARY_ITERATOR_EXCEPTION_HPP_INCLUDED
@@ -36,17 +36,17 @@ namespace iterator
  *
  * Invalid means the initial state at_end() == true.
  */
-class tlogic_error : public std::logic_error, public tlua_jailbreak_exception
+class logic_error : public std::logic_error, public lua_jailbreak_exception
 {
 public:
-	explicit tlogic_error(const std::string& message)
+	explicit logic_error(const std::string& message)
 		: std::logic_error("GUI2 ITERATOR: " + message)
-		, tlua_jailbreak_exception()
+		, lua_jailbreak_exception()
 	{
 	}
 
 private:
-	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(tlogic_error)
+	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(logic_error)
 };
 
 /**
@@ -54,17 +54,17 @@ private:
  *
  * Invalid means the initial state at_end() == true.
  */
-class trange_error : public std::range_error, public tlua_jailbreak_exception
+class range_error : public std::range_error, public lua_jailbreak_exception
 {
 public:
-	explicit trange_error(const std::string& message)
+	explicit range_error(const std::string& message)
 		: std::range_error("GUI2 ITERATOR: " + message)
-		, tlua_jailbreak_exception()
+		, lua_jailbreak_exception()
 	{
 	}
 
 private:
-	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(trange_error)
+	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(range_error)
 };
 
 } // namespace iterator

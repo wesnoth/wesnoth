@@ -139,7 +139,7 @@ private:
 	std::string host_;
 	std::string port_;
 	network_asio::connection* conn_;
-	gui2::tnetwork_transmission* stat_;
+	gui2::dialogs::network_transmission* stat_;
 	std::string last_error_;
 
 	/** Makes sure the add-ons server connection is working. */

@@ -16,28 +16,28 @@
 
 #include <cassert>
 
-tlua_jailbreak_exception *tlua_jailbreak_exception::jailbreak_exception = nullptr;
+lua_jailbreak_exception *lua_jailbreak_exception::jailbreak_exception = nullptr;
 
-void tlua_jailbreak_exception::store() const throw()
+void lua_jailbreak_exception::store() const throw()
 {
 	/*
 	 * It should not be  possible to call this function with an exception still
 	 * pending. It could happen if the code doesn't call
-	 * tlua_jailbreak_exception::rethrow() or a logic error in the code.
+	 * lua_jailbreak_exception::rethrow() or a logic error in the code.
 	 */
 	assert(!jailbreak_exception);
 
 	jailbreak_exception = this->clone();
 }
 
-void tlua_jailbreak_exception::rethrow()
+void lua_jailbreak_exception::rethrow()
 {
 	if(!jailbreak_exception) {
 		return;
 	}
 
 	/*
-	 * We need to call tlua_jailbreak_exception::clear() after the exception
+	 * We need to call lua_jailbreak_exception::clear() after the exception
 	 * is thrown. The most straightforward approach would be a small helper
 	 * class calling clear in its destructor, but alas g++ then complains about
 	 * an unused variable. Since we're sure there will be something thrown use
@@ -54,7 +54,7 @@ void tlua_jailbreak_exception::rethrow()
 	assert(false);
 }
 
-void tlua_jailbreak_exception::clear() throw()
+void lua_jailbreak_exception::clear() throw()
 {
 	delete jailbreak_exception;
 	jailbreak_exception = nullptr;

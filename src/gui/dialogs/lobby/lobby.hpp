@@ -28,51 +28,54 @@ class display;
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 #include "gui/widgets/list.hpp"
 #endif
-class twesnothd_connection;
+class wesnothd_connection;
 namespace gui2
 {
 
-class tgrid;
-class tlabel;
+class grid;
+class label;
 #ifndef GUI2_EXPERIMENTAL_LISTBOX
-class tlistbox;
+class listbox;
 #endif
-class ttext_box;
-class twindow;
-class tmulti_page;
-class ttoggle_button;
-class tchatbox;
+class text_box;
+class window;
+class multi_page;
+class toggle_button;
+class chatbox;
 
-struct tsub_player_list
+namespace dialogs
 {
-	void init(twindow& w, const std::string& label, const bool unfolded = false);
+
+struct sub_player_list
+{
+	void init(window& w, const std::string& label, const bool unfolded = false);
 	void update_player_count_label();
-	ttree_view_node* tree;
-	tlabel* tree_label;
-	tlabel* label_player_count;
+	tree_view_node* tree;
+	label* tree_label;
+	label* label_player_count;
 };
 
-struct tplayer_list
+struct player_list
 {
-	void init(twindow& w);
+	void init(window& w);
 	void update_sort_icons();
-	tsub_player_list active_game;
-	tsub_player_list active_room;
-	tsub_player_list other_rooms;
-	tsub_player_list other_games;
+	sub_player_list active_game;
+	sub_player_list active_room;
+	sub_player_list other_rooms;
+	sub_player_list other_games;
 
-	ttoggle_button* sort_by_name;
-	ttoggle_button* sort_by_relation;
+	toggle_button* sort_by_name;
+	toggle_button* sort_by_relation;
 
-	ttree_view* tree;
+	tree_view* tree;
 };
 
-class tlobby_main : public tdialog, public quit_confirmation, private plugin_executor
+class lobby_main : public modal_dialog, public quit_confirmation, private plugin_executor
 {
 public:
-	tlobby_main(const config& game_config, lobby_info& info, twesnothd_connection &wesnothd_connection);
+	lobby_main(const config& game_config, lobby_info& info, wesnothd_connection &connection);
 
-	~tlobby_main();
+	~lobby_main();
 
 	/**
 	 * Set the callback used to show the preferences.
@@ -93,7 +96,7 @@ protected:
 
 	std::map<std::string, string_map> make_game_row_data(const game_info& game);
 
-	void adjust_game_row_contents(const game_info& game, int idx, tgrid* grid);
+	void adjust_game_row_contents(const game_info& game, int idx, grid* grid);
 
 public:
 	void update_playerlist();
@@ -105,8 +108,8 @@ public:
 		CREATE
 	};
 
-	void do_notify(t_notify_mode mode) { do_notify(mode, "", ""); }
-	void do_notify(t_notify_mode mode, const std::string & sender, const std::string & message) { do_mp_notify(mode, sender, message); }
+	void do_notify(notify_mode mode) { do_notify(mode, "", ""); }
+	void do_notify(notify_mode mode, const std::string & sender, const std::string & message) { do_mp_notify(mode, sender, message); }
 
 protected:
 
@@ -124,9 +127,9 @@ private:
 
 	void process_gamelist_diff(const config& data);
 
-	void join_global_button_callback(twindow& window);
+	void join_global_button_callback(window& window);
 
-	void observe_global_button_callback(twindow& window);
+	void observe_global_button_callback(window& window);
 
 	void join_or_observe(int index);
 
@@ -138,23 +141,23 @@ private:
 	 */
 	bool do_game_join(int idx, bool observe);
 
-	void show_preferences_button_callback(twindow& window);
+	void show_preferences_button_callback(window& window);
 
-	void refresh_button_callback(twindow& window);
+	void refresh_button_callback(window& window);
 
 	void game_filter_reload();
 
-	void game_filter_change_callback(twidget& widget);
+	void game_filter_change_callback(widget& widget);
 
 	void game_filter_keypress_callback(const SDL_Keycode key);
 
-	void gamelist_change_callback(twindow& window);
+	void gamelist_change_callback(window& window);
 
-	void player_filter_callback(twidget& widget);
+	void player_filter_callback(widget& widget);
 
 	void user_dialog_callback(user_info* info);
 
-	void skip_replay_changed_callback(twindow& window);
+	void skip_replay_changed_callback(window& window);
 
 	void signal_handler_key_down(SDL_Keycode key, bool& handled, bool& halt);
 
@@ -162,43 +165,43 @@ private:
 
 	int get_game_index_from_id(const int game_id) const;
 
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const override;
 
-	/** Inherited from tdialog. */
-	virtual void post_build(twindow& window) override;
+	/** Inherited from modal_dialog. */
+	virtual void post_build(window& window) override;
 
-	/** Inherited from tdialog. */
-	void pre_show(twindow& window) override;
+	/** Inherited from modal_dialog. */
+	void pre_show(window& window) override;
 
-	/** Inherited from tdialog. */
-	void post_show(twindow& window) override;
+	/** Inherited from modal_dialog. */
+	void post_show(window& window) override;
 
 	const config& game_config_;
 
-	tlistbox* gamelistbox_;
+	listbox* gamelistbox_;
 
-	twindow* window_;
+	window* window_;
 
 	lobby_info& lobby_info_;
 
-	tchatbox* chatbox_;
+	chatbox* chatbox_;
 
 	std::function<void()> preferences_callback_;
 
-	ttoggle_button* filter_friends_;
+	toggle_button* filter_friends_;
 
-	ttoggle_button* filter_ignored_;
+	toggle_button* filter_ignored_;
 
-	ttoggle_button* filter_slots_;
+	toggle_button* filter_slots_;
 
-	ttoggle_button* filter_invert_;
+	toggle_button* filter_invert_;
 
-	ttext_box* filter_text_;
+	text_box* filter_text_;
 
 	int selected_game_id_;
 
-	tplayer_list player_list_;
+	player_list player_list_;
 
 	bool player_list_dirty_;
 
@@ -208,7 +211,7 @@ private:
 
 	bool gamelist_diff_update_;
 
-	twesnothd_connection &wesnothd_connection_;
+	wesnothd_connection &wesnothd_connection_;
 
 	/** Timer for updating the lobby. */
 	size_t lobby_update_timer_;
@@ -222,6 +225,7 @@ private:
 	friend struct lobby_delay_gamelist_update_guard;
 };
 
+} // namespace dialogs
 } // namespace gui2
 
 #endif

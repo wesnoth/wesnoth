@@ -30,11 +30,13 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
-REGISTER_DIALOG(drop_down_list)
+REGISTER_DIALOG(drop_down_menu)
 
 namespace {
-	void click_callback(twindow& window, bool&, bool&, tpoint coordinate)
+	void click_callback(window& window, bool&, bool&, point coordinate)
 	{
 		/* FIXME: This dialog uses a listbox with 'has_minimum = false'. This allows a listbox to have 0 or more selections,
 		 * and selecting the same entry toggles that entry's state (ie, if it was selected, it will be deselected). Because
@@ -43,41 +45,41 @@ namespace {
 		 * In order to work around this, we first manually deselect the selected entry here. This handler is called *before*
 		 * the listbox's click handler, and as such the selected item will remain toggled on when the click handler fires.
 		 */
-		tlistbox& list = find_widget<tlistbox>(&window, "list", true);
+		listbox& list = find_widget<listbox>(&window, "list", true);
 		const int sel = list.get_selected_row();
 		if(sel >= 0) {
 			list.select_row(sel, false);
 		}
 
 		// Disregard clicks if they're on the scrollbar
-		// This check works since this function is called before tscrollbar_'s left-button-up handler
-		if(list.vertical_scrollbar()->get_state() == tscrollbar_::PRESSED) {
+		// This check works since this function is called before scrollbar_base's left-button-up handler
+		if(list.vertical_scrollbar()->get_state() == scrollbar_base::PRESSED) {
 			return;
 		}
 
 		SDL_Rect rect = window.get_rectangle();
 		if(!sdl::point_in_rect(coordinate, rect)) {
-			window.set_retval(twindow::CANCEL);
+			window.set_retval(window::CANCEL);
 		} else {
-			window.set_retval(twindow::OK);
+			window.set_retval(window::OK);
 		}
 	}
 
-	void resize_callback(twindow& window)
+	void resize_callback(window& window)
 	{
-		window.set_retval(twindow::CANCEL);
+		window.set_retval(window::CANCEL);
 		window.close();
 	}
 }
 
-void tdrop_down_list::pre_show(twindow& window)
+void drop_down_menu::pre_show(window& window)
 {
 	window.set_variable("button_x", variant(button_pos_.x));
 	window.set_variable("button_y", variant(button_pos_.y));
 	window.set_variable("button_w", variant(button_pos_.w));
 	window.set_variable("button_h", variant(button_pos_.h));
 
-	tlistbox& list = find_widget<tlistbox>(&window, "list", true);
+	listbox& list = find_widget<listbox>(&window, "list", true);
 
 	std::map<std::string, string_map> data;
 	string_map item;
@@ -100,17 +102,17 @@ void tdrop_down_list::pre_show(twindow& window)
 			data.emplace("details", item);
 		}
 
-		tgrid& new_row = list.add_row(data);
+		grid& new_row = list.add_row(data);
 
 		// Set the tooltip on the whole panel
-		find_widget<ttoggle_panel>(&new_row, "panel", false).set_tooltip(entry["tooltip"]);
+		find_widget<toggle_panel>(&new_row, "panel", false).set_tooltip(entry["tooltip"]);
 
 		if(entry.has_attribute("image")) {
-			timage* img = new timage;
+			image* img = new image;
 			img->set_definition("default");
 			img->set_label(entry["image"]);
 
-			tgrid* mi_grid = dynamic_cast<tgrid*>(new_row.find("menu_item", false));
+			grid* mi_grid = dynamic_cast<grid*>(new_row.find("menu_item", false));
 			if(mi_grid) {
 				delete mi_grid->swap_child("label", img, false);
 			}
@@ -124,15 +126,16 @@ void tdrop_down_list::pre_show(twindow& window)
 	window.keyboard_capture(&list);
 
 	// Dismiss on click outside the window
-	window.connect_signal<event::SDL_LEFT_BUTTON_UP>(std::bind(&click_callback, std::ref(window), _3, _4, _5), event::tdispatcher::front_child);
+	window.connect_signal<event::SDL_LEFT_BUTTON_UP>(std::bind(&click_callback, std::ref(window), _3, _4, _5), event::dispatcher::front_child);
 
 	// Dismiss on resize
-	window.connect_signal<event::SDL_VIDEO_RESIZE>(std::bind(&resize_callback, std::ref(window)), event::tdispatcher::front_child);
+	window.connect_signal<event::SDL_VIDEO_RESIZE>(std::bind(&resize_callback, std::ref(window)), event::dispatcher::front_child);
 }
 
-void tdrop_down_list::post_show(twindow& window)
+void drop_down_menu::post_show(window& window)
 {
-	selected_item_ = find_widget<tlistbox>(&window, "list", true).get_selected_row();
+	selected_item_ = find_widget<listbox>(&window, "list", true).get_selected_row();
 }
 
+} // namespace dialogs
 } // namespace gui2

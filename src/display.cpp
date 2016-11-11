@@ -1156,26 +1156,26 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 	return res;
 }
 
-void display::drawing_buffer_add(const tdrawing_layer layer,
+void display::drawing_buffer_add(const drawing_layer layer,
 		const map_location& loc, int x, int y, const surface& surf,
 		const SDL_Rect &clip)
 {
-	drawing_buffer_.push_back(tblit(layer, loc, x, y, surf, clip));
+	drawing_buffer_.push_back(blit_helper(layer, loc, x, y, surf, clip));
 }
 
-void display::drawing_buffer_add(const tdrawing_layer layer,
+void display::drawing_buffer_add(const drawing_layer layer,
 		const map_location& loc, int x, int y,
 		const std::vector<surface> &surf,
 		const SDL_Rect &clip)
 {
-	drawing_buffer_.push_back(tblit(layer, loc, x, y, surf, clip));
+	drawing_buffer_.push_back(blit_helper(layer, loc, x, y, surf, clip));
 }
 
 // FIXME: temporary method. Group splitting should be made
-// public into the definition of tdrawing_layer
+// public into the definition of drawing_layer
 //
 // The drawing is done per layer_group, the range per group is [low, high).
-const display::tdrawing_layer display::drawing_buffer_key::layer_groups[] = {
+const display::drawing_layer display::drawing_buffer_key::layer_groups[] = {
 	LAYER_TERRAIN_BG,
 	LAYER_UNIT_FIRST,
 	LAYER_UNIT_MOVE_DEFAULT,
@@ -1185,7 +1185,7 @@ const display::tdrawing_layer display::drawing_buffer_key::layer_groups[] = {
 };
 
 // no need to change this if layer_groups above is changed
-const unsigned int display::drawing_buffer_key::max_layer_group = sizeof(display::drawing_buffer_key::layer_groups) / sizeof(display::tdrawing_layer) - 2;
+const unsigned int display::drawing_buffer_key::max_layer_group = sizeof(display::drawing_buffer_key::layer_groups) / sizeof(display::drawing_layer) - 2;
 
 enum {
 	// you may adjust the following when needed:
@@ -1210,7 +1210,7 @@ enum {
 	BITS_FOR_X_OVER_2    = 9
 };
 
-inline display::drawing_buffer_key::drawing_buffer_key(const map_location &loc, tdrawing_layer layer)
+inline display::drawing_buffer_key::drawing_buffer_key(const map_location &loc, drawing_layer layer)
 	: key_(0)
 {
 	// max_layer_group + 1 is the last valid entry in layer_groups, but it is always > layer
@@ -1257,10 +1257,10 @@ void display::drawing_buffer_commit()
 	 * avoid decapitation a unit.
 	 *
 	 * This ended in the following priority order:
-	 * layergroup > location > layer > 'tblit' > surface
+	 * layergroup > location > layer > 'blit_helper' > surface
 	 */
 
-	for (const tblit &blit : drawing_buffer_) {
+	for (const blit_helper &blit : drawing_buffer_) {
 		for (const surface& surf : blit.surf()) {
 			// Note that dstrect can be changed by sdl_blit
 			// and so a new instance should be initialized
@@ -1483,7 +1483,7 @@ static void draw_background(surface screen, const SDL_Rect& area, const std::str
 }
 
 void display::draw_text_in_hex(const map_location& loc,
-		const tdrawing_layer layer, const std::string& text,
+		const drawing_layer layer, const std::string& text,
 		size_t font_size, SDL_Color color, double x_in_hex, double y_in_hex)
 {
 	if (text.empty()) return;
@@ -1507,7 +1507,7 @@ void display::draw_text_in_hex(const map_location& loc,
 }
 
 //TODO: convert this to use sdl::ttexture
-void display::render_image(int x, int y, const display::tdrawing_layer drawing_layer,
+void display::render_image(int x, int y, const display::drawing_layer drawing_layer,
 		const map_location& loc, surface image,
 		bool hreverse, bool greyscale, fixed_t alpha,
 		Uint32 blendto, double blend_ratio, double submerged, bool vreverse)
@@ -2870,10 +2870,10 @@ void display::refresh_report(const std::string& report_name, const config * new_
 			if (used_ellipsis) goto skip_element;
 
 			// Draw a text element.
-			font::ttext text;
+			font::pango_text text;
 			if (item->font_rgb_set()) {
 				// font_rgb() has no alpha channel and uses a 0x00RRGGBB
-				// layout instead of 0xRRGGBBAA which is what ttext expects,
+				// layout instead of 0xRRGGBBAA which is what pango_text expects,
 				// so shift the value to the left and add fully-opaque alpha.
 				text.set_foreground_color((item->font_rgb() << 8) + 0xFF);
 			}
@@ -3252,7 +3252,7 @@ void display::handle_window_event(const SDL_Event& event) {
 }
 
 void display::handle_event(const SDL_Event& event) {
-	if (gui2::tloadscreen::displaying()) {
+	if (gui2::dialogs::loading_screen::displaying()) {
 		return;
 	}
 	if (event.type == DRAW_ALL_EVENT) {

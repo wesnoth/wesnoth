@@ -89,7 +89,7 @@ namespace gui2
  * @end{parent}{name=generic/widget_definition/}
  */
 
-tresolution_definition_::tresolution_definition_(const config& cfg)
+resolution_definition::resolution_definition(const config& cfg)
 	: window_width(cfg["window_width"])
 	, window_height(cfg["window_height"])
 	, min_width(cfg["min_width"])
@@ -132,12 +132,12 @@ tresolution_definition_::tresolution_definition_(const config& cfg)
  * @end{tag}{name=widget_definition}
  * @end{parent}{name="generic/"}
  */
-tcontrol_definition::tcontrol_definition(const config& cfg)
+styled_widget_definition::styled_widget_definition(const config& cfg)
 	: id(cfg["id"]), description(cfg["description"].t_str()), resolutions()
 {
-	VALIDATE(!id.empty(), missing_mandatory_wml_key("control", "id"));
+	VALIDATE(!id.empty(), missing_mandatory_wml_key("styled_widget", "id"));
 	VALIDATE(!description.empty(),
-			 missing_mandatory_wml_key("control", "description"));
+			 missing_mandatory_wml_key("styled_widget", "description"));
 
 	/*
 	 * Do this validation here instead of in load_resolutions so the

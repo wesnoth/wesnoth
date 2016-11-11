@@ -26,10 +26,12 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
-REGISTER_DIALOG(logging)
+REGISTER_DIALOG(log_settings)
 
-tlogging::tlogging()
+log_settings::log_settings()
 {
 	//list of names must match those in logging.cfg
 	widget_id_.push_back("err");
@@ -50,11 +52,11 @@ tlogging::tlogging()
 	}
 }
 
-void tlogging::pre_show(twindow& window)
+void log_settings::pre_show(window& window)
 {
 	set_restore(true); //why is this done manually?
 
-	tlistbox& logger_box = find_widget<tlistbox>(&window, "logger_listbox", false);
+	listbox& logger_box = find_widget<listbox>(&window, "logger_listbox", false);
 
 	for(unsigned int i = 0; i < domain_list_.size(); i++){
 		std::string this_domain = domain_list_[i];
@@ -65,12 +67,12 @@ void tlogging::pre_show(twindow& window)
 		data["label"] = item;
 
 		logger_box.add_row(data);
-		tgroup<std::string>& group = groups_[this_domain];
+		group<std::string>& group = groups_[this_domain];
 
-		tgrid* this_grid = logger_box.get_row_grid(i);
+		grid* this_grid = logger_box.get_row_grid(i);
 		for(std::string this_id : widget_id_){
-			twidget* this_widget = this_grid->find(this_id, false);
-			ttoggle_button* button = dynamic_cast<ttoggle_button*>(this_widget);
+			widget* this_widget = this_grid->find(this_id, false);
+			toggle_button* button = dynamic_cast<toggle_button*>(this_widget);
 			if(button != nullptr) {
 				group.add_member(button, this_id);
 			}
@@ -82,14 +84,14 @@ void tlogging::pre_show(twindow& window)
 	}
 }
 
-void tlogging::post_show(twindow& /*window*/)
+void log_settings::post_show(window& /*window*/)
 {
 	for(std::string this_domain : domain_list_){
 		set_logger(this_domain);
 	}
 }
 
-void tlogging::set_logger(const std::string log_domain)
+void log_settings::set_logger(const std::string log_domain)
 {
 	std::string active_value = groups_[log_domain].get_active_member_value();
 
@@ -104,4 +106,5 @@ void tlogging::set_logger(const std::string log_domain)
 	}
 }
 
-} // end namespace gui2
+} // namespace dialogs
+} // namespace gui2

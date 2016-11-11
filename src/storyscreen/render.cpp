@@ -290,14 +290,14 @@ void part_ui::render_title_box()
 	titlebox_y = titlebox_padding;
 	titlebox_max_h = base_rect_.h - 2*titlebox_padding;
 
-	font::ttext t;
+	font::pango_text t;
 	if(!t.set_text(titletxt, true)) {
 		ERR_NG << "Text: Invalid markup in '"
 				<< titletxt << "' rendered as is.\n";
 		t.set_text(titletxt, false);
 	}
 
-	t.set_font_style(font::ttext::STYLE_NORMAL)
+	t.set_font_style(font::pango_text::STYLE_NORMAL)
 		 .set_font_size(titlebox_font_size)
 		 .set_foreground_color(titlebox_font_color)
 		 .set_maximum_width(titlebox_max_w)
@@ -433,7 +433,7 @@ void part_ui::render_story_box()
 
 	skip_ = false;
 	last_key_ = true;
-	font::ttext t;
+	font::pango_text t;
 	bool scan_finished = false;
 	SDL_Rect scan = {0,0,0,0};
 	SDL_Rect dstrect = {0,0,0,0};
@@ -480,7 +480,7 @@ void part_ui::render_story_box()
 					<< p_.text() << "' rendered as is.\n";
 			t.set_text(p_.text(), false);
 		}
-		t.set_font_style(font::ttext::STYLE_NORMAL)
+		t.set_font_style(font::pango_text::STYLE_NORMAL)
 				.set_alignment(story_text_alignment)
 				.set_font_size(storybox_font_size)
 				.set_foreground_color(storybox_font_color)
@@ -572,7 +572,7 @@ void part_ui::render_story_box()
 			//dstrect.x = text_x_;
 			dstrect.y = fix_text_y + scan.y + storybox_padding;
 			// NOTE: ::blit_surface() screws up with antialiasing and hinting when
-			//       on backgroundless (e.g. black) screens; ttext::draw()
+			//       on backgroundless (e.g. black) screens; pango_text::draw()
 			//       uses it nonetheless, no idea why...
 			//       Here we'll use CVideo::blit_surface() instead.
 			video_.blit_surface(dstrect.x, dstrect.y, txtsurf, &scan);

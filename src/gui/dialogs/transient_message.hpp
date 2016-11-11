@@ -19,12 +19,14 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /** Shows a transient message. */
-class ttransient_message : public tdialog
+class transient_message : public modal_dialog
 {
 public:
-	ttransient_message(const std::string& title,
+	transient_message(const std::string& title,
 					   const bool title_use_markup,
 					   const std::string& message,
 					   const bool message_use_markup,
@@ -34,12 +36,13 @@ private:
 	bool hide_title_;
 	bool hide_image_;
 
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tdialog. */
-	virtual void pre_show(twindow& window);
+	/** Inherited from modal_dialog. */
+	virtual void pre_show(window& window);
 };
+} // namespace dialogs
 
 /**
  * Shows a transient message to the user.

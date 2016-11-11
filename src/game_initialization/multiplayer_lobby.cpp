@@ -34,7 +34,7 @@
 #include "gui/auxiliary/old_markup.hpp"
 #include "gui/dialogs/message.hpp" // for gui2::show_message
 #include "gui/dialogs/multiplayer/mp_join_game_password_prompt.hpp"
-#include "gui/widgets/window.hpp" // for gui2::twindow::OK
+#include "gui/widgets/window.hpp" // for gui2::window::OK
 #include "lobby_reload_request_exception.hpp"
 #include "log.hpp"
 #include "sound.hpp"
@@ -548,7 +548,7 @@ void gamebrowser::populate_game_item_campaign_or_scenario_info(gamebrowser::game
 			assert(difficulties.size() == difficulty_options.size());
 			for (const std::string& difficulty : difficulties) {
 				if (difficulty == game["difficulty_define"]) {
-					gui2::tlegacy_menu_item menu_item(difficulty_options[index]);
+					gui2::legacy_menu_item menu_item(difficulty_options[index]);
 					item.map_info += " — ";
 					item.map_info += menu_item.label();
 					item.map_info += " ";
@@ -625,7 +625,7 @@ void gamebrowser::populate_game_item_map_info(gamebrowser::game_item & item, con
 		} catch (incorrect_map_format_error &e) {
 			ERR_CF << "illegal map: " << e.message << '\n';
 			verified = false;
-		} catch(twml_exception& e) {
+		} catch(wml_exception& e) {
 			ERR_CF <<  "map could not be loaded: " << e.dev_message << '\n';
 			verified = false;
 		}
@@ -1025,8 +1025,8 @@ bool lobby::lobby_sorter::less(int column, const gui::menu::item& row1, const gu
 	return basic_sorter::less(column,row1,row2);
 }
 
-lobby::lobby(CVideo& v, twesnothd_connection* wesnothd_connection, const config& cfg, chat& c, config& gamelist, const std::vector<std::string> & installed_addons) :
-	mp::ui(v, wesnothd_connection, _("Game Lobby"), cfg, c, gamelist),
+lobby::lobby(CVideo& v, wesnothd_connection* connection, const config& cfg, chat& c, config& gamelist, const std::vector<std::string> & installed_addons) :
+	mp::ui(v, connection, _("Game Lobby"), cfg, c, gamelist),
 
 	current_turn(0),
 	game_vacant_slots_(),
@@ -1205,7 +1205,7 @@ static void handle_addon_requirements_gui(CVideo & v, const std::vector<required
 				err_msg += "\n";
 			}
 		}
-		gui2::show_message(v, e_title, err_msg, gui2::tmessage::auto_close);
+		gui2::show_message(v, e_title, err_msg, gui2::dialogs::message::auto_close);
 	} else if (addon_outcome == NEED_DOWNLOAD) {
 		std::string e_title = _("Missing user-made content.");
 		std::string err_msg = _("This game requires one or more user-made addons to be installed or updated in order to join. Do you want to try to install them?");
@@ -1227,7 +1227,7 @@ static void handle_addon_requirements_gui(CVideo & v, const std::vector<required
 		}
 		assert(needs_download.size() > 0);
 
-		if (gui2::show_message(v, e_title, err_msg, gui2::tmessage::yes_no_buttons) == gui2::twindow::OK) {
+		if (gui2::show_message(v, e_title, err_msg, gui2::dialogs::message::yes_no_buttons) == gui2::window::OK) {
 			ad_hoc_addon_fetch_session(v, needs_download);
 			throw lobby_reload_request_exception();
 		}
@@ -1284,7 +1284,7 @@ void lobby::process_event_impl(const process_event_data & data)
 
 			std::string password;
 			if(join && game.password_required) {
-				if(!gui2::tmp_join_game_password_prompt::execute(password, video())) {
+				if(!gui2::dialogs::mp_join_game_password_prompt::execute(password, video())) {
 					return;
 				}
 			}

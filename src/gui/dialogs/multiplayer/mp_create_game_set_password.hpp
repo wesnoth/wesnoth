@@ -19,8 +19,10 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
-class tmp_create_game_set_password : public tdialog
+class mp_create_game_set_password : public modal_dialog
 {
 public:
 	/**
@@ -29,22 +31,23 @@ public:
 	 * @param [in, out] password  The parameter's usage is:
 	 *                            - Input: The initial value for the password.
 	 *                            - Output: The password selected by the user
-	 *                              if the dialog returns @ref twindow::OK
+	 *                              if the dialog returns @ref window::OK
 	 *                              undefined otherwise.
 	 */
-	explicit tmp_create_game_set_password(std::string& password);
+	explicit mp_create_game_set_password(std::string& password);
 
-	/** The excute function see @ref tdialog for more information. */
+	/** The excute function see @ref modal_dialog for more information. */
 	static bool execute(std::string& password, CVideo& video)
 	{
-		return tmp_create_game_set_password(password).show(video);
+		return mp_create_game_set_password(password).show(video);
 	}
 
 private:
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 };
 
+} // namespace dialogs
 } // namespace gui2
 
 #endif /* ! GUI_DIALOGS_MP_CREATE_GAME_SET_PASSWORD_HPP_INCLUDED */

@@ -30,7 +30,7 @@
 #include "generators/map_generator.hpp" // for mapgen_exception
 #include "gettext.hpp"                  // for _
 #include "gui/dialogs/end_credits.hpp"
-#include "gui/dialogs/language_selection.hpp"  // for tlanguage_selection
+#include "gui/dialogs/language_selection.hpp"  // for language_selection
 #include "gui/dialogs/loadscreen.hpp"
 #include "gui/dialogs/message.hpp" //for show error message
 #include "gui/dialogs/multiplayer/mp_host_game_prompt.hpp" //for host game prompt
@@ -39,7 +39,7 @@
 #include "gui/dialogs/transient_message.hpp"  // for show_transient_message
 #include "gui/dialogs/title_screen.hpp"  // for show_debug_clock_button
 #include "gui/widgets/settings.hpp"     // for new_widgets
-#include "gui/widgets/window.hpp"       // for twindow, etc
+#include "gui/widgets/window.hpp"       // for window, etc
 #include "intro.hpp"
 #include "language.hpp"                 // for language_def, etc
 #include "log.hpp"                      // for LOG_STREAM, logger, general, etc
@@ -59,7 +59,7 @@
 #include "util.hpp"                     // for lexical_cast_default
 #include "video.hpp"                    // for CVideo
 #include "wesnothd_connection_error.hpp"
-#include "wml_exception.hpp"            // for twml_exception
+#include "wml_exception.hpp"            // for wml_exception
 
 #include <algorithm>                    // for copy, max, min, stable_sort
 #include <boost/optional.hpp>           // for optional
@@ -170,7 +170,7 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts, const char
 		}
 	}
 	if (cmdline_opts_.clock)
-		gui2::show_debug_clock_button = true;
+		gui2::dialogs::show_debug_clock_button = true;
 	if (cmdline_opts_.debug) {
 		game_config::debug = true;
 		game_config::mp_debug = true;
@@ -531,7 +531,7 @@ int game_launcher::unit_test()
 		if (!(res == LEVEL_RESULT::VICTORY) || lg::broke_strict()) {
 			return 1;
 		}
-	} catch(twml_exception& e) {
+	} catch(wml_exception& e) {
 		std::cerr << "Caught WML Exception:" << e.dev_message << std::endl;
 		return 1;
 	}
@@ -558,7 +558,7 @@ int game_launcher::unit_test()
 			std::cerr << "Observed failure on replay" << std::endl;
 			return 4;
 		}
-	} catch(twml_exception& e) {
+	} catch(wml_exception& e) {
 		std::cerr << "WML Exception while playing replay: " << e.dev_message << std::endl;
 		return 4; //failed with an error during the replay
 	}
@@ -652,7 +652,7 @@ bool game_launcher::load_game()
 			gui2::show_error_message(video(), _("The file you have tried to load is corrupt: '") + e.message + '\'');
 		}
 		return false;
-	} catch(twml_exception& e) {
+	} catch(wml_exception& e) {
 		e.show(video());
 		return false;
 	} catch(filesystem::io_exception& e) {
@@ -876,7 +876,7 @@ bool game_launcher::play_multiplayer(mp_selection res)
 	} catch (savegame::load_game_exception & e) {
 		load_data_.reset(new savegame::load_game_metadata(std::move(e.data_)));
 		//this will make it so next time through the title screen loop, this game is loaded
-	} catch(twml_exception& e) {
+	} catch(wml_exception& e) {
 		e.show(video());
 	} catch (game::error & e) {
 		std::cerr << "caught game::error...\n";
@@ -912,9 +912,9 @@ bool game_launcher::play_multiplayer_commandline()
 
 bool game_launcher::change_language()
 {
-	gui2::tlanguage_selection dlg;
+	gui2::dialogs::language_selection dlg;
 	dlg.show(video());
-	if (dlg.get_retval() != gui2::twindow::OK) return false;
+	if (dlg.get_retval() != gui2::window::OK) return false;
 
 	if (!(cmdline_opts_.nogui || cmdline_opts_.headless_unit_test)) {
 		video().set_window_title(game_config::get_default_title_string());
@@ -925,7 +925,7 @@ bool game_launcher::change_language()
 
 void game_launcher::show_preferences()
 {
-	gui2::tpreferences::display(video(),  game_config_manager::get()->game_config());
+	gui2::dialogs::preferences_dialog::display(video(),  game_config_manager::get()->game_config());
 }
 
 void game_launcher::launch_game(RELOAD_GAME_DATA reload)
@@ -937,9 +937,9 @@ void game_launcher::launch_game(RELOAD_GAME_DATA reload)
 		return;
 	}
 
-	gui2::tloadscreen::display(video(), [this, reload]() {
+	gui2::dialogs::loading_screen::display(video(), [this, reload]() {
 
-		gui2::tloadscreen::progress("load data");
+		gui2::dialogs::loading_screen::progress("load data");
 		if(reload == RELOAD_DATA) {
 			try {
 				game_config_manager::get()->
@@ -959,13 +959,13 @@ void game_launcher::launch_game(RELOAD_GAME_DATA reload)
 			preferences::add_completed_campaign(state_.classification().campaign, state_.classification().difficulty);
 			the_end(video(), state_.classification().end_text, state_.classification().end_text_duration);
 			if(state_.classification().end_credits) {
-				gui2::tend_credits::display(video(), state_.classification().campaign);
+				gui2::dialogs::end_credits::display(video(), state_.classification().campaign);
 			}
 		}
 	} catch (savegame::load_game_exception &e) {
 		load_data_.reset(new savegame::load_game_metadata(std::move(e.data_)));
 		//this will make it so next time through the title screen loop, this game is loaded
-	} catch(twml_exception& e) {
+	} catch(wml_exception& e) {
 		e.show(video());
 	} catch(mapgen_exception& e) {
 		gui2::show_error_message(video(), _("Map generator error: ") + e.message);
@@ -981,7 +981,7 @@ void game_launcher::play_replay()
 	} catch (savegame::load_game_exception &e) {
 		load_data_.reset(new savegame::load_game_metadata(std::move(e.data_)));
 		//this will make it so next time through the title screen loop, this game is loaded
-	} catch(twml_exception& e) {
+	} catch(wml_exception& e) {
 		e.show(video());
 	}
 }

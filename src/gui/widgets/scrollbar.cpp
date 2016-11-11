@@ -27,8 +27,8 @@
 namespace gui2
 {
 
-tscrollbar_::tscrollbar_()
-	: tcontrol(COUNT)
+scrollbar_base::scrollbar_base()
+	: styled_widget(COUNT)
 	, state_(ENABLED)
 	, item_count_(0)
 	, item_position_(0)
@@ -40,18 +40,18 @@ tscrollbar_::tscrollbar_()
 	, positioner_length_(0)
 {
 	connect_signal<event::MOUSE_ENTER>(std::bind(
-			&tscrollbar_::signal_handler_mouse_enter, this, _2, _3, _4));
+			&scrollbar_base::signal_handler_mouse_enter, this, _2, _3, _4));
 	connect_signal<event::MOUSE_MOTION>(std::bind(
-			&tscrollbar_::signal_handler_mouse_motion, this, _2, _3, _4, _5));
+			&scrollbar_base::signal_handler_mouse_motion, this, _2, _3, _4, _5));
 	connect_signal<event::MOUSE_LEAVE>(std::bind(
-			&tscrollbar_::signal_handler_mouse_leave, this, _2, _3));
+			&scrollbar_base::signal_handler_mouse_leave, this, _2, _3));
 	connect_signal<event::LEFT_BUTTON_DOWN>(std::bind(
-			&tscrollbar_::signal_handler_left_button_down, this, _2, _3));
+			&scrollbar_base::signal_handler_left_button_down, this, _2, _3));
 	connect_signal<event::LEFT_BUTTON_UP>(std::bind(
-			&tscrollbar_::signal_handler_left_button_up, this, _2, _3));
+			&scrollbar_base::signal_handler_left_button_up, this, _2, _3));
 }
 
-void tscrollbar_::scroll(const tscroll scroll)
+void scrollbar_base::scroll(const scroll_mode scroll)
 {
 	switch(scroll) {
 		case BEGIN:
@@ -99,32 +99,32 @@ void tscrollbar_::scroll(const tscroll scroll)
 	fire(event::NOTIFY_MODIFIED, *this, nullptr);
 }
 
-void tscrollbar_::place(const tpoint& origin, const tpoint& size)
+void scrollbar_base::place(const point& origin, const point& size)
 {
 	// Inherited.
-	tcontrol::place(origin, size);
+	styled_widget::place(origin, size);
 
 	recalculate();
 }
 
-void tscrollbar_::set_active(const bool active)
+void scrollbar_base::set_active(const bool active)
 {
 	if(get_active() != active) {
 		set_state(active ? ENABLED : DISABLED);
 	}
 }
 
-bool tscrollbar_::get_active() const
+bool scrollbar_base::get_active() const
 {
 	return state_ != DISABLED;
 }
 
-unsigned tscrollbar_::get_state() const
+unsigned scrollbar_base::get_state() const
 {
 	return state_;
 }
 
-void tscrollbar_::set_item_position(const unsigned item_position)
+void scrollbar_base::set_item_position(const unsigned item_position)
 {
 	// Set the value always execute since we update a part of the state.
 	item_position_ = item_position > item_count_ - visible_items_
@@ -146,10 +146,10 @@ void tscrollbar_::set_item_position(const unsigned item_position)
 	assert(item_position_ <= item_count_ - visible_items_);
 }
 
-void tscrollbar_::update_canvas()
+void scrollbar_base::update_canvas()
 {
 
-	for(auto & tmp : canvas())
+	for(auto & tmp : get_canvas())
 	{
 		tmp.set_variable("positioner_offset", variant(positioner_offset_));
 		tmp.set_variable("positioner_length", variant(positioner_length_));
@@ -157,7 +157,7 @@ void tscrollbar_::update_canvas()
 	set_is_dirty(true);
 }
 
-void tscrollbar_::set_state(const tstate state)
+void scrollbar_base::set_state(const state_t state)
 {
 	if(state != state_) {
 		state_ = state;
@@ -165,7 +165,7 @@ void tscrollbar_::set_state(const tstate state)
 	}
 }
 
-void tscrollbar_::recalculate()
+void scrollbar_base::recalculate()
 {
 	// We can be called before the size has been set up in that case we can't do
 	// the proper recalcultion so stop before we die with an assert.
@@ -196,7 +196,7 @@ void tscrollbar_::recalculate()
 	 * case. (This hack also added the gui/widgets/window.hpp include.)
 	 */
 	if(!visible_items_) {
-		twindow* window = get_window();
+		window* window = get_window();
 		assert(window);
 		window->invalidate_layout();
 		ERR_GUI_G << LOG_HEADER
@@ -237,7 +237,7 @@ void tscrollbar_::recalculate()
 #endif
 }
 
-void tscrollbar_::recalculate_positioner()
+void scrollbar_base::recalculate_positioner()
 {
 	const unsigned minimum = minimum_positioner_length();
 	const unsigned maximum = maximum_positioner_length();
@@ -251,7 +251,7 @@ void tscrollbar_::recalculate_positioner()
 	}
 }
 
-void tscrollbar_::move_positioner(const int distance)
+void scrollbar_base::move_positioner(const int distance)
 {
 	if(distance < 0 && -distance > static_cast<int>(positioner_offset_)) {
 		positioner_offset_ = 0;
@@ -303,17 +303,17 @@ void tscrollbar_::move_positioner(const int distance)
 	update_canvas();
 }
 
-void tscrollbar_::load_config_extra()
+void scrollbar_base::load_config_extra()
 {
 	// These values won't change so set them here.
-	for(auto & tmp : canvas())
+	for(auto & tmp : get_canvas())
 	{
 		tmp.set_variable("offset_before", variant(offset_before()));
 		tmp.set_variable("offset_after", variant(offset_after()));
 	}
 }
 
-void tscrollbar_::signal_handler_mouse_enter(const event::tevent event,
+void scrollbar_base::signal_handler_mouse_enter(const event::ui_event event,
 											 bool& handled,
 											 bool& halt)
 {
@@ -323,14 +323,14 @@ void tscrollbar_::signal_handler_mouse_enter(const event::tevent event,
 	signal_handler_mouse_motion(event, handled, halt, get_mouse_position());
 }
 
-void tscrollbar_::signal_handler_mouse_motion(const event::tevent event,
+void scrollbar_base::signal_handler_mouse_motion(const event::ui_event event,
 											  bool& handled,
 											  bool& halt,
-											  const tpoint& coordinate)
+											  const point& coordinate)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << " at " << coordinate << ".\n";
 
-	tpoint mouse = coordinate;
+	point mouse = coordinate;
 	mouse.x -= get_x();
 	mouse.y -= get_y();
 
@@ -369,7 +369,7 @@ void tscrollbar_::signal_handler_mouse_motion(const event::tevent event,
 	handled = true;
 }
 
-void tscrollbar_::signal_handler_mouse_leave(const event::tevent event,
+void scrollbar_base::signal_handler_mouse_leave(const event::ui_event event,
 											 bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -381,12 +381,12 @@ void tscrollbar_::signal_handler_mouse_leave(const event::tevent event,
 }
 
 
-void tscrollbar_::signal_handler_left_button_down(const event::tevent event,
+void scrollbar_base::signal_handler_left_button_down(const event::ui_event event,
 												  bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
-	tpoint mouse = get_mouse_position();
+	point mouse = get_mouse_position();
 	mouse.x -= get_x();
 	mouse.y -= get_y();
 
@@ -414,12 +414,12 @@ void tscrollbar_::signal_handler_left_button_down(const event::tevent event,
 	handled = true;
 }
 
-void tscrollbar_::signal_handler_left_button_up(const event::tevent event,
+void scrollbar_base::signal_handler_left_button_up(const event::ui_event event,
 												bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
-	tpoint mouse = get_mouse_position();
+	point mouse = get_mouse_position();
 	mouse.x -= get_x();
 	mouse.y -= get_y();
 

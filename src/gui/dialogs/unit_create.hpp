@@ -28,12 +28,15 @@ class unit_type;
 namespace gui2
 {
 
-class ttext_;
+class text_box_base;
 
-class tunit_create : public tdialog
+namespace dialogs
+{
+
+class unit_create : public modal_dialog
 {
 public:
-	tunit_create();
+	unit_create();
 
 	/** Unit type choice from the user. */
 	const std::string& choice() const
@@ -62,22 +65,23 @@ private:
 
 	std::vector<std::string> last_words_;
 
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	/** Inherited from modal_dialog. */
+	void pre_show(window& window);
 
-	/** Inherited from tdialog. */
-	void post_show(twindow& window);
+	/** Inherited from modal_dialog. */
+	void post_show(window& window);
 
 	/** Callbacks */
-	void list_item_clicked(twindow& window);
-	void filter_text_changed(ttext_* textbox, const std::string& text);
-	void gender_toggle_callback(twindow& window);
+	void list_item_clicked(window& window);
+	void filter_text_changed(text_box_base* textbox, const std::string& text);
+	void gender_toggle_callback(window& window);
 
-	tgroup<unit_race::GENDER> gender_toggle;
+	group<unit_race::GENDER> gender_toggle;
 };
-}
+} // namespace dialogs
+} // namespace gui2
 
 #endif /* ! GUI_DIALOGS_UNIT_CREATE_HPP_INCLUDED */

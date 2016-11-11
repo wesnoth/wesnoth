@@ -32,6 +32,8 @@ static lg::log_domain log_addons_client("addons-client");
 #define LOG_ADDONS LOG_STREAM(info,  log_addons_client)
 #define DBG_ADDONS LOG_STREAM(debug, log_addons_client)
 
+using gui2::dialogs::network_transmission;
+
 addons_client::addons_client(CVideo& v, const std::string& address)
 	: v_(v)
 	, addr_(address)
@@ -294,7 +296,7 @@ void addons_client::send_simple_request(const std::string& request_string, confi
 	request.add_child(request_string);
 	this->send_request(request, response);
 }
-struct read_addon_connection_data : public gui2::tnetwork_transmission::connection_data
+struct read_addon_connection_data : public network_transmission::connection_data
 {
 	read_addon_connection_data(network_asio::connection& conn) : conn_(conn) {}
 	size_t total() override { return conn_.bytes_to_read(); }
@@ -304,7 +306,7 @@ struct read_addon_connection_data : public gui2::tnetwork_transmission::connecti
 	virtual void poll() override { conn_.poll(); }
 	network_asio::connection& conn_;
 };
-struct write_addon_connection_data : public gui2::tnetwork_transmission::connection_data
+struct write_addon_connection_data : public network_transmission::connection_data
 {
 	write_addon_connection_data(network_asio::connection& conn) : conn_(conn) {}
 	size_t total() override { return conn_.bytes_to_write(); }
@@ -317,13 +319,13 @@ struct write_addon_connection_data : public gui2::tnetwork_transmission::connect
 void addons_client::wait_for_transfer_done(const std::string& status_message, bool track_upload)
 {
 	check_connected();
-	std::unique_ptr<gui2::tnetwork_transmission::connection_data> cd;
+	std::unique_ptr<network_transmission::connection_data> cd;
 	if(track_upload)
 		cd.reset(new write_addon_connection_data{ *conn_ });
 	else
 		cd.reset(new read_addon_connection_data{ *conn_ });
 	if(!stat_) {
-		stat_ = new gui2::tnetwork_transmission(*cd, _("Add-ons Manager"), status_message);
+		stat_ = new network_transmission(*cd, _("Add-ons Manager"), status_message);
 	} else {
 		stat_->set_subtitle(status_message);
 		stat_->set_connection_data(*cd);

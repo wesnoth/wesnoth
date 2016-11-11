@@ -23,32 +23,32 @@
 namespace gui2
 {
 
-ttip::ttip(const t_string& text,
+game_tip::game_tip(const t_string& text,
 		   const t_string& source,
 		   const std::string& unit_filter)
 	: text_(text), source_(source), unit_filter_(utils::split(unit_filter))
 {
 }
 
-namespace tips
+namespace tip_of_the_day
 {
 
-std::vector<ttip> load(const config& cfg)
+std::vector<game_tip> load(const config& cfg)
 {
-	std::vector<ttip> result;
+	std::vector<game_tip> result;
 
 	for(const auto & tip : cfg.child_range("tip"))
 	{
 		result.push_back(
-				ttip(tip["text"], tip["source"], tip["encountered_units"]));
+				game_tip(tip["text"], tip["source"], tip["encountered_units"]));
 	}
 
 	return result;
 }
 
-std::vector<ttip> shuffle(const std::vector<ttip>& tips)
+std::vector<game_tip> shuffle(const std::vector<game_tip>& tips)
 {
-	std::vector<ttip> result;
+	std::vector<game_tip> result;
 
 	const std::set<std::string>& units = preferences::encountered_units();
 

@@ -63,8 +63,8 @@ configure::nolock_settings::nolock_settings(CVideo& video)
 {
 
 }
-configure::configure(CVideo& video, twesnothd_connection* wesnothd_connection, const config &cfg, chat& c, config& gamelist, saved_game& game, bool local_players_only) :
-	ui(video, wesnothd_connection, _("Configure Game"), cfg, c, gamelist),
+configure::configure(CVideo& video, wesnothd_connection* connection, const config &cfg, chat& c, config& gamelist, saved_game& game, bool local_players_only) :
+	ui(video, connection, _("Configure Game"), cfg, c, gamelist),
 
 	local_players_only_(local_players_only),
 	tooltip_manager_(video),
@@ -373,7 +373,7 @@ void configure::process_event_impl(const process_event_data & data)
 	}
 
 	if(password_button_.pressed()) {
-		gui2::tmp_create_game_set_password::execute(
+		gui2::dialogs::mp_create_game_set_password::execute(
 				  parameters_.password
 				, video());
 	}

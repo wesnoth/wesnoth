@@ -29,19 +29,23 @@ namespace cursor
 {
 	struct setter;
 }
+
 namespace gui2
 {
 
-class tlabel;
-class twindow;
+class label;
+class window;
 
-class tloadscreen : public tdialog
+namespace dialogs
+{
+
+class loading_screen : public modal_dialog
 {
 public:
 
-	tloadscreen(std::function<void()> f);
+	loading_screen(std::function<void()> f);
 
-	~tloadscreen();
+	~loading_screen();
 
 	static void display(CVideo& video, std::function<void()> f);
 	static bool displaying() { return current_load != nullptr; }
@@ -56,7 +60,7 @@ public:
 	 */
 	void close();
 private:
-	twindow* window_;
+	window* window_;
 	size_t timer_id_;
 	int animation_counter_;
 	std::function<void()> work_;
@@ -65,21 +69,21 @@ private:
 	std::exception_ptr exception_;
 	void clear_timer();
 
-	twindow* build_window(CVideo& video) const;
+	window* build_window(CVideo& video) const;
 
 	virtual const std::string& window_id() const;
 
-	void timer_callback(twindow& window);
+	void timer_callback(window& window);
 
-	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	/** Inherited from modal_dialog. */
+	void pre_show(window& window);
 
-	/** Inherited from tdialog. */
-	void post_show(twindow& window);
+	/** Inherited from modal_dialog. */
+	void post_show(window& window);
 
-	tlabel* progress_stage_label_;
-	tlabel* animation_label_;
-	static tloadscreen* current_load;
+	label* progress_stage_label_;
+	label* animation_label_;
+	static loading_screen* current_load;
 
 #if defined(_MSC_VER) && _MSC_VER < 1900
 	// std::atomic is buggy in MSVC 2013 - doesn't work for cv types
@@ -92,4 +96,5 @@ private:
 	std::map<std::string, t_string>::const_iterator current_visible_stage_;
 };
 
+} // namespace dialogs
 } // namespace gui2

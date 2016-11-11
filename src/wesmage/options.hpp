@@ -26,12 +26,12 @@
 #include <vector>
 
 /** A singleton class containing the parsed command line parameters. */
-struct toptions
+struct cmdline_options
 	: private boost::noncopyable
 {
 private:
 
-	toptions();
+	cmdline_options();
 
 public:
 
@@ -45,18 +45,18 @@ public:
 	 *
 	 * @returns                   The parsed options.
 	 */
-	static const toptions&
+	static const cmdline_options&
 	parse(int argc, char* argv[]);
 
 	/**
 	 * Returns the cached parsed command line parameters.
 	 *
-	 * This function shall only be called after @ref toptions::parse has
+	 * This function shall only be called after @ref cmdline_options::parse has
 	 * been called.
 	 *
 	 * @returns                   The parsed options.
 	 */
-	static const toptions&
+	static const cmdline_options&
 	options();
 
 	/** The filename of the input file. */
@@ -84,13 +84,13 @@ private:
 	 * Helper which contains the single instance of this class.
 	 *
 	 * @param is_initialized      Helper variable to track whether
-	 *                            @ref toptions::parse is only called once
-	 *                            and whether @ref toptions::options isn't
-	 *                            called before @ref toptions::parse.
+	 *                            @ref cmdline_options::parse is only called once
+	 *                            and whether @ref options::options isn't
+	 *                            called before @ref options::parse.
 	 *
 	 * @returns                   The single instance of this class.
 	 */
-	static toptions&
+	static cmdline_options&
 	singleton(const bool is_initialized);
 };
 

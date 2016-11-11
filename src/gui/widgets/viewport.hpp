@@ -25,76 +25,76 @@ namespace gui2
 
 namespace implementation
 {
-struct tbuilder_viewport;
+struct builder_viewport;
 } // namespace implementation
 
-class tgrid;
+class grid;
 
-class tviewport : public twidget
+class viewport : public widget
 {
-	friend struct tviewport_implementation;
+	friend struct viewport_implementation;
 
 public:
 	/** @deprecated use the second overload. */
-	explicit tviewport(twidget& widget);
+	explicit viewport(widget& widget);
 
 private:
-	tviewport(const implementation::tbuilder_viewport& builder,
-			  const tbuilder_widget::treplacements& replacements);
+	viewport(const implementation::builder_viewport& builder,
+			  const builder_widget::replacements_map& replacements);
 
 public:
-	static tviewport* build(const implementation::tbuilder_viewport& builder,
-							const tbuilder_widget::treplacements& replacements);
+	static viewport* build(const implementation::builder_viewport& builder,
+							const builder_widget::replacements_map& replacements);
 
-	~tviewport();
+	~viewport();
 
-	/** See @ref twidget::place. */
-	virtual void place(const tpoint& origin, const tpoint& size) override;
+	/** See @ref widget::place. */
+	virtual void place(const point& origin, const point& size) override;
 
-	/** See @ref twidget::layout_initialise. */
+	/** See @ref widget::layout_initialise. */
 	virtual void layout_initialise(const bool full_initialisation) override;
 
-	/** See @ref twidget::impl_draw_children. */
+	/** See @ref widget::impl_draw_children. */
 	virtual void impl_draw_children(surface& frame_buffer,
 									int x_offset,
 									int y_offset) override;
 
-	/** See @ref twidget::child_populate_dirty_list. */
+	/** See @ref widget::child_populate_dirty_list. */
 	virtual void
-	child_populate_dirty_list(twindow& caller,
-							  const std::vector<twidget*>& call_stack) override;
+	child_populate_dirty_list(window& caller,
+							  const std::vector<widget*>& call_stack) override;
 
-	/** See @ref twidget::request_reduce_width. */
+	/** See @ref widget::request_reduce_width. */
 	virtual void request_reduce_width(const unsigned maximum_width) override;
 
-	/** See @ref twidget::find_at. */
-	virtual twidget* find_at(const tpoint& coordinate,
+	/** See @ref widget::find_at. */
+	virtual widget* find_at(const point& coordinate,
 							 const bool must_be_active) override;
 
-	/** See @ref twidget::find_at. */
-	virtual const twidget* find_at(const tpoint& coordinate,
+	/** See @ref widget::find_at. */
+	virtual const widget* find_at(const point& coordinate,
 								   const bool must_be_active) const override;
 
-	/** See @ref twidget::find. */
-	twidget* find(const std::string& id, const bool must_be_active) override;
+	/** See @ref widget::find. */
+	widget* find(const std::string& id, const bool must_be_active) override;
 
-	/** See @ref twidget::find. */
-	const twidget* find(const std::string& id,
+	/** See @ref widget::find. */
+	const widget* find(const std::string& id,
 						const bool must_be_active) const override;
 
 private:
-	/** See @ref twidget::calculate_best_size. */
-	virtual tpoint calculate_best_size() const override;
+	/** See @ref widget::calculate_best_size. */
+	virtual point calculate_best_size() const override;
 
 public:
-	/** See @ref twidget::disable_click_dismiss. */
+	/** See @ref widget::disable_click_dismiss. */
 	bool disable_click_dismiss() const override;
 
-	/** See @ref twidget::create_walker. */
-	virtual iterator::twalker_* create_walker() override;
+	/** See @ref widget::create_walker. */
+	virtual iterator::walker_base* create_walker() override;
 
 private:
-	twidget& widget_;
+	widget& widget_;
 
 	bool owns_widget_;
 };
@@ -104,15 +104,15 @@ private:
 namespace implementation
 {
 
-struct tbuilder_viewport : public tbuilder_widget
+struct builder_viewport : public builder_widget
 {
-	explicit tbuilder_viewport(const config& cfg);
+	explicit builder_viewport(const config& cfg);
 
-	twidget* build() const;
+	widget* build() const;
 
-	twidget* build(const treplacements& replacements) const;
+	widget* build(const replacements_map& replacements) const;
 
-	tbuilder_widget_ptr widget;
+	builder_widget_ptr widget_;
 };
 
 } // namespace implementation

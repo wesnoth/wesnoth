@@ -57,6 +57,8 @@ const std::string text_feature_off = "<span color='#f00'>&#9679;</span>";
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -87,7 +89,7 @@ namespace gui2
 
 REGISTER_DIALOG(game_version)
 
-tgame_version::tgame_version()
+game_version::game_version()
 	: path_wid_stem_("path_")
 	, copy_wid_stem_("copy_")
 	, browse_wid_stem_("browse_")
@@ -124,7 +126,7 @@ tgame_version::tgame_version()
 	generate_plain_text_report();
 }
 
-void tgame_version::pre_show(twindow& window)
+void game_version::pre_show(window& window)
 {
 	string_map i18n_syms;
 
@@ -132,18 +134,18 @@ void tgame_version::pre_show(twindow& window)
 	// General information.
 	//
 
-	tcontrol& version_label = find_widget<tcontrol>(&window, "version", false);
+	styled_widget& version_label = find_widget<styled_widget>(&window, "version", false);
 	i18n_syms["version"] = game_config::revision;
 	version_label.set_label(VGETTEXT("Version $version", i18n_syms));
 
-	tcontrol& os_label = find_widget<tcontrol>(&window, "os", false);
+	styled_widget& os_label = find_widget<styled_widget>(&window, "os", false);
 	i18n_syms["os"] = desktop::os_version();
 	os_label.set_label(VGETTEXT("Running on $os", i18n_syms));
 
-	tbutton& copy_all = find_widget<tbutton>(&window, "copy_all", false);
+	button& copy_all = find_widget<button>(&window, "copy_all", false);
 	connect_signal_mouse_left_click(
 			copy_all,
-			std::bind(&tgame_version::report_copy_callback, this));
+			std::bind(&game_version::report_copy_callback, this));
 
 	//
 	// Game paths tab.
@@ -154,11 +156,11 @@ void tgame_version::pre_show(twindow& window)
 		const std::string& path_id = path_ent.first;
 		const std::string& path_path = path_ent.second;
 
-		ttext_& path_w
-				= find_widget<ttext_>(&window, path_wid_stem_ + path_id, false);
-		tbutton& copy_w = find_widget<tbutton>(
+		text_box_base& path_w
+				= find_widget<text_box_base>(&window, path_wid_stem_ + path_id, false);
+		button& copy_w = find_widget<button>(
 				&window, copy_wid_stem_ + path_id, false);
-		tbutton& browse_w = find_widget<tbutton>(
+		button& browse_w = find_widget<button>(
 				&window, browse_wid_stem_ + path_id, false);
 
 		path_w.set_value(path_path);
@@ -166,19 +168,19 @@ void tgame_version::pre_show(twindow& window)
 
 		connect_signal_mouse_left_click(
 				copy_w,
-				std::bind(&tgame_version::copy_to_clipboard_callback,
+				std::bind(&game_version::copy_to_clipboard_callback,
 							this,
 							path_path));
 		connect_signal_mouse_left_click(
 				browse_w,
-				std::bind(&tgame_version::browse_directory_callback,
+				std::bind(&game_version::browse_directory_callback,
 							this,
 							path_path));
 
 		if(!desktop::open_object_is_supported()) {
 			// No point in displaying these on platforms that can't do
 			// open_object().
-			browse_w.set_visible(tcontrol::tvisible::invisible);
+			browse_w.set_visible(styled_widget::visibility::invisible);
 		}
 
 		if(!desktop::clipboard::available()) {
@@ -188,15 +190,15 @@ void tgame_version::pre_show(twindow& window)
 	}
 
 #ifndef _WIN32
-	tgrid& w32_options_grid
-			= find_widget<tgrid>(&window, "win32_paths", false);
-	w32_options_grid.set_visible(twidget::tvisible::invisible);
+	grid& w32_options_grid
+			= find_widget<grid>(&window, "win32_paths", false);
+	w32_options_grid.set_visible(widget::visibility::invisible);
 #else
-	tbutton& stderr_button
-			= find_widget<tbutton>(&window, "open_stderr", false);
+	button& stderr_button
+			= find_widget<button>(&window, "open_stderr", false);
 	connect_signal_mouse_left_click(
 			stderr_button,
-			std::bind(&tgame_version::browse_directory_callback,
+			std::bind(&game_version::browse_directory_callback,
 						this,
 						log_path_));
 	stderr_button.set_active(!log_path_.empty());
@@ -208,8 +210,8 @@ void tgame_version::pre_show(twindow& window)
 
 	std::map<std::string, string_map> list_data;
 
-	tlistbox& deps_listbox
-			= find_widget<tlistbox>(&window, "deps_listbox", false);
+	listbox& deps_listbox
+			= find_widget<listbox>(&window, "deps_listbox", false);
 
 	for(const auto & dep : deps_)
 	{
@@ -236,8 +238,8 @@ void tgame_version::pre_show(twindow& window)
 	// Features tab.
 	//
 
-	tlistbox& opts_listbox
-			= find_widget<tlistbox>(&window, "opts_listbox", false);
+	listbox& opts_listbox
+			= find_widget<listbox>(&window, "opts_listbox", false);
 
 	for(const auto & opt : opts_)
 	{
@@ -260,12 +262,12 @@ void tgame_version::pre_show(twindow& window)
 	// Set-up page stack and auxiliary controls last.
 	//
 
-	tstacked_widget& pager
-			= find_widget<tstacked_widget>(&window, "tabs_container", false);
+	stacked_widget& pager
+			= find_widget<stacked_widget>(&window, "tabs_container", false);
 	pager.select_layer(0);
 
-	tlistbox& tab_bar
-			= find_widget<tlistbox>(&window, "tab_bar", false);
+	listbox& tab_bar
+			= find_widget<listbox>(&window, "tab_bar", false);
 
 	window.keyboard_capture(&tab_bar);
 
@@ -274,39 +276,39 @@ void tgame_version::pre_show(twindow& window)
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	connect_signal_notify_modified(tab_bar,
-		std::bind(&tgame_version::tab_switch_callback, *this, std::ref(window)));
+		std::bind(&game_version::tab_switch_callback, *this, std::ref(window)));
 #else
 	tab_bar.set_callback_value_change(
-		dialog_callback<tgame_version, &tgame_version::tab_switch_callback>);
+		dialog_callback<game_version, &game_version::tab_switch_callback>);
 #endif
 }
 
-void tgame_version::tab_switch_callback(twindow& window)
+void game_version::tab_switch_callback(window& window)
 {
-	tstacked_widget& pager
-			= find_widget<tstacked_widget>(&window, "tabs_container", false);
-	tlistbox& tab_bar
-			= find_widget<tlistbox>(&window, "tab_bar", false);
+	stacked_widget& pager
+			= find_widget<stacked_widget>(&window, "tabs_container", false);
+	listbox& tab_bar
+			= find_widget<listbox>(&window, "tab_bar", false);
 
 	pager.select_layer(std::max<int>(0, tab_bar.get_selected_row()));
 }
 
-void tgame_version::browse_directory_callback(const std::string& path)
+void game_version::browse_directory_callback(const std::string& path)
 {
 	desktop::open_object(path);
 }
 
-void tgame_version::copy_to_clipboard_callback(const std::string& path)
+void game_version::copy_to_clipboard_callback(const std::string& path)
 {
 	desktop::clipboard::copy_to_clipboard(path, false);
 }
 
-void tgame_version::report_copy_callback()
+void game_version::report_copy_callback()
 {
 	desktop::clipboard::copy_to_clipboard(report_, false);
 }
 
-void tgame_version::generate_plain_text_report()
+void game_version::generate_plain_text_report()
 {
 	std::ostringstream o;
 
@@ -336,5 +338,5 @@ void tgame_version::generate_plain_text_report()
 	report_ = o.str();
 }
 
-
-} // end namespace gui2
+} // namespace dialogs
+} // namespace gui2

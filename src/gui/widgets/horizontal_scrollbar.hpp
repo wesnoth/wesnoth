@@ -26,10 +26,10 @@ namespace gui2
 // ------------ WIDGET -----------{
 
 /** A horizontal scrollbar. */
-class thorizontal_scrollbar : public tscrollbar_
+class horizontal_scrollbar : public scrollbar_base
 {
 public:
-	thorizontal_scrollbar() : tscrollbar_()
+	horizontal_scrollbar() : scrollbar_base()
 	{
 	}
 
@@ -53,33 +53,33 @@ private:
 	unsigned offset_after() const override;
 
 	/** Inherited from tscrollbar. */
-	bool on_positioner(const tpoint& coordinate) const override;
+	bool on_positioner(const point& coordinate) const override;
 
 	/** Inherited from tscrollbar. */
-	int on_bar(const tpoint& coordinate) const override;
+	int on_bar(const point& coordinate) const override;
 
 	/** Inherited from tscrollbar. */
-	bool in_orthogonal_range(const tpoint& coordinate) const override;
+	bool in_orthogonal_range(const point& coordinate) const override;
 
 	/** Inherited from tscrollbar. */
-	int get_length_difference(const tpoint& original, const tpoint& current) const override
+	int get_length_difference(const point& original, const point& current) const override
 	{
 		return current.x - original.x;
 	}
 
-	/** See @ref tcontrol::get_control_type. */
+	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 };
 
 // }---------- DEFINITION ---------{
 
-struct thorizontal_scrollbar_definition : public tcontrol_definition
+struct horizontal_scrollbar_definition : public styled_widget_definition
 {
-	explicit thorizontal_scrollbar_definition(const config& cfg);
+	explicit horizontal_scrollbar_definition(const config& cfg);
 
-	struct tresolution : public tresolution_definition_
+	struct resolution : public resolution_definition
 	{
-		explicit tresolution(const config& cfg);
+		explicit resolution(const config& cfg);
 
 		unsigned minimum_positioner_length;
 		unsigned maximum_positioner_length;
@@ -94,13 +94,13 @@ struct thorizontal_scrollbar_definition : public tcontrol_definition
 namespace implementation
 {
 
-struct tbuilder_horizontal_scrollbar : public tbuilder_control
+struct builder_horizontal_scrollbar : public builder_styled_widget
 {
-	explicit tbuilder_horizontal_scrollbar(const config& cfg);
+	explicit builder_horizontal_scrollbar(const config& cfg);
 
-	using tbuilder_control::build;
+	using builder_styled_widget::build;
 
-	twidget* build() const;
+	widget* build() const;
 };
 
 } // namespace implementation

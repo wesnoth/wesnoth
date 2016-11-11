@@ -169,7 +169,7 @@ void scenario::set_metadata()
 		data_["description"] = _("Map could not be loaded: ") + e.message;
 
 		ERR_CF << "map could not be loaded: " << e.message << '\n';
-	} catch(twml_exception& e) {
+	} catch(wml_exception& e) {
 		data_["description"] = _("Map could not be loaded.");
 
 		ERR_CF << "map could not be loaded: " << e.dev_message << '\n';
@@ -625,7 +625,7 @@ std::string create_engine::select_campaign_difficulty(int set_value)
 	// If not, let the user pick one from the prompt
 	// We don't pass the difficulties vector here because additional data is required
 	// to constrict the dialog
-	gui2::tcampaign_difficulty dlg(current_level().data());
+	gui2::dialogs::campaign_difficulty dlg(current_level().data());
 	dlg.show(video_);
 
 	selected_campaign_difficulty_ = dlg.selected_difficulty();
@@ -1051,7 +1051,7 @@ void create_engine::init_all_levels()
 					e.message;
 
 				ERR_CF << "map could not be loaded: " << e.message << '\n';
-			} catch (twml_exception&) {
+			} catch (wml_exception&) {
 				add_map = false;
 				dep_index_offset++;
 			}

@@ -27,12 +27,15 @@
 #include "gui/widgets/tree_view_node.hpp"
 #include "gui/widgets/window.hpp"
 
-namespace gui2 {
+namespace gui2
+{
+namespace dialogs
+{
 
-tmp_options_helper::tmp_options_helper(twindow& window, ng::create_engine& create_engine)
+mp_options_helper::mp_options_helper(window& window, ng::create_engine& create_engine)
 	: create_engine_(create_engine)
-	, options_tree_(find_widget<ttree_view>(&window, "custom_options", false))
-	, no_options_notice_(find_widget<tcontrol>(&window, "no_options_notice", false))
+	, options_tree_(find_widget<tree_view>(&window, "custom_options", false))
+	, no_options_notice_(find_widget<styled_widget>(&window, "no_options_notice", false))
 	, node_data_map_()
 	, visible_options_()
 	, options_data_()
@@ -46,7 +49,7 @@ tmp_options_helper::tmp_options_helper(twindow& window, ng::create_engine& creat
 	update_all_options();
 }
 
-void tmp_options_helper::update_all_options()
+void mp_options_helper::update_all_options()
 {
 	visible_options_.clear();
 	node_data_map_.clear();
@@ -57,7 +60,7 @@ void tmp_options_helper::update_all_options()
 	update_mod_options();
 }
 
-void tmp_options_helper::update_game_options()
+void mp_options_helper::update_game_options()
 {
 	const std::string type = create_engine_.current_level_type() == ng::level::TYPE::CAMPAIGN ? "campaign" : "multiplayer";
 
@@ -68,7 +71,7 @@ void tmp_options_helper::update_game_options()
 	update_status_label();
 }
 
-void tmp_options_helper::update_era_options()
+void mp_options_helper::update_era_options()
 {
 	static const std::string type = "era";
 
@@ -79,7 +82,7 @@ void tmp_options_helper::update_era_options()
 	update_status_label();
 }
 
-void tmp_options_helper::update_mod_options()
+void mp_options_helper::update_mod_options()
 {
 	static const std::string type = "modification";
 
@@ -92,7 +95,7 @@ void tmp_options_helper::update_mod_options()
 	update_status_label();
 }
 
-int tmp_options_helper::remove_nodes_for_type(const std::string& type)
+int mp_options_helper::remove_nodes_for_type(const std::string& type)
 {
 	// Remove all visible options of the specified source type
 	auto vo_iter = std::remove_if(visible_options_.begin(), visible_options_.end(), [&type](const option_source& source) {
@@ -112,7 +115,7 @@ int tmp_options_helper::remove_nodes_for_type(const std::string& type)
 	node_vector& type_node_vector = data->nodes;
 
 	// The position to insert a new node of this type. If no nodes exist yet, the default value (-1) is
-	// accepted by ttree_view_node as meaning at-end.
+	// accepted by tree_view_node as meaning at-end.
 	int& position = data->position;
 
 	// Remove each node in reverse, so that in the end we have the position of the first node removed
@@ -125,30 +128,30 @@ int tmp_options_helper::remove_nodes_for_type(const std::string& type)
 	return position;
 }
 
-void tmp_options_helper::update_status_label()
+void mp_options_helper::update_status_label()
 {
 	// No custom options, display a message
-	no_options_notice_.set_visible(options_tree_.empty() ? twindow::tvisible::visible : twindow::tvisible::invisible);
+	no_options_notice_.set_visible(options_tree_.empty() ? window::visibility::visible : window::visibility::invisible);
 }
 
 template<typename T>
-void tmp_options_helper::update_options_data_map(T* widget, const option_source& source)
+void mp_options_helper::update_options_data_map(T* widget, const option_source& source)
 {
 	options_data_[source.id][widget->id()] = widget->get_value();
 }
 
 template<>
-void tmp_options_helper::update_options_data_map(ttoggle_button* widget, const option_source& source)
+void mp_options_helper::update_options_data_map(toggle_button* widget, const option_source& source)
 {
 	options_data_[source.id][widget->id()] = widget->get_value_bool();
 }
 
-void tmp_options_helper::update_options_data_map_menu_button(tmenu_button* widget, const option_source& source, const config& cfg)
+void mp_options_helper::update_options_data_map_menu_button(menu_button* widget, const option_source& source, const config& cfg)
 {
 	options_data_[source.id][widget->id()] = cfg.child_range("item")[widget->get_value()]["value"].str();
 }
 
-void tmp_options_helper::reset_options_data(const option_source& source, bool& handled, bool& halt)
+void mp_options_helper::reset_options_data(const option_source& source, bool& handled, bool& halt)
 {
 	options_data_[source.id].clear();
 
@@ -165,10 +168,10 @@ void tmp_options_helper::reset_options_data(const option_source& source, bool& h
 }
 
 template<typename T>
-std::pair<T*, config::attribute_value> tmp_options_helper::add_node_and_get_widget(
-		ttree_view_node& option_node, const std::string& id, data_map& data, const config& cfg)
+std::pair<T*, config::attribute_value> mp_options_helper::add_node_and_get_widget(
+		tree_view_node& option_node, const std::string& id, data_map& data, const config& cfg)
 {
-	ttree_view_node& node = option_node.add_child(id + "_node", data);
+	tree_view_node& node = option_node.add_child(id + "_node", data);
 
 	T* widget = dynamic_cast<T*>(node.find(id, true));
 	VALIDATE(widget, missing_widget(id));
@@ -186,7 +189,7 @@ std::pair<T*, config::attribute_value> tmp_options_helper::add_node_and_get_widg
 	return {widget, option_config[widget_id]};
 }
 
-void tmp_options_helper::display_custom_options(const std::string& type, int node_position, const config& cfg)
+void mp_options_helper::display_custom_options(const std::string& type, int node_position, const config& cfg)
 {
 	// Needed since some compilers don't like passing just {}
 	static const std::map<std::string, string_map> empty_map;
@@ -210,7 +213,7 @@ void tmp_options_helper::display_custom_options(const std::string& type, int nod
 		item["label"] = cfg["name"];
 		data.emplace("tree_view_node_label", item);
 
-		ttree_view_node& option_node = options_tree_.add_node("option_node", data, node_position);
+		tree_view_node& option_node = options_tree_.add_node("option_node", data, node_position);
 		type_node_vector.push_back(&option_node);
 
 		for(const config::any_child opt : options.all_children_range()) {
@@ -229,12 +232,12 @@ void tmp_options_helper::display_custom_options(const std::string& type, int nod
 			if(opt.key == "checkbox") {
 				add_name("option_checkbox");
 
-				ttoggle_button* checkbox;
-				std::tie(checkbox, val) = add_node_and_get_widget<ttoggle_button>(option_node, "option_checkbox", data, option_cfg);
+				toggle_button* checkbox;
+				std::tie(checkbox, val) = add_node_and_get_widget<toggle_button>(option_node, "option_checkbox", data, option_cfg);
 
 				checkbox->set_value(val.to_bool());
 				checkbox->set_callback_state_change(
-					std::bind(&tmp_options_helper::update_options_data_map<ttoggle_button>, this, checkbox, visible_options_.back()));
+					std::bind(&mp_options_helper::update_options_data_map<toggle_button>, this, checkbox, visible_options_.back()));
 
 			} else if(opt.key == "spacer") {
 				option_node.add_child("options_spacer_node", empty_map);
@@ -261,57 +264,57 @@ void tmp_options_helper::display_custom_options(const std::string& type, int nod
 					combo_values.push_back(i["value"]);
 				}
 
-				tmenu_button* menu_button;
-				std::tie(menu_button, val) = add_node_and_get_widget<tmenu_button>(option_node, "option_menu_button", data, option_cfg);
+				menu_button* menu;
+				std::tie(menu, val) = add_node_and_get_widget<menu_button>(option_node, "option_menu_button", data, option_cfg);
 
 				// Needs to be called before set_selected
-				menu_button->set_values(combo_items);
+				menu->set_values(combo_items);
 
 				auto iter = std::find(combo_values.begin(), combo_values.end(), val.str());
 
 				if(iter != combo_values.end()) {
-					menu_button->set_selected(iter - combo_values.begin());
+					menu->set_selected(iter - combo_values.begin());
 				}
 
-				menu_button->connect_click_handler(
-					std::bind(&tmp_options_helper::update_options_data_map_menu_button, this, menu_button, visible_options_.back(), option_cfg));
+				menu->connect_click_handler(
+					std::bind(&mp_options_helper::update_options_data_map_menu_button, this, menu, visible_options_.back(), option_cfg));
 
 			} else if(opt.key == "slider") {
 				add_name("slider_label");
 
-				tslider* slider;
-				std::tie(slider, val) = add_node_and_get_widget<tslider>(option_node, "option_slider", data, option_cfg);
+				slider* slide;
+				std::tie(slide, val) = add_node_and_get_widget<slider>(option_node, "option_slider", data, option_cfg);
 
-				slider->set_maximum_value(option_cfg["max"].to_int());
-				slider->set_minimum_value(option_cfg["min"].to_int());
-				slider->set_step_size(option_cfg["step"].to_int(1));
-				slider->set_value(val.to_int());
+				slide->set_maximum_value(option_cfg["max"].to_int());
+				slide->set_minimum_value(option_cfg["min"].to_int());
+				slide->set_step_size(option_cfg["step"].to_int(1));
+				slide->set_value(val.to_int());
 
-				connect_signal_notify_modified(*slider,
-					std::bind(&tmp_options_helper::update_options_data_map<tslider>, this, slider, visible_options_.back()));
+				connect_signal_notify_modified(*slide,
+					std::bind(&mp_options_helper::update_options_data_map<slider>, this, slide, visible_options_.back()));
 
 			} else if(opt.key == "entry") {
 				add_name("text_entry_label");
 
-				ttext_box* textbox;
-				std::tie(textbox, val) = add_node_and_get_widget<ttext_box>(option_node, "option_text_entry", data, option_cfg);
+				text_box* textbox;
+				std::tie(textbox, val) = add_node_and_get_widget<text_box>(option_node, "option_text_entry", data, option_cfg);
 
 				textbox->set_value(val.str());
 				textbox->set_text_changed_callback(
-					std::bind(&tmp_options_helper::update_options_data_map<ttext_box>, this, textbox, visible_options_.back()));
+					std::bind(&mp_options_helper::update_options_data_map<text_box>, this, textbox, visible_options_.back()));
 			}
 		}
 
 		// Add the Defaults button at the end
-		ttree_view_node& node = option_node.add_child("options_default_button", empty_map);
+		tree_view_node& node = option_node.add_child("options_default_button", empty_map);
 
-		connect_signal_mouse_left_click(find_widget<tbutton>(&node, "reset_option_values", false),
-			std::bind(&tmp_options_helper::reset_options_data, this, visible_options_.back(),
+		connect_signal_mouse_left_click(find_widget<button>(&node, "reset_option_values", false),
+			std::bind(&mp_options_helper::reset_options_data, this, visible_options_.back(),
 				std::placeholders::_3, std::placeholders::_4));
 	}
 }
 
-config tmp_options_helper::get_options_config()
+config mp_options_helper::get_options_config()
 {
 	config options;
 	for(const auto& source : visible_options_) {
@@ -330,4 +333,5 @@ config tmp_options_helper::get_options_config()
 	return options;
 }
 
-} // namespace gui2
+} // namespace dialogs
+} // namespace gui2 // namespace gui2

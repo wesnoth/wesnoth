@@ -286,10 +286,10 @@ public:
 
 	struct upkeep_full {};
 	struct upkeep_loyal {};
-	typedef boost::variant<upkeep_full, upkeep_loyal, int> t_upkeep;
+	typedef boost::variant<upkeep_full, upkeep_loyal, int> upkeep_t;
 
-	t_upkeep upkeep_raw() const { return upkeep_; }
-	void set_upkeep(t_upkeep v) { upkeep_ = v; }
+	upkeep_t upkeep_raw() const { return upkeep_; }
+	void set_upkeep(upkeep_t v) { upkeep_ = v; }
 	bool loyal() const;
 
 	void set_hidden(bool state) const;
@@ -297,13 +297,13 @@ public:
 	bool is_flying() const { return movement_type_.is_flying(); }
 	bool is_fearless() const { return is_fearless_; }
 	bool is_healthy() const { return is_healthy_; }
-	int movement_cost(const t_translation::t_terrain & terrain) const
+	int movement_cost(const t_translation::terrain_code & terrain) const
 	{ return movement_type_.movement_cost(terrain, get_state(STATE_SLOWED)); }
-	int vision_cost(const t_translation::t_terrain & terrain) const
+	int vision_cost(const t_translation::terrain_code & terrain) const
 	{ return movement_type_.vision_cost(terrain, get_state(STATE_SLOWED)); }
-	int jamming_cost(const t_translation::t_terrain & terrain) const
+	int jamming_cost(const t_translation::terrain_code & terrain) const
 	{ return movement_type_.jamming_cost(terrain, get_state(STATE_SLOWED)); }
-	int defense_modifier(const t_translation::t_terrain & terrain) const;
+	int defense_modifier(const t_translation::terrain_code & terrain) const;
 	int resistance_against(const std::string& damage_name,bool attacker,const map_location& loc) const;
 	int resistance_against(const attack_type& damage_type,bool attacker,const map_location& loc) const
 	{ return resistance_against(damage_type.type(), attacker, loc); }
@@ -322,9 +322,9 @@ public:
 	config& get_modifications() { return modifications_; }
 	const config& get_modifications() const { return modifications_; }
 
-	typedef boost::ptr_vector<config> t_advancements;
+	typedef boost::ptr_vector<config> advancements_list;
 	void set_advancements(std::vector<config> advancements);
-	const t_advancements& modification_advancements() const
+	const advancements_list& modification_advancements() const
 	{ return advancements_; }
 
 	size_t modification_count(const std::string& type, const std::string& id) const;
@@ -517,14 +517,14 @@ private:
 
 	config modifications_;
 	config abilities_;
-	t_advancements advancements_;
+	advancements_list advancements_;
 	t_string description_;
 	std::unique_ptr<std::string> usage_;
 	std::unique_ptr<std::string> halo_;
 	std::unique_ptr<std::string> ellipse_;
 	bool random_traits_;
 	bool generate_name_;
-	t_upkeep upkeep_;
+	upkeep_t upkeep_;
 	std::string profile_;
 	std::string small_profile_;
 	//TODO add a to initializer list.

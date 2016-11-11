@@ -69,7 +69,7 @@
  *
  * It is recommended to use MAKE_ENUM types with the built-in versions of
  * lexical_cast or lexical_cast_default provided by Wesnoth (see util.hpp).
- * However, if you do <b>not</b> want twml_exception to be thrown under any
+ * However, if you do <b>not</b> want wml_exception to be thrown under any
  * circumstances, use the string_to_enumname functions instead.
  *
  * See src/tests/test_make_enum.cpp for example code.

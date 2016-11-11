@@ -27,6 +27,8 @@ static lg::log_domain log_config("config");
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -40,7 +42,7 @@ namespace gui2
  *
  * @begin{table}{dialog_widgets}
  *
- * label & & control & m &
+ * label & & styled_widget & m &
  *         This text contains the message to show in the tip. $
  *
  * @end{table}
@@ -65,10 +67,10 @@ REGISTER_WINDOW(tooltip_large)
  * * tooltip
  * * helptip
  */
-class ttip : public tpopup
+class tooltip : public modeless_dialog
 {
 public:
-	ttip() : tpopup(), window_id_(), message_(), mouse_()
+	tooltip() : modeless_dialog(), window_id_(), message_(), mouse_()
 	{
 	}
 
@@ -82,7 +84,7 @@ public:
 		message_ = message;
 	}
 
-	void set_mouse(const tpoint& mouse)
+	void set_mouse(const point& mouse)
 	{
 		mouse_ = mouse;
 	}
@@ -100,21 +102,21 @@ private:
 	t_string message_;
 
 	/** The position of the mouse. */
-	tpoint mouse_;
+	point mouse_;
 
 	/** The size of the requestor. */
 	SDL_Rect source_rect_;
 
-	/** Inherited from tpopup. */
+	/** Inherited from modeless_dialog. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tpopup. */
-	void pre_show(twindow& window);
+	/** Inherited from modeless_dialog. */
+	void pre_show(window& window);
 };
 
-void ttip::pre_show(twindow& window)
+void tooltip::pre_show(window& window)
 {
-	find_widget<tcontrol>(&window, "label", false).set_label(message_);
+	find_widget<styled_widget>(&window, "label", false).set_label(message_);
 
 	window.set_variable("mouse_x", variant(mouse_.x));
 	window.set_variable("mouse_y", variant(mouse_.y));
@@ -125,7 +127,7 @@ void ttip::pre_show(twindow& window)
 	window.set_variable("source_h", variant(source_rect_.h));
 }
 
-const std::string& ttip::window_id() const
+const std::string& tooltip::window_id() const
 {
 	return window_id_;
 }
@@ -133,27 +135,27 @@ const std::string& ttip::window_id() const
 namespace tip
 {
 
-static ttip& tip()
+static tooltip& tip()
 {
 	/*
 	 * Allocating a static tip object causes a segmentation fault when Wesnoth
 	 * terminates. So instead create an object on the heap and never free it.
 	 */
-	static ttip* t = new ttip();
+	static tooltip* t = new tooltip();
 	return *t;
 }
 
 void show(CVideo& video,
 		  const std::string& window_id,
 		  const t_string& message,
-		  const tpoint& mouse,
+		  const point& mouse,
 		  const SDL_Rect& source_rect)
 {
 	/*
 	 * For now allow invalid tip names, might turn them to invalid wml messages
 	 * later on.
 	 */
-	ttip& t = tip();
+	tooltip& t = tip();
 	t.set_window_id(window_id);
 	t.set_message(message);
 	t.set_mouse(mouse);
@@ -162,7 +164,7 @@ void show(CVideo& video,
 	{
 		t.show(video);
 	}
-	catch(twindow_builder_invalid_id&)
+	catch(window_builder_invalid_id&)
 	{
 		ERR_CFG << "Tip with the requested id '" << window_id
 				<< "' doesn't exist, fall back to the default.\n";
@@ -171,7 +173,7 @@ void show(CVideo& video,
 		{
 			t.show(video);
 		}
-		catch(twindow_builder_invalid_id&)
+		catch(window_builder_invalid_id&)
 		{
 			ERR_CFG << "Default tooltip doesn't exist, no message shown."
 					<< std::endl;
@@ -186,4 +188,5 @@ void remove()
 
 } // namespace tip
 
+} // namespace dialogs
 } // namespace gui2

@@ -121,7 +121,7 @@ namespace game_events
 		/// Default constructor.
 		/// Note: This explicit definition is required (by the more pedantic
 		///       compilers) in order to declare a default-constructed, static,
-		///       and const variable in t_event_handlers::get(), in handlers.cpp.
+		///       and const variable in event_handlers::get(), in handlers.cpp.
 		handler_list() : data_() {}
 
 		const_iterator begin() const           { return iterator(const_cast<list_t &>(data_).begin()); }

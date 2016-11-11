@@ -22,8 +22,10 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
-class tdepcheck_select_new : public tdialog
+class depcheck_select_new : public modal_dialog
 {
 public:
 	/**
@@ -32,7 +34,7 @@ public:
 	 * @param name 		the type of which we want to select a new item
 	 * @param options 	the names of the components which can be choosed
 	 */
-	tdepcheck_select_new(ng::depcheck::component_type name,
+	depcheck_select_new(ng::depcheck::component_type name,
 							const std::vector<std::string>& options);
 
 	/**
@@ -47,14 +49,14 @@ public:
 	}
 
 protected:
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tdialog */
-	virtual void pre_show(twindow& window);
+	/** Inherited from modal_dialog */
+	virtual void pre_show(window& window);
 
-	/** Inherited from tdialog */
-	virtual void post_show(twindow& window);
+	/** Inherited from modal_dialog */
+	virtual void post_show(window& window);
 
 private:
 	/** the options available */
@@ -63,5 +65,6 @@ private:
 	/** the index of the selected item */
 	int result_;
 };
-}
+} // namespace dialogs
+} // namespace gui2
 #endif

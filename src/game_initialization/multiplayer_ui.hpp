@@ -31,7 +31,7 @@ class game_display;
 class config;
 class plugins_context;
 
-class twesnothd_connection;
+class wesnothd_connection;
 namespace mp {
 
 std::string get_color_string(int id);
@@ -78,7 +78,7 @@ public:
 	enum result { CONTINUE, JOIN, OBSERVE, CREATE, LOAD_GAME, PREFERENCES,
 		PLAY, QUIT };
 
-	ui(CVideo& v, twesnothd_connection* wesnothd_connection, const std::string& title,
+	ui(CVideo& v, wesnothd_connection* connection, const std::string& title,
 			const config& cfg, chat& c, config& gamelist);
 
 	/**
@@ -114,7 +114,7 @@ protected:
 	SDL_Rect client_area() const;
 
 	CVideo& video_;
-	twesnothd_connection* wesnothd_connection_;
+	wesnothd_connection* wesnothd_connection_;
 	CVideo& video() { return video_; }
 
 	/**

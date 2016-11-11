@@ -18,7 +18,7 @@
 namespace gui2
 {
 
-class tevent_handler;
+class event_handler;
 
 /**
  * Event execution calls.
@@ -28,13 +28,13 @@ class tevent_handler;
  * execution function and implement the wanted behavior. The default behavior
  * defined here is to do nothing.
  *
- * For more info about the event handling have a look at the tevent_handler
+ * For more info about the event handling have a look at the event_handler
  * class which 'translates' sdl events into 'widget' events.
  */
-class tevent_executor
+class event_executor
 {
 public:
-	tevent_executor()
+	event_executor()
 		: wants_mouse_hover_(false)
 		, wants_mouse_left_double_click_(false)
 		, wants_mouse_middle_double_click_(false)
@@ -42,7 +42,7 @@ public:
 	{
 	}
 
-	virtual ~tevent_executor()
+	virtual ~event_executor()
 	{
 	}
 
@@ -75,7 +75,7 @@ public:
 		return wants_mouse_middle_double_click_;
 	}
 
-	tevent_executor& set_wants_mouse_right_double_click(const bool click = true)
+	event_executor& set_wants_mouse_right_double_click(const bool click = true)
 	{
 		wants_mouse_right_double_click_ = click;
 		return *this;

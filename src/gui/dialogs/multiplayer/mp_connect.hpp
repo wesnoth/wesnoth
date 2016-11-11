@@ -19,33 +19,36 @@
 
 namespace gui2
 {
-
-class tmp_connect : public tdialog
+namespace dialogs
 {
-	/** The unit test needs to be able to test the tmp_connect dialog. */
-	friend tdialog* unit_test_mp_server_list();
+
+class mp_connect : public modal_dialog
+{
+	/** The unit test needs to be able to test the mp_connect dialog. */
+	friend modal_dialog* unit_test_mp_server_list();
 
 public:
-	tmp_connect();
+	mp_connect();
 
 private:
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	/** Inherited from modal_dialog. */
+	void pre_show(window& window);
 
 	/** The host name of the selected servef. */
-	tfield_text* host_name_;
+	field_text* host_name_;
 
 	/**
-	 * The unit test needs to be able to test the tmp_connect dialog.
+	 * The unit test needs to be able to test the mp_connect dialog.
 	 *
-	 * @returns                   A newly allocated tmp_server_list.
+	 * @returns                   A newly allocated mp_server_list.
 	 */
-	static tdialog* mp_server_list_for_unit_test();
+	static modal_dialog* mp_server_list_for_unit_test();
 };
 
+} // namespace dialogs
 } // namespace gui2
 
 #endif

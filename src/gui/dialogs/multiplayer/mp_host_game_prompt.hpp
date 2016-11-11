@@ -20,22 +20,25 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
-class tmp_host_game_prompt : public tdialog
+class mp_host_game_prompt : public modal_dialog
 {
 public:
-	tmp_host_game_prompt();
+	mp_host_game_prompt();
 
-	/** The execute function see @ref tdialog for more information. */
+	/** The execute function see @ref modal_dialog for more information. */
 	static bool execute(CVideo& video)
 	{
-		return tmp_host_game_prompt().show(video);
+		return mp_host_game_prompt().show(video);
 	}
 
 private:
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 };
-}
+} // namespace dialogs
+} // namespace gui2
 
 #endif

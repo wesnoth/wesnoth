@@ -32,29 +32,29 @@ namespace gui2
 
 REGISTER_WIDGET(progress_bar)
 
-void tprogress_bar::set_active(const bool /*active*/)
+void progress_bar::set_active(const bool /*active*/)
 {
 	/* DO NOTHING */
 }
 
-bool tprogress_bar::get_active() const
+bool progress_bar::get_active() const
 {
 	return true;
 }
 
-unsigned tprogress_bar::get_state() const
+unsigned progress_bar::get_state() const
 {
 	return ENABLED;
 }
 
-void tprogress_bar::set_percentage(unsigned percentage)
+void progress_bar::set_percentage(unsigned percentage)
 {
 	percentage = std::min<unsigned>(percentage, 100);
 
 	if(percentage_ != percentage) {
 		percentage_ = percentage;
 
-		for(auto & c : canvas())
+		for(auto & c : get_canvas())
 		{
 			c.set_variable("percentage", variant(percentage));
 		}
@@ -63,12 +63,12 @@ void tprogress_bar::set_percentage(unsigned percentage)
 	}
 }
 
-bool tprogress_bar::disable_click_dismiss() const
+bool progress_bar::disable_click_dismiss() const
 {
 	return false;
 }
 
-const std::string& tprogress_bar::get_control_type() const
+const std::string& progress_bar::get_control_type() const
 {
 	static const std::string type = "progress_bar";
 	return type;
@@ -76,12 +76,12 @@ const std::string& tprogress_bar::get_control_type() const
 
 // }---------- DEFINITION ---------{
 
-tprogress_bar_definition::tprogress_bar_definition(const config& cfg)
-	: tcontrol_definition(cfg)
+progress_bar_definition::progress_bar_definition(const config& cfg)
+	: styled_widget_definition(cfg)
 {
 	DBG_GUI_P << "Parsing progress bar " << id << '\n';
 
-	load_resolutions<tresolution>(cfg);
+	load_resolutions<resolution>(cfg);
 }
 
 /*WIKI
@@ -106,11 +106,11 @@ tprogress_bar_definition::tprogress_bar_definition(const config& cfg)
  * @end{tag}{name="progress_bar_definition"}
  * @end{parent}{name="gui/"}
  */
-tprogress_bar_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
+progress_bar_definition::resolution::resolution(const config& cfg)
+	: resolution_definition(cfg)
 {
-	// Note the order should be the same as the enum tstate in progress_bar.hpp.
-	state.push_back(tstate_definition(cfg.child("state_enabled")));
+	// Note the order should be the same as the enum state_t in progress_bar.hpp.
+	state.push_back(state_definition(cfg.child("state_enabled")));
 }
 
 // }---------- BUILDER -----------{
@@ -139,14 +139,14 @@ tprogress_bar_definition::tresolution::tresolution(const config& cfg)
 namespace implementation
 {
 
-tbuilder_progress_bar::tbuilder_progress_bar(const config& cfg)
-	: tbuilder_control(cfg)
+builder_progress_bar::builder_progress_bar(const config& cfg)
+	: builder_styled_widget(cfg)
 {
 }
 
-twidget* tbuilder_progress_bar::build() const
+widget* builder_progress_bar::build() const
 {
-	tprogress_bar* widget = new tprogress_bar();
+	progress_bar* widget = new progress_bar();
 
 	init_control(widget);
 

@@ -22,7 +22,7 @@
 #include <ctime>
 #include <iostream>
 
-toptions::toptions()
+cmdline_options::cmdline_options()
 	: input_filename()
 	, output_filename()
 	, filters()
@@ -91,10 +91,10 @@ print_option(
 static std::ostream&
 operator<<(
 		  std::ostream& stream
-		, const tfilter_description& fd)
+		, const filter_description& fd)
 {
 	print_option(stream, fd.name, fd.description);
-	for(const tfilter_description::tparameter& p : fd.parameters) {
+	for(const filter_description::parameter& p : fd.parameters) {
 		print_option(
 				  stream
 				, " * " + p.name + " (" + p.type + ")"
@@ -135,11 +135,11 @@ print_help(const int exit_status)
 "\n"
 "The following filters are currently implemented:\n"
 ;
-	for(const tfilter_description& filter : filter_list()) {
+	for(const filter_description& filter : filter_list()) {
 		std::cout << filter;
 	}
 
-	throw texit(exit_status);
+	throw exiter(exit_status);
 }
 
 #define VALIDATE_NOT_PAST_END                                                 \
@@ -149,14 +149,14 @@ print_help(const int exit_status)
 					<< option                                                 \
 					<< "« is not supplied.\n";                                \
                                                                               \
-			throw texit(EXIT_FAILURE);                                        \
+			throw exiter(EXIT_FAILURE);                                        \
 		}                                                                     \
 	} while(0)
 
-const toptions&
-toptions::parse(int argc, char* argv[])
+const cmdline_options&
+cmdline_options::parse(int argc, char* argv[])
 {
-	toptions& result = singleton(false);
+	cmdline_options& result = singleton(false);
 
 	bool help = false;
 	bool dry_run = false;
@@ -251,19 +251,19 @@ toptions::parse(int argc, char* argv[])
 	return result;
 }
 
-const toptions&
-toptions::options()
+const cmdline_options&
+cmdline_options::options()
 {
 	return singleton(true);
 }
 
-toptions&
-toptions::singleton(const bool is_initialized)
+cmdline_options&
+cmdline_options::singleton(const bool is_initialized)
 {
 	static bool initialized = false;
 	assert(is_initialized == initialized);
 	initialized = true;
 
-	static toptions result;
+	static cmdline_options result;
 	return result;
 }

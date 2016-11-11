@@ -21,7 +21,7 @@
 namespace sdl
 {
 
-twindow::twindow(const std::string& title,
+window::window(const std::string& title,
 				 const int x,
 				 const int y,
 				 const int w,
@@ -32,21 +32,21 @@ twindow::twindow(const std::string& title,
 	, pixel_format_(SDL_PIXELFORMAT_UNKNOWN)
 {
 	if(!window_) {
-		throw texception("Failed to create a SDL_Window object.", true);
+		throw exception("Failed to create a SDL_Window object.", true);
 	}
 
 	if(!SDL_CreateRenderer(window_, -1, render_flags)) {
-		throw texception("Failed to create a SDL_Renderer object.", true);
+		throw exception("Failed to create a SDL_Renderer object.", true);
 	}
 
 	SDL_RendererInfo info;
 	if(SDL_GetRendererInfo(*this, &info) != 0) {
-		throw texception("Failed to retrieve the information of the renderer.",
+		throw exception("Failed to retrieve the information of the renderer.",
 						 true);
 	}
 
 	if(info.num_texture_formats == 0) {
-		throw texception("The renderer has no texture information available.\n",
+		throw exception("The renderer has no texture information available.\n",
 						 false);
 	}
 
@@ -57,83 +57,83 @@ twindow::twindow(const std::string& title,
 	render();
 }
 
-twindow::~twindow()
+window::~window()
 {
 	if(window_) {
 		SDL_DestroyWindow(window_);
 	}
 }
 
-void twindow::set_size(const int w, const int h)
+void window::set_size(const int w, const int h)
 {
 	SDL_SetWindowSize(window_, w, h);
 }
 
-void twindow::center()
+void window::center()
 {
 	SDL_SetWindowPosition(window_, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);
 }
 
-void twindow::maximize()
+void window::maximize()
 {
 	SDL_MaximizeWindow(window_);
 }
 
-void twindow::to_window()
+void window::to_window()
 {
 	SDL_SetWindowFullscreen(window_, 0);
 }
 
-void twindow::restore()
+void window::restore()
 {
 	SDL_RestoreWindow(window_);
 }
 
-void twindow::full_screen()
+void window::full_screen()
 {
 	SDL_SetWindowFullscreen(window_, SDL_WINDOW_FULLSCREEN_DESKTOP);
 }
 
-void twindow::fill(Uint8 r, Uint8 g, Uint8 b, Uint8 a)
+void window::fill(Uint8 r, Uint8 g, Uint8 b, Uint8 a)
 {
 	SDL_SetRenderDrawColor(*this, r, g, b, a);
 	if(SDL_RenderClear(*this) != 0) {
-		throw texception("Failed to clear the SDL_Renderer object.",
+		throw exception("Failed to clear the SDL_Renderer object.",
 						 true);
 	}
 }
 
-void twindow::render()
+void window::render()
 {
 	SDL_RenderPresent(*this);
 }
 
-void twindow::set_title(const std::string& title)
+void window::set_title(const std::string& title)
 {
 	SDL_SetWindowTitle(window_, title.c_str());
 }
 
-void twindow::set_icon(const surface& icon)
+void window::set_icon(const surface& icon)
 {
 	SDL_SetWindowIcon(window_, icon);
 }
 
-int twindow::get_flags()
+int window::get_flags()
 {
 	return SDL_GetWindowFlags(window_);
 }
 
-void twindow::set_minimum_size(int min_w, int min_h)
+void window::set_minimum_size(int min_w, int min_h)
 {
 	SDL_SetWindowMinimumSize(window_, min_w, min_h);
 }
 
-twindow::operator SDL_Window*()
+window::operator SDL_Window*()
 {
 	return window_;
 }
 
-twindow::operator SDL_Renderer*()
+window::operator SDL_Renderer*()
 {
 	return SDL_GetRenderer(window_);
 }

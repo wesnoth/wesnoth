@@ -28,9 +28,9 @@ struct shroud_clearing_action
 
 	}
 
-	typedef std::vector<map_location> t_route;
+	typedef std::vector<map_location> route_t;
 
-	shroud_clearing_action(const unit_const_ptr u, const t_route::const_iterator& begin, const t_route::const_iterator& end, int village_owner, bool village_bonus)
+	shroud_clearing_action(const unit_const_ptr u, const route_t::const_iterator& begin, const route_t::const_iterator& end, int village_owner, bool village_bonus)
 		: route(begin, end)
 		, view_info(*u)
 		, original_village_owner(village_owner)
@@ -41,7 +41,7 @@ struct shroud_clearing_action
 
 	/// The hexes occupied by the affected unit during this action.
 	/// For recruits and recalls this only contains one hex.
-	t_route route;
+	route_t route;
 	/// A record of the affected unit's ability to see.
 	clearer_info view_info;
 	/// The number of the side that preivously owned the village that the unit stepped on

@@ -37,9 +37,9 @@ class gamemap
 public:
 
 	/* Get info from the terrain_type_data object about the terrain at a location */
-	const t_translation::t_list& underlying_mvt_terrain(const map_location& loc) const;
-	const t_translation::t_list& underlying_def_terrain(const map_location& loc) const;
-	const t_translation::t_list& underlying_union_terrain(const map_location& loc) const;
+	const t_translation::ter_list& underlying_mvt_terrain(const map_location& loc) const;
+	const t_translation::ter_list& underlying_def_terrain(const map_location& loc) const;
+	const t_translation::ter_list& underlying_union_terrain(const map_location& loc) const;
 	std::string get_terrain_string(const map_location& loc) const;
 	std::string get_terrain_editor_string(const map_location& loc) const;
 
@@ -49,23 +49,23 @@ public:
 	bool is_keep(const map_location& loc) const;
 
 	/* The above wrappers, but which takes a terrain. This is the old syntax, preserved for brevity in certain cases. */
-	const t_translation::t_list& underlying_mvt_terrain(const t_translation::t_terrain & terrain) const;
-	const t_translation::t_list& underlying_def_terrain(const t_translation::t_terrain & terrain) const;
-	const t_translation::t_list& underlying_union_terrain(const t_translation::t_terrain & terrain) const;
-	std::string get_terrain_string(const t_translation::t_terrain& terrain) const;
-	std::string get_terrain_editor_string(const t_translation::t_terrain& terrain) const;
-	std::string get_underlying_terrain_string(const t_translation::t_terrain& terrain) const;
+	const t_translation::ter_list& underlying_mvt_terrain(const t_translation::terrain_code & terrain) const;
+	const t_translation::ter_list& underlying_def_terrain(const t_translation::terrain_code & terrain) const;
+	const t_translation::ter_list& underlying_union_terrain(const t_translation::terrain_code & terrain) const;
+	std::string get_terrain_string(const t_translation::terrain_code& terrain) const;
+	std::string get_terrain_editor_string(const t_translation::terrain_code& terrain) const;
+	std::string get_underlying_terrain_string(const t_translation::terrain_code& terrain) const;
 
-	bool is_village(const t_translation::t_terrain & terrain) const;
-	int gives_healing(const t_translation::t_terrain & terrain) const;
-	bool is_castle(const t_translation::t_terrain & terrain) const;
-	bool is_keep(const t_translation::t_terrain & terrain) const;
+	bool is_village(const t_translation::terrain_code & terrain) const;
+	int gives_healing(const t_translation::terrain_code & terrain) const;
+	bool is_castle(const t_translation::terrain_code & terrain) const;
+	bool is_keep(const t_translation::terrain_code & terrain) const;
 
 	// Also expose this for the same reason:
-	const terrain_type& get_terrain_info(const t_translation::t_terrain & terrain) const;
+	const terrain_type& get_terrain_info(const t_translation::terrain_code & terrain) const;
 
 	/* Get the underlying terrain_type_data object. */
-	const tdata_cache & tdata() const { return tdata_; }
+	const ter_data_cache & tdata() const { return tdata_; }
 
 	/**
 	 * Loads a map, with the given terrain configuration.
@@ -76,7 +76,7 @@ public:
 	 * @param tdata the terrain data
 	 * @param data the map data to load.
 	 */
-	gamemap(const tdata_cache &tdata, const std::string &data); //throw(incorrect_map_format_error)
+	gamemap(const ter_data_cache &tdata, const std::string &data); //throw(incorrect_map_format_error)
 
 	virtual ~gamemap();
 
@@ -102,13 +102,13 @@ public:
 	/** Real height of the map, including borders */
 	int total_height() const { return tiles_.h; }
 
-	const t_translation::t_terrain operator[](const map_location& loc) const
+	const t_translation::terrain_code operator[](const map_location& loc) const
 	{
 		return tiles_.get(loc.x + border_size(), loc.y + border_size());
 	}
 private:
 	//private method, use set_terrain instead which also updates villages_.
-	t_translation::t_terrain& operator[](const map_location& loc)
+	t_translation::terrain_code& operator[](const map_location& loc)
 	{
 		return tiles_.get(loc.x + border_size(), loc.y + border_size());
 	}
@@ -120,7 +120,7 @@ public:
 	 * Hexes off the map may be looked up, and their 'emulated' terrain will
 	 * also be returned.  This allows proper drawing of the edges of the map.
 	 */
-	t_translation::t_terrain get_terrain(const map_location& loc) const;
+	t_translation::terrain_code get_terrain(const map_location& loc) const;
 
 	/** Writes the terrain at loc to cfg. */
 	void write_terrain(const map_location &loc, config& cfg) const;
@@ -161,13 +161,13 @@ public:
 	const terrain_type& get_terrain_info(const map_location &loc) const;
 
 	/** Gets the list of terrains. */
-	const t_translation::t_list& get_terrain_list() const;
+	const t_translation::ter_list& get_terrain_list() const;
 
 	/**
 	 * Clobbers over the terrain at location 'loc', with the given terrain.
 	 * Uses mode and replace_if_failed like merge_terrains().
 	 */
-	void set_terrain(const map_location& loc, const t_translation::t_terrain & terrain, const terrain_type_data::tmerge_mode mode=terrain_type_data::BOTH, bool replace_if_failed = false);
+	void set_terrain(const map_location& loc, const t_translation::terrain_code & terrain, const terrain_type_data::merge_mode mode=terrain_type_data::BOTH, bool replace_if_failed = false);
 
 	/**
 	 * Maximum number of players supported.
@@ -184,8 +184,8 @@ public:
 	std::vector<map_location> parse_location_range(const std::string& xvals,
 	const std::string &yvals, bool with_border = false) const;
 
-	using tstarting_positions = t_translation::tstarting_positions;
-	const tstarting_positions& special_locations() const { return starting_positions_; }
+	using starting_positions = t_translation::starting_positions;
+	const starting_positions& special_locations() const { return starting_positions_; }
 
 	template<typename F>
 	void for_each_loc(const F& f) const
@@ -208,9 +208,9 @@ public:
 	}
 	void add_fog_border();
 protected:
-	t_translation::t_map tiles_;
+	t_translation::ter_map tiles_;
 
-	tstarting_positions starting_positions_;
+	starting_positions starting_positions_;
 
 private:
 
@@ -221,7 +221,7 @@ private:
 	 */
 	int read_header(const std::string& data);
 
-	tdata_cache tdata_;
+	ter_data_cache tdata_;
 	std::vector<map_location> villages_;
 
 protected:

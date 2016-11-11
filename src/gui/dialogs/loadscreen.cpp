@@ -68,10 +68,12 @@ static const std::map<std::string, std::string> stages =
 
 namespace gui2
 {
+namespace dialogs
+{
 
-REGISTER_DIALOG(loadscreen)
+REGISTER_DIALOG(loading_screen)
 
-tloadscreen::tloadscreen(std::function<void()> f)
+loading_screen::loading_screen(std::function<void()> f)
 	: window_(nullptr)
 	, timer_id_(0)
 	, animation_counter_(0)
@@ -97,7 +99,7 @@ tloadscreen::tloadscreen(std::function<void()> f)
 	current_load = this;
 }
 
-void tloadscreen::close()
+void loading_screen::close()
 {
 	if(window_) {
 		window_->undraw();
@@ -106,12 +108,12 @@ void tloadscreen::close()
 	}
 }
 
-twindow* tloadscreen::build_window(CVideo& video) const
+window* loading_screen::build_window(CVideo& video) const
 {
 	return build(video, window_id());
 }
 
-void tloadscreen::pre_show(twindow& window)
+void loading_screen::pre_show(window& window)
 {
 	if (work_) {
 		worker_.reset(new boost::thread([this]() {
@@ -123,23 +125,23 @@ void tloadscreen::pre_show(twindow& window)
 			}
 		}));
 	}
-	timer_id_ = add_timer(100, std::bind(&tloadscreen::timer_callback, this, std::ref(window)), true);
+	timer_id_ = add_timer(100, std::bind(&loading_screen::timer_callback, this, std::ref(window)), true);
 	cursor_setter_.reset(new cursor::setter(cursor::WAIT));
-	progress_stage_label_ = &find_widget<tlabel>(&window, "status", false);
-	animation_label_ = &find_widget<tlabel>(&window, "test_animation", false);
+	progress_stage_label_ = &find_widget<label>(&window, "status", false);
+	animation_label_ = &find_widget<label>(&window, "test_animation", false);
 	
 	window.set_enter_disabled(true);
 	window.set_escape_disabled(true);
 }
 
-void tloadscreen::post_show(twindow& /*window*/)
+void loading_screen::post_show(window& /*window*/)
 {
 	worker_.reset();
 	clear_timer();
 	cursor_setter_.reset();
 }
 
-void tloadscreen::progress(const char* stage)
+void loading_screen::progress(const char* stage)
 {
 	if(!current_load) {
 		return;
@@ -154,9 +156,9 @@ void tloadscreen::progress(const char* stage)
 	}
 }
 
-tloadscreen* tloadscreen::current_load = nullptr;
+loading_screen* loading_screen::current_load = nullptr;
 
-void tloadscreen::timer_callback(twindow& window)
+void loading_screen::timer_callback(window& window)
 {
 	if (!work_ || !worker_ || worker_->timed_join(boost::posix_time::milliseconds(0))) {
 		if (exception_) {
@@ -190,28 +192,28 @@ void tloadscreen::timer_callback(twindow& window)
 	}
 }
 
-tloadscreen::~tloadscreen()
+loading_screen::~loading_screen()
 {
 	clear_timer();
 	close();
 	current_load = nullptr;
 }
 
-void tloadscreen::display(CVideo& video, std::function<void()> f)
+void loading_screen::display(CVideo& video, std::function<void()> f)
 {
 	const bool use_loadingscreen_animation = !preferences::disable_loadingscreen_animation();
 	if (current_load || video.faked()) {
 		f();
 	}
 	else if(use_loadingscreen_animation) {
-		tloadscreen(f).show(video);
+		loading_screen(f).show(video);
 	}
 	else {
-		tloadscreen(std::function<void()>()).show(video);
+		loading_screen(std::function<void()>()).show(video);
 		f();
 	}
 }
-void tloadscreen::clear_timer()
+void loading_screen::clear_timer()
 {
 	if (timer_id_ != 0) {
 		remove_timer(timer_id_);
@@ -219,4 +221,5 @@ void tloadscreen::clear_timer()
 	}
 }
 
+} // namespace dialogs
 } // namespace gui2

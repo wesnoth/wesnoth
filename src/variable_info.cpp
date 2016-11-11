@@ -501,7 +501,7 @@ namespace
 }
 
 template<const variable_info_type vit>
-variable_info<vit>::variable_info(const std::string& varname, t_config& vars)
+variable_info<vit>::variable_info(const std::string& varname, config_var& vars)
 	: name_(varname)
 	, state_(vars)
 	, valid_(true)

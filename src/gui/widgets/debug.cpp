@@ -108,12 +108,12 @@ unsigned level_ = 0;
 unsigned domain_ = 0;
 } // namespace
 
-tdebug_layout_graph::tdebug_layout_graph(const twindow* window)
+debug_layout_graph::debug_layout_graph(const window* window)
 	: window_(window), sequence_number_(0), filename_base_(get_base_filename())
 {
 }
 
-void tdebug_layout_graph::set_level(const std::string& level)
+void debug_layout_graph::set_level(const std::string& level)
 {
 	if(level.empty()) {
 		level_ = ALL; /** @todo Should default to 0. */
@@ -140,7 +140,7 @@ void tdebug_layout_graph::set_level(const std::string& level)
 	}
 }
 
-void tdebug_layout_graph::set_domain(const std::string& domain)
+void debug_layout_graph::set_domain(const std::string& domain)
 {
 	if(domain.empty()) {
 		// return error and die
@@ -168,7 +168,7 @@ void tdebug_layout_graph::set_domain(const std::string& domain)
 	}
 }
 
-void tdebug_layout_graph::generate_dot_file(const std::string& generator,
+void debug_layout_graph::generate_dot_file(const std::string& generator,
 											const unsigned domain)
 {
 	// domain == 0 must also evaluate to true.
@@ -197,8 +197,8 @@ void tdebug_layout_graph::generate_dot_file(const std::string& generator,
 	file << "}\n";
 }
 
-void tdebug_layout_graph::widget_generate_info(std::ostream& out,
-											   const twidget* widget,
+void debug_layout_graph::widget_generate_info(std::ostream& out,
+											   const widget* widget,
 											   const std::string& id,
 											   const bool embedded) const
 {
@@ -219,19 +219,19 @@ void tdebug_layout_graph::widget_generate_info(std::ostream& out,
 	}
 	out << "];\n";
 
-	const tgrid* grid = dynamic_cast<const tgrid*>(widget);
+	const grid* grid = dynamic_cast<const grid*>(widget);
 	if(!grid) {
-		const tcontainer_* container = dynamic_cast<const tcontainer_*>(widget);
+		const container_base* container = dynamic_cast<const container_base*>(widget);
 
 		if(container) {
 
-			widget_generate_info(out, &container->grid(), id + "_G", true);
+			widget_generate_info(out, &container->get_grid(), id + "_G", true);
 			out << "\t" << id << " -> " << id << "_G"
 				<< " [label=\"(grid)\"];\n";
 		}
 
-		const tscrollbar_container* scrollbar_container
-				= dynamic_cast<const tscrollbar_container*>(widget);
+		const scrollbar_container* scrollbar_container
+				= dynamic_cast<const scrollbar_container*>(widget);
 
 		if(scrollbar_container) {
 			widget_generate_info(
@@ -240,12 +240,12 @@ void tdebug_layout_graph::widget_generate_info(std::ostream& out,
 				<< " [label=\"(content)\"];\n";
 		}
 
-		const tlistbox* listbox = dynamic_cast<const tlistbox*>(widget);
+		const listbox* listbox = dynamic_cast<const listbox*>(widget);
 		if(listbox) {
 			assert(listbox->generator_);
 		}
 
-		const tgenerator_* generator = dynamic_cast<const tgenerator_*>(widget);
+		const generator_base* generator = dynamic_cast<const generator_base*>(widget);
 
 		if(generator) {
 			for(size_t i = 0; i < generator->get_item_count(); ++i) {
@@ -277,13 +277,13 @@ static std::string format_label(std::string label)
 	return label;
 }
 
-void tdebug_layout_graph::widget_generate_basic_info(std::ostream& out,
-													 const twidget* widget)
+void debug_layout_graph::widget_generate_basic_info(std::ostream& out,
+													 const widget* widget)
 		const
 {
 	std::string header_background
 			= level_ & (SIZE_INFO | STATE_INFO) ? " bgcolor=\"gray\"" : "";
-	const tcontrol* control = dynamic_cast<const tcontrol*>(widget);
+	const styled_widget* styled_widget = dynamic_cast<const styled_widget*>(widget);
 
 	out << "<tr><td" << header_background << ">" << '\n'
 		<< "type=" << get_type(widget) << '\n' << "</td></tr>" << '\n'
@@ -301,11 +301,11 @@ void tdebug_layout_graph::widget_generate_basic_info(std::ostream& out,
 	}
 }
 
-void tdebug_layout_graph::widget_generate_state_info(std::ostream& out,
-													 const twidget* widget)
+void debug_layout_graph::widget_generate_state_info(std::ostream& out,
+													 const widget* widget)
 		const
 {
-	const tcontrol* control = dynamic_cast<const tcontrol*>(widget);
+	const styled_widget* control = dynamic_cast<const control*>(widget);
 	if(!control) {
 		return;
 	}
@@ -334,8 +334,8 @@ void tdebug_layout_graph::widget_generate_state_info(std::ostream& out,
 		<< "does block click dismiss=" << control->disable_click_dismiss()
 		<< '\n' << "</td></tr>\n";
 
-	const tscrollbar_container* scrollbar_container
-			= dynamic_cast<const tscrollbar_container*>(widget);
+	const scrollbar_container* scrollbar_container
+			= dynamic_cast<const scrollbar_container*>(widget);
 
 	if(scrollbar_container) {
 		out << "<tr><td>\n"
@@ -349,8 +349,8 @@ void tdebug_layout_graph::widget_generate_state_info(std::ostream& out,
 	}
 }
 
-void tdebug_layout_graph::widget_generate_size_info(std::ostream& out,
-													const twidget* widget) const
+void debug_layout_graph::widget_generate_size_info(std::ostream& out,
+													const widget* widget) const
 {
 	out << "<tr><td>\n"
 		<< "can wrap=" << widget->can_wrap() << '\n' << "</td></tr>\n"
@@ -365,7 +365,7 @@ void tdebug_layout_graph::widget_generate_size_info(std::ostream& out,
 		<< "layout_size_=" << widget->layout_size_ << '\n' << "</td></tr>\n";
 
 
-	const tcontrol* control = dynamic_cast<const tcontrol*>(widget);
+	const styled_widget* control = dynamic_cast<const control*>(widget);
 
 	if(control) {
 		out << "<tr><td>\n"
@@ -381,7 +381,7 @@ void tdebug_layout_graph::widget_generate_size_info(std::ostream& out,
 			<< "shrunken_=" << control->shrunken_ << '\n' << "</td></tr>\n";
 	}
 
-	const tcontainer_* container = dynamic_cast<const tcontainer_*>(widget);
+	const container_base* container = dynamic_cast<const container_base*>(widget);
 
 	if(container) {
 		out << "<tr><td>\n"
@@ -390,8 +390,8 @@ void tdebug_layout_graph::widget_generate_size_info(std::ostream& out,
 	}
 }
 
-void tdebug_layout_graph::grid_generate_info(std::ostream& out,
-											 const tgrid* grid,
+void debug_layout_graph::grid_generate_info(std::ostream& out,
+											 const grid* grid,
 											 const std::string& parent_id) const
 {
 	assert(!parent_id.empty());
@@ -404,7 +404,7 @@ void tdebug_layout_graph::grid_generate_info(std::ostream& out,
 	for(unsigned row = 0; row < grid->get_rows(); ++row) {
 		for(unsigned col = 0; col < grid->get_cols(); ++col) {
 
-			const twidget* widget = grid->child(row, col).widget();
+			const widget* widget = grid->child(row, col).widget();
 			assert(widget);
 
 			widget_generate_info(
@@ -441,8 +441,8 @@ void tdebug_layout_graph::grid_generate_info(std::ostream& out,
 	}
 }
 
-void tdebug_layout_graph::child_generate_info(std::ostream& out,
-											  const tgrid::tchild& child,
+void debug_layout_graph::child_generate_info(std::ostream& out,
+											  const grid::child& child,
 											  const std::string& id) const
 {
 	assert(!id.empty());
@@ -454,22 +454,22 @@ void tdebug_layout_graph::child_generate_info(std::ostream& out,
 	out << "<tr><td>\n"
 		<< "vertical flag=";
 
-	switch(flags & tgrid::VERTICAL_MASK) {
-		case tgrid::VERTICAL_GROW_SEND_TO_CLIENT:
+	switch(flags & grid::VERTICAL_MASK) {
+		case grid::VERTICAL_GROW_SEND_TO_CLIENT:
 			out << "send to client";
 			break;
-		case tgrid::VERTICAL_ALIGN_TOP:
+		case grid::VERTICAL_ALIGN_TOP:
 			out << "align to top";
 			break;
-		case tgrid::VERTICAL_ALIGN_CENTER:
+		case grid::VERTICAL_ALIGN_CENTER:
 			out << "center";
 			break;
-		case tgrid::VERTICAL_ALIGN_BOTTOM:
+		case grid::VERTICAL_ALIGN_BOTTOM:
 			out << "align to bottom";
 			break;
 		default:
 			out << "unknown value("
-				<< ((flags & tgrid::VERTICAL_MASK) >> tgrid::VERTICAL_SHIFT)
+				<< ((flags & grid::VERTICAL_MASK) >> grid::VERTICAL_SHIFT)
 				<< ")";
 	}
 
@@ -477,22 +477,22 @@ void tdebug_layout_graph::child_generate_info(std::ostream& out,
 		<< "<tr><td>\n"
 		<< "horizontal flag=";
 
-	switch(flags & tgrid::HORIZONTAL_MASK) {
-		case tgrid::HORIZONTAL_GROW_SEND_TO_CLIENT:
+	switch(flags & grid::HORIZONTAL_MASK) {
+		case grid::HORIZONTAL_GROW_SEND_TO_CLIENT:
 			out << "send to client";
 			break;
-		case tgrid::HORIZONTAL_ALIGN_LEFT:
+		case grid::HORIZONTAL_ALIGN_LEFT:
 			out << "align to left";
 			break;
-		case tgrid::HORIZONTAL_ALIGN_CENTER:
+		case grid::HORIZONTAL_ALIGN_CENTER:
 			out << "center";
 			break;
-		case tgrid::HORIZONTAL_ALIGN_RIGHT:
+		case grid::HORIZONTAL_ALIGN_RIGHT:
 			out << "align to right";
 			break;
 		default:
 			out << "unknown value("
-				<< ((flags & tgrid::HORIZONTAL_MASK) >> tgrid::HORIZONTAL_SHIFT)
+				<< ((flags & grid::HORIZONTAL_MASK) >> grid::HORIZONTAL_SHIFT)
 				<< ")";
 	}
 
@@ -500,19 +500,19 @@ void tdebug_layout_graph::child_generate_info(std::ostream& out,
 		<< "<tr><td>\n"
 		<< "border location=";
 
-	if((flags & tgrid::BORDER_ALL) == 0) {
+	if((flags & grid::BORDER_ALL) == 0) {
 		out << "none";
-	} else if((flags & tgrid::BORDER_ALL) == tgrid::BORDER_ALL) {
+	} else if((flags & grid::BORDER_ALL) == grid::BORDER_ALL) {
 		out << "all";
 	} else {
 		std::string result;
-		if(flags & tgrid::BORDER_TOP)
+		if(flags & grid::BORDER_TOP)
 			result += "top, ";
-		if(flags & tgrid::BORDER_BOTTOM)
+		if(flags & grid::BORDER_BOTTOM)
 			result += "bottom, ";
-		if(flags & tgrid::BORDER_LEFT)
+		if(flags & grid::BORDER_LEFT)
 			result += "left, ";
-		if(flags & tgrid::BORDER_RIGHT)
+		if(flags & grid::BORDER_RIGHT)
 			result += "right, ";
 
 		if(!result.empty()) {
@@ -529,14 +529,14 @@ void tdebug_layout_graph::child_generate_info(std::ostream& out,
 	out << "</table>>];\n";
 }
 
-std::string tdebug_layout_graph::get_type(const twidget* widget) const
+std::string debug_layout_graph::get_type(const widget* widget) const
 {
-	const tcontrol* control = dynamic_cast<const tcontrol*>(widget);
+	const styled_widget* control = dynamic_cast<const control*>(widget);
 	if(control) {
 		return control->get_control_type();
 	} else {
-		const tgrid* grid = dynamic_cast<const tgrid*>(widget);
-		const tgenerator_* generator = dynamic_cast<const tgenerator_*>(widget);
+		const grid* grid = dynamic_cast<const grid*>(widget);
+		const generator_base* generator = dynamic_cast<const generator_base*>(widget);
 
 		if(grid) {
 			return "grid";

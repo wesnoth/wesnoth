@@ -41,7 +41,7 @@ namespace gui2
  * The copy constructor does a shallow copy of the shapes to draw.
  * a clone() will be implemented if really needed.
  */
-class tcanvas
+class canvas
 {
 public:
 	/**
@@ -50,10 +50,10 @@ public:
 	 * The other shapes are declared and defined in canvas.cpp, since the
 	 * implementation details are not interesting for users of the canvas.
 	 */
-	class tshape
+	class shape
 	{
 	public:
-		virtual ~tshape()
+		virtual ~shape()
 		{
 		}
 
@@ -72,11 +72,11 @@ public:
 				= 0;
 	};
 
-	typedef std::shared_ptr<tshape> tshape_ptr;
-	typedef std::shared_ptr<const tshape> const_tshape_ptr;
+	typedef std::shared_ptr<shape> shape_ptr;
+	typedef std::shared_ptr<const shape> const_shape_ptr;
 
-	tcanvas();
-	~tcanvas();
+	canvas();
+	~canvas();
 
 	/**
 	 * Draws the canvas.
@@ -144,7 +144,7 @@ public:
 
 private:
 	/** Vector with the shapes to draw. */
-	std::vector<tshape_ptr> shapes_;
+	std::vector<shape_ptr> shapes_;
 
 	/**
 	 * The depth of the blur to use in the pre committing.

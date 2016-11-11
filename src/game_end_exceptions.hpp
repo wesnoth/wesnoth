@@ -43,12 +43,12 @@ MAKE_ENUM(LEVEL_RESULT,
  * Exception used to escape form the ai or ui code to playsingle_controller::play_side.
  * Never thrown during replays.
  */
-class return_to_play_side_exception : public tlua_jailbreak_exception, public std::exception
+class return_to_play_side_exception : public lua_jailbreak_exception, public std::exception
 {
 public:
 
 	return_to_play_side_exception()
-		: tlua_jailbreak_exception()
+		: lua_jailbreak_exception()
 		, std::exception()
 	{
 	}
@@ -59,13 +59,13 @@ private:
 };
 
 class quit_game_exception
-	: public tlua_jailbreak_exception
+	: public lua_jailbreak_exception
 	, public std::exception
 {
 public:
 
 	quit_game_exception()
-		: tlua_jailbreak_exception()
+		: lua_jailbreak_exception()
 		, std::exception()
 	{
 	}

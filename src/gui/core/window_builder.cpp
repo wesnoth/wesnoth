@@ -49,10 +49,10 @@
 namespace gui2
 {
 
-static std::map<std::string, std::function<tbuilder_widget_ptr(config)> >&
+static std::map<std::string, std::function<builder_widget_ptr(config)> >&
 builder_widget_lookup()
 {
-	static std::map<std::string, std::function<tbuilder_widget_ptr(config)> >
+	static std::map<std::string, std::function<builder_widget_ptr(config)> >
 	result;
 	return result;
 }
@@ -70,11 +70,11 @@ builder_widget_lookup()
  * be tuned. This page will describe what can be tuned.
  *
  */
-twindow* build(CVideo& video, const twindow_builder::tresolution* definition)
+window* build(CVideo& video, const builder_window::window_resolution* definition)
 {
 	// We set the values from the definition since we can only determine the
 	// best size (if needed) after all widgets have been placed.
-	twindow* window = new twindow(video,
+	window* win = new window(video,
 								  definition->x,
 								  definition->y,
 								  definition->width,
@@ -89,49 +89,49 @@ twindow* build(CVideo& video, const twindow_builder::tresolution* definition)
 								  definition->definition,
 								  definition->tooltip,
 								  definition->helptip);
-	assert(window);
+	assert(win);
 
 	for(const auto & lg : definition->linked_groups)
 	{
 
-		if(window->has_linked_size_group(lg.id)) {
+		if(win->has_linked_size_group(lg.id)) {
 			t_string msg = vgettext("Linked '$id' group has multiple definitions.", {{"id", lg.id}});
 
 			FAIL(msg);
 		}
 
-		window->init_linked_size_group(lg.id, lg.fixed_width, lg.fixed_height);
+		win->init_linked_size_group(lg.id, lg.fixed_width, lg.fixed_height);
 	}
 
-	window->set_click_dismiss(definition->click_dismiss);
+	win->set_click_dismiss(definition->click_dismiss);
 
-	std::shared_ptr<const twindow_definition::tresolution>
-	conf = std::static_pointer_cast<const twindow_definition::tresolution>(
-			window->config());
+	std::shared_ptr<const window_definition::resolution>
+	conf = std::static_pointer_cast<const window_definition::resolution>(
+			win->config());
 	assert(conf);
 
 	if(conf->grid) {
-		window->init_grid(conf->grid);
-		window->finalize(definition->grid);
+		win->init_grid(conf->grid);
+		win->finalize(definition->grid);
 	} else {
-		window->init_grid(definition->grid);
+		win->init_grid(definition->grid);
 	}
 
-	window->add_to_keyboard_chain(window);
+	win->add_to_keyboard_chain(win);
 
-	return window;
+	return win;
 }
 
-twindow* build(CVideo& video, const std::string& type)
+window* build(CVideo& video, const std::string& type)
 {
-	std::vector<twindow_builder::tresolution>::const_iterator definition
+	std::vector<builder_window::window_resolution>::const_iterator definition
 			= get_window_builder(type);
-	twindow* window = build(video, &*definition);
+	window* window = build(video, &*definition);
 	window->set_id(type);
 	return window;
 }
 
-tbuilder_widget::tbuilder_widget(const config& cfg)
+builder_widget::builder_widget(const config& cfg)
 	: id(cfg["id"])
 	, linked_group(cfg["linked_group"])
 #ifndef LOW_MEM
@@ -143,12 +143,12 @@ tbuilder_widget::tbuilder_widget(const config& cfg)
 
 void
 register_builder_widget(const std::string& id,
-						std::function<tbuilder_widget_ptr(config)> functor)
+						std::function<builder_widget_ptr(config)> functor)
 {
 	builder_widget_lookup().insert(std::make_pair(id, functor));
 }
 
-tbuilder_widget_ptr create_builder_widget(const config& cfg)
+builder_widget_ptr create_builder_widget(const config& cfg)
 {
 	config::const_all_children_itors children = cfg.all_children_range();
 	VALIDATE(children.size() == 1, "Grid cell does not have exactly 1 child.");
@@ -164,19 +164,19 @@ tbuilder_widget_ptr create_builder_widget(const config& cfg)
 	}
 
 	if(const config& c = cfg.child("grid")) {
-		return std::make_shared<tbuilder_grid>(c);
+		return std::make_shared<builder_grid>(c);
 	}
 
 	if(const config& instance = cfg.child("instance")) {
-		return std::make_shared<implementation::tbuilder_instance>(instance);
+		return std::make_shared<implementation::builder_instance>(instance);
 	}
 
 	if(const config& pane = cfg.child("pane")) {
-		return std::make_shared<implementation::tbuilder_pane>(pane);
+		return std::make_shared<implementation::builder_pane>(pane);
 	}
 
 	if(const config& viewport = cfg.child("viewport")) {
-		return std::make_shared<implementation::tbuilder_viewport>(viewport);
+		return std::make_shared<implementation::builder_viewport>(viewport);
 	}
 
 /*
@@ -199,8 +199,8 @@ tbuilder_widget_ptr create_builder_widget(const config& cfg)
 #define TRY(name)                                                              \
 	do {                                                                       \
 		if(const config& c = cfg.child(#name)) {                               \
-			tbuilder_widget_ptr p =                                            \
-				std::make_shared<implementation::tbuilder_##name>(c);          \
+			builder_widget_ptr p =                                            \
+				std::make_shared<implementation::builder_##name>(c);          \
 			assert(false);                                                     \
 		}                                                                      \
 	} while(0)
@@ -251,7 +251,7 @@ tbuilder_widget_ptr create_builder_widget(const config& cfg)
  *
  *
  */
-const std::string& twindow_builder::read(const config& cfg)
+const std::string& builder_window::read(const config& cfg)
 {
 	id_ = cfg["id"].str();
 	description_ = cfg["description"].str();
@@ -266,7 +266,7 @@ const std::string& twindow_builder::read(const config& cfg)
 	VALIDATE(!cfgs.empty(), _("No resolution defined."));
 	for(const auto & i : cfgs)
 	{
-		resolutions.push_back(tresolution(i));
+		resolutions.push_back(window_resolution(i));
 	}
 
 	return id_;
@@ -376,7 +376,7 @@ const std::string& twindow_builder::read(const config& cfg)
  * @end{tag}{name="helptip"}
  * @end{parent}{name=gui/window/resolution/}
  */
-twindow_builder::tresolution::tresolution(const config& cfg)
+builder_window::window_resolution::window_resolution(const config& cfg)
 	: window_width(cfg["window_width"])
 	, window_height(cfg["window_height"])
 	, automatic_placement(cfg["automatic_placement"].to_bool(true))
@@ -406,7 +406,7 @@ twindow_builder::tresolution::tresolution(const config& cfg)
 
 	VALIDATE(c, _("No grid defined."));
 
-	grid = std::make_shared<tbuilder_grid>(tbuilder_grid(c));
+	grid = std::make_shared<builder_grid>(builder_grid(c));
 
 	if(!automatic_placement) {
 		VALIDATE(width.has_formula() || width(),
@@ -424,7 +424,7 @@ twindow_builder::tresolution::tresolution(const config& cfg)
 
 	for(const auto & lg : cfg.child_range("linked_group"))
 	{
-		tlinked_group linked_group;
+		linked_group linked_group;
 		linked_group.id = lg["id"].str();
 		linked_group.fixed_width = lg["fixed_width"].to_bool();
 		linked_group.fixed_height = lg["fixed_height"].to_bool();
@@ -447,7 +447,7 @@ twindow_builder::tresolution::tresolution(const config& cfg)
 	}
 }
 
-twindow_builder::tresolution::ttip::ttip(const config& cfg, const std::string& tagname) : id(cfg["id"])
+builder_window::window_resolution::tooltip_info::tooltip_info(const config& cfg, const std::string& tagname) : id(cfg["id"])
 {
 	VALIDATE(!id.empty(),
 			 missing_mandatory_wml_key("[window][resolution][" + tagname + "]", "id"));
@@ -515,8 +515,8 @@ twindow_builder::tresolution::ttip::ttip(const config& cfg, const std::string& t
  * @end{parent}{name="gui/window/resolution/"}
  *
  */
-tbuilder_grid::tbuilder_grid(const config& cfg)
-	: tbuilder_widget(cfg)
+builder_grid::builder_grid(const config& cfg)
+	: builder_widget(cfg)
 	, rows(0)
 	, cols(0)
 	, row_grow_factor()
@@ -559,19 +559,19 @@ tbuilder_grid::tbuilder_grid(const config& cfg)
 			  << " columns.\n";
 }
 
-tgrid* tbuilder_grid::build() const
+grid* builder_grid::build() const
 {
-	return build(new tgrid());
+	return build(new grid());
 }
 
-twidget* tbuilder_grid::build(const treplacements& replacements) const
+widget* builder_grid::build(const replacements_map& replacements) const
 {
-	tgrid* result = new tgrid();
+	grid* result = new grid();
 	build(*result, replacements);
 	return result;
 }
 
-tgrid* tbuilder_grid::build(tgrid* grid) const
+grid* builder_grid::build(grid* grid) const
 {
 	grid->set_id(id);
 	grid->set_linked_group(linked_group);
@@ -593,7 +593,7 @@ tgrid* tbuilder_grid::build(tgrid* grid) const
 			DBG_GUI_G << "Window builder: adding child at " << x << ',' << y
 					  << ".\n";
 
-			twidget* widget = widgets[x * cols + y]->build();
+			widget* widget = widgets[x * cols + y]->build();
 			grid->set_child(widget,
 							x,
 							y,
@@ -605,7 +605,7 @@ tgrid* tbuilder_grid::build(tgrid* grid) const
 	return grid;
 }
 
-void tbuilder_grid::build(tgrid& grid, const treplacements& replacements) const
+void builder_grid::build(grid& grid, const replacements_map& replacements) const
 {
 	grid.set_id(id);
 	grid.set_linked_group(linked_group);

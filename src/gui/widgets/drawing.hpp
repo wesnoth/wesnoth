@@ -31,37 +31,37 @@ namespace gui2
  * This widget has a fixed size like the spacer, but allows the user to
  * manual draw items. The widget is display only.
  */
-class tdrawing : public tcontrol
+class drawing : public styled_widget
 {
 public:
-	tdrawing() : tcontrol(COUNT), best_size_(0, 0)
+	drawing() : styled_widget(COUNT), best_size_(0, 0)
 	{
 	}
 
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
 private:
-	/** See @ref twidget::calculate_best_size. */
-	virtual tpoint calculate_best_size() const override;
+	/** See @ref widget::calculate_best_size. */
+	virtual point calculate_best_size() const override;
 
 public:
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
-	/** See @ref tcontrol::set_active. */
+	/** See @ref styled_widget::set_active. */
 	virtual void set_active(const bool active) override;
 
-	/** See @ref tcontrol::get_active. */
+	/** See @ref styled_widget::get_active. */
 	virtual bool get_active() const override;
 
-	/** See @ref tcontrol::get_state. */
+	/** See @ref styled_widget::get_state. */
 	virtual unsigned get_state() const override;
 
-	/** See @ref twidget::disable_click_dismiss. */
+	/** See @ref widget::disable_click_dismiss. */
 	bool disable_click_dismiss() const override;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	void set_best_size(const tpoint& best_size)
+	void set_best_size(const point& best_size)
 	{
 		best_size_ = best_size;
 	}
@@ -73,27 +73,27 @@ private:
 	 * Note the order of the states must be the same as defined in
 	 * settings.hpp.
 	 */
-	enum tstate {
+	enum state_t {
 		ENABLED,
 		COUNT
 	};
 
 	/** When we're used as a fixed size item, this holds the best size. */
-	tpoint best_size_;
+	point best_size_;
 
-	/** See @ref tcontrol::get_control_type. */
+	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 };
 
 // }---------- DEFINITION ---------{
 
-struct tdrawing_definition : public tcontrol_definition
+struct drawing_definition : public styled_widget_definition
 {
-	explicit tdrawing_definition(const config& cfg);
+	explicit drawing_definition(const config& cfg);
 
-	struct tresolution : public tresolution_definition_
+	struct resolution : public resolution_definition
 	{
-		explicit tresolution(const config& cfg);
+		explicit resolution(const config& cfg);
 	};
 };
 
@@ -102,19 +102,19 @@ struct tdrawing_definition : public tcontrol_definition
 namespace implementation
 {
 
-struct tbuilder_drawing : public tbuilder_control
+struct builder_drawing : public builder_styled_widget
 {
-	explicit tbuilder_drawing(const config& cfg);
+	explicit builder_drawing(const config& cfg);
 
-	using tbuilder_control::build;
+	using builder_styled_widget::build;
 
-	twidget* build() const;
+	widget* build() const;
 
 	/** The width of the widget. */
-	tformula<unsigned> width;
+	typed_formula<unsigned> width;
 
 	/** The height of the widget. */
-	tformula<unsigned> height;
+	typed_formula<unsigned> height;
 
 	/** Config containing what to draw on the widgets canvas. */
 	config draw;

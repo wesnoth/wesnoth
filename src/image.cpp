@@ -528,7 +528,7 @@ static surface load_image_sub_file(const image::locator &loc)
 
 		try {
 			surf = (*mod)(surf);
-		} catch(const image::modification::texception& e) {
+		} catch(const image::modification::imod_exception& e) {
 			ERR_CFG << "Failed to apply a modification to an image:\n"
 				<< "Image: " << loc.get_filename() << ".\n"
 				<< "Modifications: " << loc.get_modifications() << ".\n"
@@ -752,26 +752,28 @@ static surface scale_xbrz_helper(const surface & res, int w, int h)
 	return F(scale_surface_xbrz(res, legal_zoom), w, h);
 }
 
-static scaling_function select_algorithm(gui2::tadvanced_graphics_options::SCALING_ALGORITHM algo)
+using SCALING_ALGORITHM = gui2::dialogs::advanced_graphics_options::SCALING_ALGORITHM;
+
+static scaling_function select_algorithm(SCALING_ALGORITHM algo)
 {
 	switch (algo.v)
 	{
-		case gui2::tadvanced_graphics_options::SCALING_ALGORITHM::LINEAR:
+		case SCALING_ALGORITHM::LINEAR:
 		{
 			scaling_function result = &scale_surface;
 			return result;
 		}
-		case gui2::tadvanced_graphics_options::SCALING_ALGORITHM::NEAREST_NEIGHBOR:
+		case SCALING_ALGORITHM::NEAREST_NEIGHBOR:
 		{
 			scaling_function result = &scale_surface_nn;
 			return result;
 		}
-		case gui2::tadvanced_graphics_options::SCALING_ALGORITHM::XBRZ_LIN:
+		case SCALING_ALGORITHM::XBRZ_LIN:
 		{
 			scaling_function result = &scale_xbrz_helper<scale_surface>;
 			return result;
 		}
-		case gui2::tadvanced_graphics_options::SCALING_ALGORITHM::XBRZ_NN:
+		case SCALING_ALGORITHM::XBRZ_NN:
 		{
 			scaling_function result = &scale_xbrz_helper<scale_surface_nn>;
 			return result;
@@ -1167,7 +1169,6 @@ bool save_image(const surface & surf, const std::string & filename)
 
 bool update_from_preferences()
 {
-	typedef gui2::tadvanced_graphics_options::SCALING_ALGORITHM SCALING_ALGORITHM;
 	SCALING_ALGORITHM algo = SCALING_ALGORITHM::LINEAR;
 	try {
 		algo = SCALING_ALGORITHM::string_to_enum(preferences::get("scale_hex"));

@@ -36,10 +36,10 @@ namespace gui2
  * - connect_signal_mouse_left_click
  * - disconnect_signal_mouse_left_click
  */
-class tclickable_
+class clickable_item
 {
 public:
-	virtual ~tclickable_()
+	virtual ~clickable_item()
 	{
 	}
 
@@ -50,7 +50,7 @@ public:
 	 *
 	 * @param signal              The signal to connect.
 	 */
-	virtual void connect_click_handler(const event::tsignal_function& signal)
+	virtual void connect_click_handler(const event::signal_function& signal)
 			= 0;
 
 	/**
@@ -61,7 +61,7 @@ public:
 	 * @param signal              The signal to disconnect (should be the same
 	 *                            as send to the connect call.
 	 */
-	virtual void disconnect_click_handler(const event::tsignal_function& signal)
+	virtual void disconnect_click_handler(const event::signal_function& signal)
 			= 0;
 };
 

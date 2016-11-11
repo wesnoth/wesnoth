@@ -193,7 +193,7 @@ void context_manager::load_map_dialog(bool force_same_context /* = false */)
 		fn = default_dir_;
 	}
 
-	gui2::tfile_dialog dlg;
+	gui2::dialogs::file_dialog dlg;
 
 	dlg.set_title(_("Load Map"))
 	   .set_path(fn);
@@ -226,7 +226,7 @@ void context_manager::edit_side_dialog(int side_index)
 	// The side number perhaps should have been set in map_context::new_side() but the design of team::team_info appears to be read-only.
 	team_info.side = side_index + 1;	// note team_info::side is supposed to be 1 to n, while side/team indexes are 0 to n-1
 
-	if(gui2::teditor_edit_side::execute(team_info, gui_.video())) {
+	if(gui2::dialogs::editor_edit_side::execute(team_info, gui_.video())) {
 		get_map_context().set_side_setup(team_info);
 	}
 }
@@ -246,7 +246,7 @@ void context_manager::edit_scenario_dialog()
 	bool victory = get_map_context().victory_defeated();
 	bool random = get_map_context().random_start_time();
 
-	bool ok = gui2::teditor_edit_scenario::execute(id, name, description,
+	bool ok = gui2::dialogs::editor_edit_scenario::execute(id, name, description,
 			turns, xp_mod,
 			victory, random,
 			gui_.video());
@@ -262,8 +262,8 @@ void context_manager::new_map_dialog()
 {
 	int w = get_map().w();
 	int h = get_map().h();
-	if(gui2::teditor_new_map::execute(w, h, gui_.video())) {
-		const t_translation::t_terrain& fill = get_selected_bg_terrain();
+	if(gui2::dialogs::editor_new_map::execute(w, h, gui_.video())) {
+		const t_translation::terrain_code& fill = get_selected_bg_terrain();
 		new_map(w, h, fill, true);
 	}
 }
@@ -272,8 +272,8 @@ void context_manager::new_scenario_dialog()
 {
 	int w = get_map().w();
 	int h = get_map().h();
-	if(gui2::teditor_new_map::execute(w, h, gui_.video())) {
-		const t_translation::t_terrain& fill = get_selected_bg_terrain();
+	if(gui2::dialogs::editor_new_map::execute(w, h, gui_.video())) {
+		const t_translation::terrain_code& fill = get_selected_bg_terrain();
 		new_scenario(w, h, fill, true);
 	}
 }
@@ -452,7 +452,7 @@ void context_manager::apply_mask_dialog()
 		fn = default_dir_;
 	}
 
-	gui2::tfile_dialog dlg;
+	gui2::dialogs::file_dialog dlg;
 
 	dlg.set_title(_("Apply Mask"))
 	   .set_path(fn);
@@ -482,7 +482,7 @@ void context_manager::rename_area_dialog()
 {
 	int active_area = get_map_context().get_active_area();
 	std::string name = get_map_context().get_time_manager()->get_area_ids()[active_area];
-	if (gui2::tedit_text::execute(N_("Rename Area"), N_("Identifier:"), name, gui_.video())) {
+	if (gui2::dialogs::edit_text::execute(N_("Rename Area"), N_("Identifier:"), name, gui_.video())) {
 		get_map_context().get_time_manager()->set_area_id(active_area, name);
 	}
 }
@@ -494,7 +494,7 @@ void context_manager::create_mask_to_dialog()
 		fn = default_dir_;
 	}
 
-	gui2::tfile_dialog dlg;
+	gui2::dialogs::file_dialog dlg;
 
 	dlg.set_title(_("Choose Target Map"))
 	   .set_path(fn);
@@ -555,31 +555,31 @@ void context_manager::resize_map_dialog()
 {
 	int w = get_map().w();
 	int h = get_map().h();
-	gui2::teditor_resize_map::EXPAND_DIRECTION dir;
+	gui2::dialogs::editor_resize_map::EXPAND_DIRECTION dir;
 	bool copy = false;
-	if(gui2::teditor_resize_map::execute(w, h, dir, copy, gui_.video())) {
+	if(gui2::dialogs::editor_resize_map::execute(w, h, dir, copy, gui_.video())) {
 
 		if (w != get_map().w() || h != get_map().h()) {
-	        t_translation::t_terrain fill = get_selected_bg_terrain();
+	        t_translation::terrain_code fill = get_selected_bg_terrain();
 			if (copy) {
 				fill = t_translation::NONE_TERRAIN;
 			}
 			int x_offset = get_map().w() - w;
 			int y_offset = get_map().h() - h;
 			switch (dir) {
-				case gui2::teditor_resize_map::EXPAND_BOTTOM_RIGHT:
-				case gui2::teditor_resize_map::EXPAND_BOTTOM:
-				case gui2::teditor_resize_map::EXPAND_BOTTOM_LEFT:
+				case gui2::dialogs::editor_resize_map::EXPAND_BOTTOM_RIGHT:
+				case gui2::dialogs::editor_resize_map::EXPAND_BOTTOM:
+				case gui2::dialogs::editor_resize_map::EXPAND_BOTTOM_LEFT:
 					y_offset = 0;
 					break;
-				case gui2::teditor_resize_map::EXPAND_RIGHT:
-				case gui2::teditor_resize_map::EXPAND_CENTER:
-				case gui2::teditor_resize_map::EXPAND_LEFT:
+				case gui2::dialogs::editor_resize_map::EXPAND_RIGHT:
+				case gui2::dialogs::editor_resize_map::EXPAND_CENTER:
+				case gui2::dialogs::editor_resize_map::EXPAND_LEFT:
 					y_offset /= 2;
 					break;
-				case gui2::teditor_resize_map::EXPAND_TOP_RIGHT:
-				case gui2::teditor_resize_map::EXPAND_TOP:
-				case gui2::teditor_resize_map::EXPAND_TOP_LEFT:
+				case gui2::dialogs::editor_resize_map::EXPAND_TOP_RIGHT:
+				case gui2::dialogs::editor_resize_map::EXPAND_TOP:
+				case gui2::dialogs::editor_resize_map::EXPAND_TOP_LEFT:
 					break;
 				default:
 					y_offset = 0;
@@ -587,19 +587,19 @@ void context_manager::resize_map_dialog()
 					break;
 			}
 			switch (dir) {
-				case gui2::teditor_resize_map::EXPAND_BOTTOM_RIGHT:
-				case gui2::teditor_resize_map::EXPAND_RIGHT:
-				case gui2::teditor_resize_map::EXPAND_TOP_RIGHT:
+				case gui2::dialogs::editor_resize_map::EXPAND_BOTTOM_RIGHT:
+				case gui2::dialogs::editor_resize_map::EXPAND_RIGHT:
+				case gui2::dialogs::editor_resize_map::EXPAND_TOP_RIGHT:
 					x_offset = 0;
 					break;
-				case gui2::teditor_resize_map::EXPAND_BOTTOM:
-				case gui2::teditor_resize_map::EXPAND_CENTER:
-				case gui2::teditor_resize_map::EXPAND_TOP:
+				case gui2::dialogs::editor_resize_map::EXPAND_BOTTOM:
+				case gui2::dialogs::editor_resize_map::EXPAND_CENTER:
+				case gui2::dialogs::editor_resize_map::EXPAND_TOP:
 					x_offset /= 2;
 					break;
-				case gui2::teditor_resize_map::EXPAND_BOTTOM_LEFT:
-				case gui2::teditor_resize_map::EXPAND_LEFT:
-				case gui2::teditor_resize_map::EXPAND_TOP_LEFT:
+				case gui2::dialogs::editor_resize_map::EXPAND_BOTTOM_LEFT:
+				case gui2::dialogs::editor_resize_map::EXPAND_LEFT:
+				case gui2::dialogs::editor_resize_map::EXPAND_TOP_LEFT:
 					break;
 				default:
 					x_offset = 0;
@@ -618,7 +618,7 @@ void context_manager::save_map_as_dialog()
 		input_name = filesystem::get_dir(default_dir_ + "/maps");
 	}
 
-	gui2::tfile_dialog dlg;
+	gui2::dialogs::file_dialog dlg;
 
 	dlg.set_title(_("Save Map As"))
 	   .set_save_mode(true)
@@ -639,7 +639,7 @@ void context_manager::save_scenario_as_dialog()
 		input_name = filesystem::get_dir(default_dir_ + "/scenarios");
 	}
 
-	gui2::tfile_dialog dlg;
+	gui2::dialogs::file_dialog dlg;
 
 	dlg.set_title(_("Save Scenario As"))
 	   .set_save_mode(true)
@@ -678,11 +678,11 @@ void context_manager::generate_map_dialog()
 				_("No random map generators found."));
 		return;
 	}
-	gui2::teditor_generate_map dialog;
+	gui2::dialogs::editor_generate_map dialog;
 	dialog.set_map_generators(map_generators_);
 	dialog.select_map_generator(last_map_generator_);
 	dialog.show(gui_.video());
-	if (dialog.get_retval() == gui2::twindow::OK) {
+	if (dialog.get_retval() == gui2::window::OK) {
 		std::string map_string;
 		map_generator* const map_generator = dialog.get_selected_map_generator();
 		try {
@@ -707,8 +707,8 @@ bool context_manager::confirm_discard()
 {
 	if (get_map_context().modified()) {
 		const int res = gui2::show_message(gui_.video(), _("Unsaved Changes"),
-				_("Do you want to discard all changes made to the map since the last save?"), gui2::tmessage::yes_no_buttons);
-		return gui2::twindow::CANCEL != res;
+				_("Do you want to discard all changes made to the map since the last save?"), gui2::dialogs::message::yes_no_buttons);
+		return gui2::window::CANCEL != res;
 	} else {
 		return true;
 	}
@@ -724,7 +724,7 @@ void context_manager::create_default_context()
 {
 	if(saved_windows_.empty()) {
 
-		t_translation::t_terrain default_terrain =
+		t_translation::terrain_code default_terrain =
 				t_translation::read_terrain_code(game_config::default_terrain);
 		const config& default_schedule = game_config_.find_child("editor_times", "id", "default");
 		map_context* mc = new map_context(editor_map(game_config_, 44, 33, default_terrain), gui_, true, default_schedule);
@@ -944,7 +944,7 @@ void context_manager::revert_map()
 	load_map(filename, false);
 }
 
-void context_manager::new_map(int width, int height, const t_translation::t_terrain & fill, bool new_context)
+void context_manager::new_map(int width, int height, const t_translation::terrain_code & fill, bool new_context)
 {
 	const config& default_schedule = game_config_.find_child("editor_times", "id", "default");
 	editor_map m(game_config_, width, height, fill);
@@ -956,7 +956,7 @@ void context_manager::new_map(int width, int height, const t_translation::t_terr
 	}
 }
 
-void context_manager::new_scenario(int width, int height, const t_translation::t_terrain & fill, bool new_context)
+void context_manager::new_scenario(int width, int height, const t_translation::terrain_code & fill, bool new_context)
 {
 	const config& default_schedule = game_config_.find_child("editor_times", "id", "default");
 	editor_map m(game_config_, width, height, fill);

@@ -36,7 +36,7 @@ namespace iterator
  * See @ref gui2_iterator_iterator for more information.
  */
 template <class order>
-class titerator : private order, private boost::noncopyable
+class iterator : private order, private boost::noncopyable
 {
 public:
 	/**
@@ -44,7 +44,7 @@ public:
 	 *
 	 * @param root                The widget where to start the iteration.
 	 */
-	titerator(twidget& root) : order(root)
+	iterator(widget& root) : order(root)
 	{
 	}
 
@@ -66,7 +66,7 @@ public:
 	 * @pre                       The following assertion holds:
 	 *                            @code at_end() == false @endcode
 	 *
-	 * @throws                    A @ref trange_error exception upon pre
+	 * @throws                    A @ref range_error exception upon pre
 	 *                            condition violation.
 	 *
 	 * @returns                   Whether the next widget can be safely
@@ -78,7 +78,7 @@ public:
 	}
 
 	/** See @ref next. */
-	titerator<order>& operator++()
+	iterator<order>& operator++()
 	{
 		order::next();
 		return *this;
@@ -89,13 +89,13 @@ public:
 	 *
 	 * @returns                   The current widget.
 	 */
-	twidget& operator*()
+	widget& operator*()
 	{
 		return order::operator*();
 	}
 
 	/** See @ref operator*. */
-	twidget* operator->()
+	widget* operator->()
 	{
 		return &(operator*());
 	}

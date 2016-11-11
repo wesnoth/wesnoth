@@ -20,7 +20,7 @@
 #include "game_config.hpp"
 #include "game_errors.hpp"
 #include "log.hpp"
-#include "lua_jailbreak_exception.hpp"  // for tlua_jailbreak_exception
+#include "lua_jailbreak_exception.hpp"  // for lua_jailbreak_exception
 #include "random_new.hpp"
 #include "seed_rng.hpp"
 

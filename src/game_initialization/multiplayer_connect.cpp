@@ -364,10 +364,10 @@ void connect::side::update_controller_ui()
 	}
 }
 
-connect::connect(CVideo& v, twesnothd_connection* wesnothd_connection, const std::string& game_name,
+connect::connect(CVideo& v, wesnothd_connection* connection, const std::string& game_name,
 	const config& game_config, chat& c, config& gamelist,
 	ng::connect_engine& engine) :
-	mp::ui(v, wesnothd_connection, _("Game Lobby: ") + game_name, game_config, c, gamelist),
+	mp::ui(v, connection, _("Game Lobby: ") + game_name, game_config, c, gamelist),
 	ai_algorithms_(),
 	sides_(),
 	engine_(engine),

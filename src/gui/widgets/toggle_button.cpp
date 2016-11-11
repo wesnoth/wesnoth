@@ -36,8 +36,8 @@ namespace gui2
 
 REGISTER_WIDGET(toggle_button)
 
-ttoggle_button::ttoggle_button()
-	: tcontrol(COUNT)
+toggle_button::toggle_button()
+	: styled_widget(COUNT)
 	, state_(ENABLED)
 	, state_num_(0)
 	, retval_(0)
@@ -45,20 +45,20 @@ ttoggle_button::ttoggle_button()
 	, icon_name_()
 {
 	connect_signal<event::MOUSE_ENTER>(std::bind(
-			&ttoggle_button::signal_handler_mouse_enter, this, _2, _3));
+			&toggle_button::signal_handler_mouse_enter, this, _2, _3));
 	connect_signal<event::MOUSE_LEAVE>(std::bind(
-			&ttoggle_button::signal_handler_mouse_leave, this, _2, _3));
+			&toggle_button::signal_handler_mouse_leave, this, _2, _3));
 
 	connect_signal<event::LEFT_BUTTON_CLICK>(std::bind(
-			&ttoggle_button::signal_handler_left_button_click, this, _2, _3));
+			&toggle_button::signal_handler_left_button_click, this, _2, _3));
 	connect_signal<event::LEFT_BUTTON_DOUBLE_CLICK>(std::bind(
-			&ttoggle_button::signal_handler_left_button_double_click,
+			&toggle_button::signal_handler_left_button_double_click,
 			this,
 			_2,
 			_3));
 }
 
-unsigned ttoggle_button::num_states() const
+unsigned toggle_button::num_states() const
 {
 	std::div_t res = std::div(this->config()->state.size(), COUNT);
 	assert(res.rem == 0);
@@ -66,10 +66,10 @@ unsigned ttoggle_button::num_states() const
 	return res.quot;
 }
 
-void ttoggle_button::set_members(const string_map& data)
+void toggle_button::set_members(const string_map& data)
 {
 	// Inherit
-	tcontrol::set_members(data);
+	styled_widget::set_members(data);
 
 	string_map::const_iterator itor = data.find("icon");
 	if(itor != data.end()) {
@@ -77,7 +77,7 @@ void ttoggle_button::set_members(const string_map& data)
 	}
 }
 
-void ttoggle_button::set_active(const bool active)
+void toggle_button::set_active(const bool active)
 {
 	if(active) {
 		set_state(ENABLED);
@@ -86,23 +86,23 @@ void ttoggle_button::set_active(const bool active)
 	}
 }
 
-bool ttoggle_button::get_active() const
+bool toggle_button::get_active() const
 {
 	return state_ != DISABLED;
 }
 
-unsigned ttoggle_button::get_state() const
+unsigned toggle_button::get_state() const
 {
 	return state_ +  COUNT * state_num_;
 }
 
-void ttoggle_button::update_canvas()
+void toggle_button::update_canvas()
 {
 	// Inherit.
-	tcontrol::update_canvas();
+	styled_widget::update_canvas();
 
 	// set icon in canvases
-	std::vector<tcanvas>& canvases = tcontrol::canvas();
+	std::vector<canvas>& canvases = styled_widget::get_canvas();
 	for(auto & canvas : canvases)
 	{
 		canvas.set_variable("icon", variant(icon_name_));
@@ -111,7 +111,7 @@ void ttoggle_button::update_canvas()
 	set_is_dirty(true);
 }
 
-void ttoggle_button::set_value(const unsigned selected)
+void toggle_button::set_value(const unsigned selected)
 {
 	if(selected == get_value()) {
 		return;
@@ -121,7 +121,7 @@ void ttoggle_button::set_value(const unsigned selected)
 
 }
 
-void ttoggle_button::set_retval(const int retval)
+void toggle_button::set_retval(const int retval)
 {
 	if(retval == retval_) {
 		return;
@@ -131,7 +131,7 @@ void ttoggle_button::set_retval(const int retval)
 	set_wants_mouse_left_double_click(retval_ != 0);
 }
 
-void ttoggle_button::set_state(const tstate state)
+void toggle_button::set_state(const state_t state)
 {
 	if(state != state_) {
 		state_ = state;
@@ -139,13 +139,13 @@ void ttoggle_button::set_state(const tstate state)
 	}
 }
 
-const std::string& ttoggle_button::get_control_type() const
+const std::string& toggle_button::get_control_type() const
 {
 	static const std::string type = "toggle_button";
 	return type;
 }
 
-void ttoggle_button::signal_handler_mouse_enter(const event::tevent event,
+void toggle_button::signal_handler_mouse_enter(const event::ui_event event,
 												bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -153,7 +153,7 @@ void ttoggle_button::signal_handler_mouse_enter(const event::tevent event,
 	handled = true;
 }
 
-void ttoggle_button::signal_handler_mouse_leave(const event::tevent event,
+void toggle_button::signal_handler_mouse_leave(const event::ui_event event,
 												bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -161,7 +161,7 @@ void ttoggle_button::signal_handler_mouse_leave(const event::tevent event,
 	handled = true;
 }
 
-void ttoggle_button::signal_handler_left_button_click(const event::tevent event,
+void toggle_button::signal_handler_left_button_click(const event::ui_event event,
 													  bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -178,8 +178,8 @@ void ttoggle_button::signal_handler_left_button_click(const event::tevent event,
 	handled = true;
 }
 
-void ttoggle_button::signal_handler_left_button_double_click(
-		const event::tevent event, bool& handled)
+void toggle_button::signal_handler_left_button_double_click(
+		const event::ui_event event, bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
@@ -187,7 +187,7 @@ void ttoggle_button::signal_handler_left_button_double_click(
 		return;
 	}
 
-	twindow* window = get_window();
+	window* window = get_window();
 	assert(window);
 
 	window->set_retval(retval_);
@@ -197,12 +197,12 @@ void ttoggle_button::signal_handler_left_button_double_click(
 
 // }---------- DEFINITION ---------{
 
-ttoggle_button_definition::ttoggle_button_definition(const config& cfg)
-	: tcontrol_definition(cfg)
+toggle_button_definition::toggle_button_definition(const config& cfg)
+	: styled_widget_definition(cfg)
 {
 	DBG_GUI_P << "Parsing toggle button " << id << '\n';
 
-	load_resolutions<tresolution>(cfg);
+	load_resolutions<resolution>(cfg);
 }
 
 /*WIKI
@@ -222,7 +222,7 @@ ttoggle_button_definition::ttoggle_button_definition(const config& cfg)
  * * state_disabled_selected, the button is disabled and selected.
  * * state_focused_selected, the mouse is over the button and selected.
  * @begin{parent}{name="gui/"}
- * @begin{tag}{name="toggle_button_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
+ * @begin{tag}{name="oggle_button_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
  * @begin{tag}{name="resolution"}{min=0}{max=-1}{super="generic/widget_definition/resolution"}
  * @begin{tag}{name="state_enabled"}{min=0}{max=1}{super="generic/state"}
  * @end{tag}{name="state_enabled"}
@@ -237,19 +237,19 @@ ttoggle_button_definition::ttoggle_button_definition(const config& cfg)
  * @begin{tag}{name="state_focused_selected"}{min=0}{max=1}{super="generic/state"}
  * @end{tag}{name="state_focused_selected"}
  * @end{tag}{name="resolution"}
- * @end{tag}{name="toggle_button_definition"}
+ * @end{tag}{name="oggle_button_definition"}
  * @end{parent}{name="gui/"}
  */
-ttoggle_button_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
+toggle_button_definition::resolution::resolution(const config& cfg)
+	: resolution_definition(cfg)
 {
-	// Note the order should be the same as the enum tstate in
+	// Note the order should be the same as the enum state_t in
 	// toggle_button.hpp.
 	for(const auto& c : cfg.child_range("state"))
 	{
-		state.push_back(tstate_definition(c.child("enabled")));
-		state.push_back(tstate_definition(c.child("disabled")));
-		state.push_back(tstate_definition(c.child("focused")));
+		state.push_back(state_definition(c.child("enabled")));
+		state.push_back(state_definition(c.child("disabled")));
+		state.push_back(state_definition(c.child("focused")));
 	}
 }
 
@@ -278,17 +278,17 @@ ttoggle_button_definition::tresolution::tresolution(const config& cfg)
 namespace implementation
 {
 
-tbuilder_toggle_button::tbuilder_toggle_button(const config& cfg)
-	: tbuilder_control(cfg)
+builder_toggle_button::builder_toggle_button(const config& cfg)
+	: builder_styled_widget(cfg)
 	, icon_name_(cfg["icon"])
 	, retval_id_(cfg["return_value_id"])
 	, retval_(cfg["return_value"])
 {
 }
 
-twidget* tbuilder_toggle_button::build() const
+widget* builder_toggle_button::build() const
 {
-	ttoggle_button* widget = new ttoggle_button();
+	toggle_button* widget = new toggle_button();
 
 	init_control(widget);
 

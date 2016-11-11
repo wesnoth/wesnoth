@@ -88,7 +88,7 @@ protected:
 	 */
 	virtual void update_symbols();
 
-	display::tdrawing_layer layer_;
+	display::drawing_layer layer_;
 
 	std::string color_;
 	/// represents the subdirectory that holds images for this arrow style

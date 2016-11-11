@@ -738,7 +738,7 @@ void terrain_builder::add_images_from_config(rule_imagelist& images, const confi
 terrain_builder::terrain_constraint &terrain_builder::add_constraints(
 		terrain_builder::constraint_set& constraints,
 		const map_location& loc,
-		const t_translation::t_match& type, const config& global_images)
+		const t_translation::ter_match& type, const config& global_images)
 {
 	terrain_constraint *cons = nullptr;
 	for (terrain_constraint &c : constraints) {
@@ -770,7 +770,7 @@ void terrain_builder::add_constraints(terrain_builder::constraint_set &constrain
 
 {
 	terrain_constraint& constraint = add_constraints(constraints, loc,
-		t_translation::t_match(cfg["type"], t_translation::WILDCARD), global_images);
+		t_translation::ter_match(cfg["type"], t_translation::WILDCARD), global_images);
 
 
 	std::vector<std::string> item_string = utils::square_parenthetical_split(cfg["set_flag"],',',"[","]");
@@ -802,7 +802,7 @@ void terrain_builder::parse_mapstring(const std::string &mapstring,
 		const config& global_images)
 {
 
-	const t_translation::t_map map = t_translation::read_builder_map(mapstring);
+	const t_translation::ter_map map = t_translation::read_builder_map(mapstring);
 
 	// If there is an empty map leave directly.
 	// Determine after conversion, since a
@@ -817,7 +817,7 @@ void terrain_builder::parse_mapstring(const std::string &mapstring,
 	for(int y_off = 0; y_off < map.w; ++y_off) {
 		for(int x_off = x; x_off < map.h; ++x_off) {
 
-			const t_translation::t_terrain terrain = map.get(y_off, x_off);
+			const t_translation::terrain_code terrain = map.get(y_off, x_off);
 
 			if(terrain.base == t_translation::TB_DOT) {
 				// Dots are simple placeholders,
@@ -968,7 +968,7 @@ void terrain_builder::parse_config(const config &cfg, bool local)
 
 		n++;
 		if(n % 10 == 0) {
-			gui2::tloadscreen::progress();
+			gui2::dialogs::loading_screen::progress();
 		}
 	}
 
@@ -1152,7 +1152,7 @@ void terrain_builder::build_terrains()
 	for(int x = -2; x <= map().w(); ++x) {
 		for(int y = -2; y <= map().h(); ++y) {
 			const map_location loc(x,y);
-			const t_translation::t_terrain t = map().get_terrain(loc);
+			const t_translation::terrain_code t = map().get_terrain(loc);
 
 			terrain_by_type_[t].push_back(loc);
 		}
@@ -1164,19 +1164,19 @@ void terrain_builder::build_terrains()
 		// We will keep a track of the matching terrains of this constraint
 		// and later try to apply the rule only on them
 		size_t min_size = INT_MAX;
-		t_translation::t_list min_types = t_translation::t_list(); // <-- This must be explicitly initialized, just as min_constraint is, at start of loop, or we get a null pointer dereference when we go through on later times.
+		t_translation::ter_list min_types = t_translation::ter_list(); // <-- This must be explicitly initialized, just as min_constraint is, at start of loop, or we get a null pointer dereference when we go through on later times.
 		const terrain_constraint *min_constraint = nullptr;
 
 		for(const terrain_constraint &constraint : rule.constraints)
 		{
-			const t_translation::t_match& match = constraint.terrain_types_match;
-			t_translation::t_list matching_types;
+			const t_translation::ter_match& match = constraint.terrain_types_match;
+			t_translation::ter_list matching_types;
 			size_t constraint_size = 0;
 
 			for (terrain_by_type_map::iterator type_it = terrain_by_type_.begin();
 					 type_it != terrain_by_type_.end(); ++type_it) {
 
-				const t_translation::t_terrain t = type_it->first;
+				const t_translation::terrain_code t = type_it->first;
 				if (terrain_matches(t, match)) {
 					const size_t match_size = type_it->second.size();
 					constraint_size += match_size;
@@ -1200,7 +1200,7 @@ void terrain_builder::build_terrains()
 		}
 
 		//NOTE: if min_types is not empty, we have found a valid min_constraint;
-		for(t_translation::t_list::const_iterator t = min_types.begin();
+		for(t_translation::ter_list::const_iterator t = min_types.begin();
 				t != min_types.end(); ++t) {
 
 			const std::vector<map_location>* locations = &terrain_by_type_[*t];

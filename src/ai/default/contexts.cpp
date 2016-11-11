@@ -100,7 +100,7 @@ default_ai_context& default_ai_context_impl::get_default_ai_context(){
 int default_ai_context_impl::rate_terrain(const unit& u, const map_location& loc) const
 {
 	const gamemap &map_ = resources::gameboard->map();
-	const t_translation::t_terrain terrain = map_.get_terrain(loc);
+	const t_translation::terrain_code terrain = map_.get_terrain(loc);
 	const int defense = u.defense_modifier(terrain);
 	int rating = 100 - defense;
 

@@ -33,25 +33,25 @@ namespace gui2
  * This minimap can only show a minimap, but it can't be interacted with. For
  * that the tminimap_interactive class will be created.
  */
-class tminimap : public tcontrol
+class minimap : public styled_widget
 {
 public:
-	tminimap() : tcontrol(1), map_data_(), terrain_(nullptr)
+	minimap() : styled_widget(1), map_data_(), terrain_(nullptr)
 	{
 	}
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
-	/** See @ref tcontrol::set_active. */
+	/** See @ref styled_widget::set_active. */
 	virtual void set_active(const bool active) override;
 
-	/** See @ref tcontrol::get_active. */
+	/** See @ref styled_widget::get_active. */
 	virtual bool get_active() const override;
 
-	/** See @ref tcontrol::get_state. */
+	/** See @ref styled_widget::get_state. */
 	virtual unsigned get_state() const override;
 
-	/** See @ref twidget::disable_click_dismiss. */
+	/** See @ref widget::disable_click_dismiss. */
 	bool disable_click_dismiss() const override;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
@@ -100,24 +100,24 @@ private:
 	 */
 	const surface get_image(const int w, const int h) const;
 
-	/** See @ref twidget::impl_draw_background. */
+	/** See @ref widget::impl_draw_background. */
 	virtual void impl_draw_background(surface& frame_buffer,
 									  int x_offset,
 									  int y_offset) override;
 
-	/** See @ref tcontrol::get_control_type. */
+	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 };
 
 // }---------- DEFINITION ---------{
 
-struct tminimap_definition : public tcontrol_definition
+struct minimap_definition : public styled_widget_definition
 {
-	explicit tminimap_definition(const config& cfg);
+	explicit minimap_definition(const config& cfg);
 
-	struct tresolution : public tresolution_definition_
+	struct resolution : public resolution_definition
 	{
-		explicit tresolution(const config& cfg);
+		explicit resolution(const config& cfg);
 	};
 };
 
@@ -126,13 +126,13 @@ struct tminimap_definition : public tcontrol_definition
 namespace implementation
 {
 
-struct tbuilder_minimap : public tbuilder_control
+struct builder_minimap : public builder_styled_widget
 {
-	explicit tbuilder_minimap(const config& cfg);
+	explicit builder_minimap(const config& cfg);
 
-	using tbuilder_control::build;
+	using builder_styled_widget::build;
 
-	twidget* build() const;
+	widget* build() const;
 };
 
 } // namespace implementation

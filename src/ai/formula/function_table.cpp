@@ -78,7 +78,7 @@ class unit_adapter {
 			}
 		}
 
-		int movement_cost(const t_translation::t_terrain & terrain) const {
+		int movement_cost(const t_translation::terrain_code & terrain) const {
 			if(unit_type_ != nullptr) {
 				return unit_type_->movement_type().movement_cost(terrain);
 			} else {

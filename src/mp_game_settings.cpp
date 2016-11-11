@@ -136,8 +136,7 @@ config mp_game_settings::to_config() const
 	cfg["savegame"] = saved_game;
 	cfg.add_child("options", options);
 
-	typedef std::map<std::string,addon_version_info>::value_type ttt;
-	for (const ttt & p : addons) {
+	for(auto& p : addons) {
 		config & c = cfg.add_child("addon");
 		p.second.write(c);
 		c["id"] = p.first;

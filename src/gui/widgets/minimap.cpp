@@ -46,25 +46,25 @@ namespace gui2
 
 REGISTER_WIDGET(minimap)
 
-void tminimap::set_active(const bool /*active*/)
+void minimap::set_active(const bool /*active*/)
 {
 	/* DO NOTHING */
 }
 
-bool tminimap::get_active() const
+bool minimap::get_active() const
 {
 	return true;
 }
 
-unsigned tminimap::get_state() const
+unsigned minimap::get_state() const
 {
 	return 0;
 }
 
 /** Key type for the cache. */
-struct tkey
+struct key_type
 {
-	tkey(const int w, const int h, const std::string& map_data)
+	key_type(const int w, const int h, const std::string& map_data)
 		: w(w), h(h), map_data(map_data)
 	{
 	}
@@ -79,7 +79,7 @@ struct tkey
 	const std::string map_data;
 };
 
-static bool operator<(const tkey& lhs, const tkey& rhs)
+static bool operator<(const key_type& lhs, const key_type& rhs)
 {
 	return lhs.w < rhs.w
 		   || (lhs.w == rhs.w
@@ -88,9 +88,9 @@ static bool operator<(const tkey& lhs, const tkey& rhs)
 }
 
 /** Value type for the cache. */
-struct tvalue
+struct value_type
 {
-	tvalue(const surface& surf) : surf(surf), age(1)
+	value_type(const surface& surf) : surf(surf), age(1)
 	{
 	}
 
@@ -134,7 +134,7 @@ static const size_t cache_max_size = 100;
 static const ::config* terrain = nullptr;
 
 /** The cache. */
-typedef std::map<tkey, tvalue> tcache;
+typedef std::map<key_type, value_type> tcache;
 static tcache cache;
 
 static bool compare(const std::pair<unsigned, tcache::iterator>& lhs,
@@ -176,12 +176,12 @@ static void shrink_cache()
 #endif
 }
 
-bool tminimap::disable_click_dismiss() const
+bool minimap::disable_click_dismiss() const
 {
 	return false;
 }
 
-const surface tminimap::get_image(const int w, const int h) const
+const surface minimap::get_image(const int w, const int h) const
 {
 	if(!terrain_) {
 		return nullptr;
@@ -197,7 +197,7 @@ const surface tminimap::get_image(const int w, const int h) const
 		cache.clear();
 	}
 
-	const tkey key(w, h, map_data_);
+	const key_type key(w, h, map_data_);
 	tcache::iterator itor = cache.find(key);
 
 	if(itor != cache.end()) {
@@ -216,7 +216,7 @@ const surface tminimap::get_image(const int w, const int h) const
 	{
 		const gamemap map(std::make_shared<terrain_type_data>(*terrain_), map_data_);
 		const surface surf = image::getMinimap(w, h, map, nullptr);
-		cache.insert(std::make_pair(key, tvalue(surf)));
+		cache.insert(std::make_pair(key, value_type(surf)));
 #ifdef DEBUG_MINIMAP_CACHE
 		std::cerr << '-';
 #endif
@@ -232,7 +232,7 @@ const surface tminimap::get_image(const int w, const int h) const
 	return nullptr;
 }
 
-void tminimap::impl_draw_background(surface& frame_buffer,
+void minimap::impl_draw_background(surface& frame_buffer,
 									int x_offset,
 									int y_offset)
 {
@@ -256,7 +256,7 @@ void tminimap::impl_draw_background(surface& frame_buffer,
 	}
 }
 
-const std::string& tminimap::get_control_type() const
+const std::string& minimap::get_control_type() const
 {
 	static const std::string type = "minimap";
 	return type;
@@ -264,12 +264,12 @@ const std::string& tminimap::get_control_type() const
 
 // }---------- DEFINITION ---------{
 
-tminimap_definition::tminimap_definition(const config& cfg)
-	: tcontrol_definition(cfg)
+minimap_definition::minimap_definition(const config& cfg)
+	: styled_widget_definition(cfg)
 {
 	DBG_GUI_P << "Parsing minimap " << id << '\n';
 
-	load_resolutions<tresolution>(cfg);
+	load_resolutions<resolution>(cfg);
 }
 
 /*WIKI
@@ -291,11 +291,11 @@ tminimap_definition::tminimap_definition(const config& cfg)
  * @end{tag}{name="minimap_definition"}
  * @end{parent}{name="gui/"}
  */
-tminimap_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
+minimap_definition::resolution::resolution(const config& cfg)
+	: resolution_definition(cfg)
 {
-	// Note the order should be the same as the enum tstate in minimap.hpp.
-	state.push_back(tstate_definition(cfg.child("state_enabled")));
+	// Note the order should be the same as the enum state_t in minimap.hpp.
+	state.push_back(state_definition(cfg.child("state_enabled")));
 }
 
 // }---------- BUILDER -----------{
@@ -327,13 +327,13 @@ tminimap_definition::tresolution::tresolution(const config& cfg)
 namespace implementation
 {
 
-tbuilder_minimap::tbuilder_minimap(const config& cfg) : tbuilder_control(cfg)
+builder_minimap::builder_minimap(const config& cfg) : builder_styled_widget(cfg)
 {
 }
 
-twidget* tbuilder_minimap::build() const
+widget* builder_minimap::build() const
 {
-	tminimap* widget = new tminimap();
+	minimap* widget = new minimap();
 
 	init_control(widget);
 

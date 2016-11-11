@@ -34,7 +34,7 @@
 #include <iomanip>
 
 #define LOG_SCOPE_HEADER                                                       \
-	"tcontrol(" + get_control_type() + ") [" + id() + "] " + __func__
+	"styled_widget(" + get_control_type() + ") [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
 
 namespace gui2
@@ -42,7 +42,7 @@ namespace gui2
 
 // ------------ WIDGET -----------{
 
-tcontrol::tcontrol(const unsigned canvas_count)
+styled_widget::styled_widget(const unsigned canvas_count)
 	: definition_("default")
 	, label_()
 	, use_markup_(false)
@@ -57,19 +57,19 @@ tcontrol::tcontrol(const unsigned canvas_count)
 	, shrunken_(false)
 {
 	connect_signal<event::SHOW_TOOLTIP>(std::bind(
-			&tcontrol::signal_handler_show_tooltip, this, _2, _3, _5));
+			&styled_widget::signal_handler_show_tooltip, this, _2, _3, _5));
 
 	connect_signal<event::SHOW_HELPTIP>(std::bind(
-			&tcontrol::signal_handler_show_helptip, this, _2, _3, _5));
+			&styled_widget::signal_handler_show_helptip, this, _2, _3, _5));
 
 	connect_signal<event::NOTIFY_REMOVE_TOOLTIP>(std::bind(
-			&tcontrol::signal_handler_notify_remove_tooltip, this, _2, _3));
+			&styled_widget::signal_handler_notify_remove_tooltip, this, _2, _3));
 }
 
-tcontrol::tcontrol(const implementation::tbuilder_control& builder,
+styled_widget::styled_widget(const implementation::builder_styled_widget& builder,
 				   const unsigned canvas_count,
 				   const std::string& control_type)
-	: twidget(builder)
+	: widget(builder)
 	, definition_(builder.definition)
 	, label_(builder.label_string)
 	, use_markup_(false)
@@ -86,16 +86,16 @@ tcontrol::tcontrol(const implementation::tbuilder_control& builder,
 	definition_load_configuration(control_type);
 
 	connect_signal<event::SHOW_TOOLTIP>(std::bind(
-			&tcontrol::signal_handler_show_tooltip, this, _2, _3, _5));
+			&styled_widget::signal_handler_show_tooltip, this, _2, _3, _5));
 
 	connect_signal<event::SHOW_HELPTIP>(std::bind(
-			&tcontrol::signal_handler_show_helptip, this, _2, _3, _5));
+			&styled_widget::signal_handler_show_helptip, this, _2, _3, _5));
 
 	connect_signal<event::NOTIFY_REMOVE_TOOLTIP>(std::bind(
-			&tcontrol::signal_handler_notify_remove_tooltip, this, _2, _3));
+			&styled_widget::signal_handler_notify_remove_tooltip, this, _2, _3));
 }
 
-void tcontrol::set_members(const string_map& data)
+void styled_widget::set_members(const string_map& data)
 {
 	/** @todo document this feature on the wiki. */
 	/** @todo do we need to add the debug colors here as well? */
@@ -135,79 +135,79 @@ void tcontrol::set_members(const string_map& data)
 	}
 }
 
-bool tcontrol::disable_click_dismiss() const
+bool styled_widget::disable_click_dismiss() const
 {
-	return get_visible() == twidget::tvisible::visible && get_active();
+	return get_visible() == widget::visibility::visible && get_active();
 }
 
-iterator::twalker_* tcontrol::create_walker()
+iterator::walker_base* styled_widget::create_walker()
 {
-	return new iterator::walker::twidget(*this);
+	return new iterator::walker::widget(*this);
 }
 
-tpoint tcontrol::get_config_minimum_size() const
+point styled_widget::get_config_minimum_size() const
 {
 	assert(config_);
 
-	tpoint result(config_->min_width, config_->min_height);
+	point result(config_->min_width, config_->min_height);
 
 	DBG_GUI_L << LOG_HEADER << " result " << result << ".\n";
 	return result;
 }
 
-tpoint tcontrol::get_config_default_size() const
+point styled_widget::get_config_default_size() const
 {
 	assert(config_);
 
-	tpoint result(config_->default_width, config_->default_height);
+	point result(config_->default_width, config_->default_height);
 
 	DBG_GUI_L << LOG_HEADER << " result " << result << ".\n";
 	return result;
 }
 
-tpoint tcontrol::get_config_maximum_size() const
+point styled_widget::get_config_maximum_size() const
 {
 	assert(config_);
 
-	tpoint result(config_->max_width, config_->max_height);
+	point result(config_->max_width, config_->max_height);
 
 	DBG_GUI_L << LOG_HEADER << " result " << result << ".\n";
 	return result;
 }
 
-unsigned tcontrol::get_characters_per_line() const
+unsigned styled_widget::get_characters_per_line() const
 {
 	return 0;
 }
 
-bool tcontrol::get_link_aware() const
+bool styled_widget::get_link_aware() const
 {
 	return false;
 }
 
-std::string tcontrol::get_link_color() const
+std::string styled_widget::get_link_color() const
 {
 	return "#ffff00";
 }
 
-void tcontrol::layout_initialise(const bool full_initialisation)
+void styled_widget::layout_initialise(const bool full_initialisation)
 {
 	// Inherited.
-	twidget::layout_initialise(full_initialisation);
+	widget::layout_initialise(full_initialisation);
 
 	if(full_initialisation) {
 		shrunken_ = false;
 	}
 }
 
-void tcontrol::request_reduce_width(const unsigned maximum_width)
+void styled_widget::request_reduce_width(const unsigned maximum_width)
 {
 	assert(config_);
 
 	if(!label_.empty() && can_wrap()) {
 
-		tpoint size = get_best_text_size(
-				tpoint(), tpoint(maximum_width - config_->text_extra_width, 0));
+		point size = get_best_text_size(
+				point(), point(maximum_width - config_->text_extra_width, 0));
 
 		size.x += config_->text_extra_width;
 		size.y += config_->text_extra_height;
@@ -224,7 +224,7 @@ void tcontrol::request_reduce_width(const unsigned maximum_width)
 	}
 }
 
-tpoint tcontrol::calculate_best_size() const
+point styled_widget::calculate_best_size() const
 {
 	assert(config_);
 	if(label_.empty()) {
@@ -232,20 +232,20 @@ tpoint tcontrol::calculate_best_size() const
 		return get_config_default_size();
 	}
 
-	const tpoint minimum = get_config_default_size();
-	const tpoint maximum = get_config_maximum_size();
+	const point minimum = get_config_default_size();
+	const point maximum = get_config_maximum_size();
 
 	/**
 	 * @todo The value send should subtract the border size
 	 * and read it after calculation to get the proper result.
 	 */
-	tpoint result = get_best_text_size(minimum, maximum);
+	point result = get_best_text_size(minimum, maximum);
 	DBG_GUI_L << LOG_HEADER << " label '" << debug_truncate(label_)
 			  << "' result " << result << ".\n";
 	return result;
 }
 
-void tcontrol::place(const tpoint& origin, const tpoint& size)
+void styled_widget::place(const point& origin, const point& size)
 {
 	// resize canvasses
 	for(auto & canvas : canvas_)
@@ -263,13 +263,13 @@ void tcontrol::place(const tpoint& origin, const tpoint& size)
 	}
 
 	// inherited
-	twidget::place(origin, size);
+	widget::place(origin, size);
 
 	// update the state of the canvas after the sizes have been set.
 	update_canvas();
 }
 
-void tcontrol::load_config()
+void styled_widget::load_config()
 {
 	if(!config()) {
 
@@ -279,41 +279,41 @@ void tcontrol::load_config()
 	}
 }
 
-twidget* tcontrol::find_at(const tpoint& coordinate, const bool must_be_active)
+widget* styled_widget::find_at(const point& coordinate, const bool must_be_active)
 {
-	return (twidget::find_at(coordinate, must_be_active)
+	return (widget::find_at(coordinate, must_be_active)
 			&& (!must_be_active || get_active()))
 				   ? this
 				   : nullptr;
 }
 
-const twidget* tcontrol::find_at(const tpoint& coordinate,
+const widget* styled_widget::find_at(const point& coordinate,
 								 const bool must_be_active) const
 {
-	return (twidget::find_at(coordinate, must_be_active)
+	return (widget::find_at(coordinate, must_be_active)
 			&& (!must_be_active || get_active()))
 				   ? this
 				   : nullptr;
 }
 
-twidget* tcontrol::find(const std::string& id, const bool must_be_active)
+widget* styled_widget::find(const std::string& id, const bool must_be_active)
 {
-	return (twidget::find(id, must_be_active)
+	return (widget::find(id, must_be_active)
 			&& (!must_be_active || get_active()))
 				   ? this
 				   : nullptr;
 }
 
-const twidget* tcontrol::find(const std::string& id, const bool must_be_active)
+const widget* styled_widget::find(const std::string& id, const bool must_be_active)
 		const
 {
-	return (twidget::find(id, must_be_active)
+	return (widget::find(id, must_be_active)
 			&& (!must_be_active || get_active()))
 				   ? this
 				   : nullptr;
 }
 
-void tcontrol::set_definition(const std::string& definition)
+void styled_widget::set_definition(const std::string& definition)
 {
 	assert(!config());
 	definition_ = definition;
@@ -325,19 +325,19 @@ void tcontrol::set_definition(const std::string& definition)
 #endif
 }
 
-void tcontrol::set_label(const t_string& label)
+void styled_widget::set_label(const t_string& label)
 {
 	if(label == label_) {
 		return;
 	}
 
 	label_ = label;
-	set_layout_size(tpoint());
+	set_layout_size(point());
 	update_canvas();
 	set_is_dirty(true);
 }
 
-void tcontrol::set_use_markup(bool use_markup)
+void styled_widget::set_use_markup(bool use_markup)
 {
 	if(use_markup == use_markup_) {
 		return;
@@ -348,7 +348,7 @@ void tcontrol::set_use_markup(bool use_markup)
 	set_is_dirty(true);
 }
 
-void tcontrol::set_text_alignment(const PangoAlignment text_alignment)
+void styled_widget::set_text_alignment(const PangoAlignment text_alignment)
 {
 	if(text_alignment_ == text_alignment) {
 		return;
@@ -359,7 +359,7 @@ void tcontrol::set_text_alignment(const PangoAlignment text_alignment)
 	set_is_dirty(true);
 }
 
-void tcontrol::update_canvas()
+void styled_widget::update_canvas()
 {
 	const int max_width = get_text_maximum_width();
 	const int max_height = get_text_maximum_height();
@@ -383,7 +383,7 @@ void tcontrol::update_canvas()
 	}
 }
 
-int tcontrol::get_text_maximum_width() const
+int styled_widget::get_text_maximum_width() const
 {
 	assert(config_);
 
@@ -391,25 +391,25 @@ int tcontrol::get_text_maximum_width() const
 									: get_width() - config_->text_extra_width;
 }
 
-int tcontrol::get_text_maximum_height() const
+int styled_widget::get_text_maximum_height() const
 {
 	assert(config_);
 
 	return get_height() - config_->text_extra_height;
 }
 
-void tcontrol::impl_draw_background(surface& frame_buffer,
+void styled_widget::impl_draw_background(surface& frame_buffer,
 									int x_offset,
 									int y_offset)
 {
 	DBG_GUI_D << LOG_HEADER << " label '" << debug_truncate(label_) << "' size "
 			  << get_rectangle() << ".\n";
 
-	canvas(get_state()).blit(frame_buffer,
+	get_canvas(get_state()).blit(frame_buffer,
 							 calculate_blitting_rectangle(x_offset, y_offset));
 }
 
-void tcontrol::impl_draw_foreground(surface& /*frame_buffer*/
+void styled_widget::impl_draw_foreground(surface& /*frame_buffer*/
 									,
 									int /*x_offset*/
 									,
@@ -418,34 +418,34 @@ void tcontrol::impl_draw_foreground(surface& /*frame_buffer*/
 	/* DO NOTHING */
 }
 
-void tcontrol::definition_load_configuration(const std::string& control_type)
+void styled_widget::definition_load_configuration(const std::string& control_type)
 {
 	assert(!config());
 
 	set_config(get_control(control_type, definition_));
-	if(canvas().size() != config()->state.size())
+	if(get_canvas().size() != config()->state.size())
 	{
 		// TODO: Some widgets (toggle panel, toggle button) have a variable canvas count which is determined by its definition.
 		// I think we should remove the canvas_count from tcontrols constructor and always read it from the definition.
 		DBG_GUI_L << "Corrected canvas count to " << config()->state.size() << std::endl;
-		canvas() = std::vector<tcanvas>(config()->state.size());
+		get_canvas() = std::vector<canvas>(config()->state.size());
 	}
-	for(size_t i = 0; i < canvas().size(); ++i) {
-		canvas(i) = config()->state[i].canvas;
+	for(size_t i = 0; i < get_canvas().size(); ++i) {
+		get_canvas(i) = config()->state[i].canvas_;
 	}
 
 	update_canvas();
 }
 
-tpoint tcontrol::get_best_text_size(tpoint minimum_size,
-									tpoint maximum_size) const
+point styled_widget::get_best_text_size(point minimum_size,
+									point maximum_size) const
 {
 	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
 
 	assert(!label_.empty());
 
-	const tpoint border(config_->text_extra_width, config_->text_extra_height);
-	tpoint size = minimum_size - border;
+	const point border(config_->text_extra_width, config_->text_extra_height);
+	point size = minimum_size - border;
 
 	renderer_.set_link_aware(get_link_aware())
 			.set_link_color(get_link_color());
@@ -487,7 +487,7 @@ tpoint tcontrol::get_best_text_size(tpoint minimum_size,
 	if(renderer_.is_truncated() && !can_wrap()) {
 		// FIXME if maximum size is defined we should look at that
 		// but also we don't adjust for the extra text space yet!!!
-		maximum_size = tpoint(config_->max_width, config_->max_height);
+		maximum_size = point(config_->max_width, config_->max_height);
 		renderer_.set_maximum_width(maximum_size.x ? maximum_size.x - border.x
 												   : -1);
 	}
@@ -507,9 +507,9 @@ tpoint tcontrol::get_best_text_size(tpoint minimum_size,
 	return size;
 }
 
-void tcontrol::signal_handler_show_tooltip(const event::tevent event,
+void styled_widget::signal_handler_show_tooltip(const event::ui_event event,
 										   bool& handled,
-										   const tpoint& location)
+										   const point& location)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
@@ -525,24 +525,24 @@ void tcontrol::signal_handler_show_tooltip(const event::tevent event,
 									 settings::has_helptip_message, &symbols);
 		}
 
-		event::tmessage_show_tooltip message(tip, location, get_rectangle());
+		event::message_show_tooltip message(tip, location, get_rectangle());
 		handled = fire(event::MESSAGE_SHOW_TOOLTIP, *this, message);
 	}
 }
 
-void tcontrol::signal_handler_show_helptip(const event::tevent event,
+void styled_widget::signal_handler_show_helptip(const event::ui_event event,
 										   bool& handled,
-										   const tpoint& location)
+										   const point& location)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
 	if(!help_message_.empty()) {
-		event::tmessage_show_helptip message(help_message_, location, get_rectangle());
+		event::message_show_helptip message(help_message_, location, get_rectangle());
 		handled = fire(event::MESSAGE_SHOW_HELPTIP, *this, message);
 	}
 }
 
-void tcontrol::signal_handler_notify_remove_tooltip(const event::tevent event,
+void styled_widget::signal_handler_notify_remove_tooltip(const event::ui_event event,
 													bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -552,17 +552,17 @@ void tcontrol::signal_handler_notify_remove_tooltip(const event::tevent event,
 	 * alternative is to add a message to the window to remove the tip.
 	 * Might be done later.
 	 */
-	tip::remove();
+	dialogs::tip::remove();
 
 	handled = true;
 }
 
-std::string tcontrol::get_label_token(const gui2::tpoint & position, const char * delim) const
+std::string styled_widget::get_label_token(const gui2::point & position, const char * delim) const
 {
 	return renderer_.get_token(position, delim);
 }
 
-std::string tcontrol::get_label_link(const gui2::tpoint & position) const
+std::string styled_widget::get_label_link(const gui2::point & position) const
 {
 	return renderer_.get_link(position);
 }
@@ -596,7 +596,7 @@ std::string tcontrol::get_label_link(const gui2::tpoint & position) const
  *                                     title label when the label is used as
  *                                     title. $
  *
- *     linked_group & string & "" &    The linked group the control belongs
+ *     linked_group & string & "" &    The linked group the styled_widget belongs
  *                                     to. $
  *
  *     label & t_string & "" &          Most widgets have some text associated
@@ -647,8 +647,8 @@ std::string tcontrol::get_label_link(const gui2::tpoint & position) const
 namespace implementation
 {
 
-tbuilder_control::tbuilder_control(const config& cfg)
-	: tbuilder_widget(cfg)
+builder_styled_widget::builder_styled_widget(const config& cfg)
+	: builder_widget(cfg)
 	, definition(cfg["definition"])
 	, label_string(cfg["label"].t_str())
 	, tooltip(cfg["tooltip"].t_str())
@@ -667,11 +667,11 @@ tbuilder_control::tbuilder_control(const config& cfg)
 						 << "' helptip '" << help << "'.");
 
 
-	DBG_GUI_P << "Window builder: found control with id '" << id
+	DBG_GUI_P << "Window builder: found styled_widget with id '" << id
 			  << "' and definition '" << definition << "'.\n";
 }
 
-void tbuilder_control::init_control(tcontrol* control) const
+void builder_styled_widget::init_control(styled_widget* control) const
 {
 	assert(control);
 
@@ -689,7 +689,7 @@ void tbuilder_control::init_control(tcontrol* control) const
 #endif
 }
 
-twidget* tbuilder_control::build(const treplacements& /*replacements*/) const
+widget* builder_styled_widget::build(const replacements_map& /*replacements*/) const
 {
 	return build();
 }

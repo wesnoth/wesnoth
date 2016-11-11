@@ -22,8 +22,10 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
-class taddon_description : public tdialog
+class addon_description : public modal_dialog
 {
 public:
 	/**
@@ -35,35 +37,36 @@ public:
 	 * @param addon_states        Local installation status of the add-ons in
 	 *                            @a addons_list.
 	 */
-	taddon_description(const std::string& addon_id,
+	addon_description(const std::string& addon_id,
 					   const addons_list& addons_list,
 					   const addons_tracking_list& addon_states);
 
 	/**
 	 * The display function.
 	 *
-	 * See @ref tdialog for more information.
+	 * See @ref modal_dialog for more information.
 	 */
 	static void display(const std::string& addon_id,
 						const addons_list& addons_list,
 						const addons_tracking_list& addon_states,
 						CVideo& video)
 	{
-		taddon_description(addon_id, addons_list, addon_states).show(video);
+		addon_description(addon_id, addons_list, addon_states).show(video);
 	}
 
 private:
 	std::string feedback_url_;
 
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	/** Inherited from modal_dialog. */
+	void pre_show(window& window);
 
 	void browse_url_callback();
 	void copy_url_callback();
 };
-}
+} // namespace dialogs
+} // namespace gui2
 
 #endif

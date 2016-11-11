@@ -179,7 +179,7 @@ EXIT_STATUS editor_controller::main_loop()
 	} catch (editor_exception& e) {
 		gui2::show_transient_message(gui().video(), _("Fatal error"), e.what());
 		return EXIT_ERROR;
-	} catch (twml_exception& e) {
+	} catch (wml_exception& e) {
 		e.show(gui().video());
 	}
 	return quit_mode_;
@@ -194,7 +194,7 @@ void editor_controller::do_screenshot(const std::string& screenshot_filename /* 
 		if (!gui().screenshot(screenshot_filename,true)) {
 			ERR_ED << "Screenshot creation failed!\n";
 		}
-	} catch (twml_exception& e) {
+	} catch (wml_exception& e) {
 		e.show(gui().video());
 	}
 }
@@ -228,7 +228,7 @@ void editor_controller::custom_tods_dialog()
 
 	std::vector<time_of_day> schedule = context_manager_->get_map_context().get_time_manager()->times();
 
-	if(!gui2::tcustom_tod::execute(gui(), schedule)) {
+	if(!gui2::dialogs::custom_tod::execute(gui(), schedule)) {
 		adjust_resetter.reset();
 	} else {
 		// TODO save the new tod here
@@ -1096,7 +1096,7 @@ void editor_controller::show_menu(const std::vector<std::string>& items_arg, int
 void editor_controller::preferences()
 {
 	gui_->video().clear_all_help_strings();
-	gui2::tpreferences::display(gui_->video(), game_config_);
+	gui2::dialogs::preferences_dialog::display(gui_->video(), game_config_);
 
 	gui_->redraw_everything();
 }
@@ -1139,7 +1139,7 @@ void editor_controller::change_unit_id()
 
 	if(un != units.end()) {
 		std::string id = un->id();
-		if (gui2::tedit_text::execute(title, label, id, gui_->video())) {
+		if (gui2::dialogs::edit_text::execute(title, label, id, gui_->video())) {
 			un->set_id(id);
 		}
 	}
@@ -1156,7 +1156,7 @@ void editor_controller::rename_unit()
 
 	if(un != units.end()) {
 		std::string name = un->name();
-		if(gui2::tedit_text::execute(title, label, name, gui_->video())) {
+		if(gui2::dialogs::edit_text::execute(title, label, name, gui_->video())) {
 			//TODO we may not want a translated name here.
 			un->set_name(name);
 		}
@@ -1165,7 +1165,7 @@ void editor_controller::rename_unit()
 
 void editor_controller::unit_list()
 {
-	gui2::show_unit_list(*gui_);
+	gui2::dialogs::show_unit_list(*gui_);
 }
 
 void editor_controller::cut_selection()

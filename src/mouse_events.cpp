@@ -28,7 +28,7 @@
 #include "game_events/pump.hpp"		// for fire
 #include "gettext.hpp"                  // for _
 #include "gui/dialogs/transient_message.hpp"  // for show_transient_message
-#include "gui/dialogs/unit_attack.hpp"  // for tunit_attack
+#include "gui/dialogs/unit_attack.hpp"  // for unit_attack
 #include "gui/widgets/settings.hpp"     // for new_widgets
 #include "gui/widgets/window.hpp"     // for enum
 #include "language.hpp"                 // for string_table, symbol_table
@@ -981,7 +981,7 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 		return -1;
 	}
 
-	gui2::tunit_attack dlg(
+	gui2::dialogs::unit_attack dlg(
 			  attacker
 			, defender
 			, bc_vector
@@ -989,7 +989,7 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 
 	dlg.show(gui_->video());
 
-	if(dlg.get_retval() == gui2::twindow::OK) {
+	if(dlg.get_retval() == gui2::window::OK) {
 		return dlg.get_selected_weapon();
 	}
 

@@ -27,17 +27,17 @@ namespace gui2
 
 namespace implementation
 {
-struct tbuilder_control;
+struct builder_styled_widget;
 } // namespace implementation
 
 /** Base class for all visible items. */
-class tcontrol : public twidget
+class styled_widget : public widget
 {
-	friend class tdebug_layout_graph;
+	friend class debug_layout_graph;
 
 public:
 	/** @deprecated Used the second overload. */
-	explicit tcontrol(const unsigned canvas_count);
+	explicit styled_widget(const unsigned canvas_count);
 
 	/**
 	 * Constructor.
@@ -45,14 +45,14 @@ public:
 	 * @param builder             The builder object with the settings for the
 	 *                            object.
 	 *
-	 * @param canvas_count        The number of canvasses in the control.
+	 * @param canvas_count        The number of canvasses in the styled_widget.
 	 */
-	tcontrol(const implementation::tbuilder_control& builder,
+	styled_widget(const implementation::builder_styled_widget& builder,
 			 const unsigned canvas_count,
 			 const std::string& control_type);
 
 	/**
-	 * Sets the members of the control.
+	 * Sets the members of the styled_widget.
 	 *
 	 * The map contains named members it can set, controls inheriting from us
 	 * can add additional members to set by this function. The following
@@ -70,15 +70,15 @@ public:
 	/***** ***** ***** ***** State handling ***** ***** ***** *****/
 
 	/**
-	 * Sets the control's state.
+	 * Sets the styled_widget's state.
 	 *
-	 *  Sets the control in the active state, when inactive a control can't be
-	 *  used and doesn't react to events. (Note read-only for a ttext_ is a
+	 *  Sets the styled_widget in the active state, when inactive a styled_widget can't be
+	 *  used and doesn't react to events. (Note read-only for a text_box_base is a
 	 *  different state.)
 	 */
 	virtual void set_active(const bool active) = 0;
 
-	/** Gets the active state of the control. */
+	/** Gets the active state of the styled_widget. */
 	virtual bool get_active() const = 0;
 
 protected:
@@ -92,15 +92,15 @@ public:
 	/***** ***** ***** ***** Easy close handling ***** ***** ***** *****/
 
 	/**
-	 * See @ref twidget::disable_click_dismiss.
+	 * See @ref widget::disable_click_dismiss.
 	 *
 	 * The default behavior is that a widget blocks easy close, if not it
 	 * should override this function.
 	 */
 	bool disable_click_dismiss() const override;
 
-	/** See @ref twidget::create_walker. */
-	virtual iterator::twalker_* create_walker() override;
+	/** See @ref widget::create_walker. */
+	virtual iterator::walker_base* create_walker() override;
 
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
@@ -111,7 +111,7 @@ public:
 	 *
 	 * @returns                   The size.
 	 */
-	tpoint get_config_minimum_size() const;
+	point get_config_minimum_size() const;
 
 	/**
 	 * Gets the default size as defined in the config.
@@ -120,7 +120,7 @@ public:
 	 *
 	 * @returns                   The size.
 	 */
-	tpoint get_config_default_size() const;
+	point get_config_default_size() const;
 
 	/**
 	 * Gets the best size as defined in the config.
@@ -129,12 +129,12 @@ public:
 	 *
 	 * @returns                   The size.
 	 */
-	tpoint get_config_maximum_size() const;
+	point get_config_maximum_size() const;
 
 	/**
 	 * Returns the number of characters per line.
 	 *
-	 * This value is used to call @ref ttext::set_characters_per_line
+	 * This value is used to call @ref pango_text::set_characters_per_line
 	 * (indirectly).
 	 *
 	 * @returns                   The characters per line. This implementation
@@ -146,7 +146,7 @@ public:
 	 * Returns whether the label should be link_aware, in
 	 * in rendering and in searching for links with get_link.
 	 *
-	 * This value is used to call @ref ttext::set_link_aware
+	 * This value is used to call @ref pango_text::set_link_aware
 	 * (indirectly).
 	 *
 	 * @returns		      The link aware status. This impl always
@@ -157,7 +157,7 @@ public:
 	/**
 	 * Returns the color string to be used with links.
 	 *
-	 * This value is used to call @ref ttext::set_link_color
+	 * This value is used to call @ref pango_text::set_link_color
 	 * (indirectly).
 	 *
 	 * @returns		      The link color string. This impl returns "#ffff00".
@@ -166,23 +166,23 @@ public:
 	virtual std::string get_link_color() const;
 
 	/**
-	 * See @ref twidget::layout_initialise.
+	 * See @ref widget::layout_initialise.
 	 *
 	 * @todo Also handle the tooltip state.
 	 * Handle if shrunken_ && use_tooltip_on_label_overflow_.
 	 */
 	virtual void layout_initialise(const bool full_initialisation) override;
 
-	/** See @ref twidget::request_reduce_width. */
+	/** See @ref widget::request_reduce_width. */
 	virtual void request_reduce_width(const unsigned maximum_width) override;
 
 protected:
-	/** See @ref twidget::calculate_best_size. */
-	virtual tpoint calculate_best_size() const override;
+	/** See @ref widget::calculate_best_size. */
+	virtual point calculate_best_size() const override;
 
 public:
-	/** See @ref twidget::place. */
-	virtual void place(const tpoint& origin, const tpoint& size) override;
+	/** See @ref widget::place. */
+	virtual void place(const point& origin, const point& size) override;
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
@@ -206,28 +206,28 @@ private:
 	 * more code and call load_config in the ctor, removing the use case for
 	 * the window. That however is a longer termine refactoring.
 	 */
-	friend class twindow;
+	friend class window;
 
 public:
-	/** See @ref twidget::find_at. */
-	virtual twidget* find_at(const tpoint& coordinate,
+	/** See @ref widget::find_at. */
+	virtual widget* find_at(const point& coordinate,
 							 const bool must_be_active) override;
 
-	/** See @ref twidget::find_at. */
-	virtual const twidget* find_at(const tpoint& coordinate,
+	/** See @ref widget::find_at. */
+	virtual const widget* find_at(const point& coordinate,
 								   const bool must_be_active) const override;
 
-	/** See @ref twidget::find. */
-	twidget* find(const std::string& id, const bool must_be_active) override;
+	/** See @ref widget::find. */
+	widget* find(const std::string& id, const bool must_be_active) override;
 
-	/** See @ref twidget::find. */
-	const twidget* find(const std::string& id,
+	/** See @ref widget::find. */
+	const widget* find(const std::string& id,
 						const bool must_be_active) const override;
 
 	/**
 	 * Sets the definition.
 	 *
-	 * This function sets the definition of a control and should be called soon
+	 * This function sets the definition of a styled_widget and should be called soon
 	 * after creating the object since a lot of internal functions depend on the
 	 * definition.
 	 *
@@ -245,7 +245,7 @@ public:
 		use_tooltip_on_label_overflow_ = use_tooltip;
 	}
 
-	const t_string& label() const
+	const t_string& get_label() const
 	{
 		return label_;
 	}
@@ -279,11 +279,11 @@ public:
 	}
 
 	// const versions will be added when needed
-	std::vector<tcanvas>& canvas()
+	std::vector<canvas>& get_canvas()
 	{
 		return canvas_;
 	}
-	tcanvas& canvas(const unsigned index)
+	canvas& get_canvas(const unsigned index)
 	{
 		assert(index < canvas_.size());
 		return canvas_[index];
@@ -296,16 +296,16 @@ public:
 	}
 
 protected:
-	tresolution_definition_ptr config()
+	resolution_definition_ptr config()
 	{
 		return config_;
 	}
-	tresolution_definition_const_ptr config() const
+	resolution_definition_const_ptr config() const
 	{
 		return config_;
 	}
 
-	void set_config(tresolution_definition_ptr config)
+	void set_config(resolution_definition_ptr config)
 	{
 		config_ = config;
 	}
@@ -346,7 +346,7 @@ private:
 	 */
 	std::string definition_;
 
-	/** Contain the non-editable text associated with control. */
+	/** Contain the non-editable text associated with styled_widget. */
 	t_string label_;
 
 	/** Use markup for the label? */
@@ -376,25 +376,25 @@ private:
 	t_string help_message_;
 
 	/**
-	 * Holds all canvas objects for a control.
+	 * Holds all canvas objects for a styled_widget.
 	 *
-	 * A control can have multiple states, which are defined in the classes
+	 * A styled_widget can have multiple states, which are defined in the classes
 	 * inheriting from us. For every state there is a separate canvas, which is
 	 * stored here. When drawing the state is determined and that canvas is
 	 * drawn.
 	 */
-	std::vector<tcanvas> canvas_;
+	std::vector<canvas> canvas_;
 
 	/**
 	 * Contains the pointer to the configuration.
 	 *
-	 * Every control has a definition of how it should look, this contains a
+	 * Every styled_widget has a definition of how it should look, this contains a
 	 * pointer to the definition. The definition is resolution dependent, where
 	 * the resolution is the size of the Wesnoth application window. Depending
 	 * on the resolution widgets can look different, use different fonts.
 	 * Windows can use extra scrollbars use abbreviations as text etc.
 	 */
-	tresolution_definition_ptr config_;
+	resolution_definition_ptr config_;
 
 	/**
 	 * Load class dependent config settings.
@@ -418,36 +418,36 @@ private:
 
 public:
 	/**
-	 * Returns the control_type of the control.
+	 * Returns the control_type of the styled_widget.
 	 *
-	 * The control_type parameter for tgui_definition::get_control() To keep the
+	 * The control_type parameter for gui_definition::get_control() To keep the
 	 * code more generic this type is required so the controls need to return
 	 * the proper string here.  Might be used at other parts as well the get the
 	 * type of
-	 * control involved.
+	 * styled_widget involved.
 	 */
 	virtual const std::string& get_control_type() const = 0;
 
 protected:
-	/** See @ref twidget::impl_draw_background. */
+	/** See @ref widget::impl_draw_background. */
 	virtual void impl_draw_background(surface& frame_buffer,
 									  int x_offset,
 									  int y_offset) override;
 
-	/** See @ref twidget::impl_draw_foreground. */
+	/** See @ref widget::impl_draw_foreground. */
 	virtual void impl_draw_foreground(surface& frame_buffer,
 									  int x_offset,
 									  int y_offset) override;
 
-	/** Exposes font::ttext::get_token, for the text label of this control */
-	std::string get_label_token(const gui2::tpoint & position, const char * delimiters = " \n\r\t") const;
+	/** Exposes font::pango_text::get_token, for the text label of this styled_widget */
+	std::string get_label_token(const gui2::point & position, const char * delimiters = " \n\r\t") const;
 
-	std::string get_label_link(const gui2::tpoint & position) const;
+	std::string get_label_link(const gui2::point & position) const;
 
 private:
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	/**
-	 * Initializes the control.
+	 * Initializes the styled_widget.
 	 *
 	 * Not everything can be code in the constructor since virtual functions
 	 * can't be used. So after construction this function needs to be called and
@@ -468,13 +468,13 @@ private:
 	 *
 	 * @returns                   The best size.
 	 */
-	tpoint get_best_text_size(tpoint minimum_size,
-							  tpoint maximum_size = {0, 0}) const;
+	point get_best_text_size(point minimum_size,
+							  point maximum_size = {0, 0}) const;
 
 	/**
 	 * Contains a helper cache for the rendering.
 	 *
-	 * Creating a ttext object is quite expensive and is done on various
+	 * Creating a pango_text object is quite expensive and is done on various
 	 * occasions so it's cached here.
 	 *
 	 * @todo Maybe if still too slow we might also copy this cache to the
@@ -482,12 +482,12 @@ private:
 	 * Unfortunately that would make the dependency between the classes bigger
 	 * as wanted.
 	 */
-	mutable font::ttext renderer_;
+	mutable font::pango_text renderer_;
 
-	/** The maximum width for the text in a control. */
+	/** The maximum width for the text in a styled_widget. */
 	int text_maximum_width_;
 
-	/** The alignment of the text in a control. */
+	/** The alignment of the text in a styled_widget. */
 	PangoAlignment text_alignment_;
 
 	/** Is the widget smaller as it's best size? */
@@ -495,38 +495,38 @@ private:
 
 	/***** ***** ***** signal handlers ***** ****** *****/
 
-	void signal_handler_show_tooltip(const event::tevent event,
+	void signal_handler_show_tooltip(const event::ui_event event,
 									 bool& handled,
-									 const tpoint& location);
+									 const point& location);
 
-	void signal_handler_show_helptip(const event::tevent event,
+	void signal_handler_show_helptip(const event::ui_event event,
 									 bool& handled,
-									 const tpoint& location);
+									 const point& location);
 
-	void signal_handler_notify_remove_tooltip(const event::tevent event,
+	void signal_handler_notify_remove_tooltip(const event::ui_event event,
 											  bool& handled);
 };
 
 // }---------- BUILDER -----------{
 
-class tcontrol;
+class styled_widget;
 
 namespace implementation
 {
 
-struct tbuilder_control : public tbuilder_widget
+struct builder_styled_widget : public builder_widget
 {
 public:
-	tbuilder_control(const config& cfg);
+	builder_styled_widget(const config& cfg);
 
-	using tbuilder_widget::build;
+	using builder_widget::build;
 
-	virtual twidget* build(const treplacements& replacements) const override;
+	virtual widget* build(const replacements_map& replacements) const override;
 
-	/** @deprecated The control can initialize itself. */
-	void init_control(tcontrol* control) const;
+	/** @deprecated The styled_widget can initialize itself. */
+	void init_control(styled_widget* styled_widget) const;
 
-	/** Parameters for the control. */
+	/** Parameters for the styled_widget. */
 	std::string definition;
 	t_string label_string;
 	t_string tooltip;

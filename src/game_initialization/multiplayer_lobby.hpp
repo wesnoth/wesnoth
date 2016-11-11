@@ -189,7 +189,7 @@ private:
 class lobby : public ui
 {
 public:
-	lobby(CVideo& v, twesnothd_connection* wesnothd_connection, const config& cfg, chat& c, config& gamelist, const std::vector<std::string> & installed_addons);
+	lobby(CVideo& v, wesnothd_connection* connection, const config& cfg, chat& c, config& gamelist, const std::vector<std::string> & installed_addons);
 
 	virtual void process_event();
 
