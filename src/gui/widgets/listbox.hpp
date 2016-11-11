@@ -256,7 +256,7 @@ public:
 			[f](int lhs, int rhs) { return f(lhs) < f(rhs); },
 			[f](int lhs, int rhs) { return f(lhs) > f(rhs); }
 		}});
-	};
+	}
 
 	enum SORT_ORDER {
 		SORT_NONE,

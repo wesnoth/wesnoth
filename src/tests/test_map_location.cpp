@@ -64,7 +64,7 @@ struct MLFixture
 
 BOOST_GLOBAL_FIXTURE ( MLFixture );
 
-BOOST_AUTO_TEST_SUITE ( test_map_location );
+BOOST_AUTO_TEST_SUITE ( test_map_location )
 
 //#define MAP_LOCATION_GET_OUTPUT
 

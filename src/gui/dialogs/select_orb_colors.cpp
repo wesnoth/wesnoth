@@ -33,7 +33,7 @@ namespace gui2
 {
 namespace dialogs
 {
-REGISTER_DIALOG(select_orb_colors);
+REGISTER_DIALOG(select_orb_colors)
 
 select_orb_colors::select_orb_colors()
 	: show_unmoved_(preferences::show_unmoved_orb())

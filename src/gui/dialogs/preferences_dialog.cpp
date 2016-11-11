@@ -246,7 +246,7 @@ template<typename W>
 static void disable_widget_on_toggle(window& window, widget& w, const std::string& id)
 {
 	find_widget<W>(&window, id, false).set_active(dynamic_cast<selectable_item&>(w).get_value_bool());
-};
+}
 
 /**
  * Sets up states and callbacks for each of the widgets
