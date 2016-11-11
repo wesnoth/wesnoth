@@ -12,8 +12,8 @@
    See the COPYING file for more details.
 */
 
-#include "player_connection.hpp"
-#include "game.hpp"
+#include "server/player_connection.hpp"
+#include "server/game.hpp"
 
 namespace wesnothd
 {

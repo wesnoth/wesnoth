@@ -16,12 +16,12 @@
  * @file
  */
 
-#include "mapbuilder.hpp"
+#include "whiteboard/mapbuilder.hpp"
 
-#include "action.hpp"
-#include "move.hpp"
-#include "side_actions.hpp"
-#include "utility.hpp"
+#include "whiteboard/action.hpp"
+#include "whiteboard/move.hpp"
+#include "whiteboard/side_actions.hpp"
+#include "whiteboard/utility.hpp"
 
 #include "game_board.hpp"
 #include "play_controller.hpp"

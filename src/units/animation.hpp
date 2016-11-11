@@ -36,7 +36,7 @@ class unit_animation
 			(MISS, "miss")
 			(KILL, "kill")
 			(INVALID, "invalid")
-		);
+		)
 
 		static const std::vector<std::string>& all_tag_names();
 		static void fill_initial_animations( std::vector<unit_animation> & animations, const config & cfg);

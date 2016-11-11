@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-#include "mp_options.hpp"
+#include "game_initialization/mp_options.hpp"
 #include "font/standard_colors.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/find_widget.hpp"

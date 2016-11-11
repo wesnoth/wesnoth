@@ -18,9 +18,9 @@
  */
 
 #include "global.hpp"
-#include "wmi_container.hpp"
-#include "handlers.hpp"
-#include "menu_item.hpp"
+#include "game_events/wmi_container.hpp"
+#include "game_events/handlers.hpp"
+#include "game_events/menu_item.hpp"
 #include "resources.hpp"
 #include "play_controller.hpp"
 

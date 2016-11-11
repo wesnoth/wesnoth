@@ -19,10 +19,10 @@
  */
 
 #include "global.hpp"
-#include "pump.hpp"
-#include "conditional_wml.hpp"
-#include "handlers.hpp"
-#include "manager.hpp"
+#include "game_events/pump.hpp"
+#include "game_events/conditional_wml.hpp"
+#include "game_events/handlers.hpp"
+#include "game_events/manager.hpp"
 
 #include "display_chat_manager.hpp"
 #include "game_config.hpp"

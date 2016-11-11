@@ -26,7 +26,7 @@
 #include "gui/dialogs/transient_message.hpp"
 #include "minimap.hpp"
 #include "mp_game_settings.hpp"
-#include "multiplayer_configure.hpp"
+#include "game_initialization/multiplayer_configure.hpp"
 #include "filesystem.hpp"
 #include "log.hpp"
 #include "saved_game.hpp"

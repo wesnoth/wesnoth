@@ -19,7 +19,7 @@
 
 #include "global.hpp"
 
-#include "cave_map_generator.hpp"
+#include "generators/cave_map_generator.hpp"
 #include "config_assign.hpp"
 #include "log.hpp"
 #include "map/map.hpp"

@@ -13,7 +13,7 @@
 */
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
-#include "map_fragment.hpp"
+#include "editor/map/map_fragment.hpp"
 
 #include "util.hpp"
 

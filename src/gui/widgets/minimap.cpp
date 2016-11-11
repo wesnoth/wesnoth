@@ -24,7 +24,7 @@
 #include "map/map.hpp"
 #include "map/exception.hpp"
 #include "terrain/type_data.hpp"
-#include "../../minimap.hpp" // We want the file in src/
+#include "gui/widgets/../../minimap.hpp" // We want the file in src/
 
 #include "utils/functional.hpp"
 

@@ -27,9 +27,9 @@
 #include "log.hpp"
 #include "font/marked-up_text.hpp"
 #include "menu_events.hpp"
-#include "multiplayer.hpp"
-#include "multiplayer_ui.hpp"
-#include "multiplayer_lobby.hpp" //needed for dynamic cast when implementing the lobby_sounds preference
+#include "game_initialization/multiplayer.hpp"
+#include "game_initialization/multiplayer_ui.hpp"
+#include "game_initialization/multiplayer_lobby.hpp" //needed for dynamic cast when implementing the lobby_sounds preference
 #include "mp_ui_alerts.hpp"
 #include "wml_separators.hpp"
 #include "formula/string_utils.hpp"

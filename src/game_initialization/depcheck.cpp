@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-#include "depcheck.hpp"
+#include "game_initialization/depcheck.hpp"
 
 #include <algorithm>
 

@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-#include "windows_tray_notification.hpp"
+#include "desktop/windows_tray_notification.hpp"
 
 #include <SDL_syswm.h>
 

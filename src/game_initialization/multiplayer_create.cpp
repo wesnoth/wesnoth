@@ -35,7 +35,7 @@
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/window.hpp"
 #include "minimap.hpp"
-#include "multiplayer_create.hpp"
+#include "game_initialization/multiplayer_create.hpp"
 #include "filesystem.hpp"
 #include "savegame.hpp"
 #include "saved_game.hpp"

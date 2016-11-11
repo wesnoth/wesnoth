@@ -17,9 +17,9 @@
  * Sighting.
  */
 
-#include "vision.hpp"
+#include "actions/vision.hpp"
 
-#include "move.hpp"
+#include "actions/move.hpp"
 
 #include "config.hpp"
 #include "game_display.hpp"

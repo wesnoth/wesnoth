@@ -16,9 +16,9 @@
  * Fighting.
  */
 
-#include "advancement.hpp"
+#include "actions/advancement.hpp"
 
-#include "vision.hpp"
+#include "actions/vision.hpp"
 
 #include "ai/lua/aspect_advancements.hpp"
 #include "game_display.hpp"

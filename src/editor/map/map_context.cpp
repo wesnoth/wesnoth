@@ -15,7 +15,7 @@
 
 #include "editor/action/action.hpp"
 #include "editor/editor_preferences.hpp"
-#include "map_context.hpp"
+#include "editor/map/map_context.hpp"
 
 #include "config_assign.hpp"
 #include "display.hpp"

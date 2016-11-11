@@ -27,7 +27,7 @@
    and big-endian machines, but for our current usage, we don't care :)
 */
 
-#include "sha1.hpp"
+#include "utils/sha1.hpp"
 
 #include <iomanip>
 #include <sstream>

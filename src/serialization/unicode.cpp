@@ -20,8 +20,8 @@
  */
 
 #include "global.hpp"
-#include "ucs4_convert_impl.hpp"
-#include "unicode_cast.hpp"
+#include "serialization/ucs4_convert_impl.hpp"
+#include "serialization/unicode_cast.hpp"
 #include "serialization/unicode.hpp"
 
 #include "log.hpp"

@@ -1,4 +1,4 @@
-#include "undo_action.hpp"
+#include "actions/undo_action.hpp"
 #include "scripting/game_lua_kernel.hpp"
 #include "resources.hpp"
 #include "variable.hpp" // vconfig

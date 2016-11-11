@@ -52,7 +52,7 @@
 #include "ai/default/contexts.hpp"  // for attack_analysis
 #include "ai/formula/function_table.hpp"           // for ai_function_symbol_table
 #include "ai/game_info.hpp"  // for move_result_ptr, move_map, etc
-#include "candidates.hpp"               // for base_candidate_action, etc
+#include "ai/formula/candidates.hpp"               // for base_candidate_action, etc
 
 #include <cassert>                     // for assert
 #include <ctime>                       // for time

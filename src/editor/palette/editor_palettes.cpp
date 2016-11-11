@@ -14,7 +14,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
-#include "editor_palettes.hpp"
+#include "editor/palette/editor_palettes.hpp"
 
 #include "gettext.hpp"
 #include "font/standard_colors.hpp"

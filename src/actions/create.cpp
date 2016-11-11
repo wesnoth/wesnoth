@@ -17,11 +17,11 @@
  * Recruiting, recalling.
  */
 
-#include "create.hpp"
+#include "actions/create.hpp"
 
-#include "move.hpp"
-#include "undo.hpp"
-#include "vision.hpp"
+#include "actions/move.hpp"
+#include "actions/undo.hpp"
+#include "actions/vision.hpp"
 
 #include "config.hpp"
 #include "config_assign.hpp"

@@ -14,7 +14,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
-#include "location_palette.hpp"
+#include "editor/palette/location_palette.hpp"
 
 #include "gettext.hpp"
 #include "font/marked-up_text.hpp"

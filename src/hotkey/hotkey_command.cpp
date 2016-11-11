@@ -15,8 +15,8 @@
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "gettext.hpp"
-#include "hotkey_command.hpp"
-#include "hotkey_item.hpp"
+#include "hotkey/hotkey_command.hpp"
+#include "hotkey/hotkey_item.hpp"
 #include "config.hpp"
 #include "preferences.hpp"
 #include "log.hpp"

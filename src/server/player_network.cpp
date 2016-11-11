@@ -13,7 +13,7 @@
    See the COPYING file for more details.
 */
 
-#include "player_network.hpp"
+#include "server/player_network.hpp"
 #include "log.hpp"
 #include "serialization/unicode.hpp"
 

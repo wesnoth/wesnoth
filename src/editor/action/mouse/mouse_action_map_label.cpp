@@ -13,7 +13,7 @@
 */
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
-#include "mouse_action_map_label.hpp"
+#include "editor/action/mouse/mouse_action_map_label.hpp"
 #include "editor/action/action_label.hpp"
 
 #include "editor/editor_display.hpp"

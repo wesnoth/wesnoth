@@ -13,7 +13,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "select_orb_colors.hpp"
+#include "gui/dialogs/select_orb_colors.hpp"
 
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/auxiliary/iterator/walker.hpp"
@@ -33,7 +33,7 @@ namespace gui2
 {
 namespace dialogs
 {
-REGISTER_DIALOG(select_orb_colors);
+REGISTER_DIALOG(select_orb_colors)
 
 select_orb_colors::select_orb_colors()
 	: show_unmoved_(preferences::show_unmoved_orb())

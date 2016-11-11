@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-#include "multimenu.hpp"
+#include "widgets/multimenu.hpp"
 #include "image.hpp"
 #include "video.hpp"
 

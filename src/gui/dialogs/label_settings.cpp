@@ -13,7 +13,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "label_settings.hpp"
+#include "gui/dialogs/label_settings.hpp"
 
 #include <vector>
 #include "utils/functional.hpp"
@@ -38,7 +38,7 @@ namespace gui2
 {
 namespace dialogs
 {
-REGISTER_DIALOG(label_settings);
+REGISTER_DIALOG(label_settings)
 
 label_settings::label_settings(display_context& dc) : viewer(dc) {
 	const std::vector<std::string>& all_categories = resources::screen->labels().all_categories();

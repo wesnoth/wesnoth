@@ -18,8 +18,8 @@
 #include "game_config.hpp" // game_config::observer_team_name
 #include "log.hpp"
 
-#include "game.hpp"
-#include "player_network.hpp"
+#include "server/game.hpp"
+#include "server/player_network.hpp"
 #include "serialization/string_utils.hpp"
 #include "util.hpp"
 

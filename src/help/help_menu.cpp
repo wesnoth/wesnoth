@@ -12,10 +12,10 @@
    See the COPYING file for more details.
 */
 
-#include "help_menu.hpp"
+#include "help/help_menu.hpp"
 
 #include "game_config.hpp"              // for menu_contract, menu_expand
-#include "help_impl.hpp"                // for section, topic, topic_list, etc
+#include "help/help_impl.hpp"                // for section, topic, topic_list, etc
 #include "sound.hpp"                    // for play_UI_sound
 #include "wml_separators.hpp"           // for IMG_TEXT_SEPARATOR, etc
 

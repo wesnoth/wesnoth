@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-#include "lua_fileops.hpp"
+#include "scripting/lua_fileops.hpp"
 
 #include "exceptions.hpp"
 #include "filesystem.hpp"

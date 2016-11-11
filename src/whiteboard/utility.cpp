@@ -20,10 +20,10 @@
 #include <iterator>
 #include <limits>
 
-#include "utility.hpp"
+#include "whiteboard/utility.hpp"
 
-#include "manager.hpp"
-#include "side_actions.hpp"
+#include "whiteboard/manager.hpp"
+#include "whiteboard/side_actions.hpp"
 
 #include "actions/create.hpp"
 #include "game_display.hpp"

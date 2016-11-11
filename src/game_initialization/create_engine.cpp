@@ -11,9 +11,9 @@
 
    See the COPYING file for more details.
 */
-#include "create_engine.hpp"
+#include "game_initialization/create_engine.hpp"
 
-#include "depcheck.hpp"
+#include "game_initialization/depcheck.hpp"
 #include "config_assign.hpp"
 #include "game_config_manager.hpp"
 #include "game_launcher.hpp"

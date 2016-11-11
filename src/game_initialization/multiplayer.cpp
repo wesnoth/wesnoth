@@ -11,7 +11,7 @@
 
    See the COPYING file for more details.
 */
-#include "multiplayer.hpp"
+#include "game_initialization/multiplayer.hpp"
 
 #include "addon/manager.hpp" // for get_installed_addons
 #include "config_assign.hpp"
@@ -34,18 +34,18 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "hash.hpp"
-#include "lobby_reload_request_exception.hpp"
+#include "game_initialization/lobby_reload_request_exception.hpp"
 #include "log.hpp"
 #include "generators/map_create.hpp"
-#include "mp_game_utils.hpp"
-#include "multiplayer_configure.hpp"
-#include "configure_engine.hpp"
-#include "multiplayer_connect.hpp"
-#include "multiplayer_create.hpp"
+#include "game_initialization/mp_game_utils.hpp"
+#include "game_initialization/multiplayer_configure.hpp"
+#include "game_initialization/configure_engine.hpp"
+#include "game_initialization/multiplayer_connect.hpp"
+#include "game_initialization/multiplayer_create.hpp"
 #include "multiplayer_error_codes.hpp"
-#include "multiplayer_wait.hpp"
-#include "multiplayer_lobby.hpp"
-#include "playcampaign.hpp"
+#include "game_initialization/multiplayer_wait.hpp"
+#include "game_initialization/multiplayer_lobby.hpp"
+#include "game_initialization/playcampaign.hpp"
 #include "settings.hpp"
 #include "scripting/plugins/context.hpp"
 #include "sdl/rect.hpp"

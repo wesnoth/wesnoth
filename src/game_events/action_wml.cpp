@@ -19,10 +19,10 @@
  */
 
 #include "global.hpp"
-#include "action_wml.hpp"
-#include "conditional_wml.hpp"
-#include "manager.hpp"
-#include "pump.hpp"
+#include "game_events/action_wml.hpp"
+#include "game_events/conditional_wml.hpp"
+#include "game_events/manager.hpp"
+#include "game_events/pump.hpp"
 
 #include "actions/attack.hpp"
 #include "actions/create.hpp"

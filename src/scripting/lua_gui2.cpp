@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-#include "lua_gui2.hpp"
+#include "scripting/lua_gui2.hpp"
 
 #include "gui/auxiliary/old_markup.hpp"
 #include "gui/core/canvas.hpp"     // for canvas

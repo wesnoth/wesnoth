@@ -17,7 +17,7 @@
  * Undoing, redoing.
  */
 
-#include "undo.hpp"
+#include "actions/undo.hpp"
 #include "global.hpp"
 
 #include "game_board.hpp"               // for game_board
@@ -43,15 +43,15 @@
 #include "util.hpp"                     // for bad_lexical_cast (ptr only), etc
 #include "whiteboard/manager.hpp"    // for manager
 
-#include "create.hpp"                   // for find_recall_location, etc
-#include "move.hpp"                   // for get_village
-#include "vision.hpp"           // for clearer_info, etc
-#include "shroud_clearing_action.hpp"
-#include "undo_dismiss_action.hpp"
-#include "undo_move_action.hpp"
-#include "undo_recall_action.hpp"
-#include "undo_recruit_action.hpp"
-#include "undo_update_shroud_action.hpp"
+#include "actions/create.hpp"                   // for find_recall_location, etc
+#include "actions/move.hpp"                   // for get_village
+#include "actions/vision.hpp"           // for clearer_info, etc
+#include "actions/shroud_clearing_action.hpp"
+#include "actions/undo_dismiss_action.hpp"
+#include "actions/undo_move_action.hpp"
+#include "actions/undo_recall_action.hpp"
+#include "actions/undo_recruit_action.hpp"
+#include "actions/undo_update_shroud_action.hpp"
 
 #include <algorithm>                    // for reverse
 #include <cassert>                      // for assert

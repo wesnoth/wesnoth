@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-#include "user_handler.hpp"
+#include "server/user_handler.hpp"
 #include "config.hpp"
 #include "serialization/string_utils.hpp"
 

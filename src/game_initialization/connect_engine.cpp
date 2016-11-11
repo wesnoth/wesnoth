@@ -11,7 +11,7 @@
 
    See the COPYING file for more details.
 */
-#include "connect_engine.hpp"
+#include "game_initialization/connect_engine.hpp"
 
 #include "ai/configuration.hpp"
 #include "config_assign.hpp"
@@ -20,12 +20,11 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
-#include "multiplayer_ui.hpp"
-#include "mp_game_utils.hpp"
+#include "game_initialization/multiplayer_ui.hpp"
+#include "game_initialization/mp_game_utils.hpp"
 #include "mt_rng.hpp"
-#include "playcampaign.hpp"
+#include "game_initialization/playcampaign.hpp"
 #include "tod_manager.hpp"
-#include "multiplayer_ui.hpp" // For get_color_string
 #include "wesnothd_connection.hpp"
 
 #include <stdlib.h>

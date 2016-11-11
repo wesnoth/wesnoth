@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-#include "help_text_area.hpp"
+#include "help/help_text_area.hpp"
 
 #include "config.hpp"                   // for config, etc
 #include "game_config.hpp"              // for debug

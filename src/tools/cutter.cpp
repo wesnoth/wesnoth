@@ -18,7 +18,7 @@
  */
 
 #include "game_config.hpp"
-#include "exploder_composer.hpp"
+#include "tools/exploder_composer.hpp"
 
 #include <SDL_image.h>
 
