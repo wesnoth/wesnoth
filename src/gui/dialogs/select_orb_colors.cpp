@@ -1,13 +1,13 @@
 /*
  Part of the Battle for Wesnoth Project http://www.wesnoth.org/
- 
+
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation; either version 2 of the License, or
  (at your option) any later version.
  This program is distributed in the hope that it will be useful,
  but WITHOUT ANY WARRANTY.
- 
+
  See the COPYING file for more details.
  */
 
@@ -51,7 +51,7 @@ void select_orb_colors::pre_show(window& window)
 	setup_orb_group("moved", show_moved_, preferences::moved_color(), window);
 	setup_orb_group("ally", show_ally_, preferences::allied_color(), window);
 	setup_orb_group("enemy", show_enemy_, preferences::enemy_color(), window);
-	
+
 	button& reset = find_widget<button>(&window, "orb_defaults", false);
 	connect_signal_mouse_left_click(reset, std::bind(
 		&select_orb_colors::handle_reset_click,
@@ -92,7 +92,7 @@ void select_orb_colors::setup_orb_group(const std::string& base_id, bool& shown,
 	grid& selection = find_widget<grid>(&window, prefix + "selection", false);
 	group<std::string>& group = groups_[base_id];
 
-	using iterator::walker_base;
+	using iteration::walker_base;
 	walker_base* iter = selection.create_walker();
 	while(!iter->at_end(walker_base::child)) {
 		widget* next = iter->get(walker_base::child);
@@ -117,7 +117,7 @@ void select_orb_colors::handle_reset_click(window& window)
 	show_moved_ = game_config::show_moved_orb;
 	show_ally_ = game_config::show_ally_orb;
 	show_enemy_ = game_config::show_enemy_orb;
-	
+
 	setup_orb_group("unmoved", show_unmoved_, game_config::colors::unmoved_orb_color, window, false);
 	setup_orb_group("partial", show_partial_, game_config::colors::partial_orb_color, window, false);
 	setup_orb_group("moved", show_moved_, game_config::colors::moved_orb_color, window, false);
