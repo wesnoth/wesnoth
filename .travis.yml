@@ -26,6 +26,8 @@ matrix:
       env: OPT=-O0 CXXSTD=11 NLS=false
   include:
     - os: osx
+      compiler: clang
+      env: opt=-O0 CXXSTD=11 NLS=false
   allow_failures:
     - env: OPT=-O2 CXXSTD=1y NLS=false
 
