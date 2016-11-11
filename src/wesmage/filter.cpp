@@ -185,13 +185,13 @@ REGISTER(blend,
 		"is ignored.")
 
 void
-filter_apply(surface& surf, const std::string& filter)
+filter_apply(surface& surf, const std::string& filter_string)
 {
-	std::vector<std::string> f = utils::split(filter, ':', utils::STRIP_SPACES);
+	std::vector<std::string> f = utils::split(filter_string, ':', utils::STRIP_SPACES);
 
 	if(f.size() != 2) {
 		std::cerr << "Error: Filter »"
-				<< filter
+				<< filter_string
 				<< "« doesn't contain the expected separator »:«\n";
 
 		throw exiter(EXIT_FAILURE);
