@@ -22,7 +22,7 @@
 namespace gui2
 {
 
-namespace iterator
+namespace iteration
 {
 
 /** A walker for a @ref gui2::grid. */
@@ -36,13 +36,13 @@ public:
 	 */
 	explicit grid(gui2::grid& grid);
 
-	/** Inherited from @ref gui2::iterator::walker_base. */
+	/** Inherited from @ref gui2::iteration::walker_base. */
 	virtual state_t next(const level level);
 
-	/** Inherited from @ref gui2::iterator::walker_base. */
+	/** Inherited from @ref gui2::iteration::walker_base. */
 	virtual bool at_end(const level level) const;
 
-	/** Inherited from @ref gui2::iterator::walker_base. */
+	/** Inherited from @ref gui2::iteration::walker_base. */
 	virtual gui2::widget* get(const level level);
 
 private:
@@ -53,7 +53,7 @@ private:
 	 * The grid which the walker is attached to.
 	 *
 	 * This variable is used to track whether the @ref
-	 * gui2::iterator::walker_base::widget level has been visited.
+	 * gui2::iteration::walker_base::widget level has been visited.
 	 */
 	gui2::widget* widget_;
 
@@ -61,12 +61,12 @@ private:
 	 * The iterator to the children of @ref grid_.
 	 *
 	 * This variable is used to track where the @ref
-	 * gui2::iterator::walker_base::child level visiting is.
+	 * gui2::iteration::walker_base::child level visiting is.
 	 */
 	gui2::grid::iterator itor_;
 };
 
-} // namespace iterator
+} // namespace iteration
 
 } // namespace gui2
 

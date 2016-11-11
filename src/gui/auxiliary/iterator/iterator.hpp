@@ -27,7 +27,7 @@
 namespace gui2
 {
 
-namespace iterator
+namespace iteration
 {
 
 /**
@@ -101,7 +101,7 @@ public:
 	}
 };
 
-} // namespace iterator
+} // namespace iteration
 
 } // namespace gui2
 

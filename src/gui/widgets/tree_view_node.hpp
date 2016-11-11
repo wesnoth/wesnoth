@@ -143,9 +143,9 @@ public:
 	 *
 	 * @todo Implement properly.
 	 */
-	virtual iterator::walker_base* create_walker() override
+	virtual iteration::walker_base* create_walker() override
 	{
-		return new gui2::iterator::tree_node(*this, children_);
+		return new gui2::iteration::tree_node(*this, children_);
 	}
 
 	node_children_vector& children()

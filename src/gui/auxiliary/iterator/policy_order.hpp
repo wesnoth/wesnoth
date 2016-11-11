@@ -25,7 +25,7 @@
 namespace gui2
 {
 
-namespace iterator
+namespace iteration
 {
 
 namespace policy
@@ -63,7 +63,7 @@ public:
 	~bottom_up()
 	{
 		delete root_;
-		for(std::vector<iterator::walker_base*>::iterator itor = stack_.begin();
+		for(std::vector<iteration::walker_base*>::iterator itor = stack_.begin();
 			itor != stack_.end();
 			++itor) {
 
@@ -192,9 +192,9 @@ public:
 	}
 
 private:
-	iterator::walker_base* root_;
+	iteration::walker_base* root_;
 
-	std::vector<iterator::walker_base*> stack_;
+	std::vector<iteration::walker_base*> stack_;
 };
 
 template <bool VW, bool VG, bool VC>
@@ -214,7 +214,7 @@ public:
 	~top_down()
 	{
 		delete root_;
-		for(std::vector<iterator::walker_base*>::iterator itor = stack_.begin();
+		for(std::vector<iteration::walker_base*>::iterator itor = stack_.begin();
 			itor != stack_.end();
 			++itor) {
 
@@ -346,16 +346,16 @@ private:
 		return true;
 	}
 
-	iterator::walker_base* root_;
+	iteration::walker_base* root_;
 
-	std::vector<iterator::walker_base*> stack_;
+	std::vector<iteration::walker_base*> stack_;
 };
 
 } // namespace order
 
 } // namespace policy
 
-} // namespace iterator
+} // namespace iteration
 
 } // namespace gui2
 

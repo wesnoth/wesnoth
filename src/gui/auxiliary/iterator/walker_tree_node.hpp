@@ -24,7 +24,7 @@ namespace gui2
 
 class tree_view_node;
 
-namespace iterator
+namespace iteration
 {
 
 /** A walker for a @ref gui2::tree_view_node. */
@@ -39,13 +39,13 @@ public:
 	 */
 	tree_node(gui2::tree_view_node& node, boost::ptr_vector<gui2::tree_view_node>& children);
 
-	/** Inherited from @ref gui2::iterator::walker_base. */
+	/** Inherited from @ref gui2::iteration::walker_base. */
 	virtual state_t next(const level level);
 
-	/** Inherited from @ref gui2::iterator::walker_base. */
+	/** Inherited from @ref gui2::iteration::walker_base. */
 	virtual bool at_end(const level level) const;
 
-	/** Inherited from @ref gui2::iterator::walker_base. */
+	/** Inherited from @ref gui2::iteration::walker_base. */
 	virtual gui2::widget* get(const level level);
 
 private:
@@ -56,7 +56,7 @@ private:
 	 * The node which the walker is attached to.
 	 *
 	 * This variable is used to track whether the @ref
-	 * gui2::iterator::walker_base::widget level has been visited.
+	 * gui2::iteration::walker_base::widget level has been visited.
 	 */
 	gui2::widget* widget_;
 
@@ -64,12 +64,12 @@ private:
 	 * The iterator to the children of @ref node_.
 	 *
 	 * This variable is used to track where the @ref
-	 * gui2::iterator::walker_base::child level visiting is.
+	 * gui2::iteration::walker_base::child level visiting is.
 	 */
 	boost::ptr_vector<gui2::tree_view_node>::iterator itor_;
 };
 
-} // namespace iterator
+} // namespace iteration
 
 } // namespace gui2
 

@@ -47,37 +47,37 @@ static void test_control()
 	//std::cerr << __func__ << ": " << typeid(T).name() << ".\n";
 
 	T control;
-	const std::unique_ptr<gui2::iterator::walker_base> visitor(control.create_walker());
+	const std::unique_ptr<gui2::iteration::walker_base> visitor(control.create_walker());
 
 	BOOST_REQUIRE_NE(visitor.get(), static_cast<void*>(nullptr));
 
 	/***** INITIAL STATE *****/
 
-	BOOST_CHECK_EQUAL(visitor->at_end(gui2::iterator::walker_base::self), false);
-	BOOST_CHECK_EQUAL(visitor->at_end(gui2::iterator::walker_base::internal), true);
-	BOOST_CHECK_EQUAL(visitor->at_end(gui2::iterator::walker_base::child), true);
+	BOOST_CHECK_EQUAL(visitor->at_end(gui2::iteration::walker_base::self), false);
+	BOOST_CHECK_EQUAL(visitor->at_end(gui2::iteration::walker_base::internal), true);
+	BOOST_CHECK_EQUAL(visitor->at_end(gui2::iteration::walker_base::child), true);
 
-	BOOST_CHECK_EQUAL(visitor->get(gui2::iterator::walker_base::self), &control);
-	BOOST_CHECK_EQUAL(visitor->get(gui2::iterator::walker_base::internal), static_cast<void*>(nullptr));
-	BOOST_CHECK_EQUAL(visitor->get(gui2::iterator::walker_base::child), static_cast<void*>(nullptr));
+	BOOST_CHECK_EQUAL(visitor->get(gui2::iteration::walker_base::self), &control);
+	BOOST_CHECK_EQUAL(visitor->get(gui2::iteration::walker_base::internal), static_cast<void*>(nullptr));
+	BOOST_CHECK_EQUAL(visitor->get(gui2::iteration::walker_base::child), static_cast<void*>(nullptr));
 
 	/***** VISITING WIDGET *****/
 
-	BOOST_CHECK_EQUAL(visitor->next(gui2::iterator::walker_base::self), gui2::iterator::walker_base::invalid);
-	BOOST_CHECK_EQUAL(visitor->next(gui2::iterator::walker_base::internal), gui2::iterator::walker_base::fail);
-	BOOST_CHECK_EQUAL(visitor->next(gui2::iterator::walker_base::child), gui2::iterator::walker_base::fail);
+	BOOST_CHECK_EQUAL(visitor->next(gui2::iteration::walker_base::self), gui2::iteration::walker_base::invalid);
+	BOOST_CHECK_EQUAL(visitor->next(gui2::iteration::walker_base::internal), gui2::iteration::walker_base::fail);
+	BOOST_CHECK_EQUAL(visitor->next(gui2::iteration::walker_base::child), gui2::iteration::walker_base::fail);
 
-	BOOST_CHECK_EQUAL(visitor->at_end(gui2::iterator::walker_base::self), true);
-	BOOST_CHECK_EQUAL(visitor->at_end(gui2::iterator::walker_base::internal), true);
-	BOOST_CHECK_EQUAL(visitor->at_end(gui2::iterator::walker_base::child), true);
+	BOOST_CHECK_EQUAL(visitor->at_end(gui2::iteration::walker_base::self), true);
+	BOOST_CHECK_EQUAL(visitor->at_end(gui2::iteration::walker_base::internal), true);
+	BOOST_CHECK_EQUAL(visitor->at_end(gui2::iteration::walker_base::child), true);
 
-	BOOST_CHECK_EQUAL(visitor->get(gui2::iterator::walker_base::self), static_cast<void*>(nullptr));
-	BOOST_CHECK_EQUAL(visitor->get(gui2::iterator::walker_base::internal), static_cast<void*>(nullptr));
-	BOOST_CHECK_EQUAL(visitor->get(gui2::iterator::walker_base::child), static_cast<void*>(nullptr));
+	BOOST_CHECK_EQUAL(visitor->get(gui2::iteration::walker_base::self), static_cast<void*>(nullptr));
+	BOOST_CHECK_EQUAL(visitor->get(gui2::iteration::walker_base::internal), static_cast<void*>(nullptr));
+	BOOST_CHECK_EQUAL(visitor->get(gui2::iteration::walker_base::child), static_cast<void*>(nullptr));
 
 	/***** POST END *****/
 
-	BOOST_CHECK_EQUAL(visitor->next(gui2::iterator::walker_base::self), gui2::iterator::walker_base::fail);
+	BOOST_CHECK_EQUAL(visitor->next(gui2::iteration::walker_base::self), gui2::iteration::walker_base::fail);
 }
 
 static void test_control()
@@ -101,53 +101,53 @@ static void test_grid()
 	add_widget(grid, new gui2::label(), "(2,1)", 1, 0);
 	add_widget(grid, new gui2::label(), "(2,2)", 1, 1);
 
-	const std::unique_ptr<gui2::iterator::walker_base> visitor(grid.create_walker());
+	const std::unique_ptr<gui2::iteration::walker_base> visitor(grid.create_walker());
 
 	/***** LABEL 1,1 *****/
 
-	BOOST_CHECK_EQUAL(visitor->at_end(gui2::iterator::walker_base::child), false);
+	BOOST_CHECK_EQUAL(visitor->at_end(gui2::iteration::walker_base::child), false);
 
-	BOOST_REQUIRE_NE(visitor->get(gui2::iterator::walker_base::child), static_cast<void*>(nullptr));
-	BOOST_CHECK_EQUAL(visitor->get(gui2::iterator::walker_base::child)->id(), "(1,1)");
+	BOOST_REQUIRE_NE(visitor->get(gui2::iteration::walker_base::child), static_cast<void*>(nullptr));
+	BOOST_CHECK_EQUAL(visitor->get(gui2::iteration::walker_base::child)->id(), "(1,1)");
 
 	/***** LABEL 2,1 *****/
 
-	BOOST_CHECK_EQUAL(visitor->next(gui2::iterator::walker_base::child), gui2::iterator::walker_base::valid);
+	BOOST_CHECK_EQUAL(visitor->next(gui2::iteration::walker_base::child), gui2::iteration::walker_base::valid);
 
-	BOOST_CHECK_EQUAL(visitor->at_end(gui2::iterator::walker_base::child), false);
+	BOOST_CHECK_EQUAL(visitor->at_end(gui2::iteration::walker_base::child), false);
 
-	BOOST_REQUIRE_NE(visitor->get(gui2::iterator::walker_base::child), static_cast<void*>(nullptr));
-	BOOST_CHECK_EQUAL(visitor->get(gui2::iterator::walker_base::child)->id(), "(2,1)");
+	BOOST_REQUIRE_NE(visitor->get(gui2::iteration::walker_base::child), static_cast<void*>(nullptr));
+	BOOST_CHECK_EQUAL(visitor->get(gui2::iteration::walker_base::child)->id(), "(2,1)");
 
 	/***** LABEL 1,2 *****/
 
-	BOOST_CHECK_EQUAL(visitor->next(gui2::iterator::walker_base::child), gui2::iterator::walker_base::valid);
+	BOOST_CHECK_EQUAL(visitor->next(gui2::iteration::walker_base::child), gui2::iteration::walker_base::valid);
 
-	BOOST_CHECK_EQUAL(visitor->at_end(gui2::iterator::walker_base::child), false);
+	BOOST_CHECK_EQUAL(visitor->at_end(gui2::iteration::walker_base::child), false);
 
-	BOOST_REQUIRE_NE(visitor->get(gui2::iterator::walker_base::child), static_cast<void*>(nullptr));
-	BOOST_CHECK_EQUAL(visitor->get(gui2::iterator::walker_base::child)->id(), "(1,2)");
+	BOOST_REQUIRE_NE(visitor->get(gui2::iteration::walker_base::child), static_cast<void*>(nullptr));
+	BOOST_CHECK_EQUAL(visitor->get(gui2::iteration::walker_base::child)->id(), "(1,2)");
 
 	/***** LABEL 2,2 *****/
 
-	BOOST_CHECK_EQUAL(visitor->next(gui2::iterator::walker_base::child), gui2::iterator::walker_base::valid);
+	BOOST_CHECK_EQUAL(visitor->next(gui2::iteration::walker_base::child), gui2::iteration::walker_base::valid);
 
-	BOOST_CHECK_EQUAL(visitor->at_end(gui2::iterator::walker_base::child), false);
+	BOOST_CHECK_EQUAL(visitor->at_end(gui2::iteration::walker_base::child), false);
 
-	BOOST_REQUIRE_NE(visitor->get(gui2::iterator::walker_base::child), static_cast<void*>(nullptr));
-	BOOST_CHECK_EQUAL(visitor->get(gui2::iterator::walker_base::child)->id(), "(2,2)");
+	BOOST_REQUIRE_NE(visitor->get(gui2::iteration::walker_base::child), static_cast<void*>(nullptr));
+	BOOST_CHECK_EQUAL(visitor->get(gui2::iteration::walker_base::child)->id(), "(2,2)");
 
 	/***** END *****/
 
-	BOOST_CHECK_EQUAL(visitor->next(gui2::iterator::walker_base::child), gui2::iterator::walker_base::invalid);
+	BOOST_CHECK_EQUAL(visitor->next(gui2::iteration::walker_base::child), gui2::iteration::walker_base::invalid);
 
-	BOOST_CHECK_EQUAL(visitor->at_end(gui2::iterator::walker_base::child), true);
+	BOOST_CHECK_EQUAL(visitor->at_end(gui2::iteration::walker_base::child), true);
 
-	BOOST_CHECK_EQUAL(visitor->get(gui2::iterator::walker_base::child), static_cast<void*>(nullptr));
+	BOOST_CHECK_EQUAL(visitor->get(gui2::iteration::walker_base::child), static_cast<void*>(nullptr));
 
 	/***** POST END *****/
 
-	BOOST_CHECK_EQUAL(visitor->next(gui2::iterator::walker_base::child), gui2::iterator::walker_base::fail);
+	BOOST_CHECK_EQUAL(visitor->next(gui2::iteration::walker_base::child), gui2::iteration::walker_base::fail);
 }
 
 BOOST_AUTO_TEST_CASE(test_gui2_visitor)

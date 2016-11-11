@@ -178,7 +178,7 @@ bool viewport::disable_click_dismiss() const
 	return false;
 }
 
-iterator::walker_base* viewport::create_walker()
+iteration::walker_base* viewport::create_walker()
 {
 	/**
 	 * @todo Implement properly.

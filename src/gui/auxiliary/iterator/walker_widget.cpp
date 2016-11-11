@@ -22,7 +22,7 @@
 namespace gui2
 {
 
-namespace iterator
+namespace iteration
 {
 
 namespace walker
@@ -85,6 +85,6 @@ gui2::widget* widget::get(const level level)
 
 } //  namespace walker
 
-} // namespace iterator
+} // namespace iteration
 
 } // namespace gui2

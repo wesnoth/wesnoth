@@ -34,10 +34,10 @@ struct builder_widget;
 namespace dialogs { class modal_dialog; }
 class window;
 
-namespace iterator
+namespace iteration
 {
 class walker_base;
-} // namespace iterator
+} // namespace iteration
 
 /**
  * Base class for all widgets.
@@ -805,7 +805,7 @@ public:
 	virtual bool disable_click_dismiss() const = 0;
 
 	/** Creates a new walker object on the heap. */
-	virtual iterator::walker_base* create_walker() = 0;
+	virtual iteration::walker_base* create_walker() = 0;
 };
 
 } // namespace gui2

@@ -22,7 +22,7 @@
 namespace gui2
 {
 
-namespace iterator
+namespace iteration
 {
 
 tree_node::tree_node(gui2::tree_view_node& node, boost::ptr_vector<gui2::tree_view_node>& children)
@@ -94,6 +94,6 @@ gui2::widget* tree_node::get(const level level)
 	return nullptr;
 }
 
-} // namespace iterator
+} // namespace iteration
 
 } // namespace gui2

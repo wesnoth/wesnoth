@@ -255,7 +255,7 @@ bool pane::disable_click_dismiss() const
 	return false;
 }
 
-iterator::walker_base* pane::create_walker()
+iteration::walker_base* pane::create_walker()
 {
 	/**
 	 * @todo Implement properly.

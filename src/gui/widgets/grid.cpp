@@ -661,9 +661,9 @@ bool grid::disable_click_dismiss() const
 	return false;
 }
 
-iterator::walker_base* grid::create_walker()
+iteration::walker_base* grid::create_walker()
 {
-	return new gui2::iterator::grid(*this);
+	return new gui2::iteration::grid(*this);
 }
 
 void grid::set_rows(const unsigned rows)

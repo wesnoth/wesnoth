@@ -20,7 +20,7 @@ namespace gui2
 
 class widget;
 
-namespace iterator
+namespace iteration
 {
 
 /** The walker abstract base class. */
@@ -114,7 +114,7 @@ public:
 	virtual gui2::widget* get(const level level) = 0;
 };
 
-} // namespace iterator
+} // namespace iteration
 
 } // namespace gui2
 

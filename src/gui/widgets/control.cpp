@@ -140,9 +140,9 @@ bool styled_widget::disable_click_dismiss() const
 	return get_visible() == widget::visibility::visible && get_active();
 }
 
-iterator::walker_base* styled_widget::create_walker()
+iteration::walker_base* styled_widget::create_walker()
 {
-	return new iterator::walker::widget(*this);
+	return new iteration::walker::widget(*this);
 }
 
 point styled_widget::get_config_minimum_size() const

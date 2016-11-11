@@ -21,7 +21,7 @@
 namespace gui2
 {
 
-namespace iterator
+namespace iteration
 {
 
 grid::grid(gui2::grid& grid)
@@ -93,6 +93,6 @@ gui2::widget* grid::get(const level level)
 	return nullptr;
 }
 
-} // namespace iterator
+} // namespace iteration
 
 } // namespace gui2

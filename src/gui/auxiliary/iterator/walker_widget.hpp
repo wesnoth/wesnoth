@@ -20,7 +20,7 @@
 namespace gui2
 {
 
-namespace iterator
+namespace iteration
 {
 
 namespace walker
@@ -37,13 +37,13 @@ public:
 	 */
 	explicit widget(gui2::widget& widget);
 
-	/** Inherited from @ref gui2::iterator::walker_base. */
+	/** Inherited from @ref gui2::iteration::walker_base. */
 	virtual state_t next(const level level);
 
-	/** Inherited from @ref gui2::iterator::walker_base. */
+	/** Inherited from @ref gui2::iteration::walker_base. */
 	virtual bool at_end(const level level) const;
 
-	/** Inherited from @ref gui2::iterator::walker_base. */
+	/** Inherited from @ref gui2::iteration::walker_base. */
 	virtual gui2::widget* get(const level level);
 
 private:
@@ -53,7 +53,7 @@ private:
 
 } //  namespace walker
 
-} // namespace iterator
+} // namespace iteration
 
 } // namespace gui2
 

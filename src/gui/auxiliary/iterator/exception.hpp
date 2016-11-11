@@ -14,7 +14,7 @@
 
 /**
  * @file
- * Contains the exceptions throw by the @ref gui2::iterator::iterator classes.
+ * Contains the exceptions thrown by the @ref gui2::iteration::iterator classes.
  */
 
 #ifndef GUI_WIDGETS_AUXILIARY_ITERATOR_EXCEPTION_HPP_INCLUDED
@@ -28,7 +28,7 @@
 namespace gui2
 {
 
-namespace iterator
+namespace iteration
 {
 
 /**
@@ -67,7 +67,7 @@ private:
 	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(range_error)
 };
 
-} // namespace iterator
+} // namespace iteration
 
 } // namespace gui2
 

@@ -22,7 +22,7 @@
 namespace gui2
 {
 
-namespace iterator
+namespace iteration
 {
 
 namespace policy
@@ -122,7 +122,7 @@ class visit_level<true, level> : public visit::visit_level<level>
 
 } // namespace policy
 
-} // namespace iterator
+} // namespace iteration
 
 } // namespace gui2
 
