@@ -559,18 +559,18 @@ struct show : public virtual generator_base
  */
 template <class minimum_selection,
 		  class maximum_selection,
-		  class placement,
+		  class my_placement,
 		  class select_action>
 class generator : public minimum_selection,
 				   public maximum_selection,
-				   public placement,
+				   public my_placement,
 				   public select_action
 {
 public:
 	generator()
 		: minimum_selection()
 		, maximum_selection()
-		, placement()
+		, my_placement()
 		, select_action()
 		, selected_item_count_(0)
 		, last_selected_item_(-1)
@@ -764,7 +764,7 @@ public:
 		items_.insert(items_.begin() + item_index, item);
 		order_dirty_ = true;
 		minimum_selection::create_item(item_index);
-		placement::create_item(item_index);
+		my_placement::create_item(item_index);
 		if(!is_selected(item_index)) {
 			select_action::select(item->child_grid, false);
 		}
@@ -807,19 +807,19 @@ public:
 	/** See @ref widget::request_reduce_width. */
 	virtual void request_reduce_width(const unsigned maximum_width) override
 	{
-		placement::request_reduce_width(maximum_width);
+		my_placement::request_reduce_width(maximum_width);
 	}
 
 	/** See @ref widget::request_reduce_height. */
 	virtual void request_reduce_height(const unsigned maximum_height) override
 	{
-		placement::request_reduce_height(maximum_height);
+		my_placement::request_reduce_height(maximum_height);
 	}
 
 	/** See @ref widget::calculate_best_size. */
 	virtual point calculate_best_size() const override
 	{
-		return placement::calculate_best_size();
+		return my_placement::calculate_best_size();
 	}
 
 	/** See @ref widget::place. */
@@ -828,7 +828,7 @@ public:
 		// Inherited, so we get useful debug info.
 		widget::place(origin, size);
 
-		placement::place(origin, size);
+		my_placement::place(origin, size);
 	}
 
 	/** See @ref widget::set_origin. */
@@ -837,13 +837,13 @@ public:
 		// Inherited.
 		widget::set_origin(origin);
 
-		placement::set_origin(origin);
+		my_placement::set_origin(origin);
 	}
 
 	/** See @ref widget::set_visible_rectangle. */
 	virtual void set_visible_rectangle(const SDL_Rect& rectangle) override
 	{
-		placement::set_visible_rectangle(rectangle);
+		my_placement::set_visible_rectangle(rectangle);
 	}
 
 	/** See @ref widget::impl_draw_children. */
@@ -880,14 +880,14 @@ public:
 	virtual widget* find_at(const point& coordinate,
 							 const bool must_be_active) override
 	{
-		return placement::find_at(coordinate, must_be_active);
+		return my_placement::find_at(coordinate, must_be_active);
 	}
 
 	/** See @ref widget::find_at. */
 	virtual const widget* find_at(const point& coordinate,
 								   const bool must_be_active) const override
 	{
-		return placement::find_at(coordinate, must_be_active);
+		return my_placement::find_at(coordinate, must_be_active);
 	}
 
 	/** See @ref widget::disable_click_dismiss. */
@@ -917,25 +917,25 @@ public:
 	/** Inherited from generator_base. */
 	void handle_key_up_arrow(SDL_Keymod modifier, bool& handled) override
 	{
-		placement::handle_key_up_arrow(modifier, handled);
+		my_placement::handle_key_up_arrow(modifier, handled);
 	}
 
 	/** Inherited from generator_base. */
 	void handle_key_down_arrow(SDL_Keymod modifier, bool& handled) override
 	{
-		placement::handle_key_down_arrow(modifier, handled);
+		my_placement::handle_key_down_arrow(modifier, handled);
 	}
 
 	/** Inherited from generator_base. */
 	void handle_key_left_arrow(SDL_Keymod modifier, bool& handled) override
 	{
-		placement::handle_key_left_arrow(modifier, handled);
+		my_placement::handle_key_left_arrow(modifier, handled);
 	}
 
 	/** Inherited from generator_base. */
 	void handle_key_right_arrow(SDL_Keymod modifier, bool& handled) override
 	{
-		placement::handle_key_right_arrow(modifier, handled);
+		my_placement::handle_key_right_arrow(modifier, handled);
 	}
 
 protected:
