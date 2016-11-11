@@ -75,10 +75,6 @@ void config_cache::clear_defines()
 	// Set-up default defines map.
 	//
 
-#ifdef LOW_MEM
-	defines_map_["LOW_MEM"] = preproc_define();
-#endif
-
 #ifdef __APPLE__
 	defines_map_["APPLE"] = preproc_define();
 #endif

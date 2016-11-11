@@ -65,10 +65,8 @@ public:
 	std::string id;
 	std::string linked_group;
 
-#ifndef LOW_MEM
 	int debug_border_mode;
 	unsigned debug_border_color;
-#endif
 };
 
 typedef std::shared_ptr<builder_widget> builder_widget_ptr;

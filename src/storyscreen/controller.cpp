@@ -157,14 +157,12 @@ STORY_RESULT controller::show(START_POSITION startpos)
 
 	// Build renderer cache unless built for a low-memory environment;
 	// caching the scaled backgrounds can take over a decent amount of memory.
-#ifndef LOW_MEM
 	std::vector< render_pointer_type > uis_;
 	for(part_pointer_type p : parts_) {
 		assert(p != nullptr && "Ouch: hit nullptr storyscreen part in collection");
 		render_pointer_type const rpt(new part_ui(*p, video_, next_button, back_button, play_button));
 		uis_.push_back(rpt);
 	}
-#endif
 
 	size_t k = 0;
 	switch(startpos) {
@@ -179,11 +177,7 @@ STORY_RESULT controller::show(START_POSITION startpos)
 	}
 
 	while(k < parts_.size()) {
-#ifndef LOW_MEM
 		part_ui &render_interface = *uis_[k];
-#else
-		part_ui render_interface(*parts_[k], video_, next_button, back_button, play_button);
-#endif
 
 		LOG_NG << "displaying storyscreen part " << k+1 << " of " << parts_.size() << '\n';
 

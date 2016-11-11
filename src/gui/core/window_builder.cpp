@@ -134,10 +134,8 @@ window* build(CVideo& video, const std::string& type)
 builder_widget::builder_widget(const config& cfg)
 	: id(cfg["id"])
 	, linked_group(cfg["linked_group"])
-#ifndef LOW_MEM
 	, debug_border_mode(cfg["debug_border_mode"])
 	, debug_border_color(decode_color(cfg["debug_border_color"]))
-#endif
 {
 }
 

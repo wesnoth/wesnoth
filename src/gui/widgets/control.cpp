@@ -683,10 +683,8 @@ void builder_styled_widget::init_control(styled_widget* control) const
 	control->set_help_message(help);
 	control->set_use_tooltip_on_label_overflow(use_tooltip_on_label_overflow);
 	control->set_use_markup(use_markup);
-#ifndef LOW_MEM
 	control->set_debug_border_mode(debug_border_mode);
 	control->set_debug_border_colour(debug_border_color);
-#endif
 }
 
 widget* builder_styled_widget::build(const replacements_map& /*replacements*/) const

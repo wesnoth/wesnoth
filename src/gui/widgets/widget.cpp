@@ -41,10 +41,8 @@ widget::widget()
 	, visible_(visibility::visible)
 	, redraw_action_(redraw_action::full)
 	, clipping_rectangle_()
-#ifndef LOW_MEM
 	, debug_border_mode_(0)
 	, debug_border_colour_(0)
-#endif
 {
 	DBG_GUI_LF << "widget create: " << static_cast<void*>(this) << "\n";
 }
@@ -65,10 +63,8 @@ widget::widget(const builder_widget& builder)
 	, visible_(visibility::visible)
 	, redraw_action_(redraw_action::full)
 	, clipping_rectangle_()
-#ifndef LOW_MEM
 	, debug_border_mode_(builder.debug_border_mode)
 	, debug_border_colour_(builder.debug_border_color)
-#endif
 {
 	DBG_GUI_LF << "widget create: " << static_cast<void*>(this) << "\n";
 }
@@ -479,8 +475,6 @@ widget::redraw_action widget::get_drawing_action() const
 										 : redraw_action_;
 }
 
-#ifndef LOW_MEM
-
 void widget::set_debug_border_mode(const unsigned debug_border_mode)
 {
 	debug_border_mode_ = debug_border_mode;
@@ -539,8 +533,6 @@ widget::draw_debug_border(surface& frame_buffer, int x_offset, int y_offset)
 			assert(false);
 	}
 }
-
-#endif
 
 /***** ***** ***** ***** Query functions ***** ***** ***** *****/
 
