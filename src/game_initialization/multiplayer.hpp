@@ -15,9 +15,8 @@
 #define MULTIPLAYER_HPP_INCLUDED
 
 #include "commandline_options.hpp"
-#include "mp_game_settings.hpp"
 #include "connect_engine.hpp"
-#include "multiplayer_ui.hpp"
+#include "mp_game_settings.hpp"
 #include "scripting/plugins/context.hpp"
 
 class config;
@@ -27,8 +26,6 @@ namespace mp {
 
 // max. length of a player name
 const size_t max_login_size = 20;
-
-void run_lobby_loop(CVideo& v, mp::ui& ui);
 
 /*
  * This is the main entry points of multiplayer mode.
@@ -63,14 +60,14 @@ void start_client(CVideo& video, const config& game_config,
  * Opens mp::connect screen and sets game state according to the
  * changes made.
  */
-mp::ui::result goto_mp_connect(CVideo& video, ng::connect_engine& engine,
+bool goto_mp_connect(CVideo& video, ng::connect_engine& engine,
 	const config& game_config, wesnothd_connection* connection, const std::string& game_name);
 
 /**
  * Opens mp::wait screen and sets game state according to the
  * changes made.
  */
-mp::ui::result goto_mp_wait(CVideo& video, saved_game& state, const config& game_config, wesnothd_connection* connection, bool observe);
+bool goto_mp_wait(CVideo& video, saved_game& state, const config& game_config, wesnothd_connection* connection, bool observe);
 
 }
 #endif

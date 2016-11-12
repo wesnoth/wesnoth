@@ -64,53 +64,6 @@ static lg::log_domain log_network("network");
 static lg::log_domain log_mp("mp/main");
 #define DBG_MP LOG_STREAM(debug, log_mp)
 
-namespace {
-
-mp::chat gamechat;
-config gamelist;
-
-}
-
-namespace mp {
-
-void run_lobby_loop(CVideo& video, mp::ui& ui)
-{
-	DBG_MP << "running lobby loop" << std::endl;
-	video.modeChanged();
-	bool first = true;
-	font::cache_mode(font::CACHE_LOBBY);
-	while (ui.get_result() == mp::ui::CONTINUE) {
-		if (video.modeChanged() || first) {
-			SDL_Rect lobby_pos = sdl::create_rect(0
-					, 0
-					, video.getx()
-					, video.gety());
-			ui.set_location(lobby_pos);
-			first = false;
-		}
-		// process network data first so user actions can override the result
-		// or uptodate data can prevent invalid actions
-		// i.e. press cancel while you receive [start_game] or press start game while someone leaves
-		ui.process_network();
-
-		if (plugins_context * pc = ui.get_plugins_context()) {
-			pc->play_slice();
-			//DBG_MP << "* playing a plugins slice\n";
-		}
-
-		events::pump();
-		events::raise_process_event();
-		events::raise_draw_event();
-
-		video.flip();
-		CVideo::delay(20);
-	}
-	font::cache_mode(font::CACHE_GAME);
-}
-
-}
-
-
 static std::unique_ptr<wesnothd_connection> open_connection(CVideo& video, const std::string& original_host)
 {
 	DBG_MP << "opening connection" << std::endl;
@@ -411,7 +364,6 @@ static void enter_wait_mode(CVideo& video, const config& game_config, saved_game
 {
 	DBG_MP << "entering wait mode" << std::endl;
 
-	gamelist.clear();
 	statistics::fresh_stats();
 	std::unique_ptr<mp_campaign_info> campaign_info;
 	campaign_info.reset(new mp_campaign_info(*connection));
@@ -453,7 +405,6 @@ static bool enter_connect_mode(CVideo& video, const config& game_config,
 {
 	DBG_MP << "entering connect mode" << std::endl;
 
-	gamelist.clear();
 	statistics::fresh_stats();
 	std::unique_ptr<mp_campaign_info> campaign_info;
 	if(!local_players_only) {
@@ -583,8 +534,6 @@ namespace mp {
 void start_local_game(CVideo& video, const config& game_config, saved_game& state)
 {
 	DBG_MP << "starting local game" << std::endl;
-	gamechat.clear_history();
-	gamelist.clear();
 
 	preferences::set_message_private(false);
 
@@ -600,8 +549,6 @@ void start_local_game_commandline(CVideo& video, const config& game_config, save
 	// The setup is done equivalently to lobby MP games using as much of existing
 	// code as possible.  This means that some things are set up that are not
 	// needed in commandline mode, but they are required by the functions called.
-	gamechat.clear_history();
-	gamelist.clear();
 	preferences::set_message_private(false);
 
 	DBG_MP << "entering create mode" << std::endl;
@@ -659,7 +606,7 @@ void start_local_game_commandline(CVideo& video, const config& game_config, save
 	state.set_carryover_sides_start(
 		config_of("next_scenario", parameters.name)
 	);
-	
+
 	state.expand_random_scenario();
 	state.expand_mp_events();
 	state.expand_mp_options();
@@ -676,10 +623,9 @@ void start_local_game_commandline(CVideo& video, const config& game_config, save
 
 	{
 		ng::connect_engine_ptr connect_engine(new ng::connect_engine(state, true, nullptr));
-		mp::connect ui(video, 0, parameters.name, game_config, gamechat, gamelist, *connect_engine);
 
 		// Update the parameters to reflect game start conditions
-		ui.start_game_commandline(cmdline_opts);
+		connect_engine->start_game_commandline(cmdline_opts);
 	}
 
 	std::string label = "";
@@ -707,8 +653,6 @@ void start_client(CVideo& video, const config& game_config,	saved_game& state, c
 
 	preferences::admin_authentication_reset r;
 
-	gamechat.clear_history();
-	gamelist.clear();
 	std::unique_ptr<wesnothd_connection> connection = open_connection(video, host);
 	if(connection) {
 		bool re_enter;
@@ -725,49 +669,33 @@ void start_client(CVideo& video, const config& game_config,	saved_game& state, c
 
 				installed_addons = ::installed_addons(); // Refersh the installed add-on list for this session.
 
-				gamelist.clear(); //needed to make sure we update which games we have content for
 				connection->send_data(config("refresh_lobby"));
 			}
 		} while (re_enter);
 	}
 }
 
-mp::ui::result goto_mp_connect(CVideo& video, ng::connect_engine& engine,
-	const config& game_config, wesnothd_connection* connection, const std::string& game_name)
+// TODO: see if the game_name parameter is needed
+bool goto_mp_connect(CVideo& video, ng::connect_engine& engine,
+	const config& game_config, wesnothd_connection* connection, const std::string& /*game_name*/)
 {
-	mp::ui::result res;
+	lobby_info li(game_config, std::vector<std::string>());
 
-	{
-		mp::connect ui(video, connection, game_name, game_config, gamechat, gamelist,
-			engine);
-		run_lobby_loop(video, ui);
-
-		res = ui.get_result();
-		if (res == mp::ui::PLAY) {
-			ui.start_game();
-		}
-	}
-
-	return res;
+	gui2::dialogs::mp_staging dlg(engine, li, connection);
+	return dlg.show(video);
 }
 
-mp::ui::result goto_mp_wait(CVideo& video, saved_game& state, const config& game_config, wesnothd_connection* connection, bool observe)
+bool goto_mp_wait(CVideo& video, saved_game& state, const config& game_config, wesnothd_connection* connection, bool observe)
 {
-	mp::ui::result res;
+	lobby_info li(game_config, std::vector<std::string>());
 
-	{
-		mp::wait ui(video, connection, game_config, state, gamechat, gamelist, false);
+	gui2::dialogs::mp_join_game dlg(state, li, *connection, true, observe);
 
-		ui.join_game(observe);
-		run_lobby_loop(video, ui);
-
-		res = ui.get_result();
-		if (res == mp::ui::PLAY) {
-			ui.start_game();
-		}
+	if(!dlg.fetch_game_config(video)) {
+		return false;
 	}
 
-	return res;
+	return dlg.show(video);
 }
 
 } // end namespace mp

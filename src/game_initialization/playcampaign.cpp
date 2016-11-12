@@ -351,10 +351,8 @@ LEVEL_RESULT campaign_controller::play_game()
 		}
 
 		if (mp_info_ && !mp_info_->is_host) {
-			// Opens mp::connect dialog to get a new gamestate.
-			mp::ui::result wait_res = mp::goto_mp_wait(video_, state_,
-				game_config_, &mp_info_->connection, res == LEVEL_RESULT::OBSERVER_END);
-			if (wait_res == mp::ui::QUIT) {
+			// Opens join game dialog to get a new gamestate.
+			if(!mp::goto_mp_wait(video_, state_, game_config_, &mp_info_->connection, res == LEVEL_RESULT::OBSERVER_END)) {
 				return LEVEL_RESULT::QUIT;
 			}
 
@@ -375,10 +373,8 @@ LEVEL_RESULT campaign_controller::play_game()
 				ng::connect_engine_ptr connect_engine(new ng::connect_engine(state_, false, mp_info_));
 
 				if (!connect_engine->can_start_game() || (game_config::debug && game_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER)) {
-					// Opens mp::connect dialog to allow users to make an adjustments for scenario.
-					mp::ui::result connect_res = mp::goto_mp_connect(video_,
-						*connect_engine, game_config_, mp_info_ ? &mp_info_->connection : nullptr, state_.mp_settings().name);
-					if (connect_res == mp::ui::QUIT) {
+					// Opens staging dialog to allow users to make an adjustments for scenario.
+					if(!mp::goto_mp_connect(video_, *connect_engine, game_config_, mp_info_ ? &mp_info_->connection : nullptr, state_.mp_settings().name)) {
 						return LEVEL_RESULT::QUIT;
 					}
 				} else {
