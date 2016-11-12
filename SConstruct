@@ -396,7 +396,7 @@ if env["prereqs"]:
     client_env = env.Clone()
     conf = client_env.Configure(**configure_args)
     have_client_prereqs = have_server_prereqs & have_sdl_other() & \
-        ('TRAVIS' in os.environ or (conf.CheckLib("vorbisfile") & \
+        (('TRAVIS' in os.environ and os.environ["TRAVIS_OS_NAME"] == "osx") or (conf.CheckLib("vorbisfile") & \
         conf.CheckOgg())) & \
         conf.CheckPNG() & \
         conf.CheckJPG() & \
