@@ -29,22 +29,7 @@ configure_engine::configure_engine(saved_game& state, const config* intial)
 	, parameters_(state_.mp_settings())
 	, initial_(intial ? intial : &state_.get_starting_pos())
 {
-
 	set_use_map_settings(use_map_settings_default());
-	if(state_.classification().get_tagname() == "scenario") {
-		for (const config& scenario :
-			game_config_manager::get()->game_config().child_range(state_.classification().get_tagname())) {
-
-			if (scenario["allow_new_game"].to_bool(true) || game_config::debug) {
-
-				const std::string& title = (!scenario["new_game_title"].empty()) ?
-					scenario["new_game_title"] : scenario["name"];
-
-				entry_points_.push_back(&scenario);
-				entry_point_titles_.push_back(title);
-			}
-		}
-	}
 }
 
 void configure_engine::set_default_values() {
@@ -109,23 +94,6 @@ void configure_engine::set_oos_debug(bool val) { state_.classification().oos_deb
 void configure_engine::set_shuffle_sides(bool val) { parameters_.shuffle_sides = val; }
 void configure_engine::set_random_faction_mode(mp_game_settings::RANDOM_FACTION_MODE val) { parameters_.random_faction_mode = val;}
 void configure_engine::set_options(const config& cfg) { parameters_.options = cfg; }
-
-void configure_engine::set_scenario(size_t scenario_num) {
-	const config& scenario = *entry_points_[scenario_num];
-
-	parameters_.hash = scenario.hash();
-	state_.set_scenario(scenario);
-}
-
-bool configure_engine::set_scenario(std::string& scenario_id) {
-	for (size_t i = 0; i < entry_points_.size(); ++i) {
-		if ((**(entry_points_.begin() + i))["id"] == scenario_id) {
-			set_scenario(i);
-			return true;
-		}
-	}
-	return false;
-}
 
 std::string configure_engine::game_name_default() const {
 	utils::string_map i18n_symbols;
@@ -205,10 +173,6 @@ const config& configure_engine::options_default() const {
 
 const mp_game_settings& configure_engine::get_parameters() const {
 	return parameters_;
-}
-
-const std::vector<std::string>& configure_engine::entry_point_titles() const {
-	return entry_point_titles_;
 }
 
 void configure_engine::write_parameters()

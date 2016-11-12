@@ -83,9 +83,6 @@ public:
 	void set_random_faction_mode(mp_game_settings::RANDOM_FACTION_MODE val);
 	void set_options(const config& cfg);
 
-	void set_scenario(size_t scenario_num);
-	bool set_scenario(std::string& scenario_id);
-
 	// parameter defaults
 	std::string game_name_default() const;
 	int num_turns_default() const;
@@ -137,10 +134,6 @@ private:
 	{
 		return *initial_;
 	}
-	
-	std::vector<const config*> entry_points_;
-
-	std::vector<std::string> entry_point_titles_;
 };
 
 } // end namespace ng
