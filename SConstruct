@@ -505,9 +505,13 @@ for env in [test_env, client_env, env]:
             env.AppendUnique(CXXFLAGS = Split("-Wold-style-cast"))
         if env['sanitize']:
             env.AppendUnique(CCFLAGS = ["-fsanitize=" + env["sanitize"]], LINKFLAGS = ["-fsanitize=" + env["sanitize"]])
-
-        env["OPT_FLAGS"] = "-O2"
+        
+        env["OPT_FLAGS"] = "-O3"
         env["DEBUG_FLAGS"] = Split("-O0 -DDEBUG -ggdb3")
+        
+# because apparently telling the compiler, linker, AND windres to be 32-bit just isn't enough
+        if env["PLATFORM"] == 'win32':
+            env["OPT_FLAGS"] = "$OPT_FLAGS -march=pentiumpro"
         
         if env["enable_lto"] == "yes":
             env["HIGH_OPT_COMP_FLAGS"] = "-O3 -march=native -flto"
@@ -558,10 +562,10 @@ SConscript(dirs = Split("po doc packaging/windows packaging/systemd"))
 
 binaries = Split("wesnoth wesnothd cutter exploder campaignd test")
 builds = {
-    "base"          : dict(CCFLAGS   = "$OPT_FLAGS"),    # Don't build in subdirectory
+    "base"          : dict(CCFLAGS   = Split("$OPT_FLAGS")),    # Don't build in subdirectory
     "debug"         : dict(CCFLAGS   = Split("$DEBUG_FLAGS")),
     "glibcxx_debug" : dict(CPPDEFINES = Split("_GLIBCXX_DEBUG _GLIBCXX_DEBUG_PEDANTIC")),
-    "release"       : dict(CCFLAGS   = "$OPT_FLAGS"),
+    "release"       : dict(CCFLAGS   = Split("$OPT_FLAGS")),
     "profile"       : dict(CCFLAGS   = "-pg", LINKFLAGS = "-pg"),
     "optimize"      : dict(CCFLAGS   = Split("$HIGH_OPT_COMP_FLAGS"), LINKFLAGS=Split("$HIGH_OPT_LINK_FLAGS"))
     }

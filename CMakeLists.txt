@@ -508,6 +508,23 @@ list(REMOVE_ITEM CMAKE_C_FLAGS_MINSIZEREL "-DNDEBUG")
 string(REPLACE ";" " " CMAKE_C_FLAGS_MINSIZEREL "${CMAKE_C_FLAGS_MINSIZEREL}")
 set(CMAKE_C_FLAGS_MINSIZEREL "${CMAKE_C_FLAGS_MINSIZEREL}" CACHE STRING "removed NDEBUG flag" FORCE)
 
+# add pentiumpro arch for windows builds with -O3, otherwise resulting executable may not work
+if(WIN32)
+	separate_arguments(CMAKE_CXX_FLAGS_RELEASE)
+	list(APPEND CMAKE_CXX_FLAGS_RELEASE "-march=pentiumpro")
+	list(REMOVE_DUPLICATES CMAKE_CXX_FLAGS_RELEASE)
+	string(REPLACE ";" " " CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE}")
+	set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE}" CACHE STRING "added -march=pentiumpro" FORCE)
+	MESSAGE("added -march=pentiumpro to Release build")
+	
+	separate_arguments(CMAKE_C_FLAGS_RELEASE)
+	list(APPEND CMAKE_C_FLAGS_RELEASE "-march=pentiumpro")
+	list(REMOVE_DUPLICATES CMAKE_C_FLAGS_RELEASE)
+	string(REPLACE ";" " " CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE}")
+	set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE}" CACHE STRING "added -march=pentiumpro" FORCE)
+	MESSAGE("added -march=pentiumpro to Release build")
+endif(WIN32)
+
 # replace the default Debug flag of -g with -O0 -DDEBUG -ggdb3
 # this matches the flags of scons' debug build
 MESSAGE("Replacing flags used for Debug build")
