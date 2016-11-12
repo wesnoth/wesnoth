@@ -48,7 +48,6 @@ public:
 	///                This is always empty unless we advance form a previous scenario.
 	connect_engine(saved_game& state,
 		const bool first_scenario, mp_campaign_info* campaign_info);
-	~connect_engine();
 
 	config* current_config();
 
@@ -141,7 +140,6 @@ class side_engine
 public:
 	side_engine(const config& cfg, connect_engine& parent_engine,
 		const int index);
-	~side_engine();
 
 	// An untranslated user_description which is used by other clients
 	// An empty string means the other clients should generate the description on their own
@@ -219,8 +217,6 @@ public:
 	const std::vector<std::string>& player_teams() const
 		{ return parent_.player_teams_; }
 	flg_manager& flg() { return flg_; }
-
-	int num_colors() const;
 
 	const std::string color_id() const { return color_id_; }
 	const std::vector<std::string>& color_options() const { return color_options_; }
