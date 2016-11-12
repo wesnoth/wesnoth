@@ -14,8 +14,6 @@
 #ifndef FLG_MANAGER_HPP_INCLUDED
 #define FLG_MANAGER_HPP_INCLUDED
 
-#include "widgets/combo.hpp"
-
 #include <string>
 #include <vector>
 
@@ -47,11 +45,6 @@ public:
 
 	void set_current_gender(const unsigned index);
 	void set_current_gender(const std::string& gender);
-
-	// Update the status of combo: items, selection and whether
-	// it should be enabled or not.
-	void reset_leader_combo(gui::combo& combo_leader, const std::string& color) const;
-	void reset_gender_combo(gui::combo& combo_gender, const std::string& color) const;
 
 	bool is_random_faction();
 	void resolve_random(rand_rng::mt_rng & rng, const std::vector<std::string> & avoid); //Second Argument is a list of faction ids we don't want to match, used to implement random faction modes. If it is not possible to resolve then we just proceed anyways rather than give an error.

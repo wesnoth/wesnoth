@@ -136,64 +136,6 @@ void flg_manager::set_current_gender(const unsigned index)
 	current_gender_ = choosable_genders_[index];
 }
 
-void flg_manager::reset_leader_combo(gui::combo& combo_leader, const std::string& color) const
-{
-	std::vector<std::string> leaders;
-	for (const std::string& leader : choosable_leaders_) {
-		const unit_type* unit = unit_types.find(leader);
-		if (unit) {
-			leaders.push_back(IMAGE_PREFIX + unit->image() +
-				get_RC_suffix(unit->flag_rgb(), color) +
-				COLUMN_SEPARATOR + unit->type_name());
-		} else if (leader == "random") {
-			leaders.push_back(IMAGE_PREFIX + random_enemy_picture +
-				COLUMN_SEPARATOR + _("Random"));
-		} else if (leader == "null") {
-			leaders.push_back(font::unicode_em_dash);
-		} else {
-			leaders.push_back("?");
-		}
-	}
-
-	combo_leader.enable(leaders.size() > 1 && !saved_game_);
-
-	combo_leader.set_items(leaders);
-	combo_leader.set_selected(current_leader_index());
-}
-
-void flg_manager::reset_gender_combo(gui::combo& combo_gender, const std::string& color) const
-{
-	const unit_type* unit = unit_types.find(current_leader_);
-
-	std::vector<std::string> genders;
-	for (const std::string& gender : choosable_genders_) {
-		if (gender == unit_race::s_female || gender == unit_race::s_male) {
-			if (unit) {
-				const unit_type& gender_unit =
-					unit->get_gender_unit_type(gender);
-
-				std::string gender_name = (gender == unit_race::s_female) ?
-					_("Female ♀") : _("Male ♂");
-				genders.push_back(IMAGE_PREFIX + gender_unit.image() +
-					get_RC_suffix(gender_unit.flag_rgb(), color) +
-					COLUMN_SEPARATOR + gender_name);
-			}
-		} else if (gender == "random") {
-			genders.push_back(IMAGE_PREFIX + random_enemy_picture +
-				COLUMN_SEPARATOR + _("Random"));
-		} else if (gender == "null") {
-			genders.push_back(font::unicode_em_dash);
-		} else {
-			genders.push_back("?");
-		}
-	}
-
-	combo_gender.enable(genders.size() > 1 && !saved_game_);
-
-	combo_gender.set_items(genders);
-	combo_gender.set_selected(current_gender_index());
-}
-
 bool flg_manager::is_random_faction()
 {
 	return (*current_faction_)["random_faction"].to_bool();
