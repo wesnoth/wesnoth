@@ -587,9 +587,6 @@ add_library(wesnoth-gui_widget_definition
 
 # This library contains the widgets from gui1.
 set(wesnoth-gui1_widgets_SRC
-	widgets/combo.cpp
-	widgets/combo_drag.cpp
-	widgets/drop_target.cpp
 	widgets/scrollpane.cpp
 )
 
@@ -1033,7 +1030,6 @@ set(libwesnoth-game_STAT_SRC
 	widgets/label.cpp
 	widgets/menu.cpp
 	widgets/menu_style.cpp
-	widgets/multimenu.cpp
 	widgets/scrollarea.cpp
 	widgets/scrollbar.cpp
 	widgets/slider.cpp
@@ -1323,7 +1319,6 @@ if(ENABLE_TESTS)
 	set(test_SRC
 		tests/gui/iterator.cpp
 		tests/gui/fire_event.cpp
-		tests/gui/test_drop_target.cpp
 		tests/gui/test_gui2.cpp
 		tests/gui/test_save_dialog.cpp
 		tests/gui/visitor.cpp

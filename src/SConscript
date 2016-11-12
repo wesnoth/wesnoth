@@ -144,7 +144,6 @@ libwesnoth_sources = Split("""
     widgets/label.cpp
     widgets/menu_style.cpp
     widgets/menu.cpp
-    widgets/multimenu.cpp
     widgets/scrollarea.cpp
     widgets/scrollbar.cpp
     widgets/slider.cpp
@@ -587,9 +586,6 @@ wesnoth_sources = Split("""
     whiteboard/side_actions.cpp
     whiteboard/suppose_dead.cpp
     whiteboard/utility.cpp
-    widgets/combo_drag.cpp
-    widgets/combo.cpp
-    widgets/drop_target.cpp
     widgets/scrollpane.cpp
     """)
 
@@ -709,7 +705,6 @@ libtest_utils = test_env.Library("test_utils", test_utils_sources)
 test_sources = Split("""
     tests/gui/fire_event.cpp
     tests/gui/iterator.cpp
-    tests/gui/test_drop_target.cpp
     tests/gui/test_gui2.cpp
     tests/gui/test_save_dialog.cpp
     tests/gui/visitor.cpp
