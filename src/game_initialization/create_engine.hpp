@@ -46,8 +46,6 @@ public:
 
 	virtual bool can_launch_game() const = 0;
 
-	virtual surface create_image_surface(const SDL_Rect& image_rect) = 0;
-
 	virtual void set_metadata() = 0;
 
 	virtual std::string name() const;
@@ -76,8 +74,6 @@ public:
 
 	bool can_launch_game() const;
 
-	surface create_image_surface(const SDL_Rect& image_rect);
-
 	void set_metadata();
 
 	int num_players() const;
@@ -88,7 +84,6 @@ protected:
 
 	std::unique_ptr<gamemap> map_;
 
-	surface minimap_img_;
 	std::string map_hash_;
 
 private:
@@ -151,8 +146,6 @@ public:
 	virtual ~campaign();
 
 	bool can_launch_game() const;
-
-	surface create_image_surface(const SDL_Rect& image_rect);
 
 	void set_metadata();
 

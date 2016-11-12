@@ -124,7 +124,6 @@ config& level::data()
 scenario::scenario(const config& data) :
 	level(data),
 	map_(),
-	minimap_img_(),
 	map_hash_(),
 	num_players_(0)
 {
@@ -137,23 +136,6 @@ scenario::~scenario()
 bool scenario::can_launch_game() const
 {
 	return map_.get() != nullptr;
-}
-
-surface scenario::create_image_surface(const SDL_Rect& image_rect)
-{
-	if (!map_) {
-		minimap_img_ = surface();
-		return minimap_img_;
-	}
-
-	std::string current_hash = util::encode_hash(util::md5(map_->write()));
-
-	if (minimap_img_.null() || (map_hash_ != current_hash)) { // If there's no minimap image, or the map hash doesn't match, regenerate the image cache.
-		minimap_img_ = image::getMinimap(image_rect.w, image_rect.h, *map_, 0);
-		map_hash_ = current_hash;
-	}
-
-	return minimap_img_;
 }
 
 void scenario::set_metadata()
@@ -337,14 +319,6 @@ campaign::~campaign()
 bool campaign::can_launch_game() const
 {
 	return !data_.empty();
-}
-
-surface campaign::create_image_surface(const SDL_Rect& image_rect)
-{
-	surface temp_image(
-		image::get_image(image::locator(image_label_)));
-
-	return scale_surface(temp_image, image_rect.w, image_rect.h);
 }
 
 void campaign::set_metadata()
