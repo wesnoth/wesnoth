@@ -18,6 +18,7 @@
 
 #include "game_config_manager.hpp"
 #include "game_display.hpp"
+#include "game_initialization/connect_engine.hpp"
 #include "hotkey/hotkey_manager.hpp"
 #include "mt_rng.hpp"
 #include "saved_game.hpp"
