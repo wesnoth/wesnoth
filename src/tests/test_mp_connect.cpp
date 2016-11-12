@@ -18,8 +18,6 @@
 
 #include "game_config_manager.hpp"
 #include "game_display.hpp"
-#include "game_initialization/multiplayer_connect.hpp"
-#include "game_initialization/multiplayer_ui.hpp"
 #include "hotkey/hotkey_manager.hpp"
 #include "mt_rng.hpp"
 #include "saved_game.hpp"
@@ -27,17 +25,7 @@
 
 #include <boost/assign.hpp>
 
-
 /* Definitions */
-
-/*class test_mp_connect : public mp::connect {
-public:
-	test_mp_connect(game_display& disp, const std::string& game_name,
-		const config& game_config, mp::chat& c, config& gamelist,
-		mp::connect_engine& engine) :
-		mp::connect(disp, game_name, game_config, c, gamelist, engine)
-		{}
-};*/
 
 class test_connect_engine : public ng::connect_engine {
 public:
@@ -45,7 +33,6 @@ public:
 		ng::connect_engine(gamestate, true, nullptr)
 		{}
 };
-
 
 /* Variables */
 
@@ -55,7 +42,6 @@ std::unique_ptr<saved_game> state;
 std::unique_ptr<rand_rng::mt_rng> rng;
 
 }
-
 
 /* Global fixture */
 
