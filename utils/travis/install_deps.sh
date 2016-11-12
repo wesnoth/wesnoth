@@ -5,9 +5,7 @@ set -ev
 if [[ $TRAVIS_OS_NAME == 'osx' ]]; then
 
 	brew update
-	brew install scons cairo pango moreutils sdl2_image sdl2_ttf
-	brew install -v libvorbis
-	brew install -v sdl2_mixer
+	brew install scons cairo pango moreutils sdl2_image sdl2_ttf sdl2_mixer
 
 else
 

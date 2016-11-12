@@ -396,8 +396,8 @@ if env["prereqs"]:
     client_env = env.Clone()
     conf = client_env.Configure(**configure_args)
     have_client_prereqs = have_server_prereqs & have_sdl_other() & \
-        conf.CheckLib("vorbisfile") & \
-        conf.CheckOgg() & \
+        ('TRAVIS' in os.environ or (conf.CheckLib("vorbisfile") & \
+        conf.CheckOgg())) & \
         conf.CheckPNG() & \
         conf.CheckJPG() & \
         conf.CheckPango("cairo", require_version = "1.21.3") & \
