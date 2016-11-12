@@ -868,15 +868,8 @@ set(wesnoth-main_SRC
 	movetype.cpp
 	mp_game_settings.cpp
 	game_initialization/mp_game_utils.cpp
-	game_initialization/mp_options.cpp
 	mp_ui_alerts.cpp
 	game_initialization/multiplayer.cpp
-	game_initialization/multiplayer_configure.cpp
-	game_initialization/multiplayer_connect.cpp
-	game_initialization/multiplayer_create.cpp
-	game_initialization/multiplayer_lobby.cpp
-	game_initialization/multiplayer_ui.cpp
-	game_initialization/multiplayer_wait.cpp
 	network_asio.cpp
 	pathfind/pathfind.cpp
 	pathfind/teleport.cpp

@@ -20,7 +20,6 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
-#include "game_initialization/multiplayer_ui.hpp"
 #include "game_initialization/mp_game_utils.hpp"
 #include "mt_rng.hpp"
 #include "game_initialization/playcampaign.hpp"
@@ -1415,29 +1414,6 @@ void side_engine::add_controller_option(ng::controller controller,
 	}
 
 	controller_options_.push_back(std::make_pair(controller, name));
-}
-
-std::vector<std::string> side_engine::get_colors() const
-{
-	std::vector<std::string> res;
-	for (int i = 0; i < num_colors(); ++i) {
-		res.push_back(mp::get_color_string(get_color(i)));
-	}
-	return res;
-}
-
-std::string side_engine::get_color(int index) const
-{
-	if(index == -1) {
-		index = color();
-	}
-	if(!custom_color_.empty()) {
-		if(index == 0) {
-			return custom_color_;
-		}
-		index -= 1;
-	}
-	return std::to_string(index + 1);
 }
 
 int side_engine::num_colors() const

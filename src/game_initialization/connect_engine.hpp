@@ -18,8 +18,6 @@
 #include "config.hpp"
 #include "flg_manager.hpp"
 #include "saved_game.hpp"
-#include "multiplayer_ui.hpp"
-#include "saved_game.hpp"
 #include <set>
 
 namespace rand_rng { class mt_rng; }
@@ -222,8 +220,6 @@ public:
 		{ return parent_.player_teams_; }
 	flg_manager& flg() { return flg_; }
 
-	std::vector<std::string> get_colors() const;
-	std::string get_color(int index = -1) const;
 	int num_colors() const;
 
 	const std::string color_id() const { return color_id_; }
