@@ -48,7 +48,7 @@ before_install:
     - if [[ "$OPT" == "-O0" ]] && [[ "$CXX" == "clang++" ]]; then export EXTRA_FLAGS_RELEASE="-O0 -Wno-deprecated-declarations -Wno-literal-suffix -Wno-deprecated-register"; fi
 
 install:
-    - ./utils/travis/install_deps.sh
+    - travis_wait ./utils/travis/install_deps.sh
 
 script: 
     - ./utils/travis/check_utf8.sh
