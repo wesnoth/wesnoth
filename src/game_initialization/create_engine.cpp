@@ -13,24 +13,22 @@
 */
 #include "game_initialization/create_engine.hpp"
 
-#include "game_initialization/depcheck.hpp"
 #include "config_assign.hpp"
-#include "game_config_manager.hpp"
-#include "game_launcher.hpp"
-#include "game_preferences.hpp"
-#include "generators/map_generator.hpp"
-#include "gui/dialogs/campaign_difficulty.hpp"
 #include "filesystem.hpp"
 #include "formula/string_utils.hpp"
-#include "hash.hpp"
-#include "log.hpp"
+#include "game_config_manager.hpp"
+#include "game_initialization/depcheck.hpp"
+#include "game_preferences.hpp"
 #include "generators/map_create.hpp"
+#include "generators/map_generator.hpp"
+#include "gui/dialogs/campaign_difficulty.hpp"
+#include "hash.hpp"
+#include "image.hpp"
+#include "log.hpp"
 #include "map/exception.hpp"
 #include "map/map.hpp"
-#include "font/marked-up_text.hpp"
 #include "minimap.hpp"
 #include "saved_game.hpp"
-#include "wml_separators.hpp"
 #include "wml_exception.hpp"
 
 #include "serialization/preprocessor.hpp"
@@ -716,29 +714,12 @@ int create_engine::player_num_filter() const
 	return player_count_filter_;
 }
 
-std::vector<std::string> create_engine::levels_menu_item_names() const
-{
-	std::vector<std::string> menu_names;
-
-	for (level_ptr level : get_levels_by_type(current_level_type_)) {
-		menu_names.push_back(IMAGE_PREFIX + level->icon() + IMG_TEXT_SEPARATOR + level->name()
-				+ HELP_STRING_SEPARATOR + level->name());
-	}
-
-	return menu_names;
-}
-
-std::vector<std::string> create_engine::extras_menu_item_names(
-	const MP_EXTRA extra_type, bool escape_markup) const
+std::vector<std::string> create_engine::extras_menu_item_names(const MP_EXTRA extra_type) const
 {
 	std::vector<std::string> names;
 
-	for (extras_metadata_ptr extra : get_const_extras_by_type(extra_type)) {
-		if (escape_markup) {
-			names.push_back(font::NULL_MARKUP + extra->name);
-		} else {
-			names.push_back(extra->name);
-		}
+	for(extras_metadata_ptr extra : get_const_extras_by_type(extra_type)) {
+		names.push_back(extra->name);
 	}
 
 	return names;
