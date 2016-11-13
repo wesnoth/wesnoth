@@ -97,7 +97,7 @@ local function plugin()
 
   context.chat({message = "done first join"})
   
-  while not (info.name == "Dialog" or info.name == "Multiplayer Wait") do
+  while not (info.name == "Dialog" or info.name == "Multiplayer Join") do
     if context.join then
       context.join({})
     else
@@ -115,11 +115,11 @@ local function plugin()
 
     repeat
       events, context, info = coroutine.yield()
-      idle_text("in " .. info.name .. " waiting for mp wait")
-    until info.name == "Multiplayer Wait"
+      idle_text("in " .. info.name .. " waiting for mp join")
+    until info.name == "Multiplayer Join"
   end
 
-  log("got to multiplayer wait...")
+  log("got to multiplayer join...")
   context.chat({message = "ready"})
 
   repeat

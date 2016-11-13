@@ -61,7 +61,7 @@ local function plugin()
   end
   context.select_level({index = s.index})
   
-    log("configuring a game")
+  log("configuring a game")
   context.set_name({name = "Test"})
   context.update_settings({registered_users = false})
 

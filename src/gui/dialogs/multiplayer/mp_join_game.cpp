@@ -290,7 +290,7 @@ void mp_join_game::pre_show(window& window)
 	//
 	// Set up the Lua plugin context
 	//
-	plugins_context_.reset(new plugins_context("Multiplayer Join Game"));
+	plugins_context_.reset(new plugins_context("Multiplayer Join"));
 
 	plugins_context_->set_callback("launch", [&window](const config&) { window.set_retval(window::OK); }, false);
 	plugins_context_->set_callback("quit",   [&window](const config&) { window.set_retval(window::CANCEL); }, false);
