@@ -342,27 +342,6 @@ if env["prereqs"]:
             conf.CheckBoost("system") & \
             conf.CheckBoost("asio", header_only = True)
 
-    if env['host'] in ['x86_64-nacl', 'i686-nacl']:
-        # libppapi_cpp has a reverse dependency on the following function
-        env.Append(LINKFLAGS = ['-Wl,--undefined=_ZN2pp12CreateModuleEv'])
-        conf.CheckLib("ppapi")
-        conf.CheckLib("ppapi_cpp")
-        conf.CheckLib("nacl-mounts")
-        # We are linking static libraries without libtool.
-        # Enumerating all transitive dependencies.
-        conf.CheckLib("pthread")
-        conf.CheckLib("dl")
-        conf.CheckLib("SDL")
-        conf.CheckLib("jpeg")
-        conf.CheckLib("png")
-        conf.CheckLib("tiff")
-        conf.CheckLib("ogg")
-        conf.CheckLib("expat")
-        conf.CheckLib("pixman-1")
-        conf.CheckLib("vorbisfile")
-        conf.CheckLib("vorbis")
-        conf.CheckLib("mikmod")
-
     def have_sdl_other():
         return \
             conf.CheckSDL(require_version = SDL2_version) & \
