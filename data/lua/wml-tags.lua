@@ -845,6 +845,7 @@ end
 
 function wml_actions.event(cfg)
 	if cfg.remove then
+		wesnoth.log('debug', '[event]remove= is deprecated; use [remove_event] instead')
 		wml_actions.remove_event(cfg)
 	else
 		wesnoth.add_event_handler(cfg)
