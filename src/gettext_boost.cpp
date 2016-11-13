@@ -49,7 +49,7 @@ namespace
 			{
 				//NOTE: the default_locale objects needs to live as least as long as the locale_info object. Otherwise the programm will segfault.
 				std::locale default_locale = bl::generator().generate("");
-				const boost::locale::info& locale_info = std::use_facet< boost::locale::info >(default_locale);
+				const bl::info& locale_info = std::use_facet<bl::info>(default_locale);
 				name_ += locale_info.language();
 				if(!locale_info.country().empty())
 					name_ += "_" + locale_info.country();
@@ -85,9 +85,9 @@ namespace
 			generator_.use_ansi_encoding(false);
 			generator_.categories(bl::message_facet | bl::information_facet | bl::collation_facet | bl::formatting_facet);
 			generator_.characters(bl::char_facet);
-			//we cannot have current_locale_ beeing a non boost gerenerated locale since it might not suppy
-			//the boost::locale::info facet. as soon as we add message paths update_locale_internal might fail
-			//for example becasue of invalid .mo files. So make sure we call it at least once before adding paths/domains
+			// We cannot have current_locale_ be a non boost-generated locale since it might not supply
+			// the bl::info facet. As soon as we add message paths, update_locale_internal might fail,
+			// for example because of invalid .mo files. So make sure we call it at least once before adding paths/domains
 			update_locale_internal();
 		}
 
@@ -158,7 +158,7 @@ namespace
 			{
 				LOG_G << "attempting to generate locale by name '" << current_language_ << "'\n";
 				current_locale_ = generator_.generate(current_language_);
-				const boost::locale::info& info = std::use_facet< boost::locale::info >(current_locale_);
+				const bl::info& info = std::use_facet<bl::info>(current_locale_);
 				LOG_G << "updated locale to '" << current_language_ << "' locale is now '" << current_locale_.name() << "' ( "
 				      << "name='" << info.name()
 				      << "' country='"  << info.country()
@@ -166,10 +166,10 @@ namespace
 				      << "' encoding='"  << info.encoding()
 				      << "' variant='"  << info.variant() << "')\n";
 			}
-			catch(const boost::locale::conv::conversion_error&)
+			catch(const bl::conv::conversion_error&)
 			{
-				assert(std::has_facet<boost::locale::info>(current_locale_));
-				const boost::locale::info& info = std::use_facet< boost::locale::info >(current_locale_);
+				assert(std::has_facet<bl::info>(current_locale_));
+				const bl::info& info = std::use_facet<bl::info>(current_locale_);
 				ERR_G << "Failed to update locale due to conversion error, locale is now: "
 				      << "name='" << info.name()
 				      << "' country='" << info.country()
@@ -194,7 +194,7 @@ namespace
 		std::set<std::string> loaded_paths_;
 		std::set<std::string> loaded_domains_;
 		std::string current_language_;
-		boost::locale::generator generator_;
+		bl::generator generator_;
 		std::locale current_locale_;
 		bool is_dirty_;
 	};
@@ -212,11 +212,11 @@ namespace translation
 
 std::string dgettext(const char* domain, const char* msgid)
 {
-	return boost::locale::dgettext(domain, msgid, get_manager().get_locale());
+	return bl::dgettext(domain, msgid, get_manager().get_locale());
 }
 std::string egettext(char const *msgid)
 {
-	return msgid[0] == '\0' ? msgid : boost::locale::gettext(msgid, get_manager().get_locale());
+	return msgid[0] == '\0' ? msgid : bl::gettext(msgid, get_manager().get_locale());
 }
 
 std::string dsgettext (const char * domainname, const char *msgid)
@@ -234,7 +234,7 @@ std::string dsgettext (const char * domainname, const char *msgid)
 
 std::string dsngettext (const char * domainname, const char *singular, const char *plural, int n)
 {
-	std::string msgval = boost::locale::dngettext(domainname, singular, plural, n, get_manager().get_locale());
+	std::string msgval = bl::dngettext(domainname, singular, plural, n, get_manager().get_locale());
 	if (msgval == singular) {
 		const char* firsthat = std::strrchr (singular, '^');
 		if (firsthat == nullptr)
