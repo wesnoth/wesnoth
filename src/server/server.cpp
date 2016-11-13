@@ -1163,6 +1163,7 @@ void server::cleanup_game(game* game_ptr)
 		LOG_SERVER << "Could not find game (" << game_ptr->id()
 				   << ") to delete in games_and_users_list_.\n";
 	}
+	delete game_ptr;
 }
 
 void server::handle_join_game(socket_ptr socket, simple_wml::node& join)
