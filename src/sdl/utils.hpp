@@ -425,8 +425,6 @@ surface create_compatible_surface(const surface &surf, int width = -1, int heigh
 void blit_surface(const surface& src,
 	const SDL_Rect* srcrect, surface& dst, const SDL_Rect* dstrect);
 
-SDL_Rect get_non_transparent_portion(const surface &surf);
-
 bool operator==(const SDL_Color& a, const SDL_Color& b);
 bool operator!=(const SDL_Color& a, const SDL_Color& b);
 
