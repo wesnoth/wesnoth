@@ -738,14 +738,27 @@ env.WindowsInstaller([
 # Making Mac OS X application bundles
 #
 env.Alias("wesnoth-bundle",
-          env.Command("Battle For Wesnoth.app", "wesnoth", [
+          env.Command("Wesnoth.app", "wesnoth", [
               Mkdir("${TARGET}/Contents"),
               Mkdir("${TARGET}/Contents/MacOS"),
               Mkdir("${TARGET}/Contents/Resources"),
               Action('echo "APPL????" > "${TARGET}/Contents/PkgInfo"'),
-              Copy("${TARGET}/Contents/MacOS/wesnoth", "wesnoth"),
+              Copy("${TARGET}/Contents/MacOS/Wesnoth", "wesnoth"),
+              Copy("${TARGET}/Contents/MacOS/wesnothd", "wesnothd"),
+              Copy("${TARGET}/Contents/Info.plist", "projectfiles/Xcode/Info.plist"),
+              Action(r"""sed -i '' 's/\$[{].*[}]/Wesnoth/' "${TARGET}/Contents/Info.plist" """),
+              Copy("${TARGET}/Contents/Resources/data", "data"),
+              Copy("${TARGET}/Contents/Resources/English.lproj", "projectfiles/Xcode/English.lproj"),
+              Copy("${TARGET}/Contents/Resources/fonts", "fonts"),
+              Copy("${TARGET}/Contents/Resources/fonts.conf", "projectfiles/Xcode/Resources/fonts.conf"),
+              Copy("${TARGET}/Contents/Resources/Growl Registration Ticket.growlRegDict", "projectfiles/Xcode/Resources/Growl Registration Ticket.growlRegDict"),
+              Copy("${TARGET}/Contents/Resources/icon.icns", "projectfiles/Xcode/Resources/icon.icns"),
+              Copy("${TARGET}/Contents/Resources/images", "images"),
+              Copy("${TARGET}/Contents/Resources/SDLMain.nib", "projectfiles/Xcode/Resources/SDLMain.nib"),
+              Copy("${TARGET}/Contents/Resources/sounds", "sounds"),
+              Copy("${TARGET}/Contents/Resources/translations", "translations"),
               ]))
-env.Clean(all, "Battle For Wesnoth.app")    
+env.Clean(all, "Wesnoth.app")
 
 #
 # Sanity checking
