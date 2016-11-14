@@ -347,7 +347,6 @@ static int process_command_args(const commandline_options& cmdline_opts) {
 	}
 	if(cmdline_opts.data_dir) {
 		const std::string datadir = *cmdline_opts.data_dir;
-		std::cerr << "Overriding data directory with " << datadir << std::endl;
 #ifdef _WIN32
 		// use c_str to ensure that index 1 points to valid element since c_str() returns null-terminated string
 		if(datadir.c_str()[1] == ':') {
@@ -358,6 +357,8 @@ static int process_command_args(const commandline_options& cmdline_opts) {
 		} else {
 			game_config::path = filesystem::get_cwd() + '/' + datadir;
 		}
+		game_config::path = filesystem::normalize_path(game_config::path, true, true);
+		std::cerr << "Overriding data directory with " << game_config::path << std::endl;
 
 		if(!filesystem::is_directory(game_config::path)) {
 			std::cerr << "Could not find directory '" << game_config::path << "'\n";
