@@ -88,26 +88,9 @@ void mp_staging::pre_show(window& window)
 	//
 	// Set up sides list
 	//
-	tree_view& tree = find_widget<tree_view>(&window, "side_list", false);
-	const std::map<std::string, string_map> empty_map;
-
 	for(const auto& side : connect_engine_.side_engines()) {
 		if(!side->allow_player() && !game_config::debug) {
 			continue;
-		}
-
-		// Check to see whether we've added a toplevel tree node for this team. If not, add one
-		if(team_tree_map_.find(side->team_name()) == team_tree_map_.end()) {
-			std::map<std::string, string_map> data;
-			string_map item;
-
-			item["label"] = (formatter() << _("Team:") << " " << side->user_team_name()).str();
-			data.emplace("tree_view_node_label", item);
-
-			tree_view_node& team_node = tree.add_node("team_header", data);
-			team_node.add_sibling("side_spacer", empty_map);
-
-			team_tree_map_[side->team_name()] = &team_node;
 		}
 
 		add_side_node(window, side);
@@ -151,6 +134,9 @@ void mp_staging::pre_show(window& window)
 
 void mp_staging::add_side_node(window& window, ng::side_engine_ptr side)
 {
+	tree_view& tree = find_widget<tree_view>(&window, "side_list", false);
+	static const std::map<std::string, string_map> empty_map;
+
 	std::map<std::string, string_map> data;
 	string_map item;
 
@@ -163,6 +149,20 @@ void mp_staging::add_side_node(window& window, ng::side_engine_ptr side)
 
 	item["label"] = "icons/icon-random.png";
 	data.emplace("leader_gender", item);
+
+	// Check to see whether we've added a toplevel tree node for this team. If not, add one
+	if(team_tree_map_.find(side->team_name()) == team_tree_map_.end()) {
+		std::map<std::string, string_map> data;
+		string_map item;
+
+		item["label"] = (formatter() << _("Team:") << " " << side->user_team_name()).str();
+		data.emplace("tree_view_node_label", item);
+
+		tree_view_node& team_node = tree.add_node("team_header", data);
+		team_node.add_sibling("side_spacer", empty_map);
+
+		team_tree_map_[side->team_name()] = &team_node;
+	}
 
 	tree_view_node& node = team_tree_map_[side->team_name()]->add_child("side_panel", data);
 
