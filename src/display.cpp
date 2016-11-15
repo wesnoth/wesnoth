@@ -2734,7 +2734,7 @@ image::TYPE display::get_image_type(const map_location& /*loc*/) {
 
 void display::draw_image_for_report(surface& img, SDL_Rect& rect)
 {
-	SDL_Rect visible_area = sdl::get_non_transparent_portion(img);
+	SDL_Rect visible_area = get_non_transparent_portion(img);
 	SDL_Rect target = rect;
 	if(visible_area.x != 0 || visible_area.y != 0 || visible_area.w != img->w || visible_area.h != img->h) {
 		if(visible_area.w == 0 || visible_area.h == 0) {

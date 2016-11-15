@@ -16,8 +16,6 @@
 #include "sdl/rect.hpp"
 #include "sdl/utils.hpp"
 
-#include <iostream>
-
 namespace sdl
 {
 
@@ -117,77 +115,6 @@ void draw_solid_tinted_rectangle(int x, int y, int w, int h,
 	fill_rect_alpha(rect,SDL_MapRGB(target->format,r,g,b),Uint8(alpha*255),target);
 }
 
-SDL_Rect get_non_transparent_portion(const surface &surf)
-{
-	SDL_Rect res = {0,0,0,0};
-	surface nsurf(make_neutral_surface(surf));
-	if(nsurf == nullptr) {
-		std::cerr << "failed to make neutral surface\n";
-		return res;
-	}
-
-	const auto calc = [](Uint32 pixel) {
-		Uint8 alpha = pixel >> 24;
-		return alpha != 0x00;
-	};
-
-	surface_lock lock(nsurf);
-	const Uint32* const pixels = lock.pixels();
-
-	int n;
-	for(n = 0; n != nsurf->h; ++n) {
-		const Uint32* const start_row = pixels + n*nsurf->w;
-		const Uint32* const end_row = start_row + nsurf->w;
-
-		if(std::find_if(start_row,end_row,calc) != end_row)
-			break;
-	}
-
-	res.y = n;
-
-	for(n = 0; n != nsurf->h-res.y; ++n) {
-		const Uint32* const start_row = pixels + (nsurf->h-n-1)*surf->w;
-		const Uint32* const end_row = start_row + nsurf->w;
-
-		if(std::find_if(start_row,end_row,calc) != end_row)
-			break;
-	}
-
-	// The height is the height of the surface,
-	// minus the distance from the top and
-	// the distance from the bottom.
-	res.h = nsurf->h - res.y - n;
-
-	for(n = 0; n != nsurf->w; ++n) {
-		int y;
-		for(y = 0; y != nsurf->h; ++y) {
-			const Uint32 pixel = pixels[y*nsurf->w + n];
-			if(calc(pixel))
-				break;
-		}
-
-		if(y != nsurf->h)
-			break;
-	}
-
-	res.x = n;
-
-	for(n = 0; n != nsurf->w-res.x; ++n) {
-		int y;
-		for(y = 0; y != nsurf->h; ++y) {
-			const Uint32 pixel = pixels[y*nsurf->w + surf->w - n - 1];
-			if(calc(pixel))
-				break;
-		}
-
-		if(y != nsurf->h)
-			break;
-	}
-
-	res.w = nsurf->w - res.x - n;
-
-	return res;
-}
 
 } // namespace sdl
 

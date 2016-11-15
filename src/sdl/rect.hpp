@@ -141,11 +141,6 @@ inline void fill_rect(surface& dst, SDL_Rect* dst_rect, const Uint32 color)
 	SDL_FillRect(dst, dst_rect, color);
 }
 
-/**
- * Returns the dimensions of the non-transparent portion of an image
- */
-SDL_Rect get_non_transparent_portion(const surface &surf);
-
 } // namespace sdl
 
 bool operator==(const SDL_Rect& a, const SDL_Rect& b);
