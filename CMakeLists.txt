@@ -99,6 +99,38 @@ if(NOT CMAKE_BUILD_TYPE)
 	set( CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build, options are: None Debug Release RelWithDebInfo MinSizeRel." FORCE)
 endif(NOT CMAKE_BUILD_TYPE)
 
+# Add additional build with optional LTO flags
+MESSAGE("Adding Optimize build")
+if("${ENABLE_LTO}" STREQUAL "yes")
+  MESSAGE("LTO is enabled for Optimize build")
+  set(CMAKE_CXX_FLAGS_OPTIMIZE "-O3 -march=native -flto" CACHE STRING "Flags for a more highly optimized build" FORCE)
+  set(CMAKE_C_FLAGS_OPTIMIZE "-O3 -march=native -flto" CACHE STRING "Flags for a more highly optimized build with LTO" FORCE)
+  set(CMAKE_EXE_LINKER_FLAGS_OPTIMIZE "-fuse-ld=gold" CACHE STRING "Flags for a more highly optimized build with LTO" FORCE)
+else()
+  MESSAGE("LTO is not enabled for Optimize build")
+  set(CMAKE_CXX_FLAGS_OPTIMIZE "-O3 -march=native" CACHE STRING "Flags for a more highly optimized build without LTO" FORCE)
+  set(CMAKE_C_FLAGS_OPTIMIZE "-O3 -march=native" CACHE STRING "Flags for a more highly optimized build without LTO" FORCE)
+  set(CMAKE_EXE_LINKER_FLAGS_OPTIMIZE "" CACHE STRING "" FORCE)
+endif()
+set(CMAKE_SHARED_LINKER_FLAGS_OPTIMIZE "" CACHE STRING "Not used" FORCE)
+MARK_AS_ADVANCED(CMAKE_CXX_FLAGS_OPTIMIZE CMAKE_C_FLAGS_OPTIMIZE CMAKE_EXE_LINKER_FLAGS_OPTIMIZE CMAKE_SHARED_LINKER_FLAGS_OPTIMIZE)
+
+# set CMAKE_AR and CMAKE_RANLIB to use LTO-enabled variants if the build is Optimize and LTO is enabled
+if("${CMAKE_BUILD_TYPE}" STREQUAL "Optimize" AND "${ENABLE_LTO}" STREQUAL "yes")
+  MESSAGE("Using gcc-ar and gcc-ranlib")
+  find_program(LTO_AR NAMES gcc-ar)
+  find_program(LTO_RANLIB NAMES gcc-ranlib)
+  set(CMAKE_AR "${LTO_AR}" CACHE STRING "Supports LTO" FORCE)
+  set(CMAKE_RANLIB "${LTO_RANLIB}" CACHE STRING "Supports LTO" FORCE)
+else()
+  MESSAGE("Using ar and ranlib")
+  find_program(NON_LTO_AR NAMES ar)
+  find_program(NON_LTO_RANLIB NAMES ranlib)
+  set(CMAKE_AR "${NON_LTO_AR}" CACHE STRING "Does not support LTO" FORCE)
+  set(CMAKE_RANLIB "${NON_LTO_RANLIB}" CACHE STRING "Does not support LTO" FORCE)
+endif()
+MARK_AS_ADVANCED(LTO_AR LTO_RANLIB NON_LTO_AR NON_LTO_RANLIB)
+
 if(NOT DEFINED ENABLE_DISPLAY_REVISION)
 	# Test whether the code is used in a repository if not autorevision will
 	# fail and should be disabled by default. If inside a repository enable
