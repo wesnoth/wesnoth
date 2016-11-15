@@ -44,7 +44,6 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 {
 	const terrain_type_data & tdata = *map.tdata();
 
-	DBG_DP << "creating minimap " << int(map.w()*scale*0.75) << "," << map.h()*scale << "\n";
 
 	const bool preferences_minimap_draw_terrain = preferences::minimap_draw_terrain();
 	const bool preferences_minimap_terrain_coding = preferences::minimap_terrain_coding();
@@ -52,6 +51,8 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 	const bool preferences_minimap_unit_coding = preferences::minimap_movement_coding();
 
 	const int scale = (preferences_minimap_draw_terrain && preferences_minimap_terrain_coding) ? 24 : 4;
+
+	DBG_DP << "creating minimap " << int(map.w()*scale*0.75) << "," << map.h()*scale << "\n";
 
 	const size_t map_width = map.w()*scale*3/4;
 	const size_t map_height = map.h()*scale;
