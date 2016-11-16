@@ -511,13 +511,16 @@ for env in [test_env, client_env, env]:
         
 # because apparently telling the compiler, linker, AND windres to be 32-bit just isn't enough
         if env["PLATFORM"] == 'win32':
-            env["OPT_FLAGS"] = "$OPT_FLAGS -march=pentiumpro"
+            env["ARCH"] = "-march=pentiumpro"
+            env["OPT_FLAGS"] =  env["OPT_FLAGS"] + " " + env["ARCH"]
+        else:
+            env["ARCH"] = "-march=native"
         
         if env["enable_lto"] == "yes":
-            env["HIGH_OPT_COMP_FLAGS"] = "-O3 -march=native -flto"
-            env["HIGH_OPT_LINK_FLAGS"] = "$HIGH_OPT_COMP_FLAGS -fuse-ld=gold"
+            env["HIGH_OPT_COMP_FLAGS"] = "-O3 " + env["ARCH"] + " -flto -s"
+            env["HIGH_OPT_LINK_FLAGS"] = env["HIGH_OPT_COMP_FLAGS"] + " -fuse-ld=gold"
         else:
-            env["HIGH_OPT_COMP_FLAGS"] = "-O3 -march=native"
+            env["HIGH_OPT_COMP_FLAGS"] = "-O3 " + env["ARCH"] + " -s"
             env["HIGH_OPT_LINK_FLAGS"] = ""
 
     if "clang" in env["CXX"]:
