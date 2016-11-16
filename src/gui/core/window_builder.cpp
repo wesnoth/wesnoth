@@ -34,6 +34,7 @@
 #include "gui/widgets/scroll_label.hpp"
 #include "gui/widgets/scrollbar_panel.hpp"
 #include "gui/widgets/settings.hpp"
+#include "gui/widgets/size_lock.hpp"
 #include "gui/widgets/slider.hpp"
 #include "gui/widgets/stacked_widget.hpp"
 #include "gui/widgets/toggle_button.hpp"
@@ -220,6 +221,7 @@ builder_widget_ptr create_builder_widget(const config& cfg)
 	TRY(drawing);
 	TRY(password_box);
 	TRY(unit_preview_pane);
+	TRY(size_lock);
 #undef TRY
 #endif
 
