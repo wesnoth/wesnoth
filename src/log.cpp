@@ -99,9 +99,10 @@ logger& debug()
 	return lg;
 }
 
+static log_domain dom("general");
+
 log_domain& general()
 {
-	static log_domain dom("general");
 	return dom;
 }
 
