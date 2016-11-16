@@ -25,7 +25,14 @@
 #include <boost/thread.hpp>
 #include <set>
 
+#ifdef __GNUC__
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wmissing-field-initializers"
+#endif
 #include "spirit_po.hpp"
+#ifdef __GNUC__
+#pragma GCC diagnostic pop
+#endif
 
 #define DBG_G LOG_STREAM(debug, lg::general())
 #define LOG_G LOG_STREAM(info, lg::general())
