@@ -585,8 +585,8 @@ void set_user_data_dir(std::string newprefdir)
 #endif
 
 #endif /*_WIN32*/
-	user_data_dir = normalize_path(user_data_dir.string(), true, true);
 	setup_user_data_dir();
+	user_data_dir = normalize_path(user_data_dir.string(), true, true);
 }
 
 static void set_user_config_path(path newconfig)
