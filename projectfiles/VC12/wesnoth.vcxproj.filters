@@ -482,6 +482,9 @@
     <ClCompile Include="..\..\src\gui\widgets\settings.cpp">
       <Filter>Gui\Widgets</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\widgets\size_lock.cpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\gui\widgets\slider.cpp">
       <Filter>Gui\Widgets</Filter>
     </ClCompile>
@@ -1492,7 +1495,13 @@
     <ClCompile Include="..\..\src\font\font_config.cpp">
       <Filter>Font</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\font\marked-up_text.cpp">
+      <Filter>Font</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\font\sdl_ttf.cpp">
+      <Filter>Font</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\font\standard_colors.cpp">
       <Filter>Font</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\font\text.cpp">
@@ -1501,20 +1510,11 @@
     <ClCompile Include="..\..\src\font\text_cache.cpp">
       <Filter>Font</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\font\text_surface.cpp">
-      <Filter>Font</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\font\marked-up_text.cpp">
-      <Filter>Font</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\font\standard_colors.cpp">
-      <Filter>Font</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\font\text_formatting.cpp">
       <Filter>Font</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\gui\widgets\size_lock.cpp">
-      <Filter>Gui\Widgets</Filter>
+    <ClCompile Include="..\..\src\font\text_surface.cpp">
+      <Filter>Font</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1849,6 +1849,9 @@
       <Filter>Gui\Widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\widgets\settings.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\size_lock.hpp">
       <Filter>Gui\Widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\widgets\slider.hpp">
@@ -2881,6 +2884,42 @@
     <ClInclude Include="..\..\src\wesnothd_connection_error.hpp" />
     <ClInclude Include="..\..\src\wml_exception.hpp" />
     <ClInclude Include="..\..\src\wml_separators.hpp" />
+    <ClInclude Include="..\..\src\font\error.hpp">
+      <Filter>Font</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\font\font_config.hpp">
+      <Filter>Font</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\font\font_description.hpp">
+      <Filter>Font</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\font\font_id.hpp">
+      <Filter>Font</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\font\font_options.hpp">
+      <Filter>Font</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\font\marked-up_text.hpp">
+      <Filter>Font</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\font\sdl_ttf.hpp">
+      <Filter>Font</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\font\standard_colors.hpp">
+      <Filter>Font</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\font\text.hpp">
+      <Filter>Font</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\font\text_cache.hpp">
+      <Filter>Font</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\font\text_formatting.hpp">
+      <Filter>Font</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\font\text_surface.hpp">
+      <Filter>Font</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\font\pango\escape.hpp">
       <Filter>Font\Pango</Filter>
     </ClInclude>
@@ -2895,45 +2934,6 @@
     </ClInclude>
     <ClInclude Include="..\..\src\font\pango\stream_ops.hpp">
       <Filter>Font\Pango</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\font\font_config.hpp">
-      <Filter>Font</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\font\font_description.hpp">
-      <Filter>Font</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\font\font_id.hpp">
-      <Filter>Font</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\font\font_options.hpp">
-      <Filter>Font</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\font\sdl_ttf.hpp">
-      <Filter>Font</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\font\text.hpp">
-      <Filter>Font</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\font\text_cache.hpp">
-      <Filter>Font</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\font\text_surface.hpp">
-      <Filter>Font</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\font\marked-up_text.hpp">
-      <Filter>Font</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\font\standard_colors.hpp">
-      <Filter>Font</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\font\text_formatting.hpp">
-      <Filter>Font</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\font\error.hpp">
-      <Filter>Font</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\gui\widgets\size_lock.hpp">
-      <Filter>Gui\Widgets</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
