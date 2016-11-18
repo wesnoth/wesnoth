@@ -2525,6 +2525,14 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\widgets\size_lock.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Widgets</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Gui\Widgets</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Widgets</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Widgets</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Gui\Widgets</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Widgets</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\gui\widgets\slider.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
@@ -4209,6 +4217,7 @@
     <ClInclude Include="..\..\src\gui\widgets\scroll_label.hpp" />
     <ClInclude Include="..\..\src\gui\widgets\selectable.hpp" />
     <ClInclude Include="..\..\src\gui\widgets\settings.hpp" />
+    <ClInclude Include="..\..\src\gui\widgets\size_lock.hpp" />
     <ClInclude Include="..\..\src\gui\widgets\slider.hpp" />
     <ClInclude Include="..\..\src\gui\widgets\spacer.hpp" />
     <ClInclude Include="..\..\src\gui\widgets\stacked_widget.hpp" />

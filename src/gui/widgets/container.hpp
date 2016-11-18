@@ -85,7 +85,7 @@ public:
 	/** See @ref widget::demand_reduce_height. */
 	virtual void demand_reduce_height(const unsigned maximum_height) override;
 
-private:
+protected:
 	/** See @ref widget::calculate_best_size. */
 	virtual point calculate_best_size() const override;
 
