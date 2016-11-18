@@ -15,13 +15,24 @@
 #include "global.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
+#include "filesystem.hpp"
 
 #include <iostream>
+#include <fstream>
 #include <locale>
 #include <boost/locale.hpp>
 // including boost/thread fixes linking of boost locale for msvc on boost 1.60
 #include <boost/thread.hpp>
 #include <set>
+
+#ifdef __GNUC__
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wmissing-field-initializers"
+#endif
+#include "spirit_po.hpp"
+#ifdef __GNUC__
+#pragma GCC diagnostic pop
+#endif
 
 #define DBG_G LOG_STREAM(debug, lg::general())
 #define LOG_G LOG_STREAM(info, lg::general())
@@ -49,7 +60,7 @@ namespace
 			{
 				//NOTE: the default_locale objects needs to live as least as long as the locale_info object. Otherwise the programm will segfault.
 				std::locale default_locale = bl::generator().generate("");
-				const boost::locale::info& locale_info = std::use_facet< boost::locale::info >(default_locale);
+				const bl::info& locale_info = std::use_facet<bl::info>(default_locale);
 				name_ += locale_info.language();
 				if(!locale_info.country().empty())
 					name_ += "_" + locale_info.country();
@@ -65,6 +76,135 @@ namespace
 		}
 
 		std::string name_;
+	};
+	class wesnoth_message_format : public bl::message_format<char>
+	{
+		using po_catalog = spirit_po::catalog<>;
+	public:
+		wesnoth_message_format(std::locale base, const std::set<std::string>& domains, const std::set<std::string>& paths)
+			: base_loc_(base)
+		{
+			const bl::info& inf = std::use_facet<bl::info>(base);
+			if(inf.language() == "c") {
+				return;
+			}
+			std::string lang_name_short = inf.language();
+			std::string lang_name_long = lang_name_short;
+			if(!inf.country().empty()) {
+				lang_name_long += '_';
+				lang_name_long += inf.country();
+			}
+			if(!inf.variant().empty()) {
+				lang_name_long += '@';
+				lang_name_long += inf.variant();
+				lang_name_short += '@';
+				lang_name_short += inf.variant();
+			}
+			DBG_G << "Loading po files for language " << lang_name_long << '\n';
+			for(auto& domain : domains) {
+				DBG_G << "Searching for po files for domain " << domain << '\n';
+				std::string path;
+				for(auto base_path : paths) {
+					DBG_G << "Searching in dir " << base_path << '\n';
+					if(base_path[base_path.length()-1] != '/') {
+						base_path += '/';
+					}
+					base_path += domain;
+					base_path += '/';
+					path = base_path + lang_name_long + ".po";
+					DBG_G << "  Trying path " << path << '\n';
+					if(filesystem::file_exists(path)) {
+						break;
+					}
+					path = base_path + lang_name_short + ".po";
+					DBG_G << "  Trying path " << path << '\n';
+					if(filesystem::file_exists(path)) {
+						break;
+					}
+				}
+				if(!filesystem::file_exists(path)) {
+					continue;
+				}
+				std::ifstream po_file;
+				po_file.exceptions(std::ios::badbit);
+				LOG_G << "Loading language file from " << path << '\n';
+				try {
+					po_file.open(path);
+					const po_catalog& cat = po_catalog::from_istream(po_file);
+					extra_messages_.emplace(get_base().domain(domain), cat);
+				} catch(spirit_po::catalog_exception& e) {
+					throw_po_error(lang_name_long, domain, e.what());
+				} catch(std::ios::failure& e) {
+					throw_po_error(lang_name_long, domain, strerror(errno));
+				}
+			}
+		}
+
+		NORETURN static void throw_po_error(const std::string& lang, const std::string& dom, const std::string& detail) {
+			std::ostringstream err;
+			err << "Error opening language file for " << lang << ", textdomain " << dom
+				<< ":\n  " << detail << '\n';
+			ERR_G << err.rdbuf() << std::flush;
+			throw game::error(err.str());
+		}
+
+		const char* get(int domain_id, const char* ctx, const char* id) const override
+		{
+			auto& base = get_base();
+			const char* msg = base.get(domain_id, ctx, id);
+			if(msg == nullptr) {
+				auto iter = extra_messages_.find(domain_id);
+				if(iter == extra_messages_.end()) {
+					return nullptr;
+				}
+				auto& catalog = iter->second;
+				const char* lookup = ctx ? catalog.pgettext(ctx, id) : catalog.gettext(id);
+				if(lookup != id) {
+					// (p)gettext returns the input pointer if the string was not found
+					msg = lookup;
+				}
+			}
+			return msg;
+		}
+
+		const char* get(int domain_id, const char* ctx, const char* sid, int n) const override
+		{
+			auto& base = get_base();
+			const char* msg = base.get(domain_id, ctx, sid, n);
+			if(msg == nullptr) {
+				auto iter = extra_messages_.find(domain_id);
+				if(iter == extra_messages_.end()) {
+					return nullptr;
+				}
+				auto& catalog = iter->second;
+				const char* lookup = ctx ? catalog.npgettext(ctx, sid, sid, n) : catalog.ngettext(sid, sid, n);
+				if(lookup != sid) {
+					// n(p)gettext returns one of the input pointers if the string was not found
+					msg = lookup;
+				}
+			}
+			return msg;
+		}
+
+		int domain(const std::string& domain) const override
+		{
+			auto& base = get_base();
+			return base.domain(domain);
+		}
+
+		const char* convert(const char* msg, std::string& buffer) const override
+		{
+			auto& base = get_base();
+			return base.convert(msg, buffer);
+		}
+	private:
+		const bl::message_format<char>& get_base() const
+		{
+			return std::use_facet<bl::message_format<char>>(base_loc_);
+		}
+
+		std::locale base_loc_;
+		std::map<int, po_catalog> extra_messages_;
 	};
 	struct translation_manager
 	{
@@ -85,9 +225,9 @@ namespace
 			generator_.use_ansi_encoding(false);
 			generator_.categories(bl::message_facet | bl::information_facet | bl::collation_facet | bl::formatting_facet);
 			generator_.characters(bl::char_facet);
-			//we cannot have current_locale_ beeing a non boost gerenerated locale since it might not suppy
-			//the boost::locale::info facet. as soon as we add message paths update_locale_internal might fail
-			//for example becasue of invalid .mo files. So make sure we call it at least once before adding paths/domains
+			// We cannot have current_locale_ be a non boost-generated locale since it might not supply
+			// the bl::info facet. As soon as we add message paths, update_locale_internal might fail,
+			// for example because of invalid .mo files. So make sure we call it at least once before adding paths/domains
 			update_locale_internal();
 		}
 
@@ -158,7 +298,8 @@ namespace
 			{
 				LOG_G << "attempting to generate locale by name '" << current_language_ << "'\n";
 				current_locale_ = generator_.generate(current_language_);
-				const boost::locale::info& info = std::use_facet< boost::locale::info >(current_locale_);
+				current_locale_ = std::locale(current_locale_, new wesnoth_message_format(current_locale_, loaded_domains_, loaded_paths_));
+				const bl::info& info = std::use_facet<bl::info>(current_locale_);
 				LOG_G << "updated locale to '" << current_language_ << "' locale is now '" << current_locale_.name() << "' ( "
 				      << "name='" << info.name()
 				      << "' country='"  << info.country()
@@ -166,10 +307,10 @@ namespace
 				      << "' encoding='"  << info.encoding()
 				      << "' variant='"  << info.variant() << "')\n";
 			}
-			catch(const boost::locale::conv::conversion_error&)
+			catch(const bl::conv::conversion_error&)
 			{
-				assert(std::has_facet<boost::locale::info>(current_locale_));
-				const boost::locale::info& info = std::use_facet< boost::locale::info >(current_locale_);
+				assert(std::has_facet<bl::info>(current_locale_));
+				const bl::info& info = std::use_facet<bl::info>(current_locale_);
 				ERR_G << "Failed to update locale due to conversion error, locale is now: "
 				      << "name='" << info.name()
 				      << "' country='" << info.country()
@@ -194,7 +335,7 @@ namespace
 		std::set<std::string> loaded_paths_;
 		std::set<std::string> loaded_domains_;
 		std::string current_language_;
-		boost::locale::generator generator_;
+		bl::generator generator_;
 		std::locale current_locale_;
 		bool is_dirty_;
 	};
@@ -212,11 +353,11 @@ namespace translation
 
 std::string dgettext(const char* domain, const char* msgid)
 {
-	return boost::locale::dgettext(domain, msgid, get_manager().get_locale());
+	return bl::dgettext(domain, msgid, get_manager().get_locale());
 }
 std::string egettext(char const *msgid)
 {
-	return msgid[0] == '\0' ? msgid : boost::locale::gettext(msgid, get_manager().get_locale());
+	return msgid[0] == '\0' ? msgid : bl::gettext(msgid, get_manager().get_locale());
 }
 
 std::string dsgettext (const char * domainname, const char *msgid)
@@ -234,7 +375,7 @@ std::string dsgettext (const char * domainname, const char *msgid)
 
 std::string dsngettext (const char * domainname, const char *singular, const char *plural, int n)
 {
-	std::string msgval = boost::locale::dngettext(domainname, singular, plural, n, get_manager().get_locale());
+	std::string msgval = bl::dngettext(domainname, singular, plural, n, get_manager().get_locale());
 	if (msgval == singular) {
 		const char* firsthat = std::strrchr (singular, '^');
 		if (firsthat == nullptr)
