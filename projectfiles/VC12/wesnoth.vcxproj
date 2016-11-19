@@ -2071,14 +2071,6 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\multiplayer\mp_create_game_set_password.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
-    </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\multiplayer\mp_host_game_prompt.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
@@ -4152,7 +4144,6 @@
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_cmd_wrapper.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_connect.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_create_game.hpp" />
-    <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_create_game_set_password.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_host_game_prompt.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_join_game.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_join_game_password_prompt.hpp" />
