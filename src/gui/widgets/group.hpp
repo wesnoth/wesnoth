@@ -30,7 +30,7 @@ template<class T>
 class group
 {
 	using group_map    = std::map<T, selectable_item*>;
-	using order_vector = std::vector<selectable_item*>;
+	using order_vector = std::vector<styled_widget*>;
 
 public:
 	/**
@@ -45,7 +45,7 @@ public:
 		dynamic_cast<widget*>(w)->connect_signal<event::LEFT_BUTTON_CLICK>(
 			std::bind(&group::group_operator, this), event::dispatcher::front_child);
 
-		member_order_.push_back(w);
+		member_order_.push_back(dynamic_cast<styled_widget*>(w));
 	}
 
 	/**
@@ -143,15 +143,13 @@ public:
 			selectable_item& w = *member.second;
 			dynamic_cast<styled_widget&>(w).set_active(res);
 
-			// TODO: we shouldn't need to set do_reselect twice...
-			if(w.get_value_bool()) {
-				do_reselect = false;
-			}
-
 			// Only select another member if this was selected
-			if(!res && w.get_value_bool()) {
-				w.set_value_bool(false);
-				do_reselect = true;
+			if(w.get_value_bool()) {
+				do_reselect = !res;
+
+				if(do_reselect) {
+					w.set_value_bool(false);
+				}
 			}
 		}
 
@@ -161,8 +159,8 @@ public:
 
 		// Look for the first active member to select
 		for(auto& member : member_order_) {
-			if(dynamic_cast<styled_widget&>(*member).get_active()) {
-				member->set_value_bool(true);
+			if(member->get_active()) {
+				dynamic_cast<selectable_item&>(*member).set_value_bool(true);
 				break;
 			}
 		}
