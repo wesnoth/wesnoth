@@ -14,7 +14,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "gui/core/tips.hpp"
+#include "gui/auxiliary/tips.hpp"
 
 #include "config.hpp"
 #include "game_preferences.hpp"

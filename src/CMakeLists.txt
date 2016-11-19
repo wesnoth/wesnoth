@@ -467,7 +467,7 @@ add_library(wesnoth-gui_placer
 
 # This library contains the tooltip handling code.
 set(wesnoth-gui_tooltip_SRC
-	gui/core/tips.cpp
+	gui/auxiliary/tips.cpp
 	gui/dialogs/tip.cpp
 )
 
