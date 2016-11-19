@@ -31,7 +31,7 @@
 #include "addon/validation.hpp"
 #include "campaign_server/addon_utils.hpp"
 #include "campaign_server/blacklist.hpp"
-#include "campaign_server/styled_widget.hpp"
+#include "campaign_server/control.hpp"
 #include "version.hpp"
 #include "util.hpp"
 #include "hash.hpp"
