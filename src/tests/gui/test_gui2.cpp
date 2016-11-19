@@ -75,7 +75,6 @@
 #include "gui/dialogs/multiplayer/mp_cmd_wrapper.hpp"
 #include "gui/dialogs/multiplayer/mp_connect.hpp"
 #include "gui/dialogs/multiplayer/mp_create_game.hpp"
-#include "gui/dialogs/multiplayer/mp_create_game_set_password.hpp"
 #include "gui/dialogs/multiplayer/mp_join_game.hpp"
 #include "gui/dialogs/multiplayer/mp_join_game_password_prompt.hpp"
 #include "gui/dialogs/multiplayer/mp_staging.hpp"
@@ -429,7 +428,6 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<mp_cmd_wrapper>();
 	test<mp_connect>();
 	//test<mp_create_game>();
-	test<mp_create_game_set_password>();
 	//test<mp_join_game>();
 	test<mp_join_game_password_prompt>();
 	test<mp_login>();
@@ -880,16 +878,6 @@ struct dialog_tester<mp_create_game>
 	mp_create_game* create()
 	{
 		return new mp_create_game(main_config, engine);
-	}
-};
-
-template<>
-struct dialog_tester<mp_create_game_set_password>
-{
-	std::string password;
-	mp_create_game_set_password* create()
-	{
-		return new mp_create_game_set_password(password);
 	}
 };
 
