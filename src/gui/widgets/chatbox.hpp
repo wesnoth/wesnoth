@@ -14,8 +14,8 @@
 #pragma once
 
 #include "gui/widgets/container.hpp"
-#include "gui/dialogs/lobby/data.hpp"
-#include "gui/dialogs/lobby/info.hpp"
+#include "game_initialization/lobby_data.hpp"
+#include "game_initialization/lobby_info.hpp"
 
 #include "chat_events.hpp"
 
@@ -72,7 +72,7 @@ public:
 
 	void set_active_window_changed_callback(const std::function<void(void)>& f) { active_window_changed_callback_ = f; }
 
-	void set_lobby_info(lobby_info& i) { lobby_info_ = &i; }
+	void set_lobby_info(mp::lobby_info& i) { lobby_info_ = &i; }
 
 	void set_wesnothd_connection(wesnothd_connection& c) { wesnothd_connection_ = &c; }
 
@@ -125,9 +125,9 @@ private:
 
 	std::function<void(void)> active_window_changed_callback_;
 
-	class lobby_info* lobby_info_;
+	mp::lobby_info* lobby_info_;
 
-	class lobby_info& lobby_info() { return *lobby_info_; }
+	mp::lobby_info& get_lobby_info() { return *lobby_info_; }
 
 	wesnothd_connection* wesnothd_connection_;
 
@@ -215,7 +215,7 @@ public:
 	* Get the room* corresponding to the currently active window, or nullptr
 	* if a whisper window is active at the moment
 	*/
-	room_info* active_window_room();
+	mp::room_info* active_window_room();
 
 	/**
 	* Check if a room window for "room" is open, if open_new is true
@@ -238,9 +238,6 @@ public:
 	* Helper function to find and open a new window, used by *_window_open
 	*/
 	lobby_chat_window* search_create_window(const std::string& name, const bool whisper, const bool open_new, const bool allow_close);
-
-	void do_notify(notify_mode mode) { do_notify(mode, "", ""); }
-	void do_notify(notify_mode mode, const std::string & sender, const std::string & message) { do_mp_notify(mode, sender, message); }
 
 	void close_window_button_callback(lobby_chat_window& chat_window, bool& handled, bool& halt);
 

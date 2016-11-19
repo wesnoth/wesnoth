@@ -54,7 +54,7 @@ namespace dialogs
 
 REGISTER_DIALOG(mp_join_game)
 
-mp_join_game::mp_join_game(saved_game& state, lobby_info& lobby_info, wesnothd_connection& connection, const bool first_scenario, const bool observe_game)
+mp_join_game::mp_join_game(saved_game& state, mp::lobby_info& lobby_info, wesnothd_connection& connection, const bool first_scenario, const bool observe_game)
 	: level_()
 	, state_(state)
 	, lobby_info_(lobby_info)

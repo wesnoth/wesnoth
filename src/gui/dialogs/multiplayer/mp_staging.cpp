@@ -50,7 +50,7 @@ namespace dialogs
 
 REGISTER_DIALOG(mp_staging)
 
-mp_staging::mp_staging(ng::connect_engine& connect_engine, lobby_info& lobby_info, wesnothd_connection* connection)
+mp_staging::mp_staging(ng::connect_engine& connect_engine, mp::lobby_info& lobby_info, wesnothd_connection* connection)
 	: connect_engine_(connect_engine)
 	, ai_algorithms_(ai::configuration::get_available_ais())
 	, lobby_info_(lobby_info)

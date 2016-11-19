@@ -23,6 +23,8 @@
 
 class config;
 
+namespace mp {
+
 /** This class represents a single stored chat message */
 struct chat_message
 {
@@ -202,5 +204,7 @@ struct game_info
 
 	bool match_string_filter(const std::string& filter) const;
 };
+
+}
 
 #endif

@@ -16,7 +16,7 @@
 
 #include "ai/configuration.hpp"
 #include "gui/dialogs/dialog.hpp"
-#include "gui/dialogs/lobby/info.hpp"
+#include "game_initialization/lobby_info.hpp"
 #include "gui/dialogs/multiplayer/plugin_executor.hpp"
 
 #include "game_initialization/connect_engine.hpp"
@@ -37,7 +37,7 @@ namespace dialogs
 class mp_join_game : public modal_dialog, private plugin_executor
 {
 public:
-	mp_join_game(saved_game& state, lobby_info& lobby_info, wesnothd_connection& connection,
+	mp_join_game(saved_game& state, mp::lobby_info& lobby_info, wesnothd_connection& connection,
 		const bool first_scenario = true, const bool observe_game = false);
 
 	~mp_join_game();
@@ -71,7 +71,7 @@ private:
 
 	saved_game& state_;
 
-	lobby_info& lobby_info_;
+	mp::lobby_info& lobby_info_;
 
 	wesnothd_connection& wesnothd_connection_;
 

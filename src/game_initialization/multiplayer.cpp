@@ -355,7 +355,7 @@ static std::unique_ptr<wesnothd_connection> open_connection(CVideo& video, const
 // creating the dialogs, then, according to the dialog result, of calling other
 // of those screen functions.
 static void enter_wait_mode(CVideo& video, const config& game_config, saved_game& state, wesnothd_connection* connection,
-	lobby_info& li, bool observe, int current_turn = 0)
+	mp::lobby_info& li, bool observe, int current_turn = 0)
 {
 	DBG_MP << "entering wait mode" << std::endl;
 
@@ -392,10 +392,10 @@ static void enter_wait_mode(CVideo& video, const config& game_config, saved_game
 }
 
 static void enter_create_mode(CVideo& video, const config& game_config, saved_game& state, wesnothd_connection* connection,
-	lobby_info& li, bool local_players_only = false);
+	mp::lobby_info& li, bool local_players_only = false);
 
 static bool enter_connect_mode(CVideo& video, const config& game_config,
-	saved_game& state, wesnothd_connection* connection, lobby_info& li,
+	saved_game& state, wesnothd_connection* connection, mp::lobby_info& li,
 	bool local_players_only = false)
 {
 	DBG_MP << "entering connect mode" << std::endl;
@@ -430,7 +430,7 @@ static bool enter_connect_mode(CVideo& video, const config& game_config,
 }
 
 static void enter_create_mode(CVideo& video, const config& game_config,
-	saved_game& state, wesnothd_connection* connection, lobby_info& li, bool local_players_only)
+	saved_game& state, wesnothd_connection* connection, mp::lobby_info& li, bool local_players_only)
 {
 	DBG_MP << "entering create mode" << std::endl;
 
@@ -485,7 +485,7 @@ static void enter_lobby_mode(CVideo& video, const config& game_config,
 			sound::empty_playlist();
 			sound::stop_music();
 		}
-		lobby_info li(game_config, installed_addons);
+		mp::lobby_info li(game_config, installed_addons);
 
 		gui2::dialogs::lobby_main dlg(game_config, li, *connection);
 		dlg.set_preferences_callback(std::bind(do_preferences_dialog, std::ref(video), std::ref(game_config)));

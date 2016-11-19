@@ -672,6 +672,8 @@ set(wesnoth-main_SRC
 	config_cache.cpp
 	game_initialization/configure_engine.cpp
 	game_initialization/connect_engine.cpp
+	game_initialization/lobby_data.cpp
+	game_initialization/lobby_info.cpp
 	controller_base.cpp
 	countdown_clock.cpp
 	game_initialization/create_engine.cpp
@@ -785,8 +787,6 @@ set(wesnoth-main_SRC
 	gui/dialogs/label_settings.cpp
 	gui/dialogs/language_selection.cpp
 	gui/dialogs/loadscreen.cpp
-	gui/dialogs/lobby/data.cpp
-	gui/dialogs/lobby/info.cpp
 	gui/dialogs/lobby/lobby.cpp
 	gui/dialogs/lobby/player_info.cpp
 	gui/dialogs/logging.cpp

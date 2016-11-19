@@ -18,7 +18,7 @@
 #include "gui/dialogs/dialog.hpp"
 #include "gui/widgets/tree_view.hpp"
 #include "chat_events.hpp"
-#include "gui/dialogs/lobby/info.hpp"
+#include "game_initialization/lobby_info.hpp"
 #include "gui/dialogs/multiplayer/plugin_executor.hpp"
 #include "game_initialization/multiplayer.hpp"
 #include "quit_confirmation.hpp"
@@ -73,7 +73,7 @@ struct player_list
 class lobby_main : public modal_dialog, public quit_confirmation, private plugin_executor
 {
 public:
-	lobby_main(const config& game_config, lobby_info& info, wesnothd_connection &connection);
+	lobby_main(const config& game_config, mp::lobby_info& info, wesnothd_connection &connection);
 
 	~lobby_main();
 
@@ -94,9 +94,9 @@ protected:
 
 	void update_gamelist_filter();
 
-	std::map<std::string, string_map> make_game_row_data(const game_info& game);
+	std::map<std::string, string_map> make_game_row_data(const mp::game_info& game);
 
-	void adjust_game_row_contents(const game_info& game, int idx, grid* grid);
+	void adjust_game_row_contents(const mp::game_info& game, int idx, grid* grid);
 
 public:
 	void update_playerlist();
@@ -107,9 +107,6 @@ public:
 		OBSERVE,
 		CREATE
 	};
-
-	void do_notify(notify_mode mode) { do_notify(mode, "", ""); }
-	void do_notify(notify_mode mode, const std::string & sender, const std::string & message) { do_mp_notify(mode, sender, message); }
 
 protected:
 
@@ -155,7 +152,7 @@ private:
 
 	void player_filter_callback(widget& widget);
 
-	void user_dialog_callback(user_info* info);
+	void user_dialog_callback(mp::user_info* info);
 
 	void skip_replay_changed_callback(window& window);
 
@@ -183,7 +180,7 @@ private:
 
 	window* window_;
 
-	lobby_info& lobby_info_;
+	mp::lobby_info& lobby_info_;
 
 	chatbox* chatbox_;
 

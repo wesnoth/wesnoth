@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-#include "gui/dialogs/lobby/info.hpp"
+#include "game_initialization/lobby_info.hpp"
 
 #include "config.hpp"
 #include "game_preferences.hpp"
@@ -35,6 +35,7 @@ static lg::log_domain log_lobby("lobby");
 #define ERR_LB LOG_STREAM(err, log_lobby)
 #define SCOPE_LB log_scope2(log_lobby, __func__)
 
+namespace mp {
 
 lobby_info::lobby_info(const config& game_config, const std::vector<std::string>& installed_addons)
 	: game_config_(game_config)
@@ -65,9 +66,8 @@ void lobby_info::delete_games()
 		delete v.second;
 	}
 }
-namespace gui2
-{
-void do_mp_notify(notify_mode mode, const std::string & sender, const std::string & message)
+
+void do_notify(notify_mode mode, const std::string & sender, const std::string & message)
 {
 	switch (mode) {
 	case NOTIFY_WHISPER:
@@ -94,7 +94,7 @@ void do_mp_notify(notify_mode mode, const std::string & sender, const std::strin
 		break;
 	}
 }
-} // namespace gui2
+
 namespace
 {
 
@@ -405,4 +405,6 @@ void lobby_info::sort_users(bool by_name, bool by_relation)
 const std::vector<user_info*>& lobby_info::users_sorted() const
 {
 	return users_sorted_;
+}
+
 }

@@ -16,8 +16,10 @@
 #define INC_LOBBY_INFO
 
 #include "config.hpp"
-#include "gui/dialogs/lobby/data.hpp"
+#include "game_initialization/lobby_data.hpp"
 #include <boost/dynamic_bitset.hpp>
+
+namespace mp {
 
 /**
  * This class represents the collective information the client has
@@ -133,9 +135,8 @@ enum notify_mode {
 	NOTIFY_COUNT
 };
 
-namespace gui2
-{
-	void do_mp_notify(notify_mode mode, const std::string & sender, const std::string & message);
-	inline void do_mp_notify(notify_mode mode) { do_mp_notify(mode, "", ""); }
+void do_notify(notify_mode mode, const std::string & sender, const std::string & message);
+inline void do_notify(notify_mode mode) { do_notify(mode, "", ""); }
+
 }
 #endif

@@ -33,8 +33,8 @@ namespace dialogs
 REGISTER_DIALOG(lobby_player_info)
 
 lobby_player_info::lobby_player_info(events::chat_handler& chat,
-									   user_info& info,
-									   const lobby_info& li)
+									   mp::user_info& info,
+									   const mp::lobby_info& li)
 	: chat_(chat)
 	, info_(info)
 	, reason_(nullptr)
@@ -98,7 +98,7 @@ void lobby_player_info::pre_show(window& window)
 	find_widget<label>(&window, "player_name", false).set_label(info_.name);
 
 	std::stringstream loc;
-	const game_info* game = lobby_info_.get_game_by_id(info_.game_id);
+	const mp::game_info* game = lobby_info_.get_game_by_id(info_.game_id);
 	if(game != nullptr) {
 		loc << _("In game:") << " " << game->name << " ";
 		if(info_.observing) {
@@ -133,22 +133,22 @@ void lobby_player_info::update_relation()
 	add_to_ignores_->set_active(false);
 	remove_from_list_->set_active(false);
 	switch(info_.relation) {
-		case user_info::FRIEND:
+		case mp::user_info::FRIEND:
 			relation_->set_label(_("On friends list"));
 			add_to_ignores_->set_active(true);
 			remove_from_list_->set_active(true);
 			break;
-		case user_info::IGNORED:
+		case mp::user_info::IGNORED:
 			relation_->set_label(_("On ignores list"));
 			add_to_friends_->set_active(true);
 			remove_from_list_->set_active(true);
 			break;
-		case user_info::NEUTRAL:
+		case mp::user_info::NEUTRAL:
 			relation_->set_label(_("Neither a friend nor ignored"));
 			add_to_friends_->set_active(true);
 			add_to_ignores_->set_active(true);
 			break;
-		case user_info::ME:
+		case mp::user_info::ME:
 			relation_->set_label(_("You"));
 			break;
 		default:
@@ -159,21 +159,21 @@ void lobby_player_info::update_relation()
 void lobby_player_info::add_to_friends_button_callback()
 {
 	preferences::add_acquaintance(info_.name, "friend", "");
-	info_.relation = user_info::FRIEND;
+	info_.relation = mp::user_info::FRIEND;
 	update_relation();
 }
 
 void lobby_player_info::add_to_ignores_button_callback()
 {
 	preferences::add_acquaintance(info_.name, "ignore", "");
-	info_.relation = user_info::IGNORED;
+	info_.relation = mp::user_info::IGNORED;
 	update_relation();
 }
 
 void lobby_player_info::remove_from_list_button_callback()
 {
 	preferences::remove_acquaintance(info_.name);
-	info_.relation = user_info::NEUTRAL;
+	info_.relation = mp::user_info::NEUTRAL;
 	update_relation();
 }
 

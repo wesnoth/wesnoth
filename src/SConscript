@@ -316,6 +316,8 @@ wesnoth_sources = Split("""
     game_initialization/create_engine.cpp
     game_initialization/depcheck.cpp
     game_initialization/flg_manager.cpp
+    game_initialization/lobby_data.cpp
+    game_initialization/lobby_info.cpp
     game_initialization/mp_game_utils.cpp
     game_initialization/multiplayer.cpp
     game_initialization/playcampaign.cpp
@@ -384,8 +386,6 @@ wesnoth_sources = Split("""
     gui/dialogs/label_settings.cpp
     gui/dialogs/language_selection.cpp
     gui/dialogs/loadscreen.cpp
-    gui/dialogs/lobby/data.cpp
-    gui/dialogs/lobby/info.cpp
     gui/dialogs/lobby/lobby.cpp
     gui/dialogs/lobby/player_info.cpp
     gui/dialogs/logging.cpp

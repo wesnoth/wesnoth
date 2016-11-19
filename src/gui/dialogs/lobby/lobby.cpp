@@ -124,7 +124,7 @@ bool lobby_main::logout_prompt()
 	return show_prompt(_("Do you really want to log out?"));
 }
 
-lobby_main::lobby_main(const config& game_config, lobby_info& info, wesnothd_connection &connection)
+lobby_main::lobby_main(const config& game_config, mp::lobby_info& info, wesnothd_connection &connection)
 	: quit_confirmation(&lobby_main::logout_prompt)
 	, game_config_(game_config)
 	, gamelistbox_(nullptr)
@@ -260,7 +260,7 @@ void lobby_main::update_gamelist()
 
 	int select_row = -1;
 	for(unsigned i = 0; i < lobby_info_.games().size(); ++i) {
-		const game_info& game = *lobby_info_.games()[i];
+		const mp::game_info& game = *lobby_info_.games()[i];
 
 		if(game.id == selected_game_id_) {
 			select_row = i;
@@ -296,9 +296,9 @@ void lobby_main::update_gamelist_diff()
 
 	std::vector<int> next_gamelist_id_at_row;
 	for(unsigned i = 0; i < lobby_info_.games().size(); ++i) {
-		const game_info& game = *lobby_info_.games()[i];
+		const mp::game_info& game = *lobby_info_.games()[i];
 
-		if(game.display_status == game_info::NEW) {
+		if(game.display_status == mp::game_info::NEW) {
 			LOG_LB << "Adding game to listbox " << game.id << "\n";
 
 			if(list_i != gamelistbox_->get_item_count()) {
@@ -339,14 +339,14 @@ void lobby_main::update_gamelist_diff()
 				return;
 			}
 
-			if(game.display_status == game_info::UPDATED) {
+			if(game.display_status == mp::game_info::UPDATED) {
 				LOG_LB << "Modifying game in listbox " << game.id << " (row " << list_i << ")\n";
 				grid* grid = gamelistbox_->get_row_grid(list_i);
 				modify_grid_with_data(grid, make_game_row_data(game));
 				adjust_game_row_contents(game, list_i, grid);
 				++list_i;
 				next_gamelist_id_at_row.push_back(game.id);
-			} else if(game.display_status == game_info::DELETED) {
+			} else if(game.display_status == mp::game_info::DELETED) {
 				LOG_LB << "Deleting game from listbox " << game.id << " (row "
 					   << list_i << ")\n";
 				gamelistbox_->remove_row(list_i);
@@ -398,7 +398,7 @@ void lobby_main::update_gamelist_header()
 #endif
 }
 
-std::map<std::string, string_map> lobby_main::make_game_row_data(const game_info& game)
+std::map<std::string, string_map> lobby_main::make_game_row_data(const mp::game_info& game)
 {
 	std::map<std::string, string_map> data;
 
@@ -449,7 +449,7 @@ std::map<std::string, string_map> lobby_main::make_game_row_data(const game_info
 	return data;
 }
 
-void lobby_main::adjust_game_row_contents(const game_info& game,
+void lobby_main::adjust_game_row_contents(const mp::game_info& game,
 										   int idx,
 										   grid* grid)
 {
@@ -524,7 +524,7 @@ void lobby_main::update_playerlist()
 						   player_list_.sort_by_relation->get_value_bool());
 
 	bool lobby = false;
-	if(room_info* ri = chatbox_->active_window_room()) {
+	if(mp::room_info* ri = chatbox_->active_window_room()) {
 		if(ri->name() == "lobby") {
 			lobby = true;
 		}
@@ -541,7 +541,7 @@ void lobby_main::update_playerlist()
 	player_list_.other_rooms.tree->clear();
 
 	for(auto userptr : lobby_info_.users_sorted()) {
-		user_info& user = *userptr;
+		mp::user_info& user = *userptr;
 		sub_player_list* target_list(nullptr);
 		std::map<std::string, string_map> data;
 
@@ -550,23 +550,23 @@ void lobby_main::update_playerlist()
 		std::stringstream icon_ss;
 		icon_ss << "lobby/status";
 		switch(user.state) {
-			case user_info::SEL_ROOM:
+			case mp::user_info::SEL_ROOM:
 				icon_ss << "-lobby";
 				target_list = &player_list_.active_room;
 				if(lobby) {
 					target_list = &player_list_.other_rooms;
 				}
 				break;
-			case user_info::LOBBY:
+			case mp::user_info::LOBBY:
 				icon_ss << "-lobby";
 				target_list = &player_list_.other_rooms;
 				break;
-			case user_info::SEL_GAME:
+			case mp::user_info::SEL_GAME:
 				name = colorize(name, "cyan");
 				icon_ss << (user.observing ? "-obs" : "-playing");
 				target_list = &player_list_.active_game;
 				break;
-			case user_info::GAME:
+			case mp::user_info::GAME:
 				name = colorize(name, "red");
 				icon_ss << (user.observing ? "-obs" : "-playing");
 				target_list = &player_list_.other_games;
@@ -578,16 +578,16 @@ void lobby_main::update_playerlist()
 		}
 
 		switch(user.relation) {
-			case user_info::ME:
+			case mp::user_info::ME:
 				icon_ss << "-s";
 				break;
-			case user_info::NEUTRAL:
+			case mp::user_info::NEUTRAL:
 				icon_ss << "-n";
 				break;
-			case user_info::FRIEND:
+			case mp::user_info::FRIEND:
 				icon_ss << "-f";
 				break;
-			case user_info::IGNORED:
+			case mp::user_info::IGNORED:
 				icon_ss << "-i";
 				break;
 			default:
@@ -640,7 +640,7 @@ void lobby_main::update_selected_game()
 	bool can_join = false, can_observe = false;
 
 	if(idx >= 0) {
-		const game_info& game = *lobby_info_.games()[idx];
+		const mp::game_info& game = *lobby_info_.games()[idx];
 		can_observe = game.can_observe();
 		can_join = game.can_join();
 		selected_game_id_ = game.id;
@@ -866,9 +866,9 @@ void lobby_main::process_gamelist_diff(const config& data)
 	const int left = data.child_count("remove_child");
 	if(joined > 0 || left > 0) {
 		if(left > joined) {
-			do_notify(NOTIFY_LOBBY_QUIT);
+			do_notify(mp::NOTIFY_LOBBY_QUIT);
 		} else {
-			do_notify(NOTIFY_LOBBY_JOIN);
+			do_notify(mp::NOTIFY_LOBBY_JOIN);
 		}
 	}
 }
@@ -889,15 +889,15 @@ void lobby_main::join_global_button_callback(window& window)
 
 void lobby_main::join_or_observe(int idx)
 {
-	const game_info& game = *lobby_info_.games()[idx];
+	const mp::game_info& game = *lobby_info_.games()[idx];
 	if(do_game_join(idx, !game.can_join())) {
 		window_->set_retval(game.can_join() ? JOIN : OBSERVE);
 	}
 }
 
-static bool handle_addon_requirements_gui(CVideo& v, const std::vector<game_info::required_addon>& reqs, game_info::ADDON_REQ addon_outcome)
+static bool handle_addon_requirements_gui(CVideo& v, const std::vector<mp::game_info::required_addon>& reqs, mp::game_info::ADDON_REQ addon_outcome)
 {
-	if(addon_outcome == game_info::CANNOT_SATISFY) {
+	if(addon_outcome == mp::game_info::CANNOT_SATISFY) {
 		std::string e_title = _("Incompatible User-made Content.");
 		std::string err_msg = _("This game cannot be joined because the host has out-of-date add-ons that are incompatible with your version. You might wish to suggest that the host's add-ons be updated.");
 
@@ -905,15 +905,15 @@ static bool handle_addon_requirements_gui(CVideo& v, const std::vector<game_info
 		err_msg += _("Details:");
 		err_msg += "\n";
 
-		for(const game_info::required_addon & a : reqs) {
-			if (a.outcome == game_info::CANNOT_SATISFY) {
+		for(const mp::game_info::required_addon & a : reqs) {
+			if (a.outcome == mp::game_info::CANNOT_SATISFY) {
 				err_msg += "• " + a.message + "\n";
 			}
 		}
 		gui2::show_message(v, e_title, err_msg, message::auto_close);
 
 		return false;
-	} else if(addon_outcome == game_info::NEED_DOWNLOAD) {
+	} else if(addon_outcome == mp::game_info::NEED_DOWNLOAD) {
 		std::string e_title = _("Missing User-made Content.");
 		std::string err_msg = _("This game requires one or more user-made addons to be installed or updated in order to join.\nDo you want to try to install them?");
 
@@ -922,8 +922,8 @@ static bool handle_addon_requirements_gui(CVideo& v, const std::vector<game_info
 		err_msg += "\n";
 
 		std::vector<std::string> needs_download;
-		for(const game_info::required_addon & a : reqs) {
-			if(a.outcome == game_info::NEED_DOWNLOAD) {
+		for(const mp::game_info::required_addon & a : reqs) {
+			if(a.outcome == mp::game_info::NEED_DOWNLOAD) {
 				err_msg += "• " + a.message + "\n";
 
 				needs_download.push_back(a.addon_id);
@@ -954,7 +954,7 @@ bool lobby_main::do_game_join(int idx, bool observe)
 			   << idx << ", games size is " << lobby_info_.games().size() << "\n";
 		return false;
 	}
-	const game_info& game = *lobby_info_.games()[idx];
+	const mp::game_info& game = *lobby_info_.games()[idx];
 	if(observe) {
 		if(!game.can_observe()) {
 			ERR_LB << "Requested observe of a game with observers disabled" << std::endl;
@@ -968,7 +968,7 @@ bool lobby_main::do_game_join(int idx, bool observe)
 	}
 
 	// Prompt user to download this game's required addons if its requirements have not been met
-	if(game.addons_outcome != game_info::SATISFIED) {
+	if(game.addons_outcome != mp::game_info::SATISFIED) {
 		if(game.required_addons.empty()) {
 			gui2::show_error_message(window_->video(), _("Something is wrong with the addon version check database supporting the multiplayer lobby. Please report this at http://bugs.wesnoth.org."));
 			return false;
@@ -1025,26 +1025,26 @@ void lobby_main::game_filter_reload()
 	lobby_info_.clear_game_filter();
 
 	for(const auto& s : utils::split(filter_text_->get_value(), ' ')) {
-		lobby_info_.add_game_filter([s](const game_info& info)->bool {
+		lobby_info_.add_game_filter([s](const mp::game_info& info)->bool {
 			return info.match_string_filter(s);
 		});
 	}
 
 	// TODO: make changing friend/ignore lists trigger a refresh
 	if(filter_friends_->get_value()) {
-		lobby_info_.add_game_filter([](const game_info& info)->bool {
+		lobby_info_.add_game_filter([](const mp::game_info& info)->bool {
 			return info.has_friends == true;
 		});
 	}
 
 	if(filter_ignored_->get_value()) {
-		lobby_info_.add_game_filter([](const game_info& info)->bool {
+		lobby_info_.add_game_filter([](const mp::game_info& info)->bool {
 			return info.has_ignored == false;
 		});
 	}
 
 	if(filter_slots_->get_value()) {
-		lobby_info_.add_game_filter([](const game_info& info)->bool {
+		lobby_info_.add_game_filter([](const mp::game_info& info)->bool {
 			return info.vacant_slots > 0;
 		});
 	}
@@ -1082,7 +1082,7 @@ void lobby_main::player_filter_callback(gui2::widget& /*widget*/)
 	// window_->invalidate_layout();
 }
 
-void lobby_main::user_dialog_callback(user_info* info)
+void lobby_main::user_dialog_callback(mp::user_info* info)
 {
 	lobby_player_info dlg(*chatbox_, *info, lobby_info_);
 
@@ -1131,7 +1131,7 @@ void lobby_main::skip_replay_changed_callback(window& window)
 
 int lobby_main::get_game_index_from_id(const int game_id) const
 {
-	if(game_info* game = lobby_info_.get_game_by_id(game_id)) {
+	if(mp::game_info* game = lobby_info_.get_game_by_id(game_id)) {
 		return std::find(lobby_info_.games().begin(), lobby_info_.games().end(), game) - lobby_info_.games().begin();
 	}
 

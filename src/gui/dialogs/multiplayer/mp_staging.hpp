@@ -16,7 +16,7 @@
 
 #include "ai/configuration.hpp"
 #include "gui/dialogs/dialog.hpp"
-#include "gui/dialogs/lobby/info.hpp"
+#include "game_initialization/lobby_info.hpp"
 #include "gui/dialogs/multiplayer/plugin_executor.hpp"
 
 #include "game_initialization/connect_engine.hpp"
@@ -38,7 +38,7 @@ namespace dialogs
 class mp_staging : public modal_dialog, private plugin_executor
 {
 public:
-	mp_staging(ng::connect_engine& connect_engine, lobby_info& lobby_info, wesnothd_connection* connection = nullptr);
+	mp_staging(ng::connect_engine& connect_engine, mp::lobby_info& lobby_info, wesnothd_connection* connection = nullptr);
 
 	~mp_staging();
 
@@ -79,7 +79,7 @@ private:
 
 	std::vector<ai::description*> ai_algorithms_;
 
-	lobby_info& lobby_info_;
+	mp::lobby_info& lobby_info_;
 
 	wesnothd_connection* wesnothd_connection_;
 

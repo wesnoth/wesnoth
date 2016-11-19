@@ -17,7 +17,7 @@
 
 #include "gui/dialogs/dialog.hpp"
 #include "chat_events.hpp"
-#include "gui/dialogs/lobby/info.hpp"
+#include "game_initialization/lobby_info.hpp"
 
 namespace gui2
 {
@@ -33,8 +33,8 @@ class lobby_player_info : public modal_dialog
 {
 public:
 	lobby_player_info(events::chat_handler& chat,
-					   user_info& info,
-					   const lobby_info& li);
+					   mp::user_info& info,
+					   const mp::lobby_info& li);
 
 	~lobby_player_info();
 
@@ -73,7 +73,7 @@ private:
 
 	events::chat_handler& chat_;
 
-	user_info& info_;
+	mp::user_info& info_;
 
 	text_box* reason_;
 
@@ -89,7 +89,7 @@ private:
 
 	bool result_open_whisper_;
 
-	const lobby_info& lobby_info_;
+	const mp::lobby_info& lobby_info_;
 };
 
 } // namespace dialogs

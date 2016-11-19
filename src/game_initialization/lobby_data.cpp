@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-#include "gui/dialogs/lobby/data.hpp"
+#include "game_initialization/lobby_data.hpp"
 
 #include "config.hpp"
 #include "game_preferences.hpp"
@@ -41,6 +41,8 @@ static lg::log_domain log_lobby("lobby");
 #define DBG_LB LOG_STREAM(info, log_lobby)
 #define LOG_LB LOG_STREAM(info, log_lobby)
 #define ERR_LB LOG_STREAM(err, log_lobby)
+
+namespace mp {
 
 chat_message::chat_message(const time_t& timestamp,
 						   const std::string& user,
@@ -528,4 +530,6 @@ bool game_info::match_string_filter(const std::string& filter) const
 			chars_equal_insensitive) != s1.end()
 	    || std::search(s2.begin(), s2.end(), filter.begin(), filter.end(),
 			chars_equal_insensitive) != s2.end();
+}
+
 }
