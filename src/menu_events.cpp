@@ -29,6 +29,7 @@
 #include "ai/manager.hpp"
 #include "chat_command_handler.hpp"
 #include "config_assign.hpp"
+#include "construct_dialog.hpp"
 #include "display_chat_manager.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
@@ -50,6 +51,7 @@
 #include "gui/dialogs/multiplayer/mp_change_control.hpp"
 #include "gui/dialogs/preferences_dialog.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
+#include "gui/dialogs/statistics_dialog.hpp"
 #include "gui/dialogs/edit_text.hpp"
 #include "gui/dialogs/game_stats.hpp"
 #include "gui/dialogs/unit_create.hpp"
@@ -78,7 +80,6 @@
 #include "scripting/game_lua_kernel.hpp"
 #include "scripting/plugins/manager.hpp"
 #include "sound.hpp"
-#include "statistics_dialog.hpp"
 #include "synced_context.hpp"
 #include "terrain/builder.hpp"
 #include "units/unit.hpp"
@@ -133,15 +134,7 @@ void menu_handler::objectives()
 
 void menu_handler::show_statistics(int side_num)
 {
-	team &current_team = teams()[side_num - 1];
-	// Current Player name
-	const std::string &player = current_team.side_name();
-	//add player's name to title of dialog
-	std::stringstream title_str;
-	title_str <<  _("Statistics") << " (" << player << ")";
-	statistics_dialog stats_dialog(*gui_, title_str.str(),
-		side_num, current_team.save_id(), player);
-	stats_dialog.show();
+	gui2::dialogs::statistics_dialog::display(teams()[side_num - 1], gui_->video());
 }
 
 void menu_handler::unit_list()

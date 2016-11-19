@@ -86,6 +86,7 @@
 #include "gui/dialogs/screenshot_notification.hpp"
 #include "gui/dialogs/select_orb_colors.hpp"
 #include "gui/dialogs/sp_options_configure.hpp"
+#include "gui/dialogs/statistics_dialog.hpp"
 #include "gui/dialogs/theme_list.hpp"
 #include "gui/dialogs/title_screen.hpp"
 #include "gui/dialogs/tip.hpp"
@@ -438,6 +439,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<screenshot_notification>();
 	test<select_orb_colors>();
 	test<sp_options_configure>();
+	test<statistics_dialog>();
 	test<theme_list>();
 	//test<title_screen>();
 	test<transient_message>();
@@ -1150,6 +1152,17 @@ struct dialog_tester<sp_options_configure>
 	sp_options_configure* create()
 	{
 		return new sp_options_configure(engine);
+	}
+};
+
+template<>
+struct dialog_tester<statistics_dialog>
+{
+	team t;
+	dialog_tester() : t() {}
+	statistics_dialog* create()
+	{
+		return new statistics_dialog(t);
 	}
 };
 

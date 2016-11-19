@@ -813,6 +813,7 @@ set(wesnoth-main_SRC
 	gui/dialogs/select_orb_colors.cpp
 	gui/dialogs/simple_item_selector.cpp
 	gui/dialogs/sp_options_configure.cpp
+	gui/dialogs/statistics_dialog.cpp
 	gui/dialogs/multiplayer/synced_choice_wait.cpp
 	gui/dialogs/theme_list.cpp
 	gui/dialogs/title_screen.cpp
@@ -897,7 +898,6 @@ set(wesnoth-main_SRC
 	side_filter.cpp
 	game_initialization/singleplayer.cpp
 	statistics.cpp
-	statistics_dialog.cpp
 	storyscreen/controller.cpp
 	storyscreen/interface.cpp
 	storyscreen/part.cpp

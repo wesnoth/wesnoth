@@ -412,6 +412,7 @@ wesnoth_sources = Split("""
     gui/dialogs/select_orb_colors.cpp
     gui/dialogs/simple_item_selector.cpp
     gui/dialogs/sp_options_configure.cpp
+    gui/dialogs/statistics_dialog.cpp
     gui/dialogs/theme_list.cpp
     gui/dialogs/tip.cpp
     gui/dialogs/title_screen.cpp
@@ -532,7 +533,6 @@ wesnoth_sources = Split("""
     scripting/plugins/manager.cpp
     settings.cpp
     side_filter.cpp
-    statistics_dialog.cpp
     statistics.cpp
     storyscreen/controller.cpp
     storyscreen/interface.cpp
