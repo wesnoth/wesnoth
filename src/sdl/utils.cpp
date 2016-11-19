@@ -66,7 +66,7 @@ SDL_Color int_to_color(const Uint32 rgb)
 	result.r = static_cast<Uint8>((SDL_RED_MASK & rgb) >> SDL_RED_BITSHIFT);
 	result.g = static_cast<Uint8>((SDL_GREEN_MASK & rgb) >> SDL_GREEN_BITSHIFT);
 	result.b = static_cast<Uint8>((SDL_BLUE_MASK & rgb) >> SDL_BLUE_BITSHIFT);
-	result.a = static_cast<Uint8>((SDL_ALPHA_OPAQUE & rgb) >> SDL_ALPHA_BITSHIFT);
+	result.a = SDL_ALPHA_OPAQUE;
 	return result;
 }
 
