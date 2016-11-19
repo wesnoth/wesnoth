@@ -15,7 +15,7 @@
 #ifndef GUI_WIDGETS_IMAGE_HPP_INCLUDED
 #define GUI_WIDGETS_IMAGE_HPP_INCLUDED
 
-#include "gui/widgets/control.hpp"
+#include "gui/widgets/styled_widget.hpp"
 
 #include "gui/core/widget_definition.hpp"
 #include "gui/core/window_builder.hpp"

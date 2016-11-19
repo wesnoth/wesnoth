@@ -15,7 +15,7 @@
 #ifndef GUI_DIALOGS_MP_DEPCHECK_CONFIRM_CHANGE_HPP_INCLUDED
 #define GUI_DIALOGS_MP_DEPCHECK_CONFIRM_CHANGE_HPP_INCLUDED
 
-#include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
 #include <vector>
 #include <string>
 

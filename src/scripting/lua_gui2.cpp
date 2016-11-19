@@ -17,16 +17,16 @@
 #include "gui/auxiliary/old_markup.hpp"
 #include "gui/core/canvas.hpp"     // for canvas
 #include "gui/core/window_builder.hpp"  // for twindow_builder, etc
-#include "gui/dialogs/drop_down_list.hpp"
+#include "gui/dialogs/drop_down_menu.hpp"
 #include "gui/dialogs/gamestate_inspector.hpp"
 #include "gui/dialogs/lua_interpreter.hpp"
 #include "gui/dialogs/wml_message.hpp"
 #include "gui/dialogs/transient_message.hpp"
-#include "gui/widgets/clickable.hpp"    // for tclickable_
-#include "gui/widgets/control.hpp"      // for tcontrol
+#include "gui/widgets/clickable_item.hpp"    // for clickable_item
+#include "gui/widgets/styled_widget.hpp"      // for styled_widget
 #include "gui/widgets/multi_page.hpp"   // for tmulti_page
 #include "gui/widgets/progress_bar.hpp"  // for tprogress_bar
-#include "gui/widgets/selectable.hpp"   // for tselectable_
+#include "gui/widgets/selectable_item.hpp"   // for tselectable_item
 #include "gui/widgets/slider.hpp"       // for tslider
 #include "gui/widgets/stacked_widget.hpp"
 #include "gui/widgets/text_box.hpp"     // for ttext_box

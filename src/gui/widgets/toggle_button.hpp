@@ -15,8 +15,8 @@
 #ifndef GUI_WIDGETS_TOGGLE_BUTTON_HPP_INCLUDED
 #define GUI_WIDGETS_TOGGLE_BUTTON_HPP_INCLUDED
 
-#include "gui/widgets/control.hpp"
-#include "gui/widgets/selectable.hpp"
+#include "gui/widgets/styled_widget.hpp"
+#include "gui/widgets/selectable_item.hpp"
 
 namespace gui2
 {

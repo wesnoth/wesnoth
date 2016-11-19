@@ -18,7 +18,7 @@
 #include "time_of_day.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/text_box.hpp"
-#include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
 #include "editor/editor_display.hpp"
 
 #include <vector>

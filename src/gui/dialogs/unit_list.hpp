@@ -15,7 +15,7 @@
 #define GUI_DIALOGS_UNIT_LIST_HPP_INCLUDED
 
 #include "gettext.hpp"
-#include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "map/location.hpp"
 #include "units/ptr.hpp"

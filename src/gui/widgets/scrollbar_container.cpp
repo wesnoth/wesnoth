@@ -19,7 +19,7 @@
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/log.hpp"
 #include "gui/core/layout_exception.hpp"
-#include "gui/widgets/clickable.hpp"
+#include "gui/widgets/clickable_item.hpp"
 #include "gui/widgets/spacer.hpp"
 #include "gui/widgets/window.hpp"
 #include "sdl/rect.hpp"

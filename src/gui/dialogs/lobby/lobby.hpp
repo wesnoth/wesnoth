@@ -15,7 +15,7 @@
 #ifndef GUI_DIALOGS_LOBBY_HPP_INCLUDED
 #define GUI_DIALOGS_LOBBY_HPP_INCLUDED
 
-#include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/tree_view.hpp"
 #include "chat_events.hpp"
 #include "game_initialization/lobby_info.hpp"

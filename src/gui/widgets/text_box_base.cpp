@@ -14,7 +14,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "gui/widgets/text.hpp"
+#include "gui/widgets/text_box_base.hpp"
 
 #include "desktop/clipboard.hpp"
 #include "gui/core/log.hpp"

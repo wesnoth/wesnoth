@@ -15,7 +15,7 @@
 #ifndef GUI_DIALOGS_MP_JOIN_GAME_PASSWORD_PROMPT_HPP_INCLUDED
 #define GUI_DIALOGS_MP_JOIN_GAME_PASSWORD_PROMPT_HPP_INCLUDED
 
-#include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
 
 namespace gui2
 {

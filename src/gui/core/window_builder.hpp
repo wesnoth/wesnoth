@@ -15,7 +15,7 @@
 #ifndef GUI_AUXILIARY_WINDOW_BUILDER_HPP_INCLUDED
 #define GUI_AUXILIARY_WINDOW_BUILDER_HPP_INCLUDED
 
-#include "gui/auxiliary/formula.hpp"
+#include "gui/auxiliary/typed_formula.hpp"
 #include "gui/widgets/grid.hpp"
 
 #include "utils/functional.hpp"

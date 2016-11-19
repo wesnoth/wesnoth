@@ -15,9 +15,9 @@
 #ifndef GUI_WIDGETS_SIZE_FIXATER_HPP_INCLUDED
 #define GUI_WIDGETS_SIZE_FIXATER_HPP_INCLUDED
 
-#include <gui/widgets/container.hpp>
+#include <gui/widgets/container_base.hpp>
 
-#include <gui/auxiliary/formula.hpp>
+#include <gui/auxiliary/typed_formula.hpp>
 #include <gui/core/widget_definition.hpp>
 #include <gui/core/window_builder.hpp>
 #include <gui/widgets/generator.hpp>

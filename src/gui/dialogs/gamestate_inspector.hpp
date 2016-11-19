@@ -15,7 +15,7 @@
 #ifndef GUI_DIALOGS_GAMESTATE_INSPECTOR_HPP_INCLUDED
 #define GUI_DIALOGS_GAMESTATE_INSPECTOR_HPP_INCLUDED
 
-#include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
 #include "variable.hpp"
 
 namespace game_events {class manager; }

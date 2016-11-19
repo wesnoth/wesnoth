@@ -14,7 +14,7 @@
 #ifndef GUI_DIALOGS_UNIT_ADVANCE_HPP_INCLUDED
 #define GUI_DIALOGS_UNIT_ADVANCE_HPP_INCLUDED
 
-#include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
 #include "units/ptr.hpp"
 
 namespace gui2

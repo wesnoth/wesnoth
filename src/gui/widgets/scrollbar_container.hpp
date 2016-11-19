@@ -16,7 +16,7 @@
 #define GUI_WIDGETS_SCROLLBAR_CONTAINER_HPP_INCLUDED
 
 #include "gui/core/notifiee.hpp"
-#include "gui/widgets/container.hpp"
+#include "gui/widgets/container_base.hpp"
 #include "gui/widgets/scrollbar.hpp"
 
 namespace gui2

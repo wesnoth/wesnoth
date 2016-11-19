@@ -27,16 +27,16 @@
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/helper.hpp"
 #include "gui/widgets/button.hpp"
-#include "gui/widgets/control.hpp"
+#include "gui/widgets/styled_widget.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 #include "gui/widgets/list.hpp"
 #else
 #include "gui/widgets/listbox.hpp"
 #endif
-#include "gui/widgets/selectable.hpp"
+#include "gui/widgets/selectable_item.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/stacked_widget.hpp"
-#include "gui/widgets/text.hpp"
+#include "gui/widgets/text_box_base.hpp"
 #include "gui/widgets/window.hpp"
 #ifdef _WIN32
 #include "log_windows.hpp"

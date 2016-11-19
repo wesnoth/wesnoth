@@ -19,7 +19,7 @@
 #include "config.hpp"
 #include "game_preferences.hpp"
 #include "utils/make_enum.hpp"
-#include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/group.hpp"
 
 // This file is not named preferences.hpp in order -I conflicts with

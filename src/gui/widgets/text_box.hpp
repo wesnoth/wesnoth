@@ -15,7 +15,7 @@
 #ifndef GUI_WIDGETS_TEXT_BOX_HPP_INCLUDED
 #define GUI_WIDGETS_TEXT_BOX_HPP_INCLUDED
 
-#include "gui/widgets/text.hpp"
+#include "gui/widgets/text_box_base.hpp"
 
 namespace gui2
 {

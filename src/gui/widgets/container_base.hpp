@@ -16,7 +16,7 @@
 #define GUI_WIDGETS_CONTAINER_HPP_INCLUDED
 
 #include "gui/widgets/grid.hpp"
-#include "gui/widgets/control.hpp"
+#include "gui/widgets/styled_widget.hpp"
 #include "gui/core/window_builder.hpp"
 
 namespace gui2

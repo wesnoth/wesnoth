@@ -14,7 +14,7 @@
 
 #include "global.hpp"
 
-#include "addon/manager.hpp"
+#include "addon/manager_old.hpp"
 #include "build_info.hpp"
 #include "commandline_options.hpp"      // for commandline_options, etc
 #include "config.hpp"                   // for config, config::error, etc
@@ -32,7 +32,7 @@
 #include "gettext.hpp"
 #include "gui/core/event/handler.hpp"  	// for tmanager
 #include "gui/dialogs/end_credits.hpp"
-#include "gui/dialogs/loadscreen.hpp"
+#include "gui/dialogs/loading_screen.hpp"
 #include "gui/dialogs/title_screen.hpp"  // for title_screen, etc
 #include "gui/dialogs/message.hpp" 		// for show_error_message
 #include "gui/widgets/helper.hpp"       // for init

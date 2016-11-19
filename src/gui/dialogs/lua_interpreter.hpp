@@ -15,7 +15,7 @@
 #ifndef GUI_DIALOGS_LUA_INT_HPP_INCLUDED
 #define GUI_DIALOGS_LUA_INT_HPP_INCLUDED
 
-#include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
 
 class lua_kernel_base;
 

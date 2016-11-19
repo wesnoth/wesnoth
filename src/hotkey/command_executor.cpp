@@ -19,7 +19,7 @@
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/screenshot_notification.hpp"
 #include "gui/dialogs/transient_message.hpp"
-#include "gui/dialogs/drop_down_list.hpp"
+#include "gui/dialogs/drop_down_menu.hpp"
 #include "gui/widgets/window.hpp"
 #include "wml_separators.hpp"
 #include "filesystem.hpp"

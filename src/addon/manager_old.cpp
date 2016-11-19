@@ -15,14 +15,14 @@
 
 #include "global.hpp"
 
-#include "addon/manager.hpp"
+#include "addon/manager_old.hpp"
 #include "addon/manager_ui.hpp"
 #include "filesystem.hpp"
 #include "formatter.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/addon/connect.hpp"
-#include "gui/dialogs/addon/list.hpp"
+#include "gui/dialogs/addon/manager.hpp"
 #include "gui/dialogs/addon/description.hpp"
 #include "gui/dialogs/addon/uninstall_list.hpp"
 #include "gui/dialogs/message.hpp"

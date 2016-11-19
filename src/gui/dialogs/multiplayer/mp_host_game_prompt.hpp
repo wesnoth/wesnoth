@@ -16,7 +16,7 @@
 #ifndef GUI_DIALOGS_MP_HOST_GAME_PROMPT_HPP_INCLUDED
 #define GUI_DIALOGS_MP_HOST_GAME_PROMPT_HPP_INCLUDED
 
-#include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
 
 namespace gui2
 {

@@ -16,7 +16,7 @@
 #define GUI_DIALOGS_EDITOR_EDIT_SIDE_HPP_INCLUDED
 
 #include "editor/map/map_context.hpp"
-#include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/group.hpp"
 #include "team.hpp"
 

@@ -13,7 +13,7 @@
 
 #pragma once
 
-#include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
 #include "tstring.hpp"
 
 #include <map>

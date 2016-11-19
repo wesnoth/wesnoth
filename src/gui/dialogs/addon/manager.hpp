@@ -18,7 +18,7 @@
 #include "addon/info.hpp"
 #include "addon/state.hpp"
 
-#include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/pane.hpp"
 
 #include "config.hpp" // needed for config::const_child_itors

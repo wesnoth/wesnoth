@@ -13,7 +13,7 @@
 */
 #include "game_initialization/multiplayer.hpp"
 
-#include "addon/manager.hpp" // for get_installed_addons
+#include "addon/manager_old.hpp" // for get_installed_addons
 #include "config_assign.hpp"
 #include "font/sdl_ttf.hpp"
 #include "formula/string_utils.hpp"
@@ -21,7 +21,7 @@
 #include "generators/map_create.hpp"
 #include "generators/map_generator.hpp"
 #include "gettext.hpp"
-#include "gui/dialogs/loadscreen.hpp"
+#include "gui/dialogs/loading_screen.hpp"
 #include "gui/dialogs/lobby/lobby.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/multiplayer/mp_connect.hpp"

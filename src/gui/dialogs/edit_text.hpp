@@ -15,7 +15,7 @@
 #ifndef GUI_DIALOGS_EDIT_TEXT_INCLUDED
 #define GUI_DIALOGS_EDIT_TEXT_INCLUDED
 
-#include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
 
 namespace gui2
 {

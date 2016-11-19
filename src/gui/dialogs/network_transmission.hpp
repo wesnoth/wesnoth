@@ -15,8 +15,8 @@
 #ifndef GUI_DIALOGS_NETWORK_RECEIVE_HPP_INCLUDED
 #define GUI_DIALOGS_NETWORK_RECEIVE_HPP_INCLUDED
 
-#include "gui/dialogs/dialog.hpp"
-#include "gui/widgets/control.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
+#include "gui/widgets/styled_widget.hpp"
 #include "network_asio.hpp"
 #include <boost/optional.hpp>
 #include "events.hpp"

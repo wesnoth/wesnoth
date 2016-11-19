@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
 #include "sdl/rect.hpp"
 
 class config;

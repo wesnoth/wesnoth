@@ -16,7 +16,7 @@
 #define GUI_DIALOGS_CAMPAIGN_DIFFICULTY_HPP_INCLUDED
 
 #include "config.hpp"
-#include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
 
 #include <vector>
 

@@ -16,7 +16,7 @@
 #define GUI_WIDGETS_SCROLLBAR_HPP_INCLUDED
 
 #include "gui/core/notifier.hpp"
-#include "gui/widgets/control.hpp"
+#include "gui/widgets/styled_widget.hpp"
 
 #include "utils/functional.hpp"
 

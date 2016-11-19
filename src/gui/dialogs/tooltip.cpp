@@ -14,11 +14,11 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "gui/dialogs/tip.hpp"
+#include "gui/dialogs/tooltip.hpp"
 
-#include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
 #include "gui/auxiliary/find_widget.hpp"
-#include "gui/dialogs/popup.hpp"
+#include "gui/dialogs/modeless_dialog.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 

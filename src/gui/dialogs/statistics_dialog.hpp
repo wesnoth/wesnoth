@@ -14,7 +14,7 @@
 #ifndef GUI_DIALOGS_STATISTICS_DIALOG_HPP_INCLUDED
 #define GUI_DIALOGS_STATISTICS_DIALOG_HPP_INCLUDED
 
-#include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
 #include "statistics.hpp"
 
 class CVideo;

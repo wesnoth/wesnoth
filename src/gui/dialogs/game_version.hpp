@@ -15,7 +15,7 @@
 #ifndef GUI_DIALOGS_GAME_VERSION_HPP_INCLUDED
 #define GUI_DIALOGS_GAME_VERSION_HPP_INCLUDED
 
-#include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
 
 #include "build_info.hpp"
 

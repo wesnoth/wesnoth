@@ -19,7 +19,7 @@
 
 #include <cassert>
 #include "gui/widgets/grid.hpp"
-#include "gui/widgets/selectable.hpp"
+#include "gui/widgets/selectable_item.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/toggle_panel.hpp"
 #include "gui/widgets/window.hpp" // For window::visibility

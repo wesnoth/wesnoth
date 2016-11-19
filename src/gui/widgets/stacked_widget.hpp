@@ -15,7 +15,7 @@
 #ifndef GUI_WIDGETS_STACKED_WIDGET_HPP_INCLUDED
 #define GUI_WIDGETS_STACKED_WIDGET_HPP_INCLUDED
 
-#include "gui/widgets/container.hpp"
+#include "gui/widgets/container_base.hpp"
 
 #include "gui/core/widget_definition.hpp"
 #include "gui/core/window_builder.hpp"

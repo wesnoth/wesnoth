@@ -19,7 +19,7 @@
 #include "gui/auxiliary/iterator/walker_grid.hpp"
 #include "gui/core/log.hpp"
 #include "gui/core/layout_exception.hpp"
-#include "gui/widgets/control.hpp"
+#include "gui/widgets/styled_widget.hpp"
 
 #include <numeric>
 

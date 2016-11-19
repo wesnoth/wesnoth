@@ -15,7 +15,7 @@
 #ifndef GUI_DIALOGS_THEME_LIST_HPP_INCLUDED
 #define GUI_DIALOGS_THEME_LIST_HPP_INCLUDED
 
-#include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
 #include "synced_user_choice.hpp"
 #include "generic_event.hpp"
 namespace gui2

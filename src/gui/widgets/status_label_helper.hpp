@@ -16,9 +16,9 @@
 
 #include "gettext.hpp"
 #include "gui/core/event/dispatcher.hpp"
-#include "gui/widgets/control.hpp"
+#include "gui/widgets/styled_widget.hpp"
 #include "gui/widgets/integer_selector.hpp"
-#include "gui/widgets/selectable.hpp"
+#include "gui/widgets/selectable_item.hpp"
 
 #include "utils/functional.hpp"
 

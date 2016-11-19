@@ -14,7 +14,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "gui/widgets/container.hpp"
+#include "gui/widgets/container_base.hpp"
 
 #include "gui/core/log.hpp"
 

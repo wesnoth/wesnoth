@@ -23,7 +23,7 @@
 #include "gui/widgets/progress_bar.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/settings.hpp"
-#include "gui/dialogs/loadscreen.hpp"
+#include "gui/dialogs/loading_screen.hpp"
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"

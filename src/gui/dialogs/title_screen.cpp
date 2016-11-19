@@ -37,7 +37,7 @@
 #include "gui/dialogs/multiplayer/mp_host_game_prompt.hpp"
 //#define DEBUG_TOOLTIP
 #ifdef DEBUG_TOOLTIP
-#include "gui/dialogs/tip.hpp"
+#include "gui/dialogs/tooltip.hpp"
 #endif
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/image.hpp"

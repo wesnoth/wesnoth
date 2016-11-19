@@ -24,7 +24,7 @@
 #include "log.hpp"
 #include "map/map.hpp"
 #include "serialization/string_utils.hpp"
-#include "gui/dialogs/loadscreen.hpp"
+#include "gui/dialogs/loading_screen.hpp"
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)

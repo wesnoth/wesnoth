@@ -23,7 +23,7 @@
 #include "gui/core/register_widget.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
-#include "gui/dialogs/drop_down_list.hpp"
+#include "gui/dialogs/drop_down_menu.hpp"
 #include "config_assign.hpp"
 #include "sound.hpp"
 

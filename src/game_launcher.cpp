@@ -31,7 +31,7 @@
 #include "gettext.hpp"                  // for _
 #include "gui/dialogs/end_credits.hpp"
 #include "gui/dialogs/language_selection.hpp"  // for language_selection
-#include "gui/dialogs/loadscreen.hpp"
+#include "gui/dialogs/loading_screen.hpp"
 #include "gui/dialogs/message.hpp" //for show error message
 #include "gui/dialogs/multiplayer/mp_host_game_prompt.hpp" //for host game prompt
 #include "gui/dialogs/multiplayer/mp_method_selection.hpp"

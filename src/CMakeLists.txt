@@ -468,7 +468,7 @@ add_library(wesnoth-gui_placer
 # This library contains the tooltip handling code.
 set(wesnoth-gui_tooltip_SRC
 	gui/auxiliary/tips.cpp
-	gui/dialogs/tip.cpp
+	gui/dialogs/tooltip.cpp
 )
 
 add_library(wesnoth-gui_tooltip
@@ -485,11 +485,10 @@ add_library(wesnoth-gui_tooltip
 # behavior of the widgets. It also contains the builder code
 # for the widgets since the code has inter dependencies.
 set(wesnoth-gui_widget_SRC
-	gui/dialogs/drop_down_list.cpp
+	gui/dialogs/drop_down_menu.cpp
 	gui/widgets/button.cpp
 	gui/widgets/chatbox.cpp
-	gui/widgets/container.cpp
-	gui/widgets/control.cpp
+	gui/widgets/container_base.cpp
 	gui/widgets/debug.cpp
 	gui/widgets/drawing.cpp
 	gui/widgets/generator.cpp
@@ -518,7 +517,8 @@ set(wesnoth-gui_widget_SRC
 	gui/widgets/slider.cpp
 	gui/widgets/spacer.cpp
 	gui/widgets/stacked_widget.cpp
-	gui/widgets/text.cpp
+	gui/widgets/styled_widget.cpp
+	gui/widgets/text_box_base.cpp
 	gui/widgets/text_box.cpp
 	gui/widgets/toggle_button.cpp
 	gui/widgets/toggle_panel.cpp
@@ -621,7 +621,7 @@ set(wesnoth-main_SRC
 	actions/vision.cpp
 	addon/client.cpp
 	addon/info.cpp
-	addon/manager.cpp
+	addon/manager_old.cpp
 	addon/manager_ui.cpp
 	addon/state.cpp
 	addon/validation.cpp
@@ -752,7 +752,7 @@ set(wesnoth-main_SRC
 	gui/dialogs/addon/filter_options.cpp
 	gui/dialogs/addon/uninstall_list.cpp
 	gui/dialogs/addon/connect.cpp
-	gui/dialogs/addon/list.cpp
+	gui/dialogs/addon/manager.cpp
 	gui/dialogs/advanced_graphics_options.cpp
 	gui/dialogs/campaign_difficulty.cpp
 	gui/dialogs/campaign_selection.cpp
@@ -762,7 +762,6 @@ set(wesnoth-main_SRC
 	gui/dialogs/debug_clock.cpp
 	gui/dialogs/depcheck_confirm_change.cpp
 	gui/dialogs/depcheck_select_new.cpp
-	gui/dialogs/dialog.cpp
 	gui/dialogs/edit_label.cpp
 	gui/dialogs/editor/custom_tod.cpp
 	gui/dialogs/editor/edit_label.cpp
@@ -786,12 +785,14 @@ set(wesnoth-main_SRC
 	gui/dialogs/gamestate_inspector.cpp
 	gui/dialogs/label_settings.cpp
 	gui/dialogs/language_selection.cpp
-	gui/dialogs/loadscreen.cpp
+	gui/dialogs/loading_screen.cpp
 	gui/dialogs/lobby/lobby.cpp
 	gui/dialogs/lobby/player_info.cpp
-	gui/dialogs/logging.cpp
+	gui/dialogs/log_settings.cpp
 	gui/dialogs/lua_interpreter.cpp
 	gui/dialogs/message.cpp
+	gui/dialogs/modal_dialog.cpp
+	gui/dialogs/modeless_dialog.cpp
 	gui/dialogs/multiplayer/faction_select.cpp
 	gui/dialogs/multiplayer/mp_alerts_options.cpp
 	gui/dialogs/multiplayer/mp_change_control.cpp
@@ -806,7 +807,6 @@ set(wesnoth-main_SRC
 	gui/dialogs/multiplayer/mp_options_helper.cpp
 	gui/dialogs/multiplayer/mp_staging.cpp
 	gui/dialogs/network_transmission.cpp
-	gui/dialogs/popup.cpp
 	gui/dialogs/preferences_dialog.cpp
 	gui/dialogs/edit_text.cpp
 	gui/dialogs/screenshot_notification.cpp

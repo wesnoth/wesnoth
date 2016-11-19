@@ -22,7 +22,7 @@
 #include "map/label.hpp"
 #include "resources.hpp"
 #include "gui/auxiliary/find_widget.hpp"
-#include "gui/widgets/control.hpp"
+#include "gui/widgets/styled_widget.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 #include "gui/widgets/list.hpp"
 #else

@@ -15,7 +15,7 @@
 #ifndef GUI_DIALOGS_EDITOR_GENERATE_MAP_HPP_INCLUDED
 #define GUI_DIALOGS_EDITOR_GENERATE_MAP_HPP_INCLUDED
 
-#include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
 #include <boost/optional/optional.hpp>
 #include <cstdint>
 

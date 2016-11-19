@@ -16,7 +16,7 @@
 #define GUI_DIALOGS_UNIT_ATTACK_HPP_INCLUDED
 
 #include "actions/attack.hpp"
-#include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
 #include "units/map.hpp"
 
 namespace gui2

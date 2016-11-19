@@ -14,13 +14,13 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "gui/widgets/control.hpp"
+#include "gui/widgets/styled_widget.hpp"
 
 #include "formula/string_utils.hpp"
 #include "gui/auxiliary/iterator/walker_widget.hpp"
 #include "gui/core/log.hpp"
 #include "gui/core/event/message.hpp"
-#include "gui/dialogs/tip.hpp"
+#include "gui/dialogs/tooltip.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "font/marked-up_text.hpp"

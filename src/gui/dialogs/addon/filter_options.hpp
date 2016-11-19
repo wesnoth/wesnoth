@@ -15,7 +15,7 @@
 #ifndef GUI_DIALOGS_ADDON_FILTER_OPTIONS_HPP_INCLUDED
 #define GUI_DIALOGS_ADDON_FILTER_OPTIONS_HPP_INCLUDED
 
-#include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/group.hpp"
 
 #include "addon/validation.hpp"

@@ -37,7 +37,7 @@
 #include "hotkey/hotkey_handler.hpp"
 #include "map/label.hpp"
 #include "gettext.hpp"
-#include "gui/dialogs/loadscreen.hpp"
+#include "gui/dialogs/loading_screen.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "hotkey/command_executor.hpp"
 #include "log.hpp"

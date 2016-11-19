@@ -14,7 +14,7 @@
 #ifndef GUI_DIALOGS_GENERATOR_SETTINGS_HPP_INCLUDED
 #define GUI_DIALOGS_GENERATOR_SETTINGS_HPP_INCLUDED
 
-#include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
 #include "generators/default_map_generator.hpp"
 
 namespace gui2

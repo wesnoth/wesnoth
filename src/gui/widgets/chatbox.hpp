@@ -13,7 +13,7 @@
 
 #pragma once
 
-#include "gui/widgets/container.hpp"
+#include "gui/widgets/container_base.hpp"
 #include "game_initialization/lobby_data.hpp"
 #include "game_initialization/lobby_info.hpp"
 

@@ -31,8 +31,8 @@
 #include "units/animation.hpp"
 #include "util.hpp"
 
-#include "gui/auxiliary/formula.hpp"
-#include "gui/dialogs/loadscreen.hpp"
+#include "gui/auxiliary/typed_formula.hpp"
+#include "gui/dialogs/loading_screen.hpp"
 
 #include <boost/regex.hpp>
 

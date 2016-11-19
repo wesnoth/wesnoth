@@ -16,7 +16,7 @@
 #define GUI_WIDGETS_TEXT_HPP_INCLUDED
 
 //#include "gui/core/event/dispatcher.hpp"
-#include "gui/widgets/control.hpp"
+#include "gui/widgets/styled_widget.hpp"
 #include "font/text.hpp" // We want the file in src/
 
 #include <string>

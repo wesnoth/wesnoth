@@ -14,10 +14,10 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "gui/dialogs/drop_down_list.hpp"
+#include "gui/dialogs/drop_down_menu.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/auxiliary/find_widget.hpp"
-#include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/integer_selector.hpp"
 #include "gui/widgets/scrollbar.hpp"

@@ -19,7 +19,7 @@
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "cursor.hpp"
-#include "gui/dialogs/loadscreen.hpp"
+#include "gui/dialogs/loading_screen.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/window.hpp"
 #include "gui/widgets/settings.hpp"

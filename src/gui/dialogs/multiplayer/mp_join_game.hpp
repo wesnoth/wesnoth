@@ -15,7 +15,7 @@
 #define GUI_DIALOGS_MP_JOIN_GAME_HPP_INCLUDED
 
 #include "ai/configuration.hpp"
-#include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
 #include "game_initialization/lobby_info.hpp"
 #include "gui/dialogs/multiplayer/plugin_executor.hpp"
 

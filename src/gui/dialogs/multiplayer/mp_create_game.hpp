@@ -15,7 +15,7 @@
 #ifndef GUI_DIALOGS_MP_CREATE_GAME_HPP_INCLUDED
 #define GUI_DIALOGS_MP_CREATE_GAME_HPP_INCLUDED
 
-#include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
 #include "gui/dialogs/multiplayer/plugin_executor.hpp"
 #include "gui/dialogs/multiplayer/mp_options_helper.hpp"
 

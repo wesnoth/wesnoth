@@ -17,8 +17,8 @@
 #include "gui/core/widget_definition.hpp"
 #include "gui/core/window_builder.hpp"
 
-#include "gui/widgets/control.hpp"
-#include "gui/widgets/selectable.hpp"
+#include "gui/widgets/styled_widget.hpp"
+#include "gui/widgets/selectable_item.hpp"
 
 class config;
 

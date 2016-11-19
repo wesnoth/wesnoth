@@ -27,7 +27,7 @@
 #include "gettext.hpp"
 #include "image.hpp"
 
-#include "gui/auxiliary/formula.hpp"
+#include "gui/auxiliary/typed_formula.hpp"
 #include "gui/core/log.hpp"
 #include "gui/widgets/helper.hpp"
 #include "sdl/rect.hpp"

@@ -30,7 +30,7 @@
 #include "teambuilder.hpp"
 #include "units/unit.hpp"
 #include "whiteboard/manager.hpp"
-#include "gui/dialogs/loadscreen.hpp"
+#include "gui/dialogs/loading_screen.hpp"
 
 #include "utils/functional.hpp"
 #include <SDL_timer.h>

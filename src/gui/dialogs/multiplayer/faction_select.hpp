@@ -15,7 +15,7 @@
 #define GUI_DIALOGS_FACTION_SELECT_HPP_INCLUDED
 
 #include "game_initialization/flg_manager.hpp"
-#include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/group.hpp"
 
 #include <string>

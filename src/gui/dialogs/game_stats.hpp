@@ -16,7 +16,7 @@
 
 #include "game_board.hpp"
 #include "gettext.hpp"
-#include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "team.hpp"
 

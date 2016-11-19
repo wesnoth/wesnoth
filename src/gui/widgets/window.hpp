@@ -24,7 +24,7 @@
 #include "cursor.hpp"
 #include "formula/callable.hpp"
 #include "formula/function.hpp"
-#include "gui/auxiliary/formula.hpp"
+#include "gui/auxiliary/typed_formula.hpp"
 #include "gui/core/event/handler.hpp"
 #include "gui/core/window_builder.hpp"
 #include "gui/widgets/panel.hpp"

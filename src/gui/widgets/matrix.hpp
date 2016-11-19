@@ -15,7 +15,7 @@
 #ifndef GUI_WIDGETS_MATRIX_HPP_INCLUDED
 #define GUI_WIDGETS_MATRIX_HPP_INCLUDED
 
-#include "gui/widgets/control.hpp"
+#include "gui/widgets/styled_widget.hpp"
 #include "gui/widgets/pane.hpp"
 #include "gui/widgets/scrollbar_container.hpp"
 

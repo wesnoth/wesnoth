@@ -14,7 +14,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
 
 #include "gui/auxiliary/field.hpp"
 #include "gui/widgets/integer_selector.hpp"

@@ -15,7 +15,7 @@
 #ifndef GUI_DIALOGS_DEBUG_CLOCK_HPP_INCLUDED
 #define GUI_DIALOGS_DEBUG_CLOCK_HPP_INCLUDED
 
-#include "gui/dialogs/popup.hpp"
+#include "gui/dialogs/modeless_dialog.hpp"
 
 #include "gui/core/event/dispatcher.hpp"
 

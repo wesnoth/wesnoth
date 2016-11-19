@@ -27,7 +27,7 @@
 #include "gui/core/register_widget.hpp"
 #include "gui/widgets/pane.hpp"
 #include "gui/widgets/settings.hpp"
-#include "gui/widgets/selectable.hpp"
+#include "gui/widgets/selectable_item.hpp"
 #include "gui/widgets/viewport.hpp"
 #include "gui/widgets/window.hpp"
 

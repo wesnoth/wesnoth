@@ -14,7 +14,7 @@
 #ifndef GUI_DIALOGS_LABEL_SETTINGS_HPP_INCLUDED
 #define GUI_DIALOGS_LABEL_SETTINGS_HPP_INCLUDED
 
-#include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
 #include <map>
 #include "display_context.hpp"
 #include "tstring.hpp"

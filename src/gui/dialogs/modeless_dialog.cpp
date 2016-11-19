@@ -14,7 +14,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "gui/dialogs/popup.hpp"
+#include "gui/dialogs/modeless_dialog.hpp"
 
 #include "gui/widgets/window.hpp"
 #include "video.hpp"

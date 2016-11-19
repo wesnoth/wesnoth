@@ -15,7 +15,7 @@
 #ifndef GUI_DIALOGS_ADDON_DESCRIPTION_HPP_INCLUDED
 #define GUI_DIALOGS_ADDON_DESCRIPTION_HPP_INCLUDED
 
-#include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
 
 #include "addon/info.hpp"
 #include "addon/state.hpp"

@@ -14,7 +14,7 @@
 #ifndef GUI_LOGGING_HPP_INCLUDED
 #define GUI_LOGGING_HPP_INCLUDED
 
-#include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/group.hpp"
 #include <map>
 

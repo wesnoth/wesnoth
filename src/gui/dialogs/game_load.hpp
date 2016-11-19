@@ -15,7 +15,7 @@
 #ifndef GUI_DIALOGS_LOAD_GAME_HPP_INCLUDED
 #define GUI_DIALOGS_LOAD_GAME_HPP_INCLUDED
 
-#include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "savegame.hpp"
 #include "save_index.hpp"
