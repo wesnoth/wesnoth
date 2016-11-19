@@ -15,6 +15,7 @@
 #define GUI_WIDGETS_GROUP_HPP_INCLUDED
 
 #include "gui/core/event/dispatcher.hpp"
+#include "gui/core/log.hpp"
 #include "gui/widgets/control.hpp"
 #include "gui/widgets/selectable.hpp"
 #include "gui/widgets/widget.hpp"
@@ -40,7 +41,13 @@ public:
 	 */
 	void add_member(selectable_item* w, const T& value)
 	{
-		members_.emplace(value, w);
+		bool success;
+		std::tie(std::ignore, success) = members_.emplace(value, w);
+
+		if(!success) {
+			ERR_GUI_G << "Group member with value " << value << "already exists." << std::endl;
+			return;
+		}
 
 		dynamic_cast<widget*>(w)->connect_signal<event::LEFT_BUTTON_CLICK>(
 			std::bind(&group::group_operator, this), event::dispatcher::front_child);
