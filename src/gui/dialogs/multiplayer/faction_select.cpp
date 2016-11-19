@@ -174,16 +174,13 @@ void faction_select::on_leader_select(window& window)
 {
 	flg_manager_.set_current_leader(find_widget<menu_button>(&window, "leader_menu", false).get_value());
 
-	auto gender_available = [this](const std::string& gender)->bool {
-		const std::vector<std::string>& genders = flg_manager_.choosable_genders();
-		return std::find(genders.begin(), genders.end(), gender) != genders.end();
-	};
 
 	// TODO: should we decouple this from the flg manager and instead just check the unit type directly?
 	// If that's done so, we'd need to come up with a different check for Random availability.
-	gender_toggle_.set_member_active(unit_race::s_male,   gender_available(unit_race::s_male));
-	gender_toggle_.set_member_active(unit_race::s_female, gender_available(unit_race::s_female));
-	gender_toggle_.set_member_active("random",            gender_available("random"));
+	gender_toggle_.set_members_enabled([this](const std::string& gender)->bool {
+		const std::vector<std::string>& genders = flg_manager_.choosable_genders();
+		return std::find(genders.begin(), genders.end(), gender) != genders.end();
+	});
 
 	update_leader_image(window);
 }

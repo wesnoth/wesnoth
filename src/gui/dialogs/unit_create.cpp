@@ -202,10 +202,9 @@ void unit_create::list_item_clicked(window& window)
 	find_widget<unit_preview_pane>(&window, "unit_details", false)
 		.set_displayed_type(*units_[selected_row]);
 
-	gender_toggle.set_member_active(unit_race::GENDER::MALE,
-		units_[selected_row]->has_gender_variation(unit_race::GENDER::MALE));
-	gender_toggle.set_member_active(unit_race::GENDER::FEMALE,
-		units_[selected_row]->has_gender_variation(unit_race::GENDER::FEMALE));
+	gender_toggle.set_members_enabled([&](const unit_race::GENDER& gender)->bool {
+		return units_[selected_row]->has_gender_variation(gender);
+	});
 }
 
 void unit_create::filter_text_changed(text_box_base* textbox, const std::string& text)

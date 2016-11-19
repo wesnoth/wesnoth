@@ -18,33 +18,34 @@
 #include "gui/widgets/control.hpp"
 #include "gui/widgets/selectable.hpp"
 #include "gui/widgets/widget.hpp"
+#include "utils/functional.hpp"
 
 #include <map>
-#include "utils/functional.hpp"
+#include <vector>
 
 namespace gui2
 {
 
-template <class T>
+template<class T>
 class group
 {
-public:
-	typedef typename std::map<T, selectable_item*>  group_map;
-	typedef typename group_map::iterator         group_iterator;
-	typedef typename group_map::const_iterator   group_iterator_const;
+	using group_map    = std::map<T, selectable_item*>;
+	using order_vector = std::vector<selectable_item*>;
 
+public:
 	/**
-	 * Adds a widget/value pair to the group map. A callback is set
-	 * that sets all members' toggle states to false when clicked. This
-	 * happens before individual widget handlers fire, meaning that the
-	 * clicked widget will remain the only one selected.
+	 * Adds a widget/value pair to the group map. A callback is set that toggles each members'
+	 * state to false when clicked. This happens before individual widget handlers fire, ensuring
+	 * that the clicked widget will remain the only one selected.
 	 */
 	void add_member(selectable_item* w, const T& value)
 	{
 		members_.emplace(value, w);
 
-		dynamic_cast<widget*>(w)->connect_signal<event::LEFT_BUTTON_CLICK>(std::bind(
-			&group::group_operator, this), event::dispatcher::front_child);
+		dynamic_cast<widget*>(w)->connect_signal<event::LEFT_BUTTON_CLICK>(
+			std::bind(&group::group_operator, this), event::dispatcher::front_child);
+
+		member_order_.push_back(w);
 	}
 
 	/**
@@ -83,8 +84,7 @@ public:
 	}
 
 	/**
-	 * Returns the value paired with the currently actively toggled member
-	 * of the group.
+	 * Returns the value paired with the currently actively toggled member of the group.
 	 */
 	T get_active_member_value()
 	{
@@ -111,7 +111,7 @@ public:
 	/**
 	 * Sets a common callback function for all members.
 	 */
-	void set_callback_on_value_change(const std::function<void(widget&)>& func)
+	void set_callback_on_value_change(std::function<void(widget&)> func)
 	{
 		// Ensure this callback is only called on the member being activated
 		const auto callback = [func](widget& widget)->void {
@@ -126,41 +126,64 @@ public:
 	}
 
 	/**
-	 * Wrapper for enabling or disabling a member widget.
-	 * If the selected widget is selected, it is deselected and the first active
-	 * member selected instead.
+	 * Wrapper for enabling or disabling member widgets.
+	 * Each member widget will be enabled or disabled based on the result of the specified
+	 * predicate, which takes its accociated value.
+	 *
+	 * If a selected widget is to be disabled, it is deselected and the first active member
+	 * selected instead. The same happens if no members were previously active at all.
 	 */
-	void set_member_active(const T& value, const bool active)
+	void set_members_enabled(std::function<bool(const T&)> predicate)
 	{
-		if(members_.find(value) == members_.end()) {
-			return;
+		bool do_reselect = true;
+
+		for(auto& member : members_) {
+			const bool res = predicate(member.first);
+
+			selectable_item& w = *member.second;
+			dynamic_cast<styled_widget&>(w).set_active(res);
+
+			// TODO: we shouldn't need to set do_reselect twice...
+			if(w.get_value_bool()) {
+				do_reselect = false;
+			}
+
+			// Only select another member if this was selected
+			if(!res && w.get_value_bool()) {
+				w.set_value_bool(false);
+				do_reselect = true;
+			}
 		}
 
-		selectable_item& w = *members_[value];
-		dynamic_cast<styled_widget&>(w).set_active(active);
-
-		// Only select another member this was selected
-		if(!w.get_value_bool()) {
+		if(!do_reselect) {
 			return;
 		}
-
-		w.set_value_bool(false);
 
 		// Look for the first active member to select
-		for(auto& member : members_) {
-			if(dynamic_cast<styled_widget&>(*member.second).get_active()) {
-				member.second->set_value_bool(true);
+		for(auto& member : member_order_) {
+			if(dynamic_cast<styled_widget&>(*member).get_active()) {
+				member->set_value_bool(true);
 				break;
 			}
 		}
 	}
 
 private:
+	/**
+	 * Container map for group members, organized by member value, accociated widget.
+	 */
 	group_map members_;
 
 	/**
-	 * The default actions to take when clicking on one of the widgets
-	 * in the group.
+	 * Since iterating over std::map is specified by operator< for it's key values, we can't
+	 * guarantee the order would line up with the logical order - ie, that which the widgets
+	 * appear in in a specific dialog. Keeping a separate vector here allows iterating over
+	 * members in the order which they are added to the group.
+	 */
+	order_vector member_order_;
+
+	/**
+	 * The default actions to take when clicking on one of the widgets in the group.
 	 */
 	void group_operator()
 	{
