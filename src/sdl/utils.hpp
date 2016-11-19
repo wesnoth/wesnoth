@@ -45,6 +45,16 @@
 #define SDL_BUTTON_WHEELRIGHT 7
 #endif
 
+#define SDL_ALPHA_MASK (0xFF000000)
+#define SDL_RED_MASK   (0x00FF0000)
+#define SDL_GREEN_MASK (0x0000FF00)
+#define SDL_BLUE_MASK  (0x000000FF)
+
+#define SDL_ALPHA_BITSHIFT (24)
+#define SDL_RED_BITSHIFT   (16)
+#define SDL_GREEN_BITSHIFT (8)
+#define SDL_BLUE_BITSHIFT  (0)
+
 SDL_Keycode sdl_keysym_from_name(const std::string& keyname);
 
 class surface
