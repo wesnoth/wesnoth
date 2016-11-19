@@ -6,6 +6,7 @@
 #ifndef SPIRIT_PO_EXCEPTIONS_HPP_INCLUDED
 #define SPIRIT_PO_EXCEPTIONS_HPP_INCLUDED
 
+#include <spirit_po/default_plural_forms_expressions.hpp>
 #include <boost/spirit/include/support_line_pos_iterator.hpp>
 #include <string>
 
