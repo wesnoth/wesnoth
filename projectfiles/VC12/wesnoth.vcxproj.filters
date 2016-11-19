@@ -638,6 +638,9 @@
     <ClCompile Include="..\..\src\gui\dialogs\sp_options_configure.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\statistics_dialog.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\theme_list.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
@@ -1469,7 +1472,6 @@
     <ClCompile Include="..\..\src\sound_music_track.cpp" />
     <ClCompile Include="..\..\src\soundsource.cpp" />
     <ClCompile Include="..\..\src\statistics.cpp" />
-    <ClCompile Include="..\..\src\statistics_dialog.cpp" />
     <ClCompile Include="..\..\src\strftime.cpp" />
     <ClCompile Include="..\..\src\synced_checkup.cpp" />
     <ClCompile Include="..\..\src\synced_commands.cpp" />
@@ -2011,6 +2013,9 @@
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\sp_options_configure.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\statistics_dialog.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\theme_list.hpp">
@@ -2853,7 +2858,6 @@
     <ClInclude Include="..\..\src\sound_music_track.hpp" />
     <ClInclude Include="..\..\src\soundsource.hpp" />
     <ClInclude Include="..\..\src\statistics.hpp" />
-    <ClInclude Include="..\..\src\statistics_dialog.hpp" />
     <ClInclude Include="..\..\src\strftime.hpp" />
     <ClInclude Include="..\..\src\synced_checkup.hpp" />
     <ClInclude Include="..\..\src\synced_commands.hpp" />

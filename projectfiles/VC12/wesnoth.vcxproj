@@ -2191,6 +2191,14 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\statistics_dialog.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\theme_list.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
@@ -3061,7 +3069,6 @@
     <ClCompile Include="..\..\src\soundsource.cpp" />
     <ClCompile Include="..\..\src\sound_music_track.cpp" />
     <ClCompile Include="..\..\src\statistics.cpp" />
-    <ClCompile Include="..\..\src\statistics_dialog.cpp" />
     <ClCompile Include="..\..\src\storyscreen\controller.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Storyscreen\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Storyscreen\</ObjectFileName>
@@ -4160,6 +4167,7 @@
     <ClInclude Include="..\..\src\gui\dialogs\select_orb_colors.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\simple_item_selector.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\sp_options_configure.hpp" />
+    <ClInclude Include="..\..\src\gui\dialogs\statistics_dialog.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\theme_list.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\tip.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\title_screen.hpp" />
@@ -4332,7 +4340,6 @@
     <ClInclude Include="..\..\src\soundsource.hpp" />
     <ClInclude Include="..\..\src\sound_music_track.hpp" />
     <ClInclude Include="..\..\src\statistics.hpp" />
-    <ClInclude Include="..\..\src\statistics_dialog.hpp" />
     <ClInclude Include="..\..\src\storyscreen\controller.hpp" />
     <ClInclude Include="..\..\src\storyscreen\interface.hpp" />
     <ClInclude Include="..\..\src\storyscreen\part.hpp" />
