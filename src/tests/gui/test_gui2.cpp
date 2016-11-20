@@ -103,6 +103,8 @@
 #include "gui/widgets/window.hpp"
 #include "language.hpp"
 #include "game_initialization/create_engine.hpp"
+#include "game_initialization/lobby_data.hpp"
+#include "game_initialization/lobby_info.hpp"
 #include "tests/utils/fake_display.hpp"
 #include "replay.hpp"
 #include "saved_game.hpp"
