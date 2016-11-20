@@ -191,7 +191,7 @@
     <ClCompile Include="..\..\src\addon\info.cpp">
       <Filter>Addon</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\addon\manager.cpp">
+    <ClCompile Include="..\..\src\addon\manager_old.cpp">
       <Filter>Addon</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\addon\manager_ui.cpp">
@@ -404,10 +404,7 @@
     <ClCompile Include="..\..\src\gui\widgets\chatbox.cpp">
       <Filter>Gui\Widgets</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\gui\widgets\container.cpp">
-      <Filter>Gui\Widgets</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\gui\widgets\control.cpp">
+    <ClCompile Include="..\..\src\gui\widgets\container_base.cpp">
       <Filter>Gui\Widgets</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\widgets\debug.cpp">
@@ -494,10 +491,13 @@
     <ClCompile Include="..\..\src\gui\widgets\stacked_widget.cpp">
       <Filter>Gui\Widgets</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\gui\widgets\text.cpp">
+    <ClCompile Include="..\..\src\gui\widgets\styled_widget.cpp">
       <Filter>Gui\Widgets</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\widgets\text_box.cpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\widgets\text_box_base.cpp">
       <Filter>Gui\Widgets</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\widgets\toggle_button.cpp">
@@ -554,10 +554,7 @@
     <ClCompile Include="..\..\src\gui\dialogs\depcheck_select_new.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\dialog.cpp">
-      <Filter>Gui\Dialogs</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\drop_down_list.cpp">
+    <ClCompile Include="..\..\src\gui\dialogs\drop_down_menu.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\edit_label.cpp">
@@ -605,10 +602,10 @@
     <ClCompile Include="..\..\src\gui\dialogs\language_selection.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\loadscreen.cpp">
+    <ClCompile Include="..\..\src\gui\dialogs\loading_screen.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\logging.cpp">
+    <ClCompile Include="..\..\src\gui\dialogs\log_settings.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\lua_interpreter.cpp">
@@ -617,10 +614,13 @@
     <ClCompile Include="..\..\src\gui\dialogs\message.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\network_transmission.cpp">
+    <ClCompile Include="..\..\src\gui\dialogs\modal_dialog.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\popup.cpp">
+    <ClCompile Include="..\..\src\gui\dialogs\modeless_dialog.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\network_transmission.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\preferences_dialog.cpp">
@@ -644,10 +644,10 @@
     <ClCompile Include="..\..\src\gui\dialogs\theme_list.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\tip.cpp">
+    <ClCompile Include="..\..\src\gui\dialogs\title_screen.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\title_screen.cpp">
+    <ClCompile Include="..\..\src\gui\dialogs\tooltip.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\transient_message.cpp">
@@ -677,12 +677,6 @@
     <ClCompile Include="..\..\src\gui\dialogs\wml_message.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\lobby\data.cpp">
-      <Filter>Gui\Dialogs\Lobby</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\lobby\info.cpp">
-      <Filter>Gui\Dialogs\Lobby</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\lobby\lobby.cpp">
       <Filter>Gui\Dialogs\Lobby</Filter>
     </ClCompile>
@@ -698,7 +692,7 @@
     <ClCompile Include="..\..\src\gui\dialogs\addon\filter_options.cpp">
       <Filter>Gui\Dialogs\Addon</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\addon\list.cpp">
+    <ClCompile Include="..\..\src\gui\dialogs\addon\manager.cpp">
       <Filter>Gui\Dialogs\Addon</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\addon\uninstall_list.cpp">
@@ -776,6 +770,9 @@
     <ClCompile Include="..\..\src\gui\auxiliary\old_markup.cpp">
       <Filter>Gui\Auxiliary</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\auxiliary\tips.cpp">
+      <Filter>Gui\Auxiliary</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\gui\auxiliary\iterator\iterator.cpp">
       <Filter>Gui\Auxiliary\Iterator</Filter>
     </ClCompile>
@@ -801,9 +798,6 @@
       <Filter>Gui\Core</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\core\timer.cpp">
-      <Filter>Gui\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\gui\core\tips.cpp">
       <Filter>Gui\Core</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\core\widget_definition.cpp">
@@ -1232,6 +1226,12 @@
     <ClCompile Include="..\..\src\game_initialization\flg_manager.cpp">
       <Filter>Game_Initialization</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\game_initialization\lobby_data.cpp">
+      <Filter>Game_Initialization</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game_initialization\lobby_info.cpp">
+      <Filter>Game_Initialization</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\game_initialization\mp_game_utils.cpp">
       <Filter>Game_Initialization</Filter>
     </ClCompile>
@@ -1523,7 +1523,7 @@
     <ClInclude Include="..\..\src\addon\info.hpp">
       <Filter>Addon</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\addon\manager.hpp">
+    <ClInclude Include="..\..\src\addon\manager_old.hpp">
       <Filter>Addon</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\addon\manager_ui.hpp">
@@ -1748,13 +1748,10 @@
     <ClInclude Include="..\..\src\gui\widgets\chatbox.hpp">
       <Filter>Gui\Widgets</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\gui\widgets\clickable.hpp">
+    <ClInclude Include="..\..\src\gui\widgets\clickable_item.hpp">
       <Filter>Gui\Widgets</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\gui\widgets\container.hpp">
-      <Filter>Gui\Widgets</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\gui\widgets\control.hpp">
+    <ClInclude Include="..\..\src\gui\widgets\container_base.hpp">
       <Filter>Gui\Widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\widgets\debug.hpp">
@@ -1844,7 +1841,7 @@
     <ClInclude Include="..\..\src\gui\widgets\scrollbar_panel.hpp">
       <Filter>Gui\Widgets</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\gui\widgets\selectable.hpp">
+    <ClInclude Include="..\..\src\gui\widgets\selectable_item.hpp">
       <Filter>Gui\Widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\widgets\settings.hpp">
@@ -1865,10 +1862,13 @@
     <ClInclude Include="..\..\src\gui\widgets\status_label_helper.hpp">
       <Filter>Gui\Widgets</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\gui\widgets\text.hpp">
+    <ClInclude Include="..\..\src\gui\widgets\styled_widget.hpp">
       <Filter>Gui\Widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\widgets\text_box.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\text_box_base.hpp">
       <Filter>Gui\Widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\widgets\toggle_button.hpp">
@@ -1928,10 +1928,7 @@
     <ClInclude Include="..\..\src\gui\dialogs\depcheck_select_new.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\gui\dialogs\dialog.hpp">
-      <Filter>Gui\Dialogs</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\gui\dialogs\drop_down_list.hpp">
+    <ClInclude Include="..\..\src\gui\dialogs\drop_down_menu.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\edit_label.hpp">
@@ -1982,10 +1979,10 @@
     <ClInclude Include="..\..\src\gui\dialogs\language_selection.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\gui\dialogs\loadscreen.hpp">
+    <ClInclude Include="..\..\src\gui\dialogs\loading_screen.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\gui\dialogs\logging.hpp">
+    <ClInclude Include="..\..\src\gui\dialogs\log_settings.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\lua_interpreter.hpp">
@@ -1994,10 +1991,13 @@
     <ClInclude Include="..\..\src\gui\dialogs\message.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\gui\dialogs\network_transmission.hpp">
+    <ClInclude Include="..\..\src\gui\dialogs\modal_dialog.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\gui\dialogs\popup.hpp">
+    <ClInclude Include="..\..\src\gui\dialogs\modeless_dialog.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\network_transmission.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\preferences_dialog.hpp">
@@ -2021,10 +2021,10 @@
     <ClInclude Include="..\..\src\gui\dialogs\theme_list.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\gui\dialogs\tip.hpp">
+    <ClInclude Include="..\..\src\gui\dialogs\title_screen.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\gui\dialogs\title_screen.hpp">
+    <ClInclude Include="..\..\src\gui\dialogs\tooltip.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\transient_message.hpp">
@@ -2054,12 +2054,6 @@
     <ClInclude Include="..\..\src\gui\dialogs\wml_message.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\gui\dialogs\lobby\data.hpp">
-      <Filter>Gui\Dialogs\Lobby</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\gui\dialogs\lobby\info.hpp">
-      <Filter>Gui\Dialogs\Lobby</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\lobby\lobby.hpp">
       <Filter>Gui\Dialogs\Lobby</Filter>
     </ClInclude>
@@ -2075,7 +2069,7 @@
     <ClInclude Include="..\..\src\gui\dialogs\addon\filter_options.hpp">
       <Filter>Gui\Dialogs\Addon</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\gui\dialogs\addon\list.hpp">
+    <ClInclude Include="..\..\src\gui\dialogs\addon\manager.hpp">
       <Filter>Gui\Dialogs\Addon</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\addon\uninstall_list.hpp">
@@ -2165,10 +2159,13 @@
     <ClInclude Include="..\..\src\gui\auxiliary\find_widget.hpp">
       <Filter>Gui\Auxiliary</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\gui\auxiliary\formula.hpp">
+    <ClInclude Include="..\..\src\gui\auxiliary\old_markup.hpp">
       <Filter>Gui\Auxiliary</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\gui\auxiliary\old_markup.hpp">
+    <ClInclude Include="..\..\src\gui\auxiliary\tips.hpp">
+      <Filter>Gui\Auxiliary</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\auxiliary\typed_formula.hpp">
       <Filter>Gui\Auxiliary</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\auxiliary\iterator\exception.hpp">
@@ -2220,9 +2217,6 @@
       <Filter>Gui\Core</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\core\timer.hpp">
-      <Filter>Gui\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\gui\core\tips.hpp">
       <Filter>Gui\Core</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\core\widget_definition.hpp">
@@ -2586,6 +2580,12 @@
       <Filter>Game_Initialization</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\game_initialization\flg_manager.hpp">
+      <Filter>Game_Initialization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game_initialization\lobby_data.hpp">
+      <Filter>Game_Initialization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game_initialization\lobby_info.hpp">
       <Filter>Game_Initialization</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\game_initialization\lobby_reload_request_exception.hpp">
