@@ -71,7 +71,7 @@
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/multiplayer/faction_select.hpp"
 #include "gui/dialogs/multiplayer/mp_alerts_options.hpp"
-#include "gui/dialogs/multiplayer/mp_change_styled_widget.hpp"
+#include "gui/dialogs/multiplayer/mp_change_control.hpp"
 #include "gui/dialogs/multiplayer/mp_cmd_wrapper.hpp"
 #include "gui/dialogs/multiplayer/mp_connect.hpp"
 #include "gui/dialogs/multiplayer/mp_create_game.hpp"
