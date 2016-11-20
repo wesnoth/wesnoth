@@ -156,7 +156,7 @@ widget* builder_size_lock::build() const
 
 	VALIDATE(width > 0 || height > 0, _("Invalid size."));
 
-	widget->set_size(point(width, height));
+	widget->set_target_size(point(width, height));
 
 	widget->finalize(content_);
 

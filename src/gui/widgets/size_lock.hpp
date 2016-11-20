@@ -60,7 +60,7 @@ public:
 	/** See @ref widget::layout_children. */
 	void layout_children() override;
 
-	void set_size(const point& size)
+	void set_target_size(const point& size)
 	{
 		size_ = size;
 	}
