@@ -82,7 +82,7 @@ private:
 public:
   // nonempty return is an error mesage
   std::string parse_header(const std::string & header) {
-    constexpr const char * default_charset = DEFAULT_CHARSET;
+    const char * default_charset = DEFAULT_CHARSET;
 #undef DEFAULT_CHARSET
 
     project_id = find_header_line(header, "Project-Id-Version:");

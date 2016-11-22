@@ -49,7 +49,7 @@ class catalog {
   hashmap_type hashmap_;
 
 public:
-  static constexpr char EOT = static_cast<char>(4);
+  static const char EOT = '\x4';
   // ASCII 4 is EOT character
   // Used to separate msg context from msgid in the hashmap, in MO files
   // We use the same formatting system, just for consistency.
