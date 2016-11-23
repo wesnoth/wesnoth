@@ -369,7 +369,7 @@ pango_text& pango_text::set_foreground_color(const Uint32 color)
 
 pango_text &pango_text::set_foreground_color(const SDL_Color color)
 {
-	return this->set_foreground_color((color.r << 16) + (color.g << 8) + color.b);
+	return this->set_foreground_color((color.r << 24) + (color.g << 16) + (color.b << 8) + color.a);
 }
 
 pango_text& pango_text::set_maximum_width(int width)
