@@ -391,11 +391,13 @@ std::string unit_topic_generator::operator()() const {
 	if (config::const_child_itors traits = type_.possible_traits()) {
 		std::vector<trait_data> must_have_traits;
 		std::vector<trait_data> random_traits;
+		int must_have_nameless_traits = 0;
 
 		for (const config & trait : traits) {
 			const std::string trait_name = trait["male_name"];
 			std::string lang_trait_name = translation::gettext(trait_name.c_str());
-			if (lang_trait_name.empty()) {
+			if (lang_trait_name.empty() && trait["availability"].str() == "musthave") {
+				++must_have_nameless_traits;
 				continue;
 			}
 			const std::string ref_id = "traits_"+trait["id"].str();
@@ -412,7 +414,7 @@ std::string unit_topic_generator::operator()() const {
 				std::stringstream must_have_count;
 				must_have_count << " (" << must_have_traits.size() << ") : ";
 				std::stringstream random_count;
-				random_count << " (" << (type_.num_traits() - must_have_traits.size()) << ") : ";
+				random_count << " (" << (type_.num_traits() - must_have_traits.size() - must_have_nameless_traits) << ") : ";
 
 				int second_line_whitespace = font::line_width(traits_label+must_have_count.str(), normal_font_size)
 					- font::line_width(random_count.str(), normal_font_size);
@@ -429,7 +431,7 @@ std::string unit_topic_generator::operator()() const {
 			ss << "\n\n";
 		} else {
 			if (line2) {
-				ss << _("Traits") << " (" << type_.num_traits() << ") : ";
+				ss << _("Traits") << " (" << (type_.num_traits() - must_have_nameless_traits) << ") : ";
 				print_trait_list(ss, random_traits);
 				ss << "\n\n";
 			}
