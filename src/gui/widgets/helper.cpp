@@ -24,6 +24,8 @@
 #include "formula/string_utils.hpp"
 #include "tstring.hpp"
 
+#include <SDL.h>
+
 namespace gui2
 {
 
@@ -72,23 +74,20 @@ font::pango_text::FONT_STYLE decode_font_style(const std::string& style)
 	return font_style_map[style];
 }
 
-uint32_t decode_color(const std::string& color)
+SDL_Color decode_color(const std::string& color)
 {
 	std::vector<std::string> fields = utils::split(color);
 
-	// make sure we have four fields
-	while(fields.size() < 4)
+	// Make sure we have four fields
+	while(fields.size() < 4) {
 		fields.push_back("0");
-
-	uint32_t result = 0;
-	for(int i = 0; i < 4; ++i) {
-		// shift the previous value before adding, since it's a nop on the
-		// first run there's no need for an if.
-		result = result << 8;
-		result |= lexical_cast_default<int>(fields[i]);
 	}
 
-	return result;
+	return {
+		static_cast<Uint8>(std::stoul(fields[0])),
+		static_cast<Uint8>(std::stoul(fields[1])),
+		static_cast<Uint8>(std::stoul(fields[2])),
+		static_cast<Uint8>(std::stoul(fields[3]))};
 }
 
 PangoAlignment decode_text_alignment(const std::string& alignment)

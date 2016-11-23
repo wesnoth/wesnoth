@@ -21,9 +21,9 @@
 #include <pango/pango-layout.h>
 
 #include <cstdint>
-
 #include <string>
 
+struct SDL_Color;
 struct SDL_Rect;
 class surface;
 class t_string;
@@ -65,7 +65,7 @@ SDL_Rect create_rect(const point& origin, const point& size);
  *
  * @returns                       The color.
  */
-uint32_t decode_color(const std::string& color);
+SDL_Color decode_color(const std::string& color);
 
 /**
  * Converts a text alignment string to a text alignment.

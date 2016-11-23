@@ -82,13 +82,14 @@ namespace
 
 /***** ***** ***** ***** ***** DRAWING PRIMITIVES ***** ***** ***** ***** *****/
 
-static void set_renderer_color(SDL_Renderer* renderer, Uint32 color)
+static void set_renderer_color(SDL_Renderer* renderer, SDL_Color color)
 {
-	SDL_SetRenderDrawColor(renderer,
-		(color & 0xFF000000) >> 24,
-		(color & 0x00FF0000) >> 16,
-		(color & 0x0000FF00) >> 8,
-		(color & 0x000000FF));
+	SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
+}
+
+static bool color_empty(const SDL_Color& color)
+{
+	return color.r == 0 && color.g == 0 && color.b == 0 && color.a == 0;
 }
 
 /**
@@ -109,7 +110,7 @@ static void set_renderer_color(SDL_Renderer* renderer, Uint32 color)
  */
 static void draw_line(surface& canvas,
 					  SDL_Renderer* renderer,
-					  Uint32 color,
+					  SDL_Color color,
 					  unsigned x1,
 					  unsigned y1,
 					  const unsigned x2,
@@ -151,7 +152,7 @@ static void draw_line(surface& canvas,
  */
 static void draw_circle(surface& canvas,
 						SDL_Renderer* renderer,
-						Uint32 color,
+						SDL_Color color,
 						const int x_center,
 						const int y_center,
 						const int radius)
@@ -228,7 +229,7 @@ private:
 			alpha_;			/**< Alpha value override computed as a formula. */
 
 	/** The color of the line. */
-	Uint32 color_;
+	SDL_Color color_;
 
 	/**
 	 * The thickness of the line.
@@ -585,9 +586,9 @@ void line_shape::draw(surface& canvas,
 	const unsigned alpha = alpha_(variables);
 
 	// Override alpha from color with formula.
-	const Uint32 final_color = alpha_.has_formula()
-			? (color_ & 0xFFFFFF00) + (alpha & 0xFF)
-			: color_;
+	if(alpha_.has_formula()) {
+		color_.a = alpha;
+	}
 
 	DBG_GUI_D << "Line: draw from " << x1 << ',' << y1 << " to " << x2 << ','
 			  << y2 << " canvas size " << canvas->w << ',' << canvas->h
@@ -604,7 +605,7 @@ void line_shape::draw(surface& canvas,
 	// lock the surface
 	surface_lock locker(canvas);
 
-	draw_line(canvas, renderer, final_color, x1, y1, x2, y2);
+	draw_line(canvas, renderer, color_, x1, y1, x2, y2);
 }
 
 /***** ***** ***** ***** ***** Rectangle ***** ***** ***** ***** *****/
@@ -645,14 +646,14 @@ private:
 	 *
 	 * If the color is fully transparent the border isn't drawn.
 	 */
-	Uint32 border_color_;
+	SDL_Color border_color_;
 
 	/**
 	 * The border color of the rectangle.
 	 *
 	 * If the color is fully transparent the rectangle won't be filled.
 	 */
-	Uint32 fill_color_;
+	SDL_Color fill_color_;
 };
 
 /*WIKI
@@ -697,7 +698,7 @@ rectangle_shape::rectangle_shape(const config& cfg)
 	, border_color_(decode_color(cfg["border_color"]))
 	, fill_color_(decode_color(cfg["fill_color"]))
 {
-	if(border_color_ == 0) {
+	if(color_empty(border_color_)) {
 		border_thickness_ = 0;
 	}
 
@@ -747,7 +748,7 @@ void rectangle_shape::draw(surface& canvas,
 	}
 
 	// Fill the background, if applicable
-	if(fill_color_ && w && h) {
+	if(!color_empty(fill_color_) && w && h) {
 		set_renderer_color(renderer, fill_color_);
 
 		SDL_Rect area {
@@ -787,7 +788,7 @@ private:
 			radius_;	   /**< The radius of the circle. */
 
 	/** The color of the circle. */
-	Uint32 color_;
+	SDL_Color color_;
 };
 
 /*WIKI
@@ -1210,7 +1211,7 @@ private:
 	typed_formula<PangoAlignment> text_alignment_;
 
 	/** The color of the text. */
-	Uint32 color_;
+	SDL_Color color_;
 
 	/** The text to draw. */
 	typed_formula<t_string> text_;
