@@ -395,6 +395,9 @@ std::string unit_topic_generator::operator()() const {
 		for (const config & trait : traits) {
 			const std::string trait_name = trait["male_name"];
 			std::string lang_trait_name = translation::gettext(trait_name.c_str());
+			if (lang_trait_name.empty()) {
+				continue;
+			}
 			const std::string ref_id = "traits_"+trait["id"].str();
 			((trait["availability"].str() == "musthave") ? must_have_traits : random_traits).push_back(std::make_pair(lang_trait_name, ref_id));
 		}
