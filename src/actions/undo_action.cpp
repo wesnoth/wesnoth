@@ -92,17 +92,12 @@ namespace {
 		x1 = e.filter_loc1.wml_x(); y1 = e.filter_loc1.wml_y();
 		x2 = e.filter_loc2.wml_x(); y2 = e.filter_loc2.wml_y();
 
-		map_location real1, real2;
 		std::unique_ptr<scoped_xy_unit> u1, u2;
 		if(unit_ptr who = get_unit(e.uid1, e.id1)) {
-			real1 = who->get_location();
-			who->set_location(e.loc1);
-			u1.reset(new scoped_xy_unit("unit", real1, *resources::units));
+			u1.reset(new scoped_xy_unit("unit", who->get_location(), *resources::units));
 		}
 		if(unit_ptr who = get_unit(e.uid2, e.id2)) {
-			real2 = who->get_location();
-			who->set_location(e.loc2);
-			u2.reset(new scoped_xy_unit("unit", real2, *resources::units));
+			u2.reset(new scoped_xy_unit("unit", who->get_location(), *resources::units));
 		}
 
 		scoped_weapon_info w1("weapon", e.data.child("first"));
@@ -110,15 +105,6 @@ namespace {
 
 		game_events::queued_event q(tag, "", map_location(x1, y1, wml_loc()), map_location(x2, y2, wml_loc()), e.data);
 		resources::lua_kernel->run_wml_action("command", vconfig(e.commands), q);
-
-		if(u1) {
-			unit_ptr who = get_unit(e.uid1, e.id1);
-			who->set_location(real1);
-		}
-		if(u2) {
-			unit_ptr who = get_unit(e.uid2, e.id2);
-			who->set_location(real2);
-		}
 
 		x1 = oldx1; y1 = oldy1;
 		x2 = oldx2; y2 = oldy2;
