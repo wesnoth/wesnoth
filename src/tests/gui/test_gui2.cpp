@@ -88,6 +88,7 @@
 #include "gui/dialogs/sp_options_configure.hpp"
 #include "gui/dialogs/statistics_dialog.hpp"
 #include "gui/dialogs/theme_list.hpp"
+#include "gui/dialogs/terrain_layers.hpp"
 #include "gui/dialogs/title_screen.hpp"
 #include "gui/dialogs/tooltip.hpp"
 #include "gui/dialogs/transient_message.hpp"
@@ -443,6 +444,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<sp_options_configure>();
 	test<statistics_dialog>();
 	test<theme_list>();
+	//test<terrain_layers>();
 	//test<title_screen>();
 	test<transient_message>();
 	//test<unit_advance>();
@@ -499,6 +501,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 		"end_credits",
 		"mp_staging",
 		"mp_join_game",
+		"terrain_layers",
 	};
 	std::sort(list.begin(), list.end());
 	std::sort(omitted.begin(), omitted.end());

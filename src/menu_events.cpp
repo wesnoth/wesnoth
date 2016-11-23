@@ -54,6 +54,7 @@
 #include "gui/dialogs/statistics_dialog.hpp"
 #include "gui/dialogs/edit_text.hpp"
 #include "gui/dialogs/game_stats.hpp"
+#include "gui/dialogs/terrain_layers.hpp"
 #include "gui/dialogs/unit_create.hpp"
 #include "gui/dialogs/unit_list.hpp"
 #include "gui/dialogs/unit_recall.hpp"
@@ -1501,105 +1502,12 @@ void console_handler::do_foreground() {
 }
 
 void console_handler::do_layers() {
-	const mouse_handler& mousehandler = menu_handler_.pc_.get_mouse_handler_base();
-	const map_location &loc = mousehandler.get_last_hex();
-
-	std::vector<std::string> layers;
-	//NOTE: columns reflect WML keys, don't translate them
-	std::string heading = std::string(1,HEADING_PREFIX) +
-		"^#"      + COLUMN_SEPARATOR + // 0
-		"Image"   + COLUMN_SEPARATOR + // 1
-		"Name"    + COLUMN_SEPARATOR + // 2
-		"Loc"     + COLUMN_SEPARATOR + // 3
-		"Layer"   + COLUMN_SEPARATOR + // 4
-		"Base.x"  + COLUMN_SEPARATOR + // 5
-		"Base.y"  + COLUMN_SEPARATOR + // 6
-		"Center"                       // 7
-
-	;
-	layers.push_back(heading);
-
 	display& disp = *(menu_handler_.gui_);
-	terrain_builder& builder = disp.get_builder();
-	terrain_builder::tile* tile = builder.get_tile(loc);
 
-	const std::string& tod_id = disp.get_time_of_day(loc).id;
-	terrain_builder::tile::logs tile_logs;
-	tile->rebuild_cache(tod_id, &tile_logs);
+	const mouse_handler& mousehandler = menu_handler_.pc_.get_mouse_handler_base();
+	const map_location& loc = mousehandler.get_last_hex();
 
-	int order = 1;
-	for(const terrain_builder::tile::log_details det : tile_logs) {
-		const terrain_builder::tile::rule_image_rand& ri = *det.first;
-		const terrain_builder::rule_image_variant& variant = *det.second;
-
-		/** @todo also use random image variations (not just take 1st) */
-		const image::locator& img = variant.images.front().get_first_frame();
-		const std::string& name = img.get_filename();
-		/** @todo deal with (rarely used) ~modifications */
-		//const std::string& modif = img.get_modifications();
-		const map_location& loc_cut = img.get_loc();
-
-		std::ostringstream str;
-
-		int tz = game_config::tile_size;
-		SDL_Rect r = sdl::create_rect(0,0,tz,tz);
-
-		surface surf = image::get_image(img.get_filename());
-
-		// calculate which part of the image the terrain engine uses
-		if(loc_cut.valid()) {
-			// copied from image.cpp : load_image_sub_file()
-			r = sdl::create_rect(
-					((tz*3) / 4) * loc_cut.x
-					, tz * loc_cut.y + (tz / 2) * (loc_cut.x % 2)
-					, tz, tz);
-
-			if(img.get_center_x() >= 0 && img.get_center_y()>= 0){
-				r.x += surf->w/2 - img.get_center_x();
-				r.y += surf->h/2 - img.get_center_y();
-			}
-		}
-
-		str << (ri->is_background() ? "B ": "F ") << order
-			<< COLUMN_SEPARATOR
-			<< IMAGE_PREFIX << "terrain/foreground.png";
-
-		// cut and mask the image
-		// ~CROP and ~BLIT have limitations, we do some math to avoid them
-		SDL_Rect r2 = sdl::intersect_rects(r, sdl::create_rect(0,0,surf->w,surf->h));
-		if(r2.w > 0 && r2.h > 0) {
-			str << "~BLIT("
-					<< name << "~CROP("
-						<< r2.x << "," << r2.y << ","
-						<< r2.w << "," << r2.h
-					<< ")"
-					<< "," << r2.x-r.x << "," << r2.y-r.y
-				<< ")"
-				<< "~MASK(" << "terrain/alphamask.png" << ")";
-		}
-
-		str	<< COLUMN_SEPARATOR
-			<< IMAGE_PREFIX  << name << "~SCALE(72,72)"
-			<< IMG_TEXT_SEPARATOR << name
-			<< COLUMN_SEPARATOR << img.get_loc()
-			<< COLUMN_SEPARATOR << ri->layer
-			<< COLUMN_SEPARATOR << ri->basex
-			<< COLUMN_SEPARATOR << ri->basey
-			<< COLUMN_SEPARATOR
-			<< ri->center_x << ", " << ri->center_y;
-		layers.push_back(str.str());
-		++order;
-	}
-
-	std::vector<std::string> flags(tile->flags.begin(),tile->flags.end());
-	std::ostringstream info;
-	// NOTE using ", " also allows better word wrapping
-	info << "Flags :" << utils::join(flags, ", ");
-	{
-		gui::dialog menu(menu_handler_.gui_->video(), _("Layers"), info.str(), gui::OK_CANCEL);
-		menu.set_menu(layers);
-		menu.show();
-	}
+	gui2::dialogs::terrain_layers::display(disp, loc, disp.video());
 }
 void console_handler::do_fps() {
 	preferences::set_show_fps(!preferences::show_fps());

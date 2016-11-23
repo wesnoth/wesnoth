@@ -816,6 +816,7 @@ set(wesnoth-main_SRC
 	gui/dialogs/statistics_dialog.cpp
 	gui/dialogs/multiplayer/synced_choice_wait.cpp
 	gui/dialogs/theme_list.cpp
+	gui/dialogs/terrain_layers.cpp
 	gui/dialogs/title_screen.cpp
 	gui/dialogs/transient_message.cpp
 	gui/dialogs/unit_advance.cpp
