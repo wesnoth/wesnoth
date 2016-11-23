@@ -155,16 +155,6 @@ std::vector<uint32_t> palette(color_range cr){
 	return(res);
 }
 
-int color_range::index() const
-{
-	for(int i = 1; i <= gamemap::MAX_PLAYERS; ++i) {
-		if(*this==(game_config::color_info(std::to_string(i)))) {
-			return i;
-		}
-	}
-	return 0;
-}
-
 std::string color_range::debug() const
 {
 	std::ostringstream o;
