@@ -155,16 +155,6 @@ std::vector<uint32_t> palette(color_range cr){
 	return(res);
 }
 
-std::string rgb2highlight(uint32_t rgb)
-{
-	std::ostringstream h;
-	// Must match what the escape interpreter for marked-up-text expects
-	h << "<" << ((rgb & 0xFF0000) >> 16)
-	  << "," << ((rgb & 0x00FF00) >> 8)
-	  << "," << (rgb & 0x0000FF) << ">";
-	return h.str();
-}
-
 int color_range::index() const
 {
 	for(int i = 1; i <= gamemap::MAX_PLAYERS; ++i) {

@@ -124,10 +124,4 @@ std::vector<uint32_t> palette(color_range cr);
  */
 std::map<uint32_t, uint32_t> recolor_range(const color_range& new_rgb, const std::vector<uint32_t>& old_rgb);
 
-/**
- * Converts a color value to WML text markup syntax for highlighting.
- * For example, 0x00CC00CC becomes "<204,0,204>".
- */
-std::string rgb2highlight(uint32_t rgb);
-
 #endif
