@@ -21,7 +21,7 @@
 
 namespace font {
 
-std::string rgb2highlight_pango(uint32_t rgb)
+std::string unit32_to_pango_color(uint32_t rgb)
 {
 	std::ostringstream h;
 
@@ -50,7 +50,7 @@ std::string get_pango_color_from_id(const std::string& id)
 {
 	const auto color = game_config::team_rgb_colors.find(id);
 	if(color != game_config::team_rgb_colors.end()) {
-		return rgb2highlight_pango(color->second[0]);
+		return unit32_to_pango_color(color->second[0]);
 	}
 
 	return "";
