@@ -438,9 +438,7 @@ node& node::set_attr_dup(const char* key, const string_span& value)
 
 node& node::set_attr_int(const char* key, int value)
 {
-	char buf[64];
-	sprintf(buf, "%d", value);
-	return set_attr_dup(key, buf);
+	return set_attr_dup(key, std::to_string(value).c_str());
 }
 
 node& node::add_child_at(const char* name, size_t index)
