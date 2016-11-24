@@ -34,15 +34,6 @@ extern const char LARGE_TEXT, SMALL_TEXT, BOLD_TEXT, NORMAL_TEXT, NULL_MARKUP, B
 // some colors often used in UI
 extern const std::string weapon, weapon_details, unit_type, race;
 
-extern const SDL_Color weapon_color,
-		good_dmg_color,
-		bad_dmg_color,
-		weapon_details_color,
-		inactive_details_color,
-		inactive_ability_color,
-		unit_type_color,
-		race_color;
-
 /** Parses the markup-tags at the front of a string. */
 std::string::const_iterator parse_markup(std::string::const_iterator i1,
 												std::string::const_iterator i2,
