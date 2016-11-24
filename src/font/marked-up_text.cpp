@@ -526,14 +526,4 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size,
 	return wrapped_text;
 }
 
-SDL_Rect draw_wrapped_text(CVideo* gui, const SDL_Rect& area, int font_size,
-		     const SDL_Color& color, const std::string& text,
-		     int x, int y, int max_width)
-{
-	std::string wrapped_text = word_wrap_text(text, font_size, max_width);
-	return font::draw_text(gui, area, font_size, color, wrapped_text, x, y, false);
-}
-
-
 } // end namespace font
-

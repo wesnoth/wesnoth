@@ -103,21 +103,6 @@ std::string color2markup(const SDL_Color &color);
 std::string word_wrap_text(const std::string& unwrapped_text, int font_size,
 	int max_width, int max_height = -1, int max_lines = -1, bool partial_line = false);
 
-/**
- * Draw text on the screen, fit text to maximum width, no markup, no tooltips.
- *
- * This method makes sure that the text fits within a given maximum width.
- * If a line exceeds this width, it will be wrapped
- * on a word basis if possible, otherwise on a char basis.
- * This method is otherwise similar to the draw_text method,
- * but it doesn't support special markup or tooltips.
- *
- * @returns                       A bounding rectangle of the text.
- */
-SDL_Rect draw_wrapped_text(CVideo* gui, const SDL_Rect& area, int font_size,
-			     const SDL_Color& color, const std::string& text,
-			     int x, int y, int max_width);
-
 } // end namespace font
 
 #endif // MARKED_UP_TEXT_HPP_INCLUDED
