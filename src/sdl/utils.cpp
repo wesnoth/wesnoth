@@ -23,6 +23,7 @@
 #include "sdl/utils.hpp"
 #include "sdl/rect.hpp"
 
+#include "serialization/string_utils.hpp"
 #include "video.hpp"
 #include "xBRZ/xbrz.hpp"
 
@@ -70,13 +71,25 @@ SDL_Color int_to_color(const Uint32 rgb)
 	return result;
 }
 
-SDL_Color string_to_color(const std::string& color_string)
+SDL_Color string_to_color(const std::string& color_string, const bool override_alpha)
 {
-	SDL_Color color = {0,0,0,0};
+	std::vector<std::string> fields = utils::split(color_string);
 
-	std::vector<Uint32> temp_rgb;
-	if(string2rgb(color_string, temp_rgb) && !temp_rgb.empty()) {
-		color = int_to_color(temp_rgb[0]);
+	// Make sure we have 4 fields
+	while(fields.size() < 4) {
+		fields.push_back("0");
+	}
+
+	SDL_Color color {
+		static_cast<Uint8>(std::stoul(fields[0])),
+		static_cast<Uint8>(std::stoul(fields[1])),
+		static_cast<Uint8>(std::stoul(fields[2])),
+		static_cast<Uint8>(std::stoul(fields[3]))};
+
+	// This is only here to accomadate general uses like [label] that ignore alpha.
+	// Should probably be removed eventually.
+	if(override_alpha) {
+		color.a = SDL_ALPHA_OPAQUE;
 	}
 
 	return color;
