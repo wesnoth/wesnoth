@@ -343,12 +343,12 @@ msgstr "Feu de camp"
 #. [terrain_type]: id=brazier
 #: data/core/terrain.cfg:434
 msgid "Brazier"
-msgstr ""
+msgstr "Brasero"
 
 #. [terrain_type]: id=brazier-lit
 #: data/core/terrain.cfg:443
 msgid "Lit Brazier"
-msgstr ""
+msgstr "Brasero allumé"
 
 #. [terrain_type]: id=fence
 #: data/core/terrain.cfg:452
@@ -545,7 +545,7 @@ msgstr "Montagnes"
 #. [terrain_type]: id=regular_mountains
 #: data/core/terrain.cfg:767
 msgid "Regular Mountains"
-msgstr "Montagnes normales"
+msgstr "Montagnes ordinaires"
 
 #. [terrain_type]: id=dry_mountains
 #: data/core/terrain.cfg:777
@@ -567,19 +567,19 @@ msgstr "Montagnes sèches"
 #. [terrain_type]: id=wood_floor
 #: data/core/terrain.cfg:809
 msgid "Wooden Floor"
-msgstr "Sol en bois"
+msgstr "Plancher en bois"
 
 #. [terrain_type]: id=wood_floor
 #: data/core/terrain.cfg:812
 msgid "Basic Wooden Floor"
-msgstr "Sol en bois basique"
+msgstr "Plancher en bois basique"
 
 #. [terrain_type]: id=old_wood_floor
 #: data/core/terrain.cfg:819 data/core/terrain.cfg:822
 #, fuzzy
 #| msgid "Wooden Floor"
 msgid "Old Wooden Floor"
-msgstr "Sol en bois"
+msgstr "Vieux plancher en bois"
 
 #. [terrain_type]: id=lit
 #: data/core/terrain.cfg:835
@@ -661,7 +661,8 @@ msgstr ""
 "text='illuminées'</ref>.\n"
 "\n"
 "La plupart des unités ont autour de 50% de défense dans les cavernes "
-"rocheuses. La cavalerie est limitée à 40%, et les nains ont pas moins de 60%."
+"rocheuses. La cavalerie est limitée à 40% tandis et que les nains bénéficient "
+"d'un bonus de pas moins de 60%."
 
 #. [terrain_type]: id=mine_rails
 #. [terrain_type]: id=mine_railsdiag1
@@ -678,7 +679,7 @@ msgstr "Rail minier"
 #: data/core/terrain.cfg:968 data/core/terrain.cfg:979
 #: data/core/terrain.cfg:990 data/core/terrain.cfg:1001
 msgid "Chasm"
-msgstr "Abîme"
+msgstr "Goouffre"
 
 #. [terrain_type]: id=canyon
 #: data/core/terrain.cfg:969
@@ -719,7 +720,7 @@ msgstr ""
 "Il est assez évident qu'essayer de marcher sur de la <italic>text='lave'</"
 "italic> est dangereux. Pour ce qui du mouvement, la lave est équivalent au "
 "terrain <ref>dst='terrain_unwalkable' text='impraticable'</ref>, et ne peut "
-"être traversée que par des unités cabales de voler sur de longues distances. "
+"être traversée que par des unités capables de voler sur de longues distances. "
 "Le magma produit par ailleurs une lumière rougeatre, qui illumine les "
 "terrains adjacents. Cela confère un bonus aux unités loyales et supprime le "
 "bonus des unités chaotiques."
@@ -757,24 +758,24 @@ msgstr "Montagnes infranchissables désertiques"
 #: data/core/terrain.cfg:1084 data/core/terrain.cfg:1106
 #: data/core/terrain.cfg:1120
 msgid "Cave Wall"
-msgstr "Mur de caverne"
+msgstr "Paroi de caverne"
 
 #. [terrain_type]: id=cavewall
 #: data/core/terrain.cfg:1085
 msgid "Natural Cave Wall"
-msgstr "Mur de caverne naturel"
+msgstr "Paroi naturelle de caverne"
 
 #. [terrain_type]: id=minewall
 #: data/core/terrain.cfg:1095 data/core/terrain.cfg:1096
 #, fuzzy
 #| msgid "Mine Rail"
 msgid "Mine Wall"
-msgstr "Rail minier"
+msgstr "Paroi de mine"
 
 #. [terrain_type]: id=cavewall_earthy
 #: data/core/terrain.cfg:1107
 msgid "Natural Earthy Cave Wall"
-msgstr "Mur de caverne terreux naturel"
+msgstr "Paroi terreuse naturelle de caverne"
 
 #. [terrain_type]: id=wall_stone
 #. [terrain_type]: id=wall_stone_lit
@@ -791,37 +792,37 @@ msgstr "Mur de pierre éclairé"
 #. [terrain_type]: id=p_open_rusty
 #: data/core/terrain.cfg:1152 data/core/terrain.cfg:1178
 msgid "Gate"
-msgstr ""
+msgstr "Porte"
 
 #. [terrain_type]: id=portal_gate_rusty
 #: data/core/terrain.cfg:1153
 msgid "Rusty Gate"
-msgstr ""
+msgstr "Porte rouillée"
 
 #. [terrain_type]: id=portal_door_wooden
 #. [terrain_type]: id=p_open_wooden
 #: data/core/terrain.cfg:1165 data/core/terrain.cfg:1190
 msgid "Door"
-msgstr ""
+msgstr "Porte"
 
 #. [terrain_type]: id=portal_door_wooden
 #: data/core/terrain.cfg:1166
 #, fuzzy
 #| msgid "Wooden Floor"
 msgid "Wooden Door"
-msgstr "Sol en bois"
+msgstr "Porte en bois"
 
 #. [terrain_type]: id=p_open_rusty
 #: data/core/terrain.cfg:1179
 msgid "Rusty Open Gate"
-msgstr ""
+msgstr "Porte rouillée ouverte"
 
 #. [terrain_type]: id=p_open_wooden
 #: data/core/terrain.cfg:1191
 #, fuzzy
 #| msgid "Wooden Floor"
 msgid "Wooden Open Door"
-msgstr "Sol en bois"
+msgstr "Porte en bois ouverte"
 
 # Compte tenu du fait que ces chaînes sont destinées à être affichées dans l'éditeur de cartes, il me semble important de faire court. Si l'utilisateur ne sait pas à quoi sert une surcouche, ce n'est pas dans le libellé qu'il va l'apprendre.
 # Laurent
@@ -909,17 +910,17 @@ msgstr "Village en argile"
 #, fuzzy
 #| msgid "Adobe Village"
 msgid "Ruined Adobe Village"
-msgstr "Village en argile"
+msgstr "Village dévasté en argile"
 
 #. [terrain_type]: id=desert_village_tent
 #: data/core/terrain.cfg:1269
 msgid "Desert Tent Village"
-msgstr "Village en tente du désert"
+msgstr "Village de tentes du désert"
 
 #. [terrain_type]: id=camp_village
 #: data/core/terrain.cfg:1282
 msgid "Tent Village"
-msgstr "Village en tente"
+msgstr "Village de tentes"
 
 #. [terrain_type]: id=orcish_village
 #: data/core/terrain.cfg:1297
@@ -934,12 +935,12 @@ msgstr "Village orc enneigé"
 #. [terrain_type]: id=elven_snow_village
 #: data/core/terrain.cfg:1325
 msgid "Snowy Elven Village"
-msgstr "Village elfe enneigé"
+msgstr "Village elfique enneigé"
 
 #. [terrain_type]: id=elven_village
 #: data/core/terrain.cfg:1338
 msgid "Elven Village"
-msgstr "Village elfe"
+msgstr "Village elfique"
 
 #. [terrain_type]: id=human_village
 #: data/core/terrain.cfg:1353
@@ -964,7 +965,7 @@ msgstr "Cité humaine"
 #. [terrain_type]: id=windmill_village
 #: data/core/terrain.cfg:1405
 msgid "Windmill Village"
-msgstr "Village à moulin à vent"
+msgstr "Village du moulin à vent"
 
 #. [terrain_type]: id=city_village_wno
 #: data/core/terrain.cfg:1418
@@ -1175,7 +1176,7 @@ msgstr "Château du désert en ruine"
 #, fuzzy
 #| msgid "Encampment"
 msgid "Aquatic Encampment"
-msgstr "Campement"
+msgstr "Campement aquatique"
 
 #. [terrain_type]: id=aquatic_castle
 #: data/core/terrain.cfg:1822
@@ -1247,7 +1248,7 @@ msgstr "Donjon de château humain enneigé"
 #. [terrain_type]: id=elven_keep
 #: data/core/terrain.cfg:1929
 msgid "Elven Castle Keep"
-msgstr "Donjon de château elfe"
+msgstr "Donjon de château elfique"
 
 #. [terrain_type]: id=dwarven_keep
 #: data/core/terrain.cfg:1942
@@ -1301,7 +1302,7 @@ msgstr "Tente de commandement surélevée"
 #: data/core/terrain.cfg:2033
 #, fuzzy
 msgid "Aquatic Keep"
-msgstr "Village"
+msgstr "Donjon aquatique"
 
 #. [terrain_type]: id=castle_overlay
 #: data/core/terrain.cfg:2048
@@ -1530,7 +1531,7 @@ msgstr ""
 "ralenties et perdent de la défense. Les nains et les trolls, qui vivent dans "
 "les cavernes, ont tous deux plus de facilité à se déplacer dans ce type de "
 "terrain, surtout les nains, qui profitent de leur petite taille pour passer "
-"des obstacles qui bloquent les autres races. Les cavernes sont parfois "
+"des obstacles qui bloquent les autres races. Les cavernes le sont parfois "
 "<ref>dst='terrain_illuminated_cave' text='illuminées'</ref>.\n"
 "\n"
 "Parfois certaines cavernes sont illuminées par de la lumière venant de la "
@@ -1607,7 +1608,7 @@ msgstr ""
 "à se défendre. Les races aptes à se déplacer dans l'eau font exception : "
 "elles reçoivent un bonus défensif et peuvent se déplacer normalement. Ceux "
 "qui ont l'habitude de fréquenter les marais sont également capables "
-"d'utiliser le terrain pour se protéger.\n"
+"d'utiliser ce terrain pour se protéger.\n"
 "\n"
 "La plupart des unités ont 30% de défenses dans les marais. Les ondins, les "
 "nagas, et les sauriens ont généralement 60%."
@@ -1756,7 +1757,7 @@ msgstr ""
 "ce type de terrain.\n"
 "\n"
 "La plupart des unités ont 50% de défense de forêt, mais la cavalerie est "
-"limitée à 30%. Les nains, cependant, ont 60 ou 70% de défense, même à "
+"limitée à 30%. Les elfes, cependant, ont 60 ou 70% de défense, même à "
 "cheval. Les nains n'ont que 30% de défense en forêt."
 
 #. [terrain_type]: id=frozen
@@ -1806,7 +1807,7 @@ msgstr ""
 "points de vie par tour, ou est guérie du poison.\n"
 "\n"
 "La plupart des unités ont 50% ou 60% de défense dans les village ; la "
-"cavalerie a 40%."
+"cavalerie n'en a  que 40%."
 
 #. [terrain_type]: id=impassable
 #: data/core/terrain.cfg:2598 data/core/terrain.cfg:2599
@@ -1861,12 +1862,12 @@ msgid ""
 "<italic>text='Rails'</italic> are used to transport ore, mostly by dwarves."
 msgstr ""
 "Les <italic>text='rails'</italic> sont utilisés pour transporter des "
-"minerais. Par les nains. En général."
+"minerais, principalement par les nains."
 
 #. [settings]
 #: data/gui/default.cfg:23
 msgid " (Press '$hotkey' for more information)"
-msgstr ""
+msgstr " (Appuyez sur '$hotkey' pour de plus amples informations)"
 
 #. [label]: id=room
 #: data/gui/widget/chatbox.cfg:22
@@ -1904,7 +1905,7 @@ msgstr "Fermer"
 #: data/gui/widget/unit_preview_pane.cfg:249
 #: data/gui/widget/unit_preview_pane.cfg:309
 msgid "Profile"
-msgstr ""
+msgstr "Profil"
 
 #. [label]
 #. [widget]: id=name
@@ -2235,21 +2236,21 @@ msgstr "Version"
 #, fuzzy
 #| msgid "Author:"
 msgid "Author"
-msgstr "Auteur :"
+msgstr "Auteur"
 
 #. [toggle_button]: id=sort_2
 #: data/gui/window/addon_list.cfg:93
 #, fuzzy
 #| msgid "Size:"
 msgid "Size"
-msgstr "Taille :"
+msgstr "Taille"
 
 #. [toggle_button]: id=sort_3
 #: data/gui/window/addon_list.cfg:107
 #, fuzzy
 #| msgid "Downloads:"
 msgid "Downloads"
-msgstr "Téléchargements : "
+msgstr "Téléchargements"
 
 #. [toggle_button]: id=sort_4
 #. [toggle_button]: id=sort_1
@@ -2378,7 +2379,7 @@ msgstr "Jouer une campagne"
 #. [toggle_button]: id=checkbox_deterministic
 #: data/gui/window/campaign_dialog.cfg:490
 msgid "Deterministic mode"
-msgstr ""
+msgstr "Mode déterministe"
 
 #. [toggle_button]: id=checkbox_deterministic
 #: data/gui/window/campaign_dialog.cfg:492
@@ -2386,6 +2387,8 @@ msgid ""
 "Makes the random number generator yield the same results even after "
 "reloading a game"
 msgstr ""
+"Permettre au générateur de nombre aléatoire d'obtenir les mêmes résultats"
+"même après avoir recharché la partie"
 
 #. [label]: id=title
 #: data/gui/window/campaign_difficulty.cfg:58
@@ -2407,7 +2410,7 @@ msgstr "Options avancées"
 #. [label]
 #: data/gui/window/campaign_settings.cfg:77
 msgid "Additional dialogs:"
-msgstr ""
+msgstr "Dialogues additionnels:"
 
 #. [toggle_button]: id=mp_connect
 #: data/gui/window/campaign_settings.cfg:116
@@ -2429,7 +2432,7 @@ msgstr "Ère :"
 #, fuzzy
 #| msgid "Choose Modifications"
 msgid "Modifications:"
-msgstr "Choisir la modification"
+msgstr "Modifications:"
 
 #. [label]
 #: data/gui/window/chat_log.cfg:36
@@ -2638,17 +2641,17 @@ msgstr "Équipe seulement"
 #. [label]
 #: data/gui/window/editor_edit_label.cfg:106
 msgid "Category:"
-msgstr ""
+msgstr "Catéorie:"
 
 #. [label]
 #: data/gui/window/editor_edit_label.cfg:152
 msgid "Properties"
-msgstr ""
+msgstr "Propriétés"
 
 #. [label]
 #: data/gui/window/editor_edit_label.cfg:164
 msgid "Color"
-msgstr ""
+msgstr "Couleur"
 
 #. [toggle_button]: id=immutable_toggle
 #: data/gui/window/editor_edit_label.cfg:181
@@ -2756,7 +2759,7 @@ msgstr "Niveaux par village :"
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:363
 msgid "Controller:"
-msgstr "Contrôle :"
+msgstr "Contrôleur :"
 
 #. [row]
 #: data/gui/window/editor_edit_side.cfg:373
@@ -2778,12 +2781,12 @@ msgstr "Aucun"
 #, fuzzy
 #| msgid "Share view"
 msgid "Share Vision:"
-msgstr "Partager la vue"
+msgstr "Partager la vision:"
 
 #. [row]
 #: data/gui/window/editor_edit_side.cfg:406
 msgid "vision^All"
-msgstr ""
+msgstr "Tout"
 
 #. [row]
 #: data/gui/window/editor_edit_side.cfg:408
@@ -2810,7 +2813,7 @@ msgstr "Générer une carte"
 #, fuzzy
 #| msgid "Map Generator"
 msgid "Choose a map generator:"
-msgstr "Générateur de carte"
+msgstr "Choisir un générateur de cartes"
 
 #. [button]: id=settings
 #. [button]: id=random_map_settings
@@ -2823,7 +2826,7 @@ msgstr "Paramètres"
 #: data/gui/window/editor_generate_map.cfg:161
 #, fuzzy
 #| msgid "Speed: "
-msgid "Seed:"
+msgid "Graine:"
 msgstr "Vitesse : "
 
 #. [button]: id=ok
@@ -2910,7 +2913,7 @@ msgstr "Quel joueur devrait commencer ici ?"
 #. [label]
 #: data/gui/window/end_credits.cfg:118
 msgid "↑ ↓ to adjust speed"
-msgstr ""
+msgstr "↑ ↓ pour ajuster la vitesse"
 
 #. [label]
 #: data/gui/window/file_dialog.cfg:105
@@ -3008,7 +3011,7 @@ msgstr "Quitter"
 #, fuzzy
 #| msgid "Cache:"
 msgid "WML Cache"
-msgstr "Cache :"
+msgstr "WML Cache"
 
 #. [label]
 #: data/gui/window/game_cache_options.cfg:53
@@ -3025,7 +3028,7 @@ msgstr ""
 #, fuzzy
 #| msgid "Paths"
 msgid "Path:"
-msgstr "Chemins"
+msgstr "Chemin:"
 
 #. [button]: id=copy
 #. [button]: id=copy_
@@ -3060,22 +3063,22 @@ msgstr "Ouvrir ce chemin dans un navigateur de fichiers"
 #. [button]: id=clean
 #: data/gui/window/game_cache_options.cfg:194
 msgid "cache^Clean"
-msgstr ""
+msgstr "Nettoyer"
 
 #. [button]: id=clean
 #: data/gui/window/game_cache_options.cfg:195
 msgid "Clear stale and unused cache files"
-msgstr ""
+msgstr "Effacer les fichiers cache inutilisés"
 
 #. [button]: id=purge
 #: data/gui/window/game_cache_options.cfg:207
 msgid "cache^Purge"
-msgstr ""
+msgstr "Purger"
 
 #. [button]: id=purge
 #: data/gui/window/game_cache_options.cfg:208
 msgid "Purge the entire contents of the cache"
-msgstr ""
+msgstr "Purger entièrement le contenu du cache"
 
 #. [label]: id=lblTitle
 #: data/gui/window/game_delete.cfg:40
@@ -3184,7 +3187,7 @@ msgstr "Chef"
 #, fuzzy
 #| msgid "Team 1"
 msgid "Team"
-msgstr "Équipe 1"
+msgstr "Équipe"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_2
@@ -3196,26 +3199,26 @@ msgstr "Équipe 1"
 #, fuzzy
 #| msgid "Gold:"
 msgid "Gold"
-msgstr "Or :"
+msgstr "Or"
 
 #. [toggle_button]: id=sort_3
 #: data/gui/window/game_stats.cfg:76
 #, fuzzy
 #| msgid "Villages:"
 msgid "Villages"
-msgstr "Villages :"
+msgstr "Villages"
 
 #. [toggle_button]: id=sort_4
 #: data/gui/window/game_stats.cfg:90
 #, fuzzy
 #| msgid "Unit List"
 msgid "Units"
-msgstr "Liste des unités"
+msgstr "Unités"
 
 #. [toggle_button]: id=sort_5
 #: data/gui/window/game_stats.cfg:104
 msgid "Upkeep"
-msgstr ""
+msgstr "Entretien"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_6
@@ -3227,7 +3230,7 @@ msgstr ""
 #, fuzzy
 #| msgid "Income:"
 msgid "Income"
-msgstr "Revenu :"
+msgstr "Revenu"
 
 #. [label]: id=side_title
 #. [toggle_button]: id=sort_1
@@ -3242,7 +3245,9 @@ msgstr "Camp"
 msgid ""
 "Starting\n"
 "Gold"
-msgstr "Heure de départ aléatoire"
+msgstr ""
+"Départ\n"
+""Or"
 
 #. [toggle_button]: id=sort_3
 #: data/gui/window/game_stats.cfg:325
@@ -3251,7 +3256,9 @@ msgstr "Heure de départ aléatoire"
 msgid ""
 "Base\n"
 "Income"
-msgstr "Revenu :"
+msgstr ""
+"Base\n"
+"Revenu"
 
 #. [toggle_button]: id=sort_4
 #: data/gui/window/game_stats.cfg:340
@@ -3260,7 +3267,9 @@ msgstr "Revenu :"
 msgid ""
 "Gold Per\n"
 "Village"
-msgstr "Or par village"
+msgstr ""
+"Or par \n"
+"Village"
 
 #. [toggle_button]: id=sort_5
 #: data/gui/window/game_stats.cfg:355
@@ -3269,7 +3278,9 @@ msgstr "Or par village"
 msgid ""
 "Support Per\n"
 "Village"
-msgstr "Niveaux par village :"
+msgstr ""
+"Niveaux par\n"
+"Village"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
@@ -3277,14 +3288,14 @@ msgstr "Niveaux par village :"
 #, fuzzy
 #| msgid "Current room"
 msgid "Current Status"
-msgstr "Salle de discussion active"
+msgstr "Status actuel de la salle de discussion"
 
 #. [widget]: id=tab_label
 #: data/gui/window/game_stats.cfg:779
 #, fuzzy
 #| msgid "Game Paths"
 msgid "Game Stats"
-msgstr "Chemins du jeu"
+msgstr "Stats du jeu"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [widget]: id=tab_label
@@ -3299,7 +3310,7 @@ msgstr "Paramètres du scénario"
 #, fuzzy
 #| msgid "Scroll speed:"
 msgid "Scroll To"
-msgstr "Vitesse de défilement :"
+msgstr "Faire défiler jusqu'à"
 
 #. [grid]
 #: data/gui/window/game_version.cfg:126
@@ -3334,22 +3345,23 @@ msgstr "Cache :"
 #. [button]: id=open_stderr
 #: data/gui/window/game_version.cfg:161
 msgid "Open Log File"
-msgstr ""
+msgstr "Ouvrir le fichier de log"
 
 #. [button]: id=open_stderr
 #: data/gui/window/game_version.cfg:162
 msgid "Opens the log file, which may contain useful debug information"
-msgstr ""
+msgstr "Ouvre le fichier de log, qui peut contenir des informations de "
+"debug utile"
 
 #. [label]
 #: data/gui/window/game_version.cfg:195
 msgid "library^Name"
-msgstr ""
+msgstr "Nom"
 
 #. [label]
 #: data/gui/window/game_version.cfg:205
 msgid "library^Build version"
-msgstr ""
+msgstr "Version du build"
 
 #. [label]
 #: data/gui/window/game_version.cfg:215
@@ -3361,13 +3373,15 @@ msgstr ""
 msgid ""
 "The following features were selected when building this version of Wesnoth:"
 msgstr ""
+"Les fonctionnalités suivent ont été sélectionnées lors du build de cette "
+"version de Wesnoth:"
 
 #. [label]
 #: data/gui/window/game_version.cfg:447
 #, fuzzy
 #| msgid "Show Battle for Wesnoth help"
 msgid "The Battle for Wesnoth"
-msgstr "Afficher l'aide de Bataille pour Wesnoth"
+msgstr "La Bataille pour Wesnoth"
 
 #. [widget]: id=tab_label
 #: data/gui/window/game_version.cfg:526
@@ -3377,12 +3391,12 @@ msgstr "Chemins"
 #. [widget]: id=tab_label
 #: data/gui/window/game_version.cfg:539
 msgid "Libraries"
-msgstr ""
+msgstr "Bibliothèques"
 
 #. [widget]: id=tab_label
 #: data/gui/window/game_version.cfg:552
 msgid "Features"
-msgstr ""
+msgstr "Fonctionnalités"
 
 #. [button]: id=copy_all
 #: data/gui/window/game_version.cfg:627
@@ -3396,7 +3410,7 @@ msgstr "Copier"
 #, fuzzy
 #| msgid "Copy this report to clipboard"
 msgid "Copy the full report to clipboard"
-msgstr "Copier ce rapport dans le presse-papier"
+msgstr "Copier le rapport complet dans le presse-papier"
 
 #. [label]
 #: data/gui/window/gamestate_inspector.cfg:94
@@ -3421,7 +3435,7 @@ msgstr ""
 #, fuzzy
 #| msgid "Map Generator"
 msgid "Map Generator Settings"
-msgstr "Générateur de carte"
+msgstr "Paramètre du générateur de carte"
 
 #. [grid]
 #. [label]
@@ -3439,9 +3453,7 @@ msgstr "Joueurs :"
 #, fuzzy
 #| msgid "Number of hills:"
 msgid "Number of Hills:"
-msgstr ""
-"Nombre de\n"
-"collines :"
+msgstr "Nombre de Collines"
 
 # césure pour interface
 #. [grid]
@@ -3449,9 +3461,7 @@ msgstr ""
 #, fuzzy
 #| msgid "Max hill size:"
 msgid "Max Hill Size:"
-msgstr ""
-"Taille maximum\n"
-"d'une colline :"
+msgstr "Taille maximale d'une colline :"
 
 #. [grid]
 #: data/gui/window/generator_settings.cfg:115
@@ -3489,7 +3499,7 @@ msgstr "Afficher les étiquettes"
 #, fuzzy
 #| msgid "Show floating labels"
 msgid "Show or Hide Labels"
-msgstr "Afficher les libellés flottants"
+msgstr "Afficher ou cacher les étiquettes"
 
 #. [label]
 #. [grid]
@@ -3508,7 +3518,7 @@ msgstr "Choisissez votre langue préférée"
 #, fuzzy
 #| msgid "Load Game..."
 msgid "Loading..."
-msgstr "Chargement du jeu…"
+msgstr "Chargement ..."
 
 #. [label]: id=map
 #: data/gui/window/lobby_main.cfg:59
@@ -3528,7 +3538,7 @@ msgstr "Nécessite un mot de passe"
 #. [row]
 #: data/gui/window/lobby_main.cfg:217
 msgid "Only registered users may join"
-msgstr ""
+msgstr "Seuls les utilisateurs enregistrés peuvent rejoindre"
 
 #. [row]
 #: data/gui/window/lobby_main.cfg:218
@@ -3616,7 +3626,7 @@ msgstr "Inverser le filtre"
 #, fuzzy
 #| msgid "Zoom Out"
 msgid "Log Out"
-msgstr "Zoom arrière"
+msgstr "Se déconnecter"
 
 #. [button]: id=refresh
 #: data/gui/window/lobby_main.cfg:546 data/gui/window/lobby_main.cfg:694
@@ -3700,7 +3710,7 @@ msgstr "Ajouter comme ami"
 #: data/gui/window/lobby_player_info.cfg:105
 #: data/gui/window/preferences/05_multiplayer.cfg:304
 msgid "Block"
-msgstr ""
+msgstr "Bloquer"
 
 #. [button]: id=remove_from_list
 #: data/gui/window/lobby_player_info.cfg:118
@@ -3717,7 +3727,7 @@ msgstr "Envoyer un message privé"
 #, fuzzy
 #| msgid "Moderation"
 msgid "Moderator Controls"
-msgstr "Modération"
+msgstr "Contrôles de Modérateur"
 
 #. [label]
 #: data/gui/window/lobby_player_info.cfg:173
@@ -3747,33 +3757,33 @@ msgstr "Éjecter"
 #, fuzzy
 #| msgid "Kick/ban"
 msgid "Kick + Ban"
-msgstr "Éjecter / Exclure"
+msgstr "Éjecter + Exclure"
 
 #. [label]
 #: data/gui/window/logging.cfg:86
 #, fuzzy
 #| msgid "Options"
 msgid "Logging Options"
-msgstr "Options"
+msgstr "Options de connexion"
 
 #. [button]: id=clear
 #: data/gui/window/lua_interpreter.cfg:117
 #, fuzzy
 #| msgid "Clean Gray Cobbles"
 msgid "Clear Console"
-msgstr "Pavés gris entretenus"
+msgstr "Effacer la console"
 
 #. [button]: id=clear
 #: data/gui/window/lua_interpreter.cfg:118
 msgid "Clear the log area"
-msgstr ""
+msgstr "Effacer la zone des log"
 
 #. [label]: id=title
 #: data/gui/window/mp_alerts_options.cfg:95
 #, fuzzy
 #| msgid "Multiplayer"
 msgid "Multiplayer Alerts"
-msgstr "Multijoueur"
+msgstr "Alertes multijoueur"
 
 #. [label]
 #: data/gui/window/mp_alerts_options.cfg:113
@@ -3786,14 +3796,14 @@ msgstr ""
 #. [label]
 #: data/gui/window/mp_alerts_options.cfg:139
 msgid "Event"
-msgstr ""
+msgstr "Événement"
 
 #. [label]: id=notification_label
 #: data/gui/window/mp_alerts_options.cfg:170
 #, fuzzy
 #| msgid "Choose Modifications"
 msgid "Desktop Notification"
-msgstr "Choisir la modification"
+msgstr "Notification de bureau"
 
 #. [label]
 #: data/gui/window/mp_alerts_options.cfg:185
@@ -3807,35 +3817,35 @@ msgstr "Vestibule"
 #, fuzzy
 #| msgid "Players:"
 msgid "Player joins:"
-msgstr "Joueurs :"
+msgstr "Le joueur rejoint :"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:191
 msgid "When a player joins the lobby or game"
-msgstr ""
+msgstr "Quand un joueur joint un vestibule ou une partie"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:192
 #, fuzzy
 #| msgid "Players:"
 msgid "Player leaves:"
-msgstr "Joueurs :"
+msgstr "Le joueur quitte:"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:192
 msgid "When a player leaves the lobby or game"
-msgstr ""
+msgstr "Quand un joueur quitte le vestibule ou une partie"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:193
 #, fuzzy
 #| msgid "Send a private message"
 msgid "When a whisper is received"
-msgstr "Envoyer un message privé"
+msgstr "Quand un message privé est envoyé"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:193
-msgid "Whisper:"
+msgid "Chuchottement:"
 msgstr ""
 
 #. [grid]
