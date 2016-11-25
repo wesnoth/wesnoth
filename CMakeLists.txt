@@ -245,6 +245,7 @@ check_compiler_has_flag(CXX_FLAGS_PROJECT "-W" HAS_COMPILER_FLAG_W)
 # MSVC's -Wall is not like gcc's, it really enables *all* warnings which include zillions for system headers and doesn't make sense.
 if(NOT MSVC)
 check_compiler_has_flag(CXX_FLAGS_PROJECT "-Wall" HAS_COMPILER_FLAG_WALL)
+set(CXX_FLAGS_PROJECT "${CXX_FLAGS_PROJECT} -ffunction-sections -Wl,-gc-sections")
 endif(NOT MSVC)
 
 ### Set strict compiler flags.
