@@ -43,7 +43,7 @@ env_lua = env.Clone(
     CPPPATH = ["$CPPPATH", Dir(".").srcnode()],
     CPPDEFINES = ["$CPPDEFINES", env["PLATFORM"] != "win32" and "LUA_USE_POSIX" or []])
 
-if env_lua["build"] == "optimize" and env_lua["enable_lto"] == "yes":
+if env_lua["build"] == "optimize" and env_lua["enable_lto"] == True:
     env_lua["AR"] = 'gcc-ar'
     env_lua["RANLIB"] = 'gcc-ranlib'
 

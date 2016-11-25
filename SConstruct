@@ -55,7 +55,7 @@ opts.AddVariables(
     ('extra_flags_debug', 'Extra compiler and linker flags to use for debug builds', ""),
     ('extra_flags_profile', 'Extra compiler and linker flags to use for profile builds', ""),
     ('extra_flags_optimize', 'Extra compiler and linker flags to use for optimized builds', ""),
-    EnumVariable('enable_lto', 'Whether to enable Link Time Optimization', "", ["", "yes", "no"]),
+    BoolVariable('enable_lto', 'Whether to enable Link Time Optimization', False),
     PathVariable('bindir', 'Where to install binaries', "bin", PathVariable.PathAccept),
     ('cachedir', 'Directory that contains a cache of derived files.', ''),
     PathVariable('datadir', 'read-only architecture-independent game data', "$datarootdir/$datadirname", PathVariable.PathAccept),
@@ -516,7 +516,7 @@ for env in [test_env, client_env, env]:
         else:
             env["ARCH"] = "-march=native"
         
-        if env["enable_lto"] == "yes":
+        if env["enable_lto"] == True:
             env["HIGH_OPT_COMP_FLAGS"] = "-O3 " + env["ARCH"] + " -flto -s"
             env["HIGH_OPT_LINK_FLAGS"] = env["HIGH_OPT_COMP_FLAGS"] + " -fuse-ld=gold"
         else:
