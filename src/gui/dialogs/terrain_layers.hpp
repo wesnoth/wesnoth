@@ -29,7 +29,7 @@ class terrain_layers : public modal_dialog
 {
 	// Since the 'display' type name clashes with the standard GUI2 static display
 	// function name, we need a type alias.
-	using display_t = display;
+	using display_t = ::display;
 
 public:
 	terrain_layers(display_t& disp, const map_location& loc);
