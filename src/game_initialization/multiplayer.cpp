@@ -682,7 +682,7 @@ bool goto_mp_wait(CVideo& video, saved_game& state, const config& game_config, w
 {
 	lobby_info li(game_config, std::vector<std::string>());
 
-	gui2::dialogs::mp_join_game dlg(state, li, *connection, true, observe);
+	gui2::dialogs::mp_join_game dlg(state, li, *connection, false, observe);
 
 	if(!dlg.fetch_game_config(video)) {
 		return false;

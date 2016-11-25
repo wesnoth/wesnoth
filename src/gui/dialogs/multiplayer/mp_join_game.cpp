@@ -433,6 +433,13 @@ void mp_join_game::update_player_list(window& window)
 
 void mp_join_game::network_handler(window& window)
 {
+	// If the game has already started, close the dialog immediately.
+	if (level_["started"].to_bool())
+	{
+		window.set_retval(window::OK);
+		return;
+	}
+
 	config data;
 	if(!wesnothd_connection_.receive_data(data)) {
 		return;
