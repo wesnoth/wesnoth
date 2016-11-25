@@ -609,6 +609,10 @@ def error_action(target, source, env):
     raise UserError, "Target disabled because its prerequisites are not met"
 
 def WesnothProgram(env, target, source, can_build, **kw):
+    if env["build"] == "optimize" and env["enable_lto"] == True:
+        env["AR"] = 'gcc-ar'
+        env["RANLIB"] = 'gcc-ranlib'
+    
     if can_build:
         if env["build"] == "base":
             bin = env.Program(target, source, **kw)

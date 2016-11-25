@@ -47,13 +47,15 @@ def OptionalPath(key, val, env):
 opts.AddVariables(
     ListVariable('default_targets', 'Targets that will be built if no target is specified in command line.',
         "wesnoth,wesnothd", Split("wesnoth wesnothd campaignd cutter exploder test")),
-    EnumVariable('build', 'Build variant: debug, release profile or base (no subdirectory)', "release", ["release", "debug", "glibcxx_debug", "profile","base"]),
+    EnumVariable('build', 'Build variant: debug, release profile or base (no subdirectory)', "release", ["optimize", "release", "debug", "glibcxx_debug", "profile", "base"]),
     PathVariable('build_dir', 'Build all intermediate files(objects, test programs, etc) under this dir', "build", PathVariable.PathAccept),
     ('extra_flags_config', "Extra compiler and linker flags to use for configuration and all builds. Whether they're compiler or linker is determined by env.ParseFlags. Unknown flags are compile flags by default. This applies to all extra_flags_* variables", ""),
     ('extra_flags_base', 'Extra compiler and linker flags to use for release builds', ""),
     ('extra_flags_release', 'Extra compiler and linker flags to use for release builds', ""),
     ('extra_flags_debug', 'Extra compiler and linker flags to use for debug builds', ""),
     ('extra_flags_profile', 'Extra compiler and linker flags to use for profile builds', ""),
+    ('extra_flags_optimize', 'Extra compiler and linker flags to use for optimized builds', ""),
+    BoolVariable('enable_lto', 'Whether to enable Link Time Optimization', False),
     PathVariable('bindir', 'Where to install binaries', "bin", PathVariable.PathAccept),
     ('cachedir', 'Directory that contains a cache of derived files.', ''),
     PathVariable('datadir', 'read-only architecture-independent game data', "$datarootdir/$datadirname", PathVariable.PathAccept),
@@ -467,9 +469,23 @@ for env in [test_env, client_env, env]:
             env.AppendUnique(CXXFLAGS = Split("-Wold-style-cast"))
         if env['sanitize']:
             env.AppendUnique(CCFLAGS = ["-fsanitize=" + env["sanitize"]], LINKFLAGS = ["-fsanitize=" + env["sanitize"]])
-
-        env["OPT_FLAGS"] = "-O2"
+        
+        env["OPT_FLAGS"] = "-O3"
         env["DEBUG_FLAGS"] = Split("-O0 -DDEBUG -ggdb3")
+        
+# because apparently telling the compiler, linker, AND windres to be 32-bit just isn't enough
+        if env["PLATFORM"] == 'win32':
+            env["ARCH"] = "-march=pentiumpro"
+            env["OPT_FLAGS"] =  env["OPT_FLAGS"] + " " + env["ARCH"]
+        else:
+            env["ARCH"] = "-march=native"
+        
+        if env["enable_lto"] == True:
+            env["HIGH_OPT_COMP_FLAGS"] = "-O3 " + env["ARCH"] + " -flto -s"
+            env["HIGH_OPT_LINK_FLAGS"] = env["HIGH_OPT_COMP_FLAGS"] + " -fuse-ld=gold"
+        else:
+            env["HIGH_OPT_COMP_FLAGS"] = "-O3 " + env["ARCH"] + " -s"
+            env["HIGH_OPT_LINK_FLAGS"] = ""
 
     if "clang" in env["CXX"]:
         # Silence warnings about unused -I options and unknown warning switches.
@@ -512,11 +528,12 @@ SConscript(dirs = Split("po doc packaging/windows packaging/systemd"))
 
 binaries = Split("wesnoth wesnothd cutter exploder campaignd test")
 builds = {
-    "base"          : dict(CCFLAGS   = "$OPT_FLAGS"),    # Don't build in subdirectory
+    "base"          : dict(CCFLAGS   = Split("$OPT_FLAGS")),    # Don't build in subdirectory
     "debug"         : dict(CCFLAGS   = Split("$DEBUG_FLAGS")),
     "glibcxx_debug" : dict(CPPDEFINES = Split("_GLIBCXX_DEBUG _GLIBCXX_DEBUG_PEDANTIC")),
-    "release"       : dict(CCFLAGS   = "$OPT_FLAGS"),
-    "profile"       : dict(CCFLAGS   = "-pg", LINKFLAGS = "-pg")
+    "release"       : dict(CCFLAGS   = Split("$OPT_FLAGS")),
+    "profile"       : dict(CCFLAGS   = "-pg", LINKFLAGS = "-pg"),
+    "optimize"      : dict(CCFLAGS   = Split("$HIGH_OPT_COMP_FLAGS"), LINKFLAGS=Split("$HIGH_OPT_LINK_FLAGS"))
     }
 builds["glibcxx_debug"].update(builds["debug"])
 build = env["build"]
