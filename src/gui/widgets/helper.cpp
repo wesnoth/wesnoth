@@ -76,18 +76,7 @@ font::pango_text::FONT_STYLE decode_font_style(const std::string& style)
 
 SDL_Color decode_color(const std::string& color)
 {
-	std::vector<std::string> fields = utils::split(color);
-
-	// Make sure we have four fields
-	while(fields.size() < 4) {
-		fields.push_back("0");
-	}
-
-	return {
-		static_cast<Uint8>(std::stoul(fields[0])),
-		static_cast<Uint8>(std::stoul(fields[1])),
-		static_cast<Uint8>(std::stoul(fields[2])),
-		static_cast<Uint8>(std::stoul(fields[3]))};
+	return string_to_color(color, false);
 }
 
 PangoAlignment decode_text_alignment(const std::string& alignment)

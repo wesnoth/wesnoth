@@ -29,21 +29,19 @@ std::string unit32_to_pango_color(uint32_t rgb)
 	h << "#"
 	  << std::hex << std::setfill('0') << std::setw(2) << ((rgb & 0xFF0000) >> 16)
 	  << std::hex << std::setfill('0') << std::setw(2) << ((rgb & 0x00FF00) >> 8)
-	  << std::hex << std::setfill('0') << std::setw(2) << ( rgb & 0x0000FF);
+	  << std::hex << std::setfill('0') << std::setw(2) <<  (rgb & 0x0000FF);
 
 	return h.str();
 }
 
-std::string color2hexa(const SDL_Color &color)
+std::string color2hexa(const SDL_Color& color)
 {
-	char buf[7];
-	sprintf(buf, "%02x%02x%02x", color.r, color.g, color.b);
-	return buf;
+	return unit32_to_pango_color((color.r << 16 ) + (color.g << 8) + (color.b));
 }
 
-std::string span_color(const SDL_Color &color)
+std::string span_color(const SDL_Color& color)
 {
-	return "<span foreground=\"#" + font::color2hexa(color) + "\">";
+	return "<span color='" + color2hexa(color) + "'>";
 }
 
 std::string get_pango_color_from_id(const std::string& id)

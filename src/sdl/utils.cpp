@@ -23,6 +23,7 @@
 #include "sdl/utils.hpp"
 #include "sdl/rect.hpp"
 
+#include "serialization/string_utils.hpp"
 #include "video.hpp"
 #include "xBRZ/xbrz.hpp"
 
@@ -62,21 +63,33 @@ const_surface_lock::~const_surface_lock()
 
 SDL_Color int_to_color(const Uint32 rgb)
 {
-	SDL_Color result;
-	result.r = static_cast<Uint8>((SDL_RED_MASK & rgb) >> SDL_RED_BITSHIFT);
-	result.g = static_cast<Uint8>((SDL_GREEN_MASK & rgb) >> SDL_GREEN_BITSHIFT);
-	result.b = static_cast<Uint8>((SDL_BLUE_MASK & rgb) >> SDL_BLUE_BITSHIFT);
-	result.a = SDL_ALPHA_OPAQUE;
-	return result;
+	return {
+		static_cast<Uint8>((SDL_RED_MASK   & rgb) >> SDL_RED_BITSHIFT),
+		static_cast<Uint8>((SDL_GREEN_MASK & rgb) >> SDL_GREEN_BITSHIFT),
+		static_cast<Uint8>((SDL_BLUE_MASK  & rgb) >> SDL_BLUE_BITSHIFT),
+		SDL_ALPHA_OPAQUE
+	};
 }
 
-SDL_Color string_to_color(const std::string& color_string)
+SDL_Color string_to_color(const std::string& color_string, const bool override_alpha)
 {
-	SDL_Color color = {0,0,0,0};
+	std::vector<std::string> fields = utils::split(color_string);
 
-	std::vector<Uint32> temp_rgb;
-	if(string2rgb(color_string, temp_rgb) && !temp_rgb.empty()) {
-		color = int_to_color(temp_rgb[0]);
+	// Make sure we have 4 fields
+	while(fields.size() < 4) {
+		fields.push_back("0");
+	}
+
+	SDL_Color color {
+		static_cast<Uint8>(std::stoul(fields[0])),
+		static_cast<Uint8>(std::stoul(fields[1])),
+		static_cast<Uint8>(std::stoul(fields[2])),
+		static_cast<Uint8>(std::stoul(fields[3]))};
+
+	// This is only here to accommodate general uses like [label] that ignore alpha.
+	// Should probably be removed eventually.
+	if(override_alpha) {
+		color.a = SDL_ALPHA_OPAQUE;
 	}
 
 	return color;
@@ -87,13 +100,7 @@ SDL_Color create_color(const unsigned char red
 		, unsigned char blue
 		, unsigned char alpha)
 {
-	SDL_Color result;
-	result.r = red;
-	result.g = green;
-	result.b = blue;
-	result.a = alpha;
-
-	return result;
+	return {red, green, blue, alpha};
 }
 
 SDL_Keycode sdl_keysym_from_name(const std::string& keyname)
@@ -2501,12 +2508,12 @@ bool operator!=(const SDL_Color& a, const SDL_Color& b) {
 }
 
 SDL_Color inverse(const SDL_Color& color) {
-	SDL_Color inverse;
-	inverse.r = 255 - color.r;
-	inverse.g = 255 - color.g;
-	inverse.b = 255 - color.b;
-	inverse.a = 0;
-	return inverse;
+	return {
+		static_cast<Uint8>(255 - color.r),
+		static_cast<Uint8>(255 - color.g),
+		static_cast<Uint8>(255 - color.b),
+		0 // TODO: ehh?
+	};
 }
 
 surface_restorer::surface_restorer() : target_(nullptr), rect_(sdl::empty_rect), surface_(nullptr)
