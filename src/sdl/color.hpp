@@ -122,6 +122,11 @@ struct color_t
 		return r == c.r && g == c.g && b == c.b && a == c.a;
 	}
 
+	bool operator!=(const color_t& c)
+	{
+		return !(*this == c);
+	}
+
 	color_t operator+(const color_t& c)
 	{
 		return {
