@@ -687,6 +687,9 @@ bool goto_mp_wait(CVideo& video, saved_game& state, const config& game_config, w
 	if(!dlg.fetch_game_config(video)) {
 		return false;
 	}
+	if(dlg.started()) {
+		return true;
+	}
 
 	return dlg.show(video);
 }
