@@ -47,14 +47,14 @@ def OptionalPath(key, val, env):
 opts.AddVariables(
     ListVariable('default_targets', 'Targets that will be built if no target is specified in command line.',
         "wesnoth,wesnothd", Split("wesnoth wesnothd campaignd cutter exploder test")),
-    EnumVariable('build', 'Build variant: debug, release profile or base (no subdirectory)', "release", ["optimize", "release", "debug", "glibcxx_debug", "profile", "base"]),
+    EnumVariable('build', 'Build variant: debug, release profile or base (no subdirectory)', "release", ["optimized", "release", "debug", "glibcxx_debug", "profile", "base"]),
     PathVariable('build_dir', 'Build all intermediate files(objects, test programs, etc) under this dir', "build", PathVariable.PathAccept),
     ('extra_flags_config', "Extra compiler and linker flags to use for configuration and all builds. Whether they're compiler or linker is determined by env.ParseFlags. Unknown flags are compile flags by default. This applies to all extra_flags_* variables", ""),
     ('extra_flags_base', 'Extra compiler and linker flags to use for release builds', ""),
     ('extra_flags_release', 'Extra compiler and linker flags to use for release builds', ""),
     ('extra_flags_debug', 'Extra compiler and linker flags to use for debug builds', ""),
     ('extra_flags_profile', 'Extra compiler and linker flags to use for profile builds', ""),
-    ('extra_flags_optimize', 'Extra compiler and linker flags to use for optimized builds', ""),
+    ('extra_flags_optimized', 'Extra compiler and linker flags to use for optimized builds', ""),
     BoolVariable('enable_lto', 'Whether to enable Link Time Optimization', False),
     PathVariable('bindir', 'Where to install binaries', "bin", PathVariable.PathAccept),
     ('cachedir', 'Directory that contains a cache of derived files.', ''),
@@ -533,7 +533,7 @@ builds = {
     "glibcxx_debug" : dict(CPPDEFINES = Split("_GLIBCXX_DEBUG _GLIBCXX_DEBUG_PEDANTIC")),
     "release"       : dict(CCFLAGS   = Split("$OPT_FLAGS")),
     "profile"       : dict(CCFLAGS   = "-pg", LINKFLAGS = "-pg"),
-    "optimize"      : dict(CCFLAGS   = Split("$HIGH_OPT_COMP_FLAGS"), LINKFLAGS=Split("$HIGH_OPT_LINK_FLAGS"))
+    "optimized"      : dict(CCFLAGS   = Split("$HIGH_OPT_COMP_FLAGS"), LINKFLAGS=Split("$HIGH_OPT_LINK_FLAGS"))
     }
 builds["glibcxx_debug"].update(builds["debug"])
 build = env["build"]
