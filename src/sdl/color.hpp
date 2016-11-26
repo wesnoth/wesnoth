@@ -28,13 +28,6 @@ struct color_t
 		, a(SDL_ALPHA_OPAQUE)
 	{}
 
-	explicit color_t(const color_t& c)
-		: r(c.r)
-		, g(c.g)
-		, b(c.b)
-		, a(c.a)
-	{}
-
 	color_t(uint8_t r_val, uint8_t g_val, uint8_t b_val, uint8_t a_val = SDL_ALPHA_OPAQUE)
 		: r(r_val)
 		, g(g_val)
