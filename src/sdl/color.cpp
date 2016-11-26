@@ -18,43 +18,7 @@
 #include <iomanip>
 #include <sstream>
 
-color_t::color_t()
-	: r(255)
-	, g(255)
-	, b(255)
-	, a(255)
-{
-}
-
-color_t::color_t(const color_t& c)
-	: r(c.r)
-	, g(c.g)
-	, b(c.b)
-	, a(c.a)
-{
-}
-
-color_t::color_t(uint8_t r_val, uint8_t g_val , uint8_t b_val, uint8_t a_val)
-	: r(r_val)
-	, g(g_val)
-	, b(b_val)
-	, a(a_val)
-{
-}
-
-color_t::color_t(uint32_t c)
-	: r(static_cast<uint8_t>((SDL_RED_MASK   & c) >> 24))
-	, g(static_cast<uint8_t>((SDL_GREEN_MASK & c) >> 16))
-	, b(static_cast<uint8_t>((SDL_BLUE_MASK  & c) >> 8))
-	, a(static_cast<uint8_t>( SDL_ALPHA_MASK & c))
-{
-}
-
-color_t::color_t(const std::string& c)
-	: r()
-	, g()
-	, b()
-	, a()
+color_t color_t::from_rgba_string(const std::string& c)
 {
 	std::vector<std::string> fields = utils::split(c);
 
@@ -63,23 +27,22 @@ color_t::color_t(const std::string& c)
 		fields.push_back("0");
 	}
 
-	r = static_cast<uint8_t>(std::stoul(fields[0]));
-	g = static_cast<uint8_t>(std::stoul(fields[0]));
-	b = static_cast<uint8_t>(std::stoul(fields[0]));
-	a = static_cast<uint8_t>(std::stoul(fields[0]));
+	return {
+		static_cast<uint8_t>(std::stoul(fields[0])),
+		static_cast<uint8_t>(std::stoul(fields[0])),
+		static_cast<uint8_t>(std::stoul(fields[0])),
+		static_cast<uint8_t>(std::stoul(fields[0]))
+	};
 }
 
-color_t::color_t(const SDL_Color& c)
-	: r(c.r)
-	, g(c.g)
-	, b(c.b)
-	, a(c.a)
+color_t color_t::from_rgba_uint32(uint32_t c)
 {
-}
-
-uint32_t color_t::to_uint32()
-{
-	return (r << 24) + (g << 16) + (b << 8) + a;
+	return {
+		static_cast<uint8_t>((SDL_RED_MASK   & c) >> 24),
+		static_cast<uint8_t>((SDL_GREEN_MASK & c) >> 16),
+		static_cast<uint8_t>((SDL_BLUE_MASK  & c) >> 8),
+		static_cast<uint8_t>( SDL_ALPHA_MASK & c)
+	};
 }
 
 std::string color_t::to_pango_markup()
@@ -93,9 +56,4 @@ std::string color_t::to_pango_markup()
 	  << std::hex << std::setfill('0') << std::setw(2) << (b & 0x0000FF);
 
 	return h.str();
-}
-
-SDL_Color color_t::to_sdl()
-{
-	return {r, g, b, a};
 }
