@@ -127,14 +127,21 @@ struct color_t
 		return !(*this == c);
 	}
 
-	color_t operator+(const color_t& c)
+	// Intentionally passed by value
+	color_t operator+(color_t c)
 	{
-		return {
-			std::min<uint8_t>(255,              r + c.r),
-			std::min<uint8_t>(255,              g + c.g),
-			std::min<uint8_t>(255,              b + c.b),
-			std::min<uint8_t>(SDL_ALPHA_OPAQUE, a + c.a)
-		};
+		return c += *this;
+	}
+
+	color_t& operator+=(const color_t& c)
+	{
+		// Do some magic to detect integer overflow
+		// We want overflows to max out the component instead of wrapping.
+		r = r > 255 - c.r ? 255 : r + c.r;
+		g = g > 255 - c.g ? 255 : g + c.g;
+		b = b > 255 - c.b ? 255 : b + c.b;
+		a = a > 255 - c.a ? 255 : a + c.a;
+		return *this;
 	}
 };
 
