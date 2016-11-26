@@ -48,7 +48,7 @@ public:
 	 * there. This should be changed to either of those functions once that's fixed.
 	 */
 	bool fetch_game_config(CVideo& video);
-
+	bool started() const { return level_["started"].to_bool(); }
 private:
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
