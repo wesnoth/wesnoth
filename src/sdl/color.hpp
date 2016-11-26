@@ -92,7 +92,7 @@ struct color_t
 	 */
 	uint32_t to_rgba_uint32()
 	{
-		return (r << 24) + (g << 16) + (b << 8) + a;
+		return (static_cast<uint32_t>(r) << 24) | (static_cast<uint32_t>(g) << 16) | (static_cast<uint32_t>(b) << 8) | a;
 	}
 
 	/**
@@ -140,7 +140,7 @@ struct color_t
 
 std::ostream& operator<<(std::ostream& s, const color_t& c)
 {
-	s << c.r << " " << c.g << " " << c.b << " " << c.a << std::endl;
+	s << int(c.r) << " " << int(c.g) << " " << int(c.b) << " " << int(c.a) << std::endl;
 	return s;
 }
 
