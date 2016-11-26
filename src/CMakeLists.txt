@@ -363,6 +363,7 @@ set_target_properties(wesnoth-lua
 ########### Helper libraries ###############
 
 set(wesnoth-sdl_SRC
+	sdl/color.cpp
 	sdl/exception.cpp
 	sdl/rect.cpp
 	sdl/window.cpp

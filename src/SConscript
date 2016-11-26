@@ -160,6 +160,7 @@ libcampaignd_sources = Split("""
 libcampaignd = env.Library("campaignd", libcampaignd_sources, OBJPREFIX = "campaignd_")
 
 libwesnoth_sdl_sources = Split("""
+    sdl/color.cpp
     sdl/exception.cpp
     sdl/rect.cpp
     sdl/utils.cpp
