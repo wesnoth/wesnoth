@@ -68,7 +68,7 @@ struct color_t
 	 * @throw        std::invalid_argument
 	 */
 	static color_t from_hex_string(const std::string& c);
-	
+
 	/**
 	 * Creates a new color_t object from a uint32_t variable.
 	 *
@@ -116,6 +116,27 @@ struct color_t
 
 	/** Alpha value */
 	uint8_t a;
+
+	bool operator==(const color_t& c)
+	{
+		return r == c.r && g == c.g && b == c.b && a == c.a;
+	}
+
+	color_t operator+(const color_t& c)
+	{
+		return {
+			std::min<uint8_t>(255,              r + c.r),
+			std::min<uint8_t>(255,              g + c.g),
+			std::min<uint8_t>(255,              b + c.b),
+			std::min<uint8_t>(SDL_ALPHA_OPAQUE, a + c.a)
+		};
+	}
 };
+
+std::ostream& operator<<(std::ostream& s, const color_t& c)
+{
+	s << c.r << " " << c.g << " " << c.b << " " << c.a << std::endl;
+	return s;
+}
 
 #endif
