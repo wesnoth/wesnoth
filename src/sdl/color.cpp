@@ -35,6 +35,19 @@ color_t color_t::from_rgba_string(const std::string& c)
 	};
 }
 
+color_t color_t::from_hex_string(const std::string& c)
+{
+	// Why, std::strtol, why :|
+	char* end;
+
+	return {
+		static_cast<uint8_t>((0x00FFFFFF & std::strtol(c.c_str(), &end, 16)) >> 16),
+		static_cast<uint8_t>((0x00FFFFFF & std::strtol(c.c_str(), &end, 16)) >> 8),
+		static_cast<uint8_t>((0x00FFFFFF & std::strtol(c.c_str(), &end, 16))),
+		SDL_ALPHA_OPAQUE
+	};
+}
+
 color_t color_t::from_rgba_uint32(uint32_t c)
 {
 	return {
@@ -45,13 +58,11 @@ color_t color_t::from_rgba_uint32(uint32_t c)
 	};
 }
 
-std::string color_t::to_pango_markup()
+std::string color_t::to_hex_string()
 {
 	std::ostringstream h;
 
-	// Must match what pango expects
-	h << "#"
-	  << std::hex << std::setfill('0') << std::setw(2) << (r & 0xFF0000)
+	h << std::hex << std::setfill('0') << std::setw(2) << (r & 0xFF0000)
 	  << std::hex << std::setfill('0') << std::setw(2) << (g & 0x00FF00)
 	  << std::hex << std::setfill('0') << std::setw(2) << (b & 0x0000FF);
 

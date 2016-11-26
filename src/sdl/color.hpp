@@ -50,7 +50,7 @@ struct color_t
 	{}
 
 	/**
-	 * Creates a new color_t object from a string variable.
+	 * Creates a new color_t object from a string variable in R,G,B,A format.
 	 *
 	 * @param        A string variable, in "R,G,B,A" format.
 	 * @return       A new color_t object.
@@ -60,6 +60,16 @@ struct color_t
 	static color_t from_rgba_string(const std::string& c);
 
 	/**
+	 * Creates a new color_t object from a string variable in hex format.
+	 *
+	 * @param        A string variable, in rrggbb hex format.
+	 * @return       A new color_t object.
+	 *
+	 * @throw        std::invalid_argument
+	 */
+	static color_t from_hex_string(const std::string& c);
+	
+	/**
 	 * Creates a new color_t object from a uint32_t variable.
 	 *
 	 * @param        A uint32_t variable, in RGBA format.
@@ -68,11 +78,12 @@ struct color_t
 	static color_t from_rgba_uint32(uint32_t c);
 
 	/**
-	 * Returns the stored color in rrggbb hex pango markup.
+	 * Returns the stored color in rrggbb hex format.
 	 *
-	 * @return       The string in pango markup. Preceeding '#' is included.
+	 * @return       The string in hex format. Note the preceeding '#' needed for pango markup
+	 *               is not prepended.
 	 */
-	std::string to_pango_markup();
+	std::string to_hex_string();
 
 	/**
 	 * Returns the stored color as a uint32_t.
