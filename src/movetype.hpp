@@ -18,7 +18,7 @@
 #include "serialization/string_utils.hpp"
 
 class attack_type;
-namespace t_translation { struct t_terrain; }
+namespace t_translation { struct terrain_code; }
 
 
 /// The basic "size" of the unit - flying, small land, large land, etc.
@@ -57,7 +57,7 @@ class movetype
 		/// Merges the given config over the existing values.
 		void merge(const config & new_values, bool overwrite);
 		/// Returns the value associated with the given terrain.
-		int value(const t_translation::t_terrain & terrain) const;
+		int value(const t_translation::terrain_code & terrain) const;
 		/// Writes our data to a config.
 		void write(config & cfg, const std::string & child_name="", bool merged=true) const;
 
@@ -104,7 +104,7 @@ public:
 
 		/// Returns the cost associated with the given terrain.
 		/// Costs are doubled when @a slowed is true.
-		int cost(const t_translation::t_terrain & terrain, bool slowed=false) const
+		int cost(const t_translation::terrain_code & terrain, bool slowed=false) const
 		{ int result = value(terrain);
 		  return  slowed  &&  result != movetype::UNREACHABLE ? 2 * result : result; }
 
@@ -126,10 +126,10 @@ public:
 		{}
 
 		/// Returns the defense associated with the given terrain.
-		int defense(const t_translation::t_terrain & terrain) const
+		int defense(const t_translation::terrain_code & terrain) const
 		{ return std::max(min_.value(terrain), max_.value(terrain)); }
 		/// Returns whether there is a defense cap associated to this terrain.
-		bool capped(const t_translation::t_terrain & terrain) const
+		bool capped(const t_translation::terrain_code & terrain) const
 		{ return min_.value(terrain) != 0; }
 		/// Merges the given config over the existing costs.
 		/// (Not overwriting implies adding.)
@@ -194,17 +194,17 @@ public:
 	void set_flying(bool flies=true) { flying_ = flies; }
 
 	/// Returns the cost to move through the indicated terrain.
-	int movement_cost(const t_translation::t_terrain & terrain, bool slowed=false) const
+	int movement_cost(const t_translation::terrain_code & terrain, bool slowed=false) const
 	{ return movement_.cost(terrain, slowed); }
 	/// Returns the cost to see through the indicated terrain.
-	int vision_cost(const t_translation::t_terrain & terrain, bool slowed=false) const
+	int vision_cost(const t_translation::terrain_code & terrain, bool slowed=false) const
 	{ return vision_.cost(terrain, slowed); }
 	/// Returns the cost to "jam" through the indicated terrain.
-	int jamming_cost(const t_translation::t_terrain & terrain, bool slowed=false) const
+	int jamming_cost(const t_translation::terrain_code & terrain, bool slowed=false) const
 	{ return jamming_.cost(terrain, slowed); }
 
 	/// Returns the defensive value of the indicated terrain.
-	int defense_modifier(const t_translation::t_terrain & terrain) const
+	int defense_modifier(const t_translation::terrain_code & terrain) const
 	{ return defense_.defense(terrain); }
 
 	/// Returns the resistance against the indicated attack.
@@ -218,7 +218,7 @@ public:
 	{ return resist_.damage_table(); }
 
 	/// Returns whether or not there are any terrain caps with respect to a set of terrains.
-	bool has_terrain_defense_caps(const std::set<t_translation::t_terrain> & ts) const;
+	bool has_terrain_defense_caps(const std::set<t_translation::terrain_code> & ts) const;
 	/// Returns whether or not there are any vision-specific costs.
 	bool has_vision_data()  const { return !vision_.empty(); }
 	/// Returns whether or not there are any jamming-specific costs.

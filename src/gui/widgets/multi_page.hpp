@@ -16,7 +16,7 @@
 #ifndef GUI_WIDGETS_MULTI_PAGE_HPP_INCLUDED
 #define GUI_WIDGETS_MULTI_PAGE_HPP_INCLUDED
 
-#include "gui/widgets/container.hpp"
+#include "gui/widgets/container_base.hpp"
 
 #include "gui/core/widget_definition.hpp"
 #include "gui/core/window_builder.hpp"
@@ -28,19 +28,19 @@ namespace gui2
 
 namespace implementation
 {
-struct tbuilder_multi_page;
+struct builder_multi_page;
 }
 
-class tgenerator_;
+class generator_base;
 
 /** The multi page class. */
-class tmulti_page : public tcontainer_
+class multi_page : public container_base
 {
-	friend struct implementation::tbuilder_multi_page;
-	friend class tdebug_layout_graph;
+	friend struct implementation::builder_multi_page;
+	friend class debug_layout_graph;
 
 public:
-	tmulti_page();
+	multi_page();
 
 	/***** ***** ***** ***** Page handling. ***** ***** ****** *****/
 
@@ -112,7 +112,7 @@ public:
 	 *
 	 * @returns                   The grid of the wanted page.
 	 */
-	const tgrid& page_grid(const unsigned page) const;
+	const grid& page_grid(const unsigned page) const;
 
 	/**
 	 * Returns the grid for the page.
@@ -122,19 +122,19 @@ public:
 	 *
 	 * @returns                   The grid of the wanted page.
 	 */
-	tgrid& page_grid(const unsigned page);
+	grid& page_grid(const unsigned page);
 
 	/***** ***** ***** inherited ***** ****** *****/
 
-	/** See @ref tcontrol::get_active. */
+	/** See @ref styled_widget::get_active. */
 	virtual bool get_active() const override;
 
-	/** See @ref tcontrol::get_state. */
+	/** See @ref styled_widget::get_state. */
 	virtual unsigned get_state() const override;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	void set_page_builder(tbuilder_grid_ptr page_builder)
+	void set_page_builder(builder_grid_ptr page_builder)
 	{
 		page_builder_ = page_builder;
 	}
@@ -151,37 +151,37 @@ private:
 	 * Contains a pointer to the generator.
 	 *
 	 * The pointer is not owned by this class, it's stored in the content_grid_
-	 * of the tscrollbar_container super class and freed when it's grid is
+	 * of the scrollbar_container super class and freed when it's grid is
 	 * freed.
 	 */
-	tgenerator_* generator_;
+	generator_base* generator_;
 
 	/** Contains the builder for the new items. */
-	tbuilder_grid_const_ptr page_builder_;
+	builder_grid_const_ptr page_builder_;
 
-	/** See @ref twidget::impl_draw_background. */
+	/** See @ref widget::impl_draw_background. */
 	virtual void impl_draw_background(surface& frame_buffer,
 									  int x_offset,
 									  int y_offset) override;
 
-	/** See @ref tcontrol::get_control_type. */
+	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 
-	/** See @ref tcontainer_::set_self_active. */
+	/** See @ref container_base::set_self_active. */
 	virtual void set_self_active(const bool active) override;
 };
 
 // }---------- DEFINITION ---------{
 
-struct tmulti_page_definition : public tcontrol_definition
+struct multi_page_definition : public styled_widget_definition
 {
-	explicit tmulti_page_definition(const config& cfg);
+	explicit multi_page_definition(const config& cfg);
 
-	struct tresolution : public tresolution_definition_
+	struct resolution : public resolution_definition
 	{
-		explicit tresolution(const config& cfg);
+		explicit resolution(const config& cfg);
 
-		tbuilder_grid_ptr grid;
+		builder_grid_ptr grid;
 	};
 };
 
@@ -190,15 +190,15 @@ struct tmulti_page_definition : public tcontrol_definition
 namespace implementation
 {
 
-struct tbuilder_multi_page : public tbuilder_control
+struct builder_multi_page : public builder_styled_widget
 {
-	explicit tbuilder_multi_page(const config& cfg);
+	explicit builder_multi_page(const config& cfg);
 
-	using tbuilder_control::build;
+	using builder_styled_widget::build;
 
-	twidget* build() const;
+	widget* build() const;
 
-	tbuilder_grid_ptr builder;
+	builder_grid_ptr builder;
 
 	/**
 	 * Multi page data.

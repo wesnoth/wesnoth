@@ -20,6 +20,8 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -55,7 +57,7 @@ static void set_do_not_show_again(const bool do_not_show_again)
 	preferences::set_mp_server_warning_disabled(do_not_show_again ? 2 : 1);
 }
 
-tmp_host_game_prompt::tmp_host_game_prompt()
+mp_host_game_prompt::mp_host_game_prompt()
 {
 	set_restore(true);
 
@@ -65,4 +67,5 @@ tmp_host_game_prompt::tmp_host_game_prompt()
 				  &set_do_not_show_again);
 }
 
+} // namespace dialogs
 } // namespace gui2

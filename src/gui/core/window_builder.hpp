@@ -15,18 +15,19 @@
 #ifndef GUI_AUXILIARY_WINDOW_BUILDER_HPP_INCLUDED
 #define GUI_AUXILIARY_WINDOW_BUILDER_HPP_INCLUDED
 
-#include "gui/auxiliary/formula.hpp"
+#include "gui/auxiliary/typed_formula.hpp"
 #include "gui/widgets/grid.hpp"
 
 #include "utils/functional.hpp"
 
 class config;
 class CVideo;
+struct SDL_Color;
 
 namespace gui2
 {
 
-class twindow;
+class window;
 
 /**
  * Builds a window.
@@ -35,10 +36,10 @@ class twindow;
  * @param type                    The type id string of the window, this window
  *                                must be registered at startup.
  */
-twindow* build(CVideo& video, const std::string& type);
+window* build(CVideo& video, const std::string& type);
 
 /** Contains the info needed to instantiate a widget. */
-struct tbuilder_widget
+struct builder_widget
 {
 public:
 	/**
@@ -49,31 +50,28 @@ public:
 	 * using and `[instance]' widget this decision can be postponed until
 	 * instantiation.
 	 */
-	typedef std::map<std::string, std::shared_ptr<tbuilder_widget> >
-	treplacements;
+	typedef std::map<std::string, std::shared_ptr<builder_widget> > replacements_map;
 
-	explicit tbuilder_widget(const config& cfg);
+	explicit builder_widget(const config& cfg);
 
-	virtual ~tbuilder_widget()
+	virtual ~builder_widget()
 	{
 	}
 
-	virtual twidget* build() const = 0;
+	virtual widget* build() const = 0;
 
-	virtual twidget* build(const treplacements& replacements) const = 0;
+	virtual widget* build(const replacements_map& replacements) const = 0;
 
 	/** Parameters for the widget. */
 	std::string id;
 	std::string linked_group;
 
-#ifndef LOW_MEM
 	int debug_border_mode;
-	unsigned debug_border_color;
-#endif
+	SDL_Color debug_border_color;
 };
 
-typedef std::shared_ptr<tbuilder_widget> tbuilder_widget_ptr;
-typedef std::shared_ptr<const tbuilder_widget> const_tbuilder_widget_ptr;
+typedef std::shared_ptr<builder_widget> builder_widget_ptr;
+typedef std::shared_ptr<const builder_widget> builder_widget_const_ptr;
 
 /**
  * Registers a widget to be build.
@@ -86,7 +84,7 @@ typedef std::shared_ptr<const tbuilder_widget> const_tbuilder_widget_ptr;
  */
 void
 register_builder_widget(const std::string& id,
-						std::function<tbuilder_widget_ptr(config)> functor);
+						std::function<builder_widget_ptr(config)> functor);
 
 
 /**
@@ -99,7 +97,7 @@ register_builder_widget(const std::string& id,
  *
  * @returns                       The builder for the widget instance.
  */
-tbuilder_widget_ptr create_builder_widget(const config& cfg);
+builder_widget_ptr create_builder_widget(const config& cfg);
 
 /**
  * Helper to generate a widget from a WML widget instance.
@@ -112,15 +110,15 @@ tbuilder_widget_ptr create_builder_widget(const config& cfg);
  * @returns                       A generic widget builder pointer.
  */
 template <class T>
-tbuilder_widget_ptr build_widget(const config& cfg)
+builder_widget_ptr build_widget(const config& cfg)
 {
 	return std::make_shared<T>(cfg);
 }
 
-struct tbuilder_grid : public tbuilder_widget
+struct builder_grid : public builder_widget
 {
 public:
-	explicit tbuilder_grid(const config& cfg);
+	explicit builder_grid(const config& cfg);
 
 	unsigned rows;
 	unsigned cols;
@@ -136,43 +134,43 @@ public:
 	std::vector<unsigned> border_size;
 
 	/** The widgets per grid cell. */
-	std::vector<tbuilder_widget_ptr> widgets;
+	std::vector<builder_widget_ptr> widgets;
 
-	tgrid* build() const;
-	twidget* build(const treplacements& replacements) const;
+	grid* build() const;
+	widget* build(const replacements_map& replacements) const;
 
 
-	tgrid* build(tgrid* grid) const;
-	void build(tgrid& grid, const treplacements& replacements) const;
+	grid* build(grid* grid) const;
+	void build(grid& grid, const replacements_map& replacements) const;
 };
 
-typedef std::shared_ptr<tbuilder_grid> tbuilder_grid_ptr;
-typedef std::shared_ptr<const tbuilder_grid> tbuilder_grid_const_ptr;
+typedef std::shared_ptr<builder_grid> builder_grid_ptr;
+typedef std::shared_ptr<const builder_grid> builder_grid_const_ptr;
 
-class twindow_builder
+class builder_window
 {
 public:
-	twindow_builder() : resolutions(), id_(), description_()
+	builder_window() : resolutions(), id_(), description_()
 	{
 	}
 
 	const std::string& read(const config& cfg);
 
-	struct tresolution
+	struct window_resolution
 	{
 	public:
-		explicit tresolution(const config& cfg);
+		explicit window_resolution(const config& cfg);
 
 		unsigned window_width;
 		unsigned window_height;
 
 		bool automatic_placement;
 
-		tformula<unsigned> x;
-		tformula<unsigned> y;
-		tformula<unsigned> width;
-		tformula<unsigned> height;
-		tformula<bool> reevaluate_best_size;
+		typed_formula<unsigned> x;
+		typed_formula<unsigned> y;
+		typed_formula<unsigned> width;
+		typed_formula<unsigned> height;
+		typed_formula<bool> reevaluate_best_size;
 
 		game_logic::function_symbol_table functions;
 
@@ -186,9 +184,9 @@ public:
 
 		std::string definition;
 
-		struct tlinked_group
+		struct linked_group
 		{
-			tlinked_group() : id(), fixed_width(false), fixed_height(false)
+			linked_group() : id(), fixed_width(false), fixed_height(false)
 			{
 			}
 
@@ -197,23 +195,23 @@ public:
 			bool fixed_height;
 		};
 
-		std::vector<tlinked_group> linked_groups;
+		std::vector<linked_group> linked_groups;
 
 		/** Helper struct to store information about the tips. */
-		struct ttip
+		struct tooltip_info
 		{
-			ttip(const config& cfg, const std::string& tagname);
+			tooltip_info(const config& cfg, const std::string& tagname);
 
 			std::string id;
 		};
 
-		ttip tooltip;
-		ttip helptip;
+		tooltip_info tooltip;
+		tooltip_info helptip;
 
-		tbuilder_grid_ptr grid;
+		builder_grid_ptr grid;
 	};
 
-	std::vector<tresolution> resolutions;
+	std::vector<window_resolution> resolutions;
 
 private:
 	std::string id_;
@@ -223,7 +221,7 @@ private:
 /**
  * Builds a window.
  */
-twindow* build(CVideo& video, const twindow_builder::tresolution* res);
+window* build(CVideo& video, const builder_window::window_resolution* res);
 
 } // namespace gui2
 

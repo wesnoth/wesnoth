@@ -657,7 +657,7 @@ double recruitment::get_average_defense(const std::string& u_type) const {
 	long summed_defense = 0;
 	int total_terrains = 0;
 	for (const terrain_count_map::value_type& entry : important_terrain_) {
-		const t_translation::t_terrain& terrain = entry.first;
+		const t_translation::terrain_code& terrain = entry.first;
 		int count = entry.second;
 		int defense = 100 - u_info->movement_type().defense_modifier(terrain);
 		summed_defense += defense * count;

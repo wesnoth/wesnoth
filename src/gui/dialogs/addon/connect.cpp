@@ -27,6 +27,8 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -53,7 +55,7 @@ namespace gui2
 
 REGISTER_DIALOG(addon_connect)
 
-taddon_connect::taddon_connect(std::string& host_name,
+addon_connect::addon_connect(std::string& host_name,
 							   const bool allow_remove)
 	: allow_remove_(allow_remove)
 {
@@ -61,31 +63,32 @@ taddon_connect::taddon_connect(std::string& host_name,
 	register_text("host_name", false, host_name, true);
 }
 
-void taddon_connect::help_button_callback(twindow& window)
+void addon_connect::help_button_callback(window& window)
 {
 	help::show_help(window.video(), "installing_addons");
 }
 
-void taddon_connect::pre_show(twindow& window)
+void addon_connect::pre_show(window& window)
 {
-	find_widget<tbutton>(&window, "remove_addons", false)
+	find_widget<button>(&window, "remove_addons", false)
 			.set_active(allow_remove_);
 
 	connect_signal_mouse_left_click(
-			find_widget<tbutton>(&window, "show_help", false),
-			std::bind(&taddon_connect::help_button_callback,
+			find_widget<button>(&window, "show_help", false),
+			std::bind(&addon_connect::help_button_callback,
 						this,
 						std::ref(window)));
 }
 
-void taddon_connect::post_show(twindow& window)
+void addon_connect::post_show(window& window)
 {
-	if(get_retval() == twindow::OK) {
-		ttext_box& host_widget
-				= find_widget<ttext_box>(&window, "host_name", false);
+	if(get_retval() == window::OK) {
+		text_box& host_widget
+				= find_widget<text_box>(&window, "host_name", false);
 
 		host_widget.save_to_history();
 	}
 }
 
+} // namespace dialogs
 } // namespace gui2

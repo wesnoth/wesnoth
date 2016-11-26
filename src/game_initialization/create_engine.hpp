@@ -46,8 +46,6 @@ public:
 
 	virtual bool can_launch_game() const = 0;
 
-	virtual surface create_image_surface(const SDL_Rect& image_rect) = 0;
-
 	virtual void set_metadata() = 0;
 
 	virtual std::string name() const;
@@ -76,8 +74,6 @@ public:
 
 	bool can_launch_game() const;
 
-	surface create_image_surface(const SDL_Rect& image_rect);
-
 	void set_metadata();
 
 	int num_players() const;
@@ -88,7 +84,6 @@ protected:
 
 	std::unique_ptr<gamemap> map_;
 
-	surface minimap_img_;
 	std::string map_hash_;
 
 private:
@@ -151,8 +146,6 @@ public:
 	virtual ~campaign();
 
 	bool can_launch_game() const;
-
-	surface create_image_surface(const SDL_Rect& image_rect);
 
 	void set_metadata();
 
@@ -225,9 +218,7 @@ public:
 
 	std::vector<size_t> get_filtered_level_indices(level::TYPE type) const;
 
-	std::vector<std::string> levels_menu_item_names() const;
-	std::vector<std::string> extras_menu_item_names(
-		const MP_EXTRA extra_type, bool escape_markup = true) const;
+	std::vector<std::string> extras_menu_item_names(const MP_EXTRA extra_type) const;
 
 	level& current_level() const;
 	const extras_metadata& current_extra(const MP_EXTRA extra_type) const;

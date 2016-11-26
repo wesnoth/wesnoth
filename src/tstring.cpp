@@ -27,7 +27,6 @@
 #include "tstring.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
-#include "utils/shared_object.hpp"
 #include <boost/functional/hash.hpp>
 
 #include <boost/multi_index_container.hpp>

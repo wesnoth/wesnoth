@@ -28,33 +28,33 @@ namespace gui2
 
 REGISTER_WIDGET(spacer)
 
-tpoint tspacer::calculate_best_size() const
+point spacer::calculate_best_size() const
 {
-	return best_size_ != tpoint() ? best_size_
-									  : tcontrol::calculate_best_size();
+	return best_size_ != point() ? best_size_
+									  : styled_widget::calculate_best_size();
 }
 
-void tspacer::set_active(const bool /*active*/)
+void spacer::set_active(const bool /*active*/)
 {
 	/* DO NOTHING */
 }
 
-bool tspacer::get_active() const
+bool spacer::get_active() const
 {
 	return true;
 }
 
-unsigned tspacer::get_state() const
+unsigned spacer::get_state() const
 {
 	return 0;
 }
 
-bool tspacer::disable_click_dismiss() const
+bool spacer::disable_click_dismiss() const
 {
 	return false;
 }
 
-void tspacer::impl_draw_background(surface& /*frame_buffer*/
+void spacer::impl_draw_background(surface& /*frame_buffer*/
 								   ,
 								   int /*x_offset*/
 								   ,
@@ -63,7 +63,7 @@ void tspacer::impl_draw_background(surface& /*frame_buffer*/
 	/* DO NOTHING */
 }
 
-const std::string& tspacer::get_control_type() const
+const std::string& spacer::get_control_type() const
 {
 	static const std::string type = "spacer";
 	return type;
@@ -71,12 +71,12 @@ const std::string& tspacer::get_control_type() const
 
 // }---------- DEFINITION ---------{
 
-tspacer_definition::tspacer_definition(const config& cfg)
-	: tcontrol_definition(cfg)
+spacer_definition::spacer_definition(const config& cfg)
+	: styled_widget_definition(cfg)
 {
 	DBG_GUI_P << "Parsing spacer " << id << '\n';
 
-	load_resolutions<tresolution>(cfg);
+	load_resolutions<resolution>(cfg);
 }
 
 /*WIKI
@@ -93,8 +93,8 @@ tspacer_definition::tspacer_definition(const config& cfg)
  * @end{tag}{name="spacer_definition"}
  * @end{parent}{name="gui/"}
  */
-tspacer_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
+spacer_definition::resolution::resolution(const config& cfg)
+	: resolution_definition(cfg)
 {
 }
 
@@ -136,14 +136,14 @@ tspacer_definition::tresolution::tresolution(const config& cfg)
 namespace implementation
 {
 
-tbuilder_spacer::tbuilder_spacer(const config& cfg)
-	: tbuilder_control(cfg), width_(cfg["width"]), height_(cfg["height"])
+builder_spacer::builder_spacer(const config& cfg)
+	: builder_styled_widget(cfg), width_(cfg["width"]), height_(cfg["height"])
 {
 }
 
-twidget* tbuilder_spacer::build() const
+widget* builder_spacer::build() const
 {
-	tspacer* widget = new tspacer();
+	spacer* widget = new spacer();
 
 	init_control(widget);
 
@@ -153,7 +153,7 @@ twidget* tbuilder_spacer::build() const
 	const unsigned height = height_(size);
 
 	if(width || height) {
-		widget->set_best_size(tpoint(width, height));
+		widget->set_best_size(point(width, height));
 	}
 
 	DBG_GUI_G << "Window builder: placed spacer '" << id

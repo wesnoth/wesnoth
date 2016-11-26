@@ -47,7 +47,7 @@
 #include "serialization/string_utils.hpp"  // for split, etc
 #include "team.hpp"                     // for team
 #include "terrain/filter.hpp"  // for terrain_filter
-#include "terrain/translation.hpp"      // for t_terrain
+#include "terrain/translation.hpp"      // for terrain_code
 #include "time_of_day.hpp"              // for time_of_day
 #include "tod_manager.hpp"           // for tod_manager
 #include "units/unit.hpp"                  // for unit, intrusive_ptr_release, etc
@@ -1084,7 +1084,7 @@ double readonly_context_impl::power_projection(const map_location& loc, const mo
 			continue;
 		}
 
-		const t_translation::t_terrain terrain = map_[locs[i]];
+		const t_translation::terrain_code terrain = map_[locs[i]];
 
 		typedef move_map::const_iterator Itor;
 		typedef std::pair<Itor,Itor> Range;
@@ -1119,7 +1119,7 @@ double readonly_context_impl::power_projection(const map_location& loc, const mo
 			} else if(un.alignment() == unit_type::ALIGNMENT::CHAOTIC) {
 				tod_modifier = -lawful_bonus;
 			} else if(un.alignment() == unit_type::ALIGNMENT::LIMINAL) {
-				tod_modifier = -(abs(lawful_bonus));
+				tod_modifier = -(std::abs(lawful_bonus));
 			}
 
 			// The 0.5 power avoids underestimating too much the damage of a wounded unit.

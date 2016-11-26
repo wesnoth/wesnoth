@@ -30,7 +30,7 @@
 namespace gui2
 {
 
-struct tpoint;
+struct point;
 
 /**
  * Base class for the placement helper.
@@ -49,7 +49,7 @@ struct tpoint;
  * list with two columns the position of the second column depends on the width
  * of the first and a later row may have a wider column 1 as an earlier row.
  */
-class tplacer_
+class placer_base
 {
 public:
 	/***** ***** Types. ***** *****/
@@ -77,10 +77,10 @@ public:
 	 *                            only horizontally or vertically placed items
 	 *                            the value should be 1.
 	 */
-	static tplacer_* build(const tgrow_direction grow_direction,
+	static placer_base* build(const tgrow_direction grow_direction,
 						   const unsigned parallel_items);
 
-	virtual ~tplacer_();
+	virtual ~placer_base();
 
 
 	/***** ***** Operations. ***** *****/
@@ -99,14 +99,14 @@ public:
 	 *
 	 * @param size                The required size for the item.
 	 */
-	virtual void add_item(const tpoint& size) = 0;
+	virtual void add_item(const point& size) = 0;
 
 	/**
 	 * Gets the required size of all items.
 	 *
 	 * @returns                   The required size.
 	 */
-	virtual tpoint get_size() const = 0;
+	virtual point get_size() const = 0;
 
 	/**
 	 * Gets the origin for an item.
@@ -117,7 +117,7 @@ public:
 	 *
 	 * @returns                   The origin where to place the widget.
 	 */
-	virtual tpoint get_origin(const unsigned index) const = 0;
+	virtual point get_origin(const unsigned index) const = 0;
 };
 
 } // namespace gui2

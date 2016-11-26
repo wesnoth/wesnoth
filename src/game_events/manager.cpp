@@ -16,10 +16,10 @@
 
 #include "game_events/manager.hpp"
 
-#include "handlers.hpp"
-#include "manager_impl.hpp"
-#include "menu_item.hpp"
-#include "pump.hpp"
+#include "game_events/handlers.hpp"
+#include "game_events/manager_impl.hpp"
+#include "game_events/menu_item.hpp"
+#include "game_events/pump.hpp"
 
 #include "filter_context.hpp"
 #include "formula/string_utils.hpp"
@@ -67,9 +67,9 @@ const handler_ptr manager::get_event_handler_by_id(const std::string & id)
 /* ** manager ** */
 
 manager::manager()
-	: event_handlers_(new t_event_handlers())
+	: event_handlers_(new event_handlers())
 	, unit_wml_ids_()
-	, pump_(new game_events::t_pump(*this))
+	, pump_(new game_events::wml_event_pump(*this))
 	, wml_menu_items_()
 {
 }
@@ -196,7 +196,7 @@ void manager::write_events(config& cfg) const
 	wml_menu_items_.to_config(cfg);
 }
 
-game_events::t_pump & manager::pump()
+game_events::wml_event_pump & manager::pump()
 {
 	return *pump_;
 }

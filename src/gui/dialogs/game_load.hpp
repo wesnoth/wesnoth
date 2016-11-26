@@ -15,7 +15,7 @@
 #ifndef GUI_DIALOGS_LOAD_GAME_HPP_INCLUDED
 #define GUI_DIALOGS_LOAD_GAME_HPP_INCLUDED
 
-#include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "savegame.hpp"
 #include "save_index.hpp"
@@ -25,13 +25,16 @@
 namespace gui2
 {
 
-class tlistbox;
-class ttext_;
+class listbox;
+class text_box_base;
 
-class tgame_load : public tdialog
+namespace dialogs
+{
+
+class game_load : public modal_dialog
 {
 public:
-	tgame_load(const config& cache_config, savegame::load_game_metadata& data);
+	game_load(const config& cache_config, savegame::load_game_metadata& data);
 
 	static bool execute(const config& cache_config, savegame::load_game_metadata& data, CVideo& video)
 	{
@@ -40,27 +43,27 @@ public:
 			return false;
 		}
 
-		return tgame_load(cache_config, data).show(video);
+		return game_load(cache_config, data).show(video);
 	}
 
 private:
-	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	/** Inherited from modal_dialog. */
+	void pre_show(window& window);
 
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	void filter_text_changed(ttext_* textbox, const std::string& text);
-	void delete_button_callback(twindow& window);
+	void filter_text_changed(text_box_base* textbox, const std::string& text);
+	void delete_button_callback(window& window);
 
-	void display_savegame(twindow& window);
+	void display_savegame(window& window);
 	void evaluate_summary_string(std::stringstream& str, const config& cfg_summary);
 
 	std::string& filename_;
 
-	tfield_bool* change_difficulty_;
-	tfield_bool* show_replay_;
-	tfield_bool* cancel_orders_;
+	field_bool* change_difficulty_;
+	field_bool* show_replay_;
+	field_bool* cancel_orders_;
 
 	config& summary_;
 
@@ -69,6 +72,7 @@ private:
 
 	std::vector<std::string> last_words_;
 };
-}
+} // namespace dialogs
+} // namespace gui2
 
 #endif

@@ -193,13 +193,13 @@ class editor_action_location_terrain : public editor_action_location
 {
 	public:
 		editor_action_location_terrain(map_location loc,
-			const t_translation::t_terrain & t)
+			const t_translation::terrain_code & t)
 		: editor_action_location(loc), t_(t)
 		{
 		}
 		const char* get_name() const { return "location_terrain"; }
 	protected:
-		t_translation::t_terrain t_;
+		t_translation::terrain_code t_;
 };
 
 /**
@@ -245,7 +245,7 @@ class editor_action_paint_area : public editor_action_area
 {
 	public:
 		editor_action_paint_area(const std::set<map_location>& area,
-			const t_translation::t_terrain & t, bool one_layer=false)
+			const t_translation::terrain_code & t, bool one_layer=false)
 		: editor_action_area(area), t_(t), one_layer_(one_layer)
 		{
 		}
@@ -254,7 +254,7 @@ class editor_action_paint_area : public editor_action_area
 		void perform_without_undo(map_context& mc) const;
 		const char* get_name() const { return "paint_area"; }
 	protected:
-		t_translation::t_terrain t_;
+		t_translation::terrain_code t_;
 		bool one_layer_;
 };
 
@@ -265,7 +265,7 @@ class editor_action_fill : public editor_action_location_terrain
 {
 	public:
 		editor_action_fill(map_location loc,
-			const t_translation::t_terrain & t, bool one_layer=false)
+			const t_translation::terrain_code & t, bool one_layer=false)
 		: editor_action_location_terrain(loc, t), one_layer_(one_layer)
 		{
 		}
@@ -305,7 +305,7 @@ class editor_action_resize_map : public editor_action
 {
 	public:
 		editor_action_resize_map(int x_size, int y_size, int x_offset, int y_offset,
-			const t_translation::t_terrain & fill = t_translation::NONE_TERRAIN)
+			const t_translation::terrain_code & fill = t_translation::NONE_TERRAIN)
 		: x_size_(x_size), y_size_(y_size), x_offset_(x_offset), y_offset_(y_offset), fill_(fill)
 		{
 		}
@@ -317,7 +317,7 @@ class editor_action_resize_map : public editor_action
 		int y_size_;
 		int x_offset_;
 		int y_offset_;
-		t_translation::t_terrain fill_;
+		t_translation::terrain_code fill_;
 };
 
 class editor_action_apply_mask : public editor_action

@@ -14,9 +14,9 @@
 
 /**
  * @file
- * This file contains the defintions for the @ref gui2::event::tmessage class.
+ * This file contains the defintions for the @ref gui2::event::message class.
  *
- * The class is used in the @ref gui2::event::tsignal_message_function
+ * The class is used in the @ref gui2::event::signal_message_function
  */
 
 #ifndef GUI_WIDGETS_AUXILIARY_EVENT_MESSAGE_HPP_INCLUDED
@@ -44,17 +44,17 @@ namespace event
  * This is done by:
  * * @ref REQUEST_PLACEMENT
  */
-struct tmessage
+struct message
 {
-	virtual ~tmessage()
+	virtual ~message()
 	{
 	}
 };
 
 /** The message for MESSAGE_SHOW_TOOLTIP. */
-struct tmessage_show_tooltip : public tmessage
+struct message_show_tooltip : public message
 {
-	tmessage_show_tooltip(const std::string& message_, const tpoint& location_, const SDL_Rect& source_rect_)
+	message_show_tooltip(const std::string& message_, const point& location_, const SDL_Rect& source_rect_)
 		: message(message_), location(location_), source_rect(source_rect_)
 	{
 	}
@@ -63,16 +63,16 @@ struct tmessage_show_tooltip : public tmessage
 	const std::string message;
 
 	/** The location where to show the tooltip. */
-	const tpoint location;
+	const point location;
 
 	/** The size of the entity requesting to show a tooltip. */
 	const SDL_Rect source_rect;
 };
 
 /** The message for MESSAGE_SHOW_HELPTIP. */
-struct tmessage_show_helptip : public tmessage
+struct message_show_helptip : public message
 {
-	tmessage_show_helptip(const std::string& message_, const tpoint& location_, const SDL_Rect& source_rect_)
+	message_show_helptip(const std::string& message_, const point& location_, const SDL_Rect& source_rect_)
 		: message(message_), location(location_), source_rect(source_rect_)
 	{
 	}
@@ -81,7 +81,7 @@ struct tmessage_show_helptip : public tmessage
 	const std::string message;
 
 	/** The location where to show the helptip. */
-	const tpoint location;
+	const point location;
 
 	/** The size of the entity requesting to show a helptip. */
 	const SDL_Rect source_rect;

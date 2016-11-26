@@ -42,8 +42,6 @@ local function plugin()
 
   log("hello world")
 
-  wesnoth.preferences.new_mp_ui = false
-
   repeat
     events, context, info = coroutine.yield()
     idle_text("in " .. info.name .. " waiting for titlescreen or lobby")
@@ -91,11 +89,15 @@ local function plugin()
 
   events, context, info = coroutine.yield()
 
+    context.chat({message = "going to join"})
+	
   context.join({})
 
   events, context, info = coroutine.yield()
 
-  while not (info.name == "Dialog" or info.name == "Multiplayer Wait") do
+  context.chat({message = "done first join"})
+  
+  while not (info.name == "Dialog" or info.name == "Multiplayer Join") do
     if context.join then
       context.join({})
     else
@@ -113,11 +115,11 @@ local function plugin()
 
     repeat
       events, context, info = coroutine.yield()
-      idle_text("in " .. info.name .. " waiting for mp wait")
-    until info.name == "Multiplayer Wait"
+      idle_text("in " .. info.name .. " waiting for mp join")
+    until info.name == "Multiplayer Join"
   end
 
-  log("got to multiplayer wait...")
+  log("got to multiplayer join...")
   context.chat({message = "ready"})
 
   repeat

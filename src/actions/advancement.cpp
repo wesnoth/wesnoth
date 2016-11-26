@@ -16,9 +16,9 @@
  * Fighting.
  */
 
-#include "advancement.hpp"
+#include "actions/advancement.hpp"
 
-#include "vision.hpp"
+#include "actions/vision.hpp"
 
 #include "ai/lua/aspect_advancements.hpp"
 #include "game_display.hpp"
@@ -27,7 +27,7 @@
 #include "game_preferences.hpp"
 #include "game_data.hpp" //resources::gamedata->phase()
 #include "gui/dialogs/unit_advance.hpp"
-#include "gui/widgets/window.hpp" //gui2::twindow::OK
+#include "gui/widgets/window.hpp" //gui2::window::OK
 #include "log.hpp"
 #include "play_controller.hpp" //resources::controller
 #include "random_new.hpp"
@@ -78,11 +78,11 @@ namespace
 		}
 
 		if (previews.size() > 1 || always_display) {
-			gui2::tunit_advance dlg(previews, num_real_advances);
+			gui2::dialogs::unit_advance dlg(previews, num_real_advances);
 
 			dlg.show(CVideo::get_singleton());
 
-			if (dlg.get_retval() == gui2::twindow::OK) {
+			if (dlg.get_retval() == gui2::window::OK) {
 				return dlg.get_selected_index();
 			}
 
@@ -314,7 +314,7 @@ unit_ptr get_amla_unit(const unit &u, const config &mod_option)
 }
 
 
-void advance_unit(map_location loc, const tadvancement_option &advance_to, bool fire_event)
+void advance_unit(map_location loc, const advancement_option &advance_to, bool fire_event)
 {
 	unit_map::unit_iterator u = resources::units->find(loc);
 	if(!u.valid()) {

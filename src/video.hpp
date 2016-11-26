@@ -112,12 +112,12 @@ public:
 	};
 
 	class quit
-		: public tlua_jailbreak_exception
+		: public lua_jailbreak_exception
 	{
 	public:
 
 		quit()
-			: tlua_jailbreak_exception()
+			: lua_jailbreak_exception()
 		{
 		}
 
@@ -177,7 +177,7 @@ public:
 	 */
 	void set_window_icon(surface& icon);
 
-	sdl::twindow *get_window();
+	sdl::window *get_window();
 
 	/**
 	 * Returns the list of available screen resolutions.
@@ -189,7 +189,7 @@ public:
 private:
 	static CVideo* singleton_;
 
-	std::unique_ptr<sdl::twindow> window;
+	std::unique_ptr<sdl::window> window;
 	class video_event_handler : public events::sdl_handler {
 	public:
 		virtual void handle_event(const SDL_Event &) {}

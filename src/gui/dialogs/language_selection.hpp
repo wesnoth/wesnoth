@@ -15,29 +15,32 @@
 #ifndef GUI_DIALOGS_LANGUAGE_SELECTION_HPP_INCLUDED
 #define GUI_DIALOGS_LANGUAGE_SELECTION_HPP_INCLUDED
 
-#include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
 
 namespace gui2
 {
+namespace dialogs
+{
 
-class tlanguage_selection : public tdialog
+class language_selection : public modal_dialog
 {
 public:
-	tlanguage_selection()
+	language_selection()
 	{
 	}
 
 private:
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	/** Inherited from modal_dialog. */
+	void pre_show(window& window);
 
-	/** Inherited from tdialog. */
-	void post_show(twindow& window);
+	/** Inherited from modal_dialog. */
+	void post_show(window& window);
 };
 
+} // namespace dialogs
 } // namespace gui2
 
 #endif

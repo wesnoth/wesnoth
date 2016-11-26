@@ -11,6 +11,9 @@
     <Filter Include="Font">
       <UniqueIdentifier>{2ce5a818-4bb3-4502-8751-f2d8f3f36527}</UniqueIdentifier>
     </Filter>
+    <Filter Include="spirit_po">
+      <UniqueIdentifier>{36afc638-474c-4646-b7ac-c1d8df8344f2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\serialization\binary_or_text.cpp">
@@ -45,7 +48,6 @@
     <ClCompile Include="..\..\src\gettext_boost.cpp" />
     <ClCompile Include="..\..\src\log.cpp" />
     <ClCompile Include="..\..\src\log_windows.cpp" />
-    <ClCompile Include="..\..\src\thread.cpp" />
     <ClCompile Include="..\..\src\tstring.cpp" />
     <ClCompile Include="..\..\src\version.cpp" />
     <ClCompile Include="..\..\src\font\constants.cpp">
@@ -87,12 +89,39 @@
     <ClInclude Include="..\..\src\libc_error.hpp" />
     <ClInclude Include="..\..\src\log.hpp" />
     <ClInclude Include="..\..\src\log_windows.hpp" />
-    <ClInclude Include="..\..\src\thread.hpp" />
     <ClInclude Include="..\..\src\tstring.hpp" />
     <ClInclude Include="..\..\src\version.hpp" />
     <ClInclude Include="..\..\src\wesconfig.h" />
     <ClInclude Include="..\..\src\font\constants.hpp">
       <Filter>Font</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\spirit_po\catalog.hpp">
+      <Filter>spirit_po</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\spirit_po\catalog_metadata.hpp">
+      <Filter>spirit_po</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\spirit_po\default_plural_forms_compiler.hpp">
+      <Filter>spirit_po</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\spirit_po\default_plural_forms_expressions.hpp">
+      <Filter>spirit_po</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\spirit_po\exceptions.hpp">
+      <Filter>spirit_po</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\spirit_po\po_grammar.hpp">
+      <Filter>spirit_po</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\spirit_po\po_message.hpp">
+      <Filter>spirit_po</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\spirit_po\po_message_adapted.hpp">
+      <Filter>spirit_po</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\spirit_po\version.hpp">
+      <Filter>spirit_po</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\spirit_po.hpp" />
   </ItemGroup>
 </Project>

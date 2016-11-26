@@ -27,6 +27,8 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -49,7 +51,7 @@ namespace gui2
 
 REGISTER_DIALOG(game_save)
 
-tgame_save::tgame_save(std::string& filename, const std::string& title)
+game_save::game_save(std::string& filename, const std::string& title)
 {
 	set_restore(true);
 
@@ -59,7 +61,7 @@ tgame_save::tgame_save(std::string& filename, const std::string& title)
 
 REGISTER_DIALOG(game_save_message)
 
-tgame_save_message::tgame_save_message(std::string& filename,
+game_save_message::game_save_message(std::string& filename,
 									   const std::string& title,
 									   const std::string& message)
 {
@@ -72,7 +74,7 @@ tgame_save_message::tgame_save_message(std::string& filename,
 
 REGISTER_DIALOG(game_save_oos)
 
-tgame_save_oos::tgame_save_oos(bool& ignore_all,
+game_save_oos::game_save_oos(bool& ignore_all,
 							   std::string& filename,
 							   const std::string& title,
 							   const std::string& message)
@@ -86,4 +88,5 @@ tgame_save_oos::tgame_save_oos(bool& ignore_all,
 	set_always_save_fields(true);
 }
 
+} // namespace dialogs
 } // namespace gui2

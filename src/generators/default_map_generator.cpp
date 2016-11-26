@@ -16,10 +16,10 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "default_map_generator.hpp"
+#include "generators/default_map_generator.hpp"
 
 #include "gui/dialogs/editor/generator_settings.hpp"
-#include "default_map_generator_job.hpp"
+#include "generators/default_map_generator_job.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
@@ -63,7 +63,7 @@ bool default_map_generator::allow_user_config() const { return true; }
 
 void default_map_generator::user_config()
 {
-	gui2::tgenerator_settings::execute(data_, CVideo::get_singleton());
+	gui2::dialogs::generator_settings::execute(data_, CVideo::get_singleton());
 }
 
 std::string default_map_generator::name() const { return "default"; }

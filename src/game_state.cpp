@@ -30,7 +30,7 @@
 #include "teambuilder.hpp"
 #include "units/unit.hpp"
 #include "whiteboard/manager.hpp"
-#include "gui/dialogs/loadscreen.hpp"
+#include "gui/dialogs/loading_screen.hpp"
 
 #include "utils/functional.hpp"
 #include <SDL_timer.h>
@@ -42,7 +42,7 @@ static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
 #define DBG_NG LOG_STREAM(debug, log_engine)
 
-game_state::game_state(const config & level, play_controller & pc, const tdata_cache & tdata) :
+game_state::game_state(const config & level, play_controller & pc, const ter_data_cache & tdata) :
 	gamedata_(level),
 	board_(tdata, level),
 	tod_manager_(level),
@@ -95,7 +95,7 @@ game_state::~game_state() {}
 static int placing_score(const config& side, const gamemap& map, const map_location& pos)
 {
 	int positions = 0, liked = 0;
-	const t_translation::t_list terrain = t_translation::read_list(side["terrain_liked"]);
+	const t_translation::ter_list terrain = t_translation::read_list(side["terrain_liked"]);
 
 	for(int i = -8; i != 8; ++i) {
 		for(int j = -8; j != +8; ++j) {
@@ -166,7 +166,7 @@ void game_state::place_sides_in_preferred_locations(const config& level)
 void game_state::init(const config& level, play_controller & pc)
 {
 	events_manager_->read_scenario(level);
-	gui2::tloadscreen::progress("init teams");
+	gui2::dialogs::loading_screen::progress("init teams");
 	if (level["modify_placing"].to_bool()) {
 		LOG_NG << "modifying placing..." << std::endl;
 		place_sides_in_preferred_locations(level);

@@ -13,7 +13,7 @@
 */
 
 #include "global.hpp"
-#include "map_create.hpp"
+#include "generators/map_create.hpp"
 
 #include "generators/cave_map_generator.hpp"
 #include "generators/default_map_generator.hpp"

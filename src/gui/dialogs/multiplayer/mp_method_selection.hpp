@@ -15,15 +15,17 @@
 #ifndef GUI_DIALOGS_MP_METHOD_SELECTION_HPP_INCLUDED
 #define GUI_DIALOGS_MP_METHOD_SELECTION_HPP_INCLUDED
 
-#include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
 
 namespace gui2
 {
+namespace dialogs
+{
 
-class tmp_method_selection : public tdialog
+class mp_method_selection : public modal_dialog
 {
 public:
-	tmp_method_selection() : user_name_(), choice_(-1)
+	mp_method_selection() : user_name_(), choice_(-1)
 	{
 	}
 
@@ -44,16 +46,17 @@ private:
 	/** The selected method to `connect' to the MP server. */
 	int choice_;
 
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	/** Inherited from modal_dialog. */
+	void pre_show(window& window);
 
-	/** Inherited from tdialog. */
-	void post_show(twindow& window);
+	/** Inherited from modal_dialog. */
+	void post_show(window& window);
 };
 
+} // namespace dialogs
 } // namespace gui2
 
 #endif

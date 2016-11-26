@@ -14,7 +14,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
-#include "mouse_action_item.hpp"
+#include "editor/action/mouse/mouse_action_item.hpp"
 #include "editor/action/action_item.hpp"
 
 #include "editor/editor_display.hpp"

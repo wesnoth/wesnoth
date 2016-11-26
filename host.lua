@@ -23,8 +23,6 @@ local function plugin()
 
   log("hello world")
 
-  wesnoth.preferences.new_mp_ui = false
-
   repeat
     events, context, info = coroutine.yield()
     idle_text("in " .. info.name .. " waiting for titlescreen or lobby")
@@ -62,21 +60,14 @@ local function plugin()
 	log(" error: Could not find scenario with id=test1")
   end
   context.select_level({index = s.index})
+  
+  log("configuring a game")
+  context.set_name({name = "Test"})
+  context.update_settings({registered_users = false})
 
   events, context, info = coroutine.yield()
 
-  log("configuring a game")
   context.create({})
-
-  repeat
-    events, context, info = coroutine.yield()
-    idle_text("in " .. info.name .. " waiting for configure")
-  until info.name == "Multiplayer Configure"
-
-  context.set_name({name = "Test"})
-
-  log("hosting a game")
-  context.launch({})
 
   ready = nil
   repeat

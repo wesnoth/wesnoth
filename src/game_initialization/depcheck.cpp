@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-#include "depcheck.hpp"
+#include "game_initialization/depcheck.hpp"
 
 #include <algorithm>
 
@@ -437,7 +437,7 @@ bool manager::enable_mods_dialog(const std::vector<std::string>& mods,
 		items.push_back(depinfo_.find_child("modification", "id", mod)["name"]);
 	}
 
-	gui2::tdepcheck_confirm_change dialog(true, items, requester);
+	gui2::dialogs::depcheck_confirm_change dialog(true, items, requester);
 	return dialog.show(video_);
 }
 
@@ -449,7 +449,7 @@ bool manager::disable_mods_dialog(const std::vector<std::string>& mods,
 		items.push_back(depinfo_.find_child("modification", "id", mod)["name"]);
 	}
 
-	gui2::tdepcheck_confirm_change dialog(false, items, requester);
+	gui2::dialogs::depcheck_confirm_change dialog(false, items, requester);
 	return dialog.show(video_);
 }
 
@@ -460,7 +460,7 @@ std::string manager::change_era_dialog(const std::vector<std::string>& eras)
 		items.push_back(depinfo_.find_child("era", "id", era)["name"]);
 	}
 
-	gui2::tdepcheck_select_new dialog(ERA, items);
+	gui2::dialogs::depcheck_select_new dialog(ERA, items);
 
 	if (dialog.show(video_)) {
 		return eras[dialog.result()];
@@ -477,7 +477,7 @@ std::string
 		items.push_back(depinfo_.find_child("scenario", "id", scenario)["name"]);
 	}
 
-	gui2::tdepcheck_select_new dialog(SCENARIO, items);
+	gui2::dialogs::depcheck_select_new dialog(SCENARIO, items);
 	if (dialog.show(video_)) {
 		return scenarios[dialog.result()];
 	}

@@ -27,7 +27,7 @@ namespace gui2
 namespace implementation
 {
 
-tplacer_vertical_list::tplacer_vertical_list(const unsigned maximum_columns)
+placer_vertical_list::placer_vertical_list(const unsigned maximum_columns)
 	: maximum_columns_(maximum_columns)
 	, rows_(1, std::make_pair(0, 0))
 	, columns_(maximum_columns, 0)
@@ -37,7 +37,7 @@ tplacer_vertical_list::tplacer_vertical_list(const unsigned maximum_columns)
 	assert(maximum_columns_ > 0);
 }
 
-void tplacer_vertical_list::initialise()
+void placer_vertical_list::initialise()
 {
 	rows_.clear();
 	rows_.push_back(std::make_pair(0, 0));
@@ -46,7 +46,7 @@ void tplacer_vertical_list::initialise()
 	column_ = 0;
 }
 
-void tplacer_vertical_list::add_item(const tpoint& size)
+void placer_vertical_list::add_item(const point& size)
 {
 	if(size.x > columns_[column_]) {
 		columns_[column_] = size.x;
@@ -66,14 +66,14 @@ void tplacer_vertical_list::add_item(const tpoint& size)
 	}
 }
 
-tpoint tplacer_vertical_list::get_size() const
+point placer_vertical_list::get_size() const
 {
 	const int width = std::accumulate(columns_.begin(), columns_.end(), 0);
 	const int height = rows_.back().first + rows_.back().second;
-	return tpoint(width, height);
+	return point(width, height);
 }
 
-tpoint tplacer_vertical_list::get_origin(const unsigned index) const
+point placer_vertical_list::get_origin(const unsigned index) const
 {
 	const unsigned row = index / maximum_columns_;
 	const unsigned column = index % maximum_columns_;
@@ -83,7 +83,7 @@ tpoint tplacer_vertical_list::get_origin(const unsigned index) const
 													columns_.begin() + column,
 													0);
 
-	return tpoint(width, rows_[row].first);
+	return point(width, rows_[row].first);
 }
 
 } // namespace implementation

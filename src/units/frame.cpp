@@ -698,11 +698,7 @@ void unit_frame::redraw(const int frame_time,bool on_start_time,bool in_scope_of
 	const int x = static_cast<int>(tmp_offset * xdst + (1.0-tmp_offset) * xsrc) + d2;
 	const int y = static_cast<int>(tmp_offset * ydst + (1.0-tmp_offset) * ysrc) + d2;
 	if (image != nullptr) {
-#ifdef LOW_MEM
-		bool facing_west = false;
-#else
 		bool facing_west = direction == map_location::NORTH_WEST || direction == map_location::SOUTH_WEST;
-#endif
 		bool facing_north = direction == map_location::NORTH_WEST || direction == map_location::NORTH || direction == map_location::NORTH_EAST;
 		if(!current_data.auto_hflip) facing_west = false;
 		if(!current_data.auto_vflip) facing_north = true;
@@ -720,7 +716,7 @@ void unit_frame::redraw(const int frame_time,bool on_start_time,bool in_scope_of
 		}
 
 		game_display::get_singleton()->render_image( my_x,my_y,
-			       	static_cast<display::tdrawing_layer>(display::LAYER_UNIT_FIRST+current_data.drawing_layer),
+					static_cast<display::drawing_layer>(display::LAYER_UNIT_FIRST+current_data.drawing_layer),
 			       	src, image, facing_west, false,
 			        ftofxp(current_data.highlight_ratio), current_data.blend_with,
 			       	current_data.blend_ratio,current_data.submerge,!facing_north);
@@ -842,11 +838,7 @@ std::set<map_location> unit_frame::get_overlaped_hex(const int frame_time,const 
 		if (w != 0 || h != 0) {
 			const int x = static_cast<int>(tmp_offset * xdst + (1.0-tmp_offset) * xsrc);
 			const int y = static_cast<int>(tmp_offset * ydst + (1.0-tmp_offset) * ysrc);
-#ifdef LOW_MEM
-			bool facing_west = false;
-#else
 			bool facing_west = direction == map_location::NORTH_WEST || direction == map_location::SOUTH_WEST;
-#endif
 			bool facing_north = direction == map_location::NORTH_WEST || direction == map_location::NORTH || direction == map_location::NORTH_EAST;
 			if(!current_data.auto_vflip) facing_north = true;
 			if(!current_data.auto_hflip) facing_west = false;
@@ -1003,11 +995,5 @@ const frame_parameters unit_frame::merge_parameters(int current_time,const frame
 		if(primary) result.auto_vflip=t_false;
 		else result.auto_vflip = t_true;
 	}
-#ifdef LOW_MEM
-	if(primary) {
-		result.image= engine_val.image;
-		result.image_diagonal= engine_val.image;
-	}
-#endif
 	return result;
 }

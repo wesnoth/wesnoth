@@ -139,7 +139,7 @@ std::pair<double, double> joystick_manager::get_mouse_axis_pair() {
 		return std::make_pair(0.0, 0.0);
 
 	// TODO do some math to normalize over the value - deadzone.
-	//const double relation = abs( (double)values.first / (double)values.second );
+	//const double relation = std::abs( (double)values.first / (double)values.second );
 	//const int range_x = values.first - round_double(relation * deadzone);
 	//const int range_y = values.second - ((1.0 - relation) * deadzone);
 	//double x_value = ((double)(values.first - deadzone) / (double)(32768 - deadzone)) *

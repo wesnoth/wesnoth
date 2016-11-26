@@ -20,9 +20,10 @@
 #include "utils/functional.hpp"
 
 #include <iostream>
+#include <cassert>
 
 /** Contains the definition of a filter. */
-struct tfilter
+struct filter
 {
 	/**
 	 * The functor to call for the filter.
@@ -37,12 +38,12 @@ struct tfilter
 				  surface& surf
 				, const std::string& parameters
 			)>
-			tfunctor;
+			functor_t;
 
-	tfilter(
+	filter(
 			  const std::string& name__
 			, const std::string& description__
-			, const tfunctor& functor__)
+			, const functor_t& functor__)
 		: name(name__)
 		, description(description__)
 		, functor(functor__)
@@ -61,10 +62,10 @@ struct tfilter
 	 *
 	 * The exact format of the string is documented at @ref filter_list.
 	 */
-	tfilter_description description;
+	filter_description description;
 
 	/** The functor to call for the filter. */
-	tfunctor functor;
+	functor_t functor;
 };
 
 /**
@@ -74,12 +75,12 @@ struct tfilter
  * * @p first                     The name of the filter.
  * * @p second                    The filter itself.
  */
-static std::map<std::string, tfilter> filters;
+static std::map<std::string, filter> filters;
 
 /** Helper structure to register a filter to the @ref filters. */
-struct tregister_filter
+struct register_filter
 {
-	tregister_filter(const std::pair<std::string, tfilter>& filter)
+	register_filter(const std::pair<std::string, filter>& filter)
 	{
 		filters.insert(filter);
 	}
@@ -95,12 +96,12 @@ struct tregister_filter
  *                                pipe-symbol. When the list is splitted in
  *                                to a vector of string its contents should
  *                                be compatible with the constructor of
- *                                @ref tfilter_description.
+ *                                @ref filter_description.
  */
 #define REGISTER(name, description)                                           \
-	tregister_filter register_filter_##name(std::make_pair(                   \
+	register_filter register_filter_##name(std::make_pair(                   \
 			  #name                                                           \
-			, tfilter(#name, #name description, std::bind(name, _1, _2))));
+			, filter(#name, #name description, std::bind(name, _1, _2))));
 
 static void
 scale(surface& surf, const std::string& parameters)
@@ -112,7 +113,7 @@ scale(surface& surf, const std::string& parameters)
 		std::cerr << "Error: Arguments to scale »"
 				<< parameters
 				<< "« are not compatible.\n";
-		throw texit(EXIT_FAILURE);
+		throw exiter(EXIT_FAILURE);
 	}
 
 	surf = scale_surface(surf, width, height);
@@ -137,7 +138,7 @@ brighten(surface& surf, const std::string& parameters)
 				<< parameters
 				<< "« are not compatible.\n";
 
-		throw texit(EXIT_FAILURE);
+		throw exiter(EXIT_FAILURE);
 	}
 
 	surf = brighten_image(surf, amount);
@@ -162,7 +163,7 @@ blend(surface& surf, const std::string& parameters)
 				<< parameters
 				<< "« are not compatible.\n";
 
-		throw texit(EXIT_FAILURE);
+		throw exiter(EXIT_FAILURE);
 	}
 
 	surf = blend_surface(surf, amount, color);
@@ -184,29 +185,29 @@ REGISTER(blend,
 		"is ignored.")
 
 void
-filter_apply(surface& surf, const std::string& filter)
+filter_apply(surface& surf, const std::string& filter_string)
 {
-	std::vector<std::string> f = utils::split(filter, ':', utils::STRIP_SPACES);
+	std::vector<std::string> f = utils::split(filter_string, ':', utils::STRIP_SPACES);
 
 	if(f.size() != 2) {
 		std::cerr << "Error: Filter »"
-				<< filter
+				<< filter_string
 				<< "« doesn't contain the expected separator »:«\n";
 
-		throw texit(EXIT_FAILURE);
+		throw exiter(EXIT_FAILURE);
 	}
 
-	std::map<std::string, tfilter>::iterator itor = filters.find(f[0]);
+	std::map<std::string, filter>::iterator itor = filters.find(f[0]);
 
 	if(itor == filters.end()) {
 		std::cerr << "Error: Filter »" << f[0] << "« is unknown.\n";
-		throw texit(EXIT_FAILURE);
+		throw exiter(EXIT_FAILURE);
 	}
 
 	itor->second.functor(surf, f[1]);
 }
 
-tfilter_description::tfilter_description(const std::string& fmt)
+filter_description::filter_description(const std::string& fmt)
 	: name()
 	, description()
 	, parameters()
@@ -224,7 +225,7 @@ tfilter_description::tfilter_description(const std::string& fmt)
 
 	for(size_t i = 2; i < elements.size(); i += 3) {
 
-		tfilter_description::tparameter parameter =
+		filter_description::parameter parameter =
 		{
 			  elements[i]
 			, elements[i + 1]
@@ -235,12 +236,11 @@ tfilter_description::tfilter_description(const std::string& fmt)
 	}
 }
 
-std::vector<tfilter_description>
+std::vector<filter_description>
 filter_list()
 {
-	std::vector<tfilter_description> result;
-	typedef std::pair<std::string, tfilter> thack;
-	for(const thack& filter : filters) {
+	std::vector<filter_description> result;
+	for(const auto& filter : filters) {
 		result.push_back(filter.second.description);
 	}
 	return result;

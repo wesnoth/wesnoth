@@ -51,10 +51,8 @@ option(ENABLE_TOOLS "Enable building and installation of tools for artists and W
 option(ENABLE_SDL2_TOOLS "Enable building and installation of tools for testing with SDL2" OFF)
 option(ENABLE_TESTS "Build unit tests")
 option(ENABLE_NLS "Enable building of translations" ON)
-option(ENABLE_LOW_MEM "Reduce memory usage by removing extra functionality" OFF)
 option(ENABLE_OMP "Enables OpenMP, and has additional dependencies" OFF)
 option(ENABLE_LIBPNG "Enable support for writing png files (screenshots, images)" ON)
-option(ENABLE_LIBINTL "Enable using libintl for translations instead of Boost.Locale library (not recommended)" OFF)
 option(ENABLE_HISTORY "Enable using GNU history for history in lua console" ON)
 
 if(DEFINED ENV{TRAVIS})
@@ -98,6 +96,39 @@ include(SearchForStuff)
 if(NOT CMAKE_BUILD_TYPE)
 	set( CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build, options are: None Debug Release RelWithDebInfo MinSizeRel." FORCE)
 endif(NOT CMAKE_BUILD_TYPE)
+
+# Add additional build with optional LTO flags
+MESSAGE("Adding Optimize build")
+if("${ENABLE_LTO}" STREQUAL "yes")
+  MESSAGE("LTO is enabled for Optimized build")
+  set(CMAKE_CXX_FLAGS_OPTIMIZED "-O3 -march=native -flto -s" CACHE STRING "Flags for a more highly optimized build" FORCE)
+  set(CMAKE_C_FLAGS_OPTIMIZED "-O3 -march=native -flto -s" CACHE STRING "Flags for a more highly optimized build with LTO" FORCE)
+  set(CMAKE_EXE_LINKER_FLAGS_OPTIMIZED "-fuse-ld=gold" CACHE STRING "Flags for a more highly optimized build with LTO" FORCE)
+else()
+  MESSAGE("LTO is not enabled for Optimized build")
+  set(CMAKE_CXX_FLAGS_OPTIMIZED "-O3 -march=native -s" CACHE STRING "Flags for a more highly optimized build without LTO" FORCE)
+  set(CMAKE_C_FLAGS_OPTIMIZED "-O3 -march=native -s" CACHE STRING "Flags for a more highly optimized build without LTO" FORCE)
+  set(CMAKE_EXE_LINKER_FLAGS_OPTIMIZED "" CACHE STRING "" FORCE)
+endif()
+set(CMAKE_SHARED_LINKER_FLAGS_OPTIMIZED "" CACHE STRING "Not used" FORCE)
+MARK_AS_ADVANCED(CMAKE_CXX_FLAGS_OPTIMIZED CMAKE_C_FLAGS_OPTIMIZED
+	CMAKE_EXE_LINKER_FLAGS_OPTIMIZED CMAKE_SHARED_LINKER_FLAGS_OPTIMIZED)
+
+# set CMAKE_AR and CMAKE_RANLIB to use LTO-enabled variants if the build is Optimize and LTO is enabled
+if("${CMAKE_BUILD_TYPE}" STREQUAL "Optimized" AND "${ENABLE_LTO}" STREQUAL "yes")
+  MESSAGE("Using gcc-ar and gcc-ranlib")
+  find_program(LTO_AR NAMES gcc-ar)
+  find_program(LTO_RANLIB NAMES gcc-ranlib)
+  set(CMAKE_AR "${LTO_AR}" CACHE STRING "Supports LTO" FORCE)
+  set(CMAKE_RANLIB "${LTO_RANLIB}" CACHE STRING "Supports LTO" FORCE)
+else()
+  MESSAGE("Using ar and ranlib")
+  find_program(NON_LTO_AR NAMES ar)
+  find_program(NON_LTO_RANLIB NAMES ranlib)
+  set(CMAKE_AR "${NON_LTO_AR}" CACHE STRING "Does not support LTO" FORCE)
+  set(CMAKE_RANLIB "${NON_LTO_RANLIB}" CACHE STRING "Does not support LTO" FORCE)
+endif()
+MARK_AS_ADVANCED(LTO_AR LTO_RANLIB NON_LTO_AR NON_LTO_RANLIB)
 
 if(NOT DEFINED ENABLE_DISPLAY_REVISION)
 	# Test whether the code is used in a repository if not autorevision will
@@ -508,6 +539,46 @@ list(REMOVE_ITEM CMAKE_C_FLAGS_MINSIZEREL "-DNDEBUG")
 string(REPLACE ";" " " CMAKE_C_FLAGS_MINSIZEREL "${CMAKE_C_FLAGS_MINSIZEREL}")
 set(CMAKE_C_FLAGS_MINSIZEREL "${CMAKE_C_FLAGS_MINSIZEREL}" CACHE STRING "removed NDEBUG flag" FORCE)
 
+# add pentiumpro arch for windows builds with -O3, otherwise resulting executable may not work
+if(WIN32)
+	separate_arguments(CMAKE_CXX_FLAGS_RELEASE)
+	list(APPEND CMAKE_CXX_FLAGS_RELEASE "-march=pentiumpro")
+	list(REMOVE_DUPLICATES CMAKE_CXX_FLAGS_RELEASE)
+	string(REPLACE ";" " " CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE}")
+	set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE}" CACHE STRING "added -march=pentiumpro" FORCE)
+	MESSAGE("added -march=pentiumpro to Release build")
+	
+	separate_arguments(CMAKE_C_FLAGS_RELEASE)
+	list(APPEND CMAKE_C_FLAGS_RELEASE "-march=pentiumpro")
+	list(REMOVE_DUPLICATES CMAKE_C_FLAGS_RELEASE)
+	string(REPLACE ";" " " CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE}")
+	set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE}" CACHE STRING "added -march=pentiumpro" FORCE)
+	MESSAGE("added -march=pentiumpro to Release build")
+	
+	separate_arguments(CMAKE_CXX_FLAGS_OPTIMIZED)
+	list(REMOVE_ITEM CMAKE_CXX_FLAGS_OPTIMIZED "-march=native")
+	list(APPEND CMAKE_CXX_FLAGS_OPTIMIZED "-march=pentiumpro")
+	list(REMOVE_DUPLICATES CMAKE_CXX_FLAGS_OPTIMIZED)
+	string(REPLACE ";" " " CMAKE_CXX_FLAGS_OPTIMIZED
+		"${CMAKE_CXX_FLAGS_OPTIMIZED}")
+	set(CMAKE_CXX_FLAGS_OPTIMIZED "${CMAKE_CXX_FLAGS_OPTIMIZED}" CACHE STRING "added -march=pentiumpro" FORCE)
+	MESSAGE("added -march=pentiumpro to Optimize build")
+	
+	separate_arguments(CMAKE_C_FLAGS_OPTIMIZED)
+	list(REMOVE_ITEM CMAKE_C_FLAGS_OPTIMIZED "-march=native")
+	list(APPEND CMAKE_C_FLAGS_OPTIMIZED "-march=pentiumpro")
+	list(REMOVE_DUPLICATES CMAKE_C_FLAGS_OPTIMIZED)
+	string(REPLACE ";" " " CMAKE_C_FLAGS_OPTIMIZED
+		"${CMAKE_C_FLAGS_OPTIMIZED}")
+	set(CMAKE_C_FLAGS_OPTIMIZED "${CMAKE_C_FLAGS_OPTIMIZED}" CACHE STRING "added -march=pentiumpro" FORCE)
+	MESSAGE("added -march=pentiumpro to Optimize build")
+endif(WIN32)
+
+# replace the default Debug flag of -g with -O0 -DDEBUG -ggdb3
+# this matches the flags of scons' debug build
+MESSAGE("Replacing flags used for Debug build")
+set(CMAKE_CXX_FLAGS_DEBUG "-O0 -DDEBUG -ggdb3" CACHE STRING "change cmake's Debug flags to match scons' flags" FORCE)
+set(CMAKE_C_FLAGS_DEBUG "-O0 -DDEBUG -ggdb3" CACHE STRING "change cmake's Debug flags to match scons' flags" FORCE)
 
 # When the path starts with a / on a Unix system it's an absolute path.
 # This means that on Windows the path used is always relative.
@@ -533,10 +604,6 @@ if(DEFAULT_PREFS_FILE)
 		add_definitions(-DHAS_RELATIVE_DEFPREF)
 	endif(NOT DEFAULT_PREFS_FILE MATCHES "^/")
 endif(DEFAULT_PREFS_FILE)
-
-if(ENABLE_LOW_MEM)
-	add_definitions(-DLOW_MEM)
-endif(ENABLE_LOW_MEM)
 
 if(ENABLE_OMP)
 	find_package(OpenMP REQUIRED)
@@ -614,15 +681,7 @@ endif(ENABLE_GAME)
 if(ENABLE_GAME OR ENABLE_SERVER OR ENABLE_TOOLS OR ENABLE_TESTS)
 	find_package( Boost 1.44 REQUIRED COMPONENTS filesystem )
 
-	if(NOT ENABLE_LIBINTL)
-		find_package( Boost 1.48 REQUIRED COMPONENTS locale )
-	else()
-		find_package( Libintl REQUIRED )
-		if(WIN32)
-			# CMake 2.6 doesn't do message(WARNING ...)
-			message("Warning: Using libintl on Windows instead of Boost.Locale may result in issues with translations and Unicode file paths!")
-		endif()
-	endif()
+	find_package( Boost 1.48 REQUIRED COMPONENTS locale )
 endif(ENABLE_GAME OR ENABLE_SERVER OR ENABLE_TOOLS OR ENABLE_TESTS)
 
 if(ENABLE_POT_UPDATE_TARGET)

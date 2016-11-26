@@ -31,18 +31,6 @@ namespace font {
 extern const char LARGE_TEXT, SMALL_TEXT, BOLD_TEXT, NORMAL_TEXT, NULL_MARKUP, BLACK_TEXT, GRAY_TEXT,
                   GOOD_TEXT, BAD_TEXT, GREEN_TEXT, RED_TEXT, COLOR_TEXT, IMAGE;
 
-// some colors often used in UI
-extern const std::string weapon, weapon_details, unit_type, race;
-
-extern const SDL_Color weapon_color,
-		good_dmg_color,
-		bad_dmg_color,
-		weapon_details_color,
-		inactive_details_color,
-		inactive_ability_color,
-		unit_type_color,
-		race_color;
-
 /** Parses the markup-tags at the front of a string. */
 std::string::const_iterator parse_markup(std::string::const_iterator i1,
 												std::string::const_iterator i2,
@@ -114,21 +102,6 @@ std::string color2markup(const SDL_Color &color);
  */
 std::string word_wrap_text(const std::string& unwrapped_text, int font_size,
 	int max_width, int max_height = -1, int max_lines = -1, bool partial_line = false);
-
-/**
- * Draw text on the screen, fit text to maximum width, no markup, no tooltips.
- *
- * This method makes sure that the text fits within a given maximum width.
- * If a line exceeds this width, it will be wrapped
- * on a word basis if possible, otherwise on a char basis.
- * This method is otherwise similar to the draw_text method,
- * but it doesn't support special markup or tooltips.
- *
- * @returns                       A bounding rectangle of the text.
- */
-SDL_Rect draw_wrapped_text(CVideo* gui, const SDL_Rect& area, int font_size,
-			     const SDL_Color& color, const std::string& text,
-			     int x, int y, int max_width);
 
 } // end namespace font
 

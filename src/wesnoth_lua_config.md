@@ -42,8 +42,10 @@ Change into the Lua source folder.
         $ cd ~/lua-5.3.3/src
 
 We do not need, or want, the Lua command line interpreter, the Lua compiler or the Makefile, so delete them.
+We compile using C++ so cannot allow the use of "C" linkage from the provided header.
+And we initialize the Lua runtime and do not want to allow the provided initialization routine.
 
-        $ rm lua.c luac.c Makefile
+        $ rm lua.c luac.c Makefile lua.hpp linit.c
 
 Wesnoth requires all Lua sources to be compiled using C++.
 To ensure  this, rather than depend upon compiler flags, rename the files.

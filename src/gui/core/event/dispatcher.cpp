@@ -24,9 +24,9 @@ namespace gui2
 namespace event
 {
 
-/***** tdispatcher class. *****/
+/***** dispatcher class. *****/
 
-tdispatcher::tdispatcher()
+dispatcher::dispatcher()
 	: mouse_behavior_(all)
 	, want_keyboard_input_(true)
 	, signal_queue_()
@@ -39,59 +39,59 @@ tdispatcher::tdispatcher()
 {
 }
 
-tdispatcher::~tdispatcher()
+dispatcher::~dispatcher()
 {
 	if(connected_) {
 		disconnect_dispatcher(this);
 	}
 }
 
-void tdispatcher::connect()
+void dispatcher::connect()
 {
 	assert(!connected_);
 	connected_ = true;
 	connect_dispatcher(this);
 }
 
-bool tdispatcher::has_event(const tevent event, const tevent_type event_type)
+bool dispatcher::has_event(const ui_event event, const event_queue_type event_type)
 {
 #if 0
 	// Debug code to test whether the event is in the right queue.
 	std::cerr << "Event '" << event
 			<< "' event "
-			<< find<tset_event>(event, tdispatcher_implementation
-				::thas_handler(event_type, *this))
+			<< find<set_event>(event, dispatcher_implementation
+				::has_handler(event_type, *this))
 			<< " mouse "
-			<< find<tset_event_mouse>(event, tdispatcher_implementation
-				::thas_handler(event_type, *this))
+			<< find<set_event_mouse>(event, dispatcher_implementation
+				::has_handler(event_type, *this))
 			<< " keyboard "
-			<< find<tset_event_keyboard>(event, tdispatcher_implementation
-				::thas_handler(event_type, *this))
+			<< find<set_event_keyboard>(event, dispatcher_implementation
+				::has_handler(event_type, *this))
 			<< " notification "
-			<< find<tset_event_notification>(event, tdispatcher_implementation
-				::thas_handler(event_type, *this))
+			<< find<set_event_notification>(event, dispatcher_implementation
+				::has_handler(event_type, *this))
 			<< " message "
-			<< find<tset_event_message>(event, tdispatcher_implementation
-				::thas_handler(event_type, *this))
+			<< find<set_event_message>(event, dispatcher_implementation
+				::has_handler(event_type, *this))
 			<< ".\n";
 #endif
 
-	return find<tset_event>(
+	return find<set_event>(
 				   event,
-				   tdispatcher_implementation::thas_handler(event_type, *this))
-		   || find<tset_event_mouse>(event,
-									 tdispatcher_implementation::thas_handler(
+				   dispatcher_implementation::has_handler(event_type, *this))
+		   || find<set_event_mouse>(event,
+									 dispatcher_implementation::has_handler(
 											 event_type, *this))
-		   || find<tset_event_keyboard>(
+		   || find<set_event_keyboard>(
 					  event,
-					  tdispatcher_implementation::thas_handler(event_type,
+					  dispatcher_implementation::has_handler(event_type,
 															   *this))
-		   || find<tset_event_notification>(
+		   || find<set_event_notification>(
 					  event,
-					  tdispatcher_implementation::thas_handler(event_type,
+					  dispatcher_implementation::has_handler(event_type,
 															   *this))
-		   || find<tset_event_message>(event,
-									   tdispatcher_implementation::thas_handler(
+		   || find<set_event_message>(event,
+									   dispatcher_implementation::has_handler(
 											   event_type, *this));
 }
 
@@ -104,7 +104,7 @@ bool tdispatcher::has_event(const tevent event, const tevent_type event_type)
  * makes developing and testing the code easier, a wrong handler terminates
  * Wesnoth instead of silently not working.
  */
-class tevent_in_set
+class event_in_set
 {
 public:
 	/**
@@ -113,7 +113,7 @@ public:
 	 * Since we need to return true if found we always return true.
 	 */
 	template <class T>
-	bool oper(tevent)
+	bool oper(ui_event)
 	{
 		return true;
 	}
@@ -126,14 +126,14 @@ public:
  * parameter. In order to facilitate this we send the parameter in the
  * constructor of the class and let operator() call the functor with the
  * default parameters and the stored parameters. This allows the core part of
- * @ref tdispatcher::fire to be generic.
+ * @ref dispatcher::fire to be generic.
  */
-class ttrigger
+class trigger
 {
 public:
-	void operator()(tsignal_function functor,
-					tdispatcher& dispatcher,
-					const tevent event,
+	void operator()(signal_function functor,
+					dispatcher& dispatcher,
+					const ui_event event,
 					bool& handled,
 					bool& halt)
 	{
@@ -141,51 +141,51 @@ public:
 	}
 };
 
-bool tdispatcher::fire(const tevent event, twidget& target)
+bool dispatcher::fire(const ui_event event, widget& target)
 {
-	assert(find<tset_event>(event, tevent_in_set()));
+	assert(find<set_event>(event, event_in_set()));
 	switch(event) {
 		case LEFT_BUTTON_DOUBLE_CLICK:
 			return fire_event_double_click<LEFT_BUTTON_CLICK,
 										   LEFT_BUTTON_DOUBLE_CLICK,
-										   &tevent_executor::
+										   &event_executor::
 													wants_mouse_left_double_click,
-										   tsignal_function>(
-					dynamic_cast<twidget*>(this), &target, ttrigger());
+										   signal_function>(
+					dynamic_cast<widget*>(this), &target, trigger());
 
 		case MIDDLE_BUTTON_DOUBLE_CLICK:
 			return fire_event_double_click<MIDDLE_BUTTON_CLICK,
 										   MIDDLE_BUTTON_DOUBLE_CLICK,
-										   &tevent_executor::
+										   &event_executor::
 													wants_mouse_middle_double_click,
-										   tsignal_function>(
-					dynamic_cast<twidget*>(this), &target, ttrigger());
+										   signal_function>(
+					dynamic_cast<widget*>(this), &target, trigger());
 
 		case RIGHT_BUTTON_DOUBLE_CLICK:
 			return fire_event_double_click<RIGHT_BUTTON_CLICK,
 										   RIGHT_BUTTON_DOUBLE_CLICK,
-										   &tevent_executor::
+										   &event_executor::
 													wants_mouse_right_double_click,
-										   tsignal_function>(
-					dynamic_cast<twidget*>(this), &target, ttrigger());
+										   signal_function>(
+					dynamic_cast<widget*>(this), &target, trigger());
 
 		default:
-			return fire_event<tsignal_function>(
-					event, dynamic_cast<twidget*>(this), &target, ttrigger());
+			return fire_event<signal_function>(
+					event, dynamic_cast<widget*>(this), &target, trigger());
 	}
 }
 
 /** Helper struct to wrap the functor call. */
-class ttrigger_mouse
+class trigger_mouse
 {
 public:
-	ttrigger_mouse(const tpoint& coordinate) : coordinate_(coordinate)
+	trigger_mouse(const point& coordinate) : coordinate_(coordinate)
 	{
 	}
 
-	void operator()(tsignal_mouse_function functor,
-					tdispatcher& dispatcher,
-					const tevent event,
+	void operator()(signal_mouse_function functor,
+					dispatcher& dispatcher,
+					const ui_event event,
 					bool& handled,
 					bool& halt)
 	{
@@ -193,33 +193,33 @@ public:
 	}
 
 private:
-	tpoint coordinate_;
+	point coordinate_;
 };
 
 bool
-tdispatcher::fire(const tevent event, twidget& target, const tpoint& coordinate)
+dispatcher::fire(const ui_event event, widget& target, const point& coordinate)
 {
-	assert(find<tset_event_mouse>(event, tevent_in_set()));
-	return fire_event<tsignal_mouse_function>(event,
-											  dynamic_cast<twidget*>(this),
+	assert(find<set_event_mouse>(event, event_in_set()));
+	return fire_event<signal_mouse_function>(event,
+											  dynamic_cast<widget*>(this),
 											  &target,
-											  ttrigger_mouse(coordinate));
+											  trigger_mouse(coordinate));
 }
 
 /** Helper struct to wrap the functor call. */
-class ttrigger_keyboard
+class trigger_keyboard
 {
 public:
-	ttrigger_keyboard(const SDL_Keycode key,
+	trigger_keyboard(const SDL_Keycode key,
 					  const SDL_Keymod modifier,
 					  const utf8::string& unicode)
 		: key_(key), modifier_(modifier), unicode_(unicode)
 	{
 	}
 
-	void operator()(tsignal_keyboard_function functor,
-					tdispatcher& dispatcher,
-					const tevent event,
+	void operator()(signal_keyboard_function functor,
+					dispatcher& dispatcher,
+					const ui_event event,
 					bool& handled,
 					bool& halt)
 	{
@@ -232,27 +232,27 @@ private:
 	utf8::string unicode_;
 };
 
-bool tdispatcher::fire(const tevent event,
-					   twidget& target,
+bool dispatcher::fire(const ui_event event,
+					   widget& target,
 					   const SDL_Keycode key,
 					   const SDL_Keymod modifier,
 					   const utf8::string& unicode)
 {
-	assert(find<tset_event_keyboard>(event, tevent_in_set()));
-	return fire_event<tsignal_keyboard_function>(
+	assert(find<set_event_keyboard>(event, event_in_set()));
+	return fire_event<signal_keyboard_function>(
 			event,
-			dynamic_cast<twidget*>(this),
+			dynamic_cast<widget*>(this),
 			&target,
-			ttrigger_keyboard(key, modifier, unicode));
+			trigger_keyboard(key, modifier, unicode));
 }
 
 /** Helper struct to wrap the functor call. */
-class ttrigger_notification
+class trigger_notification
 {
 public:
-	void operator()(tsignal_notification_function functor,
-					tdispatcher& dispatcher,
-					const tevent event,
+	void operator()(signal_notification_function functor,
+					dispatcher& dispatcher,
+					const ui_event event,
 					bool& handled,
 					bool& halt)
 	{
@@ -260,27 +260,27 @@ public:
 	}
 };
 
-bool tdispatcher::fire(const tevent event, twidget& target, void*)
+bool dispatcher::fire(const ui_event event, widget& target, void*)
 {
-	assert(find<tset_event_notification>(event, tevent_in_set()));
-	return fire_event<tsignal_notification_function>(
+	assert(find<set_event_notification>(event, event_in_set()));
+	return fire_event<signal_notification_function>(
 			event,
-			dynamic_cast<twidget*>(this),
+			dynamic_cast<widget*>(this),
 			&target,
-			ttrigger_notification());
+			trigger_notification());
 }
 
 /** Helper struct to wrap the functor call. */
-class ttrigger_message
+class trigger_message
 {
 public:
-	ttrigger_message(tmessage& message) : message_(message)
+	trigger_message(message& msg) : message_(msg)
 	{
 	}
 
-	void operator()(tsignal_message_function functor,
-					tdispatcher& dispatcher,
-					const tevent event,
+	void operator()(signal_message_function functor,
+					dispatcher& dispatcher,
+					const ui_event event,
 					bool& handled,
 					bool& halt)
 	{
@@ -288,25 +288,25 @@ public:
 	}
 
 private:
-	tmessage& message_;
+	message& message_;
 };
 
-bool tdispatcher::fire(const tevent event, twidget& target, tmessage& message)
+bool dispatcher::fire(const ui_event event, widget& target, message& msg)
 {
-	assert(find<tset_event_message>(event, tevent_in_set()));
-	return fire_event<tsignal_message_function>(event,
-												dynamic_cast<twidget*>(this),
+	assert(find<set_event_message>(event, event_in_set()));
+	return fire_event<signal_message_function>(event,
+												dynamic_cast<widget*>(this),
 												&target,
-												ttrigger_message(message));
+												trigger_message(msg));
 }
 
-void tdispatcher::register_hotkey(const hotkey::HOTKEY_COMMAND id,
+void dispatcher::register_hotkey(const hotkey::HOTKEY_COMMAND id,
 								  const thotkey_function& function)
 {
 	hotkeys_[id] = function;
 }
 
-bool tdispatcher::execute_hotkey(const hotkey::HOTKEY_COMMAND id)
+bool dispatcher::execute_hotkey(const hotkey::HOTKEY_COMMAND id)
 {
 	std::map<hotkey::HOTKEY_COMMAND, thotkey_function>::iterator itor
 			= hotkeys_.find(id);
@@ -492,8 +492,8 @@ bool tdispatcher::execute_hotkey(const hotkey::HOTKEY_COMMAND id)
  * events to the various widgets. The first step in sending an event is to
  * decode it and send it to a registered dispatcher.
  *
- * - gui2::event::thandler handles the SDL events.
- * - gui2::event::tdispatcher has the registered dispatchers.
+ * - gui2::event::sdl_event_handler handles the SDL events.
+ * - gui2::event::dispatcher has the registered dispatchers.
  *
  * In general a dispatcher is a window which then needs to send this event to
  * the widgets. The dispatcher is just a simple part which fires events and
@@ -506,7 +506,7 @@ bool tdispatcher::execute_hotkey(const hotkey::HOTKEY_COMMAND id)
  * Widgets like to sleep with nice dreams and not having nightmares where SDL
  * events haunt them.
  *
- * In order to remedy that problem there's the gui2::event::tdistributor
+ * In order to remedy that problem there's the gui2::event::distributor
  * class, it's the class to do the dirty job of converting the raw event into
  * these nice polished events. The distributor is in general linked to a window,
  * but a widget can install it's own distributor if it needs to know more of the
@@ -524,17 +524,17 @@ bool tdispatcher::execute_hotkey(const hotkey::HOTKEY_COMMAND id)
  * Events are generated by SDL and placed in a queue. The Wesnoth code processes
  * this queue and thus handles the events. The part which does the first
  * handling isn't described here since it's (secretly) intended to be replaced
- * by the @ref gui2::event::thandler class. Instead we directly jump to this
+ * by the @ref gui2::event::sdl_event_handler class. Instead we directly jump to this
  * class and explain what it does.
  *
- * The main handling function is @ref gui2::event::thandler::handle_event which
+ * The main handling function is @ref gui2::event::sdl_event_handler::handle_event which
  * as no real surprise handles the events. The function is a simple multiplexer
  * which lets other subfunctions to the handling of specific events.
  *
  * @todo Describe drawing and resizing once the code is stable and working as
  * wanted in these areas.
  *
- * @subsubsection thandler_mouse Mouse motion events
+ * @subsubsection handler_mouse Mouse motion events
  *
  * If a dispatcher has captured the mouse it gets the event, no questions asked.
  * If not it goes through all dispatchers and finds the first one willing to
@@ -542,7 +542,7 @@ bool tdispatcher::execute_hotkey(const hotkey::HOTKEY_COMMAND id)
  *
  * This means a mouse event is send to one dispatcher.
  *
- * @subsubsection thandler_mouse_button_down Mouse button down events
+ * @subsubsection handler_mouse_button_down Mouse button down events
  *
  * Turning the mouse wheel on a mouse generates both an down and up event. It
  * has been decided to handle the wheel event in the button up code so wheel
@@ -551,14 +551,14 @@ bool tdispatcher::execute_hotkey(const hotkey::HOTKEY_COMMAND id)
  * The other buttons are handled as if they're normal mouse events but are
  * decoded per button so instead of a button_down(id) you get button_down_id.
  *
- * @subsubsection thandler_mouse_button_up Mouse button up events
+ * @subsubsection handler_mouse_button_up Mouse button up events
  *
  * The mouse wheel event is handled as if it's a keyboard event and like the
  * button_down they are send as wheel_id events.
  *
  * The other mouse buttons are handled the same as the down buttons.
  *
- * @subsubsection thandler_keyboard Keyboard events
+ * @subsubsection handler_keyboard Keyboard events
  *
  * There are three types of keyboard events, the already mentioned mouse wheel
  * events, the key down and key up event. When a key is pressed for a longer
@@ -601,7 +601,7 @@ bool tdispatcher::execute_hotkey(const hotkey::HOTKEY_COMMAND id)
  *
  * @todo This might change in the near future.
  *
- * @subsection tdistributor Event polishing and distribution
+ * @subsection distributor Event polishing and distribution
  *
  * The event distributor has the job to find the widget that should receive the
  * event and which event(s) to send from a single event. In general an event is

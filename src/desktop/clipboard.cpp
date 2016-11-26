@@ -21,9 +21,6 @@
 #include <algorithm>
 
 #include <SDL_events.h>
-#include <SDL_version.h>
-
-
 #include <SDL_clipboard.h>
 
 #define CLIPBOARD_FUNCS_DEFINED

@@ -33,47 +33,47 @@ namespace gui2
 
 REGISTER_WIDGET(horizontal_scrollbar)
 
-unsigned thorizontal_scrollbar::minimum_positioner_length() const
+unsigned horizontal_scrollbar::minimum_positioner_length() const
 {
-	std::shared_ptr<const thorizontal_scrollbar_definition::tresolution>
-	conf = std::static_pointer_cast<const thorizontal_scrollbar_definition::
-											   tresolution>(config());
+	std::shared_ptr<const horizontal_scrollbar_definition::resolution>
+	conf = std::static_pointer_cast<const horizontal_scrollbar_definition::
+											   resolution>(config());
 
 	assert(conf);
 	return conf->minimum_positioner_length;
 }
 
-unsigned thorizontal_scrollbar::maximum_positioner_length() const
+unsigned horizontal_scrollbar::maximum_positioner_length() const
 {
-	std::shared_ptr<const thorizontal_scrollbar_definition::tresolution>
-	conf = std::static_pointer_cast<const thorizontal_scrollbar_definition::
-											   tresolution>(config());
+	std::shared_ptr<const horizontal_scrollbar_definition::resolution>
+	conf = std::static_pointer_cast<const horizontal_scrollbar_definition::
+											   resolution>(config());
 
 	assert(conf);
 	return conf->maximum_positioner_length;
 }
 
-unsigned thorizontal_scrollbar::offset_before() const
+unsigned horizontal_scrollbar::offset_before() const
 {
-	std::shared_ptr<const thorizontal_scrollbar_definition::tresolution>
-	conf = std::static_pointer_cast<const thorizontal_scrollbar_definition::
-											   tresolution>(config());
+	std::shared_ptr<const horizontal_scrollbar_definition::resolution>
+	conf = std::static_pointer_cast<const horizontal_scrollbar_definition::
+											   resolution>(config());
 
 	assert(conf);
 	return conf->left_offset;
 }
 
-unsigned thorizontal_scrollbar::offset_after() const
+unsigned horizontal_scrollbar::offset_after() const
 {
-	std::shared_ptr<const thorizontal_scrollbar_definition::tresolution>
-	conf = std::static_pointer_cast<const thorizontal_scrollbar_definition::
-											   tresolution>(config());
+	std::shared_ptr<const horizontal_scrollbar_definition::resolution>
+	conf = std::static_pointer_cast<const horizontal_scrollbar_definition::
+											   resolution>(config());
 	assert(conf);
 
 	return conf->right_offset;
 }
 
-bool thorizontal_scrollbar::on_positioner(const tpoint& coordinate) const
+bool horizontal_scrollbar::on_positioner(const point& coordinate) const
 {
 	// Note we assume the positioner is over the entire height of the widget.
 	return coordinate.x >= static_cast<int>(get_positioner_offset())
@@ -82,7 +82,7 @@ bool thorizontal_scrollbar::on_positioner(const tpoint& coordinate) const
 		   && coordinate.y > 0 && coordinate.y < static_cast<int>(get_height());
 }
 
-int thorizontal_scrollbar::on_bar(const tpoint& coordinate) const
+int horizontal_scrollbar::on_bar(const point& coordinate) const
 {
 	// Not on the widget, leave.
 	if(static_cast<size_t>(coordinate.x) > get_width()
@@ -102,12 +102,12 @@ int thorizontal_scrollbar::on_bar(const tpoint& coordinate) const
 	}
 }
 
-bool thorizontal_scrollbar::in_orthogonal_range(const tpoint& coordinate) const
+bool horizontal_scrollbar::in_orthogonal_range(const point& coordinate) const
 {
 	return static_cast<size_t>(coordinate.x) < get_width();
 }
 
-const std::string& thorizontal_scrollbar::get_control_type() const
+const std::string& horizontal_scrollbar::get_control_type() const
 {
 	static const std::string type = "horizontal_scrollbar";
 	return type;
@@ -115,13 +115,13 @@ const std::string& thorizontal_scrollbar::get_control_type() const
 
 // }---------- DEFINITION ---------{
 
-thorizontal_scrollbar_definition::thorizontal_scrollbar_definition(
+horizontal_scrollbar_definition::horizontal_scrollbar_definition(
 		const config& cfg)
-	: tcontrol_definition(cfg)
+	: styled_widget_definition(cfg)
 {
 	DBG_GUI_P << "Parsing horizontal scrollbar " << id << '\n';
 
-	load_resolutions<tresolution>(cfg);
+	load_resolutions<resolution>(cfg);
 }
 
 /*WIKI
@@ -172,8 +172,8 @@ thorizontal_scrollbar_definition::thorizontal_scrollbar_definition(
  * @end{tag}{name="horizontal_scrollbar_definition"}
  * @end{parent}{name="gui/"}
  */
-thorizontal_scrollbar_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
+horizontal_scrollbar_definition::resolution::resolution(const config& cfg)
+	: resolution_definition(cfg)
 	, minimum_positioner_length(cfg["minimum_positioner_length"])
 	, maximum_positioner_length(cfg["maximum_positioner_length"])
 	, left_offset(cfg["left_offset"])
@@ -183,11 +183,11 @@ thorizontal_scrollbar_definition::tresolution::tresolution(const config& cfg)
 			 missing_mandatory_wml_key("resolution",
 									   "minimum_positioner_length"));
 
-	// Note the order should be the same as the enum tstate is scrollbar.hpp.
-	state.push_back(tstate_definition(cfg.child("state_enabled")));
-	state.push_back(tstate_definition(cfg.child("state_disabled")));
-	state.push_back(tstate_definition(cfg.child("state_pressed")));
-	state.push_back(tstate_definition(cfg.child("state_focused")));
+	// Note the order should be the same as the enum state_t is scrollbar.hpp.
+	state.push_back(state_definition(cfg.child("state_enabled")));
+	state.push_back(state_definition(cfg.child("state_disabled")));
+	state.push_back(state_definition(cfg.child("state_pressed")));
+	state.push_back(state_definition(cfg.child("state_focused")));
 }
 
 // }---------- BUILDER -----------{
@@ -218,14 +218,14 @@ thorizontal_scrollbar_definition::tresolution::tresolution(const config& cfg)
 namespace implementation
 {
 
-tbuilder_horizontal_scrollbar::tbuilder_horizontal_scrollbar(const config& cfg)
-	: tbuilder_control(cfg)
+builder_horizontal_scrollbar::builder_horizontal_scrollbar(const config& cfg)
+	: builder_styled_widget(cfg)
 {
 }
 
-twidget* tbuilder_horizontal_scrollbar::build() const
+widget* builder_horizontal_scrollbar::build() const
 {
-	thorizontal_scrollbar* widget = new thorizontal_scrollbar();
+	horizontal_scrollbar* widget = new horizontal_scrollbar();
 
 	init_control(widget);
 

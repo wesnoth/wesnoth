@@ -30,18 +30,18 @@ namespace gui2
  * inheritance. If that is needed at some point the containers should contain
  * pointers
  */
-struct tstate_definition
+struct state_definition
 {
-	explicit tstate_definition(const config& cfg);
+	explicit state_definition(const config& cfg);
 
-	tcanvas canvas;
+	canvas canvas_;
 };
 
 
 /** Base class of a resolution, contains the common keys for a resolution. */
-struct tresolution_definition_
+struct resolution_definition
 {
-	explicit tresolution_definition_(const config& cfg);
+	explicit resolution_definition(const config& cfg);
 
 	unsigned window_width;
 	unsigned window_height;
@@ -59,19 +59,19 @@ struct tresolution_definition_
 	unsigned text_extra_height;
 	unsigned text_font_size;
 	font::family_class text_font_family;
-	font::ttext::FONT_STYLE text_font_style;
+	font::pango_text::FONT_STYLE text_font_style;
 
-	std::vector<tstate_definition> state;
+	std::vector<state_definition> state;
 };
 
-typedef std::shared_ptr<tresolution_definition_>
-tresolution_definition_ptr;
+typedef std::shared_ptr<resolution_definition>
+resolution_definition_ptr;
 
-typedef std::shared_ptr<const tresolution_definition_>
-tresolution_definition_const_ptr;
+typedef std::shared_ptr<const resolution_definition>
+resolution_definition_const_ptr;
 
 /**
- * Casts a tresolution_definition_const_ptr to another type.
+ * Casts a resolution_definition_const_ptr to another type.
  *
  * @tparam T                      The type to cast to, the non const version.
  *
@@ -80,16 +80,16 @@ tresolution_definition_const_ptr;
  * @returns                       A reference to type casted to.
  */
 template <class T>
-const T& cast(tresolution_definition_const_ptr ptr)
+const T& cast(resolution_definition_const_ptr ptr)
 {
 	std::shared_ptr<const T> conf = std::make_shared<const T>(ptr);
 	assert(conf);
 	return *conf;
 }
 
-struct tcontrol_definition
+struct styled_widget_definition
 {
-	explicit tcontrol_definition(const config& cfg);
+	explicit styled_widget_definition(const config& cfg);
 
 	template <class T>
 	void load_resolutions(const config& cfg)
@@ -103,10 +103,10 @@ struct tcontrol_definition
 	std::string id;
 	t_string description;
 
-	std::vector<tresolution_definition_ptr> resolutions;
+	std::vector<resolution_definition_ptr> resolutions;
 };
 
-typedef std::shared_ptr<tcontrol_definition> tcontrol_definition_ptr;
+typedef std::shared_ptr<styled_widget_definition> styled_widget_definition_ptr;
 
 } // namespace gui2
 

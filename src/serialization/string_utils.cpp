@@ -472,7 +472,7 @@ bool string_bool(const std::string& str, bool def) {
 std::string signed_value(int val)
 {
 	std::ostringstream oss;
-	oss << (val >= 0 ? "+" : font::unicode_minus) << abs(val);
+	oss << (val >= 0 ? "+" : font::unicode_minus) << std::abs(val);
 	return oss.str();
 }
 
@@ -481,7 +481,7 @@ std::string half_signed_value(int val)
 	std::ostringstream oss;
 	if (val < 0)
 		oss << font::unicode_minus;
-	oss << abs(val);
+	oss << std::abs(val);
 	return oss.str();
 }
 

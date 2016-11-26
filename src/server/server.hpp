@@ -16,13 +16,13 @@
 #define SERVER_HPP_INCLUDED
 
 #include "config.hpp"
-#include "user_handler.hpp"
-#include "metrics.hpp"
-#include "ban.hpp"
-#include "player.hpp"
-#include "simple_wml.hpp"
-#include "server_base.hpp"
-#include "player_connection.hpp"
+#include "server/user_handler.hpp"
+#include "server/metrics.hpp"
+#include "server/ban.hpp"
+#include "server/player.hpp"
+#include "server/simple_wml.hpp"
+#include "server/server_base.hpp"
+#include "server/player_connection.hpp"
 
 #include <boost/shared_array.hpp>
 

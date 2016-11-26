@@ -20,19 +20,19 @@
  * Contains the SDL_Rect helper code.
  */
 
-#include <SDL_version.h>
+#include "global.hpp"
 #include "utils.hpp"
 
 #include <SDL_rect.h>
 
 namespace gui2 {
-	struct tpoint;
+	struct point;
 }
 
 namespace sdl
 {
 
-extern const SDL_Rect empty_rect;
+CONSTEXPR const SDL_Rect empty_rect = { 0, 0, 0, 0 };
 
 /**
  * Creates an empty SDL_Rect.
@@ -54,7 +54,7 @@ SDL_Rect create_rect(const int x, const int y, const int w, const int h);
  */
 bool point_in_rect(int x, int y, const SDL_Rect& rect);
 
-bool point_in_rect(const gui2::tpoint& point, const SDL_Rect& rect);
+bool point_in_rect(const gui2::point& point, const SDL_Rect& rect);
 
 /**
  * Tests whether two rectangles overlap.

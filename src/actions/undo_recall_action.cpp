@@ -1,5 +1,5 @@
-#include "undo_recall_action.hpp"
-#include "create.hpp"
+#include "actions/undo_recall_action.hpp"
+#include "actions/create.hpp"
 
 #include "gui/dialogs/transient_message.hpp"
 #include "game_board.hpp"

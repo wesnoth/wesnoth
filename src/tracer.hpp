@@ -26,29 +26,29 @@
 #include <string>
 
 /** Helper structure for gathering the tracing statistics. */
-struct ttracer
+struct tracer
 	: private boost::noncopyable
 {
 	/**
 	 * Helper structure to print the tracing statistics.
 	 *
-	 * When the constructor gets a valid @ref ttracer pointer it prints the
+	 * When the constructor gets a valid @ref tracer pointer it prints the
 	 * tracing statistics in its destructor. This allows the structure to be
 	 * initialised at the beginning of a scope and print the statistics once
 	 * the scope is left. (This makes it easier to write the tracing macros.)
 	 */
-	struct tprint
+	struct printer
 		: private boost::noncopyable
 	{
-		explicit tprint(const ttracer* const tracer__);
+		explicit printer(const tracer* const tracer__);
 
-		~tprint();
+		~printer();
 
 		/** The tracer, whose statistics to print. */
-		const ttracer* const tracer;
+		const tracer* const tracer_;
 	};
 
-	explicit ttracer(const char* const function__);
+	explicit tracer(const char* const function__);
 
 	/** The total number of runs. */
 	int run;
@@ -81,12 +81,12 @@ struct ttracer
  */
 #ifdef __GNUC__
 #define TRACER_ENTRY(interval)                                               \
-	static ttracer tracer(__PRETTY_FUNCTION__);                              \
-	ttracer::tprint print((++tracer.run % interval) == 0 ? &tracer : nullptr)
+	static struct tracer tracer(__PRETTY_FUNCTION__);                              \
+	tracer::printer print((++tracer.run % interval) == 0 ? &tracer : nullptr)
 #else
 #define TRACER_ENTRY(interval)                                               \
-	static ttracer tracer(__FUNCTION__);                                     \
-	ttracer::tprint print((++tracer.run % interval) == 0 ? &tracer : nullptr)
+	static struct tracer tracer(__FUNCTION__);                                     \
+	tracer::printer print((++tracer.run % interval) == 0 ? &tracer : nullptr)
 #endif
 
 /**

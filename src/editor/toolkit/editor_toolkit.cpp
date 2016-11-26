@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-#include "editor_toolkit.hpp"
+#include "editor/toolkit/editor_toolkit.hpp"
 #include "config.hpp"
 
 #include "editor/action/mouse/mouse_action.hpp"

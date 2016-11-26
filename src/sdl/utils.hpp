@@ -45,6 +45,16 @@
 #define SDL_BUTTON_WHEELRIGHT 7
 #endif
 
+#define SDL_ALPHA_MASK (0xFF000000)
+#define SDL_RED_MASK   (0x00FF0000)
+#define SDL_GREEN_MASK (0x0000FF00)
+#define SDL_BLUE_MASK  (0x000000FF)
+
+#define SDL_ALPHA_BITSHIFT (24)
+#define SDL_RED_BITSHIFT   (16)
+#define SDL_GREEN_BITSHIFT (8)
+#define SDL_BLUE_BITSHIFT  (0)
+
 SDL_Keycode sdl_keysym_from_name(const std::string& keyname);
 
 class surface
@@ -432,7 +442,7 @@ bool operator!=(const SDL_Color& a, const SDL_Color& b);
 
 SDL_Color inverse(const SDL_Color& color);
 SDL_Color int_to_color(const Uint32 rgb);
-SDL_Color string_to_color(const std::string& color_string);
+SDL_Color string_to_color(const std::string& color_string, const bool override_alpha = true);
 
 SDL_Color create_color(const unsigned char red
 		, unsigned char green

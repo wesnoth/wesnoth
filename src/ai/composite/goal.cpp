@@ -132,12 +132,7 @@ void target_unit_goal::on_create()
 		return;
 	}
 	if (const config::attribute_value *v = cfg_.get("value")) {
-		try {
-			value_ = lexical_cast<double>(*v);
-		} catch (bad_lexical_cast){
-			ERR_AI_GOAL << "bad value of goal"<<std::endl;
-			value_ = 0;
-		}
+		value_ = v->to_double(0);
 	}
 }
 
@@ -179,12 +174,7 @@ void target_location_goal::on_create()
 		return;
 	}
 	if (cfg_.has_attribute("value")) {
-		try {
-			value_ = lexical_cast<double>(cfg_["value"]);
-		} catch (bad_lexical_cast){
-			ERR_AI_GOAL << "bad value of goal"<<std::endl;
-			value_ = 0;
-		}
+		value_ = cfg_["value"].to_double(0);
 	}
 	const config &criteria = cfg_.child("criteria");
 	if (criteria) {
@@ -228,20 +218,10 @@ void protect_goal::on_create()
 		return;
 	}
 	if (const config::attribute_value *v = cfg_.get("value")) {
-		try {
-			value_ = lexical_cast<double>(*v);
-		} catch (bad_lexical_cast){
-			ERR_AI_GOAL << "bad value of protect_goal"<<std::endl;
-			value_ = 0;
-		}
+		value_ = v->to_double(0);
 	}
 	if (const config::attribute_value *v = cfg_.get("protect_radius")) {
-		try {
-			radius_ = std::stoi(v->str());
-		} catch (std::invalid_argument){
-			ERR_AI_GOAL << "bad protection radius of protect_goal"<<std::endl;
-			radius_ = 1;
-		}
+		radius_ = (*v).to_int(1);
 	}
 
 	if (radius_<1) {

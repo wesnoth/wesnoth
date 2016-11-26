@@ -240,13 +240,13 @@ private:
 	/**
 	 * Create a new map.
 	 */
-	void new_map(int width, int height, const t_translation::t_terrain & fill,
+	void new_map(int width, int height, const t_translation::terrain_code & fill,
 			bool new_context);
 
 	/**
 	 * Create a new scenario.
 	 */
-	void new_scenario(int width, int height, const t_translation::t_terrain & fill,
+	void new_scenario(int width, int height, const t_translation::terrain_code & fill,
 			bool new_context);
 
 	/**

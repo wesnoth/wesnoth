@@ -13,7 +13,7 @@
 */
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
-#include "brush.hpp"
+#include "editor/toolkit/brush.hpp"
 #include "editor/editor_common.hpp"
 
 #include "pathutils.hpp"

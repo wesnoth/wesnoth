@@ -293,7 +293,7 @@ theme::object::object(const config& cfg) :
 {
 }
 
-theme::tborder::tborder() :
+theme::border_t::border_t() :
 	size(0.0),
 	background_image(),
 	tile_image(),
@@ -312,7 +312,7 @@ theme::tborder::tborder() :
 {
 }
 
-theme::tborder::tborder(const config& cfg) :
+theme::border_t::border_t(const config& cfg) :
 	size(cfg["border_size"].to_double()),
 
 	background_image(cfg["background_image"]),
@@ -777,9 +777,9 @@ void theme::add_object(const config& cfg)
 	}
 
 	if (const config &c = cfg.child("main_map_border")) {
-		border_ = tborder(c);
+		border_ = border_t(c);
 	} else {
-		border_ = tborder();
+		border_ = border_t();
 	}
 }
 

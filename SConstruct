@@ -47,13 +47,15 @@ def OptionalPath(key, val, env):
 opts.AddVariables(
     ListVariable('default_targets', 'Targets that will be built if no target is specified in command line.',
         "wesnoth,wesnothd", Split("wesnoth wesnothd campaignd cutter exploder test")),
-    EnumVariable('build', 'Build variant: debug, release profile or base (no subdirectory)', "release", ["release", "debug", "glibcxx_debug", "profile","base"]),
+    EnumVariable('build', 'Build variant: debug, release profile or base (no subdirectory)', "release", ["optimized", "release", "debug", "glibcxx_debug", "profile", "base"]),
     PathVariable('build_dir', 'Build all intermediate files(objects, test programs, etc) under this dir', "build", PathVariable.PathAccept),
     ('extra_flags_config', "Extra compiler and linker flags to use for configuration and all builds. Whether they're compiler or linker is determined by env.ParseFlags. Unknown flags are compile flags by default. This applies to all extra_flags_* variables", ""),
     ('extra_flags_base', 'Extra compiler and linker flags to use for release builds', ""),
     ('extra_flags_release', 'Extra compiler and linker flags to use for release builds', ""),
     ('extra_flags_debug', 'Extra compiler and linker flags to use for debug builds', ""),
     ('extra_flags_profile', 'Extra compiler and linker flags to use for profile builds', ""),
+    ('extra_flags_optimized', 'Extra compiler and linker flags to use for optimized builds', ""),
+    BoolVariable('enable_lto', 'Whether to enable Link Time Optimization', False),
     PathVariable('bindir', 'Where to install binaries', "bin", PathVariable.PathAccept),
     ('cachedir', 'Directory that contains a cache of derived files.', ''),
     PathVariable('datadir', 'read-only architecture-independent game data', "$datarootdir/$datadirname", PathVariable.PathAccept),
@@ -70,10 +72,8 @@ opts.AddVariables(
     PathVariable('mandir', 'sets the man pages directory to a non-default location', "$datarootdir/man", PathVariable.PathAccept),
     PathVariable('docdir', 'sets the doc directory to a non-default location', "$datarootdir/doc/wesnoth", PathVariable.PathAccept),
     PathVariable('python_site_packages_dir', 'sets the directory where python modules are installed', "lib/python/site-packages/wesnoth", PathVariable.PathAccept),
-    BoolVariable('lowmem', 'Set to reduce memory usage by removing extra functionality', False),
     BoolVariable('notifications', 'Enable support for desktop notifications', True),
     BoolVariable('nls','enable compile/install of gettext message catalogs',True),
-    BoolVariable('libintl', 'Use lib intl for translations, instead of boost locale', False),
     BoolVariable('png', 'Clear to disable writing png files for screenshots, images', True),
     PathVariable('prefix', 'autotools-style installation prefix', "/usr/local", PathVariable.PathAccept),
     PathVariable('prefsdir', 'user preferences directory', "", PathVariable.PathAccept),
@@ -343,40 +343,12 @@ if env["prereqs"]:
             conf.CheckBoost("system") & \
             conf.CheckBoost("asio", header_only = True)
 
-    if env['host'] in ['x86_64-nacl', 'i686-nacl']:
-        # libppapi_cpp has a reverse dependency on the following function
-        env.Append(LINKFLAGS = ['-Wl,--undefined=_ZN2pp12CreateModuleEv'])
-        conf.CheckLib("ppapi")
-        conf.CheckLib("ppapi_cpp")
-        conf.CheckLib("nacl-mounts")
-        # We are linking static libraries without libtool.
-        # Enumerating all transitive dependencies.
-        conf.CheckLib("pthread")
-        conf.CheckLib("dl")
-        conf.CheckLib("SDL")
-        conf.CheckLib("jpeg")
-        conf.CheckLib("png")
-        conf.CheckLib("tiff")
-        conf.CheckLib("ogg")
-        conf.CheckLib("expat")
-        conf.CheckLib("pixman-1")
-        conf.CheckLib("vorbisfile")
-        conf.CheckLib("vorbis")
-        conf.CheckLib("mikmod")
-
     def have_sdl_other():
         return \
             conf.CheckSDL(require_version = SDL2_version) & \
             conf.CheckSDL("SDL2_ttf", header_file = "SDL_ttf") & \
             conf.CheckSDL("SDL2_mixer", header_file = "SDL_mixer") & \
             conf.CheckSDL("SDL2_image", header_file = "SDL_image")
-
-    if env["libintl"]:
-        def have_i18n_prereqs():
-            return conf.CheckGettextLibintl()
-    else:
-        def have_i18n_prereqs():
-            return conf.CheckBoost("locale")
 
     have_server_prereqs = (\
         conf.CheckCPlusPlus(gcc_version = "4.8") & \
@@ -388,7 +360,7 @@ if env["prereqs"]:
         conf.CheckBoost("smart_ptr", header_only = True) & \
         conf.CheckBoost("system") & \
         conf.CheckBoost("filesystem", require_version = boost_version) & \
-        have_i18n_prereqs() \
+        conf.CheckBoost("locale") \
             and Info("Base prerequisites are met")) \
             or Warning("Base prerequisites are not met")
 
@@ -397,8 +369,8 @@ if env["prereqs"]:
     client_env = env.Clone()
     conf = client_env.Configure(**configure_args)
     have_client_prereqs = have_server_prereqs & have_sdl_other() & \
-        conf.CheckLib("vorbisfile") & \
-        conf.CheckOgg() & \
+        (('TRAVIS' in os.environ and os.environ["TRAVIS_OS_NAME"] == "osx") or (conf.CheckLib("vorbisfile") & \
+        conf.CheckOgg())) & \
         conf.CheckPNG() & \
         conf.CheckJPG() & \
         conf.CheckPango("cairo", require_version = "1.21.3") & \
@@ -412,10 +384,6 @@ if env["prereqs"]:
     if have_client_prereqs:
         if env["PLATFORM"] != "win32":
             have_X = conf.CheckLib('X11')
-        else:
-            if env["libintl"]:
-                Warning("You cannot use the libintl option when building for windows")
-                have_client_prereqs = False
 
         env["notifications"] = env["notifications"] and conf.CheckPKG("dbus-1")
         if env["notifications"]:
@@ -467,10 +435,6 @@ else:
     client_env = env.Clone()
 
 
-if env['host'] in ['x86_64-nacl', 'i686-nacl']:
-  env['_LIBFLAGS'] = '-Wl,--start-group ' + env['_LIBFLAGS'] + ' -Wl,--end-group'
-  client_env['_LIBFLAGS'] = '-Wl,--start-group ' + client_env['_LIBFLAGS'] + ' -Wl,--end-group'
-
 have_msgfmt = env["MSGFMT"]
 if not have_msgfmt:
      env["nls"] = False
@@ -505,9 +469,23 @@ for env in [test_env, client_env, env]:
             env.AppendUnique(CXXFLAGS = Split("-Wold-style-cast"))
         if env['sanitize']:
             env.AppendUnique(CCFLAGS = ["-fsanitize=" + env["sanitize"]], LINKFLAGS = ["-fsanitize=" + env["sanitize"]])
-
-        env["OPT_FLAGS"] = "-O2"
+        
+        env["OPT_FLAGS"] = "-O3"
         env["DEBUG_FLAGS"] = Split("-O0 -DDEBUG -ggdb3")
+        
+# because apparently telling the compiler, linker, AND windres to be 32-bit just isn't enough
+        if env["PLATFORM"] == 'win32':
+            env["ARCH"] = "-march=pentiumpro"
+            env["OPT_FLAGS"] =  env["OPT_FLAGS"] + " " + env["ARCH"]
+        else:
+            env["ARCH"] = "-march=native"
+        
+        if env["enable_lto"] == True:
+            env["HIGH_OPT_COMP_FLAGS"] = "-O3 " + env["ARCH"] + " -flto -s"
+            env["HIGH_OPT_LINK_FLAGS"] = env["HIGH_OPT_COMP_FLAGS"] + " -fuse-ld=gold"
+        else:
+            env["HIGH_OPT_COMP_FLAGS"] = "-O3 " + env["ARCH"] + " -s"
+            env["HIGH_OPT_LINK_FLAGS"] = ""
 
     if "clang" in env["CXX"]:
         # Silence warnings about unused -I options and unknown warning switches.
@@ -516,9 +494,6 @@ for env in [test_env, client_env, env]:
     if "suncc" in env["TOOLS"]:
         env["OPT_FLAGS"] = "-g0"
         env["DEBUG_FLAGS"] = "-g"
-
-    if env['lowmem']:
-        env.Append(CPPDEFINES = "LOW_MEM")
 
     if env['internal_data']:
         env.Append(CPPDEFINES = "USE_INTERNAL_DATA")
@@ -553,11 +528,12 @@ SConscript(dirs = Split("po doc packaging/windows packaging/systemd"))
 
 binaries = Split("wesnoth wesnothd cutter exploder campaignd test")
 builds = {
-    "base"          : dict(CCFLAGS   = "$OPT_FLAGS"),    # Don't build in subdirectory
+    "base"          : dict(CCFLAGS   = Split("$OPT_FLAGS")),    # Don't build in subdirectory
     "debug"         : dict(CCFLAGS   = Split("$DEBUG_FLAGS")),
     "glibcxx_debug" : dict(CPPDEFINES = Split("_GLIBCXX_DEBUG _GLIBCXX_DEBUG_PEDANTIC")),
-    "release"       : dict(CCFLAGS   = "$OPT_FLAGS"),
-    "profile"       : dict(CCFLAGS   = "-pg", LINKFLAGS = "-pg")
+    "release"       : dict(CCFLAGS   = Split("$OPT_FLAGS")),
+    "profile"       : dict(CCFLAGS   = "-pg", LINKFLAGS = "-pg"),
+    "optimized"      : dict(CCFLAGS   = Split("$HIGH_OPT_COMP_FLAGS"), LINKFLAGS=Split("$HIGH_OPT_LINK_FLAGS"))
     }
 builds["glibcxx_debug"].update(builds["debug"])
 build = env["build"]
@@ -746,14 +722,27 @@ env.WindowsInstaller([
 # Making Mac OS X application bundles
 #
 env.Alias("wesnoth-bundle",
-          env.Command("Battle For Wesnoth.app", "wesnoth", [
+          env.Command("Wesnoth.app", "wesnoth", [
               Mkdir("${TARGET}/Contents"),
               Mkdir("${TARGET}/Contents/MacOS"),
               Mkdir("${TARGET}/Contents/Resources"),
               Action('echo "APPL????" > "${TARGET}/Contents/PkgInfo"'),
-              Copy("${TARGET}/Contents/MacOS/wesnoth", "wesnoth"),
+              Copy("${TARGET}/Contents/MacOS/Wesnoth", "wesnoth"),
+              Copy("${TARGET}/Contents/MacOS/wesnothd", "wesnothd"),
+              Copy("${TARGET}/Contents/Info.plist", "projectfiles/Xcode/Info.plist"),
+              Action(r"""sed -i '' 's/\$[{].*[}]/Wesnoth/' "${TARGET}/Contents/Info.plist" """),
+              Copy("${TARGET}/Contents/Resources/data", "data"),
+              Copy("${TARGET}/Contents/Resources/English.lproj", "projectfiles/Xcode/English.lproj"),
+              Copy("${TARGET}/Contents/Resources/fonts", "fonts"),
+              Copy("${TARGET}/Contents/Resources/fonts.conf", "projectfiles/Xcode/Resources/fonts.conf"),
+              Copy("${TARGET}/Contents/Resources/Growl Registration Ticket.growlRegDict", "projectfiles/Xcode/Resources/Growl Registration Ticket.growlRegDict"),
+              Copy("${TARGET}/Contents/Resources/icon.icns", "projectfiles/Xcode/Resources/icon.icns"),
+              Copy("${TARGET}/Contents/Resources/images", "images"),
+              Copy("${TARGET}/Contents/Resources/SDLMain.nib", "projectfiles/Xcode/Resources/SDLMain.nib"),
+              Copy("${TARGET}/Contents/Resources/sounds", "sounds"),
+              Copy("${TARGET}/Contents/Resources/translations", "translations"),
               ]))
-env.Clean(all, "Battle For Wesnoth.app")    
+env.Clean(all, "Wesnoth.app")
 
 #
 # Sanity checking

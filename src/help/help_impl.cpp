@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-#include "help_impl.hpp"
+#include "help/help_impl.hpp"
 
 #include "about.hpp"                    // for get_text
 #include "display.hpp"                  // for display
@@ -21,7 +21,7 @@
 #include "game_config_manager.hpp"      // for game_config_manager
 #include "game_preferences.hpp"         // for encountered_terrains, etc
 #include "gettext.hpp"                  // for _, gettext, N_
-#include "help_topic_generators.hpp"
+#include "help/help_topic_generators.hpp"
 #include "hotkey/hotkey_command.hpp"    // for is_scope_active, etc
 #include "image.hpp"                    // for get_image, locator
 #include "log.hpp"                      // for LOG_STREAM, logger, etc
@@ -36,7 +36,7 @@
 #include "serialization/unicode_cast.hpp"  // for unicode_cast
 #include "serialization/unicode_types.hpp"  // for char_t, etc
 #include "terrain/terrain.hpp"          // for terrain_type
-#include "terrain/translation.hpp"      // for operator==, t_list, etc
+#include "terrain/translation.hpp"      // for operator==, ter_list, etc
 #include "terrain/type_data.hpp"        // for terrain_type_data, etc
 #include "time_of_day.hpp"              // for time_of_day
 #include "tod_manager.hpp"              // for tod_manager
@@ -827,7 +827,7 @@ void generate_era_sections(const config* help_cfg, section & sec, int level)
 
 void generate_terrain_sections(const config* /*help_cfg*/, section& sec, int /*level*/)
 {
-	tdata_cache tdata = load_terrain_types_data();
+	ter_data_cache tdata = load_terrain_types_data();
 
 	if (!tdata) {
 		WRN_HP << "When building terrain help sections, couldn't acquire terrain types data, aborting.\n";
@@ -836,9 +836,9 @@ void generate_terrain_sections(const config* /*help_cfg*/, section& sec, int /*l
 
 	std::map<std::string, section> base_map;
 
-	const t_translation::t_list& t_listi = tdata->list();
+	const t_translation::ter_list& t_listi = tdata->list();
 
-	for (const t_translation::t_terrain& t : t_listi) {
+	for (const t_translation::terrain_code& t : t_listi) {
 
 		const terrain_type& info = tdata->get_terrain_info(t);
 
@@ -853,8 +853,8 @@ void generate_terrain_sections(const config* /*help_cfg*/, section& sec, int /*l
 		terrain_topic.id    = hidden_symbol(hidden) + terrain_prefix + info.id();
 		terrain_topic.text  = new terrain_topic_generator(info);
 
-		t_translation::t_list base_terrains = tdata->underlying_union_terrain(t);
-		for (const t_translation::t_terrain& base : base_terrains) {
+		t_translation::ter_list base_terrains = tdata->underlying_union_terrain(t);
+		for (const t_translation::terrain_code& base : base_terrains) {
 
 			const terrain_type& base_info = tdata->get_terrain_info(base);
 
@@ -1539,13 +1539,13 @@ std::string escape(const std::string &s)
 }
 
 /// Load the appropriate terrain types data to use
-tdata_cache load_terrain_types_data() {
+ter_data_cache load_terrain_types_data() {
 	if (display::get_singleton()) {
 		return display::get_singleton()->get_disp_context().map().tdata();
 	} else if (game_config_manager::get()){
 		return game_config_manager::get()->terrain_types();
 	} else {
-		return tdata_cache();
+		return ter_data_cache();
 	}
 }
 

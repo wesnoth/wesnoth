@@ -109,7 +109,7 @@ bool string2rgb(const std::string& s, std::vector<uint32_t>& result) {
 						rgb_hex += (0x000000FF & (std::stoi(*c++)<<0)); //blue
 					}
 				}
-			} catch (bad_lexical_cast&) {
+			} catch (std::invalid_argument&) {
 				return false;
 			}
 		} else {
@@ -153,26 +153,6 @@ std::vector<uint32_t> palette(color_range cr){
 			res.push_back(*c);}
 	}
 	return(res);
-}
-
-std::string rgb2highlight(uint32_t rgb)
-{
-	std::ostringstream h;
-	// Must match what the escape interpreter for marked-up-text expects
-	h << "<" << ((rgb & 0xFF0000) >> 16)
-	  << "," << ((rgb & 0x00FF00) >> 8)
-	  << "," << (rgb & 0x0000FF) << ">";
-	return h.str();
-}
-
-int color_range::index() const
-{
-	for(int i = 1; i <= gamemap::MAX_PLAYERS; ++i) {
-		if(*this==(game_config::color_info(std::to_string(i)))) {
-			return i;
-		}
-	}
-	return 0;
 }
 
 std::string color_range::debug() const

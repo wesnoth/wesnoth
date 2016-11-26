@@ -22,18 +22,18 @@
 
 #include "utils/functional.hpp"
 
-#include "highlighter.hpp"
+#include "whiteboard/highlighter.hpp"
 
-#include "action.hpp"
-#include "attack.hpp"
-#include "manager.hpp"
-#include "move.hpp"
-#include "recall.hpp"
-#include "recruit.hpp"
+#include "whiteboard/action.hpp"
+#include "whiteboard/attack.hpp"
+#include "whiteboard/manager.hpp"
+#include "whiteboard/move.hpp"
+#include "whiteboard/recall.hpp"
+#include "whiteboard/recruit.hpp"
 #include "resources.hpp"
-#include "side_actions.hpp"
-#include "suppose_dead.hpp"
-#include "utility.hpp"
+#include "whiteboard/side_actions.hpp"
+#include "whiteboard/suppose_dead.hpp"
+#include "whiteboard/utility.hpp"
 
 #include "arrow.hpp"
 #include "config.hpp"

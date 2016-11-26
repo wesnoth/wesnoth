@@ -41,7 +41,7 @@ static lg::log_domain log_event_handler("event_handler");
 
 namespace game_events {
 
-	void t_event_handlers::log_handlers()
+	void event_handlers::log_handlers()
 	{
 		if(lg::debug().dont_log("event_handler")) return;
 
@@ -61,7 +61,7 @@ namespace game_events {
 	 * This means stripping leading and trailing spaces, and converting internal
 	 * spaces to underscores.
 	 */
-	std::string t_event_handlers::standardize_name(const std::string & name)
+	std::string event_handlers::standardize_name(const std::string & name)
 	{
 		std::string retval;
 		size_t name_index = 0;
@@ -88,7 +88,7 @@ namespace game_events {
 	/**
 	 * Read-only access to the handlers with fixed event names, by event name.
 	 */
-	const handler_list & t_event_handlers::get(const std::string & name) const
+	const handler_list & event_handlers::get(const std::string & name) const
 	{
 		// Empty list for the "not found" case.
 		static const handler_list empty_list;
@@ -103,7 +103,7 @@ namespace game_events {
 	 * An event with a nonempty ID will not be added if an event with that
 	 * ID already exists.
 	 */
-	void t_event_handlers::add_event_handler(const config & cfg, manager & man, bool is_menu_item)
+	void event_handlers::add_event_handler(const config & cfg, manager & man, bool is_menu_item)
 	{
 		const std::string name = cfg["name"];
 		std::string id = cfg["id"];
@@ -143,7 +143,7 @@ namespace game_events {
 	 * Removes an event handler, identified by its ID.
 	 * Events with empty IDs cannot be removed.
 	 */
-	void t_event_handlers::remove_event_handler(const std::string& id)
+	void event_handlers::remove_event_handler(const std::string& id)
 	{
 		if ( id.empty() )
 			return;
@@ -164,7 +164,7 @@ namespace game_events {
 		log_handlers();
 	}
 
-	const handler_ptr t_event_handlers::get_event_handler_by_id(const std::string & id) {
+	const handler_ptr event_handlers::get_event_handler_by_id(const std::string & id) {
 		id_map_t::iterator find_it = id_map_.find(id);
 		if ( find_it != id_map_.end()  &&  !find_it->second.expired() ) {
 			return handler_ptr( find_it->second );

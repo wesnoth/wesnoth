@@ -33,7 +33,7 @@ filter_apply(surface& surf, const std::string& filter);
  *
  * This structure should make it easier to create help messages.
  */
-struct tfilter_description
+struct filter_description
 {
 	/**
 	 * Constructor.
@@ -42,17 +42,17 @@ struct tfilter_description
 	 * contains of a number of fields seperated by a pipe-symbol. The number
 	 * of fields should be 2 + 3 * params, where params is the number of
 	 * parameters of the filter. The fields are:
-	 * * 1 The @ref tfilter_description::name
-	 * * 2 The @ref tfilter_description::description
+	 * * 1 The @ref filter_description::name
+	 * * 2 The @ref filter_description::description
 	 * After these two fields there are three fields per parameter, the
 	 * fields are:
-	 * * 1 The @ref tfilter_description::tparameter::name
-	 * * 2 The @ref tfilter_description::tparameter::type
-	 * * 3 The @ref tfilter_description::tparameter::description
+	 * * 1 The @ref filter_description::parameter::name
+	 * * 2 The @ref filter_description::parameter::type
+	 * * 3 The @ref filter_description::parameter::description
 	 *
 	 * @param fmt                 The format string as described above.
 	 */
-	explicit tfilter_description(const std::string& fmt);
+	explicit filter_description(const std::string& fmt);
 
 	/**
 	 * Name of the filter.
@@ -69,7 +69,7 @@ struct tfilter_description
 	std::string description;
 
 	/** Describes a filter parameter. */
-	struct tparameter
+	struct parameter
 	{
 		/** The name of the parameter. */
 		std::string name;
@@ -82,11 +82,11 @@ struct tfilter_description
 	};
 
 	/** The list of filter parameters. */
-	std::vector<tparameter> parameters;
+	std::vector<parameter> parameters;
 };
 
 /** Returns the list of available filters. */
-std::vector<tfilter_description>
+std::vector<filter_description>
 filter_list();
 
 #endif

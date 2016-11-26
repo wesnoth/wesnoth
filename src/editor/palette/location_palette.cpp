@@ -14,7 +14,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
-#include "location_palette.hpp"
+#include "editor/palette/location_palette.hpp"
 
 #include "gettext.hpp"
 #include "font/marked-up_text.hpp"
@@ -29,14 +29,14 @@
 class location_palette_item : public gui::widget
 {
 public:
-	struct tstate {
-		tstate()
+	struct state_t {
+		state_t()
 			: selected(false)
 			, mouseover(false)
 		{}
 		bool selected;
 		bool mouseover;
-		friend bool operator==(tstate r, tstate l) 
+		friend bool operator==(state_t r, state_t l)
 		{
 			return r.selected == l.selected && r.mouseover == l.mouseover;
 		}
@@ -87,7 +87,7 @@ public:
 		if (hidden() || !enabled() || mouse_locked())
 			return;
 
-		tstate start_state = state_;
+		state_t start_state = state_;
 
 		switch (e.type) {
 		case SDL_MOUSEBUTTONUP:
@@ -123,7 +123,7 @@ public:
 private:
 	std::string id_;
 	std::string desc_;
-	tstate state_;
+	state_t state_;
 	editor::location_palette& parent_;
 };
 
@@ -253,7 +253,7 @@ void location_palette::adjust_size(const SDL_Rect& target)
 		}));
 		button_add_.reset(new location_palette_button(video(), SDL_Rect{ target.x , bottom -= button_height, target.w - 10, button_height }, _("Add"), [this]() {
 			std::string newid;
-			if (gui2::tedit_text::execute(_("New Location Identifer"), "", newid, video())) {
+			if (gui2::dialogs::edit_text::execute(_("New Location Identifer"), "", newid, video())) {
 				add_item(newid);
 			}
 		}));

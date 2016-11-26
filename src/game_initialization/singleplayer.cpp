@@ -11,30 +11,19 @@
    See the COPYING file for more details.
 */
 
-#include "singleplayer.hpp"
+#include "game_initialization/singleplayer.hpp"
 #include "config.hpp"
 #include "config_assign.hpp"
 #include "game_config_manager.hpp"
 #include "gui/dialogs/campaign_selection.hpp"
 #include "gui/dialogs/message.hpp"
+#include "gui/dialogs/multiplayer/mp_staging.hpp"
 #include "gui/dialogs/sp_options_configure.hpp"
 #include "gui/widgets/window.hpp"
-#include "multiplayer.hpp"
-#include "multiplayer_configure.hpp"
-#include "multiplayer_connect.hpp"
-#include "multiplayer_ui.hpp"
-#include "playcampaign.hpp"
 #include "wml_exception.hpp"
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
-
-namespace {
-
-mp::chat gamechat;
-config gamelist;
-
-}
 
 namespace sp {
 
@@ -59,16 +48,16 @@ bool enter_create_mode(CVideo& video, const config& game_config, saved_game& sta
 
 		// No campaign selected from command line
 		if(jump_to_campaign.campaign_id_.empty()) {
-			gui2::tcampaign_selection dlg(create_eng);
+			gui2::dialogs::campaign_selection dlg(create_eng);
 
 			try {
 				dlg.show(video);
-			} catch(twml_exception& e) {
+			} catch(wml_exception& e) {
 				e.show(video);
 				return false;
 			}
 
-			if(dlg.get_retval() != gui2::twindow::OK) {
+			if(dlg.get_retval() != gui2::window::OK) {
 				return false;
 			}
 
@@ -130,7 +119,7 @@ bool enter_create_mode(CVideo& video, const config& game_config, saved_game& sta
 
 bool enter_configure_mode(CVideo& video, const config& game_config, saved_game& state, ng::create_engine& create_eng, bool local_players_only)
 {
-	if(!gui2::tsp_options_configure::execute(create_eng, video)) {
+	if(!gui2::dialogs::sp_options_configure::execute(create_eng, video)) {
 		return false;
 	}
 
@@ -142,37 +131,30 @@ bool enter_configure_mode(CVideo& video, const config& game_config, saved_game& 
 	return true;
 }
 
-bool enter_connect_mode(CVideo& video, const config& game_config, saved_game& state, bool local_players_only)
+bool enter_connect_mode(CVideo& /*video*/, const config& /*game_config*/, saved_game& state, bool /*local_players_only*/)
 {
 	ng::connect_engine connect_eng(state, true, nullptr);
 
+	// TODO: fix. Dialog starts game regardless of selection
+#if 0
 	if(state.mp_settings().show_connect) {
-		mp::ui::result res;
-		gamelist.clear();
-		{
-			mp::connect ui(video, 0, state.mp_settings().name, game_config, gamechat, gamelist, connect_eng);
-			mp::run_lobby_loop(video, ui);
-			res = ui.get_result();
+		lobby_info li(game_config, std::vector<std::string>());
 
-			if (res == mp::ui::PLAY) {
-				ui.start_game();
-			}
-		}
-		switch (res) {
-		case mp::ui::PLAY:
-			return true;
-		case mp::ui::CREATE:
-			enter_create_mode(video, game_config, state, jump_to_campaign_info(false, -1, "", ""), local_players_only);
-			break;
-		case mp::ui::QUIT:
-		default:
+		gui2::dialogs::mp_staging dlg(connect_eng, li);
+		dlg.show(video);
+
+		if(dlg.get_retval() != gui2::window::OK) {
+			// TODO: enable the workflow loops from GUI1
+			//return enter_create_mode(video, game_config, state, jump_to_campaign_info(false, -1, "", ""), local_players_only);
+
 			return false;
 		}
-		return true;
-	} else {
-		connect_eng.start_game();
-		return true;
 	}
+#endif
+
+	connect_eng.start_game();
+
+	return true;
 }
 
 } // end namespace sp

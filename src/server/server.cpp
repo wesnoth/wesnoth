@@ -17,7 +17,7 @@
  * Wesnoth-Server, for multiplayer-games.
  */
 
-#include "server.hpp"
+#include "server/server.hpp"
 
 #include "global.hpp"
 
@@ -32,18 +32,18 @@
 #include "serialization/unicode.hpp"
 #include "util.hpp"
 
-#include "game.hpp"
-#include "metrics.hpp"
-#include "player.hpp"
-#include "simple_wml.hpp"
-#include "ban.hpp"
+#include "server/game.hpp"
+#include "server/metrics.hpp"
+#include "server/player.hpp"
+#include "server/simple_wml.hpp"
+#include "server/ban.hpp"
 #include "exceptions.hpp"
 
-#include "user_handler.hpp"
-#include "sample_user_handler.hpp"
+#include "server/user_handler.hpp"
+#include "server/sample_user_handler.hpp"
 
 #ifdef HAVE_MYSQLPP
-#include "forum_user_handler.hpp"
+#include "server/forum_user_handler.hpp"
 #endif
 
 #include "utils/functional.hpp"
@@ -82,7 +82,7 @@ static lg::log_domain log_config("config");
 #define ERR_CONFIG LOG_STREAM(err, log_config)
 #define WRN_CONFIG LOG_STREAM(warn, log_config)
 
-#include "send_receive_wml_helpers.ipp"
+#include "server/send_receive_wml_helpers.ipp"
 
 namespace wesnothd
 {
@@ -1163,6 +1163,7 @@ void server::cleanup_game(game* game_ptr)
 		LOG_SERVER << "Could not find game (" << game_ptr->id()
 				   << ") to delete in games_and_users_list_.\n";
 	}
+	delete game_ptr;
 }
 
 void server::handle_join_game(socket_ptr socket, simple_wml::node& join)

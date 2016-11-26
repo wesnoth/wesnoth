@@ -28,18 +28,18 @@
 namespace gui2
 {
 
-class twindow;
+class window;
 
 namespace event
 {
 
-class tdispatcher;
+class dispatcher;
 
-class tmanager
+class manager
 {
 public:
-	tmanager();
-	~tmanager();
+	manager();
+	~manager();
 };
 
 /**
@@ -54,7 +54,7 @@ public:
  *
  * @note When adding a new entry to the enum also add a unit test.
  */
-enum tevent {
+enum ui_event {
 	DRAW /**< Periodic redraw request. */
 	,
 	CLOSE_WINDOW /**< A request to close the current window. */
@@ -183,10 +183,10 @@ enum tevent {
 };
 
 /**
- * Helper for catching use error of tdispatcher::connect_signal.
+ * Helper for catching use error of dispatcher::connect_signal.
  *
  * This helper is needed as a user can't supply the wrong kind of callback
- * functions to tdispatcher::connect_signal. If a wrong callback would be send
+ * functions to dispatcher::connect_signal. If a wrong callback would be send
  * it will never get called.
  *
  * This version is for callbacks without extra parameters.
@@ -209,10 +209,10 @@ typedef boost::mpl::set<boost::mpl::int_<DRAW>,
 						boost::mpl::int_<RIGHT_BUTTON_UP>,
 						boost::mpl::int_<RIGHT_BUTTON_CLICK>,
 						boost::mpl::int_<RIGHT_BUTTON_DOUBLE_CLICK> >
-tset_event;
+set_event;
 
 /**
- * Helper for catching use error of tdispatcher::connect_signal.
+ * Helper for catching use error of dispatcher::connect_signal.
  *
  * This version is for callbacks with a coordinate as extra parameter.
  */
@@ -230,22 +230,22 @@ typedef boost::mpl::set<boost::mpl::int_<SDL_VIDEO_RESIZE>,
 						boost::mpl::int_<SDL_WHEEL_UP>,
 						boost::mpl::int_<SDL_WHEEL_DOWN>,
 						boost::mpl::int_<SDL_WHEEL_LEFT>,
-						boost::mpl::int_<SDL_WHEEL_RIGHT> > tset_event_mouse;
+						boost::mpl::int_<SDL_WHEEL_RIGHT> > set_event_mouse;
 
 /**
- * Helper for catching use error of tdispatcher::connect_signal.
+ * Helper for catching use error of dispatcher::connect_signal.
  *
  * This version is for callbacks with the keyboard values (these haven't been
  * determined yet).
  */
-typedef boost::mpl::set<boost::mpl::int_<SDL_KEY_DOWN> > tset_event_keyboard;
+typedef boost::mpl::set<boost::mpl::int_<SDL_KEY_DOWN> > set_event_keyboard;
 
 /**
- * Helper for catching use error of tdispatcher::connect_signal.
+ * Helper for catching use error of dispatcher::connect_signal.
  *
  * This version is for callbacks with a sender aka notification messages. Like
  *the
- * ones in tset_event it has no extra parameters, but this version is only
+ * ones in set_event it has no extra parameters, but this version is only
  * send to the target and not using the pre and post queue.
  */
 typedef boost::mpl::set<boost::mpl::int_<NOTIFY_REMOVAL>,
@@ -254,10 +254,10 @@ typedef boost::mpl::set<boost::mpl::int_<NOTIFY_REMOVAL>,
 						boost::mpl::int_<LOSE_KEYBOARD_FOCUS>,
 						boost::mpl::int_<NOTIFY_REMOVE_TOOLTIP>,
 						boost::mpl::int_<SDL_ACTIVATE> >
-tset_event_notification;
+set_event_notification;
 
 /**
- * Helper for catching use error of tdispatcher::connect_signal.
+ * Helper for catching use error of dispatcher::connect_signal.
  *
  * This version is for callbacks with a sender aka notification messages.
  * Unlike the notifications this message is send through the chain. The event
@@ -267,21 +267,21 @@ tset_event_notification;
 typedef boost::mpl::set<boost::mpl::int_<MESSAGE_SHOW_TOOLTIP>,
 						boost::mpl::int_<MESSAGE_SHOW_HELPTIP>,
 						boost::mpl::int_<REQUEST_PLACEMENT> >
-tset_event_message;
+set_event_message;
 
 /**
  * Connects a dispatcher to the event handler.
  *
  * @param dispatcher              The dispatcher to connect.
  */
-void connect_dispatcher(tdispatcher* dispatcher);
+void connect_dispatcher(dispatcher* dispatcher);
 
 /**
  * Disconnects a dispatcher to the event handler.
  *
  * @param dispatcher              The dispatcher to disconnect.
  */
-void disconnect_dispatcher(tdispatcher* dispatcher);
+void disconnect_dispatcher(dispatcher* dispatcher);
 
 /**
  * Initializes the location of the mouse.
@@ -301,7 +301,7 @@ void init_mouse_location();
  * @param dispatcher              The dispatcher which should get the mouse
  *                                focus.
  */
-void capture_mouse(tdispatcher* dispatcher);
+void capture_mouse(dispatcher* dispatcher);
 
 /**
  * Releases a captured mouse.
@@ -309,7 +309,7 @@ void capture_mouse(tdispatcher* dispatcher);
  * @param dispatcher              The dispatcher which should release the mouse
  *                                capture.
  */
-void release_mouse(tdispatcher* dispatcher);
+void release_mouse(dispatcher* dispatcher);
 
 /**
  * Captures the keyboard.
@@ -320,9 +320,9 @@ void release_mouse(tdispatcher* dispatcher);
  * @param dispatcher              The dispatcher which should get the keyboard
  *                                focus.
  */
-void capture_keyboard(tdispatcher* dispatcher);
+void capture_keyboard(dispatcher* dispatcher);
 
-std::ostream& operator<<(std::ostream& stream, const tevent event);
+std::ostream& operator<<(std::ostream& stream, const ui_event event);
 
 } // namespace event
 
@@ -331,7 +331,7 @@ std::ostream& operator<<(std::ostream& stream, const tevent event);
  * order in which they were opened. Currently only used as a helper for is_in_dialog(),
  * but could potentially be useful for other things in the future.
  */
-extern std::vector<twindow*> open_window_stack;
+extern std::vector<window*> open_window_stack;
 
 /**
  * Is a dialog open?

@@ -15,7 +15,7 @@
 #ifndef GUI_DIALOGS_ADDON_FILTER_OPTIONS_HPP_INCLUDED
 #define GUI_DIALOGS_ADDON_FILTER_OPTIONS_HPP_INCLUDED
 
-#include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/group.hpp"
 
 #include "addon/validation.hpp"
@@ -27,12 +27,15 @@
 namespace gui2
 {
 
-class ttoggle_button;
+class toggle_button;
 
-class taddon_filter_options : public tdialog
+namespace dialogs
+{
+
+class addon_filter_options : public modal_dialog
 {
 public:
-	taddon_filter_options();
+	addon_filter_options();
 
 	boost::dynamic_bitset<> displayed_types() const
 	{
@@ -77,48 +80,48 @@ public:
 private:
 	ADDON_STATUS_FILTER displayed_status_;
 	std::array<bool, ADDON_TYPES_COUNT> displayed_types_;
-	std::vector<tfield_bool*> displayed_types_fields_;
+	std::vector<field_bool*> displayed_types_fields_;
 
 	ADDON_SORT sort_;
 	ADDON_SORT_DIRECTION dir_;
 
-	typedef std::pair<ttoggle_button*, ADDON_SORT> sort_toggle;
-	typedef std::pair<ttoggle_button*, ADDON_SORT_DIRECTION> dir_toggle;
+	typedef std::pair<toggle_button*, ADDON_SORT> sort_toggle;
+	typedef std::pair<toggle_button*, ADDON_SORT_DIRECTION> dir_toggle;
 
 	// Dialog display state variables.
-	tgroup<ADDON_SORT> sort_tgroup_;
-	tgroup<ADDON_SORT_DIRECTION> dir_tgroup_;
+	group<ADDON_SORT> sort_tgroup_;
+	group<ADDON_SORT_DIRECTION> dir_tgroup_;
 
 	void register_displayed_type_field(const std::string& field_id,
 									   ADDON_TYPE addon_type);
 
 	void read_types_vector(const boost::dynamic_bitset<>& v);
 
-	void toggle_all_displayed_types_button_callback(twindow& window);
+	void toggle_all_displayed_types_button_callback(window& window);
 
-	void register_sort_toggle(twindow& window,
+	void register_sort_toggle(window& window,
 							  const std::string& toggle_id,
 							  ADDON_SORT value);
-	void register_dir_toggle(twindow& window,
+	void register_dir_toggle(window& window,
 							 const std::string& toggle_id,
 							 ADDON_SORT_DIRECTION value);
 
 	void toggle_sort_callback();
 	void toggle_dir_callback();
 
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	/** Inherited from modal_dialog. */
+	void pre_show(window& window);
 
-	/** Inherited from tdialog. */
-	void post_show(twindow& window);
+	/** Inherited from modal_dialog. */
+	void post_show(window& window);
 
 	static std::string status_label(ADDON_STATUS_FILTER s);
 };
 
-
+} // namespace dialogs
 } // end namespace gui2
 
 #endif

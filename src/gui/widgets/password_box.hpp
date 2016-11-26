@@ -21,7 +21,7 @@
 
 
 /**
- * A class inherited from ttext_box that displays
+ * A class inherited from text_box that displays
  * its input as stars
  *
  * @todo This implementation is quite a hack that
@@ -32,14 +32,14 @@ namespace gui2
 
 // ------------ WIDGET -----------{
 
-class tpassword_box : public ttext_box
+class password_box : public text_box
 {
 public:
-	tpassword_box() : ttext_box(), real_value_()
+	password_box() : text_box(), real_value_()
 	{
 	}
 
-	/** Inherited from ttext_. */
+	/** Inherited from text_box_base. */
 	virtual void set_value(const std::string& text) override;
 	std::string get_real_value() const
 	{
@@ -59,7 +59,7 @@ private:
 
 	std::string real_value_;
 
-	/** See @ref tcontrol::get_control_type. */
+	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 };
 
@@ -68,16 +68,16 @@ private:
 namespace implementation
 {
 
-// copy & paste from tbuilder_text_box...
+// copy & paste from builder_text_box...
 // does it make more sense to inherit from it?
-struct tbuilder_password_box : public tbuilder_control
+struct builder_password_box : public builder_styled_widget
 {
 public:
-	explicit tbuilder_password_box(const config& cfg);
+	explicit builder_password_box(const config& cfg);
 
-	using tbuilder_control::build;
+	using builder_styled_widget::build;
 
-	twidget* build() const;
+	widget* build() const;
 
 private:
 	std::string history_;

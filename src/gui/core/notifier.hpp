@@ -31,16 +31,16 @@ namespace gui2
  * Subclasses should implement a way to call all callback.
  */
 template <class FUNCTOR>
-class tnotifier
+class notifier
 {
 public:
-	typedef FUNCTOR tfunctor;
+	typedef FUNCTOR functor_t;
 
-	tnotifier() : notifiees_()
+	notifier() : notifiees_()
 	{
 	}
 
-	~tnotifier()
+	~notifier()
 	{
 		for (auto & item : notifiees_)
 		{
@@ -54,36 +54,36 @@ public:
 	/**
 	 * Connects a callback.
 	 *
-	 * @param notifiee               The notifiee controlling the lifetime of
+	 * @param target                 The notifiee controlling the lifetime of
 	 *                               the callback.
 	 * @param functor                The callback to call.
 	 */
-	void connect_notifiee(tnotifiee<tfunctor>& notifiee, tfunctor functor)
+	void connect_notifiee(notifiee<functor_t>& target, functor_t functor)
 	{
-		notifiees_.insert(std::make_pair(&notifiee, functor));
+		notifiees_.insert(std::make_pair(&target, functor));
 
-		assert(!notifiee.notifier_);
+		assert(!target.notifier_);
 
-		notifiee.notifier_ = this;
+		target.notifier_ = this;
 	}
 
 	/**
 	 * Disconnects a callback.
 	 *
-	 * @param notifiee               The notifiee controlling the lifetime of
+	 * @param target                 The notifiee controlling the lifetime of
 	 *                               the callback. Uses since its address is an
 	 *                               unique key.
 	 */
-	void disconnect_notifiee(tnotifiee<tfunctor>& notifiee)
+	void disconnect_notifiee(notifiee<functor_t>& target)
 	{
-		typename std::map<tnotifiee<tfunctor>*, tfunctor>::iterator itor
-				= notifiees_.find(&notifiee);
+		typename std::map<notifiee<functor_t>*, functor_t>::iterator itor
+				= notifiees_.find(&target);
 
 		if(itor != notifiees_.end()) {
 
-			assert(notifiee.notifier_ == this);
+			assert(target.notifier_ == this);
 
-			notifiee.notifier_ = nullptr;
+			target.notifier_ = nullptr;
 
 			notifiees_.erase(itor);
 		}
@@ -91,14 +91,14 @@ public:
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	const std::map<tnotifiee<tfunctor>*, tfunctor>& notifiees() const
+	const std::map<notifiee<functor_t>*, functor_t>& notifiees() const
 	{
 		return notifiees_;
 	}
 
 private:
 	/** List of registered callbacks. */
-	std::map<tnotifiee<tfunctor>*, tfunctor> notifiees_;
+	std::map<notifiee<functor_t>*, functor_t> notifiees_;
 };
 
 } // namespace gui2

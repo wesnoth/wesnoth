@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-#include "notifications.hpp"
+#include "desktop/notifications.hpp"
 #include "global.hpp"
 
 #include "game_preferences.hpp"
@@ -21,15 +21,15 @@
 #include "video.hpp" //CVideo::get_singleton().window_state()
 
 #ifdef HAVE_LIBDBUS
-#include "dbus_notification.hpp"
+#include "desktop/dbus_notification.hpp"
 #endif
 
 #ifdef __APPLE__
-#include "apple_notification.hpp"
+#include "desktop/apple_notification.hpp"
 #endif
 
 #ifdef _WIN32
-#include "windows_tray_notification.hpp"
+#include "desktop/windows_tray_notification.hpp"
 #endif
 
 namespace desktop {

@@ -22,29 +22,29 @@
 namespace gui2
 {
 
-namespace iterator
+namespace iteration
 {
 
-ttree_node::ttree_node(gui2::ttree_view_node& node, boost::ptr_vector<gui2::ttree_view_node>& children)
+tree_node::tree_node(gui2::tree_view_node& node, boost::ptr_vector<gui2::tree_view_node>& children)
 	: children_(children), widget_(&node), itor_(children.begin())
 {
 }
 
-twalker_::tstate ttree_node::next(const tlevel level)
+walker_base::state_t tree_node::next(const level level)
 {
 	if(at_end(level)) {
 		return fail;
 	}
 
 	switch(level) {
-		case widget:
+		case self:
 			if(widget_) {
 				widget_ = nullptr;
 				return invalid;
 			} else {
 				/* FALL DOWN */
 			}
-		case grid:
+		case internal:
 			assert(false);
 			return fail;
 		case child:
@@ -60,12 +60,12 @@ twalker_::tstate ttree_node::next(const tlevel level)
 	return fail;
 }
 
-bool ttree_node::at_end(const tlevel level) const
+bool tree_node::at_end(const level level) const
 {
 	switch(level) {
-		case widget:
+		case self:
 			return widget_ == nullptr;
-		case grid:
+		case internal:
 			return true;
 		case child:
 			return (itor_ == children_.end());
@@ -75,12 +75,12 @@ bool ttree_node::at_end(const tlevel level) const
 	return true;
 }
 
-gui2::twidget* ttree_node::get(const tlevel level)
+gui2::widget* tree_node::get(const level level)
 {
 	switch(level) {
-		case widget:
+		case self:
 			return widget_;
-		case grid:
+		case internal:
 			return nullptr;
 		case child:
 			if(itor_ == children_.end()) {
@@ -94,6 +94,6 @@ gui2::twidget* ttree_node::get(const tlevel level)
 	return nullptr;
 }
 
-} // namespace iterator
+} // namespace iteration
 
 } // namespace gui2

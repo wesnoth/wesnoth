@@ -68,7 +68,7 @@ namespace lg {
  * The main usage of the redirection is for the unit tests to validate the
  * output on the logger with the expected output.
  */
-class tredirect_output_setter
+class redirect_output_setter
 {
 public:
 
@@ -77,9 +77,9 @@ public:
 	 *
 	 * @param stream              The stream to direct the output to.
 	 */
-	explicit tredirect_output_setter(std::ostream& stream);
+	explicit redirect_output_setter(std::ostream& stream);
 
-	~tredirect_output_setter();
+	~redirect_output_setter();
 
 private:
 

@@ -43,7 +43,7 @@ struct target {
 		(BATTLE_AID, "battle aid")
 		(MASS, "mass")
 		(SUPPORT, "support")
-	);
+	)
 
 	target(const map_location& pos, double val, TYPE target_type=TYPE::VILLAGE) : loc(pos), value(val), type(target_type)
 	{}

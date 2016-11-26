@@ -56,7 +56,7 @@ struct move_cost_calculator : pathfind::cost_calculator
 
 	double cost(const map_location& loc, const double) const
 	{
-		const t_translation::t_terrain terrain = map_[loc];
+		const t_translation::terrain_code terrain = map_[loc];
 
 		const double move_cost = unit_.movement_cost(terrain);
 

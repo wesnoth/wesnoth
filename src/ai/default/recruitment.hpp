@@ -49,7 +49,7 @@ namespace default_recruitment {
 // The leader will then recruit according to the map.
 typedef std::map<std::string, double> score_map;
 
-typedef std::map<t_translation::t_terrain, int> terrain_count_map;
+typedef std::map<t_translation::terrain_code, int> terrain_count_map;
 typedef std::map<std::string, int> count_map;
 
 struct data {

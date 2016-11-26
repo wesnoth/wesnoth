@@ -19,17 +19,17 @@
 
 #include <cassert>
 #include "gui/widgets/grid.hpp"
-#include "gui/widgets/selectable.hpp"
+#include "gui/widgets/selectable_item.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/toggle_panel.hpp"
-#include "gui/widgets/window.hpp" // For twindow::tvisible
+#include "gui/widgets/window.hpp" // For window::visibility
 #include "wml_exception.hpp"
 
 namespace gui2
 {
 
 /**
- * Contains the policies for the tgenerator class.
+ * Contains the policies for the generator class.
  */
 namespace policy
 {
@@ -41,7 +41,7 @@ namespace minimum_selection
 {
 
 /** Must select at least one item. */
-struct tone : public virtual tgenerator_
+struct one_item : public virtual generator_base
 {
 	/**
 	 * Called when an item is shown or hidden.
@@ -59,7 +59,7 @@ struct tone : public virtual tgenerator_
 	void create_item(const unsigned index);
 
 	/* Also make the overload from the generator_ visible. */
-	using tgenerator_::create_item;
+	using generator_base::create_item;
 
 	/**
 	 * Called when the users wants to deselect an item.
@@ -90,28 +90,28 @@ struct tone : public virtual tgenerator_
 };
 
 /** No minimum selection. */
-struct tnone : public virtual tgenerator_
+struct no_item : public virtual generator_base
 {
 
-	/** See @ref minimum_selection::tone::set_item_shown(). */
+	/** See @ref minimum_selection::one_item::set_item_shown(). */
 	void set_item_shown(const unsigned index, const bool show);
 
-	/** See @ref minimum_selection::tone::create_item() */
+	/** See @ref minimum_selection::one_item::create_item() */
 	void create_item(const unsigned /*index*/)
 	{
 	}
 
 	/* Also make the overload from the generator_ visible. */
-	using tgenerator_::create_item;
+	using generator_base::create_item;
 
-	/** See @ref minimum_selection::tone::deselect_item() */
+	/** See @ref minimum_selection::one_item::deselect_item() */
 	bool deselect_item(const unsigned index)
 	{
 		do_deselect_item(index);
 		return true;
 	}
 
-	/** See @ref minimum_selection::tone::delete_item() */
+	/** See @ref minimum_selection::one_item::delete_item() */
 	void delete_item(const unsigned index)
 	{
 		if(is_selected(index)) {
@@ -129,7 +129,7 @@ namespace maximum_selection
 {
 
 /** May select only one item. */
-struct tone : public virtual tgenerator_
+struct one_item : public virtual generator_base
 {
 	/**
 	 * Called when an item is selected.
@@ -159,9 +159,9 @@ struct tone : public virtual tgenerator_
 };
 
 /** No maximum amount of items to select. */
-struct tinfinite : public virtual tgenerator_
+struct many_items : public virtual generator_base
 {
-	/** See tone::select_item(). */
+	/** See one_item::select_item(). */
 	void select_item(const unsigned index, const bool select) override
 	{
 		assert(select);
@@ -179,9 +179,9 @@ namespace placement
 {
 
 /** Places the items in a horizontal row. */
-struct thorizontal_list : public virtual tgenerator_
+struct horizontal_list : public virtual generator_base
 {
-	thorizontal_list();
+	horizontal_list();
 
 	/**
 	 * Called when an item is created.
@@ -193,28 +193,28 @@ struct thorizontal_list : public virtual tgenerator_
 	void create_item(const unsigned index);
 
 	/* Also make the overload from the generator_ visible. */
-	using tgenerator_::create_item;
+	using generator_base::create_item;
 
-	/** See @ref twidget::request_reduce_width. */
+	/** See @ref widget::request_reduce_width. */
 	virtual void request_reduce_width(const unsigned /*maximum_width*/) override
 	{
 		/* DO NOTHING */
 	}
 
-	/** See @ref twidget::request_reduce_height. */
+	/** See @ref widget::request_reduce_height. */
 	virtual void request_reduce_height(const unsigned /*maximum_height*/) override
 	{
 		/* DO NOTHING */
 	}
 
-	/** See @ref twidget::calculate_best_size. */
-	virtual tpoint calculate_best_size() const override;
+	/** See @ref widget::calculate_best_size. */
+	virtual point calculate_best_size() const override;
 
-	/** See @ref twidget::place. */
-	virtual void place(const tpoint& origin, const tpoint& size) override;
+	/** See @ref widget::place. */
+	virtual void place(const point& origin, const point& size) override;
 
-	/** See @ref twidget::set_origin. */
-	virtual void set_origin(const tpoint& origin) override;
+	/** See @ref widget::set_origin. */
+	virtual void set_origin(const point& origin) override;
 
 	/**
 	 * Sets the visible rectangle of the generator.
@@ -223,32 +223,32 @@ struct thorizontal_list : public virtual tgenerator_
 	 */
 	void set_visible_rectangle(const SDL_Rect& rectangle) override;
 
-	/** See @ref twidget::find_at. */
-	virtual twidget* find_at(const tpoint& coordinate,
+	/** See @ref widget::find_at. */
+	virtual widget* find_at(const point& coordinate,
 							 const bool must_be_active) override;
 
-	/** See @ref twidget::find_at. */
-	virtual const twidget* find_at(const tpoint& coordinate,
+	/** See @ref widget::find_at. */
+	virtual const widget* find_at(const point& coordinate,
 								   const bool must_be_active) const override;
 
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 
-	/** Inherited from tgenerator_. */
+	/** Inherited from generator_base. */
 	void handle_key_up_arrow(SDL_Keymod /*modifier*/, bool& /*handled*/) override
 	{
 		/* do nothing */
 	}
 
-	/** Inherited from tgenerator_. */
+	/** Inherited from generator_base. */
 	void handle_key_down_arrow(SDL_Keymod /*modifier*/, bool& /*handled*/) override
 	{
 		/* do nothing */
 	}
 
-	/** Inherited from tgenerator_. */
+	/** Inherited from generator_base. */
 	void handle_key_left_arrow(SDL_Keymod modifier, bool& handled) override;
 
-	/** Inherited from tgenerator_. */
+	/** Inherited from generator_base. */
 	void handle_key_right_arrow(SDL_Keymod modifier, bool& handled) override;
 
 private:
@@ -263,62 +263,62 @@ private:
 };
 
 /** Places the items in a vertical column. */
-struct tvertical_list : public virtual tgenerator_
+struct vertical_list : public virtual generator_base
 {
-	tvertical_list();
+	vertical_list();
 
-	/** See thorizontal_list::create_item(). */
+	/** See horizontal_list::create_item(). */
 	void create_item(const unsigned index);
 
 	/* Also make the overload from the generator_ visible. */
-	using tgenerator_::create_item;
+	using generator_base::create_item;
 
-	/** See @ref twidget::request_reduce_width. */
+	/** See @ref widget::request_reduce_width. */
 	virtual void request_reduce_width(const unsigned /*maximum_width*/) override
 	{
 		/* DO NOTHING */
 	}
 
-	/** See @ref twidget::request_reduce_height. */
+	/** See @ref widget::request_reduce_height. */
 	virtual void request_reduce_height(const unsigned /*maximum_height*/) override
 	{
 		/* DO NOTHING */
 	}
 
-	/** See @ref twidget::calculate_best_size. */
-	virtual tpoint calculate_best_size() const override;
+	/** See @ref widget::calculate_best_size. */
+	virtual point calculate_best_size() const override;
 
-	/** See @ref twidget::place. */
-	virtual void place(const tpoint& origin, const tpoint& size) override;
+	/** See @ref widget::place. */
+	virtual void place(const point& origin, const point& size) override;
 
-	/** See @ref twidget::set_origin. */
-	virtual void set_origin(const tpoint& origin) override;
+	/** See @ref widget::set_origin. */
+	virtual void set_origin(const point& origin) override;
 
-	/** See @ref thorizontal_list::set_visible_rectangle(). */
+	/** See @ref horizontal_list::set_visible_rectangle(). */
 	void set_visible_rectangle(const SDL_Rect& rectangle) override;
 
-	/** See @ref twidget::find_at. */
-	virtual twidget* find_at(const tpoint& coordinate,
+	/** See @ref widget::find_at. */
+	virtual widget* find_at(const point& coordinate,
 							 const bool must_be_active) override;
 
-	/** See @ref twidget::find_at. */
-	virtual const twidget* find_at(const tpoint& coordinate,
+	/** See @ref widget::find_at. */
+	virtual const widget* find_at(const point& coordinate,
 								   const bool must_be_active) const override;
 
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 
-	/** Inherited from tgenerator_. */
+	/** Inherited from generator_base. */
 	void handle_key_up_arrow(SDL_Keymod modifier, bool& handled) override;
 
-	/** Inherited from tgenerator_. */
+	/** Inherited from generator_base. */
 	void handle_key_down_arrow(SDL_Keymod modifier, bool& handled) override;
 
-	/** Inherited from tgenerator_. */
+	/** Inherited from generator_base. */
 	void handle_key_left_arrow(SDL_Keymod /*modifier*/, bool& /*handled*/) override
 	{ /* do nothing */
 	}
 
-	/** Inherited from tgenerator_. */
+	/** Inherited from generator_base. */
 	void handle_key_right_arrow(SDL_Keymod /*modifier*/, bool& /*handled*/) override
 	{ /* do nothing */
 	}
@@ -347,61 +347,61 @@ private:
  *
  * @todo Implement.
  */
-struct tmatrix : public virtual tgenerator_
+struct table : public virtual generator_base
 {
-	tmatrix();
+	table();
 
-	/** See thorizontal_list::create_item(). */
+	/** See horizontal_list::create_item(). */
 	void create_item(const unsigned /*index*/);
 
 	/* Also make the overload from the generator_ visible. */
-	using tgenerator_::create_item;
+	using generator_base::create_item;
 
-	/** See @ref twidget::request_reduce_width. */
+	/** See @ref widget::request_reduce_width. */
 	virtual void request_reduce_width(const unsigned /*maximum_width*/) override
 	{
 		/* DO NOTHING */
 	}
 
-	/** See @ref twidget::request_reduce_height. */
+	/** See @ref widget::request_reduce_height. */
 	virtual void request_reduce_height(const unsigned /*maximum_height*/) override
 	{
 		/* DO NOTHING */
 	}
 
-	/** See @ref twidget::calculate_best_size. */
-	virtual tpoint calculate_best_size() const override;
+	/** See @ref widget::calculate_best_size. */
+	virtual point calculate_best_size() const override;
 
-	/** See @ref twidget::place. */
-	virtual void place(const tpoint& /*origin*/
-					   , const tpoint& /*size*/) override;
+	/** See @ref widget::place. */
+	virtual void place(const point& /*origin*/
+					   , const point& /*size*/) override;
 
-	/** See @ref twidget::set_origin. */
-	virtual void set_origin(const tpoint& /*origin*/) override;
+	/** See @ref widget::set_origin. */
+	virtual void set_origin(const point& /*origin*/) override;
 
-	/** See @ref thorizontal_list::set_visible_rectangle(). */
+	/** See @ref horizontal_list::set_visible_rectangle(). */
 	void set_visible_rectangle(const SDL_Rect& /*rectangle*/) override;
 
-	/** See @ref twidget::find_at. */
-	virtual twidget* find_at(const tpoint& /*coordinate*/
+	/** See @ref widget::find_at. */
+	virtual widget* find_at(const point& /*coordinate*/
 							 , const bool /*must_be_active*/) override;
 
-	/** See @ref twidget::find_at. */
-	virtual const twidget* find_at(const tpoint& /*coordinate*/
+	/** See @ref widget::find_at. */
+	virtual const widget* find_at(const point& /*coordinate*/
 								   , const bool /*must_be_active*/) const override;
 
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 
-	/** Inherited from tgenerator_. */
+	/** Inherited from generator_base. */
 	void handle_key_up_arrow(SDL_Keymod, bool&) override;
 
-	/** Inherited from tgenerator_. */
+	/** Inherited from generator_base. */
 	void handle_key_down_arrow(SDL_Keymod, bool&) override;
 
-	/** Inherited from tgenerator_. */
+	/** Inherited from generator_base. */
 	void handle_key_left_arrow(SDL_Keymod, bool&) override;
 
-	/** Inherited from tgenerator_. */
+	/** Inherited from generator_base. */
 	void handle_key_right_arrow(SDL_Keymod, bool&) override;
 private:
 	/**
@@ -421,71 +421,71 @@ private:
  *
  * @todo Implement.
  */
-struct tindependent : public virtual tgenerator_
+struct independent : public virtual generator_base
 {
-	/** See thorizontal_list::create_item(). */
+	/** See horizontal_list::create_item(). */
 	void create_item(const unsigned /*index*/)
 	{
 		/* DO NOTHING */
 	}
 
 	/* Also make the overload from the generator_ visible. */
-	using tgenerator_::create_item;
+	using generator_base::create_item;
 
-	/** See @ref twidget::request_reduce_width. */
+	/** See @ref widget::request_reduce_width. */
 	virtual void request_reduce_width(const unsigned maximum_width) override;
 
-	/** See thorizontal_list::request_reduce_height. */
+	/** See horizontal_list::request_reduce_height. */
 	virtual void request_reduce_height(const unsigned maximum_height) override;
 
-	/** See @ref twidget::calculate_best_size. */
-	virtual tpoint calculate_best_size() const override;
+	/** See @ref widget::calculate_best_size. */
+	virtual point calculate_best_size() const override;
 
-	/** See @ref twidget::place. */
-	virtual void place(const tpoint& origin, const tpoint& size) override;
+	/** See @ref widget::place. */
+	virtual void place(const point& origin, const point& size) override;
 
-	/** See @ref twidget::set_origin. */
-	virtual void set_origin(const tpoint& origin) override;
+	/** See @ref widget::set_origin. */
+	virtual void set_origin(const point& origin) override;
 
-	/** See @ref thorizontal_list::set_visible_rectangle(). */
+	/** See @ref horizontal_list::set_visible_rectangle(). */
 	void set_visible_rectangle(const SDL_Rect& rectangle) override;
 
-	/** See @ref twidget::find_at. */
-	virtual twidget* find_at(const tpoint& coordinate,
+	/** See @ref widget::find_at. */
+	virtual widget* find_at(const point& coordinate,
 							 const bool must_be_active) override;
 
-	/** See @ref twidget::find_at. */
-	virtual const twidget* find_at(const tpoint& coordinate,
+	/** See @ref widget::find_at. */
+	virtual const widget* find_at(const point& coordinate,
 								   const bool must_be_active) const override;
 
-	/** See @ref twidget::find. */
-	twidget* find(const std::string& id, const bool must_be_active) override;
+	/** See @ref widget::find. */
+	widget* find(const std::string& id, const bool must_be_active) override;
 
-	/** See @ref twidget::find. */
-	const twidget* find(const std::string& id,
+	/** See @ref widget::find. */
+	const widget* find(const std::string& id,
 						const bool must_be_active) const override;
 
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 
-	/** Inherited from tgenerator_. */
+	/** Inherited from generator_base. */
 	void handle_key_up_arrow(SDL_Keymod, bool&) override
 	{
 		/* DO NOTHING */
 	}
 
-	/** Inherited from tgenerator_. */
+	/** Inherited from generator_base. */
 	void handle_key_down_arrow(SDL_Keymod, bool&) override
 	{
 		/* DO NOTHING */
 	}
 
-	/** Inherited from tgenerator_. */
+	/** Inherited from generator_base. */
 	void handle_key_left_arrow(SDL_Keymod, bool&) override
 	{
 		/* DO NOTHING */
 	}
 
-	/** Inherited from tgenerator_. */
+	/** Inherited from generator_base. */
 	void handle_key_right_arrow(SDL_Keymod, bool&) override
 	{
 		/* DO NOTHING */
@@ -503,10 +503,10 @@ struct tindependent : public virtual tgenerator_
 namespace select_action
 {
 
-/** Select the item, this requires the grid to contain a tselectable_. */
-struct tselect : public virtual tgenerator_
+/** Select the item, this requires the grid to contain a selectable_item. */
+struct selection : public virtual generator_base
 {
-	void select(tgrid& grid, const bool select);
+	void select(grid& grid, const bool select);
 
 	/**
 	 * Helper function to initialize a grid.
@@ -517,18 +517,18 @@ struct tselect : public virtual tgenerator_
 	 * @param callback            The callback function to call when an item
 	 *                            in the grid is (de)selected.
 	 */
-	void init(tgrid* grid,
+	void init(grid* grid,
 			  const std::map<std::string /* widget id */, string_map>& data,
-			  const std::function<void(twidget&)>& callback);
+			  const std::function<void(widget&)>& callback);
 };
 
 /** Show the item. */
-struct tshow : public virtual tgenerator_
+struct show : public virtual generator_base
 {
-	void select(tgrid& grid, const bool show)
+	void select(grid& grid, const bool show)
 	{
-		grid.set_visible(show ? twidget::tvisible::visible
-							  : twidget::tvisible::hidden);
+		grid.set_visible(show ? widget::visibility::visible
+							  : widget::visibility::hidden);
 	}
 
 	/**
@@ -541,16 +541,16 @@ struct tshow : public virtual tgenerator_
 	 * @param callback            The callback function is not used and
 	 *                            should be nullptr.
 	 */
-	void init(tgrid* grid,
+	void init(grid* grid,
 			  const std::map<std::string /* widget id */, string_map>& data,
-			  const std::function<void(twidget&)>& callback);
+			  const std::function<void(widget&)>& callback);
 };
 
 } // namespace select_action
 
 } // namespace policy
 
-/***** ***** ***** ***** tgenerator ***** ***** ***** *****/
+/***** ***** ***** ***** generator ***** ***** ***** *****/
 
 /**
  * Basic template class to generate new items.
@@ -559,18 +559,18 @@ struct tshow : public virtual tgenerator_
  */
 template <class minimum_selection,
 		  class maximum_selection,
-		  class placement,
+		  class my_placement,
 		  class select_action>
-class tgenerator : public minimum_selection,
+class generator : public minimum_selection,
 				   public maximum_selection,
-				   public placement,
+				   public my_placement,
 				   public select_action
 {
 public:
-	tgenerator()
+	generator()
 		: minimum_selection()
 		, maximum_selection()
-		, placement()
+		, my_placement()
 		, select_action()
 		, selected_item_count_(0)
 		, last_selected_item_(-1)
@@ -581,14 +581,14 @@ public:
 	{
 	}
 
-	~tgenerator()
+	~generator()
 	{
 		clear();
 	}
 
 	/***** ***** ***** inherited ***** ****** *****/
 
-	/** Inherited from tgenerator_. */
+	/** Inherited from generator_base. */
 	void delete_item(const unsigned index) override
 	{
 		assert(index < items_.size());
@@ -607,7 +607,7 @@ public:
 		order_dirty_ = true;
 	}
 
-	/** Inherited from tgenerator_. */
+	/** Inherited from generator_base. */
 	void clear() override
 	{
 		for(auto item : items_)
@@ -618,7 +618,7 @@ public:
 		selected_item_count_ = 0;
 	}
 
-	/** Inherited from tgenerator_. */
+	/** Inherited from generator_base. */
 	void select_item(const unsigned index, const bool select = true) override
 	{
 		assert(index < items_.size());
@@ -635,14 +635,14 @@ public:
 		}
 	}
 
-	/** Inherited from tgenerator_. */
+	/** Inherited from generator_base. */
 	bool is_selected(const unsigned index) const override
 	{
 		assert(index < items_.size());
 		return (*items_[index]).selected;
 	}
 
-	/** Inherited from tgenerator_. */
+	/** Inherited from generator_base. */
 	void set_item_shown(const unsigned index, const bool show) override
 	{
 		assert(index < items_.size());
@@ -651,35 +651,35 @@ public:
 			/*** Set the proper visible state. ***/
 			items_[index]->shown = show;
 			items_[index]
-					->grid.set_visible(show ? twidget::tvisible::visible
-											: twidget::tvisible::invisible);
+					->child_grid.set_visible(show ? widget::visibility::visible
+											: widget::visibility::invisible);
 
 			/*** Update the selection. ***/
 			minimum_selection::set_item_shown(index, show);
 		}
 	}
 
-	/** Inherited from tgenerator_. */
+	/** Inherited from generator_base. */
 	virtual bool get_item_shown(const unsigned index) const override
 	{
 		assert(index < items_.size());
-		return items_[index]->shown && items_[index]->grid.get_visible() != twindow::tvisible::invisible;
+		return items_[index]->shown && items_[index]->child_grid.get_visible() != window::visibility::invisible;
 	}
 
 
-	/** Inherited from tgenerator_. */
+	/** Inherited from generator_base. */
 	unsigned get_item_count() const override
 	{
 		return items_.size();
 	}
 
-	/** Inherited from tgenerator_. */
+	/** Inherited from generator_base. */
 	unsigned get_selected_item_count() const override
 	{
 		return selected_item_count_;
 	}
 
-	/** Inherited from tgenerator_. */
+	/** Inherited from generator_base. */
 	int get_selected_item() const override
 	{
 
@@ -702,42 +702,42 @@ public:
 		}
 	}
 
-	/** Inherited from tgenerator_. */
-	tgrid& item(const unsigned index) override
+	/** Inherited from generator_base. */
+	grid& item(const unsigned index) override
 	{
 		assert(index < items_.size());
-		return items_[index]->grid;
+		return items_[index]->child_grid;
 	}
 
-	/** Inherited from tgenerator_. */
-	const tgrid& item(const unsigned index) const override
+	/** Inherited from generator_base. */
+	const grid& item(const unsigned index) const override
 	{
 		assert(index < items_.size());
-		return items_[index]->grid;
+		return items_[index]->child_grid;
 	}
 
-	/** Inherited from tgenerator_. */
-	tgrid& item_ordered(const unsigned index) override
-	{
-		calculate_order();
-		assert(index < items_.size());
-		return items_[order_[index]]->grid;
-	}
-
-	/** Inherited from tgenerator_. */
-	const tgrid& item_ordered(const unsigned index) const override
+	/** Inherited from generator_base. */
+	grid& item_ordered(const unsigned index) override
 	{
 		calculate_order();
 		assert(index < items_.size());
-		return items_[order_[index]]->grid;
+		return items_[order_[index]]->child_grid;
+	}
+
+	/** Inherited from generator_base. */
+	const grid& item_ordered(const unsigned index) const override
+	{
+		calculate_order();
+		assert(index < items_.size());
+		return items_[order_[index]]->child_grid;
 	}
 
 
-	/** Inherited from tgenerator_. */
-	tgrid& create_item(const int index,
-					   tbuilder_grid_const_ptr list_builder,
+	/** Inherited from generator_base. */
+	grid& create_item(const int index,
+					   builder_grid_const_ptr list_builder,
 					   const string_map& item_data,
-					   const std::function<void(twidget&)>& callback) override
+					   const std::function<void(widget&)>& callback) override
 	{
 		std::map<std::string, string_map> data;
 
@@ -745,157 +745,157 @@ public:
 		return create_item(index, list_builder, data, callback);
 	}
 
-	/** Inherited from tgenerator_. */
-	tgrid& create_item(
+	/** Inherited from generator_base. */
+	grid& create_item(
 			const int index,
-			tbuilder_grid_const_ptr list_builder,
+			builder_grid_const_ptr list_builder,
 			const std::map<std::string /* widget id */, string_map>& item_data,
-			const std::function<void(twidget&)>& callback) override
+			const std::function<void(widget&)>& callback) override
 	{
 		assert(list_builder);
 		assert(index == -1 || static_cast<unsigned>(index) < items_.size());
 
-		titem* item = new titem;
-		list_builder->build(&item->grid);
-		init(&item->grid, item_data, callback);
+		child* item = new child;
+		list_builder->build(&item->child_grid);
+		init(&item->child_grid, item_data, callback);
 
 		const unsigned item_index = index == -1 ? items_.size() : index;
 
 		items_.insert(items_.begin() + item_index, item);
 		order_dirty_ = true;
 		minimum_selection::create_item(item_index);
-		placement::create_item(item_index);
+		my_placement::create_item(item_index);
 		if(!is_selected(item_index)) {
-			select_action::select(item->grid, false);
+			select_action::select(item->child_grid, false);
 		}
-		return item->grid;
+		return item->child_grid;
 	}
 
-	/** Inherited from tgenerator_. */
+	/** Inherited from generator_base. */
 	virtual void create_items(
 			const int index,
-			tbuilder_grid_const_ptr list_builder,
+			builder_grid_const_ptr list_builder,
 			const std::vector<std::map<std::string /*widget id*/, string_map> >&
 					data,
-			const std::function<void(twidget&)>& callback) override
+			const std::function<void(widget&)>& callback) override
 	{
 		impl_create_items(index, list_builder, data, callback);
 	}
 
-	/** Inherited from tgenerator_. */
+	/** Inherited from generator_base. */
 	virtual void create_items(const int index,
-							  tbuilder_grid_const_ptr list_builder,
+							  builder_grid_const_ptr list_builder,
 							  const std::vector<string_map>& data,
-							  const std::function<void(twidget&)>& callback) override
+							  const std::function<void(widget&)>& callback) override
 	{
 		impl_create_items(index, list_builder, data, callback);
 	}
 
-	/** See @ref twidget::layout_initialise. */
+	/** See @ref widget::layout_initialise. */
 	virtual void layout_initialise(const bool full_initialisation) override
 	{
 		for(auto item : items_)
 		{
-			if(item->grid.get_visible() != twidget::tvisible::invisible
+			if(item->child_grid.get_visible() != widget::visibility::invisible
 			   && item->shown) {
 
-				item->grid.layout_initialise(full_initialisation);
+				item->child_grid.layout_initialise(full_initialisation);
 			}
 		}
 	}
 
-	/** See @ref twidget::request_reduce_width. */
+	/** See @ref widget::request_reduce_width. */
 	virtual void request_reduce_width(const unsigned maximum_width) override
 	{
-		placement::request_reduce_width(maximum_width);
+		my_placement::request_reduce_width(maximum_width);
 	}
 
-	/** See @ref twidget::request_reduce_height. */
+	/** See @ref widget::request_reduce_height. */
 	virtual void request_reduce_height(const unsigned maximum_height) override
 	{
-		placement::request_reduce_height(maximum_height);
+		my_placement::request_reduce_height(maximum_height);
 	}
 
-	/** See @ref twidget::calculate_best_size. */
-	virtual tpoint calculate_best_size() const override
+	/** See @ref widget::calculate_best_size. */
+	virtual point calculate_best_size() const override
 	{
-		return placement::calculate_best_size();
+		return my_placement::calculate_best_size();
 	}
 
-	/** See @ref twidget::place. */
-	virtual void place(const tpoint& origin, const tpoint& size) override
+	/** See @ref widget::place. */
+	virtual void place(const point& origin, const point& size) override
 	{
 		// Inherited, so we get useful debug info.
-		twidget::place(origin, size);
+		widget::place(origin, size);
 
-		placement::place(origin, size);
+		my_placement::place(origin, size);
 	}
 
-	/** See @ref twidget::set_origin. */
-	virtual void set_origin(const tpoint& origin) override
+	/** See @ref widget::set_origin. */
+	virtual void set_origin(const point& origin) override
 	{
 		// Inherited.
-		twidget::set_origin(origin);
+		widget::set_origin(origin);
 
-		placement::set_origin(origin);
+		my_placement::set_origin(origin);
 	}
 
-	/** See @ref twidget::set_visible_rectangle. */
+	/** See @ref widget::set_visible_rectangle. */
 	virtual void set_visible_rectangle(const SDL_Rect& rectangle) override
 	{
-		placement::set_visible_rectangle(rectangle);
+		my_placement::set_visible_rectangle(rectangle);
 	}
 
-	/** See @ref twidget::impl_draw_children. */
+	/** See @ref widget::impl_draw_children. */
 	virtual void impl_draw_children(surface& frame_buffer,
 									int x_offset,
 									int y_offset) override
 	{
-		assert(this->get_visible() == twidget::tvisible::visible);
+		assert(this->get_visible() == widget::visibility::visible);
 		calculate_order();
 		for(auto index : order_)
 		{
-			titem* item = items_[index];
-			if(item->grid.get_visible() == twidget::tvisible::visible
+			child* item = items_[index];
+			if(item->child_grid.get_visible() == widget::visibility::visible
 			   && item->shown) {
 
-				item->grid.draw_children(frame_buffer, x_offset, y_offset);
+				item->child_grid.draw_children(frame_buffer, x_offset, y_offset);
 			}
 		}
 	}
 
-	/** See @ref twidget::child_populate_dirty_list. */
+	/** See @ref widget::child_populate_dirty_list. */
 	virtual void
-	child_populate_dirty_list(twindow& caller,
-							  const std::vector<twidget*>& call_stack) override
+	child_populate_dirty_list(window& caller,
+							  const std::vector<widget*>& call_stack) override
 	{
 		for(auto item : items_)
 		{
-			std::vector<twidget*> child_call_stack = call_stack;
-			item->grid.populate_dirty_list(caller, child_call_stack);
+			std::vector<widget*> child_call_stack = call_stack;
+			item->child_grid.populate_dirty_list(caller, child_call_stack);
 		}
 	}
 
-	/** See @ref twidget::find_at. */
-	virtual twidget* find_at(const tpoint& coordinate,
+	/** See @ref widget::find_at. */
+	virtual widget* find_at(const point& coordinate,
 							 const bool must_be_active) override
 	{
-		return placement::find_at(coordinate, must_be_active);
+		return my_placement::find_at(coordinate, must_be_active);
 	}
 
-	/** See @ref twidget::find_at. */
-	virtual const twidget* find_at(const tpoint& coordinate,
+	/** See @ref widget::find_at. */
+	virtual const widget* find_at(const point& coordinate,
 								   const bool must_be_active) const override
 	{
-		return placement::find_at(coordinate, must_be_active);
+		return my_placement::find_at(coordinate, must_be_active);
 	}
 
-	/** See @ref twidget::disable_click_dismiss. */
+	/** See @ref widget::disable_click_dismiss. */
 	bool disable_click_dismiss() const override
 	{
 		for(auto item : items_)
 		{
-			if(item->grid.disable_click_dismiss()) {
+			if(item->child_grid.disable_click_dismiss()) {
 				return true;
 			}
 		}
@@ -903,43 +903,43 @@ public:
 	}
 
 	/**
-	 * See @ref twidget::create_walker.
+	 * See @ref widget::create_walker.
 	 *
 	 * @todo Implement properly.
 	 */
-	virtual iterator::twalker_* create_walker() override
+	virtual iteration::walker_base* create_walker() override
 	{
 		return nullptr;
 	}
 
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 
-	/** Inherited from tgenerator_. */
+	/** Inherited from generator_base. */
 	void handle_key_up_arrow(SDL_Keymod modifier, bool& handled) override
 	{
-		placement::handle_key_up_arrow(modifier, handled);
+		my_placement::handle_key_up_arrow(modifier, handled);
 	}
 
-	/** Inherited from tgenerator_. */
+	/** Inherited from generator_base. */
 	void handle_key_down_arrow(SDL_Keymod modifier, bool& handled) override
 	{
-		placement::handle_key_down_arrow(modifier, handled);
+		my_placement::handle_key_down_arrow(modifier, handled);
 	}
 
-	/** Inherited from tgenerator_. */
+	/** Inherited from generator_base. */
 	void handle_key_left_arrow(SDL_Keymod modifier, bool& handled) override
 	{
-		placement::handle_key_left_arrow(modifier, handled);
+		my_placement::handle_key_left_arrow(modifier, handled);
 	}
 
-	/** Inherited from tgenerator_. */
+	/** Inherited from generator_base. */
 	void handle_key_right_arrow(SDL_Keymod modifier, bool& handled) override
 	{
-		placement::handle_key_right_arrow(modifier, handled);
+		my_placement::handle_key_right_arrow(modifier, handled);
 	}
 
 protected:
-	/** Inherited from tgenerator_. */
+	/** Inherited from generator_base. */
 	void do_select_item(const unsigned index) override
 	{
 		assert(index < items_.size());
@@ -948,7 +948,7 @@ protected:
 		set_item_selected(index, true);
 	}
 
-	/** Inherited from tgenerator_. */
+	/** Inherited from generator_base. */
 	void do_deselect_item(const unsigned index) override
 	{
 		assert(index < items_.size());
@@ -959,15 +959,15 @@ protected:
 
 private:
 	/** Definition of an item. */
-	struct titem
+	struct child
 	{
 
-		titem() : grid(), selected(false), shown(true), ordered_index(0)
+		child() : child_grid(), selected(false), shown(true), ordered_index(0)
 		{
 		}
 
 		/** The grid containing the widgets. */
-		tgrid grid;
+		grid child_grid;
 
 		/** Is the item selected or not. */
 		bool selected;
@@ -993,8 +993,8 @@ private:
 	int last_selected_item_;
 
 	/** The items in the generator. */
-	typedef std::vector<titem*> titems;
-	titems items_;
+	typedef std::vector<child*> child_list;
+	child_list items_;
 
 	/** the elements of order_ are indexes to items_ */
 	mutable std::vector<size_t> order_;
@@ -1015,9 +1015,9 @@ private:
 	struct calculate_order_helper
 	{
 		const torder_func& order_func_;
-		const titems& items_;
+		const child_list& items_;
 
-		calculate_order_helper(const torder_func& order_func, const titems& items)
+		calculate_order_helper(const torder_func& order_func, const child_list& items)
 			: order_func_(order_func)
 			, items_(items)
 		{
@@ -1076,7 +1076,7 @@ private:
 		assert(index < items_.size());
 
 		(*items_[index]).selected = selected;
-		select_action::select((*items_[index]).grid, selected);
+		select_action::select((*items_[index]).child_grid, selected);
 	}
 
 	/**
@@ -1096,9 +1096,9 @@ private:
 	 */
 	template <class T>
 	void impl_create_items(const int index,
-						   tbuilder_grid_const_ptr list_builder,
+						   builder_grid_const_ptr list_builder,
 						   const std::vector<T>& data,
-						   const std::function<void(twidget&)>& callback)
+						   const std::function<void(widget&)>& callback)
 	{
 		int i = index;
 		for(const auto & item_data : data)
@@ -1122,9 +1122,9 @@ private:
 	 * @param callback            The callback function to call when an item
 	 *                            in the grid is (de)selected.
 	 */
-	void init(tgrid* grid,
+	void init(grid* grid,
 			  const std::map<std::string /* widget id */, string_map>& data,
-			  const std::function<void(twidget&)>& callback)
+			  const std::function<void(widget&)>& callback)
 	{
 		assert(grid);
 		grid->set_parent(this);

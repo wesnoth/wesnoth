@@ -22,8 +22,8 @@
 
 namespace game_events {
 
-	//t_event_handlers is essentially the implementation details of the manager
-	class t_event_handlers {
+	//event_handlers is essentially the implementation details of the manager
+	class event_handlers {
 		typedef std::unordered_map<std::string, handler_list> map_t;
 		typedef std::unordered_map<std::string, std::weak_ptr<event_handler> > id_map_t;
 
@@ -32,7 +32,7 @@ namespace game_events {
 		typedef handler_vec::const_iterator const_iterator;
 
 	private:
-		handler_vec  active_;  /// Active event handlers. Will not have elements removed unless the t_event_handlers is clear()ed.
+		handler_vec  active_;  /// Active event handlers. Will not have elements removed unless the event_handlers is clear()ed.
 		map_t        by_name_; /// Active event handlers with fixed event names, organized by event name.
 		handler_list dynamic_; /// Active event handlers with variables in their event names.
 		id_map_t     id_map_;  /// Allows quick locating of handlers by id.
@@ -45,7 +45,7 @@ namespace game_events {
 	public:
 		typedef handler_vec::size_type size_type;
 
-		t_event_handlers()
+		event_handlers()
 			: active_()
 			, by_name_()
 			, dynamic_()
@@ -74,7 +74,7 @@ namespace game_events {
 		size_type size() const { return active_.size(); }
 		/// Access to active event handlers by index.
 		handler_ptr & operator[](size_type index) { return active_[index]; }
-	};//t_event_handlers
+	};//event_handlers
 
 } //end namespace game_events
 

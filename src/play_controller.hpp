@@ -45,8 +45,8 @@ namespace actions {
 }
 
 namespace game_events {
-	class t_pump;
 	class manager;
+	class wml_event_pump;
 	class wml_menu_item;
 } // namespace game_events
 
@@ -78,7 +78,7 @@ class play_controller : public controller_base, public events::observer, public 
 public:
 	play_controller(const config& level, saved_game& state_of_game,
 		const config& game_config,
-		const tdata_cache& tdata,
+		const ter_data_cache& tdata,
 		CVideo& video, bool skip_replay);
 	virtual ~play_controller();
 
@@ -201,7 +201,7 @@ public:
 	int get_server_request_number() const { return gamestate().server_request_number_; }
 	void increase_server_request_number() { ++gamestate().server_request_number_; }
 
-	game_events::t_pump& pump();
+	game_events::wml_event_pump& pump();
 
 	int get_ticks();
 
@@ -305,7 +305,7 @@ private:
 
 protected:
 	//gamestate
-	const tdata_cache& tdata_;
+	const ter_data_cache& tdata_;
 	std::unique_ptr<game_state> gamestate_;
 	config level_;
 	saved_game& saved_game_;

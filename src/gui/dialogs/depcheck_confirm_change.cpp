@@ -23,6 +23,8 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -52,7 +54,7 @@ namespace gui2
 
 REGISTER_DIALOG(depcheck_confirm_change)
 
-tdepcheck_confirm_change::tdepcheck_confirm_change(
+depcheck_confirm_change::depcheck_confirm_change(
 		bool action,
 		const std::vector<std::string>& mods,
 		const std::string& requester)
@@ -77,4 +79,5 @@ tdepcheck_confirm_change::tdepcheck_confirm_change(
 
 	register_label("itemlist", false, list);
 }
-}
+} // namespace dialogs
+} // namespace gui2

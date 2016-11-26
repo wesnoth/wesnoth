@@ -20,9 +20,6 @@
  * Contains a wrapper class for the @ref SDL_Window class.
  */
 
-#include <SDL_version.h>
-
-
 #include "sdl/utils.hpp"
 
 #include <boost/noncopyable.hpp>
@@ -49,7 +46,7 @@ namespace sdl
  * For functions not wrapped the class offers an implicit conversion operator
  * to a pointer to the @ref SDL_Window object it owns.
  */
-class twindow : private boost::noncopyable
+class window : private boost::noncopyable
 {
 public:
 	/***** ***** ***** Constructor and destructor. ***** ***** *****/
@@ -67,7 +64,7 @@ public:
 	 * @param window_flags        Used as flags for @ref SDL_CreateWindow.
 	 * @param render_flags        Used as flags for @ref SDL_CreateRenderer.
 	 */
-	twindow(const std::string& title,
+	window(const std::string& title,
 			const int x,
 			const int y,
 			const int w,
@@ -75,7 +72,7 @@ public:
 			const Uint32 window_flags,
 			const Uint32 render_flags);
 
-	~twindow();
+	~window();
 
 
 	/***** ***** ***** Operations. ***** ***** *****/

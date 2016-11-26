@@ -225,6 +225,8 @@ std::string make_display_dependencies(const std::string& addon_id,
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -236,50 +238,50 @@ namespace gui2
  *
  * @begin{table}{dialog_widgets}
  *
- * image & & control & m &
+ * image & & styled_widget & m &
  *         Label for displaying the add-on icon, in a 72x72 area. $
  *
- * title & & control & m &
+ * title & & styled_widget & m &
  *         Dialog title label, corresponding to the add-on name. $
  *
- * type & & control & m &
+ * type & & styled_widget & m &
  *         Label for displaying the add-on's type. $
  *
- * version & & control & m &
+ * version & & styled_widget & m &
  *         Label for displaying the add-on version number. $
  *
- * status & & control & m &
+ * status & & styled_widget & m &
  *         Label for displaying the current installation/upgradability status. $
  *
- * author & & control & m &
+ * author & & styled_widget & m &
  *         Label for displaying the add-on author/maintainer name. $
  *
- * size & & control & m &
+ * size & & styled_widget & m &
  *         Label for displaying the add-on package size. $
  *
- * downloads & & control & m &
+ * downloads & & styled_widget & m &
  *         Label for displaying the add-on's download count. $
  *
- * description & & control & m &
- *         Text label for displaying the add-on's description. The control can
+ * description & & styled_widget & m &
+ *         Text label for displaying the add-on's description. The styled_widget can
  *         be given a text, this text is shown when the addon has no
  *         description. If the addon has a description this field shows the
  *         description of the addon. $
  *
- * translations & & control & m &
+ * translations & & styled_widget & m &
  *         Label for displaying a list of translations provided by the add-on.
  *         Like the ''description'' it can also show a default text if no
  *         translations are available. $
  *
- * dependencies & & control & m &
+ * dependencies & & styled_widget & m &
  *         Label for displaying a list of dependencies of the add-on. Like the
  *         ''description'' it can also show a default text if no dependencies
  *         are defined. $
  *
- * updated & & control & m &
+ * updated & & styled_widget & m &
  *         Label displaying the add-on's last upload date. $
  *
- * created & & control & m &
+ * created & & styled_widget & m &
  *         Label displaying the add-on's first upload date. $
  *
  * url & & text_box & m &
@@ -294,7 +296,7 @@ namespace gui2
  *         Button for copying the add-on's feedback page URL to clipboard if
  *         provided by the server. $
  *
- * url_none & & control & m &
+ * url_none & & styled_widget & m &
  *         Label displayed instead of the other url_* widgets when no URL is
  *         provided by the server.
  *
@@ -303,7 +305,7 @@ namespace gui2
 
 REGISTER_DIALOG(addon_description)
 
-taddon_description::taddon_description(const std::string& addon_id,
+addon_description::addon_description(const std::string& addon_id,
 									   const addons_list& addons_list,
 									   const addons_tracking_list& addon_states)
 	: feedback_url_()
@@ -355,38 +357,38 @@ taddon_description::taddon_description(const std::string& addon_id,
 	}
 }
 
-void taddon_description::browse_url_callback()
+void addon_description::browse_url_callback()
 {
 	/* TODO: ask for confirmation */
 
 	desktop::open_object(feedback_url_);
 }
 
-void taddon_description::copy_url_callback()
+void addon_description::copy_url_callback()
 {
 	desktop::clipboard::copy_to_clipboard(feedback_url_, false);
 }
 
-void taddon_description::pre_show(twindow& window)
+void addon_description::pre_show(window& window)
 {
-	tcontrol& url_none = find_widget<tcontrol>(&window, "url_none", false);
-	tbutton& url_go_button = find_widget<tbutton>(&window, "url_go", false);
-	tbutton& url_copy_button = find_widget<tbutton>(&window, "url_copy", false);
-	ttext_box& url_textbox = find_widget<ttext_box>(&window, "url", false);
+	styled_widget& url_none = find_widget<styled_widget>(&window, "url_none", false);
+	button& url_go_button = find_widget<button>(&window, "url_go", false);
+	button& url_copy_button = find_widget<button>(&window, "url_copy", false);
+	text_box& url_textbox = find_widget<text_box>(&window, "url", false);
 
 	url_textbox.set_value(feedback_url_);
 	url_textbox.set_active(false);
 
 	if(!feedback_url_.empty()) {
-		url_none.set_visible(tcontrol::tvisible::invisible);
+		url_none.set_visible(styled_widget::visibility::invisible);
 
 		connect_signal_mouse_left_click(
 				url_go_button,
-				std::bind(&taddon_description::browse_url_callback, this));
+				std::bind(&addon_description::browse_url_callback, this));
 
 		connect_signal_mouse_left_click(
 				url_copy_button,
-				std::bind(&taddon_description::copy_url_callback, this));
+				std::bind(&addon_description::copy_url_callback, this));
 
 		if (!desktop::clipboard::available()) {
 			url_copy_button.set_active(false);
@@ -396,16 +398,17 @@ void taddon_description::pre_show(twindow& window)
 		url_go_button.set_active(false);
 		url_copy_button.set_active(false);
 
-		url_go_button.set_visible(tcontrol::tvisible::invisible);
-		url_copy_button.set_visible(tcontrol::tvisible::invisible);
-		url_textbox.set_visible(tcontrol::tvisible::invisible);
+		url_go_button.set_visible(styled_widget::visibility::invisible);
+		url_copy_button.set_visible(styled_widget::visibility::invisible);
+		url_textbox.set_visible(styled_widget::visibility::invisible);
 	}
 
 	if(!desktop::open_object_is_supported()) {
 		// No point in displaying the button on platforms that can't do
 		// open_object().
-		url_go_button.set_visible(tcontrol::tvisible::invisible);
+		url_go_button.set_visible(styled_widget::visibility::invisible);
 	}
 }
 
-} // namespace  gui2
+} // namespace dialogs
+} // namespace gui2

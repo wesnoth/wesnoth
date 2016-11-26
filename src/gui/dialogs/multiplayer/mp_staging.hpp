@@ -15,8 +15,8 @@
 #define GUI_DIALOGS_MP_STAGING_HPP_INCLUDED
 
 #include "ai/configuration.hpp"
-#include "gui/dialogs/dialog.hpp"
-#include "gui/dialogs/lobby/info.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
+#include "game_initialization/lobby_info.hpp"
 #include "gui/dialogs/multiplayer/plugin_executor.hpp"
 
 #include "game_initialization/connect_engine.hpp"
@@ -28,44 +28,47 @@ class config;
 namespace gui2
 {
 
-class tmenu_button;
-class tslider;
-class ttree_view_node;
+class menu_button;
+class slider;
+class tree_view_node;
 
-class tmp_staging : public tdialog, private plugin_executor
+namespace dialogs
+{
+
+class mp_staging : public modal_dialog, private plugin_executor
 {
 public:
-	tmp_staging(ng::connect_engine& connect_engine, lobby_info& lobby_info, twesnothd_connection* wesnothd_connection = nullptr);
+	mp_staging(ng::connect_engine& connect_engine, mp::lobby_info& lobby_info, wesnothd_connection* connection = nullptr);
 
-	~tmp_staging();
+	~mp_staging();
 
 private:
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	/** Inherited from modal_dialog. */
+	void pre_show(window& window);
 
-	/** Inherited from tdialog. */
-	void post_show(twindow& window);
+	/** Inherited from modal_dialog. */
+	void post_show(window& window);
 
-	void add_side_node(twindow& window, ng::side_engine_ptr side);
+	void add_side_node(window& window, ng::side_engine_ptr side);
 
-	void on_controller_select(ng::side_engine_ptr side, tgrid& row_grid);
-	void on_ai_select(ng::side_engine_ptr side, tmenu_button& ai_menu);
-	void on_color_select(ng::side_engine_ptr side, tgrid& row_grid);
-	void on_team_select(twindow& window, ng::side_engine_ptr side, tmenu_button& team_menu, bool& handled, bool& halt);
+	void on_controller_select(ng::side_engine_ptr side, grid& row_grid);
+	void on_ai_select(ng::side_engine_ptr side, menu_button& ai_menu);
+	void on_color_select(ng::side_engine_ptr side, grid& row_grid);
+	void on_team_select(window& window, ng::side_engine_ptr side, menu_button& team_menu, bool& handled, bool& halt);
 
 	template<void(ng::side_engine::*fptr)(int)>
-	void on_side_slider_change(ng::side_engine_ptr side, tslider& slider);
+	void on_side_slider_change(ng::side_engine_ptr side, slider& slider);
 
-	void select_leader_callback(twindow& window, ng::side_engine_ptr side, tgrid& row_grid);
+	void select_leader_callback(window& window, ng::side_engine_ptr side, grid& row_grid);
 
-	void update_player_list(twindow& window);
-	void update_leader_display(ng::side_engine_ptr side, tgrid& row_grid);
-	void update_status_label_and_buttons(twindow& window);
+	void update_player_list(window& window);
+	void update_leader_display(ng::side_engine_ptr side, grid& row_grid);
+	void update_status_label_and_buttons(window& window);
 
-	void network_handler(twindow& window);
+	void network_handler(window& window);
 
 	void set_state_changed()
 	{
@@ -76,18 +79,19 @@ private:
 
 	std::vector<ai::description*> ai_algorithms_;
 
-	lobby_info& lobby_info_;
+	mp::lobby_info& lobby_info_;
 
-	twesnothd_connection* wesnothd_connection_;
+	wesnothd_connection* wesnothd_connection_;
 
 	size_t update_timer_;
 
 	bool state_changed_;
 
-	std::map<std::string, ttree_view_node*> team_tree_map_;
-	std::map<ng::side_engine_ptr, ttree_view_node*> side_tree_map_;
+	std::map<std::string, tree_view_node*> team_tree_map_;
+	std::map<ng::side_engine_ptr, tree_view_node*> side_tree_map_;
 };
 
+} // namespace dialogs
 } // namespace gui2
 
 #endif

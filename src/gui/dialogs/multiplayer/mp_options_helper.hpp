@@ -22,17 +22,20 @@ class config;
 namespace gui2
 {
 
-class tcontrol;
-class tmenu_button;
-class ttoggle_button;
-class ttree_view;
-class ttree_view_node;
-class twindow;
+class styled_widget;
+class menu_button;
+class toggle_button;
+class tree_view;
+class tree_view_node;
+class window;
 
-class tmp_options_helper
+namespace dialogs
+{
+
+class mp_options_helper
 {
 public:
-	tmp_options_helper(twindow& window, ng::create_engine& create_engine);
+	mp_options_helper(window& window, ng::create_engine& create_engine);
 
 	void update_all_options();
 
@@ -59,16 +62,16 @@ private:
 
 	template <typename T>
 	std::pair<T*, config::attribute_value> add_node_and_get_widget(
-		ttree_view_node& option_node, const std::string& id, data_map& data, const config& cfg);
+		tree_view_node& option_node, const std::string& id, data_map& data, const config& cfg);
 
 	void display_custom_options(const std::string& type, int node_position, const config& data);
 
 	template<typename T>
 	void update_options_data_map(T* widget, const option_source& source);
-	void update_options_data_map(ttoggle_button* widget, const option_source& source);
+	void update_options_data_map(toggle_button* widget, const option_source& source);
 
 	// NOTE: this cannot be an overload of update_options_data_map since that's a templated function
-	void update_options_data_map_menu_button(tmenu_button* widget, const option_source& source, const config& cfg);
+	void update_options_data_map_menu_button(menu_button* widget, const option_source& source, const config& cfg);
 
 	void reset_options_data(const option_source& source, bool& handled, bool& halt);
 
@@ -76,10 +79,10 @@ private:
 
 	ng::create_engine& create_engine_;
 
-	ttree_view& options_tree_;
-	tcontrol& no_options_notice_;
+	tree_view& options_tree_;
+	styled_widget& no_options_notice_;
 
-	using node_vector = std::vector<ttree_view_node*>;
+	using node_vector = std::vector<tree_view_node*>;
 
 	struct type_node_data
 	{
@@ -99,6 +102,7 @@ private:
 	std::map<std::string, config> options_data_;
 };
 
+} // namespace dialogs
 } // namespace gui2
 
 #endif

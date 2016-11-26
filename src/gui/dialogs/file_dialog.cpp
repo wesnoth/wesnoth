@@ -101,10 +101,12 @@ inline void isort_dir_entries(std::vector<std::string>& entries)
 
 namespace gui2
 {
+namespace dialogs
+{
 
 REGISTER_DIALOG(file_dialog)
 
-tfile_dialog::tfile_dialog()
+file_dialog::file_dialog()
 	: title_(_("Find File"))
 	, msg_()
 	, ok_label_()
@@ -122,7 +124,7 @@ tfile_dialog::tfile_dialog()
 	set_restore(true);
 }
 
-std::string tfile_dialog::path() const
+std::string file_dialog::path() const
 {
 	const std::string& dir_norm = fs::normalize_path(current_dir_, true);
 
@@ -135,7 +137,7 @@ std::string tfile_dialog::path() const
 	return concat_path(dir_norm, current_entry_);
 }
 
-tfile_dialog& tfile_dialog::set_path(const std::string& value)
+file_dialog& file_dialog::set_path(const std::string& value)
 {
 	if(value.empty()) {
 		current_dir_ = filesystem_root();
@@ -158,23 +160,23 @@ tfile_dialog& tfile_dialog::set_path(const std::string& value)
 	return *this;
 }
 
-tfile_dialog& tfile_dialog::set_filename(const std::string& value)
+file_dialog& file_dialog::set_filename(const std::string& value)
 {
 	current_entry_ = value;
 
 	return *this;
 }
 
-void tfile_dialog::pre_show(twindow& window)
+void file_dialog::pre_show(window& window)
 {
-	tcontrol& title = find_widget<tcontrol>(&window, "title", false);
-	tcontrol& message = find_widget<tcontrol>(&window, "message", false);
-	tcontrol& ok = find_widget<tcontrol>(&window, "ok", false);
+	styled_widget& title = find_widget<styled_widget>(&window, "title", false);
+	styled_widget& message = find_widget<styled_widget>(&window, "message", false);
+	styled_widget& ok = find_widget<styled_widget>(&window, "ok", false);
 
 	title.set_label(title_);
 
 	if(msg_.empty()) {
-		message.set_visible(gui2::twidget::tvisible::invisible);
+		message.set_visible(gui2::widget::visibility::invisible);
 	} else {
 		message.set_label(msg_);
 		message.set_use_markup(true);
@@ -186,7 +188,7 @@ void tfile_dialog::pre_show(twindow& window)
 		ok.set_label(ok_label_);
 	}
 
-	tlistbox& bookmarks_bar = find_widget<tlistbox>(&window, "bookmarks", false);
+	listbox& bookmarks_bar = find_widget<listbox>(&window, "bookmarks", false);
 
 	//
 	// Push hard-coded bookmarks.
@@ -225,60 +227,60 @@ void tfile_dialog::pre_show(twindow& window)
 
 	sync_bookmarks_bar(window);
 
-	tlistbox& filelist = find_widget<tlistbox>(&window, "filelist", false);
+	listbox& filelist = find_widget<listbox>(&window, "filelist", false);
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	connect_signal_notify_modified(filelist, std::bind(
-				  &tfile_dialog::on_row_selected
+				  &file_dialog::on_row_selected
 				, *this
 				, std::ref(window)));
 	connect_signal_notify_modified(bookmarks_bar, std::begin(
-				  &tfile_dialog::on_bookmark_selected
+				  &file_dialog::on_bookmark_selected
 				, *this
 				, std::ref(window)));
 #else
 	filelist.set_callback_value_change(
-			dialog_callback<tfile_dialog, &tfile_dialog::on_row_selected>);
+			dialog_callback<file_dialog, &file_dialog::on_row_selected>);
 	bookmarks_bar.set_callback_value_change(
-			dialog_callback<tfile_dialog, &tfile_dialog::on_bookmark_selected>);
+			dialog_callback<file_dialog, &file_dialog::on_bookmark_selected>);
 #endif
 
-	tbutton& mkdir_button = find_widget<tbutton>(&window, "new_dir", false);
-	tbutton& rm_button = find_widget<tbutton>(&window, "delete_file", false);
-	tbutton& bookmark_add_button = find_widget<tbutton>(&window, "add_bookmark", false);
-	tbutton& bookmark_del_button = find_widget<tbutton>(&window, "remove_bookmark", false);
+	button& mkdir_button = find_widget<button>(&window, "new_dir", false);
+	button& rm_button = find_widget<button>(&window, "delete_file", false);
+	button& bookmark_add_button = find_widget<button>(&window, "add_bookmark", false);
+	button& bookmark_del_button = find_widget<button>(&window, "remove_bookmark", false);
 
 	connect_signal_mouse_left_click(mkdir_button,
-			std::bind(&tfile_dialog::on_dir_create_cmd, this, std::ref(window)));
+			std::bind(&file_dialog::on_dir_create_cmd, this, std::ref(window)));
 	connect_signal_mouse_left_click(rm_button,
-			std::bind(&tfile_dialog::on_file_delete_cmd, this, std::ref(window)));
+			std::bind(&file_dialog::on_file_delete_cmd, this, std::ref(window)));
 	connect_signal_mouse_left_click(bookmark_add_button,
-			std::bind(&tfile_dialog::on_bookmark_add_cmd, this, std::ref(window)));
+			std::bind(&file_dialog::on_bookmark_add_cmd, this, std::ref(window)));
 	connect_signal_mouse_left_click(bookmark_del_button,
-			std::bind(&tfile_dialog::on_bookmark_del_cmd, this, std::ref(window)));
+			std::bind(&file_dialog::on_bookmark_del_cmd, this, std::ref(window)));
 
 	if(read_only_) {
 		mkdir_button.set_active(false);
 		rm_button.set_active(false);
 
-		mkdir_button.set_visible(twidget::tvisible::invisible);
-		rm_button.set_visible(twidget::tvisible::invisible);
+		mkdir_button.set_visible(widget::visibility::invisible);
+		rm_button.set_visible(widget::visibility::invisible);
 	}
 
 	refresh_fileview(window);
 
-	window.keyboard_capture(&find_widget<ttext_box>(&window, "filename", false));
+	window.keyboard_capture(&find_widget<text_box>(&window, "filename", false));
 	window.add_to_keyboard_chain(&filelist);
-	window.set_exit_hook(std::bind(&tfile_dialog::on_exit, this, std::ref(window)));
+	window.set_exit_hook(std::bind(&file_dialog::on_exit, this, std::ref(window)));
 }
 
-bool tfile_dialog::on_exit(twindow& window)
+bool file_dialog::on_exit(window& window)
 {
 	if(window.get_retval() == FILE_DIALOG_ITEM_RETVAL) {
 		// Attempting to exit by double clicking items -- only proceeds if the item
 		// was a file.
 		if(process_fileview_submit(window)) {
-			window.set_retval(twindow::OK, false);
+			window.set_retval(window::OK, false);
 			return true;
 		} else {
 			return false;
@@ -286,7 +288,7 @@ bool tfile_dialog::on_exit(twindow& window)
 	}
 
 
-	if(window.get_retval() == twindow::OK) {
+	if(window.get_retval() == window::OK) {
 		// Attempting to exit by pressing Enter/clicking OK -- only proceeds if the
 		// textbox was not altered by the user to point to a different directory.
 		return process_textbox_submit(window);
@@ -295,7 +297,7 @@ bool tfile_dialog::on_exit(twindow& window)
 	return true;
 }
 
-bool tfile_dialog::is_selection_type_acceptable(tfile_dialog::SELECTION_TYPE stype) const
+bool file_dialog::is_selection_type_acceptable(file_dialog::SELECTION_TYPE stype) const
 {
 	// TODO: Adapt for implementing directory selection mode.
 	return save_mode_
@@ -303,7 +305,7 @@ bool tfile_dialog::is_selection_type_acceptable(tfile_dialog::SELECTION_TYPE sty
 			: stype == SELECTION_IS_FILE;
 }
 
-bool tfile_dialog::confirm_overwrite(twindow& window, tfile_dialog::SELECTION_TYPE stype)
+bool file_dialog::confirm_overwrite(window& window, file_dialog::SELECTION_TYPE stype)
 {
 	// TODO: Adapt for implementing directory selection mode.
 	if(stype != SELECTION_IS_FILE) {
@@ -312,10 +314,10 @@ bool tfile_dialog::confirm_overwrite(twindow& window, tfile_dialog::SELECTION_TY
 
 	const std::string& message
 			= _("The file already exists. Do you wish to overwrite it?");
-	return gui2::show_message(window.video(), _("Confirm"), message, gui2::tmessage::yes_no_buttons) != gui2::twindow::CANCEL;
+	return gui2::show_message(window.video(), _("Confirm"), message, message::yes_no_buttons) != gui2::window::CANCEL;
 }
 
-bool tfile_dialog::process_submit_common(twindow& window, const std::string& name)
+bool file_dialog::process_submit_common(window& window, const std::string& name)
 {
 	const auto stype = register_new_selection(name);
 
@@ -351,21 +353,21 @@ bool tfile_dialog::process_submit_common(twindow& window, const std::string& nam
 	return false;
 }
 
-bool tfile_dialog::process_fileview_submit(twindow& window)
+bool file_dialog::process_fileview_submit(window& window)
 {
-	tlistbox& filelist = find_widget<tlistbox>(&window, "filelist", false);
+	listbox& filelist = find_widget<listbox>(&window, "filelist", false);
 	const std::string& selected_name = get_filelist_selection(filelist);
 	return process_submit_common(window, selected_name);
 }
 
-bool tfile_dialog::process_textbox_submit(twindow& window)
+bool file_dialog::process_textbox_submit(window& window)
 {
-	ttext_box& file_textbox = find_widget<ttext_box>(&window, "filename", false);
+	text_box& file_textbox = find_widget<text_box>(&window, "filename", false);
 	const std::string& input_name = file_textbox.get_value();
 	return !input_name.empty() && process_submit_common(window, input_name);
 }
 
-std::string tfile_dialog::get_filelist_selection(tlistbox& filelist)
+std::string file_dialog::get_filelist_selection(listbox& filelist)
 {
 	const int row = filelist.get_selected_row();
 
@@ -397,7 +399,7 @@ std::string tfile_dialog::get_filelist_selection(tlistbox& filelist)
 	return "";
 }
 
-tfile_dialog::SELECTION_TYPE tfile_dialog::register_new_selection(const std::string& name)
+file_dialog::SELECTION_TYPE file_dialog::register_new_selection(const std::string& name)
 {
 	std::string new_path, new_parent;
 
@@ -455,7 +457,7 @@ tfile_dialog::SELECTION_TYPE tfile_dialog::register_new_selection(const std::str
 	return SELECTION_PARENT_NOT_FOUND;
 }
 
-void tfile_dialog::set_input_text(ttext_box& t, const std::string& value)
+void file_dialog::set_input_text(text_box& t, const std::string& value)
 {
 	if(value.empty()) {
 		clear_input_text(t);
@@ -475,7 +477,7 @@ void tfile_dialog::set_input_text(ttext_box& t, const std::string& value)
 	}
 }
 
-void tfile_dialog::clear_input_text(ttext_box& t)
+void file_dialog::clear_input_text(text_box& t)
 {
 	if(save_mode_ && !extension_.empty()) {
 		t.set_value(extension_);
@@ -485,7 +487,7 @@ void tfile_dialog::clear_input_text(ttext_box& t)
 	}
 }
 
-void tfile_dialog::refresh_fileview(twindow& window)
+void file_dialog::refresh_fileview(window& window)
 {
 	cursor::setter cur{cursor::WAIT};
 
@@ -502,8 +504,8 @@ void tfile_dialog::refresh_fileview(twindow& window)
 	// Clear and refill the filelist box.
 	//
 
-	tlistbox& filelist = find_widget<tlistbox>(&window, "filelist", false);
-	tbutton& rm_button = find_widget<tbutton>(&window, "delete_file", false);
+	listbox& filelist = find_widget<listbox>(&window, "filelist", false);
+	button& rm_button = find_widget<button>(&window, "delete_file", false);
 
 	filelist.clear();
 
@@ -528,11 +530,11 @@ void tfile_dialog::refresh_fileview(twindow& window)
 		push_fileview_row(filelist, file, icon_file);
 	}
 
-	find_widget<tcontrol>(&window, "current_dir", false).set_label(current_dir_);
-	set_input_text(find_widget<ttext_box>(&window, "filename", false), current_entry_);
+	find_widget<styled_widget>(&window, "current_dir", false).set_label(current_dir_);
+	set_input_text(find_widget<text_box>(&window, "filename", false), current_entry_);
 }
 
-void tfile_dialog::push_fileview_row(tlistbox& filelist, const std::string& name, const std::string& icon, bool check_selection)
+void file_dialog::push_fileview_row(listbox& filelist, const std::string& name, const std::string& icon, bool check_selection)
 {
 	// TODO: Hopefully some day GUI2 will allow us to make labels be ellipsized
 	//       dynamically at layout/rendering time.
@@ -543,7 +545,7 @@ void tfile_dialog::push_fileview_row(tlistbox& filelist, const std::string& name
 	data["icon"]["label"] = icon;
 	data["file"]["label"] = label;
 
-	tgrid& last_grid = filelist.add_row(data);
+	grid& last_grid = filelist.add_row(data);
 	const unsigned last_pos = filelist.get_item_count() - 1;
 
 	//
@@ -551,7 +553,7 @@ void tfile_dialog::push_fileview_row(tlistbox& filelist, const std::string& name
 	// events for all rows using the GUI2 listbox API. Assign a special retval to
 	// each row that triggers a special check during dialog exit.
 	//
-	find_widget<ttoggle_panel>(&last_grid, "item_panel", false)
+	find_widget<toggle_panel>(&last_grid, "item_panel", false)
 			.set_retval(FILE_DIALOG_ITEM_RETVAL);
 
 	if(check_selection && name == current_entry_) {
@@ -559,9 +561,9 @@ void tfile_dialog::push_fileview_row(tlistbox& filelist, const std::string& name
 	}
 }
 
-void tfile_dialog::sync_bookmarks_bar(twindow& window)
+void file_dialog::sync_bookmarks_bar(window& window)
 {
-	tlistbox& bookmarks_bar = find_widget<tlistbox>(&window, "bookmarks", false);
+	listbox& bookmarks_bar = find_widget<listbox>(&window, "bookmarks", false);
 
 	// Internal state has normalized path delimiters but dot entries aren't
 	// resolved after callers call set_path(), so compare against a canonical
@@ -591,7 +593,7 @@ void tfile_dialog::sync_bookmarks_bar(twindow& window)
 	}
 
 	// Update bookmark edit controls.
-	tbutton& del_button = find_widget<tbutton>(&window, "remove_bookmark", false);
+	button& del_button = find_widget<button>(&window, "remove_bookmark", false);
 
 	if(user_bookmarks_begin_ == -1) {
 		del_button.set_active(false);
@@ -600,11 +602,11 @@ void tfile_dialog::sync_bookmarks_bar(twindow& window)
 	}
 }
 
-void tfile_dialog::on_row_selected(twindow& window)
+void file_dialog::on_row_selected(window& window)
 {
-	tlistbox& filelist = find_widget<tlistbox>(&window, "filelist", false);
-	ttext_box& file_textbox = find_widget<ttext_box>(&window, "filename", false);
-	tbutton& rm_button = find_widget<tbutton>(&window, "delete_file", false);
+	listbox& filelist = find_widget<listbox>(&window, "filelist", false);
+	text_box& file_textbox = find_widget<text_box>(&window, "filename", false);
+	button& rm_button = find_widget<button>(&window, "delete_file", false);
 
 	// Don't use register_new_selection() here, we don't want any parsing to be
 	// performed at this point.
@@ -624,13 +626,13 @@ void tfile_dialog::on_row_selected(twindow& window)
 	window.keyboard_capture(&file_textbox);
 }
 
-void tfile_dialog::on_bookmark_selected(twindow& window)
+void file_dialog::on_bookmark_selected(window& window)
 {
 	// Don't let us steal the focus from the primary widgets.
-	ttext_box& file_textbox = find_widget<ttext_box>(&window, "filename", false);
+	text_box& file_textbox = find_widget<text_box>(&window, "filename", false);
 	window.keyboard_capture(&file_textbox);
 
-	tlistbox& bookmarks_bar = find_widget<tlistbox>(&window, "bookmarks", false);
+	listbox& bookmarks_bar = find_widget<listbox>(&window, "bookmarks", false);
 	const int new_selection = bookmarks_bar.get_selected_row();
 
 	if(new_selection < 0) {
@@ -649,18 +651,18 @@ void tfile_dialog::on_bookmark_selected(twindow& window)
 	refresh_fileview(window);
 
 	// Update bookmark edit controls.
-	tbutton& del_button = find_widget<tbutton>(&window, "remove_bookmark", false);
+	button& del_button = find_widget<button>(&window, "remove_bookmark", false);
 	del_button.set_active(user_bookmarks_begin_ >= 0
 						  && current_bookmark_ >= user_bookmarks_begin_);
 }
 
-void tfile_dialog::on_bookmark_add_cmd(twindow& window)
+void file_dialog::on_bookmark_add_cmd(window& window)
 {
 	const std::string& default_label = fs::base_name(current_dir_);
 
 	std::string label = default_label;
 
-	const bool confirm = gui2::tbookmark_create::execute(label, window.video());
+	const bool confirm = bookmark_create::execute(label, window.video());
 	if(!confirm) {
 		return;
 	}
@@ -669,7 +671,7 @@ void tfile_dialog::on_bookmark_add_cmd(twindow& window)
 		label = default_label;
 	}
 
-	tlistbox& bookmarks_bar = find_widget<tlistbox>(&window, "bookmarks", false);
+	listbox& bookmarks_bar = find_widget<listbox>(&window, "bookmarks", false);
 
 	desktop::add_user_bookmark(label, current_dir_);
 	bookmark_paths_.push_back(current_dir_);
@@ -688,14 +690,14 @@ void tfile_dialog::on_bookmark_add_cmd(twindow& window)
 	sync_bookmarks_bar(window);
 }
 
-void tfile_dialog::on_bookmark_del_cmd(twindow& window)
+void file_dialog::on_bookmark_del_cmd(window& window)
 {
 	assert(user_bookmarks_begin_ >= 0
 		   && current_bookmark_ >= 0
 		   && current_bookmark_ >= user_bookmarks_begin_
 		   && current_bookmark_ < int(bookmark_paths_.size()));
 
-	tlistbox& bookmarks_bar = find_widget<tlistbox>(&window, "bookmarks", false);
+	listbox& bookmarks_bar = find_widget<listbox>(&window, "bookmarks", false);
 	desktop::remove_user_bookmark(current_bookmark_ - user_bookmarks_begin_);
 	bookmark_paths_.erase(bookmark_paths_.begin() + current_bookmark_);
 	bookmarks_bar.remove_row(current_bookmark_);
@@ -705,11 +707,11 @@ void tfile_dialog::on_bookmark_del_cmd(twindow& window)
 	sync_bookmarks_bar(window);
 }
 
-void tfile_dialog::on_dir_create_cmd(twindow& window)
+void file_dialog::on_dir_create_cmd(window& window)
 {
 	std::string new_dir_name;
 
-	if(tfolder_create::execute(new_dir_name, window.video())) {
+	if(folder_create::execute(new_dir_name, window.video())) {
 		const std::string& new_path = concat_path(current_dir_, new_dir_name);
 
 		if(!fs::make_directory(new_path)) {
@@ -722,7 +724,7 @@ void tfile_dialog::on_dir_create_cmd(twindow& window)
 	}
 }
 
-void tfile_dialog::on_file_delete_cmd(twindow& window)
+void file_dialog::on_file_delete_cmd(window& window)
 {
 	if(current_entry_.empty()) {
 		return;
@@ -736,7 +738,7 @@ void tfile_dialog::on_file_delete_cmd(twindow& window)
 			: _("The following file will be permanently deleted:"))
 			+ "\n\n" + selection + "\n\n" + _("Do you wish to continue?");
 
-	if(gui2::show_message(window.video(), _("Confirm"), message, gui2::tmessage::yes_no_buttons) == gui2::twindow::CANCEL) {
+	if(gui2::show_message(window.video(), _("Confirm"), message, message::yes_no_buttons) == gui2::window::CANCEL) {
 		return;
 	}
 
@@ -753,4 +755,5 @@ void tfile_dialog::on_file_delete_cmd(twindow& window)
 	}
 }
 
+} // namespace dialogs
 } // namespace gui2

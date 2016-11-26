@@ -35,7 +35,7 @@
 // * do so, delete this exception statement from your version.                *
 // ****************************************************************************
 
-#include "xbrz.hpp"
+#include "xBRZ/xbrz.hpp"
 #include "config.hpp"
 #include <cassert>
 #include <cmath>

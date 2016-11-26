@@ -14,7 +14,7 @@
 
 #include "wesmage/exit.hpp"
 
-texit::texit(const int status__)
+exiter::exiter(const int status__)
 	: status(status__)
 {
 }

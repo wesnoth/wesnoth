@@ -28,12 +28,12 @@ namespace gui2
  *
  * See layout_algorithm for more information.
  */
-struct tlayout_exception_width_modified
+struct layout_exception_width_modified
 {
 };
 
 /** Basic exception when the layout doesn't fit. */
-struct tlayout_exception_resize_failed
+struct layout_exception_resize_failed
 {
 };
 
@@ -42,8 +42,8 @@ struct tlayout_exception_resize_failed
  *
  * See layout_algorithm for more information.
  */
-struct tlayout_exception_width_resize_failed
-		: public tlayout_exception_resize_failed
+struct layout_exception_width_resize_failed
+		: public layout_exception_resize_failed
 {
 };
 
@@ -52,8 +52,8 @@ struct tlayout_exception_width_resize_failed
  *
  * See layout_algorithm for more information.
  */
-struct tlayout_exception_height_resize_failed
-		: public tlayout_exception_resize_failed
+struct layout_exception_height_resize_failed
+		: public layout_exception_resize_failed
 {
 };
 

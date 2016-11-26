@@ -16,7 +16,7 @@
 #define GUI_WIDGETS_SCROLLBAR_HPP_INCLUDED
 
 #include "gui/core/notifier.hpp"
-#include "gui/widgets/control.hpp"
+#include "gui/widgets/styled_widget.hpp"
 
 #include "utils/functional.hpp"
 
@@ -38,13 +38,13 @@ namespace gui2
  * Common signal handlers:
  * - connect_signal_notify_modified
  */
-class tscrollbar_ : public tcontrol
+class scrollbar_base : public styled_widget
 {
 	/** @todo Abstract the code so this friend is no longer needed. */
-	friend class tslider;
+	friend class slider;
 
 public:
-	tscrollbar_();
+	scrollbar_base();
 
 	/**
 	 * scroll 'step size'.
@@ -52,7 +52,7 @@ public:
 	 * When scrolling we always scroll a 'fixed' amount, these are the
 	 * parameters for these amounts.
 	 */
-	enum tscroll {
+	enum scroll_mode {
 		BEGIN,				 /**< Go to begin position. */
 		ITEM_BACKWARDS,		 /**< Go one item towards the begin. */
 		HALF_JUMP_BACKWARDS, /**< Go half the visible items towards the begin.
@@ -71,7 +71,7 @@ public:
 	 *
 	 * @param scroll              'step size' to scroll.
 	 */
-	void scroll(const tscroll scroll);
+	void scroll(const scroll_mode scroll);
 
 	/** Is the positioner at the beginning of the scrollbar? */
 	bool at_begin() const
@@ -97,18 +97,18 @@ public:
 
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
-	/** See @ref twidget::place. */
-	virtual void place(const tpoint& origin, const tpoint& size) override;
+	/** See @ref widget::place. */
+	virtual void place(const point& origin, const point& size) override;
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
-	/** See @ref tcontrol::set_active. */
+	/** See @ref styled_widget::set_active. */
 	virtual void set_active(const bool active) override;
 
-	/** See @ref tcontrol::get_active. */
+	/** See @ref styled_widget::get_active. */
 	virtual bool get_active() const override;
 
-	/** See @ref tcontrol::get_state. */
+	/** See @ref styled_widget::get_state. */
 	virtual unsigned get_state() const override;
 
     /**
@@ -116,7 +116,7 @@ public:
 	 *
 	 * Note the order of the states must be the same as defined in settings.hpp.
 	 */
-	enum tstate {
+	enum state_t {
 		ENABLED,
 		DISABLED,
 		PRESSED,
@@ -182,13 +182,13 @@ protected:
 		return positioner_length_;
 	}
 
-	tpoint get_mouse_position_last_move() const
+	point get_mouse_position_last_move() const
 	{
 		return mouse_;
 	}
 
 	/**
-	 * See @ref tcontrol::update_canvas.
+	 * See @ref styled_widget::update_canvas.
 	 *
 	 * After a recalculation the canvasses also need to be updated.
 	 */
@@ -206,14 +206,14 @@ protected:
 	}
 
 private:
-	void set_state(const tstate state);
+	void set_state(const state_t state);
 	/**
 	 * Current state of the widget.
 	 *
 	 * The state of the widget determines what to render and how the widget
 	 * reacts to certain 'events'.
 	 */
-	tstate state_;
+	state_t state_;
 
 	/** The number of items the scrollbar 'holds'. */
 	unsigned item_count_;
@@ -251,7 +251,7 @@ private:
 	 *
 	 * This is used during dragging the positioner.
 	 */
-	tpoint mouse_;
+	point mouse_;
 
 	/**
 	 * The start offset of the positioner.
@@ -298,7 +298,7 @@ private:
 	 *
 	 * @returns                   Whether the location on the positioner is.
 	 */
-	virtual bool on_positioner(const tpoint& coordinate) const = 0;
+	virtual bool on_positioner(const point& coordinate) const = 0;
 
 	/**
 	 * Is the coordinate on the bar?
@@ -311,7 +311,7 @@ private:
 	 * @retval 0                  Coordinate is not on the bar.
 	 * @retval 1                  Coordinate is on the bar after the positioner.
 	 */
-	virtual int on_bar(const tpoint& coordinate) const = 0;
+	virtual int on_bar(const point& coordinate) const = 0;
 
 	/**
 	 * Is the coordinate in the bar's orthogonal range?
@@ -321,7 +321,7 @@ private:
 	 * @returns                   Whether the location is in the bar's.
 	 *                            orthogonal range.
 	 */
-	virtual bool in_orthogonal_range(const tpoint& coordinate) const = 0;
+	virtual bool in_orthogonal_range(const point& coordinate) const = 0;
 
 	/**
 	 * Gets the relevant difference in between the two positions.
@@ -329,8 +329,8 @@ private:
 	 * This function is used to determine how much the positioner needs to  be
 	 * moved.
 	 */
-	virtual int get_length_difference(const tpoint& original,
-									  const tpoint& current) const = 0;
+	virtual int get_length_difference(const point& original,
+									  const point& current) const = 0;
 
 	/***** ***** ***** ***** Private functions ***** ***** ***** *****/
 
@@ -358,26 +358,26 @@ private:
 	*/
 	virtual void move_positioner(const int distance);
 
-	/** Inherited from tcontrol. */
+	/** Inherited from styled_widget. */
 	void load_config_extra() override;
 
 	/***** ***** ***** signal handlers ***** ****** *****/
 
-	void signal_handler_mouse_enter(const event::tevent event,
+	void signal_handler_mouse_enter(const event::ui_event event,
 									bool& handled,
 									bool& halt);
 
-	void signal_handler_mouse_motion(const event::tevent event,
+	void signal_handler_mouse_motion(const event::ui_event event,
 									 bool& handled,
 									 bool& halt,
-									 const tpoint& coordinate);
+									 const point& coordinate);
 
-	void signal_handler_mouse_leave(const event::tevent event, bool& handled);
+	void signal_handler_mouse_leave(const event::ui_event event, bool& handled);
 
-	void signal_handler_left_button_down(const event::tevent event,
+	void signal_handler_left_button_down(const event::ui_event event,
 										 bool& handled);
 
-	void signal_handler_left_button_up(const event::tevent event,
+	void signal_handler_left_button_up(const event::ui_event event,
 									   bool& handled);
 };
 

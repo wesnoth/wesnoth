@@ -15,7 +15,7 @@
 #ifndef GUI_WIDGETS_LABEL_HPP_INCLUDED
 #define GUI_WIDGETS_LABEL_HPP_INCLUDED
 
-#include "gui/widgets/control.hpp"
+#include "gui/widgets/styled_widget.hpp"
 
 #include "gui/core/widget_definition.hpp"
 #include "gui/core/window_builder.hpp"
@@ -26,33 +26,33 @@ namespace gui2
 // ------------ WIDGET -----------{
 
 /** Label showing a text. */
-class tlabel : public tcontrol
+class label : public styled_widget
 {
 public:
-	tlabel();
+	label();
 
-	/** See @ref twidget::can_wrap. */
+	/** See @ref widget::can_wrap. */
 	virtual bool can_wrap() const override;
 
-	/** See @ref tcontrol::get_characters_per_line. */
+	/** See @ref styled_widget::get_characters_per_line. */
 	virtual unsigned get_characters_per_line() const override;
 
-	/** See @ref tcontrol::get_link_aware. */
+	/** See @ref styled_widget::get_link_aware. */
 	virtual bool get_link_aware() const override;
 
-	/** See @ref tcontrol::get_link_aware. */
+	/** See @ref styled_widget::get_link_aware. */
 	virtual std::string get_link_color() const override;
 
-	/** See @ref tcontrol::set_active. */
+	/** See @ref styled_widget::set_active. */
 	virtual void set_active(const bool active) override;
 
-	/** See @ref tcontrol::get_active. */
+	/** See @ref styled_widget::get_active. */
 	virtual bool get_active() const override;
 
-	/** See @ref tcontrol::get_state. */
+	/** See @ref styled_widget::get_state. */
 	virtual unsigned get_state() const override;
 
-	/** See @ref twidget::disable_click_dismiss. */
+	/** See @ref widget::disable_click_dismiss. */
 	bool disable_click_dismiss() const override;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
@@ -75,13 +75,13 @@ private:
 	 *
 	 * Note the order of the states must be the same as defined in settings.hpp.
 	 */
-	enum tstate {
+	enum state_t {
 		ENABLED,
 		DISABLED,
 		COUNT
 	};
 
-	void set_state(const tstate state);
+	void set_state(const state_t state);
 
 	/**
 	 * Current state of the widget.
@@ -89,7 +89,7 @@ private:
 	 * The state of the widget determines what to render and how the widget
 	 * reacts to certain 'events'.
 	 */
-	tstate state_;
+	state_t state_;
 
 	/** Holds the label can wrap or not. */
 	bool can_wrap_;
@@ -112,10 +112,10 @@ private:
 	 */
 	std::string link_color_;
 
-	/** See @ref tcontrol::get_control_type. */
+	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 
-	/** Inherited from tcontrol. */
+	/** Inherited from styled_widget. */
 	void load_config_extra() override;
 
 	/***** ***** ***** signal handlers ***** ****** *****/
@@ -123,24 +123,24 @@ private:
 	/**
 	 * Left click signal handler: checks if we clicked on a hyperlink
 	 */
-	void signal_handler_left_button_click(const event::tevent event, bool & handled);
+	void signal_handler_left_button_click(const event::ui_event event, bool & handled);
 
 	/**
 	 * Right click signal handler: checks if we clicked on a hyperlink, copied to clipboard
 	 */
-	void signal_handler_right_button_click(const event::tevent event, bool & handled);
+	void signal_handler_right_button_click(const event::ui_event event, bool & handled);
 };
 
 // }---------- DEFINITION ---------{
 
-struct tlabel_definition : public tcontrol_definition
+struct label_definition : public styled_widget_definition
 {
 
-	explicit tlabel_definition(const config& cfg);
+	explicit label_definition(const config& cfg);
 
-	struct tresolution : public tresolution_definition_
+	struct resolution : public resolution_definition
 	{
-		explicit tresolution(const config& cfg);
+		explicit resolution(const config& cfg);
 
 		bool link_aware;
 		std::string link_color;
@@ -152,13 +152,13 @@ struct tlabel_definition : public tcontrol_definition
 namespace implementation
 {
 
-struct tbuilder_label : public tbuilder_control
+struct builder_label : public builder_styled_widget
 {
-	tbuilder_label(const config& cfg);
+	builder_label(const config& cfg);
 
-	using tbuilder_control::build;
+	using builder_styled_widget::build;
 
-	twidget* build() const;
+	widget* build() const;
 
 	bool wrap;
 

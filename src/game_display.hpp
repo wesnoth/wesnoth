@@ -169,7 +169,7 @@ public:
 	// Functions used in the editor:
 
 	//void draw_terrain_palette(int x, int y, terrain_type::TERRAIN selected);
-	t_translation::t_terrain get_terrain_on(int palx, int paly, int x, int y);
+	t_translation::terrain_code get_terrain_on(int palx, int paly, int x, int y);
 
 	/**
 	 * Sets the team controlled by the player using the computer.
@@ -212,11 +212,11 @@ public:
 	 * @todo if the current implementation is wanted we can change
 	 * the stuff back to a boolean
 	 */
-	enum tgame_mode {
+	enum game_mode {
 		RUNNING,         /**< no linger overlay, show fog and shroud. */
 		LINGER };     /**< linger overlay, show fog and shroud. */
 
-	void set_game_mode(const tgame_mode game_mode);
+	void set_game_mode(const game_mode mode);
 
 	/// Sets whether the screen (map visuals) needs to be rebuilt. This is typically after the map has been changed by wml.
 	void needs_rebuild(bool b);
@@ -255,7 +255,7 @@ private:
 
 	const std::unique_ptr<display_chat_manager> chat_man_;
 
-	tgame_mode game_mode_;
+	game_mode mode_;
 
 	// For debug mode
 	static std::map<map_location, int> debugHighlights_;

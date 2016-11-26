@@ -35,57 +35,57 @@ namespace gui2
 
 REGISTER_WIDGET(repeating_button)
 
-trepeating_button::trepeating_button()
-	: tcontrol(COUNT), tclickable_(), state_(ENABLED), repeat_timer_(0)
+repeating_button::repeating_button()
+	: styled_widget(COUNT), clickable_item(), state_(ENABLED), repeat_timer_(0)
 {
 	connect_signal<event::MOUSE_ENTER>(std::bind(
-			&trepeating_button::signal_handler_mouse_enter, this, _2, _3));
+			&repeating_button::signal_handler_mouse_enter, this, _2, _3));
 	connect_signal<event::MOUSE_LEAVE>(std::bind(
-			&trepeating_button::signal_handler_mouse_leave, this, _2, _3));
+			&repeating_button::signal_handler_mouse_leave, this, _2, _3));
 
 	connect_signal<event::LEFT_BUTTON_DOWN>(std::bind(
-			&trepeating_button::signal_handler_left_button_down, this, _2, _3));
+			&repeating_button::signal_handler_left_button_down, this, _2, _3));
 	connect_signal<event::LEFT_BUTTON_UP>(std::bind(
-			&trepeating_button::signal_handler_left_button_up, this, _2, _3));
+			&repeating_button::signal_handler_left_button_up, this, _2, _3));
 }
 
-trepeating_button::~trepeating_button()
+repeating_button::~repeating_button()
 {
 	if(repeat_timer_) {
 		remove_timer(repeat_timer_);
 	}
 }
 
-void trepeating_button::connect_signal_mouse_left_down(
-		const event::tsignal_function& signal)
+void repeating_button::connect_signal_mouse_left_down(
+		const event::signal_function& signal)
 {
 	connect_signal<event::LEFT_BUTTON_DOWN>(signal);
 }
 
-void trepeating_button::disconnect_signal_mouse_left_down(
-		const event::tsignal_function& signal)
+void repeating_button::disconnect_signal_mouse_left_down(
+		const event::signal_function& signal)
 {
 	disconnect_signal<event::LEFT_BUTTON_DOWN>(signal);
 }
 
-void trepeating_button::set_active(const bool active)
+void repeating_button::set_active(const bool active)
 {
 	if(get_active() != active) {
 		set_state(active ? ENABLED : DISABLED);
 	}
 }
 
-bool trepeating_button::get_active() const
+bool repeating_button::get_active() const
 {
 	return state_ != DISABLED;
 }
 
-unsigned trepeating_button::get_state() const
+unsigned repeating_button::get_state() const
 {
 	return state_;
 }
 
-void trepeating_button::set_state(const tstate state)
+void repeating_button::set_state(const state_t state)
 {
 	if(state != state_) {
 		state_ = state;
@@ -98,13 +98,13 @@ void trepeating_button::set_state(const tstate state)
 	}
 }
 
-const std::string& trepeating_button::get_control_type() const
+const std::string& repeating_button::get_control_type() const
 {
 	static const std::string type = "repeating_button";
 	return type;
 }
 
-void trepeating_button::signal_handler_mouse_enter(const event::tevent event,
+void repeating_button::signal_handler_mouse_enter(const event::ui_event event,
 												   bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -113,7 +113,7 @@ void trepeating_button::signal_handler_mouse_enter(const event::tevent event,
 	handled = true;
 }
 
-void trepeating_button::signal_handler_mouse_leave(const event::tevent event,
+void repeating_button::signal_handler_mouse_leave(const event::ui_event event,
 												   bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -123,7 +123,7 @@ void trepeating_button::signal_handler_mouse_leave(const event::tevent event,
 }
 
 void
-trepeating_button::signal_handler_left_button_down(const event::tevent event,
+repeating_button::signal_handler_left_button_down(const event::ui_event event,
 												   bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -134,7 +134,7 @@ trepeating_button::signal_handler_left_button_down(const event::tevent event,
 		// mimic the old gui and only play the sound once.
 		sound::play_UI_sound(settings::sound_button_click);
 
-		twindow* window = get_window();
+		window* window = get_window();
 		if(window) {
 			repeat_timer_ = add_timer(settings::repeat_button_repeat_time,
 									  [this, window](unsigned int) { 
@@ -150,7 +150,7 @@ trepeating_button::signal_handler_left_button_down(const event::tevent event,
 	handled = true;
 }
 
-void trepeating_button::signal_handler_left_button_up(const event::tevent event,
+void repeating_button::signal_handler_left_button_up(const event::ui_event event,
 													  bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -168,12 +168,12 @@ void trepeating_button::signal_handler_left_button_up(const event::tevent event,
 
 // }---------- DEFINITION ---------{
 
-trepeating_button_definition::trepeating_button_definition(const config& cfg)
-	: tcontrol_definition(cfg)
+repeating_button_definition::repeating_button_definition(const config& cfg)
+	: styled_widget_definition(cfg)
 {
 	DBG_GUI_P << "Parsing repeating button " << id << '\n';
 
-	load_resolutions<tresolution>(cfg);
+	load_resolutions<resolution>(cfg);
 }
 
 /*WIKI
@@ -204,15 +204,15 @@ trepeating_button_definition::trepeating_button_definition(const config& cfg)
  * @end{tag}{name="repeating_button_definition"}
  * @end{parent}{name="gui/"}
  */
-trepeating_button_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
+repeating_button_definition::resolution::resolution(const config& cfg)
+	: resolution_definition(cfg)
 {
-	// Note the order should be the same as the enum tstate in
+	// Note the order should be the same as the enum state_t in
 	// repeating_button.hpp.
-	state.push_back(tstate_definition(cfg.child("state_enabled")));
-	state.push_back(tstate_definition(cfg.child("state_disabled")));
-	state.push_back(tstate_definition(cfg.child("state_pressed")));
-	state.push_back(tstate_definition(cfg.child("state_focused")));
+	state.push_back(state_definition(cfg.child("state_enabled")));
+	state.push_back(state_definition(cfg.child("state_disabled")));
+	state.push_back(state_definition(cfg.child("state_pressed")));
+	state.push_back(state_definition(cfg.child("state_focused")));
 }
 
 // }---------- BUILDER -----------{
@@ -220,7 +220,7 @@ trepeating_button_definition::tresolution::tresolution(const config& cfg)
 /*WIKI_MACRO
  * @begin{macro}{repeating_button_description}
  *
- *        A repeating_button is a control that can be pushed down and repeat a
+ *        A repeating_button is a styled_widget that can be pushed down and repeat a
  *        certain action. Once the button is down every x milliseconds it is
  *        down a new down event is triggered.
  * @end{macro}
@@ -242,14 +242,14 @@ trepeating_button_definition::tresolution::tresolution(const config& cfg)
 namespace implementation
 {
 
-tbuilder_repeating_button::tbuilder_repeating_button(const config& cfg)
-	: tbuilder_control(cfg)
+builder_repeating_button::builder_repeating_button(const config& cfg)
+	: builder_styled_widget(cfg)
 {
 }
 
-twidget* tbuilder_repeating_button::build() const
+widget* builder_repeating_button::build() const
 {
-	trepeating_button* widget = new trepeating_button();
+	repeating_button* widget = new repeating_button();
 
 	init_control(widget);
 

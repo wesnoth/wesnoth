@@ -11,7 +11,7 @@
 
    See the COPYING file for more details.
 */
-#include "mp_game_utils.hpp"
+#include "game_initialization/mp_game_utils.hpp"
 
 #include "carryover.hpp"
 #include "config.hpp"
@@ -21,7 +21,6 @@
 #include "game_config_manager.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
-#include "mp_options.hpp"
 #include "savegame.hpp"
 #include "units/id.hpp"
 #include "wesnothd_connection_error.hpp"

@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-#include "lua_map_generator.hpp"
+#include "generators/lua_map_generator.hpp"
 
 #include "config.hpp"
 #include "game_errors.hpp"

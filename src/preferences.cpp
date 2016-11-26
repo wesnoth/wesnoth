@@ -440,7 +440,7 @@ int font_scaling()
 
 void set_font_scaling(int scale)
 {
-	prefs["font_scale"] = std::max(std::min(scale, max_font_scaling), min_font_scaling);
+	prefs["font_scale"] = util::clamp(scale, min_font_scaling, max_font_scaling);
 }
 
 int font_scaled(int size)

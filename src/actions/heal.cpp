@@ -17,7 +17,7 @@
  * Healing (at start of side turn).
  */
 
-#include "heal.hpp"
+#include "actions/heal.hpp"
 
 #include "game_board.hpp"
 #include "game_display.hpp"

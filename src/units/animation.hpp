@@ -36,7 +36,7 @@ class unit_animation
 			(MISS, "miss")
 			(KILL, "kill")
 			(INVALID, "invalid")
-		);
+		)
 
 		static const std::vector<std::string>& all_tag_names();
 		static void fill_initial_animations( std::vector<unit_animation> & animations, const config & cfg);
@@ -131,7 +131,7 @@ class unit_animation
 			bool cycles_;
 
 	};
-		t_translation::t_list terrain_types_;
+		t_translation::ter_list terrain_types_;
 		std::vector<config> unit_filter_;
 		std::vector<config> secondary_unit_filter_;
 		std::vector<map_location::DIRECTION> directions_;

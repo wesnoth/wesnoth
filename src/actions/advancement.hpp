@@ -63,7 +63,7 @@ unit_ptr get_advanced_unit(const unit &u, const std::string &advance_to);
  */
 unit_ptr get_amla_unit(const unit &u, const config &mod_option);
 
-using tadvancement_option = boost::variant<std::string /*change type*/, const config* /*apply amla*/>;
+using advancement_option = boost::variant<std::string /*change type*/, const config* /*apply amla*/>;
 
 /**
  * Function which will advance the unit at @a loc to 'advance_to'.
@@ -73,4 +73,4 @@ using tadvancement_option = boost::variant<std::string /*change type*/, const co
  * we couldn't safely pass in a reference to the item in the map
  * that we're going to delete, since deletion would invalidate the reference.
  */
-void advance_unit(map_location loc, const tadvancement_option &advance_to, bool fire_event = true);
+void advance_unit(map_location loc, const advancement_option &advance_to, bool fire_event = true);

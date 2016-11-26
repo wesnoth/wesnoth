@@ -1,6 +1,6 @@
-#include "shroud_clearing_action.hpp"
+#include "actions/shroud_clearing_action.hpp"
 
-#include "move.hpp" //get_village
+#include "actions/move.hpp" //get_village
 #include "resources.hpp"
 #include "team.hpp"
 #include "log.hpp"

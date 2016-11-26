@@ -29,7 +29,7 @@ namespace font {
  * @param color        The 32 byte color to convert to hex format.
  *                     For example, 0x00CC00CC becomes "#CC00CC".
  */
-std::string rgb2highlight_pango(uint32_t rgb);
+std::string unit32_to_pango_color(uint32_t rgb);
 
 /**
  * Returns a hex color string from a SDL_Color object. The '#' prefix is not prepended.

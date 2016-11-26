@@ -75,14 +75,9 @@ if env["PLATFORM"] == "win32":
         filesystem_env.Object("log_windows.cpp")
     ])
 
-if env["libintl"]:
-    libwesnoth_core_sources.extend([
-        filesystem_env.Object("gettext.cpp")
-    ])
-else:
-    libwesnoth_core_sources.extend([
-        filesystem_env.Object("gettext_boost.cpp")
-    ])
+libwesnoth_core_sources.extend([
+	filesystem_env.Object("gettext_boost.cpp")
+])
 
 libwesnoth_core = [env.Library("wesnoth_core", libwesnoth_core_sources)]
 
@@ -144,7 +139,6 @@ libwesnoth_sources = Split("""
     widgets/label.cpp
     widgets/menu_style.cpp
     widgets/menu.cpp
-    widgets/multimenu.cpp
     widgets/scrollarea.cpp
     widgets/scrollbar.cpp
     widgets/slider.cpp
@@ -166,8 +160,8 @@ libcampaignd_sources = Split("""
 libcampaignd = env.Library("campaignd", libcampaignd_sources, OBJPREFIX = "campaignd_")
 
 libwesnoth_sdl_sources = Split("""
+    sdl/color.cpp
     sdl/exception.cpp
-    sdl/image.cpp
     sdl/rect.cpp
     sdl/utils.cpp
     sdl/window.cpp
@@ -206,8 +200,8 @@ wesnoth_sources = Split("""
     actions/vision.cpp
     addon/client.cpp
     addon/info.cpp
+    addon/manager_old.cpp
     addon/manager_ui.cpp
-    addon/manager.cpp
     addon/state.cpp
     addon/validation.cpp
     ai/actions.cpp
@@ -323,14 +317,9 @@ wesnoth_sources = Split("""
     game_initialization/create_engine.cpp
     game_initialization/depcheck.cpp
     game_initialization/flg_manager.cpp
+    game_initialization/lobby_data.cpp
+    game_initialization/lobby_info.cpp
     game_initialization/mp_game_utils.cpp
-    game_initialization/mp_options.cpp
-    game_initialization/multiplayer_configure.cpp
-    game_initialization/multiplayer_connect.cpp
-    game_initialization/multiplayer_create.cpp
-    game_initialization/multiplayer_lobby.cpp
-    game_initialization/multiplayer_ui.cpp
-    game_initialization/multiplayer_wait.cpp
     game_initialization/multiplayer.cpp
     game_initialization/playcampaign.cpp
     game_initialization/singleplayer.cpp
@@ -342,6 +331,7 @@ wesnoth_sources = Split("""
     gui/auxiliary/iterator/walker_widget.cpp
     gui/auxiliary/iterator/walker_tree_node.cpp
     gui/auxiliary/old_markup.cpp
+    gui/auxiliary/tips.cpp
     gui/core/canvas.cpp
     gui/core/event/dispatcher.cpp
     gui/core/event/distributor.cpp
@@ -352,7 +342,6 @@ wesnoth_sources = Split("""
     gui/core/placer/vertical_list.cpp
     gui/core/point.cpp
     gui/core/timer.cpp
-    gui/core/tips.cpp
     gui/core/widget_definition.cpp
     gui/core/window_builder.cpp
     gui/core/window_builder/helper.cpp
@@ -360,7 +349,7 @@ wesnoth_sources = Split("""
     gui/dialogs/addon/connect.cpp
     gui/dialogs/addon/description.cpp
     gui/dialogs/addon/filter_options.cpp
-    gui/dialogs/addon/list.cpp
+    gui/dialogs/addon/manager.cpp
     gui/dialogs/addon/uninstall_list.cpp
     gui/dialogs/advanced_graphics_options.cpp
     gui/dialogs/campaign_difficulty.cpp
@@ -371,8 +360,7 @@ wesnoth_sources = Split("""
     gui/dialogs/debug_clock.cpp
     gui/dialogs/depcheck_confirm_change.cpp
     gui/dialogs/depcheck_select_new.cpp
-    gui/dialogs/dialog.cpp
-    gui/dialogs/drop_down_list.cpp
+    gui/dialogs/drop_down_menu.cpp
     gui/dialogs/edit_label.cpp
     gui/dialogs/edit_text.cpp
     gui/dialogs/editor/custom_tod.cpp
@@ -397,20 +385,19 @@ wesnoth_sources = Split("""
     gui/dialogs/gamestate_inspector.cpp
     gui/dialogs/label_settings.cpp
     gui/dialogs/language_selection.cpp
-    gui/dialogs/loadscreen.cpp
-    gui/dialogs/lobby/data.cpp
-    gui/dialogs/lobby/info.cpp
+    gui/dialogs/loading_screen.cpp
     gui/dialogs/lobby/lobby.cpp
     gui/dialogs/lobby/player_info.cpp
-    gui/dialogs/logging.cpp
+    gui/dialogs/log_settings.cpp
     gui/dialogs/lua_interpreter.cpp
     gui/dialogs/message.cpp
+    gui/dialogs/modal_dialog.cpp
+    gui/dialogs/modeless_dialog.cpp
     gui/dialogs/multiplayer/faction_select.cpp
     gui/dialogs/multiplayer/mp_alerts_options.cpp
     gui/dialogs/multiplayer/mp_change_control.cpp
     gui/dialogs/multiplayer/mp_cmd_wrapper.cpp
     gui/dialogs/multiplayer/mp_connect.cpp
-    gui/dialogs/multiplayer/mp_create_game_set_password.cpp
     gui/dialogs/multiplayer/mp_create_game.cpp
     gui/dialogs/multiplayer/mp_host_game_prompt.cpp
     gui/dialogs/multiplayer/mp_join_game.cpp
@@ -421,14 +408,15 @@ wesnoth_sources = Split("""
     gui/dialogs/multiplayer/mp_staging.cpp
     gui/dialogs/multiplayer/synced_choice_wait.cpp
     gui/dialogs/network_transmission.cpp
-    gui/dialogs/popup.cpp
     gui/dialogs/preferences_dialog.cpp
     gui/dialogs/screenshot_notification.cpp
     gui/dialogs/select_orb_colors.cpp
     gui/dialogs/simple_item_selector.cpp
     gui/dialogs/sp_options_configure.cpp
+    gui/dialogs/statistics_dialog.cpp
     gui/dialogs/theme_list.cpp
-    gui/dialogs/tip.cpp
+    gui/dialogs/tooltip.cpp
+    gui/dialogs/terrain_layers.cpp
     gui/dialogs/title_screen.cpp
     gui/dialogs/transient_message.cpp
     gui/dialogs/unit_advance.cpp
@@ -441,8 +429,7 @@ wesnoth_sources = Split("""
     gui/dialogs/wml_message.cpp
     gui/widgets/button.cpp
     gui/widgets/chatbox.cpp
-    gui/widgets/container.cpp
-    gui/widgets/control.cpp
+    gui/widgets/container_base.cpp
     gui/widgets/drawing.cpp
     gui/widgets/generator.cpp
     gui/widgets/grid.cpp
@@ -466,11 +453,13 @@ wesnoth_sources = Split("""
     gui/widgets/scrollbar_panel.cpp
     gui/widgets/scrollbar.cpp
     gui/widgets/settings.cpp
+    gui/widgets/size_lock.cpp
     gui/widgets/slider.cpp
     gui/widgets/spacer.cpp
     gui/widgets/stacked_widget.cpp
+    gui/widgets/styled_widget.cpp
     gui/widgets/text_box.cpp
-    gui/widgets/text.cpp
+    gui/widgets/text_box_base.cpp
     gui/widgets/toggle_button.cpp
     gui/widgets/toggle_panel.cpp
     gui/widgets/tree_view_node.cpp
@@ -546,7 +535,6 @@ wesnoth_sources = Split("""
     scripting/plugins/manager.cpp
     settings.cpp
     side_filter.cpp
-    statistics_dialog.cpp
     statistics.cpp
     storyscreen/controller.cpp
     storyscreen/interface.cpp
@@ -595,9 +583,6 @@ wesnoth_sources = Split("""
     whiteboard/side_actions.cpp
     whiteboard/suppose_dead.cpp
     whiteboard/utility.cpp
-    widgets/combo_drag.cpp
-    widgets/combo.cpp
-    widgets/drop_target.cpp
     widgets/scrollpane.cpp
     """)
 
@@ -625,6 +610,10 @@ def error_action(target, source, env):
     raise UserError, "Target disabled because its prerequisites are not met"
 
 def WesnothProgram(env, target, source, can_build, **kw):
+    if env["build"] == "optimized" and env["enable_lto"] == True:
+        env["AR"] = 'gcc-ar'
+        env["RANLIB"] = 'gcc-ranlib'
+    
     if can_build:
         if env["build"] == "base":
             bin = env.Program(target, source, **kw)
@@ -642,8 +631,6 @@ for env in [test_env, client_env, env]:
 
 wesnoth_objects = ["wesnoth.cpp", libwesnoth_extras, libwesnoth_core, libwesnoth,
                    libwesnoth_sdl, libwesnoth_extras, env["wesnoth_res"]]
-if env["host"] in ["x86_64-nacl", "i686-nacl"]:
-    wesnoth_objects += [SConscript("nacl/SConscript")]
 if env["PLATFORM"] == 'darwin':
 	wesnoth_objects.append("macosx/SDLMain.mm")
 client_env.WesnothProgram("wesnoth", wesnoth_objects, have_client_prereqs)
@@ -675,7 +662,7 @@ wesnothd_sources = Split("""
     """)
 wesnothd_sources.extend(env.Object("server/server.cpp", EXTRA_DEFINE = env['fifodir'] and "FIFODIR='\"$fifodir\"'" or None))
 
-env.WesnothProgram("wesnothd", wesnothd_sources + [libwesnoth_core, libdummy_video, env["wesnothd_res"]], have_server_prereqs)
+env.WesnothProgram("wesnothd", wesnothd_sources + [libwesnoth_core, env["wesnothd_res"]], have_server_prereqs)
 
 cutter_sources = Split("""
     tools/cutter.cpp
@@ -719,7 +706,6 @@ libtest_utils = test_env.Library("test_utils", test_utils_sources)
 test_sources = Split("""
     tests/gui/fire_event.cpp
     tests/gui/iterator.cpp
-    tests/gui/test_drop_target.cpp
     tests/gui/test_gui2.cpp
     tests/gui/test_save_dialog.cpp
     tests/gui/visitor.cpp

@@ -112,12 +112,12 @@ modification* decode_modification(const std::string& encoded_mod)
 } // end anon namespace
 
 
-modification::texception::texception(const std::stringstream& message_stream)
+modification::imod_exception::imod_exception(const std::stringstream& message_stream)
 	: message(message_stream.str())
 {
 }
 
-modification::texception::texception(const std::string& message)
+modification::imod_exception::imod_exception(const std::string& message)
 		: message(message)
 {
 }
@@ -262,7 +262,7 @@ surface blit_modification::operator()(const surface& src) const
 			<< x_ << "' larger than destination image's width '"
 			<< src->w << "' no blitting performed.\n";
 
-		throw texception(sstr);
+		throw imod_exception(sstr);
 	}
 
 	if(y_ >= src->h) {
@@ -271,7 +271,7 @@ surface blit_modification::operator()(const surface& src) const
 			<< y_ << "' larger than destination image's height '"
 			<< src->h << "' no blitting performed.\n";
 
-		throw texception(sstr);
+		throw imod_exception(sstr);
 	}
 
 	if(surf_->w + x_ > src->w) {
@@ -280,7 +280,7 @@ surface blit_modification::operator()(const surface& src) const
 			<< x_ + surf_->w << "' larger than destination image's width '"
 			<< src->w << "' no blitting performed.\n";
 
-		throw texception(sstr);
+		throw imod_exception(sstr);
 	}
 
 	if(surf_->h + y_ > src->h) {
@@ -289,7 +289,7 @@ surface blit_modification::operator()(const surface& src) const
 			<< y_ + surf_->h << "' larger than destination image's height '"
 			<< src->h << "' no blitting performed.\n";
 
-		throw texception(sstr);
+		throw imod_exception(sstr);
 	}
 
 	surface nsrc = make_neutral_surface(src);

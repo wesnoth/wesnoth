@@ -21,7 +21,7 @@
 #include "serialization/unicode.hpp"
 #include "util.hpp"
 
-#include "ban.hpp"
+#include "server/ban.hpp"
 
 #include "utils/functional.hpp"
 

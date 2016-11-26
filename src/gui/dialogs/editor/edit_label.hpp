@@ -15,13 +15,15 @@
 #ifndef GUI_DIALOGS_EDITOR_EDIT_LABEL_HPP_INCLUDED
 #define GUI_DIALOGS_EDITOR_EDIT_LABEL_HPP_INCLUDED
 
-#include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
 #include "map/label.hpp"
 
 namespace gui2
 {
+namespace dialogs
+{
 
-class teditor_edit_label : public tdialog
+class editor_edit_label : public modal_dialog
 {
 public:
 	/**
@@ -30,17 +32,17 @@ public:
 	 * @param[in, out] text       The parameter's usage is:
 	 *                            - Input: The initial value of the label.
 	 *                            - Output: The label text the user entered if
-	 *                              the dialog returns @ref twindow::OK
+	 *                              the dialog returns @ref window::OK
 	 *                              undefined otherwise.
 	 */
-	teditor_edit_label(std::string& text,
+	editor_edit_label(std::string& text,
 					   bool& immutable,
 					   bool& visible_fog,
 					   bool& visible_shroud,
 					   SDL_Color& color,
 					   std::string& category);
 
-	/** The execute function see @ref tdialog for more information. */
+	/** The execute function see @ref modal_dialog for more information. */
 	static bool execute(std::string& text,
 						bool& immutable,
 						bool& visible_fog,
@@ -49,7 +51,7 @@ public:
 						std::string& category,
 						CVideo& video)
 	{
-		return teditor_edit_label(text, immutable, visible_fog, visible_shroud, color, category)
+		return editor_edit_label(text, immutable, visible_fog, visible_shroud, color, category)
 				.show(video);
 	}
 
@@ -58,9 +60,10 @@ private:
 	int load_color_component(Uint8 SDL_Color::* component);
 	void save_color_component(Uint8 SDL_Color::* component, const int value);
 	void register_color_component(std::string widget_id, Uint8 SDL_Color::* component);
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 };
-}
+} // namespace dialogs
+} // namespace gui2
 
 #endif /* ! GUI_DIALOGS_EDIT_LABEL_INCLUDED */

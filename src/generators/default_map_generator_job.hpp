@@ -42,7 +42,7 @@ public:
 
 private:
 	typedef std::vector<std::vector<int> > height_map;
-	typedef t_translation::t_map terrain_map;
+	typedef t_translation::ter_map terrain_map;
 
 	bool generate_river_internal(const height_map& heights,
 			terrain_map& terrain, int x, int y, std::vector<map_location>& river,
@@ -54,7 +54,7 @@ private:
 			size_t iterations, size_t hill_size,
 			size_t island_size, size_t island_off_center);
 
-	bool generate_lake(t_translation::t_map& terrain, int x, int y, int lake_fall_off, std::set<map_location>& locs_touched);
+	bool generate_lake(t_translation::ter_map& terrain, int x, int y, int lake_fall_off, std::set<map_location>& locs_touched);
 	map_location random_point_at_side(size_t width, size_t height);
 
 	boost::random::mt19937 rng_;

@@ -46,21 +46,6 @@ const char LARGE_TEXT='*', SMALL_TEXT='`',
            GREEN_TEXT='@', RED_TEXT='#',
            COLOR_TEXT='<', IMAGE='&';
 
-const std::string weapon = "<245,230,193>",
-		weapon_details = "<166,146,117>",
-		unit_type = "<245,230,193>",
-		race = "<166,146,117>";
-
-const SDL_Color
-	weapon_color = { 245, 230, 193, SDL_ALPHA_OPAQUE },
-	good_dmg_color = { 130, 240, 50, SDL_ALPHA_OPAQUE },
-	bad_dmg_color = { 250, 140, 80, SDL_ALPHA_OPAQUE },
-	weapon_details_color = { 166, 146, 117, SDL_ALPHA_OPAQUE },
-	inactive_details_color = { 146, 146, 146, SDL_ALPHA_OPAQUE },
-	inactive_ability_color = { 146, 146, 146, SDL_ALPHA_OPAQUE },
-	unit_type_color = { 245, 230, 193, SDL_ALPHA_OPAQUE },
-	race_color = { 166, 146, 117, SDL_ALPHA_OPAQUE };
-
 std::string::const_iterator parse_markup(std::string::const_iterator i1,
 												std::string::const_iterator i2,
 												int* font_size,
@@ -541,14 +526,4 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size,
 	return wrapped_text;
 }
 
-SDL_Rect draw_wrapped_text(CVideo* gui, const SDL_Rect& area, int font_size,
-		     const SDL_Color& color, const std::string& text,
-		     int x, int y, int max_width)
-{
-	std::string wrapped_text = word_wrap_text(text, font_size, max_width);
-	return font::draw_text(gui, area, font_size, color, wrapped_text, x, y, false);
-}
-
-
 } // end namespace font
-

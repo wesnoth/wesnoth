@@ -29,6 +29,7 @@
 #include "ai/manager.hpp"
 #include "chat_command_handler.hpp"
 #include "config_assign.hpp"
+#include "construct_dialog.hpp"
 #include "display_chat_manager.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
@@ -50,8 +51,10 @@
 #include "gui/dialogs/multiplayer/mp_change_control.hpp"
 #include "gui/dialogs/preferences_dialog.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
+#include "gui/dialogs/statistics_dialog.hpp"
 #include "gui/dialogs/edit_text.hpp"
 #include "gui/dialogs/game_stats.hpp"
+#include "gui/dialogs/terrain_layers.hpp"
 #include "gui/dialogs/unit_create.hpp"
 #include "gui/dialogs/unit_list.hpp"
 #include "gui/dialogs/unit_recall.hpp"
@@ -78,16 +81,12 @@
 #include "scripting/game_lua_kernel.hpp"
 #include "scripting/plugins/manager.hpp"
 #include "sound.hpp"
-#include "statistics_dialog.hpp"
 #include "synced_context.hpp"
 #include "terrain/builder.hpp"
 #include "units/unit.hpp"
 #include "units/udisplay.hpp"
 #include "wml_separators.hpp"
 #include "whiteboard/manager.hpp"
-#include "widgets/combo.hpp"
-
-#include <boost/range/algorithm/find_if.hpp>
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
@@ -136,27 +135,19 @@ void menu_handler::objectives()
 
 void menu_handler::show_statistics(int side_num)
 {
-	team &current_team = teams()[side_num - 1];
-	// Current Player name
-	const std::string &player = current_team.side_name();
-	//add player's name to title of dialog
-	std::stringstream title_str;
-	title_str <<  _("Statistics") << " (" << player << ")";
-	statistics_dialog stats_dialog(*gui_, title_str.str(),
-		side_num, current_team.save_id(), player);
-	stats_dialog.show();
+	gui2::dialogs::statistics_dialog::display(teams()[side_num - 1], gui_->video());
 }
 
 void menu_handler::unit_list()
 {
-	gui2::show_unit_list(*gui_);
+	gui2::dialogs::show_unit_list(*gui_);
 }
 
 void menu_handler::status_table()
 {
 	int selected_index;
 
-	if(gui2::tgame_stats::execute(board(), gui_->viewing_team(), selected_index, gui_->video())) {
+	if(gui2::dialogs::game_stats::execute(board(), gui_->viewing_team(), selected_index, gui_->video())) {
 		gui_->scroll_to_leader(teams()[selected_index].side());
 	}
 }
@@ -165,7 +156,7 @@ void menu_handler::save_map()
 {
 	const std::string& input_name = filesystem::get_dir(filesystem::get_dir(filesystem::get_user_data_dir() + "/editor") + "/maps/");
 
-	gui2::tfile_dialog dlg;
+	gui2::dialogs::file_dialog dlg;
 
 	dlg.set_title(_("Save Map As"))
 	   .set_save_mode(true)
@@ -189,7 +180,7 @@ void menu_handler::save_map()
 
 void menu_handler::preferences()
 {
-	gui2::tpreferences::display(gui_->video(), game_config_);
+	gui2::dialogs::preferences_dialog::display(gui_->video(), game_config_);
 	// Needed after changing fullscreen/windowed mode or display resolution
 	gui_->redraw_everything();
 }
@@ -198,7 +189,7 @@ void menu_handler::show_chat_log()
 {
 	config c;
 	c["name"] = "prototype of chat log";
-	gui2::tchat_log chat_log_dialog(vconfig(c), *resources::recorder);
+	gui2::dialogs::chat_log chat_log_dialog(vconfig(c), *resources::recorder);
 	chat_log_dialog.show(gui_->video());
 	//std::string text = resources::recorder->build_chat_log();
 	//gui::show_dialog(*gui_,nullptr,_("Chat Log"),"",gui::CLOSE_ONLY,nullptr,nullptr,"",&text);
@@ -266,11 +257,11 @@ void menu_handler::recruit(int side_num, const map_location &last_hex)
 		return;
 	}
 
-	gui2::tunit_recruit dlg(sample_units, teams()[side_num - 1]);
+	gui2::dialogs::unit_recruit dlg(sample_units, teams()[side_num - 1]);
 
 	dlg.show(gui_->video());
 
-	if(dlg.get_retval() == gui2::twindow::OK) {
+	if(dlg.get_retval() == gui2::window::OK) {
 		do_recruit(sample_units[dlg.get_selected_index()]->id(), side_num, last_hex);
 	}
 }
@@ -362,11 +353,11 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 		return;
 	}
 
-	gui2::tunit_recall dlg(recall_list_team, current_team);
+	gui2::dialogs::unit_recall dlg(recall_list_team, current_team);
 
 	dlg.show(gui_->video());
 
-	if(dlg.get_retval() != gui2::twindow::OK) {
+	if(dlg.get_retval() != gui2::window::OK) {
 		return;
 	}
 
@@ -523,22 +514,22 @@ bool menu_handler::end_turn(int side_num)
 	          (!pc_.get_whiteboard() || !pc_.get_whiteboard()->current_side_has_actions())  &&
 	          units_alive(side_num, units()) )
 	{
-		const int res = gui2::show_message((*gui_).video(), "", _("You have not started your turn yet. Do you really want to end your turn?"), gui2::tmessage::yes_no_buttons);
-		if(res == gui2::twindow::CANCEL) {
+		const int res = gui2::show_message((*gui_).video(), "", _("You have not started your turn yet. Do you really want to end your turn?"), gui2::dialogs::message::yes_no_buttons);
+		if(res == gui2::window::CANCEL) {
 			return false;
 		}
 	}
 	// Ask for confirmation if units still have some movement left.
 	else if ( preferences::yellow_confirm() && partmoved_units(side_num, units(), board(), pc_.get_whiteboard()) ) {
-		const int res = gui2::show_message((*gui_).video(), "", _("Some units have movement left. Do you really want to end your turn?"), gui2::tmessage::yes_no_buttons);
-		if(res == gui2::twindow::CANCEL) {
+		const int res = gui2::show_message((*gui_).video(), "", _("Some units have movement left. Do you really want to end your turn?"), gui2::dialogs::message::yes_no_buttons);
+		if(res == gui2::window::CANCEL) {
 			return false;
 		}
 	}
 	// Ask for confirmation if units still have all movement left.
 	else if ( preferences::green_confirm() && unmoved_units(side_num, units(), board(), pc_.get_whiteboard()) ) {
-		const int res = gui2::show_message((*gui_).video(), "", _("Some units have not moved. Do you really want to end your turn?"), gui2::tmessage::yes_no_buttons);
-		if(res == gui2::twindow::CANCEL) {
+		const int res = gui2::show_message((*gui_).video(), "", _("Some units have not moved. Do you really want to end your turn?"), gui2::dialogs::message::yes_no_buttons);
+		if(res == gui2::window::CANCEL) {
 			return false;
 		}
 	}
@@ -592,7 +583,7 @@ void menu_handler::rename_unit()
 	const std::string title(N_("Rename Unit"));
 	const std::string label(N_("Name:"));
 
-	if(gui2::tedit_text::execute(title, label, name, gui_->video())) {
+	if(gui2::dialogs::edit_text::execute(title, label, name, gui_->video())) {
 		resources::recorder->add_rename(name, un->get_location());
 		un->rename(name);
 		gui_->invalidate_unit();
@@ -630,7 +621,7 @@ namespace { // Helpers for create_unit()
 		// The unit creation dialog makes sure unit types
 		// are properly cached.
 		//
-		gui2::tunit_create create_dlg;
+		gui2::dialogs::unit_create create_dlg;
 		create_dlg.show(gui.video());
 
 		if(create_dlg.no_choice()) {
@@ -734,7 +725,7 @@ void menu_handler::label_terrain(mouse_handler& mousehandler, bool team_only)
 	const terrain_label* old_label = gui_->labels().get_label(loc);
 	std::string label = old_label ? old_label->text() : "";
 
-	if(gui2::tedit_label::execute(label, team_only, gui_->video())) {
+	if(gui2::dialogs::edit_label::execute(label, team_only, gui_->video())) {
 		std::string team_name;
 		SDL_Color color = font::LABEL_COLOR;
 
@@ -760,7 +751,7 @@ void menu_handler::clear_labels()
 }
 
 void menu_handler::label_settings() {
-	if(gui2::tlabel_settings::execute(board(), gui_->video()))
+	if(gui2::dialogs::label_settings::execute(board(), gui_->video()))
 		gui_->labels().recalculate_labels();
 }
 
@@ -1314,7 +1305,7 @@ void menu_handler::do_search(const std::string& new_search)
 		symbols["search"] = last_search_;
 		const std::string msg = vgettext("Could not find label or unit "
 				"containing the string ‘$search’.", symbols);
-		gui2::show_message(gui_->video(), "", msg, gui2::tmessage::auto_close);
+		gui2::show_message(gui_->video(), "", msg, gui2::dialogs::message::auto_close);
 	}
 }
 
@@ -1448,7 +1439,7 @@ void console_handler::do_control() {
 	try {
 		side_num = lexical_cast<unsigned int>(side);
 	} catch(bad_lexical_cast&) {
-		std::vector<team>::const_iterator it_t = boost::find_if(resources::gameboard->teams(), save_id_matches(side));
+		const auto it_t = std::find_if(resources::gameboard->teams().begin(), resources::gameboard->teams().end(), save_id_matches(side));
 		if(it_t == resources::gameboard->teams().end()) {
 			utils::string_map symbols;
 			symbols["side"] = side;
@@ -1504,112 +1495,19 @@ void console_handler::do_clear() {
 void console_handler::do_sunset() {
 	int delay = lexical_cast_default<int>(get_data());
 	menu_handler_.gui_->sunset(delay);
-	gui2::twindow::set_sunset(delay);
+	gui2::window::set_sunset(delay);
 }
 void console_handler::do_foreground() {
 	menu_handler_.gui_->toggle_debug_foreground();
 }
 
 void console_handler::do_layers() {
-	const mouse_handler& mousehandler = menu_handler_.pc_.get_mouse_handler_base();
-	const map_location &loc = mousehandler.get_last_hex();
-
-	std::vector<std::string> layers;
-	//NOTE: columns reflect WML keys, don't translate them
-	std::string heading = std::string(1,HEADING_PREFIX) +
-		"^#"      + COLUMN_SEPARATOR + // 0
-		"Image"   + COLUMN_SEPARATOR + // 1
-		"Name"    + COLUMN_SEPARATOR + // 2
-		"Loc"     + COLUMN_SEPARATOR + // 3
-		"Layer"   + COLUMN_SEPARATOR + // 4
-		"Base.x"  + COLUMN_SEPARATOR + // 5
-		"Base.y"  + COLUMN_SEPARATOR + // 6
-		"Center"                       // 7
-
-	;
-	layers.push_back(heading);
-
 	display& disp = *(menu_handler_.gui_);
-	terrain_builder& builder = disp.get_builder();
-	terrain_builder::tile* tile = builder.get_tile(loc);
 
-	const std::string& tod_id = disp.get_time_of_day(loc).id;
-	terrain_builder::tile::logs tile_logs;
-	tile->rebuild_cache(tod_id, &tile_logs);
+	const mouse_handler& mousehandler = menu_handler_.pc_.get_mouse_handler_base();
+	const map_location& loc = mousehandler.get_last_hex();
 
-	int order = 1;
-	for(const terrain_builder::tile::log_details det : tile_logs) {
-		const terrain_builder::tile::rule_image_rand& ri = *det.first;
-		const terrain_builder::rule_image_variant& variant = *det.second;
-
-		/** @todo also use random image variations (not just take 1st) */
-		const image::locator& img = variant.images.front().get_first_frame();
-		const std::string& name = img.get_filename();
-		/** @todo deal with (rarely used) ~modifications */
-		//const std::string& modif = img.get_modifications();
-		const map_location& loc_cut = img.get_loc();
-
-		std::ostringstream str;
-
-		int tz = game_config::tile_size;
-		SDL_Rect r = sdl::create_rect(0,0,tz,tz);
-
-		surface surf = image::get_image(img.get_filename());
-
-		// calculate which part of the image the terrain engine uses
-		if(loc_cut.valid()) {
-			// copied from image.cpp : load_image_sub_file()
-			r = sdl::create_rect(
-					((tz*3) / 4) * loc_cut.x
-					, tz * loc_cut.y + (tz / 2) * (loc_cut.x % 2)
-					, tz, tz);
-
-			if(img.get_center_x() >= 0 && img.get_center_y()>= 0){
-				r.x += surf->w/2 - img.get_center_x();
-				r.y += surf->h/2 - img.get_center_y();
-			}
-		}
-
-		str << (ri->is_background() ? "B ": "F ") << order
-			<< COLUMN_SEPARATOR
-			<< IMAGE_PREFIX << "terrain/foreground.png";
-
-		// cut and mask the image
-		// ~CROP and ~BLIT have limitations, we do some math to avoid them
-		SDL_Rect r2 = sdl::intersect_rects(r, sdl::create_rect(0,0,surf->w,surf->h));
-		if(r2.w > 0 && r2.h > 0) {
-			str << "~BLIT("
-					<< name << "~CROP("
-						<< r2.x << "," << r2.y << ","
-						<< r2.w << "," << r2.h
-					<< ")"
-					<< "," << r2.x-r.x << "," << r2.y-r.y
-				<< ")"
-				<< "~MASK(" << "terrain/alphamask.png" << ")";
-		}
-
-		str	<< COLUMN_SEPARATOR
-			<< IMAGE_PREFIX  << name << "~SCALE(72,72)"
-			<< IMG_TEXT_SEPARATOR << name
-			<< COLUMN_SEPARATOR << img.get_loc()
-			<< COLUMN_SEPARATOR << ri->layer
-			<< COLUMN_SEPARATOR << ri->basex
-			<< COLUMN_SEPARATOR << ri->basey
-			<< COLUMN_SEPARATOR
-			<< ri->center_x << ", " << ri->center_y;
-		layers.push_back(str.str());
-		++order;
-	}
-
-	std::vector<std::string> flags(tile->flags.begin(),tile->flags.end());
-	std::ostringstream info;
-	// NOTE using ", " also allows better word wrapping
-	info << "Flags :" << utils::join(flags, ", ");
-	{
-		gui::dialog menu(menu_handler_.gui_->video(), _("Layers"), info.str(), gui::OK_CANCEL);
-		menu.set_menu(layers);
-		menu.show();
-	}
+	gui2::dialogs::terrain_layers::display(disp, loc, disp.video());
 }
 void console_handler::do_fps() {
 	preferences::set_show_fps(!preferences::show_fps());
@@ -1670,7 +1568,7 @@ void console_handler::do_choose_level() {
 	std::sort(options.begin(), options.end());
 	int choice = std::lower_bound(options.begin(), options.end(), next) - options.begin();
 	{
-		gui2::tsimple_item_selector dlg(_("Choose Scenario (Debug!)"), "", options);
+		gui2::dialogs::simple_item_selector dlg(_("Choose Scenario (Debug!)"), "", options);
 		dlg.set_selected_index(choice);
 		dlg.show(menu_handler_.gui_->video());
 		choice = dlg.selected_index();
@@ -1730,7 +1628,7 @@ void console_handler::do_unsafe_lua()
 	}
 	if (gui2::show_message(menu_handler_.gui_->video(), _("Unsafe Lua scripts."),
 		_("You are about to open a security breach in Wesnoth. Are you sure you want to continue? If you have downloaded add-ons, do not click 'ok'! They would instantly take over your computer. You have been warned."),
-		gui2::tmessage::ok_cancel_buttons) == gui2::twindow::OK)
+		gui2::dialogs::message::ok_cancel_buttons) == gui2::window::OK)
 	{
 		print(get_cmd(), _("Unsafe mode enabled!"));
 		menu_handler_.gamestate().lua_kernel_->load_package();
@@ -1786,13 +1684,13 @@ void console_handler::do_show_var() {
 
 void console_handler::do_inspect() {
 	vconfig cfg = vconfig::empty_vconfig();
-	gui2::tgamestate_inspector inspect_dialog(resources::gamedata->get_variables(), *resources::game_events, *resources::gameboard);
+	gui2::dialogs::gamestate_inspector inspect_dialog(resources::gamedata->get_variables(), *resources::game_events, *resources::gameboard);
 	inspect_dialog.show(menu_handler_.gui_->video());
 }
 
 void console_handler::do_control_dialog()
 {
-	gui2::tmp_change_control mp_change_control(&menu_handler_);
+	gui2::dialogs::mp_change_control mp_change_control(&menu_handler_);
 	mp_change_control.show(menu_handler_.gui_->video());
 }
 
@@ -1830,8 +1728,8 @@ void console_handler::do_discover() {
 }
 
 void console_handler::do_undiscover() {
-	const int res = gui2::show_message((*menu_handler_.gui_).video(), "Undiscover", _("Do you wish to clear all of your discovered units from help?"), gui2::tmessage::yes_no_buttons);
-	if(res != gui2::twindow::CANCEL) {
+	const int res = gui2::show_message((*menu_handler_.gui_).video(), "Undiscover", _("Do you wish to clear all of your discovered units from help?"), gui2::dialogs::message::yes_no_buttons);
+	if(res != gui2::window::CANCEL) {
 		preferences::encountered_units().clear();
 	}
 }

@@ -15,7 +15,7 @@
 #ifndef GUI_WIDGETS_IMAGE_HPP_INCLUDED
 #define GUI_WIDGETS_IMAGE_HPP_INCLUDED
 
-#include "gui/widgets/control.hpp"
+#include "gui/widgets/styled_widget.hpp"
 
 #include "gui/core/widget_definition.hpp"
 #include "gui/core/window_builder.hpp"
@@ -26,10 +26,10 @@ namespace gui2
 // ------------ WIDGET -----------{
 
 /** An image. */
-class timage : public tcontrol
+class image : public styled_widget
 {
 public:
-	timage() : tcontrol(COUNT)
+	image() : styled_widget(COUNT)
 	{
 	}
 
@@ -56,7 +56,7 @@ public:
 	 */
 	t_string get_image() const
 	{
-		return label();
+		return get_label();
 	}
 
 	virtual bool can_mouse_focus() const override { return !tooltip().empty(); }
@@ -64,22 +64,22 @@ public:
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
 private:
-	/** See @ref twidget::calculate_best_size. */
-	virtual tpoint calculate_best_size() const override;
+	/** See @ref widget::calculate_best_size. */
+	virtual point calculate_best_size() const override;
 
 public:
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
-	/** See @ref tcontrol::set_active. */
+	/** See @ref styled_widget::set_active. */
 	virtual void set_active(const bool active) override;
 
-	/** See @ref tcontrol::get_active. */
+	/** See @ref styled_widget::get_active. */
 	virtual bool get_active() const override;
 
-	/** See @ref tcontrol::get_state. */
+	/** See @ref styled_widget::get_state. */
 	virtual unsigned get_state() const override;
 
-	/** See @ref twidget::disable_click_dismiss. */
+	/** See @ref widget::disable_click_dismiss. */
 	bool disable_click_dismiss() const override;
 
 private:
@@ -88,24 +88,24 @@ private:
 	 *
 	 * Note the order of the states must be the same as defined in settings.hpp.
 	 */
-	enum tstate {
+	enum state_t {
 		ENABLED,
 		COUNT
 	};
 
-	/** See @ref tcontrol::get_control_type. */
+	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 };
 
 // }---------- DEFINITION ---------{
 
-struct timage_definition : public tcontrol_definition
+struct image_definition : public styled_widget_definition
 {
-	explicit timage_definition(const config& cfg);
+	explicit image_definition(const config& cfg);
 
-	struct tresolution : public tresolution_definition_
+	struct resolution : public resolution_definition
 	{
-		explicit tresolution(const config& cfg);
+		explicit resolution(const config& cfg);
 	};
 };
 
@@ -114,13 +114,13 @@ struct timage_definition : public tcontrol_definition
 namespace implementation
 {
 
-struct tbuilder_image : public tbuilder_control
+struct builder_image : public builder_styled_widget
 {
-	explicit tbuilder_image(const config& cfg);
+	explicit builder_image(const config& cfg);
 
-	using tbuilder_control::build;
+	using builder_styled_widget::build;
 
-	twidget* build() const;
+	widget* build() const;
 };
 
 } // namespace implementation

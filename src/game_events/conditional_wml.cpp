@@ -18,7 +18,7 @@
  */
 
 #include "global.hpp"
-#include "conditional_wml.hpp"
+#include "game_events/conditional_wml.hpp"
 
 #include "config.hpp"
 #include "game_board.hpp"

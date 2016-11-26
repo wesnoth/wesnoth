@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-#include "hotkey_manager.hpp"
+#include "hotkey/hotkey_manager.hpp"
 
 #include "hotkey/hotkey_item.hpp"
 #include "hotkey/hotkey_command.hpp"

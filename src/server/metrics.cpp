@@ -19,7 +19,7 @@
 
 #include "global.hpp"
 
-#include "metrics.hpp"
+#include "server/metrics.hpp"
 
 #include <algorithm>
 #include <iostream>

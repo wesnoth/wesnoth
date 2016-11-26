@@ -17,10 +17,10 @@
  * Movement.
  */
 
-#include "move.hpp"
+#include "actions/move.hpp"
 
-#include "undo.hpp"
-#include "vision.hpp"
+#include "actions/undo.hpp"
+#include "actions/vision.hpp"
 
 #include "config_assign.hpp"
 #include "game_display.hpp"

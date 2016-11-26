@@ -14,7 +14,7 @@
 
 #ifdef __APPLE__
 
-#include "apple_notification.hpp"
+#include "desktop/apple_notification.hpp"
 
 #import <Foundation/Foundation.h>
 

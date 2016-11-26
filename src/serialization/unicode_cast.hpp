@@ -58,27 +58,27 @@ typename ucs4_convert_impl::enableif<TD, typename TS::value_type>::type unicode_
 //TD unicode_cast(const TS& source)
 {
 	using namespace ucs4_convert_impl;
-	typedef typename convert_impl<typename TD::value_type>::type t_impl_writer;
-	typedef typename convert_impl<typename TS::value_type>::type t_impl_reader;
-	typedef typename std::back_insert_iterator<TD> t_outputitor;
-	typedef typename TS::const_iterator t_inputitor;
+	typedef typename convert_impl<typename TD::value_type>::type impl_writer;
+	typedef typename convert_impl<typename TS::value_type>::type impl_reader;
+	typedef typename std::back_insert_iterator<TD> output_itor;
+	typedef typename TS::const_iterator input_itor;
 
 	TD res;
 	try
 	{
-		t_outputitor inserter(res);
-		iteratorwriter<t_outputitor> dst(inserter);
-		t_inputitor i1 = source.begin();
-		t_inputitor i2 = source.end();
+		output_itor inserter(res);
+		iteratorwriter<output_itor> dst(inserter);
+		input_itor i1 = source.begin();
+		input_itor i2 = source.end();
 
 		while(i1 != i2) {
-			t_impl_writer::write (dst, t_impl_reader::read(i1, i2));
+			impl_writer::write (dst, impl_reader::read(i1, i2));
 		}
 	}
 	catch(utf8::invalid_utf8_exception&)
 	{
 		// TODO: use a ERR_.. stream but i dont know whether i can so to in header easily.
-		std::cerr << "Failed to convert a string from " << t_impl_reader::get_name() << " to " << t_impl_writer::get_name() << "\n";
+		std::cerr << "Failed to convert a string from " << impl_reader::get_name() << " to " << impl_writer::get_name() << "\n";
 		return res;
 	}
 	return res;
@@ -93,21 +93,21 @@ template<typename TD>
 TD unicode_cast(ucs4::char_t onechar)
 {
 	using namespace ucs4_convert_impl;
-	typedef typename convert_impl<typename TD::value_type>::type t_impl_writer;
-	typedef convert_impl<ucs4::char_t>::type t_impl_reader;
-	typedef typename std::back_insert_iterator<TD> t_outputitor;
+	typedef typename convert_impl<typename TD::value_type>::type impl_writer;
+	typedef convert_impl<ucs4::char_t>::type impl_reader;
+	typedef typename std::back_insert_iterator<TD> output_itor;
 
 	TD res;
 	try
 	{
-		t_outputitor inserter(res);
-		iteratorwriter<t_outputitor> dst(inserter);
-		t_impl_writer::write (dst, onechar);
+		output_itor inserter(res);
+		iteratorwriter<output_itor> dst(inserter);
+		impl_writer::write (dst, onechar);
 	}
 	catch(utf8::invalid_utf8_exception&)
 	{
 		// TODO: use a ERR_.. stream but i dont know whether i can so to in header easily.
-		std::cerr << "Failed to convert a string from " << t_impl_reader::get_name() << " to " << t_impl_writer::get_name() << "\n";
+		std::cerr << "Failed to convert a string from " << impl_reader::get_name() << " to " << impl_writer::get_name() << "\n";
 		return res;
 	}
 	return res;

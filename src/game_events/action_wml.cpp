@@ -19,10 +19,10 @@
  */
 
 #include "global.hpp"
-#include "action_wml.hpp"
-#include "conditional_wml.hpp"
-#include "manager.hpp"
-#include "pump.hpp"
+#include "game_events/action_wml.hpp"
+#include "game_events/conditional_wml.hpp"
+#include "game_events/manager.hpp"
+#include "game_events/pump.hpp"
 
 #include "actions/attack.hpp"
 #include "actions/create.hpp"
@@ -274,7 +274,7 @@ static void on_replay_error(const std::string& message, bool /*b*/)
 WML_HANDLER_FUNCTION(do_command,, cfg)
 {
 	// Doing this in a whiteboard applied context will cause bugs
-	// Note that even though game_events::pump() will always apply the real unit map
+	// Note that even though game_events::wml_event_pump() will always apply the real unit map
 	// It is still possible get a wml commands to run in a whiteboard applied context
 	// With the theme_items lua callbacks
 	if(resources::whiteboard->has_planned_unit_map())
@@ -572,7 +572,7 @@ WML_HANDLER_FUNCTION(replace_map,, cfg)
 		const std::string log_map_name = cfg["map"].empty() ? cfg["file"] : std::string("from inline data");
 		lg::wml_error() << "replace_map: Unable to load map " << log_map_name << std::endl;
 		return;
-	} catch(twml_exception& e) {
+	} catch(wml_exception& e) {
 		e.show(resources::screen->video());
 		return;
 	}
@@ -834,7 +834,7 @@ WML_HANDLER_FUNCTION(terrain_mask,, cfg)
 	} catch(incorrect_map_format_error&) {
 		ERR_NG << "terrain mask is in the incorrect format, and couldn't be applied" << std::endl;
 		return;
-	} catch(twml_exception& e) {
+	} catch(wml_exception& e) {
 		e.show(resources::screen->video());
 		return;
 	}

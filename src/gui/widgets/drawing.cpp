@@ -31,33 +31,33 @@ namespace gui2
 
 REGISTER_WIDGET(drawing)
 
-tpoint tdrawing::calculate_best_size() const
+point drawing::calculate_best_size() const
 {
-	return best_size_ != tpoint() ? best_size_
-									  : tcontrol::calculate_best_size();
+	return best_size_ != point() ? best_size_
+									  : styled_widget::calculate_best_size();
 }
 
-void tdrawing::set_active(const bool /*active*/)
+void drawing::set_active(const bool /*active*/)
 {
 	/* DO NOTHING */
 }
 
-bool tdrawing::get_active() const
+bool drawing::get_active() const
 {
 	return true;
 }
 
-unsigned tdrawing::get_state() const
+unsigned drawing::get_state() const
 {
 	return 0;
 }
 
-bool tdrawing::disable_click_dismiss() const
+bool drawing::disable_click_dismiss() const
 {
 	return false;
 }
 
-const std::string& tdrawing::get_control_type() const
+const std::string& drawing::get_control_type() const
 {
 	static const std::string type = "drawing";
 	return type;
@@ -65,12 +65,12 @@ const std::string& tdrawing::get_control_type() const
 
 // }---------- DEFINITION ---------{
 
-tdrawing_definition::tdrawing_definition(const config& cfg)
-	: tcontrol_definition(cfg)
+drawing_definition::drawing_definition(const config& cfg)
+	: styled_widget_definition(cfg)
 {
 	DBG_GUI_P << "Parsing drawing " << id << '\n';
 
-	load_resolutions<tresolution>(cfg);
+	load_resolutions<resolution>(cfg);
 }
 
 /*WIKI
@@ -97,16 +97,16 @@ tdrawing_definition::tdrawing_definition(const config& cfg)
  * @end{tag}{name="drawing_definition"}
  * @end{parent}{name="gui/"}
  */
-tdrawing_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
+drawing_definition::resolution::resolution(const config& cfg)
+	: resolution_definition(cfg)
 {
 	/*
-	 * Note the order should be the same as the enum tstate in drawing.hpp.
+	 * Note the order should be the same as the enum state_t in drawing.hpp.
 	 * Normally the [draw] section is in the config, but for this widget the
 	 * original draw section is ignored, so send a dummy.
 	 */
 	static const config dummy("draw");
-	state.push_back(tstate_definition(dummy));
+	state.push_back(state_definition(dummy));
 }
 
 // }---------- BUILDER -----------{
@@ -148,8 +148,8 @@ tdrawing_definition::tresolution::tresolution(const config& cfg)
 namespace implementation
 {
 
-tbuilder_drawing::tbuilder_drawing(const config& cfg)
-	: tbuilder_control(cfg)
+builder_drawing::builder_drawing(const config& cfg)
+	: builder_styled_widget(cfg)
 	, width(cfg["width"])
 	, height(cfg["height"])
 	, draw(cfg.child("draw"))
@@ -157,9 +157,9 @@ tbuilder_drawing::tbuilder_drawing(const config& cfg)
 	assert(!draw.empty());
 }
 
-twidget* tbuilder_drawing::build() const
+widget* builder_drawing::build() const
 {
-	tdrawing* widget = new tdrawing();
+	drawing* widget = new drawing();
 
 	init_control(widget);
 
@@ -169,10 +169,10 @@ twidget* tbuilder_drawing::build() const
 	const unsigned h = height(size);
 
 	if(w || h) {
-		widget->set_best_size(tpoint(w, h));
+		widget->set_best_size(point(w, h));
 	}
 
-	widget->canvas().front().set_cfg(draw);
+	widget->get_canvas().front().set_cfg(draw);
 
 	DBG_GUI_G << "Window builder: placed drawing '" << id
 			  << "' with definition '" << definition << "'.\n";

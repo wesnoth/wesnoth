@@ -37,9 +37,9 @@ class variable_info
 {
 public:
 
-	typedef typename variable_info_detail::maybe_const<vit,config>::type t_config;
+	typedef typename variable_info_detail::maybe_const<vit,config>::type config_var;
 	/// Doesn't throw
-	variable_info(const std::string& varname, t_config& vars);
+	variable_info(const std::string& varname, config_var& vars);
 	~variable_info();
 	std::string get_error_message() const;
 	/// Doesn't throw

@@ -81,11 +81,7 @@ const size_t n_reserved_channels = UI_sound_channel_last + 1; // sources, bell, 
 
 // Max number of sound chunks that we want to cache
 // Keep this above number of available channels to avoid busy-looping
-#ifdef LOW_MEM
-unsigned max_cached_chunks = 64;
-#else
 unsigned max_cached_chunks = 256;
-#endif
 
 std::map< Mix_Chunk*, int > chunk_usage;
 
@@ -262,11 +258,6 @@ static std::string pick_one(const std::string &files)
 		return "";
 	if (ids.size() == 1)
 		return ids[0];
-
-#ifdef LOW_MEM
-	// We're memory constrained, so we shouldn't cache too many chunks
-	return ids[0];
-#endif
 
 	// We avoid returning same choice twice if we can avoid it.
 	static std::map<std::string,unsigned int> prev_choices;

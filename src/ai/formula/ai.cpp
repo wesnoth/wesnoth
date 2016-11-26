@@ -52,7 +52,7 @@
 #include "ai/default/contexts.hpp"  // for attack_analysis
 #include "ai/formula/function_table.hpp"           // for ai_function_symbol_table
 #include "ai/game_info.hpp"  // for move_result_ptr, move_map, etc
-#include "candidates.hpp"               // for base_candidate_action, etc
+#include "ai/formula/candidates.hpp"               // for base_candidate_action, etc
 
 #include <cassert>                     // for assert
 #include <ctime>                       // for time
@@ -235,7 +235,7 @@ pathfind::plain_route formula_ai::shortest_path_calculator(const map_location &s
                 }
 
                 static const size_t NDIRECTIONS = map_location::NDIRECTIONS;
-                unsigned int difference = abs(int(preferred - n));
+                unsigned int difference = std::abs(int(preferred - n));
                 if(difference > NDIRECTIONS/2) {
                         difference = NDIRECTIONS - difference;
                 }

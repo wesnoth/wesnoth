@@ -19,7 +19,7 @@
 #include "config.hpp"
 #include "game_preferences.hpp"
 #include "utils/make_enum.hpp"
-#include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/group.hpp"
 
 // This file is not named preferences.hpp in order -I conflicts with
@@ -44,7 +44,7 @@ namespace preferences {
 	 * TODO: this isn't the most optimal solution, since if the order or number of pages
 	 * in either stack changes, this map needs to be updated. Optimally the stacked_widget
 	 * widget would allow specifying page by string id, but that would require changes to
-	 * tgenerator. It's something to look into, however.
+	 * generator. It's something to look into, however.
 	 */
 	static std::map<PREFERENCE_VIEW, std::pair<int,int>> pef_view_map = {
 		{VIEW_DEFAULT, {0,0}},
@@ -55,65 +55,66 @@ namespace preferences {
 namespace gui2
 {
 
-using namespace preferences;
+class listbox;
+class menu_button;
+class styled_widget;
+class slider;
+class text_box;
+class toggle_button;
 
-class tlistbox;
-class tmenu_button;
-class tcontrol;
-class tslider;
-class ttext_box;
-class ttoggle_button;
+namespace dialogs
+{
 
-class tpreferences : public tdialog
+class preferences_dialog : public modal_dialog
 {
 public:
-	tpreferences(CVideo& video, const config& game_cfg, const PREFERENCE_VIEW& initial_view);
+	preferences_dialog(CVideo& video, const config& game_cfg, const preferences::PREFERENCE_VIEW& initial_view);
 
-	/** The display function -- see @ref tdialog for more information. */
-	static void display(CVideo& video, const config& game_cfg, const PREFERENCE_VIEW initial_view = VIEW_DEFAULT)
+	/** The display function -- see @ref modal_dialog for more information. */
+	static void display(CVideo& video, const config& game_cfg, const preferences::PREFERENCE_VIEW initial_view = preferences::VIEW_DEFAULT)
 	{
-		tpreferences(video, game_cfg, initial_view).show(video);
+		preferences_dialog(video, game_cfg, initial_view).show(video);
 	}
 
 	typedef std::vector<const hotkey::hotkey_command*> t_visible_hotkeys;
 
 private:
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tdialog. */
-	void post_build(twindow& window);
-	void pre_show(twindow& window);
-	void post_show(twindow& /*window*/);
+	/** Inherited from modal_dialog. */
+	void post_build(window& window);
+	void pre_show(window& window);
+	void post_show(window& /*window*/);
 
 	/** Initializers */
-	void initialize_tabs(twindow& window, tlistbox& selector);
-	void set_resolution_list(tmenu_button& res_list, CVideo& video);
-	void setup_hotkey_list(twindow& window);
+	void initialize_tabs(window& window, listbox& selector);
+	void set_resolution_list(menu_button& res_list, CVideo& video);
+	void setup_hotkey_list(window& window);
 
-	std::map<std::string, string_map> get_friends_list_row_data(const acquaintance& entry);
+	std::map<std::string, string_map> get_friends_list_row_data(const preferences::acquaintance& entry);
 
-	void add_friend_list_entry(const bool is_friend, ttext_box& textbox, twindow& window);
-	void remove_friend_list_entry(tlistbox& friends_list, ttext_box& textbox, twindow& window);
+	void add_friend_list_entry(const bool is_friend, text_box& textbox, window& window);
+	void remove_friend_list_entry(listbox& friends_list, text_box& textbox, window& window);
 
-	void on_friends_list_select(tlistbox& list, ttext_box& textbox);
-	void update_friends_list_controls(twindow& window, tlistbox& list);
+	void on_friends_list_select(listbox& list, text_box& textbox);
+	void update_friends_list_controls(window& window, listbox& list);
 
-	void set_visible_page(twindow& window, unsigned int page, const std::string& pager_id);
+	void set_visible_page(window& window, unsigned int page, const std::string& pager_id);
 
 	/** Callback for selection changes */
-	void on_page_select(twindow& window);
-	void on_tab_select(twindow& window);
-	void on_advanced_prefs_list_select(tlistbox& tree, twindow& window);
+	void on_page_select(window& window);
+	void on_tab_select(window& window);
+	void on_advanced_prefs_list_select(listbox& tree, window& window);
 
 	/** Special callback functions */
-	void handle_res_select(twindow& window);
-	void fullscreen_toggle_callback(twindow& window);
-	void add_hotkey_callback(tlistbox& hotkeys);
-	void remove_hotkey_callback(tlistbox& hotkeys);
-	void default_hotkey_callback(twindow& window);
+	void handle_res_select(window& window);
+	void fullscreen_toggle_callback(window& window);
+	void add_hotkey_callback(listbox& hotkeys);
+	void remove_hotkey_callback(listbox& hotkeys);
+	void default_hotkey_callback(window& window);
 
-	tgroup<preferences::LOBBY_JOINS> lobby_joins_group;
+	group<preferences::LOBBY_JOINS> lobby_joins_group;
 
 	MAKE_ENUM(ADVANCED_PREF_TYPE,
 		(TOGGLE,  "boolean")
@@ -134,6 +135,7 @@ private:
 	const std::pair<int, int>& initial_index_;
 };
 
+} // namespace dialogs
 } // namespace gui2
 
 #endif /* ! GUI_DIALOGS_PREFERENCES_DIALOG_HPP_INCLUDED */

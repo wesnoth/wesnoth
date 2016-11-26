@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-#include "constants.hpp"
+#include "font/constants.hpp"
 
 namespace font {
 

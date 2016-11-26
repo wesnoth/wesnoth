@@ -15,7 +15,7 @@
 
 #include "editor/action/action.hpp"
 #include "editor/editor_preferences.hpp"
-#include "map_context.hpp"
+#include "editor/map/map_context.hpp"
 
 #include "config_assign.hpp"
 #include "display.hpp"
@@ -345,16 +345,16 @@ bool map_context::select_area(int index)
 	return map_.set_selection(tod_manager_->get_area_by_index(index));
 }
 
-void map_context::draw_terrain(const t_translation::t_terrain & terrain,
+void map_context::draw_terrain(const t_translation::terrain_code & terrain,
 	const map_location& loc, bool one_layer_only)
 {
-	t_translation::t_terrain full_terrain = one_layer_only ? terrain :
+	t_translation::terrain_code full_terrain = one_layer_only ? terrain :
 		map_.get_terrain_info(terrain).terrain_with_default_base();
 
 	draw_terrain_actual(full_terrain, loc, one_layer_only);
 }
 
-void map_context::draw_terrain_actual(const t_translation::t_terrain & terrain,
+void map_context::draw_terrain_actual(const t_translation::terrain_code & terrain,
 	const map_location& loc, bool one_layer_only)
 {
 	if (!map_.on_board_with_border(loc)) {
@@ -363,7 +363,7 @@ void map_context::draw_terrain_actual(const t_translation::t_terrain & terrain,
 		LOG_ED << "Attempted to draw terrain off the map (" << loc << ")\n";
 		return;
 	}
-	t_translation::t_terrain old_terrain = map_.get_terrain(loc);
+	t_translation::terrain_code old_terrain = map_.get_terrain(loc);
 	if (terrain != old_terrain) {
 		if (terrain.base == t_translation::NO_LAYER) {
 			map_.set_terrain(loc, terrain, terrain_type_data::OVERLAY);
@@ -376,10 +376,10 @@ void map_context::draw_terrain_actual(const t_translation::t_terrain & terrain,
 	}
 }
 
-void map_context::draw_terrain(const t_translation::t_terrain & terrain,
+void map_context::draw_terrain(const t_translation::terrain_code & terrain,
 	const std::set<map_location>& locs, bool one_layer_only)
 {
-	t_translation::t_terrain full_terrain = one_layer_only ? terrain :
+	t_translation::terrain_code full_terrain = one_layer_only ? terrain :
 		map_.get_terrain_info(terrain).terrain_with_default_base();
 
 	for(const map_location& loc : locs) {

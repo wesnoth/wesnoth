@@ -705,7 +705,7 @@ double shortest_path_calculator::cost(const map_location& loc, const double so_f
 	if (!see_all_ && viewing_team_.shrouded(loc))
 		return getNoPathValue();
 
-	const t_translation::t_terrain terrain = map_[loc];
+	const t_translation::terrain_code terrain = map_[loc];
 	const int terrain_cost = unit_.movement_cost(terrain);
 	// Pathfinding heuristic: the cost must be at least 1
 	VALIDATE(terrain_cost >= 1, _("Terrain with a movement cost less than 1 encountered."));
@@ -788,7 +788,7 @@ double move_type_path_calculator::cost(const map_location& loc, const double so_
 	if (viewing_team_.shrouded(loc))
 		return getNoPathValue();
 
-	const t_translation::t_terrain terrain = map_[loc];
+	const t_translation::terrain_code terrain = map_[loc];
 	const int terrain_cost = movement_type_.movement_cost(terrain);
 
 	if (total_movement_ < terrain_cost)

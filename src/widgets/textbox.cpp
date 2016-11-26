@@ -396,7 +396,7 @@ void textbox::erase_selection()
 		return;
 
 	ucs4::string::iterator itor = text_.begin() + std::min(selstart_, selend_);
-	text_.erase(itor, itor + abs(selend_ - selstart_));
+	text_.erase(itor, itor + std::abs(selend_ - selstart_));
 	cursor_ = std::min(selstart_, selend_);
 	selstart_ = selend_ = -1;
 }
@@ -647,9 +647,9 @@ void textbox::handle_event(const SDL_Event& event, bool was_forwarded)
 
 			// Check individually each distance (if, one day, we support
 			// RTL languages, char_x_[c] may not be monotonous.)
-			if(abs(x - char_x_[i]) < distance && yscroll_ + y < char_y_[i] + line_height_) {
+			if(std::abs(x - char_x_[i]) < distance && yscroll_ + y < char_y_[i] + line_height_) {
 				pos = i;
-				distance = abs(x - char_x_[i]);
+				distance = std::abs(x - char_x_[i]);
 			}
 		}
 

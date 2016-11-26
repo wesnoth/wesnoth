@@ -35,7 +35,7 @@ struct tile_info
 	}
 
 	map_location offset;
-	t_translation::t_terrain terrain;
+	t_translation::terrain_code terrain;
 };
 
 /**

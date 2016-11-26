@@ -59,7 +59,7 @@ struct config_simple_key
 };
 #endif
 
-struct tconfig_implementation
+struct config_implementation
 {
 	/**
 	 * Implementation for the wrappers for
@@ -68,7 +68,7 @@ struct tconfig_implementation
 	 * @tparam T                  A pointer to the config.
 	 */
 	template<class T>
-	static typename utils::tconst_clone<config, T>::reference
+	static typename utils::const_clone<config, T>::reference
 	child(
 			  T config
 			, const std::string& key
@@ -710,14 +710,14 @@ config &config::child_impl(const char* key, int len, int n)
 
 config& config::child(const std::string& key, const std::string& parent)
 {
-	return tconfig_implementation::child(this, key, parent);
+	return config_implementation::child(this, key, parent);
 }
 
 const config& config::child(
 		  const std::string& key
 		, const std::string& parent) const
 {
-	return tconfig_implementation::child(this, key, parent);
+	return config_implementation::child(this, key, parent);
 }
 
 const config & config::child_or_empty(const std::string& key) const

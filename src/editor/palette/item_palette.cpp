@@ -18,7 +18,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
-#include "item_palette.hpp"
+#include "editor/palette/item_palette.hpp"
 #include "gettext.hpp"
 
 #include <string>

@@ -14,7 +14,7 @@
 #ifndef GUI_DIALOGS_UNIT_RECALL_HPP_INCLUDED
 #define GUI_DIALOGS_UNIT_RECALL_HPP_INCLUDED
 
-#include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/group.hpp"
 #include "units/race.hpp"
 #include "units/ptr.hpp"
@@ -29,14 +29,17 @@ class unit_type;
 namespace gui2
 {
 
-class ttext_;
+class text_box_base;
 
-class tunit_recall : public tdialog
+namespace dialogs
+{
+
+class unit_recall : public modal_dialog
 {
 	typedef std::vector<unit_const_ptr> recalls_ptr_vector;
 
 public:
-	tunit_recall(recalls_ptr_vector& recall_list, team& team);
+	unit_recall(recalls_ptr_vector& recall_list, team& team);
 
 	int get_selected_index() const
 	{
@@ -54,21 +57,22 @@ private:
 	std::vector<std::string> last_words_;
 
 	/** Callbacks */
-	void list_item_clicked(twindow& window);
-	void filter_text_changed(ttext_* textbox, const std::string& text);
-	void dismiss_unit(twindow& window);
-	void show_help(twindow& window);
+	void list_item_clicked(window& window);
+	void filter_text_changed(text_box_base* textbox, const std::string& text);
+	void dismiss_unit(window& window);
+	void show_help(window& window);
 
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	/** Inherited from modal_dialog. */
+	void pre_show(window& window);
 
-	/** Inherited from tdialog. */
-	void post_show(twindow& window);
+	/** Inherited from modal_dialog. */
+	void post_show(window& window);
 };
 
+} // namespace dialogs
 } // namespace gui2
 
 #endif /* ! GUI_DIALOGS_UNIT_RECALL_HPP_INCLUDED */

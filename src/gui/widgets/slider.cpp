@@ -37,8 +37,8 @@ namespace gui2
 
 REGISTER_WIDGET(slider)
 
-tslider::tslider()
-	: tscrollbar_()
+slider::slider()
+	: scrollbar_base()
 	, best_slider_length_(0)
 	, minimum_value_(0)
 	, minimum_value_label_()
@@ -47,25 +47,25 @@ tslider::tslider()
 	, current_item_mouse_position_(0,0)
 {
 	connect_signal<event::SDL_KEY_DOWN>(std::bind(
-			&tslider::signal_handler_sdl_key_down, this, _2, _3, _5));
+			&slider::signal_handler_sdl_key_down, this, _2, _3, _5));
 	//connect_signal<event::LEFT_BUTTON_DOWN>(
-	//		std::bind(&tslider::signal_handler_left_button_down, this, _2, _3));
+	//		std::bind(&slider::signal_handler_left_button_down, this, _2, _3));
 	connect_signal<event::LEFT_BUTTON_UP>(
-			std::bind(&tslider::signal_handler_left_button_up, this, _2, _3));
+			std::bind(&slider::signal_handler_left_button_up, this, _2, _3));
 }
 
-tpoint tslider::calculate_best_size() const
+point slider::calculate_best_size() const
 {
 	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
 
 	// Inherited.
-	tpoint result = tcontrol::calculate_best_size();
+	point result = styled_widget::calculate_best_size();
 	if(best_slider_length_ != 0) {
 
 		// Override length.
-		std::shared_ptr<const tslider_definition::tresolution> conf
-				= std::static_pointer_cast<const tslider_definition::
-													  tresolution>(config());
+		std::shared_ptr<const slider_definition::resolution> conf
+				= std::static_pointer_cast<const slider_definition::
+													  resolution>(config());
 
 		assert(conf);
 
@@ -77,7 +77,7 @@ tpoint tslider::calculate_best_size() const
 	return result;
 }
 
-void tslider::set_value(const int value)
+void slider::set_value(const int value)
 {
 	if(value == get_value()) {
 		return;
@@ -92,7 +92,7 @@ void tslider::set_value(const int value)
 	}
 }
 
-void tslider::set_minimum_value(const int minimum_value)
+void slider::set_minimum_value(const int minimum_value)
 {
 	if(minimum_value == minimum_value_) {
 		return;
@@ -114,7 +114,7 @@ void tslider::set_minimum_value(const int minimum_value)
 	}
 }
 
-void tslider::set_maximum_value(const int maximum_value)
+void slider::set_maximum_value(const int maximum_value)
 {
 	if(maximum_value == get_maximum_value()) {
 		return;
@@ -134,7 +134,7 @@ void tslider::set_maximum_value(const int maximum_value)
 	}
 }
 
-t_string tslider::get_value_label() const
+t_string slider::get_value_label() const
 {
 	if(value_labels_) {
 		return value_labels_(get_item_position(), get_item_count());
@@ -149,48 +149,48 @@ t_string tslider::get_value_label() const
 	return t_string(formatter() << get_value());
 }
 
-void tslider::child_callback_positioner_moved()
+void slider::child_callback_positioner_moved()
 {
 	sound::play_UI_sound(settings::sound_slider_adjust);
 }
 
-unsigned tslider::minimum_positioner_length() const
+unsigned slider::minimum_positioner_length() const
 {
-	std::shared_ptr<const tslider_definition::tresolution>
-	conf = std::static_pointer_cast<const tslider_definition::tresolution>(
+	std::shared_ptr<const slider_definition::resolution>
+	conf = std::static_pointer_cast<const slider_definition::resolution>(
 			config());
 	assert(conf);
 	return conf->minimum_positioner_length;
 }
 
-unsigned tslider::maximum_positioner_length() const
+unsigned slider::maximum_positioner_length() const
 {
-	std::shared_ptr<const tslider_definition::tresolution>
-	conf = std::static_pointer_cast<const tslider_definition::tresolution>(
+	std::shared_ptr<const slider_definition::resolution>
+	conf = std::static_pointer_cast<const slider_definition::resolution>(
 			config());
 	assert(conf);
 	return conf->maximum_positioner_length;
 }
 
-unsigned tslider::offset_before() const
+unsigned slider::offset_before() const
 {
-	std::shared_ptr<const tslider_definition::tresolution>
-	conf = std::static_pointer_cast<const tslider_definition::tresolution>(
+	std::shared_ptr<const slider_definition::resolution>
+	conf = std::static_pointer_cast<const slider_definition::resolution>(
 			config());
 	assert(conf);
 	return conf->left_offset;
 }
 
-unsigned tslider::offset_after() const
+unsigned slider::offset_after() const
 {
-	std::shared_ptr<const tslider_definition::tresolution>
-	conf = std::static_pointer_cast<const tslider_definition::tresolution>(
+	std::shared_ptr<const slider_definition::resolution>
+	conf = std::static_pointer_cast<const slider_definition::resolution>(
 			config());
 	assert(conf);
 	return conf->right_offset;
 }
 
-bool tslider::on_positioner(const tpoint& coordinate) const
+bool slider::on_positioner(const point& coordinate) const
 {
 	// Note we assume the positioner is over the entire height of the widget.
 	return coordinate.x >= static_cast<int>(get_positioner_offset())
@@ -199,7 +199,7 @@ bool tslider::on_positioner(const tpoint& coordinate) const
 		   && coordinate.y > 0 && coordinate.y < static_cast<int>(get_height());
 }
 
-int tslider::on_bar(const tpoint& coordinate) const
+int slider::on_bar(const point& coordinate) const
 {
 	const unsigned x = static_cast<size_t>(coordinate.x);
 	const unsigned y = static_cast<size_t>(coordinate.y);
@@ -219,14 +219,14 @@ int tslider::on_bar(const tpoint& coordinate) const
 	return 0;
 }
 
-bool tslider::in_orthogonal_range(const tpoint& coordinate) const
+bool slider::in_orthogonal_range(const point& coordinate) const
 {
 	return static_cast<size_t>(coordinate.x) < (get_width() - offset_after());
 }
 
-/*void tslider::update_current_item_mouse_position()
+/*void slider::update_current_item_mouse_position()
 {
-	tpoint mouse = get_mouse_position();
+	point mouse = get_mouse_position();
 	mouse.x -= get_x();
 	mouse.y -= get_y();
 
@@ -237,7 +237,7 @@ bool tslider::in_orthogonal_range(const tpoint& coordinate) const
  * mouse cursor too much and seems to cause problems with certain slider values. Will have to look
  * into this further.
  */
-/*void tslider::move_positioner(const int)
+/*void slider::move_positioner(const int)
 {
 	const int distance_from_last_item = get_length_difference(current_item_mouse_position_, get_mouse_position_last_move());
 
@@ -257,43 +257,43 @@ bool tslider::in_orthogonal_range(const tpoint& coordinate) const
 	}
 }*/
 
-void tslider::update_canvas()
+void slider::update_canvas()
 {
 
 	// Inherited.
-	tscrollbar_::update_canvas();
+	scrollbar_base::update_canvas();
 
-	for(auto & tmp : canvas())
+	for(auto & tmp : get_canvas())
 	{
 		tmp.set_variable("text", variant(get_value_label()));
 	}
 }
 
-const std::string& tslider::get_control_type() const
+const std::string& slider::get_control_type() const
 {
 	static const std::string type = "slider";
 	return type;
 }
 
-void tslider::handle_key_decrease(bool& handled)
+void slider::handle_key_decrease(bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << '\n';
 
 	handled = true;
 
-	scroll(tscrollbar_::ITEM_BACKWARDS);
+	scroll(scrollbar_base::ITEM_BACKWARDS);
 }
 
-void tslider::handle_key_increase(bool& handled)
+void slider::handle_key_increase(bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << '\n';
 
 	handled = true;
 
-	scroll(tscrollbar_::ITEM_FORWARD);
+	scroll(scrollbar_base::ITEM_FORWARD);
 }
 
-void tslider::signal_handler_sdl_key_down(const event::tevent event,
+void slider::signal_handler_sdl_key_down(const event::ui_event event,
 										  bool& handled,
 										  const SDL_Keycode key)
 {
@@ -309,7 +309,7 @@ void tslider::signal_handler_sdl_key_down(const event::tevent event,
 	}
 }
 
-/*void tslider::signal_handler_left_button_down(const event::tevent event, bool& handled)
+/*void slider::signal_handler_left_button_down(const event::ui_event event, bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
@@ -318,7 +318,7 @@ void tslider::signal_handler_sdl_key_down(const event::tevent event,
 	handled = true;
 }*/
 
-void tslider::signal_handler_left_button_up(const event::tevent event,
+void slider::signal_handler_left_button_up(const event::ui_event event,
 											bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -335,7 +335,7 @@ static t_string default_value_label_generator(const std::vector<t_string>& value
 	return value_labels[item_position];
 }
 
-void tslider::set_value_labels(const std::vector<t_string>& value_labels)
+void slider::set_value_labels(const std::vector<t_string>& value_labels)
 {
 	//dont use std::ref becasue we want to store value_labels in the cloasure.
 	set_value_labels(std::bind(&default_value_label_generator, value_labels, _1, _2));
@@ -343,12 +343,12 @@ void tslider::set_value_labels(const std::vector<t_string>& value_labels)
 
 // }---------- DEFINITION ---------{
 
-tslider_definition::tslider_definition(const config& cfg)
-	: tcontrol_definition(cfg)
+slider_definition::slider_definition(const config& cfg)
+	: styled_widget_definition(cfg)
 {
 	DBG_GUI_P << "Parsing slider " << id << '\n';
 
-	load_resolutions<tresolution>(cfg);
+	load_resolutions<resolution>(cfg);
 }
 
 /*WIKI
@@ -398,8 +398,8 @@ tslider_definition::tslider_definition(const config& cfg)
  * @end{tag}{name="slider_definition"}
  * @end{parent}{name="gui/"}
  */
-tslider_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
+slider_definition::resolution::resolution(const config& cfg)
+	: resolution_definition(cfg)
 	, minimum_positioner_length(cfg["minimum_positioner_length"])
 	, maximum_positioner_length(cfg["maximum_positioner_length"])
 	, left_offset(cfg["left_offset"])
@@ -409,18 +409,18 @@ tslider_definition::tresolution::tresolution(const config& cfg)
 			 missing_mandatory_wml_key("resolution",
 									   "minimum_positioner_length"));
 
-	// Note the order should be the same as the enum tstate is slider.hpp.
-	state.push_back(tstate_definition(cfg.child("state_enabled")));
-	state.push_back(tstate_definition(cfg.child("state_disabled")));
-	state.push_back(tstate_definition(cfg.child("state_pressed")));
-	state.push_back(tstate_definition(cfg.child("state_focused")));
+	// Note the order should be the same as the enum state_t is slider.hpp.
+	state.push_back(state_definition(cfg.child("state_enabled")));
+	state.push_back(state_definition(cfg.child("state_disabled")));
+	state.push_back(state_definition(cfg.child("state_pressed")));
+	state.push_back(state_definition(cfg.child("state_focused")));
 }
 
 // }---------- BUILDER -----------{
 
 /*WIKI_MACRO
  * @begin{macro}{slider_description}
- * A slider is a control that can select a value by moving a grip on a groove.
+ * A slider is a styled_widget that can select a value by moving a grip on a groove.
  * @end{macro}
  */
 
@@ -472,8 +472,8 @@ tslider_definition::tresolution::tresolution(const config& cfg)
 namespace implementation
 {
 
-tbuilder_slider::tbuilder_slider(const config& cfg)
-	: implementation::tbuilder_control(cfg)
+builder_slider::builder_slider(const config& cfg)
+	: implementation::builder_styled_widget(cfg)
 	, best_slider_length_(cfg["best_slider_length"])
 	, minimum_value_(cfg["minimum_value"])
 	, maximum_value_(cfg["maximum_value"])
@@ -494,9 +494,9 @@ tbuilder_slider::tbuilder_slider(const config& cfg)
 	}
 }
 
-twidget* tbuilder_slider::build() const
+widget* builder_slider::build() const
 {
-	tslider* widget = new tslider();
+	slider* widget = new slider();
 
 	init_control(widget);
 

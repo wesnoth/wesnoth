@@ -18,7 +18,7 @@
 
 #include "game_preferences.hpp"
 #include "gui/auxiliary/field.hpp"
-#include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/button.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 #include "gui/widgets/list.hpp"
@@ -31,6 +31,8 @@
 #include "video.hpp"
 
 namespace gui2
+{
+namespace dialogs
 {
 
 namespace
@@ -49,19 +51,19 @@ namespace
  * server_list & & listbox & m &
  *         Listbox with the predefined servers to connect to. $
  *
- * -name & & control & o &
+ * -name & & styled_widget & o &
  *         Widget which shows the name of the server. $
  *
- * -address & & control & m &
+ * -address & & styled_widget & m &
  *         The address/host_name of the server. $
  *
  * @end{table}
  */
 
-class tmp_server_list : public tdialog
+class mp_server_list : public modal_dialog
 {
 public:
-	tmp_server_list() : host_name_()
+	mp_server_list() : host_name_()
 	{
 	}
 
@@ -73,23 +75,23 @@ public:
 private:
 	std::string host_name_;
 
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	/** Inherited from modal_dialog. */
+	void pre_show(window& window);
 
-	/** Inherited from tdialog. */
-	void post_show(twindow& window);
+	/** Inherited from modal_dialog. */
+	void post_show(window& window);
 };
 
 REGISTER_DIALOG(mp_server_list)
 
-void tmp_server_list::pre_show(twindow& window)
+void mp_server_list::pre_show(window& window)
 {
 	set_restore(true);
 
-	tlistbox& list = find_widget<tlistbox>(&window, "server_list", false);
+	listbox& list = find_widget<listbox>(&window, "server_list", false);
 
 	window.keyboard_capture(&list);
 
@@ -112,17 +114,17 @@ void tmp_server_list::pre_show(twindow& window)
 	}
 }
 
-void tmp_server_list::post_show(twindow& window)
+void mp_server_list::post_show(window& window)
 {
-	if(get_retval() == twindow::OK) {
+	if(get_retval() == window::OK) {
 
-		const tlistbox& list
-				= find_widget<const tlistbox>(&window, "server_list", false);
+		const listbox& list
+				= find_widget<const listbox>(&window, "server_list", false);
 
-		const tgrid* row = list.get_row_grid(list.get_selected_row());
+		const grid* row = list.get_row_grid(list.get_selected_row());
 		assert(row);
 
-		host_name_ = find_widget<const tcontrol>(row, "address", false).label();
+		host_name_ = find_widget<const styled_widget>(row, "address", false).get_label();
 	}
 }
 
@@ -150,19 +152,19 @@ void tmp_server_list::post_show(twindow& window)
 REGISTER_DIALOG(mp_connect)
 
 static void
-show_server_list(CVideo& video, twindow& window, tfield_text* host_name)
+show_server_list(CVideo& video, window& window, field_text* host_name)
 {
 	assert(host_name);
 
-	tmp_server_list dlg;
+	mp_server_list dlg;
 	dlg.show(video);
 
-	if(dlg.get_retval() == twindow::OK) {
+	if(dlg.get_retval() == window::OK) {
 		host_name->set_widget_value(window, dlg.host_name());
 	}
 }
 
-tmp_connect::tmp_connect()
+mp_connect::mp_connect()
 	: host_name_(register_text("host_name",
 							   true,
 							   preferences::network_host,
@@ -172,24 +174,25 @@ tmp_connect::tmp_connect()
 	set_restore(true);
 }
 
-void tmp_connect::pre_show(twindow& window)
+void mp_connect::pre_show(window& win)
 {
 	assert(host_name_);
 
 	// Set view list callback button.
-	if(tbutton* button = find_widget<tbutton>(&window, "list", false, false)) {
+	if(button* btn = find_widget<button>(&win, "list", false, false)) {
 
-		connect_signal_mouse_left_click(*button,
+		connect_signal_mouse_left_click(*btn,
 										std::bind(show_server_list,
-													std::ref(window.video()),
-													std::ref(window),
+													std::ref(win.video()),
+													std::ref(win),
 													host_name_));
 	}
 }
 
-tdialog* tmp_connect::mp_server_list_for_unit_test()
+modal_dialog* mp_connect::mp_server_list_for_unit_test()
 {
-	return new tmp_server_list();
+	return new mp_server_list();
 }
 
+} // namespace dialogs
 } // namespace gui2

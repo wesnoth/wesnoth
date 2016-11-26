@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-#include "help_browser.hpp"
+#include "help/help_browser.hpp"
 #include <iostream>                     // for operator<<, basic_ostream, etc
 #include <SDL_mouse.h>                  // for SDL_GetMouseState, etc
 #include "cursor.hpp"                   // for set, CURSOR_TYPE::HYPERLINK, etc
@@ -20,7 +20,7 @@
 #include "gettext.hpp"                  // for _
 #include "gui/dialogs/transient_message.hpp"
 #include "help/help_text_area.hpp"      // for help_text_area
-#include "help_impl.hpp"                // for find_topic, hidden_symbol, etc
+#include "help/help_impl.hpp"                // for find_topic, hidden_symbol, etc
 #include "key.hpp"                      // for CKey
 #include "log.hpp"                      // for log_scope
 #include "sdl/rect.hpp"

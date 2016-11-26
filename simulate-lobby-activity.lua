@@ -36,8 +36,6 @@ end
 return function()
   local events, context, info
 
-  wesnoth.preferences.new_mp_ui = true
-
   repeat
     events, context, info = coroutine.yield()
   until info.name == "titlescreen" or info.name == "Multiplayer Lobby"

@@ -15,27 +15,30 @@
 #ifndef GUI_DIALOGS_MP_LOGIN_HPP_INCLUDED
 #define GUI_DIALOGS_MP_LOGIN_HPP_INCLUDED
 
-#include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
 
 namespace gui2
 {
+namespace dialogs
+{
 
-class tmp_login : public tdialog
+class mp_login : public modal_dialog
 {
 public:
-	tmp_login(const std::string& label, const bool focus_password);
+	mp_login(const std::string& label, const bool focus_password);
 
 private:
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	/** Inherited from modal_dialog. */
+	void pre_show(window& window);
 
-	/** Inherited from tdialog. */
-	void post_show(twindow& window);
+	/** Inherited from modal_dialog. */
+	void post_show(window& window);
 };
 
+} // namespace dialogs
 } // namespace gui2
 
 #endif

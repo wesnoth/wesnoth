@@ -37,34 +37,34 @@ namespace gui2
 REGISTER_WIDGET(matrix)
 
 
-tstate_default::tstate_default() : state_(ENABLED)
+state_default::state_default() : state_(ENABLED)
 {
 }
-void tstate_default::set_active(const bool active)
+void state_default::set_active(const bool active)
 {
 	if(get_active() != active) {
 		state_ = active ? ENABLED : DISABLED;
 	}
 }
 
-bool tstate_default::get_active() const
+bool state_default::get_active() const
 {
 	return state_ != DISABLED;
 }
 
-unsigned tstate_default::get_state() const
+unsigned state_default::get_state() const
 {
 	return state_;
 }
 
-tmatrix::tmatrix(const implementation::tbuilder_matrix& builder)
+matrix::matrix(const implementation::builder_matrix& builder)
 	: tbase(builder, get_control_type()), content_(), pane_(nullptr)
 {
-	std::shared_ptr<const tmatrix_definition::tresolution>
-	cfg = std::static_pointer_cast<const tmatrix_definition::tresolution>(
+	std::shared_ptr<const matrix_definition::resolution>
+	cfg = std::static_pointer_cast<const matrix_definition::resolution>(
 			config());
 
-	tbuilder_widget::treplacements replacements;
+	builder_widget::replacements_map replacements;
 	replacements.insert(std::make_pair("_main", builder.builder_main));
 
 	if(builder.builder_top) {
@@ -86,98 +86,98 @@ tmatrix::tmatrix(const implementation::tbuilder_matrix& builder)
 	cfg->content->build(content_, replacements);
 	content_.set_parent(this);
 
-	pane_ = find_widget<tpane>(&content_, "pane", false, true);
+	pane_ = find_widget<pane>(&content_, "pane", false, true);
 }
 
-tmatrix* tmatrix::build(const implementation::tbuilder_matrix& builder)
+matrix* matrix::build(const implementation::builder_matrix& builder)
 {
-	return new tmatrix(builder);
+	return new matrix(builder);
 }
 
 unsigned
-tmatrix::create_item(const std::map<std::string, string_map>& item_data,
+matrix::create_item(const std::map<std::string, string_map>& item_data,
 					 const std::map<std::string, std::string>& tags)
 {
 	return pane_->create_item(item_data, tags);
 }
 
-void tmatrix::place(const tpoint& origin, const tpoint& size)
+void matrix::place(const point& origin, const point& size)
 {
-	twidget::place(origin, size);
+	widget::place(origin, size);
 
 	content_.place(origin, size);
 }
 
-void tmatrix::layout_initialise(const bool full_initialisation)
+void matrix::layout_initialise(const bool full_initialisation)
 {
 	content_.layout_initialise(full_initialisation);
 }
 
 void
-tmatrix::impl_draw_children(surface& frame_buffer, int x_offset, int y_offset)
+matrix::impl_draw_children(surface& frame_buffer, int x_offset, int y_offset)
 {
 	content_.draw_children(frame_buffer, x_offset, y_offset);
 }
 
-void tmatrix::layout_children()
+void matrix::layout_children()
 {
 	content_.layout_children();
 }
 
-void tmatrix::child_populate_dirty_list(twindow& caller,
-										const std::vector<twidget*>& call_stack)
+void matrix::child_populate_dirty_list(window& caller,
+										const std::vector<widget*>& call_stack)
 {
-	std::vector<twidget*> child_call_stack = call_stack;
+	std::vector<widget*> child_call_stack = call_stack;
 	content_.populate_dirty_list(caller, child_call_stack);
 }
 
-void tmatrix::request_reduce_width(const unsigned /*maximum_width*/)
+void matrix::request_reduce_width(const unsigned /*maximum_width*/)
 {
 }
 
-twidget* tmatrix::find_at(const tpoint& coordinate, const bool must_be_active)
+widget* matrix::find_at(const point& coordinate, const bool must_be_active)
 {
 	return content_.find_at(coordinate, must_be_active);
 }
 
-const twidget* tmatrix::find_at(const tpoint& coordinate,
+const widget* matrix::find_at(const point& coordinate,
 								const bool must_be_active) const
 {
 	return content_.find_at(coordinate, must_be_active);
 }
 
-twidget* tmatrix::find(const std::string& id, const bool must_be_active)
+widget* matrix::find(const std::string& id, const bool must_be_active)
 {
-	if(twidget* result = twidget::find(id, must_be_active)) {
+	if(widget* result = widget::find(id, must_be_active)) {
 		return result;
 	} else {
 		return content_.find(id, must_be_active);
 	}
 }
 
-const twidget* tmatrix::find(const std::string& id, const bool must_be_active)
+const widget* matrix::find(const std::string& id, const bool must_be_active)
 		const
 {
-	if(const twidget* result = twidget::find(id, must_be_active)) {
+	if(const widget* result = widget::find(id, must_be_active)) {
 		return result;
 	} else {
 		return content_.find(id, must_be_active);
 	}
 }
 
-tpoint tmatrix::calculate_best_size() const
+point matrix::calculate_best_size() const
 {
-	tpoint size = content_.get_best_size();
+	point size = content_.get_best_size();
 
 	return size;
 }
 
-bool tmatrix::disable_click_dismiss() const
+bool matrix::disable_click_dismiss() const
 {
 	return false;
 }
 
-iterator::twalker_* tmatrix::create_walker()
+iteration::walker_base* matrix::create_walker()
 {
 	/**
 	 * @todo Implement properly.
@@ -185,7 +185,7 @@ iterator::twalker_* tmatrix::create_walker()
 	return nullptr;
 }
 
-const std::string& tmatrix::get_control_type() const
+const std::string& matrix::get_control_type() const
 {
 	static const std::string type = "matrix";
 	return type;
@@ -214,21 +214,21 @@ const std::string& tmatrix::get_control_type() const
  * @end{parent}{name="gui/"}
  */
 
-tmatrix_definition::tmatrix_definition(const config& cfg)
-	: tcontrol_definition(cfg)
+matrix_definition::matrix_definition(const config& cfg)
+	: styled_widget_definition(cfg)
 {
 	DBG_GUI_P << "Parsing matrix " << id << '\n';
 
-	load_resolutions<tresolution>(cfg);
+	load_resolutions<resolution>(cfg);
 }
 
-tmatrix_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
-	, content(new tbuilder_grid(cfg.child("content", "[matrix_definition]")))
+matrix_definition::resolution::resolution(const config& cfg)
+	: resolution_definition(cfg)
+	, content(new builder_grid(cfg.child("content", "[matrix_definition]")))
 {
-	// Note the order should be the same as the enum tstate in matrix.hpp.
-	state.push_back(tstate_definition(cfg.child("state_enabled")));
-	state.push_back(tstate_definition(cfg.child("state_disabled")));
+	// Note the order should be the same as the enum state_t in matrix.hpp.
+	state.push_back(state_definition(cfg.child("state_enabled")));
+	state.push_back(state_definition(cfg.child("state_disabled")));
 }
 
 // }---------- BUILDER -----------{
@@ -273,8 +273,8 @@ tmatrix_definition::tresolution::tresolution(const config& cfg)
 namespace implementation
 {
 
-tbuilder_matrix::tbuilder_matrix(const config& cfg)
-	: tbuilder_control(cfg)
+builder_matrix::builder_matrix(const config& cfg)
+	: builder_styled_widget(cfg)
 	, vertical_scrollbar_mode(
 			  get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
 	, horizontal_scrollbar_mode(
@@ -286,25 +286,25 @@ tbuilder_matrix::tbuilder_matrix(const config& cfg)
 	, builder_main(create_builder_widget(cfg.child("main", "[matrix]")))
 {
 	if(const config& top = cfg.child("top")) {
-		builder_top = std::make_shared<tbuilder_grid>(top);
+		builder_top = std::make_shared<builder_grid>(top);
 	}
 
 	if(const config& bottom = cfg.child("bottom")) {
-		builder_bottom = std::make_shared<tbuilder_grid>(bottom);
+		builder_bottom = std::make_shared<builder_grid>(bottom);
 	}
 
 	if(const config& left = cfg.child("left")) {
-		builder_left = std::make_shared<tbuilder_grid>(left);
+		builder_left = std::make_shared<builder_grid>(left);
 	}
 
 	if(const config& right = cfg.child("right")) {
-		builder_right = std::make_shared<tbuilder_grid>(right);
+		builder_right = std::make_shared<builder_grid>(right);
 	}
 }
 
-twidget* tbuilder_matrix::build() const
+widget* builder_matrix::build() const
 {
-	return tmatrix::build(*this);
+	return matrix::build(*this);
 }
 
 } // namespace implementation

@@ -18,7 +18,6 @@ endif(MSVC)
 include_directories(SYSTEM ${PANGOCAIRO_INCLUDE_DIRS} )
 include_directories(SYSTEM ${GETTEXT_INCLUDE_DIR} )
 include_directories(SYSTEM ${LIBDBUS_INCLUDE_DIRS} )
-include_directories(SYSTEM ${LIBINTL_INCLUDE_DIR} )
 include_directories(SYSTEM ${VORBISFILE_INCLUDE_DIR} )
 
 
@@ -78,17 +77,10 @@ set(common-external-libs
 	${Boost_FILESYSTEM_LIBRARY}
 )
 
-if(NOT ENABLE_LIBINTL)
-	set(common-external-libs
-		${common-external-libs}
-		${Boost_LOCALE_LIBRARY}
-	)
-else()
-	set(common-external-libs
-		${common-external-libs}
-		${LIBINTL_LIBRARY}
-	)
-endif()
+set(common-external-libs
+	${common-external-libs}
+	${Boost_LOCALE_LIBRARY}
+)
 
 set(game-external-libs
 	${common-external-libs}
@@ -222,6 +214,7 @@ set(libwesnoth-core_STAT_SRC
 	filesystem_common.cpp
 	font/constants.cpp
 	game_config.cpp
+	gettext_boost.cpp
 	hash.cpp
 	log.cpp
 	md5.cpp
@@ -238,18 +231,6 @@ set(libwesnoth-core_STAT_SRC
 	serialization/unicode.cpp
 	serialization/validator.cpp
 )
-
-if(NOT ENABLE_LIBINTL)
-	set(libwesnoth-core_STAT_SRC
-		${libwesnoth-core_STAT_SRC}
-		gettext_boost.cpp
-	)
-else()
-	set(libwesnoth-core_STAT_SRC
-		${libwesnoth-core_STAT_SRC}
-		gettext.cpp
-	)
-endif()
 
 if(WIN32)
 	set(libwesnoth-core_STAT_SRC
@@ -331,7 +312,6 @@ set(libwesnoth-lua_STAT_SRC
 	lua/ltablib.cpp
 	lua/lstrlib.cpp
 	lua/loadlib.cpp
-	lua/linit.cpp
 	lua/lutf8lib.cpp
 )
 # We explicitly want lua compiled as C++ version, so this line is required:
@@ -383,12 +363,11 @@ set_target_properties(wesnoth-lua
 ########### Helper libraries ###############
 
 set(wesnoth-sdl_SRC
+	sdl/color.cpp
 	sdl/exception.cpp
 	sdl/rect.cpp
-	sdl/image.cpp
 	sdl/window.cpp
 	sdl/utils.cpp
-	sdl/shader.cpp
 	xBRZ/xbrz.cpp
 )
 
@@ -489,8 +468,8 @@ add_library(wesnoth-gui_placer
 
 # This library contains the tooltip handling code.
 set(wesnoth-gui_tooltip_SRC
-	gui/core/tips.cpp
-	gui/dialogs/tip.cpp
+	gui/auxiliary/tips.cpp
+	gui/dialogs/tooltip.cpp
 )
 
 add_library(wesnoth-gui_tooltip
@@ -507,11 +486,10 @@ add_library(wesnoth-gui_tooltip
 # behavior of the widgets. It also contains the builder code
 # for the widgets since the code has inter dependencies.
 set(wesnoth-gui_widget_SRC
-	gui/dialogs/drop_down_list.cpp
+	gui/dialogs/drop_down_menu.cpp
 	gui/widgets/button.cpp
 	gui/widgets/chatbox.cpp
-	gui/widgets/container.cpp
-	gui/widgets/control.cpp
+	gui/widgets/container_base.cpp
 	gui/widgets/debug.cpp
 	gui/widgets/drawing.cpp
 	gui/widgets/generator.cpp
@@ -536,10 +514,12 @@ set(wesnoth-gui_widget_SRC
 	gui/widgets/scrollbar_container.cpp
 	gui/widgets/scrollbar_panel.cpp
 	gui/widgets/settings.cpp
+	gui/widgets/size_lock.cpp
 	gui/widgets/slider.cpp
 	gui/widgets/spacer.cpp
 	gui/widgets/stacked_widget.cpp
-	gui/widgets/text.cpp
+	gui/widgets/styled_widget.cpp
+	gui/widgets/text_box_base.cpp
 	gui/widgets/text_box.cpp
 	gui/widgets/toggle_button.cpp
 	gui/widgets/toggle_panel.cpp
@@ -590,9 +570,6 @@ add_library(wesnoth-gui_widget_definition
 
 # This library contains the widgets from gui1.
 set(wesnoth-gui1_widgets_SRC
-	widgets/combo.cpp
-	widgets/combo_drag.cpp
-	widgets/drop_target.cpp
 	widgets/scrollpane.cpp
 )
 
@@ -645,7 +622,7 @@ set(wesnoth-main_SRC
 	actions/vision.cpp
 	addon/client.cpp
 	addon/info.cpp
-	addon/manager.cpp
+	addon/manager_old.cpp
 	addon/manager_ui.cpp
 	addon/state.cpp
 	addon/validation.cpp
@@ -696,6 +673,8 @@ set(wesnoth-main_SRC
 	config_cache.cpp
 	game_initialization/configure_engine.cpp
 	game_initialization/connect_engine.cpp
+	game_initialization/lobby_data.cpp
+	game_initialization/lobby_info.cpp
 	controller_base.cpp
 	countdown_clock.cpp
 	game_initialization/create_engine.cpp
@@ -774,7 +753,7 @@ set(wesnoth-main_SRC
 	gui/dialogs/addon/filter_options.cpp
 	gui/dialogs/addon/uninstall_list.cpp
 	gui/dialogs/addon/connect.cpp
-	gui/dialogs/addon/list.cpp
+	gui/dialogs/addon/manager.cpp
 	gui/dialogs/advanced_graphics_options.cpp
 	gui/dialogs/campaign_difficulty.cpp
 	gui/dialogs/campaign_selection.cpp
@@ -784,7 +763,6 @@ set(wesnoth-main_SRC
 	gui/dialogs/debug_clock.cpp
 	gui/dialogs/depcheck_confirm_change.cpp
 	gui/dialogs/depcheck_select_new.cpp
-	gui/dialogs/dialog.cpp
 	gui/dialogs/edit_label.cpp
 	gui/dialogs/editor/custom_tod.cpp
 	gui/dialogs/editor/edit_label.cpp
@@ -808,21 +786,20 @@ set(wesnoth-main_SRC
 	gui/dialogs/gamestate_inspector.cpp
 	gui/dialogs/label_settings.cpp
 	gui/dialogs/language_selection.cpp
-	gui/dialogs/loadscreen.cpp
-	gui/dialogs/lobby/data.cpp
-	gui/dialogs/lobby/info.cpp
+	gui/dialogs/loading_screen.cpp
 	gui/dialogs/lobby/lobby.cpp
 	gui/dialogs/lobby/player_info.cpp
-	gui/dialogs/logging.cpp
+	gui/dialogs/log_settings.cpp
 	gui/dialogs/lua_interpreter.cpp
 	gui/dialogs/message.cpp
+	gui/dialogs/modal_dialog.cpp
+	gui/dialogs/modeless_dialog.cpp
 	gui/dialogs/multiplayer/faction_select.cpp
 	gui/dialogs/multiplayer/mp_alerts_options.cpp
 	gui/dialogs/multiplayer/mp_change_control.cpp
 	gui/dialogs/multiplayer/mp_cmd_wrapper.cpp
 	gui/dialogs/multiplayer/mp_connect.cpp
 	gui/dialogs/multiplayer/mp_create_game.cpp
-	gui/dialogs/multiplayer/mp_create_game_set_password.cpp
 	gui/dialogs/multiplayer/mp_host_game_prompt.cpp
 	gui/dialogs/multiplayer/mp_join_game.cpp
 	gui/dialogs/multiplayer/mp_join_game_password_prompt.cpp
@@ -831,15 +808,16 @@ set(wesnoth-main_SRC
 	gui/dialogs/multiplayer/mp_options_helper.cpp
 	gui/dialogs/multiplayer/mp_staging.cpp
 	gui/dialogs/network_transmission.cpp
-	gui/dialogs/popup.cpp
 	gui/dialogs/preferences_dialog.cpp
 	gui/dialogs/edit_text.cpp
 	gui/dialogs/screenshot_notification.cpp
 	gui/dialogs/select_orb_colors.cpp
 	gui/dialogs/simple_item_selector.cpp
 	gui/dialogs/sp_options_configure.cpp
+	gui/dialogs/statistics_dialog.cpp
 	gui/dialogs/multiplayer/synced_choice_wait.cpp
 	gui/dialogs/theme_list.cpp
+	gui/dialogs/terrain_layers.cpp
 	gui/dialogs/title_screen.cpp
 	gui/dialogs/transient_message.cpp
 	gui/dialogs/unit_advance.cpp
@@ -871,15 +849,8 @@ set(wesnoth-main_SRC
 	movetype.cpp
 	mp_game_settings.cpp
 	game_initialization/mp_game_utils.cpp
-	game_initialization/mp_options.cpp
 	mp_ui_alerts.cpp
 	game_initialization/multiplayer.cpp
-	game_initialization/multiplayer_configure.cpp
-	game_initialization/multiplayer_connect.cpp
-	game_initialization/multiplayer_create.cpp
-	game_initialization/multiplayer_lobby.cpp
-	game_initialization/multiplayer_ui.cpp
-	game_initialization/multiplayer_wait.cpp
 	network_asio.cpp
 	pathfind/pathfind.cpp
 	pathfind/teleport.cpp
@@ -929,7 +900,6 @@ set(wesnoth-main_SRC
 	side_filter.cpp
 	game_initialization/singleplayer.cpp
 	statistics.cpp
-	statistics_dialog.cpp
 	storyscreen/controller.cpp
 	storyscreen/interface.cpp
 	storyscreen/part.cpp
@@ -1043,7 +1013,6 @@ set(libwesnoth-game_STAT_SRC
 	widgets/label.cpp
 	widgets/menu.cpp
 	widgets/menu_style.cpp
-	widgets/multimenu.cpp
 	widgets/scrollarea.cpp
 	widgets/scrollbar.cpp
 	widgets/slider.cpp
@@ -1198,7 +1167,6 @@ add_executable(campaignd ${campaignd_SRC})
 target_link_libraries(campaignd
 	wesnoth-core
 	${server-external-libs}
-	${LIBINTL_LIBRARIES}
 	${Boost_RANDOM_LIBRARY}
 	${LIBRT}
 	)
@@ -1324,34 +1292,6 @@ install(TARGETS wesmage DESTINATION ${BINDIR})
 endif(ENABLE_TOOLS)
 
 
-########### SDL2 test tool  ###############
-
-if(ENABLE_SDL2_TOOLS)
-
-	add_executable(sdl2
-		tools/sdl2/sdl2.cpp
-		tools/sdl2/window.cpp
-	)
-
-	target_link_libraries(sdl2
-		wesnoth-sdl
-		wesnoth-core
-		wesnoth-game
-		wesnoth-gui_types
-		wesnoth-gui_event
-		wesnoth-gui_iterator
-		wesnoth-gui_placer
-		wesnoth-gui_tooltip
-		wesnoth-gui_widget
-		wesnoth-gui_widget_definition
-		wesnoth-gui1_widgets
-		wesnoth-schema_validator
-		wesnoth-lua
-		${game-external-libs}
-	)
-
-endif()
-
 ########### Unit tests ###############
 
 if(ENABLE_TESTS)
@@ -1361,7 +1301,6 @@ if(ENABLE_TESTS)
 	set(test_SRC
 		tests/gui/iterator.cpp
 		tests/gui/fire_event.cpp
-		tests/gui/test_drop_target.cpp
 		tests/gui/test_gui2.cpp
 		tests/gui/test_save_dialog.cpp
 		tests/gui/visitor.cpp
@@ -1378,6 +1317,7 @@ if(ENABLE_TESTS)
 		tests/test_lexical_cast.cpp
 		tests/test_map_location.cpp
 		tests/test_make_enum.cpp
+		tests/test_recall_list.cpp
 		tests/test_rng.cpp
 		tests/test_mp_connect.cpp
 		tests/test_sdl_utils.cpp

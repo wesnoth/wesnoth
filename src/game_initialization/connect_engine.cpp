@@ -11,21 +11,19 @@
 
    See the COPYING file for more details.
 */
-#include "connect_engine.hpp"
+#include "game_initialization/connect_engine.hpp"
 
 #include "ai/configuration.hpp"
 #include "config_assign.hpp"
 #include "formula/string_utils.hpp"
+#include "game_initialization/mp_game_utils.hpp"
+#include "game_initialization/playcampaign.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
-#include "multiplayer_ui.hpp"
-#include "mp_game_utils.hpp"
 #include "mt_rng.hpp"
-#include "playcampaign.hpp"
 #include "tod_manager.hpp"
-#include "multiplayer_ui.hpp" // For get_color_string
 #include "wesnothd_connection.hpp"
 
 #include <stdlib.h>
@@ -33,7 +31,6 @@
 
 static lg::log_domain log_config("config");
 #define LOG_CF LOG_STREAM(info, log_config)
-#define WRN_CF LOG_STREAM(warn, log_config)
 #define ERR_CF LOG_STREAM(err, log_config)
 
 static lg::log_domain log_mp_connect_engine("mp/connect/engine");
@@ -45,9 +42,7 @@ static lg::log_domain log_mp_connect_engine("mp/connect/engine");
 static lg::log_domain log_network("network");
 #define LOG_NW LOG_STREAM(info, log_network)
 
-namespace {
-
-const std::string controller_names[] = {
+static const std::string controller_names[] = {
 	"human",
 	"human",
 	"ai",
@@ -55,7 +50,7 @@ const std::string controller_names[] = {
 	"reserved"
 };
 
-const std::string attributes_to_trim[] = {
+static const std::string attributes_to_trim[] = {
 	"side",
 	"type",
 	"gender",
@@ -72,28 +67,25 @@ const std::string attributes_to_trim[] = {
 	"allow_changes"
 };
 
-}
-
 namespace ng {
 
-connect_engine::connect_engine(saved_game& state,
-		const bool first_scenario, mp_campaign_info* campaign_info) :
-	level_(),
-	state_(state),
-	params_(state.mp_settings()),
-	default_controller_(campaign_info ? CNTR_NETWORK : CNTR_LOCAL),
-	campaign_info_(campaign_info),
-	first_scenario_(first_scenario),
-	force_lock_settings_(),
-	side_engines_(),
-	era_factions_(),
-	team_names_(),
-	user_team_names_(),
-	player_teams_()
+connect_engine::connect_engine(saved_game& state, const bool first_scenario, mp_campaign_info* campaign_info)
+	: level_()
+	, state_(state)
+	, params_(state.mp_settings())
+	, default_controller_(campaign_info ? CNTR_NETWORK : CNTR_LOCAL)
+	, campaign_info_(campaign_info)
+	, first_scenario_(first_scenario)
+	, force_lock_settings_()
+	, side_engines_()
+	, era_factions_()
+	, team_names_()
+	, user_team_names_()
+	, player_teams_()
 {
 	// Initial level config from the mp_game_settings.
 	level_ = mp::initial_level_config(state_);
-	if (level_.empty()) {
+	if(level_.empty()) {
 		return;
 	}
 
@@ -105,63 +97,59 @@ connect_engine::connect_engine(saved_game& state,
 
 	// AI algorithms.
 	ai::configuration::add_era_ai_from_config(level_.child("era"));
-	ai::configuration::add_mod_ai_from_config(
-		level_.child_range("modification"));
+	ai::configuration::add_mod_ai_from_config(level_.child_range("modification"));
 
-	// Set the team name lists and modify the original level sides,
-	// if necessary.
+	// Set the team name lists and modify the original level sides if necessary.
 	std::vector<std::string> original_team_names;
 	std::string team_prefix(_("Team") + " ");
+
 	int side_count = 1;
-	for (config& side : sides) {
+	for(config& side : sides) {
 		const std::string side_str = std::to_string(side_count);
+
 		config::attribute_value& team_name = side["team_name"];
-		config::attribute_value& user_team_name =
-			side["user_team_name"];
+		config::attribute_value& user_team_name = side["user_team_name"];
 
 		// Revert to default values if appropriate.
-		if (team_name.empty()) {
+		if(team_name.empty()) {
 			team_name = side_str;
 		}
-		if (params_.use_map_settings && user_team_name.empty()) {
+
+		if(params_.use_map_settings && user_team_name.empty()) {
 			user_team_name = team_name;
 		}
 
 		bool add_team = true;
-		if (params_.use_map_settings) {
+		if(params_.use_map_settings) {
 			// Only add a team if it is not found.
 			bool found = std::find(team_names_.begin(), team_names_.end(),
 				team_name.str()) != team_names_.end();
 
-			if (found) {
+			if(found) {
 				add_team = false;
 			}
 		} else {
-			// Always add a new team for every side, but leave
-			// the specified team assigned to a side if there is one.
-			std::vector<std::string>::const_iterator name_itor =
-				std::find(original_team_names.begin(),
-					original_team_names.end(), team_name.str());
-			if (name_itor == original_team_names.end()) {
+			// Always add a new team for every side, but leave the specified team assigned to a side if there is one.
+			auto name_itor = std::find(original_team_names.begin(), original_team_names.end(), team_name.str());
+
+			// Note that the prefix "Team " is untranslatable, as team_name is not meant to be translated. This is needed
+			// so that the attribute is not interpretted as an int when reading from config, which causes bugs later.
+			if(name_itor == original_team_names.end()) {
 				original_team_names.push_back(team_name);
 
-				team_name = "Team " +
-					std::to_string(original_team_names.size());
+				team_name = "Team " + std::to_string(original_team_names.size());
 			} else {
-				team_name = "Team " + std::to_string(
-					name_itor - original_team_names.begin() + 1);
-			} // Note that the prefix "Team " is untranslatable, as team_name is not meant to be translated. This is needed so that the attribute
-			  // is not interpretted as an int when reading from config, which causes bugs later.
+				team_name = "Team " + std::to_string(name_itor - original_team_names.begin() + 1);
+			}
 
 			user_team_name = team_prefix + side_str;
 		}
 
-		if (add_team) {
-			team_names_.push_back(params_.use_map_settings ? team_name :
-				"Team " + side_str);
+		if(add_team) {
+			team_names_.push_back(params_.use_map_settings ? team_name : "Team " + side_str);
 			user_team_names_.push_back(user_team_name.t_str().to_serialized());
 
-			if (side["allow_player"].to_bool(true) || game_config::debug) {
+			if(side["allow_player"].to_bool(true) || game_config::debug) {
 				player_teams_.push_back(user_team_name.str());
 			}
 		}
@@ -170,15 +158,15 @@ connect_engine::connect_engine(saved_game& state,
 	}
 
 	// Selected era's factions.
-	for (const config& era : level_.child("era").child_range("multiplayer_side")) {
-
+	for(const config& era : level_.child("era").child_range("multiplayer_side")) {
 		era_factions_.push_back(&era);
 	}
 
 	game_config::add_color_info(scenario());
+
 	// Create side engines.
 	int index = 0;
-	for (const config &s : sides) {
+	for(const config& s : sides) {
 		side_engine_ptr new_side_engine(new side_engine(s, *this, index));
 		side_engines_.push_back(new_side_engine);
 
@@ -188,63 +176,60 @@ connect_engine::connect_engine(saved_game& state,
 	if(first_scenario_) {
 		// Add host to the connected users list.
 		import_user(preferences::login(), false);
-	}
-	else {
+	} else {
 		// Add host but don't assign a side to him.
 		import_user(preferences::login(), true);
+
 		// Load reserved players information into the sides.
 		load_previous_sides_users();
 	}
 
-	//actualy only updates the sides in the level.
+	// Only updates the sides in the level.
 	update_level();
 
 	// If we are connected, send data to the connected host.
 	send_level_data();
 }
 
-connect_engine::~connect_engine()
-{
-}
 
 config* connect_engine::current_config() {
-	if(config& s = scenario())
+	if(config& s = scenario()) {
 		return &s;
-	else
-		return nullptr;
+	}
+
+	return nullptr;
 }
 
-void connect_engine::import_user(const std::string& name, const bool observer,
-	int side_taken)
+void connect_engine::import_user(const std::string& name, const bool observer, int side_taken)
 {
 	config user_data;
 	user_data["name"] = name;
 	import_user(user_data, observer, side_taken);
 }
 
-void connect_engine::import_user(const config& data, const bool observer,
-	int side_taken)
+void connect_engine::import_user(const config& data, const bool observer, int side_taken)
 {
 	const std::string& username = data["name"];
 	assert(!username.empty());
 	if(campaign_info_) {
 		connected_users_rw().insert(username);
 	}
+
 	update_side_controller_options();
 
-	if (observer) {
+	if(observer) {
 		return;
 	}
 
 	bool side_assigned = false;
-	if (side_taken >= 0) {
+	if(side_taken >= 0) {
 		side_engines_[side_taken]->place_user(data, true);
 		side_assigned = true;
 	}
 
 	// Check if user has a side(s) reserved for him.
-	for (side_engine_ptr side : side_engines_) {
-		if (side->reserved_for() == username && side->player_id().empty() && side->controller() != CNTR_COMPUTER) {
+	for(side_engine_ptr side : side_engines_) {
+		if(side->reserved_for() == username && side->player_id().empty() && side->controller() != CNTR_COMPUTER) {
 			side->place_user(data);
 
 			side_assigned = true;
@@ -253,9 +238,9 @@ void connect_engine::import_user(const config& data, const bool observer,
 
 	// If no sides were assigned for a user,
 	// take a first available side.
-	if (side_taken < 0 && !side_assigned) {
-		for (side_engine_ptr side : side_engines_) {
-			if (side->available_for_user(username) ||
+	if(side_taken < 0 && !side_assigned) {
+		for(side_engine_ptr side : side_engines_) {
+			if(side->available_for_user(username) ||
 				side->controller() == CNTR_LOCAL) {
 					side->place_user(data);
 
@@ -267,9 +252,9 @@ void connect_engine::import_user(const config& data, const bool observer,
 
 	// Check if user has taken any sides, which should get control
 	// over any other sides.
-	for (side_engine_ptr user_side : side_engines_) {
+	for(side_engine_ptr user_side : side_engines_) {
 		if(user_side->player_id() == username && !user_side->previous_save_id().empty()) {
-			for (side_engine_ptr side : side_engines_){
+			for(side_engine_ptr side : side_engines_){
 				if(side->player_id().empty() && side->previous_save_id() == user_side->previous_save_id()) {
 					side->place_user(data);
 				}
@@ -280,8 +265,8 @@ void connect_engine::import_user(const config& data, const bool observer,
 
 bool connect_engine::sides_available() const
 {
-	for (side_engine_ptr side : side_engines_) {
-		if (side->available_for_user()) {
+	for(side_engine_ptr side : side_engines_) {
+		if(side->available_for_user()) {
 			return true;
 		}
 	}
@@ -295,7 +280,7 @@ void connect_engine::update_level()
 
 	scenario().clear_children("side");
 
-	for (side_engine_ptr side : side_engines_) {
+	for(side_engine_ptr side : side_engines_) {
 		scenario().add_child("side", side->new_config());
 	}
 }
@@ -306,7 +291,7 @@ void connect_engine::update_and_send_diff(bool /*update_time_of_day*/)
 	update_level();
 
 	config diff = level_.get_diff(old_level);
-	if (!diff.empty()) {
+	if(!diff.empty()) {
 		config scenario_diff;
 		scenario_diff.add_child("scenario_diff", diff);
 		send_to_server(scenario_diff);
@@ -315,13 +300,13 @@ void connect_engine::update_and_send_diff(bool /*update_time_of_day*/)
 
 bool connect_engine::can_start_game() const
 {
-	if (side_engines_.size() == 0) {
+	if(side_engines_.size() == 0) {
 		return true;
 	}
 
 	// First check if all sides are ready to start the game.
-	for (side_engine_ptr side : side_engines_) {
-		if (!side->ready_for_start()) {
+	for(side_engine_ptr side : side_engines_) {
+		if(!side->ready_for_start()) {
 			const int side_num = side->index() + 1;
 			DBG_MP << "not all sides are ready, side " <<
 				side_num << " not ready\n";
@@ -338,8 +323,8 @@ bool connect_engine::can_start_game() const
 	 * creative in what is used in multiplayer [1] so use a simpler test now.
 	 * [1] http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=568029
 	 */
-	for (side_engine_ptr side : side_engines_) {
-		if (side->controller() != CNTR_EMPTY && side->allow_player()) {
+	for(side_engine_ptr side : side_engines_) {
+		if(side->controller() != CNTR_EMPTY && side->allow_player()) {
 			return true;
 		}
 	}
@@ -349,21 +334,20 @@ bool connect_engine::can_start_game() const
 
 void connect_engine::send_to_server(const config& cfg) const
 {
-	if (campaign_info_) {
-		campaign_info_->wesnothd_connection.send_data(cfg);
+	if(campaign_info_) {
+		campaign_info_->connection.send_data(cfg);
 	}
 }
 
 bool connect_engine::receive_from_server(config& dst) const
 {
-	if (campaign_info_) {
-		return campaign_info_->wesnothd_connection.receive_data(dst);
+	if(campaign_info_) {
+		return campaign_info_->connection.receive_data(dst);
 	}
 	else {
 		return false;
 	}
 }
-
 
 std::vector<std::string> side_engine::get_children_to_swap()
 {
@@ -380,8 +364,8 @@ std::multimap<std::string, config> side_engine::get_side_children()
 {
 	std::multimap<std::string, config> children;
 
-	for (const std::string& children_to_swap : get_children_to_swap()) {
-		for (const config& child : cfg_.child_range(children_to_swap)) {
+	for(const std::string& children_to_swap : get_children_to_swap()) {
+		for(const config& child : cfg_.child_range(children_to_swap)) {
 			children.insert(std::pair<std::string, config>(children_to_swap, child));
 		}
 	}
@@ -391,15 +375,14 @@ std::multimap<std::string, config> side_engine::get_side_children()
 
 void side_engine::set_side_children(std::multimap<std::string, config> children)
 {
-	for (const std::string& children_to_remove : get_children_to_swap()) {
+	for(const std::string& children_to_remove : get_children_to_swap()) {
 		cfg_.clear_children(children_to_remove);
 	}
 
-	for (std::pair<std::string, config> child_map : children) {
+	for(std::pair<std::string, config> child_map : children) {
 		cfg_.add_child(child_map.first, child_map.second);
 	}
 }
-
 
 void connect_engine::start_game()
 {
@@ -408,19 +391,19 @@ void connect_engine::start_game()
 	// Resolves the "random faction", "random gender" and "random message"
 	// Must be done before shuffle sides, or some cases will cause errors
 	rand_rng::mt_rng rng; // Make an RNG for all the shuffling and random faction operations
-	for (side_engine_ptr side : side_engines_) {
+	for(side_engine_ptr side : side_engines_) {
 		std::vector<std::string> avoid_faction_ids;
 
 		// If we aren't resolving random factions independently at random, calculate which factions should not appear for this side.
-		if (params_.random_faction_mode != mp_game_settings::RANDOM_FACTION_MODE::DEFAULT) {
-			for (side_engine_ptr side2 : side_engines_) {
-				if (!side2->flg().is_random_faction()) {
+		if(params_.random_faction_mode != mp_game_settings::RANDOM_FACTION_MODE::DEFAULT) {
+			for(side_engine_ptr side2 : side_engines_) {
+				if(!side2->flg().is_random_faction()) {
 					switch(params_.random_faction_mode.v) {
 						case mp_game_settings::RANDOM_FACTION_MODE::NO_MIRROR:
 							avoid_faction_ids.push_back(side2->flg().current_faction()["id"].str());
 							break;
 						case mp_game_settings::RANDOM_FACTION_MODE::NO_ALLY_MIRROR:
-							if (side2->team() == side->team()) {// TODO: When the connect engines are fixed to allow multiple teams, this should be changed to "if side1 and side2 are allied, i.e. their list of teams has nonempty intersection"
+							if(side2->team() == side->team()) {// TODO: When the connect engines are fixed to allow multiple teams, this should be changed to "if side1 and side2 are allied, i.e. their list of teams has nonempty intersection"
 								avoid_faction_ids.push_back(side2->flg().current_faction()["id"].str());
 							}
 							break;
@@ -435,23 +418,22 @@ void connect_engine::start_game()
 
 	// Shuffle sides (check settings and if it is a re-loaded game).
 	// Must be done after resolve_random() or shuffle sides, or they won't work.
-	if (state_.mp_settings().shuffle_sides && !force_lock_settings_ && !(level_.child("snapshot") && level_.child("snapshot").child("side"))) {
+	if(state_.mp_settings().shuffle_sides && !force_lock_settings_ && !(level_.child("snapshot") && level_.child("snapshot").child("side"))) {
 
 		// Only playable sides should be shuffled.
 		std::vector<int> playable_sides;
-		for (side_engine_ptr side : side_engines_) {
-			if (side->allow_player() && side->allow_shuffle()) {
+		for(side_engine_ptr side : side_engines_) {
+			if(side->allow_player() && side->allow_shuffle()) {
 				playable_sides.push_back(side->index());
 			}
 		}
 
 		// Fisher-Yates shuffle.
-		for (int i = playable_sides.size(); i > 1; i--)
-		{
+		for(int i = playable_sides.size(); i > 1; i--) {
 			int j_side = playable_sides[rng.get_next_random() % i];
 			int i_side = playable_sides[i - 1];
 
-			if (i_side == j_side) continue; //nothing to swap
+			if(i_side == j_side) continue; //nothing to swap
 
 			// First we swap everything about a side with another
 			side_engine_ptr tmp_side = side_engines_[j_side];
@@ -490,8 +472,7 @@ void connect_engine::start_game()
 	send_to_server(config("start_game"));
 }
 
-void connect_engine::start_game_commandline(
-	const commandline_options& cmdline_opts)
+void connect_engine::start_game_commandline(const commandline_options& cmdline_opts)
 {
 	DBG_MP << "starting a new game in commandline mode" << std::endl;
 
@@ -500,15 +481,15 @@ void connect_engine::start_game_commandline(
 	rand_rng::mt_rng rng;
 
 	unsigned num = 0;
-	for (side_engine_ptr side : side_engines_) {
+	for(side_engine_ptr side : side_engines_) {
 		num++;
 
 		// Set the faction, if commandline option is given.
-		if (cmdline_opts.multiplayer_side) {
-			for (const mp_option& option : *cmdline_opts.multiplayer_side) {
+		if(cmdline_opts.multiplayer_side) {
+			for(const mp_option& option : *cmdline_opts.multiplayer_side) {
 
-				if (std::get<0>(option) == num) {
-					if (std::find_if(era_factions_.begin(), era_factions_.end(), [&option](const config* faction) { return (*faction)["id"] == std::get<1>(option); }) != era_factions_.end()) {
+				if(std::get<0>(option) == num) {
+					if(std::find_if(era_factions_.begin(), era_factions_.end(), [&option](const config* faction) { return (*faction)["id"] == std::get<1>(option); }) != era_factions_.end()) {
 						DBG_MP << "\tsetting side " << std::get<0>(option) << "\tfaction: " << std::get<1>(option) << std::endl;
 
 						side->set_faction_commandline(std::get<1>(option));
@@ -521,10 +502,10 @@ void connect_engine::start_game_commandline(
 		}
 
 		// Set the controller, if commandline option is given.
-		if (cmdline_opts.multiplayer_controller) {
-			for (const mp_option& option : *cmdline_opts.multiplayer_controller) {
+		if(cmdline_opts.multiplayer_controller) {
+			for(const mp_option& option : *cmdline_opts.multiplayer_controller) {
 
-				if (std::get<0>(option) == num) {
+				if(std::get<0>(option) == num) {
 					DBG_MP << "\tsetting side " << std::get<0>(option) <<
 						"\tfaction: " << std::get<1>(option) << std::endl;
 
@@ -536,10 +517,10 @@ void connect_engine::start_game_commandline(
 		// Set AI algorithm to RCA AI for all sides,
 		// then override if commandline option was given.
 		side->set_ai_algorithm("ai_default_rca");
-		if (cmdline_opts.multiplayer_algorithm) {
-			for (const mp_option& option : *cmdline_opts.multiplayer_algorithm) {
+		if(cmdline_opts.multiplayer_algorithm) {
+			for(const mp_option& option : *cmdline_opts.multiplayer_algorithm) {
 
-				if (std::get<0>(option) == num) {
+				if(std::get<0>(option) == num) {
 					DBG_MP << "\tsetting side " << std::get<0>(option) <<
 						"\tfaction: " << std::get<1>(option) << std::endl;
 
@@ -556,18 +537,17 @@ void connect_engine::start_game_commandline(
 	update_and_send_diff(true);
 
 	// Update sides with commandline parameters.
-	if (cmdline_opts.multiplayer_turns) {
+	if(cmdline_opts.multiplayer_turns) {
 		DBG_MP << "\tsetting turns: " << *cmdline_opts.multiplayer_turns <<
 			std::endl;
 		scenario()["turns"] = *cmdline_opts.multiplayer_turns;
 	}
 
-	for (config &side : scenario().child_range("side"))
-	{
-		if (cmdline_opts.multiplayer_ai_config) {
-			for (const mp_option& option : *cmdline_opts.multiplayer_ai_config) {
+	for(config &side : scenario().child_range("side")) {
+		if(cmdline_opts.multiplayer_ai_config) {
+			for(const mp_option& option : *cmdline_opts.multiplayer_ai_config) {
 
-				if (std::get<0>(option) == side["side"].to_unsigned()) {
+				if(std::get<0>(option) == side["side"].to_unsigned()) {
 					DBG_MP << "\tsetting side " << side["side"] <<
 						"\tai_config: " << std::get<1>(option) << std::endl;
 
@@ -580,21 +560,19 @@ void connect_engine::start_game_commandline(
 		// but that's how it is done in the MP lobby
 		// part of the code also.
 		// Should be replaced by settings/constants in both places
-		if (cmdline_opts.multiplayer_ignore_map_settings) {
+		if(cmdline_opts.multiplayer_ignore_map_settings) {
 			side["gold"] = 100;
 			side["income"] = 1;
 		}
 
-		typedef std::tuple<unsigned int, std::string, std::string>
-			mp_parameter;
+		typedef std::tuple<unsigned int, std::string, std::string> mp_parameter;
 
-		if (cmdline_opts.multiplayer_parm) {
-			for (const mp_parameter& parameter : *cmdline_opts.multiplayer_parm) {
+		if(cmdline_opts.multiplayer_parm) {
+			for(const mp_parameter& parameter : *cmdline_opts.multiplayer_parm) {
 
-				if (std::get<0>(parameter) == side["side"].to_unsigned()) {
+				if(std::get<0>(parameter) == side["side"].to_unsigned()) {
 					DBG_MP << "\tsetting side " << side["side"] << " " <<
-						std::get<1>(parameter) << ": " << std::get<2>(parameter) <<
-							std::endl;
+						std::get<1>(parameter) << ": " << std::get<2>(parameter) << std::endl;
 
 					side[std::get<1>(parameter)] = std::get<2>(parameter);
 				}
@@ -620,16 +598,16 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data)
 {
 	std::pair<bool, bool> result(std::make_pair(false, true));
 
-	if (data.child("leave_game")) {
+	if(data.child("leave_game")) {
 		result.first = true;
 		return result;
 	}
 
 	// A side has been dropped.
-	if (!data["side_drop"].empty()) {
+	if(!data["side_drop"].empty()) {
 		unsigned side_drop = data["side_drop"].to_int() - 1;
 
-		if (side_drop < side_engines_.size()) {
+		if(side_drop < side_engines_.size()) {
 			side_engine_ptr side_to_drop = side_engines_[side_drop];
 
 			// Remove user, whose side was dropped.
@@ -645,12 +623,12 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data)
 	}
 
 	// A player is connecting to the game.
-	if (!data["side"].empty()) {
+	if(!data["side"].empty()) {
 		unsigned side_taken = data["side"].to_int() - 1;
 
 		// Checks if the connecting user has a valid and unique name.
 		const std::string name = data["name"];
-		if (name.empty()) {
+		if(name.empty()) {
 			config response;
 			response["failed"] = true;
 			send_to_server(response);
@@ -660,10 +638,10 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data)
 			return result;
 		}
 
-		if (connected_users().find(name) != connected_users().end()) {
-			 // TODO: Seems like a needless limitation
-			 // to only allow one side per player.
-			if (find_user_side_index_by_id(name) != -1) {
+		if(connected_users().find(name) != connected_users().end()) {
+			// TODO: Seems like a needless limitation
+			// to only allow one side per player.
+			if(find_user_side_index_by_id(name) != -1) {
 				config response;
 				response["failed"] = true;
 				response["message"] = "The nickname '" + name +
@@ -681,20 +659,20 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data)
 		}
 
 		// Assigns this user to a side.
-		if (side_taken < side_engines_.size()) {
-			if (!side_engines_[side_taken]->available_for_user(name)) {
+		if(side_taken < side_engines_.size()) {
+			if(!side_engines_[side_taken]->available_for_user(name)) {
 				// This side is already taken.
 				// Try to reassing the player to a different position.
 				side_taken = 0;
-				for (side_engine_ptr s : side_engines_) {
-					if (s->available_for_user()) {
+				for(side_engine_ptr s : side_engines_) {
+					if(s->available_for_user()) {
 						break;
 					}
 
 					side_taken++;
 				}
 
-				if (side_taken >= side_engines_.size()) {
+				if(side_taken >= side_engines_.size()) {
 					config response;
 					response["failed"] = true;
 					send_to_server(response);
@@ -719,11 +697,8 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data)
 			update_and_send_diff();
 
 			// Wait for them to choose faction if allowed.
-			side_engines_[side_taken]->
-				set_waiting_to_choose_status(side_engines_[side_taken]->
-					allow_changes());
-			LOG_MP << "waiting to choose status = " <<
-				side_engines_[side_taken]->allow_changes() << std::endl;
+			side_engines_[side_taken]->set_waiting_to_choose_status(side_engines_[side_taken]->allow_changes());
+			LOG_MP << "waiting to choose status = " << side_engines_[side_taken]->allow_changes() << std::endl;
 			result.second = false;
 
 			LOG_NW << "sent player data\n";
@@ -737,23 +712,23 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data)
 	}
 
 
-	if (const config& change_faction = data.child("change_faction")) {
+	if(const config& change_faction = data.child("change_faction")) {
 		int side_taken = find_user_side_index_by_id(change_faction["name"]);
-		if (side_taken != -1 || !first_scenario_) {
+		if(side_taken != -1 || !first_scenario_) {
 			import_user(change_faction, false, side_taken);
 			update_and_send_diff();
 		}
 	}
 
-	if (const config& observer = data.child("observer")) {
+	if(const config& observer = data.child("observer")) {
 		import_user(observer, true);
 		update_and_send_diff();
 	}
 
-	if (const config& observer = data.child("observer_quit")) {
+	if(const config& observer = data.child("observer_quit")) {
 		const t_string& observer_name = observer["name"];
-		if (!observer_name.empty()) {
-			if ((connected_users().find(observer_name) != connected_users().end()) &&
+		if(!observer_name.empty()) {
+			if((connected_users().find(observer_name) != connected_users().end()) &&
 				(find_user_side_index_by_id(observer_name) != -1)) {
 
 				connected_users_rw().erase(observer_name);
@@ -769,15 +744,15 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data)
 int connect_engine::find_user_side_index_by_id(const std::string& id) const
 {
 	size_t i = 0;
-	for (side_engine_ptr side : side_engines_) {
-		if (side->player_id() == id) {
+	for(side_engine_ptr side : side_engines_) {
+		if(side->player_id() == id) {
 			break;
 		}
 
 		i++;
 	}
 
-	if (i >= side_engines_.size()) {
+	if(i >= side_engines_.size()) {
 		return -1;
 	}
 
@@ -787,7 +762,7 @@ int connect_engine::find_user_side_index_by_id(const std::string& id) const
 void connect_engine::send_level_data() const
 {
 	// Send initial information.
-	if (first_scenario_) {
+	if(first_scenario_) {
 		send_to_server(config_of
 			("create_game", config_of
 				("name", params_.name)
@@ -807,40 +782,40 @@ void connect_engine::save_reserved_sides_information()
 {
 	// Add information about reserved sides to the level config.
 	// N.B. This information is needed only for a host player.
-	std::map<std::string, std::string> side_users =
-		utils::map_split(level_.child_or_empty("multiplayer")["side_users"]);
-	for (side_engine_ptr side : side_engines_) {
+	std::map<std::string, std::string> side_users = utils::map_split(level_.child_or_empty("multiplayer")["side_users"]);
+	for(side_engine_ptr side : side_engines_) {
 		const std::string& save_id = side->save_id();
 		const std::string& player_id = side->player_id();
-		if (!save_id.empty() && !player_id.empty()) {
+		if(!save_id.empty() && !player_id.empty()) {
 			side_users[save_id] = player_id;
 		}
 	}
+
 	level_.child("multiplayer")["side_users"] = utils::join_map(side_users);
 }
 
 void connect_engine::load_previous_sides_users()
 {
-	std::map<std::string, std::string> side_users =
-		utils::map_split(level_.child("multiplayer")["side_users"]);
+	std::map<std::string, std::string> side_users = utils::map_split(level_.child("multiplayer")["side_users"]);
 	std::set<std::string> names;
-	for (side_engine_ptr side : side_engines_) {
+	for(side_engine_ptr side : side_engines_) {
 		const std::string& save_id = side->previous_save_id();
-		if (side_users.find(save_id) != side_users.end()) {
+		if(side_users.find(save_id) != side_users.end()) {
 			side->set_reserved_for(side_users[save_id]);
 
-			if (side->controller() != CNTR_COMPUTER) {
+			if(side->controller() != CNTR_COMPUTER) {
 				side->set_controller(CNTR_RESERVED);
 				names.insert(side_users[save_id]);
 			}
-			side->update_controller_options();
 
+			side->update_controller_options();
 		}
 	}
+
 	//Do this in an extra loop to make sure we import each user only once.
-	for (const std::string& name : names)
+	for(const std::string& name : names)
 	{
-		if (connected_users().find(name) != connected_users().end() || !campaign_info_) {
+		if(connected_users().find(name) != connected_users().end() || !campaign_info_) {
 			import_user(name, false);
 		}
 	}
@@ -848,73 +823,70 @@ void connect_engine::load_previous_sides_users()
 
 void connect_engine::update_side_controller_options()
 {
-	for (side_engine_ptr side : side_engines_) {
+	for(side_engine_ptr side : side_engines_) {
 		side->update_controller_options();
 	}
 }
-
 
 const std::set<std::string>& connect_engine::connected_users() const
 {
 	if(campaign_info_) {
 		return campaign_info_->connected_players;
 	}
-	else {
-		static std::set<std::string> empty;
-		return empty;
-	}
+
+	static std::set<std::string> empty;
+	return empty;
 }
+
 std::set<std::string>& connect_engine::connected_users_rw()
 {
 	assert(campaign_info_);
 	return campaign_info_->connected_players;
 }
 
-side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
-	const int index) :
-	cfg_(cfg),
-	parent_(parent_engine),
-	controller_(CNTR_NETWORK),
-	current_controller_index_(0),
-	controller_options_(),
-	allow_player_(cfg["allow_player"].to_bool(true)),
-	controller_lock_(cfg["controller_lock"].to_bool(
-		parent_.force_lock_settings_) && parent_.params_.use_map_settings),
-	index_(index),
-	team_(0),
-	color_(std::min(index, gamemap::MAX_PLAYERS - 1)),
-	gold_(cfg["gold"].to_int(100)),
-	income_(cfg["income"]),
-	reserved_for_(cfg["current_player"]),
-	player_id_(),
-	ai_algorithm_(),
-	chose_random_(cfg["chose_random"].to_bool(false)),
-	disallow_shuffle_(cfg["disallow_shuffle"].to_bool(false)),
-	flg_(parent_.era_factions_, cfg_, parent_.force_lock_settings_,
-		parent_.params_.use_map_settings, parent_.params_.saved_game),
-	allow_changes_(!parent_.params_.saved_game && !(flg_.choosable_factions().size() == 1 && flg_.choosable_leaders().size() == 1 && flg_.choosable_genders().size() == 1)),
-	waiting_to_choose_faction_(allow_changes_),
-	custom_color_(),
-	color_id_(),
-	color_options_()
+side_engine::side_engine(const config& cfg, connect_engine& parent_engine, const int index)
+	: cfg_(cfg)
+	, parent_(parent_engine)
+	, controller_(CNTR_NETWORK)
+	, current_controller_index_(0)
+	, controller_options_()
+	, allow_player_(cfg["allow_player"].to_bool(true))
+	, controller_lock_(cfg["controller_lock"].to_bool(parent_.force_lock_settings_) && parent_.params_.use_map_settings)
+	, index_(index)
+	, team_(0)
+	, color_(std::min(index, gamemap::MAX_PLAYERS - 1))
+	, gold_(cfg["gold"].to_int(100))
+	, income_(cfg["income"])
+	, reserved_for_(cfg["current_player"])
+	, player_id_()
+	, ai_algorithm_()
+	, chose_random_(cfg["chose_random"].to_bool(false))
+	, disallow_shuffle_(cfg["disallow_shuffle"].to_bool(false))
+	, flg_(parent_.era_factions_, cfg_, parent_.force_lock_settings_, parent_.params_.use_map_settings, parent_.params_.saved_game)
+	, allow_changes_(!parent_.params_.saved_game && !(flg_.choosable_factions().size() == 1 && flg_.choosable_leaders().size() == 1 && flg_.choosable_genders().size() == 1))
+	, waiting_to_choose_faction_(allow_changes_)
+	, custom_color_()
+	, color_id_()
+	, color_options_()
 {
 	// Save default attributes that could be overwirtten by the faction, so that correct faction lists would be
 	// initialized by flg_manager when the new side config is sent over network.
 	cfg_.add_child("default_faction", config_of
-		("type", cfg_["type"])
-		("gender", cfg_["gender"])
+		("type",    cfg_["type"])
+		("gender",  cfg_["gender"])
 		("faction", cfg_["faction"])
 		("recruit", cfg_["recruit"])
 	);
 
-	if (cfg_["side"].to_int(index_ + 1) != index_ + 1) {
+	if(cfg_["side"].to_int(index_ + 1) != index_ + 1) {
 		ERR_CF << "found invalid side=" << cfg_["side"].to_int(index_ + 1) << " in definition of side number " << index_ + 1 << std::endl;
 	}
+
 	cfg_["side"] = index_ + 1;
 
 	// Check if this side should give its control to some other side.
 	const size_t side_cntr_index = cfg_["controller"].to_int(-1) - 1;
-	if (side_cntr_index < parent_.side_engines().size()) {
+	if(side_cntr_index < parent_.side_engines().size()) {
 		// Remove this attribute to avoid locking side
 		// to non-existing controller type.
 		cfg_.remove_attribute("controller");
@@ -931,24 +903,24 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	update_controller_options();
 
 	// Tweak the controllers.
-	if (parent_.state_.classification().campaign_type == game_classification::CAMPAIGN_TYPE::SCENARIO && cfg_["controller"].blank())
-	{
+	if(parent_.state_.classification().campaign_type == game_classification::CAMPAIGN_TYPE::SCENARIO && cfg_["controller"].blank()) {
 		cfg_["controller"] = "ai";
 	}
+
 	if(cfg_["controller"] != "human" && cfg_["controller"] != "ai" && cfg_["controller"] != "null") {
 		//an invalid contoller type was specified. Remove it to prevent asertion failures later.
 		cfg_.remove_attribute("controller");
 	}
 
-	if (cfg_["controller"] == "null") {
+	if(cfg_["controller"] == "null") {
 		set_controller(CNTR_EMPTY);
-	} else if (cfg_["controller"] == "ai") {
+	} else if(cfg_["controller"] == "ai") {
 		set_controller(CNTR_COMPUTER);
-	} else if (parent_.default_controller_ == CNTR_NETWORK && !reserved_for_.empty()) {
+	} else if(parent_.default_controller_ == CNTR_NETWORK && !reserved_for_.empty()) {
 		// Reserve a side for "current_player", unless the side
 		// is played by an AI.
 		set_controller(CNTR_RESERVED);
-	} else if (allow_player_) {
+	} else if(allow_player_) {
 		set_controller(parent_.default_controller_);
 	} else {
 		// AI is the default.
@@ -957,14 +929,14 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 
 	// Initialize team and color.
 	unsigned team_name_index = 0;
-	for (const std::string& name : parent_.team_names_) {
-		if (name == cfg["team_name"]) {
+	for(const std::string& name : parent_.team_names_) {
+		if(name == cfg["team_name"]) {
 			break;
 		}
 
 		team_name_index++;
 	}
-	if (team_name_index >= parent_.team_names_.size()) {
+	if(team_name_index >= parent_.team_names_.size()) {
 		assert(!parent_.team_names_.empty());
 		team_ = 0;
 		WRN_MP << "In side_engine constructor: Could not find my team_name " << cfg["team_name"] << " among the mp connect engine's list of team names. I am being assigned to the first team. This may indicate a bug!" << std::endl;
@@ -997,23 +969,18 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	}
 
 	// Initialize ai algorithm.
-	if (const config& ai = cfg.child("ai")) {
+	if(const config& ai = cfg.child("ai")) {
 		ai_algorithm_ = ai["ai_algorithm"].str();
 	}
 }
 
-side_engine::~side_engine()
-{
-}
-
 std::string side_engine::user_description() const
 {
-	switch(controller_)
-	{
+	switch(controller_) {
 	case CNTR_LOCAL:
 		return N_("Anonymous player");
 	case CNTR_COMPUTER:
-		if (allow_player_) {
+		if(allow_player_) {
 			return ai::configuration::get_ai_config_for(ai_algorithm_)["description"];
 		} else {
 			return N_("Computer Player");
@@ -1029,7 +996,7 @@ config side_engine::new_config() const
 
 	// If the user is allowed to change type, faction, leader etc,
 	// then import their new values in the config.
-	if (!parent_.params_.saved_game) {
+	if(!parent_.params_.saved_game) {
 		// Merge the faction data to res.
 		config faction = flg_.current_faction();
 		res["faction_name"] = faction["name"];
@@ -1052,7 +1019,7 @@ config side_engine::new_config() const
 				{std::make_pair("playername", _(desc.c_str())),
 				std::make_pair("side", res["side"].str())}
 		);
-	} else if (!player_id_.empty()) {
+	} else if(!player_id_.empty()) {
 		desc = player_id_;
 	}
 	if(res["name"].str().empty() && !desc.empty()) {
@@ -1095,20 +1062,20 @@ config side_engine::new_config() const
 	res["allow_changes"] = allow_changes_;
 	res["chose_random"] = chose_random_;
 
-	if (!parent_.params_.saved_game) {
+	if(!parent_.params_.saved_game) {
 		// Find a config where a default leader is and set a new type
 		// and gender values for it.
 		config* leader = &res;
-		if (flg_.default_leader_cfg() != nullptr) {
-			for (config& side_unit : res.child_range("unit")) {
-				if (*flg_.default_leader_cfg() == side_unit) {
+		if(flg_.default_leader_cfg() != nullptr) {
+			for(config& side_unit : res.child_range("unit")) {
+				if(*flg_.default_leader_cfg() == side_unit) {
 					leader = &side_unit;
-					if (flg_.current_leader() != (*leader)["type"]) {
+					if(flg_.current_leader() != (*leader)["type"]) {
 						// If a new leader type was selected from carryover,
 						// make sure that we reset the leader.
 						std::string leader_id = (*leader)["id"];
 						leader->clear();
-						if (!leader_id.empty()) {
+						if(!leader_id.empty()) {
 							(*leader)["id"] = leader_id;
 						}
 					}
@@ -1156,23 +1123,24 @@ config side_engine::new_config() const
 		// out for an honest design and a thoughtful implementation, you're correct! But
 		// I'm tired, and I'm cranky from wasting a over day on this, and so I'm excersizing
 		// my perogative as a grey-beard and leaving this for someone else to clean up.
-		if ((res["user_team_name"] == "") || (!parent_.params_.use_map_settings)) {
+		if(res["user_team_name"].empty() || !parent_.params_.use_map_settings) {
 			res["user_team_name"] = parent_.user_team_names_[team_];
 		}
+
 		res["allow_player"] = allow_player_;
 		res["color"] = color_id_;
 		res["gold"] = gold_;
 		res["income"] = income_;
 	}
 
-	if (parent_.params_.use_map_settings && !parent_.params_.saved_game) {
+	if(parent_.params_.use_map_settings && !parent_.params_.saved_game) {
 		config trimmed = cfg_;
 
-		for (const std::string& attribute : attributes_to_trim) {
+		for(const std::string& attribute : attributes_to_trim) {
 			trimmed.remove_attribute(attribute);
 		}
 
-		if (controller_ != CNTR_COMPUTER) {
+		if(controller_ != CNTR_COMPUTER) {
 			// Only override names for computer controlled players.
 			trimmed.remove_attribute("user_description");
 		}
@@ -1185,25 +1153,25 @@ config side_engine::new_config() const
 
 bool side_engine::ready_for_start() const
 {
-	if (!allow_player_) {
+	if(!allow_player_) {
 		// Sides without players are always ready.
 		return true;
 	}
 
-	if ((controller_ == CNTR_COMPUTER) ||
+	if((controller_ == CNTR_COMPUTER) ||
 		(controller_ == CNTR_EMPTY) ||
 		(controller_ == CNTR_LOCAL)) {
 
 		return true;
 	}
 
-	if (available_for_user()) {
+	if(available_for_user()) {
 		// If controller_ == CNTR_NETWORK and player_id_.empty().
 		return false;
 	}
 
-	if (controller_ == CNTR_NETWORK) {
-		if (player_id_ == preferences::login() || !waiting_to_choose_faction_ || !allow_changes_) {
+	if(controller_ == CNTR_NETWORK) {
+		if(player_id_ == preferences::login() || !waiting_to_choose_faction_ || !allow_changes_) {
 			// The host is ready. A network player, who got a chance
 			// to choose faction if allowed, is also ready.
 			return true;
@@ -1215,15 +1183,17 @@ bool side_engine::ready_for_start() const
 
 bool side_engine::available_for_user(const std::string& name) const
 {
-	if (controller_ == CNTR_NETWORK && player_id_.empty()) {
+	if(controller_ == CNTR_NETWORK && player_id_.empty()) {
 		// Side is free and waiting for user.
 		return true;
 	}
-	if (controller_ == CNTR_RESERVED && name.empty()) {
+
+	if(controller_ == CNTR_RESERVED && name.empty()) {
 		// Side is still available to someone.
 		return true;
 	}
-	if (controller_ == CNTR_RESERVED && reserved_for_ == name) {
+
+	if(controller_ == CNTR_RESERVED && reserved_for_ == name) {
 		// Side is available only for the player with specific name.
 		return true;
 	}
@@ -1239,14 +1209,14 @@ bool side_engine::swap_sides_on_drop_target(const unsigned drop_target) {
 	const ng::controller target_controller = target.controller_;
 	const std::string target_ai = target.ai_algorithm_;
 
-	if ((controller_lock_ || target.controller_lock_) &&
+	if((controller_lock_ || target.controller_lock_) &&
 		(controller_options_ != target.controller_options_)) {
 
 		return false;
 	}
 
 	target.ai_algorithm_ = ai_algorithm_;
-	if (player_id_.empty()) {
+	if(player_id_.empty()) {
 		target.player_id_.clear();
 		target.set_controller(controller_);
 	} else {
@@ -1254,7 +1224,7 @@ bool side_engine::swap_sides_on_drop_target(const unsigned drop_target) {
 	}
 
 	ai_algorithm_ = target_ai;
-	if (target_id.empty()) {
+	if(target_id.empty()) {
 		player_id_.clear();
 		set_controller(target_controller);
 	} else {
@@ -1266,7 +1236,7 @@ bool side_engine::swap_sides_on_drop_target(const unsigned drop_target) {
 
 void side_engine::resolve_random(rand_rng::mt_rng & rng, const std::vector<std::string> & avoid_faction_ids)
 {
-	if (parent_.params_.saved_game) {
+	if(parent_.params_.saved_game) {
 		return;
 	}
 
@@ -1285,7 +1255,7 @@ void side_engine::reset()
 	set_waiting_to_choose_status(false);
 	set_controller(parent_.default_controller_);
 
-	if (!parent_.params_.saved_game) {
+	if(!parent_.params_.saved_game) {
 		flg_.set_current_faction(0);
 	}
 }
@@ -1303,7 +1273,7 @@ void side_engine::place_user(const config& data, bool contains_selection)
 	player_id_ = data["name"].str();
 	set_controller(parent_.default_controller_);
 
-	if (data["change_faction"].to_bool() && contains_selection) {
+	if(data["change_faction"].to_bool() && contains_selection) {
 		// Network user's data carry information about chosen
 		// faction, leader and genders.
 		flg_.set_current_faction(data["faction"].str());
@@ -1319,20 +1289,21 @@ void side_engine::update_controller_options()
 	controller_options_.clear();
 
 	// Default options.
-	if (parent_.campaign_info_) {
+	if(parent_.campaign_info_) {
 		add_controller_option(CNTR_NETWORK, _("Network Player"), "human");
 	}
+
 	add_controller_option(CNTR_LOCAL, _("Local Player"), "human");
 	add_controller_option(CNTR_COMPUTER, _("Computer Player"), "ai");
 	add_controller_option(CNTR_EMPTY, _("Empty"), "null");
 
-	if (!reserved_for_.empty()) {
+	if(!reserved_for_.empty()) {
 		add_controller_option(CNTR_RESERVED, _("Reserved"), "human");
 	}
 
 	// Connected users.
 	add_controller_option(CNTR_LAST, _("--give--"), "human");
-	for (const std::string& user : parent_.connected_users()) {
+	for(const std::string& user : parent_.connected_users()) {
 		add_controller_option(parent_.default_controller_, user, "human");
 	}
 
@@ -1342,11 +1313,11 @@ void side_engine::update_controller_options()
 void side_engine::update_current_controller_index()
 {
 	int i = 0;
-	for (const controller_option& option : controller_options_) {
-		if (option.first == controller_) {
+	for(const controller_option& option : controller_options_) {
+		if(option.first == controller_) {
 			current_controller_index_ = i;
 
-			if (player_id_.empty() || player_id_ == option.second) {
+			if(player_id_.empty() || player_id_ == option.second) {
 				// Stop searching if no user is assigned to a side
 				// or the selected user is found.
 				break;
@@ -1362,13 +1333,13 @@ void side_engine::update_current_controller_index()
 bool side_engine::controller_changed(const int selection)
 {
 	const ng::controller selected_cntr = controller_options_[selection].first;
-	if (selected_cntr == CNTR_LAST) {
+	if(selected_cntr == CNTR_LAST) {
 		return false;
 	}
 
 	// Check if user was selected. If so assign a side to him/her.
 	// If not, make sure that no user is assigned to this side.
-	if (selected_cntr == parent_.default_controller_ && selection != 0) {
+	if(selected_cntr == parent_.default_controller_ && selection != 0) {
 		player_id_ = controller_options_[selection].second;
 		set_waiting_to_choose_status(false);
 	} else {
@@ -1396,10 +1367,11 @@ void side_engine::set_controller_commandline(const std::string& controller_name)
 {
 	set_controller(CNTR_LOCAL);
 
-	if (controller_name == "ai") {
+	if(controller_name == "ai") {
 		set_controller(CNTR_COMPUTER);
 	}
-	if (controller_name == "null") {
+
+	if(controller_name == "null") {
 		set_controller(CNTR_EMPTY);
 	}
 
@@ -1409,41 +1381,13 @@ void side_engine::set_controller_commandline(const std::string& controller_name)
 void side_engine::add_controller_option(ng::controller controller,
 		const std::string& name, const std::string& controller_value)
 {
-	if (controller_lock_ && !cfg_["controller"].empty() &&
+	if(controller_lock_ && !cfg_["controller"].empty() &&
 		cfg_["controller"] != controller_value) {
 
 		return;
 	}
 
 	controller_options_.push_back(std::make_pair(controller, name));
-}
-
-std::vector<std::string> side_engine::get_colors() const
-{
-	std::vector<std::string> res;
-	for (int i = 0; i < num_colors(); ++i) {
-		res.push_back(mp::get_color_string(get_color(i)));
-	}
-	return res;
-}
-
-std::string side_engine::get_color(int index) const
-{
-	if(index == -1) {
-		index = color();
-	}
-	if(!custom_color_.empty()) {
-		if(index == 0) {
-			return custom_color_;
-		}
-		index -= 1;
-	}
-	return std::to_string(index + 1);
-}
-
-int side_engine::num_colors() const
-{
-	return custom_color_.empty() ? gamemap::MAX_PLAYERS : gamemap::MAX_PLAYERS + 1;
 }
 
 } // end namespace ng

@@ -14,13 +14,13 @@
 #include "game_config_manager.hpp"
 
 #include "about.hpp"
-#include "addon/manager.hpp"
+#include "addon/manager_old.hpp"
 #include "ai/configuration.hpp"
 #include "cursor.hpp"
 #include "game_config.hpp"
 #include "gettext.hpp"
 #include "game_classification.hpp"
-#include "gui/dialogs/loadscreen.hpp"
+#include "gui/dialogs/loading_screen.hpp"
 #include "gui/dialogs/wml_error.hpp"
 #include "hotkey/hotkey_item.hpp"
 #include "hotkey/hotkey_command.hpp"
@@ -132,7 +132,7 @@ void game_config_manager::load_game_config_with_loadscreen(FORCE_RELOAD_CONFIG f
 		}
 	}
 
-	gui2::tloadscreen::display(video_, [this, force_reload, classification]() {
+	gui2::dialogs::loading_screen::display(video_, [this, force_reload, classification]() {
 		load_game_config(force_reload, classification);
 	});
 }
@@ -154,9 +154,9 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 		// Load the selected core.
 		// Handle terrains so that they are last loaded from the core.
 		// Load every compatible addon.
-		gui2::tloadscreen::progress("verify cache");
+		gui2::dialogs::loading_screen::progress("verify cache");
 		filesystem::data_tree_checksum();
-		gui2::tloadscreen::progress("create cache");
+		gui2::dialogs::loading_screen::progress("create cache");
 
 		// Start transaction so macros are shared.
 		game_config::config_cache_transaction main_transaction;
@@ -190,7 +190,7 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 
 			const std::string& id = core["id"];
 			if (id.empty()) {
-				gui2::twml_error::display(
+				gui2::dialogs::wml_error::display(
 						_("Error validating data core."),
 						_("Found a core without id attribute.")
 						+ '\n' +  _("Skipping the core."),
@@ -198,7 +198,7 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 				continue;
 			}
 			if (*&valid_cores.find_child("core", "id", id)) {
-				gui2::twml_error::display(
+				gui2::dialogs::wml_error::display(
 						_("Error validating data core."),
 						_("Core ID: ") + id
 						+ '\n' + _("The ID is already in use.")
@@ -209,7 +209,7 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 
 			const std::string& path = core["path"];
 			if (!filesystem::file_exists(filesystem::get_wml_location(path))) {
-				gui2::twml_error::display(
+				gui2::dialogs::wml_error::display(
 						_("Error validating data core."),
 						_("Core ID: ") + id
 						+ '\n' + _("Core Path: ") + path
@@ -231,7 +231,7 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 		}
 
 		if (!current_core_valid) {
-			gui2::twml_error::display(
+			gui2::dialogs::wml_error::display(
 					_("Error loading core data."),
 					_("Core ID: ") + preferences::core_id()
 					+ '\n' + _("Error loading the core with named id.")
@@ -242,7 +242,7 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 
 		// check if we have a valid default core which should always be the case.
 		if (wml_tree_root.empty()) {
-			gui2::twml_error::display(
+			gui2::dialogs::wml_error::display(
 					_("Error loading core data."),
 					_("Can't locate the default core.")
 					+ '\n' + _("The game will now exit."),
@@ -303,19 +303,19 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 		// Try reloading without add-ons
 		if (!game_config::no_addons) {
 			game_config::no_addons = true;
-			gui2::twml_error::display(
+			gui2::dialogs::wml_error::display(
 					_("Error loading custom game configuration files. The game will try without loading add-ons."),
 					e.message, video_);
 			load_game_config(force_reload, classification);
 		} else if (preferences::core_id() != "default") {
-			gui2::twml_error::display(
+			gui2::dialogs::wml_error::display(
 					_("Error loading custom game configuration files. The game will fallback to the default core files."),
 					e.message, video_);
 			preferences::set_core_id("default");
 			game_config::no_addons = false;
 			load_game_config(force_reload, classification);
 		} else {
-			gui2::twml_error::display(
+			gui2::dialogs::wml_error::display(
 					_("Error loading default core game configuration files. The game will now exit."),
 					e.message, video_);
 			throw;
@@ -452,7 +452,7 @@ void game_config_manager::load_addons_cfg()
 
 		const std::string& report = utils::join(error_log, "\n\n");
 
-		gui2::twml_error::display(msg1, msg2, error_addons, report,
+		gui2::dialogs::wml_error::display(msg1, msg2, error_addons, report,
 								  video_);
 	}
 }
@@ -476,7 +476,7 @@ void game_config_manager::set_color_info()
 void game_config_manager::set_unit_data()
 {
 	game_config_.merge_children("units");
-	gui2::tloadscreen::progress("load unit types");
+	gui2::dialogs::loading_screen::progress("load unit types");
 	if(config &units = game_config_.child("units")) {
 		unit_types.set_config(units);
 	}

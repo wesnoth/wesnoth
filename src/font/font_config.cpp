@@ -12,10 +12,10 @@
    See the COPYING file for more details.
 */
 
-#include "font_config.hpp"
-#include "font_description.hpp"
+#include "font/font_config.hpp"
+#include "font/font_description.hpp"
 #include "font/error.hpp"
-#include "sdl_ttf.hpp"
+#include "font/sdl_ttf.hpp"
 
 #include "config.hpp"
 #include "log.hpp"

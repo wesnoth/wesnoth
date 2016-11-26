@@ -29,20 +29,20 @@ syncmp_handler::~syncmp_handler()
 std::vector<syncmp_handler*>& syncmp_registry::handlers()
 {
 	//using pointer in order to prevent destruction at programm end. Although in this simple case it shouldn't matter.
-	static t_handlers* handlers_ = new t_handlers();
+	static handler_list* handlers_ = new handler_list();
 	return *handlers_;
 }
 
 void syncmp_registry::remove_handler(syncmp_handler* handler)
 {
-	t_handlers::iterator elem = std::find(handlers().begin(), handlers().end(), handler);
+	handler_list::iterator elem = std::find(handlers().begin(), handlers().end(), handler);
 	assert(elem != handlers().end());
 	handlers().erase(elem);
 }
 
 void syncmp_registry::add_handler(syncmp_handler* handler)
 {
-	t_handlers::iterator elem = std::find(handlers().begin(), handlers().end(), handler);
+	handler_list::iterator elem = std::find(handlers().begin(), handlers().end(), handler);
 	assert(elem == handlers().end());
 	handlers().push_back(handler);
 }

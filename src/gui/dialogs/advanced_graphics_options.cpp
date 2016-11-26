@@ -35,12 +35,14 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
 REGISTER_DIALOG(advanced_graphics_options)
 
-const std::vector<std::string> tadvanced_graphics_options::scale_cases = {"zoom", "hex"};
+const std::vector<std::string> advanced_graphics_options::scale_cases = {"zoom", "hex"};
 
-tadvanced_graphics_options::SCALING_ALGORITHM tadvanced_graphics_options::get_scale_pref(const std::string& pref_id)
+advanced_graphics_options::SCALING_ALGORITHM advanced_graphics_options::get_scale_pref(const std::string& pref_id)
 {
 	SCALING_ALGORITHM algo = SCALING_ALGORITHM::LINEAR;
 	try {
@@ -52,19 +54,19 @@ tadvanced_graphics_options::SCALING_ALGORITHM tadvanced_graphics_options::get_sc
 	return algo;
 }
 	
-void tadvanced_graphics_options::setup_scale_case(const std::string & case_id, twindow & window)
+void advanced_graphics_options::setup_scale_case(const std::string & case_id, window & window)
 {
 	std::string pref_id = "scale_" + case_id;
-	tgroup<SCALING_ALGORITHM>& group = groups_[case_id];
+	group<SCALING_ALGORITHM>& group = groups_[case_id];
 	for (size_t x = 0; x < SCALING_ALGORITHM::count; ++x) {
 		SCALING_ALGORITHM scale = SCALING_ALGORITHM::from_int(x);
-		ttoggle_button* button = &find_widget<ttoggle_button>(&window, pref_id + "_" + scale.to_string(), false);
+		toggle_button* button = &find_widget<toggle_button>(&window, pref_id + "_" + scale.to_string(), false);
 		group.add_member(button, scale);
 	}
 	group.set_member_states(get_scale_pref(pref_id));
 }
 
-void tadvanced_graphics_options::update_scale_case(const std::string & case_id)
+void advanced_graphics_options::update_scale_case(const std::string & case_id)
 {
 	std::string pref_id = "scale_" + case_id;
 	SCALING_ALGORITHM new_val = groups_[case_id].get_active_member_value();
@@ -74,26 +76,26 @@ void tadvanced_graphics_options::update_scale_case(const std::string & case_id)
 	preferences::set(pref_id, new_val.to_string());
 }
 
-tadvanced_graphics_options::tadvanced_graphics_options()
+advanced_graphics_options::advanced_graphics_options()
 {
 }
 
-void tadvanced_graphics_options::pre_show(twindow& window)
+void advanced_graphics_options::pre_show(window& window)
 {
 	for(const std::string & i : scale_cases) {
 		setup_scale_case(i, window);
 	}
 
 	/*
-	tbutton * defaults;
-	defaults = &find_widget<tbutton>(&window,"revert_to_defaults", false);
+	button * defaults;
+	defaults = &find_widget<button>(&window,"revert_to_defaults", false);
 	connect_signal_mouse_left_click(*defaults, std::bind(&revert_to_default_pref_values, std::ref(window)));
 	*/
 }
 
-void tadvanced_graphics_options::post_show(twindow& /*window*/)
+void advanced_graphics_options::post_show(window& /*window*/)
 {
-	if(get_retval() == twindow::OK) {
+	if(get_retval() == window::OK) {
 		for(const std::string & i : scale_cases) {
 			update_scale_case(i);
 		}
@@ -101,4 +103,5 @@ void tadvanced_graphics_options::post_show(twindow& /*window*/)
 	}
 }
 
-} // end namespace gui2
+} // namespace dialogs
+} // namespace gui2

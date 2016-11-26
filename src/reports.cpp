@@ -516,17 +516,17 @@ static config unit_defense(reports::context & rc, const unit* u, const map_locat
 		return config();
 	}
 
-	const t_translation::t_terrain &terrain = map[displayed_unit_hex];
+	const t_translation::terrain_code &terrain = map[displayed_unit_hex];
 	int def = 100 - u->defense_modifier(terrain);
 	SDL_Color color = int_to_color(game_config::red_to_green(def));
 	str << span_color(color) << def << '%' << naps;
 	tooltip << _("Terrain: ") << "<b>" << map.get_terrain_info(terrain).description() << "</b>\n";
 
-	const t_translation::t_list &underlyings = map.underlying_def_terrain(terrain);
+	const t_translation::ter_list &underlyings = map.underlying_def_terrain(terrain);
 	if (underlyings.size() != 1 || underlyings.front() != terrain)
 	{
 		bool revert = false;
-		for (const t_translation::t_terrain &t : underlyings)
+		for (const t_translation::terrain_code &t : underlyings)
 		{
 			if (t == t_translation::MINUS) {
 				revert = true;
@@ -590,13 +590,13 @@ static config unit_moves(reports::context & rc, const unit* u)
 			movement_frac = 1.0;
 	}
 
-	std::set<t_translation::t_terrain>::const_iterator terrain_it =
+	std::set<t_translation::terrain_code>::const_iterator terrain_it =
 				preferences::encountered_terrains().begin();
 
 	tooltip << _("Movement Costs:") << "\n";
 	for (; terrain_it != preferences::encountered_terrains().end();
 			++terrain_it) {
-		const t_translation::t_terrain terrain = *terrain_it;
+		const t_translation::terrain_code terrain = *terrain_it;
 		if (terrain == t_translation::FOGGED || terrain == t_translation::VOID_TERRAIN || terrain == t_translation::OFF_MAP_USER)
 			continue;
 
@@ -1127,7 +1127,7 @@ static config time_of_day_at(reports::context & rc, const map_location& mouseove
 		<< _("Chaotic units: ") << "<span foreground=\"" << chaotic_color << "\">"
 		<< utils::signed_percent(-b) << "</span>\n"
 		<< _("Liminal units: ") << "<span foreground=\"" << liminal_color << "\">"
-		<< utils::signed_percent(-(abs(b))) << "</span>\n";
+		<< utils::signed_percent(-(std::abs(b))) << "</span>\n";
 
 	std::string tod_image = tod.image;
 	if (tod.bonus_modified > 0) tod_image += "~BRIGHTEN()";
@@ -1176,7 +1176,7 @@ static config unit_box_at(reports::context & rc, const map_location& mouseover_h
 		<< _("Chaotic units: ") << "<span foreground=\"" << chaotic_color << "\">"
 		<< utils::signed_percent(-bonus) << "</span>\n"
 		<< _("Liminal units: ") << "<span foreground=\"" << liminal_color << "\">"
-		<< utils::signed_percent(-(abs(bonus))) << "</span>\n";
+		<< utils::signed_percent(-(std::abs(bonus))) << "</span>\n";
 
 	std::string local_tod_image  = "themes/classic/" + local_tod.image;
 	std::string global_tod_image = "themes/classic/" + global_tod.image;
@@ -1184,7 +1184,7 @@ static config unit_box_at(reports::context & rc, const map_location& mouseover_h
 	else if (local_tod.bonus_modified < 0) local_tod_image += "~DARKEN()";
 
 	const gamemap &map = rc.map();
-	t_translation::t_terrain terrain = map.get_terrain(mouseover_hex);
+	t_translation::terrain_code terrain = map.get_terrain(mouseover_hex);
 
 	//if (terrain == t_translation::OFF_MAP_USER)
 	//	return config();
@@ -1193,11 +1193,11 @@ static config unit_box_at(reports::context & rc, const map_location& mouseover_h
 	//	add_image(cfg, "icons/terrain/terrain_type_keep.png", "");
 	//}
 
-	const t_translation::t_list& underlying_terrains = map.underlying_union_terrain(terrain);
+	const t_translation::ter_list& underlying_terrains = map.underlying_union_terrain(terrain);
 
 	std::string bg_terrain_image;
 
-	for (const t_translation::t_terrain& underlying_terrain : underlying_terrains) {
+	for (const t_translation::terrain_code& underlying_terrain : underlying_terrains) {
 		const std::string& terrain_id = map.get_terrain_info(underlying_terrain).id();
 		bg_terrain_image = "~BLIT(unit_env/terrain/terrain-" + terrain_id + ".png)" + bg_terrain_image;
 	}
@@ -1347,7 +1347,7 @@ REPORT_GENERATOR(terrain_info, rc)
 	if (!map.on_board(mouseover_hex))
 		return config();
 
-	t_translation::t_terrain terrain = map.get_terrain(mouseover_hex);
+	t_translation::terrain_code terrain = map.get_terrain(mouseover_hex);
 	if (terrain == t_translation::OFF_MAP_USER)
 		return config();
 
@@ -1367,8 +1367,8 @@ REPORT_GENERATOR(terrain_info, rc)
 //		blit_tced_icon(cfg, "keep", high_res);
 //	}
 
-	const t_translation::t_list& underlying_terrains = map.underlying_union_terrain(terrain);
-	for (const t_translation::t_terrain& underlying_terrain : underlying_terrains) {
+	const t_translation::ter_list& underlying_terrains = map.underlying_union_terrain(terrain);
+	for (const t_translation::terrain_code& underlying_terrain : underlying_terrains) {
 
 		if (underlying_terrain == t_translation::OFF_MAP_USER)
 			continue;
@@ -1391,7 +1391,7 @@ REPORT_GENERATOR(terrain, rc)
 	if (!map.on_board(mouseover_hex) || viewing_team.shrouded(mouseover_hex))
 		return config();
 
-	t_translation::t_terrain terrain = map.get_terrain(mouseover_hex);
+	t_translation::terrain_code terrain = map.get_terrain(mouseover_hex);
 	if (terrain == t_translation::OFF_MAP_USER)
 		return config();
 
@@ -1446,7 +1446,7 @@ REPORT_GENERATOR(position, rc)
 		}
 	}
 
-	t_translation::t_terrain terrain = map[mouseover_hex];
+	t_translation::terrain_code terrain = map[mouseover_hex];
 	if (terrain == t_translation::OFF_MAP_USER)
 		return config();
 

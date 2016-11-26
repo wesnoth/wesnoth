@@ -40,10 +40,12 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
 REGISTER_DIALOG(unit_recruit)
 
-tunit_recruit::tunit_recruit(std::vector<const unit_type*>& recruit_list, team& team)
+unit_recruit::unit_recruit(std::vector<const unit_type*>& recruit_list, team& team)
 	: recruit_list_(recruit_list)
 	, team_(team)
 	, selected_index_(0)
@@ -59,25 +61,25 @@ static std::string can_afford_unit(const std::string& text, const bool can_affor
 	return can_afford ? text : "<span color='#ff0000'>" + text + "</span>";
 }
 
-void tunit_recruit::pre_show(twindow& window)
+void unit_recruit::pre_show(window& window)
 {
-	tlistbox& list = find_widget<tlistbox>(&window, "recruit_list", false);
+	listbox& list = find_widget<listbox>(&window, "recruit_list", false);
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	connect_signal_notify_modified(*list,
-		std::bind(&tunit_recruit::list_item_clicked,
+		std::bind(&unit_recruit::list_item_clicked,
 		*this,
 		std::ref(window)));
 #else
 	list.set_callback_value_change(
-		dialog_callback<tunit_recruit, &tunit_recruit::list_item_clicked>);
+		dialog_callback<unit_recruit, &unit_recruit::list_item_clicked>);
 #endif
 
 	window.keyboard_capture(&list);
 
 	connect_signal_mouse_left_click(
-		find_widget<tbutton>(&window, "show_help", false),
-		std::bind(&tunit_recruit::show_help, this, std::ref(window)));
+		find_widget<button>(&window, "show_help", false),
+		std::bind(&unit_recruit::show_help, this, std::ref(window)));
 
 	for(const auto& recruit : recruit_list_)
 	{
@@ -116,30 +118,31 @@ void tunit_recruit::pre_show(twindow& window)
 	list_item_clicked(window);
 }
 
-void tunit_recruit::list_item_clicked(twindow& window)
+void unit_recruit::list_item_clicked(window& window)
 {
 	const int selected_row
-		= find_widget<tlistbox>(&window, "recruit_list", false).get_selected_row();
+		= find_widget<listbox>(&window, "recruit_list", false).get_selected_row();
 
 	if(selected_row == -1) {
 		return;
 	}
 
-	find_widget<tunit_preview_pane>(&window, "recruit_details", false)
+	find_widget<unit_preview_pane>(&window, "recruit_details", false)
 		.set_displayed_type(*recruit_list_[selected_row]);
 }
 
-void tunit_recruit::show_help(twindow& window)
+void unit_recruit::show_help(window& window)
 {
 	help::show_help(window.video(), "recruit_and_recall");
 }
 
-void tunit_recruit::post_show(twindow& window)
+void unit_recruit::post_show(window& window)
 {
-	if(get_retval() == twindow::OK) {
-		selected_index_ = find_widget<tlistbox>(&window, "recruit_list", false)
+	if(get_retval() == window::OK) {
+		selected_index_ = find_widget<listbox>(&window, "recruit_list", false)
 			.get_selected_row();
 	}
 }
 
+} // namespace dialogs
 } // namespace gui2

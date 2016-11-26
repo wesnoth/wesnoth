@@ -36,19 +36,19 @@ namespace gui2
 
 REGISTER_WIDGET(image)
 
-tpoint timage::calculate_best_size() const
+point image::calculate_best_size() const
 {
-	surface image(image::get_image(image::locator(label())));
+	surface image(::image::get_image(::image::locator(get_label())));
 
 	if(!image) {
 		DBG_GUI_L << LOG_HEADER << " empty image return default.\n";
 		return get_config_default_size();
 	}
 
-	const tpoint minimum = get_config_default_size();
-	const tpoint maximum = get_config_maximum_size();
+	const point minimum = get_config_default_size();
+	const point maximum = get_config_maximum_size();
 
-	tpoint result = {image->w, image->h};
+	point result = {image->w, image->h};
 
 	if(minimum.x > 0 && result.x < minimum.x) {
 		DBG_GUI_L << LOG_HEADER << " increase width to minimum.\n";
@@ -70,27 +70,27 @@ tpoint timage::calculate_best_size() const
 	return result;
 }
 
-void timage::set_active(const bool /*active*/)
+void image::set_active(const bool /*active*/)
 {
 	/* DO NOTHING */
 }
 
-bool timage::get_active() const
+bool image::get_active() const
 {
 	return true;
 }
 
-unsigned timage::get_state() const
+unsigned image::get_state() const
 {
 	return ENABLED;
 }
 
-bool timage::disable_click_dismiss() const
+bool image::disable_click_dismiss() const
 {
 	return false;
 }
 
-const std::string& timage::get_control_type() const
+const std::string& image::get_control_type() const
 {
 	static const std::string type = "image";
 	return type;
@@ -98,12 +98,12 @@ const std::string& timage::get_control_type() const
 
 // }---------- DEFINITION ---------{
 
-timage_definition::timage_definition(const config& cfg)
-	: tcontrol_definition(cfg)
+image_definition::image_definition(const config& cfg)
+	: styled_widget_definition(cfg)
 {
 	DBG_GUI_P << "Parsing image " << id << '\n';
 
-	load_resolutions<tresolution>(cfg);
+	load_resolutions<resolution>(cfg);
 }
 
 /*WIKI
@@ -129,11 +129,11 @@ timage_definition::timage_definition(const config& cfg)
  * @end{tag}{name="image_definition"}
  * @end{parent}{name="gui/"}
  */
-timage_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
+image_definition::resolution::resolution(const config& cfg)
+	: resolution_definition(cfg)
 {
-	// Note the order should be the same as the enum tstate in image.hpp.
-	state.push_back(tstate_definition(cfg.child("state_enabled")));
+	// Note the order should be the same as the enum state_t in image.hpp.
+	state.push_back(state_definition(cfg.child("state_enabled")));
 }
 
 // }---------- BUILDER -----------{
@@ -162,13 +162,13 @@ timage_definition::tresolution::tresolution(const config& cfg)
 namespace implementation
 {
 
-tbuilder_image::tbuilder_image(const config& cfg) : tbuilder_control(cfg)
+builder_image::builder_image(const config& cfg) : builder_styled_widget(cfg)
 {
 }
 
-twidget* tbuilder_image::build() const
+widget* builder_image::build() const
 {
-	timage* widget = new timage();
+	image* widget = new image();
 
 	init_control(widget);
 

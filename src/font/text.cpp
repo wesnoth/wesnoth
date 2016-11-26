@@ -14,15 +14,15 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "text.hpp"
+#include "font/text.hpp"
 
-#include "font_config.hpp"
+#include "font/font_config.hpp"
 
-#include "pango/escape.hpp"
-#include "pango/font.hpp"
-#include "pango/hyperlink.hpp"
-#include "pango/iter.hpp"
-#include "pango/stream_ops.hpp"
+#include "font/pango/escape.hpp"
+#include "font/pango/font.hpp"
+#include "font/pango/hyperlink.hpp"
+#include "font/pango/iter.hpp"
+#include "font/pango/stream_ops.hpp"
 
 #include "gettext.hpp"
 #include "gui/widgets/helper.hpp"
@@ -39,7 +39,7 @@
 
 namespace font {
 
-ttext::ttext()
+pango_text::pango_text()
 #if PANGO_VERSION_CHECK(1,22,0)
 	: context_(pango_font_map_create_context(pango_cairo_font_map_get_default()))
 #else
@@ -90,7 +90,7 @@ ttext::ttext()
 	cairo_font_options_destroy(fo);
 }
 
-ttext::~ttext()
+pango_text::~pango_text()
 {
 	if(context_) {
 		g_object_unref(context_);
@@ -101,38 +101,38 @@ ttext::~ttext()
 	surface_.assign(nullptr);
 }
 
-surface ttext::render() const
+surface pango_text::render() const
 {
 	this->rerender();
 	return surface_;
 }
 
 
-int ttext::get_width() const
+int pango_text::get_width() const
 {
 	return this->get_size().x;
 }
 
-int ttext::get_height() const
+int pango_text::get_height() const
 {
 	return this->get_size().y;
 }
 
-gui2::tpoint ttext::get_size() const
+gui2::point pango_text::get_size() const
 {
 	this->recalculate();
 
-	return gui2::tpoint(rect_.width, rect_.height);
+	return gui2::point(rect_.width, rect_.height);
 }
 
-bool ttext::is_truncated() const
+bool pango_text::is_truncated() const
 {
 	this->recalculate();
 
 	return (pango_layout_is_ellipsized(layout_) != 0);
 }
 
-unsigned ttext::insert_text(const unsigned offset, const std::string& text)
+unsigned pango_text::insert_text(const unsigned offset, const std::string& text)
 {
 	if (text.empty() || length_ == maximum_length_) {
 		return 0;
@@ -152,18 +152,18 @@ unsigned ttext::insert_text(const unsigned offset, const std::string& text)
 	return len;
 }
 
-bool ttext::insert_unicode(const unsigned offset, ucs4::char_t unicode)
+bool pango_text::insert_unicode(const unsigned offset, ucs4::char_t unicode)
 {
 	return this->insert_unicode(offset, ucs4::string(1, unicode)) == 1;
 }
 
-unsigned ttext::insert_unicode(const unsigned offset, const ucs4::string& unicode)
+unsigned pango_text::insert_unicode(const unsigned offset, const ucs4::string& unicode)
 {
 	const utf8::string insert = unicode_cast<utf8::string>(unicode);
 	return this->insert_text(offset, insert);
 }
 
-gui2::tpoint ttext::get_cursor_position(
+gui2::point pango_text::get_cursor_position(
 		const unsigned column, const unsigned line) const
 {
 	this->recalculate();
@@ -175,7 +175,7 @@ gui2::tpoint ttext::get_cursor_position(
 	// Go the wanted line.
 	if(line != 0) {
 		if(pango_layout_get_line_count(layout_) >= static_cast<int>(line)) {
-			return gui2::tpoint(0, 0);
+			return gui2::point(0, 0);
 		}
 
 		for(size_t i = 0; i < line; ++i) {
@@ -193,7 +193,7 @@ gui2::tpoint ttext::get_cursor_position(
 				break;
 			}
 			// We are beyond data.
-			return gui2::tpoint(0, 0);
+			return gui2::point(0, 0);
 		}
 	}
 
@@ -204,10 +204,10 @@ gui2::tpoint ttext::get_cursor_position(
 	PangoRectangle rect;
 	pango_layout_get_cursor_pos(layout_, offset, &rect, nullptr);
 
-	return gui2::tpoint(PANGO_PIXELS(rect.x), PANGO_PIXELS(rect.y));
+	return gui2::point(PANGO_PIXELS(rect.x), PANGO_PIXELS(rect.y));
 }
 
-std::string ttext::get_token(const gui2::tpoint & position, const char * delim) const
+std::string pango_text::get_token(const gui2::point & position, const char * delim) const
 {
 	this->recalculate();
 
@@ -239,7 +239,7 @@ std::string ttext::get_token(const gui2::tpoint & position, const char * delim) 
 	return txt.substr(l,r-l);
 }
 
-std::string ttext::get_link(const gui2::tpoint & position) const
+std::string pango_text::get_link(const gui2::point & position) const
 {
 	if (!link_aware_) {
 		return "";
@@ -254,7 +254,7 @@ std::string ttext::get_link(const gui2::tpoint & position) const
 	}
 }
 
-gui2::tpoint ttext::get_column_line(const gui2::tpoint& position) const
+gui2::point pango_text::get_column_line(const gui2::point& position) const
 {
 	this->recalculate();
 
@@ -283,12 +283,12 @@ gui2::tpoint ttext::get_column_line(const gui2::tpoint& position) const
 		const int pos = this->get_cursor_position(i, line).x;
 
 		if(pos == offset) {
-			return  gui2::tpoint(i, line);
+			return  gui2::point(i, line);
 		}
 	}
 }
 
-bool ttext::set_text(const std::string& text, const bool markedup)
+bool pango_text::set_text(const std::string& text, const bool markedup)
 {
 	if(markedup != markedup_text_ || text != text_) {
 		// assert(layout_);
@@ -296,7 +296,7 @@ bool ttext::set_text(const std::string& text, const bool markedup)
 		const ucs4::string wide = unicode_cast<ucs4::string>(text);
 		const std::string narrow = unicode_cast<utf8::string>(wide);
 		if(text != narrow) {
-			ERR_GUI_L << "ttext::" << __func__
+			ERR_GUI_L << "pango_text::" << __func__
 					<< " text '" << text
 					<< "' contains invalid utf-8, trimmed the invalid parts.\n";
 		}
@@ -323,7 +323,7 @@ bool ttext::set_text(const std::string& text, const bool markedup)
 	return true;
 }
 
-ttext& ttext::set_family_class(font::family_class fclass)
+pango_text& pango_text::set_family_class(font::family_class fclass)
 {
 	if(fclass != font_class_) {
 		font_class_ = fclass;
@@ -334,7 +334,7 @@ ttext& ttext::set_family_class(font::family_class fclass)
 	return *this;
 }
 
-ttext& ttext::set_font_size(const unsigned font_size)
+pango_text& pango_text::set_font_size(const unsigned font_size)
 {
 	unsigned int actual_size = preferences::font_scaled(font_size);
 	if(actual_size != font_size_) {
@@ -346,7 +346,7 @@ ttext& ttext::set_font_size(const unsigned font_size)
 	return *this;
 }
 
-ttext& ttext::set_font_style(const ttext::FONT_STYLE font_style)
+pango_text& pango_text::set_font_style(const pango_text::FONT_STYLE font_style)
 {
 	if(font_style != font_style_) {
 		font_style_ = font_style;
@@ -357,7 +357,7 @@ ttext& ttext::set_font_style(const ttext::FONT_STYLE font_style)
 	return *this;
 }
 
-ttext& ttext::set_foreground_color(const Uint32 color)
+pango_text& pango_text::set_foreground_color(const Uint32 color)
 {
 	if(color != foreground_color_) {
 		foreground_color_ = color;
@@ -367,12 +367,12 @@ ttext& ttext::set_foreground_color(const Uint32 color)
 	return *this;
 }
 
-ttext &ttext::set_foreground_color(const SDL_Color color)
+pango_text &pango_text::set_foreground_color(const SDL_Color color)
 {
-	return this->set_foreground_color((color.r << 16) + (color.g << 8) + color.b);
+	return this->set_foreground_color((color.r << 24) + (color.g << 16) + (color.b << 8) + color.a);
 }
 
-ttext& ttext::set_maximum_width(int width)
+pango_text& pango_text::set_maximum_width(int width)
 {
 	if(width <= 0) {
 		width = -1;
@@ -405,7 +405,7 @@ ttext& ttext::set_maximum_width(int width)
 	return *this;
 }
 
-ttext& ttext::set_characters_per_line(const unsigned characters_per_line)
+pango_text& pango_text::set_characters_per_line(const unsigned characters_per_line)
 {
 	if(characters_per_line != characters_per_line_) {
 		characters_per_line_ = characters_per_line;
@@ -417,7 +417,7 @@ ttext& ttext::set_characters_per_line(const unsigned characters_per_line)
 	return *this;
 }
 
-ttext& ttext::set_maximum_height(int height, bool multiline)
+pango_text& pango_text::set_maximum_height(int height, bool multiline)
 {
 	if(height <= 0) {
 		height = -1;
@@ -436,7 +436,7 @@ ttext& ttext::set_maximum_height(int height, bool multiline)
 	return *this;
 }
 
-ttext& ttext::set_ellipse_mode(const PangoEllipsizeMode ellipse_mode)
+pango_text& pango_text::set_ellipse_mode(const PangoEllipsizeMode ellipse_mode)
 {
 	if(ellipse_mode != ellipse_mode_) {
 		// assert(context_);
@@ -450,7 +450,7 @@ ttext& ttext::set_ellipse_mode(const PangoEllipsizeMode ellipse_mode)
 	return *this;
 }
 
-ttext &ttext::set_alignment(const PangoAlignment alignment)
+pango_text &pango_text::set_alignment(const PangoAlignment alignment)
 {
 	if (alignment != alignment_) {
 		pango_layout_set_alignment(layout_, alignment);
@@ -461,7 +461,7 @@ ttext &ttext::set_alignment(const PangoAlignment alignment)
 	return *this;
 }
 
-ttext& ttext::set_maximum_length(const size_t maximum_length)
+pango_text& pango_text::set_maximum_length(const size_t maximum_length)
 {
 	if(maximum_length != maximum_length_) {
 		maximum_length_ = maximum_length;
@@ -474,7 +474,7 @@ ttext& ttext::set_maximum_length(const size_t maximum_length)
 	return *this;
 }
 
-ttext& ttext::set_link_aware(bool b)
+pango_text& pango_text::set_link_aware(bool b)
 {
 	if (link_aware_ != b) {
 		calculation_dirty_ = true;
@@ -484,7 +484,7 @@ ttext& ttext::set_link_aware(bool b)
 	return *this;
 }
 
-ttext& ttext::set_link_color(const std::string & color)
+pango_text& pango_text::set_link_color(const std::string & color)
 {
 	if(color != link_color_) {
 		link_color_ = color;
@@ -496,7 +496,7 @@ ttext& ttext::set_link_color(const std::string & color)
 }
 
 
-void ttext::recalculate(const bool force) const
+void pango_text::recalculate(const bool force) const
 {
 	if(calculation_dirty_ || force) {
 		// assert(layout_);
@@ -507,7 +507,7 @@ void ttext::recalculate(const bool force) const
 		p_font font{get_font_families(font_class_), font_size_, font_style_};
 		pango_layout_set_font_description(layout_, font.get());
 
-		if(font_style_ & ttext::STYLE_UNDERLINE) {
+		if(font_style_ & pango_text::STYLE_UNDERLINE) {
 			PangoAttrList *attribute_list = pango_attr_list_new();
 			pango_attr_list_insert(attribute_list
 					, pango_attr_underline_new(PANGO_UNDERLINE_SINGLE));
@@ -552,7 +552,7 @@ void ttext::recalculate(const bool force) const
 					: (maximum_width + hack) * PANGO_SCALE);
 			pango_layout_get_pixel_extents(layout_, nullptr, &rect_);
 
-			DBG_GUI_L << "ttext::" << __func__
+			DBG_GUI_L << "pango_text::" << __func__
 					<< " text '" << gui2::debug_truncate(text_)
 					<< "' maximum_width " << maximum_width
 					<< " hack " << hack
@@ -563,7 +563,7 @@ void ttext::recalculate(const bool force) const
 		} while(maximum_width != -1
 				&& hack >= 0 && rect_.x + rect_.width > maximum_width);
 
-		DBG_GUI_L << "ttext::" << __func__
+		DBG_GUI_L << "pango_text::" << __func__
 				<< " text '" << gui2::debug_truncate(text_)
 				<< "' font_size " << font_size_
 				<< " markedup_text " << markedup_text_
@@ -573,7 +573,7 @@ void ttext::recalculate(const bool force) const
 				<< " result " <<  rect_
 				<< ".\n";
 		if(maximum_width != -1 && rect_.x + rect_.width > maximum_width) {
-			DBG_GUI_L << "ttext::" << __func__
+			DBG_GUI_L << "pango_text::" << __func__
 					<< " text '" << gui2::debug_truncate(text_)
 					<< " ' width " << rect_.x + rect_.width
 					<< " greater as the wanted maximum of " << maximum_width
@@ -639,7 +639,7 @@ static void from_cairo_format(Uint32 & c)
 	c = (static_cast<Uint32>(a) << 24) | (static_cast<Uint32>(r) << 16) | (static_cast<Uint32>(g) << 8) | static_cast<Uint32>(b);
 }
 
-void ttext::rerender(const bool force) const
+void pango_text::rerender(const bool force) const
 {
 	if(surface_dirty_ || force) {
 		// assert(layout_);
@@ -698,7 +698,7 @@ void ttext::rerender(const bool force) const
 	}
 }
 
-void ttext::create_surface_buffer(const size_t size) const
+void pango_text::create_surface_buffer(const size_t size) const
 {
 	// clear old buffer
 	surface_.assign(nullptr);
@@ -709,11 +709,11 @@ void ttext::create_surface_buffer(const size_t size) const
 	for (auto & c : surface_buffer_) { c = 0; }
 }
 
-bool ttext::set_markup(const std::string & text) {
+bool pango_text::set_markup(const std::string & text) {
 	return this->set_markup_helper(link_aware_ ? this->format_link_tokens(text) : text);
 }
 
-std::string ttext::format_link_tokens(const std::string & text) const {
+std::string pango_text::format_link_tokens(const std::string & text) const {
 	std::string delim = " \n\r\t";
 	// Tokenize according to these delimiters, and stream the results of `handle_token` on each token to get the new text.
 
@@ -735,7 +735,7 @@ std::string ttext::format_link_tokens(const std::string & text) const {
 	return result;
 }
 
-std::string ttext::handle_token(const std::string & token) const
+std::string pango_text::handle_token(const std::string & token) const
 {
 	if (looks_like_url(token)) {
 		return format_as_link(token, link_color_);
@@ -744,7 +744,7 @@ std::string ttext::handle_token(const std::string & token) const
 	}
 }
 
-bool ttext::set_markup_helper(const std::string& text)
+bool pango_text::set_markup_helper(const std::string& text)
 {
 	if(pango_parse_markup(text.c_str(), text.size()
 			, 0, nullptr, nullptr, nullptr, nullptr)) {
@@ -774,7 +774,7 @@ bool ttext::set_markup_helper(const std::string& text)
 				, 0, nullptr, nullptr, nullptr, nullptr)) {
 
 		/* Fixing the ampersands didn't work. */
-		ERR_GUI_L << "ttext::" << __func__
+		ERR_GUI_L << "pango_text::" << __func__
 				<< " text '" << text
 				<< "' has broken markup, set to normal text.\n";
 
@@ -783,7 +783,7 @@ bool ttext::set_markup_helper(const std::string& text)
 	}
 
 	/* Replacement worked, still warn the user about the error. */
-	ERR_GUI_L << "ttext::" << __func__
+	ERR_GUI_L << "pango_text::" << __func__
 			<< " text '" << text
 			<< "' has unescaped ampersands '&', escaped them.\n";
 

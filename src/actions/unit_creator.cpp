@@ -17,9 +17,9 @@
  * Recruiting, recalling.
  */
 
-#include "unit_creator.hpp"
+#include "actions/unit_creator.hpp"
 
-#include "move.hpp" //for actions::get_village
+#include "actions/move.hpp" //for actions::get_village
 
 #include "config.hpp"
 #include "filter_context.hpp"

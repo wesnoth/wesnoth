@@ -15,12 +15,14 @@
 #ifndef GUI_DIALOGS_MP_JOIN_GAME_PASSWORD_PROMPT_HPP_INCLUDED
 #define GUI_DIALOGS_MP_JOIN_GAME_PASSWORD_PROMPT_HPP_INCLUDED
 
-#include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
 
 namespace gui2
 {
+namespace dialogs
+{
 
-class tmp_join_game_password_prompt : public tdialog
+class mp_join_game_password_prompt : public modal_dialog
 {
 public:
 	/**
@@ -29,22 +31,23 @@ public:
 	 * @param [in, out] password  The parameter's usage is:
 	 *                            - Input: The initial value for the password.
 	 *                            - Output: The password input by the user
-	 *                              if the dialog returns @ref twindow::OK,
+	 *                              if the dialog returns @ref window::OK,
 	 *                              undefined otherwise.
 	 */
-	explicit tmp_join_game_password_prompt(std::string& password);
+	explicit mp_join_game_password_prompt(std::string& password);
 
-	/** The execute function -- see @ref tdialog for more information. */
+	/** The execute function -- see @ref modal_dialog for more information. */
 	static bool execute(std::string& password, CVideo& video)
 	{
-		return tmp_join_game_password_prompt(password).show(video);
+		return mp_join_game_password_prompt(password).show(video);
 	}
 
 private:
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 };
 
+} // namespace dialogs
 } // namespace gui2
 
 #endif /* ! GUI_DIALOGS_MP_JOIN_GAME_PASSWORD_PROMPT_HPP_INCLUDED */

@@ -20,7 +20,7 @@
 
 #include "global.hpp"
 
-#include "playcampaign.hpp"
+#include "game_initialization/playcampaign.hpp"
 
 #include "carryover.hpp"
 #include "game_config.hpp"
@@ -36,9 +36,9 @@
 #include "log.hpp"
 #include "map/map.hpp"
 #include "map/exception.hpp"
-#include "mp_game_utils.hpp"
-#include "multiplayer.hpp"
-#include "connect_engine.hpp"
+#include "game_initialization/mp_game_utils.hpp"
+#include "game_initialization/multiplayer.hpp"
+#include "game_initialization/connect_engine.hpp"
 #include "gettext.hpp"
 #include "resources.hpp"
 #include "savegame.hpp"
@@ -306,7 +306,7 @@ LEVEL_RESULT campaign_controller::play_game()
 		} catch(config::error& e) {
 			gui2::show_error_message(video_, _("Error while reading the WML: ") + e.message);
 			return LEVEL_RESULT::QUIT;
-		} catch(twml_exception& e) {
+		} catch(wml_exception& e) {
 			e.show(video_);
 			return LEVEL_RESULT::QUIT;
 		}
@@ -343,18 +343,16 @@ LEVEL_RESULT campaign_controller::play_game()
 		{
 			const int dlg_res = gui2::show_message(video_, _("Game Over"),
 				_("This scenario has ended. Do you want to continue the campaign?"),
-				gui2::tmessage::yes_no_buttons);
+				gui2::dialogs::message::yes_no_buttons);
 
-			if(dlg_res == gui2::twindow::CANCEL) {
+			if(dlg_res == gui2::window::CANCEL) {
 				return res;
 			}
 		}
 
 		if (mp_info_ && !mp_info_->is_host) {
-			// Opens mp::connect dialog to get a new gamestate.
-			mp::ui::result wait_res = mp::goto_mp_wait(video_, state_,
-				game_config_, &mp_info_->wesnothd_connection, res == LEVEL_RESULT::OBSERVER_END);
-			if (wait_res == mp::ui::QUIT) {
+			// Opens join game dialog to get a new gamestate.
+			if(!mp::goto_mp_wait(video_, state_, game_config_, &mp_info_->connection, res == LEVEL_RESULT::OBSERVER_END)) {
 				return LEVEL_RESULT::QUIT;
 			}
 
@@ -375,10 +373,8 @@ LEVEL_RESULT campaign_controller::play_game()
 				ng::connect_engine_ptr connect_engine(new ng::connect_engine(state_, false, mp_info_));
 
 				if (!connect_engine->can_start_game() || (game_config::debug && game_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER)) {
-					// Opens mp::connect dialog to allow users to make an adjustments for scenario.
-					mp::ui::result connect_res = mp::goto_mp_connect(video_,
-						*connect_engine, game_config_, mp_info_ ? &mp_info_->wesnothd_connection : nullptr, state_.mp_settings().name);
-					if (connect_res == mp::ui::QUIT) {
+					// Opens staging dialog to allow users to make an adjustments for scenario.
+					if(!mp::goto_mp_connect(video_, *connect_engine, game_config_, mp_info_ ? &mp_info_->connection : nullptr, state_.mp_settings().name)) {
 						return LEVEL_RESULT::QUIT;
 					}
 				} else {

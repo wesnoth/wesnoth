@@ -25,7 +25,6 @@
 #include <vector>
 
 #include "sdl/utils.hpp"
-#include "sdl/image.hpp"
 
 class config;
 class vconfig;

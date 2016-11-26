@@ -60,7 +60,6 @@ namespace {
 	const Uint32 titlebox_font_color = 0xFFFFFFFF;
 	const Uint32 storybox_font_color = 0xDDDDDDFF;
 
-#ifndef LOW_MEM
 	// Hard-coded path to a suitable (tileable) pic for the storytxt box border.
 	const std::string storybox_top_border_path = "dialogs/translucent54-border-top.png";
 	const std::string storybox_bottom_border_path = "dialogs/translucent54-border-bottom.png";
@@ -71,7 +70,6 @@ namespace {
 		blur = blur_surface(blur, 1, false);
 		video.blit_surface(0, y, blur);
 	}
-#endif
 }
 
 namespace storyscreen {
@@ -290,14 +288,14 @@ void part_ui::render_title_box()
 	titlebox_y = titlebox_padding;
 	titlebox_max_h = base_rect_.h - 2*titlebox_padding;
 
-	font::ttext t;
+	font::pango_text t;
 	if(!t.set_text(titletxt, true)) {
 		ERR_NG << "Text: Invalid markup in '"
 				<< titletxt << "' rendered as is.\n";
 		t.set_text(titletxt, false);
 	}
 
-	t.set_font_style(font::ttext::STYLE_NORMAL)
+	t.set_font_style(font::pango_text::STYLE_NORMAL)
 		 .set_font_size(titlebox_font_size)
 		 .set_foreground_color(titlebox_font_color)
 		 .set_maximum_width(titlebox_max_w)
@@ -354,10 +352,6 @@ void part_ui::render_title_box()
 
 }
 
-#ifdef LOW_MEM
-void part_ui::render_story_box_borders(SDL_Rect& /*update_area*/)
-{}
-#else
 void part_ui::render_story_box_borders(SDL_Rect& update_area)
 {
 	const part::BLOCK_LOCATION tbl = p_.story_text_location();
@@ -404,7 +398,6 @@ void part_ui::render_story_box_borders(SDL_Rect& update_area)
 		}
 	}
 }
-#endif
 
 void part_ui::render_story_box()
 {
@@ -433,7 +426,7 @@ void part_ui::render_story_box()
 
 	skip_ = false;
 	last_key_ = true;
-	font::ttext t;
+	font::pango_text t;
 	bool scan_finished = false;
 	SDL_Rect scan = {0,0,0,0};
 	SDL_Rect dstrect = {0,0,0,0};
@@ -480,7 +473,7 @@ void part_ui::render_story_box()
 					<< p_.text() << "' rendered as is.\n";
 			t.set_text(p_.text(), false);
 		}
-		t.set_font_style(font::ttext::STYLE_NORMAL)
+		t.set_font_style(font::pango_text::STYLE_NORMAL)
 				.set_alignment(story_text_alignment)
 				.set_font_size(storybox_font_size)
 				.set_foreground_color(storybox_font_color)
@@ -528,11 +521,9 @@ void part_ui::render_story_box()
 			back_button_.hide();
 			play_button_.hide();
 
-#ifndef LOW_MEM
 			if (dirty_ || first) {
 				blur_area(video_, fix_text_y, fix_text_h);
 			}
-#endif
 			if (dirty_ || first) {
 				sdl::draw_solid_tinted_rectangle(
 						0, fix_text_y, screen_area().w, fix_text_h,
@@ -542,7 +533,7 @@ void part_ui::render_story_box()
 				);
 			}
 
-			render_story_box_borders(update_area); // no-op if LOW_MEM is defined
+			render_story_box_borders(update_area);
 
 			next_button_.hide(false);
 			back_button_.hide(false);
@@ -572,7 +563,7 @@ void part_ui::render_story_box()
 			//dstrect.x = text_x_;
 			dstrect.y = fix_text_y + scan.y + storybox_padding;
 			// NOTE: ::blit_surface() screws up with antialiasing and hinting when
-			//       on backgroundless (e.g. black) screens; ttext::draw()
+			//       on backgroundless (e.g. black) screens; pango_text::draw()
 			//       uses it nonetheless, no idea why...
 			//       Here we'll use CVideo::blit_surface() instead.
 			video_.blit_surface(dstrect.x, dstrect.y, txtsurf, &scan);

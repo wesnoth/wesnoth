@@ -27,42 +27,42 @@ namespace gui2
 // ------------ WIDGET -----------{
 
 /** A slider. */
-class tslider : public tscrollbar_, public tinteger_selector_
+class slider : public scrollbar_base, public integer_selector
 {
 public:
-	tslider();
+	slider();
 
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
 private:
-	/** See @ref twidget::calculate_best_size. */
-	virtual tpoint calculate_best_size() const override;
+	/** See @ref widget::calculate_best_size. */
+	virtual point calculate_best_size() const override;
 
 public:
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
-	/** Inherited from tinteger_selector_. */
+	/** Inherited from integer_selector. */
 	void set_value(const int value) override;
 
-	/** Inherited from tinteger_selector_. */
+	/** Inherited from integer_selector. */
 	int get_value() const override
 	{
 		return minimum_value_ + get_item_position() * get_step_size();
 	}
 
-	/** Inherited from tinteger_selector_. */
+	/** Inherited from integer_selector. */
 	void set_minimum_value(const int minimum_value) override;
 
-	/** Inherited from tinteger_selector_. */
+	/** Inherited from integer_selector. */
 	int get_minimum_value() const override
 	{
 		return minimum_value_;
 	}
 
-	/** Inherited from tinteger_selector_. */
+	/** Inherited from integer_selector. */
 	void set_maximum_value(const int maximum_value) override;
 
-	/** Inherited from tinteger_selector_. */
+	/** Inherited from integer_selector. */
 	int get_maximum_value() const override
 	// The number of items needs to include the begin and end so count - 1.
 	{
@@ -138,16 +138,16 @@ private:
 	unsigned offset_after() const override;
 
 	/** Inherited from tscrollbar. */
-	bool on_positioner(const tpoint& coordinate) const override;
+	bool on_positioner(const point& coordinate) const override;
 
 	/** Inherited from tscrollbar. */
-	int on_bar(const tpoint& coordinate) const override;
+	int on_bar(const point& coordinate) const override;
 
 	/** Inherited from tscrollbar. */
-	bool in_orthogonal_range(const tpoint& coordinate) const override;
+	bool in_orthogonal_range(const point& coordinate) const override;
 
 	/** Inherited from tscrollbar. */
-	int get_length_difference(const tpoint& original, const tpoint& current) const override
+	int get_length_difference(const point& original, const point& current) const override
 	{
 		return current.x - original.x;
 	}
@@ -155,7 +155,7 @@ private:
 	/** Inherited from tscrollbar. */
 	//void move_positioner(const int distance) override;
 
-	/** See @ref tcontrol::update_canvas. */
+	/** See @ref styled_widget::update_canvas. */
 	virtual void update_canvas() override;
 
 	/**
@@ -183,11 +183,11 @@ private:
 	 * this value is upda with the mouse position at the time. This allows the widget to track
 	 * how far the mouse has moved since setting the last value.
 	 */
-	tpoint current_item_mouse_position_;
+	point current_item_mouse_position_;
 
 	//void update_current_item_mouse_position();
 
-	/** See @ref tcontrol::get_control_type. */
+	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 
 	/**
@@ -199,27 +199,27 @@ private:
 	/**
 	 * Signal handlers:
 	 */
-	void signal_handler_sdl_key_down(const event::tevent event,
+	void signal_handler_sdl_key_down(const event::ui_event event,
 									 bool& handled,
 									 const SDL_Keycode key);
 
-	//void signal_handler_left_button_down(const event::tevent event, bool& handled);
+	//void signal_handler_left_button_down(const event::ui_event event, bool& handled);
 
 	// In this subclass, only used to grab keyboard focus -
 	// see tscrollbar class for more handling of this event.
-	void signal_handler_left_button_up(const event::tevent event,
+	void signal_handler_left_button_up(const event::ui_event event,
 									   bool& handled);
 };
 
 // }---------- DEFINITION ---------{
 
-struct tslider_definition : public tcontrol_definition
+struct slider_definition : public styled_widget_definition
 {
-	explicit tslider_definition(const config& cfg);
+	explicit slider_definition(const config& cfg);
 
-	struct tresolution : public tresolution_definition_
+	struct resolution : public resolution_definition
 	{
-		explicit tresolution(const config& cfg);
+		explicit resolution(const config& cfg);
 
 		unsigned minimum_positioner_length;
 		unsigned maximum_positioner_length;
@@ -234,13 +234,13 @@ struct tslider_definition : public tcontrol_definition
 namespace implementation
 {
 
-struct tbuilder_slider : public tbuilder_control
+struct builder_slider : public builder_styled_widget
 {
-	explicit tbuilder_slider(const config& cfg);
+	explicit builder_slider(const config& cfg);
 
-	using tbuilder_control::build;
+	using builder_styled_widget::build;
 
-	twidget* build() const;
+	widget* build() const;
 
 private:
 	unsigned best_slider_length_;

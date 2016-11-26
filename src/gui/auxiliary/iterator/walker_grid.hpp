@@ -22,11 +22,11 @@
 namespace gui2
 {
 
-namespace iterator
+namespace iteration
 {
 
-/** A walker for a @ref gui2::tgrid. */
-class tgrid : public twalker_
+/** A walker for a @ref gui2::grid. */
+class grid : public walker_base
 {
 public:
 	/**
@@ -34,39 +34,39 @@ public:
 	 *
 	 * @param grid                The grid which the walker is attached to.
 	 */
-	explicit tgrid(gui2::tgrid& grid);
+	explicit grid(gui2::grid& grid);
 
-	/** Inherited from @ref gui2::iterator::twalker_. */
-	virtual tstate next(const tlevel level);
+	/** Inherited from @ref gui2::iteration::walker_base. */
+	virtual state_t next(const level level);
 
-	/** Inherited from @ref gui2::iterator::twalker_. */
-	virtual bool at_end(const tlevel level) const;
+	/** Inherited from @ref gui2::iteration::walker_base. */
+	virtual bool at_end(const level level) const;
 
-	/** Inherited from @ref gui2::iterator::twalker_. */
-	virtual gui2::twidget* get(const tlevel level);
+	/** Inherited from @ref gui2::iteration::walker_base. */
+	virtual gui2::widget* get(const level level);
 
 private:
 	/** The grid which the walker is attached to. */
-	gui2::tgrid& grid_;
+	gui2::grid& grid_;
 
 	/**
 	 * The grid which the walker is attached to.
 	 *
 	 * This variable is used to track whether the @ref
-	 * gui2::iterator::twalker_::widget level has been visited.
+	 * gui2::iteration::walker_base::widget level has been visited.
 	 */
-	gui2::twidget* widget_;
+	gui2::widget* widget_;
 
 	/**
 	 * The iterator to the children of @ref grid_.
 	 *
 	 * This variable is used to track where the @ref
-	 * gui2::iterator::twalker_::child level visiting is.
+	 * gui2::iteration::walker_base::child level visiting is.
 	 */
-	gui2::tgrid::iterator itor_;
+	gui2::grid::iterator itor_;
 };
 
-} // namespace iterator
+} // namespace iteration
 
 } // namespace gui2
 

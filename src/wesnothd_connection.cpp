@@ -30,7 +30,7 @@ static lg::log_domain log_network("network");
 using boost::system::system_error;
 using boost::system::error_code;
 
-twesnothd_connection::twesnothd_connection(const std::string& host, const std::string& service)
+wesnothd_connection::wesnothd_connection(const std::string& host, const std::string& service)
 	: io_service_()
 	, resolver_(io_service_)
 	, socket_(io_service_)
@@ -45,12 +45,12 @@ twesnothd_connection::twesnothd_connection(const std::string& host, const std::s
 {
 	resolver_.async_resolve(
 		boost::asio::ip::tcp::resolver::query(host, service),
-		std::bind(&twesnothd_connection::handle_resolve, this, _1, _2)
+		std::bind(&wesnothd_connection::handle_resolve, this, _1, _2)
 	);
 	LOG_NW << "Resolving hostname: " << host << '\n';
 }
 
-void twesnothd_connection::handle_resolve(const error_code& ec, resolver::iterator iterator)
+void wesnothd_connection::handle_resolve(const error_code& ec, resolver::iterator iterator)
 {
 	if (ec) {
 		throw system_error(ec);
@@ -58,15 +58,15 @@ void twesnothd_connection::handle_resolve(const error_code& ec, resolver::iterat
 	connect(iterator);
 }
 
-void twesnothd_connection::connect(resolver::iterator iterator)
+void wesnothd_connection::connect(resolver::iterator iterator)
 {
 	socket_.async_connect(*iterator, std::bind(
-		&twesnothd_connection::handle_connect, this, _1, iterator)
+		&wesnothd_connection::handle_connect, this, _1, iterator)
 	);
 	LOG_NW << "Connecting to " << iterator->endpoint().address() << '\n';
 }
 
-void twesnothd_connection::handle_connect(
+void wesnothd_connection::handle_connect(
 		const boost::system::error_code& ec,
 		resolver::iterator iterator
 		)
@@ -89,7 +89,7 @@ void twesnothd_connection::handle_connect(
 	}
 }
 
-void twesnothd_connection::handshake()
+void wesnothd_connection::handshake()
 {
 	static const uint32_t handshake = 0;
 	boost::asio::async_write(socket_,
@@ -98,11 +98,11 @@ void twesnothd_connection::handshake()
 	);
 	boost::asio::async_read(socket_,
 		boost::asio::buffer(&handshake_response_.binary, 4),
-		std::bind(&twesnothd_connection::handle_handshake, this, _1)
+		std::bind(&wesnothd_connection::handle_handshake, this, _1)
 	);
 }
 
-void twesnothd_connection::handle_handshake(const error_code& ec)
+void wesnothd_connection::handle_handshake(const error_code& ec)
 {
 	if (ec) {
 		throw system_error(ec);
@@ -111,7 +111,7 @@ void twesnothd_connection::handle_handshake(const error_code& ec)
 	recv();
 }
 
-void twesnothd_connection::send_data(const configr_of& request)
+void wesnothd_connection::send_data(const configr_of& request)
 {
 	poll();
 	send_queue_.emplace_back();
@@ -123,7 +123,7 @@ void twesnothd_connection::send_data(const configr_of& request)
 	}
 }
 
-void twesnothd_connection::cancel()
+void wesnothd_connection::cancel()
 {
 	if(socket_.is_open()) {
 		boost::system::error_code ec;
@@ -134,7 +134,7 @@ void twesnothd_connection::cancel()
 	}
 }
 
-std::size_t twesnothd_connection::is_write_complete(const boost::system::error_code& ec, size_t bytes_transferred)
+std::size_t wesnothd_connection::is_write_complete(const boost::system::error_code& ec, size_t bytes_transferred)
 {
 	if(ec)
 		throw system_error(ec);
@@ -142,7 +142,7 @@ std::size_t twesnothd_connection::is_write_complete(const boost::system::error_c
 	return bytes_to_write_ - bytes_transferred;
 }
 
-void twesnothd_connection::handle_write(
+void wesnothd_connection::handle_write(
 	const boost::system::error_code& ec,
 	std::size_t bytes_transferred
 	)
@@ -157,7 +157,7 @@ void twesnothd_connection::handle_write(
 	}
 }
 
-std::size_t twesnothd_connection::is_read_complete(
+std::size_t wesnothd_connection::is_read_complete(
 		const boost::system::error_code& ec,
 		std::size_t bytes_transferred
 		)
@@ -182,7 +182,7 @@ std::size_t twesnothd_connection::is_read_complete(
 	}
 }
 
-void twesnothd_connection::handle_read(
+void wesnothd_connection::handle_read(
 	const boost::system::error_code& ec,
 	std::size_t bytes_transferred
 	)
@@ -199,7 +199,7 @@ void twesnothd_connection::handle_read(
 	recv();
 }
 
-void twesnothd_connection::send()
+void wesnothd_connection::send()
 {
 	auto& buf = send_queue_.front();
 	size_t buf_size = buf.size();
@@ -211,20 +211,20 @@ void twesnothd_connection::send()
 	std::deque<boost::asio::const_buffer> bufs(gzipped_data.begin(), gzipped_data.end());
 	bufs.push_front(boost::asio::buffer(reinterpret_cast<const char*>(&payload_size_), 4));
 	boost::asio::async_write(socket_, bufs,
-		std::bind(&twesnothd_connection::is_write_complete, this, _1, _2),
-		std::bind(&twesnothd_connection::handle_write, this, _1, _2)
+		std::bind(&wesnothd_connection::is_write_complete, this, _1, _2),
+		std::bind(&wesnothd_connection::handle_write, this, _1, _2)
 	);
 }
 
-void twesnothd_connection::recv()
+void wesnothd_connection::recv()
 {
 	boost::asio::async_read(socket_, read_buf_,
-		std::bind(&twesnothd_connection::is_read_complete, this, _1, _2),
-		std::bind(&twesnothd_connection::handle_read, this, _1, _2)
+		std::bind(&wesnothd_connection::is_read_complete, this, _1, _2),
+		std::bind(&wesnothd_connection::handle_read, this, _1, _2)
 	);
 }
 
-std::size_t twesnothd_connection::poll()
+std::size_t wesnothd_connection::poll()
 {
 	try {
 		return io_service_.poll();
@@ -238,7 +238,7 @@ std::size_t twesnothd_connection::poll()
 		throw error(err.code());
 	}
 }
-bool twesnothd_connection::receive_data(config& result)
+bool wesnothd_connection::receive_data(config& result)
 {
 	poll();
 	if (recv_queue_.empty()) {

@@ -41,7 +41,7 @@ static lg::log_domain log_engine("engine");
 
 playmp_controller::playmp_controller(const config& level,
 		saved_game& state_of_game, const config& game_config,
-		const tdata_cache & tdata, CVideo& video,
+		const ter_data_cache & tdata, CVideo& video,
 		mp_campaign_info* mp_info)
 	: playsingle_controller(level, state_of_game,
 	game_config, tdata, video, mp_info && mp_info->skip_replay_until_turn != 0) //this || means that if blindfold is enabled, quick replays will be on.
@@ -280,8 +280,8 @@ void playmp_controller::wait_for_upload()
 	network_reader_.set_source(playturn_network_adapter::get_source_from_config(cfg));
 	while(true) {
 		try {
-			const bool  res = gui2::tnetwork_transmission::wesnothd_receive_dialog(
-				gui_->video(), "next scenario", cfg, mp_info_->wesnothd_connection);
+			const bool  res = gui2::dialogs::network_transmission::wesnothd_receive_dialog(
+				gui_->video(), "next scenario", cfg, mp_info_->connection);
 
 			if(res) {
 				if (turn_data_.process_network_data_from_reader() == turn_info::PROCESS_END_LINGER) {
@@ -483,13 +483,13 @@ bool playmp_controller::is_networked_mp() const
 void playmp_controller::send_to_wesnothd(const config& cfg, const std::string&) const
 {
 	if (mp_info_ != nullptr) {
-		mp_info_->wesnothd_connection.send_data(cfg);
+		mp_info_->connection.send_data(cfg);
 	}
 }
 bool playmp_controller::recieve_from_wesnothd(config& cfg) const
 {
 	if (mp_info_ != nullptr) {
-		return mp_info_->wesnothd_connection.receive_data(cfg);
+		return mp_info_->connection.receive_data(cfg);
 	}
 	else {
 		return false;

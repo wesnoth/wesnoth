@@ -56,7 +56,7 @@ int
 main(int argc, char* argv[])
 {
 	try {
-		const toptions& options = toptions::parse(argc, argv);
+		const cmdline_options& options = cmdline_options::parse(argc, argv);
 
 		surface surf(make_neutral_surface(
 				IMG_Load(options.input_filename.c_str())));
@@ -99,7 +99,7 @@ main(int argc, char* argv[])
 			save_image(surfaces[0], options.output_filename);
 		}
 
-	} catch(const texit& exit) {
+	} catch(const exiter& exit) {
 		return exit.status;
 	} catch(exploder_failure& err) {
 		std::cerr << "Error: Failed with error »" << err.message << "«.\n";

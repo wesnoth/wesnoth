@@ -19,6 +19,8 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -58,7 +60,7 @@ static void set_dont_ask_again(const bool ask_again)
 	preferences::set_ask_delete_saves(!ask_again);
 }
 
-tgame_delete::tgame_delete()
+game_delete::game_delete()
 {
 	set_restore(true);
 
@@ -66,4 +68,5 @@ tgame_delete::tgame_delete()
 			"dont_ask_again", true, &get_dont_ask_again, &set_dont_ask_again);
 }
 
+} // namespace dialogs
 } // namespace gui2

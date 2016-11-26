@@ -23,10 +23,10 @@
  * Classes inheriting from this class need to use the @ref
  * IMPLEMENT_LUA_JAILBREAK_EXCEPTION macro in the class definition.
  */
-class tlua_jailbreak_exception
+class lua_jailbreak_exception
 {
 public:
-	virtual ~tlua_jailbreak_exception() throw() {}
+	virtual ~lua_jailbreak_exception() throw() {}
 
 	/** Stores a copy the current exception to be rethrown. */
 	void store() const throw();
@@ -41,7 +41,7 @@ public:
 protected:
 
 	/** The exception to be rethrown. */
-	static tlua_jailbreak_exception* jailbreak_exception;
+	static lua_jailbreak_exception* jailbreak_exception;
 
 private:
 
@@ -58,7 +58,7 @@ private:
 	 *
 	 * @returns                   A pointer to a copy of the class on the heap.
 	 */
-	virtual tlua_jailbreak_exception* clone() const = 0;
+	virtual lua_jailbreak_exception* clone() const = 0;
 
 	/**
 	 * Executes the exception.
@@ -76,12 +76,12 @@ private:
 };
 
 /**
- * Helper macro for classes deriving from @ref tlua_jailbreak_exception.
+ * Helper macro for classes deriving from @ref lua_jailbreak_exception.
  *
- * @ref tlua_jailbreak_exception has several pure virtual functions, this
+ * @ref lua_jailbreak_exception has several pure virtual functions, this
  * macro implements them properly. This macro needs to be placed in the
  * definition of the most derived class, which uses @ref
- * tlua_jailbreak_exception as baseclass.
+ * lua_jailbreak_exception as baseclass.
  *
  * @param type                    The type of the class whc
  */

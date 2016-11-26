@@ -16,7 +16,6 @@
 #include "key.hpp"
 
 #include <SDL_keyboard.h>
-#include <SDL_version.h>
 
 CKey::CKey() :
 	key_list(SDL_GetKeyboardState(nullptr))

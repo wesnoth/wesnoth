@@ -47,10 +47,12 @@ static lg::log_domain log_display("display");
 
 namespace gui2
 {
+namespace dialogs
+{
 
 REGISTER_DIALOG(unit_list)
 
-tunit_list::tunit_list(unit_ptr_vector& unit_list, map_location& scroll_to)
+unit_list::unit_list(unit_ptr_vector& unit_list, map_location& scroll_to)
 	: unit_list_(unit_list)
 	, scroll_to_(scroll_to)
 {
@@ -94,17 +96,17 @@ static std::string format_movement_string(unit_const_ptr u)
 	return formatter() << "<span color='" << color << "'>" << moves_left << "/" << moves_max << "</span>";
 }
 
-void tunit_list::pre_show(twindow& window)
+void unit_list::pre_show(window& window)
 {
-	tlistbox& list = find_widget<tlistbox>(&window, "units_list", false);
+	listbox& list = find_widget<listbox>(&window, "units_list", false);
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	connect_signal_notify_modified(*list,
-			std::bind(&tunit_list::list_item_clicked,
+			std::bind(&unit_list::list_item_clicked,
 				*this, std::ref(window)));
 #else
 	list.set_callback_value_change(
-			dialog_callback<tunit_list, &tunit_list::list_item_clicked>);
+			dialog_callback<unit_list, &unit_list::list_item_clicked>);
 #endif
 
 	list.clear();
@@ -146,24 +148,24 @@ void tunit_list::pre_show(twindow& window)
 		column["label"] = utils::join(unit->trait_names(), ", ");
 		row_data.emplace("unit_traits", column);
 
-		tgrid* row_grid = &list.add_row(row_data);
+		grid* row_grid = &list.add_row(row_data);
 
 		// NOTE: this needs to be done *after* the row is added
 		// TODO: show custom statuses
 		if(!unit->get_state(unit::STATE_PETRIFIED)) {
-			find_widget<timage>(row_grid, "unit_status_petrified", false).set_visible(twidget::tvisible::invisible);
+			find_widget<image>(row_grid, "unit_status_petrified", false).set_visible(widget::visibility::invisible);
 		}
 
 		if(!unit->get_state(unit::STATE_POISONED)) {
-			find_widget<timage>(row_grid, "unit_status_poisoned", false).set_visible(twidget::tvisible::invisible);
+			find_widget<image>(row_grid, "unit_status_poisoned", false).set_visible(widget::visibility::invisible);
 		}
 
 		if(!unit->get_state(unit::STATE_SLOWED)) {
-			find_widget<timage>(row_grid, "unit_status_slowed", false).set_visible(twidget::tvisible::invisible);
+			find_widget<image>(row_grid, "unit_status_slowed", false).set_visible(widget::visibility::invisible);
 		}
 
 		if(!unit->invisible(unit->get_location(), *resources::gameboard, false)) {
-			find_widget<timage>(row_grid, "unit_status_invisible", false).set_visible(twidget::tvisible::invisible);
+			find_widget<image>(row_grid, "unit_status_invisible", false).set_visible(widget::visibility::invisible);
 		}
 	}
 
@@ -179,23 +181,23 @@ void tunit_list::pre_show(twindow& window)
 	list_item_clicked(window);
 }
 
-void tunit_list::list_item_clicked(twindow& window)
+void unit_list::list_item_clicked(window& window)
 {
 	const int selected_row
-		= find_widget<tlistbox>(&window, "units_list", false).get_selected_row();
+		= find_widget<listbox>(&window, "units_list", false).get_selected_row();
 
 	if(selected_row == -1) {
 		return;
 	}
 
-	find_widget<tunit_preview_pane>(&window, "unit_details", false)
+	find_widget<unit_preview_pane>(&window, "unit_details", false)
 		.set_displayed_unit(*unit_list_[selected_row].get());
 }
 
-void tunit_list::post_show(twindow& window)
+void unit_list::post_show(window& window)
 {
-	if(get_retval() == twindow::OK) {
-		const int selected_row = find_widget<tlistbox>(&window, "units_list", false).get_selected_row();
+	if(get_retval() == window::OK) {
+		const int selected_row = find_widget<listbox>(&window, "units_list", false).get_selected_row();
 
 		scroll_to_ = unit_list_[selected_row].get()->get_location();
 	}
@@ -215,10 +217,11 @@ void show_unit_list(display& gui)
 		unit_list.push_back(i.get_shared_ptr());
 	}
 
-	if(gui2::tunit_list::execute(unit_list, scroll_to, gui.video())) {
+	if(unit_list::execute(unit_list, scroll_to, gui.video())) {
 		gui.scroll_to_tile(scroll_to, display::WARP);
 		gui.select_hex(scroll_to);
 	}
 }
 
-}
+} // namespace dialogs
+} // namespace gui2

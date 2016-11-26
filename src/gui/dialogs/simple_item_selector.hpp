@@ -15,19 +15,21 @@
 #ifndef GUI_DIALOGS_SIMPLE_ITEM_SELECTOR_HPP_INCLUDED
 #define GUI_DIALOGS_SIMPLE_ITEM_SELECTOR_HPP_INCLUDED
 
-#include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
 
 #include <vector>
 
 namespace gui2
 {
+namespace dialogs
+{
 
-class tsimple_item_selector : public tdialog
+class simple_item_selector : public modal_dialog
 {
 public:
 	typedef std::vector<std::string> list_type;
 
-	tsimple_item_selector(const std::string& title,
+	simple_item_selector(const std::string& title,
 						  const std::string& message,
 						  list_type const& items,
 						  bool title_uses_markup = false,
@@ -86,15 +88,16 @@ private:
 
 	std::string ok_label_, cancel_label_;
 
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	/** Inherited from modal_dialog. */
+	void pre_show(window& window);
 
-	/** Inherited from tdialog. */
-	void post_show(twindow& window);
+	/** Inherited from modal_dialog. */
+	void post_show(window& window);
 };
-}
+} // namespace dialogs
+} // namespace gui2
 
 #endif /* ! GUI_DIALOGS_SIMPLE_ITEM_SELECTOR_HPP_INCLUDED */

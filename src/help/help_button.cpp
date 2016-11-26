@@ -12,9 +12,9 @@
    See the COPYING file for more details.
 */
 
-#include "help_button.hpp"
+#include "help/help_button.hpp"
 
-#include "help.hpp"
+#include "help/help.hpp"
 #include "gettext.hpp"
 #include "config.hpp"
 

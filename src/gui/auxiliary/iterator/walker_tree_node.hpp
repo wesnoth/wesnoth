@@ -22,13 +22,13 @@
 namespace gui2
 {
 
-class ttree_view_node;
+class tree_view_node;
 
-namespace iterator
+namespace iteration
 {
 
-/** A walker for a @ref gui2::ttree_view_node. */
-class ttree_node : public twalker_
+/** A walker for a @ref gui2::tree_view_node. */
+class tree_node : public walker_base
 {
 public:
 	/**
@@ -37,39 +37,39 @@ public:
 	 * @param node                The tree view node which the walker is attached to.
 	 * @param children            The node's children.
 	 */
-	ttree_node(gui2::ttree_view_node& node, boost::ptr_vector<gui2::ttree_view_node>& children);
+	tree_node(gui2::tree_view_node& node, boost::ptr_vector<gui2::tree_view_node>& children);
 
-	/** Inherited from @ref gui2::iterator::twalker_. */
-	virtual tstate next(const tlevel level);
+	/** Inherited from @ref gui2::iteration::walker_base. */
+	virtual state_t next(const level level);
 
-	/** Inherited from @ref gui2::iterator::twalker_. */
-	virtual bool at_end(const tlevel level) const;
+	/** Inherited from @ref gui2::iteration::walker_base. */
+	virtual bool at_end(const level level) const;
 
-	/** Inherited from @ref gui2::iterator::twalker_. */
-	virtual gui2::twidget* get(const tlevel level);
+	/** Inherited from @ref gui2::iteration::walker_base. */
+	virtual gui2::widget* get(const level level);
 
 private:
 	/** The children of the node which the walker is attached to. */
-	boost::ptr_vector<gui2::ttree_view_node>& children_;
+	boost::ptr_vector<gui2::tree_view_node>& children_;
 
 	/**
 	 * The node which the walker is attached to.
 	 *
 	 * This variable is used to track whether the @ref
-	 * gui2::iterator::twalker_::widget level has been visited.
+	 * gui2::iteration::walker_base::widget level has been visited.
 	 */
-	gui2::twidget* widget_;
+	gui2::widget* widget_;
 
 	/**
 	 * The iterator to the children of @ref node_.
 	 *
 	 * This variable is used to track where the @ref
-	 * gui2::iterator::twalker_::child level visiting is.
+	 * gui2::iteration::walker_base::child level visiting is.
 	 */
-	boost::ptr_vector<gui2::ttree_view_node>::iterator itor_;
+	boost::ptr_vector<gui2::tree_view_node>::iterator itor_;
 };
 
-} // namespace iterator
+} // namespace iteration
 
 } // namespace gui2
 

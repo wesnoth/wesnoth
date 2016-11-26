@@ -11,26 +11,24 @@
 
    See the COPYING file for more details.
 */
-#include "create_engine.hpp"
+#include "game_initialization/create_engine.hpp"
 
-#include "depcheck.hpp"
 #include "config_assign.hpp"
-#include "game_config_manager.hpp"
-#include "game_launcher.hpp"
-#include "game_preferences.hpp"
-#include "generators/map_generator.hpp"
-#include "gui/dialogs/campaign_difficulty.hpp"
 #include "filesystem.hpp"
 #include "formula/string_utils.hpp"
-#include "hash.hpp"
-#include "log.hpp"
+#include "game_config_manager.hpp"
+#include "game_initialization/depcheck.hpp"
+#include "game_preferences.hpp"
 #include "generators/map_create.hpp"
+#include "generators/map_generator.hpp"
+#include "gui/dialogs/campaign_difficulty.hpp"
+#include "hash.hpp"
+#include "image.hpp"
+#include "log.hpp"
 #include "map/exception.hpp"
 #include "map/map.hpp"
-#include "font/marked-up_text.hpp"
 #include "minimap.hpp"
 #include "saved_game.hpp"
-#include "wml_separators.hpp"
 #include "wml_exception.hpp"
 
 #include "serialization/preprocessor.hpp"
@@ -126,7 +124,6 @@ config& level::data()
 scenario::scenario(const config& data) :
 	level(data),
 	map_(),
-	minimap_img_(),
 	map_hash_(),
 	num_players_(0)
 {
@@ -141,23 +138,6 @@ bool scenario::can_launch_game() const
 	return map_.get() != nullptr;
 }
 
-surface scenario::create_image_surface(const SDL_Rect& image_rect)
-{
-	if (!map_) {
-		minimap_img_ = surface();
-		return minimap_img_;
-	}
-
-	std::string current_hash = util::encode_hash(util::md5(map_->write()));
-
-	if (minimap_img_.null() || (map_hash_ != current_hash)) { // If there's no minimap image, or the map hash doesn't match, regenerate the image cache.
-		minimap_img_ = image::getMinimap(image_rect.w, image_rect.h, *map_, 0);
-		map_hash_ = current_hash;
-	}
-
-	return minimap_img_;
-}
-
 void scenario::set_metadata()
 {
 	const std::string& map_data = data_["map_data"];
@@ -169,7 +149,7 @@ void scenario::set_metadata()
 		data_["description"] = _("Map could not be loaded: ") + e.message;
 
 		ERR_CF << "map could not be loaded: " << e.message << '\n';
-	} catch(twml_exception& e) {
+	} catch(wml_exception& e) {
 		data_["description"] = _("Map could not be loaded.");
 
 		ERR_CF << "map could not be loaded: " << e.dev_message << '\n';
@@ -339,14 +319,6 @@ campaign::~campaign()
 bool campaign::can_launch_game() const
 {
 	return !data_.empty();
-}
-
-surface campaign::create_image_surface(const SDL_Rect& image_rect)
-{
-	surface temp_image(
-		image::get_image(image::locator(image_label_)));
-
-	return scale_surface(temp_image, image_rect.w, image_rect.h);
 }
 
 void campaign::set_metadata()
@@ -625,7 +597,7 @@ std::string create_engine::select_campaign_difficulty(int set_value)
 	// If not, let the user pick one from the prompt
 	// We don't pass the difficulties vector here because additional data is required
 	// to constrict the dialog
-	gui2::tcampaign_difficulty dlg(current_level().data());
+	gui2::dialogs::campaign_difficulty dlg(current_level().data());
 	dlg.show(video_);
 
 	selected_campaign_difficulty_ = dlg.selected_difficulty();
@@ -716,29 +688,12 @@ int create_engine::player_num_filter() const
 	return player_count_filter_;
 }
 
-std::vector<std::string> create_engine::levels_menu_item_names() const
-{
-	std::vector<std::string> menu_names;
-
-	for (level_ptr level : get_levels_by_type(current_level_type_)) {
-		menu_names.push_back(IMAGE_PREFIX + level->icon() + IMG_TEXT_SEPARATOR + level->name()
-				+ HELP_STRING_SEPARATOR + level->name());
-	}
-
-	return menu_names;
-}
-
-std::vector<std::string> create_engine::extras_menu_item_names(
-	const MP_EXTRA extra_type, bool escape_markup) const
+std::vector<std::string> create_engine::extras_menu_item_names(const MP_EXTRA extra_type) const
 {
 	std::vector<std::string> names;
 
-	for (extras_metadata_ptr extra : get_const_extras_by_type(extra_type)) {
-		if (escape_markup) {
-			names.push_back(font::NULL_MARKUP + extra->name);
-		} else {
-			names.push_back(extra->name);
-		}
+	for(extras_metadata_ptr extra : get_const_extras_by_type(extra_type)) {
+		names.push_back(extra->name);
 	}
 
 	return names;
@@ -1051,7 +1006,7 @@ void create_engine::init_all_levels()
 					e.message;
 
 				ERR_CF << "map could not be loaded: " << e.message << '\n';
-			} catch (twml_exception&) {
+			} catch (wml_exception&) {
 				add_map = false;
 				dep_index_offset++;
 			}

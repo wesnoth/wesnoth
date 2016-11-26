@@ -33,6 +33,8 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -78,35 +80,35 @@ namespace gui2
 
 REGISTER_DIALOG(campaign_settings)
 
-tcampaign_settings::tcampaign_settings(ng::create_engine& eng)
+campaign_settings::campaign_settings(ng::create_engine& eng)
 		: engine_(eng)
 { }
 
 
-void tcampaign_settings::change_era(twindow& window)
+void campaign_settings::change_era(window& window)
 {
-	tlistbox& list = find_widget<tlistbox>(&window, "era_list", false);
+	listbox& list = find_widget<listbox>(&window, "era_list", false);
 	engine_.set_current_era_index(list.get_selected_row());
 }
 
-void tcampaign_settings::change_mod(size_t index, twindow&)
+void campaign_settings::change_mod(size_t index, window&)
 {
 	engine_.set_current_mod_index(index);
 	// force toggle mod.
 	engine_.toggle_current_mod(true);
 }
 
-void tcampaign_settings::update_lists(twindow& window)
+void campaign_settings::update_lists(window& window)
 {
-	tlistbox& era_list = find_widget<tlistbox>(&window, "era_list", false);
-	tlistbox& mod_list = find_widget<tlistbox>(&window, "modification_list", false);
-	tlabel& era_label = find_widget<tlabel>(&window, "era_label", false);
-	tlabel& mod_label = find_widget<tlabel>(&window, "mod_label", false);
+	listbox& era_list = find_widget<listbox>(&window, "era_list", false);
+	listbox& mod_list = find_widget<listbox>(&window, "modification_list", false);
+	label& era_label = find_widget<label>(&window, "era_label", false);
+	label& mod_label = find_widget<label>(&window, "mod_label", false);
 
 	era_list.clear();
 
 	if (engine_.current_level().allow_era_choice()) {
-		for (std::string era : engine_.extras_menu_item_names(ng::create_engine::ERA, false)) {
+		for (std::string era : engine_.extras_menu_item_names(ng::create_engine::ERA)) {
 			std::map<std::string, string_map> row;
 			string_map column;
 
@@ -149,17 +151,17 @@ void tcampaign_settings::update_lists(twindow& window)
 	}
 }
 
-void tcampaign_settings::pre_show(twindow& window)
+void campaign_settings::pre_show(window& window)
 {
-	find_widget<ttoggle_button>(&window, "mp_connect", false).set_value(
+	find_widget<toggle_button>(&window, "mp_connect", false).set_value(
 		engine_.get_state().mp_settings().show_connect);
 
 	update_lists(window);
 
-	tlistbox& era_list = find_widget<tlistbox>(&window, "era_list", false);
-	tlistbox& mod_list = find_widget<tlistbox>(&window, "modification_list", false);
+	listbox& era_list = find_widget<listbox>(&window, "era_list", false);
+	listbox& mod_list = find_widget<listbox>(&window, "modification_list", false);
 
-	ttoggle_button& connect_toggle = find_widget<ttoggle_button>(&window, "mp_connect", false);
+	toggle_button& connect_toggle = find_widget<toggle_button>(&window, "mp_connect", false);
 
 	const config::attribute_value& show_connect = engine_.current_level().data()["show_connect"];
 	if (show_connect.blank() || show_connect.str() == "user") {
@@ -170,15 +172,16 @@ void tcampaign_settings::pre_show(twindow& window)
 	}
 
 	era_list.set_callback_item_change(
-			std::bind(&tcampaign_settings::change_era, this, std::ref(window)));
+			std::bind(&campaign_settings::change_era, this, std::ref(window)));
 	mod_list.set_callback_item_change(
-			std::bind(&tcampaign_settings::change_mod, this, _1, std::ref(window)));
+			std::bind(&campaign_settings::change_mod, this, _1, std::ref(window)));
 }
 
-void tcampaign_settings::post_show(twindow& window)
+void campaign_settings::post_show(window& window)
 {
 	engine_.get_state().mp_settings().show_connect =
-		find_widget<ttoggle_button>(&window, "mp_connect", false).get_value_bool();
+		find_widget<toggle_button>(&window, "mp_connect", false).get_value_bool();
 }
 
-} // end namespace gui2
+} // namespace dialogs
+} // namespace gui2

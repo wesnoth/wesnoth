@@ -17,12 +17,12 @@
 #include "gui/dialogs/wml_error.hpp"
 
 #include "addon/info.hpp"
-#include "addon/manager.hpp"
+#include "addon/manager_old.hpp"
 #include "desktop/clipboard.hpp"
 #include "filesystem.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/button.hpp"
-#include "gui/widgets/control.hpp"
+#include "gui/widgets/styled_widget.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "serialization/string_utils.hpp"
@@ -132,6 +132,8 @@ std::string format_file_list(const std::vector<std::string>& files_original)
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -143,20 +145,20 @@ namespace gui2
  *
  * @begin{table}{dialog_widgets}
  *
- * summary & & control & m &
+ * summary & & styled_widget & m &
  *         Label used for displaying a brief summary of the error(s). $
  *
- * files & & control & m &
+ * files & & styled_widget & m &
  *         Label used to display the list of affected add-ons or files, if
  *         applicable. It is hidden otherwise. It is recommended to place it
  *         after the summary label. $
  *
- * post_summary & & control & m &
+ * post_summary & & styled_widget & m &
  *         Label used for displaying instructions for reporting the error.
  *         It is recommended to place it after the file list label. It may be
  *         hidden if empty. $
  *
- * details & & control & m &
+ * details & & styled_widget & m &
  *         Full report of the parser or preprocessor error(s) found. $
  *
  * copy & & button & m &
@@ -168,7 +170,7 @@ namespace gui2
 
 REGISTER_DIALOG(wml_error)
 
-twml_error::twml_error(const std::string& summary,
+wml_error::wml_error(const std::string& summary,
 					   const std::string& post_summary,
 					   const std::vector<std::string>& files,
 					   const std::string& details)
@@ -203,23 +205,23 @@ twml_error::twml_error(const std::string& summary,
 	register_label("details", true, details);
 }
 
-void twml_error::pre_show(twindow& window)
+void wml_error::pre_show(window& window)
 {
 	if(!have_files_) {
-		tcontrol& filelist = find_widget<tcontrol>(&window, "files", false);
-		filelist.set_visible(tcontrol::tvisible::invisible);
+		styled_widget& filelist = find_widget<styled_widget>(&window, "files", false);
+		filelist.set_visible(styled_widget::visibility::invisible);
 	}
 
 	if(!have_post_summary_) {
-		tcontrol& post_summary
-				= find_widget<tcontrol>(&window, "post_summary", false);
-		post_summary.set_visible(tcontrol::tvisible::invisible);
+		styled_widget& post_summary
+				= find_widget<styled_widget>(&window, "post_summary", false);
+		post_summary.set_visible(styled_widget::visibility::invisible);
 	}
 
-	tbutton& copy_button = find_widget<tbutton>(&window, "copy", false);
+	button& copy_button = find_widget<button>(&window, "copy", false);
 
 	connect_signal_mouse_left_click(
-			copy_button, std::bind(&twml_error::copy_report_callback, this));
+			copy_button, std::bind(&wml_error::copy_report_callback, this));
 
 	if (!desktop::clipboard::available()) {
 		copy_button.set_active(false);
@@ -227,9 +229,10 @@ void twml_error::pre_show(twindow& window)
 	}
 }
 
-void twml_error::copy_report_callback()
+void wml_error::copy_report_callback()
 {
 	desktop::clipboard::copy_to_clipboard(report_, false);
 }
 
+} // end namespace dialogs
 } // end namespace gui2

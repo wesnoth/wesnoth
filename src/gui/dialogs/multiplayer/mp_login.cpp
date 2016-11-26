@@ -27,6 +27,8 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -62,7 +64,7 @@ namespace gui2
 
 REGISTER_DIALOG(mp_login)
 
-tmp_login::tmp_login(const std::string& label, const bool focus_password)
+mp_login::mp_login(const std::string& label, const bool focus_password)
 {
 	register_label("login_label", false, label);
 	register_text("user_name",
@@ -84,28 +86,29 @@ tmp_login::tmp_login(const std::string& label, const bool focus_password)
 				  &preferences::set_remember_password);
 }
 
-void tmp_login::pre_show(twindow& window)
+void mp_login::pre_show(window& win)
 {
-	if(tbutton* button
-	   = find_widget<tbutton>(&window, "password_reminder", false, false)) {
+	if(button* btn
+	   = find_widget<button>(&win, "password_reminder", false, false)) {
 
-		button->set_retval(1);
+		btn->set_retval(1);
 	}
 
-	if(tbutton* button
-	   = find_widget<tbutton>(&window, "change_username", false, false)) {
+	if(button* btn
+	   = find_widget<button>(&win, "change_username", false, false)) {
 
-		button->set_retval(2);
+		btn->set_retval(2);
 	}
 }
 
-void tmp_login::post_show(twindow& window)
+void mp_login::post_show(window& win)
 {
-	if(get_retval() == twindow::OK) {
+	if(get_retval() == window::OK) {
 		preferences::set_password(
-				find_widget<tpassword_box>(&window, "password", false)
+				find_widget<password_box>(&win, "password", false)
 						.get_real_value());
 	}
 }
 
+} // namespace dialogs
 } // namespace gui2

@@ -18,9 +18,36 @@
 #include <SDL.h>
 
 namespace font {
-	extern const SDL_Color NORMAL_COLOR, GRAY_COLOR, LOBBY_COLOR, GOOD_COLOR, BAD_COLOR,
-		BLACK_COLOR, YELLOW_COLOR, BUTTON_COLOR, BIGMAP_COLOR,
-		PETRIFIED_COLOR, TITLE_COLOR, DISABLED_COLOR, LABEL_COLOR;
+
+//
+// TODO: these should probably all be constexpr
+//
+
+extern const SDL_Color
+	// These are GUI1 formatting colors and should be removed when GUI1 is
+	NORMAL_COLOR,
+	GRAY_COLOR,
+	LOBBY_COLOR,
+	GOOD_COLOR,
+	BAD_COLOR,
+	BLACK_COLOR,
+	YELLOW_COLOR,
+	BUTTON_COLOR,
+	BIGMAP_COLOR,
+	PETRIFIED_COLOR,
+	TITLE_COLOR,
+	DISABLED_COLOR,
+	LABEL_COLOR,
+
+	// General purpose color values
+	weapon_color,
+	good_dmg_color,
+	bad_dmg_color,
+	weapon_details_color,
+	inactive_details_color,
+	inactive_ability_color,
+	unit_type_color,
+	race_color;
 }
 
 #endif

@@ -58,13 +58,13 @@ static std::ostream& output()
 
 namespace lg {
 
-tredirect_output_setter::tredirect_output_setter(std::ostream& stream)
+redirect_output_setter::redirect_output_setter(std::ostream& stream)
 	: old_stream_(output_stream)
 {
 	output_stream = &stream;
 }
 
-tredirect_output_setter::~tredirect_output_setter()
+redirect_output_setter::~redirect_output_setter()
 {
 	output_stream = old_stream_;
 }
@@ -99,9 +99,10 @@ logger& debug()
 	return lg;
 }
 
+static log_domain dom("general");
+
 log_domain& general()
 {
-	static log_domain dom("general");
 	return dom;
 }
 

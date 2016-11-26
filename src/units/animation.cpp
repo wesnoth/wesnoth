@@ -597,7 +597,7 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 
 static void add_simple_anim(std::vector<unit_animation> &animations,
 	const config &cfg, char const *tag_name, char const *apply_to,
-	display::tdrawing_layer layer = display::LAYER_UNIT_DEFAULT,
+	display::drawing_layer layer = display::LAYER_UNIT_DEFAULT,
 	bool offscreen = true)
 {
 	for (const animation_branch &ab : prepare_animation(cfg, tag_name))

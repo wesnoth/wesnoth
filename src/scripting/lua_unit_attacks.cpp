@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-#include "lua_unit_attacks.hpp"
+#include "scripting/lua_unit_attacks.hpp"
 
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_unit.hpp"
@@ -81,7 +81,7 @@ attack_type& luaW_checkweapon(lua_State* L, int idx)
 }
 
 template<typename T>
-using attack_ptr_in = boost::intrusive_ptr<typename utils::tconst_clone<attack_type, typename std::remove_pointer<T>::type>::type>;
+using attack_ptr_in = boost::intrusive_ptr<typename utils::const_clone<attack_type, typename std::remove_pointer<T>::type>::type>;
 
 // Note that these two templates are designed on the assumption that T is either unit or unit_type
 template<typename T>

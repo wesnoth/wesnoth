@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-#include "text_cache.hpp"
+#include "font/text_cache.hpp"
 
 namespace font {
 

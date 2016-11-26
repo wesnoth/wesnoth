@@ -848,14 +848,9 @@ std::string team::get_side_color_index(int side)
 	return std::to_string(side);
 }
 
-std::string team::get_side_highlight(int side)
-{
-	return rgb2highlight(get_side_color_range(side+1).mid());
-}
-
 std::string team::get_side_highlight_pango(int side)
 {
-	return font::rgb2highlight_pango(get_side_color_range(side+1).mid());
+	return font::unit32_to_pango_color(get_side_color_range(side+1).mid());
 }
 
 void team::log_recruitable() const {

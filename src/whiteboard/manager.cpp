@@ -16,17 +16,17 @@
  * @file
  */
 
-#include "manager.hpp"
+#include "whiteboard/manager.hpp"
 
-#include "action.hpp"
-#include "highlighter.hpp"
-#include "mapbuilder.hpp"
-#include "move.hpp"
-#include "attack.hpp"
-#include "recall.hpp"
-#include "recruit.hpp"
-#include "side_actions.hpp"
-#include "utility.hpp"
+#include "whiteboard/action.hpp"
+#include "whiteboard/highlighter.hpp"
+#include "whiteboard/mapbuilder.hpp"
+#include "whiteboard/move.hpp"
+#include "whiteboard/attack.hpp"
+#include "whiteboard/recall.hpp"
+#include "whiteboard/recruit.hpp"
+#include "whiteboard/side_actions.hpp"
+#include "whiteboard/utility.hpp"
 
 #include "actions/create.hpp"
 #include "actions/undo.hpp"
@@ -1100,7 +1100,7 @@ void manager::options_dlg()
 			options.push_back(vgettext("Hide plans for $player", t_vars));
 	}
 
-	gui2::tsimple_item_selector dlg("", _("Whiteboard Options"), options);
+	gui2::dialogs::simple_item_selector dlg("", _("Whiteboard Options"), options);
 	dlg.show(resources::screen->video());
 	selection = dlg.selected_index();
 

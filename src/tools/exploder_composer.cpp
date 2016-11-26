@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-#include "exploder_composer.hpp"
+#include "tools/exploder_composer.hpp"
 #include <SDL_image.h>
 
 #include <iostream>

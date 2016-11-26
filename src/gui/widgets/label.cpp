@@ -40,66 +40,66 @@ namespace gui2
 
 REGISTER_WIDGET(label)
 
-tlabel::tlabel()
-		: tcontrol(COUNT)
+label::label()
+		: styled_widget(COUNT)
 		, state_(ENABLED)
 		, can_wrap_(false)
 		, characters_per_line_(0)
 		, link_aware_(false)
 		, link_color_("#ffff00")
 {
-	connect_signal<event::LEFT_BUTTON_CLICK>(std::bind(&tlabel::signal_handler_left_button_click, this, _2, _3));
-	connect_signal<event::RIGHT_BUTTON_CLICK>(std::bind(&tlabel::signal_handler_right_button_click, this, _2, _3));
+	connect_signal<event::LEFT_BUTTON_CLICK>(std::bind(&label::signal_handler_left_button_click, this, _2, _3));
+	connect_signal<event::RIGHT_BUTTON_CLICK>(std::bind(&label::signal_handler_right_button_click, this, _2, _3));
 }
 
-bool tlabel::can_wrap() const
+bool label::can_wrap() const
 {
 	return can_wrap_ || characters_per_line_ != 0;
 }
 
-unsigned tlabel::get_characters_per_line() const
+unsigned label::get_characters_per_line() const
 {
 	return characters_per_line_;
 }
 
-bool tlabel::get_link_aware() const
+bool label::get_link_aware() const
 {
 	return link_aware_;
 }
 
-std::string tlabel::get_link_color() const
+std::string label::get_link_color() const
 {
 	return link_color_;
 }
 
-void tlabel::set_active(const bool active)
+void label::set_active(const bool active)
 {
 	if(get_active() != active) {
 		set_state(active ? ENABLED : DISABLED);
 	}
 }
 
-bool tlabel::get_active() const
+bool label::get_active() const
 {
 	return state_ != DISABLED;
 }
 
-unsigned tlabel::get_state() const
+unsigned label::get_state() const
 {
 	return state_;
 }
 
-bool tlabel::disable_click_dismiss() const
+bool label::disable_click_dismiss() const
 {
 	return false;
 }
 
-void tlabel::set_characters_per_line(const unsigned characters_per_line)
+void label::set_characters_per_line(const unsigned characters_per_line)
 {
 	characters_per_line_ = characters_per_line;
 }
 
-void tlabel::set_link_aware(bool link_aware)
+void label::set_link_aware(bool link_aware)
 {
 	if(link_aware == link_aware_) {
 		return;
@@ -110,7 +110,7 @@ void tlabel::set_link_aware(bool link_aware)
 	set_is_dirty(true);
 }
 
-void tlabel::set_link_color(const std::string & color)
+void label::set_link_color(const std::string & color)
 {
 	if(color == link_color_) {
 		return;
@@ -120,7 +120,7 @@ void tlabel::set_link_color(const std::string & color)
 	set_is_dirty(true);
 }
 
-void tlabel::set_state(const tstate state)
+void label::set_state(const state_t state)
 {
 	if(state != state_) {
 		state_ = state;
@@ -128,18 +128,18 @@ void tlabel::set_state(const tstate state)
 	}
 }
 
-const std::string& tlabel::get_control_type() const
+const std::string& label::get_control_type() const
 {
 	static const std::string type = "label";
 	return type;
 }
 
-void tlabel::load_config_extra()
+void label::load_config_extra()
 {
 	assert(config());
 
-	std::shared_ptr<const tlabel_definition::tresolution>
-	conf = std::static_pointer_cast<const tlabel_definition::tresolution>(
+	std::shared_ptr<const label_definition::resolution>
+	conf = std::static_pointer_cast<const label_definition::resolution>(
 			config());
 
 	assert(conf);
@@ -149,7 +149,7 @@ void tlabel::load_config_extra()
 }
 
 
-void tlabel::signal_handler_left_button_click(const event::tevent /* event */, bool & handled)
+void label::signal_handler_left_button_click(const event::ui_event /* event */, bool & handled)
 {
 	DBG_GUI_E << "label click" << std::endl;
 
@@ -158,13 +158,13 @@ void tlabel::signal_handler_left_button_click(const event::tevent /* event */, b
 	}
 
 	if (!desktop::open_object_is_supported()) {
-		gui2::show_message(get_window()->video(), "", _("Opening links is not supported, contact your packager"), gui2::tmessage::auto_close);
+		show_message(get_window()->video(), "", _("Opening links is not supported, contact your packager"), dialogs::message::auto_close);
 		handled = true;
 		return;
 	}
 
 
-	tpoint mouse = get_mouse_position();
+	point mouse = get_mouse_position();
 
 	mouse.x -= get_x();
 	mouse.y -= get_y();
@@ -177,15 +177,15 @@ void tlabel::signal_handler_left_button_click(const event::tevent /* event */, b
 
 	DBG_GUI_E << "Clicked Link:\"" << link << "\"\n";
 
-	const int res = gui2::show_message(get_window()->video(), _("Confirm"), _("Do you want to open this link?") + std::string("\n\n") + link, gui2::tmessage::yes_no_buttons);
-	if(res == gui2::twindow::OK) {
+	const int res = show_message(get_window()->video(), _("Confirm"), _("Do you want to open this link?") + std::string("\n\n") + link, dialogs::message::yes_no_buttons);
+	if(res == gui2::window::OK) {
 		desktop::open_object(link);
 	}
 
 	handled = true;
 }
 
-void tlabel::signal_handler_right_button_click(const event::tevent /* event */, bool & handled)
+void label::signal_handler_right_button_click(const event::ui_event /* event */, bool & handled)
 {
 	DBG_GUI_E << "label right click" << std::endl;
 
@@ -193,7 +193,7 @@ void tlabel::signal_handler_right_button_click(const event::tevent /* event */, 
 		return ; // without marking event as "handled".
 	}
 
-	tpoint mouse = get_mouse_position();
+	point mouse = get_mouse_position();
 
 	mouse.x -= get_x();
 	mouse.y -= get_y();
@@ -208,19 +208,19 @@ void tlabel::signal_handler_right_button_click(const event::tevent /* event */, 
 
 	desktop::clipboard::copy_to_clipboard(link, false);
 
-	gui2::show_message(get_window()->video(), "", _("Copied link!"), gui2::tmessage::auto_close);
+	show_message(get_window()->video(), "", _("Copied link!"), dialogs::message::auto_close);
 
 	handled = true;
 }
 
 // }---------- DEFINITION ---------{
 
-tlabel_definition::tlabel_definition(const config& cfg)
-	: tcontrol_definition(cfg)
+label_definition::label_definition(const config& cfg)
+	: styled_widget_definition(cfg)
 {
 	DBG_GUI_P << "Parsing label " << id << '\n';
 
-	load_resolutions<tresolution>(cfg);
+	load_resolutions<resolution>(cfg);
 }
 
 /*WIKI
@@ -261,14 +261,14 @@ tlabel_definition::tlabel_definition(const config& cfg)
  * @end{tag}{name="label_definition"}
  * @end{parent}{name="gui/"}
  */
-tlabel_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
+label_definition::resolution::resolution(const config& cfg)
+	: resolution_definition(cfg)
 	, link_aware(cfg["link_aware"].to_bool(false))
 	, link_color(cfg["link_color"].str().size() > 0 ? cfg["link_color"].str() : "#ffff00")
 {
-	// Note the order should be the same as the enum tstate is label.hpp.
-	state.push_back(tstate_definition(cfg.child("state_enabled")));
-	state.push_back(tstate_definition(cfg.child("state_disabled")));
+	// Note the order should be the same as the enum state_t is label.hpp.
+	state.push_back(state_definition(cfg.child("state_enabled")));
+	state.push_back(state_definition(cfg.child("state_disabled")));
 }
 
 // }---------- BUILDER -----------{
@@ -313,28 +313,28 @@ tlabel_definition::tresolution::tresolution(const config& cfg)
 namespace implementation
 {
 
-tbuilder_label::tbuilder_label(const config& cfg)
-	: tbuilder_control(cfg)
+builder_label::builder_label(const config& cfg)
+	: builder_styled_widget(cfg)
 	, wrap(cfg["wrap"].to_bool())
 	, characters_per_line(cfg["characters_per_line"])
 	, text_alignment(decode_text_alignment(cfg["text_alignment"]))
 {
 }
 
-twidget* tbuilder_label::build() const
+widget* builder_label::build() const
 {
-	tlabel* label = new tlabel();
+	label* lbl = new label();
 
-	init_control(label);
+	init_control(lbl);
 
-	label->set_can_wrap(wrap);
-	label->set_characters_per_line(characters_per_line);
-	label->set_text_alignment(text_alignment);
+	lbl->set_can_wrap(wrap);
+	lbl->set_characters_per_line(characters_per_line);
+	lbl->set_text_alignment(text_alignment);
 
 	DBG_GUI_G << "Window builder: placed label '" << id << "' with definition '"
 			  << definition << "'.\n";
 
-	return label;
+	return lbl;
 }
 
 } // namespace implementation

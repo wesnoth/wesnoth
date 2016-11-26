@@ -99,8 +99,6 @@ public:
     return(mid_ == b.mid() && max_ == b.max() && min_ == b.min() && rep_ == b.rep());
   }
 
-  int index() const; // the default team index for this color, or 0 for none
-
   /** Return a string describing the color range for debug output. */
   std::string debug() const;
 
@@ -123,11 +121,5 @@ std::vector<uint32_t> palette(color_range cr);
  *         are the result of applying the color range conversion on it.
  */
 std::map<uint32_t, uint32_t> recolor_range(const color_range& new_rgb, const std::vector<uint32_t>& old_rgb);
-
-/**
- * Converts a color value to WML text markup syntax for highlighting.
- * For example, 0x00CC00CC becomes "<204,0,204>".
- */
-std::string rgb2highlight(uint32_t rgb);
 
 #endif

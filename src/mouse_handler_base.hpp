@@ -18,7 +18,6 @@
 
 #include "map/location.hpp"
 #include <SDL_events.h>
-#include <SDL_version.h>
 
 class display;
 

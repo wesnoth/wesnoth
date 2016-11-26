@@ -12,12 +12,12 @@
    See the COPYING file for more details.
 */
 
-#include "lua_rng.hpp"
+#include "scripting/lua_rng.hpp"
 
 #include "log.hpp"
 #include "mt_rng.hpp"
-#include "lua_kernel_base.hpp"
-#include "lua_common.hpp" // for new(L)
+#include "scripting/lua_kernel_base.hpp"
+#include "scripting/lua_common.hpp" // for new(L)
 
 #include <new>
 #include <string>

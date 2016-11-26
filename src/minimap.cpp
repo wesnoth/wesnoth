@@ -44,14 +44,15 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 {
 	const terrain_type_data & tdata = *map.tdata();
 
-	const int scale = 24;
-
-	DBG_DP << "creating minimap " << int(map.w()*scale*0.75) << "," << map.h()*scale << "\n";
 
 	const bool preferences_minimap_draw_terrain = preferences::minimap_draw_terrain();
 	const bool preferences_minimap_terrain_coding = preferences::minimap_terrain_coding();
 	const bool preferences_minimap_draw_villages = preferences::minimap_draw_villages();
 	const bool preferences_minimap_unit_coding = preferences::minimap_movement_coding();
+
+	const int scale = (preferences_minimap_draw_terrain && preferences_minimap_terrain_coding) ? 24 : 4;
+
+	DBG_DP << "creating minimap " << int(map.w()*scale*0.75) << "," << map.h()*scale << "\n";
 
 	const size_t map_width = map.w()*scale*3/4;
 	const size_t map_height = map.h()*scale;
@@ -89,7 +90,7 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 			// shrouded hex are not considered fogged (no need to fog a black image)
 			const bool fogged = (vw != nullptr && !shrouded && vw->fogged(loc));
 
-			const t_translation::t_terrain terrain = shrouded ?
+			const t_translation::terrain_code terrain = shrouded ?
 					t_translation::VOID_TERRAIN : map[loc];
 			const terrain_type& terrain_info = tdata.get_terrain_info(terrain);
 
@@ -190,8 +191,8 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 						col = int_to_color(it->second.rep());
 
 					bool first = true;
-					const t_translation::t_list& underlying_terrains = tdata.underlying_union_terrain(terrain);
-					for(const t_translation::t_terrain& underlying_terrain : underlying_terrains) {
+					const t_translation::ter_list& underlying_terrains = tdata.underlying_union_terrain(terrain);
+					for(const t_translation::terrain_code& underlying_terrain : underlying_terrains) {
 
 						const std::string& terrain_id = tdata.get_terrain_info(underlying_terrain).id();
 						it = game_config::team_rgb_range.find(terrain_id);

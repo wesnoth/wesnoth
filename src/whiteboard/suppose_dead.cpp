@@ -16,12 +16,12 @@
  * @file
  */
 
-#include "suppose_dead.hpp"
+#include "whiteboard/suppose_dead.hpp"
 
-#include "visitor.hpp"
-#include "manager.hpp"
-#include "side_actions.hpp"
-#include "utility.hpp"
+#include "whiteboard/visitor.hpp"
+#include "whiteboard/manager.hpp"
+#include "whiteboard/side_actions.hpp"
+#include "whiteboard/utility.hpp"
 
 #include "arrow.hpp"
 #include "config.hpp"
@@ -138,7 +138,7 @@ void suppose_dead::draw_hex(const map_location& hex)
 	if(hex == loc_) //add symbol to hex
 	{
 		//@todo: Possibly use a different layer
-		const display::tdrawing_layer layer = display::LAYER_ARROWS;
+		const display::drawing_layer layer = display::LAYER_ARROWS;
 
 		int xpos = resources::screen->get_location_x(loc_);
 		int ypos = resources::screen->get_location_y(loc_);

@@ -392,8 +392,8 @@ private:
 	simple_wml::document level_;
 
 	/** Replay data. */
-	typedef boost::ptr_vector<simple_wml::document> t_history;
-	mutable t_history history_;
+	typedef boost::ptr_vector<simple_wml::document> history;
+	mutable history history_;
 
 	/** Pointer to the game's description in the games_and_users_list_. */
 	simple_wml::node* description_;

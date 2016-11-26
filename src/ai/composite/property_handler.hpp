@@ -75,16 +75,16 @@ typedef std::shared_ptr< base_property_handler > property_handler_ptr;
 template<typename T>
 class vector_property_handler : public base_property_handler {
 public:
-	typedef std::shared_ptr<T> t_ptr;
-	typedef std::vector< std::shared_ptr<T> > t_ptr_vector;
+	typedef std::shared_ptr<T> ptr;
+	typedef std::vector< std::shared_ptr<T> > ptr_vector;
 
-	vector_property_handler(const std::string &property, t_ptr_vector &values, std::function<void(t_ptr_vector&, const config&)> &construction_factory)
+	vector_property_handler(const std::string &property, ptr_vector &values, std::function<void(ptr_vector&, const config&)> &construction_factory)
 		: factory_(construction_factory), property_(property), values_(values){}
 
 
         component* handle_get(const path_element &child)
 	{
-	      	typename t_ptr_vector::iterator i = std::find_if(values_.begin(),values_.end(),path_element_matches<t_ptr>(child));
+			typename ptr_vector::iterator i = std::find_if(values_.begin(),values_.end(),path_element_matches<ptr>(child));
 		if (i!=values_.end()){
 			return &*(*i);
 		}
@@ -112,7 +112,7 @@ public:
 			handle_delete(with_same_id);
 		}
 
-	      	typename t_ptr_vector::iterator i = std::find_if(values_.begin(),values_.end(),path_element_matches<t_ptr>(child));
+			typename ptr_vector::iterator i = std::find_if(values_.begin(),values_.end(),path_element_matches<ptr>(child));
 		return do_add(i-values_.begin(),cfg);
 	}
 
@@ -124,7 +124,7 @@ public:
 			return true;
 		}
 
-		typename t_ptr_vector::iterator i = std::find_if(values_.begin(),values_.end(),path_element_matches<t_ptr>(child));
+		typename ptr_vector::iterator i = std::find_if(values_.begin(),values_.end(),path_element_matches<ptr>(child));
 		if (i!=values_.end()){
 			values_.erase(i);
 			return true;
@@ -136,14 +136,14 @@ public:
 	std::vector<component*> handle_get_children()
 	{
 		std::vector<component*> children;
-		for (t_ptr v : values_) {
+		for (ptr v : values_) {
 			children.push_back(&*v);
 		}
 		return children;
 	}
 
 protected:
-	void call_factory(t_ptr_vector& vec, const config& cfg)
+	void call_factory(ptr_vector& vec, const config& cfg)
 	{
 		factory_(vec, cfg);
 	}
@@ -153,19 +153,19 @@ private:
 		if (pos<0) {
 			pos = values_.size();
 		}
-		t_ptr_vector values;
+		ptr_vector values;
 		call_factory(values,cfg);
 		int j=0;
-		for (t_ptr b : values ) {
+		for (ptr b : values ) {
 			values_.insert(values_.begin()+pos+j,b);
 			j++;
 		}
 		return (j>0);
 	}
 
-	std::function<void(t_ptr_vector&, const config&)> factory_;
+	std::function<void(ptr_vector&, const config&)> factory_;
 	const std::string property_;
-	t_ptr_vector &values_;
+	ptr_vector &values_;
 
 };
 
@@ -173,11 +173,11 @@ private:
 
 template<typename T>
 class facets_property_handler : public vector_property_handler<T> {
-	typedef typename vector_property_handler<T>::t_ptr t_ptr;
-	typedef typename vector_property_handler<T>::t_ptr_vector t_ptr_vector;
+	typedef typename vector_property_handler<T>::ptr ptr;
+	typedef typename vector_property_handler<T>::ptr_vector ptr_vector;
 public:
 
-	facets_property_handler(const std::string &property, t_ptr_vector &values, t_ptr& def, std::function<void(t_ptr_vector&, const config&)> &construction_factory)
+	facets_property_handler(const std::string &property, ptr_vector &values, ptr& def, std::function<void(ptr_vector&, const config&)> &construction_factory)
 		: vector_property_handler<T>(property, values, construction_factory)
 		, default_(def)
 	{
@@ -196,7 +196,7 @@ public:
 	{
 		// special case - 'replace the default facet'
 		if (child.id == "default_facet") {
-			t_ptr_vector values;
+			ptr_vector values;
 			this->call_factory(values,cfg);
 			default_ = values.back();
 			return true;
@@ -212,7 +212,7 @@ public:
 	}
 
 private:
-	t_ptr& default_;
+	ptr& default_;
 };
 
 
@@ -220,8 +220,8 @@ private:
 template<typename T>
 class aspect_property_handler : public base_property_handler {
 public:
-	typedef std::shared_ptr<T> t_ptr;
-	typedef std::map< std::string, t_ptr > aspect_map;
+	typedef std::shared_ptr<T> ptr;
+	typedef std::map< std::string, ptr > aspect_map;
 
 	aspect_property_handler(const std::string &property, aspect_map &aspects, std::function<void(aspect_map&, const config&, std::string)> &construction_factory)
 		: property_(property), aspects_(aspects), factory_(construction_factory)

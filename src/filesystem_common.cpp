@@ -17,7 +17,8 @@ static lg::log_domain log_filesystem("filesystem");
 #define LOG_FS LOG_STREAM(info, log_filesystem)
 #define ERR_FS LOG_STREAM(err, log_filesystem)
 
-namespace filesystem {
+namespace filesystem
+{
 
 
 scoped_istream& scoped_istream::operator=(std::istream *s)
@@ -44,26 +45,6 @@ scoped_ostream::~scoped_ostream()
 	delete stream;
 }
 
-#ifdef __native_client__
-// For performance reasons, on NaCl we only keep preferences and saves in persistent storage.
-std::string get_prefs_file()
-{
-	return "/wesnoth-userdata/preferences";
-}
-
-std::string get_save_index_file()
-{
-	return "/wesnoth-userdata/save_index";
-}
-
-std::string get_saves_dir()
-{
-	const std::string dir_path = "/wesnoth-userdata/saves";
-	return get_dir(dir_path);
-}
-
-#else
-
 std::string get_prefs_file()
 {
 	return get_user_config_dir() + "/preferences";
@@ -88,7 +69,6 @@ std::string get_saves_dir()
 	const std::string dir_path = get_user_data_dir() + "/saves";
 	return get_dir(dir_path);
 }
-#endif
 
 std::string get_addons_dir()
 {

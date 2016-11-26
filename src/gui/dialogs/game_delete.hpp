@@ -15,26 +15,29 @@
 #ifndef GUI_DIALOGS_DELETE_GAME_HPP_INCLUDED
 #define GUI_DIALOGS_DELETE_GAME_HPP_INCLUDED
 
-#include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
 
 namespace gui2
 {
+namespace dialogs
+{
 
-class tgame_delete : public tdialog
+class game_delete : public modal_dialog
 {
 public:
-	tgame_delete();
+	game_delete();
 
-	/** The execute function see @ref tdialog for more information. */
+	/** The execute function see @ref modal_dialog for more information. */
 	static bool execute(CVideo& video)
 	{
-		return tgame_delete().show(video);
+		return game_delete().show(video);
 	}
 
 private:
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 };
-}
+} // namespace dialogs
+} // namespace gui2
 
 #endif

@@ -15,12 +15,14 @@
 #ifndef GUI_DIALOGS_SCREENSHOT_NOTIFICATION_HPP_INCLUDED
 #define GUI_DIALOGS_SCREENSHOT_NOTIFICATION_HPP_INCLUDED
 
-#include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
 
 namespace gui2
 {
+namespace dialogs
+{
 
-class tscreenshot_notification : public tdialog
+class screenshot_notification : public modal_dialog
 {
 public:
 	/**
@@ -30,28 +32,29 @@ public:
 	 *                 ensure the file exists, otherwise it will be displayed
 	 *                 with size 0.
 	 */
-	tscreenshot_notification(const std::string& path);
+	screenshot_notification(const std::string& path);
 
 	/**
 	 * The display function.
 	 *
-	 * See @ref tdialog for more information.
+	 * See @ref modal_dialog for more information.
 	 */
 	static void display(const std::string& path, CVideo& video)
 	{
-		tscreenshot_notification(path).show(video);
+		screenshot_notification(path).show(video);
 	}
 
 private:
 	const std::string path_;
 	const std::string screenshots_dir_path_;
 
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	/** Inherited from modal_dialog. */
+	void pre_show(window& window);
 };
-}
+} // namespace dialogs
+} // namespace gui2
 
 #endif /* ! GUI_DIALOGS_SCREENSHOT_NOTIFICATION_HPP_INCLUDED */

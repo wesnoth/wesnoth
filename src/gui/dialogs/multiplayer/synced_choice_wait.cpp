@@ -30,6 +30,8 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -44,18 +46,18 @@ namespace gui2
  * themes & & listbox & m &
  *         Listbox displaying user choices. $
  *
- * -name & & control & m &
+ * -name & & styled_widget & m &
  *         Widget which shows a theme item name. $
  *
- * -description & & control & m &
+ * -description & & styled_widget & m &
  *         Widget which shows a theme item description. $
  *
  * @end{table}
  */
 
-REGISTER_DIALOG(synced_choice_wait)
+REGISTER_DIALOG(synched_choice_wait)
 
-tsynced_choice_wait::tsynced_choice_wait(user_choice_manager& mgr)
+synched_choice_wait::synched_choice_wait(user_choice_manager& mgr)
 	: mgr_(mgr)
 	, message_()
 	, window_(nullptr)
@@ -63,18 +65,18 @@ tsynced_choice_wait::tsynced_choice_wait(user_choice_manager& mgr)
 	mgr_.changed_event_.attach_handler(this);
 }
 
-tsynced_choice_wait::~tsynced_choice_wait()
+synched_choice_wait::~synched_choice_wait()
 {
 	mgr_.changed_event_.detach_handler(this);
 }
 
-void tsynced_choice_wait::pre_show(twindow& window)
+void synched_choice_wait::pre_show(window& window)
 {
 	window_ = &window;
-	message_ = find_widget<tlabel>(&window, "lblMessage", false, true);
+	message_ = find_widget<label>(&window, "lblMessage", false, true);
 
 
-	tbutton& quit_button = find_widget<tbutton>(
+	button& quit_button = find_widget<button>(
 				&window, "btn_quit_game", false);
 
 	connect_signal_mouse_left_click(quit_button,
@@ -86,7 +88,7 @@ void tsynced_choice_wait::pre_show(twindow& window)
 	}
 }
 
-void tsynced_choice_wait::handle_generic_event(const std::string& event_name)
+void synched_choice_wait::handle_generic_event(const std::string& event_name)
 {
 	assert(event_name == "user_choice_update");
 	assert(message_);
@@ -96,4 +98,5 @@ void tsynced_choice_wait::handle_generic_event(const std::string& event_name)
 	}
 }
 
-}
+} // namespace dialogs
+} // namespace gui2

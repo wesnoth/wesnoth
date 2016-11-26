@@ -18,8 +18,8 @@
 #include "game_config.hpp" // game_config::observer_team_name
 #include "log.hpp"
 
-#include "game.hpp"
-#include "player_network.hpp"
+#include "server/game.hpp"
+#include "server/player_network.hpp"
 #include "serialization/string_utils.hpp"
 #include "util.hpp"
 
@@ -1479,7 +1479,7 @@ void game::send_history(const socket_ptr socket) const
 	//concatenating the buffers.
 	//TODO: Work out how to concentate buffers without decompressing.
 	std::string buf;
-	for(t_history::iterator i = history_.begin(); i != history_.end(); ++i) {
+	for(history::iterator i = history_.begin(); i != history_.end(); ++i) {
 		buf += i->output();
 	}
 
@@ -1507,7 +1507,7 @@ void game::save_replay() {
 	if (!save_replays_ || !started_ || history_.empty()) return;
 
 	std::string replay_commands;
-	for(t_history::iterator i = history_.begin(); i != history_.end(); ++i) {
+	for(history::iterator i = history_.begin(); i != history_.end(); ++i) {
 		const simple_wml::node::child_list& turn_list = i->root().children("turn");
 		for (simple_wml::node::child_list::const_iterator turn = turn_list.begin(); turn != turn_list.end(); ++turn) {
 			replay_commands += simple_wml::node_to_string(**turn);

@@ -12,13 +12,13 @@
    See the COPYING file for more details.
 */
 
-#include "sdl_ttf.hpp"
+#include "font/sdl_ttf.hpp"
 
 #include "font/error.hpp"
-#include "font_config.hpp"
-#include "font_id.hpp"
-#include "text_cache.hpp"
-#include "text_surface.hpp"
+#include "font/font_config.hpp"
+#include "font/font_id.hpp"
+#include "font/text_cache.hpp"
+#include "font/text_surface.hpp"
 
 #include "filesystem.hpp"
 #include "game_config.hpp"
@@ -27,7 +27,6 @@
 #include "preferences.hpp"
 #include "tooltips.hpp"
 
-#include "sdl/image.hpp"
 #include "sdl/rect.hpp"
 #include "sdl/utils.hpp"
 #include "serialization/unicode.hpp"
@@ -60,9 +59,7 @@ struct ttf_record
 	int style;
 };
 
-typedef std::map<font_id, ttf_record> tfont_table;
-
-static tfont_table font_table;
+static std::map<font_id, ttf_record> font_table;
 static std::vector<std::string> font_names;
 static std::vector<std::string> bold_names;
 static std::vector<std::string> italic_names;
@@ -140,8 +137,8 @@ typedef std::map<std::string,SDL_Rect> line_size_cache_map;
 //map of styles -> sizes -> cache
 static std::map<int,std::map<int,line_size_cache_map> > line_size_cache;
 
-typedef std::map<std::pair<std::string, int>, TTF_Font*> topen_font_cache;
-topen_font_cache open_fonts;
+typedef std::map<std::pair<std::string, int>, TTF_Font*> open_font_cache;
+open_font_cache open_fonts;
 
 static TTF_Font* open_font_impl(const std::string & , int);
 
@@ -151,7 +148,7 @@ static TTF_Font* open_font_impl(const std::string & , int);
 static TTF_Font* open_font(const std::string& fname, int size)
 {
 	const std::pair<std::string, int> key = std::make_pair(fname, size);
-	const topen_font_cache::iterator it = open_fonts.find(key);
+	const open_font_cache::iterator it = open_fonts.find(key);
 	if (it != open_fonts.end()) {
 		return it->second;
 	}

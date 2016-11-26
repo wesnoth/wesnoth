@@ -21,13 +21,13 @@ namespace gui2
 {
 
 /** Holds a 2D point. */
-struct tpoint
+struct point
 {
-	tpoint() : x(0), y(0)
+	point() : x(0), y(0)
 	{
 	}
 
-	tpoint(const int x_, const int y_) : x(x_), y(y_)
+	point(const int x_, const int y_) : x(x_), y(y_)
 	{
 	}
 
@@ -37,40 +37,40 @@ struct tpoint
 	/** y coordinate. */
 	int y;
 
-	bool operator==(const tpoint& point) const
+	bool operator==(const point& point) const
 	{
 		return x == point.x && y == point.y;
 	}
-	bool operator!=(const tpoint& point) const
+	bool operator!=(const point& point) const
 	{
 		return x != point.x || y != point.y;
 	}
-	bool operator<(const tpoint& point) const
+	bool operator<(const point& point) const
 	{
 		return x < point.x || (x == point.x && y < point.y);
 	}
 
-	bool operator<=(const tpoint& point) const
+	bool operator<=(const point& point) const
 	{
 		return x < point.x || (x == point.x && y <= point.y);
 	}
 
-	tpoint operator+(const tpoint& point) const
+	point operator+(const point& point) const
 	{
 		return {x + point.x, y + point.y};
 	}
 
-	tpoint& operator+=(const tpoint& point);
+	point& operator+=(const point& point);
 
-	tpoint operator-(const tpoint& point) const
+	point operator-(const point& point) const
 	{
 		return {x - point.x, y - point.y};
 	}
 
-	tpoint& operator-=(const tpoint& point);
+	point& operator-=(const point& point);
 };
 
-std::ostream& operator<<(std::ostream& stream, const tpoint& point);
+std::ostream& operator<<(std::ostream& stream, const point& point);
 
 
 } // namespace gui2

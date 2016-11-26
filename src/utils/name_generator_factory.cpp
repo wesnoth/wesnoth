@@ -31,7 +31,7 @@ name_generator_factory::name_generator_factory(const config& config, std::vector
 		std::string id = *it;
 		add_name_generator_from_config(config, id, (id + "_"));
 	}
-};
+}
 
 void name_generator_factory::add_name_generator_from_config(const config& config, const std::string id, const std::string prefix) {
  	std::string cfg_name 	= prefix + "name_generator";
@@ -53,7 +53,7 @@ void name_generator_factory::add_name_generator_from_config(const config& config
 			name_generators_[id] = std::shared_ptr<name_generator>(new markov_generator(utils::split(markov_name_list), config["markov_chain_size"].to_int(2), 12));
 		}
 	}
-};
+}
 
 std::shared_ptr<name_generator> name_generator_factory::get_name_generator() {
 	std::map<std::string, std::shared_ptr<name_generator>>::const_iterator it = name_generators_.find("");
@@ -63,7 +63,7 @@ std::shared_ptr<name_generator> name_generator_factory::get_name_generator() {
 	}
 
 	return it->second;
-};
+}
 
 std::shared_ptr<name_generator> name_generator_factory::get_name_generator(const std::string id) {
 	std::map<std::string, std::shared_ptr<name_generator>>::const_iterator it = name_generators_.find(id);
@@ -72,4 +72,4 @@ std::shared_ptr<name_generator> name_generator_factory::get_name_generator(const
 	}
 
 	return it->second;
-};
+}

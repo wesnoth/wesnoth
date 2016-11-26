@@ -50,6 +50,8 @@ static unit_race::GENDER last_gender = unit_race::MALE;
 
 namespace gui2
 {
+namespace dialogs
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -70,10 +72,10 @@ namespace gui2
  * unit_type_list & & listbox & m &
  *         Listbox displaying existing unit types sorted by name and race. $
  *
- * -unit_type & & control & m &
+ * -unit_type & & styled_widget & m &
  *         Widget which shows the unit type name label. $
  *
- * -race & & control & m &
+ * -race & & styled_widget & m &
  *         Widget which shows the unit race name label. $
  *
  * @end{table}
@@ -81,19 +83,19 @@ namespace gui2
 
 REGISTER_DIALOG(unit_create)
 
-tunit_create::tunit_create()
+unit_create::unit_create()
 	: gender_(last_gender)
 	, choice_(last_chosen_type_id)
 	, last_words_()
 {
 }
 
-void tunit_create::pre_show(twindow& window)
+void unit_create::pre_show(window& window)
 {
-	ttoggle_button& male_toggle
-			= find_widget<ttoggle_button>(&window, "male_toggle", false);
-	ttoggle_button& female_toggle
-			= find_widget<ttoggle_button>(&window, "female_toggle", false);
+	toggle_button& male_toggle
+			= find_widget<toggle_button>(&window, "male_toggle", false);
+	toggle_button& female_toggle
+			= find_widget<toggle_button>(&window, "female_toggle", false);
 
 	gender_toggle.add_member(&male_toggle, unit_race::MALE);
 	gender_toggle.add_member(&female_toggle, unit_race::FEMALE);
@@ -101,27 +103,27 @@ void tunit_create::pre_show(twindow& window)
 	gender_toggle.set_member_states(last_gender);
 
 	gender_toggle.set_callback_on_value_change(
-			dialog_callback<tunit_create, &tunit_create::gender_toggle_callback>);
+			dialog_callback<unit_create, &unit_create::gender_toggle_callback>);
 
-	tlistbox& list = find_widget<tlistbox>(&window, "unit_type_list", false);
+	listbox& list = find_widget<listbox>(&window, "unit_type_list", false);
 
-	ttext_box* filter
-			= find_widget<ttext_box>(&window, "filter_box", false, true);
+	text_box* filter
+			= find_widget<text_box>(&window, "filter_box", false, true);
 
 	filter->set_text_changed_callback(
-			std::bind(&tunit_create::filter_text_changed, this, _1, _2));
+			std::bind(&unit_create::filter_text_changed, this, _1, _2));
 
 	window.keyboard_capture(filter);
 	window.add_to_keyboard_chain(&list);
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	connect_signal_notify_modified(*list,
-								   std::bind(&tunit_create::list_item_clicked,
+								   std::bind(&unit_create::list_item_clicked,
 											   *this,
 											   std::ref(window)));
 #else
 	list.set_callback_value_change(
-			dialog_callback<tunit_create, &tunit_create::list_item_clicked>);
+			dialog_callback<unit_create, &unit_create::list_item_clicked>);
 #endif
 
 	list.clear();
@@ -164,13 +166,13 @@ void tunit_create::pre_show(twindow& window)
 	list_item_clicked(window);
 }
 
-void tunit_create::post_show(twindow& window)
+void unit_create::post_show(window& window)
 {
-	tlistbox& list = find_widget<tlistbox>(&window, "unit_type_list", false);
+	listbox& list = find_widget<listbox>(&window, "unit_type_list", false);
 
 	choice_ = "";
 
-	if(get_retval() != twindow::OK) {
+	if(get_retval() != window::OK) {
 		return;
 	}
 
@@ -188,29 +190,28 @@ void tunit_create::post_show(twindow& window)
 	last_gender = gender_;
 }
 
-void tunit_create::list_item_clicked(twindow& window)
+void unit_create::list_item_clicked(window& window)
 {
 	const int selected_row
-		= find_widget<tlistbox>(&window, "unit_type_list", false).get_selected_row();
+		= find_widget<listbox>(&window, "unit_type_list", false).get_selected_row();
 
 	if(selected_row == -1) {
 		return;
 	}
 
-	find_widget<tunit_preview_pane>(&window, "unit_details", false)
+	find_widget<unit_preview_pane>(&window, "unit_details", false)
 		.set_displayed_type(*units_[selected_row]);
 
-	gender_toggle.set_member_active(unit_race::GENDER::MALE,
-		units_[selected_row]->has_gender_variation(unit_race::GENDER::MALE));
-	gender_toggle.set_member_active(unit_race::GENDER::FEMALE,
-		units_[selected_row]->has_gender_variation(unit_race::GENDER::FEMALE));
+	gender_toggle.set_members_enabled([&](const unit_race::GENDER& gender)->bool {
+		return units_[selected_row]->has_gender_variation(gender);
+	});
 }
 
-void tunit_create::filter_text_changed(ttext_* textbox, const std::string& text)
+void unit_create::filter_text_changed(text_box_base* textbox, const std::string& text)
 {
-	twindow& window = *textbox->get_window();
+	window& window = *textbox->get_window();
 
-	tlistbox& list = find_widget<tlistbox>(&window, "unit_type_list", false);
+	listbox& list = find_widget<listbox>(&window, "unit_type_list", false);
 
 	const std::vector<std::string> words = utils::split(text, ' ');
 
@@ -223,21 +224,21 @@ void tunit_create::filter_text_changed(ttext_* textbox, const std::string& text)
 
 	if(!text.empty()) {
 		for(unsigned int i = 0; i < list.get_item_count(); i++) {
-			tgrid* row = list.get_row_grid(i);
+			grid* row = list.get_row_grid(i);
 
-			tgrid::iterator it = row->begin();
-			tlabel& type_label
-					= find_widget<tlabel>(*it, "unit_type", false);
+			grid::iterator it = row->begin();
+			label& type_label
+					= find_widget<label>(*it, "unit_type", false);
 
 			bool found = false;
 			for(const auto & word : words)
 			{
-				found = std::search(type_label.label().str().begin(),
-									type_label.label().str().end(),
+				found = std::search(type_label.get_label().str().begin(),
+									type_label.get_label().str().end(),
 									word.begin(),
 									word.end(),
 									chars_equal_insensitive)
-						!= type_label.label().str().end();
+						!= type_label.get_label().str().end();
 
 				if(!found) {
 					// one word doesn't match, we don't reach words.end()
@@ -252,8 +253,9 @@ void tunit_create::filter_text_changed(ttext_* textbox, const std::string& text)
 	list.set_row_shown(show_items);
 }
 
-void tunit_create::gender_toggle_callback(twindow&)
+void unit_create::gender_toggle_callback(window&)
 {
 	gender_ = gender_toggle.get_active_member_value();
 }
-}
+} // namespace dialogs
+} // namespace gui2

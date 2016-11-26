@@ -25,12 +25,12 @@ namespace gui2
 
 // ------------ WIDGET -----------{
 
-class tlabel;
-class tspacer;
+class label;
+class spacer;
 
 namespace implementation
 {
-struct tbuilder_scroll_label;
+struct builder_scroll_label;
 }
 
 /**
@@ -40,28 +40,28 @@ struct tbuilder_scroll_label;
  * scrolling features. In general this widget is slower as the normal label so
  * the normal label should be preferred.
  */
-class tscroll_label : public tscrollbar_container
+class scroll_label : public scrollbar_container
 {
-	friend struct implementation::tbuilder_scroll_label;
+	friend struct implementation::builder_scroll_label;
 
 public:
-	tscroll_label(bool wrap, const std::string& text_alignment);
+	scroll_label(bool wrap, const std::string& text_alignment);
 
-	/** See @ref tcontrol::set_label. */
+	/** See @ref styled_widget::set_label. */
 	virtual void set_label(const t_string& label) override;
 
-	/** See @ref tcontrol::set_use_markup. */
+	/** See @ref styled_widget::set_use_markup. */
 	virtual void set_use_markup(bool use_markup) override;
 
-	/** See @ref tcontainer_::set_self_active. */
+	/** See @ref container_base::set_self_active. */
 	virtual void set_self_active(const bool active) override;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	/** See @ref tcontrol::get_active. */
+	/** See @ref styled_widget::get_active. */
 	virtual bool get_active() const override;
 
-	/** See @ref tcontrol::get_state. */
+	/** See @ref styled_widget::get_state. */
 	virtual unsigned get_state() const override;
 	
 	bool can_wrap() const override;
@@ -73,14 +73,14 @@ private:
 	 *
 	 * Note the order of the states must be the same as defined in settings.hpp.
 	 */
-	enum tstate {
+	enum state_t {
 		ENABLED,
 		DISABLED,
 		COUNT
 	};
 
 	// It's not needed for now so keep it disabled, no definition exists yet.
-	// void set_state(const tstate state);
+	// void set_state(const state_t state);
 
 	/**
 	 * Current state of the widget.
@@ -88,7 +88,7 @@ private:
 	 * The state of the widget determines what to render and how the widget
 	 * reacts to certain 'events'.
 	 */
-	tstate state_;
+	state_t state_;
 	bool wrap_on;
 
 	const std::string text_alignment;
@@ -97,25 +97,25 @@ private:
 
 	/***** ***** ***** inherited ****** *****/
 
-	/** See @ref tcontrol::get_control_type. */
+	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 
 	/***** ***** ***** signal handlers ***** ****** *****/
 
-	void signal_handler_left_button_down(const event::tevent event);
+	void signal_handler_left_button_down(const event::ui_event event);
 };
 
 // }---------- DEFINITION ---------{
 
-struct tscroll_label_definition : public tcontrol_definition
+struct scroll_label_definition : public styled_widget_definition
 {
-	explicit tscroll_label_definition(const config& cfg);
+	explicit scroll_label_definition(const config& cfg);
 
-	struct tresolution : public tresolution_definition_
+	struct resolution : public resolution_definition
 	{
-		explicit tresolution(const config& cfg);
+		explicit resolution(const config& cfg);
 
-		tbuilder_grid_ptr grid;
+		builder_grid_ptr grid;
 	};
 };
 
@@ -124,16 +124,16 @@ struct tscroll_label_definition : public tcontrol_definition
 namespace implementation
 {
 
-struct tbuilder_scroll_label : public tbuilder_control
+struct builder_scroll_label : public builder_styled_widget
 {
-	explicit tbuilder_scroll_label(const config& cfg);
+	explicit builder_scroll_label(const config& cfg);
 
-	using tbuilder_control::build;
+	using builder_styled_widget::build;
 
-	twidget* build() const;
+	widget* build() const;
 
-	tscrollbar_container::tscrollbar_mode vertical_scrollbar_mode;
-	tscrollbar_container::tscrollbar_mode horizontal_scrollbar_mode;
+	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
+	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;
 	bool wrap_on;
 	const std::string text_alignment;
 };

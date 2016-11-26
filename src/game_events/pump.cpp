@@ -19,10 +19,10 @@
  */
 
 #include "global.hpp"
-#include "pump.hpp"
-#include "conditional_wml.hpp"
-#include "handlers.hpp"
-#include "manager.hpp"
+#include "game_events/pump.hpp"
+#include "game_events/conditional_wml.hpp"
+#include "game_events/handlers.hpp"
+#include "game_events/manager.hpp"
 
 #include "display_chat_manager.hpp"
 #include "game_config.hpp"
@@ -173,7 +173,7 @@ namespace { // Support functions
 	/**
 	 * Returns true iff the given event passes all its filters.
 	 */
-	bool t_pump::filter_event(const event_handler& handler, const queued_event& ev)
+	bool wml_event_pump::filter_event(const event_handler& handler, const queued_event& ev)
 	{
 		const unit_map *units = resources::units;
 		unit_map::const_iterator unit1 = units->find(ev.loc1);
@@ -265,7 +265,7 @@ namespace { // Support functions
 	 *
 	 * @returns true if the game state changed.
 	 */
-	bool t_pump::process_event(handler_ptr& handler_p, const queued_event& ev)
+	bool wml_event_pump::process_event(handler_ptr& handler_p, const queued_event& ev)
 	{
 		DBG_EH << "processing event " << ev.name << " with id=" << ev.id << "\n";
 
@@ -303,7 +303,7 @@ namespace { // Support functions
 	 * Helper function for show_wml_messages(), which gathers
 	 * the messages from a stringstream.
 	 */
-	void t_pump::fill_wml_messages_map(std::map<std::string, int>& msg_map, std::stringstream& source)
+	void wml_event_pump::fill_wml_messages_map(std::map<std::string, int>& msg_map, std::stringstream& source)
 	{
 		while(true) {
 			std::string msg;
@@ -335,7 +335,7 @@ namespace { // Support functions
 	 * to be the order in which these messages are encountered.
 	 * Messages are also written to std::cerr if to_cerr is true.
 	 */
-	void t_pump::show_wml_messages(std::stringstream& source, const std::string & caption,
+	void wml_event_pump::show_wml_messages(std::stringstream& source, const std::string & caption,
 	                       bool to_cerr)
 	{
 		// Get all unique messages in messages,
@@ -369,7 +369,7 @@ namespace { // Support functions
 	 * to be the order in which these messages are encountered.
 	 * Messages are always written to std::cerr.
 	 */
-	void t_pump::show_wml_errors()
+	void wml_event_pump::show_wml_errors()
 	{
 		static const std::string caption("Invalid WML found");
 
@@ -383,14 +383,14 @@ namespace { // Support functions
 	 * The order in which the messages are shown does not need
 	 * to be the order in which these messages are encountered.
 	 */
-	void t_pump::show_wml_messages()
+	void wml_event_pump::show_wml_messages()
 	{
 		static const std::string caption("WML");
 
 		show_wml_messages(impl_->wml_messages_stream, caption, false);
 	}
 
-	void t_pump::put_wml_message(lg::logger& logger, const std::string& prefix, const std::string& message, bool in_chat)
+	void wml_event_pump::put_wml_message(lg::logger& logger, const std::string& prefix, const std::string& message, bool in_chat)
 	{
 		logger(log_wml) << message << std::endl;
 		if (in_chat)
@@ -418,25 +418,25 @@ context::scoped::~scoped()
 	contexts_.top().mutated |= mutated;
 }
 
-bool t_pump::context_mutated()
+bool wml_event_pump::context_mutated()
 {
 	assert(impl_->contexts_.size() > 0);
 	return impl_->contexts_.top().mutated;
 }
 
-void t_pump::context_mutated(bool b)
+void wml_event_pump::context_mutated(bool b)
 {
 	assert(impl_->contexts_.size() > 0);
 	impl_->contexts_.top().mutated = b;
 }
 
-bool t_pump::context_skip_messages()
+bool wml_event_pump::context_skip_messages()
 {
 	assert(impl_->contexts_.size() > 0);
 	return impl_->contexts_.top().skip_messages;
 }
 
-void t_pump::context_skip_messages(bool b)
+void wml_event_pump::context_skip_messages(bool b)
 {
 	assert(impl_->contexts_.size() > 0);
 	impl_->contexts_.top().skip_messages = b;
@@ -446,7 +446,7 @@ void t_pump::context_skip_messages(bool b)
  * Helper function which determines whether a wml_message text can
  * really be pushed into the wml_messages_stream, and does it.
  */
-void t_pump::put_wml_message(const std::string& logger, const std::string& message, bool in_chat)
+void wml_event_pump::put_wml_message(const std::string& logger, const std::string& message, bool in_chat)
 {
 	if (logger == "err" || logger == "error") {
 		put_wml_message(lg::err(), _("Error: "), message, in_chat );
@@ -459,7 +459,7 @@ void t_pump::put_wml_message(const std::string& logger, const std::string& messa
 	}
 }
 
-bool t_pump::fire(const std::string& event,
+bool wml_event_pump::fire(const std::string& event,
           const entity_location& loc1,
           const entity_location& loc2,
           const config& data)
@@ -468,7 +468,7 @@ bool t_pump::fire(const std::string& event,
 	return (*this)();
 }
 
-bool t_pump::fire(const std::string& event,
+bool wml_event_pump::fire(const std::string& event,
 		  const std::string&     id,
           const entity_location& loc1,
           const entity_location& loc2,
@@ -478,7 +478,7 @@ bool t_pump::fire(const std::string& event,
 	return (*this)();
 }
 
-void t_pump::raise(const std::string& event,
+void wml_event_pump::raise(const std::string& event,
 		   const std::string& id,
            const entity_location& loc1,
            const entity_location& loc2,
@@ -492,7 +492,7 @@ void t_pump::raise(const std::string& event,
 	impl_->events_queue.push_back(queued_event(event, id, loc1, loc2, data));
 }
 
-bool t_pump::operator()()
+bool wml_event_pump::operator()()
 {
 	// Quick aborts:
 	if(resources::screen == nullptr)
@@ -592,7 +592,7 @@ bool t_pump::operator()()
 	return context_mutated();
 }
 
-void t_pump::flush_messages()
+void wml_event_pump::flush_messages()
 {
 	// Dialogs can only be shown if the display is not locked
 	if (resources::screen && !resources::screen->video().update_locked()) {
@@ -617,16 +617,16 @@ void t_pump::flush_messages()
  * from caching some aspect of the game state and that cannot rely on
  * [allow_undo] not being used when that state changes.
  */
-size_t t_pump::wml_tracking()
+size_t wml_event_pump::wml_tracking()
 {
 	return impl_->internal_wml_tracking;
 }
 
-t_pump::t_pump(manager & man)
+wml_event_pump::wml_event_pump(manager & man)
 	: impl_(new pump_impl(man))
 {}
 
-t_pump::~t_pump() {}
+wml_event_pump::~wml_event_pump() {}
 
 } // end namespace game_events
 

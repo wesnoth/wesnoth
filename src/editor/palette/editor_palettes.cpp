@@ -14,7 +14,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
-#include "editor_palettes.hpp"
+#include "editor/palette/editor_palettes.hpp"
 
 #include "gettext.hpp"
 #include "font/standard_colors.hpp"
@@ -39,7 +39,7 @@ sdl_handler_vector editor_palette<Item>::handler_members()
 	}
 	return h;
 }
-template sdl_handler_vector editor_palette<t_translation::t_terrain>::handler_members();
+template sdl_handler_vector editor_palette<t_translation::terrain_code>::handler_members();
 template sdl_handler_vector editor_palette<unit_type>::handler_members();
 template sdl_handler_vector editor_palette<overlay>::handler_members();
 
@@ -81,7 +81,7 @@ void editor_palette<Item>::expand_palette_groups_menu(std::vector<std::string>& 
 		}
 	}
 }
-template void editor_palette<t_translation::t_terrain>::expand_palette_groups_menu(std::vector<std::string>& items);
+template void editor_palette<t_translation::terrain_code>::expand_palette_groups_menu(std::vector<std::string>& items);
 template void editor_palette<unit_type>::expand_palette_groups_menu(std::vector<std::string>& items);
 template void editor_palette<overlay>::expand_palette_groups_menu(std::vector<std::string>& items);
 
@@ -99,7 +99,7 @@ bool editor_palette<Item>::scroll_up()
 	}
 	return false;
 }
-template bool editor_palette<t_translation::t_terrain>::scroll_up();
+template bool editor_palette<t_translation::terrain_code>::scroll_up();
 template bool editor_palette<unit_type>::scroll_up();
 template bool editor_palette<overlay>::scroll_up();
 
@@ -117,7 +117,7 @@ void editor_palette<Item>::expand_palette_groups_menu(std::vector< std::pair< st
 		items.push_back(std::pair<std::string, std::string>( img, groupname));
 	}
 }
-template void editor_palette<t_translation::t_terrain>::expand_palette_groups_menu(std::vector< std::pair< std::string, std::string> >& items);
+template void editor_palette<t_translation::terrain_code>::expand_palette_groups_menu(std::vector< std::pair< std::string, std::string> >& items);
 template void editor_palette<unit_type>::expand_palette_groups_menu(std::vector< std::pair< std::string, std::string> >& items);
 template void editor_palette<overlay>::expand_palette_groups_menu(std::vector< std::pair< std::string, std::string> >& items);
 
@@ -126,7 +126,7 @@ bool editor_palette<Item>::can_scroll_up()
 {
 	return (items_start_ != 0);
 }
-template bool editor_palette<t_translation::t_terrain>::can_scroll_up();
+template bool editor_palette<t_translation::terrain_code>::can_scroll_up();
 template bool editor_palette<unit_type>::can_scroll_up();
 template bool editor_palette<overlay>::can_scroll_up();
 
@@ -135,7 +135,7 @@ bool editor_palette<Item>::can_scroll_down()
 {
 	return (items_start_ + nitems_ + item_width_ <= num_items());
 }
-template bool editor_palette<t_translation::t_terrain>::can_scroll_down();
+template bool editor_palette<t_translation::terrain_code>::can_scroll_down();
 template bool editor_palette<unit_type>::can_scroll_down();
 template bool editor_palette<overlay>::can_scroll_down();
 
@@ -158,7 +158,7 @@ bool editor_palette<Item>::scroll_down()
 	draw();
 	return scrolled;
 }
-template bool editor_palette<t_translation::t_terrain>::scroll_down();
+template bool editor_palette<t_translation::terrain_code>::scroll_down();
 template bool editor_palette<unit_type>::scroll_down();
 template bool editor_palette<overlay>::scroll_down();
 
@@ -187,7 +187,7 @@ void editor_palette<Item>::set_group(const std::string& id)
 		ERR_ED << "No items found in group with the id: '" << id << "'." << std::endl;
 	}
 }
-template void editor_palette<t_translation::t_terrain>::set_group(const std::string& id);
+template void editor_palette<t_translation::terrain_code>::set_group(const std::string& id);
 template void editor_palette<unit_type>::set_group(const std::string& id);
 template void editor_palette<overlay>::set_group(const std::string& id);
 
@@ -197,7 +197,7 @@ void editor_palette<Item>::set_group(size_t index)
 	assert(groups_.size() > index);
 	set_group(groups_[index].id);
 }
-template void editor_palette<t_translation::t_terrain>::set_group(size_t index);
+template void editor_palette<t_translation::terrain_code>::set_group(size_t index);
 template void editor_palette<unit_type>::set_group(size_t index);
 template void editor_palette<overlay>::set_group(size_t index);
 
@@ -213,7 +213,7 @@ size_t editor_palette<Item>::active_group_index()
 
 	return static_cast<size_t>(-1);
 }
-template size_t editor_palette<t_translation::t_terrain>::active_group_index();
+template size_t editor_palette<t_translation::terrain_code>::active_group_index();
 template size_t editor_palette<unit_type>::active_group_index();
 template size_t editor_palette<overlay>::active_group_index();
 
@@ -233,7 +233,7 @@ void editor_palette<Item>::adjust_size(const SDL_Rect& target)
 	gui_.video().clear_help_string(help_handle_);
 	help_handle_ = gui_.video().set_help_string(get_help_string());
 }
-template void editor_palette<t_translation::t_terrain>::adjust_size(const SDL_Rect& target);
+template void editor_palette<t_translation::terrain_code>::adjust_size(const SDL_Rect& target);
 template void editor_palette<unit_type>::adjust_size(const SDL_Rect& target);
 template void editor_palette<overlay>::adjust_size(const SDL_Rect& target);
 
@@ -247,7 +247,7 @@ void editor_palette<Item>::select_fg_item(const std::string& item_id)
 	gui_.video().clear_help_string(help_handle_);
 	help_handle_ = gui_.video().set_help_string(get_help_string());
 }
-template void editor_palette<t_translation::t_terrain>::select_fg_item(const std::string& terrain_id);
+template void editor_palette<t_translation::terrain_code>::select_fg_item(const std::string& terrain_id);
 template void editor_palette<unit_type>::select_fg_item(const std::string& unit_id);
 template void editor_palette<overlay>::select_fg_item(const std::string& unit_id);
 
@@ -261,7 +261,7 @@ void editor_palette<Item>::select_bg_item(const std::string& item_id)
 	gui_.video().clear_help_string(help_handle_);
 	help_handle_ = gui_.video().set_help_string(get_help_string());
 }
-template void editor_palette<t_translation::t_terrain>::select_bg_item(const std::string& terrain_id);
+template void editor_palette<t_translation::terrain_code>::select_bg_item(const std::string& terrain_id);
 template void editor_palette<unit_type>::select_bg_item(const std::string& unit_id);
 template void editor_palette<overlay>::select_bg_item(const std::string& unit_id);
 
@@ -273,7 +273,7 @@ void editor_palette<Item>::swap()
 	select_bg_item(selected_bg_item_);
 	set_dirty();
 }
-template void editor_palette<t_translation::t_terrain>::swap();
+template void editor_palette<t_translation::terrain_code>::swap();
 template void editor_palette<unit_type>::swap();
 template void editor_palette<overlay>::swap();
 
@@ -282,7 +282,7 @@ int editor_palette<Item>::num_items()
 {
 	return group_map_[active_group_].size();
 }
-template int editor_palette<t_translation::t_terrain>::num_items();
+template int editor_palette<t_translation::terrain_code>::num_items();
 template int editor_palette<unit_type>::num_items();
 template int editor_palette<overlay>::num_items();
 
@@ -291,7 +291,7 @@ bool editor_palette<Item>::is_selected_fg_item(const std::string& id)
 {
 	return selected_fg_item_ == id;
 }
-template bool editor_palette<t_translation::t_terrain>::is_selected_fg_item(const std::string& id);
+template bool editor_palette<t_translation::terrain_code>::is_selected_fg_item(const std::string& id);
 template bool editor_palette<unit_type>::is_selected_fg_item(const std::string& id);
 template bool editor_palette<overlay>::is_selected_fg_item(const std::string& id);
 
@@ -300,7 +300,7 @@ bool editor_palette<Item>::is_selected_bg_item(const std::string& id)
 {
 	return selected_bg_item_ == id;
 }
-template bool editor_palette<t_translation::t_terrain>::is_selected_bg_item(const std::string& id);
+template bool editor_palette<t_translation::terrain_code>::is_selected_bg_item(const std::string& id);
 template bool editor_palette<unit_type>::is_selected_bg_item(const std::string& id);
 template bool editor_palette<overlay>::is_selected_bg_item(const std::string& id);
 
@@ -405,7 +405,7 @@ void editor_palette<Item>::draw_contents()
 	}
 	update_rect(location());
 }
-template void editor_palette<t_translation::t_terrain>::draw_contents();
+template void editor_palette<t_translation::terrain_code>::draw_contents();
 template void editor_palette<unit_type>::draw_contents();
 template void editor_palette<overlay>::draw_contents();
 

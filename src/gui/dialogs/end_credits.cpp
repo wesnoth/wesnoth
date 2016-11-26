@@ -34,10 +34,12 @@
 
 namespace gui2
 {
+namespace dialogs
+{
 
 REGISTER_DIALOG(end_credits)
 
-tend_credits::tend_credits(const std::string& campaign)
+end_credits::end_credits(const std::string& campaign)
 	: focus_on_(campaign)
 	, backgrounds_()
 	, timer_id_()
@@ -46,7 +48,7 @@ tend_credits::tend_credits(const std::string& campaign)
 {
 }
 
-tend_credits::~tend_credits()
+end_credits::~end_credits()
 {
 	if(timer_id_ != 0) {
 		remove_timer(timer_id_);
@@ -69,14 +71,14 @@ static void parse_about_tags(const config& cfg, std::stringstream& ss)
 	}
 }
 
-void tend_credits::pre_show(twindow& window)
+void end_credits::pre_show(window& window)
 {
-	timer_id_ = add_timer(10, std::bind(&tend_credits::timer_callback, this), true);
+	timer_id_ = add_timer(10, std::bind(&end_credits::timer_callback, this), true);
 
 	// Delay a little before beginning the scrolling
 	last_scroll_ = SDL_GetTicks() + 3000;
 
-	connect_signal_pre_key_press(window, std::bind(&tend_credits::key_press_callback, this, _3, _4, _5));
+	connect_signal_pre_key_press(window, std::bind(&end_credits::key_press_callback, this, _3, _4, _5));
 
 	std::stringstream ss;
 	std::stringstream focus_ss;
@@ -108,9 +110,9 @@ void tend_credits::pre_show(twindow& window)
 	}
 
 	// TODO: implement showing all available images as the credits scroll
-	window.canvas()[0].set_variable("background_image", variant(backgrounds_[0]));
+	window.get_canvas()[0].set_variable("background_image", variant(backgrounds_[0]));
 
-	text_widget_ = find_widget<tscroll_label>(&window, "text", false, true);
+	text_widget_ = find_widget<scroll_label>(&window, "text", false, true);
 
 	text_widget_->set_use_markup(true);
 	text_widget_->set_label((focus_ss.str().empty() ? ss : focus_ss).str());
@@ -118,14 +120,14 @@ void tend_credits::pre_show(twindow& window)
 	// HACK: always hide the scrollbar, even if it's needed.
 	// This should probably be implemented as a scrollbar mode.
 	// Also, for some reason hiding the whole grid doesn't work, and the elements need to be hidden manually
-	if(tgrid* v_grid = dynamic_cast<tgrid*>(text_widget_->find("_vertical_scrollbar_grid", false))) {
-		find_widget<tscrollbar_>(v_grid, "_vertical_scrollbar", false).set_visible(twidget::tvisible::hidden);
-		find_widget<trepeating_button>(v_grid, "_half_page_up", false).set_visible(twidget::tvisible::hidden);
-		find_widget<trepeating_button>(v_grid, "_half_page_down", false).set_visible(twidget::tvisible::hidden);
+	if(grid* v_grid = dynamic_cast<grid*>(text_widget_->find("_vertical_scrollbar_grid", false))) {
+		find_widget<scrollbar_base>(v_grid, "_vertical_scrollbar", false).set_visible(widget::visibility::hidden);
+		find_widget<repeating_button>(v_grid, "_half_page_up", false).set_visible(widget::visibility::hidden);
+		find_widget<repeating_button>(v_grid, "_half_page_down", false).set_visible(widget::visibility::hidden);
 	}
 }
 
-void tend_credits::timer_callback()
+void end_credits::timer_callback()
 {
 	uint32_t now = SDL_GetTicks();
 	if(last_scroll_ > now) {
@@ -149,7 +151,7 @@ void tend_credits::timer_callback()
 	}
 }
 
-void tend_credits::key_press_callback(bool&, bool&, const SDL_Keycode key)
+void end_credits::key_press_callback(bool&, bool&, const SDL_Keycode key)
 {
 	if(key == SDLK_UP && scroll_speed_ < 400) {
 		scroll_speed_ <<= 1;
@@ -160,4 +162,5 @@ void tend_credits::key_press_callback(bool&, bool&, const SDL_Keycode key)
 	}
 }
 
+} // namespace dialogs
 } // namespace gui2

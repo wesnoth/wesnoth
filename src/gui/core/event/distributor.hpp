@@ -20,21 +20,21 @@
  * Contains the event distributor.
  *
  * The event distributor exists of several classes which are combined in one
- * templated tdistributor class. The classes are closely tight together.
+ * templated distributor class. The classes are closely tight together.
  *
  * All classes have direct access to each others members since they should act
  * as one. (Since the buttons are a templated subclass it's not possible to use
  * private subclasses.)
  *
- * The tmouse_motion class handles the mouse motion and holds the owner of us
+ * The mouse_motion class handles the mouse motion and holds the owner of us
  * since all classes virtually inherit us.
  *
- * The tmouse_button classes are templated classes per mouse button, the
+ * The mouse_button classes are templated classes per mouse button, the
  * template parameters are used to make the difference between the mouse
  * buttons. Although it's easily possible to add more mouse buttons in the
  * code several places only expect a left, middle and right button.
  *
- * tdistributor is the main class to be used in the user code. This class
+ * distributor is the main class to be used in the user code. This class
  * contains the handling of the keyboard as well.
  */
 
@@ -50,19 +50,19 @@
 namespace gui2
 {
 
-class twidget;
+class widget;
 
 namespace event
 {
 
-/***** ***** ***** ***** tmouse_motion ***** ***** ***** ***** *****/
+/***** ***** ***** ***** mouse_motion ***** ***** ***** ***** *****/
 
-class tmouse_motion
+class mouse_motion
 {
 public:
-	tmouse_motion(twidget& owner, const tdispatcher::tposition queue_position);
+	mouse_motion(widget& owner, const dispatcher::queue_position queue_position);
 
-	~tmouse_motion();
+	~mouse_motion();
 
 	/**
 	 * Captures the mouse input.
@@ -71,27 +71,27 @@ public:
 	 *
 	 * @param capture             Set or release the capturing.
 	 */
-	void capture_mouse( // twidget* widget);
+	void capture_mouse( // widget* widget);
 			const bool capture = true);
 
 protected:
 	/** The widget that currently has the mouse focus_. */
-	twidget* mouse_focus_;
+	widget* mouse_focus_;
 
 	/** Did the current widget capture the focus_? */
 	bool mouse_captured_;
 
 	/** The widget that owns us. */
-	twidget& owner_;
+	widget& owner_;
 
 	/** The timer for the hover event. */
 	size_t hover_timer_;
 
 	/** The widget which should get the hover event. */
-	twidget* hover_widget_;
+	widget* hover_widget_;
 
 	/** The anchor point of the hover event. */
-	tpoint hover_position_;
+	point hover_position_;
 
 	/**
 	 * Has the hover been shown for the widget?
@@ -108,7 +108,7 @@ protected:
 	 * @param widget                 The widget that wants the tooltip.
 	 * @param coordinate             The anchor coordinate.
 	 */
-	void start_hover_timer(twidget* widget, const tpoint& coordinate);
+	void start_hover_timer(widget* widget, const point& coordinate);
 
 	/** Stops the current hover timer. */
 	void stop_hover_timer();
@@ -118,7 +118,7 @@ protected:
 	 *
 	 * @param mouse_over          The widget that should receive the event.
 	 */
-	void mouse_enter(twidget* mouse_over);
+	void mouse_enter(widget* mouse_over);
 
 	/** Called when the mouse leaves the current widget. */
 	void mouse_leave();
@@ -130,39 +130,39 @@ private:
 	 * @param mouse_over          The widget that should receive the event.
 	 * @param coordinate          The current screen coordinate of the mouse.
 	 */
-	void mouse_motion(twidget* mouse_over, const tpoint& coordinate);
+	void mouse_hover(widget* mouse_over, const point& coordinate);
 
 	/** Called when the mouse wants the widget to show its tooltip. */
 	void show_tooltip();
 
 	bool signal_handler_sdl_mouse_motion_entered_;
-	void signal_handler_sdl_mouse_motion(const event::tevent event,
+	void signal_handler_sdl_mouse_motion(const event::ui_event event,
 										 bool& handled,
-										 const tpoint& coordinate);
+										 const point& coordinate);
 
-	void signal_handler_sdl_wheel(const event::tevent event,
+	void signal_handler_sdl_wheel(const event::ui_event event,
 								  bool& handled,
-								  const tpoint& coordinate);
+								  const point& coordinate);
 
-	void signal_handler_show_helptip(const event::tevent event,
+	void signal_handler_show_helptip(const event::ui_event event,
 									 bool& handled,
-									 const tpoint& coordinate);
+									 const point& coordinate);
 };
 
-/***** ***** ***** ***** tmouse_button ***** ***** ***** ***** *****/
+/***** ***** ***** ***** mouse_button ***** ***** ***** ***** *****/
 
-template <tevent sdl_button_down,
-		  tevent sdl_button_up,
-		  tevent button_down,
-		  tevent button_up,
-		  tevent button_click,
-		  tevent button_double_click>
-class tmouse_button : public virtual tmouse_motion
+template <ui_event sdl_button_down,
+		  ui_event sdl_button_up,
+		  ui_event button_down,
+		  ui_event button_up,
+		  ui_event button_click,
+		  ui_event button_double_click>
+class mouse_button : public virtual mouse_motion
 {
 public:
-	tmouse_button(const std::string& name_,
-				  twidget& owner,
-				  const tdispatcher::tposition queue_position);
+	mouse_button(const std::string& name_,
+				  widget& owner,
+				  const dispatcher::queue_position queue_position);
 
 	/**
 	 * Initializes the state of the button.
@@ -177,14 +177,14 @@ protected:
 	Uint32 last_click_stamp_;
 
 	/** The widget the last click was on, used for double clicking. */
-	twidget* last_clicked_widget_;
+	widget* last_clicked_widget_;
 
 	/**
 	 * If the mouse isn't captured we need to verify the up is on the same
 	 * widget as the down so we send a proper click, also needed to send the
 	 * up to the right widget.
 	 */
-	twidget* focus_;
+	widget* focus_;
 
 private:
 	/** used for debug messages. */
@@ -194,52 +194,52 @@ private:
 	bool is_down_;
 
 	bool signal_handler_sdl_button_down_entered_;
-	void signal_handler_sdl_button_down(const event::tevent event,
+	void signal_handler_sdl_button_down(const event::ui_event event,
 										bool& handled,
-										const tpoint& coordinate);
+										const point& coordinate);
 
 	bool signal_handler_sdl_button_up_entered_;
-	void signal_handler_sdl_button_up(const event::tevent event,
+	void signal_handler_sdl_button_up(const event::ui_event event,
 									  bool& handled,
-									  const tpoint& coordinate);
+									  const point& coordinate);
 
 
-	void mouse_button_click(twidget* widget);
+	void mouse_button_click(widget* widget);
 };
 
-/***** ***** ***** ***** tdistributor ***** ***** ***** ***** *****/
+/***** ***** ***** ***** distributor ***** ***** ***** ***** *****/
 
-typedef tmouse_button<SDL_LEFT_BUTTON_DOWN,
+typedef mouse_button<SDL_LEFT_BUTTON_DOWN,
 					  SDL_LEFT_BUTTON_UP,
 					  LEFT_BUTTON_DOWN,
 					  LEFT_BUTTON_UP,
 					  LEFT_BUTTON_CLICK,
-					  LEFT_BUTTON_DOUBLE_CLICK> tmouse_button_left;
+					  LEFT_BUTTON_DOUBLE_CLICK> mouse_button_left;
 
-typedef tmouse_button<SDL_MIDDLE_BUTTON_DOWN,
+typedef mouse_button<SDL_MIDDLE_BUTTON_DOWN,
 					  SDL_MIDDLE_BUTTON_UP,
 					  MIDDLE_BUTTON_DOWN,
 					  MIDDLE_BUTTON_UP,
 					  MIDDLE_BUTTON_CLICK,
-					  MIDDLE_BUTTON_DOUBLE_CLICK> tmouse_button_middle;
+					  MIDDLE_BUTTON_DOUBLE_CLICK> mouse_button_middle;
 
-typedef tmouse_button<SDL_RIGHT_BUTTON_DOWN,
+typedef mouse_button<SDL_RIGHT_BUTTON_DOWN,
 					  SDL_RIGHT_BUTTON_UP,
 					  RIGHT_BUTTON_DOWN,
 					  RIGHT_BUTTON_UP,
 					  RIGHT_BUTTON_CLICK,
-					  RIGHT_BUTTON_DOUBLE_CLICK> tmouse_button_right;
+					  RIGHT_BUTTON_DOUBLE_CLICK> mouse_button_right;
 
 
 /** The event handler class for the widget library. */
-class tdistributor : public tmouse_button_left,
-					 public tmouse_button_middle,
-					 public tmouse_button_right
+class distributor : public mouse_button_left,
+					 public mouse_button_middle,
+					 public mouse_button_right
 {
 public:
-	tdistributor(twidget& owner, const tdispatcher::tposition queue_position);
+	distributor(widget& owner, const dispatcher::queue_position queue_position);
 
-	~tdistributor();
+	~distributor();
 
 	/**
 	 * Initializes the state of the keyboard and mouse.
@@ -254,7 +254,7 @@ public:
 	 * @param widget              The widget which should capture the keyboard.
 	 *                            Sending nullptr releases the capturing.
 	 */
-	void keyboard_capture(twidget* widget);
+	void keyboard_capture(widget* widget);
 
 	/**
 	 * Adds the widget to the keyboard chain.
@@ -263,14 +263,14 @@ public:
 	 *                            should be valid widget, which hasn't been
 	 *                            added to the chain yet.
 	 */
-	void keyboard_add_to_chain(twidget* widget);
+	void keyboard_add_to_chain(widget* widget);
 
 	/**
 	 * Remove the widget from the keyboard chain.
 	 *
 	 * @param widget              The widget to be removed from the chain.
 	 */
-	void keyboard_remove_from_chain(twidget* widget);
+	void keyboard_remove_from_chain(widget* widget);
 
 private:
 	class layer : public video2::draw_layering
@@ -297,13 +297,13 @@ private:
 										*/
 
 	/** The widget of the currently active tooltip. */
-	twidget* tooltip_;
+	widget* tooltip_;
 
 	/** The widget of the currently active help popup. */
-	twidget* help_popup_;
+	widget* help_popup_;
 #endif
 	/** The widget that holds the keyboard focus_. */
-	twidget* keyboard_focus_;
+	widget* keyboard_focus_;
 
 	/**
 	 * Fall back keyboard focus_ items.
@@ -315,7 +315,7 @@ private:
 	 * the window, so it will be the last handler and can dispatch the hotkeys
 	 * registered.
 	 */
-	std::vector<twidget*> keyboard_focus_chain_;
+	std::vector<widget*> keyboard_focus_chain_;
 
 	/**
 	 * Set of functions that handle certain events and sends them to the proper
@@ -326,7 +326,7 @@ private:
 									 const SDL_Keymod modifier,
 									 const utf8::string& unicode);
 
-	void signal_handler_notify_removal(tdispatcher& widget, const tevent event);
+	void signal_handler_notify_removal(dispatcher& widget, const ui_event event);
 };
 
 } // namespace event

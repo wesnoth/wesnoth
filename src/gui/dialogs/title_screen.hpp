@@ -15,14 +15,16 @@
 #ifndef GUI_DIALOGS_TITLE_SCREEN_HPP_INCLUDED
 #define GUI_DIALOGS_TITLE_SCREEN_HPP_INCLUDED
 
-#include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
 
 class game_launcher;
 
 namespace gui2
 {
+namespace dialogs
+{
 
-class tpopup;
+class modeless_dialog;
 
 /** Do we wish to show the button for the debug clock. */
 extern bool show_debug_clock_button;
@@ -33,18 +35,18 @@ extern bool show_debug_clock_button;
  * The menu buttons return a result back to the caller with the button pressed.
  * So at the moment it only handles the tips itself.
  */
-class ttitle_screen : public tdialog
+class title_screen : public modal_dialog
 {
 public:
-	ttitle_screen(game_launcher& game);
+	title_screen(game_launcher& game);
 
-	~ttitle_screen();
+	~title_screen();
 
 	/**
 	 * Values for actions which leave the title screen.
 	 * Actions that merely show a dialog are not included here.
 	 */
-	enum tresult {
+	enum result {
 		// Start playing a single-player game, such as the tutorial or a campaign
 		LAUNCH_GAME,
 		// Connect to an MP server
@@ -73,16 +75,16 @@ private:
 
 	bool redraw_background_;
 
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	/** Inherited from modal_dialog. */
+	void pre_show(window& window);
 
-	void on_resize(twindow& window);
+	void on_resize(window& window);
 
 	/** Holds the debug clock dialog. */
-	tpopup* debug_clock_;
+	modeless_dialog* debug_clock_;
 
 	/**
 	 * Updates the tip of day widget.
@@ -90,12 +92,13 @@ private:
 	 * @param window              The window being shown.
 	 * @param previous            Show the previous tip, else shows the next one.
 	 */
-	void update_tip(twindow& window, const bool previous);
+	void update_tip(window& window, const bool previous);
 
 	/** Shows the debug clock. */
 	void show_debug_clock_window(CVideo& video);
 };
 
+} // namespace dialogs
 } // namespace gui2
 
 #endif

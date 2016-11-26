@@ -18,11 +18,13 @@
 
 #include "gettext.hpp"
 #include "gui/auxiliary/find_widget.hpp"
-#include "gui/widgets/control.hpp"
+#include "gui/widgets/styled_widget.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 
 namespace gui2
+{
+namespace dialogs
 {
 
 /*WIKI
@@ -36,7 +38,7 @@ namespace gui2
  *
  * @begin{table}{dialog_widgets}
  *
- * title & & control & m &
+ * title & & styled_widget & m &
  *         Label with the dialog caption. Changed in bookmark mode. $
  * name & & text_box & m &
  *         Input field for the new folder/bookmark name. $
@@ -46,17 +48,18 @@ namespace gui2
 
 REGISTER_DIALOG(folder_create)
 
-tfolder_create::tfolder_create(std::string& folder_name)
+folder_create::folder_create(std::string& folder_name)
 	: bookmark_mode_(false)
 {
 	register_text("name", true, folder_name, true);
 }
 
-void tfolder_create::pre_show(twindow& window)
+void folder_create::pre_show(window& window)
 {
 	if(bookmark_mode_) {
-		find_widget<tcontrol>(&window, "title", false).set_label(_("New Bookmark"));
+		find_widget<styled_widget>(&window, "title", false).set_label(_("New Bookmark"));
 	}
 }
 
-}
+} // namespace dialogs
+} // namespace gui2

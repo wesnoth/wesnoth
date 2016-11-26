@@ -16,16 +16,18 @@
 #define GUI_DIALOGS_UNIT_ATTACK_HPP_INCLUDED
 
 #include "actions/attack.hpp"
-#include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
 #include "units/map.hpp"
 
 namespace gui2
 {
+namespace dialogs
+{
 
-class tunit_attack : public tdialog
+class unit_attack : public modal_dialog
 {
 public:
-	tunit_attack(const unit_map::iterator& attacker_itor,
+	unit_attack(const unit_map::iterator& attacker_itor,
 				 const unit_map::iterator& defender_itor,
 				 const std::vector<battle_context>& weapons,
 				 const int best_weapon);
@@ -38,16 +40,16 @@ public:
 	}
 
 private:
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-	/** Inherited from tdialog. */
-	void pre_show(twindow& window);
+	/** Inherited from modal_dialog. */
+	void pre_show(window& window);
 
-	/** Inherited from tdialog. */
-	void post_show(twindow& window);
+	/** Inherited from modal_dialog. */
+	void post_show(window& window);
 
-	void damage_calc_callback(twindow& window);
+	void damage_calc_callback(window& window);
 
 	/** The index of the selected weapon. */
 	int selected_weapon_;
@@ -65,6 +67,7 @@ private:
 	int best_weapon_;
 };
 
+} // namespace dialogs
 } // namespace gui2
 
 #endif

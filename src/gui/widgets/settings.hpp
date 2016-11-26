@@ -32,8 +32,8 @@
 namespace gui2
 {
 
-struct tgui_definition;
-class ttip;
+struct gui_definition;
+class game_tip;
 
 /** Do we wish to use the new library or not. */
 extern bool new_widgets;
@@ -60,7 +60,7 @@ void register_window(const std::string& id);
  * This is used in the unit tests, but these implementation details shouldn't
  * be used in the normal code.
  */
-class tunit_test_access_only
+class unit_test_access_only
 {
 	friend std::vector<std::string>& unit_test_registered_window_list();
 
@@ -81,7 +81,7 @@ class tunit_test_access_only
  * @param functor                 The function to load the definitions.
  */
 void register_widget(const std::string& id,
-					 std::function<void(tgui_definition& gui_definition,
+					 std::function<void(gui_definition& gui,
 										  const std::string& definition_type,
 										  const config& cfg,
 										  const char* key)> functor);
@@ -97,9 +97,9 @@ void register_widget(const std::string& id,
  *                                object.
  */
 void load_widget_definitions(
-		tgui_definition& gui_definition,
+		gui_definition& gui,
 		const std::string& definition_type,
-		const std::vector<tcontrol_definition_ptr>& definitions);
+		const std::vector<styled_widget_definition_ptr>& definitions);
 
 /**
  * Loads the definitions of a widget.
@@ -117,12 +117,12 @@ void load_widget_definitions(
  * @param key                     Optional id of the definition to load.
  */
 template <class T>
-void load_widget_definitions(tgui_definition& gui_definition,
+void load_widget_definitions(gui_definition& gui,
 							 const std::string& definition_type,
 							 const config& cfg,
 							 const char* key)
 {
-	std::vector<tcontrol_definition_ptr> definitions;
+	std::vector<styled_widget_definition_ptr> definitions;
 
 	for (const auto & definition :
 			cfg.child_range(key ? key : definition_type + "_definition"))
@@ -131,15 +131,15 @@ void load_widget_definitions(tgui_definition& gui_definition,
 		definitions.push_back(std::make_shared<T>(definition));
 	}
 
-	load_widget_definitions(gui_definition, definition_type, definitions);
+	load_widget_definitions(gui, definition_type, definitions);
 }
 
 
-tresolution_definition_ptr get_control(const std::string& control_type,
+resolution_definition_ptr get_control(const std::string& control_type,
 									   const std::string& definition);
 
 /** Helper struct to signal that get_window_builder failed. */
-struct twindow_builder_invalid_id
+struct window_builder_invalid_id
 {
 };
 
@@ -152,14 +152,14 @@ struct twindow_builder_invalid_id
  * @pre                       There is a valid builder for @p type at the
  *                            current resolution.
  *
- * @throw twindow_builder_invalid_id
+ * @throw window_builder_invalid_id
  *                            When the precondition is violated.
  *
  * @param type                The type of builder window to get.
  *
  * @returns                   An iterator to the requested builder.
  */
-std::vector<twindow_builder::tresolution>::const_iterator
+std::vector<builder_window::window_resolution>::const_iterator
 get_window_builder(const std::string& type);
 
 /** Loads the setting for the theme. */
@@ -202,7 +202,7 @@ extern std::string sound_slider_adjust;
 
 extern t_string has_helptip_message;
 
-std::vector<ttip> get_tips();
+std::vector<game_tip> get_tips();
 }
 
 } // namespace gui2

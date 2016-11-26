@@ -15,7 +15,7 @@
 #ifndef GUI_WIDGETS_STACKED_WIDGET_HPP_INCLUDED
 #define GUI_WIDGETS_STACKED_WIDGET_HPP_INCLUDED
 
-#include "gui/widgets/container.hpp"
+#include "gui/widgets/container_base.hpp"
 
 #include "gui/core/widget_definition.hpp"
 #include "gui/core/window_builder.hpp"
@@ -27,28 +27,28 @@ namespace gui2
 
 namespace implementation
 {
-struct tbuilder_stacked_widget;
+struct builder_stacked_widget;
 }
 
-class tgenerator_;
+class generator_base;
 
-class tstacked_widget : public tcontainer_
+class stacked_widget : public container_base
 {
-	friend struct implementation::tbuilder_stacked_widget;
-	friend class tdebug_layout_graph;
+	friend struct implementation::builder_stacked_widget;
+	friend class debug_layout_graph;
 
 public:
-	tstacked_widget();
+	stacked_widget();
 
 	/***** ***** ***** inherited ***** ****** *****/
 
-	/** See @ref tcontrol::get_active. */
+	/** See @ref styled_widget::get_active. */
 	virtual bool get_active() const override;
 
-	/** See @ref tcontrol::get_state. */
+	/** See @ref styled_widget::get_state. */
 	virtual unsigned get_state() const override;
 
-	/** See @ref twidget::layout_children. */
+	/** See @ref widget::layout_children. */
 	virtual void layout_children() override;
 
 	/**
@@ -73,7 +73,7 @@ public:
 	 */
 	unsigned int get_layer_count() const;
 
-	tgrid* get_layer_grid(unsigned int i);
+	grid* get_layer_grid(unsigned int i);
 
 private:
 	/**
@@ -82,16 +82,16 @@ private:
 	 * @param widget_builder      The builder to build the contents of the
 	 *                            widget.
 	 */
-	void finalize(std::vector<tbuilder_grid_const_ptr> widget_builder);
+	void finalize(std::vector<builder_grid_const_ptr> widget_builder);
 
 	/**
 	 * Contains a pointer to the generator.
 	 *
 	 * The pointer is not owned by this class, it's stored in the content_grid_
-	 * of the tscrollbar_container super class and freed when it's grid is
+	 * of the scrollbar_container super class and freed when it's grid is
 	 * freed.
 	 */
-	tgenerator_* generator_;
+	generator_base* generator_;
 
 	/**
 	 * The number of the current selected layer.
@@ -103,24 +103,24 @@ private:
 	 */
 	void select_layer_internal(const unsigned int layer, const bool select) const;
 
-	/** See @ref tcontrol::get_control_type. */
+	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
 
-	/** See @ref tcontainer_::set_self_active. */
+	/** See @ref container_base::set_self_active. */
 	virtual void set_self_active(const bool active) override;
 };
 
 // }---------- DEFINITION ---------{
 
-struct tstacked_widget_definition : public tcontrol_definition
+struct stacked_widget_definition : public styled_widget_definition
 {
-	explicit tstacked_widget_definition(const config& cfg);
+	explicit stacked_widget_definition(const config& cfg);
 
-	struct tresolution : public tresolution_definition_
+	struct resolution : public resolution_definition
 	{
-		explicit tresolution(const config& cfg);
+		explicit resolution(const config& cfg);
 
-		tbuilder_grid_ptr grid;
+		builder_grid_ptr grid;
 	};
 };
 
@@ -129,16 +129,16 @@ struct tstacked_widget_definition : public tcontrol_definition
 namespace implementation
 {
 
-struct tbuilder_stacked_widget : public tbuilder_control
+struct builder_stacked_widget : public builder_styled_widget
 {
-	explicit tbuilder_stacked_widget(const config& cfg);
+	explicit builder_stacked_widget(const config& cfg);
 
-	using tbuilder_control::build;
+	using builder_styled_widget::build;
 
-	twidget* build() const;
+	widget* build() const;
 
 	/** The builders for all layers of the stack .*/
-	std::vector<tbuilder_grid_const_ptr> stack;
+	std::vector<builder_grid_const_ptr> stack;
 };
 
 } // namespace implementation
