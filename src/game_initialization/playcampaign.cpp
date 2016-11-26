@@ -221,7 +221,7 @@ LEVEL_RESULT campaign_controller::playsingle_scenario(end_level_data &end_level)
 
 LEVEL_RESULT campaign_controller::playmp_scenario(end_level_data &end_level)
 {
-
+	std::cerr << "now playing '" << state_.get_scenario_id() <<"'\n"; 
 	playmp_controller playcontroller(state_.get_starting_pos(), state_,
 		game_config_, tdata_, video_, mp_info_);
 	LEVEL_RESULT res = playcontroller.play_scenario(state_.get_starting_pos());
