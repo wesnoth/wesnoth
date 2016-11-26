@@ -119,6 +119,7 @@ bool mp_join_game::fetch_game_config(CVideo& video)
 	}
 
 	if(level_["started"].to_bool()) {
+		mp::level_to_gamestate(level_, state_);
 		return true;
 	}
 
