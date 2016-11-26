@@ -37,13 +37,12 @@ color_t color_t::from_rgba_string(const std::string& c)
 
 color_t color_t::from_hex_string(const std::string& c)
 {
-	// Why, std::strtol, why :|
-	char* end;
+	unsigned long temp_c = std::strtol(c.c_str(), nullptr, 16);
 
 	return {
-		static_cast<uint8_t>((0x00FFFFFF & std::strtol(c.c_str(), &end, 16)) >> 16),
-		static_cast<uint8_t>((0x00FFFFFF & std::strtol(c.c_str(), &end, 16)) >> 8),
-		static_cast<uint8_t>((0x00FFFFFF & std::strtol(c.c_str(), &end, 16))),
+		static_cast<uint8_t>((0x00FFFFFF & temp_c) >> 16),
+		static_cast<uint8_t>((0x00FFFFFF & temp_c) >> 8),
+		static_cast<uint8_t>((0x00FFFFFF & temp_c)),
 		SDL_ALPHA_OPAQUE
 	};
 }
