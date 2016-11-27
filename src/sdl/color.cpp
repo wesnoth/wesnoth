@@ -25,8 +25,8 @@ color_t color_t::from_rgba_string(const std::string& c)
 
 	std::vector<std::string> fields = utils::split(c);
 
-	// Make sure we have 4 fields
-	if(fields.size() != 4) {
+	// Allow either 3 (automatic opaque alpha) or 4 (explicit alpha) fields
+	if(fields.size() != 3 && fields.size() != 4) {
 		throw std::invalid_argument("Wrong number of components for RGBA color");
 	}
 
