@@ -601,7 +601,7 @@ function wml_actions.floating_text(cfg)
 	local text = cfg.text or helper.wml_error("[floating_text] missing required text= attribute")
 
 	for i, loc in ipairs(locs) do
-		wesnoth.float_label(loc[1], loc[2], text)
+		wesnoth.float_label(loc[1], loc[2], text, cfg.color)
 	end
 end
 
