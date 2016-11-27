@@ -25,7 +25,7 @@ color_t color_t::from_rgba_string(const std::string& c)
 	std::vector<std::string> fields = utils::split(c);
 
 	// Make sure we have 4 fields
-	if(fields.size() < 3 || fields.size() > 4) {
+	if(fields.size() != 4) {
 		throw std::invalid_argument("Wrong number of components for RGB color");
 	}
 
@@ -58,8 +58,10 @@ color_t color_t::from_rgb_string(const std::string& c)
 
 color_t color_t::from_hex_string(const std::string& c)
 {
-	if(c.length() != 6)
+	if(c.length() != 6) {
 		throw std::invalid_argument("Color hex string should be exactly 6 digits");
+	}
+
 	unsigned long temp_c = std::strtol(c.c_str(), nullptr, 16);
 
 	return {

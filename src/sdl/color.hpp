@@ -19,6 +19,10 @@
 
 #include <SDL.h>
 
+//
+// TODO: constexpr
+//
+
 const uint32_t SDL_ALPHA_MASK = 0xFF000000;
 const uint32_t SDL_RED_MASK   = 0x00FF0000;
 const uint32_t SDL_GREEN_MASK = 0x0000FF00;
