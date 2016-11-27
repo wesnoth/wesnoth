@@ -22,6 +22,7 @@
 
 #include "sdl/utils.hpp"
 #include "sdl/rect.hpp"
+#include "sdl/color.hpp"
 
 #include "serialization/string_utils.hpp"
 #include "video.hpp"
@@ -61,38 +62,23 @@ const_surface_lock::~const_surface_lock()
 		SDL_UnlockSurface(surface_);
 }
 
+// TODO: Remove these three functions and use color_t directly
 SDL_Color int_to_color(const Uint32 rgb)
 {
-	return {
-		static_cast<Uint8>((SDL_RED_MASK   & rgb) >> SDL_RED_BITSHIFT),
-		static_cast<Uint8>((SDL_GREEN_MASK & rgb) >> SDL_GREEN_BITSHIFT),
-		static_cast<Uint8>((SDL_BLUE_MASK  & rgb) >> SDL_BLUE_BITSHIFT),
-		SDL_ALPHA_OPAQUE
-	};
+	return color_t::from_argb_bytes(rgb).to_sdl();
 }
 
 SDL_Color string_to_color(const std::string& color_string, const bool override_alpha)
 {
-	std::vector<std::string> fields = utils::split(color_string);
-
-	// Make sure we have 4 fields
-	while(fields.size() < 4) {
-		fields.push_back("0");
-	}
-
-	SDL_Color color {
-		static_cast<Uint8>(std::stoul(fields[0])),
-		static_cast<Uint8>(std::stoul(fields[1])),
-		static_cast<Uint8>(std::stoul(fields[2])),
-		static_cast<Uint8>(std::stoul(fields[3]))};
+	color_t clr = color_t::from_rgba_string(color_string);
 
 	// This is only here to accommodate general uses like [label] that ignore alpha.
 	// Should probably be removed eventually.
 	if(override_alpha) {
-		color.a = SDL_ALPHA_OPAQUE;
+		clr.a = SDL_ALPHA_OPAQUE;
 	}
 
-	return color;
+	return clr.to_sdl();
 }
 
 SDL_Color create_color(const unsigned char red

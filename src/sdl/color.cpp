@@ -13,7 +13,6 @@
 
 #include "serialization/string_utils.hpp"
 #include "sdl/color.hpp"
-#include "sdl/utils.hpp"
 
 #include <iomanip>
 #include <sstream>
@@ -47,13 +46,23 @@ color_t color_t::from_hex_string(const std::string& c)
 	};
 }
 
-color_t color_t::from_rgba_uint32(uint32_t c)
+color_t color_t::from_rgba_bytes(uint32_t c)
 {
 	return {
-		static_cast<uint8_t>((SDL_RED_MASK   & c) >> 24),
-		static_cast<uint8_t>((SDL_GREEN_MASK & c) >> 16),
-		static_cast<uint8_t>((SDL_BLUE_MASK  & c) >> 8),
-		static_cast<uint8_t>( SDL_ALPHA_MASK & c)
+		static_cast<uint8_t>((RGBA_RED_MASK   & c) >> RGBA_RED_BITSHIFT),
+		static_cast<uint8_t>((RGBA_GREEN_MASK & c) >> RGBA_GREEN_BITSHIFT),
+		static_cast<uint8_t>((RGBA_BLUE_MASK  & c) >> RGBA_BLUE_BITSHIFT),
+		static_cast<uint8_t>((RGBA_ALPHA_MASK & c) >> RGBA_ALPHA_BITSHIFT),
+	};
+}
+
+color_t color_t::from_argb_bytes(uint32_t c)
+{
+	return {
+		static_cast<uint8_t>((SDL_RED_MASK   & c) >> SDL_RED_BITSHIFT),
+		static_cast<uint8_t>((SDL_GREEN_MASK & c) >> SDL_GREEN_BITSHIFT),
+		static_cast<uint8_t>((SDL_BLUE_MASK  & c) >> SDL_BLUE_BITSHIFT),
+		static_cast<uint8_t>((SDL_ALPHA_MASK & c) >> SDL_ALPHA_BITSHIFT),
 	};
 }
 

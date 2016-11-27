@@ -19,6 +19,26 @@
 
 #include <SDL.h>
 
+const uint32_t SDL_ALPHA_MASK = 0xFF000000;
+const uint32_t SDL_RED_MASK   = 0x00FF0000;
+const uint32_t SDL_GREEN_MASK = 0x0000FF00;
+const uint32_t SDL_BLUE_MASK  = 0x000000FF;
+
+const uint32_t SDL_ALPHA_BITSHIFT = 24;
+const uint32_t SDL_RED_BITSHIFT   = 16;
+const uint32_t SDL_GREEN_BITSHIFT = 8;
+const uint32_t SDL_BLUE_BITSHIFT  = 0;
+
+const uint32_t RGBA_ALPHA_MASK = 0x000000FF;
+const uint32_t RGBA_RED_MASK   = 0xFF000000;
+const uint32_t RGBA_GREEN_MASK = 0x00FF0000;
+const uint32_t RGBA_BLUE_MASK  = 0x0000FF00;
+
+const uint32_t RGBA_ALPHA_BITSHIFT = 0;
+const uint32_t RGBA_RED_BITSHIFT   = 24;
+const uint32_t RGBA_GREEN_BITSHIFT = 16;
+const uint32_t RGBA_BLUE_BITSHIFT  = 8;
+
 struct color_t
 {
 	color_t()
@@ -68,7 +88,15 @@ struct color_t
 	 * @param c      A uint32_t variable, in RGBA format.
 	 * @return       A new color_t object.
 	 */
-	static color_t from_rgba_uint32(uint32_t c);
+	static color_t from_rgba_bytes(uint32_t c);
+
+	/**
+	 * Creates a new color_t object from a uint32_t variable.
+	 *
+	 * @param c      A uint32_t variable, in ARGB format.
+	 * @return       A new color_t object.
+	 */
+	static color_t from_argb_bytes(uint32_t c);
 
 	/**
 	 * Returns the stored color in rrggbb hex format.
@@ -79,13 +107,31 @@ struct color_t
 	std::string to_hex_string();
 
 	/**
-	 * Returns the stored color as a uint32_t.
+	 * Returns the stored color as a uint32_t, in RGBA format.
 	 *
 	 * @return       The new uint32_t object.
 	 */
-	uint32_t to_rgba_uint32()
+	uint32_t to_rgba_bytes()
 	{
-		return (static_cast<uint32_t>(r) << 24) | (static_cast<uint32_t>(g) << 16) | (static_cast<uint32_t>(b) << 8) | a;
+		return
+			(static_cast<uint32_t>(r) << RGBA_RED_BITSHIFT) |
+			(static_cast<uint32_t>(g) << RGBA_GREEN_BITSHIFT) |
+			(static_cast<uint32_t>(b) << RGBA_BLUE_BITSHIFT) |
+			(static_cast<uint32_t>(a) << RGBA_ALPHA_BITSHIFT);
+	}
+
+	/**
+	 * Returns the stored color as a uint32_t, an ARGB format.
+	 *
+	 * @return       The new uint32_t object.
+	 */
+	uint32_t to_argb_bytes()
+	{
+		return
+			(static_cast<uint32_t>(r) << SDL_RED_BITSHIFT) |
+			(static_cast<uint32_t>(g) << SDL_GREEN_BITSHIFT) |
+			(static_cast<uint32_t>(b) << SDL_BLUE_BITSHIFT) |
+			(static_cast<uint32_t>(a) << SDL_ALPHA_BITSHIFT);
 	}
 
 	/**
