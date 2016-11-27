@@ -22,11 +22,12 @@ color_t color_t::from_rgba_string(const std::string& c)
 	if(c.empty()) {
 		return color_t();
 	}
+
 	std::vector<std::string> fields = utils::split(c);
 
 	// Make sure we have 4 fields
 	if(fields.size() != 4) {
-		throw std::invalid_argument("Wrong number of components for RGB color");
+		throw std::invalid_argument("Wrong number of components for RGBA color");
 	}
 
 	return {
@@ -42,6 +43,7 @@ color_t color_t::from_rgb_string(const std::string& c)
 	if(c.empty()) {
 		return color_t();
 	}
+
 	std::vector<std::string> fields = utils::split(c);
 
 	if(fields.size() != 3) {
