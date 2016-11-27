@@ -43,19 +43,19 @@ struct color_t
 	{}
 
 	/**
-	 * Creates a new color_t object from a string variable in R,G,B,A format.
+	 * Creates a new color_t object from a string variable in "R,G,B,A" format.
 	 *
-	 * @param        A string variable, in "R,G,B,A" format.
+	 * @param c      A string variable, in "R,G,B,A" format.
 	 * @return       A new color_t object.
 	 *
-	 * @throw        std::invalid_argument
+	 * @throw        std::invalid_argument if the string is not correctly formatted
 	 */
 	static color_t from_rgba_string(const std::string& c);
 
 	/**
 	 * Creates a new color_t object from a string variable in hex format.
 	 *
-	 * @param        A string variable, in rrggbb hex format.
+	 * @param c      A string variable, in rrggbb hex format.
 	 * @return       A new color_t object.
 	 *
 	 * @throw        std::invalid_argument
@@ -65,7 +65,7 @@ struct color_t
 	/**
 	 * Creates a new color_t object from a uint32_t variable.
 	 *
-	 * @param        A uint32_t variable, in RGBA format.
+	 * @param c      A uint32_t variable, in RGBA format.
 	 * @return       A new color_t object.
 	 */
 	static color_t from_rgba_uint32(uint32_t c);
