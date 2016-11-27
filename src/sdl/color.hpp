@@ -120,21 +120,17 @@ struct color_t
 		return !(*this == c);
 	}
 
-	// Intentionally passed by value
-	color_t operator+(color_t c)
-	{
-		return c += *this;
-	}
-
-	color_t& operator+=(const color_t& c)
+	color_t plus_clipped(const color_t& c)
 	{
 		// Do some magic to detect integer overflow
 		// We want overflows to max out the component instead of wrapping.
-		r = r > 255 - c.r ? 255 : r + c.r;
-		g = g > 255 - c.g ? 255 : g + c.g;
-		b = b > 255 - c.b ? 255 : b + c.b;
-		a = a > 255 - c.a ? 255 : a + c.a;
-		return *this;
+		// The static_cast is to silence narrowing conversion warnings etc
+		return {
+			static_cast<uint8_t>(r > 255 - c.r ? 255 : r + c.r),
+			static_cast<uint8_t>(g > 255 - c.g ? 255 : g + c.g),
+			static_cast<uint8_t>(b > 255 - c.b ? 255 : b + c.b),
+			static_cast<uint8_t>(a > 255 - c.a ? 255 : a + c.a),
+		};
 	}
 };
 
