@@ -204,7 +204,7 @@ struct color_t
 	}
 };
 
-std::ostream& operator<<(std::ostream& s, const color_t& c)
+inline std::ostream& operator<<(std::ostream& s, const color_t& c)
 {
 	s << int(c.r) << " " << int(c.g) << " " << int(c.b) << " " << int(c.a) << std::endl;
 	return s;
