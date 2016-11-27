@@ -73,6 +73,16 @@ struct color_t
 	static color_t from_rgba_string(const std::string& c);
 
 	/**
+	 * Creates a new opaque color_t object from a string variable in "R,G,B" format.
+	 *
+	 * @param c      A string variable, in "R,G,B" format.
+	 * @return       A new color_t object.
+	 *
+	 * @throw        std::invalid_argument if the string is not correctly formatted
+	 */
+	static color_t from_rgb_string(const std::string& c);
+
+	/**
 	 * Creates a new color_t object from a string variable in hex format.
 	 *
 	 * @param c      A string variable, in rrggbb hex format.
@@ -133,6 +143,20 @@ struct color_t
 			(static_cast<uint32_t>(b) << SDL_BLUE_BITSHIFT) |
 			(static_cast<uint32_t>(a) << SDL_ALPHA_BITSHIFT);
 	}
+
+	/**
+	 * Returns the stored color as an "R,G,B,A" string
+	 *
+	 * @return      The new color string.
+	 */
+	std::string to_rgba_string();
+
+	/**
+	 * Returns the stored color as an "R,G,B" string
+	 *
+	 * @return      The new color string.
+	 */
+	std::string to_rgb_string();
 
 	/**
 	 * Returns the stored color as an SDL_Color object.

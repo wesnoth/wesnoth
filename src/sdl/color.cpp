@@ -22,20 +22,38 @@ color_t color_t::from_rgba_string(const std::string& c)
 	std::vector<std::string> fields = utils::split(c);
 
 	// Make sure we have 4 fields
-	while(fields.size() < 4) {
-		fields.push_back("0");
+	if(fields.size() < 3 || fields.size() > 4) {
+		throw std::invalid_argument("Wrong number of components for RGB color");
+	}
+
+	return {
+		static_cast<uint8_t>(std::stoul(fields[0])),
+		static_cast<uint8_t>(std::stoul(fields[1])),
+		static_cast<uint8_t>(std::stoul(fields[2])),
+		static_cast<uint8_t>(fields.size() == 4 ? std::stoul(fields[3]) : SDL_ALPHA_OPAQUE)
+	};
+}
+
+color_t color_t::from_rgb_string(const std::string& c)
+{
+	std::vector<std::string> fields = utils::split(c);
+
+	if(fields.size() != 3) {
+		throw std::invalid_argument("Wrong number of components for RGB color");
 	}
 
 	return {
 		static_cast<uint8_t>(std::stoul(fields[0])),
 		static_cast<uint8_t>(std::stoul(fields[0])),
 		static_cast<uint8_t>(std::stoul(fields[0])),
-		static_cast<uint8_t>(std::stoul(fields[0]))
+		static_cast<uint8_t>(SDL_ALPHA_OPAQUE)
 	};
 }
 
 color_t color_t::from_hex_string(const std::string& c)
 {
+	if(c.length() != 6)
+		throw std::invalid_argument("Color hex string should be exactly 6 digits");
 	unsigned long temp_c = std::strtol(c.c_str(), nullptr, 16);
 
 	return {
@@ -70,9 +88,26 @@ std::string color_t::to_hex_string()
 {
 	std::ostringstream h;
 
-	h << std::hex << std::setfill('0') << std::setw(2) << (r & 0xFF0000)
-	  << std::hex << std::setfill('0') << std::setw(2) << (g & 0x00FF00)
-	  << std::hex << std::setfill('0') << std::setw(2) << (b & 0x0000FF);
+	h << std::hex << std::setfill('0') << std::setw(2);
+	h << int(r) << int(g) << int(b);
 
 	return h.str();
+}
+
+std::string color_t::to_rgba_string()
+{
+	std::ostringstream color;
+
+	color << r << ',' << g << ',' << b << ',' << a;
+
+	return color.str();
+}
+
+std::string color_t::to_rgb_string()
+{
+	std::ostringstream color;
+
+	color << r << ',' << g << ',' << b;
+
+	return color.str();
 }
