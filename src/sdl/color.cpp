@@ -19,6 +19,9 @@
 
 color_t color_t::from_rgba_string(const std::string& c)
 {
+	if(c.empty()) {
+		return color_t();
+	}
 	std::vector<std::string> fields = utils::split(c);
 
 	// Make sure we have 4 fields
@@ -36,6 +39,9 @@ color_t color_t::from_rgba_string(const std::string& c)
 
 color_t color_t::from_rgb_string(const std::string& c)
 {
+	if(c.empty()) {
+		return color_t();
+	}
 	std::vector<std::string> fields = utils::split(c);
 
 	if(fields.size() != 3) {

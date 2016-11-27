@@ -64,6 +64,8 @@ struct color_t
 
 	/**
 	 * Creates a new color_t object from a string variable in "R,G,B,A" format.
+	 * An empty string results in white. Otherwise, omitting components other than
+	 * alpha is an error.
 	 *
 	 * @param c      A string variable, in "R,G,B,A" format.
 	 * @return       A new color_t object.
@@ -74,6 +76,7 @@ struct color_t
 
 	/**
 	 * Creates a new opaque color_t object from a string variable in "R,G,B" format.
+	 * An empty string results in white. Otherwise, omitting components is an error.
 	 *
 	 * @param c      A string variable, in "R,G,B" format.
 	 * @return       A new color_t object.
