@@ -88,7 +88,7 @@ struct color_t
 	 * @param c      A string variable, in rrggbb hex format.
 	 * @return       A new color_t object.
 	 *
-	 * @throw        std::invalid_argument
+	 * @throw        std::invalid_argument if the string is not correctly formatted
 	 */
 	static color_t from_hex_string(const std::string& c);
 
