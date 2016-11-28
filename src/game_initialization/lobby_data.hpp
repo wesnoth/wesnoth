@@ -19,6 +19,7 @@
 #include <deque>
 #include <functional>
 #include <vector>
+#include <string>
 
 class config;
 
