@@ -21,7 +21,6 @@
 #include <vector>
 
 class config;
-class surface;
 
 namespace mp {
 
