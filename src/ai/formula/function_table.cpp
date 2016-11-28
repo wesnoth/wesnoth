@@ -33,6 +33,7 @@
 #include "pathfind/teleport.hpp"
 #include "replay.hpp"
 #include "resources.hpp"
+#include "sdl/color.hpp"
 #include "terrain/filter.hpp"
 #include "units/unit.hpp"
 #include "pathfind/pathfind.hpp"
@@ -1234,7 +1235,7 @@ private:
                 display* gui = display::get_singleton();
 		std::string team_name;
 
-		SDL_Color color = int_to_color(team::get_side_rgb(ai_.get_side()));
+		SDL_Color color = color_t::from_argb_bytes(team::get_side_rgb(ai_.get_side())).to_sdl();
 
 		const terrain_label *res;
 		res = gui->labels().set_label(location, text, ai_.get_side() - 1, team_name, color);

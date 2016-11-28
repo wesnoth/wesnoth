@@ -81,6 +81,7 @@
 #include "scripting/game_lua_kernel.hpp"
 #include "scripting/plugins/manager.hpp"
 #include "sound.hpp"
+#include "sdl/color.hpp"
 #include "synced_context.hpp"
 #include "terrain/builder.hpp"
 #include "units/unit.hpp"
@@ -732,7 +733,7 @@ void menu_handler::label_terrain(mouse_handler& mousehandler, bool team_only)
 		if (team_only) {
 			team_name = gui_->labels().team_name();
 		} else {
-			color = int_to_color(team::get_side_rgb(gui_->viewing_side()));
+			color = color_t::from_argb_bytes(team::get_side_rgb(gui_->viewing_side())).to_sdl();
 		}
 		const terrain_label* res = gui_->labels().set_label(loc, label, gui_->viewing_team(), team_name, color);
 		if (res)

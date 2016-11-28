@@ -39,6 +39,7 @@
 #include "reports.hpp"
 #include "resources.hpp"
 #include "tod_manager.hpp"
+#include "sdl/color.hpp"
 #include "sound.hpp"
 #include "synced_context.hpp"
 #include "terrain/type_data.hpp"
@@ -435,7 +436,7 @@ void game_display::draw_movement_info(const map_location& loc)
 			std::stringstream def_text;
 			def_text << def << "%";
 
-			SDL_Color color = int_to_color(game_config::red_to_green(def, false));
+			SDL_Color color = color_t::from_argb_bytes(game_config::red_to_green(def, false)).to_sdl();
 
 			// simple mark (no turn point) use smaller font
 			int def_font = w->second.turns > 0 ? 18 : 16;
@@ -480,7 +481,7 @@ void game_display::draw_movement_info(const map_location& loc)
 			std::stringstream def_text;
 			def_text << def << "%";
 
-			SDL_Color color = int_to_color(game_config::red_to_green(def, false));
+			SDL_Color color = color_t::from_argb_bytes(game_config::red_to_green(def, false)).to_sdl();
 
 			// use small font
 			int def_font = 16;

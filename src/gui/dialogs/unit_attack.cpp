@@ -38,6 +38,7 @@
 #include "language.hpp"
 #include "font/marked-up_text.hpp"
 #include "resources.hpp"
+#include "sdl/color.hpp"
 #include "team.hpp"
 #include "units/unit.hpp"
 
@@ -134,9 +135,9 @@ void unit_attack::pre_show(window& window)
 		}
 
 		const SDL_Color a_cth_color =
-			int_to_color(game_config::red_to_green(attacker.chance_to_hit));
+			color_t::from_argb_bytes(game_config::red_to_green(attacker.chance_to_hit)).to_sdl();
 		const SDL_Color d_cth_color =
-			int_to_color(game_config::red_to_green(defender.chance_to_hit));
+			color_t::from_argb_bytes(game_config::red_to_green(defender.chance_to_hit)).to_sdl();
 
 		const std::string attw_name = !attacker_weapon.name().empty() ? attacker_weapon.name() : " ";
 		const std::string defw_name = !defender_weapon.name().empty() ? defender_weapon.name() : " ";

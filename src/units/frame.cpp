@@ -18,6 +18,7 @@
 
 #include "game_display.hpp"
 #include "log.hpp"
+#include "sdl/color.hpp"
 #include "sound.hpp"
 #include "units/frame.hpp"
 
@@ -163,7 +164,7 @@ progressive_<T>::progressive_(const std::string &data, int duration) :
 	for(; com_it != comma_split.end(); ++com_it) {
 		std::vector<std::string> colon_split = utils::split(*com_it,':',split_flag);
 		int time = 0;
-		
+
 		try {
 			time = (colon_split.size() > 1) ? std::stoi(colon_split[1]) : time_chunk;
 		} catch(std::invalid_argument) {
@@ -680,7 +681,7 @@ void unit_frame::redraw(const int frame_time,bool on_start_time,bool in_scope_of
 		}
 		if(!current_data.text.empty()  ) {
 			game_display::get_singleton()->float_label(src, current_data.text,
-				int_to_color(current_data.text_color));
+				color_t::from_argb_bytes(current_data.text_color).to_sdl());
 		}
 	}
 	image::locator image_loc;

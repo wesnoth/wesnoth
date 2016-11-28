@@ -431,8 +431,6 @@ bool operator==(const SDL_Color& a, const SDL_Color& b);
 bool operator!=(const SDL_Color& a, const SDL_Color& b);
 
 SDL_Color inverse(const SDL_Color& color);
-SDL_Color int_to_color(const Uint32 rgb);
-SDL_Color string_to_color(const std::string& color_string, const bool override_alpha = true);
 
 SDL_Color create_color(const unsigned char red
 		, unsigned char green

@@ -20,6 +20,7 @@
 #include "game_data.hpp"
 #include "map/label.hpp"
 #include "resources.hpp"
+#include "sdl/color.hpp"
 #include "tooltips.hpp"
 #include "formula/string_utils.hpp"
 
@@ -396,7 +397,7 @@ void terrain_label::read(const config &cfg)
 	tmp_color = utils::interpolate_variables_into_string(tmp_color, vs);
 
 	if(!tmp_color.empty()) {
-		color = string_to_color(tmp_color);
+		color = color_t::from_rgb_string(tmp_color).to_sdl();
 	}
 
 	color_ = color;

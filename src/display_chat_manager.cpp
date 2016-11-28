@@ -24,6 +24,7 @@
 #include "font/marked-up_text.hpp"
 #include "mp_ui_alerts.hpp"
 #include "serialization/string_utils.hpp"
+#include "sdl/color.hpp"
 
 #include <SDL_timer.h>
 #include <SDL_video.h>
@@ -116,7 +117,7 @@ void display_chat_manager::add_chat_message(const time_t& time, const std::strin
 	}
 	SDL_Color speaker_color = {255,255,255,SDL_ALPHA_OPAQUE};
 	if(side >= 1) {
-		speaker_color = int_to_color(team::get_side_color_range(side).mid());
+		speaker_color = color_t::from_argb_bytes(team::get_side_color_range(side).mid()).to_sdl();
 	}
 
 	SDL_Color message_color = chat_message_color;

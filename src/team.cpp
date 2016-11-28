@@ -29,7 +29,7 @@
 #include "resources.hpp"
 #include "play_controller.hpp"
 #include "game_preferences.hpp"
-#include "sdl/utils.hpp" // Only needed for int_to_color (!)
+#include "sdl/color.hpp"
 #include "units/types.hpp"
 #include "synced_context.hpp"
 #include "whiteboard/side_actions.hpp"
@@ -825,14 +825,14 @@ const color_range team::get_side_color_range(int side)
 
 SDL_Color team::get_side_color(int side)
 {
-	return int_to_color(get_side_color_range(side).mid());
+	return color_t::from_argb_bytes(get_side_color_range(side).mid()).to_sdl();
 }
 
 SDL_Color team::get_minimap_color(int side)
 {
 	// Note: use mid() instead of rep() unless
 	// high contrast is needed over a map or minimap!
-	return int_to_color(get_side_color_range(side).rep());
+	return color_t::from_argb_bytes(get_side_color_range(side).rep()).to_sdl();
 }
 
 std::string team::get_side_color_index(int side)

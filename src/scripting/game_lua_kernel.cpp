@@ -82,6 +82,7 @@
 #include "scripting/lua_team.hpp"
 #include "scripting/lua_unit_type.hpp"
 #include "scripting/push_check.hpp"
+#include "sdl/color.hpp"                // for surface
 #include "sdl/utils.hpp"                // for surface
 #include "side_filter.hpp"              // for side_filter
 #include "sound.hpp"                    // for commit_music_changes, etc
@@ -1882,7 +1883,7 @@ int game_lua_kernel::intf_print(lua_State *L) {
 	SDL_Color color = font::LABEL_COLOR;
 
 	if(!cfg["color"].empty()) {
-		color = string_to_color(cfg["color"]);
+		color = color_t::from_rgb_string(cfg["color"]).to_sdl();
 	} else if(cfg.has_attribute("red") || cfg.has_attribute("green") || cfg.has_attribute("blue")) {
 		lg::wml_error() << "[print] red=, green=, blue= is deprecated. Use color= instead." << std::endl;
 		color = create_color(cfg["red"], cfg["green"], cfg["blue"]);
@@ -2147,7 +2148,7 @@ int game_lua_kernel::intf_float_label(lua_State *L)
 
 	t_string text = luaW_checktstring(L, 2);
 	if (!lua_isnoneornil(L, 3)) {
-		color = string_to_color(luaL_checkstring(L, 3));
+		color = color_t::from_rgb_string(luaL_checkstring(L, 3)).to_sdl();
 	}
 
 	if (game_display_) {

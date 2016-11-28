@@ -38,7 +38,6 @@
 #include "pathfind/teleport.hpp"        // for get_teleport_locations, etc
 #include "play_controller.hpp"		// for playing_side, set_button_state
 #include "replay_helper.hpp"
-#include "sdl/utils.hpp"                // for int_to_color
 #include "serialization/string_utils.hpp"  // for unicode_em_dash
 #include "sound.hpp"
 #include "synced_context.hpp"

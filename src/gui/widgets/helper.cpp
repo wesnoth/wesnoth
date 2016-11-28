@@ -19,6 +19,7 @@
 #include "gui/core/log.hpp"
 #include "gui/core/point.hpp"
 #include "gui/widgets/settings.hpp"
+#include "sdl/color.hpp"
 #include "sdl/rect.hpp"
 #include "formula/callable.hpp"
 #include "formula/string_utils.hpp"
@@ -76,7 +77,7 @@ font::pango_text::FONT_STYLE decode_font_style(const std::string& style)
 
 SDL_Color decode_color(const std::string& color)
 {
-	return string_to_color(color, false);
+	return color_t::from_rgba_string(color).to_sdl();
 }
 
 PangoAlignment decode_text_alignment(const std::string& alignment)

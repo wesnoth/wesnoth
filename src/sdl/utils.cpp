@@ -62,25 +62,6 @@ const_surface_lock::~const_surface_lock()
 		SDL_UnlockSurface(surface_);
 }
 
-// TODO: Remove these three functions and use color_t directly
-SDL_Color int_to_color(const Uint32 rgb)
-{
-	return color_t::from_argb_bytes(rgb).to_sdl();
-}
-
-SDL_Color string_to_color(const std::string& color_string, const bool override_alpha)
-{
-	color_t clr = color_t::from_rgba_string(color_string);
-
-	// This is only here to accommodate general uses like [label] that ignore alpha.
-	// Should probably be removed eventually.
-	if(override_alpha) {
-		clr.a = SDL_ALPHA_OPAQUE;
-	}
-
-	return clr.to_sdl();
-}
-
 SDL_Color create_color(const unsigned char red
 		, unsigned char green
 		, unsigned char blue

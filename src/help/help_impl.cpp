@@ -43,6 +43,7 @@
 #include "tstring.hpp"                  // for t_string, operator<<
 #include "units/types.hpp"              // for unit_type, unit_type_data, etc
 #include "serialization/unicode.hpp"    // for iterator
+#include "sdl/color.hpp"
 
 #include <assert.h>                     // for assert
 #include <algorithm>                    // for sort, find, transform, etc
@@ -1321,7 +1322,7 @@ SDL_Color string_to_color(const std::string &cmp_str)
 	}
 	// a #rrggbb color in pango format.
 	if (*cmp_str.c_str() == '#' && cmp_str.size() == 7) {
-		return int_to_color(strtoul(cmp_str.c_str() + 1, nullptr, 16));
+		return color_t::from_argb_bytes(strtoul(cmp_str.c_str() + 1, nullptr, 16)).to_sdl();
 	}
 	return font::NORMAL_COLOR;
 }
