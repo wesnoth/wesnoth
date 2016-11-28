@@ -187,7 +187,7 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 					SDL_Color col;
 					std::map<std::string, color_range>::const_iterator it = game_config::team_rgb_range.find(terrain_info.id());
 					if (it == game_config::team_rgb_range.end()) {
-						col = create_color(0,0,0,0);
+						col = color_t(0,0,0,0).to_sdl();
 					} else
 						col = color_t::from_argb_bytes(it->second.rep()).to_sdl();
 

@@ -19,6 +19,7 @@
 #include "image.hpp"
 #include "image_modifications.hpp"
 #include "log.hpp"
+#include "sdl/color.hpp"
 #include "serialization/string_utils.hpp"
 
 #include <map>
@@ -1250,7 +1251,7 @@ REGISTER_MOD_PARSER(BG, args)
 		c[i] = lexical_cast_default<int>(factors[i]);
 	}
 
-	return new background_modification(create_color(c[0], c[1], c[2], c[3]));
+	return new background_modification(color_t(c[0], c[1], c[2], c[3]).to_sdl());
 }
 
 // Channel swap

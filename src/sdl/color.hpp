@@ -15,6 +15,7 @@
 #define COLOR_T_HPP_INCLUDED
 
 #include <cstdint>
+#include <ostream>
 #include <string>
 
 #include <SDL.h>

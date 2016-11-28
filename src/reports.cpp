@@ -632,7 +632,7 @@ static config unit_moves(reports::context & rc, const unit* u)
 	}
 
 	int grey = 128 + int((255 - 128) * movement_frac);
-	SDL_Color c = create_color(grey, grey, grey);
+	SDL_Color c = color_t(grey, grey, grey).to_sdl();
 	str << span_color(c) << u->movement_left() << '/' << u->total_movement() << naps;
 	return text_report(str.str(), tooltip.str());
 }

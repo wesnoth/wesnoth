@@ -62,14 +62,6 @@ const_surface_lock::~const_surface_lock()
 		SDL_UnlockSurface(surface_);
 }
 
-SDL_Color create_color(const unsigned char red
-		, unsigned char green
-		, unsigned char blue
-		, unsigned char alpha)
-{
-	return {red, green, blue, alpha};
-}
-
 SDL_Keycode sdl_keysym_from_name(const std::string& keyname)
 {
 	return SDL_GetKeyFromName(keyname.c_str());

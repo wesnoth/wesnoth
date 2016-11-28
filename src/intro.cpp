@@ -25,6 +25,7 @@
 #include "video.hpp"
 #include "gettext.hpp"
 #include "font/marked-up_text.hpp"
+#include "sdl/color.hpp"
 #include "sdl/rect.hpp"
 #include "font/sdl_ttf.hpp"
 
@@ -53,7 +54,7 @@ void the_end(CVideo &video, std::string text, unsigned int duration)
 		if(n)
 			sdl::fill_rect(video.getSurface(),&area,0);
 
-		const SDL_Color col = create_color(uint8_t(n), uint8_t(n), uint8_t(n), uint8_t(n));
+		const SDL_Color col = color_t(uint8_t(n), uint8_t(n), uint8_t(n), uint8_t(n)).to_sdl();
 		font::draw_text(&video,area,font_size,col,text,area.x,area.y);
 		update_rect(area);
 

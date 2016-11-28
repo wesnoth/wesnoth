@@ -21,6 +21,7 @@
 #include "game_display.hpp"
 #include "game_config.hpp"
 #include "log.hpp"
+#include "sdl/color.hpp"
 
 #include <boost/math/constants/constants.hpp>
 using namespace boost::math::constants;
@@ -266,7 +267,7 @@ private:
         }
 
         void display_float(const map_location& location, const std::string& text) const{
-                game_display::get_singleton()->float_label(location, text, create_color(255,0,0));
+                game_display::get_singleton()->float_label(location, text, color_t(255,0,0).to_sdl());
         }
 };
 
