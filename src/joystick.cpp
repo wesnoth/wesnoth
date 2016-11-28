@@ -15,6 +15,7 @@
 #include "joystick.hpp"
 #include "preferences.hpp"
 #include "log.hpp"
+#include "sdl/utils.hpp"
 #include <boost/math/constants/constants.hpp>
 using namespace boost::math::constants;
 

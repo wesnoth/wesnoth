@@ -192,4 +192,9 @@ std::vector<surface> const &text_surface::get_surfaces() const
 	return surfs_;
 }
 
+bool text_surface::operator==(text_surface const &t) const {
+	return hash_ == t.hash_ && font_size_ == t.font_size_
+		&& color_ == t.color_ && style_ == t.style_ && str_ == t.str_;
+}
+
 } // end namespace font

@@ -16,7 +16,6 @@
 #define FONT_TEXT_SURFACE_HPP
 
 #include "font_id.hpp" // for text_chunk
-#include "sdl/utils.hpp"
 
 #include <SDL_ttf.h>
 
@@ -26,6 +25,7 @@
 /***
  * Note: This is specific to the SDL_TTF codepath.
  */
+class surface;
 
 namespace font {
 
@@ -44,10 +44,7 @@ public:
 #endif
 	std::vector<surface> const & get_surfaces() const;
 
-	bool operator==(text_surface const &t) const {
-		return hash_ == t.hash_ && font_size_ == t.font_size_
-			&& color_ == t.color_ && style_ == t.style_ && str_ == t.str_;
-	}
+	bool operator==(text_surface const &t) const;
 	bool operator!=(text_surface const &t) const { return !operator==(t); }
 private:
 	int hash_;

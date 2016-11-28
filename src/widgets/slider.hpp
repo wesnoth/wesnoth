@@ -16,11 +16,11 @@
 
 #include <SDL.h>
 
-#include "sdl/utils.hpp"
-
 #include "widget.hpp"
 
 #include <vector>
+
+class surface;
 
 namespace gui {
 

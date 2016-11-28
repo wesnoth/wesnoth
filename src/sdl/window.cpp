@@ -12,6 +12,7 @@
    See the COPYING file for more details.
 */
 
+#include "sdl/utils.hpp"
 #include "sdl/window.hpp"
 
 #include "sdl/exception.hpp"

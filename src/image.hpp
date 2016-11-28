@@ -16,12 +16,13 @@
 #define IMAGE_HPP_INCLUDED
 
 #include "map/location.hpp"
-#include "sdl/utils.hpp"
 #include "terrain/translation.hpp"
 #include "game_config.hpp"
 
+#include <SDL.h>
 #include <unordered_map>
 
+class surface;
 
 ///this module manages the cache of images. With an image name, you can get
 ///the surface corresponding to that image.

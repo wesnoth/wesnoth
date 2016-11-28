@@ -18,9 +18,11 @@
 #include <set>                          // for set
 #include <string>                       // for string, basic_string
 #include <vector>                       // for vector
-#include "sdl/utils.hpp"                // for surface_restorer
 #include "widgets/menu.hpp"             // for menu
+
 class CVideo;
+struct surface_restorer;
+
 namespace help { struct section; }
 namespace help { struct topic; }
 

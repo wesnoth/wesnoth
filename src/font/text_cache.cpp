@@ -13,6 +13,9 @@
 */
 
 #include "font/text_cache.hpp"
+#include "sdl/utils.hpp"
+
+#include <algorithm>
 
 namespace font {
 

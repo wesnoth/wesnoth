@@ -16,9 +16,8 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 
+#include <SDL.h>
 #include <vector>
-
-#include "sdl/utils.hpp"
 
 class config;
 class display;

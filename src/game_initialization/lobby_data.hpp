@@ -15,13 +15,13 @@
 #ifndef INC_LOBBY_DATA
 #define INC_LOBBY_DATA
 
-#include "sdl/utils.hpp"
-
 #include <set>
 #include <deque>
 #include <functional>
+#include <vector>
 
 class config;
+class surface;
 
 namespace mp {
 
@@ -142,7 +142,6 @@ struct game_info
 	bool can_join() const;
 	bool can_observe() const;
 
-	surface mini_map;
 	int id;
 	std::string map_data;
 	std::string name;

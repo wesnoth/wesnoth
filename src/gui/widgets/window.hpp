@@ -28,13 +28,13 @@
 #include "gui/core/event/handler.hpp"
 #include "gui/core/window_builder.hpp"
 #include "gui/widgets/panel.hpp"
-#include "sdl/utils.hpp"
 
 #include <map>
 #include <string>
 #include <vector>
 
 class CVideo;
+class surface;
 
 namespace gui2
 {

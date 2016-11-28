@@ -19,11 +19,11 @@
 #include "gui/core/point.hpp"
 #include "gui/widgets/event_executor.hpp"
 
-#include "sdl/utils.hpp"
-
 #include <boost/noncopyable.hpp>
 
 #include <string>
+
+class surface;
 
 typedef std::map<std::string, t_string> string_map;
 

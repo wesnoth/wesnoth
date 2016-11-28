@@ -168,8 +168,7 @@ static std::string make_short_name(const std::string& long_name)
 }
 
 game_info::game_info(const config& game, const config& game_config, const std::vector<std::string>& installed_addons)
-	: mini_map()
-	, id(game["id"])
+	: id(game["id"])
 	, map_data(game["map_data"])
 	, name(game["name"])
 	, scenario()
@@ -292,8 +291,6 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 	} else {
 		try {
 			gamemap map(std::make_shared<terrain_type_data>(game_config), map_data);
-			// mini_map = image::getMinimap(minimap_size_, minimap_size_, map,
-			// 0);
 			std::ostringstream msi;
 			msi << map.w() << font::unicode_multiplication_sign << map.h();
 			map_size_info = msi.str();

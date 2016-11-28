@@ -16,8 +16,9 @@
 #define JOYSTICK_HPP_
 
 #include <vector>
-#include "sdl/utils.hpp"
 #include "map/location.hpp"
+
+#include <SDL.h>
 
 class joystick_manager {
 
