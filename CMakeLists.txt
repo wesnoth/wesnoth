@@ -98,7 +98,7 @@ if(NOT CMAKE_BUILD_TYPE)
 endif(NOT CMAKE_BUILD_TYPE)
 
 # Add additional build with optional LTO flags
-MESSAGE("Adding Optimize build")
+MESSAGE("Adding Optimized build")
 if("${ENABLE_LTO}" STREQUAL "yes")
   MESSAGE("LTO is enabled for Optimized build")
   set(CMAKE_CXX_FLAGS_OPTIMIZED "-O3 -march=native -flto -s" CACHE STRING "Flags for a more highly optimized build" FORCE)
@@ -114,7 +114,8 @@ set(CMAKE_SHARED_LINKER_FLAGS_OPTIMIZED "" CACHE STRING "Not used" FORCE)
 MARK_AS_ADVANCED(CMAKE_CXX_FLAGS_OPTIMIZED CMAKE_C_FLAGS_OPTIMIZED
 	CMAKE_EXE_LINKER_FLAGS_OPTIMIZED CMAKE_SHARED_LINKER_FLAGS_OPTIMIZED)
 
-# set CMAKE_AR and CMAKE_RANLIB to use LTO-enabled variants if the build is Optimize and LTO is enabled
+# set CMAKE_AR and CMAKE_RANLIB to use LTO-enabled variants if the build is
+# Optimized and LTO is enabled
 if("${CMAKE_BUILD_TYPE}" STREQUAL "Optimized" AND "${ENABLE_LTO}" STREQUAL "yes")
   MESSAGE("Using gcc-ar and gcc-ranlib")
   find_program(LTO_AR NAMES gcc-ar)
@@ -562,7 +563,7 @@ if(WIN32)
 	string(REPLACE ";" " " CMAKE_CXX_FLAGS_OPTIMIZED
 		"${CMAKE_CXX_FLAGS_OPTIMIZED}")
 	set(CMAKE_CXX_FLAGS_OPTIMIZED "${CMAKE_CXX_FLAGS_OPTIMIZED}" CACHE STRING "added -march=pentiumpro" FORCE)
-	MESSAGE("added -march=pentiumpro to Optimize build")
+	MESSAGE("added -march=pentiumpro to Optimized build")
 	
 	separate_arguments(CMAKE_C_FLAGS_OPTIMIZED)
 	list(REMOVE_ITEM CMAKE_C_FLAGS_OPTIMIZED "-march=native")
@@ -571,7 +572,7 @@ if(WIN32)
 	string(REPLACE ";" " " CMAKE_C_FLAGS_OPTIMIZED
 		"${CMAKE_C_FLAGS_OPTIMIZED}")
 	set(CMAKE_C_FLAGS_OPTIMIZED "${CMAKE_C_FLAGS_OPTIMIZED}" CACHE STRING "added -march=pentiumpro" FORCE)
-	MESSAGE("added -march=pentiumpro to Optimize build")
+	MESSAGE("added -march=pentiumpro to Optimized build")
 endif(WIN32)
 
 # replace the default Debug flag of -g with -O0 -DDEBUG -ggdb3
