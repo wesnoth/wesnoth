@@ -334,7 +334,7 @@ void flg_manager::update_available_leaders()
 
 				available_leaders_.erase(modifier, available_leaders_.end());
 
-				if (!available_leaders_.empty())
+				if (available_leaders_.size() > 1)
 					available_leaders_.insert(available_leaders_.begin() + random_pos, "random");
 			}
 		}
