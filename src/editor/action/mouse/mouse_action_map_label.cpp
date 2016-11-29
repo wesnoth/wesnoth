@@ -24,6 +24,7 @@
 #include "gui/dialogs/editor/edit_label.hpp"
 
 #include "font/standard_colors.hpp"
+#include "sdl/color.hpp"
 
 namespace editor {
 
@@ -80,7 +81,10 @@ editor_action* mouse_action_map_label::up_left(editor_display& disp, int x, int 
 	bool immutable        = old_label ? old_label->immutable()         : true;
 	SDL_Color color       = old_label ? old_label->color()             : font::NORMAL_COLOR;
 
-	gui2::dialogs::editor_edit_label d(label, immutable, visible_fog, visible_shroud, color, category);
+	// TODO: remove once color_t is used everywhere
+	color_t c(color);
+
+	gui2::dialogs::editor_edit_label d(label, immutable, visible_fog, visible_shroud, c, category);
 
 	editor_action* a = nullptr;
 	if(d.show(disp.video())) {

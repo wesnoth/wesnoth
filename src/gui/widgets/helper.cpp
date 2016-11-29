@@ -75,9 +75,9 @@ font::pango_text::FONT_STYLE decode_font_style(const std::string& style)
 	return font_style_map[style];
 }
 
-SDL_Color decode_color(const std::string& color)
+color_t decode_color(const std::string& color)
 {
-	return color_t::from_rgba_string(color).to_sdl();
+	return color_t::from_rgba_string(color);
 }
 
 PangoAlignment decode_text_alignment(const std::string& alignment)

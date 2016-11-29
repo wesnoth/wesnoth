@@ -17,6 +17,7 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 #include "map/label.hpp"
+#include "sdl/color.hpp"
 
 namespace gui2
 {
@@ -39,7 +40,7 @@ public:
 					   bool& immutable,
 					   bool& visible_fog,
 					   bool& visible_shroud,
-					   SDL_Color& color,
+					   color_t& color,
 					   std::string& category);
 
 	/** The execute function see @ref modal_dialog for more information. */
@@ -47,7 +48,7 @@ public:
 						bool& immutable,
 						bool& visible_fog,
 						bool& visible_shroud,
-						SDL_Color& color,
+						color_t& color,
 						std::string& category,
 						CVideo& video)
 	{
@@ -56,10 +57,10 @@ public:
 	}
 
 private:
-	SDL_Color& color_store;
-	int load_color_component(Uint8 SDL_Color::* component);
-	void save_color_component(Uint8 SDL_Color::* component, const int value);
-	void register_color_component(std::string widget_id, Uint8 SDL_Color::* component);
+	color_t& color_store;
+	int load_color_component(uint8_t color_t::* component);
+	void save_color_component(uint8_t color_t::* component, const int value);
+	void register_color_component(std::string widget_id, uint8_t color_t::* component);
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 };

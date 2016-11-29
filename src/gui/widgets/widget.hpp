@@ -18,6 +18,7 @@
 #include "gui/core/event/dispatcher.hpp"
 #include "gui/core/point.hpp"
 #include "gui/widgets/event_executor.hpp"
+#include "sdl/color.hpp"
 
 #include <boost/noncopyable.hpp>
 
@@ -58,7 +59,7 @@ class widget : private boost::noncopyable,
 
 public:
 	/** Visibility settings done by the user. */
-	enum class visibility 
+	enum class visibility
 	{
 		/**
 		 * The user sets the widget visible, that means:
@@ -666,7 +667,7 @@ public:
 
 	void set_debug_border_mode(const unsigned debug_border_mode);
 
-	void set_debug_border_color(const SDL_Color debug_border_colour);
+	void set_debug_border_color(const color_t debug_border_colour);
 
 	/*** *** *** *** *** *** *** *** Members. *** *** *** *** *** *** *** ***/
 
@@ -705,7 +706,7 @@ private:
 	unsigned debug_border_mode_;
 
 	/** The colour for the debug border. */
-	SDL_Color debug_border_color_;
+	color_t debug_border_color_;
 
 	void draw_debug_border(surface& frame_buffer);
 	void draw_debug_border(surface& frame_buffer, int x_offset, int y_offset);

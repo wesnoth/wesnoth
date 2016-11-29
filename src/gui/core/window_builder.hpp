@@ -17,12 +17,12 @@
 
 #include "gui/auxiliary/typed_formula.hpp"
 #include "gui/widgets/grid.hpp"
+#include "sdl/color.hpp"
 
 #include "utils/functional.hpp"
 
 class config;
 class CVideo;
-struct SDL_Color;
 
 namespace gui2
 {
@@ -67,7 +67,7 @@ public:
 	std::string linked_group;
 
 	int debug_border_mode;
-	SDL_Color debug_border_color;
+	color_t debug_border_color;
 };
 
 typedef std::shared_ptr<builder_widget> builder_widget_ptr;

@@ -82,12 +82,12 @@ namespace
 
 /***** ***** ***** ***** ***** DRAWING PRIMITIVES ***** ***** ***** ***** *****/
 
-static void set_renderer_color(SDL_Renderer* renderer, SDL_Color color)
+static void set_renderer_color(SDL_Renderer* renderer, color_t color)
 {
 	SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
 }
 
-static bool color_empty(const SDL_Color& color)
+static bool color_empty(const color_t& color)
 {
 	return color.r == 0 && color.g == 0 && color.b == 0 && color.a == 0;
 }
@@ -110,7 +110,7 @@ static bool color_empty(const SDL_Color& color)
  */
 static void draw_line(surface& canvas,
 					  SDL_Renderer* renderer,
-					  SDL_Color color,
+					  color_t color,
 					  unsigned x1,
 					  unsigned y1,
 					  const unsigned x2,
@@ -152,7 +152,7 @@ static void draw_line(surface& canvas,
  */
 static void draw_circle(surface& canvas,
 						SDL_Renderer* renderer,
-						SDL_Color color,
+						color_t color,
 						const int x_center,
 						const int y_center,
 						const int radius)
@@ -229,7 +229,7 @@ private:
 			alpha_;			/**< Alpha value override computed as a formula. */
 
 	/** The color of the line. */
-	SDL_Color color_;
+	color_t color_;
 
 	/**
 	 * The thickness of the line.
@@ -646,14 +646,14 @@ private:
 	 *
 	 * If the color is fully transparent the border isn't drawn.
 	 */
-	SDL_Color border_color_;
+	color_t border_color_;
 
 	/**
 	 * The border color of the rectangle.
 	 *
 	 * If the color is fully transparent the rectangle won't be filled.
 	 */
-	SDL_Color fill_color_;
+	color_t fill_color_;
 };
 
 /*WIKI
@@ -788,7 +788,7 @@ private:
 			radius_;	   /**< The radius of the circle. */
 
 	/** The color of the circle. */
-	SDL_Color color_;
+	color_t color_;
 };
 
 /*WIKI
@@ -1211,7 +1211,7 @@ private:
 	typed_formula<PangoAlignment> text_alignment_;
 
 	/** The color of the text. */
-	SDL_Color color_;
+	color_t color_;
 
 	/** The text to draw. */
 	typed_formula<t_string> text_;
@@ -1340,7 +1340,7 @@ void text_shape::draw(surface& canvas,
 			.set_font_size(font_size_)
 			.set_font_style(font_style_)
 			.set_alignment(text_alignment_(variables))
-			.set_foreground_color(color_)
+			.set_foreground_color(color_.to_sdl())
 			.set_maximum_width(maximum_width_(variables))
 			.set_maximum_height(maximum_height_(variables), true)
 			.set_ellipse_mode(

@@ -42,7 +42,7 @@ widget::widget()
 	, redraw_action_(redraw_action::full)
 	, clipping_rectangle_()
 	, debug_border_mode_(0)
-	, debug_border_color_({0,0,0,0})
+	, debug_border_color_(0,0,0,0)
 {
 	DBG_GUI_LF << "widget create: " << static_cast<void*>(this) << "\n";
 }
@@ -480,7 +480,7 @@ void widget::set_debug_border_mode(const unsigned debug_border_mode)
 	debug_border_mode_ = debug_border_mode;
 }
 
-void widget::set_debug_border_color(const SDL_Color debug_border_colour)
+void widget::set_debug_border_color(const color_t debug_border_colour)
 {
 	debug_border_color_ = debug_border_colour;
 }
@@ -490,7 +490,7 @@ void widget::draw_debug_border(surface& frame_buffer)
 	SDL_Rect r = redraw_action_ == redraw_action::partly ? clipping_rectangle_
 														  : get_rectangle();
 
-	// TODO: maybe should make these functions take an SDL_Color
+	// TODO: maybe should make these functions take an color_t
 	Uint32 c = SDL_MapRGBA(frame_buffer->format,
 		debug_border_color_.r,
 		debug_border_color_.g,
@@ -521,7 +521,7 @@ widget::draw_debug_border(surface& frame_buffer, int x_offset, int y_offset)
 						 ? calculate_clipping_rectangle(x_offset, y_offset)
 						 : calculate_blitting_rectangle(x_offset, y_offset);
 
-	// TODO: maybe should make these functions take an SDL_Color
+	// TODO: maybe should make these functions take an color_t
 	Uint32 c = SDL_MapRGBA(frame_buffer->format,
 		debug_border_color_.r,
 		debug_border_color_.g,
