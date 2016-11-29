@@ -195,9 +195,12 @@ class fake_transaction;
  * If transaction is locked all stored macros are still
  * available but new macros aren't added.
  **/
-class config_cache_transaction  : private boost::noncopyable
+class config_cache_transaction
 {
 public:
+	config_cache_transaction(const config_cache_transaction&) = delete;
+	config_cache_transaction& operator=(const config_cache_transaction&) = delete;
+
 	config_cache_transaction();
 	~config_cache_transaction();
 
@@ -258,8 +261,11 @@ private:
 /**
  * Holds a fake cache transaction if no real one is used
  **/
-class fake_transaction : private boost::noncopyable
+class fake_transaction
 {
+	fake_transaction(const fake_transaction&) = delete;
+	fake_transaction& operator=(const fake_transaction&) = delete;
+
 	friend class config_cache;
 
 	typedef std::unique_ptr<config_cache_transaction> value_type;
