@@ -28,6 +28,8 @@
 
 #include <cassert>
 
+#include <boost/range/adaptor/reversed.hpp>
+
 /**
  * @todo The items below are not implemented yet.
  *
@@ -452,8 +454,7 @@ void sdl_event_handler::connect(dispatcher* dispatcher)
 void sdl_event_handler::disconnect(dispatcher* disp)
 {
 	/***** Validate pre conditions. *****/
-	std::vector<dispatcher*>::iterator itor
-			= std::find(dispatchers_.begin(), dispatchers_.end(), disp);
+	auto itor = std::find(dispatchers_.begin(), dispatchers_.end(), disp);
 	assert(itor != dispatchers_.end());
 
 	/***** Remove dispatcher. *****/
@@ -489,8 +490,7 @@ void sdl_event_handler::activate()
 {
 	for(auto dispatcher : dispatchers_)
 	{
-		dispatcher->fire(
-				SDL_ACTIVATE, dynamic_cast<widget&>(*dispatcher), nullptr);
+		dispatcher->fire(SDL_ACTIVATE, dynamic_cast<widget&>(*dispatcher), nullptr);
 	}
 }
 
@@ -541,9 +541,7 @@ void sdl_event_handler::video_resize(const point& new_size)
 
 	for(auto dispatcher : dispatchers_)
 	{
-		dispatcher->fire(SDL_VIDEO_RESIZE,
-						 dynamic_cast<widget&>(*dispatcher),
-						 new_size);
+		dispatcher->fire(SDL_VIDEO_RESIZE, dynamic_cast<widget&>(*dispatcher), new_size);
 	}
 }
 
@@ -552,28 +550,23 @@ void sdl_event_handler::mouse(const ui_event event, const point& position)
 	DBG_GUI_E << "Firing: " << event << ".\n";
 
 	if(mouse_focus) {
-		mouse_focus->fire(
-				event, dynamic_cast<widget&>(*mouse_focus), position);
-	} else {
+		mouse_focus->fire(event, dynamic_cast<widget&>(*mouse_focus), position);
+		return;
+	}
 
-		for(std::vector<dispatcher*>::reverse_iterator ritor
-			= dispatchers_.rbegin();
-			ritor != dispatchers_.rend();
-			++ritor) {
+	for(auto& dispatcher : boost::adaptors::reverse(dispatchers_)) {
+		if(dispatcher->get_mouse_behavior() == dispatcher::all) {
+			dispatcher->fire(event, dynamic_cast<widget&>(*dispatcher), position);
+			break;
+		}
 
-			if((**ritor).get_mouse_behavior() == dispatcher::all) {
-				(**ritor)
-						.fire(event, dynamic_cast<widget&>(**ritor), position);
-				break;
-			}
-			if((**ritor).get_mouse_behavior() == dispatcher::none) {
-				continue;
-			}
-			if((**ritor).is_at(position)) {
-				(**ritor)
-						.fire(event, dynamic_cast<widget&>(**ritor), position);
-				break;
-			}
+		if(dispatcher->get_mouse_behavior() == dispatcher::none) {
+			continue;
+		}
+
+		if(dispatcher->is_at(position)) {
+			dispatcher->fire(event, dynamic_cast<widget&>(*dispatcher), position);
+			break;
 		}
 	}
 }
@@ -644,13 +637,9 @@ dispatcher* sdl_event_handler::keyboard_dispatcher()
 		return keyboard_focus_;
 	}
 
-	for(std::vector<dispatcher*>::reverse_iterator ritor
-		= dispatchers_.rbegin();
-		ritor != dispatchers_.rend();
-		++ritor) {
-
-		if((**ritor).get_want_keyboard_input()) {
-			return *ritor;
+	for(auto& dispatcher : boost::adaptors::reverse(dispatchers_)) {
+		if(dispatcher->get_want_keyboard_input()) {
+			return dispatcher;
 		}
 	}
 
@@ -691,9 +680,7 @@ void sdl_event_handler::key_down(const SDL_Event& event)
 		done = hotkey_pressed(hk);
 	}
 	if(!done) {
-		key_down(event.key.keysym.sym,
-				 static_cast<const SDL_Keymod>(event.key.keysym.mod),
-				 "");
+		key_down(event.key.keysym.sym, static_cast<const SDL_Keymod>(event.key.keysym.mod), "");
 	}
 }
 
