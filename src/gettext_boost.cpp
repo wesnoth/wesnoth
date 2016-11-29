@@ -134,7 +134,7 @@ namespace
 					extra_messages_.emplace(get_base().domain(domain), cat);
 				} catch(spirit_po::catalog_exception& e) {
 					throw_po_error(lang_name_long, domain, e.what());
-				} catch(std::ios::failure& e) {
+				} catch(std::ios::failure&) {
 					throw_po_error(lang_name_long, domain, strerror(errno));
 				}
 			}

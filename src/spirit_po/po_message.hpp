@@ -32,7 +32,7 @@ struct po_message {
 
   // Check if message is plural. We do this for now by testing msgid_plural.size().
   // Recommended to use this method in case we change it in the future.
-  bool is_plural() const { return static_cast<bool>(id_plural().size()); } 
+  bool is_plural() const { return (id_plural().size() != 0); } 
 };
 
 /***
