@@ -480,9 +480,9 @@ void widget::set_debug_border_mode(const unsigned debug_border_mode)
 	debug_border_mode_ = debug_border_mode;
 }
 
-void widget::set_debug_border_color(const color_t debug_border_colour)
+void widget::set_debug_border_color(const color_t debug_border_color)
 {
-	debug_border_color_ = debug_border_colour;
+	debug_border_color_ = debug_border_color;
 }
 
 void widget::draw_debug_border(surface& frame_buffer)

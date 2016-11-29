@@ -667,7 +667,7 @@ public:
 
 	void set_debug_border_mode(const unsigned debug_border_mode);
 
-	void set_debug_border_color(const color_t debug_border_colour);
+	void set_debug_border_color(const color_t debug_border_color);
 
 	/*** *** *** *** *** *** *** *** Members. *** *** *** *** *** *** *** ***/
 
@@ -705,7 +705,7 @@ private:
 	 */
 	unsigned debug_border_mode_;
 
-	/** The colour for the debug border. */
+	/** The color for the debug border. */
 	color_t debug_border_color_;
 
 	void draw_debug_border(surface& frame_buffer);
