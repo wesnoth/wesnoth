@@ -30,6 +30,8 @@
 
 #include "utils/functional.hpp"
 
+#include <boost/range/adaptor/reversed.hpp>
+
 #ifdef _MSC_VER
 #pragma warning(push)
 //silence "inherits via dominance" warnings
@@ -307,7 +309,7 @@ public:
 	virtual void recalculate() const
 	{
 		///@todo 1.9 optimize in case of an aspect which returns variant
-		for (const typename aspect_type<T>::typesafe_ptr &f : make_pair(facets_.rbegin(),facets_.rend())) {
+		for(const auto& f : boost::adaptors::reverse(facets_)) {
 			if (f->active()) {
 				this->value_ = std::shared_ptr<T>(f->get_ptr());
 				this->valid_ = true;

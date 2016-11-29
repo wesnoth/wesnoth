@@ -30,6 +30,7 @@
 #include "units/abilities.hpp"
 #include "units/animation.hpp"
 #include "util.hpp"
+#include "utils/iterable_pair.hpp"
 
 #include "gui/auxiliary/typed_formula.hpp"
 #include "gui/dialogs/loading_screen.hpp"

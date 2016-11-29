@@ -41,6 +41,7 @@
 #include "map/map.hpp"
 #include "resources.hpp"
 #include "units/unit.hpp"
+#include "utils/iterable_pair.hpp"
 
 namespace wb
 {

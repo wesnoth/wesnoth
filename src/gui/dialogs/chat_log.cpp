@@ -39,8 +39,10 @@
 #include "replay.hpp"
 #include "gettext.hpp"
 
-#include <vector>
 #include "utils/functional.hpp"
+#include "utils/iterable_pair.hpp"
+
+#include <vector>
 
 static lg::log_domain log_chat_log("chat_log");
 #define DBG_CHAT_LOG LOG_STREAM(debug, log_chat_log)

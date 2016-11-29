@@ -33,6 +33,7 @@
 #include "team.hpp"
 #include "units/unit.hpp"
 #include "units/animation_component.hpp"
+#include "utils/iterable_pair.hpp"
 
 namespace wb {
 
