@@ -98,6 +98,7 @@ std::string color_t::to_hex_string()
 {
 	std::ostringstream h;
 
+	h << "#";
 	h << std::hex << std::setfill('0') << std::setw(2);
 	h << int(r) << int(g) << int(b);
 

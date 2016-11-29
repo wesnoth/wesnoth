@@ -119,8 +119,8 @@ struct color_t
 	/**
 	 * Returns the stored color in rrggbb hex format.
 	 *
-	 * @return       The string in hex format. Note the preceeding '#' needed for pango markup
-	 *               is not prepended.
+	 * @return       The string in hex format. The preceeding '#' needed for pango markup
+	 *               is prepended.
 	 */
 	std::string to_hex_string();
 
