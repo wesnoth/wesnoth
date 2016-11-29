@@ -1,0 +1,14 @@
+version: Wesnoth-VS2013-{branch}-{build}
+clone_folder: C:\projects\wesnoth
+image: Visual Studio 2013
+configuration:
+ - Release
+ - Debug
+platform: win32
+before_build:
+  - cd ..
+  - ps: wget https://github.com/aquileia/external/archive/VC12.zip -O VC12.zip
+  - 7z x VC12.ZIP
+  - ren external-VC12 external
+  - cd wesnoth
+  - set PATH=C:\projects\external\dll;%PATH%
