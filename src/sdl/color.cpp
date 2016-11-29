@@ -98,9 +98,11 @@ std::string color_t::to_hex_string()
 {
 	std::ostringstream h;
 
-	h << "#";
-	h << std::hex << std::setfill('0') << std::setw(2);
-	h << int(r) << int(g) << int(b);
+	h << "#"
+	  << std::hex << std::setfill('0')
+	  << std::setw(2) << static_cast<int>(r)
+	  << std::setw(2) << static_cast<int>(g)
+	  << std::setw(2) << static_cast<int>(b);
 
 	return h.str();
 }
