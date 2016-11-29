@@ -331,13 +331,11 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 			break;
 
 		case SDL_MOUSEBUTTONDOWN:
-			mouse_button_down({event.button.x, event.button.y},
-							  event.button.button);
+			mouse_button_down({event.button.x, event.button.y}, event.button.button);
 			break;
 
 		case SDL_MOUSEBUTTONUP:
-			mouse_button_up({event.button.x, event.button.y},
-							event.button.button);
+			mouse_button_up({event.button.x, event.button.y}, event.button.button);
 			break;
 
 		case SDL_MOUSEWHEEL:
@@ -592,8 +590,6 @@ void sdl_event_handler::mouse_button_up(const point& position, const Uint8 butto
 		case SDL_BUTTON_RIGHT:
 			mouse(SDL_RIGHT_BUTTON_UP, position);
 			break;
-
-
 		default:
 #ifdef GUI2_SHOW_UNHANDLED_EVENT_WARNINGS
 			WRN_GUI_E << "Unhandled 'mouse button up' event for button "
@@ -605,15 +601,9 @@ void sdl_event_handler::mouse_button_up(const point& position, const Uint8 butto
 
 void sdl_event_handler::mouse_button_down(const point& position, const Uint8 button)
 {
-	// The wheel buttons generate and up and down event we handle the
-	// up event so ignore the mouse if it's a down event. Handle it
-	// here to avoid a warning.
-	if(button == SDL_BUTTON_WHEELUP || button == SDL_BUTTON_WHEELDOWN
-	   || button == SDL_BUTTON_WHEELLEFT || button == SDL_BUTTON_WHEELRIGHT) {
-
-		return;
-	}
-
+	// NOTE: despite previous code and observations to the contrary, I can no longer seem
+	//       to cause unhandled  event warnings to appear when clicking with the mouse wheel.
+	//       -- vultraz 11/30/16
 	switch(button) {
 		case SDL_BUTTON_LEFT:
 			mouse(SDL_LEFT_BUTTON_DOWN, position);

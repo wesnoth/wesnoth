@@ -26,25 +26,6 @@
 #include <map>
 #include <string>
 
-//older versions of SDL don't define the
-//mouse wheel macros, so define them ourselves
-//if necessary.
-#ifndef SDL_BUTTON_WHEELUP
-#define SDL_BUTTON_WHEELUP 4
-#endif
-
-#ifndef SDL_BUTTON_WHEELDOWN
-#define SDL_BUTTON_WHEELDOWN 5
-#endif
-
-#ifndef SDL_BUTTON_WHEELLEFT
-#define SDL_BUTTON_WHEELLEFT 6
-#endif
-
-#ifndef SDL_BUTTON_WHEELRIGHT
-#define SDL_BUTTON_WHEELRIGHT 7
-#endif
-
 SDL_Keycode sdl_keysym_from_name(const std::string& keyname);
 
 class surface
