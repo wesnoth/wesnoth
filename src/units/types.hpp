@@ -23,7 +23,6 @@
 #include "util.hpp"
 #include "game_errors.hpp"
 
-#include <boost/noncopyable.hpp>
 #include <map>
 #include <set>
 #include <string>
@@ -311,9 +310,11 @@ private:
 };
 
 class unit_type_data
-	: private boost::noncopyable
 {
 public:
+	unit_type_data(const unit_type_data&) = delete;
+	unit_type_data& operator=(const unit_type_data&) = delete;
+
 	unit_type_data();
 
 	typedef std::map<std::string,unit_type> unit_type_map;

@@ -23,7 +23,6 @@
 
 #include "units/map.hpp"
 
-#include <boost/noncopyable.hpp>
 #include <boost/dynamic_bitset.hpp>
 
 class CKey;
@@ -41,13 +40,15 @@ class highlighter;
 /**
  * This class is the frontend of the whiteboard framework for the rest of the Wesnoth code.
  */
-class manager : private boost::noncopyable
+class manager
 {
 	friend struct future_map;
 	friend struct future_map_if_active;
 	friend struct real_map;
 
 public:
+	manager(const manager&) = delete;
+	manager& operator=(const manager&) = delete;
 
 	manager();
 	~manager();

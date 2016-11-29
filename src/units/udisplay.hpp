@@ -44,8 +44,11 @@ namespace unit_display
  * If control over how far the unit moves is not needed, move_unit() may
  * be a more convenient interface.
  */
-class unit_mover : public boost::noncopyable {
+class unit_mover {
 public:
+	unit_mover(const unit_mover&) = delete;
+	unit_mover& operator=(const unit_mover&) = delete;
+
 	explicit unit_mover(const std::vector<map_location>& path, bool animate=true, bool force_scroll=false);
 	~unit_mover();
 

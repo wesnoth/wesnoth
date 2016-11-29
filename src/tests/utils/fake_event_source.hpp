@@ -15,7 +15,6 @@
 #ifndef TESTS_UTILS_FAKE_EVENT_SOURCE_HPP_INCLUDED
 #define TESTS_UTILS_FAKE_EVENT_SOURCE_HPP_INCLUDED
 
-#include <boost/noncopyable.hpp>
 #include <queue>
 #include <SDL.h>
 

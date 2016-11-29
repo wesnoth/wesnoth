@@ -20,7 +20,6 @@
 #include "scripting/plugins/context.hpp"
 #include "scripting/plugins/manager.hpp"
 
-#include <boost/noncopyable.hpp>
 #include <string>
 #include <vector>
 
@@ -35,9 +34,12 @@ public:
 
 	typedef std::vector<std::function<bool(void)> > request_list;
 
-	class thread : private boost::noncopyable {
+	class thread {
 		lua_State * T_;
 		bool started_;
+
+		thread(const thread&) = delete;
+		thread& operator=(const thread&) = delete;
 
 		thread(lua_State *);
 	public :

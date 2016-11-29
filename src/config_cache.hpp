@@ -38,9 +38,12 @@ namespace game_config
  * This is preferred form to set defines that aren't global
  **/
 template<typename T>
-class scoped_preproc_define_internal : private boost::noncopyable
+class scoped_preproc_define_internal
 {
 public:
+	scoped_preproc_define_internal(const scoped_preproc_define_internal&) = delete;
+	scoped_preproc_define_internal& operator=(const scoped_preproc_define_internal&) = delete;
+
 	/**
 	 * Adds normal preproc define.
 	 *
@@ -87,13 +90,16 @@ typedef scoped_preproc_define_internal<config_cache> scoped_preproc_define;
  * @todo Make cache system easily allow validation of in memory cache objects
  *       using hash checksum of preproc_map.
  **/
-class config_cache : private boost::noncopyable
+class config_cache
 {
 public:
 	/**
 	 * Get reference to the singleton object
 	 */
 	static config_cache& instance();
+
+	config_cache(const config_cache&) = delete;
+	config_cache& operator=(const config_cache&) = delete;
 
 	const preproc_map& get_preproc_map() const;
 

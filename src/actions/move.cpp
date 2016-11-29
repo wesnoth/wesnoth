@@ -188,10 +188,13 @@ bool get_village(const map_location& loc, int side, bool *action_timebonus, bool
 namespace { // Private helpers for move_unit()
 
 	/// Helper class for move_unit().
-	class unit_mover : public boost::noncopyable {
+	class unit_mover {
 		typedef std::vector<map_location>::const_iterator route_iterator;
 
 	public:
+		unit_mover(const unit_mover&) = delete;
+		unit_mover& operator=(const unit_mover&) = delete;
+
 		unit_mover(const std::vector<map_location> & route,
 		           move_unit_spectator *move_spectator,
 		           bool skip_sightings, bool skip_ally_sightings);

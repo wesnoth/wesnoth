@@ -68,10 +68,12 @@ enum menu_type {
 class editor_controller : public controller_base,
 	public hotkey::command_executor_default,
 	public events::mouse_handler_base,
-	private boost::noncopyable,
 	quit_confirmation
 {
 	public:
+		editor_controller(const editor_controller&) = delete;
+		editor_controller& operator=(const editor_controller&) = delete;
+
 		/**
 		 * The constructor. A initial map context can be specified here, the controller
 		 * will assume ownership and delete the pointer during destruction, but changes

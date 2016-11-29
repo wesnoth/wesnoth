@@ -7,8 +7,6 @@
 #include "game_events/pump.hpp" // for queued_event
 #include "config.hpp"
 
-#include <boost/noncopyable.hpp>
-
 namespace actions {
 	class undo_list;
 	
@@ -24,8 +22,11 @@ namespace actions {
 	/// Records information to be able to undo an action.
 	/// Each type of action gets its own derived type.
 	/// Base class for all entries in the undo stack, also contains non undoable actions like update_shroud or auto_shroud.
-	struct undo_action_base : boost::noncopyable
+	struct undo_action_base
 	{
+		undo_action_base(const undo_action_base&) = delete;
+		undo_action_base& operator=(const undo_action_base&) = delete;
+
 		/// Default constructor.
 		/// This is the only way to get nullptr view_info.
 		undo_action_base()

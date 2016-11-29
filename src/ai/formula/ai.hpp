@@ -31,7 +31,6 @@
 #include "generic_event.hpp"  // for observer
 #include "pathfind/teleport.hpp"  // for teleport_map
 #include "units/map.hpp"
-#include <boost/noncopyable.hpp>        // for noncopyable
 #include <set>                          // for multiset
 #include <string>                       // for string
 #include <utility>                      // for pair
@@ -74,10 +73,14 @@ struct plain_route;
 
 namespace ai {
 
-class formula_ai : public readonly_context_proxy, public game_logic::formula_callable, public boost::noncopyable {
+class formula_ai : public readonly_context_proxy, public game_logic::formula_callable {
 public:
+	formula_ai(const formula_ai&) = delete;
+	formula_ai& operator=(const formula_ai&) = delete;
+
 	explicit formula_ai(readonly_context &context, const config &cfg);
 	virtual ~formula_ai() {}
+
 	virtual config to_config() const;
 
 	std::string evaluate(const std::string& formula_str);

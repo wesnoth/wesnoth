@@ -26,7 +26,6 @@
 #include <ctime>
 
 #include <boost/algorithm/string/predicate.hpp>
-#include <boost/noncopyable.hpp>
 
 #ifndef UNICODE
 #define UNICODE
@@ -191,9 +190,12 @@ void log_init_panic(const libc_error& e,
 /**
  * Singleton class that deals with the intricacies of log file redirection.
  */
-class log_file_manager : private boost::noncopyable
+class log_file_manager
 {
 public:
+	log_file_manager(const log_file_manager&) = delete;
+	log_file_manager& operator=(const log_file_manager&) = delete;
+	
 	log_file_manager(bool native_console = false);
 	~log_file_manager();
 

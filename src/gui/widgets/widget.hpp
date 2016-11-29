@@ -20,8 +20,6 @@
 #include "gui/widgets/event_executor.hpp"
 #include "sdl/color.hpp"
 
-#include <boost/noncopyable.hpp>
-
 #include <string>
 
 class surface;
@@ -47,9 +45,7 @@ class walker_base;
  * info needed for a real widget and some pure abstract functions which need to
  * be implemented by classes deriving from this class.
  */
-class widget : private boost::noncopyable,
-				public event_executor,
-				public event::dispatcher
+class widget : public event_executor, public event::dispatcher
 {
 	friend class debug_layout_graph;
 	friend class window; // needed for modifying the layout_size.
@@ -134,6 +130,9 @@ public:
 	/***** ***** ***** Constructor and destructor. ***** ***** *****/
 
 public:
+	widget(const widget&) = delete;
+	widget& operator=(const widget&) = delete;
+
 	/** @deprecated use the second overload. */
 	widget();
 

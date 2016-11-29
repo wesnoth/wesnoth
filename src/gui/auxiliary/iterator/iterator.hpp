@@ -36,9 +36,12 @@ namespace iteration
  * See @ref gui2_iterator_iterator for more information.
  */
 template <class order>
-class iterator : private order, private boost::noncopyable
+class iterator : private order
 {
 public:
+	iterator(const iterator&) = delete;
+	iterator& operator=(const iterator&) = delete;
+
 	/**
 	 * Constructor.
 	 *

@@ -26,8 +26,6 @@
 #include "overlay.hpp"
 #include "display_context.hpp"
 
-#include <boost/noncopyable.hpp>
-
 namespace editor {
 
 struct editor_team_info {
@@ -55,9 +53,12 @@ struct editor_team_info {
  * as e.g. the undo stack is part of the map, not the editor as a whole. This might allow many
  * maps to be open at the same time.
  */
-class map_context : public display_context, private boost::noncopyable
+class map_context : public display_context
 {
 public:
+	map_context(const map_context&) = delete;
+	map_context& operator=(const map_context&) = delete;
+
 	/**
 	 * Create a map context from an existing map. The filename is set to be
 	 * empty, indicating a new map.

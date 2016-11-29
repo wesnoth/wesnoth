@@ -18,7 +18,6 @@
 #include "game_events/handlers.hpp"
 #include "game_events/wmi_container.hpp"
 
-#include <boost/noncopyable.hpp>
 #include <set>
 #include <string>
 
@@ -42,7 +41,7 @@ namespace game_events {
 	/// and destroyed at the end of the scenario.
 	/// If a second manager object is created before destroying the previous
 	/// one, the game will crash with an assertion failure.
-	class manager : boost::noncopyable {
+	class manager {
 	public:
 		/// This class is similar to an input iterator through event handlers,
 		/// except each instance knows its own end (determined when constructed).
@@ -101,6 +100,9 @@ namespace game_events {
 		game_events::wmi_container wml_menu_items_;
 
 	public:
+		manager(const manager&) = delete;
+		manager& operator=(const manager&) = delete;
+
 		explicit manager();
 		void read_scenario(const config& scenario_cfg);
 		~manager();

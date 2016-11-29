@@ -17,7 +17,6 @@
 #define ADDON_CLIENT_HPP_INCLUDED
 
 #include "gui/dialogs/network_transmission.hpp"
-#include <boost/noncopyable.hpp>
 #include "network_asio.hpp"
 
 struct addon_info;
@@ -29,12 +28,15 @@ struct addon_info;
  * add-ons server interaction for the client-side. Most networking
  * operations with it are implemented here.
  */
-class addons_client : private boost::noncopyable
+class addons_client
 {
 public:
 	struct invalid_server_address {};
 	struct not_connected_to_server {};
 	struct user_exit {};
+
+	addons_client(const addons_client&) = delete;
+	addons_client& operator=(const addons_client&) = delete;
 
 	/**
 	 * Constructor.

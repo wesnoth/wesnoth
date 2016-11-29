@@ -20,8 +20,6 @@
  * Contains a wrapper class for the @ref SDL_Window class.
  */
 
-#include <boost/noncopyable.hpp>
-
 #include <SDL_video.h>
 
 #include <string>
@@ -44,9 +42,12 @@ namespace sdl
  * For functions not wrapped the class offers an implicit conversion operator
  * to a pointer to the @ref SDL_Window object it owns.
  */
-class window : private boost::noncopyable
+class window
 {
 public:
+	window(const window&) = delete;
+	window& operator=(const window&) = delete;
+
 	/***** ***** ***** Constructor and destructor. ***** ***** *****/
 
 	/**

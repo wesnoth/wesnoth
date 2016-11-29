@@ -20,16 +20,15 @@
 #ifndef WESMAGE_OPTIONS_HPP_INCLUDED
 #define WESMAGE_OPTIONS_HPP_INCLUDED
 
-#include <boost/noncopyable.hpp>
-
 #include <string>
 #include <vector>
 
 /** A singleton class containing the parsed command line parameters. */
 struct cmdline_options
-	: private boost::noncopyable
 {
 private:
+	cmdline_options(const cmdline_options&) = delete;
+	cmdline_options& operator=(const cmdline_options&) = delete;
 
 	cmdline_options();
 

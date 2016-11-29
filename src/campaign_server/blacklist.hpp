@@ -17,8 +17,6 @@
 
 #include "config.hpp"
 
-#include <boost/noncopyable.hpp>
-
 namespace campaignd
 {
 
@@ -41,10 +39,13 @@ namespace campaignd
  *     author = (add-on author patterns)
  *     description = (add-on description patterns)
  */
-class blacklist : private boost::noncopyable
+class blacklist
 {
 public:
 	typedef std::vector<std::string> globlist;
+
+	blacklist(const blacklist&) = delete;
+	blacklist& operator=(const blacklist&) = delete;
 
 	blacklist();
 	explicit blacklist(const config& cfg);

@@ -26,7 +26,6 @@ struct map_location;
 class  team;
 class  unit;
 
-#include <boost/noncopyable.hpp>
 #include <cstring>
 #include <map>
 #include <set>
@@ -55,9 +54,11 @@ struct clearer_info {
 /// Note: This class uses teams as parameters (instead of sides) since a
 /// function using this should first check to see if fog/shroud is in use (to
 /// save processing when it is not), which implies the team is readily available.
-class shroud_clearer : public boost::noncopyable {
+class shroud_clearer {
 public:
-	shroud_clearer();
+	shroud_clearer(const shroud_clearer&) = delete;
+	shroud_clearer& operator=(const shroud_clearer&) = delete;
+	shroud_clearer();
 	~shroud_clearer();
 
 	/// Function to be called if units have moved or otherwise changed.

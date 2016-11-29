@@ -554,8 +554,10 @@ private:
  * scope.
  */
 struct unit_movement_resetter
-	: private boost::noncopyable
 {
+	unit_movement_resetter(const unit_movement_resetter&) = delete;
+	unit_movement_resetter& operator=(const unit_movement_resetter&) = delete;
+
 	unit_movement_resetter(const unit& u, bool operate=true);
 	~unit_movement_resetter();
 

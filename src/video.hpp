@@ -19,7 +19,6 @@
 #include "lua_jailbreak_exception.hpp"
 
 #include <memory>
-#include <boost/noncopyable.hpp>
 
 #include "sdl/window.hpp"
 
@@ -42,8 +41,11 @@ SDL_Rect screen_area();
 void update_rect(size_t x, size_t y, size_t w, size_t h);
 void update_rect(const SDL_Rect& rect);
 
-class CVideo : private boost::noncopyable {
+class CVideo {
 public:
+	CVideo(const CVideo&) = delete;
+	CVideo& operator=(const CVideo&) = delete;
+
 	enum FAKE_TYPES {
 		  NO_FAKE
 		, FAKE
@@ -59,12 +61,12 @@ public:
 
 	CVideo(FAKE_TYPES type = NO_FAKE);
 	~CVideo();
+
 	static CVideo& get_singleton() { return *singleton_; }
 
 	bool non_interactive();
 
 	const static int DefaultBpp = 32;
-
 
 	/**
 	 * Initializes a new window, taking into account any preiously saved states.
@@ -72,7 +74,6 @@ public:
 	bool init_window();
 
 	void setMode( int x, int y, const MODE_EVENT mode );
-
 
 	void set_fullscreen(bool ison);
 

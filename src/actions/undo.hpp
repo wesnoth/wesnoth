@@ -25,7 +25,6 @@
 #include "units/ptr.hpp"
 #include "undo_action.hpp"
 
-#include <boost/noncopyable.hpp>
 #include <boost/ptr_container/ptr_vector.hpp>
 
 #include <vector>
@@ -34,14 +33,18 @@ namespace actions {
 
 
 /// Class to store the actions that a player can undo and redo.
-class undo_list : boost::noncopyable {
+class undo_list {
 
 	typedef boost::ptr_vector<undo_action_base> action_list;
 	typedef boost::ptr_vector<undo_action> redos_list;
 
 public:
+	undo_list(const undo_list&) = delete;
+	undo_list& operator=(const undo_list&) = delete;
+
 	explicit undo_list(const config & cfg);
 	~undo_list();
+
 	/// Creates an undo_action based on a config.
 	/// Throws bad_lexical_cast or config::error if it cannot parse the config properly.
 	static undo_action_base * create_action(const config & cfg);

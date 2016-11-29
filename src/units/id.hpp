@@ -18,8 +18,6 @@
 
 #include <ctime>
 
-//#include <boost/noncopyable.hpp>
-
 namespace n_unit {
 
 	struct unit_id
@@ -42,7 +40,7 @@ namespace n_unit {
 		friend bool operator >(unit_id a, unit_id b) { return a.value > b.value; }
 	};
 
-	class id_manager //: private boost::noncopyable
+	class id_manager
 	{
 	private:
 		size_t next_id_;

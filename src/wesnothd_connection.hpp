@@ -37,10 +37,13 @@
 class config;
 
 /** A class that represents a TCP/IP connection to the wesnothd server. */
-class wesnothd_connection : boost::noncopyable
+class wesnothd_connection
 {
 public:
 	using error = wesnothd_connection_error;
+
+	wesnothd_connection(const wesnothd_connection&) = delete;
+	wesnothd_connection& operator=(const wesnothd_connection&) = delete;
 
 	/**
 	 * Constructor.

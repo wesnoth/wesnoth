@@ -22,7 +22,6 @@ class display;
 #include "map/location.hpp"
 
 #include <memory>
-#include <boost/noncopyable.hpp>
 
 namespace halo
 {
@@ -77,9 +76,12 @@ private:
 /**
  * RAII object which manages a halo. When it goes out of scope it removes the corresponding halo entry.
  */
-class halo_record : public boost::noncopyable
+class halo_record
 {
 public:
+	halo_record(const halo_record&) = delete;
+	halo_record& operator=(const halo_record&) = delete;
+	
 	halo_record();
 	halo_record(int id, const std::shared_ptr<halo_impl> & my_manager);
 	~halo_record();
