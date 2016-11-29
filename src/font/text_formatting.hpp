@@ -24,21 +24,6 @@
 namespace font {
 
 /**
- * Converts a color value to Pango markup syntax. The '#' prefix is prepended.
- *
- * @param color        The 32 byte color to convert to hex format.
- *                     For example, 0x00CC00CC becomes "#CC00CC".
- */
-std::string unit32_to_pango_color(uint32_t rgb);
-
-/**
- * Returns a hex color string from a SDL_Color object. The '#' prefix is not prepended.
- *
- * @param color        The SDL_Color object from which to retrieve the color.
- */
-std::string color2hexa(const SDL_Color& color);
-
-/**
  * Retuns a Pango formatting string using the provided SDL_Color object.
  *
  * The string returned will be in format: '<span foreground=#color>'

@@ -850,7 +850,7 @@ std::string team::get_side_color_index(int side)
 
 std::string team::get_side_highlight_pango(int side)
 {
-	return font::unit32_to_pango_color(get_side_color_range(side+1).mid());
+	return color_t::from_rgba_bytes(get_side_color_range(side + 1).mid()).to_hex_string();
 }
 
 void team::log_recruitable() const {
