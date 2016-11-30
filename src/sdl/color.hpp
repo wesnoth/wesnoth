@@ -122,14 +122,14 @@ struct color_t
 	 * @return       The string in hex format. The preceeding '#' needed for pango markup
 	 *               is prepended.
 	 */
-	std::string to_hex_string();
+	std::string to_hex_string() const;
 
 	/**
 	 * Returns the stored color as a uint32_t, in RGBA format.
 	 *
 	 * @return       The new uint32_t object.
 	 */
-	uint32_t to_rgba_bytes()
+	uint32_t to_rgba_bytes() const
 	{
 		return
 			(static_cast<uint32_t>(r) << RGBA_RED_BITSHIFT) |
@@ -143,7 +143,7 @@ struct color_t
 	 *
 	 * @return       The new uint32_t object.
 	 */
-	uint32_t to_argb_bytes()
+	uint32_t to_argb_bytes() const
 	{
 		return
 			(static_cast<uint32_t>(r) << SDL_RED_BITSHIFT) |
@@ -157,21 +157,21 @@ struct color_t
 	 *
 	 * @return      The new color string.
 	 */
-	std::string to_rgba_string();
+	std::string to_rgba_string() const;
 
 	/**
 	 * Returns the stored color as an "R,G,B" string
 	 *
 	 * @return      The new color string.
 	 */
-	std::string to_rgb_string();
+	std::string to_rgb_string() const;
 
 	/**
 	 * Returns the stored color as an SDL_Color object.
 	 *
 	 * @return       The new SDL_Color object.
 	 */
-	SDL_Color to_sdl()
+	SDL_Color to_sdl() const
 	{
 		return {r, g, b, a};
 	}
@@ -188,17 +188,17 @@ struct color_t
 	/** Alpha value */
 	uint8_t a;
 
-	bool operator==(const color_t& c)
+	bool operator==(const color_t& c) const
 	{
 		return r == c.r && g == c.g && b == c.b && a == c.a;
 	}
 
-	bool operator!=(const color_t& c)
+	bool operator!=(const color_t& c) const
 	{
 		return !(*this == c);
 	}
 
-	color_t plus_clipped(const color_t& c)
+	color_t plus_clipped(const color_t& c) const
 	{
 		// Do some magic to detect integer overflow
 		// We want overflows to max out the component instead of wrapping.
@@ -211,7 +211,7 @@ struct color_t
 		};
 	}
 
-	color_t blend_lighten(const color_t& c)
+	color_t blend_lighten(const color_t& c) const
 	{
 		return {
 			std::max<uint8_t>(r, c.r),
