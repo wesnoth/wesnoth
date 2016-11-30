@@ -30,8 +30,6 @@
 #include "serialization/unicode.hpp"
 #include "preferences.hpp"
 
-#include <boost/optional.hpp>
-
 #include <list>
 #include <set>
 #include <stack>

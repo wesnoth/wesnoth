@@ -29,7 +29,6 @@
 #endif
 
 #include <boost/asio.hpp>
-#include <boost/optional.hpp>
 #include "exceptions.hpp"
 
 class config;

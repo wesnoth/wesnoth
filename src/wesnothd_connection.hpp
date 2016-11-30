@@ -28,7 +28,6 @@
 #endif
 
 #include <boost/asio.hpp>
-#include <boost/optional.hpp>
 #include <deque>
 #include <list>
 #include "exceptions.hpp"

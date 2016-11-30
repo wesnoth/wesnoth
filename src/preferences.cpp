@@ -33,7 +33,6 @@
 #include "util.hpp"
 
 #include <sys/stat.h> // for setting the permissions of the preferences file
-#include <boost/concept_check.hpp>
 #ifndef _WIN32
 #include <unistd.h>
 #endif

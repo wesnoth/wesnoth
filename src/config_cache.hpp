@@ -23,7 +23,6 @@
 #include <cassert>
 #include <list>
 #include <memory>
-#include <boost/utility.hpp>
 
 #include "serialization/preprocessor.hpp"
 

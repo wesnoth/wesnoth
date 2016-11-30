@@ -17,7 +17,6 @@
 #define FORMULA_STRING_UTILS_HPP_INCLUDED
 
 #include "serialization/string_utils.hpp"
-#include <boost/assign.hpp>
 
 class variable_set;
 

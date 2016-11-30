@@ -2,9 +2,7 @@
 #include "config_assign.hpp"
 #include "log.hpp"
 
-#include <boost/assign.hpp>
 #include "utils/functional.hpp"
-#include <boost/ref.hpp>
 #include <iostream>
 #include <cassert>
 

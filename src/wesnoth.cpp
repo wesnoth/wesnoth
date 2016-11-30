@@ -76,7 +76,6 @@
 #include <boost/iostreams/filter/bzip2.hpp>  // for bzip2_compressor, etc
 #include <boost/iostreams/filter/gzip.hpp>  // for gzip_compressor, etc
 #include <boost/iostreams/filtering_stream.hpp>  // for filtering_stream
-#include <boost/optional.hpp>           // for optional
 #include <boost/program_options/errors.hpp>  // for error
 
 #include <algorithm>                    // for transform

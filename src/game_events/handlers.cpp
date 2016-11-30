@@ -34,7 +34,6 @@
 #include "soundsource.hpp"
 #include "util.hpp"
 
-#include <boost/unordered_map.hpp>
 #include <iostream>
 
 

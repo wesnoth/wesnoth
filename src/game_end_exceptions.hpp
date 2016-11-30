@@ -28,7 +28,6 @@
 
 #include <string>
 #include <exception>
-#include <boost/optional.hpp>
 
 class config;
 

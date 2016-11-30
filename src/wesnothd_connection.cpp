@@ -14,9 +14,7 @@
 
 #include <deque>
 #include "utils/functional.hpp"
-#include <boost/ref.hpp>
 #include <cstdint>
-#include <boost/version.hpp>
 #include "log.hpp"
 #include "wesnothd_connection.hpp"
 #include "serialization/parser.hpp"

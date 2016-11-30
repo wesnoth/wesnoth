@@ -63,7 +63,6 @@
 #include "wml_exception.hpp"            // for wml_exception
 
 #include <algorithm>                    // for copy, max, min, stable_sort
-#include <boost/optional.hpp>           // for optional
 #include <cstdlib>                     // for system
 #include <iostream>                     // for operator<<, basic_ostream, etc
 #include <new>

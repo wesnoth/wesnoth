@@ -18,8 +18,6 @@
 #include "config.hpp"
 #include "time_of_day.hpp"
 
-#include <boost/optional.hpp>
-
 class gamemap;
 class unit_map;
 class game_data;
