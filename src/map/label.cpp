@@ -147,7 +147,7 @@ const terrain_label* map_labels::set_label(const map_location& loc,
 					   const t_string& text,
 					   const int creator,
 					   const std::string& team_name,
-					   const SDL_Color color,
+					   const color_t color,
 					   const bool visible_in_fog,
 					   const bool visible_in_shroud,
 					   const bool immutable,
@@ -321,7 +321,7 @@ terrain_label::terrain_label(const t_string& text,
 		const std::string& team_name,
 		const map_location& loc,
 		const map_labels& parent,
-		const SDL_Color color,
+		const color_t color,
 		const bool visible_in_fog,
 		const bool visible_in_shroud,
 		const bool immutable,
@@ -370,7 +370,7 @@ void terrain_label::read(const config &cfg)
 {
 	const variable_set &vs = *resources::gamedata;
 	loc_ = map_location(cfg, &vs);
-	SDL_Color color = font::LABEL_COLOR;
+	color_t color = font::LABEL_COLOR;
 
 	std::string tmp_color = cfg["color"];
 
@@ -397,7 +397,7 @@ void terrain_label::read(const config &cfg)
 	tmp_color = utils::interpolate_variables_into_string(tmp_color, vs);
 
 	if(!tmp_color.empty()) {
-		color = color_t::from_rgb_string(tmp_color).to_sdl();
+		color = color_t::from_rgb_string(tmp_color);
 	}
 
 	color_ = color;
@@ -462,7 +462,7 @@ const map_location& terrain_label::location() const
 	return loc_;
 }
 
-const SDL_Color& terrain_label::color() const
+const color_t& terrain_label::color() const
 {
 	return color_;
 }
@@ -487,7 +487,7 @@ void terrain_label::update_info(const t_string& text,
 								const int creator,
 								const t_string& tooltip,
 								const std::string& team_name,
-								const SDL_Color color)
+								const color_t color)
 {
 	color_ = color;
 	text_ = text;
@@ -501,7 +501,7 @@ void terrain_label::update_info(const t_string& text,
 								const int creator,
 								const t_string& tooltip,
 								const std::string& team_name,
-								const SDL_Color color,
+								const color_t color,
 								const bool visible_in_fog,
 								const bool visible_in_shroud,
 								const bool immutable,

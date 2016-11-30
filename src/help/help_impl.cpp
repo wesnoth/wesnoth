@@ -1303,7 +1303,7 @@ std::string convert_to_wml(const std::string &element_name, const std::string &c
 	return ss.str();
 }
 
-SDL_Color string_to_color(const std::string &cmp_str)
+color_t string_to_color(const std::string &cmp_str)
 {
 	if (cmp_str == "green") {
 		return font::GOOD_COLOR;
@@ -1322,7 +1322,7 @@ SDL_Color string_to_color(const std::string &cmp_str)
 	}
 	// a #rrggbb color in pango format.
 	if (*cmp_str.c_str() == '#' && cmp_str.size() == 7) {
-		return color_t::from_argb_bytes(strtoul(cmp_str.c_str() + 1, nullptr, 16)).to_sdl();
+		return color_t::from_argb_bytes(strtoul(cmp_str.c_str() + 1, nullptr, 16));
 	}
 	return font::NORMAL_COLOR;
 }

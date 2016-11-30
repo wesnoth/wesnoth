@@ -466,11 +466,11 @@ void battle_prediction_pane::get_hp_distrib_surface(const std::vector<std::pair<
 		int hp = hp_prob_vector[hp_prob_vector.size() - i - 1].first;
 		double prob = hp_prob_vector[hp_prob_vector.size() - i - 1].second;
 
-		SDL_Color row_color;
+		color_t row_color;
 
 		// Death line is red.
 		if(hp == 0) {
-			SDL_Color color = {0xe5, 0, 0, SDL_ALPHA_OPAQUE};
+			color_t color = {0xe5, 0, 0, SDL_ALPHA_OPAQUE};
 			row_color = color;
 		}
 
@@ -478,17 +478,17 @@ void battle_prediction_pane::get_hp_distrib_surface(const std::vector<std::pair<
 		else if(hp < static_cast<int>(stats.hp)) {
 			// Stone is grey.
 			if(opp_stats.petrifies) {
-				SDL_Color color = {0x9a, 0x9a, 0x9a, SDL_ALPHA_OPAQUE};
+				color_t color = {0x9a, 0x9a, 0x9a, SDL_ALPHA_OPAQUE};
 				row_color = color;
 			} else {
-				SDL_Color color = {0xf4, 0xc9, 0, SDL_ALPHA_OPAQUE};
+				color_t color = {0xf4, 0xc9, 0, SDL_ALPHA_OPAQUE};
 				row_color = color;
 			}
 		}
 
 		// Current hitpoints value and above is green.
 		else {
-			SDL_Color color = {0x08, 0xca, 0, SDL_ALPHA_OPAQUE};
+			color_t color = {0x08, 0xca, 0, SDL_ALPHA_OPAQUE};
 			row_color = color;
 		}
 

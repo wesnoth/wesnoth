@@ -681,7 +681,7 @@ void unit_frame::redraw(const int frame_time,bool on_start_time,bool in_scope_of
 		}
 		if(!current_data.text.empty()  ) {
 			game_display::get_singleton()->float_label(src, current_data.text,
-				color_t::from_argb_bytes(current_data.text_color).to_sdl());
+				color_t::from_argb_bytes(current_data.text_color));
 		}
 	}
 	image::locator image_loc;

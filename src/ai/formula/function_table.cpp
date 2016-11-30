@@ -1235,7 +1235,7 @@ private:
                 display* gui = display::get_singleton();
 		std::string team_name;
 
-		SDL_Color color = color_t::from_argb_bytes(team::get_side_rgb(ai_.get_side())).to_sdl();
+		color_t color = color_t::from_argb_bytes(team::get_side_rgb(ai_.get_side()));
 
 		const terrain_label *res;
 		res = gui->labels().set_label(location, text, ai_.get_side() - 1, team_name, color);

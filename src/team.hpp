@@ -30,7 +30,7 @@
 
 class game_data;
 class gamemap;
-struct SDL_Color;
+struct color_t;
 
 
 namespace wb {
@@ -364,8 +364,8 @@ public:
 	static uint32_t get_side_rgb(int side) { return(get_side_color_range(side).mid()); }
 	static uint32_t get_side_rgb_max(int side) { return(get_side_color_range(side).max()); }
 	static uint32_t get_side_rgb_min(int side) { return(get_side_color_range(side).min()); }
-	static SDL_Color get_side_color(int side);
-	static SDL_Color get_minimap_color(int side);
+	static color_t get_side_color(int side);
+	static color_t get_minimap_color(int side);
 	static std::string get_side_color_index(int side);
 	static std::string get_side_highlight_pango(int side);
 

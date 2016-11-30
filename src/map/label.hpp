@@ -17,6 +17,7 @@
 
 #include "font/standard_colors.hpp"
 #include "map/location.hpp"
+#include "sdl/color.hpp"
 #include "tstring.hpp"
 
 #include <map>
@@ -53,7 +54,7 @@ public:
 							   const t_string& text,
 							   const int creator = -1,
 							   const std::string& team = "",
-							   const SDL_Color color = font::NORMAL_COLOR,
+							   const color_t color = font::NORMAL_COLOR,
 							   const bool visible_in_fog = true,
 							   const bool visible_in_shroud = false,
 							   const bool immutable = false,
@@ -110,7 +111,7 @@ public:
 			const std::string& team_name,
 			const map_location& loc,
 			const map_labels& parent,
-			const SDL_Color color = font::NORMAL_COLOR,
+			const color_t color = font::NORMAL_COLOR,
 			const bool visible_in_fog = true,
 			const bool visible_in_shroud = false,
 			const bool immutable = false,
@@ -133,7 +134,7 @@ public:
 	bool visible_in_shroud() const;
 	bool immutable() const;
 	const map_location& location() const;
-	const SDL_Color& color() const;
+	const color_t& color() const;
 
 	void set_text(const t_string&);
 
@@ -141,13 +142,13 @@ public:
 					 const int creator,
 					 const t_string&,
 					 const std::string&,
-					 const SDL_Color);
+					 const color_t);
 
 	void update_info(const t_string& text,
 			const int creator,
 			const t_string& tooltip,
 			const std::string& team_name,
-			const SDL_Color color,
+			const color_t color,
 			const bool visible_in_fog,
 			const bool visible_in_shroud,
 			const bool immutable,
@@ -177,7 +178,7 @@ private:
 	bool immutable_;
 	int creator_;
 
-	SDL_Color	color_;
+	color_t	color_;
 
 	const map_labels* parent_;
 	map_location loc_;

@@ -72,8 +72,8 @@ void unit_drawer::redraw_unit (const unit & u) const
 
 	bool emit_zoc = u.emits_zoc();
 
-	SDL_Color hp_color=u.hp_color();
-	SDL_Color xp_color=u.xp_color();
+	color_t hp_color=u.hp_color();
+	color_t xp_color=u.xp_color();
 
 	std::string ellipse=u.image_ellipse();
 
@@ -336,7 +336,7 @@ void unit_drawer::redraw_unit (const unit & u) const
 
 void unit_drawer::draw_bar(const std::string& image, int xpos, int ypos,
 		const map_location& loc, size_t height, double filled,
-		const SDL_Color& col, fixed_t alpha) const
+		const color_t& col, fixed_t alpha) const
 {
 
 	filled = std::min<double>(std::max<double>(filled,0.0),1.0);

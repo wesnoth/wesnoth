@@ -520,12 +520,12 @@ struct darken_modification : modification
  */
 struct background_modification : modification
 {
-	background_modification(SDL_Color const &c): color_(c) {}
+	background_modification(color_t const &c): color_(c) {}
 	virtual surface operator()(const surface &src) const;
-	const SDL_Color& get_color() const;
+	const color_t& get_color() const;
 
 private:
-	SDL_Color color_;
+	color_t color_;
 };
 
 /**

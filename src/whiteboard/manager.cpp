@@ -459,7 +459,7 @@ static void draw_numbers(map_location const& hex, side_actions::numbers_t number
 		else if (secondary_numbers.find(i)!=secondary_numbers.end()) font_size = 17;
 		else font_size = 15;
 
-		SDL_Color color = team::get_side_color(static_cast<int>(team_numbers[i]+1));
+		color_t color = team::get_side_color(static_cast<int>(team_numbers[i]+1));
 		const double x_in_hex = x_origin + x_offset;
 		const double y_in_hex = y_origin + y_offset;
 		resources::screen->draw_text_in_hex(hex, display::LAYER_ACTIONS_NUMBERING,

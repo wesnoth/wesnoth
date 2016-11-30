@@ -14,6 +14,8 @@
 #ifndef TEXT_FORMATTING_HPP_INCLUDED
 #define TEXT_FORMATTING_HPP_INCLUDED
 
+#include "sdl/color.hpp"
+
 #include <SDL.h>
 #include <string>
 
@@ -24,14 +26,14 @@
 namespace font {
 
 /**
- * Retuns a Pango formatting string using the provided SDL_Color object.
+ * Retuns a Pango formatting string using the provided color_t object.
  *
  * The string returned will be in format: '<span foreground=#color>'
  * Callers will need to manually append the closing</span>' tag.
  *
- * @param color        The SDL_Color object from which to retrieve the color.
+ * @param color        The color_t object from which to retrieve the color.
  */
-std::string span_color(const SDL_Color& color);
+std::string span_color(const color_t& color);
 
 /**
  * Returns a hex color string from a color range.

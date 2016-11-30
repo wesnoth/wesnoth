@@ -17,13 +17,13 @@
 #ifndef MARKED_UP_TEXT_HPP_INCLUDED
 #define MARKED_UP_TEXT_HPP_INCLUDED
 
+#include "sdl/color.hpp"
 
 class CVideo;
 class surface;
-#include <SDL_video.h>
+
 #include <string>
 #include "serialization/unicode_types.hpp"
-
 
 namespace font {
 
@@ -35,7 +35,7 @@ extern const char LARGE_TEXT, SMALL_TEXT, BOLD_TEXT, NORMAL_TEXT, NULL_MARKUP, B
 std::string::const_iterator parse_markup(std::string::const_iterator i1,
 												std::string::const_iterator i2,
 												int* font_size,
-												SDL_Color* color, int* style);
+												color_t* color, int* style);
 
 /**
  * Function to draw text on a surface.
@@ -59,12 +59,12 @@ std::string::const_iterator parse_markup(std::string::const_iterator i1,
  * text will not be drawn, and a bounding rectangle only will be returned.
  */
 SDL_Rect draw_text(surface& dst, const SDL_Rect& area, int size,
-                   const SDL_Color& color, const std::string& text,
+                   const color_t& color, const std::string& text,
                    int x, int y, bool use_tooltips = false, int style = 0);
 
 /** wrapper of the previous function, gui can also be nullptr */
 SDL_Rect draw_text(CVideo* gui, const SDL_Rect& area, int size,
-                   const SDL_Color& color, const std::string& text,
+                   const color_t& color, const std::string& text,
                    int x, int y, bool use_tooltips = false, int style = 0);
 
 
@@ -91,7 +91,7 @@ bool is_format_char(char c);
 bool is_cjk_char(const ucs4::char_t ch);
 
 /** Create string of color-markup, such as "<255,255,0>" for yellow. */
-std::string color2markup(const SDL_Color &color);
+std::string color2markup(const color_t &color);
 
 /**
  * Wrap text.

@@ -74,7 +74,7 @@ const std::string textbox::text() const
 }
 
 // set_text does not respect max_size_
-void textbox::set_text(const std::string& text, const SDL_Color& color)
+void textbox::set_text(const std::string& text, const color_t& color)
 {
 	text_ = unicode_cast<ucs4::string>(text);
 	cursor_ = text_.size();
@@ -86,7 +86,7 @@ void textbox::set_text(const std::string& text, const SDL_Color& color)
 	handle_text_changed(text_);
 }
 
-void textbox::append_text(const std::string& text, bool auto_scroll, const SDL_Color& color)
+void textbox::append_text(const std::string& text, bool auto_scroll, const color_t& color)
 {
 	if(text_image_.get() == nullptr) {
 		set_text(text, color);
@@ -291,7 +291,7 @@ void textbox::scroll(unsigned int pos)
 	set_dirty(true);
 }
 
-surface textbox::add_text_line(const ucs4::string& text, const SDL_Color& color)
+surface textbox::add_text_line(const ucs4::string& text, const color_t& color)
 {
 	line_height_ = font::get_max_height(font_size_);
 
@@ -361,7 +361,7 @@ surface textbox::add_text_line(const ucs4::string& text, const SDL_Color& color)
 }
 
 
-void textbox::update_text_cache(bool changed, const SDL_Color& color)
+void textbox::update_text_cache(bool changed, const color_t& color)
 {
 	if(changed) {
 		char_x_.clear();

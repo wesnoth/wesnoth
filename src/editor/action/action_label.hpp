@@ -41,7 +41,7 @@ class editor_action_label : public editor_action_location
 {
 	public:
 		editor_action_label(map_location loc, const std::string& text, const std::string& team_name,
-				SDL_Color color, bool visible_fog, bool visible_shroud, bool immutable, std::string category)
+				color_t color, bool visible_fog, bool visible_shroud, bool immutable, std::string category)
 		: editor_action_location(loc), text_(text) , team_name_(team_name), category_(category), color_(color)
 		, visible_fog_(visible_fog), visible_shroud_(visible_shroud), immutable_(immutable)
 		{
@@ -54,7 +54,7 @@ class editor_action_label : public editor_action_location
 		const std::string text_;
 		const std::string team_name_;
 		const std::string category_;
-		SDL_Color color_;
+		color_t color_;
 		bool visible_fog_;
 		bool visible_shroud_;
 		bool immutable_;

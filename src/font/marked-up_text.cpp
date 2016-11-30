@@ -50,7 +50,7 @@ const char LARGE_TEXT='*', SMALL_TEXT='`',
 std::string::const_iterator parse_markup(std::string::const_iterator i1,
 												std::string::const_iterator i2,
 												int* font_size,
-												SDL_Color* color, int* style)
+												color_t* color, int* style)
 {
 	while(i1 != i2) {
 		switch(*i1) {
@@ -118,7 +118,7 @@ std::string::const_iterator parse_markup(std::string::const_iterator i1,
 				}
 				blue=temp;
 				if (i1 != i2 && '>' == (*i1)) {
-					SDL_Color temp_color = {red, green, blue, 0};
+					color_t temp_color = {red, green, blue, 0};
 					if (color) *color = temp_color;
 				} else {
 					// stop parsing and do not consume any chars
@@ -146,10 +146,10 @@ std::string del_tags(const std::string& text){
 	return utils::join(lines, "\n");
 }
 
-std::string color2markup(const SDL_Color &color)
+std::string color2markup(const color_t &color)
 {
 	std::stringstream markup;
-	// The RGB of SDL_Color are Uint8, we need to cast them to int.
+	// The RGB of color_t are Uint8, we need to cast them to int.
 	// Without cast, it gives their char equivalent.
 	markup << "<"
 		   << static_cast<int>(color.r) << ","
@@ -165,7 +165,7 @@ SDL_Rect text_area(const std::string& text, int size, int style)
 }
 
 SDL_Rect draw_text(surface& dst, const SDL_Rect& area, int size,
-                   const SDL_Color& color, const std::string& txt,
+                   const color_t& color, const std::string& txt,
                    int x, int y, bool use_tooltips, int style)
 {
 	// Make sure there's always at least a space,
@@ -182,7 +182,7 @@ SDL_Rect draw_text(surface& dst, const SDL_Rect& area, int size,
 	std::string::const_iterator i1 = text.begin();
 	std::string::const_iterator i2 = std::find(i1,text.end(),'\n');
 	for(;;) {
-		SDL_Color col = color;
+		color_t col = color;
 		int sz = size;
 		int text_style = style;
 
@@ -212,7 +212,7 @@ SDL_Rect draw_text(surface& dst, const SDL_Rect& area, int size,
 }
 
 SDL_Rect draw_text(CVideo* gui, const SDL_Rect& area, int size,
-                   const SDL_Color& color, const std::string& txt,
+                   const color_t& color, const std::string& txt,
                    int x, int y, bool use_tooltips, int style)
 {
 	surface null_surf = surface(nullptr);
@@ -425,7 +425,7 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size,
 	bool start_of_line = true;
 	std::string wrapped_text;
 	std::string format_string;
-	SDL_Color color;
+	color_t color;
 	int font_sz = font_size;
 	int style = TTF_STYLE_NORMAL;
 	utf8::iterator end = utf8::iterator::end(unwrapped_text);

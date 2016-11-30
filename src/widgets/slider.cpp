@@ -158,7 +158,7 @@ void slider::draw_contents()
 
 	assert(image != nullptr);
 
-	SDL_Color line_color = line_color_;
+	color_t line_color = line_color_;
 	if (!enabled()) {
 		image.assign(disabledImage_);
 		line_color = font::DISABLED_COLOR;

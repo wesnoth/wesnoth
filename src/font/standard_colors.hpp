@@ -15,7 +15,7 @@
 #ifndef FONT_STANDARD_COLORS_HPP
 #define FONT_STANDARD_COLORS_HPP
 
-#include <SDL.h>
+#include "sdl/color.hpp"
 
 namespace font {
 
@@ -23,7 +23,7 @@ namespace font {
 // TODO: these should probably all be constexpr
 //
 
-extern const SDL_Color
+extern const color_t
 	// These are GUI1 formatting colors and should be removed when GUI1 is
 	NORMAL_COLOR,
 	GRAY_COLOR,

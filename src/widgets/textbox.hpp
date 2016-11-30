@@ -30,8 +30,8 @@ public:
 	virtual ~textbox();
 
 	const std::string text() const;
-	void set_text(const std::string& text, const SDL_Color& color =font::NORMAL_COLOR);
-	void append_text(const std::string& text,bool auto_scroll = false, const SDL_Color& color =font::NORMAL_COLOR);
+	void set_text(const std::string& text, const color_t& color =font::NORMAL_COLOR);
+	void append_text(const std::string& text,bool auto_scroll = false, const color_t& color =font::NORMAL_COLOR);
 	void clear();
 
 	void set_selection(const int selstart, const int selend);
@@ -106,8 +106,8 @@ private:
 	void pass_event_to_target(const SDL_Event& event);
 
 	void draw_cursor(int pos, CVideo &video) const;
-	void update_text_cache(bool reset = false, const SDL_Color& color =font::NORMAL_COLOR);
-	surface add_text_line(const ucs4::string& text, const SDL_Color& color =font::NORMAL_COLOR);
+	void update_text_cache(bool reset = false, const color_t& color =font::NORMAL_COLOR);
+	surface add_text_line(const ucs4::string& text, const color_t& color =font::NORMAL_COLOR);
 	bool is_selection();
 	void erase_selection();
 

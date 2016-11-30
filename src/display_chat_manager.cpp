@@ -35,8 +35,8 @@ static lg::log_domain log_engine("engine");
 namespace {
 	const int chat_message_border = 5;
 	const int chat_message_x = 10;
-	const SDL_Color chat_message_color = {255,255,255,SDL_ALPHA_OPAQUE};
-	const SDL_Color chat_message_bg     = {0,0,0,140};
+	const color_t chat_message_color = {255,255,255,SDL_ALPHA_OPAQUE};
+	const color_t chat_message_bg     = {0,0,0,140};
 }
 
 display_chat_manager::chat_message::chat_message(int speaker, int h)
@@ -115,12 +115,12 @@ void display_chat_manager::add_chat_message(const time_t& time, const std::strin
 		ypos += std::max(font::get_floating_label_rect(m->handle).h,
 			font::get_floating_label_rect(m->speaker_handle).h);
 	}
-	SDL_Color speaker_color = {255,255,255,SDL_ALPHA_OPAQUE};
+	color_t speaker_color = {255,255,255,SDL_ALPHA_OPAQUE};
 	if(side >= 1) {
-		speaker_color = color_t::from_argb_bytes(team::get_side_color_range(side).mid()).to_sdl();
+		speaker_color = color_t::from_argb_bytes(team::get_side_color_range(side).mid());
 	}
 
-	SDL_Color message_color = chat_message_color;
+	color_t message_color = chat_message_color;
 	std::stringstream str;
 	std::stringstream message_str;
 

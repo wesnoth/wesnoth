@@ -29,7 +29,7 @@
 class display;
 class display_context;
 class gamemap;
-struct SDL_Color;
+struct color_t;
 class team;
 class unit_animation_component;
 class unit_formula_manager;
@@ -172,14 +172,14 @@ public:
 	 * how wounded the unit is.
 	 * The maximum_hitpoints are considered as base.
 	 */
-	SDL_Color hp_color() const;
+	color_t hp_color() const;
 	/** Colors for the unit's hitpoints.
 	 * @param hitpoints the amount of hitpoints the color represents.
 	 * @returns the color considering the current hitpoints as base.
 	 */
-	SDL_Color hp_color(int hitpoints) const;
+	color_t hp_color(int hitpoints) const;
 	/** Colors for the unit's XP. */
-	SDL_Color xp_color() const;
+	color_t xp_color() const;
 
 	double hp_bar_scaling() const { return hp_bar_scaling_; }
 	double xp_bar_scaling() const { return xp_bar_scaling_; }

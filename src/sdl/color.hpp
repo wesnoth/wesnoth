@@ -167,9 +167,9 @@ struct color_t
 	std::string to_rgb_string() const;
 
 	/**
-	 * Returns the stored color as an SDL_Color object.
+	 * Returns the stored color as an color_t object.
 	 *
-	 * @return       The new SDL_Color object.
+	 * @return       The new color_t object.
 	 */
 	SDL_Color to_sdl() const
 	{

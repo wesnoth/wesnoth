@@ -22,9 +22,9 @@
 
 namespace font {
 
-std::string span_color(const SDL_Color& color)
+std::string span_color(const color_t& color)
 {
-	return formatter() << "<span color='" << color_t(color).to_hex_string() << "'>";
+	return formatter() << "<span color='" << color.to_hex_string() << "'>";
 }
 
 std::string get_pango_color_from_id(const std::string& id)

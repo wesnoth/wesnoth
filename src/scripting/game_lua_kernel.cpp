@@ -123,7 +123,7 @@
 #include <algorithm>
 #include <vector>                       // for vector, etc
 #include <SDL_timer.h>                  // for SDL_GetTicks
-#include <SDL_video.h>                  // for SDL_Color, SDL_Surface
+#include <SDL_video.h>                  // for SDL_Surface
 #include "lua/lauxlib.h"                // for luaL_checkinteger, etc
 #include "lua/lua.h"                    // for lua_setfield, etc
 
@@ -1879,13 +1879,13 @@ int game_lua_kernel::intf_print(lua_State *L) {
 	int size = cfg["size"].to_int(font::SIZE_SMALL);
 	int lifetime = cfg["duration"].to_int(50);
 
-	SDL_Color color = font::LABEL_COLOR;
+	color_t color = font::LABEL_COLOR;
 
 	if(!cfg["color"].empty()) {
-		color = color_t::from_rgb_string(cfg["color"]).to_sdl();
+		color = color_t::from_rgb_string(cfg["color"]);
 	} else if(cfg.has_attribute("red") || cfg.has_attribute("green") || cfg.has_attribute("blue")) {
 		lg::wml_error() << "[print] red=, green=, blue= is deprecated. Use color= instead." << std::endl;
-		color = color_t(cfg["red"], cfg["green"], cfg["blue"]).to_sdl();
+		color = color_t(cfg["red"], cfg["green"], cfg["blue"]);
 	}
 
 	const SDL_Rect& rect = game_display_->map_outside_area();
@@ -2143,11 +2143,11 @@ int game_lua_kernel::intf_find_vacant_tile(lua_State *L)
 int game_lua_kernel::intf_float_label(lua_State *L)
 {
 	map_location loc = luaW_checklocation(L, 1);
-	SDL_Color color = font::LABEL_COLOR;
+	color_t color = font::LABEL_COLOR;
 
 	t_string text = luaW_checktstring(L, 2);
 	if (!lua_isnoneornil(L, 3)) {
-		color = color_t::from_rgb_string(luaL_checkstring(L, 3)).to_sdl();
+		color = color_t::from_rgb_string(luaL_checkstring(L, 3));
 	}
 
 	if (game_display_) {

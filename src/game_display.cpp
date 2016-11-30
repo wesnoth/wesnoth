@@ -436,7 +436,7 @@ void game_display::draw_movement_info(const map_location& loc)
 			std::stringstream def_text;
 			def_text << def << "%";
 
-			SDL_Color color = color_t::from_argb_bytes(game_config::red_to_green(def, false)).to_sdl();
+			color_t color = color_t::from_argb_bytes(game_config::red_to_green(def, false));
 
 			// simple mark (no turn point) use smaller font
 			int def_font = w->second.turns > 0 ? 18 : 16;
@@ -481,7 +481,7 @@ void game_display::draw_movement_info(const map_location& loc)
 			std::stringstream def_text;
 			def_text << def << "%";
 
-			SDL_Color color = color_t::from_argb_bytes(game_config::red_to_green(def, false)).to_sdl();
+			color_t color = color_t::from_argb_bytes(game_config::red_to_green(def, false));
 
 			// use small font
 			int def_font = 16;
@@ -613,7 +613,7 @@ void game_display::set_route(const pathfind::marked_route *route)
 	invalidate_route();
 }
 
-void game_display::float_label(const map_location& loc, const std::string& text, const SDL_Color& color)
+void game_display::float_label(const map_location& loc, const std::string& text, const color_t& color)
 {
 	if(preferences::show_floating_labels() == false || fogged(loc)) {
 		return;

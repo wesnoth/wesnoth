@@ -260,7 +260,7 @@ TTF_Font* sdl_ttf::get_font(font_id id)
  * Interface to SDL_TTF
  */
 
-static surface render_text(const std::string& text, int fontsize, const SDL_Color& color, int style, bool use_markup)
+static surface render_text(const std::string& text, int fontsize, const color_t& color, int style, bool use_markup)
 {
 	// we keep blank lines and spaces (may be wanted for indentation)
 	const std::vector<std::string> lines = utils::split(text, '\n', 0);
@@ -333,14 +333,14 @@ static surface render_text(const std::string& text, int fontsize, const SDL_Colo
 }
 
 
-surface get_rendered_text(const std::string& str, int size, const SDL_Color& color, int style)
+surface get_rendered_text(const std::string& str, int size, const color_t& color, int style)
 {
 	// TODO maybe later also to parse markup here, but a lot to check
 	return render_text(str, size, color, style, false);
 }
 
 SDL_Rect draw_text_line(surface& gui_surface, const SDL_Rect& area, int size,
-		   const SDL_Color& color, const std::string& text,
+		   const color_t& color, const std::string& text,
 		   int x, int y, bool use_tooltips, int style)
 {
 	size = preferences::font_scaled(size);
@@ -432,7 +432,7 @@ SDL_Rect line_size(const std::string& line, int font_size, int style)
 
 	SDL_Rect res;
 
-	const SDL_Color col = { 0, 0, 0, 0 };
+	const color_t col = { 0, 0, 0, 0 };
 	text_surface s(line, font_size, col, style);
 
 	res.w = s.width();

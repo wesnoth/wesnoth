@@ -342,7 +342,7 @@ void button::draw_contents()
 		textx = loc.x + image_w + checkbox_horizontal_padding / 2;
 	}
 
-	SDL_Color button_color = font::BUTTON_COLOR;
+	color_t button_color = font::BUTTON_COLOR;
 
 	if (!enabled()) {
 

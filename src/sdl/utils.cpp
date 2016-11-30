@@ -1147,7 +1147,7 @@ void adjust_surface_alpha(surface& surf, fixed_t amount)
 
 class pixel_callable : public game_logic::formula_callable {
 public:
-	pixel_callable(SDL_Point p, SDL_Color clr, Uint32 w, Uint32 h) : p(p), clr(clr), w(w), h(h) {}
+	pixel_callable(SDL_Point p, color_t clr, Uint32 w, Uint32 h) : p(p), clr(clr), w(w), h(h) {}
 	void get_inputs(std::vector<game_logic::formula_input>* inputs) const override
 	{
 		inputs->push_back(game_logic::formula_input("x", game_logic::FORMULA_READ_ONLY));
@@ -1182,7 +1182,7 @@ public:
 	}
 private:
 	SDL_Point p;
-	SDL_Color clr;
+	color_t clr;
 	Uint32 w, h;
 };
 
@@ -1210,7 +1210,7 @@ surface adjust_surface_alpha_formula(const surface &surf, const std::string& for
 		Uint32*const beg = cur;
 
 		while(cur != end) {
-			SDL_Color pixel;
+			color_t pixel;
 			pixel.a = (*cur) >> 24;
 			pixel.r = (*cur) >> 16;
 			pixel.g = (*cur) >> 8;
@@ -2458,15 +2458,7 @@ SDL_Rect get_non_transparent_portion(const surface &surf)
 	return res;
 }
 
-bool operator==(const SDL_Color& a, const SDL_Color& b) {
-	return a.r == b.r && a.g == b.g && a.b == b.b;
-}
-
-bool operator!=(const SDL_Color& a, const SDL_Color& b) {
-	return !operator==(a,b);
-}
-
-SDL_Color inverse(const SDL_Color& color) {
+color_t inverse(const color_t& color) {
 	return {
 		static_cast<Uint8>(255 - color.r),
 		static_cast<Uint8>(255 - color.g),
@@ -2526,7 +2518,7 @@ void surface_restorer::cancel()
 	surface_.assign(nullptr);
 }
 
-void draw_centered_on_background(surface surf, const SDL_Rect& rect, const SDL_Color& color, surface target)
+void draw_centered_on_background(surface surf, const SDL_Rect& rect, const color_t& color, surface target)
 {
 	clip_rect_setter clip_setter(target, &rect);
 

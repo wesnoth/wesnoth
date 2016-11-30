@@ -42,7 +42,7 @@
 #include <string>                       // for string, allocator, etc
 #include <utility>                      // for pair, make_pair
 #include <vector>                       // for vector, etc
-#include <SDL.h>                  // for SDL_Color, SDL_Surface
+#include <SDL.h>                  // for SDL_Surface
 
 class config;
 class unit_type;
@@ -297,7 +297,7 @@ std::string convert_to_wml(const std::string &element_name, const std::string &c
 
 /// Return the color the string represents. Return font::NORMAL_COLOR if
 /// the string is empty or can't be matched against any other color.
-SDL_Color string_to_color(const std::string &s);
+color_t string_to_color(const std::string &s);
 
 /// Make a best effort to word wrap s. All parts are less than width.
 std::vector<std::string> split_in_width(const std::string &s, const int font_size, const unsigned width);

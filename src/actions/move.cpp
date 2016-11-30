@@ -1148,7 +1148,7 @@ namespace { // Private helpers for move_unit()
 			symbols["enemies"] = std::to_string(enemy_count_);
 			symbols["friends"] = std::to_string(friend_count_);
 			std::string message;
-			SDL_Color msg_color;
+			color_t msg_color;
 			if ( friend_count_ != 0  &&  enemy_count_ != 0 ) {
 				// Both friends and enemies sighted -- neutral message.
 				symbols["friendphrase"] = vngettext("Part of 'Units sighted! (...)' sentence^1 friendly", "$friends friendly", friend_count_, symbols);

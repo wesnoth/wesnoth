@@ -18,7 +18,6 @@
 #include <list>                         // for list
 #include <string>                       // for string
 #include <utility>                      // for pair
-#include <SDL_video.h>                  // for SDL_Color (ptr only), etc
 #include "font/standard_colors.hpp"     // for NORMAL_COLOR
 #include "sdl/utils.hpp"                // for surface
 #include "widgets/scrollarea.hpp"       // for scrollarea
@@ -117,7 +116,7 @@ private:
 	void add_text_item(const std::string& text, const std::string& ref_dst="",
 					   bool broken_link = false,
 					   int font_size=-1, bool bold=false, bool italic=false,
-					   SDL_Color color=font::NORMAL_COLOR);
+					   color_t color=font::NORMAL_COLOR);
 
 	/// Add an image item with the specified attributes.
 	void add_img_item(const std::string& path, const std::string& alignment, const bool floating,

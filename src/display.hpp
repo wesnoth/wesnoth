@@ -591,7 +591,7 @@ public:
 
 	/** Announce a message prominently. */
 	void announce(const std::string& msg,
-		       const SDL_Color& color = font::GOOD_COLOR, int lifetime = 100);
+		       const color_t& color = font::GOOD_COLOR, int lifetime = 100);
 
 	/**
 	 * Schedule the minimap for recalculation.
@@ -882,7 +882,7 @@ public:
 	 */
 	void draw_text_in_hex(const map_location& loc,
 		const drawing_layer layer, const std::string& text, size_t font_size,
-		SDL_Color color, double x_in_hex=0.5, double y_in_hex=0.5);
+		color_t color, double x_in_hex=0.5, double y_in_hex=0.5);
 
 protected:
 

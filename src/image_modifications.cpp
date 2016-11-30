@@ -569,7 +569,7 @@ surface background_modification::operator()(const surface &src) const
 	return ret;
 }
 
-const SDL_Color& background_modification::get_color() const
+const color_t& background_modification::get_color() const
 {
 	return color_;
 }
@@ -1251,7 +1251,7 @@ REGISTER_MOD_PARSER(BG, args)
 		c[i] = lexical_cast_default<int>(factors[i]);
 	}
 
-	return new background_modification(color_t(c[0], c[1], c[2], c[3]).to_sdl());
+	return new background_modification(color_t(c[0], c[1], c[2], c[3]));
 }
 
 // Channel swap

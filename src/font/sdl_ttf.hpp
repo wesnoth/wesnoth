@@ -18,6 +18,7 @@
 #include "constants.hpp"
 #include "font_id.hpp"
 #include "font_description.hpp"
+#include "sdl/color.hpp"
 
 #include <string>
 
@@ -28,10 +29,10 @@ class surface;
 namespace font {
 
 // Returns a SDL surface containing the text rendered in a given color.
-surface get_rendered_text(const std::string& text, int size, const SDL_Color& color, int style=0);
+surface get_rendered_text(const std::string& text, int size, const color_t& color, int style=0);
 
 SDL_Rect draw_text_line(surface& gui_surface, const SDL_Rect& area, int size,
-						const SDL_Color& color, const std::string& text,
+						const color_t& color, const std::string& text,
 						int x, int y, bool use_tooltips, int style);
 
 // Returns the maximum height of a font, in pixels

@@ -70,7 +70,7 @@ void text_surface::bidi_cvt()
 #endif
 
 text_surface::text_surface(const std::string& str, int size,
-		SDL_Color color, int style)
+		color_t color, int style)
 	: hash_(0)
 	, font_size_(size)
 	, color_(color)
@@ -91,7 +91,7 @@ text_surface::text_surface(const std::string& str, int size,
 	hash();
 }
 
-text_surface::text_surface(int size, SDL_Color color, int style) :
+text_surface::text_surface(int size, color_t color, int style) :
 	hash_(0),
 	font_size_(size),
 	color_(color),
@@ -184,7 +184,7 @@ std::vector<surface> const &text_surface::get_surfaces() const
 	{
 		TTF_Font* ttfont = sdl_ttf::get_font(font_id(chunk.subset, font_size_, style_));
 
-		surface s = surface(TTF_RenderUTF8_Blended(ttfont, chunk.text.c_str(), color_));
+		surface s = surface(TTF_RenderUTF8_Blended(ttfont, chunk.text.c_str(), color_.to_sdl()));
 		if(!s.null())
 			surfs_.push_back(s);
 	}

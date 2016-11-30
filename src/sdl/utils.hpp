@@ -17,6 +17,7 @@
 #ifndef SDL_UTILS_INCLUDED
 #define SDL_UTILS_INCLUDED
 
+#include "sdl/color.hpp"
 #include "util.hpp"
 
 #include <SDL.h>
@@ -408,10 +409,7 @@ void blit_surface(const surface& src,
 
 SDL_Rect get_non_transparent_portion(const surface &surf);
 
-bool operator==(const SDL_Color& a, const SDL_Color& b);
-bool operator!=(const SDL_Color& a, const SDL_Color& b);
-
-SDL_Color inverse(const SDL_Color& color);
+color_t inverse(const color_t& color);
 
 /**
  * Helper class for pinning SDL surfaces into memory.
@@ -496,7 +494,7 @@ private:
 // blit the image on the center of the rectangle
 // and a add a colored background
 void draw_centered_on_background(surface surf, const SDL_Rect& rect,
-	const SDL_Color& color, surface target);
+	const color_t& color, surface target);
 
 std::ostream& operator<<(std::ostream& s, const SDL_Rect& rect);
 

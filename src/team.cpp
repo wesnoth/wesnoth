@@ -823,16 +823,16 @@ const color_range team::get_side_color_range(int side)
 	return(color_range(0x00FF0000,0x00FFFFFF,0x00000000,0x00FF0000));
 }
 
-SDL_Color team::get_side_color(int side)
+color_t team::get_side_color(int side)
 {
-	return color_t::from_argb_bytes(get_side_color_range(side).mid()).to_sdl();
+	return color_t::from_argb_bytes(get_side_color_range(side).mid());
 }
 
-SDL_Color team::get_minimap_color(int side)
+color_t team::get_minimap_color(int side)
 {
 	// Note: use mid() instead of rep() unless
 	// high contrast is needed over a map or minimap!
-	return color_t::from_argb_bytes(get_side_color_range(side).rep()).to_sdl();
+	return color_t::from_argb_bytes(get_side_color_range(side).rep());
 }
 
 std::string team::get_side_color_index(int side)

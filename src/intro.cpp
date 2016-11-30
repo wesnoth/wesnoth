@@ -54,7 +54,7 @@ void the_end(CVideo &video, std::string text, unsigned int duration)
 		if(n)
 			sdl::fill_rect(video.getSurface(),&area,0);
 
-		const SDL_Color col = color_t(uint8_t(n), uint8_t(n), uint8_t(n), uint8_t(n)).to_sdl();
+		const color_t col = color_t(uint8_t(n), uint8_t(n), uint8_t(n), uint8_t(n));
 		font::draw_text(&video,area,font_size,col,text,area.x,area.y);
 		update_rect(area);
 

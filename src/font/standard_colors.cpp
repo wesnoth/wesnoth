@@ -18,7 +18,7 @@
 
 namespace font {
 
-const SDL_Color
+const color_t
 	NORMAL_COLOR    {0xDD,0xDD,0xDD,0},
 	GRAY_COLOR      {0x77,0x77,0x77,0},
 	LOBBY_COLOR     {0xBB,0xBB,0xBB,0},
@@ -32,12 +32,12 @@ const SDL_Color
 	LABEL_COLOR     {0x6B,0x8C,0xFF,0},
 	BIGMAP_COLOR    {0xFF,0xFF,0xFF,0};
 
-const SDL_Color DISABLED_COLOR = inverse(PETRIFIED_COLOR);
+const color_t DISABLED_COLOR = inverse(PETRIFIED_COLOR);
 
-const SDL_Color
+const color_t
 	weapon_color           { 245, 230, 193, SDL_ALPHA_OPAQUE },
-	good_dmg_color         { 130, 240, 50, SDL_ALPHA_OPAQUE },
-	bad_dmg_color          { 250, 140, 80, SDL_ALPHA_OPAQUE },
+	good_dmg_color         { 130, 240, 50,  SDL_ALPHA_OPAQUE },
+	bad_dmg_color          { 250, 140, 80,  SDL_ALPHA_OPAQUE },
 	weapon_details_color   { 166, 146, 117, SDL_ALPHA_OPAQUE },
 	inactive_details_color { 146, 146, 146, SDL_ALPHA_OPAQUE },
 	inactive_ability_color { 146, 146, 146, SDL_ALPHA_OPAQUE },

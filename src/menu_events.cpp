@@ -728,12 +728,12 @@ void menu_handler::label_terrain(mouse_handler& mousehandler, bool team_only)
 
 	if(gui2::dialogs::edit_label::execute(label, team_only, gui_->video())) {
 		std::string team_name;
-		SDL_Color color = font::LABEL_COLOR;
+		color_t color = font::LABEL_COLOR;
 
 		if (team_only) {
 			team_name = gui_->labels().team_name();
 		} else {
-			color = color_t::from_argb_bytes(team::get_side_rgb(gui_->viewing_side())).to_sdl();
+			color = color_t::from_argb_bytes(team::get_side_rgb(gui_->viewing_side()));
 		}
 		const terrain_label* res = gui_->labels().set_label(loc, label, gui_->viewing_team(), team_name, color);
 		if (res)

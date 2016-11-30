@@ -35,7 +35,7 @@ namespace halo { class manager; }
 class team;
 class unit;
 
-struct SDL_Color;
+struct color_t;
 struct SDL_Rect;
 class surface;
 
@@ -75,7 +75,7 @@ private:
 	/** draw a health/xp bar of a unit */
 	void draw_bar(const std::string& image, int xpos, int ypos,
 		const map_location& loc, size_t height, double filled,
-		const SDL_Color& col, fixed_t alpha) const;
+		const color_t& col, fixed_t alpha) const;
 
 	/**
 	 * Finds the start and end rows on the energy bar image.

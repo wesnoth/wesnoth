@@ -287,13 +287,13 @@ void help_text_area::handle_format_cfg(const config &cfg)
 	bool bold = cfg["bold"].to_bool();
 	bool italic = cfg["italic"].to_bool();
 	int font_size = cfg["font_size"].to_int(normal_font_size);
-	SDL_Color color = help::string_to_color(cfg["color"]);
+	color_t color = help::string_to_color(cfg["color"]);
 	add_text_item(text, "", false, font_size, bold, italic, color);
 }
 
 void help_text_area::add_text_item(const std::string& text, const std::string& ref_dst,
 								   bool broken_link, int _font_size, bool bold, bool italic,
-								   SDL_Color text_color
+								   color_t text_color
 )
 {
 	const int font_size = _font_size < 0 ? normal_font_size : _font_size;
@@ -327,7 +327,7 @@ void help_text_area::add_text_item(const std::string& text, const std::string& r
 		std::vector<std::string> parts = split_in_width(text, font_size, remaining_width);
 		std::string first_part = parts.front();
 		// Always override the color if we have a cross reference.
-		SDL_Color color;
+		color_t color;
 		if(ref_dst.empty())
 			color = text_color;
 		else if(broken_link)

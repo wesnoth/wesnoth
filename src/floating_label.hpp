@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include "sdl/color.hpp"
 #include "sdl/utils.hpp"
 #include <string>
 
@@ -53,8 +54,8 @@ public:
 		lifetime_ = lifetime;
 		alpha_change_ = -255 / lifetime_;
 	}
-	void set_color(const SDL_Color& color) {color_ = color;}
-	void set_bg_color(const SDL_Color& bg_color) {
+	void set_color(const color_t& color) {color_ = color;}
+	void set_bg_color(const color_t& bg_color) {
 		bgcolor_ = bg_color;
 		bgalpha_ = bg_color.a;
 	}
@@ -85,7 +86,7 @@ private:
 	surface surf_, buf_;
 	std::string text_;
 	int font_size_;
-	SDL_Color color_, bgcolor_;
+	color_t color_, bgcolor_;
 	int bgalpha_;
 	double xpos_, ypos_, xmove_, ymove_;
 	int lifetime_;

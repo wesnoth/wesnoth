@@ -23,7 +23,7 @@
 
 namespace gui {
 
-label::label(CVideo& video, const std::string& text, int size, const SDL_Color& color, const bool auto_join) : widget(video, auto_join), text_(text), size_(size), color_(color)
+label::label(CVideo& video, const std::string& text, int size, const color_t& color, const bool auto_join) : widget(video, auto_join), text_(text), size_(size), color_(color)
 {
 	update_label_size();
 }
@@ -44,14 +44,14 @@ const std::string& label::get_text() const
 	return text_;
 }
 
-const SDL_Color& label::set_color(const SDL_Color& color)
+const color_t& label::set_color(const color_t& color)
 {
 	color_ = color;
 	set_dirty();
 	return get_color();
 }
 
-const SDL_Color& label::get_color() const
+const color_t& label::get_color() const
 {
 	return (enabled()) ? color_ : font::DISABLED_COLOR;
 }

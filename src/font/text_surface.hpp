@@ -16,6 +16,7 @@
 #define FONT_TEXT_SURFACE_HPP
 
 #include "font_id.hpp" // for text_chunk
+#include "sdl/color.hpp"
 
 #include <SDL_ttf.h>
 
@@ -32,8 +33,8 @@ namespace font {
 class text_surface
 {
 public:
-	text_surface(const std::string& str, int size, SDL_Color color, int style);
-	text_surface(int size, SDL_Color color, int style);
+	text_surface(const std::string& str, int size, color_t color, int style);
+	text_surface(int size, color_t color, int style);
 	void set_text(const std::string& str);
 
 	void measure() const;
@@ -49,7 +50,7 @@ public:
 private:
 	int hash_;
 	int font_size_;
-	SDL_Color color_;
+	color_t color_;
 	int style_;
 	mutable int w_, h_;
 	std::string str_;

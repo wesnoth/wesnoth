@@ -340,7 +340,7 @@ static config unit_alignment(reports::context & rc, const unit* u)
 	int cm = combat_modifier(rc.units(), rc.map(), rc.screen().displayed_unit_hex(), u->alignment(),
 			u->is_fearless());
 
-	SDL_Color color = font::weapon_color;
+	color_t color = font::weapon_color;
 	if (cm != 0)
 		color = (cm > 0) ? font::good_dmg_color : font::bad_dmg_color;
 
@@ -519,7 +519,7 @@ static config unit_defense(reports::context & rc, const unit* u, const map_locat
 
 	const t_translation::terrain_code &terrain = map[displayed_unit_hex];
 	int def = 100 - u->defense_modifier(terrain);
-	SDL_Color color = color_t::from_argb_bytes(game_config::red_to_green(def)).to_sdl();
+	color_t color = color_t::from_argb_bytes(game_config::red_to_green(def));
 	str << span_color(color) << def << '%' << naps;
 	tooltip << _("Terrain: ") << "<b>" << map.get_terrain_info(terrain).description() << "</b>\n";
 
@@ -535,7 +535,7 @@ static config unit_defense(reports::context & rc, const unit* u, const map_locat
 				revert = false;
 			} else {
 				int t_def = 100 - u->defense_modifier(t);
-				SDL_Color t_color = color_t::from_argb_bytes(game_config::red_to_green(t_def)).to_sdl();
+				color_t t_color = color_t::from_argb_bytes(game_config::red_to_green(t_def));
 				tooltip << '\t' << map.get_terrain_info(t).description() << ": "
 					<< span_color(t_color) << t_def << '%' << naps
 					<< (revert ? _("maximum^max.") : _("minimum^min.")) << '\n';
@@ -632,7 +632,7 @@ static config unit_moves(reports::context & rc, const unit* u)
 	}
 
 	int grey = 128 + int((255 - 128) * movement_frac);
-	SDL_Color c = color_t(grey, grey, grey).to_sdl();
+	color_t c = color_t(grey, grey, grey);
 	str << span_color(c) << u->movement_left() << '/' << u->total_movement() << naps;
 	return text_report(str.str(), tooltip.str());
 }
@@ -675,7 +675,7 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 	at.modified_attacks(false, min_attacks, max_attacks);
 	unsigned num_attacks = swarm_blows(min_attacks, max_attacks, cur_hp, max_hp);
 
-	SDL_Color dmg_color = font::weapon_color;
+	color_t dmg_color = font::weapon_color;
 	if ( damage > specials_damage )
 		dmg_color = font::good_dmg_color;
 	else if ( damage < specials_damage )
@@ -810,7 +810,7 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 		// Aliases for readability:
 		const t_string &name = specials[i].first;
 		const t_string &description = specials[i].second;
-		const SDL_Color &details_color = active[i] ? font::weapon_details_color :
+		const color_t &details_color = active[i] ? font::weapon_details_color :
 		                                             font::inactive_details_color;
 
 		str << span_color(details_color) << "  " << "  " << name << naps << '\n';
@@ -888,7 +888,7 @@ static config unit_weapons(reports::context & rc, const unit *attacker, const ma
 		int chance_to_hit = 0;
 		t_string weapon_name = _("None");
 
-		SDL_Color dmg_color = font::weapon_color;
+		color_t dmg_color = font::weapon_color;
 		if (context_unit_stats.weapon) {
 			base_damage = attack_info(rc, *context_unit_stats.weapon, res, *u, unit_loc);
 			total_damage = context_unit_stats.damage;
@@ -906,7 +906,7 @@ static config unit_weapons(reports::context & rc, const unit *attacker, const ma
 				<< _("Damage: ") << "<b>" << "0" << "</b>\n";
 		}
 
-		SDL_Color chance_color = color_t::from_argb_bytes(game_config::red_to_green(chance_to_hit)).to_sdl();
+		color_t chance_color = color_t::from_argb_bytes(game_config::red_to_green(chance_to_hit));
 
 		// Total damage.
 		str << "  " << span_color(dmg_color) << total_damage << naps << span_color(font::weapon_color)
@@ -965,7 +965,7 @@ static config unit_weapons(reports::context & rc, const unit *attacker, const ma
 			char hp_buf[10];
 			format_hp(hp_buf, hp);
 
-			SDL_Color prob_color = color_t::from_argb_bytes(game_config::blue_to_white(prob * 100.0, true)).to_sdl();
+			color_t prob_color = color_t::from_argb_bytes(game_config::blue_to_white(prob * 100.0, true));
 
 			str		<< span_color(font::weapon_details_color) << "  " << "  "
 					<< span_color(u->hp_color(hp)) << hp_buf << naps

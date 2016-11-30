@@ -36,6 +36,7 @@
 #include "random_new.hpp"               // for generator, rng
 #include "resources.hpp"                // for units, gameboard, teams, etc
 #include "scripting/game_lua_kernel.hpp"            // for game_lua_kernel
+#include "sdl/color.hpp"
 #include "synced_context.hpp"
 #include "side_filter.hpp"              // for side_filter
 #include "team.hpp"                     // for team, get_teams, etc
@@ -67,8 +68,6 @@
 #include <iterator>                     // for back_insert_iterator, etc
 #include <new>                          // for operator new
 #include <ostream>                      // for operator<<, basic_ostream, etc
-#include <SDL_video.h>                  // for SDL_Color
-
 
 namespace t_translation { struct terrain_code; }
 
@@ -1037,10 +1036,10 @@ const std::string& unit::team_color() const {
 	return flag_rgb_.empty() ? game_config::unit_rgb : flag_rgb_;
 }
 
-static SDL_Color hp_color_(int hitpoints, int max_hitpoints)
+static color_t hp_color_(int hitpoints, int max_hitpoints)
 {
 	double unit_energy = 0.0;
-	SDL_Color energy_color = {0,0,0,0};
+	color_t energy_color = {0,0,0,0};
 
 	if(max_hitpoints > 0) {
 		unit_energy = double(hitpoints)/double(max_hitpoints);
@@ -1074,31 +1073,31 @@ static SDL_Color hp_color_(int hitpoints, int max_hitpoints)
 	return energy_color;
 }
 
-SDL_Color unit::hp_color() const
+color_t unit::hp_color() const
 {
 	return hp_color_(hitpoints(), max_hitpoints());
 }
 
-SDL_Color unit::hp_color(int new_hitpoints) const
+color_t unit::hp_color(int new_hitpoints) const
 {
 	return hp_color_(new_hitpoints, hitpoints());
 }
 
-SDL_Color unit::xp_color() const
+color_t unit::xp_color() const
 {
-	const SDL_Color near_advance_color = {255,255,255,0};
-	const SDL_Color mid_advance_color  = {150,255,255,0};
-	const SDL_Color far_advance_color  = {0,205,205,0};
-	const SDL_Color normal_color	  = {0,160,225,0};
-	const SDL_Color near_amla_color	  = {225,0,255,0};
-	const SDL_Color mid_amla_color	  = {169,30,255,0};
-	const SDL_Color far_amla_color	  = {139,0,237,0};
-	const SDL_Color amla_color		  = {170,0,255,0};
+	const color_t near_advance_color = {255,255,255,0};
+	const color_t mid_advance_color  = {150,255,255,0};
+	const color_t far_advance_color  = {0,205,205,0};
+	const color_t normal_color	  = {0,160,225,0};
+	const color_t near_amla_color	  = {225,0,255,0};
+	const color_t mid_amla_color	  = {169,30,255,0};
+	const color_t far_amla_color	  = {139,0,237,0};
+	const color_t amla_color		  = {170,0,255,0};
 	const bool near_advance = max_experience() - experience() <= game_config::kill_experience;
 	const bool mid_advance  = max_experience() - experience() <= game_config::kill_experience*2;
 	const bool far_advance  = max_experience() - experience() <= game_config::kill_experience*3;
 
-	SDL_Color color=normal_color;
+	color_t color=normal_color;
 	if(advances_to().size()){
 		if(near_advance){
 			color=near_advance_color;

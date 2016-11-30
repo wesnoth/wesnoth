@@ -1496,7 +1496,7 @@ static void draw_background(surface screen, const SDL_Rect& area, const std::str
 
 void display::draw_text_in_hex(const map_location& loc,
 		const drawing_layer layer, const std::string& text,
-		size_t font_size, SDL_Color color, double x_in_hex, double y_in_hex)
+		size_t font_size, color_t color, double x_in_hex, double y_in_hex)
 {
 	if (text.empty()) return;
 
@@ -1742,7 +1742,7 @@ void display::enable_menu(const std::string& item, bool enable)
 	}
 }
 
-void display::announce(const std::string& message, const SDL_Color& color, int lifetime)
+void display::announce(const std::string& message, const color_t& color, int lifetime)
 {
 	font::floating_label flabel(message);
 	flabel.set_font_size(font::SIZE_XLARGE);
@@ -1838,7 +1838,7 @@ void display::draw_minimap()
 	const surface& screen(screen_.getSurface());
 	clip_rect_setter clip_setter(screen, &area);
 
-	SDL_Color back_color = {31,31,23,SDL_ALPHA_OPAQUE};
+	color_t back_color = {31,31,23,SDL_ALPHA_OPAQUE};
 	draw_centered_on_background(minimap_, area, back_color, screen);
 
 	//update the minimap location for mouse and units functions
@@ -1891,25 +1891,25 @@ void display::draw_minimap_units()
 		}
 
 		int side = u->side();
-		SDL_Color col = team::get_minimap_color(side);
+		color_t col = team::get_minimap_color(side);
 
 		if (!preferences::minimap_movement_coding()) {
 
 			if (dc_->teams()[currentTeam_].is_enemy(side)) {
-				col = color_t::from_argb_bytes(game_config::color_info(preferences::enemy_color()).rep()).to_sdl();
+				col = color_t::from_argb_bytes(game_config::color_info(preferences::enemy_color()).rep());
 			} else {
 
 				if (currentTeam_ +1 == static_cast<unsigned>(side)) {
 
 					if (u->movement_left() == u->total_movement())
-						col = color_t::from_argb_bytes(game_config::color_info(preferences::unmoved_color()).rep()).to_sdl();
+						col = color_t::from_argb_bytes(game_config::color_info(preferences::unmoved_color()).rep());
 					else if (u->movement_left() == 0)
-						col = color_t::from_argb_bytes(game_config::color_info(preferences::moved_color()).rep()).to_sdl();
+						col = color_t::from_argb_bytes(game_config::color_info(preferences::moved_color()).rep());
 					else
-						col = color_t::from_argb_bytes(game_config::color_info(preferences::partial_color()).rep()).to_sdl();
+						col = color_t::from_argb_bytes(game_config::color_info(preferences::partial_color()).rep());
 
 				} else
-					col = color_t::from_argb_bytes(game_config::color_info(preferences::allied_color()).rep()).to_sdl();
+					col = color_t::from_argb_bytes(game_config::color_info(preferences::allied_color()).rep());
 			}
 		}
 

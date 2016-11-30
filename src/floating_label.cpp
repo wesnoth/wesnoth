@@ -81,7 +81,7 @@ surface floating_label::create_surface()
 {
 	if (surf_.null()) {
 		font::pango_text text;
-		text.set_foreground_color(color_t(color_));
+		text.set_foreground_color(color_);
 		text.set_font_size(font_size_);
 		text.set_maximum_width(width_ < 0 ? clip_rect_.w : width_);
 		text.set_maximum_height(height_ < 0 ? clip_rect_.h : height_, true);

@@ -665,7 +665,7 @@ struct dialog_tester<editor_edit_label>
 	std::string label = "Label text to modify";
 	std::string category = "test";
 	bool immutable = false, fog = false, shroud = false;
-	SDL_Color color;
+	color_t color;
 	editor_edit_label* create()
 	{
 		return new editor_edit_label(label, immutable, fog, shroud, color, category);
