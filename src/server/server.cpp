@@ -31,6 +31,7 @@
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
 #include "util.hpp"
+#include "utils/iterable_pair.hpp"
 
 #include "server/game.hpp"
 #include "server/metrics.hpp"
