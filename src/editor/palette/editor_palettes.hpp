@@ -30,7 +30,7 @@ public:
 
 	editor_palette(editor_display &gui, const config& /*cfg*/
 	             , size_t item_size, size_t item_width, editor_toolkit &toolkit)
-		: tristate_palette(gui)
+		: tristate_palette(gui.video())
 		, groups_()
 		, gui_(gui)
 		, item_size_(item_size)

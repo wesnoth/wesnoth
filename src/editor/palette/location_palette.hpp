@@ -18,6 +18,8 @@
 #include "common_palette.hpp"
 #include "tristate_button.hpp"
 
+#include <boost/ptr_container/ptr_vector.hpp>
+
 class location_palette_item;
 class location_palette_button;
 
@@ -94,8 +96,6 @@ private:
 	/** Return the maximum number of items shown at the same time. */
 	int num_visible_items();
 protected:
-
-	editor_display &gui_;
 
 	int item_size_;
 	// the heigh of a row, the size of an item including borders.

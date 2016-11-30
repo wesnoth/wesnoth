@@ -15,22 +15,26 @@
 #ifndef COMMON_PALETTES_H_INCLUDED
 #define COMMON_PALETTES_H_INCLUDED
 
-#include "display.hpp"
-#include "gui/widgets/widget.hpp"
+#include "config.hpp"
+#include "tstring.hpp"
+#include "widgets/widget.hpp"
 
 struct SDL_Rect;
-class config;
+class CVideo;
+
 namespace editor {
-class editor_display;
 
 /**
  * Stores the info about the groups in a nice format.
  */
 struct item_group
 {
-	item_group(const config& cfg):
-		id(cfg["id"]), name(cfg["name"].t_str()),
-		icon(cfg["icon"]), core(cfg["core"].to_bool()) {}
+	item_group(const config& cfg)
+		: id(cfg["id"])
+		, name(cfg["name"].t_str())
+		, icon(cfg["icon"])
+		, core(cfg["core"].to_bool())
+	{}
 
 	std::string id;
 	t_string name;
@@ -43,7 +47,7 @@ class common_palette  : public gui::widget {
 
 public:
 
-	common_palette(display& gui) : gui::widget(gui.video(), true) {}
+	common_palette(CVideo& video) : gui::widget(video, true) {}
 
 	virtual ~common_palette() {}
 
@@ -89,8 +93,8 @@ public:
 class tristate_palette : public common_palette
 {
 public:
-	tristate_palette(display &gui)
-		: common_palette(gui)
+	tristate_palette(CVideo& video)
+		: common_palette(video)
 	{
 	}
 	virtual void select_fg_item(const std::string& item_id) = 0;

@@ -153,8 +153,7 @@ protected:
 namespace editor {
 location_palette::location_palette(editor_display &gui, const config& /*cfg*/,
                                    editor_toolkit &toolkit)
-		: common_palette(gui)
-		, gui_(gui)
+		: common_palette(gui.video())
 		, item_size_(20)
 		//TODO avoid magic number
 		, item_space_(20 + 3)
@@ -192,10 +191,10 @@ sdl_handler_vector location_palette::handler_members()
 void location_palette::hide(bool hidden) {
 	widget::hide(hidden);
 	if (!hidden) {
-		help_handle_ = gui_.video().set_help_string(get_help_string());
+		help_handle_ = disp_.video().set_help_string(get_help_string());
 	}
 	else {
-		gui_.video().clear_help_string(help_handle_);
+		disp_.video().clear_help_string(help_handle_);
 	}
 	for (auto& w : handler_members()) {
 		static_cast<gui::widget&>(*w).hide(hidden);
@@ -268,7 +267,7 @@ void location_palette::adjust_size(const SDL_Rect& target)
 	const int space_for_items = bottom - target.y;
 	const int items_fitting = space_for_items / item_space_;
 	if (num_visible_items() != items_fitting) {
-		location_palette_item lpi(gui_.video(), *this);
+		location_palette_item lpi(disp_.video(), *this);
 		//Why does this need a pointer to a non-const as second paraeter?
 		//TODO: we should write our own ptr_vector class, boost::ptr_vector has a lot of flaws.
 		buttons_.resize(items_fitting, &lpi);
@@ -276,8 +275,8 @@ void location_palette::adjust_size(const SDL_Rect& target)
 
 	set_location(target);
 	set_dirty(true);
-	gui_.video().clear_help_string(help_handle_);
-	help_handle_ = gui_.video().set_help_string(get_help_string());
+	disp_.video().clear_help_string(help_handle_);
+	help_handle_ = disp_.video().set_help_string(get_help_string());
 }
 
 void location_palette::select_item(const std::string& item_id)
@@ -286,8 +285,8 @@ void location_palette::select_item(const std::string& item_id)
 		selected_item_ = item_id;
 		set_dirty();
 	}
-	gui_.video().clear_help_string(help_handle_);
-	help_handle_ = gui_.video().set_help_string(get_help_string());
+	disp_.video().clear_help_string(help_handle_);
+	help_handle_ = disp_.video().set_help_string(get_help_string());
 }
 
 int location_palette::num_items()
@@ -306,15 +305,15 @@ bool location_palette::is_selected_item(const std::string& id)
 
 void location_palette::draw_contents()
 {
-	toolkit_.set_mouseover_overlay(gui_);
+	toolkit_.set_mouseover_overlay(disp_);
 	int y = palette_y_;
 	const int x = palette_x_;
 	const int starting = items_start_;
 	int ending = std::min<int>(starting + num_visible_items(), num_items());
-	std::shared_ptr<gui::button> upscroll_button = gui_.find_action_button("upscroll-button-editor");
+	std::shared_ptr<gui::button> upscroll_button = disp_.find_action_button("upscroll-button-editor");
 	if (upscroll_button)
 		upscroll_button->enable(starting != 0);
-	std::shared_ptr<gui::button> downscroll_button = gui_.find_action_button("downscroll-button-editor");
+	std::shared_ptr<gui::button> downscroll_button = disp_.find_action_button("downscroll-button-editor");
 	if (downscroll_button)
 		downscroll_button->enable(ending != num_items());
 
@@ -371,7 +370,7 @@ std::vector<std::string> location_palette::action_pressed() const
 	return res;
 }
 
-location_palette::~location_palette() 
+location_palette::~location_palette()
 {
 }
 

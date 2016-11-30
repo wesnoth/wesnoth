@@ -25,6 +25,7 @@
 #include "image.hpp"
 #include "log.hpp"
 #include "font/marked-up_text.hpp"
+#include "sdl/rect.hpp"
 #include "serialization/string_utils.hpp"
 #include "sound.hpp"
 #include "video.hpp"
