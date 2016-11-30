@@ -20,19 +20,32 @@
 #include "global.hpp"
 
 #include "tstring.hpp"
+#include "util.hpp"
 
 #include <vector>
 
 class config;
 
-/** Small struct to store and manipulate ToD colors */
-
-struct tod_color{
-	explicit tod_color(int red = 0, int green = 0, int blue = 0) : r(red), g(green), b(blue) {}
-	bool operator==(const tod_color& o) const { return r == o.r && g == o.g && b == o.b; }
-	bool is_zero() const { return r == 0 && g == 0 && b == 0; }
-	bool operator!=(const tod_color& o) const { return !operator==(o); }
-	tod_color operator+(const tod_color& o) const { return tod_color(r+o.r, g+o.g, b+o.b);}
+/** Small struct to store and manipulate ToD color adjusts. */
+// This is a color delta, so do not replace with color_t!
+struct tod_color {
+	explicit tod_color(int red = 0, int green = 0, int blue = 0)
+		: r(util::clamp(red, -255, 255))
+		, g(util::clamp(green, -255, 255))
+		, b(util::clamp(blue, -255, 255))
+	{}
+	bool operator==(const tod_color& o) const {
+		return r == o.r && g == o.g && b == o.b;
+	}
+	bool is_zero() const {
+		return r == 0 && g == 0 && b == 0;
+	}
+	bool operator!=(const tod_color& o) const {
+		return !operator==(o);
+	}
+	tod_color operator+(const tod_color& o) const {
+		return tod_color(r + o.r, g + o.g, b + o.b);
+	}
 
 	int r,g,b;
 };
