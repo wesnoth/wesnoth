@@ -15,20 +15,13 @@
 #ifndef GUI_DIALOGS_CUSTOM_TOD_HPP_INCLUDED
 #define GUI_DIALOGS_CUSTOM_TOD_HPP_INCLUDED
 
+#include "display.hpp"
 #include "time_of_day.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
-#include "editor/editor_display.hpp"
 
 #include <vector>
-
-namespace editor
-{
-
-class editor_display;
-
-} // namespace editor
 
 namespace gui2
 {
