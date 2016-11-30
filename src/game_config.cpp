@@ -295,10 +295,10 @@ namespace game_config
 			}
 		};
 
-		parse_config_color_list("red_green_scale",       red_green_scale,       {255, 255, 255, 0});
-		parse_config_color_list("red_green_scale_text",  red_green_scale_text,  {255, 255, 255, 0});
-		parse_config_color_list("blue_white_scale",      blue_white_scale,      {0  , 0  , 255, 0});
-		parse_config_color_list("blue_white_scale_text", blue_white_scale_text, {0  , 0  , 255, 0});
+		parse_config_color_list("red_green_scale",       red_green_scale,       {255, 255, 255});
+		parse_config_color_list("red_green_scale_text",  red_green_scale_text,  {255, 255, 255});
+		parse_config_color_list("blue_white_scale",      blue_white_scale,      {0  , 0  , 255});
+		parse_config_color_list("blue_white_scale_text", blue_white_scale_text, {0  , 0  , 255});
 
 		server_list.clear();
 		for (const config &server : v.child_range("server"))
