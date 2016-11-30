@@ -94,7 +94,7 @@ color_t color_t::from_argb_bytes(uint32_t c)
 	};
 }
 
-std::string color_t::to_hex_string()
+std::string color_t::to_hex_string() const
 {
 	std::ostringstream h;
 
@@ -107,7 +107,7 @@ std::string color_t::to_hex_string()
 	return h.str();
 }
 
-std::string color_t::to_rgba_string()
+std::string color_t::to_rgba_string() const
 {
 	std::ostringstream color;
 
@@ -116,7 +116,7 @@ std::string color_t::to_rgba_string()
 	return color.str();
 }
 
-std::string color_t::to_rgb_string()
+std::string color_t::to_rgb_string() const
 {
 	std::ostringstream color;
 
