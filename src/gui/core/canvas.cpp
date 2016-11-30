@@ -693,7 +693,7 @@ rectangle_shape::rectangle_shape(const config& cfg)
 	, border_color_(decode_color(cfg["border_color"]))
 	, fill_color_(decode_color(cfg["fill_color"]))
 {
-	if(border_color_.empty()) {
+	if(border_color_.null()) {
 		border_thickness_ = 0;
 	}
 
@@ -743,7 +743,7 @@ void rectangle_shape::draw(surface& canvas,
 	}
 
 	// Fill the background, if applicable
-	if(!fill_color_.empty() && w && h) {
+	if(!fill_color_.null() && w && h) {
 		set_renderer_color(renderer, fill_color_);
 
 		SDL_Rect area {

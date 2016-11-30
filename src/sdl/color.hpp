@@ -189,9 +189,9 @@ struct color_t
 	/** Alpha value */
 	uint8_t a;
 
-	bool empty(const bool check_alpha = true) const
+	bool null() const
 	{
-		return r ==0 && g == 0 && b == 0 && (check_alpha ? a == 0 : true);
+		return r == 0 && g == 0 && b == 0 && a == 0;
 	}
 
 	bool operator==(const color_t& c) const
@@ -204,7 +204,7 @@ struct color_t
 		return !(*this == c);
 	}
 
-	color_t plus_clipped(const color_t& c) const
+	color_t blend_add(const color_t& c) const
 	{
 		// Do some magic to detect integer overflow
 		// We want overflows to max out the component instead of wrapping.
