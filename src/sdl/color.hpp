@@ -210,6 +210,16 @@ struct color_t
 			static_cast<uint8_t>(a > 255 - c.a ? 255 : a + c.a),
 		};
 	}
+
+	color_t blend_lighten(const color_t& c)
+	{
+		return {
+			std::max<uint8_t>(r, c.r),
+			std::max<uint8_t>(g, c.g),
+			std::max<uint8_t>(b, c.b),
+			std::max<uint8_t>(a, c.a),
+		};
+	}
 };
 
 inline std::ostream& operator<<(std::ostream& s, const color_t& c)
