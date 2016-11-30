@@ -53,10 +53,6 @@
 
 #include <SDL_image.h>
 
-#ifdef __SUNPRO_CC
-// GCC doesn't have hypot in cmath so include it for Sun Studio
-#include <math.h>
-#endif
 #include <cmath>
 
 // Includes for bug #17573
