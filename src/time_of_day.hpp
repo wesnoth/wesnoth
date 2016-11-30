@@ -20,9 +20,25 @@
 #include "global.hpp"
 
 #include "tstring.hpp"
-#include "sdl/color.hpp"
 
 #include <vector>
+
+class config;
+
+/** Small struct to store and manipulate ToD colors */
+
+struct tod_color{
+	explicit tod_color(int red = 0, int green = 0, int blue = 0) : r(red), g(green), b(blue) {}
+	bool operator==(const tod_color& o) const { return r == o.r && g == o.g && b == o.b; }
+	bool is_zero() const { return r == 0 && g == 0 && b == 0; }
+	bool operator!=(const tod_color& o) const { return !operator==(o); }
+	tod_color operator+(const tod_color& o) const { return tod_color(r+o.r, g+o.g, b+o.b);}
+
+	int r,g,b;
+};
+
+std::ostream &operator<<(std::ostream &s, const tod_color& tod);
+
 
 /**
  * Object which defines a time of day
@@ -74,7 +90,7 @@ struct time_of_day
 	 * The color modifications that should be made
 	 * to the game board to reflect the time of day.
 	 */
-	color_t color;
+	tod_color color;
 
 	/**
 	 * List of "ambient" sounds associated with this time_of_day,

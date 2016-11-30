@@ -643,7 +643,7 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 				{
 					context_manager_->get_map_context().set_starting_time(index);
 					const tod_manager* tod = context_manager_->get_map_context().get_time_manager();
-					color_t col = tod->times()[index].color;
+					tod_color col = tod->times()[index].color;
 					image::set_color_adjustment(col.r, col.g, col.b);
 					return true;
 				}
@@ -669,7 +669,7 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 					std::advance(iter, index);
 					context_manager_->get_map_context().replace_schedule(iter->second.second);
 					const tod_manager* tod = context_manager_->get_map_context().get_time_manager();
-					color_t col = tod->times()[0].color;
+					tod_color col = tod->times()[0].color;
 					image::set_color_adjustment(col.r, col.g, col.b);
 					return true;
 				}

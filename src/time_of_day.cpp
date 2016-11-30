@@ -20,6 +20,12 @@
 
 #include <iostream>
 
+std::ostream &operator<<(std::ostream &s, const tod_color& c){
+	s << c.r << "," << c.g << "," << c.b;
+	return s;
+}
+
+
 time_of_day::time_of_day(const config& cfg):
 	lawful_bonus(cfg["lawful_bonus"]),
 	bonus_modified(0),

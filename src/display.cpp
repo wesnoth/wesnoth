@@ -417,12 +417,12 @@ const tod_manager & display::get_tod_man() const
 
 void display::update_tod() {
 	const time_of_day& tod = get_time_of_day();
-	color_t col = color_adjust_.plus_clipped(tod.color);
+	tod_color col = color_adjust_ + tod.color;
 	image::set_color_adjustment(col.r, col.g, col.b);
 }
 
 void display::adjust_color_overlay(int r, int g, int b) {
-	color_adjust_ = color_t(r, g, b);
+	color_adjust_ = tod_color(r, g, b);
 	update_tod();
 }
 
@@ -1117,18 +1117,18 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 
 		if(lt.empty()) {
 			//color the full hex before adding transitions
-			color_t col = tod.color.plus_clipped(color_adjust_);
+			tod_color col = tod.color + color_adjust_;
 			lt = image::get_light_string(6, col.r, col.g, col.b);
 		}
 
 		// add the directional transitions
-		color_t acol = atod.color.plus_clipped(color_adjust_);
+		tod_color acol = atod.color + color_adjust_;
 		lt += image::get_light_string(d, acol.r, acol.g, acol.b);
 	}
 
 	if(lt.empty()){
-		color_t col = tod.color.plus_clipped(color_adjust_);
-		if(!col.empty(false)){
+		tod_color col = tod.color + color_adjust_;
+		if(!col.is_zero()){
 			// no real lightmap needed but still color the hex
 			lt = image::get_light_string(-1, col.r, col.g, col.b);
 		}
@@ -2606,13 +2606,13 @@ void display::draw_hex(const map_location& loc) {
 
 		if(have_overlays) {
 			const time_of_day& loc_tod = get_time_of_day(loc);
-			const color_t& loc_col = loc_tod.color;
+			const tod_color& loc_col = loc_tod.color;
 
 			if(loc_col != get_time_of_day().color) {
 				// Continue with local light. image::get_lighted_image
 				// doesn't take the image::TOD_COLORED type, so we need
 				// to apply the color_adjust_ ourselves.
-				color_t col = loc_col.plus_clipped(color_adjust_);
+				tod_color col = loc_col + color_adjust_;
 				lt = image::get_light_string(-1, col.r, col.g, col.b);
 			}
 		}
