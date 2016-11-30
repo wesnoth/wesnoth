@@ -188,6 +188,11 @@ struct color_t
 	/** Alpha value */
 	uint8_t a;
 
+	bool empty(const bool check_alpha = true) const
+	{
+		return r ==0 && g == 0 && b == 0 && (check_alpha ? a == 0 : true);
+	}
+
 	bool operator==(const color_t& c) const
 	{
 		return r == c.r && g == c.g && b == c.b && a == c.a;
