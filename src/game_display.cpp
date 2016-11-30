@@ -436,7 +436,7 @@ void game_display::draw_movement_info(const map_location& loc)
 			std::stringstream def_text;
 			def_text << def << "%";
 
-			color_t color = color_t::from_argb_bytes(game_config::red_to_green(def, false));
+			color_t color = game_config::red_to_green(def, false);
 
 			// simple mark (no turn point) use smaller font
 			int def_font = w->second.turns > 0 ? 18 : 16;
@@ -481,7 +481,7 @@ void game_display::draw_movement_info(const map_location& loc)
 			std::stringstream def_text;
 			def_text << def << "%";
 
-			color_t color = color_t::from_argb_bytes(game_config::red_to_green(def, false));
+			color_t color = game_config::red_to_green(def, false);
 
 			// use small font
 			int def_font = 16;

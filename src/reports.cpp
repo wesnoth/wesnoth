@@ -519,7 +519,7 @@ static config unit_defense(reports::context & rc, const unit* u, const map_locat
 
 	const t_translation::terrain_code &terrain = map[displayed_unit_hex];
 	int def = 100 - u->defense_modifier(terrain);
-	color_t color = color_t::from_argb_bytes(game_config::red_to_green(def));
+	color_t color = game_config::red_to_green(def);
 	str << span_color(color) << def << '%' << naps;
 	tooltip << _("Terrain: ") << "<b>" << map.get_terrain_info(terrain).description() << "</b>\n";
 
@@ -535,7 +535,7 @@ static config unit_defense(reports::context & rc, const unit* u, const map_locat
 				revert = false;
 			} else {
 				int t_def = 100 - u->defense_modifier(t);
-				color_t t_color = color_t::from_argb_bytes(game_config::red_to_green(t_def));
+				color_t t_color = game_config::red_to_green(t_def);
 				tooltip << '\t' << map.get_terrain_info(t).description() << ": "
 					<< span_color(t_color) << t_def << '%' << naps
 					<< (revert ? _("maximum^max.") : _("minimum^min.")) << '\n';
@@ -906,7 +906,7 @@ static config unit_weapons(reports::context & rc, const unit *attacker, const ma
 				<< _("Damage: ") << "<b>" << "0" << "</b>\n";
 		}
 
-		color_t chance_color = color_t::from_argb_bytes(game_config::red_to_green(chance_to_hit));
+		color_t chance_color = game_config::red_to_green(chance_to_hit);
 
 		// Total damage.
 		str << "  " << span_color(dmg_color) << total_damage << naps << span_color(font::weapon_color)
@@ -965,7 +965,7 @@ static config unit_weapons(reports::context & rc, const unit *attacker, const ma
 			char hp_buf[10];
 			format_hp(hp_buf, hp);
 
-			color_t prob_color = color_t::from_argb_bytes(game_config::blue_to_white(prob * 100.0, true));
+			color_t prob_color = game_config::blue_to_white(prob * 100.0, true);
 
 			str		<< span_color(font::weapon_details_color) << "  " << "  "
 					<< span_color(u->hp_color(hp)) << hp_buf << naps

@@ -121,11 +121,11 @@ namespace game_config
 	std::string shroud_prefix, fog_prefix;
 
 	std::string flag_rgb, unit_rgb;
-	std::vector<uint32_t> red_green_scale;
-	std::vector<uint32_t> red_green_scale_text;
+	std::vector<color_t> red_green_scale;
+	std::vector<color_t> red_green_scale_text;
 
-	static std::vector<uint32_t> blue_white_scale;
-	static std::vector<uint32_t> blue_white_scale_text;
+	static std::vector<color_t> blue_white_scale;
+	static std::vector<color_t> blue_white_scale_text;
 
 	double hp_bar_scaling = 0.666;
 	double xp_bar_scaling = 0.5;
@@ -277,37 +277,28 @@ namespace game_config
 			unit_rgb = a->str();
 		}
 
-		std::string color_string = v["red_green_scale"].str();
-		if(!string2rgb(color_string, red_green_scale)) {
-			ERR_NG << "can't parse color string red_green_scale, ignoring: " << color_string << std::endl;
-		}
-		if (red_green_scale.empty()) {
-			red_green_scale.push_back(0x00FFFF00);
-		}
+		const auto parse_config_color_list = [&](
+				const std::string& key,
+				std::vector<color_t>& color_vec,
+				const color_t fallback)
+		{
+			std::vector<std::string> temp = utils::split(v[key].str());
 
-		color_string = v["red_green_scale_text"].str();
-		if(!string2rgb(color_string, red_green_scale_text)) {
-			ERR_NG << "can't parse color string red_green_scale_text, ignoring: " << color_string << std::endl;
-		}
-		if (red_green_scale_text.empty()) {
-			red_green_scale_text.push_back(0x00FFFF00);
-		}
+			for(const auto& s : temp) {
+				try {
+					color_vec.push_back(color_t::from_hex_string(s));
+					std::cerr << key << " :" << color_vec.back() << std::endl;
+				} catch(std::invalid_argument& e) {
+					ERR_NG << "Error parsing color list '" << key << "'.\n" << e.what() << std::endl;
+					color_vec.push_back(fallback);
+				}
+			}
+		};
 
-		color_string = v["blue_white_scale"].str();
-		if(!string2rgb(color_string, blue_white_scale)) {
-			ERR_NG << "can't parse color string blue_white_scale, ignoring: " << color_string << std::endl;
-		}
-		if (blue_white_scale.empty()) {
-			blue_white_scale.push_back(0x00FFFFFF);
-		}
-
-		color_string = v["blue_white_scale_text"].str();
-		if(!string2rgb(color_string, blue_white_scale_text)) {
-			ERR_NG << "can't parse color string blue_white_scale_text, ignoring: " << color_string << std::endl;
-		}
-		if (blue_white_scale_text.empty()) {
-			blue_white_scale_text.push_back(0x00FFFFFF);
-		}
+		parse_config_color_list("red_green_scale",       red_green_scale,       {255, 255, 255, 0});
+		parse_config_color_list("red_green_scale_text",  red_green_scale_text,  {255, 255, 255, 0});
+		parse_config_color_list("blue_white_scale",      blue_white_scale,      {0  , 0  , 255, 0});
+		parse_config_color_list("blue_white_scale_text", blue_white_scale_text, {0  , 0  , 255, 0});
 
 		server_list.clear();
 		for (const config &server : v.child_range("server"))
@@ -423,16 +414,16 @@ namespace game_config
 		return i->second;
 	}
 
-	uint32_t red_to_green(int val, bool for_text){
-		const std::vector<uint32_t>& color_scale =
+	color_t red_to_green(int val, bool for_text){
+		const std::vector<color_t>& color_scale =
 				for_text ? red_green_scale_text : red_green_scale;
 		val = std::max<int>(0, std::min<int>(val, 100));
 		int lvl = (color_scale.size()-1) * val / 100;
 		return color_scale[lvl];
 	}
 
-	uint32_t blue_to_white(int val, bool for_text){
-		const std::vector<uint32_t>& color_scale =
+	color_t blue_to_white(int val, bool for_text){
+		const std::vector<color_t>& color_scale =
 				for_text ? blue_white_scale_text : blue_white_scale;
 		val = std::max<int>(0, std::min<int>(val, 100));
 		int lvl = (color_scale.size()-1) * val / 100;

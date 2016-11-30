@@ -134,10 +134,8 @@ void unit_attack::pre_show(window& window)
 			continue;
 		}
 
-		const color_t a_cth_color =
-			color_t::from_argb_bytes(game_config::red_to_green(attacker.chance_to_hit));
-		const color_t d_cth_color =
-			color_t::from_argb_bytes(game_config::red_to_green(defender.chance_to_hit));
+		const color_t a_cth_color = game_config::red_to_green(attacker.chance_to_hit);
+		const color_t d_cth_color = game_config::red_to_green(defender.chance_to_hit);
 
 		const std::string attw_name = !attacker_weapon.name().empty() ? attacker_weapon.name() : " ";
 		const std::string defw_name = !defender_weapon.name().empty() ? defender_weapon.name() : " ";

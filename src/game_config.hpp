@@ -18,6 +18,7 @@ class config;
 class version_info;
 class color_range;
 
+#include "sdl/color.hpp"
 #include "tstring.hpp"
 
 #include <vector>
@@ -127,8 +128,8 @@ namespace game_config
 	extern double hex_semi_brightening;
 
 	extern std::string flag_rgb, unit_rgb;
-	extern std::vector<uint32_t> red_green_scale;
-	extern std::vector<uint32_t> red_green_scale_text;
+	extern std::vector<color_t> red_green_scale;
+	extern std::vector<color_t> red_green_scale_text;
 
 	extern std::vector<std::string> foot_speed_prefix;
 	extern std::string foot_teleport_enter, foot_teleport_exit;
@@ -175,8 +176,8 @@ namespace game_config
 	 * red_green_scale and red_green_scale_text
 	 */
 
-	uint32_t red_to_green(int val, bool for_text = true);
-	uint32_t blue_to_white(int val, bool for_text = true);
+	color_t red_to_green(int val, bool for_text = true);
+	color_t blue_to_white(int val, bool for_text = true);
 
 	extern const version_info wesnoth_version;
 	extern const version_info min_savegame_version;
