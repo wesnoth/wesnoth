@@ -1060,7 +1060,7 @@ private:
 	/** Maps the list of arrows for each location */
 	arrows_map_t arrows_map_;
 
-	tod_color color_adjust_;
+	color_t color_adjust_;
 
 	bool dirty_;
 

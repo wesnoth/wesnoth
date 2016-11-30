@@ -20,12 +20,6 @@
 
 #include <iostream>
 
-std::ostream &operator<<(std::ostream &s, const tod_color& c){
-	s << c.r << "," << c.g << "," << c.b;
-	return s;
-}
-
-
 time_of_day::time_of_day(const config& cfg):
 	lawful_bonus(cfg["lawful_bonus"]),
 	bonus_modified(0),
@@ -39,15 +33,15 @@ time_of_day::time_of_day(const config& cfg):
 }
 
 time_of_day::time_of_day()
-: lawful_bonus(0)
-, bonus_modified(0)
-, image()
-, name(N_("Stub Time of Day"))
-, description(N_("This Time of Day is only a Stub!"))
-, id("nulltod")
-, image_mask()
-, color(0,0,0)
-, sounds()
+	: lawful_bonus(0)
+	, bonus_modified(0)
+	, image()
+	, name(N_("Stub Time of Day"))
+	, description(N_("This Time of Day is only a Stub!"))
+	, id("nulltod")
+	, image_mask()
+	, color(0,0,0)
+	, sounds()
 {
 }
 
