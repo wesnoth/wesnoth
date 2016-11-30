@@ -5,6 +5,8 @@ configuration:
  - Release
  - Debug
 platform: win32
+skip_branch_with_pr: true
+shallow_clone: true
 before_build:
   - cd ..
   - ps: wget https://github.com/aquileia/external/archive/VC14.zip -O VC14.zip
