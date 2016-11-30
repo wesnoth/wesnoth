@@ -32,13 +32,14 @@ typedef std::map< std::string, preproc_define > preproc_map;
 
 struct preproc_define
 {
-	preproc_define() : value(), arguments(), textdomain(), linenum(0), location() {}
-	explicit preproc_define(const std::string& val) : value(val), arguments(), textdomain(), linenum(0), location() {}
-	preproc_define(const std::string& val, std::vector< std::string > const &args,
+	preproc_define() : value(), arguments(), optional_arguments(), textdomain(), linenum(0), location() {}
+	explicit preproc_define(const std::string& val) : value(val), arguments(), optional_arguments(), textdomain(), linenum(0), location() {}
+	preproc_define(const std::string& val, const std::vector< std::string > &args, const std::map< std::string, std::string> &optargs,
 	               const std::string& domain, int line, const std::string& loc)
-		: value(val), arguments(args), textdomain(domain), linenum(line), location(loc) {}
+		: value(val), arguments(args), optional_arguments(optargs), textdomain(domain), linenum(line), location(loc) {}
 	std::string value;
 	std::vector< std::string > arguments;
+	std::map< std::string, std::string> optional_arguments;
 	std::string textdomain;
 	int linenum;
 	std::string location;

@@ -227,6 +227,8 @@ Version 1.13.6:
      supported) keys
    * Individual [terrain_graphics] rotations can now be skipped entirely by
      using "skip" in the rotations= list.
+   * WML macros can now include optional arguments with default values that the
+     caller can override.
  * Miscellaneous and bug fixes:
    * A new way to make units invulnerable for debugging: select the unit and type
      ";unit invulnerable=yes". This method operates by decreasing the opponent's hit
