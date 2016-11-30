@@ -16,6 +16,7 @@
 #define TEXT_HPP_INCLUDED
 
 #include "font/font_options.hpp"
+#include "sdl/color.hpp"
 #include "sdl/utils.hpp"
 #include "serialization/unicode_types.hpp"
 
@@ -224,9 +225,7 @@ public:
 
 	pango_text& set_font_style(const FONT_STYLE font_style);
 
-	pango_text& set_foreground_color(const Uint32 color);
-
-	pango_text& set_foreground_color(const SDL_Color color);
+	pango_text& set_foreground_color(const color_t& color);
 
 	pango_text& set_maximum_width(int width);
 
@@ -284,7 +283,7 @@ private:
 	FONT_STYLE font_style_;
 
 	/** The foreground color. */
-	Uint32 foreground_color_;
+	color_t foreground_color_;
 
 	/**
 	 * The maximum width of the text.

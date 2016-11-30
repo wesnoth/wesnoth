@@ -56,7 +56,7 @@ pango_text::pango_text()
 	, font_class_(font::FONT_SANS_SERIF)
 	, font_size_(14)
 	, font_style_(STYLE_NORMAL)
-	, foreground_color_(0xFFFFFFFF) // solid white
+	, foreground_color_() // solid white
 	, maximum_width_(-1)
 	, characters_per_line_(0)
 	, maximum_height_(-1)
@@ -357,7 +357,7 @@ pango_text& pango_text::set_font_style(const pango_text::FONT_STYLE font_style)
 	return *this;
 }
 
-pango_text& pango_text::set_foreground_color(const Uint32 color)
+pango_text& pango_text::set_foreground_color(const color_t& color)
 {
 	if(color != foreground_color_) {
 		foreground_color_ = color;
@@ -365,11 +365,6 @@ pango_text& pango_text::set_foreground_color(const Uint32 color)
 	}
 
 	return *this;
-}
-
-pango_text &pango_text::set_foreground_color(const SDL_Color color)
-{
-	return this->set_foreground_color((color.r << 24) + (color.g << 16) + (color.b << 8) + color.a);
 }
 
 pango_text& pango_text::set_maximum_width(int width)
@@ -671,10 +666,11 @@ void pango_text::rerender(const bool force) const
 
 		/* set color (used for foreground). */
 		cairo_set_source_rgba(cr,
-			 (foreground_color_ >> 24)         / 256.0,
-			((foreground_color_ >> 16) & 0xFF) / 256.0,
-			((foreground_color_ >> 8)  & 0xFF) / 256.0,
-			(foreground_color_         & 0xFF) / 256.0);
+			foreground_color_.r / 256.0,
+			foreground_color_.g / 256.0,
+			foreground_color_.b / 256.0,
+			foreground_color_.a / 256.0
+		);
 
 		pango_cairo_show_layout(cr, layout_);
 

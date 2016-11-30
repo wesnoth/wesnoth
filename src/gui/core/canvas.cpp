@@ -1335,7 +1335,7 @@ void text_shape::draw(surface& canvas,
 			.set_font_size(font_size_)
 			.set_font_style(font_style_)
 			.set_alignment(text_alignment_(variables))
-			.set_foreground_color(color_.to_sdl())
+			.set_foreground_color(color_)
 			.set_maximum_width(maximum_width_(variables))
 			.set_maximum_height(maximum_height_(variables), true)
 			.set_ellipse_mode(
