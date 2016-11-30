@@ -17,6 +17,7 @@
 #include <cstdint>
 #include <ostream>
 #include <string>
+#include <algorithm> // for max
 
 #include <SDL.h>
 
