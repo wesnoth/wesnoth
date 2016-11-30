@@ -87,11 +87,6 @@ static void set_renderer_color(SDL_Renderer* renderer, color_t color)
 	SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
 }
 
-static bool color_empty(const color_t& color)
-{
-	return color.r == 0 && color.g == 0 && color.b == 0 && color.a == 0;
-}
-
 /**
  * Draws a line on a surface.
  *
@@ -698,7 +693,7 @@ rectangle_shape::rectangle_shape(const config& cfg)
 	, border_color_(decode_color(cfg["border_color"]))
 	, fill_color_(decode_color(cfg["fill_color"]))
 {
-	if(color_empty(border_color_)) {
+	if(border_color_.empty()) {
 		border_thickness_ = 0;
 	}
 
@@ -748,7 +743,7 @@ void rectangle_shape::draw(surface& canvas,
 	}
 
 	// Fill the background, if applicable
-	if(!color_empty(fill_color_) && w && h) {
+	if(!fill_color_.empty() && w && h) {
 		set_renderer_color(renderer, fill_color_);
 
 		SDL_Rect area {
