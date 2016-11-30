@@ -506,7 +506,7 @@ int cs_modification::get_b() const
 
 surface blend_modification::operator()(const surface& src) const
 {
-	return blend_surface(src, a_, display::rgb(r_, g_, b_));
+	return blend_surface(src, a_, color_t(r_, g_, b_).to_argb_bytes());
 
 }
 

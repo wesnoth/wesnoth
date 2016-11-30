@@ -348,7 +348,7 @@ frame_builder::frame_builder(const config& cfg,const std::string& frame_string) 
 	std::vector<std::string> color = utils::split(cfg[frame_string + "text_color"]);
 	if (color.size() == 3) {
 		try {
-			text_color_ = display::rgb(std::stoi(color[0]), std::stoi(color[1]), std::stoi(color[2]));
+			text_color_ = color_t(std::stoi(color[0]), std::stoi(color[1]), std::stoi(color[2])).to_argb_bytes();
 		} catch(std::invalid_argument) {
 			ERR_NG << "Invalid RGB color value in unit animation: " << color[0] << ", " << color[1] << ", " << color[2] << "\n";
 		}
@@ -370,7 +370,7 @@ frame_builder::frame_builder(const config& cfg,const std::string& frame_string) 
 	color = utils::split(cfg[frame_string + "blend_color"]);
 	if (color.size() == 3) {
 		try {
-			blend_with_ = display::rgb(std::stoi(color[0]), std::stoi(color[1]), std::stoi(color[2]));
+			blend_with_ = color_t(std::stoi(color[0]), std::stoi(color[1]), std::stoi(color[2])).to_argb_bytes();
 		} catch(std::invalid_argument) {
 			ERR_NG << "Invalid RGB color value in unit animation: " << color[0] << ", " << color[1] << ", " << color[2] << "\n";
 		}
@@ -945,7 +945,10 @@ const frame_parameters unit_frame::merge_parameters(int current_time,const frame
 
 	/** engine provide a blend color for poisoned units */
 	result.blend_with = current_val.blend_with?current_val.blend_with:animation_val.blend_with;
-	if(primary&& engine_val.blend_with) result.blend_with = display::max_rgb(engine_val.blend_with,result.blend_with);
+	if(primary&& engine_val.blend_with) result.blend_with =
+		color_t::from_argb_bytes(engine_val.blend_with)
+			.blend_lighten(color_t::from_argb_bytes(result.blend_with))
+			.to_argb_bytes();
 
 	/** engine provide a blend color for poisoned units */
 	result.blend_ratio = current_val.blend_ratio?current_val.blend_ratio:animation_val.blend_ratio;

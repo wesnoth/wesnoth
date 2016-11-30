@@ -25,6 +25,7 @@
 #include "log.hpp"
 #include "mouse_events.hpp"
 #include "resources.hpp"
+#include "sdl/color.hpp"
 #include "sound.hpp"
 #include "terrain/filter.hpp"
 #include "units/unit.hpp"
@@ -617,7 +618,7 @@ void unit_attack(display * disp, game_board & board,
 	}
 	animator.add_animation(&attacker, "attack", att->get_location(),
 		def->get_location(), damage, true,  text_2,
-		(drain_amount >= 0) ? display::rgb(0, 255, 0) : display::rgb(255, 0, 0),
+		(drain_amount >= 0) ? color_t(0, 255, 0).to_argb_bytes() : color_t(255, 0, 0).to_argb_bytes(),
 		hit_type, &attack, secondary_attack, swing);
 
 	// note that we take an anim from the real unit, we'll use it later
@@ -625,7 +626,7 @@ void unit_attack(display * disp, game_board & board,
 		def->get_location(), "defend", att->get_location(), damage,
 		hit_type, &attack, secondary_attack, swing);
 	animator.add_animation(&defender, defender_anim, def->get_location(),
-		true,  text , display::rgb(255, 0, 0));
+		true,  text , color_t(255, 0, 0).to_argb_bytes());
 
 	for (const unit_ability & ability : leaders) {
 		if(ability.second == a) continue;
@@ -750,16 +751,16 @@ void unit_healing(unit &healed, const std::vector<unit *> &healers, int healing,
 		animator.add_animation(&healed, "poisoned", healed_loc,
 		                       map_location::null_location(), -healing, false,
 		                       number_and_text(-healing, extra_text),
-		                       display::rgb(255,0,0));
+		                       color_t(255,0,0).to_argb_bytes());
 	} else if ( healing > 0 ) {
 		animator.add_animation(&healed, "healed", healed_loc,
 		                       map_location::null_location(), healing, false,
 		                       number_and_text(healing, extra_text),
-		                       display::rgb(0,255,0));
+		                       color_t(0,255,0).to_argb_bytes());
 	} else {
 		animator.add_animation(&healed, "healed", healed_loc,
 		                       map_location::null_location(), 0, false,
-		                       extra_text, display::rgb(0,255,0));
+		                       extra_text, color_t(0,255,0).to_argb_bytes());
 	}
 	animator.start_animations();
 	animator.wait_for_end();
@@ -858,9 +859,9 @@ void wml_animation_internal(unit_animator &animator, const vconfig &cfg, const m
 			hits = unit_animation::hit_type::KILL;
 		}
 		if(cfg["red"].empty() && cfg["green"].empty() && cfg["blue"].empty()) {
-			text_color = display::rgb(0xff,0xff,0xff);
+			text_color = color_t(0xff,0xff,0xff).to_argb_bytes();
 		} else {
-			text_color = display::rgb(cfg["red"], cfg["green"], cfg["blue"]);
+			text_color = color_t(cfg["red"], cfg["green"], cfg["blue"]).to_argb_bytes();
 		}
 		resources::screen->scroll_to_tile(u->get_location(), game_display::ONSCREEN, true, false);
 		vconfig t_filter_data = cfg.child("facing");

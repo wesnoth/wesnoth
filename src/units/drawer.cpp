@@ -21,6 +21,7 @@
 #include "halo.hpp"
 #include "map/map.hpp"
 #include "map/location.hpp"
+#include "sdl/color.hpp"
 #include "sdl/utils.hpp"
 #include "team.hpp"
 #include "units/unit.hpp"
@@ -133,7 +134,7 @@ void unit_drawer::redraw_unit (const unit & u) const
 		tints += 1;
 	}
 	if(tints > 0) {
-		params.blend_with = disp.rgb((red/tints),(green/tints),(blue/tints));
+		params.blend_with = color_t((red/tints),(green/tints),(blue/tints)).to_argb_bytes();
 		params.blend_ratio = ((blend_ratio/tints));
 	}
 

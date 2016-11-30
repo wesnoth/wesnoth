@@ -171,17 +171,6 @@ public:
 	void reset_halo_manager(halo::manager & hm);
 	halo::manager & get_halo_manager() { return *halo_man_; }
 
-	static Uint32 rgb(Uint8 red, Uint8 green, Uint8 blue)
-		{ return 0xFF000000 | (red << 16) | (green << 8) | blue; }
-	static Uint8 red(Uint32 color)
-		{ return (color & 0x00FF0000) >> 16;}
-	static Uint8 green(Uint32 color)
-		{ return (color & 0x0000FF00) >> 8;}
-	static Uint8 blue(Uint32 color)
-		{ return (color & 0x000000FF) ;}
-	static Uint32 max_rgb(Uint32 first,Uint32 second)
-		{ return rgb(std::max(red(first),red(second)),std::max(green(first),green(second)),std::max(blue(first),blue(second))) ; }
-
 	/**
 	 * Add r,g,b from tod_manager to the map
 	 *

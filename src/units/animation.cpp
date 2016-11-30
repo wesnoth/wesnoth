@@ -21,6 +21,7 @@
 #include "map/map.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
+#include "sdl/color.hpp"
 #include "units/unit.hpp"
 #include "units/animation_component.hpp"
 #include "units/filter.hpp"
@@ -485,7 +486,7 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 
 	animations.push_back(unit_animation(0,frame_builder().image(default_image).duration(1),"_disabled_",0));
 	animations.push_back(unit_animation(0,frame_builder().image(default_image).duration(300).
-					blend("0.0~0.3:100,0.3~0.0:200",display::rgb(255,255,255)),"_disabled_selected_",0));
+					blend("0.0~0.3:100,0.3~0.0:200", color_t(255,255,255).to_argb_bytes()),"_disabled_selected_",0));
 	for(itor = animation_base.begin() ; itor != animation_base.end() ; ++itor ) {
 		//unit_animation tmp_anim = *itor;
 		// provide all default anims
@@ -506,7 +507,7 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 
 		animations.push_back(*itor);
 		animations.back().event_ = utils::split("selected");
-		animations.back().unit_anim_.override(0,300,particule::UNSET,"","0.0~0.3:100,0.3~0.0:200",display::rgb(255,255,255));
+		animations.back().unit_anim_.override(0,300,particule::UNSET,"","0.0~0.3:100,0.3~0.0:200", color_t(255,255,255).to_argb_bytes());
 
 		animations.push_back(*itor);
 		animations.back().event_ = utils::split("recruited");
@@ -514,11 +515,11 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 
 		animations.push_back(*itor);
 		animations.back().event_ = utils::split("levelin");
-		animations.back().unit_anim_.override(0,600,particule::NO_CYCLE,"","1~0:600",display::rgb(255,255,255));
+		animations.back().unit_anim_.override(0,600,particule::NO_CYCLE,"","1~0:600", color_t(255,255,255).to_argb_bytes());
 
 		animations.push_back(*itor);
 		animations.back().event_ = utils::split("levelout");
-		animations.back().unit_anim_.override(0,600,particule::NO_CYCLE,"","0~1:600,1",display::rgb(255,255,255));
+		animations.back().unit_anim_.override(0,600,particule::NO_CYCLE,"","0~1:600,1", color_t(255,255,255).to_argb_bytes());
 
 		animations.push_back(*itor);
 		animations.back().event_ = utils::split("pre_movement");
@@ -534,7 +535,7 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 
 		animations.push_back(*itor);
 		animations.back().event_ = utils::split("defend");
-		animations.back().unit_anim_.override(0,animations.back().unit_anim_.get_animation_duration(),particule::NO_CYCLE,"","0.0,0.5:75,0.0:75,0.5:75,0.0",game_display::rgb(255,0,0));
+		animations.back().unit_anim_.override(0,animations.back().unit_anim_.get_animation_duration(),particule::NO_CYCLE,"","0.0,0.5:75,0.0:75,0.5:75,0.0", color_t(255,0,0).to_argb_bytes());
 		animations.back().hits_.push_back(hit_type::HIT);
 		animations.back().hits_.push_back(hit_type::KILL);
 
@@ -576,7 +577,7 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 
 		animations.push_back(*itor);
 		animations.back().event_ = utils::split("healed");
-		animations.back().unit_anim_.override(0,300,particule::NO_CYCLE,"","0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30",display::rgb(255,255,255));
+		animations.back().unit_anim_.override(0,300,particule::NO_CYCLE,"","0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30", color_t(255,255,255).to_argb_bytes());
 		std::string healed_sound;
 		if (cfg["healed_sound"].empty()) {
 			healed_sound = "heal.wav";
@@ -587,7 +588,7 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 
 		animations.push_back(*itor);
 		animations.back().event_ = utils::split("poisoned");
-		animations.back().unit_anim_.override(0,300,particule::NO_CYCLE,"","0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30",display::rgb(0,255,0));
+		animations.back().unit_anim_.override(0,300,particule::NO_CYCLE,"","0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30", color_t(0,255,0).to_argb_bytes());
 		animations.back().sub_anims_["_poison_sound"] = particule();
 		animations.back().sub_anims_["_poison_sound"].add_frame(1,frame_builder().sound(game_config::sounds::status::poisoned),true);
 
@@ -740,7 +741,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 			animations.back().add_frame(225,frame_builder()
 					.image(image_loc.get_filename()+image_loc.get_modifications())
 					.duration(225)
-					.blend("0.0,0.5:75,0.0:75,0.5:75,0.0",game_display::rgb(255,0,0)));
+					.blend("0.0,0.5:75,0.0:75,0.5:75,0.0", color_t(255,0,0).to_argb_bytes()));
 		}
 		else
 		{
@@ -755,7 +756,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 					animations.back().add_frame(225,frame_builder()
 							.image(image_loc.get_filename()+image_loc.get_modifications())
 							.duration(225)
-							.blend("0.0,0.5:75,0.0:75,0.5:75,0.0",game_display::rgb(255,0,0)));
+							.blend("0.0,0.5:75,0.0:75,0.5:75,0.0", color_t(255,0,0).to_argb_bytes()));
 				}
 			}
 		}
