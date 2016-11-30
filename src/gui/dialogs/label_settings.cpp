@@ -33,6 +33,7 @@
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/label.hpp"
 #include "formula/string_utils.hpp"
+#include "team.hpp"
 
 namespace gui2
 {

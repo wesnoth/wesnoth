@@ -22,6 +22,7 @@
 
 #include "gettext.hpp"
 
+#include "team.hpp"
 #include "units/types.hpp"
 
 namespace editor {

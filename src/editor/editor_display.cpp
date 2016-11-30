@@ -15,6 +15,7 @@
 
 #include "editor/editor_display.hpp"
 #include "reports.hpp"
+#include "team.hpp"
 #include "terrain/builder.hpp"
 #include "units/map.hpp"
 

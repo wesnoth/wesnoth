@@ -39,6 +39,7 @@ class terrain_builder;
 class map_labels;
 class arrow;
 class reports;
+class team;
 
 namespace halo {
 	class manager;
@@ -55,7 +56,6 @@ namespace wb {
 #include "font/standard_colors.hpp"
 #include "image.hpp" //only needed for enums (!)
 #include "key.hpp"
-#include "team.hpp"
 #include "time_of_day.hpp"
 #include "sdl/rect.hpp"
 #include "theme.hpp"
@@ -94,7 +94,7 @@ public:
 	/** The playing team is the team whose turn it is. */
 	size_t playing_team() const { return activeTeam_; }
 
-	bool team_valid() const { return currentTeam_ < dc_->teams().size(); }
+	bool team_valid() const;
 
 	/** The viewing team is the team currently viewing the game. */
 	size_t viewing_team() const { return currentTeam_; }
@@ -344,13 +344,10 @@ public:
 	const rect_of_hexes get_visible_hexes() const {return hexes_under_rect(map_area());}
 
 	/** Returns true if location (x,y) is covered in shroud. */
-	bool shrouded(const map_location& loc) const {
-		return is_blindfolded() || (dont_show_all_ && dc_->teams()[currentTeam_].shrouded(loc));
-	}
+	bool shrouded(const map_location& loc) const;
+
 	/** Returns true if location (x,y) is covered in fog. */
-	bool fogged(const map_location& loc) const {
-		return is_blindfolded() || (dont_show_all_ && dc_->teams()[currentTeam_].fogged(loc));
-	}
+	bool fogged(const map_location& loc) const;
 
 	/**
 	 * Determines whether a grid should be overlayed on the game board.

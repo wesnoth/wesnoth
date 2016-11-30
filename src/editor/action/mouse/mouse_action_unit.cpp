@@ -24,6 +24,7 @@
 
 #include "map/location.hpp"
 #include "sdl/rect.hpp"
+#include "team.hpp"
 #include "units/unit.hpp"
 #include "units/map.hpp"
 
