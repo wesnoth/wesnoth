@@ -17,7 +17,7 @@
 
 
 #include <cassert>
-#include <stdlib.h>
+#include <cstdlib>
 #include <random>
 #include <boost/random/random_device.hpp>
 

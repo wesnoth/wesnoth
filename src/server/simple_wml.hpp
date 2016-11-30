@@ -15,7 +15,7 @@
 #ifndef SIMPLE_WML_HPP_INCLUDED
 #define SIMPLE_WML_HPP_INCLUDED
 
-#include <string.h>
+#include <cstring>
 
 #include <cstddef>
 #include <iosfwd>

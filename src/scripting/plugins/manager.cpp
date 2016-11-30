@@ -16,7 +16,7 @@
 
 #include "scripting/application_lua_kernel.hpp"
 #include "scripting/plugins/context.hpp"
-#include <assert.h>
+#include <cassert>
 #include <stdexcept>
 #include <string>
 #include <vector>

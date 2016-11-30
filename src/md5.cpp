@@ -40,21 +40,14 @@ documentation and/or software.
 
  */
 
-
-
-
-
-
 #include "md5.hpp"
 
-#include <assert.h>
+#include <cassert>
 #include <iostream>
-#include <string.h> // Edit: needed for strlen() (strings.h should
+#include <cstring> // Edit: needed for strlen() (strings.h should
                     // include it but apparently does not for me)
 
 #include "global.hpp"
-
-
 
 // MD5 simple initialization method
 

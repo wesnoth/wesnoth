@@ -34,7 +34,7 @@
 #include <map>
 #include <algorithm>
 
-#include <assert.h>
+#include <cassert>
 
 static lg::log_domain log_display("display");
 #define LOG_DP LOG_STREAM(info, log_display)

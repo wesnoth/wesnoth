@@ -19,7 +19,7 @@
 #include "log.hpp"
 #include "config.hpp"
 
-#include <stdlib.h>
+#include <cstdlib>
 #include <sstream>
 
 static lg::log_domain log_mp_user_handler("mp_user_handler");

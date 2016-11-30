@@ -26,7 +26,7 @@
 #include "tod_manager.hpp"
 #include "wesnothd_connection.hpp"
 
-#include <stdlib.h>
+#include <cstdlib>
 #include <ctime>
 
 static lg::log_domain log_config("config");

@@ -18,7 +18,7 @@
 
 #include "config_assign.hpp"
 
-#include <assert.h>
+#include <cassert>
 #include <utility>
 #include "utils/functional.hpp"
 

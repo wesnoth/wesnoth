@@ -27,8 +27,7 @@
 #include <fstream>
 #include <string>
 
-#include <string.h>
-
+#include <cstring>
 
 std::string version = "0.6.0";
 

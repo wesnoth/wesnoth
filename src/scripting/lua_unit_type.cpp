@@ -20,7 +20,7 @@
 #include "units/types.hpp"
 
 #include <string>
-#include <string.h>
+#include <cstring>
 
 #include "lua/lua.h"
 #include "lua/lauxlib.h"

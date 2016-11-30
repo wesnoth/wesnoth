@@ -19,7 +19,7 @@
 
 #include <vector>
 #include <map>
-#include <stdint.h>
+#include <cstdint>
 #include <boost/bimap.hpp>
 #include <boost/bimap/set_of.hpp>
 #include <boost/bimap/multiset_of.hpp>

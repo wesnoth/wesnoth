@@ -25,7 +25,7 @@
 
 #include <set>
 
-#include <stdint.h>
+#include <cstdint>
 #include <boost/dynamic_bitset.hpp>
 
 class game_data;

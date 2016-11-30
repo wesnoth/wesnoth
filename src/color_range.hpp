@@ -27,7 +27,7 @@
 #include <map>
 #include <string>
 #include <vector>
-#include <stdint.h>
+#include <cstdint>
 
 /* Convert comma separated string into rgb values.
  * Return false and empty result on error.

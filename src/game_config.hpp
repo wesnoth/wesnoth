@@ -22,7 +22,7 @@ class color_range;
 
 #include <vector>
 #include <map>
-#include <stdint.h>
+#include <cstdint>
 
 //basic game configuration information is here.
 namespace game_config

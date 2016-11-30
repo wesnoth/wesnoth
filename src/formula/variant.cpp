@@ -17,7 +17,7 @@
 #include <cassert>
 #include <cmath>
 #include <iostream>
-#include <string.h>
+#include <cstring>
 
 #include "formatter.hpp"
 #include "formula/callable.hpp"

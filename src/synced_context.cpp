@@ -39,7 +39,7 @@
 #include "whiteboard/manager.hpp"
 
 #include <cassert>
-#include <stdlib.h>
+#include <cstdlib>
 #include <sstream>
 #include <iomanip>
 static lg::log_domain log_replay("replay");

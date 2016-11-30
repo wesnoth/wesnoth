@@ -45,7 +45,7 @@
 #include "serialization/unicode.hpp"    // for iterator
 #include "sdl/color.hpp"
 
-#include <assert.h>                     // for assert
+#include <cassert>                     // for assert
 #include <algorithm>                    // for sort, find, transform, etc
 #include <iostream>                     // for operator<<, basic_ostream, etc
 #include <iterator>                     // for back_insert_iterator, etc

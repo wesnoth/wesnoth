@@ -20,7 +20,7 @@
 #ifndef FILESYSTEM_HPP_INCLUDED
 #define FILESYSTEM_HPP_INCLUDED
 
-#include <time.h>
+#include <ctime>
 
 #include <iosfwd>
 #include <string>

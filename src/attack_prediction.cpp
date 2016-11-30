@@ -49,8 +49,8 @@
 
 #if defined(BENCHMARK) || defined(CHECK)
 #include <chrono>
-#include <stdio.h>
-#include <stdlib.h>
+#include <cstdio>
+#include <cstdlib>
 
 // Set some default values so this file can stand alone.
 namespace game_config {

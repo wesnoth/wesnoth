@@ -40,7 +40,7 @@
 #include "video.hpp"                    // for CVideo, resize_lock
 #include "widgets/button.hpp"           // for button
 
-#include <assert.h>                     // for assert
+#include <cassert>                     // for assert
 #include <algorithm>                    // for min
 #include <ostream>                      // for basic_ostream, operator<<, etc
 #include <vector>                       // for vector, vector<>::iterator

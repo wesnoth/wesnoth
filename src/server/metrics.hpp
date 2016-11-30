@@ -21,7 +21,7 @@
 
 #include <map>
 #include <string>
-#include <time.h>
+#include <ctime>
 
 #include "server/simple_wml.hpp"
 
