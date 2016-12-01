@@ -176,10 +176,10 @@ BOOST_AUTO_TEST_CASE(test_tc_modification_decoding)
 	// The dynamic_cast returns nullptr if the argument doesn't match the type
 	BOOST_REQUIRE(mod != nullptr);
 
-	const std::vector<Uint32>& old_color = game_config::tc_info("blue");
+	const std::vector<color_t>& old_color = game_config::tc_info("blue");
 	// The first team color is red
 	const color_range& new_color = game_config::color_info("red");
-	std::map<Uint32, Uint32> expected = recolor_range(new_color, old_color);
+	color_range_map expected = recolor_range(new_color, old_color);
 
 	BOOST_CHECK(expected == mod->map());
 
@@ -210,9 +210,9 @@ BOOST_AUTO_TEST_CASE(test_rc_modification_decoding)
 	// The dynamic_cast returns nullptr if the argument doesn't match the type
 	BOOST_REQUIRE(mod != nullptr);
 
-	const std::vector<Uint32>& old_color = game_config::tc_info("red");
+	const std::vector<color_t>& old_color = game_config::tc_info("red");
 	const color_range& new_color = game_config::color_info("blue");
-	std::map<Uint32, Uint32> expected = recolor_range(new_color, old_color);
+	color_range_map expected = recolor_range(new_color, old_color);
 
 	BOOST_CHECK(expected == mod->map());
 
@@ -244,9 +244,9 @@ BOOST_AUTO_TEST_CASE(test_pal_modification_decoding)
 	// The dynamic_cast returns nullptr if the argument doesn't match the type
 	BOOST_REQUIRE(mod != nullptr);
 
-	std::vector<Uint32> const& old_palette = game_config::tc_info("000000,005000");
-	std::vector<Uint32> const& new_palette = game_config::tc_info("FFFFFF,FF00FF");
-	std::map<Uint32, Uint32> expected;
+	std::vector<color_t> const& old_palette = game_config::tc_info("000000,005000");
+	std::vector<color_t> const& new_palette = game_config::tc_info("FFFFFF,FF00FF");
+	color_range_map expected;
 
 	for(size_t i = 0; i < old_palette.size() && i < new_palette.size(); ++i) {
 	environment_setup env_setup;
