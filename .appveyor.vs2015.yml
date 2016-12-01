@@ -21,3 +21,9 @@ before_build:
   - set PATH=C:\projects\external\dll;%PATH%
 build_script:
   - msbuild projectfiles\VC14\wesnoth.sln /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
+
+on_success:
+  - "python utils\\appveyor\\irc-notify.py wesnoth-appveyor-status [{project_name}:{branch}] {short_commit}: \\\"{message}\\\" ({author}) {color_green}Succeeded,Details: {build_url},Commit: {commit_url}"
+
+on_failure:
+  - "python utils\\appveyor\\irc-notify.py wesnoth-appveyor-status [{project_name}:{branch}] {short_commit}: \\\"{message}\\\" ({author}) {color_red}Failed,Details: {build_url},Commit: {commit_url}"
