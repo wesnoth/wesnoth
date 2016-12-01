@@ -731,7 +731,6 @@ set(wesnoth-main_SRC
 	game_config_manager.cpp
 	game_data.cpp
 	game_display.cpp
-	game_errors.cpp
 	game_events/action_wml.cpp
 	game_events/conditional_wml.cpp
 	game_events/entity_location.cpp

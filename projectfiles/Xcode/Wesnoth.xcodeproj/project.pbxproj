@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1EF6CE8214D9846D00ECBE58 /* mp_host_game_prompt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1EF6CE8014D9846D00ECBE58 /* mp_host_game_prompt.cpp */; };
-		4944F4071354FB410027E614 /* game_errors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4944F4041354FB410027E614 /* game_errors.cpp */; };
 		4944F40D1354FB760027E614 /* drawing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4944F40C1354FB760027E614 /* drawing.cpp */; };
 		4944F4121354FB970027E614 /* debug_clock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4944F40E1354FB970027E614 /* debug_clock.cpp */; };
 		4944F4131354FB970027E614 /* mp_login.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4944F40F1354FB970027E614 /* mp_login.cpp */; };
@@ -563,7 +562,6 @@
 		91E3565D1CACC67C00774252 /* game_board.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECFB9FA9193BFB4B00146ED0 /* game_board.cpp */; };
 		91E3565E1CACC67C00774252 /* game_classification.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECDEAF78194FEA9D00DB2F47 /* game_classification.cpp */; };
 		91E3565F1CACC67C00774252 /* game_display.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A7E0EC62181008DD061 /* game_display.cpp */; };
-		91E356601CACC67C00774252 /* game_errors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4944F4041354FB410027E614 /* game_errors.cpp */; };
 		91E356611CACC67C00774252 /* game_launcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2194471960634100420969 /* game_launcher.cpp */; };
 		91E356621CACC67C00774252 /* game_preferences.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A790EC62181008DD061 /* game_preferences.cpp */; };
 		91E356631CACC67C00774252 /* game_state.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC387E6A195AFB1F00FC0342 /* game_state.cpp */; };
@@ -1404,7 +1402,6 @@
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		1EF6CE8014D9846D00ECBE58 /* mp_host_game_prompt.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mp_host_game_prompt.cpp; sourceTree = "<group>"; };
 		1EF6CE8114D9846D00ECBE58 /* mp_host_game_prompt.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = mp_host_game_prompt.hpp; sourceTree = "<group>"; };
-		4944F4041354FB410027E614 /* game_errors.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game_errors.cpp; sourceTree = "<group>"; };
 		4944F40C1354FB760027E614 /* drawing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = drawing.cpp; sourceTree = "<group>"; };
 		4944F40E1354FB970027E614 /* debug_clock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = debug_clock.cpp; sourceTree = "<group>"; };
 		4944F40F1354FB970027E614 /* mp_login.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mp_login.cpp; sourceTree = "<group>"; };
@@ -2967,7 +2964,6 @@
 				B5599A7D0EC62181008DD061 /* game_display.hpp */,
 				F419A1F314E21246002F9ADC /* game_end_exceptions.cpp */,
 				B52EE8AC121359A600CFBDAB /* game_end_exceptions.hpp */,
-				4944F4041354FB410027E614 /* game_errors.cpp */,
 				B5599A7C0EC62181008DD061 /* game_errors.hpp */,
 				62CC8E6917B9063D00C16B75 /* game_events */,
 				91B621A71B76A86700B00E0F /* game_initialization */,
@@ -4980,7 +4976,6 @@
 				B5951A951013BB3400C10B66 /* game_delete.cpp in Sources */,
 				B5599B6A0EC62181008DD061 /* game_display.cpp in Sources */,
 				F419A1F414E21246002F9ADC /* game_end_exceptions.cpp in Sources */,
-				4944F4071354FB410027E614 /* game_errors.cpp in Sources */,
 				B597EBF10FC082AB00CE81F5 /* game_info.cpp in Sources */,
 				EC2194491960634100420969 /* game_launcher.cpp in Sources */,
 				B595EFE2100436C900C10B66 /* game_load.cpp in Sources */,
@@ -5455,7 +5450,6 @@
 				91E3565D1CACC67C00774252 /* game_board.cpp in Sources */,
 				91E3565E1CACC67C00774252 /* game_classification.cpp in Sources */,
 				91E3565F1CACC67C00774252 /* game_display.cpp in Sources */,
-				91E356601CACC67C00774252 /* game_errors.cpp in Sources */,
 				91E356611CACC67C00774252 /* game_launcher.cpp in Sources */,
 				91E356621CACC67C00774252 /* game_preferences.cpp in Sources */,
 				91E356631CACC67C00774252 /* game_state.cpp in Sources */,

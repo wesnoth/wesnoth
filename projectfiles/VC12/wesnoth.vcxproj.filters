@@ -1404,8 +1404,6 @@
     <ClCompile Include="..\..\src\events.cpp" />
     <ClCompile Include="..\..\src\fake_unit_manager.cpp" />
     <ClCompile Include="..\..\src\fake_unit_ptr.cpp" />
-    <ClCompile Include="..\..\src\filesystem_boost.cpp" />
-    <ClCompile Include="..\..\src\filesystem_common.cpp" />
     <ClCompile Include="..\..\src\filesystem_sdl.cpp" />
     <ClCompile Include="..\..\src\floating_label.cpp" />
     <ClCompile Include="..\..\src\floating_textbox.cpp" />
@@ -1416,7 +1414,6 @@
     <ClCompile Include="..\..\src\game_data.cpp" />
     <ClCompile Include="..\..\src\game_display.cpp" />
     <ClCompile Include="..\..\src\game_end_exceptions.cpp" />
-    <ClCompile Include="..\..\src\game_errors.cpp" />
     <ClCompile Include="..\..\src\game_launcher.cpp" />
     <ClCompile Include="..\..\src\game_preferences.cpp" />
     <ClCompile Include="..\..\src\game_state.cpp" />
@@ -2792,7 +2789,6 @@
     <ClInclude Include="..\..\src\formatter.hpp" />
     <ClInclude Include="..\..\src\game_board.hpp" />
     <ClInclude Include="..\..\src\game_classification.hpp" />
-    <ClInclude Include="..\..\src\game_config.hpp" />
     <ClInclude Include="..\..\src\game_config_manager.hpp" />
     <ClInclude Include="..\..\src\game_data.hpp" />
     <ClInclude Include="..\..\src\game_display.hpp" />
@@ -2802,7 +2798,6 @@
     <ClInclude Include="..\..\src\game_preferences.hpp" />
     <ClInclude Include="..\..\src\game_state.hpp" />
     <ClInclude Include="..\..\src\generic_event.hpp" />
-    <ClInclude Include="..\..\src\gettext.hpp" />
     <ClInclude Include="..\..\src\global.hpp" />
     <ClInclude Include="..\..\src\halo.hpp" />
     <ClInclude Include="..\..\src\hash.hpp" />
@@ -2813,7 +2808,6 @@
     <ClInclude Include="..\..\src\key.hpp" />
     <ClInclude Include="..\..\src\language.hpp" />
     <ClInclude Include="..\..\src\lobby_preferences.hpp" />
-    <ClInclude Include="..\..\src\log.hpp" />
     <ClInclude Include="..\..\src\lua_jailbreak_exception.hpp" />
     <ClInclude Include="..\..\src\map_command_handler.hpp" />
     <ClInclude Include="..\..\src\md5.hpp" />
@@ -2844,7 +2838,6 @@
     <ClInclude Include="..\..\src\random_new_deterministic.hpp" />
     <ClInclude Include="..\..\src\random_new_synced.hpp" />
     <ClInclude Include="..\..\src\recall_list_manager.hpp" />
-    <ClInclude Include="..\..\src\reference_counted_object.hpp" />
     <ClInclude Include="..\..\src\replay.hpp" />
     <ClInclude Include="..\..\src\replay_controller.hpp" />
     <ClInclude Include="..\..\src\replay_helper.hpp" />
@@ -2876,7 +2869,6 @@
     <ClInclude Include="..\..\src\time_of_day.hpp" />
     <ClInclude Include="..\..\src\tod_manager.hpp" />
     <ClInclude Include="..\..\src\tooltips.hpp" />
-    <ClInclude Include="..\..\src\tstring.hpp" />
     <ClInclude Include="..\..\src\util.hpp" />
     <ClInclude Include="..\..\src\variable.hpp" />
     <ClInclude Include="..\..\src\variable_info.hpp" />
@@ -2938,6 +2930,10 @@
     </ClInclude>
     <ClInclude Include="..\..\src\font\pango\stream_ops.hpp">
       <Filter>Font\Pango</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\buffered_istream.hpp" />
+    <ClInclude Include="..\..\src\editor\palette\empty_palette.hpp">
+      <Filter>Editor\Palette</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
