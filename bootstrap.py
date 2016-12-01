@@ -126,13 +126,6 @@ filespec = [
     check='SDL2-2.0.4',
     name='sdl2',
   ),
-  dict(  # Libs: SDL_net 2.0.1
-    filename='SDL2_net-devel-2.0.1-mingw.tar.gz',
-    hashsize='b416cc108cf6e193f7bd2af152d99380b0dfd8cc 109601',
-    url='https://www.libsdl.org/projects/SDL_net/release/SDL2_net-devel-2.0.1-mingw.tar.gz',
-    check='SDL2_net-2.0.1',
-    name='sdl2_net',
-  ),
 
   dict(  # Libs: SDL2_ttf >= 2.0.12
     filename='SDL2_ttf-devel-2.0.13-mingw.tar.gz',
@@ -141,6 +134,7 @@ filespec = [
     check='SDL2_ttf-2.0.13',
     name='sdl2_ttf',
   ),
+
   dict(  # Libs: SDL2_mixer 2.0.0+ with Ogg Vorbis
     filename='SDL2_mixer-devel-2.0.1-mingw.tar.gz',
     hashsize='b9925f7d50fd0fd8158a883b17244fb2ab8e6d75 2278973',
@@ -148,6 +142,7 @@ filespec = [
     check='SDL2_mixer-2.0.1',
     name='sdl2_mixer',
   ),
+
   dict(  # Libs: SDL2_image 2.0.0+ with PNG and JPEG
     filename='SDL2_image-devel-2.0.1-mingw.tar.gz',
     hashsize='62565715db0c2daf8cbe9b3c1d9e871dd7311d22 1643413',
@@ -559,9 +554,9 @@ shutil.copy(SDLPATH + '/bin/SDL2.dll', ROOT)
 print('. merge SDL_* libs to SDL dir for compiler to work..')
 print('. also copy SDL_* dlls to ROOT dir for config test to pass..')
 """
-[x] copy include/SDL_net.h into include/SDL/
-[x] copy lib/x86/SDL_net.dll into lib/
-[x] copy lib/x86/SDL_net.dll into ROOT
+[x] copy include/SDL.h into include/SDL/
+[x] copy lib/x86/SDL.dll into lib/
+[x] copy lib/x86/SDL.dll into ROOT
 
 Without copying to root, these tests fail:
 
@@ -570,7 +565,7 @@ Checking for Ogg Vorbis support in SDL... (cached) no
 Checking for PNG support in SDL... (cached) no
 Checking for JPG support in SDL... (cached) no
 """
-for libname in ('SDL2_net', 'SDL2_ttf', 'SDL2_mixer', 'SDL2_image'):
+for libname in ('SDL2_ttf', 'SDL2_mixer', 'SDL2_image'):
   libpath = LOOT + toolspec[libname.lower()]['path'] + '/i686-w64-mingw32'
   shutil.copy(libpath + '/include/SDL2/' + libname.replace('2', '') + '.h',
               SDLPATH + '/include/SDL2/')
