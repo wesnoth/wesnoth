@@ -75,6 +75,7 @@ def appveyor_vars():
     timestamp = environ.get('APPVEYOR_REPO_COMMIT_TIMESTAMP')
     repo_provider = environ.get('APPVEYOR_REPO_PROVIDER')
     project_name = environ.get('APPVEYOR_PROJECT_NAME')
+    project_slug = environ.get('APPVEYOR_PROJECT_SLUG')
     pull_request_title = environ.get('APPVEYOR_PULL_REQUEST_TITLE')
     build_version = environ.get('APPVEYOR_BUILD_VERSION')
     commit = environ.get('APPVEYOR_REPO_COMMIT')
@@ -84,13 +85,14 @@ def appveyor_vars():
     repo_name = environ.get('APPVEYOR_REPO_NAME')
 
     short_commit = commit[:7]
-    build_url = '{appveyor_url}/project/{account_name}/{project_name}/build/{build_version}'.format(**locals())
+    build_url = '{appveyor_url}/project/{account_name}/{project_slug}/build/{build_version}'.format(**locals())
     commit_url = 'https://{repo_provider}.com/{repo_name}/commit/{commit}'.format(**locals())
 
     vars = dict(
         appveyor_url=appveyor_url,
         account_name=account_name,
         project_name=project_name,
+        project_slug=project_slug,
         build_version=build_version,
 
         build_url=build_url,
