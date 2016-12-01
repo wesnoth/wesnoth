@@ -26,7 +26,7 @@
 #ifndef EDITOR_ACTION_VILLAGE_HPP
 #define EDITOR_ACTION_VILLAGE_HPP
 
-#include "action.hpp"
+#include "editor/action/action.hpp"
 
 
 namespace editor {

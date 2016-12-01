@@ -16,8 +16,8 @@
 #define EDITOR_PALETTES_H_INCLUDED
 
 #include "editor/editor_display.hpp"
-#include "common_palette.hpp"
-#include "tristate_button.hpp"
+#include "editor/palette/common_palette.hpp"
+#include "editor/palette/tristate_button.hpp"
 
 namespace editor {
 

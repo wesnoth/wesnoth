@@ -19,7 +19,7 @@
 #ifndef ITEM_PALETTES_H_INCLUDED
 #define ITEM_PALETTES_H_INCLUDED
 
-#include "editor_palettes.hpp"
+#include "editor/palette/editor_palettes.hpp"
 #include "overlay.hpp"
 
 namespace editor {

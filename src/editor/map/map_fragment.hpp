@@ -15,7 +15,7 @@
 #ifndef EDITOR_MAP_FRAGMENT_HPP_INCLUDED
 #define EDITOR_MAP_FRAGMENT_HPP_INCLUDED
 
-#include "editor_map.hpp"
+#include "editor/map/editor_map.hpp"
 
 namespace editor {
 

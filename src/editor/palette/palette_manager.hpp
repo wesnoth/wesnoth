@@ -19,13 +19,13 @@
 #ifndef PALETTE_MANAGER_H_INCLUDED
 #define PALETTE_MANAGER_H_INCLUDED
 
-#include "common_palette.hpp"
+#include "editor/palette/common_palette.hpp"
 
-#include "empty_palette.hpp"
-#include "terrain_palettes.hpp"
-#include "unit_palette.hpp"
-#include "item_palette.hpp"
-#include "location_palette.hpp"
+#include "editor/palette/empty_palette.hpp"
+#include "editor/palette/terrain_palettes.hpp"
+#include "editor/palette/unit_palette.hpp"
+#include "editor/palette/item_palette.hpp"
+#include "editor/palette/location_palette.hpp"
 
 namespace editor {
 

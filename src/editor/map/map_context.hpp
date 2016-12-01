@@ -15,7 +15,7 @@
 #ifndef EDITOR_MAP_CONTEXT_HPP_INCLUDED
 #define EDITOR_MAP_CONTEXT_HPP_INCLUDED
 
-#include "editor_map.hpp"
+#include "editor/map/editor_map.hpp"
 #include "game_classification.hpp"
 #include "map/label.hpp"
 #include "mp_game_settings.hpp"

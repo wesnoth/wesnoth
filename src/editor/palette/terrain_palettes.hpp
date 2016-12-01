@@ -20,7 +20,7 @@
 #ifndef TERRAIN_PALETTES_H_INCLUDED
 #define TERRAIN_PALETTES_H_INCLUDED
 
-#include "editor_palettes.hpp"
+#include "editor/palette/editor_palettes.hpp"
 
 namespace editor {
 

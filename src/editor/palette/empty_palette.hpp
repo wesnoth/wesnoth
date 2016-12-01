@@ -19,7 +19,7 @@
 #ifndef EMPTY_PALETTE_H_INCLUDED
 #define EMPTY_PALETTE_H_INCLUDED
 
-#include "editor_palettes.hpp"
+#include "editor/palette/editor_palettes.hpp"
 
 namespace editor {
 

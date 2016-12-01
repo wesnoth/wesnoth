@@ -15,8 +15,8 @@
 #pragma once
 
 #include "editor/editor_display.hpp"
-#include "common_palette.hpp"
-#include "tristate_button.hpp"
+#include "editor/palette/common_palette.hpp"
+#include "editor/palette/tristate_button.hpp"
 
 #include <boost/ptr_container/ptr_vector.hpp>
 

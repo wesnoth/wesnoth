@@ -15,7 +15,7 @@
 #ifndef EDITOR_MOUSE_ACTION_VILLAGE_HPP
 #define EDITOR_MOUSE_ACTION_VILLAGE_HPP
 
-#include "mouse_action.hpp"
+#include "editor/action/mouse/mouse_action.hpp"
 
 class CKey;
 class empty_palette;
