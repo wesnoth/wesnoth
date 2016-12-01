@@ -31,7 +31,7 @@ std::string get_pango_color_from_id(const std::string& id)
 {
 	const auto color = game_config::team_rgb_colors.find(id);
 	if(color != game_config::team_rgb_colors.end()) {
-		return color_t::from_argb_bytes(color->second[0]).to_hex_string();
+		return (color->second[0]).to_hex_string();
 	}
 
 	return "";

@@ -646,12 +646,10 @@ REGISTER_MOD_PARSER(TC, args)
 		return nullptr;
 	}
 
-	std::map<Uint32, Uint32> rc_map;
+	color_range_map rc_map;
 	try {
-		color_range const& new_color =
-			game_config::color_info(team_color);
-		std::vector<Uint32> const& old_color =
-			game_config::tc_info(params[1]);
+		const color_range& new_color = game_config::color_info(team_color);
+		const std::vector<color_t>& old_color = game_config::tc_info(params[1]);
 
 		rc_map = recolor_range(new_color,old_color);
 	}
@@ -676,12 +674,10 @@ REGISTER_MOD_PARSER(RC, args)
 		//
 		// recolor source palette to color range
 		//
-		std::map<Uint32, Uint32> rc_map;
+		color_range_map rc_map;
 		try {
-			color_range const& new_color =
-				game_config::color_info(recolor_params[1]);
-			std::vector<Uint32> const& old_color =
-				game_config::tc_info(recolor_params[0]);
+			const color_range& new_color = game_config::color_info(recolor_params[1]);
+			const std::vector<color_t>& old_color = game_config::tc_info(recolor_params[0]);
 
 			rc_map = recolor_range(new_color,old_color);
 		}
@@ -715,11 +711,9 @@ REGISTER_MOD_PARSER(PAL, args)
 
 
 	try {
-		std::map<Uint32, Uint32> rc_map;
-		std::vector<Uint32> const& old_palette =
-			game_config::tc_info(remap_params[0]);
-		std::vector<Uint32> const& new_palette =
-			game_config::tc_info(remap_params[1]);
+		color_range_map rc_map;
+		const std::vector<color_t>& old_palette = game_config::tc_info(remap_params[0]);
+		const std::vector<color_t>& new_palette =game_config::tc_info(remap_params[1]);
 
 		for(size_t i = 0; i < old_palette.size() && i < new_palette.size(); ++i) {
 			rc_map[old_palette[i]] = new_palette[i];

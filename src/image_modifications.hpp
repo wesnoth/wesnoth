@@ -17,6 +17,7 @@
 #ifndef IMAGE_MODIFICATIONS_HPP_INCLUDED
 #define IMAGE_MODIFICATIONS_HPP_INCLUDED
 
+#include "color_range.hpp"
 #include "lua_jailbreak_exception.hpp"
 #include "sdl/utils.hpp"
 #include <queue>
@@ -125,7 +126,7 @@ public:
 	 * RC-map based constructor.
 	 * @param recolor_map The palette switch map.
 	 */
-	rc_modification(const std::map<Uint32, Uint32>& recolor_map)
+	rc_modification(const color_range_map& recolor_map)
 		: rc_map_(recolor_map)
 	{}
 	virtual surface operator()(const surface& src) const;
@@ -135,11 +136,11 @@ public:
 
 	bool no_op() const { return rc_map_.empty(); }
 
-	const std::map<Uint32, Uint32>& map() const { return rc_map_;}
-	std::map<Uint32, Uint32>& map() { return rc_map_;}
+	const color_range_map& map() const { return rc_map_;}
+	color_range_map& map() { return rc_map_;}
 
 private:
-	std::map<Uint32, Uint32> rc_map_;
+	color_range_map rc_map_;
 };
 
 /**

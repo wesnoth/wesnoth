@@ -14,10 +14,11 @@
 #ifndef COLOR_T_HPP_INCLUDED
 #define COLOR_T_HPP_INCLUDED
 
+#include <algorithm> // for max
 #include <cstdint>
 #include <ostream>
 #include <string>
-#include <algorithm> // for max
+#include <utility>
 
 #include <SDL.h>
 
@@ -232,6 +233,18 @@ inline std::ostream& operator<<(std::ostream& s, const color_t& c)
 {
 	s << int(c.r) << " " << int(c.g) << " " << int(c.b) << " " << int(c.a) << std::endl;
 	return s;
+}
+
+namespace std
+{
+	template<>
+	struct hash<color_t>
+	{
+		size_t operator()(const color_t& c) const
+		{
+			return c.to_rgba_bytes();
+		}
+	};
 }
 
 #endif

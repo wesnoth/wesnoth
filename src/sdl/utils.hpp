@@ -17,6 +17,7 @@
 #ifndef SDL_UTILS_INCLUDED
 #define SDL_UTILS_INCLUDED
 
+#include "color_range.hpp"
 #include "sdl/color.hpp"
 #include "util.hpp"
 
@@ -252,8 +253,7 @@ surface swap_channels_image(const surface& surf, channel r, channel g, channel b
  * @return                   A recolored surface, or a null surface if there are
  *                           problems with the source.
  */
-surface recolor_image(surface surf, const std::map<Uint32, Uint32>& map_rgb,
-	bool optimize=true);
+surface recolor_image(surface surf, const color_range_map& map_rgb, bool optimize=true);
 
 surface brighten_image(const surface &surf, fixed_t amount, bool optimize=true);
 

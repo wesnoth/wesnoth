@@ -136,7 +136,7 @@ namespace game_config
 
 	extern std::map<std::string, color_range> team_rgb_range;
 	extern std::map<std::string, t_string> team_rgb_name;
-	extern std::map<std::string, std::vector<uint32_t> > team_rgb_colors;
+	extern std::map<std::string, std::vector<color_t>> team_rgb_colors;
 
 	extern std::vector<std::string> default_colors;
 
@@ -166,7 +166,7 @@ namespace game_config
 	void load_config(const config &cfg);
 
 	void add_color_info(const config& v);
-	const std::vector<uint32_t>& tc_info(const std::string& name);
+	const std::vector<color_t>& tc_info(const std::string& name);
 	const color_range& color_info(const std::string& name);
 
 	/**

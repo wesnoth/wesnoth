@@ -155,7 +155,7 @@ static std::vector<color_t> blue_white_scale_text;
 std::map<std::string, color_range> team_rgb_range;
 std::map<std::string, t_string> team_rgb_name;
 
-std::map<std::string, std::vector<uint32_t>> team_rgb_colors;
+std::map<std::string, std::vector<color_t>> team_rgb_colors;
 
 std::vector<std::string> default_colors;
 
@@ -349,10 +349,9 @@ void load_config(const config &v)
 			const std::string& key,
 			const color_t fallback)->std::vector<color_t>
 	{
-		std::vector<std::string> temp = utils::split(v[key].str());
 		std::vector<color_t> color_vec;
 
-		for(const auto& s : temp) {
+		for(const auto& s : utils::split(v[key].str())) {
 			try {
 				color_vec.push_back(color_t::from_hex_string(s));
 			} catch(std::invalid_argument& e) {
@@ -410,41 +409,53 @@ void load_config(const config &v)
 	}
 }
 
-void add_color_info(const config &v)
+void add_color_info(const config& v)
 {
 	for(const config& teamC : v.child_range("color_range")) {
-		const config::attribute_value *a1 = teamC.get("id"),
-			*a2 = teamC.get("rgb");
-		if (!a1 || !a2) {
+		const config::attribute_value* a1 = teamC.get("id"), *a2 = teamC.get("rgb");
+		if(!a1 || !a2) {
 			continue;
 		}
+
 		std::string id = *a1;
-		std::vector<uint32_t> temp;
-		if(!string2rgb(*a2, temp)) {
-			std::stringstream ss;
-			ss << "can't parse color string:\n" << teamC.debug() << "\n";
-			throw config::error(ss.str());
+		std::vector<color_t> temp;
+
+		for(const auto& s : utils::split(*a2)) {
+			try {
+				temp.push_back(color_t::from_hex_string(s));
+			} catch(std::invalid_argument& e) {
+				std::stringstream ss;
+				ss << "can't parse color string:\n" << teamC.debug() << "\n";
+				throw config::error(ss.str());
+			}
 		}
-		team_rgb_range.insert(std::make_pair(id,color_range(temp)));
+
+		team_rgb_range.insert({id, color_range(temp)});
 		team_rgb_name[id] = teamC["name"];
 
 		LOG_NG << "registered color range '" << id << "': " << team_rgb_range[id].debug() << '\n';
 
 		// Ggenerate palette of same name;
-		std::vector<uint32_t> tp = palette(team_rgb_range[id]);
+		std::vector<color_t> tp = palette(team_rgb_range[id]);
 		if(tp.empty()) {
 			continue;
 		}
-		team_rgb_colors.insert(std::make_pair(id,tp));
+
+		team_rgb_colors.insert({id, tp});
 	}
 
 	for(const config &cp : v.child_range("color_palette")) {
 		for(const config::attribute& rgb : cp.attribute_range()) {
-			std::vector<uint32_t> temp;
-			if(!string2rgb(rgb.second, temp)) {
-				ERR_NG << "Invalid color palette: " << rgb.second << std::endl;
+			std::vector<color_t> temp;
+			for(const auto& s : utils::split(rgb.second)) {
+				try {
+					temp.push_back(color_t::from_hex_string(s));
+				} catch(std::invalid_argument& e) {
+					ERR_NG << "Invalid color in palette: " << s << std::endl;
+				}
 			}
-			team_rgb_colors.insert(std::make_pair(rgb.first, temp));
+
+			team_rgb_colors.insert({rgb.first, temp});
 			LOG_NG << "registered color palette: " << rgb.first << '\n';
 		}
 	}
@@ -465,30 +476,34 @@ const color_range& color_info(const std::string& name)
 		return i->second;
 	}
 
-	std::vector<uint32_t> temp;
-	if(!string2rgb(name, temp)) {
+	std::vector<color_t> temp;
+	try {
+		temp.push_back(color_t::from_hex_string(name));
+	} catch(std::invalid_argument& e) {
 		throw config::error(_("Invalid color range: ") + name);
 	}
 
-	team_rgb_range.insert(std::make_pair(name,color_range(temp)));
+	team_rgb_range.insert({name, color_range(temp)});
 	return color_info(name);
 }
 
-const std::vector<uint32_t>& tc_info(const std::string& name)
+const std::vector<color_t>& tc_info(const std::string& name)
 {
 	auto i = team_rgb_colors.find(name);
 	if(i != team_rgb_colors.end()) {
 		return i->second;
 	}
 
-	std::vector<uint32_t> temp;
-	if(!string2rgb(name, temp)) {
-		static std::vector<uint32_t> stv;
+	std::vector<color_t> temp;
+	try {
+		temp.push_back(color_t::from_hex_string(name));
+	} catch(std::invalid_argument& e) {
+		static std::vector<color_t> stv;
 		ERR_NG << "Invalid color palette: " << name << std::endl;
 		return stv;
 	}
 
-	team_rgb_colors.insert(std::make_pair(name,temp));
+	team_rgb_colors.insert({name, temp});
 	return tc_info(name);
 }
 

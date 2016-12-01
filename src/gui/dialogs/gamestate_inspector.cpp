@@ -28,6 +28,7 @@
 #include "gui/widgets/window.hpp"
 
 #include "desktop/clipboard.hpp"
+#include "font/text_formatting.hpp"
 #include "game_events/manager.hpp"
 #include "serialization/parser.hpp" // for write()
 
@@ -603,15 +604,15 @@ void event_mode_controller::show_event(tree_view_node& node, bool is_wmi)
 static stuff_list_adder add_unit_entry(stuff_list_adder& progress, const unit& u, const display_context& dc)
 {
 
-	Uint32 team_color = game_config::tc_info(dc.get_team(u.side()).color())[0];
+	color_t team_color = game_config::tc_info(dc.get_team(u.side()).color())[0];
 	std::stringstream s;
 
 	s << '(' << u.get_location() << ')';
 	progress.widget("loc", s.str());
 
 	s.str("");
-	s << "<span color='#" << std::hex << team_color << std::dec;
-	s << "'>side=" << u.side() << "</span>";
+	s << font::span_color(team_color);
+	s << "side=" << u.side() << "</span>";
 	progress.widget("side", s.str(), true);
 
 	if(u.can_recruit()) {

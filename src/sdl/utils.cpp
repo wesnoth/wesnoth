@@ -18,7 +18,6 @@
  */
 
 #include "global.hpp"
-#include "color_range.hpp"
 
 #include "sdl/utils.hpp"
 #include "sdl/rect.hpp"
@@ -1052,42 +1051,47 @@ surface swap_channels_image(const surface& surf, channel r, channel g, channel b
 	return nsurf;
 }
 
-surface recolor_image(surface surf, const std::map<Uint32, Uint32>& map_rgb, bool optimize){
+surface recolor_image(surface surf, const color_range_map& map_rgb, bool optimize)
+{
 	if(surf == nullptr)
 		return nullptr;
 
-	if(!map_rgb.empty()){
-	     surface nsurf(make_neutral_surface(surf));
-	     if(nsurf == nullptr) {
-			std::cerr << "failed to make neutral surface\n";
-			return nullptr;
-	     }
-
-		surface_lock lock(nsurf);
-		Uint32* beg = lock.pixels();
-		Uint32* end = beg + nsurf->w*surf->h;
-
-		while(beg != end) {
-			Uint8 alpha = (*beg) >> 24;
-
-			if(alpha){	// don't recolor invisible pixels.
-				// palette use only RGB channels, so remove alpha
-				Uint32 oldrgb = (*beg) & 0x00FFFFFF;
-				std::map<Uint32, Uint32>::const_iterator i = map_rgb.find(oldrgb);
-				if(i != map_rgb.end()){
-					*beg = (alpha << 24) + i->second;
-				}
-			}
-		++beg;
-		}
-
-		if(optimize) {
-			adjust_surface_alpha(nsurf, SDL_ALPHA_OPAQUE);
-		}
-
-		return nsurf;
+	if(map_rgb.empty()) {
+		return surf;
 	}
-	return surf;
+
+	surface nsurf(make_neutral_surface(surf));
+	if(nsurf == nullptr) {
+		std::cerr << "failed to make neutral surface" << std::endl;
+		return nullptr;
+	}
+
+	surface_lock lock(nsurf);
+	Uint32* beg = lock.pixels();
+	Uint32* end = beg + nsurf->w*surf->h;
+
+	while(beg != end) {
+		Uint8 alpha = (*beg) >> 24;
+
+		// Don't recolor invisible pixels.
+		if(alpha) {
+			// Palette use only RGB channels, so remove alpha
+			Uint32 oldrgb = (*beg) & 0x00FFFFFF;
+
+			auto i = map_rgb.find(color_t::from_argb_bytes(oldrgb));
+			if(i != map_rgb.end()) {
+				*beg = (alpha << 24) | i->second.to_argb_bytes();
+			}
+		}
+
+		++beg;
+	}
+
+	if(optimize) {
+		adjust_surface_alpha(nsurf, SDL_ALPHA_OPAQUE);
+	}
+
+	return nsurf;
 }
 
 surface brighten_image(const surface &surf, fixed_t amount, bool optimize)

@@ -19,6 +19,7 @@
 #include "utils/functional.hpp"
 #include "gettext.hpp"
 #include "game_display.hpp"
+#include "font/text_formatting.hpp"
 #include "map/label.hpp"
 #include "resources.hpp"
 #include "gui/auxiliary/find_widget.hpp"
@@ -91,9 +92,9 @@ void label_settings::pre_show(window& window) {
 				continue;
 			}
 			int team = std::stoi(category.substr(5)) - 1;
-			Uint32 which_color = game_config::tc_info(viewer.teams()[team].color())[0];
+			color_t which_color = game_config::tc_info(viewer.teams()[team].color())[0];
 			std::ostringstream sout;
-			sout << "<span color='#" << std::hex << which_color << "'>" << name << "</span>";
+			sout << font::span_color(which_color) << name << "</span>";
 			name = sout.str();
 		}
 

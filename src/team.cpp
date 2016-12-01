@@ -820,19 +820,19 @@ const color_range team::get_side_color_range(int side)
 		return(gp->second);
 	}
 
-	return(color_range(0x00FF0000,0x00FFFFFF,0x00000000,0x00FF0000));
+	return color_range({255, 0, 0}, {255, 255, 255}, {0, 0, 0}, {255, 0, 0});
 }
 
 color_t team::get_side_color(int side)
 {
-	return color_t::from_argb_bytes(get_side_color_range(side).mid());
+	return get_side_color_range(side).mid();
 }
 
 color_t team::get_minimap_color(int side)
 {
 	// Note: use mid() instead of rep() unless
 	// high contrast is needed over a map or minimap!
-	return color_t::from_argb_bytes(get_side_color_range(side).rep());
+	return get_side_color_range(side).rep();
 }
 
 std::string team::get_side_color_index(int side)
@@ -850,7 +850,7 @@ std::string team::get_side_color_index(int side)
 
 std::string team::get_side_highlight_pango(int side)
 {
-	return color_t::from_argb_bytes(get_side_color_range(side + 1).mid()).to_hex_string();
+	return get_side_color_range(side + 1).mid().to_hex_string();
 }
 
 void team::log_recruitable() const {

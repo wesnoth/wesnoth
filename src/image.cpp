@@ -21,7 +21,6 @@
 
 #include "global.hpp"
 
-#include "color_range.hpp"
 #include "config.hpp"
 #include "filesystem.hpp"
 #include "game_config.hpp"

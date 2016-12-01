@@ -1896,20 +1896,20 @@ void display::draw_minimap_units()
 		if (!preferences::minimap_movement_coding()) {
 
 			if (dc_->teams()[currentTeam_].is_enemy(side)) {
-				col = color_t::from_argb_bytes(game_config::color_info(preferences::enemy_color()).rep());
+				col = game_config::color_info(preferences::enemy_color()).rep();
 			} else {
 
 				if (currentTeam_ +1 == static_cast<unsigned>(side)) {
 
 					if (u->movement_left() == u->total_movement())
-						col = color_t::from_argb_bytes(game_config::color_info(preferences::unmoved_color()).rep());
+						col = game_config::color_info(preferences::unmoved_color()).rep();
 					else if (u->movement_left() == 0)
-						col = color_t::from_argb_bytes(game_config::color_info(preferences::moved_color()).rep());
+						col = game_config::color_info(preferences::moved_color()).rep();
 					else
-						col = color_t::from_argb_bytes(game_config::color_info(preferences::partial_color()).rep());
+						col = game_config::color_info(preferences::partial_color()).rep();
 
 				} else
-					col = color_t::from_argb_bytes(game_config::color_info(preferences::allied_color()).rep());
+					col = game_config::color_info(preferences::allied_color()).rep();
 			}
 		}
 

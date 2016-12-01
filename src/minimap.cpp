@@ -189,7 +189,7 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 					if (it == game_config::team_rgb_range.end()) {
 						col = color_t(0,0,0,0);
 					} else
-						col = color_t::from_argb_bytes(it->second.rep());
+						col = it->second.rep();
 
 					bool first = true;
 					const t_translation::ter_list& underlying_terrains = tdata.underlying_union_terrain(terrain);
@@ -200,7 +200,7 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 						if (it == game_config::team_rgb_range.end())
 							continue;
 
-						color_t tmp = color_t::from_argb_bytes(it->second.rep());
+						color_t tmp = it->second.rep();
 
 						if (fogged) {
 							if (tmp.b < 50) tmp.b = 0;
@@ -239,7 +239,7 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 
 				int side = (resources::gameboard ? resources::gameboard->village_owner(loc) : -1); //check needed for mp create dialog
 
-				color_t col = color_t::from_argb_bytes(game_config::team_rgb_range.find("white")->second.min());
+				color_t col = game_config::team_rgb_range.find("white")->second.min();
 
 				if (!fogged) {
 					if (side > -1) {
@@ -249,11 +249,11 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 						} else {
 
 							if (vw->owns_village(loc))
-								col = color_t::from_argb_bytes(game_config::color_info(preferences::unmoved_color()).rep());
+								col = game_config::color_info(preferences::unmoved_color()).rep();
 							else if (vw->is_enemy(side + 1))
-								col = color_t::from_argb_bytes(game_config::color_info(preferences::enemy_color()).rep());
+								col = game_config::color_info(preferences::enemy_color()).rep();
 							else
-								col = color_t::from_argb_bytes(game_config::color_info(preferences::allied_color()).rep());
+								col = game_config::color_info(preferences::allied_color()).rep();
 						}
 					}
 				}
