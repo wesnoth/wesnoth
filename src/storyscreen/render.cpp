@@ -57,8 +57,8 @@ namespace {
 	const int titlebox_font_size = 20; // pt?
 	const int storybox_font_size = 17; // pt?
 
-	const Uint32 titlebox_font_color = 0xFFFFFFFF;
-	const Uint32 storybox_font_color = 0xDDDDDDFF;
+	const color_t titlebox_font_color = {255, 255, 255};
+	const color_t storybox_font_color = {221, 221, 255};
 
 	// Hard-coded path to a suitable (tileable) pic for the storytxt box border.
 	const std::string storybox_top_border_path = "dialogs/translucent54-border-top.png";
@@ -297,7 +297,7 @@ void part_ui::render_title_box()
 
 	t.set_font_style(font::pango_text::STYLE_NORMAL)
 		 .set_font_size(titlebox_font_size)
-		 .set_foreground_color(color_t::from_rgba_bytes(titlebox_font_color))
+		 .set_foreground_color(titlebox_font_color)
 		 .set_maximum_width(titlebox_max_w)
 		 .set_maximum_height(titlebox_max_h, true);
 	surface txtsurf = t.render();
@@ -476,7 +476,7 @@ void part_ui::render_story_box()
 		t.set_font_style(font::pango_text::STYLE_NORMAL)
 				.set_alignment(story_text_alignment)
 				.set_font_size(storybox_font_size)
-				.set_foreground_color(color_t::from_rgba_bytes(storybox_font_color))
+				.set_foreground_color(storybox_font_color)
 				.set_maximum_width(max_width)
 				.set_maximum_height(max_height, true);
 
