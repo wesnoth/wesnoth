@@ -347,10 +347,10 @@ void load_config(const config &v)
 
 	const auto parse_config_color_list = [&](
 			const std::string& key,
-			std::vector<color_t>& color_vec,
-			const color_t fallback)
+			const color_t fallback)->std::vector<color_t>
 	{
 		std::vector<std::string> temp = utils::split(v[key].str());
+		std::vector<color_t> color_vec;
 
 		for(const auto& s : temp) {
 			try {
@@ -360,12 +360,14 @@ void load_config(const config &v)
 				color_vec.push_back(fallback);
 			}
 		}
+
+		return color_vec;
 	};
 
-	parse_config_color_list("red_green_scale",       red_green_scale,       {255, 255, 255});
-	parse_config_color_list("red_green_scale_text",  red_green_scale_text,  {255, 255, 255});
-	parse_config_color_list("blue_white_scale",      blue_white_scale,      {0  , 0  , 255});
-	parse_config_color_list("blue_white_scale_text", blue_white_scale_text, {0  , 0  , 255});
+	red_green_scale       = parse_config_color_list("red_green_scale",       {255, 255, 255});
+	red_green_scale_text  = parse_config_color_list("red_green_scale_text",  {255, 255, 255});
+	blue_white_scale      = parse_config_color_list("blue_white_scale",      {0  , 0  , 255});
+	blue_white_scale_text = parse_config_color_list("blue_white_scale_text", {0  , 0  , 255});
 
 	server_list.clear();
 
