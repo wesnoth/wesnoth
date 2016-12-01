@@ -46,7 +46,7 @@ const uint32_t RGBA_RED_BITSHIFT   = 24;
 const uint32_t RGBA_GREEN_BITSHIFT = 16;
 const uint32_t RGBA_BLUE_BITSHIFT  = 8;
 
-const uint32_t ALPHA_OPAQUE = 255;
+const uint8_t ALPHA_OPAQUE = 255;
 
 struct color_t
 {
