@@ -26,7 +26,6 @@
 #include "config.hpp"
 #include "config_assign.hpp"
 #include "filter_context.hpp"
-#include "game_board.hpp"
 #include "game_display.hpp"
 #include "game_events/manager.hpp"
 #include "game_events/pump.hpp"

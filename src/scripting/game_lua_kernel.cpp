@@ -123,7 +123,6 @@
 #include <algorithm>
 #include <vector>                       // for vector, etc
 #include <SDL_timer.h>                  // for SDL_GetTicks
-#include <SDL_video.h>                  // for SDL_Surface
 #include "lua/lauxlib.h"                // for luaL_checkinteger, etc
 #include "lua/lua.h"                    // for lua_setfield, etc
 

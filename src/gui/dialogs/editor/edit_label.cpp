@@ -18,7 +18,6 @@
 
 #include "gui/widgets/settings.hpp"
 
-#include <SDL_video.h>
 #include "utils/functional.hpp"
 
 namespace gui2

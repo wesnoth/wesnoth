@@ -30,12 +30,10 @@
 #include "replay.hpp"                // for recorder, replay
 #include "replay_helper.hpp"         // for replay_helper
 #include "resources.hpp"             // for screen, teams, units, etc
-#include "statistics.hpp"               // for un_recall_unit, etc
 #include "synced_context.hpp"        // for set_scontext_synced
 #include "team.hpp"                  // for team
 #include "units/unit.hpp"                  // for unit
 #include "units/animation_component.hpp"
-#include "units/udisplay.hpp"          // for move_unit
 #include "units/id.hpp"
 #include "units/map.hpp"              // for unit_map, etc
 #include "units/ptr.hpp"      // for unit_const_ptr, unit_ptr

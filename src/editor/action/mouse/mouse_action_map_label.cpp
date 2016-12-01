@@ -19,8 +19,6 @@
 #include "editor/editor_display.hpp"
 #include "editor/map/context_manager.hpp"
 
-#include <SDL_video.h>
-
 #include "gui/dialogs/editor/edit_label.hpp"
 
 #include "font/standard_colors.hpp"

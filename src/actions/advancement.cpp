@@ -21,7 +21,6 @@
 #include "actions/vision.hpp"
 
 #include "ai/lua/aspect_advancements.hpp"
-#include "game_display.hpp"
 #include "game_events/manager.hpp"
 #include "game_events/pump.hpp"
 #include "game_preferences.hpp"

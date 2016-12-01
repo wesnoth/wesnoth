@@ -23,8 +23,6 @@
 #include "editor/palette/location_palette.hpp"
 #include "editor/palette/empty_palette.hpp"
 
-#include <SDL_video.h>
-
 class CKey;
 
 namespace editor {

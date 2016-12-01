@@ -19,8 +19,6 @@
 
 #include "actions/heal.hpp"
 
-#include "game_board.hpp"
-#include "game_display.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
