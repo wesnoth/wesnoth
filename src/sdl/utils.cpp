@@ -1076,11 +1076,11 @@ surface recolor_image(surface surf, const color_range_map& map_rgb, bool optimiz
 		// Don't recolor invisible pixels.
 		if(alpha) {
 			// Palette use only RGB channels, so remove alpha
-			Uint32 oldrgb = (*beg) & 0x00FFFFFF;
+			Uint32 oldrgb = (*beg) | 0xFF000000;
 
 			auto i = map_rgb.find(color_t::from_argb_bytes(oldrgb));
 			if(i != map_rgb.end()) {
-				*beg = (alpha << 24) | i->second.to_argb_bytes();
+				*beg = (alpha << 24) | (i->second.to_argb_bytes() & 0x00FFFFFF);
 			}
 		}
 
