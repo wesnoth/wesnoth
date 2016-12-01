@@ -66,7 +66,6 @@
 #include "map/map.hpp"
 #include "map/label.hpp"
 #include "map_command_handler.hpp"
-#include "font/marked-up_text.hpp"
 #include "font/standard_colors.hpp"
 #include "menu_events.hpp"
 #include "mouse_events.hpp"

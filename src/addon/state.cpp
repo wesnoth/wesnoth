@@ -17,7 +17,6 @@
 
 #include "addon/manager_old.hpp"
 #include "log.hpp"
-#include "font/marked-up_text.hpp"
 
 static lg::log_domain log_addons_client("addons-client");
 #define LOG_AC  LOG_STREAM(info, log_addons_client)

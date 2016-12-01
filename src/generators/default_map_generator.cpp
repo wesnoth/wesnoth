@@ -23,7 +23,6 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
-#include "font/marked-up_text.hpp"
 #include "seed_rng.hpp"
 #include "video.hpp"
 

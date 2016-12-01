@@ -23,7 +23,6 @@
 #include "gui/dialogs/tooltip.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
-#include "font/marked-up_text.hpp"
 #include "hotkey/hotkey_item.hpp"
 #include "formatter.hpp"
 #include "gettext.hpp"

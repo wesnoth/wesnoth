@@ -31,7 +31,6 @@
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
 #include "help/help.hpp"
-#include "font/marked-up_text.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
 #include "team.hpp"

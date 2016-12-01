@@ -31,7 +31,6 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
-#include "font/marked-up_text.hpp"
 #include "serialization/parser.hpp"
 #include "version.hpp"
 #include "wml_separators.hpp"
