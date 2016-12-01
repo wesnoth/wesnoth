@@ -152,8 +152,8 @@ if __name__ == '__main__':
             irc_sock.send('JOIN #{}\r\n'.format(channel).encode())
             # send messages
             for msg in messages:
-                print('NOTICE #{} :{}'.format(channel, msg))
-                irc_sock.send('NOTICE #{} :{}\r\n'.format(channel, msg).encode())
+                print('PRIVMSG #{} :{}'.format(channel, msg))
+                irc_sock.send('PRIVMSG #{} :{}\r\n'.format(channel, msg).encode())
             time.sleep(5)
             # leave the channel
             irc_sock.send('PART #{}\r\n'.format(channel).encode())
