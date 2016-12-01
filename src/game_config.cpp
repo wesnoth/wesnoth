@@ -287,7 +287,6 @@ namespace game_config
 			for(const auto& s : temp) {
 				try {
 					color_vec.push_back(color_t::from_hex_string(s));
-					std::cerr << key << " :" << color_vec.back() << std::endl;
 				} catch(std::invalid_argument& e) {
 					ERR_NG << "Error parsing color list '" << key << "'.\n" << e.what() << std::endl;
 					color_vec.push_back(fallback);
