@@ -82,7 +82,7 @@
 #include "scripting/lua_team.hpp"
 #include "scripting/lua_unit_type.hpp"
 #include "scripting/push_check.hpp"
-#include "sdl/color.hpp"                // for surface
+#include "color.hpp"                // for surface
 #include "sdl/utils.hpp"                // for surface
 #include "side_filter.hpp"              // for side_filter
 #include "sound.hpp"                    // for commit_music_changes, etc

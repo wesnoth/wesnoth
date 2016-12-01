@@ -19,7 +19,7 @@
 #include "gui/core/log.hpp"
 #include "gui/core/point.hpp"
 #include "gui/widgets/settings.hpp"
-#include "sdl/color.hpp"
+#include "color.hpp"
 #include "sdl/rect.hpp"
 #include "formula/callable.hpp"
 #include "formula/string_utils.hpp"

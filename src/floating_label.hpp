@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include "sdl/color.hpp"
+#include "color.hpp"
 #include "sdl/utils.hpp"
 #include <string>
 

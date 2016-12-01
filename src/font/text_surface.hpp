@@ -16,7 +16,7 @@
 #define FONT_TEXT_SURFACE_HPP
 
 #include "font_id.hpp" // for text_chunk
-#include "sdl/color.hpp"
+#include "color.hpp"
 
 #include <SDL_ttf.h>
 

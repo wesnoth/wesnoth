@@ -18,7 +18,7 @@ class config;
 class version_info;
 class color_range;
 
-#include "sdl/color.hpp"
+#include "color.hpp"
 #include "tstring.hpp"
 
 #include <vector>

@@ -18,7 +18,7 @@
 #include "gui/core/event/dispatcher.hpp"
 #include "gui/core/point.hpp"
 #include "gui/widgets/event_executor.hpp"
-#include "sdl/color.hpp"
+#include "color.hpp"
 
 #include <string>
 

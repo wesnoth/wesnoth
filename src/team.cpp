@@ -29,7 +29,7 @@
 #include "resources.hpp"
 #include "play_controller.hpp"
 #include "game_preferences.hpp"
-#include "sdl/color.hpp"
+#include "color.hpp"
 #include "units/types.hpp"
 #include "synced_context.hpp"
 #include "whiteboard/side_actions.hpp"

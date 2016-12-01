@@ -20,7 +20,7 @@
 #include <string>
 #include <utility>
 
-#include <SDL.h>
+struct SDL_Color;
 
 //
 // TODO: constexpr
@@ -46,28 +46,26 @@ const uint32_t RGBA_RED_BITSHIFT   = 24;
 const uint32_t RGBA_GREEN_BITSHIFT = 16;
 const uint32_t RGBA_BLUE_BITSHIFT  = 8;
 
+const uint32_t ALPHA_OPAQUE = 255;
+
 struct color_t
 {
 	color_t()
 		: r(255)
 		, g(255)
 		, b(255)
-		, a(SDL_ALPHA_OPAQUE)
+		, a(ALPHA_OPAQUE)
 	{}
 
-	color_t(uint8_t r_val, uint8_t g_val, uint8_t b_val, uint8_t a_val = SDL_ALPHA_OPAQUE)
+	color_t(uint8_t r_val, uint8_t g_val, uint8_t b_val, uint8_t a_val = ALPHA_OPAQUE)
 		: r(r_val)
 		, g(g_val)
 		, b(b_val)
 		, a(a_val)
 	{}
 
-	explicit color_t(const SDL_Color& c)
-		: r(c.r)
-		, g(c.g)
-		, b(c.b)
-		, a(c.a)
-	{}
+	// Implemented in sdl/utils.cpp to avoid dependency nightmares
+	explicit color_t(const SDL_Color& c);
 
 	/**
 	 * Creates a new color_t object from a string variable in "R,G,B,A" format.
@@ -173,10 +171,8 @@ struct color_t
 	 *
 	 * @return       The new color_t object.
 	 */
-	SDL_Color to_sdl() const
-	{
-		return {r, g, b, a};
-	}
+	// Implemented in sdl/utils.cpp to avoid dependency nightmares
+	SDL_Color to_sdl() const;
 
 	/** Red value */
 	uint8_t r;

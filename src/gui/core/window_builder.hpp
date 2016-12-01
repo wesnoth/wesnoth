@@ -17,7 +17,7 @@
 
 #include "gui/auxiliary/typed_formula.hpp"
 #include "gui/widgets/grid.hpp"
-#include "sdl/color.hpp"
+#include "color.hpp"
 
 #include "utils/functional.hpp"
 

@@ -39,7 +39,7 @@
 #include "reports.hpp"
 #include "resources.hpp"
 #include "tod_manager.hpp"
-#include "sdl/color.hpp"
+#include "color.hpp"
 #include "sound.hpp"
 #include "synced_context.hpp"
 #include "terrain/type_data.hpp"

@@ -18,7 +18,7 @@
 #define SDL_UTILS_INCLUDED
 
 #include "color_range.hpp"
-#include "sdl/color.hpp"
+#include "color.hpp"
 #include "util.hpp"
 
 #include <SDL.h>

@@ -15,7 +15,7 @@
 #ifndef FONT_STANDARD_COLORS_HPP
 #define FONT_STANDARD_COLORS_HPP
 
-#include "sdl/color.hpp"
+#include "color.hpp"
 
 namespace font {
 

@@ -17,7 +17,7 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 #include "map/label.hpp"
-#include "sdl/color.hpp"
+#include "color.hpp"
 
 namespace gui2
 {

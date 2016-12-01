@@ -14,7 +14,7 @@
 #ifndef TEXT_FORMATTING_HPP_INCLUDED
 #define TEXT_FORMATTING_HPP_INCLUDED
 
-#include "sdl/color.hpp"
+#include "color.hpp"
 
 #include <SDL.h>
 #include <string>

@@ -22,7 +22,7 @@
 #include "gui/dialogs/editor/edit_label.hpp"
 
 #include "font/standard_colors.hpp"
-#include "sdl/color.hpp"
+#include "color.hpp"
 
 namespace editor {
 

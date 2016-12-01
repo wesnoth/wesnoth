@@ -21,7 +21,7 @@
 #include "map/map.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
-#include "sdl/color.hpp"
+#include "color.hpp"
 #include "units/unit.hpp"
 #include "units/animation_component.hpp"
 #include "units/filter.hpp"

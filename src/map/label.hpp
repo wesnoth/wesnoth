@@ -17,11 +17,12 @@
 
 #include "font/standard_colors.hpp"
 #include "map/location.hpp"
-#include "sdl/color.hpp"
+#include "color.hpp"
 #include "tstring.hpp"
 
 #include <map>
 #include <string>
+#include <SDL.h>
 
 class config;
 class display;

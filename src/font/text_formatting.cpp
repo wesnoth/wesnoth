@@ -16,7 +16,7 @@
 #include "formatter.hpp"
 #include "game_config.hpp"
 #include "gettext.hpp"
-#include "sdl/color.hpp"
+#include "color.hpp"
 
 #include <iomanip>
 

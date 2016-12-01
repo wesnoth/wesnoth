@@ -209,6 +209,7 @@ endif(ENABLE_SHARED_LIBRARIES)
 
 set(libwesnoth-core_STAT_SRC
 	color_range.cpp
+	color.cpp
 	config.cpp
 	filesystem_boost.cpp
 	filesystem_common.cpp
@@ -363,7 +364,6 @@ set_target_properties(wesnoth-lua
 ########### Helper libraries ###############
 
 set(wesnoth-sdl_SRC
-	sdl/color.cpp
 	sdl/exception.cpp
 	sdl/rect.cpp
 	sdl/window.cpp

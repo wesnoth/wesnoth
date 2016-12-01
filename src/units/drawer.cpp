@@ -21,7 +21,7 @@
 #include "halo.hpp"
 #include "map/map.hpp"
 #include "map/location.hpp"
-#include "sdl/color.hpp"
+#include "color.hpp"
 #include "sdl/utils.hpp"
 #include "team.hpp"
 #include "units/unit.hpp"

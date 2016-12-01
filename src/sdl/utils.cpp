@@ -21,7 +21,7 @@
 
 #include "sdl/utils.hpp"
 #include "sdl/rect.hpp"
-#include "sdl/color.hpp"
+#include "color.hpp"
 
 #include "serialization/string_utils.hpp"
 #include "video.hpp"
@@ -2544,3 +2544,15 @@ std::ostream& operator<<(std::ostream& s, const SDL_Rect& rect)
 	s << rect.x << ',' << rect.y << " x "  << rect.w << ',' << rect.h;
 	return s;
 }
+
+SDL_Color color_t::to_sdl() const {
+	return {r, g, b, a};
+}
+
+
+color_t::color_t(const SDL_Color& c)
+	: r(c.r)
+	, g(c.g)
+	, b(c.b)
+	, a(c.a)
+{}

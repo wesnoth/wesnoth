@@ -25,7 +25,7 @@
 #include "log.hpp"
 #include "mouse_events.hpp"
 #include "resources.hpp"
-#include "sdl/color.hpp"
+#include "color.hpp"
 #include "sound.hpp"
 #include "terrain/filter.hpp"
 #include "units/unit.hpp"

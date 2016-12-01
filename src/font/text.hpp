@@ -16,7 +16,7 @@
 #define TEXT_HPP_INCLUDED
 
 #include "font/font_options.hpp"
-#include "sdl/color.hpp"
+#include "color.hpp"
 #include "sdl/utils.hpp"
 #include "serialization/unicode_types.hpp"
 

@@ -25,13 +25,18 @@
 #include <boost/thread.hpp>
 #include <set>
 
-#ifdef __GNUC__
+#if defined(__GNUC__)
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wmissing-field-initializers"
+#elif defined(_MSC_VER)
+#pragma warning(push)
+#pragma warning(disable: 4714)
 #endif
 #include "spirit_po.hpp"
-#ifdef __GNUC__
+#if defined(__GNUC__)
 #pragma GCC diagnostic pop
+#elif defined(_MSC_VER)
+#pragma warning(pop)
 #endif
 
 #define DBG_G LOG_STREAM(debug, lg::general())
@@ -134,7 +139,7 @@ namespace
 					extra_messages_.emplace(get_base().domain(domain), cat);
 				} catch(spirit_po::catalog_exception& e) {
 					throw_po_error(lang_name_long, domain, e.what());
-				} catch(std::ios::failure& e) {
+				} catch(std::ios::failure&) {
 					throw_po_error(lang_name_long, domain, strerror(errno));
 				}
 			}

@@ -23,7 +23,7 @@
 #include "log.hpp"
 #include "map/map.hpp"
 #include "resources.hpp"
-#include "sdl/color.hpp"
+#include "color.hpp"
 #include "sdl/utils.hpp"
 #include "team.hpp"
 #include "terrain/type_data.hpp"

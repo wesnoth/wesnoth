@@ -38,7 +38,7 @@
 #include "language.hpp"
 #include "font/marked-up_text.hpp"
 #include "resources.hpp"
-#include "sdl/color.hpp"
+#include "color.hpp"
 #include "team.hpp"
 #include "units/unit.hpp"
 

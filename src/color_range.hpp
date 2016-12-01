@@ -18,7 +18,7 @@
 #define COLOR_RANGE_H_INCLUDED
 
 #include "global.hpp"
-#include "sdl/color.hpp"
+#include "color.hpp"
 
 #include <cstdint>
 #include <string>

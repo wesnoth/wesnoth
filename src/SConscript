@@ -19,6 +19,7 @@ for env in [test_env, client_env, env]:
 
 libwesnoth_core_sources = Split("""
     color_range.cpp
+    color.cpp
     config.cpp
     font/constants.cpp
     hash.cpp
@@ -160,7 +161,6 @@ libcampaignd_sources = Split("""
 libcampaignd = env.Library("campaignd", libcampaignd_sources, OBJPREFIX = "campaignd_")
 
 libwesnoth_sdl_sources = Split("""
-    sdl/color.cpp
     sdl/exception.cpp
     sdl/rect.cpp
     sdl/utils.cpp

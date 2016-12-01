@@ -33,7 +33,7 @@
 #include "pathfind/teleport.hpp"
 #include "replay.hpp"
 #include "resources.hpp"
-#include "sdl/color.hpp"
+#include "color.hpp"
 #include "terrain/filter.hpp"
 #include "units/unit.hpp"
 #include "pathfind/pathfind.hpp"

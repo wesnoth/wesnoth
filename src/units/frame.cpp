@@ -18,7 +18,7 @@
 
 #include "game_display.hpp"
 #include "log.hpp"
-#include "sdl/color.hpp"
+#include "color.hpp"
 #include "sound.hpp"
 #include "units/frame.hpp"
 

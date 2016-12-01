@@ -21,7 +21,7 @@
 #include "game_display.hpp"
 #include "game_config.hpp"
 #include "log.hpp"
-#include "sdl/color.hpp"
+#include "color.hpp"
 
 #include <boost/math/constants/constants.hpp>
 using namespace boost::math::constants;

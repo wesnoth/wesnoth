@@ -81,7 +81,7 @@
 #include "scripting/game_lua_kernel.hpp"
 #include "scripting/plugins/manager.hpp"
 #include "sound.hpp"
-#include "sdl/color.hpp"
+#include "color.hpp"
 #include "synced_context.hpp"
 #include "terrain/builder.hpp"
 #include "units/unit.hpp"

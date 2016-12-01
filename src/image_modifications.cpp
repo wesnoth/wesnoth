@@ -19,7 +19,7 @@
 #include "image.hpp"
 #include "image_modifications.hpp"
 #include "log.hpp"
-#include "sdl/color.hpp"
+#include "color.hpp"
 #include "serialization/string_utils.hpp"
 
 #include <map>

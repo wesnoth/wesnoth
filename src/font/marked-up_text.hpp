@@ -17,13 +17,15 @@
 #ifndef MARKED_UP_TEXT_HPP_INCLUDED
 #define MARKED_UP_TEXT_HPP_INCLUDED
 
-#include "sdl/color.hpp"
+#include "color.hpp"
 
 class CVideo;
 class surface;
 
 #include <string>
 #include "serialization/unicode_types.hpp"
+
+#include <SDL.h>
 
 namespace font {
 

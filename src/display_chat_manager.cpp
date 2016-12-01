@@ -24,7 +24,7 @@
 #include "font/marked-up_text.hpp"
 #include "mp_ui_alerts.hpp"
 #include "serialization/string_utils.hpp"
-#include "sdl/color.hpp"
+#include "color.hpp"
 
 #include <SDL_timer.h>
 

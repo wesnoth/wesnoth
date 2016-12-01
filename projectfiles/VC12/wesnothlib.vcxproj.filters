@@ -53,6 +53,7 @@
     <ClCompile Include="..\..\src\font\constants.cpp">
       <Filter>Font</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\color.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\serialization\binary_or_text.hpp">
@@ -123,5 +124,6 @@
       <Filter>spirit_po</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\spirit_po.hpp" />
+    <ClInclude Include="..\..\src\color.hpp" />
   </ItemGroup>
 </Project>

@@ -18,7 +18,7 @@
 #include "constants.hpp"
 #include "font_id.hpp"
 #include "font_description.hpp"
-#include "sdl/color.hpp"
+#include "color.hpp"
 
 #include <string>
 

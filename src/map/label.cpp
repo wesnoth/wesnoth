@@ -20,7 +20,7 @@
 #include "game_data.hpp"
 #include "map/label.hpp"
 #include "resources.hpp"
-#include "sdl/color.hpp"
+#include "color.hpp"
 #include "tooltips.hpp"
 #include "formula/string_utils.hpp"
 

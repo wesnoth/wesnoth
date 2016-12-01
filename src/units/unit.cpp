@@ -36,7 +36,7 @@
 #include "random_new.hpp"               // for generator, rng
 #include "resources.hpp"                // for units, gameboard, teams, etc
 #include "scripting/game_lua_kernel.hpp"            // for game_lua_kernel
-#include "sdl/color.hpp"
+#include "color.hpp"
 #include "synced_context.hpp"
 #include "side_filter.hpp"              // for side_filter
 #include "team.hpp"                     // for team, get_teams, etc

@@ -28,7 +28,7 @@
 #include "font/marked-up_text.hpp"
 #include "mouse_events.hpp"
 #include "reports.hpp"
-#include "sdl/color.hpp"
+#include "color.hpp"
 #include "strftime.hpp"
 #include "team.hpp"
 #include "tod_manager.hpp"

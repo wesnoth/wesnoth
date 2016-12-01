@@ -43,7 +43,7 @@
 #include "tstring.hpp"                  // for t_string, operator<<
 #include "units/types.hpp"              // for unit_type, unit_type_data, etc
 #include "serialization/unicode.hpp"    // for iterator
-#include "sdl/color.hpp"
+#include "color.hpp"
 
 #include <cassert>                     // for assert
 #include <algorithm>                    // for sort, find, transform, etc

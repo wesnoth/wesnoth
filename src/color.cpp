@@ -12,7 +12,7 @@
 */
 
 #include "serialization/string_utils.hpp"
-#include "sdl/color.hpp"
+#include "color.hpp"
 
 #include <iomanip>
 #include <sstream>
@@ -34,7 +34,7 @@ color_t color_t::from_rgba_string(const std::string& c)
 		static_cast<uint8_t>(std::stoul(fields[0])),
 		static_cast<uint8_t>(std::stoul(fields[1])),
 		static_cast<uint8_t>(std::stoul(fields[2])),
-		static_cast<uint8_t>(fields.size() == 4 ? std::stoul(fields[3]) : SDL_ALPHA_OPAQUE)
+		static_cast<uint8_t>(fields.size() == 4 ? std::stoul(fields[3]) : ALPHA_OPAQUE)
 	};
 }
 
@@ -54,7 +54,7 @@ color_t color_t::from_rgb_string(const std::string& c)
 		static_cast<uint8_t>(std::stoul(fields[0])),
 		static_cast<uint8_t>(std::stoul(fields[0])),
 		static_cast<uint8_t>(std::stoul(fields[0])),
-		static_cast<uint8_t>(SDL_ALPHA_OPAQUE)
+		static_cast<uint8_t>(ALPHA_OPAQUE)
 	};
 }
 
@@ -70,7 +70,7 @@ color_t color_t::from_hex_string(const std::string& c)
 		static_cast<uint8_t>((0x00FFFFFF & temp_c) >> 16),
 		static_cast<uint8_t>((0x00FFFFFF & temp_c) >> 8),
 		static_cast<uint8_t>((0x00FFFFFF & temp_c)),
-		SDL_ALPHA_OPAQUE
+		ALPHA_OPAQUE
 	};
 }
 

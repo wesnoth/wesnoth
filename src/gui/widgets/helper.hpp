@@ -17,7 +17,7 @@
 
 #include "font/text.hpp"
 #include "global.hpp"
-#include "sdl/color.hpp"
+#include "color.hpp"
 
 #include <pango/pango-layout.h>
 
