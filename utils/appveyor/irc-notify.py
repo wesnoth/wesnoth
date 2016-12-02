@@ -115,6 +115,9 @@ def appveyor_vars():
 
         color_green='\x033',
         color_red='\x034',
+        bold='\x02',
+        underline='\x1f',
+        plain='\x0f',
     )
     return vars
 
