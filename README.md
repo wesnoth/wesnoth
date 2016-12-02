@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/wesnoth/wesnoth.svg?branch=master)](https://travis-ci.org/wesnoth/wesnoth)
+
 About
 =====
 
