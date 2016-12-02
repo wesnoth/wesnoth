@@ -519,7 +519,9 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_kill, child, use_undo, /*show*/, /*error_h
 			unit_display::unit_die(loc, *i);
 		}
 		resources::screen->redraw_minimap();
-		i->set_hitpoints(0);
+		if (i.valid()) {
+			i->set_hitpoints(0);
+		}
 		resources::controller->pump().fire("die", loc, loc);
 		if (i.valid()) {
 			resources::units->erase(i);
