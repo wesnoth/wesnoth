@@ -78,11 +78,6 @@ public:
 	void refresh() {
 		context_manager_.gui().change_display_context(&context_manager_.get_map_context());
 
-		if(resources::gameboard) {
-            resources::gameboard->units() = context_manager_.get_map_context().get_units();
-			resources::gameboard->teams() = context_manager_.get_map_context().get_teams();
-		}
-
 		// TODO register the tod_manager with the gui?
 		resources::tod_manager = context_manager_.get_map_context().get_time_manager();
 

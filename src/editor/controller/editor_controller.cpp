@@ -579,9 +579,8 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 			}
 		case editor::UNIT_FACING:
 			{
-				unit_map::const_unit_iterator un =
-					resources::gameboard->units().find(gui_->mouseover_hex());
-				assert(un != resources::gameboard->units().end());
+				unit_map::const_unit_iterator un = context_manager_->get_map_context().get_units().find(gui_->mouseover_hex());
+				assert(un != context_manager_->get_map_context().get_units().end());
 				return un->facing() == index ? ACTION_SELECTED : ACTION_DESELECTED;
 			}
 		}
@@ -681,9 +680,8 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 				}
 			case UNIT_FACING:
 				{
-					unit_map::unit_iterator un =
-							resources::gameboard->units().find(gui_->mouseover_hex());
-					assert(un != resources::gameboard->units().end());
+					unit_map::unit_iterator un = context_manager_->get_map_context().get_units().find(gui_->mouseover_hex());
+					assert(un != context_manager_->get_map_context().get_units().end());
 					un->set_facing(map_location::DIRECTION(index));
 					un->anim_comp().set_standing();
 					return true;
