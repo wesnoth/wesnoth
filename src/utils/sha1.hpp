@@ -16,7 +16,6 @@
 #define SHA1_H_INCLUDED
 
 #include <string>
-#include <SDL_types.h>
 
 class sha1_hash
 {
@@ -30,8 +29,8 @@ public:
 private:
 
 	/** Process the next 512 bits block */
-	void next(Uint8 block[64]);
-	Uint32 H0, H1, H2, H3, H4;
+	void next(uint8_t block[64]);
+	uint32_t H0, H1, H2, H3, H4;
 
 };
 
