@@ -18,6 +18,7 @@
 #include <SDL_events.h>
 #include <vector>
 #include <list>
+#include <functional>
 
 //our user-defined double-click event type
 #define DOUBLE_CLICK_EVENT SDL_USEREVENT
@@ -27,6 +28,7 @@
 #define CLOSE_WINDOW_EVENT (SDL_USEREVENT + 4)
 #define SHOW_HELPTIP_EVENT (SDL_USEREVENT + 5)
 #define DRAW_ALL_EVENT (SDL_USEREVENT + 6)
+#define INVOKE_FUNCTION_EVENT (SDL_USEREVENT + 7)
 
 namespace events
 {
@@ -110,6 +112,8 @@ private:
 void focus_handler(const sdl_handler* ptr);
 
 bool has_focus(const sdl_handler* ptr, const SDL_Event* event);
+
+void call_in_main_thread(const std::function<void (void)>& f);
 
 //event_context objects control the handler objects that SDL events are sent
 //to. When an event_context is created, it will become the current event context.
