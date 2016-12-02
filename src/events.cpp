@@ -39,6 +39,17 @@
 
 #define ERR_GEN LOG_STREAM(err, lg::general)
 
+namespace
+{
+	struct invoked_function_data
+	{
+		bool finished;
+		const std::function<void(void)>& f;
+
+		void call() { f(); finished = true; }
+	};
+}
+
 namespace events
 {
 
@@ -413,6 +424,12 @@ void pump()
 	int begin_ignoring = 0;
 	std::vector< SDL_Event > events;
 	while(SDL_PollEvent(&temp_event)) {
+
+		if (temp_event.type == INVOKE_FUNCTION_EVENT) {
+			static_cast<invoked_function_data*>(temp_event.user.data1)->call();
+			continue;
+		}
+
 		++poll_count;
 		peek_for_resize();
 
@@ -733,6 +750,35 @@ void peek_for_resize()
 			CVideo::get_singleton().update_framebuffer();
 
 		}
+	}
+}
+
+void call_in_main_thread(const std::function<void(void)>& f)
+{
+	if (boost::this_thread::get_id() == main_thread) {
+		// nothing special to do if called from the main thread.
+		f();
+		return;
+	}
+
+
+	invoked_function_data fdata = { false, f };
+
+	SDL_Event sdl_event;
+	SDL_UserEvent sdl_userevent;
+
+	sdl_userevent.type = INVOKE_FUNCTION_EVENT;
+	sdl_userevent.code = 0;
+	sdl_userevent.data1 = &fdata;
+	sdl_userevent.data2 = nullptr;
+
+	sdl_event.type = INVOKE_FUNCTION_EVENT;
+	sdl_event.user = sdl_userevent;
+
+	SDL_PushEvent(&sdl_event);
+
+	while (!fdata.finished) {
+		SDL_Delay(10);
 	}
 }
 
