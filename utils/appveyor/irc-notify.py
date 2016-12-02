@@ -69,6 +69,7 @@ def appveyor_vars():
 
     appveyor_url = environ.get('APPVEYOR_URL')
     message_extended = environ.get('APPVEYOR_REPO_COMMIT_MESSAGE_EXTENDED')
+    configuration_name = environ.get('CONFIGURATION')
     branch = environ.get('APPVEYOR_REPO_BRANCH')
     author = environ.get('APPVEYOR_REPO_COMMIT_AUTHOR')
     author_email = environ.get('APPVEYOR_REPO_COMMIT_AUTHOR_EMAIL')
@@ -100,6 +101,7 @@ def appveyor_vars():
         repo_provider=repo_provider,
         repo_name=repo_name,
         branch=branch,
+        configuration_name=configuration_name,
         author=author,
         author_email=author_email,
         timestamp=timestamp,
