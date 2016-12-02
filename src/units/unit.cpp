@@ -2274,7 +2274,7 @@ void unit::apply_modifications()
 			lg::wml_error() << "[modifications][advance] is deprecated, use [advancement] instead\n";
 		}
 		for(const config &m : modifications_.child_range(mod)) {
-			log_scope("add mod");
+			lg::scope_logger inner_scope_logging_object__(lg::general(), "add mod");
 			add_modification(ModificationTypes[i], m, true);
 		}
 	}
