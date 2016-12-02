@@ -23,6 +23,7 @@
 
 #include "formula/formula.hpp"
 #include "formula/function.hpp"
+#include "game_board.hpp"
 #include "log.hpp"
 #include "resources.hpp"
 #include "units/unit.hpp"
@@ -54,7 +55,7 @@ bool stage_unit_formulas::do_play_stage()
 	//execute units formulas first
 	game_logic::unit_formula_set units_with_formulas;
 
-	unit_map &units_ = *resources::units;
+	unit_map &units_ = resources::gameboard->units();
 
 	for(unit_map::unit_iterator i = units_.begin() ; i != units_.end() ; ++i)
 	{

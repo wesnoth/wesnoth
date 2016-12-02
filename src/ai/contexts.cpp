@@ -110,7 +110,7 @@ team& readwrite_context_impl::current_team_w()
 }
 
 attack_result_ptr readwrite_context_impl::execute_attack_action(const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon){
-	unit_map::iterator i = resources::units->find(attacker_loc);
+	unit_map::iterator i = resources::gameboard->units().find(attacker_loc);
 	double m_aggression = i.valid() && i->can_recruit() ? get_leader_aggression() : get_aggression();
 	const unit_advancements_aspect& m_advancements = get_advancements();
 	return actions::execute_attack_action(get_side(),true,attacker_loc,defender_loc,attacker_weapon, m_aggression, m_advancements);
@@ -118,7 +118,7 @@ attack_result_ptr readwrite_context_impl::execute_attack_action(const map_locati
 
 
 attack_result_ptr readonly_context_impl::check_attack_action(const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon){
-	unit_map::iterator i = resources::units->find(attacker_loc);
+	unit_map::iterator i = resources::gameboard->units().find(attacker_loc);
 	double m_aggression = i.valid() && i->can_recruit() ? get_leader_aggression() : get_aggression();
 	const unit_advancements_aspect& m_advancements = get_advancements();
 	return actions::execute_attack_action(get_side(),false,attacker_loc,defender_loc,attacker_weapon, m_aggression, m_advancements);
@@ -352,7 +352,7 @@ void readonly_context_impl::calculate_possible_moves(std::map<map_location,pathf
 		move_map& dstsrc, bool enemy, bool assume_full_movement,
 		const terrain_filter* remove_destinations) const
 {
-  calculate_moves(*resources::units,res,srcdst,dstsrc,enemy,assume_full_movement,remove_destinations);
+  calculate_moves(resources::gameboard->units(),res,srcdst,dstsrc,enemy,assume_full_movement,remove_destinations);
 }
 
 void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_location,pathfind::paths>& res, move_map& srcdst,
@@ -393,10 +393,10 @@ void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_
 		/**
 		 * @todo This is where support for a speculative unit map is incomplete.
 		 *       There are several places (deep) within the paths constructor
-		 *       where *resources::units is assumed to be the unit map. Rather
+		 *       where resources::gameboard->units() is assumed to be the unit map. Rather
 		 *       than introduce a new parameter to numerous functions, a better
 		 *       solution may be for the creator of the speculative map (if one
-		 *       is used in the future) to cause resources::units to point to
+		 *       is used in the future) to cause resources::gameboard->units() to point to
 		 *       that map (and restore the "real" pointer when the speculating
 		 *       is completed). If that approach is adopted, calculate_moves()
 		 *       and calculate_possible_moves() become redundant, and one of
@@ -443,7 +443,7 @@ void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_
 				continue;
 			}
 
-			if(src != dst && (resources::gameboard->find_visible_unit(dst, current_team()) == resources::units->end()) ) {
+			if(src != dst && (resources::gameboard->find_visible_unit(dst, current_team()) == resources::gameboard->units().end()) ) {
 				srcdst.insert(std::pair<map_location,map_location>(src,dst));
 				dstsrc.insert(std::pair<map_location,map_location>(dst,src));
 			}
@@ -478,8 +478,8 @@ void readonly_context_impl::add_facet(const std::string &id, const config &cfg) 
 const defensive_position& readonly_context_impl::best_defensive_position(const map_location& loc,
 		const move_map& dstsrc, const move_map& srcdst, const move_map& enemy_dstsrc) const
 {
-	const unit_map::const_iterator itor = resources::units->find(loc);
-	if(itor == resources::units->end()) {
+	const unit_map::const_iterator itor = resources::gameboard->units().find(loc);
+	if(itor == resources::gameboard->units().end()) {
 		static defensive_position pos;
 		pos.chance_to_hit = 0;
 		pos.vulnerability = pos.support = 0;
@@ -1004,8 +1004,8 @@ const std::set<map_location>& keeps_cache::get()
 
 bool readonly_context_impl::leader_can_reach_keep() const
 {
-	const unit_map::iterator leader = resources::units->find_leader(get_side());
-	if(leader == resources::units->end() || leader->incapacitated()) {
+	const unit_map::iterator leader = resources::gameboard->units().find_leader(get_side());
+	if(leader == resources::gameboard->units().end() || leader->incapacitated()) {
 		return false;
 	}
 
@@ -1066,7 +1066,7 @@ double readonly_context_impl::power_projection(const map_location& loc, const mo
 	get_adjacent_tiles(loc,locs);
 
 	const gamemap& map_ = resources::gameboard->map();
-	unit_map& units_ = *resources::units;
+	unit_map& units_ = resources::gameboard->units();
 
 	int res = 0;
 
@@ -1174,7 +1174,7 @@ void readonly_context_impl::recalculate_move_maps() const
 	srcdst_ = move_map();
 	calculate_possible_moves(possible_moves_,srcdst_,dstsrc_,false,false,&get_avoid());
 	if (get_passive_leader()||get_passive_leader_shares_keep()) {
-		unit_map::iterator i = resources::units->find_leader(get_side());
+		unit_map::iterator i = resources::gameboard->units().find_leader(get_side());
 		if (i.valid()) {
 			map_location loc = i->get_location();
 			srcdst_.erase(loc);
@@ -1246,7 +1246,7 @@ const map_location& readonly_context_impl::suitable_keep(const map_location& lea
 		if (keeps().find(loc)!=keeps().end()){
 
 			const int move_left_at_loc = dest.move_left;
-			if (resources::units->count(loc) == 0) {
+			if (resources::gameboard->units().count(loc) == 0) {
 				if ((*best_free_keep==map_location::null_location())||(move_left_at_loc>move_left_at_best_free_keep)){
 					best_free_keep = &loc;
 					move_left_at_best_free_keep = move_left_at_loc;

@@ -520,7 +520,7 @@ void manager::pre_draw()
 		units_owning_moves_ = move_finder.get_units_owning_moves();
 
 		for (size_t unit_id : units_owning_moves_) {
-			unit_map::iterator unit_iter = resources::units->find(unit_id);
+			unit_map::iterator unit_iter = resources::gameboard->units().find(unit_id);
 			assert(unit_iter.valid());
 			ghost_owner_unit(&*unit_iter);
 		}
@@ -531,7 +531,7 @@ void manager::post_draw()
 {
 	for (size_t unit_id : units_owning_moves_)
 	{
-		unit_map::iterator unit_iter = resources::units->find(unit_id);
+		unit_map::iterator unit_iter = resources::gameboard->units().find(unit_id);
 		if (unit_iter.valid()) {
 			unghost_owner_unit(&*unit_iter);
 		}
@@ -571,7 +571,7 @@ void manager::on_mouseover_change(const map_location& hex)
 	map_location selected_hex = resources::controller->get_mouse_handler_base().get_selected_hex();
 	bool hex_has_unit;
 	{ wb::future_map future; // start planned unit map scope
-		hex_has_unit = resources::units->find(selected_hex) != resources::units->end();
+		hex_has_unit = resources::gameboard->units().find(selected_hex) != resources::gameboard->units().end();
 	} // end planned unit map scope
 	if (!((selected_hex.valid() && hex_has_unit)
 			|| has_temp_move() || wait_for_side_init_ || executing_actions_))
@@ -794,7 +794,7 @@ void manager::save_temp_move()
 
 unit_map::iterator manager::get_temp_move_unit() const
 {
-	return resources::units->find(temp_move_unit_underlying_id_);
+	return resources::gameboard->units().find(temp_move_unit_underlying_id_);
 }
 
 void manager::save_temp_attack(const map_location& attacker_loc, const map_location& defender_loc, int weapon_choice)
@@ -1149,7 +1149,7 @@ void manager::set_planned_unit_map()
 	}
 
 	log_scope2("whiteboard", "Building planned unit map");
-	mapbuilder_.reset(new mapbuilder(*resources::units));
+	mapbuilder_.reset(new mapbuilder(resources::gameboard->units()));
 	mapbuilder_->build_map();
 
 	planned_unit_map_active_ = true;

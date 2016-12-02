@@ -139,7 +139,7 @@ public:
 	/** Creates a move action for the current side, and erases the temp move.
 	 *  The move action is inserted at the end of the queue, to be executed last. */
 	void save_temp_move();
-	/** @return an iterator to the unit that owns the temp move, resources::units->end() if there's none. */
+	/** @return an iterator to the unit that owns the temp move, resources::gameboard->units().end() if there's none. */
 	unit_map::iterator get_temp_move_unit() const;
 
 	/** Creates an attack or attack-move action for the current side */

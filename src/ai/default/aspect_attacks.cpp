@@ -78,7 +78,7 @@ std::shared_ptr<attacks_vector> aspect_attacks_base::analyze_targets() const
 		const move_map& enemy_dstsrc = get_enemy_dstsrc();
 
 		std::shared_ptr<attacks_vector> res(new attacks_vector());
-		unit_map& units_ = *resources::units;
+		unit_map& units_ = resources::gameboard->units();
 
 		std::vector<map_location> unit_locs;
 		for(unit_map::const_iterator i = units_.begin(); i != units_.end(); ++i) {
@@ -146,7 +146,7 @@ void aspect_attacks_base::do_attack_analysis(
 		return;
 	}
 	const gamemap &map_ = resources::gameboard->map();
-	unit_map &units_ = *resources::units;
+	unit_map &units_ = resources::gameboard->units();
 	std::vector<team> &teams_ = resources::gameboard->teams();
 
 

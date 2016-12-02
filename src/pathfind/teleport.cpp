@@ -124,7 +124,7 @@ void teleport_group::get_teleport_pair(
 	const unit_filter ufilt(filter, resources::filter_con); //Note: Don't use the ignore units filter context here, only for the terrain filters. (That's how it worked before the filter contexts were introduced)
 	if (ufilt.matches(u, loc)) {
 
-		scoped_xy_unit teleport_unit("teleport_unit", loc, *resources::units);
+		scoped_xy_unit teleport_unit("teleport_unit", loc, resources::gameboard->units());
 
 		terrain_filter source_filter(source, fc);
 		source_filter.get_locations(reversed_ ? loc_pair.second : loc_pair.first);
@@ -202,11 +202,11 @@ teleport_map::teleport_map(
 			while(loc != locations.second.end()) {
 				unit_map::iterator u;
 				if (see_all) {
-					u = resources::units->find(*loc);
+					u = resources::gameboard->units().find(*loc);
 				} else {
 					u = resources::gameboard->find_visible_unit(*loc, viewing_team);
 				}
-				if (u != resources::units->end()) {
+				if (u != resources::gameboard->units().end()) {
 					loc = locations.second.erase(loc);
 				} else {
 					++loc;

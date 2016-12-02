@@ -53,8 +53,8 @@ battle_prediction_pane::battle_prediction_pane(battle_context &bc,
 	gui::preview_pane(resources::screen->video()),
 	attacker_loc_(attacker_loc),
 	defender_loc_(defender_loc),
-	attacker_(*resources::units->find(attacker_loc)),
-	defender_(*resources::units->find(defender_loc)),
+	attacker_(*resources::gameboard->units().find(attacker_loc)),
+	defender_(*resources::gameboard->units().find(defender_loc)),
 	attacker_label_(),
 	defender_label_(),
 	attacker_label_width_(0),
@@ -221,7 +221,7 @@ void battle_prediction_pane::get_unit_strings(const battle_context_unit_stats& s
 
 		// Leadership bonus.
 		int leadership_bonus = 0;
-		under_leadership(*resources::units, u_loc, &leadership_bonus);
+		under_leadership(resources::gameboard->units(), u_loc, &leadership_bonus);
 		if(leadership_bonus != 0) {
 			left_strings.push_back(_("Leadership"));
 			str.str("");

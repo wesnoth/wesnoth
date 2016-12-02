@@ -360,8 +360,8 @@ namespace { // Private helpers for move_unit()
 		obstructed_(full_end_),
 		real_end_(begin_),
 		// Unit information:
-		move_it_(resources::units->find(*begin_)),
-		orig_side_(( assert(move_it_ != resources::units->end()),
+		move_it_(resources::gameboard->units().find(*begin_)),
+		orig_side_(( assert(move_it_ != resources::gameboard->units().end()),
 		             move_it_->side() )),
 		orig_moves_(move_it_->movement_left()),
 		orig_dir_(move_it_->facing()),
@@ -420,7 +420,7 @@ namespace { // Private helpers for move_unit()
 	 */
 	inline void unit_mover::check_for_ambushers(const map_location & hex)
 	{
-		const unit_map &units = *resources::units;
+		const unit_map &units = resources::gameboard->units();
 
 		// Need to check each adjacent hex for hidden enemies.
 		map_location adjacent[6];
@@ -451,10 +451,10 @@ namespace { // Private helpers for move_unit()
 	inline bool unit_mover::check_for_obstructing_unit(const map_location & hex,
 	                                                   const map_location & prev_hex)
 	{
-		const unit_map::const_iterator blocking_unit = resources::units->find(hex);
+		const unit_map::const_iterator blocking_unit = resources::gameboard->units().find(hex);
 
 		// If no unit, then the path is not obstructed.
-		if ( blocking_unit == resources::units->end() )
+		if ( blocking_unit == resources::gameboard->units().end() )
 			return false;
 
 		// Check for units blocking a teleport exit. This can now only happen
@@ -527,7 +527,7 @@ namespace { // Private helpers for move_unit()
 		// Attempt actually moving.
 		// (Fails if *step_to is occupied).
 		std::pair<unit_map::iterator, bool> move_result =
-			resources::units->move(*move_loc_, *step_to);
+			resources::gameboard->units().move(*move_loc_, *step_to);
 		if ( move_result.second )
 		{
 			// Update the moving unit.
@@ -632,7 +632,7 @@ namespace { // Private helpers for move_unit()
 	 */
 	inline void unit_mover::validate_ambushers()
 	{
-		const unit_map &units = *resources::units;
+		const unit_map &units = resources::gameboard->units();
 
 		// Loop through the previously-detected ambushers.
 		size_t i = 0;
@@ -816,8 +816,8 @@ namespace { // Private helpers for move_unit()
 	bool unit_mover::post_wml(const route_iterator & step)
 	{
 		// Re-find the moving unit.
-		move_it_ = resources::units->find(*move_loc_);
-		const bool found = move_it_ != resources::units->end();
+		move_it_ = resources::gameboard->units().find(*move_loc_);
+		const bool found = move_it_ != resources::gameboard->units().end();
 
 		// Update the current unit data.
 		current_side_ = found ? move_it_->side() : orig_side_;
@@ -889,7 +889,7 @@ namespace { // Private helpers for move_unit()
 	void unit_mover::reveal_ambusher(const map_location & hex, bool update_alert)
 	{
 		// Convenient alias:
-		unit_map &units = *resources::units;
+		unit_map &units = resources::gameboard->units();
 		game_display &disp = *resources::screen;
 
 		// Find the unit at the indicated location.
@@ -1055,7 +1055,7 @@ namespace { // Private helpers for move_unit()
 		if ( ambushed_ || blocked() )
 			reveal_ambushers();
 		else if ( teleport_failed_ && spectator_ )
-			spectator_->set_failed_teleport(resources::units->find(*obstructed_));
+			spectator_->set_failed_teleport(resources::gameboard->units().find(*obstructed_));
 		unit::clear_status_caches();
 
 		if ( move_it_.valid() ) {
@@ -1266,10 +1266,10 @@ size_t move_unit_and_record(const std::vector<map_location> &steps,
 		return 0;
 	}
 	//if we have no fog activated then we always skip sighted
-	if(resources::units->find(steps.front()) != resources::units->end())
+	if(resources::gameboard->units().find(steps.front()) != resources::gameboard->units().end())
 	{
 		const team &current_team = resources::gameboard->teams()[
-			resources::units->find(steps.front())->side() - 1];
+			resources::gameboard->units().find(steps.front())->side() - 1];
 		continued_move |= !current_team.fog_or_shroud();
 	}
 	const bool skip_ally_sighted = !preferences::interrupt_when_ally_sighted();

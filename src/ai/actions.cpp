@@ -178,17 +178,17 @@ attack_result::attack_result( side_number side, const map_location& attacker_loc
 void attack_result::do_check_before()
 {
 	LOG_AI_ACTIONS << " check_before " << *this << std::endl;
-	const unit_map::const_iterator attacker = resources::units->find(attacker_loc_);
-	const unit_map::const_iterator defender = resources::units->find(defender_loc_);
+	const unit_map::const_iterator attacker = resources::gameboard->units().find(attacker_loc_);
+	const unit_map::const_iterator defender = resources::gameboard->units().find(defender_loc_);
 
-	if(attacker==resources::units->end())
+	if(attacker==resources::gameboard->units().end())
 	{
 		LOG_AI_ACTIONS << "attempt to attack without attacker\n";
 		set_error(E_EMPTY_ATTACKER);
 		return;
 	}
 
-	if (defender==resources::units->end())
+	if (defender==resources::gameboard->units().end())
 	{
 		LOG_AI_ACTIONS << "attempt to attack without defender\n";
 		set_error(E_EMPTY_DEFENDER);
@@ -263,7 +263,7 @@ void attack_result::do_execute()
 	// Stop the user from issuing any commands while the unit is attacking
 	const events::command_disabler disable_commands;
 	//@note: yes, this is a decision done here. It's that way because we want to allow a simpler attack 'with whatever weapon is considered best', and because we want to allow the defender to pick it's weapon. That's why aggression is needed. a cleaner solution is needed.
-	battle_context bc(*resources::units, attacker_loc_,
+	battle_context bc(resources::gameboard->units(), attacker_loc_,
 		defender_loc_, attacker_weapon_, -1, aggression_);
 
 	int attacker_weapon = bc.get_attacker_stats().attack_num;
@@ -274,8 +274,8 @@ void attack_result::do_execute()
 		return;
 	}
 
-	const unit_map::const_iterator a_ = resources::units->find(attacker_loc_);
-	const unit_map::const_iterator d_ = resources::units->find(defender_loc_);
+	const unit_map::const_iterator a_ = resources::gameboard->units().find(attacker_loc_);
+	const unit_map::const_iterator d_ = resources::gameboard->units().find(defender_loc_);
 
 	if(resources::simulation_){
 		bool gamestate_changed = simulated_attack(attacker_loc_, defender_loc_, bc.get_attacker_combatant().average_hp(), bc.get_defender_combatant().average_hp());
@@ -340,8 +340,8 @@ move_result::move_result(side_number side, const map_location& from,
 
 const unit *move_result::get_unit()
 {
-	unit_map::const_iterator un = resources::units->find(from_);
-	if (un==resources::units->end()){
+	unit_map::const_iterator un = resources::gameboard->units().find(from_);
+	if (un==resources::gameboard->units().end()){
 		set_error(E_NO_UNIT);
 		return nullptr;
 	}
@@ -456,7 +456,7 @@ void move_result::do_execute()
 			assert(remove_movement_);
 		}
 
-		unit_map::const_iterator un = resources::units->find(unit_location_);
+		unit_map::const_iterator un = resources::gameboard->units().find(unit_location_);
 		if(remove_movement_ && un->movement_left() > 0 && unit_location_ == to_){
 			gamestate_changed = simulated_stopunit(unit_location_, true, false);
 		}
@@ -466,8 +466,8 @@ void move_result::do_execute()
 		return;
 	}
 
-	::actions::move_unit_spectator move_spectator(*resources::units);
-	move_spectator.set_unit(resources::units->find(from_));
+	::actions::move_unit_spectator move_spectator(resources::gameboard->units());
+	move_spectator.set_unit(resources::gameboard->units().find(from_));
 
 	if (from_ != to_) {
 		size_t num_steps = ::actions::move_unit_and_record(
@@ -605,8 +605,8 @@ void recall_result::do_check_after()
 		return;
 	}
 
-	unit_map::const_iterator unit = resources::units->find(recall_location_);
-	if (unit==resources::units->end()){
+	unit_map::const_iterator unit = resources::gameboard->units().find(recall_location_);
+	if (unit==resources::gameboard->units().end()){
 		set_error(AI_ACTION_FAILURE);
 		return;
 	}
@@ -757,8 +757,8 @@ void recruit_result::do_check_after()
 		return;
 	}
 
-	unit_map::const_iterator unit = resources::units->find(recruit_location_);
-	if (unit==resources::units->end()) {
+	unit_map::const_iterator unit = resources::gameboard->units().find(recruit_location_);
+	if (unit==resources::gameboard->units().end()) {
 		set_error(AI_ACTION_FAILURE);
 		return;
 	}
@@ -831,8 +831,8 @@ stopunit_result::stopunit_result( side_number side, const map_location& unit_loc
 
 const unit *stopunit_result::get_unit()
 {
-	unit_map::const_iterator un = resources::units->find(unit_location_);
-	if (un==resources::units->end()){
+	unit_map::const_iterator un = resources::gameboard->units().find(unit_location_);
+	if (un==resources::gameboard->units().end()){
 		set_error(E_NO_UNIT);
 		return nullptr;
 	}
@@ -859,8 +859,8 @@ void stopunit_result::do_check_before()
 
 void stopunit_result::do_check_after()
 {
-	unit_map::const_iterator un = resources::units->find(unit_location_);
-	if (un==resources::units->end()){
+	unit_map::const_iterator un = resources::gameboard->units().find(unit_location_);
+	if (un==resources::gameboard->units().end()){
 		set_error(AI_ACTION_FAILURE);
 		return;
 	}
@@ -897,7 +897,7 @@ void stopunit_result::do_execute()
 {
 	LOG_AI_ACTIONS << "start of execution of: " << *this << std::endl;
 	assert(is_success());
-	unit_map::iterator un = resources::units->find(unit_location_);
+	unit_map::iterator un = resources::gameboard->units().find(unit_location_);
 
 	if(resources::simulation_){
 		bool gamestate_changed = simulated_stopunit(unit_location_, remove_movement_, remove_attacks_);

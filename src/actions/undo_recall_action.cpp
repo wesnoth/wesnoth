@@ -39,7 +39,7 @@ void recall_action::write(config & cfg) const
 bool recall_action::undo(int side)
 {
 	game_display & gui = *resources::screen;
-	unit_map &   units = *resources::units;
+	unit_map &   units = resources::gameboard->units();
 	team &current_team = resources::gameboard->teams()[side-1];
 
 	const map_location & recall_loc = route.front();

@@ -367,8 +367,8 @@ void highlighter::unhighlight_visitor::visit(recall_ptr recall)
 }
 unit_map& highlighter::get_unit_map()
 {
-	assert(resources::units);
-	return *resources::units;
+	assert(resources::gameboard);
+	return resources::gameboard->units();
 }
 
 } // end namespace wb

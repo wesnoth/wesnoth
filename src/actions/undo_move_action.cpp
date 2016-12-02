@@ -42,7 +42,7 @@ void move_action::write(config & cfg) const
 bool move_action::undo(int)
 {
 	game_display & gui = *resources::screen;
-	unit_map &   units = *resources::units;
+	unit_map &   units = resources::gameboard->units();
 
 	// Copy some of our stored data.
 	const int saved_moves = starting_moves;
@@ -86,7 +86,7 @@ bool move_action::undo(int)
 bool move_action::redo(int)
 {
 	game_display & gui = *resources::screen;
-	unit_map &   units = *resources::units;
+	unit_map &   units = resources::gameboard->units();
 
 	// Check units.
 	unit_map::iterator u = units.find(route.front());

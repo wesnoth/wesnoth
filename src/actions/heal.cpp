@@ -83,7 +83,7 @@ namespace {
 	                              std::vector<unit *> & healers)
 	{
 		const std::vector<team> &teams = resources::gameboard->teams();
-		unit_map &units = *resources::units;
+		unit_map &units = resources::gameboard->units();
 
 		POISON_STATUS curing = POISON_NORMAL;
 
@@ -178,7 +178,7 @@ namespace {
 	 */
 	int heal_amount(int side, const unit & patient, std::vector<unit *> & healers)
 	{
-		unit_map &units = *resources::units;
+		unit_map &units = resources::gameboard->units();
 
 		int healing = 0;
 		int harming = 0;
@@ -296,7 +296,7 @@ void calculate_healing(int side, bool update_display)
 	std::list<heal_unit> unit_list;
 
 	// We look for all allied units, then we see if our healer is near them.
-	for (unit &patient : *resources::units) {
+	for (unit &patient : resources::gameboard->units()) {
 
 		if ( patient.get_state("unhealable") || patient.incapacitated() ) {
 			if ( patient.side() == side )

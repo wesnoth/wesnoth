@@ -165,11 +165,11 @@ double recruitment::evaluate() {
 		return BAD_SCORE;
 	}
 
-	const unit_map& units = *resources::units;
+	const unit_map& units = resources::gameboard->units();
 	const std::vector<unit_map::const_iterator> leaders = units.find_leaders(get_side());
 
 	for (const unit_map::const_iterator& leader : leaders) {
-		if (leader == resources::units->end()) {
+		if (leader == resources::gameboard->units().end()) {
 			return BAD_SCORE;
 		}
 		// Check Gold. But proceed if there is a unit with cost <= 0 (WML can do that)
@@ -197,7 +197,7 @@ void recruitment::execute() {
 	 * Check which leaders can recruit and collect them in leader_data.
 	 */
 
-	const unit_map& units = *resources::units;
+	const unit_map& units = resources::gameboard->units();
 	const gamemap& map = resources::gameboard->map();
 	const std::vector<unit_map::const_iterator> leaders = units.find_leaders(get_side());
 
@@ -676,7 +676,7 @@ double recruitment::get_average_defense(const std::string& u_type) const {
  * for all units of side.
  */
 const  pathfind::full_cost_map recruitment::get_cost_map_of_side(int side) const {
-	const unit_map& units = *resources::units;
+	const unit_map& units = resources::gameboard->units();
 	const team& team = resources::gameboard->teams()[side - 1];
 
 	pathfind::full_cost_map cost_map(true, true, team, true, true);
@@ -782,7 +782,7 @@ void recruitment::update_important_hexes() {
 
 	update_average_local_cost();
 	const gamemap& map = resources::gameboard->map();
-	const unit_map& units = *resources::units;
+	const unit_map& units = resources::gameboard->units();
 
 	// Mark battle areas as important
 	// This are locations where one of my units is adjacent
@@ -919,7 +919,7 @@ double recruitment::compare_unit_types(const std::string& a, const std::string& 
  * the scores.
  */
 void recruitment::do_combat_analysis(std::vector<data>* leader_data) {
-	const unit_map& units = *resources::units;
+	const unit_map& units = resources::gameboard->units();
 
 	// Collect all enemy units (and their hp) we want to take into account in enemy_units.
 	typedef std::vector<std::pair<std::string, int> > unit_hp_vector;
@@ -1455,7 +1455,7 @@ double recruitment::get_estimated_village_gain() const {
  * Returns our_total_unit_costs / enemy_total_unit_costs.
  */
 double recruitment::get_unit_ratio() const {
-	const unit_map& units = *resources::units;
+	const unit_map& units = resources::gameboard->units();
 	double own_total_value = 0.;
 	double team_total_value = 0.;
 	double enemy_total_value = 0.;
@@ -1657,7 +1657,7 @@ void recruitment::handle_recruitment_more(std::vector<data>* leader_data) const 
  * Returns true if there is a enemy within the radius.
  */
 bool recruitment::is_enemy_in_radius(const map_location& loc, int radius) const {
-	const unit_map& units = *resources::units;
+	const unit_map& units = resources::gameboard->units();
 	std::vector<map_location> surrounding;
 	get_tiles_in_radius(loc, radius, surrounding);
 	if (surrounding.empty()) {
@@ -1684,7 +1684,7 @@ bool recruitment::is_enemy_in_radius(const map_location& loc, int radius) const 
 void recruitment::update_own_units_count() {
 	own_units_count_.clear();
 	total_own_units_ = 0;
-	const unit_map& units = *resources::units;
+	const unit_map& units = resources::gameboard->units();
 	for (const unit& unit : units) {
 		if (unit.side() != get_side() || unit.can_recruit() ||
 				unit.incapacitated() || unit.total_movement() <= 0) {

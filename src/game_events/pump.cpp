@@ -175,9 +175,9 @@ namespace { // Support functions
 	 */
 	bool wml_event_pump::filter_event(const event_handler& handler, const queued_event& ev)
 	{
-		const unit_map *units = resources::units;
-		unit_map::const_iterator unit1 = units->find(ev.loc1);
-		unit_map::const_iterator unit2 = units->find(ev.loc2);
+		const unit_map& units = resources::gameboard->units();
+		unit_map::const_iterator unit1 = units.find(ev.loc1);
+		unit_map::const_iterator unit2 = units.find(ev.loc2);
 		vconfig filters(handler.get_config());
 
 		for (const vconfig &condition : filters.get_children("filter_condition"))
@@ -203,7 +203,7 @@ namespace { // Support functions
 
 		vconfig::child_list special_filters = filters.get_children("filter_attack");
 		bool special_matches = special_filters.empty();
-		if ( !special_matches  &&  unit1 != units->end() )
+		if ( !special_matches  &&  unit1 != units.end() )
 		{
 			const bool matches_unit = ev.loc1.matches_unit(unit1);
 			const config & attack = ev.data.child("first");
@@ -231,7 +231,7 @@ namespace { // Support functions
 
 		special_filters = filters.get_children("filter_second_attack");
 		special_matches = special_filters.empty();
-		if ( !special_matches  &&  unit2 != units->end() )
+		if ( !special_matches  &&  unit2 != units.end() )
 		{
 			const bool matches_unit = ev.loc2.matches_unit(unit2);
 			const config & attack = ev.data.child("second");
@@ -274,9 +274,9 @@ namespace { // Support functions
 		if ( !handler_p )
 			return false;
 
-		unit_map *units = resources::units;
-		scoped_xy_unit first_unit("unit", ev.loc1, *units);
-		scoped_xy_unit second_unit("second_unit", ev.loc2, *units);
+		unit_map& units = resources::gameboard->units();
+		scoped_xy_unit first_unit("unit", ev.loc1, units);
+		scoped_xy_unit second_unit("second_unit", ev.loc2, units);
 		scoped_weapon_info first_weapon("weapon", ev.data.child("first"));
 		scoped_weapon_info second_weapon("second_weapon", ev.data.child("second"));
 

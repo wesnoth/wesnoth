@@ -121,11 +121,11 @@ static std::string format_cost_string(int unit_recall_cost, const int team_recal
 
 static std::string get_title_suffix(int side_num)
 {
-	if(!resources::gameboard || !resources::units) {
+	if(!resources::gameboard) {
 		return "";
 	}
 
-	unit_map& units = *resources::units;
+	unit_map& units = resources::gameboard->units();
 
 	int controlled_recruiters = 0;
 	for(const auto& team : resources::gameboard->teams()) {
@@ -136,8 +136,8 @@ static std::string get_title_suffix(int side_num)
 
 	std::stringstream msg;
 	if(controlled_recruiters >= 2) {
-		unit_map::const_iterator leader = resources::units->find_leader(side_num);
-		if(leader != resources::units->end() && !leader->name().empty()) {
+		unit_map::const_iterator leader = resources::gameboard->units().find_leader(side_num);
+		if(leader != resources::gameboard->units().end() && !leader->name().empty()) {
 			msg << " (" << leader->name(); msg << ")";
 		}
 	}

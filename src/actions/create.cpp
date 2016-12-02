@@ -65,8 +65,8 @@ const std::set<std::string> get_recruits(int side, const map_location &recruit_l
 
 	std::set<std::string> local_result;
 	std::set<std::string> global_result;
-	unit_map::const_iterator u = resources::units->begin(),
-			u_end = resources::units->end();
+	unit_map::const_iterator u = resources::gameboard->units().begin(),
+			u_end = resources::gameboard->units().end();
 
 	bool leader_in_place = false;
 	bool allow_local = resources::gameboard->map().is_castle(recruit_loc);
@@ -74,7 +74,7 @@ const std::set<std::string> get_recruits(int side, const map_location &recruit_l
 
 	// Check for a leader at recruit_loc (means we are recruiting from there,
 	// rather than to there).
-	unit_map::const_iterator find_it = resources::units->find(recruit_loc);
+	unit_map::const_iterator find_it = resources::gameboard->units().find(recruit_loc);
 	if ( find_it != u_end ) {
 		if ( find_it->can_recruit()  &&  find_it->side() == side  &&
 		     resources::gameboard->map().is_keep(recruit_loc) )
@@ -176,8 +176,8 @@ std::vector<unit_const_ptr > get_recalls(int side, const map_location &recall_lo
 
 	// Check for a leader at recall_loc (means we are recalling from there,
 	// rather than to there).
-	const unit_map::const_iterator find_it = resources::units->find(recall_loc);
-	if ( find_it != resources::units->end() ) {
+	const unit_map::const_iterator find_it = resources::gameboard->units().find(recall_loc);
+	if ( find_it != resources::gameboard->units().end() ) {
 		if ( find_it->can_recruit()  &&  find_it->side() == side  &&
 		     resources::gameboard->map().is_keep(recall_loc) )
 		{
@@ -195,8 +195,8 @@ std::vector<unit_const_ptr > get_recalls(int side, const map_location &recall_lo
 
 	if ( allow_local )
 	{
-		unit_map::const_iterator u = resources::units->begin(),
-				u_end = resources::units->end();
+		unit_map::const_iterator u = resources::gameboard->units().begin(),
+				u_end = resources::gameboard->units().end();
 		std::set<size_t> valid_local_recalls;
 
 		for(; u != u_end; ++u) {
@@ -217,7 +217,7 @@ std::vector<unit_const_ptr > get_recalls(int side, const map_location &recall_lo
 	{
 		std::set<size_t> valid_local_recalls;
 
-		for(auto u = resources::units->begin(); u != resources::units->end(); ++u) {
+		for(auto u = resources::gameboard->units().begin(); u != resources::gameboard->units().end(); ++u) {
 			//We only consider leaders on our side.
 			if(!u->can_recruit() || u->side() != side) {
 				continue;
@@ -279,14 +279,14 @@ RECRUIT_CHECK check_recall_location(const int side, map_location& recall_locatio
                                     map_location& recall_from,
                                     const unit &unit_recall)
 {
-	const unit_map & units = *resources::units;
+	const unit_map & units = resources::gameboard->units();
 	const unit_map::const_iterator u_end = units.end();
 
 	map_location check_location = recall_location;
 	map_location alternative;	// Set by check_unit_recall_location().
 
 	// If the specified location is occupied, proceed as if no location was specified.
-	if ( resources::units->count(recall_location) != 0 )
+	if ( resources::gameboard->units().count(recall_location) != 0 )
 		check_location = map_location::null_location();
 
 	// If the check location is not valid, we will never get an "OK" result.
@@ -409,7 +409,7 @@ RECRUIT_CHECK check_recruit_location(const int side, map_location &recruit_locat
                                      map_location& recruited_from,
                                      const std::string& unit_type)
 {
-	const unit_map & units = *resources::units;
+	const unit_map & units = resources::gameboard->units();
 	const unit_map::const_iterator u_end = units.end();
 
 	map_location check_location = recruit_location;
@@ -417,7 +417,7 @@ RECRUIT_CHECK check_recruit_location(const int side, map_location &recruit_locat
 	map_location alternative;	// Set by check_unit_recruit_location().
 
 	// If the specified location is occupied, proceed as if no location was specified.
-	if ( resources::units->count(recruit_location) != 0 )
+	if ( resources::gameboard->units().count(recruit_location) != 0 )
 		check_location = map_location::null_location();
 
 	// If the specified unit type is in the team's recruit list, there is no
@@ -538,7 +538,7 @@ namespace { // Helpers for place_recruit()
 	const map_location & find_recruit_leader(int side,
 		const map_location &recruit_location, const map_location &recruited_from)
 	{
-		const unit_map & units = *resources::units;
+		const unit_map & units = resources::gameboard->units();
 
 		// See if the preferred location is an option.
 		unit_map::const_iterator leader = units.find(recruited_from);
@@ -566,8 +566,8 @@ namespace { // Helpers for place_recruit()
 	{
 		if ( !un_it.valid() ) {
 			// Maybe WML provided a replacement?
-			un_it = resources::units->find(current_loc);
-			if ( un_it == resources::units->end() )
+			un_it = resources::gameboard->units().find(current_loc);
+			if ( un_it == resources::gameboard->units().end() )
 				// The unit is gone.
 				return false;
 		}
@@ -580,7 +580,7 @@ namespace { // Helpers for place_recruit()
 	{
 		// Find closest enemy and turn towards it (level 2s count more than level 1s, etc.)
 		const gamemap *map = & resources::gameboard->map();
-		const unit_map & units = *resources::units;
+		const unit_map & units = resources::gameboard->units();
 		unit_map::const_iterator unit_itor;
 		map_location min_loc;
 		int min_dist = INT_MAX;
@@ -629,7 +629,7 @@ place_recruit_result place_recruit(unit_ptr u, const map_location &recruit_locat
 			find_recruit_leader(u->side(), recruit_location, recruited_from);
 	u->set_location(recruit_location);
 	// Add the unit to the board.
-	std::pair<unit_map::iterator, bool> add_result = resources::units->insert(u);
+	std::pair<unit_map::iterator, bool> add_result = resources::gameboard->units().insert(u);
 	assert(add_result.second);
 	unit_map::iterator & new_unit_itor = add_result.first;
 	map_location current_loc = recruit_location;

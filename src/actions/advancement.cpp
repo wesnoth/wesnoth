@@ -38,7 +38,6 @@
 #include "units/animation_component.hpp"
 #include "units/udisplay.hpp"
 #include "units/helper.hpp" //number_of_possible_advances
-#include "units/map.hpp" //resources::units
 #include "whiteboard/manager.hpp"
 
 static lg::log_domain log_engine("engine");
@@ -58,7 +57,7 @@ namespace
 {
 	int advance_unit_dialog(const map_location &loc)
 	{
-		const unit& u = *resources::units->find(loc);
+		const unit& u = *resources::gameboard->units().find(loc);
 		std::vector<unit_const_ptr> previews;
 
 		for (const std::string& advance : u.advances_to()) {
@@ -96,8 +95,8 @@ namespace
 	{
 		const events::command_disabler cmd_disabler;
 
-		unit_map::iterator u = resources::units->find(loc);
-		if (u == resources::units->end()) {
+		unit_map::iterator u = resources::gameboard->units().find(loc);
+		if (u == resources::gameboard->units().end()) {
 			LOG_DP << "animate_unit_advancement suppressed: invalid unit\n";
 			return false;
 		}
@@ -135,10 +134,10 @@ namespace
 			::advance_unit(loc, &mod_option, fire_event);
 		}
 
-		u = resources::units->find(loc);
+		u = resources::gameboard->units().find(loc);
 		resources::screen->invalidate_unit();
 
-		if (animate && u != resources::units->end() && !resources::screen->video().update_locked()) {
+		if (animate && u != resources::gameboard->units().end() && !resources::screen->video().update_locked()) {
 			unit_animator animator;
 			animator.add_animation(&*u, "levelin", u->get_location(), map_location(), 0, true);
 			animator.start_animations();
@@ -191,7 +190,7 @@ namespace
 				//have no effect because get_advancements returns an empty list.
 				if(ai_advancement_ != nullptr)
 				{
-					unit_map::iterator u = resources::units->find(loc_);
+					unit_map::iterator u = resources::gameboard->units().find(loc_);
 					const std::vector<std::string>& options = u->advances_to();
 					const std::vector<std::string>& allowed = ai_advancement_->get_advancements(u);
 
@@ -245,7 +244,7 @@ void advance_unit_at(const advance_unit_params& params)
 	// the 20 is picked rather randomly.
 	for(int advacment_number = 0; advacment_number < 20; advacment_number++)
 	{
-		unit_map::iterator u = resources::units->find(params.loc_);
+		unit_map::iterator u = resources::gameboard->units().find(params.loc_);
 		//this implies u.valid()
 		if(!unit_helper::will_certainly_advance(u)) {
 			return;
@@ -256,7 +255,7 @@ void advance_unit_at(const advance_unit_params& params)
 			LOG_NG << "Firing pre advance event at " << params.loc_ <<".\n";
 			resources::game_events->pump().fire("pre_advance", params.loc_);
 			//TODO: maybe use id instead of location here ?.
-			u = resources::units->find(params.loc_);
+			u = resources::gameboard->units().find(params.loc_);
 			if(!unit_helper::will_certainly_advance(u))
 			{
 				LOG_NG << "pre advance event aborted advancing.\n";
@@ -271,7 +270,7 @@ void advance_unit_at(const advance_unit_params& params)
 		bool result = animate_unit_advancement(params.loc_, selected["value"], params.fire_events_, params.animate_);
 
 		DBG_NG << "animate_unit_advancement result = " << result << std::endl;
-		u = resources::units->find(params.loc_);
+		u = resources::gameboard->units().find(params.loc_);
 		// level 10 unit gives 80 XP and the highest mainline is level 5
 		if (u.valid() && u->experience() > 80)
 		{
@@ -315,7 +314,7 @@ unit_ptr get_amla_unit(const unit &u, const config &mod_option)
 
 void advance_unit(map_location loc, const advancement_option &advance_to, bool fire_event)
 {
-	unit_map::unit_iterator u = resources::units->find(loc);
+	unit_map::unit_iterator u = resources::gameboard->units().find(loc);
 	if(!u.valid()) {
 		return;
 	}
@@ -353,7 +352,7 @@ void advance_unit(map_location loc, const advancement_option &advance_to, bool f
 		preferences::encountered_units().insert(new_unit->type_id());
 		LOG_CF << "Added '" << new_unit->type_id() << "' to the encountered units.\n";
 	}
-	u = resources::units->replace(loc, *new_unit).first;
+	u = resources::gameboard->units().replace(loc, *new_unit).first;
 
 	// Update fog/shroud.
 	actions::shroud_clearer clearer;

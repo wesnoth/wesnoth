@@ -587,7 +587,7 @@ vision_path::vision_path(const movetype::terrain_costs & view_costs, bool slowed
 	// The three nullptr parameters indicate (in order):
 	// ignore units, ignore ZoC (no effect), and don't build a cost_map.
 	team const& viewing_team = resources::gameboard->teams()[resources::screen->viewing_team()];
-	const unit_map::const_iterator u = resources::units->find(loc);
+	const unit_map::const_iterator u = resources::gameboard->units().find(loc);
 	find_routes(loc, view_costs, slowed, sight_range, sight_range, 0,
 	            destinations, &edges, u.valid() ? &*u : nullptr, nullptr, nullptr, &viewing_team, &jamming_map, nullptr, true);
 }
@@ -631,8 +631,8 @@ marked_route mark_route(const plain_route &rt)
 	if (rt.steps.empty()) return marked_route();
 	res.route = rt;
 
-	unit_map::const_iterator it = resources::units->find(rt.steps.front());
-	if (it == resources::units->end()) return marked_route();
+	unit_map::const_iterator it = resources::gameboard->units().find(rt.steps.front());
+	if (it == resources::gameboard->units().end()) return marked_route();
 	unit const& u = *it;
 
 	int turns = 0;

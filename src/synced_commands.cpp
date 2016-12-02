@@ -79,7 +79,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(recruit, child, use_undo, show, error_handler)
 		// EDIT:  we borke compability with 1.11.2 anyway so we should give an error.
 		error_handler("Missing leader location for recruitment.\n", false);
 	}
-	else if ( resources::units->find(from) == resources::units->end() ) {
+	else if ( resources::gameboard->units().find(from) == resources::gameboard->units().end() ) {
 		// Sync problem?
 		std::stringstream errbuf;
 		errbuf << "Recruiting leader not found at " << from << ".\n";
@@ -181,7 +181,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(attack, child, /*use_undo*/, show, error_handler
 		def_weapon_num = -1;
 	}
 
-	unit_map::iterator u = resources::units->find(src);
+	unit_map::iterator u = resources::gameboard->units().find(src);
 	if (!u.valid()) {
 		error_handler("unfound location for source of attack\n", true);
 		return false;
@@ -199,7 +199,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(attack, child, /*use_undo*/, show, error_handler
 		return false;
 	}
 
-	unit_map::const_iterator tgt = resources::units->find(dst);
+	unit_map::const_iterator tgt = resources::gameboard->units().find(dst);
 
 	if (!tgt.valid()) {
 		std::stringstream errbuf;
@@ -289,7 +289,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(move, child,  use_undo, show, error_handler)
 		// 'event' doesn't mean wml event but rather it means 'hidden' units form the movers point of view.
 	}
 
-	u = resources::units->find(src);
+	u = resources::gameboard->units().find(src);
 	if (!u.valid()) {
 		std::stringstream errbuf;
 		errbuf << "unfound location for source of movement: "
@@ -406,8 +406,8 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_unit, child,  use_undo, /*show*/, /*error_
 	const std::string name = child["name"];
 	const std::string value = child["value"];
 
-	unit_map::iterator i = resources::units->find(loc);
-	if (i == resources::units->end()) {
+	unit_map::iterator i = resources::gameboard->units().find(loc);
+	if (i == resources::gameboard->units().end()) {
 		return false;
 	}
 	if (name == "advances" ) {
@@ -416,7 +416,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_unit, child,  use_undo, /*show*/, /*error_
 			i->set_experience(i->max_experience());
 
 			advance_unit_at(advance_unit_params(loc).force_dialog(true));
-			i = resources::units->find(loc);
+			i = resources::gameboard->units().find(loc);
 			if (!i.valid()) {
 				break;
 			}
@@ -436,10 +436,10 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_unit, child,  use_undo, /*show*/, /*error_
 	} else {
 		config cfg;
 		i->write(cfg);
-		resources::units->erase(loc);
+		resources::gameboard->units().erase(loc);
 		cfg[name] = value;
 		unit new_u(cfg, true);
-		resources::units->add(loc, new_u);
+		resources::gameboard->units().add(loc, new_u);
 	}
 	if (name == "fail") { //testcase for bug #18488
 		assert(i.valid());
@@ -472,7 +472,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_create_unit, child,  use_undo, /*show*/, e
 	created.new_turn();
 
 	// Add the unit to the board.
-	std::pair<unit_map::iterator, bool> add_result = resources::units->replace(loc, created);
+	std::pair<unit_map::iterator, bool> add_result = resources::gameboard->units().replace(loc, created);
 	resources::screen->invalidate_unit();
 	resources::game_events->pump().fire("unit_placed", loc);
 	unit_display::unit_recruited(loc);
@@ -511,8 +511,8 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_kill, child, use_undo, /*show*/, /*error_h
 	debug_notification("kill debug command was used during turn of $player");
 	
 	const map_location loc(child["x"].to_int(), child["y"].to_int(), wml_loc());
-	const unit_map::iterator i = resources::units->find(loc);
-	if (i != resources::units->end()) {
+	const unit_map::iterator i = resources::gameboard->units().find(loc);
+	if (i != resources::gameboard->units().end()) {
 		const int dying_side = i->side();
 		resources::controller->pump().fire("last_breath", loc, loc);
 		if (i.valid()) {
@@ -522,7 +522,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_kill, child, use_undo, /*show*/, /*error_h
 		i->set_hitpoints(0);
 		resources::controller->pump().fire("die", loc, loc);
 		if (i.valid()) {
-			resources::units->erase(i);
+			resources::gameboard->units().erase(i);
 		}
 		actions::recalculate_fog(dying_side);
 	}

@@ -210,7 +210,7 @@ pathfind::plain_route formula_ai::shortest_path_calculator(const map_location &s
 {
     map_location destination = dst;
 
-    unit_map &units_ = *resources::units;
+    unit_map &units_ = resources::gameboard->units();
     pathfind::shortest_path_calculator calc(*unit_it, current_team(), resources::gameboard->teams(), resources::gameboard->map());
 
     unit_map::const_iterator dst_un = units_.find(destination);
@@ -279,7 +279,7 @@ variant formula_ai::execute_variant(const variant& var, ai_context &ai_, bool co
 
 	variant error;
 
-	unit_map& units = *resources::units;
+	unit_map& units = resources::gameboard->units();
 
 	while( !vars.empty() ) {
 
@@ -577,7 +577,7 @@ variant villages_from_set(const Container& villages,
 
 variant formula_ai::get_value(const std::string& key) const
 {
-	const unit_map& units = *resources::units;
+	const unit_map& units = resources::gameboard->units();
 
 	if(key == "aggression")
 	{
@@ -966,7 +966,7 @@ void formula_ai::on_create(){
 
 void formula_ai::evaluate_candidate_action(ca_ptr fai_ca)
 {
-	fai_ca->evaluate(this,*resources::units);
+	fai_ca->evaluate(this,resources::gameboard->units());
 
 }
 

@@ -784,7 +784,7 @@ void wml_animation_internal(unit_animator &animator, const vconfig &cfg, const m
 {
 	unit_const_ptr u;
 
-	unit_map::const_iterator u_it = resources::units->find(default_location);
+	unit_map::const_iterator u_it = resources::gameboard->units().find(default_location);
 	if (u_it.valid()) {
 		u = u_it.get_shared_ptr();
 	}

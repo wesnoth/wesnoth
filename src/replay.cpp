@@ -207,7 +207,7 @@ void replay::add_unit_checksum(const map_location& loc,config& cfg)
 	}
 	config& cc = cfg.add_child("checksum");
 	loc.write(cc);
-	unit_map::const_iterator u = resources::units->find(loc);
+	unit_map::const_iterator u = resources::gameboard->units().find(loc);
 	assert(u.valid());
 	cc["value"] = get_checksum(*u);
 }
@@ -742,7 +742,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 			const map_location loc(rename);
 			const std::string &name = rename["name"];
 
-			unit_map::iterator u = resources::units->find(loc);
+			unit_map::iterator u = resources::gameboard->units().find(loc);
 			if (u.valid() && !u->unrenamable()) {
 				u->rename(name);
 			} else {
@@ -787,7 +787,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 			else
 			{
 				if (const config &cfg_verify = cfg->child("verify")) {
-					verify(*resources::units, cfg_verify);
+					verify(resources::gameboard->units(), cfg_verify);
 				}
 
 				return REPLAY_FOUND_END_TURN;
@@ -862,7 +862,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 		}
 
 		if (const config &child = cfg->child("verify")) {
-			verify(*resources::units, child);
+			verify(resources::gameboard->units(), child);
 		}
 	}
 }

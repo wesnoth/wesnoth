@@ -65,7 +65,7 @@ unit_const_ptr find_backup_leader(const unit & leader)
 {
 	assert(leader.can_recruit());
 	assert(resources::gameboard->map().is_keep(leader.get_location()));
-	for (unit_map::const_iterator unit = resources::units->begin(); unit != resources::units->end(); unit++)
+	for (unit_map::const_iterator unit = resources::gameboard->units().begin(); unit != resources::gameboard->units().end(); unit++)
 	{
 		if (unit->can_recruit() && unit->id() != leader.id())
 		{
@@ -81,7 +81,7 @@ unit* find_recruiter(size_t team_index, map_location const& hex)
 	if ( !resources::gameboard->map().is_castle(hex) )
 		return nullptr;
 
-	for(unit& u : *resources::units)
+	for(unit& u : resources::gameboard->units())
 		if(u.can_recruit()
 				&& u.side() == static_cast<int>(team_index+1)
 				&& dynamic_cast<game_state*>(resources::filter_con)->can_recruit_on(u, hex))

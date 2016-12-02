@@ -162,7 +162,6 @@ void editor_controller::init_music(const config& game_config)
 
 editor_controller::~editor_controller()
 {
-	resources::units = nullptr;
 	resources::tod_manager = nullptr;
 	resources::gameboard = nullptr;
 
@@ -581,8 +580,8 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 		case editor::UNIT_FACING:
 			{
 				unit_map::const_unit_iterator un =
-					resources::units->find(gui_->mouseover_hex());
-				assert(un != resources::units->end());
+					resources::gameboard->units().find(gui_->mouseover_hex());
+				assert(un != resources::gameboard->units().end());
 				return un->facing() == index ? ACTION_SELECTED : ACTION_DESELECTED;
 			}
 		}
@@ -683,8 +682,8 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 			case UNIT_FACING:
 				{
 					unit_map::unit_iterator un =
-							resources::units->find(gui_->mouseover_hex());
-					assert(un != resources::units->end());
+							resources::gameboard->units().find(gui_->mouseover_hex());
+					assert(un != resources::gameboard->units().end());
 					un->set_facing(map_location::DIRECTION(index));
 					un->anim_comp().set_standing();
 					return true;

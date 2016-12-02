@@ -824,7 +824,7 @@ static int impl_ai_aspect_get(lua_State* L)
 		}
 		int my_side = get_engine(L).get_readonly_context().get_side();
 		std::vector<unit_const_ptr> attackers, enemies;
-		for(unit_map::const_iterator u = resources::units->begin(); u != resources::units->end(); ++u) {
+		for(unit_map::const_iterator u = resources::gameboard->units().begin(); u != resources::gameboard->units().end(); ++u) {
 			if(!u.valid()) {
 				continue;
 			}
@@ -853,7 +853,7 @@ static int impl_ai_aspect_get(lua_State* L)
 		int my_side = get_engine(L).get_readonly_context().get_side();
 		lua_newtable(L);
 		std::hash<map_location> lhash;
-		for (unit_map::const_iterator u = resources::units->begin(); u != resources::units->end(); ++u) {
+		for (unit_map::const_iterator u = resources::gameboard->units().begin(); u != resources::gameboard->units().end(); ++u) {
 			if (!u.valid() || u->side() != my_side) {
 				continue;
 			}

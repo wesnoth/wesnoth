@@ -449,7 +449,7 @@ WML_HANDLER_FUNCTION(recall,, cfg)
 		}
 
 		recall_list_manager & avail = resources::gameboard->teams()[index].recall_list();
-		std::vector<unit_map::unit_iterator> leaders = resources::units->find_leaders(index + 1);
+		std::vector<unit_map::unit_iterator> leaders = resources::gameboard->units().find_leaders(index + 1);
 
 		const unit_filter ufilt(unit_filter_cfg, resources::filter_con);
 		const unit_filter lfilt(leader_filter, resources::filter_con); // Note that if leader_filter is null, this correctly gives a null filter that matches all units.
@@ -472,7 +472,7 @@ WML_HANDLER_FUNCTION(recall,, cfg)
 						DBG_NG << "...matched the leader filter and is able to recall the unit.\n";
 						if(!resources::gameboard->map().on_board(loc))
 							loc = leader->get_location();
-						if(pass_check || (resources::units->count(loc) > 0))
+						if(pass_check || (resources::gameboard->units().count(loc) > 0))
 							loc = pathfind::find_vacant_tile(loc, pathfind::VACANT_ANY, pass_check);
 						if(resources::gameboard->map().on_board(loc)) {
 							DBG_NG << "...valid location for the recall found. Recalling.\n";
@@ -486,7 +486,7 @@ WML_HANDLER_FUNCTION(recall,, cfg)
 				}
 				if (resources::gameboard->map().on_board(cfg_loc)) {
 					map_location loc = cfg_loc;
-					if(pass_check || (resources::units->count(loc) > 0))
+					if(pass_check || (resources::gameboard->units().count(loc) > 0))
 						loc = pathfind::find_vacant_tile(loc, pathfind::VACANT_ANY, pass_check);
 					// Check if we still have a valid location
 					if (resources::gameboard->map().on_board(loc)) {

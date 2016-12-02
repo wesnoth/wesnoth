@@ -809,9 +809,9 @@ namespace {
 		update_att_fog_(false),
 		update_def_fog_(false),
 		update_minimap_(false),
-		a_(attacker, attack_with, *resources::units),
-		d_(defender, defend_with, *resources::units),
-		units_(*resources::units),
+		a_(attacker, attack_with, resources::gameboard->units()),
+		d_(defender, defend_with, resources::gameboard->units()),
+		units_(resources::gameboard->units()),
 		errbuf_(),
 		update_display_(update_display),
 		OOS_error_(false)
@@ -1404,13 +1404,13 @@ void attack_unit_and_advance(const map_location &attacker, const map_location &d
 				 const ai::unit_advancements_aspect& ai_advancement)
 {
 	attack_unit(attacker, defender, attack_with, defend_with, update_display);
-	unit_map::const_iterator atku = resources::units->find(attacker);
-	if (atku != resources::units->end()) {
+	unit_map::const_iterator atku = resources::gameboard->units().find(attacker);
+	if (atku != resources::gameboard->units().end()) {
 		advance_unit_at(advance_unit_params(attacker).ai_advancements(ai_advancement));
 	}
 
-	unit_map::const_iterator defu = resources::units->find(defender);
-	if (defu != resources::units->end()) {
+	unit_map::const_iterator defu = resources::gameboard->units().find(defender);
+	if (defu != resources::gameboard->units().end()) {
 		advance_unit_at(advance_unit_params(defender).ai_advancements(ai_advancement));
 	}
 }

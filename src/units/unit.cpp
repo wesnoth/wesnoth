@@ -2396,10 +2396,10 @@ unit_movement_resetter::unit_movement_resetter(const unit &u, bool operate) :
 
 unit_movement_resetter::~unit_movement_resetter()
 {
-	assert(resources::units);
+	assert(resources::gameboard);
 	try {
 
-	if(!resources::units->has_unit(&u_)) {
+	if(!resources::gameboard->units().has_unit(&u_)) {
 		/*
 		 * It might be valid that the unit is not in the unit map.
 		 * It might also mean a no longer valid unit will be assigned to.

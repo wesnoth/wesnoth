@@ -204,7 +204,7 @@ void recall::redraw()
 action::error recall::check_validity() const
 {
 	//Check that destination hex is still free
-	if(resources::units->find(recall_hex_) != resources::units->end()) {
+	if(resources::gameboard->units().find(recall_hex_) != resources::gameboard->units().end()) {
 		return LOCATION_OCCUPIED;
 	}
 	//Check that unit to recall is still in side's recall list

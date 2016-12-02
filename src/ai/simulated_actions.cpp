@@ -46,8 +46,8 @@ void helper_advance_unit(const map_location& loc);
 bool simulated_attack(const map_location& attacker_loc, const map_location& defender_loc, double attacker_hp, double defender_hp){
 	LOG_AI_SIM_ACTIONS << "Simulated attack" << std::endl;
 
-	unit_map::iterator attack_unit = resources::units->find(attacker_loc);
-	unit_map::iterator defend_unit = resources::units->find(defender_loc);
+	unit_map::iterator attack_unit = resources::gameboard->units().find(attacker_loc);
+	unit_map::iterator defend_unit = resources::gameboard->units().find(defender_loc);
 
 	LOG_AI_SIM_ACTIONS << attack_unit->type_name() << " at " << attacker_loc << " attack "
 		<< defend_unit->type_name() << " at " << defender_loc << std::endl;
@@ -67,14 +67,14 @@ bool simulated_attack(const map_location& attacker_loc, const map_location& defe
 	if(attack_unit->hitpoints() <= 0){
 		attacker_xp = 0;
 		defender_xp = game_config::kill_xp(attack_unit->level());
-		(*resources::units).erase(attacker_loc);
+		(resources::gameboard->units()).erase(attacker_loc);
 		attacker_died = true;
 	}
 
 	if(defend_unit->hitpoints() <= 0){
 		defender_xp = 0;
 		attacker_xp = game_config::kill_xp(defend_unit->level());
-		(*resources::units).erase(defender_loc);
+		(resources::gameboard->units()).erase(defender_loc);
 		defender_died = true;
 	}
 
@@ -97,7 +97,7 @@ bool simulated_move(int side, const map_location& from, const map_location& to, 
 	LOG_AI_SIM_ACTIONS << "Simulated move" << std::endl;
 
 	// In simulation, AI should not know if there is a enemy's ambusher.
-	std::pair<unit_map::unit_iterator, bool> unit_move = resources::units->move(from, to);
+	std::pair<unit_map::unit_iterator, bool> unit_move = resources::gameboard->units().move(from, to);
 	bool is_ok = unit_move.second;
 	if(!is_ok){
 		unit_location = to;	// This happened because in some CAs like get_village_phase and move_leader_to_keep phase,
@@ -152,7 +152,7 @@ bool simulated_recruit(int side, const unit_type* u, const map_location& recruit
 bool simulated_stopunit(const map_location& unit_location, bool remove_movement, bool remove_attacks){
 	LOG_AI_SIM_ACTIONS << "Simulated stopunit" << std::endl;
 
-	unit_map::iterator stop_unit = resources::units->find(unit_location);
+	unit_map::iterator stop_unit = resources::gameboard->units().find(unit_location);
 	bool changed = false;
 	if(remove_movement){
 		stop_unit->set_movement(0, true);
@@ -184,7 +184,7 @@ void helper_check_village(const map_location& loc, int side){
 		return;
 	}
 
-	bool has_leader = resources::units->find_leader(side).valid();
+	bool has_leader = resources::gameboard->units().find_leader(side).valid();
 
 	// Strip the village off all other sides.
 	int old_owner_side = 0;
@@ -214,7 +214,7 @@ void helper_place_unit(const unit& u, const map_location& loc){
 	new_unit.set_attacks(0);
 	new_unit.heal_all();
 
-	std::pair<unit_map::iterator, bool> add_result = resources::units->add(loc, new_unit);
+	std::pair<unit_map::iterator, bool> add_result = resources::gameboard->units().add(loc, new_unit);
 	assert(add_result.second);
 	unit_map::iterator& new_unit_itor = add_result.first;
 
@@ -229,7 +229,7 @@ void helper_advance_unit(const map_location& loc){
 	// Then get all possible options, include modification advancements, like {AMLA DEFAULT} in cfg.
 	// And then randomly choose one to advanced to.
 
-	unit_map::iterator advance_unit = resources::units->find(loc);
+	unit_map::iterator advance_unit = resources::gameboard->units().find(loc);
 
 	if(!unit_helper::will_certainly_advance(advance_unit))
 		return;
@@ -260,7 +260,7 @@ void helper_advance_unit(const map_location& loc){
 		advanced_unit.add_modification("advancement", mod_option);
 	}
 
-	resources::units->replace(loc, advanced_unit);
+	resources::gameboard->units().replace(loc, advanced_unit);
 	LOG_AI_SIM_ACTIONS << advance_unit->type_name() << " at " << loc << " advanced to " << advanced_unit.type_name() << std::endl;
 }
 

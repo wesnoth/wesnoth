@@ -137,7 +137,7 @@ void attack::execute(bool& success, bool& complete)
 	complete = true;
 
 	//check that attacking unit is still alive, if not, consider the attack a failure
-	unit_map::const_iterator survivor = resources::units->find(get_dest_hex());
+	unit_map::const_iterator survivor = resources::gameboard->units().find(get_dest_hex());
 	if(!survivor.valid() || survivor->id() != unit_id_)
 	{
 		success = false;
@@ -234,7 +234,7 @@ action::error attack::check_validity() const
 		return INVALID_LOCATION;
 	}
 	// Verify that the target hex isn't empty
-	if(resources::units->find(target_hex_) == resources::units->end()){
+	if(resources::gameboard->units().find(target_hex_) == resources::gameboard->units().end()){
 		return NO_TARGET;
 	}
 	// Verify that the attacking unit has attacks left
@@ -242,7 +242,7 @@ action::error attack::check_validity() const
 		return NO_ATTACK_LEFT;
 	}
 	// Verify that the attacker and target are enemies
-	if(!resources::gameboard->teams()[get_unit()->side() - 1].is_enemy(resources::units->find(target_hex_)->side())){
+	if(!resources::gameboard->teams()[get_unit()->side() - 1].is_enemy(resources::gameboard->units().find(target_hex_)->side())){
 		return NOT_AN_ENEMY;
 	}
 	//@todo: (maybe) verify that the target hex contains the same unit that before,

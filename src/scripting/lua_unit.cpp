@@ -47,7 +47,7 @@ unit* lua_unit::get()
 	if (side) {
 		return resources::gameboard->teams()[side - 1].recall_list().find_if_matches_underlying_id(uid).get();
 	}
-	unit_map::unit_iterator ui = resources::units->find(uid);
+	unit_map::unit_iterator ui = resources::gameboard->units().find(uid);
 	if (!ui.valid()) return nullptr;
 	return ui.get_shared_ptr().get(); //&*ui would not be legal, must get new shared_ptr by copy ctor because the unit_map itself is holding a boost shared pointer.
 }
@@ -57,7 +57,7 @@ unit_ptr lua_unit::get_shared()
 	if (side) {
 		return resources::gameboard->teams()[side - 1].recall_list().find_if_matches_underlying_id(uid);
 	}
-	unit_map::unit_iterator ui = resources::units->find(uid);
+	unit_map::unit_iterator ui = resources::gameboard->units().find(uid);
 	if (!ui.valid()) return unit_ptr();
 	return ui.get_shared_ptr(); //&*ui would not be legal, must get new shared_ptr by copy ctor because the unit_map itself is holding a boost shared pointer.
 }
@@ -70,8 +70,8 @@ bool lua_unit::put_map(const map_location &loc)
 {
 	if (ptr) {
 		ptr->set_location(loc);
-		resources::units->erase(loc);
-		std::pair<unit_map::unit_iterator, bool> res = resources::units->insert(ptr);
+		resources::gameboard->units().erase(loc);
+		std::pair<unit_map::unit_iterator, bool> res = resources::gameboard->units().insert(ptr);
 		if (res.second) {
 			ptr.reset();
 			uid = res.first->underlying_id();
@@ -84,18 +84,18 @@ bool lua_unit::put_map(const map_location &loc)
 		if (it) {
 			side = 0;
 			// uid may be changed by unit_map on insertion
-			uid = resources::units->replace(loc, *it).first->underlying_id();
+			uid = resources::gameboard->units().replace(loc, *it).first->underlying_id();
 		} else {
 			ERR_LUA << "Could not find unit " << uid << " on recall list of side " << side << '\n';
 			return false;
 		}
 	} else { // on map
-		unit_map::unit_iterator ui = resources::units->find(uid);
-		if (ui != resources::units->end()) {
+		unit_map::unit_iterator ui = resources::gameboard->units().find(uid);
+		if (ui != resources::gameboard->units().end()) {
 			map_location from = ui->get_location();
 			if (from != loc) { // This check is redundant in current usage
-				resources::units->erase(loc);
-				resources::units->move(from, loc);
+				resources::gameboard->units().erase(loc);
+				resources::gameboard->units().move(from, loc);
 			}
 			// No need to change our contents
 		} else {

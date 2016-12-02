@@ -1,4 +1,5 @@
 #include "actions/undo_action.hpp"
+#include "game_board.hpp"
 #include "scripting/game_lua_kernel.hpp"
 #include "resources.hpp"
 #include "variable.hpp" // vconfig
@@ -73,8 +74,8 @@ undo_action::undo_action(const config& cfg)
 
 namespace {
 	unit_ptr get_unit(size_t uid, const std::string& id) {
-		assert(resources::units);
-		auto iter = resources::units->find(uid);
+		assert(resources::gameboard);
+		auto iter = resources::gameboard->units().find(uid);
 		if(!iter.valid() || iter->id() != id) {
 			return nullptr;
 		}
@@ -94,10 +95,10 @@ namespace {
 
 		std::unique_ptr<scoped_xy_unit> u1, u2;
 		if(unit_ptr who = get_unit(e.uid1, e.id1)) {
-			u1.reset(new scoped_xy_unit("unit", who->get_location(), *resources::units));
+			u1.reset(new scoped_xy_unit("unit", who->get_location(), resources::gameboard->units()));
 		}
 		if(unit_ptr who = get_unit(e.uid2, e.id2)) {
-			u2.reset(new scoped_xy_unit("unit", who->get_location(), *resources::units));
+			u2.reset(new scoped_xy_unit("unit", who->get_location(), resources::gameboard->units()));
 		}
 
 		scoped_weapon_info w1("weapon", e.data.child("first"));

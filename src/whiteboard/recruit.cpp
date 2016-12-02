@@ -182,7 +182,7 @@ unit_ptr recruit::create_corresponding_unit()
 action::error recruit::check_validity() const
 {
 	//Check that destination hex is still free
-	if(resources::units->find(recruit_hex_) != resources::units->end()) {
+	if(resources::gameboard->units().find(recruit_hex_) != resources::gameboard->units().end()) {
 		return LOCATION_OCCUPIED;
 	}
 	//Check that unit to recruit is still in side's recruit list

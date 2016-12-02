@@ -30,6 +30,7 @@
 #include "resources.hpp"
 #include "ai/lua/core.hpp"
 #include "ai/lua/lua_object.hpp"
+#include "game_board.hpp"
 #include "scripting/game_lua_kernel.hpp"
 #include "util.hpp"
 #include "units/unit.hpp"
@@ -180,12 +181,12 @@ public:
 		, bound_unit_()
 	{
 		map_location loc(cfg["unit_x"], cfg["unit_y"], wml_loc()); // lua and c++ coords differ by one
-		bound_unit_ = unit_ptr(new unit(*resources::units->find(loc)));
+		bound_unit_ = unit_ptr(new unit(*resources::gameboard->units().find(loc)));
 	}
 
 	virtual double evaluate()
 	{
-		if (resources::units->find(bound_unit_->underlying_id()).valid())
+		if (resources::gameboard->units().find(bound_unit_->underlying_id()).valid())
 		{
 			return lua_candidate_action_wrapper_base::evaluate();
 		}

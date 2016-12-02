@@ -147,7 +147,7 @@ void target_unit_goal::add_targets(std::back_insert_iterator< std::vector< targe
 
 	//find the enemy leaders and explicit targets
 	const unit_filter ufilt(vconfig(criteria), resources::filter_con);
-	for (const unit &u : *resources::units) {
+	for (const unit &u : resources::gameboard->units()) {
 		if (ufilt( u )) {
 			LOG_AI_GOAL << "found explicit target unit at ... " << u.get_location() << " with value: " << value() << "\n";
 			*target_list = target(u.get_location(), value(), target::TYPE::EXPLICIT);
@@ -258,7 +258,7 @@ void protect_goal::add_targets(std::back_insert_iterator< std::vector< target > 
 		DBG_AI_GOAL << "side " << get_side() << ": "<< goal_type << " goal with criteria" << std::endl << cfg_.child("criteria") << std::endl;
 	}
 
-	unit_map &units = *resources::units;
+	unit_map &units = resources::gameboard->units();
 
 	std::set<map_location> items;
 	if (protect_unit_) {

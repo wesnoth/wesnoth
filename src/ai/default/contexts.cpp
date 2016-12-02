@@ -69,7 +69,7 @@ default_ai_context_impl::~default_ai_context_impl()
 int default_ai_context_impl::count_free_hexes_in_castle(const map_location &loc, std::set<map_location> &checked_hexes)
 {
 	int ret = 0;
-	unit_map &units_ = *resources::units;
+	unit_map &units_ = resources::gameboard->units();
 	map_location adj[6];
 	get_adjacent_tiles(loc,adj);
 	for(size_t n = 0; n != 6; ++n) {
@@ -132,7 +132,7 @@ std::vector<target> default_ai_context_impl::find_targets(const move_map& enemy_
 {
 
 	log_scope2(log_ai, "finding targets...");
-	unit_map &units_ = *resources::units;
+	unit_map &units_ = resources::gameboard->units();
 	unit_map::iterator leader = units_.find_leader(get_side());
 	const gamemap &map_ = resources::gameboard->map();
 	std::vector<team> teams_ = resources::gameboard->teams();

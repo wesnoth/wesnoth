@@ -48,14 +48,14 @@ namespace builtin_conditions {
 
 	bool have_unit(const vconfig& cfg)
 	{
-		if(resources::units == nullptr) {
+		if(!resources::gameboard) {
 			return false;
 		}
 		std::vector<std::pair<int,int> > counts = cfg.has_attribute("count")
 			? utils::parse_ranges(cfg["count"]) : default_counts;
 		int match_count = 0;
 		const unit_filter ufilt(cfg, resources::filter_con);
-		for(const unit &i : *resources::units) {
+		for(const unit &i : resources::gameboard->units()) {
 			if(i.hitpoints() > 0 && ufilt(i)) {
 				++match_count;
 				if(counts == default_counts) {

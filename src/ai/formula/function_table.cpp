@@ -276,10 +276,10 @@ private:
 		for( size_t i = 0; i< number_of_teams; ++i)
 			scores[i].resize(w*h);
 
-//		for(unit_map::const_iterator i = resources::units->begin(); i != resources::units->end(); ++i) {
+//		for(unit_map::const_iterator i = resources::gameboard->units().begin(); i != resources::gameboard->units().end(); ++i) {
 //			unit_counter[i->second.side()-1]++;
 //			unit_adapter unit(i->second);
-//			find_movemap( resources::gameboard->map(), *resources::units, unit, i->first, scores[i->second.side()-1], ai_.resources::gameboard->teams() , true );
+//			find_movemap( resources::gameboard->map(), resources::gameboard->units(), unit, i->first, scores[i->second.side()-1], ai_.resources::gameboard->teams() , true );
 //		}
 
 		for(size_t side = 0 ; side < units_input.num_elements() ; ++side) {
@@ -646,7 +646,7 @@ public:
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		const map_location loc = convert_variant<location_callable>(args()[0]->evaluate(variables,add_debug_info(fdb,0,"suitable_keep:location")))->loc();
-		const unit_map& units = *resources::units;
+		const unit_map& units = resources::gameboard->units();
 		const unit_map::const_iterator u = units.find(loc);
 		if (u == units.end()){
 			return variant();
@@ -708,8 +708,8 @@ private:
 			range_s = 0;
 		}
 		size_t range = static_cast<size_t>(range_s);
-		unit_map::const_iterator un = resources::units->begin();
-		unit_map::const_iterator end = resources::units->end();
+		unit_map::const_iterator un = resources::gameboard->units().begin();
+		unit_map::const_iterator end = resources::gameboard->units().end();
 		while (un != end) {
 			if (distance_between(loc, un->get_location()) <= range) {
 				if (un->side() != ai_.get_side()) {//fixme: ignores allied units
@@ -738,7 +738,7 @@ private:
 		if (args().size() > 3) weapon = args()[3]->evaluate(variables,add_debug_info(fdb,3,"calculate_outcome:weapon")).as_int();
 		else weapon = -1;
 
-		const unit_map& units = *resources::units;
+		const unit_map& units = resources::gameboard->units();
 		map_location attacker_location =
 			convert_variant<location_callable>(args()[0]->evaluate(variables,add_debug_info(fdb,0,"calculate_outcome:attacker_current_location")))->loc();
 		if(units.count(attacker_location) == 0) {
@@ -819,7 +819,7 @@ private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		variant attack = args()[0]->evaluate(variables,add_debug_info(fdb,0,"outcomes:attack"));
 		ai::attack_analysis* analysis = convert_variant<ai::attack_analysis>(attack);
-		//unit_map units_with_moves(*resources::units);
+		//unit_map units_with_moves(resources::gameboard->units());
 		//typedef std::pair<map_location, map_location> mv;
 		//for(const mv &m : analysis->movements) {
 		//	units_with_moves.move(m.first, m.second);
@@ -956,9 +956,9 @@ private:
                 else
                     unit_loc = src;
 
-                unit_map::iterator unit_it = resources::units->find(unit_loc);
+                unit_map::iterator unit_it = resources::gameboard->units().find(unit_loc);
 
-		if( unit_it == resources::units->end() ) {
+		if( unit_it == resources::gameboard->units().end() ) {
 			std::ostringstream str;
 			str << "shortest_path function: expected unit at location (" << (unit_loc.wml_x()) << "," << (unit_loc.wml_y()) << ")";
 			throw formula_error( str.str(), "", "", 0);
@@ -1006,9 +1006,9 @@ private:
                 else
                     unit_loc = src;
 
-                unit_map::iterator unit_it = resources::units->find(unit_loc);
+                unit_map::iterator unit_it = resources::gameboard->units().find(unit_loc);
 
-		if( unit_it == resources::units->end() ) {
+		if( unit_it == resources::gameboard->units().end() ) {
 			std::ostringstream str;
 			str << "simplest_path function: expected unit at location (" << (unit_loc.wml_x()) << "," << (unit_loc.wml_y()) << ")";
 			throw formula_error( str.str(), "", "", 0);
@@ -1060,9 +1060,9 @@ private:
                 else
                     unit_loc = src;
 
-                unit_map::iterator unit_it = resources::units->find(unit_loc);
+                unit_map::iterator unit_it = resources::gameboard->units().find(unit_loc);
 
-		if( unit_it == resources::units->end() ) {
+		if( unit_it == resources::gameboard->units().end() ) {
 			std::ostringstream str;
 			str << "next_hop function: expected unit at location (" << (unit_loc.wml_x()) << "," << (unit_loc.wml_y()) << ")";
 			throw formula_error( str.str(), "", "", 0);
@@ -1182,7 +1182,7 @@ private:
 		const map_location src = convert_variant<location_callable>(args()[1]->evaluate(variables,add_debug_info(fdb,1,"attack:src")))->loc();
 		const map_location dst = convert_variant<location_callable>(args()[2]->evaluate(variables,add_debug_info(fdb,2,"attack:dst")))->loc();
 		const int weapon = args().size() == 4 ? args()[3]->evaluate(variables,add_debug_info(fdb,3,"attack:weapon")).as_int() : -1;
-		if(resources::units->count(move_from) == 0 || resources::units->count(dst) == 0) {
+		if(resources::gameboard->units().count(move_from) == 0 || resources::gameboard->units().count(dst) == 0) {
 			ERR_AI << "AI ERROR: Formula produced illegal attack: " << move_from << " -> " << src << " -> " << dst << std::endl;
 			return variant();
 		}
@@ -1311,8 +1311,8 @@ private:
 			return variant();
 		}
 		const location_callable* loc = convert_variant<location_callable>(loc_var);
-		const unit_map::const_iterator i = resources::units->find(loc->loc());
-		if(i != resources::units->end()) {
+		const unit_map::const_iterator i = resources::gameboard->units().find(loc->loc());
+		if(i != resources::gameboard->units().end()) {
 			return variant(new unit_callable(*i));
 		} else {
 			return variant();
@@ -1363,8 +1363,8 @@ private:
 		std::pair<ai::move_map::const_iterator,ai::move_map::const_iterator> range =
 			dstsrc.equal_range(convert_variant<location_callable>(args()[1]->evaluate(variables,add_debug_info(fdb,1,"units_can_reach:possible_move_list")))->loc());
 		while(range.first != range.second) {
-			unit_map::const_iterator un = resources::units->find(range.first->second);
-			assert(un != resources::units->end());
+			unit_map::const_iterator un = resources::gameboard->units().find(range.first->second);
+			assert(un != resources::gameboard->units().end());
 			vars.push_back(variant(new unit_callable(*un)));
 			++range.first;
 		}
