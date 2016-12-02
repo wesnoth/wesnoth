@@ -162,6 +162,7 @@ if __name__ == '__main__':
                 for msg in messages:
                     print('PRIVMSG #{} :{}'.format(channel, msg))
                     irc_sock.send('PRIVMSG #{} :{}\r\n'.format(channel, msg).encode())
+                time.sleep(5)
                 # leave the channel
                 irc_sock.send('PART #{}\r\n'.format(channel).encode())
                 sys.exit()
