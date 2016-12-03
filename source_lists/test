@@ -7,6 +7,7 @@ tests/main.cpp
 tests/test_addons.cpp
 tests/test_commandline_options.cpp
 tests/test_config.cpp
+tests/test_config_cache.cpp
 tests/test_filesystem.cpp
 tests/test_formula_ai.cpp
 tests/test_formula_core.cpp
@@ -25,5 +26,7 @@ tests/test_unit_map.cpp
 tests/test_util.cpp
 tests/test_version.cpp
 tests/test_whiteboard_side_actions.cpp
+tests/utils/fake_display.cpp
+tests/utils/fake_event_source.cpp
+tests/utils/game_config_manager.cpp
 tests/utils/play_scenario.cpp
-tests/test_config_cache.cpp

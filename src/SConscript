@@ -7,7 +7,7 @@ from glob import glob
 Import("*")
 
 #
-# load list of sources from the file in scons/sources/
+# load list of sources from the file in source_lists/
 #
 def GetSources(filename):
     sources = []
@@ -123,6 +123,7 @@ libwesnoth_extras.extend(env_lua.Library("lua", objs_lua))
 #
 # Target declarations
 #
+#---start valid scons default_targets---#
 
 def error_action(target, source, env):
     from SCons.Errors import UserError
@@ -154,7 +155,6 @@ if env["PLATFORM"] == 'darwin':
 	wesnoth_objects.append("macosx/SDLMain.mm")
 client_env.WesnothProgram("wesnoth", wesnoth_objects, have_client_prereqs)
 
-#---start valid scons targets---#
 #---wesnothd---
 wesnothd_sources = GetSources("wesnothd")
 env.WesnothProgram("wesnothd", wesnothd_sources + [libwesnoth_core, env["wesnothd_res"]], have_server_prereqs)
@@ -174,9 +174,9 @@ client_env.WesnothProgram("exploder", exploder_sources + [libwesnoth_core, libwe
 #---test---
 test_sources = GetSources("test")
 test = test_env.WesnothProgram("test", test_sources +  [libwesnoth_extras, libwesnoth_core, libwesnoth, libwesnoth_sdl, libwesnoth_extras], have_test_prereqs)
-#---end valid scons targets---#
+#---end valid scons default_targets---#
 
-#---start invalid scons targets---#
+#---start invalid scons default_targets---#
 #---schema_generator---
 schema_generator_sources = GetSources("schema_generator")
 client_env.WesnothProgram("schema_generator", schema_generator_sources + [libwesnoth_core], have_client_prereqs, OBJPREFIX = "schema_generator_")
@@ -192,7 +192,7 @@ client_env.WesnothProgram("wesmage", wesmage_sources + [libwesnoth_core], have_c
 #---create_images---
 create_images_sources = GetSources("create_images")
 env.WesnothProgram("create_images", create_images_sources + [libwesnoth_core], have_server_prereqs, OBJPREFIX = "create_images_", LIBS = ["$LIBS", "png"])
-#---end invalid scons targets---#
+#---end invalid scons default_targets---#
 #---end of getting sources---
 
 if env.get("have_autorevision"):
