@@ -40,8 +40,7 @@ static lg::log_domain log_network("network");
 
 namespace mp {
 
-// To remove radundant informaion in the clientside internal programmflow
-// I want to remove these values from mp_settings so i need to readd them here
+// This is for the wesnothd server, it expects a more detailed summary in [multiplayer]
 static void add_multiplayer_classification(config& multiplayer, saved_game& state)
 {
 	multiplayer["mp_scenario"] = state.get_scenario_id();
