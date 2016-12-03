@@ -477,10 +477,12 @@ const color_range& color_info(const std::string& name)
 	}
 
 	std::vector<color_t> temp;
-	try {
-		temp.push_back(color_t::from_hex_string(name));
-	} catch(std::invalid_argument& e) {
-		throw config::error(_("Invalid color range: ") + name);
+	for(const auto& s : utils::split(name)) {
+		try {
+			temp.push_back(color_t::from_hex_string(s));
+		} catch(std::invalid_argument& e) {
+			throw config::error(_("Invalid color in range: ") + s);
+		}
 	}
 
 	team_rgb_range.insert({name, color_range(temp)});
