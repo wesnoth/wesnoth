@@ -165,7 +165,6 @@ private:
 	void draw();
 	bool hidden() const;
 	bool viewable(const display_context & dc) const;
-	std::string cfg_color() const;
 
 	int handle_;
 	int tooltip_handle_;

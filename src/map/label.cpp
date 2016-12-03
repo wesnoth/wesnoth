@@ -409,7 +409,7 @@ void terrain_label::write(config& cfg) const
 	cfg["text"] = text();
 	cfg["tooltip"] = tooltip();
 	cfg["team_name"] = (this->team_name());
-	cfg["color"] = cfg_color();
+	cfg["color"] = color_.to_rgb_string();
 	cfg["visible_in_fog"] = visible_in_fog_;
 	cfg["visible_in_shroud"] = visible_in_shroud_;
 	cfg["immutable"] = immutable_;
@@ -465,17 +465,6 @@ const map_location& terrain_label::location() const
 const color_t& terrain_label::color() const
 {
 	return color_;
-}
-
-std::string terrain_label::cfg_color() const
-{
-	std::stringstream buf;
-	const unsigned int red = static_cast<unsigned int>(color_.r);
-	const unsigned int green = static_cast<unsigned int>(color_.g);
-	const unsigned int blue = static_cast<unsigned int>(color_.b);
-	const unsigned int alpha = static_cast<unsigned int>(color_.a);
-	buf << red << "," << green << "," << blue << "," << alpha;
-	return buf.str();
 }
 
 void terrain_label::set_text(const t_string& text)
