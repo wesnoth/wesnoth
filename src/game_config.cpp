@@ -423,7 +423,7 @@ void add_color_info(const config& v)
 		for(const auto& s : utils::split(*a2)) {
 			try {
 				temp.push_back(color_t::from_hex_string(s));
-			} catch(std::invalid_argument& e) {
+			} catch(std::invalid_argument&) {
 				std::stringstream ss;
 				ss << "can't parse color string:\n" << teamC.debug() << "\n";
 				throw config::error(ss.str());
@@ -450,7 +450,7 @@ void add_color_info(const config& v)
 			for(const auto& s : utils::split(rgb.second)) {
 				try {
 					temp.push_back(color_t::from_hex_string(s));
-				} catch(std::invalid_argument& e) {
+				} catch(std::invalid_argument&) {
 					ERR_NG << "Invalid color in palette: " << s << std::endl;
 				}
 			}
@@ -480,7 +480,7 @@ const color_range& color_info(const std::string& name)
 	for(const auto& s : utils::split(name)) {
 		try {
 			temp.push_back(color_t::from_hex_string(s));
-		} catch(std::invalid_argument& e) {
+		} catch(std::invalid_argument&) {
 			throw config::error(_("Invalid color in range: ") + s);
 		}
 	}
@@ -499,7 +499,7 @@ const std::vector<color_t>& tc_info(const std::string& name)
 	std::vector<color_t> temp;
 	try {
 		temp.push_back(color_t::from_hex_string(name));
-	} catch(std::invalid_argument& e) {
+	} catch(std::invalid_argument&) {
 		static std::vector<color_t> stv;
 		ERR_NG << "Invalid color palette: " << name << std::endl;
 		return stv;
