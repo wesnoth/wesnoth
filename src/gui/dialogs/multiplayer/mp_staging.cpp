@@ -152,8 +152,8 @@ void mp_staging::add_side_node(window& window, ng::side_engine_ptr side)
 
 	// Check to see whether we've added a toplevel tree node for this team. If not, add one
 	if(team_tree_map_.find(side->team_name()) == team_tree_map_.end()) {
-		std::map<std::string, string_map> data;
-		string_map item;
+		data.clear();
+		item.clear();
 
 		item["label"] = (formatter() << _("Team:") << " " << side->user_team_name()).str();
 		data.emplace("tree_view_node_label", item);
