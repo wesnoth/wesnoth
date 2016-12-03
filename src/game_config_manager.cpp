@@ -17,6 +17,7 @@
 #include "addon/manager_old.hpp"
 #include "ai/configuration.hpp"
 #include "cursor.hpp"
+#include "events.hpp"
 #include "game_config.hpp"
 #include "gettext.hpp"
 #include "game_classification.hpp"
@@ -451,9 +452,9 @@ void game_config_manager::load_addons_cfg()
 			   n);
 
 		const std::string& report = utils::join(error_log, "\n\n");
-
-		gui2::dialogs::wml_error::display(msg1, msg2, error_addons, report,
-								  video_);
+		events::call_in_main_thread([&]() {
+			gui2::dialogs::wml_error::display(msg1, msg2, error_addons, report, video_);
+		});
 	}
 }
 
