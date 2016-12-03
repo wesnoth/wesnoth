@@ -318,8 +318,12 @@ void title_screen::pre_show(window& win)
 	// Campaign
 	//
 	register_button(win, "campaign", hotkey::TITLE_SCREEN__CAMPAIGN, [this](window& w) {
-		if(game_.new_campaign()) {
-			w.set_retval(LAUNCH_GAME);
+		try{
+			if(game_.new_campaign()) {
+				w.set_retval(LAUNCH_GAME);
+			}
+		} catch (const config::error&) {
+			//TODO: show a error message dialog
 		}
 	});
 

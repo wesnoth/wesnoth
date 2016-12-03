@@ -60,6 +60,8 @@ config initial_level_config(saved_game& state)
 	state.expand_mp_events();
 	state.expand_mp_options();
 
+	if(!state.valid()) { throw config::error(""); }
+
 	config& scenario = state.get_starting_pos();
 	if(!state.mp_settings().saved_game)
 	{
