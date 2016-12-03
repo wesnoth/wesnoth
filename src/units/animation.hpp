@@ -116,20 +116,20 @@ private:
 		, const int variation=DEFAULT_ANIM
 		, const frame_builder & builder = frame_builder());
 
-	class particule : public animated<unit_frame>
+	class particle : public animated<unit_frame>
 	{
 	public:
-		explicit particule(int start_time = 0,const frame_builder& builder = frame_builder()) :
-			animated<unit_frame>(start_time),
-			accelerate(true),
-			parameters_(builder),
-			halo_id_(),
-			last_frame_begin_time_(0),
-			cycles_(false)
+		explicit particle(int start_time = 0, const frame_builder& builder = frame_builder())
+			: animated<unit_frame>(start_time)
+			, accelerate(true)
+			, parameters_(builder)
+			, halo_id_()
+			, last_frame_begin_time_(0)
+			, cycles_(false)
 		{}
-		explicit particule(const config& cfg, const std::string& frame_string ="frame");
+		explicit particle(const config& cfg, const std::string& frame_string = "frame");
 
-		virtual ~particule();
+		virtual ~particle();
 		bool need_update() const;
 		bool need_minimal_update() const;
 		enum cycle_state {UNSET, CYCLE, NO_CYCLE};
@@ -172,8 +172,8 @@ private:
 	std::vector<config> secondary_attack_filter_;
 	std::vector<hit_type> hits_;
 	std::vector<int> value2_;
-	std::map<std::string,particule> sub_anims_;
-	particule unit_anim_;
+	std::map<std::string,particle> sub_anims_;
+	particle unit_anim_;
 	/* these are drawing parameters, but for efficiency reason they are in the anim and not in the particle */
 	map_location src_;
 	map_location dst_;

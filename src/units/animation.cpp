@@ -312,7 +312,7 @@ unit_animation::unit_animation(const config& cfg,const std::string& frame_string
 			continue;
 		}
 
-		sub_anims_[fr.key] = particule(cfg, fr.key.substr(0, fr.key.size() - 5));
+		sub_anims_[fr.key] = particle(cfg, fr.key.substr(0, fr.key.size() - 5));
 	}
 
 	event_ = utils::split(cfg["apply_to"]);
@@ -512,45 +512,45 @@ void unit_animation::fill_initial_animations(std::vector<unit_animation>& animat
 
 		animations.push_back(base);
 		animations.back().event_ = utils::split("ghosted");
-		animations.back().unit_anim_.override(0, animations.back().unit_anim_.get_animation_duration(),particule::UNSET,"0.9", "", 0, "", "", "~GS()");
+		animations.back().unit_anim_.override(0, animations.back().unit_anim_.get_animation_duration(),particle::UNSET,"0.9", "", 0, "", "", "~GS()");
 
 		animations.push_back(base);
 		animations.back().event_ = utils::split("disabled_ghosted");
-		animations.back().unit_anim_.override(0, 1, particule::UNSET, "0.4", "", 0, "", "", "~GS()");
+		animations.back().unit_anim_.override(0, 1, particle::UNSET, "0.4", "", 0, "", "", "~GS()");
 
 		animations.push_back(base);
 		animations.back().event_ = utils::split("selected");
-		animations.back().unit_anim_.override(0, 300, particule::UNSET, "", "0.0~0.3:100,0.3~0.0:200", color_t(255,255,255).to_argb_bytes());
+		animations.back().unit_anim_.override(0, 300, particle::UNSET, "", "0.0~0.3:100,0.3~0.0:200", color_t(255,255,255).to_argb_bytes());
 
 		animations.push_back(base);
 		animations.back().event_ = utils::split("recruited");
-		animations.back().unit_anim_.override(0, 600, particule::NO_CYCLE, "0~1:600");
+		animations.back().unit_anim_.override(0, 600, particle::NO_CYCLE, "0~1:600");
 
 		animations.push_back(base);
 		animations.back().event_ = utils::split("levelin");
-		animations.back().unit_anim_.override(0, 600, particule::NO_CYCLE, "", "1~0:600", color_t(255,255,255).to_argb_bytes());
+		animations.back().unit_anim_.override(0, 600, particle::NO_CYCLE, "", "1~0:600", color_t(255,255,255).to_argb_bytes());
 
 		animations.push_back(base);
 		animations.back().event_ = utils::split("levelout");
-		animations.back().unit_anim_.override(0, 600, particule::NO_CYCLE, "", "0~1:600,1", color_t(255,255,255).to_argb_bytes());
+		animations.back().unit_anim_.override(0, 600, particle::NO_CYCLE, "", "0~1:600,1", color_t(255,255,255).to_argb_bytes());
 
 		animations.push_back(base);
 		animations.back().event_ = utils::split("pre_movement");
-		animations.back().unit_anim_.override(0, 1, particule::NO_CYCLE);
+		animations.back().unit_anim_.override(0, 1, particle::NO_CYCLE);
 
 		animations.push_back(base);
 		animations.back().event_ = utils::split("post_movement");
-		animations.back().unit_anim_.override(0, 1, particule::NO_CYCLE);
+		animations.back().unit_anim_.override(0, 1, particle::NO_CYCLE);
 
 		animations.push_back(base);
 		animations.back().event_ = utils::split("movement");
 		animations.back().unit_anim_.override(0, 200,
-			particule::NO_CYCLE, "", "", 0, "0~1:200", std::to_string(display::LAYER_UNIT_MOVE_DEFAULT - display::LAYER_UNIT_FIRST));
+			particle::NO_CYCLE, "", "", 0, "0~1:200", std::to_string(display::LAYER_UNIT_MOVE_DEFAULT - display::LAYER_UNIT_FIRST));
 
 		animations.push_back(base);
 		animations.back().event_ = utils::split("defend");
 		animations.back().unit_anim_.override(0, animations.back().unit_anim_.get_animation_duration(),
-			particule::NO_CYCLE, "", "0.0,0.5:75,0.0:75,0.5:75,0.0", color_t(255,0,0).to_argb_bytes());
+			particle::NO_CYCLE, "", "0.0,0.5:75,0.0:75,0.5:75,0.0", color_t(255,0,0).to_argb_bytes());
 		animations.back().hits_.push_back(hit_type::HIT);
 		animations.back().hits_.push_back(hit_type::KILL);
 
@@ -559,32 +559,32 @@ void unit_animation::fill_initial_animations(std::vector<unit_animation>& animat
 
 		animations.push_back(base);
 		animations.back().event_ = utils::split("attack");
-		animations.back().unit_anim_.override(-150, 300, particule::NO_CYCLE, "", "", 0, "0~0.6:150,0.6~0:150", std::to_string(display::LAYER_UNIT_MOVE_DEFAULT-display::LAYER_UNIT_FIRST));
+		animations.back().unit_anim_.override(-150, 300, particle::NO_CYCLE, "", "", 0, "0~0.6:150,0.6~0:150", std::to_string(display::LAYER_UNIT_MOVE_DEFAULT-display::LAYER_UNIT_FIRST));
 		animations.back().primary_attack_filter_.push_back(config());
 		animations.back().primary_attack_filter_.back()["range"] = "melee";
 
 		animations.push_back(base);
 		animations.back().event_ = utils::split("attack");
-		animations.back().unit_anim_.override(-150, 150, particule::NO_CYCLE);
+		animations.back().unit_anim_.override(-150, 150, particle::NO_CYCLE);
 		animations.back().primary_attack_filter_.push_back(config());
 		animations.back().primary_attack_filter_.back()["range"] = "ranged";
 
 		animations.push_back(base);
 		animations.back().event_ = utils::split("death");
-		animations.back().unit_anim_.override(0, 600, particule::NO_CYCLE, "1~0:600");
-		animations.back().sub_anims_["_death_sound"] = particule();
+		animations.back().unit_anim_.override(0, 600, particle::NO_CYCLE, "1~0:600");
+		animations.back().sub_anims_["_death_sound"] = particle();
 		animations.back().sub_anims_["_death_sound"].add_frame(1, frame_builder().sound(cfg["die_sound"]), true);
 
 		animations.push_back(base);
 		animations.back().event_ = utils::split("victory");
-		animations.back().unit_anim_.override(0, animations.back().unit_anim_.get_animation_duration(), particule::CYCLE);
+		animations.back().unit_anim_.override(0, animations.back().unit_anim_.get_animation_duration(), particle::CYCLE);
 
 		animations.push_back(base);
-		animations.back().unit_anim_.override(0, 150, particule::NO_CYCLE, "1~0:150");
+		animations.back().unit_anim_.override(0, 150, particle::NO_CYCLE, "1~0:150");
 		animations.back().event_ = utils::split("pre_teleport");
 
 		animations.push_back(base);
-		animations.back().unit_anim_.override(0, 150, particule::NO_CYCLE, "0~1:150,1");
+		animations.back().unit_anim_.override(0, 150, particle::NO_CYCLE, "0~1:150,1");
 		animations.back().event_ = utils::split("post_teleport");
 
 		animations.push_back(base);
@@ -592,7 +592,7 @@ void unit_animation::fill_initial_animations(std::vector<unit_animation>& animat
 
 		animations.push_back(base);
 		animations.back().event_ = utils::split("healed");
-		animations.back().unit_anim_.override(0, 300, particule::NO_CYCLE, "", "0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30", color_t(255,255,255).to_argb_bytes());
+		animations.back().unit_anim_.override(0, 300, particle::NO_CYCLE, "", "0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30", color_t(255,255,255).to_argb_bytes());
 
 		const std::string healed_sound = get_heal_sound(cfg);
 
@@ -600,8 +600,8 @@ void unit_animation::fill_initial_animations(std::vector<unit_animation>& animat
 
 		animations.push_back(base);
 		animations.back().event_ = utils::split("poisoned");
-		animations.back().unit_anim_.override(0, 300, particule::NO_CYCLE, "", "0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30", color_t(0,255,0).to_argb_bytes());
-		animations.back().sub_anims_["_poison_sound"] = particule();
+		animations.back().unit_anim_.override(0, 300, particle::NO_CYCLE, "", "0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30", color_t(0,255,0).to_argb_bytes());
+		animations.back().sub_anims_["_poison_sound"] = particle();
 		animations.back().sub_anims_["_poison_sound"].add_frame(1, frame_builder().sound(game_config::sounds::status::poisoned), true);
 	}
 }
@@ -717,7 +717,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		}
 
 		animations.push_back(unit_animation(anim));
-		animations.back().sub_anims_["_healed_sound"] = particule();
+		animations.back().sub_anims_["_healed_sound"] = particle();
 
 		const std::string healed_sound = get_heal_sound(cfg);
 		animations.back().sub_anims_["_healed_sound"].add_frame(1,frame_builder().sound(healed_sound),true);
@@ -733,7 +733,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		}
 
 		animations.push_back(unit_animation(anim));
-		animations.back().sub_anims_["_poison_sound"] = particule();
+		animations.back().sub_anims_["_poison_sound"] = particle();
 		animations.back().sub_anims_["_poison_sound"].add_frame(1,frame_builder().sound(game_config::sounds::status::poisoned),true);
 	}
 
@@ -852,7 +852,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 			.highlight("1~0:600"));
 
 		if(!cfg["die_sound"].empty()) {
-			animations.back().sub_anims_["_death_sound"] = particule();
+			animations.back().sub_anims_["_death_sound"] = particle();
 			animations.back().sub_anims_["_death_sound"].add_frame(1,frame_builder().sound(cfg["die_sound"]),true);
 		}
 	}
@@ -886,7 +886,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 	}
 }
 
-void unit_animation::particule::override(int start_time
+void unit_animation::particle::override(int start_time
 	, int duration
 	, const cycle_state cycles
 	, const std::string& highlight
@@ -912,7 +912,7 @@ void unit_animation::particule::override(int start_time
 	}
 }
 
-bool unit_animation::particule::need_update() const
+bool unit_animation::particle::need_update() const
 {
 	if(animated<unit_frame>::need_update()) return true;
 	if(get_current_frame().need_update()) return true;
@@ -920,12 +920,12 @@ bool unit_animation::particule::need_update() const
 	return false;
 }
 
-bool unit_animation::particule::need_minimal_update() const
+bool unit_animation::particle::need_minimal_update() const
 {
 	return get_current_frame_begin_time() != last_frame_begin_time_;
 }
 
-unit_animation::particule::particule(const config& cfg, const std::string& frame_string)
+unit_animation::particle::particle(const config& cfg, const std::string& frame_string)
 	: animated<unit_frame>()
 	, accelerate(true)
 	, parameters_()
@@ -1045,7 +1045,7 @@ void unit_animation::start_animation(int start_time
 	unit_anim_.start_animation(start_time);
 
 	if(!text.empty()) {
-		particule crude_build;
+		particle crude_build;
 		crude_build.add_frame(1, frame_builder());
 		crude_build.add_frame(1, frame_builder().text(text, text_color), true);
 		sub_anims_["_add_text"] = crude_build;
@@ -1224,7 +1224,7 @@ std::ostream& operator<<(std::ostream& outstream, const unit_animation& u_animat
 		outstream << "\t[/frame]\n";
 	}
 
-	for(std::pair<std::string, unit_animation::particule> p : u_animation.sub_anims_) {
+	for(std::pair<std::string, unit_animation::particle> p : u_animation.sub_anims_) {
 		for(size_t i = 0; i < p.second.get_frames_count(); i++) {
 			std::string sub_frame_name = p.first;
 			size_t pos = sub_frame_name.find("_frame");
@@ -1245,7 +1245,7 @@ std::ostream& operator<<(std::ostream& outstream, const unit_animation& u_animat
 	return outstream;
 }
 
-void unit_animation::particule::redraw(const frame_parameters& value,const map_location& src, const map_location& dst, halo::manager& halo_man)
+void unit_animation::particle::redraw(const frame_parameters& value,const map_location& src, const map_location& dst, halo::manager& halo_man)
 {
 	const unit_frame& current_frame = get_current_frame();
 	const int animation_time = get_animation_time();
@@ -1269,24 +1269,24 @@ void unit_animation::particule::redraw(const frame_parameters& value,const map_l
 	}
 }
 
-void unit_animation::particule::clear_halo()
+void unit_animation::particle::clear_halo()
 {
 	halo_id_ = halo::handle(); // halo::NO_HALO
 }
 
-std::set<map_location> unit_animation::particule::get_overlaped_hex(const frame_parameters& value, const map_location& src, const map_location& dst)
+std::set<map_location> unit_animation::particle::get_overlaped_hex(const frame_parameters& value, const map_location& src, const map_location& dst)
 {
 	const unit_frame& current_frame = get_current_frame();
 	const frame_parameters default_val = parameters_.parameters(get_animation_time() - get_begin_time());
 	return current_frame.get_overlaped_hex(get_current_frame_time(), src, dst, default_val,value);
 }
 
-unit_animation::particule::~particule()
+unit_animation::particle::~particle()
 {
 	halo_id_ = halo::handle(); // halo::NO_HALO
 }
 
-void unit_animation::particule::start_animation(int start_time)
+void unit_animation::particle::start_animation(int start_time)
 {
 	halo_id_ = halo::handle(); // halo::NO_HALO
 	parameters_.override(get_animation_duration());
