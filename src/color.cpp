@@ -111,7 +111,10 @@ std::string color_t::to_rgba_string() const
 {
 	std::ostringstream color;
 
-	color << r << ',' << g << ',' << b << ',' << a;
+	color << static_cast<int>(r) << ','
+	      << static_cast<int>(g) << ','
+	      << static_cast<int>(b) << ','
+	      << static_cast<int>(a);
 
 	return color.str();
 }
@@ -120,7 +123,9 @@ std::string color_t::to_rgb_string() const
 {
 	std::ostringstream color;
 
-	color << r << ',' << g << ',' << b;
+	color << static_cast<int>(r) << ','
+	      << static_cast<int>(g) << ','
+	      << static_cast<int>(b);
 
 	return color.str();
 }
