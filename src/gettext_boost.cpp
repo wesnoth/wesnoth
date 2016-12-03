@@ -11,6 +11,9 @@
 
    See the COPYING file for more details.
 */
+#if defined(_MSC_VER)
+#pragma warning(disable: 4714)
+#endif
 
 #include "global.hpp"
 #include "gettext.hpp"
@@ -30,7 +33,7 @@
 #pragma GCC diagnostic ignored "-Wmissing-field-initializers"
 #elif defined(_MSC_VER)
 #pragma warning(push)
-#pragma warning(disable: 4714)
+#pragma warning(disable: 4459)
 #endif
 #include "spirit_po.hpp"
 #if defined(__GNUC__)
