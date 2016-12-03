@@ -78,13 +78,10 @@ class unit_test_access_only
  * regarding the static initialization problem.
  *
  * @param id                      The id of the widget to register.
- * @param functor                 The function to load the definitions.
+ * @param functor                 The function to parse the definition config.
+ * @param key                     the tagname to read the widgetsdeiniftion from the game config, nullptr means use the default [<id>_definition].
  */
-void register_widget(const std::string& id,
-					 std::function<void(gui_definition& gui,
-										  const std::string& definition_type,
-										  const config& cfg,
-										  const char* key)> functor);
+void register_widget(const std::string& id, std::function<styled_widget_definition_ptr(const config&)> f, const char* key = nullptr);
 
 /**
  * Loads the definitions of a widget.
@@ -101,38 +98,6 @@ void load_widget_definitions(
 		const std::string& definition_type,
 		const std::vector<styled_widget_definition_ptr>& definitions);
 
-/**
- * Loads the definitions of a widget.
- *
- * This function is templated and kept small so only loads the definitions from
- * the config and then lets the real job be done by the @ref
- * load_widget_definitions above.
- *
- * @param gui_definition          The gui definition the widget definition
- *                                belongs to.
- * @param definition_type         The type of the widget whose definitions are
- *                                to be loaded.
- * @param cfg                     The config to serialise the definitions
- *                                from.
- * @param key                     Optional id of the definition to load.
- */
-template <class T>
-void load_widget_definitions(gui_definition& gui,
-							 const std::string& definition_type,
-							 const config& cfg,
-							 const char* key)
-{
-	std::vector<styled_widget_definition_ptr> definitions;
-
-	for (const auto & definition :
-			cfg.child_range(key ? key : definition_type + "_definition"))
-	{
-
-		definitions.push_back(std::make_shared<T>(definition));
-	}
-
-	load_widget_definitions(gui, definition_type, definitions);
-}
 
 
 resolution_definition_ptr get_control(const std::string& control_type,

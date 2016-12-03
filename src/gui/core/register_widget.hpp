@@ -42,11 +42,8 @@
 			register_helper()                                                  \
 			{                                                                  \
 				register_widget(#id,                                           \
-								std::bind(load_widget_definitions<type>,       \
-											_1,                                \
-											_2,                                \
-											_3,                                \
-											key));                             \
+								[](const config& cfg) { return std::make_shared<type>(cfg); },       \
+								key);                             \
                                                                                \
 				register_builder_widget(                                       \
 						#id,                                                   \
@@ -63,8 +60,8 @@
 /**
  * Wrapper for REGISTER_WIDGET3.
  *
- * "Calls" REGISTER_WIDGET3(id_definition, id, _4)
+ * "Calls" REGISTER_WIDGET3(id_definition, id, nullptr)
  */
-#define REGISTER_WIDGET(id) REGISTER_WIDGET3(id##_definition, id, _4)
+#define REGISTER_WIDGET(id) REGISTER_WIDGET3(id##_definition, id, nullptr)
 
 #endif

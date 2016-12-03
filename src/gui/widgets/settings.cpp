@@ -84,12 +84,13 @@ static std::vector<std::string>& registered_window_types()
 	return result;
 }
 
-typedef std::map<std::string,
-				 std::function<void(gui_definition&,
-									  const std::string&,
-									  const config&,
-									  const char* key)> >
-tregistered_widget_type;
+struct tregistered_widget_type_mapped_type
+{
+	std::function<styled_widget_definition_ptr(const config&)> parser;
+	const char* key;
+};
+
+typedef std::map<std::string, tregistered_widget_type_mapped_type> tregistered_widget_type;
 
 static tregistered_widget_type& registred_widget_type()
 {
@@ -350,7 +351,13 @@ const std::string& gui_definition::read(const config& cfg)
 
 	for(auto & widget_type : registred_widget_type())
 	{
-		widget_type.second(*this, widget_type.first, cfg, nullptr);
+		std::vector<styled_widget_definition_ptr> definitions;
+		for (const auto & definition :
+			cfg.child_range(widget_type.second.key ? widget_type.second.key : widget_type.first + "_definition"))
+		{
+				definitions.push_back(widget_type.second.parser(definition));
+		}
+		load_widget_definitions(widget_type.first, definitions);
 	}
 
 	/***** Window types *****/
@@ -570,15 +577,10 @@ state_definition::state_definition(const config& cfg) : canvas_()
 	canvas_.set_cfg(draw);
 }
 
-void register_widget(const std::string& id,
-					 std::function<void(gui_definition& gui,
-										  const std::string& definition_type,
-										  const config& cfg,
-										  const char* key)> functor)
+void register_widget(const std::string& id, std::function<styled_widget_definition_ptr(const config&)> f, const char* key)
 {
-	registred_widget_type().insert(std::make_pair(id, functor));
+	registred_widget_type()[id] = {f, key};
 }
-
 void
 load_widget_definitions(gui_definition& gui,
 						const std::string& definition_type,
