@@ -340,7 +340,7 @@ surface cut_surface(const surface &surf, SDL_Rect const &r);
 surface blend_surface(
 		  const surface &surf
 		, const double amount
-		, const Uint32 color
+		, const color_t color
 		, const bool optimize = true);
 
 /**

@@ -1861,7 +1861,7 @@ surface cut_surface(const surface &surf, SDL_Rect const &r)
 surface blend_surface(
 		  const surface &surf
 		, const double amount
-		, const Uint32 color
+		, const color_t color
 		, const bool optimize)
 {
 	if(surf== nullptr) {
@@ -1881,9 +1881,9 @@ surface blend_surface(
 		Uint32* end = beg + nsurf->w*surf->h;
 
 		Uint16 ratio = amount * 256;
-		const Uint16 red   = ratio * static_cast<Uint8>(color >> 16);
-		const Uint16 green = ratio * static_cast<Uint8>(color >> 8);
-		const Uint16 blue  = ratio * static_cast<Uint8>(color);
+		const Uint16 red   = ratio * color.r;
+		const Uint16 green = ratio * color.g;
+		const Uint16 blue  = ratio * color.b;
 		ratio = 256 - ratio;
 
 		while(beg != end) {

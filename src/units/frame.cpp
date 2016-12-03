@@ -719,7 +719,7 @@ void unit_frame::redraw(const int frame_time,bool on_start_time,bool in_scope_of
 		game_display::get_singleton()->render_image( my_x,my_y,
 					static_cast<display::drawing_layer>(display::LAYER_UNIT_FIRST+current_data.drawing_layer),
 			       	src, image, facing_west, false,
-			        ftofxp(current_data.highlight_ratio), current_data.blend_with,
+			        ftofxp(current_data.highlight_ratio), color_t::from_argb_bytes(current_data.blend_with),
 			       	current_data.blend_ratio,current_data.submerge,!facing_north);
 	}
 	halo_id = halo::handle(); //halo::NO_HALO;

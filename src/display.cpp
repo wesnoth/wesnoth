@@ -1522,7 +1522,7 @@ void display::draw_text_in_hex(const map_location& loc,
 void display::render_image(int x, int y, const display::drawing_layer drawing_layer,
 		const map_location& loc, surface image,
 		bool hreverse, bool greyscale, fixed_t alpha,
-		Uint32 blendto, double blend_ratio, double submerged, bool vreverse)
+		color_t blendto, double blend_ratio, double submerged, bool vreverse)
 {
 	if (image==nullptr)
 		return;
