@@ -74,7 +74,15 @@
 #include <boost/iostreams/categories.hpp>  // for input, output
 #include <boost/iostreams/copy.hpp>     // for copy
 #include <boost/iostreams/filter/bzip2.hpp>  // for bzip2_compressor, etc
+#if defined(_MSC_VER)
+#pragma warning(push)
+#pragma warning(disable: 4456)
+#pragma warning(disable: 4458)
+#endif
 #include <boost/iostreams/filter/gzip.hpp>  // for gzip_compressor, etc
+#if defined(_MSC_VER)
+#pragma warning(pop)
+#endif
 #include <boost/iostreams/filtering_stream.hpp>  // for filtering_stream
 #include <boost/program_options/errors.hpp>  // for error
 
