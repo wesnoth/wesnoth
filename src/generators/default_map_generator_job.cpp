@@ -940,7 +940,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 
 	for(int player = 0; player != data.nplayers; ++player) {
 		LOG_NG << "placing castle for " << player << "\n";
-		log_scope("placing castle");
+		lg::scope_logger inner_scope_logging_object__(lg::general(), "placing castle");
 		const int min_x = data.width/3 + 3;
 		const int min_y = data.height/3 + 3;
 		const int max_x = (data.width/3)*2 - 4;
@@ -996,7 +996,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 
 	road_path_calculator calc(terrain, cfg, rng_());
 	for(int road = 0; road != nroads; ++road) {
-		log_scope("creating road");
+		lg::scope_logger another_inner_scope_logging_object__(lg::general(), "creating road");
 
 		/*
 		 * We want the locations to be on the portion of the map we're actually

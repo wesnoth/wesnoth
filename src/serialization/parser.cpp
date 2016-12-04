@@ -36,7 +36,15 @@
 #include <boost/algorithm/string/replace.hpp>
 #include <boost/iostreams/filtering_stream.hpp>
 #include <boost/iostreams/filter/bzip2.hpp>
+#if defined(_MSC_VER)
+#pragma warning(push)
+#pragma warning(disable: 4456)
+#pragma warning(disable: 4458)
+#endif
 #include <boost/iostreams/filter/gzip.hpp>
+#if defined(_MSC_VER)
+#pragma warning(pop)
+#endif
 #include <boost/variant/static_visitor.hpp>
 
 static lg::log_domain log_config("config");

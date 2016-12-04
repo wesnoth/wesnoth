@@ -11,6 +11,9 @@
 
    See the COPYING file for more details.
 */
+#if defined(_MSC_VER)
+#pragma warning(disable: 4714)
+#endif
 
 #include "global.hpp"
 #include "gettext.hpp"
@@ -30,7 +33,7 @@
 #pragma GCC diagnostic ignored "-Wmissing-field-initializers"
 #elif defined(_MSC_VER)
 #pragma warning(push)
-#pragma warning(disable: 4714)
+#pragma warning(disable: 4459)
 #endif
 #include "spirit_po.hpp"
 #if defined(__GNUC__)
@@ -153,18 +156,18 @@ namespace
 			throw game::error(err.str());
 		}
 
-		const char* get(int domain_id, const char* ctx, const char* id) const override
+		const char* get(int domain_id, const char* ctx, const char* msg_id) const override
 		{
 			auto& base = get_base();
-			const char* msg = base.get(domain_id, ctx, id);
+			const char* msg = base.get(domain_id, ctx, msg_id);
 			if(msg == nullptr) {
 				auto iter = extra_messages_.find(domain_id);
 				if(iter == extra_messages_.end()) {
 					return nullptr;
 				}
 				auto& catalog = iter->second;
-				const char* lookup = ctx ? catalog.pgettext(ctx, id) : catalog.gettext(id);
-				if(lookup != id) {
+				const char* lookup = ctx ? catalog.pgettext(ctx, msg_id) : catalog.gettext(msg_id);
+				if(lookup != msg_id) {
 					// (p)gettext returns the input pointer if the string was not found
 					msg = lookup;
 				}

@@ -1441,7 +1441,7 @@ void canvas::draw(const bool force)
 
 	// draw items
 	for(auto& shape : shapes_) {
-		log_scope2(log_gui_draw, "Canvas: draw shape.");
+		lg::scope_logger inner_scope_logging_object__(log_gui_draw, "Canvas: draw shape.");
 
 		shape->draw(canvas_, renderer_, variables_);
 	}
