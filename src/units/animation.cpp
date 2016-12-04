@@ -507,91 +507,91 @@ void unit_animation::fill_initial_animations(std::vector<unit_animation>& animat
 
 	for(const auto& base : animation_base) {
 		animations.push_back(base);
-		animations.back().event_ = utils::split("standing");
+		animations.back().event_ = { "standing" };
 		animations.back().play_offscreen_ = false;
 
 		animations.push_back(base);
-		animations.back().event_ = utils::split("ghosted");
+		animations.back().event_ = { "ghosted" };
 		animations.back().unit_anim_.override(0, animations.back().unit_anim_.get_animation_duration(),particle::UNSET,"0.9", "", 0, "", "", "~GS()");
 
 		animations.push_back(base);
-		animations.back().event_ = utils::split("disabled_ghosted");
+		animations.back().event_ = { "disabled_ghosted" };
 		animations.back().unit_anim_.override(0, 1, particle::UNSET, "0.4", "", 0, "", "", "~GS()");
 
 		animations.push_back(base);
-		animations.back().event_ = utils::split("selected");
+		animations.back().event_ = { "selected" };
 		animations.back().unit_anim_.override(0, 300, particle::UNSET, "", "0.0~0.3:100,0.3~0.0:200", color_t(255,255,255).to_argb_bytes());
 
 		animations.push_back(base);
-		animations.back().event_ = utils::split("recruited");
+		animations.back().event_ = { "recruited" };
 		animations.back().unit_anim_.override(0, 600, particle::NO_CYCLE, "0~1:600");
 
 		animations.push_back(base);
-		animations.back().event_ = utils::split("levelin");
+		animations.back().event_ = { "levelin" };
 		animations.back().unit_anim_.override(0, 600, particle::NO_CYCLE, "", "1~0:600", color_t(255,255,255).to_argb_bytes());
 
 		animations.push_back(base);
-		animations.back().event_ = utils::split("levelout");
+		animations.back().event_ = { "levelout" };
 		animations.back().unit_anim_.override(0, 600, particle::NO_CYCLE, "", "0~1:600,1", color_t(255,255,255).to_argb_bytes());
 
 		animations.push_back(base);
-		animations.back().event_ = utils::split("pre_movement");
+		animations.back().event_ = { "pre_movement" };
 		animations.back().unit_anim_.override(0, 1, particle::NO_CYCLE);
 
 		animations.push_back(base);
-		animations.back().event_ = utils::split("post_movement");
+		animations.back().event_ = { "post_movement" };
 		animations.back().unit_anim_.override(0, 1, particle::NO_CYCLE);
 
 		animations.push_back(base);
-		animations.back().event_ = utils::split("movement");
+		animations.back().event_ = { "movement" };
 		animations.back().unit_anim_.override(0, 200,
 			particle::NO_CYCLE, "", "", 0, "0~1:200", std::to_string(display::LAYER_UNIT_MOVE_DEFAULT - display::LAYER_UNIT_FIRST));
 
 		animations.push_back(base);
-		animations.back().event_ = utils::split("defend");
+		animations.back().event_ = { "defend" };
 		animations.back().unit_anim_.override(0, animations.back().unit_anim_.get_animation_duration(),
 			particle::NO_CYCLE, "", "0.0,0.5:75,0.0:75,0.5:75,0.0", color_t(255,0,0).to_argb_bytes());
 		animations.back().hits_.push_back(hit_type::HIT);
 		animations.back().hits_.push_back(hit_type::KILL);
 
 		animations.push_back(base);
-		animations.back().event_ = utils::split("defend");
+		animations.back().event_ = { "defend" };
 
 		animations.push_back(base);
-		animations.back().event_ = utils::split("attack");
+		animations.back().event_ = { "attack" };
 		animations.back().unit_anim_.override(-150, 300, particle::NO_CYCLE, "", "", 0, "0~0.6:150,0.6~0:150", std::to_string(display::LAYER_UNIT_MOVE_DEFAULT-display::LAYER_UNIT_FIRST));
 		animations.back().primary_attack_filter_.push_back(config());
 		animations.back().primary_attack_filter_.back()["range"] = "melee";
 
 		animations.push_back(base);
-		animations.back().event_ = utils::split("attack");
+		animations.back().event_ = { "attack" };
 		animations.back().unit_anim_.override(-150, 150, particle::NO_CYCLE);
 		animations.back().primary_attack_filter_.push_back(config());
 		animations.back().primary_attack_filter_.back()["range"] = "ranged";
 
 		animations.push_back(base);
-		animations.back().event_ = utils::split("death");
+		animations.back().event_ = { "death" };
 		animations.back().unit_anim_.override(0, 600, particle::NO_CYCLE, "1~0:600");
 		animations.back().sub_anims_["_death_sound"] = particle();
 		animations.back().sub_anims_["_death_sound"].add_frame(1, frame_builder().sound(cfg["die_sound"]), true);
 
 		animations.push_back(base);
-		animations.back().event_ = utils::split("victory");
+		animations.back().event_ = { "victory" };
 		animations.back().unit_anim_.override(0, animations.back().unit_anim_.get_animation_duration(), particle::CYCLE);
 
 		animations.push_back(base);
 		animations.back().unit_anim_.override(0, 150, particle::NO_CYCLE, "1~0:150");
-		animations.back().event_ = utils::split("pre_teleport");
+		animations.back().event_ = { "pre_teleport" };
 
 		animations.push_back(base);
 		animations.back().unit_anim_.override(0, 150, particle::NO_CYCLE, "0~1:150,1");
-		animations.back().event_ = utils::split("post_teleport");
+		animations.back().event_ = { "post_teleport" };
 
 		animations.push_back(base);
-		animations.back().event_ = utils::split("healing");
+		animations.back().event_ = { "healing" };
 
 		animations.push_back(base);
-		animations.back().event_ = utils::split("healed");
+		animations.back().event_ = { "healed" };
 		animations.back().unit_anim_.override(0, 300, particle::NO_CYCLE, "", "0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30", color_t(255,255,255).to_argb_bytes());
 
 		const std::string healed_sound = get_heal_sound(cfg);
@@ -599,7 +599,7 @@ void unit_animation::fill_initial_animations(std::vector<unit_animation>& animat
 		animations.back().sub_anims_["_healed_sound"].add_frame(1, frame_builder().sound(healed_sound), true);
 
 		animations.push_back(base);
-		animations.back().event_ = utils::split("poisoned");
+		animations.back().event_ = { "poisoned" };
 		animations.back().unit_anim_.override(0, 300, particle::NO_CYCLE, "", "0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30", color_t(0,255,0).to_argb_bytes());
 		animations.back().sub_anims_["_poison_sound"] = particle();
 		animations.back().sub_anims_["_poison_sound"].add_frame(1, frame_builder().sound(game_config::sounds::status::poisoned), true);
