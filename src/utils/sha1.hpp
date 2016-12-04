@@ -16,6 +16,7 @@
 #define SHA1_H_INCLUDED
 
 #include <string>
+#include <cstdint>
 
 class sha1_hash
 {
