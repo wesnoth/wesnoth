@@ -41,15 +41,9 @@
 		{                                                                      \
 			register_helper()                                                  \
 			{                                                                  \
-				register_widget(#id,                                           \
-								[](const config& cfg) { return std::make_shared<type>(cfg); },       \
-								key);                             \
+				register_widget(#id, [](const config& cfg) { return std::make_shared<type>(cfg); }, key); \
                                                                                \
-				register_builder_widget(                                       \
-						#id,                                                   \
-						std::bind(                                             \
-								build_widget<implementation::builder_##id>,    \
-								_1));                                          \
+				register_builder_widget(#id, &build_widget<implementation::builder_##id>); \
 			}                                                                  \
 		};                                                                     \
                                                                                \

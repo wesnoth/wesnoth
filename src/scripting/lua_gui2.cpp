@@ -27,6 +27,7 @@
 #include "gui/widgets/multi_page.hpp"   // for tmulti_page
 #include "gui/widgets/progress_bar.hpp"  // for tprogress_bar
 #include "gui/widgets/selectable_item.hpp"   // for tselectable_item
+#include "gui/widgets/settings.hpp"
 #include "gui/widgets/slider.hpp"       // for tslider
 #include "gui/widgets/stacked_widget.hpp"
 #include "gui/widgets/text_box.hpp"     // for ttext_box
@@ -842,4 +843,20 @@ int intf_add_dialog_tree_node(lua_State *L)
 	return 0;
 }
 
+/**
+ * - Arg 1: string, widget type
+ * - Arg 3: string, id
+ * - Arg 3: conifg,
+ */
+
+int intf_add_widget_definition(lua_State *L)
+{
+	try {
+		gui2::add_single_widget_definition(luaL_checkstring(L, 1), luaL_checkstring(L, 2), luaW_checkconfig(L, 3));
+	}
+	catch (const std::invalid_argument& e) {
+		return luaL_argerror(L, 1, e.what());
+	}
+	return 0;
+}
 } // end namespace lua_gui2

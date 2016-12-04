@@ -478,7 +478,7 @@ static std::map<std::string, gui_definition> guis;
 static std::map<std::string, gui_definition>::const_iterator current_gui = guis.end();
 
 /** Points to the default gui. */
-static std::map<std::string, gui_definition>::const_iterator default_gui = guis.end();
+static std::map<std::string, gui_definition>::iterator default_gui = guis.end();
 
 void register_window(const std::string& id)
 {
@@ -703,5 +703,22 @@ get_window_builder(const std::string& type)
  * [[Category: GUI WML Reference]]
  *
  */
+
+bool add_single_widget_definition(const std::string& widget_type, const std::string& definition_id, const config& cfg)
+{
+	auto& gui = default_gui->second;
+	auto parser = registred_widget_type().find(widget_type);
+
+	if (parser == registred_widget_type().end()) {
+		throw std::invalid_argument("widget '" + widget_type  + "' doesn't exist");
+	}
+
+	if (gui.control_definition[widget_type].find(definition_id) != gui.control_definition[widget_type].end()) {
+		return false;
+	}
+
+	gui.control_definition[widget_type].insert(std::make_pair(definition_id, parser->second.parser(cfg)));
+	return true;
+}
 
 } // namespace gui2

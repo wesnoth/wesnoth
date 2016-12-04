@@ -103,6 +103,8 @@ void load_widget_definitions(
 resolution_definition_ptr get_control(const std::string& control_type,
 									   const std::string& definition);
 
+bool add_single_widget_definition(const std::string& widget_type, const std::string& definition_id, const config& cfg);
+
 /** Helper struct to signal that get_window_builder failed. */
 struct window_builder_invalid_id
 {

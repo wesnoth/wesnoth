@@ -355,6 +355,7 @@ lua_kernel_base::lua_kernel_base()
 		{ "set_dialog_active",        &lua_gui2::intf_set_dialog_active		},
 		{ "set_dialog_visible",       &lua_gui2::intf_set_dialog_visible    },
 		{ "add_dialog_tree_node",     &lua_gui2::intf_add_dialog_tree_node	},
+		{ "add_widget_definition",    &lua_gui2::intf_add_widget_definition },
 		{ "set_dialog_callback",      &lua_gui2::intf_set_dialog_callback	},
 		{ "set_dialog_canvas",        &lua_gui2::intf_set_dialog_canvas		},
 		{ "set_dialog_focus",         &lua_gui2::intf_set_dialog_focus      },
