@@ -143,7 +143,7 @@ struct animation_cursor
 
 		// Then we prune all parent branches with similar matches as they
 		// now will not have the full frame list
-		for(auto iter = branches.begin(); iter != branches.end(); /* nothing */) {
+		for(auto iter = parent->branches.begin(); iter != parent->branches.end(); /* nothing */) {
 			const std::string s_branch_hits      = (*iter).attributes["hits"];
 			const std::string s_branch_direction = (*iter).attributes["direction"];
 			const std::string s_branch_terrain   = (*iter).attributes["terrain_types"];
