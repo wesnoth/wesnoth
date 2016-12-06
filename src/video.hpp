@@ -29,13 +29,7 @@ class surface;
 #define SDL_APPINPUTFOCUS	0x02		/**< The app has input focus */
 #define SDL_APPACTIVE		0x04		/**< The application is active */
 
-
-surface& get_video_surface();
-
-
 SDL_Rect screen_area();
-
-
 
 //which areas of the screen will be updated when the buffer is flipped?
 void update_rect(size_t x, size_t y, size_t w, size_t h);

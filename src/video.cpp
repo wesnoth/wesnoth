@@ -109,13 +109,6 @@ bool CVideo::non_interactive()
 	return window == nullptr;
 }
 
-
-
-surface& get_video_surface()
-{
-	return frameBuffer;
-}
-
 SDL_Rect screen_area()
 {
 	return sdl::create_rect(0, 0, frameBuffer->w, frameBuffer->h);

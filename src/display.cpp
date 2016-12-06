@@ -227,7 +227,7 @@ display::display(const display_context * dc, CVideo& video, std::weak_ptr<wb::ma
 	read(level.child_or_empty("display"));
 
 	if(video.non_interactive()
-		&& (get_video_surface() != nullptr
+		&& (video.getSurface() != nullptr
 		&& video.faked())) {
 		screen_.lock_updates(true);
 	}
@@ -1315,7 +1315,7 @@ void display::flip()
 		return;
 	}
 
-	surface& frameBuffer = get_video_surface();
+	surface& frameBuffer = video().getSurface();
 
 	// This is just the debug function "sunset" to progressively darken the map area
 	static size_t sunset_timer = 0;
