@@ -46,6 +46,7 @@
 #include "config.hpp"
 #include "log.hpp"
 #include "scripting/lua_common.hpp"
+#include "scripting/lua_kernel_base.hpp"
 #include "scripting/lua_unit.hpp"
 #include "scripting/lua_unit_type.hpp"
 #include "scripting/push_check.hpp"
@@ -851,8 +852,12 @@ int intf_add_dialog_tree_node(lua_State *L)
 
 int intf_add_widget_definition(lua_State *L)
 {
+	std::string type = luaL_checkstring(L, 1);
+	std::string id = luaL_checkstring(L, 2);
 	try {
-		gui2::add_single_widget_definition(luaL_checkstring(L, 1), luaL_checkstring(L, 2), luaW_checkconfig(L, 3));
+		if (gui2::add_single_widget_definition(type, id, luaW_checkconfig(L, 3))) {
+			lua_kernel_base::get_lua_kernel<lua_kernel_base>(L).add_widget_definition(type, id);
+		}
 	}
 	catch (const std::invalid_argument& e) {
 		return luaL_argerror(L, 1, e.what());

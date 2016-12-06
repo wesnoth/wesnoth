@@ -105,6 +105,8 @@ resolution_definition_ptr get_control(const std::string& control_type,
 
 bool add_single_widget_definition(const std::string& widget_type, const std::string& definition_id, const config& cfg);
 
+void remove_single_widget_definition(const std::string& widget_type, const std::string& definition_id);
+
 /** Helper struct to signal that get_window_builder failed. */
 struct window_builder_invalid_id
 {

@@ -721,4 +721,14 @@ bool add_single_widget_definition(const std::string& widget_type, const std::str
 	return true;
 }
 
+void remove_single_widget_definition(const std::string& widget_type, const std::string& definition_id)
+{
+	auto& gui = default_gui->second;
+	auto it = gui.control_definition[widget_type].find(definition_id);
+
+	if ( it != gui.control_definition[widget_type].end()) {
+		gui.control_definition[widget_type].erase(it);
+	}
+}
+
 } // namespace gui2
