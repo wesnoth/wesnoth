@@ -368,20 +368,15 @@ sdl::window *CVideo::get_window()
 	return window.get();
 }
 
-
-static int sdl_display_index(sdl::window* window)
-{
-	if(window) {
-		return SDL_GetWindowDisplayIndex(*window);
-	}
-	return 0;
-}
-
 std::vector<std::pair<int, int> > CVideo::get_available_resolutions(const bool include_current)
 {
 	std::vector<std::pair<int, int> > result;
 
-	const int modes = SDL_GetNumDisplayModes(sdl_display_index(window.get()));
+	if(!window) {
+		return result;
+	}
+
+	const int modes = SDL_GetNumDisplayModes(window->get_display_index());
 	if (modes <= 0) {
 		std::cerr << "No modes supported\n";
 		return result;

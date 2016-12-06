@@ -151,6 +151,8 @@ public:
 	 */
 	void set_minimum_size(int min_w, int min_h);
 
+	int get_display_index();
+
 	/***** ***** ***** Conversion operators. ***** ***** *****/
 
 	/**

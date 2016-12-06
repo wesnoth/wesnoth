@@ -129,6 +129,11 @@ void window::set_minimum_size(int min_w, int min_h)
 	SDL_SetWindowMinimumSize(window_, min_w, min_h);
 }
 
+int window::get_display_index()
+{
+	return SDL_GetWindowDisplayIndex(window_);
+}
+
 window::operator SDL_Window*()
 {
 	return window_;
