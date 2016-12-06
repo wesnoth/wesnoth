@@ -49,7 +49,12 @@ bool available() { return true; }
 
 void send(const std::string& owner, const std::string& message, type t)
 {
-	Uint8 app_state = CVideo::get_singleton().get_window()->get_flags();
+	sdl::window* window = CVideo::get_singleton().get_window();
+	if(window == nullptr) {
+		return;
+	}
+
+	int app_state = window->get_flags();
 
 	// Do not show notifications when the window is visible...
 	if ((app_state & SDL_WINDOW_SHOWN) != 0)
