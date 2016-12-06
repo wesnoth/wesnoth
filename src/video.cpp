@@ -351,34 +351,6 @@ bool CVideo::update_locked() const
 	return updatesLocked_ > 0;
 }
 
-Uint8 CVideo::window_state()
-{
-	Uint8 state = 0;
-	Uint32 flags = 0;
-
-	if(!window) {
-		return state;
-	}
-
-	flags = SDL_GetWindowFlags(*window);
-	if ((flags & SDL_WINDOW_SHOWN) && !(flags & SDL_WINDOW_MINIMIZED)) {
-		state |= SDL_APPACTIVE;
-	}
-	if (flags & SDL_WINDOW_INPUT_FOCUS) {
-		state |= SDL_APPINPUTFOCUS;
-	}
-	if (flags & SDL_WINDOW_MOUSE_FOCUS) {
-		state |= SDL_APPMOUSEFOCUS;
-	}
-	if (flags & SDL_WINDOW_MAXIMIZED) {
-		state |= SDL_WINDOW_MAXIMIZED;
-	}
-	if (flags & SDL_WINDOW_FULLSCREEN_DESKTOP) {
-		state |= SDL_WINDOW_FULLSCREEN_DESKTOP;
-	}
-	return state;
-}
-
 void CVideo::set_window_title(const std::string& title)
 {
 	assert(window);

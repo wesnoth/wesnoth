@@ -24,11 +24,6 @@
 
 class surface;
 
-//possible flags when setting video modes
-#define SDL_APPMOUSEFOCUS	0x01		/**< The app has mouse coverage */
-#define SDL_APPINPUTFOCUS	0x02		/**< The app has input focus */
-#define SDL_APPACTIVE		0x04		/**< The application is active */
-
 SDL_Rect screen_area();
 
 class CVideo {
@@ -148,11 +143,6 @@ public:
 
 	//this needs to be invoked immediately after a resize event or the game will crash.
 	void update_framebuffer();
-
-	/**
-	 * Wrapper for CVideo::get_singleton().window_state.
-	 */
-	Uint8 window_state();
 
 	/**
 	 * Sets the title of the main window.
