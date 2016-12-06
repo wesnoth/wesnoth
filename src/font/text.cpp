@@ -35,8 +35,6 @@
 #include <cassert>
 #include <cstring>
 
-#include "video.hpp"
-
 namespace font {
 
 pango_text::pango_text()

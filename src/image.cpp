@@ -37,7 +37,6 @@
 #endif
 
 #include "serialization/string_utils.hpp"
-#include "video.hpp"
 
 #include <SDL_image.h>
 

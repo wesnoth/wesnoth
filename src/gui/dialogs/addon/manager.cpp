@@ -48,7 +48,6 @@
 #include "formula/string_utils.hpp"
 #include "preferences.hpp"
 #include "strftime.hpp"
-#include "video.hpp"
 
 #include "config.hpp"
 
