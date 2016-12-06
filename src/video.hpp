@@ -56,7 +56,7 @@ public:
 	/**
 	 * Initializes a new window, taking into account any preiously saved states.
 	 */
-	bool init_window();
+	void init_window();
 
 	void setMode( int x, int y, const MODE_EVENT mode );
 
