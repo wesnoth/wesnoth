@@ -1,9 +1,10 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 # encoding: utf-8
 
 """
 A script to create the "Terrain Table" on the TerrainCodeTableWML wiki page.
 Add the output to the wiki whenever a new terrain is added to mainline.
+The terrain_url below should point to the latest stable release.
 """
 
 import os
@@ -12,7 +13,7 @@ import re
 import argparse
 
 # Where to get terrain images
-terrain_url = "https://raw.github.com/wesnoth/wesnoth/master/data/core/images/terrain/%s.png"
+terrain_url = "https://raw.github.com/wesnoth/wesnoth/1.14/data/core/images/terrain/%s.png"
 
 
 def parse_terrain(data):
@@ -92,7 +93,7 @@ dest='output_path', help="The location of the output file.")
     output_path = args.output_path
 
     if not os.path.exists(path) or not path.endswith('.cfg'):
-        print("Invalid path: '%s' does not exist or not a .cfg file." % path)
+        print("Invalid path: '%s' does not exist or is not a .cfg file." % path)
         sys.exit(1)
 
     with open(path, "r", encoding="utf8") as input_file:
