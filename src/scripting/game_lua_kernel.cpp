@@ -104,6 +104,7 @@
 #include "units/map.hpp"  // for unit_map, etc
 #include "units/ptr.hpp"                 // for unit_const_ptr, unit_ptr
 #include "units/types.hpp"    // for unit_type_data, unit_types, etc
+#include "formula/string_utils.hpp"    // for unit_type_data, unit_types, etc
 #include "util.hpp"                     // for lexical_cast
 #include "variable.hpp"                 // for vconfig, etc
 #include "variable_info.hpp"
@@ -4024,6 +4025,36 @@ const game_events::queued_event & game_lua_kernel::get_event_info() {
 	return *queued_events_.top();
 }
 
+/**
+	* @brief takes a formated string and put the variables
+	* @example wesnoth.format("I have $gold, and I need $goldNeed", {['gold'] = '100', ['goldNeed'] = '50'})
+	*/
+static int intf_format(lua_State *L)
+{
+	// check if both arguments are set
+	if (lua_isnoneornil(L, 1) && lua_isnoneornil(L, 2)) {
+		// check if both arguments are the correct type
+		if (lua_isstring(L, 1) && lua_istable(L, 2)) {
+			// get string 1st variable
+			std::string string =  luaW_checktstring(L, 1);
+			utils::string_map symbols;
+			// get key, value lua table pairs
+			lua_pushnil(L);  /* first key */
+    	while (lua_next(L, 2) != 0) {
+      	/* uses 'key' (at index -2) and 'value' (at index -1) */
+				symbols.insert(std::pair<std::string, std::string>(lua_tostring(L, -2), lua_tostring(L, -2)));
+      	/* removes 'value'; keeps 'key' for next iteration */
+      	lua_pop(L, 1);
+    	}
+			std::string result = vgettext(string.c_str(), symbols);
+			lua_pushstring(L, result.c_str());
+			return 0;
+		}
+		return 2;
+	}
+	return 1;
+}
+
 
 game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports & reports_object)
 	: lua_kernel_base()
@@ -4161,6 +4192,7 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "view_locked",               &dispatch<&game_lua_kernel::intf_view_locked                >        },
 		{ "place_shroud",              &dispatch2<&game_lua_kernel::intf_shroud_op, true  >                 },
 		{ "remove_shroud",             &dispatch2<&game_lua_kernel::intf_shroud_op, false >                 },
+		{ "format",                    &intf_format                                                         },
 		{ nullptr, nullptr }
 	};
 	/*
