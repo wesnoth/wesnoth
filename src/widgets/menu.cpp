@@ -1035,14 +1035,12 @@ void menu::draw()
 				heading_rect.h = heading_height();
 				bg_restore(heading_rect);
 				style_->draw_row(*this,0,heading_rect,HEADING_ROW);
-				update_rect(heading_rect);
 			} else if(*i >= 0 && *i < int(item_pos_.size())) {
 				const unsigned int pos = item_pos_[*i];
 				const SDL_Rect& rect = get_item_rect(*i);
 				bg_restore(rect);
 				style_->draw_row(*this,pos,rect,
 					(!out_ && pos == selected_) ? SELECTED_ROW : NORMAL_ROW);
-				update_rect(rect);
 			}
 		}
 
@@ -1059,7 +1057,6 @@ void menu::draw()
 
 	draw_contents();
 
-	update_rect(location());
 	set_dirty(false);
 }
 

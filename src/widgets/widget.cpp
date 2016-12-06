@@ -257,10 +257,6 @@ void widget::bg_restore() const
 		    i_end = restorer_.end(); i != i_end; ++i)
 			i->restore();
 		needs_restore_ = false;
-	} else {
-		//this function should be able to be relied upon to update the rectangle,
-		//so do that even if we don't restore
-		update_rect(rect_);
 	}
 }
 
@@ -291,7 +287,6 @@ void widget::draw()
 
 	draw_contents();
 
-	update_rect(rect_);
 	set_dirty(false);
 }
 

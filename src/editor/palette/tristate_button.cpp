@@ -268,8 +268,6 @@ void tristate_button::draw_contents() {
 	clipArea.h -= 2 * offset;
 	font::draw_text(&video(), clipArea, font_size, button_color, label_, textx,
 			texty);
-
-	update_rect(loc);
 }
 
 //TODO move to widget

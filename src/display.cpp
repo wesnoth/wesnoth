@@ -1325,7 +1325,6 @@ void display::flip()
 		const Uint32 color =  SDL_MapRGBA(video().getSurface()->format,0,0,0,SDL_ALPHA_OPAQUE);
 		// Adjust the alpha if you want to balance cpu-cost / smooth sunset
 		sdl::fill_rect_alpha(r, color, 1, frameBuffer);
-		update_rect(r);
 	}
 	font::draw_floating_labels(frameBuffer);
 	events::raise_volatile_draw_event();
@@ -1403,7 +1402,6 @@ static void draw_panel(CVideo &video, const theme::panel& panel, std::vector<std
 			surf.assign(tile_surface(surf,loc.w,loc.h));
 		}
 		video.blit_surface(loc.x, loc.y, surf);
-		update_rect(loc);
 	}
 }
 
@@ -1447,7 +1445,6 @@ static void draw_label(CVideo& video, surface target, const theme::label& label)
 		font::draw_text(&video,loc,label.font_size(),font::NORMAL_COLOR,text,loc.x,loc.y);
 	}
 
-	update_rect(loc);
 }
 
 void display::draw_all_panels()
@@ -1642,8 +1639,6 @@ void display::draw_init()
 		const surface& screen = get_screen_surface();
 		clip_rect_setter set_clip_rect(screen, &clip_rect);
 		draw_background(screen, clip_rect, theme_.border().background_image);
-		update_rect(clip_rect);
-
 		redraw_background_ = false;
 
 		// Force a full map redraw
@@ -1986,7 +1981,6 @@ bool display::scroll(int xmove, int ymove, bool force)
 		invalidate_locations_in_rect(r);
 	}
 	scroll_event_.notify_observers();
-	update_rect(map_area());
 
 	redrawMinimap_ = true;
 	return true;
@@ -2527,8 +2521,6 @@ void display::draw_invalidated() {
 		int xpos = get_location_x(loc);
 		int ypos = get_location_y(loc);
 
-		update_rect(xpos, ypos, zoom_, zoom_);
-
 		const bool on_map = get_map().on_board(loc);
 		SDL_Rect hex_rect = sdl::create_rect(xpos, ypos, zoom_, zoom_);
 		if(!sdl::rects_overlap(hex_rect,clip_rect)) {
@@ -2819,7 +2811,6 @@ void display::refresh_report(const std::string& report_name, const config * new_
 
 	if (surf) {
 		sdl_blit(surf, nullptr, screen_.getSurface(), &rect);
-		update_rect(rect);
 	}
 
 	// If the rectangle has just changed, assign the surface to it
@@ -2838,7 +2829,6 @@ void display::refresh_report(const std::string& report_name, const config * new_
 				ERR_DP << "Could not backup background for report!" << std::endl;
 			}
 		}
-		update_rect(rect);
 	}
 
 	tooltips::clear_tooltips(rect);
@@ -3003,7 +2993,6 @@ void display::invalidate_all()
 #pragma omp critical(invalidated_)
 #endif //_OPENMP
 	invalidated_.clear();
-	update_rect(map_area());
 }
 
 bool display::invalidate(const map_location& loc)

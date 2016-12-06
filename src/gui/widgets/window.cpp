@@ -674,7 +674,6 @@ int window::show(const bool restore, const unsigned auto_close_timeout)
 		if(restore_) {
 			SDL_Rect rect = get_rectangle();
 			sdl_blit(restorer_, 0, video_.getSurface(), &rect);
-			update_rect(get_rectangle());
 			font::undraw_floating_labels(video_.getSurface());
 		}
 		throw;
@@ -686,7 +685,6 @@ int window::show(const bool restore, const unsigned auto_close_timeout)
 	if(restore_) {
 		SDL_Rect rect = get_rectangle();
 		sdl_blit(restorer_, 0, video_.getSurface(), &rect);
-		update_rect(get_rectangle());
 		font::undraw_floating_labels(video_.getSurface());
 	}
 
@@ -711,9 +709,6 @@ void window::draw()
 		if(restore_ && restorer_) {
 			SDL_Rect rect = get_rectangle();
 			sdl_blit(restorer_, 0, frame_buffer, &rect);
-			// Since the old area might be bigger as the new one, invalidate
-			// it.
-			update_rect(rect);
 		}
 
 		layout();
@@ -746,7 +741,6 @@ void window::draw()
 			/* Force to update and redraw the entire screen */
 			dirty_list_.clear();
 			dirty_list_.push_back(std::vector<widget*>(1, this));
-			update_rect(screen_area());
 		}
 	}
 
@@ -761,7 +755,6 @@ void window::draw()
 					= SDL_MapRGBA(frame_buffer->format, 0, 0, 0, SDL_ALPHA_OPAQUE);
 
 				sdl::fill_rect_alpha(r, color, 1, frame_buffer);
-				update_rect(r);
 			}
 		}
 		return;
@@ -781,7 +774,6 @@ void window::draw()
 #if 0
 		dirty_list_.clear();
 		dirty_list_.push_back(std::vector<widget*>(1, this));
-		update_rect(screen_area());
 #else
 		clip_rect_setter clip(frame_buffer, &dirty_rect);
 #endif
@@ -854,8 +846,6 @@ void window::draw()
 			(**ritor).draw_foreground(frame_buffer, 0, 0);
 			(**ritor).set_is_dirty(false);
 		}
-
-		update_rect(dirty_rect);
 	}
 
 	dirty_list_.clear();
@@ -863,9 +853,6 @@ void window::draw()
 	std::vector<widget*> call_stack;
 	populate_dirty_list(*this, call_stack);
 	assert(dirty_list_.empty());
-
-	SDL_Rect rect = get_rectangle();
-	update_rect(rect);
 }
 
 void window::undraw()
@@ -875,7 +862,6 @@ void window::undraw()
 		sdl_blit(restorer_, 0, video_.getSurface(), &rect);
 		// Since the old area might be bigger as the new one, invalidate
 		// it.
-		update_rect(rect);
 	}
 }
 

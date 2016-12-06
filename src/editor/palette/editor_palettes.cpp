@@ -403,7 +403,6 @@ void editor_palette<Item>::draw_contents()
 			y += item_space_;
 		counter++;
 	}
-	update_rect(location());
 }
 template void editor_palette<t_translation::terrain_code>::draw_contents();
 template void editor_palette<unit_type>::draw_contents();

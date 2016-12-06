@@ -56,7 +56,6 @@ void the_end(CVideo &video, std::string text, unsigned int duration)
 
 		const color_t col = color_t(uint8_t(n), uint8_t(n), uint8_t(n), uint8_t(n));
 		font::draw_text(&video,area,font_size,col,text,area.x,area.y);
-		update_rect(area);
 
 		events::pump();
 		events::raise_process_event();

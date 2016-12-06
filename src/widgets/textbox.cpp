@@ -247,8 +247,6 @@ void textbox::draw_contents()
 	}
 
 	draw_cursor((cursor_pos_ == 0 ? 0 : cursor_pos_ - 1), video());
-
-	update_rect(loc);
 }
 
 void textbox::set_editable(bool value)

@@ -270,7 +270,6 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 				0, 0, gui_->video().getx(), gui_->video().gety(), 0, 0, 0, 1.0,
 				gui_->video().getSurface()
 				);
-			update_rect(0, 0, gui_->video().getx(), gui_->video().gety());
 		}
 
 		ai_testing::log_game_end();

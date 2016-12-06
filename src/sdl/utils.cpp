@@ -2497,7 +2497,6 @@ void surface_restorer::restore(SDL_Rect const &dst) const
 	src.x -= rect_.x;
 	src.y -= rect_.y;
 	sdl_blit(surface_, &src, target_->getSurface(), &dst2);
-	update_rect(dst2);
 }
 
 void surface_restorer::restore() const
@@ -2506,7 +2505,6 @@ void surface_restorer::restore() const
 		return;
 	SDL_Rect dst = rect_;
 	sdl_blit(surface_, nullptr, target_->getSurface(), &dst);
-	update_rect(rect_);
 }
 
 void surface_restorer::update()
@@ -2536,7 +2534,6 @@ void draw_centered_on_background(surface surf, const SDL_Rect& rect, const color
 		r.y = rect.y + (rect.h-surf->h)/2;
 		sdl_blit(surf, nullptr, target, &r);
 	}
-	update_rect(rect);
 }
 
 std::ostream& operator<<(std::ostream& s, const SDL_Rect& rect)

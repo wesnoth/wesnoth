@@ -358,7 +358,6 @@ void location_palette::draw_contents()
 		// Adjust location
 		y += item_space_;
 	}
-	update_rect(location());
 }
 
 std::vector<std::string> location_palette::action_pressed() const

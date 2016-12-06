@@ -249,7 +249,6 @@ bool part_ui::render_floating_images()
 			{
 				floating_image::render_input& old_ri = imgs_[i];
 				sdl_blit(old_ri.image, nullptr, video_.getSurface(), &old_ri.rect);
-				update_rect(old_ri.rect);
 			}
 		}
 		back_button_.set_dirty();
@@ -338,13 +337,6 @@ void part_ui::render_title_box()
 	);
 
 	video_.blit_surface(base_rect_.x + titlebox_x, base_rect_.y + titlebox_y, txtsurf);
-
-	update_rect(
-		static_cast<size_t>(std::max(0, base_rect_.x + titlebox_x)),
-		static_cast<size_t>(std::max(0, base_rect_.y + titlebox_y)),
-		static_cast<size_t>(std::max(0, titlebox_w)),
-		static_cast<size_t>(std::max(0, titlebox_h))
-	);
 
 	next_button_.hide(false);
 	back_button_.hide(false);
@@ -540,12 +532,6 @@ void part_ui::render_story_box()
 			play_button_.hide(false);
 		}
 
-		if (dirty_ || first) {
-			if(!imgs_.empty() && update_area.h > 0) {
-				update_rect(update_area);
-			}
-		}
-
 		// Time to do some visual effecta.
 		if (dirty_ || first) {
 			const int scan_height = 1, scan_width = txtsurf->w;
@@ -567,7 +553,6 @@ void part_ui::render_story_box()
 			//       uses it nonetheless, no idea why...
 			//       Here we'll use CVideo::blit_surface() instead.
 			video_.blit_surface(dstrect.x, dstrect.y, txtsurf, &scan);
-			update_rect(dstrect);
 			++scan.y;
 		}
 		else {

@@ -181,8 +181,6 @@ void floating_label::draw(surface screen)
 	const clip_rect_setter clip_setter(screen, &clip_rect_);
 	sdl_copy_portion(screen,&rect,buf_,nullptr);
 	sdl_blit(surf_,nullptr,screen,&rect);
-
-	update_rect(rect);
 }
 
 void floating_label::undraw(surface screen)
@@ -193,8 +191,6 @@ void floating_label::undraw(surface screen)
 	SDL_Rect rect = sdl::create_rect(xpos(surf_->w), ypos_, surf_->w, surf_->h);
 	const clip_rect_setter clip_setter(screen, &clip_rect_);
 	sdl_blit(buf_,nullptr,screen,&rect);
-
-	update_rect(rect);
 
 	move(xmove_,ymove_);
 	if(lifetime_ > 0) {

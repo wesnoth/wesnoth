@@ -251,8 +251,6 @@ bool halo_impl::effect::render()
 
 	sdl_blit(surf_,nullptr,screen,&rect);
 
-	update_rect(rect_);
-
 	return true;
 }
 
@@ -286,7 +284,6 @@ void halo_impl::effect::unrender()
 
 	SDL_Rect rect = sdl::create_rect(xpos, ypos, surf_->w, surf_->h);
 	sdl_blit(buffer_,nullptr,screen,&rect);
-	update_rect(rect);
 }
 
 bool halo_impl::effect::on_location(const std::set<map_location>& locations) const

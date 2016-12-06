@@ -114,52 +114,6 @@ SDL_Rect screen_area()
 	return sdl::create_rect(0, 0, frameBuffer->w, frameBuffer->h);
 }
 
-void update_rect(size_t x, size_t y, size_t w, size_t h)
-{
-	update_rect(sdl::create_rect(x, y, w, h));
-}
-
-void update_rect(const SDL_Rect& rect_value)
-{
-
-	SDL_Rect rect = rect_value;
-
-	surface const fb = nullptr;
-	if(fb != nullptr) {
-		if(rect.x < 0) {
-			if(rect.x*-1 >= rect.w)
-				return;
-
-			rect.w += rect.x;
-			rect.x = 0;
-		}
-
-		if(rect.y < 0) {
-			if(rect.y*-1 >= rect.h)
-				return;
-
-			rect.h += rect.y;
-			rect.y = 0;
-		}
-
-		if(rect.x + rect.w > fb->w) {
-			rect.w = fb->w - rect.x;
-		}
-
-		if(rect.y + rect.h > fb->h) {
-			rect.h = fb->h - rect.y;
-		}
-
-		if(rect.x >= fb->w) {
-			return;
-		}
-
-		if(rect.y >= fb->h) {
-			return;
-		}
-	}
-}
-
 void CVideo::video_event_handler::handle_window_event(const SDL_Event &event)
 {
 	if (event.type == SDL_WINDOWEVENT) {

@@ -315,8 +315,6 @@ void scrollbar::draw_contents()
 	video().blit_surface(grip.x, grip.y, top_img);
 	video().blit_surface(grip.x, grip.y + top_img->h, mid_scaled_);
 	video().blit_surface(grip.x, grip.y + top_img->h + mid_height, bottom_img);
-
-	update_rect(groove);
 }
 
 void scrollbar::handle_event(const SDL_Event& event)
