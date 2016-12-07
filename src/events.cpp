@@ -18,9 +18,7 @@
 #include "cursor.hpp"
 #include "events.hpp"
 #include "log.hpp"
-#include "sound.hpp"
 #include "quit_confirmation.hpp"
-#include "preferences.hpp"
 #include "video.hpp"
 #if defined _WIN32
 #include "desktop/windows_tray_notification.hpp"
