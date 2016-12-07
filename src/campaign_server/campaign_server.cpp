@@ -22,6 +22,7 @@
 #include "campaign_server/campaign_server.hpp"
 
 #include "filesystem.hpp"
+#include "lexical_cast.hpp"
 #include "log.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
