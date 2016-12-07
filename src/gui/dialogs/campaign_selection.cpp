@@ -34,6 +34,7 @@
 #include "gui/widgets/tree_view_node.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
+#include "lexical_cast.hpp"
 #include "serialization/string_utils.hpp"
 
 #include "utils/functional.hpp"

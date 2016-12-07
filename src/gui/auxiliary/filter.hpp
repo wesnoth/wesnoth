@@ -22,7 +22,7 @@
 
 #include "global.hpp"
 #include "gui/widgets/text_box.hpp"
-#include "util.hpp"
+#include "lexical_cast.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
 

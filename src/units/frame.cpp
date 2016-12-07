@@ -171,11 +171,13 @@ progressive_<T>::progressive_(const std::string &data, int duration) :
 			ERR_NG << "Invalid time in unit animation: " << colon_split[1] << "\n";
 		}
 
-		std::vector<std::string> range = utils::split(colon_split[0],'~',split_flag);
-		T range0 = lexical_cast<T>(range[0]);
-		T range1 = (range.size() > 1) ? lexical_cast<T>(range[1]) : range0;
-		typedef std::pair<T,T> range_pair;
-		data_.push_back(std::pair<range_pair,int>(range_pair(range0, range1), time));
+		try {
+			std::vector<std::string> range = utils::split(colon_split[0],'~',split_flag);
+			T range0 = lexical_cast<T>(range[0]);
+			T range1 = (range.size() > 1) ? lexical_cast<T>(range[1]) : range0;
+			typedef std::pair<T,T> range_pair;
+			data_.push_back(std::pair<range_pair,int>(range_pair(range0, range1), time));
+		} catch(bad_lexical_cast) {}
 	}
 }
 

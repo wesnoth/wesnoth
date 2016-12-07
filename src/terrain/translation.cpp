@@ -21,6 +21,7 @@
 
 #include "global.hpp"
 #include "gettext.hpp"
+#include "lexical_cast.hpp"
 #include "log.hpp"
 #include "terrain/translation.hpp"
 #include "serialization/string_utils.hpp"

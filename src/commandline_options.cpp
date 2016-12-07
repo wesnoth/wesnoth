@@ -17,9 +17,9 @@
 
 #include "config.hpp"
 #include "formatter.hpp"
+#include "lexical_cast.hpp"
 #include "log.hpp"                      // for logger, set_strict_severity, etc
 #include "serialization/string_utils.hpp"  // for split
-#include "util.hpp"                     // for lexical_cast
 
 #include <boost/any.hpp>                // for any
 #include <boost/program_options/cmdline.hpp>

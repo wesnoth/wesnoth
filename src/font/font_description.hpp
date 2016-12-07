@@ -16,6 +16,7 @@
 #define FONT_FONT_DESCRIPTION_HPP
 
 #include "config.hpp"
+#include "lexical_cast.hpp"
 #include "util.hpp"
 #include "serialization/string_utils.hpp"
 

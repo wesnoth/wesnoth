@@ -22,6 +22,7 @@
 
 #include "global.hpp"
 
+#include "lexical_cast.hpp"
 #include "log.hpp"
 #include "util.hpp"
 #include "utils/const_clone.hpp"
@@ -42,7 +43,7 @@ static lg::log_domain log_config("config");
 #define DBG_CF LOG_STREAM(debug, log_config)
 
 
-#ifdef USE_HETEROGENOUS_LOOKUPS 
+#ifdef USE_HETEROGENOUS_LOOKUPS
 struct config_simple_key
 {
 	const char* str;

@@ -59,7 +59,7 @@
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
-#include "util.hpp"
+#include "lexical_cast.hpp"
 
 #include "utils/functional.hpp"
 #include <boost/math/common_factor_rt.hpp>

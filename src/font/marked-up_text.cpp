@@ -52,6 +52,7 @@ std::string::const_iterator parse_markup(std::string::const_iterator i1,
 												int* font_size,
 												color_t* color, int* style)
 {
+	try {
 	while(i1 != i2) {
 		switch(*i1) {
 		case '\\':
@@ -132,6 +133,7 @@ std::string::const_iterator parse_markup(std::string::const_iterator i1,
 		}
 		++i1;
 	}
+				} catch(bad_lexical_cast) {}
 	return i1;
 }
 

@@ -21,6 +21,7 @@
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
+#include "lexical_cast.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
 #include "map/exception.hpp"

@@ -28,6 +28,7 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "generators/map_generator.hpp"
+#include "lexical_cast.hpp"
 
 #include "utils/functional.hpp"
 

@@ -95,7 +95,13 @@ inline To lexical_cast(From value)
 }
 
 /** Thrown when a lexical_cast fails. */
-struct bad_lexical_cast : std::exception {};
+struct bad_lexical_cast : std::exception
+{
+	const char* what() const throw()
+	{
+		return "bad_lexical_cast";
+	}
+};
 
 namespace implementation {
 
