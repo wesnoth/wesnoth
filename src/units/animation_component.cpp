@@ -50,10 +50,10 @@ void unit_animation_component::set_standing(bool with_bars)
 	display *disp = display::get_singleton();
 	if (preferences::show_standing_animations()&& !u_.incapacitated()) {
 		start_animation(INT_MAX, choose_animation(*disp, u_.loc_, "standing"),
-			with_bars,  "", 0, STATE_STANDING);
+			with_bars,  "", {0,0,0}, STATE_STANDING);
 	} else {
 		start_animation(INT_MAX, choose_animation(*disp, u_.loc_, "_disabled_"),
-			with_bars,  "", 0, STATE_STANDING);
+			with_bars,  "", {0,0,0}, STATE_STANDING);
 	}
 }
 
@@ -76,7 +76,7 @@ void unit_animation_component::set_idling()
 {
 	display *disp = display::get_singleton();
 	start_animation(INT_MAX, choose_animation(*disp, u_.loc_, "idling"),
-		true, "", 0, STATE_FORGET);
+		true, "", {0,0,0}, STATE_FORGET);
 }
 
 void unit_animation_component::set_selecting()
@@ -84,15 +84,15 @@ void unit_animation_component::set_selecting()
 	const display *disp =  display::get_singleton();
 	if (preferences::show_standing_animations() && !u_.incapacitated()) {
 		start_animation(INT_MAX, choose_animation(*disp, u_.loc_, "selected"),
-			true, "", 0, STATE_FORGET);
+			true, "", {0,0,0}, STATE_FORGET);
 	} else {
 		start_animation(INT_MAX, choose_animation(*disp, u_.loc_, "_disabled_selected_"),
-			true, "", 0, STATE_FORGET);
+			true, "", {0,0,0}, STATE_FORGET);
 	}
 }
 
 void unit_animation_component::start_animation (int start_time, const unit_animation *animation,
-	bool with_bars,  const std::string &text, Uint32 text_color, STATE state)
+	bool with_bars,  const std::string &text, color_t text_color, STATE state)
 {
 	const display * disp =  display::get_singleton();
 	if (!animation) {

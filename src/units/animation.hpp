@@ -82,7 +82,7 @@ public:
 		, const map_location& src = map_location::null_location()
 		, const map_location& dst = map_location::null_location()
 		, const std::string& text = ""
-		, const Uint32 text_color = 0
+		, const color_t text_color = {0,0,0}
 		, const bool accelerate = true);
 
 	void update_parameters(const map_location& src, const map_location& dst);
@@ -138,7 +138,7 @@ private:
 			, const cycle_state cycles
 			, const std::string& highlight = ""
 			, const std::string& blend_ratio =""
-			, Uint32 blend_color = 0
+			, color_t blend_color = {0,0,0}
 			, const std::string& offset = ""
 			, const std::string& layer = ""
 			, const std::string& modifiers = "");
@@ -196,7 +196,7 @@ public:
 		, const map_location& src = map_location::null_location()
 		, bool with_bars = false
 		, const std::string& text = ""
-		, const Uint32 text_color = 0);
+		, const color_t text_color = {0,0,0});
 
 	void add_animation(const unit* animated_unit
 		, const std::string& event
@@ -205,7 +205,7 @@ public:
 		, const int value = 0
 		, bool with_bars = false
 		, const std::string& text = ""
-		, const Uint32 text_color = 0
+		, const color_t text_color = {0,0,0}
 		, const unit_animation::hit_type hit_type =
 			unit_animation::hit_type::INVALID
 		, const attack_type* attack = nullptr
@@ -219,7 +219,7 @@ public:
 		, const int value = 0
 		, bool with_bars = false
 		, const std::string& text = ""
-		, const Uint32 text_color = 0
+		, const color_t text_color = {0,0,0}
 		, const unit_animation::hit_type hit_type = unit_animation::hit_type::INVALID
 		, const attack_type* attack = nullptr
 		, const attack_type* second_attack = nullptr
@@ -250,7 +250,7 @@ private:
 			: my_unit(0)
 			, animation(0)
 			, text()
-			, text_color(0)
+			, text_color()
 			, src()
 			, with_bars(false)
 		{}
@@ -258,7 +258,7 @@ private:
 		unit_const_ptr my_unit;
 		const unit_animation * animation;
 		std::string text;
-		Uint32 text_color;
+		color_t text_color;
 		map_location src;
 		bool with_bars;
 	};

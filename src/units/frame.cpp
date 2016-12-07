@@ -255,8 +255,8 @@ frame_parameters::frame_parameters() :
 	halo_mod(""),
 	sound(""),
 	text(""),
-	text_color(0),
-	blend_with(0),
+	text_color(),
+	blend_with(),
 	blend_ratio(0.0),
 	highlight_ratio(1.0),
 	offset(0),
@@ -282,8 +282,8 @@ frame_builder::frame_builder() :
 	halo_mod_(""),
 	sound_(""),
 	text_(""),
-	text_color_(0),
-	blend_with_(0),
+	text_color_(),
+	blend_with_(),
 	blend_ratio_(""),
 	highlight_ratio_(""),
 	offset_(""),
@@ -309,8 +309,8 @@ frame_builder::frame_builder(const config& cfg,const std::string& frame_string) 
 	halo_mod_(cfg[frame_string + "halo_mod"]),
 	sound_(cfg[frame_string + "sound"]),
 	text_(cfg[frame_string + "text"]),
-	text_color_(0),
-	blend_with_(0),
+	text_color_(),
+	blend_with_(),
 	blend_ratio_(cfg[frame_string + "blend_ratio"]),
 	highlight_ratio_(cfg[frame_string + "alpha"]),
 	offset_(cfg[frame_string + "offset"]),
@@ -348,7 +348,7 @@ frame_builder::frame_builder(const config& cfg,const std::string& frame_string) 
 	std::vector<std::string> color = utils::split(cfg[frame_string + "text_color"]);
 	if (color.size() == 3) {
 		try {
-			text_color_ = color_t(std::stoi(color[0]), std::stoi(color[1]), std::stoi(color[2])).to_argb_bytes();
+			text_color_ = color_t(std::stoi(color[0]), std::stoi(color[1]), std::stoi(color[2]));
 		} catch(std::invalid_argument) {
 			ERR_NG << "Invalid RGB color value in unit animation: " << color[0] << ", " << color[1] << ", " << color[2] << "\n";
 		}
@@ -370,7 +370,7 @@ frame_builder::frame_builder(const config& cfg,const std::string& frame_string) 
 	color = utils::split(cfg[frame_string + "blend_color"]);
 	if (color.size() == 3) {
 		try {
-			blend_with_ = color_t(std::stoi(color[0]), std::stoi(color[1]), std::stoi(color[2])).to_argb_bytes();
+			blend_with_ = color_t(std::stoi(color[0]), std::stoi(color[1]), std::stoi(color[2]));
 		} catch(std::invalid_argument) {
 			ERR_NG << "Invalid RGB color value in unit animation: " << color[0] << ", " << color[1] << ", " << color[2] << "\n";
 		}
@@ -394,7 +394,7 @@ frame_builder & frame_builder::sound(const std::string& sound)
 	sound_=sound;
 	return *this;
 }
-frame_builder & frame_builder::text(const std::string& text,const  Uint32 text_color)
+frame_builder & frame_builder::text(const std::string& text,const color_t text_color)
 {
 	text_=text;
 	text_color_=text_color;
@@ -413,7 +413,7 @@ frame_builder & frame_builder::duration(const int duration)
 	duration_= duration;
 	return *this;
 }
-frame_builder & frame_builder::blend(const std::string& blend_ratio,const Uint32 blend_color)
+frame_builder & frame_builder::blend(const std::string& blend_ratio,const color_t blend_color)
 {
 	blend_with_=blend_color;
 	blend_ratio_=blend_ratio;
@@ -577,7 +577,7 @@ const frame_parameters frame_parsed_parameters::parameters(int current_time) con
 void frame_parsed_parameters::override( int duration
 		, const std::string& highlight
 		, const std::string& blend_ratio
-		, Uint32 blend_color
+		, color_t blend_color
 		, const std::string& offset
 		, const std::string& layer
 		, const std::string& modifiers)
@@ -634,11 +634,15 @@ std::vector<std::string> frame_parsed_parameters::debug_strings() const {
 	if (!sound_.empty()) v.push_back("sound="+sound_);
 	if (!text_.empty()) {
 		v.push_back("text="+text_);
-		v.push_back("text_color="+std::to_string(text_color_));
+		if(text_color_) {
+			v.push_back("text_color=" + text_color_.get().to_rgba_string());
+		}
 	}
 	if (!blend_ratio_.get_original().empty()) {
 		v.push_back("blend_ratio="+blend_ratio_.get_original());
-		v.push_back("blend_with="+std::to_string(blend_with_));
+		if(blend_with_) {
+			v.push_back("blend_with=" + blend_with_.get().to_rgba_string());
+		}
 	}
 	if (!highlight_ratio_.get_original().empty()) v.push_back("highlight_ratio="+highlight_ratio_.get_original());
 	if (!offset_.get_original().empty()) v.push_back("offset="+offset_.get_original());
@@ -679,9 +683,8 @@ void unit_frame::redraw(const int frame_time,bool on_start_time,bool in_scope_of
 		if(!current_data.sound.empty()  ) {
 			sound::play_sound(current_data.sound);
 		}
-		if(!current_data.text.empty()  ) {
-			game_display::get_singleton()->float_label(src, current_data.text,
-				color_t::from_argb_bytes(current_data.text_color));
+		if(!current_data.text.empty() && current_data.text_color) {
+			game_display::get_singleton()->float_label(src, current_data.text, current_data.text_color.get());
 		}
 	}
 	image::locator image_loc;
@@ -716,11 +719,11 @@ void unit_frame::redraw(const int frame_time,bool on_start_time,bool in_scope_of
 			my_y -= current_data.directional_y;
 		}
 
-		game_display::get_singleton()->render_image( my_x,my_y,
-					static_cast<display::drawing_layer>(display::LAYER_UNIT_FIRST+current_data.drawing_layer),
-			       	src, image, facing_west, false,
-			        ftofxp(current_data.highlight_ratio), color_t::from_argb_bytes(current_data.blend_with),
-			       	current_data.blend_ratio,current_data.submerge,!facing_north);
+		game_display::get_singleton()->render_image(my_x, my_y,
+			static_cast<display::drawing_layer>(display::LAYER_UNIT_FIRST + current_data.drawing_layer),
+			src, image, facing_west, false,
+			ftofxp(current_data.highlight_ratio), current_data.blend_with ? current_data.blend_with.get() : color_t(),
+			current_data.blend_ratio, current_data.submerge, !facing_north);
 	}
 	halo_id = halo::handle(); //halo::NO_HALO;
 
@@ -940,15 +943,13 @@ const frame_parameters unit_frame::merge_parameters(int current_time,const frame
 	assert(engine_val.text.empty());
 	result.text = current_val.text.empty()?animation_val.text:current_val.text;
 
-	assert(engine_val.text_color == 0);
-	result.text_color = current_val.text_color?current_val.text_color:animation_val.text_color;
+	// TODO: how should this be handled now that we use color_t?
+	assert(!engine_val.text_color);
+	result.text_color = current_val.text_color && current_val.text_color ? current_val.text_color : animation_val.text_color;
 
 	/** engine provide a blend color for poisoned units */
-	result.blend_with = current_val.blend_with?current_val.blend_with:animation_val.blend_with;
-	if(primary&& engine_val.blend_with) result.blend_with =
-		color_t::from_argb_bytes(engine_val.blend_with)
-			.blend_lighten(color_t::from_argb_bytes(result.blend_with))
-			.to_argb_bytes();
+	result.blend_with = current_val.blend_with ? current_val.blend_with : animation_val.blend_with;
+	if(primary&& engine_val.blend_with) result.blend_with = engine_val.blend_with.get().blend_lighten(result.blend_with.get());
 
 	/** engine provide a blend color for poisoned units */
 	result.blend_ratio = current_val.blend_ratio?current_val.blend_ratio:animation_val.blend_ratio;

@@ -85,7 +85,7 @@ public:
 	/** Begin an animation. */
 	void start_animation (int start_time, const unit_animation *animation,
 		bool with_bars,  const std::string &text = "",
-		Uint32 text_color = 0, STATE state = STATE_ANIM);
+		color_t text_color = {}, STATE state = STATE_ANIM);
 
 	/** Invalidates an animation with respect to a display object, preparing it for redraw. */
 	bool invalidate(const display & disp);

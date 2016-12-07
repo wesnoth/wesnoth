@@ -23,6 +23,8 @@
 #include "halo.hpp"
 #include "image.hpp"
 
+#include <boost/optional.hpp>
+
 class config;
 
 class progressive_string {
@@ -82,8 +84,8 @@ class frame_parameters{
 	std::string halo_mod;
 	std::string sound;
 	std::string text;
-	Uint32 text_color;
-	Uint32 blend_with;
+	boost::optional<color_t> text_color;
+	boost::optional<color_t> blend_with;
 	double blend_ratio;
 	double highlight_ratio;
 	double offset;
@@ -110,9 +112,9 @@ class frame_builder {
 		frame_builder & image(const std::string& image ,const std::string & image_mod="");
 		frame_builder & image_diagonal(const std::string& image_diagonal,const std::string & image_mod="");
 		frame_builder & sound(const std::string& sound);
-		frame_builder & text(const std::string& text,const  Uint32 text_color);
+		frame_builder & text(const std::string& text,const color_t text_color);
 		frame_builder & halo(const std::string &halo, const std::string &halo_x, const std::string& halo_y,const std::string& halo_mod);
-		frame_builder & blend(const std::string& blend_ratio,const Uint32 blend_color);
+		frame_builder & blend(const std::string& blend_ratio,const color_t blend_color);
 		frame_builder & highlight(const std::string& highlight);
 		frame_builder & offset(const std::string& offset);
 		frame_builder & submerge(const std::string& submerge);
@@ -137,8 +139,8 @@ class frame_builder {
 		std::string halo_mod_;
 		std::string sound_;
 		std::string text_;
-		Uint32 text_color_;
-		Uint32 blend_with_;
+		boost::optional<color_t> text_color_;
+		boost::optional<color_t> blend_with_;
 		std::string blend_ratio_;
 		std::string highlight_ratio_;
 		std::string offset_;
@@ -163,7 +165,7 @@ class frame_parsed_parameters {
 		void override( int duration
 				, const std::string& highlight = ""
 				, const std::string& blend_ratio =""
-				, Uint32 blend_color = 0
+				, color_t blend_color = {0,0,0}
 				, const std::string& offset = ""
 				, const std::string& layer = ""
 				, const std::string& modifiers = "");
@@ -185,8 +187,8 @@ class frame_parsed_parameters {
 		std::string halo_mod_;
 		std::string sound_;
 		std::string text_;
-		Uint32 text_color_;
-		Uint32 blend_with_;
+		boost::optional<color_t> text_color_;
+		boost::optional<color_t> blend_with_;
 		progressive_double blend_ratio_;
 		progressive_double highlight_ratio_;
 		progressive_double offset_;

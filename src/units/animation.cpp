@@ -502,7 +502,7 @@ void unit_animation::fill_initial_animations(std::vector<unit_animation>& animat
 
 	animations.push_back(unit_animation(0, frame_builder().image(default_image).duration(1), "_disabled_", 0));
 	animations.push_back(unit_animation(0,
-		frame_builder().image(default_image).duration(300).blend("0.0~0.3:100,0.3~0.0:200", color_t(255,255,255).to_argb_bytes()),
+		frame_builder().image(default_image).duration(300).blend("0.0~0.3:100,0.3~0.0:200", {255,255,255}),
 		"_disabled_selected_", 0));
 
 	for(const auto& base : animation_base) {
@@ -512,15 +512,15 @@ void unit_animation::fill_initial_animations(std::vector<unit_animation>& animat
 
 		animations.push_back(base);
 		animations.back().event_ = { "ghosted" };
-		animations.back().unit_anim_.override(0, animations.back().unit_anim_.get_animation_duration(),particle::UNSET,"0.9", "", 0, "", "", "~GS()");
+		animations.back().unit_anim_.override(0, animations.back().unit_anim_.get_animation_duration(),particle::UNSET,"0.9", "", {0,0,0}, "", "", "~GS()");
 
 		animations.push_back(base);
 		animations.back().event_ = { "disabled_ghosted" };
-		animations.back().unit_anim_.override(0, 1, particle::UNSET, "0.4", "", 0, "", "", "~GS()");
+		animations.back().unit_anim_.override(0, 1, particle::UNSET, "0.4", "", {0,0,0}, "", "", "~GS()");
 
 		animations.push_back(base);
 		animations.back().event_ = { "selected" };
-		animations.back().unit_anim_.override(0, 300, particle::UNSET, "", "0.0~0.3:100,0.3~0.0:200", color_t(255,255,255).to_argb_bytes());
+		animations.back().unit_anim_.override(0, 300, particle::UNSET, "", "0.0~0.3:100,0.3~0.0:200", {255,255,255});
 
 		animations.push_back(base);
 		animations.back().event_ = { "recruited" };
@@ -528,11 +528,11 @@ void unit_animation::fill_initial_animations(std::vector<unit_animation>& animat
 
 		animations.push_back(base);
 		animations.back().event_ = { "levelin" };
-		animations.back().unit_anim_.override(0, 600, particle::NO_CYCLE, "", "1~0:600", color_t(255,255,255).to_argb_bytes());
+		animations.back().unit_anim_.override(0, 600, particle::NO_CYCLE, "", "1~0:600", {255,255,255});
 
 		animations.push_back(base);
 		animations.back().event_ = { "levelout" };
-		animations.back().unit_anim_.override(0, 600, particle::NO_CYCLE, "", "0~1:600,1", color_t(255,255,255).to_argb_bytes());
+		animations.back().unit_anim_.override(0, 600, particle::NO_CYCLE, "", "0~1:600,1", {255,255,255});
 
 		animations.push_back(base);
 		animations.back().event_ = { "pre_movement" };
@@ -545,12 +545,12 @@ void unit_animation::fill_initial_animations(std::vector<unit_animation>& animat
 		animations.push_back(base);
 		animations.back().event_ = { "movement" };
 		animations.back().unit_anim_.override(0, 200,
-			particle::NO_CYCLE, "", "", 0, "0~1:200", std::to_string(display::LAYER_UNIT_MOVE_DEFAULT - display::LAYER_UNIT_FIRST));
+			particle::NO_CYCLE, "", "", {0,0,0}, "0~1:200", std::to_string(display::LAYER_UNIT_MOVE_DEFAULT - display::LAYER_UNIT_FIRST));
 
 		animations.push_back(base);
 		animations.back().event_ = { "defend" };
 		animations.back().unit_anim_.override(0, animations.back().unit_anim_.get_animation_duration(),
-			particle::NO_CYCLE, "", "0.0,0.5:75,0.0:75,0.5:75,0.0", color_t(255,0,0).to_argb_bytes());
+			particle::NO_CYCLE, "", "0.0,0.5:75,0.0:75,0.5:75,0.0", {255,0,0});
 		animations.back().hits_.push_back(hit_type::HIT);
 		animations.back().hits_.push_back(hit_type::KILL);
 
@@ -559,7 +559,7 @@ void unit_animation::fill_initial_animations(std::vector<unit_animation>& animat
 
 		animations.push_back(base);
 		animations.back().event_ = { "attack" };
-		animations.back().unit_anim_.override(-150, 300, particle::NO_CYCLE, "", "", 0, "0~0.6:150,0.6~0:150", std::to_string(display::LAYER_UNIT_MOVE_DEFAULT-display::LAYER_UNIT_FIRST));
+		animations.back().unit_anim_.override(-150, 300, particle::NO_CYCLE, "", "", {0,0,0}, "0~0.6:150,0.6~0:150", std::to_string(display::LAYER_UNIT_MOVE_DEFAULT-display::LAYER_UNIT_FIRST));
 		animations.back().primary_attack_filter_.push_back(config());
 		animations.back().primary_attack_filter_.back()["range"] = "melee";
 
@@ -592,7 +592,7 @@ void unit_animation::fill_initial_animations(std::vector<unit_animation>& animat
 
 		animations.push_back(base);
 		animations.back().event_ = { "healed" };
-		animations.back().unit_anim_.override(0, 300, particle::NO_CYCLE, "", "0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30", color_t(255,255,255).to_argb_bytes());
+		animations.back().unit_anim_.override(0, 300, particle::NO_CYCLE, "", "0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30", {255,255,255});
 
 		const std::string healed_sound = get_heal_sound(cfg);
 
@@ -600,7 +600,7 @@ void unit_animation::fill_initial_animations(std::vector<unit_animation>& animat
 
 		animations.push_back(base);
 		animations.back().event_ = { "poisoned" };
-		animations.back().unit_anim_.override(0, 300, particle::NO_CYCLE, "", "0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30", color_t(0,255,0).to_argb_bytes());
+		animations.back().unit_anim_.override(0, 300, particle::NO_CYCLE, "", "0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30", {0,255,0});
 		animations.back().sub_anims_["_poison_sound"] = particle();
 		animations.back().sub_anims_["_poison_sound"].add_frame(1, frame_builder().sound(game_config::sounds::status::poisoned), true);
 	}
@@ -781,7 +781,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 			animations.back().add_frame(225, frame_builder()
 				.image(image_loc.get_filename()+image_loc.get_modifications())
 				.duration(225)
-				.blend("0.0,0.5:75,0.0:75,0.5:75,0.0", color_t(255,0,0).to_argb_bytes()));
+				.blend("0.0,0.5:75,0.0:75,0.5:75,0.0", {255,0,0}));
 		} else {
 			for(const std::string& hit_type : utils::split(anim["hits"])) {
 				config tmp = anim;
@@ -794,7 +794,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 					animations.back().add_frame(225, frame_builder()
 						.image(image_loc.get_filename() + image_loc.get_modifications())
 						.duration(225)
-						.blend("0.0,0.5:75,0.0:75,0.5:75,0.0", color_t(255,0,0).to_argb_bytes()));
+						.blend("0.0,0.5:75,0.0:75,0.5:75,0.0", {255,0,0}));
 				}
 			}
 		}
@@ -891,7 +891,7 @@ void unit_animation::particle::override(int start_time
 	, const cycle_state cycles
 	, const std::string& highlight
 	, const std::string& blend_ratio
-	, Uint32 blend_color
+	, color_t blend_color
 	, const std::string& offset
 	, const std::string& layer
 	, const std::string& modifiers)
@@ -1035,7 +1035,7 @@ void unit_animation::start_animation(int start_time
 	, const map_location& src
 	, const map_location& dst
 	, const std::string& text
-	, const Uint32 text_color
+	, const color_t text_color
 	, const bool accelerate)
 {
 	unit_anim_.accelerate = accelerate;
@@ -1301,7 +1301,7 @@ void unit_animator::add_animation(const unit* animated_unit
 		, const int value
 		, bool with_bars
 		, const std::string& text
-		, const Uint32 text_color
+		, const color_t text_color
 		, const unit_animation::hit_type hit_type
 		, const attack_type* attack
 		, const attack_type* second_attack
@@ -1330,7 +1330,7 @@ void unit_animator::add_animation(const unit* animated_unit
 	, const map_location &src
 	, bool with_bars
 	, const std::string& text
-	, const Uint32 text_color)
+	, const color_t text_color)
 {
 	if(!animated_unit) return;
 
@@ -1355,7 +1355,7 @@ void unit_animator::replace_anim_if_invalid(const unit* animated_unit
 	, const int value
 	, bool with_bars
 	, const std::string& text
-	, const Uint32 text_color
+	, const color_t text_color
 	, const unit_animation::hit_type hit_type
 	, const attack_type* attack
 	, const attack_type* second_attack
