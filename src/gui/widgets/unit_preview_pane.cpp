@@ -29,8 +29,10 @@
 #include "font/text_formatting.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
+#include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "help/help.hpp"
+#include "help/help_impl.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
 #include "team.hpp"
@@ -98,6 +100,7 @@ static inline tree_view_node& add_name_tree_node(tree_view_node& header_node, co
 	child_label.set_tooltip(tooltip);
 	return child_node;
 }
+
 template<typename TGet_resistance>
 static inline std::string get_hp_tooltip(const utils::string_map& res, const TGet_resistance& get)
 {
@@ -134,6 +137,57 @@ static inline std::string get_hp_tooltip(const utils::string_map& res, const TGe
 	}
 	return tooltip.str();
 }
+
+static inline std::string get_mp_tooltip(std::function<int (t_translation::terrain_code)> get)
+{
+	std::ostringstream tooltip;
+	tooltip << _("Movement Costs:") << "\n";
+
+	ter_data_cache tdata = help::load_terrain_types_data();
+
+	if (!tdata) {
+		return "";
+	}
+
+	for (t_translation::terrain_code terrain : preferences::encountered_terrains()) {
+		if (terrain == t_translation::FOGGED || terrain == t_translation::VOID_TERRAIN || terrain == t_translation::OFF_MAP_USER) {
+			continue;
+		}
+
+		const terrain_type& info = tdata->get_terrain_info(terrain);
+
+		if (info.union_type().size() == 1 && info.union_type()[0] == info.number() && info.is_nonnull()) {
+
+			const std::string& name = info.name();
+			const int moves = get(terrain);
+
+			tooltip << name << ": ";
+
+			std::string color;
+			//movement  -  range: 1 .. 5, movetype::UNREACHABLE=impassable
+			const bool cannot_move = moves > u->total_movement();
+			if (cannot_move)		// cannot move in this terrain
+				color = "red";
+			else if (moves > 1)
+				color = "yellow";
+			else
+				color = "white";
+			tooltip << "<span foreground=\"" << color << "\">";
+			// A 5 MP margin; if the movement costs go above
+			// the unit's max moves + 5, we replace it with dashes.
+			if (cannot_move && (moves > u->total_movement() + 5)) {
+				tooltip << font::unicode_figure_dash;
+			}
+			else {
+				tooltip << moves;
+			}
+			tooltip << "</span>" << '\n';
+		}
+	}
+
+	return tooltip.str();
+}
+
 /*
  * Both unit and unit_type use the same format (vector of attack_types) for their
  * attack data, meaning we can keep this as a helper function.
@@ -242,7 +296,7 @@ void unit_preview_pane::set_displayed_type(const unit_type& type)
 			{ "mp",{
 				{ "label", (formatter() << "<small>" << "<b>" << _("MP: ") << "</b>" << type.movement() << "</small>").str() },
 				{ "use_markup", "true" },
-				{ "tooltip", (formatter()).str() }
+				{ "tooltip", get_mp_tooltip([&type](t_translation::terrain_code terrain) { return type.movement_type().movement_cost(terrain); }) }
 			} },
 		});
 
@@ -390,7 +444,7 @@ void unit_preview_pane::set_displayed_unit(const unit& u)
 			{ "mp",{
 				{ "label", (formatter() << "<small>" << "<b>" << _("MP: ") << "</b>" << u.movement_left() << "/" << u.total_movement() << "</small>").str() },
 				{ "use_markup", "true" },
-				{ "tooltip", (formatter()).str() }
+				{ "tooltip", get_mp_tooltip([&u](t_translation::terrain_code terrain) { return u.movement_cost(terrain); }) }
 			} },
 		});
 
