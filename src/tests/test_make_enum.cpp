@@ -16,9 +16,9 @@
 
 #include <boost/test/unit_test.hpp>
 
-#include "utils/make_enum.hpp"
-#include "util.hpp"
 #include "config.hpp"
+#include "lexical_cast.hpp"
+#include "utils/make_enum.hpp"
 
 namespace foo {
 

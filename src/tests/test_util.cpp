@@ -16,6 +16,7 @@
 
 #include <boost/test/unit_test.hpp>
 
+#include "lexical_cast.hpp"
 #include "util.hpp"
 
 #include <cstdint>
