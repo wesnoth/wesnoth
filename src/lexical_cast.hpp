@@ -51,7 +51,9 @@
 #include <string>
 #include <sstream>
 #include <type_traits>
+
 #include <boost/mpl/set.hpp>
+#include <boost/optional.hpp>
 
 #define DEBUG_THROW(id)
 #endif
@@ -84,9 +86,9 @@ namespace implementation {
  * @returns                       The converted value.
  */
 template<typename To, typename From>
-inline To lexical_cast(From value)
+inline To lexical_cast(From value, boost::optional<To> fallback = boost::none)
 {
-	return implementation::lexical_caster<To, From>().operator()(value);
+	return implementation::lexical_caster<To, From>().operator()(value, fallback);
 }
 
 /** Thrown when a lexical_cast fails. */
@@ -119,7 +121,7 @@ template<
 >
 struct lexical_caster
 {
-	To operator()(From value)
+	To operator()(From value, boost::optional<To> fallback)
 	{
 		DEBUG_THROW("generic");
 
@@ -127,6 +129,8 @@ struct lexical_caster
 		std::stringstream sstr;
 
 		if(!(sstr << value && sstr >> result)) {
+			if(fallback) { return fallback.get(); }
+
 			throw bad_lexical_cast();
 		} else {
 			return result;
@@ -149,7 +153,7 @@ struct lexical_caster<
 			typename std::remove_pointer<From>::type>::value >::type
 >
 {
-	std::string operator()(From value)
+	std::string operator()(From value, boost::optional<std::string>)
 	{
 		DEBUG_THROW("specialized - To std::string - From integral (pointer)");
 
@@ -175,7 +179,7 @@ struct lexical_caster<
 			char*, const char*> , From>::value >::type
 	>
 {
-	long long operator()(From value)
+	long long operator()(From value, boost::optional<long long> fallback)
 	{
 		DEBUG_THROW("specialized - To long long - From (const) char*");
 
@@ -183,6 +187,8 @@ struct lexical_caster<
 		int res = strtoll(value, &endptr, 10);
 
 		if (*value == '\0' || *endptr != '\0') {
+			if(fallback) { return fallback.get(); }
+
 			throw bad_lexical_cast();
 		} else {
 			return res;
@@ -203,7 +209,7 @@ struct lexical_caster<
 	, std::string
 	>
 {
-	long long operator()(const std::string& value)
+	long long operator()(const std::string& value, boost::optional<long long>)
 	{
 		DEBUG_THROW("specialized - To long long - From std::string");
 
@@ -225,7 +231,7 @@ struct lexical_caster<
 			char*, const char*> , From>::value >::type
 	>
 {
-	To operator()(From value)
+	To operator()(From value, boost::optional<To> fallback)
 	{
 		DEBUG_THROW("specialized - To signed - From (const) char*");
 
@@ -233,6 +239,8 @@ struct lexical_caster<
 		int res = strtol(value, &endptr, 10);
 
 		if (*value == '\0' || *endptr != '\0') {
+			if(fallback) { return fallback.get(); }
+
 			throw bad_lexical_cast();
 		} else {
 			return res;
@@ -252,7 +260,7 @@ struct lexical_caster<
 	, typename std::enable_if<std::is_signed<To>::value >::type
 	>
 {
-	To operator()(const std::string& value)
+	To operator()(const std::string& value, boost::optional<To>)
 	{
 		DEBUG_THROW("specialized - To signed - From std::string");
 
@@ -276,7 +284,7 @@ struct lexical_caster<
 	char*, const char*> , From>::value >::type
 	>
 {
-	long long operator()(From value)
+	long long operator()(From value, boost::optional<unsigned long long> fallback)
 	{
 		DEBUG_THROW(
 				"specialized - To unsigned long long - From (const) char*");
@@ -285,6 +293,8 @@ struct lexical_caster<
 		int res = strtoull(value, &endptr, 10);
 
 		if (*value == '\0' || *endptr != '\0') {
+			if(fallback) { return fallback.get(); }
+
 			throw bad_lexical_cast();
 		} else {
 			return res;
@@ -305,7 +315,7 @@ struct lexical_caster<
 	, std::string
 	>
 {
-	long long operator()(const std::string& value)
+	long long operator()(const std::string& value, boost::optional<unsigned long long>)
 	{
 		DEBUG_THROW("specialized - To unsigned long long - From std::string");
 
@@ -327,7 +337,7 @@ struct lexical_caster<
 			char*, const char*> , From>::value >::type
 	>
 {
-	To operator()(From value)
+	To operator()(From value, boost::optional<To> fallback)
 	{
 		DEBUG_THROW("specialized - To unsigned - From (const) char*");
 
@@ -335,6 +345,8 @@ struct lexical_caster<
 		int res = strtoul(value, &endptr, 10);
 
 		if (*value == '\0' || *endptr != '\0') {
+			if(fallback) { return fallback.get(); }
+
 			throw bad_lexical_cast();
 		} else {
 			return res;
@@ -354,7 +366,7 @@ struct lexical_caster<
 	, typename std::enable_if<std::is_unsigned<To>::value >::type
 	>
 {
-	To operator()(const std::string& value)
+	To operator()(const std::string& value, boost::optional<To>)
 	{
 		DEBUG_THROW("specialized - To unsigned - From std::string");
 
