@@ -36,6 +36,7 @@
 #include "team.hpp"
 #include "units/attack_type.hpp"
 #include "units/types.hpp"
+#include "units/helper.hpp"
 #include "units/unit.hpp"
 
 #include <boost/iterator/zip_iterator.hpp>
@@ -97,7 +98,42 @@ static inline tree_view_node& add_name_tree_node(tree_view_node& header_node, co
 	child_label.set_tooltip(tooltip);
 	return child_node;
 }
+template<typename TGet_resistance>
+static inline std::string get_hp_tooltip(const utils::string_map& res, const TGet_resistance& get)
+{
+	std::ostringstream tooltip;
 
+	std::set<std::string> resistances_table;
+
+	bool att_def_diff = false;
+	for (const utils::string_map::value_type &resist : res)
+	{
+		std::ostringstream line;
+		line << translation::gettext(resist.first.c_str()) << ": ";
+		// Some units have different resistances when attacking or defending.
+		int res_att = 100 - get(resist.first, true);
+		int res_def = 100 - get(resist.first, false);
+
+		if (res_att == res_def) {
+			line << "<span foreground=\"" << unit_helper::resistance_color(res_def) << "\">" << utils::signed_percent(res_def) << "</span>" << '\n';
+		}
+		else {
+			line << "<span foreground=\"" << unit_helper::resistance_color(res_att) << "\">" << utils::signed_percent(res_att) << "</span>" << "/"
+				<< "<span foreground=\"" << unit_helper::resistance_color(res_def) << "\">" << utils::signed_percent(res_def) << "</span>" << '\n';
+			att_def_diff = true;
+		}
+		resistances_table.insert(line.str());
+	}
+
+	tooltip << _("Resistances: ");
+	if (att_def_diff)
+		tooltip << _("(Att / Def)");
+	tooltip << '\n';
+	for (const std::string &line : resistances_table) {
+		tooltip << line;
+	}
+	return tooltip.str();
+}
 /*
  * Both unit and unit_type use the same format (vector of attack_types) for their
  * attack data, meaning we can keep this as a helper function.
@@ -190,27 +226,24 @@ void unit_preview_pane::set_displayed_type(const unit_type& type)
 	}
 
 	if(tree_details_) {
-		std::stringstream str;
-		str << "<small>";
-
-		str << "<span color='#21e100'>"
-			<< "<b>" << _("HP: ") << "</b>" << type.hitpoints() << "</span>" << " | ";
-
-		str << "<span color='#00a0e1'>"
-			<< "<b>" << _("XP: ") << "</b>" << type.experience_needed() << "</span>" << " | ";
-
-		str << "<b>" << _("MP: ") << "</b>"
-			<< type.movement();
-
-		str << "</small>";
 
 		tree_details_->clear();
-
-		add_name_tree_node(
-			tree_details_->get_root_node(),
-			"item",
-			str.str()
-		);
+		tree_details_->get_root_node().add_child("hp_xp_mp", {
+			{ "hp",{
+				{ "label", (formatter() << "<small>" << "<span color='#21e100'>" << "<b>" << _("HP: ") << "</b>" << type.hitpoints() << "</span>" << " | </small>").str() },
+				{ "use_markup", "true" },
+				{ "tooltip", get_hp_tooltip(type.movement_type().get_resistances().damage_table, [&type](const std::string& dt, bool is_attacker) { return type.resistance_against(dt, is_attacker); }) }
+			} },
+			{ "xp",{
+				{ "label", (formatter() << "<small>" << "<span color='#00a0e1'>" << "<b>" << _("XP: ") << "</b>" << type.experience_needed() << "</span>" << " | </small>").str() },
+				{ "use_markup", "true" },
+			} },
+			{ "mp",{
+				{ "label", (formatter() << "<small>" << "<b>" << _("MP: ") << "</b>" << type.movement() << "</small>").str() },
+				{ "use_markup", "true" },
+				{ "tooltip", "true" }
+			} },
+		});
 
 		// Print trait details
 		{
@@ -341,27 +374,23 @@ void unit_preview_pane::set_displayed_unit(const unit& u)
 	}
 
 	if(tree_details_) {
-		std::stringstream str;
-		str << "<small>";
 
-		str << font::span_color(u.hp_color())
-			<< "<b>" << _("HP: ") << "</b>" << u.hitpoints() << "/" << u.max_hitpoints() << "</span>" << " | ";
-
-		str << font::span_color(u.xp_color())
-			<< "<b>" << _("XP: ") << "</b>" << u.experience() << "/" << u.max_experience() << "</span>" << " | ";
-
-		str << "<b>" << _("MP: ") << "</b>"
-			<< u.movement_left() << "/" << u.total_movement();
-
-		str << "</small>";
-
-		tree_details_->clear();
-
-		add_name_tree_node(
-			tree_details_->get_root_node(),
-			"item",
-			str.str()
-		);
+		tree_details_->get_root_node().add_child("hp_xp_mp", {
+			{ "hp",{
+				{ "label", (formatter() << "<small>" << font::span_color(u.hp_color()) << "<b>" << _("HP: ") << "</b>" << u.hitpoints() << "/" << u.max_hitpoints() << "</span>" << " | </small>").str() },
+				{ "use_markup", "true" },
+				{ "tooltip", get_hp_tooltip(u.get_base_resistances(), [&u](const std::string& dt, bool is_attacker) { return u.resistance_against(dt, is_attacker, u.get_location()); }) }
+			} },
+			{ "xp",{
+				{ "label", (formatter() << "<small>" << font::span_color(u.xp_color()) << "<b>" << _("XP: ") << "</b>" << u.experience() << "/" << u.max_experience() << "</span>" << " | </small>").str() },
+				{ "use_markup", "true" },
+			} },
+			{ "mp",{
+				{ "label", (formatter() << "<small>" << "<b>" << _("MP: ") << "</b>" << u.movement_left() << "/" << u.total_movement() << "</small>").str() },
+				{ "use_markup", "true" },
+				{ "tooltip", "true" }
+			} },
+		});
 
 		if (!u.trait_names().empty()) {
 			auto& header_node = add_name_tree_node(
