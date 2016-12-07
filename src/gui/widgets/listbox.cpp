@@ -46,8 +46,8 @@ namespace gui2
 // ------------ WIDGET -----------{
 
 REGISTER_WIDGET(listbox)
-REGISTER_WIDGET3(listbox_definition, horizontal_listbox, _4)
-REGISTER_WIDGET3(listbox_definition, grid_listbox, _4)
+REGISTER_WIDGET3(listbox_definition, horizontal_listbox, nullptr)
+REGISTER_WIDGET3(listbox_definition, grid_listbox, nullptr)
 
 namespace
 {

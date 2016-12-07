@@ -73,6 +73,7 @@ public:
 
 	virtual uint32_t get_random_seed();
 	lua_State * get_state() { return mState; }
+	void add_widget_definition(const std::string& type, const std::string& id) { registered_widget_definitions_.emplace_back(type, id); }
 protected:
 	lua_State *mState;
 
@@ -135,6 +136,7 @@ protected:
 	int intf_require(lua_State * L);
 private:
 	static lua_kernel_base*& get_lua_kernel_base_ptr(lua_State *L);
+	std::vector<std::tuple<std::string, std::string>> registered_widget_definitions_;
 };
 
 #endif

@@ -19,6 +19,7 @@
 #include "exceptions.hpp"
 #include "game_config.hpp"
 #include "game_errors.hpp"
+#include "gui/widgets/settings.hpp"
 #include "log.hpp"
 #include "lua_jailbreak_exception.hpp"  // for lua_jailbreak_exception
 #include "random_new.hpp"
@@ -355,6 +356,7 @@ lua_kernel_base::lua_kernel_base()
 		{ "set_dialog_active",        &lua_gui2::intf_set_dialog_active		},
 		{ "set_dialog_visible",       &lua_gui2::intf_set_dialog_visible    },
 		{ "add_dialog_tree_node",     &lua_gui2::intf_add_dialog_tree_node	},
+		{ "add_widget_definition",    &lua_gui2::intf_add_widget_definition },
 		{ "set_dialog_callback",      &lua_gui2::intf_set_dialog_callback	},
 		{ "set_dialog_canvas",        &lua_gui2::intf_set_dialog_canvas		},
 		{ "set_dialog_focus",         &lua_gui2::intf_set_dialog_focus      },
@@ -467,6 +469,9 @@ lua_kernel_base::lua_kernel_base()
 
 lua_kernel_base::~lua_kernel_base()
 {
+	for (const auto& pair : this->registered_widget_definitions_) {
+		gui2::remove_single_widget_definition(std::get<0>(pair), std::get<1>(pair));
+	}
 	lua_close(mState);
 }
 
