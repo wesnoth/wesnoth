@@ -120,25 +120,6 @@ float lexical_cast_default<float, const std::string&>(const std::string& a, floa
 template<>
 float lexical_cast_default<float, const char*>(const char* a, float def);
 
-template<typename To, typename From>
-To lexical_cast_in_range(From a, To def, To min, To max)
-{
-	To res;
-	std::stringstream str;
-
-	if(str << a && str >> res) {
-		if(res < min) {
-			return min;
-		}
-		if(res > max) {
-			return max;
-		}
-		return res;
-	} else {
-		return def;
-	}
-}
-
 template<typename Cmp>
 bool in_ranges(const Cmp c, const std::vector<std::pair<Cmp, Cmp> >&ranges) {
 	typename std::vector<std::pair<Cmp,Cmp> >::const_iterator range,
