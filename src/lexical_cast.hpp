@@ -97,7 +97,7 @@ inline To lexical_cast(From value)
 /** Thrown when a lexical_cast fails. */
 struct bad_lexical_cast : std::exception
 {
-	const char* what() const throw()
+	const char* what() const NOEXCEPT
 	{
 		return "bad_lexical_cast";
 	}
