@@ -37,6 +37,7 @@
 #include "scripting/lua_kernel_base.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
+#include "lexical_cast.hpp"
 #include "log.hpp"
 #include "font/pango/escape.hpp"
 
