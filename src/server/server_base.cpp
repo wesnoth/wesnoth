@@ -14,10 +14,9 @@
 
 #include "server/server_base.hpp"
 
+#include "lexical_cast.hpp"
 #include "log.hpp"
-#include "util.hpp"
 #include "utils/functional.hpp"
-
 
 static lg::log_domain log_server("server");
 #define ERR_SERVER LOG_STREAM(err, log_server)
