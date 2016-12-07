@@ -237,11 +237,12 @@ void unit_preview_pane::set_displayed_type(const unit_type& type)
 			{ "xp",{
 				{ "label", (formatter() << "<small>" << "<span color='#00a0e1'>" << "<b>" << _("XP: ") << "</b>" << type.experience_needed() << "</span>" << " | </small>").str() },
 				{ "use_markup", "true" },
+				{ "tooltip", (formatter() << _("Experience Modifier: ") << unit_experience_accelerator::get_acceleration() << '%').str() }
 			} },
 			{ "mp",{
 				{ "label", (formatter() << "<small>" << "<b>" << _("MP: ") << "</b>" << type.movement() << "</small>").str() },
 				{ "use_markup", "true" },
-				{ "tooltip", "true" }
+				{ "tooltip", (formatter()).str() }
 			} },
 		});
 
@@ -384,11 +385,12 @@ void unit_preview_pane::set_displayed_unit(const unit& u)
 			{ "xp",{
 				{ "label", (formatter() << "<small>" << font::span_color(u.xp_color()) << "<b>" << _("XP: ") << "</b>" << u.experience() << "/" << u.max_experience() << "</span>" << " | </small>").str() },
 				{ "use_markup", "true" },
+				{ "tooltip", (formatter() << _("Experience Modifier: ") << unit_experience_accelerator::get_acceleration() << '%').str() }
 			} },
 			{ "mp",{
 				{ "label", (formatter() << "<small>" << "<b>" << _("MP: ") << "</b>" << u.movement_left() << "/" << u.total_movement() << "</small>").str() },
 				{ "use_markup", "true" },
-				{ "tooltip", "true" }
+				{ "tooltip", (formatter()).str() }
 			} },
 		});
 
