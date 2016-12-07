@@ -226,7 +226,7 @@ template <class To, class From>
 struct lexical_caster<
 	  To
 	, From
-	, typename std::enable_if<std::is_signed<To>::value >::type
+	, typename std::enable_if<std::is_signed<To>::value && !std::is_same<To, long long>::value >::type
 	, typename std::enable_if<boost::mpl::has_key<boost::mpl::set<
 			char*, const char*> , From>::value >::type
 	>
@@ -332,7 +332,7 @@ template <class To, class From>
 struct lexical_caster<
 	  To
 	, From
-	, typename std::enable_if<std::is_unsigned<To>::value >::type
+	, typename std::enable_if<std::is_unsigned<To>::value && !std::is_same<To, unsigned long long>::value >::type
 	, typename std::enable_if<boost::mpl::has_key<boost::mpl::set<
 			char*, const char*> , From>::value >::type
 	>
