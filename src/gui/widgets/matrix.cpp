@@ -58,7 +58,7 @@ unsigned state_default::get_state() const
 }
 
 matrix::matrix(const implementation::builder_matrix& builder)
-	: tbase(builder, get_control_type()), content_(), pane_(nullptr)
+	: tbase(builder, "matrix"), content_(), pane_(nullptr)
 {
 	std::shared_ptr<const matrix_definition::resolution>
 	cfg = std::static_pointer_cast<const matrix_definition::resolution>(
