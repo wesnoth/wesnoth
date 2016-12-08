@@ -286,7 +286,7 @@ void unit_preview_pane::set_displayed_type(const unit_type& type)
 			{ "hp",{
 				{ "label", (formatter() << "<small>" << "<span color='#21e100'>" << "<b>" << _("HP: ") << "</b>" << type.hitpoints() << "</span>" << " | </small>").str() },
 				{ "use_markup", "true" },
-				{ "tooltip", get_hp_tooltip(type.movement_type().get_resistances().damage_table, [&type](const std::string& dt, bool is_attacker) { return type.resistance_against(dt, is_attacker); }) }
+				{ "tooltip", get_hp_tooltip(type.movement_type().get_resistances().damage_table(), [&type](const std::string& dt, bool is_attacker) { return type.resistance_against(dt, is_attacker); }) }
 			} },
 			{ "xp",{
 				{ "label", (formatter() << "<small>" << "<span color='#00a0e1'>" << "<b>" << _("XP: ") << "</b>" << type.experience_needed() << "</span>" << " | </small>").str() },
