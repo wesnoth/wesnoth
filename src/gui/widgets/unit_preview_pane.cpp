@@ -175,7 +175,7 @@ static inline std::string get_mp_tooltip(int total_movement, std::function<int (
 			tooltip << "<span foreground=\"" << color << "\">";
 			// A 5 MP margin; if the movement costs go above
 			// the unit's max moves + 5, we replace it with dashes.
-			if (cannot_move && (moves > u->total_movement() + 5)) {
+			if (cannot_move && (moves > total_movement + 5)) {
 				tooltip << font::unicode_figure_dash;
 			}
 			else {
