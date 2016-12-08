@@ -161,6 +161,7 @@ static Uint32 draw_timer(Uint32, void*)
 static Uint32 delay_event_callback(const Uint32, void* event)
 {
 	SDL_PushEvent(static_cast<SDL_Event*>(event));
+	delete static_cast<SDL_Event*>(event);
 	return 0;
 }
 
