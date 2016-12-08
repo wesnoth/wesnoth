@@ -84,9 +84,28 @@ namespace implementation {
  * @param value                   The value to convert.
  *
  * @returns                       The converted value.
+ *
+ * @throw                         bad_lexical_cast if the cast was unsuccessful.
  */
 template<typename To, typename From>
-inline To lexical_cast(From value, boost::optional<To> fallback = boost::none)
+inline To lexical_cast(From value)
+{
+	return implementation::lexical_caster<To, From>().operator()(value, boost::none);
+}
+
+/**
+ * Lexical cast converts one type to another with a fallback.
+ *
+ * @tparam To                     The type to convert to.
+ * @tparam From                   The type to convert from.
+ *
+ * @param value                   The value to convert.
+ * @param fallback                The fallback value to return if the cast fails.
+ *
+ * @returns                       The converted value.
+ */
+template<typename To, typename From>
+inline To lexical_cast_default(From value, To fallback = To())
 {
 	return implementation::lexical_caster<To, From>().operator()(value, fallback);
 }
@@ -209,11 +228,15 @@ struct lexical_caster<
 	, std::string
 	>
 {
-	long long operator()(const std::string& value, boost::optional<long long>)
+	long long operator()(const std::string& value, boost::optional<long long> fallback)
 	{
 		DEBUG_THROW("specialized - To long long - From std::string");
 
-		return lexical_cast<long long>(value.c_str());
+		if(fallback) {
+			return lexical_cast_default<long long>(value.c_str(), fallback.get());
+		} else {
+			return lexical_cast<long long>(value.c_str());
+		}
 	}
 };
 
@@ -260,11 +283,15 @@ struct lexical_caster<
 	, typename std::enable_if<std::is_signed<To>::value >::type
 	>
 {
-	To operator()(const std::string& value, boost::optional<To>)
+	To operator()(const std::string& value, boost::optional<To> fallback)
 	{
 		DEBUG_THROW("specialized - To signed - From std::string");
 
-		return lexical_cast<To>(value.c_str());
+		if(fallback) {
+			return lexical_cast_default<To>(value.c_str(), fallback.get());
+		} else {
+			return lexical_cast<To>(value.c_str());
+		}
 	}
 };
 
@@ -315,11 +342,15 @@ struct lexical_caster<
 	, std::string
 	>
 {
-	long long operator()(const std::string& value, boost::optional<unsigned long long>)
+	long long operator()(const std::string& value, boost::optional<unsigned long long> fallback)
 	{
 		DEBUG_THROW("specialized - To unsigned long long - From std::string");
 
-		return lexical_cast<unsigned long long>(value.c_str());
+		if(fallback) {
+			return lexical_cast_default<unsigned long long>(value.c_str(), fallback.get());
+		} else {
+			return lexical_cast<unsigned long long>(value.c_str());
+		}
 	}
 };
 
@@ -366,11 +397,15 @@ struct lexical_caster<
 	, typename std::enable_if<std::is_unsigned<To>::value >::type
 	>
 {
-	To operator()(const std::string& value, boost::optional<To>)
+	To operator()(const std::string& value, boost::optional<To> fallback)
 	{
 		DEBUG_THROW("specialized - To unsigned - From std::string");
 
-		return lexical_cast<To>(value.c_str());
+		if(fallback) {
+			return lexical_cast_default<To>(value.c_str(), fallback.get());
+		} else {
+			return lexical_cast<To>(value.c_str());
+		}
 	}
 };
 
