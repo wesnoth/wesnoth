@@ -15,12 +15,12 @@
 #include "global.hpp"
 
 #include "filesystem.hpp"
+#include "lexical_cast.hpp"
 #include "log.hpp"
 #include "persist_context.hpp"
 #include "persist_manager.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
-#include "util.hpp"
 
 config pack_scalar(const std::string &name, const t_string &val)
 {

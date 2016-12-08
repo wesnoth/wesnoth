@@ -19,6 +19,7 @@
 
 #include "global.hpp"
 
+#include "lexical_cast.hpp"
 #include "settings.hpp"
 
 #include "serialization/string_utils.hpp"

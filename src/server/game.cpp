@@ -16,12 +16,12 @@
 
 #include "filesystem.hpp"
 #include "game_config.hpp" // game_config::observer_team_name
+#include "lexical_cast.hpp"
 #include "log.hpp"
 
 #include "server/game.hpp"
 #include "server/player_network.hpp"
 #include "serialization/string_utils.hpp"
-#include "util.hpp"
 
 #include <sstream>
 #include <iomanip>

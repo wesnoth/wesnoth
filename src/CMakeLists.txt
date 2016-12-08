@@ -222,7 +222,6 @@ set(libwesnoth-core_STAT_SRC
 	mt_rng.cpp
 	seed_rng.cpp
 	tstring.cpp
-	util.cpp
 	version.cpp
 	serialization/binary_or_text.cpp
 	serialization/parser.cpp

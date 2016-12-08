@@ -77,49 +77,6 @@ inline double round_portable(double d) {
 	return (d >= 0.0) ? std::floor(d + 0.5) : std::ceil(d - 0.5);
 }
 
-template<typename To, typename From>
-To lexical_cast_default(From a, To def=To())
-{
-	To res = To();
-	std::stringstream str;
-
-	if(str << a && str >> res) {
-		return res;
-	} else {
-		return def;
-	}
-}
-
-template<>
-size_t lexical_cast_default<size_t, const std::string&>(const std::string& a, size_t def);
-
-template<>
-size_t lexical_cast_default<size_t, const char*>(const char* a, size_t def);
-
-template<>
-long lexical_cast_default<long, const std::string&>(const std::string& a, long def);
-
-template<>
-long lexical_cast_default<long, const char*>(const char* a, long def);
-
-template<>
-int lexical_cast_default<int, const std::string&>(const std::string& a, int def);
-
-template<>
-int lexical_cast_default<int, const char*>(const char* a, int def);
-
-template<>
-double lexical_cast_default<double, const std::string&>(const std::string& a, double def);
-
-template<>
-double lexical_cast_default<double, const char*>(const char* a, double def);
-
-template<>
-float lexical_cast_default<float, const std::string&>(const std::string& a, float def);
-
-template<>
-float lexical_cast_default<float, const char*>(const char* a, float def);
-
 template<typename Cmp>
 bool in_ranges(const Cmp c, const std::vector<std::pair<Cmp, Cmp> >&ranges) {
 	typename std::vector<std::pair<Cmp,Cmp> >::const_iterator range,

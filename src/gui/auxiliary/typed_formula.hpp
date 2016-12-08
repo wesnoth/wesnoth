@@ -20,8 +20,8 @@
 #include "formula/formula.hpp"
 #include "gui/core/log.hpp"
 #include "gui/widgets/helper.hpp"
+#include "lexical_cast.hpp"
 #include "serialization/string_utils.hpp"
-#include "util.hpp"
 #include "tstring.hpp"
 
 #include <cassert>

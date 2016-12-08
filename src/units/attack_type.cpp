@@ -23,6 +23,7 @@
 #include "formula/callable_objects.hpp"
 #include "formula/formula.hpp"
 
+#include "lexical_cast.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
 #include "gettext.hpp"
@@ -114,13 +115,13 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 
 	if (!filter_attacks.empty() && !in_ranges(attack.num_attacks(), utils::parse_ranges(filter_attacks)))
 		return false;
-	
+
 	if (!filter_accuracy.empty() && !in_ranges(attack.accuracy(), utils::parse_ranges(filter_accuracy)))
 		return false;
-	
+
 	if (!filter_parry.empty() && !in_ranges(attack.parry(), utils::parse_ranges(filter_parry)))
 		return false;
-	
+
 	if (!filter_movement.empty() && !in_ranges(attack.movement_used(), utils::parse_ranges(filter_movement)))
 		return false;
 
@@ -132,7 +133,7 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 
 	if ( !filter_special.empty() && !attack.get_special_bool(filter_special, true) )
 		return false;
-	
+
 	if (!filter_formula.empty()) {
 		try {
 			const attack_type_callable callable(attack);
@@ -275,7 +276,7 @@ bool attack_type::apply_modification(const config& cfg)
 		if (num_attacks_ < 0) {
 			num_attacks_ = 0;
 		}
-		
+
 	}
 
 	if(increase_attacks.empty() == false) {

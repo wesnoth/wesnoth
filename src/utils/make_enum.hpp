@@ -68,7 +68,7 @@
  * bad_lexical_cast does not provide any details about the error.
  *
  * It is recommended to use MAKE_ENUM types with the built-in versions of
- * lexical_cast or lexical_cast_default provided by Wesnoth (see util.hpp).
+ * lexical_cast or lexical_cast_default provided by Wesnoth (see lexical_cast.hpp).
  * However, if you do <b>not</b> want wml_exception to be thrown under any
  * circumstances, use the string_to_enumname functions instead.
  *

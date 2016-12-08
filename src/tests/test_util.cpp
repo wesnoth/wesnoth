@@ -16,66 +16,11 @@
 
 #include <boost/test/unit_test.hpp>
 
-#include "lexical_cast.hpp"
 #include "util.hpp"
 
 #include <cstdint>
 
 BOOST_AUTO_TEST_SUITE( util )
-
-BOOST_AUTO_TEST_CASE( test_lexical_cast )
-{
-	/* First check if lexical_cast returns correct results for correct args */
-	int result = lexical_cast<int, const std::string&>(std::string("1"));
-	BOOST_CHECK( result == 1 );
-
-	int result2 = lexical_cast<int, const char*>("2");
-	BOOST_CHECK( result2 == 2 );
-
-	/* Check that an exception is thrown when an invalid argument is passed */
-	try {
-		lexical_cast<int, const std::string&>(std::string("iddqd"));
-
-		/* A bad_lexical_cast should have been thrown already */
-		BOOST_CHECK( false );
-	}
-	catch( const bad_lexical_cast &) {
-		// Don't do anything, we succeeded.
-	}
-
-	try {
-		lexical_cast<int, const char*>("idkfa");
-
-		/* A bad_lexical_cast should have been thrown already */
-		BOOST_CHECK( false );
-	}
-	catch( const bad_lexical_cast &) {
-		// Don't do anything, we succeeded.
-	}
-}
-
-BOOST_AUTO_TEST_CASE( test_lexical_cast_default )
-{
-	/* First check if it works with correct values */
-	int result = lexical_cast_default<int, const std::string&>(std::string("1"));
-	BOOST_CHECK( result == 1 );
-
-	int result2 = lexical_cast_default<int, const char*>("2");
-	BOOST_CHECK( result2 == 2 );
-
-	double result3 = lexical_cast_default<double, const std::string&>(std::string("0.5"));
-	BOOST_CHECK( result3 >= 0.499 && result3 <= 0.511 );
-
-	/* Check if default is returned when argument is empty/invalid */
-	int result4 = lexical_cast_default<int, const std::string&>(std::string(), 4);
-	BOOST_CHECK( result4 == 4 );
-
-	int result5 = lexical_cast_default<int, const char*>("", 5);
-	BOOST_CHECK( result5 == 5 );
-
-	double result6 = lexical_cast_default<double, const std::string&>(std::string(), 0.5);
-	BOOST_CHECK( result6 >= 0.499 && result6 <= 0.511 );
-}
 
 BOOST_AUTO_TEST_CASE( test_bit_width )
 {

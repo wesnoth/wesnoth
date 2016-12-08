@@ -25,6 +25,7 @@
 #include "filesystem.hpp"
 #include "game_config.hpp"
 #include "hotkey/hotkey_item.hpp"
+#include "lexical_cast.hpp"
 #include "log.hpp"
 #include "preferences.hpp"
 #include "sound.hpp"

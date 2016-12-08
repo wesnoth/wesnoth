@@ -30,6 +30,7 @@
 #include "game_events/manager.hpp"     // for add_events
 #include "game_preferences.hpp"         // for encountered_units
 #include "gettext.hpp"                  // for N_
+#include "lexical_cast.hpp"
 #include "log.hpp"                      // for LOG_STREAM, logger, etc
 #include "utils/make_enum.hpp"                // for operator<<, operator>>
 #include "map/map.hpp"       // for gamemap

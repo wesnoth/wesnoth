@@ -13,13 +13,13 @@
 */
 
 #include "config.hpp"
+#include "lexical_cast.hpp"
 #include "log.hpp"
 #include "filesystem.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
-#include "util.hpp"
 
 #include "server/ban.hpp"
 

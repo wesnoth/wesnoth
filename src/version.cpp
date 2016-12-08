@@ -13,8 +13,8 @@
 */
 
 #include "version.hpp"
+#include "lexical_cast.hpp"
 #include "serialization/string_utils.hpp"
-#include "util.hpp"
 
 #include <cassert>
 #include <functional>

@@ -23,6 +23,7 @@
 
 #include "config.hpp"
 #include "game_config.hpp"
+#include "lexical_cast.hpp"
 #include "log.hpp"
 #include "filesystem.hpp"
 #include "multiplayer_error_codes.hpp"
@@ -30,7 +31,6 @@
 #include "serialization/preprocessor.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
-#include "util.hpp"
 #include "utils/iterable_pair.hpp"
 
 #include "server/game.hpp"
@@ -1286,7 +1286,7 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 			}
 
 			g.set_description(&desc);
-			desc.set_attr_dup("id", lexical_cast_default<std::string>(g.id()).c_str());
+			desc.set_attr_dup("id", lexical_cast<std::string>(g.id()).c_str());
 		} else {
 			WRN_SERVER << client_address(socket) << "\t" << player.name()
 					   << "\tsent scenario data in game:\t\"" << g.name() << "\" ("
