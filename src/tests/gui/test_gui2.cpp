@@ -676,8 +676,8 @@ template<>
 struct dialog_tester<editor_edit_scenario>
 {
 	std::string id, name, descr;
-	int turns, xp_mod;
-	bool defeat_enemies, random_start;
+	int turns = 0, xp_mod = 50;
+	bool defeat_enemies = false, random_start = false;
 	editor_edit_scenario* create()
 	{
 		return new editor_edit_scenario(id, name, descr, turns, xp_mod, defeat_enemies, random_start);
@@ -990,8 +990,8 @@ struct dialog_tester<editor_generate_map>
 template<>
 struct dialog_tester<editor_new_map>
 {
-	int width;
-	int height;
+	int width = 10;
+	int height = 10;
 	editor_new_map* create()
 	{
 		return new editor_new_map(width, height);
@@ -1128,7 +1128,7 @@ struct dialog_tester<faction_select>
 template<>
 struct dialog_tester<game_stats>
 {
-	int i;
+	int i = 1;
 	game_stats* create()
 	{
 		const display_context* ctx = editor::get_dummy_display_context();
