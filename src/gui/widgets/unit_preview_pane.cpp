@@ -138,7 +138,7 @@ static inline std::string get_hp_tooltip(const utils::string_map& res, const TGe
 	return tooltip.str();
 }
 
-static inline std::string get_mp_tooltip(std::function<int (t_translation::terrain_code)> get)
+static inline std::string get_mp_tooltip(int total_movement, std::function<int (t_translation::terrain_code)> get)
 {
 	std::ostringstream tooltip;
 	tooltip << _("Movement Costs:") << "\n";
@@ -165,7 +165,7 @@ static inline std::string get_mp_tooltip(std::function<int (t_translation::terra
 
 			std::string color;
 			//movement  -  range: 1 .. 5, movetype::UNREACHABLE=impassable
-			const bool cannot_move = moves > u->total_movement();
+			const bool cannot_move = moves > total_movement;
 			if (cannot_move)		// cannot move in this terrain
 				color = "red";
 			else if (moves > 1)
@@ -296,7 +296,7 @@ void unit_preview_pane::set_displayed_type(const unit_type& type)
 			{ "mp",{
 				{ "label", (formatter() << "<small>" << "<b>" << _("MP: ") << "</b>" << type.movement() << "</small>").str() },
 				{ "use_markup", "true" },
-				{ "tooltip", get_mp_tooltip([&type](t_translation::terrain_code terrain) { return type.movement_type().movement_cost(terrain); }) }
+				{ "tooltip", get_mp_tooltip(type.movement(), [&type](t_translation::terrain_code terrain) { return type.movement_type().movement_cost(terrain); }) }
 			} },
 		});
 
@@ -444,7 +444,7 @@ void unit_preview_pane::set_displayed_unit(const unit& u)
 			{ "mp",{
 				{ "label", (formatter() << "<small>" << "<b>" << _("MP: ") << "</b>" << u.movement_left() << "/" << u.total_movement() << "</small>").str() },
 				{ "use_markup", "true" },
-				{ "tooltip", get_mp_tooltip([&u](t_translation::terrain_code terrain) { return u.movement_cost(terrain); }) }
+				{ "tooltip", get_mp_tooltip(u.total_movement(), [&u](t_translation::terrain_code terrain) { return u.movement_cost(terrain); }) }
 			} },
 		});
 
