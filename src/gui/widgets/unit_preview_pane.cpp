@@ -29,13 +29,16 @@
 #include "font/text_formatting.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
+#include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "help/help.hpp"
+#include "help/help_impl.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
 #include "team.hpp"
 #include "units/attack_type.hpp"
 #include "units/types.hpp"
+#include "units/helper.hpp"
 #include "units/unit.hpp"
 
 #include <boost/iterator/zip_iterator.hpp>
@@ -96,6 +99,92 @@ static inline tree_view_node& add_name_tree_node(tree_view_node& header_node, co
 
 	child_label.set_tooltip(tooltip);
 	return child_node;
+}
+
+static inline std::string get_hp_tooltip(const utils::string_map& res, const std::function<int (const std::string&, bool)>& get)
+{
+	std::ostringstream tooltip;
+
+	std::set<std::string> resistances_table;
+
+	bool att_def_diff = false;
+	for (const utils::string_map::value_type &resist : res)
+	{
+		std::ostringstream line;
+		line << translation::gettext(resist.first.c_str()) << ": ";
+		// Some units have different resistances when attacking or defending.
+		int res_att = 100 - get(resist.first, true);
+		int res_def = 100 - get(resist.first, false);
+
+		if (res_att == res_def) {
+			line << "<span foreground=\"" << unit_helper::resistance_color(res_def) << "\">" << utils::signed_percent(res_def) << "</span>" << '\n';
+		}
+		else {
+			line << "<span foreground=\"" << unit_helper::resistance_color(res_att) << "\">" << utils::signed_percent(res_att) << "</span>" << "/"
+				<< "<span foreground=\"" << unit_helper::resistance_color(res_def) << "\">" << utils::signed_percent(res_def) << "</span>" << '\n';
+			att_def_diff = true;
+		}
+		resistances_table.insert(line.str());
+	}
+
+	tooltip << _("Resistances: ");
+	if (att_def_diff)
+		tooltip << _("(Att / Def)");
+	tooltip << '\n';
+	for (const std::string &line : resistances_table) {
+		tooltip << line;
+	}
+	return tooltip.str();
+}
+
+static inline std::string get_mp_tooltip(int total_movement, std::function<int (t_translation::terrain_code)> get)
+{
+	std::ostringstream tooltip;
+	tooltip << _("Movement Costs:") << "\n";
+
+	ter_data_cache tdata = help::load_terrain_types_data();
+
+	if (!tdata) {
+		return "";
+	}
+
+	for (t_translation::terrain_code terrain : preferences::encountered_terrains()) {
+		if (terrain == t_translation::FOGGED || terrain == t_translation::VOID_TERRAIN || terrain == t_translation::OFF_MAP_USER) {
+			continue;
+		}
+
+		const terrain_type& info = tdata->get_terrain_info(terrain);
+
+		if (info.union_type().size() == 1 && info.union_type()[0] == info.number() && info.is_nonnull()) {
+
+			const std::string& name = info.name();
+			const int moves = get(terrain);
+
+			tooltip << name << ": ";
+
+			std::string color;
+			//movement  -  range: 1 .. 5, movetype::UNREACHABLE=impassable
+			const bool cannot_move = moves > total_movement;
+			if (cannot_move)		// cannot move in this terrain
+				color = "red";
+			else if (moves > 1)
+				color = "yellow";
+			else
+				color = "white";
+			tooltip << "<span foreground=\"" << color << "\">";
+			// A 5 MP margin; if the movement costs go above
+			// the unit's max moves + 5, we replace it with dashes.
+			if (cannot_move && (moves > total_movement + 5)) {
+				tooltip << font::unicode_figure_dash;
+			}
+			else {
+				tooltip << moves;
+			}
+			tooltip << "</span>" << '\n';
+		}
+	}
+
+	return tooltip.str();
 }
 
 /*
@@ -190,27 +279,25 @@ void unit_preview_pane::set_displayed_type(const unit_type& type)
 	}
 
 	if(tree_details_) {
-		std::stringstream str;
-		str << "<small>";
-
-		str << "<span color='#21e100'>"
-			<< "<b>" << _("HP: ") << "</b>" << type.hitpoints() << "</span>" << " | ";
-
-		str << "<span color='#00a0e1'>"
-			<< "<b>" << _("XP: ") << "</b>" << type.experience_needed() << "</span>" << " | ";
-
-		str << "<b>" << _("MP: ") << "</b>"
-			<< type.movement();
-
-		str << "</small>";
 
 		tree_details_->clear();
-
-		add_name_tree_node(
-			tree_details_->get_root_node(),
-			"item",
-			str.str()
-		);
+		tree_details_->get_root_node().add_child("hp_xp_mp", {
+			{ "hp",{
+				{ "label", (formatter() << "<small>" << "<span color='#21e100'>" << "<b>" << _("HP: ") << "</b>" << type.hitpoints() << "</span>" << " | </small>").str() },
+				{ "use_markup", "true" },
+				{ "tooltip", get_hp_tooltip(type.movement_type().get_resistances().damage_table(), [&type](const std::string& dt, bool is_attacker) { return type.resistance_against(dt, is_attacker); }) }
+			} },
+			{ "xp",{
+				{ "label", (formatter() << "<small>" << "<span color='#00a0e1'>" << "<b>" << _("XP: ") << "</b>" << type.experience_needed() << "</span>" << " | </small>").str() },
+				{ "use_markup", "true" },
+				{ "tooltip", (formatter() << _("Experience Modifier: ") << unit_experience_accelerator::get_acceleration() << '%').str() }
+			} },
+			{ "mp",{
+				{ "label", (formatter() << "<small>" << "<b>" << _("MP: ") << "</b>" << type.movement() << "</small>").str() },
+				{ "use_markup", "true" },
+				{ "tooltip", get_mp_tooltip(type.movement(), [&type](t_translation::terrain_code terrain) { return type.movement_type().movement_cost(terrain); }) }
+			} },
+		});
 
 		// Print trait details
 		{
@@ -341,27 +428,24 @@ void unit_preview_pane::set_displayed_unit(const unit& u)
 	}
 
 	if(tree_details_) {
-		std::stringstream str;
-		str << "<small>";
 
-		str << font::span_color(u.hp_color())
-			<< "<b>" << _("HP: ") << "</b>" << u.hitpoints() << "/" << u.max_hitpoints() << "</span>" << " | ";
-
-		str << font::span_color(u.xp_color())
-			<< "<b>" << _("XP: ") << "</b>" << u.experience() << "/" << u.max_experience() << "</span>" << " | ";
-
-		str << "<b>" << _("MP: ") << "</b>"
-			<< u.movement_left() << "/" << u.total_movement();
-
-		str << "</small>";
-
-		tree_details_->clear();
-
-		add_name_tree_node(
-			tree_details_->get_root_node(),
-			"item",
-			str.str()
-		);
+		tree_details_->get_root_node().add_child("hp_xp_mp", {
+			{ "hp",{
+				{ "label", (formatter() << "<small>" << font::span_color(u.hp_color()) << "<b>" << _("HP: ") << "</b>" << u.hitpoints() << "/" << u.max_hitpoints() << "</span>" << " | </small>").str() },
+				{ "use_markup", "true" },
+				{ "tooltip", get_hp_tooltip(u.get_base_resistances(), [&u](const std::string& dt, bool is_attacker) { return u.resistance_against(dt, is_attacker, u.get_location()); }) }
+			} },
+			{ "xp",{
+				{ "label", (formatter() << "<small>" << font::span_color(u.xp_color()) << "<b>" << _("XP: ") << "</b>" << u.experience() << "/" << u.max_experience() << "</span>" << " | </small>").str() },
+				{ "use_markup", "true" },
+				{ "tooltip", (formatter() << _("Experience Modifier: ") << unit_experience_accelerator::get_acceleration() << '%').str() }
+			} },
+			{ "mp",{
+				{ "label", (formatter() << "<small>" << "<b>" << _("MP: ") << "</b>" << u.movement_left() << "/" << u.total_movement() << "</small>").str() },
+				{ "use_markup", "true" },
+				{ "tooltip", get_mp_tooltip(u.total_movement(), [&u](t_translation::terrain_code terrain) { return u.movement_cost(terrain); }) }
+			} },
+		});
 
 		if (!u.trait_names().empty()) {
 			auto& header_node = add_name_tree_node(
