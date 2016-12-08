@@ -101,8 +101,7 @@ static inline tree_view_node& add_name_tree_node(tree_view_node& header_node, co
 	return child_node;
 }
 
-template<typename TGet_resistance>
-static inline std::string get_hp_tooltip(const utils::string_map& res, const TGet_resistance& get)
+static inline std::string get_hp_tooltip(const utils::string_map& res, const std::function<int (const std::string&, bool)>& get)
 {
 	std::ostringstream tooltip;
 
