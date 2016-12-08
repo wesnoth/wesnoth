@@ -359,6 +359,9 @@
     <ClCompile Include="..\..\src\editor\palette\editor_palettes.cpp">
       <Filter>Editor\Palette</Filter>
     </ClCompile>
+    <ClInclude Include="..\..\src\editor\palette\empty_palette.hpp">
+      <Filter>Editor\Palette</Filter>
+    </ClInclude>
     <ClCompile Include="..\..\src\editor\palette\item_palette.cpp">
       <Filter>Editor\Palette</Filter>
     </ClCompile>
@@ -1484,7 +1487,6 @@
     <ClCompile Include="..\..\src\time_of_day.cpp" />
     <ClCompile Include="..\..\src\tod_manager.cpp" />
     <ClCompile Include="..\..\src\tooltips.cpp" />
-    <ClCompile Include="..\..\src\util.cpp" />
     <ClCompile Include="..\..\src\variable.cpp" />
     <ClCompile Include="..\..\src\variable_info.cpp" />
     <ClCompile Include="..\..\src\video.cpp" />
@@ -2765,6 +2767,7 @@
     <ClInclude Include="..\..\src\attack_prediction.hpp" />
     <ClInclude Include="..\..\src\attack_prediction_display.hpp" />
     <ClInclude Include="..\..\src\build_info.hpp" />
+    <ClInclude Include="..\..\src\buffered_istream.hpp" />
     <ClInclude Include="..\..\src\carryover.hpp" />
     <ClInclude Include="..\..\src\chat_command_handler.hpp" />
     <ClInclude Include="..\..\src\chat_events.hpp" />
@@ -2930,10 +2933,6 @@
     </ClInclude>
     <ClInclude Include="..\..\src\font\pango\stream_ops.hpp">
       <Filter>Font\Pango</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\buffered_istream.hpp" />
-    <ClInclude Include="..\..\src\editor\palette\empty_palette.hpp">
-      <Filter>Editor\Palette</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
