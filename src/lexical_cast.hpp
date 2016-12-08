@@ -203,7 +203,7 @@ struct lexical_caster<
 		DEBUG_THROW("specialized - To long long - From (const) char*");
 
 		char* endptr;
-		int res = strtoll(value, &endptr, 10);
+		long long res = strtoll(value, &endptr, 10);
 
 		if (*value == '\0' || *endptr != '\0') {
 			if(fallback) { return fallback.get(); }
@@ -317,7 +317,7 @@ struct lexical_caster<
 				"specialized - To unsigned long long - From (const) char*");
 
 		char* endptr;
-		int res = strtoull(value, &endptr, 10);
+		unsigned long long res = strtoull(value, &endptr, 10);
 
 		if (*value == '\0' || *endptr != '\0') {
 			if(fallback) { return fallback.get(); }
