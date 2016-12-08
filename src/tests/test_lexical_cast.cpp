@@ -196,6 +196,28 @@ BOOST_AUTO_TEST_CASE(test_lexical_cast_unsigned_long_long)
 			std::string(value)), const char*, validate);
 }
 
+typedef boost::mpl::vector<
+	  float
+	, double
+	, long double> test_lexical_cast_floating_point_types;
+
+BOOST_AUTO_TEST_CASE_TEMPLATE(
+		test_lexical_cast_floating_point, T, test_lexical_cast_floating_point_types)
+{
+	result = "specialized - To floating point - From (const) char*";
+
+	const char* value = "test";
+	BOOST_CHECK_EXCEPTION(lexical_cast<T>(
+			value), const char*, validate);
+	BOOST_CHECK_EXCEPTION(lexical_cast<T>(
+			const_cast<char*>(value)), const char*, validate);
+
+	result = "specialized - To floating point - From std::string";
+
+	BOOST_CHECK_EXCEPTION(lexical_cast<T>(
+		std::string(value)), const char*, validate);
+}
+
 } //  namespace test_throw
 
 BOOST_AUTO_TEST_CASE(test_lexical_cast_result)
@@ -213,6 +235,7 @@ BOOST_AUTO_TEST_CASE(test_lexical_cast_result)
 	BOOST_CHECK_EQUAL(lexical_cast<int>("-1"), -1);
 	BOOST_CHECK_EQUAL(lexical_cast<unsigned>("1"), 1);
 	BOOST_CHECK_EQUAL(lexical_cast<double>("1.2"), 1.2);
+	BOOST_CHECK_THROW(lexical_cast<double>("0x11"), bad_lexical_cast);
 
 	std::string a = "01234567890123456789";
 	BOOST_CHECK_EQUAL(lexical_cast<long long>(a), 1234567890123456789ll);
