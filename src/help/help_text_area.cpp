@@ -21,7 +21,6 @@
 #include "log.hpp"                      // for LOG_STREAM, log_domain, etc
 #include "sdl/rect.hpp"                 // for draw_rectangle, etc
 #include "serialization/parser.hpp"     // for read, write
-#include "util.hpp"                     // for lexical_cast, etc
 #include "video.hpp"                    // for CVideo
 
 #include <algorithm>                    // for max, min, find_if

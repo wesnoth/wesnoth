@@ -25,7 +25,6 @@
 #include "ai/manager.hpp"
 #include "terrain/filter.hpp"
 #include "lexical_cast.hpp"
-#include "util.hpp"
 #include "serialization/string_utils.hpp"
 #include "resources.hpp"
 #include "ai/lua/aspect_advancements.hpp"

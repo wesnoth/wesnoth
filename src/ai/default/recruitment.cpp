@@ -39,7 +39,6 @@
 #include "units/filter.hpp"
 #include "units/map.hpp"
 #include "units/types.hpp"
-#include "util.hpp"
 #include "variable.hpp"
 #include "wml_exception.hpp"
 #include "config_assign.hpp"

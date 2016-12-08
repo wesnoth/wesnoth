@@ -30,7 +30,6 @@
 #include "serialization/string_utils.hpp"
 #include "serialization/parser.hpp"
 #include "filesystem.hpp"
-#include "util.hpp"
 #include "version.hpp"
 
 #include <stdexcept>

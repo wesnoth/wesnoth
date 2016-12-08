@@ -29,7 +29,6 @@
 #include "game_events/pump.hpp"
 #include "image.hpp"
 #include "serialization/string_utils.hpp"
-#include "util.hpp"
 #include "variable.hpp"
 
 namespace storyscreen {

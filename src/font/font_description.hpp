@@ -17,7 +17,6 @@
 
 #include "config.hpp"
 #include "lexical_cast.hpp"
-#include "util.hpp"
 #include "serialization/string_utils.hpp"
 
 #include <boost/optional.hpp>

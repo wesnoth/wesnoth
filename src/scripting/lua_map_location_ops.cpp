@@ -16,7 +16,6 @@
 #include "scripting/lua_common.hpp"
 
 #include "map/location.hpp"
-#include "util.hpp"
 
 #include <string>
 #include <utility>

@@ -25,7 +25,6 @@
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
-#include "util.hpp"
 #include <cassert>
 #include <array>
 

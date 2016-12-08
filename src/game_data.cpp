@@ -22,7 +22,6 @@
 #include "game_data.hpp"
 
 #include "log.hpp" //LOG_STREAM
-#include "util.hpp" //lexical_cast
 #include "variable.hpp" //scoped_wml_variable
 
 static lg::log_domain log_engine("engine");

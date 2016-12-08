@@ -21,7 +21,6 @@
 #include "log.hpp"
 #include "game_board.hpp"
 #include "replay.hpp"
-#include "util.hpp"
 #include "resources.hpp"
 #include "team.hpp"
 #include "units/unit.hpp"

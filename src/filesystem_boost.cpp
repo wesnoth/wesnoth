@@ -45,7 +45,6 @@ using boost::uintmax_t;
 #include "config.hpp"
 #include "game_config.hpp"
 #include "log.hpp"
-#include "util.hpp"
 #include "version.hpp"
 
 static lg::log_domain log_filesystem("filesystem");

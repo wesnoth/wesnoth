@@ -25,7 +25,6 @@
 #include "map/map.hpp"
 #include "pathfind/pathfind.hpp"
 #include "serialization/string_utils.hpp"
-#include "util.hpp"
 #include "seed_rng.hpp"
 
 static lg::log_domain log_engine("engine");

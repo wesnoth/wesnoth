@@ -15,7 +15,6 @@
 #define UNIT_ATTACK_TYPE_H_INCLUDED
 
 #include "map/location.hpp"
-#include "util.hpp"
 #include "tstring.hpp"
 #include "config.hpp"
 #include <string>

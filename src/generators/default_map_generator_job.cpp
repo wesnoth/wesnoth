@@ -29,7 +29,6 @@
 #include "generators/map_generator.hpp" // mapgen_exception
 #include "pathfind/pathfind.hpp"
 #include "pathutils.hpp"
-#include "util.hpp"
 #include "utils/name_generator_factory.hpp"
 #include "seed_rng.hpp"
 #include "wml_exception.hpp"

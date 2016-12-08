@@ -40,8 +40,6 @@
 #include "game_config.hpp"              // for debug
 #include "ai/lua/aspect_advancements.hpp"
 #include "ai/registry.hpp"                 // for init
-#include "util.hpp"                     // for lexical_cast
-
 
 #include <algorithm>                    // for min
 #include <cassert>                     // for assert

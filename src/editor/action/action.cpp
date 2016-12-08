@@ -21,7 +21,6 @@
 #include "editor/action/action.hpp"
 #include "editor/map/map_context.hpp"
 #include "gettext.hpp"
-#include "util.hpp"
 
 #include "resources.hpp"
 

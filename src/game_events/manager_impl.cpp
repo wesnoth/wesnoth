@@ -26,7 +26,6 @@
 #include "resources.hpp"
 #include "scripting/game_lua_kernel.hpp"
 #include "serialization/string_utils.hpp"
-#include "util.hpp"
 
 #include <iostream>
 

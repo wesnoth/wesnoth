@@ -51,7 +51,6 @@
 #include "statistics.hpp"
 #include "storyscreen/interface.hpp"
 #include "units/unit.hpp"
-#include "util.hpp"
 #include "wesnothd_connection_error.hpp"
 #include "whiteboard/manager.hpp"
 #include "hotkey/hotkey_item.hpp"

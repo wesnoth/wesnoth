@@ -25,7 +25,6 @@
 #include "log.hpp"
 #include "terrain/translation.hpp"
 #include "serialization/string_utils.hpp"
-#include "util.hpp"
 #include "wml_exception.hpp"
 
 

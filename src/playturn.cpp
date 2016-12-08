@@ -36,7 +36,6 @@
 #include "serialization/string_utils.hpp"  // for string_map
 #include "team.hpp"                     // for team, team::CONTROLLER::AI, etc
 #include "tstring.hpp"                  // for operator==
-#include "util.hpp"                     // for lexical_cast
 #include "wesnothd_connection_error.hpp"
 #include "whiteboard/manager.hpp"       // for manager
 #include "widgets/button.hpp"           // for button

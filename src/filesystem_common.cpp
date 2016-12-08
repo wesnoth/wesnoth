@@ -11,7 +11,6 @@
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
-#include "util.hpp"
 
 static lg::log_domain log_filesystem("filesystem");
 #define LOG_FS LOG_STREAM(info, log_filesystem)

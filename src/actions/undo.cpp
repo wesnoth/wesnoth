@@ -38,7 +38,6 @@
 #include "units/map.hpp"              // for unit_map, etc
 #include "units/ptr.hpp"      // for unit_const_ptr, unit_ptr
 #include "units/types.hpp"               // for unit_type, unit_type_data, etc
-#include "util.hpp"                     // for bad_lexical_cast (ptr only), etc
 #include "whiteboard/manager.hpp"    // for manager
 
 #include "actions/create.hpp"                   // for find_recall_location, etc

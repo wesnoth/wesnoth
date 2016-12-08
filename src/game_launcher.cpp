@@ -57,7 +57,6 @@
 #include "game_initialization/singleplayer.hpp"             // for sp_create_mode
 #include "statistics.hpp"
 #include "tstring.hpp"                  // for operator==, operator!=
-#include "util.hpp"                     // for lexical_cast_default
 #include "video.hpp"                    // for CVideo
 #include "wesnothd_connection_error.hpp"
 #include "wml_exception.hpp"            // for wml_exception

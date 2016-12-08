@@ -30,7 +30,6 @@
 #include "scripting/game_lua_kernel.hpp"
 #include "serialization/string_utils.hpp"
 #include "soundsource.hpp"
-#include "util.hpp"
 
 #include <iostream>
 

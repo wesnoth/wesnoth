@@ -32,7 +32,6 @@
 #include "ai/lua/lua_object.hpp"
 #include "game_board.hpp"
 #include "scripting/game_lua_kernel.hpp"
-#include "util.hpp"
 #include "units/unit.hpp"
 #include "units/map.hpp"
 

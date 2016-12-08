@@ -23,7 +23,6 @@ class config;
 #include "map/location.hpp"
 #include "serialization/string_utils.hpp"
 #include "terrain/translation.hpp"
-#include "util.hpp"
 #include "utils/name_generator.hpp"
 
 #include <boost/random.hpp>

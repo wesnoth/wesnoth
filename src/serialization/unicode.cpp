@@ -25,7 +25,6 @@
 #include "serialization/unicode.hpp"
 
 #include "log.hpp"
-#include "util.hpp"
 
 #include <cassert>
 #include <limits>

@@ -104,7 +104,6 @@
 #include "units/map.hpp"  // for unit_map, etc
 #include "units/ptr.hpp"                 // for unit_const_ptr, unit_ptr
 #include "units/types.hpp"    // for unit_type_data, unit_types, etc
-#include "util.hpp"                     // for lexical_cast
 #include "variable.hpp"                 // for vconfig, etc
 #include "variable_info.hpp"
 #include "wml_exception.hpp"

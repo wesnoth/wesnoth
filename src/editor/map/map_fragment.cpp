@@ -15,8 +15,6 @@
 
 #include "editor/map/map_fragment.hpp"
 
-#include "util.hpp"
-
 namespace editor {
 
 map_fragment::map_fragment()

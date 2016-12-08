@@ -20,7 +20,6 @@
 #include "map/location.hpp"
 #include "recall_list_manager.hpp"
 #include "units/ptr.hpp"
-#include "util.hpp"
 #include "config.hpp"
 
 #include <set>

@@ -34,7 +34,6 @@
 #include "campaign_server/blacklist.hpp"
 #include "campaign_server/control.hpp"
 #include "version.hpp"
-#include "util.hpp"
 #include "hash.hpp"
 
 #include <csignal>

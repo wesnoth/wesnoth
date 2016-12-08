@@ -24,7 +24,6 @@
 
 #include "lexical_cast.hpp"
 #include "log.hpp"
-#include "util.hpp"
 #include "utils/const_clone.hpp"
 
 #include <cstdlib>
