@@ -19,7 +19,7 @@
 #include <string>                       // for string
 #include <utility>                      // for pair
 #include "font/standard_colors.hpp"     // for NORMAL_COLOR
-#include "sdl/utils.hpp"                // for surface
+#include "sdl/surface.hpp"                // for surface
 #include "widgets/scrollarea.hpp"       // for scrollarea
 class CVideo;
 class config;

@@ -31,7 +31,7 @@
 #include "font/standard_colors.hpp"     // for NORMAL_COLOR
 #include "units/race.hpp"               // for unit_race, etc
 #include "resources.hpp"                // for tod_manager, config_manager
-#include "sdl/utils.hpp"                // for surface
+#include "sdl/surface.hpp"                // for surface
 #include "serialization/string_utils.hpp"  // for split, quoted_split, etc
 #include "serialization/unicode_cast.hpp"  // for unicode_cast
 #include "serialization/unicode_types.hpp"  // for char_t, etc

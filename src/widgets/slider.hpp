@@ -16,6 +16,7 @@
 
 #include <SDL.h>
 
+#include "color.hpp"
 #include "widget.hpp"
 
 #include <vector>

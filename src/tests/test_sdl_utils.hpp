@@ -15,7 +15,7 @@
 #ifndef TESTS_TEST_SDL_UTILS_HPP_INCLUDED
 #define TESTS_TEST_SDL_UTILS_HPP_INCLUDED
 
-#include "sdl/utils.hpp"
+#include "sdl/surface.hpp"
 
 #include "utils/functional.hpp"
 

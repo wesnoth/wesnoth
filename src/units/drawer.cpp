@@ -22,7 +22,7 @@
 #include "map/map.hpp"
 #include "map/location.hpp"
 #include "color.hpp"
-#include "sdl/utils.hpp"
+#include "sdl/surface.hpp"
 #include "team.hpp"
 #include "units/unit.hpp"
 #include "units/animation.hpp"

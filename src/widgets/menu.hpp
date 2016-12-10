@@ -15,6 +15,7 @@
 #ifndef WIDGET_MENU_HPP_INCLUDED
 #define WIDGET_MENU_HPP_INCLUDED
 
+#include <map>
 #include <set>
 
 #include "scrollarea.hpp"

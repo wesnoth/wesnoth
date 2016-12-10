@@ -14,7 +14,7 @@
 
 #include "gui/core/point.hpp"
 #include "sdl/rect.hpp"
-#include "sdl/utils.hpp"
+#include "sdl/surface.hpp"
 
 namespace sdl
 {

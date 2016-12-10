@@ -365,6 +365,7 @@ set_target_properties(wesnoth-lua
 set(wesnoth-sdl_SRC
 	sdl/exception.cpp
 	sdl/rect.cpp
+	sdl/surface.cpp
 	sdl/window.cpp
 	sdl/utils.cpp
 	xBRZ/xbrz.cpp

@@ -24,7 +24,7 @@
 #include "map/map.hpp"
 #include "resources.hpp"
 #include "color.hpp"
-#include "sdl/utils.hpp"
+#include "sdl/surface.hpp"
 #include "team.hpp"
 #include "terrain/type_data.hpp"
 #include "wml_exception.hpp"

@@ -21,6 +21,7 @@
 
 #include "font/sdl_ttf.hpp"
 #include "image.hpp"
+#include "sdl/utils.hpp"
 #include "video.hpp"
 
 namespace gui {

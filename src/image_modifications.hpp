@@ -19,6 +19,7 @@
 
 #include "color_range.hpp"
 #include "lua_jailbreak_exception.hpp"
+#include "sdl/surface.hpp"
 #include "sdl/utils.hpp"
 #include <queue>
 

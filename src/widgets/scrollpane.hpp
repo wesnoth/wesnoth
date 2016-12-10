@@ -21,7 +21,7 @@
 #include <vector>
 
 #include <SDL.h>
-#include "sdl/utils.hpp"
+#include "sdl/surface.hpp"
 #include "scrollarea.hpp"
 
 namespace gui {

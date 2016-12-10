@@ -27,7 +27,7 @@
 #include "font/standard_colors.hpp"
 #include "scripting/plugins/context.hpp"
 #include "scripting/plugins/manager.hpp"
-#include "sdl/utils.hpp"
+#include "sdl/surface.hpp"
 #include "sdl/rect.hpp"
 
 #include "utils/functional.hpp"

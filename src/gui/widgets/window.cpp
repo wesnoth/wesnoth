@@ -55,7 +55,7 @@
 #include "preferences.hpp"
 #include "preferences_display.hpp"
 #include "sdl/rect.hpp"
-#include "sdl/utils.hpp"
+#include "sdl/surface.hpp"
 #include "tstring.hpp"
 #include "formula/variant.hpp"
 #include "video.hpp"

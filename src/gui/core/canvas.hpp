@@ -22,7 +22,7 @@
 #define GUI_AUXILIARY_CANVAS_HPP_INCLUDED
 
 #include "formula/callable.hpp"
-#include "sdl/utils.hpp"
+#include "sdl/surface.hpp"
 
 class config;
 class variant;

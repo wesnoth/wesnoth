@@ -26,7 +26,7 @@
 #include "gettext.hpp"
 #include "font/marked-up_text.hpp"
 #include "font/standard_colors.hpp"
-#include "sdl/utils.hpp"
+#include "sdl/surface.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
 #include "video.hpp"

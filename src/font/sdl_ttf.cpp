@@ -28,7 +28,7 @@
 #include "tooltips.hpp"
 
 #include "sdl/rect.hpp"
-#include "sdl/utils.hpp"
+#include "sdl/surface.hpp"
 #include "serialization/unicode.hpp"
 
 #include <SDL_ttf.h>

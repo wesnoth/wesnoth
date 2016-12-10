@@ -13,7 +13,7 @@
 */
 
 #include "font/text_cache.hpp"
-#include "sdl/utils.hpp"
+#include "sdl/surface.hpp"
 
 #include <algorithm>
 

@@ -16,7 +16,7 @@
 
 #include "font/sdl_ttf.hpp"
 
-#include "sdl/utils.hpp"
+#include "sdl/surface.hpp"
 
 #include "log.hpp"
 

@@ -51,7 +51,7 @@
 #include "preferences_display.hpp"
 #include "savegame.hpp"                 // for clean_saves, etc
 #include "scripting/application_lua_kernel.hpp"
-#include "sdl/utils.hpp"                // for surface
+#include "sdl/surface.hpp"                // for surface
 #include "serialization/compression.hpp"  // for format::NONE
 #include "serialization/string_utils.hpp"  // for split
 #include "game_initialization/singleplayer.hpp"             // for sp_create_mode

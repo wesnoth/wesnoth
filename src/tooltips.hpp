@@ -16,7 +16,7 @@
 #define TOOLTIPS_HPP_INCLUDED
 
 #include <string>
-#include "sdl/utils.hpp"
+#include "sdl/surface.hpp"
 
 class CVideo;
 struct SDL_Rect;
