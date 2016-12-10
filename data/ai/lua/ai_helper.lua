@@ -1409,6 +1409,51 @@ function ai_helper.get_reachable_unocc(unit, cfg)
     return reach
 end
 
+function ai_helper.find_path_with_shroud(unit, x, y, cfg)
+    -- Same as wesnoth.find_path, just that it works under shroud as well while still
+    -- ignoring invisible units. It does this by using viewing_side=0 and taking
+    -- invisible units off the map for the path finding process.
+    --
+    -- Notes on some of the optional parameters that can be passed in @cfg:
+    --  - viewing_side: If not given, use side of the unit (not the current side!)
+    --    for determining which units are hidden and need to be extracted, as that
+    --    is what the path_finder code uses. If set to an invalid side, we can use
+    --    default path finding as shroud is ignored then anyway.
+    --  - ignore_units: if true, hidden units do not need to be extracted because
+    --    all units are ignored anyway
+
+    local viewing_side = (cfg and cfg.viewing_side) or unit.side
+
+    local path, cost
+    if wesnoth.sides[viewing_side] and wesnoth.sides[viewing_side].shroud then
+        local extracted_units = {}
+        if (not cfg) or (not cfg.ignore_units) then
+            local all_units = wesnoth.get_units()
+            for _,u in ipairs(all_units) do
+                if (u.side ~= viewing_side)
+                    and (not ai_helper.is_visible_unit(viewing_side, u))
+                then
+                    wesnoth.extract_unit(u)
+                    table.insert(extracted_units, u)
+                end
+            end
+        end
+
+        local cfg_copy = {}
+        if cfg then cfg_copy = ai_helper.table_copy(cfg) end
+        cfg_copy.viewing_side = 0
+        path, cost = wesnoth.find_path(unit, x, y, cfg_copy)
+
+        for _,extracted_unit in ipairs(extracted_units) do
+            wesnoth.put_unit(extracted_unit)
+        end
+    else
+        path, cost = wesnoth.find_path(unit, x, y, cfg)
+    end
+
+    return path, cost
+end
+
 function ai_helper.find_best_move(units, rating_function, cfg)
     -- Find the best move and best unit based on @rating_function
     -- INPUTS:
