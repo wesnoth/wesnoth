@@ -48,6 +48,7 @@
 #include "formula/string_utils.hpp"
 #include "preferences.hpp"
 #include "strftime.hpp"
+#include "utils/general.hpp"
 
 #include "config.hpp"
 

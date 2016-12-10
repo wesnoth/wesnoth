@@ -42,6 +42,7 @@
 #include "game_config.hpp"
 #include "preferences.hpp"
 #include "random_new.hpp"
+#include "utils/general.hpp"
 #include <array>
 #include <cmath>
 #include <numeric>

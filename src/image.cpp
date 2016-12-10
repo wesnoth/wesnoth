@@ -31,6 +31,7 @@
 #include "gui/dialogs/advanced_graphics_options.hpp"
 #include "preferences.hpp"
 #include "sdl/rect.hpp"
+#include "utils/general.hpp"
 
 #ifdef HAVE_LIBPNG
 #include "SDL_SavePNG/savepng.h"

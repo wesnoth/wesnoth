@@ -29,6 +29,7 @@
 #include "scripting/plugins/manager.hpp"
 #include "sdl/surface.hpp"
 #include "sdl/rect.hpp"
+#include "utils/general.hpp"
 
 #include "utils/functional.hpp"
 

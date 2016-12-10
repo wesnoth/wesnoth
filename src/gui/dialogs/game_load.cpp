@@ -42,7 +42,7 @@
 #include "image.hpp"
 #include "language.hpp"
 #include "serialization/string_utils.hpp"
-#include "util.hpp"
+#include "utils/general.hpp"
 
 #include <cctype>
 #include "utils/functional.hpp"

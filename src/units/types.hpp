@@ -20,7 +20,7 @@
 #include "movetype.hpp"
 #include "units/race.hpp"
 #include "units/attack_type.hpp"
-#include "util.hpp"
+#include "utils/math.hpp"
 #include "game_errors.hpp"
 
 #include <map>

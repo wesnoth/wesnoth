@@ -20,9 +20,10 @@
 #ifndef BUFFERED_ISTREAM_HPP_INCLUDED
 #define BUFFERED_ISTREAM_HPP_INCLUDED
 
-#include "util.hpp"
+#include "utils/general.hpp"
 
 #include <cstdio>
+#include <sstream>
 
 /**
  * Helper class for buffering a @c std::istream.

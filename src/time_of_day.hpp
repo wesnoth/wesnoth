@@ -20,7 +20,7 @@
 #include "global.hpp"
 
 #include "tstring.hpp"
-#include "util.hpp"
+#include "utils/general.hpp"
 
 #include <vector>
 

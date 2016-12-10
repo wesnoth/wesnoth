@@ -23,7 +23,7 @@
 #include "settings.hpp"
 
 #include "serialization/string_utils.hpp"
-#include "util.hpp"
+#include "utils/general.hpp"
 
 namespace settings {
 

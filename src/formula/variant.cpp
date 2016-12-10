@@ -22,7 +22,7 @@
 #include "formatter.hpp"
 #include "formula/callable.hpp"
 #include "formula/function.hpp"
-#include "util.hpp"
+#include "utils/math.hpp"
 
 namespace {
 std::string variant_type_to_string(variant::TYPE type) {

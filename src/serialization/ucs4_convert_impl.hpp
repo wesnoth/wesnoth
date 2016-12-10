@@ -16,7 +16,7 @@
 #define SERIALIZATION_UCS4_CONVERT_IMPL_HPP_INCLUDED
 
 #include "unicode_types.hpp"
-#include "util.hpp"
+#include "utils/math.hpp"
 #include <cassert>
 
 namespace ucs4_convert_impl

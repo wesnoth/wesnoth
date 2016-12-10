@@ -20,7 +20,7 @@
 #include "color_range.hpp"
 #include "color.hpp"
 #include "sdl/surface.hpp"
-#include "util.hpp"
+#include "utils/math.hpp"
 
 #include <SDL.h>
 

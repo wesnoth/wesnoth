@@ -26,6 +26,7 @@
 #include "font/marked-up_text.hpp"
 #include "sdl/rect.hpp"
 #include "sound.hpp"
+#include "utils/general.hpp"
 #include "video.hpp"
 #include "wml_separators.hpp"
 

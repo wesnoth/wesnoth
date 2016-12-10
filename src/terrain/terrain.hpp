@@ -16,7 +16,7 @@
 
 #include "config.hpp"
 #include "terrain/translation.hpp"
-#include "util.hpp"
+#include "utils/math.hpp"
 
 class terrain_type
 {

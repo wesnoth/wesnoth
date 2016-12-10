@@ -16,7 +16,7 @@
 #include "preferences.hpp"
 #include "log.hpp"
 #include "sdl/surface.hpp"
-#include "util.hpp"
+#include "utils/math.hpp"
 #include <boost/math/constants/constants.hpp>
 using namespace boost::math::constants;
 

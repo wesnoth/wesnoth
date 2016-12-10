@@ -27,7 +27,7 @@
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
-#include "util.hpp"
+#include "utils/math.hpp"
 
 #include <boost/functional/hash.hpp>
 
