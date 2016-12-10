@@ -18,6 +18,8 @@
 #include "events.hpp"
 #include "sdl/surface.hpp"
 
+#include <string>
+
 class CVideo;
 
 namespace gui {
