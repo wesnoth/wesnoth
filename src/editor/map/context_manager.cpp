@@ -128,7 +128,7 @@ size_t context_manager::modified_maps(std::string& message) {
 		}
 	}
 	for (std::string& str : modified) {
-		message += "\n" + std::string("• ") + str;
+		message += "\n" + font::unicode_bullet + " " + str;
 	}
 	return modified.size();
 }

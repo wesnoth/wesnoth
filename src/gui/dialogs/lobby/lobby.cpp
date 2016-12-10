@@ -907,7 +907,7 @@ static bool handle_addon_requirements_gui(CVideo& v, const std::vector<mp::game_
 
 		for(const mp::game_info::required_addon & a : reqs) {
 			if (a.outcome == mp::game_info::CANNOT_SATISFY) {
-				err_msg += "• " + a.message + "\n";
+				err_msg += font::unicode_bullet + " " + a.message + "\n";
 			}
 		}
 		gui2::show_message(v, e_title, err_msg, message::auto_close);
@@ -924,7 +924,7 @@ static bool handle_addon_requirements_gui(CVideo& v, const std::vector<mp::game_
 		std::vector<std::string> needs_download;
 		for(const mp::game_info::required_addon & a : reqs) {
 			if(a.outcome == mp::game_info::NEED_DOWNLOAD) {
-				err_msg += "• " + a.message + "\n";
+				err_msg += font::unicode_bullet + " " + a.message + "\n";
 
 				needs_download.push_back(a.addon_id);
 			}

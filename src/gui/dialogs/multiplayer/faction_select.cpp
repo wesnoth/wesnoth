@@ -159,7 +159,7 @@ void faction_select::on_faction_select(window& window)
 
 	for(const auto& recruit : recruit_list) {
 		if(const unit_type* rt = unit_types.find(recruit)) {
-			recruit_names.push_back("• " + rt->type_name());
+			recruit_names.push_back(font::unicode_bullet + " " + rt->type_name());
 		}
 	}
 
