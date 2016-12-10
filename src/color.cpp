@@ -52,8 +52,8 @@ color_t color_t::from_rgb_string(const std::string& c)
 
 	return {
 		static_cast<uint8_t>(std::stoul(fields[0])),
-		static_cast<uint8_t>(std::stoul(fields[0])),
-		static_cast<uint8_t>(std::stoul(fields[0])),
+		static_cast<uint8_t>(std::stoul(fields[1])),
+		static_cast<uint8_t>(std::stoul(fields[2])),
 		static_cast<uint8_t>(ALPHA_OPAQUE)
 	};
 }
