@@ -397,7 +397,14 @@ void terrain_label::read(const config &cfg)
 	tmp_color = utils::interpolate_variables_into_string(tmp_color, vs);
 
 	if(!tmp_color.empty()) {
-		color = color_t::from_rgb_string(tmp_color);
+		try {
+			color = color_t::from_rgb_string(tmp_color);
+		} catch(std::invalid_argument&) {
+			// Prior to the color_t conversion, labels were written to savefiles with an alpha key, despite alpha not
+			// being accepted in color=. Because of this, this enables the loading of older saves without an exception
+			// throwing.
+			color = color_t::from_rgba_string(tmp_color);
+		}
 	}
 
 	color_ = color;
