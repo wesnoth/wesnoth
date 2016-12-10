@@ -16,6 +16,8 @@
 
 #include "scripting/lua_common.hpp"
 #include "team.hpp"
+#include "resources.hpp" // for gameboard
+#include "game_board.hpp"
 
 #include <string>
 
@@ -90,6 +92,15 @@ static int impl_side_get(lua_State *L)
 		}
 		return 1;
 	}
+
+	// These are blocked together because they are all part of the team_data struct.
+	// Some of these values involve iterating over the units map to calculate them.
+	team_data d = resources::gameboard->calculate_team_data(t);
+	return_int_attrib("num_units", d.units);
+	return_int_attrib("total_upkeep", d.upkeep);
+	return_int_attrib("num_villages", d.villages);
+	return_int_attrib("expenses", d.expenses);
+	return_int_attrib("net_income", d.net_income);
 
 	return_cfg_attrib("__cfg", t.write(cfg));
 	if(luaW_getmetafield(L, 1, m)) {
