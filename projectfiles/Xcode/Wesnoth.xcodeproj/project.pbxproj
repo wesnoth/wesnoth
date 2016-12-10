@@ -371,7 +371,6 @@
 		91A215B81CAD92AA00927AEA /* type_data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECE17E111A0DD79F00B76473 /* type_data.cpp */; };
 		91A215BA1CAD92CA00927AEA /* tag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F480CD3E14035038007175D6 /* tag.cpp */; };
 		91A215BB1CAD92D000927AEA /* tstring.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999810EC62181008DD061 /* tstring.cpp */; };
-		91A215BC1CAD92D400927AEA /* util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B559996D0EC62181008DD061 /* util.cpp */; };
 		91A215BD1CAD94B400927AEA /* menu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999510EC62181008DD061 /* menu.cpp */; };
 		91A215BF1CAD951A00927AEA /* lua_jailbreak_exception.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F419E44413354E620031448A /* lua_jailbreak_exception.cpp */; };
 		91A215C01CAD952C00927AEA /* game_config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A800EC62181008DD061 /* game_config.cpp */; };
@@ -873,7 +872,6 @@
 		B5599AE40EC62181008DD061 /* version.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999670EC62181008DD061 /* version.cpp */; };
 		B5599AE50EC62181008DD061 /* variant.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999690EC62181008DD061 /* variant.cpp */; };
 		B5599AE60EC62181008DD061 /* variable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B559996B0EC62181008DD061 /* variable.cpp */; };
-		B5599AE70EC62181008DD061 /* util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B559996D0EC62181008DD061 /* util.cpp */; };
 		B5599AE90EC62181008DD061 /* types.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999710EC62181008DD061 /* types.cpp */; };
 		B5599AEA0EC62181008DD061 /* map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999730EC62181008DD061 /* map.cpp */; };
 		B5599AEB0EC62181008DD061 /* id.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999750EC62181008DD061 /* id.cpp */; };
@@ -1985,7 +1983,6 @@
 		B559996A0EC62181008DD061 /* variable.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = variable.hpp; sourceTree = "<group>"; };
 		B559996B0EC62181008DD061 /* variable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = variable.cpp; sourceTree = "<group>"; };
 		B559996C0EC62181008DD061 /* util.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = util.hpp; sourceTree = "<group>"; };
-		B559996D0EC62181008DD061 /* util.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = util.cpp; sourceTree = "<group>"; };
 		B55999700EC62181008DD061 /* types.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = types.hpp; sourceTree = "<group>"; };
 		B55999710EC62181008DD061 /* types.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = types.cpp; sourceTree = "<group>"; };
 		B55999720EC62181008DD061 /* map.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = map.hpp; sourceTree = "<group>"; };
@@ -3153,7 +3150,6 @@
 				B55999810EC62181008DD061 /* tstring.cpp */,
 				B55999800EC62181008DD061 /* tstring.hpp */,
 				91EF6C0A1C9F1D9000E2A733 /* units */,
-				B559996D0EC62181008DD061 /* util.cpp */,
 				B559996C0EC62181008DD061 /* util.hpp */,
 				91EF6BF01C9E217C00E2A733 /* utils */,
 				B559996B0EC62181008DD061 /* variable.cpp */,
@@ -5284,7 +5280,6 @@
 				6295C3D9150FC9EB0077D8C5 /* unit_palette.cpp in Sources */,
 				B5599AE90EC62181008DD061 /* types.cpp in Sources */,
 				B5599AF00EC62181008DD061 /* unit.cpp in Sources */,
-				B5599AE70EC62181008DD061 /* util.cpp in Sources */,
 				B553B6BA12189C5900CC8C58 /* utility.cpp in Sources */,
 				EC28C58F19423426003B0F5E /* utils.cpp in Sources */,
 				EC67F7FA1DB314580038337E /* sdl_ttf.cpp in Sources */,
@@ -5825,7 +5820,6 @@
 				91A215B81CAD92AA00927AEA /* type_data.cpp in Sources */,
 				91A215BA1CAD92CA00927AEA /* tag.cpp in Sources */,
 				91A215BB1CAD92D000927AEA /* tstring.cpp in Sources */,
-				91A215BC1CAD92D400927AEA /* util.cpp in Sources */,
 				91A215BD1CAD94B400927AEA /* menu.cpp in Sources */,
 				91A215BF1CAD951A00927AEA /* lua_jailbreak_exception.cpp in Sources */,
 				91A215C01CAD952C00927AEA /* game_config.cpp in Sources */,
