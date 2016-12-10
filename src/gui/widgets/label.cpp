@@ -264,7 +264,8 @@ label_definition::label_definition(const config& cfg)
 label_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 	, link_aware(cfg["link_aware"].to_bool(false))
-	, link_color(cfg["link_color"].str().size() > 0 ? cfg["link_color"].str() : "#ffff00")
+	// TODO: link_color should probably be stored as color_t internally, not as a string
+	, link_color(cfg["link_color"].empty() ? "#ffff00" : color_t::from_rgb_string(cfg["link_color"].str()).to_hex_string())
 {
 	// Note the order should be the same as the enum state_t is label.hpp.
 	state.push_back(state_definition(cfg.child("state_enabled")));
