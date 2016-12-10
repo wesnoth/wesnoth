@@ -26,6 +26,7 @@
 #include "hotkey/hotkey_item.hpp"
 #include "formatter.hpp"
 #include "gettext.hpp"
+#include "sdl/rect.hpp"
 #include "wml_exception.hpp"
 
 #include "utils/functional.hpp"

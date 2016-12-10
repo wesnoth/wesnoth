@@ -146,4 +146,6 @@ inline void fill_rect(surface& dst, SDL_Rect* dst_rect, const Uint32 color)
 bool operator==(const SDL_Rect& a, const SDL_Rect& b);
 bool operator!=(const SDL_Rect& a, const SDL_Rect& b);
 
+std::ostream& operator<<(std::ostream& s, const SDL_Rect& rect);
+
 #endif

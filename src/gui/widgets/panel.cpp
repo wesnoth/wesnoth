@@ -20,6 +20,7 @@
 #include "gui/core/register_widget.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gettext.hpp"
+#include "sdl/rect.hpp"
 #include "wml_exception.hpp"
 
 #include "utils/functional.hpp"

@@ -496,6 +496,4 @@ private:
 void draw_centered_on_background(surface surf, const SDL_Rect& rect,
 	const color_t& color, surface target);
 
-std::ostream& operator<<(std::ostream& s, const SDL_Rect& rect);
-
 #endif

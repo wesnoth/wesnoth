@@ -23,6 +23,7 @@
 #include "gui/widgets/settings.hpp"
 #include "map/map.hpp"
 #include "map/exception.hpp"
+#include "sdl/rect.hpp"
 #include "terrain/type_data.hpp"
 #include "../../minimap.hpp" // We want the file in src/
 
