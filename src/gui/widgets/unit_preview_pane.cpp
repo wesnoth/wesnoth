@@ -108,79 +108,83 @@ static inline std::string get_hp_tooltip(const utils::string_map& res, const std
 	std::set<std::string> resistances_table;
 
 	bool att_def_diff = false;
-	for (const utils::string_map::value_type &resist : res)
-	{
+	for(const utils::string_map::value_type &resist : res) {
 		std::ostringstream line;
 		line << translation::gettext(resist.first.c_str()) << ": ";
-		// Some units have different resistances when attacking or defending.
-		int res_att = 100 - get(resist.first, true);
-		int res_def = 100 - get(resist.first, false);
 
-		if (res_att == res_def) {
-			line << "<span foreground=\"" << unit_helper::resistance_color(res_def) << "\">" << utils::signed_percent(res_def) << "</span>" << '\n';
-		}
-		else {
-			line << "<span foreground=\"" << unit_helper::resistance_color(res_att) << "\">" << utils::signed_percent(res_att) << "</span>" << "/"
-				<< "<span foreground=\"" << unit_helper::resistance_color(res_def) << "\">" << utils::signed_percent(res_def) << "</span>" << '\n';
+		// Some units have different resistances when attacking or defending.
+		const int res_att = 100 - get(resist.first, true);
+		const int res_def = 100 - get(resist.first, false);
+
+		if(res_att == res_def) {
+			line << "<span color='" << unit_helper::resistance_color(res_def) << "'>" << utils::signed_percent(res_def) << "</span>";
+		} else {
+			line << "<span color='" << unit_helper::resistance_color(res_att) << "'>" << utils::signed_percent(res_att) << "</span>" << "/"
+			     << "<span color='" << unit_helper::resistance_color(res_def) << "'>" << utils::signed_percent(res_def) << "</span>";
 			att_def_diff = true;
 		}
+
 		resistances_table.insert(line.str());
 	}
 
-	tooltip << _("Resistances: ");
-	if (att_def_diff)
+	tooltip << "<big>" << _("Resistances: ") << "</big>";
+	if(att_def_diff) {
 		tooltip << _("(Att / Def)");
-	tooltip << '\n';
-	for (const std::string &line : resistances_table) {
-		tooltip << line;
 	}
+
+	for(const std::string &line : resistances_table) {
+		tooltip << '\n' << font::unicode_bullet << " " << line;
+	}
+
 	return tooltip.str();
 }
 
 static inline std::string get_mp_tooltip(int total_movement, std::function<int (t_translation::terrain_code)> get)
 {
 	std::ostringstream tooltip;
-	tooltip << _("Movement Costs:") << "\n";
+	tooltip << "<big>" << _("Movement Costs:") << "</big>";
 
 	ter_data_cache tdata = help::load_terrain_types_data();
 
-	if (!tdata) {
+	if(!tdata) {
 		return "";
 	}
 
-	for (t_translation::terrain_code terrain : preferences::encountered_terrains()) {
-		if (terrain == t_translation::FOGGED || terrain == t_translation::VOID_TERRAIN || terrain == t_translation::OFF_MAP_USER) {
+	for(t_translation::terrain_code terrain : preferences::encountered_terrains()) {
+		if(terrain == t_translation::FOGGED || terrain == t_translation::VOID_TERRAIN || terrain == t_translation::OFF_MAP_USER) {
 			continue;
 		}
 
 		const terrain_type& info = tdata->get_terrain_info(terrain);
-
-		if (info.union_type().size() == 1 && info.union_type()[0] == info.number() && info.is_nonnull()) {
-
+		if(info.union_type().size() == 1 && info.union_type()[0] == info.number() && info.is_nonnull()) {
 			const std::string& name = info.name();
 			const int moves = get(terrain);
 
-			tooltip << name << ": ";
+			tooltip << '\n' << font::unicode_bullet << " " << name << ": ";
+
+			// movement  -  range: 1 .. 5, movetype::UNREACHABLE=impassable
+			const bool cannot_move = moves > total_movement;
 
 			std::string color;
-			//movement  -  range: 1 .. 5, movetype::UNREACHABLE=impassable
-			const bool cannot_move = moves > total_movement;
-			if (cannot_move)		// cannot move in this terrain
+			if(cannot_move) {
+				// cannot move in this terrain
 				color = "red";
-			else if (moves > 1)
+			} else if(moves > 1) {
 				color = "yellow";
-			else
+			} else {
 				color = "white";
-			tooltip << "<span foreground=\"" << color << "\">";
-			// A 5 MP margin; if the movement costs go above
-			// the unit's max moves + 5, we replace it with dashes.
-			if (cannot_move && (moves > total_movement + 5)) {
-				tooltip << font::unicode_figure_dash;
 			}
-			else {
+
+			tooltip << "<span color='" << color << "'>";
+
+			// A 5 MP margin; if the movement costs go above the unit's max moves + 5, we replace it with dashes.
+			if(cannot_move && (moves > total_movement + 5)) {
+				tooltip << font::unicode_figure_dash;
+			} else {
 				tooltip << moves;
 			}
-			tooltip << "</span>" << '\n';
+
+			tooltip << "</span>";
 		}
 	}
 
@@ -194,7 +198,7 @@ static inline std::string get_mp_tooltip(int total_movement, std::function<int (
 template<typename T>
 void unit_preview_pane::print_attack_details(T attacks, tree_view_node& parent_node)
 {
-	if (attacks.empty()) {
+	if(attacks.empty()) {
 		return;
 	}
 
@@ -204,7 +208,7 @@ void unit_preview_pane::print_attack_details(T attacks, tree_view_node& parent_n
 		"<b>" + _("Attacks") + "</b>"
 	);
 
-	for (const auto& a : attacks) {
+	for(const auto& a : attacks) {
 
 		auto& subsection = add_name_tree_node(
 			header_node,
@@ -218,13 +222,12 @@ void unit_preview_pane::print_attack_details(T attacks, tree_view_node& parent_n
 			(formatter() << "<span color='#a69275'>" << a.range() << font::weapon_details_sep << a.type() << "</span>").str()
 		);
 
-		for (const auto& pair : a.special_tooltips())
-		{
+		for(const auto& pair : a.special_tooltips()) {
 			add_name_tree_node(
 				subsection,
 				"item",
 				(formatter() << font::span_color(font::weapon_details_color) << pair.first << "</span>").str(),
-				(formatter() << _("Weapon special: ") << "<b>" << pair.first << "</b>" << '\n' << pair.second).str()
+				(formatter() << "<big>" << _("Weapon special") << ": " << pair.first << "</big>" << '\n' << pair.second).str()
 			);
 		}
 	}
@@ -281,7 +284,7 @@ void unit_preview_pane::set_displayed_type(const unit_type& type)
 	if(tree_details_) {
 
 		tree_details_->clear();
-		tree_details_->get_root_node().add_child("hp_xp_mp", {
+		tree_details_->add_node("hp_xp_mp", {
 			{ "hp",{
 				{ "label", (formatter() << "<small>" << "<span color='#21e100'>" << "<b>" << _("HP: ") << "</b>" << type.hitpoints() << "</span>" << " | </small>").str() },
 				{ "use_markup", "true" },
@@ -305,16 +308,18 @@ void unit_preview_pane::set_displayed_type(const unit_type& type)
 
 			for(const auto& tr : type.possible_traits()) {
 				t_string name = tr[type.genders().front() == unit_race::FEMALE ? "female_name" : "male_name"];
-				if (tr["availability"] != "musthave" || name.empty()) {
+				if(tr["availability"] != "musthave" || name.empty()) {
 					continue;
 				}
-				if (header_node == nullptr) {
+
+				if(header_node == nullptr) {
 					header_node = &add_name_tree_node(
 						tree_details_->get_root_node(),
 						"header",
 						"<b>" + _("Traits") + "</b>"
 					);
 				}
+
 				add_name_tree_node(
 					*header_node,
 					"item",
@@ -429,7 +434,7 @@ void unit_preview_pane::set_displayed_unit(const unit& u)
 
 	if(tree_details_) {
 
-		tree_details_->get_root_node().add_child("hp_xp_mp", {
+		tree_details_->add_node("hp_xp_mp", {
 			{ "hp",{
 				{ "label", (formatter() << "<small>" << font::span_color(u.hp_color()) << "<b>" << _("HP: ") << "</b>" << u.hitpoints() << "/" << u.max_hitpoints() << "</span>" << " | </small>").str() },
 				{ "use_markup", "true" },
@@ -447,7 +452,7 @@ void unit_preview_pane::set_displayed_unit(const unit& u)
 			} },
 		});
 
-		if (!u.trait_names().empty()) {
+		if(!u.trait_names().empty()) {
 			auto& header_node = add_name_tree_node(
 				tree_details_->get_root_node(),
 				"header",
@@ -464,14 +469,15 @@ void unit_preview_pane::set_displayed_unit(const unit& u)
 				);
 			}
 		}
-		if (!u.get_ability_list().empty()) {
+
+		if(!u.get_ability_list().empty()) {
 			auto& header_node = add_name_tree_node(
 				tree_details_->get_root_node(),
 				"header",
 				"<b>" + _("Abilities") + "</b>"
 			);
 
-			for (const auto& ab : u.ability_tooltips()) {
+			for(const auto& ab : u.ability_tooltips()) {
 				add_name_tree_node(
 					header_node,
 					"item",
