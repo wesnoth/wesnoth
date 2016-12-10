@@ -37,11 +37,6 @@
 
 #include <boost/math/constants/constants.hpp>
 
-SDL_Keycode sdl_keysym_from_name(const std::string& keyname)
-{
-	return SDL_GetKeyFromName(keyname.c_str());
-}
-
 bool is_neutral(const surface& surf)
 {
 	return (surf->format->BytesPerPixel == 4 &&

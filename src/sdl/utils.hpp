@@ -28,8 +28,6 @@
 #include <map>
 #include <string>
 
-SDL_Keycode sdl_keysym_from_name(const std::string& keyname);
-
 inline void sdl_blit(const surface& src, SDL_Rect* src_rect, surface& dst, SDL_Rect* dst_rect){
 	SDL_BlitSurface(src, src_rect, dst, dst_rect);
 }
