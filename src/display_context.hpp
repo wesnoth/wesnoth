@@ -93,7 +93,7 @@ public:
 
 	int side_upkeep(int side_num) const ;
 
-	team_data calculate_team_data(const class team& tm, int side) const;
+	team_data calculate_team_data(const class team& tm) const;
 
 	// Accessor from team.cpp
 

@@ -1261,7 +1261,7 @@ REPORT_GENERATOR(villages, rc)
 	std::ostringstream str;
 	int viewing_side = rc.screen().viewing_side();
 	const team &viewing_team = rc.teams()[viewing_side - 1];
-	team_data td = rc.dc().calculate_team_data(viewing_team, viewing_side);
+	team_data td = rc.dc().calculate_team_data(viewing_team);
 	str << td.villages << '/';
 	if (viewing_team.uses_shroud()) {
 		int unshrouded_villages = 0;
@@ -1286,7 +1286,7 @@ REPORT_GENERATOR(upkeep, rc)
 	std::ostringstream str;
 	int viewing_side = rc.screen().viewing_side();
 	const team &viewing_team = rc.teams()[viewing_side - 1];
-	team_data td = rc.dc().calculate_team_data(viewing_team, viewing_side);
+	team_data td = rc.dc().calculate_team_data(viewing_team);
 	str << td.expenses << " (" << td.upkeep << ")";
 	return gray_inactive(rc,str.str());
 }
@@ -1295,7 +1295,7 @@ REPORT_GENERATOR(expenses, rc)
 {
 	int viewing_side = rc.screen().viewing_side();
 	const team &viewing_team = rc.teams()[viewing_side - 1];
-	team_data td = rc.dc().calculate_team_data(viewing_team, rc.screen().viewing_side());
+	team_data td = rc.dc().calculate_team_data(viewing_team);
 	return gray_inactive(rc,std::to_string(td.expenses));
 }
 
@@ -1304,7 +1304,7 @@ REPORT_GENERATOR(income, rc)
 	std::ostringstream str;
 	int viewing_side = rc.screen().viewing_side();
 	const team &viewing_team = rc.teams()[viewing_side - 1];
-	team_data td = rc.dc().calculate_team_data(viewing_team, viewing_side);
+	team_data td = rc.dc().calculate_team_data(viewing_team);
 	char const *end = naps;
 	if (viewing_side != rc.screen().playing_side()) {
 		if (td.net_income < 0) {

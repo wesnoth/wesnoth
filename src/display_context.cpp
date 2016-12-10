@@ -158,11 +158,11 @@ int display_context::side_upkeep(int side) const
 	return res;
 }
 
-team_data display_context::calculate_team_data(const team& tm, int side) const
+team_data display_context::calculate_team_data(const team& tm) const
 {
 	team_data res;
-	res.units = side_units(side);
-	res.upkeep = side_upkeep(side);
+	res.units = side_units(tm.side());
+	res.upkeep = side_upkeep(tm.side());
 	res.villages = tm.villages().size();
 	res.expenses = std::max<int>(0,res.upkeep - tm.support());
 	res.net_income = tm.total_income() - res.expenses;

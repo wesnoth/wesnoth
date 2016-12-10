@@ -59,7 +59,7 @@ game_stats::game_stats(const display_context& board, const int viewing_team, int
 	, selected_index_(selected_index)
 {
 	for(const auto& team : board_.teams()) {
-		team_data_.push_back(board_.calculate_team_data(team, team.side()));
+		team_data_.push_back(board_.calculate_team_data(team));
 	}
 }
 
