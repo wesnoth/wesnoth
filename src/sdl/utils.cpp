@@ -2462,15 +2462,6 @@ SDL_Rect get_non_transparent_portion(const surface &surf)
 	return res;
 }
 
-color_t inverse(const color_t& color) {
-	return {
-		static_cast<Uint8>(255 - color.r),
-		static_cast<Uint8>(255 - color.g),
-		static_cast<Uint8>(255 - color.b),
-		0 // TODO: ehh?
-	};
-}
-
 surface_restorer::surface_restorer() : target_(nullptr), rect_(sdl::empty_rect), surface_(nullptr)
 {
 }

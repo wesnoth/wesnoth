@@ -14,9 +14,18 @@
 
 #include "font/standard_colors.hpp"
 
-#include "sdl/utils.hpp"
-
 namespace font {
+
+// TODO: evalulate whether this should become a color_t member
+static color_t inverse(const color_t& color)
+{
+	return {
+		static_cast<uint8_t>(255 - color.r),
+		static_cast<uint8_t>(255 - color.g),
+		static_cast<uint8_t>(255 - color.b),
+		255 // TODO: should we respect alpha?
+	};
+}
 
 const color_t
 	NORMAL_COLOR    {0xDD, 0xDD, 0xDD},

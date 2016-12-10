@@ -409,8 +409,6 @@ void blit_surface(const surface& src,
 
 SDL_Rect get_non_transparent_portion(const surface &surf);
 
-color_t inverse(const color_t& color);
-
 /**
  * Helper class for pinning SDL surfaces into memory.
  * @note This class should be used only with neutral surfaces, so that
