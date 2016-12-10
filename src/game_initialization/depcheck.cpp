@@ -19,6 +19,7 @@
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
+#include "util.hpp"
 
 #include "gui/dialogs/depcheck_confirm_change.hpp"
 #include "gui/dialogs/depcheck_select_new.hpp"

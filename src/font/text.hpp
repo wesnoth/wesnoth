@@ -18,7 +18,6 @@
 #include "font/font_options.hpp"
 #include "color.hpp"
 #include "sdl/surface.hpp"
-#include "sdl/utils.hpp"
 #include "serialization/unicode_types.hpp"
 
 #include <pango/pango.h>
