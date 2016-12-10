@@ -83,7 +83,6 @@ void trigger_full_redraw() {
 
 CVideo::CVideo(FAKE_TYPES type)
 	: window()
-	, mode_changed_(false)
 	, fake_screen_(false)
 	, help_string_(0)
 	, updatesLocked_(0)
@@ -248,7 +247,6 @@ void CVideo::setMode(int x, int y, const MODE_EVENT mode)
 {
 	assert(window);
 	if(fake_screen_) return;
-	mode_changed_ = true;
 
 	switch(mode) {
 		case TO_FULLSCREEN:
@@ -276,13 +274,6 @@ void CVideo::setMode(int x, int y, const MODE_EVENT mode)
 	if(frameBuffer) {
 		image::set_pixel_format(frameBuffer->format);
 	}
-}
-
-bool CVideo::modeChanged()
-{
-	bool ret = mode_changed_;
-	mode_changed_ = false;
-	return ret;
 }
 
 int CVideo::getx() const

@@ -76,9 +76,6 @@ public:
 
 	std::pair<int,int> current_resolution();
 
-	//did the mode change, since the last call to the modeChanged() method?
-	bool modeChanged();
-
 	//functions to get the dimensions of the current video-mode
 	int getx() const;
 	int gety() const;
@@ -181,9 +178,6 @@ private:
 	};
 
 	void initSDL();
-
-	bool mode_changed_;
-
 
 	//if there is no display at all, but we 'fake' it for clients
 	bool fake_screen_;
