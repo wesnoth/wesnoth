@@ -149,11 +149,6 @@ libwesnoth_sources = Split("""
 
 libwesnoth = client_env.Library("wesnoth", libwesnoth_sources)
 
-dummy_video_sources = Split("""
-    tools/dummy_video.cpp
-    """)
-libdummy_video = test_env.Library("dummy_video", dummy_video_sources)
-
 libcampaignd_sources = Split("""
     addon/validation.cpp
     """)
@@ -665,20 +660,20 @@ env.WesnothProgram("wesnothd", wesnothd_sources + [libwesnoth_core, env["wesnoth
 cutter_sources = Split("""
     tools/cutter.cpp
     """)
-client_env.WesnothProgram("cutter", cutter_sources + [libcutter, libwesnoth_core, libwesnoth_sdl, libdummy_video, libwesnoth], have_client_prereqs, LIBS = ["$LIBS", "png"])
+client_env.WesnothProgram("cutter", cutter_sources + [libcutter, libwesnoth_core, libwesnoth_sdl, libwesnoth], have_client_prereqs, LIBS = ["$LIBS", "png"])
 
 exploder_sources = Split("""
     tools/exploder_composer.cpp
     tools/exploder.cpp
     """)
-client_env.WesnothProgram("exploder", exploder_sources + [libcutter, libwesnoth_core, libwesnoth_sdl, libdummy_video, libwesnoth], have_client_prereqs, LIBS = ["$LIBS", "png"])
+client_env.WesnothProgram("exploder", exploder_sources + [libcutter, libwesnoth_core, libwesnoth_sdl, libwesnoth], have_client_prereqs, LIBS = ["$LIBS", "png"])
 
 schema_generator_sources = Split("""
     tools/schema/error_container.cpp
     tools/schema/schema_generator.cpp
     tools/schema/sourceparser.cpp
     """)
-client_env.WesnothProgram("schema_generator", schema_generator_sources + [libwesnoth_core, libdummy_video], have_client_prereqs)
+client_env.WesnothProgram("schema_generator", schema_generator_sources + [libwesnoth_core], have_client_prereqs)
 
 test_utils_sources = Split("""
     tests/utils/fake_display.cpp
@@ -689,7 +684,6 @@ test_utils_sources = Split("""
 wesmage_sources = Split("""
     sdl/utils.cpp
     sdl/window.cpp
-    tools/dummy_video.cpp
     tools/exploder_utils.cpp
     tracer.cpp
     wesmage/exit.cpp
@@ -739,7 +733,6 @@ create_images_sources = Split("""
     sdl/utils.cpp
     sdl/window.cpp
     tests/create_images.cpp
-    tools/dummy_video.cpp
     tools/exploder_utils.cpp
     tracer.cpp
 """)

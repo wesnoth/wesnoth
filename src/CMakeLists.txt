@@ -1183,7 +1183,6 @@ set(exploder_SRC
 	tools/exploder_utils.cpp
 	tools/exploder_cutter.cpp
 	tools/exploder_composer.cpp
-	tools/dummy_video.cpp
 	sdl/utils.cpp
 	tracer.cpp
 )
@@ -1203,7 +1202,6 @@ set(cutter_SRC
 	tools/cutter.cpp
 	tools/exploder_utils.cpp
 	tools/exploder_cutter.cpp
-	tools/dummy_video.cpp
 	sdl/utils.cpp
 	tracer.cpp
 )
@@ -1220,7 +1218,6 @@ set_target_properties(cutter PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}cutter${BINA
 install(TARGETS cutter DESTINATION ${BINDIR})
 
 set(schema_generator_SRC
-	tools/dummy_video.cpp
 	tools/schema/schema_generator.cpp
 	tools/schema/sourceparser.cpp
 	tools/schema/error_container.cpp
@@ -1244,7 +1241,6 @@ set(schema_validator_SRC
 	tools/validator/validator_tool.cpp
 	serialization/schema_validator.cpp
 	serialization/validator.cpp
-	tools/dummy_video.cpp
 	tools/schema/tag.cpp
 	filesystem_boost.cpp
 	filesystem_common.cpp
@@ -1270,7 +1266,6 @@ set(wesmage_SRC
 	wesmage/exit.cpp
 	wesmage/filter.cpp
 	wesmage/options.cpp
-	tools/dummy_video.cpp
 	tools/exploder_utils.cpp
 	sdl/utils.cpp
 	tracer.cpp
@@ -1392,7 +1387,6 @@ if(ENABLE_TESTS)
 		# Due to its unique nature the program is never installed.
 		set(create_images_SRC
 			tests/create_images.cpp
-			tools/dummy_video.cpp
 			tools/exploder_utils.cpp
 			sdl/utils.cpp
 			tracer.cpp
