@@ -65,6 +65,10 @@ function ca_forest_animals_new_rabbit:execution(cfg)
             .. "' }, x1, y1)"
         ai.synced_command(command, x, y)
     end
+
+    if wesnoth.sides[wesnoth.current.side].shroud then
+        wesnoth.wml_actions.redraw { side = wesnoth.current.side }
+    end
 end
 
 return ca_forest_animals_new_rabbit

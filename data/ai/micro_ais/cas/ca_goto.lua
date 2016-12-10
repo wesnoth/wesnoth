@@ -152,7 +152,7 @@ function ca_goto:execution(cfg, data)
                             enemy_at_goal = nil
                         end
                     end
-                    path, cost = wesnoth.find_path(unit, loc[1], loc[2], { ignore_units = cfg.ignore_units })
+                    path, cost = AH.find_path_with_shroud(unit, loc[1], loc[2], { ignore_units = cfg.ignore_units })
                     if enemy_at_goal then
                         wesnoth.put_unit(enemy_at_goal)
                         --- Give massive penalty for this goal hex
@@ -193,13 +193,13 @@ function ca_goto:execution(cfg, data)
     -- rather than using ai_helper.next_hop for standard pathfinding
     -- Also, straight-line does not produce a path, so we do that first
     if not best_path then
-        best_path = wesnoth.find_path(best_unit, closest_hex[1], closest_hex[2])
+        best_path = AH.find_path_with_shroud(best_unit, closest_hex[1], closest_hex[2])
     end
 
     -- Now go through the hexes along that path, use normal path finding
     closest_hex = best_path[1]
     for i = 2,#best_path do
-        local sub_path, sub_cost = wesnoth.find_path(best_unit, best_path[i][1], best_path[i][2], cfg)
+        local sub_path, sub_cost = AH.find_path_with_shroud(best_unit, best_path[i][1], best_path[i][2], cfg)
         if sub_cost <= best_unit.moves then
             local unit_in_way = wesnoth.get_unit(best_path[i][1], best_path[i][2])
             if (not AH.is_visible_unit(wesnoth.current.side, unit_in_way)) then

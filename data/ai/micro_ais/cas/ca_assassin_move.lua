@@ -149,7 +149,7 @@ function ca_assassin_move:execution(cfg)
     -- We need to pick the farthest reachable hex along that path
     local farthest_hex = path[1]
     for i = 2,#path do
-        local sub_path, sub_cost = wesnoth.find_path(unit, path[i][1], path[i][2])
+        local sub_path, sub_cost = AH.find_path_with_shroud(unit, path[i][1], path[i][2])
         if sub_cost <= unit.moves then
             local unit_in_way = wesnoth.get_unit(path[i][1], path[i][2])
             if (not AH.is_visible_unit(wesnoth.current.side, unit_in_way)) then

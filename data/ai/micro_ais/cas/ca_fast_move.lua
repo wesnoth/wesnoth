@@ -147,8 +147,8 @@ function ca_fast_move:execution(cfg)
         for _,unit_info in ipairs(goal) do
             if (not unit_info.cost) then
                 local _,cost =
-                    wesnoth.find_path(
-                        units[unit_info.i_unit].x, units[unit_info.i_unit].y,
+                    AH.find_path_with_shroud(
+                        units[unit_info.i_unit],
                         goal.x, goal.y,
                         { ignore_units = true }
                     )
@@ -172,13 +172,13 @@ function ca_fast_move:execution(cfg)
 
             -- We now want the hex that is 2 steps beyond the next hop for the unit
             -- on its way toward the goal, ignoring any unit along the way
-            local path = wesnoth.find_path(unit, goal.x, goal.y, { ignore_units = true })
+            local path = AH.find_path_with_shroud(unit, goal.x, goal.y, { ignore_units = true })
 
             -- Use current unit position as default
             local short_goal, index = { unit.x, unit.y }, 1
 
             for i = 2,#path do
-                local _, sub_cost = wesnoth.find_path(unit, path[i][1], path[i][2], { ignore_units = true })
+                local _, sub_cost = AH.find_path_with_shroud(unit, path[i][1], path[i][2], { ignore_units = true })
 
                 if (sub_cost <= unit.moves) then
                     short_goal, index = path[i], i
@@ -254,7 +254,7 @@ function ca_fast_move:execution(cfg)
                     if (pre_rating.rating <= max_rating) then break end
 
                     unit.x, unit.y = pre_rating.x, pre_rating.y
-                    local _,cost = wesnoth.find_path(unit, short_goal[1], short_goal[2])
+                    local _,cost = AH.find_path_with_shroud(unit, short_goal[1], short_goal[2])
 
                     local rating = - cost + pre_rating.other_rating
 

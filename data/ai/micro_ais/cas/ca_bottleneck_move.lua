@@ -26,7 +26,7 @@ local function bottleneck_is_my_territory(map, enemy_map)
                 -- Find lowest movement cost to own front-line hexes
                 local min_cost, best_path = 9e99
                 map:iter(function(xm, ym, v)
-                    local path, cost = wesnoth.find_path(dummy_unit, xm, ym, { ignore_units = true })
+                    local path, cost = AH.find_path_with_shroud(dummy_unit, xm, ym, { ignore_units = true })
                     if (cost < min_cost) then
                        min_cost, best_path = cost, path
                     end
@@ -35,7 +35,7 @@ local function bottleneck_is_my_territory(map, enemy_map)
                 -- And the same to the enemy front line
                 local min_cost_enemy, best_path_enemy = 9e99
                 enemy_map:iter(function(xm, ym, v)
-                    local path, cost = wesnoth.find_path(dummy_unit, xm, ym, { ignore_units = true })
+                    local path, cost = AH.find_path_with_shroud(dummy_unit, xm, ym, { ignore_units = true })
                     if (cost < min_cost_enemy) then
                        min_cost_enemy, best_path_enemy = cost, path
                     end

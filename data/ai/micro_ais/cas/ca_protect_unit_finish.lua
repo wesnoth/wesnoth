@@ -8,7 +8,7 @@ function ca_protect_unit_finish:evaluation(cfg)
     for u in H.child_range(cfg, "unit") do
         local unit = AH.get_units_with_moves { id = u.id }[1]
         if unit then
-            local path, cost = wesnoth.find_path(unit, u.goal_x, u.goal_y)
+            local path, cost = AH.find_path_with_shroud(unit, u.goal_x, u.goal_y)
             if (cost <= unit.moves) and ((unit.x ~= u.goal_x) or (unit.y ~= u.goal_y)) then
                 PU_unit = unit
                 PU_goal = { u.goal_x, u.goal_y }
