@@ -1525,7 +1525,7 @@ function battle_calcs.get_attack_combos_subset(units, enemy, cfg)
                 -- This also means that only short paths have to be evaluated (in most situations)
                 if (cost <= unit.moves) then
                     local path  -- since cost is already defined outside this block
-                    path, cost = wesnoth.find_path(unit, xa, ya)
+                    path, cost = AH.find_path_with_shroud(unit, xa, ya)
                 end
 
                 -- If the unit can get to this hex

@@ -22,6 +22,13 @@ local LS = wesnoth.require "lua/location_set.lua"
 --   - If omitted and the function takes no such input, viewing_side is made a
 --     required parameter in order to avoid mismatches between the default values
 --     of different functions.
+--
+-- Path finding:
+-- All ai_helper functions disregard shroud for path finding (while still ignoring
+-- hidden units correctly) as of Wesnoth 1.13.7. This is consistent with default
+-- Wesnoth AI behavior and ensures that Lua AIs, including the Micro AIs, can be
+-- used for AI sides with shroud=yes. It is accomplished by using
+-- ai_helper.find_path_with_shroud() instead of wesnoth.find_path().
 
 local ai_helper = {}
 
@@ -1283,7 +1290,7 @@ function ai_helper.next_hop(unit, x, y, cfg)
     --   plus:
     --     ignore_own_units: if set to true, then own units that can move out of the way are ignored
 
-    local path, cost = wesnoth.find_path(unit, x, y, cfg)
+    local path, cost = ai_helper.find_path_with_shroud(unit, x, y, cfg)
 
     if cost >= ai_helper.no_path then return nil, cost end
 
@@ -1293,7 +1300,7 @@ function ai_helper.next_hop(unit, x, y, cfg)
     -- Go through loop to find reachable, unoccupied hex along the path
     -- Start at second index, as first is just the unit position itself
     for i = 2,#path do
-        local sub_path, sub_cost = wesnoth.find_path(unit, path[i][1], path[i][2], cfg)
+        local sub_path, sub_cost = ai_helper.find_path_with_shroud(unit, path[i][1], path[i][2], cfg)
 
         if sub_cost <= unit.moves then
             -- Check for unit in way only if cfg.ignore_units is not set
@@ -1367,7 +1374,7 @@ function ai_helper.can_reach(unit, x, y, cfg)
     if (cfg.moves == 'max') then unit.moves = unit.max_moves end
 
     local can_reach = false
-    local path, cost = wesnoth.find_path(unit, x, y, cfg)
+    local path, cost = ai_helper.find_path_with_shroud(unit, x, y, cfg)
     if (cost <= unit.moves) then can_reach = true end
 
     unit.moves = old_moves
@@ -1586,7 +1593,7 @@ function ai_helper.movefull_outofway_stopunit(ai, unit, x, y, cfg)
     end
 
     -- Only move unit out of way if the main unit can get there
-    local path, cost = wesnoth.find_path(unit, x, y, cfg)
+    local path, cost = ai_helper.find_path_with_shroud(unit, x, y, cfg)
     if (cost <= unit.moves) then
         local unit_in_way = wesnoth.get_unit(x, y)
         if unit_in_way and (unit_in_way ~= unit)
@@ -1900,7 +1907,7 @@ function ai_helper.get_attack_combos(units, enemy, cfg)
                 -- This also means that only short paths have to be evaluated (in most situations)
                 if (cost <= unit.moves) then
                     local path  -- since cost is already defined outside this block
-                    path, cost = wesnoth.find_path(unit, xa, ya, cfg)
+                    path, cost = ai_helper.find_path_with_shroud(unit, xa, ya, cfg)
                 end
 
                 if (cost <= unit.moves) then
