@@ -19,7 +19,6 @@
 #include <ostream>
 #include <string>
 #include <utility>
-#include "global.hpp"
 
 struct SDL_Color;
 
@@ -225,7 +224,7 @@ struct color_t
 		};
 	}
 
-	CONSTEXPR color_t inverse() const {
+	color_t inverse() const {
 		return {
 			static_cast<uint8_t>(255 - r),
 			static_cast<uint8_t>(255 - g),
