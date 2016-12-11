@@ -1208,6 +1208,9 @@
     <ClCompile Include="..\..\src\sdl\rect.cpp">
       <Filter>SDL</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\sdl\surface.cpp">
+      <Filter>SDL</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\SDL_SavePNG\savepng.c">
       <Filter>SDL</Filter>
     </ClCompile>
@@ -1516,9 +1519,6 @@
     </ClCompile>
     <ClCompile Include="..\..\src\font\text_surface.cpp">
       <Filter>Font</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\sdl\surface.cpp">
-      <Filter>SDL</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2419,6 +2419,9 @@
     <ClInclude Include="..\..\src\utils\functional.hpp">
       <Filter>utils</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\utils\general.hpp">
+      <Filter>utils</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\utils\iterable_pair.hpp">
       <Filter>utils</Filter>
     </ClInclude>
@@ -2429,6 +2432,9 @@
       <Filter>utils</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\utils\markov_generator.hpp">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\utils\math.hpp">
       <Filter>utils</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\utils\name_generator.hpp">
@@ -2564,6 +2570,9 @@
       <Filter>SDL</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\sdl\rect.hpp">
+      <Filter>SDL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\sdl\surface.hpp">
       <Filter>SDL</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\SDL_SavePNG\savepng.h">
@@ -2935,15 +2944,6 @@
     </ClInclude>
     <ClInclude Include="..\..\src\font\pango\stream_ops.hpp">
       <Filter>Font\Pango</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\utils\general.hpp">
-      <Filter>utils</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\utils\math.hpp">
-      <Filter>utils</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\sdl\surface.hpp">
-      <Filter>SDL</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

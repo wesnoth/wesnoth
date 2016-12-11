@@ -40,6 +40,7 @@
     <ClCompile Include="..\..\src\serialization\validator.cpp">
       <Filter>Serialization</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\color.cpp" />
     <ClCompile Include="..\..\src\color_range.cpp" />
     <ClCompile Include="..\..\src\config.cpp" />
     <ClCompile Include="..\..\src\filesystem_boost.cpp" />
@@ -53,7 +54,6 @@
     <ClCompile Include="..\..\src\font\constants.cpp">
       <Filter>Font</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\color.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\serialization\binary_or_text.hpp">
@@ -80,6 +80,8 @@
     <ClInclude Include="..\..\src\serialization\validator.hpp">
       <Filter>Serialization</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\color.hpp" />
+    <ClInclude Include="..\..\src\color_range.hpp" />
     <ClInclude Include="..\..\src\config.hpp" />
     <ClInclude Include="..\..\src\config_assign.hpp" />
     <ClInclude Include="..\..\src\filesystem.hpp" />
@@ -123,6 +125,5 @@
       <Filter>spirit_po</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\spirit_po.hpp" />
-    <ClInclude Include="..\..\src\color.hpp" />
   </ItemGroup>
 </Project>
