@@ -493,7 +493,10 @@ void unit_preview_pane::set_displayed_unit(const unit& u)
 void unit_preview_pane::profile_button_callback()
 {
 	if(get_window()) {
-		help::show_unit_help((*get_window()).video(), current_type_);
+		const unit_type* ut = unit_types.find(current_type_);
+		if(ut != nullptr) {
+			help::show_unit_description((*get_window()).video(), *ut);
+		}
 	}
 }
 
