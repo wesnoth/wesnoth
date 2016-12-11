@@ -339,8 +339,10 @@ double config::attribute_value::to_double(double def) const
 class config::attribute_value::string_visitor
 	: public boost::static_visitor<std::string>
 {
+	const std::string default_;
 public:
-	std::string operator()(const boost::blank &) const { return std::string(); }
+	string_visitor(const std::string& fallback) : default_(fallback) {}
+	std::string operator()(const boost::blank &) const { return default_; }
 	std::string operator()(const yes_no & b)     const { return b.str(); }
 	std::string operator()(const true_false & b) const { return b.str(); }
 	std::string operator()(int i)                const { return lexical_cast<std::string>(i); }
@@ -350,9 +352,9 @@ public:
 	std::string operator()(t_string const &s)    const { return s.str(); }
 };
 
-std::string config::attribute_value::str() const
+std::string config::attribute_value::str(const std::string& fallback) const
 {
-	return apply_visitor(string_visitor());
+	return apply_visitor(string_visitor(fallback));
 }
 
 t_string config::attribute_value::t_str() const
