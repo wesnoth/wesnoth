@@ -231,7 +231,8 @@ inline color_t typed_formula<color_t>::execute(
 		const game_logic::map_formula_callable& variables,
 		game_logic::function_symbol_table* functions) const
 {
-	const auto& result = game_logic::formula(formula_, functions).evaluate(variables).as_list();
+	const variant v = game_logic::formula(formula_, functions).evaluate(variables);
+	const auto& result = v.as_list();
 	int alpha = result.size() == 4 ? result[3].as_int() : ALPHA_OPAQUE;
 	return color_t(result.at(0).as_int(), result.at(1).as_int(), result.at(2).as_int(), alpha);
 }
