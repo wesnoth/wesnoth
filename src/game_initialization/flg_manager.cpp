@@ -413,6 +413,11 @@ void flg_manager::update_choosable_factions()
 			choosable_factions_.push_back(faction);
 		}
 	}
+
+	// Sort alphabetically, but with the 'random' option always first
+	std::sort(choosable_factions_.begin() + 1, choosable_factions_.end(), [](const config* c1, const config* c2) {
+		return translation::compare((*c1)["name"].str(), (*c2)["name"].str()) < 0;
+	});
 }
 
 void flg_manager::update_choosable_leaders()
