@@ -3042,6 +3042,11 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)SDL\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)SDL\</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="..\..\src\sdl\surface.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)SDL\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)SDL\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)SDL\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\sdl\utils.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)SDL\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)SDL\</ObjectFileName>
@@ -4332,6 +4337,7 @@
     <ClInclude Include="..\..\src\scripting\push_check.hpp" />
     <ClInclude Include="..\..\src\sdl\exception.hpp" />
     <ClInclude Include="..\..\src\sdl\rect.hpp" />
+    <ClInclude Include="..\..\src\sdl\surface.hpp" />
     <ClInclude Include="..\..\src\sdl\utils.hpp" />
     <ClInclude Include="..\..\src\sdl\window.hpp" />
     <ClInclude Include="..\..\src\SDL_SavePNG\savepng.h" />
@@ -4417,14 +4423,15 @@
     <ClInclude Include="..\..\src\units\types.hpp" />
     <ClInclude Include="..\..\src\units\udisplay.hpp" />
     <ClInclude Include="..\..\src\units\unit.hpp" />
-    <ClInclude Include="..\..\src\util.hpp" />
     <ClInclude Include="..\..\src\utils\const_clone.hpp" />
     <ClInclude Include="..\..\src\utils\context_free_grammar_generator.hpp" />
     <ClInclude Include="..\..\src\utils\functional.hpp" />
+    <ClInclude Include="..\..\src\utils\general.hpp" />
     <ClInclude Include="..\..\src\utils\iterable_pair.hpp" />
     <ClInclude Include="..\..\src\utils\iterator.hpp" />
     <ClInclude Include="..\..\src\utils\make_enum.hpp" />
     <ClInclude Include="..\..\src\utils\markov_generator.hpp" />
+    <ClInclude Include="..\..\src\utils\math.hpp" />
     <ClInclude Include="..\..\src\utils\name_generator.hpp" />
     <ClInclude Include="..\..\src\utils\name_generator_factory.hpp" />
     <ClInclude Include="..\..\src\utils\reference_counter.hpp" />

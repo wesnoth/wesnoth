@@ -1517,6 +1517,9 @@
     <ClCompile Include="..\..\src\font\text_surface.cpp">
       <Filter>Font</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\sdl\surface.cpp">
+      <Filter>SDL</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\addon\client.hpp">
@@ -2872,7 +2875,6 @@
     <ClInclude Include="..\..\src\time_of_day.hpp" />
     <ClInclude Include="..\..\src\tod_manager.hpp" />
     <ClInclude Include="..\..\src\tooltips.hpp" />
-    <ClInclude Include="..\..\src\util.hpp" />
     <ClInclude Include="..\..\src\variable.hpp" />
     <ClInclude Include="..\..\src\variable_info.hpp" />
     <ClInclude Include="..\..\src\variable_info_detail.hpp" />
@@ -2933,6 +2935,15 @@
     </ClInclude>
     <ClInclude Include="..\..\src\font\pango\stream_ops.hpp">
       <Filter>Font\Pango</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\utils\general.hpp">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\utils\math.hpp">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\sdl\surface.hpp">
+      <Filter>SDL</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
