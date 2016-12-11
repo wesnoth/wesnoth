@@ -100,8 +100,8 @@ void faction_select::pre_show(window& window)
 		std::map<std::string, string_map> data;
 		string_map item;
 
-		// TODO: don't hardcode magenta?
-		item["label"] = (formatter() << side["image"] << "~RC(magenta>" << tc_color_ << ")").str();
+		// flag_rgb here is unrelated to any handling in the unit class
+		item["label"] = (formatter() << side["image"] << "~RC(" << side["flag_rgb"] << ">" << tc_color_ << ")").str();
 		data.emplace("faction_image", item);
 
 		item["label"] = side["name"];
