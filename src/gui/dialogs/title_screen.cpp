@@ -237,15 +237,15 @@ void title_screen::pre_show(window& win)
 	//
 	if(game_config::images::game_title.empty()) {
 		ERR_CF << "No title image defined" << std::endl;
-	} else {
-		win.get_canvas()[0].set_variable("title_image", variant(game_config::images::game_title));
-	}
+	} 
+
+	win.get_canvas()[0].set_variable("title_image", variant(game_config::images::game_title));
 
 	if(game_config::images::game_title_background.empty()) {
 		ERR_CF << "No title background image defined" << std::endl;
-	} else {
-		win.get_canvas()[0].set_variable("background_image", variant(game_config::images::game_title_background));
 	}
+
+	win.get_canvas()[0].set_variable("background_image", variant(game_config::images::game_title_background));
 
 	find_widget<image>(&win, "logo-bg", false).set_image(game_config::images::game_logo_background);
 	find_widget<image>(&win, "logo", false).set_image(game_config::images::game_logo);
