@@ -13,6 +13,10 @@ Version 1.13.6+dev:
    * The wesnoth.place_shroud and wesnoth.clear_shroud functions can alter shroud data
      for a single side. They accept a list of locations, a shroud data string, or the
      special value "all".
+   * New wesnoth.is_fogged and wesnoth.is_shrouded calls test the visibility level
+     of a hex for a particular side.
+   * New wesnoth.create_animator call produces an object that can be used to run
+     animations for a group of units
    * New Lua API functions for altering AI:
      * wesnoth.switch_ai replaces the entire AI with a definition from a file
      * wesnoth.append_ai appends AI parameters to the configuation; supports goals,

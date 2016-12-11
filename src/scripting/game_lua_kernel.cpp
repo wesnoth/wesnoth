@@ -335,14 +335,143 @@ static int intf_get_viewing_side(lua_State *L)
 	}
 }
 
-int game_lua_kernel::intf_animate_unit(lua_State *L)
-{
-	// if (game_display_)
-	{
-		events::command_disabler disable_commands;
-		unit_display::wml_animation(luaW_checkvconfig(L, 1), get_event_info().loc1);
-	}
+static const char animatorKey[] = "unit animator";
+
+static int impl_animator_collect(lua_State* L) {
+	unit_animator& anim = *static_cast<unit_animator*>(luaL_checkudata(L, 1, animatorKey));
+	anim.set_all_standing();
+	anim.~unit_animator();
 	return 0;
+}
+
+static int impl_add_animation(lua_State* L)
+{
+	unit_animator& anim = *static_cast<unit_animator*>(luaL_checkudata(L, 1, animatorKey));
+	unit& u = luaW_checkunit(L, 2);
+	std::string which = luaL_checkstring(L, 3);
+
+	using hit_type = unit_animation::hit_type;
+	std::string hits_str = luaL_checkstring(L, 4);
+	hit_type hits = hit_type::string_to_enum(hits_str, hit_type::INVALID);
+
+	map_location dest;
+	int v1 = 0, v2 = 0;
+	bool bars = false;
+	std::string text;
+	color_t color{255, 255, 255};
+	const_attack_ptr primary, secondary;
+
+	if(lua_istable(L, 5)) {
+		lua_getfield(L, 5, "facing");
+		if(!luaW_tolocation(L, -1, dest)) {
+			// luaW_tolocation may set the location to (0,0) if it fails
+			dest = map_location();
+			if(!lua_isnoneornil(L, -1)) {
+				return luaW_type_error(L, -1, "location table");
+			}
+		}
+		lua_pop(L, 1);
+
+		lua_getfield(L, 5, "value");
+		if(lua_isnumber(L, -1)) {
+			v1 = lua_tonumber(L, -1);
+		} else if(lua_istable(L, -1)) {
+			lua_rawgeti(L, 1, 1);
+			v1 = lua_tonumber(L, -1);
+			lua_pop(L, 1);
+			lua_rawgeti(L, 1, 2);
+			v2 = lua_tonumber(L, -1);
+			lua_pop(L, 2);
+		} else if(!lua_isnoneornil(L, -1)) {
+			return luaW_type_error(L, -1, "number or array of two numbers");
+		}
+		lua_pop(L, 1);
+
+		lua_getfield(L, 5, "with_bars");
+		if(lua_isboolean(L, -1)) {
+			bars = luaW_toboolean(L, -1);
+		} else if(!lua_isnoneornil(L, -1)) {
+			return luaW_type_error(L, -1, lua_typename(L, LUA_TBOOLEAN));
+		}
+		lua_pop(L, 1);
+
+		lua_getfield(L, 5, "text");
+		if(lua_isstring(L, -1)) {
+			text = lua_tostring(L, -1);
+		} else if(!lua_isnoneornil(L, 01)) {
+			return luaW_type_error(L, -1, lua_typename(L, LUA_TSTRING));
+		}
+		lua_pop(L, 1);
+
+		lua_getfield(L, 5, "color");
+		if(lua_istable(L, -1) && lua_rawlen(L, -1) == 3) {
+			lua_rawgeti(L, 1, 1); // red @ -3
+			lua_rawgeti(L, 1, 2); // green @ -2
+			lua_rawgeti(L, 1, 3); // blue @ -1
+			color = color_t(lua_tonumber(L, -3), lua_tonumber(L, -2), lua_tonumber(L, -1));
+			lua_pop(L, 3);
+		} else if(!lua_isnoneornil(L, -1)) {
+			return luaW_type_error(L, -1, "array of three numbers");
+		}
+		lua_pop(L, 1);
+
+		lua_getfield(L, 5, "primary");
+		primary = luaW_toweapon(L, -1);
+		if(!primary && !lua_isnoneornil(L, -1)) {
+			return luaW_type_error(L, -1, "weapon");
+		}
+		lua_pop(L, 1);
+
+		lua_getfield(L, 5, "secondary");
+		secondary = luaW_toweapon(L, -1);
+		if(!secondary && !lua_isnoneornil(L, -1)) {
+			return luaW_type_error(L, -1, "weapon");
+		}
+		lua_pop(L, 1);
+	}
+
+	anim.add_animation(&u, which, u.get_location(), dest, v1, bars, text, color, hits, primary.get(), secondary.get(), v2);
+	return 0;
+}
+
+static int impl_run_animation(lua_State* L)
+{
+	unit_animator& anim = *static_cast<unit_animator*>(luaL_checkudata(L, 1, animatorKey));
+	anim.start_animations();
+	anim.wait_for_end();
+	return 0;
+}
+
+static int impl_clear_animation(lua_State* L)
+{
+	unit_animator& anim = *static_cast<unit_animator*>(luaL_checkudata(L, 1, animatorKey));
+	anim.clear();
+	return 0;
+}
+
+static int impl_animator_get(lua_State* L)
+{
+	const char* m = lua_tostring(L, 2);
+	return luaW_getmetafield(L, 1, m);
+}
+
+static int intf_create_animator(lua_State* L)
+{
+	new(L) unit_animator;
+	if(luaL_newmetatable(L, animatorKey)) {
+		luaL_Reg metafuncs[] = {
+			{"__gc", impl_animator_collect},
+			{"__index", impl_animator_get},
+			{"add", impl_add_animation},
+			{"run", impl_run_animation},
+			{"clear", impl_clear_animation},
+		};
+		luaL_setfuncs(L, metafuncs, 0);
+		lua_pushstring(L, "__metatable");
+		lua_setfield(L, -2, animatorKey);
+	}
+	lua_setmetatable(L, -2);
+	return 1;
 }
 
 int game_lua_kernel::intf_gamestate_inspector(lua_State *L)
@@ -3774,6 +3903,20 @@ int game_lua_kernel::intf_log(lua_State *L)
 	return 0;
 }
 
+int game_lua_kernel::intf_get_fog_or_shroud(lua_State *L, bool fog)
+{
+	int side = luaL_checknumber(L, 1);
+	map_location loc = luaW_checklocation(L, 2);
+	if(side < 1 || static_cast<size_t>(side) > teams().size()) {
+		std::string error = "side " + std::to_string(side) + " does not exist";
+		return luaL_argerror(L, 1, error.c_str());
+	}
+
+	team& t = teams()[side - 1];
+	lua_pushboolean(L, fog ? t.fogged(loc) : t.shrouded(loc));
+	return 1;
+}
+
 /**
  * Implements the lifting and resetting of fog via WML.
  * Keeping affect_normal_fog as false causes only the fog override to be affected.
@@ -3888,6 +4031,7 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "add_modification",         &intf_add_modification         },
 		{ "advance_unit",             &intf_advance_unit             },
 		{ "copy_unit",                &intf_copy_unit                },
+		{ "create_animator",          &intf_create_animator          },
 		{ "create_unit",              &intf_create_unit              },
 		{ "debug",                    &intf_debug                    },
 		{ "debug_ai",                 &intf_debug_ai                 },
@@ -3914,7 +4058,6 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "add_sound_source",          &dispatch<&game_lua_kernel::intf_add_sound_source           >        },
 		{ "allow_end_turn",            &dispatch<&game_lua_kernel::intf_allow_end_turn             >        },
 		{ "allow_undo",                &dispatch<&game_lua_kernel::intf_allow_undo                 >        },
-		{ "animate_unit",              &dispatch<&game_lua_kernel::intf_animate_unit               >        },
 		{ "append_ai",                 &intf_append_ai                                                      },
 		{ "clear_menu_item",           &dispatch<&game_lua_kernel::intf_clear_menu_item            >        },
 		{ "clear_messages",            &dispatch<&game_lua_kernel::intf_clear_messages             >        },
@@ -3981,6 +4124,8 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "deselect_hex",              &dispatch<&game_lua_kernel::intf_deselect_hex               >        },
 		{ "select_unit",               &dispatch<&game_lua_kernel::intf_select_unit                >        },
 		{ "skip_messages",             &dispatch<&game_lua_kernel::intf_skip_messages              >        },
+		{ "is_fogged",                 &dispatch2<&game_lua_kernel::intf_get_fog_or_shroud, true   >        },
+		{ "is_shrouded",               &dispatch2<&game_lua_kernel::intf_get_fog_or_shroud, false  >        },
 		{ "is_skipping_messages",      &dispatch<&game_lua_kernel::intf_is_skipping_messages       >        },
 		{ "set_end_campaign_credits",  &dispatch<&game_lua_kernel::intf_set_end_campaign_credits   >        },
 		{ "set_end_campaign_text",     &dispatch<&game_lua_kernel::intf_set_end_campaign_text      >        },

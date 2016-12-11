@@ -13,6 +13,7 @@ end
 
 wesnoth.require "lua/wml-flow.lua"
 wesnoth.require "lua/wml/objectives.lua"
+wesnoth.require "lua/wml/animate_unit.lua"
 wesnoth.require "lua/wml/items.lua"
 wesnoth.require "lua/wml/message.lua"
 wesnoth.require "lua/wml/object.lua"
@@ -914,10 +915,6 @@ end
 
 function wml_actions.scroll(cfg)
 	wesnoth.scroll(cfg)
-end
-
-function wml_actions.animate_unit(cfg)
-	wesnoth.animate_unit(cfg)
 end
 
 function wml_actions.color_adjust(cfg)

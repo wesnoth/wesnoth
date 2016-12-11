@@ -132,17 +132,6 @@ void unit_recruited(const map_location& loc,
 void unit_healing(unit &healed, const std::vector<unit *> &healers, int healing,
                   const std::string & extra_text="");
 
-
-/**
- * Parse a standard WML for animations and play the corresponding animation.
- * Returns once animation is played.
- *
- * This is used for the animate_unit action, but can easily be generalized if
- * other wml-described animations are needed.
- */
-void wml_animation(const vconfig &cfg,
-	const map_location& default_location=map_location::null_location());
-
 }
 
 #endif
