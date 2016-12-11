@@ -163,7 +163,7 @@ public:
 	 * @returns		      The link color string. This impl returns "#ffff00".
 	 *
 	 */
-	virtual std::string get_link_color() const;
+	virtual color_t get_link_color() const;
 
 	/**
 	 * See @ref widget::layout_initialise.

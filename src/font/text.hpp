@@ -243,7 +243,7 @@ public:
 
 	pango_text& set_link_aware(bool b);
 
-	pango_text& set_link_color(const std::string & color);
+	pango_text& set_link_color(const color_t& color);
 private:
 
 	/***** ***** ***** *****  Pango variables ***** ***** ***** *****/
@@ -271,7 +271,7 @@ private:
      *
      * "<span underline=\'single\' color=\'" + link_color_ + "\'>"
      */
-	std::string link_color_;
+	color_t link_color_;
 
 	/** The font family class used. */
 	font::family_class font_class_;

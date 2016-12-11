@@ -46,7 +46,7 @@ label::label()
 		, can_wrap_(false)
 		, characters_per_line_(0)
 		, link_aware_(false)
-		, link_color_("#ffff00")
+		, link_color_(color_t::from_hex_string("ffff00"))
 {
 	connect_signal<event::LEFT_BUTTON_CLICK>(std::bind(&label::signal_handler_left_button_click, this, _2, _3));
 	connect_signal<event::RIGHT_BUTTON_CLICK>(std::bind(&label::signal_handler_right_button_click, this, _2, _3));
@@ -67,7 +67,7 @@ bool label::get_link_aware() const
 	return link_aware_;
 }
 
-std::string label::get_link_color() const
+color_t label::get_link_color() const
 {
 	return link_color_;
 }
@@ -110,7 +110,7 @@ void label::set_link_aware(bool link_aware)
 	set_is_dirty(true);
 }
 
-void label::set_link_color(const std::string & color)
+void label::set_link_color(const color_t& color)
 {
 	if(color == link_color_) {
 		return;
@@ -264,8 +264,7 @@ label_definition::label_definition(const config& cfg)
 label_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 	, link_aware(cfg["link_aware"].to_bool(false))
-	// TODO: link_color should probably be stored as color_t internally, not as a string
-	, link_color(cfg["link_color"].empty() ? "#ffff00" : color_t::from_rgb_string(cfg["link_color"].str()).to_hex_string())
+	, link_color(cfg["link_color"].empty() ? color_t::from_hex_string("ffff00") : color_t::from_rgba_string(cfg["link_color"].str()))
 {
 	// Note the order should be the same as the enum state_t is label.hpp.
 	state.push_back(state_definition(cfg.child("state_enabled")));

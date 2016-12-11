@@ -1218,7 +1218,7 @@ private:
 	typed_formula<bool> link_aware_;
 
 	/** The link color of the text. */
-	typed_formula<std::string> link_color_;
+	typed_formula<color_t> link_color_;
 
 	/** The maximum width for the text. */
 	typed_formula<int> maximum_width_;
@@ -1295,7 +1295,7 @@ text_shape::text_shape(const config& cfg)
 	, text_(cfg["text"])
 	, text_markup_(cfg["text_markup"], false)
 	, link_aware_(cfg["text_link_aware"], false)
-	, link_color_(cfg["text_link_color"], "#ffff00")
+	, link_color_(cfg["text_link_color"], color_t::from_hex_string("ffff00"))
 	, maximum_width_(cfg["maximum_width"], -1)
 	, characters_per_line_(cfg["text_characters_per_line"])
 	, maximum_height_(cfg["maximum_height"], -1)

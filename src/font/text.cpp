@@ -478,7 +478,7 @@ pango_text& pango_text::set_link_aware(bool b)
 	return *this;
 }
 
-pango_text& pango_text::set_link_color(const std::string & color)
+pango_text& pango_text::set_link_color(const color_t& color)
 {
 	if(color != link_color_) {
 		link_color_ = color;
@@ -733,7 +733,7 @@ std::string pango_text::format_link_tokens(const std::string & text) const {
 std::string pango_text::handle_token(const std::string & token) const
 {
 	if (looks_like_url(token)) {
-		return format_as_link(token, link_color_);
+		return format_as_link(token, link_color_.to_hex_string());
 	} else {
 		return token;
 	}

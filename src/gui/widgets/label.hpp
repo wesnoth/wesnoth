@@ -41,7 +41,7 @@ public:
 	virtual bool get_link_aware() const override;
 
 	/** See @ref styled_widget::get_link_aware. */
-	virtual std::string get_link_color() const override;
+	virtual color_t get_link_color() const override;
 
 	/** See @ref styled_widget::set_active. */
 	virtual void set_active(const bool active) override;
@@ -66,7 +66,7 @@ public:
 
 	void set_link_aware(bool l);
 
-	void set_link_color(const std::string & color);
+	void set_link_color(const color_t& color);
 
 	virtual bool can_mouse_focus() const override { return !tooltip().empty(); }
 private:
@@ -110,7 +110,7 @@ private:
 	/**
 	 * What color links will be rendered in.
 	 */
-	std::string link_color_;
+	color_t link_color_;
 
 	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
@@ -143,7 +143,7 @@ struct label_definition : public styled_widget_definition
 		explicit resolution(const config& cfg);
 
 		bool link_aware;
-		std::string link_color;
+		color_t link_color;
 	};
 };
 

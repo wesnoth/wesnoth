@@ -185,9 +185,9 @@ bool styled_widget::get_link_aware() const
 	return false;
 }
 
-std::string styled_widget::get_link_color() const
+color_t styled_widget::get_link_color() const
 {
-	return "#ffff00";
+	return color_t::from_hex_string("ffff00");
 }
 
 void styled_widget::layout_initialise(const bool full_initialisation)
@@ -370,7 +370,10 @@ void styled_widget::update_canvas()
 		canvas.set_variable("text", variant(label_));
 		canvas.set_variable("text_markup", variant(use_markup_));
 		canvas.set_variable("text_link_aware", variant(get_link_aware()));
-		canvas.set_variable("text_link_color", variant(get_link_color()));
+		// Possible TODO: Consider making a formula_callable for colours
+		color_t link_color = get_link_color();
+		std::vector<variant> link_color_as_list{variant(link_color.r), variant(link_color.g), variant(link_color.b), variant(link_color.a)};
+		canvas.set_variable("text_link_color", variant(&link_color_as_list));
 		canvas.set_variable("text_alignment",
 							variant(encode_text_alignment(text_alignment_)));
 		canvas.set_variable("text_maximum_width", variant(max_width));

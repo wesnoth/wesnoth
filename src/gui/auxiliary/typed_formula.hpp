@@ -23,6 +23,7 @@
 #include "lexical_cast.hpp"
 #include "serialization/string_utils.hpp"
 #include "tstring.hpp"
+#include "color.hpp"
 
 #include <cassert>
 
@@ -225,6 +226,16 @@ inline PangoAlignment typed_formula<PangoAlignment>::execute(
 										 .as_string());
 }
 
+template<>
+inline color_t typed_formula<color_t>::execute(
+		const game_logic::map_formula_callable& variables,
+		game_logic::function_symbol_table* functions) const
+{
+	const auto& result = game_logic::formula(formula_, functions).evaluate(variables).as_list();
+	int alpha = result.size() == 4 ? result[3].as_int() : ALPHA_OPAQUE;
+	return color_t(result.at(0).as_int(), result.at(1).as_int(), result.at(2).as_int(), alpha);
+}
+
 template <class T>
 inline T
 typed_formula<T>::execute(const game_logic::map_formula_callable& /*variables*/
@@ -259,6 +270,12 @@ template <>
 inline void typed_formula<PangoAlignment>::convert(const std::string& str)
 {
 	value_ = decode_text_alignment(str);
+}
+
+template <>
+inline void typed_formula<color_t>::convert(const std::string& str)
+{
+	value_ = color_t::from_rgba_string(str);
 }
 
 template <class T>
