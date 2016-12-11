@@ -4088,7 +4088,6 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "find_vacant_tile",          &dispatch<&game_lua_kernel::intf_find_vacant_tile           >        },
 		{ "fire_event",                &dispatch2<&game_lua_kernel::intf_fire_event, false         >        },
 		{ "fire_event_by_id",          &dispatch2<&game_lua_kernel::intf_fire_event, true          >        },
-		{ "fire_wml_menu_item",        &dispatch<&game_lua_kernel::intf_fire_wml_menu_item         >        },
 		{ "float_label",               &dispatch<&game_lua_kernel::intf_float_label                >        },
 		{ "gamestate_inspector",       &dispatch<&game_lua_kernel::intf_gamestate_inspector        >        },
 		{ "get_all_vars",              &dispatch<&game_lua_kernel::intf_get_all_vars               >        },
@@ -4171,6 +4170,15 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		lua_newtable(L);
 	}
 	luaL_setfuncs(L, callbacks, 0);
+
+	if(play_controller_.get_classification().campaign_type == game_classification::CAMPAIGN_TYPE::TEST) {
+		static luaL_Reg const test_callbacks[] = {
+			{ "fire_wml_menu_item",        &dispatch<&game_lua_kernel::intf_fire_wml_menu_item         >        },
+			{ nullptr, nullptr }
+		};
+		luaL_setfuncs(L, test_callbacks , 0);	
+	}
+		
 	//lua_cpp::set_functions(L, cpp_callbacks);
 	lua_setglobal(L, "wesnoth");
 
