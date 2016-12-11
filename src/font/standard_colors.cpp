@@ -16,17 +16,6 @@
 
 namespace font {
 
-// TODO: evalulate whether this should become a color_t member
-static color_t inverse(const color_t& color)
-{
-	return {
-		static_cast<uint8_t>(255 - color.r),
-		static_cast<uint8_t>(255 - color.g),
-		static_cast<uint8_t>(255 - color.b),
-		255 // TODO: should we respect alpha?
-	};
-}
-
 const color_t
 	NORMAL_COLOR    {0xDD, 0xDD, 0xDD},
 	GRAY_COLOR      {0x77, 0x77, 0x77},
@@ -41,7 +30,7 @@ const color_t
 	LABEL_COLOR     {0x6B, 0x8C, 0xFF},
 	BIGMAP_COLOR    {0xFF, 0xFF, 0xFF};
 
-const color_t DISABLED_COLOR = inverse(PETRIFIED_COLOR);
+const color_t DISABLED_COLOR = PETRIFIED_COLOR.inverse();
 
 const color_t
 	weapon_color           {245, 230, 193},

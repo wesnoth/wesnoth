@@ -19,6 +19,7 @@
 #include <ostream>
 #include <string>
 #include <utility>
+#include "global.hpp"
 
 struct SDL_Color;
 
@@ -221,6 +222,15 @@ struct color_t
 			std::max<uint8_t>(g, c.g),
 			std::max<uint8_t>(b, c.b),
 			std::max<uint8_t>(a, c.a),
+		};
+	}
+
+	CONSTEXPR color_t inverse() const {
+		return {
+			static_cast<uint8_t>(255 - r),
+			static_cast<uint8_t>(255 - g),
+			static_cast<uint8_t>(255 - b),
+			a
 		};
 	}
 };
