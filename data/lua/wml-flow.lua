@@ -120,14 +120,16 @@ wesnoth.wml_actions["for"] = function(cfg)
 		local sentinel = loop_lim.last
 		if loop_lim.step then
 			sentinel = sentinel + loop_lim.step
+			if loop_lim.step > 0 then
+				return wesnoth.get_variable(i_var) < sentinel
+			else
+				return wesnoth.get_variable(i_var) > sentinel
+			end
 		elseif loop_lim.last < first then
 			sentinel = sentinel - 1
+			return wesnoth.get_variable(i_var) > sentinel
 		else
 			sentinel = sentinel + 1
-		end
-		if loop_lim.step > 0 then
-			return wesnoth.get_variable(i_var) < sentinel
-		else
 			return wesnoth.get_variable(i_var) > sentinel
 		end
 	end
