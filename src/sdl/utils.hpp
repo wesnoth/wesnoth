@@ -197,7 +197,6 @@ surface get_surface_portion(const surface &surf, SDL_Rect &rect);
 
 void adjust_surface_alpha(surface& surf, fixed_t amount);
 surface adjust_surface_alpha_add(const surface &surf, int amount, bool optimize=true);
-surface adjust_surface_alpha_formula(const surface &surf, const std::string& formula, bool optimize=true);
 
 /** Applies a mask on a surface. */
 surface mask_surface(const surface &surf, const surface &mask, bool* empty_result = nullptr, const std::string& filename = std::string());

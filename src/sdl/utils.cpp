@@ -27,9 +27,6 @@
 #include "video.hpp"
 #include "xBRZ/xbrz.hpp"
 
-#include "formula/formula.hpp"
-#include "formula/callable.hpp"
-
 #include <algorithm>
 #include <cassert>
 #include <cstring>
@@ -1113,97 +1110,6 @@ void adjust_surface_alpha(surface& surf, fixed_t amount)
 	}
 
 	SDL_SetSurfaceAlphaMod(surf, Uint8(amount));
-}
-
-class pixel_callable : public game_logic::formula_callable {
-public:
-	pixel_callable(SDL_Point p, color_t clr, Uint32 w, Uint32 h) : p(p), clr(clr), w(w), h(h) {}
-	void get_inputs(std::vector<game_logic::formula_input>* inputs) const override
-	{
-		inputs->push_back(game_logic::formula_input("x", game_logic::FORMULA_READ_ONLY));
-		inputs->push_back(game_logic::formula_input("y", game_logic::FORMULA_READ_ONLY));
-		inputs->push_back(game_logic::formula_input("red", game_logic::FORMULA_READ_ONLY));
-		inputs->push_back(game_logic::formula_input("green", game_logic::FORMULA_READ_ONLY));
-		inputs->push_back(game_logic::formula_input("blue", game_logic::FORMULA_READ_ONLY));
-		inputs->push_back(game_logic::formula_input("alpha", game_logic::FORMULA_READ_ONLY));
-		inputs->push_back(game_logic::formula_input("height", game_logic::FORMULA_READ_ONLY));
-		inputs->push_back(game_logic::formula_input("width", game_logic::FORMULA_READ_ONLY));
-	}
-	variant get_value(const std::string& key) const override
-	{
-		if(key == "x") {
-			return variant(p.x);
-		} else if(key == "y") {
-			return variant(p.y);
-		} else if(key == "red") {
-			return variant(clr.r);
-		} else if(key == "green") {
-			return variant(clr.g);
-		} else if(key == "blue") {
-			return variant(clr.b);
-		} else if(key == "alpha") {
-			return variant(clr.a);
-		} else if(key == "width") {
-			return variant(w);
-		} else if(key == "height") {
-			return variant(h);
-		}
-		return variant();
-	}
-private:
-	SDL_Point p;
-	color_t clr;
-	Uint32 w, h;
-};
-
-surface adjust_surface_alpha_formula(const surface &surf, const std::string& formula, bool optimize)
-{
-	if(surf== nullptr) {
-		return nullptr;
-	}
-
-	game_logic::formula new_alpha(formula);
-
-	surface nsurf(make_neutral_surface(surf));
-
-	if(nsurf == nullptr) {
-		std::cerr << "could not make neutral surface...\n";
-		return nullptr;
-	}
-
-	adjust_surface_alpha(nsurf, SDL_ALPHA_OPAQUE);
-
-	{
-		surface_lock lock(nsurf);
-		Uint32* cur = lock.pixels();
-		Uint32*const end = cur + nsurf->w*surf->h;
-		Uint32*const beg = cur;
-
-		while(cur != end) {
-			color_t pixel;
-			pixel.a = (*cur) >> 24;
-			pixel.r = (*cur) >> 16;
-			pixel.g = (*cur) >> 8;
-			pixel.b = (*cur);
-
-			int i = cur - beg;
-			SDL_Point p;
-			p.y = i / nsurf->w;
-			p.x = i % nsurf->w;
-
-			pixel_callable px(p, pixel, nsurf->w, nsurf->h);
-			pixel.a = std::min<unsigned>(new_alpha.evaluate(px).as_int(),255);
-			*cur = (pixel.a << 24) + (pixel.r << 16) + (pixel.g << 8) + pixel.b;
-
-			++cur;
-		}
-	}
-
-	if(optimize) {
-		adjust_surface_alpha(nsurf, SDL_ALPHA_OPAQUE);
-	}
-
-	return nsurf;
 }
 
 surface adjust_surface_alpha_add(const surface &surf, int amount, bool optimize)
