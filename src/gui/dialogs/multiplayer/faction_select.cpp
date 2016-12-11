@@ -101,7 +101,9 @@ void faction_select::pre_show(window& window)
 		string_map item;
 
 		// flag_rgb here is unrelated to any handling in the unit class
-		item["label"] = (formatter() << side["image"] << "~RC(" << side["flag_rgb"] << ">" << tc_color_ << ")").str();
+		const std::string flag_rgb = !side["flag_rgb"].empty() ? side["flag_rgb"].str() : "magenta";
+
+		item["label"] = (formatter() << side["image"] << "~RC(" << flag_rgb << ">" << tc_color_ << ")").str();
 		data.emplace("faction_image", item);
 
 		item["label"] = side["name"];
