@@ -24,6 +24,7 @@
 #include "serialization/unicode.hpp"
 
 #include <ctime>
+#include <iomanip>
 
 #include <boost/algorithm/string/predicate.hpp>
 
@@ -109,13 +110,7 @@ std::string unique_log_filename()
 	o << log_file_prefix;
 
 	const time_t cur = time(nullptr);
-	const tm* const lt = localtime(&cur);
-
-	if(lt) {
-		char ts_buf[128] = { 0 };
-		strftime(ts_buf, 128, "%Y%m%d-%H%M%S-", lt);
-		o << ts_buf;
-	}
+	o << std::put_time(std::localtime(&cur), "%Y%m%d-%H%M%S-");
 
 	o << GetCurrentProcessId() << log_file_suffix;
 
@@ -195,7 +190,7 @@ class log_file_manager
 public:
 	log_file_manager(const log_file_manager&) = delete;
 	log_file_manager& operator=(const log_file_manager&) = delete;
-	
+
 	log_file_manager(bool native_console = false);
 	~log_file_manager();
 

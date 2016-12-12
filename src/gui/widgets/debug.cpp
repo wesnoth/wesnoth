@@ -82,16 +82,17 @@ std::string get_child_widget_id(const std::string& parent_id,
 /** Gets the prefix of the filename. */
 std::string get_base_filename()
 {
-	char buf[17] = { 0 };
+	std::ostringstream ss;
+
 	time_t t = time(nullptr);
-	tm* lt = localtime(&t);
-	if(lt) {
-		strftime(buf, sizeof(buf), "%Y%m%d_%H%M%S", lt);
-	}
+	ss << std::put_time(std::localtime(&t), "%Y%m%d_%H%M%S");
+
 	static unsigned counter = 0;
 	++counter;
 
-	return formatter() << buf << '_' << counter << '_';
+	ss << '_' << counter << '_';
+
+	return ss.str();
 }
 /***** ***** ***** ***** FLAGS ***** ***** ***** *****/
 

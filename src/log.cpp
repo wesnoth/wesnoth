@@ -172,12 +172,11 @@ bool broke_strict() {
 }
 
 std::string get_timestamp(const time_t& t, const std::string& format) {
-	char buf[100] = {0};
-	tm* lt = localtime(&t);
-	if (lt) {
-		strftime(buf, 100, format.c_str(), lt);
-	}
-	return buf;
+	std::ostringstream ss;
+
+	ss << std::put_time(std::localtime(&t), format.c_str());
+
+	return ss.str();
 }
 std::string get_timespan(const time_t& t) {
 	char buf[100];
