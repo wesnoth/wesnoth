@@ -47,12 +47,13 @@
 #include "serialization/string_utils.hpp"
 #include "formula/string_utils.hpp"
 #include "preferences.hpp"
-#include "strftime.hpp"
 #include "utils/general.hpp"
 
 #include "config.hpp"
 
 #include "utils/functional.hpp"
+
+#include <iomanip>
 #include <sstream>
 #include <stdexcept>
 
@@ -457,16 +458,15 @@ void addon_manager::copy_url_callback(text_box& url_box)
 static std::string format_addon_time(time_t time)
 {
 	if(time) {
-		char buf[1024] = { 0 };
-		struct std::tm* const t = std::localtime(&time);
+		std::ostringstream ss;
 
 		const char* format = preferences::use_twelve_hour_clock_format()
-				? "%Y-%m-%d %I:%M %p"
-				: "%Y-%m-%d %H:%M";
+			? "%Y-%m-%d %I:%M %p"
+			: "%Y-%m-%d %H:%M";
 
-		if(util::strftime(buf, sizeof(buf), format, t)) {
-			return buf;
-		}
+		ss << std::put_time(std::localtime(&time), format);
+
+		return ss.str();
 	}
 
 	return font::unicode_em_dash;

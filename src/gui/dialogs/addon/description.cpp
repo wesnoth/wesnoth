@@ -27,27 +27,26 @@
 #include "gui/widgets/window.hpp"
 #include "language.hpp"
 #include "preferences.hpp"
-#include "strftime.hpp"
 
 #include "utils/functional.hpp"
 
+#include <iomanip>
 #include <stdexcept>
 
 namespace
 {
-std::string format_addon_time(time_t time)
+static std::string format_addon_time(time_t time)
 {
 	if(time) {
-		char buf[1024] = { 0 };
-		struct std::tm* const t = std::localtime(&time);
+		std::ostringstream ss;
 
 		const char* format = preferences::use_twelve_hour_clock_format()
-									 ? "%Y-%m-%d %I:%M %p"
-									 : "%Y-%m-%d %H:%M";
+			? "%Y-%m-%d %I:%M %p"
+			: "%Y-%m-%d %H:%M";
 
-		if(util::strftime(buf, sizeof(buf), format, t)) {
-			return buf;
-		}
+		ss << std::put_time(std::localtime(&time), format);
+
+		return ss.str();
 	}
 
 	return font::unicode_em_dash;

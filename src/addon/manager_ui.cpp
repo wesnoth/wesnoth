@@ -1017,7 +1017,7 @@ bool addons_manager_ui(CVideo& v, const std::string& remote_address)
 
 			addons_list addons;
 
-			if(gui2::new_widgets) {
+			if(true) {
 				config cfg;
 				client.request_addons_list(cfg);
 				if(!cfg) {

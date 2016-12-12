@@ -29,7 +29,6 @@
 #include "mouse_events.hpp"
 #include "reports.hpp"
 #include "color.hpp"
-#include "strftime.hpp"
 #include "team.hpp"
 #include "tod_manager.hpp"
 #include "units/unit.hpp"
@@ -38,6 +37,7 @@
 
 #include <cassert>
 #include <ctime>
+#include <iomanip>
 #include <boost/dynamic_bitset.hpp>
 
 static void add_text(config &report, const std::string &text,
@@ -1524,15 +1524,16 @@ REPORT_GENERATOR(edit_left_button_function)
 
 REPORT_GENERATOR(report_clock, /*rc*/)
 {
-	time_t t = std::time(nullptr);
-	struct tm *lt = std::localtime(&t);
-	if (!lt) return config();
-	char temp[15];
-	size_t s = util::strftime(temp, 15,
-		(preferences::use_twelve_hour_clock_format() ? _("%I:%M %p") : _("%H:%M")),
-		lt);
-	return s ? text_report(temp) : config();
+	std::ostringstream ss;
 
+	const char* format = preferences::use_twelve_hour_clock_format()
+		? "%I:%M %p"
+		: "%H:%M";
+
+	time_t t = std::time(nullptr);
+	ss << std::put_time(std::localtime(&t), format);
+
+	return text_report(ss.str());
 }
 
 REPORT_GENERATOR(report_countdown, rc)
