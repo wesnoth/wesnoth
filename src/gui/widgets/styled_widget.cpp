@@ -31,6 +31,7 @@
 
 #include "utils/functional.hpp"
 
+#include <algorithm>
 #include <iomanip>
 
 #define LOG_SCOPE_HEADER                                                       \
@@ -218,9 +219,34 @@ void styled_widget::request_reduce_width(const unsigned maximum_width)
 				  << "' maximum_width " << maximum_width << " result " << size
 				  << ".\n";
 
+	} else if(label_.empty()) {
+		point size = get_best_size();
+		point min_size = get_config_minimum_size();
+		size.x = std::min(size.x, std::max<int>(maximum_width, min_size.x));
+		set_layout_size(size);
+
+		DBG_GUI_L << LOG_HEADER << " styled_widget " << id()
+		          << " maximum_width " << maximum_width << " result " << size
+		          << ".\n";
 	} else {
 		DBG_GUI_L << LOG_HEADER << " label '" << debug_truncate(label_)
 				  << "' failed; either no label or wrapping not allowed.\n";
+	}
+}
+
+void styled_widget::request_reduce_height(const unsigned maximum_height)
+{
+	if(!label_.empty()) {
+		// Do nothing
+	} else {
+		point size = get_best_size();
+		point min_size = get_config_minimum_size();
+		size.y = std::min(size.y, std::max<int>(maximum_height, min_size.y));
+		set_layout_size(size);
+
+		DBG_GUI_L << LOG_HEADER << " styled_widget " << id()
+		          << " maximum_height " << maximum_height << " result " << size
+		          << ".\n";
 	}
 }
 

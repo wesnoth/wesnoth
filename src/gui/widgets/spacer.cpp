@@ -28,6 +28,24 @@ namespace gui2
 
 REGISTER_WIDGET(spacer)
 
+void spacer::request_reduce_width(const unsigned maximum_width)
+{
+	if(best_size_ != point()) {
+		// This spacer is of fixed size, do nothing.
+	} else {
+		styled_widget::request_reduce_width(maximum_width);
+	}
+}
+
+void spacer::request_reduce_height(const unsigned maximum_height)
+{
+	if(best_size_ != point()) {
+		// This spacer is of fixed size, do nothing.
+	} else {
+		styled_widget::request_reduce_height(maximum_height);
+	}
+}
+
 point spacer::calculate_best_size() const
 {
 	return best_size_ != point() ? best_size_
