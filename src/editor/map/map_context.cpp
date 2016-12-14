@@ -506,7 +506,10 @@ config map_context::to_config()
 				u["type"] = i->type_id();
 				u["canrecruit"] = i->can_recruit();
 				u["unrenamable"] = i->unrenamable();
-				u["id"] = i->id();
+    				if(!boost::regex_match(i->id(), boost::regex(".*-[0-9]+")))
+    				{
+					u["id"] = i->id();
+    				}
 				u["name"] = i->name();
 				u["extra_recruit"] = utils::join(i->recruits());
 				u["facing"] = map_location::write_direction(i->facing());
