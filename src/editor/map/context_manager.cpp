@@ -549,7 +549,7 @@ void context_manager::resize_map_dialog()
 {
 	int w = get_map().w();
 	int h = get_map().h();
-	gui2::dialogs::editor_resize_map::EXPAND_DIRECTION dir;
+	gui2::dialogs::editor_resize_map::EXPAND_DIRECTION dir = gui2::dialogs::editor_resize_map::EXPAND_DIRECTION();
 	bool copy = false;
 	if(gui2::dialogs::editor_resize_map::execute(w, h, dir, copy, gui_.video())) {
 
