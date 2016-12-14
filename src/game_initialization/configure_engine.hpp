@@ -84,7 +84,7 @@ public:
 	void set_options(const config& cfg);
 
 	// parameter defaults
-	static std::string game_name_default() const;
+	static std::string game_name_default();
 	int num_turns_default() const;
 	int village_gold_default() const;
 	int village_support_default() const;
