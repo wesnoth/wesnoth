@@ -95,7 +95,7 @@ void configure_engine::set_shuffle_sides(bool val) { parameters_.shuffle_sides =
 void configure_engine::set_random_faction_mode(mp_game_settings::RANDOM_FACTION_MODE val) { parameters_.random_faction_mode = val;}
 void configure_engine::set_options(const config& cfg) { parameters_.options = cfg; }
 
-std::string configure_engine::game_name_default() const {
+std::string configure_engine::game_name_default() {
 	utils::string_map i18n_symbols;
 	i18n_symbols["login"] = preferences::login();
 	return vgettext("$login|’s game", i18n_symbols);
