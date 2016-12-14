@@ -131,7 +131,7 @@ void mp_create_game::pre_show(window& win)
 {
 	find_widget<minimap>(&win, "minimap", false).set_config(&cfg_);
 
-	find_widget<text_box>(&win, "game_name", false).set_value(config_engine_->game_name_default());
+	find_widget<text_box>(&win, "game_name", false).set_value(ng::configure_engine::game_name_default());
 
 	connect_signal_mouse_left_click(
 		find_widget<button>(&win, "random_map_regenerate", false),
@@ -834,7 +834,7 @@ void mp_create_game::post_show(window& window)
 
 		// Set game name
 		const std::string name = find_widget<text_box>(&window, "game_name", false).get_value();
-		if(!name.empty() && (name != config_engine_->game_name_default())) {
+		if(!name.empty() && (name != ng::configure_engine::game_name_default())) {
 			config_engine_->set_game_name(name);
 		}
 
