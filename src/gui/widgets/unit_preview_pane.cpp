@@ -433,7 +433,7 @@ void unit_preview_pane::set_displayed_unit(const unit& u)
 	}
 
 	if(tree_details_) {
-
+		tree_details_->clear();
 		tree_details_->add_node("hp_xp_mp", {
 			{ "hp",{
 				{ "label", (formatter() << "<small>" << font::span_color(u.hp_color()) << "<b>" << _("HP: ") << "</b>" << u.hitpoints() << "/" << u.max_hitpoints() << "</span>" << " | </small>").str() },
