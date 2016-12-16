@@ -437,7 +437,7 @@ std::string strftime(const std::string& format, const std::tm* time)
 	std::basic_ostringstream<char> dummy;
 	dummy.imbue(get_manager().get_locale());
 	// See utils/io.hpp for explanation of this check
-#if (defined(__clang__) && !__has_include(<experimental/any>) || (defined(__GNUC__) && __GNUC__ < 5)
+#if (defined(__clang__) && !__has_include(<experimental/any>)) || (defined(__GNUC__) && __GNUC__ < 5)
 	dummy << bl::as::ftime(format) << mktime(const_cast<std::tm*>(time));
 #else
 	dummy << std::put_time(time, format.c_str());
