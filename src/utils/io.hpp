@@ -17,7 +17,7 @@ See the COPYING file for more details.
 // Instead, we check for the presence of the <experimental/any> header.
 // This was introduced in GCC 5.1, so it's not a perfect check, but it appears to be the best available.
 // (Boost also uses the same check internally.)
-#if (defined(__clang__) && !__has_include(<experimental/any>) || (defined(__GNUC__) && __GNUC__ < 5)
+#if (defined(__clang__) && !__has_include(<experimental/any>)) || (defined(__GNUC__) && __GNUC__ < 5)
 
 #include <ctime>
 
