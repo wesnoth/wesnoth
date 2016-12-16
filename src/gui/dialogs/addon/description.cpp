@@ -32,6 +32,7 @@
 
 #include <iomanip>
 #include <stdexcept>
+#include "utils/io.hpp"
 
 namespace
 {
@@ -44,7 +45,7 @@ static std::string format_addon_time(time_t time)
 			? "%Y-%m-%d %I:%M %p"
 			: "%Y-%m-%d %H:%M";
 
-		ss << std::put_time(std::localtime(&time), format);
+		ss << util::put_time(std::localtime(&time), format);
 
 		return ss.str();
 	}

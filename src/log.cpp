@@ -29,6 +29,8 @@
 #include <sstream>
 #include <ctime>
 
+#include "utils/io.hpp"
+
 namespace {
 
 class null_streambuf : public std::streambuf
@@ -174,7 +176,7 @@ bool broke_strict() {
 std::string get_timestamp(const time_t& t, const std::string& format) {
 	std::ostringstream ss;
 
-	ss << std::put_time(std::localtime(&t), format.c_str());
+	ss << util::put_time(std::localtime(&t), format.c_str());
 
 	return ss.str();
 }

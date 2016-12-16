@@ -28,6 +28,8 @@
 
 #include <boost/algorithm/string/predicate.hpp>
 
+#include "utils/io.hpp"
+
 #ifndef UNICODE
 #define UNICODE
 #endif
@@ -110,7 +112,7 @@ std::string unique_log_filename()
 	o << log_file_prefix;
 
 	const time_t cur = time(nullptr);
-	o << std::put_time(std::localtime(&cur), "%Y%m%d-%H%M%S-");
+	o << util::put_time(std::localtime(&cur), "%Y%m%d-%H%M%S-");
 
 	o << GetCurrentProcessId() << log_file_suffix;
 

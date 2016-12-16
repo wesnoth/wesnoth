@@ -40,6 +40,8 @@
 #include <iomanip>
 #include <boost/dynamic_bitset.hpp>
 
+#include "utils/io.hpp"
+
 static void add_text(config &report, const std::string &text,
 	const std::string &tooltip, const std::string &help = "")
 {
@@ -1531,7 +1533,7 @@ REPORT_GENERATOR(report_clock, /*rc*/)
 		: "%H:%M";
 
 	time_t t = std::time(nullptr);
-	ss << std::put_time(std::localtime(&t), format);
+	ss << util::put_time(std::localtime(&t), format);
 
 	return text_report(ss.str());
 }
