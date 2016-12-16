@@ -20,6 +20,7 @@
 #include "log.hpp"
 #include "filesystem.hpp"
 
+#include <iomanip>
 #include <iostream>
 #include <fstream>
 #include <locale>
@@ -435,7 +436,8 @@ std::string strftime(const std::string& format, const std::tm* time)
 {
 	std::basic_ostringstream<char> dummy;
 	dummy.imbue(get_manager().get_locale());
-	dummy << bl::as::ftime(format) << mktime(const_cast<std::tm*>(time));
+	dummy << std::put_time(time, format.c_str());
+	//dummy << bl::as::ftime(format) << mktime(const_cast<std::tm*>(time));
 
 	return dummy.str();
 }
