@@ -11,13 +11,15 @@ but WITHOUT ANY WARRANTY.
 See the COPYING file for more details.
 */
 
+#include "global.hpp"
+
 // The version of libstdc++ shipped with GCC 4.x does not have put_time in the <iomanip> header
 // Thus if GCC is the compiler being used, we can simply check the compiler version.
 // However, if clang is being used, this won't work.
 // Instead, we check for the presence of the <experimental/any> header.
 // This was introduced in GCC 5.1, so it's not a perfect check, but it appears to be the best available.
 // (Boost also uses the same check internally.)
-#if (defined(__clang__) && !__has_include(<experimental/any>)) || (defined(__GNUC__) && __GNUC__ < 5)
+#if !HAVE_PUT_TIME
 
 #include <ctime>
 

@@ -62,6 +62,7 @@
 
 // Some C++11 features are not available on all supported platforms
 #if defined(_MSC_VER)
+#define HAVE_PUT_TIME 1
 // MSVC supports these starting in MSVC 2015
 #if _MSC_VER >= 1900
 #define HAVE_REF_QUALIFIERS 1
@@ -77,6 +78,10 @@
 #endif
 
 #if defined(__clang__)
+#include <ciso646> // To ensure standard library version macros are defined
+// If it's libc++, no problem. Otherwise, attempt to detect libstdc++ version (needs GCC 5.1 or higher)
+// by testing for the existence of a header added in that version.
+#define HAVE_PUT_TIME (defined(_LIBCPP_VERSION) || __has_include(<experimental/any>))
 // Clang has convenient feature detection macros \o/
 #define HAVE_REF_QUALIFIERS __has_feature(cxx_reference_qualified_functions)
 #define HAVE_INHERITING_CTORS __has_feature(cxx_inheriting_constructors)
@@ -97,7 +102,9 @@
 #endif
 
 #if defined(__GNUC__) && !defined(__clang__)
-// GCC supports two of these from 4.6 up and the others from 4.8 up
+// GCC 5 required for this
+#define HAVE_PUT_TIME (__GNUC__ >= 5)
+// GCC supports these from 4.8 up
 #define CONSTEXPR constexpr
 #define NOEXCEPT noexcept
 #define NORETURN [[noreturn]]
