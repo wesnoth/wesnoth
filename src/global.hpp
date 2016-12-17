@@ -81,7 +81,12 @@
 #include <ciso646> // To ensure standard library version macros are defined
 // If it's libc++, no problem. Otherwise, attempt to detect libstdc++ version (needs GCC 5.1 or higher)
 // by testing for the existence of a header added in that version.
-#define HAVE_PUT_TIME (defined(_LIBCPP_VERSION) || __has_include(<experimental/any>))
+#if defined(_LIBCPP_VERSION) || __has_include(<experimental/any>)
+#define HAVE_PUT_TIME 1
+#else
+#define HAVE_PUT_TIME 0
+#endif
+
 // Clang has convenient feature detection macros \o/
 #define HAVE_REF_QUALIFIERS __has_feature(cxx_reference_qualified_functions)
 #define HAVE_INHERITING_CTORS __has_feature(cxx_inheriting_constructors)
