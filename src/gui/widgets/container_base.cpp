@@ -18,6 +18,8 @@
 
 #include "gui/core/log.hpp"
 
+#include <algorithm>
+
 #define LOG_SCOPE_HEADER                                                       \
 	"tcontainer(" + get_control_type() + ") [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -40,12 +42,34 @@ void container_base::layout_initialise(const bool full_initialisation)
 
 void container_base::reduce_width(const unsigned maximum_width)
 {
-	grid_.reduce_width(maximum_width - border_space().x);
+	point size = get_best_size();
+	point grid_size = grid_.get_best_size();
+	if(static_cast<int>(maximum_width) - border_space().x < grid_size.x) {
+		grid_.reduce_width(maximum_width - border_space().x);
+		grid_size = grid_.get_best_size();
+		size.x = grid_size.x + border_space().x;
+		size.y = std::max(size.y, grid_size.y + border_space().y);
+	} else {
+		size.x = maximum_width;
+	}
+
+	set_layout_size(size);
 }
 
 void container_base::request_reduce_width(const unsigned maximum_width)
 {
-	grid_.request_reduce_width(maximum_width - border_space().x);
+	point size = get_best_size();
+	point grid_size = grid_.get_best_size();
+	if(static_cast<int>(maximum_width) - border_space().x < grid_size.x) {
+		grid_.request_reduce_width(maximum_width - border_space().x);
+		grid_size = grid_.get_best_size();
+		size.x = grid_size.x + border_space().x;
+		size.y = std::max(size.y, grid_size.y + border_space().y);
+	} else {
+		size.x = maximum_width;
+	}
+
+	set_layout_size(size);
 }
 
 void container_base::demand_reduce_width(const unsigned maximum_width)
@@ -55,12 +79,32 @@ void container_base::demand_reduce_width(const unsigned maximum_width)
 
 void container_base::reduce_height(const unsigned maximum_height)
 {
-	grid_.reduce_height(maximum_height - border_space().y);
+	point size = get_best_size();
+	point grid_size = grid_.get_best_size();
+	if(static_cast<int>(maximum_height) - border_space().y < grid_size.y) {
+		grid_.reduce_height(maximum_height - border_space().y);
+		grid_size = grid_.get_best_size();
+		size.y = grid_size.y + border_space().y;
+	} else {
+		size.y = maximum_height;
+	}
+
+	set_layout_size(size);
 }
 
 void container_base::request_reduce_height(const unsigned maximum_height)
 {
-	grid_.request_reduce_height(maximum_height - border_space().y);
+	point size = get_best_size();
+	point grid_size = grid_.get_best_size();
+	if(static_cast<int>(maximum_height) - border_space().y < grid_size.y) {
+		grid_.request_reduce_height(maximum_height - border_space().y);
+		grid_size = grid_.get_best_size();
+		size.y = grid_size.y + border_space().y;
+	} else {
+		size.y = maximum_height;
+	}
+
+	set_layout_size(size);
 }
 
 void container_base::demand_reduce_height(const unsigned maximum_height)
