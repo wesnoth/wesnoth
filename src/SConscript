@@ -123,7 +123,6 @@ libwesnoth_extras.extend(env_lua.Library("lua", objs_lua))
 #
 # Target declarations
 #
-#---start valid scons default_targets---#
 
 def error_action(target, source, env):
     from SCons.Errors import UserError
@@ -149,6 +148,7 @@ def WesnothProgram(env, target, source, can_build, **kw):
 for env in [test_env, client_env, env]:
     env.AddMethod(WesnothProgram)
 
+#---wesnoth---
 wesnoth_objects = ["wesnoth.cpp", libwesnoth_extras, libwesnoth_core, libwesnoth,
                    libwesnoth_sdl, libwesnoth_extras, env["wesnoth_res"]]
 if env["PLATFORM"] == 'darwin':
@@ -163,36 +163,9 @@ env.WesnothProgram("wesnothd", wesnothd_sources + [libwesnoth_core, env["wesnoth
 campaignd_sources = GetSources("campaignd")
 env.WesnothProgram("campaignd", campaignd_sources + [libwesnoth_core], have_server_prereqs, OBJPREFIX = "campaignd_")
 
-#---cutter---
-cutter_sources = GetSources("cutter")
-client_env.WesnothProgram("cutter", cutter_sources + [libwesnoth_core, libwesnoth_sdl, libwesnoth], have_client_prereqs, OBJPREFIX = "cutter_", LIBS = ["$LIBS", "png"])
-
-#---exploder---
-exploder_sources = GetSources("exploder")
-client_env.WesnothProgram("exploder", exploder_sources + [libwesnoth_core, libwesnoth_sdl, libwesnoth], have_client_prereqs, OBJPREFIX = "exploder_", LIBS = ["$LIBS", "png"])
-
 #---test---
 test_sources = GetSources("test")
 test = test_env.WesnothProgram("test", test_sources +  [libwesnoth_extras, libwesnoth_core, libwesnoth, libwesnoth_sdl, libwesnoth_extras], have_test_prereqs)
-#---end valid scons default_targets---#
-
-#---start invalid scons default_targets---#
-#---schema_generator---
-schema_generator_sources = GetSources("schema_generator")
-client_env.WesnothProgram("schema_generator", schema_generator_sources + [libwesnoth_core], have_client_prereqs, OBJPREFIX = "schema_generator_")
-
-#---schema_validator---
-schema_validator_sources = GetSources("schema_validator")
-client_env.WesnothProgram("schema_validator", schema_validator_sources + [libwesnoth_core], have_client_prereqs, OBJPREFIX = "schema_validator_")
-
-#---wesmage---
-wesmage_sources = GetSources("wesmage")
-client_env.WesnothProgram("wesmage", wesmage_sources + [libwesnoth_core], have_client_prereqs, OBJPREFIX = "wesmage_", LIBS = ["$LIBS", "png"])
-
-#---create_images---
-create_images_sources = GetSources("create_images")
-env.WesnothProgram("create_images", create_images_sources + [libwesnoth_core], have_server_prereqs, OBJPREFIX = "create_images_", LIBS = ["$LIBS", "png"])
-#---end invalid scons default_targets---#
 #---end of getting sources---
 
 if env.get("have_autorevision"):

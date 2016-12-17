@@ -46,7 +46,7 @@ def OptionalPath(key, val, env):
 
 opts.AddVariables(
     ListVariable('default_targets', 'Targets that will be built if no target is specified in command line.',
-        "wesnoth,wesnothd", Split("wesnoth wesnothd campaignd cutter exploder test")),
+        "wesnoth,wesnothd", Split("wesnoth wesnothd campaignd test")),
     EnumVariable('build', 'Build variant: debug, release profile or base (no subdirectory)', "release", ["optimized", "release", "debug", "glibcxx_debug", "profile", "base"]),
     PathVariable('build_dir', 'Build all intermediate files(objects, test programs, etc) under this dir', "build", PathVariable.PathAccept),
     ('extra_flags_config', "Extra compiler and linker flags to use for configuration and all builds. Whether they're compiler or linker is determined by env.ParseFlags. Unknown flags are compile flags by default. This applies to all extra_flags_* variables", ""),
@@ -201,18 +201,16 @@ Important switches include:
 With no arguments, the recipe builds wesnoth and wesnothd.  Available
 build targets include the individual binaries:
 
-    wesnoth wesnothd campaignd exploder cutter test
+    wesnoth wesnothd campaignd test
 
 You can make the following special build targets:
 
-    all = wesnoth exploder cutter wesnothd campaignd test (*).
+    all = wesnoth wesnothd campaignd test (*).
     TAGS = build tags for Emacs (*).
     wesnoth-deps.png = project dependency graph
     install = install all executables that currently exist, and any data needed
     install-wesnothd = install the Wesnoth multiplayer server.
     install-campaignd = install the Wesnoth campaign server.
-    install-cutter = install the castle cutter
-    install-exploder = install the castle exploder
     install-pytools = install all Python tools and modules
     uninstall = uninstall all executables, tools, modules, and servers.
     pot-update = generate gettext message catalog templates and merge them with localized message catalogs
@@ -378,7 +376,7 @@ if env["prereqs"]:
         conf.CheckBoost("program_options", require_version = boost_version) & \
         conf.CheckBoost("thread") & \
         conf.CheckBoost("regex") \
-            or Warning("Client prerequisites are not met. wesnoth, cutter and exploder cannot be built")
+            or Warning("Client prerequisites are not met. wesnoth cannot be built")
 
     have_X = False
     if have_client_prereqs:
@@ -526,14 +524,14 @@ except:
 Export(Split("env client_env test_env have_client_prereqs have_server_prereqs have_test_prereqs"))
 SConscript(dirs = Split("po doc packaging/windows packaging/systemd"))
 
-binaries = Split("wesnoth wesnothd cutter exploder campaignd test")
+binaries = Split("wesnoth wesnothd campaignd test")
 builds = {
-    "base"          : dict(CCFLAGS   = Split("$OPT_FLAGS")),    # Don't build in subdirectory
-    "debug"         : dict(CCFLAGS   = Split("$DEBUG_FLAGS")),
+    "base"          : dict(CCFLAGS    = Split("$OPT_FLAGS")),    # Don't build in subdirectory
+    "debug"         : dict(CCFLAGS    = Split("$DEBUG_FLAGS")),
     "glibcxx_debug" : dict(CPPDEFINES = Split("_GLIBCXX_DEBUG _GLIBCXX_DEBUG_PEDANTIC")),
-    "release"       : dict(CCFLAGS   = Split("$OPT_FLAGS")),
-    "profile"       : dict(CCFLAGS   = "-pg", LINKFLAGS = "-pg"),
-    "optimized"      : dict(CCFLAGS   = Split("$HIGH_OPT_COMP_FLAGS"), LINKFLAGS=Split("$HIGH_OPT_LINK_FLAGS"))
+    "release"       : dict(CCFLAGS    = Split("$OPT_FLAGS")),
+    "profile"       : dict(CCFLAGS    = "-pg", LINKFLAGS = "-pg"),
+    "optimized"     : dict(CCFLAGS    = Split("$HIGH_OPT_COMP_FLAGS"), LINKFLAGS=Split("$HIGH_OPT_LINK_FLAGS"))
     }
 builds["glibcxx_debug"].update(builds["debug"])
 build = env["build"]
@@ -643,15 +641,10 @@ if env["systemd"]:
 # Wesnoth campaign server
 env.InstallBinary(campaignd)
 
-# And the artists' tools
-env.InstallBinary(cutter)
-env.InstallBinary(exploder)
-
 # Compute things for default install based on which targets have been created.
 install = env.Alias('install', [])
 for installable in ('wesnoth',
-                    'wesnothd', 'campaignd',
-                    'exploder', 'cutter'):
+                    'wesnothd', 'campaignd'):
     if os.path.exists(installable + build_suffix) or installable in COMMAND_LINE_TARGETS or "all" in COMMAND_LINE_TARGETS:
         env.Alias('install', env.Alias('install-'+installable))
 

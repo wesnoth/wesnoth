@@ -465,85 +465,6 @@ if(ENABLE_CAMPAIGN_SERVER)
 
 endif(ENABLE_CAMPAIGN_SERVER)
 
-########### Castle building helpers ###############
-
-if(ENABLE_TOOLS)
-  
-# exploder
-  GetSources("exploder" exploder_SRC)
-
-  add_executable(exploder ${exploder_SRC})
-  target_link_libraries(exploder
-	  wesnoth-core
-	  wesnoth-sdl
-	  png
-	  ${tools-external-libs}
-  )
-  set_target_properties(exploder PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}exploder${BINARY_SUFFIX})
-
-  install(TARGETS exploder DESTINATION ${BINDIR})
-  
-# cutter
-  GetSources("cutter" cutter_SRC)
-
-  add_executable(cutter ${cutter_SRC})
-  target_link_libraries(cutter
-	  wesnoth-core
-	  wesnoth-sdl
-	  png
-	  ${tools-external-libs}
-  )
-  set_target_properties(cutter PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}cutter${BINARY_SUFFIX})
-
-  install(TARGETS cutter DESTINATION ${BINDIR})
-  
-# schema_generator
-  GetSources("schema_generator" schema_generator_SRC)
-
-  add_executable(schema_generator ${schema_generator_SRC})
-  target_link_libraries(schema_generator
-	  wesnoth-core
-	  wesnoth-sdl
-	  ${tools-external-libs}
-	  ${Boost_REGEX_LIBRARY}
-  )
-  set_target_properties(schema_generator PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}schema_generator${BINARY_SUFFIX})
-
-  install(TARGETS schema_generator DESTINATION ${BINDIR})
-
-# schema_validator
-  GetSources("schema_validator" schema_validator_SRC)
-
-  add_executable(schema_validator ${schema_validator_SRC})
-  target_link_libraries(schema_validator
-	  wesnoth-core
-	  wesnoth-sdl
-	  ${common-external-libs}
-	  ${Boost_SYSTEM_LIBRARIES}
-	  ${Boost_RANDOM_LIBRARY}
-  )
-  set_target_properties(schema_validator PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}schema_validator${BINARY_SUFFIX}
-							  COMPILE_DEFINITIONS VALIDATION_ERRORS_LOG)
-
-  install(TARGETS schema_validator DESTINATION ${BINDIR})
-  
-# wesmage
-  GetSources("wesmage" wesmage_SRC)
-
-  add_executable(wesmage ${wesmage_SRC})
-  target_link_libraries(wesmage
-	  wesnoth-core
-	  wesnoth-sdl
-	  png
-	  ${tools-external-libs}
-  )
-  set_target_properties(wesmage PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}wesmage${BINARY_SUFFIX})
-
-  install(TARGETS wesmage DESTINATION ${BINDIR})
-
-endif(ENABLE_TOOLS)
-
-
 ########### Unit tests ###############
 
 if(ENABLE_TESTS)
@@ -590,21 +511,6 @@ if(ENABLE_TESTS)
 	set_target_properties(test
 		PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}test${BINARY_SUFFIX}
 	)
-
-	if(ENABLE_TOOLS)
-		# This tool is used to create the images for the sdl_utils unit test.
-		# Due to its unique nature the program is never installed.
-		GetSources("create_images" create_images_SRC)
-
-		add_executable(create_images ${create_images_SRC})
-		target_link_libraries(create_images
-			wesnoth-core
-			wesnoth-sdl
-			png
-			${tools-external-libs}
-		)
-		set_target_properties(create_images PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}create_images${BINARY_SUFFIX})
-	endif(ENABLE_TOOLS)
 
 endif(ENABLE_TESTS)
 
