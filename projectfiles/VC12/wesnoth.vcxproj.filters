@@ -1478,7 +1478,6 @@
     <ClCompile Include="..\..\src\sound_music_track.cpp" />
     <ClCompile Include="..\..\src\soundsource.cpp" />
     <ClCompile Include="..\..\src\statistics.cpp" />
-    <ClCompile Include="..\..\src\strftime.cpp" />
     <ClCompile Include="..\..\src\synced_checkup.cpp" />
     <ClCompile Include="..\..\src\synced_commands.cpp" />
     <ClCompile Include="..\..\src\synced_context.cpp" />
@@ -2422,6 +2421,9 @@
     <ClInclude Include="..\..\src\utils\general.hpp">
       <Filter>utils</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\utils\io.hpp">
+      <Filter>utils</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\utils\iterable_pair.hpp">
       <Filter>utils</Filter>
     </ClInclude>
@@ -2872,7 +2874,6 @@
     <ClInclude Include="..\..\src\sound_music_track.hpp" />
     <ClInclude Include="..\..\src\soundsource.hpp" />
     <ClInclude Include="..\..\src\statistics.hpp" />
-    <ClInclude Include="..\..\src\strftime.hpp" />
     <ClInclude Include="..\..\src\synced_checkup.hpp" />
     <ClInclude Include="..\..\src\synced_commands.hpp" />
     <ClInclude Include="..\..\src\synced_context.hpp" />
@@ -2944,9 +2945,6 @@
     </ClInclude>
     <ClInclude Include="..\..\src\font\pango\stream_ops.hpp">
       <Filter>Font\Pango</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\utils\io.hpp">
-      <Filter>utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

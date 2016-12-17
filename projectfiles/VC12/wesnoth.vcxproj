@@ -3114,7 +3114,6 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Storyscreen\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Storyscreen\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\strftime.cpp" />
     <ClCompile Include="..\..\src\synced_checkup.cpp" />
     <ClCompile Include="..\..\src\synced_commands.cpp" />
     <ClCompile Include="..\..\src\synced_context.cpp" />
@@ -4356,7 +4355,6 @@
     <ClInclude Include="..\..\src\storyscreen\interface.hpp" />
     <ClInclude Include="..\..\src\storyscreen\part.hpp" />
     <ClInclude Include="..\..\src\storyscreen\render.hpp" />
-    <ClInclude Include="..\..\src\strftime.hpp" />
     <ClInclude Include="..\..\src\synced_checkup.hpp" />
     <ClInclude Include="..\..\src\synced_commands.hpp" />
     <ClInclude Include="..\..\src\synced_context.hpp" />
