@@ -15,6 +15,8 @@
 #ifndef NAME_GENERATOR_HPP_INCLUDED
 #define NAME_GENERATOR_HPP_INCLUDED
 
+#include "global.hpp"
+
 #include <string>
 #include <map>
 #include <exception>
@@ -22,7 +24,7 @@
 class name_generator_invalid_exception : public std::exception {
 public:
 	name_generator_invalid_exception(const char* errMessage):errMessage_(errMessage) {}
-	const char* what() const throw() { return errMessage_; }
+	const char* what() const NOEXCEPT { return errMessage_; }
 
 private:
 	const char* errMessage_;

@@ -14,6 +14,8 @@
 #ifndef EXCEPTIONS_HPP_INCLUDED
 #define EXCEPTIONS_HPP_INCLUDED
 
+#include "global.hpp"
+
 #include <exception>
 #include <string>
 
@@ -30,9 +32,9 @@ struct error : std::exception
 
 	error() : message() {}
 	error(const std::string &msg) : message(msg) {}
-	~error() throw() {}
+	~error() NOEXCEPT {}
 
-	const char *what() const throw()
+	const char *what() const NOEXCEPT
 	{
 		return message.c_str();
 	}

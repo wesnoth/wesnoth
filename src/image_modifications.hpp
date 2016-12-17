@@ -86,7 +86,7 @@ public:
 		 */
 		imod_exception(const std::string& message);
 
-		~imod_exception() throw() {}
+		~imod_exception() NOEXCEPT {}
 
 		/** The error message regarding the failed operation. */
 		const std::string message;

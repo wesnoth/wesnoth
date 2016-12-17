@@ -26,7 +26,7 @@ class invalid_variablename_exception : public std::exception
 {
 public:
 	invalid_variablename_exception() : std::exception() {}
-	const char* what() const throw()
+	const char* what() const NOEXCEPT
 	{
 		return "invalid_variablename_exception";
 	}

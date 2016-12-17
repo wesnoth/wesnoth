@@ -45,7 +45,7 @@ struct editor_map_load_exception : public editor_exception
 	: editor_exception(msg), filename(fn)
 	{
 	}
-	~editor_map_load_exception() throw() {}
+	~editor_map_load_exception() NOEXCEPT {}
 	std::string filename;
 };
 
@@ -55,7 +55,7 @@ struct editor_map_save_exception : public editor_exception
 	: editor_exception(msg)
 	{
 	}
-	~editor_map_save_exception() throw() {}
+	~editor_map_save_exception() NOEXCEPT {}
 };
 
 

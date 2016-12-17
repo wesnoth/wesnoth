@@ -113,9 +113,9 @@ namespace {
 	public:
 
 		//Not used by boost filesystem
-		int do_encoding() const throw() { return 0; }
+		int do_encoding() const NOEXCEPT { return 0; }
 		//Not used by boost filesystem
-		bool do_always_noconv() const throw() { return false; }
+		bool do_always_noconv() const NOEXCEPT { return false; }
 		int do_length( std::mbstate_t& /*state*/,
 			const char* /*from*/,
 			const char* /*from_end*/,

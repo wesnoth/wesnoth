@@ -88,7 +88,7 @@ struct formula_error : public game::error
 	formula_error(const std::string& type, const std::string& formula,
 			const std::string& file, int line);
 
-	~formula_error() throw() {}
+	~formula_error() NOEXCEPT {}
 
 	std::string type;
 	std::string formula;

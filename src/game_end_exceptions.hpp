@@ -51,7 +51,7 @@ public:
 		, std::exception()
 	{
 	}
-	const char * what() const throw() { return "return_to_play_side_exception"; }
+	const char * what() const NOEXCEPT { return "return_to_play_side_exception"; }
 private:
 
 	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(return_to_play_side_exception)
@@ -68,7 +68,7 @@ public:
 		, std::exception()
 	{
 	}
-	const char * what() const throw() { return "quit_game_exception"; }
+	const char * what() const NOEXCEPT { return "quit_game_exception"; }
 private:
 	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(quit_game_exception)
 };

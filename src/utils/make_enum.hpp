@@ -78,6 +78,8 @@
 #ifndef MAKE_ENUM_HPP
 #define MAKE_ENUM_HPP
 
+#include "global.hpp"
+
 #include <cassert>
 #include <exception>
 #include <string>
@@ -98,19 +100,19 @@ public:
 		, bad_val(str)
 	{}
 
-	virtual ~bad_enum_cast() throw() {}
+	virtual ~bad_enum_cast() NOEXCEPT {}
 
-	const char * what() const throw()
+	const char * what() const NOEXCEPT
 	{
 		return message.c_str();
 	}
-	
-	const char * type() const throw()
+
+	const char * type() const NOEXCEPT
 	{
 		return name.c_str();
 	}
-	
-	const char * value() const throw()
+
+	const char * value() const NOEXCEPT
 	{
 		return bad_val.c_str();
 	}
