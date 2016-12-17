@@ -17,7 +17,6 @@
 #include "assert.h"
 #include "gettext.hpp"
 #include "preferences.hpp"
-#include "strftime.hpp"
 
 namespace util {
 
