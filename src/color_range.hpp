@@ -17,7 +17,6 @@
 #ifndef COLOR_RANGE_H_INCLUDED
 #define COLOR_RANGE_H_INCLUDED
 
-#include "global.hpp"
 #include "color.hpp"
 
 #include <cstdint>

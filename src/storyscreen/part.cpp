@@ -17,7 +17,6 @@
  * Storyscreen parts and floating images representation.
  */
 
-#include "global.hpp"
 #include "log.hpp"
 #include "resources.hpp"
 #include "storyscreen/part.hpp"

@@ -14,8 +14,6 @@
 
 #include "carryover.hpp"
 
-#include "global.hpp"
-
 #include "config.hpp"
 #include "team.hpp"
 #include "units/unit.hpp"

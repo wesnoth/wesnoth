@@ -17,7 +17,6 @@
  * The structure that tracks WML event locations.
  */
 
-#include "global.hpp"
 #include "game_events/entity_location.hpp"
 
 #include "game_board.hpp"

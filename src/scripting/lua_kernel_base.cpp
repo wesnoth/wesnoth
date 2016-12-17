@@ -14,8 +14,6 @@
 
 #include "scripting/lua_kernel_base.hpp"
 
-#include "global.hpp"
-
 #include "exceptions.hpp"
 #include "game_config.hpp"
 #include "game_errors.hpp"

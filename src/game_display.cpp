@@ -17,7 +17,6 @@
  * During a game, show map & info-panels at top+right.
  */
 
-#include "global.hpp"
 #include "game_display.hpp"
 
 #include "gettext.hpp"

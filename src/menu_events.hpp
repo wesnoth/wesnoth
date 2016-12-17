@@ -16,7 +16,6 @@
 #ifndef MENU_EVENTS_H_INCLUDED
 #define MENU_EVENTS_H_INCLUDED
 
-#include "global.hpp"
 #include "chat_events.hpp"
 #include "floating_textbox.hpp"
 #include "units/map.hpp"

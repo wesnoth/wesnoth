@@ -14,8 +14,6 @@
 
 #include "terrain/type_data.hpp"
 
-#include "global.hpp"
-
 #include "terrain/terrain.hpp"
 
 #include <map>

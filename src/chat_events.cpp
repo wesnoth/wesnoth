@@ -1,5 +1,4 @@
 #include "chat_events.hpp"
-#include "global.hpp"
 
 #include "config_assign.hpp"
 #include "formatter.hpp"

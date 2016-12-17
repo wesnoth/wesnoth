@@ -13,7 +13,6 @@
 */
 
 #include "game_launcher.hpp"
-#include "global.hpp"                   // for false_, bool_
 #include "game_errors.hpp"
 
 #include "commandline_options.hpp"      // for commandline_options

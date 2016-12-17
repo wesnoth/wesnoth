@@ -227,7 +227,7 @@ void unit_preview_pane::print_attack_details(T attacks, tree_view_node& parent_n
 				subsection,
 				"item",
 				(formatter() << font::span_color(font::weapon_details_color) << pair.first << "</span>").str(),
-				(formatter() << "<big>" << _("Weapon special") << ": " << pair.first << "</big>" << '\n' << pair.second).str()
+				(formatter() << "<big>" << pair.first << "</big>" << "\n\n" << pair.second).str()
 			);
 		}
 	}
@@ -342,7 +342,7 @@ void unit_preview_pane::set_displayed_type(const unit_type& type)
 					header_node,
 					"item",
 					boost::get<0>(ab),
-					boost::get<1>(ab)
+					(formatter() << "<big>" << boost::get<0>(ab) << "</big>\n\n" << boost::get<1>(ab)).str()
 				);
 			}
 		}

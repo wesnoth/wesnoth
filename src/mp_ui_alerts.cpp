@@ -19,8 +19,6 @@
 
 #include "mp_ui_alerts.hpp"
 
-#include "global.hpp"
-
 #include "desktop/notifications.hpp"
 #include "formula/string_utils.hpp"
 #include "game_config.hpp"

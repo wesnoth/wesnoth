@@ -17,7 +17,6 @@
  * Storyscreen controller (wrapper interface).
  */
 
-#include "global.hpp"
 #include "variable.hpp"
 
 #include "storyscreen/interface.hpp"

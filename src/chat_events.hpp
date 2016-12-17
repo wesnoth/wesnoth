@@ -16,7 +16,6 @@
 #ifndef CHAT_EVENTS_H_INCLUDED
 #define CHAT_EVENTS_H_INCLUDED
 
-#include "global.hpp"
 class config;
 #include <ctime>
 #include <string>

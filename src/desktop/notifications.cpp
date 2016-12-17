@@ -13,7 +13,6 @@
 */
 
 #include "desktop/notifications.hpp"
-#include "global.hpp"
 
 #include "game_preferences.hpp"
 #include "gettext.hpp"

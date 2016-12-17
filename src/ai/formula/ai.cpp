@@ -18,7 +18,6 @@
  */
 
 #include "ai/formula/ai.hpp"
-#include "global.hpp"
 
 #include "ai/formula/callable_objects.hpp"   // for unit_callable, etc
 #include "chat_events.hpp"              // for chat_handler, etc

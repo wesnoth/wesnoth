@@ -12,8 +12,6 @@
    See the COPYING file for more details.
 */
 
-#include "global.hpp"
-
 #include "addon/manager_old.hpp"
 #include "build_info.hpp"
 #include "commandline_options.hpp"      // for commandline_options, etc

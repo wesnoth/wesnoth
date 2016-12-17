@@ -23,8 +23,6 @@
 
 #include "scripting/lua_common.hpp"
 
-#include "global.hpp"
-
 #include "config.hpp"
 #include "scripting/lua_unit.hpp"
 #include "tstring.hpp"                  // for t_string

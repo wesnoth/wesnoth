@@ -13,7 +13,6 @@
 */
 
 #include "commandline_options.hpp"
-#include "global.hpp"
 
 #include "config.hpp"
 #include "formatter.hpp"

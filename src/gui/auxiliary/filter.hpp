@@ -20,7 +20,6 @@
 #ifndef GUI_AUXILIARY_FILTER_HPP_INCLUDED
 #define GUI_AUXILIARY_FILTER_HPP_INCLUDED
 
-#include "global.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "lexical_cast.hpp"
 #include "serialization/string_utils.hpp"

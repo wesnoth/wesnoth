@@ -13,7 +13,6 @@
 */
 
 #include "ai/lua/aspect_advancements.hpp"
-#include "global.hpp"
 
 #include "log.hpp"                // for LOG_STREAM, logger, etc
 #include "lua/lauxlib.h"                // for luaL_ref, LUA_REFNIL

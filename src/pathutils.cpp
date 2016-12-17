@@ -17,8 +17,6 @@
  * Various pathfinding functions and utilities.
  */
 
-#include "global.hpp"
-
 #include "pathutils.hpp"
 
 #include "map/map.hpp"

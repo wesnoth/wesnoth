@@ -18,7 +18,6 @@
  * (Typically, handlers are defined by [event] tags.)
  */
 
-#include "global.hpp"
 #include "game_events/handlers.hpp"
 #include "game_events/manager.hpp"
 #include "game_events/manager_impl.hpp"

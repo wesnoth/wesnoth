@@ -19,7 +19,6 @@
  * Unicode support functions.
  */
 
-#include "global.hpp"
 #include "serialization/ucs4_convert_impl.hpp"
 #include "serialization/unicode_cast.hpp"
 #include "serialization/unicode.hpp"

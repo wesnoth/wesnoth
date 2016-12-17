@@ -18,7 +18,6 @@
  */
 
 #include "actions/undo.hpp"
-#include "global.hpp"
 
 #include "game_board.hpp"               // for game_board
 #include "game_display.hpp"          // for game_display

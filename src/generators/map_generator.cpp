@@ -17,7 +17,6 @@
  * Map-generator, with standalone testprogram.
  */
 
-#include "global.hpp"
 #include "generators/map_generator.hpp"
 
 #include "config.hpp"

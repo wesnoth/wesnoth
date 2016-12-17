@@ -13,7 +13,6 @@
 
 #pragma once
 
-#include "global.hpp"
 #include "play_controller.hpp"
 #include "replay.hpp"
 #include "mouse_handler_base.hpp" //events::command_disabler

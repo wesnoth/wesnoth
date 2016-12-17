@@ -12,8 +12,6 @@
    See the COPYING file for more details.
 */
 
-#include "global.hpp"
-
 #include "filesystem.hpp"
 #include "lexical_cast.hpp"
 #include "log.hpp"

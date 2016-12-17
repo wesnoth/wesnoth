@@ -16,7 +16,6 @@
 #define GUI_WIDGETS_HELPER_HPP_INCLUDED
 
 #include "font/text.hpp"
-#include "global.hpp"
 #include "color.hpp"
 
 #include <pango/pango-layout.h>

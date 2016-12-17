@@ -12,8 +12,6 @@
    See the COPYING file for more details.
 */
 
-#include "global.hpp"
-
 #include "game_events/manager.hpp"
 
 #include "game_events/handlers.hpp"

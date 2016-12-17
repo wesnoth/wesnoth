@@ -13,7 +13,6 @@
 */
 
 #include "desktop/dbus_notification.hpp"
-#include "global.hpp"
 
 #include "filesystem.hpp"
 #include "game_config.hpp"

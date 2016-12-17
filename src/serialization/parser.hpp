@@ -18,7 +18,6 @@
 #ifndef SERIALIZATION_PARSER_HPP_INCLUDED
 #define SERIALIZATION_PARSER_HPP_INCLUDED
 
-#include "global.hpp"
 #include "config.hpp"
 #include "configr_assign.hpp"
 

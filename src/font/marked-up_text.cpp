@@ -20,8 +20,6 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "global.hpp"
-
 #include "font/sdl_ttf.hpp"
 #include "gettext.hpp"
 #include "font/marked-up_text.hpp"

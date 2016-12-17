@@ -17,8 +17,6 @@
  * Maintain game variables + misc.
  */
 
-#include "global.hpp"
-
 #include "game_data.hpp"
 
 #include "log.hpp" //LOG_STREAM

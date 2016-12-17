@@ -12,8 +12,6 @@
    See the COPYING file for more details.
 */
 
-#include "global.hpp"
-
 #include "gettext.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"

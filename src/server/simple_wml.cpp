@@ -15,8 +15,6 @@
 #include <iostream>
 #include <sstream>
 
-#include "global.hpp"
-
 #include <boost/iostreams/copy.hpp>
 #include <boost/iostreams/filtering_stream.hpp>
 #include <boost/iostreams/filter/bzip2.hpp>

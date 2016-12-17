@@ -17,8 +17,6 @@
  * Calculate & analyze attacks of the default ai
  */
 
-#include "global.hpp"
-
 #include "ai/manager.hpp"
 #include "ai/default/contexts.hpp"
 

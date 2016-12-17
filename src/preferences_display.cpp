@@ -19,7 +19,6 @@
  *  Manage display-related preferences, e.g. screen-size, etc.
  */
 
-#include "global.hpp"
 #include "preferences_display.hpp"
 
 #include "display.hpp"

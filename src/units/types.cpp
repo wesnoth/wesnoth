@@ -17,8 +17,6 @@
  *  Handle unit-type specific attributes, animations, advancement.
  */
 
-#include "global.hpp"
-
 #include "units/types.hpp"
 
 #include "game_config.hpp"

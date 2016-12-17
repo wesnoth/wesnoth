@@ -19,7 +19,6 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "global.hpp"
 #include "wml_exception.hpp"
 
 #include "gettext.hpp"

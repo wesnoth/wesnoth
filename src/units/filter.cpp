@@ -14,7 +14,6 @@
 
 #include "units/filter.hpp"
 
-#include "global.hpp"
 #include "log.hpp"
 
 #include "config.hpp"

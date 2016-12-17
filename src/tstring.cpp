@@ -18,8 +18,6 @@
  *  Routines for translatable strings.
  */
 
-#include "global.hpp"
-
 #include <map>
 #include <vector>
 #include <mutex>

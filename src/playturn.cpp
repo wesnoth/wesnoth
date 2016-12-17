@@ -13,7 +13,6 @@
 */
 
 #include "playturn.hpp"
-#include "global.hpp"
 
 #include "actions/undo.hpp"             // for undo_list
 #include "chat_events.hpp"              // for chat_handler, etc

@@ -11,7 +11,6 @@
    See the COPYING file for more details.
 */
 
-#include "global.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
 #include "utils/name_generator_factory.hpp"

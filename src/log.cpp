@@ -19,8 +19,6 @@
  * See also the command line switches --logdomains and --log-@<level@>="domain".
  */
 
-#include "global.hpp"
-
 #include "log.hpp"
 
 #include <boost/date_time.hpp>

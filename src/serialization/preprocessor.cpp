@@ -18,8 +18,6 @@
  * WML preprocessor.
  */
 
-#include "global.hpp"
-
 #include "buffered_istream.hpp"
 #include "config.hpp"
 #include "filesystem.hpp"

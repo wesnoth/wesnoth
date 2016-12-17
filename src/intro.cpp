@@ -18,8 +18,6 @@
  * campaign.
  */
 
-#include "global.hpp"
-
 #include "intro.hpp"
 
 #include "video.hpp"

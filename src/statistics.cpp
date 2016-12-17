@@ -17,7 +17,6 @@
  *  Manage statistics: recruitments, recalls, kills, losses, etc.
  */
 
-#include "global.hpp"
 #include "game_board.hpp"
 #include "statistics.hpp"
 #include "log.hpp"

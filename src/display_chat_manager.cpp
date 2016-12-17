@@ -13,7 +13,6 @@
 */
 
 #include "display_chat_manager.hpp"
-#include "global.hpp"
 
 #include "desktop/notifications.hpp"
 #include "display.hpp"

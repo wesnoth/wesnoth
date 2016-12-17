@@ -22,8 +22,6 @@
 #ifndef FORMULA_DEBUGGER_FWD_HPP_INCLUDED
 #define FORMULA_DEBUGGER_FWD_HPP_INCLUDED
 
-#include "global.hpp"
-
 #include <memory>
 #include <string>
 

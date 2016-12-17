@@ -16,8 +16,6 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "global.hpp"
-
 #include "widgets/scrollarea.hpp"
 #include "sdl/rect.hpp"
 

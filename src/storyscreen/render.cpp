@@ -19,7 +19,6 @@
  * @todo Translate relevant parts to GUI2.
  */
 
-#include "global.hpp"
 #include <cassert>
 #include "log.hpp"
 #include "storyscreen/part.hpp"

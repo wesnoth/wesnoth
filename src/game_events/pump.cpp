@@ -18,7 +18,6 @@
  * as well as tracking the context for event firing.
  */
 
-#include "global.hpp"
 #include "game_events/pump.hpp"
 #include "game_events/conditional_wml.hpp"
 #include "game_events/handlers.hpp"

@@ -18,7 +18,6 @@
  */
 
 #include "units/unit.hpp"
-#include "global.hpp"
 
 #include "display_context.hpp"
 #include "formatter.hpp"

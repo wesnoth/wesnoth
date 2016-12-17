@@ -18,8 +18,6 @@
  * File-IO
  */
 
-#include "global.hpp"
-
 #include "filesystem.hpp"
 #include "serialization/unicode.hpp"
 

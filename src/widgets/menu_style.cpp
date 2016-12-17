@@ -15,8 +15,6 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "global.hpp"
-
 #include "widgets/menu.hpp"
 
 #include "font/sdl_ttf.hpp"

@@ -28,8 +28,6 @@
 
 #include "ai/composite/component.hpp"
 
-#include "global.hpp"
-
 #include "ai/default/contexts.hpp"
 #include "ai/game_info.hpp"
 #include "config.hpp"

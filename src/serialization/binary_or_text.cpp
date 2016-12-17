@@ -18,8 +18,6 @@
  * Read/Write file in binary (compressed) or text-format (uncompressed).
  */
 
-#include "global.hpp"
-
 #include "serialization/binary_or_text.hpp"
 #include "config.hpp"
 #include "log.hpp"

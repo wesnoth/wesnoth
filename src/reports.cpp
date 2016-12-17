@@ -12,8 +12,6 @@
    See the COPYING file for more details.
 */
 
-#include "global.hpp"
-
 #include "actions/attack.hpp"
 #include "attack_prediction.hpp"
 //#include "editor/editor_controller.hpp"

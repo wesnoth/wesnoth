@@ -19,7 +19,6 @@
 
 #define GETTEXT_DOMAIN "wesnoth-help"
 
-#include "global.hpp"
 #include "help/help.hpp"
 
 #include "config.hpp"                   // for config, etc

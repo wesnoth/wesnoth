@@ -18,7 +18,6 @@
  */
 
 #include "ai/registry.hpp"
-#include "global.hpp"
 
 #include "config.hpp"             // for config, operator<<
 #include "terrain/filter.hpp"  // for terrain_filter

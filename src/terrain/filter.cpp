@@ -14,8 +14,6 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "global.hpp"
-
 #include "config.hpp"
 #include "display_context.hpp"
 #include "filter_context.hpp"

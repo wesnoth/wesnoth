@@ -17,8 +17,6 @@
  *  Get and set user-preferences.
  */
 
-#include "global.hpp"
-
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "config.hpp"

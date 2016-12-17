@@ -13,7 +13,6 @@
 
 #pragma once
 
-#include "global.hpp"
 #include "config.hpp"
 #include "events.hpp"
 #include "generic_event.hpp"

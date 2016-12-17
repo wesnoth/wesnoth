@@ -14,8 +14,6 @@
 #ifndef GAME_LAUNCHER_H_INCLUDED
 #define GAME_LAUNCHER_H_INCLUDED
 
-#include "global.hpp"
-
 #include "editor/editor_main.hpp"       // for EXIT_STATUS
 #include "events.hpp"                   // for event_context
 #include "font/font_config.hpp"         // for manager

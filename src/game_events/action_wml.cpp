@@ -18,7 +18,6 @@
  * excluding conditional action WML.
  */
 
-#include "global.hpp"
 #include "game_events/action_wml.hpp"
 #include "game_events/conditional_wml.hpp"
 #include "game_events/manager.hpp"

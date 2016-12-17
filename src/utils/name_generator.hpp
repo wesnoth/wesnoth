@@ -15,7 +15,6 @@
 #ifndef NAME_GENERATOR_HPP_INCLUDED
 #define NAME_GENERATOR_HPP_INCLUDED
 
-#include "global.hpp"
 #include <string>
 #include <map>
 #include <exception>

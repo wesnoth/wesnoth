@@ -17,8 +17,6 @@
  * Templates related to animations.
  */
 
-#include "global.hpp"
-
 #include <climits>
 
 #include <SDL.h>

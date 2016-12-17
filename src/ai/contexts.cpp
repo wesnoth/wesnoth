@@ -20,8 +20,6 @@
 
 #include "ai/contexts.hpp"
 
-#include "global.hpp"
-
 #include "actions/attack.hpp"
 
 #include "ai/actions.hpp"                  // for actions

@@ -14,8 +14,6 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "global.hpp"
-
 #include "font/text.hpp"
 #include "widgets/label.hpp"
 #include "font/marked-up_text.hpp"

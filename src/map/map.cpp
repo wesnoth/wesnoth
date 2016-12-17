@@ -19,8 +19,6 @@
 
 #include "map/map.hpp"
 
-#include "global.hpp"
-
 #include "config.hpp"
 #include "formula/string_utils.hpp"
 #include "log.hpp"

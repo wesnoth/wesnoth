@@ -14,8 +14,6 @@
 
 /** @file */
 
-#include "global.hpp"
-
 #include "font/sdl_ttf.hpp"
 #include "gettext.hpp"
 #include "hotkey/hotkey_command.hpp"

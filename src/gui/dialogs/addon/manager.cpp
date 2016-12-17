@@ -14,7 +14,6 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "global.hpp"
 #include "gui/dialogs/addon/manager.hpp"
 
 #include "addon/info.hpp"

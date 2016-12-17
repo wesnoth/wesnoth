@@ -14,8 +14,6 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "global.hpp"
-
 #include "widgets/menu.hpp"
 
 #include "game_config.hpp"

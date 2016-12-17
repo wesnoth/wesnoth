@@ -12,7 +12,6 @@
    See the COPYING file for more details.
 */
 
-#include "global.hpp"
 #include "key.hpp"
 
 #include <SDL_keyboard.h>

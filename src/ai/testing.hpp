@@ -20,8 +20,6 @@
 #ifndef AI_TESTING_HPP_INCLUDED
 #define AI_TESTING_HPP_INCLUDED
 
-#include "global.hpp"
-
 #include <vector>
 
 class ai_testing{

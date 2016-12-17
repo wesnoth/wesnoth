@@ -23,8 +23,6 @@
 
 #include "ai/game_info.hpp"                // for move_map, aspect_type, etc
 
-#include "global.hpp"
-
 #include "config.hpp"                // for config
 #include "game_errors.hpp"
 #include "generic_event.hpp"         // for observer

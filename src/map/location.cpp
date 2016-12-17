@@ -17,8 +17,6 @@
  * Routines related to game-maps, terrain, locations, directions. etc.
  */
 
-#include "global.hpp"
-
 #include <cassert>
 
 #include "map/location.hpp"

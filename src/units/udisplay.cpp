@@ -14,7 +14,6 @@
 
 /** @file */
 
-#include "global.hpp"
 #include "units/udisplay.hpp"
 
 #include "fake_unit_manager.hpp"

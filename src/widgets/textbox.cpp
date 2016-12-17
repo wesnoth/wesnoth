@@ -14,8 +14,6 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "global.hpp"
-
 #include "widgets/textbox.hpp"
 
 #include "desktop/clipboard.hpp"

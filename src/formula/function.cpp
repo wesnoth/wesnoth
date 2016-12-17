@@ -12,9 +12,6 @@
    See the COPYING file for more details.
 */
 
-#include "global.hpp"
-
-
 #include "formula/callable_objects.hpp"
 #include "formula/debugger.hpp"
 #include "formula/function.hpp"

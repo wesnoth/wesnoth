@@ -15,8 +15,6 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "global.hpp"
-
 #include "widgets/widget.hpp"
 #include "video.hpp"
 #include "sdl/rect.hpp"

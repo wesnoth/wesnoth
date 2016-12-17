@@ -12,8 +12,6 @@
    See the COPYING file for more details.
 */
 
-#include "global.hpp"
-
 #include "server/player.hpp"
 #include "lexical_cast.hpp"
 #include "serialization/string_utils.hpp"

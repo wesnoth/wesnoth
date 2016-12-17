@@ -36,8 +36,6 @@
 #ifndef CONTROLLER_BASE_H_INCLUDED
 #define CONTROLLER_BASE_H_INCLUDED
 
-#include "global.hpp"
-
 #include "events.hpp"
 #include "hotkey/hotkey_command.hpp"
 #include "joystick.hpp"

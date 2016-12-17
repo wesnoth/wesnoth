@@ -17,8 +17,6 @@
  *  Generate race-specific unit-names.
  */
 
-#include "global.hpp"
-
 #include "units/race.hpp"
 
 #include "log.hpp"

@@ -12,8 +12,6 @@
    See the COPYING file for more details.
 */
 
-#include "global.hpp"
-
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "generators/default_map_generator.hpp"

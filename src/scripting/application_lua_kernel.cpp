@@ -25,8 +25,6 @@
 
 #include "scripting/application_lua_kernel.hpp"
 
-#include "global.hpp"
-
 #include "config.hpp"
 #include "game_errors.hpp"
 #include "log.hpp"

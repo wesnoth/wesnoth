@@ -12,8 +12,6 @@
    See the COPYING file for more details.
 */
 
-#include "global.hpp"
-
 #include <cassert>
 #include <cmath>
 #include <iostream>

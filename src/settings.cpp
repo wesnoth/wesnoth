@@ -17,8 +17,6 @@
  *  General settings and defaults for scenarios.
  */
 
-#include "global.hpp"
-
 #include "lexical_cast.hpp"
 #include "settings.hpp"
 

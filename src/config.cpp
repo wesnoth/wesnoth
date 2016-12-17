@@ -20,8 +20,6 @@
 
 #include "config.hpp"
 
-#include "global.hpp"
-
 #include "lexical_cast.hpp"
 #include "log.hpp"
 #include "utils/const_clone.hpp"

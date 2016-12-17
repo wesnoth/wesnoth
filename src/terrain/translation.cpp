@@ -19,7 +19,6 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "global.hpp"
 #include "gettext.hpp"
 #include "lexical_cast.hpp"
 #include "log.hpp"

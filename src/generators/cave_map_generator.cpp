@@ -17,8 +17,6 @@
  * Map-generator for caves.
  */
 
-#include "global.hpp"
-
 #include "generators/cave_map_generator.hpp"
 #include "config_assign.hpp"
 #include "log.hpp"

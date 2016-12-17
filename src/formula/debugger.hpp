@@ -21,8 +21,6 @@
 #ifndef FORMULA_DEBUGGER_HPP_INCLUDED
 #define FORMULA_DEBUGGER_HPP_INCLUDED
 
-#include "global.hpp"
-
 #include "formula/variant.hpp"
 #include "formula/debugger_fwd.hpp"
 #include <deque>

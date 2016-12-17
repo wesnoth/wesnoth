@@ -16,8 +16,6 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "global.hpp"
-
 #include <algorithm>
 #include <boost/dynamic_bitset.hpp>
 

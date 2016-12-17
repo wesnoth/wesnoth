@@ -14,7 +14,6 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "global.hpp"
 #include "minimap.hpp"
 
 #include "game_board.hpp"

@@ -14,8 +14,6 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "global.hpp"
-
 #include "editor/palette/tristate_button.hpp"
 
 #include "font/constants.hpp"

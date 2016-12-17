@@ -15,8 +15,6 @@
 #ifndef FORMAT_TIME_SUMMARY_H_INCLUDED
 #define FORMAT_TIME_SUMMARY_H_INCLUDED
 
-#include "global.hpp"
-
 #include <ctime>
 #include <string>
 

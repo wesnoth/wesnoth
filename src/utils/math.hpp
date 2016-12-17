@@ -20,8 +20,6 @@
 #ifndef UTIL_H_INCLUDED
 #define UTIL_H_INCLUDED
 
-#include "global.hpp"
-
 #include <cmath>
 #include <cstddef>
 #include <cstdint>

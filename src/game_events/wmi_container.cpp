@@ -17,7 +17,6 @@
  * Definitions for a container for wml_menu_item.
  */
 
-#include "global.hpp"
 #include "game_events/wmi_container.hpp"
 #include "game_events/handlers.hpp"
 #include "game_events/menu_item.hpp"

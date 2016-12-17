@@ -12,8 +12,6 @@
    See the COPYING file for more details.
 */
 
-#include "global.hpp"
-
 #include "game_data.hpp"
 #include "log.hpp"
 #include "persist_context.hpp"

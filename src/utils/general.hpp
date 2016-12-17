@@ -14,6 +14,8 @@
 #ifndef GENERAL_UTILS_INCLUDED
 #define GENERAL_UTILS_INCLUDED
 
+#include "global.hpp"
+
 #include <algorithm>
 #include <cctype>
 

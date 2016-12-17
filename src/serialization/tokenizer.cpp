@@ -15,8 +15,6 @@
 
 /** @file */
 
-#include "global.hpp"
-
 #include "wesconfig.h"
 #include "serialization/tokenizer.hpp"
 

@@ -15,7 +15,6 @@
 
 
 #include "mouse_events.hpp"
-#include "global.hpp"
 
 #include "actions/attack.hpp"           // for battle_context, etc
 #include "actions/move.hpp"           // for move_and_record

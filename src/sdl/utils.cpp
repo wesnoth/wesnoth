@@ -17,8 +17,6 @@
  *  Support-routines for the SDL-graphics-library.
  */
 
-#include "global.hpp"
-
 #include "sdl/utils.hpp"
 #include "sdl/rect.hpp"
 #include "color.hpp"

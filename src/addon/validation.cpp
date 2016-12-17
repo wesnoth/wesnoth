@@ -13,7 +13,6 @@
    See the COPYING file for more details.
 */
 
-#include "global.hpp"
 #include "addon/validation.hpp"
 #include "config.hpp"
 

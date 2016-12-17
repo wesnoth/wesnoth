@@ -17,8 +17,6 @@
 #ifndef ATTACK_PREDICTION_H_INCLUDED
 #define ATTACK_PREDICTION_H_INCLUDED
 
-#include "global.hpp"
-
 #include <vector>
 
 #include <cstring>

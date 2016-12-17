@@ -23,7 +23,6 @@
 #define AI_MANAGER_HPP_INCLUDED
 
 #include "config.hpp"                // for config, etc
-#include "global.hpp"
 #include "ai/game_info.hpp"                // for side_number, ai_ptr
 
 #include <deque>                        // for deque

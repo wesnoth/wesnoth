@@ -14,8 +14,6 @@
 
 /** @file */
 
-#include "global.hpp"
-
 #include "desktop/clipboard.hpp"
 #include "serialization/unicode.hpp"
 #include <algorithm>

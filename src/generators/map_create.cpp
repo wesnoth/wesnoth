@@ -12,7 +12,6 @@
    See the COPYING file for more details.
 */
 
-#include "global.hpp"
 #include "generators/map_create.hpp"
 
 #include "generators/cave_map_generator.hpp"

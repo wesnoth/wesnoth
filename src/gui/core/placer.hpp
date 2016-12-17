@@ -24,7 +24,6 @@
 #ifndef GUI_AUXILIARY_PLACER_HPP_INCLUDED
 #define GUI_AUXILIARY_PLACER_HPP_INCLUDED
 
-#include "global.hpp"
 #include "utils/make_enum.hpp"
 
 namespace gui2

@@ -17,8 +17,6 @@
 #ifndef TIME_OF_DAY_HPP_INCLUDED
 #define TIME_OF_DAY_HPP_INCLUDED
 
-#include "global.hpp"
-
 #include "tstring.hpp"
 #include "utils/general.hpp"
 

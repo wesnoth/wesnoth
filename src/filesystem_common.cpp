@@ -1,6 +1,3 @@
-
-#include "global.hpp"
-
 #include <fstream>
 
 #include "filesystem.hpp"

@@ -18,8 +18,6 @@
  *  Controls setup, play, (auto)save and replay of campaigns.
  */
 
-#include "global.hpp"
-
 #include "game_initialization/playcampaign.hpp"
 
 #include "carryover.hpp"

@@ -15,8 +15,6 @@
 #ifndef GENERIC_EVENT_HPP_INCLUDED
 #define GENERIC_EVENT_HPP_INCLUDED
 
-#include "global.hpp"
-
 #include <string>
 #include <vector>
 

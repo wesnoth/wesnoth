@@ -19,8 +19,6 @@
  *  Manage WML-variables.
  */
 
-#include "global.hpp"
-
 #include "variable.hpp"
 
 #include "config_assign.hpp"

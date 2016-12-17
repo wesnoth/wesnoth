@@ -13,7 +13,6 @@
    See the COPYING file for more details.
 */
 
-#include "global.hpp"
 #include "floating_textbox.hpp"
 
 #include "display_chat_manager.hpp"

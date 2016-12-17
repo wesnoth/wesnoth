@@ -15,8 +15,6 @@
 #ifndef GAME_BOARD_HPP_INCLUDED
 #define GAME_BOARD_HPP_INCLUDED
 
-#include "global.hpp"
-
 #include "display_context.hpp"
 #include "team.hpp"
 #include "terrain/type_data.hpp"

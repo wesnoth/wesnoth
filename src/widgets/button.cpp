@@ -16,8 +16,6 @@
 
 #include "widgets/button.hpp"
 
-#include "global.hpp"
-
 #include "filesystem.hpp"
 #include "font/sdl_ttf.hpp"
 #include "font/text.hpp"

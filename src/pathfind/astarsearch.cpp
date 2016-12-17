@@ -13,8 +13,6 @@
    See the COPYING file for more details.
 */
 
-#include "global.hpp"
-
 #include "log.hpp"
 #include "map/map.hpp"
 #include "pathfind/pathfind.hpp"

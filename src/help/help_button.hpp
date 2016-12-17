@@ -14,7 +14,6 @@
 
 #ifndef HELP_BUTTON_HPP
 #define HELP_BUTTON_HPP
-#include "global.hpp"
 #include "hotkey/command_executor.hpp"
 #include "construct_dialog.hpp"
 

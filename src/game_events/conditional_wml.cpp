@@ -17,7 +17,6 @@
  * Implementations of conditional action WML tags.
  */
 
-#include "global.hpp"
 #include "game_events/conditional_wml.hpp"
 
 #include "config.hpp"

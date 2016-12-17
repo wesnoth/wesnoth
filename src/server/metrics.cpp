@@ -17,8 +17,6 @@
  * Various server-statistics.
  */
 
-#include "global.hpp"
-
 #include "server/metrics.hpp"
 
 #include <algorithm>

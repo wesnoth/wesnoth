@@ -11,8 +11,6 @@
    See the COPYING file for more details.
 */
 
-#include "global.hpp"
-
 #include "replay_controller.hpp"
 
 #include "game_config_manager.hpp"

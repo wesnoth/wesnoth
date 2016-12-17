@@ -17,8 +17,6 @@
  *  Handle unit-type specific attributes, animations, advancement.
  */
 
-#include "global.hpp"
-
 #include "units/attack_type.hpp"
 #include "formula/callable_objects.hpp"
 #include "formula/formula.hpp"

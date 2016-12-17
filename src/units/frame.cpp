@@ -14,8 +14,6 @@
 
 /** @file */
 
-#include "global.hpp"
-
 #include "game_display.hpp"
 #include "log.hpp"
 #include "color.hpp"

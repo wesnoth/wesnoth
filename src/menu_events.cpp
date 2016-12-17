@@ -19,8 +19,6 @@
  * E.g. Unitlist, status_table, save_game, save_map, chat, show_help, etc.
  */
 
-#include "global.hpp"
-
 #include "actions/attack.hpp"
 #include "actions/create.hpp"
 #include "actions/move.hpp"

@@ -12,8 +12,6 @@
    See the COPYING file for more details.
    */
 
-#include "global.hpp"
-
 #include "units/animation.hpp"
 
 #include "filter_context.hpp"

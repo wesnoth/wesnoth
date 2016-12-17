@@ -19,7 +19,6 @@
  *  See http://www.wesnoth.org/wiki/ReplayWML for more info.
  */
 
-#include "global.hpp"
 #include "replay.hpp"
 
 #include "actions/undo.hpp"

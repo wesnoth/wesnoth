@@ -12,8 +12,6 @@
    See the COPYING file for more details.
 */
 
-#include "global.hpp"
-
 #include "filesystem.hpp"
 #include "game_config.hpp" // game_config::observer_team_name
 #include "lexical_cast.hpp"

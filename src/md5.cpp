@@ -47,8 +47,6 @@ documentation and/or software.
 #include <cstring> // Edit: needed for strlen() (strings.h should
                     // include it but apparently does not for me)
 
-#include "global.hpp"
-
 // MD5 simple initialization method
 
 MD5::MD5()

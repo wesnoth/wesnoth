@@ -18,7 +18,6 @@
 class config;
 
 #include "exceptions.hpp"
-#include "global.hpp"
 
 #include <string>
 

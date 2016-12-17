@@ -16,7 +16,6 @@
 
 #include "actions/undo.hpp"
 #include "ai/manager.hpp"
-#include "global.hpp"
 #include "config.hpp"
 #include "config_assign.hpp"
 #include "game_classification.hpp"

@@ -19,8 +19,6 @@
 
 #include "server/server.hpp"
 
-#include "global.hpp"
-
 #include "config.hpp"
 #include "game_config.hpp"
 #include "lexical_cast.hpp"
