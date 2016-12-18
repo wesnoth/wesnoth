@@ -21,6 +21,7 @@
 #include "color.hpp"
 
 #include <boost/math/constants/constants.hpp>
+#include <cctype>
 using namespace boost::math::constants;
 
 #ifdef HAVE_VISUAL_LEAK_DETECTOR
@@ -527,7 +528,7 @@ public:
 private:
 	variant execute(const formula_callable& variables, formula_debugger* fdb) const {
 		std::string str = args()[0]->evaluate(variables, fdb).as_string();
-		std::transform(str.begin(), str.end(), str.begin(), std::toupper);
+		std::transform(str.begin(), str.end(), str.begin(), static_cast<int(*)(int)>(std::toupper));
 		return variant(str);
 	}
 };
@@ -540,7 +541,7 @@ public:
 private:
 	variant execute(const formula_callable& variables, formula_debugger* fdb) const {
 		std::string str = args()[0]->evaluate(variables, fdb).as_string();
-		std::transform(str.begin(), str.end(), str.begin(), std::tolower);
+		std::transform(str.begin(), str.end(), str.begin(), static_cast<int(*)(int)>(std::tolower));
 		return variant(str);
 	}
 };
