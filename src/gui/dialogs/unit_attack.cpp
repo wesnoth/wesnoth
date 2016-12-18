@@ -20,6 +20,7 @@
 
 #include "font/text_formatting.hpp"
 #include "gui/auxiliary/find_widget.hpp"
+#include "gui/dialogs/attack_predictions.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/image.hpp"
@@ -90,9 +91,11 @@ unit_attack::unit_attack(const unit_map::iterator& attacker_itor,
 
 void unit_attack::damage_calc_callback(window& window)
 {
-	const size_t index
-		= find_widget<listbox>(&window, "weapon_list", false).get_selected_row();
+	const size_t index = find_widget<listbox>(&window, "weapon_list", false).get_selected_row();
 
+	attack_predictions::display(weapons_[index], *attacker_itor_, *defender_itor_, window.video());
+
+	// TODO: remove when the GUI2 dialog is complete
 	battle_prediction_pane battle_pane(weapons_[index], (*attacker_itor_).get_location(), (*defender_itor_).get_location());
 	std::vector<gui::preview_pane*> preview_panes = {&battle_pane};
 

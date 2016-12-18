@@ -33,6 +33,7 @@
 #include "gui/dialogs/addon/connect.hpp"
 #include "gui/dialogs/addon/manager.hpp"
 #include "gui/dialogs/advanced_graphics_options.hpp"
+#include "gui/dialogs/attack_predictions.hpp"
 #include "gui/dialogs/campaign_difficulty.hpp"
 #include "gui/dialogs/campaign_selection.hpp"
 #include "gui/dialogs/campaign_settings.hpp"
@@ -388,6 +389,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<addon_connect>();
 	//test<addon_manager>();
 	test<advanced_graphics_options>();
+	//test<attack_predictions>();
 	test<campaign_difficulty>();
 	test<campaign_selection>();
 	test<campaign_settings>();
@@ -502,6 +504,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 		"mp_staging",
 		"mp_join_game",
 		"terrain_layers",
+		"attack_predictions",
 	};
 	std::sort(list.begin(), list.end());
 	std::sort(omitted.begin(), omitted.end());
