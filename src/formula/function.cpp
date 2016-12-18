@@ -519,6 +519,32 @@ private:
 		}
 };
 
+class str_upper_function : public function_expression {
+public:
+	explicit str_upper_function(const args_list& args)
+		: function_expression("str_upper", args, 1, 1)
+	{}
+private:
+	variant execute(const formula_callable& variables, formula_debugger* fdb) const {
+		std::string str = args()[0]->evaluate(variables, fdb).as_string();
+		std::transform(str.begin(), str.end(), str.begin(), std::toupper);
+		return variant(str);
+	}
+};
+
+class str_lower_function : public function_expression {
+public:
+	explicit str_lower_function(const args_list& args)
+		: function_expression("str_lower", args, 1, 1)
+	{}
+private:
+	variant execute(const formula_callable& variables, formula_debugger* fdb) const {
+		std::string str = args()[0]->evaluate(variables, fdb).as_string();
+		std::transform(str.begin(), str.end(), str.begin(), std::tolower);
+		return variant(str);
+	}
+};
+
 class sin_function : public function_expression {
 public:
 	explicit sin_function(const args_list& args)
