@@ -138,22 +138,22 @@ point container_base::calculate_best_size() const
 
 	point result(grid_.get_best_size());
 	const point border_size = border_space();
-	const point minimum_size = get_config_minimum_size();
+	const point default_size = get_config_default_size();
 
 	// If the best size has a value of 0 it's means no limit so don't
 	// add the border_size might set a very small best size.
 	if(result.x) {
 		result.x += border_size.x;
 	}
-	if(minimum_size.x != 0 && result.x < minimum_size.x) {
-		result.x = minimum_size.x;
+	if(default_size.x != 0 && result.x < default_size.x) {
+		result.x = default_size.x;
 	}
 
 	if(result.y) {
 		result.y += border_size.y;
 	}
-	if(minimum_size.y != 0 && result.y < minimum_size.y) {
-		result.y = minimum_size.y;
+	if(default_size.y != 0 && result.y < default_size.y) {
+		result.y = default_size.y;
 	}
 
 
