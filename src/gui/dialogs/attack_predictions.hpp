@@ -20,9 +20,9 @@
 #include "units/map.hpp"
 
 class  battle_context;
-class  battle_context_unit_stats;
+struct battle_context_unit_stats;
 class  CVideo;
-class  map_location;
+struct map_location;
 struct combatant;
 
 namespace gui2
