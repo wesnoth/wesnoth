@@ -68,7 +68,7 @@ static std::string get_probability_string(const double prob)
 
 void attack_predictions::set_data(window& window, const combatant_data& attacker, const combatant_data& defender)
 {
-	const std::string widget_id_prefix = attacker.stats.is_attacker ? "attacker_" : "defender_";
+	const std::string widget_id_prefix = attacker.stats_.is_attacker ? "attacker_" : "defender_";
 
 	const auto set_label_helper = [&](const std::string& id, const std::string& value) {
 		find_widget<label>(&window, widget_id_prefix + id, false).set_label(value);
@@ -77,14 +77,14 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 	std::stringstream ss;
 
 	// With a weapon.
-	if(attacker.stats.weapon) {
+	if(attacker.stats_.weapon) {
 		// Set specials context (for safety, it should not have changed normally).
-		const attack_type* weapon = attacker.stats.weapon;
-		weapon->set_specials_context(attacker.unit.get_location(), defender.unit.get_location(), attacker.stats.is_attacker, defender.stats.weapon);
+		const attack_type* weapon = attacker.stats_.weapon;
+		weapon->set_specials_context(attacker.unit_.get_location(), defender.unit_.get_location(), attacker.stats_.is_attacker, defender.stats_.weapon);
 
 		// Get damage modifiers.
 		unit_ability_list dmg_specials = weapon->get_specials("damage");
-		unit_abilities::effect dmg_effect(dmg_specials, weapon->damage(), attacker.stats.backstab_pos);
+		unit_abilities::effect dmg_effect(dmg_specials, weapon->damage(), attacker.stats_.backstab_pos);
 
 		// Get the SET damage modifier, if any.
 		const unit_abilities::individual_effect* set_dmg_effect = &*(
@@ -133,7 +133,7 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 
 #if 0
 		// Time of day modifier.
-		int tod_modifier = combat_modifier(resources::gameboard->units(), resources::gameboard->map(), attacker.unit.get_location(), u.alignment(), u.is_fearless());
+		int tod_modifier = combat_modifier(resources::gameboard->units(), resources::gameboard->map(), attacker.unit_.get_location(), u.alignment(), u.is_fearless());
 		if(tod_modifier != 0) {
 			left_strings.push_back(_("Time of day"));
 			str.str("");
@@ -143,7 +143,7 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 
 		// Leadership bonus.
 		int leadership_bonus = 0;
-		under_leadership(resources::gameboard->units(), attacker.unit.get_location(), &leadership_bonus);
+		under_leadership(resources::gameboard->units(), attacker.unit_.get_location(), &leadership_bonus);
 		if(leadership_bonus != 0) {
 			left_strings.push_back(_("Leadership"));
 			str.str("");
@@ -155,7 +155,7 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 		ss.str("");
 
 		// Resistance modifier.
-		const int resistance_modifier = defender.unit.damage_from(*weapon, !attacker.stats.is_attacker, defender.unit.get_location());
+		const int resistance_modifier = defender.unit_.damage_from(*weapon, !attacker.stats_.is_attacker, defender.unit_.get_location());
 		if(resistance_modifier != 100) {
 			ss << string_table["type_" + weapon->type()] << ": ";
 			ss << font::unicode_multiplication_sign << (resistance_modifier / 100) << "." << ((resistance_modifier % 100) / 10);
@@ -165,7 +165,7 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 
 		// Slowed penalty.
 #if 0
-		if(attacker.stats.is_slowed) {
+		if(attacker.stats_.is_slowed) {
 			left_strings.push_back(_("Slowed"));
 			right_strings.push_back("/ 2");
 		}
@@ -177,17 +177,17 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 		const int base_damage = weapon->damage();
 
 		color_t dmg_color = font::weapon_color;
-		if(attacker.stats.damage > base_damage) {
+		if(attacker.stats_.damage > base_damage) {
 			dmg_color = font::good_dmg_color;
-		} else if(attacker.stats.damage < base_damage) {
+		} else if(attacker.stats_.damage < base_damage) {
 			dmg_color = font::bad_dmg_color;
 		}
 
-		const color_t cth_color = game_config::red_to_green(attacker.stats.chance_to_hit);
+		const color_t cth_color = game_config::red_to_green(attacker.stats_.chance_to_hit);
 
-		ss << font::span_color(dmg_color) << attacker.stats.damage << "</span>"
-		   << font::weapon_numbers_sep    << attacker.stats.num_blows << " ("
-		   << font::span_color(cth_color) << attacker.stats.chance_to_hit << "%</span>)";
+		ss << font::span_color(dmg_color) << attacker.stats_.damage << "</span>"
+		   << font::weapon_numbers_sep    << attacker.stats_.num_blows << " ("
+		   << font::span_color(cth_color) << attacker.stats_.chance_to_hit << "%</span>)";
 
 		set_label_helper("damage", ss.str());
 	} else {
@@ -195,10 +195,10 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 		set_label_helper("attack", _("No usable weapon"));
 	}
 
-	const color_t ndc_color = game_config::red_to_green(attacker.combatant.untouched * 10);
+	const color_t ndc_color = game_config::red_to_green(attacker.combatant_.untouched * 10);
 
 	// Unscathed probability.
-	set_label_helper("no_damage_chance", (formatter() << font::span_color(ndc_color) << get_probability_string(attacker.combatant.untouched) << "</span>").str());
+	set_label_helper("no_damage_chance", (formatter() << font::span_color(ndc_color) << get_probability_string(attacker.combatant_.untouched) << "</span>").str());
 }
 
 }

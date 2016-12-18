@@ -50,14 +50,14 @@ private:
 	struct combatant_data
 	{
 		combatant_data(const unit& unit, const combatant& combatant, const battle_context_unit_stats& stats)
-			: stats(stats)
-			, combatant(combatant)
-			, unit(unit)
+			: stats_(stats)
+			, combatant_(combatant)
+			, unit_(unit)
 		{}
 
-		const battle_context_unit_stats& stats;
-		const combatant& combatant;
-		const unit& unit;
+		const battle_context_unit_stats& stats_;
+		const combatant& combatant_;
+		const unit& unit_;
 	};
 
 	void set_data(window& window, const combatant_data& attacker, const combatant_data& defender);
