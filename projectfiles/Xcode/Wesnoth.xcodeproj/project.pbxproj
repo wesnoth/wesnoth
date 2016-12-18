@@ -2469,6 +2469,9 @@
 		EC4E3B2119B2D8880049CBD7 /* simulated_actions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = simulated_actions.cpp; sourceTree = "<group>"; };
 		EC50126E1E06151800C4DFC6 /* attack_predictions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = attack_predictions.cpp; sourceTree = "<group>"; };
 		EC50126F1E06151800C4DFC6 /* attack_predictions.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = attack_predictions.hpp; sourceTree = "<group>"; };
+		EC5012711E06185600C4DFC6 /* general.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = general.hpp; sourceTree = "<group>"; };
+		EC5012721E06185600C4DFC6 /* io.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = io.hpp; sourceTree = "<group>"; };
+		EC5012731E06185600C4DFC6 /* math.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = math.hpp; sourceTree = "<group>"; };
 		EC51DB7618F8BFA4004621D9 /* playturn_network_adapter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = playturn_network_adapter.cpp; sourceTree = "<group>"; };
 		EC51DB7718F8BFA4004621D9 /* playturn_network_adapter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = playturn_network_adapter.hpp; sourceTree = "<group>"; };
 		EC53B04D1B23BB0E002F758F /* make_enum.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = make_enum.cpp; sourceTree = "<group>"; };
@@ -3649,12 +3652,15 @@
 				91C55DA21CC078820040012E /* context_free_grammar_generator.cpp */,
 				91C55DA31CC078820040012E /* context_free_grammar_generator.hpp */,
 				918056BE1CB1E4C0001A7F35 /* functional.hpp */,
+				EC5012711E06185600C4DFC6 /* general.hpp */,
+				EC5012721E06185600C4DFC6 /* io.hpp */,
 				911F471B1CAE5A7E00F47035 /* iterable_pair.hpp */,
 				91EF6BFF1C9E22E400E2A733 /* iterator.hpp */,
 				EC53B04D1B23BB0E002F758F /* make_enum.cpp */,
 				91B621931B76720B00B00E0F /* make_enum.hpp */,
 				91FBBAD91CB6D1B700470BFE /* markov_generator.cpp */,
 				91FBBADA1CB6D1B700470BFE /* markov_generator.hpp */,
+				EC5012731E06185600C4DFC6 /* math.hpp */,
 				91C55DA11CC078780040012E /* name_generator.hpp */,
 				913D26751D3C9697002FF3AB /* name_generator_factory.cpp */,
 				913D26761D3C9697002FF3AB /* name_generator_factory.hpp */,
