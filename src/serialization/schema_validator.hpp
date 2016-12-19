@@ -16,7 +16,7 @@
 #define SCHEMA_VALIDATOR_HPP
 
 #include "serialization/validator.hpp"
-#include "tools/schema/tag.hpp"
+#include "serialization/tag.hpp"
 
 #include "config_cache.hpp"
 #include "serialization/parser.hpp"

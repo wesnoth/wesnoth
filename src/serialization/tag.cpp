@@ -17,7 +17,7 @@
  * Implementation of tag.hpp.
  */
 
-#include "tools/schema/tag.hpp"
+#include "serialization/tag.hpp"
 
 #include "config.hpp"
 
