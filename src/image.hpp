@@ -136,7 +136,11 @@ namespace image {
 	///light_string store colors info of central and adjacent hexes.
 	///The structure is one or several 4 chars blocks (L,R,G,B)
 	///where RGB is the color and L is the lightmap to use:
-	///(-1:none, 0-5:transition in each direction, 6:full hex)
+    ///   -1: none
+    ///    0: full hex
+    ///  1-6: concave corners
+    /// 7-12: convex half-corners 1
+    ///13-19: convex half-corners 2
 	typedef std::basic_string<signed char> light_string;
 	///return light_string of one light operation(see above)
 	light_string get_light_string(int op, int r, int g, int b);

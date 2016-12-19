@@ -1110,20 +1110,90 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 	//get all the light transitions
 	map_location adjs[6];
 	get_adjacent_tiles(loc,adjs);
+
 	for(int d=0; d<6; ++d){
-		const time_of_day& atod = get_time_of_day(adjs[d]);
-		if(atod.color == tod.color)
+		/* concave
+		  _____
+		 /     \
+		/ atod1 \_____
+		\ !tod  /     \
+		 \_____/ atod2 \
+		 /  \__\ !tod  /
+		/       \_____/
+		\  tod  /
+		 \_____/*/
+
+		const time_of_day& atod1 = get_time_of_day(adjs[d]);
+		const time_of_day& atod2 = get_time_of_day(adjs[(d + 1) % 6]);
+
+		if(atod1.color == tod.color || atod2.color == tod.color || atod1.color != atod2.color)
 			continue;
 
 		if(lt.empty()) {
 			//color the full hex before adding transitions
 			tod_color col = tod.color + color_adjust_;
-			lt = image::get_light_string(6, col.r, col.g, col.b);
+			lt = image::get_light_string(0, col.r, col.g, col.b);
 		}
 
 		// add the directional transitions
-		tod_color acol = atod.color + color_adjust_;
-		lt += image::get_light_string(d, acol.r, acol.g, acol.b);
+		tod_color acol = atod1.color + color_adjust_;
+		lt += image::get_light_string(d + 1, acol.r, acol.g, acol.b);
+	}
+	for(int d=0; d<6; ++d){
+		/* convex 1
+		  _____
+		 /     \
+		/ atod1 \_____
+		\ !tod  /     \
+		 \_____/ atod2 \
+		 /  \__\  tod  /
+		/       \_____/
+		\  tod  /
+		 \_____/*/
+
+		const time_of_day& atod1 = get_time_of_day(adjs[d]);
+		const time_of_day& atod2 = get_time_of_day(adjs[(d + 1) % 6]);
+
+		if(atod1.color == tod.color || atod1.color == atod2.color)
+			continue;
+
+		if(lt.empty()) {
+			//color the full hex before adding transitions
+			tod_color col = tod.color + color_adjust_;
+			lt = image::get_light_string(0, col.r, col.g, col.b);
+		}
+
+		// add the directional transitions
+		tod_color acol = atod1.color + color_adjust_;
+		lt += image::get_light_string(d + 7, acol.r, acol.g, acol.b);
+	}
+	for(int d=0; d<6; ++d){
+		/* convex 2
+		  _____
+		 /     \
+		/ atod1 \_____
+		\  tod  /     \
+		 \_____/ atod2 \
+		 /  \__\ !tod  /
+		/       \_____/
+		\  tod  /
+		 \_____/*/
+
+		const time_of_day& atod1 = get_time_of_day(adjs[d]);
+		const time_of_day& atod2 = get_time_of_day(adjs[(d + 1) % 6]);
+
+		if(atod2.color == tod.color || atod1.color == atod2.color)
+			continue;
+
+		if(lt.empty()) {
+			//color the full hex before adding transitions
+			tod_color col = tod.color + color_adjust_;
+			lt = image::get_light_string(0, col.r, col.g, col.b);
+		}
+
+		// add the directional transitions
+		tod_color acol = atod2.color + color_adjust_;
+		lt += image::get_light_string(d + 13, acol.r, acol.g, acol.b);
 	}
 
 	if(lt.empty()){
