@@ -107,10 +107,7 @@
     <Filter Include="utils">
       <UniqueIdentifier>{23b03f49-f123-4efc-9a5d-4434fb3ee9cc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="tools">
-      <UniqueIdentifier>{85d76662-28d2-49ef-a576-a70eca88e5ad}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="tools\schema">
+    <Filter Include="Serialization">
       <UniqueIdentifier>{6434b92d-5101-4e6a-8e78-dfb7eaac992c}</UniqueIdentifier>
     </Filter>
     <Filter Include="Tests">
@@ -531,6 +528,9 @@
       <Filter>Gui\Widgets</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\advanced_graphics_options.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\attack_predictions.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\campaign_difficulty.cpp">
@@ -992,8 +992,8 @@
     <ClCompile Include="..\..\src\utils\sha1.cpp">
       <Filter>utils</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\tools\schema\tag.cpp">
-      <Filter>tools\schema</Filter>
+    <ClCompile Include="..\..\src\serialization\tag.cpp">
+      <Filter>serialization</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\tests\main.cpp">
       <Filter>Tests</Filter>
@@ -1519,9 +1519,6 @@
     <ClCompile Include="..\..\src\font\text_surface.cpp">
       <Filter>Font</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\attack_predictions.cpp">
-      <Filter>Gui\Dialogs</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\addon\client.hpp">
@@ -1909,6 +1906,9 @@
       <Filter>Gui\Widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\advanced_graphics_options.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\attack_predictions.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\campaign_difficulty.hpp">
@@ -2457,8 +2457,8 @@
     <ClInclude Include="..\..\src\utils\smart_list.hpp">
       <Filter>utils</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\tools\schema\tag.hpp">
-      <Filter>tools\schema</Filter>
+    <ClInclude Include="..\..\src\serialization\tag.hpp">
+      <Filter>serialization</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\actions\advancement.hpp">
       <Filter>Actions</Filter>
@@ -2948,9 +2948,6 @@
     </ClInclude>
     <ClInclude Include="..\..\src\font\pango\stream_ops.hpp">
       <Filter>Font\Pango</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\gui\dialogs\attack_predictions.hpp">
-      <Filter>Gui\Dialogs</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
