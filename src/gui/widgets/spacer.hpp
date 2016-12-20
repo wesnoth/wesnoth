@@ -44,6 +44,12 @@ public:
 
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
+	/** See @ref widget::request_reduce_width. */
+	virtual void request_reduce_width(const unsigned maximum_width) override;
+
+	/** See @ref widget::request_reduce_height. */
+	virtual void request_reduce_height(const unsigned maximum_height) override;
+
 private:
 	/** See @ref widget::calculate_best_size. */
 	virtual point calculate_best_size() const override;
