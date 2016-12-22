@@ -56,8 +56,10 @@ option(ENABLE_LIBPNG "Enable support for writing png files (screenshots, images)
 option(ENABLE_HISTORY "Enable using GNU history for history in lua console" ON)
 
 if(NOT CMAKE_CROSSCOMPILING)
-	try_run(IEEE754_TEST_RETURN_CODE IEEE754_TEST_COMPILED ${CMAKE_BINARY_DIR} ${CMAKE_SOURCE_DIR}/src/compile_time_tests/ieee_754.cpp)
+	try_run(IEEE754_TEST_RETURN_CODE IEEE754_TEST_COMPILED ${CMAKE_BINARY_DIR} ${CMAKE_SOURCE_DIR}/src/compile_time_tests/ieee_754.cpp
+		RUN_OUTPUT_VARIABLE IEEE754_TEST_OUTPUT)
 	if(NOT IEEE754_TEST_RETURN_CODE EQUAL 0)
+		message(${IEEE754_TEST_OUTPUT})
 		message(FATAL_ERROR "Your platform does not represent floating point numbers in the IEEE 754 format.")
 	endif()
 else()
