@@ -319,6 +319,10 @@ if env["multilib_arch"]:
 # Some tests need to load parts of boost
 env.PrependENVPath('LD_LIBRARY_PATH', env["boostlibdir"])
 
+# Some tests require at least C++11
+env.AppendUnique(CCFLAGS = Split("-W -Wall"), CFLAGS = ["-std=c99"])
+env.AppendUnique(CXXFLAGS = "-std=c++" + env["cxx_std"])
+
 if env["prereqs"]:
     conf = env.Configure(**configure_args)
 
@@ -463,10 +467,6 @@ for env in [test_env, client_env, env]:
     env.Append(CPPDEFINES = ["HAVE_CONFIG_H"])
 
     if "gcc" in env["TOOLS"]:
-        env.AppendUnique(CCFLAGS = Split("-W -Wall"), CFLAGS = ["-std=c99"])
-
-        env.AppendUnique(CXXFLAGS = "-std=c++" + env["cxx_std"])
-
         if env['openmp']:
             env.AppendUnique(CXXFLAGS = ["-fopenmp"], LIBS = ["gomp"])
 

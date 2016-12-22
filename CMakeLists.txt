@@ -57,7 +57,7 @@ option(ENABLE_HISTORY "Enable using GNU history for history in lua console" ON)
 
 if(NOT CMAKE_CROSSCOMPILING)
 	try_run(IEEE754_TEST_RETURN_CODE IEEE754_TEST_COMPILED ${CMAKE_BINARY_DIR} ${CMAKE_SOURCE_DIR}/src/compile_time_tests/ieee_754.cpp
-		OUTPUT_VARIABLE IEEE754_TEST_OUTPUT)
+		CMAKE_FLAGS "-DCXX_STANDARD=11" OUTPUT_VARIABLE IEEE754_TEST_OUTPUT)
 	if(NOT IEEE754_TEST_RETURN_CODE EQUAL 0)
 		message(${IEEE754_TEST_OUTPUT})
 		message(FATAL_ERROR "Your platform does not represent floating point numbers in the IEEE 754 format.")
