@@ -306,7 +306,7 @@ def Warning(message):
 
 from metasconf import init_metasconf
 configure_args = dict(
-    custom_tests = init_metasconf(env, ["cplusplus", "python_devel", "sdl", "boost", "pango", "pkgconfig", "gettext", "lua"]),
+    custom_tests = init_metasconf(env, ["ieee_754", "cplusplus", "python_devel", "sdl", "boost", "pango", "pkgconfig", "gettext", "lua"]),
     config_h = "$build_dir/config.h",
     log_file="$build_dir/config.log", conf_dir="$build_dir/sconf_temp")
 
@@ -331,6 +331,13 @@ if env["prereqs"]:
     conf.CheckLib("m")
     conf.CheckFunc("round")
 
+    def CheckIEEE754(conf):
+        if not env["host"]:
+            return conf.CheckIEEE754()
+        else:
+            Warning("You are cross-compiling. Skipping IEEE 754 test.")
+            return True
+
     def CheckAsio(conf):
         if env["PLATFORM"] == 'win32':
             conf.env.Append(LIBS = ["libws2_32"])
@@ -349,6 +356,7 @@ if env["prereqs"]:
             conf.CheckSDL("SDL2_image", header_file = "SDL_image")
 
     have_server_prereqs = (\
+        CheckIEEE754(conf) & \
         conf.CheckCPlusPlus(gcc_version = "4.8") & \
         conf.CheckBoost("iostreams", require_version = boost_version) & \
         conf.CheckBoostIostreamsGZip() & \
