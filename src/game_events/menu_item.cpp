@@ -93,6 +93,9 @@ wml_menu_item::wml_menu_item(const std::string& id, const config & cfg) :
 		use_wml_menu_(cfg["use_hotkey"].str() != "only"),
 		is_synced_(cfg["synced"].to_bool(true))
 {
+	if(needs_select_) {
+		ERR_NG << "needs_select=yes is deprecated\n";
+	}
 }
 
 /**
@@ -309,8 +312,10 @@ void wml_menu_item::update(const vconfig & vcfg)
 		hotkey_updated = true;
 	}
 
-	if ( vcfg.has_attribute("needs_select") )
+	if ( vcfg.has_attribute("needs_select") ) {		
+		ERR_NG << "needs_select=yes is deprecated\n";
 		needs_select_ = vcfg["needs_select"].to_bool();
+	}
 	if ( vcfg.has_attribute("synced") )
 		is_synced_ = vcfg["synced"].to_bool(true);
 
