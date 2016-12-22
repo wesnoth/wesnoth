@@ -59,6 +59,7 @@ script:
     - $CXX --version
     - if [ "$USE_CMAKE" = true  ]; then
           cmake . -DENABLE_STRICT_COMPILATION=$STRICT_COMPILATION -DENABLE_NLS=$NLS -DENABLE_TESTS=$CPP_TESTS && make VERBOSE=1 -j2;
+          if [ $? -ne 0 ]; then echo -e "\n*** \n*\n* Build failed, full CMake log...\n*\n*** \n"; cat /home/travis/build/wesnoth/wesnoth/CMakeFiles/CMakeOutput.log; fi
       else
           scons cxxtool=$CXX ctool=$CC --debug=time build=release extra_flags_config=-pipe extra_flags_release="$EXTRA_FLAGS_RELEASE" strict=$STRICT_COMPILATION $TARGETS cxx_std=$CXXSTD nls=$NLS jobs=2;
       fi
