@@ -320,8 +320,9 @@ if env["multilib_arch"]:
 env.PrependENVPath('LD_LIBRARY_PATH', env["boostlibdir"])
 
 # Some tests require at least C++11
-env.AppendUnique(CCFLAGS = Split("-W -Wall"), CFLAGS = ["-std=c99"])
-env.AppendUnique(CXXFLAGS = "-std=c++" + env["cxx_std"])
+if "gcc" in env["TOOLS"]:
+    env.AppendUnique(CCFLAGS = Split("-W -Wall"), CFLAGS = ["-std=c99"])
+    env.AppendUnique(CXXFLAGS = "-std=c++" + env["cxx_std"])
 
 if env["prereqs"]:
     conf = env.Configure(**configure_args)
