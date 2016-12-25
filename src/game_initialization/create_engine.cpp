@@ -47,24 +47,21 @@ static lg::log_domain log_mp_create_engine("mp/create/engine");
 namespace {
 bool contains_ignore_case(const std::string& str1, const std::string& str2)
 {
-	if (str2.size() > str1.size()) {
-		return false;
-	}
+	if (!(str2.size() > str1.size())) {
+		for (size_t i = 0; i < str1.size() - str2.size() + 1; i++) {
+			bool flag = true;
+			for (size_t j = 0; j < str2.size(); j++) {
+				if (std::tolower(str1[i + j]) != std::tolower(str2[j])) {
+					flag = false;
+					break;
+				}
+			}
 
-	for (size_t i = 0; i<str1.size() - str2.size()+1; i++) {
-		bool ok = true;
-		for (size_t j = 0; j<str2.size(); j++) {
-			if (std::tolower(str1[i+j]) != std::tolower(str2[j])) {
-				ok = false;
-				break;
+			if (flag) {
+				return true;
 			}
 		}
-
-		if (ok) {
-			return true;
-		}
 	}
-
 	return false;
 }
 }
