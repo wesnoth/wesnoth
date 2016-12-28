@@ -472,8 +472,6 @@ check_compiler_has_flag(
 	HAS_COMPILER_FLAG_WCONDITIONAL_INITIALIZED
 )
 
-set(CXX_FLAGS_PROJECT "${CXX_FLAGS_PROJECT} -include boost-patched/bind/arg.hpp")
-
 ### Set the final compiler flags.
 
 set(COMPILER_FLAGS "${CXX_FLAGS_PROJECT}")

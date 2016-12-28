@@ -1,3 +1,6 @@
+
+set(CXX_FLAGS_PROJECT "${CXX_FLAGS_PROJECT} -include boost-patched/bind/arg.hpp")
+
 # store the specified sources list in the specified variable
 function(GetSources source_list store_in_var)
   file(STRINGS "../source_lists/${source_list}" sources)
