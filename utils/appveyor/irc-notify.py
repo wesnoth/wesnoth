@@ -140,7 +140,7 @@ if __name__ == '__main__':
         # establish connection
         irc_sock = ssl.wrap_socket(socket.socket(socket.AF_INET, socket.SOCK_STREAM))
         irc_sock.connect((socket.gethostbyname('chat.freenode.net'), 6697))
-        irc_sock.send('NICK {0}\r\nUSER {0} * 0 :{0}\r\n'.format(irc_username).encode())
+        irc_sock.send('NICK {0}\r\nUSER {0} * 0 :{0}\r\n'.format(irc_username).encode('utf_8'))
         irc_file = irc_sock.makefile()
 
         while irc_file:
@@ -149,22 +149,22 @@ if __name__ == '__main__':
             response = line.split()
 
             if response[0] == 'PING':
-                irc_file.send('PONG {}\r\n'.format(reponse[1]).encode())
+                irc_file.send('PONG {}\r\n'.format(reponse[1]).encode('utf_8'))
 
             elif response[1] == '433':
-                irc_sock.send('NICK {}\r\n'.format(irc_nick).encode())
+                irc_sock.send('NICK {}\r\n'.format(irc_nick).encode('utf_8'))
 
             elif response[1] == '001':
                 time.sleep(5)
                 # join the channel
-                irc_sock.send('JOIN #{}\r\n'.format(channel).encode())
+                irc_sock.send('JOIN #{}\r\n'.format(channel).encode('utf_8'))
                 # send messages
                 for msg in messages:
                     print('PRIVMSG #{} :{}'.format(channel, msg))
-                    irc_sock.send('PRIVMSG #{} :{}\r\n'.format(channel, msg).encode())
+                    irc_sock.send('PRIVMSG #{} :{}\r\n'.format(channel, msg).encode('utf_8'))
                 time.sleep(5)
                 # leave the channel
-                irc_sock.send('PART #{}\r\n'.format(channel).encode())
+                irc_sock.send('PART #{}\r\n'.format(channel).encode('utf_8'))
                 sys.exit()
     except:
         e = sys.exc_info()[0]
