@@ -1880,7 +1880,6 @@ int game_lua_kernel::intf_print(lua_State *L) {
 	if(!cfg["color"].empty()) {
 		color = color_t::from_rgb_string(cfg["color"]);
 	} else if(cfg.has_attribute("red") || cfg.has_attribute("green") || cfg.has_attribute("blue")) {
-		lg::wml_error() << "[print] red=, green=, blue= is deprecated. Use color= instead." << std::endl;
 		color = color_t(cfg["red"], cfg["green"], cfg["blue"]);
 	}
 
