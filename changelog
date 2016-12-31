@@ -1,5 +1,7 @@
 Version 1.13.6+dev:
  * AI:
+   * Fix a performance regression in complex combat situations such as the
+     "Oath of Allegiance" UMC campaign.
    * Fix some Micro AIs and AI helper functions not working correctly for AI
      sides under shroud
    * New function ai_helper.find_path_with_shroud()

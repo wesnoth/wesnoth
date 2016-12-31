@@ -61,7 +61,7 @@ struct combatant
 #endif
 
 private:
-	static const unsigned int MONTE_CARLO_SIMULATION_THRESHOLD = 5000u;
+	static const unsigned int MONTE_CARLO_SIMULATION_THRESHOLD = 50000u;
 
 	const battle_context_unit_stats &u_;
 
