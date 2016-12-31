@@ -42,6 +42,11 @@ namespace
 		bool finished;
 		const std::function<void(void)>& f;
 
+		invoked_function_data(bool finished_, const std::function<void(void)>& func)
+			: finished(finished_)
+			, f(func)
+		{}
+
 		void call() { f(); finished = true; }
 	};
 }
