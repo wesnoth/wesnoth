@@ -1981,9 +1981,12 @@ void combatant::fight(combatant &opp, bool levelup_considered)
 	const std::vector<combat_slice> split = split_summary(u_, summary);
 	const std::vector<combat_slice> opp_split = split_summary(opp.u_, opp.summary);
 
-	if (fight_complexity(split.size(), opp_split.size(), u_, opp.u_) >
+	bool use_monte_carlo_simulation = (
+		fight_complexity(split.size(), opp_split.size(), u_, opp.u_) >
 		MONTE_CARLO_SIMULATION_THRESHOLD &&
-		preferences::damage_prediction_allow_monte_carlo_simulation())
+		preferences::damage_prediction_allow_monte_carlo_simulation());
+
+	if (use_monte_carlo_simulation)
 	{
 		// A very complex fight. Use Monte Carlo simulation instead of exact
 		// probability calculations.
@@ -2094,10 +2097,22 @@ void combatant::fight(combatant &opp, bool levelup_considered)
 	if (u_.poisons)
 		opp.poisoned += (1 - opp.poisoned) * opp_touched;
 
-	if (opp.u_.slows)
-		slowed += (1 - slowed) * touched;
-	if (u_.slows)
-		opp.slowed += (1 - opp.slowed) * opp_touched;
+	if(!use_monte_carlo_simulation)
+	{
+		if(opp.u_.slows)
+			slowed += (1 - slowed) * touched;
+		if(u_.slows)
+			opp.slowed += (1 - opp.slowed) * opp_touched;
+	}
+	else
+	{
+		/* The slowed probability depends on in how many rounds
+		 * the combatant happened to be slowed.
+		 * We need to recalculate it based on the HP distribution.
+		 */
+		slowed = std::accumulate(summary[1].begin(), summary[1].end(), 0.0);
+		opp.slowed = std::accumulate(opp.summary[1].begin(), opp.summary[1].end(), 0.0);
+	}
 
 	untouched *= self_not_hit;
 	opp.untouched *= opp_not_hit;
