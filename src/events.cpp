@@ -478,8 +478,8 @@ void pump()
 	}
 
 	// move all draw events to the end of the queue
-	auto first_draw_event = std::remove_if(events.begin(), events.end(),
-		[](const SDL_Event& e) {return e.type == DRAW_EVENT;});
+	auto first_draw_event = std::stable_partition(events.begin(), events.end(),
+		[](const SDL_Event& e) {return e.type != DRAW_EVENT;});
 	if(first_draw_event != events.end()) {
 		// remove all draw events except one
 		events.erase(first_draw_event + 1, events.end());
