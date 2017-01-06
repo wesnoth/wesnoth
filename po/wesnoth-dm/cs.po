@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-05-09 21:24-0300\n"
-"PO-Revision-Date: 2014-08-26 03:43+0200\n"
+"POT-Creation-Date: 2016-05-17 20:24-0400\n"
+"PO-Revision-Date: 2016-12-02 00:21+0100\n"
 "Last-Translator: Honza <Honza-mistic@seznam.cz>\n"
 "Language-Team: Mistic\n"
 "Language: cs\n"
@@ -21,9 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Virtaal 0.7.1\n"
-"X-Poedit-Language: Czech\n"
-"X-Poedit-Country: CZECH REPUBLIC\n"
+"X-Generator: Poedit 1.8.11\n"
 
 #. [campaign]: id=Delfadors_Memoirs
 #. [editor_group]: id=dm
@@ -39,8 +37,10 @@ msgstr "DP"
 
 #. [campaign]: id=Delfadors_Memoirs
 #: data/campaigns/Delfadors_Memoirs/_main.cfg:31
+#, fuzzy
+#| msgid "Normal"
 msgid "(Normal)"
-msgstr "(normální)"
+msgstr "Normální"
 
 #. [campaign]: id=Delfadors_Memoirs
 #: data/campaigns/Delfadors_Memoirs/_main.cfg:31
@@ -49,8 +49,10 @@ msgstr "Čarodějův učeň"
 
 #. [campaign]: id=Delfadors_Memoirs
 #: data/campaigns/Delfadors_Memoirs/_main.cfg:32
+#, fuzzy
+#| msgid "Challenging"
 msgid "(Challenging)"
-msgstr "(nelehká)"
+msgstr "Nelehká"
 
 #. [campaign]: id=Delfadors_Memoirs
 #: data/campaigns/Delfadors_Memoirs/_main.cfg:32
@@ -59,8 +61,10 @@ msgstr "Mág"
 
 #. [campaign]: id=Delfadors_Memoirs
 #: data/campaigns/Delfadors_Memoirs/_main.cfg:33
+#, fuzzy
+#| msgid "Difficult"
 msgid "(Difficult)"
-msgstr "(náročná)"
+msgstr "Náročná"
 
 #. [campaign]: id=Delfadors_Memoirs
 #: data/campaigns/Delfadors_Memoirs/_main.cfg:33
@@ -534,6 +538,8 @@ msgstr "Pevnost Miryen"
 #. [objective]: condition=win
 #: data/campaigns/Delfadors_Memoirs/scenarios/03_The_Road_to_Weldyn.cfg:79
 #: data/campaigns/Delfadors_Memoirs/scenarios/11_Wasteland.cfg:227
+#, fuzzy
+#| msgid "Defeat the enemy leader"
 msgid "Defeat enemy leader"
 msgstr "Poraz vůdce nepřátel"
 
@@ -724,13 +730,17 @@ msgstr "Skvělé... Jste opravdu udatní, mladý příteli."
 
 #. [message]: speaker=Leollyn
 #: data/campaigns/Delfadors_Memoirs/scenarios/04_Leollyn.cfg:213
+#, fuzzy
+#| msgid "All of you have to be extra careful!"
 msgid "I’ve told you, all of you have to be extra careful!"
 msgstr "Upozorňoval jsem vás, abyste byli velmi opatrní!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/04_Leollyn.cfg:217
+#, fuzzy
+#| msgid "Kill them all! For our murdered friend."
 msgid "Kill them all! For our murdered friends."
-msgstr "Pobijte je všechny! Za našeho zavražděné přátele!"
+msgstr "Pobijte je všechny! Za našeho zavražděné přátele."
 
 #. [message]: speaker=Leollyn
 #: data/campaigns/Delfadors_Memoirs/scenarios/04_Leollyn.cfg:228
@@ -1104,6 +1114,8 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Delfadors_Memoirs/scenarios/07_Night_in_the_Swamp.cfg:94
+#, fuzzy
+#| msgid "Survive until daybreak"
 msgid "Survive until daybreak."
 msgstr "Přežij do svítání."
 
@@ -2289,6 +2301,8 @@ msgstr "Poslouchám královy rozkazy. Mí muži jsou vám k dispozici."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Delfadors_Memoirs/scenarios/12_Terror_at_the_Ford_of_Parthyn.cfg:452
+#, fuzzy
+#| msgid "To wake up the mages, move a unit near their tower."
 msgid ""
 "To wake up the mages, move a unit that is currently out of sight of their "
 "tower to within visual range of it."
@@ -5116,6 +5130,46 @@ msgstr "Droni"
 #: data/campaigns/Delfadors_Memoirs/utils/sides.cfg:294
 msgid "Artor"
 msgstr "Artor"
+
+#~ msgid "Mages"
+#~ msgstr "Mágové"
+
+#~ msgid "Pillagers"
+#~ msgstr "Marodér"
+
+#~ msgid "Loyalists"
+#~ msgstr "Věrní"
+
+#~ msgid "Bandits"
+#~ msgstr "Banditi"
+
+#~ msgid "Undead"
+#~ msgstr "Nemrtví"
+
+#~ msgid "Wose"
+#~ msgstr "Stromoví lidé"
+
+#~ msgid "Undead Followers"
+#~ msgstr "Nemrtví následovníci"
+
+#~ msgid "Elves"
+#~ msgstr "Elfové"
+
+#~ msgid "Dwarves"
+#~ msgstr "Trpaslíci"
+
+#~ msgid "Loss of all Undead veterans before Iliah-Malal is defeated"
+#~ msgstr "Prohra všech nemrtvých veteránů, než je Iliah-Malal poražen."
+
+#~ msgid ""
+#~ "Alas! Without any undead to strike the killing blow, we will never be "
+#~ "able to defeat Iliah-Malal!"
+#~ msgstr ""
+#~ "Běda! Bez žádných nemrtvých, kteří by zasadili úder nebudeme nikdy "
+#~ "schopní Iliah-Malala porazit!"
+
+#~ msgid "Rebels"
+#~ msgstr "Rebelové"
 
 #, fuzzy
 #~| msgid "Defeat all enemy leaders"
