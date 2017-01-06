@@ -20,20 +20,39 @@ def GetSources(filename):
 # setup the FIFODIR, WESNOTH_PATH
 # 
 
-# if not windows, append FIFODIR, WESNOTH_PATH everywhere as cmake does
-if env["PLATFORM"] != "win32":
-    for env in [test_env, client_env, env]:
-        env.Append(CPPDEFINES = "FIFODIR='\"$fifodir\"'")
-        env.Append(CPPDEFINES = "WESNOTH_PATH='\"$datadir\"'")
-else:
-    env["fifodir"] = ""
+for environ in [test_env, client_env, env]:
+# controls displaying git revision next to the version on the title screen
+    if environ.get("have_autorevision"):
+        environ.Append(CPPDEFINES = 'LOAD_REVISION')
+
+# if not windows, then set FIFODIR and WESNOTH_PATH defines, and configure the locale and preferences locations
+    if environ["PLATFORM"] != "win32":
+        environ.Append(CPPDEFINES = "FIFODIR='\"$fifodir\"'")
+        environ.Append(CPPDEFINES = "WESNOTH_PATH='\"$datadir\"'")
+        if env['localedirname']:
+            environ.Append(CPPDEFINES = "LOCALEDIR='\"$localedirname\"'")
+            if not os.path.isabs(env['localedirname']):
+                environ.Append(CPPDEFINES = "HAS_RELATIVE_LOCALEDIR")
+        if env['version_suffix'] and not env['prefsdir']:
+            environ['prefsdir'] = ".wesnoth$version_suffix"
+        if environ['prefsdir']:
+            environ.Append(CPPDEFINES = "PREFERENCES_DIR=\\\"$prefsdir\\\"")
+    else:
+        environ["fifodir"] = ""
+
+# if a default preference file exists, configure its location
+    if env['default_prefs_file']:
+        environ['default_prefs_file'] = env['default_prefs_file']
+        environ.Append(CPPDEFINES = "DEFAULT_PREFS_PATH='\"$default_prefs_file\"'")
+        if not os.path.isabs(env['default_prefs_file']):
+            environ.Append(CPPDEFINES = "HAS_RELATIVE_DEFPREF")
 
 # Inject boost::bind patch everywhere
-for env in [test_env, client_env, env]:
-    env.Append(CCFLAGS = Split("-include boost-patched/bind/arg.hpp"))
+for environ in [test_env, client_env, env]:
+    environ.Append(CCFLAGS = Split("-include boost-patched/bind/arg.hpp"))
 
-for env in [test_env, client_env, env]:
-    env.Append(CPPDEFINES = "$EXTRA_DEFINE")
+for environ in [test_env, client_env, env]:
+    environ.Append(CPPDEFINES = "$EXTRA_DEFINE")
 
 #---libwesnoth_core---
 
@@ -42,27 +61,6 @@ for env in [test_env, client_env, env]:
 #removed.  Requires moving path and version at least to other files.
 
 libwesnoth_core_sources = GetSources("libwesnoth_core")
-
-game_config_env = env.Clone()
-filesystem_env = env.Clone()
-if env["PLATFORM"] != "win32":
-    game_config_env.Append(CPPDEFINES = "WESNOTH_PATH='\"$datadir\"'")
-    if env['localedirname']:
-        filesystem_env.Append(CPPDEFINES = "LOCALEDIR='\"$localedirname\"'")
-        if not os.path.isabs(env['localedirname']):
-            filesystem_env.Append(CPPDEFINES = "HAS_RELATIVE_LOCALEDIR")
-    if env['version_suffix'] and not env['prefsdir']:
-        filesystem_env['prefsdir'] = ".wesnoth$version_suffix"
-    if filesystem_env['prefsdir']:
-        filesystem_env.Append(CPPDEFINES = "PREFERENCES_DIR=\\\"$prefsdir\\\"")
-
-if env['default_prefs_file']:
-    client_env.Append(CPPDEFINES = "DEFAULT_PREFS_PATH='\"$default_prefs_file\"'")
-
-    game_config_env['default_prefs_file'] = env['default_prefs_file']
-    game_config_env.Append(CPPDEFINES = "DEFAULT_PREFS_PATH='\"$default_prefs_file\"'")
-    if not os.path.isabs(env['default_prefs_file']):
-        filesystem_env.Append(CPPDEFINES = "HAS_RELATIVE_DEFPREF")
 
 if env["PLATFORM"] == "win32":
     libwesnoth_core_sources.append("log_windows.cpp")
@@ -167,9 +165,6 @@ env.WesnothProgram("campaignd", campaignd_sources + [libwesnoth_core], have_serv
 test_sources = GetSources("test")
 test = test_env.WesnothProgram("test", test_sources +  [libwesnoth_extras, libwesnoth_core, libwesnoth, libwesnoth_sdl, libwesnoth_extras], have_test_prereqs)
 #---end of getting sources---
-
-if env.get("have_autorevision"):
-    game_config_env.Append(CPPDEFINES = 'LOAD_REVISION')
 
 sources = []
 if "TAGS" in COMMAND_LINE_TARGETS:
