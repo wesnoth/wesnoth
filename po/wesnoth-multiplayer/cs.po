@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2016-11-05 23:28 UTC\n"
-"PO-Revision-Date: 2014-10-30 11:43+0100\n"
+"PO-Revision-Date: 2016-11-08 08:58+0100\n"
 "Last-Translator: Jan Dědič <jan.dedic@gmail.com>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "Language: cs\n"
@@ -24,8 +24,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Poedit-Basepath: D:\\Dev\\wesnoth-trunk\n"
-"X-Generator: Poedit 1.6.10\n"
+"X-Poedit-Basepath: D:/Dev/wesnoth-trunk\n"
+"X-Generator: Poedit 1.8.11\n"
 
 #. [generic_multiplayer]: id=user_map
 #: data/multiplayer/_main.cfg:8
@@ -67,7 +67,7 @@ msgstr ""
 #. [era]: id=era_khalifate
 #: data/multiplayer/eras.cfg:83
 msgid "Default + Khalifate"
-msgstr "Výchozí + Khalifate"
+msgstr "Výchozí + Chalífát"
 
 #. [era]: id=era_khalifate
 #: data/multiplayer/eras.cfg:84
@@ -89,7 +89,7 @@ msgstr ""
 #. [era]: id=era_khalifate_heroes
 #: data/multiplayer/eras.cfg:94
 msgid "Age of Heroes + Khalifate"
-msgstr "Věk hrdinů + Khalifate"
+msgstr "Věk hrdinů + Chalífát"
 
 #. [era]: id=era_khalifate_heroes
 #: data/multiplayer/eras.cfg:95
@@ -150,12 +150,19 @@ msgid ""
 "mobility but low defense, leading to unusual tactics for a "
 "<ref>text='Default Era' dst='..era_era_default'</ref> faction."
 msgstr ""
+"<bold>text='Drakonidé'</bold> jsou rasou drakům podobných "
+"<ref>text='Drakonitů' dst='..race_drake'</ref> a jejich spojenců "
+"<ref>text='Ještěráků' dst='..race_lizard'</ref>. Drakonidé jsou potomky "
+"draků, ale oproti nim jsou menší. Ještěráci jsou ještě o kus menší než "
+"Drakonidé a mají jiné předky. Obě rasy jsou rychlé, ale špatně se brání, což "
+"vyúsťuje k neobvyklým strategiím v <ref>text='Standardní éře' dst='.."
+"era_era_default'</ref>."
 
 #. [multiplayer_side]: id=Khalifate, type=random
 #: data/multiplayer/factions/khalifate-aoh.cfg:4
 #: data/multiplayer/factions/khalifate-default.cfg:4
 msgid "Khalifate"
-msgstr "Khalifate"
+msgstr "Chalífát"
 
 #. [multiplayer_side]: id=Khalifate, type=random
 #: data/multiplayer/factions/khalifate-aoh.cfg:14
@@ -169,6 +176,13 @@ msgid ""
 "be more expensive than those of the Loyalist faction, they make up for this "
 "with high mobility — especially on hilly terrains."
 msgstr ""
+"<bold>Chalífát</bold> jsou rasou lidí z pouští a hor na jihu. V jejich "
+"řadách nejsou žádní mágové, a tak se bojovníci Chalífátu místo magie "
+"zaměřují na využití různorodosti krajiny k útokům za rozbřesku nebo za "
+"soumraku. Chloubou jejich armády jsou zákonné jednotky určené k dobývání, "
+"léčitelé, velmi přesní bojovníci a obávaní lučištníci na koních. Ač jsou "
+"jednotky Chalífátu průměrně dražší než jednotky z frakce Zákonných, bohatě "
+"to vykupují lepší pohyblivostí, obzvlášť v hornatém terénu."
 
 #. [multiplayer_side]: id=Knalgan Alliance, type=random
 #: data/multiplayer/factions/knalgans-aoh.cfg:4
@@ -189,6 +203,15 @@ msgid ""
 "dwarves who are only good on certain terrain and humans who can cover ground "
 "that dwarves are not good at fighting in."
 msgstr ""
+"<bold>text='Knalgská aliance'</bold> je spojenectví <ref>text='Trpaslíků' "
+"dst='..race_dwarf'</ref> a <ref>text='Psanců' dst='..race_human'</ref>. "
+"Trpaslíci jsou starobylá rasa, která většinu času tráví pod zemí. Jejich "
+"bojovníci jsou sice nízcí, zato houževnatí. Psanci jsou tvořeni skupinami "
+"lidí, které zavrhla jejich vlastní rasa, tak se přidali k trpaslíkům, se "
+"kterými sdílejí společné nepřátele. Toto spojenectví přináší kombinaci "
+"odolných a v obraně zdatných trpaslíků, kterým se ale daří jen v nemnoha "
+"typech terénu a lidí, kteří pokryjí terén, na kterém se trpaslíkům špatně "
+"bojuje."
 
 #. [multiplayer_side]: id=Loyalists, type=random
 #: data/multiplayer/factions/loyalists-aoh.cfg:4
@@ -206,6 +229,10 @@ msgid ""
 "Loyalist faction is a very versatile melee-oriented faction with important "
 "ranged support from bowmen and mages."
 msgstr ""
+"<bold>text='Věrní'</bold> jsou frakcí <ref>text='Lidí' dst='..race_human'</"
+"ref>, kteří jsou věrní trůnu Wesnothu. Lidí jsou všestranná rasa, která se "
+"specializuje v mnoha různých oblastech. Tak i Věrní jsou velmi všestranní s "
+"důrazem na souboje na blízko s nezanedbatelnou podporou od lučištníků a mágů."
 
 #. [multiplayer_side]: id=Northerners, type=random, description=<img>src='portraits/orcs/warlord.png~BG()' align='middle'</img>
 #: data/multiplayer/factions/northerners-aoh.cfg:4
@@ -226,6 +253,14 @@ msgid ""
 "Northerners play best by taking advantage of having many low-cost and high "
 "HP soldiers."
 msgstr ""
+"<bold>text='Seveřané'</bold> jsou frakcí <ref>text='Skřetů' dst='.."
+"race_orc'</ref> a jejich spojenců, kteří žijí na sever od Velkého "
+"Kontinentu, proto jejich jméno. Seveřany tvoří válečnická rasa skřetů, "
+"podmanění <ref>text='goblini' dst='..race_goblin'</ref>, <ref>text='trolové' "
+"dst='..race_trolls'</ref>, které k válčení navedli skřeti a hadovité "
+"<ref>text='nagy' dst='..race_naga'</ref>. Seveřané se v boji mohou "
+"spolehnout na velké množství levných jednotek a bojovníky s vysokým počtem "
+"životů."
 
 #. [multiplayer_side]: id=Rebels, type=random
 #: data/multiplayer/factions/rebels-aoh.cfg:4
@@ -249,6 +284,17 @@ msgid ""
 "advantage of their high forest defense, mastery of ranged attacks, and the "
 "elves’ neutral alignment."
 msgstr ""
+"<bold>text'Rebelové'</bold> jsou frakcí <ef>text='elfů' dst='..race_elf'</"
+"ref> a všemožných lesních stvoření, která se k nim připojila. Svoje "
+"pojmenování lidskou řečí, rebelové, dostali v Dědici trůnu, kde se vzbouřili "
+"proti zlé královně Ašvíře. Elfové jsou magií nadanou rasou, jsou ale také "
+"mitři luku a délka jejich života mnohokrát převyšuje délku života lidského. "
+"Žijíce v souladu s přírodou, elfové nalézají spojence mezi mágy z řad "
+"<ref>text='lidí' dst='..race_human'</ref>, některými <ref>text='mořskými "
+"lidmi' dst='..race_merman'</ref> a stromovitými stvořeními zvanými "
+"<ref>text='stromolidé' dst='..race_wose'</ref>. Rebelové s výhodou bojují v "
+"lesích, kde vyniká jejich skvělá obrana, jsou mistry v útocích na dálku a "
+"výhodou jim je i jejich nezávislost na denní době."
 
 #. [multiplayer_side]: id=Undead, type=random
 #: data/multiplayer/factions/undead-aoh.cfg:4
@@ -269,6 +315,14 @@ msgid ""
 "Undead are a very aggressive faction and the most powerful "
 "<ref>text='Default Era' dst='..era_era_default'</ref> faction at nighttime."
 msgstr ""
+"<bold>text='Nemrtví'</bold> jsou frakcí <ref>text='nemrtvých' dst='.."
+"race_undead'</ref> stvoření a <ref>text='lidí' dst='..race_human'</ref>, "
+"kteří propadli temným uměním a nemrtvé obvykle doprovází. Často jsou tito "
+"„temní učni“ právě silou, která ze jednotek nemrtvých způsobí nejvíce škod, "
+"ale mají jednu velkou slabost — praktikováním zakázané, temné magie přišli o "
+"všechnu fyzickou sílu a proto nejsou schopni útoku na blízko. Nemrtví jsou "
+"velice agresivní a ve <ref>text='Standardní éře' dst='..era_era_default'</"
+"ref> jsou nejobávanější frakcí když padne tma."
 
 #. [multiplayer]: id=multiplayer_Aethermaw
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:4
@@ -1162,7 +1216,7 @@ msgstr ""
 #. [slider]: id=enemey_gold_factor
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:245
 msgid "Changes the gold worth of the enemy spawns by a certain percentage"
-msgstr ""
+msgstr "Změní o dané procento sumu, kterou má nepřítel k dispozici"
 
 #. [lua]: final_spawn
 #: data/multiplayer/scenarios/2p_Dark_Forecast.lua:310

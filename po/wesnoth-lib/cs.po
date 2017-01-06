@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2016-11-06 02:25+0300\n"
-"PO-Revision-Date: 2014-04-16 23:12+0100\n"
+"PO-Revision-Date: 2016-11-14 23:41+0100\n"
 "Last-Translator: Jan Dědič <jan.dedic@gmail.com>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "Language: cs\n"
@@ -24,8 +24,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Poedit-Basepath: D:\\Dev\\wesnoth-trunk\n"
-"X-Generator: Poedit 1.6.4\n"
+"X-Poedit-Basepath: D:/Dev/wesnoth-trunk\n"
+"X-Generator: Poedit 1.8.11\n"
 
 #. [terrain_type]: id=deep_water_gray
 #. [terrain_type]: id=deep_water_medium
@@ -348,12 +348,12 @@ msgstr "Táborák"
 #. [terrain_type]: id=brazier
 #: data/core/terrain.cfg:434
 msgid "Brazier"
-msgstr ""
+msgstr "Ohřívač"
 
 #. [terrain_type]: id=brazier-lit
 #: data/core/terrain.cfg:443
 msgid "Lit Brazier"
-msgstr ""
+msgstr "Zapálený ohřívač"
 
 #. [terrain_type]: id=fence
 #: data/core/terrain.cfg:452
@@ -564,10 +564,8 @@ msgstr "Zasněžené hory"
 
 #. [terrain_type]: id=desert_mountains
 #: data/core/terrain.cfg:798
-#, fuzzy
-#| msgid "Dry Mountains"
 msgid "Desert Mountains"
-msgstr "Suché hory"
+msgstr "Pouštní hory"
 
 #. [terrain_type]: id=wood_floor
 #: data/core/terrain.cfg:809
@@ -739,10 +737,8 @@ msgstr "Běžné neschůdné hory"
 
 #. [terrain_type]: id=cloud_dry
 #: data/core/terrain.cfg:1053
-#, fuzzy
-#| msgid "Desert Impassable Mountains"
 msgid "Dry Impassable Mountains"
-msgstr "Pouštní neschůdné hory"
+msgstr "Vyprahlé neschůdné hory"
 
 #. [terrain_type]: id=cloud_snow
 #: data/core/terrain.cfg:1064
@@ -769,10 +765,8 @@ msgstr "Přirozená jeskynní stěna"
 
 #. [terrain_type]: id=minewall
 #: data/core/terrain.cfg:1095 data/core/terrain.cfg:1096
-#, fuzzy
-#| msgid "Mine Rail"
 msgid "Mine Wall"
-msgstr "Důlní železnice"
+msgstr "Stěna dolu"
 
 #. [terrain_type]: id=cavewall_earthy
 #: data/core/terrain.cfg:1107
@@ -902,8 +896,6 @@ msgstr "Vesnice z nepálených cihel"
 
 #. [terrain_type]: id=desert_village_ruin
 #: data/core/terrain.cfg:1256
-#, fuzzy
-#| msgid "Adobe Village"
 msgid "Ruined Adobe Village"
 msgstr "Vesnice z nepálených cihel"
 
@@ -1475,24 +1467,6 @@ msgstr ""
 
 #. [terrain_type]: id=cave
 #: data/core/terrain.cfg:2423
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Cave'</italic> terrain represents any underground cavern "
-#| "with enough room for a unit to pass.\n"
-#| "Most units are wholly unfamiliar with the terrain, and thus are both "
-#| "slowed down and hindered in defense. Dwarves and trolls, who make their "
-#| "homes in caves, both have a relatively easy time navigating this terrain, "
-#| "especially dwarves, who by dint of their small size can navigate many "
-#| "obstacles that other races cannot. Occasionally caves are "
-#| "<ref>dst='terrain_illuminated_cave' text='illuminated'</ref>.\n"
-#| "\n"
-#| "Rare patches of the underground world are illuminated by light from the "
-#| "surface shining down into the gloomy darkness. This provides an attack "
-#| "bonus for lawful units and removes the attack bonus from chaotic units. "
-#| "In all other regards this terrain is functionally identical to normal "
-#| "<ref>dst='terrain_cave' text='cave terrains'</ref>.\n"
-#| "\n"
-#| "Most units receive 20 to 40% defense in caves, whereas dwarves have 50%."
 msgid ""
 "<italic>text='Cave'</italic> terrain represents any underground cavern with "
 "enough room for a unit to pass.\n"
@@ -1511,15 +1485,19 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in caves, whereas dwarves have 50%."
 msgstr ""
-"<italic>text='Jeskyně'</italic> představuje jakákoliv podzemní sluj s "
-"dostatkem místa pro pohyb. Většina jednotek se v tomto terénu neumí "
-"pohybovat a tak jsou zpomaleny a překáží jim to v obraně. Trpaslíci a "
-"Trollové, kteří zde bydlí, tu jsou jako doma, a to zejména trpaslíci, kteří "
-"se zde mohou díky své malé velikosti snadno pohybovat a překonávat překážky. "
-"To jiným činí problémy. Někdy jsou jeskyně "
+"<italic>text='Jeskyně'</italic> představuje jakoukoliv podzemní sluj s "
+"dostatkem místa pro pohyb.\n"
+"Většina jednotek se v tomto terénu neumí pohybovat a tak jsou zpomaleny a "
+"překáží jim to v obraně. Trpaslíci a Trollové, kteří zde bydlí, tu jsou jako "
+"doma, a to zejména trpaslíci, kteří se zde mohou díky své malé výšce snadno "
+"pohybovat a překonávat překážky. To jiným činí problémy. Někdy jsou jeskyně "
 "<ref>dst='terrain_illuminated_cave' text='osvětlené'</ref>\n"
 "\n"
-"Většina jednotek zde získá 20 až 40% obranný bonus, zatímco trpaslíci 50%."
+"Výjimečně jsou podzemní cesty osvětlené světlem z povrchu. Taková místa "
+"poskytují bonusy zákonným jednotkám a naopak ruší bonusy pro jednotky "
+"chaotické. Ve všech ostatních ohledech je osvětlená jeskyně shodná s "
+"normální jeskyní.  Většina jednotek zde získá 20 až 40% obranný bonus, "
+"zatímco trpaslíci 50%."
 
 #. [terrain_type]: id=sand
 #: data/core/terrain.cfg:2436
@@ -1878,7 +1856,7 @@ msgstr "Zavřít"
 #: data/gui/widget/unit_preview_pane.cfg:249
 #: data/gui/widget/unit_preview_pane.cfg:309
 msgid "Profile"
-msgstr ""
+msgstr "Profil"
 
 #. [label]
 #. [widget]: id=name
@@ -1995,12 +1973,12 @@ msgstr "Ke stažení:"
 #. [label]
 #: data/gui/window/addon_description.cfg:258 data/gui/window/addon_list.cfg:689
 msgid "date^Last updated:"
-msgstr "date^Naposledy aktualizováno:"
+msgstr "Naposledy aktualizováno:"
 
 #. [label]
 #: data/gui/window/addon_description.cfg:284 data/gui/window/addon_list.cfg:628
 msgid "date^First uploaded:"
-msgstr "data^Poprvé nahrané:"
+msgstr "Poprvé nahrané:"
 
 #. [label]
 #: data/gui/window/addon_description.cfg:329
@@ -2021,12 +1999,12 @@ msgstr "Webové stránky:"
 #. [label]: id=url_none
 #: data/gui/window/addon_description.cfg:398 data/gui/window/addon_list.cfg:889
 msgid "url^None"
-msgstr "url^Žádná"
+msgstr "Žádná"
 
 #. [button]: id=url_copy
 #: data/gui/window/addon_description.cfg:432 data/gui/window/addon_list.cfg:923
 msgid "url^Copy"
-msgstr "url^Kopíruj"
+msgstr "Kopíruj"
 
 #. [button]: id=url_copy
 #: data/gui/window/addon_description.cfg:433 data/gui/window/addon_list.cfg:924
@@ -2036,7 +2014,7 @@ msgstr "Zkopíruj adresu do schránky"
 #. [button]: id=url_go
 #: data/gui/window/addon_description.cfg:446 data/gui/window/addon_list.cfg:937
 msgid "url^Go"
-msgstr "url^Přejít"
+msgstr "Přejít"
 
 #. [button]: id=url_go
 #: data/gui/window/addon_description.cfg:447 data/gui/window/addon_list.cfg:938
@@ -2051,7 +2029,7 @@ msgstr "Závislosti:"
 #. [scroll_label]: id=dependencies
 #: data/gui/window/addon_description.cfg:487 data/gui/window/addon_list.cfg:812
 msgid "addon_dependencies^None"
-msgstr "addon_dependencies^Žádné"
+msgstr "Žádné"
 
 #. [label]
 #: data/gui/window/addon_description.cfg:505 data/gui/window/addon_list.cfg:832
@@ -2066,69 +2044,67 @@ msgstr "žádné"
 #. [row]
 #: data/gui/window/addon_filter_options.cfg:49
 msgid "addons_of_type^Campaigns"
-msgstr "addons_of_type^Kampaň"
+msgstr "Kampaň"
 
 #. [row]
 #: data/gui/window/addon_filter_options.cfg:50
 msgid "addons_of_type^MP eras"
-msgstr "addons_of_type^Éra pro hru více hráčů"
+msgstr "Éra pro hru více hráčů"
 
 #. [row]
 #: data/gui/window/addon_filter_options.cfg:53
 msgid "addons_of_type^Scenarios"
-msgstr "addons_of_type^Scénář"
+msgstr "Scénář"
 
 #. [row]
 #: data/gui/window/addon_filter_options.cfg:54
 msgid "addons_of_type^MP factions"
-msgstr "addons_of_type^Věky pro hru více hráčů"
+msgstr "Věky pro hru více hráčů"
 
 #. [row]
 #: data/gui/window/addon_filter_options.cfg:57
 msgid "addons_of_type^SP/MP campaigns"
-msgstr "addons_of_type^Kampaň pro jednoho nebo více hráčů"
+msgstr "Kampaň pro jednoho nebo více hráčů"
 
 #. [row]
 #: data/gui/window/addon_filter_options.cfg:58
 msgid "addons_of_type^MP campaigns"
-msgstr "addons_of_type^Kampaň pro hru více hráčů"
+msgstr "Kampaň pro hru více hráčů"
 
 #. [row]
 #: data/gui/window/addon_filter_options.cfg:61
 msgid "addons_of_type^Resources"
-msgstr "addons_of_type^Zdroje"
+msgstr "Zdroje"
 
 #. [row]
 #: data/gui/window/addon_filter_options.cfg:62
 msgid "addons_of_type^MP scenarios"
-msgstr "addons_of_type^Scénáře pro hru více hráčů"
+msgstr "Scénáře pro hru více hráčů"
 
 #. [row]
 #: data/gui/window/addon_filter_options.cfg:65
-#, fuzzy
-#| msgid "addons_of_type^Resources"
 msgid "addons_of_type^Cores"
-msgstr "addons_of_type^Zdroje"
+msgstr "Zdroje"
 
 #. [row]
 #: data/gui/window/addon_filter_options.cfg:66
 msgid "addons_of_type^MP map-packs"
-msgstr "addons_of_type^Sady map"
+msgstr "Sady map"
 
 #. [row]
 #: data/gui/window/addon_filter_options.cfg:70
 msgid "addons_of_type^Other"
-msgstr "addons_of_type^Ostatní"
+msgstr "Ostatní"
 
 #. [row]
 #: data/gui/window/addon_filter_options.cfg:71
 msgid "addons_of_type^MP modifications"
-msgstr "addons_of_type^Modifikace pro hru více hráčů"
+msgstr "Modifikace pro hru více hráčů"
 
 #. [row]
 #: data/gui/window/addon_filter_options.cfg:74
 msgid "addons_of_type^Unknown"
-msgstr "addons_of_type^Neznámé"
+msgstr "Neznámé"
 
 #. [label]
 #: data/gui/window/addon_filter_options.cfg:174
@@ -2165,27 +2141,27 @@ msgstr ""
 #. [row]
 #: data/gui/window/addon_filter_options.cfg:355
 msgid "sort^By name"
-msgstr "sort^Podle jména"
+msgstr "Podle jména"
 
 #. [row]
 #: data/gui/window/addon_filter_options.cfg:360
 msgid "sort^By last updated"
-msgstr "sort^Naposledy aktualizováno"
+msgstr "Naposledy aktualizováno"
 
 #. [row]
 #: data/gui/window/addon_filter_options.cfg:365
 msgid "sort^By first upload"
-msgstr "sort^Poprvé nahráno"
+msgstr "Poprvé nahráno"
 
 #. [row]
 #: data/gui/window/addon_filter_options.cfg:381
 msgid "sort^Ascending"
-msgstr "sort^Vzestupně"
+msgstr "Vzestupně"
 
 #. [row]
 #: data/gui/window/addon_filter_options.cfg:386
 msgid "sort^Descending"
-msgstr "sort^Sestupně"
+msgstr "Sestupně"
 
 #. [label]: id=name
 #. [toggle_button]: id=sort_0
@@ -2203,24 +2179,18 @@ msgstr "Verze"
 
 #. [toggle_button]: id=sort_1
 #: data/gui/window/addon_list.cfg:79
-#, fuzzy
-#| msgid "Author:"
 msgid "Author"
-msgstr "Autor:"
+msgstr "Autor"
 
 #. [toggle_button]: id=sort_2
 #: data/gui/window/addon_list.cfg:93
-#, fuzzy
-#| msgid "Size:"
 msgid "Size"
-msgstr "Velikost:"
+msgstr "Velikost"
 
 #. [toggle_button]: id=sort_3
 #: data/gui/window/addon_list.cfg:107
-#, fuzzy
-#| msgid "Downloads:"
 msgid "Downloads"
-msgstr "Ke stažení:"
+msgstr "Ke stažení"
 
 #. [toggle_button]: id=sort_4
 #. [toggle_button]: id=sort_1
@@ -2245,67 +2215,65 @@ msgstr "Odstraň"
 
 #: data/gui/window/advanced_graphics_options.cfg:42
 msgid "Nearest Neighbor"
-msgstr ""
+msgstr "Nejbližší soused"
 
 #: data/gui/window/advanced_graphics_options.cfg:42
 msgid "Nearest Neighbor scaling (fastest)"
-msgstr ""
+msgstr "Nejbližší soused se škálováním (nejrychlejší)"
 
 #: data/gui/window/advanced_graphics_options.cfg:43
 msgid "xBRZ + linear"
-msgstr ""
+msgstr "xBRZ + lineární"
 
 #: data/gui/window/advanced_graphics_options.cfg:43
 msgid "xBRZ followed by Bilinear interpolation"
-msgstr ""
+msgstr "xBRZ s následnou bilineární interpolací"
 
 #: data/gui/window/advanced_graphics_options.cfg:44
 msgid "xBRZ + NN"
-msgstr ""
+msgstr "xBRZ + NN"
 
 #: data/gui/window/advanced_graphics_options.cfg:44
 msgid "xBRZ followed by Nearest Neighbor (recommended)"
-msgstr ""
+msgstr "xBRZ s následným nejbližším sousedem (doporučené)"
 
 #: data/gui/window/advanced_graphics_options.cfg:45
 msgid "Bilinear interpolation scaling"
-msgstr ""
+msgstr "BIlineární interpolace se škálováním"
 
 #: data/gui/window/advanced_graphics_options.cfg:45
 msgid "Linear"
-msgstr ""
+msgstr "Lineární"
 
 #. [label]
 #: data/gui/window/advanced_graphics_options.cfg:91
-#, fuzzy
-#| msgid "sound^Advanced Options"
 msgid "Advanced Graphics Options"
-msgstr "Pokročilé nastavení"
+msgstr "Pokročilé nastavení grafiky"
 
 #. [label]
 #: data/gui/window/advanced_graphics_options.cfg:107
 msgid "Images will be scaled using the following algorithms:"
-msgstr ""
+msgstr "Obrázky se budou škálovat použitím následujících algoritmů:"
 
 #. [column]
 #: data/gui/window/advanced_graphics_options.cfg:128
 msgid "All units, haloes, border hexes"
-msgstr ""
+msgstr "Všechny jednotky, halo efekty, šestiúhelníkové rámečky"
 
 #. [column]
 #: data/gui/window/advanced_graphics_options.cfg:128
 msgid "Scaled to zoom"
-msgstr ""
+msgstr "Škálováno kvůli přiblížení"
 
 #. [column]
 #: data/gui/window/advanced_graphics_options.cfg:139
 msgid "Everything else"
-msgstr ""
+msgstr "Všechno ostatní"
 
 #. [column]
 #: data/gui/window/advanced_graphics_options.cfg:139
 msgid "Scaled to hex"
-msgstr ""
+msgstr "Škálované na šestiúhelník"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -2349,7 +2317,7 @@ msgstr "Hraj tažení"
 #. [toggle_button]: id=checkbox_deterministic
 #: data/gui/window/campaign_dialog.cfg:490
 msgid "Deterministic mode"
-msgstr ""
+msgstr "Deterministický mód"
 
 #. [toggle_button]: id=checkbox_deterministic
 #: data/gui/window/campaign_dialog.cfg:492
@@ -2357,6 +2325,8 @@ msgid ""
 "Makes the random number generator yield the same results even after "
 "reloading a game"
 msgstr ""
+"Nastaví generátor náhodných čísel tak, aby vytvářel stejné výsledky i po "
+"znovunačtení hry"
 
 #. [label]: id=title
 #: data/gui/window/campaign_difficulty.cfg:58
@@ -2370,22 +2340,18 @@ msgstr "Vyber si obtížnost:"
 
 #. [label]
 #: data/gui/window/campaign_settings.cfg:48
-#, fuzzy
-#| msgid "sound^Advanced Options"
 msgid "Advanced Settings"
-msgstr "Pokročilé nastavení"
+msgstr "Pokročilá nastavení"
 
 #. [label]
 #: data/gui/window/campaign_settings.cfg:77
 msgid "Additional dialogs:"
-msgstr ""
+msgstr "Další dialogy:"
 
 #. [toggle_button]: id=mp_connect
 #: data/gui/window/campaign_settings.cfg:116
-#, fuzzy
-#| msgid "Configuration:"
 msgid "Configure sides"
-msgstr "Nastavení:"
+msgstr "Nastavení stran"
 
 #. [label]: id=era_label
 #: data/gui/window/campaign_settings.cfg:157 data/gui/window/lobby_main.cfg:132
@@ -2397,10 +2363,8 @@ msgstr "Éra:"
 #. [label]: id=mods_header
 #: data/gui/window/campaign_settings.cfg:246 data/gui/window/lobby_main.cfg:167
 #: data/gui/window/mp_create_game.cfg:203
-#, fuzzy
-#| msgid "Choose Modifications"
 msgid "Modifications:"
-msgstr "Vyber si rozšíření"
+msgstr "Rozšíření:"
 
 #. [label]
 #: data/gui/window/chat_log.cfg:36
@@ -2453,7 +2417,7 @@ msgstr "Filtr:"
 #: data/gui/window/chat_log.cfg:196 data/gui/window/gamestate_inspector.cfg:335
 #: data/gui/window/lua_interpreter.cfg:105 data/gui/window/wml_error.cfg:124
 msgid "clipboard^Copy"
-msgstr "clipboard^Kopírovat"
+msgstr "Kopírovat"
 
 #. [button]: id=copy
 #: data/gui/window/chat_log.cfg:197 data/gui/window/lua_interpreter.cfg:106
@@ -2464,15 +2428,11 @@ msgstr "Zkopíruj adresu do schránky"
 
 #. [label]
 #: data/gui/window/core_dialog.cfg:44
-#, fuzzy
-#| msgid "Load Game"
 msgid "Load Core"
-msgstr "Načti hru"
+msgstr "Načíst zdroje"
 
 #. [label]
 #: data/gui/window/custom_tod.cfg:45
-#, fuzzy
-#| msgid "Custom Time of Day Schedule"
 msgid "Custom Time Schedule"
 msgstr "Volitelné nastavení rozvržení dne"
 
@@ -2609,17 +2569,17 @@ msgstr "Pouze pro tým"
 #. [label]
 #: data/gui/window/editor_edit_label.cfg:106
 msgid "Category:"
-msgstr ""
+msgstr "Kategorie:"
 
 #. [label]
 #: data/gui/window/editor_edit_label.cfg:152
 msgid "Properties"
-msgstr ""
+msgstr "Vlastnosti"
 
 #. [label]
 #: data/gui/window/editor_edit_label.cfg:164
 msgid "Color"
-msgstr ""
+msgstr "Barva"
 
 #. [toggle_button]: id=immutable_toggle
 #: data/gui/window/editor_edit_label.cfg:181
@@ -2730,43 +2690,37 @@ msgstr "Ovládá:"
 #. [row]
 #: data/gui/window/editor_edit_side.cfg:373
 msgid "controller^Human"
-msgstr "controller^Člověk"
+msgstr "Člověk"
 
 #. [row]
 #: data/gui/window/editor_edit_side.cfg:375
 msgid "controller^AI only"
-msgstr "controller^Pouze umělá inteligence"
+msgstr "Pouze umělá inteligence"
 
 #. [row]
 #: data/gui/window/editor_edit_side.cfg:377
 msgid "controller^None"
-msgstr "controller^Nikdo"
+msgstr "Nikdo"
 
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:396
-#, fuzzy
-#| msgid "Share view"
 msgid "Share Vision:"
-msgstr "Sdílet pohled"
+msgstr "Sdílet pohled:"
 
 #. [row]
 #: data/gui/window/editor_edit_side.cfg:406
 msgid "vision^All"
-msgstr ""
+msgstr "Vše"
 
 #. [row]
 #: data/gui/window/editor_edit_side.cfg:408
-#, fuzzy
-#| msgid "Shroud"
 msgid "vision^Shroud"
 msgstr "Zahalení tmou"
 
 #. [row]
 #: data/gui/window/editor_edit_side.cfg:410
-#, fuzzy
-#| msgid "translations^None"
 msgid "vision^None"
-msgstr "žádné"
+msgstr "Žádné"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -2776,10 +2730,8 @@ msgstr "Vygeneruj mapu"
 
 #. [label]
 #: data/gui/window/editor_generate_map.cfg:58
-#, fuzzy
-#| msgid "Map Generator"
 msgid "Choose a map generator:"
-msgstr "Generátor map"
+msgstr "Vyber generátor map:"
 
 #. [button]: id=settings
 #. [button]: id=random_map_settings
@@ -2790,10 +2742,8 @@ msgstr "Nastavení"
 
 #. [label]
 #: data/gui/window/editor_generate_map.cfg:161
-#, fuzzy
-#| msgid "Speed: "
 msgid "Seed:"
-msgstr "Rychlost: "
+msgstr "Základ:"
 
 #. [button]: id=ok
 #: data/gui/window/editor_generate_map.cfg:202
@@ -2979,10 +2929,8 @@ msgstr "Konec"
 
 #. [label]: id=title
 #: data/gui/window/game_cache_options.cfg:36
-#, fuzzy
-#| msgid "Cache:"
 msgid "WML Cache"
-msgstr "Cache:"
+msgstr "WML cache:"
 
 #. [label]
 #: data/gui/window/game_cache_options.cfg:53
@@ -2993,13 +2941,16 @@ msgid ""
 "files generated by older versions; or you may purge its entire contents if "
 "you are experiencing issues when loading the game data."
 msgstr ""
+"Bitva o Wesnoth si udržuje cache předzpracovaných WML dat pro kampaně, "
+"scénáře pro hry více hráčů a další součásti hry kvůli zrychlení načítání. "
+"Cache mohou být bezpečně smazány pro uvolnění místa na disku, zároveň se "
+"odstraní staré soubory vytvořené staršími verzemi; můžete vyčistit úplně "
+"celý obsah cache, pokud máte potíže při načítání hry."
 
 #. [label]
 #: data/gui/window/game_cache_options.cfg:81
-#, fuzzy
-#| msgid "Paths"
 msgid "Path:"
-msgstr "Cesta"
+msgstr "Cesta:"
 
 #. [button]: id=copy
 #. [button]: id=copy_
@@ -3007,7 +2958,7 @@ msgstr "Cesta"
 #: data/gui/window/game_version.cfg:46
 #: data/gui/window/screenshot_notification.cfg:33
 msgid "filesystem^Copy"
-msgstr "filesystem^Kopírovat"
+msgstr "Kopírovat"
 
 #. [button]: id=copy
 #. [button]: id=copy_
@@ -3022,7 +2973,7 @@ msgstr "Zkopíruj cestu do schránky"
 #: data/gui/window/game_cache_options.cfg:126
 #: data/gui/window/game_version.cfg:62
 msgid "filesystem^Browse"
-msgstr "filesystem^Procházet"
+msgstr "Procházet"
 
 #. [button]: id=browse
 #. [button]: id=browse_
@@ -3034,22 +2985,22 @@ msgstr "Procházet umístění ve správci souborů"
 #. [button]: id=clean
 #: data/gui/window/game_cache_options.cfg:194
 msgid "cache^Clean"
-msgstr ""
+msgstr "Vyčistit"
 
 #. [button]: id=clean
 #: data/gui/window/game_cache_options.cfg:195
 msgid "Clear stale and unused cache files"
-msgstr ""
+msgstr "Smazat staré a nepoužívané soubory cache"
 
 #. [button]: id=purge
 #: data/gui/window/game_cache_options.cfg:207
 msgid "cache^Purge"
-msgstr ""
+msgstr "Vyčistit"
 
 #. [button]: id=purge
 #: data/gui/window/game_cache_options.cfg:208
 msgid "Purge the entire contents of the cache"
-msgstr ""
+msgstr "Vyčistit celý obsah cache"
 
 #. [label]: id=lblTitle
 #: data/gui/window/game_delete.cfg:40
@@ -3211,11 +3162,11 @@ msgstr "Strana"
 #. [toggle_button]: id=sort_2
 #: data/gui/window/game_stats.cfg:311
 #, fuzzy
-#| msgid "Random starting time"
+#| msgid "Starting game"
 msgid ""
 "Starting\n"
 "Gold"
-msgstr "Náhodná počáteční doba"
+msgstr "Začátek hry"
 
 #. [toggle_button]: id=sort_3
 #: data/gui/window/game_stats.cfg:325
@@ -3270,9 +3221,9 @@ msgstr "Upravit nastavení scénáře"
 #. [button]: id=ok
 #: data/gui/window/game_stats.cfg:831 data/gui/window/unit_list.cfg:436
 #, fuzzy
-#| msgid "Scroll speed:"
+#| msgid "Scroll Down"
 msgid "Scroll To"
-msgstr "Rychlost posouvání:"
+msgstr "Posunout dolů"
 
 #. [grid]
 #: data/gui/window/game_version.cfg:126
@@ -3307,40 +3258,40 @@ msgstr "Cache:"
 #. [button]: id=open_stderr
 #: data/gui/window/game_version.cfg:161
 msgid "Open Log File"
-msgstr ""
+msgstr "Otevřít soubor s logy"
 
 #. [button]: id=open_stderr
 #: data/gui/window/game_version.cfg:162
 msgid "Opens the log file, which may contain useful debug information"
 msgstr ""
+"Otevře soubor s logy, který může obsahovat užitečné informace pro debugování"
 
 #. [label]
 #: data/gui/window/game_version.cfg:195
 msgid "library^Name"
-msgstr ""
+msgstr "Jméno"
 
 #. [label]
 #: data/gui/window/game_version.cfg:205
 msgid "library^Build version"
-msgstr ""
+msgstr "Verze sestavení"
 
 #. [label]
 #: data/gui/window/game_version.cfg:215
 msgid "library^Runtime version"
-msgstr ""
+msgstr "Verze běhového prostředí"
 
 #. [label]
 #: data/gui/window/game_version.cfg:293
 msgid ""
 "The following features were selected when building this version of Wesnoth:"
 msgstr ""
+"Následující funkce byly vybrané při vytváření této verze Bitvy o Wesnoth:"
 
 #. [label]
 #: data/gui/window/game_version.cfg:447
-#, fuzzy
-#| msgid "Show Battle for Wesnoth help"
 msgid "The Battle for Wesnoth"
-msgstr "Zobrazit nápovědu Bitvy o Wesnoth"
+msgstr "Bitva o Wesnoth"
 
 #. [widget]: id=tab_label
 #: data/gui/window/game_version.cfg:526
@@ -3350,26 +3301,22 @@ msgstr "Cesta"
 #. [widget]: id=tab_label
 #: data/gui/window/game_version.cfg:539
 msgid "Libraries"
-msgstr ""
+msgstr "Knihovny"
 
 #. [widget]: id=tab_label
 #: data/gui/window/game_version.cfg:552
 msgid "Features"
-msgstr ""
+msgstr "Vymakávky"
 
 #. [button]: id=copy_all
 #: data/gui/window/game_version.cfg:627
-#, fuzzy
-#| msgid "Copy"
 msgid "page^Copy"
 msgstr "Kopírovat"
 
 #. [button]: id=copy_all
 #: data/gui/window/game_version.cfg:628
-#, fuzzy
-#| msgid "Copy this report to clipboard"
 msgid "Copy the full report to clipboard"
-msgstr "Zkopíruj toto hlášení do schránky"
+msgstr "Zkopíruj kompletní hlášení do schránky"
 
 #. [label]
 #: data/gui/window/gamestate_inspector.cfg:94
@@ -3387,7 +3334,7 @@ msgstr "Zkopíruj toto hlášení do schránky"
 #: data/gui/window/gamestate_inspector.cfg:348
 #: data/gui/window/lua_interpreter.cfg:38
 msgid "Lua Console"
-msgstr ""
+msgstr "Konzole Lua"
 
 #. [label]
 #: data/gui/window/generator_settings.cfg:89
@@ -3453,10 +3400,8 @@ msgstr "Zobrazuj plovoucí popisky"
 
 #. [label]: id=title
 #: data/gui/window/label_settings.cfg:42
-#, fuzzy
-#| msgid "Show floating labels"
 msgid "Show or Hide Labels"
-msgstr "Zobrazuj plovoucí popisky"
+msgstr "Zobraz nebo skryj popisky"
 
 #. [label]
 #. [grid]
@@ -3472,10 +3417,8 @@ msgstr "Vyber si preferovaný jazyk:"
 
 #. [label]: id=status
 #: data/gui/window/loadscreen.cfg:150
-#, fuzzy
-#| msgid "Load Game..."
 msgid "Loading..."
-msgstr "Načti hru..."
+msgstr "Načítám..."
 
 #. [label]: id=map
 #: data/gui/window/lobby_main.cfg:59
@@ -3580,10 +3523,8 @@ msgstr "Invertovat filtr"
 
 #. [button]: id=quit
 #: data/gui/window/lobby_main.cfg:536 data/gui/window/lobby_main.cfg:706
-#, fuzzy
-#| msgid "Zoom Out"
 msgid "Log Out"
-msgstr "Oddal pohled"
+msgstr "Odhlásit se"
 
 #. [button]: id=refresh
 #: data/gui/window/lobby_main.cfg:546 data/gui/window/lobby_main.cfg:694
@@ -3656,10 +3597,8 @@ msgstr "Informace o hráči - "
 #. [button]: id=add_to_friends
 #: data/gui/window/lobby_player_info.cfg:94
 #: data/gui/window/preferences/05_multiplayer.cfg:291
-#, fuzzy
-#| msgid "Add as Friend"
 msgid "Add Friend"
-msgstr "Přidej jako přítele"
+msgstr "Přidej přítele"
 
 #. [button]: id=add_ignored
 #. [button]: id=add_to_ignores
@@ -3717,17 +3656,13 @@ msgstr "Vyhodit/zakázat"
 
 #. [label]
 #: data/gui/window/logging.cfg:86
-#, fuzzy
-#| msgid "Options"
 msgid "Logging Options"
-msgstr "Nastavení"
+msgstr "Nastavení logování"
 
 #. [button]: id=clear
 #: data/gui/window/lua_interpreter.cfg:117
-#, fuzzy
-#| msgid "Clean Gray Cobbles"
 msgid "Clear Console"
-msgstr "Čisté šedé kočičí hlavy"
+msgstr "Vyčistit konzoli"
 
 #. [button]: id=clear
 #: data/gui/window/lua_interpreter.cfg:118
@@ -3737,10 +3672,8 @@ msgstr ""
 # !!!! možný konflikt ohledně velikosti tlačítka a délky textu - prověřit
 #. [label]: id=title
 #: data/gui/window/mp_alerts_options.cfg:95
-#, fuzzy
-#| msgid "Multiplayer"
 msgid "Multiplayer Alerts"
-msgstr "Hra více hráčů"
+msgstr "Upozornění ve hře více hráčů"
 
 #. [label]
 #: data/gui/window/mp_alerts_options.cfg:113
@@ -3749,130 +3682,115 @@ msgid ""
 "multiplayer lobby; either by playing sound alerts or (if the game window is "
 "inactive or minimized) displaying desktop notifications."
 msgstr ""
+"Vybrat způsob, kterým chcete být informovaní o událostech při hře více hráčů "
+"a v čekárně před hrou více hráčů; buď bude přehráno zvukové upozornění nebo "
+"(pokud je okno neaktivní nebo minimalizované) zobrazením notifikace."
 
 #. [label]
 #: data/gui/window/mp_alerts_options.cfg:139
 msgid "Event"
-msgstr ""
+msgstr "Událost"
 
 #. [label]: id=notification_label
 #: data/gui/window/mp_alerts_options.cfg:170
-#, fuzzy
-#| msgid "Choose Modifications"
 msgid "Desktop Notification"
-msgstr "Vyber si rozšíření"
+msgstr "Notifikace"
 
 #. [label]
 #: data/gui/window/mp_alerts_options.cfg:185
-#, fuzzy
-#| msgid "Lobby"
 msgid "In Lobby"
-msgstr "Čekárna"
+msgstr "V čekárně"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:191
-#, fuzzy
-#| msgid "Players:"
 msgid "Player joins:"
-msgstr "Počet hráčů:"
+msgstr "Hráč se připojil:"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:191
 msgid "When a player joins the lobby or game"
-msgstr ""
+msgstr "Když se hráč připojí do čekárny nebo do hry"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:192
-#, fuzzy
-#| msgid "Players:"
 msgid "Player leaves:"
-msgstr "Počet hráčů:"
+msgstr "Hráč se odpojil:"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:192
 msgid "When a player leaves the lobby or game"
-msgstr ""
+msgstr "Když se hráč odpojí z čekárny nebo ze hry"
 
 # v chatu, "levá část tabulky" (jméno) - nesmí být příliš dlouhé!
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:193
-#, fuzzy
-#| msgid "whisper to $receiver"
 msgid "When a whisper is received"
-msgstr "soukr. zpr. pro $receiver"
+msgstr "Při obdržení zprávy šeptem"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:193
 msgid "Whisper:"
-msgstr ""
+msgstr "Šeptat:"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:194
-#, fuzzy
-#| msgid "Friends"
 msgid "Friend message:"
-msgstr "Přátelé"
+msgstr "Zpráva od přítele:"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:194
 msgid "When a message from a friend is received"
-msgstr ""
+msgstr "Když obdržíte zprávu od přítele"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:195
-#, fuzzy
-#| msgid "Message:"
 msgid "Public message:"
-msgstr "Zpráva:"
+msgstr "Veřejná zpráva:"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:195
 msgid "When a public message is received"
-msgstr ""
+msgstr "Když obdržíte veřejnou zpárvu"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:196
-#, fuzzy
-#| msgid "Send Private Message"
 msgid "Server message:"
-msgstr "Pošli soukromou zprávu"
+msgstr "Zpráva od serveru:"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:196
 msgid "When a server message is received"
-msgstr ""
+msgstr "Když obdržíte zprávu od serveru"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:197
-#, fuzzy
-#| msgid "Random start time"
 msgid "Ready to start:"
-msgstr "Náhodná počáteční doba"
+msgstr "Připraveni začít:"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:197
 msgid "When the game you are hosting is ready to start"
-msgstr ""
+msgstr "Když je hra, kterou hostíte, připravená ke spuštění"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:198
 msgid "Game has begun:"
-msgstr ""
+msgstr "Hra začala:"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:198
 msgid "When the host (not you) has started the game"
-msgstr ""
+msgstr "Když nejste hostitel a hra začala"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:199
 msgid "Turn changed:"
-msgstr ""
+msgstr "Změnil se tah:"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:199
 msgid "When a new turn has begun"
-msgstr ""
+msgstr "Když začne další tah"
 
 #. [button]: id=revert_to_defaults
 #. [button]: id=btn_reset_hotkeys
@@ -3885,8 +3803,6 @@ msgstr "Výchozí"
 
 #. [button]: id=revert_to_defaults
 #: data/gui/window/mp_alerts_options.cfg:235
-#, fuzzy
-#| msgid "Reset all bindings to the default values"
 msgid "Reset all options to their default values"
 msgstr "Nastavit všechny zkratky na výchozí hodnoty"
 
@@ -4091,8 +4007,10 @@ msgstr ""
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:451
+#, fuzzy
+#| msgid "Initializing teams"
 msgid "Initial Limit"
-msgstr ""
+msgstr "Vytváření týmů"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:451
@@ -4341,16 +4259,18 @@ msgstr ""
 #. [label]: id=title
 #: data/gui/window/mp_join_game.cfg:496 data/gui/window/mp_staging.cfg:631
 #, fuzzy
-#| msgid "Lobby"
+#| msgid "In Lobby"
 msgid "Game Lobby"
-msgstr "Čekárna"
+msgstr "V čekárně"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=status_label
 #: data/gui/window/mp_join_game.cfg:565 data/gui/window/mp_staging.cfg:700
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:431
+#, fuzzy
+#| msgid "Waiting for remote input"
 msgid "Waiting for players to join..."
-msgstr ""
+msgstr "Čekáme na vzdálený vstup"
 
 #. [label]: id=title
 #: data/gui/window/mp_join_game_password_prompt.cfg:42
@@ -4462,9 +4382,9 @@ msgstr "Vybrat"
 #. [widget]: id=label
 #: data/gui/window/preferences.cfg:310
 #, fuzzy
-#| msgid "Hotkeys"
+#| msgid "Hotkey"
 msgid "Hotkeys"
-msgstr "Klávesové zkratky"
+msgstr "Klávesová zkratka"
 
 #. [widget]: id=label
 #: data/gui/window/preferences.cfg:328
@@ -4476,9 +4396,9 @@ msgstr "Obnovit pohled"
 #. [widget]: id=label
 #: data/gui/window/preferences.cfg:382
 #, fuzzy
-#| msgid "sound^Advanced Options"
+#| msgid "Advanced Settings"
 msgid "Advanced"
-msgstr "Pokročilé nastavení"
+msgstr "Pokročilá nastavení"
 
 #. [label]
 #: data/gui/window/preferences/01_general.cfg:20
@@ -4512,10 +4432,8 @@ msgstr "Neanimuj jednotky ovládané počítačem"
 
 #. [column]
 #: data/gui/window/preferences/01_general.cfg:83
-#, fuzzy
-#| msgid "Speed: "
 msgid "Speed:"
-msgstr "Rychlost: "
+msgstr "Rychlost:"
 
 #. [column]
 #: data/gui/window/preferences/01_general.cfg:87
@@ -4525,14 +4443,12 @@ msgstr "Rychlost pohybu a boje jednotek"
 #. [toggle_button]: id=disable_auto_moves
 #: data/gui/window/preferences/01_general.cfg:103
 msgid "Disable automatic moves"
-msgstr ""
+msgstr "Zakázat automatické pohyby"
 
 #. [toggle_button]: id=disable_auto_moves
 #: data/gui/window/preferences/01_general.cfg:104
-#, fuzzy
-#| msgid "Play a bell sound at the beginning of your turn"
 msgid "Do not allow automatic movements at the beginning of a turn"
-msgstr "Zvonek na začátku tvého kola"
+msgstr "Zakázat automatické pohyby na počátku herního kola"
 
 #. [toggle_button]: id=show_turn_dialog
 #: data/gui/window/preferences/01_general.cfg:117
@@ -4561,8 +4477,6 @@ msgstr "Skrývat plány spojenců jako výchozí stav"
 
 #. [toggle_button]: id=whiteboard_hide_allies
 #: data/gui/window/preferences/01_general.cfg:146
-#, fuzzy
-#| msgid "Hides allies’ Planning Mode plans in multiplayer games"
 msgid "Hide allies’ Planning Mode plans in multiplayer games"
 msgstr "Skrýt plánovací mód spojenců ve hrách více hráčů"
 
@@ -4583,11 +4497,8 @@ msgstr "Uložit záznam na konci scénáře"
 
 #. [toggle_button]: id=save_replays
 #: data/gui/window/preferences/01_general.cfg:176
-#, fuzzy
-#| msgid ""
-#| "Saves replays of games on victory in all modes and defeat in multiplayer"
 msgid "Save replays of games on victory in all modes and defeat in multiplayer"
-msgstr "Ukládá záznamy vítězných her a z prohraných při hře více hráčů"
+msgstr "Ukládá záznamy vyhraných i prohraných her při hře více hráčů"
 
 #. [toggle_button]: id=delete_saves
 #: data/gui/window/preferences/01_general.cfg:189
@@ -4597,22 +4508,16 @@ msgstr "Na konci scénáře smazat všechna automatická uložení"
 # !!!! délka
 #. [toggle_button]: id=delete_saves
 #: data/gui/window/preferences/01_general.cfg:190
-#, fuzzy
-#| msgid ""
-#| "Deletes previous auto-saves on victory in all modes and defeat in "
-#| "multiplayer"
 msgid ""
 "Delete previous auto-saves on victory in all modes and defeat in multiplayer"
 msgstr ""
-"Maž uložené pozice při prohře ve hře více hráčů a každém vítězství při hře "
-"více hráčů"
+"Při jakékoliv výhře a při prohře ve hře více hráčů smazat všechny dosavadní "
+"automatická uložení"
 
 #. [column]
 #: data/gui/window/preferences/01_general.cfg:200
-#, fuzzy
-#| msgid "Maximum auto-saves: "
 msgid "Maximum auto-saves:"
-msgstr "Maximum automaticky uložených her: "
+msgstr "Maximum automaticky uložených her:"
 
 # !!!! délka
 #. [column]
@@ -4622,17 +4527,13 @@ msgstr "Nastav maximální počet automaticky uložených her k ponechání"
 
 #. [button]: id=cachemg
 #: data/gui/window/preferences/01_general.cfg:220
-#, fuzzy
-#| msgid "Cache:"
 msgid "Cache"
-msgstr "Cache:"
+msgstr "Cache"
 
 #. [button]: id=cachemg
 #: data/gui/window/preferences/01_general.cfg:221
-#, fuzzy
-#| msgid "Change the sample rate"
 msgid "Manage the game WML cache"
-msgstr "Změna vzorkovací frekvence"
+msgstr "Spravovat WML cache"
 
 #. [toggle_button]: id=sort_0
 #: data/gui/window/preferences/02_hotkeys.cfg:87
@@ -4641,40 +4542,38 @@ msgstr "Akce"
 
 #. [toggle_button]: id=sort_1
 #: data/gui/window/preferences/02_hotkeys.cfg:99
-#, fuzzy
-#| msgid "Hotkeys"
 msgid "Hotkey"
-msgstr "Klávesové zkratky"
+msgstr "Klávesová zkratka"
 
 #. [toggle_button]: id=sort_2
 #: data/gui/window/preferences/02_hotkeys.cfg:110
 msgid "game_hotkeys^G"
-msgstr ""
+msgstr "G"
 
 #. [toggle_button]: id=sort_2
 #: data/gui/window/preferences/02_hotkeys.cfg:111
 msgid "Available in game"
-msgstr ""
+msgstr "Dostupné ve hře"
 
 #. [toggle_button]: id=sort_3
 #: data/gui/window/preferences/02_hotkeys.cfg:122
 msgid "editor_hotkeys^E"
-msgstr ""
+msgstr "E"
 
 #. [toggle_button]: id=sort_3
 #: data/gui/window/preferences/02_hotkeys.cfg:123
 msgid "Available in editor"
-msgstr ""
+msgstr "Dostupné v editoru"
 
 #. [toggle_button]: id=sort_4
 #: data/gui/window/preferences/02_hotkeys.cfg:134
 msgid "titlescreen_hotkeys^T"
-msgstr ""
+msgstr "T"
 
 #. [toggle_button]: id=sort_4
 #: data/gui/window/preferences/02_hotkeys.cfg:135
 msgid "Available at titlescreen"
-msgstr ""
+msgstr "Dostupné na úvodní obrazovce"
 
 #. [button]: id=btn_add_hotkey
 #: data/gui/window/preferences/02_hotkeys.cfg:247
@@ -4688,17 +4587,13 @@ msgstr "Odeber"
 
 #. [label]
 #: data/gui/window/preferences/03_display.cfg:20
-#, fuzzy
-#| msgid "Change Resolution"
 msgid "Resolution:"
-msgstr "Změna rozlišení"
+msgstr "Rozlišení:"
 
 #. [menu_button]: id=resolution_set
 #: data/gui/window/preferences/03_display.cfg:32
-#, fuzzy
-#| msgid "Change the sample rate"
 msgid "Change the game resolution"
-msgstr "Změna vzorkovací frekvence"
+msgstr "Změna rozlišení hry"
 
 #. [toggle_button]: id=fullscreen
 #: data/gui/window/preferences/03_display.cfg:48
@@ -4708,7 +4603,7 @@ msgstr "Celá obrazovka"
 #. [toggle_button]: id=fullscreen
 #: data/gui/window/preferences/03_display.cfg:49
 msgid "Toggle between fullscreen and window mode"
-msgstr ""
+msgstr "Přepnout mezi režimem celé obrazovky a režimem okna"
 
 #. [toggle_button]: id=show_floating_labels
 #: data/gui/window/preferences/03_display.cfg:68
@@ -4718,7 +4613,7 @@ msgstr "Zobrazuj plovoucí popisky"
 #. [toggle_button]: id=show_floating_labels
 #: data/gui/window/preferences/03_display.cfg:69
 msgid "Show damage and healing amounts above a unit"
-msgstr ""
+msgstr "Zobrazit počty ubraných a vyléčených životů nad jednotkou"
 
 #. [toggle_button]: id=show_ellipses
 #: data/gui/window/preferences/03_display.cfg:82
@@ -4740,8 +4635,6 @@ msgstr "Zobrazuj mřížku"
 
 #. [toggle_button]: id=show_grid
 #: data/gui/window/preferences/03_display.cfg:99
-#, fuzzy
-#| msgid "Overlay a grid onto the map"
 msgid "Overlay a grid over the map"
 msgstr "Nakresli přes mapu mřížku"
 
@@ -4757,17 +4650,13 @@ msgstr "Animovaný terén"
 
 #. [toggle_button]: id=animate_water
 #: data/gui/window/preferences/03_display.cfg:128
-#, fuzzy
-#| msgid "Animate map"
 msgid "Animate water"
-msgstr "Animovat mapu"
+msgstr "Animovat vodu"
 
 #. [toggle_button]: id=animate_water
 #: data/gui/window/preferences/03_display.cfg:129
-#, fuzzy
-#| msgid "Display animated terrain graphics"
 msgid "Display animated water graphics (can be slow)"
-msgstr "Animovaný terén"
+msgstr "Zobraz animace vody (může být pomalé)"
 
 #. [toggle_button]: id=animate_units_standing
 #: data/gui/window/preferences/03_display.cfg:142
@@ -4804,12 +4693,12 @@ msgstr "Frekvence náhodných animací jednotek"
 #. [label]
 #: data/gui/window/preferences/03_display.cfg:229
 msgid "Font Scaling:"
-msgstr ""
+msgstr "Škálování písma:"
 
 #. [slider]: id=scaling_slider
 #: data/gui/window/preferences/03_display.cfg:244
 msgid "Set the scaling factor of fonts"
-msgstr ""
+msgstr "Nastavit poměr škálování pro písma"
 
 #. [button]: id=choose_theme
 #: data/gui/window/preferences/03_display.cfg:274
@@ -4818,10 +4707,8 @@ msgstr "Téma"
 
 #. [button]: id=choose_theme
 #: data/gui/window/preferences/03_display.cfg:275
-#, fuzzy
-#| msgid "Change the sample rate"
 msgid "Change the in-game theme"
-msgstr "Změna vzorkovací frekvence"
+msgstr "Změna tématu hry"
 
 #. [label]
 #: data/gui/window/preferences/04_sound.cfg:38
@@ -4885,8 +4772,6 @@ msgstr "Změna hlasitosti zvonku na konci kola"
 
 #. [column]
 #: data/gui/window/preferences/04_sound.cfg:137
-#, fuzzy
-#| msgid "Turn menu and button sounds on/off"
 msgid "Turn menu and button sounds on/off"
 msgstr "Zapne/vypne zvukové efekty menu a tlačítek"
 
@@ -4897,22 +4782,16 @@ msgstr "Zvuky uživatelského rozhraní"
 
 #. [column]
 #: data/gui/window/preferences/04_sound.cfg:138
-#, fuzzy
-#| msgid "Change the sound volume for button clicks, etc."
 msgid "Change the sound volume for button clicks, etc."
 msgstr "Změna hlasitosti pro zvukové efekty klikání na tlačítka atd."
 
 #. [label]
 #: data/gui/window/preferences/05_multiplayer.cfg:20
-#, fuzzy
-#| msgid "Chat lines: "
 msgid "Chat lines:"
 msgstr "Řádek chatu:"
 
 #. [slider]: id=chat_lines
 #: data/gui/window/preferences/05_multiplayer.cfg:36
-#, fuzzy
-#| msgid "Set the amount of chat lines shown"
 msgid "Set the number of chat lines shown"
 msgstr "Nastav počet zobrazovaných řádek chatu"
 
@@ -4960,14 +4839,12 @@ msgstr "Ukazuj ikony před jmény hráčů v čekárně"
 #. [toggle_button]: id=lobby_whisper_friends_only
 #: data/gui/window/preferences/05_multiplayer.cfg:112
 msgid "Accept whispers from friends only"
-msgstr ""
+msgstr "Přijímat šeptání jen od přátel"
 
 #. [toggle_button]: id=lobby_whisper_friends_only
 #: data/gui/window/preferences/05_multiplayer.cfg:113
-#, fuzzy
-#| msgid "Add this username to your friends list"
 msgid "Only accept whisper messages from people on your friends list"
-msgstr "Přidej tuto přezdívku do seznamu přátel"
+msgstr "Přijímat soukromé zprávy pouze od lidí ve vašem seznamu přátel"
 
 #. [toggle_button]: id=lobby_joins_none
 #: data/gui/window/preferences/05_multiplayer.cfg:129
@@ -5002,21 +4879,17 @@ msgstr "Ukazuj zprávy o všech hráčích, kteří se připojili k serveru"
 #. [button]: id=mp_alerts
 #: data/gui/window/preferences/05_multiplayer.cfg:177
 msgid "Alerts"
-msgstr ""
+msgstr "Výstrahy"
 
 #. [button]: id=mp_alerts
 #: data/gui/window/preferences/05_multiplayer.cfg:178
-#, fuzzy
-#| msgid "Configure the game’s settings"
 msgid "Configure multiplayer notification settings"
-msgstr "Konfigurovat nastavení hry"
+msgstr "Nastavit upozornění ve hře více hráčů"
 
 #. [button]: id=mp_wesnothd
 #: data/gui/window/preferences/05_multiplayer.cfg:190
-#, fuzzy
-#| msgid "Send Private Message"
 msgid "Server Executable"
-msgstr "Pošli soukromou zprávu"
+msgstr "Soubor spouštící server"
 
 #. [button]: id=mp_wesnothd
 #: data/gui/window/preferences/05_multiplayer.cfg:191
@@ -5034,16 +4907,12 @@ msgstr ""
 
 #. [button]: id=add_ignored
 #: data/gui/window/preferences/05_multiplayer.cfg:305
-#, fuzzy
-#| msgid ""
-#| "Add this username to your ignores list (add optional reason, e.g., "
-#| "'player_name reason ignored')"
 msgid ""
 "Add this username to your ignore list (add optional reason, e.g., "
 "'player_name reason ignored')"
 msgstr ""
-"Přidat toto uživatelské jméno do seznamu ignorovaných (volitelně, např. "
-"'jméno hráče důvod ignorování')"
+"Přidat tohoto uživatele do seznamu ignorovaných (volitelně vyberte důvod, "
+"např. 'důvod ignorování')"
 
 #. [button]: id=remove
 #: data/gui/window/preferences/05_multiplayer.cfg:318
@@ -5058,7 +4927,7 @@ msgstr ""
 #. [button]: id=open
 #: data/gui/window/screenshot_notification.cfg:49
 msgid "filesystem^Open"
-msgstr "filesystem^Otevřít"
+msgstr "Otevřít"
 
 #. [button]: id=open
 #: data/gui/window/screenshot_notification.cfg:50
@@ -5135,17 +5004,15 @@ msgstr ""
 #. [label]: id=lblTitle
 #: data/gui/window/synced_choice_wait.cfg:40
 msgid "Waiting..."
-msgstr ""
+msgstr "Čekám..."
 
 #. [label]: id=lblMessage
 #: data/gui/window/synced_choice_wait.cfg:60
 msgid "Waiting for remote input"
-msgstr ""
+msgstr "Čekáme na vzdálený vstup"
 
 #. [button]: id=btn_quit_game
 #: data/gui/window/synced_choice_wait.cfg:96
-#, fuzzy
-#| msgid "Quit Game"
 msgid "Quit game"
 msgstr "Ukončit hru"
 
@@ -5189,8 +5056,6 @@ msgstr "Výcvik"
 #. [grid]
 #: data/gui/window/title_screen.cfg:252
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:96
-#, fuzzy
-#| msgid "Campaign"
 msgid "Campaigns"
 msgstr "Tažení"
 
@@ -5230,17 +5095,13 @@ msgstr "Stažení balíčků map, ér, tažení apod. vytvořených komunitou"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:256
-#, fuzzy
-#| msgid "Forest"
 msgid "Cores"
-msgstr "Les"
+msgstr "Zdroje"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:256
-#, fuzzy
-#| msgid "Selected game"
 msgid "Select the game core data"
-msgstr "Vybraná hra"
+msgstr "Zvolte zdrojová herní data"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:257
@@ -5281,14 +5142,14 @@ msgstr "Ukončit hru"
 #. [button]: id=about
 #: data/gui/window/title_screen.cfg:463
 msgid "Display the game version and build information"
-msgstr ""
+msgstr "Zobrazení verze hry a informace o sestavení"
 
 #. [label]
 #: data/gui/window/unit_advance.cfg:98
 #, fuzzy
-#| msgid "sound^Advanced Options"
+#| msgid "Advanced Settings"
 msgid "Advance Unit"
-msgstr "Pokročilé nastavení"
+msgstr "Pokročilá nastavení"
 
 #. [label]
 #: data/gui/window/unit_advance.cfg:142
@@ -5298,7 +5159,7 @@ msgstr ""
 #. [button]: id=damage_calculation
 #: data/gui/window/unit_attack.cfg:192
 msgid "Damage Calculation"
-msgstr ""
+msgstr "Výpočet zranění"
 
 #. [button]: id=ok
 #: data/gui/window/unit_attack.cfg:220
@@ -5307,17 +5168,13 @@ msgstr "Útok!"
 
 #. [label]
 #: data/gui/window/unit_attack.cfg:305
-#, fuzzy
-#| msgid "Attack enemy"
 msgid "Attack Enemy"
 msgstr "Napadni nepřítele"
 
 #. [label]
 #: data/gui/window/unit_attack.cfg:331
-#, fuzzy
-#| msgid "Choose Resolution"
 msgid "Choose weapon:"
-msgstr "Vyber si rozlišení"
+msgstr "Vyber si zbraň:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -5337,8 +5194,10 @@ msgstr ""
 
 #. [toggle_button]: id=sort_3
 #: data/gui/window/unit_list.cfg:135
+#, fuzzy
+#| msgid "HP: "
 msgid "HP"
-msgstr ""
+msgstr "HP:"
 
 #. [toggle_button]: id=sort_4
 #. [toggle_button]: id=sort_2
@@ -5349,8 +5208,10 @@ msgstr ""
 #. [toggle_button]: id=sort_5
 #. [toggle_button]: id=sort_3
 #: data/gui/window/unit_list.cfg:163 data/gui/window/unit_recall.cfg:75
+#, fuzzy
+#| msgid "XP: "
 msgid "XP"
-msgstr ""
+msgstr "XP: "
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_6
@@ -5359,7 +5220,7 @@ msgstr ""
 #: src/gui/widgets/unit_preview_pane.cpp:229
 #: src/gui/widgets/unit_preview_pane.cpp:371
 msgid "Traits"
-msgstr ""
+msgstr "Vlastnosti"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -5387,8 +5248,6 @@ msgstr "Přivolej"
 
 #. [label]
 #: data/gui/window/unit_recruit.cfg:146
-#, fuzzy
-#| msgid "Recruit"
 msgid "Recruit Unit"
 msgstr "Naverbuj"
 
@@ -5415,35 +5274,35 @@ msgstr "Podrobnosti:"
 
 #: src/build_info.cpp:168
 msgid "feature^Experimental OpenMP support"
-msgstr ""
+msgstr "Esperimentální podpora OpenMP"
 
 #: src/build_info.cpp:173
 msgid "feature^PNG screenshots"
-msgstr ""
+msgstr "zachycení obrazovky v PNG"
 
 #: src/build_info.cpp:178
 msgid "feature^Lua console completion"
-msgstr ""
+msgstr "Doplňování v Lua konzoli"
 
 #: src/build_info.cpp:183
 msgid "feature^Legacy bidirectional rendering"
-msgstr ""
+msgstr "Zastaralé bidirekcionální renderování"
 
 #: src/build_info.cpp:190
 msgid "feature^D-Bus notifications back end"
-msgstr ""
+msgstr "Použití D-Bus notifikací"
 
 #: src/build_info.cpp:199
 msgid "feature^Win32 notifications back end"
-msgstr ""
+msgstr "Použití Win32 notifikací"
 
 #: src/build_info.cpp:205
 msgid "feature^Cocoa notifications back end"
-msgstr ""
+msgstr "Použití Cocoa notifikací"
 
 #: src/build_info.cpp:210
 msgid "feature^Growl notifications back end"
-msgstr ""
+msgstr "Použití Growl notifikací"
 
 #: src/desktop/paths.cpp:97
 msgid "filesystem_path_system^Volumes"
@@ -5475,7 +5334,7 @@ msgstr ""
 
 #: src/desktop/version.cpp:276
 msgid "operating_system^<unknown>"
-msgstr ""
+msgstr "<neznámý>"
 
 #: src/font/marked-up_text.cpp:430
 msgid "The maximum text width is less than 1."
@@ -5494,17 +5353,13 @@ msgid "player"
 msgstr "hráč"
 
 #: src/game_preferences.cpp:1051
-#, fuzzy
-#| msgid "%H:%M"
 msgid "[%H:%M]"
-msgstr "%H:%M"
+msgstr "[%H:%M]"
 
 # formát času pro 2x12 + AM/PM
 #: src/game_preferences.cpp:1054
-#, fuzzy
-#| msgid "%I:%M %p"
 msgid "[%I:%M %p]"
-msgstr "%I:%M %p"
+msgstr "[%I:%M %p]"
 
 #: src/gui/core/canvas.cpp:600
 msgid "Line doesn't fit on canvas."
@@ -5565,63 +5420,61 @@ msgstr "Počet sloupců se liší."
 #: src/gui/dialogs/addon/description.cpp:110 src/gui/dialogs/addon/list.cpp:222
 #: src/gui/dialogs/addon/list.cpp:262
 msgid "addon_state^Not installed"
-msgstr "addon_state^Nenainstalované"
+msgstr "Nenainstalované"
 
 #: src/gui/dialogs/addon/description.cpp:112 src/gui/dialogs/addon/list.cpp:222
 #: src/gui/dialogs/addon/list.cpp:264
 msgid "addon_state^Published, not installed"
-msgstr "addon_state^Uveřejněné, nenainstalované"
+msgstr "Uveřejněné, nenainstalované"
 
 #: src/gui/dialogs/addon/description.cpp:117 src/gui/dialogs/addon/list.cpp:230
 #: src/gui/dialogs/addon/list.cpp:269
 msgid "addon_state^Installed"
-msgstr "addon_state^Nainstalované"
+msgstr "Nainstalované"
 
 #: src/gui/dialogs/addon/description.cpp:119 src/gui/dialogs/addon/list.cpp:230
 #: src/gui/dialogs/addon/list.cpp:271
 msgid "addon_state^Published"
-msgstr "addon_state^Uveřejněné"
+msgstr "Uveřejněné"
 
 #: src/gui/dialogs/addon/description.cpp:124 src/gui/dialogs/addon/list.cpp:276
 msgid "addon_state^Installed, not tracking local version"
-msgstr "addon_state^Nainstalované, nesleduje místní verzi"
+msgstr "Nainstalované, nesleduje místní verzi"
 
 #: src/gui/dialogs/addon/description.cpp:128 src/gui/dialogs/addon/list.cpp:280
 msgid "addon_state^Published, not tracking local version"
-msgstr "addon_state^Uveřejněné, nesleduje místní verzi"
+msgstr "Uveřejněné, nesleduje místní verzi"
 
 #: src/gui/dialogs/addon/description.cpp:134 src/gui/dialogs/addon/list.cpp:286
 msgid "addon_state^Installed ($local_version|), upgradable"
-msgstr "addon_state^Nainstalované ($local_version|), dostupná nová verze"
+msgstr "Nainstalované ($local_version|), dostupná nová verze"
 
 #: src/gui/dialogs/addon/description.cpp:136 src/gui/dialogs/addon/list.cpp:288
 msgid "addon_state^Published ($local_version| installed), upgradable"
-msgstr ""
-"addon_state^Uveřejněné ($local_version| installed), dostupná nová verze"
+msgstr "Uveřejněné ($local_version| installed), dostupná nová verze"
 
 #: src/gui/dialogs/addon/description.cpp:143 src/gui/dialogs/addon/list.cpp:295
 msgid "addon_state^Installed ($local_version|), outdated on server"
-msgstr "addon_state^Nainstalované ($local_version|), na serveru zastaralé"
+msgstr "Nainstalované ($local_version|), na serveru zastaralé"
 
 #: src/gui/dialogs/addon/description.cpp:145 src/gui/dialogs/addon/list.cpp:297
 msgid "addon_state^Published ($local_version| installed), outdated on server"
-msgstr ""
-"addon_state^Uveřejněné ($local_version| nainstalované) na serveru zastaralé"
+msgstr "Uveřejněné ($local_version| nainstalované) na serveru zastaralé"
 
 #: src/gui/dialogs/addon/description.cpp:151 src/gui/dialogs/addon/list.cpp:242
 #: src/gui/dialogs/addon/list.cpp:303
 msgid "addon_state^Installed, broken"
-msgstr "addon_state^Nainstalované, poškozené"
+msgstr "Nainstalované, poškozené"
 
 #: src/gui/dialogs/addon/description.cpp:153 src/gui/dialogs/addon/list.cpp:242
 #: src/gui/dialogs/addon/list.cpp:305
 msgid "addon_state^Published, broken"
-msgstr "addon_state^Uveřejněné, poškozené"
+msgstr "Uveřejněné, poškozené"
 
 #: src/gui/dialogs/addon/description.cpp:157 src/gui/dialogs/addon/list.cpp:246
 #: src/gui/dialogs/addon/list.cpp:309
 msgid "addon_state^Unknown"
-msgstr "addon_state^Neznámý"
+msgstr "Neznámý"
 
 #: src/gui/dialogs/addon/description.cpp:393 src/gui/dialogs/addon/list.cpp:397
 #: src/gui/dialogs/chat_log.cpp:419 src/gui/dialogs/game_cache_options.cpp:104
@@ -5632,46 +5485,39 @@ msgstr "addon_state^Neznámý"
 #: src/gui/dialogs/wml_error.cpp:226
 msgid "Clipboard support not found, contact your packager"
 msgstr ""
+"Podpora pro schránku nebyla nalezena, kontaktujte správce vašeho balíčku"
 
 #: src/gui/dialogs/addon/filter_options.cpp:275
 msgid "addons_view^Not Installed"
-msgstr "addons_view^Nenainstalované"
+msgstr "Nenainstalované"
 
 #: src/gui/dialogs/addon/filter_options.cpp:277
 msgid "addons_view^Upgradable"
-msgstr "addons_view^Dostupná nová verze"
+msgstr "Dostupná nová verze"
 
 #: src/gui/dialogs/addon/filter_options.cpp:279
 msgid "addons_view^Installed"
-msgstr "addons_view^Nainstalované"
+msgstr "Nainstalované"
 
 #: src/gui/dialogs/addon/filter_options.cpp:281
 msgid "addons_view^All Add-ons"
-msgstr "addons_view^Odinstalace rozšíření"
+msgstr "Odinstalace rozšíření"
 
 #: src/gui/dialogs/addon/list.cpp:234
-#, fuzzy
-#| msgid "addon_state^Installed, broken"
 msgid "addon_state^Installed, upgradable"
-msgstr "addon_state^Nainstalované, poškozené"
+msgstr "Nainstalované, je možná aktualizace"
 
 #: src/gui/dialogs/addon/list.cpp:234
-#, fuzzy
-#| msgid "addon_state^Published, broken"
 msgid "addon_state^Published, upgradable"
-msgstr "addon_state^Uveřejněné, poškozené"
+msgstr "Uveřejněné, je možná aktualizace"
 
 #: src/gui/dialogs/addon/list.cpp:238
-#, fuzzy
-#| msgid "addon_state^Installed ($local_version|), outdated on server"
 msgid "addon_state^Installed, outdated on server"
-msgstr "addon_state^Nainstalované ($local_version|), na serveru zastaralé"
+msgstr "Nainstalované, na serveru zastaralé"
 
 #: src/gui/dialogs/addon/list.cpp:238
-#, fuzzy
-#| msgid "addon_state^Published, not installed"
 msgid "addon_state^Published, outdated on server"
-msgstr "addon_state^Uveřejněné, nenainstalované"
+msgstr "Uveřejněné, na serveru zastaralé"
 
 #: src/gui/dialogs/campaign_settings.cpp:121
 msgid ""
@@ -5679,6 +5525,9 @@ msgid ""
 "\n"
 "Not allowed."
 msgstr ""
+"Éra:\n"
+"\n"
+"Nepovolena."
 
 #: src/gui/dialogs/campaign_settings.cpp:146
 msgid ""
@@ -5686,6 +5535,9 @@ msgid ""
 "\n"
 "None found."
 msgstr ""
+"Úpravy:\n"
+"\n"
+"Žádné nebyly nalezeny."
 
 #: src/gui/dialogs/depcheck_confirm_change.cpp:64
 msgid "$requester requires the following modifications to be enabled:"
@@ -5779,9 +5631,9 @@ msgstr ""
 
 #: src/gui/dialogs/file_dialog.cpp:737
 #, fuzzy
-#| msgid "Do you really want to delete this game?"
+#| msgid "Do you want to open this link?"
 msgid "Do you wish to continue?"
-msgstr "Skutečně chceš smazat tuto hru?"
+msgstr "Skutečně chcete otevřít tento odkaz?"
 
 #: src/gui/dialogs/file_dialog.cpp:749
 msgid ""
@@ -5794,10 +5646,8 @@ msgid "New Bookmark"
 msgstr ""
 
 #: src/gui/dialogs/game_cache_options.cpp:138
-#, fuzzy
-#| msgid "addon_state^Unknown"
 msgid "dir_size^Unknown"
-msgstr "addon_state^Neznámý"
+msgstr "Neznámá"
 
 #: src/gui/dialogs/game_cache_options.cpp:140
 #: src/gui/dialogs/network_transmission.cpp:54
@@ -5808,27 +5658,27 @@ msgstr "B"
 
 #: src/gui/dialogs/game_cache_options.cpp:163
 msgid "Cache Cleaned"
-msgstr ""
+msgstr "Cache vyčištěny"
 
 #: src/gui/dialogs/game_cache_options.cpp:164
 msgid "The game data cache has been cleaned."
-msgstr ""
+msgstr "Datové cache hry byly vyčištěny."
 
 #: src/gui/dialogs/game_cache_options.cpp:167
 msgid "The game data cache could not be completely cleaned."
-msgstr ""
+msgstr "Datové cache hry nemohly být kompletně vyčištěny."
 
 #: src/gui/dialogs/game_cache_options.cpp:183
 msgid "Cache Purged"
-msgstr ""
+msgstr "Cache vyčitěna"
 
 #: src/gui/dialogs/game_cache_options.cpp:184
 msgid "The game data cache has been purged."
-msgstr ""
+msgstr "Všechna cachovaná herní data byla vyčištěna."
 
 #: src/gui/dialogs/game_cache_options.cpp:187
 msgid "The game data cache could not be purged."
-msgstr ""
+msgstr "Herní cache nemohla být vyčištěna."
 
 #: src/gui/dialogs/game_load.cpp:281
 #, fuzzy
@@ -5879,100 +5729,84 @@ msgid "yes"
 msgstr "ano"
 
 #: src/gui/dialogs/game_version.cpp:137
-#, fuzzy
-#| msgid "Version "
 msgid "Version $version"
-msgstr "Verze "
+msgstr "Verze $version"
 
 #: src/gui/dialogs/game_version.cpp:141
 msgid "Running on $os"
-msgstr ""
+msgstr "Běžící na $os"
 
 #: src/gui/dialogs/game_version.cpp:226
-#, fuzzy
-#| msgid "Version"
 msgid "version^N/A"
-msgstr "Verze"
+msgstr "N/A"
 
 #: src/gui/dialogs/label_settings.cpp:49
-#, fuzzy
-#| msgid "Set Team Label"
 msgid "Team Labels"
 msgstr "Umísti týmový popisek"
 
 #: src/gui/dialogs/label_settings.cpp:72
 msgid "Side $side_number ($name)"
-msgstr ""
+msgstr "Strana $side_number ($name)"
 
 #: src/gui/dialogs/loadscreen.cpp:45
 msgid "Building terrain rules"
-msgstr ""
+msgstr "Sestavování pravidel pro terén"
 
 #: src/gui/dialogs/loadscreen.cpp:46
 msgid "Reading files and creating cache"
-msgstr ""
+msgstr "Čtení souborů a vytváření cache"
 
 #: src/gui/dialogs/loadscreen.cpp:47 src/gui/dialogs/loadscreen.cpp:50
 msgid "Initializing display"
-msgstr ""
+msgstr "Nastavování zobrazení"
 
 #: src/gui/dialogs/loadscreen.cpp:48
 msgid "Reinitialize fonts for the current language"
-msgstr ""
+msgstr "Znovuzavedení písem pro současný jazyk"
 
 #: src/gui/dialogs/loadscreen.cpp:49
 msgid "Initializing teams"
-msgstr ""
+msgstr "Vytváření týmů"
 
 #: src/gui/dialogs/loadscreen.cpp:51
-#, fuzzy
-#| msgid "Configuration:"
 msgid "Loading game configuration"
-msgstr "Nastavení:"
+msgstr "Načítání nastavení hry"
 
 #: src/gui/dialogs/loadscreen.cpp:52
-#, fuzzy
-#| msgid "Flowering Water Lilies"
 msgid "Loading data files"
-msgstr "Lekníny, kvetoucí"
+msgstr "Načítání herních dat"
 
 #: src/gui/dialogs/loadscreen.cpp:53
 msgid "Loading level"
-msgstr ""
+msgstr "Načítání úrovně"
 
 #: src/gui/dialogs/loadscreen.cpp:54
 msgid "Initializing scripting engine"
-msgstr ""
+msgstr "Spouštění skriptovacího enginu"
 
 #: src/gui/dialogs/loadscreen.cpp:55
-#, fuzzy
-#| msgid "Enable planning mode on start"
 msgid "Initializing planning mode"
 msgstr "Spouštět hru v plánovacím módu"
 
 #: src/gui/dialogs/loadscreen.cpp:56
 msgid "Reading unit files"
-msgstr ""
+msgstr "Čtení souborů s jednotkami"
 
 #: src/gui/dialogs/loadscreen.cpp:57
 msgid "Loading units"
-msgstr ""
+msgstr "Načítání jednotek"
 
 #: src/gui/dialogs/loadscreen.cpp:58
-#, fuzzy
-#| msgid "Uninstall Add-ons"
 msgid "Searching for installed add-ons"
-msgstr "Odinstalace rozšíření"
+msgstr "Vyhledávání nainstalovaných rozšíření"
 
 #: src/gui/dialogs/loadscreen.cpp:59
-#, fuzzy
-#| msgid "Random starting time"
 msgid "Starting game"
-msgstr "Náhodná počáteční doba"
+msgstr "Začátek hry"
 
 #: src/gui/dialogs/loadscreen.cpp:60
 msgid "Verifying cache"
-msgstr ""
+msgstr "Ověřování cache"
 
 #: src/gui/dialogs/loadscreen.cpp:61
 #, fuzzy
@@ -5982,13 +5816,15 @@ msgstr "Připoj se na server"
 
 #: src/gui/dialogs/loadscreen.cpp:62
 #, fuzzy
-#| msgid "Options"
+#| msgid "Logging Options"
 msgid "Logging in"
-msgstr "Nastavení"
+msgstr "Nastavení logování"
 
 #: src/gui/dialogs/loadscreen.cpp:63
+#, fuzzy
+#| msgid "Waiting for remote input"
 msgid "Waiting for server"
-msgstr ""
+msgstr "Čekáme na vzdálený vstup"
 
 #: src/gui/dialogs/loadscreen.cpp:64
 #, fuzzy
@@ -5997,14 +5833,16 @@ msgid "Connecting to redirected server"
 msgstr "Připoj se na server"
 
 #: src/gui/dialogs/loadscreen.cpp:65
+#, fuzzy
+#| msgid "Waiting for remote input"
 msgid "Waiting for next scenario"
-msgstr ""
+msgstr "Čekáme na vzdálený vstup"
 
 #: src/gui/dialogs/loadscreen.cpp:66
 #, fuzzy
-#| msgid "Random starting time"
+#| msgid "Starting game"
 msgid "Getting game data"
-msgstr "Náhodná počáteční doba"
+msgstr "Začátek hry"
 
 #: src/gui/dialogs/lobby/lobby.cpp:103
 #, fuzzy
@@ -6079,6 +5917,8 @@ msgid ""
 "This build of wesnoth does not include support for desktop notifications, "
 "contact your package manager"
 msgstr ""
+"Toto sestavení Bitvy o Wesnoth nezahrnuje podporu pro notifikace, "
+"kontaktujte správce vašeho balíčku"
 
 #: src/gui/dialogs/multiplayer/mp_change_control.cpp:250
 msgid "Side $side"
@@ -6110,7 +5950,7 @@ msgstr "Vygeneruj náhodnou mapu"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:103
 #, fuzzy
-#| msgid "Campaign"
+#| msgid "Campaigns"
 msgid "SP Campaigns"
 msgstr "Tažení"
 
@@ -6140,8 +5980,10 @@ msgid "No Ally Mirror: No two allied players will get the same faction"
 msgstr ""
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:459
+#, fuzzy
+#| msgid "Available in game"
 msgid "No eras available for this game."
-msgstr ""
+msgstr "Dostupné ve hře"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:510
 #, fuzzy
@@ -6171,9 +6013,9 @@ msgstr "Vyber hráče"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:240
 #, fuzzy
-#| msgid "(empty list)"
+#| msgid "Empty list"
 msgid "Empty slot"
-msgstr "(prázdný seznam)"
+msgstr "Prázdný seznam"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:242
 msgid "Reserved for $playername"
@@ -6222,10 +6064,8 @@ msgid "Invalid username"
 msgstr "Nepoužitelná přezdívka"
 
 #: src/gui/dialogs/preferences_dialog.cpp:223
-#, fuzzy
-#| msgid "View and edit your friends and ignores list"
 msgid "Not on friends or ignore lists"
-msgstr "Zobraz a uprav seznam přátel a otrapů"
+msgstr "Není v seznamu přátel ani ignorovaných"
 
 #: src/gui/dialogs/preferences_dialog.cpp:686
 #, fuzzy
@@ -6261,7 +6101,7 @@ msgstr "Změň"
 #, fuzzy
 #| msgid "whiteboard^Planning Mode"
 msgid "Planning Mode"
-msgstr "whiteboard^Přepnout plánovací mód"
+msgstr "Zapnout plánovací mód"
 
 #: src/gui/dialogs/preferences_dialog.cpp:692
 #, fuzzy
@@ -6297,19 +6137,16 @@ msgstr "Uživatelský příkaz"
 
 #: src/gui/dialogs/preferences_dialog.cpp:785
 msgid "&#9679;"
-msgstr ""
+msgstr "&#9679;"
 
 #: src/gui/dialogs/preferences_dialog.cpp:840
-#, fuzzy
-#| msgid ""
-#| "\"$hotkey_sequence|\" is in use by \"$old_hotkey_action|\". Do you wish "
-#| "to reassign it to \"$new_hotkey_action|\"?"
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
 msgstr ""
-"\"$hotkey_sequence|\" je používán \"$old_hotkey_action|\". Přejete si ji "
-"přiřadit k \"$new_hotkey_action|\"?"
+"\"<b>$hotkey_sequence|</b>\" je používán při \"<b>$old_hotkey_action|</b>"
+"\".\n"
+"Přejete si ji přiřadit k \"<b>$new_hotkey_action|</b>\"?"
 
 #: src/gui/dialogs/preferences_dialog.cpp:846
 msgid "Reassign Hotkey"
@@ -6328,14 +6165,14 @@ msgid "∞"
 msgstr ""
 
 #: src/gui/dialogs/screenshot_notification.cpp:74
-#, fuzzy
-#| msgid "addon_state^Unknown"
 msgid "file_size^Unknown"
-msgstr "addon_state^Neznámý"
+msgstr "Neznámá"
 
 #: src/gui/dialogs/unit_attack.cpp:97
+#, fuzzy
+#| msgid "Damage Calculation"
 msgid "Damage Calculations"
-msgstr ""
+msgstr "Výpočet zranění"
 
 #: src/gui/dialogs/unit_recall.cpp:262
 msgid "This unit is loyal and requires no upkeep."
@@ -6386,9 +6223,9 @@ msgstr ""
 
 #: src/gui/widgets/chatbox.cpp:400
 #, fuzzy
-#| msgid "Room $name joined"
+#| msgid "<i>Room $name joined</i>"
 msgid "Room <i>“$name”</i> joined"
-msgstr "Vstoupil(a) jsi do místnosti $name"
+msgstr "<i>Vstoupil(a) jsi do místnosti $name</i>"
 
 #: src/gui/widgets/chatbox.cpp:590
 msgid "$player has entered the room"
@@ -6408,17 +6245,15 @@ msgstr "Povinný ovládací prvek '$id' nebyl definován."
 
 #: src/gui/widgets/label.cpp:161
 msgid "Opening links is not supported, contact your packager"
-msgstr ""
+msgstr "Otevírání odkazů není podporováno, kontaktujte správce vašeho balíčku"
 
 #: src/gui/widgets/label.cpp:180
-#, fuzzy
-#| msgid "Do you really want to delete this game?"
 msgid "Do you want to open this link?"
-msgstr "Skutečně chceš smazat tuto hru?"
+msgstr "Skutečně chcete otevřít tento odkaz?"
 
 #: src/gui/widgets/label.cpp:211
 msgid "Copied link!"
-msgstr ""
+msgstr "Odkaz zkopírován!"
 
 #: src/gui/widgets/listbox.cpp:915 src/gui/widgets/multi_page.cpp:299
 msgid ""
@@ -6485,10 +6320,8 @@ msgid "Unknown builder id for tree view node."
 msgstr "Neznámé id pro uzel stromového seznamu."
 
 #: src/gui/widgets/unit_preview_pane.cpp:116
-#, fuzzy
-#| msgid "Attack"
 msgid "Attacks"
-msgstr "Útok!"
+msgstr "Útoky"
 
 #: src/gui/widgets/unit_preview_pane.cpp:139
 msgid "Weapon special: "
@@ -6497,29 +6330,29 @@ msgstr ""
 #: src/gui/widgets/unit_preview_pane.cpp:170
 #: src/gui/widgets/unit_preview_pane.cpp:297
 msgid "Lvl $lvl"
-msgstr ""
+msgstr "Lvl $lvl"
 
 #: src/gui/widgets/unit_preview_pane.cpp:198
 #: src/gui/widgets/unit_preview_pane.cpp:335
 #: src/gui/widgets/unit_preview_pane.cpp:349
 msgid "HP: "
-msgstr ""
+msgstr "HP:"
 
 #: src/gui/widgets/unit_preview_pane.cpp:201
 #: src/gui/widgets/unit_preview_pane.cpp:338
 #: src/gui/widgets/unit_preview_pane.cpp:352
 msgid "XP: "
-msgstr ""
+msgstr "XP: "
 
 #: src/gui/widgets/unit_preview_pane.cpp:203
 #: src/gui/widgets/unit_preview_pane.cpp:354
 msgid "MP: "
-msgstr ""
+msgstr "MP: "
 
 #: src/gui/widgets/unit_preview_pane.cpp:246
 #: src/gui/widgets/unit_preview_pane.cpp:388
 msgid "Abilities"
-msgstr ""
+msgstr "Schopnosti"
 
 #: src/gui/widgets/window.cpp:1015
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
@@ -6533,26 +6366,20 @@ msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Nebyl zobrazen dialog, který se nevejde na obrazovku."
 
 #: src/hotkey/hotkey_command.cpp:39
-#, fuzzy
-#| msgid "Scroll speed:"
 msgid "Scroll Up"
-msgstr "Rychlost posouvání:"
+msgstr "Posunout nahoru"
 
 #: src/hotkey/hotkey_command.cpp:40
 msgid "Scroll Down"
-msgstr ""
+msgstr "Posunout dolů"
 
 #: src/hotkey/hotkey_command.cpp:41
-#, fuzzy
-#| msgid "Scroll Palette Left"
 msgid "Scroll Left"
-msgstr "Posunout paletu vlevo"
+msgstr "Posunout vlevo"
 
 #: src/hotkey/hotkey_command.cpp:42
-#, fuzzy
-#| msgid "Scroll Palette Right"
 msgid "Scroll Right"
-msgstr "Posunout paletu vpravo"
+msgstr "Posunout vpravo"
 
 #: src/hotkey/hotkey_command.cpp:44
 msgid "cancel"
@@ -6659,10 +6486,8 @@ msgid "Repeat Recruit"
 msgstr "Zopakuj verbování"
 
 #: src/hotkey/hotkey_command.cpp:76
-#, fuzzy
-#| msgid "Show labels"
 msgid "Show/Hide Labels"
-msgstr "Zobrazuj plovoucí popisky"
+msgstr "Zobrazuj popisky"
 
 #: src/hotkey/hotkey_command.cpp:77
 msgid "End Turn"
@@ -6718,7 +6543,7 @@ msgstr "pokračuj v síťové hře"
 
 #: src/hotkey/hotkey_command.cpp:94
 msgid "Quit to Titlescreen"
-msgstr ""
+msgstr "Vrátit se na úvodní obrazovku"
 
 #: src/hotkey/hotkey_command.cpp:95
 msgid "Set Team Label"
@@ -6761,10 +6586,8 @@ msgid "Next Side"
 msgstr "Další strana"
 
 #: src/hotkey/hotkey_command.cpp:106
-#, fuzzy
-#| msgid "Next page"
 msgid "Next Move"
-msgstr "Další strana"
+msgstr "Další tah"
 
 #: src/hotkey/hotkey_command.cpp:107
 msgid "Full Map"
@@ -6775,55 +6598,51 @@ msgid "Each Team"
 msgstr "Všechny týmy"
 
 #: src/hotkey/hotkey_command.cpp:109
-#, fuzzy
-#| msgid "Human Castle"
 msgid "Human Team"
-msgstr "Lidský hrad"
+msgstr "Tým hráčů"
 
 #: src/hotkey/hotkey_command.cpp:110
 msgid "Skip Animation"
 msgstr "Přeskočit animaci"
 
 #: src/hotkey/hotkey_command.cpp:111
-#, fuzzy
-#| msgid "Replay"
 msgid "End Replay"
-msgstr "Záznam"
+msgstr "Ukončit záznam"
 
 #. TRANSLATORS: whiteboard menu entry: toggle planning mode
 #: src/hotkey/hotkey_command.cpp:114
 msgid "whiteboard^Planning Mode"
-msgstr "whiteboard^Přepnout plánovací mód"
+msgstr "Zapnout plánovací mód"
 
 #. TRANSLATORS: whiteboard menu entry: execute planned action
 #: src/hotkey/hotkey_command.cpp:116
 msgid "whiteboard^Execute Action"
-msgstr "whiteboard^Provede všechny akce"
+msgstr "Provede všechny akce"
 
 #. TRANSLATORS: whiteboard menu entry: execute all planned actions
 #: src/hotkey/hotkey_command.cpp:118
 msgid "whiteboard^Execute All Actions"
-msgstr "whiteboard^Provede všechny akce"
+msgstr "Provede všechny akce"
 
 #. TRANSLATORS: whiteboard menu entry: delete planned action
 #: src/hotkey/hotkey_command.cpp:120
 msgid "whiteboard^Delete Action"
-msgstr "whiteboard^Smaž akci"
+msgstr "Smaž akci"
 
 #. TRANSLATORS: whiteboard menu entry: move planned action up queue
 #: src/hotkey/hotkey_command.cpp:122
 msgid "whiteboard^Move Action Up"
-msgstr "whiteboard^Posunout akci ve frontě nahoru"
+msgstr "Posunout akci ve frontě nahoru"
 
 #. TRANSLATORS: whiteboard menu entry: move planned action down queue
 #: src/hotkey/hotkey_command.cpp:124
 msgid "whiteboard^Move Action Down"
-msgstr "whiteboard^Posunout akci ve frontě dolů"
+msgstr "Posunout akci ve frontě dolů"
 
 #. TRANSLATORS: whiteboard menu entry: plan as though the chosen unit were dead
 #: src/hotkey/hotkey_command.cpp:126
 msgid "whiteboard^Suppose Dead"
-msgstr "whiteboard^Předpokládat smrt"
+msgstr "Předpokládat smrt"
 
 #: src/hotkey/hotkey_command.cpp:128
 msgid "Quit to Desktop"
@@ -6847,7 +6666,7 @@ msgstr "Přiřadit místní čas"
 
 #: src/hotkey/hotkey_command.cpp:138
 msgid "Time Schedule Editor"
-msgstr ""
+msgstr "Editor časového plánu"
 
 #: src/hotkey/hotkey_command.cpp:139
 msgid "Partial Undo"
@@ -6902,10 +6721,8 @@ msgid "Scroll Palette Right"
 msgstr "Posunout paletu vpravo"
 
 #: src/hotkey/hotkey_command.cpp:155
-#, fuzzy
-#| msgid "Options"
 msgid "Remove Location"
-msgstr "Nastavení"
+msgstr "Odstranit místo"
 
 #: src/hotkey/hotkey_command.cpp:157
 msgid "Add New Side"
@@ -7323,10 +7140,8 @@ msgid "Manage Add-ons"
 msgstr "Spravuj rozšíření"
 
 #: src/hotkey/hotkey_command.cpp:261
-#, fuzzy
-#| msgid "Manage Add-ons"
 msgid "Manage Cores"
-msgstr "Spravuj rozšíření"
+msgstr "Sloučit zdroje"
 
 #: src/hotkey/hotkey_command.cpp:262
 msgid "Start Editor"
@@ -7343,7 +7158,7 @@ msgstr "Zobrazovat bublinovou nápovědu"
 
 #: src/hotkey/hotkey_command.cpp:267
 msgid "Show Lua Console"
-msgstr ""
+msgstr "Zobrazit Lua konzoli"
 
 #: src/hotkey/hotkey_command.cpp:270
 msgid "Unrecognized Command"
@@ -7454,13 +7269,9 @@ msgstr ""
 #~ msgid "Show haloing effects"
 #~ msgstr "Zobrazuj halo efekty"
 
-#, fuzzy
-#~| msgid "Show haloing effects"
 #~ msgid "Show special unit graphical effects"
-#~ msgstr "Zobrazuj halo efekty"
+#~ msgstr "Zobrazuj zvláštní efekty jednotek"
 
-#, fuzzy
-#~| msgid "Add as Ignore"
 #~ msgid "Add Ignored"
 #~ msgstr "Přidej jako otrapu"
 
@@ -7480,18 +7291,17 @@ msgstr ""
 #~ msgid "infinite"
 #~ msgstr "nekonečno"
 
-#, fuzzy
-#~| msgid "Prefs section^General"
 #~ msgid "Prefs tab^General"
 #~ msgstr "Obecné"
+
+#~ msgid "Prefs tab^Friends"
+#~ msgstr "Přátelé"
 
 #~ msgid "Prefs section^General"
 #~ msgstr "Obecné"
 
-#, fuzzy
-#~| msgid "Prefs section^Game"
 #~ msgid "Prefs section^Hotkeys"
-#~ msgstr "Prefs section^Hra"
+#~ msgstr "Zkratky"
 
 #~ msgid "Prefs section^Display"
 #~ msgstr "Zobrazení"
@@ -7502,18 +7312,14 @@ msgstr ""
 #~ msgid "Prefs section^Multiplayer"
 #~ msgstr "Multiplayer"
 
-#, fuzzy
-#~| msgid "Prefs section^Game"
 #~ msgid "Prefs section^Advanced"
-#~ msgstr "Prefs section^Hra"
+#~ msgstr "Pokročilé"
 
 #~ msgid "Version "
 #~ msgstr "Verze "
 
-#, fuzzy
-#~| msgid "Find $filename server binary to host networked games"
 #~ msgid "Find $filename server binary"
-#~ msgstr "Najít binární soubor $filename serveru pro hostování síťových her"
+#~ msgstr "Najít binární soubor $filename serveru"
 
 #~ msgid "Hewn Cave Wall"
 #~ msgstr "Opracovaná jeskynní stěna"
