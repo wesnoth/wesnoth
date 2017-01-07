@@ -551,12 +551,12 @@ template<>
 struct dialog_tester<addon_manager>
 {
 	CVideo& video = test_utils::get_fake_display(10, 10).video();
-	addons_client client(video, "localhost:15999");
 	dialog_tester()
 	{
 	}
 	addon_manager* create()
 	{
+		addons_client client(video, "localhost:15999");
 		return new addon_manager(client);
 	}
 };
