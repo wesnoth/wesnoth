@@ -17,6 +17,7 @@
 
 #include <boost/test/unit_test.hpp>
 
+#include "addon/client.hpp"
 #include "config_assign.hpp"
 #include "config_cache.hpp"
 #include "editor/editor_display.hpp" // for dummy display context
@@ -549,14 +550,14 @@ struct dialog_tester<addon_connect>
 template<>
 struct dialog_tester<addon_manager>
 {
-	config cfg;
+	CVideo& video = test_utils::get_fake_display(10, 10).video();
+	addons_client client(video, "localhost:15999");
 	dialog_tester()
 	{
-		/** @todo Would nice to add one or more dummy addons in the list. */
 	}
 	addon_manager* create()
 	{
-		return new addon_manager(cfg);
+		return new addon_manager(client);
 	}
 };
 
