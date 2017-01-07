@@ -1018,18 +1018,9 @@ bool addons_manager_ui(CVideo& v, const std::string& remote_address)
 			addons_list addons;
 
 			if(gui2::new_widgets) {
-				config cfg;
-				client.request_addons_list(cfg);
-				if(!cfg) {
-					gui2::show_error_message(
-							v
-							, _("An error occurred while downloading the "
-								"add-ons list from the server."));
-					return need_wml_cache_refresh;
-				}
-				gui2::dialogs::addon_manager dlg(cfg);
+				gui2::dialogs::addon_manager dlg(client);
 				dlg.show(v);
-				return need_wml_cache_refresh;
+				return true;
 			}
 
 			if(!get_addons_list(client, addons)) {

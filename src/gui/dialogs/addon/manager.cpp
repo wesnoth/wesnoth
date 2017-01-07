@@ -27,6 +27,7 @@
 #include "gui/auxiliary/filter.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/helper.hpp"
+#include "gui/dialogs/message.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/stacked_widget.hpp"
@@ -159,15 +160,15 @@ namespace {
 
 REGISTER_DIALOG(addon_manager)
 
-addon_manager::addon_manager(const config& cfg)
+addon_manager::addon_manager(addons_client& client)
 	: orders_()
-	, cfg_(cfg)
+	, client_(client)
+	, cfg_()
 	, cfg_iterators_(cfg_.child_range("campaign"))
 	, addons_()
 	, tracking_info_()
 	, ids_()
 {
-	read_addons_list(cfg, addons_);
 }
 
 void addon_manager::on_filtertext_changed(text_box_base* textbox, const std::string& text)
@@ -316,7 +317,83 @@ static std::string describe_status_verbose(const addon_tracking_info& state)
 
 void addon_manager::pre_show(window& window)
 {
+	load_addon_list(window);
 	listbox& list = find_widget<listbox>(&window, "addons", false);
+
+	list.register_sorting_option(0, [this](const int i) { return addon_at(ids_[i], addons_).title; });
+	list.register_sorting_option(1, [this](const int i) { return addon_at(ids_[i], addons_).author; });
+	list.register_sorting_option(2, [this](const int i) { return addon_at(ids_[i], addons_).size; });
+	list.register_sorting_option(3, [this](const int i) { return addon_at(ids_[i], addons_).downloads; });
+	list.register_sorting_option(4, [this](const int i) { return addon_at(ids_[i], addons_).type; });
+
+	find_widget<text_box>(&window, "filter", false).set_text_changed_callback(
+		std::bind(&addon_manager::on_filtertext_changed, this, _1, _2));
+
+#ifdef GUI2_EXPERIMENTAL_LISTBOX
+	connect_signal_notify_modified(list,
+			std::bind(&addon_manager::on_addon_select,
+			*this,
+			std::ref(window)));
+#else
+	list.set_callback_value_change(
+			dialog_callback<addon_manager, &addon_manager::on_addon_select>);
+#endif
+
+	button& url_go_button = find_widget<button>(&window, "url_go", false);
+	button& url_copy_button = find_widget<button>(&window, "url_copy", false);
+	text_box& url_textbox = find_widget<text_box>(&window, "url", false);
+
+	url_textbox.set_active(false);
+
+	if (!desktop::clipboard::available()) {
+		url_copy_button.set_active(false);
+		url_copy_button.set_tooltip(_("Clipboard support not found, contact your packager"));
+	}
+
+	if(!desktop::open_object_is_supported()) {
+		// No point in displaying the button on platforms that can't do
+		// open_object().
+		url_go_button.set_visible(styled_widget::visibility::invisible);
+	}
+
+	connect_signal_mouse_left_click(
+			find_widget<button>(&window, "install", false),
+			std::bind(&addon_manager::install_selected_addon, this, std::ref(window)));
+
+	connect_signal_mouse_left_click(
+			url_go_button,
+			std::bind(&addon_manager::browse_url_callback, this, std::ref(url_textbox)));
+
+	connect_signal_mouse_left_click(
+			url_copy_button,
+			std::bind(&addon_manager::copy_url_callback, this, std::ref(url_textbox)));
+
+	connect_signal_mouse_left_click(
+			find_widget<button>(&window, "options", false),
+			std::bind(&addon_manager::options_button_callback, this, std::ref(window)));
+
+	connect_signal_mouse_left_click(
+			find_widget<button>(&window, "show_help", false),
+			std::bind(&addon_manager::show_help, this, std::ref(window)));
+
+	on_addon_select(window);
+}
+
+void addon_manager::load_addon_list(window& window)
+{
+	client_.request_addons_list(cfg_);
+	if(!cfg_)
+	{
+		show_error_message(window.video(),
+			_("An error occurred while downloading the "
+			"add-ons list from the server."));
+		window.close();
+	}
+
+	read_addons_list(cfg_, addons_);
+
+	listbox& list = find_widget<listbox>(&window, "addons", false);
+	list.clear();
 
 	for(const auto & c : cfg_.child_range("campaign"))
 	{
@@ -368,60 +445,22 @@ void addon_manager::pre_show(window& window)
 
 		find_widget<button>(row_grid, "single_uninstall", false).set_active(is_installed);
 	}
+}
 
-	list.register_sorting_option(0, [this](const int i) { return addon_at(ids_[i], addons_).title; });
-	list.register_sorting_option(1, [this](const int i) { return addon_at(ids_[i], addons_).author; });
-	list.register_sorting_option(2, [this](const int i) { return addon_at(ids_[i], addons_).size; });
-	list.register_sorting_option(3, [this](const int i) { return addon_at(ids_[i], addons_).downloads; });
-	list.register_sorting_option(4, [this](const int i) { return addon_at(ids_[i], addons_).type; });
-
-	find_widget<text_box>(&window, "filter", false).set_text_changed_callback(
-		std::bind(&addon_manager::on_filtertext_changed, this, _1, _2));
-
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-	connect_signal_notify_modified(list,
-			std::bind(&addon_manager::on_addon_select,
-			*this,
-			std::ref(window)));
-#else
-	list.set_callback_value_change(
-			dialog_callback<addon_manager, &addon_manager::on_addon_select>);
-#endif
-
-	button& url_go_button = find_widget<button>(&window, "url_go", false);
-	button& url_copy_button = find_widget<button>(&window, "url_copy", false);
-	text_box& url_textbox = find_widget<text_box>(&window, "url", false);
-
-	url_textbox.set_active(false);
-
-	if (!desktop::clipboard::available()) {
-		url_copy_button.set_active(false);
-		url_copy_button.set_tooltip(_("Clipboard support not found, contact your packager"));
+unsigned int addon_manager::get_addon_index(listbox& addon_list, const std::string& id)
+{
+	const addon_info& info = addon_at(id, addons_);
+	for(unsigned int i = 0u; i < addon_list.get_item_count(); ++i)
+	{
+		grid* row = addon_list.get_row_grid(i);
+		const label& name_label = find_widget<label>(row, "name", false);
+		if(name_label.get_label().base_str() == info.display_title())
+		{
+			return i;
+		}
 	}
 
-	if(!desktop::open_object_is_supported()) {
-		// No point in displaying the button on platforms that can't do
-		// open_object().
-		url_go_button.set_visible(styled_widget::visibility::invisible);
-	}
-
-	connect_signal_mouse_left_click(
-			url_go_button,
-			std::bind(&addon_manager::browse_url_callback, this, std::ref(url_textbox)));
-
-	connect_signal_mouse_left_click(
-			url_copy_button,
-			std::bind(&addon_manager::copy_url_callback, this, std::ref(url_textbox)));
-
-	connect_signal_mouse_left_click(
-			find_widget<button>(&window, "options", false),
-			std::bind(&addon_manager::options_button_callback, this, std::ref(window)));
-
-	connect_signal_mouse_left_click(
-			find_widget<button>(&window, "show_help", false),
-			std::bind(&addon_manager::show_help, this, std::ref(window)));
-
-	on_addon_select(window);
+	return 0xFFFFFFFFu;
 }
 
 void addon_manager::options_button_callback(window& window)
@@ -436,6 +475,43 @@ void addon_manager::options_button_callback(window& window)
 
 	//dlg.show(window.video());
 	UNUSED(window); // Remove this once the code works.
+}
+
+void addon_manager::install_selected_addon(window& window)
+{
+	listbox& addon_list = find_widget<listbox>(&window, "addons", false);
+	const int index = addon_list.get_selected_row();
+
+	if(index == -1) {
+		return;
+	}
+
+	// We take a copy because reloading the addon list invalidates references.
+	const addon_info info = addon_at(ids_[index], addons_);
+
+	config archive;
+	bool download_succeeded = client_.download_addon(archive, info.id, info.title);
+	if(download_succeeded)
+	{
+		bool install_succeeded = client_.install_addon(archive, info);
+		if(install_succeeded)
+		{
+			load_addon_list(window);
+
+			// Reselect the add-on.
+			addon_list.select_row(get_addon_index(addon_list, info.id));
+			on_addon_select(window);
+
+			return;
+		}
+	}
+
+	// failure
+	const std::string& server_error = client_.get_last_server_error();
+	if(server_error != "") {
+		show_error_message(window.video(),
+			_("The server responded with an error:") + "\n" + server_error);
+	}
 }
 
 void addon_manager::show_help(window& window)
@@ -508,7 +584,10 @@ void addon_manager::on_addon_select(window& window)
 		find_widget<stacked_widget>(&window, "feedback_stack", false).select_layer(0);
 	}
 
-	find_widget<button>(&window, "uninstall", false).set_active(tracking_info_[info.id].state == ADDON_INSTALLED);
+	bool installed = is_installed_addon_status(tracking_info_[info.id].state);
+
+	find_widget<button>(&window, "install", false).set_active(!installed);
+	find_widget<button>(&window, "uninstall", false).set_active(installed);
 }
 
 } // namespace dialogs

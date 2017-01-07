@@ -15,6 +15,7 @@
 #ifndef GUI_DIALOGS_ADDON_LIST_HPP_INCLUDED
 #define GUI_DIALOGS_ADDON_LIST_HPP_INCLUDED
 
+#include "addon/client.hpp"
 #include "addon/info.hpp"
 #include "addon/state.hpp"
 
@@ -25,6 +26,7 @@
 
 namespace gui2
 {
+class listbox;
 class text_box_base;
 class text_box;
 class pane;
@@ -36,7 +38,7 @@ namespace dialogs
 class addon_manager : public modal_dialog
 {
 public:
-	explicit addon_manager(const config& cfg);
+	explicit addon_manager(addons_client& client);
 
 private:
 	void on_filtertext_changed(text_box_base* textbox, const std::string& text);
@@ -50,13 +52,19 @@ private:
 	/** Inherited from modal_dialog. */
 	void pre_show(window& window);
 
+	void load_addon_list(window& window);
+
+	unsigned int get_addon_index(listbox& addon_list, const std::string& id);
+
 	/** Config which contains the list with the campaigns. */
-	const config& cfg_;
+	config cfg_;
 
 	/**
 	 * Debug iterators for testing with --new-widgets
 	 */
 	config::const_child_itors cfg_iterators_;
+
+	addons_client& client_;
 
 	addons_list addons_;
 
@@ -64,6 +72,7 @@ private:
 
 	std::vector<std::string> ids_;
 
+	void install_selected_addon(window& window);
 	void browse_url_callback(text_box& url_box);
 	void copy_url_callback(text_box& url_box);
 	void options_button_callback(window& window);
