@@ -5,8 +5,24 @@ Version 1.13.6+dev:
    * Fix some Micro AIs and AI helper functions not working correctly for AI
      sides under shroud
    * New function ai_helper.find_path_with_shroud()
+ * Campaigns:
+   * Heir to the Throne:
+     * Fixed bug allowing the wrong person to receive the Sceptre of Fire.
+     * Fixed inconsistencies in Li'sar's sprites and animations when she has the
+       scepter.
+   * Under the Burning Suns:
+     * Fixed difficulty levels with the original units not working.
+     * Various balancing changes, bug fixes and improvements to the new units.
+       * Major changes:
+         * Kaleh and Nym movement points increased from 5 to 6.
+         * Moon Singer branch removed.
+         * Added winged lvl4 advancement for Quenoth Druid.
+         * Support ability now only lowers adjacent upkeep costs by 1.
  * Graphics:
-   * Improved terrain graphics: lava.
+   * Improved terrain graphics: lava, volcano.
+   * Smoother fade transitions between differently colored time areas.
+   * Adjacent castles of different types now have fewer glitches between them.
+   * Fixed glitches between various mountain tiles (introduced in 1.13.3).
  * Language and i18n:
    * Updated translations: British English, Czech, German, Portuguese (Brazil)
  * Lua API:
