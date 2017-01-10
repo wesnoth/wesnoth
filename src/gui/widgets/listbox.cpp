@@ -979,34 +979,6 @@ widget* builder_listbox::build() const
 	}
 	return widget;
 #else
-	if(new_widgets) {
-
-		pane* p = new pane(list_builder);
-		p->set_id(id);
-
-
-		grid* g = new grid();
-		g->set_rows_cols(1, 1);
-#if 0
-		g->set_child(
-				  p
-				, 0
-				, 0
-				, grid::VERTICAL_GROW_SEND_TO_CLIENT
-					| grid::HORIZONTAL_GROW_SEND_TO_CLIENT
-				, grid::BORDER_ALL);
-#else
-		viewport* view = new viewport(*p);
-		g->set_child(view,
-						0,
-						0,
-						grid::VERTICAL_GROW_SEND_TO_CLIENT
-						| grid::HORIZONTAL_GROW_SEND_TO_CLIENT,
-						grid::BORDER_ALL);
-#endif
-		return g;
-	}
-
 	listbox* widget
 			= new listbox(has_minimum_, has_maximum_, generator_base::vertical_list, true);
 
