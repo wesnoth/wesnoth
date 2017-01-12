@@ -17,6 +17,7 @@
 #include "gui/dialogs/addon/manager.hpp"
 
 #include "addon/info.hpp"
+#include "addon/manager.hpp"
 #include "addon/state.hpp"
 
 #include "desktop/clipboard.hpp"
@@ -381,6 +382,8 @@ void addon_manager::pre_show(window& window)
 
 void addon_manager::load_addon_list(window& window)
 {
+	refresh_addon_version_info_cache();
+
 	client_.request_addons_list(cfg_);
 	if(!cfg_)
 	{
