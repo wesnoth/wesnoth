@@ -13,7 +13,7 @@
 */
 #include "game_initialization/multiplayer.hpp"
 
-#include "addon/manager_old.hpp" // for get_installed_addons
+#include "addon/manager.hpp" // for get_installed_addons
 #include "config_assign.hpp"
 #include "font/sdl_ttf.hpp"
 #include "formula/string_utils.hpp"

@@ -395,6 +395,8 @@ void addon_manager::load_addon_list(window& window)
 	listbox& list = find_widget<listbox>(&window, "addons", false);
 	list.clear();
 
+	ids_.clear();
+
 	for(const auto & c : cfg_.child_range("campaign"))
 	{
 		ids_.push_back(c["name"]);

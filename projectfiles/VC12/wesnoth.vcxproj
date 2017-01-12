@@ -515,7 +515,7 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Addon\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Addon\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\addon\manager_old.cpp">
+    <ClCompile Include="..\..\src\addon\manager.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Addon\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Addon\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Addon\</ObjectFileName>
@@ -3907,7 +3907,7 @@
     <ClInclude Include="..\..\src\actions\vision.hpp" />
     <ClInclude Include="..\..\src\addon\client.hpp" />
     <ClInclude Include="..\..\src\addon\info.hpp" />
-    <ClInclude Include="..\..\src\addon\manager_old.hpp" />
+    <ClInclude Include="..\..\src\addon\manager.hpp" />
     <ClInclude Include="..\..\src\addon\manager_ui.hpp" />
     <ClInclude Include="..\..\src\addon\state.hpp" />
     <ClInclude Include="..\..\src\addon\validation.hpp" />

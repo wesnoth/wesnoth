@@ -16,7 +16,7 @@
 #include "addon/manager_ui.hpp"
 
 #include "addon/info.hpp"
-#include "addon/manager_old.hpp"
+#include "addon/manager.hpp"
 #include "addon/state.hpp"
 #include "filesystem.hpp"
 #include "formatter.hpp"

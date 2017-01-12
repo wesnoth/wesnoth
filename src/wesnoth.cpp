@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-#include "addon/manager_old.hpp"
+#include "addon/manager.hpp"
 #include "build_info.hpp"
 #include "commandline_options.hpp"      // for commandline_options, etc
 #include "config.hpp"                   // for config, config::error, etc

@@ -15,7 +15,7 @@
 #include "addon/state.hpp"
 #include "config.hpp"
 
-#include "addon/manager_old.hpp"
+#include "addon/manager.hpp"
 #include "log.hpp"
 
 static lg::log_domain log_addons_client("addons-client");

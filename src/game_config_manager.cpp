@@ -14,7 +14,7 @@
 #include "game_config_manager.hpp"
 
 #include "about.hpp"
-#include "addon/manager_old.hpp"
+#include "addon/manager.hpp"
 #include "ai/configuration.hpp"
 #include "cursor.hpp"
 #include "events.hpp"

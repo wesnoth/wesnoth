@@ -14,7 +14,7 @@
 */
 
 #include "addon/info.hpp"
-#include "addon/manager_old.hpp"
+#include "addon/manager.hpp"
 #include "addon/validation.hpp"
 #include "cursor.hpp"
 #include "formula/string_utils.hpp"

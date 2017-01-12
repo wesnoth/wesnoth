@@ -13,7 +13,7 @@
    See the COPYING file for more details.
 */
 
-#include "addon/manager_old.hpp"
+#include "addon/manager.hpp"
 #include "addon/manager_ui.hpp"
 #include "filesystem.hpp"
 #include "formatter.hpp"

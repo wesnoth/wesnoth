@@ -17,7 +17,8 @@
 #include "gui/dialogs/wml_error.hpp"
 
 #include "addon/info.hpp"
-#include "addon/manager_old.hpp"
+// Needs the full path to avoid confusion with gui/dialogs/addon/manager.hpp.
+#include "../../addon/manager.hpp"
 #include "desktop/clipboard.hpp"
 #include "filesystem.hpp"
 #include "gui/auxiliary/find_widget.hpp"
