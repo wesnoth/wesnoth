@@ -299,6 +299,12 @@ WML_HANDLER_FUNCTION(do_command,, cfg)
 			ERR_NG << "allowed tags: " << o.str() << std::endl;
 			continue;
 		}
+		// TODO: afaik run_in_synced_context_if_not_already thows exceptions when the executed action end the scenario or the turn.
+		//       This could cause problems, specially when its unclear whether that excetion is caught by lua or not...
+
+		// TODO: What happens when this command is run on a client that doesnt control the currentl playing side?
+		//       I couldn't find any code that gives a proper error message in that case.
+
 		//Note that this fires related events and everthing else that also happen normally.
 		//have to watch out with the undo stack, therefore forbid [auto_shroud] and [update_shroud] here...
 		synced_context::run_in_synced_context_if_not_already(
