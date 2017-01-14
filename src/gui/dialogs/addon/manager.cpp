@@ -446,6 +446,14 @@ void addon_manager::load_addon_list(window& window)
 
 		if(!is_updatable) {
 			find_widget<button>(row_grid, "single_install", false).set_active(!is_installed);
+			connect_signal_mouse_left_click(
+				find_widget<button>(row_grid, "single_install", false),
+				[this, info, &window](gui2::event::dispatcher&, const gui2::event::ui_event, bool& handled, bool& halt)
+			{
+				install_addon(info, window);
+				handled = true;
+				halt = true;
+			});
 		}
 
 		find_widget<button>(row_grid, "single_uninstall", false).set_active(is_installed);
@@ -491,20 +499,23 @@ void addon_manager::install_selected_addon(window& window)
 		return;
 	}
 
-	// We take a copy because reloading the addon list invalidates references.
-	const addon_info info = addon_at(ids_[index], addons_);
+	install_addon(addon_at(ids_[index], addons_), window);
+}
 
+void addon_manager::install_addon(addon_info addon, window& window)
+{
+	listbox& addon_list = find_widget<listbox>(&window, "addons", false);
 	config archive;
-	bool download_succeeded = client_.download_addon(archive, info.id, info.title);
+	bool download_succeeded = client_.download_addon(archive, addon.id, addon.title);
 	if(download_succeeded)
 	{
-		bool install_succeeded = client_.install_addon(archive, info);
+		bool install_succeeded = client_.install_addon(archive, addon);
 		if(install_succeeded)
 		{
 			load_addon_list(window);
 
 			// Reselect the add-on.
-			addon_list.select_row(get_addon_index(addon_list, info.id));
+			addon_list.select_row(get_addon_index(addon_list, addon.id));
 			on_addon_select(window);
 
 			return;
