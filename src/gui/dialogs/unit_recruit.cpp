@@ -50,7 +50,7 @@ unit_recruit::unit_recruit(std::vector<const unit_type*>& recruit_list, team& te
 	, selected_index_(0)
 {
 	// Ensure the recruit list is sorted by name
-	std::sort(recruit_list_.begin(), recruit_list_.end(), [this](const unit_type* t1, const unit_type* t2) {
+	std::sort(recruit_list_.begin(), recruit_list_.end(), [](const unit_type* t1, const unit_type* t2) {
 		return t1->type_name().str() < t2->type_name().str();
 	});
 }

@@ -224,7 +224,7 @@ void title_screen::pre_show(window& win)
 	//
 	// General hotkeys
 	//
-	win.register_hotkey(hotkey::TITLE_SCREEN__RELOAD_WML, [this](event::dispatcher& w, hotkey::HOTKEY_COMMAND) {
+	win.register_hotkey(hotkey::TITLE_SCREEN__RELOAD_WML, [](event::dispatcher& w, hotkey::HOTKEY_COMMAND) {
 		dynamic_cast<window&>(w).set_retval(RELOAD_GAME_DATA);
 		return true;
 	});

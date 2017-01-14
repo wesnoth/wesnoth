@@ -785,7 +785,7 @@ void lobby_main::pre_show(window& window)
 		}
 	}, true);
 
-	plugins_context_->set_callback("create", [this, &window](const config&) { window.set_retval(CREATE); }, true);
+	plugins_context_->set_callback("create", [&window](const config&) { window.set_retval(CREATE); }, true);
 	plugins_context_->set_callback("quit", [&window](const config&) { window.set_retval(window::CANCEL); }, false);
 
 	plugins_context_->set_callback("chat", [this](const config& cfg) { chatbox_->send_chat_message(cfg["message"], false); }, true);
