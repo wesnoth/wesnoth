@@ -290,6 +290,11 @@ WML_HANDLER_FUNCTION(do_command,, cfg)
 		ERR_NG << "[do_command] called too early, only allowed at START or later" << std::endl;
 		return;
 	}
+	if(!resources::controller->current_team().is_local() && synced_context::get_synced_state() == synced_context::UNSYNCED)
+	{
+		ERR_NG << "[do_command] can only be used from clients that control the currently playing side" << std::endl;
+		return;		
+	}
 	for(vconfig::all_children_iterator i = cfg.ordered_begin(); i != cfg.ordered_end(); ++i)
 	{
 		if(allowed_tags.find( i.get_key()) == allowed_tags.end()) {
@@ -301,9 +306,6 @@ WML_HANDLER_FUNCTION(do_command,, cfg)
 		}
 		// TODO: afaik run_in_synced_context_if_not_already thows exceptions when the executed action end the scenario or the turn.
 		//       This could cause problems, specially when its unclear whether that excetion is caught by lua or not...
-
-		// TODO: What happens when this command is run on a client that doesnt control the currentl playing side?
-		//       I couldn't find any code that gives a proper error message in that case.
 
 		//Note that this fires related events and everthing else that also happen normally.
 		//have to watch out with the undo stack, therefore forbid [auto_shroud] and [update_shroud] here...
