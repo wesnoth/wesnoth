@@ -37,6 +37,24 @@ point drawing::calculate_best_size() const
 									  : styled_widget::calculate_best_size();
 }
 
+void drawing::request_reduce_width(const unsigned maximum_width)
+{
+	if(best_size_ != point()) {
+		// This drawing is of fixed size, do nothing.
+	} else {
+		styled_widget::request_reduce_width(maximum_width);
+	}
+}
+
+void drawing::request_reduce_height(const unsigned maximum_height)
+{
+	if(best_size_ != point()) {
+		// This drawing is of fixed size, do nothing.
+	} else {
+		styled_widget::request_reduce_height(maximum_height);
+	}
+}
+
 void drawing::set_active(const bool /*active*/)
 {
 	/* DO NOTHING */
