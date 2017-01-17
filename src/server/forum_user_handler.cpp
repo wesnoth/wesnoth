@@ -264,7 +264,10 @@ fuh::mysql_result fuh::db_query(const std::string& sql) {
 
 std::string fuh::db_query_to_string(const std::string& sql) {
 	mysql_result res = db_query(sql);
-	return std::string(mysql_fetch_row(res.get())[0]);
+	MYSQL_ROW row = mysql_fetch_row(res.get());
+	if(row[0] == NULL)
+		throw error("got null value from the database");
+	return std::string(row[0]);
 }
 
 
@@ -273,7 +276,7 @@ std::string fuh::get_detail_for_user(const std::string& name, const std::string&
 }
 
 std::string fuh::get_writable_detail_for_user(const std::string& name, const std::string& detail) {
-	if(!extra_row_exists(name)) return "";
+	if(!extra_row_exists(name)) throw error("row doesn't exist");
 	return db_query_to_string("SELECT " + detail + " FROM " + db_extra_table_ + " WHERE UPPER(username)=UPPER('" + name + "')");
 }
 
