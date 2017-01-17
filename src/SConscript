@@ -11,7 +11,7 @@ Import("*")
 #
 def GetSources(filename):
     sources = []
-    with open(Dir('#').abspath + "/source_lists/" + filename) as file:
+    with open(File("#/source_lists/" + filename).rfile().abspath) as file:
         for line in file.readlines():
             sources.append(line.strip())
     return sources
