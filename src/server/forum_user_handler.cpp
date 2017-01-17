@@ -265,6 +265,8 @@ fuh::mysql_result fuh::db_query(const std::string& sql) {
 std::string fuh::db_query_to_string(const std::string& sql) {
 	mysql_result res = db_query(sql);
 	MYSQL_ROW row = mysql_fetch_row(res.get());
+	if(row == NULL)
+		throw error("query returned no rows");
 	if(row[0] == NULL)
 		throw error("got null value from the database");
 	return std::string(row[0]);
