@@ -690,10 +690,23 @@ void listbox::layout_children(const bool force)
 	assert(content_grid());
 
 	if(need_layout_ || force) {
+		const int selected_item = generator_->get_selected_item();
+
 		content_grid()->place(content_grid()->get_origin(),
 							  content_grid()->get_size());
 
-		content_grid()->set_visible_rectangle(content_visible_area_);
+		const SDL_Rect& visible = content_visible_area_;
+
+		content_grid()->set_visible_rectangle(visible);
+
+		if(selected_item != -1) {
+			SDL_Rect rect = generator_->item(selected_item).get_rectangle();
+
+			rect.x = visible.x;
+			rect.w = visible.w;
+
+			show_content_rect(rect);
+		}
 
 		need_layout_ = false;
 		set_is_dirty(true);
