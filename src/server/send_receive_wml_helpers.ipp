@@ -200,6 +200,22 @@ struct handle_receive_doc : public handle_doc<Handler, ErrorHandler>
 		if(!this->buffer) {
 			assert(size == 4);
 			buf_size = ntohl(this->data_size->size);
+
+			if(buf_size == 0) {
+				ERR_SERVER <<
+							  client_address(this->socket) <<
+							  "\treceived invalid packet with payload size 0" << std::endl;
+				this->error_handler(this->socket);
+				return;
+			}
+			if(buf_size > 40000000) {
+				ERR_SERVER <<
+							  client_address(this->socket) <<
+							  "\treceived packet with payload size over 40MB" << std::endl;
+				this->error_handler(this->socket);
+				return;
+			}
+
 			this->buffer = boost::shared_array<char>(new char[buf_size]);
 			async_read(*(this->socket), boost::asio::buffer(this->buffer.get(), buf_size), *this);
 		} else {
