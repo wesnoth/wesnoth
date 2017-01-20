@@ -320,9 +320,9 @@ bool basic_unit_filter_impl::internal_matches_filter(const unit & u, const map_l
 	}
 
 	// Shorthand for all advancements of a given type
-	if (!vcfg["type_tree"].empty()) {
+	if (!vcfg["type_adv_tree"].empty()) {
 		std::set<std::string> types;
-		for(const std::string type : utils::split(vcfg["type_tree"])) {
+		for(const std::string type : utils::split(vcfg["type_adv_tree"])) {
 			if(types.count(type)) {
 				continue;
 			}
