@@ -291,6 +291,35 @@ private:
 };
 
 /**
+ * Adjust Channels (CHAN) modification
+ */
+class adjust_channels_modification : public modification
+{
+public:
+	adjust_channels_modification(const std::string& formula)
+		: formulas_(formula)
+	{
+		if(formulas_.size() == 0) {
+			formulas.push_back("red");
+		}
+		if(formulas_.size() == 1) {
+			formulas.push_back("green");
+		}
+		if(formulas_.size() == 2) {
+			formulas.push_back("blue");
+		}
+		if(formulas_.size() == 3) {
+			formulas.push_back("alpha");
+		}
+	}
+
+	virtual surface operator()(const surface& src) const;
+
+private:
+	std::vector<std::string> formulas_;
+};
+
+/**
  * Crop (CROP) modification.
  */
 class crop_modification : public modification

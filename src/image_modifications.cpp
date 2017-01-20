@@ -311,6 +311,58 @@ surface adjust_alpha_modification::operator()(const surface & src) const
 	return nsurf;
 }
 
+surface adjust_channels_modification::operator()(const surface & src) const
+{
+	if(src == nullptr) {
+		return nullptr;
+	}
+
+	game_logic::formula new_red(formulas_[0]);
+	game_logic::formula new_green(formulas_[1]);
+	game_logic::formula new_blue(formulas_[2]);
+	game_logic::formula new_alpha(formulas_[3]);
+
+	surface nsurf(make_neutral_surface(src));
+
+	if(nsurf == nullptr) {
+		std::cerr << "could not make neutral surface...\n";
+		return nullptr;
+	}
+
+	adjust_surface_alpha(nsurf, SDL_ALPHA_OPAQUE);
+
+	{
+		surface_lock lock(nsurf);
+		Uint32* cur = lock.pixels();
+		Uint32*const end = cur + nsurf->w * src->h;
+		Uint32*const beg = cur;
+
+		while(cur != end) {
+			color_t pixel;
+			pixel.a = (*cur) >> 24;
+			pixel.r = (*cur) >> 16;
+			pixel.g = (*cur) >> 8;
+			pixel.b = (*cur);
+
+			int i = cur - beg;
+			SDL_Point p;
+			p.y = i / nsurf->w;
+			p.x = i % nsurf->w;
+
+			pixel_callable px(p, pixel, nsurf->w, nsurf->h);
+			pixel.r = std::min<unsigned>(new_red.evaluate(px).as_int(), 255);
+			pixel.g = std::min<unsigned>(new_green.evaluate(px).as_int(), 255);
+			pixel.b = std::min<unsigned>(new_blue.evaluate(px).as_int(), 255);
+			pixel.a = std::min<unsigned>(new_alpha.evaluate(px).as_int(), 255);
+			*cur = (pixel.a << 24) + (pixel.r << 16) + (pixel.g << 8) + pixel.b;
+
+			++cur;
+		}
+	}
+
+	return nsurf;
+}
+
 surface crop_modification::operator()(const surface& src) const
 {
 	SDL_Rect area = slice_;
@@ -972,6 +1024,21 @@ REGISTER_MOD_PARSER(ADJUST_ALPHA, args)
 	}
 
 	return new adjust_alpha_modification(params.at(0));
+}
+
+// Adjust Channels
+REGISTER_MOD_PARSER(CHAN, args)
+{
+	// Formulas may contain commas, so use parenthetical split to ensure that they're properly considered a single argument.
+	// (A comma in a formula is only valid in function parameters or list/map literals, so this should always work.)
+	const std::vector<std::string>& params = utils::parenthetical_split(args, ',', "([", ")]");
+
+	if(params.size() < 1 || params.size() > 4) {
+		ERR_DP << "~CHAN() requires 1 to 4 arguments" << std::endl;
+		return nullptr;
+	}
+
+	return new adjust_channels_modification(params);
 }
 
 // Color-shift
