@@ -9,15 +9,15 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2016-11-06 02:25+0300\n"
-"PO-Revision-Date: 2014-03-23 13:50+0100\n"
-"Last-Translator: Christoph Berg <christoph.berg@kpm-sport.de>\n"
+"PO-Revision-Date: 2016-06-04 23:41+0200\n"
+"Last-Translator: daMark <daMark@arcor.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.6.4\n"
+"X-Generator: Poedit 1.8.7\n"
 
 #. [terrain_type]: id=deep_water_gray
 #. [terrain_type]: id=deep_water_medium
@@ -106,9 +106,8 @@ msgstr "Trübes küstennahes Riff"
 
 #. [terrain_type]: id=medium_reef
 #: data/core/terrain.cfg:110
-#, fuzzy
 msgid "Medium Coastal Reef"
-msgstr "Küstennahes Riff"
+msgstr "Mittleres küstennahes Riff"
 
 #. [terrain_type]: id=tropical_reef
 #: data/core/terrain.cfg:121
@@ -125,14 +124,13 @@ msgstr "Sumpf"
 
 #. [terrain_type]: id=swamp_water_reed
 #: data/core/terrain.cfg:134
-#, fuzzy
 msgid "Swamp Water Reed"
-msgstr "Sumpfiger Burgfried"
+msgstr "Sumpfiges Ried"
 
 #. [terrain_type]: id=quagmire
 #: data/core/terrain.cfg:145
 msgid "Muddy Quagmire"
-msgstr "sabschiges Moor"
+msgstr "Schlammiges Moor"
 
 #. [terrain_type]: id=grassland
 #. [terrain_type]: id=savanna
@@ -209,6 +207,9 @@ msgid ""
 "travelers passing over them. As far as gameplay is concerned, roads behave "
 "as flat terrain."
 msgstr ""
+"<italic>text='Straßen'</italic> sind gestampfte Pfade aus Lehm, geformt "
+"durch die vielen Reisenden, die sie benutzen. Soweit es das Spiel betrifft "
+"sind Straßen flaches Gelände."
 
 #. [terrain_type]: id=road_clean
 #: data/core/terrain.cfg:248
@@ -343,12 +344,12 @@ msgstr "Lagerfeuer"
 #. [terrain_type]: id=brazier
 #: data/core/terrain.cfg:434
 msgid "Brazier"
-msgstr ""
+msgstr "Kohlenbecken"
 
 #. [terrain_type]: id=brazier-lit
 #: data/core/terrain.cfg:443
 msgid "Lit Brazier"
-msgstr ""
+msgstr "Brennendes Kohlenbecken"
 
 #. [terrain_type]: id=fence
 #: data/core/terrain.cfg:452
@@ -373,12 +374,12 @@ msgstr "Erblühte Seerosen"
 #. [terrain_type]: id=detritus_trash
 #: data/core/terrain.cfg:491
 msgid "Trash"
-msgstr ""
+msgstr "Abfall"
 
 #. [terrain_type]: id=detritus_bones
 #: data/core/terrain.cfg:500
 msgid "Remains"
-msgstr ""
+msgstr "Relikte"
 
 #. [terrain_type]: id=great_tree
 #. [terrain_type]: id=great_tree_dead
@@ -437,9 +438,8 @@ msgstr "Palmenwald"
 
 #. [terrain_type]: id=palm_forest
 #: data/core/terrain.cfg:574
-#, fuzzy
 msgid "Dense Palm Forest"
-msgstr "Nadelwald"
+msgstr "Dichter Palmenwald"
 
 #. [terrain_type]: id=savanna_forest
 #: data/core/terrain.cfg:586
@@ -541,30 +541,27 @@ msgstr "Verschneite Hügel"
 #: data/core/terrain.cfg:1063 data/core/terrain.cfg:1073
 #: data/core/terrain.cfg:2520 data/core/terrain.cfg:2521
 msgid "Mountains"
-msgstr "Berge"
+msgstr "Gebirge"
 
 #. [terrain_type]: id=regular_mountains
 #: data/core/terrain.cfg:767
-#, fuzzy
 msgid "Regular Mountains"
-msgstr "Unpassierbare Berge"
+msgstr "Normales Gebirge"
 
 #. [terrain_type]: id=dry_mountains
 #: data/core/terrain.cfg:777
 msgid "Dry Mountains"
-msgstr "Dröge Berge"
+msgstr "Wüstengebirge"
 
 #. [terrain_type]: id=snow_mountains
 #: data/core/terrain.cfg:787
 msgid "Snowy Mountains"
-msgstr "Eingeschneite Berge"
+msgstr "Schneebedecktes Gebirge"
 
 #. [terrain_type]: id=desert_mountains
 #: data/core/terrain.cfg:798
-#, fuzzy
-#| msgid "Dry Mountains"
 msgid "Desert Mountains"
-msgstr "Dröge Berge"
+msgstr "Wüstengebirge"
 
 #. [terrain_type]: id=wood_floor
 #: data/core/terrain.cfg:809
@@ -578,10 +575,8 @@ msgstr "Holzdielen"
 
 #. [terrain_type]: id=old_wood_floor
 #: data/core/terrain.cfg:819 data/core/terrain.cfg:822
-#, fuzzy
-#| msgid "Wooden Floor"
 msgid "Old Wooden Floor"
-msgstr "Holzboden"
+msgstr "Alter Holzboden"
 
 #. [terrain_type]: id=lit
 #: data/core/terrain.cfg:835
@@ -732,19 +727,17 @@ msgstr "Vulkan"
 #. [terrain_type]: id=cloud
 #: data/core/terrain.cfg:1043
 msgid "Regular Impassable Mountains"
-msgstr "Unpassierbare Berge"
+msgstr "Normales unpassierbares Gebirge"
 
 #. [terrain_type]: id=cloud_dry
 #: data/core/terrain.cfg:1053
-#, fuzzy
-#| msgid "Desert Impassable Mountains"
 msgid "Dry Impassable Mountains"
 msgstr "Unpassierbares Wüstengebirge"
 
 #. [terrain_type]: id=cloud_snow
 #: data/core/terrain.cfg:1064
 msgid "Snowy Impassable Mountains"
-msgstr "Unpassierbare Gletscher"
+msgstr "Unpassierbares schneebedecktes Gebirge"
 
 #. [terrain_type]: id=cloud_desert
 #: data/core/terrain.cfg:1074
@@ -766,10 +759,8 @@ msgstr "Natürliche Höhlenwand"
 
 #. [terrain_type]: id=minewall
 #: data/core/terrain.cfg:1095 data/core/terrain.cfg:1096
-#, fuzzy
-#| msgid "Mine Rail"
 msgid "Mine Wall"
-msgstr "Gleise"
+msgstr "Minenwand"
 
 #. [terrain_type]: id=cavewall_earthy
 #: data/core/terrain.cfg:1107
@@ -791,37 +782,33 @@ msgstr "Beleuchtete Steinmauer"
 #. [terrain_type]: id=p_open_rusty
 #: data/core/terrain.cfg:1152 data/core/terrain.cfg:1178
 msgid "Gate"
-msgstr ""
+msgstr "Tor"
 
 #. [terrain_type]: id=portal_gate_rusty
 #: data/core/terrain.cfg:1153
 msgid "Rusty Gate"
-msgstr ""
+msgstr "Rostiges Tor"
 
 #. [terrain_type]: id=portal_door_wooden
 #. [terrain_type]: id=p_open_wooden
 #: data/core/terrain.cfg:1165 data/core/terrain.cfg:1190
 msgid "Door"
-msgstr ""
+msgstr "Türe"
 
 #. [terrain_type]: id=portal_door_wooden
 #: data/core/terrain.cfg:1166
-#, fuzzy
-#| msgid "Wooden Floor"
 msgid "Wooden Door"
-msgstr "Holzboden"
+msgstr "Hölzerne Türe"
 
 #. [terrain_type]: id=p_open_rusty
 #: data/core/terrain.cfg:1179
 msgid "Rusty Open Gate"
-msgstr ""
+msgstr "Rostiges offenes Tor"
 
 #. [terrain_type]: id=p_open_wooden
 #: data/core/terrain.cfg:1191
-#, fuzzy
-#| msgid "Wooden Floor"
 msgid "Wooden Open Door"
-msgstr "Holzboden"
+msgstr "Hölzerne offene Türe"
 
 #. [terrain_type]: id=impassable_overlay
 #: data/core/terrain.cfg:1201
@@ -830,9 +817,8 @@ msgstr "Unpassierbar-Overlay"
 
 #. [terrain_type]: id=unwalkable_overlay
 #: data/core/terrain.cfg:1214
-#, fuzzy
 msgid "Unwalkable Overlay"
-msgstr "Unpassierbar-Overlay"
+msgstr "Unbegehbar-Overlay"
 
 #. [terrain_type]: id=void
 #. [terrain_type]: id=off_map
@@ -899,10 +885,8 @@ msgstr "Wüstendorf"
 
 #. [terrain_type]: id=desert_village_ruin
 #: data/core/terrain.cfg:1256
-#, fuzzy
-#| msgid "Adobe Village"
 msgid "Ruined Adobe Village"
-msgstr "Wüstendorf"
+msgstr "Verfallenes Wüstendorf"
 
 #. [terrain_type]: id=desert_village_tent
 #: data/core/terrain.cfg:1269
@@ -1052,6 +1036,18 @@ msgid ""
 "Merfolk and nagas have 60% defense in submerged villages, whereas land based "
 "units usually have a low defense."
 msgstr ""
+"<italic>text='Überflutete Städte'</italic> sind die Behausungen der "
+"Meeresbewohner und Nagas. Während Kreaturen, die im Wasser wohnen, sich hier "
+"zu wohl fühlen, tun sich Landbewohner schwer sich in diesen Städten zu "
+"bewegen und diese zu verteidigen. Jedoch, wie bei jeder Stadt, the stehen "
+"die Einrichtungen allen Kreaturen zur Verfügung, so dass die Einheiten ihre "
+"Wunden versorgen können. Jede Einheit, die sich in einer Stadt befindet, "
+"kann bei jeder Runde acht Lebenspunkte dazugewinnen oder von einer "
+"Vergiftung geheilt werden.\n"
+"\n"
+"Meeresbewohner und Nagas haben 60% Verteidigungsbonus in überfluteten "
+"Städten, während Land bewohnende Einheiten normalerweise einen niedrigen "
+"Verteidigungsbonus haben."
 
 #. [terrain_type]: id=village_overlay
 #: data/core/terrain.cfg:1635
@@ -1112,9 +1108,8 @@ msgstr "Verschneite Burg"
 
 #. [terrain_type]: id=elven_castle
 #: data/core/terrain.cfg:1723
-#, fuzzy
 msgid "Elven Castle"
-msgstr "Elfischer Burgfried"
+msgstr "Elbische Burg"
 
 #. [terrain_type]: id=dwarven_castle
 #: data/core/terrain.cfg:1735
@@ -1157,17 +1152,13 @@ msgstr "Zerfallene Zitadelle"
 
 #. [terrain_type]: id=aquatic_camp
 #: data/core/terrain.cfg:1809
-#, fuzzy
-#| msgid "Encampment"
 msgid "Aquatic Encampment"
-msgstr "Lager"
+msgstr "Überschwemmtes Lager"
 
 #. [terrain_type]: id=aquatic_castle
 #: data/core/terrain.cfg:1822
-#, fuzzy
-#| msgid "Human Castle"
 msgid "Aquatic Castle"
-msgstr "Burg"
+msgstr "Überschwemmte Burg"
 
 #. [terrain_type]: id=encampment_keep
 #. [terrain_type]: id=encampment_keep_tall
@@ -1271,17 +1262,13 @@ msgstr "Verfallener Burgfried"
 
 #. [terrain_type]: id=merman_campkeep
 #: data/core/terrain.cfg:2020
-#, fuzzy
-#| msgid "Tall Encampment Keep"
 msgid "Aquatic Encampment Keep"
-msgstr "Erhöhter Burgfried"
+msgstr "Überschwemmtes Anführerzelt"
 
 #. [terrain_type]: id=merman_castlekeep
 #: data/core/terrain.cfg:2033
-#, fuzzy
-#| msgid "Ruined Keep"
 msgid "Aquatic Keep"
-msgstr "Verfallener Burgfried"
+msgstr "Überschwemmter Burgfried"
 
 #. [terrain_type]: id=castle_overlay
 #: data/core/terrain.cfg:2048
@@ -1401,7 +1388,6 @@ msgstr "Hängebrücke"
 #. [terrain_type]: id=stonechasmbridge
 #: data/core/terrain.cfg:2280 data/core/terrain.cfg:2293
 #: data/core/terrain.cfg:2306
-#, fuzzy
 msgid "Stone Chasm Bridge"
 msgstr "Rundbogenbrücke"
 
@@ -1410,9 +1396,8 @@ msgstr "Rundbogenbrücke"
 #. [terrain_type]: id=plankbridge
 #: data/core/terrain.cfg:2319 data/core/terrain.cfg:2332
 #: data/core/terrain.cfg:2345
-#, fuzzy
 msgid "Plank Bridge"
-msgstr "Brücke"
+msgstr "Holzbrücke"
 
 #. [terrain_type]: id=off_map
 #: data/core/terrain.cfg:2361
@@ -1441,7 +1426,7 @@ msgstr "Nebel"
 #. [terrain_type]: id=fungus
 #: data/core/terrain.cfg:2407 data/core/terrain.cfg:2408
 msgid "Fungus"
-msgstr ""
+msgstr "Pilze"
 
 #. [terrain_type]: id=fungus
 #: data/core/terrain.cfg:2411
@@ -1481,7 +1466,6 @@ msgstr ""
 
 #. [terrain_type]: id=sand
 #: data/core/terrain.cfg:2436
-#, fuzzy
 msgid "Sands"
 msgstr "Sand"
 
@@ -2071,24 +2055,18 @@ msgstr "Version"
 
 #. [toggle_button]: id=sort_1
 #: data/gui/window/addon_list.cfg:79
-#, fuzzy
-#| msgid "Author:"
 msgid "Author"
-msgstr "Autor:"
+msgstr "Autor"
 
 #. [toggle_button]: id=sort_2
 #: data/gui/window/addon_list.cfg:93
-#, fuzzy
-#| msgid "Size:"
 msgid "Size"
-msgstr "Größe:"
+msgstr "Größe"
 
 #. [toggle_button]: id=sort_3
 #: data/gui/window/addon_list.cfg:107
-#, fuzzy
-#| msgid "Downloads:"
 msgid "Downloads"
-msgstr "Heruntergeladen:"
+msgstr "Heruntergeladen"
 
 #. [toggle_button]: id=sort_4
 #. [toggle_button]: id=sort_1
@@ -2145,10 +2123,8 @@ msgstr ""
 
 #. [label]
 #: data/gui/window/advanced_graphics_options.cfg:91
-#, fuzzy
-#| msgid "sound^Advanced Options"
 msgid "Advanced Graphics Options"
-msgstr "Erweiterte Einstellungen"
+msgstr "Erweiterte Grafik-Optionen"
 
 #. [label]
 #: data/gui/window/advanced_graphics_options.cfg:107
@@ -2238,8 +2214,6 @@ msgstr "Wählt den Schwierigkeitsgrad:"
 
 #. [label]
 #: data/gui/window/campaign_settings.cfg:48
-#, fuzzy
-#| msgid "sound^Advanced Options"
 msgid "Advanced Settings"
 msgstr "Erweiterte Einstellungen"
 
@@ -2265,10 +2239,8 @@ msgstr "Epoche:"
 #. [label]: id=mods_header
 #: data/gui/window/campaign_settings.cfg:246 data/gui/window/lobby_main.cfg:167
 #: data/gui/window/mp_create_game.cfg:203
-#, fuzzy
-#| msgid "Choose Modifications"
 msgid "Modifications:"
-msgstr "Modifikationen auswählen"
+msgstr "Modifikationen:"
 
 #. [label]
 #: data/gui/window/chat_log.cfg:36
@@ -2325,10 +2297,8 @@ msgstr "Kopieren"
 
 #. [button]: id=copy
 #: data/gui/window/chat_log.cfg:197 data/gui/window/lua_interpreter.cfg:106
-#, fuzzy
-#| msgid "Copy this URL to clipboard"
 msgid "Copy this log to clipboard"
-msgstr "URL in die Zwischenablage kopieren"
+msgstr "Log in die Zwischenablage kopieren"
 
 #. [label]
 #: data/gui/window/core_dialog.cfg:44
@@ -2580,7 +2550,6 @@ msgstr "Gold:"
 
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:277
-#, fuzzy
 msgid "Gold per village:"
 msgstr "Steuereinnahmen pro Dorf:"
 
@@ -2785,10 +2754,8 @@ msgstr "Neuer Ordner"
 
 #. [label]
 #: data/gui/window/file_dialog.cfg:393
-#, fuzzy
-#| msgid "File: "
 msgid "File:"
-msgstr "Datei: "
+msgstr "Datei:"
 
 #. [label]
 #: data/gui/window/formula_debugger.cfg:36
@@ -3024,10 +2991,8 @@ msgstr "Heerführer"
 
 #. [toggle_button]: id=sort_1
 #: data/gui/window/game_stats.cfg:49
-#, fuzzy
-#| msgid "Team 1"
 msgid "Team"
-msgstr "Fraktion 1"
+msgstr "Fraktion"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_2
@@ -3036,24 +3001,18 @@ msgstr "Fraktion 1"
 #: data/gui/window/game_stats.cfg:63 data/gui/window/mp_join_game.cfg:219
 #: data/gui/window/mp_join_game.cfg:232
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:392
-#, fuzzy
-#| msgid "Gold:"
 msgid "Gold"
-msgstr "Gold:"
+msgstr "Gold"
 
 #. [toggle_button]: id=sort_3
 #: data/gui/window/game_stats.cfg:76
-#, fuzzy
-#| msgid "Villages:"
 msgid "Villages"
-msgstr "Dörfer:"
+msgstr "Dörfer"
 
 #. [toggle_button]: id=sort_4
 #: data/gui/window/game_stats.cfg:90
-#, fuzzy
-#| msgid "Unit List"
 msgid "Units"
-msgstr "Einheitenübersicht"
+msgstr "Einheiten"
 
 #. [toggle_button]: id=sort_5
 #: data/gui/window/game_stats.cfg:104
@@ -3067,10 +3026,8 @@ msgstr ""
 #: data/gui/window/game_stats.cfg:118 data/gui/window/mp_join_game.cfg:250
 #: data/gui/window/mp_join_game.cfg:263
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:398
-#, fuzzy
-#| msgid "Income:"
 msgid "Income"
-msgstr "Einkommen:"
+msgstr "Einkommen"
 
 #. [label]: id=side_title
 #. [toggle_button]: id=sort_1
@@ -3080,26 +3037,20 @@ msgstr "Fraktion"
 
 #. [toggle_button]: id=sort_2
 #: data/gui/window/game_stats.cfg:311
-#, fuzzy
-#| msgid "Random starting time"
 msgid ""
 "Starting\n"
 "Gold"
-msgstr "Zufällige Startzeit"
+msgstr "Anfangsguthaben"
 
 #. [toggle_button]: id=sort_3
 #: data/gui/window/game_stats.cfg:325
-#, fuzzy
-#| msgid "Income:"
 msgid ""
 "Base\n"
 "Income"
-msgstr "Einkommen:"
+msgstr "Grundeinkommen"
 
 #. [toggle_button]: id=sort_4
 #: data/gui/window/game_stats.cfg:340
-#, fuzzy
-#| msgid "Gold per village"
 msgid ""
 "Gold Per\n"
 "Village"
@@ -3131,17 +3082,13 @@ msgstr "Spielverzeichnisse"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [widget]: id=tab_label
 #: data/gui/window/game_stats.cfg:792 src/gui/dialogs/game_stats.cpp:255
-#, fuzzy
-#| msgid "Edit Scenario Settings"
 msgid "Scenario Settings"
-msgstr "Szenarioeinstellungen bearbeiten"
+msgstr "Szenrioeinstellungen"
 
 #. [button]: id=ok
 #: data/gui/window/game_stats.cfg:831 data/gui/window/unit_list.cfg:436
-#, fuzzy
-#| msgid "Scroll speed:"
 msgid "Scroll To"
-msgstr "Scroll-Geschwindigkeit:"
+msgstr "Scrolle zu"
 
 #. [grid]
 #: data/gui/window/game_version.cfg:126
@@ -3206,10 +3153,8 @@ msgstr ""
 
 #. [label]
 #: data/gui/window/game_version.cfg:447
-#, fuzzy
-#| msgid "Show Battle for Wesnoth help"
 msgid "The Battle for Wesnoth"
-msgstr "Hilfe zu Battle for Wesnoth anzeigen"
+msgstr "Die Schlacht um Wesnoth"
 
 #. [widget]: id=tab_label
 #: data/gui/window/game_version.cfg:526
@@ -3260,10 +3205,8 @@ msgstr ""
 
 #. [label]
 #: data/gui/window/generator_settings.cfg:89
-#, fuzzy
-#| msgid "Map Generator"
 msgid "Map Generator Settings"
-msgstr "Zufallskartengenerator"
+msgstr "Einstellungen Karten Generator"
 
 #. [grid]
 #. [label]
@@ -3277,15 +3220,11 @@ msgstr "Spieler:"
 
 #. [grid]
 #: data/gui/window/generator_settings.cfg:111
-#, fuzzy
-#| msgid "Number of hills:"
 msgid "Number of Hills:"
-msgstr "Anzahl an Bergen:"
+msgstr "Anzahl Berge:"
 
 #. [grid]
 #: data/gui/window/generator_settings.cfg:113
-#, fuzzy
-#| msgid "Max hill size:"
 msgid "Max Hill Size:"
 msgstr "Max. Größe der Berge:"
 
@@ -3296,8 +3235,6 @@ msgstr "Dörfer:"
 
 #. [grid]
 #: data/gui/window/generator_settings.cfg:117
-#, fuzzy
-#| msgid "Castle size:"
 msgid "Castle Size:"
 msgstr "Burggröße:"
 
@@ -3308,15 +3245,11 @@ msgstr "Landschaft:"
 
 #. [toggle_button]: id=connect_castles
 #: data/gui/window/generator_settings.cfg:135
-#, fuzzy
-#| msgid "Roads between castles"
 msgid "Roads Between Castles"
-msgstr "Straßen zwischen den Burgen"
+msgstr "Straßen zwischen Burgen"
 
 #. [toggle_button]: id=show_labels
 #: data/gui/window/generator_settings.cfg:157
-#, fuzzy
-#| msgid "Show labels"
 msgid "Show Labels"
 msgstr "Beschriftungen anzeigen"
 
@@ -3341,10 +3274,8 @@ msgstr "Wählt Eure bevorzugte Sprache:"
 
 #. [label]: id=status
 #: data/gui/window/loadscreen.cfg:150
-#, fuzzy
-#| msgid "Load Game..."
 msgid "Loading..."
-msgstr "Spielstand laden…"
+msgstr "Laden..."
 
 #. [label]: id=map
 #: data/gui/window/lobby_main.cfg:59
@@ -3449,10 +3380,8 @@ msgstr "Filter invertieren"
 
 #. [button]: id=quit
 #: data/gui/window/lobby_main.cfg:536 data/gui/window/lobby_main.cfg:706
-#, fuzzy
-#| msgid "Zoom Out"
 msgid "Log Out"
-msgstr "Verkleinern"
+msgstr "Abmelden"
 
 #. [button]: id=refresh
 #: data/gui/window/lobby_main.cfg:546 data/gui/window/lobby_main.cfg:694
@@ -3484,17 +3413,13 @@ msgstr "Einstellungen"
 
 #. [option]
 #: data/gui/window/lobby_main.cfg:625 data/gui/window/lobby_main.cfg:776
-#, fuzzy
-#| msgid "Save Replay"
 msgid "Normal Replays"
-msgstr "Aufzeichnung speichern"
+msgstr "Aufzeichnung Normalgeschwindigkeit"
 
 #. [option]
 #: data/gui/window/lobby_main.cfg:629 data/gui/window/lobby_main.cfg:780
-#, fuzzy
-#| msgid "Quick replay"
 msgid "Quick Replays"
-msgstr "Schneller Verlauf"
+msgstr "Aufzeichnung Schnell"
 
 #. [option]
 #: data/gui/window/lobby_main.cfg:630 data/gui/window/lobby_main.cfg:781
@@ -3525,8 +3450,6 @@ msgstr "Spielerinformationen — "
 #. [button]: id=add_to_friends
 #: data/gui/window/lobby_player_info.cfg:94
 #: data/gui/window/preferences/05_multiplayer.cfg:291
-#, fuzzy
-#| msgid "Add as Friend"
 msgid "Add Friend"
 msgstr "Als Freund hinzufügen"
 
@@ -3549,10 +3472,8 @@ msgstr "Private Nachricht senden"
 
 #. [label]
 #: data/gui/window/lobby_player_info.cfg:153
-#, fuzzy
-#| msgid "Moderation"
 msgid "Moderator Controls"
-msgstr "Moderation"
+msgstr ""
 
 #. [label]
 #: data/gui/window/lobby_player_info.cfg:173
@@ -3566,8 +3487,6 @@ msgstr "Dauer der Verbannung:"
 
 #. [button]: id=check_status
 #: data/gui/window/lobby_player_info.cfg:238
-#, fuzzy
-#| msgid "Check status"
 msgid "Check Status"
 msgstr "Status überprüfen"
 
@@ -3579,10 +3498,8 @@ msgstr "Vom Server werfen"
 
 #. [button]: id=kick_ban
 #: data/gui/window/lobby_player_info.cfg:262
-#, fuzzy
-#| msgid "Kick/ban"
 msgid "Kick + Ban"
-msgstr "Vom Server werfen/Bannen"
+msgstr "Rauswerfen + Blockieren"
 
 #. [label]
 #: data/gui/window/logging.cfg:86
@@ -3855,24 +3772,18 @@ msgstr ""
 
 #. [toggle_button]: id=use_map_settings
 #: data/gui/window/mp_create_game.cfg:313
-#, fuzzy
-#| msgid "Use map settings"
 msgid "Use Map Settings"
-msgstr "Vorgaben nutzen"
+msgstr "Map Vorgaben nutzen"
 
 #. [toggle_button]: id=use_map_settings
 #: data/gui/window/mp_create_game.cfg:314
-#, fuzzy
-#| msgid "Use map settings"
 msgid "Use scenario specific settings"
-msgstr "Vorgaben nutzen"
+msgstr "Scenario Vorgaben nutzen"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:330
-#, fuzzy
-#| msgid "Number of turns"
 msgid "Number of Turns"
-msgstr "Anzahl Runden:"
+msgstr "Anzahl Runden"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:330
@@ -3881,8 +3792,6 @@ msgstr ""
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:331
-#, fuzzy
-#| msgid "Unlimited"
 msgid "unlimited"
 msgstr "Unbegrenzt"
 
@@ -3893,10 +3802,8 @@ msgstr ""
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:334
-#, fuzzy
-#| msgid "Village gold"
 msgid "Village Gold"
-msgstr "Steuereinnahmen pro Dorf:"
+msgstr "Steuereinnahmen pro Dorf"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:336
@@ -3905,15 +3812,11 @@ msgstr ""
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:336
-#, fuzzy
-#| msgid "Village gold"
 msgid "Village Support"
-msgstr "Steuereinnahmen pro Dorf:"
+msgstr "Unterstützung pro Dorf"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:338
-#, fuzzy
-#| msgid "Experience modifier"
 msgid "Experience Modifier"
 msgstr "Erfahrungsmodifikator"
 
@@ -3939,15 +3842,11 @@ msgstr "Zufällige Startzeit"
 
 #. [toggle_button]: id=random_start_time
 #: data/gui/window/mp_create_game.cfg:406
-#, fuzzy
-#| msgid "Random starting time"
 msgid "Randomize the starting time of day"
-msgstr "Zufällige Startzeit"
+msgstr "Wähle die Startzeit für den Tag zufällig"
 
 #. [toggle_button]: id=time_limit
 #: data/gui/window/mp_create_game.cfg:434
-#, fuzzy
-#| msgid "Time limit"
 msgid "Time Limit"
 msgstr "Zeitbegrenzung"
 
@@ -4006,10 +3905,8 @@ msgstr ""
 #: data/gui/window/mp_create_game.cfg:533 data/gui/window/preferences.cfg:291
 #: data/gui/window/preferences/05_multiplayer.cfg:430
 #: src/gui/dialogs/preferences_dialog.cpp:685
-#, fuzzy
-#| msgid "Generate"
 msgid "General"
-msgstr "Erzeugen"
+msgstr "General"
 
 #. [widget]: id=tab_label
 #: data/gui/window/mp_create_game.cfg:546
@@ -4042,7 +3939,7 @@ msgstr "Zufällige Startzeit"
 #, fuzzy
 #| msgid "Generate"
 msgid "Regenerate"
-msgstr "Erzeugen"
+msgstr "Neu erzeugen"
 
 #: data/gui/window/mp_create_game.cfg:941
 msgid "Shuffle Sides"
@@ -4053,10 +3950,8 @@ msgid "Allow users who are not playing to watch the game"
 msgstr ""
 
 #: data/gui/window/mp_create_game.cfg:945
-#, fuzzy
-#| msgid "Observe"
 msgid "Observers"
-msgstr "Beobachten"
+msgstr "Beobachter"
 
 #: data/gui/window/mp_create_game.cfg:949
 msgid "Allow only registered users to join the game"
@@ -4101,10 +3996,8 @@ msgstr ""
 #: data/gui/window/mp_create_game/default_resolution.cfg:169
 #: data/gui/window/mp_create_game/small_resolution.cfg:172
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:159
-#, fuzzy
-#| msgid "Map size: "
 msgid "Map size:"
-msgstr "Kartengröße: "
+msgstr "Kartengröße:"
 
 #. [label]: id=title
 #: data/gui/window/mp_create_game_set_password.cfg:42
@@ -4113,10 +4006,8 @@ msgstr "Passwort festlegen"
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:116
-#, fuzzy
-#| msgid "Leader"
 msgid "Leader:"
-msgstr "Heerführer"
+msgstr "Anführer:"
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:161
@@ -4147,24 +4038,18 @@ msgstr "Weiblich"
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:201
-#, fuzzy
-#| msgid "Recruit"
 msgid "Recruits:"
-msgstr "Ausbilden"
+msgstr "Rekruten:"
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:280
-#, fuzzy
-#| msgid "Choose Resolution"
 msgid "Choose Your Faction"
-msgstr "Wählt die gewünschte Auflösung"
+msgstr "Wähle deine Fraktion"
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:305
-#, fuzzy
-#| msgid "Starting Positions Tool"
 msgid "Starting position:"
-msgstr "Startpositionswerkzeug"
+msgstr "Startposition:"
 
 #. [label]
 #. [widget]: id=name
@@ -4187,33 +4072,27 @@ msgstr ""
 #. [label]
 #: data/gui/window/mp_join_game.cfg:130 data/gui/window/mp_staging.cfg:141
 msgid "<b>Faction:</b>"
-msgstr ""
+msgstr "<b>Fraktion:</b>"
 
 #. [label]
 #: data/gui/window/mp_join_game.cfg:162 data/gui/window/mp_staging.cfg:173
-#, fuzzy
-#| msgid "Gender:"
 msgid "<b>Gender:</b>"
-msgstr "Geschlecht:"
+msgstr "<b>Geschlecht:</b>"
 
 #. [label]
 #: data/gui/window/mp_join_game.cfg:330 data/gui/window/mp_staging.cfg:416
-#, fuzzy
-#| msgid "Choose Player"
 msgid "Connected Players"
-msgstr "Spieler wählen"
+msgstr "Angemeldete Spieler"
 
 #. [button]: id=ok
 #: data/gui/window/mp_join_game.cfg:419 data/gui/window/mp_staging.cfg:505
 msgid "I’m Ready"
-msgstr ""
+msgstr "Ich bin fertig"
 
 #. [label]: id=title
 #: data/gui/window/mp_join_game.cfg:496 data/gui/window/mp_staging.cfg:631
-#, fuzzy
-#| msgid "Lobby"
 msgid "Game Lobby"
-msgstr "Lobby"
+msgstr "Spiel Lobby"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=status_label
@@ -4303,11 +4182,8 @@ msgstr "Einem anderem Server beitreten"
 
 #. [column]
 #: data/gui/window/mp_method_selection.cfg:221
-#, fuzzy
-#| msgid "Host a game using dedicated server ‘wesnothd’"
 msgid "Host a game using a dedicated server"
-msgstr ""
-"Ausrichten einer Partie unter Zuhilfenahme des dedizierten »wesnothd« Servers"
+msgstr "Ausrichten einer Partie unter Zuhilfenahme eines dedizierten Servers"
 
 #. [column]
 #: data/gui/window/mp_method_selection.cfg:240
@@ -4332,22 +4208,16 @@ msgstr "Auswählen"
 
 #. [widget]: id=label
 #: data/gui/window/preferences.cfg:310
-#, fuzzy
-#| msgid "Hotkeys"
 msgid "Hotkeys"
 msgstr "Tastenkürzel"
 
 #. [widget]: id=label
 #: data/gui/window/preferences.cfg:328
-#, fuzzy
-#| msgid "Refresh Display"
 msgid "Display"
-msgstr "Anzeige aktualisieren"
+msgstr "Anzeige"
 
 #. [widget]: id=label
 #: data/gui/window/preferences.cfg:382
-#, fuzzy
-#| msgid "sound^Advanced Options"
 msgid "Advanced"
 msgstr "Erweiterte Einstellungen"
 
@@ -4516,8 +4386,6 @@ msgstr "Aktion"
 
 #. [toggle_button]: id=sort_1
 #: data/gui/window/preferences/02_hotkeys.cfg:99
-#, fuzzy
-#| msgid "Hotkeys"
 msgid "Hotkey"
 msgstr "Tastenkürzel"
 
@@ -4652,8 +4520,6 @@ msgstr "Untätigkeitsanimationen der Einheiten anzeigen"
 
 #. [toggle_button]: id=animate_units_standing
 #: data/gui/window/preferences/03_display.cfg:143
-#, fuzzy
-#| msgid "Continuously animate standing units in the battlefield"
 msgid "Continuously animate standing units on the battlefield"
 msgstr "Einheiten auf dem Schlachtfeld durchgehend animieren"
 
@@ -5264,10 +5130,8 @@ msgstr "Einberufen"
 
 #. [label]
 #: data/gui/window/unit_recruit.cfg:146
-#, fuzzy
-#| msgid "Recruit"
 msgid "Recruit Unit"
-msgstr "Ausbilden"
+msgstr "Einheit ausbilden"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -5371,16 +5235,12 @@ msgid "player"
 msgstr "Spieler"
 
 #: src/game_preferences.cpp:1051
-#, fuzzy
-#| msgid "%H:%M"
 msgid "[%H:%M]"
-msgstr "%H:%M"
+msgstr "[%H:%M]"
 
 #: src/game_preferences.cpp:1054
-#, fuzzy
-#| msgid "%I:%M %p"
 msgid "[%I:%M %p]"
-msgstr "%I:%M %p"
+msgstr "[%I:%M %p]"
 
 #: src/gui/core/canvas.cpp:600
 msgid "Line doesn't fit on canvas."
@@ -5623,10 +5483,8 @@ msgid "Save"
 msgstr "Karte speichern"
 
 #: src/gui/dialogs/file_dialog.cpp:314
-#, fuzzy
-#| msgid "Save already exists. Do you want to overwrite it?"
 msgid "The file already exists. Do you wish to overwrite it?"
-msgstr "Der Spielstand existiert bereits. Möchtet Ihr ihn überschreiben?"
+msgstr "Die Datei existiert bereits. Willst Du sie überschreiben?"
 
 #: src/gui/dialogs/file_dialog.cpp:338
 msgid "The file or folder $path cannot be created."
@@ -5651,10 +5509,8 @@ msgid "The following file will be permanently deleted:"
 msgstr ""
 
 #: src/gui/dialogs/file_dialog.cpp:737
-#, fuzzy
-#| msgid "Do you really want to delete this game?"
 msgid "Do you wish to continue?"
-msgstr "Möchtet Ihr diesen Spielstand wirklich löschen?"
+msgstr "Willst Du weitermachen?"
 
 #: src/gui/dialogs/file_dialog.cpp:749
 msgid ""
@@ -5704,10 +5560,8 @@ msgid "The game data cache could not be purged."
 msgstr ""
 
 #: src/gui/dialogs/game_load.cpp:281
-#, fuzzy
-#| msgid "#(Invalid)"
 msgid "(Invalid)"
-msgstr "#(Ungültig)"
+msgstr "(Ungültig)"
 
 #: src/gui/dialogs/game_load.cpp:308
 msgid "Campaign: $campaign_name"
@@ -5848,16 +5702,12 @@ msgid "Verifying cache"
 msgstr ""
 
 #: src/gui/dialogs/loadscreen.cpp:61
-#, fuzzy
-#| msgid "Connect to Server"
 msgid "Connecting to server"
 msgstr "Mit einem Server verbinden"
 
 #: src/gui/dialogs/loadscreen.cpp:62
-#, fuzzy
-#| msgid "Options"
 msgid "Logging in"
-msgstr "Einstellungen"
+msgstr "Anmelden"
 
 #: src/gui/dialogs/loadscreen.cpp:63
 msgid "Waiting for server"
@@ -5880,20 +5730,14 @@ msgid "Getting game data"
 msgstr "Zufällige Startzeit"
 
 #: src/gui/dialogs/lobby/lobby.cpp:103
-#, fuzzy
-#| msgid "Selected game"
 msgid "Selected Game"
 msgstr "Ausgewähltes Spiel"
 
 #: src/gui/dialogs/lobby/lobby.cpp:104
-#, fuzzy
-#| msgid "Other games"
 msgid "Other Games"
 msgstr "Andere Partien"
 
 #: src/gui/dialogs/lobby/lobby.cpp:105
-#, fuzzy
-#| msgid "Current room"
 msgid "Current Room"
 msgstr "Derzeitiger Raum"
 
@@ -5902,8 +5746,6 @@ msgid "Lobby"
 msgstr "Lobby"
 
 #: src/gui/dialogs/lobby/lobby.cpp:122
-#, fuzzy
-#| msgid "Do you really want to quit?"
 msgid "Do you really want to log out?"
 msgstr "Möchtet Ihr das Spiel wirklich beenden?"
 
@@ -6053,10 +5895,8 @@ msgid "Reserved for $playername"
 msgstr ""
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:244
-#, fuzzy
-#| msgid "Vacant slots"
 msgid "Vacant slot"
-msgstr "Freie Plätze"
+msgstr "Freier Platz"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:248
 msgid "empty"
@@ -6067,7 +5907,7 @@ msgstr ""
 #, fuzzy
 #| msgid "Team 1"
 msgid "Team:"
-msgstr "Fraktion 1"
+msgstr "Fraktion:"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:443
 msgid "Response"
@@ -6101,10 +5941,8 @@ msgid "Not on friends or ignore lists"
 msgstr "Anzeigen und Editieren der Freundes- oder Ignorierliste"
 
 #: src/gui/dialogs/preferences_dialog.cpp:686
-#, fuzzy
-#| msgid "Save Game"
 msgid "Saved Games"
-msgstr "Spiel speichern"
+msgstr "Gespeicherte Spielstände"
 
 #: src/gui/dialogs/preferences_dialog.cpp:687
 #, fuzzy
@@ -6131,16 +5969,12 @@ msgid "Replay Control"
 msgstr "Kontrolle ändern"
 
 #: src/gui/dialogs/preferences_dialog.cpp:691
-#, fuzzy
-#| msgid "whiteboard^Planning Mode"
 msgid "Planning Mode"
 msgstr "Planungsmodus"
 
 #: src/gui/dialogs/preferences_dialog.cpp:692
-#, fuzzy
-#| msgid "Scenario start"
 msgid "Scenario Editor"
-msgstr "Szenariostart"
+msgstr "Szenario Editor"
 
 #: src/gui/dialogs/preferences_dialog.cpp:693
 msgid "Editor Palettes"
@@ -6245,10 +6079,6 @@ msgid "whisper to $receiver"
 msgstr "an $receiver senden"
 
 #: src/gui/widgets/chatbox.cpp:396
-#, fuzzy
-#| msgid ""
-#| "Whisper session with $name started. If you do not want to receive "
-#| "messages from this user, type /ignore $name\n"
 msgid ""
 "Whisper session with <i>“$name”</i> started. If you do not want to receive "
 "messages from this user, type <i>/ignore $name</i>\n"
@@ -6966,11 +6796,11 @@ msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:189
 msgid "Radius One"
-msgstr ""
+msgstr "Radius eins"
 
 #: src/hotkey/hotkey_command.cpp:190
 msgid "Radius Two"
-msgstr ""
+msgstr "Radius zwei"
 
 #: src/hotkey/hotkey_command.cpp:191
 msgid "Brush NW-SE"
@@ -7231,11 +7061,11 @@ msgstr "Ausführlichen Tooltipp anzeigen"
 
 #: src/hotkey/hotkey_command.cpp:267
 msgid "Show Lua Console"
-msgstr ""
+msgstr "LUA Konsole anzeigen"
 
 #: src/hotkey/hotkey_command.cpp:270
 msgid "Unrecognized Command"
-msgstr ""
+msgstr "Unbekanntes Kommando"
 
 #: src/hotkey/hotkey_preferences_display.cpp:36
 msgid "Press desired hotkey (Esc cancels)"
