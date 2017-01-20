@@ -2922,7 +2922,8 @@ directory.""")
                 if match:
                     aliases = match.group()
                     for (old, new) in aliaschanges:
-                        aliases = aliases.replace(old, new)
+                        old = r'\b' + old + r'\b'
+                        aliases = re.sub(old, new, aliases)
                     line = line.replace(match.group(), aliases)
         # Perform tag renaming for 1.5.  Note: this has to happen before
         # the sanity check, which assumes [unit] has already been
