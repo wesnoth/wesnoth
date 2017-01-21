@@ -23,6 +23,7 @@
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/stacked_widget.hpp"
+#include "wml_exception.hpp"
 
 namespace gui2
 {
@@ -188,7 +189,7 @@ static widget::visibility parse_visibility(const std::string& str)
 	} else if(str == "invisible") {
 		return widget::visibility::invisible;
 	} else {
-		throw std::exception("Invalid visibility value");
+		FAIL("Invalid visibility value");
 	}
 }
 
