@@ -29,6 +29,7 @@
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/helper.hpp"
 #include "gui/dialogs/message.hpp"
+#include "gui/widgets/addon_list.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/stacked_widget.hpp"
@@ -184,75 +185,6 @@ void addon_manager::on_filtertext_changed(text_box_base* textbox, const std::str
 	addons.set_row_shown(res);
 }
 
-static std::string colorify_addon_state_string(const std::string& str,
-										const addon_tracking_info& state, bool verbose = false)
-{
-	std::string colorname = "";
-
-	switch(state.state) {
-		case ADDON_NONE:
-			if(!verbose) {
-				return str;
-			}
-			colorname = "#a69275";
-			break;
-		case ADDON_INSTALLED:
-		case ADDON_NOT_TRACKED:
-			colorname = "#00ff00"; // GOOD_COLOR
-			break;
-		case ADDON_INSTALLED_UPGRADABLE:
-			colorname = "#ffff00"; // YELLOW_COLOR/color_upgradable
-			break;
-		case ADDON_INSTALLED_OUTDATED:
-			colorname = "#ff7f00"; // <255,127,0>/color_outdated
-			break;
-		case ADDON_INSTALLED_BROKEN:
-			colorname = "#ff0000"; // BAD_COLOR
-			break;
-		default:
-			colorname = "#777777"; // GRAY_COLOR
-			break;
-	}
-
-	return "<span color='" + colorname + "'>" + str + "</span>";
-}
-
-static std::string describe_status_simple(const addon_tracking_info& info)
-{
-	std::string tc, tx;
-
-	switch(info.state) {
-		case ADDON_NONE:
-			tx = info.can_publish ? _("addon_state^Published, not installed") : _("addon_state^Not installed");
-			break;
-
-		case ADDON_INSTALLED:
-		case ADDON_NOT_TRACKED:
-			// Consider add-ons without version information as installed
-			// for the main display. Their Description info should elaborate
-			// on their status.
-			tx = info.can_publish ? _("addon_state^Published") : _("addon_state^Installed");
-			break;
-
-		case ADDON_INSTALLED_UPGRADABLE:
-			tx = info.can_publish ? _("addon_state^Published, upgradable") : _("addon_state^Installed, upgradable");
-			break;
-
-		case ADDON_INSTALLED_OUTDATED:
-			tx = info.can_publish ? _("addon_state^Published, outdated on server") : _("addon_state^Installed, outdated on server");
-			break;
-
-		case ADDON_INSTALLED_BROKEN:
-			tx = info.can_publish ? _("addon_state^Published, broken") : _("addon_state^Installed, broken");
-			break;
-
-		default:
-			tx = _("addon_state^Unknown");
-	}
-
-	return colorify_addon_state_string(tx, info, true);
-}
-
 static std::string describe_status_verbose(const addon_tracking_info& state)
 {
 	std::string s;
@@ -313,19 +245,21 @@ static std::string describe_status_verbose(const addon_tracking_info& state)
 			s = _("addon_state^Unknown");
 	}
 
-	return colorify_addon_state_string(s, state);
+	return addon_list::colorify_addon_state_string(s, state.state);
 }
 
 void addon_manager::pre_show(window& window)
 {
 	load_addon_list(window);
-	listbox& list = find_widget<listbox>(&window, "addons", false);
+	addon_list& list = find_widget<addon_list>(&window, "addons", false);
 
+	/*
 	list.register_sorting_option(0, [this](const int i) { return addon_at(ids_[i], addons_).title; });
 	list.register_sorting_option(1, [this](const int i) { return addon_at(ids_[i], addons_).author; });
 	list.register_sorting_option(2, [this](const int i) { return addon_at(ids_[i], addons_).size; });
 	list.register_sorting_option(3, [this](const int i) { return addon_at(ids_[i], addons_).downloads; });
 	list.register_sorting_option(4, [this](const int i) { return addon_at(ids_[i], addons_).type; });
+	*/
 
 	find_widget<text_box>(&window, "filter", false).set_text_changed_callback(
 		std::bind(&addon_manager::on_filtertext_changed, this, _1, _2));
@@ -395,69 +329,19 @@ void addon_manager::load_addon_list(window& window)
 
 	read_addons_list(cfg_, addons_);
 
-	listbox& list = find_widget<listbox>(&window, "addons", false);
-	list.clear();
+	addon_list& list = find_widget<addon_list>(&window, "addons", false);
+	list.set_addons(addons_);
 
 	ids_.clear();
 
-	for(const auto & c : cfg_.child_range("campaign"))
+	for(const auto& a : addons_)
 	{
-		ids_.push_back(c["name"]);
+		ids_.push_back(a.first);
 		const addon_info& info = addon_at(ids_.back(), addons_);
 		tracking_info_[info.id] = get_addon_tracking_info(info);
-
-		std::map<std::string, string_map> data;
-		string_map item;
-
-		item["use_markup"] = "true";
-
-		item["label"] = info.display_icon();
-		data.emplace("icon", item);
-
-		item["label"] = info.display_title();
-		data.emplace("name", item);
-
-		item["label"] = describe_status_simple(tracking_info_[info.id]);
-		data.emplace("installation_status", item);
-
-		item["label"] = info.version.str();
-		data.emplace("version", item);
-
-		item["label"] = info.author;
-		data.emplace("author", item);
-
-		item["label"] = size_display_string(info.size);
-		data.emplace("size", item);
-
-		item["label"] = std::to_string(info.downloads);
-		data.emplace("downloads", item);
-
-		item["label"] = info.display_type();
-		data.emplace("type", item);
-
-		grid* row_grid = &list.add_row(data);
-
-		stacked_widget& install_update_stack = find_widget<stacked_widget>(row_grid, "install_update_stack", false);
-
-		const bool is_updatable = tracking_info_[info.id].state == ADDON_INSTALLED_UPGRADABLE;
-		const bool is_installed = tracking_info_[info.id].state == ADDON_INSTALLED;
-
-		install_update_stack.select_layer(is_updatable);
-
-		if(!is_updatable) {
-			find_widget<button>(row_grid, "single_install", false).set_active(!is_installed);
-			connect_signal_mouse_left_click(
-				find_widget<button>(row_grid, "single_install", false),
-				[this, info, &window](gui2::event::dispatcher&, const gui2::event::ui_event, bool& handled, bool& halt)
-			{
-				install_addon(info, window);
-				handled = true;
-				halt = true;
-			});
-		}
-
-		find_widget<button>(row_grid, "single_uninstall", false).set_active(is_installed);
 	}
+
+	// TODO: wire up the install buttons in some way
 }
 
 unsigned int addon_manager::get_addon_index(listbox& addon_list, const std::string& id)
@@ -492,8 +376,8 @@ void addon_manager::options_button_callback(window& window)
 
 void addon_manager::install_selected_addon(window& window)
 {
-	listbox& addon_list = find_widget<listbox>(&window, "addons", false);
-	const int index = addon_list.get_selected_row();
+	addon_list& addons = find_widget<addon_list>(&window, "addons", false);
+	const int index = addons.get_selected_row();
 
 	if(index == -1) {
 		return;
@@ -504,7 +388,7 @@ void addon_manager::install_selected_addon(window& window)
 
 void addon_manager::install_addon(addon_info addon, window& window)
 {
-	listbox& addon_list = find_widget<listbox>(&window, "addons", false);
+	listbox& addon_listbox = find_widget<addon_list>(&window, "addons", false).get_listbox();
 	config archive;
 	bool download_succeeded = client_.download_addon(archive, addon.id, addon.title);
 	if(download_succeeded)
@@ -515,7 +399,7 @@ void addon_manager::install_addon(addon_info addon, window& window)
 			load_addon_list(window);
 
 			// Reselect the add-on.
-			addon_list.select_row(get_addon_index(addon_list, addon.id));
+			addon_listbox.select_row(get_addon_index(addon_listbox, addon.id));
 			on_addon_select(window);
 
 			return;
@@ -566,7 +450,7 @@ static std::string format_addon_time(time_t time)
 
 void addon_manager::on_addon_select(window& window)
 {
-	const int index = find_widget<listbox>(&window, "addons", false).get_selected_row();
+	const int index = find_widget<addon_list>(&window, "addons", false).get_selected_row();
 
 	if(index == -1) {
 		return;
