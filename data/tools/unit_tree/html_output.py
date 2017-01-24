@@ -96,6 +96,8 @@ class Translation:
                 # not sure why, but this happens within the
                 # gettext.translation call sometimes
                 self.catalog[textdomain] = self.dummy
+            except ValueError:
+                self.catalog[textdoman] = self.dummy
 
         r = self.catalog[textdomain].gettext(string)
 
