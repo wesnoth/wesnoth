@@ -98,7 +98,7 @@ class Translation:
                 # gettext.translation call sometimes
                 self.catalog[textdomain] = self.dummy
             except ValueError:
-                self.catalog[textdoman] = self.dummy
+                self.catalog[textdomain] = self.dummy
 
         r = self.catalog[textdomain].ugettext(string)
 
