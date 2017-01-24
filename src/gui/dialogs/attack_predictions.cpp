@@ -87,12 +87,11 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 		unit_abilities::effect dmg_effect(dmg_specials, weapon->damage(), attacker.stats_.backstab_pos);
 
 		// Get the SET damage modifier, if any.
-		const unit_abilities::individual_effect* set_dmg_effect = &*(
-			std::find_if(dmg_effect.begin(), dmg_effect.end(), [](const unit_abilities::individual_effect& e) { return e.type == unit_abilities::SET; })
-		);
+		auto set_dmg_effect =
+			std::find_if(dmg_effect.begin(), dmg_effect.end(), [](const unit_abilities::individual_effect& e) { return e.type == unit_abilities::SET; });
 
 		// Either user the SET modifier or the base weapon damage.
-		if(!set_dmg_effect) {
+		if(set_dmg_effect == dmg_effect.end()) {
 			// TODO: formatting
 			ss << weapon->name() << ": " << weapon->damage();
 		} else {
