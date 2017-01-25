@@ -701,7 +701,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 	log_scope("map generation");
 
 	// Odd widths are nasty
-	VALIDATE(is_even(data.width), _("Random maps with an odd data.width aren't supported."));
+	VALIDATE(is_even(data.width), _("Random maps with an odd width aren't supported."));
 
 	// Try to find configuration for castles
 	const config& castle_config = cfg.child("castle");
