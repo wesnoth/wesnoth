@@ -313,7 +313,7 @@ void wml_menu_item::update(const vconfig & vcfg)
 	}
 
 	if ( vcfg.has_attribute("needs_select") ) {		
-		ERR_NG << "needs_select=yes is deprecated\n";
+		ERR_NG << "needs_select= is deprecated\n";
 		needs_select_ = vcfg["needs_select"].to_bool();
 	}
 	if ( vcfg.has_attribute("synced") )
