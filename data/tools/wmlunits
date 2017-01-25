@@ -372,7 +372,7 @@ def process_campaign_or_era(addon, cid, define, batchlist):
     wesnoth.add_units("mainline")
     
     if define == "MULTIPLAYER":
-        wesnoth.parser.parse_text("{core}{multiplayer}{~add-ons}", "MULTIPLAYER,SKIP_CORE")
+        wesnoth.parser.parse_text("{core}{multiplayer}{multiplayer/eras.cfg}{~add-ons}", "MULTIPLAYER,SKIP_CORE")
         wesnoth.add_units(cid)
     else:
         if addon == "mainline":
