@@ -24,6 +24,7 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/stacked_widget.hpp"
 #include "wml_exception.hpp"
+#include <algorithm>
 
 namespace gui2
 {
@@ -103,9 +104,13 @@ void addon_list::set_addons(const addons_list& addons)
 	listbox& list = get_listbox();
 	list.clear();
 
+	addon_vector_.clear();
+
 	for(const auto& a : addons) {
 		const addon_info& addon = a.second;
 		addon_tracking_info tracking_info = get_addon_tracking_info(addon);
+
+		addon_vector_.push_back(&addon);
 
 		std::map<std::string, string_map> data;
 		string_map item;
@@ -154,6 +159,54 @@ void addon_list::set_addons(const addons_list& addons)
 		find_widget<grid>(row_grid, "single_install_buttons", false).set_visible(install_buttons_visibility_);
 		find_widget<label>(row_grid, "installation_status", false).set_visible(install_status_visibility_);
 	}
+}
+
+const addon_info* addon_list::get_selected_addon() const
+{
+	const listbox& list = find_widget<const listbox>(&get_grid(), "addons", false);
+	int index = list.get_selected_row();
+	if(index == -1)
+	{
+		return nullptr;
+	}
+	return addon_vector_.at(index);
+}
+
+void addon_list::select_addon(const std::string& id)
+{
+	listbox& list = get_listbox();
+
+	const addon_info& info = **std::find_if(addon_vector_.begin(), addon_vector_.end(),
+		[&id](const addon_info* a)
+	{
+		return a->id == id;
+	});
+
+	for(unsigned int i = 0u; i < list.get_item_count(); ++i)
+	{
+		grid* row = list.get_row_grid(i);
+		const label& name_label = find_widget<label>(row, "name", false);
+		if(name_label.get_label().base_str() == info.display_title())
+		{
+			list.select_row(i);
+		}
+	}
+}
+
+listbox& addon_list::get_listbox()
+{
+	return find_widget<listbox>(&get_grid(), "addons", false);
+}
+
+void addon_list::finalize_setup()
+{
+	listbox& list = get_listbox();
+
+	list.register_sorting_option(0, [this](const int i) { return addon_vector_[i]->title; });
+	list.register_sorting_option(1, [this](const int i) { return addon_vector_[i]->author; });
+	list.register_sorting_option(2, [this](const int i) { return addon_vector_[i]->size; });
+	list.register_sorting_option(3, [this](const int i) { return addon_vector_[i]->downloads; });
+	list.register_sorting_option(4, [this](const int i) { return addon_vector_[i]->type; });
 }
 
 addon_list_definition::addon_list_definition(const config& cfg) :
@@ -222,6 +275,8 @@ widget* builder_addon_list::build() const
 
 	widget->set_install_status_visibility(install_status_visibility_);
 	widget->set_install_buttons_visibility(install_buttons_visibility_);
+
+	widget->finalize_setup();
 
 	return widget;
 }

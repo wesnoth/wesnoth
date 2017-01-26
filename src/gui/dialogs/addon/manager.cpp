@@ -151,13 +151,6 @@ namespace {
 		}
 		return it->second;
 	}
-
-	inline const addon_info& addon_at(const std::string& id, const addons_list& addons)
-	{
-		addons_list::const_iterator it = addons.find(id);
-		assert(it != addons.end());
-		return it->second;
-	}
 }
 
 REGISTER_DIALOG(addon_manager)
@@ -169,20 +162,29 @@ addon_manager::addon_manager(addons_client& client)
 	, client_(client)
 	, addons_()
 	, tracking_info_()
-	, ids_()
 {
 }
 
 void addon_manager::on_filtertext_changed(text_box_base* textbox, const std::string& text)
 {
-	listbox& addons = find_widget<listbox>(textbox->get_window(), "addons", true);
+	addon_list& addons = find_widget<addon_list>(textbox->get_window(), "addons", true);
 	filter_transform filter(utils::split(text, ' '));
 	boost::dynamic_bitset<> res;
-	for(const auto& child : cfg_.child_range("campaign"))
+
+	const config::const_child_itors& addon_cfgs = cfg_.child_range("campaign");
+
+	for(const auto& a : addons_)
 	{
-		res.push_back(filter(child));
+		const config& addon_cfg = *std::find_if(addon_cfgs.begin(), addon_cfgs.end(),
+			[&a](const config& cfg)
+		{
+			return cfg["name"] == a.first;
+		});
+
+		res.push_back(filter(addon_cfg));
 	}
-	addons.set_row_shown(res);
+
+	addons.set_addon_shown(res);
 }
 
 static std::string describe_status_verbose(const addon_tracking_info& state)
@@ -252,14 +254,6 @@ void addon_manager::pre_show(window& window)
 {
 	load_addon_list(window);
 	addon_list& list = find_widget<addon_list>(&window, "addons", false);
-
-	/*
-	list.register_sorting_option(0, [this](const int i) { return addon_at(ids_[i], addons_).title; });
-	list.register_sorting_option(1, [this](const int i) { return addon_at(ids_[i], addons_).author; });
-	list.register_sorting_option(2, [this](const int i) { return addon_at(ids_[i], addons_).size; });
-	list.register_sorting_option(3, [this](const int i) { return addon_at(ids_[i], addons_).downloads; });
-	list.register_sorting_option(4, [this](const int i) { return addon_at(ids_[i], addons_).type; });
-	*/
 
 	find_widget<text_box>(&window, "filter", false).set_text_changed_callback(
 		std::bind(&addon_manager::on_filtertext_changed, this, _1, _2));
@@ -332,32 +326,12 @@ void addon_manager::load_addon_list(window& window)
 	addon_list& list = find_widget<addon_list>(&window, "addons", false);
 	list.set_addons(addons_);
 
-	ids_.clear();
-
 	for(const auto& a : addons_)
 	{
-		ids_.push_back(a.first);
-		const addon_info& info = addon_at(ids_.back(), addons_);
-		tracking_info_[info.id] = get_addon_tracking_info(info);
+		tracking_info_[a.first] = get_addon_tracking_info(a.second);
 	}
 
 	// TODO: wire up the install buttons in some way
-}
-
-unsigned int addon_manager::get_addon_index(listbox& addon_list, const std::string& id)
-{
-	const addon_info& info = addon_at(id, addons_);
-	for(unsigned int i = 0u; i < addon_list.get_item_count(); ++i)
-	{
-		grid* row = addon_list.get_row_grid(i);
-		const label& name_label = find_widget<label>(row, "name", false);
-		if(name_label.get_label().base_str() == info.display_title())
-		{
-			return i;
-		}
-	}
-
-	return 0xFFFFFFFFu;
 }
 
 void addon_manager::options_button_callback(window& window)
@@ -377,18 +351,18 @@ void addon_manager::options_button_callback(window& window)
 void addon_manager::install_selected_addon(window& window)
 {
 	addon_list& addons = find_widget<addon_list>(&window, "addons", false);
-	const int index = addons.get_selected_row();
+	const addon_info* addon = addons.get_selected_addon();
 
-	if(index == -1) {
+	if(addon == nullptr) {
 		return;
 	}
 
-	install_addon(addon_at(ids_[index], addons_), window);
+	install_addon(*addon, window);
 }
 
 void addon_manager::install_addon(addon_info addon, window& window)
 {
-	listbox& addon_listbox = find_widget<addon_list>(&window, "addons", false).get_listbox();
+	addon_list& addons = find_widget<addon_list>(&window, "addons", false);
 	config archive;
 	bool download_succeeded = client_.download_addon(archive, addon.id, addon.title);
 	if(download_succeeded)
@@ -399,7 +373,7 @@ void addon_manager::install_addon(addon_info addon, window& window)
 			load_addon_list(window);
 
 			// Reselect the add-on.
-			addon_listbox.select_row(get_addon_index(addon_listbox, addon.id));
+			addons.select_addon(addon.id);
 			on_addon_select(window);
 
 			return;
@@ -450,32 +424,30 @@ static std::string format_addon_time(time_t time)
 
 void addon_manager::on_addon_select(window& window)
 {
-	const int index = find_widget<addon_list>(&window, "addons", false).get_selected_row();
+	const addon_info* info = find_widget<addon_list>(&window, "addons", false).get_selected_addon();
 
-	if(index == -1) {
+	if(info == nullptr) {
 		return;
 	}
 
-	const addon_info& info = addon_at(ids_[index], addons_);
+	find_widget<drawing>(&window, "image", false).set_label(info->display_icon());
 
-	find_widget<drawing>(&window, "image", false).set_label(info.display_icon());
-
-	find_widget<styled_widget>(&window, "title", false).set_label(info.display_title());
-	find_widget<styled_widget>(&window, "description", false).set_label(info.description);
-	find_widget<styled_widget>(&window, "version", false).set_label(info.version.str());
-	find_widget<styled_widget>(&window, "author", false).set_label(info.author);
-	find_widget<styled_widget>(&window, "type", false).set_label(info.display_type());
+	find_widget<styled_widget>(&window, "title", false).set_label(info->display_title());
+	find_widget<styled_widget>(&window, "description", false).set_label(info->description);
+	find_widget<styled_widget>(&window, "version", false).set_label(info->version.str());
+	find_widget<styled_widget>(&window, "author", false).set_label(info->author);
+	find_widget<styled_widget>(&window, "type", false).set_label(info->display_type());
 
 	styled_widget& status = find_widget<styled_widget>(&window, "status", false);
-	status.set_label(describe_status_verbose(tracking_info_[info.id]));
+	status.set_label(describe_status_verbose(tracking_info_[info->id]));
 	status.set_use_markup(true);
 
-	find_widget<styled_widget>(&window, "size", false).set_label(size_display_string(info.size));
-	find_widget<styled_widget>(&window, "downloads", false).set_label(std::to_string(info.downloads));
-	find_widget<styled_widget>(&window, "created", false).set_label(format_addon_time(info.created));
-	find_widget<styled_widget>(&window, "updated", false).set_label(format_addon_time(info.updated));
+	find_widget<styled_widget>(&window, "size", false).set_label(size_display_string(info->size));
+	find_widget<styled_widget>(&window, "downloads", false).set_label(std::to_string(info->downloads));
+	find_widget<styled_widget>(&window, "created", false).set_label(format_addon_time(info->created));
+	find_widget<styled_widget>(&window, "updated", false).set_label(format_addon_time(info->updated));
 
-	const std::string& feedback_url = info.feedback_url;
+	const std::string& feedback_url = info->feedback_url;
 
 	if(!feedback_url.empty()) {
 		find_widget<stacked_widget>(&window, "feedback_stack", false).select_layer(1);
@@ -484,7 +456,7 @@ void addon_manager::on_addon_select(window& window)
 		find_widget<stacked_widget>(&window, "feedback_stack", false).select_layer(0);
 	}
 
-	bool installed = is_installed_addon_status(tracking_info_[info.id].state);
+	bool installed = is_installed_addon_status(tracking_info_[info->id].state);
 
 	find_widget<button>(&window, "install", false).set_active(!installed);
 	find_widget<button>(&window, "uninstall", false).set_active(installed);

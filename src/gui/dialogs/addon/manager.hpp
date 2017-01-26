@@ -54,8 +54,6 @@ private:
 
 	void load_addon_list(window& window);
 
-	unsigned int get_addon_index(listbox& addon_list, const std::string& id);
-
 	/** Config which contains the list with the campaigns. */
 	config cfg_;
 
@@ -69,8 +67,6 @@ private:
 	addons_list addons_;
 
 	addons_tracking_list tracking_info_;
-
-	std::vector<std::string> ids_;
 
 	void install_selected_addon(window& window);
 	void install_addon(addon_info addon, window& window);

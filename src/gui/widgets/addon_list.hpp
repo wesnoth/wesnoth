@@ -16,11 +16,12 @@
 
 #include "addon/info.hpp"
 #include "addon/state.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/container_base.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/widget.hpp"
+#include <boost/dynamic_bitset.hpp>
 #include <string>
+#include <vector>
 
 namespace gui2
 {
@@ -37,6 +38,7 @@ class addon_list : public container_base
 public:
 	addon_list()
 		: container_base(1)
+		, addon_vector_()
 		, install_status_visibility_(visibility::visible)
 		, install_buttons_visibility_(visibility::invisible)
 	{}
@@ -50,17 +52,16 @@ public:
 		get_listbox().set_callback_value_change(callback);
 	}
 
-	/** Returns the index of the selected row. */
-	int get_selected_row() const
-	{
-		const listbox& list = find_widget<const listbox>(&get_grid(), "addons", false);
-		return list.get_selected_row();
-	}
+	/** Returns the selected add-on. */
+	const addon_info* get_selected_addon() const;
 
-	/** Returns the underlying list box. */
-	listbox& get_listbox()
+	/** Selects the add-on with the given ID. */
+	void select_addon(const std::string& id);
+
+	/** Filters which add-ons are visible. 1 = visible, 0 = hidden. */
+	void set_addon_shown(boost::dynamic_bitset<>& shown)
 	{
-		return find_widget<listbox>(&get_grid(), "addons", false);
+		get_listbox().set_row_shown(shown);
 	}
 
 	/** Changes the color of an add-on state string (installed, outdated, etc.)
@@ -99,10 +100,16 @@ public:
 	}
 
 private:
+	std::vector<const addon_info*> addon_vector_;
 	visibility install_status_visibility_;
 	visibility install_buttons_visibility_;
 
 	static std::string describe_status(const addon_tracking_info& info);
+
+	/** Returns the underlying list box. */
+	listbox& get_listbox();
+
+	void finalize_setup();
 
 	/** See @ref control::get_control_type. */
 	const std::string& get_control_type() const override
