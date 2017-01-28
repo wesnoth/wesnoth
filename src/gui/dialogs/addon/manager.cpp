@@ -252,7 +252,6 @@ static std::string describe_status_verbose(const addon_tracking_info& state)
 
 void addon_manager::pre_show(window& window)
 {
-	load_addon_list(window);
 	addon_list& list = find_widget<addon_list>(&window, "addons", false);
 
 	find_widget<text_box>(&window, "filter", false).set_text_changed_callback(
@@ -264,9 +263,13 @@ void addon_manager::pre_show(window& window)
 			*this,
 			std::ref(window)));
 #else
+	list.set_install_function(std::bind(&addon_manager::install_addon,
+		this, std::placeholders::_1, std::ref(window)));
 	list.set_callback_value_change(
 			dialog_callback<addon_manager, &addon_manager::on_addon_select>);
 #endif
+
+	load_addon_list(window);
 
 	button& url_go_button = find_widget<button>(&window, "url_go", false);
 	button& url_copy_button = find_widget<button>(&window, "url_copy", false);
@@ -330,8 +333,6 @@ void addon_manager::load_addon_list(window& window)
 	{
 		tracking_info_[a.first] = get_addon_tracking_info(a.second);
 	}
-
-	// TODO: wire up the install buttons in some way
 }
 
 void addon_manager::options_button_callback(window& window)

@@ -20,6 +20,7 @@
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/widget.hpp"
 #include <boost/dynamic_bitset.hpp>
+#include <functional>
 #include <string>
 #include <vector>
 
@@ -41,6 +42,8 @@ public:
 		, addon_vector_()
 		, install_status_visibility_(visibility::visible)
 		, install_buttons_visibility_(visibility::invisible)
+		, install_function_()
+		, uninstall_function_()
 	{}
 
 	/** Sets the add-ons to show. */
@@ -57,6 +60,18 @@ public:
 
 	/** Selects the add-on with the given ID. */
 	void select_addon(const std::string& id);
+
+	/** Sets the function to call when the player clicks the install button. */
+	void set_install_function(std::function<void(const addon_info&)> function)
+	{
+		install_function_ = function;
+	}
+
+	/** Sets the function to call when the player clicks the uninstall button. */
+	void set_uninstall_function(std::function<void(const addon_info&)> function)
+	{
+		uninstall_function_ = function;
+	}
 
 	/** Filters which add-ons are visible. 1 = visible, 0 = hidden. */
 	void set_addon_shown(boost::dynamic_bitset<>& shown)
@@ -103,6 +118,8 @@ private:
 	std::vector<const addon_info*> addon_vector_;
 	visibility install_status_visibility_;
 	visibility install_buttons_visibility_;
+	std::function<void(const addon_info&)> install_function_;
+	std::function<void(const addon_info&)> uninstall_function_;
 
 	static std::string describe_status(const addon_tracking_info& info);
 

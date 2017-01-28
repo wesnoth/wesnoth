@@ -17,6 +17,7 @@
 
 #include <gettext.hpp>
 #include "gui/auxiliary/find_widget.hpp"
+#include "gui/core/event/dispatcher.hpp"
 #include "gui/core/register_widget.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
@@ -152,6 +153,29 @@ void addon_list::set_addons(const addons_list& addons)
 
 		if(!is_updatable) {
 			find_widget<button>(row_grid, "single_install", false).set_active(!is_installed);
+			if(install_function_ != nullptr) {
+				gui2::event::connect_signal_mouse_left_click(
+					find_widget<button>(row_grid, "single_install", false),
+					[this, addon](gui2::event::dispatcher&, const gui2::event::ui_event, bool& handled, bool& halt)
+				{
+					install_function_(addon);
+					handled = true;
+					halt = true;
+				});
+			}
+		}
+
+		if(is_installed) {
+			if(uninstall_function_ != nullptr) {
+				gui2::event::connect_signal_mouse_left_click(
+					find_widget<button>(row_grid, "single_uninstall", false),
+					[this, addon](gui2::event::dispatcher&, const gui2::event::ui_event, bool& handled, bool& halt)
+				{
+					uninstall_function_(addon);
+					handled = true;
+					halt = true;
+				});
+			}
 		}
 
 		find_widget<button>(row_grid, "single_uninstall", false).set_active(is_installed);
