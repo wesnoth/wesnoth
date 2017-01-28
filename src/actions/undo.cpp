@@ -401,7 +401,6 @@ void undo_list::undo()
 /**
  * Redoes the top action on the redo stack.
  */
-void undo_list::redo()
 {
 	if ( redos_.empty() )
 		return;
@@ -413,19 +412,30 @@ void undo_list::redo()
 	// Get the action to redo. (This will be placed on the undo stack, but
 	// only if the redo is successful.)
 	redos_list::auto_type action = redos_.pop_back();
-	int last_unit_id = resources::gameboard->unit_id_manager().get_save_id();
-	if ( !action->redo(side_) ) {
-		return;
-	}
-	if(last_unit_id + action->unit_id_diff < static_cast<int>(resources::gameboard->unit_id_manager().get_save_id())) {
-		ERR_NG << "Too many units were generated during redoing." << std::endl;
-	}
-	resources::gameboard->unit_id_manager().set_save_id(last_unit_id + action->unit_id_diff);
 
-	// Bookkeeping.
-	undos_.push_back(action.release());
-	resources::whiteboard->on_gamestate_change();
+	if (!action->umc_commands_undo.empty()) {
+		const config& command_wml = action->replay_data.child("command");
+		std::string commandname = command_wml.all_children_range().front().key;
+		const config& data = command_wml.all_children_range().front().cfg;
 
+		resources::recorder->redo(const_cast<const config&>(action->replay_data));
+
+		synced_context::run(commandname, data, /*use_undo*/ true, /*show*/ true);
+	}
+	else {
+		int last_unit_id = resources::gameboard->unit_id_manager().get_save_id();
+		if (!action->redo(side_)) {
+			return;
+		}
+		if (last_unit_id + action->unit_id_diff < static_cast<int>(resources::gameboard->unit_id_manager().get_save_id())) {
+			ERR_NG << "Too many units were generated during redoing." << std::endl;
+		}
+		resources::gameboard->unit_id_manager().set_save_id(last_unit_id + action->unit_id_diff);
+
+		// Bookkeeping.
+		undos_.push_back(action.release());
+		resources::whiteboard->on_gamestate_change();
+	}
 	// Screen updates.
 	gui.invalidate_unit();
 	gui.invalidate_game_status();
