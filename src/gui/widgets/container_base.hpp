@@ -260,6 +260,8 @@ private:
 	 * set_active so we only need to change the state.
 	 */
 	virtual void set_self_active(const bool active) = 0;
+
+	void inject_linked_groups();
 };
 
 } // namespace gui2
