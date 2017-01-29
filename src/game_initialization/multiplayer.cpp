@@ -354,8 +354,9 @@ static std::unique_ptr<wesnothd_connection> open_connection(CVideo& video, const
 // The functions enter_(screen)_mode are simple functions that take care of
 // creating the dialogs, then, according to the dialog result, of calling other
 // of those screen functions.
-static void enter_wait_mode(CVideo& video, const config& game_config, saved_game& state, wesnothd_connection* connection,
-	mp::lobby_info& li, bool observe, int current_turn = 0)
+static void enter_wait_mode(CVideo& video, const config& game_config,
+		saved_game& state, wesnothd_connection* connection,
+		mp::lobby_info& li, bool observe)
 {
 	DBG_MP << "entering wait mode" << std::endl;
 
@@ -364,7 +365,7 @@ static void enter_wait_mode(CVideo& video, const config& game_config, saved_game
 	campaign_info.reset(new mp_campaign_info(*connection));
 	campaign_info->is_host = false;
 	if(preferences::skip_mp_replay() || preferences::blindfold_replay()) {
-		campaign_info->skip_replay_until_turn = current_turn;
+		campaign_info->skip_replay = true;
 		campaign_info->skip_replay_blindfolded = preferences::blindfold_replay();
 	}
 
@@ -471,7 +472,6 @@ static void enter_lobby_mode(CVideo& video, const config& game_config,
 	assert(connection);
 	DBG_MP << "entering lobby mode" << std::endl;
 
-	int current_turn = 0;
 	while (true) {
 		const config &cfg = game_config.child("lobby_music");
 		if (cfg) {
@@ -505,7 +505,7 @@ static void enter_lobby_mode(CVideo& video, const config& game_config,
 			case gui2::dialogs::lobby_main::JOIN:
 			case gui2::dialogs::lobby_main::OBSERVE:
 				try {
-					enter_wait_mode(video, game_config, state, connection, li, dlg.get_retval() == gui2::dialogs::lobby_main::OBSERVE, current_turn);
+					enter_wait_mode(video, game_config, state, connection, li, dlg.get_retval() == gui2::dialogs::lobby_main::OBSERVE);
 				} catch(config::error& error) {
 					if(!error.message.empty()) {
 						gui2::show_error_message(video, error.message);
