@@ -993,9 +993,7 @@ bool lobby_main::do_game_join(int idx, bool observe)
 	}
 
 	wesnothd_connection_.send_data(response);
-	if(observe && game.started) {
-		// playmp_controller::set_replay_last_turn(game.current_turn);
-	}
+	joined_game_id_ = game.id;
 	return true;
 }
 
