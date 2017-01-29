@@ -12,7 +12,7 @@ local function get_image(cfg, speaker)
 	local image = cfg.image
 	local left_side = true
 
-	if speaker and (image == nil or image == "") then
+	if speaker and (image == nil or image == "") and (cfg.second_image == nil or cfg.second_image == "") then
 		image = speaker.portrait
 	end
 
