@@ -108,7 +108,7 @@ public:
 	/*
 		puts the given config which was cut with undo_cut back in the replay.
 	*/
-	void redo(const config& dst);
+	void redo(const config& dst, bool set_to_end = false);
 
 	void start_replay();
 	void revert_action();
