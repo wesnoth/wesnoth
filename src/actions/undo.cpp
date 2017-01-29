@@ -401,6 +401,7 @@ void undo_list::undo()
 /**
  * Redoes the top action on the redo stack.
  */
+void undo_list::redo()
 {
 	if ( redos_.empty() )
 		return;
