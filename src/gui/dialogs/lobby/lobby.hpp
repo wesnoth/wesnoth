@@ -85,6 +85,8 @@ public:
 		preferences_callback_ = f;
 	}
 
+	int get_joined_game_id() const { return joined_game_id_; }
+
 	void update_gamelist();
 
 protected:
@@ -218,6 +220,8 @@ private:
 	bool delay_playerlist_update_;
 
 	bool delay_gamelist_update_;
+
+	int joined_game_id_;
 
 	friend struct lobby_delay_gamelist_update_guard;
 };

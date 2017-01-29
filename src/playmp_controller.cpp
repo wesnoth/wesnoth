@@ -53,6 +53,9 @@ playmp_controller::playmp_controller(const config& level,
 
 	//turn_data_.set_host(is_host);
 	turn_data_.host_transfer().attach_handler(this);
+	if (!mp_info || mp_info->current_turn == turn()) {
+		skip_replay_ = false;
+	}
 }
 
 playmp_controller::~playmp_controller() {
@@ -329,6 +332,9 @@ void playmp_controller::play_network_turn(){
 	{
 		if (!network_processing_stopped_) {
 			process_network_data();
+			if (!mp_info_ || mp_info_->current_turn == turn()) {
+				skip_replay_ = false;
+			}
 		}
 
 		play_slice_catch();
