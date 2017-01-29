@@ -114,7 +114,7 @@ bool move_action::redo(int)
 	this->take_village();
 
 	gui.invalidate_unit_after_move(route.front(), route.back());
-	resources::recorder->redo(replay_data);
+	resources::recorder->redo(replay_data, true);
 	replay_data.clear();
 	execute_redo_umc_wml();
 	return true;
