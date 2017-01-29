@@ -2309,10 +2309,11 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\widgets\addon_list.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\widgets\button.cpp">
