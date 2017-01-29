@@ -87,8 +87,9 @@ template<typename... Args> constexpr auto make_binds(Args&&... args)
 template<typename T> T fetch_result(MYSQL_STMT* stmt);
 template<> std::string fetch_result<std::string>(MYSQL_STMT* stmt)
 {
-	char* buf = new char[200];
-	std::size_t len = 200;
+	char* buf = nullptr;
+	std::string result;
+	std::size_t len = 0;
 	my_bool is_null;
 	MYSQL_BIND result_bind[1] = { make_bind(buf, &len, &is_null) };
 
@@ -96,6 +97,14 @@ template<> std::string fetch_result<std::string>(MYSQL_STMT* stmt)
 		throw sql_error(mysql_stmt_error(stmt));
 
 	int res = mysql_stmt_fetch(stmt);
+	if(len > 0) {
+		buf = new char[len];
+		result_bind[0].buffer = buf;
+		result_bind[0].buffer_length = len;
+		res = mysql_stmt_fetch_column(stmt, result_bind, 0, 0);
+		result = std::string(buf, len);
+		delete[] buf;
+	}
 	if(res == MYSQL_NO_DATA)
 		throw sql_error("no data returned");
 	if(is_null)
@@ -104,8 +113,8 @@ template<> std::string fetch_result<std::string>(MYSQL_STMT* stmt)
 		throw sql_error(mysql_stmt_error(stmt));
 	mysql_stmt_free_result(stmt);
 	mysql_stmt_close(stmt);
-	std::cout << "Result: " << buf << std::endl;
-	return buf;
+	std::cout << "Result: " << result << std::endl;
+	return result;
 }
 
 template<> int fetch_result<int>(MYSQL_STMT* stmt)
