@@ -79,7 +79,7 @@ public:
 	play_controller(const config& level, saved_game& state_of_game,
 		const config& game_config,
 		const ter_data_cache& tdata,
-		CVideo& video, bool skip_replay);
+		CVideo& video, bool quick_replay);
 	virtual ~play_controller();
 
 	//event handler, overridden from observer
@@ -185,8 +185,8 @@ public:
 	 */
 	config to_config() const;
 
-	bool is_skipping_replay() const { return skip_replay_; }
-	void toggle_skipping_replay() { skip_replay_ = !skip_replay_; }
+	bool is_skipping_replay() const { return quick_replay_; }
+	void toggle_skipping_replay() { quick_replay_ = !quick_replay_; }
 	bool is_linger_mode() const { return linger_; }
 	void do_autosave();
 
@@ -336,7 +336,7 @@ protected:
 	const actions::undo_list& undo_stack() const { return *gamestate().undo_stack_; };
 	std::unique_ptr<replay> replay_;
 
-	bool skip_replay_;
+	bool quick_replay_;
 	bool linger_;
 	/**
 	 * Whether we did init sides in this session

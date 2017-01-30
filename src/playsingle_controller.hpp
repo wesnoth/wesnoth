@@ -38,7 +38,7 @@ class playsingle_controller : public play_controller
 {
 public:
 	playsingle_controller(const config& level, saved_game& state_of_game,
-		const config& game_config, const ter_data_cache & tdata, CVideo& video, bool skip_replay);
+		const config& game_config, const ter_data_cache & tdata, CVideo& video, bool quick_replay);
 	virtual ~playsingle_controller();
 
 	LEVEL_RESULT play_scenario(const config& level);

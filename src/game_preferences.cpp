@@ -740,14 +740,14 @@ void set_options(const config& values)
 	options_initialized = false;
 }
 
-bool skip_mp_replay()
+bool quick_mp_replay()
 {
-	return preferences::get("skip_mp_replay", false);
+	return preferences::get("quick_mp_replay", false);
 }
 
-void set_skip_mp_replay(bool value)
+void set_quick_mp_replay(bool value)
 {
-	preferences::set("skip_mp_replay", value);
+	preferences::set("quick_mp_replay", value);
 }
 
 bool blindfold_replay()
@@ -758,6 +758,16 @@ bool blindfold_replay()
 void set_blindfold_replay(bool value)
 {
 	preferences::set("blindfold_replay", value);
+}
+
+bool skip_mp_replay()
+{
+	return preferences::get("skip_mp_replay", false);
+}
+
+void set_skip_mp_replay(bool value)
+{
+	preferences::set("skip_mp_replay", value);
 }
 
 bool countdown()

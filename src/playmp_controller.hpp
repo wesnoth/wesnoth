@@ -70,7 +70,9 @@ private:
 	void set_end_scenario_button();
 	void reset_end_scenario_button();
 	void process_network_data();
+
 	mp_campaign_info* mp_info_;
+	bool skipping_replay_;
 };
 
 #endif
