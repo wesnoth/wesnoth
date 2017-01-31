@@ -34,7 +34,6 @@ name_generator_factory::name_generator_factory(const config& config, std::vector
 
 void name_generator_factory::add_name_generator_from_config(const config& config, const std::string id, const std::string prefix) {
  	std::string cfg_name 	= prefix + "name_generator";
-	std::string markov_name = prefix + "names";
 
 	if(config.has_attribute(cfg_name)) {
 		try {
@@ -42,8 +41,17 @@ void name_generator_factory::add_name_generator_from_config(const config& config
 		}
 		catch (const name_generator_invalid_exception& ex) {
 			lg::wml_error() << ex.what() << '\n';
+			fall_back_to_markov(config, id, prefix);
 		}
 	}
+	else {
+		fall_back_to_markov(config, id, prefix);
+	}
+}
+
+
+void name_generator_factory::fall_back_to_markov(const config& config, const std::string id, const std::string prefix) {
+	std::string markov_name = prefix + "names";
 
 	if(config.has_attribute(markov_name)) {
 		config::attribute_value markov_name_list = config[markov_name];
@@ -53,6 +61,7 @@ void name_generator_factory::add_name_generator_from_config(const config& config
 		}
 	}
 }
+
 
 std::shared_ptr<name_generator> name_generator_factory::get_name_generator() {
 	std::map<std::string, std::shared_ptr<name_generator>>::const_iterator it = name_generators_.find("");
