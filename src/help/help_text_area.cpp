@@ -19,6 +19,7 @@
 #include "help/help_impl.hpp"           // for parse_error, box_width, etc
 #include "image.hpp"                    // for get_image
 #include "log.hpp"                      // for LOG_STREAM, log_domain, etc
+#include "preferences.hpp"              // for font_scaled
 #include "sdl/rect.hpp"                 // for draw_rectangle, etc
 #include "serialization/parser.hpp"     // for read, write
 #include "video.hpp"                    // for CVideo
@@ -296,6 +297,8 @@ void help_text_area::add_text_item(const std::string& text, const std::string& r
 )
 {
 	const int font_size = _font_size < 0 ? normal_font_size : _font_size;
+	// font::line_width(), font::get_rendered_text() are not use scaled font inside
+	const int scaled_font_size = preferences::font_scaled(font_size);
 	if (text.empty())
 		return;
 	const int remaining_width = get_remaining_width();
@@ -315,7 +318,7 @@ void help_text_area::add_text_item(const std::string& text, const std::string& r
 	state |= bold ? TTF_STYLE_BOLD : 0;
 	state |= italic ? TTF_STYLE_ITALIC : 0;
 	if (curr_loc_.first != get_min_x(curr_loc_.second, curr_row_height_)
-		&& remaining_width < font::line_width(first_word, font_size, state)) {
+		&& remaining_width < font::line_width(first_word, scaled_font_size, state)) {
 		// The first word does not fit, and we are not at the start of
 		// the line. Move down.
 		down_one_line();
@@ -334,7 +337,7 @@ void help_text_area::add_text_item(const std::string& text, const std::string& r
 		else
 			color = font::YELLOW_COLOR;
 
-		surface surf(font::get_rendered_text(first_part, font_size, color, state));
+		surface surf(font::get_rendered_text(first_part, scaled_font_size, color, state));
 		if (!surf.null())
 			add_item(item(surf, curr_loc_.first, curr_loc_.second, first_part, ref_dst));
 		if (parts.size() > 1) {
@@ -343,16 +346,16 @@ void help_text_area::add_text_item(const std::string& text, const std::string& r
 
 			const std::string first_word_before = get_first_word(s);
 			const std::string first_word_after = get_first_word(remove_first_space(s));
-			if (get_remaining_width() >= font::line_width(first_word_after, font_size, state)
+			if (get_remaining_width() >= font::line_width(first_word_after, scaled_font_size, state)
 				&& get_remaining_width()
-				< font::line_width(first_word_before, font_size, state)) {
+				< font::line_width(first_word_before, scaled_font_size, state)) {
 				// If the removal of the space made this word fit, we
 				// must move down a line, otherwise it will be drawn
 				// without a space at the end of the line.
 				s = remove_first_space(s);
 				down_one_line();
 			}
-			else if (!(font::line_width(first_word_before, font_size, state)
+			else if (!(font::line_width(first_word_before, scaled_font_size, state)
 					   < get_remaining_width())) {
 				s = remove_first_space(s);
 			}
