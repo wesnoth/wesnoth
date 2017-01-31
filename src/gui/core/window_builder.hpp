@@ -16,6 +16,7 @@
 #define GUI_AUXILIARY_WINDOW_BUILDER_HPP_INCLUDED
 
 #include "gui/auxiliary/typed_formula.hpp"
+#include "gui/core/linked_group_definition.hpp"
 #include "gui/widgets/grid.hpp"
 #include "color.hpp"
 
@@ -184,18 +185,7 @@ public:
 
 		std::string definition;
 
-		struct linked_group
-		{
-			linked_group() : id(), fixed_width(false), fixed_height(false)
-			{
-			}
-
-			std::string id;
-			bool fixed_width;
-			bool fixed_height;
-		};
-
-		std::vector<linked_group> linked_groups;
+		std::vector<linked_group_definition> linked_groups;
 
 		/** Helper struct to store information about the tips. */
 		struct tooltip_info

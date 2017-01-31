@@ -1572,6 +1572,14 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Core\Event\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Core\Event\</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\core\linked_group_definition.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Core\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Gui\Core\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Core\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Core\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Gui\Core\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Core\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\gui\core\log.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Gui\Core\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Core\</ObjectFileName>
@@ -4112,6 +4120,7 @@
     <ClInclude Include="..\..\src\gui\core\event\handler.hpp" />
     <ClInclude Include="..\..\src\gui\core\event\message.hpp" />
     <ClInclude Include="..\..\src\gui\core\layout_exception.hpp" />
+    <ClInclude Include="..\..\src\gui\core\linked_group_definition.hpp" />
     <ClInclude Include="..\..\src\gui\core\log.hpp" />
     <ClInclude Include="..\..\src\gui\core\notifiee.hpp" />
     <ClInclude Include="..\..\src\gui\core\notifier.hpp" />
