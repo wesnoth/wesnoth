@@ -27,6 +27,8 @@
 
 struct sql_error : public game::error
 {
+	sql_error(const std::string& message, const std::string& sql)
+		: game::error("Error evaluating SQL statement: '" + sql + "': " + message) {}
 	sql_error(const std::string& message) : game::error(message) {}
 };
 
@@ -84,8 +86,8 @@ template<typename... Args> constexpr auto make_binds(Args&&... args)
 	return { (make_bind(std::forward<Args>(args)))... };
 }
 
-template<typename T> T fetch_result(MYSQL_STMT* stmt);
-template<> std::string fetch_result<std::string>(MYSQL_STMT* stmt)
+template<typename T> T fetch_result(MYSQL_STMT* stmt, const std::string& sql);
+template<> std::string fetch_result<std::string>(MYSQL_STMT* stmt, const std::string& sql)
 {
 	char* buf = nullptr;
 	std::string result;
@@ -94,7 +96,7 @@ template<> std::string fetch_result<std::string>(MYSQL_STMT* stmt)
 	MYSQL_BIND result_bind[1] = { make_bind(buf, &len, &is_null) };
 
 	if(mysql_stmt_bind_result(stmt, result_bind) != 0)
-		throw sql_error(mysql_stmt_error(stmt));
+		throw sql_error(mysql_stmt_error(stmt), sql);
 
 	int res = mysql_stmt_fetch(stmt);
 	if(len > 0) {
@@ -106,40 +108,40 @@ template<> std::string fetch_result<std::string>(MYSQL_STMT* stmt)
 		delete[] buf;
 	}
 	if(res == MYSQL_NO_DATA)
-		throw sql_error("no data returned");
+		throw sql_error("no data returned", sql);
 	if(is_null)
-		throw sql_error("null value returned");
+		throw sql_error("null value returned", sql);
 	if(res != 0)
-		throw sql_error(mysql_stmt_error(stmt));
+		throw sql_error(mysql_stmt_error(stmt), sql);
 	mysql_stmt_free_result(stmt);
 	mysql_stmt_close(stmt);
 	std::cout << "Result: " << result << std::endl;
 	return result;
 }
 
-template<> int fetch_result<int>(MYSQL_STMT* stmt)
+template<> int fetch_result<int>(MYSQL_STMT* stmt, const std::string& sql)
 {
 	int result;
 	my_bool is_null;
 	MYSQL_BIND result_bind[1] = { make_bind(result, &is_null) };
 
 	if(mysql_stmt_bind_result(stmt, result_bind) != 0)
-		throw sql_error(mysql_stmt_error(stmt));
+		throw sql_error(mysql_stmt_error(stmt), sql);
 
 	int res = mysql_stmt_fetch(stmt);
 	if(res == MYSQL_NO_DATA)
-		throw sql_error("no data returned");
+		throw sql_error("no data returned", sql);
 	if(is_null)
-		throw sql_error("null value returned");
+		throw sql_error("null value returned", sql);
 	if(res != 0)
-		throw sql_error(mysql_stmt_error(stmt));
+		throw sql_error(mysql_stmt_error(stmt), sql);
 	mysql_stmt_free_result(stmt);
 	mysql_stmt_close(stmt);
 	std::cout << "Result: " << result << std::endl;
 	return result;
 }
 
-template<> void fetch_result<void>(MYSQL_STMT*)
+template<> void fetch_result<void>(MYSQL_STMT*, const std::string&)
 {
 }
 
@@ -151,20 +153,20 @@ R prepared_statement(MYSQL* conn, const std::string& sql, Args&&... args)
 
 	stmt = mysql_stmt_init(conn);
 	if(stmt == NULL)
-		throw sql_error("mysql_stmt_init failed");
+		throw sql_error("mysql_stmt_init failed", sql);
 
 	if(mysql_stmt_prepare(stmt, sql.c_str(), sql.size()) != 0)
-		throw sql_error(mysql_stmt_error(stmt));
+		throw sql_error(mysql_stmt_error(stmt), sql);
 
 	if(mysql_stmt_bind_param(stmt, arg_binds.data()) != 0)
-		throw sql_error(mysql_stmt_error(stmt));
+		throw sql_error(mysql_stmt_error(stmt), sql);
 
 	if(mysql_stmt_execute(stmt) != 0)
-		throw sql_error(mysql_stmt_error(stmt));
+		throw sql_error(mysql_stmt_error(stmt), sql);
 
 	std::cout << "SQL: " << sql << std::endl;
 
-	return fetch_result<R>(stmt);
+	return fetch_result<R>(stmt, sql);
 }
 
 #endif // MYSQL_PREPARED_STATEMENT_IPP
