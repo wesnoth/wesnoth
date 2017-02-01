@@ -505,7 +505,7 @@ Ctrl+c         Clear onscreen labels
 Alt+l          Attach a text label to a terrain hex
 Ctrl+l         Set team label
 
-:              http://www.wesnoth.org/wiki/CommandMode[Command mode]
+;              http://www.wesnoth.org/wiki/CommandMode[Command mode]
 F5             Refresh Cache
 Shift+c        Create Unit (Debug!)
 f              Run AI formula
@@ -1264,9 +1264,8 @@ allows the enemy to do least damage to you, rather than choosing the
 maximum expected damage to the enemy.
 
 In particular, use your ranged weapons if the enemy has no ranged
-attack. The computer's default choice only looks for the most damage
-you can deal, so using it will often result in your units taking more
-damage than necessary.
+attack. Using it will often reduce the damage which your units take 
+until the enemy dies.
 
 Time of Day
 ^^^^^^^^^^^
