@@ -32,6 +32,10 @@ struct sql_error : public game::error
 	sql_error(const std::string& message) : game::error(message) {}
 };
 
+// make_bind functions embed pointers to their arguments in the
+// MYSQL_BIND structure returned. It's caller's responsibility
+// to ensure that argument's lifetime doesn't end before mysql
+// is done with those MYSQL_BINDs
 MYSQL_BIND make_bind(const std::string& str, my_bool* is_null = 0)
 {
 	MYSQL_BIND result;
@@ -145,6 +149,13 @@ template<> void fetch_result<void>(MYSQL_STMT*, const std::string&)
 {
 }
 
+/**
+ * Execute an sql query using mysql prepared statements API
+ * This function can convert its arguments and results to appropriate
+ * MYSQL_BIND structures automatically based on their C++ type
+ * though each type requires explicit support. For now only ints and
+ * std::strings are supported.
+ */
 template<typename R, typename... Args>
 R prepared_statement(MYSQL* conn, const std::string& sql, Args&&... args)
 {
