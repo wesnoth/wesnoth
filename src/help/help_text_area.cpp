@@ -337,9 +337,17 @@ void help_text_area::add_text_item(const std::string& text, const std::string& r
 		else
 			color = font::YELLOW_COLOR;
 
-		surface surf(font::get_rendered_text(first_part, scaled_font_size, color, state));
-		if (!surf.null())
-			add_item(item(surf, curr_loc_.first, curr_loc_.second, first_part, ref_dst));
+		// In split_in_width(), no_break_after() and no_break_before() are used(see marked-up_text.cpp).
+		// Thus, even if there is enough remaining_width for the next word,
+		// sometimes empty string is returned from split_in_width().
+		if (first_part.empty()) {
+			down_one_line();
+		}
+		else {
+			surface surf(font::get_rendered_text(first_part, scaled_font_size, color, state));
+			if (!surf.null())
+				add_item(item(surf, curr_loc_.first, curr_loc_.second, first_part, ref_dst));
+		}
 		if (parts.size() > 1) {
 
 			std::string& s = parts.back();
