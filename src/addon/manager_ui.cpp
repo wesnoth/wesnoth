@@ -26,6 +26,7 @@
 #include "gui/dialogs/addon/manager.hpp"
 #include "gui/dialogs/addon/description.hpp"
 #include "gui/dialogs/addon/filter_options.hpp"
+#include "gui/dialogs/addon/install_dependencies.hpp"
 #include "gui/dialogs/addon/uninstall_list.hpp"
 #include "gui/dialogs/addon/connect.hpp"
 #include "gui/dialogs/message.hpp"
@@ -201,58 +202,16 @@ addon_op_result do_resolve_addon_dependencies(CVideo& v, addons_client& client, 
 		return result;
 	}
 
-	//
-	// Prepare UI report on available dependencies.
-	//
+	{
+		addons_list options;
+		for(const std::string& dep : missing_deps) {
+			const addon_info& missing_addon = addon_at(dep, addons);
+			options[dep] = missing_addon;
+		}
 
-	const std::string sep(1, COLUMN_SEPARATOR);
-	const std::string header = formatter() << HEADING_PREFIX << sep <<
-		_("Name") << sep << _("Version") << sep << _("Author") << sep <<
-		_("Size") << sep << _("Type");
-
-	std::vector<std::string> options(1, header);
-	std::vector<int> sort_sizes;
-
-	cursor_setter.reset(new cursor::setter(cursor::WAIT));
-
-	for(const std::string& dep : missing_deps) {
-		const addon_info& missing_addon = addon_at(dep, addons);
-
-		const std::string& display_size = size_display_string(missing_addon.size);
-		const std::string& display_type = missing_addon.display_type();
-		const std::string& display_icon = missing_addon.display_icon();
-		const std::string& display_version = missing_addon.version.str();
-
-		const std::string& display_title = font::word_wrap_text(missing_addon.display_title(), font::SIZE_NORMAL, 150, -1, 2);
-		std::string display_author = missing_addon.author;
-		utils::ellipsis_truncate(display_author, 14);
-
-		// Add negative sizes to reverse the sort order.
-		sort_sizes.push_back(-missing_addon.size);
-
-		// NOTE: NULL_MARKUP used to escape abuse of formatting chars in add-on titles
-		options.push_back(IMAGE_PREFIX + display_icon + sep +
-			font::NULL_MARKUP + display_title + sep + display_version + sep +
-			display_author + sep + display_size + sep +
-			display_type);
-	}
-
-	/* do */ {
-		gui::dialog dlg(v, _("Install Dependencies"),
-			_n("The selected add-on has the following dependency, which is not currently installed. Do you wish to install it before continuing?",
-			   "The selected add-on has the following dependencies, which are not currently installed. Do you wish to install them before continuing?",
-			   missing_deps.size()),
-			gui::YES_NO);
-		gui::menu::imgsel_style addon_style(gui::menu::bluebg_style);
-		addon_style.scale_images(font::relative_size(72), font::relative_size(72));
-		gui::menu* addon_menu = new gui::menu(
-			v, options, false, -1,
-			gui::dialog::max_menu_width, nullptr, &addon_style, false);
-		dlg.set_menu(addon_menu);
-
-		cursor_setter.reset();
-
-		if(dlg.show() < 0) {
+		gui2::dialogs::install_dependencies dlg(options);
+		bool cont = dlg.show(v);
+		if(!cont) {
 			return result; // the user has chosen to continue without installing anything.
 		}
 	}
