@@ -55,15 +55,6 @@ private:
 	 * @returns a name generator or nullptr if not found
 	 */
 	void add_name_generator_from_config(const config& config, const std::string id, const std::string prefix);
-
-	/**
-	 * Determines a Markov-chain name generator from WML data
-	 * @param config the WML data to be parsed for name generators
-	 * @param the prefix to look for
-	 * @returns a name generator or nullptr if not found
-	 */
-	void fall_back_to_markov(const config& config, const std::string id, const std::string prefix);
-
 };
 
 #endif
