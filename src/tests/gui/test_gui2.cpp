@@ -18,6 +18,7 @@
 #include <boost/test/unit_test.hpp>
 
 #include "addon/client.hpp"
+#include "addon/info.hpp"
 #include "config_assign.hpp"
 #include "config_cache.hpp"
 #include "editor/editor_display.hpp" // for dummy display context
@@ -32,6 +33,7 @@
 #include "generators/map_create.hpp"
 #include "gui/core/layout_exception.hpp"
 #include "gui/dialogs/addon/connect.hpp"
+#include "gui/dialogs/addon/install_dependencies.hpp"
 #include "gui/dialogs/addon/manager.hpp"
 #include "gui/dialogs/advanced_graphics_options.hpp"
 #include "gui/dialogs/attack_predictions.hpp"
@@ -423,6 +425,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<game_stats>();
 	test<gamestate_inspector>();
 	test<generator_settings>();
+	test<install_dependencies>();
 	test<language_selection>();
 	// test<loading_screen>(); TODO: enable
 	test<lobby_main>();
@@ -776,6 +779,16 @@ struct dialog_tester<gamestate_inspector>
 		return new gamestate_inspector(vars, events, *dc, "Unit Test");
 	}
 
+};
+
+template<>
+struct dialog_tester<install_dependencies>
+{
+	addons_list addons;
+	install_dependencies* create()
+	{
+		return new install_dependencies(addons);
+	}
 };
 
 struct wesnothd_connection_init
