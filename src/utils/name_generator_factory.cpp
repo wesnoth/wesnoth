@@ -45,7 +45,7 @@ void name_generator_factory::add_name_generator_from_config(const config& config
 			lg::wml_error() << ex.what() << '\n';
 		}
 	}
-	else if(config.has_attribute(markov_name)) {
+	if(config.has_attribute(markov_name)) {
 		config::attribute_value markov_name_list = config[markov_name];
 
 		if(!markov_name_list.blank()) {
