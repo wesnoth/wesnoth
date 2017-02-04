@@ -116,7 +116,7 @@ bool fuh::user_exists(const std::string& name) {
 
 	// Make a test query for this username
 	try {
-		return prepared_statement<bool>(conn, "SELECT 1 FROM " + db_users_table_ + " WHERE UPPER(username)=UPPER(?)", name);
+		return prepared_statement<bool>(conn, "SELECT 1 FROM `" + db_users_table_ + "` WHERE UPPER(username)=UPPER(?)", name);
 	} catch (sql_error& e) {
 		ERR_UH << "Could not execute test query for user '" << name << "' :" << e.message << std::endl;
 		// If the database is down just let all usernames log in
@@ -249,7 +249,7 @@ void fuh::set_lastlogin(const std::string& user, const time_t& lastlogin) {
 template<typename T>
 T fuh::get_detail_for_user(const std::string& name, const std::string& detail) {
 	return prepared_statement<T>(conn,
-		"SELECT " + detail + " FROM " + db_users_table_ + " WHERE UPPER(username)=UPPER(?)",
+		"SELECT `" + detail + "` FROM `" + db_users_table_ + "` WHERE UPPER(username)=UPPER(?)",
 		name);
 }
 
@@ -257,7 +257,7 @@ template<typename T>
 T fuh::get_writable_detail_for_user(const std::string& name, const std::string& detail) {
 	if(!extra_row_exists(name)) throw sql_error("row doesn't exist");
 	return prepared_statement<T>(conn,
-		"SELECT " + detail + " FROM " + db_extra_table_ + " WHERE UPPER(username)=UPPER(?)",
+		"SELECT `" + detail + "` FROM `" + db_extra_table_ + "` WHERE UPPER(username)=UPPER(?)",
 		name);
 }
 
@@ -267,9 +267,9 @@ void fuh::write_detail(const std::string& name, const std::string& detail, T&& v
 		// Check if we do already have a row for this user in the extra table
 		if(!extra_row_exists(name)) {
 			// If not create the row
-			prepared_statement<void>(conn, "INSERT INTO " + db_extra_table_ + " VALUES(?,?,'0')", name, std::forward<T>(value));
+			prepared_statement<void>(conn, "INSERT INTO `" + db_extra_table_ + "` VALUES(?,?,'0')", name, std::forward<T>(value));
 		}
-		prepared_statement<void>(conn, "UPDATE " + db_extra_table_ + " SET " + detail + "=? WHERE UPPER(username)=UPPER(?)", std::forward<T>(value), name);
+		prepared_statement<void>(conn, "UPDATE `" + db_extra_table_ + "` SET " + detail + "=? WHERE UPPER(username)=UPPER(?)", std::forward<T>(value), name);
 	} catch (sql_error& e) {
 		ERR_UH << "Could not set detail for user '" << name << "': " << e.message << std::endl;
 	}
@@ -279,7 +279,7 @@ bool fuh::extra_row_exists(const std::string& name) {
 
 	// Make a test query for this username
 	try {
-		return prepared_statement<bool>(conn, "SELECT 1 FROM " + db_extra_table_ + " WHERE UPPER(username)=UPPER(?)", name);
+		return prepared_statement<bool>(conn, "SELECT 1 FROM `" + db_extra_table_ + "` WHERE UPPER(username)=UPPER(?)", name);
 	} catch (sql_error& e) {
 		ERR_UH << "Could not execute test query for user '" << name << "' :" << e.message << std::endl;
 		return false;
