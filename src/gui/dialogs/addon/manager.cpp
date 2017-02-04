@@ -364,28 +364,16 @@ void addon_manager::install_selected_addon(window& window)
 void addon_manager::install_addon(addon_info addon, window& window)
 {
 	addon_list& addons = find_widget<addon_list>(&window, "addons", false);
-	config archive;
-	bool download_succeeded = client_.download_addon(archive, addon.id, addon.title);
-	if(download_succeeded)
-	{
-		bool install_succeeded = client_.install_addon(archive, addon);
-		if(install_succeeded)
-		{
-			load_addon_list(window);
 
-			// Reselect the add-on.
-			addons.select_addon(addon.id);
-			on_addon_select(window);
+	addons_client::install_result result =
+		client_.install_addon_with_checks(addons_, addon);
 
-			return;
-		}
-	}
+	if(result.outcome != addons_client::install_outcome::abort) {
+		load_addon_list(window);
 
-	// failure
-	const std::string& server_error = client_.get_last_server_error();
-	if(server_error != "") {
-		show_error_message(window.video(),
-			_("The server responded with an error:") + "\n" + server_error);
+		// Reselect the add-on.
+		addons.select_addon(addon.id);
+		on_addon_select(window);
 	}
 }
 

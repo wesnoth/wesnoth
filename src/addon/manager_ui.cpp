@@ -19,18 +19,15 @@
 #include "addon/manager.hpp"
 #include "addon/state.hpp"
 #include "filesystem.hpp"
-#include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/addon/manager.hpp"
 #include "gui/dialogs/addon/description.hpp"
 #include "gui/dialogs/addon/filter_options.hpp"
-#include "gui/dialogs/addon/install_dependencies.hpp"
 #include "gui/dialogs/addon/uninstall_list.hpp"
 #include "gui/dialogs/addon/connect.hpp"
 #include "gui/dialogs/message.hpp"
-#include "gui/dialogs/simple_item_selector.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/window.hpp"
 #include "gui/widgets/settings.hpp"
@@ -113,201 +110,6 @@ std::string describe_addon_status(const addon_tracking_info& info)
 			info.can_publish ? _("addon_state^Published, broken") : _("addon_state^Installed, broken"));
 	default:
 		return font::color2markup(font::GRAY_COLOR) + _("addon_state^Unknown");
-	}
-}
-
-// Asks the client to download and install an addon, reporting errors in a gui dialog. Returns true if new content was installed, false otherwise.
-bool try_fetch_addon(CVideo & v, addons_client & client, const addon_info & addon)
-{
-	config archive;
-
-	if(!(
-		client.download_addon(archive, addon.id, addon.title, !is_addon_installed(addon.id)) &&
-		client.install_addon(archive, addon)
-	)) {
-		const std::string& server_error = client.get_last_server_error();
-		if(!server_error.empty()) {
-			gui2::show_error_message(v,
-				_("The server responded with an error:") + "\n" + server_error);
-		}
-		return false;
-	} else {
-		return true;
-	}
-}
-
-enum OUTCOME { SUCCESS, FAILURE, ABORT };
-
-// A structure which summarizes the outcome of one or more add-on install operations.
-struct addon_op_result
-{
-	OUTCOME outcome;
-	bool wml_changed;
-};
-
-/** Warns the user about unresolved dependencies and installs them if they choose to do so.
- * Returns: outcome: ABORT in case the user chose to abort because of an issue
- *                   SUCCESS otherwise
- *          wml_change: indicates if new wml content was installed
- */
-addon_op_result do_resolve_addon_dependencies(CVideo& v, addons_client& client, const addons_list& addons, const addon_info& addon)
-{
-	addon_op_result result;
-	result.outcome = SUCCESS;
-	result.wml_changed = false;
-
-	std::unique_ptr<cursor::setter> cursor_setter(new cursor::setter(cursor::WAIT));
-
-	// TODO: We don't currently check for the need to upgrade. I'll probably
-	// work on that when implementing dependency tiers later.
-
-	const std::set<std::string>& deps = addon.resolve_dependencies(addons);
-
-	std::vector<std::string> missing_deps;
-	std::vector<std::string> broken_deps;
-
-	for(const std::string& dep : deps) {
-		if(!is_addon_installed(dep)) {
-			if(addons.find(dep) != addons.end()) {
-				missing_deps.push_back(dep);
-			} else {
-				broken_deps.push_back(dep);
-			}
-		}
-	}
-
-	cursor_setter.reset();
-
-	if(!broken_deps.empty()) {
-		std::string broken_deps_report;
-
-		broken_deps_report = _n(
-			"The selected add-on has the following dependency, which is not currently installed or available from the server. Do you wish to continue?",
-			"The selected add-on has the following dependencies, which are not currently installed or available from the server. Do you wish to continue?",
-			broken_deps.size());
-		broken_deps_report += "\n";
-
-		for(const std::string& broken_dep_id : broken_deps) {
-			broken_deps_report += "\n    " + font::unicode_bullet + " " + make_addon_title(broken_dep_id);
-		}
-
-		if(gui2::show_message(v, _("Broken Dependencies"), broken_deps_report, gui2::dialogs::message::yes_no_buttons) != gui2::window::OK) {
-			result.outcome = ABORT;
-			return result; // canceled by user
-		}
-	}
-
-	if(missing_deps.empty()) {
-		// No dependencies to install, carry on.
-		return result;
-	}
-
-	{
-		addons_list options;
-		for(const std::string& dep : missing_deps) {
-			const addon_info& missing_addon = addon_at(dep, addons);
-			options[dep] = missing_addon;
-		}
-
-		gui2::dialogs::install_dependencies dlg(options);
-		bool cont = dlg.show(v);
-		if(!cont) {
-			return result; // the user has chosen to continue without installing anything.
-		}
-	}
-
-	//
-	// Install dependencies now.
-	//
-
-	std::vector<std::string> failed_titles;
-
-	for(const std::string& dep : missing_deps) {
-		const addon_info& missing_addon = addon_at(dep, addons);
-
-		if(!try_fetch_addon(v, client, missing_addon)) {
-			failed_titles.push_back(missing_addon.title);
-		} else {
-			result.wml_changed = true;
-		}
-	}
-
-	if(!failed_titles.empty()) {
-		const std::string& failed_deps_report = _n(
-			"The following dependency could not be installed. Do you still wish to continue?",
-			"The following dependencies could not be installed. Do you still wish to continue?",
-			failed_titles.size()) + std::string("\n\n") + utils::bullet_list(failed_titles);
-
-		result.outcome = gui2::show_message(v, _("Dependencies Installation Failed"), failed_deps_report, gui2::dialogs::message::yes_no_buttons) == gui2::window::OK ? SUCCESS : ABORT; // If the user cancels, return ABORT. Otherwise, return SUCCESS, since the user chose to ignore the failure.
-		return result;
-	}
-
-	return result;
-}
-
-/** Checks whether the given add-on has local .pbl or VCS information and asks before overwriting it. */
-bool do_check_before_overwriting_addon(CVideo& video, const addon_info& addon)
-{
-	const std::string& addon_id = addon.id;
-
-	const bool pbl = have_addon_pbl_info(addon_id);
-	const bool vcs = have_addon_in_vcs_tree(addon_id);
-
-	if(!pbl && !vcs) {
-		return true;
-	}
-
-	utils::string_map symbols;
-	symbols["addon"] = addon.title;
-	std::string text;
-	std::vector<std::string> extra_items;
-
-	text = vgettext("The add-on '$addon|' is already installed and contains additional information that will be permanently lost if you continue:", symbols);
-	text += "\n\n";
-
-	if(pbl) {
-		extra_items.push_back(_("Publishing information file (.pbl)"));
-	}
-
-	if(vcs) {
-		extra_items.push_back(_("Version control system (VCS) information"));
-	}
-
-	text += utils::bullet_list(extra_items) + "\n\n";
-	text += _("Do you really wish to continue?");
-
-	return gui2::show_message(video, _("Confirm"), text, gui2::dialogs::message::yes_no_buttons) == gui2::window::OK;
-}
-
-/** Do a 'smart' fetch of an add-on, checking to avoid overwrites for devs and resolving dependencies, using gui interaction to handle issues that arise
- * Returns: outcome: ABORT in case the user chose to abort because of an issue
- *                   FAILURE in case we resolved checks and dependencies, but fetching this particular add-on failed
- *                   SUCCESS otherwise
- *          wml_changed: indicates if new wml content was installed at any point
- */
-addon_op_result try_fetch_addon_with_checks(CVideo & v, addons_client& client, const addons_list& addons, const addon_info& addon)
-{
-	if(!(do_check_before_overwriting_addon(v, addon))) {
-		// Just do nothing and leave.
-		addon_op_result result;
-		result.outcome = ABORT;
-		result.wml_changed = false;
-
-		return result;
-	}
-
-	// Resolve any dependencies
-	addon_op_result res = do_resolve_addon_dependencies(v, client, addons, addon);
-	if (res.outcome != SUCCESS) { // this function only returns SUCCESS and ABORT as outcomes
-		return res; // user aborted
-	}
-
-	if(!try_fetch_addon(v, client, addon)) {
-		res.outcome = FAILURE;
-		return res; //wml_changed should have whatever value was obtained in resolving dependencies
-	} else {
-		res.wml_changed = true;
-		return res; //we successfully installed something, so now the wml was definitely changed
 	}
 }
 
@@ -903,13 +705,14 @@ void show_addons_manager_dialog(CVideo& v, addons_client& client, addons_list& a
 	for(const std::string& id : ids_to_install) {
 		const addon_info& addon = addon_at(id, addons);
 
-		addon_op_result res = try_fetch_addon_with_checks(v, client, addons, addon);
+		addons_client::install_result res = client.install_addon_with_checks(addons, addon);
+
 		wml_changed |= res.wml_changed; // take note if any wml_changes occurred
-		if (res.outcome == ABORT) {
+		if (res.outcome == addons_client::install_outcome::abort) {
 			return; // the user aborted because of some issue encountered
-		} else if (res.outcome == FAILURE) {
+		} else if (res.outcome == addons_client::install_outcome::failure) {
 			failed_titles.push_back(addon.title); // we resolved dependencies, but fetching this particular addon failed.
-		} else { // res.outcome == SUCCESS
+		} else { // res.outcome == success
 			wml_changed = true;
 		}
 	}
@@ -1197,8 +1000,8 @@ bool ad_hoc_addon_fetch_session(CVideo& v, const std::vector<std::string>& addon
 			addons_list::const_iterator it = addons.find(addon_id);
 			if(it != addons.end()) {
 				const addon_info& addon = it->second;
-				addon_op_result res = try_fetch_addon_with_checks(v, client, addons, addon);
-				return_value = return_value && (res.outcome == SUCCESS);
+				addons_client::install_result res = client.install_addon_with_checks(addons, addon);
+				return_value = return_value && (res.outcome == addons_client::install_outcome::success);
 			} else {
 				utils::string_map symbols;
 				symbols["addon_id"] = addon_id;
