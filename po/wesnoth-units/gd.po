@@ -3,22 +3,22 @@
 # Copyright (C) 2012 Wesnoth development team
 # This file is distributed under the same license as the wesnoth_up package.
 # Automatically generated, 2012.
-# GunChleoc <fios@foramnagaidhlig.net>, 2012, 2013, 2014.
+# GunChleoc <fios@foramnagaidhlig.net>, 2012, 2013, 2014, 2017.
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2016-11-05 23:23 UTC\n"
-"PO-Revision-Date: 2014-02-19 10:56-0000\n"
-"Last-Translator: GunChleoc <fiosAIGforamnagaidhligDOTnet>\n"
-"Language-Team: Fòram na Gàidhlig http://www.foramnagaidhlig.net\n"
+"PO-Revision-Date: 2017-01-27 13:16+0000\n"
+"Last-Translator: GunChleoc <fios@foranagaidhlig.net>\n"
+"Language-Team: Fòram na Gàidhlig\n"
 "Language: gd\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 || n==11) ? 0 : (n==2 || n==12) ? 1 : "
 "(n > 2 && n < 20) ? 2 : 3;\n"
-"X-Generator: Poedit 1.6.4\n"
+"X-Generator: Poedit 1.8.11\n"
 
 #. [unit_type]: id=Dwarvish Dragonguard, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Dragonguard, race=dwarf
@@ -1266,13 +1266,6 @@ msgstr "Gìomanach Sìthiche"
 
 #. [unit_type]: id=Elvish Marksman, race=elf
 #: data/core/units/elves/Marksman.cfg:19
-#, fuzzy
-#| msgid ""
-#| "Elves are wonderously keen-sighted, a gift which contributes to their "
-#| "mastery of the bow. An elf practiced at archery can hit targets that a "
-#| "man couldn’t even see, and can nock a second arrow almost as soon as the "
-#| "first is let fly. Realizing this prodigious skill does come with one "
-#| "cost, that being a lack of practice with the sword."
 msgid ""
 "Elves are wondrously keen-sighted, a gift which contributes to their mastery "
 "of the bow. An elf practiced at archery can hit targets that a man couldn’t "
@@ -4255,10 +4248,8 @@ msgstr ""
 
 #. [unit_type]: id=Orcish Nightblade, race=orc
 #: data/core/units/orcs/Nightblade.cfg:4
-#, fuzzy
-#| msgid "Orcish Leader"
 msgid "Orcish Nightblade"
-msgstr "Ceannard Deamhain"
+msgstr "Lann-oidhche Deamhain"
 
 #. [unit_type]: id=Orcish Nightblade, race=orc
 #: data/core/units/orcs/Nightblade.cfg:27
@@ -4273,15 +4264,13 @@ msgstr ""
 
 #. [attack]: type=blade
 #: data/core/units/orcs/Nightblade.cfg:31
-#, fuzzy
-#| msgid "war blade"
 msgid "blade"
-msgstr "lann-chogaidh"
+msgstr "lann"
 
 #. [attack]: type=impact
 #: data/core/units/orcs/Nightblade.cfg:40
 msgid "kick"
-msgstr ""
+msgstr "breabadh"
 
 #. [unit_type]: id=Orcish Ruler, race=orc
 #: data/core/units/orcs/Ruler.cfg:4
@@ -4725,61 +4714,61 @@ msgstr "beantainn"
 #: data/core/units/undead/Corpse_Soulless.cfg:100
 #: data/core/units/undead/Corpse_Walking.cfg:99
 msgid "wc_variation^Drake"
-msgstr ""
+msgstr "Dràc"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:115
 #: data/core/units/undead/Corpse_Walking.cfg:114
 msgid "wc_variation^Dwarf"
-msgstr ""
+msgstr "Troich"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:127
 #: data/core/units/undead/Corpse_Walking.cfg:126
 msgid "wc_variation^Goblin"
-msgstr ""
+msgstr "Bòcan"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:136
 #: data/core/units/undead/Corpse_Walking.cfg:147
 msgid "wc_variation^Mounted"
-msgstr ""
+msgstr "Marcaiche"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:145
 #: data/core/units/undead/Corpse_Walking.cfg:135
 msgid "wc_variation^Gryphon"
-msgstr ""
+msgstr "Iolair-leòmhainn"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:157
 #: data/core/units/undead/Corpse_Walking.cfg:156
 msgid "wc_variation^Saurian"
-msgstr ""
+msgstr "Laghairt"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:166
 #: data/core/units/undead/Corpse_Walking.cfg:165
 msgid "wc_variation^Swimmer"
-msgstr ""
+msgstr "Snàmhaiche"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:179
 #: data/core/units/undead/Corpse_Walking.cfg:178
 msgid "wc_variation^Troll"
-msgstr ""
+msgstr "Athach"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:188
 #: data/core/units/undead/Corpse_Walking.cfg:187
 msgid "wc_variation^Wose"
-msgstr ""
+msgstr "Gille-dubh"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:200
 #: data/core/units/undead/Corpse_Walking.cfg:199
 msgid "wc_variation^Bat"
-msgstr ""
+msgstr "Ialtag"
 
 #. [unit_type]: id=Walking Corpse, race=undead
 #: data/core/units/undead/Corpse_Walking.cfg:57

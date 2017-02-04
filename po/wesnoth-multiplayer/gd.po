@@ -3,22 +3,22 @@
 # Copyright (C) 2012 Wesnoth development team
 # This file is distributed under the same license as the PACKAGE package.
 # Automatically generated, 2012.
-# GunChleoc <fios@foramnagaidhlig.net>, 2012, 2014.
+# GunChleoc <fios@foramnagaidhlig.net>, 2012, 2014, 2017.
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2016-11-05 23:28 UTC\n"
-"PO-Revision-Date: 2014-02-19 10:53-0000\n"
-"Last-Translator: GunChleoc <fiosAIGforamnagaidhligDOTnet>\n"
-"Language-Team: Fòram na Gàidhlig http://www.foramnagaidhlig.net\n"
+"PO-Revision-Date: 2017-01-27 18:52+0100\n"
+"Last-Translator: GunChleoc <fios@foramnagaidhlig.net>\n"
+"Language-Team: Fòram na Gàidhlig\n"
 "Language: gd\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 || n==11) ? 0 : (n==2 || n==12) ? 1 : "
 "(n > 2 && n < 20) ? 2 : 3;\n"
-"X-Generator: Poedit 1.6.4\n"
+"X-Generator: Virtaal 0.7.1\n"
 
 #. [generic_multiplayer]: id=user_map
 #: data/multiplayer/_main.cfg:8
@@ -63,7 +63,7 @@ msgstr ""
 #. [era]: id=era_khalifate
 #: data/multiplayer/eras.cfg:83
 msgid "Default + Khalifate"
-msgstr "Tùsail + a' Chèileafaid"
+msgstr "Tùsail + a’ Chèileafaid"
 
 #. [era]: id=era_khalifate
 #: data/multiplayer/eras.cfg:84
@@ -86,7 +86,7 @@ msgstr ""
 #. [era]: id=era_khalifate_heroes
 #: data/multiplayer/eras.cfg:94
 msgid "Age of Heroes + Khalifate"
-msgstr "Linn nan laoch + a' Chèileafaid"
+msgstr "Linn nan laoch + a’ Chèileafaid"
 
 #. [era]: id=era_khalifate_heroes
 #: data/multiplayer/eras.cfg:95
@@ -148,6 +148,14 @@ msgid ""
 "mobility but low defense, leading to unusual tactics for a "
 "<ref>text='Default Era' dst='..era_era_default'</ref> faction."
 msgstr ""
+"’S e buidheann <ref>text='dhràcan' dst='..race_drake'</ref> a tha coltach ri "
+"dràgonan agus an caidreabhach, na <ref>text='laghairtean' dst='.."
+"race_lizard'</ref> a th’ anns na <bold>text='dràcan'</bold>. ’S e sliochd "
+"nan dràgon a th’ anns na dràcan ach tha iad nas lugha. Tha laghairtean mòran "
+"nas lugha na na dràcan agus thàinig iad o shliochd eile. Gluaisidh buidheann "
+"nan dràcan glè luath ach chan eil dìon math aca agus feumaidh tu ro-"
+"innleachd a chleachdadh leotha a tha annasach am measg buidhnean an "
+"<ref>text='linn thùsail' dst='..era_era_default'</ref>."
 
 #. [multiplayer_side]: id=Khalifate, type=random
 #: data/multiplayer/factions/khalifate-aoh.cfg:4
@@ -167,12 +175,20 @@ msgid ""
 "be more expensive than those of the Loyalist faction, they make up for this "
 "with high mobility — especially on hilly terrains."
 msgstr ""
+"’S e bhuidheann de dhaoine às na fàsaichean agus cnuic deasach a tha sa "
+"<bold>text='Chèileafaid'</bold>. O nach eil draoidhean aca, tha muinntir a’ "
+"Chèileafaid glè mhath air cleachdadh cruth na tìre gus na h-ionnsaighean aca "
+"a cho-òrdanachadh air a’ chiaradh no camhanach. Tha aonadan dligheach agus "
+"stairsnich, slànaighearan, coisridh a nì ionnsaigh dlùth gu pongail agus "
+"boghadairean eachraidh eagalach aca. Ged a tha aonadan a’ Chèileafaid nas "
+"daoire na aonadan nan Dìlseach san fharsaingeachd, gluaisidh iad glè luath "
+"air an taobh eile – gu seachd àraidh air cnuic."
 
 #. [multiplayer_side]: id=Knalgan Alliance, type=random
 #: data/multiplayer/factions/knalgans-aoh.cfg:4
 #: data/multiplayer/factions/knalgans-default.cfg:4
 msgid "Knalgan Alliance"
-msgstr "Caidreabhachd Chnalgan"
+msgstr "Caidreachas Chnalga"
 
 #. [multiplayer_side]: id=Knalgan Alliance, type=random
 #: data/multiplayer/factions/knalgans-aoh.cfg:13
@@ -187,6 +203,16 @@ msgid ""
 "dwarves who are only good on certain terrain and humans who can cover ground "
 "that dwarves are not good at fighting in."
 msgstr ""
+"’S e buidheann <ref>text='throichean' dst='..race_dwarf'</ref> an "
+"caidreabhach ceatharnach-coille <ref>text='daonna' dst='..race_human'</ref> "
+"a th’ ann an <bold>text='Caidreachas Chnalga'</bold>. ’S e seann-chinneadh a "
+"tha sna troichean a tha a’ fuireach fon talamh agus aig a bheil gaisgich "
+"bheaga ach threuna. ’S e daoine a tha sna ceatharnaich-choille ris nach gabh "
+"co-chomann nan daoine eile agus a chaidh nan caidreabhach dha na troichean "
+"on a tha na h-aon nàimhdean aca. Cuiridh seo còmhla troichean treuna a tha "
+"math air an dìon agus nach dèan feum ach air cruthan-tìre sònraichte agus "
+"daoine a thèid air na tìrean nach eil na troichean math air sabaid a "
+"dhèanamh orra."
 
 #. [multiplayer_side]: id=Loyalists, type=random
 #: data/multiplayer/factions/loyalists-aoh.cfg:4
@@ -204,6 +230,12 @@ msgid ""
 "Loyalist faction is a very versatile melee-oriented faction with important "
 "ranged support from bowmen and mages."
 msgstr ""
+"’S e buidheann <ref>text='dhuine' dst='..race_human'</ref>  a th’ anns na "
+"<bold>text='Dìlsich'</bold> a tha dìleas do chathair Bheasnaid. ’S e "
+"cinneadh caochlaideach a tha sa chinne-daonna le comasan sònraichte air "
+"iomadh rud. Mar sin, ’s e buidheann glè chaochlaideach a tha sna Dìlsich le "
+"cuideam air a’ choisridh ach le taic chudromach aig astar o na boghadairean "
+"is draoidhean aca."
 
 #. [multiplayer_side]: id=Northerners, type=random, description=<img>src='portraits/orcs/warlord.png~BG()' align='middle'</img>
 #: data/multiplayer/factions/northerners-aoh.cfg:4
@@ -224,6 +256,15 @@ msgid ""
 "Northerners play best by taking advantage of having many low-cost and high "
 "HP soldiers."
 msgstr ""
+"’S e buidheann <ref>text='dheamhan' dst='..race_orc'</ref> agus an "
+"caidreabhach a tha sna <bold>text='Tuathaich'</bold> a tha a’ fuireach air "
+"ceann a tuath a’ Mhòr-thìre agus seo na thugh an ainm dhaibh. ’S e cinneadh "
+"nan deamhan fhèin a tha sna Tuathaich agus an tràillean <ref>text='bòcain' "
+"dst='..race_goblin'</ref>, na <ref>text='athaich' dst='..race_troll'</ref> a "
+"chuireas na deamhain dhan chogadh air car-meallta agus na <ref>text='naga' "
+"dst='..race_naga'</ref> a tha coltach ri nathairean. Tha nas Tuathaich nas "
+"fhasa cluich me bheir thu buannachd às na saighdearan saora le grunn "
+"phuingean-beatha aca."
 
 #. [multiplayer_side]: id=Rebels, type=random
 #: data/multiplayer/factions/rebels-aoh.cfg:4
@@ -247,6 +288,19 @@ msgid ""
 "advantage of their high forest defense, mastery of ranged attacks, and the "
 "elves’ neutral alignment."
 msgstr ""
+"’S e buidheann <ref>text='shìthichean' dst='..race_elf'</ref> agus an "
+"caidreabhach caochlaideach a tha a’ fuireadh sa choille a tha sna "
+"<bold>text='Aramaichean'</bold>. Fhuair iad an ainm daonna, Aramaichean, o "
+"linn Oighre na Cathrach nuair a thòisich iad an t-aramach an aghaidh na "
+"banrighe uilce Aisebheir. ’S e cinneadh draoidheach a tha sna sìthichean a "
+"tha cianail fhèin math air boghadaireachd agus a bhios beò iomadh bliadhna "
+"nas fhaide na daoine. On a tha còrdadh ris an nàdar aca, gheibh na "
+"sìthichean an caidreabhach o dhraoidhean <ref>text='daonna' dst='.."
+"race_human'</ref>, o chuid dhen t-<ref>text='sluagh-mhara' dst='.."
+"race_merman'</ref> agus o chreutairean craoibhe air a bheil "
+"<ref>text='gillean-dubha' dst='..race_wose'</ref>. M chluicheas tu na "
+"Aramaichean, faigh buannachd às an dìon aca sa choille, an comasan air "
+"ionnsaighean astair agus co-thaobhadh neodrach nan sìthichean."
 
 #. [multiplayer_side]: id=Undead, type=random
 #: data/multiplayer/factions/undead-aoh.cfg:4
@@ -267,6 +321,16 @@ msgid ""
 "Undead are a very aggressive faction and the most powerful "
 "<ref>text='Default Era' dst='..era_era_default'</ref> faction at nighttime."
 msgstr ""
+"’S e buidheann chreutairean <ref>text='closach' dst='..race_undead'</"
+"ref>agus draoidhean dubha <ref>text='daonna' dst='..race_human'</ref> a thig "
+"’nan cois mar as trice a tha sna <bold>text='Closaich'</bold>. Mar as trice, "
+"’s e na “Eòlaich Dhubha” seo a tha sna h-aonadan a nì an dochann as motha às "
+"leth a’ bhuidhinn ach tha uireasbhaidh mhòr aca – on a tha iad air a’ "
+"dhraoidheachd dhubh thoirmisgte seo a chleachdadh, chan eil lùths air "
+"fhàgail dhaibh idir gus ionnsaighean dlùtha a thoirt. ’S e buidheann glè "
+"ionnsaigheach a tha sna Closaich agus am measg buidhnean an <ref>text='linn "
+"tùsail' dst='..era_era_default'</ref>, is iadsan am buidheann a tha as "
+"cumhachdaiche air an oidhche."
 
 #. [multiplayer]: id=multiplayer_Aethermaw
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:4
@@ -371,22 +435,6 @@ msgstr "Maodal Adhair — air a chruthachadh le Doc Paterson"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:292
-#, fuzzy
-#| msgid ""
-#| "The Great Mage Sulla has transported your armies to this bizarre nexus, "
-#| "and demands that you amuse her by doing battle.\n"
-#| "\n"
-#| "\n"
-#| "\n"
-#| "\n"
-#| "<span color='red'>Note:</span>\n"
-#| "\n"
-#| "<span color='green'>Units may not move into a hex with a rock cairn. They "
-#| "may, however, be recruited to, and move from, such hexes.</span>\n"
-#| "\n"
-#| "<span color='green'>Beginning on turn 4, the Great Mage Sulla will begin "
-#| "to unite the two halves of the battlefield. The process will be complete "
-#| "by the end of turn 6.</span>\n"
 msgid ""
 "The Great Mage Sulla has transported your armies to this bizarre nexus, and "
 "demands that you amuse her by doing battle.\n"
@@ -403,10 +451,7 @@ msgstr ""
 "Tha an sàr-dhraoidh Sulla air an fheachd agad a thoirt dhan cheangal neònach "
 "a tha seo is tha i a’ toirt ort cogadh a dhèanamh ach am faigh i tlachd às.\n"
 "\n"
-"\n"
-"\n"
-"\n"
-"<span color='red'>Aire:</span>\n"
+"<span color='red'>An aire:</span>\n"
 "\n"
 "<span color='green'>Chan urrainn dha dh’aonadan a ghluasad a-steach dha shia-"
 "cheàrnagan sa bheil càrn cloiche. ’S urrainn dhut an trusadh orra co-dhiù is "
@@ -670,7 +715,7 @@ msgstr ""
 "uile gin diubh ach aon a rèir coltais; an rìgh nathair air an robh “An "
 "Ney’yks,” no “Am mac as sine” sa chànan an latha an-diugh. Làn-bheachd gum "
 "biodh an comas aige gus an creutair cumhachdach seo a lorg is a "
-"cheannsachadh, dh’fhalbh Oxsrrsk dhan triall aige ..."
+"cheannsachadh, dh’fhalbh Oxsrrsk dhan triall aige …"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:126
@@ -752,7 +797,7 @@ msgstr ""
 "leantainn aig an dràgon. Bhon a bha fios aige gun robh na dràic ud neo-"
 "chiontach, thàinig Rah Ihn Mar gu Loch Ruaskkolain gus Terowydlithrol a "
 "shealg is a mharbhadh oir chunnacas an sìthiche a’ tighinn dhan sgìre an "
-"latha roimhe. Làn dìoghaltais, thòisich Terowydlithrol a’ sealg ..."
+"latha roimhe. Làn dìoghaltais, thòisich Terowydlithrol a’ sealg …"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:155
@@ -891,7 +936,7 @@ msgstr ""
 "nach tàinig fiù ’s don chòmhrag-dhithis againn! Bidh ur nàrachadh nas miosa "
 "na am bàs a bhithinn-sa air a thoirt dhuibh!”\n"
 "\n"
-"’S dòcha gum b’ fheairrde e gun a bhith ag èigheadh cho àrd ..."
+"’S dòcha gum b’ fheairrde e gun a bhith ag èigheadh cho àrd …"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:208
@@ -982,8 +1027,8 @@ msgstr ""
 "is ma mhaireas tu beò. Air feadh a’ gheama, atharraichidh cruth na tìre le "
 "buaidhean sìde.\n"
 "\n"
-"Aire: Bidh rèiteachadh tùsail a’ mhapa a dhìth ort ach an obraich an cnàmh-"
-"sgeul seo gu ceart."
+"An aire: Bidh rèiteachadh tùsail a’ mhapa a dhìth ort ach an obraich an "
+"cnàmh-sgeul seo gu ceart."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:19
@@ -1113,7 +1158,7 @@ msgid ""
 "me..."
 msgstr ""
 "Ugh! Ciamar as urrainn dha bhith? Air mo cheannsachadh leis na borbairean a "
-"tha seo! Chuir mo dhiathan an cùil rium ..."
+"tha seo! Chuir mo dhiathan an cùil rium …"
 
 #. [message]: speaker=second_unit
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:212
@@ -1122,7 +1167,7 @@ msgid ""
 "their joy fills your last moments with pure hate."
 msgstr ""
 "’S e gàire do nàimhdean a th’ anns an rud mu dheireadh a chluinneas tu fhad "
-"’s a tha am bàs a’ tighinn ort ... cuiridh an toil gràin nimheil ort sna "
+"’s a tha am bàs a’ tighinn ort … cuiridh an toil gràin nimheil ort sna "
 "diogan mu dheireadh do bheatha."
 
 #. [message]
@@ -1141,6 +1186,7 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:245
 msgid "Changes the gold worth of the enemy spawns by a certain percentage"
 msgstr ""
+"Atharraichidh seo luach an òir air gineadh an nàmhad le ceudad sònraichte"
 
 #. [lua]: final_spawn
 #: data/multiplayer/scenarios/2p_Dark_Forecast.lua:310
@@ -2098,7 +2144,7 @@ msgstr "Cuairt 2: Dìlsich"
 #. [label]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:383
 msgid "Turn 5: Knalgans"
-msgstr "Cuairt 5: Cnalganaich"
+msgstr "Cuairt 5: Cnalgaich"
 
 #. [label]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:388
@@ -2272,7 +2318,7 @@ msgid ""
 "Randomly generated map. Note: random maps are often unbalanced, but if you "
 "have time, you can regenerate them until you get a good one."
 msgstr ""
-"Mapa ’ga ghintinn air thuaiream. Aire: gu tric, chan eil cus meidh ann am "
+"Mapa ’ga ghintinn air thuaiream. An aire: gu tric, chan eil cus meidh ann am "
 "mapa air thuaiream, ach ma tha beagan ùine agad, ’s urrainn dhut ath-"
 "ghintinn gus am bidh fear math agad."
 
@@ -2290,9 +2336,9 @@ msgid ""
 "unbalanced, but if you have time, you can regenerate them until you get a "
 "good one."
 msgstr ""
-"Mapa ’ga ghintinn air thuaiream le gainneamh mar phrìomh chruth-tìre. Aire: "
-"gu tric, chan eil cus meidh ann am mapa air thuaiream, ach ma tha beagan "
-"ùine agad, ’s urrainn dhut ath-ghintinn gus am bidh fear math agad."
+"Mapa ’ga ghintinn air thuaiream le gainneamh mar phrìomh chruth-tìre. An "
+"aire: gu tric, chan eil cus meidh ann am mapa air thuaiream, ach ma tha "
+"beagan ùine agad, ’s urrainn dhut ath-ghintinn gus am bidh fear math agad."
 
 #. [scenario]: id=multiplayer_Random_Map_Marsh
 #. [multiplayer]: id=multiplayer_Random_Map_Marsh
@@ -2308,9 +2354,9 @@ msgid ""
 "unbalanced, but if you have time, you can regenerate them until you get a "
 "good one."
 msgstr ""
-"Mapa ’ga ghintinn air thuaiream le boglach mar phrìomh chruth-tìre. Aire: gu "
-"tric, chan eil cus meidh ann am mapa air thuaiream, ach ma tha beagan ùine "
-"agad, ’s urrainn dhut ath-ghintinn gus am bidh fear math agad."
+"Mapa ’ga ghintinn air thuaiream le boglach mar phrìomh chruth-tìre. An aire: "
+"gu tric, chan eil cus meidh ann am mapa air thuaiream, ach ma tha beagan "
+"ùine agad, ’s urrainn dhut ath-ghintinn gus am bidh fear math agad."
 
 #. [scenario]: id=multiplayer_Random_Map_Winter
 #. [multiplayer]: id=multiplayer_Random_Map_Winter
@@ -2327,7 +2373,7 @@ msgid ""
 "can regenerate them until you get a good one."
 msgstr ""
 "Mapa ’ga ghintinn air thuaiream a tha suidhichte eadar an geamhradh is an t-"
-"earrach, le grunn chruthan-tìre sneachdach. Aire: gu tric, chan eil cus "
+"earrach, le grunn chruthan-tìre sneachdach. An aire: gu tric, chan eil cus "
 "meidh ann am mapa air thuaiream, ach ma tha beagan ùine agad, ’s urrainn "
 "dhut ath-ghintinn gus am bidh fear math agad."
 
