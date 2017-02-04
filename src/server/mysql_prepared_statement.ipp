@@ -145,6 +145,28 @@ template<> int fetch_result<int>(MYSQL_STMT* stmt, const std::string& sql)
 	return result;
 }
 
+template<> bool fetch_result<bool>(MYSQL_STMT* stmt, const std::string& sql)
+{
+	int result;
+	my_bool is_null;
+	MYSQL_BIND result_bind[1] = { make_bind(result, &is_null) };
+
+	if(mysql_stmt_bind_result(stmt, result_bind) != 0)
+		throw sql_error(mysql_stmt_error(stmt), sql);
+
+	int res = mysql_stmt_fetch(stmt);
+	if(res == MYSQL_NO_DATA)
+		return false;
+	if(is_null)
+		throw sql_error("null value returned", sql);
+	if(res != 0)
+		throw sql_error(mysql_stmt_error(stmt), sql);
+	mysql_stmt_free_result(stmt);
+	mysql_stmt_close(stmt);
+	std::cout << "Result: " << result << std::endl;
+	return true;
+}
+
 template<> void fetch_result<void>(MYSQL_STMT*, const std::string&)
 {
 }
@@ -155,6 +177,8 @@ template<> void fetch_result<void>(MYSQL_STMT*, const std::string&)
  * MYSQL_BIND structures automatically based on their C++ type
  * though each type requires explicit support. For now only ints and
  * std::strings are supported.
+ * Setting return type to bool causes this function to do a test query
+ * and return true if there is any data in result set, false otherwise
  */
 template<typename R, typename... Args>
 R prepared_statement(MYSQL* conn, const std::string& sql, Args&&... args)

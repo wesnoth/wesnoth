@@ -116,7 +116,7 @@ bool fuh::user_exists(const std::string& name) {
 
 	// Make a test query for this username
 	try {
-		return !prepared_statement<std::string>(conn, "SELECT username FROM " + db_users_table_ + " WHERE UPPER(username)=UPPER(?)", name).empty();
+		return prepared_statement<bool>(conn, "SELECT 1 FROM " + db_users_table_ + " WHERE UPPER(username)=UPPER(?)", name);
 	} catch (sql_error& e) {
 		ERR_UH << "Could not execute test query for user '" << name << "' :" << e.message << std::endl;
 		// If the database is down just let all usernames log in
@@ -279,7 +279,7 @@ bool fuh::extra_row_exists(const std::string& name) {
 
 	// Make a test query for this username
 	try {
-		return !prepared_statement<std::string>(conn, "SELECT username FROM " + db_extra_table_ + " WHERE UPPER(username)=UPPER(?)", name).empty();
+		return prepared_statement<bool>(conn, "SELECT 1 FROM " + db_extra_table_ + " WHERE UPPER(username)=UPPER(?)", name);
 	} catch (sql_error& e) {
 		ERR_UH << "Could not execute test query for user '" << name << "' :" << e.message << std::endl;
 		return false;
