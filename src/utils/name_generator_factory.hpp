@@ -48,7 +48,8 @@ private:
 	std::map<std::string, std::shared_ptr<name_generator>> name_generators_;
 
 	/**
-	 * Determines a name generator from WML data
+	 * Determines a name generator from WML data. Tries first to load a context-free generator,
+	 * then falls back to Markov.
 	 * @param config the WML data to be parsed for name generators
 	 * @param the prefix to look for
 	 * @returns a name generator or nullptr if not found
