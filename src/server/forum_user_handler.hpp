@@ -98,6 +98,8 @@ class fuh : public user_handler {
 
 		MYSQL *conn;
 
+		template<typename T, typename... Args>
+		inline T prepared_statement(const std::string& sql, Args&&...);
 		// Query a detail for a particular user from the database
 		template<typename T>
 		T get_detail_for_user(const std::string& name, const std::string& detail);
