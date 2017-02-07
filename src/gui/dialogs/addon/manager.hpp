@@ -70,6 +70,8 @@ private:
 
 	void install_selected_addon(window& window);
 	void install_addon(addon_info addon, window& window);
+	void uninstall_selected_addon(window& window);
+	void uninstall_addon(addon_info addon, window& window);
 	void browse_url_callback(text_box& url_box);
 	void copy_url_callback(text_box& url_box);
 	void options_button_callback(window& window);

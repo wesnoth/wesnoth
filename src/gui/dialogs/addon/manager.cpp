@@ -265,6 +265,8 @@ void addon_manager::pre_show(window& window)
 #else
 	list.set_install_function(std::bind(&addon_manager::install_addon,
 		this, std::placeholders::_1, std::ref(window)));
+	list.set_uninstall_function(std::bind(&addon_manager::uninstall_addon,
+		this, std::placeholders::_1, std::ref(window)));
 	list.set_callback_value_change(
 			dialog_callback<addon_manager, &addon_manager::on_addon_select>);
 #endif
@@ -291,6 +293,10 @@ void addon_manager::pre_show(window& window)
 	connect_signal_mouse_left_click(
 			find_widget<button>(&window, "install", false),
 			std::bind(&addon_manager::install_selected_addon, this, std::ref(window)));
+
+	connect_signal_mouse_left_click(
+			find_widget<button>(&window, "uninstall", false),
+			std::bind(&addon_manager::uninstall_selected_addon, this, std::ref(window)));
 
 	connect_signal_mouse_left_click(
 			url_go_button,
@@ -369,6 +375,42 @@ void addon_manager::install_addon(addon_info addon, window& window)
 		client_.install_addon_with_checks(addons_, addon);
 
 	if(result.outcome != addons_client::install_outcome::abort) {
+		load_addon_list(window);
+
+		// Reselect the add-on.
+		addons.select_addon(addon.id);
+		on_addon_select(window);
+	}
+}
+
+void addon_manager::uninstall_selected_addon(window& window)
+{
+	addon_list& addons = find_widget<addon_list>(&window, "addons", false);
+	const addon_info* addon = addons.get_selected_addon();
+
+	if(addon == nullptr) {
+		return;
+	}
+
+	uninstall_addon(*addon, window);
+}
+
+void addon_manager::uninstall_addon(addon_info addon, window& window)
+{
+	addon_list& addons = find_widget<addon_list>(&window, "addons", false);
+
+	if(have_addon_pbl_info(addon.id) || have_addon_in_vcs_tree(addon.id)) {
+		show_error_message(window.video(),
+			_("The following add-on appears to have publishing or version control information stored locally, and will not be removed:") + " " +
+				addon.display_title());
+		return;
+	}
+
+	bool success = remove_local_addon(addon.id);
+
+	if(!success) {
+		show_error_message(window.video(), _("The following add-on could not be deleted properly:") + " " + addon.display_title());
+	} else {
 		load_addon_list(window);
 
 		// Reselect the add-on.
