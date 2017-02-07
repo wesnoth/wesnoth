@@ -32,14 +32,15 @@ REGISTER_DIALOG(install_dependencies)
 
 void install_dependencies::pre_show(window& window)
 {
-	label& lbl = find_widget<label>(&window, "label", false);
-	lbl.set_label(t_string("The selected add-on has the following dependency, which is not currently installed. Do you wish to install it before continuing?",
-		"The selected add-on has the following dependencies, which are not currently installed. Do you wish to install them before continuing?",
-		addons_.size(),
-		"wesnoth"));
+	find_widget<label>(&window, "label", false).set_label(
+		t_string(
+			"The selected add-on has the following dependency, which is not currently installed. Do you wish to install it before continuing?",
+			"The selected add-on has the following dependencies, which are not currently installed. Do you wish to install them before continuing?",
+			addons_.size(),
+			"wesnoth")
+	);
 
-	addon_list& list = find_widget<addon_list>(&window, "dependencies", false);
-	list.set_addons(addons_);
+	find_widget<addon_list>(&window, "dependencies", false).set_addons(addons_);
 }
 
 }
