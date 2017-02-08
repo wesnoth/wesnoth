@@ -89,7 +89,7 @@ function wml_actions.select_character()
 	local unit = wesnoth.get_variable("student_store")
 
 	if character == 2 then
-		wesnoth.put_unit(unit.x, unit.y, {
+		wesnoth.put_unit({
 			type = "Fighteress",
 			id = unit.id,
 			name = _"Li’sar",
@@ -97,7 +97,7 @@ function wml_actions.select_character()
 			profile = "portraits/lisar.png",
 			canrecruit = true,
 			facing = unit.facing,
-		})
+		}, unit.x, unit.y )
 	else
 		wesnoth.put_unit(unit)
 	end
