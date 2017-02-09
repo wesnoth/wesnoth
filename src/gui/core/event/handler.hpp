@@ -180,6 +180,12 @@ enum ui_event {
 					   * This may also cause updating of more
 					   * layout parts.
 					   */
+	,
+	SDL_TOUCH_MOTION
+	,
+	SDL_TOUCH_UP
+	,
+	SDL_TOUCH_DOWN
 };
 
 /**
@@ -239,6 +245,16 @@ typedef boost::mpl::set<boost::mpl::int_<SDL_VIDEO_RESIZE>,
  * determined yet).
  */
 typedef boost::mpl::set<boost::mpl::int_<SDL_KEY_DOWN> > set_event_keyboard;
+
+/**
+ * Helper for catching use error of dispatcher::connect_signal.
+ *
+ * This version is for callbacks of touch events.
+ */
+typedef boost::mpl::set<boost::mpl::int_<SDL_TOUCH_MOTION>,
+						boost::mpl::int_<SDL_TOUCH_UP>,
+						boost::mpl::int_<SDL_TOUCH_DOWN> >
+set_event_touch;
 
 /**
  * Helper for catching use error of dispatcher::connect_signal.

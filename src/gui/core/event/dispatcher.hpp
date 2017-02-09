@@ -367,6 +367,39 @@ public:
 	}
 
 	/**
+	 * Connect a signal for callback in set_event_touch.
+	 *
+	 * @tparam E                     The event the callback needs to react to.
+	 * @param signal                 The callback function.
+	 * @param position               The position to place the callback.
+	 */
+	template <ui_event E>
+	typename std::enable_if<has_key<set_event_touch, E>::value>::type
+	connect_signal(const set_event_touch& signal,
+				   const queue_position position = back_child)
+	{
+		signal_touch_queue_.connect_signal(E, position, signal);
+	}
+
+	/**
+	 * Disconnect a signal for callback in set_event_touch.
+	 *
+	 * @tparam E                     The event the callback was used for.
+	 * @param signal                 The callback function.
+	 * @param position               The place where the function was added.
+	 *                               Needed remove the event from the right
+	 *                               place. (The function doesn't care whether
+	 *                               was added in front or back.)
+	 */
+	template <ui_event E>
+	typename std::enable_if<has_key<set_event_touch, E>::value>::type
+	disconnect_signal(const set_event_touch& signal,
+					  const queue_position position = back_child)
+	{
+		signal_touch_queue_.disconnect_signal(E, position, signal);
+	}
+
+	/**
 	 * Connect a signal for callback in set_event_notification.
 	 *
 	 * @tparam E                     The event the callback needs to react to.
@@ -664,6 +697,9 @@ private:
 
 	/** Signal queue for callbacks in set_event_keyboard. */
 	signal_queue<signal_keyboard_function> signal_keyboard_queue_;
+
+	/** Signal queue for callbacks in set_event_touch. */
+	signal_queue<set_event_touch> signal_touch_queue_;
 
 	/** Signal queue for callbacks in set_event_notification. */
 	signal_queue<signal_notification_function> signal_notification_queue_;

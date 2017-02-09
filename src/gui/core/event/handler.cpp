@@ -931,6 +931,15 @@ std::ostream& operator<<(std::ostream& stream, const ui_event event)
 		case REQUEST_PLACEMENT:
 			stream << "request placement";
 			break;
+		case SDL_TOUCH_MOTION:
+			stream << "SDL touch motion";
+			break;
+		case SDL_TOUCH_UP:
+			stream << "SDL touch up";
+			break;
+		case SDL_TOUCH_DOWN:
+			stream << "SDL touch down";
+			break;
 	}
 
 	return stream;
