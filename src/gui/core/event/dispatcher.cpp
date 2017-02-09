@@ -86,6 +86,10 @@ bool dispatcher::has_event(const ui_event event, const event_queue_type event_ty
 					  event,
 					  dispatcher_implementation::has_handler(event_type,
 															   *this))
+		   || find<set_event_touch>(
+					  event,
+					  dispatcher_implementation::has_handler(event_type,
+															   *this))
 		   || find<set_event_notification>(
 					  event,
 					  dispatcher_implementation::has_handler(event_type,
@@ -244,6 +248,43 @@ bool dispatcher::fire(const ui_event event,
 			dynamic_cast<widget*>(this),
 			&target,
 			trigger_keyboard(key, modifier, unicode));
+}
+
+/** Helper struct to wrap the functor call. */
+class trigger_touch
+{
+public:
+	trigger_touch(const point& pos, const point& distance)
+		: pos_(pos)
+		, distance_(distance)
+	{
+	}
+
+	void operator()(signal_touch_function functor,
+					dispatcher& dispatcher,
+					const ui_event event,
+					bool& handled,
+					bool& halt)
+	{
+		functor(dispatcher, event, handled, halt, pos_, distance_);
+	}
+
+private:
+	point pos_;
+	point distance_;
+};
+
+bool dispatcher::fire(const ui_event event,
+					   widget& target,
+					   const point& pos,
+					   const point& distance)
+{
+	assert(find<set_event_touch>(event, event_in_set()));
+	return fire_event<signal_touch_function>(
+			event,
+			dynamic_cast<widget*>(this),
+			&target,
+			trigger_touch(pos, distance));
 }
 
 /** Helper struct to wrap the functor call. */

@@ -219,6 +219,14 @@ private:
 	dispatcher* keyboard_dispatcher();
 
 	/**
+	 * Fires a generic touch event.
+	 *
+	 * @param position               The position touched.
+	 * @param distance               The distance moved.
+	 */
+	void touch_motion(const point& position, const point& distance);
+
+	/**
 	 * Handles a hat motion event.
 	 *
 	 * @param event                  The SDL joystick hat event triggered.
@@ -414,7 +422,7 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 			break;
 
 		case SDL_FINGERMOTION:
-			// TODO?
+			touch_motion(point(event.tfinger.x, event.tfinger.y), point(event.tfinger.dx, event.tfinger.dy));
 			break;
 
 #if(defined(_X11) && !defined(__APPLE__)) || defined(_WIN32)
@@ -650,6 +658,13 @@ dispatcher* sdl_event_handler::keyboard_dispatcher()
 	}
 
 	return nullptr;
+}
+
+void sdl_event_handler::touch_motion(const point& position, const point& distance)
+{
+	for(auto& dispatcher : boost::adaptors::reverse(dispatchers_)) {
+		dispatcher->fire(SDL_TOUCH_MOTION , dynamic_cast<widget&>(*dispatcher), position, distance);
+	}
 }
 
 void sdl_event_handler::hat_motion(const SDL_Event& event)

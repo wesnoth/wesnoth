@@ -203,6 +203,19 @@ public:
 			  const utf8::string& unicode);
 
 	/**
+	 * Fires an event which takes touch parameters.
+	 *
+	 * @param event                  The event to fire.
+	 * @param target                 The widget that should receive the event.
+	 * @param pos                    The location touched.
+	 * @param distance               The distance moved.
+	 */
+	bool fire(const ui_event event,
+			  widget& target,
+			  const point& pos,
+			  const point& distance);
+
+	/**
 	 * Fires an event which takes notification parameters.
 	 *
 	 * @note the void* parameter is a dummy needed for SFINAE.
