@@ -121,8 +121,8 @@
 		<Unit filename="../../src/addon/client.hpp" />
 		<Unit filename="../../src/addon/info.cpp" />
 		<Unit filename="../../src/addon/info.hpp" />
-		<Unit filename="../../src/addon/manager_old.cpp" />
-		<Unit filename="../../src/addon/manager_old.hpp" />
+		<Unit filename="../../src/addon/manager.cpp" />
+		<Unit filename="../../src/addon/manager.hpp" />
 		<Unit filename="../../src/addon/manager_ui.cpp" />
 		<Unit filename="../../src/addon/manager_ui.hpp" />
 		<Unit filename="../../src/addon/state.cpp" />
@@ -491,6 +491,8 @@
 		<Unit filename="../../src/gui/core/event/handler.hpp" />
 		<Unit filename="../../src/gui/core/event/message.hpp" />
 		<Unit filename="../../src/gui/core/layout_exception.hpp" />
+		<Unit filename="../../src/gui/core/linked_group_definition.cpp" />
+		<Unit filename="../../src/gui/core/linked_group_definition.hpp" />
 		<Unit filename="../../src/gui/core/log.cpp" />
 		<Unit filename="../../src/gui/core/log.hpp" />
 		<Unit filename="../../src/gui/core/notifiee.hpp" />
@@ -519,6 +521,8 @@
 		<Unit filename="../../src/gui/dialogs/addon/description.hpp" />
 		<Unit filename="../../src/gui/dialogs/addon/filter_options.cpp" />
 		<Unit filename="../../src/gui/dialogs/addon/filter_options.hpp" />
+		<Unit filename="../../src/gui/dialogs/addon/install_dependencies.cpp" />
+		<Unit filename="../../src/gui/dialogs/addon/install_dependencies.hpp" />
 		<Unit filename="../../src/gui/dialogs/addon/manager.cpp" />
 		<Unit filename="../../src/gui/dialogs/addon/manager.hpp" />
 		<Unit filename="../../src/gui/dialogs/addon/uninstall_list.cpp" />
@@ -677,6 +681,8 @@
 		<Unit filename="../../src/gui/dialogs/wml_error.hpp" />
 		<Unit filename="../../src/gui/dialogs/wml_message.cpp" />
 		<Unit filename="../../src/gui/dialogs/wml_message.hpp" />
+		<Unit filename="../../src/gui/widgets/addon_list.cpp" />
+		<Unit filename="../../src/gui/widgets/addon_list.hpp" />
 		<Unit filename="../../src/gui/widgets/button.cpp" />
 		<Unit filename="../../src/gui/widgets/button.hpp" />
 		<Unit filename="../../src/gui/widgets/chatbox.cpp" />
@@ -999,6 +1005,8 @@
 		<Unit filename="../../src/serialization/schema_validator.hpp" />
 		<Unit filename="../../src/serialization/string_utils.cpp" />
 		<Unit filename="../../src/serialization/string_utils.hpp" />
+		<Unit filename="../../src/serialization/tag.cpp" />
+		<Unit filename="../../src/serialization/tag.hpp" />
 		<Unit filename="../../src/serialization/tokenizer.cpp" />
 		<Unit filename="../../src/serialization/tokenizer.hpp" />
 		<Unit filename="../../src/serialization/unicode.cpp" />
@@ -1066,8 +1074,6 @@
 		<Unit filename="../../src/time_of_day.hpp" />
 		<Unit filename="../../src/tod_manager.cpp" />
 		<Unit filename="../../src/tod_manager.hpp" />
-		<Unit filename="../../src/tools/schema/tag.cpp" />
-		<Unit filename="../../src/tools/schema/tag.hpp" />
 		<Unit filename="../../src/tooltips.cpp" />
 		<Unit filename="../../src/tooltips.hpp" />
 		<Unit filename="../../src/tracer.cpp" />
