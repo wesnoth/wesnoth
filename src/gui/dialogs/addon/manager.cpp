@@ -254,8 +254,8 @@ void addon_manager::pre_show(window& window)
 {
 	addon_list& list = find_widget<addon_list>(&window, "addons", false);
 
-	find_widget<text_box>(&window, "filter", false).set_text_changed_callback(
-		std::bind(&addon_manager::on_filtertext_changed, this, _1, _2));
+	text_box& filter = find_widget<text_box>(&window, "filter", false);
+	filter.set_text_changed_callback(std::bind(&addon_manager::on_filtertext_changed, this, _1, _2));
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	connect_signal_notify_modified(list,
@@ -315,6 +315,12 @@ void addon_manager::pre_show(window& window)
 			std::bind(&addon_manager::show_help, this, std::ref(window)));
 
 	on_addon_select(window);
+
+	window.keyboard_capture(&filter);
+
+	// TODO: figure out forwarding keyboard events to the widget from the window?
+	//       Or perhaps handle them in the widget?
+	//window.add_to_keyboard_chain(&list);
 }
 
 void addon_manager::load_addon_list(window& window)
