@@ -429,13 +429,9 @@ void server::send_error(const std::string& msg, socket_ptr sock)
 	async_send_doc(sock, doc, std::bind(&server::handle_new_client, this, _1), null_handler);
 }
 
-void server::register_handler(const std::string& cmd, const request_handler& func)
-{
-	handlers_[cmd] = func;
-}
-
 #define REGISTER_CAMPAIGND_HANDLER(req_id) \
-	register_handler(#req_id, &server::handle_##req_id)
+	handlers_[#req_id] = std::bind(&server::handle_##req_id, \
+		std::placeholders::_1, std::placeholders::_2)
 
 void server::register_handlers()
 {

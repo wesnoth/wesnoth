@@ -161,17 +161,6 @@ private:
 	 */
 	void register_handlers();
 
-	/**
-	 * Registers a single request handler.
-	 *
-	 * @param cmd  The request command, corresponding to the name of the [tag}
-	 *             with the request body (e.g. "handle_request_terms").
-	 * @param func The request function. This should be a class method passed
-	 *             as a @a std::bind function object that takes a single
-	 *             parameter of type @a request.
-	 */
-	void register_handler(const std::string& cmd, const request_handler& func);
-
 	void handle_request_campaign_list(const request&);
 	void handle_request_campaign(const request&);
 	void handle_request_terms(const request&);
