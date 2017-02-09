@@ -348,7 +348,7 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 
 		std::stringstream desc;
 
-		if(increase_damage.empty() == false) {
+		if(!increase_damage.empty()) {
 			utils::string_map symbols;
 			symbols["damage"] = utils::print_modifier(increase_damage);
 			add_and(desc);
@@ -388,34 +388,28 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 					std::stoi(set_attacks), symbols);
 		}
 
-		if(set_accuracy.empty() == false) {
-			int accuracy = std::stoi(set_accuracy);
-
+		if(!set_accuracy.empty()) {
 			add_and(desc);
-			// xgettext:no-c-format
-			desc << accuracy << " " << _("% accuracy");
+			desc << vgettext("$percent|% accuracy",
+								  utils::string_map({{"percent", set_accuracy}}));
 		}
 
-		if(increase_accuracy.empty() == false) {
+		if(!increase_accuracy.empty()) {
 			add_and(desc);
-			int inc_acc = std::stoi(increase_accuracy);
-			// Help xgettext with a directive to recognize the string as a non C printf-like string
-			// xgettext:no-c-format
-			desc << utils::signed_value(inc_acc) << _("% accuracy");
+			desc << vgettext("$percent|% accuracy",
+								  utils::string_map({{"percent", utils::print_modifier(increase_accuracy)}}));
 		}
 
-		if(set_parry.empty() == false) {
-			int parry = std::stoi(set_parry);
-
+		if(!set_parry.empty()) {
 			add_and(desc);
-			desc << parry << _(" parry");
+			desc << vgettext("$number parry",
+								  utils::string_map({{"number", set_parry}}));
 		}
 
-		if(increase_parry.empty() == false) {
+		if(!increase_parry.empty()) {
 			add_and(desc);
-			int inc_parry = std::stoi(increase_parry);
-			// xgettext:no-c-format
-			desc << utils::signed_value(inc_parry) << _("% parry");
+			desc << vgettext("$number parry",
+								  utils::string_map({{"number", utils::print_modifier(increase_parry)}}));
 		}
 
 		if(!set_movement.empty()) {
