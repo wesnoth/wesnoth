@@ -81,6 +81,19 @@ signal_keyboard_function;
 /**
  * Callback function signature.
  *
+ * This function is used for the callbacks in set_event_touch.
+ */
+typedef std::function<void(dispatcher& dispatcher,
+							 const ui_event event,
+							 bool& handled,
+							 bool& halt,
+							 const point& pos,
+							 const point& distance)>
+signal_touch_function;
+
+/**
+ * Callback function signature.
+ *
  * This function is used for the callbacks in set_event_notification.
  * Added the dummy void* parameter which will be nullptr to get a different
  * signature as signal_function's callback.
@@ -375,7 +388,7 @@ public:
 	 */
 	template <ui_event E>
 	typename std::enable_if<has_key<set_event_touch, E>::value>::type
-	connect_signal(const set_event_touch& signal,
+	connect_signal(const signal_touch_function& signal,
 				   const queue_position position = back_child)
 	{
 		signal_touch_queue_.connect_signal(E, position, signal);
@@ -393,7 +406,7 @@ public:
 	 */
 	template <ui_event E>
 	typename std::enable_if<has_key<set_event_touch, E>::value>::type
-	disconnect_signal(const set_event_touch& signal,
+	disconnect_signal(const signal_touch_function& signal,
 					  const queue_position position = back_child)
 	{
 		signal_touch_queue_.disconnect_signal(E, position, signal);
@@ -699,7 +712,7 @@ private:
 	signal_queue<signal_keyboard_function> signal_keyboard_queue_;
 
 	/** Signal queue for callbacks in set_event_touch. */
-	signal_queue<set_event_touch> signal_touch_queue_;
+	signal_queue<signal_touch_function> signal_touch_queue_;
 
 	/** Signal queue for callbacks in set_event_notification. */
 	signal_queue<signal_notification_function> signal_notification_queue_;

@@ -413,6 +413,10 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 			text_input(event.text.text);
 			break;
 
+		case SDL_FINGERMOTION:
+			// TODO?
+			break;
+
 #if(defined(_X11) && !defined(__APPLE__)) || defined(_WIN32)
 		case SDL_SYSWMEVENT:
 			/* DO NOTHING */
@@ -422,6 +426,8 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 		// Silently ignored events.
 		case SDL_KEYUP:
 		case DOUBLE_CLICK_EVENT:
+		case SDL_FINGERUP:
+		case SDL_FINGERDOWN:
 			break;
 
 		default:
