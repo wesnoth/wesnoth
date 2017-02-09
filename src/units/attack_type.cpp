@@ -20,6 +20,7 @@
 #include "units/attack_type.hpp"
 #include "formula/callable_objects.hpp"
 #include "formula/formula.hpp"
+#include "formula/string_utils.hpp"
 
 #include "lexical_cast.hpp"
 #include "log.hpp"
@@ -348,29 +349,43 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 		std::stringstream desc;
 
 		if(increase_damage.empty() == false) {
+			utils::string_map symbols;
+			symbols["damage"] = utils::print_modifier(increase_damage);
 			add_and(desc);
-			int inc_damage = std::stoi(increase_damage);
-			desc << utils::print_modifier(increase_damage) << " "
-				 << _n("damage","damage", inc_damage);
+			desc << vngettext(
+					"$damage damage",
+					"$damage damage",
+					std::stoi(increase_damage), symbols);
 		}
 
-		if(set_damage.empty() == false) {
+		if(!set_damage.empty()) {
+			utils::string_map symbols;
+			symbols["damage"] = set_damage;
 			add_and(desc);
-			int damage = std::stoi(increase_damage);
-			desc << set_damage << " " << _n("damage","damage", damage);
+			desc << vngettext(
+					"$damage damage",
+					"$damage damage",
+					std::stoi(set_damage), symbols);
 		}
 
-		if(increase_attacks.empty() == false) {
+		if(!increase_attacks.empty()) {
+			utils::string_map symbols;
+			symbols["attacks"] = utils::print_modifier(increase_attacks);
 			add_and(desc);
-			int inc_attacks = std::stoi(increase_attacks);
-			desc << utils::print_modifier(increase_attacks) << " "
-				 << _n("strike", "strikes", inc_attacks);
+			desc << vngettext(
+					"$attacks strike",
+					"$attacks strikes",
+					std::stoi(increase_attacks), symbols);
 		}
 
-		if(set_attacks.empty() == false) {
-			int num_attacks = std::stoi(set_attacks);
+		if(!set_attacks.empty()) {
+			utils::string_map symbols;
+			symbols["attacks"] = set_attacks;
 			add_and(desc);
-			desc << set_attacks << " " << _n("strike", "strikes", num_attacks);
+			desc << vngettext(
+					"$attacks strike",
+					"$attacks strikes",
+					std::stoi(set_attacks), symbols);
 		}
 
 		if(set_accuracy.empty() == false) {
@@ -403,17 +418,24 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 			desc << utils::signed_value(inc_parry) << _("% parry");
 		}
 
-		if(set_movement.empty() == false) {
-			int movement_used = std::stoi(set_movement);
-
+		if(!set_movement.empty()) {
+			utils::string_map symbols;
+			symbols["points"] = set_movement;
 			add_and(desc);
-			desc << movement_used << " " << _n("movement point","movement points",movement_used);
+			desc << vngettext(
+					"$points movement point",
+					"$points movement points",
+					std::stoi(set_movement), symbols);
 		}
 
-		if(increase_movement.empty() == false) {
+		if(!increase_movement.empty()) {
+			utils::string_map symbols;
+			symbols["points"] = utils::print_modifier(increase_movement);
 			add_and(desc);
-			int inc_move = std::stoi(increase_movement);
-			desc << increase_movement << " " << _n("movement point","movement points",inc_move);
+			desc << vngettext(
+					"$points movement point",
+					"$points movement points",
+					std::stoi(increase_movement), symbols);
 		}
 
 		*description = desc.str();
