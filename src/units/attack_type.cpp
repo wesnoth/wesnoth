@@ -351,10 +351,10 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 		if(!increase_damage.empty()) {
 			add_and(desc);
 			desc << vngettext(
-				"$number damage",
-				"$number damage",
+				"$number_or_percent damage",
+				"$number_or_percent damage",
 				std::stoi(increase_damage),
-				utils::string_map({{"number", utils::print_modifier(increase_damage)}}));
+				utils::string_map({{"number_or_percent", utils::print_modifier(increase_damage)}}));
 		}
 
 		if(!set_damage.empty()) {
@@ -369,19 +369,19 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 		if(!increase_attacks.empty()) {
 			add_and(desc);
 			desc << vngettext(
-				"$attacks strike",
-				"$attacks strikes",
+				"$number_or_percent strike",
+				"$number_or_percent strikes",
 				std::stoi(increase_attacks),
-				utils::string_map({{"attacks", utils::print_modifier(increase_attacks)}}));
+				utils::string_map({{"number_or_percent", utils::print_modifier(increase_attacks)}}));
 		}
 
 		if(!set_attacks.empty()) {
 			add_and(desc);
 			desc << vngettext(
-				"$attacks strike",
-				"$attacks strikes",
+				"$number strike",
+				"$number strikes",
 				std::stoi(set_attacks),
-				utils::string_map({{"attacks", set_attacks}}));
+				utils::string_map({{"number", set_attacks}}));
 		}
 
 		if(!set_accuracy.empty()) {
@@ -401,33 +401,33 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 		if(!set_parry.empty()) {
 			add_and(desc);
 			desc << vgettext(
-				"$strength parry",
-				utils::string_map({{"strength", set_parry}}));
+				"$number parry",
+				utils::string_map({{"number", set_parry}}));
 		}
 
 		if(!increase_parry.empty()) {
 			add_and(desc);
 			desc << vgettext(
-				"$strength parry",
-				utils::string_map({{"strength", utils::print_modifier(increase_parry)}}));
+				"$number_or_percent parry",
+				utils::string_map({{"number_or_percent", utils::print_modifier(increase_parry)}}));
 		}
 
 		if(!set_movement.empty()) {
 			add_and(desc);
 			desc << vngettext(
-				"$points movement point",
-				"$points movement points",
+				"$number movement point",
+				"$number movement points",
 				std::stoi(set_movement),
-				utils::string_map({{"points", set_movement}}));
+				utils::string_map({{"number", set_movement}}));
 		}
 
 		if(!increase_movement.empty()) {
 			add_and(desc);
 			desc << vngettext(
-				"$points movement point",
-				"$points movement points",
+				"$number_or_percent movement point",
+				"$number_or_percent movement points",
 				std::stoi(increase_movement),
-				utils::string_map({{"points", utils::print_modifier(increase_movement)}}));
+				utils::string_map({{"number_or_percent", utils::print_modifier(increase_movement)}}));
 		}
 
 		*description = desc.str();
