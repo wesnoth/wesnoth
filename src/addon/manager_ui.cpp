@@ -779,11 +779,12 @@ bool addons_manager_ui(CVideo& v, const std::string& remote_address)
 
 			addons_list addons;
 
-			if(gui2::new_widgets) {
+			// BIG FAT TODO: get rid of the GUI1 addons manager. Just need to decide how best to decouple this.
+			//if(gui2::new_widgets) {
 				gui2::dialogs::addon_manager dlg(client);
 				dlg.show(v);
 				return true;
-			}
+			//}
 
 			if(!get_addons_list(client, addons)) {
 				gui2::show_error_message(v, _("An error occurred while downloading the add-ons list from the server."));
