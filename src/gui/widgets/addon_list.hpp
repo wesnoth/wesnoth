@@ -15,10 +15,12 @@
 #define GUI_WIDGETS_ADDON_LIST_HPP_INCLUDED
 
 #include "addon/info.hpp"
+#include "addon/manager.hpp"
 #include "addon/state.hpp"
 #include "gui/widgets/container_base.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/widget.hpp"
+
 #include <boost/dynamic_bitset.hpp>
 #include <functional>
 #include <string>
@@ -29,7 +31,7 @@ namespace gui2
 
 namespace implementation
 {
-struct builder_addon_list;
+	struct builder_addon_list;
 }
 
 class addon_list : public container_base
@@ -44,6 +46,10 @@ public:
 		, install_buttons_visibility_(visibility::invisible)
 		, install_function_()
 		, uninstall_function_()
+		, publish_function_()
+		, delete_function_()
+		, can_publish_ids_(available_addons())
+		, can_delete_ids_()
 	{}
 
 	/** Sets the add-ons to show. */
@@ -57,6 +63,9 @@ public:
 
 	/** Returns the selected add-on. */
 	const addon_info* get_selected_addon() const;
+
+	/** Returns the selected add-on id, for use with remote publish/delete ops. */
+	std::string get_remote_addon_id();
 
 	/** Selects the add-on with the given ID. */
 	void select_addon(const std::string& id);
@@ -73,15 +82,28 @@ public:
 		uninstall_function_ = function;
 	}
 
+	/** Sets the function to upload an addon to the addons server. */
+	void set_publish_function(std::function<void(const std::string&)> function)
+	{
+		publish_function_ = function;
+	}
+
+	/** Sets the function to install an addon from the addons server. */
+	void set_delete_function(std::function<void(const std::string&)> function)
+	{
+		delete_function_ = function;
+	}
+
 	/** Filters which add-ons are visible. 1 = visible, 0 = hidden. */
 	void set_addon_shown(boost::dynamic_bitset<>& shown)
 	{
 		get_listbox().set_row_shown(shown);
 	}
 
-	/** Changes the color of an add-on state string (installed, outdated, etc.)
-	according to the state itself.
-	This function is here because the add-on list widget itself needs it. */
+	/**
+	 * Changes the color of an add-on state string (installed, outdated, etc.) according to the state itself.
+	 * This function is here because the add-on list widget itself needs it.
+	 */
 	static std::string colorify_addon_state_string(const std::string& str, ADDON_STATUS state, bool verbose = false);
 
 	/** Determines if install status of each widget is shown. */
@@ -116,10 +138,27 @@ public:
 
 private:
 	std::vector<const addon_info*> addon_vector_;
+
 	visibility install_status_visibility_;
 	visibility install_buttons_visibility_;
+
 	std::function<void(const addon_info&)> install_function_;
 	std::function<void(const addon_info&)> uninstall_function_;
+
+	std::function<void(const std::string&)> publish_function_;
+	std::function<void(const std::string&)> delete_function_;
+
+	/**
+	 * Add-ons available for publishing in the remote
+	 * (i.e. we have .pbl files for them).
+	 */
+	const std::vector<std::string> can_publish_ids_;
+
+	/**
+	 * Add-ons available for deleting in the remote
+	 *(i.e. already published, and we have .pbl files for them).
+	 */
+	std::vector<std::string> can_delete_ids_;
 
 	static std::string describe_status(const addon_tracking_info& info);
 

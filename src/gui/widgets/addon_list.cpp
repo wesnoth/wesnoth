@@ -15,7 +15,9 @@
 
 #include "gui/widgets/addon_list.hpp"
 
-#include <gettext.hpp>
+#include "formatter.hpp"
+#include "formula/string_utils.hpp"
+#include "gettext.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/event/dispatcher.hpp"
 #include "gui/core/register_widget.hpp"
@@ -25,6 +27,7 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/stacked_widget.hpp"
 #include "wml_exception.hpp"
+
 #include <algorithm>
 
 namespace gui2
@@ -113,6 +116,11 @@ void addon_list::set_addons(const addons_list& addons)
 
 		addon_vector_.push_back(&addon);
 
+		// Note addons that can be deleted
+		if(tracking_info.can_publish) {
+			can_delete_ids_.push_back(addon.id);
+		}
+
 		std::map<std::string, string_map> data;
 		string_map item;
 
@@ -183,17 +191,100 @@ void addon_list::set_addons(const addons_list& addons)
 		find_widget<grid>(row_grid, "single_install_buttons", false).set_visible(install_buttons_visibility_);
 		find_widget<label>(row_grid, "installation_status", false).set_visible(install_status_visibility_);
 	}
+
+	const auto add_addon_author_rows = [&](const std::vector<std::string>& vec, const bool publish)
+	{
+		for(const std::string& id : vec) {
+			std::map<std::string, string_map> data;
+			string_map item;
+
+			item["use_markup"] = "true";
+
+			item["label"] = publish
+				? "icons/icon-game.png~BLIT(icons/icon-addon-publish.png)"
+				: "icons/icon-game.png~BLIT(icons/icon-addon-delete.png)";
+			data.emplace("icon", item);
+
+			const std::string publish_name = publish
+				? formatter()
+					<< "<span color='#00ff00'>" // GOOD_COLOR
+					<< vgettext("Publish: $addon_title", {{"addon_title", make_addon_title(id)}})
+					<< "</span>"
+				: formatter()
+					<< "<span color='#ff0000'>" // BAD_COLOR
+					<< vgettext("Delete: $addon_title", {{"addon_title", make_addon_title(id)}})
+					<< "</span>";
+
+			item["label"] = publish_name;
+			data.emplace("name", item);
+
+			grid* row_grid = &list.add_row(data);
+
+			find_widget<button>(row_grid, "single_install", false).set_active(publish);
+			find_widget<button>(row_grid, "single_update", false).set_active(publish);
+			find_widget<button>(row_grid, "single_uninstall", false).set_active(!publish);
+
+			find_widget<stacked_widget>(row_grid, "install_update_stack", false).select_layer(1);
+
+			if(publish) {
+				gui2::event::connect_signal_mouse_left_click(
+					find_widget<button>(row_grid, "single_update", false),
+					[this, id](gui2::event::dispatcher&, const gui2::event::ui_event, bool& handled, bool& halt)
+				{
+					publish_function_(id);
+					handled = true;
+					halt = true;
+				});
+			} else {
+				gui2::event::connect_signal_mouse_left_click(
+					find_widget<button>(row_grid, "single_uninstall", false),
+					[this, id](gui2::event::dispatcher&, const gui2::event::ui_event, bool& handled, bool& halt)
+				{
+					delete_function_(id);
+					handled = true;
+					halt = true;
+				});
+			}
+		}
+	};
+
+	//
+	// Addons that can be published
+	//
+	add_addon_author_rows(can_publish_ids_, true);
+
+	//
+	// Addons that can be deleted
+	//
+	add_addon_author_rows(can_delete_ids_, false);
 }
 
 const addon_info* addon_list::get_selected_addon() const
 {
 	const listbox& list = find_widget<const listbox>(&get_grid(), "addons", false);
-	int index = list.get_selected_row();
-	if(index == -1)
-	{
+
+	const int index = list.get_selected_row();
+	if(index == -1 || index >= static_cast<int>(addon_vector_.size())) {
 		return nullptr;
 	}
+
 	return addon_vector_.at(index);
+}
+
+std::string addon_list::get_remote_addon_id()
+{
+	const listbox& list = find_widget<const listbox>(&get_grid(), "addons", false);
+
+	const int index = list.get_selected_row();
+	if(index >= int(addon_vector_.size() + can_publish_ids_.size())) {
+		// Remote deletion.
+		return can_delete_ids_[index - int(addon_vector_.size() + can_publish_ids_.size())];
+	} else if(index >= int(addon_vector_.size())) {
+		// Remote publishing.
+		return can_publish_ids_[index - int(addon_vector_.size())];
+	}
+
+	return "";
 }
 
 void addon_list::select_addon(const std::string& id)

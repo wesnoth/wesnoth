@@ -31,6 +31,7 @@
 #include "gui/dialogs/addon/filter_options.hpp"
 #include "gui/dialogs/helper.hpp"
 #include "gui/dialogs/message.hpp"
+#include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/addon_list.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
@@ -50,6 +51,7 @@
 #include "gui/widgets/window.hpp"
 #include "serialization/string_utils.hpp"
 #include "formula/string_utils.hpp"
+#include "image.hpp"
 #include "language.hpp"
 #include "preferences.hpp"
 #include "utils/general.hpp"
@@ -311,6 +313,12 @@ void addon_manager::pre_show(window& window)
 		this, std::placeholders::_1, std::ref(window)));
 	list.set_uninstall_function(std::bind(&addon_manager::uninstall_addon,
 		this, std::placeholders::_1, std::ref(window)));
+
+	list.set_publish_function(std::bind(&addon_manager::do_remote_addon_publish,
+		this, std::placeholders::_1, std::ref(window)));
+	list.set_delete_function(std::bind(&addon_manager::do_remote_addon_delete,
+		this, std::placeholders::_1, std::ref(window)));
+
 	list.set_callback_value_change(
 		dialog_callback<addon_manager, &addon_manager::on_addon_select>);
 #endif
@@ -494,6 +502,68 @@ void addon_manager::uninstall_addon(addon_info addon, window& window)
 		// Reselect the add-on.
 		addons.select_addon(addon.id);
 		on_addon_select(window);
+	}
+}
+
+/** Performs all backend and UI actions for publishing the specified add-on. */
+void addon_manager::do_remote_addon_publish(const std::string& addon_id, window& window)
+{
+	std::string server_msg;
+
+	config cfg;
+	get_addon_pbl_info(addon_id, cfg);
+
+	const version_info& version_to_publish = cfg["version"].str();
+
+	if(version_to_publish <= tracking_info_[addon_id].remote_version) {
+		const int res = gui2::show_message(window.video(), _("Warning"),
+			_("The remote version of this add-on is greater or equal to the version being uploaded. Do you really wish to continue?"),
+			gui2::dialogs::message::yes_no_buttons);
+
+		if(res != gui2::window::OK) {
+			return;
+		}
+	}
+
+	if(!::image::exists(cfg["icon"].str())) {
+		gui2::show_error_message(window.video(), _("Invalid icon path. Make sure the path points to a valid image."));
+	} else if(!client_.request_distribution_terms(server_msg)) {
+		gui2::show_error_message(window.video(),
+			_("The server responded with an error:") + "\n" +
+			client_.get_last_server_error());
+	} else if(gui2::show_message(window.video(), _("Terms"), server_msg, gui2::dialogs::message::ok_cancel_buttons) == gui2::window::OK) {
+		if(!client_.upload_addon(addon_id, server_msg, cfg)) {
+			gui2::show_error_message(window.video(),
+				_("The server responded with an error:") + "\n" +
+				client_.get_last_server_error());
+		} else {
+			gui2::show_transient_message(window.video(), _("Response"), server_msg);
+		}
+	}
+}
+
+/** Performs all backend and UI actions for taking down the specified add-on. */
+void addon_manager::do_remote_addon_delete(const std::string& addon_id, window& window)
+{
+	utils::string_map symbols;
+	symbols["addon"] = make_addon_title(addon_id); // FIXME: need the real title!
+	const std::string& text = vgettext("Deleting '$addon|' will permanently erase its download and upload counts on the add-ons server. Do you really wish to continue?", symbols);
+
+	const int res = gui2::show_message(
+		window.video(), _("Confirm"), text, gui2::dialogs::message::yes_no_buttons);
+
+	if(res != gui2::window::OK) {
+		return;
+	}
+
+	std::string server_msg;
+	if(!client_.delete_remote_addon(addon_id, server_msg)) {
+		gui2::show_error_message(	window.video(),
+			_("The server responded with an error:") + "\n" +
+			client_.get_last_server_error());
+	} else {
+		// FIXME: translation needed!
+		gui2::show_transient_message(window.video(), _("Response"), server_msg);
 	}
 }
 

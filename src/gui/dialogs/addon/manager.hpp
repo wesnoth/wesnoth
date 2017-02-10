@@ -46,6 +46,7 @@ private:
 	std::vector<selectable_item*> orders_;
 
 	void on_addon_select(window& window);
+
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
@@ -74,6 +75,8 @@ private:
 	void install_addon(addon_info addon, window& window);
 	void uninstall_selected_addon(window& window);
 	void uninstall_addon(addon_info addon, window& window);
+	void do_remote_addon_publish(const std::string& addon_id, window& window);
+	void do_remote_addon_delete(const std::string& addon_id, window& window);
 	void browse_url_callback(text_box& url_box);
 	void copy_url_callback(text_box& url_box);
 	void options_button_callback(window& window);
