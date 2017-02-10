@@ -17,7 +17,6 @@
 //#include "editor/editor_controller.hpp"
 //#include "editor/palette/terrain_palettes.hpp"
 #include "font/pango/escape.hpp"
-#include "font/standard_colors.hpp"
 #include "font/text_formatting.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"

@@ -17,7 +17,6 @@
 #include "editor/palette/editor_palettes.hpp"
 
 #include "gettext.hpp"
-#include "font/standard_colors.hpp"
 #include "font/text_formatting.hpp"
 #include "tooltips.hpp"
 #include "overlay.hpp"
