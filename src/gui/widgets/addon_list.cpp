@@ -206,14 +206,16 @@ void addon_list::set_addons(const addons_list& addons)
 			data.emplace("icon", item);
 
 			const std::string publish_name = publish
-				? formatter()
+				? (formatter()
 					<< "<span color='#00ff00'>" // GOOD_COLOR
 					<< vgettext("Publish: $addon_title", {{"addon_title", make_addon_title(id)}})
-					<< "</span>"
-				: formatter()
+					<< "</span>").
+					str()
+				: (formatter()
 					<< "<span color='#ff0000'>" // BAD_COLOR
 					<< vgettext("Delete: $addon_title", {{"addon_title", make_addon_title(id)}})
-					<< "</span>";
+					<< "</span>").
+					str();
 
 			item["label"] = publish_name;
 			data.emplace("name", item);
