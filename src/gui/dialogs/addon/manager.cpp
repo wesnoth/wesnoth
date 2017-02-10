@@ -328,8 +328,8 @@ void addon_manager::pre_show(window& window)
 	menu_button& status_filter = find_widget<menu_button>(&window, "install_status_filter", false);
 
 	std::vector<config> status_filter_entries;
-	for(const auto& filter : status_filter_types_) {
-		status_filter_entries.push_back(config_of("label", filter.second));
+	for(const auto& f : status_filter_types_) {
+		status_filter_entries.push_back(config_of("label", f.second));
 	}
 
 	// TODO: initial selection based on preferences
