@@ -68,6 +68,8 @@ private:
 
 	addons_tracking_list tracking_info_;
 
+	std::vector<std::pair<ADDON_STATUS_FILTER, std::string>> status_filter_types_;
+
 	void install_selected_addon(window& window);
 	void install_addon(addon_info addon, window& window);
 	void uninstall_selected_addon(window& window);
@@ -75,6 +77,7 @@ private:
 	void browse_url_callback(text_box& url_box);
 	void copy_url_callback(text_box& url_box);
 	void options_button_callback(window& window);
+	void status_filter_callback(window& window);
 	void show_help(window& window);
 };
 
