@@ -230,7 +230,7 @@ void addon_list::finalize_setup()
 	list.register_sorting_option(1, [this](const int i) { return addon_vector_[i]->author; });
 	list.register_sorting_option(2, [this](const int i) { return addon_vector_[i]->size; });
 	list.register_sorting_option(3, [this](const int i) { return addon_vector_[i]->downloads; });
-	list.register_sorting_option(4, [this](const int i) { return addon_vector_[i]->type; });
+	list.register_sorting_option(4, [this](const int i) { return addon_vector_[i]->display_type(); });
 }
 
 addon_list_definition::addon_list_definition(const config& cfg) :
