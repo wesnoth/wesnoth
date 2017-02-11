@@ -20,6 +20,7 @@
 #include "units/attack_type.hpp"
 #include "formula/callable_objects.hpp"
 #include "formula/formula.hpp"
+#include "formula/string_utils.hpp"
 
 #include "lexical_cast.hpp"
 #include "log.hpp"
@@ -347,73 +348,86 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 
 		std::stringstream desc;
 
-		if(increase_damage.empty() == false) {
+		if(!increase_damage.empty()) {
 			add_and(desc);
-			int inc_damage = std::stoi(increase_damage);
-			desc << utils::print_modifier(increase_damage) << " "
-				 << _n("damage","damage", inc_damage);
+			desc << vngettext(
+				"$number_or_percent damage",
+				"$number_or_percent damage",
+				std::stoi(increase_damage),
+				utils::string_map({{"number_or_percent", utils::print_modifier(increase_damage)}}));
 		}
 
-		if(set_damage.empty() == false) {
+		if(!set_damage.empty()) {
 			add_and(desc);
-			int damage = std::stoi(increase_damage);
-			desc << set_damage << " " << _n("damage","damage", damage);
+			desc << vngettext(
+				"$number damage",
+				"$number damage",
+				std::stoi(set_damage),
+				utils::string_map({{"number", set_damage}}));
 		}
 
-		if(increase_attacks.empty() == false) {
+		if(!increase_attacks.empty()) {
 			add_and(desc);
-			int inc_attacks = std::stoi(increase_attacks);
-			desc << utils::print_modifier(increase_attacks) << " "
-				 << _n("strike", "strikes", inc_attacks);
+			desc << vngettext(
+				"$number_or_percent strike",
+				"$number_or_percent strikes",
+				std::stoi(increase_attacks),
+				utils::string_map({{"number_or_percent", utils::print_modifier(increase_attacks)}}));
 		}
 
-		if(set_attacks.empty() == false) {
-			int num_attacks = std::stoi(set_attacks);
+		if(!set_attacks.empty()) {
 			add_and(desc);
-			desc << set_attacks << " " << _n("strike", "strikes", num_attacks);
+			desc << vngettext(
+				"$number strike",
+				"$number strikes",
+				std::stoi(set_attacks),
+				utils::string_map({{"number", set_attacks}}));
 		}
 
-		if(set_accuracy.empty() == false) {
-			int accuracy = std::stoi(set_accuracy);
-
+		if(!set_accuracy.empty()) {
 			add_and(desc);
-			// xgettext:no-c-format
-			desc << accuracy << " " << _("% accuracy");
+			desc << vgettext(
+				"$percent|% accuracy",
+				utils::string_map({{"percent", set_accuracy}}));
 		}
 
-		if(increase_accuracy.empty() == false) {
+		if(!increase_accuracy.empty()) {
 			add_and(desc);
-			int inc_acc = std::stoi(increase_accuracy);
-			// Help xgettext with a directive to recognize the string as a non C printf-like string
-			// xgettext:no-c-format
-			desc << utils::signed_value(inc_acc) << _("% accuracy");
+			desc << vgettext(
+				"$percent|% accuracy",
+				utils::string_map({{"percent", utils::print_modifier(increase_accuracy)}}));
 		}
 
-		if(set_parry.empty() == false) {
-			int parry = std::stoi(set_parry);
-
+		if(!set_parry.empty()) {
 			add_and(desc);
-			desc << parry << _(" parry");
+			desc << vgettext(
+				"$number parry",
+				utils::string_map({{"number", set_parry}}));
 		}
 
-		if(increase_parry.empty() == false) {
+		if(!increase_parry.empty()) {
 			add_and(desc);
-			int inc_parry = std::stoi(increase_parry);
-			// xgettext:no-c-format
-			desc << utils::signed_value(inc_parry) << _("% parry");
+			desc << vgettext(
+				"$number_or_percent parry",
+				utils::string_map({{"number_or_percent", utils::print_modifier(increase_parry)}}));
 		}
 
-		if(set_movement.empty() == false) {
-			int movement_used = std::stoi(set_movement);
-
+		if(!set_movement.empty()) {
 			add_and(desc);
-			desc << movement_used << " " << _n("movement point","movement points",movement_used);
+			desc << vngettext(
+				"$number movement point",
+				"$number movement points",
+				std::stoi(set_movement),
+				utils::string_map({{"number", set_movement}}));
 		}
 
-		if(increase_movement.empty() == false) {
+		if(!increase_movement.empty()) {
 			add_and(desc);
-			int inc_move = std::stoi(increase_movement);
-			desc << increase_movement << " " << _n("movement point","movement points",inc_move);
+			desc << vngettext(
+				"$number_or_percent movement point",
+				"$number_or_percent movement points",
+				std::stoi(increase_movement),
+				utils::string_map({{"number_or_percent", utils::print_modifier(increase_movement)}}));
 		}
 
 		*description = desc.str();
