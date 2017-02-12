@@ -22,8 +22,6 @@
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/pane.hpp"
 
-#include "config.hpp" // needed for config::const_child_itors
-
 namespace gui2
 {
 class listbox;
@@ -58,11 +56,6 @@ private:
 	/** Config which contains the list with the campaigns. */
 	config cfg_;
 
-	/**
-	 * Debug iterators for testing with --new-widgets
-	 */
-	config::const_child_itors cfg_iterators_;
-
 	addons_client& client_;
 
 	addons_list addons_;
@@ -73,12 +66,18 @@ private:
 
 	void install_selected_addon(window& window);
 	void install_addon(addon_info addon, window& window);
+
 	void uninstall_selected_addon(window& window);
 	void uninstall_addon(addon_info addon, window& window);
+
+	void update_all_addons(window& window);
+
 	void do_remote_addon_publish(const std::string& addon_id, window& window);
 	void do_remote_addon_delete(const std::string& addon_id, window& window);
+
 	void browse_url_callback(text_box& url_box);
 	void copy_url_callback(text_box& url_box);
+
 	void options_button_callback(window& window);
 	void status_filter_callback(window& window);
 	void show_help(window& window);

@@ -157,9 +157,10 @@ namespace {
 		return it->second;
 	}
 
-	std::string make_display_dependencies(const std::string& addon_id,
-									  const addons_list& addons_list,
-									  const addons_tracking_list& addon_states)
+	std::string make_display_dependencies(
+		const std::string& addon_id,
+		const addons_list& addons_list,
+		const addons_tracking_list& addon_states)
 	{
 		const addon_info& addon = const_at(addon_id, addons_list);
 		std::string str;
@@ -213,7 +214,6 @@ REGISTER_DIALOG(addon_manager)
 addon_manager::addon_manager(addons_client& client)
 	: orders_()
 	, cfg_()
-	, cfg_iterators_(cfg_.child_range("campaign"))
 	, client_(client)
 	, addons_()
 	, tracking_info_()
@@ -342,7 +342,7 @@ void addon_manager::pre_show(window& window)
 
 	url_textbox.set_active(false);
 
-	if (!desktop::clipboard::available()) {
+	if(!desktop::clipboard::available()) {
 		url_copy_button.set_active(false);
 		url_copy_button.set_tooltip(_("Clipboard support not found, contact your packager"));
 	}
@@ -360,6 +360,10 @@ void addon_manager::pre_show(window& window)
 	connect_signal_mouse_left_click(
 		find_widget<button>(&window, "uninstall", false),
 		std::bind(&addon_manager::uninstall_selected_addon, this, std::ref(window)));
+
+	connect_signal_mouse_left_click(
+		find_widget<button>(&window, "update_all", false),
+		std::bind(&addon_manager::update_all_addons, this, std::ref(window)));
 
 	connect_signal_mouse_left_click(
 		url_go_button,
@@ -380,10 +384,7 @@ void addon_manager::pre_show(window& window)
 	on_addon_select(window);
 
 	window.keyboard_capture(&filter);
-
-	// TODO: figure out forwarding keyboard events to the widget from the window?
-	//       Or perhaps handle them in the widget?
-	//window.add_to_keyboard_chain(&list);
+	//window.add_to_keyboard_chain(&list.get_listbox());
 }
 
 void addon_manager::load_addon_list(window& window)
@@ -392,9 +393,7 @@ void addon_manager::load_addon_list(window& window)
 
 	client_.request_addons_list(cfg_);
 	if(!cfg_) {
-		show_error_message(window.video(),
-			_("An error occurred while downloading the "
-			"add-ons list from the server."));
+		show_error_message(window.video(), _("An error occurred while downloading the add-ons list from the server."));
 		window.close();
 	}
 
@@ -403,9 +402,16 @@ void addon_manager::load_addon_list(window& window)
 	addon_list& list = find_widget<addon_list>(&window, "addons", false);
 	list.set_addons(addons_);
 
+	bool has_upgradable_addons = false;
 	for(const auto& a : addons_) {
 		tracking_info_[a.first] = get_addon_tracking_info(a.second);
+
+		if(tracking_info_[a.first].state == ADDON_INSTALLED_UPGRADABLE) {
+			has_upgradable_addons = true;
+		}
 	}
+
+	find_widget<button>(&window, "update_all", false).set_active(has_upgradable_addons);
 }
 
 void addon_manager::options_button_callback(window& window)
@@ -503,6 +509,18 @@ void addon_manager::uninstall_addon(addon_info addon, window& window)
 		addons.select_addon(addon.id);
 		on_addon_select(window);
 	}
+}
+
+void addon_manager::update_all_addons(window& window)
+{
+	for(const auto& a : addons_) {
+		if(tracking_info_[a.first].state == ADDON_INSTALLED_UPGRADABLE) {
+			// TODO: handle result of this
+			client_.install_addon_with_checks(addons_, a.second);
+		}
+	}
+
+	load_addon_list(window);
 }
 
 /** Performs all backend and UI actions for publishing the specified add-on. */
