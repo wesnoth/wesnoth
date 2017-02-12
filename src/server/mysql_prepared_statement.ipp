@@ -19,7 +19,6 @@
 #include <utility>
 #include <string>
 #include <string.h>
-#include <iostream>
 
 #include <mysql/mysql.h>
 
@@ -119,7 +118,6 @@ template<> std::string fetch_result<std::string>(MYSQL_STMT* stmt, const std::st
 		throw sql_error(mysql_stmt_error(stmt), sql);
 	mysql_stmt_free_result(stmt);
 	mysql_stmt_close(stmt);
-	std::cout << "Result: " << result << std::endl;
 	return result;
 }
 
@@ -141,7 +139,6 @@ template<> int fetch_result<int>(MYSQL_STMT* stmt, const std::string& sql)
 		throw sql_error(mysql_stmt_error(stmt), sql);
 	mysql_stmt_free_result(stmt);
 	mysql_stmt_close(stmt);
-	std::cout << "Result: " << result << std::endl;
 	return result;
 }
 
@@ -163,7 +160,6 @@ template<> bool fetch_result<bool>(MYSQL_STMT* stmt, const std::string& sql)
 		throw sql_error(mysql_stmt_error(stmt), sql);
 	mysql_stmt_free_result(stmt);
 	mysql_stmt_close(stmt);
-	std::cout << "Result: " << result << std::endl;
 	return true;
 }
 
@@ -198,8 +194,6 @@ R prepared_statement(MYSQL* conn, const std::string& sql, Args&&... args)
 
 	if(mysql_stmt_execute(stmt) != 0)
 		throw sql_error(mysql_stmt_error(stmt), sql);
-
-	std::cout << "SQL: " << sql << std::endl;
 
 	return fetch_result<R>(stmt, sql);
 }
