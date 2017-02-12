@@ -296,20 +296,20 @@ private:
 class adjust_channels_modification : public modification
 {
 public:
-	adjust_channels_modification(const std::string& formula)
-		: formulas_(formula)
+	adjust_channels_modification(const std::vector<std::string>& formulas)
+		: formulas_(formulas)
 	{
 		if(formulas_.size() == 0) {
-			formulas.push_back("red");
+			formulas_.push_back("red");
 		}
 		if(formulas_.size() == 1) {
-			formulas.push_back("green");
+			formulas_.push_back("green");
 		}
 		if(formulas_.size() == 2) {
-			formulas.push_back("blue");
+			formulas_.push_back("blue");
 		}
 		if(formulas_.size() == 3) {
-			formulas.push_back("alpha");
+			formulas_.push_back("alpha");
 		}
 	}
 
