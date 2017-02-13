@@ -27,10 +27,10 @@ namespace dialogs
 class campaign_selection : public modal_dialog
 {
 public:
-	explicit campaign_selection(ng::create_engine& eng) :
-		engine_(eng),
-		choice_(-1),
-		deterministic_(false)
+	explicit campaign_selection(ng::create_engine& eng)
+		: engine_(eng)
+		, choice_(-1)
+		, deterministic_(false)
 	{
 		set_restore(true);
 	}
@@ -62,8 +62,7 @@ private:
 	/** Inherited from modal_dialog. */
 	void post_show(window& window);
 
-
-	void mod_toggled(int id, widget &);
+	void mod_toggled(int id /*, widget&*/);
 
 	ng::create_engine& engine_;
 

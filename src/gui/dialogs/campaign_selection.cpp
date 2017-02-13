@@ -16,6 +16,7 @@
 
 #include "gui/dialogs/campaign_selection.hpp"
 
+#include "config_assign.hpp"
 #include "game_preferences.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/helper.hpp"
@@ -27,6 +28,7 @@
 #else
 #include "gui/widgets/listbox.hpp"
 #endif
+#include "gui/widgets/menu_button.hpp"
 #include "gui/widgets/multi_page.hpp"
 #include "gui/widgets/scroll_label.hpp"
 #include "gui/widgets/settings.hpp"
@@ -39,6 +41,8 @@
 
 #include "utils/functional.hpp"
 #include "video.hpp"
+
+#include <boost/dynamic_bitset.hpp>
 
 namespace gui2
 {
@@ -160,38 +164,26 @@ void campaign_selection::pre_show(window& window)
 		pages.add_page(data);
 	}
 
+	//
+	// Set up Mods selection dropdown
+	//
+	menu_button& mods_menu = find_widget<menu_button>(&window, "mods_menu", false);
+
 	if(!engine_.get_const_extras_by_type(ng::create_engine::MOD).empty()) {
-		std::map<std::string, string_map> data;
-		string_map item;
-
-		item["label"] = "Modifications";
-		data.emplace("tree_view_node_label", item);
-
-		tree_view_node& mods_node = tree.add_node("campaign_group", data);
+		
+		std::vector<config> mod_menu_values;
 		std::vector<std::string> enabled = engine_.active_mods();
 
-		id = 0;
 		for(const auto& mod : engine_.get_const_extras_by_type(ng::create_engine::MOD)) {
-			data.clear();
-			item.clear();
+			const bool active = std::find(enabled.begin(), enabled.end(), mod->id) != enabled.end();
 
-			bool active = std::find(enabled.begin(), enabled.end(), mod->id) != enabled.end();
-
-			/*** Add tree item ***/
-			item["label"] = mod->name;
-			data.emplace("checkb", item);
-
-			tree_view_node& node = mods_node.add_child("modification", data);
-
-			toggle_button* checkbox = dynamic_cast<toggle_button*>(node.find("checkb", true));
-			VALIDATE(checkbox, missing_widget("checkb"));
-
-			checkbox->set_value(active);
-			checkbox->set_label(mod->name);
-			checkbox->set_callback_state_change(std::bind(&campaign_selection::mod_toggled, this, id, _1));
-
-			++id;
+			mod_menu_values.push_back(config_of("label", mod->name)("checkbox", active));
 		}
+
+		mods_menu.set_values(mod_menu_values);
+	} else {
+		mods_menu.set_active(false);
+		mods_menu.set_label(_("None"));
 	}
 
 	campaign_selected(window);
@@ -220,10 +212,24 @@ void campaign_selection::post_show(window& window)
 
 	deterministic_ = find_widget<toggle_button>(&window, "checkbox_deterministic", false).get_value_bool();
 
+	/* NOTE: it might be worth adding an ability to specify callback functions for drop down menu
+	 *       checkboxes but for now this works. I'm leaving mod_toggled() as its own function for now in
+	 *       case I want to implement such a thing later.
+	 *
+	 *       Also, this needs to be done before calling preferences::set_modifications.
+	 *       - vultraz 2/14/2017
+	 */
+	boost::dynamic_bitset<> toggled_mods = find_widget<menu_button>(&window, "mods_menu", false).get_toggle_states();
+	for(unsigned i = 0; i < toggled_mods.size(); i++) {
+		if(toggled_mods[i]) {
+			mod_toggled(i);
+		}
+	}
+
 	preferences::set_modifications(engine_.active_mods(), false);
 }
 
-void campaign_selection::mod_toggled(int id, widget &)
+void campaign_selection::mod_toggled(int id /*, widget &*/)
 {
 	engine_.set_current_mod_index(id);
 	engine_.toggle_current_mod();
