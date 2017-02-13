@@ -46,6 +46,7 @@ menu_button::menu_button()
 	, retval_(0)
 	, values_()
 	, selected_()
+	, toggle_states_()
 {
 	values_.push_back(config_of("label", this->get_label()));
 
@@ -172,6 +173,25 @@ void menu_button::signal_handler_left_button_click(const event::ui_event event,
 		}
 	}
 
+	// Toggle states are recorded regardless of dismissal type
+	toggle_states_ = droplist.get_toggle_states();
+
+	/* In order to allow toggle button states to be specified by verious dialogs in the values config, we write the state
+	 * bools to the values_ config here, but only if a checkbox= key was already provided. The value of the checkbox= key
+	 * is handled by the drop_down_menu widget.
+	 *
+	 * Passing the dynamic_bitset directly to the drop_down_menu ctor would mean bool values would need to be passed to this
+	 * class independently of the values config by dialogs that use this widget. However, the bool states are also saved
+	 * in a dynamic_bitset class member which can be fetched for other uses if necessary.
+	 */ 
+	for(unsigned i = 0; i < values_.size(); i++) {
+		::config& c = values_[i];
+
+		if(c.has_attribute("checkbox")) {
+			c["checkbox"] = toggle_states_[i];
+		}
+	}
+
 	handled = true;
 }
 
@@ -184,6 +204,7 @@ void menu_button::set_values(const std::vector<::config>& values, int selected)
 	}
 	values_ = values;
 	selected_ = selected;
+	toggle_states_.resize(values_.size(), false);
 	set_label(values_[selected_]["label"]);
 }
 void menu_button::set_selected(int selected)

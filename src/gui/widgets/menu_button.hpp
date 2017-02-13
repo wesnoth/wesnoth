@@ -20,6 +20,8 @@
 #include "gui/widgets/styled_widget.hpp"
 #include "gui/widgets/selectable_item.hpp"
 
+#include <boost/dynamic_bitset.hpp>
+
 class config;
 
 namespace gui2
@@ -88,6 +90,8 @@ public:
 	/** Returns the value of the selected row */
 	std::string get_value_string() const { return values_[selected_]["label"]; }
 
+	boost::dynamic_bitset<> get_toggle_states() const { return toggle_states_; }
+
 private:
 	/**
 	 * Possible states of the widget.
@@ -124,6 +128,8 @@ private:
 	/**
 	 */
 	int selected_;
+
+	boost::dynamic_bitset<> toggle_states_;
 
 	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;

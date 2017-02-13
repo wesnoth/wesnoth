@@ -81,7 +81,6 @@ public:
 		return icon_name_;
 	}
 
-private:
 	/**
 	 * Possible states of the widget.
 	 *
@@ -96,6 +95,8 @@ private:
 		FOCUSED,
 		COUNT
 	};
+
+private:
 
 	void set_state(const state_t state);
 

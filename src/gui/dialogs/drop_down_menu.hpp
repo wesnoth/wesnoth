@@ -17,6 +17,8 @@
 #include "gui/dialogs/modal_dialog.hpp"
 #include "sdl/rect.hpp"
 
+#include <boost/dynamic_bitset.hpp>
+
 class config;
 
 namespace gui2
@@ -28,22 +30,43 @@ class drop_down_menu : public modal_dialog
 {
 public:
 	drop_down_menu(SDL_Rect button_pos, const std::vector<config>& items, int selected_item, bool use_markup)
-		: button_pos_(button_pos)
-		, items_(items)
+		: items_(items)
+		, toggle_states_()
+		, button_pos_(button_pos)
 		, selected_item_(selected_item)
 		, use_markup_(use_markup)
 	{
 		set_restore(true);
 	}
-	int selected_item() const { return selected_item_; }
+
+	int selected_item() const
+	{
+		return selected_item_;
+	}
+
+	boost::dynamic_bitset<> get_toggle_states() const
+	{
+		return toggle_states_;
+	}
+
 private:
-	/// The screen location of the menu_button button that triggred this droplist.
-	/// Note: we don't adjust the location of this dialog to when resizing the window.
-	/// Instead this dialog automatically closes itself on resizing.
-	SDL_Rect button_pos_;
+	/** Configuration of rach row. */
 	std::vector<config> items_;
+
+	/** If a toggle button widget is present, returns the toggled state of each row's button. */
+	boost::dynamic_bitset<> toggle_states_;
+
+	/**
+	 * The screen location of the menu_button button that triggered this droplist.
+	 * Note: we don't adjust the location of this dialog to when resizing the window.
+	 * Instead this dialog automatically closes itself on resizing.
+	 */
+	SDL_Rect button_pos_;
+
 	int selected_item_;
+
 	bool use_markup_;
+
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
