@@ -63,6 +63,7 @@ private:
 	addons_tracking_list tracking_info_;
 
 	std::vector<std::pair<ADDON_STATUS_FILTER, std::string>> status_filter_types_;
+	std::vector<std::pair<ADDON_TYPE, std::string>> type_filter_types_;
 
 	void install_selected_addon(window& window);
 	void install_addon(addon_info addon, window& window);

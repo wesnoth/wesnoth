@@ -224,6 +224,23 @@ addon_manager::addon_manager(addons_client& client)
 		{FILTER_UPGRADABLE,    _("addons_view^Upgradable")},
 		{FILTER_NOT_INSTALLED, _("addons_view^Not Installed")},
 	};
+
+	type_filter_types_ = {
+		{ADDON_SP_CAMPAIGN,    _("addons_of_type^Campaigns")},
+		{ADDON_SP_SCENARIO,    _("addons_of_type^Scenarios")},
+		{ADDON_SP_MP_CAMPAIGN, _("addons_of_type^SP/MP campaigns")},
+		{ADDON_MP_CAMPAIGN,    _("addons_of_type^MP campaigns")},
+		{ADDON_MP_SCENARIO,    _("addons_of_type^MP scenarios")},
+		{ADDON_MP_MAPS,        _("addons_of_type^MP map-packs")},
+		{ADDON_MP_ERA,         _("addons_of_type^MP eras")},
+		{ADDON_MP_FACTION,     _("addons_of_type^MP factions")},
+		{ADDON_MP_MOD,         _("addons_of_type^MP modifications")},
+		{ADDON_CORE,           _("addons_of_type^Cores")},
+		{ADDON_MEDIA,          _("addons_of_type^Resources")},
+		// FIXME: (also in WML) should this and Unknown be a single option in the UI?
+		{ADDON_OTHER,          _("addons_of_type^Other")},
+		{ADDON_UNKNOWN,        _("addons_of_type^Unknown")},
+	};
 }
 
 void addon_manager::on_filtertext_changed(text_box_base* textbox, const std::string& text)
@@ -335,6 +352,15 @@ void addon_manager::pre_show(window& window)
 	// TODO: initial selection based on preferences
 	status_filter.set_values(status_filter_entries);
 	status_filter.connect_click_handler(std::bind(&addon_manager::status_filter_callback, this, std::ref(window)));
+
+	menu_button& type_filter = find_widget<menu_button>(&window, "type_filter", false);
+
+	std::vector<config> type_filter_entries;
+	for(const auto& f : type_filter_types_) {
+		type_filter_entries.push_back(config_of("label", f.second)("checkbox", false));
+	}
+
+	type_filter.set_values(type_filter_entries);
 
 	button& url_go_button = find_widget<button>(&window, "url_go", false);
 	button& url_copy_button = find_widget<button>(&window, "url_copy", false);
