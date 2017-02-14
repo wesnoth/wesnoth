@@ -116,149 +116,132 @@ void addon_list::set_addons(const addons_list& addons)
 
 		addon_vector_.push_back(&addon);
 
-		// Note addons that can be deleted
-		if(tracking_info.can_publish) {
-			can_delete_ids_.push_back(addon.id);
-		}
-
 		std::map<std::string, string_map> data;
 		string_map item;
 
 		item["use_markup"] = "true";
 
-		item["label"] = addon.display_icon();
-		data.emplace("icon", item);
+		if(!tracking_info.can_publish) {
+			item["label"] = addon.display_icon();
+			data.emplace("icon", item);
 
-		item["label"] = addon.display_title();
-		data.emplace("name", item);
+			item["label"] = addon.display_title();
+			data.emplace("name", item);
 
-		item["label"] = describe_status(tracking_info);
-		data.emplace("installation_status", item);
+			item["label"] = describe_status(tracking_info);
+			data.emplace("installation_status", item);
 
-		item["label"] = addon.version.str();
-		data.emplace("version", item);
+			item["label"] = addon.version.str();
+			data.emplace("version", item);
 
-		item["label"] = addon.author;
-		data.emplace("author", item);
+			item["label"] = addon.author;
+			data.emplace("author", item);
 
-		item["label"] = size_display_string(addon.size);
-		data.emplace("size", item);
+			item["label"] = size_display_string(addon.size);
+			data.emplace("size", item);
 
-		item["label"] = std::to_string(addon.downloads);
-		data.emplace("downloads", item);
+			item["label"] = std::to_string(addon.downloads);
+			data.emplace("downloads", item);
 
-		item["label"] = addon.display_type();
-		data.emplace("type", item);
+			item["label"] = addon.display_type();
+			data.emplace("type", item);
+		} else {
+			item["label"] = "icons/icon-game.png~BLIT(icons/icon-addon-publish.png)";
+			data.emplace("icon", item);
+
+			const std::string publish_name = formatter()
+				<< "<span color='#00ff00'>" // GOOD_COLOR
+				<< vgettext("Publish: $addon_title", { { "addon_title", addon.display_title() } })
+				<< "</span>";
+
+			item["label"] = publish_name;
+			data.emplace("name", item);
+		}
 
 		grid* row_grid = &list.add_row(data);
 
 		stacked_widget& install_update_stack = find_widget<stacked_widget>(row_grid, "install_update_stack", false);
 
-		const bool is_updatable = tracking_info.state == ADDON_INSTALLED_UPGRADABLE;
-		const bool is_installed = tracking_info.state == ADDON_INSTALLED;
+		if(!tracking_info.can_publish) {
+			const bool is_updatable = tracking_info.state == ADDON_INSTALLED_UPGRADABLE;
+			const bool is_installed = tracking_info.state == ADDON_INSTALLED;
 
-		install_update_stack.select_layer(static_cast<int>(is_updatable));
+			install_update_stack.select_layer(static_cast<int>(is_updatable));
 
-		if(!is_updatable) {
-			find_widget<button>(row_grid, "single_install", false).set_active(!is_installed);
-			if(install_function_ != nullptr) {
+			if(!is_updatable) {
+				find_widget<button>(row_grid, "single_install", false).set_active(!is_installed);
+				if(install_function_ != nullptr) {
+					gui2::event::connect_signal_mouse_left_click(
+						find_widget<button>(row_grid, "single_install", false),
+						[this, addon](gui2::event::dispatcher&, const gui2::event::ui_event, bool& handled, bool& halt)
+					{
+						install_function_(addon);
+						handled = true;
+						halt = true;
+					});
+				}
+			}
+
+			if(is_installed) {
+				if(uninstall_function_ != nullptr) {
+					gui2::event::connect_signal_mouse_left_click(
+						find_widget<button>(row_grid, "single_uninstall", false),
+						[this, addon](gui2::event::dispatcher&, const gui2::event::ui_event, bool& handled, bool& halt)
+					{
+						uninstall_function_(addon);
+						handled = true;
+						halt = true;
+					});
+				}
+			}
+
+			find_widget<button>(row_grid, "single_uninstall", false).set_active(is_installed);
+
+			find_widget<grid>(row_grid, "single_install_buttons", false).set_visible(install_buttons_visibility_);
+			find_widget<label>(row_grid, "installation_status", false).set_visible(install_status_visibility_);
+		} else {
+			const bool is_updatable = tracking_info.state == ADDON_INSTALLED_OUTDATED;
+
+			find_widget<button>(row_grid, "single_install", false).set_active(true);
+			find_widget<button>(row_grid, "single_update", false).set_active(true);
+			find_widget<button>(row_grid, "single_uninstall", false).set_active(tracking_info.state == ADDON_INSTALLED);
+
+			install_update_stack.select_layer(static_cast<int>(is_updatable));
+
+			if(true) {
 				gui2::event::connect_signal_mouse_left_click(
 					find_widget<button>(row_grid, "single_install", false),
 					[this, addon](gui2::event::dispatcher&, const gui2::event::ui_event, bool& handled, bool& halt)
 				{
-					install_function_(addon);
+					publish_function_(addon.id);
 					handled = true;
 					halt = true;
 				});
 			}
-		}
 
-		if(is_installed) {
-			if(uninstall_function_ != nullptr) {
+			if(is_updatable) {
+				gui2::event::connect_signal_mouse_left_click(
+					find_widget<button>(row_grid, "single_update", false),
+					[this, addon](gui2::event::dispatcher&, const gui2::event::ui_event, bool& handled, bool& halt)
+				{
+					publish_function_(addon.id);
+					handled = true;
+					halt = true;
+				});
+			}
+
+			if(tracking_info.state == ADDON_INSTALLED) {
 				gui2::event::connect_signal_mouse_left_click(
 					find_widget<button>(row_grid, "single_uninstall", false),
 					[this, addon](gui2::event::dispatcher&, const gui2::event::ui_event, bool& handled, bool& halt)
 				{
-					uninstall_function_(addon);
+					delete_function_(addon.id);
 					handled = true;
 					halt = true;
 				});
 			}
 		}
-
-		find_widget<button>(row_grid, "single_uninstall", false).set_active(is_installed);
-
-		find_widget<grid>(row_grid, "single_install_buttons", false).set_visible(install_buttons_visibility_);
-		find_widget<label>(row_grid, "installation_status", false).set_visible(install_status_visibility_);
 	}
-
-	const auto add_addon_author_rows = [&](const std::vector<std::string>& vec, const bool publish)
-	{
-		for(const std::string& id : vec) {
-			std::map<std::string, string_map> data;
-			string_map item;
-
-			item["use_markup"] = "true";
-
-			item["label"] = publish
-				? "icons/icon-game.png~BLIT(icons/icon-addon-publish.png)"
-				: "icons/icon-game.png~BLIT(icons/icon-addon-delete.png)";
-			data.emplace("icon", item);
-
-			const std::string publish_name = publish
-				? (formatter()
-					<< "<span color='#00ff00'>" // GOOD_COLOR
-					<< vgettext("Publish: $addon_title", {{"addon_title", make_addon_title(id)}})
-					<< "</span>").
-					str()
-				: (formatter()
-					<< "<span color='#ff0000'>" // BAD_COLOR
-					<< vgettext("Delete: $addon_title", {{"addon_title", make_addon_title(id)}})
-					<< "</span>").
-					str();
-
-			item["label"] = publish_name;
-			data.emplace("name", item);
-
-			grid* row_grid = &list.add_row(data);
-
-			find_widget<button>(row_grid, "single_install", false).set_active(publish);
-			find_widget<button>(row_grid, "single_update", false).set_active(publish);
-			find_widget<button>(row_grid, "single_uninstall", false).set_active(!publish);
-
-			find_widget<stacked_widget>(row_grid, "install_update_stack", false).select_layer(1);
-
-			if(publish) {
-				gui2::event::connect_signal_mouse_left_click(
-					find_widget<button>(row_grid, "single_update", false),
-					[this, id](gui2::event::dispatcher&, const gui2::event::ui_event, bool& handled, bool& halt)
-				{
-					publish_function_(id);
-					handled = true;
-					halt = true;
-				});
-			} else {
-				gui2::event::connect_signal_mouse_left_click(
-					find_widget<button>(row_grid, "single_uninstall", false),
-					[this, id](gui2::event::dispatcher&, const gui2::event::ui_event, bool& handled, bool& halt)
-				{
-					delete_function_(id);
-					handled = true;
-					halt = true;
-				});
-			}
-		}
-	};
-
-	//
-	// Addons that can be published
-	//
-	add_addon_author_rows(can_publish_ids_, true);
-
-	//
-	// Addons that can be deleted
-	//
-	add_addon_author_rows(can_delete_ids_, false);
 }
 
 const addon_info* addon_list::get_selected_addon() const
@@ -275,18 +258,12 @@ const addon_info* addon_list::get_selected_addon() const
 
 std::string addon_list::get_remote_addon_id()
 {
-	const listbox& list = find_widget<const listbox>(&get_grid(), "addons", false);
-
-	const int index = list.get_selected_row();
-	if(index >= int(addon_vector_.size() + can_publish_ids_.size())) {
-		// Remote deletion.
-		return can_delete_ids_[index - int(addon_vector_.size() + can_publish_ids_.size())];
-	} else if(index >= int(addon_vector_.size())) {
-		// Remote publishing.
-		return can_publish_ids_[index - int(addon_vector_.size())];
+	const addon_info* addon = get_selected_addon();
+	if(addon == nullptr || !get_addon_tracking_info(*addon).can_publish) {
+		return "";
+	} else {
+		return addon->id;
 	}
-
-	return "";
 }
 
 void addon_list::select_addon(const std::string& id)

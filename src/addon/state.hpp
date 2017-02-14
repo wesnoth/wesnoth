@@ -28,6 +28,8 @@ enum ADDON_STATUS {
 	ADDON_INSTALLED_UPGRADABLE,
 	/** Version in the server is older than local installation. */
 	ADDON_INSTALLED_OUTDATED,
+	/** No version in the server. */
+	ADDON_INSTALLED_LOCAL_ONLY,
 	/** Dependencies not satisfied.
 	 *  @todo This option isn't currently implemented! */
 	ADDON_INSTALLED_BROKEN,

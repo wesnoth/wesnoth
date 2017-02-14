@@ -50,6 +50,9 @@ addon_tracking_info get_addon_tracking_info(const addon_info& addon)
 			t.state = ADDON_INSTALLED;
 		} else if(t.remote_version > t.installed_version) {
 			t.state = ADDON_INSTALLED_UPGRADABLE;
+		} else if(t.remote_version == version_info()) {
+			// Remote version not set.
+			t.state = ADDON_INSTALLED_LOCAL_ONLY;
 		} else /* if(remote_version < t.installed_version) */ {
 			t.state = ADDON_INSTALLED_OUTDATED;
 		}

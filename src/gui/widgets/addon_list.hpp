@@ -48,8 +48,6 @@ public:
 		, uninstall_function_()
 		, publish_function_()
 		, delete_function_()
-		, can_publish_ids_(available_addons())
-		, can_delete_ids_()
 	{}
 
 	/** Sets the add-ons to show. */
@@ -147,18 +145,6 @@ private:
 
 	std::function<void(const std::string&)> publish_function_;
 	std::function<void(const std::string&)> delete_function_;
-
-	/**
-	 * Add-ons available for publishing in the remote
-	 * (i.e. we have .pbl files for them).
-	 */
-	const std::vector<std::string> can_publish_ids_;
-
-	/**
-	 * Add-ons available for deleting in the remote
-	 *(i.e. already published, and we have .pbl files for them).
-	 */
-	std::vector<std::string> can_delete_ids_;
 
 	static std::string describe_status(const addon_tracking_info& info);
 

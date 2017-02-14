@@ -425,8 +425,20 @@ void addon_manager::load_addon_list(window& window)
 
 	read_addons_list(cfg_, addons_);
 
+	addons_including_publishable_ = addons_;
+	std::vector<std::string> publishable_addons = available_addons();
+
+	for(std::string id : publishable_addons) {
+		if(addons_including_publishable_.find(id) == addons_including_publishable_.end()) {
+			// Add the add-on to the list.
+			addon_info addon;
+			addon.id = id;
+			addons_including_publishable_[id] = addon;
+		}
+	}
+
 	addon_list& list = find_widget<addon_list>(&window, "addons", false);
-	list.set_addons(addons_);
+	list.set_addons(addons_including_publishable_);
 
 	bool has_upgradable_addons = false;
 	for(const auto& a : addons_) {
