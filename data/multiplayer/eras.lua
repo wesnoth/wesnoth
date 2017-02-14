@@ -45,11 +45,9 @@ res.turns_over_advantage = function()
 	local side_num = -1
 	local total_score = -1
 	local side_comparison = ""
+	local color = nil
 	for side, team in all_sides() do
-		repeat -- ugly hack to convert 'break' into 'continue'
-			if team.__cfg.hidden then
-				break
-			end
+		if not team.__cfg.hidden then
 			local r, g, b = 255, 255, 255
 			if     team.__cfg.color == 1 then r, g, b = 255,   0,   0
 			elseif team.__cfg.color == 2 then r, g, b =   0,   0, 255
@@ -61,34 +59,32 @@ res.turns_over_advantage = function()
 			elseif team.__cfg.color == 8 then r, g, b = 255, 255, 255
 			elseif team.__cfg.color == 9 then r, g, b =   0, 128, 128 end
 			if # wesnoth.get_units( { side = side } ) == 0 then
-				side_comparison = side_comparison ..
-				string.format( tostring( _ "<span strikethrough='true' foreground='#%02x%02x%02x'>Side %d</span>") .. "\n",
+				side_comparison = side_comparison .. string.format( tostring( _ "<span strikethrough='true' foreground='#%02x%02x%02x'>Side %d</span>") .. "\n",
 				r, g, b, side)
-				break
-			end
-			local income = team.total_income * income_factor
-			local units = 0
-			-- Calc the total unit-score here
-			for i, unit in ipairs( wesnoth.get_units { side = side } ) do
-				if not unit.__cfg.canrecruit then
-					wesnoth.fire("unit_worth", { id = unit.id })
-					units = units + wesnoth.get_variable("unit_worth")
+			else
+				local income = team.total_income * income_factor
+				local units = 0
+				-- Calc the total unit-score here
+				for i, unit in ipairs( wesnoth.get_units { side = side } ) do
+					if not unit.__cfg.canrecruit then
+						wesnoth.fire("unit_worth", { id = unit.id })
+						units = units + wesnoth.get_variable("unit_worth")
+					end
+				end
+				-- Up to here
+				local total = units + team.gold + income
+				side_comparison = side_comparison .. string.format( tostring( _ "<span foreground='#%02x%02x%02x'>Side %d</span>:  Income score = %d  Unit score = %d  Gold = %d") .. "\n" .. tostring( _ "Grand total: <b>%d</b>") .. "\n",
+				r, g, b, side, income, units, team.gold, total)
+				if total > total_score then
+					color = string.format("#%02x%02x%02x", r, g, b)
+					side_num = side
+					total_score = total
 				end
 			end
-			-- Up to here
-			local total = units + team.gold + income
-			side_comparison = side_comparison ..
-			string.format( tostring( _ "<span foreground='#%02x%02x%02x'>Side %d</span>:  Income score = %d  Unit score = %d  Gold = %d") .. "\n" .. tostring( _ "Grand total: <b>%d</b>") .. "\n",
-			r, g, b, side, income, units, team.gold, total)
-			if total > total_score then
-				color = string.format("#%02x%02x%02x", r, g, b)
-				side_num = side
-				total_score = total
-			end
-		until true -- end ugly hack
+		end
 	end
-	side_comparison = side_comparison ..
-	string.format( "\n" .. tostring( _ "<span foreground='%s'>Side %d</span> has the advantage."), color, side_num)
+
+	side_comparison = side_comparison .. string.format( "\n" .. tostring( _ "<span foreground='%s'>Side %d</span> has the advantage."), color, side_num)
 	wesnoth.fire("message", { message = side_comparison, speaker = "narrator", image = "wesnoth-icon.png"})
 end
 return res
