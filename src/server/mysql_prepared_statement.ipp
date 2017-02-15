@@ -17,6 +17,7 @@
 
 #include <array>
 #include <utility>
+#include <memory>
 #include <string>
 #include <string.h>
 
@@ -117,7 +118,6 @@ template<> std::string fetch_result<std::string>(MYSQL_STMT* stmt, const std::st
 	if(res != 0)
 		throw sql_error(mysql_stmt_error(stmt), sql);
 	mysql_stmt_free_result(stmt);
-	mysql_stmt_close(stmt);
 	return result;
 }
 
@@ -138,7 +138,6 @@ template<> int fetch_result<int>(MYSQL_STMT* stmt, const std::string& sql)
 	if(res != 0)
 		throw sql_error(mysql_stmt_error(stmt), sql);
 	mysql_stmt_free_result(stmt);
-	mysql_stmt_close(stmt);
 	return result;
 }
 
@@ -159,7 +158,6 @@ template<> bool fetch_result<bool>(MYSQL_STMT* stmt, const std::string& sql)
 	if(res != 0)
 		throw sql_error(mysql_stmt_error(stmt), sql);
 	mysql_stmt_free_result(stmt);
-	mysql_stmt_close(stmt);
 	return true;
 }
 
@@ -179,23 +177,22 @@ template<> void fetch_result<void>(MYSQL_STMT*, const std::string&)
 template<typename R, typename... Args>
 R prepared_statement(MYSQL* conn, const std::string& sql, Args&&... args)
 {
-	MYSQL_STMT* stmt;
 	auto arg_binds = make_binds(args...);
 
-	stmt = mysql_stmt_init(conn);
+	std::unique_ptr<MYSQL_STMT, decltype(&mysql_stmt_close)> stmt{mysql_stmt_init(conn), mysql_stmt_close};
 	if(stmt == NULL)
 		throw sql_error("mysql_stmt_init failed", sql);
 
-	if(mysql_stmt_prepare(stmt, sql.c_str(), sql.size()) != 0)
-		throw sql_error(mysql_stmt_error(stmt), sql);
+	if(mysql_stmt_prepare(stmt.get(), sql.c_str(), sql.size()) != 0)
+		throw sql_error(mysql_stmt_error(stmt.get()), sql);
 
-	if(mysql_stmt_bind_param(stmt, arg_binds.data()) != 0)
-		throw sql_error(mysql_stmt_error(stmt), sql);
+	if(mysql_stmt_bind_param(stmt.get(), arg_binds.data()) != 0)
+		throw sql_error(mysql_stmt_error(stmt.get()), sql);
 
-	if(mysql_stmt_execute(stmt) != 0)
-		throw sql_error(mysql_stmt_error(stmt), sql);
+	if(mysql_stmt_execute(stmt.get()) != 0)
+		throw sql_error(mysql_stmt_error(stmt.get()), sql);
 
-	return fetch_result<R>(stmt, sql);
+	return fetch_result<R>(stmt.get(), sql);
 }
 
 #endif // MYSQL_PREPARED_STATEMENT_IPP
