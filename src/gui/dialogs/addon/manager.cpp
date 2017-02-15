@@ -566,8 +566,7 @@ void addon_manager::do_remote_addon_publish(const std::string& addon_id, window&
 {
 	std::string server_msg;
 
-	config cfg;
-	get_addon_pbl_info(addon_id, cfg);
+	config cfg = get_addon_pbl_info(addon_id);
 
 	const version_info& version_to_publish = cfg["version"].str();
 

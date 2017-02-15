@@ -33,8 +33,7 @@ addon_tracking_info get_addon_tracking_info(const addon_info& addon)
 	if(is_addon_installed(id)) {
 		if(t.can_publish) {
 			// Try to obtain the version number from the .pbl first.
-			config pbl;
-			get_addon_pbl_info(id, pbl);
+			config pbl = get_addon_pbl_info(id);
 
 			if(pbl.has_attribute("version")) {
 				t.installed_version = pbl["version"].str();

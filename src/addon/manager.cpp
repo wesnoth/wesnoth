@@ -79,8 +79,9 @@ bool have_addon_pbl_info(const std::string& addon_name)
 	return filesystem::file_exists(get_pbl_file_path(addon_name));
 }
 
-void get_addon_pbl_info(const std::string& addon_name, config& cfg)
+config get_addon_pbl_info(const std::string& addon_name)
 {
+	config cfg;
 	const std::string& pbl_path = get_pbl_file_path(addon_name);
 	try {
 		filesystem::scoped_istream stream = filesystem::istream_file(pbl_path);
@@ -88,6 +89,8 @@ void get_addon_pbl_info(const std::string& addon_name, config& cfg)
 	} catch(const config::error& e) {
 		throw invalid_pbl_exception(pbl_path, e.message);
 	}
+
+	return cfg;
 }
 
 void set_addon_pbl_info(const std::string& addon_name, const config& cfg)
