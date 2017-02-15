@@ -59,7 +59,6 @@ private:
 	addons_client& client_;
 
 	addons_list addons_;
-	addons_list addons_including_publishable_;
 
 	addons_tracking_list tracking_info_;
 

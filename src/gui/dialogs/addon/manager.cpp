@@ -303,6 +303,11 @@ static std::string describe_status_verbose(const addon_tracking_info& state)
 
 			s = utils::interpolate_variables_into_string(vstr, &i18n_symbols);
 		} break;
+		case ADDON_INSTALLED_LOCAL_ONLY:
+			s = !state.can_publish
+				? _("addon_state^Installed, not ready to publish")
+				: _("addon_state^Ready to publish");
+			break;
 		case ADDON_INSTALLED_BROKEN:
 			s = !state.can_publish
 				? _("addon_state^Installed, broken")
@@ -425,20 +430,28 @@ void addon_manager::load_addon_list(window& window)
 
 	read_addons_list(cfg_, addons_);
 
-	addons_including_publishable_ = addons_;
 	std::vector<std::string> publishable_addons = available_addons();
 
 	for(std::string id : publishable_addons) {
-		if(addons_including_publishable_.find(id) == addons_including_publishable_.end()) {
+		if(addons_.find(id) == addons_.end()) {
+			// Get a config from the addon's pbl file
+			// Note that the name= key is necessary or stuff breaks, since the filter code uses this key
+			// to match add-ons in the config list. It also fills in addon_info's id field.
+			config pbl_cfg = get_addon_pbl_info(id);
+			pbl_cfg["name"] = id;
+
 			// Add the add-on to the list.
-			addon_info addon;
-			addon.id = id;
-			addons_including_publishable_[id] = addon;
+			addon_info addon(pbl_cfg);
+			addon.local_only = true;
+			addons_[id] = addon;
+
+			// Add the addon to the config entry
+			cfg_.add_child("campaign", pbl_cfg);
 		}
 	}
 
 	addon_list& list = find_widget<addon_list>(&window, "addons", false);
-	list.set_addons(addons_including_publishable_);
+	list.set_addons(addons_);
 
 	bool has_upgradable_addons = false;
 	for(const auto& a : addons_) {

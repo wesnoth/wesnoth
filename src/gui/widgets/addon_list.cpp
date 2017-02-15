@@ -47,6 +47,7 @@ std::string addon_list::colorify_addon_state_string(const std::string& str, ADDO
 		colorname = "#a69275";
 		break;
 	case ADDON_INSTALLED:
+	case ADDON_INSTALLED_LOCAL_ONLY:
 	case ADDON_NOT_TRACKED:
 		colorname = "#00ff00"; // GOOD_COLOR
 		break;
@@ -82,6 +83,9 @@ std::string addon_list::describe_status(const addon_tracking_info& info)
 		// for the main display. Their Description info should elaborate
 		// on their status.
 		tx = info.can_publish ? _("addon_state^Published") : _("addon_state^Installed");
+		break;
+	case ADDON_INSTALLED_LOCAL_ONLY:
+		tx = info.can_publish ? _("addon_state^Ready to publish") : _("addon_state^Installed, not ready to publish");
 		break;
 
 	case ADDON_INSTALLED_UPGRADABLE:
@@ -127,36 +131,36 @@ void addon_list::set_addons(const addons_list& addons)
 
 			item["label"] = addon.display_title();
 			data.emplace("name", item);
-
-			item["label"] = describe_status(tracking_info);
-			data.emplace("installation_status", item);
-
-			item["label"] = addon.version.str();
-			data.emplace("version", item);
-
-			item["label"] = addon.author;
-			data.emplace("author", item);
-
-			item["label"] = size_display_string(addon.size);
-			data.emplace("size", item);
-
-			item["label"] = std::to_string(addon.downloads);
-			data.emplace("downloads", item);
-
-			item["label"] = addon.display_type();
-			data.emplace("type", item);
 		} else {
-			item["label"] = "icons/icon-game.png~BLIT(icons/icon-addon-publish.png)";
+			item["label"] = addon.display_icon() + "~BLIT(icons/icon-addon-publish.png)";
 			data.emplace("icon", item);
 
 			const std::string publish_name = formatter()
 				<< "<span color='#00ff00'>" // GOOD_COLOR
-				<< vgettext("Publish: $addon_title", { { "addon_title", addon.display_title() } })
+				<< addon.display_title()
 				<< "</span>";
 
 			item["label"] = publish_name;
 			data.emplace("name", item);
 		}
+
+		item["label"] = describe_status(tracking_info);
+		data.emplace("installation_status", item);
+
+		item["label"] = addon.version.str();
+		data.emplace("version", item);
+
+		item["label"] = addon.author;
+		data.emplace("author", item);
+
+		item["label"] = size_display_string(addon.size);
+		data.emplace("size", item);
+
+		item["label"] = std::to_string(addon.downloads);
+		data.emplace("downloads", item);
+
+		item["label"] = addon.display_type();
+		data.emplace("type", item);
 
 		grid* row_grid = &list.add_row(data);
 
