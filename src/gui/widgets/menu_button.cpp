@@ -47,6 +47,7 @@ menu_button::menu_button()
 	, values_()
 	, selected_()
 	, toggle_states_()
+	, keep_open_(false)
 {
 	values_.push_back(config_of("label", this->get_label()));
 
@@ -144,7 +145,7 @@ void menu_button::signal_handler_left_button_click(const event::ui_event event,
 	sound::play_UI_sound(settings::sound_button_click);
 
 	// If a button has a retval do the default handling.
-	dialogs::drop_down_menu droplist(this->get_rectangle(), this->values_, this->selected_, this->get_use_markup());
+	dialogs::drop_down_menu droplist(this->get_rectangle(), this->values_, this->selected_, this->get_use_markup(), this->keep_open_);
 
 	if(droplist.show(get_window()->video())) {
 		const int selected = droplist.selected_item();

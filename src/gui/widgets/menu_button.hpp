@@ -92,6 +92,11 @@ public:
 
 	boost::dynamic_bitset<> get_toggle_states() const { return toggle_states_; }
 
+	void set_keep_open(const bool keep_open)
+	{
+		keep_open_ = keep_open;
+	}
+
 private:
 	/**
 	 * Possible states of the widget.
@@ -130,6 +135,8 @@ private:
 	int selected_;
 
 	boost::dynamic_bitset<> toggle_states_;
+
+	bool keep_open_;
 
 	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;

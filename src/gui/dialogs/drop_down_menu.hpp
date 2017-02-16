@@ -29,12 +29,13 @@ namespace dialogs
 class drop_down_menu : public modal_dialog
 {
 public:
-	drop_down_menu(SDL_Rect button_pos, const std::vector<config>& items, int selected_item, bool use_markup)
+	drop_down_menu(SDL_Rect button_pos, const std::vector<config>& items, int selected_item, bool use_markup, bool keep_open)
 		: items_(items)
 		, toggle_states_()
 		, button_pos_(button_pos)
 		, selected_item_(selected_item)
 		, use_markup_(use_markup)
+		, keep_open_(keep_open)
 	{
 		set_restore(true);
 	}
@@ -66,6 +67,12 @@ private:
 	int selected_item_;
 
 	bool use_markup_;
+
+	/**
+	 * Whether to keep this dialog open after a click occurs not handled by special exceptions
+	 * such as scrollbars and toggle butons.
+	 */
+	bool keep_open_;
 
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;

@@ -410,7 +410,7 @@ int show_menu(lua_State* L, CVideo& video) {
 		markup = luaW_toboolean(L, 2);
 	}
 
-	gui2::dialogs::drop_down_menu menu(pos, items, initial, markup);
+	gui2::dialogs::drop_down_menu menu(pos, items, initial, markup, false);
 	menu.show(video);
 	lua_pushinteger(L, menu.selected_item() + 1);
 	return 1;
