@@ -1753,36 +1753,37 @@ std::string unit::describe_builtin_effect(std::string apply_to, const config& ef
 		}
 	} else {
 		const std::string &increase = effect["increase"];
-		if(!increase.empty()) {
-			if(apply_to == "movement") {
-				return vngettext(
-					"$number_or_percent move",
-					"$number_or_percent moves",
+		if(increase.empty()) {
+			return "";
+		}
+		if(apply_to == "movement") {
+			return vngettext(
+				"$number_or_percent move",
+				"$number_or_percent moves",
+				std::stoi(increase),
+				utils::string_map({{"number_or_percent", utils::print_modifier(increase)}}));
+		} else if(apply_to == "vision") {
+			return vgettext(
+				"$number_or_percent vision",
+				utils::string_map({{"number_or_percent", utils::print_modifier(increase)}}));
+		} else if(apply_to == "jamming") {
+			return vgettext(
+				"$number_or_percent jamming",
+				utils::string_map({{"number_or_percent", utils::print_modifier(increase)}}));
+		} else if(apply_to == "max_experience") {
+			return vgettext(
+				"$number_or_percent XP to advance",
+					utils::string_map({{"number_or_percent", utils::print_modifier(increase)}}));
+		} else if (apply_to == "max_attacks") {
+			return vngettext(
+					"$number_or_percent attack per turn",
+					"$number_or_percent attacks per turn",
 					std::stoi(increase),
 					utils::string_map({{"number_or_percent", utils::print_modifier(increase)}}));
-			} else if(apply_to == "vision") {
-				return vgettext(
-					"$number_or_percent vision",
-					utils::string_map({{"number_or_percent", utils::print_modifier(increase)}}));
-			} else if(apply_to == "jamming") {
-				return vgettext(
-					"$number_or_percent jamming",
-					utils::string_map({{"number_or_percent", utils::print_modifier(increase)}}));
-			} else if(apply_to == "max_experience") {
-				return vgettext(
-					"$number_or_percent XP to advance",
-						utils::string_map({{"number_or_percent", utils::print_modifier(increase)}}));
-			} else if (apply_to == "max_attacks") {
-				return vngettext(
-						"$number_or_percent attack per turn",
-						"$number_or_percent attacks per turn",
-						std::stoi(increase),
-						utils::string_map({{"number_or_percent", utils::print_modifier(increase)}}));
-			} else if (apply_to == "recall_cost") {
-				return vgettext(
-					"$number_or_percent cost to recall",
-					utils::string_map({{"number_or_percent", utils::print_modifier(increase)}}));
-			}
+		} else if (apply_to == "recall_cost") {
+			return vgettext(
+				"$number_or_percent cost to recall",
+				utils::string_map({{"number_or_percent", utils::print_modifier(increase)}}));
 		}
 	}
 	return "";
