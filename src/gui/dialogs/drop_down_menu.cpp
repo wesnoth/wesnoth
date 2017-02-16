@@ -55,10 +55,8 @@ namespace {
 			return;
 		}
 
-		if(toggle_button* checkbox = dynamic_cast<toggle_button*>(window.find_at(coordinate, true))) {
-			if(checkbox->get_state() == toggle_button::FOCUSED) {
-				return;
-			}
+		if(dynamic_cast<toggle_button*>(window.find_at(coordinate, true)) != nullptr) {
+			return;
 		}
 
 		/* FIXME: This dialog uses a listbox with 'has_minimum = false'. This allows a listbox to have 0 or more selections,
