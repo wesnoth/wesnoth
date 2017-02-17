@@ -1346,7 +1346,7 @@ void text_shape::draw(surface& canvas,
 							 : PANGO_ELLIPSIZE_END)
 			.set_characters_per_line(characters_per_line_);
 
-	surface surf = text_renderer.render();
+	surface& surf = text_renderer.render();
 	if(surf->w == 0) {
 		DBG_GUI_D << "Text: Rendering '" << text
 				  << "' resulted in an empty canvas, leave.\n";
