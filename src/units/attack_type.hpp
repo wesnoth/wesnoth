@@ -133,7 +133,7 @@ private:
 	}
 
 	friend void intrusive_ptr_release(const attack_type* atk) {
-		assert(ref_count < 1000000);
+		assert(atk->ref_count < 1000000);
 		if(--atk->ref_count == 0) {
 			delete atk;
 		}
