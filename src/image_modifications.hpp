@@ -531,22 +531,6 @@ private:
 };
 
 /**
- * Overlay with ToD brightening (BRIGHTEN).
- */
-struct brighten_modification : modification
-{
-	virtual surface operator()(const surface &src) const;
-};
-
-/**
- * Overlay with ToD darkening (DARKEN).
- */
-struct darken_modification : modification
-{
-	virtual surface operator()(const surface &src) const;
-};
-
-/**
  * Fill background with a color (BG).
  */
 struct background_modification : modification
