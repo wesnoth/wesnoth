@@ -66,11 +66,10 @@ public:
 	{
 		retval_ = retval;
 	}
-	void set_values(const std::vector<::config>& values, int selected = 0);
-	void set_selected(int selected);
 
-	/** See selectable_item::set_callback_state_change. */
-	std::function<void(widget&)> callback_state_change_;
+	void set_values(const std::vector<::config>& values, int selected = 0);
+
+	void set_selected(int selected);
 
 	/** Inherited from selectable_item */
 	virtual unsigned get_value() const override { return selected_; }
@@ -88,9 +87,15 @@ public:
 	}
 
 	/** Returns the value of the selected row */
-	std::string get_value_string() const { return values_[selected_]["label"]; }
+	std::string get_value_string() const
+	{
+		return values_[selected_]["label"];
+	}
 
-	boost::dynamic_bitset<> get_toggle_states() const { return toggle_states_; }
+	boost::dynamic_bitset<> get_toggle_states() const
+	{
+		return toggle_states_;
+	}
 
 	void set_keep_open(const bool keep_open)
 	{
@@ -112,6 +117,7 @@ private:
 	};
 
 	void set_state(const state_t state);
+
 	/**
 	 * Current state of the widget.
 	 *
@@ -127,16 +133,17 @@ private:
 	 * the window and the window closes itself.
 	 */
 	int retval_;
-	/**
-	 */
+
 	std::vector<::config> values_;
-	/**
-	 */
+
 	int selected_;
 
 	boost::dynamic_bitset<> toggle_states_;
 
 	bool keep_open_;
+
+	/** See selectable_item::set_callback_state_change. */
+	std::function<void(widget&)> callback_state_change_;
 
 	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
@@ -147,14 +154,11 @@ private:
 
 	void signal_handler_mouse_leave(const event::ui_event event, bool& handled);
 
-	void signal_handler_left_button_down(const event::ui_event event,
-										 bool& handled);
+	void signal_handler_left_button_down(const event::ui_event event, bool& handled);
 
-	void signal_handler_left_button_up(const event::ui_event event,
-									   bool& handled);
+	void signal_handler_left_button_up(const event::ui_event event, bool& handled);
 
-	void signal_handler_left_button_click(const event::ui_event event,
-										  bool& handled);
+	void signal_handler_left_button_click(const event::ui_event event, bool& handled);
 };
 
 // }---------- DEFINITION ---------{

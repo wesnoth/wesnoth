@@ -95,8 +95,7 @@ const std::string& menu_button::get_control_type() const
 	return type;
 }
 
-void menu_button::signal_handler_mouse_enter(const event::ui_event event,
-										 bool& handled)
+void menu_button::signal_handler_mouse_enter(const event::ui_event event, bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
@@ -104,8 +103,7 @@ void menu_button::signal_handler_mouse_enter(const event::ui_event event,
 	handled = true;
 }
 
-void menu_button::signal_handler_mouse_leave(const event::ui_event event,
-										 bool& handled)
+void menu_button::signal_handler_mouse_leave(const event::ui_event event, bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
@@ -113,8 +111,7 @@ void menu_button::signal_handler_mouse_leave(const event::ui_event event,
 	handled = true;
 }
 
-void menu_button::signal_handler_left_button_down(const event::ui_event event,
-											  bool& handled)
+void menu_button::signal_handler_left_button_down(const event::ui_event event, bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
@@ -127,8 +124,7 @@ void menu_button::signal_handler_left_button_down(const event::ui_event event,
 	handled = true;
 }
 
-void menu_button::signal_handler_left_button_up(const event::ui_event event,
-											bool& handled)
+void menu_button::signal_handler_left_button_up(const event::ui_event event, bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
@@ -136,8 +132,7 @@ void menu_button::signal_handler_left_button_up(const event::ui_event event,
 	handled = true;
 }
 
-void menu_button::signal_handler_left_button_click(const event::ui_event event,
-											   bool& handled)
+void menu_button::signal_handler_left_button_click(const event::ui_event event, bool& handled)
 {
 	assert(get_window());
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -200,22 +195,29 @@ void menu_button::set_values(const std::vector<::config>& values, int selected)
 {
 	assert(static_cast<size_t>(selected) < values.size());
 	assert(static_cast<size_t>(selected_) < values_.size());
+
 	if(values[selected]["label"] != values_[selected_]["label"]) {
 		set_is_dirty(true);
 	}
+
 	values_ = values;
 	selected_ = selected;
 	toggle_states_.resize(values_.size(), false);
+
 	set_label(values_[selected_]["label"]);
 }
+
 void menu_button::set_selected(int selected)
 {
 	assert(static_cast<size_t>(selected) < values_.size());
 	assert(static_cast<size_t>(selected_) < values_.size());
+
 	if(selected != selected_) {
 		set_is_dirty(true);
 	}
+
 	selected_ = selected;
+
 	set_label(values_[selected_]["label"]);
 }
 
@@ -330,8 +332,9 @@ widget* builder_menu_button::build() const
 	if(!options_.empty()) {
 		widget->set_values(options_);
 	}
+
 	DBG_GUI_G << "Window builder: placed menu_button '" << id
-			  << "' with definition '" << definition << "'.\n";
+	          << "' with definition '" << definition << "'.\n";
 
 	return widget;
 }
