@@ -19,6 +19,7 @@
 #include "config.hpp"
 #include <string>
 #include <vector>
+#include <cassert>
 
 #include <boost/iterator/indirect_iterator.hpp>
 #include <boost/range/iterator_range.hpp>
@@ -132,6 +133,7 @@ private:
 	}
 
 	friend void intrusive_ptr_release(const attack_type* atk) {
+		assert(ref_count < 1000000);
 		if(--atk->ref_count == 0) {
 			delete atk;
 		}
