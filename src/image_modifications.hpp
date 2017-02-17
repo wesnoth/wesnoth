@@ -330,7 +330,10 @@ public:
 	{}
 	virtual surface operator()(const surface& src) const;
 
-	const SDL_Rect& get_slice() const;
+	const SDL_Rect& get_slice() const
+	{
+		return slice_;
+	}
 
 private:
 	SDL_Rect slice_;
@@ -348,9 +351,20 @@ public:
 	{}
 	virtual surface operator()(const surface& src) const;
 
-	const surface& get_surface() const;
-	int get_x() const;
-	int get_y() const;
+	const surface& get_surface() const
+	{
+		return surf_;
+	}
+
+	int get_x() const
+	{
+		return x_;
+	}
+
+	int get_y() const
+	{
+		return y_;
+	}
 
 private:
 	surface surf_;
@@ -370,9 +384,20 @@ public:
 	{}
 	virtual surface operator()(const surface& src) const;
 
-	const surface& get_mask() const;
-	int get_x() const;
-	int get_y() const;
+	const surface& get_mask() const
+	{
+		return mask_;
+	}
+
+	int get_x() const
+	{
+		return x_;
+	}
+
+	int get_y() const
+	{
+		return y_;
+	}
 
 private:
 	surface mask_;
@@ -392,7 +417,10 @@ public:
 	{}
 	virtual surface operator()(const surface& src) const;
 
-	const surface& get_surface() const;
+	const surface& get_surface() const
+	{
+		return surf_;
+	}
 
 private:
 	surface surf_;
@@ -409,12 +437,21 @@ public:
 	{}
 	virtual surface operator()(const surface& src) const;
 	virtual std::pair<int,int> calculate_size(const surface& src) const = 0;
-	int get_w() const;
-	int get_h() const;
+
+	int get_w() const
+	{
+		return w_;
+	}
+
+	int get_h() const
+	{
+		return h_;
+	}
 
 private:
 	int w_, h_;
 	bool nn_;
+
 protected:
 	const std::string fn_;
 };
@@ -470,7 +507,11 @@ public:
 		: opacity_(opacity)
 	{}
 	virtual surface operator()(const surface& src) const;
-	float get_opacity() const;
+
+	float get_opacity() const
+	{
+		return opacity_;
+	}
 
 private:
 	float opacity_;
@@ -486,9 +527,10 @@ public:
 		: r_(r), g_(g), b_(b)
 	{}
 	virtual surface operator()(const surface& src) const;
-	int get_r() const;
-	int get_g() const;
-	int get_b() const;
+
+	int get_r() const { return r_; }
+	int get_g() const { return g_; }
+	int get_b() const { return b_; }
 
 private:
 	int r_, g_, b_;
@@ -504,10 +546,11 @@ public:
 		: r_(r), g_(g), b_(b), a_(a)
 	{}
 	virtual surface operator()(const surface& src) const;
-	int get_r() const;
-	int get_g() const;
-	int get_b() const;
-	float get_a() const;
+
+	int   get_r() const { return r_; }
+	int   get_g() const { return g_; }
+	int   get_b() const { return b_; }
+	float get_a() const { return a_; }
 
 private:
 	int r_, g_, b_;
@@ -524,7 +567,11 @@ public:
 		: depth_(depth)
 	{}
 	virtual surface operator()(const surface& src) const;
-	int get_depth() const;
+
+	int get_depth() const
+	{
+		return depth_;
+	}
 
 private:
 	int depth_;
@@ -537,7 +584,11 @@ struct background_modification : modification
 {
 	background_modification(color_t const &c): color_(c) {}
 	virtual surface operator()(const surface &src) const;
-	const color_t& get_color() const;
+	
+	const color_t& get_color() const
+	{
+		return color_;
+	}
 
 private:
 	color_t color_;
