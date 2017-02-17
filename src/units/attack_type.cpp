@@ -27,6 +27,8 @@
 #include "serialization/string_utils.hpp"
 #include "gettext.hpp"
 
+#include <cassert>
+
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
 #define WRN_CF LOG_STREAM(warn, log_config)
@@ -58,6 +60,7 @@ attack_type::attack_type(const config& cfg) :
 	parry_(cfg["parry"]),
 	specials_(cfg.child_or_empty("specials"))
 {
+	assert(ref_count == 0);
 	if (description_.empty())
 		description_ = translation::egettext(id_.c_str());
 
