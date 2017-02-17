@@ -676,24 +676,6 @@ int bl_modification::get_depth() const
 	return depth_;
 }
 
-surface brighten_modification::operator()(const surface &src) const
-{
-	surface ret = make_neutral_surface(src);
-	surface tod_bright(image::get_image(game_config::images::tod_bright));
-	if (tod_bright)
-		sdl_blit(tod_bright, nullptr, ret, nullptr);
-	return ret;
-}
-
-surface darken_modification::operator()(const surface &src) const
-{
-	surface ret = make_neutral_surface(src);
-	surface tod_dark(image::get_image(game_config::images::tod_dark));
-	if (tod_dark)
-		sdl_blit(tod_dark, nullptr, ret, nullptr);
-	return ret;
-}
-
 surface background_modification::operator()(const surface &src) const
 {
 	surface ret = make_neutral_surface(src);
@@ -1372,18 +1354,6 @@ REGISTER_MOD_PARSER(NOP, )
 REGISTER_MOD_PARSER(RIGHT, )
 {
 	return nullptr;
-}
-
-// Add a bright overlay.
-REGISTER_MOD_PARSER(BRIGHTEN, )
-{
-	return new brighten_modification;
-}
-
-// Add a dark overlay.
-REGISTER_MOD_PARSER(DARKEN, )
-{
-	return new darken_modification;
 }
 
 // Add a background color.

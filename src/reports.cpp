@@ -18,6 +18,7 @@
 //#include "editor/palette/terrain_palettes.hpp"
 #include "font/pango/escape.hpp"
 #include "font/text_formatting.hpp"
+#include "formatter.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "language.hpp"
@@ -1130,8 +1131,11 @@ static config time_of_day_at(reports::context & rc, const map_location& mouseove
 		<< utils::signed_percent(-(std::abs(b))) << "</span>\n";
 
 	std::string tod_image = tod.image;
-	if (tod.bonus_modified > 0) tod_image += "~BRIGHTEN()";
-	else if (tod.bonus_modified < 0) tod_image += "~DARKEN()";
+	if(tod.bonus_modified > 0) {
+		tod_image += (formatter() << "~BLIT(" << game_config::images::tod_bright << ")").str();
+	} else if(tod.bonus_modified < 0) {
+		tod_image += (formatter() << "~BLIT(" << game_config::images::tod_dark << ")").str();
+	}
 
 	return image_report(tod_image, tooltip.str(), "time_of_day_" + tod.id);
 }

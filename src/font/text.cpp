@@ -100,7 +100,7 @@ pango_text::~pango_text()
 	surface_.assign(nullptr);
 }
 
-surface pango_text::render() const
+surface& pango_text::render() const
 {
 	this->rerender();
 	return surface_;

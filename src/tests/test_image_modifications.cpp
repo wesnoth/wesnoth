@@ -847,40 +847,6 @@ BOOST_AUTO_TEST_CASE(test_b_modification_decoding)
 	delete mod;
 }
 
-/// Tests if the BRIGHTEN modification is correctly decoded
-BOOST_AUTO_TEST_CASE(test_brighten_modification_decoding)
-{
-	environment_setup env_setup;
-
-	modification_queue queue = modification::decode("~BRIGHTEN()");
-
-	BOOST_REQUIRE_EQUAL(queue.size(), 1);
-
-	brighten_modification* mod = dynamic_cast<brighten_modification*>(queue.top());
-
-	// The dynamic_cast returns nullptr if the argument doesn't match the type
-	BOOST_CHECK(mod != nullptr);
-
-	delete mod;
-}
-
-/// Tests if the DARKEN modification is correctly decoded
-BOOST_AUTO_TEST_CASE(test_draken_modification_decoding)
-{
-	environment_setup env_setup;
-
-	modification_queue queue = modification::decode("~DARKEN()");
-
-	BOOST_REQUIRE_EQUAL(queue.size(), 1);
-
-	darken_modification* mod = dynamic_cast<darken_modification*>(queue.top());
-
-	// The dynamic_cast returns nullptr if the argument doesn't match the type
-	BOOST_CHECK(mod != nullptr);
-
-	delete mod;
-}
-
 /// Tests if the BG modification without arguments is correctly decoded
 BOOST_AUTO_TEST_CASE(test_bg_modification_decoding_no_args)
 {

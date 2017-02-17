@@ -1745,54 +1745,46 @@ std::string unit::describe_builtin_effect(std::string apply_to, const config& ef
 		}
 	} else if(apply_to == "hitpoints") {
 		const std::string &increase_total = effect["increase_total"];
-
 		if(!increase_total.empty()) {
-			return utils::print_modifier(increase_total) + " " +
-			t_string(N_("HP"), "wesnoth");
+			return vgettext(
+				"wesnoth",
+				"$number_or_percent HP",
+				utils::string_map({{"number_or_percent", utils::print_modifier(increase_total)}}));
 		}
-	} else if(apply_to == "movement") {
+	} else {
 		const std::string &increase = effect["increase"];
-
-		if(!increase.empty()) {
-			int n = std::stoi(increase);
-			return utils::print_modifier(increase) + " " +
-				_n("move", "moves", n);
+		if(increase.empty()) {
+			return "";
 		}
-	} else if(apply_to == "vision") {
-		const std::string &increase = effect["increase"];
-
-		if(!increase.empty()) {
-			return utils::print_modifier(increase) + " " + t_string(N_("vision"), "wesnoth");
+		if(apply_to == "movement") {
+			return vngettext(
+				"$number_or_percent move",
+				"$number_or_percent moves",
+				std::stoi(increase),
+				utils::string_map({{"number_or_percent", utils::print_modifier(increase)}}));
+		} else if(apply_to == "vision") {
+			return vgettext(
+				"$number_or_percent vision",
+				utils::string_map({{"number_or_percent", utils::print_modifier(increase)}}));
+		} else if(apply_to == "jamming") {
+			return vgettext(
+				"$number_or_percent jamming",
+				utils::string_map({{"number_or_percent", utils::print_modifier(increase)}}));
+		} else if(apply_to == "max_experience") {
+			return vgettext(
+				"$number_or_percent XP to advance",
+					utils::string_map({{"number_or_percent", utils::print_modifier(increase)}}));
+		} else if (apply_to == "max_attacks") {
+			return vngettext(
+					"$number_or_percent attack per turn",
+					"$number_or_percent attacks per turn",
+					std::stoi(increase),
+					utils::string_map({{"number_or_percent", utils::print_modifier(increase)}}));
+		} else if (apply_to == "recall_cost") {
+			return vgettext(
+				"$number_or_percent cost to recall",
+				utils::string_map({{"number_or_percent", utils::print_modifier(increase)}}));
 		}
-	} else if(apply_to == "jamming") {
-		const std::string &increase = effect["increase"];
-
-		if(!increase.empty()) {
-			return utils::print_modifier(increase) + " " + t_string(N_("jamming"), "wesnoth");
-		}
-	} else if(apply_to == "max_experience") {
-		const std::string &increase = effect["increase"];
-
-		if(!increase.empty()) {
-			return utils::print_modifier(increase) + " " +
-			t_string(N_("XP to advance"), "wesnoth");
-		}
-	} else if (apply_to == "max_attacks") {
-		const std::string &increase = effect["increase"];
-
-		std::string description = utils::print_modifier(increase) + " ";
-		const char* const singular = N_("attack per turn");
-		const char* const plural = N_("attacks per turn");
-		if (increase[increase.size()-1] == '%' || std::abs(std::stoi(increase)) != 1) {
-			description += t_string(plural, "wesnoth");
-		} else {
-			description += t_string(singular, "wesnoth");
-		}
-		return description;
-	} else if (apply_to == "recall_cost") {
-		const std::string &increase = effect["increase"];
-		return utils::print_modifier(increase) + " " +
-				t_string(N_("cost to recall"), "wesnoth");
 	}
 	return "";
 }
