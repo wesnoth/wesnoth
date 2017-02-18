@@ -22,6 +22,8 @@
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/pane.hpp"
 
+#include <boost/dynamic_bitset.hpp>
+
 namespace gui2
 {
 class listbox;
@@ -87,8 +89,11 @@ private:
 	void copy_url_callback(text_box& url_box);
 
 	void options_button_callback(window& window);
-	void status_filter_callback(window& window);
+	void filter_callback(window& window);
 	void show_help(window& window);
+
+	boost::dynamic_bitset<> get_status_filter_visibility(const window& window) const;
+	boost::dynamic_bitset<> get_type_filter_visibility(const window& window) const;
 };
 
 } // namespace dialogs

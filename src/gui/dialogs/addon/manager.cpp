@@ -357,7 +357,7 @@ void addon_manager::pre_show(window& window)
 
 	// TODO: initial selection based on preferences
 	status_filter.set_values(status_filter_entries);
-	status_filter.connect_click_handler(std::bind(&addon_manager::status_filter_callback, this, std::ref(window)));
+	status_filter.connect_click_handler(std::bind(&addon_manager::filter_callback, this, std::ref(window)));
 
 	menu_button& type_filter = find_widget<menu_button>(&window, "type_filter", false);
 
@@ -367,6 +367,7 @@ void addon_manager::pre_show(window& window)
 	}
 
 	type_filter.set_values(type_filter_entries);
+	type_filter.connect_click_handler(std::bind(&addon_manager::filter_callback, this, std::ref(window)));
 
 	button& url_go_button = find_widget<button>(&window, "url_go", false);
 	button& url_copy_button = find_widget<button>(&window, "url_copy", false);
@@ -481,14 +482,14 @@ void addon_manager::options_button_callback(window& window)
 	dlg.show(window.video());
 }
 
-void addon_manager::status_filter_callback(window& window)
+boost::dynamic_bitset<> addon_manager::get_status_filter_visibility(const window& window) const
 {
-	menu_button& status_filter = find_widget<menu_button>(&window, "install_status_filter", false);
+	const menu_button& status_filter = find_widget<const menu_button>(&window, "install_status_filter", false);
 	const ADDON_STATUS_FILTER selection = status_filter_types_[status_filter.get_value()].first;
 
 	boost::dynamic_bitset<> res;
 	for(const auto& a : addons_) {
-		const ADDON_STATUS state = tracking_info_[a.second.id].state;
+		const ADDON_STATUS state = tracking_info_.at(a.second.id).state;
 
 		res.push_back(
 			(selection == FILTER_ALL) ||
@@ -498,6 +499,35 @@ void addon_manager::status_filter_callback(window& window)
 		);
 	}
 
+	return res;
+}
+
+boost::dynamic_bitset<> addon_manager::get_type_filter_visibility(const window& window) const
+{
+	const menu_button& type_filter = find_widget<const menu_button>(&window, "type_filter", false);
+	boost::dynamic_bitset<> toggle_states = type_filter.get_toggle_states();
+	if(toggle_states.none()) {
+		// Nothing selected. It means that *all* add-ons are shown.
+		boost::dynamic_bitset<> res_flipped(addons_.size());
+		return ~res_flipped;
+	} else {
+		boost::dynamic_bitset<> res;
+
+		for(const auto& a : addons_) {
+			int index = std::find_if(type_filter_types_.begin(), type_filter_types_.end(),
+				[&a](const std::pair<ADDON_TYPE, std::string>& entry) {
+					return entry.first == a.second.type;
+				}) - type_filter_types_.begin();
+			res.push_back(toggle_states[index]);
+		}
+
+		return res;
+	}
+}
+
+void addon_manager::filter_callback(window& window)
+{
+	boost::dynamic_bitset<> res = get_status_filter_visibility(window) & get_type_filter_visibility(window);
 	find_widget<addon_list>(&window, "addons", false).set_addon_shown(res);
 }
 
