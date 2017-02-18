@@ -520,7 +520,7 @@ std::pair<int,int> scale_into_modification::calculate_size(const surface& src) c
 
 	long double ratio = std::min(w / old_w, h / old_h);
 
-	return {old_w * ratio, old_h * ratio};
+	return {static_cast<int>(old_w * ratio), static_cast<int>(old_h * ratio)};
 }
 
 surface xbrz_modification::operator()(const surface& src) const

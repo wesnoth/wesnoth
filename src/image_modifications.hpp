@@ -51,7 +51,7 @@ public:
 
 private:
 	/// Map from a mod's priority() to the mods having that priority.
-	typedef std::map<int, std::vector<std::unique_ptr<modification>>, std::greater<int>> map_type;
+	typedef std::map<int, std::vector<std::shared_ptr<modification>>, std::greater<int>> map_type;
 	/// Map from a mod's priority() to the mods having that priority.
 	map_type priorities_;
 };
