@@ -666,24 +666,10 @@ end
 function wml_actions.store_side(cfg)
 	local writer = utils.vwriter.init(cfg, "side")
 	for t, side_number in helper.get_sides(cfg) do
-		local container = {
-			controller = t.controller,
-			recruit = table.concat(t.recruit, ","),
-			fog = t.fog,
-			shroud = t.shroud,
-			hidden = t.hidden,
-			income = t.total_income,
-			village_gold = t.village_gold,
-			village_support = t.village_support,
-			team_name = t.team_name,
-			user_team_name = t.user_team_name,
-			color = t.color,
-			gold = t.gold,
-			scroll_to_leader = t.scroll_to_leader,
-			flag = t.flag,
-			flag_icon = t.flag_icon,
-			side = side_number
-		}
+		local container = t.__cfg
+		-- set values not properly handled by the __cfg
+		container.income = t.total_income
+		container.side = side_number
 		utils.vwriter.write(writer, container)
 	end
 end
