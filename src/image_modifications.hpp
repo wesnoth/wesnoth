@@ -22,6 +22,7 @@
 
 #include <functional>
 #include <map>
+#include <memory>
 #include <queue>
 
 namespace image {
@@ -42,8 +43,6 @@ public:
 	{
 	}
 
-	~modification_queue() {}
-
 	bool empty() const  { return priorities_.empty(); }
 	void push(modification * mod);
 	void pop();
@@ -52,7 +51,7 @@ public:
 
 private:
 	/// Map from a mod's priority() to the mods having that priority.
-	typedef std::map<int, std::vector<modification *>, std::greater<int> > map_type;
+	typedef std::map<int, std::vector<std::unique_ptr<modification>>, std::greater<int>> map_type;
 	/// Map from a mod's priority() to the mods having that priority.
 	map_type priorities_;
 };
@@ -584,7 +583,7 @@ struct background_modification : modification
 {
 	background_modification(color_t const &c): color_(c) {}
 	virtual surface operator()(const surface &src) const;
-	
+
 	const color_t& get_color() const
 	{
 		return color_;

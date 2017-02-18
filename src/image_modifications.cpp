@@ -37,7 +37,7 @@ void modification_queue::push(modification * mod)
 {
 	// Null pointers do not get stored. (Shouldn't happen, but just in case.)
 	if(mod != nullptr) {
-		priorities_[mod->priority()].push_back(mod);
+		priorities_[mod->priority()].emplace_back(mod);
 	}
 }
 
@@ -45,7 +45,7 @@ void modification_queue::push(modification * mod)
 void modification_queue::pop()
 {
 	map_type::iterator top_pair = priorities_.begin();
-	std::vector<modification *> & top_vector = top_pair->second;
+	auto& top_vector = top_pair->second;
 
 	// Erase the top element.
 	top_vector.erase(top_vector.begin());
@@ -69,7 +69,7 @@ size_t modification_queue::size() const
 /** Returns the top element in the queue . */
 modification * modification_queue::top() const
 {
-	return priorities_.begin()->second.front();
+	return priorities_.begin()->second.front().get();
 }
 
 

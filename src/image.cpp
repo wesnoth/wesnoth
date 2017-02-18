@@ -521,7 +521,6 @@ static surface load_image_sub_file(const image::locator &loc)
 
 	while(!mods.empty()) {
 		modification* mod = mods.top();
-		mods.pop();
 
 		try {
 			surf = (*mod)(surf);
@@ -531,7 +530,9 @@ static surface load_image_sub_file(const image::locator &loc)
 				<< "Modifications: " << loc.get_modifications() << ".\n"
 				<< "Error: " << e.message;
 		}
-		delete mod;
+
+		// NOTE: do this *after* applying the mod or you'll get crashes!
+		mods.pop();
 	}
 
 	if(loc.get_loc().valid()) {
