@@ -76,7 +76,7 @@ modification * modification_queue::top() const
 namespace {
 
 /// A function used to parse modification arguments
-typedef modification* (*mod_parser)(const std::string&);
+using mod_parser = std::function<modification*(const std::string&)>;
 
 /** A map of all registered mod parsers
  *
@@ -109,7 +109,7 @@ modification* decode_modification(const std::string& encoded_mod)
 		return nullptr;
 	}
 
-	return (*mod_parsers[mod_type])(args);
+	return mod_parsers[mod_type](args);
 }
 
 } // end anon namespace
