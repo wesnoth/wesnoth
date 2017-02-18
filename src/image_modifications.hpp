@@ -12,8 +12,6 @@
    See the COPYING file for more details.
 */
 
-/** @file */
-
 #ifndef IMAGE_MODIFICATIONS_HPP_INCLUDED
 #define IMAGE_MODIFICATIONS_HPP_INCLUDED
 
@@ -21,17 +19,19 @@
 #include "lua_jailbreak_exception.hpp"
 #include "sdl/surface.hpp"
 #include "sdl/utils.hpp"
+
+#include <map>
 #include <queue>
 
 namespace image {
 
 class modification;
 
-
 /// A modified priority queue used to order image modifications.
 /// The priorities for this queue are to order modifications by priority(),
 /// then by the order they are added to the queue.
-class modification_queue {
+class modification_queue
+{
 	// Invariant for this class:
 	// At the beginning and end of each member function call, there
 	// are no empty vectors in priorities_.
@@ -49,13 +49,12 @@ public:
 	size_t size() const;
 	modification * top() const;
 
-private: // data
+private:
 	/// Map from a mod's priority() to the mods having that priority.
 	typedef std::map<int, std::vector<modification *>, std::greater<int> > map_type;
 	/// Map from a mod's priority() to the mods having that priority.
 	map_type priorities_;
 };
-
 
 /// Base abstract class for an image-path modification
 class modification
@@ -249,11 +248,11 @@ struct sepia_modification : modification
  */
 class negative_modification : public modification
 {
-	public:
-		negative_modification(int r, int g, int b): red_(r), green_(g), blue_(b) {}
-		virtual surface operator()(const surface &src) const;
-	private:
-		int red_, green_, blue_;
+public:
+	negative_modification(int r, int g, int b): red_(r), green_(g), blue_(b) {}
+	virtual surface operator()(const surface &src) const;
+private:
+	int red_, green_, blue_;
 };
 
 /**
