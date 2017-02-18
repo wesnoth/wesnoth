@@ -126,7 +126,6 @@ private:
 	bool mouse_lock_local_;
 	static bool mouse_lock_;
 
-	friend class scrollpane;
 	friend class dialog;
 };
 
