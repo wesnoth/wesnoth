@@ -144,18 +144,6 @@ std::string del_tags(const std::string& text){
 	return utils::join(lines, "\n");
 }
 
-std::string color2markup(const color_t &color)
-{
-	std::stringstream markup;
-	// The RGB of color_t are Uint8, we need to cast them to int.
-	// Without cast, it gives their char equivalent.
-	markup << "<"
-		   << static_cast<int>(color.r) << ","
-		   << static_cast<int>(color.g) << ","
-		   << static_cast<int>(color.b) << ">";
-	return markup.str();
-}
-
 SDL_Rect text_area(const std::string& text, int size, int style)
 {
 	const SDL_Rect area = {0,0,10000,10000};

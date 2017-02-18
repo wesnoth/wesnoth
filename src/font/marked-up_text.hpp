@@ -92,9 +92,6 @@ bool is_format_char(char c);
  */
 bool is_cjk_char(const ucs4::char_t ch);
 
-/** Create string of color-markup, such as "<255,255,0>" for yellow. */
-std::string color2markup(const color_t &color);
-
 /**
  * Wrap text.
  *
