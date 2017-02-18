@@ -456,7 +456,7 @@ void addon_manager::load_addon_list(window& window)
 	}
 
 	if(addons_.empty()) {
-		show_transient_message(window.video(), _("No Add-ons Available"), _("There are no add-ons available for download from this server."))
+		show_transient_message(window.video(), _("No Add-ons Available"), _("There are no add-ons available for download from this server."));
 		window.close();
 	}
 
