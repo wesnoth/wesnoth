@@ -119,6 +119,9 @@ void toggle_button::set_value(const unsigned selected)
 	state_num_ = selected % num_states();
 	set_is_dirty(true);
 
+	if(callback_state_change_) {
+		callback_state_change_(*this);
+	}
 }
 
 void toggle_button::set_retval(const int retval)
@@ -172,9 +175,6 @@ void toggle_button::signal_handler_left_button_click(const event::ui_event event
 
 	fire(event::NOTIFY_MODIFIED, *this, nullptr);
 
-	if(callback_state_change_) {
-		callback_state_change_(*this);
-	}
 	handled = true;
 }
 
