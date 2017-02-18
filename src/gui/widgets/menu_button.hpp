@@ -17,6 +17,8 @@
 #include "gui/core/widget_definition.hpp"
 #include "gui/core/window_builder.hpp"
 
+#include "gui/dialogs/drop_down_menu.hpp"
+
 #include "gui/widgets/styled_widget.hpp"
 #include "gui/widgets/selectable_item.hpp"
 
@@ -86,6 +88,14 @@ public:
 		callback_state_change_ = callback;
 	}
 
+	/**
+	 * Sets a callback that will be called immediately when any toggle button is selected or deselected.
+	 */
+	virtual void set_callback_toggle_state_change(std::function<void(boost::dynamic_bitset<>)> callback)
+	{
+		callback_toggle_state_change_ = callback;
+	}
+
 	/** Returns the value of the selected row */
 	std::string get_value_string() const
 	{
@@ -142,8 +152,12 @@ private:
 
 	bool keep_open_;
 
+	dialogs::drop_down_menu* droplist_;
+
 	/** See selectable_item::set_callback_state_change. */
 	std::function<void(widget&)> callback_state_change_;
+
+	std::function<void(boost::dynamic_bitset<>)> callback_toggle_state_change_;
 
 	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
@@ -159,6 +173,8 @@ private:
 	void signal_handler_left_button_up(const event::ui_event event, bool& handled);
 
 	void signal_handler_left_button_click(const event::ui_event event, bool& handled);
+
+	void toggle_state_changed();
 };
 
 // }---------- DEFINITION ---------{

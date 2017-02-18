@@ -19,6 +19,8 @@
 
 #include <boost/dynamic_bitset.hpp>
 
+#include <functional>
+
 class config;
 
 namespace gui2
@@ -29,13 +31,14 @@ namespace dialogs
 class drop_down_menu : public modal_dialog
 {
 public:
-	drop_down_menu(SDL_Rect button_pos, const std::vector<config>& items, int selected_item, bool use_markup, bool keep_open)
+	drop_down_menu(SDL_Rect button_pos, const std::vector<config>& items, int selected_item, bool use_markup, bool keep_open, std::function<void()> callback_toggle_state_change = nullptr)
 		: items_(items)
-		, toggle_states_()
 		, button_pos_(button_pos)
 		, selected_item_(selected_item)
 		, use_markup_(use_markup)
 		, keep_open_(keep_open)
+		, window_(nullptr)
+		, callback_toggle_state_change_(callback_toggle_state_change)
 	{
 		set_restore(true);
 	}
@@ -45,17 +48,12 @@ public:
 		return selected_item_;
 	}
 
-	boost::dynamic_bitset<> get_toggle_states() const
-	{
-		return toggle_states_;
-	}
+	/** If a toggle button widget is present, returns the toggled state of each row's button. */
+	boost::dynamic_bitset<> get_toggle_states() const;
 
 private:
 	/** Configuration of rach row. */
 	std::vector<config> items_;
-
-	/** If a toggle button widget is present, returns the toggled state of each row's button. */
-	boost::dynamic_bitset<> toggle_states_;
 
 	/**
 	 * The screen location of the menu_button button that triggered this droplist.
@@ -73,6 +71,14 @@ private:
 	 * such as scrollbars and toggle butons.
 	 */
 	bool keep_open_;
+
+	window* window_;
+
+	/**
+	 * If toggle buttons are used, this callback is called whenever the state of any toggle
+	 * button changes.
+	 */
+	std::function<void()> callback_toggle_state_change_;
 
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;

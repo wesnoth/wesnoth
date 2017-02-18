@@ -103,6 +103,8 @@ namespace
 
 void drop_down_menu::pre_show(window& window)
 {
+	window_ = &window;
+
 	window.set_variable("button_x", variant(button_pos_.x));
 	window.set_variable("button_y", variant(button_pos_.y));
 	window.set_variable("button_w", variant(button_pos_.w));
@@ -153,6 +155,10 @@ void drop_down_menu::pre_show(window& window)
 			checkbox->set_id("checkbox");
 			checkbox->set_value_bool(entry["checkbox"].to_bool(false));
 
+			if(callback_toggle_state_change_ != nullptr) {
+				checkbox->set_callback_state_change(std::bind(callback_toggle_state_change_));
+			}
+
 			grid* mi_grid = dynamic_cast<grid*>(new_row.find("menu_item", false));
 			if(mi_grid) {
 				delete mi_grid->swap_child("icon", checkbox, false);
@@ -185,15 +191,28 @@ void drop_down_menu::post_show(window& window)
 
 	selected_item_ = list.get_selected_row();
 
-	for(unsigned i = 0; i < list.get_item_count(); i++) {
-		grid* row_grid = list.get_row_grid(i);
+	window_ = nullptr;
+}
 
-		if(toggle_button* checkbox = find_widget<toggle_button>(row_grid, "checkbox", false, false)) {
-			toggle_states_.push_back(checkbox->get_value_bool());
+boost::dynamic_bitset<> drop_down_menu::get_toggle_states() const
+{
+	assert(window_ != nullptr);
+
+	const listbox& list = find_widget<const listbox>(window_, "list", true);
+
+	boost::dynamic_bitset<> states;
+
+	for(unsigned i = 0; i < list.get_item_count(); ++i) {
+		const grid* row_grid = list.get_row_grid(i);
+
+		if(const toggle_button* checkbox = find_widget<const toggle_button>(row_grid, "checkbox", false, false)) {
+			states.push_back(checkbox->get_value_bool());
 		} else {
-			toggle_states_.push_back(false);
+			states.push_back(false);
 		}
 	}
+
+	return states;
 }
 
 } // namespace dialogs

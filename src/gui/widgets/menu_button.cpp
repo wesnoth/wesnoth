@@ -23,7 +23,6 @@
 #include "gui/core/register_widget.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
-#include "gui/dialogs/drop_down_menu.hpp"
 #include "config_assign.hpp"
 #include "sound.hpp"
 
@@ -48,6 +47,7 @@ menu_button::menu_button()
 	, selected_()
 	, toggle_states_()
 	, keep_open_(false)
+	, droplist_(nullptr)
 {
 	values_.push_back(config_of("label", this->get_label()));
 
@@ -140,9 +140,14 @@ void menu_button::signal_handler_left_button_click(const event::ui_event event, 
 	sound::play_UI_sound(settings::sound_button_click);
 
 	// If a button has a retval do the default handling.
-	dialogs::drop_down_menu droplist(this->get_rectangle(), this->values_, this->selected_, this->get_use_markup(), this->keep_open_);
+	dialogs::drop_down_menu droplist(this->get_rectangle(), this->values_, this->selected_, this->get_use_markup(), this->keep_open_,
+		std::bind(&menu_button::toggle_state_changed, this));
+
+	droplist_ = &droplist;
 
 	if(droplist.show(get_window()->video())) {
+		droplist_ = nullptr;
+
 		const int selected = droplist.selected_item();
 
 		// Saftey check. If the user clicks a selection in the dropdown and moves their mouse away too
@@ -169,8 +174,7 @@ void menu_button::signal_handler_left_button_click(const event::ui_event event, 
 		}
 	}
 
-	// Toggle states are recorded regardless of dismissal type
-	toggle_states_ = droplist.get_toggle_states();
+	droplist_ = nullptr;
 
 	/* In order to allow toggle button states to be specified by verious dialogs in the values config, we write the state
 	 * bools to the values_ config here, but only if a checkbox= key was already provided. The value of the checkbox= key
@@ -189,6 +193,17 @@ void menu_button::signal_handler_left_button_click(const event::ui_event event, 
 	}
 
 	handled = true;
+}
+
+void menu_button::toggle_state_changed()
+{
+	assert(droplist_ != nullptr);
+
+	toggle_states_ = droplist_->get_toggle_states();
+
+	if(callback_toggle_state_change_ != nullptr) {
+		callback_toggle_state_change_(toggle_states_);
+	}
 }
 
 void menu_button::set_values(const std::vector<::config>& values, int selected)
