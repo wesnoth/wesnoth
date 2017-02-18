@@ -20,6 +20,7 @@
 #include "sdl/surface.hpp"
 #include "sdl/utils.hpp"
 
+#include <functional>
 #include <map>
 #include <queue>
 
