@@ -782,7 +782,7 @@ bool addons_manager_ui(CVideo& v, const std::string& remote_address)
 			//if(gui2::new_widgets) {
 				gui2::dialogs::addon_manager dlg(client);
 				dlg.show(v);
-				return true;
+				return dlg.get_need_wml_cache_refresh_();
 			//}
 
 			if(!get_addons_list(client, addons)) {

@@ -217,6 +217,7 @@ addon_manager::addon_manager(addons_client& client)
 	, client_(client)
 	, addons_()
 	, tracking_info_()
+	, need_wml_cache_refresh_(false)
 {
 	status_filter_types_ = {
 		{FILTER_ALL,           _("addons_view^All Add-ons")},
@@ -420,7 +421,9 @@ void addon_manager::pre_show(window& window)
 
 void addon_manager::load_addon_list(window& window)
 {
-	refresh_addon_version_info_cache();
+	if(need_wml_cache_refresh_) {
+		refresh_addon_version_info_cache();
+	}
 
 	client_.request_addons_list(cfg_);
 	if(!cfg_) {
@@ -514,10 +517,13 @@ void addon_manager::install_addon(addon_info addon, window& window)
 {
 	addon_list& addons = find_widget<addon_list>(&window, "addons", false);
 
-	addons_client::install_result result =
-		client_.install_addon_with_checks(addons_, addon);
+	addons_client::install_result result = client_.install_addon_with_checks(addons_, addon);
+
+	need_wml_cache_refresh_ |= result.wml_changed; // take note if any wml_changes occurred
 
 	if(result.outcome != addons_client::install_outcome::abort) {
+		need_wml_cache_refresh_ = true;
+
 		load_addon_list(window);
 
 		// Reselect the add-on.
@@ -554,6 +560,8 @@ void addon_manager::uninstall_addon(addon_info addon, window& window)
 	if(!success) {
 		show_error_message(window.video(), _("The following add-on could not be deleted properly:") + " " + addon.display_title());
 	} else {
+		need_wml_cache_refresh_ = true;
+
 		load_addon_list(window);
 
 		// Reselect the add-on.

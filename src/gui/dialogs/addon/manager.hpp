@@ -38,6 +38,11 @@ class addon_manager : public modal_dialog
 public:
 	explicit addon_manager(addons_client& client);
 
+	bool get_need_wml_cache_refresh_() const
+	{
+		return need_wml_cache_refresh_;
+	}
+
 private:
 	void on_filtertext_changed(text_box_base* textbox, const std::string& text);
 
@@ -64,6 +69,8 @@ private:
 
 	std::vector<std::pair<ADDON_STATUS_FILTER, std::string>> status_filter_types_;
 	std::vector<std::pair<ADDON_TYPE, std::string>> type_filter_types_;
+
+	bool need_wml_cache_refresh_;
 
 	void install_selected_addon(window& window);
 	void install_addon(addon_info addon, window& window);
