@@ -71,6 +71,8 @@ void panel::impl_draw_background(surface& frame_buffer, int x_offset, int y_offs
 
 void panel::impl_draw_foreground(surface& frame_buffer, int x_offset, int y_offset)
 {
+	DBG_GUI_D << LOG_HEADER << " size " << get_rectangle() << ".\n";
+
 	get_canvas(1).blit(frame_buffer,
 				   calculate_blitting_rectangle(x_offset, y_offset));
 }
