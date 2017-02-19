@@ -25,6 +25,7 @@
 #include "map/map.hpp"                      // for gamemap
 #include "map/location.hpp"  // for map_location, operator<<, etc
 #include "mouse_handler_base.hpp"       // for command_disabler
+#include "preferences.hpp"
 #include "recall_list_manager.hpp"   // for recall_list_manager
 #include "replay.hpp"                // for recorder, replay
 #include "replay_helper.hpp"         // for replay_helper
@@ -414,7 +415,7 @@ void undo_list::redo()
 	// only if the redo is successful.)
 	redos_list::auto_type action = redos_.pop_back();
 
-	if (!action->umc_commands_undo.empty()) {
+	if (preferences::get("no_on_redo", false)) {
 		const config& command_wml = action->replay_data.child("command");
 		std::string commandname = command_wml.all_children_range().front().key;
 		const config& data = command_wml.all_children_range().front().cfg;
