@@ -40,9 +40,14 @@ public:
 		using mod_type = ng::create_engine::extras_metadata_ptr;
 
 		const std::vector<mod_type>& activemods = create_engine.active_mods_data();
+		// FIXME: this code is wrogn in multiple ways:
+		//  1) It only searches in modifications but [olptions] can also appear in [campaign]
+		//  2) It also triggers on empty [options] which it shouldn't
 		if(std::none_of(activemods.begin(), activemods.end(), [](mod_type mod) {
 			return (*mod->cfg).has_child("options");
 		})) {
+			//FIXME: in this case no configure_engine::set_use_map_settings(use_map_settings_default()); was not called
+			//   so that mp_game_settings::use_map_settings has a wrong value so that the connect engine will mess up the scenarios settings
 			return true;
 		}
 
