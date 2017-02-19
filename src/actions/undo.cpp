@@ -416,6 +416,14 @@ void undo_list::redo()
 	redos_list::auto_type action = redos_.pop_back();
 
 	if (preferences::get("no_on_redo", false)) {
+		// And alterntive redo codepath which just call the original actions, using this over the othr one has some advantages:
+		//   1) wml no longer needs [on_redo] since the engine will execute the original moveto etc. events
+		//   2) It simplifies the c++ code since all undo_actions::redo functions can be removed.
+		
+		//TODO: this code doesnt work that well yet. The problem is that synced_context::run
+		//   readds the undo command with the normal undo_lis::add function whihc clears the
+		//   redo stack which makes redoign of more than one move impossible.
+		//   we should add a bool clear_replay=yes paramter to that function and use that to fix this.
 		const config& command_wml = action->replay_data.child("command");
 		std::string commandname = command_wml.all_children_range().front().key;
 		const config& data = command_wml.all_children_range().front().cfg;
