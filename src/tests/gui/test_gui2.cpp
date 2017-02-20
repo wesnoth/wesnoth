@@ -1169,11 +1169,13 @@ template<>
 struct dialog_tester<sp_options_configure>
 {
 	saved_game state;
-	ng::create_engine engine;
-	dialog_tester() : engine(test_utils::get_fake_display(-1, -1).video(), state) {}
+	ng::create_engine create_eng;
+	ng::configure_engine config_eng;
+	dialog_tester() : create_eng(test_utils::get_fake_display(-1, -1).video(), state)
+		, config_eng(create_eng.get_state()) {}
 	sp_options_configure* create()
 	{
-		return new sp_options_configure(engine);
+		return new sp_options_configure(create_eng, config_eng);
 	}
 };
 
