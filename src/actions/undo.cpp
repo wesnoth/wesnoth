@@ -420,17 +420,19 @@ void undo_list::redo()
 		//   1) wml no longer needs [on_redo] since the engine will execute the original moveto etc. events
 		//   2) It simplifies the c++ code since all undo_actions::redo functions can be removed.
 		
-		//TODO: this code doesnt work that well yet. The problem is that synced_context::run
-		//   readds the undo command with the normal undo_lis::add function whihc clears the
-		//   redo stack which makes redoign of more than one move impossible.
-		//   we should add a bool clear_replay=yes paramter to that function and use that to fix this.
 		const config& command_wml = action->replay_data.child("command");
 		std::string commandname = command_wml.all_children_range().front().key;
 		const config& data = command_wml.all_children_range().front().cfg;
 
 		resources::recorder->redo(const_cast<const config&>(action->replay_data));
 
+		
+		// synced_context::run readds the undo command with the normal undo_lis::add function whihc clears the
+		// redo stack which makes redoign of more than one move impossible. to work around that we save redo stack here and set it later.
+		redos_list temp;
+		temp.swap(redos_);
 		synced_context::run(commandname, data, /*use_undo*/ true, /*show*/ true);
+		temp.swap(redos_);
 	}
 	else {
 		int last_unit_id = resources::gameboard->unit_id_manager().get_save_id();
