@@ -119,7 +119,14 @@ bool enter_create_mode(CVideo& video, const config& game_config, saved_game& sta
 
 bool enter_configure_mode(CVideo& video, const config& game_config, saved_game& state, ng::create_engine& create_eng, bool local_players_only)
 {
-	if(!gui2::dialogs::sp_options_configure::execute(create_eng, video)) {
+	// We create the config engine here in order to ensure values like use_map_settings are set correctly
+	// TODO: should this be passed to this function instead of created here?
+	ng::configure_engine config_eng(create_eng.get_state());
+
+	// TODO: needed?
+	config_eng.update_initial_cfg(create_eng.current_level().data());
+
+	if(!gui2::dialogs::sp_options_configure::execute(create_eng, config_eng, video)) {
 		return false;
 	}
 

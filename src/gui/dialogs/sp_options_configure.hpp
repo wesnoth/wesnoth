@@ -29,29 +29,45 @@ namespace dialogs
 class sp_options_configure : public modal_dialog, private plugin_executor
 {
 public:
-	explicit sp_options_configure(ng::create_engine& create_engine);
+	sp_options_configure(ng::create_engine& create_engine, ng::configure_engine& config_engine);
 
 	/**
-	 * Execute function. We only want to show the dialog if there are active mods and
-	 * those active mods all have custom options.
+	 * Execute function. We only want to show the dialog if the campaign has options or if
+	 * there are active mods and at least one of those mods has custom options.
 	 */
-	static bool execute(ng::create_engine& create_engine, CVideo& video)
+	static bool execute(ng::create_engine& create_engine, ng::configure_engine& config_engine, CVideo& video)
 	{
-		using mod_type = ng::create_engine::extras_metadata_ptr;
+		// Check campaign options.
+		const auto& campaign_mods = create_engine.current_level().data().child_range("options");
 
-		const std::vector<mod_type>& activemods = create_engine.active_mods_data();
-		// FIXME: this code is wrogn in multiple ways:
-		//  1) It only searches in modifications but [olptions] can also appear in [campaign]
-		//  2) It also triggers on empty [options] which it shouldn't
-		if(std::none_of(activemods.begin(), activemods.end(), [](mod_type mod) {
-			return (*mod->cfg).has_child("options");
-		})) {
-			//FIXME: in this case no configure_engine::set_use_map_settings(use_map_settings_default()); was not called
-			//   so that mp_game_settings::use_map_settings has a wrong value so that the connect engine will mess up the scenarios settings
+		const bool have_campaign_options = std::any_of(campaign_mods.begin(), campaign_mods.end(), [](config& mod) {
+			return !mod.empty();
+		});
+	
+		// Check active mod options.
+		bool have_mod_options = false;
+
+		for(const auto& mod : create_engine.active_mods_data()) {
+			if(!(*mod->cfg).has_child("options")) {
+				continue;
+			}
+
+			const auto& opt_range = (*mod->cfg).child_range("options");
+
+			if(std::any_of(opt_range.begin(), opt_range.end(), [](const config& options) {
+				return !options.empty();
+			})) {
+				have_mod_options = true;
+				break;
+			}
+		}
+
+		// If we have no valid options whatsoever, just bypass this dialog.
+		if(!have_campaign_options && !have_mod_options) {
 			return true;
 		}
 
-		return sp_options_configure(create_engine).show(video);
+		return sp_options_configure(create_engine, config_engine).show(video);
 	}
 
 private:
@@ -65,7 +81,8 @@ private:
 	void post_show(window& window);
 
 	ng::create_engine& create_engine_;
-	std::unique_ptr<ng::configure_engine> config_engine_;
+	ng::configure_engine& config_engine_;
+
 	std::unique_ptr<mp_options_helper> options_manager_;
 };
 
