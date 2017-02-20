@@ -42,8 +42,6 @@
 #include "utils/functional.hpp"
 #include "video.hpp"
 
-#include <boost/dynamic_bitset.hpp>
-
 namespace gui2
 {
 namespace dialogs
@@ -169,9 +167,8 @@ void campaign_selection::pre_show(window& window)
 	//
 	menu_button& mods_menu = find_widget<menu_button>(&window, "mods_menu", false);
 
-	id = 0;
 	if(!engine_.get_const_extras_by_type(ng::create_engine::MOD).empty()) {
-		
+
 		std::vector<config> mod_menu_values;
 		std::vector<std::string> enabled = engine_.active_mods();
 
@@ -179,12 +176,12 @@ void campaign_selection::pre_show(window& window)
 			const bool active = std::find(enabled.begin(), enabled.end(), mod->id) != enabled.end();
 
 			mod_menu_values.push_back(config_of("label", mod->name)("checkbox", active));
+
+			mod_states_.push_back(active);
 		}
 
 		mods_menu.set_values(mod_menu_values);
-		mods_menu.set_callback_toggle_state_change(std::bind(&campaign_selection::mod_toggled, this, id));
-
-		id++;
+		mods_menu.set_callback_toggle_state_change(std::bind(&campaign_selection::mod_toggled, this, std::ref(window)));
 	} else {
 		mods_menu.set_active(false);
 		mods_menu.set_label(_("None"));
@@ -219,10 +216,22 @@ void campaign_selection::post_show(window& window)
 	preferences::set_modifications(engine_.active_mods(), false);
 }
 
-void campaign_selection::mod_toggled(int id /*, widget &*/)
+void campaign_selection::mod_toggled(window& window)
 {
-	engine_.set_current_mod_index(id);
-	engine_.toggle_current_mod();
+	boost::dynamic_bitset<> new_mod_states = find_widget<menu_button>(&window, "mods_menu", false).get_toggle_states();
+
+	// Get a mask of any mods that were toggled, regardless of new state
+	mod_states_ = mod_states_ ^ new_mod_states;
+
+	for(unsigned i = 0; i < mod_states_.size(); i++) {
+		if(mod_states_[i]) {
+			engine_.set_current_mod_index(i);
+			engine_.toggle_current_mod();
+		}
+	}
+
+	// Save the full toggle states for next time
+	mod_states_ = new_mod_states;
 }
 
 } // namespace dialogs
