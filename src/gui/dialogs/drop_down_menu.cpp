@@ -139,7 +139,7 @@ void drop_down_menu::pre_show(window& window)
 		find_widget<toggle_panel>(&new_row, "panel", false).set_tooltip(entry["tooltip"]);
 
 		if(entry.has_attribute("image")) {
-			image* img = new image;
+			image* img = new image();
 			img->set_definition("default");
 			img->set_label(entry["image"]);
 
@@ -150,7 +150,7 @@ void drop_down_menu::pre_show(window& window)
 		}
 
 		if(entry.has_attribute("checkbox")) {
-			toggle_button* checkbox = new toggle_button;
+			toggle_button* checkbox = new toggle_button();
 			checkbox->set_definition("default");
 			checkbox->set_id("checkbox");
 			checkbox->set_value_bool(entry["checkbox"].to_bool(false));
