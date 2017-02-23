@@ -148,11 +148,8 @@ public:
 
 	typedef std::deque<std::pair<config,game_events::queued_event>> event_list;
 	static event_list& get_undo_commands() { return undo_commands_; }
-	static event_list& get_redo_commands() { return redo_commands_; }
 	static void add_undo_commands(const config& commands, const game_events::queued_event& ctx);
-	static void add_redo_commands(const config& commands, const game_events::queued_event& ctx);
 	static void reset_undo_commands();
-	static void reset_redo_commands();
 private:
 	/*
 		weather we are in a synced move, in a user_choice, or none of them
@@ -175,10 +172,6 @@ private:
 		Actions wml to be executed when the current actio is undone.
 	*/
 	static event_list undo_commands_;
-	/**
-		Actions wml to be executed when the current actio is redone.
-	*/
-	static event_list redo_commands_;
 };
 
 

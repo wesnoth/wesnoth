@@ -51,7 +51,6 @@ static lg::log_domain log_replay("replay");
 synced_context::synced_state synced_context::state_ = synced_context::UNSYNCED;
 int synced_context::last_unit_id_ = 0;
 synced_context::event_list synced_context::undo_commands_;
-synced_context::event_list synced_context::redo_commands_;
 bool synced_context::is_simultaneously_ = false;
 
 bool synced_context::run(const std::string& commandname, const config& data, bool use_undo, bool show, synced_command::error_handler_function error_handler)
@@ -371,19 +370,9 @@ void synced_context::add_undo_commands(const config& commands, const game_events
 	undo_commands_.emplace_front(commands, ctx);
 }
 
-void synced_context::add_redo_commands(const config& commands, const game_events::queued_event& ctx)
-{
-	redo_commands_.emplace_front(commands, ctx);
-}
-
 void synced_context::reset_undo_commands()
 {
 	undo_commands_.clear();
-}
-
-void synced_context::reset_redo_commands()
-{
-	redo_commands_.clear();
 }
 
 set_scontext_synced_base::set_scontext_synced_base()
@@ -397,7 +386,6 @@ set_scontext_synced_base::set_scontext_synced_base()
 	synced_context::reset_is_simultaneously();
 	synced_context::set_last_unit_id(resources::gameboard->unit_id_manager().get_save_id());
 	synced_context::reset_undo_commands();
-	synced_context::reset_redo_commands();
 	old_rng_ = random_new::generator;
 	random_new::generator = new_rng_.get();
 }
