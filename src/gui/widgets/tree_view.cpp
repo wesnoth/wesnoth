@@ -71,20 +71,23 @@ tree_view_node& tree_view::add_node(
 int tree_view::remove_node(tree_view_node* node)
 {
 	assert(node && node != root_node_ && node->parent_node_);
+	const point node_size = node->get_size();
 
 	tree_view_node::node_children_vector& siblings = node->parent_node_->children_;
 
-	auto itor = std::find(siblings.begin(), siblings.end(), *node);
-	assert(itor != siblings.end());
+	auto node_itor = std::find(siblings.begin(), siblings.end(), *node);
+	assert(node_itor != siblings.end());
 
-	siblings.erase(itor);
+	const int position = node_itor - siblings.begin();
+
+	siblings.erase(node_itor);
 
 	if(get_size() != point()) {
 		// Don't shrink the width, need to think about a good algorithm to do so.
-		resize_content(0, -node->get_size().y);
+		resize_content(0, -node_size.y);
 	}
 
-	return itor - siblings.begin();
+	return position;
 }
 
 void tree_view::clear()
