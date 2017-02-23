@@ -79,46 +79,6 @@ bool move_action::undo(int)
 	return true;
 }
 
-/**
- * Redoes this action.
- * @return true on success; false on an error.
- */
-bool move_action::redo(int)
-{
-	game_display & gui = *resources::screen;
-	unit_map &   units = resources::gameboard->units();
-
-	// Check units.
-	unit_map::iterator u = units.find(route.front());
-	if ( u == units.end() ) {
-		ERR_NG << "Illegal movement 'redo'." << std::endl;
-		assert(false);
-		return false;
-	}
-
-	// Adjust starting moves.
-	const int saved_moves = starting_moves;
-	starting_moves = u->movement_left();
-
-	// Move the unit.
-	unit_display::move_unit(route, u.get_shared_ptr());
-	units.move(u->get_location(), route.back());
-	u = units.find(route.back());
-	unit::clear_status_caches();
-
-	// Set the unit's state.
-	u->set_goto(goto_hex);
-	u->set_movement(saved_moves, true);
-	u->anim_comp().set_standing();
-	
-	this->take_village();
-
-	gui.invalidate_unit_after_move(route.front(), route.back());
-	resources::recorder->redo(replay_data, true);
-	replay_data.clear();
-	execute_redo_umc_wml();
-	return true;
-}
 
 }
 }

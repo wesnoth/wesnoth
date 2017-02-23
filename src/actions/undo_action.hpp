@@ -60,22 +60,13 @@ namespace actions {
 		/// Undoes this action.
 		/// @return true on success; false on an error.
 		virtual bool undo(int side) = 0;
-		/// Redoes this action.
-		/// @return true on success; false on an error.
-		virtual bool redo(int side) = 0;
-		/// the replay data to do this action, this is only !empty() when this action is on the redo stack
-		/// we need this because we don't recalculate the redos like they would be in real game,
-		/// but even undoable commands can have "dependent" (= user_input) commands, which we save here.
-		config replay_data;
 		/// the difference in the unit ids
 		/// TODO: does it really make sense to allow undoing if the unit id counter has changed?
 		int unit_id_diff;
 		/// actions wml (specified by wml) that should be executed when undoing this command.
 		typedef std::vector<undo_event> event_vector;
 		event_vector umc_commands_undo;
-		event_vector umc_commands_redo;
 		void execute_undo_umc_wml();
-		void execute_redo_umc_wml();
 
 		static void read_event_vector(event_vector& vec, const config& cfg, const std::string& tag);
 		static void write_event_vector(const event_vector& vec, config& cfg, const std::string& tag);
@@ -97,12 +88,6 @@ namespace actions {
 		/// Undoes this action.
 		virtual bool undo(int)
 		{
-			return true;
-		}
-		/// Redoes this action.
-		virtual bool redo(int)
-		{
-			replay_data.clear();
 			return true;
 		}
 	};

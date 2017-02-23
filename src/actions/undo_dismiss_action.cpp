@@ -31,20 +31,5 @@ bool dismiss_action::undo(int side)
 	return true;
 }
 
-/**
- * Redoes this action.
- * @return true on success; false on an error.
- */
-bool dismiss_action::redo(int side)
-{
-	team &current_team = resources::gameboard->teams()[side-1];
-
-	resources::recorder->redo(replay_data);
-	replay_data.clear();
-	current_team.recall_list().erase_if_matches_id(dismissed_unit->id());
-	execute_redo_umc_wml();
-	return true;
-}
-
 }
 }
