@@ -115,9 +115,6 @@ void simple_item_selector::pre_show(window& window)
 
 	if(single_button_) {
 		button_cancel.set_visible(gui2::widget::visibility::invisible);
-
-		// Since the purpose of this is to prevent canceling, we should also disable Esc
-		window.set_escape_disabled(true);
 	}
 }
 
