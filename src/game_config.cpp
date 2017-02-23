@@ -496,12 +496,14 @@ const std::vector<color_t>& tc_info(const std::string& name)
 	}
 
 	std::vector<color_t> temp;
-	try {
-		temp.push_back(color_t::from_hex_string(name));
-	} catch(std::invalid_argument&) {
-		static std::vector<color_t> stv;
-		ERR_NG << "Invalid color palette: " << name << std::endl;
-		return stv;
+	for(const auto& s : utils::split(name)) {
+		try {
+			temp.push_back(color_t::from_hex_string(s));
+		} catch(std::invalid_argument&) {
+			static std::vector<color_t> stv;
+			ERR_NG << "Invalid color in palette: " << s << std::endl;
+			return stv;
+		}
 	}
 
 	team_rgb_colors.insert({name, temp});
