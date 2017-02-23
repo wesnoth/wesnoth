@@ -168,6 +168,10 @@ tree_view_node& tree_view_node::add_child(
 	// For this, we only increase height if the best size of the tree (that is, the size with the new node)
 	// is larger than its current size. This prevents the scrollbar being reserved even when there's obviously
 	// enough visual space.
+
+	// Throw away cached best size to force a recomputation.
+	get_tree_view().layout_initialise(false);
+
 	const point tree_best_size = get_tree_view().get_best_size();
 
 	const int height_modification = tree_best_size.y > current_size.y && get_tree_view().layout_size() == point()
