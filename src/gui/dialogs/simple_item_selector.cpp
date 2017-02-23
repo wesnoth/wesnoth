@@ -120,12 +120,8 @@ void simple_item_selector::pre_show(window& window)
 
 void simple_item_selector::post_show(window& window)
 {
-	if(get_retval() != window::OK) {
-		return;
-	}
-
-	listbox& list = find_widget<listbox>(&window, "listbox", false);
-	index_ = list.get_selected_row();
+	index_ = find_widget<listbox>(&window, "listbox", false).get_selected_row();
 }
+
 } // namespace dialogs
 } // namespace gui2
