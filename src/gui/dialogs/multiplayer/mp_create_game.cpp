@@ -318,7 +318,7 @@ void mp_create_game::pre_show(window& win)
 			dialog_callback<mp_create_game, &mp_create_game::on_tab_select>);
 #endif
 
-	on_tab_select(win);
+	// We call on_tab_select farther down.
 
 	//
 	// Main games list
@@ -336,8 +336,11 @@ void mp_create_game::pre_show(window& win)
 
 	win.add_to_keyboard_chain(&list);
 
-	// This handles both the initial game and tab selection
+	// This handles the initial game selection as well
 	display_games_of_type(win, level_types_[get_initial_type_index()].first, preferences::level());
+
+	// Initial tab selection must be done after game selection so the field widgets are set to their correct active state.
+	on_tab_select(win);
 
 	//
 	// Set up the Lua plugin context
