@@ -90,6 +90,8 @@ void slider::set_value(const int value)
 	} else {
 		set_item_position(value - minimum_value_);
 	}
+
+	fire(event::NOTIFY_MODIFIED, *this, nullptr);
 }
 
 void slider::set_minimum_value(const int minimum_value)
