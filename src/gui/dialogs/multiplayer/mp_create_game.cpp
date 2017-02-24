@@ -479,6 +479,22 @@ void mp_create_game::on_tab_select(window& window)
 {
 	const int i = find_widget<listbox>(&window, "tab_bar", false).get_selected_row();
 	find_widget<stacked_widget>(&window, "pager", false).select_layer(i);
+
+	/* HACK: the GUI2 field functions always internally save the correct value when set_widget_value is called
+	 *       - ie, when on_game_select calls update_map_settings, the correct values will be stored in the field,
+	 *       but if the settings tab isn't selected the widgets will not display the correct values. This forces
+	 *       an update when we switch to that tab so the widgets correctly display their values.
+	 *
+	 *       A possible better fix would be storing a pointer to the widget in question in the field object. It
+	 *       seems widgets will still correctly update even if they are not on the currently selected page if a
+	 *       pointer already exists.
+	 *
+	 *       Another possible fix would be allowing stacked_widget to return widgets on any page, not just on the
+	 *       currently visible one.
+	 */
+	if(i == TAB_SETTINGS) {
+		update_map_settings(window);
+	}
 }
 
 void mp_create_game::on_mod_select(window& window)
