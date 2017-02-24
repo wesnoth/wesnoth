@@ -28,7 +28,6 @@
 #include "gettext.hpp"
 #include "gui/auxiliary/filter.hpp"
 #include "gui/auxiliary/find_widget.hpp"
-#include "gui/dialogs/addon/filter_options.hpp"
 #include "gui/dialogs/helper.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/transient_message.hpp"
@@ -408,10 +407,6 @@ void addon_manager::pre_show(window& window)
 		std::bind(&addon_manager::copy_url_callback, this, std::ref(url_textbox)));
 
 	connect_signal_mouse_left_click(
-		find_widget<button>(&window, "options", false),
-		std::bind(&addon_manager::options_button_callback, this, std::ref(window)));
-
-	connect_signal_mouse_left_click(
 		find_widget<button>(&window, "show_help", false),
 		std::bind(&addon_manager::show_help, this, std::ref(window)));
 
@@ -473,19 +468,6 @@ void addon_manager::load_addon_list(window& window)
 	}
 
 	find_widget<button>(&window, "update_all", false).set_active(has_upgradable_addons);
-}
-
-void addon_manager::options_button_callback(window& window)
-{
-	gui2::dialogs::addon_filter_options dlg;
-
-	// TODO
-	//dlg.set_displayed_status(f_.status);
-	//dlg.set_displayed_types(f_.types);
-	//dlg.set_sort(f_.sort);
-	//dlg.set_direction(f_.direction);
-
-	dlg.show(window.video());
 }
 
 boost::dynamic_bitset<> addon_manager::get_status_filter_visibility(const window& window) const

@@ -88,7 +88,6 @@ private:
 	void browse_url_callback(text_box& url_box);
 	void copy_url_callback(text_box& url_box);
 
-	void options_button_callback(window& window);
 	void filter_callback(window& window);
 	void show_help(window& window);
 
