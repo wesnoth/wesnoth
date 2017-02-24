@@ -2628,7 +2628,6 @@ void display::draw_hex(const map_location& loc) {
 	int ypos = get_location_y(loc);
 	image::TYPE image_type = get_image_type(loc);
 	const bool on_map = get_map().on_board(loc);
-	const bool off_map_tile = (get_map().get_terrain(loc) == t_translation::OFF_MAP_USER);
 	const time_of_day& tod = get_time_of_day(loc);
 
 	int num_images_fg = 0;
@@ -2647,7 +2646,7 @@ void display::draw_hex(const map_location& loc) {
 		drawing_buffer_add(LAYER_TERRAIN_FG, loc, xpos, ypos, images_fg);
 
 		// Draw the grid, if that's been enabled
-		if(grid_ && on_map && !off_map_tile) {
+		if(grid_) {
 			static const image::locator grid_top(game_config::images::grid_top);
 			drawing_buffer_add(LAYER_GRID_TOP, loc, xpos, ypos,
 				image::get_image(grid_top, image::TOD_COLORED));
