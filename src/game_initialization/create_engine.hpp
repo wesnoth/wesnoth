@@ -24,6 +24,7 @@
 #include <numeric>
 #include <string>
 #include <utility>
+#include <cctype>
 
 class CVideo;
 class saved_game;
