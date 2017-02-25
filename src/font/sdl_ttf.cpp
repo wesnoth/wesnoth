@@ -320,7 +320,7 @@ static surface render_text(const std::string& text, int fontsize, const color_t&
 					j_end = i->end(); j != j_end; ++j) {
 				adjust_surface_alpha(*j, SDL_ALPHA_OPAQUE); // direct blit without alpha blending
 				SDL_Rect dstrect = sdl::create_rect(xpos, ypos, 0, 0);
-				sdl_blit(*j, nullptr, res, &dstrect);
+				blit_surface(*j, nullptr, res, &dstrect);
 				xpos += (*j)->w;
 				height = std::max<size_t>((*j)->h, height);
 			}
