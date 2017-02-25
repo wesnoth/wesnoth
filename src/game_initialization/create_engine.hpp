@@ -60,6 +60,7 @@ class level
 {
 public:
 	level(const config& data);
+	virtual ~level() = default;
 
 	MAKE_ENUM(TYPE,
 		(SCENARIO,      "scenario")
