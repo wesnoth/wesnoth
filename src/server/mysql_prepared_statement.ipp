@@ -21,6 +21,9 @@
 #include <string>
 #include <string.h>
 
+#define BOOST_SCOPE_EXIT_CONFIG_USE_LAMBDAS
+#include <boost/scope_exit.hpp>
+
 #include <mysql/mysql.h>
 
 #include "exceptions.hpp"
@@ -102,6 +105,10 @@ template<> std::string fetch_result<std::string>(MYSQL_STMT* stmt, const std::st
 	if(mysql_stmt_bind_result(stmt, result_bind) != 0)
 		throw sql_error(mysql_stmt_error(stmt), sql);
 
+	BOOST_SCOPE_EXIT(&stmt) {
+		mysql_stmt_free_result(stmt);
+	} ;
+
 	int res = mysql_stmt_fetch(stmt);
 	if(len > 0) {
 		buf = new char[len];
@@ -117,7 +124,6 @@ template<> std::string fetch_result<std::string>(MYSQL_STMT* stmt, const std::st
 		throw sql_error("null value returned", sql);
 	if(res != 0)
 		throw sql_error(mysql_stmt_error(stmt), sql);
-	mysql_stmt_free_result(stmt);
 	return result;
 }
 
@@ -130,6 +136,10 @@ template<> int fetch_result<int>(MYSQL_STMT* stmt, const std::string& sql)
 	if(mysql_stmt_bind_result(stmt, result_bind) != 0)
 		throw sql_error(mysql_stmt_error(stmt), sql);
 
+	BOOST_SCOPE_EXIT(&stmt) {
+		mysql_stmt_free_result(stmt);
+	} ;
+
 	int res = mysql_stmt_fetch(stmt);
 	if(res == MYSQL_NO_DATA)
 		throw sql_error("no data returned", sql);
@@ -137,7 +147,6 @@ template<> int fetch_result<int>(MYSQL_STMT* stmt, const std::string& sql)
 		throw sql_error("null value returned", sql);
 	if(res != 0)
 		throw sql_error(mysql_stmt_error(stmt), sql);
-	mysql_stmt_free_result(stmt);
 	return result;
 }
 
@@ -150,6 +159,10 @@ template<> bool fetch_result<bool>(MYSQL_STMT* stmt, const std::string& sql)
 	if(mysql_stmt_bind_result(stmt, result_bind) != 0)
 		throw sql_error(mysql_stmt_error(stmt), sql);
 
+	BOOST_SCOPE_EXIT(&stmt) {
+		mysql_stmt_free_result(stmt);
+	} ;
+
 	int res = mysql_stmt_fetch(stmt);
 	if(res == MYSQL_NO_DATA)
 		return false;
@@ -157,7 +170,6 @@ template<> bool fetch_result<bool>(MYSQL_STMT* stmt, const std::string& sql)
 		throw sql_error("null value returned", sql);
 	if(res != 0)
 		throw sql_error(mysql_stmt_error(stmt), sql);
-	mysql_stmt_free_result(stmt);
 	return true;
 }
 
