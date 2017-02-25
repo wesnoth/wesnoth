@@ -119,7 +119,9 @@ void toggle_button::set_value(const unsigned selected)
 	state_num_ = selected % num_states();
 	set_is_dirty(true);
 
-	if(callback_state_change_) {
+	// Check for get_window() is here to prevent the callback from
+	// being called when the initial value is set.
+	if(callback_state_change_ && get_window() != nullptr) {
 		callback_state_change_(*this);
 	}
 }

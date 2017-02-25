@@ -28,6 +28,7 @@
 #include "gui/widgets/pane.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/selectable_item.hpp"
+#include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/viewport.hpp"
 #include "gui/widgets/window.hpp"
 
@@ -276,7 +277,13 @@ void listbox::list_item_clicked(widget& caller)
 	for(size_t i = 0; i < generator_->get_item_count(); ++i) {
 
 		if(generator_->item(i).has_widget(caller)) {
-			generator_->toggle_item(i);
+			toggle_button* checkbox = dynamic_cast<toggle_button*>(&caller);
+			if(checkbox != nullptr) {
+				generator_->select_item(i, checkbox->get_value_bool());
+			} else {
+				generator_->toggle_item(i);
+			}
+
 			if(callback_item_changed_) {
 				callback_item_changed_(i);
 			}
