@@ -354,6 +354,7 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 		if(!increase_damage.empty()) {
 			add_and(desc);
 			desc << vngettext(
+				// TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
 				"$number_or_percent damage",
 				"$number_or_percent damage",
 				std::stoi(increase_damage),
@@ -362,6 +363,7 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 
 		if(!set_damage.empty()) {
 			add_and(desc);
+			// TRANSLATORS: Current value for WML code set_damage, documented in https://wiki.wesnoth.org/EffectWML
 			desc << vngettext(
 				"$number damage",
 				"$number damage",
@@ -372,6 +374,7 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 		if(!increase_attacks.empty()) {
 			add_and(desc);
 			desc << vngettext(
+				// TRANSLATORS: Current value for WML code increase_attacks, documented in https://wiki.wesnoth.org/EffectWML
 				"$number_or_percent strike",
 				"$number_or_percent strikes",
 				std::stoi(increase_attacks),
@@ -381,6 +384,7 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 		if(!set_attacks.empty()) {
 			add_and(desc);
 			desc << vngettext(
+				// TRANSLATORS: Current value for WML code set_attacks, documented in https://wiki.wesnoth.org/EffectWML
 				"$number strike",
 				"$number strikes",
 				std::stoi(set_attacks),
@@ -390,6 +394,7 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 		if(!set_accuracy.empty()) {
 			add_and(desc);
 			desc << vgettext(
+				// TRANSLATORS: Current value for WML code set_accuracy, documented in https://wiki.wesnoth.org/EffectWML
 				"$percent|% accuracy",
 				utils::string_map({{"percent", set_accuracy}}));
 		}
@@ -397,6 +402,7 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 		if(!increase_accuracy.empty()) {
 			add_and(desc);
 			desc << vgettext(
+				// TRANSLATORS: Current value for WML code increase_accuracy, documented in https://wiki.wesnoth.org/EffectWML
 				"$percent|% accuracy",
 				utils::string_map({{"percent", utils::print_modifier(increase_accuracy)}}));
 		}
@@ -404,6 +410,7 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 		if(!set_parry.empty()) {
 			add_and(desc);
 			desc << vgettext(
+				// TRANSLATORS: Current value for WML code set_parry, documented in https://wiki.wesnoth.org/EffectWML
 				"$number parry",
 				utils::string_map({{"number", set_parry}}));
 		}
@@ -411,6 +418,7 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 		if(!increase_parry.empty()) {
 			add_and(desc);
 			desc << vgettext(
+				// TRANSLATORS: Current value for WML code increase_parry, documented in https://wiki.wesnoth.org/EffectWML
 				"$number_or_percent parry",
 				utils::string_map({{"number_or_percent", utils::print_modifier(increase_parry)}}));
 		}
@@ -418,6 +426,7 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 		if(!set_movement.empty()) {
 			add_and(desc);
 			desc << vngettext(
+				// TRANSLATORS: Current value for WML code set_movement, documented in https://wiki.wesnoth.org/EffectWML
 				"$number movement point",
 				"$number movement points",
 				std::stoi(set_movement),
@@ -427,6 +436,7 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 		if(!increase_movement.empty()) {
 			add_and(desc);
 			desc << vngettext(
+				// TRANSLATORS: Current value for WML code increase_movement, documented in https://wiki.wesnoth.org/EffectWML
 				"$number_or_percent movement point",
 				"$number_or_percent movement points",
 				std::stoi(increase_movement),
