@@ -1085,12 +1085,14 @@ config side_engine::new_config() const
 			}
 		}
 
-		// NOTE: the presence of a type= key overrides no_leader. no_leader can be set by the
-		//       controller being set to CNTR_EMPTY, but to be safe we check the key specifically
-		//       here in case it was somehow included in the side config.
-		if(!(*leader)["no_leader"].to_bool(false)) {
+		// NOTE: the presence of a type= key overrides no_leader
+		if(controller_ != CNTR_EMPTY) {
 			(*leader)["type"] = flg_.current_leader();
 			(*leader)["gender"] = flg_.current_gender();
+		} else {
+			// TODO: FIX THIS SHIT! We shouldn't have a special string to denote no-leader-ness...
+			(*leader)["type"] = "null";
+			(*leader)["gender"] = "null";
 		}
 
 		res["team_name"] = parent_.team_names_[team_];
