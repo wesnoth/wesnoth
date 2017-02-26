@@ -1278,10 +1278,10 @@ monte_carlo_combat_matrix::monte_carlo_combat_matrix(unsigned int a_max_hp, unsi
 	a_split_(a_split), b_split_(b_split), rounds_(rounds), a_hit_chance_(a_hit_chance), b_hit_chance_(b_hit_chance),
 	a_initially_slowed_chance_(a_initially_slowed_chance), b_initially_slowed_chance_(b_initially_slowed_chance)
 {
-	scale_probabilities(a_summary[0], a_initial_, 1.0 / (1.0 - a_initially_slowed_chance), a_hp);
-	scale_probabilities(a_summary[1], a_initial_slowed_, 1.0 / a_initially_slowed_chance, a_hp);
-	scale_probabilities(b_summary[0], b_initial_, 1.0 / (1.0 - b_initially_slowed_chance), b_hp);
-	scale_probabilities(b_summary[1], b_initial_slowed_, 1.0 / b_initially_slowed_chance, b_hp);
+	scale_probabilities(a_summary[0], a_initial_, 1.0 - a_initially_slowed_chance, a_hp);
+	scale_probabilities(a_summary[1], a_initial_slowed_, a_initially_slowed_chance, a_hp);
+	scale_probabilities(b_summary[0], b_initial_, 1.0 - b_initially_slowed_chance, b_hp);
+	scale_probabilities(b_summary[1], b_initial_slowed_, b_initially_slowed_chance, b_hp);
 
 	clear();
 }
@@ -1435,9 +1435,9 @@ unsigned int monte_carlo_combat_matrix::calc_blows_b(unsigned int b_hp) const
 	return it->strikes;
 }
 
-void monte_carlo_combat_matrix::scale_probabilities(const std::vector<double>& source, std::vector<double>& target, double multiplier, unsigned int singular_hp)
+void monte_carlo_combat_matrix::scale_probabilities(const std::vector<double>& source, std::vector<double>& target, double divisor, unsigned int singular_hp)
 {
-	if (std::isinf(multiplier))
+	if (divisor == 0.0)
 	{
 		// Happens if the "target" HP distribution vector isn't used,
 		// in which case it's not necessary to scale the probabilities.
@@ -1451,7 +1451,7 @@ void monte_carlo_combat_matrix::scale_probabilities(const std::vector<double>& s
 	}
 	else
 	{
-		std::transform(source.begin(), source.end(), std::back_inserter(target), [=](double prob){ return multiplier * prob; });
+		std::transform(source.begin(), source.end(), std::back_inserter(target), [=](double prob){ return prob / divisor; });
 	}
 
 	assert(std::abs(std::accumulate(target.begin(), target.end(), 0.0) - 1.0) < 0.001);
