@@ -857,6 +857,7 @@ WML_HANDLER_FUNCTION(terrain_mask,, cfg)
 WML_HANDLER_FUNCTION(tunnel,, cfg)
 {
 	const bool remove = cfg["remove"].to_bool(false);
+	const bool delay = cfg["delayed_variable_substitution"].to_bool(true);
 	if (remove) {
 		const std::vector<std::string> ids = utils::split(cfg["id"]);
 		for (const std::string &id : ids) {
@@ -868,11 +869,11 @@ WML_HANDLER_FUNCTION(tunnel,, cfg)
 		ERR_WML << "[tunnel] is missing a mandatory tag:\n"
 			 << cfg.get_config().debug();
 	} else {
-		pathfind::teleport_group tunnel(cfg, false);
+		pathfind::teleport_group tunnel(delay ? cfg : vconfig(cfg.get_parsed_config()), false);
 		resources::tunnels->add(tunnel);
 
 		if(cfg["bidirectional"].to_bool(true)) {
-			tunnel = pathfind::teleport_group(cfg, true);
+			tunnel = pathfind::teleport_group(delay ? cfg : vconfig(cfg.get_parsed_config()), true);
 			resources::tunnels->add(tunnel);
 		}
 	}
