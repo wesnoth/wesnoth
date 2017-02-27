@@ -34,7 +34,7 @@ local function add_animation(anim, cfg)
 		)
 	end
 
-	if unit and not wesnoth.is_fogged(wesnoth.current.side, u.loc) then
+	if unit and not wesnoth.is_fogged(wesnoth.current.side, unit.loc) then
 		local primary = helper.get_child(cfg, "primary_attack")
 		local secondary = helper.get_child(cfg, "secondary_attack")
 		local get_attack = get_real_attack

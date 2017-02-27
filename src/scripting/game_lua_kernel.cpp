@@ -463,6 +463,7 @@ static int intf_create_animator(lua_State* L)
 			{"add", impl_add_animation},
 			{"run", impl_run_animation},
 			{"clear", impl_clear_animation},
+			{nullptr, nullptr},
 		};
 		luaL_setfuncs(L, metafuncs, 0);
 		lua_pushstring(L, "__metatable");
