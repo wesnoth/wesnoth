@@ -27,8 +27,30 @@ Version 1.13.6+dev:
    * Updated translations: British English, Czech, German, Portuguese (Brazil),
      Scottish Gaelic
  * Lua API:
-   * New attributes in side proxy:
-     num_units, num_villages, total_upkeep, expenses, net_income
+   * New wesnoth.set_side_id function can change flag, color, or both; it automatically
+     updates cached flag info for you (but you may still need to redraw to see it).
+   * The wesnoth.place_shroud and wesnoth.clear_shroud functions can alter shroud data
+     for a single side. They accept a list of locations, a shroud data string, or the
+     special value "all".
+   * New wesnoth.is_fogged and wesnoth.is_shrouded calls test the visibility level
+     of a hex for a particular side.
+   * New wesnoth.create_animator call produces an object that can be used to run
+     animations for a group of units
+   * New Lua API functions for altering AI:
+     * wesnoth.switch_ai replaces the entire AI with a definition from a file
+     * wesnoth.append_ai appends AI parameters to the configuation; supports goals,
+       stages, and simple aspects.
+       (Aspect tags are not fully parsed; only the id and facet subtags are used.)
+     * wesnoth.add_ai_component, delete_ai_component, change_ai_component
+       These do the work of the [modify_ai] tag for a single side.
+   * Side proxy changes:
+     * flag and flag_icon are never an empty string
+     * New mutable keys: suppress_end_turn_confirmation, share_vision
+     * New read-only keys: share_maps, share_view
+       num_units, num_villages, total_upkeep, expenses, net_income
+     * Existing keys made mutable: shroud, fog, flag, flag_icon
+   * wesnoth.scroll_to_tile now accepts a third boolean argument - if true, the scroll
+     is skipped when the tile is already visible onscreen.
  * User Interface:
    * List boxes now keep the selected item visible when you change the sorting
      option.
@@ -41,6 +63,8 @@ Version 1.13.6+dev:
    * Add ~CHAN() IPF that allows altering images according to formulas
      It takes up to 4 WFL formulas, one for each channel (red, green,
      blue, alpha); each works the same as the ~ADJUST_ALPHA() formula.
+   * New ability_type key in standard unit filters matches if the unit has any
+     ability of the specified type (tag name).
  * Miscellaneous and bug fixes:
    * Fixed severe lag/freeze on slow PCs (bug #25356)
    * Updated wmlscope to handle the square braces syntax in file paths
