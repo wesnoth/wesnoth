@@ -198,7 +198,7 @@ static std::string do_interpolation(const std::string &str, const variable_set& 
 			if(var_end == res.end()) {
 				res.replace(var_begin, default_start - 1, val);
 			}
-			else if(!val.blank()) {
+			else if(!val.empty()) {
 				res.replace(var_begin, var_end + 1, val);
 			}
 			else {
