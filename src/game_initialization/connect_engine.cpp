@@ -994,8 +994,7 @@ config side_engine::new_config() const
 {
 	config res = cfg_;
 
-	// If the user is allowed to change type, faction, leader etc,
-	// then import their new values in the config.
+	// If the user is allowed to change type, faction, leader etc,  then import their new values in the config.
 	if(!parent_.params_.saved_game) {
 		// Merge the faction data to res.
 		config faction = flg_.current_faction();
@@ -1006,22 +1005,24 @@ config side_engine::new_config() const
 	}
 
 	res["controller"] = controller_names[controller_];
-	// the hosts recieves the serversided controller tweaks after the start event, but
+
+	// The hosts receives the serversided controller tweaks after the start event, but
 	// for mp sync it's very important that the controller types are correct
-	// during the start/prestart event (otherwse random unit creation during prestart fails).
+	// during the start/prestart event (otherwise random unit creation during prestart fails).
 	res["is_local"] = player_id_ == preferences::login() || controller_ == CNTR_COMPUTER || controller_ == CNTR_LOCAL;
 
 	std::string desc = user_description();
 	if(!desc.empty()) {
 		res["user_description"] = t_string(desc, "wesnoth");
-		desc = vgettext(
-			"$playername $side",
-				{std::make_pair("playername", _(desc.c_str())),
-				std::make_pair("side", res["side"].str())}
-		);
+
+		desc = vgettext("$playername $side", {
+			{"playername", _(desc.c_str())},
+			{"side", res["side"].str()}
+		});
 	} else if(!player_id_.empty()) {
 		desc = player_id_;
 	}
+
 	if(res["name"].str().empty() && !desc.empty()) {
 		//TODO: maybe we should add this in to the leaders config instead of the side config?
 		res["name"] = desc;
@@ -1037,12 +1038,10 @@ config side_engine::new_config() const
 		res["no_leader"] = true;
 	}
 
-	// Side's "current_player" is the player which is currently taken that side
-	// or the one which is reserved to it.
-	// "player_id" is the id of the client who controlls that side,
-	// that always the host for Local players and AIs
-	// any always empty for free/reserved sides or null controlled sides.
-	// especialy you can use !res["player_id"].empty() to check whether a side is already taken.
+	// A side's "current_player" is the player which has currently taken that side or the one for which it is reserved.
+	// The "player_id" is the id of the client who controls that side. It's always the host for Local and AI players and
+	// always empty for free/reserved sides or null controlled sides. You can use !res["player_id"].empty() to check
+	// whether a side is already taken.
 	assert(!preferences::login().empty());
 	if(controller_ == CNTR_LOCAL) {
 		res["player_id"] = preferences::login();
@@ -1051,7 +1050,7 @@ config side_engine::new_config() const
 		res.remove_attribute("player_id");
 		res["current_player"] = reserved_for_;
 	} else if(controller_ == CNTR_COMPUTER) {
-		//TODO what is the content of player_id_ here ?
+		// TODO: what is the content of player_id_ here ?
 		res["current_player"] = desc;
 		res["player_id"] = preferences::login();
 	} else if(!player_id_.empty()) {
@@ -1063,25 +1062,28 @@ config side_engine::new_config() const
 	res["chose_random"] = chose_random_;
 
 	if(!parent_.params_.saved_game) {
-		// Find a config where a default leader is and set a new type
-		// and gender values for it.
+		// Find a config where a default leader is and set a new type and gender values for it.
 		config* leader = &res;
+
 		if(flg_.default_leader_cfg() != nullptr) {
 			for(config& side_unit : res.child_range("unit")) {
-				if(*flg_.default_leader_cfg() == side_unit) {
-					leader = &side_unit;
-					if(flg_.current_leader() != (*leader)["type"]) {
-						// If a new leader type was selected from carryover,
-						// make sure that we reset the leader.
-						std::string leader_id = (*leader)["id"];
-						leader->clear();
-						if(!leader_id.empty()) {
-							(*leader)["id"] = leader_id;
-						}
-					}
-
-					break;
+				if(*flg_.default_leader_cfg() != side_unit) {
+					continue;
 				}
+
+				leader = &side_unit;
+
+				if(flg_.current_leader() != (*leader)["type"]) {
+					// If a new leader type was selected from carryover, make sure that we reset the leader.
+					std::string leader_id = (*leader)["id"];
+					leader->clear();
+
+					if(!leader_id.empty()) {
+						(*leader)["id"] = leader_id;
+					}
+				}
+
+				break;
 			}
 		}
 
@@ -1129,8 +1131,8 @@ config side_engine::new_config() const
 		//
 		// If, by now, you get the impression this is a kludged-together mess which cries
 		// out for an honest design and a thoughtful implementation, you're correct! But
-		// I'm tired, and I'm cranky from wasting a over day on this, and so I'm excersizing
-		// my perogative as a grey-beard and leaving this for someone else to clean up.
+		// I'm tired, and I'm cranky from wasting a over day on this, and so I'm exercising
+		// my prerogative as a grey-beard and leaving this for someone else to clean up.
 		if(res["user_team_name"].empty() || !parent_.params_.use_map_settings) {
 			res["user_team_name"] = parent_.user_team_names_[team_];
 		}
