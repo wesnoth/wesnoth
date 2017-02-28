@@ -396,7 +396,7 @@ static int impl_add_animation(lua_State* L)
 		lua_getfield(L, 5, "text");
 		if(lua_isstring(L, -1)) {
 			text = lua_tostring(L, -1);
-		} else if(!lua_isnoneornil(L, 01)) {
+		} else if(!lua_isnoneornil(L, -1)) {
 			return luaW_type_error(L, -1, lua_typename(L, LUA_TSTRING));
 		}
 		lua_pop(L, 1);
