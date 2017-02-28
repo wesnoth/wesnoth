@@ -374,10 +374,10 @@ static int impl_add_animation(lua_State* L)
 		if(lua_isnumber(L, -1)) {
 			v1 = lua_tonumber(L, -1);
 		} else if(lua_istable(L, -1)) {
-			lua_rawgeti(L, 1, 1);
+			lua_rawgeti(L, -1, 1);
 			v1 = lua_tonumber(L, -1);
 			lua_pop(L, 1);
-			lua_rawgeti(L, 1, 2);
+			lua_rawgeti(L, -1, 2);
 			v2 = lua_tonumber(L, -1);
 			lua_pop(L, 2);
 		} else if(!lua_isnoneornil(L, -1)) {
@@ -403,9 +403,10 @@ static int impl_add_animation(lua_State* L)
 
 		lua_getfield(L, 5, "color");
 		if(lua_istable(L, -1) && lua_rawlen(L, -1) == 3) {
-			lua_rawgeti(L, 1, 1); // red @ -3
-			lua_rawgeti(L, 1, 2); // green @ -2
-			lua_rawgeti(L, 1, 3); // blue @ -1
+			int idx = lua_absindex(L, -1);
+			lua_rawgeti(L, idx, 1); // red @ -3
+			lua_rawgeti(L, idx, 2); // green @ -2
+			lua_rawgeti(L, idx, 3); // blue @ -1
 			color = color_t(lua_tonumber(L, -3), lua_tonumber(L, -2), lua_tonumber(L, -1));
 			lua_pop(L, 3);
 		} else if(!lua_isnoneornil(L, -1)) {
