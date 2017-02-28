@@ -263,6 +263,11 @@ void mouse_handler_base::mouse_wheel(int scrollx, int scrolly, bool browse)
 		movex = 0; movey = 0;
 	}
 
+	// Don't scroll map if cursor is not in gamemap area
+	if(!sdl::point_in_rect(x, y, gui().map_area())) {
+		return;
+	}
+
 	if (movex != 0 || movey != 0) {
 		CKey pressed;
 		// Alt + mousewheel do an 90° rotation on the scroll direction
