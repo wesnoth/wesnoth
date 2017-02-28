@@ -102,7 +102,7 @@ local function add_animation(anim, cfg)
 		})
 	end
 
-	for c in helper.child_range("animate") do
+	for c in helper.child_range(cfg, "animate") do
 		add_animation(anim, c)
 	end
 end
