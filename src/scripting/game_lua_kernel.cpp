@@ -2506,11 +2506,11 @@ int game_lua_kernel::intf_scroll_to_tile(lua_State *L)
 	bool check_fogged = luaW_toboolean(L, 2);
 	game_display::SCROLL_TYPE scroll = luaW_toboolean(L, 4)
 		? luaW_toboolean(L, 3)
-			? game_display::WARP
-			: game_display::SCROLL
-		: luaW_toboolean(L, 3)
 			? game_display::ONSCREEN_WARP
 			: game_display::ONSCREEN
+		: luaW_toboolean(L, 3)
+			? game_display::WARP
+			: game_display::SCROLL
 	;
 	if (game_display_) {
 		game_display_->scroll_to_tile(loc, scroll, check_fogged);
