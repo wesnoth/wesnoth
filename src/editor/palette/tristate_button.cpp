@@ -249,11 +249,6 @@ void tristate_button::draw_contents() {
 		sdl_blit(noverlay, nullptr, nbase, nullptr);
 	}
 
-//  TODO for later reference
-//	adjust_surface_alpha(nbase, SDL_ALPHA_OPAQUE);
-//	adjust_surface_alpha(image, SDL_ALPHA_TRANSPARENT);
-//
-//	TODO might be needed.
 	bg_restore();
 
 	image = nbase;

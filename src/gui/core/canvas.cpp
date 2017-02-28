@@ -1091,7 +1091,7 @@ void image_shape::draw(surface& canvas,
 				DBG_GUI_D << "Image: vertical stretch from " << image_->w << ','
 						  << image_->h << " to a height of " << h << ".\n";
 
-				surf = stretch_surface_vertical(image_, h, false);
+				surf = stretch_surface_vertical(image_, h);
 				done = true;
 			}
 			w = image_->w;
@@ -1103,7 +1103,7 @@ void image_shape::draw(surface& canvas,
 						  << ',' << image_->h << " to a width of " << w
 						  << ".\n";
 
-				surf = stretch_surface_horizontal(image_, w, false);
+				surf = stretch_surface_horizontal(image_, w);
 				done = true;
 			}
 			h = image_->h;
@@ -1136,7 +1136,7 @@ void image_shape::draw(surface& canvas,
 				DBG_GUI_D << "Image: scaling from " << image_->w << ','
 						  << image_->h << " to " << w << ',' << h << ".\n";
 
-				surf = scale_surface(image_, w, h, false);
+				surf = scale_surface(image_, w, h);
 			}
 		}
 		src_clip.w = w;
@@ -1146,7 +1146,7 @@ void image_shape::draw(surface& canvas,
 	}
 
 	if(vertical_mirror_(local_variables)) {
-		surf = flip_surface(surf, false);
+		surf = flip_surface(surf);
 	}
 
 	blit_surface(surf, &src_clip, canvas, &dst_clip);
@@ -1467,7 +1467,7 @@ void canvas::blit(surface& surf, SDL_Rect rect)
 			// Can't directly blur the surface if not 32 bpp.
 			SDL_Rect r = rect;
 			surface s = get_surface_portion(surf, r);
-			s = blur_surface(s, blur_depth_, false);
+			s = blur_surface(s, blur_depth_);
 			sdl_blit(s, nullptr, surf, &r);
 		}
 	}

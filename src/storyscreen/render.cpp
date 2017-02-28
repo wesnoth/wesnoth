@@ -66,7 +66,7 @@ namespace {
 	{
 		SDL_Rect blur_rect = sdl::create_rect(0, y, screen_area().w, h);
 		surface blur = get_surface_portion(video.getSurface(), blur_rect);
-		blur = blur_surface(blur, 1, false);
+		blur = blur_surface(blur, 1);
 		video.blit_surface(0, y, blur);
 	}
 }
@@ -137,12 +137,12 @@ void part_ui::prepare_background()
 			x_scale_factor = y_scale_factor = yscale;
 		}
 
-		layer = scale_surface(layer, static_cast<int>(layer->w*x_scale_factor), static_cast<int>(layer->h*y_scale_factor), false);
+		layer = scale_surface(layer, static_cast<int>(layer->w*x_scale_factor), static_cast<int>(layer->h*y_scale_factor));
 
 		const int tilew = bl.tile_horizontally() ? video_.getx() : layer->w;
 		const int tileh = bl.tile_vertically() ? video_.gety() : layer->h;
 
-		layer = tile_surface(layer, tilew, tileh, false);
+		layer = tile_surface(layer, tilew, tileh);
 
 		SDL_Rect drect = sdl::create_rect(
 				  (background_->w - layer->w) / 2

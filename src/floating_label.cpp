@@ -107,7 +107,6 @@ surface floating_label::create_surface()
 
 			if (background == nullptr) {
 				ERR_FT << "could not create tooltip box" << std::endl;
-				adjust_surface_alpha(foreground, SDL_ALPHA_OPAQUE);
 				return surf_ = foreground;
 			}
 
@@ -124,11 +123,7 @@ surface floating_label::create_surface()
 			adjust_surface_alpha(foreground, SDL_ALPHA_OPAQUE);
 			sdl_blit(foreground, nullptr, background, &r);
 
-			adjust_surface_alpha(background, SDL_ALPHA_OPAQUE);
 			surf_ = background;
-			// RLE compression seems less efficient for big semi-transparent area
-			// so, remove it for this case, but keep the optimized display format
-			adjust_surface_alpha(surf_, SDL_ALPHA_OPAQUE);
 		}
 		else {
 			// background is blurred shadow of the text
@@ -137,16 +132,13 @@ surface floating_label::create_surface()
 			sdl::fill_rect(background, nullptr, 0);
 			SDL_Rect r = { 2, 2, 0, 0 };
 			sdl_blit(foreground, nullptr, background, &r);
-			background = shadow_image(background, false);
+			background = shadow_image(background);
 
 			if (background == nullptr) {
 				ERR_FT << "could not create floating label's shadow" << std::endl;
-				adjust_surface_alpha(foreground, SDL_ALPHA_OPAQUE);
 				return surf_ = foreground;
 			}
-			adjust_surface_alpha(foreground, SDL_ALPHA_OPAQUE);
 			sdl_blit(foreground, nullptr, background, &r);
-			adjust_surface_alpha(background, SDL_ALPHA_OPAQUE);
 			surf_ = background;
 		}
 	}
@@ -197,8 +189,7 @@ void floating_label::undraw(surface screen)
 		--lifetime_;
 		if(alpha_change_ != 0 && (xmove_ != 0.0 || ymove_ != 0.0) && surf_ != nullptr) {
 			// fade out moving floating labels
-			// note that we don't optimize these surfaces since they will always change
-			surf_.assign(adjust_surface_alpha_add(surf_,alpha_change_,false));
+			surf_.assign(adjust_surface_alpha_add(surf_,alpha_change_));
 		}
 	}
 }

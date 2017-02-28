@@ -1605,18 +1605,18 @@ void display::render_image(int x, int y, const display::drawing_layer drawing_la
 		surf = image::reverse_image(surf);
 	}
 	if(vreverse) {
-		surf = flop_surface(surf, false);
+		surf = flop_surface(surf);
 	}
 
 	if(greyscale) {
-		surf = greyscale_image(surf, false);
+		surf = greyscale_image(surf);
 	}
 
 	if(blend_ratio != 0) {
-		surf = blend_surface(surf, blend_ratio, blendto, false);
+		surf = blend_surface(surf, blend_ratio, blendto);
 	}
 	if(alpha > ftofxp(1.0)) {
-		surf = brighten_image(surf, alpha, false);
+		surf = brighten_image(surf, alpha);
 	//} else if(alpha != 1.0 && blendto != 0) {
 	//	surf.assign(blend_surface(surf,1.0-alpha,blendto));
 	} else if(alpha != ftofxp(1.0)) {
@@ -1642,7 +1642,7 @@ void display::render_image(int x, int y, const display::drawing_layer drawing_la
 			float alpha_base = 0.3f; // 30% alpha at surface of water
 			float alpha_delta = 0.015f; // lose 1.5% per pixel depth
 			alpha_delta *= zoom_ / DefaultZoom; // adjust with zoom
-			surf = submerge_alpha(surf, depth, alpha_base, alpha_delta, false);
+			surf = submerge_alpha(surf, depth, alpha_base, alpha_delta);
 
 			srcrect.y = submerge_height;
 			srcrect.h = surf->h-submerge_height;

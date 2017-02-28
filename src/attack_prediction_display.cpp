@@ -430,9 +430,6 @@ void battle_prediction_pane::get_hp_distrib_surface(const std::vector<std::pair<
 	// Create the surface.
 	surf = create_neutral_surface(width, height);
 
-	// Disable alpha channel to avoid problem with sdl_blit
-	adjust_surface_alpha(surf, SDL_ALPHA_OPAQUE);
-
 	SDL_Rect clip_rect = sdl::create_rect(0, 0, width, height);
 	Uint32 grey_color = SDL_MapRGBA(surf->format, 0xb7, 0xc1, 0xc1, SDL_ALPHA_OPAQUE);
 

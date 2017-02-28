@@ -944,10 +944,6 @@ surface get_image(const image::locator& i_locator, TYPE type)
 		return res;
 	}
 
-	// Optimizes surface before storing it
-	if(res)
-		adjust_surface_alpha(res, SDL_ALPHA_OPAQUE);
-
 #ifdef _OPENMP
 #pragma omp critical(image_cache)
 #endif //_OPENMP
@@ -1000,9 +996,6 @@ surface get_lighted_image(const image::locator& i_locator, const light_string& l
 	default:
 		;
 	}
-
-	// Optimizes surface before storing it
-	adjust_surface_alpha(res, SDL_ALPHA_OPAQUE);
 
 	// record the lighted surface in the corresponding variants cache
 	i_locator.access_in_cache(*imap)[ls] = res;

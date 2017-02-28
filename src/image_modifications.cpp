@@ -284,8 +284,6 @@ surface adjust_alpha_modification::operator()(const surface & src) const
 		return nullptr;
 	}
 
-	adjust_surface_alpha(nsurf, SDL_ALPHA_OPAQUE);
-
 	{
 		surface_lock lock(nsurf);
 		Uint32* cur = lock.pixels();
@@ -332,8 +330,6 @@ surface adjust_channels_modification::operator()(const surface & src) const
 		std::cerr << "could not make neutral surface...\n";
 		return nullptr;
 	}
-
-	adjust_surface_alpha(nsurf, SDL_ALPHA_OPAQUE);
 
 	{
 		surface_lock lock(nsurf);
@@ -386,8 +382,7 @@ surface crop_modification::operator()(const surface& src) const
 	 * Since it seems to work for most cases, rather change this caller instead
 	 * of the function signature. (The issue was discovered in bug #20876).
 	 */
-    surface temp = cut_surface(make_neutral_surface(src), area);
-	adjust_surface_alpha(temp, SDL_ALPHA_OPAQUE);
+	surface temp = cut_surface(make_neutral_surface(src), area);
 	return temp;
 }
 
@@ -454,7 +449,7 @@ surface light_modification::operator()(const surface& src) const {
 	// light_surface wants a neutral surface having same dimensions
 	surface nsurf;
 	if(surf_->w != src->w || surf_->h != src->h) {
-		nsurf = scale_surface(surf_, src->w, src->h, false);
+		nsurf = scale_surface(surf_, src->w, src->h);
 	} else {
 		nsurf = make_neutral_surface(surf_);
 	}
@@ -596,7 +591,6 @@ surface background_modification::operator()(const surface &src) const
 	SDL_FillRect(ret, nullptr, SDL_MapRGBA(ret->format, color_.r, color_.g,
 					    color_.b, color_.a));
 	surface temp = src;
-	adjust_surface_alpha(temp, SDL_ALPHA_OPAQUE);
 	sdl_blit(temp, nullptr, ret, nullptr);
 	return ret;
 }

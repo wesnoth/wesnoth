@@ -302,7 +302,7 @@ void dialog_frame::draw_background()
 
 	if (dialog_style_.blur_radius) {
 		surface surf = ::get_surface_portion(video_.getSurface(), dim_.exterior);
-		surf = blur_surface(surf, dialog_style_.blur_radius, false);
+		surf = blur_surface(surf, dialog_style_.blur_radius);
 		sdl_blit(surf, nullptr, video_.getSurface(), &dim_.exterior);
 	}
 
