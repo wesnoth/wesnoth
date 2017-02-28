@@ -93,6 +93,8 @@ private:
 
 	boost::dynamic_bitset<> get_status_filter_visibility(const window& window) const;
 	boost::dynamic_bitset<> get_type_filter_visibility(const window& window) const;
+
+	bool exit_hook(window& window);
 };
 
 } // namespace dialogs

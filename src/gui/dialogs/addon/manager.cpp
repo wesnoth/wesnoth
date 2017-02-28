@@ -414,6 +414,9 @@ void addon_manager::pre_show(window& window)
 
 	window.keyboard_capture(&filter);
 	//window.add_to_keyboard_chain(&list.get_listbox());
+
+	// Use handle the special addon_list retval to allow installing addons on double click
+	window.set_exit_hook(std::bind(&addon_manager::exit_hook, this, std::ref(window)));
 }
 
 void addon_manager::load_addon_list(window& window)
@@ -751,6 +754,16 @@ void addon_manager::on_addon_select(window& window)
 
 	find_widget<button>(&window, "install", false).set_active(!installed);
 	find_widget<button>(&window, "uninstall", false).set_active(installed);
+}
+
+bool addon_manager::exit_hook(window& window)
+{
+	if(window.get_retval() == addon_list::INSTALL_ADDON_RETVAL) {
+		install_selected_addon(window);
+		return false;
+	}
+
+	return true;
 }
 
 } // namespace dialogs

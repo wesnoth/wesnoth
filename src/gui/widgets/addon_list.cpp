@@ -26,6 +26,7 @@
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/stacked_widget.hpp"
+#include "gui/widgets/toggle_panel.hpp"
 #include "wml_exception.hpp"
 
 #include <algorithm>
@@ -163,6 +164,9 @@ void addon_list::set_addons(const addons_list& addons)
 		data.emplace("type", item);
 
 		grid* row_grid = &list.add_row(data);
+
+		// Set special retval for the toggle panels
+		find_widget<toggle_panel>(row_grid, "list_panel", false).set_retval(INSTALL_ADDON_RETVAL);
 
 		stacked_widget& install_update_stack = find_widget<stacked_widget>(row_grid, "install_update_stack", false);
 
