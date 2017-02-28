@@ -24,7 +24,6 @@
 #include "editor/toolkit/editor_toolkit.hpp"
 #include "gui/dialogs/edit_text.hpp"
 
-#include "wml_separators.hpp"
 #include "formula/string_utils.hpp"
 class location_palette_item : public gui::widget
 {

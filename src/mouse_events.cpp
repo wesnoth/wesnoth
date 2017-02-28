@@ -48,7 +48,6 @@
 #include "units/ptr.hpp"                 // for unit_const_ptr
 #include "whiteboard/manager.hpp"       // for manager, etc
 #include "whiteboard/typedefs.hpp"      // for whiteboard_lock
-#include "wml_separators.hpp"           // for COLUMN_SEPARATOR, etc
 
 #include <cassert>                     // for assert
 #include <new>                          // for bad_alloc

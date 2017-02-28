@@ -27,7 +27,6 @@
 #include "serialization/string_utils.hpp"
 #include "sound.hpp"
 #include "video.hpp"
-#include "wml_separators.hpp"
 
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)

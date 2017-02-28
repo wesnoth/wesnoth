@@ -83,7 +83,6 @@
 #include "terrain/builder.hpp"
 #include "units/unit.hpp"
 #include "units/udisplay.hpp"
-#include "wml_separators.hpp"
 #include "whiteboard/manager.hpp"
 
 static lg::log_domain log_engine("engine");

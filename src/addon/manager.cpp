@@ -31,7 +31,6 @@
 #include "log.hpp"
 #include "serialization/parser.hpp"
 #include "version.hpp"
-#include "wml_separators.hpp"
 #include "formula/string_utils.hpp"
 #include "addon/client.hpp"
 
