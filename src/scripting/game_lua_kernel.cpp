@@ -379,7 +379,7 @@ static int impl_add_animation(lua_State* L)
 			lua_pop(L, 1);
 			lua_rawgeti(L, -1, 2);
 			v2 = lua_tonumber(L, -1);
-			lua_pop(L, 2);
+			lua_pop(L, 1);
 		} else if(!lua_isnoneornil(L, -1)) {
 			return luaW_type_error(L, -1, "number or array of two numbers");
 		}
