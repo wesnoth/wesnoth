@@ -303,10 +303,8 @@ static surface render_text(const std::string& text, int fontsize, const color_t&
 		return surface();
 	} else if (surfaces.size() == 1 && surfaces.front().size() == 1) {
 		surface surf = surfaces.front().front();
-		adjust_surface_alpha(surf, SDL_ALPHA_OPAQUE);
 		return surf;
 	} else {
-
 		surface res(create_compatible_surface(surfaces.front().front(),width,height));
 		if (res.null())
 			return res;
@@ -319,9 +317,8 @@ static surface render_text(const std::string& text, int fontsize, const color_t&
 
 			for(std::vector<surface>::iterator j = i->begin(),
 					j_end = i->end(); j != j_end; ++j) {
-				adjust_surface_alpha(*j, SDL_ALPHA_TRANSPARENT); // direct blit without alpha blending
 				SDL_Rect dstrect = sdl::create_rect(xpos, ypos, 0, 0);
-				sdl_blit(*j, nullptr, res, &dstrect);
+				blit_surface(*j, nullptr, res, &dstrect);
 				xpos += (*j)->w;
 				height = std::max<size_t>((*j)->h, height);
 			}
