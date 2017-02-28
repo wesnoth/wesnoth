@@ -52,7 +52,7 @@ local function add_animation(anim, cfg)
 		end
 
 		local hits = cfg.hits
-		if hits == true then
+		if hits == true or hits == nil then
 			hits = 'hit'
 		elseif hits == false then
 			hits = 'miss'
