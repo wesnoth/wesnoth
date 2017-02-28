@@ -154,7 +154,7 @@ void text_box_base::insert_char(const utf8::string& unicode)
 	if(text_.insert_text(selection_start_, unicode)) {
 
 		// Update status
-		set_cursor(selection_start_ + unicode.length(), false);
+		set_cursor(selection_start_ + utf8::size(unicode), false);
 		update_canvas();
 		set_is_dirty(true);
 	}
