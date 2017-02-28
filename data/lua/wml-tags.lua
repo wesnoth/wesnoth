@@ -987,7 +987,7 @@ function wml_actions.modify_side(cfg)
 			side.hidden = cfg.hidden
 		end
 		if cfg.color or cfg.flag then
-			wesnoth.set_team_id(side.side, cfg.flag, cfg.color)
+			wesnoth.set_side_id(side.side, cfg.flag, cfg.color)
 		end
 		if cfg.flag_icon then
 			side.flag_icon = cfg.flag_icon
