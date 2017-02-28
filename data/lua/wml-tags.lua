@@ -872,11 +872,19 @@ function wml_actions.set_menu_item(cfg)
 end
 
 function wml_actions.place_shroud(cfg)
-	wesnoth.place_shroud(cfg)
+	local sides = utils.get_sides(cfg)
+	local tiles = wesnoth.get_locations(cfg)
+	for i,side in ipairs(sides) do
+		wesnoth.place_shroud(side, tiles)
+	end
 end
 
 function wml_actions.remove_shroud(cfg)
-	wesnoth.remove_shroud(cfg)
+	local sides = utils.get_sides(cfg)
+	local tiles = wesnoth.get_locations(cfg)
+	for i,side in ipairs(sides) do
+		wesnoth.remove_shroud(side, tiles)
+	end
 end
 
 function wml_actions.time_area(cfg)
