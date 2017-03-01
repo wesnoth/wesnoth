@@ -48,6 +48,7 @@ const unit_animation* unit_animation_component::choose_animation(const display& 
 void unit_animation_component::set_standing(bool with_bars)
 {
 	display *disp = display::get_singleton();
+	if(disp == nullptr) return;
 	if (preferences::show_standing_animations()&& !u_.incapacitated()) {
 		start_animation(INT_MAX, choose_animation(*disp, u_.loc_, "standing"),
 			with_bars,  "", {0,0,0}, STATE_STANDING);
