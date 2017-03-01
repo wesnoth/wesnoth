@@ -40,7 +40,7 @@ local function ensure_config(cfg)
 		return true
 	end
 	if type(cfg) == 'userdata' then
-		if getmetatable(cfg) == 'vconfig' then return true end
+		if getmetatable(cfg) == 'wml object' then return true end
 		helper.wml_error("Expected a config or vconfig but got " .. getmetatable(cfg))
 	else
 		helper.wml_error("Expected a config or vconfig but got " .. type(cfg))
