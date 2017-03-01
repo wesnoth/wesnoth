@@ -35,10 +35,24 @@ function helper.all_teams()
 	return f, { i = 1 }
 end
 
+local function ensure_config(cfg)
+	if type(cfg) == 'table' then
+		return true
+	end
+	if type(cfg) == 'userdata' then
+		if getmetatable(cfg) == 'vconfig' then return true end
+		helper.wml_error("Expected a config or vconfig but got " .. getmetatable(cfg))
+	else
+		helper.wml_error("Expected a config or vconfig but got " .. type(cfg))
+	end
+	return false
+end
+
 --! Returns the first subtag of @a cfg with the given @a name.
 --! If @a id is not nil, the "id" attribute of the subtag has to match too.
 --! The function also returns the index of the subtag in the array.
 function helper.get_child(cfg, name, id)
+	ensure_config(cfg)
 	for i,v in ipairs(cfg) do
 		if v[1] == name then
 			local w = v[2]
@@ -51,6 +65,7 @@ end
 --! (Indices start at 1, as always with Lua.)
 --! The function also returns the index of the subtag in the array.
 function helper.get_nth_child(cfg, name, n)
+	ensure_config(cfg)
 	for i,v in ipairs(cfg) do
 		if v[1] == name then
 			n = n - 1
@@ -61,6 +76,7 @@ end
 
 --! Returns the number of subtags of @a with the given @a name.
 function helper.child_count(cfg, name)
+	ensure_config(cfg)
 	local n = 0
 	for i,v in ipairs(cfg) do
 		if v[1] == name then
@@ -72,6 +88,7 @@ end
 
 --! Returns an iterator over all the subtags of @a cfg with the given @a name.
 function helper.child_range(cfg, tag)
+	ensure_config(cfg)
 	local iter, state, i = ipairs(cfg)
 	local function f(s)
 		local c
@@ -86,6 +103,7 @@ end
 
 --! Returns an array from the subtags of @a cfg with the given @a name
 function helper.child_array(cfg, tag)
+	ensure_config(cfg)
 	local result = {}
 	for val in helper.child_range(cfg, tag) do
 		table.insert(result, val)
