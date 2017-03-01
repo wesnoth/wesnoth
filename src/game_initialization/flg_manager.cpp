@@ -32,7 +32,6 @@ flg_manager::flg_manager(const std::vector<const config*>& era_factions,
 		const config& side, const bool lock_settings, const bool use_map_settings, const bool saved_game)
 	: era_factions_(era_factions)
 	, side_(side)
-	, use_map_settings_(use_map_settings)
 	, saved_game_(saved_game)
 	, has_no_recruits_(get_original_recruits(side_).empty() && side_["previous_recruits"].empty())
 	, faction_lock_(side_["faction_lock"].to_bool(lock_settings) && (use_map_settings || lock_settings))
