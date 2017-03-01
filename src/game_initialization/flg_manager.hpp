@@ -105,7 +105,6 @@ private:
 
 	const config& side_;
 
-	const bool use_map_settings_;
 	const bool saved_game_;
 	const bool has_no_recruits_;
 
