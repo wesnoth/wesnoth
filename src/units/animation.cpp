@@ -1084,10 +1084,10 @@ void unit_animation::redraw(frame_parameters& value, halo::manager& halo_man)
 	invalidated_ = false;
 	overlaped_hex_.clear();
 
-	value.primary_frame = t_true;
+	value.primary_frame = true;
 	unit_anim_.redraw(value,src_,dst_, halo_man);
 
-	value.primary_frame = t_false;
+	value.primary_frame = false;
 	for(auto& anim : sub_anims_) {
 		anim.second.redraw(value, src_, dst_, halo_man);
 	}
@@ -1111,9 +1111,9 @@ bool unit_animation::invalidate(frame_parameters& value)
 
 	if(overlaped_hex_.empty()) {
 		if(complete_redraw) {
-			value.primary_frame = t_true;
+			value.primary_frame = true;
 			overlaped_hex_ = unit_anim_.get_overlaped_hex(value, src_, dst_);
-			value.primary_frame = t_false;
+			value.primary_frame = false;
 
 			for(auto& anim : sub_anims_) {
 				std::set<map_location> tmp = anim.second.get_overlaped_hex(value, src_, dst_);

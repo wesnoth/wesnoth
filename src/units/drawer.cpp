@@ -147,7 +147,7 @@ void unit_drawer::redraw_unit (const unit & u) const
 
 
 	if(u.incapacitated()) params.image_mod +="~GS()";
-	params.primary_frame = t_true;
+	params.primary_frame = true;
 
 
 	const frame_parameters adjusted_params = ac.anim_->get_current_params(params);
