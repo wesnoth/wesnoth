@@ -20,6 +20,8 @@
 #ifndef UNIT_FRAME_H_INCLUDED
 #define UNIT_FRAME_H_INCLUDED
 
+#include "units/frame_private.hpp"
+
 #include "halo.hpp"
 #include "image.hpp"
 
@@ -27,77 +29,6 @@
 #include <boost/optional.hpp>
 
 class config;
-
-/* FIXME: these 'progressive_' classes are all mostly equivalent except for the exact type of the
- * data_ vector and the interactions with it. Need to figure how to reduce the code duplication -
- * perhaps inherit from progressive_base? Though do note the string/image functions are only
- * unique since they don't store a pair of pairs.
- */
-template<typename T>
-class progressive_base
-{
-public:
-	progressive_base(const std::string& data = "", int duration = 0);
-	int duration() const;
-	const T get_current_element(int time, T default_val = 0) const;
-	bool does_not_change() const;
-
-	std::string get_original() const
-	{
-		return input_;
-	}
-
-private:
-	std::vector<std::pair<std::pair<T, T>, int>> data_;
-	std::string input_;
-};
-
-class progressive_string
-{
-public:
-	progressive_string(const std::string& data = "", int duration = 0);
-	int duration() const;
-	const std::string&  get_current_element(int time) const;
-
-	bool does_not_change() const
-	{
-		return data_.size() <= 1;
-	}
-
-	std::string get_original() const
-	{
-		return input_;
-	}
-
-private:
-	std::vector<std::pair<std::string,int>> data_;
-	std::string input_;
-};
-
-class progressive_image
-{
-public:
-	progressive_image(const std::string& data = "", int duration = 0);
-	int duration() const;
-	const image::locator& get_current_element(int time) const;
-
-	bool does_not_change() const
-	{
-		return data_.size() <= 1;
-	}
-
-	std::string get_original() const
-	{
-		return input_;
-	}
-
-private:
-	std::vector<std::pair<image::locator,int>> data_;
-	std::string input_;
-};
-
-typedef progressive_base<int> progressive_int;
-typedef progressive_base<double> progressive_double;
 
 /** All parameters from a frame at a given instant */
 struct frame_parameters
