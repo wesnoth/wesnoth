@@ -816,7 +816,7 @@ const frame_parameters unit_frame::merge_parameters(int current_time, const fram
 	}
 
 	// Convert the tribool to bool
-	const bool primary = result.primary_frame == true;
+	const bool primary = result.primary_frame == true || boost::logic::indeterminate(result.primary_frame);
 
 	/** The engine provides a default image to use for the unit when none is available */
 	result.image = current_val.image.is_void() || current_val.image.get_filename().empty()
