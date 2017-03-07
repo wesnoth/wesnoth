@@ -13,8 +13,6 @@
 */
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
-#include "widgets/slider.hpp"
-
 #include "editor/map/context_manager.hpp"
 
 #include "editor/action/action.hpp"
@@ -1317,14 +1315,6 @@ void editor_controller::left_mouse_up(int x, int y, const bool /*browse*/)
 	perform_delete(a);
 	if (a) set_button_state();
 	toolkit_->set_mouseover_overlay();
-	std::shared_ptr<gui::slider> s = gui_->find_slider("map-zoom-slider");
-	if (s && s->value_change()) {
-		if (gui_->set_zoom(s->value(), true)) {
-			context_manager_->get_map_context().get_labels().recalculate_labels();
-			toolkit_->set_mouseover_overlay(*gui_);
-			set_button_state();
-		}
-	}
 	context_manager_->refresh_after_action();
 }
 

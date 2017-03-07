@@ -181,7 +181,6 @@ display::display(const display_context * dc, CVideo& video, std::weak_ptr<wb::ma
 	reports_(),
 	menu_buttons_(),
 	action_buttons_(),
-	sliders_(),
 	invalidated_(),
 	previous_invalidated_(),
 	mouseover_hex_overlay_(nullptr),
@@ -241,7 +240,7 @@ display::display(const display_context * dc, CVideo& video, std::weak_ptr<wb::ma
 
 	init_flags();
 
-	if(!menu_buttons_.empty() || !action_buttons_.empty() || !sliders_.empty() ) {
+	if(!menu_buttons_.empty() || !action_buttons_.empty()) {
 		create_buttons();
 	}
 
@@ -830,30 +829,8 @@ std::shared_ptr<gui::button> display::find_menu_button(const std::string& id)
 	return nullptr;
 }
 
-std::shared_ptr<gui::zoom_slider> display::find_slider(const std::string& id)
-{
-	for (size_t i = 0; i < sliders_.size(); ++i) {
-		if(sliders_[i]->id() == id) {
-			return sliders_[i];
-		}
-	}
-	return nullptr;
-}
-
 void display::layout_buttons()
 {
-
-	DBG_DP << "positioning sliders...\n";
-	const std::vector<theme::slider>& sliders = theme_.sliders();
-	for(std::vector<theme::slider>::const_iterator i = sliders.begin(); i != sliders.end(); ++i) {
-		std::shared_ptr<gui::zoom_slider> s = find_slider(i->get_id());
-		if (s) {
-			const SDL_Rect& loc = i->location(screen_area());
-			s->set_location(loc);
-			s->set_measurements(0,0);
-		}
-	}
-
 	DBG_DP << "positioning menu buttons...\n";
 	const std::vector<theme::menu>& buttons = theme_.menus();
 	for(std::vector<theme::menu>::const_iterator i = buttons.begin(); i != buttons.end(); ++i) {
@@ -885,35 +862,6 @@ void display::create_buttons()
 {
 	std::vector<std::shared_ptr<gui::button>> menu_work;
 	std::vector<std::shared_ptr<gui::button>> action_work;
-	std::vector<std::shared_ptr<gui::zoom_slider>> slider_work;
-
-	DBG_DP << "creating sliders...\n";
-	const std::vector<theme::slider>& sliders = theme_.sliders();
-	for(std::vector<theme::slider>::const_iterator i = sliders.begin(); i != sliders.end(); ++i) {
-		std::shared_ptr<gui::zoom_slider> s(new gui::zoom_slider(screen_, i->image(), i->black_line()));
-		s->leave();
-		s->join_same(this);
-		DBG_DP << "drawing button " << i->get_id() << "\n";
-		s->set_id(i->get_id());
-		//TODO support for non zoom sliders
-		s->set_max(MaxZoom);
-		s->set_min(MinZoom);
-		s->set_value(zoom_);
-		if (!i->tooltip().empty()){
-			s->set_tooltip_string(i->tooltip());
-		}
-
-		std::shared_ptr<gui::zoom_slider> s_prev = find_slider(s->id());
-		if(s_prev) {
-			//s_prev->leave();
-			s->set_max(s_prev->max_value());
-			s->set_min(s_prev->min_value());
-			s->set_value(s_prev->value());
-			s->enable(s_prev->enabled());
-		}
-
-		slider_work.push_back(s);
-	}
 
 	DBG_DP << "creating menu buttons...\n";
 	const std::vector<theme::menu>& buttons = theme_.menus();
@@ -961,8 +909,6 @@ void display::create_buttons()
 	menu_buttons_.assign(menu_work.begin(), menu_work.end());
 	action_buttons_.clear();
 	action_buttons_.assign(action_work.begin(), action_work.end());
-	sliders_.clear();
-	sliders_.assign(slider_work.begin(), slider_work.end());
 
 	layout_buttons();
 	DBG_DP << "buttons created\n";
@@ -976,10 +922,6 @@ void display::render_buttons()
 
 	for (std::shared_ptr<gui::button> btn : action_buttons_) {
 		btn->set_dirty(true);
-	}
-
-	for (std::shared_ptr<gui::slider> sld : sliders_) {
-		sld->set_dirty(true);
 	}
 }
 
@@ -2079,10 +2021,6 @@ bool display::set_zoom(int amount, bool absolute)
 	}
 	LOG_DP << "new_zoom = " << new_zoom << std::endl;
 	if (new_zoom != zoom_) {
-		std::shared_ptr<gui::slider> zoom_slider = find_slider("map-zoom-slider");
-		if (zoom_slider) {
-			zoom_slider->set_value(new_zoom);
-		}
 		SDL_Rect const &area = map_area();
 		xpos_ += (xpos_ + area.w / 2) * (absolute ? new_zoom - zoom_ : amount) / zoom_;
 		ypos_ += (ypos_ + area.h / 2) * (absolute ? new_zoom - zoom_ : amount) / zoom_;
@@ -2448,7 +2386,7 @@ void display::redraw_everything()
 
 	theme_.set_resolution(screen_area());
 
-	if(!menu_buttons_.empty() || !action_buttons_.empty() || !sliders_.empty() ) {
+	if(!menu_buttons_.empty() || !action_buttons_.empty()) {
 		create_buttons();
 	}
 

@@ -257,12 +257,6 @@ void mouse_handler_base::mouse_wheel(int scrollx, int scrolly, bool browse)
 	int movex = scrollx * preferences::scroll_speed();
 	int movey = scrolly * preferences::scroll_speed();
 
-	// Don't scroll map and map zoom slider at same time
-	std::shared_ptr<gui::slider> s = gui().find_slider("map-zoom-slider");
-	if (s && sdl::point_in_rect(x, y, s->location())) {
-		movex = 0; movey = 0;
-	}
-
 	// Don't scroll map if cursor is not in gamemap area
 	if(!sdl::point_in_rect(x, y, gui().map_area())) {
 		return;
