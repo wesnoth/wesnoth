@@ -78,8 +78,8 @@ public:
 
 	const std::set<std::string> &report_list();
 
+	using generator_function = std::function<config(reports::context&)>;
 
-	typedef config (*generator_function)(reports::context & );
 	typedef std::map<std::string, std::shared_ptr<reports::generator> > dynamic_report_generators;
 
 private:
