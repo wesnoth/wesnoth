@@ -31,6 +31,7 @@
 #include "simple_wml.hpp"
 #include "filesystem.hpp"
 
+#include <memory>
 #include <stdexcept>
 
 template<typename Handler, typename ErrorHandler>
@@ -178,6 +179,7 @@ struct sendfile_op
 	Handler handler_;
 	ErrorHandler error_handler_;
 	bool pending_;
+	std::shared_ptr<handle_doc<Handler, ErrorHandler>> handle_send_doc_;
 
 	void operator()(boost::system::error_code ec, std::size_t)
 	{
@@ -255,9 +257,9 @@ void async_send_file(socket_ptr socket, const std::string& filename, Handler han
 	}
 
 	op.overlap_.hEvent = event;
+	op.handle_send_doc_.reset(new handle_doc<Handler, ErrorHandler>(socket, handler, error_handler, filesize, nullptr));
 
-	handle_doc<Handler, ErrorHandler> handle_send_doc(socket, handler, error_handler, filesize, nullptr);
-	buffers.push_back(boost::asio::buffer(handle_send_doc.data_size->buf, 4));
+	buffers.push_back(boost::asio::buffer(op.handle_send_doc_->data_size->buf, 4));
 	async_write(*socket, buffers, op);
 }
 
