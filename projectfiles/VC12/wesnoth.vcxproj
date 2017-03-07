@@ -3870,14 +3870,6 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Widgets\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Widgets\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\widgets\slider.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Widgets\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Widgets\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Widgets\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Widgets\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Widgets\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Widgets\</ObjectFileName>
-    </ClCompile>
     <ClCompile Include="..\..\src\widgets\textbox.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Widgets\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Widgets\</ObjectFileName>
@@ -4494,7 +4486,6 @@
     <ClInclude Include="..\..\src\widgets\menu.hpp" />
     <ClInclude Include="..\..\src\widgets\scrollarea.hpp" />
     <ClInclude Include="..\..\src\widgets\scrollbar.hpp" />
-    <ClInclude Include="..\..\src\widgets\slider.hpp" />
     <ClInclude Include="..\..\src\widgets\textbox.hpp" />
     <ClInclude Include="..\..\src\widgets\widget.hpp" />
     <ClInclude Include="..\..\src\wml_exception.hpp" />
