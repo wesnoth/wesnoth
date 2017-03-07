@@ -778,7 +778,7 @@ bool pango_text::set_markup_helper(const std::string& text)
 	}
 
 	/* Replacement worked, still warn the user about the error. */
-	ERR_GUI_L << "pango_text::" << __func__
+	LOG_GUI_L << "pango_text::" << __func__
 			<< " text '" << text
 			<< "' has unescaped ampersands '&', escaped them.\n";
 
