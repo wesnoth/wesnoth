@@ -214,8 +214,6 @@ void addon_list::set_addons(const addons_list& addons)
 			find_widget<button>(row_grid, "single_update", false).set_active(true);
 			find_widget<button>(row_grid, "single_uninstall", false).set_active(tracking_info.state == ADDON_INSTALLED);
 
-			install_update_stack.select_layer(static_cast<int>(is_updatable));
-
 			if(true) {
 				gui2::event::connect_signal_mouse_left_click(
 					find_widget<button>(row_grid, "single_install", false),
@@ -248,6 +246,8 @@ void addon_list::set_addons(const addons_list& addons)
 					halt = true;
 				});
 			}
+
+			install_update_stack.select_layer(static_cast<int>(is_updatable));
 		}
 	}
 }
