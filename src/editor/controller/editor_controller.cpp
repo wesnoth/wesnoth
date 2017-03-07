@@ -689,12 +689,12 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 
 			//Zoom
 		case HOTKEY_ZOOM_IN:
-			gui_->set_zoom(zoom_amount);
+			gui_->set_zoom(true);
 			context_manager_->get_map_context().get_labels().recalculate_labels();
 			toolkit_->set_mouseover_overlay(*gui_);
 			return true;
 		case HOTKEY_ZOOM_OUT:
-			gui_->set_zoom(-zoom_amount);
+			gui_->set_zoom(false);
 			context_manager_->get_map_context().get_labels().recalculate_labels();
 			toolkit_->set_mouseover_overlay(*gui_);
 			return true;

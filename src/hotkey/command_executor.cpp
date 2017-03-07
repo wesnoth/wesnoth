@@ -716,10 +716,12 @@ void command_executor_default::recalculate_minimap()
 {
 	get_display().recalculate_minimap();
 }
+
 CVideo& command_executor_default::get_video()
 {
 	return get_display().video();
 }
+
 void command_executor_default::lua_console()
 {
 	if (get_display().in_game()) {
@@ -729,6 +731,7 @@ void command_executor_default::lua_console()
 	}
 
 }
+
 void command_executor::lua_console()
 {
 	gui2::dialogs::lua_interpreter::display(get_video(), gui2::dialogs::lua_interpreter::APP);
@@ -736,16 +739,19 @@ void command_executor::lua_console()
 
 void command_executor_default::zoom_in()
 {
-	get_display().set_zoom(zoom_amount);
+	get_display().set_zoom(true);
 }
+
 void command_executor_default::zoom_out()
 {
-	get_display().set_zoom(-zoom_amount);
+	get_display().set_zoom(false);
 }
+
 void command_executor_default::zoom_default()
 {
 	get_display().set_default_zoom();
 }
+
 void command_executor_default::map_screenshot()
 {
 	make_screenshot(_("Map-Screenshot"), get_video(),

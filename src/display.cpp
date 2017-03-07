@@ -63,11 +63,15 @@ static lg::log_domain log_display("display");
 #define DBG_DP LOG_STREAM(debug, log_display)
 
 namespace {
-	const int DefaultZoom = game_config::tile_size;
-	const int SmallZoom   = DefaultZoom / 2;
+	std::vector<unsigned int> zoom_levels {18, 24, 36, 54, 72, 108, 144, 216, 288};
 
-	const int MinZoom = 4;
-	const int MaxZoom = 288;
+	const int final_zoom_index = static_cast<int>(zoom_levels.size()) - 1;
+
+	const unsigned int DefaultZoom = game_config::tile_size;
+	const unsigned int SmallZoom   = DefaultZoom / 2;
+
+	const unsigned int MinZoom = zoom_levels.front();
+	const unsigned int MaxZoom = zoom_levels.back();
 	size_t sunset_delay = 0;
 
 	bool benchmark = false;
@@ -75,7 +79,7 @@ namespace {
 	bool debug_foreground = false;
 }
 
-int display::last_zoom_ = SmallZoom;
+unsigned int display::last_zoom_ = SmallZoom;
 
 void display::parse_team_overlays()
 {
@@ -158,6 +162,7 @@ display::display(const display_context * dc, CVideo& video, std::weak_ptr<wb::ma
 	view_locked_(false),
 	theme_(theme_cfg, screen_area()),
 	zoom_(DefaultZoom),
+	zoom_index_(0),
 	fake_unit_man_(new fake_unit_manager(*this)),
 	builder_(new terrain_builder(level, &dc_->map(), theme_.border().tile_image)),
 	minimap_(nullptr),
@@ -235,6 +240,8 @@ display::display(const display_context * dc, CVideo& video, std::weak_ptr<wb::ma
 	fill_images_list(game_config::shroud_prefix, shroud_images_);
 
 	set_idle_anim_rate(preferences::idle_anim_rate());
+
+	zoom_index_ = std::find(zoom_levels.begin(), zoom_levels.end(), zoom_) - zoom_levels.begin();
 
 	image::set_zoom(zoom_);
 
@@ -2008,41 +2015,46 @@ bool display::zoom_at_min() const
 	return zoom_ == MinZoom;
 }
 
-bool display::set_zoom(int amount, bool absolute)
+bool display::set_zoom(bool increase)
 {
-	int new_zoom = zoom_ + amount;
-	if (absolute)
-		new_zoom = amount;
-	if (new_zoom < MinZoom) {
-		new_zoom = MinZoom;
-	}
-	if (new_zoom > MaxZoom) {
-		new_zoom = MaxZoom;
-	}
+	// Ensure we don't try to access nonexistant vector indices.
+	zoom_index_ = util::clamp(increase ? zoom_index_ + 1 : zoom_index_ - 1, 0, final_zoom_index);
+
+	return set_zoom(zoom_levels[zoom_index_]);
+}
+
+bool display::set_zoom(unsigned int amount)
+{
+	const unsigned int new_zoom = util::clamp(amount, MinZoom, MaxZoom);
+
 	LOG_DP << "new_zoom = " << new_zoom << std::endl;
-	if (new_zoom != zoom_) {
-		SDL_Rect const &area = map_area();
-		xpos_ += (xpos_ + area.w / 2) * (absolute ? new_zoom - zoom_ : amount) / zoom_;
-		ypos_ += (ypos_ + area.h / 2) * (absolute ? new_zoom - zoom_ : amount) / zoom_;
 
-		zoom_ = new_zoom;
-		bounds_check_position();
-		if (zoom_ != DefaultZoom) {
-			last_zoom_ = zoom_;
-		}
-		image::set_zoom(zoom_);
-
-		labels().recalculate_labels();
-		redraw_background_ = true;
-		invalidate_all();
-
-		// Forces a redraw after zooming.
-		// This prevents some graphic glitches from occurring.
-		draw();
-		return true;
-	} else {
+	if(new_zoom == zoom_) {
 		return false;
 	}
+
+	const SDL_Rect& area = map_area();
+
+	xpos_ += (xpos_ + area.w / 2) * amount / zoom_;
+	ypos_ += (ypos_ + area.h / 2) * amount / zoom_;
+
+	zoom_ = new_zoom;
+	bounds_check_position();
+	if(zoom_ != DefaultZoom) {
+		last_zoom_ = zoom_;
+	}
+
+	image::set_zoom(zoom_);
+
+	labels().recalculate_labels();
+	redraw_background_ = true;
+	invalidate_all();
+
+	// Forces a redraw after zooming.
+	// This prevents some graphic glitches from occurring.
+	draw();
+
+	return true;
 }
 
 void display::set_default_zoom()
@@ -2308,7 +2320,7 @@ void display::scroll_to_tiles(const std::vector<map_location>::const_iterator & 
 
 void display::bounds_check_position()
 {
-	const int orig_zoom = zoom_;
+	const unsigned int orig_zoom = zoom_;
 
 	if(zoom_ < MinZoom) {
 		zoom_ = MinZoom;

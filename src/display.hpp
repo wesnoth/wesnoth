@@ -503,14 +503,11 @@ public:
 	 */
 	bool scroll(int xmov, int ymov, bool force = false);
 
-	/**
-	 * Zooms the display by the specified amount.
-	 * Negative values zoom out.
-	 * Note the amount should be a multiple of four,
-	 * otherwise the images might start to look odd
-	 * (hex_width() gets rounding errors).
-	 */
-	bool set_zoom(int amount, bool absolute = false);
+	/** Zooms the display in (true) or out (false). */
+	bool set_zoom(bool increase);
+
+	/** Sets the display zoom to the specified amount. */
+	bool set_zoom(unsigned int amount);
 
 	bool zoom_at_max() const;
 	bool zoom_at_min() const;
@@ -736,8 +733,9 @@ protected:
 	int xpos_, ypos_;
 	bool view_locked_;
 	theme theme_;
-	int zoom_;
-	static int last_zoom_;
+	unsigned int zoom_;
+	int zoom_index_;
+	static unsigned int last_zoom_;
 	const std::unique_ptr<fake_unit_manager> fake_unit_man_;
 	const std::unique_ptr<terrain_builder> builder_;
 	surface minimap_;

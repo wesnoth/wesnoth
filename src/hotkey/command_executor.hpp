@@ -141,7 +141,6 @@ public:
 class command_executor_default : public command_executor
 {
 protected:
-	static const int zoom_amount = 4;
 	virtual display& get_display() = 0;
 public:
 	CVideo& get_video();
