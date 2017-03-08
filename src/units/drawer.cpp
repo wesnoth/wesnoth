@@ -29,13 +29,13 @@
 #include "units/animation_component.hpp"
 #include "units/frame.hpp"
 
-unit_drawer::unit_drawer(display & thedisp, std::map<surface,SDL_Rect> & bar_rects) :
+unit_drawer::unit_drawer(display & thedisp) :
 	disp(thedisp),
 	dc(disp.get_disp_context()),
 	map(dc.map()),
 	teams(dc.teams()),
 	halo_man(thedisp.get_halo_manager()),
-	energy_bar_rects_(bar_rects),
+	energy_bar_rects_(),
 	viewing_team(disp.viewing_team()),
 	playing_team(disp.playing_team()),
 	viewing_team_ref(teams[viewing_team]),
@@ -49,7 +49,7 @@ unit_drawer::unit_drawer(display & thedisp, std::map<surface,SDL_Rect> & bar_rec
 	hex_size_by_2(disp.hex_size()/2)
 {}
 
-void unit_drawer::redraw_unit (const unit & u) const
+void unit_drawer::redraw_unit (const unit & u)
 {
 	unit_animation_component & ac = u.anim_comp();
 	map_location loc = u.get_location();
@@ -336,7 +336,7 @@ void unit_drawer::redraw_unit (const unit & u) const
 
 void unit_drawer::draw_bar(const std::string& image, int xpos, int ypos,
 		const map_location& loc, size_t height, double filled,
-		const color_t& col, fixed_t alpha) const
+		const color_t& col, fixed_t alpha)
 {
 
 	filled = std::min<double>(std::max<double>(filled,0.0),1.0);
@@ -408,7 +408,7 @@ struct is_energy_color {
 												  (color&0x000000FF) < 0x00000010; }
 };
 
-const SDL_Rect& unit_drawer::calculate_energy_bar(surface surf) const
+const SDL_Rect& unit_drawer::calculate_energy_bar(surface surf)
 {
 	const std::map<surface,SDL_Rect>::const_iterator i = energy_bar_rects_.find(surf);
 	if(i != energy_bar_rects_.end()) {
@@ -439,11 +439,13 @@ const SDL_Rect& unit_drawer::calculate_energy_bar(surface surf) const
 		}
 	}
 
-	const SDL_Rect res = sdl::create_rect(first_col
-			, first_row
-			, last_col-first_col
-			, last_row+1-first_row);
-	energy_bar_rects_.insert(std::pair<surface,SDL_Rect>(surf,res));
+	SDL_Rect res {
+		first_col,
+		first_row,
+		last_col     - first_col,
+		last_row + 1 - first_row
+	};
+
+	energy_bar_rects_.insert({surf, res});
 	return calculate_energy_bar(surf);
 }
-
