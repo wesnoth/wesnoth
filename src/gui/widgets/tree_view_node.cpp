@@ -34,7 +34,6 @@ namespace gui2
 
 tree_view_node::tree_view_node(
 		const std::string& id,
-		const std::vector<node_definition>& node_definitions,
 		tree_view_node* parent_node,
 		tree_view& parent_tree_view,
 		const std::map<std::string /* widget id */, string_map>& data)
@@ -43,7 +42,6 @@ tree_view_node::tree_view_node(
 	, tree_view_(&parent_tree_view)
 	, grid_()
 	, children_()
-	, node_definitions_(node_definitions)
 	, toggle_(nullptr)
 	, label_(nullptr)
 	, unfolded_(false)
@@ -59,7 +57,7 @@ tree_view_node::tree_view_node(
 		return;
 	}
 
-	for(const auto& node_definition : node_definitions_) {
+	for(const auto& node_definition : get_tree_view().get_node_definitions()) {
 		if(node_definition.id != id) {
 			continue;
 		}
@@ -142,7 +140,7 @@ tree_view_node& tree_view_node::add_child(
 		itor = children_.begin() + index;
 	}
 
-	itor = children_.insert(itor, new tree_view_node(id, node_definitions_, this, get_tree_view(), data));
+	itor = children_.insert(itor, new tree_view_node(id, this, get_tree_view(), data));
 
 	if(is_folded() /*|| is_root_node()*/) {
 		return *itor;

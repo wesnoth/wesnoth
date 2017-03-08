@@ -37,7 +37,6 @@ class tree_view_node : public widget
 	friend class tree_view;
 
 public:
-	using node_definition = implementation::tree_node;
 	using node_children_vector = boost::ptr_vector<tree_view_node>;
 
 	bool operator==(const tree_view_node& node)
@@ -47,7 +46,6 @@ public:
 
 	tree_view_node(
 			const std::string& id,
-			const std::vector<node_definition>& node_definitions,
 			tree_view_node* parent_node,
 			tree_view& parent_tree_view,
 			const std::map<std::string /* widget id */, string_map>& data);
@@ -274,16 +272,6 @@ private:
 	 * We want the returned child nodes to remain stable so store pointers.
 	 */
 	node_children_vector children_;
-
-	/**
-	 * The node definitions known to use.
-	 *
-	 * This list is needed to create new nodes.
-	 *
-	 * @todo Maybe store this list in the tree_view to avoid copying the
-	 * reference.
-	 */
-	const std::vector<node_definition>& node_definitions_;
 
 	/** The toggle for the folded state. */
 	selectable_item* toggle_;

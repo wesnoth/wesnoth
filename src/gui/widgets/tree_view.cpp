@@ -43,7 +43,6 @@ tree_view::tree_view(const std::vector<node_definition>& node_definitions)
 	, indentation_step_size_(0)
 	, need_layout_(false)
 	, root_node_(new tree_view_node("root",
-									 node_definitions_,
 									 nullptr,
 									 *this,
 									 std::map<std::string, string_map>()))

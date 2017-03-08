@@ -99,6 +99,11 @@ public:
 		selection_change_callback_ = callback;
 	}
 
+	const std::vector<node_definition>& get_node_definitions() const
+	{
+		return node_definitions_;
+	}
+
 protected:
 /***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 	/** Inherited from scrollbar_container. */
