@@ -77,6 +77,7 @@ unit_type::unit_type(const unit_type& o) :
 	num_traits_(o.num_traits_),
 	variations_(o.variations_),
 	default_variation_(o.default_variation_),
+	variation_name_(o.variation_name_),
 	race_(o.race_),
 	alpha_(o.alpha_),
 	abilities_(o.abilities_),
