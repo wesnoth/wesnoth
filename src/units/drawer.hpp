@@ -45,7 +45,7 @@ typedef Sint32 fixed_t;
 class unit_drawer
 {
 public:
-	unit_drawer(display & thedisp);
+	unit_drawer(display & thedisp, std::map<surface,SDL_Rect> & bar_rects);
 
 private:
 	display & disp;
@@ -53,7 +53,7 @@ private:
 	const gamemap & map;
 	const std::vector<team> & teams;
 	halo::manager & halo_man;
-	std::map<surface,SDL_Rect> energy_bar_rects_;
+	std::map<surface,SDL_Rect> & energy_bar_rects_;
 	size_t viewing_team;
 	size_t playing_team;
 	const team & viewing_team_ref;
@@ -69,19 +69,19 @@ private:
 
 public:
 	/** draw a unit.  */
-	void redraw_unit(const unit & u);
+	void redraw_unit(const unit & u) const;
 
 private:
 	/** draw a health/xp bar of a unit */
 	void draw_bar(const std::string& image, int xpos, int ypos,
 		const map_location& loc, size_t height, double filled,
-		const color_t& col, fixed_t alpha);
+		const color_t& col, fixed_t alpha) const;
 
 	/**
 	 * Finds the start and end rows on the energy bar image.
 	 *
 	 * White pixels are substituted for the color of the energy.
 	 */
-	const SDL_Rect& calculate_energy_bar(surface surf);
+	const SDL_Rect& calculate_energy_bar(surface surf) const;
 };
 #endif

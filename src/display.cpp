@@ -156,6 +156,7 @@ display::display(const display_context * dc, CVideo& video, std::weak_ptr<wb::ma
 	screen_(video),
 	currentTeam_(0),
 	dont_show_all_(false),
+	energy_bar_rects_(),
 	xpos_(0),
 	ypos_(0),
 	view_locked_(false),
@@ -2560,7 +2561,7 @@ void display::draw_invalidated() {
 		return;
 	}
 
-	unit_drawer drawer = unit_drawer(*this);
+	unit_drawer drawer = unit_drawer(*this, energy_bar_rects_);
 
 	for (const map_location& loc : invalidated_) {
 		unit_map::const_iterator u_it = dc_->units().find(loc);
