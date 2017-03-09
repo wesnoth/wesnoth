@@ -440,11 +440,6 @@ public:
 		click_dismiss_ = click_dismiss;
 	}
 
-	static void set_sunset(const unsigned interval)
-	{
-		sunset_ = interval ? interval : 5;
-	}
-
 	bool get_need_layout() const
 	{
 		return need_layout_;
@@ -611,15 +606,6 @@ private:
 
 	/** Disable the escape key see our setter for more info. */
 	bool escape_disabled_;
-
-	/**
-	 * Controls the sunset feature.
-	 *
-	 * If this value is not 0 it will darken the entire screen every
-	 * sunset_th drawing request that nothing has been modified. It's a debug
-	 * feature.
-	 */
-	static unsigned sunset_;
 
 	/**
 	 * Helper struct to force widgets the have the same size.

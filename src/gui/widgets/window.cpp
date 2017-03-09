@@ -103,8 +103,6 @@ public:
 } // namespace implementation
 REGISTER_WIDGET(window)
 
-unsigned window::sunset_ = 0;
-
 namespace
 {
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
@@ -746,18 +744,6 @@ void window::draw()
 	}
 
 	if (dirty_list_.empty()) {
-		if (sunset_) {
-			/** @todo should probably be moved to event::sdl_event_handler::draw. */
-			static unsigned i = 0;
-			if (++i % sunset_ == 0) {
-				SDL_Rect r = sdl::create_rect(
-					0, 0, frame_buffer->w, frame_buffer->h);
-				const Uint32 color
-					= SDL_MapRGBA(frame_buffer->format, 0, 0, 0, SDL_ALPHA_OPAQUE);
-
-				sdl::fill_rect_alpha(r, color, 1, frame_buffer);
-			}
-		}
 		return;
 	}
 

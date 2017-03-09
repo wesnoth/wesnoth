@@ -437,15 +437,6 @@ public:
 	void clear_mouseover_hex_overlay()
 		{ mouseover_hex_overlay_ = nullptr; }
 
-	/**
-	 * Debug function to toggle the "sunset" mode.
-	 * The map area become progressively darker,
-	 * except where hexes are refreshed.
-	 * delay is the number of frames between each darkening
-	 * (0 to toggle).
-	 */
-	static void sunset(const size_t delay = 0);
-
 	/** Toggle to continuously redraw the screen. */
 	static void toggle_benchmark();
 

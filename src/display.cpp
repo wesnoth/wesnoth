@@ -72,7 +72,6 @@ namespace {
 
 	const unsigned int MinZoom = zoom_levels.front();
 	const unsigned int MaxZoom = zoom_levels.back();
-	size_t sunset_delay = 0;
 
 	bool benchmark = false;
 
@@ -1312,12 +1311,6 @@ void display::drawing_buffer_clear()
 	drawing_buffer_.clear();
 }
 
-void display::sunset(const size_t delay)
-{
-	// This allow both parametric and toggle use
-	sunset_delay = (sunset_delay == 0 && delay == 0) ? 3 : delay;
-}
-
 void display::toggle_benchmark()
 {
 	benchmark = !benchmark;
@@ -1336,15 +1329,6 @@ void display::flip()
 
 	surface& frameBuffer = video().getSurface();
 
-	// This is just the debug function "sunset" to progressively darken the map area
-	static size_t sunset_timer = 0;
-	if (sunset_delay && ++sunset_timer > sunset_delay) {
-		sunset_timer = 0;
-		SDL_Rect r = map_outside_area(); // Use frameBuffer to also test the UI
-		const Uint32 color =  SDL_MapRGBA(video().getSurface()->format,0,0,0,SDL_ALPHA_OPAQUE);
-		// Adjust the alpha if you want to balance cpu-cost / smooth sunset
-		sdl::fill_rect_alpha(r, color, 1, frameBuffer);
-	}
 	font::draw_floating_labels(frameBuffer);
 	events::raise_volatile_draw_event();
 

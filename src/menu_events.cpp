@@ -1008,7 +1008,6 @@ class console_handler : public map_command_handler<console_handler>, private cha
 		void do_control();
 		void do_controller();
 		void do_clear();
-		void do_sunset();
 		void do_foreground();
 		void do_layers();
 		void do_fps();
@@ -1094,8 +1093,6 @@ class console_handler : public map_command_handler<console_handler>, private cha
 				_("Query the controller status of a side."), _("<side>"));
 			register_command("clear", &console_handler::do_clear,
 				_("Clear chat history."));
-			register_command("sunset", &console_handler::do_sunset,
-				_("Visualize the screen refresh procedure."), "", "D");
 			register_command("foreground", &console_handler::do_foreground,
 				_("Debug foreground terrain."), "", "D");
 			register_command("layers", &console_handler::do_layers,
@@ -1489,11 +1486,7 @@ void console_handler::do_controller()
 void console_handler::do_clear() {
 	menu_handler_.gui_->get_chat_manager().clear_chat_messages();
 }
-void console_handler::do_sunset() {
-	int delay = lexical_cast_default<int>(get_data());
-	menu_handler_.gui_->sunset(delay);
-	gui2::window::set_sunset(delay);
-}
+
 void console_handler::do_foreground() {
 	menu_handler_.gui_->toggle_debug_foreground();
 }
