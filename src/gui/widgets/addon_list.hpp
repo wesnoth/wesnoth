@@ -83,6 +83,12 @@ public:
 		uninstall_function_ = function;
 	}
 
+	/** Sets the function to call when the player clicks the update button. */
+	void set_update_function(std::function<void(const addon_info&)> function)
+	{
+		update_function_ = function;
+	}
+
 	/** Sets the function to upload an addon to the addons server. */
 	void set_publish_function(std::function<void(const addon_info&)> function)
 	{
@@ -145,6 +151,7 @@ private:
 
 	std::function<void(const addon_info&)> install_function_;
 	std::function<void(const addon_info&)> uninstall_function_;
+	std::function<void(const addon_info&)> update_function_;
 
 	std::function<void(const addon_info&)> publish_function_;
 	std::function<void(const addon_info&)> delete_function_;

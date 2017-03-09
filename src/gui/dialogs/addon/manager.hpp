@@ -89,6 +89,12 @@ private:
 		execute_action_on_selected_addon<&addon_manager::uninstall_addon>(window);
 	}
 
+	void update_addon(const addon_info& addon, window& window);
+	void update_selected_addon(window& window)
+	{
+		execute_action_on_selected_addon<&addon_manager::update_addon>(window);
+	}
+
 	void publish_addon(const addon_info& addon, window& window);
 	void publish_selected_addon(window& window)
 	{

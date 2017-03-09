@@ -172,7 +172,8 @@ void addon_list::set_addons(const addons_list& addons)
 
 		if(!tracking_info.can_publish) {
 			const bool is_updatable = tracking_info.state == ADDON_INSTALLED_UPGRADABLE;
-			const bool is_installed = tracking_info.state == ADDON_INSTALLED;
+			const bool is_installed =
+				tracking_info.state == ADDON_INSTALLED || tracking_info.state == ADDON_INSTALLED_UPGRADABLE;
 
 			install_update_stack.select_layer(static_cast<int>(is_updatable));
 
@@ -184,6 +185,18 @@ void addon_list::set_addons(const addons_list& addons)
 						[this, addon](gui2::event::dispatcher&, const gui2::event::ui_event, bool& handled, bool& halt)
 					{
 						install_function_(addon);
+						handled = true;
+						halt = true;
+					});
+				}
+			} else {
+				find_widget<button>(row_grid, "single_update", false).set_active(true);
+				if(update_function_ != nullptr) {
+					gui2::event::connect_signal_mouse_left_click(
+						find_widget<button>(row_grid, "single_update", false),
+						[this, addon](gui2::event::dispatcher&, const gui2::event::ui_event, bool& handled, bool& halt)
+					{
+						update_function_(addon);
 						handled = true;
 						halt = true;
 					});

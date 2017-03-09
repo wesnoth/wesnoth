@@ -335,6 +335,8 @@ void addon_manager::pre_show(window& window)
 		this, std::placeholders::_1, std::ref(window)));
 	list.set_uninstall_function(std::bind(&addon_manager::uninstall_addon,
 		this, std::placeholders::_1, std::ref(window)));
+	list.set_update_function(std::bind(&addon_manager::update_addon,
+		this, std::placeholders::_1, std::ref(window)));
 
 	list.set_publish_function(std::bind(&addon_manager::publish_addon,
 		this, std::placeholders::_1, std::ref(window)));
@@ -585,6 +587,24 @@ void addon_manager::uninstall_addon(const addon_info& addon, window& window)
 
 		// Reselect the add-on.
 		addons.select_addon(addon.id);
+		on_addon_select(window);
+	}
+}
+
+void addon_manager::update_addon(const addon_info& addon, window& window)
+{
+	addon_list& addons = find_widget<addon_list>(&window, "addons", false);
+	const std::string id = addon.id;
+
+	addons_client::install_result result = client_.install_addon_with_checks(addons_, addon);
+
+	if(result.outcome != addons_client::install_outcome::abort) {
+		need_wml_cache_refresh_ = true;
+
+		load_addon_list(window);
+
+		// Reselect the add-on.
+		addons.select_addon(id);
 		on_addon_select(window);
 	}
 }
