@@ -219,7 +219,7 @@ void addon_list::set_addons(const addons_list& addons)
 					find_widget<button>(row_grid, "single_install", false),
 					[this, addon](gui2::event::dispatcher&, const gui2::event::ui_event, bool& handled, bool& halt)
 				{
-					publish_function_(addon.id);
+					publish_function_(addon);
 					handled = true;
 					halt = true;
 				});
@@ -230,7 +230,7 @@ void addon_list::set_addons(const addons_list& addons)
 					find_widget<button>(row_grid, "single_update", false),
 					[this, addon](gui2::event::dispatcher&, const gui2::event::ui_event, bool& handled, bool& halt)
 				{
-					publish_function_(addon.id);
+					publish_function_(addon);
 					handled = true;
 					halt = true;
 				});
@@ -241,7 +241,7 @@ void addon_list::set_addons(const addons_list& addons)
 					find_widget<button>(row_grid, "single_uninstall", false),
 					[this, addon](gui2::event::dispatcher&, const gui2::event::ui_event, bool& handled, bool& halt)
 				{
-					delete_function_(addon.id);
+					delete_function_(addon);
 					handled = true;
 					halt = true;
 				});

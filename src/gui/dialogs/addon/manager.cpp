@@ -336,9 +336,9 @@ void addon_manager::pre_show(window& window)
 	list.set_uninstall_function(std::bind(&addon_manager::uninstall_addon,
 		this, std::placeholders::_1, std::ref(window)));
 
-	list.set_publish_function(std::bind(&addon_manager::do_remote_addon_publish,
+	list.set_publish_function(std::bind(&addon_manager::publish_addon,
 		this, std::placeholders::_1, std::ref(window)));
-	list.set_delete_function(std::bind(&addon_manager::do_remote_addon_delete,
+	list.set_delete_function(std::bind(&addon_manager::delete_addon,
 		this, std::placeholders::_1, std::ref(window)));
 
 	list.set_callback_value_change(
@@ -393,6 +393,14 @@ void addon_manager::pre_show(window& window)
 	connect_signal_mouse_left_click(
 		find_widget<button>(&window, "uninstall", false),
 		std::bind(&addon_manager::uninstall_selected_addon, this, std::ref(window)));
+
+	connect_signal_mouse_left_click(
+		find_widget<button>(&window, "publish", false),
+		std::bind(&addon_manager::publish_selected_addon, this, std::ref(window)));
+
+	connect_signal_mouse_left_click(
+		find_widget<button>(&window, "delete", false),
+		std::bind(&addon_manager::delete_selected_addon, this, std::ref(window)));
 
 	connect_signal_mouse_left_click(
 		find_widget<button>(&window, "update_all", false),
@@ -522,7 +530,8 @@ void addon_manager::filter_callback(window& window)
 	find_widget<addon_list>(&window, "addons", false).set_addon_shown(res);
 }
 
-void addon_manager::install_selected_addon(window& window)
+template<void(addon_manager::*fptr)(const addon_info& addon, window& window)>
+void addon_manager::execute_action_on_selected_addon(window& window)
 {
 	addon_list& addons = find_widget<addon_list>(&window, "addons", false);
 	const addon_info* addon = addons.get_selected_addon();
@@ -531,10 +540,10 @@ void addon_manager::install_selected_addon(window& window)
 		return;
 	}
 
-	install_addon(*addon, window);
+	(this->*fptr)(*addon, window);
 }
 
-void addon_manager::install_addon(addon_info addon, window& window)
+void addon_manager::install_addon(const addon_info& addon, window& window)
 {
 	addon_list& addons = find_widget<addon_list>(&window, "addons", false);
 
@@ -553,19 +562,7 @@ void addon_manager::install_addon(addon_info addon, window& window)
 	}
 }
 
-void addon_manager::uninstall_selected_addon(window& window)
-{
-	addon_list& addons = find_widget<addon_list>(&window, "addons", false);
-	const addon_info* addon = addons.get_selected_addon();
-
-	if(addon == nullptr) {
-		return;
-	}
-
-	uninstall_addon(*addon, window);
-}
-
-void addon_manager::uninstall_addon(addon_info addon, window& window)
+void addon_manager::uninstall_addon(const addon_info& addon, window& window)
 {
 	addon_list& addons = find_widget<addon_list>(&window, "addons", false);
 
@@ -604,10 +601,11 @@ void addon_manager::update_all_addons(window& window)
 }
 
 /** Performs all backend and UI actions for publishing the specified add-on. */
-void addon_manager::do_remote_addon_publish(const std::string& addon_id, window& window)
+void addon_manager::publish_addon(const addon_info& addon, window& window)
 {
 	std::string server_msg;
 
+	const std::string addon_id = addon.id;
 	config cfg = get_addon_pbl_info(addon_id);
 
 	const version_info& version_to_publish = cfg["version"].str();
@@ -640,11 +638,13 @@ void addon_manager::do_remote_addon_publish(const std::string& addon_id, window&
 }
 
 /** Performs all backend and UI actions for taking down the specified add-on. */
-void addon_manager::do_remote_addon_delete(const std::string& addon_id, window& window)
+void addon_manager::delete_addon(const addon_info& addon, window& window)
 {
-	utils::string_map symbols;
-	symbols["addon"] = make_addon_title(addon_id); // FIXME: need the real title!
-	const std::string& text = vgettext("Deleting '$addon|' will permanently erase its download and upload counts on the add-ons server. Do you really wish to continue?", symbols);
+    const std::string addon_id = addon.id;
+	const std::string& text = vgettext(
+		"Deleting '$addon|' will permanently erase its download and upload counts on the add-ons server. Do you really wish to continue?",
+		{{"addon", make_addon_title(addon_id)}} // FIXME: need the real title!
+	);
 
 	const int res = gui2::show_message(
 		window.video(), _("Confirm"), text, gui2::dialogs::message::yes_no_buttons);
@@ -752,8 +752,20 @@ void addon_manager::on_addon_select(window& window)
 
 	bool installed = is_installed_addon_status(tracking_info_[info->id].state);
 
-	find_widget<button>(&window, "install", false).set_active(!installed);
-	find_widget<button>(&window, "uninstall", false).set_active(installed);
+	stacked_widget& action_stack = find_widget<stacked_widget>(&window, "action_stack", false);
+
+	if(!tracking_info_[info->id].can_publish) {
+		action_stack.select_layer(0);
+
+		find_widget<button>(&window, "install", false).set_active(!installed);
+		find_widget<button>(&window, "uninstall", false).set_active(installed);
+	} else {
+		action_stack.select_layer(1);
+
+		// TODO: are these the right flags to check?
+		find_widget<button>(&window, "publish", false).set_active(installed);
+		find_widget<button>(&window, "delete", false).set_active(!installed);
+	}
 }
 
 bool addon_manager::exit_hook(window& window)

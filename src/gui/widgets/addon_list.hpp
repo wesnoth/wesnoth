@@ -84,13 +84,13 @@ public:
 	}
 
 	/** Sets the function to upload an addon to the addons server. */
-	void set_publish_function(std::function<void(const std::string&)> function)
+	void set_publish_function(std::function<void(const addon_info&)> function)
 	{
 		publish_function_ = function;
 	}
 
 	/** Sets the function to install an addon from the addons server. */
-	void set_delete_function(std::function<void(const std::string&)> function)
+	void set_delete_function(std::function<void(const addon_info&)> function)
 	{
 		delete_function_ = function;
 	}
@@ -146,8 +146,8 @@ private:
 	std::function<void(const addon_info&)> install_function_;
 	std::function<void(const addon_info&)> uninstall_function_;
 
-	std::function<void(const std::string&)> publish_function_;
-	std::function<void(const std::string&)> delete_function_;
+	std::function<void(const addon_info&)> publish_function_;
+	std::function<void(const addon_info&)> delete_function_;
 
 	static std::string describe_status(const addon_tracking_info& info);
 

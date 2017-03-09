@@ -74,16 +74,34 @@ private:
 
 	bool need_wml_cache_refresh_;
 
-	void install_selected_addon(window& window);
-	void install_addon(addon_info addon, window& window);
+	template<void(addon_manager::*fptr)(const addon_info& addon, window& window)>
+	void execute_action_on_selected_addon(window& window);
 
-	void uninstall_selected_addon(window& window);
-	void uninstall_addon(addon_info addon, window& window);
+	void install_addon(const addon_info& addon, window& window);
+	void install_selected_addon(window& window)
+	{
+		execute_action_on_selected_addon<&addon_manager::install_addon>(window);
+	}
+
+	void uninstall_addon(const addon_info& addon, window& window);
+	void uninstall_selected_addon(window& window)
+	{
+		execute_action_on_selected_addon<&addon_manager::uninstall_addon>(window);
+	}
+
+	void publish_addon(const addon_info& addon, window& window);
+	void publish_selected_addon(window& window)
+	{
+		execute_action_on_selected_addon<&addon_manager::publish_addon>(window);
+	}
+
+	void delete_addon(const addon_info& addon, window& window);
+	void delete_selected_addon(window& window)
+	{
+		execute_action_on_selected_addon<&addon_manager::delete_addon>(window);
+	}
 
 	void update_all_addons(window& window);
-
-	void do_remote_addon_publish(const std::string& addon_id, window& window);
-	void do_remote_addon_delete(const std::string& addon_id, window& window);
 
 	void browse_url_callback(text_box& url_box);
 	void copy_url_callback(text_box& url_box);
