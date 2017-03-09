@@ -504,6 +504,7 @@ boost::dynamic_bitset<> addon_manager::get_status_filter_visibility(const window
 boost::dynamic_bitset<> addon_manager::get_type_filter_visibility(const window& window) const
 {
 	const menu_button& type_filter = find_widget<const menu_button>(&window, "type_filter", false);
+
 	boost::dynamic_bitset<> toggle_states = type_filter.get_toggle_states();
 	if(toggle_states.none()) {
 		// Nothing selected. It means that *all* add-ons are shown.
@@ -624,13 +625,11 @@ void addon_manager::publish_addon(const addon_info& addon, window& window)
 		gui2::show_error_message(window.video(), _("Invalid icon path. Make sure the path points to a valid image."));
 	} else if(!client_.request_distribution_terms(server_msg)) {
 		gui2::show_error_message(window.video(),
-			_("The server responded with an error:") + "\n" +
-			client_.get_last_server_error());
+			_("The server responded with an error:") + "\n" + client_.get_last_server_error());
 	} else if(gui2::show_message(window.video(), _("Terms"), server_msg, gui2::dialogs::message::ok_cancel_buttons) == gui2::window::OK) {
 		if(!client_.upload_addon(addon_id, server_msg, cfg)) {
 			gui2::show_error_message(window.video(),
-				_("The server responded with an error:") + "\n" +
-				client_.get_last_server_error());
+				_("The server responded with an error:") + "\n" + client_.get_last_server_error());
 		} else {
 			gui2::show_transient_message(window.video(), _("Response"), server_msg);
 		}
@@ -640,7 +639,7 @@ void addon_manager::publish_addon(const addon_info& addon, window& window)
 /** Performs all backend and UI actions for taking down the specified add-on. */
 void addon_manager::delete_addon(const addon_info& addon, window& window)
 {
-    const std::string addon_id = addon.id;
+	const std::string addon_id = addon.id;
 	const std::string& text = vgettext(
 		"Deleting '$addon|' will permanently erase its download and upload counts on the add-ons server. Do you really wish to continue?",
 		{{"addon", make_addon_title(addon_id)}} // FIXME: need the real title!
@@ -655,9 +654,7 @@ void addon_manager::delete_addon(const addon_info& addon, window& window)
 
 	std::string server_msg;
 	if(!client_.delete_remote_addon(addon_id, server_msg)) {
-		gui2::show_error_message(	window.video(),
-			_("The server responded with an error:") + "\n" +
-			client_.get_last_server_error());
+		gui2::show_error_message(window.video(), _("The server responded with an error:") + "\n" + client_.get_last_server_error());
 	} else {
 		// FIXME: translation needed!
 		gui2::show_transient_message(window.video(), _("Response"), server_msg);
