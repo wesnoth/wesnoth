@@ -2039,7 +2039,7 @@ bool display::set_zoom(unsigned int amount)
 	ypos_ += (ypos_ + area.h / 2) * amount / zoom_;
 
 	zoom_ = new_zoom;
-	bounds_check_position();
+	bounds_check_position(xpos_, ypos_);
 	if(zoom_ != DefaultZoom) {
 		last_zoom_ = zoom_;
 	}
