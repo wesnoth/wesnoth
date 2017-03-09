@@ -246,14 +246,14 @@ std::string unit_topic_generator::operator()() const {
 
 	ss << "<img>src='" << male_type.image();
 	ss << "~RC(" << male_type.flag_rgb() << ">red)";
-	if (screen_width >= 1600) ss << "~XBRZ(2)";
+	if (screen_width >= 1200) ss << "~XBRZ(2)";
 	ss << "' box='no'</img> ";
 
 
 	if (&female_type != &male_type) {
 		ss << "<img>src='" << female_type.image();
 		ss << "~RC(" << female_type.flag_rgb() << ">red)";
-		if (screen_width >= 1600) ss << "~XBRZ(2)";
+		if (screen_width >= 1200) ss << "~XBRZ(2)";
 		ss << "' box='no'</img> ";
 	}
 
