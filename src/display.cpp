@@ -2061,11 +2061,11 @@ void display::set_default_zoom()
 {
 	if (zoom_ != DefaultZoom) {
 		last_zoom_ = zoom_;
-		set_zoom(DefaultZoom - zoom_ );
+		set_zoom(DefaultZoom);
 	} else {
 		// When we are already at the default zoom,
 		// switch to the last zoom used
-		set_zoom(last_zoom_ - zoom_);
+		set_zoom(last_zoom_);
 	}
 }
 
