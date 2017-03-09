@@ -633,7 +633,7 @@ function wml_actions.unpetrify(cfg)
 end
 
 function wml_actions.heal_unit(cfg)
-	local healers = helper.get_child("filter_second")
+	local healers = helper.get_child(cfg, "filter_second")
 	if healers then
 		healers = wesnoth.get_units{
 			ability_type = "heals",
@@ -643,7 +643,7 @@ function wml_actions.heal_unit(cfg)
 		healers = {}
 	end
 
-	local who = helper.get_child("filter")
+	local who = helper.get_child(cfg, "filter")
 	if who then
 		who = wesnoth.get_units(who)
 	else
@@ -688,6 +688,7 @@ function wml_actions.heal_unit(cfg)
 		end
 
 		if cfg.animate then
+			-- TODO: Make this use the new animation API
 			wesnoth.animate_unit{
 				T.filter(healers),
 				flag = "healing"
