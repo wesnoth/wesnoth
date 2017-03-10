@@ -741,7 +741,7 @@ function wml_actions.modify_ai(cfg)
 	local component, final
 	if cfg.action == "add" or cfg.action == "change" then
 		local start = string.find(cfg.path, "[a-z_]+%[[a-z0-9_*]*%]$")
-		final = string.find(cfg.path, '[', start, true) - 1
+		final = start and (string.find(cfg.path, '[', start, true) - 1) or -1
 		local comp_type = string.sub(cfg.path, start, final)
 		component = helper.get_child(cfg, comp_type)
 		if component == nil then

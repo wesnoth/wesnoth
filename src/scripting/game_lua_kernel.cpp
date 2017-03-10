@@ -2883,9 +2883,12 @@ static int intf_modify_ai(lua_State *L, const char* action)
 		return 0;
 	}
 	config component = luaW_checkconfig(L, 3);
-	size_t open_brak = path.find_last_of('[');
+	size_t len = std::string::npos, open_brak = path.find_last_of('[');
 	size_t dot = path.find_last_of('.');
-	cfg.add_child(path.substr(dot + 1, open_brak - dot - 1), component);
+	if(open_brak != len) {
+		len = open_brak = dot - 1;
+	}
+	cfg.add_child(path.substr(dot + 1, len), component);
 	ai::manager::modify_active_ai_for_side(side_num, cfg);
 	return 0;
 }
