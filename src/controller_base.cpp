@@ -54,6 +54,11 @@ void controller_base::handle_event(const SDL_Event& event)
 	static const hotkey::hotkey_command& quit_hotkey = hotkey::hotkey_command::get_command_by_command(hotkey::HOTKEY_QUIT_GAME);
 
 	switch(event.type) {
+	case SDL_TEXTINPUT:
+		if(have_keyboard_focus()) {
+			hotkey::key_event(event, get_hotkey_command_executor());
+		}
+		break;
 	case SDL_KEYDOWN:
 		// Detect key press events, unless there something that has keyboard focus
 		// in which case the key press events should go only to it.

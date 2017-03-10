@@ -241,16 +241,21 @@ public:
 	/**
 	 * Initialise new instance of this class that has no key associated with is.
 	 */
-	hotkey_keyboard() : hotkey_base(), scancode_(SDL_SCANCODE_UNKNOWN)
+	hotkey_keyboard() : hotkey_base(), keycode_(SDLK_UNKNOWN), text_("")
 	{}
 
 	/**
-	 * Set the scancode associated with this class.
-	 * @param scancode The SDL_Scancode that this hotkey should be associated with
+	 * Set the keycode associated with this class.
+	 * @param keycode_ The SDL_Keycode that this hotkey should be associated with
 	 */
-	void set_scancode(SDL_Scancode scancode)
+	void set_keycode(SDL_Keycode keycode)
 	{
-		scancode_ = scancode;
+		keycode_ = keycode;
+	}
+
+	void set_text(std::string text)
+	{
+		text_ = text;
 	}
 
 	/**
@@ -259,11 +264,12 @@ public:
 	 */
 	virtual bool valid() const
 	{
-		return scancode_ != SDL_SCANCODE_UNKNOWN;
+		return keycode_ != SDLK_UNKNOWN && text_ != "";
 	}
 
 protected:
-	SDL_Scancode scancode_;
+	SDL_Keycode keycode_;
+	std::string text_;
 
 	virtual void save_helper(config& cfg) const;
 	virtual const std::string get_name_helper() const;
