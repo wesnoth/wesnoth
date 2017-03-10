@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -128,14 +128,8 @@ bool hotkey_base::bindings_equal(hotkey_ptr other)
 
 bool hotkey_base::matches(const SDL_Event &event) const
 {
-	unsigned int mods = sdl_get_mods();
-
 	if (!hotkey::is_scope_active(hotkey::get_hotkey_command(get_command()).scope) ||
 			!active() || is_disabled()) {
-		return false;
-	}
-
-	if ((mods != mod_)) {
 		return false;
 	}
 
@@ -155,30 +149,31 @@ void hotkey_base::save(config& item) const
 	save_helper(item);
 }
 
-hotkey_ptr create_hotkey(const std::string& id, SDL_Scancode new_val)
+hotkey_ptr create_hotkey(const std::string &id, SDL_Event &event)
 {
 	hotkey_ptr base = hotkey_ptr(new hotkey_void);
 
-	hotkey_keyboard_ptr keyboard(new hotkey_keyboard());
-	base = std::dynamic_pointer_cast<hotkey_base>(keyboard);
-
-	keyboard->set_scancode(new_val);
-
-	base->set_mods(sdl_get_mods());
-	base->set_command(id);
-	base->unset_default();
-
-	return base;
-}
-
-hotkey_ptr create_hotkey(const std::string& id, Uint8 new_val)
-{
-	hotkey_ptr base = hotkey_ptr(new hotkey_void);
-
-	hotkey_mouse_ptr mouse(new hotkey_mouse());
-	base = std::dynamic_pointer_cast<hotkey_base>(mouse);
-
-	mouse->set_button(new_val);
+	switch (event.type) {
+	case SDL_KEYDOWN:
+	case SDL_KEYUP: {
+		hotkey_keyboard_ptr keyboard(new hotkey_keyboard());
+		base = std::dynamic_pointer_cast<hotkey_base>(keyboard);
+		SDL_Keycode code;
+		code = event.key.keysym.sym;
+		keyboard->set_keycode(code);
+		break;
+	}
+	case SDL_MOUSEBUTTONDOWN:
+	case SDL_MOUSEBUTTONUP: {
+		hotkey_mouse_ptr mouse(new hotkey_mouse());
+		base = std::dynamic_pointer_cast<hotkey_base>(mouse);
+		mouse->set_button(event.button.button);
+		break;
+	}
+	default:
+		ERR_G<< "Trying to bind an unknown event type:" << event.type << "\n";
+		break;
+	}
 
 	base->set_mods(sdl_get_mods());
 	base->set_command(id);
@@ -220,11 +215,12 @@ hotkey_ptr load_from_config(const config& cfg)
 		hotkey_keyboard_ptr keyboard(new hotkey_keyboard());
 		base = std::dynamic_pointer_cast<hotkey_base>(keyboard);
 
-		SDL_Scancode scancode = SDL_GetScancodeFromName(key_cfg.c_str());
-		if (scancode == SDL_SCANCODE_UNKNOWN) {
+		SDL_Keycode keycode = SDL_GetKeyFromName(key_cfg.c_str());
+		if (keycode == SDLK_UNKNOWN) {
 			ERR_G<< "Unknown key: " << key_cfg << "\n";
 		}
-		keyboard->set_scancode(scancode);
+		keyboard->set_text(key_cfg);
+		keyboard->set_keycode(keycode);
 	}
 
 	if (base == hotkey_ptr()) {
@@ -256,6 +252,11 @@ bool hotkey_mouse::matches_helper(const SDL_Event &event) const
 		return false;
 	}
 
+	unsigned int mods = sdl_get_mods();
+	if ((mods != mod_)) {
+		return false;
+	}
+
 	if (event.button.button != button_) {
 		return false;
 	}
@@ -278,7 +279,7 @@ void hotkey_mouse::save_helper(config &item) const
 
 const std::string hotkey_keyboard::get_name_helper() const
 {
-	std::string ret = std::string(SDL_GetKeyName(SDL_GetKeyFromScancode(scancode_)));
+	std::string ret = text_;
 
 	if (ret.size() == 1) {
 		boost::algorithm::to_lower(ret);
@@ -289,18 +290,21 @@ const std::string hotkey_keyboard::get_name_helper() const
 
 bool hotkey_keyboard::matches_helper(const SDL_Event &event) const
 {
-	if (event.type != SDL_KEYDOWN && event.type != SDL_KEYUP) {
+	unsigned int mods = sdl_get_mods();
+
+	if (event.type == SDL_TEXTINPUT && text_.length() == 1) {
+		std::string text = std::string(event.text.text);
+		boost::algorithm::to_lower(text);
+		if (text == ":") {
+			mods = mods & ~KMOD_SHIFT;
+		}
+		return  text_ == text && mods == mod_;
+	} else if ((event.type == SDL_KEYDOWN || event.type == SDL_KEYUP) &&
+			(text_.length() > 1 || mods & (KMOD_CTRL|KMOD_ALT|KMOD_GUI)) ) {
+		return event.key.keysym.sym == keycode_ && mods == mod_;
+	} else {
 		return false;
 	}
-
-	SDL_Scancode code;
-	code = event.key.keysym.scancode;
-
-	if (code != scancode_) {
-		return false;
-	}
-
-	return true;
 }
 
 bool hotkey_mouse::bindings_equal_helper(hotkey_ptr other) const
@@ -316,8 +320,8 @@ bool hotkey_mouse::bindings_equal_helper(hotkey_ptr other) const
 
 void hotkey_keyboard::save_helper(config &item) const
 {
-	if (scancode_ != SDL_SCANCODE_UNKNOWN) {
-		item["key"] = SDL_GetScancodeName(scancode_);
+	if (keycode_ != SDLK_UNKNOWN) {
+		item["key"] = SDL_GetKeyName(keycode_);
 	}
 }
 
@@ -340,7 +344,7 @@ bool hotkey_keyboard::bindings_equal_helper(hotkey_ptr other) const
 		return false;
 	}
 
-	return scancode_ == other_k->scancode_;
+	return keycode_ == other_k->keycode_;
 }
 
 void del_hotkey(hotkey_ptr item)
@@ -445,7 +449,7 @@ void save_hotkeys(config& cfg)
 	}
 }
 
-std::string get_names(const std::string& id)
+std::string get_names(std::string id)
 {
 	// Names are used in places like the hot-key preferences menu
 	std::vector<std::string> names;
