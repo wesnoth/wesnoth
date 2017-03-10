@@ -49,27 +49,21 @@ undo_event::undo_event(const config& first, const config& second, const config& 
 
 undo_action::undo_action()
 	: undo_action_base()
-	, replay_data()
 	, unit_id_diff(synced_context::get_unit_id_diff())
 {
 	auto& undo = synced_context::get_undo_commands();
-	auto& redo = synced_context::get_redo_commands();
 	auto command_transformer = [](const std::pair<config, game_events::queued_event>& p) {
 		return undo_event(p.first, p.second);
 	};
 	std::transform(undo.begin(), undo.end(), std::back_inserter(umc_commands_undo), command_transformer);
-	std::transform(redo.begin(), redo.end(), std::back_inserter(umc_commands_redo), command_transformer);
 	undo.clear();
-	redo.clear();
 }
 
 undo_action::undo_action(const config& cfg)
 	: undo_action_base()
-	, replay_data(cfg.child_or_empty("replay_data"))
 	, unit_id_diff(cfg["unit_id_diff"])
 {
 	read_event_vector(umc_commands_undo, cfg, "undo_actions");
-	read_event_vector(umc_commands_redo, cfg, "redo_actions");
 }
 
 namespace {
@@ -120,22 +114,11 @@ void undo_action::execute_undo_umc_wml()
 	}
 }
 
-void undo_action::execute_redo_umc_wml()
-{
-	assert(resources::lua_kernel);
-	assert(resources::gamedata);
-	for(const undo_event& e : umc_commands_redo)
-	{
-		execute_event(e, "redo");
-	}
-}
 
 void undo_action::write(config & cfg) const
 {
-	cfg.add_child("replay_data", replay_data);
 	cfg["unit_id_diff"] = unit_id_diff;
 	write_event_vector(umc_commands_undo, cfg, "undo_actions");
-	write_event_vector(umc_commands_redo, cfg, "redo_actions");
 	undo_action_base::write(cfg);
 }
 

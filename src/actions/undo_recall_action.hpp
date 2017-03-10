@@ -39,8 +39,6 @@ struct recall_action : undo_action, shroud_clearing_action
 
 	/// Undoes this action.
 	virtual bool undo(int side);
-	/// Redoes this action.
-	virtual bool redo(int side);
 };
 
 }
