@@ -327,7 +327,6 @@ namespace { // Private helpers for move_unit()
 		bool sighted_;	// Records if sightings were made that could interrupt movement.
 		bool sighted_stop_;	// Records if sightings were made that did interrupt movement (the same as sighted_ unless movement ended for another reason).
 		bool teleport_failed_;
-		bool report_extra_hex_;
 		size_t enemy_count_;
 		size_t friend_count_;
 		std::string ambush_string_;
@@ -384,7 +383,6 @@ namespace { // Private helpers for move_unit()
 		sighted_(false),
 		sighted_stop_(false),
 		teleport_failed_(false),
-		report_extra_hex_(false),
 		enemy_count_(0),
 		friend_count_(0),
 		ambush_string_(),
@@ -990,13 +988,11 @@ namespace { // Private helpers for move_unit()
 				// Already accounted for: ZoC
 				// Already accounted for: movement cost
 				if ( fire_hex_event(exit_hex_str, step_from, real_end_) ) {
-					report_extra_hex_ = true;
 					break;
 				}
 				if ( real_end_ == obstructed_ ) {
 					// We did not check for being a replay when checking for an
 					// obstructed hex, so we do not check can_break here.
-					report_extra_hex_ = true;
 					obstructed_stop = true;
 					break;
 				}
