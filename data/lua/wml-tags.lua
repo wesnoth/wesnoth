@@ -1013,7 +1013,7 @@ function wml_actions.modify_side(cfg)
 			side.shroud = cfg.shroud
 		end
 		if cfg.reset_maps then
-			wesnoth.clear_shroud(side.side, "all")
+			wesnoth.remove_shroud(side.side, "all")
 		end
 		if cfg.fog ~= nil then
 			side.fog = cfg.fog
@@ -1022,7 +1022,7 @@ function wml_actions.modify_side(cfg)
 			wesnoth.add_fog(side.side, {}, true)
 		end
 		if cfg.shroud_data then
-			wesnoth.clear_shroud(side, cfg.shroud_data)
+			wesnoth.remove_shroud(side, cfg.shroud_data)
 		end
 
 		if cfg.share_vision then
