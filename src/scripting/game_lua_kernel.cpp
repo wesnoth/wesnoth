@@ -830,7 +830,7 @@ int game_lua_kernel::intf_shroud_op(lua_State *L, bool place_shroud)
 
 	int side_num = luaL_checkinteger(L, 1);
 
-	if(!lua_isstring(L, 2)) {
+	if(lua_isstring(L, 2)) {
 		std::string data = lua_tostring(L, 2);
 		// Special case - using a shroud_data string, or "all"
 		team& side = teams()[side_num - 1];
