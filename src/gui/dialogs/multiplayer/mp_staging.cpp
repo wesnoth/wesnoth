@@ -377,7 +377,7 @@ void mp_staging::on_team_select(window& window, ng::side_engine_ptr side, menu_b
 
 void mp_staging::select_leader_callback(window& window, ng::side_engine_ptr side, grid& row_grid)
 {
-	gui2::dialogs::faction_select dlg(side->flg(), std::to_string(side->color() + 1), side->index() + 1);
+	gui2::dialogs::faction_select dlg(side->flg(), side->color_id(), side->index() + 1);
 	dlg.show(window.video());
 
 	if(dlg.get_retval() == window::OK) {
