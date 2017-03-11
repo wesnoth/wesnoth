@@ -1239,6 +1239,12 @@ REGISTER_MOD_PARSER(NOP, )
 	return nullptr;
 }
 
+// Only used to tag terrain images which should not be color-shifted by ToD
+REGISTER_MOD_PARSER(NO_TOD_SHIFT, )
+{
+	return nullptr;
+}
+
 // Fake image function used by GUI2 portraits until
 // Mordante gets rid of it. *tsk* *tsk*
 REGISTER_MOD_PARSER(RIGHT, )

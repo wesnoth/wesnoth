@@ -1168,7 +1168,8 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 			// not the location, since the transitions are rendered
 			// over the offmap-terrain and these need a ToD coloring.
 			surface surf;
-			const bool off_map = image.get_filename() == off_map_name;
+			const bool off_map = (image.get_filename() == off_map_name || image.get_modifications().find("NO_TOD_SHIFT()") != std::string::npos);
+
 			if(off_map) {
 				surf = image::get_image(image, off_map ? image::SCALED_TO_HEX : image_type);
 			} else if(lt.empty()) {
@@ -2533,9 +2534,9 @@ void display::draw_invalidated() {
 		draw_hex(loc);
 		drawn_hexes_+=1;
 		// If the tile is at the border, we start to blend it
-		if(!on_map) {
+		/*if(!on_map) {
 			 draw_border(loc, xpos, ypos);
-		}
+		}*/
 	}
 	invalidated_hexes_ += invalidated_.size();
 
