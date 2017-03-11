@@ -148,7 +148,7 @@ if(NOT DEFINED ENABLE_DISPLAY_REVISION)
 	execute_process(
 		COMMAND
 			${CMAKE_SOURCE_DIR}/utils/autorevision.sh
-				-th
+				-t h
 				> ${CMAKE_CURRENT_BINARY_DIR}/revision.dummy
 		WORKING_DIRECTORY
 			${CMAKE_SOURCE_DIR}
