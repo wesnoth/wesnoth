@@ -147,7 +147,7 @@ if(NOT DEFINED ENABLE_DISPLAY_REVISION)
 	# the display of revision numbers by default.
 	execute_process(
 		COMMAND
-			${CMAKE_SOURCE_DIR}/utils/autorevision
+			${CMAKE_SOURCE_DIR}/utils/autorevision.sh
 				-th
 				> ${CMAKE_CURRENT_BINARY_DIR}/revision.dummy
 		WORKING_DIRECTORY
