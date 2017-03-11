@@ -30,6 +30,7 @@
 #include "server_base.hpp"
 #include "simple_wml.hpp"
 #include "filesystem.hpp"
+#include "serialization/unicode_cast.hpp" //only used in windows specific code.
 
 #include <memory>
 #include <stdexcept>
