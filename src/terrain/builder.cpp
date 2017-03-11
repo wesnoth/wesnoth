@@ -1155,6 +1155,14 @@ void terrain_builder::build_terrains()
 			const t_translation::terrain_code t = map().get_terrain(loc);
 
 			terrain_by_type_[t].push_back(loc);
+
+			// Flag all hexes according to whether they're on the border or not,
+			// to make it easier for WML to draw the borders
+			if (!map().on_board(loc)) {
+				tile_map_[loc].flags.insert("_border");
+			} else {
+				tile_map_[loc].flags.insert("_board");
+			}
 		}
 	}
 
