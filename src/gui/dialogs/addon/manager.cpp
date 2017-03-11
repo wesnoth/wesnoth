@@ -396,6 +396,14 @@ void addon_manager::pre_show(window& window)
 		find_widget<button>(&window, "uninstall", false),
 		std::bind(&addon_manager::uninstall_selected_addon, this, std::ref(window)));
 
+	// Make the update button temporarily accessible.
+	find_widget<stacked_widget>(&window, "install_update_stack", false).select_layer(1);
+	connect_signal_mouse_left_click(
+		find_widget<button>(&window, "update", false),
+		std::bind(&addon_manager::update_selected_addon, this, std::ref(window)));
+	// Revert the above change for good measure.
+	find_widget<stacked_widget>(&window, "install_update_stack", false).select_layer(0);
+
 	connect_signal_mouse_left_click(
 		find_widget<button>(&window, "publish", false),
 		std::bind(&addon_manager::publish_selected_addon, this, std::ref(window)));
@@ -768,13 +776,22 @@ void addon_manager::on_addon_select(window& window)
 	}
 
 	bool installed = is_installed_addon_status(tracking_info_[info->id].state);
+	bool updatable = tracking_info_[info->id].state == ADDON_INSTALLED_UPGRADABLE;
 
 	stacked_widget& action_stack = find_widget<stacked_widget>(&window, "action_stack", false);
 
 	if(!tracking_info_[info->id].can_publish) {
 		action_stack.select_layer(0);
 
-		find_widget<button>(&window, "install", false).set_active(!installed);
+		stacked_widget& install_update_stack = find_widget<stacked_widget>(&window, "install_update_stack", false);
+		install_update_stack.select_layer(updatable ? 1 : 0);
+
+		if(!updatable) {
+			find_widget<button>(&window, "install", false).set_active(!installed);
+		} else {
+			find_widget<button>(&window, "update", false).set_active(true);
+		}
+
 		find_widget<button>(&window, "uninstall", false).set_active(installed);
 	} else {
 		action_stack.select_layer(1);
