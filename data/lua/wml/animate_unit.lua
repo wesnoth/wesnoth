@@ -77,8 +77,8 @@ local function add_animation(anim, cfg)
 		if facing then
 			local facing_loc = wesnoth.get_locations(facing)[1]
 			if facing_loc then
-				local dir = wesnoth.map_location_ops.get_relative_dir(unit.x, unit.y, facing_loc[1], facing_loc[2])
-				facing = wesnoth.map_location_ops.get_direction(unit.x, unit.y, dir)
+				local dir = wesnoth.map_location.get_relative_dir(unit.x, unit.y, facing_loc[1], facing_loc[2])
+				facing = wesnoth.map_location.get_direction(unit.x, unit.y, dir)
 			else
 				facing = nil
 			end
