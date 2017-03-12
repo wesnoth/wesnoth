@@ -60,6 +60,8 @@ private:
 
 	void load_addon_list(window& window);
 
+	void reload_list_and_reselect_item(const std::string& id, window& window);
+
 	/** Config which contains the list with the campaigns. */
 	config cfg_;
 

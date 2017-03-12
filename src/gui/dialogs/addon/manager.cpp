@@ -396,13 +396,9 @@ void addon_manager::pre_show(window& window)
 		find_widget<button>(&window, "uninstall", false),
 		std::bind(&addon_manager::uninstall_selected_addon, this, std::ref(window)));
 
-	// Make the update button temporarily accessible.
-	find_widget<stacked_widget>(&window, "install_update_stack", false).select_layer(1);
 	connect_signal_mouse_left_click(
 		find_widget<button>(&window, "update", false),
 		std::bind(&addon_manager::update_selected_addon, this, std::ref(window)));
-	// Revert the above change for good measure.
-	find_widget<stacked_widget>(&window, "install_update_stack", false).select_layer(0);
 
 	connect_signal_mouse_left_click(
 		find_widget<button>(&window, "publish", false),
@@ -491,6 +487,15 @@ void addon_manager::load_addon_list(window& window)
 	find_widget<button>(&window, "update_all", false).set_active(has_upgradable_addons);
 }
 
+void addon_manager::reload_list_and_reselect_item(const std::string& id, window& window)
+{
+	load_addon_list(window);
+
+	// Reselect the add-on.
+	find_widget<addon_list>(&window, "addons", false).select_addon(id);
+	on_addon_select(window);
+}
+
 boost::dynamic_bitset<> addon_manager::get_status_filter_visibility(const window& window) const
 {
 	const menu_button& status_filter = find_widget<const menu_button>(&window, "install_status_filter", false);
@@ -556,27 +561,18 @@ void addon_manager::execute_action_on_selected_addon(window& window)
 
 void addon_manager::install_addon(const addon_info& addon, window& window)
 {
-	addon_list& addons = find_widget<addon_list>(&window, "addons", false);
-
 	addons_client::install_result result = client_.install_addon_with_checks(addons_, addon);
 
-	need_wml_cache_refresh_ |= result.wml_changed; // take note if any wml_changes occurred
+ 	// Take note if any wml_changes occurred
+	need_wml_cache_refresh_ |= result.wml_changed;
 
 	if(result.outcome != addons_client::install_outcome::abort) {
-		need_wml_cache_refresh_ = true;
-
-		load_addon_list(window);
-
-		// Reselect the add-on.
-		addons.select_addon(addon.id);
-		on_addon_select(window);
+		reload_list_and_reselect_item(addon.id, window);
 	}
 }
 
 void addon_manager::uninstall_addon(const addon_info& addon, window& window)
 {
-	addon_list& addons = find_widget<addon_list>(&window, "addons", false);
-
 	if(have_addon_pbl_info(addon.id) || have_addon_in_vcs_tree(addon.id)) {
 		show_error_message(window.video(),
 			_("The following add-on appears to have publishing or version control information stored locally, and will not be removed:") + " " +
@@ -591,30 +587,19 @@ void addon_manager::uninstall_addon(const addon_info& addon, window& window)
 	} else {
 		need_wml_cache_refresh_ = true;
 
-		load_addon_list(window);
-
-		// Reselect the add-on.
-		addons.select_addon(addon.id);
-		on_addon_select(window);
+		reload_list_and_reselect_item(addon.id, window);
 	}
 }
 
 void addon_manager::update_addon(const addon_info& addon, window& window)
 {
-	addon_list& addons = find_widget<addon_list>(&window, "addons", false);
-	const std::string id = addon.id;
-
-	addons_client::install_result result = client_.install_addon_with_checks(addons_, addon);
-
-	if(result.outcome != addons_client::install_outcome::abort) {
-		need_wml_cache_refresh_ = true;
-
-		load_addon_list(window);
-
-		// Reselect the add-on.
-		addons.select_addon(id);
-		on_addon_select(window);
-	}
+	/* Currently, the install and update codepaths are the same, so this function simply
+	 * calls the other. Since this might change in the future, I'm leaving this function
+	 * here for now.
+	 *
+	 * - vultraz, 3/12/17
+	 */
+	install_addon(addon, window);
 }
 
 void addon_manager::update_all_addons(window& window)
@@ -697,7 +682,6 @@ void addon_manager::show_help(window& window)
 void addon_manager::browse_url_callback(text_box& url_box)
 {
 	/* TODO: ask for confirmation */
-
 	desktop::open_object(url_box.get_value());
 }
 
