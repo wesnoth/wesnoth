@@ -15,6 +15,8 @@
 
 #include "gui/widgets/addon_list.hpp"
 
+#include "color.hpp"
+#include "font/text_formatting.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
@@ -36,37 +38,39 @@ namespace gui2
 
 REGISTER_WIDGET(addon_list)
 
+static color_t color_outdated {255, 127, 0};
+
 std::string addon_list::colorify_addon_state_string(const std::string& str, ADDON_STATUS state, bool verbose)
 {
-	std::string colorname = "";
+	color_t colorname = font::NORMAL_COLOR;
 
 	switch(state) {
 	case ADDON_NONE:
 		if(!verbose) {
 			return str;
 		}
-		colorname = "#a69275";
+		colorname = font::weapon_details_color;
 		break;
 	case ADDON_INSTALLED:
 	case ADDON_INSTALLED_LOCAL_ONLY:
 	case ADDON_NOT_TRACKED:
-		colorname = "#00ff00"; // GOOD_COLOR
+		colorname = font::GOOD_COLOR;
 		break;
 	case ADDON_INSTALLED_UPGRADABLE:
-		colorname = "#ffff00"; // YELLOW_COLOR/color_upgradable
+		colorname = font::YELLOW_COLOR;
 		break;
 	case ADDON_INSTALLED_OUTDATED:
-		colorname = "#ff7f00"; // <255,127,0>/color_outdated
+		colorname = color_outdated;
 		break;
 	case ADDON_INSTALLED_BROKEN:
-		colorname = "#ff0000"; // BAD_COLOR
+		colorname = font::BAD_COLOR;
 		break;
 	default:
-		colorname = "#777777"; // GRAY_COLOR
+		colorname = font::GRAY_COLOR;
 		break;
 	}
 
-	return "<span color='" + colorname + "'>" + str + "</span>";
+	return font::span_color(colorname) + str + "</span>";
 }
 
 std::string addon_list::describe_status(const addon_tracking_info& info)
