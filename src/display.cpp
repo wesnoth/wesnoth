@@ -2526,7 +2526,7 @@ void display::draw_invalidated() {
 		int xpos = get_location_x(loc);
 		int ypos = get_location_y(loc);
 
-		const bool on_map = get_map().on_board(loc);
+		//const bool on_map = get_map().on_board(loc);
 		SDL_Rect hex_rect = sdl::create_rect(xpos, ypos, zoom_, zoom_);
 		if(!sdl::rects_overlap(hex_rect,clip_rect)) {
 			continue;
