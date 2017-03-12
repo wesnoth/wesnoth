@@ -653,7 +653,7 @@ function wml_actions.heal_unit(cfg)
 		}
 	end
 
-	local heal_full = cfg.amount == "full"
+	local heal_full = cfg.amount == "full" or cfg.amount == nil
 	local moves_full = cfg.moves == "full"
 	local heal_amount_set = false
 	for i,u in ipairs(who) do
