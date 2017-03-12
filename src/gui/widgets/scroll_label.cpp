@@ -104,6 +104,7 @@ void scroll_label::finalize_subclass()
 	lbl->set_label(get_label());
 	lbl->set_can_wrap(wrap_on);
 	lbl->set_text_alignment(decode_text_alignment(text_alignment));
+	lbl->set_use_markup(get_use_markup());
 }
 
 void scroll_label::set_can_wrap(bool can_wrap)
