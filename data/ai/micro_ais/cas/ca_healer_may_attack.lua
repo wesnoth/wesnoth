@@ -12,11 +12,7 @@ function ca_healer_may_attack:evaluation()
 end
 
 function ca_healer_may_attack:execution(cfg, data)
-    W.modify_ai {
-        side = wesnoth.current.side,
-        action = "try_delete",
-        path = "aspect[attacks].facet[no_healers_attack]"
-    }
+    W.delete_ai_component(wesnoth.current.side, "aspect[attacks].facet[no_healers_attack]")
 
     -- Once combat (by other units) is done, set the healer move score so that it
     -- now happens before combat (of the healers which were so far excluded from combat)
