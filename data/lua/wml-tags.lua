@@ -688,11 +688,12 @@ function wml_actions.heal_unit(cfg)
 		end
 
 		if cfg.animate then
-			-- TODO: Make this use the new animation API
-			wesnoth.animate_unit{
-				T.filter(healers),
-				flag = "healing"
-			}
+			if #healers then
+				local animator = wesnoth.create_animator()
+				-- Need dummy 3rd argument here...
+				animator:add(healers[1], 'healing', 'hits')
+				animator:run()
+			end
 		end
 	end
 end
