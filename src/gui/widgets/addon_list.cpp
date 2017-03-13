@@ -29,6 +29,7 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/stacked_widget.hpp"
 #include "gui/widgets/toggle_panel.hpp"
+#include "gui/widgets/window.hpp"
 #include "wml_exception.hpp"
 
 #include <algorithm>
@@ -315,6 +316,13 @@ void addon_list::select_addon(const std::string& id)
 listbox& addon_list::get_listbox()
 {
 	return find_widget<listbox>(&get_grid(), "addons", false);
+}
+
+void addon_list::add_list_to_keyboard_chain()
+{
+	if(window* window = get_window()) {
+		window->add_to_keyboard_chain(&get_listbox());
+	}
 }
 
 void addon_list::finalize_setup()

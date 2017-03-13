@@ -125,6 +125,9 @@ public:
 		install_buttons_visibility_ = visibility;
 	}
 
+	/** Adds the internal listbox to the keyboard event chain. */
+	void add_list_to_keyboard_chain();
+
 	/** See @ref styled_widget::set_active. */
 	virtual void set_active(const bool) override
 	{

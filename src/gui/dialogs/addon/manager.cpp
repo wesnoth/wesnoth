@@ -427,7 +427,7 @@ void addon_manager::pre_show(window& window)
 	on_addon_select(window);
 
 	window.keyboard_capture(&filter);
-	//window.add_to_keyboard_chain(&list.get_listbox());
+	list.add_list_to_keyboard_chain();
 
 	// Use handle the special addon_list retval to allow installing addons on double click
 	window.set_exit_hook(std::bind(&addon_manager::exit_hook, this, std::ref(window)));
