@@ -94,6 +94,8 @@ private:
 	std::map<std::string, t_string> visible_stages_;
 	std::vector<t_string> animation_stages_;
 	std::map<std::string, t_string>::const_iterator current_visible_stage_;
+
+	bool is_worker_running_;
 };
 
 } // namespace dialogs
