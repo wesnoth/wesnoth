@@ -22,7 +22,7 @@
 
 #include <map>
 #include <string>
-#include <SDL.h>
+#include <SDL_rect.h>
 
 class config;
 class display;

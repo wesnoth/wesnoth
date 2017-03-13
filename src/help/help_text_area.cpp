@@ -27,7 +27,6 @@
 #include <algorithm>                    // for max, min, find_if
 #include <ostream>                      // for operator<<, stringstream, etc
 #include <vector>                       // for vector, etc
-#include <SDL.h>                        // for TTF_STYLE_BOLD, etc
 
 static lg::log_domain log_display("display");
 #define WRN_DP LOG_STREAM(warn, log_display)

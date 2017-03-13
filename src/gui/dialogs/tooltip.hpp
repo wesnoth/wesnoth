@@ -15,7 +15,7 @@
 #ifndef GUI_DIALOGS_TIP_HPP_INCLUDED
 #define GUI_DIALOGS_TIP_HPP_INCLUDED
 
-#include <SDL.h>
+#include <SDL_rect.h>
 #include <string>
 
 class CVideo;

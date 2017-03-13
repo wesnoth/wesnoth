@@ -16,7 +16,7 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 
-#include <SDL.h>
+#include <SDL_keycode.h>
 #include <vector>
 
 class config;

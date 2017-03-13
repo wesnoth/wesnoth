@@ -24,7 +24,7 @@
 
 #include "gui/widgets/helper.hpp"
 
-#include <SDL.h>
+#include <SDL_rect.h>
 
 namespace gui2
 {

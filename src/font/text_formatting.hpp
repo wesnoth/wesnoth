@@ -20,7 +20,6 @@
 // standard color to be passed to span_color without an extra include.
 #include "font/standard_colors.hpp"
 
-#include <SDL.h>
 #include <string>
 
 /**
