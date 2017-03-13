@@ -1121,8 +1121,8 @@ double readonly_context_impl::power_projection(const map_location& loc, const mo
 			}
 
 			// The 0.5 power avoids underestimating too much the damage of a wounded unit.
-			int hp = int(sqrt(double(un.hitpoints()) / un.max_hitpoints()) * 1000);
-			int most_damage = 0;
+			int64_t hp = int(sqrt(double(un.hitpoints()) / un.max_hitpoints()) * 1000);
+			int64_t most_damage = 0;
 			for(const attack_type &att : un.attacks())
 			{
 				int damage = att.damage() * att.num_attacks() * (100 + tod_modifier);
@@ -1131,9 +1131,13 @@ double readonly_context_impl::power_projection(const map_location& loc, const mo
 				}
 			}
 
-			int village_bonus = map_.is_village(terrain) ? 3 : 2;
-			int defense = 100 - un.defense_modifier(terrain);
-			int rating = hp * defense * most_damage * village_bonus / 200;
+			int64_t village_bonus = map_.is_village(terrain) ? 3 : 2;
+			int64_t defense = 100 - un.defense_modifier(terrain);
+			int64_t rating_64 = hp * defense * most_damage * village_bonus / 200;
+			int rating = rating_64;
+			if(static_cast<int64_t>(rating) != rating_64) {
+				WRN_AI << "overflow in ai attack calculation\n";
+			}
 			if(rating > best_rating) {
 				map_location *pos = std::find(beg_used, end_used, it->second);
 				// Check if the spot is the same or better than an older one.
