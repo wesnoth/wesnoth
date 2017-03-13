@@ -26,7 +26,6 @@
 #include "image_modifications.hpp"
 #include "log.hpp"
 #include "gettext.hpp"
-#include "gui/dialogs/advanced_graphics_options.hpp"
 #include "preferences.hpp"
 #include "sdl/rect.hpp"
 #include "utils/general.hpp"
@@ -754,7 +753,7 @@ static surface scale_xbrz_helper(const surface & res, int w, int h)
 	return F(scale_surface_xbrz(res, legal_zoom), w, h);
 }
 
-using SCALING_ALGORITHM = gui2::dialogs::advanced_graphics_options::SCALING_ALGORITHM;
+using SCALING_ALGORITHM = preferences::SCALING_ALGORITHM;
 
 static scaling_function select_algorithm(SCALING_ALGORITHM algo)
 {
@@ -1164,14 +1163,14 @@ bool save_image(const surface & surf, const std::string & filename)
 
 bool update_from_preferences()
 {
-	SCALING_ALGORITHM algo = SCALING_ALGORITHM::LINEAR;
+	SCALING_ALGORITHM algo = preferences::default_scaling_algorithm;
 	try {
 		algo = SCALING_ALGORITHM::string_to_enum(preferences::get("scale_hex"));
 	} catch (bad_enum_cast &) {}
 
 	scale_to_hex_func = select_algorithm(algo);
 
-	algo = SCALING_ALGORITHM::LINEAR;
+	algo = preferences::default_scaling_algorithm;
 	try {
 		algo = SCALING_ALGORITHM::string_to_enum(preferences::get("scale_zoom"));
 	} catch (bad_enum_cast &) {}

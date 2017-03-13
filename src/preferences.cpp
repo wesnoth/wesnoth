@@ -57,7 +57,7 @@ namespace preferences {
 
 /*
  * Stores all the static, default values for certain game preferences. The values
- * are kept here for easy modification without a lnegthy rebuild.
+ * are kept here for easy modification without a lengthy rebuild.
  *
  * Add any variables of similar type here.
  */
@@ -70,6 +70,7 @@ const int def_window_height = 768;
 const int min_font_scaling  = 80;
 const int max_font_scaling  = 150;
 
+const SCALING_ALGORITHM default_scaling_algorithm = SCALING_ALGORITHM::LINEAR;
 
 class prefs_event_handler : public events::sdl_handler {
 public:
