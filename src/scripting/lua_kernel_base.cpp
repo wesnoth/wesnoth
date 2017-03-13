@@ -406,16 +406,14 @@ lua_kernel_base::lua_kernel_base()
 	static luaL_Reg const map_callbacks[] = {
 		{ "get_direction",		&lua_map_location::intf_get_direction         		},
 		{ "vector_sum",			&lua_map_location::intf_vector_sum			},
+		{ "vector_diff",			&lua_map_location::intf_vector_diff			},
 		{ "vector_negation",		&lua_map_location::intf_vector_negation			},
-		{ "zero",			&lua_map_location::intf_vector_zero			},
 		{ "rotate_right_around_center",	&lua_map_location::intf_rotate_right_around_center	},
 		{ "tiles_adjacent",		&lua_map_location::intf_tiles_adjacent			},
 		{ "get_adjacent_tiles",		&lua_map_location::intf_get_adjacent_tiles		},
 		{ "distance_between",		&lua_map_location::intf_distance_between		},
 		{ "get_in_basis_N_NE",		&lua_map_location::intf_get_in_basis_N_NE		},
 		{ "get_relative_dir",		&lua_map_location::intf_get_relative_dir		},
-		{ "parse_direction",		&lua_map_location::intf_parse_direction			},
-		{ "write_direction",		&lua_map_location::intf_write_direction			},
 		{ nullptr, nullptr }
 	};
 

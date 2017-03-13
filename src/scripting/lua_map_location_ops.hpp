@@ -26,16 +26,14 @@ namespace lua_map_location {
 
 int intf_get_direction(lua_State*);
 int intf_vector_sum(lua_State*);
+int intf_vector_diff(lua_State*);
 int intf_vector_negation(lua_State*);
-int intf_vector_zero(lua_State*);
 int intf_rotate_right_around_center(lua_State*);
 int intf_tiles_adjacent(lua_State*);
 int intf_get_adjacent_tiles(lua_State*);
 int intf_distance_between(lua_State*);
 int intf_get_in_basis_N_NE(lua_State*);
 int intf_get_relative_dir(lua_State*);
-int intf_parse_direction(lua_State*);
-int intf_write_direction(lua_State*);
 
 } // end namespace lua_map_location
 

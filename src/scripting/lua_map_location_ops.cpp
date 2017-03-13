@@ -30,7 +30,7 @@ namespace lua_map_location {
  * Expose map_location::get_direction function to lua
  * Arg 1: a location
  * Arg 2: a direction
- * Arg 3: number of steps
+ * Arg 3: (optional) number of steps
  */
 int intf_get_direction(lua_State* L)
 {
@@ -39,10 +39,8 @@ int intf_get_direction(lua_State* L)
 		return luaL_argerror(L, 1, "get_direction: first argument(S) must be a location");
 	}
 	int nargs = lua_gettop(L);
-	if (nargs != 2 and nargs != 3) {
-		std::string msg("get_direction: must pass 2 or 3 args, found ");
-		msg += std::to_string(nargs);
-		luaL_error(L, msg.c_str());
+	if (nargs < 2) {
+		luaL_error(L, "get_direction: not missing direction argument");
 		return 0;
 	}
 
@@ -53,14 +51,11 @@ int intf_get_direction(lua_State* L)
 	}
 
 	map_location::DIRECTION d;
-	if (lua_isnumber(L, -1)) {
-		d = map_location::rotate_right(map_location::NORTH, static_cast<int>(luaL_checkinteger(L, -1))); //easiest way to correctly convert int to direction
-		lua_pop(L,1);
-	} else if (lua_isstring(L, -1)) {
+	if (lua_isstring(L, -1)) {
 		d = map_location::parse_direction(luaL_checkstring(L,-1));
 		lua_pop(L,1);
 	} else {
-		std::string msg("get_direction: second argument should be a direction, either a string or an integer, instead found a ");
+		std::string msg("get_direction: second argument should be a direction string, instead found a ");
 		msg += lua_typename(L, lua_type(L, -1));
 		return luaL_argerror(L, -1, msg.c_str());
 	}
@@ -86,7 +81,24 @@ int intf_vector_sum(lua_State* L)
 }
 
 /**
+ * Expose map_location::vector_difference to lua
+ */
+int intf_vector_diff(lua_State* L)
+{
+	map_location l1, l2;
+	if(!luaW_tolocation(L, 1, l1) || !luaW_tolocation(L, 2, l2)) {
+		lua_pushstring(L, "vector_sum: requires two locations");
+		return lua_error(L);
+	}
+
+	luaW_pushlocation(L, l1.vector_difference_assign(l2));
+	return 1;
+}
+
+/**
  * Expose map_location::vector_negation to lua
+ * - Arg 1: Location
+ * - Ret: Negated vector
  */
 int intf_vector_negation(lua_State* L)
 {
@@ -96,15 +108,6 @@ int intf_vector_negation(lua_State* L)
 	}
 
 	luaW_pushlocation(L, l1.vector_negation());
-	return 1;
-}
-
-/**
- * Expose map_location::ZERO to lua
- */
-int intf_vector_zero(lua_State* L)
-{
-	luaW_pushlocation(L, map_location::ZERO());
 	return 1;
 }
 
@@ -127,6 +130,8 @@ int intf_rotate_right_around_center(lua_State* L)
 
 /**
  * Expose map_location tiles_adjacent
+ * - Args 1, 2: Two locations
+ * - Ret: True if the locations are adjacent
  */
 int intf_tiles_adjacent(lua_State* L)
 {
@@ -142,6 +147,8 @@ int intf_tiles_adjacent(lua_State* L)
 
 /**
  * Expose map_location get_adjacent_tiles
+ * - Arg 1: A location
+ * - Ret 1 - 6: The adjacent locations
  */
 int intf_get_adjacent_tiles(lua_State* L)
 {
@@ -162,6 +169,8 @@ int intf_get_adjacent_tiles(lua_State* L)
 
 /**
  * Expose map_location distance_between
+ * - Args 1, 2: Two locations
+ * - Ret: The distance between the two locations
  */
 int intf_distance_between(lua_State* L)
 {
@@ -193,6 +202,8 @@ int intf_get_in_basis_N_NE(lua_State* L)
 
 /**
  * Expose map_location get_relative_dir
+ * - Args 1, 2: Two locations
+ * - Ret: The direction of location 2 from location 1
  */
 int intf_get_relative_dir(lua_State* L)
 {
@@ -202,39 +213,9 @@ int intf_get_relative_dir(lua_State* L)
 		return lua_error(L);
 	}
 
-	lua_pushinteger(L, l1.get_relative_dir(l2));
+	const std::string dir = map_location::write_direction(l1.get_relative_dir(l1));
+	lua_pushlstring(L, dir.c_str(), dir.length());
 	return 1;
-}
-
-/**
- * Expose map_location parse_direction
- */
-int intf_parse_direction(lua_State* L)
-{
-	std::string str = luaL_checkstring(L, -1);
-	map_location::DIRECTION d = map_location::parse_direction(str);
-	if (d == map_location::NDIRECTIONS) {
-		luaL_argerror(L, -1, "error: not a direction string");
-		return 0;
-	} else {
-		lua_pushinteger(L, d);
-		return 1;
-	}
-}
-
-/**
- * Expose map_location write_direction
- */
-int intf_write_direction(lua_State* L)
-{
-	int d = luaL_checkinteger(L, -1);
-	if (d >= 0 && d < map_location::NDIRECTIONS) {
-		lua_pushstring(L, map_location::write_direction(static_cast<map_location::DIRECTION>(d)).c_str());
-		return 1;
-	} else {
-		luaL_argerror(L, -1, "error: must be an integer from 0 to 5");
-		return 0;
-	}
 }
 
 } // end namespace lua_map_location
