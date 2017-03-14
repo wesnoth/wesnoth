@@ -2005,10 +2005,12 @@ bool display::set_zoom(bool increase)
 	// Ensure we don't try to access nonexistant vector indices.
 	zoom_index_ = util::clamp(increase ? zoom_index_ + 1 : zoom_index_ - 1, 0, final_zoom_index);
 
-	return set_zoom(zoom_levels[zoom_index_]);
+	// No validation check is needed in the next step since we've already set the index here and
+	// know the new zoom value is indeed valid.
+	return set_zoom(zoom_levels[zoom_index_], false);
 }
 
-bool display::set_zoom(unsigned int amount)
+bool display::set_zoom(unsigned int amount, const bool validate_value_and_set_index)
 {
 	const unsigned int new_zoom = util::clamp(amount, MinZoom, MaxZoom);
 
@@ -2016,6 +2018,18 @@ bool display::set_zoom(unsigned int amount)
 
 	if(new_zoom == zoom_) {
 		return false;
+	}
+
+	// Confirm this is indeed a valid zoom level.
+	if(validate_value_and_set_index) {
+		auto iter = std::find(zoom_levels.begin(), zoom_levels.end(), new_zoom);
+
+		// TODO: do we need an error?
+		if(iter == zoom_levels.end()) {
+			return false;
+		}
+
+		zoom_index_ = iter - zoom_levels.begin();
 	}
 
 	const SDL_Rect& area = map_area();

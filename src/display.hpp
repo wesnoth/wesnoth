@@ -498,7 +498,7 @@ public:
 	bool set_zoom(bool increase);
 
 	/** Sets the display zoom to the specified amount. */
-	bool set_zoom(unsigned int amount);
+	bool set_zoom(unsigned int amount, const bool validate_value_and_set_index = true);
 
 	bool zoom_at_max() const;
 	bool zoom_at_min() const;
