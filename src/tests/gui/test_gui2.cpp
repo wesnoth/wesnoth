@@ -65,6 +65,7 @@
 #include "gui/dialogs/game_save.hpp"
 #include "gui/dialogs/game_stats.hpp"
 #include "gui/dialogs/gamestate_inspector.hpp"
+#include "gui/dialogs/hotkey_bind.hpp"
 #include "gui/dialogs/label_settings.hpp"
 #include "gui/dialogs/language_selection.hpp"
 #include "gui/dialogs/loading_screen.hpp"
@@ -788,6 +789,17 @@ struct dialog_tester<install_dependencies>
 	install_dependencies* create()
 	{
 		return new install_dependencies(addons);
+	}
+};
+
+template<>
+struct dialog_tester<hotkey_bind>
+{
+	std::string id = "";
+
+	hotkey_bind* create()
+	{
+		return new hotkey_bind(id);
 	}
 };
 

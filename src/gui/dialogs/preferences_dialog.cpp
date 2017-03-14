@@ -33,6 +33,7 @@
 // Sub-dialog includes
 #include "gui/dialogs/advanced_graphics_options.hpp"
 #include "gui/dialogs/game_cache_options.hpp"
+#include "gui/dialogs/hotkey_bind.hpp"
 #include "gui/dialogs/log_settings.hpp"
 #include "gui/dialogs/multiplayer/mp_alerts_options.hpp"
 #include "gui/dialogs/select_orb_colors.hpp"
@@ -818,6 +819,15 @@ void preferences_dialog::add_hotkey_callback(listbox& hotkeys)
 	CVideo& video = hotkeys.get_window()->video();
 	int row_number = hotkeys.get_selected_row();
 	const hotkey::hotkey_command& hotkey_item = *visible_hotkeys_[row_number];
+
+	// TODO
+#if 0
+	gui2::dialogs::hotkey_bind bind_dlg(hotkey_item.command);
+	bind_dlg.show(video);
+
+	hotkey::hotkey_ptr newhk = bind_dlg.get_new_binding();
+#endif
+
 	hotkey::hotkey_ptr newhk = hotkey::show_binding_dialog(video, hotkey_item.command);
 	hotkey::hotkey_ptr oldhk;
 
