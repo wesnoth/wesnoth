@@ -114,6 +114,7 @@ enum ui_event {
 	SDL_TOUCH_MOTION,
 	SDL_TOUCH_UP,
 	SDL_TOUCH_DOWN,
+	SDL_TOUCH_MULTI_GESTURE,
 
 	SDL_RAW_EVENT					/**< Raw SDL event. */
 };
@@ -166,7 +167,9 @@ typedef boost::mpl::set<boost::mpl::int_<SDL_VIDEO_RESIZE>,
 						boost::mpl::int_<SDL_WHEEL_UP>,
 						boost::mpl::int_<SDL_WHEEL_DOWN>,
 						boost::mpl::int_<SDL_WHEEL_LEFT>,
-						boost::mpl::int_<SDL_WHEEL_RIGHT> > set_event_mouse;
+						boost::mpl::int_<SDL_WHEEL_RIGHT>,
+						boost::mpl::int_<SDL_TOUCH_UP>,
+						boost::mpl::int_<SDL_TOUCH_DOWN> > set_event_mouse;
 
 /**
  * Helper for catching use error of dispatcher::connect_signal.
@@ -179,12 +182,18 @@ typedef boost::mpl::set<boost::mpl::int_<SDL_KEY_DOWN> > set_event_keyboard;
 /**
  * Helper for catching use error of dispatcher::connect_signal.
  *
- * This version is for callbacks of touch events.
+ * This version is for callbacks of touch motion events.
  */
-typedef boost::mpl::set<boost::mpl::int_<SDL_TOUCH_MOTION>,
-						boost::mpl::int_<SDL_TOUCH_UP>,
-						boost::mpl::int_<SDL_TOUCH_DOWN> >
-set_event_touch;
+typedef boost::mpl::set<boost::mpl::int_<SDL_TOUCH_MOTION> >
+set_event_touch_motion;
+
+/**
+ * Helper for catching use error of dispatcher::connect_signal.
+ *
+ * This version is for callbacks of touch gestures events.
+ */
+typedef boost::mpl::set<boost::mpl::int_<SDL_TOUCH_MULTI_GESTURE> >
+set_event_touch_gesture;
 
 /**
  * Helper for catching use error of dispatcher::connect_signal.

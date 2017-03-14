@@ -81,7 +81,9 @@ bool dispatcher::has_event(const ui_event event, const event_queue_type event_ty
 			event, dispatcher_implementation::has_handler(event_type, *this))
 	    || find<set_event_keyboard>(
 			event, dispatcher_implementation::has_handler(event_type, *this))
-	    || find<set_event_touch>(
+	    || find<set_event_touch_motion>(
+			event, dispatcher_implementation::has_handler(event_type, *this))
+	    || find<set_event_touch_gesture>(
 			event, dispatcher_implementation::has_handler(event_type, *this))
 	    || find<set_event_notification>(
 			event, dispatcher_implementation::has_handler(event_type, *this))
@@ -152,16 +154,22 @@ bool dispatcher::fire(const ui_event event,
 	return fire_event<signal_keyboard_function>(event, this, &target, key, modifier, unicode);
 }
 
+bool dispatcher::fire(const ui_event event, widget& target, const point& pos, const point& distance)
+{
+	assert(find<set_event_touch_motion>(event, event_in_set()));
+	return fire_event<signal_touch_motion_function>(event, this, &target, pos, distance);
+}
+
+bool dispatcher::fire(const ui_event event, widget& target, const point& center, float dTheta, float dDist, Uint8 numFingers)
+{
+	assert(find<set_event_touch_gesture>(event, event_in_set()));
+	return fire_event<signal_touch_gesture_function>(event, this, &target, center, dTheta, dDist, numFingers);
+}
+
 bool dispatcher::fire(const ui_event event, widget& target, const SDL_Event& sdlevent)
 {
 	assert(find<set_event_raw_event>(event, event_in_set()));
 	return fire_event<signal_raw_event_function>(event, this, &target, sdlevent);
-}
-
-bool dispatcher::fire(const ui_event event, widget& target, const point& pos, const point& distance)
-{
-	assert(find<set_event_touch>(event, event_in_set()));
-	return fire_event<signal_touch_function>(event, this, &target, pos, distance);
 }
 
 bool dispatcher::fire(const ui_event event, widget& target, void*)
