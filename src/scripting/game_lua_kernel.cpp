@@ -2561,12 +2561,10 @@ int game_lua_kernel::intf_select_unit(lua_State *L)
  */
 int game_lua_kernel::intf_deselect_hex(lua_State*)
 {
-	const map_location loc;
-	play_controller_.get_mouse_handler_base().select_hex(
-		loc, false, false, false);
-	if (game_display_) {
-		game_display_->highlight_hex(loc);
+	if(game_display_) {
+		game_display_->highlight_hex(map_location::null_location());
 	}
+
 	return 0;
 }
 
@@ -4167,9 +4165,9 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 			{ "fire_wml_menu_item",        &dispatch<&game_lua_kernel::intf_fire_wml_menu_item         >        },
 			{ nullptr, nullptr }
 		};
-		luaL_setfuncs(L, test_callbacks , 0);	
+		luaL_setfuncs(L, test_callbacks , 0);
 	}
-	
+
 	lua_setglobal(L, "wesnoth");
 
 	// Create the getside metatable.
