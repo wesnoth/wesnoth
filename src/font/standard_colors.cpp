@@ -24,9 +24,9 @@ const color_t
 	BAD_COLOR       {255, 0  , 0  },
 	BLACK_COLOR     {0  , 0  , 0  },
 	YELLOW_COLOR    {255, 255, 0  },
-	BUTTON_COLOR    {185, 170, 121},
+	BUTTON_COLOR    {186, 172, 125},
 	PETRIFIED_COLOR {160, 160, 160},
-	TITLE_COLOR     {185, 170, 121},
+	TITLE_COLOR     {186, 172, 125},
 	LABEL_COLOR     {107, 140, 255},
 	BIGMAP_COLOR    {255, 255, 255};
 
