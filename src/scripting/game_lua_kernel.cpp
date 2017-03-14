@@ -2544,6 +2544,10 @@ int game_lua_kernel::intf_select_hex(lua_State *L)
  */
 int game_lua_kernel::intf_select_unit(lua_State *L)
 {
+	if(lua_isnoneornil(L, 1)) {
+		play_controller_.get_mouse_handler_base().select_hex(map_location::null_location(), false, false, false);
+		return 0;
+	}
 	const map_location loc = luaW_checklocation(L, 1);
 	if(!map().on_board(loc)) return luaL_argerror(L, 1, "not on board");
 	bool highlight = true;
