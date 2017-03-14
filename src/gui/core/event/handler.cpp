@@ -222,12 +222,35 @@ private:
 	dispatcher* keyboard_dispatcher();
 
 	/**
-	 * Fires a generic touch event.
+	 * Fires a touch-moved event.
 	 *
 	 * @param position               The position touched.
 	 * @param distance               The distance moved.
 	 */
 	void touch_motion(const point& position, const point& distance);
+	
+	/**
+	 * Fires a touch "finger down" event.
+	 *
+	 * @param position               The position touched.
+	 */
+	void touch_down(const point& position);
+	
+	/**
+	 * Fires a touch "finger up" event.
+	 *
+	 * @param position               The position touched.
+	 */
+	void touch_up(const point& position);
+
+	/**
+	 * Fires a touch gesture event.
+	 * @param center 				the center of gesture
+	 * @param dTheta				the amount that the fingers rotated during this motion
+	 * @param dDist					the amount that the fingers pinched during this motion
+	 * @param numFingers			the number of fingers used in the gesture
+	 */
+	void touch_multi_gesture(const point& center, float dTheta, float dDist, Uint8 numFingers);
 
 	/**
 	 * Handles a hat motion event.
@@ -441,6 +464,19 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 			touch_motion(point(event.tfinger.x, event.tfinger.y), point(event.tfinger.dx, event.tfinger.dy));
 			break;
 
+		case SDL_FINGERUP:
+			touch_up(point(event.tfinger.x, event.tfinger.y));
+			break;
+
+		case SDL_FINGERDOWN:
+			touch_down(point(event.tfinger.x, event.tfinger.y));
+			break;
+
+		case SDL_MULTIGESTURE:
+			touch_multi_gesture(point(event.mgesture.x, event.mgesture.y),
+								event.mgesture.dTheta, event.mgesture.dDist, event.mgesture.numFingers);
+			break;
+
 #if(defined(_X11) && !defined(__APPLE__)) || defined(_WIN32)
 		case SDL_SYSWMEVENT:
 			/* DO NOTHING */
@@ -450,8 +486,6 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 		// Silently ignored events.
 		case SDL_KEYUP:
 		case DOUBLE_CLICK_EVENT:
-		case SDL_FINGERUP:
-		case SDL_FINGERDOWN:
 			break;
 
 		default:
@@ -688,6 +722,27 @@ void sdl_event_handler::touch_motion(const point& position, const point& distanc
 {
 	for(auto& dispatcher : boost::adaptors::reverse(dispatchers_)) {
 		dispatcher->fire(SDL_TOUCH_MOTION , dynamic_cast<widget&>(*dispatcher), position, distance);
+	}
+}
+
+void sdl_event_handler::touch_up(const point& position)
+{
+	for(auto& dispatcher : boost::adaptors::reverse(dispatchers_)) {
+		dispatcher->fire(SDL_TOUCH_UP, dynamic_cast<widget&>(*dispatcher), position);
+	}
+}
+
+void sdl_event_handler::touch_down(const point& position)
+{
+	for(auto& dispatcher : boost::adaptors::reverse(dispatchers_)) {
+		dispatcher->fire(SDL_TOUCH_DOWN, dynamic_cast<widget&>(*dispatcher), position);
+	}
+}
+
+void sdl_event_handler::touch_multi_gesture(const point& center, float dTheta, float dDist, Uint8 numFingers)
+{
+	for(auto& dispatcher : boost::adaptors::reverse(dispatchers_)) {
+		dispatcher->fire(SDL_TOUCH_MULTI_GESTURE, dynamic_cast<widget&>(*dispatcher), center, dTheta, dDist, numFingers);
 	}
 }
 
@@ -1009,6 +1064,9 @@ std::ostream& operator<<(std::ostream& stream, const ui_event event)
 			break;
 		case SDL_TOUCH_DOWN:
 			stream << "SDL touch down";
+			break;
+		case SDL_TOUCH_MULTI_GESTURE:
+			stream << "SDL multi-touch gesture";
 			break;
 		case SDL_RAW_EVENT:
 			stream << "SDL raw event";
