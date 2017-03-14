@@ -1022,7 +1022,7 @@ function wml_actions.modify_side(cfg)
 			wesnoth.add_fog(side.side, {}, true)
 		end
 		if cfg.shroud_data then
-			wesnoth.remove_shroud(side, cfg.shroud_data)
+			wesnoth.remove_shroud(side.side, cfg.shroud_data)
 		end
 
 		if cfg.share_vision then
