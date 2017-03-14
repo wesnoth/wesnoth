@@ -101,6 +101,11 @@ public:
 
 	bool receive_from_server(config& dst) const;
 
+	const mp_campaign_info* campaign_info() const
+	{
+		return campaign_info_;
+	}
+
 private:
 	connect_engine(const connect_engine&) = delete;
 	void operator=(const connect_engine&) = delete;
