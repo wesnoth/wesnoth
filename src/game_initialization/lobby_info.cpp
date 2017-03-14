@@ -301,6 +301,17 @@ bool lobby_info::has_room(const std::string& name) const
 	return get_room(name) != nullptr;
 }
 
+user_info* lobby_info::get_user(const std::string& name)
+{
+	for(const auto& user : users_) {
+		if(users_.name == name) {
+			return &user;
+		}
+	}
+
+	return nullptr;
+}
+
 chat_session& lobby_info::get_whisper_log(const std::string& name)
 {
 	return whispers_[name];

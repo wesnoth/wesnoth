@@ -75,7 +75,7 @@ public:
 	room_info* get_room(const std::string& name);
 	const room_info* get_room(const std::string& name) const;
 
-	user_info& get_user(const std::string& name);
+	user_info* get_user(const std::string& name);
 
 	chat_session& get_whisper_log(const std::string& name);
 
