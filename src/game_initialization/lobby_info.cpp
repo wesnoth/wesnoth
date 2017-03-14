@@ -303,8 +303,8 @@ bool lobby_info::has_room(const std::string& name) const
 
 user_info* lobby_info::get_user(const std::string& name)
 {
-	for(const auto& user : users_) {
-		if(users_.name == name) {
+	for(auto& user : users_) {
+		if(user.name == name) {
 			return &user;
 		}
 	}
