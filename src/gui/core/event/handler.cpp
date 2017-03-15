@@ -354,6 +354,8 @@ sdl_event_handler::~sdl_event_handler()
 #endif
 }
 
+#define MOUSE_TOUCH_EMULATION
+
 void sdl_event_handler::handle_event(const SDL_Event& event)
 {
 	/** No dispatchers drop the event. */
@@ -361,16 +363,47 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 		return;
 	}
 
+//#ifdef MOUSE_TOUCH_EMULATION
+//	static int last_drag_x;
+//	static int last_drag_y;
+//#endif
+
 	switch(event.type) {
 		case SDL_MOUSEMOTION:
+#ifdef MOUSE_TOUCH_EMULATION
+			if (event.motion.state & SDL_BUTTON(SDL_BUTTON_RIGHT))
+#else
+			if (event.motion.which == SDL_TOUCH_MOUSEID)
+#endif
+			{
+				touch_motion(point(event.motion.x, event.motion.y), point(event.motion.xrel, event.motion.yrel));
+//				last_drag_x = event.motion.x;
+//				last_drag_y = event.motion.y;
+			}
 			mouse(SDL_MOUSE_MOTION, {event.motion.x, event.motion.y});
 			break;
 
 		case SDL_MOUSEBUTTONDOWN:
+#ifdef MOUSE_TOUCH_EMULATION
+			if (event.motion.state & SDL_BUTTON(SDL_BUTTON_RIGHT))
+#else
+			if (event.motion.which == SDL_TOUCH_MOUSEID)
+#endif
+			{
+				touch_down(point(event.button.x, event.button.y));
+			}
 			mouse_button_down({event.button.x, event.button.y}, event.button.button);
 			break;
 
 		case SDL_MOUSEBUTTONUP:
+#ifdef MOUSE_TOUCH_EMULATION
+			if (event.motion.state & SDL_BUTTON(SDL_BUTTON_RIGHT))
+#else
+			if (event.motion.which == SDL_TOUCH_MOUSEID)
+#endif
+			{
+				touch_up(point(event.button.x, event.button.y));
+			}
 			mouse_button_up({event.button.x, event.button.y}, event.button.button);
 			break;
 
@@ -396,12 +429,12 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 		case TIMER_EVENT:
 			execute_timer(reinterpret_cast<size_t>(event.user.data1));
 			break;
-
+			
 		case CLOSE_WINDOW_EVENT: {
 			/** @todo Convert this to a proper new style event. */
 			DBG_GUI_E << "Firing " << CLOSE_WINDOW << ".\n";
-
-			window* window = window::window_instance(event.user.code);
+			
+			window *window = window::window_instance(event.user.code);
 			if(window) {
 				window->set_retval(window::AUTO_CLOSE);
 			}
@@ -448,15 +481,49 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 			break;
 
 		case SDL_FINGERMOTION:
-			touch_motion(point(event.tfinger.x, event.tfinger.y), point(event.tfinger.dx, event.tfinger.dy));
+			{
+				window *window = window::window_instance(event.user.code);
+				if(!window) {
+					// Panic!
+					std::cerr << "Huh?\n";
+					exit(1);
+				}
+				int w = window->get_width();
+				int h = window->get_height();
+				
+				touch_motion(point(event.tfinger.x * w, event.tfinger.y * h),
+							 point(event.tfinger.dx * w, event.tfinger.dy * h));
+			}
 			break;
 
 		case SDL_FINGERUP:
-			touch_up(point(event.tfinger.x, event.tfinger.y));
+			{
+				window *window = window::window_instance(event.user.code);
+				if(!window) {
+					// Panic!
+					std::cerr << "Huh?\n";
+					exit(1);
+				}
+				int w = window->get_width();
+				int h = window->get_height();
+				
+				touch_up(point(event.tfinger.x * w, event.tfinger.y * h));
+			}
 			break;
 
 		case SDL_FINGERDOWN:
-			touch_down(point(event.tfinger.x, event.tfinger.y));
+			{
+				window *window = window::window_instance(event.user.code);
+				if(!window) {
+					// Panic!
+					std::cerr << "Huh?\n";
+					exit(1);
+				}
+				int w = window->get_width();
+				int h = window->get_height();
+				
+				touch_down(point(event.tfinger.x * w, event.tfinger.y * h));
+			}
 			break;
 
 		case SDL_MULTIGESTURE:
