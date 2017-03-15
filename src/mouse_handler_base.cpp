@@ -120,12 +120,19 @@ bool mouse_handler_base::mouse_motion_default(int x, int y, bool /*update*/)
 	int my = drag_from_y_;
 
 	if(is_dragging() && !dragging_started_) {
-		if((dragging_left_  && (SDL_GetMouseState(&mx, &my) & SDL_BUTTON_LEFT)  != 0) ||
-		   (dragging_right_ && (SDL_GetMouseState(&mx, &my) & SDL_BUTTON_RIGHT) != 0))
+		Uint32 mouse_state = dragging_left_ || dragging_right_ ? SDL_GetMouseState(&mx, &my) : 0;
+#ifdef MOUSE_TOUCH_EMULATION
+		if(dragging_left_ && (mouse_state & SDL_BUTTON(SDL_BUTTON_RIGHT))) {
+			// Monkey-patch touch controls again to make them look like left button.
+			mouse_state = SDL_BUTTON(SDL_BUTTON_LEFT);
+		}
+#endif
+		if((dragging_left_  && (mouse_state & SDL_BUTTON(SDL_BUTTON_LEFT))  != 0) ||
+		   (dragging_right_ && (mouse_state & SDL_BUTTON(SDL_BUTTON_RIGHT)) != 0))
 		{
 			const double drag_distance =
-				std::pow(static_cast<double>(drag_from_x_ - mx), 2) +
-				std::pow(static_cast<double>(drag_from_y_ - my), 2);
+					std::pow(static_cast<double>(drag_from_x_- mx), 2) +
+					std::pow(static_cast<double>(drag_from_y_- my), 2);
 
 			if(drag_distance > drag_threshold() * drag_threshold()) {
 				dragging_started_ = true;
@@ -147,7 +154,35 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 	map_location loc = gui().hex_clicked_on(event.x, event.y);
 	mouse_update(browse, loc);
 
-	if(is_left_click(event)) {
+	static time_t touch_timestamp = 0;
+
+	if(is_touch_click(event)) {
+		if (event.state == SDL_PRESSED) {
+			cancel_dragging();
+			touch_timestamp = time(NULL);
+			init_dragging(dragging_left_);
+			left_click(event.x, event.y, browse);
+		} else if (event.state == SDL_RELEASED) {
+			minimap_scrolling_ = false;
+
+			if (!dragging_started_ && touch_timestamp > 0) {
+				time_t dt = clock() - touch_timestamp;
+				// I couldn't make this work. Sorry for some C.
+//				auto dt_cpp = high_resolution_clock::now() - touch_timestamp_cpp;
+//				auto dt2 = duration_cast<milliseconds>(dt_cpp);
+//				auto menu_hold = milliseconds(300);
+//				if (dt2 > menu_hold) {
+				if (dt > CLOCKS_PER_SEC * 3 / 10) {
+					right_click(event.x, event.y, browse); // show_menu_ = true;
+				}
+			} else {
+				touch_timestamp = 0;
+			}
+
+			clear_dragging(event, browse);
+			left_mouse_up(event.x, event.y, browse);
+		}
+	} else if(is_left_click(event)) {
 		if(event.state == SDL_PRESSED) {
 			cancel_dragging();
 			init_dragging(dragging_left_);
@@ -203,7 +238,12 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 
 bool mouse_handler_base::is_left_click(const SDL_MouseButtonEvent& event) const
 {
-	return event.button == SDL_BUTTON_LEFT && !command_active();
+	return (event.button == SDL_BUTTON_LEFT && !command_active())
+			|| event.which == SDL_TOUCH_MOUSEID
+#ifdef MOUSE_TOUCH_EMULATION
+			|| event.button == SDL_BUTTON_RIGHT
+#endif
+	;
 }
 
 bool mouse_handler_base::is_middle_click(const SDL_MouseButtonEvent& event) const
@@ -213,7 +253,22 @@ bool mouse_handler_base::is_middle_click(const SDL_MouseButtonEvent& event) cons
 
 bool mouse_handler_base::is_right_click(const SDL_MouseButtonEvent& event) const
 {
-	return event.button == SDL_BUTTON_RIGHT || (event.button == SDL_BUTTON_LEFT && command_active());
+#ifdef MOUSE_TOUCH_EMULATION
+	(void) event;
+	return false;
+#else
+	return event.button == SDL_BUTTON_RIGHT
+			|| (event.button == SDL_BUTTON_LEFT && command_active());
+#endif
+}
+
+bool mouse_handler_base::is_touch_click(const SDL_MouseButtonEvent& event) const
+{
+	return event.which == SDL_TOUCH_MOUSEID
+#ifdef MOUSE_TOUCH_EMULATION
+		   || event.button == SDL_BUTTON_RIGHT
+#endif
+			;
 }
 
 bool mouse_handler_base::left_click(int x, int y, const bool /*browse*/)
