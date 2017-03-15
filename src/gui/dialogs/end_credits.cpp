@@ -77,7 +77,7 @@ void end_credits::pre_show(window& window)
 	// Delay a little before beginning the scrolling
 	last_scroll_ = SDL_GetTicks() + 3000;
 
-	connect_signal_pre_key_press(window, std::bind(&end_credits::key_press_callback, this, _3, _4, _5));
+	connect_signal_pre_key_press(window, std::bind(&end_credits::key_press_callback, this, _5));
 
 	std::stringstream ss;
 	std::stringstream focus_ss;
@@ -152,7 +152,7 @@ void end_credits::timer_callback()
 	}
 }
 
-void end_credits::key_press_callback(bool&, bool&, const SDL_Keycode key)
+void end_credits::key_press_callback(const SDL_Keycode key)
 {
 	if(key == SDLK_UP && scroll_speed_ < 400) {
 		scroll_speed_ <<= 1;
