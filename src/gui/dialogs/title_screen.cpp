@@ -296,9 +296,9 @@ void title_screen::pre_show(window& win)
 	//
 	// Help
 	//
-	register_button(win, "help", hotkey::HOTKEY_HELP, [this](window&) {
+	register_button(win, "help", hotkey::HOTKEY_HELP, [this](window& w) {
 		help::help_manager help_manager(&game_config_manager::get()->game_config());
-		help::show_help(game_.video());
+		help::show_help(w.video());
 	});
 
 	//
@@ -323,7 +323,7 @@ void title_screen::pre_show(window& win)
 				w.set_retval(LAUNCH_GAME);
 			}
 		} catch (const config::error& e) {
-			gui2::show_error_message(game_.video(), e.what());
+			gui2::show_error_message(w.video(), e.what());
 		}
 	});
 
@@ -333,7 +333,7 @@ void title_screen::pre_show(window& win)
 	register_button(win, "multiplayer", hotkey::TITLE_SCREEN__MULTIPLAYER, [this](window& w) {
 		while(true) {
 			gui2::dialogs::mp_method_selection dlg;
-			dlg.show(game_.video());
+			dlg.show(w.video());
 
 			if(dlg.get_retval() != gui2::window::OK) {
 				return;
@@ -342,7 +342,7 @@ void title_screen::pre_show(window& win)
 			const int res = dlg.get_choice();
 
 			if(res == 2 && preferences::mp_server_warning_disabled() < 2) {
-				if(!gui2::dialogs::mp_host_game_prompt::execute(game_.video())) {
+				if(!gui2::dialogs::mp_host_game_prompt::execute(w.video())) {
 					continue;
 				}
 			}
@@ -383,11 +383,11 @@ void title_screen::pre_show(window& win)
 	//
 	// Addons
 	//
-	register_button(win, "addons", hotkey::TITLE_SCREEN__ADDONS, [this](window&) {
+	register_button(win, "addons", hotkey::TITLE_SCREEN__ADDONS, [this](window& w) {
 		// NOTE: we need the help_manager to get access to the Add-ons section in the game help!
 		help::help_manager help_manager(&game_config_manager::get()->game_config());
 
-		if(manage_addons(game_.video())) {
+		if(manage_addons(w.video())) {
 			game_config_manager::get()->reload_changed_game_config();
 		}
 	});
@@ -400,7 +400,7 @@ void title_screen::pre_show(window& win)
 	//
 	// Cores
 	//
-	register_button(win, "cores", hotkey::TITLE_SCREEN__CORES, [this](window&) {
+	register_button(win, "cores", hotkey::TITLE_SCREEN__CORES, [this](window& w) {
 		int current = 0;
 		std::vector<config> cores;
 		for(const config& core : game_config_manager::get()->game_config().child_range("core")) {
@@ -412,7 +412,7 @@ void title_screen::pre_show(window& win)
 		}
 
 		gui2::dialogs::core_selection core_dlg(cores, current);
-		if(core_dlg.show(game_.video())) {
+		if(core_dlg.show(w.video())) {
 			const std::string& core_id = cores[core_dlg.get_choice()]["id"];
 
 			preferences::set_core_id(core_id);
@@ -435,7 +435,7 @@ void title_screen::pre_show(window& win)
 				on_resize(w);
 			}
 		} catch(std::runtime_error& e) {
-			gui2::show_error_message(game_.video(), e.what());
+			gui2::show_error_message(w.video(), e.what());
 		}
 	});
 
