@@ -48,6 +48,14 @@ void hotkey_bind::pre_show(window& window)
 
 void hotkey_bind::key_press_callback(window& window, const SDL_Keycode key)
 {
+	/* HACK: SDL_KEYDOWN and SDL_TEXTINPUT events forward to the same GUI2 event (SDL_KEY_DOWN), meaning
+	 *       this even gets fired twice, causing problems since 'key' will be 0 in the latter case. SDLK_UNKNOWN
+	 *       is the key value used by SDL_TEXTINPUT handling, so exit here if that's detected.
+	 */
+	if(key == SDLK_UNKNOWN) {
+		return;
+	}
+
 	new_binding_ = hotkey::create_hotkey(hotkey_id_, SDL_GetScancodeFromKey(key));
 
 	window.set_retval(window::OK);
