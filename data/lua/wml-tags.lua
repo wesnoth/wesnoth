@@ -1206,12 +1206,13 @@ wml_actions.unstore_unit = function(cfg)
 	local unit = wesnoth.create_unit(unit_cfg)
 	local advance = cfg.advance ~= false
 	local animate = cfg.animate ~= false
+	local check_passability = cfg.check_passability ~= false or nil
 	local x = cfg.x or unit.x or -1
 	local y = cfg.y or unit.y or -1
 	wesnoth.add_known_unit(unit.type)
 	if on_board(x, y) then
 		if cfg.find_vacant then
-			x,y = wesnoth.find_vacant_tile(x, y, cfg.check_passability and unit)
+			x,y = wesnoth.find_vacant_tile(x, y, check_passability and unit)
 		end
 		unit:to_map(x, y, cfg.fire_event)
 		local text = nil
