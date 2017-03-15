@@ -270,13 +270,6 @@ private:
 				  const utf8::string& unicode);
 
 	/**
-	 * Fires a text input event.
-	 *
-	 * @param unicode                The unicode value for the text entered.
-	 */
-	void text_input(const std::string& unicode);
-
-	/**
 	 * Fires a keyboard event which has no parameters.
 	 *
 	 * This can happen for example when the mouse wheel is used.
@@ -418,7 +411,6 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 			break;
 
 		case SDL_TEXTINPUT:
-			text_input(event.text.text);
 			break;
 
 		case SDL_FINGERMOTION:
@@ -703,11 +695,6 @@ void sdl_event_handler::key_down(const SDL_Event& event)
 	if(!done) {
 		key_down(event.key.keysym.sym, static_cast<const SDL_Keymod>(event.key.keysym.mod), "");
 	}
-}
-
-void sdl_event_handler::text_input(const std::string& unicode)
-{
-	key_down(SDLK_UNKNOWN, static_cast<SDL_Keymod>(0), unicode);
 }
 
 bool sdl_event_handler::hotkey_pressed(const hotkey::hotkey_ptr key)
