@@ -371,15 +371,10 @@ void add_hotkey(const hotkey_ptr item);
  */
 void del_hotkey(const hotkey_ptr item);
 
-/**
- * Create a new hotkey item for a command from an SDL_Event.
- * @param id The command to bind to.
- * @param event The SDL_Event to base the creation on.
- */
-hotkey_ptr create_hotkey(const std::string &id, SDL_Event &event);
-
+/** Create a new hotkey item bound to a keyboard key. */
 hotkey_ptr create_hotkey(const std::string& id, SDL_Scancode new_val);
 
+/** Create a new hotkey item bound to a mouse button. */
 hotkey_ptr create_hotkey(const std::string& id, Uint8 new_val);
 
 /**

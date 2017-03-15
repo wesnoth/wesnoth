@@ -820,15 +820,10 @@ void preferences_dialog::add_hotkey_callback(listbox& hotkeys)
 	int row_number = hotkeys.get_selected_row();
 	const hotkey::hotkey_command& hotkey_item = *visible_hotkeys_[row_number];
 
-	// TODO
-#if 0
 	gui2::dialogs::hotkey_bind bind_dlg(hotkey_item.command);
 	bind_dlg.show(video);
 
 	hotkey::hotkey_ptr newhk = bind_dlg.get_new_binding();
-#endif
-
-	hotkey::hotkey_ptr newhk = hotkey::show_binding_dialog(video, hotkey_item.command);
 	hotkey::hotkey_ptr oldhk;
 
 	// only if not cancelled.

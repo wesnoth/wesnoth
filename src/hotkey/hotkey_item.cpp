@@ -155,40 +155,6 @@ void hotkey_base::save(config& item) const
 	save_helper(item);
 }
 
-hotkey_ptr create_hotkey(const std::string &id, SDL_Event &event)
-{
-	hotkey_ptr base = hotkey_ptr(new hotkey_void);
-
-	switch (event.type) {
-	case SDL_KEYDOWN:
-	case SDL_KEYUP: {
-		hotkey_keyboard_ptr keyboard(new hotkey_keyboard());
-		base = std::dynamic_pointer_cast<hotkey_base>(keyboard);
-		SDL_Scancode code;
-		code = event.key.keysym.scancode;
-		std::cerr << "code is " << code << std::endl;
-		keyboard->set_scancode(code);
-		break;
-	}
-	case SDL_MOUSEBUTTONDOWN:
-	case SDL_MOUSEBUTTONUP: {
-		hotkey_mouse_ptr mouse(new hotkey_mouse());
-		base = std::dynamic_pointer_cast<hotkey_base>(mouse);
-		mouse->set_button(event.button.button);
-		break;
-	}
-	default:
-		ERR_G<< "Trying to bind an unknown event type:" << event.type << "\n";
-		break;
-	}
-
-	base->set_mods(sdl_get_mods());
-	base->set_command(id);
-	base->unset_default();
-
-	return base;
-}
-
 hotkey_ptr create_hotkey(const std::string& id, SDL_Scancode new_val)
 {
 	hotkey_ptr base = hotkey_ptr(new hotkey_void);
