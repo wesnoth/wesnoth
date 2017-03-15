@@ -602,6 +602,9 @@
     <ClCompile Include="..\..\src\gui\dialogs\gamestate_inspector.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\hotkey_bind.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\label_settings.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
@@ -701,6 +704,9 @@
     <ClCompile Include="..\..\src\gui\dialogs\addon\filter_options.cpp">
       <Filter>Gui\Dialogs\Addon</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\addon\install_dependencies.cpp">
+      <Filter>Gui\Dialogs\Addon</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\addon\manager.cpp">
       <Filter>Gui\Dialogs\Addon</Filter>
     </ClCompile>
@@ -795,6 +801,9 @@
       <Filter>Gui\Auxiliary\Iterator</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\core\canvas.cpp">
+      <Filter>Gui\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\core\linked_group_definition.cpp">
       <Filter>Gui\Core</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\core\log.cpp">
@@ -1516,12 +1525,6 @@
     <ClCompile Include="..\..\src\font\text_surface.cpp">
       <Filter>Font</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\gui\core\linked_group_definition.cpp">
-      <Filter>Gui\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\addon\install_dependencies.cpp">
-      <Filter>Gui\Dialogs\Addon</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\addon\client.hpp">
@@ -1986,6 +1989,9 @@
     <ClInclude Include="..\..\src\gui\dialogs\helper.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\hotkey_bind.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\label_settings.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
@@ -2083,6 +2089,9 @@
       <Filter>Gui\Dialogs\Addon</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\addon\filter_options.hpp">
+      <Filter>Gui\Dialogs\Addon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\addon\install_dependencies.hpp">
       <Filter>Gui\Dialogs\Addon</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\addon\manager.hpp">
@@ -2212,6 +2221,9 @@
       <Filter>Gui\Core</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\core\layout_exception.hpp">
+      <Filter>Gui\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\core\linked_group_definition.hpp">
       <Filter>Gui\Core</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\core\log.hpp">
@@ -2742,6 +2754,9 @@
     <ClInclude Include="..\..\src\units\frame.hpp">
       <Filter>Units</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\units\frame_private.hpp">
+      <Filter>Units</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\units\helper.hpp">
       <Filter>Units</Filter>
     </ClInclude>
@@ -2948,15 +2963,6 @@
     </ClInclude>
     <ClInclude Include="..\..\src\font\pango\stream_ops.hpp">
       <Filter>Font\Pango</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\gui\core\linked_group_definition.hpp">
-      <Filter>Gui\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\gui\dialogs\addon\install_dependencies.hpp">
-      <Filter>Gui\Dialogs\Addon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\units\frame_private.hpp">
-      <Filter>Units</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
