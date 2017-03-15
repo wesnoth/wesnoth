@@ -41,16 +41,15 @@ private:
 
 	hotkey::hotkey_ptr new_binding_;
 
-	void key_press_callback(bool&, bool&, const SDL_Keycode key);
+	void key_press_callback(window& window, const SDL_Keycode key);
+
+	void mouse_button_callback(window& window, Uint8 button);
 
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
 	/** Inherited from modal_dialog. */
 	void pre_show(window& window);
-
-	/** Inherited from modal_dialog. */
-	void post_show(window& window);
 };
 
 } // namespace dialogs

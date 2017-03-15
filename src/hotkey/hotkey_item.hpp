@@ -378,6 +378,10 @@ void del_hotkey(const hotkey_ptr item);
  */
 hotkey_ptr create_hotkey(const std::string &id, SDL_Event &event);
 
+hotkey_ptr create_hotkey(const std::string& id, SDL_Scancode new_val);
+
+hotkey_ptr create_hotkey(const std::string& id, Uint8 new_val);
+
 /**
  * Iterate through the list of hotkeys and return a hotkey that matches
  * the SDL_Event and the current keyboard modifier state.

@@ -166,6 +166,7 @@ hotkey_ptr create_hotkey(const std::string &id, SDL_Event &event)
 		base = std::dynamic_pointer_cast<hotkey_base>(keyboard);
 		SDL_Scancode code;
 		code = event.key.keysym.scancode;
+		std::cerr << "code is " << code << std::endl;
 		keyboard->set_scancode(code);
 		break;
 	}
@@ -180,6 +181,38 @@ hotkey_ptr create_hotkey(const std::string &id, SDL_Event &event)
 		ERR_G<< "Trying to bind an unknown event type:" << event.type << "\n";
 		break;
 	}
+
+	base->set_mods(sdl_get_mods());
+	base->set_command(id);
+	base->unset_default();
+
+	return base;
+}
+
+hotkey_ptr create_hotkey(const std::string& id, SDL_Scancode new_val)
+{
+	hotkey_ptr base = hotkey_ptr(new hotkey_void);
+
+	hotkey_keyboard_ptr keyboard(new hotkey_keyboard());
+	base = std::dynamic_pointer_cast<hotkey_base>(keyboard);
+
+	keyboard->set_scancode(new_val);
+
+	base->set_mods(sdl_get_mods());
+	base->set_command(id);
+	base->unset_default();
+
+	return base;
+}
+
+hotkey_ptr create_hotkey(const std::string& id, Uint8 new_val)
+{
+	hotkey_ptr base = hotkey_ptr(new hotkey_void);
+
+	hotkey_mouse_ptr mouse(new hotkey_mouse());
+	base = std::dynamic_pointer_cast<hotkey_base>(mouse);
+
+	mouse->set_button(new_val);
 
 	base->set_mods(sdl_get_mods());
 	base->set_command(id);

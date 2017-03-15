@@ -18,6 +18,8 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 
+#include <SDL.h>
+
 namespace gui2
 {
 namespace dialogs
@@ -34,22 +36,28 @@ hotkey_bind::hotkey_bind(const std::string& hotkey_id)
 
 void hotkey_bind::pre_show(window& window)
 {
-	window.connect_signal<event::SDL_KEY_DOWN>(
-		std::bind(&hotkey_bind::key_press_callback, this, _3, _4, _5), event::dispatcher::back_child);
+	connect_signal_pre_key_press(window, std::bind(&hotkey_bind::key_press_callback, this, std::ref(window), _5));
+
+	window.connect_signal<event::SDL_LEFT_BUTTON_DOWN>(
+		std::bind(&hotkey_bind::mouse_button_callback, this, std::ref(window), SDL_BUTTON_LEFT), event::dispatcher::front_child);
+	window.connect_signal<event::SDL_MIDDLE_BUTTON_DOWN>(
+		std::bind(&hotkey_bind::mouse_button_callback, this, std::ref(window), SDL_BUTTON_MIDDLE), event::dispatcher::front_child);
+	window.connect_signal<event::SDL_RIGHT_BUTTON_DOWN>(
+		std::bind(&hotkey_bind::mouse_button_callback, this, std::ref(window), SDL_BUTTON_RIGHT), event::dispatcher::front_child);
 }
 
-void hotkey_bind::key_press_callback(bool&, bool&, const SDL_Keycode key)
+void hotkey_bind::key_press_callback(window& window, const SDL_Keycode key)
 {
-	UNUSED(key);
+	new_binding_ = hotkey::create_hotkey(hotkey_id_, SDL_GetScancodeFromKey(key));
 
-	//new_binding_ = hotkey::create_hotkey(hotkey_id_, event);
+	window.set_retval(window::OK);
 }
 
-void hotkey_bind::post_show(window& window)
+void hotkey_bind::mouse_button_callback(window& window, Uint8 button)
 {
-	if(window.get_retval() == window::OK) {
+	new_binding_ = hotkey::create_hotkey(hotkey_id_, button);
 
-	}
+	window.set_retval(window::OK);
 }
 
 } // namespace dialogs
