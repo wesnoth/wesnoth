@@ -283,33 +283,3 @@ token get_token(iterator& i1, const iterator i2) {
 }
 
 }
-
-#ifdef UNIT_TEST_TOKENIZER
-
-int main()
-{
-	using namespace formula_tokenizer;
-	std::string test = "(abc + 4 * (5+3))^2";
-	std::string::const_iterator i1 = test.begin();
-	std::string::const_iterator i2 = test.end();
-	TOKEN_TYPE types[] = {TOKEN_LPARENS, TOKEN_IDENTIFIER,
-	                      TOKEN_WHITESPACE, TOKEN_OPERATOR,
-						  TOKEN_WHITESPACE, TOKEN_INTEGER,
-						  TOKEN_WHITESPACE, TOKEN_OPERATOR,
-						  TOKEN_WHITESPACE, TOKEN_LPARENS,
-						  TOKEN_INTEGER, TOKEN_OPERATOR,
-						  TOKEN_INTEGER, TOKEN_RPARENS,
-						  TOKEN_RPARENS, TOKEN_KEYWORD,
-	                      TOKEN_OPERATOR, TOKEN_INTEGER};
-	std::string tokens[] = {"(", "abc", " ", "+", " ", "4", " ",
-	                        "*", " ", "(", "5", "+", "3", ")", ")", "functions"};
-	for(int n = 0; n != sizeof(types)/sizeof(*types); ++n) {
-		token t = get_token(i1,i2);
-		assert(std::string(t.begin,t.end) == tokens[n]);
-		assert(t.type == types[n]);
-
-	}
-	return 0;
-}
-
-#endif
