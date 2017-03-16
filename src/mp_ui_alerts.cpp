@@ -33,17 +33,17 @@ namespace mp_ui_alerts {
 
 namespace {
 
-bool lobby_pref(std::string id)
+bool lobby_pref(const std::string& id)
 {
 	return preferences::get(id + "_lobby", get_def_pref_lobby(id));
 }
 
-bool sound_pref(std::string id)
+bool sound_pref(const std::string& id)
 {
 	return preferences::get(id + "_sound", get_def_pref_sound(id));
 }
 
-bool notif_pref(std::string id)
+bool notif_pref(const std::string& id)
 {
 	return preferences::get(id + "_notif", get_def_pref_notif(id));
 }

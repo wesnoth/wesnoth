@@ -502,7 +502,7 @@ static void si_string_impl_stream_write(std::stringstream &ss, double input) {
 	ss.precision(oldprec);
 }
 
-std::string si_string(double input, bool base2, std::string unit) {
+std::string si_string(double input, bool base2, const std::string& unit) {
 	const double multiplier = base2 ? 1024 : 1000;
 
 	typedef std::array<std::string, 9> strings9;

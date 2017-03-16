@@ -163,7 +163,7 @@ void carryover_info::remove_side(const std::string& id) {
 
 struct save_id_equals
 {
-	save_id_equals(std::string val) : value (val) {}
+	save_id_equals(const std::string& val) : value (val) {}
 	bool operator () (carryover& v2)
 	{
 		return value == v2.get_save_id();
@@ -250,7 +250,7 @@ const config carryover_info::to_config()
 	return cfg;
 }
 
-carryover* carryover_info::get_side(std::string save_id){
+carryover* carryover_info::get_side(const std::string& save_id){
 	for(carryover& side : carryover_sides_) {
 		if(side.get_save_id() == save_id){
 			return &side;

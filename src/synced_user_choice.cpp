@@ -222,7 +222,7 @@ config mp_sync::get_user_choice(const std::string &name, const mp_sync::user_cho
 	return retv[side];
 }
 
-user_choice_manager::user_choice_manager(const std::string &name, const mp_sync::user_choice &uch, std::set<int> sides)
+user_choice_manager::user_choice_manager(const std::string &name, const mp_sync::user_choice &uch, const std::set<int>& sides)
 	: required_(sides)
 	, res_()
 	, local_choice_(0)

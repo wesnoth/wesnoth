@@ -294,9 +294,9 @@ public:
 	events::generic_event& theme_reset_event() { return theme_reset_event_; }
 
 private:
-	theme::object& find_element(std::string id);
+	theme::object& find_element(const std::string& id);
 	void add_object(const config& cfg);
-	void remove_object(std::string id);
+	void remove_object(const std::string& id);
 	void set_object_location(theme::object& element, std::string rect_str, std::string ref_id);
 
 	//notify observers that the theme has been rebuilt completely

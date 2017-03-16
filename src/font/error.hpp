@@ -21,7 +21,7 @@
 namespace font {
 
 struct error : public game::error {
-	error(std::string str = "Font initialization failed") : game::error(str) {}
+	error(const std::string& str = "Font initialization failed") : game::error(str) {}
 };
 
 } // end namespace font

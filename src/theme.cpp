@@ -781,7 +781,7 @@ void theme::add_object(const config& cfg)
 	}
 }
 
-void theme::remove_object(std::string id){
+void theme::remove_object(const std::string& id){
 	for(std::vector<theme::panel>::iterator p = panels_.begin(); p != panels_.end(); ++p) {
 		if (p->get_id() == id){
 			panels_.erase(p);
@@ -873,7 +873,7 @@ void theme::modify(const config &cfg)
 	}
 }
 
-theme::object& theme::find_element(std::string id){
+theme::object& theme::find_element(const std::string& id){
 	static theme::object empty_object;
 	theme::object* res = &empty_object;
 	for (std::vector<theme::panel>::iterator p = panels_.begin(); p != panels_.end(); ++p){

@@ -89,7 +89,7 @@ class user_choice_manager : events::pump_monitor
 	const std::string& tagname_;
 	const int current_side_;
 	// private constructor, this object is only constructed by user_choice_manager::get_user_choice_internal
-	user_choice_manager(const std::string &name, const mp_sync::user_choice &uch, std::set<int> sides);
+	user_choice_manager(const std::string &name, const mp_sync::user_choice &uch, const std::set<int>& sides);
 	~user_choice_manager() {}
 	void search_in_replay();
 public:

@@ -281,7 +281,7 @@ inline std::string signed_percent(int val) {return signed_value(val) + "%";}
  *
  * There are no default values because they would not be translatable.
  */
-std::string si_string(double input, bool base2, std::string unit);
+std::string si_string(double input, bool base2, const std::string& unit);
 
 /**
  * Try to complete the last word of 'text' with the 'wordlist'.

@@ -445,7 +445,7 @@ void save_hotkeys(config& cfg)
 	}
 }
 
-std::string get_names(std::string id)
+std::string get_names(const std::string& id)
 {
 	// Names are used in places like the hot-key preferences menu
 	std::vector<std::string> names;

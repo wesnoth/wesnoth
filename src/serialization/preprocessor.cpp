@@ -1349,7 +1349,7 @@ std::istream *preprocess_file(const std::string& fname, preproc_map *defines)
 }
 
 void preprocess_resource(const std::string& res_name, preproc_map *defines_map,
-			 bool write_cfg, bool write_plain_cfg,std::string target_directory)
+			 bool write_cfg, bool write_plain_cfg,const std::string& target_directory)
 {
 	if (filesystem::is_directory(res_name))
 	{

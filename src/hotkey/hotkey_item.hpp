@@ -421,7 +421,7 @@ void clear_hotkeys();
  * "ctrl+l" or "n" or "mouse 1". The comman separated string is of the form "ctrl+l,n,mouse 1".
  * @return The comma separated string of hotkey names.
  */
-std::string get_names(std::string id);
+std::string get_names(const std::string& id);
 
 /**
  * Save the non-default hotkeys to the config.

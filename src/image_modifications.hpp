@@ -431,7 +431,7 @@ private:
 class scale_modification : public modification
 {
 public:
-	scale_modification(int width, int height, std::string fn, bool use_nn)
+	scale_modification(int width, int height, const std::string& fn, bool use_nn)
 		: w_(width), h_(height), nn_(use_nn), fn_(fn)
 	{}
 	virtual surface operator()(const surface& src) const;
@@ -461,7 +461,7 @@ protected:
 class scale_exact_modification : public scale_modification
 {
 public:
-	scale_exact_modification(int width, int height, std::string fn, bool use_nn)
+	scale_exact_modification(int width, int height, const std::string& fn, bool use_nn)
 		: scale_modification(width, height, fn, use_nn)
 	{}
 	virtual std::pair<int,int> calculate_size(const surface& src) const;
@@ -474,7 +474,7 @@ public:
 class scale_into_modification : public scale_modification
 {
 public:
-	scale_into_modification(int width, int height, std::string fn, bool use_nn)
+	scale_into_modification(int width, int height, const std::string& fn, bool use_nn)
 		: scale_modification(width, height, fn, use_nn)
 	{}
 	virtual std::pair<int,int> calculate_size(const surface& src) const;

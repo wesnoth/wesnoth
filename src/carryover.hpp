@@ -65,7 +65,7 @@ public:
 	/// @param from_snapshot true if cfg is a [snapshot], false if cfg is [carryover_sides(_start)]
 	explicit carryover_info(const config& cfg, bool from_snapshot = false);
 
-	carryover* get_side(std::string save_id);
+	carryover* get_side(const std::string& save_id);
 	std::vector<carryover>& get_all_sides();
 	void add_side(const config& cfg);
 	void add_side(const team& t, const int gold, const bool add);

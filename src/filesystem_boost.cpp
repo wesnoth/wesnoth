@@ -594,7 +594,7 @@ static void set_user_config_path(path newconfig)
 	}
 }
 
-void set_user_config_dir(std::string newconfigdir)
+void set_user_config_dir(const std::string& newconfigdir)
 {
 	set_user_config_path(newconfigdir);
 }

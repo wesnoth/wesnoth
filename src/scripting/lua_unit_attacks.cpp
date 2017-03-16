@@ -85,7 +85,7 @@ using attack_ptr_in = boost::intrusive_ptr<typename utils::const_clone<attack_ty
 
 // Note that these two templates are designed on the assumption that T is either unit or unit_type
 template<typename T>
-auto find_attack(T* u, std::string id) -> attack_ptr_in<T>
+auto find_attack(T* u, const std::string& id) -> attack_ptr_in<T>
 {
 	auto attacks = u->attacks();
 	for(auto at = attacks.begin(); at != attacks.end(); ++at) {

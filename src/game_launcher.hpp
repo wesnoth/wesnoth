@@ -33,7 +33,7 @@ namespace savegame { struct load_game_metadata; }
 struct jump_to_campaign_info
 {
 public:
-	jump_to_campaign_info(bool jump,int difficulty, std::string campaign_id,std::string scenario_id)
+	jump_to_campaign_info(bool jump,int difficulty, const std::string& campaign_id,const std::string& scenario_id)
 		: jump_(jump)
 		, difficulty_(difficulty)
 		, campaign_id_(campaign_id)

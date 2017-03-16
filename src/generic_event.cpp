@@ -18,7 +18,7 @@
 
 namespace events{
 
-generic_event::generic_event(std::string name) :
+generic_event::generic_event(const std::string& name) :
 	name_(name),
 	observers_(),
 	change_handler_(false),

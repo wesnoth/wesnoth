@@ -223,7 +223,7 @@ public:
 		} catch (...) { std::cerr << "Swallowed an exception when trying to write lua command line history\n";}
 	}
 #endif
-	void add_to_history (std::string str) {
+	void add_to_history (const std::string& str) {
 		prefix_ = "";
 		(void) str;
 #ifdef HAVE_HISTORY

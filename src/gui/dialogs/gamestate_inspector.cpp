@@ -191,7 +191,7 @@ public:
 	{
 	}
 
-	stuff_list_adder stuff_list_entry(tree_view_node* parent, const std::string defn)
+	stuff_list_adder stuff_list_entry(tree_view_node* parent, const std::string& defn)
 	{
 		return stuff_list_adder(parent ? *parent : stuff_list_->get_root_node(), defn);
 	}

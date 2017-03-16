@@ -43,7 +43,7 @@ This is the class that notifies the observers and maintains a list of them.
 */
 class generic_event{
 public:
-	generic_event(std::string name);
+	generic_event(const std::string& name);
 	virtual ~generic_event() {}
 
 	virtual bool attach_handler(observer* obs);

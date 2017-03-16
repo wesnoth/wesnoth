@@ -75,6 +75,6 @@ std::ostream& operator<<(std::ostream& stream, const preproc_map::value_type& de
 std::istream *preprocess_file(const std::string& fname, preproc_map *defines = nullptr);
 
 void preprocess_resource(const std::string& res_name, preproc_map *defines_map,
-			bool write_cfg=false, bool write_plain_cfg=false, std::string target_directory="");
+			bool write_cfg=false, bool write_plain_cfg=false, const std::string& target_directory="");
 
 #endif
