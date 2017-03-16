@@ -24,6 +24,7 @@
 #include "log.hpp"
 #include "mp_ui_alerts.hpp"
 #include "playturn.hpp"
+#include "game_preferences.hpp"
 #include "preferences.hpp"
 #include "game_initialization/playcampaign.hpp"
 #include "resources.hpp"
@@ -44,17 +45,21 @@ playmp_controller::playmp_controller(const config& level,
 		const ter_data_cache & tdata, CVideo& video,
 		mp_campaign_info* mp_info)
 	: playsingle_controller(level, state_of_game, game_config, tdata, video,
-			mp_info && mp_info->skip_replay)
+			preferences::quick_mp_replay())
 	, network_processing_stopped_(false)
-	, blindfold_(*gui_, mp_info && mp_info->skip_replay_blindfolded)
+	, blindfold_(*gui_, preferences::blindfold_replay())
 	, mp_info_(mp_info)
 {
 	hotkey_handler_.reset(new hotkey_handler(*this, saved_game_)); //upgrade hotkey handler to the mp (network enabled) version
 
 	//turn_data_.set_host(is_host);
 	turn_data_.host_transfer().attach_handler(this);
-	if (!mp_info || mp_info->current_turn == turn()) {
-		skip_replay_ = false;
+
+	if (mp_info_ && mp_info_->current_turn > 0) {
+		if (preferences::skip_mp_replay()) {
+			skipping_replay_ = true;
+			CVideo::get_singleton().lock_updates(true);
+		}
 	}
 }
 
@@ -332,8 +337,12 @@ void playmp_controller::play_network_turn(){
 	{
 		if (!network_processing_stopped_) {
 			process_network_data();
-			if (!mp_info_ || mp_info_->current_turn == turn()) {
-				skip_replay_ = false;
+			if (quick_replay_ && mp_info_->current_turn <= turn()) {
+				quick_replay_ = false;
+			}
+			if (skipping_replay_ && mp_info_->current_turn <= turn()) {
+				skipping_replay_ = false;
+				CVideo::get_singleton().lock_updates(false);
 			}
 		}
 

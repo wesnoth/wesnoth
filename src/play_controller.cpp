@@ -137,7 +137,7 @@ static void clear_resources()
 
 play_controller::play_controller(const config& level, saved_game& state_of_game,
 		const config& game_config, const ter_data_cache& tdata,
-		CVideo& video, bool skip_replay)
+		CVideo& video, bool quick_replay)
 	: controller_base(game_config, video)
 	, observer()
 	, quit_confirmation()
@@ -160,7 +160,7 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	, xp_mod_(new unit_experience_accelerator(level["experience_modifier"].to_int(100)))
 	, statistics_context_(new statistics::scenario_context(level["name"]))
 	, replay_(new replay(state_of_game.get_replay()))
-	, skip_replay_(skip_replay)
+	, quick_replay_(quick_replay)
 	, linger_(false)
 	, init_side_done_now_(false)
 	, victory_when_enemies_defeated_(level["victory_when_enemies_defeated"].to_bool(true))

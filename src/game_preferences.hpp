@@ -169,11 +169,14 @@ class acquaintance;
 	const config& options();
 	void set_options(const config& values);
 
-	bool skip_mp_replay();
-	void set_skip_mp_replay(bool value);
+	bool quick_mp_replay();
+	void set_quick_mp_replay(bool value);
 
 	bool blindfold_replay();
 	void set_blindfold_replay(bool value);
+
+	bool skip_mp_replay();
+	void set_skip_mp_replay(bool value);
 
 	bool countdown();
 	void set_countdown(bool value);

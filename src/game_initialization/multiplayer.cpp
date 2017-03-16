@@ -367,11 +367,6 @@ static void enter_wait_mode(CVideo& video, const config& game_config,
 	if (li.get_game_by_id(game_id)) {
 		campaign_info->current_turn = li.get_game_by_id(game_id)->current_turn;
 	}
-	if(preferences::skip_mp_replay() || preferences::blindfold_replay()) {
-		campaign_info->skip_replay = true;
-		campaign_info->skip_replay_blindfolded = preferences::blindfold_replay();
-	}
-
 
 	gui2::dialogs::mp_join_game dlg(state, li, *connection, true, observe);
 

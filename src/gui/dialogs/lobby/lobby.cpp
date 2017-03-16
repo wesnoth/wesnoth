@@ -726,12 +726,16 @@ void mp_lobby::pre_show(window& window)
 
 	menu_button& replay_options = find_widget<menu_button>(&window, "replay_options", false);
 
-	if(preferences::skip_mp_replay()) {
+	if(preferences::quick_mp_replay()) {
 		replay_options.set_selected(1);
 	}
 
 	if(preferences::blindfold_replay()) {
 		replay_options.set_selected(2);
+	}
+
+	if(preferences::skip_mp_replay()) {
+		replay_options.set_selected(3);
 	}
 
 	replay_options.connect_click_handler(
@@ -1117,8 +1121,10 @@ void mp_lobby::skip_replay_changed_callback(window& window)
 {
 	// TODO: this prefence should probably be controlled with an enum
 	const int value = find_widget<menu_button>(&window, "replay_options", false).get_value();
-	preferences::set_skip_mp_replay(value == 1);
+
+	preferences::set_quick_mp_replay(value == 1);
 	preferences::set_blindfold_replay(value == 2);
+	preferences::set_skip_mp_replay(value == 3);
 }
 
 int mp_lobby::get_game_index_from_id(const int game_id) const

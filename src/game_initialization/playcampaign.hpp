@@ -41,8 +41,6 @@ struct mp_campaign_info
 		: connected_players()
 		, is_host()
 		, current_turn(0)
-		, skip_replay(false)
-		, skip_replay_blindfolded(false)
 		, connection(wdc)
 	{
 
@@ -51,8 +49,6 @@ struct mp_campaign_info
 	std::set<std::string> connected_players;
 	bool is_host;
 	unsigned current_turn;
-	bool skip_replay;
-	bool skip_replay_blindfolded;
 	wesnothd_connection& connection;
 };
 
