@@ -1011,6 +1011,12 @@ config side_engine::new_config() const
 	// during the start/prestart event (otherwise random unit creation during prestart fails).
 	res["is_local"] = player_id_ == preferences::login() || controller_ == CNTR_COMPUTER || controller_ == CNTR_LOCAL;
 
+	// This function (new_config) is only meant to be called by the host's machine, which is why this check
+	// works. It essentially certifies that whatever side has the player_id that matches the host's login
+	// will be flagged. The reason we cannot check mp_campaign_info::is_host is because that flag is *always*
+	// true on the host's machine, meaning this flag would be set to true for every side.
+	res["is_host"] = player_id_ == preferences::login();
+
 	std::string desc = user_description();
 	if(!desc.empty()) {
 		res["user_description"] = t_string(desc, "wesnoth");
