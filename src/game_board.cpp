@@ -44,6 +44,7 @@ game_board::game_board(const ter_data_cache & tdata, const config & level)
 game_board::game_board(const game_board & other)
 	: teams_(other.teams_)
 	, map_(new gamemap(*(other.map_)))
+	, labels_(other.labels_)
 	, unit_id_manager_(other.unit_id_manager_)
 	, units_(other.units_) {}
 

@@ -564,10 +564,10 @@ struct BlendResult
 struct Kernel_4x4 //kernel for preprocessing step
 {
     uint32_t
-    /**/a, b, c, d,
-    /**/e, f, g, h,
-    /**/i, j, k, l,
-    /**/m, n, o, p;
+    /**/a=0, b=0, c=0, d=0,
+    /**/e=0, f=0, g=0, h=0,
+    /**/i=0, j=0, k=0, l=0,
+    /**/m=0, n=0, o=0, p=0;
 
     Kernel_4x4() {}
 };
@@ -625,9 +625,9 @@ BlendResult preProcessCorners(const Kernel_4x4& ker, const xbrz::ScalerCfg& cfg)
 struct Kernel_3x3
 {
     uint32_t
-    /**/a,  b,  c,
-    /**/d,  e,  f,
-    /**/g,  h,  i;
+    /**/a=0,  b=0,  c=0,
+    /**/d=0,  e=0,  f=0,
+    /**/g=0,  h=0,  i=0;
 
     Kernel_3x3() {}
 };

@@ -36,7 +36,8 @@ namespace detail {
 	template<typename Ret, typename... T>
 	struct apply {
 		using result_type = void;
-		apply(std::function<Ret(T...)> fcn) : fcn(fcn) {}
+		apply(const std::function<Ret(T...)>& fcn) : fcn(fcn) {}
+		apply(Ret(*fcn)(T...)) : fcn(fcn) {}
 		void operator()(T... params) {
 			fcn(std::forward<T>(params)...);
 		}

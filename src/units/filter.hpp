@@ -55,6 +55,7 @@ public:
 	unit_filter(const unit_filter & o ) : impl_(o.impl_), max_matches_() {}
 	void swap(unit_filter & o) {
 		impl_.swap(o.impl_);
+		std::swap(max_matches_, o.max_matches_);
 	}
 	unit_filter & operator=(unit_filter o) {
 		swap(o);
