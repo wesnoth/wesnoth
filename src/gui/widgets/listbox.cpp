@@ -161,7 +161,7 @@ void listbox::set_row_shown(const unsigned row, const bool shown)
 
 	const int selected_row = get_selected_row();
 
-	bool resize_needed;
+	bool resize_needed = false;
 	{
 		window::invalidate_layout_blocker invalidate_layout_blocker(*window);
 
@@ -199,7 +199,7 @@ void listbox::set_row_shown(const boost::dynamic_bitset<>& shown)
 
 	const int selected_row = get_selected_row();
 
-	bool resize_needed;
+	bool resize_needed = false;
 	{
 		window::invalidate_layout_blocker invalidate_layout_blocker(*window);
 

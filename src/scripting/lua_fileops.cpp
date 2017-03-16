@@ -150,7 +150,8 @@ class lua_filestream
 {
 public:
 	lua_filestream(const std::string& fname)
-		: pistream_(filesystem::istream_file(fname))
+		: buff_()
+		, pistream_(filesystem::istream_file(fname))
 	{
 
 	}

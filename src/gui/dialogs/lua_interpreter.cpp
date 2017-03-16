@@ -380,6 +380,7 @@ private:
 public:
 	controller(lua_kernel_base & lk)
 		: copy_button(nullptr)
+		, clear_button(nullptr)
 		, text_entry(nullptr)
 		, text_entry_()
 		, lua_model_(new lua_interpreter::lua_model(lk))

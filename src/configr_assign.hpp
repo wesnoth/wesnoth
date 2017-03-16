@@ -21,12 +21,12 @@
 struct configr_of
 {
 	template <typename AT>
-	configr_of(const std::string& attrname, AT value)
+	configr_of(const std::string& attrname, AT value) : subtags_(), data_()
 	{
 		this->operator()(attrname, value);
 	}
 
-	configr_of(const config& cfg)
+	configr_of(const config& cfg) : subtags_(), data_()
 	{
 		this->operator()(cfg);
 	}

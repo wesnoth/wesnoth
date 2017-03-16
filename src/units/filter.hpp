@@ -52,7 +52,7 @@ public:
 	unit_filter(const vconfig & cfg, const filter_context * fc, bool use_flat_tod = false); //!< Constructs a unit filter from a config and a context. This function should give the most efficient implementation available.
 
 	// Copy and Swap Idiom for the interface -- does not copy the underlying impl
-	unit_filter(const unit_filter & o ) : impl_(o.impl_) {}
+	unit_filter(const unit_filter & o ) : impl_(o.impl_), max_matches_() {}
 	void swap(unit_filter & o) {
 		impl_.swap(o.impl_);
 	}

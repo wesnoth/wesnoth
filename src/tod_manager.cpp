@@ -69,6 +69,11 @@ tod_manager& tod_manager::operator=(const tod_manager& manager)
 	turn_ = manager.turn_;
 	num_turns_ = manager.num_turns_;
 
+	has_turn_event_fired_ = manager.has_turn_event_fired_;
+	has_tod_bonus_changed_= manager.has_tod_bonus_changed_;
+
+	random_tod_ = manager.random_tod_;
+
 	return *this;
 }
 

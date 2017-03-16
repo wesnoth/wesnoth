@@ -205,7 +205,8 @@ static std::shared_ptr<unit_filter_abstract_impl> construct(const vconfig & vcfg
  *  unit_filter::unit_filter acts as a factory, selecting the appropriate implementation class
  */
 unit_filter::unit_filter(const vconfig & vcfg, const filter_context * fc, bool flat_tod)
-	: max_matches_(static_cast<unsigned>(-1))
+	: impl_()
+	, max_matches_(static_cast<unsigned>(-1))
 {
 	if(vcfg) {
 		max_matches_ = vcfg["limit"].to_unsigned(max_matches_);
