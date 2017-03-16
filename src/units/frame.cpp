@@ -33,8 +33,8 @@ frame_parameters::frame_parameters()
 	, halo_mod("")
 	, sound("")
 	, text("")
-	, text_color()
-	, blend_with()
+	, text_color({0,0,0})
+	, blend_with({0,0,0})
 	, blend_ratio(0.0)
 	, highlight_ratio(1.0)
 	, offset(0)
@@ -60,8 +60,8 @@ frame_builder::frame_builder()
 	, halo_mod_("")
 	, sound_("")
 	, text_("")
-	, text_color_()
-	, blend_with_()
+	, text_color_({0,0,0})
+	, blend_with_({0,0,0})
 	, blend_ratio_("")
 	, highlight_ratio_("")
 	, offset_("")
@@ -87,8 +87,8 @@ frame_builder::frame_builder(const config& cfg,const std::string& frame_string)
 	, halo_mod_(cfg[frame_string + "halo_mod"])
 	, sound_(cfg[frame_string + "sound"])
 	, text_(cfg[frame_string + "text"])
-	, text_color_()
-	, blend_with_()
+	, text_color_({0,0,0})
+	, blend_with_({0,0,0})
 	, blend_ratio_(cfg[frame_string + "blend_ratio"])
 	, highlight_ratio_(cfg[frame_string + "alpha"])
 	, offset_(cfg[frame_string + "offset"])
@@ -870,8 +870,8 @@ const frame_parameters unit_frame::merge_parameters(int current_time, const fram
 	result.text = current_val.text.empty() ? animation_val.text : current_val.text;
 
 	// TODO: how should this be handled now that we use color_t?
-	assert(!engine_val.text_color);
-	result.text_color = current_val.text_color && current_val.text_color ? current_val.text_color : animation_val.text_color;
+	//assert(!engine_val.text_color);
+	result.text_color = current_val.text_color ? current_val.text_color : animation_val.text_color;
 
 	/** The engine provides a blend color for poisoned units */
 	result.blend_with = current_val.blend_with ? current_val.blend_with : animation_val.blend_with;
