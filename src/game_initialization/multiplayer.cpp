@@ -18,7 +18,6 @@
 #include "config_assign.hpp"
 #include "formula/string_utils.hpp"
 #include "game_config_manager.hpp"
-#include "game_initialization/lobby_reload_request_exception.hpp"
 #include "game_initialization/mp_game_utils.hpp"
 #include "game_initialization/playcampaign.hpp"
 #include "game_preferences.hpp"
@@ -443,7 +442,7 @@ static void enter_create_mode(mp_workflow_helper_ptr helper)
 	}
 }
 
-static void enter_lobby_mode(mp_workflow_helper_ptr helper, const std::vector<std::string>& installed_addons)
+static bool enter_lobby_mode(mp_workflow_helper_ptr helper, const std::vector<std::string>& installed_addons)
 {
 	DBG_MP << "entering lobby mode" << std::endl;
 
@@ -500,11 +499,16 @@ static void enter_lobby_mode(mp_workflow_helper_ptr helper, const std::vector<st
 				}
 
 				break;
+			case gui2::dialogs::mp_lobby::RELOAD_CONFIG:
+				// Let this function's caller reload the config and re-call.
+				return false;
 			default:
 				// Needed to handle the Quit signal and exit the loop
-				return;
+				return true;
 		}
 	}
+
+	return true;
 }
 
 /** Pubic entry points for the MP workflow */
@@ -529,24 +533,22 @@ void start_client(CVideo& video, const config& game_config,	saved_game& state, c
 	}
 
 	mp_workflow_helper_ptr workflow_helper;
-	bool re_enter;
+	bool re_enter = false;
 
 	do {
 		workflow_helper.reset(new mp_workflow_helper(video, *game_config_ptr, state, connection.get(), nullptr));
-		re_enter = false;
 
-		try {
-			enter_lobby_mode(workflow_helper, installed_addons);
-		} catch(lobby_reload_request_exception&) {
-			re_enter = true;
+		// A return of false means a config reload was requested, so do that and then loop.
+		re_enter = !enter_lobby_mode(workflow_helper, installed_addons);
 
+		if(re_enter) {
 			game_config_manager* gcm = game_config_manager::get();
 			gcm->reload_changed_game_config();
 			gcm->load_game_config_for_game(state.classification()); // NOTE: Using reload_changed_game_config only doesn't seem to work here
 
 			game_config_ptr = &gcm->game_config();
 
-			installed_addons = ::installed_addons(); // Refersh the installed add-on list for this session.
+			installed_addons = ::installed_addons(); // Refresh the installed add-on list for this session.
 
 			connection->send_data(config("refresh_lobby"));
 		}

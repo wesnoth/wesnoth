@@ -99,7 +99,8 @@ public:
 		QUIT,
 		JOIN,
 		OBSERVE,
-		CREATE
+		CREATE,
+		RELOAD_CONFIG
 	};
 
 protected:

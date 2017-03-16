@@ -45,7 +45,6 @@
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "game_preferences.hpp"
-#include "game_initialization/lobby_reload_request_exception.hpp"
 #include "gettext.hpp"
 #include "lobby_preferences.hpp"
 #include "playmp_controller.hpp"
@@ -930,10 +929,6 @@ static bool handle_addon_requirements_gui(CVideo& v, const std::vector<mp::game_
 			// Begin download session
 			ad_hoc_addon_fetch_session(v, needs_download);
 
-			// TODO: get rid of evil exception throwing. Boooo! In any case, this is here to reload the game config
-			// and the installed_addons list that the lobby has.
-			throw mp::lobby_reload_request_exception();
-
 			return true;
 		}
 	}
@@ -969,6 +964,11 @@ bool mp_lobby::do_game_join(int idx, bool observe)
 		}
 
 		if(!handle_addon_requirements_gui(window_->video(), game.required_addons, game.addons_outcome)) {
+			return false;
+		} else {
+			// Addons have been downloaded, so the game_config and installed addons list need to be reloaded.
+			// The lobby is closed and reopened.
+			window_->set_retval(RELOAD_CONFIG);
 			return false;
 		}
 	}
