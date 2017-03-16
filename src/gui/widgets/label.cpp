@@ -47,6 +47,7 @@ label::label()
 		, characters_per_line_(0)
 		, link_aware_(false)
 		, link_color_(color_t::from_hex_string("ffff00"))
+		, can_shrink_(false)
 {
 	connect_signal<event::LEFT_BUTTON_CLICK>(std::bind(&label::signal_handler_left_button_click, this, _2, _3));
 	connect_signal<event::RIGHT_BUTTON_CLICK>(std::bind(&label::signal_handler_right_button_click, this, _2, _3));
@@ -318,6 +319,7 @@ builder_label::builder_label(const config& cfg)
 	, wrap(cfg["wrap"].to_bool())
 	, characters_per_line(cfg["characters_per_line"])
 	, text_alignment(decode_text_alignment(cfg["text_alignment"]))
+	, can_shrink(cfg["can_shrink"].to_bool(false))
 {
 }
 
@@ -330,6 +332,7 @@ widget* builder_label::build() const
 	lbl->set_can_wrap(wrap);
 	lbl->set_characters_per_line(characters_per_line);
 	lbl->set_text_alignment(text_alignment);
+	lbl->set_can_shrink(can_shrink);
 
 	DBG_GUI_G << "Window builder: placed label '" << id << "' with definition '"
 			  << definition << "'.\n";

@@ -57,8 +57,6 @@ struct resolution_definition
 	unsigned max_width;
 	unsigned max_height;
 
-	bool can_shrink;
-
 	std::vector<linked_group_definition> linked_groups;
 
 	unsigned text_extra_width;

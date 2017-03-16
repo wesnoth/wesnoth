@@ -475,6 +475,14 @@ private:
 							  point maximum_size = {0, 0}) const;
 
 	/**
+	 * Gets whether a widget can shrink past its optimal size even if it's text-based (such as labels);
+	 */
+	virtual bool text_can_shrink()
+	{
+		return false;
+	}
+
+	/**
 	 * Contains a helper cache for the rendering.
 	 *
 	 * Creating a pango_text object is quite expensive and is done on various

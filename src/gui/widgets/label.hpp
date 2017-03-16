@@ -69,6 +69,12 @@ public:
 	void set_link_color(const color_t& color);
 
 	virtual bool can_mouse_focus() const override { return !tooltip().empty(); }
+
+	void set_can_shrink(bool can_shrink)
+	{
+		can_shrink_ = can_shrink;
+	}
+
 private:
 	/**
 	 * Possible states of the widget.
@@ -111,6 +117,14 @@ private:
 	 * What color links will be rendered in.
 	 */
 	color_t link_color_;
+
+	bool can_shrink_;
+
+	/** Inherited from styled_widget. */
+	virtual bool text_can_shrink() override
+	{
+		return can_shrink_;
+	}
 
 	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
@@ -165,6 +179,8 @@ struct builder_label : public builder_styled_widget
 	unsigned characters_per_line;
 
 	PangoAlignment text_alignment;
+
+	bool can_shrink;
 };
 
 } // namespace implementation

@@ -219,7 +219,7 @@ void styled_widget::request_reduce_width(const unsigned maximum_width)
 				  << "' maximum_width " << maximum_width << " result " << size
 				  << ".\n";
 
-	} else if(label_.empty() || config_->can_shrink) {
+	} else if(label_.empty() || text_can_shrink()) {
 		point size = get_best_size();
 		point min_size = get_config_minimum_size();
 		size.x = std::min(size.x, std::max<int>(maximum_width, min_size.x));
