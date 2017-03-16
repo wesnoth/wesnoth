@@ -488,13 +488,13 @@ static void enter_lobby_mode(CVideo& video, const config& game_config,
 		}
 		mp::lobby_info li(game_config, installed_addons);
 
-		gui2::dialogs::lobby_main dlg(game_config, li, *connection);
+		gui2::dialogs::mp_lobby dlg(game_config, li, *connection);
 		dlg.set_preferences_callback(std::bind(do_preferences_dialog, std::ref(video), std::ref(game_config)));
 		dlg.show(video);
 
 		//ugly kludge for launching other dialogs like the old lobby
 		switch(dlg.get_retval()) {
-			case gui2::dialogs::lobby_main::CREATE:
+			case gui2::dialogs::mp_lobby::CREATE:
 				try {
 					enter_create_mode(video, game_config, state, connection, li, false);
 				} catch(config::error& error) {
@@ -505,12 +505,12 @@ static void enter_lobby_mode(CVideo& video, const config& game_config,
 				}
 
 				break;
-			case gui2::dialogs::lobby_main::JOIN:
-			case gui2::dialogs::lobby_main::OBSERVE:
+			case gui2::dialogs::mp_lobby::JOIN:
+			case gui2::dialogs::mp_lobby::OBSERVE:
 				try {
 					enter_wait_mode(video, game_config, state, connection, li,
 							dlg.get_joined_game_id(),
-							dlg.get_retval() == gui2::dialogs::lobby_main::OBSERVE);
+							dlg.get_retval() == gui2::dialogs::mp_lobby::OBSERVE);
 				} catch(config::error& error) {
 					if(!error.message.empty()) {
 						gui2::show_error_message(video, error.message);

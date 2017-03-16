@@ -70,12 +70,12 @@ struct player_list
 	tree_view* tree;
 };
 
-class lobby_main : public modal_dialog, public quit_confirmation, private plugin_executor
+class mp_lobby : public modal_dialog, public quit_confirmation, private plugin_executor
 {
 public:
-	lobby_main(const config& game_config, mp::lobby_info& info, wesnothd_connection &connection);
+	mp_lobby(const config& game_config, mp::lobby_info& info, wesnothd_connection &connection);
 
-	~lobby_main();
+	~mp_lobby();
 
 	/**
 	 * Set the callback used to show the preferences.

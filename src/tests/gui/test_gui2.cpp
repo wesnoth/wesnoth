@@ -429,7 +429,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<install_dependencies>();
 	test<language_selection>();
 	// test<loading_screen>(); TODO: enable
-	test<lobby_main>();
+	test<mp_lobby>();
 	test<lobby_player_info>();
 	test<log_settings>();
 	//test<lua_interpreter>(& lua_kernel_base());
@@ -822,7 +822,7 @@ struct wesnothd_connection_init
 };
 
 template<>
-struct dialog_tester<lobby_main>
+struct dialog_tester<mp_lobby>
 {
 	config game_config;
 	wesnothd_connection connection;
@@ -832,9 +832,9 @@ struct dialog_tester<lobby_main>
 	dialog_tester() : connection("", ""), init(connection), li(game_config, installed_addons)
 	{
 	}
-	lobby_main* create()
+	mp_lobby* create()
 	{
-		return new lobby_main(game_config, li, connection);
+		return new mp_lobby(game_config, li, connection);
 	}
 };
 
