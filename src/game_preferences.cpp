@@ -220,9 +220,9 @@ bool is_authenticated() {
 
 void parse_admin_authentication(const std::string& sender, const std::string& message) {
 	if(sender != "server") return;
-	if(message.find("You are now recognized as an administrator.") == 0) {
+	if(message.compare(0, 43, "You are now recognized as an administrator.") == 0) {
 		authenticated = true;
-	} else if(message.find("You are no longer recognized as an administrator.") == 0) {
+	} else if(message.compare(0, 50, "You are no longer recognized as an administrator.") == 0) {
 		authenticated = false;
 	}
 }

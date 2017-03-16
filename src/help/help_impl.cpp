@@ -1459,13 +1459,13 @@ bool is_valid_id(const std::string &id) {
 	if (id == "toplevel") {
 		return false;
 	}
-	if (id.find(unit_prefix) == 0 || id.find(hidden_symbol() + unit_prefix) == 0) {
+	if (id.compare(0, unit_prefix.length(), unit_prefix) == 0 || id.compare(hidden_symbol().length(), unit_prefix.length(), unit_prefix) == 0) {
 		return false;
 	}
-	if (id.find("ability_") == 0) {
+	if (id.compare(0, 8, "ability_") == 0) {
 		return false;
 	}
-	if (id.find("weaponspecial_") == 0) {
+	if (id.compare(0, 14, "weaponspecial_") == 0) {
 		return false;
 	}
 	if (id == "hidden") {

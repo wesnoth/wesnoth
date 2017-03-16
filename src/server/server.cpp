@@ -910,7 +910,7 @@ void server::handle_query(socket_ptr socket, simple_wml::node& query)
 	// Commands a player may issue.
 	if (command == "status") {
 		response << process_command(command + " " + player.name(), player.name());
-	} else if (command.find("adminmsg") == 0 || command.find("report") == 0
+	} else if (command.compare(0, 8, "adminmsg") == 0 || command.compare(0, 6, "report") == 0
 			   || command == "games"
 			   || command == "metrics"
 			   || command == "motd"
@@ -943,7 +943,7 @@ void server::handle_query(socket_ptr socket, simple_wml::node& query)
 		}
 	} else if (command == "help" || command.empty()) {
 		response << query_help_msg;
-	} else if (command == "admin" || command.find("admin ") == 0) {
+	} else if (command == "admin" || command.compare(0, 6, "admin ") == 0) {
 		if (admin_passwd_.empty()) {
 			send_server_message(socket, "No password set.");
 			return;

@@ -92,11 +92,11 @@ void display_chat_manager::add_chat_message(const time_t& time, const std::strin
 
 	std::string msg;
 
-	if (message.find("/me ") == 0) {
+	if (message.compare(0,4,"/me ") == 0) {
 		msg.assign(message, 4, message.size());
 		action = true;
 	} else {
-		msg += message;
+		msg = message;
 	}
 
 	try {
