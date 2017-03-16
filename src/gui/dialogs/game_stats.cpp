@@ -136,10 +136,11 @@ void game_stats::pre_show(window& window)
 		if(known || game_config::debug) {
 			std::string gold_str;
 			if(game_config::debug || !enemy || !viewing_team_.uses_fog()) {
-				gold_str = utils::half_signed_value(data.gold);
+				const std::string gold_str = utils::half_signed_value(data.gold);
+				column_stats["label"] = data.gold < 0 ? "<span color='#ff0000'>" + gold_str + "</span>" : gold_str;
+			} else {
+				column_stats["label"] = gold_str;
 			}
-
-			column_stats["label"] = gold_str;
 			row_data_stats.emplace("team_gold", column_stats);
 
 			std::string village_count = std::to_string(data.villages);
