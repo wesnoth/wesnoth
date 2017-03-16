@@ -164,6 +164,7 @@ namespace t_translation {
 	extern const terrain_code STAR;	// *
 	extern const terrain_code BASE;	// references the base terrain in movement/defense aliases
 
+    extern const ter_match ALL_OFF_MAP;
 	extern const ter_match ALL_FORESTS;
 	extern const ter_match ALL_HILLS;
 	extern const ter_match ALL_MOUNTAINS; //excluding impassable mountains

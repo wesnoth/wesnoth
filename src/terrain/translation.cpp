@@ -141,6 +141,7 @@ const terrain_code NOT = string_to_number_("!");
 const terrain_code STAR = string_to_number_("*");
 const terrain_code BASE = string_to_number_("_bas");
 
+const ter_match ALL_OFF_MAP("_off^_usr,*^_fme");
 const ter_match ALL_FORESTS("F*,*^F*");
 const ter_match ALL_HILLS("!,*^V*,!,H*");
 const ter_match ALL_MOUNTAINS("!,*^V*,!,M*"); //excluding impassable mountains

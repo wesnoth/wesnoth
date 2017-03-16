@@ -633,7 +633,7 @@ std::string unit_topic_generator::operator()() const {
 		for (; terrain_it != preferences::encountered_terrains().end();
 			 	++terrain_it) {
 			const t_translation::terrain_code terrain = *terrain_it;
-			if (terrain == t_translation::FOGGED || terrain == t_translation::VOID_TERRAIN || terrain == t_translation::OFF_MAP_USER) {
+			if (terrain == t_translation::FOGGED || terrain == t_translation::VOID_TERRAIN || t_translation::terrain_matches(terrain, t_translation::ALL_OFF_MAP)) {
 				continue;
 			}
 			const terrain_type& info = tdata->get_terrain_info(terrain);

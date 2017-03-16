@@ -598,7 +598,7 @@ static config unit_moves(reports::context & rc, const unit* u)
 	for (; terrain_it != preferences::encountered_terrains().end();
 			++terrain_it) {
 		const t_translation::terrain_code terrain = *terrain_it;
-		if (terrain == t_translation::FOGGED || terrain == t_translation::VOID_TERRAIN || terrain == t_translation::OFF_MAP_USER)
+		if (terrain == t_translation::FOGGED || terrain == t_translation::VOID_TERRAIN || t_translation::terrain_matches(terrain, t_translation::ALL_OFF_MAP))
 			continue;
 
 		const terrain_type& info = rc.map().get_terrain_info(terrain);
@@ -1190,7 +1190,7 @@ static config unit_box_at(reports::context & rc, const map_location& mouseover_h
 	const gamemap &map = rc.map();
 	t_translation::terrain_code terrain = map.get_terrain(mouseover_hex);
 
-	//if (terrain == t_translation::OFF_MAP_USER)
+	//if (t_translation::terrain_matches(terrain, t_translation::ALL_OFF_MAP))
 	//	return config();
 
 	//if (map.is_keep(mouseover_hex)) {
@@ -1352,7 +1352,7 @@ REPORT_GENERATOR(terrain_info, rc)
 		return config();
 
 	t_translation::terrain_code terrain = map.get_terrain(mouseover_hex);
-	if (terrain == t_translation::OFF_MAP_USER)
+	if (t_translation::terrain_matches(terrain, t_translation::ALL_OFF_MAP))
 		return config();
 
 	config cfg;
@@ -1374,7 +1374,7 @@ REPORT_GENERATOR(terrain_info, rc)
 	const t_translation::ter_list& underlying_terrains = map.underlying_union_terrain(terrain);
 	for (const t_translation::terrain_code& underlying_terrain : underlying_terrains) {
 
-		if (underlying_terrain == t_translation::OFF_MAP_USER)
+		if (t_translation::terrain_matches(underlying_terrain, t_translation::ALL_OFF_MAP))
 			continue;
 		const std::string& terrain_id = map.get_terrain_info(underlying_terrain).id();
 		const std::string& terrain_name = map.get_terrain_string(underlying_terrain);
@@ -1396,7 +1396,7 @@ REPORT_GENERATOR(terrain, rc)
 		return config();
 
 	t_translation::terrain_code terrain = map.get_terrain(mouseover_hex);
-	if (terrain == t_translation::OFF_MAP_USER)
+	if (t_translation::terrain_matches(terrain, t_translation::ALL_OFF_MAP))
 		return config();
 
 	std::ostringstream str;
@@ -1451,7 +1451,7 @@ REPORT_GENERATOR(position, rc)
 	}
 
 	t_translation::terrain_code terrain = map[mouseover_hex];
-	if (terrain == t_translation::OFF_MAP_USER)
+	if (t_translation::terrain_matches(terrain, t_translation::ALL_OFF_MAP))
 		return config();
 
 	std::ostringstream str;

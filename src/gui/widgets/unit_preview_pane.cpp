@@ -151,7 +151,7 @@ static inline std::string get_mp_tooltip(int total_movement, std::function<int (
 	}
 
 	for(t_translation::terrain_code terrain : preferences::encountered_terrains()) {
-		if(terrain == t_translation::FOGGED || terrain == t_translation::VOID_TERRAIN || terrain == t_translation::OFF_MAP_USER) {
+		if(terrain == t_translation::FOGGED || terrain == t_translation::VOID_TERRAIN || t_translation::terrain_matches(terrain, t_translation::ALL_OFF_MAP)) {
 			continue;
 		}
 
