@@ -426,6 +426,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<game_stats>();
 	test<gamestate_inspector>();
 	test<generator_settings>();
+	test<hotkey_bind>();
 	test<install_dependencies>();
 	test<language_selection>();
 	// test<loading_screen>(); TODO: enable
