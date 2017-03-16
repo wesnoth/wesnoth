@@ -21,7 +21,6 @@
 #include "gettext.hpp"
 #include "gui/dialogs/addon/connect.hpp"
 #include "gui/dialogs/addon/manager.hpp"
-#include "gui/dialogs/addon/description.hpp"
 #include "gui/dialogs/addon/uninstall_list.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"

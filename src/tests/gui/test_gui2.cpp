@@ -489,8 +489,6 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 		 * one.
 		 */
 		"label_settings",
-		"addon_description",
-		"addon_filter_options",
 		"addon_uninstall_list",
 		"addon_manager",
 		"loading_screen",
