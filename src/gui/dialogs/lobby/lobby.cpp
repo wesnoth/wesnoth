@@ -19,6 +19,7 @@
 #include "gui/dialogs/lobby/player_info.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/multiplayer/mp_join_game_password_prompt.hpp"
+#include "gui/dialogs/preferences_dialog.hpp"
 #include "gui/dialogs/helper.hpp"
 
 #include "gui/core/log.hpp"
@@ -130,7 +131,6 @@ mp_lobby::mp_lobby(const config& game_config, mp::lobby_info& info, wesnothd_con
 	, gamelistbox_(nullptr)
 	, window_(nullptr)
 	, lobby_info_(info)
-	, preferences_callback_()
 	, filter_friends_(nullptr)
 	, filter_ignored_(nullptr)
 	, filter_slots_(nullptr)
@@ -998,18 +998,28 @@ void mp_lobby::refresh_button_callback(window& /*window*/)
 
 void mp_lobby::show_preferences_button_callback(window& window)
 {
-	if(preferences_callback_) {
-		preferences_callback_();
+	gui2::dialogs::preferences_dialog::display(window.video(), game_config_);
 
-		/**
-		 * The screen size might have changed force an update of the size.
-		 *
-		 * @todo This might no longer be needed when gui2 is done.
-		 */
-		window.invalidate_layout();
+	/**
+	 * The screen size might have changed force an update of the size.
+	 *
+	 * @todo This might no longer be needed when gui2 is done.
+	 */
+	const SDL_Rect rect = screen_area();
 
-		wesnothd_connection_.send_data(config("refresh_lobby"));
-	}
+	gui2::settings::gamemap_width  += rect.w - gui2::settings::screen_width;
+	gui2::settings::gamemap_height += rect.h - gui2::settings::screen_height;
+	gui2::settings::screen_width    = rect.w;
+	gui2::settings::screen_height   = rect.h;
+
+	/**
+	 * The screen size might have changed force an update of the size.
+	 *
+	 * @todo This might no longer be needed when gui2 is done.
+	 */
+	window.invalidate_layout();
+
+	wesnothd_connection_.send_data(config("refresh_lobby"));
 }
 
 void mp_lobby::game_filter_reload()

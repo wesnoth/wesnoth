@@ -372,7 +372,7 @@ LEVEL_RESULT campaign_controller::play_game()
 
 				if (!connect_engine->can_start_game() || (game_config::debug && game_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER)) {
 					// Opens staging dialog to allow users to make an adjustments for scenario.
-					if(!mp::goto_mp_connect(video_, *connect_engine, game_config_, mp_info_ ? &mp_info_->connection : nullptr, state_.mp_settings().name)) {
+					if(!mp::goto_mp_connect(video_, *connect_engine, game_config_, mp_info_ ? &mp_info_->connection : nullptr)) {
 						return LEVEL_RESULT::QUIT;
 					}
 				} else {

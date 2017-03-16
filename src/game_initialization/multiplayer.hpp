@@ -61,7 +61,7 @@ void start_client(CVideo& video, const config& game_config,
  * changes made.
  */
 bool goto_mp_connect(CVideo& video, ng::connect_engine& engine,
-	const config& game_config, wesnothd_connection* connection, const std::string& game_name);
+	const config& game_config, wesnothd_connection* connection);
 
 /**
  * Opens mp::wait screen and sets game state according to the

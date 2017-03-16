@@ -77,14 +77,6 @@ public:
 
 	~mp_lobby();
 
-	/**
-	 * Set the callback used to show the preferences.
-	 */
-	void set_preferences_callback(std::function<void()> f)
-	{
-		preferences_callback_ = f;
-	}
-
 	int get_joined_game_id() const { return joined_game_id_; }
 
 	void update_gamelist();
@@ -185,8 +177,6 @@ private:
 	mp::lobby_info& lobby_info_;
 
 	chatbox* chatbox_;
-
-	std::function<void()> preferences_callback_;
 
 	toggle_button* filter_friends_;
 
