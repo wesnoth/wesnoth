@@ -296,7 +296,7 @@ void title_screen::pre_show(window& win)
 	//
 	// Help
 	//
-	register_button(win, "help", hotkey::HOTKEY_HELP, [this](window& w) {
+	register_button(win, "help", hotkey::HOTKEY_HELP, [](window& w) {
 		help::help_manager help_manager(&game_config_manager::get()->game_config());
 		help::show_help(w.video());
 	});
@@ -383,7 +383,7 @@ void title_screen::pre_show(window& win)
 	//
 	// Addons
 	//
-	register_button(win, "addons", hotkey::TITLE_SCREEN__ADDONS, [this](window& w) {
+	register_button(win, "addons", hotkey::TITLE_SCREEN__ADDONS, [](window& w) {
 		// NOTE: we need the help_manager to get access to the Add-ons section in the game help!
 		help::help_manager help_manager(&game_config_manager::get()->game_config());
 
@@ -400,7 +400,7 @@ void title_screen::pre_show(window& win)
 	//
 	// Cores
 	//
-	register_button(win, "cores", hotkey::TITLE_SCREEN__CORES, [this](window& w) {
+	register_button(win, "cores", hotkey::TITLE_SCREEN__CORES, [](window& w) {
 		int current = 0;
 		std::vector<config> cores;
 		for(const config& core : game_config_manager::get()->game_config().child_range("core")) {
