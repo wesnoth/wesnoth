@@ -654,16 +654,13 @@ void lobby_main::update_selected_game()
 	player_list_dirty_ = true;
 }
 
-void lobby_main::signal_handler_key_down(SDL_Keycode key, bool& handled, bool& halt)
+bool lobby_main::exit_hook(window& window)
 {
-	if(key == SDLK_ESCAPE) {
-		if(quit()) {
-			window_->set_retval(window::OK);
-			window_->close();
-		}
-		handled = true;
-		halt = true;
+	if(window.get_retval() == window::CANCEL) {
+		return quit();
 	}
+
+	return true;
 }
 
 void lobby_main::pre_show(window& window)
@@ -694,12 +691,9 @@ void lobby_main::pre_show(window& window)
 			std::bind(&lobby_main::player_filter_callback, this, _1));
 
 	window.set_enter_disabled(true);
-	window.set_escape_disabled(true);
 
-	// A new key handler to deal with escape in a different manner.
-	window.connect_signal<event::SDL_KEY_DOWN>(
-		std::bind(&lobby_main::signal_handler_key_down, this, _5, _3, _4),
-		event::dispatcher::front_pre_child);
+	// Exit hook to add a confirmation when quitting the Lobby.
+	window.set_exit_hook(std::bind(&lobby_main::exit_hook, this, std::ref(window)));
 
 	window_ = &window;
 

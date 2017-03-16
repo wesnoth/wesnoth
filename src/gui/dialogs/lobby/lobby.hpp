@@ -158,7 +158,7 @@ private:
 
 	void skip_replay_changed_callback(window& window);
 
-	void signal_handler_key_down(SDL_Keycode key, bool& handled, bool& halt);
+	bool exit_hook(window& window);
 
 	static bool logout_prompt();
 
