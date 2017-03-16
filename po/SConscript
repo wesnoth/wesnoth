@@ -32,7 +32,7 @@ if "pot-update" in COMMAND_LINE_TARGETS:
     domain_sources = defaultdict(list)
     def fill_source_list(arg, dir, files):
         for file in files:
-            if fnmatch(file, "*.cpp"):
+            if fnmatch(file, "*.[hc]pp"):
                 match = re.search('^#define\\s+GETTEXT_DOMAIN\\s+"wesnoth(-.*)"', Dir(dir).File(file).get_contents(), re.MULTILINE)
                 if match:
                     source_domain = match.group(1)
