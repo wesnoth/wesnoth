@@ -1219,39 +1219,6 @@ bool side_engine::available_for_user(const std::string& name) const
 	return false;
 }
 
-bool side_engine::swap_sides_on_drop_target(const unsigned drop_target) {
-	assert(drop_target < parent_.side_engines_.size());
-	side_engine& target = *parent_.side_engines_[drop_target];
-
-	const std::string target_id = target.player_id_;
-	const ng::controller target_controller = target.controller_;
-	const std::string target_ai = target.ai_algorithm_;
-
-	if((controller_lock_ || target.controller_lock_) &&
-		(controller_options_ != target.controller_options_)) {
-
-		return false;
-	}
-
-	target.ai_algorithm_ = ai_algorithm_;
-	if(player_id_.empty()) {
-		target.player_id_.clear();
-		target.set_controller(controller_);
-	} else {
-		target.place_user(player_id_);
-	}
-
-	ai_algorithm_ = target_ai;
-	if(target_id.empty()) {
-		player_id_.clear();
-		set_controller(target_controller);
-	} else {
-		place_user(target_id);
-	}
-
-	return true;
-}
-
 void side_engine::resolve_random(rand_rng::mt_rng & rng, const std::vector<std::string> & avoid_faction_ids)
 {
 	if(parent_.params_.saved_game) {
