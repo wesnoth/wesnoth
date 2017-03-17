@@ -378,6 +378,9 @@ void flg_manager::update_choosable_factions()
 	}
 
 	// Sort alphabetically, but with the 'random' option always first
+	// TODO: some factions liek ageless have 'multiple' random options
+	// ('any random faction', 'a random default faction', 'a random non-default faction', etc)
+	// so this code shouldn't assume that there is only one random faction which is on top of the list.
 	std::sort(choosable_factions_.begin() + 1, choosable_factions_.end(), [](const config* c1, const config* c2) {
 		return translation::compare((*c1)["name"].str(), (*c2)["name"].str()) < 0;
 	});
