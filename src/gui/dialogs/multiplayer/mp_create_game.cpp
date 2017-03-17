@@ -602,7 +602,7 @@ void mp_create_game::regenerate_random_map(window& window)
 	update_details(window);
 }
 
-int mp_create_game::convert_to_game_filtered_index(const int initial_index)
+int mp_create_game::convert_to_game_filtered_index(const unsigned int initial_index)
 {
 	const std::vector<size_t>& filtered_indices = create_engine_.get_filtered_level_indices(create_engine_.current_level_type());
 	return std::find(filtered_indices.begin(), filtered_indices.end(), initial_index) - filtered_indices.begin();

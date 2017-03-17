@@ -194,7 +194,6 @@ BOOST_AUTO_TEST_CASE(test_formula_tokenizer) {
 		assert(std::string(t.begin, t.end) == tok.first);
 		assert(t.type == tok.second);
 	}
-	return 0;
 }
 
 BOOST_AUTO_TEST_SUITE_END()
