@@ -731,6 +731,11 @@ function wml_actions.store_side(cfg)
 		local container = t.__cfg
 		-- set values not properly handled by the __cfg
 		container.income = t.total_income
+		container.net_income = t.net_income
+		container.expenses = t.expenses
+		container.total_upkeep = t.total_upkeep
+		container.num_units = t.num_units
+		container.num_villages = t.num_villages
 		container.side = side_number
 		utils.vwriter.write(writer, container)
 	end
