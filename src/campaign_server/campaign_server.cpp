@@ -180,11 +180,11 @@ void server::load_config()
 	hooks_.insert(std::make_pair(std::string("hook_post_upload"), cfg_["hook_post_upload"]));
 	hooks_.insert(std::make_pair(std::string("hook_post_erase"), cfg_["hook_post_erase"]));
 
+#ifndef _WIN32
 	// Open the control socket if enabled.
 	if(!cfg_["control_socket"].empty()) {
 		const std::string& path = cfg_["control_socket"].str();
 
-#ifndef _WIN32
 		if(path != fifo_path_) {
 			const int res = mkfifo(path.c_str(),0660);
 			if(res != 0 && errno != EEXIST) {
@@ -198,8 +198,8 @@ void server::load_config()
 				fifo_path_ = path;
 			}
 		}
-#endif
 	}
+#endif
 
 	// Ensure the campaigns list WML exists even if empty, other functions
 	// depend on its existence.
