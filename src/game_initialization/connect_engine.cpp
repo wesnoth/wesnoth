@@ -1001,6 +1001,7 @@ config side_engine::new_config() const
 		res["faction_name"] = faction["name"];
 		res["faction"] = faction["id"];
 		faction.remove_attributes("id", "name", "image", "gender", "type");
+		LOG_MP << "side_engine::new_config: side=" << index_ + 1 << " faction=" << res["faction_name"] << " recuit=" << res["recruit"] << "\n";
 		res.append(faction);
 	}
 
@@ -1097,6 +1098,7 @@ config side_engine::new_config() const
 		if(controller_ != CNTR_EMPTY) {
 			(*leader)["type"] = flg_.current_leader();
 			(*leader)["gender"] = flg_.current_gender();
+			LOG_MP << "side_engine::new_config: side=" << index_ + 1 << " type=" << (*leader)["type"] << " gender=" << (*leader)["gender"] << "\n";
 		} else {
 			// TODO: FIX THIS SHIT! We shouldn't have a special string to denote no-leader-ness...
 			(*leader)["type"] = "null";
