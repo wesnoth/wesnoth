@@ -131,7 +131,7 @@ private:
 	 */
 	bool dialog_exit_hook(window&);
 
-	int convert_to_game_filtered_index(const int initial_index);
+	int convert_to_game_filtered_index(const unsigned int initial_index);
 
 	void load_game_callback(window& window);
 

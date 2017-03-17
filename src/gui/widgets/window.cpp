@@ -1172,7 +1172,7 @@ void window::layout_linked_widgets()
 	}
 }
 
-bool window::click_dismiss(const Uint8 mouse_button_mask)
+bool window::click_dismiss(const int mouse_button_mask)
 {
 	if(does_click_dismiss()) {
 		if((mouse_button_state_ & mouse_button_mask) == 0) {
@@ -1362,7 +1362,7 @@ void window::signal_handler_sdl_video_resize(const event::ui_event event,
 void window::signal_handler_click_dismiss(const event::ui_event event,
 										   bool& handled,
 										   bool& halt,
-										   const Uint8 mouse_button_mask)
+										   const int mouse_button_mask)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << " mouse_button_mask "
 			  << static_cast<unsigned>(mouse_button_mask) << ".\n";

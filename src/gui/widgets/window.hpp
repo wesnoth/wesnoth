@@ -661,7 +661,7 @@ private:
 	 * @return                    Whether the event should be considered as
 	 *                            handled.
 	 */
-	bool click_dismiss(const Uint8 mouse_button_mask);
+	bool click_dismiss(const int mouse_button_mask);
 
 	/**
 	 * The state of the mouse button.
@@ -679,7 +679,7 @@ private:
 	 *
 	 * [1] https://gna.org/bugs/index.php?18970
 	 */
-	Uint8 mouse_button_state_;
+	int mouse_button_state_;
 
 	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
@@ -758,7 +758,7 @@ private:
 	void signal_handler_click_dismiss(const event::ui_event event,
 									  bool& handled,
 									  bool& halt,
-									  const Uint8 mouse_button_mask);
+									  const int mouse_button_mask);
 
 	void signal_handler_sdl_key_down(const event::ui_event event,
 									 bool& handled,

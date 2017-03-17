@@ -799,7 +799,7 @@ void scaleImage(const uint32_t* src, uint32_t* trg, int srcWidth, int srcHeight,
     //"sizeof(uint32_t) * srcWidth * (yLast - yFirst)" bytes without risk of accidental overwriting before accessing
     const int bufferSize = srcWidth;
     unsigned char* preProcBuffer = reinterpret_cast<unsigned char*>(trg + yLast * Scaler::scale * trgWidth) - bufferSize;
-    std::fill(preProcBuffer, preProcBuffer + bufferSize, 0);
+    std::fill(preProcBuffer, preProcBuffer + bufferSize, static_cast<unsigned char>(0));
     //static_assert(BLEND_NONE == 0, "");
 
     //initialize preprocessing buffer for first row: detect upper left and right corner blending
