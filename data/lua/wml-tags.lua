@@ -675,7 +675,7 @@ function wml_actions.heal_unit(cfg)
 			u.attacks_left = u.max_attacks
 		end
 
-		if cfg.restore_statuses then
+		if cfg.restore_statuses == true or cfg.restore_statuses == nil then
 			u.status.poisoned = false
 			u.status.petrified = false
 			u.status.slowed = false
