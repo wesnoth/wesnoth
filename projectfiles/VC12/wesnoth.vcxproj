@@ -1668,14 +1668,6 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Dialogs\Addon\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Dialogs\Addon\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\addon\filter_options.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Gui\Dialogs\Addon\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Dialogs\Addon\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Dialogs\Addon\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Gui\Dialogs\Addon\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Dialogs\Addon\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Dialogs\Addon\</ObjectFileName>
-    </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\addon\install_dependencies.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Gui\Dialogs\Addon\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Dialogs\Addon\</ObjectFileName>
@@ -4123,7 +4115,6 @@
     <ClInclude Include="..\..\src\gui\core\window_builder\helper.hpp" />
     <ClInclude Include="..\..\src\gui\core\window_builder\instance.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\addon\connect.hpp" />
-    <ClInclude Include="..\..\src\gui\dialogs\addon\filter_options.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\addon\install_dependencies.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\addon\manager.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\addon\uninstall_list.hpp" />
