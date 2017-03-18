@@ -63,6 +63,10 @@ Version 1.13.6+dev:
      * Existing keys made mutable: shroud, fog, flag, flag_icon
    * wesnoth.scroll_to_tile now accepts a third boolean argument - if true, the scroll
      is skipped when the tile is already visible onscreen.
+   * The config accessors in the helper module now give a sensible error message if
+     something other than a config is passed as the first argument.
+   * wesnoth.deselect_hex no longer deselects units; it only unhilites the hex.
+   * wesnoth.select_unit with no argument (or nil argument) now deselects any unit.
  * Multiplayer:
    * New maps: 2p Clearing Gushes, 2p Hellhole, 2p Ruined Passage,
      2p Ruphus Isle, 2p Swamp of Dread, 2p The Walls of Pyrennis,
@@ -85,6 +89,7 @@ Version 1.13.6+dev:
      ability of the specified type (tag name).
    * Terrain flags "_border" and "_board" are now automatically set for every
      tile, indicating whether it is on the map border or not.
+   * SUF type_tree renamed to type_adv_tree for consistency with [hide_help]
  * Miscellaneous and bug fixes:
    * Fixed severe lag/freeze on slow PCs (bug #25356)
    * Updated wmlscope to handle the square braces syntax in file paths
