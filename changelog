@@ -50,7 +50,7 @@ Version 1.13.6+dev:
      animations for a group of units
    * New Lua API functions for altering AI:
      * wesnoth.switch_ai replaces the entire AI with a definition from a file
-     * wesnoth.append_ai appends AI parameters to the configuation; supports goals,
+     * wesnoth.append_ai appends AI parameters to the configuration; supports goals,
        stages, and simple aspects.
        (Aspect tags are not fully parsed; only the id and facet subtags are used.)
      * wesnoth.add_ai_component, delete_ai_component, change_ai_component
@@ -65,7 +65,7 @@ Version 1.13.6+dev:
      is skipped when the tile is already visible onscreen.
    * The config accessors in the helper module now give a sensible error message if
      something other than a config is passed as the first argument.
-   * wesnoth.deselect_hex no longer deselects units; it only unhilites the hex.
+   * wesnoth.deselect_hex no longer deselects units; it only unhighlights the hex.
    * wesnoth.select_unit with no argument (or nil argument) now deselects any unit.
  * Multiplayer:
    * New maps: 2p Clearing Gushes, 2p Hellhole, 2p Ruined Passage,
@@ -90,6 +90,13 @@ Version 1.13.6+dev:
  * User Interface:
    * List boxes now keep the selected item visible when you change the sorting
      option.
+   * The Addon Manager has a brand new interface.
+   * Modification selection is now always available when selecting a SP campaign.
+   * Scrolling the Editor palette no longer also scrolls the map.
+   * Removed the old GUI1 MP screens.
+   * Ensured dialogs with unit preview panes start with some extra space.
+   * Fixed an issue where certain long labels would cause scrollbars to appear.
+   * Greatly reduced the number of zoom levels available.
  * Wesnoth Formula Engine:
    * New str_upper and str_lower functions for case transformations
  * WML Engine:
@@ -105,12 +112,16 @@ Version 1.13.6+dev:
    * Terrain flags "_border" and "_board" are now automatically set for every
      tile, indicating whether it is on the map border or not.
    * SUF type_tree renamed to type_adv_tree for consistency with [hide_help]
+   * [message]s no longer trigger a scroll if the unit is onscreen.
+   * Removed the ~DARKEN() and ~BRIGHTEN() IPFs.
  * Miscellaneous and bug fixes:
    * Fixed severe lag/freeze on slow PCs (bug #25356)
    * Updated wmlscope to handle the square braces syntax in file paths
    * Fixed an issue preventing quick replay when joining multiplayer matches
    * Resolved crash on Help when font scaling set to 115% or greater (bug #25292)
    * Resolved crash when viewing Help in CJK languages (bug #253334)
+   * Fixed [campaign][option] tags not being properly considered.
+   * Fixed an issue where team names could get corrupted in SP.
 
 Version 1.13.6:
  * AI:
