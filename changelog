@@ -6,12 +6,18 @@ Version 1.13.6+dev:
      sides under shroud
    * New function ai_helper.find_path_with_shroud()
  * Campaigns:
+   * Eastern Invasion:
+     * In 'Weldyn Besieged', redesigned the way in which revealing the
+       identities of the liches works.
    * Heir to the Throne:
      * Fixed bug allowing the wrong person to receive the Sceptre of Fire.
      * Fixed inconsistencies in Li'sar's sprites and animations when she has the
        scepter.
+     * New death animation for Asheviere.
    * Secrets of the Ancients:
      * New campaign added to mainline (Intermediate level, 21 scenarios).
+   * The Hammer of Thursagan:
+     * New sprites for Dwarvish Witness line.
    * Under the Burning Suns:
      * Fixed difficulty levels with the original units not working.
      * Various balancing changes, bug fixes and improvements to the new units.
@@ -21,12 +27,14 @@ Version 1.13.6+dev:
          * Added winged lvl4 advancement for Quenoth Druid.
          * Support ability now only lowers adjacent upkeep costs by 1.
  * Graphics:
-   * Improved terrain graphics: lava, volcano.
+   * New or improved sprites: Royal Warrior, Walking Corpse line wolf variation.
+   * Improved terrain graphics: lava, volcano, lightbeam.
    * Improved the fake map border terrain so that it now connects with the real
      map borders and can better be used to change the apparent shape of the map.
    * Smoother fade transitions between differently colored time areas.
    * Adjacent castles of different types now have fewer glitches between them.
    * Fixed glitches between various mountain tiles (introduced in 1.13.3).
+   * Fixed units getting submerged on some bridge types when placed over water.
  * Language and i18n:
    * Updated translations: British English, Czech, German, Portuguese (Brazil),
      Scottish Gaelic
@@ -75,6 +83,8 @@ Version 1.13.6+dev:
      blue, alpha); each works the same as the ~ADJUST_ALPHA() formula.
    * New ability_type key in standard unit filters matches if the unit has any
      ability of the specified type (tag name).
+   * Terrain flags "_border" and "_board" are now automatically set for every
+     tile, indicating whether it is on the map border or not.
  * Miscellaneous and bug fixes:
    * Fixed severe lag/freeze on slow PCs (bug #25356)
    * Updated wmlscope to handle the square braces syntax in file paths
