@@ -27,7 +27,7 @@ namespace dialogs
 class install_dependencies : public modal_dialog
 {
 public:
-	install_dependencies(const addons_list& addons)
+	explicit install_dependencies(const addons_list& addons)
 		: addons_(addons)
 	{}
 

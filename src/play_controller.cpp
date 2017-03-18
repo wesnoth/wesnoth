@@ -205,7 +205,7 @@ play_controller::~play_controller()
 
 struct throw_end_level
 {
-	void operator()(const config&)
+	void operator()(const config&) const
 	{
 		throw_quit_game_exception();
 	}
@@ -728,7 +728,7 @@ events::mouse_handler& play_controller::get_mouse_handler_base()
 	return mouse_handler_;
 }
 
-std::shared_ptr<wb::manager> play_controller::get_whiteboard()
+std::shared_ptr<wb::manager> play_controller::get_whiteboard() const
 {
 	return whiteboard_manager_;
 }
@@ -1026,7 +1026,7 @@ game_events::wml_event_pump& play_controller::pump()
 	return gamestate().events_manager_->pump();
 }
 
-int play_controller::get_ticks()
+int play_controller::get_ticks() const
 {
 	return ticks_;
 }

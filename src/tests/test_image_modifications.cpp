@@ -68,7 +68,7 @@ private:
 	 *
 	 * This is required by TC modification
 	 */
-	void set_up_team_colors()
+	static void set_up_team_colors()
 	{
 		std::vector<std::string> tc;
 
@@ -93,7 +93,7 @@ private:
 		paths_manager_.set_paths(cfg);
 	}
 
-	config create_color_range(const std::string& id,
+	static config create_color_range(const std::string& id,
 				  const std::string& rgb,
 				  const std::string& name)
 	{
@@ -106,7 +106,7 @@ private:
 		return cfg;
 	}
 
-	config create_path_config(const std::string& path)
+	static config create_path_config(const std::string& path)
 	{
 		config cfg;
 

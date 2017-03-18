@@ -56,7 +56,7 @@ public:
 	void add_overlay_location(std::set<map_location>& locations);
 private:
 
-	const image::locator& current_image() { return images_.get_current_frame(); }
+	const image::locator& current_image() const { return images_.get_current_frame(); }
 
 	animated<image::locator> images_;
 
@@ -112,7 +112,7 @@ public:
  * impl's of exposed functions
  */
 
-halo_impl(display & screen) :
+explicit halo_impl(display & screen) :
 	disp(&screen),
 	haloes(),
 	halo_id(1),

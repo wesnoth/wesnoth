@@ -195,7 +195,7 @@ public:
 	events::mouse_handler& get_mouse_handler_base() override;
 	events::menu_handler& get_menu_handler() { return menu_handler_; }
 
-	std::shared_ptr<wb::manager> get_whiteboard();
+	std::shared_ptr<wb::manager> get_whiteboard() const;
 	const mp_game_settings& get_mp_settings();
 	game_classification& get_classification();
 	int get_server_request_number() const { return gamestate().server_request_number_; }
@@ -203,7 +203,7 @@ public:
 
 	game_events::wml_event_pump& pump();
 
-	int get_ticks();
+	int get_ticks() const;
 
 	virtual soundsource::manager* get_soundsource_man() override;
 	virtual plugins_context* get_plugins_context() override;
@@ -233,7 +233,7 @@ public:
 		return level_["theme"].str();
 	}
 
-	virtual bool should_return_to_play_side()
+	virtual bool should_return_to_play_side() const
 	{
 		return is_regular_game_end();
 	}

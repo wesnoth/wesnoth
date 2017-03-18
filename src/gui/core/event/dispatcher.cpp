@@ -139,7 +139,7 @@ public:
 					dispatcher& dispatcher,
 					const ui_event event,
 					bool& handled,
-					bool& halt)
+					bool& halt) const
 	{
 		functor(dispatcher, event, handled, halt);
 	}
@@ -183,7 +183,7 @@ bool dispatcher::fire(const ui_event event, widget& target)
 class trigger_mouse
 {
 public:
-	trigger_mouse(const point& coordinate) : coordinate_(coordinate)
+	explicit trigger_mouse(const point& coordinate) : coordinate_(coordinate)
 	{
 	}
 
@@ -295,7 +295,7 @@ public:
 					dispatcher& dispatcher,
 					const ui_event event,
 					bool& handled,
-					bool& halt)
+					bool& halt) const
 	{
 		functor(dispatcher, event, handled, halt, nullptr);
 	}
@@ -315,7 +315,7 @@ bool dispatcher::fire(const ui_event event, widget& target, void*)
 class trigger_message
 {
 public:
-	trigger_message(message& msg) : message_(msg)
+	explicit trigger_message(message& msg) : message_(msg)
 	{
 	}
 

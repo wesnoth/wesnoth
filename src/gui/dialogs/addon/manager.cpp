@@ -104,7 +104,7 @@ namespace dialogs
 namespace {
 	struct filter_transform
 	{
-		filter_transform(const std::vector<std::string>& filtertext) : filtertext_(filtertext) {}
+		explicit filter_transform(const std::vector<std::string>& filtertext) : filtertext_(filtertext) {}
 		bool operator()(const config& cfg) const
 		{
 			for(const auto& filter : filtertext_)

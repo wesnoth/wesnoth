@@ -37,7 +37,7 @@ namespace random_new
 		 * Note that this may be different from the number of random calls to
 		 * the underlying rng, and to the random_calls number in save files!
 		 */
-		unsigned int get_random_calls();
+		unsigned int get_random_calls() const;
 
 		/**
 	         *  This helper method provides a random int from the underlying generator,

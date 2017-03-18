@@ -73,7 +73,7 @@ namespace random_new
 		return *def;
 	}
 
-	unsigned int rng::get_random_calls()
+	unsigned int rng::get_random_calls() const
 	{
 		return random_calls_;
 	}

@@ -683,7 +683,7 @@ void playsingle_controller::enable_replay(bool is_unit_test)
 	}
 }
 
-bool playsingle_controller::should_return_to_play_side()
+bool playsingle_controller::should_return_to_play_side() const
 {
 	if(player_type_changed_ || is_regular_game_end()) {
 		return true;
