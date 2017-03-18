@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-11-05 23:29 UTC\n"
+"POT-Creation-Date: 2017-03-18 21:05 UTC\n"
 "PO-Revision-Date: 2015-02-07 13:12+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -124,10 +124,10 @@ msgid "Deoran"
 msgstr "迪奥兰"
 
 #. [side]: type=Horseman Commander, id=Deoran
-#. [side]: id=Deoran
 #. [side]: type=Troll Hero, id=Grek
 #. [side]
 #. [side]: type=Lieutenant, id=Plynry
+#. [side]: id=Deoran
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:37
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:41
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:37
@@ -153,13 +153,13 @@ msgstr "南疆哨所"
 msgid "Urza Mathin"
 msgstr "乌扎·马丁"
 
-#. [side]: type=Bandit, id=Urza Mathin
-#. [side]: type=Outlaw, id=Urza Nalmath
-#. [side]
 #. [side]: type=Rogue, id=Urza Fastik
 #. [side]: type=Outlaw, id=Urza Afalas
 #. [side]: type=Outlaw, id=Tharzo Kalain
 #. [side]: type=Outlaw, id=Jera Ilras
+#. [side]: type=Bandit, id=Urza Mathin
+#. [side]: type=Outlaw, id=Urza Nalmath
+#. [side]
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:59
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:63
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:102
@@ -1177,11 +1177,11 @@ msgstr "马尔·阿凯"
 
 #. [side]: type=Soulless, id=Gruth
 #. [side]: type=Lich, id=Mal M'Brin
-#. [side]
 #. [side]: type=Soulless, id=Groth
 #. [side]: type=Ancient Lich, id=Mal M'Brin
 #. [side]: type=Lich, id=Mal Tera
 #. [side]: type=Dark Adept, type=Dark Sorcerer, type=Necromancer, id=Mal A'kai
+#. [side]
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:76
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:93
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:129
@@ -1758,7 +1758,7 @@ msgstr "乌扎·亚法拉斯死亡"
 #. [message]: speaker=Urza Afalas
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:710
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1134
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1110
 msgid "Now I pay for my crimes. But how many others will also suffer for them?"
 msgstr "现在我为罪行伏诛了。但为罪得报者又有多少？"
 
@@ -2373,22 +2373,22 @@ msgid "Get them!"
 msgstr "干掉他们！"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1161
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1137
 msgid "Thank heaven we have escaped that awful forest!"
 msgstr "谢天谢地我们摆脱了可怕的森林！"
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1165
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1141
 msgid "Indeed, Afalas, you’ve earned my trust today."
 msgstr "说真的，亚法拉斯，你今天赢得了我的信任。"
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1169
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1145
 msgid "I can only hope for mercy when I return to Westin."
 msgstr "我只希望回到韦斯廷后能得宽恕。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1174
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1150
 msgid "But there was a dark cloud looming behind Deoran and his men..."
 msgstr "但是在迪奥兰众人身后黑云笼罩……"
 
@@ -3117,7 +3117,7 @@ msgstr "韦斯廷大教会会在第 $council_arrive_turn| 回合到达。"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:519
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:332
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:321
 #: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:12
 msgid "I have failed my kingdom and duty..."
 msgstr "我辜负了我的王国和职责……"
@@ -3253,7 +3253,7 @@ msgstr ""
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:225
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:226
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:227
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:299
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:292
 msgid "Disciple of Mebrin"
 msgstr "米布林的门徒"
 
@@ -3286,18 +3286,18 @@ msgid "Send Ethiliel to the Great Tree and parley with Ithelden"
 msgstr "让依茜丽儿到达大树并与伊蒂尔丹会谈"
 
 #. [message]: speaker=$new_elf.id
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:317
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:306
 msgid "For every one of us you strike down, more will rise!"
 msgstr "你们每杀死一个，就会引来更多！"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:346
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:335
 #: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:64
 msgid "I have given my all for my kingdom! Avenge me, Deoran!"
 msgstr "我已为王国奉献所有！为我报仇，迪奥兰！"
 
 #. [message]: speaker=Minister Hylas
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:359
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:348
 msgid ""
 "Ithelden’s elves have killed Ethiliel! Now we have no chance to come to an "
 "agreement with them. A war with the Elves is imminent."
@@ -3306,14 +3306,14 @@ msgstr ""
 "将来临。"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:363
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:352
 msgid ""
 "We are far away from Weldyn. We’ll surely all be killed long before any "
 "reinforcements arrive."
 msgstr "我们离威尔丁太远了。没等援军来我们都会被杀光。"
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:401
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:390
 msgid ""
 "Take care, Deoran! My people are upset. Killing one will only draw more."
 msgstr ""
@@ -3366,18 +3366,6 @@ msgstr ""
 "边境哨所的领导，骑兵统领不仅擅马战，且能带兵。他们指挥守备部队维护韦诺诸省的"
 "和平。"
 
-#. [attack]: type=pierce
-#: data/campaigns/The_South_Guard/units/Horseman_Commander.cfg:30
-#: data/campaigns/The_South_Guard/units/Mounted_General.cfg:31
-msgid "lance"
-msgstr "骑士枪"
-
-#. [attack]: type=impact
-#: data/campaigns/The_South_Guard/units/Horseman_Commander.cfg:41
-#: data/campaigns/The_South_Guard/units/Mounted_General.cfg:42
-msgid "mace"
-msgstr "钉头槌"
-
 #. [unit_type]: id=Infantry Commander, race=human
 #: data/campaigns/The_South_Guard/units/Infantry_Commander.cfg:4
 msgid "Infantry Commander"
@@ -3395,11 +3383,6 @@ msgstr "经验丰富的统领们身经百战，在指挥时镇定从容。"
 #: data/campaigns/The_South_Guard/units/Infantry_Lieutenant.cfg:29
 msgid "glaive"
 msgstr "阔剑"
-
-#. [attack]: type=impact
-#: data/campaigns/The_South_Guard/units/Infantry_Commander.cfg:39
-msgid "shield"
-msgstr "盾牌"
 
 #. [unit_type]: id=Infantry Lieutenant, race=human
 #: data/campaigns/The_South_Guard/units/Infantry_Lieutenant.cfg:4
@@ -3431,11 +3414,6 @@ msgid ""
 msgstr ""
 "仅在17或18岁左右，骑士和领主的子嗣们被授予坐骑和佩剑，进行领导士兵的试炼。在"
 "任务中勇敢者将成为韦诺军队的统领。"
-
-#. [attack]: type=pierce
-#: data/campaigns/The_South_Guard/units/Junior_Commander.cfg:30
-msgid "spear"
-msgstr "矛"
 
 #. [unit_type]: id=Mounted General, race=human
 #: data/campaigns/The_South_Guard/units/Mounted_General.cfg:4
@@ -3807,6 +3785,18 @@ msgid ""
 msgstr ""
 "迪奥兰忙于看望伤兵，带领手下修复墙垛工事。最后，当雪融路畅时，哈得里克陛下的"
 "信使来了。"
+
+#~ msgid "lance"
+#~ msgstr "骑士枪"
+
+#~ msgid "mace"
+#~ msgstr "钉头槌"
+
+#~ msgid "shield"
+#~ msgstr "盾牌"
+
+#~ msgid "spear"
+#~ msgstr "矛"
 
 #~ msgid "Take the Citadel at Westin by the end of the ninth turn"
 #~ msgstr "在第九回合结束前夺取韦斯廷的城堡。"

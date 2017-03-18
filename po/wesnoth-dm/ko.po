@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-11-05 23:23 UTC\n"
+"POT-Creation-Date: 2017-03-18 21:05 UTC\n"
 "PO-Revision-Date: 2011-11-21 18:15+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -330,8 +330,6 @@ msgid "Grogor-Tuk"
 msgstr "Grogor-Tuk"
 
 #. [side]: type=Goblin Pillager, id=Grogor-Tuk
-#. [side]: type=Orcish Warrior, id=Urthaka-Tan
-#. [side]: type=Orcish Slayer, id=Hagha-Tan
 #. [side]: type=Orcish Warrior, id=Tan-Garthak
 #. [side]: type=Orcish Warlord, id=Tish Golub
 #. [side]: type=Orcish Warlord, id=Knafa-ord
@@ -342,6 +340,8 @@ msgstr "Grogor-Tuk"
 #. [side]: type=Orcish Warrior, id=Qgthun
 #. [side]: type=Great Troll, type=Troll Hero, id=Trgrau
 #. [side]: type=Orcish Warlord, id=Upgar
+#. [side]: type=Orcish Warrior, id=Urthaka-Tan
+#. [side]: type=Orcish Slayer, id=Hagha-Tan
 #: data/campaigns/Delfadors_Memoirs/scenarios/02_This_Valley_Belongs_to_Me.cfg:46
 #: data/campaigns/Delfadors_Memoirs/scenarios/03_The_Road_to_Weldyn.cfg:42
 #: data/campaigns/Delfadors_Memoirs/scenarios/04_Leollyn.cfg:76
@@ -439,7 +439,7 @@ msgstr "Grogor-Tuk를 격파하라"
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:92
 #: data/campaigns/Delfadors_Memoirs/scenarios/07_Night_in_the_Swamp.cfg:101
 #: data/campaigns/Delfadors_Memoirs/scenarios/08_Ur_Thorodor.cfg:119
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:305
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:110
 #: data/campaigns/Delfadors_Memoirs/scenarios/10_The_Gate_Between_Worlds.cfg:65
 #: data/campaigns/Delfadors_Memoirs/scenarios/11_Wasteland.cfg:117
 #: data/campaigns/Delfadors_Memoirs/scenarios/11_Wasteland.cfg:278
@@ -632,9 +632,9 @@ msgstr ""
 "로 여행하는 자에겐 그리 안전하지 못한데다, 오크들을 이 남쪽까지 끌고온게 뭔"
 "지 알아낼 수 있을지도 모르니까요."
 
+#. [unit]: type=Arch Mage, id=Leollyn
 #. [side]: type=Arch Mage, id=Leollyn
 #. [scenario]: id=04_Leollyn
-#. [unit]: type=Arch Mage, id=Leollyn
 #: data/campaigns/Delfadors_Memoirs/scenarios/04_Leollyn.cfg:3
 #: data/campaigns/Delfadors_Memoirs/scenarios/04_Leollyn.cfg:83
 #: data/campaigns/Delfadors_Memoirs/scenarios/05_Council_in_Weldyn.cfg:49
@@ -646,24 +646,24 @@ msgstr "Leollyn"
 msgid "Hagha-Tan"
 msgstr "Hagha-Tan"
 
-#. [side]: type=Arch Mage, id=Leollyn
 #. [side]: type=Journeyman Mage
 #. [side]: type=King of Wesnoth, id=Garard
 #. [modify_side]
 #. [side]: type=King of Wesnoth, id=Garard II
 #. [side]: type=Mage Commander
-#. [side]
 #. [side]: type=General, id=Eldred
 #. [side]: type=General, id=Lowel
-#. [side]: type=General, id=Pilafman
 #. [side]: type=Lieutenant, id=Niktor
+#. [side]
+#. [side]: type=General, id=Pilafman
+#. [side]: type=Arch Mage, id=Leollyn
 #: data/campaigns/Delfadors_Memoirs/scenarios/04_Leollyn.cfg:97
 #: data/campaigns/Delfadors_Memoirs/scenarios/05_Council_in_Weldyn.cfg:20
 #: data/campaigns/Delfadors_Memoirs/scenarios/05_Council_in_Weldyn.cfg:31
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:25
 #: data/campaigns/Delfadors_Memoirs/scenarios/07_Night_in_the_Swamp.cfg:37
 #: data/campaigns/Delfadors_Memoirs/scenarios/08_Ur_Thorodor.cfg:27
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:210
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:23
 #: data/campaigns/Delfadors_Memoirs/scenarios/10_The_Gate_Between_Worlds.cfg:21
 #: data/campaigns/Delfadors_Memoirs/scenarios/11_Wasteland.cfg:25
 #: data/campaigns/Delfadors_Memoirs/scenarios/12_Terror_at_the_Ford_of_Parthyn.cfg:90
@@ -1137,22 +1137,22 @@ msgstr "이 상자에 저 악당이 부주의한 여행자들로부터 뺏은 �
 msgid "Night in the Swamp"
 msgstr "늪지대의 밤"
 
-#. [side]
-#. [side]: type=Death Knight, id=Arakar
 #. [side]: type=Death Knight, id=Rudimil
 #. [side]: type=Necromancer, id=Roth-Malal
 #. [side]: type=Necromancer, id=Barth-Malal
 #. [side]: type=Necromancer, id=Gruv-Malal
+#. [side]: type=Lich, id=Sagus
+#. [side]: type=Necromancer, id=Iliah-Malal
+#. [side]: type=Death Knight, id=Dirator
+#. [side]: type=Death Knight, id=Arakar
 #. [side]: type=Death Knight, id=Prepolur
 #. [side]: type=Dark Adept, id=Unuvim
 #. [side]: type=Lich, id=Iliah-Malal
 #. [side]: type=Necromancer, id=Maldun
 #. [side]: type=Death Knight, id=Alderoth
-#. [side]: type=Lich, id=Sagus
-#. [side]: type=Necromancer, id=Iliah-Malal
-#. [side]: type=Death Knight, id=Dirator
+#. [side]
 #: data/campaigns/Delfadors_Memoirs/scenarios/07_Night_in_the_Swamp.cfg:45
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:222
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:35
 #: data/campaigns/Delfadors_Memoirs/scenarios/10_The_Gate_Between_Worlds.cfg:35
 #: data/campaigns/Delfadors_Memoirs/scenarios/12_Terror_at_the_Ford_of_Parthyn.cfg:137
 #: data/campaigns/Delfadors_Memoirs/scenarios/14_Shadows.cfg:52
@@ -1454,72 +1454,18 @@ msgstr "알아보긴 쉽지... 때려서 일어나는지 보자구!"
 msgid "<i>Thump</i>!"
 msgstr "<i>퍽</i>!"
 
-#. [message]: speaker={STRING}
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:59
-msgid "Do you serve Iliah-Malal, living man?"
-msgstr "넌 Iliah-Malal을 섬기는가, 산 자여?"
-
-#. [option]
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:61
-msgid "Yes, I serve him."
-msgstr "그렇소, 난 그를 섬기오."
-
-#. [message]: speaker={STRING}
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:65
-msgid "Then you will not mind if we kill you! Hahahahah!"
-msgstr "그럼 우리가 널 죽여도 신경쓰지 않겠구나! 히히히히히!"
-
-#. [option]
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:70
-msgid "No, I do not."
-msgstr "아니, 그렇지 않소."
-
-#. [message]: speaker={STRING}
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:74
-msgid "Then you will die forever!"
-msgstr "그럼 영원히 죽게 될거야!"
-
-#. [message]: speaker={STRING}
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:106
-msgid "Iliah-Malal commands your death!"
-msgstr "Iliah-Malal이 널 죽이라고 명령했다!"
-
-#. [message]: speaker=Arakar
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:133
-msgid "Destroy the intruder, my minions!"
-msgstr "침입자를 격퇴하라, 졸개들아!"
-
-#. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:150
-msgid "Something does not feel right about those villages..."
-msgstr "저 마을들은 느낌이 좋지 않군..."
-
-#. [message]: id=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:183
-msgid ""
-"I must find that artifact of which the ghost spoke; it sounds too powerful a "
-"thing to be left in Iliah-Malal’s hands."
-msgstr ""
-"유령이 얘기했던 마도구를 찾아야해. Iliah-Malal의 손에 넘기기엔 너무나 강력한 "
-"것인것 같아."
-
 #. [scenario]: id=09_Houses_of_the_Dead
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:191
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:4
 msgid "Houses of the Dead"
 msgstr "죽은 자들의 집"
 
 #. [side]
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:252
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:65
 msgid "Undead Followers"
 msgstr ""
 
-#. [unit]: id=Rorthin, type=Ghost
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:277
-msgid "Rorthin"
-msgstr "Rorthin"
-
 #. [part]
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:287
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:92
 msgid ""
 "It was one of those moments that altered the destiny of the world. The orc "
 "warrior held many possibilities in his hand. He could simply have taken "
@@ -1535,7 +1481,7 @@ msgstr ""
 "라는 생각으로 장갑 낀 주먹으로 Delfador를 때린 것이었다."
 
 #. [part]
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:290
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:95
 msgid ""
 "The blow interrupted Delfador’s meditation. He began to topple over to the "
 "ground, but before his head reached it he vanished as though he had never "
@@ -1546,33 +1492,74 @@ msgstr ""
 "다."
 
 #. [objective]: condition=win
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:301
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:106
 msgid "Move Delfador to the signpost"
 msgstr "Delfador를 표지판으로 이동시킬 것"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:327
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:145
 msgid ""
 "Delfador opens his eyes and realizes he is <i>alone</i> in the <i>dark</i>."
 msgstr "Delfador가 눈을 떴을 때 그는 <i>어둠</i> 속에 <i>홀로</i> 있었다."
 
-#. [scenario]: id=09_Houses_of_the_Dead
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:338
-msgid "Rattles"
-msgstr "덜걱덜걱"
+#. [message]: speaker=Delfador
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:150
+msgid ""
+"This is surely the land of the dead... and it seems I am still alive. But "
+"then, as Leollyn warned, I can never return! I suppose I may as well explore."
+msgstr ""
+"여긴 분명 죽은 자의 땅이다... 난 아직도 살아있는 것 같다. 하지만 그렇다면 "
+"Leollyn이 경고했던 대로 난 다시는 돌아갈 수 없어! 아무래도 여기저기 둘러봐야 "
+"할 것 같군."
+
+#. [unit]: id=Rorthin, type=Ghost
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:233
+msgid "Rorthin"
+msgstr "Rorthin"
+
+#. [message]: speaker=Rorthin
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:241
+msgid "A living man... so it is as Iliah-Malal says..."
+msgstr "산 자인가... Iliah-Malal이 말했던 대로군..."
+
+#. [message]: speaker=Delfador
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:245
+msgid "Speak again, spirit! Tell me of yourself. Who is this Iliah-Malal?"
+msgstr "말해주시오, 영혼이여! 당신에 대해 얘기해주오. Iliah-Malal이 누구요?"
+
+#. [message]: speaker=Rorthin
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:249
+msgid ""
+"My name is Rorthin. I died long ago, in a great battle... I have almost "
+"forgotten... Iliah-Malal is a living man, like you, who walks among the "
+"dead. He promises life to all those who follow him."
+msgstr ""
+"내 이름은 Rorthin이다. 나는 오래 전에 큰 전투에서 죽었지... 이젠 거의 기억나"
+"지 않는다... Iliah-Malal은 너처럼 산 자로, 죽은 자들 사이에 있다. 그는 그를 "
+"따르는 모든 이들에게 생명을 약속했다."
+
+#. [message]: speaker=Delfador
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:253
+msgid "I would very much like to meet Iliah-Malal. Where can I find him?"
+msgstr "나는 Iliah-Malal을 매우 만나고 싶소. 그는 어디에 있소?"
+
+#. [message]: speaker=Rorthin
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:257
+msgid ""
+"Follow the dry river, then the road to the signpost in the north. I will "
+"guide you. Enter the houses of the dead as you pass, for others here may "
+"help you."
+msgstr ""
+"마른 강을 따라서 북쪽에 있는 표지판으로 가라. 내가 안내해주지. 지나다가 죽은 "
+"자의 집에 들르면, 다른 이들도 너를 도와줄 것이다."
 
 #. [scenario]: id=09_Houses_of_the_Dead
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:339
-msgid "Bones"
-msgstr "뼈다귀"
-
-#. [scenario]: id=09_Houses_of_the_Dead
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:344
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:289
 msgid "Penella"
 msgstr "Penella"
 
 #. [message]: speaker=Penella
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:347
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:292
 msgid ""
 "Do not fear me, Delfador. It is my doom to appear as you see me. I was a "
 "serf of a cruel lord. He demanded great taxes to fight many wars... then "
@@ -1585,12 +1572,12 @@ msgstr ""
 "은 자들의 살을 먹어야만 했네."
 
 #. [scenario]: id=09_Houses_of_the_Dead
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:354
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:299
 msgid "Roddry"
 msgstr "Roddry"
 
 #. [message]: speaker=Roddry
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:357
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:302
 msgid ""
 "Have you encountered the skeletons? Their castle lies north of here. It is "
 "difficult to attack, but there is a secret entrance in the valley beyond "
@@ -1599,25 +1586,25 @@ msgstr ""
 "해골들을 만나보았나? 그들의 성이 여기서 북쪽에 있지. 그곳을 공격하는건 어려"
 "운 일이지만 Sythan의 집 너머 협곡에 비밀 통로가 있다네."
 
-#. [scenario]: id=09_Houses_of_the_Dead
 #. [unit]: id=Nameless, type=Spectre
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:360
+#. [scenario]: id=09_Houses_of_the_Dead
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:305
 #: data/campaigns/Delfadors_Memoirs/scenarios/14_Shadows.cfg:186
 msgid "Nameless"
 msgstr "이름없는 이"
 
 #. [message]: speaker=Nameless
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:363
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:308
 msgid "I died a long time ago. I have forgotten my name."
 msgstr "나는 오래 전에 죽었네. 내 이름도 잊어버렸지."
 
 #. [scenario]: id=09_Houses_of_the_Dead
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:366
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:311
 msgid "Melinna"
 msgstr "Melinna"
 
 #. [message]: speaker=Melinna
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:369
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:314
 msgid ""
 "Iliah-Malal says that he can open a portal to the world of the living. Those "
 "who follow him will walk the earth as they did in life."
@@ -1626,7 +1613,7 @@ msgstr ""
 "는 자들은 살았을 때 그랬던 것처럼 대지 위에서 걷게 될거야."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:373
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:318
 msgid ""
 "Why are the dead so restless? This should be a place of rest and peace for "
 "you."
@@ -1635,7 +1622,7 @@ msgstr ""
 "인데."
 
 #. [message]: speaker=Melinna
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:377
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:322
 msgid ""
 "Once, I was happy here, but Iliah-Malal made me see this land as the eyes of "
 "the living see it... a place of rock and dust."
@@ -1644,12 +1631,12 @@ msgstr ""
 "게 했네... 돌과 먼지 뿐인 장소로."
 
 #. [scenario]: id=09_Houses_of_the_Dead
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:380
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:325
 msgid "Sythan"
 msgstr "Sythan"
 
 #. [message]: speaker=Sythan
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:383
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:328
 msgid ""
 "I was once a great lord... I commanded armies! Iliah-Malal promised I would "
 "lead again."
@@ -1658,12 +1645,12 @@ msgstr ""
 "를 지휘하게 해주겠다고 약속했네."
 
 #. [scenario]: id=09_Houses_of_the_Dead
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:386
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:331
 msgid "Hereld"
 msgstr "Hereld"
 
 #. [message]: speaker=Hereld
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:389
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:334
 msgid ""
 "Beware the skeletons! They are not the spirits of dead men, but the "
 "creations of evil magic."
@@ -1672,12 +1659,12 @@ msgstr ""
 "조물이다."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:393
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:338
 msgid "What else do you know of the skeletons?"
 msgstr "해골들에 대해서 또 아는 것이 있소?"
 
 #. [message]: speaker=Hereld
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:397
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:342
 msgid ""
 "It is said that they guard a powerful magical artifact. Roddry knows more "
 "than I do; he lives to the west."
@@ -1685,62 +1672,70 @@ msgstr ""
 "듣기로 저들은 강력한 마도구를 지키고 있다고 한다. Roddry가 더 잘 알고 있다. "
 "그는 서쪽에 살지."
 
+#. [message]: id=Delfador
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:371
+msgid ""
+"I must find that artifact of which the ghost spoke; it sounds too powerful a "
+"thing to be left in Iliah-Malal’s hands."
+msgstr ""
+"유령이 얘기했던 마도구를 찾아야해. Iliah-Malal의 손에 넘기기엔 너무나 강력한 "
+"것인것 같아."
+
 #. [message]: speaker=Delfador
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:398
+msgid "Something does not feel right about those villages..."
+msgstr "저 마을들은 느낌이 좋지 않군..."
+
+#. [unit]: type=Skeleton, id=Rattles
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:412
+msgid "Rattles"
+msgstr "덜걱덜걱"
+
+#. [message]: speaker=Rattles
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:423
+msgid "Do you serve Iliah-Malal, living man?"
+msgstr "넌 Iliah-Malal을 섬기는가, 산 자여?"
+
+#. [option]
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:425
+msgid "Yes, I serve him."
+msgstr "그렇소, 난 그를 섬기오."
+
+#. [message]: speaker=Rattles
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:429
+msgid "Then you will not mind if we kill you! Hahahahah!"
+msgstr "그럼 우리가 널 죽여도 신경쓰지 않겠구나! 히히히히히!"
+
+#. [option]
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:434
-msgid ""
-"This is surely the land of the dead... and it seems I am still alive. But "
-"then, as Leollyn warned, I can never return! I suppose I may as well explore."
-msgstr ""
-"여긴 분명 죽은 자의 땅이다... 난 아직도 살아있는 것 같다. 하지만 그렇다면 "
-"Leollyn이 경고했던 대로 난 다시는 돌아갈 수 없어! 아무래도 여기저기 둘러봐야 "
-"할 것 같군."
+msgid "No, I do not."
+msgstr "아니, 그렇지 않소."
 
-#. [message]: speaker=Rorthin
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:464
-msgid "A living man... so it is as Iliah-Malal says..."
-msgstr "산 자인가... Iliah-Malal이 말했던 대로군..."
+#. [message]: speaker=Rattles
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:438
+msgid "Then you will die forever!"
+msgstr "그럼 영원히 죽게 될거야!"
 
-#. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:468
-msgid "Speak again, spirit! Tell me of yourself. Who is this Iliah-Malal?"
-msgstr "말해주시오, 영혼이여! 당신에 대해 얘기해주오. Iliah-Malal이 누구요?"
+#. [unit]: type=Skeleton, id=Bones
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:455
+msgid "Bones"
+msgstr "뼈다귀"
 
-#. [message]: speaker=Rorthin
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:472
-msgid ""
-"My name is Rorthin. I died long ago, in a great battle... I have almost "
-"forgotten... Iliah-Malal is a living man, like you, who walks among the "
-"dead. He promises life to all those who follow him."
-msgstr ""
-"내 이름은 Rorthin이다. 나는 오래 전에 큰 전투에서 죽었지... 이젠 거의 기억나"
-"지 않는다... Iliah-Malal은 너처럼 산 자로, 죽은 자들 사이에 있다. 그는 그를 "
-"따르는 모든 이들에게 생명을 약속했다."
-
-#. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:476
-msgid "I would very much like to meet Iliah-Malal. Where can I find him?"
-msgstr "나는 Iliah-Malal을 매우 만나고 싶소. 그는 어디에 있소?"
-
-#. [message]: speaker=Rorthin
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:480
-msgid ""
-"Follow the dry river, then the road to the signpost in the north. I will "
-"guide you. Enter the houses of the dead as you pass, for others here may "
-"help you."
-msgstr ""
-"마른 강을 따라서 북쪽에 있는 표지판으로 가라. 내가 안내해주지. 지나다가 죽은 "
-"자의 집에 들르면, 다른 이들도 너를 도와줄 것이다."
+#. [message]: speaker=Bones
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:466
+msgid "Iliah-Malal commands your death!"
+msgstr "Iliah-Malal이 널 죽이라고 명령했다!"
 
 #. [message]: speaker=narrator
 #. The Tomb Guardian's dialogue should sound especially archaic
 #. and imperious. If your language has special forms for superior
 #. addressing inferior, use them here.
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:507
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:484
 msgid "WHO ENTERS THE TOMB OF AN-USRUKHAR?"
 msgstr "<b>An-Usrukhar의 무덤에 들어온 것이 누구냐?</b>"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:512
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:489
 msgid "I... I am Delfador, a mage of Wesnoth."
 msgstr "나... 나는 Wesnoth의 마법사 Delfador요."
 
@@ -1748,7 +1743,7 @@ msgstr "나... 나는 Wesnoth의 마법사 Delfador요."
 #. "bestrode" = past tense of archaic verb "bestride", literally
 #. meaning to straddle but with a secondary sense of "to
 #. dominate", and connotations of gigantism.
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:519
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:496
 msgid ""
 "I am the will of An-Usrukhar, greatest of mages, he who bestrode Irdya in "
 "the morning of time, who sleeps now in a death beyond death until the "
@@ -1759,13 +1754,13 @@ msgstr ""
 "지 않는다."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:524
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:501
 msgid ""
 "I am only a man, a living man seeking a way home from the house of the dead."
 msgstr "난 그저 사람, 산 사람으로서 죽은 자의 집에서 나가는 길을 찾고 있소."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:528
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:505
 msgid ""
 "Living...? I see that it is so. Your breath stirs dust that has lain "
 "untouched since the Primal Aeon. And it was foretold that one like you would "
@@ -1775,7 +1770,7 @@ msgstr ""
 "를 휘날리고 있구나. 너와 같은 자가 찾아오리란 것은 예견되어 있었다."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:533
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:510
 msgid "Foretold?"
 msgstr "예견되었다고?"
 
@@ -1783,7 +1778,7 @@ msgstr "예견되었다고?"
 #. "Aeon" is a variant form of the word English word "eon", used
 #. for a long and indefinite span of time. The variant has
 #. mystical connotations.
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:540
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:517
 msgid ""
 "Foretold in the Primal Aeon, years past beyond your counting. An-Usrukhar "
 "the Great, he of whom I am but the tiniest shade and fragment, foresaw in "
@@ -1799,7 +1794,7 @@ msgstr ""
 #. "coil" is an archaism. In the English of around 1600, it was
 #. used to refer to a difficulty or entanglement. Translate
 #. freely.
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:548
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:525
 msgid ""
 "I have felt the coils of prophecy on me before. I am beginning to dislike "
 "them."
@@ -1808,7 +1803,7 @@ msgstr ""
 "는군."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:552
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:529
 msgid ""
 "It is only given to the small not to feel the hand of fate on their "
 "shoulder; the great must suffer its weight whether they will or no. "
@@ -1819,7 +1814,7 @@ msgstr ""
 "야 한다. Wesnoth의 마법사 Delfador여. <b>너는 빛의 사도인가?</b>"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:557
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:534
 msgid "I serve my king and my kingdom."
 msgstr "나는 국왕을 섬기며 왕국을 위해 일하오."
 
@@ -1828,7 +1823,7 @@ msgstr "나는 국왕을 섬기며 왕국을 위해 일하오."
 #. Delfador can possibly know. It is now 470YW; in 501YW,
 #. Garard II will be murdered by his wife and son, and the
 #. usurpation of Asheviere will begin.
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:565
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:542
 msgid ""
 "Your king will die in an eyeblink and your kingdom in the drawing of a "
 "breath. Delfador, I ask you again, ARE YOU A SERVANT OF THE LIGHT?"
@@ -1837,7 +1832,7 @@ msgstr ""
 "다. 다시 한번 묻겠다, Delfador여. <b>너는 빛의 사도인가?</b>"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:570
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:547
 msgid "I serve my people and my land."
 msgstr "나는 내 민족과 내가 사는 땅을 위해 일하오."
 
@@ -1845,7 +1840,7 @@ msgstr "나는 내 민족과 내가 사는 땅을 위해 일하오."
 #. "matter" is used here with an archaic meaning, roughly
 #. that of "ground" or "essence".  This sense survives in
 #. modern English in constructions like "It matters a lot."
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:577
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:554
 msgid ""
 "Peoples vanish and lands wither under the pitiless gaze of eternity; the "
 "true matter of the world is deeper. Delfador, I ask you a third time, and on "
@@ -1856,7 +1851,7 @@ msgstr ""
 "의 생사를 좌우하리라. <b>너는 빛의 사도인가?</b>"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:582
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:559
 msgid ""
 "I... I serve life against death. Love against fear. Light against darkness."
 msgstr ""
@@ -1864,7 +1859,7 @@ msgstr ""
 "하오."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:590
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:567
 msgid ""
 "IT IS WELL. Take up, O servant of light, the Staff of An-Usrukhar. The "
 "trials before you will be great. So is its power."
@@ -1877,9 +1872,9 @@ msgstr ""
 msgid "The Gate Between Worlds"
 msgstr "세상 사이의 문"
 
+#. [side]: type=Necromancer, id=Iliah-Malal
 #. [unit]: id=Iliah-Malal, type=Lich
 #. [side]: type=Lich, id=Iliah-Malal
-#. [side]: type=Necromancer, id=Iliah-Malal
 #: data/campaigns/Delfadors_Memoirs/scenarios/10_The_Gate_Between_Worlds.cfg:29
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:154
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:62
@@ -5003,13 +4998,6 @@ msgstr ""
 "과 2 유닛들은 그의 곁에 있을 때 더 효율적인 전투력을 발휘한다. 그는 전투중에 "
 "다른 이들을 치료하는 힘도 발휘한다."
 
-#. [attack]: type=impact
-#: data/campaigns/Delfadors_Memoirs/units/Mage_Commander.cfg:20
-#: data/campaigns/Delfadors_Memoirs/units/Mage_Leader.cfg:18
-#: data/campaigns/Delfadors_Memoirs/units/Mage_Magister.cfg:23
-msgid "staff"
-msgstr "지팡이"
-
 #. [unit_type]: id=Mage Leader
 #: data/campaigns/Delfadors_Memoirs/units/Mage_Leader.cfg:7
 msgid "Mage Leader"
@@ -5051,16 +5039,6 @@ msgid ""
 msgstr ""
 "이 나모들은 포도나 담쟁이 같은 덩굴식물들을 움직여 그들의 적을 저지할 수 있"
 "다."
-
-#. [attack]: type=impact
-#: data/campaigns/Delfadors_Memoirs/units/Wose_Shaman.cfg:32
-msgid "crush"
-msgstr "으깨기"
-
-#. [attack]: type=impact
-#: data/campaigns/Delfadors_Memoirs/units/Wose_Shaman.cfg:41
-msgid "entangle"
-msgstr "포박"
 
 #: data/campaigns/Delfadors_Memoirs/utils/characters.cfg:4
 msgid "Kalenz"
@@ -5142,11 +5120,6 @@ msgstr "오직 강대한 마법사만이 이것을 가질 수 있다."
 msgid "staff of power"
 msgstr "힘의 지팡이"
 
-#. [effect]: type=fire
-#: data/campaigns/Delfadors_Memoirs/utils/items.cfg:71
-msgid "lightning"
-msgstr "번개"
-
 #. [message]: speaker=unit
 #: data/campaigns/Delfadors_Memoirs/utils/misc.cfg:37
 msgid "A secret passage... I wonder where it leads..."
@@ -5196,6 +5169,21 @@ msgstr "Droni"
 #: data/campaigns/Delfadors_Memoirs/utils/sides.cfg:329
 msgid "Artor"
 msgstr "Artor"
+
+#~ msgid "Destroy the intruder, my minions!"
+#~ msgstr "침입자를 격퇴하라, 졸개들아!"
+
+#~ msgid "staff"
+#~ msgstr "지팡이"
+
+#~ msgid "crush"
+#~ msgstr "으깨기"
+
+#~ msgid "entangle"
+#~ msgstr "포박"
+
+#~ msgid "lightning"
+#~ msgstr "번개"
 
 #~ msgid "Player"
 #~ msgstr "플레이어"

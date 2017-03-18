@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-tsg_1.5\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-11-05 23:29 UTC\n"
+"POT-Creation-Date: 2017-03-18 21:05 UTC\n"
 "PO-Revision-Date: 2012-11-02 17:09+0100\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -122,10 +122,10 @@ msgid "Deoran"
 msgstr "Deoran"
 
 #. [side]: type=Horseman Commander, id=Deoran
-#. [side]: id=Deoran
 #. [side]: type=Troll Hero, id=Grek
 #. [side]
 #. [side]: type=Lieutenant, id=Plynry
+#. [side]: id=Deoran
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:37
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:41
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:37
@@ -151,13 +151,13 @@ msgstr "A Déli Őrhely serege"
 msgid "Urza Mathin"
 msgstr "Urza Mathin"
 
-#. [side]: type=Bandit, id=Urza Mathin
-#. [side]: type=Outlaw, id=Urza Nalmath
-#. [side]
 #. [side]: type=Rogue, id=Urza Fastik
 #. [side]: type=Outlaw, id=Urza Afalas
 #. [side]: type=Outlaw, id=Tharzo Kalain
 #. [side]: type=Outlaw, id=Jera Ilras
+#. [side]: type=Bandit, id=Urza Mathin
+#. [side]: type=Outlaw, id=Urza Nalmath
+#. [side]
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:59
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:63
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:102
@@ -1277,11 +1277,11 @@ msgstr "Mal A’kai"
 
 #. [side]: type=Soulless, id=Gruth
 #. [side]: type=Lich, id=Mal M'Brin
-#. [side]
 #. [side]: type=Soulless, id=Groth
 #. [side]: type=Ancient Lich, id=Mal M'Brin
 #. [side]: type=Lich, id=Mal Tera
 #. [side]: type=Dark Adept, type=Dark Sorcerer, type=Necromancer, id=Mal A'kai
+#. [side]
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:76
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:93
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:129
@@ -1908,7 +1908,7 @@ msgstr "Urza Afalas elesik"
 #. [message]: speaker=Urza Afalas
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:710
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1134
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1110
 msgid "Now I pay for my crimes. But how many others will also suffer for them?"
 msgstr "Most fizetek a bűneimért. De vajon hányan fognak még szenvedni értük?"
 
@@ -2579,23 +2579,23 @@ msgid "Get them!"
 msgstr "Kapjátok el őket!"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1161
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1137
 msgid "Thank heaven we have escaped that awful forest!"
 msgstr "Hál’Istennek, hogy kiértünk ebből a szörnyű erdőből!"
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1165
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1141
 msgid "Indeed, Afalas, you’ve earned my trust today."
 msgstr "Valóban, Afalas, ma megszolgáltad a bizalmamat."
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1169
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1145
 msgid "I can only hope for mercy when I return to Westin."
 msgstr ""
 "Csak remélni tudom, hogy kegyelmet kapok, amikor visszatérünk Westinbe."
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1174
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1150
 msgid "But there was a dark cloud looming behind Deoran and his men..."
 msgstr "De egy sötét felhő emelkedett fel Deoran és emberei mögött..."
 
@@ -3399,7 +3399,7 @@ msgstr "Westin tanácsa a $council_arrive_turn|. körben fog megérkezni."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:519
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:332
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:321
 #: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:12
 msgid "I have failed my kingdom and duty..."
 msgstr "Elbuktam a királyságom és a kötelességem..."
@@ -3540,7 +3540,7 @@ msgstr ""
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:225
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:226
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:227
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:299
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:292
 msgid "Disciple of Mebrin"
 msgstr "Mebrin tanítványa"
 
@@ -3578,18 +3578,18 @@ msgid "Send Ethiliel to the Great Tree and parley with Ithelden"
 msgstr "Eljuttatod Ethilielt a Nagy Fához, és beszélsz Itheldennel"
 
 #. [message]: speaker=$new_elf.id
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:317
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:306
 msgid "For every one of us you strike down, more will rise!"
 msgstr "Minden megölt társunk helyére újak fognak lépni!"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:346
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:335
 #: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:64
 msgid "I have given my all for my kingdom! Avenge me, Deoran!"
 msgstr "Mindenem odaadtam a királyságomért! Bosszulj meg, Deoran!"
 
 #. [message]: speaker=Minister Hylas
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:359
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:348
 msgid ""
 "Ithelden’s elves have killed Ethiliel! Now we have no chance to come to an "
 "agreement with them. A war with the Elves is imminent."
@@ -3598,7 +3598,7 @@ msgstr ""
 "jussunk velük. A tündékkel folytatott háború a küszöbön áll."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:363
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:352
 msgid ""
 "We are far away from Weldyn. We’ll surely all be killed long before any "
 "reinforcements arrive."
@@ -3607,7 +3607,7 @@ msgstr ""
 "mielőtt bármi erősítés érkezne."
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:401
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:390
 msgid ""
 "Take care, Deoran! My people are upset. Killing one will only draw more."
 msgstr ""
@@ -3664,18 +3664,6 @@ msgstr ""
 "vannak kiképezve, hanem a csapatok vezetésére is. A helyőrségeken szolgálnak "
 "parancsnokként, hogy biztosítsák a békét Wesnoth területén."
 
-#. [attack]: type=pierce
-#: data/campaigns/The_South_Guard/units/Horseman_Commander.cfg:30
-#: data/campaigns/The_South_Guard/units/Mounted_General.cfg:31
-msgid "lance"
-msgstr "kopja"
-
-#. [attack]: type=impact
-#: data/campaigns/The_South_Guard/units/Horseman_Commander.cfg:41
-#: data/campaigns/The_South_Guard/units/Mounted_General.cfg:42
-msgid "mace"
-msgstr "buzogány"
-
 #. [unit_type]: id=Infantry Commander, race=human
 #: data/campaigns/The_South_Guard/units/Infantry_Commander.cfg:4
 msgid "Infantry Commander"
@@ -3695,11 +3683,6 @@ msgstr ""
 #: data/campaigns/The_South_Guard/units/Infantry_Lieutenant.cfg:29
 msgid "glaive"
 msgstr "lándzsakard"
-
-#. [attack]: type=impact
-#: data/campaigns/The_South_Guard/units/Infantry_Commander.cfg:39
-msgid "shield"
-msgstr "pajzs"
 
 #. [unit_type]: id=Infantry Lieutenant, race=human
 #: data/campaigns/The_South_Guard/units/Infantry_Lieutenant.cfg:4
@@ -3734,11 +3717,6 @@ msgstr ""
 "Alig 17 vagy 18 évesen a lovagok és fejedelmek fiai lovat és kardot kaptak, "
 "hogy vezetőkké válhassanak. Akik lelkesedése elégnek bizonyult a feladathoz, "
 "Wesnoth seregeinek parancsnokai lettek."
-
-#. [attack]: type=pierce
-#: data/campaigns/The_South_Guard/units/Junior_Commander.cfg:30
-msgid "spear"
-msgstr "lándzsa"
 
 #. [unit_type]: id=Mounted General, race=human
 #: data/campaigns/The_South_Guard/units/Mounted_General.cfg:4
@@ -4167,6 +4145,18 @@ msgstr ""
 "a város lerombolt falainak és védműveinek újjáépítését. Végül, amint a hó "
 "elolvadt, és az utak újra járhatóvá váltak, egy hírnök érkezett Haldric "
 "királytól."
+
+#~ msgid "lance"
+#~ msgstr "kopja"
+
+#~ msgid "mace"
+#~ msgstr "buzogány"
+
+#~ msgid "shield"
+#~ msgstr "pajzs"
+
+#~ msgid "spear"
+#~ msgstr "lándzsa"
 
 #~ msgid "Take the Citadel at Westin by the end of the ninth turn"
 #~ msgstr "Elfoglalod Westin fellegvárát, mielőtt kilenc kör eltelik"

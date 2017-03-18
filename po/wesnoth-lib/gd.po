@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-11-06 02:25+0300\n"
+"POT-Creation-Date: 2017-03-19 00:05+0300\n"
 "PO-Revision-Date: 2017-01-27 12:29+0100\n"
 "Last-Translator: GunChleoc <fios@foramnagaidhlig.net>\n"
 "Language-Team: Fòram na Gàidhlig\n"
@@ -20,12 +20,19 @@ msgstr ""
 "(n > 2 && n < 20) ? 2 : 3;\n"
 "X-Generator: Virtaal 0.7.1\n"
 
+#. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
+#. [terrain_type]: id=fence
+#: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:6
+#: data/core/terrain.cfg:452
+msgid "Fence"
+msgstr "Feansa"
+
 #. [terrain_type]: id=deep_water_gray
 #. [terrain_type]: id=deep_water_medium
 #. [terrain_type]: id=deep_water_tropical
 #. [terrain_type]: id=deep_water
 #: data/core/terrain.cfg:20 data/core/terrain.cfg:31 data/core/terrain.cfg:42
-#: data/core/terrain.cfg:2534 data/core/terrain.cfg:2535
+#: data/core/terrain.cfg:2569 data/core/terrain.cfg:2570
 msgid "Deep Water"
 msgstr "Uisge domhain"
 
@@ -49,7 +56,7 @@ msgstr "Uisge domhain tropaigeach"
 #. [terrain_type]: id=tropical_water
 #. [terrain_type]: id=shallow_water
 #: data/core/terrain.cfg:53 data/core/terrain.cfg:64 data/core/terrain.cfg:75
-#: data/core/terrain.cfg:2493 data/core/terrain.cfg:2494
+#: data/core/terrain.cfg:2528 data/core/terrain.cfg:2529
 msgid "Shallow Water"
 msgstr "Tanalach"
 
@@ -95,7 +102,7 @@ msgstr ""
 #. [terrain_type]: id=tropical_reef
 #. [terrain_type]: id=reef
 #: data/core/terrain.cfg:98 data/core/terrain.cfg:109 data/core/terrain.cfg:120
-#: data/core/terrain.cfg:2448 data/core/terrain.cfg:2449
+#: data/core/terrain.cfg:2483 data/core/terrain.cfg:2484
 msgid "Coastal Reef"
 msgstr "Riof cladaich"
 
@@ -118,7 +125,7 @@ msgstr "Riof cladaich tropaigeach"
 #. [terrain_type]: id=quagmire
 #. [terrain_type]: id=swamp_water
 #: data/core/terrain.cfg:133 data/core/terrain.cfg:144
-#: data/core/terrain.cfg:2477 data/core/terrain.cfg:2478
+#: data/core/terrain.cfg:2512 data/core/terrain.cfg:2513
 msgid "Swamp"
 msgstr "Boglach"
 
@@ -254,7 +261,7 @@ msgstr ""
 
 #. [terrain_type]: id=sand_beach
 #. [terrain_type]: id=sand
-#: data/core/terrain.cfg:304 data/core/terrain.cfg:2435
+#: data/core/terrain.cfg:304 data/core/terrain.cfg:2470
 msgid "Sand"
 msgstr "Gaineamh"
 
@@ -265,7 +272,7 @@ msgstr "Gaineamh tràghad"
 
 #. [terrain_type]: id=sand_beach
 #. [terrain_type]: id=sand
-#: data/core/terrain.cfg:309 data/core/terrain.cfg:2439
+#: data/core/terrain.cfg:309 data/core/terrain.cfg:2474
 msgid ""
 "The instability of <italic>text='sand'</italic> makes it harder for most "
 "units to cross, and leaves them wide open to attack. In contrast, the wide "
@@ -352,11 +359,6 @@ msgstr "Pràisiche"
 msgid "Lit Brazier"
 msgstr "Pràisiche le teine"
 
-#. [terrain_type]: id=fence
-#: data/core/terrain.cfg:452
-msgid "Fence"
-msgstr "Feansa"
-
 #. [terrain_type]: id=sand_drifts
 #: data/core/terrain.cfg:461
 msgid "Stones with Sand Drifts"
@@ -417,8 +419,8 @@ msgstr "Mòr-chraobh mharbh"
 #: data/core/terrain.cfg:633 data/core/terrain.cfg:645
 #: data/core/terrain.cfg:657 data/core/terrain.cfg:669
 #: data/core/terrain.cfg:681 data/core/terrain.cfg:693
-#: data/core/terrain.cfg:705 data/core/terrain.cfg:2560
-#: data/core/terrain.cfg:2561
+#: data/core/terrain.cfg:705 data/core/terrain.cfg:2595
+#: data/core/terrain.cfg:2596
 msgid "Forest"
 msgstr "Coille"
 
@@ -502,8 +504,8 @@ msgstr "Coille mheasgaichte shneachdach"
 #. [terrain_type]: id=snow_hills
 #. [terrain_type]: id=hills
 #: data/core/terrain.cfg:721 data/core/terrain.cfg:731
-#: data/core/terrain.cfg:751 data/core/terrain.cfg:2463
-#: data/core/terrain.cfg:2464
+#: data/core/terrain.cfg:751 data/core/terrain.cfg:2498
+#: data/core/terrain.cfg:2499
 msgid "Hills"
 msgstr "Cnuic"
 
@@ -538,9 +540,9 @@ msgstr "Cnuic shneachdach"
 #. [terrain_type]: id=mountains
 #: data/core/terrain.cfg:766 data/core/terrain.cfg:776
 #: data/core/terrain.cfg:786 data/core/terrain.cfg:797
-#: data/core/terrain.cfg:1042 data/core/terrain.cfg:1052
-#: data/core/terrain.cfg:1063 data/core/terrain.cfg:1073
-#: data/core/terrain.cfg:2520 data/core/terrain.cfg:2521
+#: data/core/terrain.cfg:1043 data/core/terrain.cfg:1053
+#: data/core/terrain.cfg:1064 data/core/terrain.cfg:1074
+#: data/core/terrain.cfg:2555 data/core/terrain.cfg:2556
 msgid "Mountains"
 msgstr "Beanntan"
 
@@ -593,7 +595,7 @@ msgstr "Loinnear"
 #. [terrain_type]: id=cave_earthy
 #. [terrain_type]: id=cave
 #: data/core/terrain.cfg:846 data/core/terrain.cfg:856
-#: data/core/terrain.cfg:2420 data/core/terrain.cfg:2421
+#: data/core/terrain.cfg:2455 data/core/terrain.cfg:2456
 msgid "Cave"
 msgstr "Uamh"
 
@@ -700,12 +702,12 @@ msgid "Lava Chasm"
 msgstr "Sloc làbha"
 
 #. [terrain_type]: id=lava
-#: data/core/terrain.cfg:1013 data/core/terrain.cfg:1014
+#: data/core/terrain.cfg:1014 data/core/terrain.cfg:1015
 msgid "Lava"
 msgstr "Làbha"
 
 #. [terrain_type]: id=lava
-#: data/core/terrain.cfg:1020
+#: data/core/terrain.cfg:1021
 msgid ""
 "The dangers inherent in trying to walk on <italic>text='lava'</italic> are "
 "fairly obvious. As far as movement is concerned, lava is equivalent to "
@@ -724,111 +726,132 @@ msgstr ""
 "air falbh bho na h-aonadan coimeasgach."
 
 #. [terrain_type]: id=volcano
-#: data/core/terrain.cfg:1027
+#: data/core/terrain.cfg:1028
 msgid "Volcano"
 msgstr "Beinn-theine"
 
 #. [terrain_type]: id=cloud
-#: data/core/terrain.cfg:1043
+#: data/core/terrain.cfg:1044
 msgid "Regular Impassable Mountains"
 msgstr "Beanntan cunbhalach do-shiubhal"
 
 #. [terrain_type]: id=cloud_dry
-#: data/core/terrain.cfg:1053
+#: data/core/terrain.cfg:1054
 msgid "Dry Impassable Mountains"
 msgstr "Beanntan tioram do-shiubhal"
 
 #. [terrain_type]: id=cloud_snow
-#: data/core/terrain.cfg:1064
+#: data/core/terrain.cfg:1065
 msgid "Snowy Impassable Mountains"
 msgstr "Beanntan sneachdach do-shiubhal"
 
 #. [terrain_type]: id=cloud_desert
-#: data/core/terrain.cfg:1074
+#: data/core/terrain.cfg:1075
 msgid "Desert Impassable Mountains"
 msgstr "Beanntan fàsaich do-shiubhal"
 
 #. [terrain_type]: id=cavewall
 #. [terrain_type]: id=cavewall_earthy
 #. [terrain_type]: id=cavewall_earthy_hewn
-#: data/core/terrain.cfg:1084 data/core/terrain.cfg:1106
-#: data/core/terrain.cfg:1120
+#: data/core/terrain.cfg:1085 data/core/terrain.cfg:1107
+#: data/core/terrain.cfg:1121
 msgid "Cave Wall"
 msgstr "Balla uamha"
 
 #. [terrain_type]: id=cavewall
-#: data/core/terrain.cfg:1085
+#: data/core/terrain.cfg:1086
 msgid "Natural Cave Wall"
 msgstr "Balla uamha nàdarra"
 
 #. [terrain_type]: id=minewall
-#: data/core/terrain.cfg:1095 data/core/terrain.cfg:1096
+#. [terrain_type]: id=wall_stone_mine
+#: data/core/terrain.cfg:1096 data/core/terrain.cfg:1097
+#: data/core/terrain.cfg:1153
 msgid "Mine Wall"
 msgstr "Balla mèinne"
 
 #. [terrain_type]: id=cavewall_earthy
-#: data/core/terrain.cfg:1107
+#: data/core/terrain.cfg:1108
 msgid "Natural Earthy Cave Wall"
 msgstr "Balla uamha ùire nàdarra"
 
 #. [terrain_type]: id=wall_stone
 #. [terrain_type]: id=wall_stone_lit
-#: data/core/terrain.cfg:1131 data/core/terrain.cfg:1141
+#: data/core/terrain.cfg:1132 data/core/terrain.cfg:1142
 msgid "Stone Wall"
 msgstr "Balla cloiche"
 
 #. [terrain_type]: id=wall_stone_lit
-#: data/core/terrain.cfg:1142
+#: data/core/terrain.cfg:1143
 msgid "Lit Stone Wall"
+msgstr "Balla cloiche soillseach"
+
+#. [terrain_type]: id=wall_stone_mine
+#: data/core/terrain.cfg:1154
+#, fuzzy
+#| msgid "Mine Wall"
+msgid "Straight Mine Wall"
+msgstr "Balla mèinne"
+
+#. [terrain_type]: id=wall_stone_white
+#: data/core/terrain.cfg:1164
+#, fuzzy
+#| msgid "Mine Wall"
+msgid "Interior Wall"
+msgstr "Balla mèinne"
+
+#. [terrain_type]: id=wall_stone_white
+#: data/core/terrain.cfg:1165
+#, fuzzy
+#| msgid "Lit Stone Wall"
+msgid "Straight White Wall"
 msgstr "Balla cloiche soillseach"
 
 #. [terrain_type]: id=portal_gate_rusty
 #. [terrain_type]: id=p_open_rusty
-#: data/core/terrain.cfg:1152 data/core/terrain.cfg:1178
+#: data/core/terrain.cfg:1175 data/core/terrain.cfg:1201
 msgid "Gate"
 msgstr "Geata"
 
 #. [terrain_type]: id=portal_gate_rusty
-#: data/core/terrain.cfg:1153
+#: data/core/terrain.cfg:1176
 msgid "Rusty Gate"
 msgstr "Geata meirgeach"
 
 #. [terrain_type]: id=portal_door_wooden
 #. [terrain_type]: id=p_open_wooden
-#: data/core/terrain.cfg:1165 data/core/terrain.cfg:1190
+#: data/core/terrain.cfg:1188 data/core/terrain.cfg:1213
 msgid "Door"
 msgstr "Doras"
 
 #. [terrain_type]: id=portal_door_wooden
-#: data/core/terrain.cfg:1166
+#: data/core/terrain.cfg:1189
 msgid "Wooden Door"
 msgstr "Doras fiodha"
 
 #. [terrain_type]: id=p_open_rusty
-#: data/core/terrain.cfg:1179
+#: data/core/terrain.cfg:1202
 msgid "Rusty Open Gate"
 msgstr "Geata meirgeach fosgailte"
 
 #. [terrain_type]: id=p_open_wooden
-#: data/core/terrain.cfg:1191
+#: data/core/terrain.cfg:1214
 msgid "Wooden Open Door"
 msgstr "Doras fiodha fosgailte"
 
 #. [terrain_type]: id=impassable_overlay
-#: data/core/terrain.cfg:1201
+#: data/core/terrain.cfg:1224
 msgid "Impassable Overlay"
 msgstr "Tar-chòmhdachadh do-shiubhal"
 
 #. [terrain_type]: id=unwalkable_overlay
-#: data/core/terrain.cfg:1214
+#: data/core/terrain.cfg:1237
 msgid "Unwalkable Overlay"
 msgstr "Tar-chòmhdachadh do-choiseach"
 
 #. [terrain_type]: id=void
 #. [terrain_type]: id=off_map
-#. [terrain_type]: id=off_map2
-#: data/core/terrain.cfg:1226 data/core/terrain.cfg:2360
-#: data/core/terrain.cfg:2371
+#: data/core/terrain.cfg:1249 data/core/terrain.cfg:2395
 msgid "Void"
 msgstr "Fànas"
 
@@ -863,172 +886,172 @@ msgstr "Fànas"
 #. [terrain_type]: id=mermen-village
 #. [terrain_type]: id=village_overlay
 #. [terrain_type]: id=village
-#: data/core/terrain.cfg:1242 data/core/terrain.cfg:1255
-#: data/core/terrain.cfg:1268 data/core/terrain.cfg:1281
-#: data/core/terrain.cfg:1296 data/core/terrain.cfg:1309
-#: data/core/terrain.cfg:1324 data/core/terrain.cfg:1337
-#: data/core/terrain.cfg:1352 data/core/terrain.cfg:1365
-#: data/core/terrain.cfg:1378 data/core/terrain.cfg:1391
-#: data/core/terrain.cfg:1404 data/core/terrain.cfg:1417
-#: data/core/terrain.cfg:1430 data/core/terrain.cfg:1443
-#: data/core/terrain.cfg:1456 data/core/terrain.cfg:1469
-#: data/core/terrain.cfg:1482 data/core/terrain.cfg:1495
-#: data/core/terrain.cfg:1510 data/core/terrain.cfg:1523
-#: data/core/terrain.cfg:1536 data/core/terrain.cfg:1549
-#: data/core/terrain.cfg:1562 data/core/terrain.cfg:1575
-#: data/core/terrain.cfg:1588 data/core/terrain.cfg:1603
-#: data/core/terrain.cfg:1616 data/core/terrain.cfg:1634
-#: data/core/terrain.cfg:2585 data/core/terrain.cfg:2586
+#: data/core/terrain.cfg:1265 data/core/terrain.cfg:1278
+#: data/core/terrain.cfg:1291 data/core/terrain.cfg:1304
+#: data/core/terrain.cfg:1319 data/core/terrain.cfg:1332
+#: data/core/terrain.cfg:1347 data/core/terrain.cfg:1360
+#: data/core/terrain.cfg:1375 data/core/terrain.cfg:1388
+#: data/core/terrain.cfg:1401 data/core/terrain.cfg:1414
+#: data/core/terrain.cfg:1427 data/core/terrain.cfg:1440
+#: data/core/terrain.cfg:1453 data/core/terrain.cfg:1466
+#: data/core/terrain.cfg:1479 data/core/terrain.cfg:1492
+#: data/core/terrain.cfg:1505 data/core/terrain.cfg:1518
+#: data/core/terrain.cfg:1533 data/core/terrain.cfg:1546
+#: data/core/terrain.cfg:1559 data/core/terrain.cfg:1572
+#: data/core/terrain.cfg:1585 data/core/terrain.cfg:1598
+#: data/core/terrain.cfg:1611 data/core/terrain.cfg:1626
+#: data/core/terrain.cfg:1639 data/core/terrain.cfg:1657
+#: data/core/terrain.cfg:2620 data/core/terrain.cfg:2621
 msgid "Village"
 msgstr "Baile"
 
 #. [terrain_type]: id=desert_village
-#: data/core/terrain.cfg:1243
+#: data/core/terrain.cfg:1266
 msgid "Adobe Village"
 msgstr "Baile an fhàsaich"
 
 #. [terrain_type]: id=desert_village_ruin
-#: data/core/terrain.cfg:1256
+#: data/core/terrain.cfg:1279
 msgid "Ruined Adobe Village"
 msgstr "Tobhta baile an fhàsaich"
 
 #. [terrain_type]: id=desert_village_tent
-#: data/core/terrain.cfg:1269
+#: data/core/terrain.cfg:1292
 msgid "Desert Tent Village"
 msgstr "Baile teanta an fhàsaich"
 
 #. [terrain_type]: id=camp_village
-#: data/core/terrain.cfg:1282
+#: data/core/terrain.cfg:1305
 msgid "Tent Village"
 msgstr "Baile teanta"
 
 #. [terrain_type]: id=orcish_village
-#: data/core/terrain.cfg:1297
+#: data/core/terrain.cfg:1320
 msgid "Orcish Village"
 msgstr "Baile Deamhain"
 
 #. [terrain_type]: id=orcish_snow_village
-#: data/core/terrain.cfg:1310
+#: data/core/terrain.cfg:1333
 msgid "Snowy Orcish Village"
 msgstr "Baile Deamhain sneachdach"
 
 #. [terrain_type]: id=elven_snow_village
-#: data/core/terrain.cfg:1325
+#: data/core/terrain.cfg:1348
 msgid "Snowy Elven Village"
 msgstr "Baile Sìthiche sneachdach"
 
 #. [terrain_type]: id=elven_village
-#: data/core/terrain.cfg:1338
+#: data/core/terrain.cfg:1361
 msgid "Elven Village"
 msgstr "Baile Sìthiche"
 
 #. [terrain_type]: id=human_village
-#: data/core/terrain.cfg:1353
+#: data/core/terrain.cfg:1376
 msgid "Cottage"
 msgstr "Bothan"
 
 #. [terrain_type]: id=snow_village
-#: data/core/terrain.cfg:1366
+#: data/core/terrain.cfg:1389
 msgid "Snowy Cottage"
 msgstr "Bothan sneachdach"
 
 #. [terrain_type]: id=human_village_ruin
-#: data/core/terrain.cfg:1379
+#: data/core/terrain.cfg:1402
 msgid "Ruined Cottage"
 msgstr "Tobhta bhothain"
 
 #. [terrain_type]: id=city_village
-#: data/core/terrain.cfg:1392
+#: data/core/terrain.cfg:1415
 msgid "Human City"
 msgstr "Baile a’ Chinne-daonna"
 
 #. [terrain_type]: id=windmill_village
-#: data/core/terrain.cfg:1405
+#: data/core/terrain.cfg:1428
 msgid "Windmill Village"
 msgstr "Baile muilinn-ghaoithe"
 
 #. [terrain_type]: id=city_village_wno
-#: data/core/terrain.cfg:1418
+#: data/core/terrain.cfg:1441
 msgid "Snowy Human City"
 msgstr "Baile a’ Chinne-daonna sneachdach"
 
 #. [terrain_type]: id=city_village_ruin
-#: data/core/terrain.cfg:1431
+#: data/core/terrain.cfg:1454
 msgid "Ruined Human City"
 msgstr "Tobhta baile a’ Chinne-daonna"
 
 #. [terrain_type]: id=hill_village
-#: data/core/terrain.cfg:1444
+#: data/core/terrain.cfg:1467
 msgid "Hill Stone Village"
 msgstr "Baile cloiche air cnuic"
 
 #. [terrain_type]: id=snow-hill_village
-#: data/core/terrain.cfg:1457
+#: data/core/terrain.cfg:1480
 msgid "Snowy Hill Stone Village"
 msgstr "Baile cloiche air cnuic sneachdach"
 
 #. [terrain_type]: id=hill_village_ruin
-#: data/core/terrain.cfg:1470
+#: data/core/terrain.cfg:1493
 msgid "Ruined Hill Stone Village"
 msgstr "Tobhta baile cloiche air cnuic"
 
 #. [terrain_type]: id=tropical_forest_village
-#: data/core/terrain.cfg:1483
+#: data/core/terrain.cfg:1506
 msgid "Tropical Village"
 msgstr "Baile tropaigeach"
 
 #. [terrain_type]: id=drake_village
-#: data/core/terrain.cfg:1496
+#: data/core/terrain.cfg:1519
 msgid "Drake Village"
 msgstr "Baile Dràic"
 
 #. [terrain_type]: id=underground_village
-#: data/core/terrain.cfg:1511
+#: data/core/terrain.cfg:1534
 msgid "Cave Village"
 msgstr "Baile uamha"
 
 #. [terrain_type]: id=dwarven_village
-#: data/core/terrain.cfg:1524
+#: data/core/terrain.cfg:1547
 msgid "Dwarven Village"
 msgstr "Baile Troiche"
 
 #. [terrain_type]: id=hut_village
-#: data/core/terrain.cfg:1537
+#: data/core/terrain.cfg:1560
 msgid "Hut"
 msgstr "Bothag"
 
 #. [terrain_type]: id=hut_snow_village
-#: data/core/terrain.cfg:1550
+#: data/core/terrain.cfg:1573
 msgid "Snowy Hut"
 msgstr "Bothag shneachdach"
 
 #. [terrain_type]: id=logcabin_village
-#: data/core/terrain.cfg:1563
+#: data/core/terrain.cfg:1586
 msgid "Log Cabin"
 msgstr "Ceabain maidse"
 
 #. [terrain_type]: id=logcabin_snow_village
-#: data/core/terrain.cfg:1576
+#: data/core/terrain.cfg:1599
 msgid "Snowy Log Cabin"
 msgstr "Ceabain maidse shneachdach"
 
 #. [terrain_type]: id=igloo
-#: data/core/terrain.cfg:1589
+#: data/core/terrain.cfg:1612
 msgid "Igloo"
 msgstr "Taigh-sneachda"
 
 #. [terrain_type]: id=swamp_village
-#: data/core/terrain.cfg:1604
+#: data/core/terrain.cfg:1627
 msgid "Swamp Village"
 msgstr "Baile boglaich"
 
 #. [terrain_type]: id=mermen-village
-#: data/core/terrain.cfg:1617
+#: data/core/terrain.cfg:1640
 msgid "Merfolk Village"
 msgstr "Baile Sluaigh-mhara"
 
 #. [terrain_type]: id=mermen-village
-#: data/core/terrain.cfg:1618
+#: data/core/terrain.cfg:1641
 msgid ""
 "<italic>text='Submerged villages'</italic> are the homes of merfolk and "
 "nagas. While water-dwelling creatures are at home here, land-dwellers have a "
@@ -1053,20 +1076,20 @@ msgstr ""
 "nach fhaigh creutairean talmhainn ach glè bheag de dhìon."
 
 #. [terrain_type]: id=village_overlay
-#: data/core/terrain.cfg:1635
+#: data/core/terrain.cfg:1658
 msgid "Village Overlay"
 msgstr "Tar-chòmhdachadh baile"
 
 #. [terrain_type]: id=encampment
 #. [terrain_type]: id=encampment_snow
 #. [terrain_type]: id=aquatic_camp
-#: data/core/terrain.cfg:1651 data/core/terrain.cfg:1652
-#: data/core/terrain.cfg:1663 data/core/terrain.cfg:1808
+#: data/core/terrain.cfg:1674 data/core/terrain.cfg:1675
+#: data/core/terrain.cfg:1686 data/core/terrain.cfg:1831
 msgid "Encampment"
 msgstr "Campachadh"
 
 #. [terrain_type]: id=encampment_snow
-#: data/core/terrain.cfg:1664
+#: data/core/terrain.cfg:1687
 msgid "Snowy Encampment"
 msgstr "Campachadh sneachdach"
 
@@ -1080,42 +1103,42 @@ msgstr "Campachadh sneachdach"
 #. [terrain_type]: id=aquatic_castle
 #. [terrain_type]: id=castle_overlay
 #. [terrain_type]: id=castle
-#: data/core/terrain.cfg:1675 data/core/terrain.cfg:1687
-#: data/core/terrain.cfg:1699 data/core/terrain.cfg:1711
+#: data/core/terrain.cfg:1698 data/core/terrain.cfg:1710
 #: data/core/terrain.cfg:1722 data/core/terrain.cfg:1734
-#: data/core/terrain.cfg:1784 data/core/terrain.cfg:1821
-#: data/core/terrain.cfg:2047 data/core/terrain.cfg:2504
-#: data/core/terrain.cfg:2505
+#: data/core/terrain.cfg:1745 data/core/terrain.cfg:1757
+#: data/core/terrain.cfg:1807 data/core/terrain.cfg:1844
+#: data/core/terrain.cfg:2070 data/core/terrain.cfg:2539
+#: data/core/terrain.cfg:2540
 msgid "Castle"
 msgstr "Caisteal"
 
 #. [terrain_type]: id=orcish_fort
-#: data/core/terrain.cfg:1676
+#: data/core/terrain.cfg:1699
 msgid "Orcish Castle"
 msgstr "Caisteil Deamhain"
 
 #. [terrain_type]: id=snow_orcish_fort
-#: data/core/terrain.cfg:1688
+#: data/core/terrain.cfg:1711
 msgid "Snowy Orcish Castle"
 msgstr "Caisteal Deamhain sneachdach"
 
 #. [terrain_type]: id=human_castle
-#: data/core/terrain.cfg:1700
+#: data/core/terrain.cfg:1723
 msgid "Human Castle"
 msgstr "Caisteal a’ Chinne-daonna"
 
 #. [terrain_type]: id=snow_castle
-#: data/core/terrain.cfg:1712
+#: data/core/terrain.cfg:1735
 msgid "Snowy Human Castle"
 msgstr "Caisteal a’ Chinne-daonna sneachdach"
 
 #. [terrain_type]: id=elven_castle
-#: data/core/terrain.cfg:1723
+#: data/core/terrain.cfg:1746
 msgid "Elven Castle"
 msgstr "Daingean Sìthiche"
 
 #. [terrain_type]: id=dwarven_castle
-#: data/core/terrain.cfg:1735
+#: data/core/terrain.cfg:1758
 msgid "Dwarven Castle"
 msgstr "Caisteal Troiche"
 
@@ -1123,43 +1146,43 @@ msgstr "Caisteal Troiche"
 #. [terrain_type]: id=sunkenruin
 #. [terrain_type]: id=swampruin
 #. [terrain_type]: id=sand_castle_ruin
-#: data/core/terrain.cfg:1746 data/core/terrain.cfg:1758
-#: data/core/terrain.cfg:1771 data/core/terrain.cfg:1796
+#: data/core/terrain.cfg:1769 data/core/terrain.cfg:1781
+#: data/core/terrain.cfg:1794 data/core/terrain.cfg:1819
 msgid "Ruined Castle"
 msgstr "Tobhta chaisteil"
 
 #. [terrain_type]: id=ruin
-#: data/core/terrain.cfg:1747
+#: data/core/terrain.cfg:1770
 msgid "Ruined Human Castle"
 msgstr "Tobhta chaisteal a’ Chinne-daonna"
 
 #. [terrain_type]: id=sunkenruin
-#: data/core/terrain.cfg:1759
+#: data/core/terrain.cfg:1782
 msgid "Sunken Human Ruin"
 msgstr "Tobhta bàthte a’ Chinne-daonna"
 
 #. [terrain_type]: id=swampruin
-#: data/core/terrain.cfg:1772
+#: data/core/terrain.cfg:1795
 msgid "Swamp Human Ruin"
 msgstr "Tobhta boglaich a’ Chinne-daonna"
 
 #. [terrain_type]: id=sand_castle
-#: data/core/terrain.cfg:1785
+#: data/core/terrain.cfg:1808
 msgid "Desert Castle"
 msgstr "Caisteal an fhàsaich"
 
 #. [terrain_type]: id=sand_castle_ruin
-#: data/core/terrain.cfg:1797
+#: data/core/terrain.cfg:1820
 msgid "Ruined Desert Castle"
 msgstr "Tobhta caisteal an fhàsaich"
 
 #. [terrain_type]: id=aquatic_camp
-#: data/core/terrain.cfg:1809
+#: data/core/terrain.cfg:1832
 msgid "Aquatic Encampment"
 msgstr "Campachadh uisge"
 
 #. [terrain_type]: id=aquatic_castle
-#: data/core/terrain.cfg:1822
+#: data/core/terrain.cfg:1845
 msgid "Aquatic Castle"
 msgstr "Caisteal uisge"
 
@@ -1167,18 +1190,18 @@ msgstr "Caisteal uisge"
 #. [terrain_type]: id=encampment_keep_tall
 #. [terrain_type]: id=encampment_snow_keep
 #. [terrain_type]: id=merman_campkeep
-#: data/core/terrain.cfg:1838 data/core/terrain.cfg:1850
-#: data/core/terrain.cfg:1863 data/core/terrain.cfg:2019
+#: data/core/terrain.cfg:1861 data/core/terrain.cfg:1873
+#: data/core/terrain.cfg:1886 data/core/terrain.cfg:2042
 msgid "Encampment Keep"
 msgstr "Daingean champachaidh"
 
 #. [terrain_type]: id=encampment_keep_tall
-#: data/core/terrain.cfg:1851
+#: data/core/terrain.cfg:1874
 msgid "Tall Encampment Keep"
 msgstr "Daingean champachaidh àrd"
 
 #. [terrain_type]: id=encampment_snow_keep
-#: data/core/terrain.cfg:1864
+#: data/core/terrain.cfg:1887
 msgid "Snowy Encampment Keep"
 msgstr "Daingean champachaidh shneachdach"
 
@@ -1191,41 +1214,41 @@ msgstr "Daingean champachaidh shneachdach"
 #. [terrain_type]: id=desert_keep
 #. [terrain_type]: id=merman_castlekeep
 #. [terrain_type]: id=keep_overlay
-#: data/core/terrain.cfg:1876 data/core/terrain.cfg:1889
-#: data/core/terrain.cfg:1902 data/core/terrain.cfg:1915
-#: data/core/terrain.cfg:1928 data/core/terrain.cfg:1941
-#: data/core/terrain.cfg:1993 data/core/terrain.cfg:2032
-#: data/core/terrain.cfg:2060
+#: data/core/terrain.cfg:1899 data/core/terrain.cfg:1912
+#: data/core/terrain.cfg:1925 data/core/terrain.cfg:1938
+#: data/core/terrain.cfg:1951 data/core/terrain.cfg:1964
+#: data/core/terrain.cfg:2016 data/core/terrain.cfg:2055
+#: data/core/terrain.cfg:2083
 msgid "Keep"
 msgstr "Daingean"
 
 #. [terrain_type]: id=orcish_keep
-#: data/core/terrain.cfg:1877
+#: data/core/terrain.cfg:1900
 msgid "Orcish Keep"
 msgstr "Daingean Deamhain"
 
 #. [terrain_type]: id=snow_orcish_keep
-#: data/core/terrain.cfg:1890
+#: data/core/terrain.cfg:1913
 msgid "Snowy Orcish Keep"
 msgstr "Daingean deamhain sneachdach"
 
 #. [terrain_type]: id=human_keep
-#: data/core/terrain.cfg:1903
+#: data/core/terrain.cfg:1926
 msgid "Human Castle Keep"
 msgstr "Daingean a’ Chinne-daonna"
 
 #. [terrain_type]: id=snow_keep
-#: data/core/terrain.cfg:1916
+#: data/core/terrain.cfg:1939
 msgid "Snowy Human Castle Keep"
 msgstr "Daingean a’ Chinne-daonna sneachdach"
 
 #. [terrain_type]: id=elven_keep
-#: data/core/terrain.cfg:1929
+#: data/core/terrain.cfg:1952
 msgid "Elven Castle Keep"
 msgstr "Daingean Sìthiche"
 
 #. [terrain_type]: id=dwarven_keep
-#: data/core/terrain.cfg:1942
+#: data/core/terrain.cfg:1965
 msgid "Dwarven Castle Keep"
 msgstr "Daingean Troiche"
 
@@ -1233,53 +1256,53 @@ msgstr "Daingean Troiche"
 #. [terrain_type]: id=sunken_keep
 #. [terrain_type]: id=swamp_keep
 #. [terrain_type]: id=desert_keep_ruined
-#: data/core/terrain.cfg:1954 data/core/terrain.cfg:1967
-#: data/core/terrain.cfg:1980 data/core/terrain.cfg:2006
+#: data/core/terrain.cfg:1977 data/core/terrain.cfg:1990
+#: data/core/terrain.cfg:2003 data/core/terrain.cfg:2029
 msgid "Ruined Keep"
 msgstr "Tobhta dhaingein"
 
 #. [terrain_type]: id=ruined_keep
-#: data/core/terrain.cfg:1955
+#: data/core/terrain.cfg:1978
 msgid "Ruined Human Castle Keep"
 msgstr "Tobhta daingein a’ Chinne-daonna"
 
 #. [terrain_type]: id=sunken_keep
-#: data/core/terrain.cfg:1968
+#: data/core/terrain.cfg:1991
 msgid "Sunken Human Castle Keep"
 msgstr "Daingean a’ Chinne-daonna bàthte"
 
 #. [terrain_type]: id=swamp_keep
-#: data/core/terrain.cfg:1981
+#: data/core/terrain.cfg:2004
 msgid "Swamp Human Castle Keep"
 msgstr "Daingean boglaich a’ Chinne-daonna"
 
 #. [terrain_type]: id=desert_keep
-#: data/core/terrain.cfg:1994
+#: data/core/terrain.cfg:2017
 msgid "Desert Keep"
 msgstr "Daingean an fhàsaich"
 
 #. [terrain_type]: id=desert_keep_ruined
-#: data/core/terrain.cfg:2007
+#: data/core/terrain.cfg:2030
 msgid "Ruined Desert Keep"
 msgstr "Tobhta daingean an fhàsaich"
 
 #. [terrain_type]: id=merman_campkeep
-#: data/core/terrain.cfg:2020
+#: data/core/terrain.cfg:2043
 msgid "Aquatic Encampment Keep"
 msgstr "Daingean champachaidh uisge"
 
 #. [terrain_type]: id=merman_castlekeep
-#: data/core/terrain.cfg:2033
+#: data/core/terrain.cfg:2056
 msgid "Aquatic Keep"
 msgstr "Daingean uisge"
 
 #. [terrain_type]: id=castle_overlay
-#: data/core/terrain.cfg:2048
+#: data/core/terrain.cfg:2071
 msgid "Castle Overlay"
 msgstr "Tar-chòmhdachadh caisteil"
 
 #. [terrain_type]: id=keep_overlay
-#: data/core/terrain.cfg:2061
+#: data/core/terrain.cfg:2084
 msgid "Keep Overlay"
 msgstr "Tar-chòmhdachadh daingein"
 
@@ -1304,30 +1327,30 @@ msgstr "Tar-chòmhdachadh daingein"
 #. [terrain_type]: id=plankbridgediag1
 #. [terrain_type]: id=plankbridgediag2
 #. [terrain_type]: id=plankbridge
-#: data/core/terrain.cfg:2079 data/core/terrain.cfg:2094
-#: data/core/terrain.cfg:2107 data/core/terrain.cfg:2120
-#: data/core/terrain.cfg:2132 data/core/terrain.cfg:2145
-#: data/core/terrain.cfg:2160 data/core/terrain.cfg:2172
-#: data/core/terrain.cfg:2185 data/core/terrain.cfg:2200
-#: data/core/terrain.cfg:2211 data/core/terrain.cfg:2224
-#: data/core/terrain.cfg:2240 data/core/terrain.cfg:2253
-#: data/core/terrain.cfg:2266 data/core/terrain.cfg:2279
-#: data/core/terrain.cfg:2292 data/core/terrain.cfg:2305
-#: data/core/terrain.cfg:2318 data/core/terrain.cfg:2331
-#: data/core/terrain.cfg:2344
+#: data/core/terrain.cfg:2102 data/core/terrain.cfg:2117
+#: data/core/terrain.cfg:2130 data/core/terrain.cfg:2143
+#: data/core/terrain.cfg:2155 data/core/terrain.cfg:2168
+#: data/core/terrain.cfg:2183 data/core/terrain.cfg:2195
+#: data/core/terrain.cfg:2208 data/core/terrain.cfg:2223
+#: data/core/terrain.cfg:2235 data/core/terrain.cfg:2249
+#: data/core/terrain.cfg:2266 data/core/terrain.cfg:2280
+#: data/core/terrain.cfg:2294 data/core/terrain.cfg:2308
+#: data/core/terrain.cfg:2322 data/core/terrain.cfg:2336
+#: data/core/terrain.cfg:2350 data/core/terrain.cfg:2364
+#: data/core/terrain.cfg:2378
 msgid "Bridge"
 msgstr "Drochaid"
 
 #. [terrain_type]: id=bridge
 #. [terrain_type]: id=bridgediag1
 #. [terrain_type]: id=bridgediag2
-#: data/core/terrain.cfg:2080 data/core/terrain.cfg:2095
-#: data/core/terrain.cfg:2108
+#: data/core/terrain.cfg:2103 data/core/terrain.cfg:2118
+#: data/core/terrain.cfg:2131
 msgid "Wooden Bridge"
 msgstr "Drochaid fiodha"
 
 #. [terrain_type]: id=bridge
-#: data/core/terrain.cfg:2086
+#: data/core/terrain.cfg:2109
 msgid ""
 "To those capable of building one, the ability to lay a "
 "<italic>text='bridge'</italic> offers a liberation from the fickle nature of "
@@ -1356,82 +1379,82 @@ msgstr ""
 #. [terrain_type]: id=rotbridge
 #. [terrain_type]: id=rotbridgediag1
 #. [terrain_type]: id=rotbridgediag2
-#: data/core/terrain.cfg:2121 data/core/terrain.cfg:2133
-#: data/core/terrain.cfg:2146
+#: data/core/terrain.cfg:2144 data/core/terrain.cfg:2156
+#: data/core/terrain.cfg:2169
 msgid "Rotting Bridge"
 msgstr "Drochaid a’ lobhadh"
 
 #. [terrain_type]: id=stone_bridge
 #. [terrain_type]: id=stone_bridgediag1
 #. [terrain_type]: id=stone_bridgediag2
-#: data/core/terrain.cfg:2161 data/core/terrain.cfg:2173
-#: data/core/terrain.cfg:2186
+#: data/core/terrain.cfg:2184 data/core/terrain.cfg:2196
+#: data/core/terrain.cfg:2209
 msgid "Basic Stone Bridge"
 msgstr "Drochaid chloiche bhunasach"
 
 #. [terrain_type]: id=bridgechasm
 #. [terrain_type]: id=bridgechasmdiag1
 #. [terrain_type]: id=bridgechasmdiag2
-#: data/core/terrain.cfg:2201 data/core/terrain.cfg:2212
-#: data/core/terrain.cfg:2225
+#: data/core/terrain.cfg:2224 data/core/terrain.cfg:2236
+#: data/core/terrain.cfg:2250
 msgid "Cave Chasm Bridge"
 msgstr "Drochaid mòr-bheàrn uamha"
 
 #. [terrain_type]: id=hangingbridgediag1
 #. [terrain_type]: id=hangingbridgediag2
 #. [terrain_type]: id=hangingbridge
-#: data/core/terrain.cfg:2241 data/core/terrain.cfg:2254
-#: data/core/terrain.cfg:2267
+#: data/core/terrain.cfg:2267 data/core/terrain.cfg:2281
+#: data/core/terrain.cfg:2295
 msgid "Hanging Bridge"
 msgstr "Drochaid-chrochaidh"
 
 #. [terrain_type]: id=stonechasmbridgediag1
 #. [terrain_type]: id=stonechasmbridgediag2
 #. [terrain_type]: id=stonechasmbridge
-#: data/core/terrain.cfg:2280 data/core/terrain.cfg:2293
-#: data/core/terrain.cfg:2306
+#: data/core/terrain.cfg:2309 data/core/terrain.cfg:2323
+#: data/core/terrain.cfg:2337
 msgid "Stone Chasm Bridge"
 msgstr "Drochaid mòr-bheàrn cloiche"
 
 #. [terrain_type]: id=plankbridgediag1
 #. [terrain_type]: id=plankbridgediag2
 #. [terrain_type]: id=plankbridge
-#: data/core/terrain.cfg:2319 data/core/terrain.cfg:2332
-#: data/core/terrain.cfg:2345
+#: data/core/terrain.cfg:2351 data/core/terrain.cfg:2365
+#: data/core/terrain.cfg:2379
 msgid "Plank Bridge"
 msgstr "Drochaid bùirt"
 
 #. [terrain_type]: id=off_map
-#: data/core/terrain.cfg:2361
+#: data/core/terrain.cfg:2396
 msgid "Off Map"
 msgstr "Far a’ mhapa"
 
 #. [terrain_type]: id=off_map2
-#: data/core/terrain.cfg:2372
-msgid "Experimental Fake Map Edge"
-msgstr "Oir mhapa fhuadain dheuchainneach"
+#: data/core/terrain.cfg:2407
+msgid "Fake Map Border"
+msgstr ""
 
 #. [terrain_type]: id=shroud
 #. [toggle_button]: id=shroud
 #. [toggle_button]: id=sort_7
-#: data/core/terrain.cfg:2382 data/gui/window/editor_edit_side.cfg:180
+#: data/core/terrain.cfg:2417 data/gui/window/editor_edit_side.cfg:180
 #: data/gui/window/game_stats.cfg:384 data/gui/window/mp_create_game.cfg:388
 msgid "Shroud"
 msgstr "Sgleò"
 
 #. [terrain_type]: id=fog
 #. [toggle_button]: id=sort_6
-#: data/core/terrain.cfg:2392 data/gui/window/game_stats.cfg:370
+#: data/core/terrain.cfg:2427 data/gui/window/game_stats.cfg:370
 msgid "Fog"
 msgstr "Ceò"
 
 #. [terrain_type]: id=fungus
-#: data/core/terrain.cfg:2407 data/core/terrain.cfg:2408
+#: data/core/terrain.cfg:2442 data/core/terrain.cfg:2443
 msgid "Fungus"
 msgstr "Balgain-bhuachair"
 
 #. [terrain_type]: id=fungus
-#: data/core/terrain.cfg:2411
+#: data/core/terrain.cfg:2446
 msgid ""
 "<italic>text='Mushroom groves'</italic> are vast underground forests of "
 "giant mushrooms,\n"
@@ -1457,7 +1480,7 @@ msgstr ""
 "bhuachair ach chan fhaigh marcaichean ach 20%."
 
 #. [terrain_type]: id=cave
-#: data/core/terrain.cfg:2423
+#: data/core/terrain.cfg:2458
 msgid ""
 "<italic>text='Cave'</italic> terrain represents any underground cavern with "
 "enough room for a unit to pass.\n"
@@ -1495,12 +1518,12 @@ msgstr ""
 "a gheibh troichean 50%."
 
 #. [terrain_type]: id=sand
-#: data/core/terrain.cfg:2436
+#: data/core/terrain.cfg:2471
 msgid "Sands"
 msgstr "Gaineamh"
 
 #. [terrain_type]: id=reef
-#: data/core/terrain.cfg:2453
+#: data/core/terrain.cfg:2488
 msgid ""
 "<italic>text='Coastal reefs'</italic> are shallows formed by stone, coral "
 "and sand.\n"
@@ -1519,7 +1542,7 @@ msgstr ""
 "Tha 70% de dhìon aig sluagh-mara is nagaidhean air riofachan cladaich."
 
 #. [terrain_type]: id=hills
-#: data/core/terrain.cfg:2467
+#: data/core/terrain.cfg:2502
 msgid ""
 "<italic>text='Hills'</italic> represent any reasonably rough terrain,\n"
 "with enough dips and rises in the ground to provide some cover. Hills are "
@@ -1542,7 +1565,7 @@ msgstr ""
 "marcaichean cuingichte gu 40%. Gheibh troichean 60% de dhìon air cnuic."
 
 #. [terrain_type]: id=swamp_water
-#: data/core/terrain.cfg:2482
+#: data/core/terrain.cfg:2517
 msgid ""
 "<italic>text='Swamps'</italic> represent any sort of wetlands.\n"
 "Swamps slow down nearly everyone, and inhibit their ability to defend "
@@ -1565,7 +1588,7 @@ msgstr ""
 "sluagh-mara, nagaidhean is laghairtean uile 60%."
 
 #. [terrain_type]: id=shallow_water
-#: data/core/terrain.cfg:2495
+#: data/core/terrain.cfg:2530
 msgid ""
 "<italic>text='Shallow water'</italic> represents any body of water deep "
 "enough to come up to roughly a man’s waist. This is enough to slow down "
@@ -1589,7 +1612,7 @@ msgstr ""
 "tanalach. Gheibh nagaidhean is sluagh-mara 60%."
 
 #. [terrain_type]: id=castle
-#: data/core/terrain.cfg:2510
+#: data/core/terrain.cfg:2545
 msgid ""
 "<italic>text='Castles'</italic> are any sort of permanent fortification.\n"
 "Nearly all units receive a considerable bonus to their defense by being "
@@ -1611,7 +1634,7 @@ msgstr ""
 "Tha 60% de dhìon aig a’ mhòrchuid a dh’aonadan ann an caisteal."
 
 #. [terrain_type]: id=mountains
-#: data/core/terrain.cfg:2524
+#: data/core/terrain.cfg:2559
 msgid ""
 "<italic>text='Mountains'</italic> are steep enough that units often have to "
 "climb over obstacles to move.\n"
@@ -1635,7 +1658,7 @@ msgstr ""
 "troichean 70%."
 
 #. [terrain_type]: id=deep_water
-#: data/core/terrain.cfg:2536
+#: data/core/terrain.cfg:2571
 msgid ""
 "<italic>text='Deep water'</italic> represents any body of water deep enough "
 "to cover a man’s head.\n"
@@ -1653,12 +1676,12 @@ msgstr ""
 "gluasad slàn."
 
 #. [terrain_type]: id=flat
-#: data/core/terrain.cfg:2547 data/core/terrain.cfg:2548
+#: data/core/terrain.cfg:2582 data/core/terrain.cfg:2583
 msgid "Flat"
 msgstr "Rèidh"
 
 #. [terrain_type]: id=flat
-#: data/core/terrain.cfg:2549
+#: data/core/terrain.cfg:2584
 msgid ""
 "<italic>text='Grassland'</italic> represents open plains, whether "
 "cultivated, cut back for grazing, or wild.\n"
@@ -1679,7 +1702,7 @@ msgstr ""
 "Tha dìon de 30% gu 40% aig a’ mhòrchuid a dh’aonadan air raon-feòir."
 
 #. [terrain_type]: id=forest
-#: data/core/terrain.cfg:2562
+#: data/core/terrain.cfg:2597
 msgid ""
 "<italic>text='Forests'</italic> represent any woodland with significant "
 "undergrowth, enough to hinder passage. Though they slow nearly everyone "
@@ -1712,12 +1735,12 @@ msgstr ""
 "marcaichean acasan. Chan fhaigh troichean ach 30% de dhìon ann an coilltean."
 
 #. [terrain_type]: id=frozen
-#: data/core/terrain.cfg:2572 data/core/terrain.cfg:2573
+#: data/core/terrain.cfg:2607 data/core/terrain.cfg:2608
 msgid "Frozen"
 msgstr "Reòite"
 
 #. [terrain_type]: id=frozen
-#: data/core/terrain.cfg:2575
+#: data/core/terrain.cfg:2610
 msgid ""
 "<italic>text='Frozen'</italic> terrain represents any flat area that is "
 "covered by snow or ice.\n"
@@ -1736,7 +1759,7 @@ msgstr ""
 "Tha 20% gu 40% de dhìon aig a’ mhòrchuid a dh’aonadan air tìr reòite."
 
 #. [terrain_type]: id=village
-#: data/core/terrain.cfg:2588
+#: data/core/terrain.cfg:2623
 msgid ""
 "<italic>text='Villages'</italic> represent any group of buildings, human or "
 "otherwise.\n"
@@ -1761,12 +1784,12 @@ msgstr ""
 "nach fhaigh marcaichean ach 40%."
 
 #. [terrain_type]: id=impassable
-#: data/core/terrain.cfg:2598 data/core/terrain.cfg:2599
+#: data/core/terrain.cfg:2633 data/core/terrain.cfg:2634
 msgid "Impassable"
 msgstr "Do-shiubhal"
 
 #. [terrain_type]: id=impassable
-#: data/core/terrain.cfg:2601
+#: data/core/terrain.cfg:2636
 msgid ""
 "Obstacles that not even the most determined traveler may overcome include "
 "solid walls of stone and mountains so tall and steep that they are "
@@ -1781,12 +1804,12 @@ msgstr ""
 "cha bhris fiù ’s an t-athach as treuna tro bhallachan cloiche cho tiugha."
 
 #. [terrain_type]: id=unwalkable
-#: data/core/terrain.cfg:2608 data/core/terrain.cfg:2609
+#: data/core/terrain.cfg:2643 data/core/terrain.cfg:2644
 msgid "Unwalkable"
 msgstr "Do-choiseach"
 
 #. [terrain_type]: id=unwalkable
-#: data/core/terrain.cfg:2611
+#: data/core/terrain.cfg:2646
 msgid ""
 "<italic>text='Unwalkable terrain'</italic> covers any chasm or gorge which, "
 "as the name implies, cannot be crossed simply by walking. Chasms are noted "
@@ -1800,12 +1823,12 @@ msgstr ""
 "aonadan aig a bheil sgiathach."
 
 #. [terrain_type]: id=rails
-#: data/core/terrain.cfg:2618 data/core/terrain.cfg:2619
+#: data/core/terrain.cfg:2653 data/core/terrain.cfg:2654
 msgid "Rails"
 msgstr "Rèilean"
 
 #. [terrain_type]: id=rails
-#: data/core/terrain.cfg:2621
+#: data/core/terrain.cfg:2656
 msgid ""
 "<italic>text='Rails'</italic> are used to transport ore, mostly by dwarves."
 msgstr ""
@@ -1816,6 +1839,44 @@ msgstr ""
 #: data/gui/default.cfg:23
 msgid " (Press '$hotkey' for more information)"
 msgstr " (Brùth air '$hotkey' airson barrachd fiosrachaidh)"
+
+#. [toggle_button]: id=sort_0
+#. [label]: id=name
+#. [toggle_button]: id=sort_1
+#. [label]
+#: data/gui/widget/addon_list.cfg:47 data/gui/window/game_load.cfg:286
+#: data/gui/window/mp_server_list.cfg:107 data/gui/window/terrain_layers.cfg:45
+#: data/gui/window/unit_list.cfg:93 data/gui/window/unit_recall.cfg:47
+msgid "Name"
+msgstr "Ainm"
+
+#. [label]
+#: data/gui/widget/addon_list.cfg:62
+msgid "Version"
+msgstr "Tionndadh"
+
+#. [toggle_button]: id=sort_1
+#: data/gui/widget/addon_list.cfg:76
+msgid "Author"
+msgstr "Ùghdar"
+
+#. [toggle_button]: id=sort_2
+#: data/gui/widget/addon_list.cfg:90
+msgid "Size"
+msgstr "Meud"
+
+#. [toggle_button]: id=sort_3
+#: data/gui/widget/addon_list.cfg:104
+msgid "Downloads"
+msgstr "Luchdaidhean a-nuas"
+
+#. [toggle_button]: id=sort_4
+#. [toggle_button]: id=sort_0
+#. [toggle_button]: id=sort_1
+#: data/gui/widget/addon_list.cfg:118 data/gui/window/unit_create.cfg:136
+#: data/gui/window/unit_list.cfg:79 data/gui/window/unit_recall.cfg:33
+msgid "Type"
+msgstr "Seòrsa"
 
 #. [label]: id=room
 #: data/gui/widget/chatbox.cfg:22
@@ -1833,9 +1894,8 @@ msgstr "Teachdaireachdan a’ feitheamh"
 #. [button]: id=ok
 #. [button]: id=cancel
 #: data/gui/widget/chatbox.cfg:64 data/gui/widget/window_default.cfg:106
-#: data/gui/window/addon_description.cfg:550
-#: data/gui/window/addon_filter_options.cfg:420
-#: data/gui/window/chat_log.cfg:210 data/gui/window/end_credits.cfg:146
+#: data/gui/window/attack_predictions.cfg:324 data/gui/window/chat_log.cfg:199
+#: data/gui/window/end_credits.cfg:146
 #: data/gui/window/game_cache_options.cfg:247
 #: data/gui/window/game_stats.cfg:842 data/gui/window/game_version.cfg:643
 #: data/gui/window/gamestate_inspector.cfg:397
@@ -1843,15 +1903,17 @@ msgstr "Teachdaireachdan a’ feitheamh"
 #: data/gui/window/lobby_player_info.cfg:282
 #: data/gui/window/lua_interpreter.cfg:130 data/gui/window/message.cfg:135
 #: data/gui/window/mp_alerts_options.cfg:249
-#: data/gui/window/preferences.cfg:430 data/gui/window/unit_list.cfg:447
-#: src/construct_dialog.cpp:141
+#: data/gui/window/preferences.cfg:430
+#: data/gui/window/statistics_dialog.cfg:597
+#: data/gui/window/terrain_layers.cfg:434 data/gui/window/unit_list.cfg:447
+#: src/construct_dialog.cpp:142
 msgid "Close"
 msgstr "Dùin"
 
 #. [button]: id=type_profile
 #: data/gui/widget/unit_preview_pane.cfg:113
-#: data/gui/widget/unit_preview_pane.cfg:249
-#: data/gui/widget/unit_preview_pane.cfg:309
+#: data/gui/widget/unit_preview_pane.cfg:296
+#: data/gui/widget/unit_preview_pane.cfg:356
 msgid "Profile"
 msgstr "Pròifil"
 
@@ -1899,8 +1961,8 @@ msgstr "Dèan ceangal"
 #: data/gui/window/addon_connect.cfg:212
 #: data/gui/window/addon_uninstall_list.cfg:174
 #: data/gui/window/advanced_graphics_options.cfg:178
-#: data/gui/window/campaign_dialog.cfg:521
-#: data/gui/window/campaign_difficulty.cfg:252
+#: data/gui/window/campaign_dialog.cfg:388
+#: data/gui/window/campaign_difficulty.cfg:259
 #: data/gui/window/core_dialog.cfg:240 data/gui/window/custom_tod.cfg:400
 #: data/gui/window/depcheck_select_new.cfg:165
 #: data/gui/window/edit_label.cfg:153 data/gui/window/edit_text.cfg:130
@@ -1911,8 +1973,8 @@ msgstr "Dèan ceangal"
 #: data/gui/window/editor_new_map.cfg:125
 #: data/gui/window/editor_resize_map.cfg:284
 #: data/gui/window/editor_set_starting_position.cfg:175
-#: data/gui/window/file_dialog.cfg:453 data/gui/window/folder_create.cfg:133
-#: data/gui/window/game_load.cfg:533 data/gui/window/game_save.cfg:134
+#: data/gui/window/file_dialog.cfg:454 data/gui/window/folder_create.cfg:133
+#: data/gui/window/game_load.cfg:507 data/gui/window/game_save.cfg:134
 #: data/gui/window/label_settings.cfg:149
 #: data/gui/window/language_selection.cfg:162 data/gui/window/logging.cfg:169
 #: data/gui/window/message.cfg:149 data/gui/window/mp_change_control.cfg:160
@@ -1921,283 +1983,147 @@ msgstr "Dèan ceangal"
 #: data/gui/window/mp_create_game/small_resolution.cfg:369
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:329
 #: data/gui/window/mp_faction_select.cfg:391
-#: data/gui/window/mp_join_game.cfg:430
 #: data/gui/window/mp_join_game_password_prompt.cfg:149
-#: data/gui/window/mp_login.cfg:270 data/gui/window/mp_method_selection.cfg:298
+#: data/gui/window/mp_login.cfg:271 data/gui/window/mp_method_selection.cfg:298
 #: data/gui/window/mp_server_list.cfg:231 data/gui/window/mp_staging.cfg:516
 #: data/gui/window/network_transmission.cfg:114
 #: data/gui/window/select_orb_colors.cfg:124
 #: data/gui/window/simple_item_selector.cfg:158
 #: data/gui/window/sp_options_configure.cfg:113
 #: data/gui/window/theme_list.cfg:172 data/gui/window/unit_attack.cfg:233
-#: data/gui/window/unit_create.cfg:304 data/gui/window/unit_recall.cfg:456
-#: data/gui/window/unit_recruit.cfg:231 src/construct_dialog.cpp:135
-#: src/construct_dialog.cpp:138 src/hotkey/hotkey_command.cpp:44
+#: data/gui/window/unit_create.cfg:279 data/gui/window/unit_recall.cfg:430
+#: data/gui/window/unit_recruit.cfg:231 src/construct_dialog.cpp:136
+#: src/construct_dialog.cpp:139 src/hotkey/hotkey_command.cpp:44
 msgid "Cancel"
 msgstr "Sguir dheth"
 
+#. [label]: id=byline
+#: data/gui/window/addon_manager.cfg:83
+msgid "By:"
+msgstr ""
+
+#. [label]: id=version_string
+#: data/gui/window/addon_manager.cfg:120
+msgid "Version:"
+msgstr "Tionndadh:"
+
+#. [scroll_label]: id=description
+#: data/gui/window/addon_manager.cfg:160
+msgid "No description available."
+msgstr "Chan eil tuairisgeul ri fhaighinn."
+
 #. [label]
-#: data/gui/window/addon_description.cfg:88 data/gui/window/addon_list.cfg:600
+#: data/gui/window/addon_manager.cfg:316 data/gui/window/addon_manager.cfg:739
 msgid "Type:"
 msgstr "Seòrsa:"
 
 #. [label]
-#: data/gui/window/addon_description.cfg:115 data/gui/window/addon_list.cfg:660
+#: data/gui/window/addon_manager.cfg:344
+msgid "date^First uploaded:"
+msgstr "A’ chiad luchdadh suas:"
+
+#. [label]
+#: data/gui/window/addon_manager.cfg:376
 msgid "Status:"
 msgstr "Staid:"
 
 #. [label]
-#: data/gui/window/addon_description.cfg:146
-msgid "Version:"
-msgstr "Tionndadh:"
+#: data/gui/window/addon_manager.cfg:405
+msgid "date^Last updated:"
+msgstr "An t-ùrachadh mu dheireadh:"
 
 #. [label]
-#: data/gui/window/addon_description.cfg:172 data/gui/window/addon_list.cfg:721
+#: data/gui/window/addon_manager.cfg:437
 #: data/gui/window/game_cache_options.cfg:160
 #: data/gui/window/screenshot_notification.cfg:139
 msgid "Size:"
 msgstr "Meud:"
 
 #. [label]
-#: data/gui/window/addon_description.cfg:202
-msgid "Author:"
-msgstr "Ùghdar:"
-
-#. [label]
-#: data/gui/window/addon_description.cfg:228 data/gui/window/addon_list.cfg:749
+#: data/gui/window/addon_manager.cfg:465
 msgid "Downloads:"
 msgstr "Luchdaidhean a-nuas:"
 
 #. [label]
-#: data/gui/window/addon_description.cfg:258 data/gui/window/addon_list.cfg:689
-msgid "date^Last updated:"
-msgstr "An t-ùrachadh mu dheireadh:"
-
-#. [label]
-#: data/gui/window/addon_description.cfg:284 data/gui/window/addon_list.cfg:628
-msgid "date^First uploaded:"
-msgstr "A’ chiad luchdadh suas:"
-
-#. [label]
-#: data/gui/window/addon_description.cfg:329
-#: data/gui/window/editor_edit_scenario.cfg:140
-msgid "Description:"
-msgstr "Tuairisgeul:"
-
-#. [scroll_label]: id=description
-#: data/gui/window/addon_description.cfg:346 data/gui/window/addon_list.cfg:570
-msgid "No description available."
-msgstr "Chan eil tuairisgeul ri fhaighinn."
-
-#. [label]
-#: data/gui/window/addon_description.cfg:376 data/gui/window/addon_list.cfg:866
-msgid "Website:"
-msgstr "Làrach-lìn:"
-
-#. [label]: id=url_none
-#: data/gui/window/addon_description.cfg:398 data/gui/window/addon_list.cfg:889
-msgid "url^None"
-msgstr "Gun làrach-lìn"
-
-#. [button]: id=url_copy
-#: data/gui/window/addon_description.cfg:432 data/gui/window/addon_list.cfg:923
-msgid "url^Copy"
-msgstr "Dèan lethbhreac"
-
-#. [button]: id=url_copy
-#: data/gui/window/addon_description.cfg:433 data/gui/window/addon_list.cfg:924
-msgid "Copy this URL to clipboard"
-msgstr "Cuir lethbhreac dhen URL dhan stòr-bhòrd"
-
-#. [button]: id=url_go
-#: data/gui/window/addon_description.cfg:446 data/gui/window/addon_list.cfg:937
-msgid "url^Go"
-msgstr "Siuthad"
-
-#. [button]: id=url_go
-#: data/gui/window/addon_description.cfg:447 data/gui/window/addon_list.cfg:938
-msgid "Visit this URL with a web browser"
-msgstr "Tadhail air an URL seo le brabhsair-lìn"
-
-#. [label]
-#: data/gui/window/addon_description.cfg:473 data/gui/window/addon_list.cfg:797
+#: data/gui/window/addon_manager.cfg:513
 msgid "Dependencies:"
 msgstr "Eisimeileachdan:"
 
 #. [scroll_label]: id=dependencies
-#: data/gui/window/addon_description.cfg:487 data/gui/window/addon_list.cfg:812
+#: data/gui/window/addon_manager.cfg:528
 msgid "addon_dependencies^None"
 msgstr "Gun eisimeileachd"
 
 #. [label]
-#: data/gui/window/addon_description.cfg:505 data/gui/window/addon_list.cfg:832
+#: data/gui/window/addon_manager.cfg:548
 msgid "Translations:"
 msgstr "Eadar-theangachaidhean:"
 
 #. [scroll_label]: id=translations
-#: data/gui/window/addon_description.cfg:519 data/gui/window/addon_list.cfg:847
+#: data/gui/window/addon_manager.cfg:563
 msgid "translations^None"
 msgstr "Gin"
 
-#. [row]
-#: data/gui/window/addon_filter_options.cfg:49
-msgid "addons_of_type^Campaigns"
-msgstr "Iomairtean"
-
-#. [row]
-#: data/gui/window/addon_filter_options.cfg:50
-msgid "addons_of_type^MP eras"
-msgstr "Linn IomChl"
-
-#. [row]
-#: data/gui/window/addon_filter_options.cfg:53
-msgid "addons_of_type^Scenarios"
-msgstr "Cnàmh-sgeul"
-
-#. [row]
-#: data/gui/window/addon_filter_options.cfg:54
-msgid "addons_of_type^MP factions"
-msgstr "Buidheann IomChl"
-
-#. [row]
-#: data/gui/window/addon_filter_options.cfg:57
-msgid "addons_of_type^SP/MP campaigns"
-msgstr "Iomairt AonChl/IomChl"
-
-#. [row]
-#: data/gui/window/addon_filter_options.cfg:58
-msgid "addons_of_type^MP campaigns"
-msgstr "Iomairt IomChl"
-
-#. [row]
-#: data/gui/window/addon_filter_options.cfg:61
-msgid "addons_of_type^Resources"
-msgstr "Goireasan"
-
-#. [row]
-#: data/gui/window/addon_filter_options.cfg:62
-msgid "addons_of_type^MP scenarios"
-msgstr "Cnàmh-sgeul IomChl"
-
-#. [row]
-#: data/gui/window/addon_filter_options.cfg:65
-msgid "addons_of_type^Cores"
-msgstr "Eitein"
-
-#. [row]
-#: data/gui/window/addon_filter_options.cfg:66
-msgid "addons_of_type^MP map-packs"
-msgstr "Pacaid-mapa IomChl"
-
-#. [row]
-#: data/gui/window/addon_filter_options.cfg:70
-msgid "addons_of_type^Other"
-msgstr "Eile"
-
-#. [row]
-#: data/gui/window/addon_filter_options.cfg:71
-msgid "addons_of_type^MP modifications"
-msgstr "Atharrachadh IomChl"
-
-#. [row]
-#: data/gui/window/addon_filter_options.cfg:74
-msgid "addons_of_type^Unknown"
-msgstr "Gun seòrsa"
-
 #. [label]
-#: data/gui/window/addon_filter_options.cfg:174
-msgid "Options"
-msgstr "Roghainnean"
+#: data/gui/window/addon_manager.cfg:582
+msgid "Website:"
+msgstr "Làrach-lìn:"
 
-#. [label]
-#: data/gui/window/addon_filter_options.cfg:188
-msgid "Add-ons matching the following criteria will be displayed."
+#. [label]: id=url_none
+#: data/gui/window/addon_manager.cfg:605
+msgid "url^None"
+msgstr "Gun làrach-lìn"
+
+#. [button]: id=url_copy
+#: data/gui/window/addon_manager.cfg:640
+msgid "url^Copy"
+msgstr "Dèan lethbhreac"
+
+#. [button]: id=url_copy
+#: data/gui/window/addon_manager.cfg:641
+msgid "Copy this URL to clipboard"
+msgstr "Cuir lethbhreac dhen URL dhan stòr-bhòrd"
+
+#. [button]: id=url_go
+#: data/gui/window/addon_manager.cfg:654
+msgid "url^Go"
+msgstr "Siuthad"
+
+#. [button]: id=url_go
+#: data/gui/window/addon_manager.cfg:655
+msgid "Visit this URL with a web browser"
+msgstr "Tadhail air an URL seo le brabhsair-lìn"
+
+#. [text_box]: id=filter
+#: data/gui/window/addon_manager.cfg:701
+msgid "Filters on addon descripton, version, type or author."
 msgstr ""
-"Thèid tuilleadain a shealltainn a cho-fhreagras ris na cuspairean a leanas."
 
 #. [label]
-#: data/gui/window/addon_filter_options.cfg:225
-#: data/gui/window/addon_list.cfg:1065
-msgid "Installation status:"
-msgstr "Staid an stàlaidh:"
+#: data/gui/window/addon_manager.cfg:713
+#, fuzzy
+#| msgid "Status:"
+msgid "State:"
+msgstr "Staid:"
 
 #. [label]
-#: data/gui/window/addon_filter_options.cfg:268
-msgid "Add-on types:"
-msgstr "Seòrsa nan tuilleadan:"
+#: data/gui/window/addon_manager.cfg:824
+#, fuzzy
+#| msgid "Add-ons"
+msgid "Get Add-ons"
+msgstr "Tuilleadain"
 
-#. [button]: id=toggle_all_displayed_types
-#: data/gui/window/addon_filter_options.cfg:281
-msgid "Toggle All"
-msgstr "Toglaich na h-uile"
+#. [button]: id=update_all
+#: data/gui/window/addon_manager.cfg:927
+#, fuzzy
+#| msgid "Update Add-ons"
+msgid "Update All"
+msgstr "Ùraich tuilleadain"
 
-#. [label]
-#: data/gui/window/addon_filter_options.cfg:325
-msgid "Add-ons will be sorted as follows when no column is selected:"
+#. [button]: id=cancel
+#: data/gui/window/addon_manager.cfg:941
+msgid "Exit"
 msgstr ""
-"Mar a thèid na tuilleadain a chur an òrdugh mur eil colbh air a thaghadh:"
-
-#. [row]
-#: data/gui/window/addon_filter_options.cfg:355
-msgid "sort^By name"
-msgstr "Le ainm"
-
-#. [row]
-#: data/gui/window/addon_filter_options.cfg:360
-msgid "sort^By last updated"
-msgstr "Leis an ùrachadh mu dheireadh"
-
-#. [row]
-#: data/gui/window/addon_filter_options.cfg:365
-msgid "sort^By first upload"
-msgstr "Leis a’ chiad luchdadh suas"
-
-#. [row]
-#: data/gui/window/addon_filter_options.cfg:381
-msgid "sort^Ascending"
-msgstr "A’ dìreadh"
-
-#. [row]
-#: data/gui/window/addon_filter_options.cfg:386
-msgid "sort^Descending"
-msgstr "A’ teàrnadh"
-
-#. [label]: id=name
-#. [toggle_button]: id=sort_0
-#. [toggle_button]: id=sort_1
-#: data/gui/window/addon_list.cfg:50 data/gui/window/game_load.cfg:312
-#: data/gui/window/mp_server_list.cfg:107 data/gui/window/unit_list.cfg:93
-#: data/gui/window/unit_recall.cfg:47
-msgid "Name"
-msgstr "Ainm"
-
-#. [label]
-#: data/gui/window/addon_list.cfg:65
-msgid "Version"
-msgstr "Tionndadh"
-
-#. [toggle_button]: id=sort_1
-#: data/gui/window/addon_list.cfg:79
-msgid "Author"
-msgstr "Ùghdar"
-
-#. [toggle_button]: id=sort_2
-#: data/gui/window/addon_list.cfg:93
-msgid "Size"
-msgstr "Meud"
-
-#. [toggle_button]: id=sort_3
-#: data/gui/window/addon_list.cfg:107
-msgid "Downloads"
-msgstr "Luchdaidhean a-nuas"
-
-#. [toggle_button]: id=sort_4
-#. [toggle_button]: id=sort_1
-#. [toggle_button]: id=sort_0
-#: data/gui/window/addon_list.cfg:121 data/gui/window/unit_create.cfg:161
-#: data/gui/window/unit_list.cfg:79 data/gui/window/unit_recall.cfg:33
-msgid "Type"
-msgstr "Seòrsa"
 
 #. [scroll_label]
 #: data/gui/window/addon_uninstall_list.cfg:70
@@ -2277,8 +2203,8 @@ msgstr "Sgèilichte dhan t-sia-cheàrnach"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/window/advanced_graphics_options.cfg:165
-#: data/gui/window/campaign_dialog.cfg:507
-#: data/gui/window/campaign_difficulty.cfg:239
+#: data/gui/window/campaign_dialog.cfg:374
+#: data/gui/window/campaign_difficulty.cfg:246
 #: data/gui/window/campaign_settings.cfg:322
 #: data/gui/window/core_dialog.cfg:227 data/gui/window/custom_tod.cfg:388
 #: data/gui/window/depcheck_select_new.cfg:151
@@ -2287,39 +2213,88 @@ msgstr "Sgèilichte dhan t-sia-cheàrnach"
 #: data/gui/window/editor_edit_scenario.cfg:287
 #: data/gui/window/editor_edit_side.cfg:443
 #: data/gui/window/editor_set_starting_position.cfg:162
-#: data/gui/window/file_dialog.cfg:440 data/gui/window/folder_create.cfg:119
-#: data/gui/window/game_load.cfg:520 data/gui/window/game_save.cfg:120
+#: data/gui/window/file_dialog.cfg:441 data/gui/window/folder_create.cfg:119
+#: data/gui/window/game_load.cfg:494 data/gui/window/game_save.cfg:120
 #: data/gui/window/label_settings.cfg:137
 #: data/gui/window/language_selection.cfg:148 data/gui/window/logging.cfg:159
 #: data/gui/window/mp_change_control.cfg:150
-#: data/gui/window/mp_create_game_set_password.cfg:132
 #: data/gui/window/mp_faction_select.cfg:379
 #: data/gui/window/mp_join_game_password_prompt.cfg:136
-#: data/gui/window/mp_login.cfg:242 data/gui/window/mp_method_selection.cfg:284
+#: data/gui/window/mp_login.cfg:243 data/gui/window/mp_method_selection.cfg:284
 #: data/gui/window/screenshot_notification.cfg:200
 #: data/gui/window/select_orb_colors.cfg:113
 #: data/gui/window/simple_item_selector.cfg:145
 #: data/gui/window/sp_options_configure.cfg:101
 #: data/gui/window/theme_list.cfg:159 data/gui/window/unit_advance.cfg:189
-#: data/gui/window/unit_create.cfg:293 data/gui/window/wml_error.cfg:162
-#: data/gui/window/wml_message.cfg:430 src/construct_dialog.cpp:127
-#: src/construct_dialog.cpp:134 src/gui/dialogs/message.cpp:174
-#: src/gui/dialogs/message.cpp:181
+#: data/gui/window/unit_create.cfg:268 data/gui/window/wml_error.cfg:162
+#: data/gui/window/wml_message.cfg:430 src/construct_dialog.cpp:128
+#: src/construct_dialog.cpp:135 src/gui/dialogs/message.cpp:180
+#: src/gui/dialogs/message.cpp:187
 msgid "OK"
 msgstr "Ceart ma-thà"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [label]: id=title
+#: data/gui/window/attack_predictions.cfg:184
+#: src/gui/dialogs/unit_attack.cpp:104
+msgid "Damage Calculations"
+msgstr "Cunntas dochainn"
+
 #. [label]
-#: data/gui/window/campaign_dialog.cfg:51
+#: data/gui/window/attack_predictions.cfg:229
+msgid "Base damage"
+msgstr ""
+
+#. [label]
+#: data/gui/window/attack_predictions.cfg:246
+#, fuzzy
+#| msgid "Modifications:"
+msgid "Modifiers"
+msgstr "Atharraichean:"
+
+#. [label]
+#: data/gui/window/attack_predictions.cfg:264
+msgid "Total damage"
+msgstr ""
+
+#. [label]
+#: data/gui/window/attack_predictions.cfg:280
+msgid "Chance of being unscathed"
+msgstr ""
+
+#. [column]
+#: data/gui/window/attack_predictions.cfg:296
+#, fuzzy
+#| msgid "Attack"
+msgid "Attacker"
+msgstr "Thoir ionnsaigh"
+
+#. [column]
+#: data/gui/window/attack_predictions.cfg:303
+#, fuzzy
+#| msgid "Gender:"
+msgid "Defender"
+msgstr "Gnè:"
+
+#. [label]
+#: data/gui/window/campaign_dialog.cfg:174
 msgid "Play a Campaign"
 msgstr "Cluich iomairt"
 
+#. [label]
+#: data/gui/window/campaign_dialog.cfg:224
+#, fuzzy
+#| msgid "Modifications:"
+msgid "Modifications"
+msgstr "Atharraichean:"
+
 #. [toggle_button]: id=checkbox_deterministic
-#: data/gui/window/campaign_dialog.cfg:490
+#: data/gui/window/campaign_dialog.cfg:357
 msgid "Deterministic mode"
 msgstr "Modh cinnteach"
 
 #. [toggle_button]: id=checkbox_deterministic
-#: data/gui/window/campaign_dialog.cfg:492
+#: data/gui/window/campaign_dialog.cfg:359
 msgid ""
 "Makes the random number generator yield the same results even after "
 "reloading a game"
@@ -2328,12 +2303,12 @@ msgstr ""
 "’s nuair a bhios tu air geama ath-luchdadh"
 
 #. [label]: id=title
-#: data/gui/window/campaign_difficulty.cfg:58
+#: data/gui/window/campaign_difficulty.cfg:63
 msgid "Difficulty"
 msgstr "Duilgheas"
 
 #. [scroll_label]: id=message
-#: data/gui/window/campaign_difficulty.cfg:78
+#: data/gui/window/campaign_difficulty.cfg:83
 msgid "Select difficulty level:"
 msgstr "Tagh ìre an duilgheis:"
 
@@ -2358,8 +2333,8 @@ msgid "Era:"
 msgstr "Linn:"
 
 #. [label]: id=mod_label
-#. [label]: id=mods_label
 #. [label]: id=mods_header
+#. [label]: id=mods_label
 #: data/gui/window/campaign_settings.cfg:246 data/gui/window/lobby_main.cfg:167
 #: data/gui/window/mp_create_game.cfg:203
 msgid "Modifications:"
@@ -2406,20 +2381,14 @@ msgstr "Air adhart"
 msgid "Next page"
 msgstr "An ath-dhuilleag"
 
-#. [label]
-#: data/gui/window/chat_log.cfg:132 data/gui/window/lobby_main.cfg:466
-#: data/gui/window/mp_create_game.cfg:664
-msgid "Filter:"
-msgstr "Criathrag:"
-
 #. [button]: id=copy
-#: data/gui/window/chat_log.cfg:196 data/gui/window/gamestate_inspector.cfg:335
+#: data/gui/window/chat_log.cfg:185 data/gui/window/gamestate_inspector.cfg:335
 #: data/gui/window/lua_interpreter.cfg:105 data/gui/window/wml_error.cfg:124
 msgid "clipboard^Copy"
 msgstr "Dèan lethbheac"
 
 #. [button]: id=copy
-#: data/gui/window/chat_log.cfg:197 data/gui/window/lua_interpreter.cfg:106
+#: data/gui/window/chat_log.cfg:186 data/gui/window/lua_interpreter.cfg:106
 msgid "Copy this log to clipboard"
 msgstr "Cuir lethbhreac dhen loga seo dhan stòr-bhòrd"
 
@@ -2454,7 +2423,8 @@ msgid "Metadata:"
 msgstr "Meata-dàta:"
 
 #. [button]: id=image_button
-#: data/gui/window/custom_tod.cfg:146
+#. [label]
+#: data/gui/window/custom_tod.cfg:146 data/gui/window/terrain_layers.cfg:33
 msgid "Image"
 msgstr "Dealbh"
 
@@ -2504,8 +2474,8 @@ msgstr "Sguab às àm an latha"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/depcheck_confirm_change.cfg:40
-#: src/gui/dialogs/file_dialog.cpp:315 src/gui/dialogs/file_dialog.cpp:739
-#: src/gui/widgets/label.cpp:180
+#: src/gui/dialogs/addon/manager.cpp:662 src/gui/dialogs/file_dialog.cpp:317
+#: src/gui/dialogs/file_dialog.cpp:741 src/gui/widgets/label.cpp:181
 msgid "Confirm"
 msgstr "Dearbhaich"
 
@@ -2521,8 +2491,8 @@ msgstr "A bheil thu airson na h-atharraichean a chur an sàs?"
 #: data/gui/window/game_save_message.cfg:139
 #: data/gui/window/game_save_oos.cfg:191
 #: data/gui/window/game_save_overwrite.cfg:96
-#: data/gui/window/mp_host_game_prompt.cfg:105 src/construct_dialog.cpp:130
-#: src/gui/dialogs/message.cpp:189
+#: data/gui/window/mp_host_game_prompt.cfg:105 src/construct_dialog.cpp:131
+#: src/gui/dialogs/message.cpp:195
 msgid "Yes"
 msgstr "Tha"
 
@@ -2533,8 +2503,8 @@ msgstr "Tha"
 #: data/gui/window/game_save_message.cfg:153
 #: data/gui/window/game_save_oos.cfg:205
 #: data/gui/window/game_save_overwrite.cfg:110
-#: data/gui/window/mp_host_game_prompt.cfg:118 src/construct_dialog.cpp:131
-#: src/gui/dialogs/message.cpp:192
+#: data/gui/window/mp_host_game_prompt.cfg:118 src/construct_dialog.cpp:132
+#: src/gui/dialogs/message.cpp:198
 msgid "No"
 msgstr "Chan eil"
 
@@ -2602,6 +2572,11 @@ msgstr "Deasaich roghainnean a’ chnàmh-sgeòil"
 #: data/gui/window/editor_edit_scenario.cfg:72
 msgid "Identifier:"
 msgstr "Aithnichear:"
+
+#. [label]
+#: data/gui/window/editor_edit_scenario.cfg:140
+msgid "Description:"
+msgstr "Tuairisgeul:"
 
 #. [label]
 #: data/gui/window/editor_edit_scenario.cfg:170
@@ -2730,17 +2705,17 @@ msgstr "Gin mapa"
 msgid "Choose a map generator:"
 msgstr "Tagh gineadair mapa:"
 
-#. [button]: id=settings
 #. [button]: id=random_map_settings
+#. [button]: id=settings
 #: data/gui/window/editor_generate_map.cfg:128
-#: data/gui/window/mp_create_game.cfg:889
+#: data/gui/window/mp_create_game.cfg:875
 msgid "Settings"
 msgstr "Roghainnean"
 
 #. [label]
 #: data/gui/window/editor_generate_map.cfg:161
-msgid "Seed:"
-msgstr "Sìol:"
+msgid "Numerical seed:"
+msgstr ""
 
 #. [button]: id=ok
 #: data/gui/window/editor_generate_map.cfg:202
@@ -2834,29 +2809,29 @@ msgid "Places"
 msgstr "Ionadan"
 
 #. [button]: id=add_bookmark
-#: data/gui/window/file_dialog.cfg:301
+#: data/gui/window/file_dialog.cfg:302
 msgid "Bookmarks the current folder"
 msgstr "Cuiridh seo am pasgan làithreach ris na comharran-leabhair"
 
 #. [button]: id=remove_bookmark
-#: data/gui/window/file_dialog.cfg:314
+#: data/gui/window/file_dialog.cfg:315
 msgid "Removes the current bookmark"
 msgstr "Bheir seo an comharra-leabhair làithreach air falbh"
 
 #. [button]: id=delete_file
 #. [button]: id=delete
-#: data/gui/window/file_dialog.cfg:341 data/gui/window/game_load.cfg:434
+#: data/gui/window/file_dialog.cfg:342 data/gui/window/game_load.cfg:408
 msgid "Delete"
 msgstr "Sguab às"
 
 #. [label]: id=title
 #. [button]: id=new_dir
-#: data/gui/window/file_dialog.cfg:354 data/gui/window/folder_create.cfg:43
+#: data/gui/window/file_dialog.cfg:355 data/gui/window/folder_create.cfg:43
 msgid "New Folder"
 msgstr "Pasgan ùr"
 
 #. [label]
-#: data/gui/window/file_dialog.cfg:393
+#: data/gui/window/file_dialog.cfg:394
 msgid "File:"
 msgstr "Faidhle:"
 
@@ -3014,52 +2989,45 @@ msgstr "Na seall seo a-rithist"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=load_game
 #. [label]: id=lblTitle
-#: data/gui/window/game_load.cfg:53 data/gui/window/mp_create_game.cfg:910
+#: data/gui/window/game_load.cfg:53 data/gui/window/mp_create_game.cfg:896
 #: src/hotkey/hotkey_command.cpp:72
 msgid "Load Game"
 msgstr "Luchdaich geama"
 
-#. [label]: id=lblFilter
-#. [label]
-#: data/gui/window/game_load.cfg:258 data/gui/window/unit_create.cfg:101
-#: data/gui/window/unit_recall.cfg:349
-msgid "Filter"
-msgstr "Criathrag"
-
 #. [toggle_button]: id=sort_1
-#: data/gui/window/game_load.cfg:326
+#: data/gui/window/game_load.cfg:300
 msgid "Date"
 msgstr "Ceann-latha"
 
 #. [toggle_button]: id=change_difficulty
-#: data/gui/window/game_load.cfg:417
+#: data/gui/window/game_load.cfg:391
 msgid "Change difficulty"
 msgstr "Atharraich an duilgheas"
 
 #. [toggle_button]: id=change_difficulty
-#: data/gui/window/game_load.cfg:418
+#: data/gui/window/game_load.cfg:392
 msgid "Change campaign difficulty before loading"
 msgstr "Atharraich duilgheas na h-iomairte ron luchdadh"
 
 #. [toggle_button]: id=show_replay
-#: data/gui/window/game_load.cfg:459
+#: data/gui/window/game_load.cfg:433
 msgid "Show replay"
 msgstr "Seall ath-chluiche"
 
 #. [toggle_button]: id=show_replay
-#: data/gui/window/game_load.cfg:460
+#: data/gui/window/game_load.cfg:434
 msgid "Play the embedded replay from the saved game if applicable"
 msgstr ""
 "Cluich an ath-chluiche am broinn a’ gheama air shàbhaladh ma tha seo "
 "iomchaidh"
 
 #. [toggle_button]: id=cancel_orders
-#: data/gui/window/game_load.cfg:479
+#: data/gui/window/game_load.cfg:453
 msgid "Cancel orders"
 msgstr "Sgur dhe na h-òrduighean"
 
 #. [toggle_button]: id=cancel_orders
-#: data/gui/window/game_load.cfg:480
+#: data/gui/window/game_load.cfg:454
 msgid "Cancel any pending unit movements in the saved game"
 msgstr ""
 "Sguir dhe ghluasad aonaid ri dhèanamh sam bith sa gheama air a shàbhaladh"
@@ -3183,7 +3151,7 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
-#: data/gui/window/game_stats.cfg:704 src/gui/dialogs/game_stats.cpp:255
+#: data/gui/window/game_stats.cfg:704 src/gui/dialogs/game_stats.cpp:256
 msgid "Current Status"
 msgstr "An staid an-dràsta"
 
@@ -3194,7 +3162,7 @@ msgstr "Stadastaireachd a’ gheama"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [widget]: id=tab_label
-#: data/gui/window/game_stats.cfg:792 src/gui/dialogs/game_stats.cpp:255
+#: data/gui/window/game_stats.cfg:792 src/gui/dialogs/game_stats.cpp:256
 msgid "Scenario Settings"
 msgstr "Roghainnean a’ chnàmh-sgeòil"
 
@@ -3323,7 +3291,7 @@ msgstr "Roghainnean gineadair mapa"
 #. [grid]
 #. [label]
 #: data/gui/window/generator_settings.cfg:105
-#: data/gui/window/mp_create_game.cfg:696
+#: data/gui/window/mp_create_game.cfg:682
 #: data/gui/window/mp_create_game/default_resolution.cfg:125
 #: data/gui/window/mp_create_game/small_resolution.cfg:142
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:132
@@ -3365,6 +3333,11 @@ msgstr "Rathaidean eadar caistealan"
 msgid "Show Labels"
 msgstr "Seall na leubailean"
 
+#. [label]
+#: data/gui/window/hotkey_bind.cfg:35
+msgid "Press desired hotkey (Esc cancels)"
+msgstr "Brùth air a’ ghar-iuchair a thogras tu (sguiridh Esc dheth)"
+
 #. [label]: id=title
 #: data/gui/window/label_settings.cfg:42
 msgid "Show or Hide Labels"
@@ -3393,7 +3366,7 @@ msgid "Games"
 msgstr "Geamaichean"
 
 #. [row]
-#: data/gui/window/lobby_main.cfg:215 data/gui/window/mp_create_game.cfg:941
+#: data/gui/window/lobby_main.cfg:215 data/gui/window/mp_create_game.cfg:927
 msgid "Assign sides to players at random"
 msgstr "Ainmich taobh nan cluicheadairean air thuaiream"
 
@@ -3439,15 +3412,15 @@ msgstr "Cuingealachadh ùine"
 
 #. [button]: id=join
 #. [button]: id=join_global
-#: data/gui/window/lobby_main.cfg:246 data/gui/window/lobby_main.cfg:596
-#: data/gui/window/lobby_main.cfg:751
+#: data/gui/window/lobby_main.cfg:246 data/gui/window/lobby_main.cfg:587
+#: data/gui/window/lobby_main.cfg:742
 msgid "Join"
 msgstr "Gabh ann"
 
 #. [button]: id=observe
 #. [button]: id=observe_global
-#: data/gui/window/lobby_main.cfg:259 data/gui/window/lobby_main.cfg:606
-#: data/gui/window/lobby_main.cfg:762
+#: data/gui/window/lobby_main.cfg:259 data/gui/window/lobby_main.cfg:597
+#: data/gui/window/lobby_main.cfg:753
 msgid "Observe"
 msgstr "Amhairc"
 
@@ -3468,40 +3441,40 @@ msgstr "Aibidealach"
 
 #. [widget]: id=tab_label
 #. [toggle_button]: id=filter_with_friends
-#: data/gui/window/lobby_main.cfg:486
+#: data/gui/window/lobby_main.cfg:477
 #: data/gui/window/preferences/05_multiplayer.cfg:443
 msgid "Friends"
 msgstr "Caraidean"
 
 #. [toggle_button]: id=filter_without_ignored
-#: data/gui/window/lobby_main.cfg:496
+#: data/gui/window/lobby_main.cfg:487
 msgid "No ignored"
 msgstr "Gun neach neo-shuime"
 
 #. [toggle_button]: id=filter_vacant_slots
-#: data/gui/window/lobby_main.cfg:506
+#: data/gui/window/lobby_main.cfg:497
 msgid "Vacant slots"
 msgstr "Slotaichean falamh"
 
 #. [toggle_button]: id=filter_invert
-#: data/gui/window/lobby_main.cfg:516
+#: data/gui/window/lobby_main.cfg:507
 msgid "Invert filter"
 msgstr "Ais-thionndaidh criathrag"
 
 #. [button]: id=quit
-#: data/gui/window/lobby_main.cfg:536 data/gui/window/lobby_main.cfg:706
+#: data/gui/window/lobby_main.cfg:527 data/gui/window/lobby_main.cfg:697
 msgid "Log Out"
 msgstr "Clàraich a-mach"
 
 #. [button]: id=refresh
-#: data/gui/window/lobby_main.cfg:546 data/gui/window/lobby_main.cfg:694
+#: data/gui/window/lobby_main.cfg:537 data/gui/window/lobby_main.cfg:685
 msgid "Refresh"
 msgstr "Ath-nuadhaich"
 
 #. [label]
 #. [button]: id=ok
 #. [button]: id=create
-#: data/gui/window/lobby_main.cfg:566 data/gui/window/lobby_main.cfg:740
+#: data/gui/window/lobby_main.cfg:557 data/gui/window/lobby_main.cfg:731
 #: data/gui/window/mp_create_game/default_resolution.cfg:38
 #: data/gui/window/mp_create_game/default_resolution.cfg:439
 #: data/gui/window/mp_create_game/small_resolution.cfg:39
@@ -3512,42 +3485,42 @@ msgid "Create Game"
 msgstr "Cruthaich geama"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=show_preferences
 #. [grid]
+#. [button]: id=show_preferences
 #. [label]: id=title
-#: data/gui/window/lobby_main.cfg:576 data/gui/window/lobby_main.cfg:729
+#: data/gui/window/lobby_main.cfg:567 data/gui/window/lobby_main.cfg:720
 #: data/gui/window/preferences.cfg:212 data/gui/window/title_screen.cfg:259
 #: src/hotkey/hotkey_command.cpp:88
 msgid "Preferences"
 msgstr "Roghainnean"
 
 #. [option]
-#: data/gui/window/lobby_main.cfg:625 data/gui/window/lobby_main.cfg:776
+#: data/gui/window/lobby_main.cfg:616 data/gui/window/lobby_main.cfg:767
 msgid "Normal Replays"
 msgstr "Ath-chluichean àbhaisteach"
 
 #. [option]
-#: data/gui/window/lobby_main.cfg:629 data/gui/window/lobby_main.cfg:780
+#: data/gui/window/lobby_main.cfg:620 data/gui/window/lobby_main.cfg:771
 msgid "Quick Replays"
 msgstr "Ath-chluichean luatha"
 
 #. [option]
-#: data/gui/window/lobby_main.cfg:630 data/gui/window/lobby_main.cfg:781
+#: data/gui/window/lobby_main.cfg:621 data/gui/window/lobby_main.cfg:772
 msgid "Skip quickly to the active turn when observing"
 msgstr "Leum gu luath dhan chuairt ghnìomhach nuair a bhios tu ag amharc"
 
 #. [option]
-#: data/gui/window/lobby_main.cfg:634 data/gui/window/lobby_main.cfg:785
+#: data/gui/window/lobby_main.cfg:625 data/gui/window/lobby_main.cfg:776
 msgid "Enter Blindfolded"
 msgstr "Thig a-steach ’nad dhallan"
 
 #. [option]
-#: data/gui/window/lobby_main.cfg:635 data/gui/window/lobby_main.cfg:786
+#: data/gui/window/lobby_main.cfg:626 data/gui/window/lobby_main.cfg:777
 msgid "Do not show the map until given control of a side"
 msgstr "Na seall am mapa mus faigh thu smachd air taobh"
 
 #. [label]
-#: data/gui/window/lobby_main.cfg:682 data/gui/window/lobby_main.cfg:867
+#: data/gui/window/lobby_main.cfg:673 data/gui/window/lobby_main.cfg:858
 msgid "Multiplayer Lobby"
 msgstr "Lobaidh ioma-chluicheadair"
 
@@ -3991,7 +3964,7 @@ msgstr "Ùine airson gach ionnsaigh, trusadh, is glacadh"
 #. [widget]: id=label
 #: data/gui/window/mp_create_game.cfg:533 data/gui/window/preferences.cfg:291
 #: data/gui/window/preferences/05_multiplayer.cfg:430
-#: src/gui/dialogs/preferences_dialog.cpp:685
+#: src/gui/dialogs/preferences_dialog.cpp:689
 msgid "General"
 msgstr "Coitcheann"
 
@@ -4006,65 +3979,62 @@ msgid "Game Settings"
 msgstr "Roghainnean a’ gheama"
 
 #. [slider]: id=num_players
-#: data/gui/window/mp_create_game.cfg:715
+#: data/gui/window/mp_create_game.cfg:701
 msgid "Any"
 msgstr "Gin sam bith"
 
 #. [label]
-#: data/gui/window/mp_create_game.cfg:847
+#: data/gui/window/mp_create_game.cfg:833
 msgid "Random map options: "
 msgstr "Roghainnean a’ mhapa air thuaiream: "
 
 #. [button]: id=random_map_regenerate
-#: data/gui/window/mp_create_game.cfg:868
+#: data/gui/window/mp_create_game.cfg:854
 msgid "Regenerate"
 msgstr "Ath-ghin"
 
-#: data/gui/window/mp_create_game.cfg:941
+#: data/gui/window/mp_create_game.cfg:927
 msgid "Shuffle Sides"
 msgstr "Measgaich na taobhan"
 
-#: data/gui/window/mp_create_game.cfg:945
+#: data/gui/window/mp_create_game.cfg:931
 msgid "Allow users who are not playing to watch the game"
 msgstr "Leig le cleachdaichean nach eil a’ cluiche coimhead air a’ gheama"
 
-#: data/gui/window/mp_create_game.cfg:945
+#: data/gui/window/mp_create_game.cfg:931
 msgid "Observers"
 msgstr "Amhairc"
 
-#: data/gui/window/mp_create_game.cfg:949
+#: data/gui/window/mp_create_game.cfg:935
 msgid "Allow only registered users to join the game"
 msgstr "Na leig ach le cleachdaichean clàraichte tighinn a-steach dhan gheama"
 
-#: data/gui/window/mp_create_game.cfg:949
+#: data/gui/window/mp_create_game.cfg:935
 msgid "Registered Users Only"
 msgstr "Cleachdaichean clàraichte a-mhàin"
 
-#: data/gui/window/mp_create_game.cfg:953
+#: data/gui/window/mp_create_game.cfg:939
 msgid "Strict Synchronization"
 msgstr "Sioncronachadh teann"
 
-#: data/gui/window/mp_create_game.cfg:953
+#: data/gui/window/mp_create_game.cfg:939
 msgid "Stricter checks for out-of-sync errors"
 msgstr "Dearbhadh nas teinne a thaobh mearachdan call sioncronachaidh"
 
 #. [label]
-#: data/gui/window/mp_create_game.cfg:969
+#: data/gui/window/mp_create_game.cfg:955
 msgid "Name of game:"
 msgstr "Ainm a’ gheama:"
 
 #. [label]
-#: data/gui/window/mp_create_game.cfg:1001
-#: data/gui/window/mp_create_game_set_password.cfg:90
+#: data/gui/window/mp_create_game.cfg:987
 #: data/gui/window/mp_join_game_password_prompt.cfg:90
-#: data/gui/window/mp_login.cfg:142
+#: data/gui/window/mp_login.cfg:143
 msgid "Password:"
 msgstr "Facal-faire:"
 
-#. [scroll_label]: id=message
 #. [text_box]: id=game_password
-#: data/gui/window/mp_create_game.cfg:1015
-#: data/gui/window/mp_create_game_set_password.cfg:61
+#: data/gui/window/mp_create_game.cfg:1001
 msgid ""
 "Set the password that people wanting to join your game as players must enter."
 msgstr ""
@@ -4078,11 +4048,6 @@ msgstr ""
 msgid "Map size:"
 msgstr "Meud a’ mhapa:"
 
-#. [label]: id=title
-#: data/gui/window/mp_create_game_set_password.cfg:42
-msgid "Set Password"
-msgstr "Suidhich facal-faire"
-
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:116
 msgid "Leader:"
@@ -4090,28 +4055,28 @@ msgstr "Ceannard:"
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:161
-#: data/gui/window/unit_create.cfg:229
+#: data/gui/window/unit_create.cfg:204
 msgid "Gender:"
 msgstr "Gnè:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [row]
 #: data/gui/window/mp_faction_select.cfg:167
-#: src/gui/dialogs/multiplayer/faction_select.cpp:139
+#: src/gui/dialogs/multiplayer/faction_select.cpp:143
 msgid "Random"
 msgstr "Air thuaiream"
 
 #. [row]
 #. [toggle_button]: id=male_toggle
 #: data/gui/window/mp_faction_select.cfg:169
-#: data/gui/window/unit_create.cfg:241
+#: data/gui/window/unit_create.cfg:216
 msgid "Male"
 msgstr "Fireann"
 
 #. [row]
 #. [toggle_button]: id=female_toggle
 #: data/gui/window/mp_faction_select.cfg:171
-#: data/gui/window/unit_create.cfg:253
+#: data/gui/window/unit_create.cfg:228
 msgid "Female"
 msgstr "Boireann"
 
@@ -4163,20 +4128,20 @@ msgstr "<b>Gnè:</b>"
 msgid "Connected Players"
 msgstr "Cluicheadairean ceangailte"
 
-#. [button]: id=ok
-#: data/gui/window/mp_join_game.cfg:419 data/gui/window/mp_staging.cfg:505
-msgid "I’m Ready"
-msgstr "Tha mi deiseil"
+#. [button]: id=cancel
+#: data/gui/window/mp_join_game.cfg:418
+msgid "Leave"
+msgstr ""
 
 #. [label]: id=title
-#: data/gui/window/mp_join_game.cfg:496 data/gui/window/mp_staging.cfg:631
+#: data/gui/window/mp_join_game.cfg:479 data/gui/window/mp_staging.cfg:631
 msgid "Game Lobby"
 msgstr "Lobaidh nan geama"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=status_label
-#: data/gui/window/mp_join_game.cfg:565 data/gui/window/mp_staging.cfg:700
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:431
+#: data/gui/window/mp_join_game.cfg:548 data/gui/window/mp_staging.cfg:700
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:447
 msgid "Waiting for players to join..."
 msgstr "A’ feitheamh gus an dig na cluicheadairean a-steach…"
 
@@ -4206,12 +4171,12 @@ msgid "Login:"
 msgstr "Log a-steach:"
 
 #. [toggle_button]: id=remember_password
-#: data/gui/window/mp_login.cfg:198
+#: data/gui/window/mp_login.cfg:199
 msgid "Save password to preferences (clear text)"
 msgstr "Sàbhail am facal-faire sna roghainnean (teacsa soilleir)"
 
 #. [button]: id=password_reminder
-#: data/gui/window/mp_login.cfg:256
+#: data/gui/window/mp_login.cfg:257
 msgid "Password Reminder"
 msgstr "Cuimhneachan facail-fhaire"
 
@@ -4221,7 +4186,7 @@ msgstr "Cuimhneachan facail-fhaire"
 #. [widget]: id=label
 #: data/gui/window/mp_method_selection.cfg:44
 #: data/gui/window/preferences.cfg:364 data/gui/window/title_screen.cfg:253
-#: src/gui/dialogs/game_load.cpp:317
+#: src/gui/dialogs/game_load.cpp:320
 msgid "Multiplayer"
 msgstr "Ioma-chluicheadair"
 
@@ -4282,9 +4247,14 @@ msgstr "Seòladh"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
-#: data/gui/window/mp_server_list.cfg:217 src/preferences_display.cpp:154
+#: data/gui/window/mp_server_list.cfg:217 src/preferences_display.cpp:153
 msgid "Select"
 msgstr "Tagh"
+
+#. [button]: id=ok
+#: data/gui/window/mp_staging.cfg:505
+msgid "I’m Ready"
+msgstr "Tha mi deiseil"
 
 #. [widget]: id=label
 #: data/gui/window/preferences.cfg:310
@@ -4910,6 +4880,45 @@ msgstr "Rèitich na roghainnean"
 msgid "Configure settings for the selected custom modifications."
 msgstr "Rèitich roghainnean nan atharraichean gnàthaichte a thagh thu."
 
+#. [label]
+#: data/gui/window/statistics_dialog.cfg:129
+#, fuzzy
+#| msgid "Image"
+msgid "Damage"
+msgstr "Dealbh"
+
+#. [label]
+#: data/gui/window/statistics_dialog.cfg:141
+msgid "Overall"
+msgstr ""
+
+#. [label]
+#: data/gui/window/statistics_dialog.cfg:153
+#, fuzzy
+#| msgid "Turn"
+msgid "This Turn"
+msgstr "Cuairt"
+
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [label]: id=title
+#: data/gui/window/statistics_dialog.cfg:432 src/hotkey/hotkey_command.cpp:91
+msgid "Statistics"
+msgstr "Staitistearachd"
+
+#. [widget]: id=tab_label
+#: data/gui/window/statistics_dialog.cfg:485
+#, fuzzy
+#| msgid "Scenarios"
+msgid "Scenario"
+msgstr "Cnàmh-sgeulan"
+
+#. [widget]: id=tab_label
+#: data/gui/window/statistics_dialog.cfg:498
+#, fuzzy
+#| msgid "Campaigns"
+msgid "Campaign"
+msgstr "Iomairtean"
+
 #. [label]: id=lblTitle
 #: data/gui/window/synced_choice_wait.cfg:40
 msgid "Waiting..."
@@ -4924,6 +4933,52 @@ msgstr "A’ feitheamh air às-chur cèin"
 #: data/gui/window/synced_choice_wait.cfg:96
 msgid "Quit game"
 msgstr "Fàg an geama"
+
+#. [label]
+#: data/gui/window/terrain_layers.cfg:21
+msgid "#"
+msgstr ""
+
+#. [label]
+#: data/gui/window/terrain_layers.cfg:57
+msgid "Loc"
+msgstr ""
+
+#. [label]
+#: data/gui/window/terrain_layers.cfg:69
+#, fuzzy
+#| msgid "player"
+msgid "Layer"
+msgstr "cluicheadair"
+
+#. [label]
+#: data/gui/window/terrain_layers.cfg:81
+msgid "Base.x"
+msgstr ""
+
+#. [label]
+#: data/gui/window/terrain_layers.cfg:93
+msgid "Base.y"
+msgstr ""
+
+#. [label]
+#: data/gui/window/terrain_layers.cfg:105
+#, fuzzy
+#| msgid "Centered"
+msgid "Center"
+msgstr "Meadhanaichte"
+
+#. [label]
+#: data/gui/window/terrain_layers.cfg:339
+#, fuzzy
+#| msgid "Draw Terrain Codes"
+msgid "Terrain Layers"
+msgstr "Seall còdaichean crutha-thìre"
+
+#. [label]
+#: data/gui/window/terrain_layers.cfg:384
+msgid "Flags"
+msgstr ""
 
 #. [label]
 #: data/gui/window/theme_list.cfg:51
@@ -4959,14 +5014,14 @@ msgstr "Tòisich oideachadh gus ionnsachadh mun gheama"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
-#: data/gui/window/title_screen.cfg:251 src/gui/dialogs/game_load.cpp:320
+#: data/gui/window/title_screen.cfg:251 src/gui/dialogs/game_load.cpp:323
 msgid "Tutorial"
 msgstr "Oideachadh"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #: data/gui/window/title_screen.cfg:252
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:96
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:98
 msgid "Campaigns"
 msgstr "Iomairtean"
 
@@ -5092,7 +5147,7 @@ msgid "Create Unit (Debug!)"
 msgstr "Cruthaich aonad (Dì-bhugaich!)"
 
 #. [toggle_button]: id=sort_0
-#: data/gui/window/unit_create.cfg:148
+#: data/gui/window/unit_create.cfg:123
 msgid "Race"
 msgstr "Cinneadh"
 
@@ -5122,8 +5177,8 @@ msgstr "PE"
 #. [toggle_button]: id=sort_6
 #. [toggle_button]: id=sort_4
 #: data/gui/window/unit_list.cfg:177 data/gui/window/unit_recall.cfg:89
-#: src/gui/widgets/unit_preview_pane.cpp:229
-#: src/gui/widgets/unit_preview_pane.cpp:371
+#: src/gui/widgets/unit_preview_pane.cpp:319
+#: src/gui/widgets/unit_preview_pane.cpp:459
 msgid "Traits"
 msgstr "Feartan"
 
@@ -5139,13 +5194,13 @@ msgid "Recall Unit"
 msgstr "Ais-ghairm aonad"
 
 #. [button]: id=dismiss
-#: data/gui/window/unit_recall.cfg:410
+#: data/gui/window/unit_recall.cfg:384
 msgid "Dismiss"
 msgstr "Cuir air falbh"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
-#: data/gui/window/unit_recall.cfg:444 src/hotkey/hotkey_command.cpp:75
+#: data/gui/window/unit_recall.cfg:418 src/hotkey/hotkey_command.cpp:75
 msgid "Recall"
 msgstr "Ais-ghairm"
 
@@ -5162,16 +5217,16 @@ msgstr "Trus"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/window/wml_error.cfg:40 src/gui/dialogs/message.cpp:206
-#: src/gui/dialogs/preferences_dialog.cpp:196
-#: src/gui/dialogs/transient_message.cpp:78
+#: data/gui/window/wml_error.cfg:40 src/gui/dialogs/message.cpp:212
+#: src/gui/dialogs/preferences_dialog.cpp:200
+#: src/gui/dialogs/transient_message.cpp:81
 msgid "Error"
 msgstr "Mearachd"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=details_heading
-#: data/gui/window/wml_error.cfg:112 src/gui/dialogs/lobby/lobby.cpp:903
-#: src/gui/dialogs/lobby/lobby.cpp:919 src/gui/dialogs/wml_error.cpp:194
+#: data/gui/window/wml_error.cfg:112 src/gui/dialogs/lobby/lobby.cpp:898
+#: src/gui/dialogs/lobby/lobby.cpp:914 src/gui/dialogs/wml_error.cpp:197
 msgid "Details:"
 msgstr "Fiosrachadh: "
 
@@ -5239,190 +5294,317 @@ msgstr "Freumh"
 msgid "operating_system^<unknown>"
 msgstr "<chan eil fhios>"
 
-#: src/font/marked-up_text.cpp:430
+#: src/font/marked-up_text.cpp:402
 msgid "The maximum text width is less than 1."
 msgstr "Tha an leud as motha dhe theacsa nas lugha na 1."
 
-#: src/font/text.cpp:781
+#: src/font/text.cpp:776
 msgid "The text contains invalid markup: "
 msgstr "Tha markup mì-dhligheach san teacsa seo: "
 
-#: src/game_preferences.cpp:417
+#: src/game_preferences.cpp:410
 msgid "No server has been defined."
 msgstr "Cha deach frithealaiche a shònrachadh."
 
-#: src/game_preferences.cpp:516
+#: src/game_preferences.cpp:509
 msgid "player"
 msgstr "cluicheadair"
 
-#: src/game_preferences.cpp:1051
+#: src/game_preferences.cpp:1044
 msgid "[%H:%M]"
 msgstr "[%H:%M]"
 
-#: src/game_preferences.cpp:1054
+#: src/game_preferences.cpp:1047
 msgid "[%I:%M %p]"
 msgstr "[%I:%M %p]"
 
-#: src/gui/core/canvas.cpp:600
+#: src/gui/core/canvas.cpp:596
 msgid "Line doesn't fit on canvas."
 msgstr "Tha an loidhne ro mhòr airson a’ chanabhais."
 
-#: src/gui/core/canvas.cpp:731
+#: src/gui/core/canvas.cpp:727
 msgid "Rectangle doesn't fit on canvas."
 msgstr "Tha an ceart-cheàrnachan ro mhòr airson a’ chanabhais."
 
-#: src/gui/core/canvas.cpp:851 src/gui/core/canvas.cpp:856
-#: src/gui/core/canvas.cpp:861 src/gui/core/canvas.cpp:867
+#: src/gui/core/canvas.cpp:847 src/gui/core/canvas.cpp:852
+#: src/gui/core/canvas.cpp:857 src/gui/core/canvas.cpp:863
 msgid "Circle doesn't fit on canvas."
 msgstr "Tha an cearcall ro mhòr airson a’ chanabhais."
 
-#: src/gui/core/canvas.cpp:1055 src/gui/core/canvas.cpp:1062
-#: src/gui/core/canvas.cpp:1072 src/gui/core/canvas.cpp:1079
+#: src/gui/core/canvas.cpp:1051 src/gui/core/canvas.cpp:1058
+#: src/gui/core/canvas.cpp:1068 src/gui/core/canvas.cpp:1075
 msgid "Image doesn't fit on canvas."
 msgstr "Tha an dealbh ro mhòr airson a’ chanabhais."
 
-#: src/gui/core/canvas.cpp:1307
+#: src/gui/core/canvas.cpp:1303
 msgid "Text has a font size of 0."
 msgstr "Tha meud-teacsa dhe 0 aig an teacsa."
 
-#: src/gui/core/canvas.cpp:1384
+#: src/gui/core/canvas.cpp:1380
 msgid "Text doesn't start on canvas."
 msgstr "Chan eil an teacsa a’ tòiseachadh air a’ chanabhas."
 
-#: src/gui/core/widget_definition.cpp:148 src/gui/core/window_builder.cpp:266
+#: src/gui/core/widget_definition.cpp:151 src/gui/core/window_builder.cpp:266
 msgid "No resolution defined."
 msgstr "Cha deach dùmhlachd-bhreacaidh a mhìneachadh."
 
-#: src/gui/core/window_builder.cpp:98
+#: src/gui/core/window_builder.cpp:99
 msgid "Linked '$id' group has multiple definitions."
 msgstr "Tha iomadh mìneachadh aig a’ bhuidheann ceangailte “$id|.”"
 
-#: src/gui/core/window_builder.cpp:407 src/gui/widgets/chatbox.cpp:746
-#: src/gui/widgets/listbox.cpp:806 src/gui/widgets/multi_page.cpp:216
-#: src/gui/widgets/panel.cpp:196 src/gui/widgets/scroll_label.cpp:197
-#: src/gui/widgets/scrollbar_panel.cpp:99
-#: src/gui/widgets/stacked_widget.cpp:200 src/gui/widgets/toggle_panel.cpp:421
-#: src/gui/widgets/tree_view.cpp:312 src/gui/widgets/unit_preview_pane.cpp:459
+#: src/gui/core/window_builder.cpp:407 src/gui/widgets/addon_list.cpp:355
+#: src/gui/widgets/chatbox.cpp:745 src/gui/widgets/listbox.cpp:826
+#: src/gui/widgets/multi_page.cpp:216 src/gui/widgets/panel.cpp:199
+#: src/gui/widgets/scroll_label.cpp:198 src/gui/widgets/scrollbar_panel.cpp:99
+#: src/gui/widgets/size_lock.cpp:99 src/gui/widgets/stacked_widget.cpp:200
+#: src/gui/widgets/toggle_panel.cpp:421 src/gui/widgets/tree_view.cpp:314
+#: src/gui/widgets/unit_preview_pane.cpp:551
 msgid "No grid defined."
 msgstr "Cha deach griod a mhìneachadh."
 
-#: src/gui/core/window_builder.cpp:439
-msgid "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
-msgstr ""
-"Tha iuchair “fixed_width” no “fixed_height” a dhìth air a’ bhuidheann "
-"ceangailte “$id|.”"
-
-#: src/gui/core/window_builder.cpp:553
+#: src/gui/core/window_builder.cpp:531
 msgid "A row must have a column."
 msgstr "Feumaidh colbh a bhith aig ràgh."
 
-#: src/gui/core/window_builder.cpp:554
+#: src/gui/core/window_builder.cpp:532
 msgid "Number of columns differ."
 msgstr "Cha àireamhan eadar-dhealaichte dhe cholbhan ann."
 
-#: src/gui/dialogs/addon/description.cpp:110 src/gui/dialogs/addon/list.cpp:222
-#: src/gui/dialogs/addon/list.cpp:262
+#: src/gui/dialogs/addon/manager.cpp:222
+msgid "addons_view^All Add-ons"
+msgstr "Na h-uile"
+
+#: src/gui/dialogs/addon/manager.cpp:223
+msgid "addons_view^Installed"
+msgstr "Air a stàladh"
+
+#: src/gui/dialogs/addon/manager.cpp:224
+msgid "addons_view^Upgradable"
+msgstr "Gabhaidh e ùrachadh"
+
+#: src/gui/dialogs/addon/manager.cpp:225
+msgid "addons_view^Not Installed"
+msgstr "Gun stàladh"
+
+#: src/gui/dialogs/addon/manager.cpp:229
+msgid "addons_of_type^Campaigns"
+msgstr "Iomairtean"
+
+#: src/gui/dialogs/addon/manager.cpp:230
+msgid "addons_of_type^Scenarios"
+msgstr "Cnàmh-sgeul"
+
+#: src/gui/dialogs/addon/manager.cpp:231
+msgid "addons_of_type^SP/MP campaigns"
+msgstr "Iomairt AonChl/IomChl"
+
+#: src/gui/dialogs/addon/manager.cpp:232
+msgid "addons_of_type^MP campaigns"
+msgstr "Iomairt IomChl"
+
+#: src/gui/dialogs/addon/manager.cpp:233
+msgid "addons_of_type^MP scenarios"
+msgstr "Cnàmh-sgeul IomChl"
+
+#: src/gui/dialogs/addon/manager.cpp:234
+msgid "addons_of_type^MP map-packs"
+msgstr "Pacaid-mapa IomChl"
+
+#: src/gui/dialogs/addon/manager.cpp:235
+msgid "addons_of_type^MP eras"
+msgstr "Linn IomChl"
+
+#: src/gui/dialogs/addon/manager.cpp:236
+msgid "addons_of_type^MP factions"
+msgstr "Buidheann IomChl"
+
+#: src/gui/dialogs/addon/manager.cpp:237
+msgid "addons_of_type^MP modifications"
+msgstr "Atharrachadh IomChl"
+
+#: src/gui/dialogs/addon/manager.cpp:238
+msgid "addons_of_type^Cores"
+msgstr "Eitein"
+
+#: src/gui/dialogs/addon/manager.cpp:239
+msgid "addons_of_type^Resources"
+msgstr "Goireasan"
+
+#: src/gui/dialogs/addon/manager.cpp:241
+msgid "addons_of_type^Other"
+msgstr "Eile"
+
+#: src/gui/dialogs/addon/manager.cpp:242
+msgid "addons_of_type^Unknown"
+msgstr "Gun seòrsa"
+
+#: src/gui/dialogs/addon/manager.cpp:277 src/gui/widgets/addon_list.cpp:83
 msgid "addon_state^Not installed"
 msgstr "Gun stàladh"
 
-#: src/gui/dialogs/addon/description.cpp:112 src/gui/dialogs/addon/list.cpp:222
-#: src/gui/dialogs/addon/list.cpp:264
+#: src/gui/dialogs/addon/manager.cpp:278 src/gui/widgets/addon_list.cpp:83
 msgid "addon_state^Published, not installed"
 msgstr "Foillsichte, gun stàladh"
 
-#: src/gui/dialogs/addon/description.cpp:117 src/gui/dialogs/addon/list.cpp:230
-#: src/gui/dialogs/addon/list.cpp:269
+#: src/gui/dialogs/addon/manager.cpp:282 src/gui/widgets/addon_list.cpp:91
 msgid "addon_state^Installed"
 msgstr "Air a stàladh"
 
-#: src/gui/dialogs/addon/description.cpp:119 src/gui/dialogs/addon/list.cpp:230
-#: src/gui/dialogs/addon/list.cpp:271
+#: src/gui/dialogs/addon/manager.cpp:283 src/gui/widgets/addon_list.cpp:91
 msgid "addon_state^Published"
 msgstr "Foillsichte"
 
-#: src/gui/dialogs/addon/description.cpp:124 src/gui/dialogs/addon/list.cpp:276
+#: src/gui/dialogs/addon/manager.cpp:287
 msgid "addon_state^Installed, not tracking local version"
 msgstr "Air a stàladh, gun tracadh an tionndaidh ionadail"
 
-#: src/gui/dialogs/addon/description.cpp:128 src/gui/dialogs/addon/list.cpp:280
+#: src/gui/dialogs/addon/manager.cpp:290
 msgid "addon_state^Published, not tracking local version"
 msgstr "Foillsichte, gun tracadh an tionndaidh ionadail"
 
-#: src/gui/dialogs/addon/description.cpp:134 src/gui/dialogs/addon/list.cpp:286
+#: src/gui/dialogs/addon/manager.cpp:294
 msgid "addon_state^Installed ($local_version|), upgradable"
 msgstr "($local_version|) air a stàladh, gabhaidh e ùrachadh"
 
-#: src/gui/dialogs/addon/description.cpp:136 src/gui/dialogs/addon/list.cpp:288
+#: src/gui/dialogs/addon/manager.cpp:295
 msgid "addon_state^Published ($local_version| installed), upgradable"
 msgstr "($local_version| air a stàladh), gabhaidh e ùrachadh"
 
-#: src/gui/dialogs/addon/description.cpp:143 src/gui/dialogs/addon/list.cpp:295
+#: src/gui/dialogs/addon/manager.cpp:301
 msgid "addon_state^Installed ($local_version|), outdated on server"
 msgstr "($local_version|) air a stàladh, ro shean air an fhrithealaiche"
 
-#: src/gui/dialogs/addon/description.cpp:145 src/gui/dialogs/addon/list.cpp:297
+#: src/gui/dialogs/addon/manager.cpp:302
 msgid "addon_state^Published ($local_version| installed), outdated on server"
 msgstr "($local_version| air a stàladh), ro shean air an fhrithealaiche"
 
-#: src/gui/dialogs/addon/description.cpp:151 src/gui/dialogs/addon/list.cpp:242
-#: src/gui/dialogs/addon/list.cpp:303
+#: src/gui/dialogs/addon/manager.cpp:308 src/gui/widgets/addon_list.cpp:94
+#, fuzzy
+#| msgid "addon_state^Installed, outdated on server"
+msgid "addon_state^Installed, not ready to publish"
+msgstr "Air a stàladh, ro shean air an fhrithealaiche"
+
+#: src/gui/dialogs/addon/manager.cpp:309 src/gui/widgets/addon_list.cpp:94
+#, fuzzy
+#| msgid "addon_state^Published"
+msgid "addon_state^Ready to publish"
+msgstr "Foillsichte"
+
+#: src/gui/dialogs/addon/manager.cpp:313 src/gui/widgets/addon_list.cpp:106
 msgid "addon_state^Installed, broken"
 msgstr "Air a stàladh, briste"
 
-#: src/gui/dialogs/addon/description.cpp:153 src/gui/dialogs/addon/list.cpp:242
-#: src/gui/dialogs/addon/list.cpp:305
+#: src/gui/dialogs/addon/manager.cpp:314 src/gui/widgets/addon_list.cpp:106
 msgid "addon_state^Published, broken"
 msgstr "Foillsichte, briste"
 
-#: src/gui/dialogs/addon/description.cpp:157 src/gui/dialogs/addon/list.cpp:246
-#: src/gui/dialogs/addon/list.cpp:309
+#: src/gui/dialogs/addon/manager.cpp:317 src/gui/widgets/addon_list.cpp:110
 msgid "addon_state^Unknown"
 msgstr "Chan eil fios"
 
-#: src/gui/dialogs/addon/description.cpp:393 src/gui/dialogs/addon/list.cpp:397
-#: src/gui/dialogs/chat_log.cpp:419 src/gui/dialogs/game_cache_options.cpp:104
-#: src/gui/dialogs/game_version.cpp:186
-#: src/gui/dialogs/gamestate_inspector.cpp:426
-#: src/gui/dialogs/lua_interpreter.cpp:479
-#: src/gui/dialogs/screenshot_notification.cpp:94
-#: src/gui/dialogs/wml_error.cpp:226
+#: src/gui/dialogs/addon/manager.cpp:382 src/gui/dialogs/chat_log.cpp:423
+#: src/gui/dialogs/game_cache_options.cpp:106
+#: src/gui/dialogs/game_version.cpp:188
+#: src/gui/dialogs/gamestate_inspector.cpp:429
+#: src/gui/dialogs/lua_interpreter.cpp:483
+#: src/gui/dialogs/screenshot_notification.cpp:96
+#: src/gui/dialogs/wml_error.cpp:229
 msgid "Clipboard support not found, contact your packager"
 msgstr ""
 "Cha do lorg sinn taic ris an stòr-bhòrd, cuir fios gun neach-pacaididh agad"
 
-#: src/gui/dialogs/addon/filter_options.cpp:275
-msgid "addons_view^Not Installed"
-msgstr "Gun stàladh"
+#: src/gui/dialogs/addon/manager.cpp:444
+msgid "An error occurred while downloading the add-ons list from the server."
+msgstr ""
 
-#: src/gui/dialogs/addon/filter_options.cpp:277
-msgid "addons_view^Upgradable"
-msgstr "Gabhaidh e ùrachadh"
+#: src/gui/dialogs/addon/manager.cpp:471
+#, fuzzy
+#| msgid "No description available"
+msgid "No Add-ons Available"
+msgstr "Chan eil tuairisgeul ri fhaighinn"
 
-#: src/gui/dialogs/addon/filter_options.cpp:279
-msgid "addons_view^Installed"
-msgstr "Air a stàladh"
+#: src/gui/dialogs/addon/manager.cpp:471
+msgid "There are no add-ons available for download from this server."
+msgstr ""
 
-#: src/gui/dialogs/addon/filter_options.cpp:281
-msgid "addons_view^All Add-ons"
-msgstr "Na h-uile"
+#: src/gui/dialogs/addon/manager.cpp:578
+msgid ""
+"The following add-on appears to have publishing or version control "
+"information stored locally, and will not be removed:"
+msgstr ""
 
-#: src/gui/dialogs/addon/list.cpp:234
-msgid "addon_state^Installed, upgradable"
-msgstr "Air a stàladh, gabhaidh àrdachadh"
+#: src/gui/dialogs/addon/manager.cpp:586
+msgid "The following add-on could not be deleted properly:"
+msgstr ""
 
-#: src/gui/dialogs/addon/list.cpp:234
-msgid "addon_state^Published, upgradable"
-msgstr "Foillsichte, gabhaidh àrdachadh"
+#: src/gui/dialogs/addon/manager.cpp:628
+msgid "Warning"
+msgstr "Rabhadh"
 
-#: src/gui/dialogs/addon/list.cpp:238
-msgid "addon_state^Installed, outdated on server"
-msgstr "Air a stàladh, ro shean air an fhrithealaiche"
+#: src/gui/dialogs/addon/manager.cpp:629
+msgid ""
+"The remote version of this add-on is greater or equal to the version being "
+"uploaded. Do you really wish to continue?"
+msgstr ""
 
-#: src/gui/dialogs/addon/list.cpp:238
-msgid "addon_state^Published, outdated on server"
-msgstr "Foillsichte, ro shean air an fhrithealaiche"
+#: src/gui/dialogs/addon/manager.cpp:638
+msgid "Invalid icon path. Make sure the path points to a valid image."
+msgstr ""
 
-#: src/gui/dialogs/campaign_settings.cpp:121
+#: src/gui/dialogs/addon/manager.cpp:641 src/gui/dialogs/addon/manager.cpp:645
+#: src/gui/dialogs/addon/manager.cpp:670
+msgid "The server responded with an error:"
+msgstr ""
+
+#: src/gui/dialogs/addon/manager.cpp:642
+msgid "Terms"
+msgstr ""
+
+#: src/gui/dialogs/addon/manager.cpp:647 src/gui/dialogs/addon/manager.cpp:673
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:450
+msgid "Response"
+msgstr "Freagairt"
+
+#: src/gui/dialogs/addon/manager.cpp:657
+msgid ""
+"Deleting '$addon|' will permanently erase its download and upload counts on "
+"the add-ons server. Do you really wish to continue?"
+msgstr ""
+
+#: src/gui/dialogs/addon/manager.cpp:737 src/gui/dialogs/addon/manager.cpp:751
+#: src/gui/dialogs/campaign_selection.cpp:187
+#, fuzzy
+#| msgid "url^None"
+msgid "None"
+msgstr "Gun làrach-lìn"
+
+#: src/gui/dialogs/advanced_graphics_options.cpp:75
+msgid "No matching widget found for scaling option"
+msgstr ""
+
+#: src/gui/dialogs/attack_predictions.cpp:136
+#, fuzzy
+#| msgid "Switch Time of Day"
+msgid "Time of day"
+msgstr "Atharraich àm an latha"
+
+#: src/gui/dialogs/attack_predictions.cpp:146
+#, fuzzy
+#| msgid "Leader"
+msgid "Leadership"
+msgstr "Ceannard"
+
+#: src/gui/dialogs/attack_predictions.cpp:167
+msgid "Slowed"
+msgstr ""
+
+#: src/gui/dialogs/attack_predictions.cpp:193
+#, fuzzy
+#| msgid "Choose weapon:"
+msgid "No usable weapon"
+msgstr "Tagh arm:"
+
+#: src/gui/dialogs/campaign_settings.cpp:123
 msgid ""
 "Era:\n"
 "\n"
@@ -5432,7 +5614,7 @@ msgstr ""
 "\n"
 "Chan eil e ceadaichte."
 
-#: src/gui/dialogs/campaign_settings.cpp:146
+#: src/gui/dialogs/campaign_settings.cpp:148
 msgid ""
 "Modifications:\n"
 "\n"
@@ -5442,17 +5624,17 @@ msgstr ""
 "\n"
 "Cha deach gin a lorg."
 
-#: src/gui/dialogs/depcheck_confirm_change.cpp:64
+#: src/gui/dialogs/depcheck_confirm_change.cpp:66
 msgid "$requester requires the following modifications to be enabled:"
 msgstr ""
 "Tha $requester ag iarraidh gun cuir thu na h-atharraichean seo an comas:"
 
-#: src/gui/dialogs/depcheck_confirm_change.cpp:68
+#: src/gui/dialogs/depcheck_confirm_change.cpp:70
 msgid "$requester requires the following modifications to be disabled:"
 msgstr ""
 "Tha $requester ag iarraidh gun cuir thu na h-atharraichean seo à comas:"
 
-#: src/gui/dialogs/depcheck_select_new.cpp:71
+#: src/gui/dialogs/depcheck_select_new.cpp:73
 msgid ""
 "The currently chosen scenario is not compatible with your setup.\n"
 "Please select a compatible one."
@@ -5460,7 +5642,7 @@ msgstr ""
 "Chan eil an cnàmh-sgeul a thagh thu co-chòrdail ris an rèiteachadh agad.\n"
 "Feuch an tagh thu fear co-chòrdail."
 
-#: src/gui/dialogs/depcheck_select_new.cpp:76
+#: src/gui/dialogs/depcheck_select_new.cpp:78
 msgid ""
 "The currently chosen era is not compatible with your setup.\n"
 "Please select a compatible one."
@@ -5468,7 +5650,7 @@ msgstr ""
 "Chan eil an linn a thagh thu co-chòrdail ris an rèiteachadh agad.\n"
 "Feuch an tagh thu fear co-chòrdail."
 
-#: src/gui/dialogs/depcheck_select_new.cpp:82
+#: src/gui/dialogs/depcheck_select_new.cpp:84
 msgid ""
 "The currently chosen modification is not compatible with your setup.\n"
 "Please select a compatible one."
@@ -5476,48 +5658,48 @@ msgstr ""
 "Chan eil an t-atharrachadh a thagh thu co-chòrdail ris an rèiteachadh agad.\n"
 "Feuch an tagh thu fear co-chòrdail."
 
-#: src/gui/dialogs/editor/generator_settings.cpp:65
+#: src/gui/dialogs/editor/generator_settings.cpp:67
 msgid "/1000 tiles"
 msgstr "/1000 leacan"
 
-#: src/gui/dialogs/editor/generator_settings.cpp:68
+#: src/gui/dialogs/editor/generator_settings.cpp:70
 msgid "Coastal"
 msgstr "Oirthir"
 
-#: src/gui/dialogs/editor/generator_settings.cpp:68
+#: src/gui/dialogs/editor/generator_settings.cpp:70
 msgid "Inland"
 msgstr "Meadhan tìre"
 
-#: src/gui/dialogs/editor/generator_settings.cpp:68
+#: src/gui/dialogs/editor/generator_settings.cpp:70
 msgid "Island"
 msgstr "Eilean"
 
-#: src/gui/dialogs/file_dialog.cpp:108
+#: src/gui/dialogs/file_dialog.cpp:110
 msgid "Find File"
 msgstr "Lorg faidhle"
 
-#: src/gui/dialogs/file_dialog.cpp:184
+#: src/gui/dialogs/file_dialog.cpp:186
 msgid "Open"
 msgstr "Fosgail"
 
-#: src/gui/dialogs/file_dialog.cpp:184
+#: src/gui/dialogs/file_dialog.cpp:186
 msgid "Save"
 msgstr "Sàbhail"
 
-#: src/gui/dialogs/file_dialog.cpp:314
+#: src/gui/dialogs/file_dialog.cpp:316
 msgid "The file already exists. Do you wish to overwrite it?"
 msgstr ""
 "Tha am faidhle ann mu thràth. A bheil thu airson sgrìobhadh thairis air?"
 
-#: src/gui/dialogs/file_dialog.cpp:338
+#: src/gui/dialogs/file_dialog.cpp:340
 msgid "The file or folder $path cannot be created."
 msgstr "Chan urrainn dhuinn am faidhle no pasgan “$path” a chruthachadh."
 
-#: src/gui/dialogs/file_dialog.cpp:343
+#: src/gui/dialogs/file_dialog.cpp:345
 msgid "The file or folder $path does not exist."
 msgstr "Chan eil am faidhle no pasgan $path ann."
 
-#: src/gui/dialogs/file_dialog.cpp:717
+#: src/gui/dialogs/file_dialog.cpp:719
 msgid ""
 "Could not create a new folder at $path|. Make sure you have the appropriate "
 "permissions to write to this location."
@@ -5525,20 +5707,20 @@ msgstr ""
 "Cha b’ urrainn dhuinn pasgan ùr a chruthachadh aig $path|. Dèan cinnteach gu "
 "bheil na ceadan iomchaidh agad gus sgrìobhadh dhan ionad sin."
 
-#: src/gui/dialogs/file_dialog.cpp:735
+#: src/gui/dialogs/file_dialog.cpp:737
 msgid "The following folder and its contents will be permanently deleted:"
 msgstr ""
 "Thèid am pasgan seo agus an t-susbaint gu lèir aige a sguabadh as gu buan:"
 
-#: src/gui/dialogs/file_dialog.cpp:736
+#: src/gui/dialogs/file_dialog.cpp:738
 msgid "The following file will be permanently deleted:"
 msgstr "Thèid am faidhle seo a sguabadh as gu buan:"
 
-#: src/gui/dialogs/file_dialog.cpp:737
+#: src/gui/dialogs/file_dialog.cpp:739
 msgid "Do you wish to continue?"
 msgstr "A bheil thu airson leantainn air adhart?"
 
-#: src/gui/dialogs/file_dialog.cpp:749
+#: src/gui/dialogs/file_dialog.cpp:751
 msgid ""
 "Could not delete $path|. Make sure you have the appropriate permissions to "
 "write to this location."
@@ -5546,232 +5728,232 @@ msgstr ""
 "Cha b’ urrainn dhuinn $path| a sguabadh às. Dèan cinnteach gu bheil na "
 "ceadan iomchaidh agad gus sgrìobhadh dhan ionad sin."
 
-#: src/gui/dialogs/folder_create.cpp:58
+#: src/gui/dialogs/folder_create.cpp:60
 msgid "New Bookmark"
 msgstr "Comharra-leabhair ùr"
 
-#: src/gui/dialogs/game_cache_options.cpp:138
+#: src/gui/dialogs/game_cache_options.cpp:140
 msgid "dir_size^Unknown"
 msgstr "Chan eil fios"
 
-#: src/gui/dialogs/game_cache_options.cpp:140
-#: src/gui/dialogs/network_transmission.cpp:54
-#: src/gui/dialogs/network_transmission.cpp:55
-#: src/gui/dialogs/screenshot_notification.cpp:73
+#: src/gui/dialogs/game_cache_options.cpp:142
+#: src/gui/dialogs/network_transmission.cpp:56
+#: src/gui/dialogs/network_transmission.cpp:57
+#: src/gui/dialogs/screenshot_notification.cpp:75
 msgid "unit_byte^B"
 msgstr "B"
 
-#: src/gui/dialogs/game_cache_options.cpp:163
+#: src/gui/dialogs/game_cache_options.cpp:165
 msgid "Cache Cleaned"
 msgstr "Chaidh an tasgadan a ghlanadh"
 
-#: src/gui/dialogs/game_cache_options.cpp:164
+#: src/gui/dialogs/game_cache_options.cpp:166
 msgid "The game data cache has been cleaned."
 msgstr "Chaidh tasgadan dàta a’ gheama a ghlanadh."
 
-#: src/gui/dialogs/game_cache_options.cpp:167
+#: src/gui/dialogs/game_cache_options.cpp:169
 msgid "The game data cache could not be completely cleaned."
 msgstr "Cha b’ urrainn dhuinn tasgadan dàta a’ gheama a ghlanadh gu tur."
 
-#: src/gui/dialogs/game_cache_options.cpp:183
+#: src/gui/dialogs/game_cache_options.cpp:185
 msgid "Cache Purged"
 msgstr "Chaidh an tasgadan a phurgaidicheadh"
 
-#: src/gui/dialogs/game_cache_options.cpp:184
+#: src/gui/dialogs/game_cache_options.cpp:186
 msgid "The game data cache has been purged."
 msgstr "Chaidh tasgadan dàta a’ gheama a phurgaidicheadh."
 
-#: src/gui/dialogs/game_cache_options.cpp:187
+#: src/gui/dialogs/game_cache_options.cpp:189
 msgid "The game data cache could not be purged."
 msgstr "Cha b’ urrainn dhuinn tasgadan dàta a’ gheama a phurgaidicheadh."
 
-#: src/gui/dialogs/game_load.cpp:281
+#: src/gui/dialogs/game_load.cpp:284
 msgid "(Invalid)"
 msgstr "(Mì-dhligheach)"
 
-#: src/gui/dialogs/game_load.cpp:308
+#: src/gui/dialogs/game_load.cpp:311
 msgid "Campaign: $campaign_name"
 msgstr "Iomairt: $campaign_name"
 
-#: src/gui/dialogs/game_load.cpp:323
+#: src/gui/dialogs/game_load.cpp:326
 msgid "Test scenario"
 msgstr "Deuchainn air cnàmh-sgeul"
 
-#: src/gui/dialogs/game_load.cpp:333
+#: src/gui/dialogs/game_load.cpp:336
 msgid "Replay"
 msgstr "Ath-chluich"
 
-#: src/gui/dialogs/game_load.cpp:335
+#: src/gui/dialogs/game_load.cpp:338
 msgid "Turn"
 msgstr "Cuairt"
 
-#: src/gui/dialogs/game_load.cpp:337
+#: src/gui/dialogs/game_load.cpp:340
 msgid "Scenario start"
 msgstr "Tòisich cnàmh-sgeul"
 
-#: src/gui/dialogs/game_load.cpp:340
+#: src/gui/dialogs/game_load.cpp:343
 msgid "Difficulty: "
 msgstr "Duilgheas: "
 
-#: src/gui/dialogs/game_load.cpp:344
+#: src/gui/dialogs/game_load.cpp:347
 msgid "Version: "
 msgstr "Tionndadh: "
 
-#: src/gui/dialogs/game_stats.cpp:108 src/gui/dialogs/label_settings.cpp:67
+#: src/gui/dialogs/game_stats.cpp:109 src/gui/dialogs/label_settings.cpp:72
 msgid "Unknown"
 msgstr "Neo-aithnichte"
 
-#: src/gui/dialogs/game_stats.cpp:194 src/gui/dialogs/game_stats.cpp:197
-#: src/gui/dialogs/preferences_dialog.cpp:575
+#: src/gui/dialogs/game_stats.cpp:195 src/gui/dialogs/game_stats.cpp:198
+#: src/gui/dialogs/preferences_dialog.cpp:579
 msgid "no"
 msgstr "dheth"
 
-#: src/gui/dialogs/game_stats.cpp:194 src/gui/dialogs/game_stats.cpp:197
-#: src/gui/dialogs/preferences_dialog.cpp:575
+#: src/gui/dialogs/game_stats.cpp:195 src/gui/dialogs/game_stats.cpp:198
+#: src/gui/dialogs/preferences_dialog.cpp:579
 msgid "yes"
 msgstr "air"
 
-#: src/gui/dialogs/game_version.cpp:137
+#: src/gui/dialogs/game_version.cpp:139
 msgid "Version $version"
 msgstr "Tionndadh $version"
 
-#: src/gui/dialogs/game_version.cpp:141
+#: src/gui/dialogs/game_version.cpp:143
 msgid "Running on $os"
 msgstr "’Ga ruith air $os"
 
-#: src/gui/dialogs/game_version.cpp:226
+#: src/gui/dialogs/game_version.cpp:228
 msgid "version^N/A"
 msgstr "chan eil fhios"
 
-#: src/gui/dialogs/label_settings.cpp:49
+#: src/gui/dialogs/label_settings.cpp:54
 msgid "Team Labels"
 msgstr "Leubailean nan sgioba"
 
-#: src/gui/dialogs/label_settings.cpp:72
+#: src/gui/dialogs/label_settings.cpp:77
 msgid "Side $side_number ($name)"
 msgstr "Taobh $side_number ($name)"
 
-#: src/gui/dialogs/loadscreen.cpp:45
+#: src/gui/dialogs/loading_screen.cpp:45
 msgid "Building terrain rules"
 msgstr "A’ togail riaghailtean crutha-thìre"
 
-#: src/gui/dialogs/loadscreen.cpp:46
+#: src/gui/dialogs/loading_screen.cpp:46
 msgid "Reading files and creating cache"
 msgstr "A’ leughadh faidhlichean is a’ cruthachadh tasgadan"
 
-#: src/gui/dialogs/loadscreen.cpp:47 src/gui/dialogs/loadscreen.cpp:50
+#: src/gui/dialogs/loading_screen.cpp:47 src/gui/dialogs/loading_screen.cpp:50
 msgid "Initializing display"
 msgstr "A’ tòiseachadh an uidheim-thaisbeanaidh"
 
-#: src/gui/dialogs/loadscreen.cpp:48
+#: src/gui/dialogs/loading_screen.cpp:48
 msgid "Reinitialize fonts for the current language"
 msgstr "Ag ath-thòiseachadh nan cruthan-clò airson a’ chànain làithrich"
 
-#: src/gui/dialogs/loadscreen.cpp:49
+#: src/gui/dialogs/loading_screen.cpp:49
 msgid "Initializing teams"
 msgstr "A’ tòiseachadh nan sgiobaidhean"
 
-#: src/gui/dialogs/loadscreen.cpp:51
+#: src/gui/dialogs/loading_screen.cpp:51
 msgid "Loading game configuration"
 msgstr "A’ luchdadh rèiteachadh a’ gheama"
 
-#: src/gui/dialogs/loadscreen.cpp:52
+#: src/gui/dialogs/loading_screen.cpp:52
 msgid "Loading data files"
 msgstr "A’ luchdadh faidhlichean dàta"
 
-#: src/gui/dialogs/loadscreen.cpp:53
+#: src/gui/dialogs/loading_screen.cpp:53
 msgid "Loading level"
 msgstr "A’ luchdadh an leibheil"
 
-#: src/gui/dialogs/loadscreen.cpp:54
+#: src/gui/dialogs/loading_screen.cpp:54
 msgid "Initializing scripting engine"
 msgstr "A’ tòiseachadh an einnsein-sgriobtachaidh"
 
-#: src/gui/dialogs/loadscreen.cpp:55
+#: src/gui/dialogs/loading_screen.cpp:55
 msgid "Initializing planning mode"
 msgstr "A’ tòiseachadh a’ mhodh planaidh"
 
-#: src/gui/dialogs/loadscreen.cpp:56
+#: src/gui/dialogs/loading_screen.cpp:56
 msgid "Reading unit files"
 msgstr "A’ leughadh faidhlichean nan aonad"
 
-#: src/gui/dialogs/loadscreen.cpp:57
+#: src/gui/dialogs/loading_screen.cpp:57
 msgid "Loading units"
 msgstr "A’ luchdadh nan aonadan"
 
-#: src/gui/dialogs/loadscreen.cpp:58
+#: src/gui/dialogs/loading_screen.cpp:58
 msgid "Searching for installed add-ons"
 msgstr "A’ sireadh tuilleadain air an stàladh"
 
-#: src/gui/dialogs/loadscreen.cpp:59
+#: src/gui/dialogs/loading_screen.cpp:59
 msgid "Starting game"
 msgstr "A’ tòiseachadh a’ gheama"
 
-#: src/gui/dialogs/loadscreen.cpp:60
+#: src/gui/dialogs/loading_screen.cpp:60
 msgid "Verifying cache"
 msgstr "A’ dearbhadh an tasgadain"
 
-#: src/gui/dialogs/loadscreen.cpp:61
+#: src/gui/dialogs/loading_screen.cpp:61
 msgid "Connecting to server"
 msgstr "A’ ceangal ris an fhrithealaiche"
 
-#: src/gui/dialogs/loadscreen.cpp:62
+#: src/gui/dialogs/loading_screen.cpp:62
 msgid "Logging in"
 msgstr "’Gad chlàradh a-steach"
 
-#: src/gui/dialogs/loadscreen.cpp:63
+#: src/gui/dialogs/loading_screen.cpp:63
 msgid "Waiting for server"
 msgstr "A’ feitheamh ris an fhrithealaiche"
 
-#: src/gui/dialogs/loadscreen.cpp:64
+#: src/gui/dialogs/loading_screen.cpp:64
 msgid "Connecting to redirected server"
 msgstr "A’ ceangal ris an fhrithealaiche air a shìneadh air adhart"
 
-#: src/gui/dialogs/loadscreen.cpp:65
+#: src/gui/dialogs/loading_screen.cpp:65
 msgid "Waiting for next scenario"
 msgstr "A’ feitheamh airson an ath chnàmh-sgeòil"
 
-#: src/gui/dialogs/loadscreen.cpp:66
+#: src/gui/dialogs/loading_screen.cpp:66
 msgid "Getting game data"
 msgstr "A’ faighinn dàta a’ gheama"
 
-#: src/gui/dialogs/lobby/lobby.cpp:103
+#: src/gui/dialogs/lobby/lobby.cpp:105
 msgid "Selected Game"
 msgstr "Geama air a thaghadh"
 
-#: src/gui/dialogs/lobby/lobby.cpp:104
+#: src/gui/dialogs/lobby/lobby.cpp:106
 msgid "Other Games"
 msgstr "Geamannan eile"
 
-#: src/gui/dialogs/lobby/lobby.cpp:105
+#: src/gui/dialogs/lobby/lobby.cpp:107
 msgid "Current Room"
 msgstr "An seòmar làithreach"
 
-#: src/gui/dialogs/lobby/lobby.cpp:106
+#: src/gui/dialogs/lobby/lobby.cpp:108
 msgid "Lobby"
 msgstr "Lobaidh"
 
-#: src/gui/dialogs/lobby/lobby.cpp:122
+#: src/gui/dialogs/lobby/lobby.cpp:124
 msgid "Do you really want to log out?"
 msgstr "A bheil thu cinnteach gu bheil thu airson clàradh a-mach?"
 
-#: src/gui/dialogs/lobby/lobby.cpp:390
+#: src/gui/dialogs/lobby/lobby.cpp:391
 msgid "Games: showing $num_shown out of $num_total"
 msgstr "Geamannan: a’ sealltainn $num_shown a-mach à $num_total"
 
-#: src/gui/dialogs/lobby/lobby.cpp:432
+#: src/gui/dialogs/lobby/lobby.cpp:433
 msgid "Observers allowed"
 msgstr "Amhairc cheadaichte"
 
-#: src/gui/dialogs/lobby/lobby.cpp:435
+#: src/gui/dialogs/lobby/lobby.cpp:436
 msgid "Observers not allowed"
 msgstr "Chan eil amhairc ceadaichte"
 
-#: src/gui/dialogs/lobby/lobby.cpp:899
+#: src/gui/dialogs/lobby/lobby.cpp:894
 msgid "Incompatible User-made Content."
 msgstr "Tha tuilleadan neo-chòrdail ann."
 
-#: src/gui/dialogs/lobby/lobby.cpp:900
+#: src/gui/dialogs/lobby/lobby.cpp:895
 msgid ""
 "This game cannot be joined because the host has out-of-date add-ons that are "
 "incompatible with your version. You might wish to suggest that the host's "
@@ -5781,11 +5963,11 @@ msgstr ""
 "shean aig an òstair nach eil co-chòrdail ris an tionndadh a th’ agadsa. Nach "
 "mol thu dhan òstair gun ùraich iad na tuilleadain aca?"
 
-#: src/gui/dialogs/lobby/lobby.cpp:915
+#: src/gui/dialogs/lobby/lobby.cpp:910
 msgid "Missing User-made Content."
 msgstr "Tha tuilleadan a dhìth."
 
-#: src/gui/dialogs/lobby/lobby.cpp:916
+#: src/gui/dialogs/lobby/lobby.cpp:911
 msgid ""
 "This game requires one or more user-made addons to be installed or updated "
 "in order to join.\n"
@@ -5796,7 +5978,7 @@ msgstr ""
 "\n"
 "A bheil thu airson an stàladh?"
 
-#: src/gui/dialogs/lobby/lobby.cpp:971
+#: src/gui/dialogs/lobby/lobby.cpp:962
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at http://bugs.wesnoth.org."
@@ -5805,7 +5987,7 @@ msgstr ""
 "chur ris an lobaidh ioma-chluicheadair. Dèan aithris air a’ bhuga seo air "
 "http://bugs.wesnoth.org."
 
-#: src/gui/dialogs/multiplayer/mp_alerts_options.cpp:134
+#: src/gui/dialogs/multiplayer/mp_alerts_options.cpp:135
 msgid ""
 "This build of wesnoth does not include support for desktop notifications, "
 "contact your package manager"
@@ -5813,184 +5995,180 @@ msgstr ""
 "Cha chuir an togail dhe wesnoth seo taic ri brathan deasga. Cuir fios dhan "
 "neach-pacaididh agad."
 
-#: src/gui/dialogs/multiplayer/mp_change_control.cpp:250
+#: src/gui/dialogs/multiplayer/mp_change_control.cpp:252
 msgid "Side $side"
 msgstr "Taobh $side"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:95
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:97
 msgid "Scenarios"
 msgstr "Cnàmh-sgeulan"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:97
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:99
 msgid "User Maps"
 msgstr "Mapaichean a’ chleachdaiche"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:98
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:100
 msgid "User Scenarios"
 msgstr "Cnàmh-sgeulan a’ chleachdaiche"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:99
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:101
 msgid "Random Maps"
 msgstr "Mapaichean air thuaiream"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:103
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:105
 msgid "SP Campaigns"
 msgstr "Iomairtean aon-chluicheadair"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:177
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:178
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:179
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:180
 msgid "No games found."
 msgstr "Cha deach geama a lorg."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:210
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:212
 msgid "No eras found."
 msgstr "Cha deach linn a lorg."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:211
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:213
 msgid "No eras found"
 msgstr "Cha deach linn a lorg"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:277
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:279
 msgid "Independent: Random factions assigned independently"
 msgstr "Neo-eisimeileach: Thèid na buidhnean iomruineadh air tuaiream fa leth"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:278
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:280
 msgid "No Mirror: No two players will get the same faction"
 msgstr "Gun sgàthan: Chan fhaigh dà chluicheadair an aon bhuidheann"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:279
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:281
 msgid "No Ally Mirror: No two allied players will get the same faction"
 msgstr ""
 "Gun sgàthan nan caidreabhach: Chan fhaigh dà chluicheadair caidreabhach an "
 "aon bhuidheann"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:459
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:464
 msgid "No eras available for this game."
 msgstr "Chan eil linn ri fhaighinn airson a’ gheama seo."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:510
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:531
 msgid "No description available"
 msgstr "Chan eil tuairisgeul ri fhaighinn"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:784
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:805
 msgid "Choose Starting Scenario"
 msgstr "Tagh an cnàmh-sgeul tòiseachaidh"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:784
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:805
 msgid "Select at which point to begin this campaign."
 msgstr "Tagh càit an tòisich an iomairt seo."
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:183
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:186
 msgid "No era information found."
 msgstr "Cha deach fiosrachadh linn a lorg."
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:238
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:241
 msgid "Computer Player"
 msgstr "Coimpiutair"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:240
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:243
 msgid "Empty slot"
 msgstr "Slot falamh"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:242
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:245
 msgid "Reserved for $playername"
 msgstr "Glèidhte airson $playername"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:244
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:247
 msgid "Vacant slot"
 msgstr "Slot falamh"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:248
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:251
 msgid "empty"
 msgstr "falamh"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:325
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:102
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:158
 msgid "Team:"
 msgstr "Sgioba:"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:443
-msgid "Response"
-msgstr "Freagairt"
-
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:432
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:448
 msgid "Waiting for players to choose factions..."
 msgstr "A’ feitheamh gus an tagh na cluicheadairean na buidhnean…"
 
-#: src/gui/dialogs/preferences_dialog.cpp:123
+#: src/gui/dialogs/preferences_dialog.cpp:127
 msgid "friend"
 msgstr "caraid"
 
-#: src/gui/dialogs/preferences_dialog.cpp:128
+#: src/gui/dialogs/preferences_dialog.cpp:132
 msgid "ignored"
 msgstr "neo-shuim"
 
-#: src/gui/dialogs/preferences_dialog.cpp:182
-#: src/gui/dialogs/preferences_dialog.cpp:218
+#: src/gui/dialogs/preferences_dialog.cpp:186
+#: src/gui/dialogs/preferences_dialog.cpp:222
 msgid "No username specified"
 msgstr "Cha deach ainm-cleachdaiche a shònrachadh"
 
-#: src/gui/dialogs/preferences_dialog.cpp:196
+#: src/gui/dialogs/preferences_dialog.cpp:200
 msgid "Invalid username"
 msgstr "Ainm cleachdaiche mì-dhligheach"
 
-#: src/gui/dialogs/preferences_dialog.cpp:223
+#: src/gui/dialogs/preferences_dialog.cpp:227
 msgid "Not on friends or ignore lists"
 msgstr "Chan eil iad air liosta nan caraidean no neo-shuime agad"
 
-#: src/gui/dialogs/preferences_dialog.cpp:686
+#: src/gui/dialogs/preferences_dialog.cpp:690
 msgid "Saved Games"
 msgstr "Geamannan air an sàbhaladh"
 
-#: src/gui/dialogs/preferences_dialog.cpp:687
+#: src/gui/dialogs/preferences_dialog.cpp:691
 msgid "Map Commands"
 msgstr "Àitheantan mapa"
 
-#: src/gui/dialogs/preferences_dialog.cpp:688
+#: src/gui/dialogs/preferences_dialog.cpp:692
 msgid "Unit Commands"
 msgstr "Àitheantan aonaid"
 
-#: src/gui/dialogs/preferences_dialog.cpp:689
+#: src/gui/dialogs/preferences_dialog.cpp:693
 msgid "Player Chat"
 msgstr "Cabadaich nan cluicheadair"
 
-#: src/gui/dialogs/preferences_dialog.cpp:690
+#: src/gui/dialogs/preferences_dialog.cpp:694
 msgid "Replay Control"
 msgstr "Stiùireadh na h-ath-chluiche"
 
-#: src/gui/dialogs/preferences_dialog.cpp:691
+#: src/gui/dialogs/preferences_dialog.cpp:695
 msgid "Planning Mode"
 msgstr "Modh planaidh"
 
-#: src/gui/dialogs/preferences_dialog.cpp:692
+#: src/gui/dialogs/preferences_dialog.cpp:696
 msgid "Scenario Editor"
 msgstr "Deasaiche chnàmh-sgeulan"
 
-#: src/gui/dialogs/preferences_dialog.cpp:693
+#: src/gui/dialogs/preferences_dialog.cpp:697
 msgid "Editor Palettes"
 msgstr "Paileadan an deasaiche"
 
-#: src/gui/dialogs/preferences_dialog.cpp:694
+#: src/gui/dialogs/preferences_dialog.cpp:698
 msgid "Editor Tools"
 msgstr "Innealan an deasaiche"
 
-#: src/gui/dialogs/preferences_dialog.cpp:695
+#: src/gui/dialogs/preferences_dialog.cpp:699
 msgid "Editor Clipboard"
 msgstr "Stòr-bhòrd an deasaiche"
 
-#: src/gui/dialogs/preferences_dialog.cpp:696
+#: src/gui/dialogs/preferences_dialog.cpp:700
 msgid "Debug Commands"
 msgstr "Àitheantan dì-bhugachaidh"
 
-#: src/gui/dialogs/preferences_dialog.cpp:697
+#: src/gui/dialogs/preferences_dialog.cpp:701
 msgid "Custom WML Commands"
 msgstr "Àitheantan WML gnàthaichte"
 
-#: src/gui/dialogs/preferences_dialog.cpp:785
+#: src/gui/dialogs/preferences_dialog.cpp:789
 msgid "&#9679;"
 msgstr "&#9679;"
 
-#: src/gui/dialogs/preferences_dialog.cpp:840
+#: src/gui/dialogs/preferences_dialog.cpp:848
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
@@ -5999,61 +6177,109 @@ msgstr ""
 "b>”. A bheil thu airson a shònrachadh dha “<b>$new_hotkey_action|</b>” ’na "
 "àite?"
 
-#: src/gui/dialogs/preferences_dialog.cpp:846
+#: src/gui/dialogs/preferences_dialog.cpp:854
 msgid "Reassign Hotkey"
 msgstr "Sònraich a’ ghrad-iuchair dhan nì ùr"
 
-#: src/gui/dialogs/preferences_dialog.cpp:863
+#: src/gui/dialogs/preferences_dialog.cpp:871
 msgid "All hotkeys have been reset to their default values."
 msgstr "Chaidh a h-uile grad-iuchair ath-shuidheachadh air an luach tùsail."
 
-#: src/gui/dialogs/preferences_dialog.cpp:863
+#: src/gui/dialogs/preferences_dialog.cpp:871
 msgid "Hotkeys Reset"
 msgstr "Ath-shuidhich na grad-iuchraichean"
 
-#: src/gui/dialogs/preferences_dialog.cpp:951
+#: src/gui/dialogs/preferences_dialog.cpp:959
 msgid "∞"
 msgstr "∞"
 
-#: src/gui/dialogs/screenshot_notification.cpp:74
+#: src/gui/dialogs/screenshot_notification.cpp:76
 msgid "file_size^Unknown"
 msgstr "Chan eil fios"
 
-#: src/gui/dialogs/unit_attack.cpp:97
-msgid "Damage Calculations"
-msgstr "Cunntas dochainn"
+#: src/gui/dialogs/statistics_dialog.cpp:194
+#, fuzzy
+#| msgid "Recruits:"
+msgid "Recruits"
+msgstr "Luchd-trusaidh:"
 
-#: src/gui/dialogs/unit_recall.cpp:262
+#: src/gui/dialogs/statistics_dialog.cpp:195
+#, fuzzy
+#| msgid "Recall"
+msgid "Recalls"
+msgstr "Ais-ghairm"
+
+#: src/gui/dialogs/statistics_dialog.cpp:196
+#, fuzzy
+#| msgid "Advance Unit"
+msgid "Advancements"
+msgstr "Àrdaich aonad"
+
+#: src/gui/dialogs/statistics_dialog.cpp:197
+msgid "Losses"
+msgstr ""
+
+#: src/gui/dialogs/statistics_dialog.cpp:198
+#, fuzzy
+#| msgid "Hills"
+msgid "Kills"
+msgstr "Cnuic"
+
+#: src/gui/dialogs/statistics_dialog.cpp:212
+msgid "Inflicted"
+msgstr ""
+
+#: src/gui/dialogs/statistics_dialog.cpp:220
+msgid "Taken"
+msgstr ""
+
+#: src/gui/dialogs/unit_recall.cpp:265
 msgid "This unit is loyal and requires no upkeep."
 msgstr "Tha an t-aonad seo dìleas is chan eil e feumach air beathachadh"
 
-#: src/gui/dialogs/unit_recall.cpp:263 src/gui/dialogs/unit_recall.cpp:268
-#: src/gui/dialogs/unit_recall.cpp:273
+#: src/gui/dialogs/unit_recall.cpp:266 src/gui/dialogs/unit_recall.cpp:271
+#: src/gui/dialogs/unit_recall.cpp:276
 msgid "Do you really want to dismiss him?"
 msgstr "A bheil thu cinnteach gu bheil thu airson a chur à dreuchd?"
 
-#: src/gui/dialogs/unit_recall.cpp:264 src/gui/dialogs/unit_recall.cpp:269
-#: src/gui/dialogs/unit_recall.cpp:274
+#: src/gui/dialogs/unit_recall.cpp:267 src/gui/dialogs/unit_recall.cpp:272
+#: src/gui/dialogs/unit_recall.cpp:277
 msgid "Do you really want to dismiss her?"
 msgstr "A bheil thu cinnteach gu bheil thu airson a cur à dreuchd?"
 
-#: src/gui/dialogs/unit_recall.cpp:267
+#: src/gui/dialogs/unit_recall.cpp:270
 msgid "This unit is an experienced one, having advanced levels."
 msgstr "’S e aonad eòlach a th’ ann le rang àrd."
 
-#: src/gui/dialogs/unit_recall.cpp:272
+#: src/gui/dialogs/unit_recall.cpp:275
 msgid "This unit is close to advancing a level."
 msgstr "Tha an t-aonad seo cha mhòr air an ath rang a ruigsinn."
 
-#: src/gui/dialogs/unit_recall.cpp:278
+#: src/gui/dialogs/unit_recall.cpp:281
 msgid "Dismiss Unit"
 msgstr "Cuir an t-aonad à dreuchd"
 
-#: src/gui/widgets/chatbox.cpp:265
+#: src/gui/widgets/addon_list.cpp:98
+msgid "addon_state^Installed, upgradable"
+msgstr "Air a stàladh, gabhaidh àrdachadh"
+
+#: src/gui/widgets/addon_list.cpp:98
+msgid "addon_state^Published, upgradable"
+msgstr "Foillsichte, gabhaidh àrdachadh"
+
+#: src/gui/widgets/addon_list.cpp:102
+msgid "addon_state^Installed, outdated on server"
+msgstr "Air a stàladh, ro shean air an fhrithealaiche"
+
+#: src/gui/widgets/addon_list.cpp:102
+msgid "addon_state^Published, outdated on server"
+msgstr "Foillsichte, ro shean air an fhrithealaiche"
+
+#: src/gui/widgets/chatbox.cpp:264
 msgid "whisper to $receiver"
 msgstr "cagair gu $receiver"
 
-#: src/gui/widgets/chatbox.cpp:396
+#: src/gui/widgets/chatbox.cpp:395
 msgid ""
 "Whisper session with <i>“$name”</i> started. If you do not want to receive "
 "messages from this user, type <i>/ignore $name</i>\n"
@@ -6062,53 +6288,49 @@ msgstr ""
 "airson teachdaireachdan fhaighinn on chleachdaiche seo, sgrìobh <i>/ignore "
 "$name</i>\n"
 
-#: src/gui/widgets/chatbox.cpp:400
+#: src/gui/widgets/chatbox.cpp:399
 msgid "Room <i>“$name”</i> joined"
 msgstr "Air tighinn a-steach dhan t-seòmar <i>“$name”</i>"
 
-#: src/gui/widgets/chatbox.cpp:590
+#: src/gui/widgets/chatbox.cpp:589
 msgid "$player has entered the room"
 msgstr "Thàinig $player a-steach dhan t-seòmar"
 
-#: src/gui/widgets/chatbox.cpp:629
+#: src/gui/widgets/chatbox.cpp:628
 msgid "$player has left the room"
 msgstr "Dh’fhàg $player an seòmar"
 
-#: src/gui/widgets/control.cpp:665
-msgid "Found a widget with a helptip and without a tooltip."
-msgstr "Chaidh widget le gliocas-cobharach ach às aonais gliocas-sgrìn a lorg."
-
-#: src/gui/widgets/helper.cpp:127
+#: src/gui/widgets/helper.cpp:116
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Cha deach am widget “$id” riatanach a mhìneachadh."
 
-#: src/gui/widgets/label.cpp:161
+#: src/gui/widgets/label.cpp:162
 msgid "Opening links is not supported, contact your packager"
 msgstr ""
 "Chan eil taic ri fosgladh cheanglaichean, cuir fios gun neach-pacaididh agad"
 
-#: src/gui/widgets/label.cpp:180
+#: src/gui/widgets/label.cpp:181
 msgid "Do you want to open this link?"
 msgstr "A bheil thu airson an ceangal seo fhosgladh?"
 
-#: src/gui/widgets/label.cpp:211
+#: src/gui/widgets/label.cpp:212
 msgid "Copied link!"
 msgstr "Chaidh lethbhreac dhen cheangal a dhèanamh!"
 
-#: src/gui/widgets/listbox.cpp:915 src/gui/widgets/multi_page.cpp:299
+#: src/gui/widgets/listbox.cpp:935 src/gui/widgets/multi_page.cpp:299
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
 "Feumaidh an aon àireamh dhe chuilbh a bhith aig “list_data” ’s a tha aig an "
 "“list_definition.”"
 
-#: src/gui/widgets/listbox.cpp:959 src/gui/widgets/listbox.cpp:1112
-#: src/gui/widgets/listbox.cpp:1237 src/gui/widgets/scrollbar_panel.cpp:148
+#: src/gui/widgets/listbox.cpp:979 src/gui/widgets/listbox.cpp:1104
+#: src/gui/widgets/listbox.cpp:1229 src/gui/widgets/scrollbar_panel.cpp:148
 msgid "No list defined."
 msgstr "Cha deach liosta a mhìneachadh."
 
-#: src/gui/widgets/listbox.cpp:963 src/gui/widgets/listbox.cpp:1116
-#: src/gui/widgets/listbox.cpp:1241
+#: src/gui/widgets/listbox.cpp:983 src/gui/widgets/listbox.cpp:1108
+#: src/gui/widgets/listbox.cpp:1233
 msgid "A 'list_definition' should contain one row."
 msgstr "Bu chòir do ràgh a bhith ann an “list_definition.”"
 
@@ -6116,26 +6338,38 @@ msgstr "Bu chòir do ràgh a bhith ann an “list_definition.”"
 msgid "No page defined."
 msgstr "Cha deach duilleag a mhìneachadh."
 
-#: src/gui/widgets/pane.cpp:433
+#: src/gui/widgets/pane.cpp:432
 msgid "Need at least 1 parallel item."
 msgstr "Tha feum air co-dhiù 1 nì co-shìnte."
 
-#: src/gui/widgets/settings.cpp:454
+#: src/gui/widgets/settings.cpp:461
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr ""
 "Tha mìneachadh airson “$id” a dhìth ann am mìneachadh a’ widget "
 "“$definition|.”"
 
-#: src/gui/widgets/settings.cpp:534
+#: src/gui/widgets/settings.cpp:541
 msgid "No default gui defined."
 msgstr "Cha deach GUI tùsail a shònrachadh"
 
-#: src/gui/widgets/settings.cpp:568
+#: src/gui/widgets/settings.cpp:575
 msgid "No state or draw section defined."
 msgstr "Cha deach staid no roinn tarraing a mhìneachadh."
 
-#: src/gui/widgets/slider.cpp:511
+#: src/gui/widgets/size_lock.cpp:134
+#, fuzzy
+#| msgid "No list defined."
+msgid "No widget defined."
+msgstr "Cha deach liosta a mhìneachadh."
+
+#: src/gui/widgets/size_lock.cpp:157
+#, fuzzy
+#| msgid "Invalid username"
+msgid "Invalid size."
+msgstr "Ainm cleachdaiche mì-dhligheach"
+
+#: src/gui/widgets/slider.cpp:513
 msgid "The number of value_labels and values don't match."
 msgstr "Cha cho-fhreagair an t-àireamh dhe value_labels is luachan."
 
@@ -6143,63 +6377,82 @@ msgstr "Cha cho-fhreagair an t-àireamh dhe value_labels is luachan."
 msgid "No stack layers defined."
 msgstr "Cha deach stac bhreathan a mhìneachadh."
 
-#: src/gui/widgets/tree_view.cpp:390
+#: src/gui/widgets/styled_widget.cpp:694
+msgid "Found a widget with a helptip and without a tooltip."
+msgstr "Chaidh widget le gliocas-cobharach ach às aonais gliocas-sgrìn a lorg."
+
+#: src/gui/widgets/tree_view.cpp:392
 msgid "No nodes defined for a tree view."
 msgstr "Cha deach nòdan a mhìneachadh airson sealladh craoibhe."
 
-#: src/gui/widgets/tree_view.cpp:430
+#: src/gui/widgets/tree_view.cpp:432
 msgid "[node]id 'root' is reserved for the implementation."
 msgstr "Tha [node]id “root” glèidhte airson an toirt gu buil."
 
-#: src/gui/widgets/tree_view.cpp:434
+#: src/gui/widgets/tree_view.cpp:436
 msgid "No node defined."
 msgstr "Cha deach nòd a mhìneachadh."
 
-#: src/gui/widgets/tree_view_node.cpp:115
+#: src/gui/widgets/tree_view_node.cpp:114
 msgid "Unknown builder id for tree view node."
 msgstr "Builder id neo-aithnichte airson tree view node."
 
-#: src/gui/widgets/unit_preview_pane.cpp:116
+#: src/gui/widgets/unit_preview_pane.cpp:130
+msgid "Resistances: "
+msgstr ""
+
+#: src/gui/widgets/unit_preview_pane.cpp:132
+msgid "(Att / Def)"
+msgstr ""
+
+#: src/gui/widgets/unit_preview_pane.cpp:145
+msgid "Movement Costs:"
+msgstr ""
+
+#: src/gui/widgets/unit_preview_pane.cpp:208
 msgid "Attacks"
 msgstr "Ionnsaighean"
 
-#: src/gui/widgets/unit_preview_pane.cpp:139
-msgid "Weapon special: "
-msgstr "Ionnsaigh shònraichte: "
-
-#: src/gui/widgets/unit_preview_pane.cpp:170
-#: src/gui/widgets/unit_preview_pane.cpp:297
+#: src/gui/widgets/unit_preview_pane.cpp:261
+#: src/gui/widgets/unit_preview_pane.cpp:388
 msgid "Lvl $lvl"
 msgstr "Rang $lvl"
 
-#: src/gui/widgets/unit_preview_pane.cpp:198
-#: src/gui/widgets/unit_preview_pane.cpp:335
-#: src/gui/widgets/unit_preview_pane.cpp:349
+#: src/gui/widgets/unit_preview_pane.cpp:289
+#: src/gui/widgets/unit_preview_pane.cpp:426
+#: src/gui/widgets/unit_preview_pane.cpp:439
 msgid "HP: "
 msgstr "PB: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:201
-#: src/gui/widgets/unit_preview_pane.cpp:338
-#: src/gui/widgets/unit_preview_pane.cpp:352
+#: src/gui/widgets/unit_preview_pane.cpp:294
+#: src/gui/widgets/unit_preview_pane.cpp:429
+#: src/gui/widgets/unit_preview_pane.cpp:444
 msgid "XP: "
 msgstr "PE: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:203
-#: src/gui/widgets/unit_preview_pane.cpp:354
+#: src/gui/widgets/unit_preview_pane.cpp:296
+#: src/gui/widgets/unit_preview_pane.cpp:446
+#, fuzzy
+#| msgid "Experience Modifier"
+msgid "Experience Modifier: "
+msgstr "Atharraichear eòlais"
+
+#: src/gui/widgets/unit_preview_pane.cpp:299
+#: src/gui/widgets/unit_preview_pane.cpp:449
 msgid "MP: "
 msgstr "PG: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:246
-#: src/gui/widgets/unit_preview_pane.cpp:388
+#: src/gui/widgets/unit_preview_pane.cpp:337
+#: src/gui/widgets/unit_preview_pane.cpp:477
 msgid "Abilities"
 msgstr "Comasan"
 
-#: src/gui/widgets/window.cpp:1015
+#: src/gui/widgets/window.cpp:988
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr "Tha putan “click_dismiss” no “ok” a dhìth air click dismiss."
 
-#: src/gui/widgets/window.cpp:1040 src/gui/widgets/window.cpp:1077
-#: src/tests/gui/test_gui2.cpp:516
+#: src/gui/widgets/window.cpp:1013 src/gui/widgets/window.cpp:1050
+#: src/tests/gui/test_gui2.cpp:533
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Cha deach còmhradh a shealltainn a tha ro mhòr airson an sgrìn."
 
@@ -6366,10 +6619,6 @@ msgstr "Marbh aonad (Dì-bhugachadh!)"
 #: src/hotkey/hotkey_command.cpp:89
 msgid "Scenario Objectives"
 msgstr "Amasan a’ chnàmh-sgeòil"
-
-#: src/hotkey/hotkey_command.cpp:91
-msgid "Statistics"
-msgstr "Staitistearachd"
 
 #: src/hotkey/hotkey_command.cpp:92
 msgid "Pause Network Game"
@@ -7009,10 +7258,6 @@ msgstr "Seall consoil Lua"
 msgid "Unrecognized Command"
 msgstr "Àithne neo-aithnichte"
 
-#: src/hotkey/hotkey_preferences_display.cpp:36
-msgid "Press desired hotkey (Esc cancels)"
-msgstr "Brùth air a’ ghar-iuchair a thogras tu (sguiridh Esc dheth)"
-
 #. TRANSLATORS: This is the language code which will be used
 #. to store and fetch localized non-textual resources, such as images,
 #. when they exist. Normally it is just the code of the PO file itself,
@@ -7023,17 +7268,17 @@ msgstr "Brùth air a’ ghar-iuchair a thogras tu (sguiridh Esc dheth)"
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/image.cpp:452
+#: src/image.cpp:448
 msgid "language code for localized resources^en_US"
 msgstr "gd"
 
-#: src/preferences_display.cpp:107
+#: src/preferences_display.cpp:106
 msgid "No known themes. Try changing from within an existing game."
 msgstr ""
 "Chan eil ùrlaran aithnichte ann. Feuch an atharraich thu taobh a-staigh "
 "geama a tha ann."
 
-#: src/preferences_display.cpp:148
+#: src/preferences_display.cpp:147
 msgid ""
 "The <b>$filename</b> server application provides multiplayer server "
 "functionality and is required for hosting local network games. It will "
@@ -7044,7 +7289,7 @@ msgstr ""
 "Lorgaidh tu san aon phasgan ’s a tha faidhle so-ghnìomhaichte a’ gheama mar "
 "as trice."
 
-#: src/preferences_display.cpp:152
+#: src/preferences_display.cpp:151
 msgid "Find Server Application"
 msgstr "Lorg aplacaid frihealaiche"
 
@@ -7056,7 +7301,7 @@ msgstr ""
 "Chaidh cruth-tìre le sreang aig a bheil barrachd air 4 caractaran a lorg, is "
 "an cruth-tìre seo :"
 
-#: src/wml_exception.cpp:63
+#: src/wml_exception.cpp:62
 msgid ""
 "An error due to possibly invalid WML occurred\n"
 "The error message is :"
@@ -7064,13 +7309,13 @@ msgstr ""
 "Thachair mearachd air adhbharachadh le WML mì-dhligheach, ’s dòcha\n"
 "Is an teachdaireachd mearachd seo :"
 
-#: src/wml_exception.cpp:65
+#: src/wml_exception.cpp:64
 msgid "When reporting the bug please include the following error message :"
 msgstr ""
 "Nuair a nì thu aithisg air a’ bhuga, feuch an cuir thu an teachdaireachd "
 "mearachd seo ris :"
 
-#: src/wml_exception.cpp:95
+#: src/wml_exception.cpp:94
 msgid ""
 "In section '[$section|]' where '$primary_key| = $primary_value' the "
 "mandatory key '$key|' isn't set."
@@ -7078,13 +7323,13 @@ msgstr ""
 "San earrann “[$section|]” far a bheil “$primary_key| = $primary_value|,” cha "
 "deach an iuchair riatanach “$key|” a shuidheachadh."
 
-#: src/wml_exception.cpp:98
+#: src/wml_exception.cpp:97
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr ""
 "San earrann “[$section|],” cha deach an iuchair riatanach “$key|” a "
 "shuidheachadh."
 
-#: src/wml_exception.cpp:114
+#: src/wml_exception.cpp:113
 msgid ""
 "The key '$key' is deprecated and support will be removed in version "
 "$removal_version."
@@ -7092,7 +7337,7 @@ msgstr ""
 "Cha mholar an iuchair “$key” tuilleadh is thèid gach taic dha a thoirt air "
 "falbh leis an tionndadh $removal_version."
 
-#: src/wml_exception.cpp:133
+#: src/wml_exception.cpp:132
 msgid ""
 "The key '$deprecated_key' has been renamed to '$key'. Support for "
 "'$deprecated_key' will be removed in version $removal_version."
@@ -7100,6 +7345,68 @@ msgstr ""
 "Chaidh an iuchair “$deprecated_key” ath-ainmeachadh gu “$key|.” Thèid gach "
 "taic ri “$deprecated_key” a thoirt air falbh leis an tionndadh "
 "$removal_version."
+
+#~ msgid "Experimental Fake Map Edge"
+#~ msgstr "Oir mhapa fhuadain dheuchainneach"
+
+#~ msgid "Author:"
+#~ msgstr "Ùghdar:"
+
+#~ msgid "Options"
+#~ msgstr "Roghainnean"
+
+#~ msgid "Add-ons matching the following criteria will be displayed."
+#~ msgstr ""
+#~ "Thèid tuilleadain a shealltainn a cho-fhreagras ris na cuspairean a "
+#~ "leanas."
+
+#~ msgid "Installation status:"
+#~ msgstr "Staid an stàlaidh:"
+
+#~ msgid "Add-on types:"
+#~ msgstr "Seòrsa nan tuilleadan:"
+
+#~ msgid "Toggle All"
+#~ msgstr "Toglaich na h-uile"
+
+#~ msgid "Add-ons will be sorted as follows when no column is selected:"
+#~ msgstr ""
+#~ "Mar a thèid na tuilleadain a chur an òrdugh mur eil colbh air a thaghadh:"
+
+#~ msgid "sort^By name"
+#~ msgstr "Le ainm"
+
+#~ msgid "sort^By last updated"
+#~ msgstr "Leis an ùrachadh mu dheireadh"
+
+#~ msgid "sort^By first upload"
+#~ msgstr "Leis a’ chiad luchdadh suas"
+
+#~ msgid "sort^Ascending"
+#~ msgstr "A’ dìreadh"
+
+#~ msgid "sort^Descending"
+#~ msgstr "A’ teàrnadh"
+
+#~ msgid "Filter:"
+#~ msgstr "Criathrag:"
+
+#~ msgid "Seed:"
+#~ msgstr "Sìol:"
+
+#~ msgid "Filter"
+#~ msgstr "Criathrag"
+
+#~ msgid "Set Password"
+#~ msgstr "Suidhich facal-faire"
+
+#~ msgid "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
+#~ msgstr ""
+#~ "Tha iuchair “fixed_width” no “fixed_height” a dhìth air a’ bhuidheann "
+#~ "ceangailte “$id|.”"
+
+#~ msgid "Weapon special: "
+#~ msgstr "Ionnsaigh shònraichte: "
 
 #~ msgid "Items"
 #~ msgstr "Nithean"
@@ -7353,9 +7660,6 @@ msgstr ""
 #~ msgid "Joystick"
 #~ msgstr "Joystick"
 
-#~ msgid "Centered"
-#~ msgstr "Meadhanaichte"
-
 #~ msgid "Up"
 #~ msgstr "Suas"
 
@@ -7450,9 +7754,6 @@ msgstr ""
 #~ msgid "Snowy Mixed Forested Hills"
 #~ msgstr "Cnuic coille measgaichte shneachdach"
 
-#~ msgid "Update Add-ons"
-#~ msgstr "Ùraich tuilleadain"
-
 #~ msgid "Create New Map"
 #~ msgstr "Cruthaich mapa ùr"
 
@@ -7535,9 +7836,6 @@ msgstr ""
 #~ msgstr ""
 #~ "Bu chòir do hotkeys glacadh-sgrìn a’ dol còmhla ri atharraichearan "
 #~ "Control, Alt no Meta gus duilgheadasan a sheachnadh."
-
-#~ msgid "Warning"
-#~ msgstr "Rabhadh"
 
 #~ msgid " (widescreen)"
 #~ msgstr " (sgrìn leathann)"

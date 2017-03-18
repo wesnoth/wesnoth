@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-03-17 03:58 UTC\n"
+"POT-Creation-Date: 2017-03-18 21:05 UTC\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -176,14 +176,14 @@ msgid ""
 msgstr ""
 
 #. [side]
-#. [side]: type=Dwarvish Steelclad, id=Knutan
 #. [side]: type=Lieutenant, id=Gweddry
-#. [side]: type=General, id=Gweddry
 #. [side]: type=General, id=Konrad II
 #. [side]: type=Great Mage, id=Kaldor
 #. [side]: type=General, id=Halrad
 #. [side]: type=General, id=Halric
 #. [side]: type=General, id=Halrod
+#. [side]: type=Dwarvish Steelclad, id=Knutan
+#. [side]: type=General, id=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:67
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:25
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:63
@@ -219,27 +219,26 @@ msgstr ""
 msgid "Wesnothians"
 msgstr ""
 
-#. [side]: type=Dark Sorcerer, id=Mal-Sakkat
-#. [side]: type=Dark Sorcerer, id=Mal-Talar
-#. [side]: type=Lich, id=Mal-Uldhar
-#. [side]
 #. [side]: type=Dark Sorcerer, id=Mal-Skraat
 #. [side]: type=Dark Adept, id=Mal-Tar
 #. [side]: type=Dark Sorcerer, id=Mal-Kallat
-#. [side]: type=Lich, id=Mal-Telnarad
-#. [side]: type=Dark Sorcerer, id=Mal-Marak
-#. [side]: type=Dark Sorcerer, id=Mal-Galkar
-#. [side]: type=Death Knight, id=Ravanal-Guard
-#. [side]: type=Revenant, id=Lanar-Skal
-#. [side]: type=Bone Knight, id=Garnad
-#. [side]: type=Necromancer, id=Mal-un-Karad
 #. [side]: type=Necromancer, id=Mal-un-Darak
 #. [side]: type=Necromancer, id=Mal-un-Zanrad
 #. [side]: type=Necromancer, id=Mal-un-Xadrux
+#. [side]: type=Revenant, id=Lanar-Skal
+#. [side]: type=Lich, id=Mal-Telnarad
+#. [side]: type=Bone Knight, id=Garnad
+#. [side]: type=Necromancer, id=Mal-un-Karad
 #. [side]: type=Lich, id=Mal-Grekulak
 #. [side]: type=Lich, id=Mal-Xakralan
 #. [side]: type=Lich, id=Mal-Uknalu
-#. [side]: type=Lich Lord, id=Mal-Ravanal
+#. [side]
+#. [side]: type=Dark Sorcerer, id=Mal-Marak
+#. [side]: type=Dark Sorcerer, id=Mal-Galkar
+#. [side]: type=Death Knight, id=Ravanal-Guard
+#. [side]: type=Dark Sorcerer, id=Mal-Sakkat
+#. [side]: type=Dark Sorcerer, id=Mal-Talar
+#. [side]: type=Lich, id=Mal-Uldhar
 #. [side]: type=Lich, id=Lich2
 #. [side]: type=Lich, id=Lich3
 #. [side]: type=Lich, id=Lich4
@@ -247,6 +246,7 @@ msgstr ""
 #. [side]: type=Lich, id=Lich6
 #. [side]: type=Lich, id=Lich7
 #. [side]: type=Lich, id=Lich8
+#. [side]: type=Lich Lord, id=Mal-Ravanal
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:95
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:123
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:158
@@ -451,9 +451,9 @@ msgstr ""
 msgid "The Escape Tunnel"
 msgstr ""
 
-#. [side]: type=Troll, id=Kabak
 #. [side]: type=Ogre, id=Grug
 #. [side]
+#. [side]: type=Troll, id=Kabak
 #. [side]: type=Troll Warrior, id=Darg
 #. [side]: type=Gryphon, id=Kraagak
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:42
@@ -2930,8 +2930,8 @@ msgstr ""
 msgid "The Duel"
 msgstr ""
 
-#. [side]: type=Lich Lord, id=Mal-Ravanal
 #. [modify_unit]: type=Lich Lord, id=Mal-Ravanal
+#. [side]: type=Lich Lord, id=Mal-Ravanal
 #: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:33
 #: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:339
 #: data/campaigns/Eastern_Invasion/utils/character-definitions.cfg:29
@@ -2973,26 +2973,26 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:248
+#: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:247
 msgid ""
 "Wait — what just happened? He called more warriors out of the ground! That’s "
 "not allowed!"
 msgstr ""
 
 #. [message]: speaker=Mal-Ravanal
-#: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:252
+#: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:251
 msgid ""
 "Stop talking and fight! The rules say nothing about bringing up warriors "
 "that were already here."
 msgstr ""
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:263
+#: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:262
 msgid "No! This cannot be the way it was meant to end!"
 msgstr ""
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:277
+#: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:276
 msgid "Wesnoth, I have failed you..."
 msgstr ""
 
