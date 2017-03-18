@@ -90,7 +90,7 @@ private:
 	/** Initializers */
 	void initialize_tabs(window& window, listbox& selector);
 	void set_resolution_list(menu_button& res_list, CVideo& video);
-	void setup_hotkey_list(window& window);
+	listbox& setup_hotkey_list(window& window);
 
 	std::map<std::string, string_map> get_friends_list_row_data(const preferences::acquaintance& entry);
 

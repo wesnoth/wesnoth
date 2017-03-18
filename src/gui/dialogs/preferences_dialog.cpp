@@ -708,9 +708,7 @@ void preferences_dialog::post_build(window& window)
 		hotkey_categories.select_row(hotkey_categories.get_item_count() - 1);
 	}
 
-	setup_hotkey_list(window);
-
-	listbox& hotkey_list = find_widget<listbox>(&window, "list_hotkeys", false);
+	listbox& hotkey_list = setup_hotkey_list(window);
 
 	hotkey_categories.set_callback_item_change([this, &hotkey_list, &hotkey_categories](size_t i) {
 		if(i >= hotkey::HKCAT_PLACEHOLDER) {
@@ -764,7 +762,7 @@ void preferences_dialog::post_build(window& window)
 			std::ref(window)));
 }
 
-void preferences_dialog::setup_hotkey_list(window& window)
+listbox& preferences_dialog::setup_hotkey_list(window& window)
 {
 	const std::string& default_icon = "misc/empty.png~CROP(0,0,15,15)";
 
@@ -812,6 +810,8 @@ void preferences_dialog::setup_hotkey_list(window& window)
 
 		hotkey_list.add_row(row_data);
 	}
+
+	return hotkey_list;
 }
 
 void preferences_dialog::add_hotkey_callback(listbox& hotkeys)
@@ -870,8 +870,14 @@ void preferences_dialog::default_hotkey_callback(window& window)
 {
 	gui2::show_transient_message(window.video(), _("Hotkeys Reset"), _("All hotkeys have been reset to their default values."),
 			std::string(), false, false, true);
+
 	clear_hotkeys();
-	setup_hotkey_list(window);
+
+	// Set up the list again and reselect the default sorting option.
+	listbox& hotkey_list = setup_hotkey_list(window);
+	hotkey_list.set_active_sorting_option({0, listbox::SORT_ASCENDING}, true);
+
+	// TODO: why is this necessary again?
 	window.invalidate_layout();
 }
 
