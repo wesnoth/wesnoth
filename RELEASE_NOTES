@@ -33,14 +33,14 @@ Secrets of the Ancients, an intermediate level undead campaign with 21 scenarios
 [rawarn="Deprecations and breaking changes"]
 [list]
 [*]FOREACH is now deprecated (this was forgotten in previous announcement?)
+[*] [set_menu_item] needs_select=yes was deprecated
+[*] [on_redo] is deprecated. Since the game will now execute the original events when redoing, the game now ignores the contents on [on_redo]
 [/list]
 [/rawarn]
 
 [rasection="New lua/wml features"]
 [list]
 [*] new lua function wesnoth.add_widget_definition()
-[*] [set_menu_item] needs_select=yes was deprecated
-[*] [on_redo] is deprecated. Since the game will now execute the original events when redoing, the game now ignores the contents on [on_redo]
 [/list]
 [/rasection]
 
