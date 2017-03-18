@@ -724,7 +724,7 @@ protected:
 	int xpos_, ypos_;
 	bool view_locked_;
 	theme theme_;
-	unsigned int zoom_;
+	static unsigned int zoom_;
 	int zoom_index_;
 	static unsigned int last_zoom_;
 	const std::unique_ptr<fake_unit_manager> fake_unit_man_;

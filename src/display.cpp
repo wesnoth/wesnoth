@@ -78,6 +78,7 @@ namespace {
 	bool debug_foreground = false;
 }
 
+unsigned int display::zoom_ = DefaultZoom;
 unsigned int display::last_zoom_ = SmallZoom;
 
 void display::parse_team_overlays()
@@ -143,9 +144,6 @@ void display::remove_single_overlay(const map_location& loc, const std::string& 
 	}
 }
 
-
-
-
 display::display(const display_context * dc, CVideo& video, std::weak_ptr<wb::manager> wb, reports & reports_object, const config& theme_cfg, const config& level, bool auto_join) :
 	video2::draw_layering(auto_join),
 	dc_(dc),
@@ -160,7 +158,6 @@ display::display(const display_context * dc, CVideo& video, std::weak_ptr<wb::ma
 	ypos_(0),
 	view_locked_(false),
 	theme_(theme_cfg, screen_area()),
-	zoom_(DefaultZoom),
 	zoom_index_(0),
 	fake_unit_man_(new fake_unit_manager(*this)),
 	builder_(new terrain_builder(level, &dc_->map(), theme_.border().tile_image)),
