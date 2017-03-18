@@ -371,7 +371,7 @@ class Parser:
 
                 if not segment: continue
 
-                if segment[0] == "_":
+                if segment[0] == "_" and segment[1] == " ":
                     self.translatable = True
                     segment = segment[1:].lstrip(" ")
                     if not segment: continue

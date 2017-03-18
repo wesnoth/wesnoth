@@ -488,7 +488,7 @@ class Parser:
 
                 if not segment: continue
 
-                if segment.startswith(b"_"):
+                if segment.startswith(b"_ "):
                     self.translatable = True
                     segment = segment[1:].lstrip(b" ")
                     if not segment: continue
