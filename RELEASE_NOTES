@@ -18,14 +18,21 @@ CHANGES
 Example contents.
 [/rasection]
 
-[rasection="New campaign: Secrets of the Ancients"]Secrets of the Ancients, an intermediate level undead campaign with 21 scenarios, has now entered mainline after being on the 1.12 & 1.13 add-on servers.
-
+[rasection="New campaign: Secrets of the Ancients"]
+Secrets of the Ancients, an intermediate level undead campaign with 21 scenarios, has now entered mainline after being on the 1.12 & 1.13 add-on servers.
 [/rasection]
 
+[rasection="UI Changes"]
+[list]
+[*] The Addon Manager UI has been completely revamped.
+[*] Available modifications are now always visible when selecting a campaign.
+[*] Fixed a pesky bug in the Map Editor where scrolling the terrain palette would also scroll the map.
+[/list]
+[/rasection]
 
 [rawarn="Deprecations and breaking changes"]
 [list]
-[*]FOREACH is now deprecated (this was fogotten in previous annocement?)
+[*]FOREACH is now deprecated (this was forgotten in previous announcement?)
 [/list]
 [/rawarn]
 
@@ -33,7 +40,7 @@ Example contents.
 [list]
 [*] new lua function wesnoth.add_widget_definition()
 [*] [set_menu_item] needs_select=yes was deprecated
-[*] [on_redo] is deprecated. Since the game will now excute the original events when redoing, the game now ignores the contents on [on_redo]
+[*] [on_redo] is deprecated. Since the game will now execute the original events when redoing, the game now ignores the contents on [on_redo]
 [/list]
 [/rasection]
 
