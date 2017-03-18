@@ -296,9 +296,6 @@ void mp_join_game::pre_show(window& window)
 	plugins_context_->set_callback("launch", [&window](const config&) { window.set_retval(window::OK); }, false);
 	plugins_context_->set_callback("quit",   [&window](const config&) { window.set_retval(window::CANCEL); }, false);
 	plugins_context_->set_callback("chat",   [&chat](const config& cfg) { chat.send_chat_message(cfg["message"], false); }, true);
-
-	// TODO: the old mp wait dialog didn't have an OK button. Evaluate if we want to add one. Hiding it for now
-	find_widget<button>(&window, "ok", false).set_visible(widget::visibility::hidden);
 }
 
 void mp_join_game::generate_side_list(window& window)
