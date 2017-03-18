@@ -72,6 +72,21 @@ Version 1.13.6+dev:
      2p Ruphus Isle, 2p Swamp of Dread, 2p The Walls of Pyrennis,
      2p Tombs of Kesorak, 4p Bath of Glory, 4p Geothermal.
    * Updated maps: Fallenstar Lake.
+ * Units:
+   * Several changes to names of attacks:
+     * Shock Trooper, Iron Mauler, Mage of Light: maces and morning stars
+       changed to flails.
+     * Arif, Ghazi, Khalid, Shuja: long sword changed to sword.
+     * Mighwar, Monawish: long sword changed to longsword.
+   * Updated unit descriptions: Orcish Grunt line, Merman Fighter line,
+     Sergeant, Lieutenant, General, Peasant, Royal Warrior, Ancient Lich,
+     Dwarvish Steelclad.
+   * Changed (mainly reduced) recruit costs of many high-level units:
+     * Dwarvish Lord, Direwolf Rider, Troll Warior, Banebow, Draug.
+     * Elvish Avenger, Champion, Hero, High Lord, Marksman, Marshall,
+       Ranger, Sharpshooter.
+     * Mage of Light, Fugitive, Huntsman, Ranger.
+     * Batal, Hadaf, Mighwar, Mufariq, Rasikh, Shuja, Tineen.
  * User Interface:
    * List boxes now keep the selected item visible when you change the sorting
      option.
@@ -90,12 +105,6 @@ Version 1.13.6+dev:
    * Terrain flags "_border" and "_board" are now automatically set for every
      tile, indicating whether it is on the map border or not.
    * SUF type_tree renamed to type_adv_tree for consistency with [hide_help]
-   * Changed (mainly reduced) recruit costs of many high-level units:
-     * Dwarvish Lord, Direwolf Rider, Troll Warior, Banebow, Draug
-     * Elvish Avenger, Champion, Hero, High Lord, Marksman, Marshall,
-       Ranger, Sharpshooter
-     * Mage of Light, Fugitive, Huntsman, Ranger
-     * Batal, Hadaf, Mighwar, Mufariq, Rasikh, Shuja, Tineen
  * Miscellaneous and bug fixes:
    * Fixed severe lag/freeze on slow PCs (bug #25356)
    * Updated wmlscope to handle the square braces syntax in file paths
