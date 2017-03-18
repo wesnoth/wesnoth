@@ -192,6 +192,8 @@ class RootNode(TagNode):
         return s
 
 class Parser:
+    trans_pat = re.compile(r'^_\s*"')
+
     def __init__(self, wesnoth_exe, config_dir, data_dir,
         no_preprocess):
         """
@@ -371,9 +373,9 @@ class Parser:
 
                 if not segment: continue
 
-                if segment[0] == "_":
+                if trans_pat.match(segment):
                     self.translatable = True
-                    segment = segment[1:].lstrip(" ")
+                    segment = segment[1:].lstrip(" ")[1:-1]
                     if not segment: continue
                 self.handle_value(segment)
 
