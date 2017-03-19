@@ -22,6 +22,8 @@
 #include "log.hpp" //LOG_STREAM
 #include "variable.hpp" //scoped_wml_variable
 
+#include <boost/range/adaptor/reversed.hpp>
+
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
 #define WRN_NG LOG_STREAM(warn, log_engine)
@@ -136,22 +138,20 @@ namespace {
 
 void game_data::activate_scope_variable(std::string var_name) const
 {
-
-	if(recursive_activation)
+	if (recursive_activation) {
 		return;
+	}
+
 	const std::string::iterator itor = std::find(var_name.begin(),var_name.end(),'.');
 	if(itor != var_name.end()) {
 		var_name.erase(itor, var_name.end());
 	}
-	std::vector<scoped_wml_variable*>::const_reverse_iterator rit;
-	for(
-		rit = scoped_variables.rbegin();
-		rit != scoped_variables.rend();
-	++rit) {
-		if((**rit).name() == var_name) {
+
+	for (scoped_wml_variable* v : boost::adaptors::reverse(scoped_variables)) {
+		if (v->name() == var_name) {
 			recursive_activation = true;
-			if(!(**rit).activated()) {
-				(**rit).activate();
+			if (!v->activated()) {
+				v->activate();
 			}
 			recursive_activation = false;
 			break;
