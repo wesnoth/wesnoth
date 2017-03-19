@@ -28,7 +28,6 @@ class t_string;
 
 class game_data  : public variable_set  {
 public:
-	game_data();
 	explicit game_data(const config& level);
 	game_data(const game_data& data);
 

@@ -28,17 +28,6 @@ static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
 #define DBG_NG LOG_STREAM(debug, log_engine)
 
-game_data::game_data()
-		: variable_set()
-		, scoped_variables()
-		, last_selected(map_location::null_location())
-		, rng_()
-		, variables_()
-		, phase_(INITIAL)
-		, can_end_turn_(true)
-		, next_scenario_()
-		{}
-
 game_data::game_data(const config& level)
 		: variable_set()
 		, scoped_variables()
