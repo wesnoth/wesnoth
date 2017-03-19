@@ -717,7 +717,7 @@ bool game_launcher::new_campaign()
 	play_replay_ = false;
 
 	return sp::enter_create_mode(video(), game_config_manager::get()->game_config(),
-		state_, jump_to_campaign_, true);
+		state_, jump_to_campaign_);
 }
 
 std::string game_launcher::jump_to_campaign_id() const

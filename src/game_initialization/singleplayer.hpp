@@ -23,13 +23,13 @@
 namespace sp {
 
 bool enter_create_mode(CVideo& video, const config& game_config,
-	saved_game& state, jump_to_campaign_info jump_to, bool local_players_only = true);
+	saved_game& state, jump_to_campaign_info jump_to);
 
 bool enter_configure_mode(CVideo& video, const config& game_config,
-	saved_game& state, ng::create_engine& create_eng, bool local_players_only = true);
+	saved_game& state, ng::create_engine& create_eng);
 
 bool enter_connect_mode(CVideo& video, const config& game_config,
-	saved_game& state, bool local_players_only = true);
+	saved_game& state);
 
 } // end namespace sp
 
