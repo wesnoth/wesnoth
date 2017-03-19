@@ -11,7 +11,7 @@ function wesnoth.wml_actions.endlevel(cfg)
 
 	local next_scenario = cfg.next_scenario
 	if next_scenario then
-		wesnoth.set_next_scenario(next_scenario)
+		wesnoth.game_config.next_scenario = next_scenario
 	end
 
 	local end_text = cfg.end_text
