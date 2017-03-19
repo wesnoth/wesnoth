@@ -29,27 +29,28 @@ static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
 
 game_data::game_data(const config& level)
-		: variable_set()
-		, scoped_variables()
-		, last_selected(map_location::null_location())
-		, rng_(level)
-		, variables_(level.child_or_empty("variables"))
-		, phase_(INITIAL)
-		, can_end_turn_(level["can_end_turn"].to_bool(true))
-		, next_scenario_(level["next_scenario"])
+	: variable_set()
+	, scoped_variables()
+	, last_selected(map_location::null_location())
+	, rng_(level)
+	, variables_(level.child_or_empty("variables"))
+	, phase_(INITIAL)
+	, can_end_turn_(level["can_end_turn"].to_bool(true))
+	, next_scenario_(level["next_scenario"])
 {
 }
 
 game_data::game_data(const game_data& data)
-		: variable_set() // variable set is just an interface.
-		, scoped_variables(data.scoped_variables)
-		, last_selected(data.last_selected)
-		, rng_(data.rng_)
-		, variables_(data.variables_)
-		, phase_(data.phase_)
-		, can_end_turn_(data.can_end_turn_)
-		, next_scenario_(data.next_scenario_)
-{}
+	: variable_set() // variable set is just an interface.
+	, scoped_variables(data.scoped_variables)
+	, last_selected(data.last_selected)
+	, rng_(data.rng_)
+	, variables_(data.variables_)
+	, phase_(data.phase_)
+	, can_end_turn_(data.can_end_turn_)
+	, next_scenario_(data.next_scenario_)
+{
+}
 //throws
 config::attribute_value &game_data::get_variable(const std::string& key)
 {
