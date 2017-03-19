@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2016 by Benoit Timbert <benoit.timbert@free.fr>
+   Copyright (C) 2007 - 2017 by Benoit Timbert <benoit.timbert@free.fr>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify

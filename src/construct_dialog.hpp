@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2016 by Patrick Parker <patrick_x99@hotmail.com>
+   Copyright (C) 2006 - 2017 by Patrick Parker <patrick_x99@hotmail.com>
    wesnoth widget Copyright (C) 2003-5 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 

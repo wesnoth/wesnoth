@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Guorui Xi <kevin.xgr@gmail.com>
+   Copyright (C) 2014 - 2017 by Guorui Xi <kevin.xgr@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify

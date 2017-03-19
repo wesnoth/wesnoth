@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2016 by David White <dave.net>
+   Copyright (C) 2007 - 2017 by David White <dave.net>
    Part of the Silver Tree Project
 
    This program is free software; you can redistribute it and/or modify
