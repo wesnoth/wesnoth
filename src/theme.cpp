@@ -776,8 +776,6 @@ void theme::add_object(const config& cfg)
 
 	if (const config &c = cfg.child("main_map_border")) {
 		border_ = border_t(c);
-	} else {
-		border_ = border_t();
 	}
 }
 
