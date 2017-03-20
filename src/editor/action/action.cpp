@@ -22,8 +22,6 @@
 #include "editor/map/map_context.hpp"
 #include "gettext.hpp"
 
-#include "resources.hpp"
-
 #include <memory>
 
 namespace editor {

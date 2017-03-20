@@ -23,7 +23,6 @@
 #include "game_data.hpp"
 #include "log.hpp"
 #include "reports.hpp"
-#include "resources.hpp"
 #include "scripting/game_lua_kernel.hpp"
 #include "serialization/string_utils.hpp"
 

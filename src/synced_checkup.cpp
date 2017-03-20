@@ -16,7 +16,6 @@
 #include "log.hpp"
 #include "replay.hpp"
 #include "synced_user_choice.hpp"
-#include "resources.hpp"
 
 static lg::log_domain log_replay("replay");
 #define DBG_REPLAY LOG_STREAM(debug, log_replay)

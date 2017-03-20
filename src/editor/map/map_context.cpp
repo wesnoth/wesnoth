@@ -24,7 +24,6 @@
 #include "gettext.hpp"
 #include "map/exception.hpp"
 #include "map/label.hpp"
-#include "resources.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
 #include "terrain/type_data.hpp"

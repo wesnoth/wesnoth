@@ -15,7 +15,6 @@
 #include <cassert>
 
 #include "log.hpp"
-#include "resources.hpp"
 #include "map/location.hpp"
 #include "game_data.hpp"
 #include "units/unit.hpp"

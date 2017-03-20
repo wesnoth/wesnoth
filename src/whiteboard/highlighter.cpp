@@ -30,7 +30,6 @@
 #include "whiteboard/move.hpp"
 #include "whiteboard/recall.hpp"
 #include "whiteboard/recruit.hpp"
-#include "resources.hpp"
 #include "whiteboard/side_actions.hpp"
 #include "whiteboard/suppose_dead.hpp"
 #include "whiteboard/utility.hpp"

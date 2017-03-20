@@ -35,7 +35,6 @@
 #include "serialization/unicode.hpp"
 #include "game_preferences.hpp"
 #include "log.hpp"
-#include "resources.hpp"
 #include "replay.hpp"
 #include "gettext.hpp"
 

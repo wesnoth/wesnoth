@@ -37,7 +37,6 @@
 #include "gettext.hpp"
 #include "help/help.hpp"
 #include "language.hpp"
-#include "resources.hpp"
 #include "color.hpp"
 #include "team.hpp"
 #include "units/unit.hpp"
@@ -101,7 +100,7 @@ void unit_attack::damage_calc_callback(window& window)
 	battle_prediction_pane battle_pane(weapons_[index], (*attacker_itor_).get_location(), (*defender_itor_).get_location());
 	std::vector<gui::preview_pane*> preview_panes = {&battle_pane};
 
-	gui::show_dialog(resources::screen->video(), nullptr, _("Damage Calculations"), "", gui::OK_ONLY, nullptr, &preview_panes);
+	gui::show_dialog(window.video(), nullptr, _("Damage Calculations"), "", gui::OK_ONLY, nullptr, &preview_panes);
 }
 
 void unit_attack::pre_show(window& window)

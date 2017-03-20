@@ -17,7 +17,6 @@
  * Support functions for dealing with units.
  */
 
-#include "resources.hpp"
 #include "units/unit.hpp"
 #include "units/helper.hpp"
 

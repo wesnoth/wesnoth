@@ -18,7 +18,7 @@
 #include "video.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/widgets/window.hpp"
-#include "resources.hpp"
+
 #include <boost/range/adaptor/reversed.hpp>
 
 std::vector<quit_confirmation*> quit_confirmation::blockers_ = std::vector<quit_confirmation*>();
