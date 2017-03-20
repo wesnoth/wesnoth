@@ -821,6 +821,7 @@ int game_lua_kernel::intf_set_end_campaign_text(lua_State *L)
 
 int game_lua_kernel::intf_set_next_scenario(lua_State *L)
 {
+	WRN_LUA << "wesnoth.set_next_scenario() is deprecated" << std::endl;
 	gamedata().set_next_scenario(luaL_checkstring(L, 1));
 	return 0;
 }
@@ -1228,6 +1229,7 @@ int game_lua_kernel::impl_game_config_get(lua_State *L)
 	return_int_attrib("kill_experience", game_config::kill_experience);
 	return_int_attrib("last_turn", tod_man().number_of_turns());
 	return_string_attrib("version", game_config::version);
+	return_string_attrib("next_scenario", gamedata().next_scenario());
 	return_bool_attrib("debug", game_config::debug);
 	return_bool_attrib("debug_lua", game_config::debug_lua);
 	return_bool_attrib("mp_debug", game_config::mp_debug);
@@ -1273,6 +1275,7 @@ int game_lua_kernel::impl_game_config_set(lua_State *L)
 	modify_int_attrib("recall_cost", game_config::recall_cost = value);
 	modify_int_attrib("kill_experience", game_config::kill_experience = value);
 	modify_int_attrib("last_turn", tod_man().set_number_of_turns_by_wml(value));
+	modify_string_attrib("next_scenario", gamedata().set_next_scenario(value));
 
 	std::string err_msg = "unknown modifiable property of game_config: ";
 	err_msg += m;
