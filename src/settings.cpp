@@ -44,7 +44,7 @@ int get_village_gold(const std::string& value, const game_classification* classi
 
 int get_village_support(const std::string& value)
 {
-	return util::clamp<int>(lexical_cast_default<int>(value, 1), 0, 4);
+	return util::clamp<int>(lexical_cast_default<int>(value, 1), 0, 65536);
 }
 
 int get_xp_modifier(const std::string& value)
