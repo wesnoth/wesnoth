@@ -994,6 +994,9 @@ config side_engine::new_config() const
 {
 	config res = cfg_;
 
+	// In case of 'shuffle sides' the side index in cfg_ might be wrong which will confuse the team constuctor later.  
+	res["side"] = index_ + 1;
+
 	// If the user is allowed to change type, faction, leader etc,  then import their new values in the config.
 	if(!parent_.params_.saved_game) {
 		// Merge the faction data to res.
