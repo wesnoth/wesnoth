@@ -998,10 +998,10 @@ config side_engine::new_config() const
 	if(!parent_.params_.saved_game) {
 		// Merge the faction data to res.
 		config faction = flg_.current_faction();
+		LOG_MP << "side_engine::new_config: side=" << index_ + 1 << " faction=" << faction["id"] << " recruit=" << faction["recruit"] << "\n";
 		res["faction_name"] = faction["name"];
 		res["faction"] = faction["id"];
 		faction.remove_attributes("id", "name", "image", "gender", "type");
-		LOG_MP << "side_engine::new_config: side=" << index_ + 1 << " faction=" << res["faction_name"] << " recuit=" << res["recruit"] << "\n";
 		res.append(faction);
 	}
 
