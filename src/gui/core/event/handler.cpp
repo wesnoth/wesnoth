@@ -362,49 +362,64 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 	if(dispatchers_.empty()) {
 		return;
 	}
-
-//#ifdef MOUSE_TOUCH_EMULATION
-//	static int last_drag_x;
-//	static int last_drag_y;
-//#endif
+	
+	Uint8 button = event.button.button;
 
 	switch(event.type) {
 		case SDL_MOUSEMOTION:
 #ifdef MOUSE_TOUCH_EMULATION
+//			SDL sends 2 events on touch: touch event and mouse event with which=SDL_TOUCH_MOUSEID itself.
 			if (event.motion.state & SDL_BUTTON(SDL_BUTTON_RIGHT))
-#else
-			if (event.motion.which == SDL_TOUCH_MOUSEID)
-#endif
 			{
 				touch_motion(point(event.motion.x, event.motion.y), point(event.motion.xrel, event.motion.yrel));
-//				last_drag_x = event.motion.x;
-//				last_drag_y = event.motion.y;
+				// Only send mouse event if "finger" (right mouse) is down.
+				mouse(SDL_MOUSE_MOTION, {event.motion.x, event.motion.y});
 			}
+#else
 			mouse(SDL_MOUSE_MOTION, {event.motion.x, event.motion.y});
+#endif
 			break;
 
 		case SDL_MOUSEBUTTONDOWN:
 #ifdef MOUSE_TOUCH_EMULATION
-			if (event.motion.state & SDL_BUTTON(SDL_BUTTON_RIGHT))
-#else
-			if (event.motion.which == SDL_TOUCH_MOUSEID)
-#endif
+			if (event.button.button == SDL_BUTTON_RIGHT)
 			{
+				// Emulate SDL mouse emulation
 				touch_down(point(event.button.x, event.button.y));
+				mouse_button_down({event.button.x, event.button.y}, SDL_BUTTON_LEFT);
 			}
-			mouse_button_down({event.button.x, event.button.y}, event.button.button);
+			else
+			{
+				mouse_button_down({event.button.x, event.button.y}, event.button.button);
+			}
+#else
+			// Monkey-patch support for SDL_TOUCH_MOUSEID. Probably we need a native support from all the controls?
+			if (event.button.which == SDL_TOUCH_MOUSEID)
+			{
+				button = SDL_BUTTON_LEFT;
+			}
+			mouse_button_down({event.button.x, event.button.y}, button);
+#endif
 			break;
 
 		case SDL_MOUSEBUTTONUP:
 #ifdef MOUSE_TOUCH_EMULATION
-			if (event.motion.state & SDL_BUTTON(SDL_BUTTON_RIGHT))
-#else
-			if (event.motion.which == SDL_TOUCH_MOUSEID)
-#endif
+			if (event.button.button == SDL_BUTTON_RIGHT)
 			{
 				touch_up(point(event.button.x, event.button.y));
+				mouse_button_up({event.button.x, event.button.y}, SDL_BUTTON_LEFT);
 			}
-			mouse_button_up({event.button.x, event.button.y}, event.button.button);
+			else
+			{
+				mouse_button_up({event.button.x, event.button.y}, event.button.button);
+			}
+#else
+			if (event.button.which == SDL_TOUCH_MOUSEID)
+			{
+				button = SDL_BUTTON_LEFT;
+			}
+			mouse_button_up({event.button.x, event.button.y}, button);
+#endif
 			break;
 
 		case SDL_MOUSEWHEEL:
@@ -482,53 +497,32 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 
 		case SDL_FINGERMOTION:
 			{
-				window *window = window::window_instance(event.user.code);
-				if(!window) {
-					// Panic!
-					std::cerr << "Huh?\n";
-					exit(1);
-				}
-				int w = window->get_width();
-				int h = window->get_height();
-				
-				touch_motion(point(event.tfinger.x * w, event.tfinger.y * h),
-							 point(event.tfinger.dx * w, event.tfinger.dy * h));
+				SDL_Rect r = screen_area();
+				touch_motion(point(event.tfinger.x * r.w, event.tfinger.y * r.h),
+							 point(event.tfinger.dx * r.w, event.tfinger.dy * r.h));
 			}
 			break;
 
 		case SDL_FINGERUP:
 			{
-				window *window = window::window_instance(event.user.code);
-				if(!window) {
-					// Panic!
-					std::cerr << "Huh?\n";
-					exit(1);
-				}
-				int w = window->get_width();
-				int h = window->get_height();
-				
-				touch_up(point(event.tfinger.x * w, event.tfinger.y * h));
+				SDL_Rect r = screen_area();
+				touch_up(point(event.tfinger.x * r.w, event.tfinger.y * r.h));
 			}
 			break;
 
 		case SDL_FINGERDOWN:
 			{
-				window *window = window::window_instance(event.user.code);
-				if(!window) {
-					// Panic!
-					std::cerr << "Huh?\n";
-					exit(1);
-				}
-				int w = window->get_width();
-				int h = window->get_height();
-				
-				touch_down(point(event.tfinger.x * w, event.tfinger.y * h));
+				SDL_Rect r = screen_area();
+				touch_down(point(event.tfinger.x * r.w, event.tfinger.y * r.h));
 			}
 			break;
 
 		case SDL_MULTIGESTURE:
-			touch_multi_gesture(point(event.mgesture.x, event.mgesture.y),
-								event.mgesture.dTheta, event.mgesture.dDist, event.mgesture.numFingers);
+			{
+				SDL_Rect r = screen_area();
+				touch_multi_gesture(point(event.mgesture.x * r.w, event.mgesture.y * r.h),
+									event.mgesture.dTheta, event.mgesture.dDist, event.mgesture.numFingers);
+			}
 			break;
 
 #if(defined(_X11) && !defined(__APPLE__)) || defined(_WIN32)
@@ -725,6 +719,7 @@ void sdl_event_handler::mouse_button_down(const point& position, const Uint8 but
 {
 	switch(button) {
 		case SDL_BUTTON_LEFT:
+//		TODO: handle event.button.which==SDL_TOUCH_MOUSEID:
 			mouse(SDL_LEFT_BUTTON_DOWN, position);
 			break;
 		case SDL_BUTTON_MIDDLE:

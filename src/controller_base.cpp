@@ -80,11 +80,9 @@ void controller_base::handle_event(const SDL_Event& event)
 		hotkey::key_event(event, get_hotkey_command_executor());
 		break;
 	case SDL_JOYBUTTONDOWN:
-		process_keydown_event(event);
 		hotkey::jbutton_event(event, get_hotkey_command_executor());
 		break;
 	case SDL_JOYHATMOTION:
-		process_keydown_event(event);
 		hotkey::jhat_event(event, get_hotkey_command_executor());
 		break;
 	case SDL_MOUSEMOTION:
@@ -98,7 +96,6 @@ void controller_base::handle_event(const SDL_Event& event)
 		}
 		break;
 	case SDL_MOUSEBUTTONDOWN:
-		process_keydown_event(event);
 		get_mouse_handler_base().mouse_press(event.button, is_browsing());
 		if (get_mouse_handler_base().get_show_menu()){
 			show_menu(get_display().get_theme().context_menu()->items(),event.button.x,event.button.y,true, get_display());
@@ -114,6 +111,12 @@ void controller_base::handle_event(const SDL_Event& event)
 	case SDL_MOUSEWHEEL:
 		get_mouse_handler_base().mouse_wheel(event.wheel.x, event.wheel.y, is_browsing());
 		break;
+		
+	// TODO: Support finger specifically, like pan the map. For now, SDL's "shadow mouse" events will do.
+	case SDL_FINGERMOTION:
+	case SDL_FINGERDOWN:
+	case SDL_FINGERUP:
+	case SDL_MULTIGESTURE:
 	default:
 		break;
 	}
