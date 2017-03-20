@@ -55,7 +55,6 @@ namespace resources
 	extern game_classification    *classification;
 	extern game_display           *screen;
 	extern filter_context	      *filter_con;
-	extern const mp_game_settings *mp_settings;
 	extern soundsource::manager   *soundsources;
 	extern replay                 *recorder;
 	extern fake_unit_manager      *fake_units;

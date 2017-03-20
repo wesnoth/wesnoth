@@ -132,7 +132,6 @@ static void clear_resources()
 	resources::recorder = nullptr;
 	resources::whiteboard.reset();
 	resources::classification = nullptr;
-	resources::mp_settings = nullptr;
 }
 
 play_controller::play_controller(const config& level, saved_game& state_of_game,
@@ -178,7 +177,6 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	resources::recorder = replay_.get();
 
 	resources::classification = &saved_game_.classification();
-	resources::mp_settings = &saved_game_.mp_settings();
 
 	persist_.start_transaction();
 

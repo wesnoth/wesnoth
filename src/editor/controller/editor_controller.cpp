@@ -164,7 +164,6 @@ editor_controller::~editor_controller()
 	resources::gameboard = nullptr;
 
 	resources::classification = nullptr;
-	resources::mp_settings = nullptr;
 }
 
 EXIT_STATUS editor_controller::main_loop()

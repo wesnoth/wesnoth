@@ -85,7 +85,6 @@ public:
 
 
 		resources::classification = &context_manager_.get_map_context().get_classification();
-		resources::mp_settings = &context_manager_.get_map_context().get_mp_settings();
 
 		context_manager_.gui().init_flags();
 
