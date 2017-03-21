@@ -44,6 +44,7 @@ REGISTER_DIALOG(attack_predictions)
 
 const unsigned int attack_predictions::graph_width = 300;
 const unsigned int attack_predictions::graph_height = 200;
+const unsigned int attack_predictions::graph_max_rows = 10;
 
 attack_predictions::attack_predictions(battle_context& bc, const unit& attacker, const unit& defender)
 	: attacker_data_(attacker, bc.get_attacker_combatant(), bc.get_attacker_stats())
@@ -311,35 +312,28 @@ void attack_predictions::draw_hp_graph(drawing& hp_graph, const combatant_data& 
 
 hp_probability_vector attack_predictions::get_hitpoint_probabilities(const std::vector<double>& hp_dist)
 {
-	hp_probability_vector res;
+	hp_probability_vector res, temp_vec;
 
-	// First, we sort the probabilities in ascending order.
-	std::vector<std::pair<double, int>> prob_hp_vector;
-	int i;
-
-	for(i = 0; i < static_cast<int>(hp_dist.size()); i++) {
-		double prob = hp_dist[i];
+	// First, extract any relevant probability values
+	for(int i = 0; i < static_cast<int>(hp_dist.size()); ++i) {
+		const double prob = hp_dist[i];
 
 		// We keep only values above 0.1%.
 		if(prob > 0.001) {
-			prob_hp_vector.push_back(std::pair<double, int>(prob, i));
+			temp_vec.push_back({i, prob});
 		}
 	}
 
-	std::sort(prob_hp_vector.begin(), prob_hp_vector.end());
+	// Then sort by descending probability.
+	std::sort(temp_vec.begin(), temp_vec.end(), [](const hp_probability_t& pair1, const hp_probability_t& pair2) {
+		return pair1.second > pair2.second;
+	});
 
-	// We store a few of the highest probability hitpoint values.
-	int nb_elem = std::min<int>(10, prob_hp_vector.size());
-	//int nb_elem = prob_hp_vector.size();
+	// Take only the highest probability values.;
+	std::copy_n(temp_vec.begin(), std::min<int>(graph_max_rows, temp_vec.size()), std::back_inserter(res));
 
-	for(i = prob_hp_vector.size() - nb_elem; i < static_cast<int>(prob_hp_vector.size()); i++) {
-
-		res.push_back(std::pair<int, double>
-			(prob_hp_vector[i].second, prob_hp_vector[i].first));
-		}
-
-	// Then, we sort the hitpoint values in ascending order.
-	std::sort(res.begin(), res.end());
+	// Then, we sort the hitpoint values in descending order.
+	std::sort(res.begin(), res.end(), std::greater<hp_probability_t>());
 
 	return res;
 }

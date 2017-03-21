@@ -33,7 +33,8 @@ class drawing;
 namespace dialogs
 {
 
-using hp_probability_vector = std::vector<std::pair<int, double>>;
+using hp_probability_t = std::pair<int, double>;
+using hp_probability_vector = std::vector<hp_probability_t>;
 
 class attack_predictions : public modal_dialog
 {
@@ -71,6 +72,7 @@ private:
 
 	static const unsigned int graph_width;
 	static const unsigned int graph_height;
+	static const unsigned int graph_max_rows;
 
 	void draw_hp_graph(drawing& hp_graph, const combatant_data& attacker, const combatant_data& defender);
 
