@@ -14,8 +14,6 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "attack_prediction_display.hpp"
-
 #include "gui/dialogs/unit_attack.hpp"
 
 #include "font/text_formatting.hpp"
@@ -91,16 +89,7 @@ unit_attack::unit_attack(const unit_map::iterator& attacker_itor,
 void unit_attack::damage_calc_callback(window& window)
 {
 	const size_t index = find_widget<listbox>(&window, "weapon_list", false).get_selected_row();
-
-	if(gui2::new_widgets) {
-		attack_predictions::display(weapons_[index], *attacker_itor_, *defender_itor_, window.video());
-	}
-
-	// TODO: remove when the GUI2 dialog is complete
-	battle_prediction_pane battle_pane(weapons_[index], (*attacker_itor_).get_location(), (*defender_itor_).get_location());
-	std::vector<gui::preview_pane*> preview_panes = {&battle_pane};
-
-	gui::show_dialog(window.video(), nullptr, _("Damage Calculations"), "", gui::OK_ONLY, nullptr, &preview_panes);
+	attack_predictions::display(weapons_[index], *attacker_itor_, *defender_itor_, window.video());
 }
 
 void unit_attack::pre_show(window& window)
