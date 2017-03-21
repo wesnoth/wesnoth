@@ -20,6 +20,7 @@
 #include "gui/core/log.hpp"
 #include "gui/core/layout_exception.hpp"
 #include "gui/widgets/styled_widget.hpp"
+#include "gui/widgets/window.hpp"
 
 #include <numeric>
 
@@ -375,6 +376,43 @@ void grid::request_reduce_height(const unsigned maximum_height)
 void grid::demand_reduce_height(const unsigned /*maximum_height*/)
 {
 	/** @todo Implement. */
+}
+
+void grid::relayout()
+{
+	point size = get_size();
+	point best_size = calculate_best_size();
+	if(size.x >= best_size.x && size.y >= best_size.y) {
+		place(get_origin(), size);
+		return;
+	}
+
+	recalculate_best_size();
+
+	if(size.y >= best_size.y) {
+		// We have enough space in the Y direction, but not in the X direction.
+		// Try wrapping the content.
+		request_reduce_width(size.x);
+		best_size = get_best_size();
+
+		if(size.x >= best_size.x && size.y >= best_size.y) {
+			// Wrapping succeeded, we still fit vertically.
+			place(get_origin(), size);
+			return;
+		} else {
+			// Wrapping failed, we no longer fit.
+			// Reset the sizes of child widgets.
+			layout_initialise(true);
+		}
+	}
+
+	// Not enough space, ask the parent grid for more.
+	grid* parent = get_parent_grid();
+	if(parent != nullptr) {
+		parent->relayout();
+	} else {
+		get_window()->invalidate_layout();
+	}
 }
 
 point grid::recalculate_best_size()

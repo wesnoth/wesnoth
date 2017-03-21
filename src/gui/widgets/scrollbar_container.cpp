@@ -582,10 +582,11 @@ bool scrollbar_container::content_resize_request(const bool force_sizing)
 				  == widget::visibility::invisible)) {
 
 			DBG_GUI_L << LOG_HEADER
-					  << " can't use horizontal scrollbar, ask window.\n";
-			window* window = get_window();
-			assert(window);
-			window->invalidate_layout();
+					  << " can't use horizontal scrollbar, ask grid.\n";
+			layout_initialise(true);
+			grid* grid = get_parent_grid();
+			assert(grid);
+			grid->relayout();
 			return false;
 		}
 	}
@@ -598,10 +599,11 @@ bool scrollbar_container::content_resize_request(const bool force_sizing)
 				  == widget::visibility::invisible)) {
 
 			DBG_GUI_L << LOG_HEADER
-					  << " can't use vertical scrollbar, ask window.\n";
-			window* window = get_window();
-			assert(window);
-			window->invalidate_layout();
+					  << " can't use vertical scrollbar, ask grid.\n";
+			layout_initialise(true);
+			grid* grid = get_parent_grid();
+			assert(grid);
+			grid->relayout();
 			return false;
 		}
 	}
