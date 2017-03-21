@@ -134,11 +134,10 @@ bool
 //
 // Music constants
 //
-std::string
-	title_music,
-	lobby_music,
-	default_victory_music,
-	default_defeat_music;
+std::string title_music, lobby_music;
+
+std::vector<std::string> default_defeat_music;
+std::vector<std::string> default_victory_music;
 
 //
 // Color info
@@ -272,8 +271,9 @@ void load_config(const config &v)
 
 	title_music           = v["title_music"].str();
 	lobby_music           = v["lobby_music"].str();
-	default_victory_music = v["default_victory_music"].str();
-	default_defeat_music  = v["default_defeat_music"].str();
+
+	default_victory_music = utils::split(v["default_victory_music"].str());
+	default_defeat_music  = utils::split(v["default_defeat_music"].str());
 
 	if(const config& i = v.child("colors")){
 		using namespace game_config::colors;

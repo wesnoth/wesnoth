@@ -907,14 +907,14 @@ void play_controller::set_victory_music_list(const std::string& list)
 {
 	victory_music_ = utils::split(list);
 	if(victory_music_.empty())
-		victory_music_ = utils::split(game_config::default_victory_music);
+		victory_music_ = game_config::default_victory_music;
 }
 
 void play_controller::set_defeat_music_list(const std::string& list)
 {
 	defeat_music_  = utils::split(list);
 	if(defeat_music_.empty())
-		defeat_music_ = utils::split(game_config::default_defeat_music);
+		defeat_music_ = game_config::default_defeat_music;
 }
 
 void play_controller::check_victory()
