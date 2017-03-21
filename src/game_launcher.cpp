@@ -1007,7 +1007,6 @@ void game_launcher::clear_loaded_game()
 game_launcher::~game_launcher()
 {
 	try {
-		gui::dialog::delete_empty_menu();
 		sound::close_sound();
 	} catch (...) {}
 }

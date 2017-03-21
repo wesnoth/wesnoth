@@ -146,60 +146,8 @@ public:
 
 	typedef DIALOG_RESULT RESULT;
 
-	virtual RESULT button_pressed(int menu_selection) = 0;
+	virtual RESULT button_pressed() = 0;
 };
-
-struct dialog_button_info
-{
-	dialog_button_info(dialog_button_action* handler, const std::string& label) : handler(handler), label(label)
-	{}
-
-	dialog_button_action* handler;
-	std::string label;
-};
-
-enum DIALOG_TYPE { MESSAGE, OK_ONLY, YES_NO, OK_CANCEL, CANCEL_ONLY, CLOSE_ONLY, NULL_DIALOG };
-
-struct check_item {
-	check_item(const std::string& label, bool checked) : label(label), checked(checked) {}
-	std::string label;
-	bool checked;
-};
-
-//an interface for a 'preview pane'. A preview pane is shown beside a dialog created
-//by 'show_dialog' and shows information about the selection.
-class preview_pane : public widget {
-public:
-	preview_pane(CVideo &video) : widget(video, false) {}
-	virtual ~preview_pane() { tooltips::clear_tooltips(location()); }
-
-	virtual bool show_above() const { return false; }
-	virtual bool left_side() const = 0;
-	virtual void set_selection(int index) = 0;
-	virtual sdl_handler_vector handler_members() { return widget::handler_members(); }
-};
-
-//if a menu is given, then returns -1 if the dialog was canceled, and the
-//index of the selection otherwise. If no menu is given, returns the index
-//of the button that was pressed
-int show_dialog(CVideo& video, surface image,
-				const std::string& caption, const std::string& message,
-				DIALOG_TYPE type=MESSAGE,
-				const std::vector<std::string>* menu_items=nullptr,
-				const std::vector<preview_pane*>* preview_panes=nullptr,
-				const std::string& text_widget_label="",
-				std::string* text_widget_text=nullptr,
-				const int text_widget_max_chars = 256,
-				std::vector<check_item>* options=nullptr,
-				int xloc=-1,
-				int yloc=-1,
-				const dialog_frame::style* dialog_style=nullptr,
-				std::vector<dialog_button_info>* buttons=nullptr,
-				const menu::sorter* sorter=nullptr,
-				menu::style* menu_style=nullptr
-			 );
-
-void check_quit(CVideo &video);
 
 }
 
