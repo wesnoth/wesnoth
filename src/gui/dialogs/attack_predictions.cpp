@@ -42,8 +42,8 @@ namespace dialogs
 
 REGISTER_DIALOG(attack_predictions)
 
-const unsigned int attack_predictions::graph_width = 300;
-const unsigned int attack_predictions::graph_height = 200;
+const unsigned int attack_predictions::graph_width = 270;
+const unsigned int attack_predictions::graph_height = 170;
 const unsigned int attack_predictions::graph_max_rows = 10;
 
 attack_predictions::attack_predictions(battle_context& bc, const unit& attacker, const unit& defender)
@@ -161,6 +161,13 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 		// Resistance modifier.
 		const int resistance_modifier = defender.unit_.damage_from(*weapon, !attacker.stats_.is_attacker, defender.unit_.get_location());
 		if(resistance_modifier != 100) {
+			// TODO
+			//if(attacker.stats_.is_attacker) {
+			//	ss << "Defender resistance vs ";
+			//} else {
+			//	ss << "Attacker vulnerability vs ";
+			//}
+
 			ss << string_table["type_" + weapon->type()] << ": ";
 			ss << font::unicode_multiplication_sign << (resistance_modifier / 100) << "." << ((resistance_modifier % 100) / 10);
 
@@ -199,7 +206,7 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 		set_label_helper("attack", _("No usable weapon"));
 	}
 
-	const color_t ndc_color = game_config::red_to_green(attacker.combatant_.untouched * 10);
+	const color_t ndc_color = game_config::red_to_green(attacker.combatant_.untouched * 100);
 
 	// Unscathed probability.
 	set_label_helper("no_damage_chance",
@@ -213,13 +220,14 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 void attack_predictions::draw_hp_graph(drawing& hp_graph, const combatant_data& attacker, const combatant_data& defender)
 {
 	// Font size. If you change this, you must update the separator space.
+	// TODO: probably should remove this.
 	const int fs = font::SIZE_SMALL;
 
 	// Space before HP separator.
-	const int hp_sep = 24 + 6;
+	const int hp_sep = 30;
 
 	// Space after percentage separator.
-	const int percent_sep = 43 + 6;
+	const int percent_sep = 50;
 
 	// Bar space between both separators.
 	const int bar_space = graph_width - hp_sep - percent_sep - 4;
@@ -264,7 +272,7 @@ void attack_predictions::draw_hp_graph(drawing& hp_graph, const combatant_data& 
 		}
 
 		shape["text"] = hp;
-		shape["x"] = 2;
+		shape["x"] = 4;
 		shape["y"] = 2 + (fs + 2) * i;
 		shape["w"] = "(text_width)";
 		shape["h"] = "(text_height)";
