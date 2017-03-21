@@ -1478,7 +1478,6 @@ void canvas::blit(surface& surf, SDL_Rect rect)
 void canvas::parse_cfg(const config& cfg)
 {
 	log_scope2(log_gui_parse, "Canvas: parsing config.");
-	shapes_.clear();
 
 	for(const auto & shape : cfg.all_children_range())
 	{

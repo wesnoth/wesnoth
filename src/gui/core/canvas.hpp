@@ -106,6 +106,19 @@ public:
 	 */
 	void set_cfg(const config& cfg)
 	{
+		shapes_.clear();
+		parse_cfg(cfg);
+	}
+
+	/**
+	 * Appends data to the config.
+	 *
+	 * @param cfg                 The config object with the data to draw, see
+	 *                            http://www.wesnoth.org/wiki/GUICanvasWML for
+	 *                            more information.
+	 */
+	void append_cfg(const config& cfg)
+	{
 		parse_cfg(cfg);
 	}
 
