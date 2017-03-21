@@ -21,6 +21,7 @@
 
 #include "log.hpp" //LOG_STREAM
 #include "variable.hpp" //scoped_wml_variable
+#include "serialization/string_utils.hpp"
 
 #include <boost/range/adaptor/reversed.hpp>
 
@@ -39,6 +40,10 @@ game_data::game_data(const config& level)
 	, phase_(INITIAL)
 	, can_end_turn_(level["can_end_turn"].to_bool(true))
 	, next_scenario_(level["next_scenario"])
+	, id_(level["id"])
+	, theme_(level["theme"])
+	, defeat_music_(utils::split(level["defeat_music"]))
+	, victory_music_(utils::split(level["victory_music"]))
 {
 }
 
@@ -121,6 +126,10 @@ void game_data::clear_variable(const std::string& varname)
 void game_data::write_snapshot(config& cfg) const
 {
 	cfg["next_scenario"] = next_scenario_;
+	cfg["id"] = id_;
+	cfg["theme"] = theme_;
+	cfg["defeat_music"] = utils::join(defeat_music_);
+	cfg["victory_music"] = utils::join(victory_music_);
 
 	cfg["can_end_turn"] = can_end_turn_;
 

@@ -274,13 +274,6 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 		ai_testing::log_game_end();
 
 		const end_level_data& end_level = get_end_level_data_const();
-		if (!end_level.transient.custom_endlevel_music.empty()) {
-			if (!is_victory) {
-				set_defeat_music_list(end_level.transient.custom_endlevel_music);
-			} else {
-				set_victory_music_list(end_level.transient.custom_endlevel_music);
-			}
-		}
 
 		if (gamestate().board_.teams().empty())
 		{
@@ -327,7 +320,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 		// result for something that is not story-wise
 		// a victory, so let them use [music] tags
 		// instead should they want special music.
-		const std::string& end_music = is_victory ? select_victory_music() : select_defeat_music();
+		const std::string& end_music = select_music(is_victory);
 		if((!is_victory || end_level.transient.carryover_report) && !end_music.empty()) {
 			sound::play_music_once(end_music);
 		}

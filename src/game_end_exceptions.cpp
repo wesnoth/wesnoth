@@ -21,7 +21,6 @@
 transient_end_level::transient_end_level()
 	: carryover_report(true)
 	, linger_mode(true)
-	, custom_endlevel_music()
 	, reveal_map(true)
 {}
 
@@ -70,5 +69,4 @@ void transient_end_level::write(config& cfg) const
 	cfg["carryover_report"] = carryover_report;
 	cfg["linger_mode"] = linger_mode;
 	cfg["reveal_map"] = reveal_map;
-	cfg["music"] = custom_endlevel_music;
 }

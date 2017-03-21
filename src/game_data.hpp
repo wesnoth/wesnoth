@@ -88,6 +88,18 @@ public:
 	const std::string& next_scenario() const { return next_scenario_; }
 	void set_next_scenario(const std::string& next_scenario) { next_scenario_ = next_scenario; }
 
+	const std::string& get_id() const { return id_; }
+	void set_id(const std::string& value) { id_ = value; }
+
+	const std::string& get_theme() const { return theme_; }
+	void set_theme(const std::string& value) { theme_ = value; }
+
+	const std::vector<std::string>& get_defeat_music() const { return defeat_music_; }
+	void set_defeat_music(std::vector<std::string> value) { defeat_music_ = std::move(value); }
+
+	const std::vector<std::string>& get_victory_music() const { return victory_music_; }
+	void set_victory_music(std::vector<std::string> value) { victory_music_ = std::move(value); }
+
 private:
 	void activate_scope_variable(std::string var_name) const;
 	///Used to delete variables.
@@ -101,7 +113,13 @@ private:
 	config variables_;
 	PHASE phase_;
 	bool can_end_turn_;
-	std::string next_scenario_;                       /**< the scenario coming next (for campaigns) */
+	/// the scenario coming next (for campaigns)
+	std::string next_scenario_;
+	// the id of a scenario cannot change during a scenario
+	std::string id_;
+	std::string theme_;
+	std::vector<std::string> defeat_music_;
+	std::vector<std::string> victory_music_;
 };
 
 #endif

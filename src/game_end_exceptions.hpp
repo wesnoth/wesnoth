@@ -82,7 +82,6 @@ struct transient_end_level{
 
 	bool carryover_report;             /**< Should a summary of the scenario outcome be displayed? */
 	bool linger_mode;                  /**< Should linger mode be invoked? */
-	std::string custom_endlevel_music; /**< Custom short music played at the end. */
 	bool reveal_map;                   /**< Should we reveal map when game is ended? (Multiplayer only) */
 	
 	void write(config& cfg) const;

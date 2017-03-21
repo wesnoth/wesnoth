@@ -230,7 +230,7 @@ public:
 
 	std::string theme() const
 	{
-		return level_["theme"].str();
+		return gamestate_->get_game_data()->get_theme();
 	}
 
 	virtual bool should_return_to_play_side() const
@@ -343,10 +343,7 @@ protected:
 	 * (false = we did init sides before we reloaded the game).
 	 */
 	bool init_side_done_now_;
-	const std::string& select_victory_music() const;
-	const std::string& select_defeat_music()  const;
-	void set_victory_music_list(const std::string& list);
-	void set_defeat_music_list(const std::string& list);
+	const std::string& select_music(bool victory) const;
 
 	void reset_gamestate(const config& level, int replay_pos);
 

@@ -1233,6 +1233,9 @@ int game_lua_kernel::impl_game_config_get(lua_State *L)
 	return_bool_attrib("debug", game_config::debug);
 	return_bool_attrib("debug_lua", game_config::debug_lua);
 	return_bool_attrib("mp_debug", game_config::mp_debug);
+	return_string_attrib("scenario_id", gamedata().get_id());
+	return_vector_string_attrib("defeat_music", gamedata().get_defeat_music());
+	return_vector_string_attrib("victory_music", gamedata().get_victory_music());
 
 	const mp_game_settings& mp_settings = play_controller_.get_mp_settings();
 	const game_classification & classification = play_controller_.get_classification();
@@ -1276,7 +1279,8 @@ int game_lua_kernel::impl_game_config_set(lua_State *L)
 	modify_int_attrib("kill_experience", game_config::kill_experience = value);
 	modify_int_attrib("last_turn", tod_man().set_number_of_turns_by_wml(value));
 	modify_string_attrib("next_scenario", gamedata().set_next_scenario(value));
-
+	modify_vector_string_attrib("defeat_music", gamedata().set_defeat_music(std::move(vector)));
+	modify_vector_string_attrib("victory_music", gamedata().set_victory_music(std::move(vector)));
 	std::string err_msg = "unknown modifiable property of game_config: ";
 	err_msg += m;
 	return luaL_argerror(L, 2, err_msg.c_str());
@@ -1407,7 +1411,6 @@ static int impl_end_level_data_get(lua_State* L)
 	const end_level_data& data = *static_cast<end_level_data*>(lua_touserdata(L, 1));
 	const char* m = luaL_checkstring(L, 2);
 
-	return_string_attrib("music", data.transient.custom_endlevel_music);
 	return_bool_attrib("linger_mode", data.transient.linger_mode);
 	return_bool_attrib("reveal_map", data.transient.reveal_map);
 	return_bool_attrib("carryover_report", data.transient.carryover_report);
@@ -1440,7 +1443,6 @@ int game_lua_kernel::impl_end_level_data_set(lua_State* L)
 	const char* m = luaL_checkstring(L, 2);
 	end_level_committer commit(data, play_controller_);
 
-	modify_string_attrib("music", data.transient.custom_endlevel_music = value);
 	modify_bool_attrib("linger_mode", data.transient.linger_mode = value);
 	modify_bool_attrib("reveal_map", data.transient.reveal_map = value);
 	modify_bool_attrib("carryover_report", data.transient.carryover_report = value);
@@ -1483,7 +1485,6 @@ int game_lua_kernel::intf_end_level(lua_State *L)
 	end_level_data data;
 
 	data.proceed_to_next_level = cfg["proceed_to_next_level"].to_bool(true);
-	data.transient.custom_endlevel_music = cfg["music"].str();
 	data.transient.carryover_report = cfg["carryover_report"].to_bool(true);
 	data.prescenario_save = cfg["save"].to_bool(true);
 	data.replay_save = cfg["replay_save"].to_bool(true);
