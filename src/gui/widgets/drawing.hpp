@@ -20,6 +20,8 @@
 #include "gui/core/widget_definition.hpp"
 #include "gui/core/window_builder.hpp"
 
+class config;
+
 namespace gui2
 {
 
@@ -36,6 +38,21 @@ class drawing : public styled_widget
 public:
 	drawing() : styled_widget(COUNT), best_size_(0, 0)
 	{
+	}
+
+	canvas& get_drawing_canvas()
+	{
+		return get_canvas().front();
+	}
+
+	void set_drawing_data(const ::config& cfg)
+	{
+		get_drawing_canvas().set_cfg(cfg);
+	}
+
+	void append_drawing_data(const ::config& cfg)
+	{
+		get_drawing_canvas().append_cfg(cfg);
 	}
 
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/

@@ -190,7 +190,7 @@ widget* builder_drawing::build() const
 		widget->set_best_size(point(w, h));
 	}
 
-	widget->get_canvas().front().set_cfg(draw);
+	widget->set_drawing_data(draw);
 
 	DBG_GUI_G << "Window builder: placed drawing '" << id
 			  << "' with definition '" << definition << "'.\n";
