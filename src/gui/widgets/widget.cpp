@@ -14,6 +14,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
+#include "gui/widgets/grid.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "gui/core/event/message.hpp"
@@ -135,6 +136,16 @@ const window* widget::get_window() const
 
 	// on error dynamic_cast returns nullptr which is what we want.
 	return dynamic_cast<const window*>(result);
+}
+
+grid* widget::get_parent_grid()
+{
+	widget* result = parent_;
+	while(result && dynamic_cast<grid*>(result) == nullptr) {
+		result = result->parent_;
+	}
+
+	return result ? dynamic_cast<grid*>(result) : nullptr;
 }
 
 dialogs::modal_dialog* widget::dialog()

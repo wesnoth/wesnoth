@@ -32,6 +32,7 @@ namespace gui2
 struct builder_widget;
 namespace dialogs { class modal_dialog; }
 class window;
+class grid;
 
 namespace iteration
 {
@@ -176,9 +177,17 @@ public:
 	 * Get the parent window.
 	 *
 	 * @returns                   Pointer to parent window.
-	 * @retval nullptr               No parent window found.
+	 * @retval nullptr            No parent window found.
 	 */
 	window* get_window();
+
+	/**
+	 * Get the parent grid.
+	 *
+	 * @returns                 Pointer to parent grid.
+	 * @retval nullptr          No parent grid found.
+	 */
+	grid* get_parent_grid();
 
 	/** The constant version of @ref get_window. */
 	const window* get_window() const;
