@@ -19,16 +19,21 @@
 #include "gui/dialogs/modal_dialog.hpp"
 #include "units/map.hpp"
 
-class  battle_context;
+class battle_context;
+class CVideo;
+
 struct battle_context_unit_stats;
-class  CVideo;
-struct map_location;
 struct combatant;
+struct map_location;
 
 namespace gui2
 {
+class drawing;
+
 namespace dialogs
 {
+
+using hp_probability_vector = std::vector<std::pair<int, double>>;
 
 class attack_predictions : public modal_dialog
 {
@@ -61,6 +66,13 @@ private:
 	};
 
 	void set_data(window& window, const combatant_data& attacker, const combatant_data& defender);
+
+	hp_probability_vector get_hitpoint_probabilities(const std::vector<double>& hp_dist);
+
+	static const unsigned int graph_width;
+	static const unsigned int graph_height;
+
+	void draw_hp_graph(drawing& hp_graph, const combatant_data& attacker, const combatant_data& defender);
 
 	combatant_data attacker_data_;
 	combatant_data defender_data_;
