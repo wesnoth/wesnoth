@@ -109,7 +109,7 @@ void end_credits::pre_show(window& window)
 	}
 
 	// TODO: implement showing all available images as the credits scroll
-	window.get_canvas()[0].set_variable("background_image", variant(backgrounds_[0]));
+	window.get_canvas(0).set_variable("background_image", variant(backgrounds_[0]));
 
 	text_widget_ = find_widget<scroll_label>(&window, "text", false, true);
 

@@ -452,14 +452,14 @@ void styled_widget::definition_load_configuration(const std::string& control_typ
 	assert(!config());
 
 	set_config(get_control(control_type, definition_));
-	if(get_canvas().size() != config()->state.size())
+	if(get_canvases().size() != config()->state.size())
 	{
 		// TODO: Some widgets (toggle panel, toggle button) have a variable canvas count which is determined by its definition.
 		// I think we should remove the canvas_count from tcontrols constructor and always read it from the definition.
 		DBG_GUI_L << "Corrected canvas count to " << config()->state.size() << std::endl;
-		get_canvas() = std::vector<canvas>(config()->state.size());
+		get_canvases() = std::vector<canvas>(config()->state.size());
 	}
-	for(size_t i = 0; i < get_canvas().size(); ++i) {
+	for(size_t i = 0; i < get_canvases().size(); ++i) {
 		get_canvas(i) = config()->state[i].canvas_;
 	}
 

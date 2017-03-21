@@ -282,7 +282,7 @@ public:
 	}
 
 	// const versions will be added when needed
-	std::vector<canvas>& get_canvas()
+	std::vector<canvas>& get_canvases()
 	{
 		return canvas_;
 	}

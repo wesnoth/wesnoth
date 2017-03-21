@@ -265,7 +265,7 @@ void slider::update_canvas()
 	// Inherited.
 	scrollbar_base::update_canvas();
 
-	for(auto & tmp : get_canvas())
+	for(auto & tmp : get_canvases())
 	{
 		tmp.set_variable("text", variant(get_value_label()));
 	}

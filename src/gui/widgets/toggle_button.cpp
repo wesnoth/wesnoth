@@ -102,7 +102,7 @@ void toggle_button::update_canvas()
 	styled_widget::update_canvas();
 
 	// set icon in canvases
-	std::vector<canvas>& canvases = styled_widget::get_canvas();
+	std::vector<canvas>& canvases = styled_widget::get_canvases();
 	for(auto & canvas : canvases)
 	{
 		canvas.set_variable("icon", variant(icon_name_));

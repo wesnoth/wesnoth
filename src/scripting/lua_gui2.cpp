@@ -718,7 +718,7 @@ int intf_set_dialog_canvas(lua_State *L)
 	gui2::styled_widget *c = dynamic_cast<gui2::styled_widget *>(w);
 	if (!c) return luaL_argerror(L, lua_gettop(L), "unsupported widget");
 
-	std::vector<gui2::canvas> &cv = c->get_canvas();
+	std::vector<gui2::canvas> &cv = c->get_canvases();
 	if (i < 1 || unsigned(i) > cv.size())
 		return luaL_argerror(L, 1, "out of bounds");
 

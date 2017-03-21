@@ -149,7 +149,7 @@ void scrollbar_base::set_item_position(const unsigned item_position)
 void scrollbar_base::update_canvas()
 {
 
-	for(auto & tmp : get_canvas())
+	for(auto & tmp : get_canvases())
 	{
 		tmp.set_variable("positioner_offset", variant(positioner_offset_));
 		tmp.set_variable("positioner_length", variant(positioner_length_));
@@ -306,7 +306,7 @@ void scrollbar_base::move_positioner(const int distance)
 void scrollbar_base::load_config_extra()
 {
 	// These values won't change so set them here.
-	for(auto & tmp : get_canvas())
+	for(auto & tmp : get_canvases())
 	{
 		tmp.set_variable("offset_before", variant(offset_before()));
 		tmp.set_variable("offset_after", variant(offset_after()));

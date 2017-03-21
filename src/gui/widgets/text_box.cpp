@@ -167,7 +167,7 @@ void text_box::update_canvas()
 	const int max_width = get_text_maximum_width();
 	const int max_height = get_text_maximum_height();
 
-	for(auto & tmp : get_canvas())
+	for(auto & tmp : get_canvases())
 	{
 
 		tmp.set_variable("text", variant(get_value()));
@@ -263,7 +263,7 @@ void text_box::update_offsets()
 
 	// Since this variable doesn't change set it here instead of in
 	// update_canvas().
-	for(auto & tmp : get_canvas())
+	for(auto & tmp : get_canvases())
 	{
 		tmp.set_variable("text_font_height", variant(text_height_));
 	}

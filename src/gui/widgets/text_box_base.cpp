@@ -280,7 +280,7 @@ void text_box_base::cursor_timer_callback()
 			cursor_alpha_ = (~cursor_alpha_) & 0xFF;
 	}
 
-	for(auto& tmp : get_canvas()) {
+	for(auto& tmp : get_canvases()) {
 		tmp.set_variable("cursor_alpha", variant(cursor_alpha_));
 	}
 
@@ -295,7 +295,7 @@ void text_box_base::reset_cursor_state()
 
 	cursor_alpha_ = 255;
 
-	for(auto& tmp : get_canvas()) {
+	for(auto& tmp : get_canvases()) {
 		tmp.set_variable("cursor_alpha", variant(cursor_alpha_));
 	}
 

@@ -42,7 +42,7 @@ public:
 
 	canvas& get_drawing_canvas()
 	{
-		return get_canvas().front();
+		return get_canvas(0);
 	}
 
 	void set_drawing_data(const ::config& cfg)
