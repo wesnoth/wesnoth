@@ -79,7 +79,7 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 	const std::string widget_id_prefix = attacker.stats_.is_attacker ? "attacker" : "defender";
 
 	const auto get_prefixed_widget_id = [&widget_id_prefix](const std::string& id) {
-		return formatter() << widget_id_prefix << "_" << id;
+		return (formatter() << widget_id_prefix << "_" << id).str();
 	};
 
 	// Helpers for setting or hiding labels
