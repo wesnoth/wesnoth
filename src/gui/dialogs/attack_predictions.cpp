@@ -143,20 +143,20 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 		ss << weapon->damage() << " (<i>" << weapon->name() << "</i>)";
 	} else {
 		assert(set_dmg_effect->ability);
-		ss << set_dmg_effect->value << " (" << (*set_dmg_effect->ability)["name"] << ")";
+		ss << set_dmg_effect->value << " (<i>" << (*set_dmg_effect->ability)["name"] << "</i>)";
 	}
 
 	// Process the ADD damage modifiers.
 	for(const auto& e : dmg_effect) {
 		if(e.type == unit_abilities::ADD) {
 			ss << "\n";
-			ss << (*e.ability)["name"] << ": ";
 
 			if(e.value >= 0) {
 				ss << '+';
 			}
 
 			ss << e.value;
+			ss << " (<i>" << (*e.ability)["name"] << "</i>)";
 		}
 	}
 
@@ -164,7 +164,7 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 	for(const auto& e : dmg_effect) {
 		if(e.type == unit_abilities::MUL) {
 			ss << "\n";
-			ss << (*e.ability)["name"] << ": " << font::unicode_multiplication_sign << (e.value / 100);
+			ss << font::unicode_multiplication_sign << (e.value / 100);
 
 			if(e.value % 100) {
 				ss << "." << ((e.value % 100) / 10);
@@ -172,6 +172,8 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 					ss << (e.value % 10);
 				}
 			}
+
+			ss << " (<i>" << (*e.ability)["name"] << "</i>)";
 		}
 	}
 
