@@ -57,12 +57,8 @@ void scroll_label::set_label(const t_string& lbl)
 	styled_widget::set_label(lbl);
 
 	if(content_grid()) {
-		label* widget
-				= find_widget<label>(content_grid(), "_label", false, true);
+		label* widget = find_widget<label>(content_grid(), "_label", false, true);
 		widget->set_label(lbl);
-
-		// We want the width to stay cosistent
-		widget->request_reduce_width(widget->get_size().x);
 
 		content_resize_request();
 	}
