@@ -426,6 +426,8 @@ void addon_manager::pre_show(window& window)
 
 	on_addon_select(window);
 
+	window.set_enter_disabled(true);
+
 	window.keyboard_capture(&filter);
 	list.add_list_to_keyboard_chain();
 
