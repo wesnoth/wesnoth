@@ -113,7 +113,13 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 	//
 
 	if(!attacker.stats_.weapon) {
-		set_label_helper("attack", _("No usable weapon"));
+		set_label_helper("base_damage", _("No usable weapon"));
+
+		// FIXME: would rather have a list somewhere that I can loop over instead of hardcoding...
+		hide_label_helper("tod_modifier");
+		hide_label_helper("leadership_modifier");
+		hide_label_helper("slowed_modifier");
+
 		return;
 	}
 
