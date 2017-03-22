@@ -173,16 +173,6 @@ surface stretch_surface_vertical(
 	return dst;
 }
 
-Uint32 blend_rgba(const surface& surf, unsigned char r, unsigned char g, unsigned char b, unsigned char a, unsigned char drop)
-{
-	// We simply decrement each component.
-	if(r < drop) r = 0; else r -= drop;
-	if(g < drop) g = 0; else g -= drop;
-	if(b < drop) b = 0; else b -= drop;
-
-	return SDL_MapRGBA(surf->format, r, g, b, a);
-}
-
 surface scale_surface_xbrz(const surface & surf, size_t z)
 {
 	if(surf == nullptr)

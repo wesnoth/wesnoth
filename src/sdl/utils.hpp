@@ -40,16 +40,6 @@ inline void sdl_copy_portion(const surface& screen, SDL_Rect* screen_rect, surfa
 }
 
 /**
- * This method blends a RGBA color. The method takes as input a surface,
- * the RGB color to blend and a value specifying how much blending to apply.
- * The blended color is returned.
- * Caution: if you use a transparent color,
- * make sure the resulting color is not equal to the transparent color.
- */
-Uint32 blend_rgba(const surface& surf, unsigned char r, unsigned char g, unsigned char b,
-		unsigned char a, unsigned char drop);
-
-/**
  * Check that the surface is neutral bpp 32.
  *
  * The surface may have an empty alpha channel.
