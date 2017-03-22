@@ -657,8 +657,8 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 	int damage_multiplier = 100;
 	int tod_bonus = combat_modifier(rc.units(), rc.map(), displayed_unit_hex, u.alignment(), u.is_fearless());
 	damage_multiplier += tod_bonus;
-	int leader_bonus = 0;
-	if (under_leadership(rc.units(), displayed_unit_hex, &leader_bonus).valid())
+	int leader_bonus = under_leadership(rc.units(), displayed_unit_hex).first;
+	if (leader_bonus != 0)
 		damage_multiplier += leader_bonus;
 
 	bool slowed = u.get_state(unit::STATE_SLOWED);

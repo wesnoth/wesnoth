@@ -168,8 +168,8 @@ battle_context_unit_stats::battle_context_unit_stats(const unit &u,
 		// Time of day bonus.
 		damage_multiplier += combat_modifier(resources::gameboard->units(), resources::gameboard->map(), u_loc, u.alignment(), u.is_fearless());
 		// Leadership bonus.
-		int leader_bonus = 0;
-		if (under_leadership(units, u_loc, &leader_bonus).valid())
+		int leader_bonus = under_leadership(units, u_loc).first;
+		if (leader_bonus != 0)
 			damage_multiplier += leader_bonus;
 		// Resistance modifier.
 		damage_multiplier *= opp.damage_from(*weapon, !attacking, opp_loc);
@@ -1414,18 +1414,16 @@ void attack_unit_and_advance(const map_location &attacker, const map_location &d
 		advance_unit_at(advance_unit_params(defender).ai_advancements(ai_advancement));
 	}
 }
-map_location under_leadership(const unit_map& units, const map_location& loc,
-                              int* bonus)
+
+std::pair<int, map_location> under_leadership(const unit_map& units, const map_location& loc)
 {
 	const unit_map::const_iterator un = units.find(loc);
 	if(un == units.end()) {
-		return map_location::null_location();
+		return {0, map_location::null_location()};
 	}
+
 	unit_ability_list abil = un->get_abilities("leadership");
-	if(bonus) {
-		*bonus = abil.highest("value").first;
-	}
-	return abil.highest("value").second;
+	return abil.highest("value");
 }
 
 int combat_modifier(const unit_map & units, const gamemap & map, const map_location &loc, unit_type::ALIGNMENT alignment,

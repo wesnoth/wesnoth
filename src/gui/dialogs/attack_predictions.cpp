@@ -215,8 +215,7 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 	}
 
 	// Leadership bonus.
-	int leadership_bonus = 0;
-	under_leadership(resources::gameboard->units(), attacker.unit_.get_location(), &leadership_bonus);
+	const int leadership_bonus = under_leadership(resources::gameboard->units(), attacker.unit_.get_location()).first;
 
 	if(leadership_bonus != 0) {
 		set_label_helper("leadership_modifier", utils::signed_percent(leadership_bonus));

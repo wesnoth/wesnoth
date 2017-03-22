@@ -203,14 +203,13 @@ void attack_unit_and_advance(const map_location &attacker, const map_location &d
 				 const ai::unit_advancements_aspect& ai_advancement = ai::unit_advancements_aspect());
 
 /**
- * function which tests if the unit at loc is currently affected by leadership.
- * (i.e. has a higher-level 'leadership' unit next to it).
- * If it does, then the location of the leader unit will be returned,
- * Otherwise map_location::null_location() will be returned.
- * If 'bonus' is not nullptr, the % bonus will be stored in it.
+ * Tests if the unit at loc is currently affected by leadership.
+ * (i.e. has a higher-level unit with the 'leadership' ability next to it).
+ *
+ * Returns a pair of bonus percentage and the leader's location if the unit is affected,
+ * or 0 and map_location::null_location() otherwise.
  */
-map_location under_leadership(const unit_map& units, const map_location& loc,
-                              int* bonus=nullptr);
+std::pair<int, map_location> under_leadership(const unit_map& units, const map_location& loc);
 
 /**
  * Returns the amount that a unit's damage should be multiplied by
