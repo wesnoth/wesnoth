@@ -404,7 +404,7 @@ static bool enter_connect_mode(CVideo& video, const config& game_config,
 {
 	DBG_MP << "entering connect mode" << std::endl;
 
-	statistics::fresh_stats();
+	
 	std::unique_ptr<mp_campaign_info> campaign_info;
 	if(!local_players_only) {
 		assert(connection);
