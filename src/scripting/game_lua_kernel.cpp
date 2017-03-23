@@ -1463,7 +1463,7 @@ int game_lua_kernel::intf_get_end_level_data(lua_State* L)
 		return 0;
 	}
 	auto data = play_controller_.get_end_level_data_const();
-	new(L) end_level_data();
+	new(L) end_level_data(data);
 	if(luaL_newmetatable(L, "end level data")) {
 		static luaL_Reg const callbacks[] = {
 			{ "__index", 	    &impl_end_level_data_get},
