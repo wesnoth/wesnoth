@@ -31,7 +31,7 @@ class help_browser : public modal_dialog
 public:
 	help_browser();
 
-    static void display(CVideo& video)
+	static void display(CVideo& video)
 	{
 		help_browser().show(video);
 	}
@@ -46,6 +46,8 @@ private:
 
 	/** Inherited from modal_dialog. */
 	void pre_show(window& window);
+
+	void on_topic_select(window& window);
 };
 
 } // namespace dialogs
