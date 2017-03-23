@@ -32,7 +32,9 @@
 #include "gui/dialogs/game_version.hpp"
 #include "gui/dialogs/language_selection.hpp"
 #include "gui/dialogs/lua_interpreter.hpp"
+#include "game_config_manager.hpp"
 #include "gui/dialogs/message.hpp"
+#include "gui/dialogs/simple_item_selector.hpp"
 #include "gui/dialogs/multiplayer/mp_method_selection.hpp"
 #include "gui/dialogs/multiplayer/mp_host_game_prompt.hpp"
 //#define DEBUG_TOOLTIP
@@ -463,6 +465,28 @@ void title_screen::pre_show(window& win)
 	find_widget<button>(&win, "clock", false).set_visible(show_debug_clock_button
 		? widget::visibility::visible
 		: widget::visibility::invisible);
+
+	//
+	// Test scenarios
+	//	
+	if(!game_config::debug) {
+		find_widget<button>(&win, "tests", false).set_visible(window::visibility::invisible);
+	}
+	register_button(win, "tests", hotkey::HOTKEY_NULL, [this](window& w) {
+		std::vector<std::string> options;
+		for(const config &sc : game_config_manager::get()->game_config().child_range("test")) {
+			const std::string &id = sc["id"];
+			options.push_back(id);
+		}
+		std::sort(options.begin(), options.end());
+		gui2::dialogs::simple_item_selector dlg(_("Choose Test"), "", options);
+		dlg.show(game_.video());
+		int choice = dlg.selected_index();
+		if(choice >= 0) {
+			game_.set_test(options[choice]);
+			w.set_retval(LAUNCH_GAME);
+		}
+	});
 }
 
 void title_screen::on_resize(window& win)
