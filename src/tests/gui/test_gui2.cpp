@@ -65,6 +65,7 @@
 #include "gui/dialogs/game_save.hpp"
 #include "gui/dialogs/game_stats.hpp"
 #include "gui/dialogs/gamestate_inspector.hpp"
+#include "gui/dialogs/help_browser.hpp"
 #include "gui/dialogs/hotkey_bind.hpp"
 #include "gui/dialogs/label_settings.hpp"
 #include "gui/dialogs/language_selection.hpp"
@@ -426,6 +427,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<game_stats>();
 	test<gamestate_inspector>();
 	test<generator_settings>();
+	//test<help_browser>();
 	test<hotkey_bind>();
 	test<install_dependencies>();
 	test<language_selection>();
@@ -509,6 +511,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 		"mp_join_game",
 		"terrain_layers",
 		"attack_predictions",
+		"help_browser",
 	};
 	std::sort(list.begin(), list.end());
 	std::sort(omitted.begin(), omitted.end());

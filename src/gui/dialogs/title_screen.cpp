@@ -23,18 +23,19 @@
 #include "game_launcher.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
-#include "log.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/auxiliary/tips.hpp"
 #include "gui/core/timer.hpp"
 #include "gui/dialogs/core_selection.hpp"
 #include "gui/dialogs/debug_clock.hpp"
 #include "gui/dialogs/game_version.hpp"
+#include "gui/dialogs/help_browser.hpp"
 #include "gui/dialogs/language_selection.hpp"
 #include "gui/dialogs/lua_interpreter.hpp"
 #include "gui/dialogs/message.hpp"
-#include "gui/dialogs/multiplayer/mp_method_selection.hpp"
 #include "gui/dialogs/multiplayer/mp_host_game_prompt.hpp"
+#include "gui/dialogs/multiplayer/mp_method_selection.hpp"
+#include "log.hpp"
 //#define DEBUG_TOOLTIP
 #ifdef DEBUG_TOOLTIP
 #include "gui/dialogs/tooltip.hpp"
@@ -297,6 +298,10 @@ void title_screen::pre_show(window& win)
 	// Help
 	//
 	register_button(win, "help", hotkey::HOTKEY_HELP, [](window& w) {
+		//if(gui2::new_widgets) {
+			gui2::dialogs::help_browser::display(w.video());
+		//}
+
 		help::help_manager help_manager(&game_config_manager::get()->game_config());
 		help::show_help(w.video());
 	});
