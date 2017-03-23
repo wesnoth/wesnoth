@@ -1955,6 +1955,14 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\help_browser.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\hotkey_bind.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
@@ -4151,6 +4159,7 @@
     <ClInclude Include="..\..\src\gui\dialogs\game_stats.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\game_version.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\helper.hpp" />
+    <ClInclude Include="..\..\src\gui\dialogs\help_browser.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\hotkey_bind.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\label_settings.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\language_selection.hpp" />
