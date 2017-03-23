@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-03-19 00:05+0300\n"
+"POT-Creation-Date: 2017-03-23 08:11+0100\n"
 "PO-Revision-Date: 2010-10-04 14:32+0100\n"
 "Last-Translator: Klemen Košir <klemen913@gmail.com>\n"
 "Language-Team: Slovenian\n"
@@ -921,8 +921,8 @@ msgstr ""
 msgid "Runic Hammer"
 msgstr ""
 
-#. [item]: id=holly-water
 #. [object]
+#. [item]: id=holly-water
 #: data/core/editor/items.cfg:279 data/core/macros/items.cfg:278
 msgid "Holy Water"
 msgstr "Sveta voda"
@@ -965,8 +965,8 @@ msgstr "Neveljavno mesto"
 msgid "Gray Potion"
 msgstr ""
 
-#. [item]: id=potion-poison
 #. [object]: id={ID}
+#. [item]: id=potion-poison
 #: data/core/editor/items.cfg:333 data/core/macros/items.cfg:242
 msgid "Poison"
 msgstr "Strup"
@@ -1042,8 +1042,8 @@ msgstr ""
 msgid "Stone Tablet"
 msgstr ""
 
-#. [item]: id=storm-trident
 #. [object]
+#. [item]: id=storm-trident
 #: data/core/editor/items.cfg:417 data/core/macros/items.cfg:518
 #, fuzzy
 msgid "Storm Trident"
@@ -3173,7 +3173,7 @@ msgid "Weight of Revenge"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/core/macros/utils.cfg:688
+#: data/core/macros/utils.cfg:697
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr ""
 
@@ -3784,8 +3784,8 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:373 src/scripting/game_lua_kernel.cpp:2670
-#: src/scripting/game_lua_kernel.cpp:2705
+#: data/lua/wml/message.lua:373 src/scripting/game_lua_kernel.cpp:2673
+#: src/scripting/game_lua_kernel.cpp:2708
 msgid "input"
 msgstr ""
 
@@ -5222,58 +5222,6 @@ msgstr "Napaka pri komunikaciji s strežnikom."
 msgid "Could not find an add-on matching id $addon_id on the add-on server."
 msgstr ""
 
-#: src/attack_prediction_display.cpp:106 src/attack_prediction_display.cpp:238
-msgid "Attacker"
-msgstr "Napadalec"
-
-#: src/attack_prediction_display.cpp:107 src/attack_prediction_display.cpp:237
-#, fuzzy
-msgid "Defender"
-msgstr "Branitelj"
-
-#: src/attack_prediction_display.cpp:125
-#, fuzzy
-msgid "Expected Battle Result (HP)"
-msgstr "Pričakovan izid (hp)"
-
-#: src/attack_prediction_display.cpp:216
-msgid "Time of day"
-msgstr "Čas dneva"
-
-#: src/attack_prediction_display.cpp:226
-#, fuzzy
-msgid "Leadership"
-msgstr "Vodenje"
-
-#: src/attack_prediction_display.cpp:239
-#, fuzzy
-msgid " resistance vs "
-msgstr " odpornost na "
-
-#: src/attack_prediction_display.cpp:240
-#, fuzzy
-msgid " vulnerability vs "
-msgstr " šibkost na "
-
-#: src/attack_prediction_display.cpp:250
-msgid "Slowed"
-msgstr "Upočasnjen"
-
-#: src/attack_prediction_display.cpp:255 src/reports.cpp:918
-#, fuzzy
-msgid "Total damage"
-msgstr "Skupna škoda"
-
-#: src/attack_prediction_display.cpp:262
-#, fuzzy
-msgid "No usable weapon"
-msgstr "Ni orožja"
-
-#: src/attack_prediction_display.cpp:267
-#, fuzzy
-msgid "Chance of being unscathed"
-msgstr "Verjetnost da se ne poškuduje"
-
 #: src/chat_command_handler.cpp:99
 #, fuzzy
 msgid "Added to ignore list: $nick"
@@ -5725,32 +5673,32 @@ msgid "Anonymous player"
 msgstr "Anonimen krajevni igralec"
 
 #: src/game_initialization/connect_engine.cpp:986
-#: src/game_initialization/connect_engine.cpp:1282
+#: src/game_initialization/connect_engine.cpp:1285
 msgid "Computer Player"
 msgstr "Računalniški igralec"
 
-#: src/game_initialization/connect_engine.cpp:1025
+#: src/game_initialization/connect_engine.cpp:1028
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/game_initialization/connect_engine.cpp:1278
+#: src/game_initialization/connect_engine.cpp:1281
 #, fuzzy
 msgid "Network Player"
 msgstr "Mrežni igralec"
 
-#: src/game_initialization/connect_engine.cpp:1281
+#: src/game_initialization/connect_engine.cpp:1284
 msgid "Local Player"
 msgstr "Krajevni igralec"
 
-#: src/game_initialization/connect_engine.cpp:1283
+#: src/game_initialization/connect_engine.cpp:1286
 msgid "Empty"
 msgstr "Prazno"
 
-#: src/game_initialization/connect_engine.cpp:1286
+#: src/game_initialization/connect_engine.cpp:1289
 msgid "Reserved"
 msgstr "Rezervirano"
 
-#: src/game_initialization/connect_engine.cpp:1290
+#: src/game_initialization/connect_engine.cpp:1293
 msgid "--give--"
 msgstr ""
 
@@ -6193,18 +6141,6 @@ msgstr ""
 #: src/gui/core/linked_group_definition.cpp:41
 msgid "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
 msgstr ""
-
-#: src/gui/dialogs/addon/install_dependencies.cpp:38
-msgid ""
-"The selected add-on has the following dependency, which is not currently "
-"installed. Do you wish to install it before continuing?"
-msgid_plural ""
-"The selected add-on has the following dependencies, which are not currently "
-"installed. Do you wish to install them before continuing?"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
 
 #: src/gui/dialogs/game_load.hpp:42
 #, fuzzy
@@ -7187,16 +7123,16 @@ msgstr "na daleč"
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr ""
 
-#: src/play_controller.cpp:252
+#: src/play_controller.cpp:250
 msgid "time left for current turn"
 msgstr ""
 
-#: src/play_controller.cpp:254 src/replay_controller.cpp:115
+#: src/play_controller.cpp:252 src/replay_controller.cpp:115
 #, fuzzy
 msgid "current local time"
 msgstr "Trenutni vzdrževalec:"
 
-#: src/play_controller.cpp:988
+#: src/play_controller.cpp:986
 #, fuzzy
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
@@ -7205,12 +7141,12 @@ msgstr ""
 "Igre niso več sinhronizirane in se bodo morale končati. Ali naj shranim "
 "dnevnik napak iz igre?"
 
-#: src/play_controller.cpp:989
+#: src/play_controller.cpp:987
 #, fuzzy
 msgid "Error details:"
 msgstr "Napaka:"
 
-#: src/play_controller.cpp:1262
+#: src/play_controller.cpp:1260
 #, fuzzy
 msgid "No objectives available"
 msgstr "Na voljo ni nobenih ciljev"
@@ -7536,6 +7472,11 @@ msgstr "Posebnosti orožij"
 #, fuzzy
 msgid "None"
 msgstr "brez"
+
+#: src/reports.cpp:918
+#, fuzzy
+msgid "Total damage"
+msgstr "Skupna škoda"
 
 #: src/reports.cpp:1125 src/reports.cpp:1177
 #, fuzzy
@@ -8048,6 +7989,43 @@ msgstr "Zamenjaj z $player"
 #: src/whiteboard/manager.cpp:1103
 msgid "Whiteboard Options"
 msgstr ""
+
+#~ msgid "Attacker"
+#~ msgstr "Napadalec"
+
+#, fuzzy
+#~ msgid "Defender"
+#~ msgstr "Branitelj"
+
+#, fuzzy
+#~ msgid "Expected Battle Result (HP)"
+#~ msgstr "Pričakovan izid (hp)"
+
+#~ msgid "Time of day"
+#~ msgstr "Čas dneva"
+
+#, fuzzy
+#~ msgid "Leadership"
+#~ msgstr "Vodenje"
+
+#, fuzzy
+#~ msgid " resistance vs "
+#~ msgstr " odpornost na "
+
+#, fuzzy
+#~ msgid " vulnerability vs "
+#~ msgstr " šibkost na "
+
+#~ msgid "Slowed"
+#~ msgstr "Upočasnjen"
+
+#, fuzzy
+#~ msgid "No usable weapon"
+#~ msgstr "Ni orožja"
+
+#, fuzzy
+#~ msgid "Chance of being unscathed"
+#~ msgstr "Verjetnost da se ne poškuduje"
 
 #, fuzzy
 #~ msgid "pause at end of turn"

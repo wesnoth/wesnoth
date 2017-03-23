@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.9.10+dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-03-16 23:48-0400\n"
+"POT-Creation-Date: 2017-03-23 08:11+0100\n"
 "PO-Revision-Date: 2015-02-15 14:48+0300\n"
 "Last-Translator: Reinis Danne <rei4dan@gmail.com>\n"
 "Language-Team: none <>\n"
@@ -276,15 +276,15 @@ msgstr "Cena: "
 msgid "Recruit: "
 msgstr "Iesaucamais: "
 
-#: src/editor/controller/editor_controller.cpp:177
+#: src/editor/controller/editor_controller.cpp:176
 msgid "Fatal error"
 msgstr "Fatāla kļūda"
 
-#: src/editor/controller/editor_controller.cpp:206
+#: src/editor/controller/editor_controller.cpp:205
 msgid "Do you really want to quit?"
 msgstr "Vai tiešām vēlaties iziet?"
 
-#: src/editor/controller/editor_controller.cpp:208
+#: src/editor/controller/editor_controller.cpp:207
 #, fuzzy
 #| msgid ""
 #| "Do you really want to quit? Changes in the map since the last save will "
@@ -296,7 +296,7 @@ msgstr ""
 "Vai tiešām vēlaties iziet? Visas izmaiņas kartē kopš pēdējās saglabāšanas "
 "tiks zaudētas."
 
-#: src/editor/controller/editor_controller.cpp:210
+#: src/editor/controller/editor_controller.cpp:209
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -304,102 +304,102 @@ msgstr ""
 "Vai tiešām vēlaties iziet? Sekojošas kartes tika modificētas, un visas "
 "izmaiņas kopš pēdējās saglabāšanas tiks zaudētas:"
 
-#: src/editor/controller/editor_controller.cpp:220
+#: src/editor/controller/editor_controller.cpp:219
 msgid "No editor time-of-day found."
 msgstr "Netika atrasts redaktora diennakts laiks."
 
-#: src/editor/controller/editor_controller.cpp:1132
+#: src/editor/controller/editor_controller.cpp:1131
 msgid "Change Unit ID"
 msgstr "Mainīt vienības ID"
 
-#: src/editor/controller/editor_controller.cpp:1133
+#: src/editor/controller/editor_controller.cpp:1132
 msgid "ID:"
 msgstr "ID:"
 
-#: src/editor/controller/editor_controller.cpp:1149
+#: src/editor/controller/editor_controller.cpp:1148
 msgid "Rename Unit"
 msgstr "Pārsaukt vienību"
 
-#: src/editor/controller/editor_controller.cpp:1150
+#: src/editor/controller/editor_controller.cpp:1149
 msgid "Name:"
 msgstr "Vārds:"
 
-#: src/editor/map/context_manager.cpp:126
-#: src/editor/map/context_manager.cpp:287
+#: src/editor/map/context_manager.cpp:125
+#: src/editor/map/context_manager.cpp:286
 msgid "(New Map)"
 msgstr "(Jauna karte)"
 
-#: src/editor/map/context_manager.cpp:192
+#: src/editor/map/context_manager.cpp:191
 msgid "Load Map"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:289
+#: src/editor/map/context_manager.cpp:288
 msgid "(New Scenario)"
 msgstr "(Jauns Scenārijs)"
 
-#: src/editor/map/context_manager.cpp:316
+#: src/editor/map/context_manager.cpp:315
 msgid "No Recent Files"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:353
+#: src/editor/map/context_manager.cpp:352
 msgid "(Unnamed Area)"
 msgstr "(Nenosaukta platība)"
 
-#: src/editor/map/context_manager.cpp:382
+#: src/editor/map/context_manager.cpp:381
 msgid "(New Side)"
 msgstr "(Jauna puse)"
 
-#: src/editor/map/context_manager.cpp:451
+#: src/editor/map/context_manager.cpp:450
 msgid "Apply Mask"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:460
+#: src/editor/map/context_manager.cpp:459
 msgid "Error loading mask"
 msgstr "Kļūda ielādējot masku"
 
-#: src/editor/map/context_manager.cpp:479
+#: src/editor/map/context_manager.cpp:478
 msgid "Identifier:"
 msgstr "Identificētājs:"
 
-#: src/editor/map/context_manager.cpp:479
+#: src/editor/map/context_manager.cpp:478
 msgid "Rename Area"
 msgstr "Pārsaukt laukumu"
 
-#: src/editor/map/context_manager.cpp:493
+#: src/editor/map/context_manager.cpp:492
 msgid "Choose Target Map"
 msgstr "Izvēlieties mērķa karti"
 
-#: src/editor/map/context_manager.cpp:502
-#: src/editor/map/context_manager.cpp:925
+#: src/editor/map/context_manager.cpp:501
+#: src/editor/map/context_manager.cpp:924
 msgid "Error loading map"
 msgstr "Kļūda ielādējot karti"
 
-#: src/editor/map/context_manager.cpp:617
+#: src/editor/map/context_manager.cpp:616
 #, fuzzy
 #| msgid "Save the Map As"
 msgid "Save Map As"
 msgstr "Saglabāt karti kā"
 
-#: src/editor/map/context_manager.cpp:638
+#: src/editor/map/context_manager.cpp:637
 #, fuzzy
 #| msgid "Save the Scenario As"
 msgid "Save Scenario As"
 msgstr "Saglabāt scenāriju kā"
 
-#: src/editor/map/context_manager.cpp:672
+#: src/editor/map/context_manager.cpp:671
 msgid "No random map generators found."
 msgstr "Neviens nejaušu karšu ģenerators netika atrasts."
 
-#: src/editor/map/context_manager.cpp:685
-#: src/editor/map/context_manager.cpp:689
+#: src/editor/map/context_manager.cpp:684
+#: src/editor/map/context_manager.cpp:688
 msgid "Map creation failed."
 msgstr "Neizdevās izveidot karti."
 
-#: src/editor/map/context_manager.cpp:703
+#: src/editor/map/context_manager.cpp:702
 msgid "Unsaved Changes"
 msgstr "Nesaglabātās izmaiņas"
 
-#: src/editor/map/context_manager.cpp:704
+#: src/editor/map/context_manager.cpp:703
 #, fuzzy
 #| msgid ""
 #| "Do you want to discard all changes you made to the map since the last "
@@ -408,33 +408,33 @@ msgid "Do you want to discard all changes made to the map since the last save?"
 msgstr ""
 "Vai vēlaties izmest visas izmaiņas, ko veicāt kopš pēdējās saglabāšanas?"
 
-#: src/editor/map/context_manager.cpp:803
+#: src/editor/map/context_manager.cpp:802
 msgid "This scenario is already open."
 msgstr "Šis scenārijs jau ir atvērta."
 
-#: src/editor/map/context_manager.cpp:825
-#: src/editor/map/context_manager.cpp:880
+#: src/editor/map/context_manager.cpp:824
+#: src/editor/map/context_manager.cpp:879
 msgid "This map is already open."
 msgstr "Šī karte jau ir atvērta."
 
-#: src/editor/map/context_manager.cpp:846
+#: src/editor/map/context_manager.cpp:845
 msgid "Scenario saved."
 msgstr "Scenārijs saglabāts."
 
-#: src/editor/map/context_manager.cpp:860
+#: src/editor/map/context_manager.cpp:859
 msgid "Map saved."
 msgstr "Karte saglabāta."
 
-#: src/editor/map/context_manager.cpp:903
+#: src/editor/map/context_manager.cpp:902
 msgid "Loaded embedded map data"
 msgstr "Ielādēti iegultie kartes dati"
 
-#: src/editor/map/context_manager.cpp:904
-#: src/editor/map/context_manager.cpp:918
+#: src/editor/map/context_manager.cpp:903
+#: src/editor/map/context_manager.cpp:917
 msgid "Map loaded from scenario"
 msgstr "Karte ielādēta no scenārija"
 
-#: src/editor/map/context_manager.cpp:914
+#: src/editor/map/context_manager.cpp:913
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
@@ -442,13 +442,13 @@ msgstr ""
 "Ielādēts norādītā kartes fails:\n"
 "$new"
 
-#: src/editor/map/context_manager.cpp:1003
+#: src/editor/map/context_manager.cpp:1002
 #, fuzzy
 #| msgid "(New Map)"
 msgid "New Map"
 msgstr "(Jauna karte)"
 
-#: src/editor/map/context_manager.cpp:1003
+#: src/editor/map/context_manager.cpp:1002
 #, fuzzy
 #| msgid "(New Scenario)"
 msgid "New Scenario"
@@ -465,15 +465,15 @@ msgstr "Spēlētājs $player_number"
 msgid "The size of the target map is different from the current map"
 msgstr "Mērķa kartes izmērs atšķiras no pašreizējās"
 
-#: src/editor/map/map_context.cpp:151
+#: src/editor/map/map_context.cpp:150
 msgid "File not found"
 msgstr "Fails netika atrasts"
 
-#: src/editor/map/map_context.cpp:157
+#: src/editor/map/map_context.cpp:156
 msgid "Empty file"
 msgstr "Tukšs fails"
 
-#: src/editor/map/map_context.cpp:206
+#: src/editor/map/map_context.cpp:205
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -481,15 +481,15 @@ msgstr ""
 "Kartes datne izskatās pēc scenārija, bet 'map_data' vērtība nenorāda uz "
 "eksistējošu failu"
 
-#: src/editor/map/map_context.cpp:544
+#: src/editor/map/map_context.cpp:543
 msgid "Could not save the scenario: $msg"
 msgstr "Neizdevās saglabāt Scenāriju: $msg"
 
-#: src/editor/map/map_context.cpp:571
+#: src/editor/map/map_context.cpp:570
 msgid "Could not save into scenario"
 msgstr "Neizdevās saglabāt scenārijā"
 
-#: src/editor/map/map_context.cpp:579
+#: src/editor/map/map_context.cpp:578
 msgid "Could not save the map: $msg"
 msgstr "Neizdevās saglabāt karti: $msg"
 

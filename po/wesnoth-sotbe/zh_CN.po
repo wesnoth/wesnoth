@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-03-18 21:05 UTC\n"
+"POT-Creation-Date: 2017-03-23 08:11+0100\n"
 "PO-Revision-Date: 2015-03-16 19:49+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -144,11 +144,11 @@ msgid "Death of Kapou’e"
 msgstr "卡破尔阵亡"
 
 #. [side]: id=Kapou'e, type=Orcish Leader
-#. [side]
-#. [side]: type=General, id=Howgarth III
 #. [side]: type=Orcish Leader, id=Kapou'e
-#. [side]: type=Orcish Slayer, id=Rugh
+#. [side]
 #. [side]: id=Grüü, type=Great Troll
+#. [side]: type=General, id=Howgarth III
+#. [side]: type=Orcish Slayer, id=Rugh
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:56
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:64
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:43
@@ -184,11 +184,11 @@ msgstr "卡破尔"
 msgid "Alber"
 msgstr "阿尔伯"
 
-#. [side]: type=General, id=Lanbec'h
 #. [side]: type=Lieutenant, id=Alber
 #. [side]: type=General, id=Slowhand
 #. [side]
 #. [side]: type=General, id=Harman
+#. [side]: type=General, id=Lanbec'h
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:82
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:61
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:34
@@ -1652,18 +1652,18 @@ msgstr "亚单"
 
 #. [side]: type=Assassin, type=Rogue, id=Ar-Dant
 #. [side]: type=Giant Scorpion
-#. [side]: type=Dwarvish Steelclad, id=Darstang
-#. [side]: type=Bandit, id=Sagmar
-#. [side]: type=Grand Marshal, id=Earl Lanbec'h
-#. [side]: type=Orcish Warlord, id=Shan Taum
-#. [side]: type=General, id=Arthain
-#. [side]: type=Lieutenant, id=Hanak
 #. [side]: type=Elvish Champion, id=Thelarion
+#. [side]: type=Dwarvish Steelclad, id=Darstang
 #. [side]: type=General, id=Earl Lanbec'h
 #. [side]
+#. [side]: type=General, id=Arthain
+#. [side]: type=Lieutenant, id=Hanak
 #. [side]: type=General, id=Telthys
 #. [side]: type=General, id=Fredor
 #. [side]: type=General, id=Georan
+#. [side]: type=Grand Marshal, id=Earl Lanbec'h
+#. [side]: type=Orcish Warlord, id=Shan Taum
+#. [side]: type=Bandit, id=Sagmar
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:86
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:97
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:106
@@ -2199,8 +2199,8 @@ msgstr ""
 msgid "At last, here are the Mourned Hills! We can only hope for the best."
 msgstr "终于！这里就是哀悼山峦。我希望能够一切顺利。"
 
-#. [message]: speaker=Grüü
 #. [message]: role=cannonfodder
+#. [message]: speaker=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:110
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:293
 msgid "Why?"
@@ -2396,8 +2396,8 @@ msgstr "为了日后招募蜥蜴人，你至少要保证依诺斯和至少四个
 msgid "Whoever detonates the bridge will die."
 msgstr "注意：引爆桥梁的人会死。（译者：噗...）"
 
-#. [unit]: type=Elvish Champion, id=Thelarion
 #. [side]: type=Elvish Champion, id=Thelarion
+#. [unit]: type=Elvish Champion, id=Thelarion
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:88
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:62
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:189
@@ -2615,9 +2615,9 @@ msgstr "花的时间太多了。所有的军队出击，送这些混蛋下地狱
 msgid "It won’t be said that Elves were braver than us, everyone attack!"
 msgstr "我们岂能不如精灵勇猛，全体出击！"
 
-#. [side]: type=Grand Marshal, id=Earl Lanbec'h
-#. [unit]: type=General, id=Earl Lanbec'h
 #. [side]: type=General, id=Earl Lanbec'h
+#. [unit]: type=General, id=Earl Lanbec'h
+#. [side]: type=Grand Marshal, id=Earl Lanbec'h
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:658
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:143
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:88
@@ -3943,8 +3943,8 @@ msgstr "我们到了，伯爵阁下。"
 msgid "Ahhh, perfect, more reinforcements."
 msgstr "啊，好得很嘛，更多援军。"
 
-#. [unit]: type=General, id=Howgarth III
 #. [side]: type=General, id=Howgarth III
+#. [unit]: type=General, id=Howgarth III
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:390
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:154
 msgid "Howgarth III"

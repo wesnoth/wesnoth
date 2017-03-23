@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-03-19 00:05+0300\n"
+"POT-Creation-Date: 2017-03-23 08:11+0100\n"
 "PO-Revision-Date: 2013-09-09 11:47+0700\n"
 "Last-Translator: Yuristyawan Pambudi Wicaksana <yuris_wicaksana@yahoo.com>\n"
 "Language-Team: none\n"
@@ -908,8 +908,8 @@ msgstr ""
 msgid "Runic Hammer"
 msgstr ""
 
-#. [item]: id=holly-water
 #. [object]
+#. [item]: id=holly-water
 #: data/core/editor/items.cfg:279 data/core/macros/items.cfg:278
 msgid "Holy Water"
 msgstr "Air Suci"
@@ -952,8 +952,8 @@ msgstr "Bahasa Yunani"
 msgid "Gray Potion"
 msgstr ""
 
-#. [item]: id=potion-poison
 #. [object]: id={ID}
+#. [item]: id=potion-poison
 #: data/core/editor/items.cfg:333 data/core/macros/items.cfg:242
 msgid "Poison"
 msgstr "Racun"
@@ -1029,8 +1029,8 @@ msgstr ""
 msgid "Stone Tablet"
 msgstr ""
 
-#. [item]: id=storm-trident
 #. [object]
+#. [item]: id=storm-trident
 #: data/core/editor/items.cfg:417 data/core/macros/items.cfg:518
 msgid "Storm Trident"
 msgstr "Trisula Badai"
@@ -3216,7 +3216,7 @@ msgid "Weight of Revenge"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/core/macros/utils.cfg:688
+#: data/core/macros/utils.cfg:697
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr ""
 
@@ -3828,8 +3828,8 @@ msgstr "tidak bisa menyembuhkan"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:373 src/scripting/game_lua_kernel.cpp:2670
-#: src/scripting/game_lua_kernel.cpp:2705
+#: data/lua/wml/message.lua:373 src/scripting/game_lua_kernel.cpp:2673
+#: src/scripting/game_lua_kernel.cpp:2708
 msgid "input"
 msgstr ""
 
@@ -5319,50 +5319,6 @@ msgstr "Sebuah error terjadi ketika berkomunikasi dengan server."
 msgid "Could not find an add-on matching id $addon_id on the add-on server."
 msgstr "Tidak bisa menemukan tambahan apapun di server ini."
 
-#: src/attack_prediction_display.cpp:106 src/attack_prediction_display.cpp:238
-msgid "Attacker"
-msgstr "Penyerang"
-
-#: src/attack_prediction_display.cpp:107 src/attack_prediction_display.cpp:237
-msgid "Defender"
-msgstr "Pelindung"
-
-#: src/attack_prediction_display.cpp:125
-msgid "Expected Battle Result (HP)"
-msgstr "Hasil Pertarungan yang diharapkan (Darah)"
-
-#: src/attack_prediction_display.cpp:216
-msgid "Time of day"
-msgstr "Jam hari"
-
-#: src/attack_prediction_display.cpp:226
-msgid "Leadership"
-msgstr "Kepemimpinan"
-
-#: src/attack_prediction_display.cpp:239
-msgid " resistance vs "
-msgstr "daya tahan melawan"
-
-#: src/attack_prediction_display.cpp:240
-msgid " vulnerability vs "
-msgstr "kelemahan melawan"
-
-#: src/attack_prediction_display.cpp:250
-msgid "Slowed"
-msgstr "diperlambat"
-
-#: src/attack_prediction_display.cpp:255 src/reports.cpp:918
-msgid "Total damage"
-msgstr "Luka total"
-
-#: src/attack_prediction_display.cpp:262
-msgid "No usable weapon"
-msgstr "Tidak ada senjata yang bisa dipakai"
-
-#: src/attack_prediction_display.cpp:267
-msgid "Chance of being unscathed"
-msgstr "Kemungkinan tidak cedera"
-
 #: src/chat_command_handler.cpp:99
 msgid "Added to ignore list: $nick"
 msgstr "Dimasukkan ke daftar abaian: $nick"
@@ -5790,31 +5746,31 @@ msgid "Anonymous player"
 msgstr "Pemain lokal tanpa nama"
 
 #: src/game_initialization/connect_engine.cpp:986
-#: src/game_initialization/connect_engine.cpp:1282
+#: src/game_initialization/connect_engine.cpp:1285
 msgid "Computer Player"
 msgstr "Pemain Komputer"
 
-#: src/game_initialization/connect_engine.cpp:1025
+#: src/game_initialization/connect_engine.cpp:1028
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/game_initialization/connect_engine.cpp:1278
+#: src/game_initialization/connect_engine.cpp:1281
 msgid "Network Player"
 msgstr "Pemain Jaringan"
 
-#: src/game_initialization/connect_engine.cpp:1281
+#: src/game_initialization/connect_engine.cpp:1284
 msgid "Local Player"
 msgstr "Pemain Lokal"
 
-#: src/game_initialization/connect_engine.cpp:1283
+#: src/game_initialization/connect_engine.cpp:1286
 msgid "Empty"
 msgstr "Kosong"
 
-#: src/game_initialization/connect_engine.cpp:1286
+#: src/game_initialization/connect_engine.cpp:1289
 msgid "Reserved"
 msgstr "Disimpan"
 
-#: src/game_initialization/connect_engine.cpp:1290
+#: src/game_initialization/connect_engine.cpp:1293
 msgid "--give--"
 msgstr "--beri--"
 
@@ -6251,24 +6207,6 @@ msgstr ""
 #: src/gui/core/linked_group_definition.cpp:41
 msgid "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
 msgstr ""
-
-#: src/gui/dialogs/addon/install_dependencies.cpp:38
-#, fuzzy
-#| msgid ""
-#| "The selected add-on has the following dependency. Do you want to install "
-#| "it?"
-#| msgid_plural ""
-#| "The selected add-on has the following dependencies. Do you want to "
-#| "install them?"
-msgid ""
-"The selected add-on has the following dependency, which is not currently "
-"installed. Do you wish to install it before continuing?"
-msgid_plural ""
-"The selected add-on has the following dependencies, which are not currently "
-"installed. Do you wish to install them before continuing?"
-msgstr[0] ""
-"Pengaya terpilih memiliki kepercayaan berikut. Apakah anda ingin "
-"menginstalnya?"
 
 #: src/gui/dialogs/game_load.hpp:42
 msgid "No Saved Games"
@@ -7280,15 +7218,15 @@ msgstr "serangan jarak jauh"
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "Daerah dengan harga pergerakan kurang dari satu ditemui."
 
-#: src/play_controller.cpp:252
+#: src/play_controller.cpp:250
 msgid "time left for current turn"
 msgstr "sisa waktu untuk giliran ini"
 
-#: src/play_controller.cpp:254 src/replay_controller.cpp:115
+#: src/play_controller.cpp:252 src/replay_controller.cpp:115
 msgid "current local time"
 msgstr "waktu setempat"
 
-#: src/play_controller.cpp:988
+#: src/play_controller.cpp:986
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
@@ -7296,11 +7234,11 @@ msgstr ""
 "Permainan ini tak bisa diterima sync. Ini mungkin tidak masuk akal untuk "
 "melanjutkan. Apakah anda ingin menyimpan permainan anda?"
 
-#: src/play_controller.cpp:989
+#: src/play_controller.cpp:987
 msgid "Error details:"
 msgstr "Rincian Error:"
 
-#: src/play_controller.cpp:1262
+#: src/play_controller.cpp:1260
 msgid "No objectives available"
 msgstr "Tidak ada misi tersedia"
 
@@ -7612,6 +7550,10 @@ msgstr "Kemampuan khusus senjata:"
 #: src/reports.cpp:889
 msgid "None"
 msgstr "Tidak ada"
+
+#: src/reports.cpp:918
+msgid "Total damage"
+msgstr "Luka total"
 
 #: src/reports.cpp:1125 src/reports.cpp:1177
 msgid "Lawful units: "
@@ -8093,6 +8035,53 @@ msgstr "Sembunyikan rencana untuk $player"
 #: src/whiteboard/manager.cpp:1103
 msgid "Whiteboard Options"
 msgstr "Pilihan Papan Tulis Putih"
+
+#~ msgid "Attacker"
+#~ msgstr "Penyerang"
+
+#~ msgid "Defender"
+#~ msgstr "Pelindung"
+
+#~ msgid "Expected Battle Result (HP)"
+#~ msgstr "Hasil Pertarungan yang diharapkan (Darah)"
+
+#~ msgid "Time of day"
+#~ msgstr "Jam hari"
+
+#~ msgid "Leadership"
+#~ msgstr "Kepemimpinan"
+
+#~ msgid " resistance vs "
+#~ msgstr "daya tahan melawan"
+
+#~ msgid " vulnerability vs "
+#~ msgstr "kelemahan melawan"
+
+#~ msgid "Slowed"
+#~ msgstr "diperlambat"
+
+#~ msgid "No usable weapon"
+#~ msgstr "Tidak ada senjata yang bisa dipakai"
+
+#~ msgid "Chance of being unscathed"
+#~ msgstr "Kemungkinan tidak cedera"
+
+#, fuzzy
+#~| msgid ""
+#~| "The selected add-on has the following dependency. Do you want to install "
+#~| "it?"
+#~| msgid_plural ""
+#~| "The selected add-on has the following dependencies. Do you want to "
+#~| "install them?"
+#~ msgid ""
+#~ "The selected add-on has the following dependency, which is not currently "
+#~ "installed. Do you wish to install it before continuing?"
+#~ msgid_plural ""
+#~ "The selected add-on has the following dependencies, which are not "
+#~ "currently installed. Do you wish to install them before continuing?"
+#~ msgstr[0] ""
+#~ "Pengaya terpilih memiliki kepercayaan berikut. Apakah anda ingin "
+#~ "menginstalnya?"
 
 #, fuzzy
 #~| msgid "Experimental multiplayer lobby"

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-03-19 00:05+0300\n"
+"POT-Creation-Date: 2017-03-23 08:11+0100\n"
 "PO-Revision-Date: 2015-02-07 13:00+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -884,8 +884,8 @@ msgstr "一捆麦子"
 msgid "Runic Hammer"
 msgstr "符文锤"
 
-#. [item]: id=holly-water
 #. [object]
+#. [item]: id=holly-water
 #: data/core/editor/items.cfg:279 data/core/macros/items.cfg:278
 msgid "Holy Water"
 msgstr "圣水"
@@ -926,8 +926,8 @@ msgstr "绿色药剂"
 msgid "Gray Potion"
 msgstr "灰色药剂"
 
-#. [item]: id=potion-poison
 #. [object]: id={ID}
+#. [item]: id=potion-poison
 #: data/core/editor/items.cfg:333 data/core/macros/items.cfg:242
 msgid "Poison"
 msgstr "毒药"
@@ -997,8 +997,8 @@ msgstr "手杖"
 msgid "Stone Tablet"
 msgstr "石板"
 
-#. [item]: id=storm-trident
 #. [object]
+#. [item]: id=storm-trident
 #: data/core/editor/items.cfg:417 data/core/macros/items.cfg:518
 msgid "Storm Trident"
 msgstr "风暴三叉戟"
@@ -3175,7 +3175,7 @@ msgid "Weight of Revenge"
 msgstr "亮橙"
 
 #. [message]: speaker=narrator
-#: data/core/macros/utils.cfg:688
+#: data/core/macros/utils.cfg:697
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr "您获得了  $amount_gold 块金币。"
 
@@ -3770,8 +3770,8 @@ msgstr "不可治疗"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:373 src/scripting/game_lua_kernel.cpp:2670
-#: src/scripting/game_lua_kernel.cpp:2705
+#: data/lua/wml/message.lua:373 src/scripting/game_lua_kernel.cpp:2673
+#: src/scripting/game_lua_kernel.cpp:2708
 msgid "input"
 msgstr ""
 
@@ -5126,50 +5126,6 @@ msgstr "从服务器上下载附加组件列表时发生错误。"
 msgid "Could not find an add-on matching id $addon_id on the add-on server."
 msgstr ""
 
-#: src/attack_prediction_display.cpp:106 src/attack_prediction_display.cpp:238
-msgid "Attacker"
-msgstr "进攻方"
-
-#: src/attack_prediction_display.cpp:107 src/attack_prediction_display.cpp:237
-msgid "Defender"
-msgstr "防御方"
-
-#: src/attack_prediction_display.cpp:125
-msgid "Expected Battle Result (HP)"
-msgstr "战斗结果期望（生命值）"
-
-#: src/attack_prediction_display.cpp:216
-msgid "Time of day"
-msgstr "时段"
-
-#: src/attack_prediction_display.cpp:226
-msgid "Leadership"
-msgstr "领导技能"
-
-#: src/attack_prediction_display.cpp:239
-msgid " resistance vs "
-msgstr "抗性"
-
-#: src/attack_prediction_display.cpp:240
-msgid " vulnerability vs "
-msgstr "弱点"
-
-#: src/attack_prediction_display.cpp:250
-msgid "Slowed"
-msgstr "减速"
-
-#: src/attack_prediction_display.cpp:255 src/reports.cpp:918
-msgid "Total damage"
-msgstr "总伤害输出"
-
-#: src/attack_prediction_display.cpp:262
-msgid "No usable weapon"
-msgstr "无可用武器"
-
-#: src/attack_prediction_display.cpp:267
-msgid "Chance of being unscathed"
-msgstr "不受伤的几率"
-
 #: src/chat_command_handler.cpp:99
 msgid "Added to ignore list: $nick"
 msgstr "已加入忽略列表：$nick"
@@ -5581,31 +5537,31 @@ msgid "Anonymous player"
 msgstr "本地匿名玩家"
 
 #: src/game_initialization/connect_engine.cpp:986
-#: src/game_initialization/connect_engine.cpp:1282
+#: src/game_initialization/connect_engine.cpp:1285
 msgid "Computer Player"
 msgstr "电脑玩家"
 
-#: src/game_initialization/connect_engine.cpp:1025
+#: src/game_initialization/connect_engine.cpp:1028
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/game_initialization/connect_engine.cpp:1278
+#: src/game_initialization/connect_engine.cpp:1281
 msgid "Network Player"
 msgstr "网络玩家"
 
-#: src/game_initialization/connect_engine.cpp:1281
+#: src/game_initialization/connect_engine.cpp:1284
 msgid "Local Player"
 msgstr "本地玩家"
 
-#: src/game_initialization/connect_engine.cpp:1283
+#: src/game_initialization/connect_engine.cpp:1286
 msgid "Empty"
 msgstr "空位"
 
-#: src/game_initialization/connect_engine.cpp:1286
+#: src/game_initialization/connect_engine.cpp:1289
 msgid "Reserved"
 msgstr "保留"
 
-#: src/game_initialization/connect_engine.cpp:1290
+#: src/game_initialization/connect_engine.cpp:1293
 msgid "--give--"
 msgstr "--给予--"
 
@@ -6017,16 +5973,6 @@ msgstr ""
 #: src/gui/core/linked_group_definition.cpp:41
 msgid "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
 msgstr ""
-
-#: src/gui/dialogs/addon/install_dependencies.cpp:38
-msgid ""
-"The selected add-on has the following dependency, which is not currently "
-"installed. Do you wish to install it before continuing?"
-msgid_plural ""
-"The selected add-on has the following dependencies, which are not currently "
-"installed. Do you wish to install them before continuing?"
-msgstr[0] "这个附加组件有如下依赖项目。这个依赖项目尚未安装。您希望继续吗？"
-msgstr[1] "这个附加组件有如下依赖项目。这些依赖项目尚未安装。您希望继续吗？"
 
 #: src/gui/dialogs/game_load.hpp:42
 msgid "No Saved Games"
@@ -7016,25 +6962,25 @@ msgstr "回合改变了"
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "遇到了移动力消耗小于1的地形。"
 
-#: src/play_controller.cpp:252
+#: src/play_controller.cpp:250
 msgid "time left for current turn"
 msgstr "本回合剩余时间"
 
-#: src/play_controller.cpp:254 src/replay_controller.cpp:115
+#: src/play_controller.cpp:252 src/replay_controller.cpp:115
 msgid "current local time"
 msgstr "当前本地时间"
 
-#: src/play_controller.cpp:988
+#: src/play_controller.cpp:986
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
 msgstr "游戏失去了同步。继续游戏似乎没有多少意义了。您想保存游戏吗？"
 
-#: src/play_controller.cpp:989
+#: src/play_controller.cpp:987
 msgid "Error details:"
 msgstr "错误细节："
 
-#: src/play_controller.cpp:1262
+#: src/play_controller.cpp:1260
 msgid "No objectives available"
 msgstr "无有效的任务目标"
 
@@ -7322,6 +7268,10 @@ msgstr "武器特性"
 #: src/reports.cpp:889
 msgid "None"
 msgstr "无"
+
+#: src/reports.cpp:918
+msgid "Total damage"
+msgstr "总伤害输出"
 
 #: src/reports.cpp:1125 src/reports.cpp:1177
 msgid "Lawful units: "
@@ -7778,6 +7728,45 @@ msgstr "隐藏 $player 的计划"
 #: src/whiteboard/manager.cpp:1103
 msgid "Whiteboard Options"
 msgstr "白板选项"
+
+#~ msgid "Attacker"
+#~ msgstr "进攻方"
+
+#~ msgid "Defender"
+#~ msgstr "防御方"
+
+#~ msgid "Expected Battle Result (HP)"
+#~ msgstr "战斗结果期望（生命值）"
+
+#~ msgid "Time of day"
+#~ msgstr "时段"
+
+#~ msgid "Leadership"
+#~ msgstr "领导技能"
+
+#~ msgid " resistance vs "
+#~ msgstr "抗性"
+
+#~ msgid " vulnerability vs "
+#~ msgstr "弱点"
+
+#~ msgid "Slowed"
+#~ msgstr "减速"
+
+#~ msgid "No usable weapon"
+#~ msgstr "无可用武器"
+
+#~ msgid "Chance of being unscathed"
+#~ msgstr "不受伤的几率"
+
+#~ msgid ""
+#~ "The selected add-on has the following dependency, which is not currently "
+#~ "installed. Do you wish to install it before continuing?"
+#~ msgid_plural ""
+#~ "The selected add-on has the following dependencies, which are not "
+#~ "currently installed. Do you wish to install them before continuing?"
+#~ msgstr[0] "这个附加组件有如下依赖项目。这个依赖项目尚未安装。您希望继续吗？"
+#~ msgstr[1] "这个附加组件有如下依赖项目。这些依赖项目尚未安装。您希望继续吗？"
 
 #, fuzzy
 #~| msgid "Experimental multiplayer lobby"

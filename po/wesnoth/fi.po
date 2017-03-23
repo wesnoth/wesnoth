@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-03-19 00:05+0300\n"
+"POT-Creation-Date: 2017-03-23 08:11+0100\n"
 "PO-Revision-Date: 2012-05-15 03:21+0300\n"
 "Last-Translator: Jarkko Patteri <jarkkopatteri@gmail.com>\n"
 "Language-Team: Finnish <http://wiki.wesnoth.org/FinnishTranslation>\n"
@@ -909,8 +909,8 @@ msgstr ""
 msgid "Runic Hammer"
 msgstr ""
 
-#. [item]: id=holly-water
 #. [object]
+#. [item]: id=holly-water
 #: data/core/editor/items.cfg:279 data/core/macros/items.cfg:278
 msgid "Holy Water"
 msgstr "Pyhä vesi"
@@ -953,8 +953,8 @@ msgstr "Virheellinen sijainti"
 msgid "Gray Potion"
 msgstr ""
 
-#. [item]: id=potion-poison
 #. [object]: id={ID}
+#. [item]: id=potion-poison
 #: data/core/editor/items.cfg:333 data/core/macros/items.cfg:242
 msgid "Poison"
 msgstr "Myrkky"
@@ -1032,8 +1032,8 @@ msgstr ""
 msgid "Stone Tablet"
 msgstr ""
 
-#. [item]: id=storm-trident
 #. [object]
+#. [item]: id=storm-trident
 #: data/core/editor/items.cfg:417 data/core/macros/items.cfg:518
 msgid "Storm Trident"
 msgstr "myrskyjen kolmikärki"
@@ -3231,7 +3231,7 @@ msgid "Weight of Revenge"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/core/macros/utils.cfg:688
+#: data/core/macros/utils.cfg:697
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr ""
 
@@ -3837,8 +3837,8 @@ msgstr "ei voi parantaa"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:373 src/scripting/game_lua_kernel.cpp:2670
-#: src/scripting/game_lua_kernel.cpp:2705
+#: data/lua/wml/message.lua:373 src/scripting/game_lua_kernel.cpp:2673
+#: src/scripting/game_lua_kernel.cpp:2708
 msgid "input"
 msgstr ""
 
@@ -5317,50 +5317,6 @@ msgstr "Virhe kommunikoidessa palvelimen kanssa."
 msgid "Could not find an add-on matching id $addon_id on the add-on server."
 msgstr "Päivitettyjä lisäosia ei löytynyt tältä palvelimelta."
 
-#: src/attack_prediction_display.cpp:106 src/attack_prediction_display.cpp:238
-msgid "Attacker"
-msgstr "Hyökkääjä"
-
-#: src/attack_prediction_display.cpp:107 src/attack_prediction_display.cpp:237
-msgid "Defender"
-msgstr "Puolustaja"
-
-#: src/attack_prediction_display.cpp:125
-msgid "Expected Battle Result (HP)"
-msgstr "Todennäköinen taistelun tulos (EP)"
-
-#: src/attack_prediction_display.cpp:216
-msgid "Time of day"
-msgstr "Vuorokaudenaika"
-
-#: src/attack_prediction_display.cpp:226
-msgid "Leadership"
-msgstr "johtamiskyky"
-
-#: src/attack_prediction_display.cpp:239
-msgid " resistance vs "
-msgstr " kestää hyvin: "
-
-#: src/attack_prediction_display.cpp:240
-msgid " vulnerability vs "
-msgstr " haavoittuvainen: "
-
-#: src/attack_prediction_display.cpp:250
-msgid "Slowed"
-msgstr "hidastettu"
-
-#: src/attack_prediction_display.cpp:255 src/reports.cpp:918
-msgid "Total damage"
-msgstr "kokonaisvahinko"
-
-#: src/attack_prediction_display.cpp:262
-msgid "No usable weapon"
-msgstr "Ei käyttökelpoista asetta"
-
-#: src/attack_prediction_display.cpp:267
-msgid "Chance of being unscathed"
-msgstr "Mahdollisuus selvitä naarmutta:"
-
 #: src/chat_command_handler.cpp:99
 msgid "Added to ignore list: $nick"
 msgstr "Et enää saa viestejä, jotka lähettää $nick"
@@ -5788,31 +5744,31 @@ msgid "Anonymous player"
 msgstr "paikallinen pelaaja"
 
 #: src/game_initialization/connect_engine.cpp:986
-#: src/game_initialization/connect_engine.cpp:1282
+#: src/game_initialization/connect_engine.cpp:1285
 msgid "Computer Player"
 msgstr "tietokonepelaaja"
 
-#: src/game_initialization/connect_engine.cpp:1025
+#: src/game_initialization/connect_engine.cpp:1028
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/game_initialization/connect_engine.cpp:1278
+#: src/game_initialization/connect_engine.cpp:1281
 msgid "Network Player"
 msgstr "verkkopelaaja"
 
-#: src/game_initialization/connect_engine.cpp:1281
+#: src/game_initialization/connect_engine.cpp:1284
 msgid "Local Player"
 msgstr "paikallinen pelaaja"
 
-#: src/game_initialization/connect_engine.cpp:1283
+#: src/game_initialization/connect_engine.cpp:1286
 msgid "Empty"
 msgstr "tyhjä"
 
-#: src/game_initialization/connect_engine.cpp:1286
+#: src/game_initialization/connect_engine.cpp:1289
 msgid "Reserved"
 msgstr "Varattu"
 
-#: src/game_initialization/connect_engine.cpp:1290
+#: src/game_initialization/connect_engine.cpp:1293
 msgid "--give--"
 msgstr "--anna--"
 
@@ -6255,24 +6211,6 @@ msgstr ""
 #: src/gui/core/linked_group_definition.cpp:41
 msgid "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
 msgstr ""
-
-#: src/gui/dialogs/addon/install_dependencies.cpp:38
-#, fuzzy
-#| msgid ""
-#| "The selected add-on has the following dependency. Do you want to install "
-#| "it?"
-#| msgid_plural ""
-#| "The selected add-on has the following dependencies. Do you want to "
-#| "install them?"
-msgid ""
-"The selected add-on has the following dependency, which is not currently "
-"installed. Do you wish to install it before continuing?"
-msgid_plural ""
-"The selected add-on has the following dependencies, which are not currently "
-"installed. Do you wish to install them before continuing?"
-msgstr[0] "Valitsemallasi lisäosalla on seuraava riippuvuus. Asennetaanko se?"
-msgstr[1] ""
-"Valitsemallasi lisäosalla on seuraavat riippuvuudet. Asennetaanko ne?"
 
 #: src/gui/dialogs/game_load.hpp:42
 msgid "No Saved Games"
@@ -7286,15 +7224,15 @@ msgstr "Vuoro vaihtui"
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "Maastoa yhtä vähemmällä liikkumiskustannuksella kohdattu."
 
-#: src/play_controller.cpp:252
+#: src/play_controller.cpp:250
 msgid "time left for current turn"
 msgstr "Aikaa jäljellä nykyisellä vuorolla"
 
-#: src/play_controller.cpp:254 src/replay_controller.cpp:115
+#: src/play_controller.cpp:252 src/replay_controller.cpp:115
 msgid "current local time"
 msgstr "tämänhetkinen paikallinen aika"
 
-#: src/play_controller.cpp:988
+#: src/play_controller.cpp:986
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
@@ -7302,11 +7240,11 @@ msgstr ""
 "Palvelimella on erilainen käsitys pelitilanteesta. Luultavasti kannattaa "
 "lopettaa.. Haluatko tallentaa pelisi?"
 
-#: src/play_controller.cpp:989
+#: src/play_controller.cpp:987
 msgid "Error details:"
 msgstr "Virheen kuvaus:"
 
-#: src/play_controller.cpp:1262
+#: src/play_controller.cpp:1260
 msgid "No objectives available"
 msgstr "Ei tavoitteita saatavana"
 
@@ -7615,6 +7553,10 @@ msgstr "Aseen erikoisuus:"
 #: src/reports.cpp:889
 msgid "None"
 msgstr "Ei mitään"
+
+#: src/reports.cpp:918
+msgid "Total damage"
+msgstr "kokonaisvahinko"
 
 #: src/reports.cpp:1125 src/reports.cpp:1177
 #, fuzzy
@@ -8102,6 +8044,54 @@ msgstr "Piilota pelaajan $player suunnitelmat"
 #: src/whiteboard/manager.cpp:1103
 msgid "Whiteboard Options"
 msgstr "Valkotaulun asetukset"
+
+#~ msgid "Attacker"
+#~ msgstr "Hyökkääjä"
+
+#~ msgid "Defender"
+#~ msgstr "Puolustaja"
+
+#~ msgid "Expected Battle Result (HP)"
+#~ msgstr "Todennäköinen taistelun tulos (EP)"
+
+#~ msgid "Time of day"
+#~ msgstr "Vuorokaudenaika"
+
+#~ msgid "Leadership"
+#~ msgstr "johtamiskyky"
+
+#~ msgid " resistance vs "
+#~ msgstr " kestää hyvin: "
+
+#~ msgid " vulnerability vs "
+#~ msgstr " haavoittuvainen: "
+
+#~ msgid "Slowed"
+#~ msgstr "hidastettu"
+
+#~ msgid "No usable weapon"
+#~ msgstr "Ei käyttökelpoista asetta"
+
+#~ msgid "Chance of being unscathed"
+#~ msgstr "Mahdollisuus selvitä naarmutta:"
+
+#, fuzzy
+#~| msgid ""
+#~| "The selected add-on has the following dependency. Do you want to install "
+#~| "it?"
+#~| msgid_plural ""
+#~| "The selected add-on has the following dependencies. Do you want to "
+#~| "install them?"
+#~ msgid ""
+#~ "The selected add-on has the following dependency, which is not currently "
+#~ "installed. Do you wish to install it before continuing?"
+#~ msgid_plural ""
+#~ "The selected add-on has the following dependencies, which are not "
+#~ "currently installed. Do you wish to install them before continuing?"
+#~ msgstr[0] ""
+#~ "Valitsemallasi lisäosalla on seuraava riippuvuus. Asennetaanko se?"
+#~ msgstr[1] ""
+#~ "Valitsemallasi lisäosalla on seuraavat riippuvuudet. Asennetaanko ne?"
 
 #~ msgid "pause at end of turn"
 #~ msgstr "tauko vuoron lopussa"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-03-19 00:05+0300\n"
+"POT-Creation-Date: 2017-03-23 08:11+0100\n"
 "PO-Revision-Date: 2012-10-29 18:41-0300\n"
 "Last-Translator: gilberto dos santos alves <gsavix@gmail.com>\n"
 "Language-Team: Portuguese - Brasil\n"
@@ -1406,8 +1406,8 @@ msgstr ""
 # File: data/core/macros/items.cfg, line: 270
 # File: data/core/macros/items.cfg, line: 270
 # File: data/core/macros/items.cfg, line: 270
-#. [item]: id=holly-water
 #. [object]
+#. [item]: id=holly-water
 #: data/core/editor/items.cfg:279 data/core/macros/items.cfg:278
 msgid "Holy Water"
 msgstr "Água Benta"
@@ -1457,8 +1457,8 @@ msgstr ""
 # File: data/core/macros/items.cfg, line: 242
 # File: data/core/macros/items.cfg, line: 242
 # File: data/core/macros/items.cfg, line: 242
-#. [item]: id=potion-poison
 #. [object]: id={ID}
+#. [item]: id=potion-poison
 #: data/core/editor/items.cfg:333 data/core/macros/items.cfg:242
 msgid "Poison"
 msgstr "Veneno"
@@ -1561,8 +1561,8 @@ msgstr ""
 # File: data/core/macros/items.cfg, line: 514
 # File: data/core/macros/items.cfg, line: 514
 # File: data/core/macros/items.cfg, line: 514
-#. [item]: id=storm-trident
 #. [object]
+#. [item]: id=storm-trident
 #: data/core/editor/items.cfg:417 data/core/macros/items.cfg:518
 msgid "Storm Trident"
 msgstr "Tridente da Tempestade"
@@ -4162,7 +4162,7 @@ msgstr ""
 # File: data/core/macros/utils.cfg, line: 784
 # File: data/core/macros/utils.cfg, line: 784
 #. [message]: speaker=narrator
-#: data/core/macros/utils.cfg:688
+#: data/core/macros/utils.cfg:697
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr ""
 
@@ -5021,8 +5021,8 @@ msgstr "incurável"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:373 src/scripting/game_lua_kernel.cpp:2670
-#: src/scripting/game_lua_kernel.cpp:2705
+#: data/lua/wml/message.lua:373 src/scripting/game_lua_kernel.cpp:2673
+#: src/scripting/game_lua_kernel.cpp:2708
 msgid "input"
 msgstr ""
 
@@ -7671,106 +7671,6 @@ msgid "Could not find an add-on matching id $addon_id on the add-on server."
 msgstr ""
 
 #
-# File: src/attack_prediction_display.cpp, line: 104
-# File: src/attack_prediction_display.cpp, line: 236
-# File: src/attack_prediction_display.cpp, line: 104
-# File: src/attack_prediction_display.cpp, line: 236
-# File: src/attack_prediction_display.cpp, line: 104
-# File: src/attack_prediction_display.cpp, line: 236
-#: src/attack_prediction_display.cpp:106 src/attack_prediction_display.cpp:238
-msgid "Attacker"
-msgstr "Atacante"
-
-#
-# File: src/attack_prediction_display.cpp, line: 105
-# File: src/attack_prediction_display.cpp, line: 235
-# File: src/attack_prediction_display.cpp, line: 105
-# File: src/attack_prediction_display.cpp, line: 235
-# File: src/attack_prediction_display.cpp, line: 105
-# File: src/attack_prediction_display.cpp, line: 235
-#: src/attack_prediction_display.cpp:107 src/attack_prediction_display.cpp:237
-msgid "Defender"
-msgstr "Defensor"
-
-#
-# File: src/attack_prediction_display.cpp, line: 123
-# File: src/attack_prediction_display.cpp, line: 123
-# File: src/attack_prediction_display.cpp, line: 123
-#: src/attack_prediction_display.cpp:125
-msgid "Expected Battle Result (HP)"
-msgstr "Resultado Esperado da Batalha (HP)"
-
-#
-# File: src/attack_prediction_display.cpp, line: 214
-# File: src/attack_prediction_display.cpp, line: 214
-# File: src/attack_prediction_display.cpp, line: 214
-#: src/attack_prediction_display.cpp:216
-msgid "Time of day"
-msgstr "Período do dia"
-
-#
-# File: src/attack_prediction_display.cpp, line: 224
-# File: src/attack_prediction_display.cpp, line: 224
-# File: src/attack_prediction_display.cpp, line: 224
-#: src/attack_prediction_display.cpp:226
-msgid "Leadership"
-msgstr "Liderança"
-
-#
-# File: src/attack_prediction_display.cpp, line: 237
-# File: src/attack_prediction_display.cpp, line: 237
-# File: src/attack_prediction_display.cpp, line: 237
-#: src/attack_prediction_display.cpp:239
-msgid " resistance vs "
-msgstr "resistência contra "
-
-#
-# File: src/attack_prediction_display.cpp, line: 238
-# File: src/attack_prediction_display.cpp, line: 238
-# File: src/attack_prediction_display.cpp, line: 238
-#: src/attack_prediction_display.cpp:240
-msgid " vulnerability vs "
-msgstr "vulnerabilidade contra"
-
-#
-# File: src/attack_prediction_display.cpp, line: 248
-# File: src/attack_prediction_display.cpp, line: 248
-# File: src/attack_prediction_display.cpp, line: 248
-#: src/attack_prediction_display.cpp:250
-msgid "Slowed"
-msgstr "Lento"
-
-#
-# File: src/attack_prediction_display.cpp, line: 253
-# File: src/reports.cpp, line: 907
-# File: src/attack_prediction_display.cpp, line: 253
-# File: src/reports.cpp, line: 907
-# File: src/attack_prediction_display.cpp, line: 253
-# File: src/reports.cpp, line: 907
-#: src/attack_prediction_display.cpp:255 src/reports.cpp:918
-msgid "Total damage"
-msgstr "Dano total"
-
-#
-# File: src/attack_prediction_display.cpp, line: 260
-# File: src/mouse_events.cpp, line: 842
-# File: src/attack_prediction_display.cpp, line: 260
-# File: src/mouse_events.cpp, line: 842
-# File: src/attack_prediction_display.cpp, line: 260
-# File: src/mouse_events.cpp, line: 842
-#: src/attack_prediction_display.cpp:262
-msgid "No usable weapon"
-msgstr "Nenhuma arma possível"
-
-#
-# File: src/attack_prediction_display.cpp, line: 265
-# File: src/attack_prediction_display.cpp, line: 265
-# File: src/attack_prediction_display.cpp, line: 265
-#: src/attack_prediction_display.cpp:267
-msgid "Chance of being unscathed"
-msgstr "Chance de sair sem danos"
-
-#
 # File: src/menu_events.cpp, line: 2297
 # File: src/menu_events.cpp, line: 2298
 # File: src/menu_events.cpp, line: 2298
@@ -8634,7 +8534,7 @@ msgstr "Jogador local anônimo"
 # File: src/multiplayer_connect.cpp, line: 647
 # File: src/multiplayer_connect.cpp, line: 1658
 #: src/game_initialization/connect_engine.cpp:986
-#: src/game_initialization/connect_engine.cpp:1282
+#: src/game_initialization/connect_engine.cpp:1285
 msgid "Computer Player"
 msgstr "Computador"
 
@@ -8642,7 +8542,7 @@ msgstr "Computador"
 # File: src/multiplayer_connect.cpp, line: 650
 # File: src/multiplayer_connect.cpp, line: 650
 # File: src/multiplayer_connect.cpp, line: 650
-#: src/game_initialization/connect_engine.cpp:1025
+#: src/game_initialization/connect_engine.cpp:1028
 msgid "$playername $side"
 msgstr "$playername $side"
 
@@ -8650,7 +8550,7 @@ msgstr "$playername $side"
 # File: src/multiplayer_connect.cpp, line: 1655
 # File: src/multiplayer_connect.cpp, line: 1655
 # File: src/multiplayer_connect.cpp, line: 1655
-#: src/game_initialization/connect_engine.cpp:1278
+#: src/game_initialization/connect_engine.cpp:1281
 msgid "Network Player"
 msgstr "Jogador Remoto"
 
@@ -8658,7 +8558,7 @@ msgstr "Jogador Remoto"
 # File: src/multiplayer_connect.cpp, line: 1657
 # File: src/multiplayer_connect.cpp, line: 1657
 # File: src/multiplayer_connect.cpp, line: 1657
-#: src/game_initialization/connect_engine.cpp:1281
+#: src/game_initialization/connect_engine.cpp:1284
 msgid "Local Player"
 msgstr "Jogador Local"
 
@@ -8666,7 +8566,7 @@ msgstr "Jogador Local"
 # File: src/multiplayer_connect.cpp, line: 1659
 # File: src/multiplayer_connect.cpp, line: 1659
 # File: src/multiplayer_connect.cpp, line: 1659
-#: src/game_initialization/connect_engine.cpp:1283
+#: src/game_initialization/connect_engine.cpp:1286
 msgid "Empty"
 msgstr "Vazio"
 
@@ -8674,7 +8574,7 @@ msgstr "Vazio"
 # File: src/multiplayer_connect.cpp, line: 763
 # File: src/multiplayer_connect.cpp, line: 763
 # File: src/multiplayer_connect.cpp, line: 763
-#: src/game_initialization/connect_engine.cpp:1286
+#: src/game_initialization/connect_engine.cpp:1289
 msgid "Reserved"
 msgstr "Reservado"
 
@@ -8682,7 +8582,7 @@ msgstr "Reservado"
 # File: src/multiplayer_connect.cpp, line: 764
 # File: src/multiplayer_connect.cpp, line: 764
 # File: src/multiplayer_connect.cpp, line: 764
-#: src/game_initialization/connect_engine.cpp:1290
+#: src/game_initialization/connect_engine.cpp:1293
 msgid "--give--"
 msgstr "--ceder--"
 
@@ -9515,22 +9415,6 @@ msgstr ""
 #: src/gui/core/linked_group_definition.cpp:41
 msgid "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
 msgstr ""
-
-#
-# File: src/addon/manager_ui.cpp, line: 205
-# File: src/addon/manager_ui.cpp, line: 205
-# File: src/addon/manager_ui.cpp, line: 205
-#: src/gui/dialogs/addon/install_dependencies.cpp:38
-#, fuzzy
-msgid ""
-"The selected add-on has the following dependency, which is not currently "
-"installed. Do you wish to install it before continuing?"
-msgid_plural ""
-"The selected add-on has the following dependencies, which are not currently "
-"installed. Do you wish to install them before continuing?"
-msgstr[0] "O add-on selecionado tem a seguinte dependência. Deseja instalá-la?"
-msgstr[1] ""
-"O add-on selecionado tem as seguintes dependências. Deseja instalá-las?"
 
 #
 # File: src/dialogs.cpp, line: 945
@@ -11350,7 +11234,7 @@ msgstr "Encontrado terreno com um custo de movimento menor de 1."
 # File: src/play_controller.cpp, line: 252
 # File: src/play_controller.cpp, line: 252
 # File: src/play_controller.cpp, line: 252
-#: src/play_controller.cpp:252
+#: src/play_controller.cpp:250
 msgid "time left for current turn"
 msgstr "tempo restante para o próximo turno"
 
@@ -11361,7 +11245,7 @@ msgstr "tempo restante para o próximo turno"
 # File: src/replay_controller.cpp, line: 142
 # File: src/play_controller.cpp, line: 254
 # File: src/replay_controller.cpp, line: 142
-#: src/play_controller.cpp:254 src/replay_controller.cpp:115
+#: src/play_controller.cpp:252 src/replay_controller.cpp:115
 msgid "current local time"
 msgstr "hora local"
 
@@ -11369,7 +11253,7 @@ msgstr "hora local"
 # File: src/play_controller.cpp, line: 1414
 # File: src/play_controller.cpp, line: 1414
 # File: src/play_controller.cpp, line: 1414
-#: src/play_controller.cpp:988
+#: src/play_controller.cpp:986
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
@@ -11384,7 +11268,7 @@ msgstr ""
 # File: src/replay_controller.cpp, line: 334
 # File: src/play_controller.cpp, line: 1415
 # File: src/replay_controller.cpp, line: 334
-#: src/play_controller.cpp:989
+#: src/play_controller.cpp:987
 msgid "Error details:"
 msgstr "Detalhes do erro:"
 
@@ -11392,7 +11276,7 @@ msgstr "Detalhes do erro:"
 # File: src/dialogs.cpp, line: 451
 # File: src/dialogs.cpp, line: 451
 # File: src/dialogs.cpp, line: 451
-#: src/play_controller.cpp:1262
+#: src/play_controller.cpp:1260
 msgid "No objectives available"
 msgstr "Nenhum objetivo disponível"
 
@@ -11977,6 +11861,17 @@ msgstr "Efeitos das Armas:"
 #: src/reports.cpp:889
 msgid "None"
 msgstr "Nenhuma"
+
+#
+# File: src/attack_prediction_display.cpp, line: 253
+# File: src/reports.cpp, line: 907
+# File: src/attack_prediction_display.cpp, line: 253
+# File: src/reports.cpp, line: 907
+# File: src/attack_prediction_display.cpp, line: 253
+# File: src/reports.cpp, line: 907
+#: src/reports.cpp:918
+msgid "Total damage"
+msgstr "Dano total"
 
 #
 # File: src/reports.cpp, line: 1078
@@ -12849,6 +12744,101 @@ msgstr "Esconder planos de $player"
 #: src/whiteboard/manager.cpp:1103
 msgid "Whiteboard Options"
 msgstr "Opções do Quadro-Branco"
+
+#
+# File: src/attack_prediction_display.cpp, line: 104
+# File: src/attack_prediction_display.cpp, line: 236
+# File: src/attack_prediction_display.cpp, line: 104
+# File: src/attack_prediction_display.cpp, line: 236
+# File: src/attack_prediction_display.cpp, line: 104
+# File: src/attack_prediction_display.cpp, line: 236
+#~ msgid "Attacker"
+#~ msgstr "Atacante"
+
+#
+# File: src/attack_prediction_display.cpp, line: 105
+# File: src/attack_prediction_display.cpp, line: 235
+# File: src/attack_prediction_display.cpp, line: 105
+# File: src/attack_prediction_display.cpp, line: 235
+# File: src/attack_prediction_display.cpp, line: 105
+# File: src/attack_prediction_display.cpp, line: 235
+#~ msgid "Defender"
+#~ msgstr "Defensor"
+
+#
+# File: src/attack_prediction_display.cpp, line: 123
+# File: src/attack_prediction_display.cpp, line: 123
+# File: src/attack_prediction_display.cpp, line: 123
+#~ msgid "Expected Battle Result (HP)"
+#~ msgstr "Resultado Esperado da Batalha (HP)"
+
+#
+# File: src/attack_prediction_display.cpp, line: 214
+# File: src/attack_prediction_display.cpp, line: 214
+# File: src/attack_prediction_display.cpp, line: 214
+#~ msgid "Time of day"
+#~ msgstr "Período do dia"
+
+#
+# File: src/attack_prediction_display.cpp, line: 224
+# File: src/attack_prediction_display.cpp, line: 224
+# File: src/attack_prediction_display.cpp, line: 224
+#~ msgid "Leadership"
+#~ msgstr "Liderança"
+
+#
+# File: src/attack_prediction_display.cpp, line: 237
+# File: src/attack_prediction_display.cpp, line: 237
+# File: src/attack_prediction_display.cpp, line: 237
+#~ msgid " resistance vs "
+#~ msgstr "resistência contra "
+
+#
+# File: src/attack_prediction_display.cpp, line: 238
+# File: src/attack_prediction_display.cpp, line: 238
+# File: src/attack_prediction_display.cpp, line: 238
+#~ msgid " vulnerability vs "
+#~ msgstr "vulnerabilidade contra"
+
+#
+# File: src/attack_prediction_display.cpp, line: 248
+# File: src/attack_prediction_display.cpp, line: 248
+# File: src/attack_prediction_display.cpp, line: 248
+#~ msgid "Slowed"
+#~ msgstr "Lento"
+
+#
+# File: src/attack_prediction_display.cpp, line: 260
+# File: src/mouse_events.cpp, line: 842
+# File: src/attack_prediction_display.cpp, line: 260
+# File: src/mouse_events.cpp, line: 842
+# File: src/attack_prediction_display.cpp, line: 260
+# File: src/mouse_events.cpp, line: 842
+#~ msgid "No usable weapon"
+#~ msgstr "Nenhuma arma possível"
+
+#
+# File: src/attack_prediction_display.cpp, line: 265
+# File: src/attack_prediction_display.cpp, line: 265
+# File: src/attack_prediction_display.cpp, line: 265
+#~ msgid "Chance of being unscathed"
+#~ msgstr "Chance de sair sem danos"
+
+#
+# File: src/addon/manager_ui.cpp, line: 205
+# File: src/addon/manager_ui.cpp, line: 205
+# File: src/addon/manager_ui.cpp, line: 205
+#, fuzzy
+#~ msgid ""
+#~ "The selected add-on has the following dependency, which is not currently "
+#~ "installed. Do you wish to install it before continuing?"
+#~ msgid_plural ""
+#~ "The selected add-on has the following dependencies, which are not "
+#~ "currently installed. Do you wish to install them before continuing?"
+#~ msgstr[0] ""
+#~ "O add-on selecionado tem a seguinte dependência. Deseja instalá-la?"
+#~ msgstr[1] ""
+#~ "O add-on selecionado tem as seguintes dependências. Deseja instalá-las?"
 
 #
 # File: data/themes/macros.cfg, line: 81

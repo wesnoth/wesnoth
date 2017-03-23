@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.8\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-03-19 00:05+0300\n"
+"POT-Creation-Date: 2017-03-23 08:11+0100\n"
 "PO-Revision-Date: 2013-06-23 02:22-0000\n"
 "Last-Translator: Thomas Hockings <elprofesh@gmail.com>\n"
 "Language-Team: Latin <http://wiki.wesnoth.org/LatinTranslation>\n"
@@ -901,8 +901,8 @@ msgstr ""
 msgid "Runic Hammer"
 msgstr ""
 
-#. [item]: id=holly-water
 #. [object]
+#. [item]: id=holly-water
 #: data/core/editor/items.cfg:279 data/core/macros/items.cfg:278
 msgid "Holy Water"
 msgstr "Aqua Sancta"
@@ -945,8 +945,8 @@ msgstr "Translatio Graeca"
 msgid "Gray Potion"
 msgstr ""
 
-#. [item]: id=potion-poison
 #. [object]: id={ID}
+#. [item]: id=potion-poison
 #: data/core/editor/items.cfg:333 data/core/macros/items.cfg:242
 msgid "Poison"
 msgstr "Venenum"
@@ -1022,8 +1022,8 @@ msgstr ""
 msgid "Stone Tablet"
 msgstr ""
 
-#. [item]: id=storm-trident
 #. [object]
+#. [item]: id=storm-trident
 #: data/core/editor/items.cfg:417 data/core/macros/items.cfg:518
 msgid "Storm Trident"
 msgstr "Tridens Tempestatum"
@@ -3118,7 +3118,7 @@ msgid "Weight of Revenge"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/core/macros/utils.cfg:688
+#: data/core/macros/utils.cfg:697
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr "$amount_gold aureorum recepisti."
 
@@ -3714,8 +3714,8 @@ msgstr "insanabilis"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:373 src/scripting/game_lua_kernel.cpp:2670
-#: src/scripting/game_lua_kernel.cpp:2705
+#: data/lua/wml/message.lua:373 src/scripting/game_lua_kernel.cpp:2673
+#: src/scripting/game_lua_kernel.cpp:2708
 msgid "input"
 msgstr ""
 
@@ -5087,51 +5087,6 @@ msgstr "Mendum in communicatione cum moderatro."
 msgid "Could not find an add-on matching id $addon_id on the add-on server."
 msgstr ""
 
-#: src/attack_prediction_display.cpp:106 src/attack_prediction_display.cpp:238
-msgid "Attacker"
-msgstr "Pugnator"
-
-#: src/attack_prediction_display.cpp:107 src/attack_prediction_display.cpp:237
-msgid "Defender"
-msgstr "Defensor"
-
-#: src/attack_prediction_display.cpp:125
-msgid "Expected Battle Result (HP)"
-msgstr "Eventum Expectatum Proelii (PS)"
-
-#: src/attack_prediction_display.cpp:216
-msgid "Time of day"
-msgstr "Hora"
-
-#: src/attack_prediction_display.cpp:226
-msgid "Leadership"
-msgstr "Ducatus"
-
-#: src/attack_prediction_display.cpp:239
-msgid " resistance vs "
-msgstr " firmitas vs"
-
-#: src/attack_prediction_display.cpp:240
-msgid " vulnerability vs "
-msgstr " infirmitas vs"
-
-#: src/attack_prediction_display.cpp:250
-msgid "Slowed"
-msgstr "Tardare"
-
-#: src/attack_prediction_display.cpp:255 src/reports.cpp:918
-msgid "Total damage"
-msgstr "Totum damnum"
-
-#: src/attack_prediction_display.cpp:262
-msgid "No usable weapon"
-msgstr "Nullum telum utibile"
-
-#: src/attack_prediction_display.cpp:267
-#, fuzzy
-msgid "Chance of being unscathed"
-msgstr "Probabilitas damnum effugendi"
-
 #: src/chat_command_handler.cpp:99
 msgid "Added to ignore list: $nick"
 msgstr "Tabulae neglectorum aditus: $nick"
@@ -5555,31 +5510,31 @@ msgid "Anonymous player"
 msgstr "Lusor localis anonymus"
 
 #: src/game_initialization/connect_engine.cpp:986
-#: src/game_initialization/connect_engine.cpp:1282
+#: src/game_initialization/connect_engine.cpp:1285
 msgid "Computer Player"
 msgstr "Lusor Ordinatralis"
 
-#: src/game_initialization/connect_engine.cpp:1025
+#: src/game_initialization/connect_engine.cpp:1028
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/game_initialization/connect_engine.cpp:1278
+#: src/game_initialization/connect_engine.cpp:1281
 msgid "Network Player"
 msgstr "Lusor ex Reti"
 
-#: src/game_initialization/connect_engine.cpp:1281
+#: src/game_initialization/connect_engine.cpp:1284
 msgid "Local Player"
 msgstr "Lusor Localis"
 
-#: src/game_initialization/connect_engine.cpp:1283
+#: src/game_initialization/connect_engine.cpp:1286
 msgid "Empty"
 msgstr "Vacuus"
 
-#: src/game_initialization/connect_engine.cpp:1286
+#: src/game_initialization/connect_engine.cpp:1289
 msgid "Reserved"
 msgstr "Assignatus"
 
-#: src/game_initialization/connect_engine.cpp:1290
+#: src/game_initialization/connect_engine.cpp:1293
 msgid "--give--"
 msgstr "--dare--"
 
@@ -6000,20 +5955,6 @@ msgstr ""
 #: src/gui/core/linked_group_definition.cpp:41
 msgid "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
 msgstr ""
-
-#: src/gui/dialogs/addon/install_dependencies.cpp:38
-msgid ""
-"The selected add-on has the following dependency, which is not currently "
-"installed. Do you wish to install it before continuing?"
-msgid_plural ""
-"The selected add-on has the following dependencies, which are not currently "
-"installed. Do you wish to install them before continuing?"
-msgstr[0] ""
-"Appendix electa hae adfixa habet, quae iam non imposita est nec servatrum "
-"inest. Visne ea imponere ante pergendum?"
-msgstr[1] ""
-"Appendix electa hae adfixa habet, quae iam non imposita est nec servatrum "
-"inest. Visne ea imponere ante pergendum?"
 
 #: src/gui/dialogs/game_load.hpp:42
 msgid "No Saved Games"
@@ -6999,15 +6940,15 @@ msgstr "Vicis mutata"
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr ""
 
-#: src/play_controller.cpp:252
+#: src/play_controller.cpp:250
 msgid "time left for current turn"
 msgstr "tempus reliquus hui vice"
 
-#: src/play_controller.cpp:254 src/replay_controller.cpp:115
+#: src/play_controller.cpp:252 src/replay_controller.cpp:115
 msgid "current local time"
 msgstr "tempus currens localis"
 
-#: src/play_controller.cpp:988
+#: src/play_controller.cpp:986
 #, fuzzy
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
@@ -7016,11 +6957,11 @@ msgstr ""
 "Ludi non synchonizantur et exire debebunt. Visne acta mendorum lusus tui "
 "servare?"
 
-#: src/play_controller.cpp:989
+#: src/play_controller.cpp:987
 msgid "Error details:"
 msgstr "Summa erroris: "
 
-#: src/play_controller.cpp:1262
+#: src/play_controller.cpp:1260
 msgid "No objectives available"
 msgstr "Nullum propositum ad manum"
 
@@ -7313,6 +7254,10 @@ msgstr "Praecipuum teli: "
 #: src/reports.cpp:889
 msgid "None"
 msgstr "Nullum"
+
+#: src/reports.cpp:918
+msgid "Total damage"
+msgstr "Totum damnum"
 
 # note: english has double whitespace
 #: src/reports.cpp:1125 src/reports.cpp:1177
@@ -7799,6 +7744,50 @@ msgstr "Consilia $player abdere"
 #: src/whiteboard/manager.cpp:1103
 msgid "Whiteboard Options"
 msgstr "Electiones Tabulae Commentationum"
+
+#~ msgid "Attacker"
+#~ msgstr "Pugnator"
+
+#~ msgid "Defender"
+#~ msgstr "Defensor"
+
+#~ msgid "Expected Battle Result (HP)"
+#~ msgstr "Eventum Expectatum Proelii (PS)"
+
+#~ msgid "Time of day"
+#~ msgstr "Hora"
+
+#~ msgid "Leadership"
+#~ msgstr "Ducatus"
+
+#~ msgid " resistance vs "
+#~ msgstr " firmitas vs"
+
+#~ msgid " vulnerability vs "
+#~ msgstr " infirmitas vs"
+
+#~ msgid "Slowed"
+#~ msgstr "Tardare"
+
+#~ msgid "No usable weapon"
+#~ msgstr "Nullum telum utibile"
+
+#, fuzzy
+#~ msgid "Chance of being unscathed"
+#~ msgstr "Probabilitas damnum effugendi"
+
+#~ msgid ""
+#~ "The selected add-on has the following dependency, which is not currently "
+#~ "installed. Do you wish to install it before continuing?"
+#~ msgid_plural ""
+#~ "The selected add-on has the following dependencies, which are not "
+#~ "currently installed. Do you wish to install them before continuing?"
+#~ msgstr[0] ""
+#~ "Appendix electa hae adfixa habet, quae iam non imposita est nec servatrum "
+#~ "inest. Visne ea imponere ante pergendum?"
+#~ msgstr[1] ""
+#~ "Appendix electa hae adfixa habet, quae iam non imposita est nec servatrum "
+#~ "inest. Visne ea imponere ante pergendum?"
 
 #, fuzzy
 #~| msgid "Experimental multiplayer lobby"

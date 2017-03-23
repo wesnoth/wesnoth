@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth_Editor-1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-03-16 23:48-0400\n"
+"POT-Creation-Date: 2017-03-23 08:11+0100\n"
 "PO-Revision-Date: 2014-03-13 10:55+0100\n"
 "Last-Translator: Émile Enguehard <zerbugug@gmail.com>\n"
 "Language-Team: français <wesnoth@ml.free.fr>\n"
@@ -281,15 +281,15 @@ msgstr "Coût : "
 msgid "Recruit: "
 msgstr "Peut recruter : "
 
-#: src/editor/controller/editor_controller.cpp:177
+#: src/editor/controller/editor_controller.cpp:176
 msgid "Fatal error"
 msgstr "Erreur fatale"
 
-#: src/editor/controller/editor_controller.cpp:206
+#: src/editor/controller/editor_controller.cpp:205
 msgid "Do you really want to quit?"
 msgstr "Voulez-vous vraiment quitter ?"
 
-#: src/editor/controller/editor_controller.cpp:208
+#: src/editor/controller/editor_controller.cpp:207
 #, fuzzy
 #| msgid ""
 #| "Do you really want to quit? Changes in the map since the last save will "
@@ -301,7 +301,7 @@ msgstr ""
 "Voulez-vous vraiment quitter ? Les modifications effectuées sur la carte "
 "depuis la dernière sauvegarde seront perdues."
 
-#: src/editor/controller/editor_controller.cpp:210
+#: src/editor/controller/editor_controller.cpp:209
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -310,102 +310,102 @@ msgstr ""
 "toutes les modifications effectuées depuis la dernière sauvegarde seront "
 "perdues :"
 
-#: src/editor/controller/editor_controller.cpp:220
+#: src/editor/controller/editor_controller.cpp:219
 msgid "No editor time-of-day found."
 msgstr "Aucune période du jour définie dans l'éditeur."
 
-#: src/editor/controller/editor_controller.cpp:1132
+#: src/editor/controller/editor_controller.cpp:1131
 msgid "Change Unit ID"
 msgstr "Changer l'ID de l'unité"
 
-#: src/editor/controller/editor_controller.cpp:1133
+#: src/editor/controller/editor_controller.cpp:1132
 msgid "ID:"
 msgstr "ID : "
 
-#: src/editor/controller/editor_controller.cpp:1149
+#: src/editor/controller/editor_controller.cpp:1148
 msgid "Rename Unit"
 msgstr "Renommer l'unité"
 
-#: src/editor/controller/editor_controller.cpp:1150
+#: src/editor/controller/editor_controller.cpp:1149
 msgid "Name:"
 msgstr "Nom : "
 
-#: src/editor/map/context_manager.cpp:126
-#: src/editor/map/context_manager.cpp:287
+#: src/editor/map/context_manager.cpp:125
+#: src/editor/map/context_manager.cpp:286
 msgid "(New Map)"
 msgstr "(Nouvelle carte)"
 
-#: src/editor/map/context_manager.cpp:192
+#: src/editor/map/context_manager.cpp:191
 msgid "Load Map"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:289
+#: src/editor/map/context_manager.cpp:288
 msgid "(New Scenario)"
 msgstr "(Nouveau scénario)"
 
-#: src/editor/map/context_manager.cpp:316
+#: src/editor/map/context_manager.cpp:315
 msgid "No Recent Files"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:353
+#: src/editor/map/context_manager.cpp:352
 msgid "(Unnamed Area)"
 msgstr "(Zone sans nom)"
 
-#: src/editor/map/context_manager.cpp:382
+#: src/editor/map/context_manager.cpp:381
 msgid "(New Side)"
 msgstr "(Nouveau camp)"
 
-#: src/editor/map/context_manager.cpp:451
+#: src/editor/map/context_manager.cpp:450
 msgid "Apply Mask"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:460
+#: src/editor/map/context_manager.cpp:459
 msgid "Error loading mask"
 msgstr "Erreur lord du chargement du masque"
 
-#: src/editor/map/context_manager.cpp:479
+#: src/editor/map/context_manager.cpp:478
 msgid "Identifier:"
 msgstr "Identificateur : "
 
-#: src/editor/map/context_manager.cpp:479
+#: src/editor/map/context_manager.cpp:478
 msgid "Rename Area"
 msgstr "Renommer la zone"
 
-#: src/editor/map/context_manager.cpp:493
+#: src/editor/map/context_manager.cpp:492
 msgid "Choose Target Map"
 msgstr "Choisir la carte de destination"
 
-#: src/editor/map/context_manager.cpp:502
-#: src/editor/map/context_manager.cpp:925
+#: src/editor/map/context_manager.cpp:501
+#: src/editor/map/context_manager.cpp:924
 msgid "Error loading map"
 msgstr "Erreur lors du chargement de la carte"
 
-#: src/editor/map/context_manager.cpp:617
+#: src/editor/map/context_manager.cpp:616
 #, fuzzy
 #| msgid "Save the Map As"
 msgid "Save Map As"
 msgstr "Enregistrer la carte sous"
 
-#: src/editor/map/context_manager.cpp:638
+#: src/editor/map/context_manager.cpp:637
 #, fuzzy
 #| msgid "Save the Scenario As"
 msgid "Save Scenario As"
 msgstr "Sauvegarder le scénario sous"
 
-#: src/editor/map/context_manager.cpp:672
+#: src/editor/map/context_manager.cpp:671
 msgid "No random map generators found."
 msgstr "Aucun générateur de carte aléatoire trouvé."
 
-#: src/editor/map/context_manager.cpp:685
-#: src/editor/map/context_manager.cpp:689
+#: src/editor/map/context_manager.cpp:684
+#: src/editor/map/context_manager.cpp:688
 msgid "Map creation failed."
 msgstr "Échec de création de la carte."
 
-#: src/editor/map/context_manager.cpp:703
+#: src/editor/map/context_manager.cpp:702
 msgid "Unsaved Changes"
 msgstr "Modifications non sauvegardées"
 
-#: src/editor/map/context_manager.cpp:704
+#: src/editor/map/context_manager.cpp:703
 #, fuzzy
 #| msgid ""
 #| "Do you want to discard all changes you made to the map since the last "
@@ -415,33 +415,33 @@ msgstr ""
 "Voulez-vous annuler toutes les modifications de la carte depuis la dernière "
 "sauvegarde ?"
 
-#: src/editor/map/context_manager.cpp:803
+#: src/editor/map/context_manager.cpp:802
 msgid "This scenario is already open."
 msgstr "Ce scénario est déjà ouvert."
 
-#: src/editor/map/context_manager.cpp:825
-#: src/editor/map/context_manager.cpp:880
+#: src/editor/map/context_manager.cpp:824
+#: src/editor/map/context_manager.cpp:879
 msgid "This map is already open."
 msgstr "Cette carte est déjà ouverte."
 
-#: src/editor/map/context_manager.cpp:846
+#: src/editor/map/context_manager.cpp:845
 msgid "Scenario saved."
 msgstr "Scénario sauvegardé."
 
-#: src/editor/map/context_manager.cpp:860
+#: src/editor/map/context_manager.cpp:859
 msgid "Map saved."
 msgstr "Carte sauvegardée."
 
-#: src/editor/map/context_manager.cpp:903
+#: src/editor/map/context_manager.cpp:902
 msgid "Loaded embedded map data"
 msgstr "Données de carte embarquée chargées"
 
-#: src/editor/map/context_manager.cpp:904
-#: src/editor/map/context_manager.cpp:918
+#: src/editor/map/context_manager.cpp:903
+#: src/editor/map/context_manager.cpp:917
 msgid "Map loaded from scenario"
 msgstr "Carte chargée depuis le scénario"
 
-#: src/editor/map/context_manager.cpp:914
+#: src/editor/map/context_manager.cpp:913
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
@@ -449,13 +449,13 @@ msgstr ""
 "Fichier de carte référencée chargé :\n"
 "$new"
 
-#: src/editor/map/context_manager.cpp:1003
+#: src/editor/map/context_manager.cpp:1002
 #, fuzzy
 #| msgid "(New Map)"
 msgid "New Map"
 msgstr "(Nouvelle carte)"
 
-#: src/editor/map/context_manager.cpp:1003
+#: src/editor/map/context_manager.cpp:1002
 #, fuzzy
 #| msgid "(New Scenario)"
 msgid "New Scenario"
@@ -474,15 +474,15 @@ msgstr ""
 "La taille de la carte de destination est différente de celle de la carte "
 "actuelle"
 
-#: src/editor/map/map_context.cpp:151
+#: src/editor/map/map_context.cpp:150
 msgid "File not found"
 msgstr "Fichier non trouvé"
 
-#: src/editor/map/map_context.cpp:157
+#: src/editor/map/map_context.cpp:156
 msgid "Empty file"
 msgstr "Fichier vide"
 
-#: src/editor/map/map_context.cpp:206
+#: src/editor/map/map_context.cpp:205
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -490,15 +490,15 @@ msgstr ""
 "Ce fichier ressemble à un scénario, mais la valeur de map_data n'indique pas "
 "un nom de fichier existant."
 
-#: src/editor/map/map_context.cpp:544
+#: src/editor/map/map_context.cpp:543
 msgid "Could not save the scenario: $msg"
 msgstr "Impossible de sauvegarder le scénario : $msg"
 
-#: src/editor/map/map_context.cpp:571
+#: src/editor/map/map_context.cpp:570
 msgid "Could not save into scenario"
 msgstr "Impossible de sauvegarder dans le scénario"
 
-#: src/editor/map/map_context.cpp:579
+#: src/editor/map/map_context.cpp:578
 msgid "Could not save the map: $msg"
 msgstr "Impossible de sauvegarder la carte : $msg"
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.9.10+dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-03-19 00:05+0300\n"
+"POT-Creation-Date: 2017-03-23 08:11+0100\n"
 "PO-Revision-Date: 2015-08-08 13:56+0300\n"
 "Last-Translator: Gvido Bruveris <huhims@gmail.com>\n"
 "Language-Team: none\n"
@@ -883,8 +883,8 @@ msgstr "Graudu upuris"
 msgid "Runic Hammer"
 msgstr "Rūnu āmurs"
 
-#. [item]: id=holly-water
 #. [object]
+#. [item]: id=holly-water
 #: data/core/editor/items.cfg:279 data/core/macros/items.cfg:278
 msgid "Holy Water"
 msgstr "Svētītais ūdens"
@@ -925,8 +925,8 @@ msgstr "Zaļa dzira"
 msgid "Gray Potion"
 msgstr "Pelēka dzira"
 
-#. [item]: id=potion-poison
 #. [object]: id={ID}
+#. [item]: id=potion-poison
 #: data/core/editor/items.cfg:333 data/core/macros/items.cfg:242
 msgid "Poison"
 msgstr "Inde"
@@ -996,8 +996,8 @@ msgstr "Zizlis"
 msgid "Stone Tablet"
 msgstr "Akmens plāksne"
 
-#. [item]: id=storm-trident
 #. [object]
+#. [item]: id=storm-trident
 #: data/core/editor/items.cfg:417 data/core/macros/items.cfg:518
 msgid "Storm Trident"
 msgstr "Vētras trijžuburis"
@@ -3162,7 +3162,7 @@ msgid "Weight of Revenge"
 msgstr "Spilgti oranža"
 
 #. [message]: speaker=narrator
-#: data/core/macros/utils.cfg:688
+#: data/core/macros/utils.cfg:697
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr "Tu ieguvi $amount_gold gabalus zelta."
 
@@ -3759,8 +3759,8 @@ msgstr "nedziedināms"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:373 src/scripting/game_lua_kernel.cpp:2670
-#: src/scripting/game_lua_kernel.cpp:2705
+#: data/lua/wml/message.lua:373 src/scripting/game_lua_kernel.cpp:2673
+#: src/scripting/game_lua_kernel.cpp:2708
 msgid "input"
 msgstr ""
 
@@ -5183,50 +5183,6 @@ msgstr "Ielādējot papildinājumu ieviesās kļūda."
 msgid "Could not find an add-on matching id $addon_id on the add-on server."
 msgstr ""
 
-#: src/attack_prediction_display.cpp:106 src/attack_prediction_display.cpp:238
-msgid "Attacker"
-msgstr "Uzbrucējs"
-
-#: src/attack_prediction_display.cpp:107 src/attack_prediction_display.cpp:237
-msgid "Defender"
-msgstr "Aizstāvis"
-
-#: src/attack_prediction_display.cpp:125
-msgid "Expected Battle Result (HP)"
-msgstr "Sagaidāmais rezultāts (veselība)"
-
-#: src/attack_prediction_display.cpp:216
-msgid "Time of day"
-msgstr "Diennakts laiks"
-
-#: src/attack_prediction_display.cpp:226
-msgid "Leadership"
-msgstr "Vadība"
-
-#: src/attack_prediction_display.cpp:239
-msgid " resistance vs "
-msgstr " pretestība pret "
-
-#: src/attack_prediction_display.cpp:240
-msgid " vulnerability vs "
-msgstr " uzņēmīgs uz "
-
-#: src/attack_prediction_display.cpp:250
-msgid "Slowed"
-msgstr "Sapīts/-a"
-
-#: src/attack_prediction_display.cpp:255 src/reports.cpp:918
-msgid "Total damage"
-msgstr "Kopējie bojājumi"
-
-#: src/attack_prediction_display.cpp:262
-msgid "No usable weapon"
-msgstr "Nav piemērota ierocis"
-
-#: src/attack_prediction_display.cpp:267
-msgid "Chance of being unscathed"
-msgstr "Iespēja negūt bojājumus"
-
 #: src/chat_command_handler.cpp:99
 msgid "Added to ignore list: $nick"
 msgstr "Pievienoja ignorēto sarakstam: $nick"
@@ -5652,31 +5608,31 @@ msgid "Anonymous player"
 msgstr "Anonīms vietējais spēlētājs"
 
 #: src/game_initialization/connect_engine.cpp:986
-#: src/game_initialization/connect_engine.cpp:1282
+#: src/game_initialization/connect_engine.cpp:1285
 msgid "Computer Player"
 msgstr "Dators"
 
-#: src/game_initialization/connect_engine.cpp:1025
+#: src/game_initialization/connect_engine.cpp:1028
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/game_initialization/connect_engine.cpp:1278
+#: src/game_initialization/connect_engine.cpp:1281
 msgid "Network Player"
 msgstr "Tīkla spēlētājs"
 
-#: src/game_initialization/connect_engine.cpp:1281
+#: src/game_initialization/connect_engine.cpp:1284
 msgid "Local Player"
 msgstr "Vietējais spēlētājs"
 
-#: src/game_initialization/connect_engine.cpp:1283
+#: src/game_initialization/connect_engine.cpp:1286
 msgid "Empty"
 msgstr "Tukšs"
 
-#: src/game_initialization/connect_engine.cpp:1286
+#: src/game_initialization/connect_engine.cpp:1289
 msgid "Reserved"
 msgstr "Rezervēts"
 
-#: src/game_initialization/connect_engine.cpp:1290
+#: src/game_initialization/connect_engine.cpp:1293
 msgid "--give--"
 msgstr "--dot--"
 
@@ -6113,18 +6069,6 @@ msgstr ""
 #: src/gui/core/linked_group_definition.cpp:41
 msgid "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
 msgstr ""
-
-#: src/gui/dialogs/addon/install_dependencies.cpp:38
-msgid ""
-"The selected add-on has the following dependency, which is not currently "
-"installed. Do you wish to install it before continuing?"
-msgid_plural ""
-"The selected add-on has the following dependencies, which are not currently "
-"installed. Do you wish to install them before continuing?"
-msgstr[0] ""
-"Izvēlētajam pielikumam ir sekojoša atkarība. Vai vēlies to turpināt?"
-msgstr[1] "Izvēlētajam pielikumam ir sekojošas atkarības. Vai vēlies turpināt?"
-msgstr[2] "Izvēlētajam pielikumam ir sekojošas atkarības. Vai vēlies turpināt?"
 
 #: src/gui/dialogs/game_load.hpp:42
 msgid "No Saved Games"
@@ -7127,15 +7071,15 @@ msgstr "Gājiens mainīts"
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "Sastapts apvidus ar pārvietošanās izmaksu mazāku par 1."
 
-#: src/play_controller.cpp:252
+#: src/play_controller.cpp:250
 msgid "time left for current turn"
 msgstr "pašreizējam gājienam atlikušais laiks"
 
-#: src/play_controller.cpp:254 src/replay_controller.cpp:115
+#: src/play_controller.cpp:252 src/replay_controller.cpp:115
 msgid "current local time"
 msgstr "pašreizējais vietējais laiks"
 
-#: src/play_controller.cpp:988
+#: src/play_controller.cpp:986
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
@@ -7143,11 +7087,11 @@ msgstr ""
 "Spēle vairs nav sinhronizēta. Varētu nebūt liela jēga turpināt. Vai gribi "
 "saglabāt savu spēli?"
 
-#: src/play_controller.cpp:989
+#: src/play_controller.cpp:987
 msgid "Error details:"
 msgstr "Kļūdas detaļas:"
 
-#: src/play_controller.cpp:1262
+#: src/play_controller.cpp:1260
 msgid "No objectives available"
 msgstr "Neviens uzdevums nav pieejams"
 
@@ -7443,6 +7387,10 @@ msgstr "Ieroču talants: "
 #: src/reports.cpp:889
 msgid "None"
 msgstr "Nekas"
+
+#: src/reports.cpp:918
+msgid "Total damage"
+msgstr "Kopējie bojājumi"
 
 #: src/reports.cpp:1125 src/reports.cpp:1177
 msgid "Lawful units: "
@@ -7913,6 +7861,49 @@ msgstr "Paslēpt $player plānus"
 #: src/whiteboard/manager.cpp:1103
 msgid "Whiteboard Options"
 msgstr "Plānotāja iespējas"
+
+#~ msgid "Attacker"
+#~ msgstr "Uzbrucējs"
+
+#~ msgid "Defender"
+#~ msgstr "Aizstāvis"
+
+#~ msgid "Expected Battle Result (HP)"
+#~ msgstr "Sagaidāmais rezultāts (veselība)"
+
+#~ msgid "Time of day"
+#~ msgstr "Diennakts laiks"
+
+#~ msgid "Leadership"
+#~ msgstr "Vadība"
+
+#~ msgid " resistance vs "
+#~ msgstr " pretestība pret "
+
+#~ msgid " vulnerability vs "
+#~ msgstr " uzņēmīgs uz "
+
+#~ msgid "Slowed"
+#~ msgstr "Sapīts/-a"
+
+#~ msgid "No usable weapon"
+#~ msgstr "Nav piemērota ierocis"
+
+#~ msgid "Chance of being unscathed"
+#~ msgstr "Iespēja negūt bojājumus"
+
+#~ msgid ""
+#~ "The selected add-on has the following dependency, which is not currently "
+#~ "installed. Do you wish to install it before continuing?"
+#~ msgid_plural ""
+#~ "The selected add-on has the following dependencies, which are not "
+#~ "currently installed. Do you wish to install them before continuing?"
+#~ msgstr[0] ""
+#~ "Izvēlētajam pielikumam ir sekojoša atkarība. Vai vēlies to turpināt?"
+#~ msgstr[1] ""
+#~ "Izvēlētajam pielikumam ir sekojošas atkarības. Vai vēlies turpināt?"
+#~ msgstr[2] ""
+#~ "Izvēlētajam pielikumam ir sekojošas atkarības. Vai vēlies turpināt?"
 
 #, fuzzy
 #~| msgid "Experimental multiplayer lobby"

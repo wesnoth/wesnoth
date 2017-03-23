@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth-Dev Japanese\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-03-19 00:05+0300\n"
+"POT-Creation-Date: 2017-03-23 08:11+0100\n"
 "PO-Revision-Date: 2016-04-05 22:38+0000\n"
 "Last-Translator: RatArmy <broadbarredfirefish@gmail.com>\n"
 "Language-Team: Japanese (http://www.transifex.com/wesnoth-jp/wesnoth-dev-"
@@ -880,8 +880,8 @@ msgstr "穀物の束"
 msgid "Runic Hammer"
 msgstr "ルーンの槌"
 
-#. [item]: id=holly-water
 #. [object]
+#. [item]: id=holly-water
 #: data/core/editor/items.cfg:279 data/core/macros/items.cfg:278
 msgid "Holy Water"
 msgstr "聖水"
@@ -922,8 +922,8 @@ msgstr "緑の薬"
 msgid "Gray Potion"
 msgstr "灰色の薬"
 
-#. [item]: id=potion-poison
 #. [object]: id={ID}
+#. [item]: id=potion-poison
 #: data/core/editor/items.cfg:333 data/core/macros/items.cfg:242
 msgid "Poison"
 msgstr "毒"
@@ -993,8 +993,8 @@ msgstr "杖"
 msgid "Stone Tablet"
 msgstr "石の銘板"
 
-#. [item]: id=storm-trident
 #. [object]
+#. [item]: id=storm-trident
 #: data/core/editor/items.cfg:417 data/core/macros/items.cfg:518
 msgid "Storm Trident"
 msgstr "ストームトライデント"
@@ -3162,7 +3162,7 @@ msgid "Weight of Revenge"
 msgstr "ブライトオレンジ"
 
 #. [message]: speaker=narrator
-#: data/core/macros/utils.cfg:688
+#: data/core/macros/utils.cfg:697
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr "$amount_gold枚のゴールドを手にいれました。"
 
@@ -3765,8 +3765,8 @@ msgstr "回復不能"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:373 src/scripting/game_lua_kernel.cpp:2670
-#: src/scripting/game_lua_kernel.cpp:2705
+#: data/lua/wml/message.lua:373 src/scripting/game_lua_kernel.cpp:2673
+#: src/scripting/game_lua_kernel.cpp:2708
 msgid "input"
 msgstr "入力"
 
@@ -5150,50 +5150,6 @@ msgstr "サーバーからのアドオン一覧のダウンロード中にエラ
 msgid "Could not find an add-on matching id $addon_id on the add-on server."
 msgstr "id：$addon_id を持つアドオンはサーバ上に見つかりませんでした。"
 
-#: src/attack_prediction_display.cpp:106 src/attack_prediction_display.cpp:238
-msgid "Attacker"
-msgstr "攻撃側"
-
-#: src/attack_prediction_display.cpp:107 src/attack_prediction_display.cpp:237
-msgid "Defender"
-msgstr "防御側"
-
-#: src/attack_prediction_display.cpp:125
-msgid "Expected Battle Result (HP)"
-msgstr "想定される戦闘結果 （HP）"
-
-#: src/attack_prediction_display.cpp:216
-msgid "Time of day"
-msgstr "時刻"
-
-#: src/attack_prediction_display.cpp:226
-msgid "Leadership"
-msgstr "統率"
-
-#: src/attack_prediction_display.cpp:239
-msgid " resistance vs "
-msgstr "の耐性:"
-
-#: src/attack_prediction_display.cpp:240
-msgid " vulnerability vs "
-msgstr "の弱点:"
-
-#: src/attack_prediction_display.cpp:250
-msgid "Slowed"
-msgstr "遅化"
-
-#: src/attack_prediction_display.cpp:255 src/reports.cpp:918
-msgid "Total damage"
-msgstr "総ダメージ"
-
-#: src/attack_prediction_display.cpp:262
-msgid "No usable weapon"
-msgstr "使用できる武器: 無し"
-
-#: src/attack_prediction_display.cpp:267
-msgid "Chance of being unscathed"
-msgstr "無傷でいられる可能性"
-
 #: src/chat_command_handler.cpp:99
 msgid "Added to ignore list: $nick"
 msgstr "無視リストに追加されました: $nick"
@@ -5610,31 +5566,31 @@ msgid "Anonymous player"
 msgstr "匿名プレイヤー"
 
 #: src/game_initialization/connect_engine.cpp:986
-#: src/game_initialization/connect_engine.cpp:1282
+#: src/game_initialization/connect_engine.cpp:1285
 msgid "Computer Player"
 msgstr "コンピューター"
 
-#: src/game_initialization/connect_engine.cpp:1025
+#: src/game_initialization/connect_engine.cpp:1028
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/game_initialization/connect_engine.cpp:1278
+#: src/game_initialization/connect_engine.cpp:1281
 msgid "Network Player"
 msgstr "ネットプレイヤー"
 
-#: src/game_initialization/connect_engine.cpp:1281
+#: src/game_initialization/connect_engine.cpp:1284
 msgid "Local Player"
 msgstr "ローカルプレイヤー"
 
-#: src/game_initialization/connect_engine.cpp:1283
+#: src/game_initialization/connect_engine.cpp:1286
 msgid "Empty"
 msgstr "なし"
 
-#: src/game_initialization/connect_engine.cpp:1286
+#: src/game_initialization/connect_engine.cpp:1289
 msgid "Reserved"
 msgstr "予約済み"
 
-#: src/game_initialization/connect_engine.cpp:1290
+#: src/game_initialization/connect_engine.cpp:1293
 msgid "--give--"
 msgstr "＜変更なし＞"
 
@@ -6056,17 +6012,6 @@ msgstr ""
 #: src/gui/core/linked_group_definition.cpp:41
 msgid "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
 msgstr ""
-
-#: src/gui/dialogs/addon/install_dependencies.cpp:38
-msgid ""
-"The selected add-on has the following dependency, which is not currently "
-"installed. Do you wish to install it before continuing?"
-msgid_plural ""
-"The selected add-on has the following dependencies, which are not currently "
-"installed. Do you wish to install them before continuing?"
-msgstr[0] ""
-"選択されたアドオンは下記のアドオンに依存しており、それらは現在インストールさ"
-"れていません。必要なアドオンを先にインストールしますか？"
 
 #: src/gui/dialogs/game_load.hpp:42
 msgid "No Saved Games"
@@ -6993,15 +6938,15 @@ msgstr "ターンが変更されました"
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "移動コストが 1 未満の土地が見つかりました。"
 
-#: src/play_controller.cpp:252
+#: src/play_controller.cpp:250
 msgid "time left for current turn"
 msgstr "現在のターンにおける、残り時間"
 
-#: src/play_controller.cpp:254 src/replay_controller.cpp:115
+#: src/play_controller.cpp:252 src/replay_controller.cpp:115
 msgid "current local time"
 msgstr "現在のローカル時間"
 
-#: src/play_controller.cpp:988
+#: src/play_controller.cpp:986
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
@@ -7009,11 +6954,11 @@ msgstr ""
 "このゲームは同期が取れなくなり、続行不能だと思われます。このゲームを保存しま"
 "すか？"
 
-#: src/play_controller.cpp:989
+#: src/play_controller.cpp:987
 msgid "Error details:"
 msgstr "エラーの詳細:"
 
-#: src/play_controller.cpp:1262
+#: src/play_controller.cpp:1260
 msgid "No objectives available"
 msgstr "目標がありません"
 
@@ -7313,6 +7258,10 @@ msgstr "武器の特殊効果: "
 #: src/reports.cpp:889
 msgid "None"
 msgstr "なし"
+
+#: src/reports.cpp:918
+msgid "Total damage"
+msgstr "総ダメージ"
 
 #: src/reports.cpp:1125 src/reports.cpp:1177
 msgid "Lawful units: "
@@ -7781,6 +7730,46 @@ msgstr "$player と交代する"
 #: src/whiteboard/manager.cpp:1103
 msgid "Whiteboard Options"
 msgstr "行動予定オプション"
+
+#~ msgid "Attacker"
+#~ msgstr "攻撃側"
+
+#~ msgid "Defender"
+#~ msgstr "防御側"
+
+#~ msgid "Expected Battle Result (HP)"
+#~ msgstr "想定される戦闘結果 （HP）"
+
+#~ msgid "Time of day"
+#~ msgstr "時刻"
+
+#~ msgid "Leadership"
+#~ msgstr "統率"
+
+#~ msgid " resistance vs "
+#~ msgstr "の耐性:"
+
+#~ msgid " vulnerability vs "
+#~ msgstr "の弱点:"
+
+#~ msgid "Slowed"
+#~ msgstr "遅化"
+
+#~ msgid "No usable weapon"
+#~ msgstr "使用できる武器: 無し"
+
+#~ msgid "Chance of being unscathed"
+#~ msgstr "無傷でいられる可能性"
+
+#~ msgid ""
+#~ "The selected add-on has the following dependency, which is not currently "
+#~ "installed. Do you wish to install it before continuing?"
+#~ msgid_plural ""
+#~ "The selected add-on has the following dependencies, which are not "
+#~ "currently installed. Do you wish to install them before continuing?"
+#~ msgstr[0] ""
+#~ "選択されたアドオンは下記のアドオンに依存しており、それらは現在インストール"
+#~ "されていません。必要なアドオンを先にインストールしますか？"
 
 #, fuzzy
 #~| msgid "Experimental multiplayer lobby"

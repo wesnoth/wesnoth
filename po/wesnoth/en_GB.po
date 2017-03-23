@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-03-19 00:05+0300\n"
+"POT-Creation-Date: 2017-03-23 08:11+0100\n"
 "PO-Revision-Date: 2016-11-07 20:23+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
@@ -884,8 +884,8 @@ msgstr "Grain Sheaf"
 msgid "Runic Hammer"
 msgstr "Runic Hammer"
 
-#. [item]: id=holly-water
 #. [object]
+#. [item]: id=holly-water
 #: data/core/editor/items.cfg:279 data/core/macros/items.cfg:278
 msgid "Holy Water"
 msgstr "Holy Water"
@@ -926,8 +926,8 @@ msgstr "Green Potion"
 msgid "Gray Potion"
 msgstr "Grey Potion"
 
-#. [item]: id=potion-poison
 #. [object]: id={ID}
+#. [item]: id=potion-poison
 #: data/core/editor/items.cfg:333 data/core/macros/items.cfg:242
 msgid "Poison"
 msgstr "Poison"
@@ -997,8 +997,8 @@ msgstr "Staff"
 msgid "Stone Tablet"
 msgstr "Stone Tablet"
 
-#. [item]: id=storm-trident
 #. [object]
+#. [item]: id=storm-trident
 #: data/core/editor/items.cfg:417 data/core/macros/items.cfg:518
 msgid "Storm Trident"
 msgstr "Storm Trident"
@@ -3369,7 +3369,7 @@ msgid "Weight of Revenge"
 msgstr "Weight of Revenge"
 
 #. [message]: speaker=narrator
-#: data/core/macros/utils.cfg:688
+#: data/core/macros/utils.cfg:697
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr "You retrieve $amount_gold pieces of gold."
 
@@ -4053,8 +4053,8 @@ msgstr "unhealable"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:373 src/scripting/game_lua_kernel.cpp:2670
-#: src/scripting/game_lua_kernel.cpp:2705
+#: data/lua/wml/message.lua:373 src/scripting/game_lua_kernel.cpp:2673
+#: src/scripting/game_lua_kernel.cpp:2708
 msgid "input"
 msgstr "input"
 
@@ -5471,50 +5471,6 @@ msgstr "An error occurred while downloading the add-ons list from the server."
 msgid "Could not find an add-on matching id $addon_id on the add-on server."
 msgstr "Could not find an add-on matching id $addon_id on the add-on server."
 
-#: src/attack_prediction_display.cpp:106 src/attack_prediction_display.cpp:238
-msgid "Attacker"
-msgstr "Attacker"
-
-#: src/attack_prediction_display.cpp:107 src/attack_prediction_display.cpp:237
-msgid "Defender"
-msgstr "Defender"
-
-#: src/attack_prediction_display.cpp:125
-msgid "Expected Battle Result (HP)"
-msgstr "Expected Battle Result (HP)"
-
-#: src/attack_prediction_display.cpp:216
-msgid "Time of day"
-msgstr "Time of day"
-
-#: src/attack_prediction_display.cpp:226
-msgid "Leadership"
-msgstr "Leadership"
-
-#: src/attack_prediction_display.cpp:239
-msgid " resistance vs "
-msgstr " resistance vs "
-
-#: src/attack_prediction_display.cpp:240
-msgid " vulnerability vs "
-msgstr " vulnerability vs "
-
-#: src/attack_prediction_display.cpp:250
-msgid "Slowed"
-msgstr "Slowed"
-
-#: src/attack_prediction_display.cpp:255 src/reports.cpp:918
-msgid "Total damage"
-msgstr "Total damage"
-
-#: src/attack_prediction_display.cpp:262
-msgid "No usable weapon"
-msgstr "No usable weapon"
-
-#: src/attack_prediction_display.cpp:267
-msgid "Chance of being unscathed"
-msgstr "Chance of being unscathed"
-
 #: src/chat_command_handler.cpp:99
 msgid "Added to ignore list: $nick"
 msgstr "Added to ignore list: $nick"
@@ -5926,31 +5882,31 @@ msgid "Anonymous player"
 msgstr "Anonymous player"
 
 #: src/game_initialization/connect_engine.cpp:986
-#: src/game_initialization/connect_engine.cpp:1282
+#: src/game_initialization/connect_engine.cpp:1285
 msgid "Computer Player"
 msgstr "Computer Player"
 
-#: src/game_initialization/connect_engine.cpp:1025
+#: src/game_initialization/connect_engine.cpp:1028
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/game_initialization/connect_engine.cpp:1278
+#: src/game_initialization/connect_engine.cpp:1281
 msgid "Network Player"
 msgstr "Network Player"
 
-#: src/game_initialization/connect_engine.cpp:1281
+#: src/game_initialization/connect_engine.cpp:1284
 msgid "Local Player"
 msgstr "Local Player"
 
-#: src/game_initialization/connect_engine.cpp:1283
+#: src/game_initialization/connect_engine.cpp:1286
 msgid "Empty"
 msgstr "Empty"
 
-#: src/game_initialization/connect_engine.cpp:1286
+#: src/game_initialization/connect_engine.cpp:1289
 msgid "Reserved"
 msgstr "Reserved"
 
-#: src/game_initialization/connect_engine.cpp:1290
+#: src/game_initialization/connect_engine.cpp:1293
 msgid "--give--"
 msgstr "--give--"
 
@@ -6364,20 +6320,6 @@ msgstr ""
 #: src/gui/core/linked_group_definition.cpp:41
 msgid "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
 msgstr ""
-
-#: src/gui/dialogs/addon/install_dependencies.cpp:38
-msgid ""
-"The selected add-on has the following dependency, which is not currently "
-"installed. Do you wish to install it before continuing?"
-msgid_plural ""
-"The selected add-on has the following dependencies, which are not currently "
-"installed. Do you wish to install them before continuing?"
-msgstr[0] ""
-"The selected add-on has the following dependency, which is not currently "
-"installed. Do you wish to install it before continuing?"
-msgstr[1] ""
-"The selected add-on has the following dependencies, which are not currently "
-"installed. Do you wish to install them before continuing?"
 
 #: src/gui/dialogs/game_load.hpp:42
 msgid "No Saved Games"
@@ -7295,15 +7237,15 @@ msgstr "Turn changed"
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "Terrain with a movement cost less than 1 encountered."
 
-#: src/play_controller.cpp:252
+#: src/play_controller.cpp:250
 msgid "time left for current turn"
 msgstr "time left for current turn"
 
-#: src/play_controller.cpp:254 src/replay_controller.cpp:115
+#: src/play_controller.cpp:252 src/replay_controller.cpp:115
 msgid "current local time"
 msgstr "current local time"
 
-#: src/play_controller.cpp:988
+#: src/play_controller.cpp:986
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
@@ -7311,11 +7253,11 @@ msgstr ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
 
-#: src/play_controller.cpp:989
+#: src/play_controller.cpp:987
 msgid "Error details:"
 msgstr "Error details:"
 
-#: src/play_controller.cpp:1262
+#: src/play_controller.cpp:1260
 msgid "No objectives available"
 msgstr "No objectives available"
 
@@ -7610,6 +7552,10 @@ msgstr "Weapon special: "
 #: src/reports.cpp:889
 msgid "None"
 msgstr "None"
+
+#: src/reports.cpp:918
+msgid "Total damage"
+msgstr "Total damage"
 
 #: src/reports.cpp:1125 src/reports.cpp:1177
 msgid "Lawful units: "
@@ -8075,6 +8021,49 @@ msgstr "Hide plans for $player"
 #: src/whiteboard/manager.cpp:1103
 msgid "Whiteboard Options"
 msgstr "Whiteboard Options"
+
+#~ msgid "Attacker"
+#~ msgstr "Attacker"
+
+#~ msgid "Defender"
+#~ msgstr "Defender"
+
+#~ msgid "Expected Battle Result (HP)"
+#~ msgstr "Expected Battle Result (HP)"
+
+#~ msgid "Time of day"
+#~ msgstr "Time of day"
+
+#~ msgid "Leadership"
+#~ msgstr "Leadership"
+
+#~ msgid " resistance vs "
+#~ msgstr " resistance vs "
+
+#~ msgid " vulnerability vs "
+#~ msgstr " vulnerability vs "
+
+#~ msgid "Slowed"
+#~ msgstr "Slowed"
+
+#~ msgid "No usable weapon"
+#~ msgstr "No usable weapon"
+
+#~ msgid "Chance of being unscathed"
+#~ msgstr "Chance of being unscathed"
+
+#~ msgid ""
+#~ "The selected add-on has the following dependency, which is not currently "
+#~ "installed. Do you wish to install it before continuing?"
+#~ msgid_plural ""
+#~ "The selected add-on has the following dependencies, which are not "
+#~ "currently installed. Do you wish to install them before continuing?"
+#~ msgstr[0] ""
+#~ "The selected add-on has the following dependency, which is not currently "
+#~ "installed. Do you wish to install it before continuing?"
+#~ msgstr[1] ""
+#~ "The selected add-on has the following dependencies, which are not "
+#~ "currently installed. Do you wish to install them before continuing?"
 
 #~ msgid "Experimental multiplayer UI"
 #~ msgstr "Experimental multiplayer UI"

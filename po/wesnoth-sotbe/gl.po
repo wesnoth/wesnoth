@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-03-18 21:05 UTC\n"
+"POT-Creation-Date: 2017-03-23 08:11+0100\n"
 "PO-Revision-Date: 2016-02-06 20:34+0100\n"
 "Last-Translator: Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail."
 "com>\n"
@@ -146,11 +146,11 @@ msgid "Death of Kapou’e"
 msgstr "Morte de Quipui."
 
 #. [side]: id=Kapou'e, type=Orcish Leader
-#. [side]
-#. [side]: type=General, id=Howgarth III
 #. [side]: type=Orcish Leader, id=Kapou'e
-#. [side]: type=Orcish Slayer, id=Rugh
+#. [side]
 #. [side]: id=Grüü, type=Great Troll
+#. [side]: type=General, id=Howgarth III
+#. [side]: type=Orcish Slayer, id=Rugh
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:56
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:64
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:43
@@ -186,11 +186,11 @@ msgstr "Quipui"
 msgid "Alber"
 msgstr "Alber"
 
-#. [side]: type=General, id=Lanbec'h
 #. [side]: type=Lieutenant, id=Alber
 #. [side]: type=General, id=Slowhand
 #. [side]
 #. [side]: type=General, id=Harman
+#. [side]: type=General, id=Lanbec'h
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:82
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:61
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:34
@@ -1750,18 +1750,18 @@ msgstr "Ardán"
 
 #. [side]: type=Assassin, type=Rogue, id=Ar-Dant
 #. [side]: type=Giant Scorpion
-#. [side]: type=Dwarvish Steelclad, id=Darstang
-#. [side]: type=Bandit, id=Sagmar
-#. [side]: type=Grand Marshal, id=Earl Lanbec'h
-#. [side]: type=Orcish Warlord, id=Shan Taum
-#. [side]: type=General, id=Arthain
-#. [side]: type=Lieutenant, id=Hanak
 #. [side]: type=Elvish Champion, id=Thelarion
+#. [side]: type=Dwarvish Steelclad, id=Darstang
 #. [side]: type=General, id=Earl Lanbec'h
 #. [side]
+#. [side]: type=General, id=Arthain
+#. [side]: type=Lieutenant, id=Hanak
 #. [side]: type=General, id=Telthys
 #. [side]: type=General, id=Fredor
 #. [side]: type=General, id=Georan
+#. [side]: type=Grand Marshal, id=Earl Lanbec'h
+#. [side]: type=Orcish Warlord, id=Shan Taum
+#. [side]: type=Bandit, id=Sagmar
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:86
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:97
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:106
@@ -2321,8 +2321,8 @@ msgstr ""
 "Por fin, velaquí as Montañas Salaiadas! Agora máis nos vale rezar o que "
 "saibamos."
 
-#. [message]: speaker=Grüü
 #. [message]: role=cannonfodder
+#. [message]: speaker=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:110
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:293
 msgid "Why?"
@@ -2520,8 +2520,8 @@ msgstr ""
 msgid "Whoever detonates the bridge will die."
 msgstr "Quen detone a ponte morrerá."
 
-#. [unit]: type=Elvish Champion, id=Thelarion
 #. [side]: type=Elvish Champion, id=Thelarion
+#. [unit]: type=Elvish Champion, id=Thelarion
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:88
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:62
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:189
@@ -2748,9 +2748,9 @@ msgstr ""
 msgid "It won’t be said that Elves were braver than us, everyone attack!"
 msgstr "Non se dirá que os elfos foron máis bravos ca nós, todos ao ataque!"
 
-#. [side]: type=Grand Marshal, id=Earl Lanbec'h
-#. [unit]: type=General, id=Earl Lanbec'h
 #. [side]: type=General, id=Earl Lanbec'h
+#. [unit]: type=General, id=Earl Lanbec'h
+#. [side]: type=Grand Marshal, id=Earl Lanbec'h
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:658
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:143
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:88
@@ -4189,8 +4189,8 @@ msgstr "Chegamos, señor."
 msgid "Ahhh, perfect, more reinforcements."
 msgstr "Ah, perfecto, máis reforzos."
 
-#. [unit]: type=General, id=Howgarth III
 #. [side]: type=General, id=Howgarth III
+#. [unit]: type=General, id=Howgarth III
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:390
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:154
 msgid "Howgarth III"

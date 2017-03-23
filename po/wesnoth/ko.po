@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-03-19 00:05+0300\n"
+"POT-Creation-Date: 2017-03-23 08:11+0100\n"
 "PO-Revision-Date: 2013-10-25 16:21+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -897,8 +897,8 @@ msgstr ""
 msgid "Runic Hammer"
 msgstr ""
 
-#. [item]: id=holly-water
 #. [object]
+#. [item]: id=holly-water
 #: data/core/editor/items.cfg:279 data/core/macros/items.cfg:278
 msgid "Holy Water"
 msgstr "성수"
@@ -941,8 +941,8 @@ msgstr "그리스어 번역 담당"
 msgid "Gray Potion"
 msgstr ""
 
-#. [item]: id=potion-poison
 #. [object]: id={ID}
+#. [item]: id=potion-poison
 #: data/core/editor/items.cfg:333 data/core/macros/items.cfg:242
 msgid "Poison"
 msgstr ""
@@ -1012,8 +1012,8 @@ msgstr ""
 msgid "Stone Tablet"
 msgstr ""
 
-#. [item]: id=storm-trident
 #. [object]
+#. [item]: id=storm-trident
 #: data/core/editor/items.cfg:417 data/core/macros/items.cfg:518
 msgid "Storm Trident"
 msgstr "폭풍의 삼지창"
@@ -3192,7 +3192,7 @@ msgid "Weight of Revenge"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/core/macros/utils.cfg:688
+#: data/core/macros/utils.cfg:697
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr ""
 
@@ -3794,8 +3794,8 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:373 src/scripting/game_lua_kernel.cpp:2670
-#: src/scripting/game_lua_kernel.cpp:2705
+#: data/lua/wml/message.lua:373 src/scripting/game_lua_kernel.cpp:2673
+#: src/scripting/game_lua_kernel.cpp:2708
 msgid "input"
 msgstr ""
 
@@ -5074,50 +5074,6 @@ msgstr ""
 msgid "Could not find an add-on matching id $addon_id on the add-on server."
 msgstr "이 서버에서 업데이트된 추가 기능을 찾을 수 없습니다."
 
-#: src/attack_prediction_display.cpp:106 src/attack_prediction_display.cpp:238
-msgid "Attacker"
-msgstr "공격자"
-
-#: src/attack_prediction_display.cpp:107 src/attack_prediction_display.cpp:237
-msgid "Defender"
-msgstr "방어자"
-
-#: src/attack_prediction_display.cpp:125
-msgid "Expected Battle Result (HP)"
-msgstr "예상 전투 결과 (HP)"
-
-#: src/attack_prediction_display.cpp:216
-msgid "Time of day"
-msgstr "시간대"
-
-#: src/attack_prediction_display.cpp:226
-msgid "Leadership"
-msgstr "통솔"
-
-#: src/attack_prediction_display.cpp:239
-msgid " resistance vs "
-msgstr "내성 vs "
-
-#: src/attack_prediction_display.cpp:240
-msgid " vulnerability vs "
-msgstr "약점 vs "
-
-#: src/attack_prediction_display.cpp:250
-msgid "Slowed"
-msgstr "둔화"
-
-#: src/attack_prediction_display.cpp:255 src/reports.cpp:918
-msgid "Total damage"
-msgstr "총 데미지"
-
-#: src/attack_prediction_display.cpp:262
-msgid "No usable weapon"
-msgstr "쓸 수 있는 무기 없음"
-
-#: src/attack_prediction_display.cpp:267
-msgid "Chance of being unscathed"
-msgstr "한대도 안맞을 확률"
-
 #: src/chat_command_handler.cpp:99
 msgid "Added to ignore list: $nick"
 msgstr "무시 목록에 추가: $nick"
@@ -5533,31 +5489,31 @@ msgid "Anonymous player"
 msgstr "컴퓨터 플레이어"
 
 #: src/game_initialization/connect_engine.cpp:986
-#: src/game_initialization/connect_engine.cpp:1282
+#: src/game_initialization/connect_engine.cpp:1285
 msgid "Computer Player"
 msgstr "컴퓨터 상대"
 
-#: src/game_initialization/connect_engine.cpp:1025
+#: src/game_initialization/connect_engine.cpp:1028
 msgid "$playername $side"
 msgstr ""
 
-#: src/game_initialization/connect_engine.cpp:1278
+#: src/game_initialization/connect_engine.cpp:1281
 msgid "Network Player"
 msgstr "네트워크 상대"
 
-#: src/game_initialization/connect_engine.cpp:1281
+#: src/game_initialization/connect_engine.cpp:1284
 msgid "Local Player"
 msgstr ""
 
-#: src/game_initialization/connect_engine.cpp:1283
+#: src/game_initialization/connect_engine.cpp:1286
 msgid "Empty"
 msgstr "비움"
 
-#: src/game_initialization/connect_engine.cpp:1286
+#: src/game_initialization/connect_engine.cpp:1289
 msgid "Reserved"
 msgstr "비워둠"
 
-#: src/game_initialization/connect_engine.cpp:1290
+#: src/game_initialization/connect_engine.cpp:1293
 msgid "--give--"
 msgstr "--아래 사람에게 준다--"
 
@@ -5974,15 +5930,6 @@ msgstr ""
 #: src/gui/core/linked_group_definition.cpp:41
 msgid "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
 msgstr ""
-
-#: src/gui/dialogs/addon/install_dependencies.cpp:38
-msgid ""
-"The selected add-on has the following dependency, which is not currently "
-"installed. Do you wish to install it before continuing?"
-msgid_plural ""
-"The selected add-on has the following dependencies, which are not currently "
-"installed. Do you wish to install them before continuing?"
-msgstr[0] ""
 
 #: src/gui/dialogs/game_load.hpp:42
 msgid "No Saved Games"
@@ -6959,25 +6906,25 @@ msgstr ""
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "필요 이동력이 1보다 작은 지형이 나타났습니다."
 
-#: src/play_controller.cpp:252
+#: src/play_controller.cpp:250
 msgid "time left for current turn"
 msgstr "이번 턴에 남은 시간"
 
-#: src/play_controller.cpp:254 src/replay_controller.cpp:115
+#: src/play_controller.cpp:252 src/replay_controller.cpp:115
 msgid "current local time"
 msgstr "현재 시간"
 
-#: src/play_controller.cpp:988
+#: src/play_controller.cpp:986
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
 msgstr ""
 
-#: src/play_controller.cpp:989
+#: src/play_controller.cpp:987
 msgid "Error details:"
 msgstr ""
 
-#: src/play_controller.cpp:1262
+#: src/play_controller.cpp:1260
 msgid "No objectives available"
 msgstr "가능한 목표 없음"
 
@@ -7275,6 +7222,10 @@ msgstr "무기 능력: "
 #, fuzzy
 msgid "None"
 msgstr "없음"
+
+#: src/reports.cpp:918
+msgid "Total damage"
+msgstr "총 데미지"
 
 #: src/reports.cpp:1125 src/reports.cpp:1177
 msgid "Lawful units: "
@@ -7734,6 +7685,36 @@ msgstr "$player 로 교체"
 #: src/whiteboard/manager.cpp:1103
 msgid "Whiteboard Options"
 msgstr ""
+
+#~ msgid "Attacker"
+#~ msgstr "공격자"
+
+#~ msgid "Defender"
+#~ msgstr "방어자"
+
+#~ msgid "Expected Battle Result (HP)"
+#~ msgstr "예상 전투 결과 (HP)"
+
+#~ msgid "Time of day"
+#~ msgstr "시간대"
+
+#~ msgid "Leadership"
+#~ msgstr "통솔"
+
+#~ msgid " resistance vs "
+#~ msgstr "내성 vs "
+
+#~ msgid " vulnerability vs "
+#~ msgstr "약점 vs "
+
+#~ msgid "Slowed"
+#~ msgstr "둔화"
+
+#~ msgid "No usable weapon"
+#~ msgstr "쓸 수 있는 무기 없음"
+
+#~ msgid "Chance of being unscathed"
+#~ msgstr "한대도 안맞을 확률"
 
 #~ msgid "pause at end of turn"
 #~ msgstr "턴이 끝나면 멈추기"

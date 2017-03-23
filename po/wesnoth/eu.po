@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.0\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-03-19 00:05+0300\n"
+"POT-Creation-Date: 2017-03-23 08:11+0100\n"
 "PO-Revision-Date: 2005-08-23 11:08+0100\n"
 "Last-Translator: Alfredo Beaumont <ziberpunk@ziberghetto.dhis.org>\n"
 "Language-Team: Basque <ziberpunk@ziberghetto.dhis.org>\n"
@@ -962,8 +962,8 @@ msgstr ""
 msgid "Runic Hammer"
 msgstr ""
 
-#. [item]: id=holly-water
 #. [object]
+#. [item]: id=holly-water
 #: data/core/editor/items.cfg:279 data/core/macros/items.cfg:278
 msgid "Holy Water"
 msgstr "Ur Bedeinkatua"
@@ -1005,8 +1005,8 @@ msgstr "Baliogabeko kolorea"
 msgid "Gray Potion"
 msgstr ""
 
-#. [item]: id=potion-poison
 #. [object]: id={ID}
+#. [item]: id=potion-poison
 #: data/core/editor/items.cfg:333 data/core/macros/items.cfg:242
 msgid "Poison"
 msgstr "Pozoia"
@@ -1081,8 +1081,8 @@ msgstr ""
 msgid "Stone Tablet"
 msgstr ""
 
-#. [item]: id=storm-trident
 #. [object]
+#. [item]: id=storm-trident
 #: data/core/editor/items.cfg:417 data/core/macros/items.cfg:518
 msgid "Storm Trident"
 msgstr "Ekaitzetako hiruhortz"
@@ -2825,7 +2825,7 @@ msgid "Weight of Revenge"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/core/macros/utils.cfg:688
+#: data/core/macros/utils.cfg:697
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr ""
 
@@ -3420,8 +3420,8 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:373 src/scripting/game_lua_kernel.cpp:2670
-#: src/scripting/game_lua_kernel.cpp:2705
+#: data/lua/wml/message.lua:373 src/scripting/game_lua_kernel.cpp:2673
+#: src/scripting/game_lua_kernel.cpp:2708
 msgid "input"
 msgstr ""
 
@@ -4719,57 +4719,6 @@ msgstr "Errorea zerbitzariarekin komunikatzen."
 msgid "Could not find an add-on matching id $addon_id on the add-on server."
 msgstr ""
 
-#: src/attack_prediction_display.cpp:106 src/attack_prediction_display.cpp:238
-msgid "Attacker"
-msgstr "Erasotzaile"
-
-#: src/attack_prediction_display.cpp:107 src/attack_prediction_display.cpp:237
-msgid "Defender"
-msgstr "Defentsari"
-
-#: src/attack_prediction_display.cpp:125
-msgid "Expected Battle Result (HP)"
-msgstr ""
-
-#: src/attack_prediction_display.cpp:216
-#, fuzzy
-msgid "Time of day"
-msgstr "Eguneko Ordua"
-
-#: src/attack_prediction_display.cpp:226
-#, fuzzy
-msgid "Leadership"
-msgstr "buruzagia"
-
-#: src/attack_prediction_display.cpp:239
-#, fuzzy
-msgid " resistance vs "
-msgstr "Erresistentzia"
-
-#: src/attack_prediction_display.cpp:240
-#, fuzzy
-msgid " vulnerability vs "
-msgstr "Gizakia vs AA"
-
-#: src/attack_prediction_display.cpp:250
-#, fuzzy
-msgid "Slowed"
-msgstr "mantsotua"
-
-#: src/attack_prediction_display.cpp:255 src/reports.cpp:918
-#, fuzzy
-msgid "Total damage"
-msgstr "guztira kalteak"
-
-#: src/attack_prediction_display.cpp:262
-#, fuzzy
-msgid "No usable weapon"
-msgstr "Arma aukeratu:"
-
-#: src/attack_prediction_display.cpp:267
-msgid "Chance of being unscathed"
-msgstr ""
-
 #: src/chat_command_handler.cpp:99
 msgid "Added to ignore list: $nick"
 msgstr ""
@@ -5201,32 +5150,32 @@ msgid "Anonymous player"
 msgstr "Jokalari lokal anonimoa"
 
 #: src/game_initialization/connect_engine.cpp:986
-#: src/game_initialization/connect_engine.cpp:1282
+#: src/game_initialization/connect_engine.cpp:1285
 msgid "Computer Player"
 msgstr "Ordenagailuko jokalaria"
 
-#: src/game_initialization/connect_engine.cpp:1025
+#: src/game_initialization/connect_engine.cpp:1028
 msgid "$playername $side"
 msgstr ""
 
-#: src/game_initialization/connect_engine.cpp:1278
+#: src/game_initialization/connect_engine.cpp:1281
 msgid "Network Player"
 msgstr "Sareko jokalaria"
 
-#: src/game_initialization/connect_engine.cpp:1281
+#: src/game_initialization/connect_engine.cpp:1284
 msgid "Local Player"
 msgstr "Jokalari lokala"
 
-#: src/game_initialization/connect_engine.cpp:1283
+#: src/game_initialization/connect_engine.cpp:1286
 msgid "Empty"
 msgstr "Hutsa"
 
-#: src/game_initialization/connect_engine.cpp:1286
+#: src/game_initialization/connect_engine.cpp:1289
 #, fuzzy
 msgid "Reserved"
 msgstr "Zerbitzaria:"
 
-#: src/game_initialization/connect_engine.cpp:1290
+#: src/game_initialization/connect_engine.cpp:1293
 msgid "--give--"
 msgstr ""
 
@@ -5647,16 +5596,6 @@ msgstr ""
 #: src/gui/core/linked_group_definition.cpp:41
 msgid "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
 msgstr ""
-
-#: src/gui/dialogs/addon/install_dependencies.cpp:38
-msgid ""
-"The selected add-on has the following dependency, which is not currently "
-"installed. Do you wish to install it before continuing?"
-msgid_plural ""
-"The selected add-on has the following dependencies, which are not currently "
-"installed. Do you wish to install them before continuing?"
-msgstr[0] ""
-msgstr[1] ""
 
 #: src/gui/dialogs/game_load.hpp:42
 msgid "No Saved Games"
@@ -6647,16 +6586,16 @@ msgstr "urrutira"
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr ""
 
-#: src/play_controller.cpp:252
+#: src/play_controller.cpp:250
 msgid "time left for current turn"
 msgstr ""
 
-#: src/play_controller.cpp:254 src/replay_controller.cpp:115
+#: src/play_controller.cpp:252 src/replay_controller.cpp:115
 #, fuzzy
 msgid "current local time"
 msgstr "Uneko helburua:"
 
-#: src/play_controller.cpp:988
+#: src/play_controller.cpp:986
 #, fuzzy
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
@@ -6665,12 +6604,12 @@ msgstr ""
 "Jokuek sinkronizazioa galdu dute eta irten beharko dute. Zure jokuaren "
 "akatsen historikoa gorde nahi duzu?"
 
-#: src/play_controller.cpp:989
+#: src/play_controller.cpp:987
 #, fuzzy
 msgid "Error details:"
 msgstr "Okerra"
 
-#: src/play_controller.cpp:1262
+#: src/play_controller.cpp:1260
 msgid "No objectives available"
 msgstr "Ez dago objetiborik eskuragarri"
 
@@ -6993,6 +6932,11 @@ msgstr "Armen berezitasunak"
 #, fuzzy
 msgid "None"
 msgstr "bat ere ez"
+
+#: src/reports.cpp:918
+#, fuzzy
+msgid "Total damage"
+msgstr "guztira kalteak"
 
 #: src/reports.cpp:1125 src/reports.cpp:1177
 #, fuzzy
@@ -7476,6 +7420,36 @@ msgstr "Jokalari lokalarekin ordezkatu"
 #: src/whiteboard/manager.cpp:1103
 msgid "Whiteboard Options"
 msgstr ""
+
+#~ msgid "Attacker"
+#~ msgstr "Erasotzaile"
+
+#~ msgid "Defender"
+#~ msgstr "Defentsari"
+
+#, fuzzy
+#~ msgid "Time of day"
+#~ msgstr "Eguneko Ordua"
+
+#, fuzzy
+#~ msgid "Leadership"
+#~ msgstr "buruzagia"
+
+#, fuzzy
+#~ msgid " resistance vs "
+#~ msgstr "Erresistentzia"
+
+#, fuzzy
+#~ msgid " vulnerability vs "
+#~ msgstr "Gizakia vs AA"
+
+#, fuzzy
+#~ msgid "Slowed"
+#~ msgstr "mantsotua"
+
+#, fuzzy
+#~ msgid "No usable weapon"
+#~ msgstr "Arma aukeratu:"
 
 #, fuzzy
 #~| msgid "End Turn"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-03-19 00:05+0300\n"
+"POT-Creation-Date: 2017-03-23 08:11+0100\n"
 "PO-Revision-Date: 2016-06-19 17:03+0200\n"
 "Last-Translator: Paweł Jackowski <pjackowski@gmail.com>\n"
 "Language-Team: none\n"
@@ -891,8 +891,8 @@ msgstr "Snop zboża"
 msgid "Runic Hammer"
 msgstr "Młot Runiczny"
 
-#. [item]: id=holly-water
 #. [object]
+#. [item]: id=holly-water
 #: data/core/editor/items.cfg:279 data/core/macros/items.cfg:278
 msgid "Holy Water"
 msgstr "Woda święcona"
@@ -933,8 +933,8 @@ msgstr "Zielony Eliksir"
 msgid "Gray Potion"
 msgstr "Szary Eliksir"
 
-#. [item]: id=potion-poison
 #. [object]: id={ID}
+#. [item]: id=potion-poison
 #: data/core/editor/items.cfg:333 data/core/macros/items.cfg:242
 msgid "Poison"
 msgstr "Trucizna"
@@ -1004,8 +1004,8 @@ msgstr "Laska"
 msgid "Stone Tablet"
 msgstr "Kamienna Płyta"
 
-#. [item]: id=storm-trident
 #. [object]
+#. [item]: id=storm-trident
 #: data/core/editor/items.cfg:417 data/core/macros/items.cfg:518
 msgid "Storm Trident"
 msgstr "Trójząb sztormów"
@@ -3179,7 +3179,7 @@ msgid "Weight of Revenge"
 msgstr "Jasnopomarańczowy"
 
 #. [message]: speaker=narrator
-#: data/core/macros/utils.cfg:688
+#: data/core/macros/utils.cfg:697
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr "Odzyskałeś $amount_gold sztuk złota"
 
@@ -3776,8 +3776,8 @@ msgstr "nie leczy się"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:373 src/scripting/game_lua_kernel.cpp:2670
-#: src/scripting/game_lua_kernel.cpp:2705
+#: data/lua/wml/message.lua:373 src/scripting/game_lua_kernel.cpp:2673
+#: src/scripting/game_lua_kernel.cpp:2708
 msgid "input"
 msgstr ""
 
@@ -5235,50 +5235,6 @@ msgstr "Wystąpił błąd komunikacji z serwerem podczas ładowania listy dodatk
 msgid "Could not find an add-on matching id $addon_id on the add-on server."
 msgstr "Nie znaleziono zaktualizowanych dodatków na tym serwerze."
 
-#: src/attack_prediction_display.cpp:106 src/attack_prediction_display.cpp:238
-msgid "Attacker"
-msgstr "Atakujący"
-
-#: src/attack_prediction_display.cpp:107 src/attack_prediction_display.cpp:237
-msgid "Defender"
-msgstr "Broniący się"
-
-#: src/attack_prediction_display.cpp:125
-msgid "Expected Battle Result (HP)"
-msgstr "Oczekiwany wynik bitwy (pż)"
-
-#: src/attack_prediction_display.cpp:216
-msgid "Time of day"
-msgstr "Pora dnia"
-
-#: src/attack_prediction_display.cpp:226
-msgid "Leadership"
-msgstr "Dowodzenie"
-
-#: src/attack_prediction_display.cpp:239
-msgid " resistance vs "
-msgstr "odporność na "
-
-#: src/attack_prediction_display.cpp:240
-msgid " vulnerability vs "
-msgstr "czułość na "
-
-#: src/attack_prediction_display.cpp:250
-msgid "Slowed"
-msgstr "Spowolniony"
-
-#: src/attack_prediction_display.cpp:255 src/reports.cpp:918
-msgid "Total damage"
-msgstr "Całkowite obrażenia"
-
-#: src/attack_prediction_display.cpp:262
-msgid "No usable weapon"
-msgstr "Brak odpowiedniej broni"
-
-#: src/attack_prediction_display.cpp:267
-msgid "Chance of being unscathed"
-msgstr "Szansa wyjścia bez szwanku"
-
 #: src/chat_command_handler.cpp:99
 msgid "Added to ignore list: $nick"
 msgstr "Dodano do listy ignorowanych: $nick"
@@ -5717,31 +5673,31 @@ msgid "Anonymous player"
 msgstr "Anonimowy gracz lokalny"
 
 #: src/game_initialization/connect_engine.cpp:986
-#: src/game_initialization/connect_engine.cpp:1282
+#: src/game_initialization/connect_engine.cpp:1285
 msgid "Computer Player"
 msgstr "Komputer"
 
-#: src/game_initialization/connect_engine.cpp:1025
+#: src/game_initialization/connect_engine.cpp:1028
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/game_initialization/connect_engine.cpp:1278
+#: src/game_initialization/connect_engine.cpp:1281
 msgid "Network Player"
 msgstr "Gracz sieciowy"
 
-#: src/game_initialization/connect_engine.cpp:1281
+#: src/game_initialization/connect_engine.cpp:1284
 msgid "Local Player"
 msgstr "Gracz lokalny"
 
-#: src/game_initialization/connect_engine.cpp:1283
+#: src/game_initialization/connect_engine.cpp:1286
 msgid "Empty"
 msgstr "Puste"
 
-#: src/game_initialization/connect_engine.cpp:1286
+#: src/game_initialization/connect_engine.cpp:1289
 msgid "Reserved"
 msgstr "Zarezerwowana"
 
-#: src/game_initialization/connect_engine.cpp:1290
+#: src/game_initialization/connect_engine.cpp:1293
 msgid "--give--"
 msgstr "--daj--"
 
@@ -6185,23 +6141,6 @@ msgstr ""
 #: src/gui/core/linked_group_definition.cpp:41
 msgid "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
 msgstr ""
-
-#: src/gui/dialogs/addon/install_dependencies.cpp:38
-msgid ""
-"The selected add-on has the following dependency, which is not currently "
-"installed. Do you wish to install it before continuing?"
-msgid_plural ""
-"The selected add-on has the following dependencies, which are not currently "
-"installed. Do you wish to install them before continuing?"
-msgstr[0] ""
-"Wybrany dodatek ma następującą niezainstalowaną zależność. Czy chcesz ją "
-"zainstalować?"
-msgstr[1] ""
-"Wybrany dodatek ma następujące niezainstalowane zależności. Czy chcesz je "
-"zainstalować?"
-msgstr[2] ""
-"Wybrany dodatek ma następujące niezainstalowane zależności. Czy chcesz je "
-"zainstalować?"
 
 #: src/gui/dialogs/game_load.hpp:42
 msgid "No Saved Games"
@@ -7192,15 +7131,15 @@ msgstr "Zmiana tury"
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "Napotkano teren o koszcie ruchu mniejszym niż 1."
 
-#: src/play_controller.cpp:252
+#: src/play_controller.cpp:250
 msgid "time left for current turn"
 msgstr "pozostały czas w bieżącej turze"
 
-#: src/play_controller.cpp:254 src/replay_controller.cpp:115
+#: src/play_controller.cpp:252 src/replay_controller.cpp:115
 msgid "current local time"
 msgstr "aktualny czas lokalny"
 
-#: src/play_controller.cpp:988
+#: src/play_controller.cpp:986
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
@@ -7208,11 +7147,11 @@ msgstr ""
 "Gra utraciła synchronizację, więc kontynuowanie może nie mieć sensu. Czy "
 "chcesz zapisać grę?"
 
-#: src/play_controller.cpp:989
+#: src/play_controller.cpp:987
 msgid "Error details:"
 msgstr "Szczegóły błędu:"
 
-#: src/play_controller.cpp:1262
+#: src/play_controller.cpp:1260
 msgid "No objectives available"
 msgstr "Brak celów"
 
@@ -7510,6 +7449,10 @@ msgstr "Broń specjalna: "
 #: src/reports.cpp:889
 msgid "None"
 msgstr "brak"
+
+#: src/reports.cpp:918
+msgid "Total damage"
+msgstr "Całkowite obrażenia"
 
 #: src/reports.cpp:1125 src/reports.cpp:1177
 msgid "Lawful units: "
@@ -7986,6 +7929,52 @@ msgstr "Ukryj plany gracza $player"
 #: src/whiteboard/manager.cpp:1103
 msgid "Whiteboard Options"
 msgstr "Opcje planowania"
+
+#~ msgid "Attacker"
+#~ msgstr "Atakujący"
+
+#~ msgid "Defender"
+#~ msgstr "Broniący się"
+
+#~ msgid "Expected Battle Result (HP)"
+#~ msgstr "Oczekiwany wynik bitwy (pż)"
+
+#~ msgid "Time of day"
+#~ msgstr "Pora dnia"
+
+#~ msgid "Leadership"
+#~ msgstr "Dowodzenie"
+
+#~ msgid " resistance vs "
+#~ msgstr "odporność na "
+
+#~ msgid " vulnerability vs "
+#~ msgstr "czułość na "
+
+#~ msgid "Slowed"
+#~ msgstr "Spowolniony"
+
+#~ msgid "No usable weapon"
+#~ msgstr "Brak odpowiedniej broni"
+
+#~ msgid "Chance of being unscathed"
+#~ msgstr "Szansa wyjścia bez szwanku"
+
+#~ msgid ""
+#~ "The selected add-on has the following dependency, which is not currently "
+#~ "installed. Do you wish to install it before continuing?"
+#~ msgid_plural ""
+#~ "The selected add-on has the following dependencies, which are not "
+#~ "currently installed. Do you wish to install them before continuing?"
+#~ msgstr[0] ""
+#~ "Wybrany dodatek ma następującą niezainstalowaną zależność. Czy chcesz ją "
+#~ "zainstalować?"
+#~ msgstr[1] ""
+#~ "Wybrany dodatek ma następujące niezainstalowane zależności. Czy chcesz je "
+#~ "zainstalować?"
+#~ msgstr[2] ""
+#~ "Wybrany dodatek ma następujące niezainstalowane zależności. Czy chcesz je "
+#~ "zainstalować?"
 
 #, fuzzy
 #~| msgid "Experimental multiplayer lobby"

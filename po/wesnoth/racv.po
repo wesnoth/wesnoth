@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-03-19 00:05+0300\n"
+"POT-Creation-Date: 2017-03-23 08:11+0100\n"
 "PO-Revision-Date: 2008-09-24 02:09+0100\n"
 "Last-Translator: Mavorte <mavorte1@yahoo.es>\n"
 "Language-Team: none\n"
@@ -920,8 +920,8 @@ msgstr ""
 msgid "Runic Hammer"
 msgstr "martell rúnic"
 
-#. [item]: id=holly-water
 #. [object]
+#. [item]: id=holly-water
 #: data/core/editor/items.cfg:279 data/core/macros/items.cfg:278
 msgid "Holy Water"
 msgstr "Agua beneïda"
@@ -965,8 +965,8 @@ msgstr "Color no vàlit"
 msgid "Gray Potion"
 msgstr ""
 
-#. [item]: id=potion-poison
 #. [object]: id={ID}
+#. [item]: id=potion-poison
 #: data/core/editor/items.cfg:333 data/core/macros/items.cfg:242
 msgid "Poison"
 msgstr "Verí"
@@ -1052,8 +1052,8 @@ msgstr "bastó"
 msgid "Stone Tablet"
 msgstr ""
 
-#. [item]: id=storm-trident
 #. [object]
+#. [item]: id=storm-trident
 #: data/core/editor/items.cfg:417 data/core/macros/items.cfg:518
 msgid "Storm Trident"
 msgstr "Trident de la Tormenta"
@@ -3190,7 +3190,7 @@ msgid "Weight of Revenge"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/core/macros/utils.cfg:688
+#: data/core/macros/utils.cfg:697
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr ""
 
@@ -3809,8 +3809,8 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:373 src/scripting/game_lua_kernel.cpp:2670
-#: src/scripting/game_lua_kernel.cpp:2705
+#: data/lua/wml/message.lua:373 src/scripting/game_lua_kernel.cpp:2673
+#: src/scripting/game_lua_kernel.cpp:2708
 msgid "input"
 msgstr ""
 
@@ -5292,50 +5292,6 @@ msgstr "Erro de comunicació ab el servidor."
 msgid "Could not find an add-on matching id $addon_id on the add-on server."
 msgstr ""
 
-#: src/attack_prediction_display.cpp:106 src/attack_prediction_display.cpp:238
-msgid "Attacker"
-msgstr "Atacant"
-
-#: src/attack_prediction_display.cpp:107 src/attack_prediction_display.cpp:237
-msgid "Defender"
-msgstr "Defenedor"
-
-#: src/attack_prediction_display.cpp:125
-msgid "Expected Battle Result (HP)"
-msgstr "Resultat Esperat de la Batalla (PV)"
-
-#: src/attack_prediction_display.cpp:216
-msgid "Time of day"
-msgstr "Hora del dia"
-
-#: src/attack_prediction_display.cpp:226
-msgid "Leadership"
-msgstr "Liderage"
-
-#: src/attack_prediction_display.cpp:239
-msgid " resistance vs "
-msgstr " resistència a "
-
-#: src/attack_prediction_display.cpp:240
-msgid " vulnerability vs "
-msgstr " vulnerabilitat de l'atacant contra"
-
-#: src/attack_prediction_display.cpp:250
-msgid "Slowed"
-msgstr "Retardat"
-
-#: src/attack_prediction_display.cpp:255 src/reports.cpp:918
-msgid "Total damage"
-msgstr "Dany total"
-
-#: src/attack_prediction_display.cpp:262
-msgid "No usable weapon"
-msgstr "Sens arma utilisable"
-
-#: src/attack_prediction_display.cpp:267
-msgid "Chance of being unscathed"
-msgstr "Possibilitat de eixir ilés"
-
 #: src/chat_command_handler.cpp:99
 #, fuzzy
 msgid "Added to ignore list: $nick"
@@ -5795,32 +5751,32 @@ msgid "Anonymous player"
 msgstr "Jugador anònim local"
 
 #: src/game_initialization/connect_engine.cpp:986
-#: src/game_initialization/connect_engine.cpp:1282
+#: src/game_initialization/connect_engine.cpp:1285
 msgid "Computer Player"
 msgstr "Ordinador"
 
-#: src/game_initialization/connect_engine.cpp:1025
+#: src/game_initialization/connect_engine.cpp:1028
 msgid "$playername $side"
 msgstr ""
 
-#: src/game_initialization/connect_engine.cpp:1278
+#: src/game_initialization/connect_engine.cpp:1281
 msgid "Network Player"
 msgstr "Jugador en ret"
 
-#: src/game_initialization/connect_engine.cpp:1281
+#: src/game_initialization/connect_engine.cpp:1284
 msgid "Local Player"
 msgstr "Jugador local"
 
-#: src/game_initialization/connect_engine.cpp:1283
+#: src/game_initialization/connect_engine.cpp:1286
 msgid "Empty"
 msgstr "Buit"
 
-#: src/game_initialization/connect_engine.cpp:1286
+#: src/game_initialization/connect_engine.cpp:1289
 #, fuzzy
 msgid "Reserved"
 msgstr "Servidor: "
 
-#: src/game_initialization/connect_engine.cpp:1290
+#: src/game_initialization/connect_engine.cpp:1293
 msgid "--give--"
 msgstr ""
 
@@ -6265,16 +6221,6 @@ msgstr ""
 #: src/gui/core/linked_group_definition.cpp:41
 msgid "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
 msgstr ""
-
-#: src/gui/dialogs/addon/install_dependencies.cpp:38
-msgid ""
-"The selected add-on has the following dependency, which is not currently "
-"installed. Do you wish to install it before continuing?"
-msgid_plural ""
-"The selected add-on has the following dependencies, which are not currently "
-"installed. Do you wish to install them before continuing?"
-msgstr[0] ""
-msgstr[1] ""
 
 #: src/gui/dialogs/game_load.hpp:42
 msgid "No Saved Games"
@@ -7311,15 +7257,15 @@ msgstr "distància"
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "S'ha trobat un terreny ab un cost de moviment menor que 1."
 
-#: src/play_controller.cpp:252
+#: src/play_controller.cpp:250
 msgid "time left for current turn"
 msgstr ""
 
-#: src/play_controller.cpp:254 src/replay_controller.cpp:115
+#: src/play_controller.cpp:252 src/replay_controller.cpp:115
 msgid "current local time"
 msgstr ""
 
-#: src/play_controller.cpp:988
+#: src/play_controller.cpp:986
 #, fuzzy
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
@@ -7328,12 +7274,12 @@ msgstr ""
 "La partida no està sincronisada i haurà de finalisar. ¿Vols guardar un "
 "registre d'erros de la partida?"
 
-#: src/play_controller.cpp:989
+#: src/play_controller.cpp:987
 #, fuzzy
 msgid "Error details:"
 msgstr "Erro"
 
-#: src/play_controller.cpp:1262
+#: src/play_controller.cpp:1260
 msgid "No objectives available"
 msgstr "No hi ha objectius"
 
@@ -7667,6 +7613,10 @@ msgstr "Armes Especials"
 #: src/reports.cpp:889
 msgid "None"
 msgstr ""
+
+#: src/reports.cpp:918
+msgid "Total damage"
+msgstr "Dany total"
 
 #: src/reports.cpp:1125 src/reports.cpp:1177
 #, fuzzy
@@ -8164,6 +8114,36 @@ msgstr "Reemplaçar ab $player"
 #: src/whiteboard/manager.cpp:1103
 msgid "Whiteboard Options"
 msgstr ""
+
+#~ msgid "Attacker"
+#~ msgstr "Atacant"
+
+#~ msgid "Defender"
+#~ msgstr "Defenedor"
+
+#~ msgid "Expected Battle Result (HP)"
+#~ msgstr "Resultat Esperat de la Batalla (PV)"
+
+#~ msgid "Time of day"
+#~ msgstr "Hora del dia"
+
+#~ msgid "Leadership"
+#~ msgstr "Liderage"
+
+#~ msgid " resistance vs "
+#~ msgstr " resistència a "
+
+#~ msgid " vulnerability vs "
+#~ msgstr " vulnerabilitat de l'atacant contra"
+
+#~ msgid "Slowed"
+#~ msgstr "Retardat"
+
+#~ msgid "No usable weapon"
+#~ msgstr "Sens arma utilisable"
+
+#~ msgid "Chance of being unscathed"
+#~ msgstr "Possibilitat de eixir ilés"
 
 #~ msgid "pause at end of turn"
 #~ msgstr "pausa a la fi de la tanda"

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-03-19 00:05+0300\n"
+"POT-Creation-Date: 2017-03-23 08:11+0100\n"
 "PO-Revision-Date: 2014-06-05 22:13+0700\n"
 "Last-Translator: \n"
 "Language-Team: Vietnamese <kde-i18n-doc@kde.org>\n"
@@ -883,8 +883,8 @@ msgstr "Bó lúa"
 msgid "Runic Hammer"
 msgstr "Búa khắc dấu thần"
 
-#. [item]: id=holly-water
 #. [object]
+#. [item]: id=holly-water
 #: data/core/editor/items.cfg:279 data/core/macros/items.cfg:278
 msgid "Holy Water"
 msgstr "Nước thánh"
@@ -925,8 +925,8 @@ msgstr "Liều thuốc màu xanh lục"
 msgid "Gray Potion"
 msgstr "Liều thuốc màu xám"
 
-#. [item]: id=potion-poison
 #. [object]: id={ID}
+#. [item]: id=potion-poison
 #: data/core/editor/items.cfg:333 data/core/macros/items.cfg:242
 msgid "Poison"
 msgstr "Chất độc"
@@ -996,8 +996,8 @@ msgstr "Gậy"
 msgid "Stone Tablet"
 msgstr "Phiến đá"
 
-#. [item]: id=storm-trident
 #. [object]
+#. [item]: id=storm-trident
 #: data/core/editor/items.cfg:417 data/core/macros/items.cfg:518
 msgid "Storm Trident"
 msgstr "Đinh ba giông bão"
@@ -3168,7 +3168,7 @@ msgid "Weight of Revenge"
 msgstr "Cam sáng"
 
 #. [message]: speaker=narrator
-#: data/core/macros/utils.cfg:688
+#: data/core/macros/utils.cfg:697
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr "Bạn nhận được $amount_gold lượng vàng."
 
@@ -3767,8 +3767,8 @@ msgstr "không thể hồi máu"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:373 src/scripting/game_lua_kernel.cpp:2670
-#: src/scripting/game_lua_kernel.cpp:2705
+#: data/lua/wml/message.lua:373 src/scripting/game_lua_kernel.cpp:2673
+#: src/scripting/game_lua_kernel.cpp:2708
 msgid "input"
 msgstr ""
 
@@ -5199,50 +5199,6 @@ msgstr "Có lỗi xảy ra khi tải về danh sách phần bổ sung từ máy 
 msgid "Could not find an add-on matching id $addon_id on the add-on server."
 msgstr ""
 
-#: src/attack_prediction_display.cpp:106 src/attack_prediction_display.cpp:238
-msgid "Attacker"
-msgstr "Người tấn công"
-
-#: src/attack_prediction_display.cpp:107 src/attack_prediction_display.cpp:237
-msgid "Defender"
-msgstr "Người phòng thủ"
-
-#: src/attack_prediction_display.cpp:125
-msgid "Expected Battle Result (HP)"
-msgstr "Kết quả trận đấu dự tính (máu)"
-
-#: src/attack_prediction_display.cpp:216
-msgid "Time of day"
-msgstr "Thời điểm trong ngày"
-
-#: src/attack_prediction_display.cpp:226
-msgid "Leadership"
-msgstr "Lãnh đạo"
-
-#: src/attack_prediction_display.cpp:239
-msgid " resistance vs "
-msgstr " kháng cự lại "
-
-#: src/attack_prediction_display.cpp:240
-msgid " vulnerability vs "
-msgstr " nhược điểm với "
-
-#: src/attack_prediction_display.cpp:250
-msgid "Slowed"
-msgstr "Bị chậm"
-
-#: src/attack_prediction_display.cpp:255 src/reports.cpp:918
-msgid "Total damage"
-msgstr "Tổng thiệt hại"
-
-#: src/attack_prediction_display.cpp:262
-msgid "No usable weapon"
-msgstr "Không có vũ khí nào sử dụng được"
-
-#: src/attack_prediction_display.cpp:267
-msgid "Chance of being unscathed"
-msgstr "Cơ hội không bị tổn thương"
-
 #: src/chat_command_handler.cpp:99
 msgid "Added to ignore list: $nick"
 msgstr "Đã thêm vào danh sách từ chối: $nick"
@@ -5668,31 +5624,31 @@ msgid "Anonymous player"
 msgstr "NC cục bộ ẩn danh"
 
 #: src/game_initialization/connect_engine.cpp:986
-#: src/game_initialization/connect_engine.cpp:1282
+#: src/game_initialization/connect_engine.cpp:1285
 msgid "Computer Player"
 msgstr "Máy tính"
 
-#: src/game_initialization/connect_engine.cpp:1025
+#: src/game_initialization/connect_engine.cpp:1028
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/game_initialization/connect_engine.cpp:1278
+#: src/game_initialization/connect_engine.cpp:1281
 msgid "Network Player"
 msgstr "NC mạng"
 
-#: src/game_initialization/connect_engine.cpp:1281
+#: src/game_initialization/connect_engine.cpp:1284
 msgid "Local Player"
 msgstr "NC cục bộ"
 
-#: src/game_initialization/connect_engine.cpp:1283
+#: src/game_initialization/connect_engine.cpp:1286
 msgid "Empty"
 msgstr "Bỏ trống"
 
-#: src/game_initialization/connect_engine.cpp:1286
+#: src/game_initialization/connect_engine.cpp:1289
 msgid "Reserved"
 msgstr "Dành riêng"
 
-#: src/game_initialization/connect_engine.cpp:1290
+#: src/game_initialization/connect_engine.cpp:1293
 msgid "--give--"
 msgstr "--cho--"
 
@@ -6116,17 +6072,6 @@ msgstr ""
 #: src/gui/core/linked_group_definition.cpp:41
 msgid "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
 msgstr ""
-
-#: src/gui/dialogs/addon/install_dependencies.cpp:38
-msgid ""
-"The selected add-on has the following dependency, which is not currently "
-"installed. Do you wish to install it before continuing?"
-msgid_plural ""
-"The selected add-on has the following dependencies, which are not currently "
-"installed. Do you wish to install them before continuing?"
-msgstr[0] ""
-"Phần bổ sung được chọn có thành phần phụ thuộc sau đây, hiện chưa được cài "
-"đặt. Bạn có muốn cài đặt chúng trước khi tiếp tục không?"
 
 #: src/gui/dialogs/game_load.hpp:42
 msgid "No Saved Games"
@@ -7133,15 +7078,15 @@ msgstr "Đã thay đổi lượt"
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "Đã gặp phải địa hình với chi phí di chuyển nhỏ hơn 1."
 
-#: src/play_controller.cpp:252
+#: src/play_controller.cpp:250
 msgid "time left for current turn"
 msgstr "thời gian còn lại cho lượt hiện tại"
 
-#: src/play_controller.cpp:254 src/replay_controller.cpp:115
+#: src/play_controller.cpp:252 src/replay_controller.cpp:115
 msgid "current local time"
 msgstr "giờ cục bộ hiện tại"
 
-#: src/play_controller.cpp:988
+#: src/play_controller.cpp:986
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
@@ -7149,11 +7094,11 @@ msgstr ""
 "Trò chơi bị mất đồng bộ. Tiếp tục có thể sẽ không có nhiều ý nghĩa. Bạn có "
 "muốn lưu trò chơi không?"
 
-#: src/play_controller.cpp:989
+#: src/play_controller.cpp:987
 msgid "Error details:"
 msgstr "Chi tiết lỗi:"
 
-#: src/play_controller.cpp:1262
+#: src/play_controller.cpp:1260
 msgid "No objectives available"
 msgstr "Không có mục tiêu"
 
@@ -7448,6 +7393,10 @@ msgstr "Tính đặc biệt của vũ khí: "
 #: src/reports.cpp:889
 msgid "None"
 msgstr "Không có"
+
+#: src/reports.cpp:918
+msgid "Total damage"
+msgstr "Tổng thiệt hại"
 
 #: src/reports.cpp:1125 src/reports.cpp:1177
 msgid "Lawful units: "
@@ -7900,6 +7849,46 @@ msgstr "Ẩn kế hoạch đối với $player"
 #: src/whiteboard/manager.cpp:1103
 msgid "Whiteboard Options"
 msgstr "Tùy chọn bảng trắng"
+
+#~ msgid "Attacker"
+#~ msgstr "Người tấn công"
+
+#~ msgid "Defender"
+#~ msgstr "Người phòng thủ"
+
+#~ msgid "Expected Battle Result (HP)"
+#~ msgstr "Kết quả trận đấu dự tính (máu)"
+
+#~ msgid "Time of day"
+#~ msgstr "Thời điểm trong ngày"
+
+#~ msgid "Leadership"
+#~ msgstr "Lãnh đạo"
+
+#~ msgid " resistance vs "
+#~ msgstr " kháng cự lại "
+
+#~ msgid " vulnerability vs "
+#~ msgstr " nhược điểm với "
+
+#~ msgid "Slowed"
+#~ msgstr "Bị chậm"
+
+#~ msgid "No usable weapon"
+#~ msgstr "Không có vũ khí nào sử dụng được"
+
+#~ msgid "Chance of being unscathed"
+#~ msgstr "Cơ hội không bị tổn thương"
+
+#~ msgid ""
+#~ "The selected add-on has the following dependency, which is not currently "
+#~ "installed. Do you wish to install it before continuing?"
+#~ msgid_plural ""
+#~ "The selected add-on has the following dependencies, which are not "
+#~ "currently installed. Do you wish to install them before continuing?"
+#~ msgstr[0] ""
+#~ "Phần bổ sung được chọn có thành phần phụ thuộc sau đây, hiện chưa được "
+#~ "cài đặt. Bạn có muốn cài đặt chúng trước khi tiếp tục không?"
 
 #, fuzzy
 #~| msgid "Experimental multiplayer lobby"
