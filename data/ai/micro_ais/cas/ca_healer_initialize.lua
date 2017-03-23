@@ -1,5 +1,4 @@
 local H = wesnoth.require "lua/helper.lua"
-local W = H.set_wml_action_metatable {}
 
 local ca_healer_initialize = {}
 
@@ -12,9 +11,9 @@ function ca_healer_initialize:evaluation()
 end
 
 function ca_healer_initialize:execution(cfg, data)
-    W.delete_ai_component(wesnoth.current.side, "aspect[attacks].facet[no_healers_attack]")
+    wesnoth.delete_ai_component(wesnoth.current.side, "aspect[attacks].facet[no_healers_attack]")
 
-    W.add_ai_component(wesnoth.current.side, "aspect[attacks].facet",
+    wesnoth.add_ai_component(wesnoth.current.side, "aspect[attacks].facet",
         {
             name = "ai_default_rca::aspect_attacks",
             id = "no_healers_attack",

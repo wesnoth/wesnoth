@@ -1,5 +1,4 @@
 local H = wesnoth.require "lua/helper.lua"
-local W = H.set_wml_action_metatable {}
 
 function wesnoth.micro_ais.fast_ai(cfg)
 	local optional_keys = {
@@ -18,7 +17,7 @@ function wesnoth.micro_ais.fast_ai(cfg)
 	-- Also need to delete/add some default CAs
 	if (cfg.action == 'delete') then
 		-- This can be done independently of whether these were removed earlier
-		W.add_ai_component(cfg.side, "stage[main_loop].candidate_action",
+		wesnoth.add_ai_component(cfg.side, "stage[main_loop].candidate_action",
 			{
 				id="combat",
 				engine="cpp",
@@ -28,7 +27,7 @@ function wesnoth.micro_ais.fast_ai(cfg)
 			}
 		)
 
-		W.add_ai_component(cfg.side, "stage[main_loop].candidate_action",
+		wesnoth.add_ai_component(cfg.side, "stage[main_loop].candidate_action",
 			{
 				id="villages",
 				engine="cpp",
@@ -38,7 +37,7 @@ function wesnoth.micro_ais.fast_ai(cfg)
 			}
 		)
 
-		W.add_ai_component(cfg.side, "stage[main_loop].candidate_action",
+		wesnoth.add_ai_component(cfg.side, "stage[main_loop].candidate_action",
 			{
 				id="retreat",
 				engine="cpp",
@@ -48,7 +47,7 @@ function wesnoth.micro_ais.fast_ai(cfg)
 			}
 		)
 
-		W.add_ai_component(cfg.side, "stage[main_loop].candidate_action",
+		wesnoth.add_ai_component(cfg.side, "stage[main_loop].candidate_action",
 			{
 				id="move_to_targets",
 				engine="cpp",
@@ -59,8 +58,8 @@ function wesnoth.micro_ais.fast_ai(cfg)
 		)
 	else
 		if (not cfg.skip_combat_ca) then
-			W.delete_ai_component(cfg.side, "stage[main_loop].candidate_action[high_xp_attack]")
-			W.delete_ai_component(cfg.side, "stage[main_loop].candidate_action[combat]")
+			wesnoth.delete_ai_component(cfg.side, "stage[main_loop].candidate_action[high_xp_attack]")
+			wesnoth.delete_ai_component(cfg.side, "stage[main_loop].candidate_action[combat]")
 		else
 			for i,parm in ipairs(CA_parms) do
 				if (parm.ca_id == 'combat') or (parm.ca_id == 'combat_leader') then
@@ -70,11 +69,11 @@ function wesnoth.micro_ais.fast_ai(cfg)
 		end
 
 		if (not cfg.skip_move_ca) then
-			W.delete_ai_component(cfg.side, "stage[main_loop].candidate_action[villages]")
+			wesnoth.delete_ai_component(cfg.side, "stage[main_loop].candidate_action[villages]")
 
-			W.delete_ai_component(cfg.side, "stage[main_loop].candidate_action[retreat]")
+			wesnoth.delete_ai_component(cfg.side, "stage[main_loop].candidate_action[retreat]")
 
-			W.delete_ai_component(cfg.side, "stage[main_loop].candidate_action[move_to_targets]")
+			wesnoth.delete_ai_component(cfg.side, "stage[main_loop].candidate_action[move_to_targets]")
 		else
 			for i,parm in ipairs(CA_parms) do
 				if (parm.ca_id == 'move') then

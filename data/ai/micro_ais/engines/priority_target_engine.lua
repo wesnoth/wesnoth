@@ -39,15 +39,15 @@ return {
             end
 
             -- Always delete the attacks aspect first, so that we do not end up with 100 copies of the facet
-            W.delete_ai_component(wesnoth.current.side, "aspect[attacks].facet[limited_attack]")
+            wesnoth.delete_ai_component(wesnoth.current.side, "aspect[attacks].facet[limited_attack]")
 
             -- Also delete aggression, caution - for the same reason
-            W.delete_ai_component(wesnoth.current.side, "aspect[aggression].facet[*]")
-            W.delete_ai_component(wesnoth.current.side, "aspect[caution].facet[*]")
+            wesnoth.delete_ai_component(wesnoth.current.side, "aspect[aggression].facet[*]")
+            wesnoth.delete_ai_component(wesnoth.current.side, "aspect[caution].facet[*]")
 
             -- If the target can be attacked, set the attacks aspect accordingly
             if attack_locs[1] then
-                W.add_ai_component(wesnoth.current.side, "aspect[attacks].facet",
+                wesnoth.add_ai_component(wesnoth.current.side, "aspect[attacks].facet",
                     {
                        name = "ai_default_rca::aspect_attacks",
                        id = "limited_attack",
@@ -58,7 +58,7 @@ return {
 
                 -- We also want to set aggression=1 and caution=0,
                 -- otherwise there could be turns on which nothing happens
-                W.append_ai{ aggression = 1, caution = 0 }
+                wesnoth.append_ai{ aggression = 1, caution = 0 }
             end
 
             return 0
