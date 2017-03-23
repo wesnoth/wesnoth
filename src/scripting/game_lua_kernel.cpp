@@ -337,7 +337,6 @@ static const char animatorKey[] = "unit animator";
 
 static int impl_animator_collect(lua_State* L) {
 	unit_animator& anim = *static_cast<unit_animator*>(luaL_checkudata(L, 1, animatorKey));
-	anim.set_all_standing();
 	anim.~unit_animator();
 	return 0;
 }
@@ -438,6 +437,7 @@ static int impl_run_animation(lua_State* L)
 	unit_animator& anim = *static_cast<unit_animator*>(luaL_checkudata(L, 1, animatorKey));
 	anim.start_animations();
 	anim.wait_for_end();
+	anim.set_all_standing();
 	return 0;
 }
 
