@@ -47,6 +47,12 @@ documentation and/or software.
 #include <cstring> // Edit: needed for strlen() (strings.h should
                     // include it but apparently does not for me)
 
+// C4351 is a warning about default-initializing arrays in the initializer list.
+// Since it's desired behavior, suppress the warning.
+#ifdef _MSC_VER
+#pragma warning(disable:4351)
+#endif
+
 // MD5 simple initialization method
 
 MD5::MD5()
