@@ -534,6 +534,8 @@ void file_dialog::refresh_fileview(window& window)
 
 	find_widget<styled_widget>(&window, "current_dir", false).set_label(current_dir_);
 	set_input_text(find_widget<text_box>(&window, "filename", false), current_entry_);
+
+	on_row_selected(window);
 }
 
 void file_dialog::push_fileview_row(listbox& filelist, const std::string& name, const std::string& icon, bool check_selection)
