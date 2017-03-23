@@ -55,6 +55,7 @@ styled_widget::styled_widget(const unsigned canvas_count)
 	, renderer_()
 	, text_maximum_width_(0)
 	, text_alignment_(PANGO_ALIGN_LEFT)
+	, text_ellipse_mode_(PANGO_ELLIPSIZE_END)
 	, shrunken_(false)
 {
 	connect_signal<event::SHOW_TOOLTIP>(std::bind(
@@ -82,6 +83,7 @@ styled_widget::styled_widget(const implementation::builder_styled_widget& builde
 	, renderer_()
 	, text_maximum_width_(0)
 	, text_alignment_(PANGO_ALIGN_LEFT)
+	, text_ellipse_mode_(PANGO_ELLIPSIZE_END)
 	, shrunken_(false)
 {
 	definition_load_configuration(control_type);
@@ -385,6 +387,17 @@ void styled_widget::set_text_alignment(const PangoAlignment text_alignment)
 	set_is_dirty(true);
 }
 
+void styled_widget::set_text_ellipse_mode(const PangoEllipsizeMode ellipse_mode)
+{
+	if(text_ellipse_mode_ == ellipse_mode) {
+		return;
+	}
+
+	text_ellipse_mode_ = ellipse_mode;
+	update_canvas();
+	set_is_dirty(true);
+}
+
 void styled_widget::update_canvas()
 {
 	const int max_width = get_text_maximum_width();
@@ -404,9 +417,7 @@ void styled_widget::update_canvas()
 							variant(encode_text_alignment(text_alignment_)));
 		canvas.set_variable("text_maximum_width", variant(max_width));
 		canvas.set_variable("text_maximum_height", variant(max_height));
-		canvas.set_variable("text_wrap_mode",
-							variant(can_wrap() ? PANGO_ELLIPSIZE_NONE
-											   : PANGO_ELLIPSIZE_END));
+		canvas.set_variable("text_wrap_mode", variant(get_text_ellipse_mode()));
 		canvas.set_variable("text_characters_per_line",
 							variant(get_characters_per_line()));
 	}
@@ -492,9 +503,7 @@ point styled_widget::get_best_text_size(point minimum_size,
 
 	renderer_.set_maximum_width(maximum_width);
 
-	if(can_wrap()) {
-		renderer_.set_ellipse_mode(PANGO_ELLIPSIZE_NONE);
-	}
+	renderer_.set_ellipse_mode(get_text_ellipse_mode());
 
 	renderer_.set_characters_per_line(get_characters_per_line());
 	if(get_characters_per_line() != 0 && !can_wrap()) {
