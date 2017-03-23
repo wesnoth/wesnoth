@@ -190,6 +190,8 @@ void file_dialog::pre_show(window& window)
 
 	listbox& bookmarks_bar = find_widget<listbox>(&window, "bookmarks", false);
 
+	find_widget<styled_widget>(&window, "current_dir", false).set_text_ellipse_mode(PANGO_ELLIPSIZE_START);
+
 	//
 	// Push hard-coded bookmarks.
 	//
