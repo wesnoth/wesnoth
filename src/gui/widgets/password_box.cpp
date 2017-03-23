@@ -83,7 +83,6 @@ void password_box::insert_char(const utf8::string& unicode)
 			passwd.append(font::unicode_bullet);
 		}
 		text_box::insert_char(passwd);
-		set_cursor(sel + sz, false);
 	}
 	utf8::insert(real_value_, sel, unicode);
 }
