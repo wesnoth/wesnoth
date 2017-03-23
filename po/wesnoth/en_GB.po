@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-03-23 08:11+0100\n"
-"PO-Revision-Date: 2016-11-07 20:23+1100\n"
+"POT-Creation-Date: 2017-03-23 08:40+0100\n"
+"PO-Revision-Date: 2017-03-20 06:39+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 1.8.12\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -3980,17 +3980,13 @@ msgstr "Install Dependencies"
 
 #. [button]: id=ok
 #: data/gui/window/install_dependencies.cfg:83
-#, fuzzy
-#| msgid "yes"
 msgid "Yes"
-msgstr "yes"
+msgstr "Yes"
 
 #. [button]: id=cancel
 #: data/gui/window/install_dependencies.cfg:94
-#, fuzzy
-#| msgid "Nov"
 msgid "No"
-msgstr "Nov"
+msgstr "No"
 
 #. [fonts]
 #: data/hardwired/fonts.cfg:7
@@ -4194,7 +4190,7 @@ msgstr "Replay"
 #. [action]: id=button-stopreplay, type=image
 #: data/themes/_initial.cfg:634
 msgid "pause"
-msgstr ""
+msgstr "pause"
 
 #. [theme]: id=Classic
 #: data/themes/classic.cfg:11
@@ -5637,10 +5633,8 @@ msgid "<password> <email (optional)>"
 msgstr "<password> <email (optional)>"
 
 #: src/chat_command_handler.hpp:124
-#, fuzzy
-#| msgid "Drop your nickname."
 msgid "Register your nickname"
-msgstr "Drop your nickname."
+msgstr "Register your nickname"
 
 #: src/chat_command_handler.hpp:126
 msgid "Drop your nickname."
@@ -5760,10 +5754,8 @@ msgid "%b %d %Y"
 msgstr "%b %d %Y"
 
 #: src/game_config.cpp:483
-#, fuzzy
-#| msgid "Invalid color range: "
 msgid "Invalid color in range: "
-msgstr "Invalid colour range: "
+msgstr "Invalid colour in range: "
 
 #: src/game_config_manager.cpp:195 src/game_config_manager.cpp:203
 #: src/game_config_manager.cpp:214
@@ -5960,7 +5952,7 @@ msgstr ""
 #: src/game_initialization/depcheck.hpp:318
 #: src/game_initialization/depcheck.hpp:330
 msgid "A component"
-msgstr ""
+msgstr "A component"
 
 #: src/game_initialization/flg_manager.cpp:190
 msgid "Only random sides in the current era."
@@ -6304,10 +6296,8 @@ msgid "Error while starting server: "
 msgstr "Error while starting server: "
 
 #: src/generators/default_map_generator_job.cpp:704
-#, fuzzy
-#| msgid "Random maps with an odd data.width aren't supported."
 msgid "Random maps with an odd width aren't supported."
-msgstr "Random maps with an odd data.width aren't supported."
+msgstr "Random maps with an odd width aren't supported."
 
 #: src/generators/default_map_generator_job.cpp:970
 msgid ""
@@ -6319,7 +6309,7 @@ msgstr ""
 
 #: src/gui/core/linked_group_definition.cpp:41
 msgid "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
-msgstr ""
+msgstr "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
 
 #: src/gui/dialogs/game_load.hpp:42
 msgid "No Saved Games"
@@ -6330,10 +6320,8 @@ msgid "There are no save files to load"
 msgstr "There are no save files to load"
 
 #: src/gui/dialogs/game_stats.hpp:44
-#, fuzzy
-#| msgid "No multiplayer sides found"
 msgid "No visible sides found."
-msgstr "No multiplayer sides found"
+msgstr "No visible sides found."
 
 #: src/gui/dialogs/lobby/player_info.cpp:103
 msgid "In game:"
@@ -6372,10 +6360,8 @@ msgid "Error"
 msgstr "Error"
 
 #: src/gui/dialogs/unit_list.hpp:46
-#, fuzzy
-#| msgid "No eras found."
 msgid "No units found."
-msgstr "No eras found."
+msgstr "No units found."
 
 #: src/gui/widgets/status_label_helper.hpp:34
 msgid "no"
@@ -7194,15 +7180,15 @@ msgstr "This unit has no usable weapons."
 
 #: src/mp_game_settings.hpp:69
 msgid "Independent"
-msgstr ""
+msgstr "Independent"
 
 #: src/mp_game_settings.hpp:70
 msgid "No Mirror"
-msgstr ""
+msgstr "No Mirror"
 
 #: src/mp_game_settings.hpp:71
 msgid "No Ally Mirror"
-msgstr ""
+msgstr "No Ally Mirror"
 
 #: src/mp_ui_alerts.cpp:66
 msgid "A player has joined"
@@ -7812,10 +7798,8 @@ msgid "Skip"
 msgstr "Skip"
 
 #: src/synced_user_choice.cpp:329
-#, fuzzy
-#| msgid "waiting for $desc from side(s)$sides"
 msgid "waiting for $desc from side(s) $sides"
-msgstr "waiting for $desc from side(s)$sides"
+msgstr "waiting for $desc from side(s) $sides"
 
 #: src/terrain/terrain.cpp:179
 msgid "Allied village"
@@ -7854,71 +7838,59 @@ msgstr " and "
 #: src/units/attack_type.cpp:358
 msgid "$number_or_percent damage"
 msgid_plural "$number_or_percent damage"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "$number_or_percent damage"
+msgstr[1] "$number_or_percent damage"
 
 #: src/units/attack_type.cpp:368
-#, fuzzy
-#| msgid "damage"
-#| msgid_plural "damage"
 msgid "$number damage"
 msgid_plural "$number damage"
-msgstr[0] "damage"
-msgstr[1] "damage"
+msgstr[0] "$number damage"
+msgstr[1] "$number damage"
 
 #. TRANSLATORS: Current value for WML code increase_attacks, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:378
 msgid "$number_or_percent strike"
 msgid_plural "$number_or_percent strikes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "$number_or_percent strike"
+msgstr[1] "$number_or_percent strikes"
 
 #. TRANSLATORS: Current value for WML code set_attacks, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:388
-#, fuzzy
-#| msgid "strike"
-#| msgid_plural "strikes"
 msgid "$number strike"
 msgid_plural "$number strikes"
-msgstr[0] "strike"
-msgstr[1] "strikes"
+msgstr[0] "$number strike"
+msgstr[1] "$number strikes"
 
 #. TRANSLATORS: Current value for WML code set_accuracy, documented in https://wiki.wesnoth.org/EffectWML
 #. TRANSLATORS: Current value for WML code increase_accuracy, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:398 src/units/attack_type.cpp:406
-#, fuzzy, c-format
-#| msgid "% accuracy"
+#, c-format
 msgid "$percent|% accuracy"
-msgstr "% accuracy"
+msgstr "$percent|% accuracy"
 
 #. TRANSLATORS: Current value for WML code set_parry, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:414
-#, fuzzy
-#| msgid " parry"
 msgid "$number parry"
-msgstr " parry"
+msgstr "$number parry"
 
 #. TRANSLATORS: Current value for WML code increase_parry, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:422
 msgid "$number_or_percent parry"
-msgstr ""
+msgstr "$number_or_percent parry"
 
 #. TRANSLATORS: Current value for WML code set_movement, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:430
-#, fuzzy
-#| msgid "movement point"
-#| msgid_plural "movement points"
 msgid "$number movement point"
 msgid_plural "$number movement points"
-msgstr[0] "movement point"
-msgstr[1] "movement points"
+msgstr[0] "$number movement point"
+msgstr[1] "$number movement points"
 
 #. TRANSLATORS: Current value for WML code increase_movement, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:440
 msgid "$number_or_percent movement point"
 msgid_plural "$number_or_percent movement points"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "$number_or_percent movement point"
+msgstr[1] "$number_or_percent movement points"
 
 #: src/units/types.cpp:472
 msgid "No description available."
@@ -7941,8 +7913,6 @@ msgid "female^liminal"
 msgstr "liminal"
 
 #: src/units/types.hpp:156
-#, fuzzy
-#| msgid "female^lawful"
 msgid "lawful"
 msgstr "lawful"
 
@@ -7963,40 +7933,36 @@ msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
 #: src/units/unit.cpp:1750
-#, fuzzy
-#| msgid "Wesnoth"
 msgid "wesnoth"
-msgstr "Wesnoth"
+msgstr "wesnoth"
 
 #: src/units/unit.cpp:1761
 msgid "$number_or_percent move"
 msgid_plural "$number_or_percent moves"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "$number_or_percent move"
+msgstr[1] "$number_or_percent moves"
 
 #: src/units/unit.cpp:1767
 msgid "$number_or_percent vision"
-msgstr ""
+msgstr "$number_or_percent vision"
 
 #: src/units/unit.cpp:1771
 msgid "$number_or_percent jamming"
-msgstr ""
+msgstr "$number_or_percent jamming"
 
 #: src/units/unit.cpp:1775
 msgid "$number_or_percent XP to advance"
-msgstr ""
+msgstr "$number_or_percent XP to advance"
 
 #: src/units/unit.cpp:1779
-#, fuzzy
-#| msgid "attack per turn"
 msgid "$number_or_percent attack per turn"
 msgid_plural "$number_or_percent attacks per turn"
-msgstr[0] "attack per turn"
-msgstr[1] "attack per turn"
+msgstr[0] "$number_or_percent attack per turn"
+msgstr[1] "$number_or_percent attacks per turn"
 
 #: src/units/unit.cpp:1785
 msgid "$number_or_percent cost to recall"
-msgstr ""
+msgstr "$number_or_percent cost to recall"
 
 #: src/units/unit.cpp:2185
 msgid "$effect_description per level"

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-03-23 08:11+0100\n"
-"PO-Revision-Date: 2016-11-07 20:58+1100\n"
+"POT-Creation-Date: 2017-03-23 08:40+0100\n"
+"PO-Revision-Date: 2017-03-20 07:00+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 1.8.12\n"
 
 #. [terrain_type]: id=fence
 #. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
@@ -785,24 +785,18 @@ msgstr "Lit Stone Wall"
 
 #. [terrain_type]: id=wall_stone_mine
 #: data/core/terrain.cfg:1154
-#, fuzzy
-#| msgid "Mine Wall"
 msgid "Straight Mine Wall"
-msgstr "Mine Wall"
+msgstr "Straight Mine Wall"
 
 #. [terrain_type]: id=wall_stone_white
 #: data/core/terrain.cfg:1164
-#, fuzzy
-#| msgid "Mine Wall"
 msgid "Interior Wall"
-msgstr "Mine Wall"
+msgstr "Interior Wall"
 
 #. [terrain_type]: id=wall_stone_white
 #: data/core/terrain.cfg:1165
-#, fuzzy
-#| msgid "Lit Stone Wall"
 msgid "Straight White Wall"
-msgstr "Lit Stone Wall"
+msgstr "Straight White Wall"
 
 #. [terrain_type]: id=portal_gate_rusty
 #. [terrain_type]: id=p_open_rusty
@@ -1427,7 +1421,7 @@ msgstr "Off Map"
 #. [terrain_type]: id=off_map2
 #: data/core/terrain.cfg:2407
 msgid "Fake Map Border"
-msgstr ""
+msgstr "Fake Map Border"
 
 #. [terrain_type]: id=shroud
 #. [toggle_button]: id=shroud
@@ -1985,7 +1979,7 @@ msgstr "Cancel"
 #. [label]: id=byline
 #: data/gui/window/addon_manager.cfg:83
 msgid "By:"
-msgstr ""
+msgstr "By:"
 
 #. [label]: id=version_string
 #: data/gui/window/addon_manager.cfg:119
@@ -2086,33 +2080,27 @@ msgstr "Visit this URL with a web browser"
 #. [text_box]: id=filter
 #: data/gui/window/addon_manager.cfg:688
 msgid "Filters on addon descripton, version, type or author."
-msgstr ""
+msgstr "Filters on add-on descripton, version, type or author."
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:700
-#, fuzzy
-#| msgid "Status:"
 msgid "State:"
-msgstr "Status:"
+msgstr "State:"
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:811
-#, fuzzy
-#| msgid "Add-ons"
 msgid "Get Add-ons"
-msgstr "Add-ons"
+msgstr "Get Add-ons"
 
 #. [button]: id=update_all
 #: data/gui/window/addon_manager.cfg:914
-#, fuzzy
-#| msgid "Speak to All"
 msgid "Update All"
-msgstr "Speak to All"
+msgstr "Update All"
 
 #. [button]: id=cancel
 #: data/gui/window/addon_manager.cfg:928
 msgid "Exit"
-msgstr ""
+msgstr "Exit"
 
 #. [scroll_label]
 #: data/gui/window/addon_uninstall_list.cfg:70
@@ -2224,31 +2212,33 @@ msgstr "OK"
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:82
 msgid "Base damage"
-msgstr ""
+msgstr "Base damage"
 
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:84
 #, fuzzy
-#| msgid "Switch Time of Day"
+#| msgid "Time of day"
 msgid "Time of day modifier"
-msgstr "Switch Time of Day"
+msgstr "Time of day"
 
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:85
 #, fuzzy
-#| msgid "Leader"
+#| msgid "Leadership"
 msgid "Leadership bonus"
-msgstr "Leader"
+msgstr "Leadership"
 
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:86
+#, fuzzy
+#| msgid "Slowed"
 msgid "Slowed penalty"
-msgstr ""
+msgstr "Slowed"
 
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:90
 msgid "Total damage"
-msgstr ""
+msgstr "Total damage"
 
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:94
@@ -2260,7 +2250,7 @@ msgstr "Change Hotkey"
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:95
 msgid "Chance of being unscathed"
-msgstr ""
+msgstr "Chance of being unscathed"
 
 #. [label]
 #: data/gui/window/attack_predictions.cfg:185
@@ -2274,17 +2264,13 @@ msgstr "Damage Calculations"
 
 #. [column]
 #: data/gui/window/attack_predictions.cfg:272
-#, fuzzy
-#| msgid "Attack"
 msgid "Attacker"
-msgstr "Attack"
+msgstr "Attacker"
 
 #. [column]
 #: data/gui/window/attack_predictions.cfg:282
-#, fuzzy
-#| msgid "Gender:"
 msgid "Defender"
-msgstr "Gender:"
+msgstr "Defender"
 
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:174
@@ -2293,10 +2279,8 @@ msgstr "Play a Campaign"
 
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:224
-#, fuzzy
-#| msgid "Modifications:"
 msgid "Modifications"
-msgstr "Modifications:"
+msgstr "Modifications"
 
 #. [toggle_button]: id=checkbox_deterministic
 #: data/gui/window/campaign_dialog.cfg:357
@@ -2723,7 +2707,7 @@ msgstr "Settings"
 #. [label]
 #: data/gui/window/editor_generate_map.cfg:161
 msgid "Numerical seed:"
-msgstr ""
+msgstr "Numerical seed:"
 
 #. [button]: id=ok
 #: data/gui/window/editor_generate_map.cfg:202
@@ -4126,7 +4110,7 @@ msgstr "Connected Players"
 #. [button]: id=cancel
 #: data/gui/window/mp_join_game.cfg:418
 msgid "Leave"
-msgstr ""
+msgstr "Leave"
 
 #. [label]: id=title
 #: data/gui/window/mp_join_game.cfg:479 data/gui/window/mp_staging.cfg:631
@@ -4850,22 +4834,18 @@ msgstr "Configure settings for the selected custom modifications."
 
 #. [label]
 #: data/gui/window/statistics_dialog.cfg:129
-#, fuzzy
-#| msgid "Image"
 msgid "Damage"
-msgstr "Image"
+msgstr "Damage"
 
 #. [label]
 #: data/gui/window/statistics_dialog.cfg:141
 msgid "Overall"
-msgstr ""
+msgstr "Overall"
 
 #. [label]
 #: data/gui/window/statistics_dialog.cfg:153
-#, fuzzy
-#| msgid "Turn"
 msgid "This Turn"
-msgstr "Turn"
+msgstr "This Turn"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
@@ -4875,17 +4855,13 @@ msgstr "Statistics"
 
 #. [widget]: id=tab_label
 #: data/gui/window/statistics_dialog.cfg:485
-#, fuzzy
-#| msgid "Scenarios"
 msgid "Scenario"
-msgstr "Scenarios"
+msgstr "Scenario"
 
 #. [widget]: id=tab_label
 #: data/gui/window/statistics_dialog.cfg:498
-#, fuzzy
-#| msgid "Campaigns"
 msgid "Campaign"
-msgstr "Campaigns"
+msgstr "Campaign"
 
 #. [label]: id=lblTitle
 #: data/gui/window/synced_choice_wait.cfg:40
@@ -4905,48 +4881,42 @@ msgstr "Quit game"
 #. [label]
 #: data/gui/window/terrain_layers.cfg:21
 msgid "#"
-msgstr ""
+msgstr "#"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:57
 msgid "Loc"
-msgstr ""
+msgstr "Loc"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:69
-#, fuzzy
-#| msgid "player"
 msgid "Layer"
-msgstr "player"
+msgstr "Layer"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:81
 msgid "Base.x"
-msgstr ""
+msgstr "Base.x"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:93
 msgid "Base.y"
-msgstr ""
+msgstr "Base.y"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:105
-#, fuzzy
-#| msgid "Centered"
 msgid "Center"
-msgstr "Centred"
+msgstr "Centre"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:339
-#, fuzzy
-#| msgid "Draw Terrain Codes"
 msgid "Terrain Layers"
-msgstr "Draw Terrain Codes"
+msgstr "Terrain Layers"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:384
 msgid "Flags"
-msgstr ""
+msgstr "Flags"
 
 #. [label]
 #: data/gui/window/theme_list.cfg:51
@@ -5444,16 +5414,12 @@ msgid "addon_state^Published ($local_version| installed), outdated on server"
 msgstr "Published ($local_version| installed), outdated on server"
 
 #: src/gui/dialogs/addon/manager.cpp:308 src/gui/widgets/addon_list.cpp:94
-#, fuzzy
-#| msgid "addon_state^Installed, outdated on server"
 msgid "addon_state^Installed, not ready to publish"
-msgstr "Installed, outdated on server"
+msgstr "addon_state^Installed, not ready to publish"
 
 #: src/gui/dialogs/addon/manager.cpp:309 src/gui/widgets/addon_list.cpp:94
-#, fuzzy
-#| msgid "addon_state^Published"
 msgid "addon_state^Ready to publish"
-msgstr "Published"
+msgstr "addon_state^Ready to publish"
 
 #: src/gui/dialogs/addon/manager.cpp:313 src/gui/widgets/addon_list.cpp:106
 msgid "addon_state^Installed, broken"
@@ -5479,27 +5445,27 @@ msgstr "Clipboard support not found, contact your packager"
 
 #: src/gui/dialogs/addon/manager.cpp:446
 msgid "An error occurred while downloading the add-ons list from the server."
-msgstr ""
+msgstr "An error occurred while downloading the add-ons list from the server."
 
 #: src/gui/dialogs/addon/manager.cpp:473
-#, fuzzy
-#| msgid "No description available"
 msgid "No Add-ons Available"
-msgstr "No description available"
+msgstr "No Add-ons Available"
 
 #: src/gui/dialogs/addon/manager.cpp:473
 msgid "There are no add-ons available for download from this server."
-msgstr ""
+msgstr "There are no add-ons available for download from this server."
 
 #: src/gui/dialogs/addon/manager.cpp:580
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
 msgstr ""
+"The following add-on appears to have publishing or version control "
+"information stored locally, and will not be removed:"
 
 #: src/gui/dialogs/addon/manager.cpp:588
 msgid "The following add-on could not be deleted properly:"
-msgstr ""
+msgstr "The following add-on could not be deleted properly:"
 
 #: src/gui/dialogs/addon/manager.cpp:630
 msgid "Warning"
@@ -5510,19 +5476,21 @@ msgid ""
 "The remote version of this add-on is greater or equal to the version being "
 "uploaded. Do you really wish to continue?"
 msgstr ""
+"The remote version of this add-on is greater or equal to the version being "
+"uploaded. Do you really wish to continue?"
 
 #: src/gui/dialogs/addon/manager.cpp:640
 msgid "Invalid icon path. Make sure the path points to a valid image."
-msgstr ""
+msgstr "Invalid icon path. Make sure the path points to a valid image."
 
 #: src/gui/dialogs/addon/manager.cpp:643 src/gui/dialogs/addon/manager.cpp:647
 #: src/gui/dialogs/addon/manager.cpp:672
 msgid "The server responded with an error:"
-msgstr ""
+msgstr "The server responded with an error:"
 
 #: src/gui/dialogs/addon/manager.cpp:644
 msgid "Terms"
-msgstr ""
+msgstr "Terms"
 
 #: src/gui/dialogs/addon/manager.cpp:649 src/gui/dialogs/addon/manager.cpp:675
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:450
@@ -5534,23 +5502,21 @@ msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
 msgstr ""
+"Deleting '$addon|' will permanently erase its download and upload counts on "
+"the add-ons server. Do you really wish to continue?"
 
 #: src/gui/dialogs/addon/manager.cpp:739 src/gui/dialogs/addon/manager.cpp:753
 #: src/gui/dialogs/campaign_selection.cpp:187
-#, fuzzy
-#| msgid "url^None"
 msgid "None"
 msgstr "None"
 
 #: src/gui/dialogs/advanced_graphics_options.cpp:75
 msgid "No matching widget found for scaling option"
-msgstr ""
+msgstr "No matching widget found for scaling option"
 
 #: src/gui/dialogs/attack_predictions.cpp:116
-#, fuzzy
-#| msgid "Choose weapon:"
 msgid "No usable weapon"
-msgstr "Choose weapon:"
+msgstr "No usable weapon"
 
 #: src/gui/dialogs/attack_predictions.cpp:188
 msgid "Defender resistance vs"
@@ -6145,40 +6111,32 @@ msgid "file_size^Unknown"
 msgstr "Unknown"
 
 #: src/gui/dialogs/statistics_dialog.cpp:194
-#, fuzzy
-#| msgid "Recruits:"
 msgid "Recruits"
-msgstr "Recruits:"
+msgstr "Recruits"
 
 #: src/gui/dialogs/statistics_dialog.cpp:195
-#, fuzzy
-#| msgid "Recall"
 msgid "Recalls"
-msgstr "Recall"
+msgstr "Recalls"
 
 #: src/gui/dialogs/statistics_dialog.cpp:196
-#, fuzzy
-#| msgid "Advance Unit"
 msgid "Advancements"
-msgstr "Advance Unit"
+msgstr "Advancements"
 
 #: src/gui/dialogs/statistics_dialog.cpp:197
 msgid "Losses"
-msgstr ""
+msgstr "Losses"
 
 #: src/gui/dialogs/statistics_dialog.cpp:198
-#, fuzzy
-#| msgid "Hills"
 msgid "Kills"
-msgstr "Hills"
+msgstr "Kills"
 
 #: src/gui/dialogs/statistics_dialog.cpp:212
 msgid "Inflicted"
-msgstr ""
+msgstr "Inflicted"
 
 #: src/gui/dialogs/statistics_dialog.cpp:220
 msgid "Taken"
-msgstr ""
+msgstr "Taken"
 
 #: src/gui/dialogs/unit_recall.cpp:265
 msgid "This unit is loyal and requires no upkeep."
@@ -6301,16 +6259,12 @@ msgid "No state or draw section defined."
 msgstr "No state or draw section defined."
 
 #: src/gui/widgets/size_lock.cpp:134
-#, fuzzy
-#| msgid "No list defined."
 msgid "No widget defined."
-msgstr "No list defined."
+msgstr "No widget defined."
 
 #: src/gui/widgets/size_lock.cpp:157
-#, fuzzy
-#| msgid "Invalid username"
 msgid "Invalid size."
-msgstr "Invalid username"
+msgstr "Invalid size."
 
 #: src/gui/widgets/slider.cpp:513
 msgid "The number of value_labels and values don't match."
@@ -6342,15 +6296,15 @@ msgstr "Unknown builder id for tree view node."
 
 #: src/gui/widgets/unit_preview_pane.cpp:130
 msgid "Resistances: "
-msgstr ""
+msgstr "Resistances: "
 
 #: src/gui/widgets/unit_preview_pane.cpp:132
 msgid "(Att / Def)"
-msgstr ""
+msgstr "(Att / Def)"
 
 #: src/gui/widgets/unit_preview_pane.cpp:145
 msgid "Movement Costs:"
-msgstr ""
+msgstr "Movement Costs:"
 
 #: src/gui/widgets/unit_preview_pane.cpp:208
 msgid "Attacks"
@@ -6375,10 +6329,8 @@ msgstr "XP: "
 
 #: src/gui/widgets/unit_preview_pane.cpp:296
 #: src/gui/widgets/unit_preview_pane.cpp:446
-#, fuzzy
-#| msgid "Experience Modifier"
 msgid "Experience Modifier: "
-msgstr "Experience Modifier"
+msgstr "Experience Modifier: "
 
 #: src/gui/widgets/unit_preview_pane.cpp:299
 #: src/gui/widgets/unit_preview_pane.cpp:449
@@ -7270,10 +7222,9 @@ msgstr ""
 "The key '$deprecated_key' has been renamed to '$key'. Support for "
 "'$deprecated_key' will be removed in version $removal_version."
 
-#, fuzzy
 #~| msgid "Modifications:"
 #~ msgid "Modifiers"
-#~ msgstr "Modifications:"
+#~ msgstr "Modifiers"
 
 #~ msgid "Experimental Fake Map Edge"
 #~ msgstr "Experimental Fake Map Edge"
