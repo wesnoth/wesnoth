@@ -44,7 +44,6 @@ namespace storyscreen {
 controller::controller(CVideo& video, const vconfig& data, const std::string& scenario_name,
 		       int segment_index)
 	: video_(video)
-	, evt_context_()
 	, scenario_name_(scenario_name)
 	, segment_index_(segment_index)
 	, parts_()

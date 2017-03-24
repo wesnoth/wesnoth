@@ -67,7 +67,6 @@ private:
 	void resolve_wml(const vconfig& cfg);
 
 	CVideo& video_;
-	const events::event_context evt_context_;
 
 	std::string scenario_name_;
 	int segment_index_;
