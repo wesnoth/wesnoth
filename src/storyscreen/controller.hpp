@@ -41,6 +41,9 @@ class floating_image;
 class controller
 {
 public:
+	typedef std::shared_ptr< part    > part_pointer_type;
+	typedef std::shared_ptr< part_ui > render_pointer_type;
+
 	controller(CVideo& video, const vconfig& data, const std::string& scenario_name,
 		   int segment_index);
 
@@ -49,10 +52,17 @@ public:
 	 */
 	STORY_RESULT show(START_POSITION startpos=START_BEGINNING);
 
-private:
-	typedef std::shared_ptr< part    > part_pointer_type;
-	typedef std::shared_ptr< part_ui > render_pointer_type;
+	part_pointer_type get_part(int index) const
+	{
+		return parts_[index];
+	}
 
+	int max_parts() const
+	{
+		return parts_.size();
+	}
+
+private:
 	// Executes WML flow instructions and inserts parts.
 	void resolve_wml(const vconfig& cfg);
 

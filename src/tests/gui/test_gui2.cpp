@@ -93,6 +93,7 @@
 #include "gui/dialogs/select_orb_colors.hpp"
 #include "gui/dialogs/sp_options_configure.hpp"
 #include "gui/dialogs/statistics_dialog.hpp"
+#include "gui/dialogs/story_viewer.hpp"
 #include "gui/dialogs/theme_list.hpp"
 #include "gui/dialogs/terrain_layers.hpp"
 #include "gui/dialogs/title_screen.hpp"
@@ -453,6 +454,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<select_orb_colors>();
 	test<sp_options_configure>();
 	test<statistics_dialog>();
+	//test<story_viewer>();
 	test<theme_list>();
 	//test<terrain_layers>();
 	//test<title_screen>();
@@ -512,6 +514,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 		"terrain_layers",
 		"attack_predictions",
 		"help_browser",
+		"story_viewer",
 	};
 	std::sort(list.begin(), list.end());
 	std::sort(omitted.begin(), omitted.end());

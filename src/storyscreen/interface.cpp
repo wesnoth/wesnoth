@@ -22,6 +22,9 @@
 #include "storyscreen/interface.hpp"
 #include "storyscreen/controller.hpp"
 
+#include "gui/widgets/settings.hpp"
+#include "gui/dialogs/story_viewer.hpp"
+
 #include "font/text.hpp"
 #include "gettext.hpp"
 #include "intro.hpp"
@@ -36,7 +39,21 @@ static lg::log_domain log_engine("engine");
 void show_story(CVideo& video, const std::string &scenario_name,
 	const config::const_child_itors &story)
 {
-	events::event_context story_context;
+	if(gui2::new_widgets) {
+		// Combine all the [story] tags into a single config
+		config cfg;
+		for(const auto& iter : story) {
+			cfg.append_children(iter);
+		}
+
+		storyscreen::controller controller(video, vconfig(cfg, true), scenario_name, 0);
+
+		gui2::dialogs::story_viewer::display(controller, video);
+
+		video2::trigger_full_redraw();
+
+		return;
+	}
 
 	int segment_count = 0;
 	config::const_child_iterator itor = story.begin();
