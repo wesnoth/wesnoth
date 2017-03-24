@@ -45,7 +45,7 @@ void story_viewer::pre_show(window& window)
 {
 	window.set_enter_disabled(true);
 
-	// Special callback to make Enter advance to the next part.
+	// Special callback handle key presses
 	connect_signal_pre_key_press(window, std::bind(&story_viewer::key_press_callback, this, std::ref(window), _5));
 
 	connect_signal_mouse_left_click(find_widget<button>(&window, "next", false),
@@ -64,16 +64,36 @@ void story_viewer::update_current_part_ptr()
 
 void story_viewer::display_part(window& window)
 {
-	// TODO: handle all layers
-	const std::string bg = current_part_->get_background_layers()[0].file();
+	// Update Back button state. Doing this here so it gets called in pre_show too.
+	find_widget<button>(&window, "back", false).set_active(part_index_ != 0);
 
-   	window.get_canvas(0).set_variable("background_image", variant(bg));
+	config cfg, shape;
 
-	find_widget<label>(&window, "title", false).set_label(current_part_->title());
-	find_widget<label>(&window, "part_text", false).set_label(current_part_->text());
+	for(const auto& layer : current_part_->get_background_layers()) {
+		//SDL_Rect image_rect;
+
+		shape["x"] = "(max(pos, 0) where pos = (width  / 2 - image_width  / 2))";
+		shape["y"] = "(max(pos, 0) where pos = (height / 2 - image_height / 2))";
+		shape["w"] = "(image_original_width * height / image_original_height)";
+		shape["h"] = "(height)";
+		shape["name"] = layer.file();
+
+		cfg.add_child("image", shape);
+	}
+
+	canvas& window_canvas = window.get_canvas(0);
+
+	window_canvas.set_cfg(cfg);
 
 	// Needed to make the background redraw correctly.
+	window_canvas.set_is_dirty(true);
 	window.set_is_dirty(true);
+
+	// FIXME: seems if the label doesn't have *something* in it each time its set, the label will never show up.
+	const std::string title = current_part_->title().empty() ? " " : current_part_->title();
+	find_widget<label>(&window, "title", false).set_label(title);
+
+	find_widget<label>(&window, "part_text", false).set_label(current_part_->text());
 }
 
 void story_viewer::nav_button_callback(window& window, NAV_DIRECTION direction)
@@ -90,8 +110,6 @@ void story_viewer::nav_button_callback(window& window, NAV_DIRECTION direction)
 		part_index_ = 0;
 	}
 
-	// TODO: disable buttons
-
 	update_current_part_ptr();
 
 	display_part(window);
@@ -99,8 +117,20 @@ void story_viewer::nav_button_callback(window& window, NAV_DIRECTION direction)
 
 void story_viewer::key_press_callback(window& window, const SDL_Keycode key)
 {
-	if(key == SDLK_RETURN) {
+	const bool next_keydown =
+		   key == SDLK_SPACE
+		|| key == SDLK_RETURN
+		|| key == SDLK_KP_ENTER
+		|| key == SDLK_RIGHT;
+
+	const bool back_keydown =
+		   key == SDLK_BACKSPACE
+		|| key == SDLK_LEFT;
+
+	if(next_keydown) {
 		nav_button_callback(window, DIR_FORWARD);
+	} else if(back_keydown) {
+		nav_button_callback(window, DIR_BACKWARDS);
 	}
 }
 

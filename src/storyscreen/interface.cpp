@@ -46,6 +46,10 @@ void show_story(CVideo& video, const std::string &scenario_name,
 			cfg.append_children(iter);
 		}
 
+		if(!cfg.has_child("part")) {
+			return;
+		}
+
 		storyscreen::controller controller(video, vconfig(cfg, true), scenario_name, 0);
 
 		gui2::dialogs::story_viewer::display(controller, video);
