@@ -407,6 +407,16 @@ void grid::relayout()
 	}
 
 	// Not enough space, ask the parent grid for more.
+
+	// Throw away cached sizes of all parent widgets until the next grid.
+	widget* parent_widget = parent();
+	while(parent_widget != nullptr &&
+		dynamic_cast<grid*>(parent_widget) == nullptr)
+	{
+		parent_widget->clear_layout_size();
+		parent_widget = parent_widget->parent();
+	}
+
 	grid* parent = get_parent_grid();
 	if(parent != nullptr) {
 		parent->relayout();
