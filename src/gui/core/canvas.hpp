@@ -21,10 +21,10 @@
 #ifndef GUI_AUXILIARY_CANVAS_HPP_INCLUDED
 #define GUI_AUXILIARY_CANVAS_HPP_INCLUDED
 
+#include "config.hpp"
 #include "formula/callable.hpp"
 #include "sdl/surface.hpp"
 
-class config;
 class variant;
 
 namespace gui2
@@ -53,6 +53,10 @@ public:
 	class shape
 	{
 	public:
+		explicit shape(const config& cfg) : immutable_(cfg["immutable"].to_bool(false))
+		{
+		}
+
 		virtual ~shape()
 		{
 		}
@@ -66,10 +70,20 @@ public:
 		 *                        definition, this parameter contains the values
 		 *                        for these formulas.
 		 */
-		virtual void draw(surface& canvas,
-						  SDL_Renderer* renderer,
-						  const game_logic::map_formula_callable& variables)
-				= 0;
+		virtual void draw(surface& canvas, SDL_Renderer* renderer,
+		                  const game_logic::map_formula_callable& variables) = 0;
+
+		bool immutable() const
+		{
+			return immutable_;
+		}
+
+	private:
+		/**
+		 * If this is true, this shape will not be removed from the canvas even if
+		 * the canvas's content is reset.
+		 */
+		bool immutable_;
 	};
 
 	typedef std::shared_ptr<shape> shape_ptr;
@@ -104,9 +118,9 @@ public:
 	 *                            http://www.wesnoth.org/wiki/GUICanvasWML for
 	 *                            more information.
 	 */
-	void set_cfg(const config& cfg)
+	void set_cfg(const config& cfg, const bool force = false)
 	{
-		shapes_.clear();
+		clear_shapes(force);
 		parse_cfg(cfg);
 	}
 
@@ -202,6 +216,8 @@ private:
 	 *                            http://www.wesnoth.org/wiki/GUICanvasWML
 	 */
 	void parse_cfg(const config& cfg);
+
+	void clear_shapes(const bool force);
 };
 
 } // namespace gui2

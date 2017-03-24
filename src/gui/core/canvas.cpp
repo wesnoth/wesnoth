@@ -21,7 +21,6 @@
 
 #include "gui/core/canvas.hpp"
 
-#include "config.hpp"
 #include "font/text.hpp"
 #include "formatter.hpp"
 #include "gettext.hpp"
@@ -550,7 +549,8 @@ private:
  */
 
 line_shape::line_shape(const config& cfg)
-	: x1_(cfg["x1"])
+	: shape(cfg)
+	, x1_(cfg["x1"])
 	, y1_(cfg["y1"])
 	, x2_(cfg["x2"])
 	, y2_(cfg["y2"])
@@ -685,7 +685,8 @@ private:
  *
  */
 rectangle_shape::rectangle_shape(const config& cfg)
-	: x_(cfg["x"])
+	: shape(cfg)
+	, x_(cfg["x"])
 	, y_(cfg["y"])
 	, w_(cfg["w"])
 	, h_(cfg["h"])
@@ -814,7 +815,8 @@ private:
  * crashing. (That should be fixed, when encountered.)
  */
 circle_shape::circle_shape(const config& cfg)
-	: x_(cfg["x"])
+	: shape(cfg)
+	, x_(cfg["x"])
 	, y_(cfg["y"])
 	, radius_(cfg["radius"])
 	, color_(decode_color(cfg["color"]))
@@ -992,7 +994,8 @@ private:
  * Also the general variables are available, see [[#general_variables|Line]].
  */
 image_shape::image_shape(const config& cfg)
-	: x_(cfg["x"])
+	: shape(cfg)
+	, x_(cfg["x"])
 	, y_(cfg["y"])
 	, w_(cfg["w"])
 	, h_(cfg["h"])
@@ -1283,7 +1286,8 @@ private:
  */
 
 text_shape::text_shape(const config& cfg)
-	: x_(cfg["x"])
+	: shape(cfg)
+	, x_(cfg["x"])
 	, y_(cfg["y"])
 	, w_(cfg["w"])
 	, h_(cfg["h"])
@@ -1517,6 +1521,16 @@ void canvas::parse_cfg(const config& cfg)
 			assert(false);
 		}
 	}
+}
+
+void canvas::clear_shapes(const bool force)
+{
+	const auto iter = std::remove_if(shapes_.begin(), shapes_.end(), [&force](const shape_ptr s)
+	{
+		return !s->immutable() && !force;
+	});
+
+	shapes_.erase(iter, shapes_.end());
 }
 
 /***** ***** ***** ***** ***** SHAPE ***** ***** ***** ***** *****/
