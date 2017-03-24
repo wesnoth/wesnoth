@@ -602,6 +602,9 @@
     <ClCompile Include="..\..\src\gui\dialogs\gamestate_inspector.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\help_browser.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\hotkey_bind.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
@@ -648,6 +651,9 @@
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\statistics_dialog.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\story_viewer.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\terrain_layers.cpp">
@@ -1014,6 +1020,9 @@
       <Filter>Tests</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\tests\test_formula_ai.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\tests\test_formula_core.cpp">
       <Filter>Tests</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\tests\test_formula_function.cpp">
@@ -1515,12 +1524,6 @@
     <ClCompile Include="..\..\src\font\text_surface.cpp">
       <Filter>Font</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\tests\test_formula_core.cpp">
-      <Filter>Tests</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\help_browser.cpp">
-      <Filter>Gui\Dialogs</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\addon\client.hpp">
@@ -1982,6 +1985,9 @@
     <ClInclude Include="..\..\src\gui\dialogs\gamestate_inspector.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\help_browser.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\helper.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
@@ -2031,6 +2037,9 @@
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\statistics_dialog.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\story_viewer.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\terrain_layers.hpp">
@@ -2949,9 +2958,6 @@
     </ClInclude>
     <ClInclude Include="..\..\src\font\pango\stream_ops.hpp">
       <Filter>Font\Pango</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\gui\dialogs\help_browser.hpp">
-      <Filter>Gui\Dialogs</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
