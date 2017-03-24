@@ -55,6 +55,8 @@ void show_story(CVideo& video, const std::string &scenario_name,
 		return;
 	}
 
+	events::event_context story_context;
+
 	int segment_count = 0;
 	config::const_child_iterator itor = story.begin();
 	storyscreen::START_POSITION startpos = storyscreen::START_BEGINNING;
