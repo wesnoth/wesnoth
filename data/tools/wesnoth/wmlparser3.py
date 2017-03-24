@@ -289,8 +289,6 @@ class RootNode(TagNode):
         return s
 
 class Parser:
-    trans_pat = re.compile(r'^_\s*"')
-
     def __init__(self, wesnoth_exe = None, config_dir = None,
             data_dir = None):
         """
@@ -375,7 +373,7 @@ class Parser:
             stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         out, err = p.communicate()
         if self.verbose:
-            print((out + err))
+            print((out + err).decode("utf8"))
         self.preprocessed = output + "/" + os.path.basename(self.path) +\
             ".plain"
         if not os.path.exists(self.preprocessed):
@@ -490,9 +488,9 @@ class Parser:
 
                 if not segment: continue
 
-                if self.trans_pat.match(segment):
+                if segment.rstrip(b" ") == b"_":
                     self.translatable = True
-                    segment = segment[1:].lstrip(b" ")[1:-1]
+                    segment = segment[1:].lstrip(b" ")
                     if not segment: continue
                 self.handle_value(segment)
 
@@ -773,6 +771,18 @@ x = _ "abc" + {X}
     x=_<B>'abc' .. _<A>'abc'
 [/test]
 """, "textdomain")
+
+        test(
+"""
+[test]
+x,y = _1,_2
+[/test]
+""", """
+[test]
+    x='_1'
+    y='_2'
+[/test]
+""", "underscores")
 
         test(
 """
