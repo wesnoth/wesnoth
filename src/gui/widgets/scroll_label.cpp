@@ -60,7 +60,10 @@ void scroll_label::set_label(const t_string& lbl)
 		label* widget = find_widget<label>(content_grid(), "_label", false, true);
 		widget->set_label(lbl);
 
-		content_resize_request();
+		bool resize_needed = !content_resize_request();
+		if(resize_needed) {
+			place(get_origin(), get_size());
+		}
 	}
 }
 
