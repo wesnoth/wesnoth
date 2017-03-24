@@ -169,6 +169,11 @@ public:
 		set_is_dirty(true);
 	}
 
+	void set_is_dirty(const bool is_dirty)
+	{
+		is_dirty_ = is_dirty;
+	}
+
 private:
 	/** Vector with the shapes to draw. */
 	std::vector<shape_ptr> shapes_;
@@ -199,11 +204,6 @@ private:
 
 	/** The dirty state of the canvas. */
 	bool is_dirty_;
-
-	void set_is_dirty(const bool is_dirty)
-	{
-		is_dirty_ = is_dirty;
-	}
 
 	/**
 	 * Parses a config object.
