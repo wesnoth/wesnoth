@@ -354,7 +354,7 @@ static int impl_add_animation(lua_State* L)
 	map_location dest;
 	int v1 = 0, v2 = 0;
 	bool bars = false;
-	std::string text;
+	t_string text;
 	color_t color{255, 255, 255};
 	const_attack_ptr primary, secondary;
 
@@ -395,6 +395,8 @@ static int impl_add_animation(lua_State* L)
 		lua_getfield(L, 5, "text");
 		if(lua_isstring(L, -1)) {
 			text = lua_tostring(L, -1);
+		} else if(luaW_totstring(L, -1, text)) {
+			// Do nothing; luaW_totstring already assigned the value
 		} else if(!lua_isnoneornil(L, -1)) {
 			return luaW_type_error(L, -1, lua_typename(L, LUA_TSTRING));
 		}
