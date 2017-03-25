@@ -376,7 +376,7 @@ set_scrollbar_mode(grid* scrollbar_grid,
 	} else if(scrollbar_mode == scrollbar_container::AUTO_VISIBLE_FIRST_RUN) {
 		if(items <= visible_items && content_grid != nullptr &&
 			scrollbar_grid->get_visible() == widget::visibility::visible) {
-			scrollbar_grid->set_visible(widget::visibility::hidden);
+			scrollbar_grid->set_visible(widget::visibility::invisible);
 			// Give newly freed space to the items.
 			content_grid->layout_initialise(false);
 		}
