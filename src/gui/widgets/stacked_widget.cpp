@@ -33,8 +33,7 @@ REGISTER_WIDGET(stacked_widget)
 
 stacked_widget::stacked_widget()
 	: container_base(1)
-	, generator_(
-			  generator_base::build(false, false, generator_base::independent, false))
+	, generator_(generator_base::build(true, false, generator_base::independent, false))
 	, selected_layer_(-1)
 {
 }
