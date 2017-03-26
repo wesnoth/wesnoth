@@ -19,11 +19,10 @@
 #include "formula/variant.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/button.hpp"
-#include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/scroll_label.hpp"
 #include "gui/widgets/settings.hpp"
-#include "gui/widgets/settings.hpp"
+#include "gui/widgets/stacked_widget.hpp"
 #include "gui/widgets/window.hpp"
 
 namespace gui2
@@ -67,18 +66,43 @@ void story_viewer::display_part(window& window)
 	// Update Back button state. Doing this here so it gets called in pre_show too.
 	find_widget<button>(&window, "back", false).set_active(part_index_ != 0);
 
-	config cfg, shape;
+	config cfg, image;
 
 	for(const auto& layer : current_part_->get_background_layers()) {
-		//SDL_Rect image_rect;
+		const bool preserve_ratio = layer.keep_aspect_ratio();
 
-		shape["x"] = "(max(pos, 0) where pos = (width  / 2 - image_width  / 2))";
-		shape["y"] = "(max(pos, 0) where pos = (height / 2 - image_height / 2))";
-		shape["w"] = "(image_original_width * height / image_original_height)";
-		shape["h"] = "(height)";
-		shape["name"] = layer.file();
+		// By default, no scaling will be applied.
+		std::string width_formula  = "(image_original_width)";
+		std::string height_formula = "(image_original_height)";
 
-		cfg.add_child("image", shape);
+		// If scale width is true, the image will be stretched to screen width.
+		if(layer.scale_horizontally()) {
+			width_formula = "(width)";
+
+			// Override height formula to preserve ratio, if applicable.
+			if(preserve_ratio) {
+				height_formula = "(image_original_height * width / image_original_width)";
+			}
+		}
+
+		// If scale height is true, the image will be stretched to screen height.
+		if(layer.scale_vertically()) {
+			height_formula = "(height)";
+
+			// Override width formula to preserve ratio, if applicable.
+			if(preserve_ratio) {
+				width_formula = "(image_original_width * height / image_original_height)";
+			}
+		}
+
+		// Background layers are always centered.
+		image["x"] = "(max(pos, 0) where pos = (width  / 2 - image_width  / 2))";
+		image["y"] = "(max(pos, 0) where pos = (height / 2 - image_height / 2))";
+		image["w"] = width_formula;
+		image["h"] = height_formula;
+		image["name"] = layer.file();
+
+		cfg.add_child("image", image);
 	}
 
 	canvas& window_canvas = window.get_canvas(0);
@@ -93,7 +117,20 @@ void story_viewer::display_part(window& window)
 	const std::string title = current_part_->title().empty() ? " " : current_part_->title();
 	find_widget<label>(&window, "title", false).set_label(title);
 
-	find_widget<label>(&window, "part_text", false).set_label(current_part_->text());
+	const std::string& part_text = current_part_->text();
+	stacked_widget& text_stack = find_widget<stacked_widget>(&window, "text_and_control_stack", false);
+
+	if(part_text.empty()) {
+		// No text for this part, hide the text layer.
+		text_stack.select_layer(1);
+	} else {
+		// If the text panel was previously hidden, re-show it.
+		if(text_stack.current_layer() != -1) {
+			text_stack.select_layer(-1);
+		}
+
+		find_widget<scroll_label>(&window, "part_text", false).set_label(part_text);
+	}
 }
 
 void story_viewer::nav_button_callback(window& window, NAV_DIRECTION direction)
