@@ -147,9 +147,9 @@ void stacked_widget::select_layer(const int layer)
 
 	// Else, re-show all layers.
 	for(unsigned int i = 0; i < num_layers; ++i) {
-		/* By design, only the top-most item will receive events even if multiple items are visible.
-		 * Additionally, if this point is reached, all layers have already been hidden by the loop above,
-		 * so no check on an item's selected state is necessary; just select them all.
+		/* By design, only the last selected item will receive events even if multiple items are visible
+		 * and said item is not at the top of the stack. If this point is reached, all layers have already
+		 * been hidden by the loop above, so the last layer selected will be the top-most one, as desired.
 		 */
 		generator_->select_item(i, true);
 	}
