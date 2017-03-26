@@ -33,7 +33,7 @@ REGISTER_WIDGET(stacked_widget)
 
 stacked_widget::stacked_widget()
 	: container_base(1)
-	, generator_(generator_base::build(true, false, generator_base::independent, false))
+	, generator_(generator_base::build(false, false, generator_base::independent, false))
 	, selected_layer_(-1)
 {
 }
@@ -117,33 +117,41 @@ void stacked_widget::set_self_active(const bool /*active*/)
 	/* DO NOTHING */
 }
 
-void stacked_widget::select_layer_internal(const unsigned int layer, const bool select) const
-{
-	// Selecting a layer that's already selected appears to actually deselect
-	// it, so make sure to only perform changes we want.
-	if(generator_->is_selected(layer) != select) {
-		generator_->select_item(layer, select);
-	}
-}
-
 void stacked_widget::select_layer(const int layer)
 {
 	const unsigned int num_layers = generator_->get_item_count();
 	selected_layer_ = std::max(-1, std::min<int>(layer, num_layers - 1));
 
+	// Deselect all layers except the chosen one.
 	for(unsigned int i = 0; i < num_layers; ++i) {
-		if(selected_layer_ >= 0) {
-			const bool selected = i == static_cast<unsigned int>(selected_layer_);
-			// Select current layer, leave the rest unselected.
-			select_layer_internal(i, selected);
-			generator_->item(i).set_visible(selected
-											? widget::visibility::visible
-											: widget::visibility::hidden);
-		} else {
-			// Select everything.
-			select_layer_internal(i, true);
-			generator_->item(i).set_visible(widget::visibility::visible);
+		const bool selected = i == static_cast<unsigned int>(selected_layer_);
+
+		/* Selecting a previously selected item will deselect it, regardless of the what is passed to
+		 * select_item. This causes issues if this function is called when all layers are visible (for
+		 * example, initialization). For layers other than the chosen one, this is the desired behavior.
+		 * However the chosen layer could *also* be deselected undesirably due to the conditions outlined
+		 * above, and as this widget's generator does not stipulate a minimum selection, it's possible to
+		 * end up with no layers visible at all.
+		 *
+		 * This works around that by performing no selection unless necessary to change states.
+		 */
+		if(generator_->is_selected(i) != selected) {
+			generator_->select_item(i, selected);
 		}
+	}
+
+	// If we already have our chosen layer, exit.
+	if(selected_layer_ >= 0) {
+		return;
+	}
+
+	// Else, re-show all layers.
+	for(unsigned int i = 0; i < num_layers; ++i) {
+		/* By design, only the top-most item will receive events even if multiple items are visible.
+		 * Additionally, if this point is reached, all layers have already been hidden by the loop above,
+		 * so no check on an item's selected state is necessary; just select them all.
+		 */
+		generator_->select_item(i, true);
 	}
 }
 

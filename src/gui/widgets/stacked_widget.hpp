@@ -90,6 +90,17 @@ private:
 	 * The pointer is not owned by this class, it's stored in the content_grid_
 	 * of the scrollbar_container super class and freed when it's grid is
 	 * freed.
+	 *
+	 * NOTE: the generator is initialized with has_minimum (first arg) as false,
+	 * which seems a little counter-intuitive at first. After all, shouldn't the
+	 * stack always have at least one layer visible? However, this allows select_layer
+	 * to function correctly.
+	 *
+	 * If has_minimum is true, the generator policy selected (one_item) can leave
+	 * multiple layers selected when selecting a new one. This is most likely due to
+	 * cases where the new chosen layer comes *after* the currently selected one.
+	 * In that case, the generator would not allow the interim state where no layer
+	 * before the new chosen layer is reached in the loop.
 	 */
 	generator_base* generator_;
 
@@ -97,11 +108,6 @@ private:
 	 * The number of the current selected layer.
 	 */
 	int selected_layer_;
-
-	/**
-	 * Helper to ensure the correct state is set when selecting a layer.
-	 */
-	void select_layer_internal(const unsigned int layer, const bool select) const;
 
 	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
