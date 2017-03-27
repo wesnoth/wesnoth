@@ -247,7 +247,7 @@ namespace { // Private helpers for move_unit()
 		bool post_wml(const route_iterator & step);
 		bool post_wml() { return post_wml(full_end_); }
 		/// Fires the sighted events that were raised earlier.
-		bool pump_sighted(const route_iterator & from);
+		void pump_sighted(const route_iterator & from);
 		/// Returns the ambush alert (if any) for the given unit.
 		static std::string read_ambush_string(const unit & ambusher);
 		/// Reveals the unit at the indicated location.
@@ -842,9 +842,9 @@ namespace { // Private helpers for move_unit()
 	 *
 	 * @param[in]  from  Points to the hex the sighting unit currently occupies.
 	 *
-	 * @return true if this event should interrupt movement.
+	 * @return sets event_mutated_ to true if this event should interrupt movement.
 	 */
-	bool unit_mover::pump_sighted(const route_iterator & from)
+	void unit_mover::pump_sighted(const route_iterator & from)
 	{
 		const size_t track = resources::game_events->pump().wml_tracking();
 		bool valid = true;
@@ -857,8 +857,6 @@ namespace { // Private helpers for move_unit()
 
 		if ( event || !valid )
 			event_mutated_ = true;
-
-		return event || !valid;
 	}
 
 
@@ -1010,8 +1008,9 @@ namespace { // Private helpers for move_unit()
 				// us out of the loop if needed.)
 				fire_hex_event(enter_hex_str, real_end_, step_from);
 				// Sighted events only fire if we could stop due to sighting.
-				if ( is_reasonable_stop(*real_end_) )
+				if (is_reasonable_stop(*real_end_)) {
 					pump_sighted(real_end_);
+				}
 			}//for
 			// Make sure any remaining sighted events get fired.
 			pump_sighted(real_end_-1);
