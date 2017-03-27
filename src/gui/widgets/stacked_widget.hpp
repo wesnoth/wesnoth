@@ -20,6 +20,8 @@
 #include "gui/core/widget_definition.hpp"
 #include "gui/core/window_builder.hpp"
 
+#include <boost/dynamic_bitset.hpp>
+
 namespace gui2
 {
 
@@ -57,6 +59,9 @@ public:
 	 * The current layer number will be -1 if all layers are currently visible.
 	 * In this case, only the topmost (highest-numbered) layer will receive
 	 * events.
+	 *
+	 * If more than one but not all layers are visible, this will be the number of
+	 * the last one made visible.
 	 */
 	int current_layer() const { return selected_layer_; }
 
@@ -67,6 +72,11 @@ public:
 	 * topmost (highest-numbered) layer will receive events.
 	 */
 	void select_layer(const int layer);
+
+	/**
+	 * Selects and displays multiple layers based on the state of the provided dynamic_bitset.
+	 */
+	void select_layers(const boost::dynamic_bitset<>& mask);
 
 	/**
 	 * Gets the total number of layers.
@@ -108,6 +118,11 @@ private:
 	 * The number of the current selected layer.
 	 */
 	int selected_layer_;
+
+	void update_selected_layer_index(const int i);
+
+	/** Internal implementation detail for selecting layers. */
+	void select_layer_impl(std::function<bool(unsigned int i)> display_condition);
 
 	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;

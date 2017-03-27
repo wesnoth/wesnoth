@@ -21,6 +21,7 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/generator.hpp"
 #include "gettext.hpp"
+#include "utils/general.hpp"
 
 #include "utils/functional.hpp"
 
@@ -117,14 +118,13 @@ void stacked_widget::set_self_active(const bool /*active*/)
 	/* DO NOTHING */
 }
 
-void stacked_widget::select_layer(const int layer)
+void stacked_widget::select_layer_impl(std::function<bool(unsigned int i)> display_condition)
 {
-	const unsigned int num_layers = generator_->get_item_count();
-	selected_layer_ = std::max(-1, std::min<int>(layer, num_layers - 1));
+	const unsigned int num_layers = get_layer_count();
 
-	// Deselect all layers except the chosen one.
+	// Deselect all layers except the chosen ones.
 	for(unsigned int i = 0; i < num_layers; ++i) {
-		const bool selected = i == static_cast<unsigned int>(selected_layer_);
+		const bool selected = display_condition(i);
 
 		/* Selecting a previously selected item will deselect it, regardless of the what is passed to
 		 * select_item. This causes issues if this function is called when all layers are visible (for
@@ -140,7 +140,7 @@ void stacked_widget::select_layer(const int layer)
 		}
 	}
 
-	// If we already have our chosen layer, exit.
+	// If we already have our chosen layers, exit.
 	if(selected_layer_ >= 0) {
 		return;
 	}
@@ -153,6 +153,35 @@ void stacked_widget::select_layer(const int layer)
 		 */
 		generator_->select_item(i, true);
 	}
+}
+
+void stacked_widget::update_selected_layer_index(const int i)
+{
+	selected_layer_ = util::clamp<int>(i, -1, get_layer_count() - 1);
+}
+
+void stacked_widget::select_layer(const int layer)
+{
+	update_selected_layer_index(layer);
+
+	select_layer_impl([this](unsigned int i) 
+	{
+		return i == static_cast<unsigned int>(selected_layer_);
+	});
+}
+
+void stacked_widget::select_layers(const boost::dynamic_bitset<>& mask)
+{
+	assert(mask.size() == get_layer_count());
+
+	select_layer_impl([&](unsigned int i)
+	{
+		if(mask[i]) {
+			update_selected_layer_index(i);
+		}
+
+		return mask[i];
+	});
 }
 
 unsigned int stacked_widget::get_layer_count() const
