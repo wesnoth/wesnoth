@@ -67,6 +67,17 @@ void scroll_label::set_label(const t_string& lbl)
 	}
 }
 
+void scroll_label::set_text_alignment(const PangoAlignment text_alignment)
+{
+	// Inherit.
+	styled_widget::set_text_alignment(text_alignment);
+
+	if(content_grid()) {
+		label* widget = find_widget<label>(content_grid(), "_label", false, true);
+		widget->set_text_alignment(text_alignment);
+	}
+}
+
 void scroll_label::set_use_markup(bool use_markup)
 {
 	// Inherit.

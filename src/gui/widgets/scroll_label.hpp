@@ -50,6 +50,9 @@ public:
 	/** See @ref styled_widget::set_label. */
 	virtual void set_label(const t_string& label) override;
 
+	/** See @ref styled_widget::set_text_alignment. */
+	virtual void set_text_alignment(const PangoAlignment text_alignment) override;
+
 	/** See @ref styled_widget::set_use_markup. */
 	virtual void set_use_markup(bool use_markup) override;
 
@@ -66,6 +69,8 @@ public:
 	
 	bool can_wrap() const override;
 	void set_can_wrap(bool can_wrap);
+
+
 
 private:
 	/**

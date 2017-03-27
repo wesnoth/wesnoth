@@ -296,7 +296,7 @@ public:
 		return canvas_[index];
 	}
 
-	void set_text_alignment(const PangoAlignment text_alignment);
+	virtual void set_text_alignment(const PangoAlignment text_alignment);
 	PangoAlignment get_text_alignment() const
 	{
 		return text_alignment_;
