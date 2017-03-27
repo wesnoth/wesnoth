@@ -63,7 +63,7 @@ static lg::log_domain log_display("display");
 #define DBG_DP LOG_STREAM(debug, log_display)
 
 namespace {
-	std::vector<unsigned int> zoom_levels {18, 24, 36, 54, 72, 108, 144, 216, 288};
+	std::vector<unsigned int> zoom_levels {18, 24, 36, 54, 72, 90, 108, 144, 216, 288};
 
 	const int final_zoom_index = static_cast<int>(zoom_levels.size()) - 1;
 
