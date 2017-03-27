@@ -928,6 +928,7 @@ bool preprocessor_data::get_chunk()
 									if (std::equal(argbuffer.end() - 6, argbuffer.end(), "endarg")) {
 										argbuffer.erase(argbuffer.end() - 7, argbuffer.end());
 										optargs[argname] = argbuffer;
+										skip_eol();
 										break;
 									} else {
 										target_.error("Unterminated #arg definition", linenum_);
