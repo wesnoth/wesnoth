@@ -18,6 +18,7 @@
 
 #include "formula/variant.hpp"
 #include "gui/auxiliary/find_widget.hpp"
+#include "gui/core/point.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/scroll_label.hpp"
@@ -29,6 +30,37 @@ namespace gui2
 {
 namespace dialogs
 {
+
+// TODO: change the internal part handling to either use PangoAlignment or plain strings
+//       once the GUI1 screen is dropped.
+static PangoAlignment storyscreen_alignment_to_pango(const storyscreen::part::TEXT_ALIGNMENT alignment)
+{
+	PangoAlignment text_alignment = PANGO_ALIGN_LEFT;
+
+	switch(alignment) {
+		case storyscreen::part::TEXT_CENTERED:
+			text_alignment = PANGO_ALIGN_CENTER;
+			break;
+		case storyscreen::part::TEXT_RIGHT:
+			text_alignment = PANGO_ALIGN_RIGHT;
+			break;
+		default:
+			break; // already set before
+	}
+
+	return text_alignment;
+}
+
+#if 0
+static panel* get_new_panel(const std::string& definition)
+{
+	panel* panel_ptr = new panel();
+	panel_ptr->set_definition(definition);
+	panel_ptr->set_id("text_panel");
+
+	return panel_ptr;
+}
+#endif
 
 REGISTER_DIALOG(story_viewer)
 
@@ -68,7 +100,14 @@ void story_viewer::display_part(window& window)
 
 	config cfg, image;
 
+	//
+	// Background images
+	//
+	bool has_background = false;
+
 	for(const auto& layer : current_part_->get_background_layers()) {
+		has_background |= !layer.file().empty();
+
 		const bool preserve_ratio = layer.keep_aspect_ratio();
 
 		// By default, no scaling will be applied.
@@ -105,6 +144,17 @@ void story_viewer::display_part(window& window)
 		cfg.add_child("image", image);
 	}
 
+	image.clear();
+
+	// TODO: should this be in the WML?
+	image["x"] = 0;
+	image["y"] = 0;
+	image["w"] = "(screen_width)";
+	image["h"] = "(image_original_height * 2)";
+	image["name"] = "dialogs/story_title_decor.png";
+
+	cfg.add_child("image", image);
+
 	canvas& window_canvas = window.get_canvas(0);
 
 	window_canvas.set_cfg(cfg);
@@ -113,23 +163,78 @@ void story_viewer::display_part(window& window)
 	window_canvas.set_is_dirty(true);
 	window.set_is_dirty(true);
 
-	// FIXME: seems if the label doesn't have *something* in it each time its set, the label will never show up.
-	const std::string title = current_part_->title().empty() ? " " : current_part_->title();
-	find_widget<label>(&window, "title", false).set_label(title);
+	//
+	// Title
+	//
+	std::string title;
+	if(current_part_->show_title() && !current_part_->title().empty()) {
+		title = current_part_->title();
+	} else {
+		// FIXME: seems if the label doesn't have *something* in it each time its set, the label will never show up.
+		title = " ";
+	}
 
-	const std::string& part_text = current_part_->text();
+	PangoAlignment title_text_alignment = storyscreen_alignment_to_pango(current_part_->title_text_alignment());
+
+	label& title_label = find_widget<label>(&window, "title", false);
+
+	title_label.set_text_alignment(title_text_alignment);
+	title_label.set_label(title);
+
+	//
+	// Story text
+	//
 	stacked_widget& text_stack = find_widget<stacked_widget>(&window, "text_and_control_stack", false);
 
-	if(part_text.empty()) {
-		// No text for this part, hide the text layer.
-		text_stack.select_layer(1);
-	} else {
-		// If the text panel was previously hidden, re-show it.
-		if(text_stack.current_layer() != -1) {
-			text_stack.select_layer(-1);
-		}
+	//std::string new_definition;
+	gui2::point new_origin;
 
-		find_widget<scroll_label>(&window, "part_text", false).set_label(part_text);
+	switch(current_part_->story_text_location()) {
+		case storyscreen::part::BLOCK_TOP:
+			//new_definition = "wml_message_top";
+			// Default 0,0 origin value is correct.
+			break;
+		case storyscreen::part::BLOCK_MIDDLE:
+			//new_definition = "wml_message_center";
+			new_origin.y = (window.get_size().y / 2) - (text_stack.get_size().y / 2);
+			break;
+		case storyscreen::part::BLOCK_BOTTOM:
+			//new_definition = "wml_message";
+			new_origin.y = window.get_size().y - text_stack.get_size().y;
+			break;
+	}
+
+	// FIXME: sometimes the text won't appear after a move...
+	text_stack.set_origin(new_origin);
+
+	// TODO
+	//delete text_stack.get_layer_grid(0)->swap_child("text_panel", get_new_panel(new_definition), true);
+
+	const std::string& part_text = current_part_->text();
+
+	if(part_text.empty() || !has_background) {
+		// No text or no background for this part, hide the background layer.
+		text_stack.select_layer(1);
+	} else if(text_stack.current_layer() != -1)  {
+		// If the background layer was previously hidden, re-show it.
+		text_stack.select_layer(-1);
+	}
+
+	// Convert the story part text alignment types into the Pango equivalents
+	PangoAlignment story_text_alignment = storyscreen_alignment_to_pango(current_part_->story_text_alignment());
+
+	scroll_label& text_label = find_widget<scroll_label>(&window, "part_text", false);
+
+	text_label.set_text_alignment(story_text_alignment);
+	text_label.set_label(part_text);
+
+	//
+	// Floating images (handle this last)
+	//
+	for(const auto& floating_image : current_part_->get_floating_images()) {
+		UNUSED(floating_image);
+
+		image.clear();
 	}
 }
 
