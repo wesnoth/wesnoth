@@ -905,7 +905,7 @@ bool preprocessor_data::get_chunk()
 				} else {
 					if (found_arg > 0 && ++found_arg == 4) {
 						if (std::equal(buffer.end() - 3, buffer.end(), "arg")) {
-							buffer.erase(buffer.end() - 3, buffer.end());
+							buffer.erase(buffer.end() - 4, buffer.end());
 
 							skip_spaces();
 							std::string argname = read_word();
