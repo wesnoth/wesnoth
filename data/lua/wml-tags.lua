@@ -688,12 +688,12 @@ function wml_actions.heal_unit(cfg)
 		end
 
 		if cfg.animate then
+			local animator = wesnoth.create_animator()
+			animator:add(u, 'healed', 'hits', {value = heal_amount})
 			if #healers > 0 then
-				local animator = wesnoth.create_animator()
-				-- Need dummy 3rd argument here...
-				animator:add(healers[1], 'healing', 'hits')
-				animator:run()
+				animator:add(healers[1], 'healing', 'hits', {value = heal_amount})
 			end
+			animator:run()
 		end
 	end
 end
