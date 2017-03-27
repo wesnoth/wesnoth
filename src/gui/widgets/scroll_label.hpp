@@ -45,7 +45,7 @@ class scroll_label : public scrollbar_container
 	friend struct implementation::builder_scroll_label;
 
 public:
-	scroll_label(bool wrap, const std::string& text_alignment);
+	scroll_label(bool wrap, const PangoAlignment text_alignment);
 
 	/** See @ref styled_widget::set_label. */
 	virtual void set_label(const t_string& label) override;
@@ -66,11 +66,9 @@ public:
 
 	/** See @ref styled_widget::get_state. */
 	virtual unsigned get_state() const override;
-	
+
 	bool can_wrap() const override;
 	void set_can_wrap(bool can_wrap);
-
-
 
 private:
 	/**
@@ -94,11 +92,14 @@ private:
 	 * reacts to certain 'events'.
 	 */
 	state_t state_;
-	bool wrap_on;
 
-	const std::string text_alignment;
+	bool wrap_on_;
+
+	PangoAlignment text_alignment_;
 
 	void finalize_subclass() override;
+
+	label* get_internal_label();
 
 	/***** ***** ***** inherited ****** *****/
 
@@ -140,7 +141,7 @@ struct builder_scroll_label : public builder_styled_widget
 	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
 	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;
 	bool wrap_on;
-	const std::string text_alignment;
+	const PangoAlignment text_alignment;
 };
 
 } // namespace implementation
