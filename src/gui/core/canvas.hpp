@@ -71,7 +71,7 @@ public:
 		 *                        for these formulas.
 		 */
 		virtual void draw(surface& canvas, SDL_Renderer* renderer,
-		                  const game_logic::map_formula_callable& variables) = 0;
+		                  game_logic::map_formula_callable& variables) = 0;
 
 		bool immutable() const
 		{

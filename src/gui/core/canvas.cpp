@@ -213,7 +213,7 @@ public:
 	/** Implement shape::draw(). */
 	void draw(surface& canvas,
 			  SDL_Renderer* renderer,
-			  const game_logic::map_formula_callable& variables);
+			  game_logic::map_formula_callable& variables);
 
 private:
 	typed_formula<unsigned> x1_, /**< The start x coordinate of the line. */
@@ -566,7 +566,7 @@ line_shape::line_shape(const config& cfg)
 
 void line_shape::draw(surface& canvas,
 				 SDL_Renderer* renderer,
-				 const game_logic::map_formula_callable& variables)
+				 game_logic::map_formula_callable& variables)
 {
 	/**
 	 * @todo formulas are now recalculated every draw cycle which is a bit silly
@@ -621,7 +621,7 @@ public:
 	/** Implement shape::draw(). */
 	void draw(surface& canvas,
 			  SDL_Renderer* renderer,
-			  const game_logic::map_formula_callable& variables);
+			  game_logic::map_formula_callable& variables);
 
 private:
 	typed_formula<int> x_, /**< The x coordinate of the rectangle. */
@@ -706,7 +706,7 @@ rectangle_shape::rectangle_shape(const config& cfg)
 
 void rectangle_shape::draw(surface& canvas,
 					  SDL_Renderer* renderer,
-					  const game_logic::map_formula_callable& variables)
+					  game_logic::map_formula_callable& variables)
 {
 	/**
 	 * @todo formulas are now recalculated every draw cycle which is a  bit
@@ -776,7 +776,7 @@ public:
 	/** Implement shape::draw(). */
 	void draw(surface& canvas,
 			  SDL_Renderer* renderer,
-			  const game_logic::map_formula_callable& variables);
+			  game_logic::map_formula_callable& variables);
 
 private:
 	typed_formula<unsigned> x_, /**< The center x coordinate of the circle. */
@@ -829,7 +829,7 @@ circle_shape::circle_shape(const config& cfg)
 
 void circle_shape::draw(surface& canvas,
 				   SDL_Renderer* renderer,
-				   const game_logic::map_formula_callable& variables)
+				   game_logic::map_formula_callable& variables)
 {
 	/**
 	 * @todo formulas are now recalculated every draw cycle which is a bit
@@ -890,7 +890,7 @@ public:
 	/** Implement shape::draw(). */
 	void draw(surface& canvas,
 			  SDL_Renderer* renderer,
-			  const game_logic::map_formula_callable& variables);
+			  game_logic::map_formula_callable& variables);
 
 private:
 	typed_formula<unsigned> x_, /**< The x coordinate of the image. */
@@ -1013,7 +1013,7 @@ image_shape::image_shape(const config& cfg)
 
 void image_shape::draw(surface& canvas,
 				  SDL_Renderer* /*renderer*/,
-				  const game_logic::map_formula_callable& variables)
+				  game_logic::map_formula_callable& variables)
 {
 	DBG_GUI_D << "Image: draw.\n";
 
@@ -1188,7 +1188,7 @@ public:
 	/** Implement shape::draw(). */
 	void draw(surface& canvas,
 			  SDL_Renderer* renderer,
-			  const game_logic::map_formula_callable& variables);
+			  game_logic::map_formula_callable& variables);
 
 private:
 	typed_formula<unsigned> x_, /**< The x coordinate of the text. */
@@ -1314,7 +1314,7 @@ text_shape::text_shape(const config& cfg)
 
 void text_shape::draw(surface& canvas,
 				 SDL_Renderer* /*renderer*/,
-				 const game_logic::map_formula_callable& variables)
+				 game_logic::map_formula_callable& variables)
 {
 	assert(variables.has_key("text"));
 
