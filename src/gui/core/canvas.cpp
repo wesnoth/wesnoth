@@ -1118,18 +1118,7 @@ void image_shape::draw(surface& canvas,
 				DBG_GUI_D << "Image: tiling from " << image_->w << ','
 						  << image_->h << " to " << w << ',' << h << ".\n";
 
-				const int columns = (w + image_->w - 1) / image_->w;
-				const int rows = (h + image_->h - 1) / image_->h;
-				surf = create_neutral_surface(w, h);
-
-				for(int x = 0; x < columns; ++x) {
-					for(int y = 0; y < rows; ++y) {
-						const SDL_Rect dest = sdl::create_rect(
-								x * image_->w, y * image_->h, 0, 0);
-						blit_surface(image_, nullptr, surf, &dest);
-					}
-				}
-
+				surf = tile_surface(image_, w, h, false);
 			} else {
 				if(resize_mode_ == stretch) {
 					ERR_GUI_D << "Image: failed to stretch image, "
