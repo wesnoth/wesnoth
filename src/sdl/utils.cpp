@@ -477,7 +477,7 @@ surface scale_surface_sharp(const surface& surf, int w, int h)
 }
 
 
-surface tile_surface(const surface& surf, int w, int h)
+surface tile_surface(const surface& surf, int w, int h, bool centered)
 {
 	if (surf->w == w && surf->h == h) {
 		return surf;
@@ -501,8 +501,8 @@ surface tile_surface(const surface& surf, int w, int h)
 		const int& sw = src->w;
 		const int& sh = src->h;
 
-		const int xoff = (w - sw) / 2;
-		const int yoff = (h - sh) / 2;
+		const int xoff = centered ? (w - sw) / 2 : 0;
+		const int yoff = centered ? (h - sh) / 2 : 0;
 
 		for (int i = 0; i<w*h; ++i) {
 			int x = ((i % w) - xoff);

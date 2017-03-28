@@ -127,11 +127,12 @@ surface scale_surface_sharp(const surface& surf, int w, int h);
  * @param surf               The source surface.
  * @param w                  The width of the resulting surface.
  * @param h                  The height of the resulting surface.
+ * @param centered           Whether to tile from the center outwards or from the top left (origin).
  * @return                   A surface containing the tiled version of the source.
  * @retval 0                 Returned upon error
  * @retval surf              Returned if w == surf->w and h == surf->h.
  */
-surface tile_surface(const surface &surf, int w, int h);
+surface tile_surface(const surface &surf, int w, int h, bool centered = true);
 
 surface adjust_surface_color(const surface &surf, int r, int g, int b);
 surface greyscale_image(const surface &surf);
