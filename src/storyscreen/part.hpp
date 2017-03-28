@@ -62,6 +62,11 @@ public:
 		return *this;
 	}
 
+	std::string file() const
+	{
+		return file_;
+	}
+
 	/**
 	 * Returns the referential X coordinate of the image.
 	 * The actual (corrected) value is determined at render time - see get_render_input().
