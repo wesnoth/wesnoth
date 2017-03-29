@@ -68,7 +68,7 @@ void scroll_label::set_label(const t_string& lbl)
 		widget->set_label(lbl);
 
 		bool resize_needed = !content_resize_request();
-		if(resize_needed) {
+		if(resize_needed && get_size() != point()) {
 			place(get_origin(), get_size());
 		}
 	}
