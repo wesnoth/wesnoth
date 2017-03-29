@@ -41,10 +41,9 @@ variant move_map_callable::get_value(const std::string& key) const
 	}
 }
 
-void move_map_callable::get_inputs(std::vector<game_logic::formula_input>* inputs) const
+void move_map_callable::get_inputs(formula_input_vector* inputs) const
 {
-	using game_logic::FORMULA_READ_ONLY;
-	inputs->push_back(game_logic::formula_input("moves", FORMULA_READ_ONLY));
+	add_input(inputs, "moves");
 }
 
 int move_callable::do_compare(const formula_callable* callable) const
@@ -89,8 +88,8 @@ variant position_callable::get_value(const std::string& key) const {
 	}
 }
 
-void position_callable::get_inputs(std::vector<game_logic::formula_input>* inputs) const {
-	inputs->push_back(game_logic::formula_input("chance", game_logic::FORMULA_READ_ONLY));
+void position_callable::get_inputs(formula_input_vector* inputs) const {
+	add_input(inputs, "chance");
 }
 
 variant outcome_callable::get_value(const std::string& key) const {
@@ -105,10 +104,10 @@ variant outcome_callable::get_value(const std::string& key) const {
 	}
 }
 
-void outcome_callable::get_inputs(std::vector<game_logic::formula_input>* inputs) const {
-	inputs->push_back(game_logic::formula_input("hitpoints_left", game_logic::FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("probability", game_logic::FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("possible_status", game_logic::FORMULA_READ_ONLY));
+void outcome_callable::get_inputs(formula_input_vector* inputs) const {
+	add_input(inputs, "hitpoints_left");
+	add_input(inputs, "probability");
+	add_input(inputs, "possible_status");
 }
 
 
@@ -134,10 +133,10 @@ variant attack_callable::get_value(const std::string& key) const {
 	}
 }
 
-void attack_callable::get_inputs(std::vector<game_logic::formula_input>* inputs) const {
-	inputs->push_back(game_logic::formula_input("attack_from", game_logic::FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("defender", game_logic::FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("move_from", game_logic::FORMULA_READ_ONLY));
+void attack_callable::get_inputs(formula_input_vector* inputs) const {
+	add_input(inputs, "attack_from");
+	add_input(inputs, "defender");
+	add_input(inputs, "move_from");
 }
 
 int attack_callable::do_compare(const game_logic::formula_callable* callable)
@@ -190,8 +189,8 @@ variant attack_map_callable::get_value(const std::string& key) const {
 	}
 }
 
-void attack_map_callable::get_inputs(std::vector<game_logic::formula_input>* inputs) const {
-	inputs->push_back(game_logic::formula_input("attacks", game_logic::FORMULA_READ_ONLY));
+void attack_map_callable::get_inputs(formula_input_vector* inputs) const {
+	add_input(inputs, "attacks");
 }
 
 /* add to vars all attacks on enemy units around <attack_position> tile. attacker_location is tile where unit is currently standing. It's moved to attack_position first and then performs attack.*/
@@ -227,9 +226,9 @@ variant recall_callable::get_value(const std::string& key) const {
 	return variant();
 }
 
-void recall_callable::get_inputs(std::vector<game_logic::formula_input>* inputs) const {
-	inputs->push_back(game_logic::formula_input("id", game_logic::FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("loc", game_logic::FORMULA_READ_ONLY));
+void recall_callable::get_inputs(formula_input_vector* inputs) const {
+	add_input(inputs, "id");
+	add_input(inputs, "loc");
 }
 
 
@@ -242,9 +241,9 @@ variant recruit_callable::get_value(const std::string& key) const {
 	return variant();
 }
 
-void recruit_callable::get_inputs(std::vector<game_logic::formula_input>* inputs) const {
-	inputs->push_back(game_logic::formula_input("unit_type", game_logic::FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("recruit_loc", game_logic::FORMULA_READ_ONLY));
+void recruit_callable::get_inputs(formula_input_vector* inputs) const {
+	add_input(inputs, "unit_type");
+	add_input(inputs, "recruit_loc");
 }
 
 
@@ -258,9 +257,9 @@ variant set_var_callable::get_value(const std::string& key) const {
 	return variant();
 }
 
-void set_var_callable::get_inputs(std::vector<game_logic::formula_input>* inputs) const {
-	inputs->push_back(game_logic::formula_input("key", game_logic::FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("value", game_logic::FORMULA_READ_ONLY));
+void set_var_callable::get_inputs(formula_input_vector* inputs) const {
+	add_input(inputs, "key");
+	add_input(inputs, "value");
 }
 
 
@@ -277,10 +276,10 @@ variant set_unit_var_callable::get_value(const std::string& key) const {
 	return variant();
 }
 
-void set_unit_var_callable::get_inputs(std::vector<game_logic::formula_input>* inputs) const {
-	inputs->push_back(game_logic::formula_input("loc", game_logic::FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("key", game_logic::FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("value", game_logic::FORMULA_READ_ONLY));
+void set_unit_var_callable::get_inputs(formula_input_vector* inputs) const {
+	add_input(inputs, "loc");
+	add_input(inputs, "key");
+	add_input(inputs, "value");
 }
 
 
@@ -294,9 +293,9 @@ variant safe_call_callable::get_value(const std::string& key) const {
 	return variant();
 }
 
-void safe_call_callable::get_inputs(std::vector<game_logic::formula_input>* inputs) const {
-	inputs->push_back(game_logic::formula_input("main", game_logic::FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("backup", game_logic::FORMULA_READ_ONLY));
+void safe_call_callable::get_inputs(formula_input_vector* inputs) const {
+	add_input(inputs, "main");
+	add_input(inputs, "backup");
 }
 
 
@@ -317,11 +316,11 @@ variant safe_call_result::get_value(const std::string& key) const {
 	return variant();
 }
 
-void safe_call_result::get_inputs(std::vector<game_logic::formula_input>* inputs) const {
-	inputs->push_back(game_logic::formula_input("status", game_logic::FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("object", game_logic::FORMULA_READ_ONLY));
+void safe_call_result::get_inputs(formula_input_vector* inputs) const {
+	add_input(inputs, "status");
+	add_input(inputs, "object");
 	if( current_unit_location_ != map_location() )
-		inputs->push_back(game_logic::formula_input("current_loc", game_logic::FORMULA_READ_ONLY));
+		add_input(inputs, "current_loc");
 }
 
 }

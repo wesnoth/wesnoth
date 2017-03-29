@@ -855,34 +855,33 @@ variant formula_ai::get_value(const std::string& key) const
 
 void formula_ai::get_inputs(std::vector<formula_input>* inputs) const
 {
-	using game_logic::FORMULA_READ_ONLY;
-	inputs->push_back(game_logic::formula_input("aggression", FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("leader_aggression", FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("caution", FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("attacks", FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("my_side", FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("teams", FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("turn", FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("time_of_day", FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("keeps", FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("vars", FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("allies", FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("enemies", FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("map", FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("my_attacks", FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("enemy_moves", FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("my_leader", FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("my_recruits", FORMULA_READ_ONLY));
-	//inputs->push_back(game_logic::formula_input("recall_list", FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("recruits_of_side", FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("units", FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("units_of_side", FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("my_units", FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("enemy_units", FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("villages", FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("my_villages", FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("villages_of_side", FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("enemy_and_unowned_villages", FORMULA_READ_ONLY));
+	add_input(inputs, "aggression");
+	add_input(inputs, "leader_aggression");
+	add_input(inputs, "caution");
+	add_input(inputs, "attacks");
+	add_input(inputs, "my_side");
+	add_input(inputs, "teams");
+	add_input(inputs, "turn");
+	add_input(inputs, "time_of_day");
+	add_input(inputs, "keeps");
+	add_input(inputs, "vars");
+	add_input(inputs, "allies");
+	add_input(inputs, "enemies");
+	add_input(inputs, "map");
+	add_input(inputs, "my_attacks");
+	add_input(inputs, "enemy_moves");
+	add_input(inputs, "my_leader");
+	add_input(inputs, "my_recruits");
+	//add_input(inputs, "recall_list");
+	add_input(inputs, "recruits_of_side");
+	add_input(inputs, "units");
+	add_input(inputs, "units_of_side");
+	add_input(inputs, "my_units");
+	add_input(inputs, "enemy_units");
+	add_input(inputs, "villages");
+	add_input(inputs, "my_villages");
+	add_input(inputs, "villages_of_side");
+	add_input(inputs, "enemy_and_unowned_villages");
 }
 
 variant formula_ai::get_keeps() const

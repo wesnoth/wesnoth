@@ -39,7 +39,7 @@ private:
 
 	variant get_value(const std::string& key) const;
 
-	void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
+	void get_inputs(formula_input_vector* inputs) const;
 
 	/* add to vars all attacks on enemy units around <attack_position> tile. attacker_location is tile where unit is currently standing. It's moved to attack_position first and then performs attack.*/
 	void collect_possible_attacks(std::vector<variant>& vars, map_location attacker_location, map_location attack_position) const;
@@ -50,7 +50,7 @@ class attack_callable : public formula_callable {
 	battle_context bc_;
 	variant get_value(const std::string& key) const;
 
-	void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
+	void get_inputs(formula_input_vector* inputs) const;
 public:
 	attack_callable(const map_location& move_from,
 			    const map_location& src, const map_location& dst, int weapon);
@@ -79,9 +79,9 @@ class move_callable : public game_logic::formula_callable {
 			return variant();
 		}
 	}
-	void get_inputs(std::vector<game_logic::formula_input>* inputs) const {
-		inputs->push_back(game_logic::formula_input("src", game_logic::FORMULA_READ_ONLY));
-		inputs->push_back(game_logic::formula_input("dst", game_logic::FORMULA_READ_ONLY));
+	void get_inputs(formula_input_vector* inputs) const {
+		add_input(inputs, "src");
+		add_input(inputs, "dst");
 	}
 
 	int do_compare(const formula_callable* callable) const;
@@ -108,9 +108,9 @@ class move_partial_callable : public game_logic::formula_callable {
 			return variant();
 		}
 	}
-	void get_inputs(std::vector<game_logic::formula_input>* inputs) const {
-		inputs->push_back(game_logic::formula_input("src", game_logic::FORMULA_READ_ONLY));
-		inputs->push_back(game_logic::formula_input("dst", game_logic::FORMULA_READ_ONLY));
+	void get_inputs(formula_input_vector* inputs) const {
+		add_input(inputs, "src");
+		add_input(inputs, "dst");
 	}
 
 	int do_compare(const formula_callable* callable) const;
@@ -133,7 +133,7 @@ class recall_callable : public formula_callable {
 
 	variant get_value(const std::string& key) const;
 
-	void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
+	void get_inputs(formula_input_vector* inputs) const;
 public:
 	recall_callable(const map_location& loc, const std::string& id)
 	  : loc_(loc), id_(id)
@@ -150,7 +150,7 @@ class recruit_callable : public formula_callable {
 
 	variant get_value(const std::string& key) const;
 
-	void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
+	void get_inputs(formula_input_vector* inputs) const;
 public:
 	recruit_callable(const map_location& loc, const std::string& type)
 	  : loc_(loc), type_(type)
@@ -166,7 +166,7 @@ class set_var_callable : public formula_callable {
 	variant value_;
 	variant get_value(const std::string& key) const;
 
-	void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
+	void get_inputs(formula_input_vector* inputs) const;
 public:
 	set_var_callable(const std::string& key, const variant& value)
 	  : key_(key), value_(value)
@@ -183,7 +183,7 @@ class set_unit_var_callable : public formula_callable {
 	map_location loc_;
 	variant get_value(const std::string& key) const;
 
-	void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
+	void get_inputs(formula_input_vector* inputs) const;
 public:
 	set_unit_var_callable(const std::string& key, const variant& value, const map_location& loc)
 	  : key_(key), value_(value), loc_(loc)
@@ -207,7 +207,7 @@ class safe_call_callable : public formula_callable {
 	expression_ptr backup_formula_;
 	variant get_value(const std::string& key) const;
 
-	void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
+	void get_inputs(formula_input_vector* inputs) const;
 public:
 	safe_call_callable(const variant& main, const expression_ptr& backup)
 		: main_(main)
@@ -231,7 +231,7 @@ class safe_call_result : public formula_callable {
 
 	variant get_value(const std::string& key) const;
 
-	void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
+	void get_inputs(formula_input_vector* inputs) const;
 
 public:
 	safe_call_result(const formula_callable* callable, int status,
@@ -248,7 +248,7 @@ class move_map_callable : public game_logic::formula_callable {
         const unit_map& units_;
 
 	variant get_value(const std::string& key) const;
-	void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
+	void get_inputs(formula_input_vector* inputs) const;
 public:
 	move_map_callable(const move_map& srcdst, const move_map& dstsrc, const unit_map& units)
 	  : srcdst_(srcdst), dstsrc_(dstsrc), units_(units)
@@ -265,7 +265,7 @@ class position_callable : public formula_callable {
 	int chance_;
 	variant get_value(const std::string& key) const;
 
-	void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
+	void get_inputs(formula_input_vector* inputs) const;
 public:
 	position_callable(/*unit_map* units,*/ int chance) :
 		//units_(),
@@ -296,7 +296,7 @@ class outcome_callable : public formula_callable {
 	std::vector<variant> hitLeft_, prob_, status_;
 	variant get_value(const std::string& key) const;
 
-	void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
+	void get_inputs(formula_input_vector* inputs) const;
 public:
 	outcome_callable(		const std::vector<variant>& hitLeft,
 					const std::vector<variant>& prob,

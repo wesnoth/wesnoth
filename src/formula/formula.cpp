@@ -62,7 +62,7 @@ void map_formula_callable::get_inputs(std::vector<formula_input>* inputs) const
 		fallback_->get_inputs(inputs);
 	}
 	for(std::map<std::string,variant>::const_iterator i = values_.begin(); i != values_.end(); ++i) {
-		inputs->push_back(formula_input(i->first, FORMULA_READ_WRITE));
+		add_input(inputs, i->first, FORMULA_READ_WRITE);
 	}
 }
 
@@ -221,11 +221,11 @@ public:
 	{}
 
 	void get_inputs(std::vector<formula_input>* inputs) const {
-		inputs->push_back(formula_input("size", FORMULA_READ_ONLY));
-		inputs->push_back(formula_input("empty", FORMULA_READ_ONLY));
-		inputs->push_back(formula_input("char", FORMULA_READ_ONLY));
-		inputs->push_back(formula_input("word", FORMULA_READ_ONLY));
-		inputs->push_back(formula_input("item", FORMULA_READ_ONLY));
+		add_input(inputs, "size");
+		add_input(inputs, "empty");
+		add_input(inputs, "char");
+		add_input(inputs, "word");
+		add_input(inputs, "item");
 	}
 
 	variant get_value(const std::string& key) const {
@@ -271,10 +271,10 @@ public:
 	{}
 
 	void get_inputs(std::vector<formula_input>* inputs) const {
-		inputs->push_back(formula_input("size", FORMULA_READ_WRITE));
-		inputs->push_back(formula_input("empty", FORMULA_READ_WRITE));
-		inputs->push_back(formula_input("first", FORMULA_READ_WRITE));
-		inputs->push_back(formula_input("last", FORMULA_READ_WRITE));
+		add_input(inputs, "size", FORMULA_READ_WRITE);
+		add_input(inputs, "empty", FORMULA_READ_WRITE);
+		add_input(inputs, "first", FORMULA_READ_WRITE);
+		add_input(inputs, "last", FORMULA_READ_WRITE);
 	}
 
 	variant get_value(const std::string& key) const {
@@ -308,8 +308,8 @@ public:
 	{}
 
 	void get_inputs(std::vector<formula_input>* inputs) const {
-		inputs->push_back(formula_input("size", FORMULA_READ_WRITE));
-		inputs->push_back(formula_input("empty", FORMULA_READ_WRITE));
+		add_input(inputs, "size", FORMULA_READ_WRITE);
+		add_input(inputs, "empty", FORMULA_READ_WRITE);
 		for(variant_iterator iter = map_.begin(); iter != map_.end(); iter++) {
 			// variant_iterator does not implement operator->,
 			// and to do so is notrivial since it returns temporaries for maps.
@@ -326,7 +326,7 @@ public:
 				}
 			}
 			if(valid) {
-				inputs->push_back(formula_input(key, FORMULA_READ_ONLY));
+				add_input(inputs, key);
 			}
 		}
 	}
@@ -571,7 +571,7 @@ private:
 
 	void get_inputs(std::vector<formula_input>* inputs) const {
 		for(expr_table::const_iterator i = table_->begin(); i != table_->end(); ++i) {
-			inputs->push_back(formula_input(i->first, FORMULA_READ_ONLY));
+			add_input(inputs, i->first);
 		}
 	}
 

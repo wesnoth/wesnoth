@@ -1203,7 +1203,7 @@ std::string variant::to_debug_string(std::vector<const game_logic::formula_calla
 		if(std::find(seen->begin(), seen->end(), callable_) == seen->end()) {
 			if(!verbose)
 				seen->push_back(callable_);
-			std::vector<game_logic::formula_input> v = callable_->inputs();
+			game_logic::formula_input_vector v = callable_->inputs();
 			bool first = true;
 			for(size_t i=0; i<v.size(); ++i) {
 				const game_logic::formula_input& input = v[i];

@@ -1471,9 +1471,9 @@ variant key_value_pair::get_value(const std::string& key) const
 			return variant();
 }
 
-void key_value_pair::get_inputs(std::vector<game_logic::formula_input>* inputs) const {
-		inputs->push_back(game_logic::formula_input("key", game_logic::FORMULA_READ_ONLY));
-		inputs->push_back(game_logic::formula_input("value", game_logic::FORMULA_READ_ONLY));
+void key_value_pair::get_inputs(formula_input_vector* inputs) const {
+		add_input(inputs, "key");
+		add_input(inputs, "value");
 }
 
 

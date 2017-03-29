@@ -32,7 +32,7 @@ struct formula_input {
 	{}
 };
 
-using formula_input_vector = std::vector<game_logic::formula_input>;
+using formula_input_vector = std::vector<formula_input>;
 
 //interface for objects that can have formulae run on them
 class formula_callable {
@@ -111,9 +111,9 @@ public:
 		return variant(&tmp);
 	}
 
-	static inline void add_input(formula_input_vector* inputs, const std::string& key)
+	static inline void add_input(formula_input_vector* inputs, const std::string& key, FORMULA_ACCESS_TYPE access_type = FORMULA_READ_ONLY)
 	{
-		inputs->push_back(formula_input(key, FORMULA_READ_ONLY));
+		inputs->push_back(formula_input(key, access_type));
 	}
 
 protected:

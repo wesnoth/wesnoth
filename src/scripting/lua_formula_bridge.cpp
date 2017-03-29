@@ -67,13 +67,13 @@ public:
 		return result;
 	}
 	void get_inputs(std::vector<formula_input>* inputs) const {
-		inputs->push_back(formula_input("__list", FORMULA_READ_ONLY));
-		inputs->push_back(formula_input("__map", FORMULA_READ_ONLY));
+		add_input(inputs, "__list");
+		add_input(inputs, "__map");
 		for(lua_pushnil(mState); lua_next(mState, table_i); lua_pop(mState,1)) {
 			if(lua_isstring(mState, -2) && !lua_isnumber(mState, -2)) {
 				std::string key = lua_tostring(mState, -2);
 				if(key.find_first_not_of(formula::id_chars) != std::string::npos) {
-					inputs->push_back(formula_input(key, FORMULA_READ_ONLY));
+					add_input(inputs, key);
 				}
 			}
 		}

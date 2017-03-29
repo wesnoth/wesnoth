@@ -228,16 +228,16 @@ public:
 		: p(p), clr(clr), w(w), h(h)
 	{}
 
-	void get_inputs(std::vector<game_logic::formula_input>* inputs) const override
+	void get_inputs(game_logic::formula_input_vector* inputs) const override
 	{
-		inputs->push_back(game_logic::formula_input("x",      game_logic::FORMULA_READ_ONLY));
-		inputs->push_back(game_logic::formula_input("y",      game_logic::FORMULA_READ_ONLY));
-		inputs->push_back(game_logic::formula_input("red",    game_logic::FORMULA_READ_ONLY));
-		inputs->push_back(game_logic::formula_input("green",  game_logic::FORMULA_READ_ONLY));
-		inputs->push_back(game_logic::formula_input("blue",   game_logic::FORMULA_READ_ONLY));
-		inputs->push_back(game_logic::formula_input("alpha",  game_logic::FORMULA_READ_ONLY));
-		inputs->push_back(game_logic::formula_input("height", game_logic::FORMULA_READ_ONLY));
-		inputs->push_back(game_logic::formula_input("width",  game_logic::FORMULA_READ_ONLY));
+		add_input(inputs, "x");
+		add_input(inputs, "y");
+		add_input(inputs, "red");
+		add_input(inputs, "green");
+		add_input(inputs, "blue");
+		add_input(inputs, "alpha");
+		add_input(inputs, "height");
+		add_input(inputs, "width");
 	}
 
 	variant get_value(const std::string& key) const override

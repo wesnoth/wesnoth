@@ -379,26 +379,25 @@ variant attack_analysis::get_value(const std::string& key) const
 	}
 }
 
-void attack_analysis::get_inputs(std::vector<game_logic::formula_input>* inputs) const
+void attack_analysis::get_inputs(game_logic::formula_input_vector* inputs) const
 {
-	using namespace game_logic;
-	inputs->push_back(formula_input("target", FORMULA_READ_ONLY));
-	inputs->push_back(formula_input("movements", FORMULA_READ_ONLY));
-	inputs->push_back(formula_input("units", FORMULA_READ_ONLY));
-	inputs->push_back(formula_input("target_value", FORMULA_READ_ONLY));
-	inputs->push_back(formula_input("avg_losses", FORMULA_READ_ONLY));
-	inputs->push_back(formula_input("chance_to_kill", FORMULA_READ_ONLY));
-	inputs->push_back(formula_input("avg_damage_inflicted", FORMULA_READ_ONLY));
-	inputs->push_back(formula_input("target_starting_damage", FORMULA_READ_ONLY));
-	inputs->push_back(formula_input("avg_damage_taken", FORMULA_READ_ONLY));
-	inputs->push_back(formula_input("resources_used", FORMULA_READ_ONLY));
-	inputs->push_back(formula_input("terrain_quality", FORMULA_READ_ONLY));
-	inputs->push_back(formula_input("alternative_terrain_quality", FORMULA_READ_ONLY));
-	inputs->push_back(formula_input("vulnerability", FORMULA_READ_ONLY));
-	inputs->push_back(formula_input("support", FORMULA_READ_ONLY));
-	inputs->push_back(formula_input("leader_threat", FORMULA_READ_ONLY));
-	inputs->push_back(formula_input("uses_leader", FORMULA_READ_ONLY));
-	inputs->push_back(formula_input("is_surrounded", FORMULA_READ_ONLY));
+	add_input(inputs, "target");
+	add_input(inputs, "movements");
+	add_input(inputs, "units");
+	add_input(inputs, "target_value");
+	add_input(inputs, "avg_losses");
+	add_input(inputs, "chance_to_kill");
+	add_input(inputs, "avg_damage_inflicted");
+	add_input(inputs, "target_starting_damage");
+	add_input(inputs, "avg_damage_taken");
+	add_input(inputs, "resources_used");
+	add_input(inputs, "terrain_quality");
+	add_input(inputs, "alternative_terrain_quality");
+	add_input(inputs, "vulnerability");
+	add_input(inputs, "support");
+	add_input(inputs, "leader_threat");
+	add_input(inputs, "uses_leader");
+	add_input(inputs, "is_surrounded");
 }
 
 } //end of namespace ai

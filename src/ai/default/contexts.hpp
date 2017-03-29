@@ -86,7 +86,7 @@ public:
 
 	double rating(double aggression, const readonly_context& ai_obj) const;
 	variant get_value(const std::string& key) const;
-	void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
+	void get_inputs(game_logic::formula_input_vector* inputs) const;
 
 	bool attack_close(const map_location& loc) const;
 

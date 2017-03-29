@@ -159,7 +159,7 @@ private:
 	void display_message(const std::string& msg) const;
 	variant execute_variant(const variant& var, ai_context &ai_, bool commandline=false);
 	virtual variant get_value(const std::string& key) const;
-	virtual void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
+	virtual void get_inputs(game_logic::formula_input_vector* inputs) const;
 
 	mutable variant keeps_cache_;
 
