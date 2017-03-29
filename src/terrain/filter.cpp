@@ -323,13 +323,13 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 			return false;
 		}
 	}
-	
+
 	if(cfg_.has_attribute("formula")) {
 		try {
 			const gamemap& map = fc_->get_disp_context().map();
 			t_translation::terrain_code t = map.get_terrain(loc);
 			const terrain_type& ter = map.tdata()->get_terrain_info(t);
-			const terrain_callable callable(ter,loc);
+			const game_logic::terrain_callable callable(ter,loc);
 			const game_logic::formula form(cfg_["formula"]);
 			if(!form.evaluate(callable).as_bool()) {
 				return false;

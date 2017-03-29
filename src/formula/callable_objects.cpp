@@ -19,46 +19,8 @@
 #include "team.hpp"
 #include "units/formula_manager.hpp"
 
-static inline void add_input(formula_input_vector* inputs, const std::string& key)
+namespace game_logic
 {
-	inputs->push_back(game_logic::formula_input(key, game_logic::FORMULA_READ_ONLY));
-}
-
-template<typename T, typename K>
-variant convert_map(const std::map<T, K>& input_map)
-{
-	std::map<variant,variant> tmp;
-
-	for(const auto& p : input_map) {
-		tmp[variant(p.first)] = variant(p.second);
-	}
-
-	return variant(&tmp);
-}
-
-template<typename T>
-variant convert_set(const std::set<T>& input_set)
-{
-	std::map<variant,variant> tmp;
-
-	for(const auto& elem : input_set) {
-		tmp[variant(elem)] = variant(1);
-	}
-
-	return variant(&tmp);
-}
-
-template<typename T>
-variant convert_vector(const std::vector<T>& input_vector)
-{
-	std::vector<variant> tmp;
-
-	for(const auto& elem : input_vector) {
-		tmp.push_back(variant(elem));
-	}
-
-	return variant(&tmp);
-}
 
 variant location_callable::get_value(const std::string& key) const
 {
@@ -73,11 +35,11 @@ variant location_callable::get_value(const std::string& key) const
 
 void location_callable::get_inputs(formula_input_vector* inputs) const
 {
-	add_input(inputs, "x");
-	add_input(inputs, "y");
+	formula_callable::add_input(inputs, "x");
+	formula_callable::add_input(inputs, "y");
 }
 
-int location_callable::do_compare(const game_logic::formula_callable* callable) const
+int location_callable::do_compare(const formula_callable* callable) const
 {
 	const location_callable* loc_callable = dynamic_cast<const location_callable*>(callable);
 	if(loc_callable == nullptr) {
@@ -137,19 +99,19 @@ variant attack_type_callable::get_value(const std::string& key) const
 
 void attack_type_callable::get_inputs(formula_input_vector* inputs) const
 {
-	add_input(inputs, "name");
-	add_input(inputs, "type");
-	add_input(inputs, "description");
-	add_input(inputs, "icon");
-	add_input(inputs, "range");
-	add_input(inputs, "damage");
-	add_input(inputs, "number");
-	add_input(inputs, "accuracy");
-	add_input(inputs, "parry");
-	add_input(inputs, "movement_used");
-	add_input(inputs, "attack_weight");
-	add_input(inputs, "defense_weight");
-	add_input(inputs, "specials");
+	formula_callable::add_input(inputs, "name");
+	formula_callable::add_input(inputs, "type");
+	formula_callable::add_input(inputs, "description");
+	formula_callable::add_input(inputs, "icon");
+	formula_callable::add_input(inputs, "range");
+	formula_callable::add_input(inputs, "damage");
+	formula_callable::add_input(inputs, "number");
+	formula_callable::add_input(inputs, "accuracy");
+	formula_callable::add_input(inputs, "parry");
+	formula_callable::add_input(inputs, "movement_used");
+	formula_callable::add_input(inputs, "attack_weight");
+	formula_callable::add_input(inputs, "defense_weight");
+	formula_callable::add_input(inputs, "specials");
 }
 
 int attack_type_callable::do_compare(const formula_callable* callable) const
@@ -217,7 +179,7 @@ variant unit_callable::get_value(const std::string& key) const
 
 		return variant(&res);
 	} else if(key == "abilities") {
-		return convert_vector(u_.get_ability_list());
+		return formula_callable::convert_vector(u_.get_ability_list());
 	} else if(key == "hitpoints") {
 		return variant(u_.hitpoints());
 	} else if(key == "max_hitpoints") {
@@ -238,13 +200,13 @@ variant unit_callable::get_value(const std::string& key) const
 	} else if(key == "max_attacks") {
 		return variant(u_.max_attacks());
 	} else if(key == "traits") {
-		return convert_vector(u_.get_traits_list());
+		return formula_callable::convert_vector(u_.get_traits_list());
 	} else if(key == "extra_recruit") {
-		return convert_vector(u_.recruits());
+		return formula_callable::convert_vector(u_.recruits());
 	} else if(key == "advances_to") {
-		return convert_vector(u_.advances_to());
+		return formula_callable::convert_vector(u_.advances_to());
 	} else if(key == "states" || key == "status") {
-		return convert_set(u_.get_states());
+		return formula_callable::convert_set(u_.get_states());
 	} else if(key == "side") {
 		return variant(u_.side()-1);
 	} else if(key == "cost") {
@@ -283,8 +245,8 @@ variant unit_callable::get_value(const std::string& key) const
 	} else if(key == "wml_vars") {
 		return variant(new config_callable(u_.variables()));
 	} else if(key == "n"      || key == "s"       || key == "ne"      || key == "se"      || key == "nw" || key == "sw" ||
-			  key == "lawful" || key == "neutral" || key == "chaotic" || key == "liminal" ||
-			  key == "male"   || key == "female")
+	          key == "lawful" || key == "neutral" || key == "chaotic" || key == "liminal" ||
+	          key == "male"   || key == "female")
 	{
 		return variant(key);
 	}
@@ -294,45 +256,45 @@ variant unit_callable::get_value(const std::string& key) const
 
 void unit_callable::get_inputs(formula_input_vector* inputs) const
 {
-	add_input(inputs, "x");
-	add_input(inputs, "y");
-	add_input(inputs, "loc");
-	add_input(inputs, "id");
-	add_input(inputs, "type");
-	add_input(inputs, "name");
-	add_input(inputs, "canrecruit");
-	add_input(inputs, "undead");
-	add_input(inputs, "traits");
-	add_input(inputs, "attacks");
-	add_input(inputs, "abilities");
-	add_input(inputs, "hitpoints");
-	add_input(inputs, "max_hitpoints");
-	add_input(inputs, "experience");
-	add_input(inputs, "max_experience");
-	add_input(inputs, "level");
-	add_input(inputs, "moves");
-	add_input(inputs, "max_moves");
-	add_input(inputs, "attacks_left");
-	add_input(inputs, "max_attacks");
-	add_input(inputs, "side");
-	add_input(inputs, "extra_recruit");
-	add_input(inputs, "advances_to");
-	add_input(inputs, "status");
-	add_input(inputs, "cost");
-	add_input(inputs, "usage");
-	add_input(inputs, "upkeep");
-	add_input(inputs, "hidden");
-	add_input(inputs, "petrified");
-	add_input(inputs, "resting");
-	add_input(inputs, "role");
-	add_input(inputs, "race");
-	add_input(inputs, "gender");
-	add_input(inputs, "variation");
-	add_input(inputs, "zoc");
-	add_input(inputs, "alignment");
-	add_input(inputs, "facing");
-	add_input(inputs, "vars");
-	add_input(inputs, "wml_vars");
+	formula_callable::add_input(inputs, "x");
+	formula_callable::add_input(inputs, "y");
+	formula_callable::add_input(inputs, "loc");
+	formula_callable::add_input(inputs, "id");
+	formula_callable::add_input(inputs, "type");
+	formula_callable::add_input(inputs, "name");
+	formula_callable::add_input(inputs, "canrecruit");
+	formula_callable::add_input(inputs, "undead");
+	formula_callable::add_input(inputs, "traits");
+	formula_callable::add_input(inputs, "attacks");
+	formula_callable::add_input(inputs, "abilities");
+	formula_callable::add_input(inputs, "hitpoints");
+	formula_callable::add_input(inputs, "max_hitpoints");
+	formula_callable::add_input(inputs, "experience");
+	formula_callable::add_input(inputs, "max_experience");
+	formula_callable::add_input(inputs, "level");
+	formula_callable::add_input(inputs, "moves");
+	formula_callable::add_input(inputs, "max_moves");
+	formula_callable::add_input(inputs, "attacks_left");
+	formula_callable::add_input(inputs, "max_attacks");
+	formula_callable::add_input(inputs, "side");
+	formula_callable::add_input(inputs, "extra_recruit");
+	formula_callable::add_input(inputs, "advances_to");
+	formula_callable::add_input(inputs, "status");
+	formula_callable::add_input(inputs, "cost");
+	formula_callable::add_input(inputs, "usage");
+	formula_callable::add_input(inputs, "upkeep");
+	formula_callable::add_input(inputs, "hidden");
+	formula_callable::add_input(inputs, "petrified");
+	formula_callable::add_input(inputs, "resting");
+	formula_callable::add_input(inputs, "role");
+	formula_callable::add_input(inputs, "race");
+	formula_callable::add_input(inputs, "gender");
+	formula_callable::add_input(inputs, "variation");
+	formula_callable::add_input(inputs, "zoc");
+	formula_callable::add_input(inputs, "alignment");
+	formula_callable::add_input(inputs, "facing");
+	formula_callable::add_input(inputs, "vars");
+	formula_callable::add_input(inputs, "wml_vars");
 }
 
 int unit_callable::do_compare(const formula_callable* callable) const
@@ -356,7 +318,7 @@ variant unit_type_callable::get_value(const std::string& key) const
 	} else if(key == "race") {
 		return variant(u_.race_id());
 	} else if(key == "abilities") {
-		return convert_vector(u_.get_ability_list());
+		return formula_callable::convert_vector(u_.get_ability_list());
 	} else if(key == "traits") {
 		std::vector<variant> res;
 		for(const auto& config : u_.possible_traits()) {
@@ -398,21 +360,21 @@ variant unit_type_callable::get_value(const std::string& key) const
 
 void unit_type_callable::get_inputs(formula_input_vector* inputs) const
 {
-	add_input(inputs, "id");
-	add_input(inputs, "type");
-	add_input(inputs, "race");
-	add_input(inputs, "alignment");
-	add_input(inputs, "abilities");
-	add_input(inputs, "traits");
-	add_input(inputs, "attacks");
-	add_input(inputs, "hitpoints");
-	add_input(inputs, "experience");
-	add_input(inputs, "level");
-	add_input(inputs, "total_movement");
-	add_input(inputs, "undead");
-	add_input(inputs, "cost");
-	add_input(inputs, "recall_cost");
-	add_input(inputs, "usage");
+	formula_callable::add_input(inputs, "id");
+	formula_callable::add_input(inputs, "type");
+	formula_callable::add_input(inputs, "race");
+	formula_callable::add_input(inputs, "alignment");
+	formula_callable::add_input(inputs, "abilities");
+	formula_callable::add_input(inputs, "traits");
+	formula_callable::add_input(inputs, "attacks");
+	formula_callable::add_input(inputs, "hitpoints");
+	formula_callable::add_input(inputs, "experience");
+	formula_callable::add_input(inputs, "level");
+	formula_callable::add_input(inputs, "total_movement");
+	formula_callable::add_input(inputs, "undead");
+	formula_callable::add_input(inputs, "cost");
+	formula_callable::add_input(inputs, "recall_cost");
+	formula_callable::add_input(inputs, "usage");
 }
 
 int unit_type_callable::do_compare(const formula_callable* callable) const
@@ -454,7 +416,7 @@ variant config_callable::get_value(const std::string& key) const
 		std::vector<variant> result;
 		for(const auto& child : cfg_.all_children_range()) {
 			const variant cfg_child(new config_callable(child.cfg));
-			const variant kv(new game_logic::key_value_pair(variant(child.key), cfg_child));
+			const variant kv(new key_value_pair(variant(child.key), cfg_child));
 			result.push_back(kv);
 		}
 
@@ -486,18 +448,18 @@ variant config_callable::get_value(const std::string& key) const
 
 void config_callable::get_inputs(formula_input_vector* inputs) const
 {
-	add_input(inputs, "__all_children");
-	add_input(inputs, "__children");
-	add_input(inputs, "__attributes");
+	formula_callable::add_input(inputs, "__all_children");
+	formula_callable::add_input(inputs, "__children");
+	formula_callable::add_input(inputs, "__attributes");
 
 	for(const auto& val : cfg_.attribute_range()) {
-		if(val.first.find_first_not_of(game_logic::formula::id_chars) != std::string::npos) {
-			add_input(inputs, val.first);
+		if(val.first.find_first_not_of(formula::id_chars) != std::string::npos) {
+			formula_callable::add_input(inputs, val.first);
 		}
 	}
 }
 
-int config_callable::do_compare(const game_logic::formula_callable* callable) const
+int config_callable::do_compare(const formula_callable* callable) const
 {
 	const config_callable* cfg_callable = dynamic_cast<const config_callable*>(callable);
 	if(cfg_callable == nullptr) {
@@ -546,19 +508,19 @@ variant terrain_callable::get_value(const std::string& key) const
 
 void terrain_callable::get_inputs(formula_input_vector* inputs) const
 {
-	add_input(inputs, "x");
-	add_input(inputs, "y");
-	add_input(inputs, "loc");
-	add_input(inputs, "id");
-	add_input(inputs, "name");
-	add_input(inputs, "editor_name");
-	add_input(inputs, "description");
-	add_input(inputs, "icon");
-	add_input(inputs, "light");
-	add_input(inputs, "village");
-	add_input(inputs, "castle");
-	add_input(inputs, "keep");
-	add_input(inputs, "healing");
+	formula_callable::add_input(inputs, "x");
+	formula_callable::add_input(inputs, "y");
+	formula_callable::add_input(inputs, "loc");
+	formula_callable::add_input(inputs, "id");
+	formula_callable::add_input(inputs, "name");
+	formula_callable::add_input(inputs, "editor_name");
+	formula_callable::add_input(inputs, "description");
+	formula_callable::add_input(inputs, "icon");
+	formula_callable::add_input(inputs, "light");
+	formula_callable::add_input(inputs, "village");
+	formula_callable::add_input(inputs, "castle");
+	formula_callable::add_input(inputs, "keep");
+	formula_callable::add_input(inputs, "healing");
 }
 
 int terrain_callable::do_compare(const formula_callable* callable) const
@@ -574,10 +536,10 @@ int terrain_callable::do_compare(const formula_callable* callable) const
 
 void gamemap_callable::get_inputs(formula_input_vector* inputs) const
 {
-	add_input(inputs, "gamemap");
-	add_input(inputs, "terrain");
-	add_input(inputs, "w");
-	add_input(inputs, "h");
+	formula_callable::add_input(inputs, "gamemap");
+	formula_callable::add_input(inputs, "terrain");
+	formula_callable::add_input(inputs, "w");
+	formula_callable::add_input(inputs, "h");
 }
 
 variant gamemap_callable::get_value(const std::string& key) const
@@ -606,34 +568,34 @@ variant gamemap_callable::get_value(const std::string& key) const
 
 void team_callable::get_inputs(formula_input_vector* inputs) const
 {
-	add_input(inputs, "side");
-	add_input(inputs, "id");
-	add_input(inputs, "gold");
-	add_input(inputs, "start_gold");
-	add_input(inputs, "base_income");
-	add_input(inputs, "total_income");
-	add_input(inputs, "village_gold");
-	add_input(inputs, "village_support");
-	add_input(inputs, "recall_cost");
-	add_input(inputs, "name");
-	add_input(inputs, "is_human");
-	add_input(inputs, "is_ai");
-	add_input(inputs, "is_network");
-	add_input(inputs, "fog");
-	add_input(inputs, "shroud");
-	add_input(inputs, "hidden");
-	add_input(inputs, "flag");
-	add_input(inputs, "flag_icon");
-	add_input(inputs, "team_name");
-	add_input(inputs, "faction");
-	add_input(inputs, "faction_name");
-	add_input(inputs, "color");
-	add_input(inputs, "share_vision");
-	add_input(inputs, "carryover_bonus");
-	add_input(inputs, "carryover_percentage");
-	add_input(inputs, "carryover_add");
-	add_input(inputs, "recruit");
-	add_input(inputs, "wml_vars");
+	formula_callable::add_input(inputs, "side");
+	formula_callable::add_input(inputs, "id");
+	formula_callable::add_input(inputs, "gold");
+	formula_callable::add_input(inputs, "start_gold");
+	formula_callable::add_input(inputs, "base_income");
+	formula_callable::add_input(inputs, "total_income");
+	formula_callable::add_input(inputs, "village_gold");
+	formula_callable::add_input(inputs, "village_support");
+	formula_callable::add_input(inputs, "recall_cost");
+	formula_callable::add_input(inputs, "name");
+	formula_callable::add_input(inputs, "is_human");
+	formula_callable::add_input(inputs, "is_ai");
+	formula_callable::add_input(inputs, "is_network");
+	formula_callable::add_input(inputs, "fog");
+	formula_callable::add_input(inputs, "shroud");
+	formula_callable::add_input(inputs, "hidden");
+	formula_callable::add_input(inputs, "flag");
+	formula_callable::add_input(inputs, "flag_icon");
+	formula_callable::add_input(inputs, "team_name");
+	formula_callable::add_input(inputs, "faction");
+	formula_callable::add_input(inputs, "faction_name");
+	formula_callable::add_input(inputs, "color");
+	formula_callable::add_input(inputs, "share_vision");
+	formula_callable::add_input(inputs, "carryover_bonus");
+	formula_callable::add_input(inputs, "carryover_percentage");
+	formula_callable::add_input(inputs, "carryover_add");
+	formula_callable::add_input(inputs, "recruit");
+	formula_callable::add_input(inputs, "wml_vars");
 }
 
 variant team_callable::get_value(const std::string& key) const
@@ -699,3 +661,5 @@ variant team_callable::get_value(const std::string& key) const
 
 	return variant();
 }
+
+} // namespace game_logic

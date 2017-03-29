@@ -224,10 +224,10 @@ bool side_filter::match_internal(const team &t) const
 			}
 		}
 	}
-	
+
 	if (cfg_.has_attribute("formula")) {
 		try {
-			const team_callable callable(t);
+			const game_logic::team_callable callable(t);
 			const game_logic::formula form(cfg_["formula"]);
 			if(!form.evaluate(callable).as_bool()) {
 				return false;

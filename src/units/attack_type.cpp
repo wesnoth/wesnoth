@@ -138,7 +138,7 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 
 	if (!filter_formula.empty()) {
 		try {
-			const attack_type_callable callable(attack);
+			const game_logic::attack_type_callable callable(attack);
 			const game_logic::formula form(filter_formula);
 			if(!form.evaluate(callable).as_bool()) {
 				return false;

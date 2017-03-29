@@ -23,16 +23,10 @@
 class team;
 class terrain_type;
 
-template<typename T, typename K>
-variant convert_map(const std::map<T, K>& map);
+namespace game_logic
+{
 
-template<typename T>
-variant convert_vector(const std::vector<T>& input_vector);
-
-// TODO: move to a more centralized location and rename if necessary.
-using formula_input_vector = std::vector<game_logic::formula_input>;
-
-class terrain_callable : public game_logic::formula_callable
+class terrain_callable : public formula_callable
 {
 public:
 	terrain_callable(const terrain_type& t, const map_location& loc) : loc_(loc), t_(t)
@@ -50,7 +44,7 @@ private:
 	const terrain_type& t_;
 };
 
-class gamemap_callable : public game_logic::formula_callable
+class gamemap_callable : public formula_callable
 {
 public:
 	explicit gamemap_callable(const gamemap& g) : gamemap_(g)
@@ -65,8 +59,7 @@ private:
 	const gamemap& gamemap_;
 };
 
-
-class location_callable : public game_logic::formula_callable
+class location_callable : public formula_callable
 {
 public:
 	explicit location_callable(const map_location& loc) : loc_(loc)
@@ -84,11 +77,10 @@ private:
 	variant get_value(const std::string& key) const override;
 
 	void get_inputs(formula_input_vector* inputs) const override;
-	int do_compare(const game_logic::formula_callable* callable) const override;
+	int do_compare(const formula_callable* callable) const override;
 };
 
-
-class attack_type_callable : public game_logic::formula_callable
+class attack_type_callable : public formula_callable
 {
 public:
 	explicit attack_type_callable(const attack_type& attack) : att_(attack)
@@ -107,8 +99,7 @@ private:
 	const attack_type att_;
 };
 
-
-class unit_callable : public game_logic::formula_callable
+class unit_callable : public formula_callable
 {
 public:
 	unit_callable(const map_location& loc, const unit& u) : loc_(loc), u_(u)
@@ -134,8 +125,7 @@ private:
 	const unit& u_;
 };
 
-
-class unit_type_callable : public game_logic::formula_callable
+class unit_type_callable : public formula_callable
 {
 public:
 	explicit unit_type_callable(const unit_type& u) : u_(u)
@@ -154,7 +144,7 @@ private:
 	const unit_type& u_;
 };
 
-class config_callable : public game_logic::formula_callable
+class config_callable : public formula_callable
 {
 public:
 	explicit config_callable(const config& c) : cfg_(c) {}
@@ -169,8 +159,7 @@ private:
 	const config& cfg_;
 };
 
-
-class team_callable : public game_logic::formula_callable
+class team_callable : public formula_callable
 {
 public:
 	explicit team_callable(const team& t) : team_(t)
@@ -184,5 +173,7 @@ public:
 private:
 	const team& team_;
 };
+
+} // namespace game_logic
 
 #endif

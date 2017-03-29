@@ -18,6 +18,7 @@
 #include "formula/variant.hpp"
 
 #include <memory>
+#include <set>
 
 namespace game_logic
 {
@@ -30,6 +31,8 @@ struct formula_input {
 			: name(name), access(access)
 	{}
 };
+
+using formula_input_vector = std::vector<game_logic::formula_input>;
 
 //interface for objects that can have formulae run on them
 class formula_callable {
@@ -71,6 +74,47 @@ public:
 
 	bool has_key(const std::string& key) const
 		{ return !query_value(key).is_null(); }
+
+	template<typename T, typename K>
+	static variant convert_map(const std::map<T, K>& input_map)
+	{
+		std::map<variant,variant> tmp;
+
+		for(const auto& p : input_map) {
+			tmp[variant(p.first)] = variant(p.second);
+		}
+
+		return variant(&tmp);
+	}
+
+	template<typename T>
+	static variant convert_set(const std::set<T>& input_set)
+	{
+		std::map<variant,variant> tmp;
+
+		for(const auto& elem : input_set) {
+			tmp[variant(elem)] = variant(1);
+		}
+
+		return variant(&tmp);
+	}
+
+	template<typename T>
+	static variant convert_vector(const std::vector<T>& input_vector)
+	{
+		std::vector<variant> tmp;
+
+		for(const auto& elem : input_vector) {
+			tmp.push_back(variant(elem));
+		}
+
+		return variant(&tmp);
+	}
+
+	static inline void add_input(formula_input_vector* inputs, const std::string& key)
+	{
+		inputs->push_back(formula_input(key, FORMULA_READ_ONLY));
+	}
 
 protected:
 	virtual ~formula_callable() {}

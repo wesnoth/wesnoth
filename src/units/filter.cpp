@@ -489,7 +489,7 @@ bool basic_unit_filter_impl::internal_matches_filter(const unit & u, const map_l
 			/* Check if the filter only cares about variables.
 			   If so, no need to serialize the whole unit. */
 			config::all_children_itors ci = fwml.all_children_range();
-			if (fwml.all_children_count() == 1 && 
+			if (fwml.all_children_count() == 1 &&
 				fwml.attribute_count() == 1 &&
 			    ci.front().key == "variables") {
 				if (!u.variables().matches(ci.front().cfg))
@@ -590,10 +590,10 @@ bool basic_unit_filter_impl::internal_matches_filter(const unit & u, const map_l
 	}
 	if (!vcfg["formula"].blank()) {
 		try {
-			const unit_callable main(loc,u);
+			const game_logic::unit_callable main(loc,u);
 			game_logic::map_formula_callable callable(&main);
 			if (u2) {
-				std::shared_ptr<unit_callable> secondary(new unit_callable(*u2));
+				std::shared_ptr<game_logic::unit_callable> secondary(new game_logic::unit_callable(*u2));
 				callable.add("other", variant(secondary.get()));
 				// It's not destroyed upon scope exit because the variant holds a reference
 			}
