@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2017-03-23 08:11+0100\n"
-"PO-Revision-Date: 2016-05-15 14:31+0100\n"
+"PO-Revision-Date: 2017-03-27 20:33+0200\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Wesnoth\n"
 "Language: es\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.8.7.1\n"
 
 #. [brush]: id=brush-1
 #: data/core/editor/brushes.cfg:6
@@ -198,7 +198,7 @@ msgstr "Mapa"
 #. [menu]: id=menu-unit-facing
 #: data/themes/editor.cfg:98
 msgid "Unit Facing"
-msgstr ""
+msgstr "Orientación de la unidad"
 
 #. [menu]: id=menu-editor-transitions
 #: data/themes/editor.cfg:104
@@ -288,16 +288,12 @@ msgid "Do you really want to quit?"
 msgstr "¿Realmente desea salir?"
 
 #: src/editor/controller/editor_controller.cpp:207
-#, fuzzy
-#| msgid ""
-#| "Do you really want to quit? Changes in the map since the last save will "
-#| "be lost."
 msgid ""
 "Do you really want to quit? Changes to this map since the last save will be "
 "lost."
 msgstr ""
 "¿Realmente desea salir? Se perderán los cambios realizados en el mapa desde "
-"la última vez que lo guardó."
+"la última vez que guardó."
 
 #: src/editor/controller/editor_controller.cpp:209
 msgid ""
@@ -334,7 +330,7 @@ msgstr "(Nuevo mapa)"
 
 #: src/editor/map/context_manager.cpp:191
 msgid "Load Map"
-msgstr ""
+msgstr "Cargar mapa"
 
 #: src/editor/map/context_manager.cpp:288
 msgid "(New Scenario)"
@@ -354,7 +350,7 @@ msgstr "(Nuevo bando)"
 
 #: src/editor/map/context_manager.cpp:450
 msgid "Apply Mask"
-msgstr ""
+msgstr "Aplicar máscara"
 
 #: src/editor/map/context_manager.cpp:459
 msgid "Error loading mask"
@@ -378,16 +374,12 @@ msgid "Error loading map"
 msgstr "Error al cargar el mapa"
 
 #: src/editor/map/context_manager.cpp:616
-#, fuzzy
-#| msgid "Save the Map As"
 msgid "Save Map As"
-msgstr "Guardar el mapa como"
+msgstr "Guardar mapa como"
 
 #: src/editor/map/context_manager.cpp:637
-#, fuzzy
-#| msgid "Save the Scenario As"
 msgid "Save Scenario As"
-msgstr "Guardar el escenario como"
+msgstr "Guardar escenario como"
 
 #: src/editor/map/context_manager.cpp:671
 msgid "No random map generators found."
@@ -403,13 +395,9 @@ msgid "Unsaved Changes"
 msgstr "Cambios sin guardar"
 
 #: src/editor/map/context_manager.cpp:703
-#, fuzzy
-#| msgid ""
-#| "Do you want to discard all changes you made to the map since the last "
-#| "save?"
 msgid "Do you want to discard all changes made to the map since the last save?"
 msgstr ""
-"¿Desea abandonar todos los cambios efectuados en el mapa desde que lo guardó "
+"¿Desea descartar todos los cambios efectuados en el mapa desde que guardó "
 "por última vez?"
 
 #: src/editor/map/context_manager.cpp:802
@@ -447,23 +435,17 @@ msgstr ""
 "$new"
 
 #: src/editor/map/context_manager.cpp:1002
-#, fuzzy
-#| msgid "(New Map)"
 msgid "New Map"
-msgstr "(Nuevo mapa)"
+msgstr "Nuevo mapa"
 
 #: src/editor/map/context_manager.cpp:1002
-#, fuzzy
-#| msgid "(New Scenario)"
 msgid "New Scenario"
-msgstr "(Nuevo escenario)"
+msgstr "Nuevo escenario"
 
 #: src/editor/map/editor_map.cpp:149
 #: src/editor/palette/location_palette.cpp:111
-#, fuzzy
-#| msgid "Player $player_number"
 msgid "Player $side_num"
-msgstr "Jugador $player_number"
+msgstr "Jugador $side_num"
 
 #: src/editor/map/editor_map.cpp:264
 msgid "The size of the target map is different from the current map"
@@ -512,19 +494,19 @@ msgstr "No funcionará en un juego sin atención adicional."
 
 #: src/editor/palette/location_palette.cpp:245
 msgid "Go To"
-msgstr ""
+msgstr "Ir a"
 
 #: src/editor/palette/location_palette.cpp:252
 msgid "Add"
-msgstr ""
+msgstr "Añadir"
 
 #: src/editor/palette/location_palette.cpp:254
 msgid "New Location Identifer"
-msgstr ""
+msgstr "Nuevo identificador de posición"
 
 #: src/editor/palette/location_palette.cpp:258
 msgid "Delete"
-msgstr ""
+msgstr "Borrar"
 
 #: src/editor/palette/terrain_palettes.cpp:222
 msgid "FG: "
@@ -540,7 +522,7 @@ msgstr "Seleccionar un archivo"
 
 #: src/gui/dialogs/editor/custom_tod.cpp:122
 msgid "Select"
-msgstr ""
+msgstr "Seleccionar"
 
 #: src/gui/dialogs/editor/set_starting_position.cpp:88
 msgid "player^None"
