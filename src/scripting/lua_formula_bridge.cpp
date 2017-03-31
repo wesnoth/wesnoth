@@ -52,13 +52,13 @@ public:
 				lua_gettable(mState, table_i);
 				values.push_back(luaW_tofaivariant(mState, -1));
 			}
-			return variant(&values);
+			return variant(values);
 		} else if(key == "__map") {
 			std::map<variant,variant> values;
 			for(lua_pushnil(mState); lua_next(mState, table_i); lua_pop(mState, 1)) {
 				values[luaW_tofaivariant(mState, -2)] = luaW_tofaivariant(mState, -1);
 			}
-			return variant(&values);
+			return variant(values);
 		}
 		lua_pushlstring(mState, key.c_str(), key.size());
 		lua_gettable(mState, table_i);
@@ -152,7 +152,7 @@ void luaW_pushfaivariant(lua_State* L, variant val) {
 			luaW_pushlocation(L, loc_ref->loc());
 		} else {
 			// If those fail, convert generically to a map
-			const formula_callable* obj = val.as_callable();
+			const formula_callable* obj = val.as_callable().get();
 			std::vector<formula_input> inputs;
 			obj->get_inputs(&inputs);
 			lua_newtable(L);

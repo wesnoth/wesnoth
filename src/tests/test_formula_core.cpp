@@ -47,9 +47,9 @@ class mock_party : public formula_callable {
 				members.push_back(variant(&i_[n]));
 			}
 			
-			return variant(&members);
+			return variant(members);
 		} else if(key == "char") {
-			return variant(&c_);
+			return variant(c_);
 		} else {
 			return variant(0);
 		}

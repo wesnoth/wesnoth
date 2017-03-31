@@ -344,7 +344,7 @@ public:
                 for(attacks_vector::const_iterator i = value.begin(); i != value.end(); ++i) {
                         vars.push_back(variant(new attack_analysis(*i)));
                 }
-		var = variant(&vars);
+		var = variant(vars);
 	}
 
 	static variant value_to_variant(const attacks_vector &value)

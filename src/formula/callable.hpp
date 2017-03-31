@@ -40,6 +40,8 @@ public:
 	explicit formula_callable(bool has_self=true) : type_(FORMULA_C), has_self_(has_self)
 	{}
 
+	virtual ~formula_callable() {}
+
 	variant query_value(const std::string& key) const {
 		if(has_self_ && key == "self") {
 			return variant(this);
@@ -84,7 +86,7 @@ public:
 			tmp[variant(p.first)] = variant(p.second);
 		}
 
-		return variant(&tmp);
+		return variant(tmp);
 	}
 
 	template<typename T>
@@ -96,7 +98,7 @@ public:
 			tmp[variant(elem)] = variant(1);
 		}
 
-		return variant(&tmp);
+		return variant(tmp);
 	}
 
 	template<typename T>
@@ -108,7 +110,7 @@ public:
 			tmp.push_back(variant(elem));
 		}
 
-		return variant(&tmp);
+		return variant(tmp);
 	}
 
 	static inline void add_input(formula_input_vector* inputs, const std::string& key, FORMULA_ACCESS_TYPE access_type = FORMULA_READ_ONLY)
@@ -117,8 +119,6 @@ public:
 	}
 
 protected:
-	virtual ~formula_callable() {}
-
 	virtual void set_value(const std::string& key, const variant& value);
 	virtual int do_compare(const formula_callable* callable) const {
 		if( type_ < callable->type_ )

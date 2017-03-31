@@ -96,7 +96,7 @@ public:
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		variant var = args()[0]->evaluate(variables, fdb);
-		const formula_callable* callable = var.as_callable();
+		const formula_callable* callable = var.as_callable().get();
 		std::vector<formula_input> inputs = callable->inputs();
 		std::vector<variant> res;
 		for(size_t i=0; i<inputs.size(); ++i) {
@@ -104,7 +104,7 @@ private:
 			res.push_back(variant(input.name));
 		}
 
-		return variant(&res);
+		return variant(res);
 	}
 };
 
@@ -378,7 +378,7 @@ private:
 			tmp.push_back( *it );
 		}
 
-		return variant( &tmp );
+		return variant(tmp);
 	}
 };
 
@@ -417,7 +417,7 @@ private:
 			}
 		}
 
-		return variant( &tmp );
+		return variant(tmp);
 	}
 };
 
@@ -879,7 +879,7 @@ private:
 			std::sort(vars.begin(), vars.end(), variant_comparator(args()[1], variables));
 		}
 
-		return variant(&vars);
+		return variant(vars);
 	}
 };
 
@@ -899,7 +899,7 @@ private:
 		} else if(arg.is_list()) {
 			std::vector<variant> list = args()[0]->evaluate(variables,fdb).as_list();
 			std::reverse(list.begin(), list.end());
-			return variant(&list);
+			return variant(list);
 		}
 		return variant();
 	}
@@ -973,8 +973,8 @@ private:
 			}
 		}
 		if (items.is_map() )
-			return variant(&map_vars);
-		return variant(&list_vars);
+			return variant(map_vars);
+		return variant(list_vars);
 	}
 };
 
@@ -1043,8 +1043,8 @@ private:
 			}
 		}
 		if (items.is_map() )
-			return variant(&map_vars);
-		return variant(&list_vars);
+			return variant(map_vars);
+		return variant(list_vars);
 	}
 };
 
@@ -1063,7 +1063,7 @@ private:
 				break;
 		}
 		std::vector<variant> result(items.begin(), it);
-		return variant(&result);
+		return variant(result);
 	}
 };
 
@@ -1112,9 +1112,9 @@ private:
 		for(size_t i = 0; i < max_i; i++) {
 			std::vector<variant> elem(input.size());
 			std::transform(input.begin(), input.end(), elem.begin(), indexer(i));
-			output.push_back(variant(&elem));
+			output.push_back(variant(elem));
 		}
-		return variant(&output);
+		return variant(output);
 	}
 };
 
@@ -1160,7 +1160,7 @@ private:
 			if (items[0].is_list() )
 			{
 				std::vector<variant> tmp;
-				res = variant(&tmp);
+				res = variant(tmp);
 				if(args().size() >= 2) {
 					res = args()[1]->evaluate(variables,fdb);
 					if(!res.is_list())
@@ -1169,7 +1169,7 @@ private:
 			} else if( items[0].is_map() )
 			{
 				std::map<variant,variant> tmp;
-				res = variant(&tmp);
+				res = variant(tmp);
 				if(args().size() >= 2) {
 					res = args()[1]->evaluate(variables,fdb);
 					if(!res.is_map())
@@ -1212,7 +1212,7 @@ private:
 		std::advance(end, count);
 		std::vector<variant> res;
 		std::copy(it, end, std::back_inserter(res));
-		return variant(&res);
+		return variant(res);
 	}
 };
 
@@ -1236,7 +1236,7 @@ private:
 		std::advance(it, -count);
 		std::vector<variant> res;
 		std::copy(it, items.end(), std::back_inserter(res));
-		return variant(&res);
+		return variant(res);
 	}
 };
 
@@ -1479,9 +1479,9 @@ void key_value_pair::get_inputs(formula_input_vector* inputs) const {
 
 void key_value_pair::serialize_to_string(std::string& str) const {
 	str += "pair(";
-	key_.serialize_to_string(str);
+	str += key_.serialize_to_string();
 	str += ",";
-	value_.serialize_to_string(str);
+	str += value_.serialize_to_string();
 	str += ")";
 }
 
@@ -1509,7 +1509,7 @@ variant formula_function_expression::execute(const formula_callable& variables, 
 		variant var = args()[n]->evaluate(variables,fdb);
 		callable.add(arg_names_[n], var);
 		if(static_cast<int>(n) == star_arg_) {
-			callable.set_fallback(var.as_callable());
+			callable.set_fallback(var.as_callable().get());
 		}
 	}
 

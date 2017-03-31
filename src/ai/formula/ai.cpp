@@ -549,7 +549,7 @@ variant formula_ai::execute_variant(const variant& var, ai_context &ai_, bool co
 		}
 	}
 
-	return variant(&made_moves);
+	return variant(made_moves);
 }
 
 void formula_ai::add_formula_function(const std::string& name, const_formula_ptr formula, const_formula_ptr precondition, const std::vector<std::string>& args)
@@ -570,7 +570,7 @@ variant villages_from_set(const Container& villages,
 		vars.push_back(variant(new location_callable(loc)));
 	}
 
-	return variant(&vars);
+	return variant(vars);
 }
 }
 
@@ -627,7 +627,7 @@ variant formula_ai::get_value(const std::string& key) const
 		for(const std::string &i : rp) {
 			vars.push_back(variant(i));
 		}
-		return variant(&vars);
+		return variant(vars);
 
 	} else if(key == "scout_village_targeting")
 	{
@@ -671,7 +671,7 @@ variant formula_ai::get_value(const std::string& key) const
 		for(std::vector<team>::const_iterator i = resources::gameboard->teams().begin(); i != resources::gameboard->teams().end(); ++i) {
 			vars.push_back(variant(new team_callable(*i)));
 		}
-		return variant(&vars);
+		return variant(vars);
 
 	} else if(key == "allies")
 	{
@@ -680,7 +680,7 @@ variant formula_ai::get_value(const std::string& key) const
 			if ( !current_team().is_enemy( i+1 ) )
 				vars.push_back(variant( i ));
 		}
-		return variant(&vars);
+		return variant(vars);
 
 	} else if(key == "enemies")
 	{
@@ -689,7 +689,7 @@ variant formula_ai::get_value(const std::string& key) const
 			if ( current_team().is_enemy( i+1 ) )
 				vars.push_back(variant( i ));
 		}
-		return variant(&vars);
+		return variant(vars);
 
 	} else if(key == "my_recruits")
 	{
@@ -699,7 +699,7 @@ variant formula_ai::get_value(const std::string& key) const
 
 		const std::set<std::string>& recruits = current_team().recruits();
 		if(recruits.empty()) {
-			return variant( &vars );
+			return variant(vars);
 		}
 		for(std::set<std::string>::const_iterator i = recruits.begin(); i != recruits.end(); ++i)
 		{
@@ -709,7 +709,7 @@ variant formula_ai::get_value(const std::string& key) const
 				vars.push_back(variant(new unit_type_callable(*ut)));
 			}
 		}
-		return variant( &vars );
+		return variant(vars);
 
 	} else if(key == "recruits_of_side")
 	{
@@ -738,8 +738,8 @@ variant formula_ai::get_value(const std::string& key) const
 		}
 
 		for( size_t i = 0; i<tmp.size(); ++i)
-			vars.push_back( variant( &tmp[i] ));
-		return variant(&vars);
+			vars.emplace_back(tmp[i]);
+		return variant(vars);
 
 	} else if(key == "units")
 	{
@@ -747,7 +747,7 @@ variant formula_ai::get_value(const std::string& key) const
 		for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
 			vars.push_back(variant(new unit_callable(*i)));
 		}
-		return variant(&vars);
+		return variant(vars);
 
 	} else if(key == "units_of_side")
 	{
@@ -762,8 +762,8 @@ variant formula_ai::get_value(const std::string& key) const
 			tmp[u.side() - 1].push_back(variant(new unit_callable(u)));
 		}
 		for( size_t i = 0; i<tmp.size(); ++i)
-			vars.push_back( variant( &tmp[i] ));
-		return variant(&vars);
+			vars.emplace_back(tmp[i]);
+		return variant(vars);
 
 	} else if(key == "my_units")
 	{
@@ -773,7 +773,7 @@ variant formula_ai::get_value(const std::string& key) const
 				vars.push_back(variant(new unit_callable(*i)));
 			}
 		}
-		return variant(&vars);
+		return variant(vars);
 
 	} else if(key == "enemy_units")
 	{
@@ -785,7 +785,7 @@ variant formula_ai::get_value(const std::string& key) const
 				}
 			}
 		}
-		return variant(&vars);
+		return variant(vars);
 
 	} else if(key == "my_moves")
 	{
@@ -814,7 +814,7 @@ variant formula_ai::get_value(const std::string& key) const
 			tmp.push_back( variant( new unit_callable(**i) ) );
 		}
 
-		return variant( &tmp );
+		return variant(tmp);
 
 	} else if(key == "vars")
 	{
@@ -839,7 +839,7 @@ variant formula_ai::get_value(const std::string& key) const
 		{
 			vars[i] = villages_from_set(resources::gameboard->teams()[i].villages());
 		}
-		return variant(&vars);
+		return variant(vars);
 
 	} else if(key == "my_villages")
 	{
@@ -903,7 +903,7 @@ variant formula_ai::get_keeps() const
 				}
 			}
 		}
-		keeps_cache_ = variant(&vars);
+		keeps_cache_ = variant(vars);
 	}
 
 	return keeps_cache_;
@@ -1035,7 +1035,7 @@ config formula_ai::to_config() const
 		for(game_logic::map_formula_callable::const_iterator i = vars_.begin(); i != vars_.end(); ++i)
 		{
 			try {
-				i->second.serialize_to_string(str);
+				str = i->second.serialize_to_string();
 			} catch (type_error&) {
 				WRN_AI << "variable ["<< i->first <<"] is not serializable - it will not be persisted across savegames"<<std::endl;
 				continue;

@@ -30,6 +30,7 @@
 #include "display.hpp"
 #include "log.hpp"
 #include "map/label.hpp"
+#include "map/map.hpp"
 #include "pathfind/teleport.hpp"
 #include "replay.hpp"
 #include "resources.hpp"
@@ -366,7 +367,7 @@ private:
 				}
 			}
 		}
-		return variant(&res);
+		return variant(res);
 	}
 
 	const formula_ai& ai_;
@@ -425,7 +426,7 @@ private:
                             v.push_back(variant(new location_callable(adj[n])));
 		}
 
-		return variant(&v);
+		return variant(v);
 	}
 };
 
@@ -462,7 +463,7 @@ private:
                             v.push_back(variant(new location_callable(res[n])));
 		}
 
-		return variant(&v);
+		return variant(v);
 	}
 };
 
@@ -550,7 +551,7 @@ private:
                     res.push_back( variant(new location_callable( ml ) ) );
                 }
 
-		return variant(&res);
+		return variant(res);
 	}
 };
 
@@ -685,7 +686,7 @@ private:
 					vars.push_back(variant(new location_callable(map_location(i, j))));
 			}
 
-		return variant(&vars);
+		return variant(vars);
 	}
 
 	const formula_ai& ai_;
@@ -718,7 +719,7 @@ private:
 			}
 			++un;
 		}
-		return variant(&vars);
+		return variant(vars);
 	}
 
 	const formula_ai& ai_;
@@ -803,7 +804,7 @@ private:
 		if (bc.get_attacker_stats().plagues && hitLeft[0].as_int() == 0)
 			status.push_back(variant("Zombiefied"));
 		vars.push_back(variant(new outcome_callable(hitLeft, prob, status)));
-		return variant(&vars);
+		return variant(vars);
 	}
 };
 
@@ -838,7 +839,7 @@ private:
 			vars.push_back(variant(new position_callable(/*&units,*/ static_cast<int>(100 - analysis->chance_to_kill*100))));
 		}
 
-		return variant(&vars);
+		return variant(vars);
 	}
 };
 
@@ -949,7 +950,7 @@ private:
                 map_location unit_loc;
 
                 if( src == dst )
-                    return variant(&locations);
+                    return variant(locations);
 
                 if(args().size() > 2)
 			unit_loc = convert_variant<location_callable>(args()[2]->evaluate(variables,add_debug_info(fdb,2,"shortest_path:unit_location")))->loc();
@@ -969,14 +970,14 @@ private:
 		pathfind::plain_route route = ai_.shortest_path_calculator( src, dst, unit_it, allowed_teleports );
 
                 if( route.steps.size() < 2 ) {
-                    return variant(&locations);
+                    return variant(locations);
                 }
 
                 for (std::vector<map_location>::const_iterator loc_iter = route.steps.begin() + 1 ; loc_iter !=route.steps.end(); ++loc_iter) {
                     locations.push_back( variant( new location_callable(*loc_iter) ));
                 }
 
-		return variant(&locations);
+		return variant(locations);
 	}
 
 	const formula_ai& ai_;
@@ -999,7 +1000,7 @@ private:
                 map_location unit_loc;
 
                 if( src == dst )
-                    return variant(&locations);
+                    return variant(locations);
 
                 if(args().size() > 2)
 			unit_loc = convert_variant<location_callable>(args()[2]->evaluate(variables,add_debug_info(fdb,2,"simplest_path:unit_location")))->loc();
@@ -1021,7 +1022,7 @@ private:
                 pathfind::plain_route route = pathfind::a_star_search(src, dst, 1000.0, em_calc, resources::gameboard->map().w(), resources::gameboard->map().h(), &allowed_teleports);
 
                 if( route.steps.size() < 2 ) {
-                    return variant(&locations);
+                    return variant(locations);
                 }
 
                 for (std::vector<map_location>::const_iterator loc_iter = route.steps.begin() + 1 ; loc_iter !=route.steps.end(); ++loc_iter) {
@@ -1031,7 +1032,7 @@ private:
                         break;
                 }
 
-		return variant(&locations);
+		return variant(locations);
 	}
 
 	const formula_ai& ai_;
@@ -1228,7 +1229,7 @@ private:
 		std::vector<variant> res;
 		res.push_back(var0);
 		res.push_back(var1);
-                return variant(&res);
+                return variant(res);
         }
 
         void display_label(const map_location& location, const std::string& text) const {
@@ -1331,7 +1332,7 @@ private:
 		variant res = args()[0]->evaluate(variables,add_debug_info(fdb,0,"unit_moves:unit_location"));
 		std::vector<variant> vars;
 		if(res.is_null()) {
-			return variant(&vars);
+			return variant(vars);
 		}
 
 		const map_location& loc = convert_variant<location_callable>(res)->loc();
@@ -1343,7 +1344,7 @@ private:
 			vars.push_back(variant(new location_callable(i->second)));
 		}
 
-		return variant(&vars);
+		return variant(vars);
 	}
 
 	const formula_ai& ai_;
@@ -1369,7 +1370,7 @@ private:
 			++range.first;
 		}
 
-		return variant(&vars);
+		return variant(vars);
 	}
 };
 
@@ -1598,7 +1599,7 @@ private:
 		vars.push_back(variant(best_defender_attacks.first));
 		vars.push_back(variant(best_defender_attacks.second));
 
-		return variant(&vars);
+		return variant(vars);
 	}
 };
 

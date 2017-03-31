@@ -338,14 +338,14 @@ variant attack_analysis::get_value(const std::string& key) const
 			res.push_back(variant(item));
 		}
 
-		return variant(&res);
+		return variant(res);
 	} else if(key == "units") {
 		std::vector<variant> res;
 		for(size_t n = 0; n != movements.size(); ++n) {
 			res.push_back(variant(new location_callable(movements[n].first)));
 		}
 
-		return variant(&res);
+		return variant(res);
 	} else if(key == "target_value") {
 		return variant(static_cast<int>(target_value*1000));
 	} else if(key == "avg_losses") {

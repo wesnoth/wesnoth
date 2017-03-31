@@ -92,7 +92,7 @@ private:
 		for(size_t i = 0; i < function_names.size(); i++) {
 			res.push_back(variant(function_names[i]));
 		}
-		return variant(&res);
+		return variant(res);
 	}
 
 	function_symbol_table* symbols_;
@@ -112,7 +112,7 @@ private:
 			res.push_back((*i)->evaluate(variables,add_debug_info(fdb, 0, "[list element]")));
 		}
 
-		return variant(&res);
+		return variant(res);
 	}
 
 	std::vector<expression_ptr> items_;
@@ -170,7 +170,7 @@ private:
 			res[ key ] = value;
 		}
 
-		return variant(&res);
+		return variant(res);
 	}
 
 	std::vector<expression_ptr> items_;
@@ -238,7 +238,7 @@ public:
 			for(char c : string_.as_string()) {
 				chars.push_back(variant(std::string(1, c)));
 			}
-			return variant(&chars);
+			return variant(chars);
 		} else if(key == "word" || key == "words") {
 			std::vector<variant> words;
 			const std::string& str = string_.as_string();
@@ -249,7 +249,7 @@ public:
 				words.push_back(variant(str.substr(last_space, next_space - last_space)));
 				next_space = str.find_first_not_of(" \t", next_space);
 			} while(next_space != std::string::npos);
-			return variant(&words);
+			return variant(words);
 		} else if(key == "item" || key == "items") {
 			std::vector<std::string> split = utils::parenthetical_split(string_.as_string(), ',');
 			std::vector<variant> items;
@@ -257,7 +257,7 @@ public:
 			for(const std::string s : split) {
 				items.push_back(variant(s));
 			}
-			return variant(&items);
+			return variant(items);
 		} else {
 			return variant();
 		}

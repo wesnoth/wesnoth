@@ -17,7 +17,6 @@
 
 #include "formula/callable.hpp"
 
-#include "map/map.hpp"
 #include "units/unit.hpp"
 
 class team;

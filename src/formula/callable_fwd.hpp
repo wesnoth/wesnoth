@@ -15,13 +15,17 @@
 #ifndef FORMULA_CALLABLE_FWD_HPP_INCLUDED
 #define FORMULA_CALLABLE_FWD_HPP_INCLUDED
 
-namespace game_logic {
+#include <memory>
+#include <vector>
 
+namespace game_logic
+{
 class formula_callable;
 class formula_debugger;
-typedef std::shared_ptr<formula_callable> formula_callable_ptr;
-typedef std::shared_ptr<const formula_callable> const_formula_callable_ptr;
 
+using formula_callable_ptr       = std::shared_ptr<formula_callable>;
+using const_formula_callable_ptr = std::shared_ptr<const formula_callable>;
+using const_formula_callable_vec = std::vector<const formula_callable*>; // TODO: use shared_ptr
 }
 
 #endif

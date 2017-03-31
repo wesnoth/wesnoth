@@ -16,6 +16,7 @@
 
 #include "config.hpp"
 #include "formula/function.hpp"
+#include "map/map.hpp"
 #include "team.hpp"
 #include "units/formula_manager.hpp"
 
@@ -91,7 +92,7 @@ variant attack_type_callable::get_value(const std::string& key) const
 				res.push_back(variant(special.cfg["id"].str()));
 			}
 		}
-		return variant(&res);
+		return variant(res);
 	}
 
 	return variant();
@@ -177,7 +178,7 @@ variant unit_callable::get_value(const std::string& key) const
 			res.push_back(variant(new attack_type_callable(att)));
 		}
 
-		return variant(&res);
+		return variant(res);
 	} else if(key == "abilities") {
 		return formula_callable::convert_vector(u_.get_ability_list());
 	} else if(key == "hitpoints") {
@@ -325,14 +326,14 @@ variant unit_type_callable::get_value(const std::string& key) const
 			res.push_back(variant(config["id"].str()));
 		}
 
-		return variant(&res);
+		return variant(res);
 	} else if(key == "attacks") {
 		std::vector<variant> res;
 		for(const attack_type& att : u_.attacks()) {
 			res.push_back(variant(new attack_type_callable(att)));
 		}
 
-		return variant(&res);
+		return variant(res);
 	} else if(key == "hitpoints" || key == "max_hitpoints") {
 		return variant(u_.hitpoints());
 	} else if(key == "experience" || key == "max_experience") {
@@ -411,7 +412,7 @@ variant config_callable::get_value(const std::string& key) const
 			result.push_back(variant(new config_callable(child)));
 		}
 
-		return variant(&result);
+		return variant(result);
 	} else if(key == "__all_children") {
 		std::vector<variant> result;
 		for(const auto& child : cfg_.all_children_range()) {
@@ -420,7 +421,7 @@ variant config_callable::get_value(const std::string& key) const
 			result.push_back(kv);
 		}
 
-		return variant(&result);
+		return variant(result);
 	} else if(key == "__children") {
 		std::map<std::string, std::vector<variant> > build;
 		for(const auto& child : cfg_.all_children_range()) {
@@ -430,17 +431,17 @@ variant config_callable::get_value(const std::string& key) const
 
 		std::map<variant,variant> result;
 		for(auto& p : build) {
-			result[variant(p.first)] = variant(&p.second);
+			result[variant(p.first)] = variant(p.second);
 		}
 
-		return variant(&result);
+		return variant(result);
 	} else if(key == "__attributes") {
 		std::map<variant,variant> result;
 		for(const auto& val : cfg_.attribute_range()) {
 			result[variant(val.first)] = val.second.apply_visitor(fai_variant_visitor());
 		}
 
-		return variant(&result);
+		return variant(result);
 	}
 
 	return variant();
@@ -556,7 +557,7 @@ variant gamemap_callable::get_value(const std::string& key) const
 			}
 		}
 
-		return variant(&vars);
+		return variant(vars);
 	} else if(key == "w") {
 		return variant(gamemap_.w());
 	} else if(key == "h") {
@@ -654,7 +655,7 @@ variant team_callable::get_value(const std::string& key) const
 			result.push_back(variant(recruit));
 		}
 
-		return variant(&result);
+		return variant(result);
 	} else if(key == "wml_vars") {
 		return variant(new config_callable(team_.variables()));
 	}

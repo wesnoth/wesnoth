@@ -17,7 +17,7 @@
 #include "game_board.hpp"
 #include "ai/formula/callable_objects.hpp"
 #include "resources.hpp"
-
+#include "map/map.hpp"
 
 namespace game_logic {
 
@@ -33,7 +33,7 @@ variant move_map_callable::get_value(const std::string& key) const
                         }
 		}
 
-		return variant(&vars);
+		return variant(vars);
 	} else if(key == "has_moves") {
 		return variant(!srcdst_.empty());
 	} else {
@@ -94,11 +94,11 @@ void position_callable::get_inputs(formula_input_vector* inputs) const {
 
 variant outcome_callable::get_value(const std::string& key) const {
 	if(key == "hitpoints_left") {
-		return variant(new std::vector<variant>(hitLeft_));
+		return variant(hitLeft_);
 	} else if(key == "probability") {
-		return variant(new std::vector<variant>(prob_));
+		return variant(prob_);
 	} else if(key == "possible_status") {
-		return variant(new std::vector<variant>(status_));
+		return variant(status_);
 	} else {
 		return variant();
 	}
@@ -183,7 +183,7 @@ variant attack_map_callable::get_value(const std::string& key) const {
 				collect_possible_attacks(vars, i->get_location(), i->get_location());
 			}
 		}
-		return variant(&vars);
+		return variant(vars);
 	} else {
 		return variant();
 	}

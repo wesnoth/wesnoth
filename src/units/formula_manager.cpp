@@ -70,7 +70,7 @@ void unit_formula_manager::write(config & cfg)
 			std::string str;
 			for(game_logic::map_formula_callable::const_iterator i = formula_vars_->begin(); i != formula_vars_->end(); ++i)
 			{
-				i->second.serialize_to_string(str);
+				str = i->second.serialize_to_string();
 				if (!str.empty())
 				{
 					ai_vars[i->first] = str;

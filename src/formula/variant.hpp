@@ -15,41 +15,39 @@
 #ifndef VARIANT_HPP_INCLUDED
 #define VARIANT_HPP_INCLUDED
 
+#include "formula/variant_private.hpp"
+
 #include <map>
 #include <vector>
 
-#include "exceptions.hpp"
-
-namespace game_logic {
-class formula_callable;
+// TODO: expand to cover variant as well
+namespace game_logic
+{
+	class formula_callable;
 }
 
 void push_call_stack(const char* str);
 void pop_call_stack();
 std::string get_call_stack();
 
-struct call_stack_manager {
-	explicit call_stack_manager(const char* str) {
+struct call_stack_manager
+{
+	explicit call_stack_manager(const char* str)
+	{
 		push_call_stack(str);
 	}
 
-	~call_stack_manager() {
+	~call_stack_manager()
+	{
 		pop_call_stack();
 	}
 };
 
 class variant_iterator;
 
-struct type_error : public game::error {
-	explicit type_error(const std::string& str);
-};
-
-
-class variant {
+class variant
+{
 public:
-
-	enum TYPE { TYPE_NULL, TYPE_INT, TYPE_DECIMAL, TYPE_CALLABLE, TYPE_LIST, TYPE_STRING, TYPE_MAP };
-
 	enum DECIMAL_VARIANT_TYPE { DECIMAL_VARIANT };
 
 	variant();
@@ -57,60 +55,69 @@ public:
 	variant(int n, DECIMAL_VARIANT_TYPE /*type*/);
 	variant(double n, DECIMAL_VARIANT_TYPE /*type*/);
 	explicit variant(const game_logic::formula_callable* callable);
-	explicit variant(std::vector<variant>* array);
+	explicit variant(const std::vector<variant>& array);
 	explicit variant(const std::string& str);
-	explicit variant(std::map<variant,variant>* map);
-	~variant();
+	explicit variant(const std::map<variant, variant>& map);
 
 	variant(const variant& v);
 	variant& operator=(const variant& v);
 
 	variant operator[](size_t n) const;
 	variant operator[](const variant& v) const;
+
 	size_t num_elements() const;
 	bool is_empty() const;
 
-	variant get_member(const std::string& str) const;
+	variant get_member(const std::string& name) const;
 
-	bool is_string() const { return type_ == TYPE_STRING; }
-	bool is_null() const { return type_ == TYPE_NULL; }
-	bool is_int() const { return type_ == TYPE_INT; }
-	bool is_decimal() const { return type_ == TYPE_DECIMAL; }
-	bool is_map() const { return type_ == TYPE_MAP; }
+	/** Functions to test the type of the internal value. */
+	bool is_null()     const { return type() == VARIANT_TYPE::TYPE_NULL; }
+	bool is_int()      const { return type() == VARIANT_TYPE::TYPE_INT; }
+	bool is_decimal()  const { return type() == VARIANT_TYPE::TYPE_DECIMAL; }
+	bool is_callable() const { return type() == VARIANT_TYPE::TYPE_CALLABLE; }
+	bool is_list()     const { return type() == VARIANT_TYPE::TYPE_LIST; }
+	bool is_string()   const { return type() == VARIANT_TYPE::TYPE_STRING; }
+	bool is_map()      const { return type() == VARIANT_TYPE::TYPE_MAP; }
+
 	int as_int() const;
 
-	//this function returns variant's internal representation of decimal number:
-	//for example number 1.234 is represented as 1234
+	/** Returns variant's internal representation of decimal number: ie, 1.234 is represented as 1234 */
 	int as_decimal() const;
 
+	/** Returns a boolean state of the variant value. The implementation is type-dependent. */
 	bool as_bool() const;
 
-	bool is_list() const { return type_ == TYPE_LIST; }
-	
 	const std::vector<variant>& as_list() const;
-	const std::map<variant,variant>& as_map() const;
+	const std::map<variant, variant>& as_map() const;
 
 	const std::string& as_string() const;
-	std::string type_string() const;
 
-	bool is_callable() const { return type_ == TYPE_CALLABLE; }
-	const game_logic::formula_callable* as_callable() const {
-		must_be(TYPE_CALLABLE); return callable_; }
-	game_logic::formula_callable* mutable_callable() const {
-		must_be(TYPE_CALLABLE); return mutable_callable_; }
+	game_logic::const_formula_callable_ptr as_callable() const
+	{
+		must_be(VARIANT_TYPE::TYPE_CALLABLE);
+		return value_cast<game_logic::variant_callable>()->get_callable();
+	}
+
+	game_logic::formula_callable_ptr mutable_callable() const
+	{
+		must_be(VARIANT_TYPE::TYPE_CALLABLE);
+		return value_cast<game_logic::variant_callable>()->get_callable_mutable();
+	}
 
 	template<typename T>
-	T* try_convert() const {
+	T* try_convert() const
+	{
 		if(!is_callable()) {
 			return nullptr;
 		}
 
-		return dynamic_cast<T*>(mutable_callable());
+		return dynamic_cast<T*>(mutable_callable().get());
 	}
 
 	template<typename T>
-	T* convert_to() const {
-		T* res = dynamic_cast<T*>(mutable_callable());
+	T* convert_to() const
+	{
+		T* res = dynamic_cast<T*>(mutable_callable().get());
 		if(!res) {
 			throw type_error("could not convert type");
 		}
@@ -128,8 +135,8 @@ public:
 
 	bool operator==(const variant&) const;
 	bool operator!=(const variant&) const;
-	bool operator<(const variant&) const;
-	bool operator>(const variant&) const;
+	bool operator<(const variant&)  const;
+	bool operator>(const variant&)  const;
 	bool operator<=(const variant&) const;
 	bool operator>=(const variant&) const;
 
@@ -139,6 +146,7 @@ public:
 	variant list_elements_div(const variant& v) const;
 	variant concatenate(const variant& v) const;
 	variant build_range(const variant& v) const;
+
 	bool contains(const variant& other) const;
 
 	variant get_keys() const;
@@ -147,27 +155,43 @@ public:
 	variant_iterator begin() const;
 	variant_iterator end() const;
 
-	void serialize_to_string(std::string& str) const;
+	//auto begin()->decltype(value_cast<game_logic::variant_callable>()->get_iter());
+	//auto end()->decltype(value_cast<game_logic::variant_callable>()->get_iter());
+
+	std::string serialize_to_string() const;
 	void serialize_from_string(const std::string& str);
 
 	std::string string_cast() const;
 
-	std::string to_debug_string(std::vector<const game_logic::formula_callable*>* seen=nullptr, bool verbose = false) const;
+	std::string to_debug_string(game_logic::const_formula_callable_vec* seen = nullptr, bool verbose = false) const;
+
+	/** Gets string name of the current value type */
+	std::string type_string() const
+	{
+		return type().to_string();
+	}
 
 private:
-	void must_be(TYPE t) const;
-	TYPE type_;
-	union {
-		int int_value_;
-		int decimal_value_;
-		const game_logic::formula_callable* callable_;
-		game_logic::formula_callable* mutable_callable_;
-		std::vector<variant>* list_;
-		std::string* string_;
-		std::map<variant,variant>* map_;
-	};
+	template<typename T>
+	std::shared_ptr<T> value_cast() const
+	{
+		return game_logic::value_cast<T>(value_);
+	}
 
-	void release();
+	void must_be(VARIANT_TYPE t) const;
+
+	void must_both_be(VARIANT_TYPE t, const variant& second) const;
+
+	VARIANT_TYPE type() const
+	{
+		return value_->get_type();
+	}
+
+	/**
+	 * Variant value.
+	 * Each of the constructors casts this to an appropriate helper class.
+	 */
+	game_logic::value_base_ptr value_;
 };
 
 /**
@@ -178,14 +202,15 @@ private:
  * result in Undefined Behavior care should be taken when copying the
  * @p list_iterator_ and @p map_iterator_.
  */
-class variant_iterator {
+class variant_iterator
+{
 public:
 	typedef variant value_type;
 	typedef std::bidirectional_iterator_tag iterator_category;
 	typedef variant& reference;
 	typedef variant* pointer;
 	typedef int difference_type;
-	
+
 	/**
 	 * Constructor for a TYPE_NULL variant.
 	 */
@@ -228,8 +253,9 @@ private:
 };
 
 template<typename T>
-T* convert_variant(const variant& v) {
-	T* res = dynamic_cast<T*>(v.mutable_callable());
+T* convert_variant(const variant& v)
+{
+	T* res = dynamic_cast<T*>(v.mutable_callable().get());
 	if(!res) {
 		throw type_error("could not convert type");
 	}
@@ -237,16 +263,14 @@ T* convert_variant(const variant& v) {
 	return res;
 }
 
-
 template<typename T>
-T* try_convert_variant(const variant& v) {
+T* try_convert_variant(const variant& v)
+{
 	if(!v.is_callable()) {
 		return nullptr;
 	}
 
-	return dynamic_cast<T*>(v.mutable_callable());
+	return dynamic_cast<T*>(v.mutable_callable().get());
 }
-
-
 
 #endif
