@@ -90,7 +90,7 @@ private:
 		std::vector<std::string> more_function_names = symbols_->get_function_names();
 		function_names.insert(function_names.end(), more_function_names.begin(), more_function_names.end());
 		for(size_t i = 0; i < function_names.size(); i++) {
-			res.push_back(variant(function_names[i]));
+			res.emplace_back(function_names[i]);
 		}
 		return variant(res);
 	}
@@ -236,7 +236,7 @@ public:
 		} else if(key == "char" || key == "chars") {
 			std::vector<variant> chars;
 			for(char c : string_.as_string()) {
-				chars.push_back(variant(std::string(1, c)));
+				chars.emplace_back(std::string(1, c));
 			}
 			return variant(chars);
 		} else if(key == "word" || key == "words") {
@@ -246,7 +246,7 @@ public:
 			do {
 				size_t last_space = next_space;
 				next_space = str.find_first_of(" \t", next_space);
-				words.push_back(variant(str.substr(last_space, next_space - last_space)));
+				words.emplace_back(str.substr(last_space, next_space - last_space));
 				next_space = str.find_first_not_of(" \t", next_space);
 			} while(next_space != std::string::npos);
 			return variant(words);
@@ -255,7 +255,7 @@ public:
 			std::vector<variant> items;
 			items.reserve(split.size());
 			for(const std::string s : split) {
-				items.push_back(variant(s));
+				items.emplace_back(s);
 			}
 			return variant(items);
 		} else {

@@ -44,7 +44,7 @@ class mock_party : public formula_callable {
 			i_[2].add("strength",variant(14));
 			std::vector<variant> members;
 			for(int n = 0; n != 3; ++n) {
-				members.push_back(variant(&i_[n]));
+				members.emplace_back(&i_[n]);
 			}
 			
 			return variant(members);

@@ -567,7 +567,7 @@ variant villages_from_set(const Container& villages,
 		if(exclude && exclude->count(loc)) {
 			continue;
 		}
-		vars.push_back(variant(new location_callable(loc)));
+		vars.emplace_back(new location_callable(loc));
 	}
 
 	return variant(vars);
@@ -625,7 +625,7 @@ variant formula_ai::get_value(const std::string& key) const
 		const std::vector<std::string> &rp = get_recruitment_pattern();
 		std::vector<variant> vars;
 		for(const std::string &i : rp) {
-			vars.push_back(variant(i));
+			vars.emplace_back(i);
 		}
 		return variant(vars);
 
@@ -669,7 +669,7 @@ variant formula_ai::get_value(const std::string& key) const
 	{
 		std::vector<variant> vars;
 		for(std::vector<team>::const_iterator i = resources::gameboard->teams().begin(); i != resources::gameboard->teams().end(); ++i) {
-			vars.push_back(variant(new team_callable(*i)));
+			vars.emplace_back(new team_callable(*i));
 		}
 		return variant(vars);
 
@@ -678,7 +678,7 @@ variant formula_ai::get_value(const std::string& key) const
 		std::vector<variant> vars;
 		for( size_t i = 0; i < resources::gameboard->teams().size(); ++i) {
 			if ( !current_team().is_enemy( i+1 ) )
-				vars.push_back(variant( i ));
+				vars.emplace_back(i);
 		}
 		return variant(vars);
 
@@ -687,7 +687,7 @@ variant formula_ai::get_value(const std::string& key) const
 		std::vector<variant> vars;
 		for( size_t i = 0; i < resources::gameboard->teams().size(); ++i) {
 			if ( current_team().is_enemy( i+1 ) )
-				vars.push_back(variant( i ));
+				vars.emplace_back(i);
 		}
 		return variant(vars);
 
@@ -706,7 +706,7 @@ variant formula_ai::get_value(const std::string& key) const
 			const unit_type *ut = unit_types.find(*i);
 			if (ut)
 			{
-				vars.push_back(variant(new unit_type_callable(*ut)));
+				vars.emplace_back(new unit_type_callable(*ut));
 			}
 		}
 		return variant(vars);
@@ -732,7 +732,7 @@ variant formula_ai::get_value(const std::string& key) const
 				const unit_type *ut = unit_types.find(*str_it);
 				if (ut)
 				{
-					tmp[i].push_back(variant(new unit_type_callable(*ut)));
+					tmp[i].emplace_back(new unit_type_callable(*ut));
 				}
 			}
 		}
@@ -745,7 +745,7 @@ variant formula_ai::get_value(const std::string& key) const
 	{
 		std::vector<variant> vars;
 		for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
-			vars.push_back(variant(new unit_callable(*i)));
+			vars.emplace_back(new unit_callable(*i));
 		}
 		return variant(vars);
 
@@ -759,7 +759,7 @@ variant formula_ai::get_value(const std::string& key) const
 			tmp.push_back( v );
 		}
 		for(const unit &u : units) {
-			tmp[u.side() - 1].push_back(variant(new unit_callable(u)));
+			tmp[u.side() - 1].emplace_back(new unit_callable(u));
 		}
 		for( size_t i = 0; i<tmp.size(); ++i)
 			vars.emplace_back(tmp[i]);
@@ -770,7 +770,7 @@ variant formula_ai::get_value(const std::string& key) const
 		std::vector<variant> vars;
 		for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
 			if (i->side() == get_side()) {
-				vars.push_back(variant(new unit_callable(*i)));
+				vars.emplace_back(new unit_callable(*i));
 			}
 		}
 		return variant(vars);
@@ -781,7 +781,7 @@ variant formula_ai::get_value(const std::string& key) const
 		for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
 			if (current_team().is_enemy(i->side())) {
 				if (!i->incapacitated()) {
-					vars.push_back(variant(new unit_callable(*i)));
+					vars.emplace_back(new unit_callable(*i));
 				}
 			}
 		}
@@ -896,7 +896,7 @@ variant formula_ai::get_keeps() const
 					get_adjacent_tiles(loc,adj);
 					for(size_t n = 0; n != 6; ++n) {
 						if(resources::gameboard->map().is_castle(adj[n])) {
-							vars.push_back(variant(new location_callable(loc)));
+							vars.emplace_back(new location_callable(loc));
 							break;
 						}
 					}

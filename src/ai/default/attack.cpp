@@ -335,14 +335,14 @@ variant attack_analysis::get_value(const std::string& key) const
 			map_formula_callable* item = new map_formula_callable(nullptr);
 			item->add("src", variant(new location_callable(movements[n].first)));
 			item->add("dst", variant(new location_callable(movements[n].second)));
-			res.push_back(variant(item));
+			res.emplace_back(item);
 		}
 
 		return variant(res);
 	} else if(key == "units") {
 		std::vector<variant> res;
 		for(size_t n = 0; n != movements.size(); ++n) {
-			res.push_back(variant(new location_callable(movements[n].first)));
+			res.emplace_back(new location_callable(movements[n].first));
 		}
 
 		return variant(res);

@@ -423,7 +423,7 @@ private:
 		std::vector<variant> v;
 		for(int n = 0; n != 6; ++n) {
                         if (resources::gameboard->map().on_board(adj[n]) )
-                            v.push_back(variant(new location_callable(adj[n])));
+                            v.emplace_back(new location_callable(adj[n]));
 		}
 
 		return variant(v);
@@ -456,11 +456,11 @@ private:
 
 		std::vector<variant> v;
 		v.reserve(res.size()+1);
-		v.push_back(variant(new location_callable(loc)));
+		v.emplace_back(new location_callable(loc));
 
 		for(size_t n = 0; n != res.size(); ++n) {
                         if (resources::gameboard->map().on_board(res[n]) )
-                            v.push_back(variant(new location_callable(res[n])));
+                            v.emplace_back(new location_callable(res[n]));
 		}
 
 		return variant(v);
@@ -683,7 +683,7 @@ private:
 		for(int i = 0; i < w; ++i)
 			for(int j = 0; j < h; ++j) {
 				if(ai_.current_team().shrouded(map_location(i,j)))
-					vars.push_back(variant(new location_callable(map_location(i, j))));
+					vars.emplace_back(new location_callable(map_location(i, j)));
 			}
 
 		return variant(vars);
@@ -714,7 +714,7 @@ private:
 		while (un != end) {
 			if (distance_between(loc, un->get_location()) <= range) {
 				if (un->side() != ai_.get_side()) {//fixme: ignores allied units
-					vars.push_back(variant(new unit_callable(*un)));
+					vars.emplace_back(new unit_callable(*un));
 				}
 			}
 			++un;
@@ -765,22 +765,22 @@ private:
 		std::vector<variant> prob;
 		while (it != hp_dist.end()) {
 			if (*it != 0) {
-				hitLeft.push_back(variant(i));
-				prob.push_back(variant(int(*it*10000)));
+				hitLeft.emplace_back(i);
+				prob.emplace_back(int(*it*10000));
 			}
 			++it;
 			++i;
 		}
 		std::vector<variant> status;
 		if (bc.get_attacker_combatant().poisoned != 0)
-			status.push_back(variant("Poisoned"));
+			status.emplace_back("Poisoned");
 		if (bc.get_attacker_combatant().slowed != 0)
-			status.push_back(variant("Slowed"));
+			status.emplace_back("Slowed");
 		if (bc.get_defender_stats().petrifies && static_cast<unsigned int>(hitLeft[0].as_int()) != bc.get_attacker_stats().hp)
-			status.push_back(variant("Stoned"));
+			status.emplace_back("Stoned");
 		if (bc.get_defender_stats().plagues && hitLeft[0].as_int() == 0)
-			status.push_back(variant("Zombiefied"));
-		vars.push_back(variant(new outcome_callable(hitLeft, prob, status)));
+			status.emplace_back("Zombiefied");
+		vars.emplace_back(new outcome_callable(hitLeft, prob, status));
 		hitLeft.clear();
 		prob.clear();
 		status.clear();
@@ -789,21 +789,21 @@ private:
 		i = 0;
 		while (it != hp_dist.end()) {
 			if (*it != 0) {
-				hitLeft.push_back(variant(i));
-				prob.push_back(variant(int(*it*10000)));
+				hitLeft.emplace_back(i);
+				prob.emplace_back(int(*it*10000));
 			}
 			++it;
 			++i;
 		}
 		if (bc.get_defender_combatant().poisoned != 0)
-			status.push_back(variant("Poisoned"));
+			status.emplace_back("Poisoned");
 		if (bc.get_defender_combatant().slowed != 0)
-			status.push_back(variant("Slowed"));
+			status.emplace_back("Slowed");
 		if (bc.get_attacker_stats().petrifies && static_cast<unsigned int>(hitLeft[0].as_int()) != bc.get_defender_stats().hp)
-			status.push_back(variant("Stoned"));
+			status.emplace_back("Stoned");
 		if (bc.get_attacker_stats().plagues && hitLeft[0].as_int() == 0)
-			status.push_back(variant("Zombiefied"));
-		vars.push_back(variant(new outcome_callable(hitLeft, prob, status)));
+			status.emplace_back("Zombiefied");
+		vars.emplace_back(new outcome_callable(hitLeft, prob, status));
 		return variant(vars);
 	}
 };
@@ -830,13 +830,13 @@ private:
 		if(analysis->chance_to_kill > 0.0) {
 			//unit_map units(units_with_moves);
 			//units.erase(analysis->target);
-			vars.push_back(variant(new position_callable(/*&units,*/ static_cast<int>(analysis->chance_to_kill*100))));
+			vars.emplace_back(new position_callable(/*&units,*/ static_cast<int>(analysis->chance_to_kill*100)));
 
 		}
 
 		if(analysis->chance_to_kill < 1.0) {
 			//unit_map units(units_with_moves);
-			vars.push_back(variant(new position_callable(/*&units,*/ static_cast<int>(100 - analysis->chance_to_kill*100))));
+			vars.emplace_back(new position_callable(/*&units,*/ static_cast<int>(100 - analysis->chance_to_kill*100)));
 		}
 
 		return variant(vars);
@@ -1341,7 +1341,7 @@ private:
 		std::pair<Itor,Itor> range = srcdst.equal_range(loc);
 
 		for(Itor i = range.first; i != range.second; ++i) {
-			vars.push_back(variant(new location_callable(i->second)));
+			vars.emplace_back(new location_callable(i->second));
 		}
 
 		return variant(vars);
@@ -1366,7 +1366,7 @@ private:
 		while(range.first != range.second) {
 			unit_map::const_iterator un = resources::gameboard->units().find(range.first->second);
 			assert(un != resources::gameboard->units().end());
-			vars.push_back(variant(new unit_callable(*un)));
+			vars.emplace_back(new unit_callable(*un));
 			++range.first;
 		}
 
@@ -1594,10 +1594,10 @@ private:
 		std::pair<int, int> best_defender_attacks = best_melee_and_ranged_attacks(defender, attacker);
 
 		std::vector<variant> vars;
-		vars.push_back(variant(best_attacker_attacks.first));
-		vars.push_back(variant(best_attacker_attacks.second));
-		vars.push_back(variant(best_defender_attacks.first));
-		vars.push_back(variant(best_defender_attacks.second));
+		vars.emplace_back(best_attacker_attacks.first);
+		vars.emplace_back(best_attacker_attacks.second);
+		vars.emplace_back(best_defender_attacks.first);
+		vars.emplace_back(best_defender_attacks.second);
 
 		return variant(vars);
 	}

@@ -102,7 +102,7 @@ void move_candidate_action::evaluate(ai::formula_ai* ai, unit_map& units)
 	for(unit_map::unit_iterator i = units.begin() ; i != units.end() ; ++i)
 	{
 		if (i->side() == ai->get_side() && i->movement_left() > 0) {
-			unit_vector.push_back(variant(new unit_callable(*i)));
+			unit_vector.emplace_back(new unit_callable(*i));
 		}
 	}
 
@@ -161,12 +161,12 @@ void attack_candidate_action::evaluate(ai::formula_ai* ai, unit_map& units)
 		if (i->side() == ai->get_side())
 		{
 			if (i->attacks_left()) {
-				my_res.push_back(variant(new unit_callable(*i)));
+				my_res.emplace_back(new unit_callable(*i));
 			}
 		} else
 		{
 			if (ai->current_team().is_enemy(i->side()) && !i->incapacitated() && !i->invisible(i->get_location(), *resources::gameboard)) {
-				enemy_res.push_back(variant(new unit_callable(*i)));
+				enemy_res.emplace_back(new unit_callable(*i));
 			}
 		}
 	}

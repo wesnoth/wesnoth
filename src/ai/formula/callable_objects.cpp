@@ -29,7 +29,7 @@ variant move_map_callable::get_value(const std::string& key) const
 		for(move_map::const_iterator i = srcdst_.begin(); i != srcdst_.end(); ++i) {
                         if( i->first == i->second || units_.count(i->second) == 0) {
                             move_callable* item = new move_callable(i->first, i->second);
-                            vars.push_back(variant(item));
+                            vars.emplace_back(item);
                         }
 		}
 
@@ -213,7 +213,7 @@ void attack_map_callable::collect_possible_attacks(std::vector<variant>& vars, m
 			continue;
 		/* add attacks with default weapon */
 		attack_callable* item = new attack_callable(attacker_location, attack_position, adj[n], -1);
-		vars.push_back(variant(item));
+		vars.emplace_back(item);
 	}
 }
 

@@ -101,7 +101,7 @@ private:
 		std::vector<variant> res;
 		for(size_t i=0; i<inputs.size(); ++i) {
 			const formula_input& input = inputs[i];
-			res.push_back(variant(input.name));
+			res.emplace_back(input.name);
 		}
 
 		return variant(res);
@@ -1112,7 +1112,7 @@ private:
 		for(size_t i = 0; i < max_i; i++) {
 			std::vector<variant> elem(input.size());
 			std::transform(input.begin(), input.end(), elem.begin(), indexer(i));
-			output.push_back(variant(elem));
+			output.emplace_back(elem);
 		}
 		return variant(output);
 	}

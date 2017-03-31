@@ -107,7 +107,7 @@ public:
 		std::vector<variant> tmp;
 
 		for(const auto& elem : input_vector) {
-			tmp.push_back(variant(elem));
+			tmp.emplace_back(elem);
 		}
 
 		return variant(tmp);

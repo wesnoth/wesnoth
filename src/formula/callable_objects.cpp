@@ -89,7 +89,7 @@ variant attack_type_callable::get_value(const std::string& key) const
 
 		for(const auto& special : att_.specials().all_children_range()) {
 			if(!special.cfg["id"].empty()) {
-				res.push_back(variant(special.cfg["id"].str()));
+				res.emplace_back(special.cfg["id"].str());
 			}
 		}
 		return variant(res);
@@ -175,7 +175,7 @@ variant unit_callable::get_value(const std::string& key) const
 	} else if(key == "attacks") {
 		std::vector<variant> res;
 		for(const attack_type& att : u_.attacks()) {
-			res.push_back(variant(new attack_type_callable(att)));
+			res.emplace_back(new attack_type_callable(att));
 		}
 
 		return variant(res);
@@ -323,14 +323,14 @@ variant unit_type_callable::get_value(const std::string& key) const
 	} else if(key == "traits") {
 		std::vector<variant> res;
 		for(const auto& config : u_.possible_traits()) {
-			res.push_back(variant(config["id"].str()));
+			res.emplace_back(config["id"].str());
 		}
 
 		return variant(res);
 	} else if(key == "attacks") {
 		std::vector<variant> res;
 		for(const attack_type& att : u_.attacks()) {
-			res.push_back(variant(new attack_type_callable(att)));
+			res.emplace_back(new attack_type_callable(att));
 		}
 
 		return variant(res);
@@ -409,7 +409,7 @@ variant config_callable::get_value(const std::string& key) const
 	} else if(cfg_.has_child(key)) {
 		std::vector<variant> result;
 		for(const auto& child : cfg_.child_range(key)) {
-			result.push_back(variant(new config_callable(child)));
+			result.emplace_back(new config_callable(child));
 		}
 
 		return variant(result);
@@ -553,7 +553,7 @@ variant gamemap_callable::get_value(const std::string& key) const
 		for(int i = 0; i < w; i++) {
 			for(int j = 0; j < h; j++) {
 				const map_location loc(i, j);
-				vars.push_back(variant(new terrain_callable(gamemap_.get_terrain_info(loc), loc)));
+				vars.emplace_back(new terrain_callable(gamemap_.get_terrain_info(loc), loc));
 			}
 		}
 
@@ -652,7 +652,7 @@ variant team_callable::get_value(const std::string& key) const
 	} else if(key == "recruit") {
 		std::vector<variant> result;
 		for(const auto& recruit : team_.recruits()) {
-			result.push_back(variant(recruit));
+			result.emplace_back(recruit);
 		}
 
 		return variant(result);
