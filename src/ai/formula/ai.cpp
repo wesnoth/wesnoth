@@ -290,21 +290,21 @@ variant formula_ai::execute_variant(const variant& var, ai_context &ai_, bool co
 		variant action = vars.top();
 		vars.pop();
 
-		game_logic::safe_call_callable* safe_call = try_convert_variant<game_logic::safe_call_callable>(action);
+		game_logic::safe_call_callable* safe_call = action.try_convert<game_logic::safe_call_callable>();
 
 		if(safe_call) {
 		    action = safe_call->get_main();
 		}
 
-		const move_callable* move = try_convert_variant<move_callable>(action);
-		const move_partial_callable* move_partial = try_convert_variant<move_partial_callable>(action);
-		const attack_callable* attack = try_convert_variant<attack_callable>(action);
-		const attack_analysis* _attack_analysis = try_convert_variant<attack_analysis>(action);
-		const recruit_callable* recruit_command = try_convert_variant<recruit_callable>(action);
-		const recall_callable* recall_command = try_convert_variant<recall_callable>(action);
-		const set_var_callable* set_var_command = try_convert_variant<set_var_callable>(action);
-		const set_unit_var_callable* set_unit_var_command = try_convert_variant<set_unit_var_callable>(action);
-		const fallback_callable* fallback_command = try_convert_variant<fallback_callable>(action);
+		const move_callable* move = action.try_convert<move_callable>();
+		const move_partial_callable* move_partial = action.try_convert<move_partial_callable>();
+		const attack_callable* attack = action.try_convert<attack_callable>();
+		const attack_analysis* _attack_analysis = action.try_convert<attack_analysis>();
+		const recruit_callable* recruit_command = action.try_convert<recruit_callable>();
+		const recall_callable* recall_command = action.try_convert<recall_callable>();
+		const set_var_callable* set_var_command = action.try_convert<set_var_callable>();
+		const set_unit_var_callable* set_unit_var_command = action.try_convert<set_unit_var_callable>();
+		const fallback_callable* fallback_command = action.try_convert<fallback_callable>();
 
 		if( move || move_partial ) {
 			move_result_ptr move_result;

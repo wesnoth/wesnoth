@@ -252,25 +252,4 @@ private:
 	std::map<variant,variant>::iterator map_iterator_;
 };
 
-template<typename T>
-T* convert_variant(const variant& v)
-{
-	T* res = dynamic_cast<T*>(v.mutable_callable().get());
-	if(!res) {
-		throw type_error("could not convert type");
-	}
-
-	return res;
-}
-
-template<typename T>
-T* try_convert_variant(const variant& v)
-{
-	if(!v.is_callable()) {
-		return nullptr;
-	}
-
-	return dynamic_cast<T*>(v.mutable_callable().get());
-}
-
 #endif

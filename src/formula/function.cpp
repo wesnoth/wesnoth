@@ -248,7 +248,7 @@ private:
                 const variant var0 = arguments[0]->evaluate(variables,fdb);
                 const variant var1 = arguments[1]->evaluate(variables,fdb);
 
-                const map_location location = convert_variant<location_callable>(var0)->loc();
+                const map_location location = var0.convert_to<location_callable>()->loc();
                 std::string text;
 
                 if(arguments.size() == 2) {
@@ -1437,8 +1437,8 @@ public:
 
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		const map_location loc1 = convert_variant<location_callable>(args()[0]->evaluate(variables,add_debug_info(fdb,0,"distance_between:location_A")))->loc();
-		const map_location loc2 = convert_variant<location_callable>(args()[1]->evaluate(variables,add_debug_info(fdb,1,"distance_between:location_B")))->loc();
+		const map_location loc1 = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "distance_between:location_A")).convert_to<location_callable>()->loc();
+		const map_location loc2 = args()[1]->evaluate(variables, add_debug_info(fdb, 1, "distance_between:location_B")).convert_to<location_callable>()->loc();
 		return variant(distance_between(loc1, loc2));
 	}
 };
