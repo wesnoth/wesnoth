@@ -1807,6 +1807,7 @@ void display::enable_menu(const std::string& item, bool enable)
 	}
 }
 
+int prevLabel = 0;
 void display::announce(const std::string& message, const color_t& color, int lifetime)
 {
 	font::floating_label flabel(message);
@@ -1816,7 +1817,7 @@ void display::announce(const std::string& message, const color_t& color, int lif
 	flabel.set_lifetime(lifetime);
 	flabel.set_clip_rect(map_outside_area());
 
-	font::add_floating_label(flabel);
+	prevLabel = font::add_floating_label(flabel);
 }
 
 
