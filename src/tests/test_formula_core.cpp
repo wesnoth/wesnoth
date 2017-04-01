@@ -49,7 +49,7 @@ class mock_party : public formula_callable {
 			
 			return variant(members);
 		} else if(key == "char") {
-			return variant(c_);
+			return variant(&c_);
 		} else {
 			return variant(0);
 		}
