@@ -59,7 +59,6 @@ public:
 	explicit variant(const std::string& str);
 	explicit variant(const std::map<variant, variant>& map);
 
-	variant(const variant& v);
 	variant& operator=(const variant& v);
 
 	variant operator[](size_t n) const;
@@ -149,9 +148,6 @@ public:
 	variant_iterator begin() const;
 	variant_iterator end() const;
 
-	//auto begin()->decltype(value_cast<game_logic::variant_callable>()->get_iter());
-	//auto end()->decltype(value_cast<game_logic::variant_callable>()->get_iter());
-
 	std::string serialize_to_string() const;
 	void serialize_from_string(const std::string& str);
 
@@ -183,7 +179,7 @@ private:
 
 	/**
 	 * Variant value.
-	 * Each of the constructors casts this to an appropriate helper class.
+	 * Each of the constructors initialized this with the appropriate helper class.
 	 */
 	game_logic::value_base_ptr value_;
 };

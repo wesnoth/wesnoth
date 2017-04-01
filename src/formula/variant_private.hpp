@@ -54,9 +54,7 @@ class variant_value_base;
 
 using value_base_ptr = std::shared_ptr<variant_value_base>;
 
-/**
- * Helper functions to cast a @ref variant_value_base to a new derived type.
- */
+/** Casts a @ref variant_value_base shared pointer to a new derived type. */
 template<typename T>
 static std::shared_ptr<T> value_cast(value_base_ptr ptr)
 {
@@ -68,6 +66,7 @@ static std::shared_ptr<T> value_cast(value_base_ptr ptr)
 	return res;
 }
 
+/** Casts a @ref variant_value_base reference to a new derived type. */
 template<typename T>
 static T& value_ref_cast(variant_value_base& ptr)
 {
@@ -376,7 +375,6 @@ class variant_container : public virtual variant_value_base
 public:
 	explicit variant_container(const T& container)
 		: container_(container)
-		, container_iter_(container_.begin())
 	{
 		// NOTE: add more conditions if this changes.
 		static_assert((std::is_same<variant_vector, T>::value || std::is_same<variant_map_raw, T>::value),
@@ -434,7 +432,6 @@ private:
 	std::string to_string_impl(bool annotate, bool annotate_empty, mod_func_t mod_func) const;
 
 	T container_;
-	typename T::iterator container_iter_;
 };
 
 

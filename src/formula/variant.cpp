@@ -192,9 +192,9 @@ variant_iterator& variant_iterator::operator=(const variant_iterator& that)
 bool variant_iterator::operator==(const variant_iterator& that) const
 {
 	if(type_ == TYPE_LIST) {
-		return that.type_ != TYPE_LIST ? false : list_iterator_ == that.list_iterator_;
+		return that.type_ == TYPE_LIST && list_iterator_ == that.list_iterator_;
 	} else if(type_ == TYPE_MAP) {
-		return that.type_ != TYPE_MAP  ? false : map_iterator_ == that.map_iterator_;
+		return that.type_ == TYPE_MAP && map_iterator_ == that.map_iterator_;
 	} else if(type_== TYPE_NULL && that.type_ == TYPE_NULL) {
 		return true;
 	}
@@ -252,11 +252,6 @@ variant::variant(const std::map<variant,variant>& map)
 	: value_((std::make_shared<game_logic::variant_map>(map)))
 {
 	assert(value_.get());
-}
-
-variant::variant(const variant& v)
-    : value_(v.value_)
-{
 }
 
 variant& variant::operator=(const variant& v)
@@ -372,6 +367,12 @@ bool variant::is_empty() const
 
 size_t variant::num_elements() const
 {
+	if(!is_list() && !is_map()) {
+		throw type_error(formatter() << "type error: "
+			<< " expected a list or a map but found " << type_string()
+			<< " (" << to_debug_string() << ")");
+	}
+
 	return value_->num_elements();
 }
 
@@ -682,7 +683,7 @@ variant variant::concatenate(const variant& v) const
 		return variant(res);
 	} else {
 		throw type_error(formatter() << "type error: expected two "
-			<< " lists or two maps  but found " << type_string()
+			<< " lists or two maps but found " << type_string()
 			<< " (" << to_debug_string() << ")"
 			<< " and " << v.type_string()
 			<< " (" << v.to_debug_string() << ")");
@@ -698,15 +699,13 @@ variant variant::build_range(const variant& v) const
 
 bool variant::contains(const variant& v) const
 {
-	if(type() != VARIANT_TYPE::TYPE_LIST && type() != VARIANT_TYPE::TYPE_MAP) {
-		throw type_error(formatter() << "type error: expected "
-			<< variant_type_to_string(VARIANT_TYPE::TYPE_LIST) << " or "
-			<< variant_type_to_string(VARIANT_TYPE::TYPE_MAP) << " but found "
-			<< type_string()
+	if(!is_list() && !is_map()) {
+		throw type_error(formatter() << "type error: "
+			<< " expected a list or a map but found " << type_string()
 			<< " (" << to_debug_string() << ")");
 	}
 
-	if(type() == VARIANT_TYPE::TYPE_LIST) {
+	if(is_list()) {
 		return value_cast<game_logic::variant_list>()->contains(v);
 	} else {
 		return value_cast<game_logic::variant_map>()->contains(v);
@@ -725,7 +724,7 @@ void variant::must_be(VARIANT_TYPE t) const
 void variant::must_both_be(VARIANT_TYPE t, const variant& second) const
 {
 	if(type() != t || second.type() != t) {
-		throw type_error(formatter() << "type error: expected "
+		throw type_error(formatter() << "type error: expected two "
 			<< variant_type_to_string(t) << " but found "
 			<<        type_string() << " (" <<        to_debug_string() << ")" << " and "
 			<< second.type_string() << " (" << second.to_debug_string() << ")");
