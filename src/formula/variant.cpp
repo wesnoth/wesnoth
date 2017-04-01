@@ -22,6 +22,9 @@
 
 namespace {
 
+// Static value to initialize null variants to ensure its value is never nullptr.
+game_logic::value_base_ptr null_value(new game_logic::variant_value_base);
+
 std::string variant_type_to_string(VARIANT_TYPE type)
 {
 	return VARIANT_TYPE::enum_to_string(type);
@@ -206,7 +209,7 @@ bool variant_iterator::operator!=(const variant_iterator& that) const
 
 
 variant::variant()
-	: value_()
+	: value_(null_value)
 {}
 
 variant::variant(int n)
