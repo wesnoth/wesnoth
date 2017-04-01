@@ -272,11 +272,6 @@ public:
 		return callable_;
 	}
 
-	formula_callable_ptr get_callable_mutable()
-	{
-		return mutable_callable_;
-	}
-
 	virtual std::string string_cast() const override
 	{
 		return "(object)";
@@ -296,7 +291,6 @@ public:
 
 private:
 	const_formula_callable_ptr callable_;
-	formula_callable_ptr mutable_callable_;
 };
 
 

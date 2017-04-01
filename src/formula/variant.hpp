@@ -98,12 +98,6 @@ public:
 		return value_cast<game_logic::variant_callable>()->get_callable();
 	}
 
-	game_logic::formula_callable_ptr mutable_callable() const
-	{
-		must_be(VARIANT_TYPE::TYPE_CALLABLE);
-		return value_cast<game_logic::variant_callable>()->get_callable_mutable();
-	}
-
 	template<typename T>
 	T* try_convert() const
 	{
@@ -111,13 +105,13 @@ public:
 			return nullptr;
 		}
 
-		return dynamic_cast<T*>(mutable_callable().get());
+		return dynamic_cast<T*>(const_cast<game_logic::formula_callable*>(as_callable().get()));
 	}
 
 	template<typename T>
 	T* convert_to() const
 	{
-		T* res = dynamic_cast<T*>(mutable_callable().get());
+		T* res = dynamic_cast<T*>(const_cast<game_logic::formula_callable*>(as_callable().get()));
 		if(!res) {
 			throw type_error("could not convert type");
 		}

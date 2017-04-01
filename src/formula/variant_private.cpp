@@ -66,7 +66,6 @@ std::string variant_decimal::to_string_impl(const bool sign_value) const
 
 variant_callable::variant_callable(const formula_callable* callable)
 	: callable_(callable)
-	, mutable_callable_(nullptr) // FIXME
 {}
 
 std::string variant_callable::get_serialized_string() const
