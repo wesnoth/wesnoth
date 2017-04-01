@@ -12,7 +12,7 @@
 */
 
 #include "formula/variant.hpp"
-#include "formula/variant_private.hpp"
+#include "formula/variant_value.hpp"
 
 #include "formula/callable.hpp"
 

@@ -15,7 +15,7 @@
 #ifndef VARIANT_HPP_INCLUDED
 #define VARIANT_HPP_INCLUDED
 
-#include "formula/variant_private.hpp"
+#include "formula/variant_value.hpp"
 
 #include <map>
 #include <vector>
