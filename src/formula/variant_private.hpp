@@ -115,7 +115,7 @@ public:
 	}
 
 	/** Returns debug info for the variant value. */
-	virtual std::string get_debug_string(const_formula_callable_vec& /*seen*/, bool /*verbose*/) const
+	virtual std::string get_debug_string(bool /*verbose*/) const
 	{
 		return get_serialized_string();
 	}
@@ -171,7 +171,7 @@ public:
 		return string_cast();
 	}
 
-	virtual std::string get_debug_string(const_formula_callable_vec& /*seen*/, bool /*verbose*/) const override
+	virtual std::string get_debug_string(bool /*verbose*/) const override
 	{
 		return string_cast();
 	}
@@ -234,7 +234,7 @@ public:
 		return to_string_impl(false);
 	}
 
-	virtual std::string get_debug_string(const_formula_callable_vec& /*seen*/, bool /*verbose*/) const override
+	virtual std::string get_debug_string(bool /*verbose*/) const override
 	{
 		return to_string_impl(true);
 	}
@@ -288,7 +288,7 @@ public:
 
 	virtual std::string get_serialized_string() const override;
 
-	virtual std::string get_debug_string(const_formula_callable_vec& seen, bool verbose) const override;
+	virtual std::string get_debug_string(bool verbose) const override;
 
 	virtual bool operator==(variant_value_base& other) const override;
 	virtual bool operator<=(variant_value_base& other) const override;
@@ -298,7 +298,17 @@ public:
 		return VARIANT_TYPE::TYPE_CALLABLE;
 	}
 
+	/** Enables access by variant of the debug stack. */
+	friend class ::variant;
+
 private:
+	/**
+	 * Helper to aid in printing debug output (see @ref get_debug_string). This ensures
+	 * any formula encountered more that once in evaluation is subsequently excluded
+	 * from the output unless verbose is specified true.
+	 */
+	static thread_local std::vector<const formula_callable*> seen_stack;
+
 	const_formula_callable_ptr callable_;
 };
 
@@ -330,7 +340,7 @@ public:
 
 	virtual std::string get_serialized_string() const override;
 
-	virtual std::string get_debug_string(const_formula_callable_vec& /*seen*/, bool /*verbose*/) const override
+	virtual std::string get_debug_string(bool /*verbose*/) const override
 	{
 		return string_;
 	}
@@ -402,7 +412,7 @@ public:
 
 	virtual std::string get_serialized_string() const override;
 
-	virtual std::string get_debug_string(const_formula_callable_vec& seen, bool verbose) const override;
+	virtual std::string get_debug_string(bool verbose) const override;
 
 	bool contains(const variant& member) const
 	{
