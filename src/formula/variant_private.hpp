@@ -54,6 +54,9 @@ class variant_value_base;
 
 using value_base_ptr = std::shared_ptr<variant_value_base>;
 
+/**
+ * Helper functions to cast a @ref variant_value_base to a new derived type.
+ */
 template<typename T>
 static std::shared_ptr<T> value_cast(value_base_ptr ptr)
 {
@@ -76,12 +79,13 @@ static T& value_ref_cast(variant_value_base& ptr)
 }
 
 /**
- * Base class for all variant type classes to inherit from.
+ * Base class for all variant types.
  *
  * This provides a common interface for all type classes to implement, as well as
- * giving variant a base pointer type for its value member.
+ * giving variant a base pointer type for its value member. It also serves as the
+ * implementation of the 'null' variant value.
  *
- * Do note this class should implement *no* data members.
+ * Do note this class should *not* implement any data members.
  */
 class variant_value_base
 {
@@ -92,27 +96,31 @@ public:
 		return 0;
 	}
 
+	/** Whether the stored value is considered empty or not. */
 	virtual bool is_empty() const
 	{
 		return true;
 	}
 
-	// TODO: evaluate how these three string-related functions could be combined or eliminated.
+	/** Returns the stored variant value in plain string form. */
 	virtual std::string string_cast() const
 	{
 		return "0";
 	}
 
+	/** Returns the stored variant value in formula syntax. */
 	virtual std::string get_serialized_string() const
 	{
 		return "null()";
 	}
 
+	/** Returns debug info for the variant value. */
 	virtual std::string get_debug_string(const_formula_callable_vec& /*seen*/, bool /*verbose*/) const
 	{
 		return get_serialized_string();
 	}
 
+	/** Returns a bool expression of the variant value. */
 	virtual bool as_bool() const
 	{
 		return false;
@@ -128,6 +136,7 @@ public:
 		return true;
 	}
 
+	/** Returns the id of the variant type */
 	virtual const VARIANT_TYPE get_type() const
 	{
 		return VARIANT_TYPE::TYPE_NULL;
@@ -345,7 +354,12 @@ private:
 	std::string string_;
 };
 
-
+/**
+ * Generalized implementation handling container variants.
+ *
+ * This class shouldn't usually be used directly. Instead, it's better to
+ * create a new derived class specialized to a specific container type.
+ */
 template<typename T>
 class variant_container : public virtual variant_value_base
 {
@@ -354,7 +368,7 @@ public:
 		: container_(container)
 		, container_iter_(container_.begin())
 	{
-		// NOTE: add more conditions if this changes
+		// NOTE: add more conditions if this changes.
 		static_assert((std::is_same<variant_vector, T>::value || std::is_same<variant_map_raw, T>::value),
 			"variant_container only accepts vector or map specifications.");
 	}
@@ -401,6 +415,12 @@ protected:
 	virtual std::string to_string_detail(const typename T::value_type& value, mod_func_t mod_func) const = 0;
 
 private:
+	/**
+	 * Implementation to handle string conversion for @ref string_cast, @ref get_serialized_string,
+	 * and @ref get_debug_string.
+	 *
+	 * Derived classes should provide type-specific value handling by implementing @ref to_string_detail.
+	 */
 	std::string to_string_impl(bool annotate, bool annotate_empty, mod_func_t mod_func) const;
 
 	T container_;
@@ -415,6 +435,9 @@ public:
 		: variant_container<variant_vector>(vec)
 	{}
 
+	/**
+	 * Applies the provided function to the corresponding variants in this and another list.
+	 */
 	variant list_op(value_base_ptr second, std::function<variant(variant&, variant&)> op_func);
 
 	virtual bool operator==(variant_value_base& other) const override;
