@@ -260,15 +260,6 @@ public:
 	virtual void layout_initialise(const bool full_initialisation);
 
 	/**
-	 * Throws away @ref layout_size_.
-	 *
-	 * Use with care: this function does not recurse to child widgets.
-	 *
-	 * See @ref layout_algorithm for more information.
-	 */
-	void clear_layout_size() { set_layout_size(point()); }
-
-	/**
 	 * Tries to reduce the width of a widget.
 	 *
 	 * This function tries to do it 'friendly' and only use scrollbars or
@@ -454,6 +445,15 @@ public:
 protected:
 	void set_layout_size(const point& size);
 	const point& layout_size() const;
+
+	/**
+	* Throws away @ref layout_size_.
+	*
+	* Use with care: this function does not recurse to child widgets.
+	*
+	* See @ref layout_algorithm for more information.
+	*/
+	void clear_layout_size() { set_layout_size(point()); }
 
 public:
 	void set_linked_group(const std::string& linked_group);

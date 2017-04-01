@@ -28,6 +28,15 @@
 namespace gui2
 {
 
+container_base::container_base(const unsigned canvas_count)
+	: styled_widget(canvas_count), grid_()
+{
+	grid_.set_parent(this);
+	connect_signal<event::REQUEST_PLACEMENT>(
+		std::bind(&container_base::clear_layout_size, this),
+		event::dispatcher::back_pre_child);
+}
+
 SDL_Rect container_base::get_client_rect() const
 {
 	return get_rectangle();

@@ -17,6 +17,7 @@
 #include "gui/widgets/scrollbar_container_private.hpp"
 
 #include "gui/auxiliary/find_widget.hpp"
+#include "gui/core/event/message.hpp"
 #include "gui/core/log.hpp"
 #include "gui/core/layout_exception.hpp"
 #include "gui/widgets/clickable_item.hpp"
@@ -592,10 +593,9 @@ bool scrollbar_container::content_resize_request(const bool force_sizing)
 				  == widget::visibility::invisible)) {
 
 			DBG_GUI_L << LOG_HEADER
-					  << " can't use horizontal scrollbar, ask grid.\n";
-			grid* grid = get_parent_grid();
-			assert(grid);
-			grid->relayout();
+					  << " can't use horizontal scrollbar, request placement.\n";
+			event::message message;
+			fire(event::REQUEST_PLACEMENT, *this, message);
 			return false;
 		}
 	}
@@ -608,10 +608,9 @@ bool scrollbar_container::content_resize_request(const bool force_sizing)
 				  == widget::visibility::invisible)) {
 
 			DBG_GUI_L << LOG_HEADER
-					  << " can't use vertical scrollbar, ask grid.\n";
-			grid* grid = get_parent_grid();
-			assert(grid);
-			grid->relayout();
+					  << " can't use vertical scrollbar, request placement.\n";
+			event::message message;
+			fire(event::REQUEST_PLACEMENT, *this, message);
 			return false;
 		}
 	}

@@ -44,6 +44,10 @@ grid::grid(const unsigned rows, const unsigned cols)
 	, col_grow_factor_(cols)
 	, children_(rows * cols)
 {
+	connect_signal<event::REQUEST_PLACEMENT>(
+		std::bind(&grid::request_placement, this,
+			std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4),
+		event::dispatcher::back_pre_child);
 }
 
 grid::~grid()
@@ -378,12 +382,13 @@ void grid::demand_reduce_height(const unsigned /*maximum_height*/)
 	/** @todo Implement. */
 }
 
-void grid::relayout()
+void grid::request_placement(dispatcher&, const event::ui_event, bool& handled, bool&)
 {
 	point size = get_size();
 	point best_size = calculate_best_size();
 	if(size.x >= best_size.x && size.y >= best_size.y) {
 		place(get_origin(), size);
+		handled = true;
 		return;
 	}
 
@@ -398,6 +403,7 @@ void grid::relayout()
 		if(size.x >= best_size.x && size.y >= best_size.y) {
 			// Wrapping succeeded, we still fit vertically.
 			place(get_origin(), size);
+			handled = true;
 			return;
 		} else {
 			// Wrapping failed, we no longer fit.
@@ -406,23 +412,10 @@ void grid::relayout()
 		}
 	}
 
-	// Not enough space, ask the parent grid for more.
-
-	// Throw away cached sizes of all parent widgets until the next grid.
-	widget* parent_widget = parent();
-	while(parent_widget != nullptr &&
-		dynamic_cast<grid*>(parent_widget) == nullptr)
-	{
-		parent_widget->clear_layout_size();
-		parent_widget = parent_widget->parent();
-	}
-
-	grid* parent = get_parent_grid();
-	if(parent != nullptr) {
-		parent->relayout();
-	} else {
-		get_window()->invalidate_layout();
-	}
+	/*
+	Not enough space.
+	Let the event flow higher up.
+	This is a pre-event handler, so the event flows upwards. */
 }
 
 point grid::recalculate_best_size()

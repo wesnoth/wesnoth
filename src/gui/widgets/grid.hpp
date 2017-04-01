@@ -221,13 +221,6 @@ public:
 	virtual void demand_reduce_height(const unsigned maximum_height) override;
 
 	/**
-	 * Attempts to lay out the grid without laying out the entire window.
-	 * If the grid needs to grow, asks the parent grid for more space, recursively.
-	 * If the grid is the top-level grid, falls back to laying out the whole window.
-	 */
-	void relayout();
-
-	/**
 	 * Recalculates the best size.
 	 *
 	 * This is used for scrollbar containers when they try to update their
@@ -240,6 +233,11 @@ public:
 private:
 	/** See @ref widget::calculate_best_size. */
 	virtual point calculate_best_size() const override;
+
+	/**
+	* Attempts to lay out the grid without laying out the entire window.
+	*/
+	void request_placement(dispatcher& dispatcher, const event::ui_event event, bool& handled, bool& halt);
 
 public:
 	/** See @ref widget::can_wrap. */

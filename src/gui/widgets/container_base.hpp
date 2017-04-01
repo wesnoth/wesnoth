@@ -34,11 +34,7 @@ class container_base : public styled_widget
 	friend class debug_layout_graph;
 
 public:
-	explicit container_base(const unsigned canvas_count)
-		: styled_widget(canvas_count), grid_()
-	{
-		grid_.set_parent(this);
-	}
+	explicit container_base(const unsigned canvas_count);
 
 	/**
 	 * Returns the client rect.
