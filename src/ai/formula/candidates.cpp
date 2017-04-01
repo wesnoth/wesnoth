@@ -203,7 +203,7 @@ void attack_candidate_action::evaluate(ai::formula_ai* ai, unit_map& units)
 	std::vector< const unit_callable* > enemy_units_flt;
 
 	for(variant_iterator i = filtered_my_units.begin() ; i != filtered_my_units.end() ; ++i) {
-		const unit_callable* u_callable = dynamic_cast<const unit_callable*>( (*i).as_callable().get() );
+		const unit_callable* u_callable = (*i).try_convert<const unit_callable>();
 		if(u_callable == nullptr) {
 			ERR_AI << "ERROR in "<< get_name() << "Candidate Action: Filter formula returned table that does not contain units" << std::endl;
 			return;
@@ -212,7 +212,7 @@ void attack_candidate_action::evaluate(ai::formula_ai* ai, unit_map& units)
 	}
 
 	for(variant_iterator i = filtered_enemy_units.begin() ; i != filtered_enemy_units.end() ; ++i) {
-		const unit_callable* u_callable = dynamic_cast<const unit_callable*>( (*i).as_callable().get() );
+		const unit_callable* u_callable = (*i).try_convert<const unit_callable>();
 		if(u_callable == nullptr) {
 			ERR_AI << "ERROR in "<< get_name() << "Candidate Action: Filter formula returned table that does not contain units" << std::endl;
 			return;
