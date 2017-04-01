@@ -167,7 +167,7 @@ std::string variant_container<T>::to_string_impl(bool annotate, bool annotate_em
 
 	for(const auto& member : container_) {
 		if(!first_time) {
-			ss << ",";
+			ss << ", ";
 		}
 
 		first_time = false;
