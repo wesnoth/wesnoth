@@ -30,6 +30,17 @@ std::string variant_type_to_string(VARIANT_TYPE type)
 	return VARIANT_TYPE::enum_to_string(type);
 }
 
+// Small helper function to get a standard type error message.
+std::string was_expecting(const std::string& message, const variant& v)
+{
+	std::ostringstream ss;
+
+	ss << "TYPE ERROR: expected " << message << " but found "
+	   << v.type_string() << " (" << v.to_debug_string() << ")";
+
+	return ss.str();
+}
+
 std::vector<const char*> call_stack;
 
 }
@@ -303,11 +314,9 @@ variant variant::operator[](const variant& v) const
 		}
 
 		return operator[](v.as_int());
-	} else {
-		throw type_error(formatter() << "type error: "
-			<< " expected a list or a map but found " << type_string()
-			<< " (" << to_debug_string() << ")");
 	}
+
+	throw type_error(was_expecting("a list or a map", *this));
 }
 
 variant variant::get_keys() const
@@ -368,9 +377,7 @@ bool variant::is_empty() const
 size_t variant::num_elements() const
 {
 	if(!is_list() && !is_map()) {
-		throw type_error(formatter() << "type error: "
-			<< " expected a list or a map but found " << type_string()
-			<< " (" << to_debug_string() << ")");
+		throw type_error(was_expecting("a list or a map", *this));
 	}
 
 	return value_->num_elements();
@@ -406,11 +413,9 @@ int variant::as_decimal() const
 		return value_cast<game_logic::variant_int>()->get_integer() * 1000;
 	} else if(is_null()) {
 		return 0;
-	} else {
-		throw type_error(formatter() << "type error: "
-			<< " expected integer or decimal but found " << type_string()
-			<< " (" << to_debug_string() << ")");
 	}
+
+	throw type_error(was_expecting("an integer or a decimal", *this));
 }
 
 bool variant::as_bool() const
@@ -681,13 +686,9 @@ variant variant::concatenate(const variant& v) const
 		v.must_be(VARIANT_TYPE::TYPE_STRING);
 		std::string res = as_string() + v.as_string();
 		return variant(res);
-	} else {
-		throw type_error(formatter() << "type error: expected two "
-			<< " lists or two maps but found " << type_string()
-			<< " (" << to_debug_string() << ")"
-			<< " and " << v.type_string()
-			<< " (" << v.to_debug_string() << ")");
 	}
+
+	throw type_error(was_expecting("a list or a string", *this));
 }
 
 variant variant::build_range(const variant& v) const
@@ -700,9 +701,7 @@ variant variant::build_range(const variant& v) const
 bool variant::contains(const variant& v) const
 {
 	if(!is_list() && !is_map()) {
-		throw type_error(formatter() << "type error: "
-			<< " expected a list or a map but found " << type_string()
-			<< " (" << to_debug_string() << ")");
+		throw type_error(was_expecting("a list or a map", *this));
 	}
 
 	if(is_list()) {
@@ -715,16 +714,14 @@ bool variant::contains(const variant& v) const
 void variant::must_be(VARIANT_TYPE t) const
 {
 	if(type() != t) {
-		throw type_error(formatter() << "type error: expected "
-			<< variant_type_to_string(t) << " but found "
-			<< type_string() << " (" << to_debug_string() << ")");
+		throw type_error(was_expecting(variant_type_to_string(t), *this));
 	}
 }
 
 void variant::must_both_be(VARIANT_TYPE t, const variant& second) const
 {
 	if(type() != t || second.type() != t) {
-		throw type_error(formatter() << "type error: expected two "
+		throw type_error(formatter() << "TYPE ERROR: expected two "
 			<< variant_type_to_string(t) << " but found "
 			<<        type_string() << " (" <<        to_debug_string() << ")" << " and "
 			<< second.type_string() << " (" << second.to_debug_string() << ")");
