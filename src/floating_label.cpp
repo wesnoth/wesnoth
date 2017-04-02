@@ -257,10 +257,7 @@ SDL_Rect get_floating_label_rect(int handle)
 
 floating_label_context::floating_label_context()
 {
-	surface const screen = nullptr;
-	if(screen != nullptr) {
-		draw_floating_labels(screen);
-	}
+	const surface screen = nullptr;
 
 	label_contexts.push(std::set<int>());
 }
@@ -277,10 +274,7 @@ floating_label_context::~floating_label_context()
 
 	label_contexts.pop();
 
-	surface const screen = nullptr;
-	if(screen != nullptr) {
-		undraw_floating_labels(screen);
-	}
+	const surface screen = nullptr;
 }
 
 void draw_floating_labels(surface screen)
