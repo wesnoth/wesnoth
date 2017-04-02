@@ -153,7 +153,7 @@ public:
 
 	std::string string_cast() const;
 
-	std::string to_debug_string(game_logic::const_formula_callable_vec* seen = nullptr, bool verbose = false) const;
+	std::string to_debug_string(bool verbose = false, game_logic::formula_seen_stack* seen = nullptr) const;
 
 	/** Gets string name of the current value type */
 	std::string type_string() const

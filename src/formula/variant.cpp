@@ -747,10 +747,10 @@ std::string variant::string_cast() const
 	return value_->string_cast();
 }
 
-std::string variant::to_debug_string(game_logic::const_formula_callable_vec* seen, bool verbose) const
+std::string variant::to_debug_string(bool verbose, game_logic::formula_seen_stack* seen) const
 {
 	if(!seen) {
-		game_logic::const_formula_callable_vec seen_stack;
+		game_logic::formula_seen_stack seen_stack;
 		seen = &seen_stack;
 	}
 

@@ -76,7 +76,7 @@ std::string variant_callable::get_serialized_string() const
 	return str;
 }
 
-std::string variant_callable::get_debug_string(const_formula_callable_vec& seen, bool verbose) const
+std::string variant_callable::get_debug_string(formula_seen_stack& seen, bool verbose) const
 {
 	std::ostringstream ss;
 	ss << "{";
@@ -103,7 +103,7 @@ std::string variant_callable::get_debug_string(const_formula_callable_vec& seen,
 				ss << "(writeonly) ";
 			}
 
-			ss << "-> " << callable_->query_value(input.name).to_debug_string(&seen, verbose);
+			ss << "-> " << callable_->query_value(input.name).to_debug_string(verbose, &seen);
 		}
 	} else {
 		ss << "...";
@@ -197,9 +197,9 @@ std::string variant_container<T>::get_serialized_string() const
 }
 
 template<typename T>
-std::string variant_container<T>::get_debug_string(const_formula_callable_vec& seen, bool verbose) const
+std::string variant_container<T>::get_debug_string(formula_seen_stack& seen, bool verbose) const
 {
-	return to_string_impl(true, false, [&](const variant& v) { return v.to_debug_string(&seen, verbose); });
+	return to_string_impl(true, false, [&](const variant& v) { return v.to_debug_string(verbose, &seen); });
 }
 
 // Force compilation of the following template instantiations

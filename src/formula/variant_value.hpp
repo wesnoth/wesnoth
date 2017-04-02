@@ -115,7 +115,7 @@ public:
 	}
 
 	/** Returns debug info for the variant value. */
-	virtual std::string get_debug_string(const_formula_callable_vec& /*seen*/, bool /*verbose*/) const
+	virtual std::string get_debug_string(formula_seen_stack& /*seen*/, bool /*verbose*/) const
 	{
 		return get_serialized_string();
 	}
@@ -171,7 +171,7 @@ public:
 		return string_cast();
 	}
 
-	virtual std::string get_debug_string(const_formula_callable_vec& /*seen*/, bool /*verbose*/) const override
+	virtual std::string get_debug_string(formula_seen_stack& /*seen*/, bool /*verbose*/) const override
 	{
 		return string_cast();
 	}
@@ -234,7 +234,7 @@ public:
 		return to_string_impl(false);
 	}
 
-	virtual std::string get_debug_string(const_formula_callable_vec& /*seen*/, bool /*verbose*/) const override
+	virtual std::string get_debug_string(formula_seen_stack& /*seen*/, bool /*verbose*/) const override
 	{
 		return to_string_impl(true);
 	}
@@ -288,7 +288,7 @@ public:
 
 	virtual std::string get_serialized_string() const override;
 
-	virtual std::string get_debug_string(const_formula_callable_vec& seen, bool verbose) const override;
+	virtual std::string get_debug_string(formula_seen_stack& seen, bool verbose) const override;
 
 	virtual bool operator==(variant_value_base& other) const override;
 	virtual bool operator<=(variant_value_base& other) const override;
@@ -330,7 +330,7 @@ public:
 
 	virtual std::string get_serialized_string() const override;
 
-	virtual std::string get_debug_string(const_formula_callable_vec& /*seen*/, bool /*verbose*/) const override
+	virtual std::string get_debug_string(formula_seen_stack& /*seen*/, bool /*verbose*/) const override
 	{
 		return string_;
 	}
@@ -401,7 +401,7 @@ public:
 
 	virtual std::string get_serialized_string() const override;
 
-	virtual std::string get_debug_string(const_formula_callable_vec& seen, bool verbose) const override;
+	virtual std::string get_debug_string(formula_seen_stack& seen, bool verbose) const override;
 
 	bool contains(const variant& member) const
 	{

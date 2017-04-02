@@ -25,7 +25,7 @@ class formula_debugger;
 
 using formula_callable_ptr       = std::shared_ptr<formula_callable>;
 using const_formula_callable_ptr = std::shared_ptr<const formula_callable>;
-using const_formula_callable_vec = std::vector<const formula_callable*>; // TODO: use shared_ptr
+using formula_seen_stack = std::vector<const formula_callable*>;
 }
 
 #endif
