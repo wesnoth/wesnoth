@@ -16,6 +16,7 @@
 #define CALLABLE_OBJECTS_HPP_INCLUDED
 
 #include "formula/callable.hpp"
+#include "formula/formula.hpp"
 
 #include "units/unit.hpp"
 
@@ -171,6 +172,58 @@ public:
 
 private:
 	const team& team_;
+};
+
+class set_var_callable : public action_callable {
+	std::string key_;
+	variant value_;
+	variant get_value(const std::string& key) const;
+
+	void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
+public:
+	set_var_callable(const std::string& key, const variant& value)
+		: key_(key), value_(value) {}
+
+	const std::string& key() const { return key_; }
+	variant value() const { return value_; }
+	variant execute_self(variant ctxt) override;
+};
+
+class safe_call_callable : public action_callable {
+	variant main_;
+	variant backup_;
+	expression_ptr backup_formula_;
+	variant get_value(const std::string& key) const;
+
+	void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
+public:
+	safe_call_callable(const variant& main, const expression_ptr& backup)
+		: main_(main)
+		, backup_()
+		, backup_formula_(backup) {}
+
+	const variant& get_main() const { return main_; }
+	const expression_ptr& get_backup() const { return backup_formula_; }
+
+	void set_backup_result(const variant& v) {
+		backup_ = v;
+	}
+	variant execute_self(variant ctxt) override;
+};
+
+class safe_call_result : public formula_callable {
+	const formula_callable* failed_callable_;
+	const map_location current_unit_location_;
+	const int status_;
+
+	variant get_value(const std::string& key) const;
+
+	void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
+
+public:
+	safe_call_result(const formula_callable* callable, int status,
+		const map_location& loc = map_location())
+		: failed_callable_(callable), current_unit_location_(loc), status_(status) {}
 };
 
 } // namespace game_logic

@@ -19,6 +19,9 @@
 
 #include "ai/manager.hpp"
 #include "ai/default/contexts.hpp"
+#include "ai/actions.hpp"
+#include "ai/formula/ai.hpp"
+#include "ai/composite/contexts.hpp"
 
 #include "actions/attack.hpp"
 #include "attack_prediction.hpp"
@@ -28,12 +31,16 @@
 #include "team.hpp"
 #include "units/unit.hpp"
 #include "formula/callable_objects.hpp" // for location_callable
+#include "resources.hpp"
+#include "game_board.hpp"
 
 static lg::log_domain log_ai("ai/attack");
 #define LOG_AI LOG_STREAM(info, log_ai)
 #define ERR_AI LOG_STREAM(err, log_ai)
 
 namespace ai {
+
+extern ai_context& get_ai_context(const game_logic::formula_callable* for_fai);
 
 void attack_analysis::analyze(const gamemap& map, unit_map& units,
                               const readonly_context& ai_obj,
@@ -398,6 +405,58 @@ void attack_analysis::get_inputs(game_logic::formula_input_vector* inputs) const
 	add_input(inputs, "leader_threat");
 	add_input(inputs, "uses_leader");
 	add_input(inputs, "is_surrounded");
+}
+
+variant attack_analysis::execute_self(variant ctxt) {
+	//If we get an attack analysis back we will do the first attack.
+	//Then the AI can get run again and re-choose.
+	if(movements.empty()) {
+		return variant(false);
+	}
+
+	unit_map& units = resources::gameboard->units();
+
+	//make sure that unit which has to attack is at given position and is able to attack
+	unit_map::const_iterator unit = units.find(movements.front().first);
+	if(!unit.valid() || unit->attacks_left() == 0) {
+		return variant(false);
+	}
+
+	const map_location& move_from = movements.front().first;
+	const map_location& att_src = movements.front().second;
+	const map_location& att_dst = target;
+
+	//check if target is still valid
+	unit = units.find(att_dst);
+	if(unit == units.end()) {
+		return variant(new game_logic::safe_call_result(this, attack_result::E_EMPTY_DEFENDER, move_from));
+	}
+
+	//check if we need to move
+	if(move_from != att_src) {
+		//now check if location to which we want to move is still unoccupied
+		unit = units.find(att_src);
+		if(unit != units.end()) {
+			return variant(new game_logic::safe_call_result(this, move_result::E_NO_UNIT, move_from));
+		}
+
+		ai::move_result_ptr result = get_ai_context(ctxt.as_callable()).execute_move_action(move_from, att_src);
+		if(!result->is_ok()) {
+			//move part failed
+			LOG_AI << "ERROR #" << result->get_status() << " while executing 'attack' formula function\n" << std::endl;
+			return variant(new game_logic::safe_call_result(this, result->get_status(), result->get_unit_location()));
+		}
+	}
+
+	if(units.count(att_src)) {
+		ai::attack_result_ptr result = get_ai_context(ctxt.as_callable()).execute_attack_action(movements.front().second, target, -1);
+		if(!result->is_ok()) {
+			//attack failed
+			LOG_AI << "ERROR #" << result->get_status() << " while executing 'attack' formula function\n" << std::endl;
+			return variant(new game_logic::safe_call_result(this, result->get_status()));
+		}
+	}
+	return variant(true);
 }
 
 } //end of namespace ai

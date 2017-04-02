@@ -161,6 +161,7 @@ public:
 		return type().to_string();
 	}
 
+	variant execute_variant(const variant& to_exec);
 private:
 	template<typename T>
 	std::shared_ptr<T> value_cast() const

@@ -12,9 +12,22 @@
    See the COPYING file for more details.
 */
 
+#include <cassert>
+#include <cmath>
+#include <iostream>
+#include <cstring>
+#include <stack>
+
 #include "formatter.hpp"
 #include "formula/function.hpp"
 #include "utils/math.hpp"
+#include "log.hpp"
+
+static lg::log_domain log_scripting_formula("scripting/formula");
+#define DBG_SF LOG_STREAM(debug, log_scripting_formula)
+#define LOG_SF LOG_STREAM(info, log_scripting_formula)
+#define WRN_SF LOG_STREAM(warn, log_scripting_formula)
+#define ERR_SF LOG_STREAM(err, log_scripting_formula)
 
 #include <cassert>
 #include <cmath>
@@ -755,4 +768,51 @@ std::string variant::to_debug_string(bool verbose, game_logic::formula_seen_stac
 	}
 
 	return value_->get_debug_string(*seen, verbose);
+}
+
+variant variant::execute_variant(const variant& var) {
+	std::stack<variant> vars;
+	if(var.is_list()) {
+		for(size_t n = 1; n <= var.num_elements(); ++n) {
+			vars.push(var[var.num_elements() - n]);
+		}
+	} else {
+		vars.push(var);
+	}
+
+	std::vector<variant> made_moves;
+
+	while(!vars.empty()) {
+
+		if(vars.top().is_null()) {
+			vars.pop();
+			continue;
+		}
+
+		if(game_logic::action_callable* action = vars.top().try_convert<game_logic::action_callable>()) {
+			variant res = action->execute_self(*this);
+			if(res.is_int() && res.as_bool()) {
+				made_moves.push_back(vars.top());
+			}
+		} else if(vars.top().is_string() && vars.top().as_string() == "continue") {
+//			if(infinite_loop_guardian_.continue_check()) {
+				made_moves.push_back(vars.top());
+//			} else {
+				//too many calls in a row - possible infinite loop
+//				ERR_SF << "ERROR #5001 while executing 'continue' formula keyword" << std::endl;
+
+//				if(safe_call)
+//					error = variant(new game_logic::safe_call_result(nullptr, 5001));
+//			}
+		} else if(vars.top().is_string() && (vars.top().as_string() == "end_turn" || vars.top().as_string() == "end")) {
+			break;
+		} else {
+			//this information is unneeded when evaluating formulas from commandline
+			ERR_SF << "UNRECOGNIZED MOVE: " << vars.top().to_debug_string() << std::endl;
+		}
+
+		vars.pop();
+	}
+
+	return variant(made_moves);
 }

@@ -19,6 +19,13 @@
 #include "map/map.hpp"
 #include "team.hpp"
 #include "units/formula_manager.hpp"
+#include "log.hpp"
+
+static lg::log_domain log_scripting_formula("scripting/formula");
+#define DBG_SF LOG_STREAM(debug, log_scripting_formula)
+#define LOG_SF LOG_STREAM(info, log_scripting_formula)
+#define WRN_SF LOG_STREAM(warn, log_scripting_formula)
+#define ERR_SF LOG_STREAM(err, log_scripting_formula)
 
 namespace game_logic
 {
@@ -661,6 +668,94 @@ variant team_callable::get_value(const std::string& key) const
 	}
 
 	return variant();
+}
+
+variant set_var_callable::get_value(const std::string& key) const {
+	if(key == "key") {
+		return variant(key_);
+	} else if(key == "value") {
+		return value_;
+	}
+	return variant();
+}
+
+void set_var_callable::get_inputs(std::vector<game_logic::formula_input>* inputs) const {
+	add_input(inputs, "key");
+	add_input(inputs, "value");
+}
+
+variant set_var_callable::execute_self(variant ctxt) {
+//	if(infinite_loop_guardian_.set_var_check()) {
+	if(formula_callable* obj = ctxt.try_convert<formula_callable>()) {
+		LOG_SF << "Setting variable: " << key_ << " -> " << value_.to_debug_string() << "\n";
+		obj->mutate_value(key_, value_);
+		return variant(true);
+	}
+//	}
+	//too many calls in a row - possible infinite loop
+	ERR_SF << "ERROR #" << 5001 << " while executing 'set_var' formula function" << std::endl;
+
+	return variant(new safe_call_result(this, 5001));
+}
+
+variant safe_call_callable::get_value(const std::string& key) const {
+	if(key == "main") {
+		return variant(main_);
+	} else if(key == "backup") {
+		return variant(backup_);
+	}
+	return variant();
+}
+
+void safe_call_callable::get_inputs(std::vector<game_logic::formula_input>* inputs) const {
+	add_input(inputs, "main");
+	add_input(inputs, "backup");
+}
+
+variant safe_call_callable::execute_self(variant ctxt) {
+	variant res;
+	if(action_callable* action = main_.try_convert<action_callable>()) {
+		res = action->execute_self(ctxt);
+	}
+
+	if(res.try_convert<safe_call_result>()) {
+		/*if we have safe_call formula and either error occurred, or current action
+		*was not recognized, then evaluate backup formula from safe_call and execute it
+		*during the next loop
+		*/
+
+		game_logic::map_formula_callable callable(ctxt.as_callable());
+		callable.add("error", res);
+
+		//store the result in safe_call_callable in case we would like to display it to the user
+		//for example if this formula was executed from commandline
+		backup_ = get_backup()->evaluate(callable);
+		ctxt.execute_variant(backup_);
+	}
+	return variant(true);
+}
+
+variant safe_call_result::get_value(const std::string& key) const {
+	if(key == "status") {
+		return variant(status_);
+	} else if(key == "object") {
+		if(failed_callable_ != nullptr)
+			return variant(failed_callable_);
+		else
+			return variant();
+	} else if(key == "current_loc" && current_unit_location_ != map_location()) {
+		return variant(new location_callable(current_unit_location_));
+	}
+
+	return variant();
+}
+
+void safe_call_result::get_inputs(std::vector<game_logic::formula_input>* inputs) const {
+	add_input(inputs, "status");
+	add_input(inputs, "object");
+	if(current_unit_location_ != map_location()) {
+		add_input(inputs, "current_loc");
+	}
 }
 
 } // namespace game_logic

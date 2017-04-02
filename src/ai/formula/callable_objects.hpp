@@ -45,7 +45,7 @@ private:
 	void collect_possible_attacks(std::vector<variant>& vars, map_location attacker_location, map_location attack_position) const;
 };
 
-class attack_callable : public formula_callable {
+class attack_callable : public action_callable {
 	map_location move_from_, src_, dst_;
 	battle_context bc_;
 	variant get_value(const std::string& key) const;
@@ -65,10 +65,10 @@ public:
 	 * (nondeterministic in consequent game runs) if method argument is not
 	 * attack_callable */
 	int do_compare(const game_logic::formula_callable* callable) const;
+	variant execute_self(variant ctxt) override;
 };
 
-
-class move_callable : public game_logic::formula_callable {
+class move_callable : public action_callable {
 	map_location src_, dst_;
 	variant get_value(const std::string& key) const {
 		if(key == "src") {
@@ -94,10 +94,10 @@ public:
 
 	const map_location& src() const { return src_; }
 	const map_location& dst() const { return dst_; }
+	variant execute_self(variant ctxt) override;
 };
 
-
-class move_partial_callable : public game_logic::formula_callable {
+class move_partial_callable : public action_callable {
 	map_location src_, dst_;
 	variant get_value(const std::string& key) const {
 		if(key == "src") {
@@ -123,11 +123,10 @@ public:
 
 	const map_location& src() const { return src_; }
 	const map_location& dst() const { return dst_; }
+	variant execute_self(variant ctxt) override;
 };
 
-
-
-class recall_callable : public formula_callable {
+class recall_callable : public action_callable {
 	map_location loc_;
 	std::string id_;
 
@@ -141,10 +140,10 @@ public:
 
 	const map_location& loc() const { return loc_; }
 	const std::string& id() const { return id_; }
+	variant execute_self(variant ctxt) override;
 };
 
-
-class recruit_callable : public formula_callable {
+class recruit_callable : public action_callable {
 	map_location loc_;
 	std::string type_;
 
@@ -158,26 +157,10 @@ public:
 
 	const map_location& loc() const { return loc_; }
 	const std::string& type() const { return type_; }
+	variant execute_self(variant ctxt) override;
 };
 
-
-class set_var_callable : public formula_callable {
-	std::string key_;
-	variant value_;
-	variant get_value(const std::string& key) const;
-
-	void get_inputs(formula_input_vector* inputs) const;
-public:
-	set_var_callable(const std::string& key, const variant& value)
-	  : key_(key), value_(value)
-	{}
-
-	const std::string& key() const { return key_; }
-	variant value() const { return value_; }
-};
-
-
-class set_unit_var_callable : public formula_callable {
+class set_unit_var_callable : public action_callable {
 	std::string key_;
 	variant value_;
 	map_location loc_;
@@ -192,56 +175,18 @@ public:
 	const std::string& key() const { return key_; }
 	variant value() const { return value_; }
 	const map_location loc() const { return loc_; }
+	variant execute_self(variant ctxt) override;
 };
 
-class fallback_callable : public formula_callable {
+class fallback_callable : public action_callable {
 	variant get_value(const std::string& /*key*/) const { return variant(); }
 public:
 	explicit fallback_callable() {
 	}
+	variant execute_self(variant ctxt) override;
 };
 
-class safe_call_callable : public formula_callable {
-	variant main_;
-	variant backup_;
-	expression_ptr backup_formula_;
-	variant get_value(const std::string& key) const;
-
-	void get_inputs(formula_input_vector* inputs) const;
-public:
-	safe_call_callable(const variant& main, const expression_ptr& backup)
-		: main_(main)
-		, backup_()
-		, backup_formula_(backup)
-	{}
-
-	const variant& get_main() const { return main_; }
-	const expression_ptr& get_backup() const { return backup_formula_; }
-
-	void set_backup_result(const variant& v) {
-		backup_ = v;
-	}
-};
-
-
-class safe_call_result : public formula_callable {
-	const formula_callable* failed_callable_;
-	const map_location current_unit_location_;
-	const int status_;
-
-	variant get_value(const std::string& key) const;
-
-	void get_inputs(formula_input_vector* inputs) const;
-
-public:
-	safe_call_result(const formula_callable* callable, int status,
-			    const map_location& loc = map_location() )
-	  : failed_callable_(callable), current_unit_location_(loc), status_(status)
-	{}
-};
-
-
-class move_map_callable : public game_logic::formula_callable {
+class move_map_callable : public formula_callable {
 	typedef std::multimap<map_location, map_location> move_map;
 	const move_map& srcdst_;
 	const move_map& dstsrc_;
