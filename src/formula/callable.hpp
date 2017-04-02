@@ -74,9 +74,11 @@ public:
 		serialize_to_string(str);
 	}
 
+
 	bool has_key(const std::string& key) const
 		{ return !query_value(key).is_null(); }
 
+protected:
 	template<typename T, typename K>
 	static variant convert_map(const std::map<T, K>& input_map)
 	{
@@ -118,7 +120,6 @@ public:
 		inputs->push_back(formula_input(key, access_type));
 	}
 
-protected:
 	virtual void set_value(const std::string& key, const variant& value);
 	virtual int do_compare(const formula_callable* callable) const {
 		if( type_ < callable->type_ )
@@ -145,6 +146,11 @@ protected:
 private:
 	virtual variant get_value(const std::string& key) const = 0;
 	bool has_self_;
+};
+
+class action_callable : public formula_callable {
+public:
+	virtual variant execute_self(variant ctxt) = 0;
 };
 
 class formula_callable_with_backup : public formula_callable {

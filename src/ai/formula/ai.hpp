@@ -87,6 +87,7 @@ public:
 
 	virtual void add_formula_function(const std::string& name, game_logic::const_formula_ptr formula, game_logic::const_formula_ptr precondition, const std::vector<std::string>& args);
 
+#if 0
 	//class responsible for looking for possible infinite loops when calling set_var or set_unit_var
 	class gamestate_change_observer : public events::observer
 	{
@@ -106,6 +107,7 @@ public:
 
 		bool continue_check();
 	};
+#endif
 
 	typedef game_logic::position_callable::move_map_backup move_map_backup;
 
@@ -157,17 +159,18 @@ private:
 	const config cfg_;
 	recursion_counter recursion_counter_;
 	void display_message(const std::string& msg) const;
-	variant execute_variant(const variant& var, ai_context &ai_, bool commandline=false);
 	virtual variant get_value(const std::string& key) const;
+	void set_value(const std::string& key, const variant& value);
 	virtual void get_inputs(game_logic::formula_input_vector* inputs) const;
 
 	mutable variant keeps_cache_;
 
-	gamestate_change_observer infinite_loop_guardian_;
+//	gamestate_change_observer infinite_loop_guardian_;
 	game_logic::map_formula_callable vars_;
 	game_logic::ai_function_symbol_table function_table_;
 
 	friend class ai_default;
+	friend ai_context& get_ai_context(const formula_callable* for_fai);
 };
 
 } //end of namespace ai

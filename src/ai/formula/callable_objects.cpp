@@ -16,10 +16,33 @@
 #include "attack_prediction.hpp"
 #include "game_board.hpp"
 #include "ai/formula/callable_objects.hpp"
+#include "ai/composite/contexts.hpp"
 #include "resources.hpp"
 #include "map/map.hpp"
+#include "ai/game_info.hpp"
+#include "ai/actions.hpp"
+#include "units/formula_manager.hpp"
+#include "log.hpp"
+#include "menu_events.hpp" // for fallback_ai_to_human_exception
+
+static lg::log_domain log_formula_ai("ai/engine/fai");
+#define DBG_AI LOG_STREAM(debug, log_formula_ai)
+#define LOG_AI LOG_STREAM(info, log_formula_ai)
+#define WRN_AI LOG_STREAM(warn, log_formula_ai)
+#define ERR_AI LOG_STREAM(err, log_formula_ai)
+
+namespace ai {
+
+ai_context& get_ai_context(const game_logic::formula_callable* for_fai) {
+	const formula_ai* fai = dynamic_cast<const formula_ai*>(for_fai);
+	assert(fai != nullptr); // Why not just use dynamic_cast<formula_ai&> instead then?
+	return *const_cast<formula_ai*>(fai)->ai_ptr_;
+}
+
+}
 
 namespace game_logic {
+	using namespace ai;
 
 variant move_map_callable::get_value(const std::string& key) const
 {
@@ -63,6 +86,18 @@ int move_callable::do_compare(const formula_callable* callable) const
 	return dst_.do_compare(other_dst);
 }
 
+variant move_callable::execute_self(variant ctxt) {
+	ai_context& ai = get_ai_context(ctxt.as_callable());
+	move_result_ptr move_result = ai.execute_move_action(src_, dst_, true);
+
+	if(!move_result->is_ok()) {
+		LOG_AI << "ERROR #" << move_result->get_status() << " while executing 'move' formula function\n" << std::endl;
+		return variant(new safe_call_result(this, move_result->get_status(), move_result->get_unit_location()));
+	}
+
+	return variant(move_result->is_gamestate_changed());
+}
+
 int move_partial_callable::do_compare(const formula_callable* callable) const
 {
 	const move_partial_callable* mv_callable = dynamic_cast<const move_partial_callable*>(callable);
@@ -78,6 +113,18 @@ int move_partial_callable::do_compare(const formula_callable* callable) const
 	}
 
 	return dst_.do_compare(other_dst);
+}
+
+variant move_partial_callable::execute_self(variant ctxt) {
+	ai_context& ai = get_ai_context(ctxt.as_callable());
+	move_result_ptr move_result = ai.execute_move_action(src_, dst_, false);
+
+	if(!move_result->is_ok()) {
+		LOG_AI << "ERROR #" << move_result->get_status() << " while executing 'move_partial' formula function\n" << std::endl;
+		return variant(new safe_call_result(this, move_result->get_status(), move_result->get_unit_location()));
+	}
+
+	return variant(move_result->is_gamestate_changed());
 }
 
 variant position_callable::get_value(const std::string& key) const {
@@ -167,6 +214,35 @@ int attack_callable::do_compare(const game_logic::formula_callable* callable)
 	return this->defender_weapon() - other_def_weapon;
 }
 
+variant attack_callable::execute_self(variant ctxt) {
+	ai_context& ai = get_ai_context(ctxt.as_callable());
+	bool gamestate_changed = false;
+	move_result_ptr move_result;
+
+	if(move_from_ != src_) {
+		move_result = ai.execute_move_action(move_from_, src_, false);
+		gamestate_changed |= move_result->is_gamestate_changed();
+
+		if(!move_result->is_ok()) {
+			//move part failed
+			LOG_AI << "ERROR #" << move_result->get_status() << " while executing 'attack' formula function\n" << std::endl;
+			return variant(new safe_call_result(this, move_result->get_status(), move_result->get_unit_location()));
+		}
+	}
+
+	if(!move_result || move_result->is_ok()) {
+		//if move wasn't done at all or was done successfully
+		attack_result_ptr attack_result = ai.execute_attack_action(src_, dst_, weapon());
+		gamestate_changed |= attack_result->is_gamestate_changed();
+		if(!attack_result->is_ok()) {
+			//attack failed
+			LOG_AI << "ERROR #" << attack_result->get_status() << " while executing 'attack' formula function\n" << std::endl;
+			return variant(new safe_call_result(this, attack_result->get_status()));
+		}
+	}
+
+	return variant(gamestate_changed);
+}
 
 variant attack_map_callable::get_value(const std::string& key) const {
 	if(key == "attacks") {
@@ -231,7 +307,19 @@ void recall_callable::get_inputs(formula_input_vector* inputs) const {
 	add_input(inputs, "loc");
 }
 
+variant recall_callable::execute_self(variant ctxt) {
+	ai_context& ai = get_ai_context(ctxt.as_callable());
+	recall_result_ptr recall_result = ai.check_recall_action(id_, loc_);
 
+	if(recall_result->is_ok()) {
+		recall_result->execute();
+	} else {
+		LOG_AI << "ERROR #" << recall_result->get_status() << " while executing 'recall' formula function\n" << std::endl;
+		return variant(new safe_call_result(this, recall_result->get_status()));
+	}
+
+	return variant(recall_result->is_gamestate_changed());
+}
 
 variant recruit_callable::get_value(const std::string& key) const {
 	if( key == "unit_type")
@@ -246,22 +334,23 @@ void recruit_callable::get_inputs(formula_input_vector* inputs) const {
 	add_input(inputs, "recruit_loc");
 }
 
+variant recruit_callable::execute_self(variant ctxt) {
+	ai_context& ai = get_ai_context(ctxt.as_callable());
+	recruit_result_ptr recruit_result = ai.check_recruit_action(type_, loc_);
 
-variant set_var_callable::get_value(const std::string& key) const {
-	if(key == "key")
-		return variant(key_);
+	//is_ok()==true means that the action is successful (eg. no unexpected events)
+	//is_ok() must be checked or the code will complain :)
+	if(recruit_result->is_ok()) {
+		recruit_result->execute();
+	} else {
+		LOG_AI << "ERROR #" << recruit_result->get_status() << " while executing 'recruit' formula function\n" << std::endl;
+		return variant(new safe_call_result(this, recruit_result->get_status()));
+	}
 
-	if(key == "value")
-		return value_;
-
-	return variant();
+	//is_gamestate_changed()==true means that the game state was somehow changed by action.
+	//it is believed that during a turn, a game state can change only a finite number of times
+	return variant(recruit_result->is_gamestate_changed());
 }
-
-void set_var_callable::get_inputs(formula_input_vector* inputs) const {
-	add_input(inputs, "key");
-	add_input(inputs, "value");
-}
-
 
 variant set_unit_var_callable::get_value(const std::string& key) const {
 	if(key == "loc")
@@ -282,45 +371,35 @@ void set_unit_var_callable::get_inputs(formula_input_vector* inputs) const {
 	add_input(inputs, "value");
 }
 
+variant set_unit_var_callable::execute_self(variant ctxt) {
+	int status = 0;
+	unit_map::iterator unit;
+	unit_map& units = resources::gameboard->units();
 
-variant safe_call_callable::get_value(const std::string& key) const {
-	if(key == "main")
-		return variant(main_);
-
-	if(key == "backup")
-		return variant(backup_);
-
-	return variant();
-}
-
-void safe_call_callable::get_inputs(formula_input_vector* inputs) const {
-	add_input(inputs, "main");
-	add_input(inputs, "backup");
-}
-
-
-variant safe_call_result::get_value(const std::string& key) const {
-	if(key == "status")
-		return variant(status_);
-
-	if(key == "object") {
-		if( failed_callable_ != nullptr)
-			return variant(failed_callable_);
-		else
-			return variant();
+/*	if(!infinite_loop_guardian_.set_unit_var_check()) {
+		status = 5001; //exceeded nmber of calls in a row - possible infinite loop
+	} else*/ if((unit = units.find(loc_)) == units.end()) {
+		status = 5002; //unit not found
+	} else if(unit->side() != get_ai_context(ctxt.as_callable()).get_side()) {
+		status = 5003;//unit does not belong to our side
 	}
 
-	if(key == "current_loc" && current_unit_location_ != map_location())
-		return variant(new location_callable(current_unit_location_));
+	if(status == 0) {
+		LOG_AI << "Setting unit variable: " << key_ << " -> " << value_.to_debug_string() << "\n";
+		unit->formula_manager().add_formula_var(key_, value_);
+		return variant(true);
+	}
 
-	return variant();
+	ERR_AI << "ERROR #" << status << " while executing 'set_unit_var' formula function" << std::endl;
+	return variant(new safe_call_result(this, status));
 }
 
-void safe_call_result::get_inputs(formula_input_vector* inputs) const {
-	add_input(inputs, "status");
-	add_input(inputs, "object");
-	if( current_unit_location_ != map_location() )
-		add_input(inputs, "current_loc");
+variant fallback_callable::execute_self(variant) {
+//	if(get_recursion_count() < recursion_counter::MAX_COUNTER_VALUE) {
+		//we want give control of the side to human for the rest of this turn
+		throw fallback_ai_to_human_exception();
+//	}
+	return variant(false);
 }
 
 }

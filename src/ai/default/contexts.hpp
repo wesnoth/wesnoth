@@ -55,11 +55,11 @@ struct target {
 };
 
 
-class attack_analysis : public game_logic::formula_callable
+class attack_analysis : public game_logic::action_callable
 {
 public:
 	attack_analysis() :
-		game_logic::formula_callable(),
+		game_logic::action_callable(),
 		target(),
 		movements(),
 		target_value(0.0),
@@ -138,6 +138,7 @@ public:
 	/** Is true if the units involved in this attack sequence are surrounded. */
 	bool is_surrounded;
 
+	variant execute_self(variant ctxt) override;
 };
 
 
