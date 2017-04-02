@@ -91,7 +91,7 @@ public:
 
 	const std::string& as_string() const;
 
-	game_logic::const_formula_callable_ptr as_callable() const
+	const game_logic::formula_callable* as_callable() const
 	{
 		must_be(VARIANT_TYPE::TYPE_CALLABLE);
 		return value_cast<game_logic::variant_callable>()->get_callable();
@@ -104,13 +104,13 @@ public:
 			return nullptr;
 		}
 
-		return dynamic_cast<T*>(const_cast<game_logic::formula_callable*>(as_callable().get()));
+		return dynamic_cast<T*>(const_cast<game_logic::formula_callable*>(as_callable()));
 	}
 
 	template<typename T>
 	T* convert_to() const
 	{
-		T* res = dynamic_cast<T*>(const_cast<game_logic::formula_callable*>(as_callable().get()));
+		T* res = dynamic_cast<T*>(const_cast<game_logic::formula_callable*>(as_callable()));
 		if(!res) {
 			throw type_error("could not convert type");
 		}

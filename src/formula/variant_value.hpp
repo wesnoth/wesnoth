@@ -275,7 +275,7 @@ public:
 		return 1;
 	}
 
-	const_formula_callable_ptr get_callable() const
+	const formula_callable* get_callable() const
 	{
 		return callable_;
 	}
@@ -308,7 +308,7 @@ private:
 	 */
 	static thread_local std::vector<const formula_callable*> seen_stack;
 
-	const_formula_callable_ptr callable_;
+	const formula_callable* callable_;
 };
 
 

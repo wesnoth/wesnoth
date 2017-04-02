@@ -152,7 +152,7 @@ void luaW_pushfaivariant(lua_State* L, variant val) {
 			luaW_pushlocation(L, loc_ref->loc());
 		} else {
 			// If those fail, convert generically to a map
-			const formula_callable* obj = val.as_callable().get();
+			const formula_callable* obj = val.as_callable();
 			std::vector<formula_input> inputs;
 			obj->get_inputs(&inputs);
 			lua_newtable(L);

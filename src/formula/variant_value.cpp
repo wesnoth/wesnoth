@@ -84,9 +84,9 @@ std::string variant_callable::get_debug_string(bool verbose) const
 	std::ostringstream ss;
 	ss << "{";
 
-	if(std::find(seen_stack.begin(), seen_stack.end(), callable_.get()) == seen_stack.end()) {
+	if(std::find(seen_stack.begin(), seen_stack.end(), callable_) == seen_stack.end()) {
 		if(!verbose) {
-			seen_stack.push_back(callable_.get());
+			seen_stack.push_back(callable_);
 		}
 
 		formula_input_vector v = callable_->inputs();
@@ -119,12 +119,12 @@ std::string variant_callable::get_debug_string(bool verbose) const
 
 bool variant_callable::operator==(variant_value_base& other) const
 {
-	return callable_->equals(value_ref_cast<variant_callable>(other).callable_.get());
+	return callable_->equals(value_ref_cast<variant_callable>(other).callable_);
 }
 
 bool variant_callable::operator<=(variant_value_base& other) const
 {
-	return value_ref_cast<variant_callable>(other).callable_->less(callable_.get());
+	return value_ref_cast<variant_callable>(other).callable_->less(callable_);
 }
 
 std::string variant_string::get_serialized_string() const

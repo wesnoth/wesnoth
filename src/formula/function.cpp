@@ -96,7 +96,7 @@ public:
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		variant var = args()[0]->evaluate(variables, fdb);
-		const formula_callable* callable = var.as_callable().get();
+		const formula_callable* callable = var.as_callable();
 		std::vector<formula_input> inputs = callable->inputs();
 		std::vector<variant> res;
 		for(size_t i=0; i<inputs.size(); ++i) {
@@ -1509,7 +1509,7 @@ variant formula_function_expression::execute(const formula_callable& variables, 
 		variant var = args()[n]->evaluate(variables,fdb);
 		callable.add(arg_names_[n], var);
 		if(static_cast<int>(n) == star_arg_) {
-			callable.set_fallback(var.as_callable().get());
+			callable.set_fallback(var.as_callable());
 		}
 	}
 
