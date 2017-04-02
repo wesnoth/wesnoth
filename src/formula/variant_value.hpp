@@ -447,7 +447,7 @@ public:
 	}
 
 private:
-	virtual std::string to_string_detail(const typename variant_vector::value_type& container_val, mod_func_t mod_func) const override
+	virtual std::string to_string_detail(const variant_vector::value_type& container_val, mod_func_t mod_func) const override
 	{
 		return mod_func(container_val);
 	}
@@ -470,7 +470,7 @@ public:
 	}
 
 private:
-	virtual std::string to_string_detail(const typename variant_map_raw::value_type& container_val, mod_func_t mod_func) const override;
+	virtual std::string to_string_detail(const variant_map_raw::value_type& container_val, mod_func_t mod_func) const override;
 };
 
 using variant_container_vector = variant_container<variant_vector>;

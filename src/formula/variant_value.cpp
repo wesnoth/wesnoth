@@ -256,7 +256,7 @@ bool variant_list::operator<=(variant_value_base& other) const
 	return num_elements() <= other.num_elements();
 }
 
-std::string variant_map::to_string_detail(const typename variant_map_raw::value_type& container_val, mod_func_t mod_func) const
+std::string variant_map::to_string_detail(const variant_map_raw::value_type& container_val, mod_func_t mod_func) const
 {
 	std::ostringstream ss;
 
