@@ -56,7 +56,7 @@ std::string function_expression::str() const
 	return s.str();
 }
 
-namespace {
+namespace builtins {
 
 class debug_function : public function_expression {
 public:
@@ -1456,7 +1456,34 @@ private:
 	}
 };
 
-}
+} // namespace builtins
+
+namespace actions {
+
+class safe_call_function : public function_expression {
+public:
+	explicit safe_call_function(const args_list& args)
+		: function_expression("safe_call", args, 2, 2) {}
+private:
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		const variant main = args()[0]->evaluate(variables, fdb);
+		const expression_ptr backup_formula = args()[1];
+
+		return variant(new safe_call_callable(main, backup_formula));
+	}
+};
+
+class set_var_function : public function_expression {
+public:
+	explicit set_var_function(const args_list& args)
+		: function_expression("set_var", args, 2, 2) {}
+private:
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		return variant(new set_var_callable(args()[0]->evaluate(variables, add_debug_info(fdb, 0, "set_var:key")).as_string(), args()[1]->evaluate(variables, add_debug_info(fdb, 1, "set_var:value"))));
+	}
+};
+
+} // namespace actions
 
 variant key_value_pair::get_value(const std::string& key) const
 {
@@ -1535,6 +1562,12 @@ function_expression_ptr user_formula_function::generate_function_expression(cons
 	return function_expression_ptr(new formula_function_expression(name_, args, formula_, precondition_, args_));
 }
 
+function_symbol_table::function_symbol_table(function_symbol_table* parent) : parent(parent) {}
+
+function_symbol_table::~function_symbol_table() {
+	if(parent) delete parent;
+}
+
 void function_symbol_table::add_function(const std::string& name, formula_function_ptr fcn)
 {
 	custom_formulas_[name] = fcn;
@@ -1547,26 +1580,36 @@ expression_ptr function_symbol_table::create_function(const std::string& fn, con
 		return i->second->generate_function_expression(args);
 	}
 
-	return expression_ptr();
+	expression_ptr res((parent ? parent : get_builtins())->create_function(fn, args));
+	if(res) {
+		return res;
+	}
+
+	throw formula_error("Unknown function: " + fn, "", "", 0);
 }
 
-std::vector<std::string> function_symbol_table::get_function_names() const
+std::set<std::string> function_symbol_table::get_function_names() const
 {
-	std::vector<std::string> res;
+	std::set<std::string> res;
+	if(parent) {
+		res = parent->get_function_names();
+	} else if(this != get_builtins()) {
+		res = get_builtins()->get_function_names();
+	}
 	for(functions_map::const_iterator iter = custom_formulas_.begin(); iter != custom_formulas_.end(); ++iter ) {
-		res.push_back((*iter).first);
+		res.insert((*iter).first);
 	}
 	return res;
 }
 
-namespace {
+#define FUNCTION(name) functions_table.add_function(#name, \
+			formula_function_ptr(new builtin_formula_function<name##_function>(#name)))
 
-function_symbol_table& get_functions_map() {
+function_symbol_table* function_symbol_table::get_builtins() {
 	static function_symbol_table functions_table;
 
 	if(functions_table.empty()) {
-#define FUNCTION(name) functions_table.add_function(#name, \
-			formula_function_ptr(new builtin_formula_function<name##_function>(#name)))
+		using namespace builtins;
 		FUNCTION(debug);
 		FUNCTION(dir);
 		FUNCTION(if);
@@ -1627,36 +1670,16 @@ function_symbol_table& get_functions_map() {
 		FUNCTION(pi);
 		FUNCTION(hypot);
 		FUNCTION(type);
-#undef FUNCTION
 	}
 
-	return functions_table;
+	return &functions_table;
 }
 
-}
-
-expression_ptr create_function(const std::string& fn,
-                               const std::vector<expression_ptr>& args,
-							   const function_symbol_table* symbols)
-{
-	if(symbols) {
-		expression_ptr res(symbols->create_function(fn, args));
-		if(res) {
-			return res;
-		}
-	}
-
-	expression_ptr res(get_functions_map().create_function(fn, args));
-	if(!res) {
-		throw formula_error("Unknown function: " + fn, "", "", 0);
-	}
-
-	return res;
-}
-
-std::vector<std::string> builtin_function_names()
-{
-	return get_functions_map().get_function_names();
+action_function_symbol_table::action_function_symbol_table() {
+	using namespace actions;
+	function_symbol_table& functions_table = *this;
+	FUNCTION(safe_call);
+	FUNCTION(set_var);
 }
 
 }

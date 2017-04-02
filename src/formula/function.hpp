@@ -19,6 +19,8 @@
 #include "formula/formula.hpp"
 #include "formula/callable.hpp"
 
+#include <set>
+
 namespace game_logic {
 
 class formula_expression {
@@ -134,19 +136,22 @@ typedef std::shared_ptr<formula_function> formula_function_ptr;
 typedef std::map<std::string, formula_function_ptr> functions_map;
 
 class function_symbol_table {
+	function_symbol_table* parent = nullptr;
 	functions_map custom_formulas_;
 public:
+	explicit function_symbol_table(function_symbol_table* parent = nullptr);
+	~function_symbol_table();
 	void add_function(const std::string& name, formula_function_ptr fcn);
 	expression_ptr create_function(const std::string& fn, const std::vector<expression_ptr>& args) const;
-	std::vector<std::string> get_function_names() const;
+	std::set<std::string> get_function_names() const;
 	bool empty() {return custom_formulas_.empty();}
+	static function_symbol_table* get_builtins();
 };
 
-expression_ptr create_function(const std::string& fn,
-                               const std::vector<expression_ptr>& args,
-							   const function_symbol_table* symbols);
-std::vector<std::string> builtin_function_names();
-
+class action_function_symbol_table : public function_symbol_table {
+public:
+	action_function_symbol_table();
+};
 
 class wrapper_formula : public formula_expression {
 public:

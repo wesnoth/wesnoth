@@ -1133,18 +1133,6 @@ private:
 };
 
 
-class set_var_function : public function_expression {
-public:
-	explicit set_var_function(const args_list& args)
-	  : function_expression("set_var", args, 2, 2)
-	{}
-private:
-	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		return variant(new set_var_callable(args()[0]->evaluate(variables,add_debug_info(fdb,0,"set_var:key")).as_string(), args()[1]->evaluate(variables,add_debug_info(fdb,1,"set_var:value"))));
-	}
-};
-
-
 class set_unit_var_function : public function_expression {
 public:
 	explicit set_unit_var_function(const args_list& args)
@@ -1188,21 +1176,6 @@ private:
 			return variant();
 		}
 		return variant(new attack_callable(move_from, src, dst, weapon));
-	}
-};
-
-
-class safe_call_function : public function_expression {
-public:
-	explicit safe_call_function(const args_list& args)
-	  : function_expression("safe_call", args, 2, 2)
-	{}
-private:
-	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		const variant main = args()[0]->evaluate(variables,fdb);
-		const expression_ptr backup_formula = args()[1];
-
-		return variant(new safe_call_callable(main, backup_formula));
 	}
 };
 
@@ -1623,7 +1596,7 @@ public:
 #define FUNCTION(name) add_function(#name, formula_function_ptr( \
 	new builtin_formula_function<name##_function>(#name)))
 
-ai_function_symbol_table::ai_function_symbol_table(ai::formula_ai& ai) {
+ai_function_symbol_table::ai_function_symbol_table(ai::formula_ai& ai) : function_symbol_table(new action_function_symbol_table) {
 	FUNCTION(outcomes);
 	//AI_FUNCTION(evaluate_for_position);
 	FUNCTION(move);
@@ -1632,14 +1605,12 @@ ai_function_symbol_table::ai_function_symbol_table(ai::formula_ai& ai) {
 	AI_FUNCTION(rate_action);
 	FUNCTION(recall);
 	FUNCTION(recruit);
-	FUNCTION(safe_call);
 	FUNCTION(get_unit_type);
 	AI_FUNCTION(is_avoided_location);
 	FUNCTION(is_village);
 	AI_FUNCTION(is_unowned_village);
 	FUNCTION(unit_at);
 	AI_FUNCTION(unit_moves);
-	FUNCTION(set_var);
 	FUNCTION(set_unit_var);
 	FUNCTION(fallback);
 	FUNCTION(units_can_reach);
