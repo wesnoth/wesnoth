@@ -137,9 +137,10 @@ public:
 	}
 
 	/** Returns the id of the variant type */
-	virtual const VARIANT_TYPE get_type() const
+	virtual const VARIANT_TYPE& get_type() const
 	{
-		return VARIANT_TYPE::TYPE_NULL;
+		static VARIANT_TYPE type = VARIANT_TYPE::TYPE_NULL;
+		return type;
 	}
 };
 
@@ -186,9 +187,10 @@ public:
 		return value_ <= value_ref_cast<variant_int>(other).value_;
 	}
 
-	virtual const VARIANT_TYPE get_type() const override
+	virtual const VARIANT_TYPE& get_type() const override
 	{
-		return VARIANT_TYPE::TYPE_INT;
+		static VARIANT_TYPE type = VARIANT_TYPE::TYPE_INT;
+		return type;
 	}
 
 private:
@@ -249,9 +251,10 @@ public:
 		return value_ <= value_ref_cast<variant_decimal>(other).value_;
 	}
 
-	virtual const VARIANT_TYPE get_type() const override
+	virtual const VARIANT_TYPE& get_type() const override
 	{
-		return VARIANT_TYPE::TYPE_DECIMAL;
+		static VARIANT_TYPE type = VARIANT_TYPE::TYPE_DECIMAL;
+		return type;
 	}
 
 private:
@@ -293,9 +296,10 @@ public:
 	virtual bool operator==(variant_value_base& other) const override;
 	virtual bool operator<=(variant_value_base& other) const override;
 
-	virtual const VARIANT_TYPE get_type() const override
+	virtual const VARIANT_TYPE& get_type() const override
 	{
-		return VARIANT_TYPE::TYPE_CALLABLE;
+		static VARIANT_TYPE type = VARIANT_TYPE::TYPE_CALLABLE;
+		return type;
 	}
 
 private:
@@ -345,9 +349,10 @@ public:
 		return string_ <= value_ref_cast<variant_string>(other).string_;
 	}
 
-	virtual const VARIANT_TYPE get_type() const override
+	virtual const VARIANT_TYPE& get_type() const override
 	{
-		return VARIANT_TYPE::TYPE_STRING;
+		static VARIANT_TYPE type = VARIANT_TYPE::TYPE_STRING;
+		return type;
 	}
 
 private:
@@ -441,9 +446,10 @@ public:
 	virtual bool operator==(variant_value_base& other) const override;
 	virtual bool operator<=(variant_value_base& other) const override;
 
-	virtual const VARIANT_TYPE get_type() const override
+	virtual const VARIANT_TYPE& get_type() const override
 	{
-		return VARIANT_TYPE::TYPE_LIST;
+		static VARIANT_TYPE type = VARIANT_TYPE::TYPE_LIST;
+		return type;
 	}
 
 private:
@@ -464,9 +470,10 @@ public:
 	virtual bool operator==(variant_value_base& other) const override;
 	virtual bool operator<=(variant_value_base& other) const override;
 
-	virtual const VARIANT_TYPE get_type() const override
+	virtual const VARIANT_TYPE& get_type() const override
 	{
-		return VARIANT_TYPE::TYPE_MAP;
+		static VARIANT_TYPE type = VARIANT_TYPE::TYPE_MAP;
+		return type;
 	}
 
 private:
