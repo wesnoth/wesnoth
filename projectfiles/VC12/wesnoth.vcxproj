@@ -1273,6 +1273,14 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Formula\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Formula\</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="..\..\src\formula\variant_value.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Formula\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Formula\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Formula\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Formula\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Formula\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Formula\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\game_board.cpp" />
     <ClCompile Include="..\..\src\game_classification.cpp" />
     <ClCompile Include="..\..\src\game_config_manager.cpp" />
@@ -4055,6 +4063,7 @@
     <ClInclude Include="..\..\src\formula\string_utils.hpp" />
     <ClInclude Include="..\..\src\formula\tokenizer.hpp" />
     <ClInclude Include="..\..\src\formula\variant.hpp" />
+    <ClInclude Include="..\..\src\formula\variant_value.hpp" />
     <ClInclude Include="..\..\src\game_board.hpp" />
     <ClInclude Include="..\..\src\game_classification.hpp" />
     <ClInclude Include="..\..\src\game_config_manager.hpp" />
