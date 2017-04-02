@@ -86,11 +86,8 @@ public:
 private:
 	variant execute(const formula_callable& /*variables*/, formula_debugger * /*fdb*/) const {
 		std::vector<variant> res;
-		std::vector<std::string> function_names = builtin_function_names();
-		std::vector<std::string> more_function_names = symbols_->get_function_names();
-		function_names.insert(function_names.end(), more_function_names.begin(), more_function_names.end());
-		for(size_t i = 0; i < function_names.size(); i++) {
-			res.emplace_back(function_names[i]);
+		for(const std::string& fcn_name : symbols_->get_function_names()) {
+			res.emplace_back(fcn_name);
 		}
 		return variant(res);
 	}
@@ -1001,6 +998,12 @@ expression_ptr parse_expression(const token* i1, const token* i2, function_symbo
 		throw formula_error("Empty expression", "", *i1->filename, i1->line_number);
 	}
 
+	std::unique_ptr<function_symbol_table> temp_functions;
+	if(!symbols) {
+		temp_functions.reset(new function_symbol_table(function_symbol_table::get_builtins()));
+		symbols = temp_functions.get();
+	}
+
 	const token* begin = i1, *end = i2;	//these are used for error reporting
 
 	if(i1->type == TOKEN_KEYWORD &&
@@ -1153,7 +1156,7 @@ expression_ptr parse_expression(const token* i1, const token* i2, function_symbo
 				std::vector<expression_ptr> args;
 				parse_args(i1+2,i2-1,&args,symbols);
 				try{
-					return create_function(std::string(i1->begin,i1->end),args,symbols);
+					return symbols->create_function(std::string(i1->begin,i1->end),args);
 				}
 				catch(formula_error& e) {
 					throw formula_error(e.type, tokens_to_string(function_call_begin, function_call_end), *i1->filename, i1->line_number);
