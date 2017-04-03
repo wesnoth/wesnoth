@@ -712,7 +712,7 @@ struct dialog_tester<editor_edit_side>
 template<>
 struct dialog_tester<formula_debugger>
 {
-	game_logic::formula_debugger debugger;
+	wfl::formula_debugger debugger;
 	formula_debugger* create()
 	{
 		return new formula_debugger(debugger);
