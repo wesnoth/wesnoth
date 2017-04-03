@@ -174,7 +174,7 @@ BOOST_AUTO_TEST_CASE(test_formula_containers) {
 }
 
 BOOST_AUTO_TEST_CASE(test_formula_tokenizer) {
-	using namespace formula_tokenizer;
+	using namespace wfl::tokenizer;
 	std::string test = "[(abc + 4 * (5+3))^2.0, functions, '[']thing[']']";
 	std::string::const_iterator i1 = test.begin();
 	std::string::const_iterator i2 = test.end();
