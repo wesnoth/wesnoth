@@ -16,7 +16,7 @@
 
 #include "formula/callable.hpp"
 
-namespace game_logic
+namespace wfl
 {
 
 variant variant_int::build_range_variant(int limit) const
@@ -277,4 +277,4 @@ bool variant_map::less_than(variant_value_base& other) const
 	return get_container() < value_ref_cast<variant_map>(other).get_container();
 }
 
-} // namespace game_logic
+} // namespace wfl

@@ -991,11 +991,11 @@ namespace { // Helpers for set_config()
 			return;
 		}
 		gui2::typed_formula<int> formula(formula_str);
-		game_logic::map_formula_callable original;
+		wfl::map_formula_callable original;
 		boost::sregex_iterator m(formula_str.begin(), formula_str.end(), fai_identifier);
 		for (const boost::sregex_iterator::value_type& p : std::make_pair(m, boost::sregex_iterator())) {
 			const std::string var_name = p.str();
-			variant val(original_cfg[var_name].to_int(default_val));
+			wfl::variant val(original_cfg[var_name].to_int(default_val));
 			original.add(var_name, val);
 		}
 		temp_cfg[new_key] = formula(original);

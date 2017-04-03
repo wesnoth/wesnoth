@@ -21,7 +21,7 @@
 
 #include <cmath>
 
-using namespace game_logic;
+using namespace wfl;
 
 BOOST_AUTO_TEST_SUITE(formula_function)
 

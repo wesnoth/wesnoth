@@ -56,7 +56,7 @@ void progress_bar::set_percentage(unsigned percentage)
 
 		for(auto & c : get_canvases())
 		{
-			c.set_variable("percentage", variant(percentage));
+			c.set_variable("percentage", wfl::variant(percentage));
 		}
 
 		set_is_dirty(true);

@@ -40,7 +40,7 @@ static lg::log_domain log_ai("ai/attack");
 
 namespace ai {
 
-extern ai_context& get_ai_context(const game_logic::formula_callable* for_fai);
+extern ai_context& get_ai_context(const wfl::formula_callable* for_fai);
 
 void attack_analysis::analyze(const gamemap& map, unit_map& units,
                               const readonly_context& ai_obj,
@@ -331,9 +331,9 @@ double attack_analysis::rating(double aggression, const readonly_context& ai_obj
 	return value;
 }
 
-variant attack_analysis::get_value(const std::string& key) const
+wfl::variant attack_analysis::get_value(const std::string& key) const
 {
-	using namespace game_logic;
+	using namespace wfl;
 	if(key == "target") {
 		return variant(new location_callable(target));
 	} else if(key == "movements") {
@@ -386,7 +386,7 @@ variant attack_analysis::get_value(const std::string& key) const
 	}
 }
 
-void attack_analysis::get_inputs(game_logic::formula_input_vector* inputs) const
+void attack_analysis::get_inputs(wfl::formula_input_vector* inputs) const
 {
 	add_input(inputs, "target");
 	add_input(inputs, "movements");
@@ -407,11 +407,11 @@ void attack_analysis::get_inputs(game_logic::formula_input_vector* inputs) const
 	add_input(inputs, "is_surrounded");
 }
 
-variant attack_analysis::execute_self(variant ctxt) {
+wfl::variant attack_analysis::execute_self(wfl::variant ctxt) {
 	//If we get an attack analysis back we will do the first attack.
 	//Then the AI can get run again and re-choose.
 	if(movements.empty()) {
-		return variant(false);
+		return wfl::variant(false);
 	}
 
 	unit_map& units = resources::gameboard->units();
@@ -419,7 +419,7 @@ variant attack_analysis::execute_self(variant ctxt) {
 	//make sure that unit which has to attack is at given position and is able to attack
 	unit_map::const_iterator unit = units.find(movements.front().first);
 	if(!unit.valid() || unit->attacks_left() == 0) {
-		return variant(false);
+		return wfl::variant(false);
 	}
 
 	const map_location& move_from = movements.front().first;
@@ -429,7 +429,7 @@ variant attack_analysis::execute_self(variant ctxt) {
 	//check if target is still valid
 	unit = units.find(att_dst);
 	if(unit == units.end()) {
-		return variant(new game_logic::safe_call_result(this, attack_result::E_EMPTY_DEFENDER, move_from));
+		return wfl::variant(new wfl::safe_call_result(this, attack_result::E_EMPTY_DEFENDER, move_from));
 	}
 
 	//check if we need to move
@@ -437,14 +437,14 @@ variant attack_analysis::execute_self(variant ctxt) {
 		//now check if location to which we want to move is still unoccupied
 		unit = units.find(att_src);
 		if(unit != units.end()) {
-			return variant(new game_logic::safe_call_result(this, move_result::E_NO_UNIT, move_from));
+			return wfl::variant(new wfl::safe_call_result(this, move_result::E_NO_UNIT, move_from));
 		}
 
 		ai::move_result_ptr result = get_ai_context(ctxt.as_callable()).execute_move_action(move_from, att_src);
 		if(!result->is_ok()) {
 			//move part failed
 			LOG_AI << "ERROR #" << result->get_status() << " while executing 'attack' formula function\n" << std::endl;
-			return variant(new game_logic::safe_call_result(this, result->get_status(), result->get_unit_location()));
+			return wfl::variant(new wfl::safe_call_result(this, result->get_status(), result->get_unit_location()));
 		}
 	}
 
@@ -453,10 +453,10 @@ variant attack_analysis::execute_self(variant ctxt) {
 		if(!result->is_ok()) {
 			//attack failed
 			LOG_AI << "ERROR #" << result->get_status() << " while executing 'attack' formula function\n" << std::endl;
-			return variant(new game_logic::safe_call_result(this, result->get_status()));
+			return wfl::variant(new wfl::safe_call_result(this, result->get_status()));
 		}
 	}
-	return variant(true);
+	return wfl::variant(true);
 }
 
 } //end of namespace ai

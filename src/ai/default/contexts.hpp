@@ -55,11 +55,11 @@ struct target {
 };
 
 
-class attack_analysis : public game_logic::action_callable
+class attack_analysis : public wfl::action_callable
 {
 public:
 	attack_analysis() :
-		game_logic::action_callable(),
+		wfl::action_callable(),
 		target(),
 		movements(),
 		target_value(0.0),
@@ -85,8 +85,8 @@ public:
 				 const move_map& enemy_dstsrc, double aggression);
 
 	double rating(double aggression, const readonly_context& ai_obj) const;
-	variant get_value(const std::string& key) const;
-	void get_inputs(game_logic::formula_input_vector* inputs) const;
+	wfl::variant get_value(const std::string& key) const;
+	void get_inputs(wfl::formula_input_vector* inputs) const;
 
 	bool attack_close(const map_location& loc) const;
 
@@ -138,7 +138,7 @@ public:
 	/** Is true if the units involved in this attack sequence are surrounded. */
 	bool is_surrounded;
 
-	variant execute_self(variant ctxt) override;
+	wfl::variant execute_self(wfl::variant ctxt) override;
 };
 
 

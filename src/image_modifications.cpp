@@ -221,14 +221,14 @@ surface wipe_alpha_modification::operator()(const surface& src) const
 }
 
 // TODO: Is this useful enough to move into formula/callable_objects?
-class pixel_callable : public game_logic::formula_callable
+class pixel_callable : public wfl::formula_callable
 {
 public:
 	pixel_callable(SDL_Point p, color_t clr, Uint32 w, Uint32 h)
 		: p(p), clr(clr), w(w), h(h)
 	{}
 
-	void get_inputs(game_logic::formula_input_vector* inputs) const override
+	void get_inputs(wfl::formula_input_vector* inputs) const override
 	{
 		add_input(inputs, "x");
 		add_input(inputs, "y");
@@ -240,8 +240,9 @@ public:
 		add_input(inputs, "width");
 	}
 
-	variant get_value(const std::string& key) const override
+	wfl::variant get_value(const std::string& key) const override
 	{
+		using wfl::variant;
 		if(key == "x") {
 			return variant(p.x);
 		} else if(key == "y") {
@@ -275,7 +276,7 @@ surface adjust_alpha_modification::operator()(const surface & src) const
 		return nullptr;
 	}
 
-	game_logic::formula new_alpha(formula_);
+	wfl::formula new_alpha(formula_);
 
 	surface nsurf(make_neutral_surface(src));
 
@@ -319,10 +320,10 @@ surface adjust_channels_modification::operator()(const surface & src) const
 		return nullptr;
 	}
 
-	game_logic::formula new_red(formulas_[0]);
-	game_logic::formula new_green(formulas_[1]);
-	game_logic::formula new_blue(formulas_[2]);
-	game_logic::formula new_alpha(formulas_[3]);
+	wfl::formula new_red(formulas_[0]);
+	wfl::formula new_green(formulas_[1]);
+	wfl::formula new_blue(formulas_[2]);
+	wfl::formula new_alpha(formulas_[3]);
 
 	surface nsurf(make_neutral_surface(src));
 

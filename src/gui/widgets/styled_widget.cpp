@@ -406,20 +406,20 @@ void styled_widget::update_canvas()
 	// set label in canvases
 	for(auto & canvas : canvas_)
 	{
-		canvas.set_variable("text", variant(label_));
-		canvas.set_variable("text_markup", variant(use_markup_));
-		canvas.set_variable("text_link_aware", variant(get_link_aware()));
+		canvas.set_variable("text", wfl::variant(label_));
+		canvas.set_variable("text_markup", wfl::variant(use_markup_));
+		canvas.set_variable("text_link_aware", wfl::variant(get_link_aware()));
 		// Possible TODO: Consider making a formula_callable for colours
 		color_t link_color = get_link_color();
-		std::vector<variant> link_color_as_list{variant(link_color.r), variant(link_color.g), variant(link_color.b), variant(link_color.a)};
-		canvas.set_variable("text_link_color", variant(link_color_as_list));
+		std::vector<wfl::variant> link_color_as_list{wfl::variant(link_color.r), wfl::variant(link_color.g), wfl::variant(link_color.b), wfl::variant(link_color.a)};
+		canvas.set_variable("text_link_color", wfl::variant(link_color_as_list));
 		canvas.set_variable("text_alignment",
-							variant(encode_text_alignment(text_alignment_)));
-		canvas.set_variable("text_maximum_width", variant(max_width));
-		canvas.set_variable("text_maximum_height", variant(max_height));
-		canvas.set_variable("text_wrap_mode", variant(get_text_ellipse_mode()));
+							wfl::variant(encode_text_alignment(text_alignment_)));
+		canvas.set_variable("text_maximum_width", wfl::variant(max_width));
+		canvas.set_variable("text_maximum_height", wfl::variant(max_height));
+		canvas.set_variable("text_wrap_mode", wfl::variant(get_text_ellipse_mode()));
 		canvas.set_variable("text_characters_per_line",
-							variant(get_characters_per_line()));
+							wfl::variant(get_characters_per_line()));
 	}
 }
 

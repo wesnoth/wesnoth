@@ -36,12 +36,14 @@
 #include <utility>                      // for pair
 #include <vector>                       // for vector
 
-class variant;
-
 namespace ai { class ai_context; }
-namespace game_logic { struct formula_error; }
 namespace pathfind { struct plain_route; }  // lines 57-57
 struct map_location;
+
+namespace wfl {
+	struct formula_error;
+	class variant;
+}
 
 #ifdef _MSC_VER
 #pragma warning(push)
@@ -49,7 +51,7 @@ struct map_location;
 #pragma warning(disable:4250)
 #endif
 
-namespace game_logic {
+namespace wfl {
 
 typedef std::pair< unit_map::unit_iterator, int> unit_formula_pair;
 
@@ -61,7 +63,7 @@ struct unit_formula_compare {
         }
 };
 
-typedef std::multiset< unit_formula_pair, game_logic::unit_formula_compare > unit_formula_set;
+typedef std::multiset< unit_formula_pair, unit_formula_compare > unit_formula_set;
 
 }
 
@@ -73,7 +75,7 @@ struct plain_route;
 
 namespace ai {
 
-class formula_ai : public readonly_context_proxy, public game_logic::formula_callable {
+class formula_ai : public readonly_context_proxy, public wfl::formula_callable {
 public:
 	formula_ai(const formula_ai&) = delete;
 	formula_ai& operator=(const formula_ai&) = delete;
@@ -85,7 +87,7 @@ public:
 
 	std::string evaluate(const std::string& formula_str);
 
-	virtual void add_formula_function(const std::string& name, game_logic::const_formula_ptr formula, game_logic::const_formula_ptr precondition, const std::vector<std::string>& args);
+	virtual void add_formula_function(const std::string& name, wfl::const_formula_ptr formula, wfl::const_formula_ptr precondition, const std::vector<std::string>& args);
 
 #if 0
 	//class responsible for looking for possible infinite loops when calling set_var or set_unit_var
@@ -109,23 +111,23 @@ public:
 	};
 #endif
 
-	typedef game_logic::position_callable::move_map_backup move_map_backup;
+	typedef wfl::position_callable::move_map_backup move_map_backup;
 
 	void swap_move_map(move_map_backup& backup);
 
-	variant get_keeps() const;
+	wfl::variant get_keeps() const;
 
 	void on_create();
 
 	int get_recursion_count() const;
 
-	const variant& get_keeps_cache() const { return keeps_cache_; }
+	const wfl::variant& get_keeps_cache() const { return keeps_cache_; }
 
 	// Check if given unit can reach another unit
 	bool can_reach_unit(map_location unit_A, map_location unit_B) const;
 
-	void handle_exception(game_logic::formula_error& e) const;
-	void handle_exception(game_logic::formula_error& e, const std::string& failed_operation) const;
+	void handle_exception(wfl::formula_error& e) const;
+	void handle_exception(wfl::formula_error& e, const std::string& failed_operation) const;
 
 	pathfind::teleport_map get_allowed_teleports(unit_map::iterator& unit_it) const;
 	pathfind::plain_route shortest_path_calculator(const map_location& src, const map_location& dst, unit_map::iterator& unit_it, pathfind::teleport_map& allowed_teleports) const;
@@ -136,38 +138,38 @@ public:
 	*   @return pointer to created function or
 	*   @retval game_logic::formula_ptr() if there were any problems
 	*/
-	game_logic::formula_ptr create_optional_formula(const std::string& formula_string);
+	wfl::formula_ptr create_optional_formula(const std::string& formula_string);
 
-	game_logic::candidate_action_ptr load_candidate_action_from_config(const config& cfg);
+	wfl::candidate_action_ptr load_candidate_action_from_config(const config& cfg);
 
 	/** Evaluate the fai candidate action */
-	void evaluate_candidate_action(game_logic::candidate_action_ptr fai_ca);
+	void evaluate_candidate_action(wfl::candidate_action_ptr fai_ca);
 
 	/**
 	 * Execute the fai candidate action
 	 * @return true if game state was changed
 	 * @return false if game state was not changed
 	 */
-	bool execute_candidate_action(game_logic::candidate_action_ptr fai_ca);
+	bool execute_candidate_action(wfl::candidate_action_ptr fai_ca);
 
 	void set_ai_context(ai_context *context);
 
-	variant make_action(game_logic::const_formula_ptr formula_, const game_logic::formula_callable& variables);
+	wfl::variant make_action(wfl::const_formula_ptr formula_, const wfl::formula_callable& variables);
 
 private:
 	ai_context *ai_ptr_;
 	const config cfg_;
 	recursion_counter recursion_counter_;
 	void display_message(const std::string& msg) const;
-	virtual variant get_value(const std::string& key) const;
-	void set_value(const std::string& key, const variant& value);
-	virtual void get_inputs(game_logic::formula_input_vector* inputs) const;
+	virtual wfl::variant get_value(const std::string& key) const;
+	void set_value(const std::string& key, const wfl::variant& value);
+	virtual void get_inputs(wfl::formula_input_vector* inputs) const;
 
-	mutable variant keeps_cache_;
+	mutable wfl::variant keeps_cache_;
 
 //	gamestate_change_observer infinite_loop_guardian_;
-	game_logic::map_formula_callable vars_;
-	game_logic::ai_function_symbol_table function_table_;
+	wfl::map_formula_callable vars_;
+	wfl::ai_function_symbol_table function_table_;
 
 	friend class ai_default;
 	friend ai_context& get_ai_context(const formula_callable* for_fai);

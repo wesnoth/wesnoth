@@ -25,7 +25,7 @@
 #include "formula/callable.hpp"
 #include "sdl/surface.hpp"
 
-class variant;
+namespace wfl { class variant; }
 
 namespace gui2
 {
@@ -71,7 +71,7 @@ public:
 		 *                        for these formulas.
 		 */
 		virtual void draw(surface& canvas, SDL_Renderer* renderer,
-		                  game_logic::map_formula_callable& variables) = 0;
+		                  wfl::map_formula_callable& variables) = 0;
 
 		bool immutable() const
 		{
@@ -163,7 +163,7 @@ public:
 		return canvas_;
 	}
 
-	void set_variable(const std::string& key, const variant& value)
+	void set_variable(const std::string& key, const wfl::variant& value)
 	{
 		variables_.add(key, value);
 		set_is_dirty(true);
@@ -200,7 +200,7 @@ private:
 	SDL_Renderer* renderer_;
 
 	/** The variables of the canvas. */
-	game_logic::map_formula_callable variables_;
+	wfl::map_formula_callable variables_;
 
 	/** The dirty state of the canvas. */
 	bool is_dirty_;

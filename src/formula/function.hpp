@@ -21,7 +21,7 @@
 
 #include <set>
 
-namespace game_logic {
+namespace wfl {
 
 class formula_expression {
 public:

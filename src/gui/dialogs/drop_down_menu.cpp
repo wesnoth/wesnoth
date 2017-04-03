@@ -105,10 +105,10 @@ void drop_down_menu::pre_show(window& window)
 {
 	window_ = &window;
 
-	window.set_variable("button_x", variant(button_pos_.x));
-	window.set_variable("button_y", variant(button_pos_.y));
-	window.set_variable("button_w", variant(button_pos_.w));
-	window.set_variable("button_h", variant(button_pos_.h));
+	window.set_variable("button_x", wfl::variant(button_pos_.x));
+	window.set_variable("button_y", wfl::variant(button_pos_.y));
+	window.set_variable("button_w", wfl::variant(button_pos_.w));
+	window.set_variable("button_h", wfl::variant(button_pos_.h));
 
 	listbox& list = find_widget<listbox>(&window, "list", true);
 

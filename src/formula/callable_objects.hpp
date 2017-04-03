@@ -23,7 +23,7 @@
 class team;
 class terrain_type;
 
-namespace game_logic
+namespace wfl
 {
 
 class terrain_callable : public formula_callable
@@ -179,7 +179,7 @@ class set_var_callable : public action_callable {
 	variant value_;
 	variant get_value(const std::string& key) const;
 
-	void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
+	void get_inputs(std::vector<formula_input>* inputs) const;
 public:
 	set_var_callable(const std::string& key, const variant& value)
 		: key_(key), value_(value) {}
@@ -195,7 +195,7 @@ class safe_call_callable : public action_callable {
 	expression_ptr backup_formula_;
 	variant get_value(const std::string& key) const;
 
-	void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
+	void get_inputs(std::vector<formula_input>* inputs) const;
 public:
 	safe_call_callable(const variant& main, const expression_ptr& backup)
 		: main_(main)
@@ -218,7 +218,7 @@ class safe_call_result : public formula_callable {
 
 	variant get_value(const std::string& key) const;
 
-	void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
+	void get_inputs(std::vector<formula_input>* inputs) const;
 
 public:
 	safe_call_result(const formula_callable* callable, int status,
@@ -226,6 +226,6 @@ public:
 		: failed_callable_(callable), current_unit_location_(loc), status_(status) {}
 };
 
-} // namespace game_logic
+} // namespace wfl
 
 #endif

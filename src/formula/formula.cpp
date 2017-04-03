@@ -20,7 +20,7 @@
 #include "random_new.hpp"
 #include "serialization/string_utils.hpp"
 
-namespace game_logic
+namespace wfl
 {
 
 const char*const formula::id_chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_";
@@ -801,7 +801,7 @@ private:
 	std::vector<substitution> subs_;
 };
 
-using namespace formula_tokenizer;
+using namespace wfl::tokenizer;
 int operator_precedence(const token& t)
 {
 	static std::map<std::string,int> precedence_map;
@@ -1224,8 +1224,6 @@ formula::formula(const std::string& text, function_symbol_table* symbols) :
 	symbols_(symbols),
 	managing_symbols(symbols == nullptr)
 {
-	using namespace formula_tokenizer;
-
 	if(symbols == nullptr) {
 		symbols_ = new function_symbol_table;
 	}
@@ -1250,7 +1248,7 @@ formula::formula(const std::string& text, function_symbol_table* symbols) :
 
 			tokens.push_back( get_token(i1,i2) );
 
-			formula_tokenizer::TOKEN_TYPE current_type = tokens.back().type;
+			TOKEN_TYPE current_type = tokens.back().type;
 
 			if(current_type == TOKEN_WHITESPACE)  {
 				tokens.pop_back();

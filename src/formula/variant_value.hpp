@@ -27,6 +27,10 @@
 #include <utility>
 #include <vector>
 
+namespace wfl
+{
+class formula_callable;
+class variant_value_base;
 class variant;
 
 /** The various types the variant class is designed to handle */
@@ -42,18 +46,12 @@ MAKE_ENUM(VARIANT_TYPE,
 
 using variant_vector = std::vector<variant>;
 using variant_map_raw = std::map<variant, variant>;
+using value_base_ptr = std::shared_ptr<variant_value_base>;
 
 struct type_error : public game::error
 {
 	explicit type_error(const std::string& str);
 };
-
-namespace game_logic
-{
-class formula_callable;
-class variant_value_base;
-
-using value_base_ptr = std::shared_ptr<variant_value_base>;
 
 /** Casts a @ref variant_value_base shared pointer to a new derived type. */
 template<typename T>
@@ -477,6 +475,6 @@ private:
 	virtual std::string to_string_detail(const variant_map_raw::value_type& container_val, mod_func_t mod_func) const override;
 };
 
-} // namespace game_logic
+} // namespace wfl
 
 #endif

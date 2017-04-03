@@ -20,7 +20,7 @@
 #include <memory>
 #include <set>
 
-namespace game_logic
+namespace wfl
 {
 
 enum FORMULA_ACCESS_TYPE { FORMULA_READ_ONLY, FORMULA_WRITE_ONLY, FORMULA_READ_WRITE };

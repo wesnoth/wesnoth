@@ -65,8 +65,8 @@ void wml_message_base::pre_show(window& window)
 {
 	set_restore(true);
 
-	window.get_canvas(1).set_variable("portrait_image", variant(portrait_));
-	window.get_canvas(1).set_variable("portrait_mirror", variant(mirror_));
+	window.get_canvas(1).set_variable("portrait_image", wfl::variant(portrait_));
+	window.get_canvas(1).set_variable("portrait_mirror", wfl::variant(mirror_));
 
 	// Set the markup
 	label& title = find_widget<label>(&window, "title", false);
@@ -150,8 +150,8 @@ void wml_message_base::post_show(window& window)
 void wml_message_double::pre_show(window& window)
 {
 	wml_message_left::pre_show(window);
-	window.get_canvas(1).set_variable("second_portrait_image", variant(second_portrait_));
-	window.get_canvas(1).set_variable("second_portrait_mirror", variant(second_mirror_));
+	window.get_canvas(1).set_variable("second_portrait_image", wfl::variant(second_portrait_));
+	window.get_canvas(1).set_variable("second_portrait_mirror", wfl::variant(second_mirror_));
 }
 
 REGISTER_DIALOG(wml_message_left)

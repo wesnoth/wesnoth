@@ -21,7 +21,7 @@
 #include "formula/debugger_fwd.hpp"
 #include "formula/debugger.hpp"
 
-namespace game_logic {
+namespace wfl {
 
 formula_debugger* add_debug_info(formula_debugger *fdb, int arg_number, const std::string& f_name)
 {
@@ -51,4 +51,4 @@ variant evaluate_formula_callback(formula_debugger &fdb, const formula &f)
 }
 
 
-} // end of namespace game_logic
+} // end of namespace wfl

@@ -149,7 +149,7 @@ widget* builder_size_lock::build() const
 
 	widget->init_grid(conf->grid);
 
-	game_logic::map_formula_callable size = get_screen_size_variables();
+	wfl::map_formula_callable size = get_screen_size_variables();
 
 	const unsigned width = width_(size);
 	const unsigned height = height_(size);

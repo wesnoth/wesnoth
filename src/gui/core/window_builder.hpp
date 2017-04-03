@@ -173,7 +173,7 @@ public:
 		typed_formula<unsigned> height;
 		typed_formula<bool> reevaluate_best_size;
 
-		game_logic::function_symbol_table functions;
+		wfl::function_symbol_table functions;
 
 		unsigned vertical_placement;
 		unsigned horizontal_placement;

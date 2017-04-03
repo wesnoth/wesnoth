@@ -33,7 +33,7 @@ static lg::log_domain log_formula_ai("ai/engine/fai");
 
 namespace ai {
 
-ai_context& get_ai_context(const game_logic::formula_callable* for_fai) {
+ai_context& get_ai_context(const wfl::formula_callable* for_fai) {
 	const formula_ai* fai = dynamic_cast<const formula_ai*>(for_fai);
 	assert(fai != nullptr); // Why not just use dynamic_cast<formula_ai&> instead then?
 	return *const_cast<formula_ai*>(fai)->ai_ptr_;
@@ -41,12 +41,11 @@ ai_context& get_ai_context(const game_logic::formula_callable* for_fai) {
 
 }
 
-namespace game_logic {
+namespace wfl {
 	using namespace ai;
 
 variant move_map_callable::get_value(const std::string& key) const
 {
-	using namespace game_logic;
 	if(key == "moves") {
 		std::vector<variant> vars;
 		for(move_map::const_iterator i = srcdst_.begin(); i != srcdst_.end(); ++i) {
@@ -186,7 +185,7 @@ void attack_callable::get_inputs(formula_input_vector* inputs) const {
 	add_input(inputs, "move_from");
 }
 
-int attack_callable::do_compare(const game_logic::formula_callable* callable)
+int attack_callable::do_compare(const wfl::formula_callable* callable)
 	const {
 	const attack_callable* a_callable = dynamic_cast<const attack_callable*>(callable);
 	if(a_callable == nullptr) {

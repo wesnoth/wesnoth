@@ -181,7 +181,7 @@ widget* builder_drawing::build() const
 
 	init_control(widget);
 
-	const game_logic::map_formula_callable& size = get_screen_size_variables();
+	const wfl::map_formula_callable& size = get_screen_size_variables();
 
 	const unsigned w = width(size);
 	const unsigned h = height(size);

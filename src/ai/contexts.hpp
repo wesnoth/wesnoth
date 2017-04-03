@@ -40,7 +40,7 @@ class team;
 class terrain_filter;  // lines 43-43
 class unit_map;
 class unit_type;  // lines 46-46
-class variant;  // lines 42-42
+namespace wfl { class variant; }
 namespace ai { class ai_context; }  // lines 51-51
 namespace ai { class unit_advancements_aspect; }
 namespace ai { template <typename T> class typesafe_aspect; }
@@ -239,7 +239,7 @@ public:
 	virtual const attacks_vector& get_attacks() const = 0;
 
 
-	virtual const variant& get_attacks_as_variant() const = 0;
+	virtual const wfl::variant& get_attacks_as_variant() const = 0;
 
 
 	virtual const terrain_filter& get_avoid() const = 0;
@@ -680,7 +680,7 @@ public:
 
 
 
-	virtual const variant& get_attacks_as_variant() const
+	virtual const wfl::variant& get_attacks_as_variant() const
 	{
 		return target_->get_attacks_as_variant();
 	}
@@ -1334,7 +1334,7 @@ public:
 	virtual const attacks_vector& get_attacks() const;
 
 
-	virtual const variant& get_attacks_as_variant() const;
+	virtual const wfl::variant& get_attacks_as_variant() const;
 
 
 	virtual const terrain_filter& get_avoid() const;

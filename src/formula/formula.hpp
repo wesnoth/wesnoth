@@ -18,7 +18,7 @@
 #include "formula/tokenizer.hpp"
 #include "formula/variant.hpp"
 
-namespace game_logic
+namespace wfl
 {
 
 class formula_callable;
@@ -58,7 +58,7 @@ public:
 
 	static formula_ptr create_optional_formula(const std::string& str, function_symbol_table* symbols=nullptr);
 	explicit formula(const std::string& str, function_symbol_table* symbols=nullptr);
-	explicit formula(const formula_tokenizer::token* i1, const formula_tokenizer::token* i2, function_symbol_table* symbols=nullptr);
+	explicit formula(const tokenizer::token* i1, const tokenizer::token* i2, function_symbol_table* symbols=nullptr);
 	~formula();
 	const std::string& str() const { return str_; }
 

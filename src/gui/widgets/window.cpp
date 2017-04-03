@@ -63,7 +63,7 @@
 
 #include "utils/functional.hpp"
 
-namespace game_logic { class function_symbol_table; }
+namespace wfl { class function_symbol_table; }
 namespace gui2 { class button; }
 
 static lg::log_domain log_gui("gui/layout");
@@ -294,7 +294,7 @@ window::window(CVideo& video,
 				 typed_formula<unsigned> w,
 				 typed_formula<unsigned> h,
 				 typed_formula<bool> reevaluate_best_size,
-				 const game_logic::function_symbol_table& functions,
+				 const wfl::function_symbol_table& functions,
 				 const bool automatic_placement,
 				 const unsigned horizontal_placement,
 				 const unsigned vertical_placement,
@@ -954,11 +954,11 @@ void window::layout()
 	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
 
 	const point mouse = get_mouse_position();
-	variables_.add("mouse_x", variant(mouse.x));
-	variables_.add("mouse_y", variant(mouse.y));
-	variables_.add("window_width", variant(0));
-	variables_.add("window_height", variant(0));
-	variables_.add("size_request_mode", variant("maximum"));
+	variables_.add("mouse_x", wfl::variant(mouse.x));
+	variables_.add("mouse_y", wfl::variant(mouse.y));
+	variables_.add("window_width", wfl::variant(0));
+	variables_.add("window_height", wfl::variant(0));
+	variables_.add("size_request_mode", wfl::variant("maximum"));
 	get_screen_size_variables(variables_);
 
 	const int maximum_width = automatic_placement_ ? maximum_width_
@@ -1090,8 +1090,8 @@ void window::layout()
 		}
 	} else {
 
-		variables_.add("window_width", variant(size.x));
-		variables_.add("window_height", variant(size.y));
+		variables_.add("window_width", wfl::variant(size.x));
+		variables_.add("window_height", wfl::variant(size.y));
 
 		while(reevaluate_best_size_(variables_, &functions_)) {
 			layout_initialise(true);
@@ -1101,17 +1101,17 @@ void window::layout()
 										   h_(variables_, &functions_));
 
 			size = get_best_size();
-			variables_.add("window_width", variant(size.x));
-			variables_.add("window_height", variant(size.y));
+			variables_.add("window_width", wfl::variant(size.x));
+			variables_.add("window_height", wfl::variant(size.y));
 		}
 
-		variables_.add("size_request_mode", variant("size"));
+		variables_.add("size_request_mode", wfl::variant("size"));
 
 		size.x = w_(variables_, &functions_);
 		size.y = h_(variables_, &functions_);
 
-		variables_.add("window_width", variant(size.x));
-		variables_.add("window_height", variant(size.y));
+		variables_.add("window_width", wfl::variant(size.x));
+		variables_.add("window_height", wfl::variant(size.y));
 
 		origin.x = x_(variables_, &functions_);
 		origin.y = y_(variables_, &functions_);

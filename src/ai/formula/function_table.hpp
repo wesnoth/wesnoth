@@ -23,7 +23,7 @@ namespace ai {
 	class formula_ai;
 }
 
-namespace game_logic {
+namespace wfl {
 
 class ai_function_symbol_table : public function_symbol_table {
 

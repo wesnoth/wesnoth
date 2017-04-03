@@ -33,10 +33,10 @@ static lg::log_domain log_scripting_formula("scripting/formula");
 #include <cmath>
 #include <memory>
 
-namespace {
+namespace wfl {
 
 // Static value to initialize null variants to ensure its value is never nullptr.
-game_logic::value_base_ptr null_value(new game_logic::variant_value_base);
+value_base_ptr null_value(new variant_value_base);
 
 std::string variant_type_to_string(VARIANT_TYPE type)
 {
@@ -55,8 +55,6 @@ std::string was_expecting(const std::string& message, const variant& v)
 }
 
 std::vector<const char*> call_stack;
-
-}
 
 void push_call_stack(const char* str)
 {
@@ -135,7 +133,7 @@ variant variant_iterator::operator*() const
 	if(type_ == TYPE_LIST) {
 		return *list_iterator_;
 	} else if(type_ == TYPE_MAP) {
-		game_logic::key_value_pair* p = new game_logic::key_value_pair(map_iterator_->first, map_iterator_->second);
+		key_value_pair* p = new key_value_pair(map_iterator_->first, map_iterator_->second);
 		variant res(p);
 		return res;
 	}
@@ -237,43 +235,43 @@ variant::variant()
 {}
 
 variant::variant(int n)
-	: value_(std::make_shared<game_logic::variant_int>(n))
+	: value_(std::make_shared<variant_int>(n))
 {
 	assert(value_.get());
 }
 
 variant::variant(int n, variant::DECIMAL_VARIANT_TYPE)
-	: value_(std::make_shared<game_logic::variant_decimal>(n))
+	: value_(std::make_shared<variant_decimal>(n))
 {
 	assert(value_.get());
 }
 
 variant::variant(double n, variant::DECIMAL_VARIANT_TYPE)
-	: value_(std::make_shared<game_logic::variant_decimal>(n))
+	: value_(std::make_shared<variant_decimal>(n))
 {
 	assert(value_.get());
 }
 
-variant::variant(const game_logic::formula_callable* callable)
-	: value_(std::make_shared<game_logic::variant_callable>(callable))
+variant::variant(const formula_callable* callable)
+	: value_(std::make_shared<variant_callable>(callable))
 {
 	assert(value_.get());
 }
 
 variant::variant(const std::vector<variant>& vec)
-    : value_((std::make_shared<game_logic::variant_list>(vec)))
+    : value_((std::make_shared<variant_list>(vec)))
 {
 	assert(value_.get());
 }
 
 variant::variant(const std::string& str)
-	: value_(std::make_shared<game_logic::variant_string>(str))
+	: value_(std::make_shared<variant_string>(str))
 {
 	assert(value_.get());
 }
 
 variant::variant(const std::map<variant,variant>& map)
-	: value_((std::make_shared<game_logic::variant_map>(map)))
+	: value_((std::make_shared<variant_map>(map)))
 {
 	assert(value_.get());
 }
@@ -293,7 +291,7 @@ variant variant::operator[](size_t n) const
 	must_be(VARIANT_TYPE::TYPE_LIST);
 
 	try {
-		return value_cast<game_logic::variant_list>()->get_container()[n];
+		return value_cast<variant_list>()->get_container()[n];
 	} catch(std::out_of_range&) {
 		throw type_error("invalid index");
 	}
@@ -306,7 +304,7 @@ variant variant::operator[](const variant& v) const
 	}
 
 	if(is_map()) {
-		auto& map = value_cast<game_logic::variant_map>()->get_container();
+		auto& map = value_cast<variant_map>()->get_container();
 
 		auto i = map.find(v);
 		if(i == map.end()) {
@@ -337,7 +335,7 @@ variant variant::get_keys() const
 	must_be(VARIANT_TYPE::TYPE_MAP);
 
 	std::vector<variant> tmp;
-	for(const auto& i : value_cast<game_logic::variant_map>()->get_container()) {
+	for(const auto& i : value_cast<variant_map>()->get_container()) {
 		tmp.push_back(i.first);
 	}
 
@@ -349,7 +347,7 @@ variant variant::get_values() const
 	must_be(VARIANT_TYPE::TYPE_MAP);
 
 	std::vector<variant> tmp;
-	for(const auto& i : value_cast<game_logic::variant_map>()->get_container()) {
+	for(const auto& i : value_cast<variant_map>()->get_container()) {
 		tmp.push_back(i.second);
 	}
 
@@ -359,11 +357,11 @@ variant variant::get_values() const
 variant_iterator variant::begin() const
 {
 	if(is_list()) {
-		return variant_iterator(value_cast<game_logic::variant_list>()->get_container().begin());
+		return variant_iterator(value_cast<variant_list>()->get_container().begin());
 	}
 
 	if(is_map()) {
-		return variant_iterator(value_cast<game_logic::variant_map>()->get_container().begin());
+		return variant_iterator(value_cast<variant_map>()->get_container().begin());
 	}
 
 	return variant_iterator();
@@ -372,11 +370,11 @@ variant_iterator variant::begin() const
 variant_iterator variant::end() const
 {
 	if(is_list()) {
-		return variant_iterator(value_cast<game_logic::variant_list>()->get_container().end());
+		return variant_iterator(value_cast<variant_list>()->get_container().end());
 	}
 
 	if(is_map()) {
-		return variant_iterator(value_cast<game_logic::variant_map>()->get_container().end());
+		return variant_iterator(value_cast<variant_map>()->get_container().end());
 	}
 
 	return variant_iterator();
@@ -399,7 +397,7 @@ size_t variant::num_elements() const
 variant variant::get_member(const std::string& name) const
 {
 	if(is_callable()) {
-		return value_cast<game_logic::variant_callable>()->get_callable()->query_value(name);
+		return value_cast<variant_callable>()->get_callable()->query_value(name);
 	}
 
 	if(name == "self") {
@@ -415,15 +413,15 @@ int variant::as_int() const
 	if(is_decimal()) { return as_decimal() / 1000; }
 
 	must_be(VARIANT_TYPE::TYPE_INT);
-	return value_cast<game_logic::variant_int>()->get_numeric_value();
+	return value_cast<variant_int>()->get_numeric_value();
 }
 
 int variant::as_decimal() const
 {
 	if(is_decimal()) {
-		return value_cast<game_logic::variant_decimal>()->get_numeric_value();
+		return value_cast<variant_decimal>()->get_numeric_value();
 	} else if(is_int()) {
-		return value_cast<game_logic::variant_int>()->get_numeric_value() * 1000;
+		return value_cast<variant_int>()->get_numeric_value() * 1000;
 	} else if(is_null()) {
 		return 0;
 	}
@@ -439,26 +437,26 @@ bool variant::as_bool() const
 const std::string& variant::as_string() const
 {
 	must_be(VARIANT_TYPE::TYPE_STRING);
-	return value_cast<game_logic::variant_string>()->get_string();
+	return value_cast<variant_string>()->get_string();
 }
 
 const std::vector<variant>& variant::as_list() const
 {
 	must_be(VARIANT_TYPE::TYPE_LIST);
-	return value_cast<game_logic::variant_list>()->get_container();
+	return value_cast<variant_list>()->get_container();
 }
 
 const std::map<variant, variant>& variant::as_map() const
 {
 	must_be(VARIANT_TYPE::TYPE_MAP);
-	return value_cast<game_logic::variant_map>()->get_container();
+	return value_cast<variant_map>()->get_container();
 }
 
 variant variant::operator+(const variant& v) const
 {
 	if(is_list() && v.is_list()) {
-		auto& list = value_cast<game_logic::variant_list>()->get_container();
-		auto& other_list = v.value_cast<game_logic::variant_list>()->get_container();
+		auto& list = value_cast<variant_list>()->get_container();
+		auto& other_list = v.value_cast<variant_list>()->get_container();
 
 		std::vector<variant> res;
 		res.reserve(list.size() + other_list.size());
@@ -475,9 +473,9 @@ variant variant::operator+(const variant& v) const
 	}
 
 	if(is_map() && v.is_map()) {
-		std::map<variant, variant> res = value_cast<game_logic::variant_map>()->get_container();
+		std::map<variant, variant> res = value_cast<variant_map>()->get_container();
 
-		for(const auto& member : v.value_cast<game_logic::variant_map>()->get_container()) {
+		for(const auto& member : v.value_cast<variant_map>()->get_container()) {
 			res[member.first] = member.second;
 		}
 
@@ -517,7 +515,7 @@ variant variant::operator*(const variant& v) const
 			long_int/=10;
 		}
 
-		return variant(static_cast<int>(long_int) , variant::DECIMAL_VARIANT );
+		return variant(static_cast<int>(long_int) , DECIMAL_VARIANT );
 	}
 
 	return variant(as_int() * v.as_int());
@@ -545,7 +543,7 @@ variant variant::operator/(const variant& v) const
 			long_int/=10;
 		}
 
-		return variant(static_cast<int>(long_int), variant::DECIMAL_VARIANT);
+		return variant(static_cast<int>(long_int), DECIMAL_VARIANT);
 	}
 
 	const int numerator = as_int();
@@ -598,7 +596,7 @@ variant variant::operator^(const variant& v) const
 variant variant::operator-() const
 {
 	if(is_decimal()) {
-		return variant(-as_decimal(), variant::DECIMAL_VARIANT);
+		return variant(-as_decimal(), DECIMAL_VARIANT);
 	}
 
 	return variant(-as_int());
@@ -657,25 +655,25 @@ bool variant::operator>(const variant& v) const
 variant variant::list_elements_add(const variant& v) const
 {
 	must_both_be(VARIANT_TYPE::TYPE_LIST, v);
-	return value_cast<game_logic::variant_list>()->list_op(v.value_, [](variant& v1, variant& v2) { return v1 + v2; });
+	return value_cast<variant_list>()->list_op(v.value_, [](variant& v1, variant& v2) { return v1 + v2; });
 }
 
 variant variant::list_elements_sub(const variant& v) const
 {
 	must_both_be(VARIANT_TYPE::TYPE_LIST, v);
-	return value_cast<game_logic::variant_list>()->list_op(v.value_, [](variant& v1, variant& v2) { return v1 - v2; });
+	return value_cast<variant_list>()->list_op(v.value_, [](variant& v1, variant& v2) { return v1 - v2; });
 }
 
 variant variant::list_elements_mul(const variant& v) const
 {
 	must_both_be(VARIANT_TYPE::TYPE_LIST, v);
-	return value_cast<game_logic::variant_list>()->list_op(v.value_, [](variant& v1, variant& v2) { return v1 * v2; });
+	return value_cast<variant_list>()->list_op(v.value_, [](variant& v1, variant& v2) { return v1 * v2; });
 }
 
 variant variant::list_elements_div(const variant& v) const
 {
 	must_both_be(VARIANT_TYPE::TYPE_LIST, v);
-	return value_cast<game_logic::variant_list>()->list_op(v.value_, [](variant& v1, variant& v2) { return v1 / v2; });
+	return value_cast<variant_list>()->list_op(v.value_, [](variant& v1, variant& v2) { return v1 / v2; });
 }
 
 variant variant::concatenate(const variant& v) const
@@ -708,7 +706,7 @@ variant variant::build_range(const variant& v) const
 {
 	must_both_be(VARIANT_TYPE::TYPE_INT, v);
 
-	return value_cast<game_logic::variant_int>()->build_range_variant(v.as_int());
+	return value_cast<variant_int>()->build_range_variant(v.as_int());
 }
 
 bool variant::contains(const variant& v) const
@@ -718,9 +716,9 @@ bool variant::contains(const variant& v) const
 	}
 
 	if(is_list()) {
-		return value_cast<game_logic::variant_list>()->contains(v);
+		return value_cast<variant_list>()->contains(v);
 	} else {
-		return value_cast<game_logic::variant_map>()->contains(v);
+		return value_cast<variant_map>()->contains(v);
 	}
 }
 
@@ -749,7 +747,7 @@ std::string variant::serialize_to_string() const
 void variant::serialize_from_string(const std::string& str)
 {
 	try {
-		*this = game_logic::formula(str).evaluate();
+		*this = formula(str).evaluate();
 	} catch(...) {
 		*this = variant(str);
 	}
@@ -760,10 +758,10 @@ std::string variant::string_cast() const
 	return value_->string_cast();
 }
 
-std::string variant::to_debug_string(bool verbose, game_logic::formula_seen_stack* seen) const
+std::string variant::to_debug_string(bool verbose, formula_seen_stack* seen) const
 {
 	if(!seen) {
-		game_logic::formula_seen_stack seen_stack;
+		formula_seen_stack seen_stack;
 		seen = &seen_stack;
 	}
 
@@ -789,7 +787,7 @@ variant variant::execute_variant(const variant& var) {
 			continue;
 		}
 
-		if(game_logic::action_callable* action = vars.top().try_convert<game_logic::action_callable>()) {
+		if(action_callable* action = vars.top().try_convert<action_callable>()) {
 			variant res = action->execute_self(*this);
 			if(res.is_int() && res.as_bool()) {
 				made_moves.push_back(vars.top());
@@ -815,4 +813,6 @@ variant variant::execute_variant(const variant& var) {
 	}
 
 	return variant(made_moves);
+}
+
 }

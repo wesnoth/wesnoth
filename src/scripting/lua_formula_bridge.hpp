@@ -19,12 +19,12 @@
 
 struct lua_State;
 
-class variant;
-namespace game_logic {
+namespace wfl {
 	class formula;
 	class function_symbol_table;
 	class formula_debugger;
 	class formula_callable;
+	class variant;
 }
 
 namespace lua_formula_bridge {
@@ -34,11 +34,11 @@ namespace lua_formula_bridge {
 	std::string register_metatables(lua_State*);
 
 	class fwrapper {
-		std::shared_ptr<game_logic::formula> formula_ptr;
+		std::shared_ptr<wfl::formula> formula_ptr;
 	public:
-		fwrapper(const std::string& code, game_logic::function_symbol_table* functions = nullptr);
+		fwrapper(const std::string& code, wfl::function_symbol_table* functions = nullptr);
 		std::string str() const;
-		variant evaluate(const game_logic::formula_callable& variables, game_logic::formula_debugger* fdb = nullptr) const;
+		wfl::variant evaluate(const wfl::formula_callable& variables, wfl::formula_debugger* fdb = nullptr) const;
 	};
 
 } // end namespace lua_formula_bridge

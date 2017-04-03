@@ -281,7 +281,7 @@ void text_box_base::cursor_timer_callback()
 	}
 
 	for(auto& tmp : get_canvases()) {
-		tmp.set_variable("cursor_alpha", variant(cursor_alpha_));
+		tmp.set_variable("cursor_alpha", wfl::variant(cursor_alpha_));
 	}
 
 	set_is_dirty(true);
@@ -296,7 +296,7 @@ void text_box_base::reset_cursor_state()
 	cursor_alpha_ = 255;
 
 	for(auto& tmp : get_canvases()) {
-		tmp.set_variable("cursor_alpha", variant(cursor_alpha_));
+		tmp.set_variable("cursor_alpha", wfl::variant(cursor_alpha_));
 	}
 
 	// Restart the blink timer.

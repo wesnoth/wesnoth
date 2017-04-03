@@ -30,10 +30,10 @@
 
 static const char formulaKey[] = "formula";
 
+using namespace wfl;
+
 void luaW_pushfaivariant(lua_State* L, variant val);
 variant luaW_tofaivariant(lua_State* L, int i);
-
-using namespace game_logic;
 
 class lua_callable : public formula_callable {
 	lua_State* mState;
@@ -240,7 +240,7 @@ int lua_formula_bridge::intf_compile_formula(lua_State* L)
 	return 1;
 }
 
-lua_formula_bridge::fwrapper::fwrapper(const std::string& code, game_logic::function_symbol_table* functions)
+lua_formula_bridge::fwrapper::fwrapper(const std::string& code, function_symbol_table* functions)
 	: formula_ptr(new formula(code, functions))
 {
 }

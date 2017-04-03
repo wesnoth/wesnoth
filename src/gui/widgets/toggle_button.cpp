@@ -105,7 +105,7 @@ void toggle_button::update_canvas()
 	std::vector<canvas>& canvases = styled_widget::get_canvases();
 	for(auto & canvas : canvases)
 	{
-		canvas.set_variable("icon", variant(icon_name_));
+		canvas.set_variable("icon", wfl::variant(icon_name_));
 	}
 
 	set_is_dirty(true);

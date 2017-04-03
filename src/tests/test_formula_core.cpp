@@ -22,7 +22,7 @@
 #include "formula/callable.hpp"
 #include "formula/tokenizer.hpp"
 
-using namespace game_logic;
+using namespace wfl;
 
 class mock_char : public formula_callable {
 	variant get_value(const std::string& key) const {

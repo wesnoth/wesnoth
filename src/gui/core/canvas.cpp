@@ -213,7 +213,7 @@ public:
 	/** Implement shape::draw(). */
 	void draw(surface& canvas,
 			  SDL_Renderer* renderer,
-			  game_logic::map_formula_callable& variables);
+			  wfl::map_formula_callable& variables);
 
 private:
 	typed_formula<unsigned> x1_, /**< The start x coordinate of the line. */
@@ -566,7 +566,7 @@ line_shape::line_shape(const config& cfg)
 
 void line_shape::draw(surface& canvas,
 				 SDL_Renderer* renderer,
-				 game_logic::map_formula_callable& variables)
+				 wfl::map_formula_callable& variables)
 {
 	/**
 	 * @todo formulas are now recalculated every draw cycle which is a bit silly
@@ -621,7 +621,7 @@ public:
 	/** Implement shape::draw(). */
 	void draw(surface& canvas,
 			  SDL_Renderer* renderer,
-			  game_logic::map_formula_callable& variables);
+			  wfl::map_formula_callable& variables);
 
 private:
 	typed_formula<int> x_, /**< The x coordinate of the rectangle. */
@@ -706,7 +706,7 @@ rectangle_shape::rectangle_shape(const config& cfg)
 
 void rectangle_shape::draw(surface& canvas,
 					  SDL_Renderer* renderer,
-					  game_logic::map_formula_callable& variables)
+					  wfl::map_formula_callable& variables)
 {
 	/**
 	 * @todo formulas are now recalculated every draw cycle which is a  bit
@@ -776,7 +776,7 @@ public:
 	/** Implement shape::draw(). */
 	void draw(surface& canvas,
 			  SDL_Renderer* renderer,
-			  game_logic::map_formula_callable& variables);
+			  wfl::map_formula_callable& variables);
 
 private:
 	typed_formula<unsigned> x_, /**< The center x coordinate of the circle. */
@@ -829,7 +829,7 @@ circle_shape::circle_shape(const config& cfg)
 
 void circle_shape::draw(surface& canvas,
 				   SDL_Renderer* renderer,
-				   game_logic::map_formula_callable& variables)
+				   wfl::map_formula_callable& variables)
 {
 	/**
 	 * @todo formulas are now recalculated every draw cycle which is a bit
@@ -890,7 +890,7 @@ public:
 	/** Implement shape::draw(). */
 	void draw(surface& canvas,
 			  SDL_Renderer* renderer,
-			  game_logic::map_formula_callable& variables);
+			  wfl::map_formula_callable& variables);
 
 private:
 	typed_formula<unsigned> x_, /**< The x coordinate of the image. */
@@ -1013,7 +1013,7 @@ image_shape::image_shape(const config& cfg)
 
 void image_shape::draw(surface& canvas,
 				  SDL_Renderer* /*renderer*/,
-				  game_logic::map_formula_callable& variables)
+				  wfl::map_formula_callable& variables)
 {
 	DBG_GUI_D << "Image: draw.\n";
 
@@ -1045,9 +1045,9 @@ void image_shape::draw(surface& canvas,
 	assert(image_);
 	src_clip_ = sdl::create_rect(0, 0, image_->w, image_->h);
 
-	game_logic::map_formula_callable local_variables(variables);
-	local_variables.add("image_original_width", variant(image_->w));
-	local_variables.add("image_original_height", variant(image_->h));
+	wfl::map_formula_callable local_variables(variables);
+	local_variables.add("image_original_width", wfl::variant(image_->w));
+	local_variables.add("image_original_height", wfl::variant(image_->h));
 
 	unsigned w = w_(local_variables);
 	VALIDATE_WITH_DEV_MESSAGE(static_cast<int>(w) >= 0,
@@ -1063,8 +1063,8 @@ void image_shape::draw(surface& canvas,
 										   << "', h = " << static_cast<int>(h)
 										   << ".");
 
-	local_variables.add("image_width", variant(w ? w : image_->w));
-	local_variables.add("image_height", variant(h ? h : image_->h));
+	local_variables.add("image_width", wfl::variant(w ? w : image_->w));
+	local_variables.add("image_height", wfl::variant(h ? h : image_->h));
 
 	const unsigned clip_x = x_(local_variables);
 	VALIDATE_WITH_DEV_MESSAGE(static_cast<int>(clip_x) >= 0,
@@ -1177,7 +1177,7 @@ public:
 	/** Implement shape::draw(). */
 	void draw(surface& canvas,
 			  SDL_Renderer* renderer,
-			  game_logic::map_formula_callable& variables);
+			  wfl::map_formula_callable& variables);
 
 private:
 	typed_formula<unsigned> x_, /**< The x coordinate of the text. */
@@ -1303,7 +1303,7 @@ text_shape::text_shape(const config& cfg)
 
 void text_shape::draw(surface& canvas,
 				 SDL_Renderer* /*renderer*/,
-				 game_logic::map_formula_callable& variables)
+				 wfl::map_formula_callable& variables)
 {
 	assert(variables.has_key("text"));
 
@@ -1346,9 +1346,9 @@ void text_shape::draw(surface& canvas,
 		return;
 	}
 
-	game_logic::map_formula_callable local_variables(variables);
-	local_variables.add("text_width", variant(surf->w));
-	local_variables.add("text_height", variant(surf->h));
+	wfl::map_formula_callable local_variables(variables);
+	local_variables.add("text_width", wfl::variant(surf->w));
+	local_variables.add("text_height", wfl::variant(surf->h));
 	/*
 		std::cerr << "Text: drawing text '" << text
 			<< " maximum width " << maximum_width_(variables)
@@ -1419,8 +1419,8 @@ void canvas::draw(const bool force)
 
 	if(is_dirty_) {
 		get_screen_size_variables(variables_);
-		variables_.add("width", variant(w_));
-		variables_.add("height", variant(h_));
+		variables_.add("width", wfl::variant(w_));
+		variables_.add("height", wfl::variant(h_));
 	}
 
 	// create surface

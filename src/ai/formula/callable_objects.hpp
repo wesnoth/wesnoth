@@ -25,7 +25,7 @@ namespace ai {
 	class formula_ai;
 }
 
-namespace game_logic {
+namespace wfl {
 
 class attack_map_callable : public formula_callable {
 public:
@@ -64,7 +64,7 @@ public:
 	/** Compare two attacks in deterministic way or compare pointers
 	 * (nondeterministic in consequent game runs) if method argument is not
 	 * attack_callable */
-	int do_compare(const game_logic::formula_callable* callable) const;
+	int do_compare(const formula_callable* callable) const;
 	variant execute_self(variant ctxt) override;
 };
 

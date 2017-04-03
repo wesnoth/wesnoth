@@ -590,19 +590,19 @@ bool basic_unit_filter_impl::internal_matches_filter(const unit & u, const map_l
 	}
 	if (!vcfg["formula"].blank()) {
 		try {
-			const game_logic::unit_callable main(loc,u);
-			game_logic::map_formula_callable callable(&main);
+			const wfl::unit_callable main(loc,u);
+			wfl::map_formula_callable callable(&main);
 			if (u2) {
-				std::shared_ptr<game_logic::unit_callable> secondary(new game_logic::unit_callable(*u2));
-				callable.add("other", variant(secondary.get()));
+				std::shared_ptr<wfl::unit_callable> secondary(new wfl::unit_callable(*u2));
+				callable.add("other", wfl::variant(secondary.get()));
 				// It's not destroyed upon scope exit because the variant holds a reference
 			}
-			const game_logic::formula form(vcfg["formula"]);
+			const wfl::formula form(vcfg["formula"]);
 			if(!form.evaluate(callable).as_bool()) {
 				return false;
 			}
 			return true;
-		} catch(game_logic::formula_error& e) {
+		} catch(wfl::formula_error& e) {
 			lg::wml_error() << "Formula error in unit filter: " << e.type << " at " << e.filename << ':' << e.line << ")\n";
 			// Formulae with syntax errors match nothing
 			return false;

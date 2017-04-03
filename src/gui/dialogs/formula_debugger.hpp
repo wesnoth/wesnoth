@@ -17,7 +17,7 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 
-namespace game_logic
+namespace wfl
 {
 class formula_debugger;
 }
@@ -30,7 +30,7 @@ namespace dialogs
 class formula_debugger : public modal_dialog
 {
 public:
-	explicit formula_debugger(game_logic::formula_debugger& fdb) : fdb_(fdb)
+	explicit formula_debugger(wfl::formula_debugger& fdb) : fdb_(fdb)
 	{
 	}
 
@@ -50,7 +50,7 @@ private:
 
 	void callback_stepout_button(window& window);
 
-	game_logic::formula_debugger& fdb_;
+	wfl::formula_debugger& fdb_;
 };
 
 } // namespace dialogs

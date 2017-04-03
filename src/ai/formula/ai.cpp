@@ -66,11 +66,11 @@ static lg::log_domain log_formula_ai("ai/engine/fai");
 #define ERR_AI LOG_STREAM(err, log_formula_ai)
 
 
-using namespace game_logic;
+using namespace wfl;
 
 namespace ai {
 
-using ca_ptr = game_logic::candidate_action_ptr;
+using ca_ptr = wfl::candidate_action_ptr;
 
 ca_ptr formula_ai::load_candidate_action_from_config(const config& rc_action)
 {
@@ -100,7 +100,7 @@ int formula_ai::get_recursion_count() const{
 formula_ai::formula_ai(readonly_context &context, const config &cfg)
 	:
 	readonly_context_proxy(),
-	game_logic::formula_callable(),
+	formula_callable(),
 	ai_ptr_(nullptr),
 	cfg_(cfg),
 	recursion_counter_(context.get_recursion_count()),
@@ -113,12 +113,12 @@ formula_ai::formula_ai(readonly_context &context, const config &cfg)
 	LOG_AI << "creating new formula ai"<< std::endl;
 }
 
-void formula_ai::handle_exception(game_logic::formula_error& e) const
+void formula_ai::handle_exception(formula_error& e) const
 {
 	handle_exception(e, "Error while parsing formula");
 }
 
-void formula_ai::handle_exception(game_logic::formula_error& e, const std::string& failed_operation) const
+void formula_ai::handle_exception(formula_error& e, const std::string& failed_operation) const
 {
 	LOG_AI << failed_operation << ": " << e.formula << std::endl;
 	display_message(failed_operation + ": " + e.formula);
@@ -141,11 +141,11 @@ void formula_ai::display_message(const std::string& msg) const
 
 formula_ptr formula_ai::create_optional_formula(const std::string& formula_string){
 	try{
-		return game_logic::formula::create_optional_formula(formula_string, &function_table_);
+		return formula::create_optional_formula(formula_string, &function_table_);
 	}
 	catch(formula_error& e) {
 		handle_exception(e);
-		return game_logic::formula_ptr();
+		return wfl::formula_ptr();
 	}
 }
 
@@ -160,9 +160,9 @@ std::string formula_ai::evaluate(const std::string& formula_str)
 {
 	try{
 
-		game_logic::formula f(formula_str, &function_table_);
+		formula f(formula_str, &function_table_);
 
-		game_logic::map_formula_callable callable(this);
+		map_formula_callable callable(this);
 
 		//formula_debugger fdb;
 		const variant v = f.evaluate(callable,nullptr);
@@ -184,7 +184,7 @@ std::string formula_ai::evaluate(const std::string& formula_str)
 	}
 }
 
-variant formula_ai::make_action(game_logic::const_formula_ptr formula_, const game_logic::formula_callable& variables)
+wfl::variant formula_ai::make_action(wfl::const_formula_ptr formula_, const wfl::formula_callable& variables)
 {
 	if (!formula_) {
 		throw formula_error("null formula passed to make_action","","formula",0);
@@ -655,13 +655,13 @@ void formula_ai::on_create(){
 					     create_optional_formula(func["precondition"]),
 					     args);
 		}
-		catch(game_logic::formula_error& e) {
+		catch(formula_error& e) {
 			handle_exception(e, "Error while registering function '" + name + "'");
 		}
 	}
 
 
-	vars_ = game_logic::map_formula_callable();
+	vars_ = map_formula_callable();
 	if (const config &ai_vars = cfg_.child("vars"))
 	{
 		variant var;
@@ -683,7 +683,7 @@ void formula_ai::evaluate_candidate_action(ca_ptr fai_ca)
 
 bool formula_ai::execute_candidate_action(ca_ptr fai_ca)
 {
-	game_logic::map_formula_callable callable(this);
+	map_formula_callable callable(this);
 	fai_ca->update_callable_map( callable );
 	const_formula_ptr move_formula(fai_ca->get_action());
 	return !make_action(move_formula, callable).is_empty();
@@ -747,7 +747,7 @@ config formula_ai::to_config() const
 		config &ai_vars = cfg.add_child("vars");
 
 		std::string str;
-		for(game_logic::map_formula_callable::const_iterator i = vars_.begin(); i != vars_.end(); ++i)
+		for(map_formula_callable::const_iterator i = vars_.begin(); i != vars_.end(); ++i)
 		{
 			try {
 				str = i->second.serialize_to_string();

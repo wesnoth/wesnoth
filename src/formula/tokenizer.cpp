@@ -14,7 +14,9 @@
 
 #include "formula/tokenizer.hpp"
 
-namespace formula_tokenizer
+namespace wfl
+{
+namespace tokenizer
 {
 
 namespace {
@@ -280,6 +282,8 @@ token get_token(iterator& i1, const iterator i2) {
 	}
 	raise_exception(it, i2, std::string() );
 	return token();
+}
+
 }
 
 }

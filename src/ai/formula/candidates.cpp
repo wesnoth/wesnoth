@@ -27,20 +27,20 @@ static lg::log_domain log_formula_ai("ai/engine/fai");
 #define ERR_AI LOG_STREAM(err, log_formula_ai)
 
 
-namespace game_logic {
+namespace wfl {
 
 base_candidate_action::base_candidate_action(const std::string& name,
 		const std::string& type, const config& cfg,
 		function_symbol_table* function_table) :
 	name_(name),
 	type_(type),
-	eval_(new game_logic::formula(cfg["evaluation"], function_table)),
-	action_(new game_logic::formula(cfg["action"], function_table)),
+	eval_(new formula(cfg["evaluation"], function_table)),
+	action_(new formula(cfg["action"], function_table)),
 	score_(0)
 {}
 
 int base_candidate_action::execute_formula(const const_formula_ptr& formula,
-			const game_logic::formula_callable& callable, const ai::formula_ai* ai)
+			const formula_callable& callable, const ai::formula_ai* ai)
 {
 	int res = 0;
 	try {
@@ -67,17 +67,17 @@ candidate_action_with_filters::candidate_action_with_filters(
 	if( filter_params ) {
 		for(const config::attribute filter_param : filter_params.attribute_range())
 		{
-			game_logic::const_formula_ptr filter_formula(
-					new game_logic::formula(filter_param.second, function_table));
+			const_formula_ptr filter_formula(
+					new formula(filter_param.second, function_table));
 
 			filter_map_[filter_param.first]=filter_formula;
 		}
 	}
 }
 
-variant candidate_action_with_filters::do_filtering(ai::formula_ai* ai, variant& input, game_logic::const_formula_ptr formula)
+variant candidate_action_with_filters::do_filtering(ai::formula_ai* ai, variant& input, const_formula_ptr formula)
 {
-	game_logic::map_formula_callable callable(static_cast<const formula_callable*>(ai));
+	map_formula_callable callable(static_cast<const formula_callable*>(ai));
 	callable.add("input", input);
 
 	return formula::evaluate(formula, callable);
@@ -122,7 +122,7 @@ void move_candidate_action::evaluate(ai::formula_ai* ai, unit_map& units)
 
 	for(variant_iterator i = filtered_units.begin() ; i != filtered_units.end() ; ++i)
 	{
-			game_logic::map_formula_callable callable(static_cast<const formula_callable*>(ai));
+			map_formula_callable callable(static_cast<const formula_callable*>(ai));
 			callable.add("me", *i);
 
 			int res = execute_formula(eval_, callable, ai);
@@ -134,7 +134,7 @@ void move_candidate_action::evaluate(ai::formula_ai* ai, unit_map& units)
 	}
 }
 
-void move_candidate_action::update_callable_map(game_logic::map_formula_callable& callable)
+void move_candidate_action::update_callable_map(map_formula_callable& callable)
 {
 	callable.add("me", my_unit_);
 }
@@ -225,7 +225,7 @@ void attack_candidate_action::evaluate(ai::formula_ai* ai, unit_map& units)
 		for( size_t enemy_unit = 0 ; enemy_unit < enemy_units_flt.size() ; ++enemy_unit){
 			if( ai->can_reach_unit( my_unit_callalbe->get_location(), enemy_units_flt[enemy_unit]->get_location() )) {
 
-				game_logic::map_formula_callable callable(static_cast<const formula_callable*>(ai));
+				map_formula_callable callable(static_cast<const formula_callable*>(ai));
 				callable.add("me", filtered_my_units[my_unit]);
 				callable.add("target", filtered_enemy_units[enemy_unit]);
 
@@ -241,7 +241,7 @@ void attack_candidate_action::evaluate(ai::formula_ai* ai, unit_map& units)
 	}
 }
 
-void attack_candidate_action::update_callable_map(game_logic::map_formula_callable& callable)
+void attack_candidate_action::update_callable_map(map_formula_callable& callable)
 {
 	callable.add("me", my_unit_);
 	callable.add("target", enemy_unit_);

@@ -15,7 +15,9 @@
 
 #include <string>
 
-namespace formula_tokenizer
+namespace wfl
+{
+namespace tokenizer
 {
 
 typedef std::string::const_iterator iterator;
@@ -64,6 +66,8 @@ struct token_error
 	std::string description_;
 	std::string formula_;
 };
+
+}
 
 }
 

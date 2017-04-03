@@ -165,7 +165,7 @@ widget* builder_spacer::build() const
 
 	init_control(widget);
 
-	const game_logic::map_formula_callable& size = get_screen_size_variables();
+	const wfl::map_formula_callable& size = get_screen_size_variables();
 
 	const unsigned width = width_(size);
 	const unsigned height = height_(size);

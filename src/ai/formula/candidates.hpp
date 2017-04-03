@@ -29,12 +29,12 @@ namespace ai {
 class formula_ai;
 }
 
-namespace game_logic {
+namespace wfl {
 
 class base_candidate_action;
 
-typedef std::map< std::string, game_logic::const_formula_ptr > candidate_action_filters;
-typedef std::shared_ptr<game_logic::base_candidate_action> candidate_action_ptr;
+typedef std::map< std::string, const_formula_ptr > candidate_action_filters;
+typedef std::shared_ptr<base_candidate_action> candidate_action_ptr;
 
 //every new candidate action type should be derived from this class
 //and should complete evaluate and update_callable_map methods
@@ -48,7 +48,7 @@ public:
 	virtual void evaluate(ai::formula_ai* /*ai*/, unit_map& /*units*/) {}
 
 	//adds needed callable objects to callable map
-	virtual void update_callable_map(game_logic::map_formula_callable& /*callable*/) {}
+	virtual void update_callable_map(map_formula_callable& /*callable*/) {}
 
 
 	//return score of last evaluation
@@ -61,7 +61,7 @@ public:
 
 protected:
 	int execute_formula(const const_formula_ptr& formula,
-			const game_logic::formula_callable& callable, const ai::formula_ai* ai);
+			const formula_callable& callable, const ai::formula_ai* ai);
 
 	std::string name_;
 	std::string type_;
@@ -75,9 +75,9 @@ class candidate_action_with_filters : public base_candidate_action {
 public:
 	candidate_action_with_filters(const std::string& name, const std::string& type,const config& cfg, function_symbol_table* function_table);
 protected:
-        variant do_filtering(ai::formula_ai* ai, variant& input, game_logic::const_formula_ptr formula);
+        variant do_filtering(ai::formula_ai* ai, variant& input, const_formula_ptr formula);
 
-	game_logic::candidate_action_filters filter_map_;
+	candidate_action_filters filter_map_;
 };
 
 class move_candidate_action : public candidate_action_with_filters {
@@ -86,7 +86,7 @@ public:
 
 	virtual void evaluate(ai::formula_ai* ai, unit_map& units);
 
-	virtual void update_callable_map(game_logic::map_formula_callable& callable);
+	virtual void update_callable_map(map_formula_callable& callable);
 
 protected:
 	variant my_unit_;
@@ -98,7 +98,7 @@ public:
 
 	virtual void evaluate(ai::formula_ai* ai, unit_map& units);
 
-	virtual void update_callable_map(game_logic::map_formula_callable& callable);
+	virtual void update_callable_map(map_formula_callable& callable);
 protected:
 	variant my_unit_;
 	variant enemy_unit_;

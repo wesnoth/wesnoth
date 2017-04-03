@@ -15,7 +15,7 @@
 #ifndef FORMULA_FWD_HPP_INCLUDED
 #define FORMULA_FWD_HPP_INCLUDED
 
-namespace game_logic {
+namespace wfl {
 
 class formula_debugger;
 

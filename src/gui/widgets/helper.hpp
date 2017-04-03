@@ -27,10 +27,10 @@ struct SDL_Rect;
 class surface;
 class t_string;
 
-namespace game_logic
+namespace wfl
 {
 class map_formula_callable;
-} // namespace game_logic
+} // namespace wfl
 
 namespace gui2
 {
@@ -116,7 +116,7 @@ t_string missing_widget(const std::string& id);
  *                                current values of these in settings. It
  *                                modifies the object send.
  */
-void get_screen_size_variables(game_logic::map_formula_callable& variable);
+void get_screen_size_variables(wfl::map_formula_callable& variable);
 
 /**
  * Gets a formula object with the screen size.
@@ -126,7 +126,7 @@ void get_screen_size_variables(game_logic::map_formula_callable& variable);
  *                                gamemap_height variable set to the current
  *                                values of these in settings.
  */
-game_logic::map_formula_callable get_screen_size_variables();
+wfl::map_formula_callable get_screen_size_variables();
 
 /** Returns the current mouse position. */
 point get_mouse_position();

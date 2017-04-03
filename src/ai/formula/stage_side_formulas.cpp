@@ -45,7 +45,7 @@ stage_side_formulas::~stage_side_formulas()
 
 bool stage_side_formulas::do_play_stage()
 {
-	game_logic::map_formula_callable callable(&fai_);
+	wfl::map_formula_callable callable(&fai_);
 	try {
 		if (move_formula_) {
 			while( !fai_.make_action(move_formula_,callable).is_empty() ) { }
@@ -53,7 +53,7 @@ bool stage_side_formulas::do_play_stage()
 			WRN_AI << "Side formula skipped, maybe it's empty or incorrect" << std::endl;
 		}
 	}
-	catch(game_logic::formula_error& e) {
+	catch(wfl::formula_error& e) {
 		if(e.filename == "formula") {
 			e.line = 0;
 		}

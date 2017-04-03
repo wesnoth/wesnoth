@@ -49,7 +49,7 @@ public:
 private:
         const config &cfg_;
 	formula_ai &fai_;
-	game_logic::const_formula_ptr move_formula_;
+	wfl::const_formula_ptr move_formula_;
 
 };
 

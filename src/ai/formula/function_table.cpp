@@ -44,7 +44,7 @@ static lg::log_domain log_formula_ai("ai/engine/fai");
 #define WRN_AI LOG_STREAM(warn, log_formula_ai)
 #define ERR_AI LOG_STREAM(err, log_formula_ai)
 
-namespace game_logic {
+namespace wfl {
 using ai::formula_ai;
 
 namespace {
@@ -492,7 +492,7 @@ private:
 		std::string formula_string = filesystem::read_file(path);
 		//need to get function_table from somewhere or delegate to someone who has access to it
 		formula_ptr parsed_formula = ai_.create_optional_formula(formula_string);
-		if(parsed_formula == game_logic::formula_ptr()) {
+		if(parsed_formula == formula_ptr()) {
 			ERR_AI << "run_file : unable to create formula"<< std::endl;
 			return variant(); //was unable to create a formula from file
 		}

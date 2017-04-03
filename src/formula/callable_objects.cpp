@@ -27,7 +27,7 @@ static lg::log_domain log_scripting_formula("scripting/formula");
 #define WRN_SF LOG_STREAM(warn, log_scripting_formula)
 #define ERR_SF LOG_STREAM(err, log_scripting_formula)
 
-namespace game_logic
+namespace wfl
 {
 
 variant location_callable::get_value(const std::string& key) const
@@ -679,7 +679,7 @@ variant set_var_callable::get_value(const std::string& key) const {
 	return variant();
 }
 
-void set_var_callable::get_inputs(std::vector<game_logic::formula_input>* inputs) const {
+void set_var_callable::get_inputs(std::vector<formula_input>* inputs) const {
 	add_input(inputs, "key");
 	add_input(inputs, "value");
 }
@@ -707,7 +707,7 @@ variant safe_call_callable::get_value(const std::string& key) const {
 	return variant();
 }
 
-void safe_call_callable::get_inputs(std::vector<game_logic::formula_input>* inputs) const {
+void safe_call_callable::get_inputs(std::vector<formula_input>* inputs) const {
 	add_input(inputs, "main");
 	add_input(inputs, "backup");
 }
@@ -724,7 +724,7 @@ variant safe_call_callable::execute_self(variant ctxt) {
 		*during the next loop
 		*/
 
-		game_logic::map_formula_callable callable(ctxt.as_callable());
+		map_formula_callable callable(ctxt.as_callable());
 		callable.add("error", res);
 
 		//store the result in safe_call_callable in case we would like to display it to the user
@@ -750,7 +750,7 @@ variant safe_call_result::get_value(const std::string& key) const {
 	return variant();
 }
 
-void safe_call_result::get_inputs(std::vector<game_logic::formula_input>* inputs) const {
+void safe_call_result::get_inputs(std::vector<formula_input>* inputs) const {
 	add_input(inputs, "status");
 	add_input(inputs, "object");
 	if(current_unit_location_ != map_location()) {
@@ -758,4 +758,4 @@ void safe_call_result::get_inputs(std::vector<game_logic::formula_input>* inputs
 	}
 }
 
-} // namespace game_logic
+} // namespace wfl

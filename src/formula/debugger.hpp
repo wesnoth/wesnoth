@@ -25,7 +25,7 @@
 #include "formula/debugger_fwd.hpp"
 #include <list>
 
-namespace game_logic {
+namespace wfl {
 
 class formula_expression;
 class formula_callable;
@@ -155,6 +155,6 @@ private:
 
 
 
-} // end of namespace game_logic
+} // end of namespace wfl
 
 #endif

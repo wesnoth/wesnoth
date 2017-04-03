@@ -170,18 +170,18 @@ void text_box::update_canvas()
 	for(auto & tmp : get_canvases())
 	{
 
-		tmp.set_variable("text", variant(get_value()));
-		tmp.set_variable("text_x_offset", variant(text_x_offset_));
-		tmp.set_variable("text_y_offset", variant(text_y_offset_));
-		tmp.set_variable("text_maximum_width", variant(max_width));
-		tmp.set_variable("text_maximum_height", variant(max_height));
+		tmp.set_variable("text", wfl::variant(get_value()));
+		tmp.set_variable("text_x_offset", wfl::variant(text_x_offset_));
+		tmp.set_variable("text_y_offset", wfl::variant(text_y_offset_));
+		tmp.set_variable("text_maximum_width", wfl::variant(max_width));
+		tmp.set_variable("text_maximum_height", wfl::variant(max_height));
 
 		tmp.set_variable("cursor_offset",
-						 variant(get_cursor_position(start + length).x));
+						 wfl::variant(get_cursor_position(start + length).x));
 
-		tmp.set_variable("selection_offset", variant(start_offset));
-		tmp.set_variable("selection_width", variant(end_offset - start_offset));
-		tmp.set_variable("text_wrap_mode", variant(ellipse_mode));
+		tmp.set_variable("selection_offset", wfl::variant(start_offset));
+		tmp.set_variable("selection_width", wfl::variant(end_offset - start_offset));
+		tmp.set_variable("text_wrap_mode", wfl::variant(ellipse_mode));
 	}
 }
 
@@ -253,10 +253,10 @@ void text_box::update_offsets()
 	// FIXME: This should use pango-cairo code path instead of sdl_ttf code path
 	text_height_ = font::get_max_height(conf->text_font_size);
 
-	game_logic::map_formula_callable variables;
-	variables.add("height", variant(get_height()));
-	variables.add("width", variant(get_width()));
-	variables.add("text_font_height", variant(text_height_));
+	wfl::map_formula_callable variables;
+	variables.add("height", wfl::variant(get_height()));
+	variables.add("width", wfl::variant(get_width()));
+	variables.add("text_font_height", wfl::variant(text_height_));
 
 	text_x_offset_ = conf->text_x_offset(variables);
 	text_y_offset_ = conf->text_y_offset(variables);
@@ -265,7 +265,7 @@ void text_box::update_offsets()
 	// update_canvas().
 	for(auto & tmp : get_canvases())
 	{
-		tmp.set_variable("text_font_height", variant(text_height_));
+		tmp.set_variable("text_font_height", wfl::variant(text_height_));
 	}
 
 	// Force an update of the canvas since now text_font_height is known.

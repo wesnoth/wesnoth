@@ -274,8 +274,8 @@ void attack_predictions::draw_hp_graph(drawing& hp_graph, const combatant_data& 
 	// Set some variables for the WML portion of the graph to use.
 	canvas& hp_graph_canvas = hp_graph.get_drawing_canvas();
 
-	hp_graph_canvas.set_variable("hp_column_width", variant(hp_sep));
-	hp_graph_canvas.set_variable("chance_column_width", variant(percent_sep));
+	hp_graph_canvas.set_variable("hp_column_width", wfl::variant(hp_sep));
+	hp_graph_canvas.set_variable("chance_column_width", wfl::variant(percent_sep));
 
 	config cfg, shape;
 

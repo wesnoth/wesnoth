@@ -18,7 +18,7 @@
 #include <memory>
 #include <vector>
 
-namespace game_logic
+namespace wfl
 {
 class formula_callable;
 class formula_debugger;

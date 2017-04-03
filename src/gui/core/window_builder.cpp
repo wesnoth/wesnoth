@@ -399,7 +399,7 @@ builder_window::window_resolution::window_resolution(const config& cfg)
 	, grid(0)
 {
 	if(!cfg["functions"].empty()) {
-		game_logic::formula(cfg["functions"], &functions).evaluate();
+		wfl::formula(cfg["functions"], &functions).evaluate();
 	}
 
 	const config& c = cfg.child("grid");

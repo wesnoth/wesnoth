@@ -85,8 +85,8 @@ public:
 	 * @returns                   The stored result or the result of the
 	 *                            evaluation of the formula.
 	 */
-	T operator()(const game_logic::map_formula_callable& variables,
-				 game_logic::function_symbol_table* functions = nullptr) const;
+	T operator()(const wfl::map_formula_callable& variables,
+				 wfl::function_symbol_table* functions = nullptr) const;
 
 	/** Determine whether the class contains a formula. */
 	bool has_formula() const
@@ -122,8 +122,8 @@ private:
 	 *
 	 * @returns                   The calculated value.
 	 */
-	T execute(const game_logic::map_formula_callable& variables,
-			  game_logic::function_symbol_table* functions) const;
+	T execute(const wfl::map_formula_callable& variables,
+			  wfl::function_symbol_table* functions) const;
 
 	/**
 	 * Contains the formula for the variable.
@@ -153,8 +153,8 @@ typed_formula<T>::typed_formula(const std::string& str, const T value)
 
 template <class T>
 inline T typed_formula<T>::
-operator()(const game_logic::map_formula_callable& variables,
-		   game_logic::function_symbol_table* functions) const
+operator()(const wfl::map_formula_callable& variables,
+		   wfl::function_symbol_table* functions) const
 {
 	if(has_formula()) {
 		const T& result = execute(variables, functions);
@@ -168,70 +168,70 @@ operator()(const game_logic::map_formula_callable& variables,
 
 template <>
 inline bool
-typed_formula<bool>::execute(const game_logic::map_formula_callable& variables,
-						game_logic::function_symbol_table* functions) const
+typed_formula<bool>::execute(const wfl::map_formula_callable& variables,
+						wfl::function_symbol_table* functions) const
 {
-	return game_logic::formula(formula_, functions)
+	return wfl::formula(formula_, functions)
 			.evaluate(variables)
 			.as_bool();
 }
 
 template <>
 inline int
-typed_formula<int>::execute(const game_logic::map_formula_callable& variables,
-					   game_logic::function_symbol_table* functions) const
+typed_formula<int>::execute(const wfl::map_formula_callable& variables,
+					   wfl::function_symbol_table* functions) const
 {
-	return game_logic::formula(formula_, functions)
+	return wfl::formula(formula_, functions)
 			.evaluate(variables)
 			.as_int();
 }
 
 template <>
 inline unsigned
-typed_formula<unsigned>::execute(const game_logic::map_formula_callable& variables,
-							game_logic::function_symbol_table* functions) const
+typed_formula<unsigned>::execute(const wfl::map_formula_callable& variables,
+							wfl::function_symbol_table* functions) const
 {
-	return game_logic::formula(formula_, functions)
+	return wfl::formula(formula_, functions)
 			.evaluate(variables)
 			.as_int();
 }
 
 template <>
 inline std::string typed_formula<std::string>::execute(
-		const game_logic::map_formula_callable& variables,
-		game_logic::function_symbol_table* functions) const
+		const wfl::map_formula_callable& variables,
+		wfl::function_symbol_table* functions) const
 {
-	return game_logic::formula(formula_, functions)
+	return wfl::formula(formula_, functions)
 			.evaluate(variables)
 			.as_string();
 }
 
 template <>
 inline t_string
-typed_formula<t_string>::execute(const game_logic::map_formula_callable& variables,
-							game_logic::function_symbol_table* functions) const
+typed_formula<t_string>::execute(const wfl::map_formula_callable& variables,
+							wfl::function_symbol_table* functions) const
 {
-	return game_logic::formula(formula_, functions)
+	return wfl::formula(formula_, functions)
 			.evaluate(variables)
 			.as_string();
 }
 
 template <>
 inline PangoAlignment typed_formula<PangoAlignment>::execute(
-		const game_logic::map_formula_callable& variables,
-		game_logic::function_symbol_table* functions) const
+		const wfl::map_formula_callable& variables,
+		wfl::function_symbol_table* functions) const
 {
-	return decode_text_alignment(game_logic::formula(formula_, functions)
+	return decode_text_alignment(wfl::formula(formula_, functions)
 										 .evaluate(variables)
 										 .as_string());
 }
 
 template<>
 inline color_t typed_formula<color_t>::execute(
-		const game_logic::map_formula_callable& variables,
-		game_logic::function_symbol_table* functions) const
+		const wfl::map_formula_callable& variables,
+		wfl::function_symbol_table* functions) const
 {
-	const variant v = game_logic::formula(formula_, functions).evaluate(variables);
+	const wfl::variant v = wfl::formula(formula_, functions).evaluate(variables);
 	const auto& result = v.as_list();
 	int alpha = result.size() == 4 ? result[3].as_int() : ALPHA_OPAQUE;
 	return color_t(result.at(0).as_int(), result.at(1).as_int(), result.at(2).as_int(), alpha);
@@ -239,9 +239,8 @@ inline color_t typed_formula<color_t>::execute(
 
 template <class T>
 inline T
-typed_formula<T>::execute(const game_logic::map_formula_callable& /*variables*/
-					 ,
-					 game_logic::function_symbol_table* /*functions*/) const
+typed_formula<T>::execute(const wfl::map_formula_callable& /*variables*/,
+					 wfl::function_symbol_table* /*functions*/) const
 {
 	// Every type needs its own execute function avoid instantiation of the
 	// default execute.

@@ -138,12 +138,12 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 
 	if (!filter_formula.empty()) {
 		try {
-			const game_logic::attack_type_callable callable(attack);
-			const game_logic::formula form(filter_formula);
+			const wfl::attack_type_callable callable(attack);
+			const wfl::formula form(filter_formula);
 			if(!form.evaluate(callable).as_bool()) {
 				return false;
 			}
-		} catch(game_logic::formula_error& e) {
+		} catch(wfl::formula_error& e) {
 			lg::wml_error() << "Formula error in weapon filter: " << e.type << " at " << e.filename << ':' << e.line << ")\n";
 			// Formulae with syntax errors match nothing
 			return false;

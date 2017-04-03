@@ -116,18 +116,18 @@ t_string missing_widget(const std::string& id)
 	return t_string(vgettext("Mandatory widget '$id' hasn't been defined.", {{"id", id}}));
 }
 
-void get_screen_size_variables(game_logic::map_formula_callable& variable)
+void get_screen_size_variables(wfl::map_formula_callable& variable)
 {
-	variable.add("screen_width", variant(settings::screen_width));
-	variable.add("screen_height", variant(settings::screen_height));
-	variable.add("gamemap_width", variant(settings::gamemap_width));
-	variable.add("gamemap_height", variant(settings::gamemap_height));
-	variable.add("gamemap_x_offset", variant(settings::gamemap_x_offset));
+	variable.add("screen_width", wfl::variant(settings::screen_width));
+	variable.add("screen_height", wfl::variant(settings::screen_height));
+	variable.add("gamemap_width", wfl::variant(settings::gamemap_width));
+	variable.add("gamemap_height", wfl::variant(settings::gamemap_height));
+	variable.add("gamemap_x_offset", wfl::variant(settings::gamemap_x_offset));
 }
 
-game_logic::map_formula_callable get_screen_size_variables()
+wfl::map_formula_callable get_screen_size_variables()
 {
-	game_logic::map_formula_callable result;
+	wfl::map_formula_callable result;
 	get_screen_size_variables(result);
 
 	return result;

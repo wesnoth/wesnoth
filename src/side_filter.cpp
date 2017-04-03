@@ -227,13 +227,13 @@ bool side_filter::match_internal(const team &t) const
 
 	if (cfg_.has_attribute("formula")) {
 		try {
-			const game_logic::team_callable callable(t);
-			const game_logic::formula form(cfg_["formula"]);
+			const wfl::team_callable callable(t);
+			const wfl::formula form(cfg_["formula"]);
 			if(!form.evaluate(callable).as_bool()) {
 				return false;
 			}
 			return true;
-		} catch(game_logic::formula_error& e) {
+		} catch(wfl::formula_error& e) {
 			lg::wml_error() << "Formula error in side filter: " << e.type << " at " << e.filename << ':' << e.line << ")\n";
 			// Formulae with syntax errors match nothing
 			return false;

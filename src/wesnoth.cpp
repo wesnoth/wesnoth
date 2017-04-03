@@ -1084,7 +1084,7 @@ int main(int argc, char** argv)
 		std::cerr << "WML exception:\nUser message: "
 			<< e.user_message << "\nDev message: " << e.dev_message << '\n';
 		error_exit(1);
-	} catch(game_logic::formula_error& e) {
+	} catch(wfl::formula_error& e) {
 		std::cerr << e.what()
 			<< "\n\nGame will be aborted.\n";
 		error_exit(1);

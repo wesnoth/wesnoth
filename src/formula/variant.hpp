@@ -20,11 +20,9 @@
 #include <map>
 #include <vector>
 
-// TODO: expand to cover variant as well
-namespace game_logic
+namespace wfl
 {
-	class formula_callable;
-}
+class formula_callable;
 
 void push_call_stack(const char* str);
 void pop_call_stack();
@@ -54,7 +52,7 @@ public:
 	explicit variant(int n);
 	variant(int n, DECIMAL_VARIANT_TYPE /*type*/);
 	variant(double n, DECIMAL_VARIANT_TYPE /*type*/);
-	explicit variant(const game_logic::formula_callable* callable);
+	explicit variant(const formula_callable* callable);
 	explicit variant(const std::vector<variant>& array);
 	explicit variant(const std::string& str);
 	explicit variant(const std::map<variant, variant>& map);
@@ -91,10 +89,10 @@ public:
 
 	const std::string& as_string() const;
 
-	const game_logic::formula_callable* as_callable() const
+	const formula_callable* as_callable() const
 	{
 		must_be(VARIANT_TYPE::TYPE_CALLABLE);
-		return value_cast<game_logic::variant_callable>()->get_callable();
+		return value_cast<variant_callable>()->get_callable();
 	}
 
 	template<typename T>
@@ -104,13 +102,13 @@ public:
 			return nullptr;
 		}
 
-		return dynamic_cast<T*>(const_cast<game_logic::formula_callable*>(as_callable()));
+		return dynamic_cast<T*>(const_cast<formula_callable*>(as_callable()));
 	}
 
 	template<typename T>
 	T* convert_to() const
 	{
-		T* res = dynamic_cast<T*>(const_cast<game_logic::formula_callable*>(as_callable()));
+		T* res = dynamic_cast<T*>(const_cast<formula_callable*>(as_callable()));
 		if(!res) {
 			throw type_error("could not convert type");
 		}
@@ -153,7 +151,7 @@ public:
 
 	std::string string_cast() const;
 
-	std::string to_debug_string(bool verbose = false, game_logic::formula_seen_stack* seen = nullptr) const;
+	std::string to_debug_string(bool verbose = false, formula_seen_stack* seen = nullptr) const;
 
 	/** Gets string name of the current value type */
 	std::string type_string() const
@@ -166,7 +164,7 @@ private:
 	template<typename T>
 	std::shared_ptr<T> value_cast() const
 	{
-		return game_logic::value_cast<T>(value_);
+		return wfl::value_cast<T>(value_);
 	}
 
 	void must_be(VARIANT_TYPE t) const;
@@ -182,7 +180,7 @@ private:
 	 * Variant value.
 	 * Each of the constructors initialized this with the appropriate helper class.
 	 */
-	game_logic::value_base_ptr value_;
+	value_base_ptr value_;
 };
 
 /**
@@ -242,5 +240,7 @@ private:
 	std::vector<variant>::iterator list_iterator_;
 	std::map<variant,variant>::iterator map_iterator_;
 };
+
+}
 
 #endif

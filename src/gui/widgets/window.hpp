@@ -73,7 +73,7 @@ public:
 			typed_formula<unsigned> w,
 			typed_formula<unsigned> h,
 			typed_formula<bool> reevaluate_best_size,
-			const game_logic::function_symbol_table& functions,
+			const wfl::function_symbol_table& functions,
 			const bool automatic_placement,
 			const unsigned horizontal_placement,
 			const unsigned vertical_placement,
@@ -445,7 +445,7 @@ public:
 		return need_layout_;
 	}
 
-	void set_variable(const std::string& key, const variant& value)
+	void set_variable(const std::string& key, const wfl::variant& value)
 	{
 		variables_.add(key, value);
 		set_is_dirty(true);
@@ -519,7 +519,7 @@ private:
 	bool need_layout_;
 
 	/** The variables of the canvas. */
-	game_logic::map_formula_callable variables_;
+	wfl::map_formula_callable variables_;
 
 	/** Is invalidate layout blocked see invalidate_layout_blocker. */
 	bool invalidate_layout_blocked_;
@@ -574,7 +574,7 @@ private:
 	typed_formula<bool> reevaluate_best_size_;
 
 	/** The formula definitions available for the calulation formulas. */
-	game_logic::function_symbol_table functions_;
+	wfl::function_symbol_table functions_;
 
 	/** The settings for the tooltip. */
 	builder_window::window_resolution::tooltip_info tooltip_;

@@ -577,12 +577,12 @@ const attacks_vector& readonly_context_impl::get_attacks() const
 }
 
 
-const variant& readonly_context_impl::get_attacks_as_variant() const
+const wfl::variant& readonly_context_impl::get_attacks_as_variant() const
 {
 	if (attacks_) {
 		return attacks_->get_variant();
 	}
-	static variant v;///@todo 1.9: replace with variant::null_variant;
+	static wfl::variant v;///@todo 1.9: replace with variant::null_variant;
 	return v;
 }
 

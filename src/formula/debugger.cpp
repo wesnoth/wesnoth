@@ -33,7 +33,7 @@ static lg::log_domain log_formula_debugger("scripting/formula/debug");
 #define WRN_FDB LOG_STREAM(warn, log_formula_debugger)
 #define ERR_FDB LOG_STREAM(err, log_formula_debugger)
 
-namespace game_logic {
+namespace wfl {
 
 
 debug_info::debug_info(int arg_number, int counter, int level, const std::string &name, const std::string &str, const variant &value, bool evaluated)
@@ -387,4 +387,4 @@ void formula_debugger::add_breakpoint_next()
 }
 
 
-} // end of namespace game_logic
+} // end of namespace wfl
