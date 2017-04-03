@@ -155,7 +155,7 @@ public:
  * Base class for numeric variant values. Currently only supports a value stored as an
  * integer, but for now, that's all that's necessary.
  */
-class variant_numeric : public virtual variant_value_base
+class variant_numeric : public variant_value_base
 {
 public:
 	explicit variant_numeric(int value) : value_(value) {}
@@ -185,7 +185,7 @@ protected:
 };
 
 
-class variant_int : public virtual variant_numeric
+class variant_int : public variant_numeric
 {
 public:
 	explicit variant_int(int value) : variant_numeric(value) {}
@@ -215,7 +215,7 @@ public:
 };
 
 
-class variant_decimal : public virtual variant_numeric
+class variant_decimal : public variant_numeric
 {
 public:
 	explicit variant_decimal(int value) : variant_numeric(value) {}
@@ -259,7 +259,7 @@ private:
 };
 
 
-class variant_callable : public virtual variant_value_base
+class variant_callable : public variant_value_base
 {
 public:
 	explicit variant_callable(const formula_callable* callable);
@@ -302,7 +302,7 @@ private:
 };
 
 
-class variant_string : public virtual variant_value_base
+class variant_string : public variant_value_base
 {
 public:
 	explicit variant_string(const std::string& str) : string_(str) {}
@@ -361,7 +361,7 @@ private:
  * create a new derived class specialized to a specific container type.
  */
 template<typename T>
-class variant_container : public virtual variant_value_base
+class variant_container : public variant_value_base
 {
 public:
 	explicit variant_container(const T& container)
