@@ -22,9 +22,7 @@
 #include "log.hpp"
 
 static lg::log_domain log_scripting_formula("scripting/formula");
-#define DBG_SF LOG_STREAM(debug, log_scripting_formula)
 #define LOG_SF LOG_STREAM(info, log_scripting_formula)
-#define WRN_SF LOG_STREAM(warn, log_scripting_formula)
 #define ERR_SF LOG_STREAM(err, log_scripting_formula)
 
 namespace wfl
@@ -36,9 +34,9 @@ variant location_callable::get_value(const std::string& key) const
 		return variant(loc_.wml_x());
 	} else if(key == "y") {
 		return variant(loc_.wml_y());
-	} else {
-		return variant();
 	}
+
+	return variant();
 }
 
 void location_callable::get_inputs(formula_input_vector* inputs) const
@@ -129,20 +127,25 @@ int attack_type_callable::do_compare(const formula_callable* callable) const
 		return formula_callable::do_compare(callable);
 	}
 
-	if(att_.damage() != att_callable->att_.damage() )
+	if(att_.damage() != att_callable->att_.damage()) {
 		return att_.damage() - att_callable->att_.damage();
+	}
 
-	if(att_.num_attacks() != att_callable->att_.num_attacks() )
+	if(att_.num_attacks() != att_callable->att_.num_attacks()) {
 		return att_.num_attacks() - att_callable->att_.num_attacks();
+	}
 
-	if(att_.id() != att_callable->att_.id() )
+	if(att_.id() != att_callable->att_.id()) {
 		return att_.id().compare(att_callable->att_.id());
+	}
 
-	if(att_.type() != att_callable->att_.type() )
+	if(att_.type() != att_callable->att_.type()) {
 		return att_.type().compare(att_callable->att_.type());
+	}
 
-	if(att_.range() != att_callable->att_.range() )
+	if(att_.range() != att_callable->att_.range()) {
 		return att_.range().compare(att_callable->att_.range());
+	}
 
 	return att_.weapon_specials().compare(att_callable->att_.weapon_specials());
 }
@@ -670,79 +673,90 @@ variant team_callable::get_value(const std::string& key) const
 	return variant();
 }
 
-variant set_var_callable::get_value(const std::string& key) const {
+variant set_var_callable::get_value(const std::string& key) const
+{
 	if(key == "key") {
 		return variant(key_);
 	} else if(key == "value") {
 		return value_;
 	}
+
 	return variant();
 }
 
-void set_var_callable::get_inputs(std::vector<formula_input>* inputs) const {
+void set_var_callable::get_inputs(formula_input_vector* inputs) const
+{
 	add_input(inputs, "key");
 	add_input(inputs, "value");
 }
 
-variant set_var_callable::execute_self(variant ctxt) {
-//	if(infinite_loop_guardian_.set_var_check()) {
+variant set_var_callable::execute_self(variant ctxt)
+{
+	//if(infinite_loop_guardian_.set_var_check()) {
 	if(formula_callable* obj = ctxt.try_convert<formula_callable>()) {
 		LOG_SF << "Setting variable: " << key_ << " -> " << value_.to_debug_string() << "\n";
 		obj->mutate_value(key_, value_);
 		return variant(true);
 	}
-//	}
+	//}
 	//too many calls in a row - possible infinite loop
 	ERR_SF << "ERROR #" << 5001 << " while executing 'set_var' formula function" << std::endl;
 
 	return variant(new safe_call_result(this, 5001));
 }
 
-variant safe_call_callable::get_value(const std::string& key) const {
+variant safe_call_callable::get_value(const std::string& key) const
+{
 	if(key == "main") {
 		return variant(main_);
 	} else if(key == "backup") {
 		return variant(backup_);
 	}
+
 	return variant();
 }
 
-void safe_call_callable::get_inputs(std::vector<formula_input>* inputs) const {
+void safe_call_callable::get_inputs(formula_input_vector* inputs) const
+{
 	add_input(inputs, "main");
 	add_input(inputs, "backup");
 }
 
-variant safe_call_callable::execute_self(variant ctxt) {
+variant safe_call_callable::execute_self(variant ctxt)
+{
 	variant res;
 	if(action_callable* action = main_.try_convert<action_callable>()) {
 		res = action->execute_self(ctxt);
 	}
 
 	if(res.try_convert<safe_call_result>()) {
-		/*if we have safe_call formula and either error occurred, or current action
-		*was not recognized, then evaluate backup formula from safe_call and execute it
-		*during the next loop
-		*/
+		/* If we have safe_call formula and either an error occurred, or the current action
+		 * was not recognized, then evaluate backup formula from safe_call and execute it
+		 * during the next loop
+		 */
 
 		map_formula_callable callable(ctxt.as_callable());
 		callable.add("error", res);
 
-		//store the result in safe_call_callable in case we would like to display it to the user
-		//for example if this formula was executed from commandline
+		/* Store the result in safe_call_callable in case we would like to display it to the user,
+		 * for example if this formula was executed from the commandline.
+		 */
 		backup_ = get_backup()->evaluate(callable);
 		ctxt.execute_variant(backup_);
 	}
 	return variant(true);
 }
 
-variant safe_call_result::get_value(const std::string& key) const {
+variant safe_call_result::get_value(const std::string& key) const
+{
 	if(key == "status") {
 		return variant(status_);
 	} else if(key == "object") {
-		if(failed_callable_ != nullptr)
+		if(failed_callable_ != nullptr) {
 			return variant(failed_callable_);
-		else
-			return variant();
+		}
+
+		return variant();
 	} else if(key == "current_loc" && current_unit_location_ != map_location()) {
 		return variant(new location_callable(current_unit_location_));
 	}
@@ -750,9 +764,11 @@ variant safe_call_result::get_value(const std::string& key) const {
 	return variant();
 }
 
-void safe_call_result::get_inputs(std::vector<formula_input>* inputs) const {
+void safe_call_result::get_inputs(formula_input_vector* inputs) const
+{
 	add_input(inputs, "status");
 	add_input(inputs, "object");
+
 	if(current_unit_location_ != map_location()) {
 		add_input(inputs, "current_loc");
 	}

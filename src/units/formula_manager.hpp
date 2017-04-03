@@ -16,7 +16,7 @@
 #ifndef UNIT_FORMULA_MANAGER_HPP
 #define UNIT_FORMULA_MANAGER_HPP
 
-#include "formula/callable.hpp" //map_formula_callable_ptr is an intrusive ptr, requires full header to compile
+#include "formula/callable.hpp"
 
 #include<string>
 

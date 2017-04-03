@@ -20,17 +20,28 @@
 
 namespace wfl
 {
-
-class formula_callable;
 class formula_expression;
 class function_symbol_table;
-typedef std::shared_ptr<formula_expression> expression_ptr;
 
-class formula {
+using expression_ptr = std::shared_ptr<formula_expression>;
+
+// Namespace alias for shorter typing
+namespace tk = tokenizer;
+
+class formula
+{
 public:
-	static variant evaluate(const const_formula_ptr& f,
-				const formula_callable& variables, formula_debugger *fdb = nullptr,
-				variant default_res=variant(0)) {
+	formula(const std::string& str, function_symbol_table* symbols = nullptr);
+	formula(const tk::token* i1, const tk::token* i2, function_symbol_table* symbols = nullptr);
+
+	~formula();
+
+	static variant evaluate(
+			const const_formula_ptr& f,
+			const formula_callable& variables,
+			formula_debugger* fdb = nullptr,
+			variant default_res = variant(0))
+	{
 		if(f) {
 			return f->evaluate(variables, fdb);
 		} else {
@@ -38,40 +49,39 @@ public:
 		}
 	}
 
-	variant evaluate(const formula_callable& variables, formula_debugger *fdb = nullptr) const
+	static formula_ptr create_optional_formula(const std::string& str, function_symbol_table* symbols = nullptr);
+
+	variant evaluate(const formula_callable& variables, formula_debugger* fdb = nullptr) const
 	{
-		if (fdb!=nullptr) {
-			return evaluate_formula_callback(*fdb,*this,variables);
+		if(fdb != nullptr) {
+			return evaluate_formula_callback(*fdb, *this, variables);
 		} else {
-			return execute(variables,fdb);
+			return execute(variables, fdb);
 		}
 	}
 
-	variant evaluate(formula_debugger *fdb = nullptr) const
+	variant evaluate(formula_debugger* fdb = nullptr) const
 	{
-		if (fdb!=nullptr) {
+		if(fdb != nullptr) {
 			return evaluate_formula_callback(*fdb,*this);
 		} else {
 			return execute(fdb);
 		}
 	}
 
-	static formula_ptr create_optional_formula(const std::string& str, function_symbol_table* symbols=nullptr);
-	explicit formula(const std::string& str, function_symbol_table* symbols=nullptr);
-	explicit formula(const tokenizer::token* i1, const tokenizer::token* i2, function_symbol_table* symbols=nullptr);
-	~formula();
 	const std::string& str() const { return str_; }
 
-	static const char*const id_chars;
+	static const char* const id_chars;
+
 private:
-	variant execute(const formula_callable& variables, formula_debugger *fdb = nullptr) const;
-	variant execute(formula_debugger *fdb) const;
-	formula() : expr_(), str_()
-   	{}
+	variant execute(const formula_callable& variables, formula_debugger* fdb = nullptr) const;
+	variant execute(formula_debugger* fdb) const;
+
 	expression_ptr expr_;
 	std::string str_;
 	function_symbol_table* symbols_;
 	bool managing_symbols;
+
 	friend class formula_debugger;
 };
 
@@ -96,6 +106,6 @@ struct formula_error : public game::error
 	int line;
 };
 
-}
+} // namespace wfl
 
 #endif

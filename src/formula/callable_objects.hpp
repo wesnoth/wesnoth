@@ -162,8 +162,7 @@ private:
 class team_callable : public formula_callable
 {
 public:
-	explicit team_callable(const team& t) : team_(t)
-	{}
+	explicit team_callable(const team& t) : team_(t) {}
 
 	void get_inputs(formula_input_vector* inputs) const override;
 	variant get_value(const std::string& key) const override;
@@ -174,56 +173,71 @@ private:
 	const team& team_;
 };
 
-class set_var_callable : public action_callable {
-	std::string key_;
-	variant value_;
-	variant get_value(const std::string& key) const;
-
-	void get_inputs(std::vector<formula_input>* inputs) const;
+class set_var_callable : public action_callable
+{
 public:
 	set_var_callable(const std::string& key, const variant& value)
-		: key_(key), value_(value) {}
+		: key_(key), value_(value)
+	{}
 
 	const std::string& key() const { return key_; }
 	variant value() const { return value_; }
 	variant execute_self(variant ctxt) override;
+
+private:
+	std::string key_;
+	variant value_;
+	variant get_value(const std::string& key) const;
+
+	void get_inputs(formula_input_vector* inputs) const;
 };
 
-class safe_call_callable : public action_callable {
+class safe_call_callable : public action_callable
+{
+
+public:
+	safe_call_callable(const variant& main, const expression_ptr& backup)
+		: main_(main)
+		, backup_()
+		, backup_formula_(backup)
+	{}
+
+	const variant& get_main() const { return main_; }
+	const expression_ptr& get_backup() const { return backup_formula_; }
+
+	void set_backup_result(const variant& v)
+	{
+		backup_ = v;
+	}
+
+	variant execute_self(variant ctxt) override;
+
+private:
 	variant main_;
 	variant backup_;
 	expression_ptr backup_formula_;
 	variant get_value(const std::string& key) const;
 
-	void get_inputs(std::vector<formula_input>* inputs) const;
-public:
-	safe_call_callable(const variant& main, const expression_ptr& backup)
-		: main_(main)
-		, backup_()
-		, backup_formula_(backup) {}
-
-	const variant& get_main() const { return main_; }
-	const expression_ptr& get_backup() const { return backup_formula_; }
-
-	void set_backup_result(const variant& v) {
-		backup_ = v;
-	}
-	variant execute_self(variant ctxt) override;
+	void get_inputs(formula_input_vector* inputs) const;
 };
 
-class safe_call_result : public formula_callable {
+class safe_call_result : public formula_callable
+{
+public:
+	safe_call_result(const formula_callable* callable, int status, const map_location& loc = map_location())
+		: failed_callable_(callable)
+		, current_unit_location_(loc)
+		, status_(status)
+	{}
+
+private:
 	const formula_callable* failed_callable_;
 	const map_location current_unit_location_;
 	const int status_;
 
 	variant get_value(const std::string& key) const;
 
-	void get_inputs(std::vector<formula_input>* inputs) const;
-
-public:
-	safe_call_result(const formula_callable* callable, int status,
-		const map_location& loc = map_location())
-		: failed_callable_(callable), current_unit_location_(loc), status_(status) {}
+	void get_inputs(formula_input_vector* inputs) const;
 };
 
 } // namespace wfl

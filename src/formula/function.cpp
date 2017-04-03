@@ -97,7 +97,7 @@ private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		variant var = args()[0]->evaluate(variables, fdb);
 		const formula_callable* callable = var.as_callable();
-		std::vector<formula_input> inputs = callable->inputs();
+		formula_input_vector inputs = callable->inputs();
 		std::vector<variant> res;
 		for(size_t i=0; i<inputs.size(); ++i) {
 			const formula_input& input = inputs[i];
@@ -839,7 +839,7 @@ class variant_comparator : public formula_callable {
 		}
 	}
 
-	void get_inputs(std::vector<formula_input>* inputs) const {
+	void get_inputs(formula_input_vector* inputs) const {
 		fallback_->get_inputs(inputs);
 	}
 public:

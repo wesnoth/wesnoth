@@ -66,7 +66,7 @@ public:
 		lua_pop(mState, 1);
 		return result;
 	}
-	void get_inputs(std::vector<formula_input>* inputs) const {
+	void get_inputs(formula_input_vector* inputs) const {
 		add_input(inputs, "__list");
 		add_input(inputs, "__map");
 		for(lua_pushnil(mState); lua_next(mState, table_i); lua_pop(mState,1)) {
@@ -153,7 +153,7 @@ void luaW_pushfaivariant(lua_State* L, variant val) {
 		} else {
 			// If those fail, convert generically to a map
 			const formula_callable* obj = val.as_callable();
-			std::vector<formula_input> inputs;
+			formula_input_vector inputs;
 			obj->get_inputs(&inputs);
 			lua_newtable(L);
 			for(const formula_input& attr : inputs) {
