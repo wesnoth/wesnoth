@@ -484,9 +484,6 @@ private:
 	virtual std::string to_string_detail(const variant_map_raw::value_type& container_val, mod_func_t mod_func) const override;
 };
 
-using variant_container_vector = variant_container<variant_vector>;
-using variant_container_map = variant_container<variant_map_raw>;
-
 } // namespace game_logic
 
 #endif
