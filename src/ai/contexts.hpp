@@ -795,7 +795,7 @@ public:
 	}
 
 
-	virtual const moves_map& get_possible_moves() const
+	virtual const moves_map& get_possible_moves() const override
 	{
 		return target_->get_possible_moves();
 	}
@@ -1614,7 +1614,7 @@ public:
 	 * @retval possible_result: no free space on keep
 	 * @retval possible_result: not enough gold
 	 */
-	virtual recruit_result_ptr execute_recruit_action(const std::string& unit_name, const map_location &where = map_location::null_location(), const map_location &from = map_location::null_location());
+	virtual recruit_result_ptr execute_recruit_action(const std::string& unit_name, const map_location &where = map_location::null_location(), const map_location &from = map_location::null_location()) override;
 
 
 	/**
@@ -1645,7 +1645,7 @@ public:
 
 
 	/** Notifies all interested observers of the event respectively. */
-	void raise_gamestate_changed() const;
+	void raise_gamestate_changed() const override;
 
 
 	/**

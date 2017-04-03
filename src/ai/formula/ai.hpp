@@ -119,7 +119,7 @@ public:
 
 	void on_create();
 
-	int get_recursion_count() const;
+	int get_recursion_count() const override;
 
 	const wfl::variant& get_keeps_cache() const { return keeps_cache_; }
 
