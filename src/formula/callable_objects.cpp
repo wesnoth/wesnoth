@@ -39,7 +39,7 @@ variant location_callable::get_value(const std::string& key) const
 	return variant();
 }
 
-void location_callable::get_inputs(formula_input_vector* inputs) const
+void location_callable::get_inputs(formula_input_vector& inputs) const
 {
 	add_input(inputs, "x");
 	add_input(inputs, "y");
@@ -103,7 +103,7 @@ variant attack_type_callable::get_value(const std::string& key) const
 	return variant();
 }
 
-void attack_type_callable::get_inputs(formula_input_vector* inputs) const
+void attack_type_callable::get_inputs(formula_input_vector& inputs) const
 {
 	add_input(inputs, "name");
 	add_input(inputs, "type");
@@ -265,7 +265,7 @@ variant unit_callable::get_value(const std::string& key) const
 	return variant();
 }
 
-void unit_callable::get_inputs(formula_input_vector* inputs) const
+void unit_callable::get_inputs(formula_input_vector& inputs) const
 {
 	add_input(inputs, "x");
 	add_input(inputs, "y");
@@ -369,7 +369,7 @@ variant unit_type_callable::get_value(const std::string& key) const
 	return variant();
 }
 
-void unit_type_callable::get_inputs(formula_input_vector* inputs) const
+void unit_type_callable::get_inputs(formula_input_vector& inputs) const
 {
 	add_input(inputs, "id");
 	add_input(inputs, "type");
@@ -457,7 +457,7 @@ variant config_callable::get_value(const std::string& key) const
 	return variant();
 }
 
-void config_callable::get_inputs(formula_input_vector* inputs) const
+void config_callable::get_inputs(formula_input_vector& inputs) const
 {
 	add_input(inputs, "__all_children");
 	add_input(inputs, "__children");
@@ -517,7 +517,7 @@ variant terrain_callable::get_value(const std::string& key) const
 	return variant();
 }
 
-void terrain_callable::get_inputs(formula_input_vector* inputs) const
+void terrain_callable::get_inputs(formula_input_vector& inputs) const
 {
 	add_input(inputs, "x");
 	add_input(inputs, "y");
@@ -545,7 +545,7 @@ int terrain_callable::do_compare(const formula_callable* callable) const
 	return loc_.do_compare(other_loc);
 }
 
-void gamemap_callable::get_inputs(formula_input_vector* inputs) const
+void gamemap_callable::get_inputs(formula_input_vector& inputs) const
 {
 	add_input(inputs, "gamemap");
 	add_input(inputs, "terrain");
@@ -577,7 +577,7 @@ variant gamemap_callable::get_value(const std::string& key) const
 	}
 }
 
-void team_callable::get_inputs(formula_input_vector* inputs) const
+void team_callable::get_inputs(formula_input_vector& inputs) const
 {
 	add_input(inputs, "side");
 	add_input(inputs, "id");
@@ -684,7 +684,7 @@ variant set_var_callable::get_value(const std::string& key) const
 	return variant();
 }
 
-void set_var_callable::get_inputs(formula_input_vector* inputs) const
+void set_var_callable::get_inputs(formula_input_vector& inputs) const
 {
 	add_input(inputs, "key");
 	add_input(inputs, "value");
@@ -716,7 +716,7 @@ variant safe_call_callable::get_value(const std::string& key) const
 	return variant();
 }
 
-void safe_call_callable::get_inputs(formula_input_vector* inputs) const
+void safe_call_callable::get_inputs(formula_input_vector& inputs) const
 {
 	add_input(inputs, "main");
 	add_input(inputs, "backup");
@@ -764,7 +764,7 @@ variant safe_call_result::get_value(const std::string& key) const
 	return variant();
 }
 
-void safe_call_result::get_inputs(formula_input_vector* inputs) const
+void safe_call_result::get_inputs(formula_input_vector& inputs) const
 {
 	add_input(inputs, "status");
 	add_input(inputs, "object");

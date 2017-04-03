@@ -35,7 +35,7 @@ public:
 	}
 
 	variant get_value(const std::string& key) const override;
-	void get_inputs(formula_input_vector* inputs) const override;
+	void get_inputs(formula_input_vector& inputs) const override;
 
 	int do_compare(const formula_callable* callable) const override;
 
@@ -50,7 +50,7 @@ public:
 	explicit gamemap_callable(const gamemap& g) : gamemap_(g)
 	{}
 
-	void get_inputs(formula_input_vector* inputs) const override;
+	void get_inputs(formula_input_vector& inputs) const override;
 	variant get_value(const std::string& key) const override;
 
 	const gamemap& get_gamemap() const { return gamemap_; }
@@ -76,7 +76,7 @@ private:
 
 	variant get_value(const std::string& key) const override;
 
-	void get_inputs(formula_input_vector* inputs) const override;
+	void get_inputs(formula_input_vector& inputs) const override;
 	int do_compare(const formula_callable* callable) const override;
 };
 
@@ -89,7 +89,7 @@ public:
 	}
 
 	variant get_value(const std::string& key) const override;
-	void get_inputs(formula_input_vector* inputs) const override;
+	void get_inputs(formula_input_vector& inputs) const override;
 
 	int do_compare(const formula_callable* callable) const override;
 
@@ -113,7 +113,7 @@ public:
 	}
 
 	variant get_value(const std::string& key) const override;
-	void get_inputs(formula_input_vector* inputs) const override;
+	void get_inputs(formula_input_vector& inputs) const override;
 
 	int do_compare(const formula_callable* callable) const override;
 
@@ -134,7 +134,7 @@ public:
 	}
 
 	variant get_value(const std::string& key) const override;
-	void get_inputs(formula_input_vector* inputs) const override;
+	void get_inputs(formula_input_vector& inputs) const override;
 
 	int do_compare(const formula_callable* callable) const override;
 
@@ -150,7 +150,7 @@ public:
 	explicit config_callable(const config& c) : cfg_(c) {}
 
 	variant get_value(const std::string& key) const override;
-	void get_inputs(formula_input_vector* inputs) const override;
+	void get_inputs(formula_input_vector& inputs) const override;
 	int do_compare(const formula_callable* callable) const override;
 
 	const config& get_config() const { return cfg_; }
@@ -164,7 +164,7 @@ class team_callable : public formula_callable
 public:
 	explicit team_callable(const team& t) : team_(t) {}
 
-	void get_inputs(formula_input_vector* inputs) const override;
+	void get_inputs(formula_input_vector& inputs) const override;
 	variant get_value(const std::string& key) const override;
 
 	const team& get_team() const { return team_; }
@@ -189,7 +189,7 @@ private:
 	variant value_;
 	variant get_value(const std::string& key) const;
 
-	void get_inputs(formula_input_vector* inputs) const;
+	void get_inputs(formula_input_vector& inputs) const;
 };
 
 class safe_call_callable : public action_callable
@@ -218,7 +218,7 @@ private:
 	expression_ptr backup_formula_;
 	variant get_value(const std::string& key) const;
 
-	void get_inputs(formula_input_vector* inputs) const;
+	void get_inputs(formula_input_vector& inputs) const;
 };
 
 class safe_call_result : public formula_callable
@@ -237,7 +237,7 @@ private:
 
 	variant get_value(const std::string& key) const;
 
-	void get_inputs(formula_input_vector* inputs) const;
+	void get_inputs(formula_input_vector& inputs) const;
 };
 
 } // namespace wfl

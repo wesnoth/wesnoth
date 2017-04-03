@@ -62,11 +62,11 @@ public:
 	formula_input_vector inputs() const
 	{
 		formula_input_vector res;
-		get_inputs(&res);
+		get_inputs(res);
 		return res;
 	}
 
-	virtual void get_inputs(formula_input_vector* /*inputs*/) const {}
+	virtual void get_inputs(formula_input_vector& /*inputs*/) const {}
 
 	bool equals(const formula_callable* other) const
 	{
@@ -124,9 +124,9 @@ protected:
 		return variant(tmp);
 	}
 
-	static inline void add_input(formula_input_vector* inputs, const std::string& key, FORMULA_ACCESS_TYPE access_type = FORMULA_READ_ONLY)
+	static inline void add_input(formula_input_vector& inputs, const std::string& key, FORMULA_ACCESS_TYPE access_type = FORMULA_READ_ONLY)
 	{
-		inputs->push_back(formula_input(key, access_type));
+		inputs.push_back(formula_input(key, access_type));
 	}
 
 	virtual void set_value(const std::string& key, const variant& /*value*/)
@@ -193,7 +193,7 @@ private:
 		return var;
 	}
 
-	void get_inputs(formula_input_vector* inputs) const
+	void get_inputs(formula_input_vector& inputs) const
 	{
 		main_.get_inputs(inputs);
 		backup_.get_inputs(inputs);
@@ -221,7 +221,7 @@ private:
 		return var;
 	}
 
-	void get_inputs(formula_input_vector* inputs) const
+	void get_inputs(formula_input_vector& inputs) const
 	{
 		backup_.get_inputs(inputs);
 	}
@@ -277,7 +277,7 @@ private:
 		return variant();
 	}
 
-	void get_inputs(formula_input_vector* inputs) const
+	void get_inputs(formula_input_vector& inputs) const
 	{
 		if(fallback_) {
 			fallback_->get_inputs(inputs);

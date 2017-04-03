@@ -228,7 +228,7 @@ public:
 		: p(p), clr(clr), w(w), h(h)
 	{}
 
-	void get_inputs(wfl::formula_input_vector* inputs) const override
+	void get_inputs(wfl::formula_input_vector& inputs) const override
 	{
 		add_input(inputs, "x");
 		add_input(inputs, "y");

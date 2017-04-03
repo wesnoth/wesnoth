@@ -386,7 +386,7 @@ wfl::variant attack_analysis::get_value(const std::string& key) const
 	}
 }
 
-void attack_analysis::get_inputs(wfl::formula_input_vector* inputs) const
+void attack_analysis::get_inputs(wfl::formula_input_vector& inputs) const
 {
 	add_input(inputs, "target");
 	add_input(inputs, "movements");

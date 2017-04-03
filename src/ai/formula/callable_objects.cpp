@@ -63,7 +63,7 @@ variant move_map_callable::get_value(const std::string& key) const
 	}
 }
 
-void move_map_callable::get_inputs(formula_input_vector* inputs) const
+void move_map_callable::get_inputs(formula_input_vector& inputs) const
 {
 	add_input(inputs, "moves");
 }
@@ -134,7 +134,7 @@ variant position_callable::get_value(const std::string& key) const {
 	}
 }
 
-void position_callable::get_inputs(formula_input_vector* inputs) const {
+void position_callable::get_inputs(formula_input_vector& inputs) const {
 	add_input(inputs, "chance");
 }
 
@@ -150,7 +150,7 @@ variant outcome_callable::get_value(const std::string& key) const {
 	}
 }
 
-void outcome_callable::get_inputs(formula_input_vector* inputs) const {
+void outcome_callable::get_inputs(formula_input_vector& inputs) const {
 	add_input(inputs, "hitpoints_left");
 	add_input(inputs, "probability");
 	add_input(inputs, "possible_status");
@@ -179,7 +179,7 @@ variant attack_callable::get_value(const std::string& key) const {
 	}
 }
 
-void attack_callable::get_inputs(formula_input_vector* inputs) const {
+void attack_callable::get_inputs(formula_input_vector& inputs) const {
 	add_input(inputs, "attack_from");
 	add_input(inputs, "defender");
 	add_input(inputs, "move_from");
@@ -264,7 +264,7 @@ variant attack_map_callable::get_value(const std::string& key) const {
 	}
 }
 
-void attack_map_callable::get_inputs(formula_input_vector* inputs) const {
+void attack_map_callable::get_inputs(formula_input_vector& inputs) const {
 	add_input(inputs, "attacks");
 }
 
@@ -301,7 +301,7 @@ variant recall_callable::get_value(const std::string& key) const {
 	return variant();
 }
 
-void recall_callable::get_inputs(formula_input_vector* inputs) const {
+void recall_callable::get_inputs(formula_input_vector& inputs) const {
 	add_input(inputs, "id");
 	add_input(inputs, "loc");
 }
@@ -328,7 +328,7 @@ variant recruit_callable::get_value(const std::string& key) const {
 	return variant();
 }
 
-void recruit_callable::get_inputs(formula_input_vector* inputs) const {
+void recruit_callable::get_inputs(formula_input_vector& inputs) const {
 	add_input(inputs, "unit_type");
 	add_input(inputs, "recruit_loc");
 }
@@ -364,7 +364,7 @@ variant set_unit_var_callable::get_value(const std::string& key) const {
 	return variant();
 }
 
-void set_unit_var_callable::get_inputs(formula_input_vector* inputs) const {
+void set_unit_var_callable::get_inputs(formula_input_vector& inputs) const {
 	add_input(inputs, "loc");
 	add_input(inputs, "key");
 	add_input(inputs, "value");

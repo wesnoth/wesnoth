@@ -163,7 +163,7 @@ private:
 	void display_message(const std::string& msg) const;
 	virtual wfl::variant get_value(const std::string& key) const;
 	void set_value(const std::string& key, const wfl::variant& value);
-	virtual void get_inputs(wfl::formula_input_vector* inputs) const;
+	virtual void get_inputs(wfl::formula_input_vector& inputs) const;
 
 	mutable wfl::variant keeps_cache_;
 

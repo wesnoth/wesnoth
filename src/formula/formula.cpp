@@ -431,7 +431,7 @@ class string_callable : public formula_callable
 public:
 	explicit string_callable(const variant& string) : string_(string) {}
 
-	void get_inputs(formula_input_vector* inputs) const
+	void get_inputs(formula_input_vector& inputs) const
 	{
 		add_input(inputs, "size");
 		add_input(inputs, "empty");
@@ -488,7 +488,7 @@ class list_callable : public formula_callable
 public:
 	explicit list_callable(const variant& list) : list_(list) {}
 
-	void get_inputs(formula_input_vector* inputs) const
+	void get_inputs(formula_input_vector& inputs) const
 	{
 		add_input(inputs, "size", FORMULA_READ_WRITE);
 		add_input(inputs, "empty", FORMULA_READ_WRITE);
@@ -528,7 +528,7 @@ class map_callable : public formula_callable
 public:
 	explicit map_callable(const variant& map) : map_(map) {}
 
-	void get_inputs(formula_input_vector* inputs) const
+	void get_inputs(formula_input_vector& inputs) const
 	{
 		add_input(inputs, "size", FORMULA_READ_WRITE);
 		add_input(inputs, "empty", FORMULA_READ_WRITE);
@@ -584,7 +584,7 @@ public:
 private:
 	const formula_callable& global_, &local_;
 
-	void get_inputs(formula_input_vector* inputs) const
+	void get_inputs(formula_input_vector& inputs) const
 	{
 		return local_.get_inputs(inputs);
 	}
@@ -812,7 +812,7 @@ private:
 	mutable expr_table_evaluated evaluated_table_;
 	formula_debugger* debugger_;
 
-	void get_inputs(formula_input_vector* inputs) const
+	void get_inputs(formula_input_vector& inputs) const
 	{
 		for(expr_table::const_iterator i = table_->begin(); i != table_->end(); ++i) {
 			add_input(inputs, i->first);

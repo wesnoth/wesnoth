@@ -562,7 +562,7 @@ variant formula_ai::get_value(const std::string& key) const
 	return variant();
 }
 
-void formula_ai::get_inputs(formula_input_vector* inputs) const
+void formula_ai::get_inputs(formula_input_vector& inputs) const
 {
 	add_input(inputs, "aggression");
 	add_input(inputs, "leader_aggression");

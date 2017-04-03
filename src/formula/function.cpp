@@ -839,7 +839,7 @@ class variant_comparator : public formula_callable {
 		}
 	}
 
-	void get_inputs(formula_input_vector* inputs) const {
+	void get_inputs(formula_input_vector& inputs) const {
 		fallback_->get_inputs(inputs);
 	}
 public:
@@ -1498,7 +1498,7 @@ variant key_value_pair::get_value(const std::string& key) const
 			return variant();
 }
 
-void key_value_pair::get_inputs(formula_input_vector* inputs) const {
+void key_value_pair::get_inputs(formula_input_vector& inputs) const {
 		add_input(inputs, "key");
 		add_input(inputs, "value");
 }

@@ -79,7 +79,7 @@ class key_value_pair : public formula_callable {
 
 	variant get_value(const std::string& key) const;
 
-	void get_inputs(formula_input_vector* inputs) const;
+	void get_inputs(formula_input_vector& inputs) const;
 public:
 	explicit key_value_pair(const variant& key, const variant& value) : key_(key), value_(value) {}
 	
