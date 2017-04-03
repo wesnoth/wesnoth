@@ -126,14 +126,18 @@ public:
 		return false;
 	}
 
-	virtual bool operator==(variant_value_base& other) const
+	/** Called to determine if this variant is equal to another _of the same type_.
+	This function is _only_ called if get_type() returns the same result for both arguments. */
+	virtual bool equals(variant_value_base& /*other*/) const
 	{
-		return other.get_type() == VARIANT_TYPE::TYPE_NULL;
+		return true; // null is equal to null
 	}
 
-	virtual bool operator<=(variant_value_base& /*other*/) const
+	/** Called to determine if this variant is less than another _of the same type_.
+	This function is _only_ called if get_type() returns the same result for both arguments. */
+	virtual bool less_than(variant_value_base& /*other*/) const
 	{
-		return true;
+		return false; // null is not less than null
 	}
 
 	/** Returns the id of the variant type */
@@ -177,14 +181,14 @@ public:
 		return string_cast();
 	}
 
-	virtual bool operator==(variant_value_base& other) const override
+	virtual bool equals(variant_value_base& other) const override
 	{
 		return value_ == value_ref_cast<variant_int>(other).value_;
 	}
 
-	virtual bool operator<=(variant_value_base& other) const override
+	virtual bool less_than(variant_value_base& other) const override
 	{
-		return value_ <= value_ref_cast<variant_int>(other).value_;
+		return value_ < value_ref_cast<variant_int>(other).value_;
 	}
 
 	virtual const VARIANT_TYPE& get_type() const override
@@ -241,14 +245,14 @@ public:
 		return to_string_impl(true);
 	}
 
-	virtual bool operator==(variant_value_base& other) const override
+	virtual bool equals(variant_value_base& other) const override
 	{
 		return value_ == value_ref_cast<variant_decimal>(other).value_;
 	}
 
-	virtual bool operator<=(variant_value_base& other) const override
+	virtual bool less_than(variant_value_base& other) const override
 	{
-		return value_ <= value_ref_cast<variant_decimal>(other).value_;
+		return value_ < value_ref_cast<variant_decimal>(other).value_;
 	}
 
 	virtual const VARIANT_TYPE& get_type() const override
@@ -293,8 +297,8 @@ public:
 
 	virtual std::string get_debug_string(formula_seen_stack& seen, bool verbose) const override;
 
-	virtual bool operator==(variant_value_base& other) const override;
-	virtual bool operator<=(variant_value_base& other) const override;
+	virtual bool equals(variant_value_base& other) const override;
+	virtual bool less_than(variant_value_base& other) const override;
 
 	virtual const VARIANT_TYPE& get_type() const override
 	{
@@ -339,14 +343,14 @@ public:
 		return string_;
 	}
 
-	virtual bool operator==(variant_value_base& other) const override
+	virtual bool equals(variant_value_base& other) const override
 	{
 		return string_ == value_ref_cast<variant_string>(other).string_;
 	}
 
-	virtual bool operator<=(variant_value_base& other) const override
+	virtual bool less_than(variant_value_base& other) const override
 	{
-		return string_ <= value_ref_cast<variant_string>(other).string_;
+		return string_ < value_ref_cast<variant_string>(other).string_;
 	}
 
 	virtual const VARIANT_TYPE& get_type() const override
@@ -443,8 +447,8 @@ public:
 	 */
 	variant list_op(value_base_ptr second, std::function<variant(variant&, variant&)> op_func);
 
-	virtual bool operator==(variant_value_base& other) const override;
-	virtual bool operator<=(variant_value_base& other) const override;
+	virtual bool equals(variant_value_base& other) const override;
+	virtual bool less_than(variant_value_base& other) const override;
 
 	virtual const VARIANT_TYPE& get_type() const override
 	{
@@ -467,8 +471,8 @@ public:
 		: variant_container<variant_map_raw>(map)
 	{}
 
-	virtual bool operator==(variant_value_base& other) const override;
-	virtual bool operator<=(variant_value_base& other) const override;
+	virtual bool equals(variant_value_base& other) const override;
+	virtual bool less_than(variant_value_base& other) const override;
 
 	virtual const VARIANT_TYPE& get_type() const override
 	{

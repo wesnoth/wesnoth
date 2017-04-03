@@ -614,7 +614,7 @@ bool variant::operator==(const variant& v) const
 		return false;
 	}
 
-	return *value_ == *v.value_;
+	return value_->equals(*v.value_);
 }
 
 bool variant::operator!=(const variant& v) const
@@ -622,36 +622,36 @@ bool variant::operator!=(const variant& v) const
 	return !operator==(v);
 }
 
-bool variant::operator<=(const variant& v) const
+bool variant::operator<(const variant& v) const
 {
 	if(type() != v.type()) {
 		if(is_decimal() && v.is_int()) {
-			return as_decimal() <= v.as_decimal();
+			return as_decimal() < v.as_decimal();
 		}
 
 		if(v.is_decimal() && is_int()) {
-			return as_decimal() <= v.as_decimal();
+			return as_decimal() < v.as_decimal();
 		}
 
 		return type() < v.type();
 	}
 
-	return *value_ <= *v.value_;
+	return value_->less_than(*v.value_);
 }
 
 bool variant::operator>=(const variant& v) const
 {
-	return v <= *this;
+	return !(*this < v);
 }
 
-bool variant::operator<(const variant& v) const
+bool variant::operator<=(const variant& v) const
 {
-	return !(*this >= v);
+	return !(v < *this);
 }
 
 bool variant::operator>(const variant& v) const
 {
-	return !(*this <= v);
+	return v < *this;
 }
 
 variant variant::list_elements_add(const variant& v) const

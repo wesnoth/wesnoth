@@ -114,12 +114,12 @@ std::string variant_callable::get_debug_string(formula_seen_stack& seen, bool ve
 	return ss.str();
 }
 
-bool variant_callable::operator==(variant_value_base& other) const
+bool variant_callable::equals(variant_value_base& other) const
 {
 	return callable_->equals(value_ref_cast<variant_callable>(other).callable_);
 }
 
-bool variant_callable::operator<=(variant_value_base& other) const
+bool variant_callable::less_than(variant_value_base& other) const
 {
 	return value_ref_cast<variant_callable>(other).callable_->less(callable_);
 }
@@ -224,7 +224,7 @@ variant variant_list::list_op(value_base_ptr second, std::function<variant(varia
 	return variant(res);
 }
 
-bool variant_list::operator==(variant_value_base& other) const
+bool variant_list::equals(variant_value_base& other) const
 {
 	const auto& other_container = value_ref_cast<variant_list>(other).get_container();
 
@@ -241,7 +241,7 @@ bool variant_list::operator==(variant_value_base& other) const
 	return true;
 }
 
-bool variant_list::operator<=(variant_value_base& other) const
+bool variant_list::less_than(variant_value_base& other) const
 {
 	const auto& other_container = value_ref_cast<variant_list>(other).get_container();
 
@@ -253,7 +253,7 @@ bool variant_list::operator<=(variant_value_base& other) const
 		}
 	}
 
-	return num_elements() <= other.num_elements();
+	return num_elements() < other.num_elements();
 }
 
 std::string variant_map::to_string_detail(const variant_map_raw::value_type& container_val, mod_func_t mod_func) const
@@ -267,14 +267,14 @@ std::string variant_map::to_string_detail(const variant_map_raw::value_type& con
 	return ss.str();
 }
 
-bool variant_map::operator==(variant_value_base& other) const
+bool variant_map::equals(variant_value_base& other) const
 {
 	return get_container() == value_ref_cast<variant_map>(other).get_container();
 }
 
-bool variant_map::operator<=(variant_value_base& other) const
+bool variant_map::less_than(variant_value_base& other) const
 {
-	return get_container() <= value_ref_cast<variant_map>(other).get_container();
+	return get_container() < value_ref_cast<variant_map>(other).get_container();
 }
 
 } // namespace game_logic
