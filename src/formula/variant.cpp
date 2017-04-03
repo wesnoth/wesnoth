@@ -88,65 +88,32 @@ type_error::type_error(const std::string& str) : game::error(str)
 }
 
 variant_iterator::variant_iterator()
-	: type_(TYPE_NULL)
-	, list_iterator_()
-	, map_iterator_()
+	: type_(VARIANT_TYPE::TYPE_NULL)
+	, container_(nullptr)
+	, iter_()
 {
 }
 
-variant_iterator::variant_iterator(const variant_iterator& iter)
-	: type_(iter.type_)
-	, list_iterator_()
-	, map_iterator_()
-{
-	switch(type_) {
-		case TYPE_LIST :
-			list_iterator_ = iter.list_iterator_;
-			break;
-
-		case TYPE_MAP:
-			map_iterator_ = iter.map_iterator_;
-			break;
-
-		case TYPE_NULL:
-			/* DO NOTHING */
-			break;
-	}
-}
-
-variant_iterator::variant_iterator(const std::vector<variant>::iterator& iter)
-	: type_(TYPE_LIST)
-	, list_iterator_(iter)
-	, map_iterator_()
-{
-}
-
-variant_iterator::variant_iterator(const std::map<variant, variant>::iterator& iter)
-	: type_(TYPE_MAP)
-	, list_iterator_()
-	, map_iterator_(iter)
+variant_iterator::variant_iterator(const variant_value_base* value, const boost::any& iter)
+	: type_(value->get_type())
+	, container_(value)
+	, iter_(iter)
 {
 }
 
 variant variant_iterator::operator*() const
 {
-	if(type_ == TYPE_LIST) {
-		return *list_iterator_;
-	} else if(type_ == TYPE_MAP) {
-		key_value_pair* p = new key_value_pair(map_iterator_->first, map_iterator_->second);
-		variant res(p);
-		return res;
+	if(!container_) {
+		return variant();
 	}
 
-	return variant();
+	return container_->deref_iterator(iter_);
 }
 
 variant_iterator& variant_iterator::operator++()
 {
-	if(type_ == TYPE_LIST) {
-		++list_iterator_;
-	} else if(type_ == TYPE_MAP) {
-		++map_iterator_;
+	if(container_) {
+		container_->iterator_inc(iter_);
 	}
 
 	return *this;
@@ -154,22 +121,18 @@ variant_iterator& variant_iterator::operator++()
 
 variant_iterator variant_iterator::operator++(int)
 {
-	variant_iterator iter(*this);
-	if(type_ == TYPE_LIST) {
-		++list_iterator_;
-	} else if(type_ == TYPE_MAP) {
-		++map_iterator_;
+	variant_iterator temp(*this);
+	if(container_) {
+		container_->iterator_inc(iter_);
 	}
 
-	return iter;
+	return temp;
 }
 
 variant_iterator& variant_iterator::operator--()
 {
-	if(type_ == TYPE_LIST) {
-		--list_iterator_;
-	} else if(type_ == TYPE_MAP) {
-		--map_iterator_;
+	if(container_) {
+		container_->iterator_dec(iter_);
 	}
 
 	return *this;
@@ -177,48 +140,22 @@ variant_iterator& variant_iterator::operator--()
 
 variant_iterator variant_iterator::operator--(int)
 {
-	variant_iterator iter(*this);
-	if(type_ == TYPE_LIST) {
-		--list_iterator_;
-	} else if(type_ == TYPE_MAP) {
-		--map_iterator_;
+	variant_iterator temp(*this);
+	if(container_) {
+		container_->iterator_dec(iter_);
 	}
 
-	return iter;
-}
-
-variant_iterator& variant_iterator::operator=(const variant_iterator& that)
-{
-	if(this == &that) {
-		return *this;
-	}
-
-	type_ = that.type_;
-	switch(type_) {
-		case TYPE_LIST :
-			list_iterator_ = that.list_iterator_;
-			break;
-
-		case TYPE_MAP:
-			map_iterator_ = that.map_iterator_;
-			break;
-
-		case TYPE_NULL:
-			/* DO NOTHING */
-			break;
-	}
-
-	return *this;
+	return temp;
 }
 
 bool variant_iterator::operator==(const variant_iterator& that) const
 {
-	if(type_ == TYPE_LIST) {
-		return that.type_ == TYPE_LIST && list_iterator_ == that.list_iterator_;
-	} else if(type_ == TYPE_MAP) {
-		return that.type_ == TYPE_MAP && map_iterator_ == that.map_iterator_;
-	} else if(type_== TYPE_NULL && that.type_ == TYPE_NULL) {
+	if(!container_ && !that.container_) {
 		return true;
+	}
+
+	if(container_ == that.container_) {
+		return container_->iterator_equals(iter_, that.iter_);
 	}
 
 	return false;
@@ -356,28 +293,12 @@ variant variant::get_values() const
 
 variant_iterator variant::begin() const
 {
-	if(is_list()) {
-		return variant_iterator(value_cast<variant_list>()->get_container().begin());
-	}
-
-	if(is_map()) {
-		return variant_iterator(value_cast<variant_map>()->get_container().begin());
-	}
-
-	return variant_iterator();
+	return value_->make_iterator().begin();
 }
 
 variant_iterator variant::end() const
 {
-	if(is_list()) {
-		return variant_iterator(value_cast<variant_list>()->get_container().end());
-	}
-
-	if(is_map()) {
-		return variant_iterator(value_cast<variant_map>()->get_container().end());
-	}
-
-	return variant_iterator();
+	return value_->make_iterator().end();
 }
 
 bool variant::is_empty() const
@@ -768,7 +689,8 @@ std::string variant::to_debug_string(bool verbose, formula_seen_stack* seen) con
 	return value_->get_debug_string(*seen, verbose);
 }
 
-variant variant::execute_variant(const variant& var) {
+variant variant::execute_variant(const variant& var)
+{
 	std::stack<variant> vars;
 	if(var.is_list()) {
 		for(size_t n = 1; n <= var.num_elements(); ++n) {

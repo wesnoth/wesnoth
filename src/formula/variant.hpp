@@ -150,6 +150,7 @@ public:
 	}
 
 	variant execute_variant(const variant& to_exec);
+
 private:
 	template<typename T>
 	std::shared_ptr<T> value_cast() const
@@ -191,44 +192,31 @@ public:
 	typedef int difference_type;
 
 	/**
-	 * Constructor for a TYPE_NULL variant.
+	 * Constructor for a no-op iterator.
 	 */
 	variant_iterator();
 
 	/**
-	 * Constructor for a TYPE_LIST variant.
+	 * Constructor for a generic iterator.
 	 *
 	 * @pre @p iter is not singular.
 	 *
-	 * @param iter                Iterator to initialize @p list_iterator_ with.
+	 * @param value   A pointer to a variant value representing the container.
+	 * @param iter    An underlying iterator for the underlying container.
 	 */
-	explicit variant_iterator(const std::vector<variant>::iterator& iter);
-
-	/**
-	 * Constructor for a TYPE_MAP variant.
-	 *
-	 * @pre @p iter is not singular.
-	 *
-	 * @param iter                Iterator to initialize @p map_iterator_ with.
-	 */
-	explicit variant_iterator(const std::map<variant, variant>::iterator& iter);
-
-	variant_iterator(const variant_iterator&);
+	variant_iterator(const variant_value_base* value, const boost::any& iter);
 
 	variant operator*() const;
 	variant_iterator& operator++();
 	variant_iterator operator++(int);
 	variant_iterator& operator--();
 	variant_iterator operator--(int);
-	variant_iterator& operator=(const variant_iterator& that);
 	bool operator==(const variant_iterator& that) const;
 	bool operator!=(const variant_iterator& that) const;
-
-	enum TYPE { TYPE_NULL, TYPE_LIST, TYPE_MAP };
 private:
-	TYPE type_;
-	std::vector<variant>::iterator list_iterator_;
-	std::map<variant,variant>::iterator map_iterator_;
+	VARIANT_TYPE type_;
+	const variant_value_base* container_;
+	boost::any iter_;
 };
 
 }

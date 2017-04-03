@@ -24,20 +24,6 @@
 namespace wfl
 {
 
-enum FORMULA_ACCESS_TYPE { FORMULA_READ_ONLY, FORMULA_WRITE_ONLY, FORMULA_READ_WRITE };
-
-struct formula_input
-{
-	explicit formula_input(const std::string& name, FORMULA_ACCESS_TYPE access = FORMULA_READ_WRITE)
-		: name(name), access(access)
-	{}
-
-	std::string name;
-	FORMULA_ACCESS_TYPE access;
-};
-
-using formula_input_vector = std::vector<formula_input>;
-
 // Interface for objects that can have formulae run on them
 class formula_callable
 {

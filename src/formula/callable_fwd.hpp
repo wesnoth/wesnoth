@@ -23,6 +23,17 @@ namespace wfl
 class formula_callable;
 class formula_debugger;
 
+enum FORMULA_ACCESS_TYPE { FORMULA_READ_ONLY, FORMULA_WRITE_ONLY, FORMULA_READ_WRITE };
+
+struct formula_input {
+	explicit formula_input(const std::string& name, FORMULA_ACCESS_TYPE access = FORMULA_READ_WRITE)
+		: name(name), access(access) {}
+
+	std::string name;
+	FORMULA_ACCESS_TYPE access;
+};
+
+using formula_input_vector = std::vector<formula_input>;
 using formula_callable_ptr       = std::shared_ptr<formula_callable>;
 using const_formula_callable_ptr = std::shared_ptr<const formula_callable>;
 using formula_seen_stack = std::vector<const formula_callable*>;

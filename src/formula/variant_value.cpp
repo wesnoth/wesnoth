@@ -15,9 +15,20 @@
 #include "formula/variant_value.hpp"
 
 #include "formula/callable.hpp"
+#include "formula/function.hpp"
 
 namespace wfl
 {
+
+boost::iterator_range<variant_iterator> variant_value_base::make_iterator() const
+{
+	return {variant_iterator(), variant_iterator()};
+}
+
+variant variant_value_base::deref_iterator(const boost::any& /*iter*/) const
+{
+	return variant();
+}
 
 variant variant_int::build_range_variant(int limit) const
 {
@@ -75,6 +86,7 @@ std::string variant_callable::get_serialized_string() const
 	if(callable_) {
 		callable_->serialize(str);
 	}
+
 	return str;
 }
 
@@ -128,6 +140,38 @@ bool variant_callable::less_than(variant_value_base& other) const
 {
 	variant_callable& other_ref = value_ref_cast<variant_callable>(other);
 	return callable_ ? callable_->less(other_ref.callable_) : other_ref.callable_ != nullptr;
+}
+
+boost::iterator_range<variant_iterator> variant_callable::make_iterator() const
+{
+	if(!callable_) {
+		return variant_value_base::make_iterator();
+	}
+
+	if(inputs.empty()) {
+		callable_->get_inputs(inputs);
+	}
+
+	return {variant_iterator(this, inputs.cbegin()), variant_iterator(this, inputs.cend())};
+}
+
+variant variant_callable::deref_iterator(const boost::any& iter) const
+{
+	if(!callable_) {
+		return variant();
+	}
+
+	return callable_->query_value(boost::any_cast<const formula_input_vector::const_iterator&>(iter)->name);
+}
+
+void variant_callable::iterator_inc(boost::any& iter) const
+{
+	++boost::any_cast<formula_input_vector::const_iterator&>(iter);
+}
+
+void variant_callable::iterator_dec(boost::any& iter) const
+{
+	--boost::any_cast<formula_input_vector::const_iterator&>(iter);
 }
 
 std::string variant_string::get_serialized_string() const
@@ -208,6 +252,30 @@ std::string variant_container<T>::get_debug_string(formula_seen_stack& seen, boo
 	return to_string_impl(true, false, [&](const variant& v) { return v.to_debug_string(verbose, &seen); });
 }
 
+template<typename T>
+boost::iterator_range<variant_iterator> variant_container<T>::make_iterator() const
+{
+	return {variant_iterator(this, get_container().cbegin()), variant_iterator(this, get_container().cend())};
+}
+
+template<typename T>
+void variant_container<T>::iterator_inc(boost::any& iter) const
+{
+	++boost::any_cast<typename T::const_iterator&>(iter);
+}
+
+template<typename T>
+void variant_container<T>::iterator_dec(boost::any& iter) const
+{
+	--boost::any_cast<typename T::const_iterator&>(iter);
+}
+
+template<typename T>
+bool variant_container<T>::iterator_equals(const boost::any& first, const boost::any& second) const
+{
+	return boost::any_cast<typename T::const_iterator>(first) == boost::any_cast<typename T::const_iterator>(second);
+}
+
 // Force compilation of the following template instantiations
 template class variant_container<variant_vector>;
 template class variant_container<variant_map_raw>;
@@ -262,6 +330,11 @@ bool variant_list::less_than(variant_value_base& other) const
 	return num_elements() < other.num_elements();
 }
 
+variant variant_list::deref_iterator(const boost::any& iter) const
+{
+	return *boost::any_cast<const variant_vector::const_iterator&>(iter);
+}
+
 std::string variant_map::to_string_detail(const variant_map_raw::value_type& container_val, mod_func_t mod_func) const
 {
 	std::ostringstream ss;
@@ -281,6 +354,13 @@ bool variant_map::equals(variant_value_base& other) const
 bool variant_map::less_than(variant_value_base& other) const
 {
 	return get_container() < value_ref_cast<variant_map>(other).get_container();
+}
+
+variant variant_map::deref_iterator(const boost::any& iter) const
+{
+	const variant_map_raw::value_type& p = *boost::any_cast<const variant_map_raw::const_iterator&>(iter);
+	key_value_pair* the_pair = new key_value_pair(p.first, p.second);
+	return variant(the_pair);
 }
 
 } // namespace wfl
