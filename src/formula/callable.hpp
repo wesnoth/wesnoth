@@ -126,7 +126,7 @@ protected:
 
 	static inline void add_input(formula_input_vector& inputs, const std::string& key, FORMULA_ACCESS_TYPE access_type = FORMULA_READ_ONLY)
 	{
-		inputs.push_back(formula_input(key, access_type));
+		inputs.emplace_back(key, access_type);
 	}
 
 	virtual void set_value(const std::string& key, const variant& /*value*/)
