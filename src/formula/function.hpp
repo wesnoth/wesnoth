@@ -77,13 +77,13 @@ class key_value_pair : public formula_callable {
 	variant key_;
 	variant value_;
 
-	variant get_value(const std::string& key) const;
+	variant get_value(const std::string& key) const override;
 
-	void get_inputs(formula_input_vector& inputs) const;
+	void get_inputs(formula_input_vector& inputs) const override;
 public:
 	explicit key_value_pair(const variant& key, const variant& value) : key_(key), value_(value) {}
 	
-	void serialize_to_string(std::string& str) const;
+	void serialize_to_string(std::string& str) const override;
 };
 
 class formula_function_expression : public function_expression {

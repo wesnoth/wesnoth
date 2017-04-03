@@ -85,8 +85,8 @@ public:
 				 const move_map& enemy_dstsrc, double aggression);
 
 	double rating(double aggression, const readonly_context& ai_obj) const;
-	wfl::variant get_value(const std::string& key) const;
-	void get_inputs(wfl::formula_input_vector& inputs) const;
+	wfl::variant get_value(const std::string& key) const override;
+	void get_inputs(wfl::formula_input_vector& inputs) const override;
 
 	bool attack_close(const map_location& loc) const;
 

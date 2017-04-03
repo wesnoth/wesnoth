@@ -187,9 +187,9 @@ public:
 private:
 	std::string key_;
 	variant value_;
-	variant get_value(const std::string& key) const;
+	variant get_value(const std::string& key) const override;
 
-	void get_inputs(formula_input_vector& inputs) const;
+	void get_inputs(formula_input_vector& inputs) const override;
 };
 
 class safe_call_callable : public action_callable
@@ -216,9 +216,9 @@ private:
 	variant main_;
 	variant backup_;
 	expression_ptr backup_formula_;
-	variant get_value(const std::string& key) const;
+	variant get_value(const std::string& key) const override;
 
-	void get_inputs(formula_input_vector& inputs) const;
+	void get_inputs(formula_input_vector& inputs) const override;
 };
 
 class safe_call_result : public formula_callable
@@ -235,9 +235,9 @@ private:
 	const map_location current_unit_location_;
 	const int status_;
 
-	variant get_value(const std::string& key) const;
+	variant get_value(const std::string& key) const override;
 
-	void get_inputs(formula_input_vector& inputs) const;
+	void get_inputs(formula_input_vector& inputs) const override;
 };
 
 } // namespace wfl

@@ -37,9 +37,9 @@ private:
 	const unit_map& units_;
 	const ai::formula_ai& ai_;
 
-	variant get_value(const std::string& key) const;
+	variant get_value(const std::string& key) const override;
 
-	void get_inputs(formula_input_vector& inputs) const;
+	void get_inputs(formula_input_vector& inputs) const override;
 
 	/* add to vars all attacks on enemy units around <attack_position> tile. attacker_location is tile where unit is currently standing. It's moved to attack_position first and then performs attack.*/
 	void collect_possible_attacks(std::vector<variant>& vars, map_location attacker_location, map_location attack_position) const;
@@ -48,9 +48,9 @@ private:
 class attack_callable : public action_callable {
 	map_location move_from_, src_, dst_;
 	battle_context bc_;
-	variant get_value(const std::string& key) const;
+	variant get_value(const std::string& key) const override;
 
-	void get_inputs(formula_input_vector& inputs) const;
+	void get_inputs(formula_input_vector& inputs) const override;
 public:
 	attack_callable(const map_location& move_from,
 			    const map_location& src, const map_location& dst, int weapon);
@@ -64,13 +64,13 @@ public:
 	/** Compare two attacks in deterministic way or compare pointers
 	 * (nondeterministic in consequent game runs) if method argument is not
 	 * attack_callable */
-	int do_compare(const formula_callable* callable) const;
+	int do_compare(const formula_callable* callable) const override;
 	variant execute_self(variant ctxt) override;
 };
 
 class move_callable : public action_callable {
 	map_location src_, dst_;
-	variant get_value(const std::string& key) const {
+	variant get_value(const std::string& key) const override {
 		if(key == "src") {
 			return variant(new location_callable(src_));
 		} else if(key == "dst") {
@@ -79,12 +79,12 @@ class move_callable : public action_callable {
 			return variant();
 		}
 	}
-	void get_inputs(formula_input_vector& inputs) const {
+	void get_inputs(formula_input_vector& inputs) const override {
 		add_input(inputs, "src");
 		add_input(inputs, "dst");
 	}
 
-	int do_compare(const formula_callable* callable) const;
+	int do_compare(const formula_callable* callable) const override;
 public:
 	move_callable(const map_location& src, const map_location& dst) :
 	  src_(src), dst_(dst)
@@ -99,7 +99,7 @@ public:
 
 class move_partial_callable : public action_callable {
 	map_location src_, dst_;
-	variant get_value(const std::string& key) const {
+	variant get_value(const std::string& key) const override {
 		if(key == "src") {
 			return variant(new location_callable(src_));
 		} else if(key == "dst") {
@@ -108,12 +108,12 @@ class move_partial_callable : public action_callable {
 			return variant();
 		}
 	}
-	void get_inputs(formula_input_vector& inputs) const {
+	void get_inputs(formula_input_vector& inputs) const override {
 		add_input(inputs, "src");
 		add_input(inputs, "dst");
 	}
 
-	int do_compare(const formula_callable* callable) const;
+	int do_compare(const formula_callable* callable) const override;
 public:
 	move_partial_callable(const map_location& src, const map_location& dst) :
 	  src_(src), dst_(dst)
@@ -130,9 +130,9 @@ class recall_callable : public action_callable {
 	map_location loc_;
 	std::string id_;
 
-	variant get_value(const std::string& key) const;
+	variant get_value(const std::string& key) const override;
 
-	void get_inputs(formula_input_vector& inputs) const;
+	void get_inputs(formula_input_vector& inputs) const override;
 public:
 	recall_callable(const map_location& loc, const std::string& id)
 	  : loc_(loc), id_(id)
@@ -147,9 +147,9 @@ class recruit_callable : public action_callable {
 	map_location loc_;
 	std::string type_;
 
-	variant get_value(const std::string& key) const;
+	variant get_value(const std::string& key) const override;
 
-	void get_inputs(formula_input_vector& inputs) const;
+	void get_inputs(formula_input_vector& inputs) const override;
 public:
 	recruit_callable(const map_location& loc, const std::string& type)
 	  : loc_(loc), type_(type)
@@ -164,9 +164,9 @@ class set_unit_var_callable : public action_callable {
 	std::string key_;
 	variant value_;
 	map_location loc_;
-	variant get_value(const std::string& key) const;
+	variant get_value(const std::string& key) const override;
 
-	void get_inputs(formula_input_vector& inputs) const;
+	void get_inputs(formula_input_vector& inputs) const override;
 public:
 	set_unit_var_callable(const std::string& key, const variant& value, const map_location& loc)
 	  : key_(key), value_(value), loc_(loc)
@@ -179,7 +179,7 @@ public:
 };
 
 class fallback_callable : public action_callable {
-	variant get_value(const std::string& /*key*/) const { return variant(); }
+	variant get_value(const std::string& /*key*/) const override { return variant(); }
 public:
 	explicit fallback_callable() {
 	}
@@ -192,8 +192,8 @@ class move_map_callable : public formula_callable {
 	const move_map& dstsrc_;
         const unit_map& units_;
 
-	variant get_value(const std::string& key) const;
-	void get_inputs(formula_input_vector& inputs) const;
+	variant get_value(const std::string& key) const override;
+	void get_inputs(formula_input_vector& inputs) const override;
 public:
 	move_map_callable(const move_map& srcdst, const move_map& dstsrc, const unit_map& units)
 	  : srcdst_(srcdst), dstsrc_(dstsrc), units_(units)
@@ -208,9 +208,9 @@ public:
 class position_callable : public formula_callable {
 	//unit_map units_;
 	int chance_;
-	variant get_value(const std::string& key) const;
+	variant get_value(const std::string& key) const override;
 
-	void get_inputs(formula_input_vector& inputs) const;
+	void get_inputs(formula_input_vector& inputs) const override;
 public:
 	position_callable(/*unit_map* units,*/ int chance) :
 		//units_(),
@@ -239,9 +239,9 @@ public:
 
 class outcome_callable : public formula_callable {
 	std::vector<variant> hitLeft_, prob_, status_;
-	variant get_value(const std::string& key) const;
+	variant get_value(const std::string& key) const override;
 
-	void get_inputs(formula_input_vector& inputs) const;
+	void get_inputs(formula_input_vector& inputs) const override;
 public:
 	outcome_callable(		const std::vector<variant>& hitLeft,
 					const std::vector<variant>& prob,

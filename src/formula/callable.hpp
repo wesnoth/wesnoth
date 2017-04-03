@@ -183,7 +183,7 @@ public:
 	{}
 
 private:
-	variant get_value(const std::string& key) const
+	variant get_value(const std::string& key) const override
 	{
 		variant var = main_.query_value(key);
 		if(var.is_null()) {
@@ -193,7 +193,7 @@ private:
 		return var;
 	}
 
-	void get_inputs(formula_input_vector& inputs) const
+	void get_inputs(formula_input_vector& inputs) const override
 	{
 		main_.get_inputs(inputs);
 		backup_.get_inputs(inputs);
@@ -211,7 +211,7 @@ public:
 	{}
 
 private:
-	variant get_value(const std::string& key) const
+	variant get_value(const std::string& key) const override
 	{
 		variant var = var_.get_member(key);
 		if(var.is_null()) {
@@ -221,7 +221,7 @@ private:
 		return var;
 	}
 
-	void get_inputs(formula_input_vector& inputs) const
+	void get_inputs(formula_input_vector& inputs) const override
 	{
 		backup_.get_inputs(inputs);
 	}
@@ -260,7 +260,7 @@ public:
 	const_iterator end()   const { return values_.end();   }
 
 private:
-	void set_value(const std::string& key, const variant& value)
+	void set_value(const std::string& key, const variant& value) override
 	{
 		values_[key] = value;
 	}
@@ -277,7 +277,7 @@ private:
 		return variant();
 	}
 
-	void get_inputs(formula_input_vector& inputs) const
+	void get_inputs(formula_input_vector& inputs) const override
 	{
 		if(fallback_) {
 			fallback_->get_inputs(inputs);

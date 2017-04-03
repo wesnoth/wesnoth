@@ -161,9 +161,9 @@ private:
 	const config cfg_;
 	recursion_counter recursion_counter_;
 	void display_message(const std::string& msg) const;
-	virtual wfl::variant get_value(const std::string& key) const;
-	void set_value(const std::string& key, const wfl::variant& value);
-	virtual void get_inputs(wfl::formula_input_vector& inputs) const;
+	virtual wfl::variant get_value(const std::string& key) const override;
+	void set_value(const std::string& key, const wfl::variant& value) override;
+	virtual void get_inputs(wfl::formula_input_vector& inputs) const override;
 
 	mutable wfl::variant keeps_cache_;
 
