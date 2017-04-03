@@ -415,15 +415,15 @@ int variant::as_int() const
 	if(is_decimal()) { return as_decimal() / 1000; }
 
 	must_be(VARIANT_TYPE::TYPE_INT);
-	return value_cast<game_logic::variant_int>()->get_integer();
+	return value_cast<game_logic::variant_int>()->get_numeric_value();
 }
 
 int variant::as_decimal() const
 {
 	if(is_decimal()) {
-		return value_cast<game_logic::variant_decimal>()->get_decimal();
+		return value_cast<game_logic::variant_decimal>()->get_numeric_value();
 	} else if(is_int()) {
-		return value_cast<game_logic::variant_int>()->get_integer() * 1000;
+		return value_cast<game_logic::variant_int>()->get_numeric_value() * 1000;
 	} else if(is_null()) {
 		return 0;
 	}

@@ -126,15 +126,19 @@ public:
 		return false;
 	}
 
-	/** Called to determine if this variant is equal to another _of the same type_.
-	This function is _only_ called if get_type() returns the same result for both arguments. */
+	/**
+	 * Called to determine if this variant is equal to another _of the same type_.
+	 * This function is _only_ called if get_type() returns the same result for both arguments.
+	 */
 	virtual bool equals(variant_value_base& /*other*/) const
 	{
 		return true; // null is equal to null
 	}
 
-	/** Called to determine if this variant is less than another _of the same type_.
-	This function is _only_ called if get_type() returns the same result for both arguments. */
+	/**
+	 * Called to determine if this variant is less than another _of the same type_.
+	 * This function is _only_ called if get_type() returns the same result for both arguments.
+	 */
 	virtual bool less_than(variant_value_base& /*other*/) const
 	{
 		return false; // null is not less than null
@@ -149,20 +153,44 @@ public:
 };
 
 
-class variant_int : public virtual variant_value_base
+/**
+ * Base class for numeric variant values. Currently only supports a value stored as an
+ * integer, but for now, that's all that's necessary.
+ */
+class variant_numeric : public virtual variant_value_base
 {
 public:
-	explicit variant_int(int value) : value_(value) {}
+	explicit variant_numeric(int value) : value_(value) {}
 
 	virtual bool as_bool() const override
 	{
 		return value_ != 0;
 	}
 
-	int get_integer() const
+	int get_numeric_value() const
 	{
 		return value_;
 	}
+
+	virtual bool equals(variant_value_base& other) const override
+	{
+		return value_ == value_ref_cast<variant_numeric>(other).value_;
+	}
+
+	virtual bool less_than(variant_value_base& other) const override
+	{
+		return value_ < value_ref_cast<variant_numeric>(other).value_;
+	}
+
+protected:
+	int value_;
+};
+
+
+class variant_int : public virtual variant_numeric
+{
+public:
+	explicit variant_int(int value) : variant_numeric(value) {}
 
 	variant build_range_variant(int limit) const;
 
@@ -181,33 +209,20 @@ public:
 		return string_cast();
 	}
 
-	virtual bool equals(variant_value_base& other) const override
-	{
-		return value_ == value_ref_cast<variant_int>(other).value_;
-	}
-
-	virtual bool less_than(variant_value_base& other) const override
-	{
-		return value_ < value_ref_cast<variant_int>(other).value_;
-	}
-
 	virtual const VARIANT_TYPE& get_type() const override
 	{
 		static VARIANT_TYPE type = VARIANT_TYPE::TYPE_INT;
 		return type;
 	}
-
-private:
-	int value_;
 };
 
 
-class variant_decimal : public virtual variant_value_base
+class variant_decimal : public virtual variant_numeric
 {
 public:
-	explicit variant_decimal(int value) : value_(value) {}
+	explicit variant_decimal(int value) : variant_numeric(value) {}
 
-	explicit variant_decimal(double value) : value_(0)
+	explicit variant_decimal(double value) : variant_numeric(0)
 	{
 		value *= 1000;
 		value_ = static_cast<int>(value);
@@ -218,16 +233,6 @@ public:
 		} else if(value < -0.5) {
 			value_--;
 		}
-	}
-
-	virtual bool as_bool() const override
-	{
-		return value_ != 0;
-	}
-
-	int get_decimal() const
-	{
-		return value_;
 	}
 
 	virtual std::string string_cast() const override
@@ -245,16 +250,6 @@ public:
 		return to_string_impl(true);
 	}
 
-	virtual bool equals(variant_value_base& other) const override
-	{
-		return value_ == value_ref_cast<variant_decimal>(other).value_;
-	}
-
-	virtual bool less_than(variant_value_base& other) const override
-	{
-		return value_ < value_ref_cast<variant_decimal>(other).value_;
-	}
-
 	virtual const VARIANT_TYPE& get_type() const override
 	{
 		static VARIANT_TYPE type = VARIANT_TYPE::TYPE_DECIMAL;
@@ -263,8 +258,6 @@ public:
 
 private:
 	std::string to_string_impl(const bool sign_value) const;
-
-	int value_;
 };
 
 
