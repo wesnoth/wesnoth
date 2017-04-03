@@ -56,17 +56,17 @@ std::string was_expecting(const std::string& message, const variant& v)
 
 std::vector<const char*> call_stack;
 
-void push_call_stack(const char* str)
+call_stack_manager::call_stack_manager(const char* str)
 {
 	call_stack.push_back(str);
 }
 
-void pop_call_stack()
+call_stack_manager::~call_stack_manager()
 {
 	call_stack.pop_back();
 }
 
-std::string get_call_stack()
+std::string call_stack_manager::get()
 {
 	std::string res;
 	for(const auto& i : call_stack) {
@@ -84,7 +84,7 @@ std::string get_call_stack()
 
 type_error::type_error(const std::string& str) : game::error(str)
 {
-	std::cerr << "ERROR: " << message << "\n" << get_call_stack();
+	std::cerr << "ERROR: " << message << "\n" << call_stack_manager::get();
 }
 
 variant_iterator::variant_iterator()
