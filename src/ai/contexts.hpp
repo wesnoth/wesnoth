@@ -490,7 +490,7 @@ public:
 		return target_->get_side_context();
 	}
 
-	virtual int get_recursion_count() const
+	virtual int get_recursion_count() const override
 	{
 		return target_->get_recursion_count();
 	}
@@ -611,7 +611,7 @@ public:
 	}
 
 
-	virtual int get_recursion_count() const
+	virtual int get_recursion_count() const override
 	{
 		return target_->get_recursion_count();
 	}
@@ -1076,7 +1076,7 @@ public:
 	}
 
 
-	virtual int get_recursion_count() const
+	virtual int get_recursion_count() const override
 	{
 		return target_->get_recursion_count();
 	}
@@ -1119,7 +1119,7 @@ public:
 	}
 
 
-	virtual int get_recursion_count() const;
+	virtual int get_recursion_count() const override;
 
 
 	virtual config to_side_context_config() const;
@@ -1305,7 +1305,7 @@ public:
 	void raise_user_interact() const;
 
 
-	virtual int get_recursion_count() const;
+	virtual int get_recursion_count() const override;
 
 
 	//@note: following functions are in alphabetic order
@@ -1669,7 +1669,7 @@ public:
 	virtual game_info& get_info_w();
 
 
-	virtual int get_recursion_count() const;
+	virtual int get_recursion_count() const override;
 
 
 	virtual config to_readwrite_context_config() const;

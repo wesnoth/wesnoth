@@ -265,7 +265,7 @@ private:
 		values_[key] = value;
 	}
 
-	variant get_value(const std::string& key) const
+	variant get_value(const std::string& key) const override
 	{
 		auto it = values_.find(key);
 		if(it != values_.end()) {
