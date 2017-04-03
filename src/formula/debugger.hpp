@@ -23,7 +23,7 @@
 
 #include "formula/variant.hpp"
 #include "formula/debugger_fwd.hpp"
-#include <deque>
+#include <list>
 
 namespace game_logic {
 
@@ -97,13 +97,13 @@ public:
 	void check_breakpoints();
 
 
-	const std::deque<debug_info>& get_call_stack() const;
+	const std::list<debug_info>& get_call_stack() const;
 
 
 	const breakpoint_ptr get_current_breakpoint() const;
 
 
-	const std::deque<debug_info>& get_execution_trace() const;
+	const std::list<debug_info>& get_execution_trace() const;
 
 
 	variant evaluate_arg_callback(const formula_expression &expression, const formula_callable &variables);
@@ -142,11 +142,11 @@ public:
 	}
 
 private:
-	std::deque<debug_info> call_stack_;
+	std::list<debug_info> call_stack_;
 	int counter_;
 	breakpoint_ptr current_breakpoint_;
-	std::deque< breakpoint_ptr > breakpoints_;
-	std::deque<debug_info> execution_trace_;
+	std::list< breakpoint_ptr > breakpoints_;
+	std::list<debug_info> execution_trace_;
 	int arg_number_extra_debug_info;
 	std::string f_name_extra_debug_info;
 
