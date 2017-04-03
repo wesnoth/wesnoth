@@ -72,7 +72,9 @@ std::string variant_callable::get_serialized_string() const
 {
 	// TODO: make serialize return a string.
 	std::string str;
-	callable_->serialize(str);
+	if(callable_) {
+		callable_->serialize(str);
+	}
 	return str;
 }
 
@@ -81,7 +83,9 @@ std::string variant_callable::get_debug_string(formula_seen_stack& seen, bool ve
 	std::ostringstream ss;
 	ss << "{";
 
-	if(std::find(seen.begin(), seen.end(), callable_) == seen.end()) {
+	if(!callable_) {
+		ss << "null";
+	} else if(std::find(seen.begin(), seen.end(), callable_) == seen.end()) {
 		if(!verbose) {
 			seen.push_back(callable_);
 		}
@@ -116,12 +120,14 @@ std::string variant_callable::get_debug_string(formula_seen_stack& seen, bool ve
 
 bool variant_callable::equals(variant_value_base& other) const
 {
-	return callable_->equals(value_ref_cast<variant_callable>(other).callable_);
+	variant_callable& other_ref = value_ref_cast<variant_callable>(other)
+	return callable_ ? callable_->equals(other_ref.callable_) : callable_ == other_ref.callable_;
 }
 
 bool variant_callable::less_than(variant_value_base& other) const
 {
-	return value_ref_cast<variant_callable>(other).callable_->less(callable_);
+	variant_callable& other_ref = value_ref_cast<variant_callable>(other)
+	return callable_ ? callable_->less(other_ref.callable_) : other_ref.callable_;
 }
 
 std::string variant_string::get_serialized_string() const
