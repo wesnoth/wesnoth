@@ -120,7 +120,7 @@ void formula_debugger::add_debug_info(int arg_number, const std::string& f_name)
 }
 
 
-const std::deque<debug_info>& formula_debugger::get_call_stack() const
+const std::list<debug_info>& formula_debugger::get_call_stack() const
 {
 	return call_stack_;
 }
@@ -131,20 +131,20 @@ const breakpoint_ptr formula_debugger::get_current_breakpoint() const
 	return current_breakpoint_;
 }
 
-const std::deque<debug_info>& formula_debugger::get_execution_trace() const
+const std::list<debug_info>& formula_debugger::get_execution_trace() const
 {
 	return execution_trace_;
 }
 
 void formula_debugger::check_breakpoints()
 {
-	for( std::deque< breakpoint_ptr >::iterator b = breakpoints_.begin(); b!= breakpoints_.end(); ++b) {
+	for(std::list<breakpoint_ptr>::iterator b = breakpoints_.begin(); b != breakpoints_.end(); ++b) {
 		if ((*b)->is_break_now()){
 			current_breakpoint_ = (*b);
 			show_gui();
 			current_breakpoint_ = breakpoint_ptr();
 			if ((*b)->is_one_time_only()) {
-				breakpoints_.erase(b);
+				b = breakpoints_.erase(b);
 			}
 			break;
 		}
@@ -272,8 +272,8 @@ public:
 
 	virtual bool is_break_now() const
 	{
-		const std::deque<debug_info> &call_stack = fdb_.get_call_stack();
-		if ((call_stack.size() == 1) && (call_stack[0].evaluated()) ) {
+		const std::list<debug_info> &call_stack = fdb_.get_call_stack();
+		if ((call_stack.size() == 1) && (call_stack.front().evaluated()) ) {
 			return true;
 		}
 		return false;
@@ -294,7 +294,7 @@ public:
 
 	virtual bool is_break_now() const
 	{
-		const std::deque<debug_info> &call_stack = fdb_.get_call_stack();
+		const std::list<debug_info> &call_stack = fdb_.get_call_stack();
 		if (call_stack.empty() || call_stack.back().evaluated()) {
 			return false;
 		}
@@ -317,7 +317,7 @@ public:
 
 	virtual bool is_break_now() const
 	{
-		const std::deque<debug_info> &call_stack = fdb_.get_call_stack();
+		const std::list<debug_info> &call_stack = fdb_.get_call_stack();
 		if (call_stack.empty() || call_stack.back().evaluated()) {
 			return false;
 		}
@@ -345,7 +345,7 @@ public:
 
 	virtual bool is_break_now() const
 	{
-		const std::deque<debug_info> &call_stack = fdb_.get_call_stack();
+		const std::list<debug_info> &call_stack = fdb_.get_call_stack();
 		if (call_stack.empty() || call_stack.back().evaluated()) {
 			return false;
 		}
