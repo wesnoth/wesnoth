@@ -117,10 +117,6 @@
 #include "gui/widgets/debug.hpp"
 #endif
 
-#ifdef HAVE_VISUAL_LEAK_DETECTOR
-#include "vld.h"
-#endif
-
 class end_level_exception;
 namespace game { struct error; }
 
@@ -945,11 +941,6 @@ int wesnoth_main(int argc, char** argv)
 int main(int argc, char** argv)
 #endif
 {
-
-#ifdef HAVE_VISUAL_LEAK_DETECTOR
-	VLDEnable();
-#endif
-
 #ifdef _WIN32
 	(void)argc;
 	(void)argv;

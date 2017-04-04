@@ -24,11 +24,6 @@
 #include <cctype>
 using namespace boost::math::constants;
 
-#ifdef HAVE_VISUAL_LEAK_DETECTOR
-#include "vld.h"
-#endif
-
-
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
 static lg::log_domain log_scripting_formula("scripting/formula");
