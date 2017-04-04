@@ -138,13 +138,13 @@ void faction_select::on_faction_select(window& window)
 
 		if(unit) {
 			const std::string icon = formatter() << unit->image() << "~RC(" << unit->flag_rgb() << ">" << tc_color_ << ")";
-			leaders.push_back(config_of("label", unit->type_name())("icon", icon));
+			leaders.emplace_back(config_of("label", unit->type_name())("icon", icon));
 		} else if(leader == "random") {
-			leaders.push_back(config_of("label", _("Random"))("icon", ng::random_enemy_picture));
+			leaders.emplace_back(config_of("label", _("Random"))("icon", ng::random_enemy_picture));
 		} else if(leader == "null") {
-			leaders.push_back(config_of("label", font::unicode_em_dash));
+			leaders.emplace_back(config_of("label", font::unicode_em_dash));
 		} else {
-			leaders.push_back(config_of("label", "?"));
+			leaders.emplace_back(config_of("label", "?"));
 		}
 	}
 

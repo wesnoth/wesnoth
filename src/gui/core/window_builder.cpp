@@ -266,7 +266,7 @@ const std::string& builder_window::read(const config& cfg)
 	VALIDATE(!cfgs.empty(), _("No resolution defined."));
 	for(const auto & i : cfgs)
 	{
-		resolutions.push_back(window_resolution(i));
+		resolutions.emplace_back(i);
 	}
 
 	return id_;

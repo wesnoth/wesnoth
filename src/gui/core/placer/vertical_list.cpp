@@ -40,7 +40,7 @@ placer_vertical_list::placer_vertical_list(const unsigned maximum_columns)
 void placer_vertical_list::initialise()
 {
 	rows_.clear();
-	rows_.push_back(std::make_pair(0, 0));
+	rows_.emplace_back(0, 0);
 	std::fill(columns_.begin(), columns_.end(), 0);
 	row_ = 0;
 	column_ = 0;
@@ -62,7 +62,7 @@ void placer_vertical_list::add_item(const point& size)
 		++row_;
 
 		const int origin = rows_.back().first + rows_.back().second;
-		rows_.push_back(std::make_pair(origin, 0));
+		rows_.emplace_back(origin, 0);
 	}
 }
 

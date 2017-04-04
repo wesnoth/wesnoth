@@ -312,7 +312,7 @@ build_event_chain(const ui_event event, widget* dispatcher, widget* w)
 							 dispatcher::event_queue_type(dispatcher::pre
 													  | dispatcher::post))) {
 
-			result.push_back(std::make_pair(w, event));
+			result.emplace_back(w, event);
 		}
 	}
 
@@ -553,14 +553,14 @@ fire_event_double_click(widget* dispatcher, widget* wgt, F functor)
 							dispatcher::event_queue_type(dispatcher::pre
 													 | dispatcher::post))) {
 
-				event_chain.push_back(std::make_pair(w, double_click));
+				event_chain.emplace_back(w, double_click);
 			}
 		} else {
 			if(w->has_event(click,
 							dispatcher::event_queue_type(dispatcher::pre
 													 | dispatcher::post))) {
 
-				event_chain.push_back(std::make_pair(w, click));
+				event_chain.emplace_back(w, click);
 			}
 		}
 	}

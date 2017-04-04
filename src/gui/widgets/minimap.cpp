@@ -147,7 +147,7 @@ static void shrink_cache()
 	for(tcache::iterator itor = cache.begin(); itor != cache.end(); ++itor) {
 
 		itor->second.age /= 2;
-		items.push_back(std::make_pair(itor->second.age, itor));
+		items.emplace_back(itor->second.age, itor);
 	}
 
 	std::partial_sort(items.begin(),
@@ -287,7 +287,7 @@ minimap_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 {
 	// Note the order should be the same as the enum state_t in minimap.hpp.
-	state.push_back(state_definition(cfg.child("state_enabled")));
+	state.emplace_back(cfg.child("state_enabled"));
 }
 
 // }---------- BUILDER -----------{

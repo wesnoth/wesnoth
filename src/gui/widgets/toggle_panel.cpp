@@ -371,9 +371,9 @@ toggle_panel_definition::resolution::resolution(const config& cfg)
 	// Note the order should be the same as the enum state_t in toggle_panel.hpp.
 	for(const auto& c : cfg.child_range("state"))
 	{
-		state.push_back(state_definition(c.child("enabled")));
-		state.push_back(state_definition(c.child("disabled")));
-		state.push_back(state_definition(c.child("focused")));
+		state.emplace_back(c.child("enabled"));
+		state.emplace_back(c.child("disabled"));
+		state.emplace_back(c.child("focused"));
 	}
 }
 

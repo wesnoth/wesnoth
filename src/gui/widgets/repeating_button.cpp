@@ -209,10 +209,10 @@ repeating_button_definition::resolution::resolution(const config& cfg)
 {
 	// Note the order should be the same as the enum state_t in
 	// repeating_button.hpp.
-	state.push_back(state_definition(cfg.child("state_enabled")));
-	state.push_back(state_definition(cfg.child("state_disabled")));
-	state.push_back(state_definition(cfg.child("state_pressed")));
-	state.push_back(state_definition(cfg.child("state_focused")));
+	state.emplace_back(cfg.child("state_enabled"));
+	state.emplace_back(cfg.child("state_disabled"));
+	state.emplace_back(cfg.child("state_pressed"));
+	state.emplace_back(cfg.child("state_focused"));
 }
 
 // }---------- BUILDER -----------{

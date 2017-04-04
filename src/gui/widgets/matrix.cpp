@@ -227,8 +227,8 @@ matrix_definition::resolution::resolution(const config& cfg)
 	, content(new builder_grid(cfg.child("content", "[matrix_definition]")))
 {
 	// Note the order should be the same as the enum state_t in matrix.hpp.
-	state.push_back(state_definition(cfg.child("state_enabled")));
-	state.push_back(state_definition(cfg.child("state_disabled")));
+	state.emplace_back(cfg.child("state_enabled"));
+	state.emplace_back(cfg.child("state_disabled"));
 }
 
 // }---------- BUILDER -----------{

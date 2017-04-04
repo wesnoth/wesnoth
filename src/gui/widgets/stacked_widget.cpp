@@ -230,7 +230,7 @@ stacked_widget_definition::resolution::resolution(const config& cfg)
 {
 	// Add a dummy state since every widget needs a state.
 	static config dummy("draw");
-	state.push_back(state_definition(dummy));
+	state.emplace_back(dummy);
 
 	const config& child = cfg.child("grid");
 	VALIDATE(child, _("No grid defined."));
@@ -273,7 +273,7 @@ builder_stacked_widget::builder_stacked_widget(const config& real_cfg)
 	VALIDATE(cfg.has_child("layer"), _("No stack layers defined."));
 	for(const auto & layer : cfg.child_range("layer"))
 	{
-		stack.push_back(std::make_shared<builder_grid>(layer));
+		stack.emplace_back(std::make_shared<builder_grid>(layer));
 	}
 }
 

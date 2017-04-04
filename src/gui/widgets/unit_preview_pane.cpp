@@ -544,8 +544,8 @@ unit_preview_pane_definition::unit_preview_pane_definition(const config& cfg)
 unit_preview_pane_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg), grid()
 {
-	state.push_back(state_definition(cfg.child("background")));
-	state.push_back(state_definition(cfg.child("foreground")));
+	state.emplace_back(cfg.child("background"));
+	state.emplace_back(cfg.child("foreground"));
 
 	const config& child = cfg.child("grid");
 	VALIDATE(child, _("No grid defined."));

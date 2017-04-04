@@ -110,7 +110,7 @@ progress_bar_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 {
 	// Note the order should be the same as the enum state_t in progress_bar.hpp.
-	state.push_back(state_definition(cfg.child("state_enabled")));
+	state.emplace_back(cfg.child("state_enabled"));
 }
 
 // }---------- BUILDER -----------{

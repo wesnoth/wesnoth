@@ -307,8 +307,8 @@ tree_view_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg), grid(nullptr)
 {
 	// Note the order should be the same as the enum state_t is listbox.hpp.
-	state.push_back(state_definition(cfg.child("state_enabled")));
-	state.push_back(state_definition(cfg.child("state_disabled")));
+	state.emplace_back(cfg.child("state_enabled"));
+	state.emplace_back(cfg.child("state_disabled"));
 
 	const config& child = cfg.child("grid");
 	VALIDATE(child, _("No grid defined."));
@@ -386,7 +386,7 @@ builder_tree_view::builder_tree_view(const config& cfg)
 
 	for(const auto & node : cfg.child_range("node"))
 	{
-		nodes.push_back(tree_node(node));
+		nodes.emplace_back(node);
 	}
 
 	VALIDATE(!nodes.empty(), _("No nodes defined for a tree view."));

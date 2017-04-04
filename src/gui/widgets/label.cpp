@@ -268,8 +268,8 @@ label_definition::resolution::resolution(const config& cfg)
 	, link_color(cfg["link_color"].empty() ? color_t::from_hex_string("ffff00") : color_t::from_rgba_string(cfg["link_color"].str()))
 {
 	// Note the order should be the same as the enum state_t is label.hpp.
-	state.push_back(state_definition(cfg.child("state_enabled")));
-	state.push_back(state_definition(cfg.child("state_disabled")));
+	state.emplace_back(cfg.child("state_enabled"));
+	state.emplace_back(cfg.child("state_disabled"));
 }
 
 // }---------- BUILDER -----------{

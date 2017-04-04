@@ -100,7 +100,7 @@ struct styled_widget_definition
 	{
 		for (const auto & resolution : cfg.child_range("resolution"))
 		{
-			resolutions.push_back(std::make_shared<T>(resolution));
+			resolutions.emplace_back(std::make_shared<T>(resolution));
 		}
 	}
 

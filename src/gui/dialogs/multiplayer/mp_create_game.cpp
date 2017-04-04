@@ -172,7 +172,7 @@ void mp_create_game::pre_show(window& win)
 	//
 	std::vector<config> game_types;
 	for(level_type_info& type_info : level_types_) {
-		game_types.push_back(config_of("label", type_info.second));
+		game_types.emplace_back(config_of("label", type_info.second));
 	}
 
 	if(game_types.empty()) {
@@ -205,7 +205,7 @@ void mp_create_game::pre_show(window& win)
 
 	std::vector<config> era_names;
 	for(const auto& era : create_engine_.get_const_extras_by_type(ng::create_engine::ERA)) {
-		era_names.push_back(config_of("label", era->name)("tooltip", era->description));
+		era_names.emplace_back(config_of("label", era->name)("tooltip", era->description));
 	}
 
 	if(era_names.empty()) {
@@ -272,7 +272,7 @@ void mp_create_game::pre_show(window& win)
 	//
 	std::vector<config> rfm_options;
 	for(const auto& type : rfm_types_) {
-		rfm_options.push_back(config_of("label", mp_game_settings::RANDOM_FACTION_MODE::enum_to_string(type)));
+		rfm_options.emplace_back(config_of("label", mp_game_settings::RANDOM_FACTION_MODE::enum_to_string(type)));
 	};
 
 	// Manually insert tooltips. Need to find a better way to do this

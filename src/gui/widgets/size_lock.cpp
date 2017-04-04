@@ -93,7 +93,7 @@ size_lock_definition::resolution::resolution(const config& cfg) :
 {
 	// Add a dummy state since every widget needs a state.
 	static config dummy("draw");
-	state.push_back(state_definition(dummy));
+	state.emplace_back(dummy);
 
 	const config& child = cfg.child("grid");
 	VALIDATE(child, _("No grid defined."));

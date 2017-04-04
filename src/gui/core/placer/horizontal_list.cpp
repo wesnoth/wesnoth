@@ -41,7 +41,7 @@ void placer_horizontal_list::initialise()
 {
 	std::fill(rows_.begin(), rows_.end(), 0);
 	columns_.clear();
-	columns_.push_back(std::make_pair(0, 0));
+	columns_.emplace_back(0, 0);
 	row_ = 0;
 	column_ = 0;
 }
@@ -62,7 +62,7 @@ void placer_horizontal_list::add_item(const point& size)
 		++column_;
 
 		const int origin = columns_.back().first + columns_.back().second;
-		columns_.push_back(std::make_pair(origin, 0));
+		columns_.emplace_back(origin, 0);
 	}
 }
 

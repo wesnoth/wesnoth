@@ -175,7 +175,7 @@ void campaign_selection::pre_show(window& window)
 		for(const auto& mod : engine_.get_const_extras_by_type(ng::create_engine::MOD)) {
 			const bool active = std::find(enabled.begin(), enabled.end(), mod->id) != enabled.end();
 
-			mod_menu_values.push_back(config_of("label", mod->name)("checkbox", active));
+			mod_menu_values.emplace_back(config_of("label", mod->name)("checkbox", active));
 
 			mod_states_.push_back(active);
 		}

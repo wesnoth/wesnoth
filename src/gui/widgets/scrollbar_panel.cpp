@@ -92,8 +92,8 @@ scrollbar_panel_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg), grid()
 {
 	// The panel needs to know the order.
-	state.push_back(state_definition(cfg.child("background")));
-	state.push_back(state_definition(cfg.child("foreground")));
+	state.emplace_back(cfg.child("background"));
+	state.emplace_back(cfg.child("foreground"));
 
 	const config& child = cfg.child("grid");
 	VALIDATE(child, _("No grid defined."));

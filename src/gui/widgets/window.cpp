@@ -726,7 +726,7 @@ void window::draw()
 		}
 
 		// Need full redraw so only set ourselves dirty.
-		dirty_list_.push_back(std::vector<widget*>(1, this));
+		dirty_list_.emplace_back(1, this);
 	} else {
 
 		// Let widgets update themselves, which might dirty some things.
@@ -739,7 +739,7 @@ void window::draw()
 		} else {
 			/* Force to update and redraw the entire screen */
 			dirty_list_.clear();
-			dirty_list_.push_back(std::vector<widget*>(1, this));
+			dirty_list_.emplace_back(1, this);
 		}
 	}
 
@@ -760,7 +760,7 @@ void window::draw()
 // update. This way an item rendered at the wrong place is directly visible.
 #if 0
 		dirty_list_.clear();
-		dirty_list_.push_back(std::vector<widget*>(1, this));
+		dirty_list_.emplace_back(1, this);
 #else
 		clip_rect_setter clip(frame_buffer, &dirty_rect);
 #endif

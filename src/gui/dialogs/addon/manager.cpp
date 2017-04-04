@@ -353,7 +353,7 @@ void addon_manager::pre_show(window& window)
 
 	std::vector<config> status_filter_entries;
 	for(const auto& f : status_filter_types_) {
-		status_filter_entries.push_back(config_of("label", f.second));
+		status_filter_entries.emplace_back(config_of("label", f.second));
 	}
 
 	// TODO: initial selection based on preferences
@@ -364,7 +364,7 @@ void addon_manager::pre_show(window& window)
 
 	std::vector<config> type_filter_entries;
 	for(const auto& f : type_filter_types_) {
-		type_filter_entries.push_back(config_of("label", f.second)("checkbox", false));
+		type_filter_entries.emplace_back(config_of("label", f.second)("checkbox", false));
 	}
 
 	type_filter.set_values(type_filter_entries);

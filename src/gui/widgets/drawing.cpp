@@ -124,7 +124,7 @@ drawing_definition::resolution::resolution(const config& cfg)
 	 * original draw section is ignored, so send a dummy.
 	 */
 	static const config dummy("draw");
-	state.push_back(state_definition(dummy));
+	state.emplace_back(dummy);
 }
 
 // }---------- BUILDER -----------{

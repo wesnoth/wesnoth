@@ -67,7 +67,7 @@ void statistics_dialog::pre_show(window& window)
 	//
 	std::vector<config> menu_items;
 	for(const auto& scenario : scenarios_) {
-		menu_items.push_back(config_of("label", *scenario.first));
+		menu_items.emplace_back(config_of("label", *scenario.first));
 	}
 
 	menu_button& scenario_menu = find_widget<menu_button>(&window, "scenario_menu", false);
