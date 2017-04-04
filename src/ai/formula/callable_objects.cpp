@@ -33,10 +33,10 @@ static lg::log_domain log_formula_ai("ai/engine/fai");
 
 namespace ai {
 
-ai_context& get_ai_context(const wfl::formula_callable* for_fai) {
-	const formula_ai* fai = dynamic_cast<const formula_ai*>(for_fai);
-	assert(fai != nullptr); // Why not just use dynamic_cast<formula_ai&> instead then?
-	return *const_cast<formula_ai*>(fai)->ai_ptr_;
+ai_context& get_ai_context(wfl::const_formula_callable_ptr for_fai) {
+	auto fai = std::dynamic_pointer_cast<const formula_ai>(for_fai);
+	assert(fai != nullptr);
+	return *std::const_pointer_cast<formula_ai>(fai)->ai_ptr_;
 }
 
 }
@@ -50,7 +50,7 @@ variant move_map_callable::get_value(const std::string& key) const
 		std::vector<variant> vars;
 		for(move_map::const_iterator i = srcdst_.begin(); i != srcdst_.end(); ++i) {
                         if( i->first == i->second || units_.count(i->second) == 0) {
-                            move_callable* item = new move_callable(i->first, i->second);
+                            auto item = std::make_shared<move_callable>(i->first, i->second);
                             vars.emplace_back(item);
                         }
 		}
@@ -91,7 +91,7 @@ variant move_callable::execute_self(variant ctxt) {
 
 	if(!move_result->is_ok()) {
 		LOG_AI << "ERROR #" << move_result->get_status() << " while executing 'move' formula function\n" << std::endl;
-		return variant(new safe_call_result(this, move_result->get_status(), move_result->get_unit_location()));
+		return variant(std::make_shared<safe_call_result>(fake_ptr(), move_result->get_status(), move_result->get_unit_location()));
 	}
 
 	return variant(move_result->is_gamestate_changed());
@@ -120,7 +120,7 @@ variant move_partial_callable::execute_self(variant ctxt) {
 
 	if(!move_result->is_ok()) {
 		LOG_AI << "ERROR #" << move_result->get_status() << " while executing 'move_partial' formula function\n" << std::endl;
-		return variant(new safe_call_result(this, move_result->get_status(), move_result->get_unit_location()));
+		return variant(std::make_shared<safe_call_result>(fake_ptr(), move_result->get_status(), move_result->get_unit_location()));
 	}
 
 	return variant(move_result->is_gamestate_changed());
@@ -169,11 +169,11 @@ attack_callable::attack_callable(const map_location& move_from,
 
 variant attack_callable::get_value(const std::string& key) const {
 	if(key == "attack_from") {
-		return variant(new location_callable(src_));
+		return variant(std::make_shared<location_callable>(src_));
 	} else if(key == "defender") {
-		return variant(new location_callable(dst_));
+		return variant(std::make_shared<location_callable>(dst_));
 	} else if(key == "move_from") {
-		return variant(new location_callable(move_from_));
+		return variant(std::make_shared<location_callable>(move_from_));
 	} else {
 		return variant();
 	}
@@ -225,7 +225,7 @@ variant attack_callable::execute_self(variant ctxt) {
 		if(!move_result->is_ok()) {
 			//move part failed
 			LOG_AI << "ERROR #" << move_result->get_status() << " while executing 'attack' formula function\n" << std::endl;
-			return variant(new safe_call_result(this, move_result->get_status(), move_result->get_unit_location()));
+			return variant(std::make_shared<safe_call_result>(fake_ptr(), move_result->get_status(), move_result->get_unit_location()));
 		}
 	}
 
@@ -236,7 +236,7 @@ variant attack_callable::execute_self(variant ctxt) {
 		if(!attack_result->is_ok()) {
 			//attack failed
 			LOG_AI << "ERROR #" << attack_result->get_status() << " while executing 'attack' formula function\n" << std::endl;
-			return variant(new safe_call_result(this, attack_result->get_status()));
+			return variant(std::make_shared<safe_call_result>(fake_ptr(), attack_result->get_status()));
 		}
 	}
 
@@ -287,7 +287,7 @@ void attack_map_callable::collect_possible_attacks(std::vector<variant>& vars, m
 		    unit->invisible(unit->get_location(), *resources::gameboard))
 			continue;
 		/* add attacks with default weapon */
-		attack_callable* item = new attack_callable(attacker_location, attack_position, adj[n], -1);
+		auto item = std::make_shared<attack_callable>(attacker_location, attack_position, adj[n], -1);
 		vars.emplace_back(item);
 	}
 }
@@ -297,7 +297,7 @@ variant recall_callable::get_value(const std::string& key) const {
 	if( key == "id")
 		return variant(id_);
 	if( key == "loc")
-		return variant(new location_callable(loc_));
+		return variant(std::make_shared<location_callable>(loc_));
 	return variant();
 }
 
@@ -314,7 +314,7 @@ variant recall_callable::execute_self(variant ctxt) {
 		recall_result->execute();
 	} else {
 		LOG_AI << "ERROR #" << recall_result->get_status() << " while executing 'recall' formula function\n" << std::endl;
-		return variant(new safe_call_result(this, recall_result->get_status()));
+		return variant(std::make_shared<safe_call_result>(fake_ptr(), recall_result->get_status()));
 	}
 
 	return variant(recall_result->is_gamestate_changed());
@@ -324,7 +324,7 @@ variant recruit_callable::get_value(const std::string& key) const {
 	if( key == "unit_type")
 		return variant(type_);
 	if( key == "recruit_loc")
-		return variant(new location_callable(loc_));
+		return variant(std::make_shared<location_callable>(loc_));
 	return variant();
 }
 
@@ -343,7 +343,7 @@ variant recruit_callable::execute_self(variant ctxt) {
 		recruit_result->execute();
 	} else {
 		LOG_AI << "ERROR #" << recruit_result->get_status() << " while executing 'recruit' formula function\n" << std::endl;
-		return variant(new safe_call_result(this, recruit_result->get_status()));
+		return variant(std::make_shared<safe_call_result>(fake_ptr(), recruit_result->get_status()));
 	}
 
 	//is_gamestate_changed()==true means that the game state was somehow changed by action.
@@ -353,7 +353,7 @@ variant recruit_callable::execute_self(variant ctxt) {
 
 variant set_unit_var_callable::get_value(const std::string& key) const {
 	if(key == "loc")
-		return variant(new location_callable(loc_));
+		return variant(std::make_shared<location_callable>(loc_));
 
 	if(key == "key")
 		return variant(key_);
@@ -390,7 +390,7 @@ variant set_unit_var_callable::execute_self(variant ctxt) {
 	}
 
 	ERR_AI << "ERROR #" << status << " while executing 'set_unit_var' formula function" << std::endl;
-	return variant(new safe_call_result(this, status));
+	return variant(std::make_shared<safe_call_result>(fake_ptr(), status));
 }
 
 variant fallback_callable::execute_self(variant) {

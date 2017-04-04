@@ -55,7 +55,7 @@ namespace {
 class unit_adapter {
 	public:
 		unit_adapter(const variant& arg) : unit_type_(), unit_() {
-			const unit_callable* unit = arg.try_convert<unit_callable>();
+			auto unit = arg.try_convert<unit_callable>();
 
 			if (unit) {
 				unit_ = &unit->get_unit();
@@ -361,9 +361,9 @@ private:
 
 				if( valid ) {
 					if( enemy_border )
-						res.insert( std::pair<variant, variant>(variant(new location_callable(map_location(x, y))), variant(scores[0][i] + 10000) ));
+						res.emplace(variant(std::make_shared<location_callable>(map_location(x, y))), variant(scores[0][i] + 10000));
 					else
-						res.insert( std::pair<variant, variant>(variant(new location_callable(map_location(x, y))), variant(scores[0][i] ) ));
+						res.emplace(variant(std::make_shared<location_callable>(map_location(x, y))), variant(scores[0][i]));
 				}
 			}
 		}
@@ -400,7 +400,7 @@ private:
 		}
 
 		if( best_i != -1)
-			return variant(new location_callable(items[best_i].convert_to<location_callable>()->loc()));
+			return variant(std::make_shared<location_callable>(items[best_i].convert_to<location_callable>()->loc()));
 		else
 			return variant();
 	}
@@ -423,7 +423,7 @@ private:
 		std::vector<variant> v;
 		for(int n = 0; n != 6; ++n) {
                         if (resources::gameboard->map().on_board(adj[n]) )
-                            v.emplace_back(new location_callable(adj[n]));
+                            v.emplace_back(std::make_shared<location_callable>(adj[n]));
 		}
 
 		return variant(v);
@@ -448,7 +448,7 @@ private:
 			return variant();
 
 		if(!range)
-			return variant(new location_callable(loc));
+			return variant(std::make_shared<location_callable>(loc));
 
 		std::vector<map_location> res;
 
@@ -456,11 +456,11 @@ private:
 
 		std::vector<variant> v;
 		v.reserve(res.size()+1);
-		v.emplace_back(new location_callable(loc));
+		v.emplace_back(std::make_shared<location_callable>(loc));
 
 		for(size_t n = 0; n != res.size(); ++n) {
                         if (resources::gameboard->map().on_board(res[n]) )
-                            v.emplace_back(new location_callable(res[n]));
+                            v.emplace_back(std::make_shared<location_callable>(res[n]));
 		}
 
 		return variant(v);
@@ -548,7 +548,7 @@ private:
 
                 std::vector<variant> res;
                 for (const map_location& ml : visited_locs) {
-                    res.push_back( variant(new location_callable( ml ) ) );
+                    res.push_back( variant(std::make_shared<location_callable>( ml ) ) );
                 }
 
 		return variant(res);
@@ -577,9 +577,9 @@ private:
 			return variant();
 		}
 
-		const unit_callable* u_call = u.try_convert<unit_callable>();
+		auto u_call = u.try_convert<unit_callable>();
 
-		if (u_call == nullptr) {
+		if(!u_call) {
 			return variant();
 		}
 
@@ -625,7 +625,7 @@ private:
 		}
 
 		if( best_i != -1)
-			return variant(new location_callable(ai_.get_keeps_cache()[best_i].convert_to<location_callable>()->loc()));
+			return variant(std::make_shared<location_callable>(ai_.get_keeps_cache()[best_i].convert_to<location_callable>()->loc()));
 		else
 			return variant();
 	}
@@ -653,7 +653,7 @@ private:
 			return variant();
 		}
 		const pathfind::paths unit_paths(*u, false, true, ai_.current_team());
-		return variant(new location_callable(ai_.suitable_keep(loc,unit_paths)));
+		return variant(std::make_shared<location_callable>(ai_.suitable_keep(loc,unit_paths)));
 	}
 
 	formula_ai& ai_;
@@ -683,7 +683,7 @@ private:
 		for(int i = 0; i < w; ++i)
 			for(int j = 0; j < h; ++j) {
 				if(ai_.current_team().shrouded(map_location(i,j)))
-					vars.emplace_back(new location_callable(map_location(i, j)));
+					vars.emplace_back(std::make_shared<location_callable>(map_location(i, j)));
 			}
 
 		return variant(vars);
@@ -714,7 +714,7 @@ private:
 		while (un != end) {
 			if (distance_between(loc, un->get_location()) <= range) {
 				if (un->side() != ai_.get_side()) {//fixme: ignores allied units
-					vars.emplace_back(new unit_callable(*un));
+					vars.emplace_back(std::make_shared<unit_callable>(*un));
 				}
 			}
 			++un;
@@ -780,7 +780,7 @@ private:
 			status.emplace_back("Stoned");
 		if (bc.get_defender_stats().plagues && hitLeft[0].as_int() == 0)
 			status.emplace_back("Zombiefied");
-		vars.emplace_back(new outcome_callable(hitLeft, prob, status));
+		vars.emplace_back(std::make_shared<outcome_callable>(hitLeft, prob, status));
 		hitLeft.clear();
 		prob.clear();
 		status.clear();
@@ -803,7 +803,7 @@ private:
 			status.emplace_back("Stoned");
 		if (bc.get_attacker_stats().plagues && hitLeft[0].as_int() == 0)
 			status.emplace_back("Zombiefied");
-		vars.emplace_back(new outcome_callable(hitLeft, prob, status));
+		vars.emplace_back(std::make_shared<outcome_callable>(hitLeft, prob, status));
 		return variant(vars);
 	}
 };
@@ -819,7 +819,7 @@ public:
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		variant attack = args()[0]->evaluate(variables,add_debug_info(fdb,0,"outcomes:attack"));
-		ai::attack_analysis* analysis = attack.convert_to<ai::attack_analysis>();
+		auto analysis = attack.convert_to<ai::attack_analysis>();
 		//unit_map units_with_moves(resources::gameboard->units());
 		//typedef std::pair<map_location, map_location> mv;
 		//for(const mv &m : analysis->movements) {
@@ -830,13 +830,13 @@ private:
 		if(analysis->chance_to_kill > 0.0) {
 			//unit_map units(units_with_moves);
 			//units.erase(analysis->target);
-			vars.emplace_back(new position_callable(/*&units,*/ static_cast<int>(analysis->chance_to_kill*100)));
+			vars.emplace_back(std::make_shared<position_callable>(/*&units,*/ static_cast<int>(analysis->chance_to_kill*100)));
 
 		}
 
 		if(analysis->chance_to_kill < 1.0) {
 			//unit_map units(units_with_moves);
-			vars.emplace_back(new position_callable(/*&units,*/ static_cast<int>(100 - analysis->chance_to_kill*100)));
+			vars.emplace_back(std::make_shared<position_callable>(/*&units,*/ static_cast<int>(100 - analysis->chance_to_kill*100)));
 		}
 
 		return variant(vars);
@@ -872,7 +872,7 @@ private:
 
 		const unit_type *ut = unit_types.find(type);
 		if(ut) {
-			return variant(new unit_type_callable(*ut));
+			return variant(std::make_shared<unit_type_callable>(*ut));
 		}
 
 		return variant();
@@ -889,7 +889,7 @@ public:
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		variant act = args()[0]->evaluate(variables,add_debug_info(fdb,0,"rate_action:action"));
-		ai::attack_analysis* analysis = act.convert_to<ai::attack_analysis>();
+		auto analysis = act.convert_to<ai::attack_analysis>();
 
 		return variant(analysis->rating(ai_.get_aggression(),ai_)*1000,variant::DECIMAL_VARIANT);
 	}
@@ -911,7 +911,7 @@ private:
 			loc = args()[1]->evaluate(variables, add_debug_info(fdb, 1, "recall:location")).convert_to<location_callable>()->loc();
 		}
 
-		return variant(new recall_callable(loc, id));
+		return variant(std::make_shared<recall_callable>(loc, id));
 	}
 };
 
@@ -929,7 +929,7 @@ private:
 			loc = args()[1]->evaluate(variables, add_debug_info(fdb, 1, "recruit:location")).convert_to<location_callable>()->loc();
 		}
 
-		return variant(new recruit_callable(loc, type));
+		return variant(std::make_shared<recruit_callable>(loc, type));
 	}
 };
 
@@ -974,7 +974,7 @@ private:
                 }
 
                 for (std::vector<map_location>::const_iterator loc_iter = route.steps.begin() + 1 ; loc_iter !=route.steps.end(); ++loc_iter) {
-                    locations.push_back( variant( new location_callable(*loc_iter) ));
+                    locations.push_back( variant(std::make_shared<location_callable>(*loc_iter) ));
                 }
 
 		return variant(locations);
@@ -1027,7 +1027,7 @@ private:
 
                 for (std::vector<map_location>::const_iterator loc_iter = route.steps.begin() + 1 ; loc_iter !=route.steps.end(); ++loc_iter) {
                     if (unit_it->movement_cost((resources::gameboard->map())[*loc_iter]) < movetype::UNREACHABLE )
-                        locations.push_back( variant( new location_callable(*loc_iter) ));
+                        locations.push_back( variant(std::make_shared<location_callable>(*loc_iter) ));
                     else
                         break;
                 }
@@ -1095,7 +1095,7 @@ private:
 		if (loc==map_location::null_location()) {
 			return variant();
 		}
-		return variant(new location_callable(loc));
+		return variant(std::make_shared<location_callable>(loc));
 	}
 
 	const formula_ai& ai_;
@@ -1113,7 +1113,7 @@ private:
 		const map_location src = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "move:src")).convert_to<location_callable>()->loc();
 		const map_location dst = args()[1]->evaluate(variables, add_debug_info(fdb, 1, "move:dst")).convert_to<location_callable>()->loc();
 		LOG_AI << "move(): " << src << ", " << dst << ")\n";
-		return variant(new move_callable(src, dst));
+		return variant(std::make_shared<move_callable>(src, dst));
 	}
 };
 
@@ -1128,7 +1128,7 @@ private:
 		const map_location src = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "move_partial:src")).convert_to<location_callable>()->loc();
 		const map_location dst = args()[1]->evaluate(variables, add_debug_info(fdb, 1, "move_partial:dst")).convert_to<location_callable>()->loc();
 		LOG_AI << "move_partial(): " << src << ", " << dst << ")\n";
-		return variant(new move_partial_callable(src, dst));
+		return variant(std::make_shared<move_partial_callable>(src, dst));
 	}
 };
 
@@ -1140,7 +1140,7 @@ public:
 	{}
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		return variant(new set_unit_var_callable(args()[0]->evaluate(variables,add_debug_info(fdb,0,"set_unit_var:key")).as_string(), args()[1]->evaluate(variables,add_debug_info(fdb,1,"set_unit_var:value")), args()[2]->evaluate(variables,add_debug_info(fdb,2,"set_unit_var:unit_location")).convert_to<location_callable>()->loc()));
+		return variant(std::make_shared<set_unit_var_callable>(args()[0]->evaluate(variables,add_debug_info(fdb,0,"set_unit_var:key")).as_string(), args()[1]->evaluate(variables,add_debug_info(fdb,1,"set_unit_var:value")), args()[2]->evaluate(variables,add_debug_info(fdb,2,"set_unit_var:unit_location")).convert_to<location_callable>()->loc()));
 	}
 };
 
@@ -1155,7 +1155,7 @@ private:
 		// The parameter is not used, but is accepted for legacy compatibility
 		if(args().size() == 1 && args()[0]->evaluate(variables).as_string() != "human")
 			return variant();
-		return variant(new fallback_callable);
+		return variant(std::make_shared<fallback_callable>());
 	}
 };
 
@@ -1175,7 +1175,7 @@ private:
 			ERR_AI << "AI ERROR: Formula produced illegal attack: " << move_from << " -> " << src << " -> " << dst << std::endl;
 			return variant();
 		}
-		return variant(new attack_callable(move_from, src, dst, weapon));
+		return variant(std::make_shared<attack_callable>(move_from, src, dst, weapon));
 	}
 };
 
@@ -1284,10 +1284,10 @@ private:
 		if (loc_var.is_null()) {
 			return variant();
 		}
-		const location_callable* loc = loc_var.convert_to<location_callable>();
+		auto loc = loc_var.convert_to<location_callable>();
 		const unit_map::const_iterator i = resources::gameboard->units().find(loc->loc());
 		if(i != resources::gameboard->units().end()) {
-			return variant(new unit_callable(*i));
+			return variant(std::make_shared<unit_callable>(*i));
 		} else {
 			return variant();
 		}
@@ -1314,7 +1314,7 @@ private:
 		std::pair<Itor,Itor> range = srcdst.equal_range(loc);
 
 		for(Itor i = range.first; i != range.second; ++i) {
-			vars.emplace_back(new location_callable(i->second));
+			vars.emplace_back(std::make_shared<location_callable>(i->second));
 		}
 
 		return variant(vars);
@@ -1339,7 +1339,7 @@ private:
 		while(range.first != range.second) {
 			unit_map::const_iterator un = resources::gameboard->units().find(range.first->second);
 			assert(un != resources::gameboard->units().end());
-			vars.emplace_back(new unit_callable(*un));
+			vars.emplace_back(std::make_shared<unit_callable>(*un));
 			++range.first;
 		}
 
@@ -1361,8 +1361,8 @@ private:
 			return variant();
 		}
 
-		const unit_callable* u_call = u.try_convert<unit_callable>();
-		const unit_type_callable* u_type = u.try_convert<unit_type_callable>();
+		auto u_call = u.try_convert<unit_callable>();
+		auto u_type = u.try_convert<unit_type_callable>();
 		const map_location& loc = loc_var.convert_to<location_callable>()->loc();
 
 		if (u_call)
@@ -1411,8 +1411,8 @@ private:
 			return variant();
 		}
 
-		const unit_callable* u_call = u.try_convert<unit_callable>();
-		const unit_type_callable* u_type = u.try_convert<unit_type_callable>();
+		auto u_call = u.try_convert<unit_callable>();
+		auto u_type = u.try_convert<unit_type_callable>();
 		const map_location& loc = loc_var.convert_to<location_callable>()->loc();
 
 		if (u_call)
@@ -1455,8 +1455,8 @@ private:
 			return variant();
 		}
 		//we can pass to this function either unit_callable or unit_type callable
-		const unit_callable* u_call = u.try_convert<unit_callable>();
-		const unit_type_callable* u_type = u.try_convert<unit_type_callable>();
+		auto u_call = u.try_convert<unit_callable>();
+		auto u_type = u.try_convert<unit_type_callable>();
 		const map_location& loc = loc_var.convert_to<location_callable>()->loc();
 
 		if (u_call)

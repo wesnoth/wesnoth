@@ -72,9 +72,9 @@ class move_callable : public action_callable {
 	map_location src_, dst_;
 	variant get_value(const std::string& key) const override {
 		if(key == "src") {
-			return variant(new location_callable(src_));
+			return variant(std::make_shared<location_callable>(src_));
 		} else if(key == "dst") {
-			return variant(new location_callable(dst_));
+			return variant(std::make_shared<location_callable>(dst_));
 		} else {
 			return variant();
 		}
@@ -101,9 +101,9 @@ class move_partial_callable : public action_callable {
 	map_location src_, dst_;
 	variant get_value(const std::string& key) const override {
 		if(key == "src") {
-			return variant(new location_callable(src_));
+			return variant(std::make_shared<location_callable>(src_));
 		} else if(key == "dst") {
-			return variant(new location_callable(dst_));
+			return variant(std::make_shared<location_callable>(dst_));
 		} else {
 			return variant();
 		}

@@ -1320,7 +1320,7 @@ void image_shape::draw(surface& canvas,
 	local_variables.add("clip_y", wfl::variant(clip_y));
 
 	// Execute the provided actions for this context.
-	wfl::variant(&variables).execute_variant(actions_formula_.evaluate(local_variables));
+	wfl::variant(variables.fake_ptr()).execute_variant(actions_formula_.evaluate(local_variables));
 
 	// Copy the data to local variables to avoid overwriting the originals.
 	SDL_Rect src_clip = src_clip_;

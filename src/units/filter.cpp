@@ -591,10 +591,10 @@ bool basic_unit_filter_impl::internal_matches_filter(const unit & u, const map_l
 	if (!vcfg["formula"].blank()) {
 		try {
 			const wfl::unit_callable main(loc,u);
-			wfl::map_formula_callable callable(&main);
+			wfl::map_formula_callable callable(main.fake_ptr());
 			if (u2) {
 				std::shared_ptr<wfl::unit_callable> secondary(new wfl::unit_callable(*u2));
-				callable.add("other", wfl::variant(secondary.get()));
+				callable.add("other", wfl::variant(secondary));
 				// It's not destroyed upon scope exit because the variant holds a reference
 			}
 			const wfl::formula form(vcfg["formula"]);

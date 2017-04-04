@@ -162,7 +162,7 @@ variant::variant(double n, variant::DECIMAL_VARIANT_TYPE)
 	assert(value_.get());
 }
 
-variant::variant(const formula_callable* callable)
+variant::variant(const_formula_callable_ptr callable)
 	: value_(std::make_shared<variant_callable>(callable))
 {
 	assert(value_.get());
@@ -682,7 +682,7 @@ variant variant::execute_variant(const variant& var)
 			continue;
 		}
 
-		if(action_callable* action = vars.top().try_convert<action_callable>()) {
+		if(auto action = vars.top().try_convert<action_callable>()) {
 			variant res = action->execute_self(*this);
 			if(res.is_int() && res.as_bool()) {
 				made_moves.push_back(vars.top());

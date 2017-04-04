@@ -140,7 +140,7 @@ void luaW_pushfaivariant(lua_State* L, variant val) {
 		}
 	} else if(val.is_callable()) {
 		// First try a few special cases
-		if(unit_callable* u_ref = val.try_convert<unit_callable>()) {
+		if(auto u_ref = val.try_convert<unit_callable>()) {
 			const unit& u = u_ref->get_unit();
 			unit_map::iterator un_it = resources::gameboard->units().find(u.get_location());
 			if(&*un_it == &u) {
@@ -148,11 +148,11 @@ void luaW_pushfaivariant(lua_State* L, variant val) {
 			} else {
 				luaW_pushunit(L, u.side(), u.underlying_id());
 			}
-		} else if(location_callable* loc_ref = val.try_convert<location_callable>()) {
+		} else if(auto loc_ref = val.try_convert<location_callable>()) {
 			luaW_pushlocation(L, loc_ref->loc());
 		} else {
 			// If those fail, convert generically to a map
-			const formula_callable* obj = val.as_callable();
+			auto obj = val.as_callable();
 			formula_input_vector inputs;
 			obj->get_inputs(inputs);
 			lua_newtable(L);
@@ -179,7 +179,7 @@ variant luaW_tofaivariant(lua_State* L, int i) {
 		case LUA_TSTRING:
 			return variant(lua_tostring(L, i));
 		case LUA_TTABLE:
-			return variant(new lua_callable(L, i));
+			return variant(std::make_shared<lua_callable>(L, i));
 		case LUA_TUSERDATA:
 			static t_string tstr;
 			static vconfig vcfg = vconfig::unconstructed_vconfig();
@@ -187,11 +187,11 @@ variant luaW_tofaivariant(lua_State* L, int i) {
 			if(luaW_totstring(L, i, tstr)) {
 				return variant(tstr.str());
 			} else if(luaW_tovconfig(L, i, vcfg)) {
-				return variant(new config_callable(vcfg.get_parsed_config()));
+				return variant(std::make_shared<config_callable>(vcfg.get_parsed_config()));
 			} else if(unit* u = luaW_tounit(L, i)) {
-				return variant(new unit_callable(*u));
+				return variant(std::make_shared<unit_callable>(*u));
 			} else if(luaW_tolocation(L, i, loc)) {
-				return variant(new location_callable(loc));
+				return variant(std::make_shared<location_callable>(loc));
 			}
 			break;
 	}

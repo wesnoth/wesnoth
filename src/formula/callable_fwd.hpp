@@ -17,11 +17,16 @@
 
 #include <memory>
 #include <vector>
+#include <string>
 
 namespace wfl
 {
 class formula_callable;
 class formula_debugger;
+
+struct callable_die_subscriber {
+	virtual void notify_dead() {}
+};
 
 enum FORMULA_ACCESS_TYPE { FORMULA_READ_ONLY, FORMULA_WRITE_ONLY, FORMULA_READ_WRITE };
 
@@ -36,7 +41,8 @@ struct formula_input {
 using formula_input_vector = std::vector<formula_input>;
 using formula_callable_ptr       = std::shared_ptr<formula_callable>;
 using const_formula_callable_ptr = std::shared_ptr<const formula_callable>;
-using formula_seen_stack = std::vector<const formula_callable*>;
+using formula_seen_stack = std::vector<const_formula_callable_ptr>;
+
 }
 
 #endif

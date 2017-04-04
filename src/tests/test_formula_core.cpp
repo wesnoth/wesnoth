@@ -44,12 +44,12 @@ class mock_party : public formula_callable {
 			i_[2].add("strength",variant(14));
 			std::vector<variant> members;
 			for(int n = 0; n != 3; ++n) {
-				members.emplace_back(&i_[n]);
+				members.emplace_back(i_[n].fake_ptr());
 			}
 			
 			return variant(members);
 		} else if(key == "char") {
-			return variant(&c_);
+			return variant(c_.fake_ptr());
 		} else {
 			return variant(0);
 		}

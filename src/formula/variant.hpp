@@ -34,7 +34,7 @@ public:
 	explicit variant(int n);
 	variant(int n, DECIMAL_VARIANT_TYPE /*type*/);
 	variant(double n, DECIMAL_VARIANT_TYPE /*type*/);
-	explicit variant(const formula_callable* callable);
+	variant(const_formula_callable_ptr callable);
 	explicit variant(const std::vector<variant>& array);
 	explicit variant(const std::string& str);
 	explicit variant(const std::map<variant, variant>& map);
@@ -71,26 +71,26 @@ public:
 
 	const std::string& as_string() const;
 
-	const formula_callable* as_callable() const
+	const_formula_callable_ptr as_callable() const
 	{
 		must_be(VARIANT_TYPE::TYPE_CALLABLE);
 		return value_cast<variant_callable>()->get_callable();
 	}
 
 	template<typename T>
-	T* try_convert() const
+	std::shared_ptr<T> try_convert() const
 	{
 		if(!is_callable()) {
 			return nullptr;
 		}
 
-		return dynamic_cast<T*>(const_cast<formula_callable*>(as_callable()));
+		return std::dynamic_pointer_cast<T>(std::const_pointer_cast<formula_callable>(as_callable()));
 	}
 
 	template<typename T>
-	T* convert_to() const
+	std::shared_ptr<T> convert_to() const
 	{
-		T* res = dynamic_cast<T*>(const_cast<formula_callable*>(as_callable()));
+		std::shared_ptr<T> res = std::dynamic_pointer_cast<T>(std::const_pointer_cast<formula_callable>(as_callable()));
 		if(!res) {
 			throw type_error("could not convert type");
 		}

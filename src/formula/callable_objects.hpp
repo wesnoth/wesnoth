@@ -224,14 +224,14 @@ private:
 class safe_call_result : public formula_callable
 {
 public:
-	safe_call_result(const formula_callable* callable, int status, const map_location& loc = map_location())
+	safe_call_result(const_formula_callable_ptr callable, int status, const map_location& loc = map_location())
 		: failed_callable_(callable)
 		, current_unit_location_(loc)
 		, status_(status)
 	{}
 
 private:
-	const formula_callable* failed_callable_;
+	const_formula_callable_ptr failed_callable_;
 	const map_location current_unit_location_;
 	const int status_;
 

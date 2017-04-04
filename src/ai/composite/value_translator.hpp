@@ -342,7 +342,7 @@ public:
 	{
                 std::vector<wfl::variant> vars;
                 for(attacks_vector::const_iterator i = value.begin(); i != value.end(); ++i) {
-                        vars.emplace_back(new attack_analysis(*i));
+                        vars.emplace_back(std::make_shared<attack_analysis>(*i));
                 }
 		var = wfl::variant(vars);
 	}

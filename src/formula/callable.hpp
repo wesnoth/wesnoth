@@ -15,6 +15,7 @@
 #ifndef FORMULA_CALLABLE_HPP_INCLUDED
 #define FORMULA_CALLABLE_HPP_INCLUDED
 
+#include "formula/callable_fwd.hpp"
 #include "formula/variant.hpp"
 
 #include <iostream>
@@ -30,12 +31,26 @@ class formula_callable
 public:
 	explicit formula_callable(bool has_self = true) : type_(FORMULA_C), has_self_(has_self) {}
 
-	virtual ~formula_callable() {}
+	virtual ~formula_callable() {
+		for(auto& d : dtor_notify) {
+			if(d) {
+				d->notify_dead();
+			}
+		}
+	}
+
+	formula_callable_ptr fake_ptr() {
+		return formula_callable_ptr(this, [](const formula_callable*){});
+	}
+
+	const_formula_callable_ptr fake_ptr() const {
+		return const_formula_callable_ptr(this, [](const formula_callable*){});
+	}
 
 	variant query_value(const std::string& key) const
 	{
 		if(has_self_ && key == "self") {
-			return variant(this);
+			return variant(fake_ptr());
 		}
 		return get_value(key);
 	}
@@ -54,14 +69,14 @@ public:
 
 	virtual void get_inputs(formula_input_vector& /*inputs*/) const {}
 
-	bool equals(const formula_callable* other) const
+	bool equals(const formula_callable& other) const
 	{
-		return do_compare(other) == 0;
+		return do_compare(&other) == 0;
 	}
 
-	bool less(const formula_callable* other) const
+	bool less(const formula_callable& other) const
 	{
-		return do_compare(other) < 0;
+		return do_compare(&other) < 0;
 	}
 
 	bool has_key(const std::string& key) const
@@ -74,6 +89,14 @@ public:
 	void serialize(std::string& str) const
 	{
 		serialize_to_string(str);
+	}
+
+	void subscribe_dtor(callable_die_subscriber* d) const {
+		dtor_notify.insert(d);
+	}
+
+	void unsubscribe_dtor(callable_die_subscriber* d) const {
+		dtor_notify.erase(d);
 	}
 
 protected:
@@ -150,6 +173,8 @@ protected:
 
 	TYPE type_;
 
+	mutable std::set<callable_die_subscriber*> dtor_notify;
+
 private:
 	virtual variant get_value(const std::string& key) const = 0;
 	bool has_self_;
@@ -219,7 +244,7 @@ private:
 class map_formula_callable : public formula_callable
 {
 public:
-	explicit map_formula_callable(const formula_callable* fallback = nullptr)
+	explicit map_formula_callable(const_formula_callable_ptr fallback = nullptr)
 		: formula_callable(false)
 		, values_()
 		, fallback_(fallback)
@@ -231,7 +256,7 @@ public:
 		return *this;
 	}
 
-	void set_fallback(const formula_callable* fallback)
+	void set_fallback(const_formula_callable_ptr fallback)
 	{
 		fallback_ = fallback;
 	}
@@ -275,7 +300,7 @@ private:
 	}
 
 	std::map<std::string, variant> values_;
-	const formula_callable* fallback_;
+	const_formula_callable_ptr fallback_;
 };
 
 using map_formula_callable_ptr = std::shared_ptr<map_formula_callable>;
