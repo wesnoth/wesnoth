@@ -585,17 +585,17 @@ private:
 
 		const unit& un = u_call->get_unit();
 
-		map_location const* loc = nullptr;
+		map_location loc;
 
 		if(args().size()==2) {
-			loc = &args()[1]->evaluate(variables, add_debug_info(fdb, 1, "timeofday_modifier:location")).convert_to<location_callable>()->loc();
+			loc = args()[1]->evaluate(variables, add_debug_info(fdb, 1, "timeofday_modifier:location")).convert_to<location_callable>()->loc();
 		}
 
-		if (loc == nullptr) {
-			loc = &u_call->get_location();
+		if(!loc.valid()) {
+			loc = u_call->get_location();
 		}
 
-		return variant(combat_modifier(resources::gameboard->units(), resources::gameboard->map(),*loc, un.alignment(), un.is_fearless()));
+		return variant(combat_modifier(resources::gameboard->units(), resources::gameboard->map(), loc, un.alignment(), un.is_fearless()));
 	}
 };
 
