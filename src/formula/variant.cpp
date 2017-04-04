@@ -33,18 +33,19 @@ static lg::log_domain log_scripting_formula("scripting/formula");
 #include <cmath>
 #include <memory>
 
-namespace wfl {
+namespace wfl
+{
 
 // Static value to initialize null variants to ensure its value is never nullptr.
-value_base_ptr null_value(new variant_value_base);
+static value_base_ptr null_value(new variant_value_base);
 
-std::string variant_type_to_string(VARIANT_TYPE type)
+static std::string variant_type_to_string(VARIANT_TYPE type)
 {
 	return VARIANT_TYPE::enum_to_string(type);
 }
 
 // Small helper function to get a standard type error message.
-std::string was_expecting(const std::string& message, const variant& v)
+static std::string was_expecting(const std::string& message, const variant& v)
 {
 	std::ostringstream ss;
 
@@ -54,7 +55,7 @@ std::string was_expecting(const std::string& message, const variant& v)
 	return ss.str();
 }
 
-std::vector<const char*> call_stack;
+static std::vector<const char*> call_stack;
 
 call_stack_manager::call_stack_manager(const char* str)
 {
