@@ -352,7 +352,7 @@ public:
 
 	virtual void iterator_inc(boost::any& iter) const override;
 	virtual void iterator_dec(boost::any& iter) const override;
-	virtual bool iterator_equals(const boost::any& /*first*/, const boost::any& /*second*/) const
+	virtual bool iterator_equals(const boost::any& /*first*/, const boost::any& /*second*/) const override
 	{
 		return true; // TODO: implement
 	}
@@ -543,7 +543,7 @@ public:
 		return type;
 	}
 
-	virtual variant deref_iterator(const boost::any&) const;
+	virtual variant deref_iterator(const boost::any&) const override;
 
 private:
 	virtual std::string to_string_detail(const variant_map_raw::value_type& container_val, mod_func_t mod_func) const override;
