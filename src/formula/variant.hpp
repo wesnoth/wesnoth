@@ -23,14 +23,6 @@
 namespace wfl
 {
 class formula_callable;
-
-struct call_stack_manager
-{
-	explicit call_stack_manager(const char* str);
-	~call_stack_manager();
-	static std::string get();
-};
-
 class variant_iterator;
 
 class variant

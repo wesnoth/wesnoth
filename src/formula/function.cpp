@@ -22,6 +22,8 @@
 
 #include <boost/math/constants/constants.hpp>
 #include <cctype>
+#include <deque>
+
 using namespace boost::math::constants;
 
 static lg::log_domain log_engine("engine");
@@ -32,6 +34,27 @@ static lg::log_domain log_scripting_formula("scripting/formula");
 #define ERR_SF LOG_STREAM(err, log_scripting_formula)
 
 namespace wfl {
+
+static std::deque<std::string> call_stack;
+
+call_stack_manager::call_stack_manager(const std::string& str) {
+	call_stack.push_back(str);
+}
+
+call_stack_manager::~call_stack_manager() {
+	call_stack.pop_back();
+}
+
+std::string call_stack_manager::get() {
+	std::ostringstream res;
+	for(const auto& frame : call_stack) {
+		if(!frame.empty()) {
+			res << "  " << frame << "\n";
+		}
+	}
+
+	return res.str();
+}
 
 std::string function_expression::str() const
 {

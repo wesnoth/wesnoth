@@ -55,34 +55,6 @@ static std::string was_expecting(const std::string& message, const variant& v)
 	return ss.str();
 }
 
-static std::vector<const char*> call_stack;
-
-call_stack_manager::call_stack_manager(const char* str)
-{
-	call_stack.push_back(str);
-}
-
-call_stack_manager::~call_stack_manager()
-{
-	call_stack.pop_back();
-}
-
-std::string call_stack_manager::get()
-{
-	std::string res;
-	for(const auto& i : call_stack) {
-		if(!i) {
-			continue;
-		}
-
-		res += "  ";
-		res += i;
-		res += "\n";
-	}
-
-	return res;
-}
-
 type_error::type_error(const std::string& str) : game::error(str)
 {
 	std::cerr << "ERROR: " << message << "\n" << call_stack_manager::get();
