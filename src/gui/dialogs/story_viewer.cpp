@@ -19,6 +19,7 @@
 #include "formula/variant.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/point.hpp"
+#include "gui/core/timer.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/scroll_label.hpp"
@@ -51,6 +52,20 @@ static PangoAlignment storyscreen_alignment_to_pango(const storyscreen::part::TE
 	return text_alignment;
 }
 
+// Helper function to get the canvas shape data for the shading under the title area until
+// I can figure out how to ensure it always stays on top of the canvas stack.
+static config get_title_area_decor_config()
+{
+	static config cfg;
+	cfg["x"] = 0;
+	cfg["y"] = 0;
+	cfg["w"] = "(screen_width)";
+	cfg["h"] = "(image_original_height * 2)";
+	cfg["name"] = "dialogs/story_title_decor.png";
+
+	return cfg;
+}
+
 #if 0
 static panel* get_new_panel(const std::string& definition)
 {
@@ -67,9 +82,18 @@ REGISTER_DIALOG(story_viewer)
 story_viewer::story_viewer(storyscreen::controller& controller)
 	: controller_(controller)
 	, part_index_(0)
-	, current_part_()
+	, current_part_(nullptr)
+	, timer_id_(0)
 {
 	update_current_part_ptr();
+}
+
+story_viewer::~story_viewer()
+{
+	if(timer_id_ != 0) {
+		remove_timer(timer_id_);
+		timer_id_ = 0;
+	}
 }
 
 void story_viewer::pre_show(window& window)
@@ -144,16 +168,7 @@ void story_viewer::display_part(window& window)
 		cfg.add_child("image", image);
 	}
 
-	image.clear();
-
-	// TODO: should this be in the WML?
-	image["x"] = 0;
-	image["y"] = 0;
-	image["w"] = "(screen_width)";
-	image["h"] = "(image_original_height * 2)";
-	image["name"] = "dialogs/story_title_decor.png";
-
-	cfg.add_child("image", image);
+	cfg.add_child("image", get_title_area_decor_config());
 
 	canvas& window_canvas = window.get_canvas(0);
 
@@ -231,11 +246,48 @@ void story_viewer::display_part(window& window)
 	//
 	// Floating images (handle this last)
 	//
-	for(const auto& floating_image : current_part_->get_floating_images()) {
-		UNUSED(floating_image);
+	const auto& floating_images = current_part_->get_floating_images();
 
-		image.clear();
+	// If we have images to draw, draw the first one now. A new non-repeating timer is added
+	// after every draw to schedule the next one after the specified interval.
+	if(!floating_images.empty()) {
+		draw_foreground_image(window, floating_images.begin(), part_index_);
 	}
+}
+
+void story_viewer::draw_foreground_image(window& window, floating_image_list::const_iterator image_iter, int this_part_index)
+{
+	const auto& images = current_part_->get_floating_images();
+
+	// If the current part has changed or we're out of images to draw, exit the draw loop.
+	if((this_part_index != part_index_) || (image_iter == images.end())) {
+		timer_id_ = 0;
+		return;
+	}
+
+	const auto& floating_image = *image_iter;
+
+	config cfg, image;
+
+	// FIXME: these aren't the proper locations - they need to be relative to a base rect!
+	image["x"] = floating_image.ref_x();
+	image["y"] = floating_image.ref_y();
+	image["w"] = "(image_width)";
+	image["h"] = "(image_height)";
+	image["name"] = floating_image.file();
+
+	cfg.add_child("image", image);
+
+	canvas& window_canvas = window.get_canvas(0);
+
+	window_canvas.append_cfg(cfg);
+	window_canvas.set_is_dirty(true);
+
+	window.set_is_dirty(true);
+
+	// Schedule the next image draw. This *must* be a non-repeating timer!
+	timer_id_ = add_timer(floating_image.display_delay(),
+		std::bind(&story_viewer::draw_foreground_image, this, std::ref(window), ++image_iter, this_part_index), false);
 }
 
 void story_viewer::nav_button_callback(window& window, NAV_DIRECTION direction)

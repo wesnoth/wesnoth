@@ -20,8 +20,6 @@
 #include "storyscreen/controller.hpp"
 #include "storyscreen/part.hpp"
 
-#include "config.hpp"
-
 class CVideo;
 
 namespace gui2
@@ -33,7 +31,9 @@ namespace dialogs
 class story_viewer : public modal_dialog
 {
 public:
-	story_viewer(storyscreen::controller& controller);
+	explicit story_viewer(storyscreen::controller& controller);
+
+	~story_viewer();
 
 	static void display(storyscreen::controller& controller, CVideo& video)
 	{
@@ -51,6 +51,9 @@ private:
 
 	void display_part(window& window);
 
+	using floating_image_list = std::vector<storyscreen::floating_image>;
+	void draw_foreground_image(window& window, floating_image_list::const_iterator image_iter, int this_part_index);
+
 	enum NAV_DIRECTION {
 		DIR_FORWARD,
 		DIR_BACKWARDS
@@ -65,6 +68,8 @@ private:
 	int part_index_;
 
 	storyscreen::controller::part_pointer_type current_part_;
+
+	size_t timer_id_;
 };
 
 } // namespace dialogs
