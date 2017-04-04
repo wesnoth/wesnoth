@@ -55,7 +55,7 @@ void playturn_network_adapter::read_from_network()
 		config child;
 		child["side_num"] = back["side_drop"];
 		child["controller"] = back["controller"];
-		this->data_.push_back(config_of("side_drop", child));
+		this->data_.emplace_back(config_of("side_drop", child));
 		back.remove_attribute("side_drop");
 		back.remove_attribute("controller");
 	}
