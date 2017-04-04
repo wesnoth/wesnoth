@@ -255,17 +255,17 @@ private:
 		const variant units_input = args()[0]->evaluate(variables,fdb);
 		const variant leaders_input = args()[1]->evaluate(variables,fdb);
 
-		int enemy_tollerancy = 3;
+		int enemy_tolerance = 3;
 		if( args().size() > 2 )
-			enemy_tollerancy = args()[2]->evaluate(variables,fdb).as_int();
+			enemy_tolerance = args()[2]->evaluate(variables,fdb).as_int();
 
-		int enemy_border_tollerancy = 5;
+		int enemy_border_tolerance = 5;
 		if( args().size() > 3 )
-			enemy_border_tollerancy = args()[3]->evaluate(variables,fdb).as_int();
+			enemy_border_tolerance = args()[3]->evaluate(variables,fdb).as_int();
 
-		int ally_tollerancy = 3;
+		int ally_tolerance = 3;
 		if( args().size() > 4 )
-			ally_tollerancy = args()[4]->evaluate(variables,fdb).as_int();
+			ally_tolerance = args()[4]->evaluate(variables,fdb).as_int();
 
 		if( !units_input.is_list() )
 			return variant();
@@ -343,16 +343,16 @@ private:
 
 				for (int side : enemies) {
 					int diff = scores[current_side][i] - scores[side][i];
-					if ( diff > enemy_tollerancy) {
+					if ( diff > enemy_tolerance) {
 						valid = false;
 						break;
-					} else if( std::abs(diff) < enemy_border_tollerancy )
+					} else if( std::abs(diff) < enemy_border_tolerance )
 						enemy_border = true;
 				}
 
 				if( valid ) {
 					for (int side : allies) {
-						if ( scores[current_side][i] - scores[side][i] > ally_tollerancy ) {
+						if ( scores[current_side][i] - scores[side][i] > ally_tolerance ) {
 							valid = false;
 							break;
 						}
