@@ -65,22 +65,22 @@ matrix::matrix(const implementation::builder_matrix& builder)
 			config());
 
 	builder_widget::replacements_map replacements;
-	replacements.insert(std::make_pair("_main", builder.builder_main));
+	replacements.emplace("_main", builder.builder_main);
 
 	if(builder.builder_top) {
-		replacements.insert(std::make_pair("_top", builder.builder_top));
+		replacements.emplace("_top", builder.builder_top);
 	}
 
 	if(builder.builder_left) {
-		replacements.insert(std::make_pair("_left", builder.builder_left));
+		replacements.emplace("_left", builder.builder_left);
 	}
 
 	if(builder.builder_right) {
-		replacements.insert(std::make_pair("_right", builder.builder_right));
+		replacements.emplace("_right", builder.builder_right);
 	}
 
 	if(builder.builder_bottom) {
-		replacements.insert(std::make_pair("_bottom", builder.builder_bottom));
+		replacements.emplace("_bottom", builder.builder_bottom);
 	}
 
 	cfg->content->build(content_, replacements);

@@ -144,7 +144,7 @@ void
 register_builder_widget(const std::string& id,
 						std::function<builder_widget_ptr(config)> functor)
 {
-	builder_widget_lookup().insert(std::make_pair(id, functor));
+	builder_widget_lookup().emplace(id, functor);
 }
 
 builder_widget_ptr create_builder_widget(const config& cfg)

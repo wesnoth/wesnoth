@@ -60,7 +60,7 @@ public:
 	 */
 	void connect_notifiee(notifiee<functor_t>& target, functor_t functor)
 	{
-		notifiees_.insert(std::make_pair(&target, functor));
+		notifiees_.emplace(&target, functor);
 
 		assert(!target.notifier_);
 

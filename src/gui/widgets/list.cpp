@@ -72,7 +72,7 @@ void list_view::add_row(const string_map& item, const int index)
 {
 	std::map<std::string, string_map> data;
 
-	data.insert(std::make_pair("", item));
+	data.emplace("", item);
 	add_row(data, index);
 }
 

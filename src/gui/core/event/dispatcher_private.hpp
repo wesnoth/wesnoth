@@ -385,7 +385,7 @@ build_event_chain<signal_message_function>(const ui_event event,
 							 dispatcher::event_queue_type(dispatcher::pre
 													  | dispatcher::post))) {
 
-			result.insert(result.begin(), std::make_pair(w, event));
+			result.emplace(result.begin(), w, event);
 		}
 	}
 

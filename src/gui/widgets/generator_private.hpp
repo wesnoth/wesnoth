@@ -741,7 +741,7 @@ public:
 	{
 		std::map<std::string, string_map> data;
 
-		data.insert(std::make_pair("", item_data));
+		data.emplace("", item_data);
 		return create_item(index, list_builder, data, callback);
 	}
 

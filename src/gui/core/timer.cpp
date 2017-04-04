@@ -135,7 +135,7 @@ size_t add_timer(const Uint32 interval,
 
 	timer.callback = callback;
 
-	timers.insert(std::make_pair(next_timer_id, timer));
+	timers.emplace(std::make_pair(next_timer_id, timer));
 
 	DBG_GUI_E << "Added timer " << next_timer_id << ".\n";
 	return next_timer_id;

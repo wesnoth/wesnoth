@@ -450,7 +450,7 @@ void gui_definition::load_widget_definitions(
 		}
 
 		control_definition[definition_type]
-				.insert(std::make_pair(def->id, def));
+				.emplace(def->id, def);
 	}
 
 	// The default GUI needs to ensure each widget has a default definition, but non-default GUIs can just fall back to the default definition in the default GUI.
@@ -717,7 +717,7 @@ bool add_single_widget_definition(const std::string& widget_type, const std::str
 		return false;
 	}
 
-	gui.control_definition[widget_type].insert(std::make_pair(definition_id, parser->second.parser(cfg)));
+	gui.control_definition[widget_type].emplace(definition_id, parser->second.parser(cfg));
 	return true;
 }
 
