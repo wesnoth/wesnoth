@@ -1480,15 +1480,15 @@ void canvas::parse_cfg(const config& cfg)
 		DBG_GUI_P << "Canvas: found shape of the type " << type << ".\n";
 
 		if(type == "line") {
-			shapes_.push_back(std::make_shared<line_shape>(data));
+			shapes_.emplace_back(std::make_shared<line_shape>(data));
 		} else if(type == "rectangle") {
-			shapes_.push_back(std::make_shared<rectangle_shape>(data));
+			shapes_.emplace_back(std::make_shared<rectangle_shape>(data));
 		} else if(type == "circle") {
-			shapes_.push_back(std::make_shared<circle_shape>(data));
+			shapes_.emplace_back(std::make_shared<circle_shape>(data));
 		} else if(type == "image") {
-			shapes_.push_back(std::make_shared<image_shape>(data));
+			shapes_.emplace_back(std::make_shared<image_shape>(data));
 		} else if(type == "text") {
-			shapes_.push_back(std::make_shared<text_shape>(data));
+			shapes_.emplace_back(std::make_shared<text_shape>(data));
 		} else if(type == "pre_commit") {
 
 			/* note this should get split if more preprocessing is used. */
