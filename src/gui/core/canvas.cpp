@@ -1052,36 +1052,28 @@ void image_shape::draw(surface& canvas,
 	local_variables.add("image_original_width", wfl::variant(image_->w));
 	local_variables.add("image_original_height", wfl::variant(image_->h));
 
+	static auto dimension_validation = [&](unsigned value, const std::string& key) {
+		const int as_int = static_cast<int>(value);
+
+		VALIDATE_WITH_DEV_MESSAGE(as_int >= 0, _("Image doesn't fit on canvas."),
+			formatter() << "Image '" << name << "', " << key << " = " << as_int << "."
+		);
+	};
+
 	unsigned w = w_(local_variables);
-	VALIDATE_WITH_DEV_MESSAGE(static_cast<int>(w) >= 0,
-							  _("Image doesn't fit on canvas."),
-							  formatter() << "Image '" << name
-										   << "', w = " << static_cast<int>(w)
-										   << ".");
+	dimension_validation(w, "w");
 
 	unsigned h = h_(local_variables);
-	VALIDATE_WITH_DEV_MESSAGE(static_cast<int>(h) >= 0,
-							  _("Image doesn't fit on canvas."),
-							  formatter() << "Image '" << name
-										   << "', h = " << static_cast<int>(h)
-										   << ".");
+	dimension_validation(h, "h");
 
 	local_variables.add("image_width", wfl::variant(w ? w : image_->w));
 	local_variables.add("image_height", wfl::variant(h ? h : image_->h));
 
 	const unsigned clip_x = x_(local_variables);
-	VALIDATE_WITH_DEV_MESSAGE(static_cast<int>(clip_x) >= 0,
-							  _("Image doesn't fit on canvas."),
-							  formatter() << "Image '" << name
-										   << "', x = " << static_cast<int>(clip_x)
-										   << ".");
+	dimension_validation(clip_x, "x");
 
 	const unsigned clip_y = y_(local_variables);
-	VALIDATE_WITH_DEV_MESSAGE(static_cast<int>(clip_y) >= 0,
-							  _("Image doesn't fit on canvas."),
-							  formatter() << "Image '" << name
-										   << "', y = " << static_cast<int>(clip_y)
-										   << ".");
+	dimension_validation(clip_y, "y");
 
 	local_variables.add("clip_x", wfl::variant(clip_x));
 	local_variables.add("clip_y", wfl::variant(clip_y));
@@ -1328,25 +1320,22 @@ void text_shape::draw(surface& canvas,
 
 	static font::pango_text text_renderer;
 
-	text_renderer.set_link_aware(link_aware_(variables))
-			.set_link_color(link_color_(variables));
-	text_renderer.set_text(text, text_markup_(variables));
-
 	text_renderer
-			.set_family_class(font_family_)
-			.set_font_size(font_size_)
-			.set_font_style(font_style_)
-			.set_alignment(text_alignment_(variables))
-			.set_foreground_color(color_)
-			.set_maximum_width(maximum_width_(variables))
-			.set_maximum_height(maximum_height_(variables), true)
-			.set_ellipse_mode(
-					 variables.has_key("text_wrap_mode")
-							 ? static_cast<PangoEllipsizeMode>(
-									   variables.query_value("text_wrap_mode")
-											   .as_int())
-							 : PANGO_ELLIPSIZE_END)
-			.set_characters_per_line(characters_per_line_);
+		.set_link_aware(link_aware_(variables))
+		.set_link_color(link_color_(variables))
+		.set_text(text, text_markup_(variables));
+
+	text_renderer.set_family_class(font_family_)
+		.set_font_size(font_size_)
+		.set_font_style(font_style_)
+		.set_alignment(text_alignment_(variables))
+		.set_foreground_color(color_)
+		.set_maximum_width(maximum_width_(variables))
+		.set_maximum_height(maximum_height_(variables), true)
+		.set_ellipse_mode(variables.has_key("text_wrap_mode")
+				? static_cast<PangoEllipsizeMode>(variables.query_value("text_wrap_mode").as_int())
+				: PANGO_ELLIPSIZE_END)
+		.set_characters_per_line(characters_per_line_);
 
 	surface& surf = text_renderer.render();
 	if(surf->w == 0) {
@@ -1408,7 +1397,7 @@ canvas::canvas()
 	, canvas_()
 	, renderer_(nullptr)
 	, variables_()
-    , functions_()
+	, functions_()
 	, is_dirty_(true)
 {
 }
