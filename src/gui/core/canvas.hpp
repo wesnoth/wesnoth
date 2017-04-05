@@ -23,6 +23,7 @@
 
 #include "config.hpp"
 #include "formula/callable.hpp"
+#include "formula/function.hpp"
 #include "sdl/surface.hpp"
 
 namespace wfl { class variant; }
@@ -143,6 +144,7 @@ public:
 		w_ = width;
 		set_is_dirty(true);
 	}
+
 	unsigned get_width() const
 	{
 		return w_;
@@ -153,6 +155,7 @@ public:
 		h_ = height;
 		set_is_dirty(true);
 	}
+
 	unsigned get_height() const
 	{
 		return h_;
@@ -201,6 +204,9 @@ private:
 
 	/** The variables of the canvas. */
 	wfl::map_formula_callable variables_;
+
+	/** Action function definitions for the canvas. */
+	wfl::action_function_symbol_table functions_;
 
 	/** The dirty state of the canvas. */
 	bool is_dirty_;

@@ -885,7 +885,7 @@ public:
 	 *                            http://www.wesnoth.org/wiki/GUICanvasWML#Image
 	 *                            for more information.
 	 */
-	explicit image_shape(const config& cfg);
+	image_shape(const config& cfg, wfl::action_function_symbol_table& functions);
 
 	/** Implement shape::draw(). */
 	void draw(surface& canvas,
@@ -903,8 +903,6 @@ private:
 
 	/** The image is cached in this surface. */
 	surface image_;
-
-
 
 	/**
 	 * Name of the image.
@@ -935,6 +933,9 @@ private:
 
 	/** Mirror the image over the vertical axis. */
 	typed_formula<bool> vertical_mirror_;
+
+	// TODO: use a typed_formula?
+	wfl::formula actions_formula_;
 };
 
 /*WIKI
@@ -993,7 +994,8 @@ private:
  * @end{table}
  * Also the general variables are available, see [[#general_variables|Line]].
  */
-image_shape::image_shape(const config& cfg)
+
+image_shape::image_shape(const config& cfg, wfl::action_function_symbol_table& functions)
 	: shape(cfg)
 	, x_(cfg["x"])
 	, y_(cfg["y"])
@@ -1004,6 +1006,7 @@ image_shape::image_shape(const config& cfg)
 	, image_name_(cfg["name"])
 	, resize_mode_(get_resize_mode(cfg["resize_mode"]))
 	, vertical_mirror_(cfg["vertical_mirror"])
+	, actions_formula_(cfg["actions"], &functions)
 {
 	const std::string& debug = (cfg["debug"]);
 	if(!debug.empty()) {
@@ -1079,6 +1082,12 @@ void image_shape::draw(surface& canvas,
 							  formatter() << "Image '" << name
 										   << "', y = " << static_cast<int>(clip_y)
 										   << ".");
+
+	local_variables.add("clip_x", wfl::variant(clip_x));
+	local_variables.add("clip_y", wfl::variant(clip_y));
+
+	// Execute the provided actions for this context.
+	wfl::variant(&variables).execute_variant(actions_formula_.evaluate(local_variables));
 
 	// Copy the data to local variables to avoid overwriting the originals.
 	SDL_Rect src_clip = src_clip_;
@@ -1399,6 +1408,7 @@ canvas::canvas()
 	, canvas_()
 	, renderer_(nullptr)
 	, variables_()
+    , functions_()
 	, is_dirty_(true)
 {
 }
@@ -1406,7 +1416,6 @@ canvas::canvas()
 canvas::~canvas()
 {
 	SDL_DestroyRenderer(renderer_);
-
 }
 
 void canvas::draw(const bool force)
@@ -1486,7 +1495,7 @@ void canvas::parse_cfg(const config& cfg)
 		} else if(type == "circle") {
 			shapes_.emplace_back(std::make_shared<circle_shape>(data));
 		} else if(type == "image") {
-			shapes_.emplace_back(std::make_shared<image_shape>(data));
+			shapes_.emplace_back(std::make_shared<image_shape>(data, functions_));
 		} else if(type == "text") {
 			shapes_.emplace_back(std::make_shared<text_shape>(data));
 		} else if(type == "pre_commit") {
