@@ -52,7 +52,7 @@ private:
 	void display_part(window& window);
 
 	using floating_image_list = std::vector<storyscreen::floating_image>;
-	void draw_foreground_image(window& window, floating_image_list::const_iterator image_iter, int this_part_index);
+	void draw_floating_image(window& window, floating_image_list::const_iterator image_iter, int this_part_index);
 
 	enum NAV_DIRECTION {
 		DIR_FORWARD,

@@ -165,6 +165,22 @@ void story_viewer::display_part(window& window)
 		image["h"] = height_formula;
 		image["name"] = layer.file();
 
+		/* In order to avoid manually loading the image and calculating the scaling factor, we instead
+		 * delegate the task of setting the necessary variables to the canvas once the calculations
+		 * have been made internally.
+		 *
+		 * This sets the necessary values with the data for "this" image when its drawn.
+		 */
+		if(layer.is_base_layer()) {
+			image["actions"] = R"((
+				[
+					set_var('base_scale_x', as_decimal(image_width)  / as_decimal(image_original_width)),
+					set_var('base_scale_y', as_decimal(image_height) / as_decimal(image_original_height)),
+					set_var('base_origin', loc(clip_x, clip_y))
+				]
+			))";
+		}
+
 		cfg.add_child("image", image);
 	}
 
@@ -251,11 +267,11 @@ void story_viewer::display_part(window& window)
 	// If we have images to draw, draw the first one now. A new non-repeating timer is added
 	// after every draw to schedule the next one after the specified interval.
 	if(!floating_images.empty()) {
-		draw_foreground_image(window, floating_images.begin(), part_index_);
+		draw_floating_image(window, floating_images.begin(), part_index_);
 	}
 }
 
-void story_viewer::draw_foreground_image(window& window, floating_image_list::const_iterator image_iter, int this_part_index)
+void story_viewer::draw_floating_image(window& window, floating_image_list::const_iterator image_iter, int this_part_index)
 {
 	const auto& images = current_part_->get_floating_images();
 
@@ -267,19 +283,35 @@ void story_viewer::draw_foreground_image(window& window, floating_image_list::co
 
 	const auto& floating_image = *image_iter;
 
+	// Since we have the necessary data here, just set these variables directly.
+	canvas& window_canvas = window.get_canvas(0);
+
+	window_canvas.set_variable("fi_ref_x", wfl::variant(floating_image.ref_x()));
+	window_canvas.set_variable("fi_ref_y", wfl::variant(floating_image.ref_y()));
+
 	config cfg, image;
 
-	// FIXME: these aren't the proper locations - they need to be relative to a base rect!
-	image["x"] = floating_image.ref_x();
-	image["y"] = floating_image.ref_y();
-	image["w"] = "(image_width)";
-	image["h"] = "(image_height)";
+	std::string image_x = "";
+	std::string image_y = "";
+
+	if(floating_image.centered()) {
+		image_x = "(trunc(fi_ref_x * base_scale_x) + base_origin.x - (image_original_width  / 2))";
+		image_y = "(trunc(fi_ref_y * base_scale_y) + base_origin.y - (image_original_height / 2))";
+	} else {
+		image_x = "(trunc(fi_ref_x * base_scale_x) + base_origin.x)";
+		image_y = "(trunc(fi_ref_y * base_scale_y) + base_origin.y)";
+	}
+
+	// Floating images are scaled by the same factor as the background.
+	image["x"] = image_x;
+	image["y"] = image_y;
+	image["w"] = floating_image.autoscale() ? "(width)"  : "(image_width)";
+	image["h"] = floating_image.autoscale() ? "(height)" : "(image_height)";
 	image["name"] = floating_image.file();
 
 	cfg.add_child("image", image);
 
-	canvas& window_canvas = window.get_canvas(0);
-
+	// Needed to make the background redraw correctly.
 	window_canvas.append_cfg(cfg);
 	window_canvas.set_is_dirty(true);
 
@@ -287,7 +319,7 @@ void story_viewer::draw_foreground_image(window& window, floating_image_list::co
 
 	// Schedule the next image draw. This *must* be a non-repeating timer!
 	timer_id_ = add_timer(floating_image.display_delay(),
-		std::bind(&story_viewer::draw_foreground_image, this, std::ref(window), ++image_iter, this_part_index), false);
+		std::bind(&story_viewer::draw_floating_image, this, std::ref(window), ++image_iter, this_part_index), false);
 }
 
 void story_viewer::nav_button_callback(window& window, NAV_DIRECTION direction)
