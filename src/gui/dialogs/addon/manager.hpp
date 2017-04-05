@@ -60,7 +60,7 @@ private:
 
 	void load_addon_list(window& window);
 
-	void reload_list_and_reselect_item(const std::string& id, window& window);
+	void reload_list_and_reselect_item(const std::string id, window& window);
 
 	/** Config which contains the list with the campaigns. */
 	config cfg_;
@@ -114,7 +114,7 @@ private:
 	void browse_url_callback(text_box& url_box);
 	void copy_url_callback(text_box& url_box);
 
-	void filter_callback(window& window);
+	void apply_filters(window& window);
 	void show_help(window& window);
 
 	boost::dynamic_bitset<> get_status_filter_visibility(const window& window) const;

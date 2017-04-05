@@ -356,9 +356,8 @@ void addon_manager::pre_show(window& window)
 		status_filter_entries.emplace_back(config_of("label", f.second));
 	}
 
-	// TODO: initial selection based on preferences
 	status_filter.set_values(status_filter_entries);
-	status_filter.connect_click_handler(std::bind(&addon_manager::filter_callback, this, std::ref(window)));
+	status_filter.connect_click_handler(std::bind(&addon_manager::apply_filters, this, std::ref(window)));
 
 	menu_button& type_filter = find_widget<menu_button>(&window, "type_filter", false);
 
@@ -369,7 +368,7 @@ void addon_manager::pre_show(window& window)
 
 	type_filter.set_values(type_filter_entries);
 	type_filter.set_keep_open(true);
-	type_filter.set_callback_toggle_state_change(std::bind(&addon_manager::filter_callback, this, std::ref(window)));
+	type_filter.set_callback_toggle_state_change(std::bind(&addon_manager::apply_filters, this, std::ref(window)));
 
 	button& url_go_button = find_widget<button>(&window, "url_go", false);
 	button& url_copy_button = find_widget<button>(&window, "url_copy", false);
@@ -487,9 +486,11 @@ void addon_manager::load_addon_list(window& window)
 	}
 
 	find_widget<button>(&window, "update_all", false).set_active(has_upgradable_addons);
+
+	apply_filters(window);
 }
 
-void addon_manager::reload_list_and_reselect_item(const std::string& id, window& window)
+void addon_manager::reload_list_and_reselect_item(const std::string id, window& window)
 {
 	load_addon_list(window);
 
@@ -542,7 +543,7 @@ boost::dynamic_bitset<> addon_manager::get_type_filter_visibility(const window& 
 	}
 }
 
-void addon_manager::filter_callback(window& window)
+void addon_manager::apply_filters(window& window)
 {
 	boost::dynamic_bitset<> res = get_status_filter_visibility(window) & get_type_filter_visibility(window);
 	find_widget<addon_list>(&window, "addons", false).set_addon_shown(res);
