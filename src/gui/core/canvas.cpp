@@ -936,6 +936,8 @@ private:
 
 	// TODO: use a typed_formula?
 	wfl::formula actions_formula_;
+
+	static void dimension_validation(unsigned value, const std::string& name, const std::string& key);
 };
 
 /*WIKI
@@ -1014,6 +1016,15 @@ image_shape::image_shape(const config& cfg, wfl::action_function_symbol_table& f
 	}
 }
 
+void image_shape::dimension_validation(unsigned value, const std::string& name, const std::string& key)
+{
+	const int as_int = static_cast<int>(value);
+
+	VALIDATE_WITH_DEV_MESSAGE(as_int >= 0, _("Image doesn't fit on canvas."),
+		formatter() << "Image '" << name << "', " << key << " = " << as_int << "."
+	);
+}
+
 void image_shape::draw(surface& canvas,
 				  SDL_Renderer* /*renderer*/,
 				  wfl::map_formula_callable& variables)
@@ -1039,8 +1050,7 @@ void image_shape::draw(surface& canvas,
 	surface tmp(image::get_image(image::locator(name)));
 
 	if(!tmp) {
-		ERR_GUI_D << "Image: '" << name << "' not found and won't be drawn."
-				  << std::endl;
+		ERR_GUI_D << "Image: '" << name << "' not found and won't be drawn." << std::endl;
 		return;
 	}
 
@@ -1052,28 +1062,20 @@ void image_shape::draw(surface& canvas,
 	local_variables.add("image_original_width", wfl::variant(image_->w));
 	local_variables.add("image_original_height", wfl::variant(image_->h));
 
-	static auto dimension_validation = [&](unsigned value, const std::string& key) {
-		const int as_int = static_cast<int>(value);
-
-		VALIDATE_WITH_DEV_MESSAGE(as_int >= 0, _("Image doesn't fit on canvas."),
-			formatter() << "Image '" << name << "', " << key << " = " << as_int << "."
-		);
-	};
-
 	unsigned w = w_(local_variables);
-	dimension_validation(w, "w");
+	dimension_validation(w, name, "w");
 
 	unsigned h = h_(local_variables);
-	dimension_validation(h, "h");
+	dimension_validation(h, name, "h");
 
 	local_variables.add("image_width", wfl::variant(w ? w : image_->w));
 	local_variables.add("image_height", wfl::variant(h ? h : image_->h));
 
 	const unsigned clip_x = x_(local_variables);
-	dimension_validation(clip_x, "x");
+	dimension_validation(clip_x, name, "x");
 
 	const unsigned clip_y = y_(local_variables);
-	dimension_validation(clip_y, "y");
+	dimension_validation(clip_y, name, "y");
 
 	local_variables.add("clip_x", wfl::variant(clip_x));
 	local_variables.add("clip_y", wfl::variant(clip_y));
