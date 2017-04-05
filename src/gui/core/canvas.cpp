@@ -213,7 +213,7 @@ public:
 	/** Implement shape::draw(). */
 	void draw(surface& canvas,
 			  SDL_Renderer* renderer,
-			  wfl::map_formula_callable& variables);
+			  wfl::map_formula_callable& variables) override;
 
 private:
 	typed_formula<unsigned> x1_, /**< The start x coordinate of the line. */
@@ -621,7 +621,7 @@ public:
 	/** Implement shape::draw(). */
 	void draw(surface& canvas,
 			  SDL_Renderer* renderer,
-			  wfl::map_formula_callable& variables);
+			  wfl::map_formula_callable& variables) override;
 
 private:
 	typed_formula<int> x_, /**< The x coordinate of the rectangle. */
@@ -776,7 +776,7 @@ public:
 	/** Implement shape::draw(). */
 	void draw(surface& canvas,
 			  SDL_Renderer* renderer,
-			  wfl::map_formula_callable& variables);
+			  wfl::map_formula_callable& variables) override;
 
 private:
 	typed_formula<unsigned> x_, /**< The center x coordinate of the circle. */
@@ -890,7 +890,7 @@ public:
 	/** Implement shape::draw(). */
 	void draw(surface& canvas,
 			  SDL_Renderer* renderer,
-			  wfl::map_formula_callable& variables);
+			  wfl::map_formula_callable& variables) override;
 
 private:
 	typed_formula<unsigned> x_, /**< The x coordinate of the image. */
@@ -1186,7 +1186,7 @@ public:
 	/** Implement shape::draw(). */
 	void draw(surface& canvas,
 			  SDL_Renderer* renderer,
-			  wfl::map_formula_callable& variables);
+			  wfl::map_formula_callable& variables) override;
 
 private:
 	typed_formula<unsigned> x_, /**< The x coordinate of the text. */
