@@ -79,6 +79,7 @@ playsingle_controller::playsingle_controller(const config& level,
 	, turn_data_(replay_sender_, network_reader_)
 	, end_turn_(END_TURN_NONE)
 	, skip_next_turn_(false)
+	, ai_fallback_(false)
 	, replay_()
 {
 	hotkey_handler_.reset(new hotkey_handler(*this, saved_game_)); //upgrade hotkey handler to the sp (whiteboard enabled) version
@@ -549,6 +550,7 @@ void playsingle_controller::play_ai_turn()
 		catch (fallback_ai_to_human_exception&) {
 			current_team().make_human();
 			player_type_changed_ = true;
+			ai_fallback_ = true;
 		}
 	}
 	catch(...) {
@@ -642,6 +644,11 @@ void playsingle_controller::sync_end_turn()
 
 	assert(end_turn_ == END_TURN_SYNCED);
 	skip_next_turn_ = false;
+
+	if(ai_fallback_) {
+		current_team().make_ai();
+		ai_fallback_ = false;
+	}
 }
 
 void playsingle_controller::update_viewing_player()
