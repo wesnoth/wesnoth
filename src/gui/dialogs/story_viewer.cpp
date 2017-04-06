@@ -26,6 +26,7 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/stacked_widget.hpp"
 #include "gui/widgets/window.hpp"
+#include "sound.hpp"
 
 namespace gui2
 {
@@ -121,6 +122,22 @@ void story_viewer::display_part(window& window)
 {
 	// Update Back button state. Doing this here so it gets called in pre_show too.
 	find_widget<button>(&window, "back", false).set_active(part_index_ != 0);
+
+	//
+	// Music and sound
+	//
+	if(!current_part_->music().empty()) {
+		config music_config;
+		music_config["name"] = current_part_->music();
+		music_config["ms_after"] = 2000;
+		music_config["immediate"] = true;
+
+		sound::play_music_config(music_config);
+	}
+
+	if(!current_part_->sound().empty()) {
+		sound::play_sound(current_part_->sound());
+	}
 
 	config cfg, image;
 
