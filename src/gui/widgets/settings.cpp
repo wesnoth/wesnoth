@@ -84,17 +84,17 @@ static std::vector<std::string>& registered_window_types()
 	return result;
 }
 
-struct tregistered_widget_type_mapped_type
+struct registered_widget_type_mapped_type
 {
 	std::function<styled_widget_definition_ptr(const config&)> parser;
 	const char* key;
 };
 
-typedef std::map<std::string, tregistered_widget_type_mapped_type> tregistered_widget_type;
+typedef std::map<std::string, registered_widget_type_mapped_type> registered_widget_type;
 
-static tregistered_widget_type& registred_widget_type()
+static registered_widget_type& registered_widget_types()
 {
-	static tregistered_widget_type result;
+	static registered_widget_type result;
 	return result;
 }
 
@@ -349,10 +349,10 @@ const std::string& gui_definition::read(const config& cfg)
 
 	/***** Control definitions *****/
 
-	for(auto & widget_type : registred_widget_type())
+	for(auto& widget_type : registered_widget_types())
 	{
 		std::vector<styled_widget_definition_ptr> definitions;
-		for (const auto & definition :
+		for(const auto& definition :
 			cfg.child_range(widget_type.second.key ? widget_type.second.key : widget_type.first + "_definition"))
 		{
 				definitions.push_back(widget_type.second.parser(definition));
@@ -361,7 +361,7 @@ const std::string& gui_definition::read(const config& cfg)
 	}
 
 	/***** Window types *****/
-	for(const auto & w : cfg.child_range("window"))
+	for(const auto& w : cfg.child_range("window"))
 	{
 		std::pair<std::string, builder_window> child;
 		child.first = child.second.read(w);
@@ -441,16 +441,14 @@ void gui_definition::load_widget_definitions(
 		const std::string& definition_type,
 		const std::vector<styled_widget_definition_ptr>& definitions)
 {
-	for(const auto & def : definitions)
+	for(const auto& def : definitions)
 	{
-
 		if(control_definition[definition_type].find(def->id) != control_definition[definition_type].end()) {
 			ERR_GUI_P << "Skipping duplicate styled_widget definition '" << def->id << "' for '" << definition_type << "'\n";
 			continue;
 		}
 
-		control_definition[definition_type]
-				.emplace(def->id, def);
+		control_definition[definition_type].emplace(def->id, def);
 	}
 
 	// The default GUI needs to ensure each widget has a default definition, but non-default GUIs can just fall back to the default definition in the default GUI.
@@ -530,7 +528,7 @@ void load_settings()
 		ERR_GUI_P << e.message;
 	}
 	// Parse guis
-	for(const auto & g : cfg.child_range("gui"))
+	for(const auto& g : cfg.child_range("gui"))
 	{
 		std::pair<std::string, gui_definition> child;
 		child.first = child.second.read(g);
@@ -579,8 +577,9 @@ state_definition::state_definition(const config& cfg) : canvas_()
 
 void register_widget(const std::string& id, std::function<styled_widget_definition_ptr(const config&)> f, const char* key)
 {
-	registred_widget_type()[id] = {f, key};
+	registered_widget_types()[id] = {f, key};
 }
+
 void
 load_widget_definitions(gui_definition& gui,
 						const std::string& definition_type,
@@ -707,9 +706,9 @@ get_window_builder(const std::string& type)
 bool add_single_widget_definition(const std::string& widget_type, const std::string& definition_id, const config& cfg)
 {
 	auto& gui = default_gui->second;
-	auto parser = registred_widget_type().find(widget_type);
+	auto parser = registered_widget_types().find(widget_type);
 
-	if (parser == registred_widget_type().end()) {
+	if (parser == registered_widget_types().end()) {
 		throw std::invalid_argument("widget '" + widget_type  + "' doesn't exist");
 	}
 
