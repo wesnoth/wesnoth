@@ -34,10 +34,16 @@ public:
 	explicit variant(int n);
 	variant(int n, DECIMAL_VARIANT_TYPE /*type*/);
 	variant(double n, DECIMAL_VARIANT_TYPE /*type*/);
-	variant(const_formula_callable_ptr callable);
 	explicit variant(const std::vector<variant>& array);
 	explicit variant(const std::string& str);
 	explicit variant(const std::map<variant, variant>& map);
+
+	template<typename T>
+	variant(std::shared_ptr<T> callable)
+		: value_(std::make_shared<variant_callable>(callable))
+	{
+		assert(value_.get());
+	}
 
 	variant& operator=(const variant& v);
 

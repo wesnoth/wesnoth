@@ -162,12 +162,6 @@ variant::variant(double n, variant::DECIMAL_VARIANT_TYPE)
 	assert(value_.get());
 }
 
-variant::variant(const_formula_callable_ptr callable)
-	: value_(std::make_shared<variant_callable>(callable))
-{
-	assert(value_.get());
-}
-
 variant::variant(const std::vector<variant>& vec)
     : value_((std::make_shared<variant_list>(vec)))
 {
