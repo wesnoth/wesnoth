@@ -19,6 +19,7 @@
 #include "chat_events.hpp"
 #include "floating_textbox.hpp"
 #include "units/map.hpp"
+#include "lua_jailbreak_exception.hpp"
 
 #include <vector>
 
@@ -35,7 +36,7 @@ namespace events {
 	class mouse_handler;
 }
 
-struct fallback_ai_to_human_exception {};
+struct fallback_ai_to_human_exception : public lua_jailbreak_exception {IMPLEMENT_LUA_JAILBREAK_EXCEPTION(fallback_ai_to_human_exception)};
 
 namespace events {
 
