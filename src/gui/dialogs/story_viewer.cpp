@@ -245,7 +245,10 @@ void story_viewer::display_part(window& window)
 	text_stack.set_origin(new_origin);
 
 	// Set the panel mode control variable for the panel's borders.
-	find_widget<panel>(&window, "text_panel", false).get_canvas(0).set_variable("panel_mode", wfl::variant(new_panel_mode));
+	// We use get_layer_grid here to ensure the widget is always found regardless of
+	// whether the background is visible or not.
+	find_widget<panel>(text_stack.get_layer_grid(0), "text_panel", false).get_canvas(0)
+		.set_variable("panel_mode", wfl::variant(new_panel_mode));
 
 	const std::string& part_text = current_part_->text();
 
