@@ -402,7 +402,8 @@ function helper.shallow_parsed(cfg)
 	end
 end
 
-function helper.rand (possible_values)
+function helper.rand (possible_values, random_func)
+	random_func = random_func or wesnoth.random
 	assert(type(possible_values) == "table" or type(possible_values) == "string", string.format("helper.rand expects a string or table as parameter, got %s instead", type(possible_values)))
 
 	local items = {}
@@ -460,7 +461,7 @@ function helper.rand (possible_values)
 		end
 	end
 
-	local idx = wesnoth.random(1, num_choices)
+	local idx = random_func(1, num_choices)
 
 	for i, item in ipairs(items) do
 		if type(item) == "table" then -- that's a range
