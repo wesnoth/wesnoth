@@ -67,17 +67,6 @@ static config get_title_area_decor_config()
 	return cfg;
 }
 
-#if 0
-static panel* get_new_panel(const std::string& definition)
-{
-	panel* panel_ptr = new panel();
-	panel_ptr->set_definition(definition);
-	panel_ptr->set_id("text_panel");
-
-	return panel_ptr;
-}
-#endif
-
 REGISTER_DIALOG(story_viewer)
 
 story_viewer::story_viewer(storyscreen::controller& controller)
@@ -234,20 +223,20 @@ void story_viewer::display_part(window& window)
 	//
 	stacked_widget& text_stack = find_widget<stacked_widget>(&window, "text_and_control_stack", false);
 
-	//std::string new_definition;
+	std::string new_panel_mode;
 	gui2::point new_origin;
 
 	switch(current_part_->story_text_location()) {
 		case storyscreen::part::BLOCK_TOP:
-			//new_definition = "wml_message_top";
+			new_panel_mode = "top";
 			// Default 0,0 origin value is correct.
 			break;
 		case storyscreen::part::BLOCK_MIDDLE:
-			//new_definition = "wml_message_center";
+			new_panel_mode = "middle";
 			new_origin.y = (window.get_size().y / 2) - (text_stack.get_size().y / 2);
 			break;
 		case storyscreen::part::BLOCK_BOTTOM:
-			//new_definition = "wml_message";
+			new_panel_mode = "bottom";
 			new_origin.y = window.get_size().y - text_stack.get_size().y;
 			break;
 	}
@@ -255,8 +244,8 @@ void story_viewer::display_part(window& window)
 	// FIXME: sometimes the text won't appear after a move...
 	text_stack.set_origin(new_origin);
 
-	// TODO
-	//delete text_stack.get_layer_grid(0)->swap_child("text_panel", get_new_panel(new_definition), true);
+	// Set the panel mode control variable for the panel's borders.
+	find_widget<panel>(&window, "text_panel", false).get_canvas(0).set_variable("panel_mode", wfl::variant(new_panel_mode));
 
 	const std::string& part_text = current_part_->text();
 
