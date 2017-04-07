@@ -111,12 +111,12 @@ void viewport::place(const point& origin, const point& size)
 	widget_.place(point(), widget_.get_best_size());
 }
 
-void viewport::layout_initialise(const bool full_initialisation)
+void viewport::layout_initialize(const bool full_initialization)
 {
-	widget::layout_initialise(full_initialisation);
+	widget::layout_initialize(full_initialization);
 
 	if(widget_.get_visible() != widget::visibility::invisible) {
-		widget_.layout_initialise(full_initialisation);
+		widget_.layout_initialize(full_initialization);
 	}
 }
 

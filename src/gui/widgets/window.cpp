@@ -333,7 +333,7 @@ window::window(CVideo& video,
 	, enter_disabled_(false)
 	, escape_disabled_(false)
 	, linked_size_()
-	, mouse_button_state_(0) /**< Needs to be initialised in @ref show. */
+	, mouse_button_state_(0) /**< Needs to be initialized in @ref show. */
 	, dirty_list_()
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	, debug_layout_(new debug_layout_graph(this))
@@ -630,13 +630,13 @@ int window::show(const bool restore, const unsigned auto_close_timeout)
 	try
 	{
 		// Start our loop drawing will happen here as well.
-		bool mouse_button_state_initialised = false;
+		bool mouse_button_state_initialized = false;
 		for(status_ = SHOWING; status_ != CLOSED;) {
 			// process installed callback if valid, to allow e.g. network
 			// polling
 			events::pump();
 
-			if(!mouse_button_state_initialised) {
+			if(!mouse_button_state_initialized) {
 				/*
 				 * The state must be initialize when showing the dialogue.
 				 * However when initialized before this point there were random
@@ -648,7 +648,7 @@ int window::show(const bool restore, const unsigned auto_close_timeout)
 				 * works fine.
 				 */
 				mouse_button_state_ = SDL_GetMouseState(nullptr, nullptr);
-				mouse_button_state_initialised = true;
+				mouse_button_state_initialized = true;
 			}
 
 			if(status_ == REQUEST_CLOSE) {
@@ -989,8 +989,8 @@ void window::layout()
 	}
 
 	/***** Layout. *****/
-	layout_initialise(true);
-	generate_dot_file("layout_initialise", LAYOUT);
+	layout_initialize(true);
+	generate_dot_file("layout_initialize", LAYOUT);
 
 	layout_linked_widgets();
 
@@ -1024,8 +1024,8 @@ void window::layout()
 				*click_dismiss_button,
 				std::bind(&window::set_retval, this, OK, true));
 
-		layout_initialise(true);
-		generate_dot_file("layout_initialise", LAYOUT);
+		layout_initialize(true);
+		generate_dot_file("layout_initialize", LAYOUT);
 
 		layout_linked_widgets();
 
@@ -1094,7 +1094,7 @@ void window::layout()
 		variables_.add("window_height", wfl::variant(size.y));
 
 		while(reevaluate_best_size_(variables_, &functions_)) {
-			layout_initialise(true);
+			layout_initialize(true);
 
 			window_implementation::layout(*this,
 										   w_(variables_, &functions_),
@@ -1313,7 +1313,7 @@ void window_implementation::layout(window& window,
 		DBG_GUI_L << LOG_IMPL_HEADER
 				  << " Status: Width has been modified, rerun.\n";
 
-		window.layout_initialise(false);
+		window.layout_initialize(false);
 		window.layout_linked_widgets();
 		layout(window, maximum_width, maximum_height);
 		return;
@@ -1543,7 +1543,7 @@ window_definition::resolution::resolution(const config& cfg)
  * Here is the algorithm used to layout the window:
  *
  * - Perform a full initialization
- *   (@ref gui2::widget::layout_initialise (full_initialisation = true)):
+ *   (@ref gui2::widget::layout_initialize (full_initialization = true)):
  *   - Clear the internal best size cache for all widgets.
  *   - For widgets with scrollbars hide them unless the
  *     @ref gui2::scrollbar_container::scrollbar_mode "scrollbar_mode" is
@@ -1635,7 +1635,7 @@ window_definition::resolution::resolution(const config& cfg)
  *
  * - Relayout:
  *   - Initialize all widgets
- *     (@ref gui2::widget::layout_initialise (full_initialisation = false))
+ *     (@ref gui2::widget::layout_initialize (full_initialization = false))
  *   - Handle shared sizes, since the reinitialization resets that state.
  *   - Goto start layout loop.
  *

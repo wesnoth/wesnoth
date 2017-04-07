@@ -42,14 +42,14 @@ SDL_Rect container_base::get_client_rect() const
 	return get_rectangle();
 }
 
-void container_base::layout_initialise(const bool full_initialisation)
+void container_base::layout_initialize(const bool full_initialization)
 {
 	// Inherited.
-	styled_widget::layout_initialise(full_initialisation);
+	styled_widget::layout_initialize(full_initialization);
 
 	inject_linked_groups();
 
-	grid_.layout_initialise(full_initialisation);
+	grid_.layout_initialize(full_initialization);
 }
 
 void container_base::reduce_width(const unsigned maximum_width)

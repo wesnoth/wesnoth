@@ -45,7 +45,7 @@ public:
 
 	/***** ***** Inherited operations. ***** *****/
 
-	virtual void initialise();
+	virtual void initialize();
 
 	virtual void add_item(const point& size);
 

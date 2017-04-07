@@ -166,12 +166,12 @@ public:
 	virtual color_t get_link_color() const;
 
 	/**
-	 * See @ref widget::layout_initialise.
+	 * See @ref widget::layout_initialize.
 	 *
 	 * @todo Also handle the tooltip state.
 	 * Handle if shrunken_ && use_tooltip_on_label_overflow_.
 	 */
-	virtual void layout_initialise(const bool full_initialisation) override;
+	virtual void layout_initialize(const bool full_initialization) override;
 
 	/** See @ref widget::request_reduce_width. */
 	virtual void request_reduce_width(const unsigned maximum_width) override;

@@ -187,8 +187,8 @@ public:
 	virtual bool can_mouse_focus() const override { return false; }
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
-	/** See @ref widget::layout_initialise. */
-	virtual void layout_initialise(const bool full_initialisation) override;
+	/** See @ref widget::layout_initialize. */
+	virtual void layout_initialize(const bool full_initialization) override;
 
 	/**
 	 * Tries to reduce the width of a container.
@@ -334,8 +334,8 @@ private:
 		 */
 		void place(point origin, point size);
 
-		/** Forwards @ref grid::layout_initialise to the cell. */
-		void layout_initialise(const bool full_initialisation);
+		/** Forwards @ref grid::layout_initialize to the cell. */
+		void layout_initialize(const bool full_initialization);
 
 		/** Returns the can_wrap for the cell. */
 		bool can_wrap() const

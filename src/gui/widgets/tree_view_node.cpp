@@ -168,7 +168,7 @@ tree_view_node& tree_view_node::add_child(
 	// enough visual space.
 
 	// Throw away cached best size to force a recomputation.
-	get_tree_view().layout_initialise(false);
+	get_tree_view().layout_initialize(false);
 
 	const point tree_best_size = get_tree_view().get_best_size();
 
@@ -786,15 +786,15 @@ void tree_view_node::select_node()
 	label_->set_value_bool(true);
 }
 
-void tree_view_node::layout_initialise(const bool full_initialisation)
+void tree_view_node::layout_initialize(const bool full_initialization)
 {
 	// Inherited.
-	widget::layout_initialise(full_initialisation);
-	grid_.layout_initialise(full_initialisation);
+	widget::layout_initialize(full_initialization);
+	grid_.layout_initialize(full_initialization);
 
 	// Clear child caches.
 	for(auto & child : children_) {
-		child.layout_initialise(full_initialisation);
+		child.layout_initialize(full_initialization);
 	}
 }
 

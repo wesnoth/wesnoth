@@ -791,15 +791,15 @@ public:
 		impl_create_items(index, list_builder, data, callback);
 	}
 
-	/** See @ref widget::layout_initialise. */
-	virtual void layout_initialise(const bool full_initialisation) override
+	/** See @ref widget::layout_initialize. */
+	virtual void layout_initialize(const bool full_initialization) override
 	{
 		for(auto item : items_)
 		{
 			if(item->child_grid.get_visible() != widget::visibility::invisible
 			   && item->shown) {
 
-				item->child_grid.layout_initialise(full_initialisation);
+				item->child_grid.layout_initialize(full_initialization);
 			}
 		}
 	}

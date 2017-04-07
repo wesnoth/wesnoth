@@ -108,9 +108,9 @@ void matrix::place(const point& origin, const point& size)
 	content_.place(origin, size);
 }
 
-void matrix::layout_initialise(const bool full_initialisation)
+void matrix::layout_initialize(const bool full_initialization)
 {
-	content_.layout_initialise(full_initialisation);
+	content_.layout_initialize(full_initialization);
 }
 
 void

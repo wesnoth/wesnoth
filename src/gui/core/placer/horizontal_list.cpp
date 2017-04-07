@@ -37,7 +37,7 @@ placer_horizontal_list::placer_horizontal_list(const unsigned maximum_rows)
 	assert(maximum_rows_ > 0);
 }
 
-void placer_horizontal_list::initialise()
+void placer_horizontal_list::initialize()
 {
 	std::fill(rows_.begin(), rows_.end(), 0);
 	columns_.clear();

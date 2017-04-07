@@ -193,12 +193,12 @@ color_t styled_widget::get_link_color() const
 	return color_t::from_hex_string("ffff00");
 }
 
-void styled_widget::layout_initialise(const bool full_initialisation)
+void styled_widget::layout_initialize(const bool full_initialization)
 {
 	// Inherited.
-	widget::layout_initialise(full_initialisation);
+	widget::layout_initialize(full_initialization);
 
-	if(full_initialisation) {
+	if(full_initialization) {
 		shrunken_ = false;
 	}
 }

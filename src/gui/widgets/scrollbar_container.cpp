@@ -117,12 +117,12 @@ scrollbar_container::scrollbar_container(const unsigned canvas_count)
 			event::dispatcher::back_post_child);
 }
 
-void scrollbar_container::layout_initialise(const bool full_initialisation)
+void scrollbar_container::layout_initialize(const bool full_initialization)
 {
 	// Inherited.
-	container_base::layout_initialise(full_initialisation);
+	container_base::layout_initialize(full_initialization);
 
-	if(full_initialisation) {
+	if(full_initialization) {
 
 		assert(vertical_scrollbar_grid_);
 		switch(vertical_scrollbar_mode_) {
@@ -160,7 +160,7 @@ void scrollbar_container::layout_initialise(const bool full_initialisation)
 	}
 
 	assert(content_grid_);
-	content_grid_->layout_initialise(full_initialisation);
+	content_grid_->layout_initialize(full_initialization);
 }
 
 void scrollbar_container::request_reduce_height(const unsigned maximum_height)
@@ -379,7 +379,7 @@ set_scrollbar_mode(grid* scrollbar_grid,
 			scrollbar_grid->get_visible() == widget::visibility::visible) {
 			scrollbar_grid->set_visible(widget::visibility::invisible);
 			// Give newly freed space to the items.
-			content_grid->layout_initialise(false);
+			content_grid->layout_initialize(false);
 		}
 	}
 }

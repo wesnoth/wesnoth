@@ -174,16 +174,16 @@ void pane::place(const point& origin, const point& size)
 	place_children();
 }
 
-void pane::layout_initialise(const bool full_initialisation)
+void pane::layout_initialize(const bool full_initialization)
 {
 	DBG_GUI_D << LOG_HEADER << '\n';
 
-	widget::layout_initialise(full_initialisation);
+	widget::layout_initialize(full_initialization);
 
 	for(auto & item : items_)
 	{
 		if(item.item_grid->get_visible() != widget::visibility::invisible) {
-			item.item_grid->layout_initialise(full_initialisation);
+			item.item_grid->layout_initialize(full_initialization);
 		}
 	}
 }
@@ -329,7 +329,7 @@ void pane::place_or_set_origin_children()
 void pane::prepare_placement() const
 {
 	assert(placer_.get());
-	placer_->initialise();
+	placer_->initialize();
 
 	for(const auto & item : items_)
 	{
@@ -360,7 +360,7 @@ void pane::signal_handler_request_placement(dispatcher& dispatcher,
 					 * addon_list. This code can use some more tuning,
 					 * polishing and testing.
 					 */
-					item.item_grid->layout_initialise(false);
+					item.item_grid->layout_initialize(false);
 					get_window()->layout_linked_widgets();
 
 					/*

@@ -243,7 +243,7 @@ public:
 	tree_view_node* get_selectable_node_below();
 	void select_node();
 	grid& get_grid() { return grid_; }
-	void layout_initialise(const bool full_initialisation) override;
+	void layout_initialize(const bool full_initialization) override;
 
 	void clear_before_destruct();
 

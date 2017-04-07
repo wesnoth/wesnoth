@@ -233,7 +233,7 @@ public:
 	 *
 	 * Every widget has a member @ref layout_size_ which holds the best size in
 	 * the current layout phase. When the windows starts the layout phase it
-	 * calls @ref layout_initialise which resets this value.
+	 * calls @ref layout_initialize which resets this value.
 	 *
 	 * Every widget has two function to get the best size. @ref get_best_size
 	 * tests whether layout_size_ is set and if so returns that value otherwise
@@ -252,12 +252,12 @@ public:
 	 *
 	 * See @ref layout_algorithm for more information.
 	 *
-	 * @param full_initialisation For widgets with scrollbars it hides them
+	 * @param full_initialization For widgets with scrollbars it hides them
 	 *                            unless the mode is
 	 *                            @ref scrollbar_mode::ALWAYS_VISIBLE. For
 	 *                            other widgets this flag is a @em NOP.
 	 */
-	virtual void layout_initialise(const bool full_initialisation);
+	virtual void layout_initialize(const bool full_initialization);
 
 	/**
 	 * Tries to reduce the width of a widget.
@@ -497,8 +497,8 @@ private:
 	/**
 	 * The linked group the widget belongs to.
 	 *
-	 * @todo For now the linked group is initialised when the layout of the
-	 * widget is initialised. The best time to set it would be upon adding the
+	 * @todo For now the linked group is initialized when the layout of the
+	 * widget is initialized. The best time to set it would be upon adding the
 	 * widget in the window. Need to look whether it is possible in a clean way.
 	 * Maybe a signal just prior to showing a window where the widget can do
 	 * some of it's on things, would also be nice for widgets that need a

@@ -193,16 +193,16 @@ void grid::set_active(const bool active)
 	}
 }
 
-void grid::layout_initialise(const bool full_initialisation)
+void grid::layout_initialize(const bool full_initialization)
 {
 	// Inherited.
-	widget::layout_initialise(full_initialisation);
+	widget::layout_initialize(full_initialization);
 
 	// Clear child caches.
 	for(auto & child : children_)
 	{
 
-		child.layout_initialise(full_initialisation);
+		child.layout_initialize(full_initialization);
 	}
 }
 
@@ -408,7 +408,7 @@ void grid::request_placement(dispatcher&, const event::ui_event, bool& handled, 
 		} else {
 			// Wrapping failed, we no longer fit.
 			// Reset the sizes of child widgets.
-			layout_initialise(true);
+			layout_initialize(true);
 		}
 	}
 
@@ -896,12 +896,12 @@ void grid::child::place(point origin, point size)
 	get_widget()->place(widget_orig, widget_size);
 }
 
-void grid::child::layout_initialise(const bool full_initialisation)
+void grid::child::layout_initialize(const bool full_initialization)
 {
 	assert(widget_);
 
 	if(widget_->get_visible() != widget::visibility::invisible) {
-		widget_->layout_initialise(full_initialisation);
+		widget_->layout_initialize(full_initialization);
 	}
 }
 

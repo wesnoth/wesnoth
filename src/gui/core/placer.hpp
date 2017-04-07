@@ -35,7 +35,7 @@ struct point;
  * Base class for the placement helper.
  *
  * The normal operation for the usage of the class is:
- * * Call @ref initialise().
+ * * Call @ref initialize().
  * * For every visible child item call @ref add_item() with the wanted size of
  *   the widget.
  * Once this is done the required size for all children can be retrieved with
@@ -91,7 +91,7 @@ public:
 	 * reset, items are placed, removed or changed visibility causing the old
 	 * placement to be invalid.
 	 */
-	virtual void initialise() = 0;
+	virtual void initialize() = 0;
 
 	/**
 	 * Adds a item to be placed.

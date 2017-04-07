@@ -166,7 +166,7 @@ widget* widget::parent()
 
 /***** ***** ***** ***** Size and layout functions. ***** ***** ***** *****/
 
-void widget::layout_initialise(const bool /*full_initialisation*/)
+void widget::layout_initialize(const bool /*full_initialization*/)
 {
 	assert(visible_ != visibility::invisible);
 	assert(get_window());

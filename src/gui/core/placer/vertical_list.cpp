@@ -37,7 +37,7 @@ placer_vertical_list::placer_vertical_list(const unsigned maximum_columns)
 	assert(maximum_columns_ > 0);
 }
 
-void placer_vertical_list::initialise()
+void placer_vertical_list::initialize()
 {
 	rows_.clear();
 	rows_.emplace_back(0, 0);
