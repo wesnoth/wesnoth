@@ -372,7 +372,14 @@ void saved_game::expand_mp_options()
 			{
 				for(const config& option : cfg.child_range("option"))
 				{
-					variables[option["id"]] = option["value"];
+					try
+					{
+						variable_access_create(option["id"], variables).as_scalar() = option["value"];
+					}
+					catch(const invalid_variablename_exception&)
+					{
+						ERR_NG << "variable " << option["id"] << "cannot be set to " << option["value"] << std::endl;
+					}
 				}
 			}
 			else
