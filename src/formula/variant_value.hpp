@@ -198,6 +198,8 @@ public:
 	{
 		return true;
 	}
+
+	virtual ~variant_value_base() {}
 };
 
 
