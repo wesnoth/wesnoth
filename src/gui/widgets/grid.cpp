@@ -931,6 +931,21 @@ point grid::child::border_space() const
 	return result;
 }
 
+grid::child* grid::get_child(widget* w)
+{
+	if(!w) {
+		return nullptr;
+	}
+
+	for(auto& child : children_) {
+		if(w == child.get_widget()) {
+			return &child;
+		}
+	}
+
+	return nullptr;
+}
+
 void grid::layout(const point& origin)
 {
 	point orig = origin;
