@@ -143,7 +143,9 @@ static void draw_line(surface& canvas,
  * @param x_center        The x coordinate of the center of the circle to draw.
  * @param y_center        The y coordinate of the center of the circle to draw.
  * @param radius          The radius of the circle to draw.
+ * @tparam octants        A bitfield indicating which octants to draw, starting at twelve o'clock and moving clockwise.
  */
+template<unsigned int octants = 0xff>
 static void draw_circle(surface& canvas,
 						SDL_Renderer* renderer,
 						color_t color,
@@ -157,10 +159,10 @@ static void draw_circle(surface& canvas,
 			  << " with radius " << radius << " canvas width " << w
 			  << " canvas height " << canvas->h << ".\n";
 
-	assert((x_center + radius) < canvas->w);
-	assert((x_center - radius) >= 0);
-	assert((y_center + radius) < canvas->h);
-	assert((y_center - radius) >= 0);
+	if(octants & 0x0f) assert((x_center + radius) < canvas->w);
+	if(octants & 0xf0) assert((x_center - radius) >= 0);
+	if(octants & 0x3c) assert((y_center + radius) < canvas->h);
+	if(octants & 0xc3) assert((y_center - radius) >= 0);
 
 	set_renderer_color(renderer, color);
 
@@ -174,15 +176,15 @@ static void draw_circle(surface& canvas,
 	std::vector<SDL_Point> points;
 
 	while(!(y > x)) {
-		points.push_back({x_center + x, y_center + y});
-		points.push_back({x_center + x, y_center - y});
-		points.push_back({x_center - x, y_center + y});
-		points.push_back({x_center - x, y_center - y});
+		if(octants & 0x04) points.push_back({x_center + x, y_center + y});
+		if(octants & 0x02) points.push_back({x_center + x, y_center - y});
+		if(octants & 0x20) points.push_back({x_center - x, y_center + y});
+		if(octants & 0x40) points.push_back({x_center - x, y_center - y});
 
-		points.push_back({x_center + y, y_center + x});
-		points.push_back({x_center + y, y_center - x});
-		points.push_back({x_center - y, y_center + x});
-		points.push_back({x_center - y, y_center - x});
+		if(octants & 0x08) points.push_back({x_center + y, y_center + x});
+		if(octants & 0x01) points.push_back({x_center + y, y_center - x});
+		if(octants & 0x10) points.push_back({x_center - y, y_center + x});
+		if(octants & 0x80) points.push_back({x_center - y, y_center - x});
 
 		d += 2 * y + 1;
 		++y;
@@ -670,13 +672,13 @@ private:
  *     w & f_unsigned & 0 &            The width of the rectangle. $
  *     h & f_unsigned & 0 &            The height of the rectangle. $
  *     border_thickness & unsigned & 0 &
- *                                     The thickness of the border if the
+ *                                     The thickness of the border; if the
  *                                     thickness is zero it's not drawn. $
- *     border_color & color & "" &     The color of the border if empty it's
+ *     border_color & color & "" &     The color of the border; if empty it's
  *                                     not drawn. $
- *     fill_color & color & "" &       The color of the interior if omitted
+ *     fill_color & color & "" &       The color of the interior; if omitted
  *                                     it's not drawn. $
- *     debug & string & "" &           Debug message to show upon creation
+ *     debug & string & "" &           Debug message to show upon creation;
  *                                     this message is not stored. $
  * @end{table}
  * @end{tag}{name="rectangle"}
@@ -755,6 +757,150 @@ void rectangle_shape::draw(surface& canvas,
 		};
 
 		SDL_RenderFillRect(renderer, &area);
+	}
+}
+
+/***** ***** ***** ***** ***** Rounded Rectangle ***** ***** ***** ***** *****/
+
+/** Definition of a rounded rectangle shape. */
+class round_rectangle_shape : public canvas::shape {
+public:
+	/**
+	 * Constructor.
+	 *
+	 * @param cfg                 The config object to define the round rectangle see
+	 *                            http://www.wesnoth.org/wiki/GUICanvasWML#Rounded_Rectangle
+	 *                            for more information.
+	 */
+	explicit round_rectangle_shape(const config& cfg);
+
+	/** Implement shape::draw(). */
+	void draw(surface& canvas,
+		SDL_Renderer* renderer,
+		wfl::map_formula_callable& variables) override;
+
+private:
+	typed_formula<int> x_, /**< The x coordinate of the rectangle. */
+		y_,			   /**< The y coordinate of the rectangle. */
+		w_,			   /**< The width of the rectangle. */
+		h_,			   /**< The height of the rectangle. */
+		r_;			   /**< The radius of the corners. /
+
+	/**
+	 * Border thickness.
+	 *
+	 * If 0 the fill color is used for the entire widget.
+	 */
+	int border_thickness_;
+
+	/**
+	 * The border color of the rounded rectangle.
+	 *
+	 * If the color is fully transparent the border isn't drawn.
+	 */
+	color_t border_color_;
+
+	/**
+	 * The border color of the rounded rectangle.
+	 *
+	 * If the color is fully transparent the rounded rectangle won't be filled.
+	 */
+	color_t fill_color_;
+};
+
+/*WIKI
+ * @page = GUICanvasWML
+ *
+ * == Rounded Rectangle ==
+ * @begin{tag}{name="round_rectangle"}{min="0"}{max="-1"}
+ *
+ * Definition of a rounded rectangle. When drawing a rounded rectangle it doesn't get blended on
+ * the surface but replaces the pixels instead. A blitting flag might be added
+ * later if needed.
+ *
+ * Keys:
+ * @begin{table}{config}
+ *     x & f_unsigned & 0 &            The x coordinate of the top left corner.
+ *                                     $
+ *     y & f_unsigned & 0 &            The y coordinate of the top left corner.
+ *                                     $
+ *     w & f_unsigned & 0 &            The width of the rounded rectangle. $
+ *     h & f_unsigned & 0 &            The height of the rounded rectangle. $
+ *     corner_radius & f_unsigned & 0 &The radius of the rectangle's corners. $
+ *     border_thickness & unsigned & 0 &
+ *                                     The thickness of the border; if the
+ *                                     thickness is zero it's not drawn. $
+ *     border_color & color & "" &     The color of the border; if empty it's
+ *                                     not drawn. $
+ *     fill_color & color & "" &       The color of the interior; if omitted
+ *                                     it's not drawn. $
+ *     debug & string & "" &           Debug message to show upon creation;
+ *                                     this message is not stored. $
+ * @end{table}
+ * @end{tag}{name="round_rectangle"}
+ * Variables:
+ * See [[#general_variables|Line]].
+ *
+ */
+round_rectangle_shape::round_rectangle_shape(const config& cfg)
+	: shape(cfg)
+	, x_(cfg["x"])
+	, y_(cfg["y"])
+	, w_(cfg["w"])
+	, h_(cfg["h"])
+	, r_(cfg["corner_radius"])
+	, border_thickness_(cfg["border_thickness"])
+	, border_color_(decode_color(cfg["border_color"]))
+	, fill_color_(decode_color(cfg["fill_color"])) {
+	if(border_color_.null()) {
+		border_thickness_ = 0;
+	}
+
+	const std::string& debug = (cfg["debug"]);
+	if(!debug.empty()) {
+		DBG_GUI_P << "Rounded Rectangle: found debug message '" << debug << "'.\n";
+	}
+}
+
+void round_rectangle_shape::draw(surface& canvas,
+	SDL_Renderer* renderer,
+	wfl::map_formula_callable& variables) {
+	/**
+	 * @todo formulas are now recalculated every draw cycle which is a  bit
+	 * silly unless there has been a resize. So to optimize we should use an
+	 * extra flag or do the calculation in a separate routine.
+	 */
+	const int x = x_(variables);
+	const int y = y_(variables);
+	const int w = w_(variables);
+	const int h = h_(variables);
+	const int r = r_(variables);
+
+	DBG_GUI_D << "Rectangle: draw from " << x << ',' << y << " width " << w
+		<< " height " << h << " canvas size " << canvas->w << ','
+		<< canvas->h << ".\n";
+
+	VALIDATE(x     <  canvas->w
+		&& x + w <= canvas->w
+		&& y     <  canvas->h
+		&& y + h <= canvas->h, _("Rectangle doesn't fit on canvas."));
+
+	surface_lock locker(canvas);
+
+	// Draw the border
+	for(int i = 0; i < border_thickness_; ++i) {
+		set_renderer_color(renderer, border_color_);
+
+		SDL_RenderDrawLine(renderer, x + r, y + i,     x + w - r, y + i);
+		SDL_RenderDrawLine(renderer, x + r, y + h - i, x + w - r, y + h - i);
+
+		SDL_RenderDrawLine(renderer, x + i,     y + r, x + i,     y + h - r);
+		SDL_RenderDrawLine(renderer, x + w - i, y + r, x + w - i, y + h - r);
+
+		draw_circle<0xc0>(canvas, renderer, border_color_, x + r,     y + r,     r - i);
+		draw_circle<0x03>(canvas, renderer, border_color_, x + w - r, y + r,     r - i);
+		draw_circle<0x30>(canvas, renderer, border_color_, x + r,     y + h - r, r - i);
+		draw_circle<0x0c>(canvas, renderer, border_color_, x + w - r, y + h - r, r - i);
 	}
 }
 
@@ -1483,6 +1629,8 @@ void canvas::parse_cfg(const config& cfg)
 			shapes_.emplace_back(std::make_shared<line_shape>(data));
 		} else if(type == "rectangle") {
 			shapes_.emplace_back(std::make_shared<rectangle_shape>(data));
+		} else if(type == "round_rectangle") {
+			shapes_.emplace_back(std::make_shared<round_rectangle_shape>(data));
 		} else if(type == "circle") {
 			shapes_.emplace_back(std::make_shared<circle_shape>(data));
 		} else if(type == "image") {
