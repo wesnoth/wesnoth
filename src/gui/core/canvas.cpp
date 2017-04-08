@@ -784,7 +784,7 @@ private:
 		y_,			   /**< The y coordinate of the rectangle. */
 		w_,			   /**< The width of the rectangle. */
 		h_,			   /**< The height of the rectangle. */
-		r_;			   /**< The radius of the corners. /
+		r_;			   /**< The radius of the corners. */
 
 	/**
 	 * Border thickness.
