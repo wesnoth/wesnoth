@@ -203,20 +203,24 @@ void story_viewer::display_part(window& window)
 	//
 	// Title
 	//
-	std::string title;
-	if(current_part_->show_title() && !current_part_->title().empty()) {
-		title = current_part_->title();
-	} else {
-		// FIXME: seems if the label doesn't have *something* in it each time its set, the label will never show up.
-		title = " ";
-	}
-
-	PangoAlignment title_text_alignment = storyscreen_alignment_to_pango(current_part_->title_text_alignment());
-
 	label& title_label = find_widget<label>(&window, "title", false);
 
-	title_label.set_text_alignment(title_text_alignment);
-	title_label.set_label(title);
+	std::string title_text = current_part_->title();
+	bool showing_title;
+
+	if(current_part_->show_title() && !title_text.empty()) {
+		showing_title = true;
+
+		PangoAlignment title_text_alignment = storyscreen_alignment_to_pango(current_part_->title_text_alignment());
+
+		title_label.set_visible(widget::visibility::visible);
+		title_label.set_text_alignment(title_text_alignment);
+		title_label.set_label(title_text);
+	} else {
+		showing_title = false;
+
+		title_label.set_visible(widget::visibility::invisible);
+	}
 
 	//
 	// Story text
@@ -239,11 +243,15 @@ void story_viewer::display_part(window& window)
 
 	text_stack.set_vertical_alignment(new_panel_mode);
 
-	// Set the panel mode control variable for the panel's borders.
-	// We use get_layer_grid here to ensure the widget is always found regardless of
-	// whether the background is visible or not.
-	find_widget<panel>(text_stack.get_layer_grid(1), "text_panel", false)
-		.get_canvas(0).set_variable("panel_mode", wfl::variant(new_panel_mode));
+	/* Set the panel mode control variables.
+	 *
+	 * We use get_layer_grid here to ensure the widget is always found regardless of
+	 * whether the background is visible or not.
+	 */
+	canvas& panel_canvas = find_widget<panel>(text_stack.get_layer_grid(1), "text_panel", false).get_canvas(0);
+
+	panel_canvas.set_variable("panel_position", wfl::variant(new_panel_mode));
+	panel_canvas.set_variable("title_present", wfl::variant(showing_title ? "yes" : "no")); // TODO: bool variant
 
 	const std::string& part_text = current_part_->text();
 
