@@ -138,7 +138,9 @@ bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc
 		}
 	}
 
-	const unit_map& units = resources::gameboard->units();
+	assert(resources::units);
+	const unit_map& units = *resources::units;
+
 	map_location adjacent[6];
 	get_adjacent_tiles(loc,adjacent);
 	for(int i = 0; i != 6; ++i) {
@@ -167,8 +169,6 @@ bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc
 }
 unit_ability_list unit::get_abilities(const std::string& tag_name, const map_location& loc) const
 {
-	assert(resources::gameboard);
-
 	unit_ability_list res;
 
 	for (const config &i : this->abilities_.child_range(tag_name)) {
@@ -179,7 +179,9 @@ unit_ability_list unit::get_abilities(const std::string& tag_name, const map_loc
 		}
 	}
 
-	const unit_map& units = resources::gameboard->units();
+	assert(resources::units);
+	const unit_map& units = *resources::units;
+
 	map_location adjacent[6];
 	get_adjacent_tiles(loc,adjacent);
 	for(int i = 0; i != 6; ++i) {
@@ -309,7 +311,6 @@ std::vector<std::tuple<t_string, t_string, t_string> > unit::ability_tooltips(bo
 bool unit::ability_active(const std::string& ability,const config& cfg,const map_location& loc) const
 {
 	bool illuminates = ability == "illuminates";
-	assert(resources::gameboard && resources::tod_manager);
 
 	if (const config &afilter = cfg.child("filter"))
 		if ( !unit_filter(vconfig(afilter), resources::filter_con, illuminates).matches(*this, loc) )
@@ -317,7 +318,9 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
 
 	map_location adjacent[6];
 	get_adjacent_tiles(loc,adjacent);
-	const unit_map& units = resources::gameboard->units();
+
+	assert(resources::units);
+	const unit_map& units = *resources::units;
 
 	for (const config &i : cfg.child_range("filter_adjacent"))
 	{
@@ -891,7 +894,9 @@ bool attack_type::special_active(const config& special, AFFECTS whom,
 	}
 
 	// Get the units involved.
-	const unit_map & units = resources::gameboard->units();
+	assert(resources::units);
+	const unit_map& units = *resources::units;
+
 	unit_map::const_iterator self  = units.find(self_loc_);
 	unit_map::const_iterator other = units.find(other_loc_);
 
