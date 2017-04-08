@@ -937,16 +937,34 @@ void round_rectangle_shape::draw(surface& canvas,
 	const int h = h_(variables);
 	const int r = r_(variables);
 
-	DBG_GUI_D << "Rectangle: draw from " << x << ',' << y << " width " << w
+	DBG_GUI_D << "Rounded Rectangle: draw from " << x << ',' << y << " width " << w
 		<< " height " << h << " canvas size " << canvas->w << ','
 		<< canvas->h << ".\n";
 
 	VALIDATE(x     <  canvas->w
 		&& x + w <= canvas->w
 		&& y     <  canvas->h
-		&& y + h <= canvas->h, _("Rectangle doesn't fit on canvas."));
+		&& y + h <= canvas->h, _("Rounded Rectangle doesn't fit on canvas."));
 
 	surface_lock locker(canvas);
+
+	// Fill the background, if applicable
+	if(!fill_color_.null() && w && h) {
+		set_renderer_color(renderer, fill_color_);
+		static const int count = 3;
+		SDL_Rect area[count] = {
+			{x + r,                 y + border_thickness_, w - r                 * 2, r - border_thickness_ + 1},
+			{x + border_thickness_, y + r + 1,             w - border_thickness_ * 2, h - r * 2},
+			{x + r,                 y - r + h + 1,         w - r                 * 2, r - border_thickness_},
+		};
+
+		SDL_RenderFillRects(renderer, area, count);
+
+		fill_circle<0xc0>(canvas, renderer, fill_color_, x + r,     y + r,     r);
+		fill_circle<0x03>(canvas, renderer, fill_color_, x + w - r, y + r,     r);
+		fill_circle<0x30>(canvas, renderer, fill_color_, x + r,     y + h - r, r);
+		fill_circle<0x0c>(canvas, renderer, fill_color_, x + w - r, y + h - r, r);
+	}
 
 	// Draw the border
 	for(int i = 0; i < border_thickness_; ++i) {
