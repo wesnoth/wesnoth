@@ -81,6 +81,7 @@ public:
 		// TODO register the tod_manager with the gui?
 		resources::tod_manager = context_manager_.get_map_context().get_time_manager();
 		resources::units = &context_manager_.get_map_context().get_units();
+		resources::filter_con = &context_manager_.gui();
 
 		context_manager_.gui().replace_overlay_map(&context_manager_.get_map_context().get_overlays());
 
