@@ -1539,6 +1539,9 @@ std::string config::hash() const
 	i = 0;
 	for (const attribute &val : values)
 	{
+		if (val.second.blank()) {
+			continue;
+		}
 		for (std::string::const_iterator c = val.first.begin(); c != val.first.end(); ++c) {
 			hash_str[i] ^= *c;
 			if (++i == hash_length) i = 0;
