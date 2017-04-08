@@ -496,7 +496,7 @@ for env in [test_env, client_env, env]:
 
     if "clang" in env["CXX"]:
         # Silence warnings about unused -I options and unknown warning switches.
-        env.AppendUnique(CCFLAGS = Split("-Qunused-arguments -Wno-unknown-warning-option"))
+        env.AppendUnique(CCFLAGS = Split("-Qunused-arguments -Wno-unknown-warning-option -Werror=non-virtual-dtor"))
 
     if "suncc" in env["TOOLS"]:
         env["OPT_FLAGS"] = "-g0"

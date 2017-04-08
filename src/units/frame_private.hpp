@@ -66,6 +66,8 @@ public:
 		return data_;
 	}
 
+	virtual ~progressive_base() {}
+
 private:
 	data_t data_;
 	std::string input_;
