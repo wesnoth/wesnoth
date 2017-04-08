@@ -19,6 +19,7 @@
 #include "gui/widgets/window.hpp"
 #include "gui/core/event/message.hpp"
 #include "gui/core/log.hpp"
+#include "gui/core/window_builder/helper.hpp"
 #include "sdl/rect.hpp"
 
 namespace gui2
@@ -266,6 +267,32 @@ void widget::move(const int x_offset, const int y_offset)
 {
 	x_ += x_offset;
 	y_ += y_offset;
+}
+
+void widget::set_horizontal_alignment(const std::string& alignment)
+{
+	grid* parent_grid = get_parent_grid();
+	if(!parent_grid) {
+		return;
+	}
+
+	parent_grid->set_child_alignment(this, implementation::get_h_align(alignment), grid::HORIZONTAL_MASK);
+
+	// TODO: evaluate necessity
+	//get_window()->invalidate_layout();
+}
+
+void widget::set_vertical_alignment(const std::string& alignment)
+{
+	grid* parent_grid = get_parent_grid();
+	if(!parent_grid) {
+		return;
+	}
+
+	parent_grid->set_child_alignment(this, implementation::get_v_align(alignment), grid::VERTICAL_MASK);
+
+	// TODO: evaluate necessity
+	//get_window()->invalidate_layout();
 }
 
 void widget::layout_children()

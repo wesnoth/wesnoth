@@ -181,6 +181,9 @@ public:
 	 */
 	window* get_window();
 
+	/** The constant version of @ref get_window. */
+	const window* get_window() const;
+
 	/**
 	 * Get the parent grid.
 	 *
@@ -188,9 +191,6 @@ public:
 	 * @retval nullptr          No parent grid found.
 	 */
 	grid* get_parent_grid();
-
-	/** The constant version of @ref get_window. */
-	const window* get_window() const;
 
 	/**
 	 * Returns the top-level dialog.
@@ -203,7 +203,7 @@ public:
 	 * function will be removed.
 	 *
 	 * @returns                   The top-level dialog.
-	 * @retval nullptr               No top-level window or the top-level window is
+	 * @retval nullptr            No top-level window or the top-level window is
 	 *                            not owned by a dialog.
 	 */
 	dialogs::modal_dialog* dialog();
@@ -400,6 +400,20 @@ public:
 	 *                            the y-direction.
 	 */
 	virtual void move(const int x_offset, const int y_offset);
+
+	/**
+	 * Sets the horizontal alignment of the widget within its parent grid.
+	 *
+	 * @param alignment           The new alignment.
+	 */
+	virtual void set_horizontal_alignment(const std::string& alignment);
+
+	/**
+	 * Sets the horizontal alignment of the widget within its parent grid.
+	 *
+	 * @param alignment           The new alignment.
+	 */
+	virtual void set_vertical_alignment(const std::string& alignment);
 
 	/**
 	 * Allows a widget to update its children.

@@ -17,6 +17,7 @@
 #include "gui/widgets/grid_private.hpp"
 
 #include "gui/auxiliary/iterator/walker_grid.hpp"
+#include "gui/core/event/message.hpp"
 #include "gui/core/log.hpp"
 #include "gui/core/layout_exception.hpp"
 #include "gui/widgets/styled_widget.hpp"
@@ -232,7 +233,7 @@ void grid::reduce_width(const unsigned maximum_width)
 
 	/** @todo Implement. */
 
-	/***** ***** ***** ***** Acknowlegde failure ***** ***** ***** *****/
+	/***** ***** ***** ***** Acknowledge failure ***** ***** ***** *****/
 
 	DBG_GUI_L << LOG_HEADER << " Resizing failed.\n";
 
@@ -310,7 +311,7 @@ void grid::reduce_height(const unsigned maximum_height)
 
 	/** @todo Implement. */
 
-	/***** ***** ***** ***** Acknowlegde failure ***** ***** ***** *****/
+	/***** ***** ***** ***** Acknowledge failure ***** ***** ***** *****/
 
 	DBG_GUI_L << LOG_HEADER << " Resizing failed.\n";
 
@@ -944,6 +945,34 @@ grid::child* grid::get_child(widget* w)
 	}
 
 	return nullptr;
+}
+
+void grid::set_child_alignment(widget* widget, unsigned set_flag, unsigned mode_mask)
+{
+	grid::child* cell = get_child(widget);
+	if(!cell) {
+		return;
+	}
+
+	unsigned flags = cell->get_flags();
+
+	if((flags & mode_mask) == HORIZONTAL_GROW_SEND_TO_CLIENT) {
+		ERR_GUI_G << "Cannot set horizontal alignment (grid cell specifies dynamic growth)" << std::endl;
+		return;
+	}
+
+	if((flags & mode_mask) == VERTICAL_GROW_SEND_TO_CLIENT) {
+		ERR_GUI_G << "Cannot set vertical alignment (grid cell specifies dynamic growth)" << std::endl;
+		return;
+	}
+
+	flags &= ~mode_mask;
+	flags |= set_flag;
+
+	cell->set_flags(flags);
+
+	event::message message;
+	fire(event::REQUEST_PLACEMENT, *this, message);
 }
 
 void grid::layout(const point& origin)

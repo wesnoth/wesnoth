@@ -227,6 +227,16 @@ public:
 	 */
 	point recalculate_best_size();
 
+	/**
+	 * Modifies the widget alignment data of a child cell containing a specific widget.
+	 *
+	 * @param widget              The widget whose cell to modify.
+	 * @param set_flag            The alignment flag to set.
+	 * @param mask                Whether to affect horizontal or vertical alignment.
+	 *                            Use either HORIZONTAL_MASK or VERTICAL_MASK
+	 */
+	void set_child_alignment(widget* widget, unsigned set_flag, unsigned mode_mask);
+
 private:
 	/** See @ref widget::calculate_best_size. */
 	virtual point calculate_best_size() const override;
