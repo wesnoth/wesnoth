@@ -162,7 +162,7 @@ editor_controller::~editor_controller()
 {
 	resources::units = nullptr;
 	resources::tod_manager = nullptr;
-	resources::gameboard = nullptr;
+	resources::filter_con = nullptr;
 
 	resources::classification = nullptr;
 }
