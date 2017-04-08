@@ -42,17 +42,17 @@ namespace
 	const config as_nonempty_range_default = config_of("_", config());
 	config::const_child_itors as_nonempty_range(const std::string& varname)
 	{
-		assert(resources::gamedata);
-		config::const_child_itors range = resources::gamedata->get_variable_access_read(varname).as_array();
+		config::const_child_itors range = as_nonempty_range_default.child_range("_");
 
-		if(range.empty())
-		{
-			return as_nonempty_range_default.child_range("_");
+		if(resources::gamedata) {
+			config::const_child_itors temp_range = resources::gamedata->get_variable_access_read(varname).as_array();
+
+			if(!temp_range.empty()) {
+				range = temp_range;
+			}
 		}
-		else
-		{
-			return range;
-		}
+
+		return range;
 	}
 }
 
@@ -474,7 +474,9 @@ config &scoped_wml_variable::store(const config &var_value)
 
 scoped_wml_variable::~scoped_wml_variable()
 {
-	assert(resources::gamedata);
+	if(!resources::gamedata) {
+		return;
+	}
 
 	if(activated_) {
 		resources::gamedata->clear_variable_cfg(var_name_);
