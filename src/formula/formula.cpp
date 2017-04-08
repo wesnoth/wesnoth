@@ -31,7 +31,7 @@ using expr_table_ptr       = std::shared_ptr<expr_table>;
 
 // Function used when creating error reports.
 // Parses all tokens passed to parse_expression, thus there are no EOL or whitespaces
-std::string tokens_to_string(const tk::token* i1, const tk::token* i2)
+static std::string tokens_to_string(const tk::token* i1, const tk::token* i2)
 {
 	std::ostringstream expr;
 	while(i1 != i2) {
@@ -1061,7 +1061,7 @@ private:
 /**
  * Functions to handle the actual parsing of WFL.
  */
-int operator_precedence(const tk::token& t)
+static int operator_precedence(const tk::token& t)
 {
 	static std::map<std::string,int> precedence_map;
 	if(precedence_map.empty()) {
@@ -1093,7 +1093,7 @@ int operator_precedence(const tk::token& t)
 	return precedence_map[std::string(t.begin, t.end)];
 }
 
-void parse_function_args(const tk::token* &i1, const tk::token* i2, std::vector<std::string>* res)
+static void parse_function_args(const tk::token* &i1, const tk::token* i2, std::vector<std::string>* res)
 {
  	const tk::token* begin = i1, *end = i2;	// These are used for error reporting
 
@@ -1127,7 +1127,7 @@ void parse_function_args(const tk::token* &i1, const tk::token* i2, std::vector<
 	++i1;
 }
 
-void parse_args(const tk::token* i1, const tk::token* i2,
+static void parse_args(const tk::token* i1, const tk::token* i2,
                 std::vector<expression_ptr>* res,
 				function_symbol_table* symbols)
 {
@@ -1151,7 +1151,7 @@ void parse_args(const tk::token* i1, const tk::token* i2,
 	}
 }
 
-void parse_set_args(const tk::token* i1, const tk::token* i2,
+static void parse_set_args(const tk::token* i1, const tk::token* i2,
                 std::vector<expression_ptr>* res,
 				function_symbol_table* symbols)
 {
@@ -1190,7 +1190,7 @@ void parse_set_args(const tk::token* i1, const tk::token* i2,
 	}
 }
 
-void parse_where_clauses(const tk::token* i1, const tk::token* i2, expr_table_ptr res, function_symbol_table* symbols)
+static void parse_where_clauses(const tk::token* i1, const tk::token* i2, expr_table_ptr res, function_symbol_table* symbols)
 {
 	int parens = 0;
 	const tk::token* original_i1_cached = i1;
