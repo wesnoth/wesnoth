@@ -139,7 +139,7 @@ static void draw_line(surface& canvas,
  *
  * @param canvas          The canvas to draw upon, the caller should lock the
  *                        surface before calling.
- * @param color           The color of the circle to draw.
+ * @param color           The border color of the circle to draw.
  * @param x_center        The x coordinate of the center of the circle to draw.
  * @param y_center        The y coordinate of the center of the circle to draw.
  * @param radius          The radius of the circle to draw.
@@ -195,6 +195,67 @@ static void draw_circle(surface& canvas,
 	}
 
 	SDL_RenderDrawPoints(renderer, points.data(), points.size());
+}
+
+/**
+ * Draws a filled circle on a surface.
+ *
+ * @pre                   The circle must fit on the canvas.
+ * @pre                   The @p surface is locked.
+ *
+ * @param canvas          The canvas to draw upon, the caller should lock the
+ *                        surface before calling.
+ * @param color           The fill color of the circle to draw.
+ * @param x_center        The x coordinate of the center of the circle to draw.
+ * @param y_center        The y coordinate of the center of the circle to draw.
+ * @param radius          The radius of the circle to draw.
+ * @tparam octants        A bitfield indicating which octants to draw, starting at twelve o'clock and moving clockwise.
+ */
+template<unsigned int octants = 0xff>
+static void fill_circle(surface& canvas,
+						SDL_Renderer* renderer,
+						color_t color,
+						const int x_center,
+						const int y_center,
+						const int radius)
+{
+	unsigned w = canvas->w;
+
+	DBG_GUI_D << "Shape: draw filled circle at " << x_center << ',' << y_center
+			  << " with radius " << radius << " canvas width " << w
+			  << " canvas height " << canvas->h << ".\n";
+
+	if(octants & 0x0f) assert((x_center + radius) < canvas->w);
+	if(octants & 0xf0) assert((x_center - radius) >= 0);
+	if(octants & 0x3c) assert((y_center + radius) < canvas->h);
+	if(octants & 0xc3) assert((y_center - radius) >= 0);
+
+	set_renderer_color(renderer, color);
+
+	int d = -static_cast<int>(radius);
+	int x = radius;
+	int y = 0;
+
+	while(!(y > x)) {
+		// I use the formula of Bresenham's line algorithm to determine the boundaries of a segment.
+		// The slope of the line is always 1 or -1 in this case.
+		if(octants & 0x04) SDL_RenderDrawLine(renderer, x_center + x,     y_center + y + 1, x_center + y + 1, y_center + y + 1); // x2 - 1 = y2 - (y_center + 1) + x_center
+		if(octants & 0x02) SDL_RenderDrawLine(renderer, x_center + x,     y_center - y,     x_center + y + 1, y_center - y);     // x2 - 1 = y_center - y2 + x_center
+		if(octants & 0x20) SDL_RenderDrawLine(renderer, x_center - x - 1, y_center + y + 1, x_center - y - 2, y_center + y + 1); // x2 + 1 = (y_center + 1) - y2 + (x_center - 1)
+		if(octants & 0x40) SDL_RenderDrawLine(renderer, x_center - x - 1, y_center - y,     x_center - y - 2, y_center - y);     // x2 + 1 = y2 - y_center + (x_center - 1)
+
+		if(octants & 0x08) SDL_RenderDrawLine(renderer, x_center + y,     y_center + x + 1, x_center + y,     y_center + y + 1); // y2 = x2 - x_center + (y_center + 1)
+		if(octants & 0x01) SDL_RenderDrawLine(renderer, x_center + y,     y_center - x,     x_center + y,     y_center - y);     // y2 = x_center - x2 + y_center
+		if(octants & 0x10) SDL_RenderDrawLine(renderer, x_center - y - 1, y_center + x + 1, x_center - y - 1, y_center + y + 1); // y2 = (x_center - 1) - x2 + (y_center + 1)
+		if(octants & 0x80) SDL_RenderDrawLine(renderer, x_center - y - 1, y_center - x,     x_center - y - 1, y_center - y);     // y2 = x2 - (x_center - 1) + y_center
+
+		d += 2 * y + 1;
+		++y;
+		if(d > 0) {
+			d += -2 * x + 2;
+			--x;
+		}
+	}
 }
 
 /***** ***** ***** ***** ***** LINE ***** ***** ***** ***** *****/
@@ -929,8 +990,11 @@ private:
 			y_,			   /**< The center y coordinate of the circle. */
 			radius_;	   /**< The radius of the circle. */
 
-	/** The color of the circle. */
-	color_t color_;
+	/** The border color of the circle. */
+	color_t border_color_, fill_color_; /**< The fill color of the circle. */
+
+	/** The border thickness of the circle. */
+	unsigned int border_thickness_;
 };
 
 /*WIKI
@@ -947,10 +1011,13 @@ private:
  * @begin{table}{config}
  * x      & f_unsigned & 0 &       The x coordinate of the center. $
  * y      & f_unsigned & 0 &       The y coordinate of the center. $
- * radius & f_unsigned & 0 &       The radius of the circle if 0 nothing is
+ * radius & f_unsigned & 0 &       The radius of the circle; if 0 nothing is
  *                                 drawn. $
- * color & color & "" &            The color of the circle. $
- * debug & string & "" &           Debug message to show upon creation this
+ * border_thickness & unsigned & "" &
+ *                                 The border thickness of the circle. $
+ * border_color & color & "" &     The color of the circle. $
+ * fill_color & color & "" &       The color of the circle. $
+ * debug & string & "" &           Debug message to show upon creation; this
  *                                 message is not stored. $
  * @end{table}
  * @end{tag}{name="circle"}
@@ -965,7 +1032,9 @@ circle_shape::circle_shape(const config& cfg)
 	, x_(cfg["x"])
 	, y_(cfg["y"])
 	, radius_(cfg["radius"])
-	, color_(decode_color(cfg["color"]))
+	, border_color_(decode_color(cfg["border_color"]))
+	, fill_color_(decode_color(cfg["fill_color"]))
+	, border_thickness_(cfg["border_thickness"].to_int(1))
 {
 	const std::string& debug = (cfg["debug"]);
 	if(!debug.empty()) {
@@ -1015,7 +1084,13 @@ void circle_shape::draw(surface& canvas,
 	// lock the surface
 	surface_lock locker(canvas);
 
-	draw_circle(canvas, renderer, color_, x, y, radius);
+	if(!fill_color_.null() && radius) {
+		fill_circle(canvas, renderer, fill_color_, x, y, radius);
+	}
+
+	for(unsigned int i = 0; i < border_thickness_; i++) {
+		draw_circle(canvas, renderer, border_color_, x, y, radius - i);
+	}
 }
 
 /***** ***** ***** ***** ***** IMAGE ***** ***** ***** ***** *****/
