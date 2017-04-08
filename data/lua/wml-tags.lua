@@ -733,6 +733,7 @@ function wml_actions.store_side(cfg)
 		-- set values not properly handled by the __cfg
 		container.income = t.total_income
 		container.net_income = t.net_income
+		container.base_income = t.base_income
 		container.expenses = t.expenses
 		container.total_upkeep = t.total_upkeep
 		container.num_units = t.num_units
