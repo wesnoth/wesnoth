@@ -16,6 +16,7 @@
 #define KEY_HPP_INCLUDED
 
 #include <cstdint>
+#include <SDL.h>
 
 /**
  * Class that keeps track of all the keys on the keyboard.
@@ -31,6 +32,7 @@ class CKey
 public:
 	CKey();
 	bool operator[](int k) const;
+	static bool is_uncomposable(const SDL_KeyboardEvent &event);
 };
 
 #endif

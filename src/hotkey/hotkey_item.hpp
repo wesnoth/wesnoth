@@ -21,6 +21,7 @@
 #include <memory>
 #include <vector>
 #include <string>
+#include <boost/algorithm/string.hpp>
 
 class config;
 class CVideo;
@@ -256,6 +257,7 @@ public:
 	void set_text(std::string text)
 	{
 		text_ = text;
+		boost::algorithm::to_lower(text_);
 	}
 
 	/**
@@ -437,6 +439,8 @@ std::string get_names(std::string id);
 void save_hotkeys(config& cfg);
 
 hotkey_ptr show_binding_dialog(CVideo& video, const std::string& id);
+
+bool is_hotkeyable_event(const SDL_Event &event);
 
 }
 

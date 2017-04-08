@@ -20,18 +20,12 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "gettext.hpp"
-#include "serialization/unicode.hpp"
-#include "sdl/surface.hpp"
-
 #include <boost/algorithm/string/join.hpp>
 #include <boost/algorithm/string.hpp>
-#include <boost/algorithm/string/predicate.hpp>
 #include "utils/functional.hpp"
 
-#include "key.hpp"
-
 #include <SDL.h>
+#include <key.hpp>
 
 
 static lg::log_domain log_config("config");
@@ -152,17 +146,27 @@ void hotkey_base::save(config& item) const
 hotkey_ptr create_hotkey(const std::string &id, SDL_Event &event)
 {
 	hotkey_ptr base = hotkey_ptr(new hotkey_void);
+	unsigned mods = sdl_get_mods();
 
 	switch (event.type) {
 	case SDL_KEYDOWN:
 	case SDL_KEYUP: {
+		if (mods & KMOD_CTRL || mods & KMOD_ALT || mods & KMOD_GUI || CKey::is_uncomposable(event.key)) {
+			hotkey_keyboard_ptr keyboard(new hotkey_keyboard());
+			base = std::dynamic_pointer_cast<hotkey_base>(keyboard);
+			SDL_Keycode code;
+			code = event.key.keysym.sym;
+			keyboard->set_keycode(code);
+			keyboard->set_text(SDL_GetKeyName(event.key.keysym.sym));
+		}
+	}
+		break;
+	case SDL_TEXTINPUT: {
 		hotkey_keyboard_ptr keyboard(new hotkey_keyboard());
 		base = std::dynamic_pointer_cast<hotkey_base>(keyboard);
-		SDL_Keycode code;
-		code = event.key.keysym.sym;
-		keyboard->set_keycode(code);
-		break;
+		keyboard->set_text(std::string(event.text.text));
 	}
+		break;
 	case SDL_MOUSEBUTTONDOWN:
 	case SDL_MOUSEBUTTONUP: {
 		hotkey_mouse_ptr mouse(new hotkey_mouse());
@@ -279,32 +283,29 @@ void hotkey_mouse::save_helper(config &item) const
 
 const std::string hotkey_keyboard::get_name_helper() const
 {
-	std::string ret = text_;
-
-	if (ret.size() == 1) {
-		boost::algorithm::to_lower(ret);
-	}
-
-	return ret;
+	return text_;
 }
 
 bool hotkey_keyboard::matches_helper(const SDL_Event &event) const
 {
 	unsigned int mods = sdl_get_mods();
 
-	if (event.type == SDL_TEXTINPUT && text_.length() == 1) {
+	if ((event.type == SDL_KEYDOWN || event.type == SDL_KEYUP) &&
+				(mods & KMOD_CTRL || mods & KMOD_ALT || mods & KMOD_GUI ||
+			  CKey::is_uncomposable(event.key))) {
+		return event.key.keysym.sym == keycode_ && mods == mod_;
+	}
+
+	if (event.type == SDL_TEXTINPUT) {
 		std::string text = std::string(event.text.text);
 		boost::algorithm::to_lower(text);
 		if (text == ":") {
 			mods = mods & ~KMOD_SHIFT;
 		}
-		return  text_ == text && mods == mod_;
-	} else if ((event.type == SDL_KEYDOWN || event.type == SDL_KEYUP) &&
-			(text_.length() > 1 || mods & (KMOD_CTRL|KMOD_ALT|KMOD_GUI)) ) {
-		return event.key.keysym.sym == keycode_ && mods == mod_;
-	} else {
-		return false;
+		return text_ == text && mods == mod_;
 	}
+
+	return false;
 }
 
 bool hotkey_mouse::bindings_equal_helper(hotkey_ptr other) const
@@ -472,6 +473,24 @@ std::string get_names(std::string id)
 	}
 
 	return boost::algorithm::join(names, ", ");
+}
+
+bool is_hotkeyable_event(const SDL_Event &event) {
+
+	if (event.type == SDL_JOYBUTTONUP ||
+			event.type == SDL_JOYHATMOTION ||
+			event.type == SDL_MOUSEBUTTONUP) {
+		return true;
+	}
+
+	unsigned mods = sdl_get_mods();
+
+	if (mods & KMOD_CTRL || mods & KMOD_ALT || mods & KMOD_GUI) {
+		return event.type == SDL_KEYUP;
+	} else {
+		return event.type == SDL_TEXTINPUT ||
+				(event.type  == SDL_KEYUP && CKey::is_uncomposable(event.key));
+	}
 }
 
 }

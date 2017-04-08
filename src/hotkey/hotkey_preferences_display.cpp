@@ -72,9 +72,7 @@ hotkey::hotkey_ptr show_binding_dialog(CVideo& video, const std::string& id)
 		SDL_PollEvent(&event);
 		events::peek_for_resize();
 
-	} while (event.type  != SDL_KEYUP && event.type != SDL_JOYBUTTONUP
-			&& event.type != SDL_JOYHATMOTION
-			&& event.type != SDL_MOUSEBUTTONUP);
+	} while (!hotkey::is_hotkeyable_event(event));
 
 	restorer.restore();
 	return keycode == SDLK_ESCAPE ? hotkey::hotkey_ptr() : hotkey::create_hotkey(id, event);
