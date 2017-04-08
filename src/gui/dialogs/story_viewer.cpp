@@ -128,11 +128,33 @@ void story_viewer::display_part(window& window)
 		sound::play_sound(current_part_->sound());
 	}
 
-	config cfg, image;
+	//
+	// Title
+	//
+	label& title_label = find_widget<label>(&window, "title", false);
+
+	std::string title_text = current_part_->title();
+	bool showing_title;
+
+	if(current_part_->show_title() && !title_text.empty()) {
+		showing_title = true;
+
+		PangoAlignment title_text_alignment = storyscreen_alignment_to_pango(current_part_->title_text_alignment());
+
+		title_label.set_visible(widget::visibility::visible);
+		title_label.set_text_alignment(title_text_alignment);
+		title_label.set_label(title_text);
+	} else {
+		showing_title = false;
+
+		title_label.set_visible(widget::visibility::invisible);
+	}
 
 	//
 	// Background images
 	//
+	config cfg, image;
+
 	bool has_background = false;
 
 	for(const auto& layer : current_part_->get_background_layers()) {
@@ -190,7 +212,9 @@ void story_viewer::display_part(window& window)
 		cfg.add_child("image", image);
 	}
 
-	cfg.add_child("image", get_title_area_decor_config());
+	if(!showing_title) {
+		cfg.add_child("image", get_title_area_decor_config());
+	}
 
 	canvas& window_canvas = window.get_canvas(0);
 
@@ -199,28 +223,6 @@ void story_viewer::display_part(window& window)
 	// Needed to make the background redraw correctly.
 	window_canvas.set_is_dirty(true);
 	window.set_is_dirty(true);
-
-	//
-	// Title
-	//
-	label& title_label = find_widget<label>(&window, "title", false);
-
-	std::string title_text = current_part_->title();
-	bool showing_title;
-
-	if(current_part_->show_title() && !title_text.empty()) {
-		showing_title = true;
-
-		PangoAlignment title_text_alignment = storyscreen_alignment_to_pango(current_part_->title_text_alignment());
-
-		title_label.set_visible(widget::visibility::visible);
-		title_label.set_text_alignment(title_text_alignment);
-		title_label.set_label(title_text);
-	} else {
-		showing_title = false;
-
-		title_label.set_visible(widget::visibility::invisible);
-	}
 
 	//
 	// Story text
