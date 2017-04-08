@@ -224,37 +224,32 @@ void story_viewer::display_part(window& window)
 	stacked_widget& text_stack = find_widget<stacked_widget>(&window, "text_and_control_stack", false);
 
 	std::string new_panel_mode;
-	gui2::point new_origin;
 
 	switch(current_part_->story_text_location()) {
 		case storyscreen::part::BLOCK_TOP:
 			new_panel_mode = "top";
-			// Default 0,0 origin value is correct.
 			break;
 		case storyscreen::part::BLOCK_MIDDLE:
-			new_panel_mode = "middle";
-			new_origin.y = (window.get_size().y / 2) - (text_stack.get_size().y / 2);
+			new_panel_mode = "center";
 			break;
 		case storyscreen::part::BLOCK_BOTTOM:
 			new_panel_mode = "bottom";
-			new_origin.y = window.get_size().y - text_stack.get_size().y;
 			break;
 	}
 
-	// FIXME: sometimes the text won't appear after a move...
-	text_stack.set_origin(new_origin);
+	text_stack.set_vertical_alignment(new_panel_mode);
 
 	// Set the panel mode control variable for the panel's borders.
 	// We use get_layer_grid here to ensure the widget is always found regardless of
 	// whether the background is visible or not.
-	find_widget<panel>(text_stack.get_layer_grid(0), "text_panel", false).get_canvas(0)
-		.set_variable("panel_mode", wfl::variant(new_panel_mode));
+	find_widget<panel>(text_stack.get_layer_grid(1), "text_panel", false)
+		.get_canvas(0).set_variable("panel_mode", wfl::variant(new_panel_mode));
 
 	const std::string& part_text = current_part_->text();
 
 	if(part_text.empty() || !has_background) {
 		// No text or no background for this part, hide the background layer.
-		text_stack.select_layer(1);
+		text_stack.select_layer(2);
 	} else if(text_stack.current_layer() != -1)  {
 		// If the background layer was previously hidden, re-show it.
 		text_stack.select_layer(-1);
