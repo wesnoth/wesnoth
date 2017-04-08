@@ -62,7 +62,7 @@ static config get_title_area_decor_config()
 	cfg["y"] = 0;
 	cfg["w"] = "(screen_width)";
 	cfg["h"] = "(image_original_height * 2)";
-	cfg["name"] = "dialogs/story_title_decor.png";
+	cfg["name"] = "dialogs/story_title_decor.png~O(75%)";
 
 	return cfg;
 }
