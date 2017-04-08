@@ -53,12 +53,12 @@ void ai_testing::log_turn(const char* msg, unsigned int side)
 	int _villages = current_team.villages().size();
 	int _income = current_team.total_income();
 
-	DBG_AI_TESTING << msg <<                  side << ": " << _turn_number << std::endl;
-	DBG_AI_TESTING << msg << "_UNITS"      << side << ": " << _units << std::endl;
-	DBG_AI_TESTING << msg << "_UNITS_COST" << side << ": " << _units_cost << std::endl;
-	DBG_AI_TESTING << msg << "_GOLD"       << side << ": " << _gold << std::endl;
-	DBG_AI_TESTING << msg << "_VILLAGES"   << side << ": " << _villages << std::endl;
-	DBG_AI_TESTING << msg << "_INCOME"     << side << ": " << _income << std::endl;
+	DBG_AI_TESTING << msg <<                   side << ": " << _turn_number << std::endl;
+	DBG_AI_TESTING << msg << "_UNITS "      << side << ": " << _units << std::endl;
+	DBG_AI_TESTING << msg << "_UNITS_COST " << side << ": " << _units_cost << std::endl;
+	DBG_AI_TESTING << msg << "_GOLD "       << side << ": " << _gold << std::endl;
+	DBG_AI_TESTING << msg << "_VILLAGES "   << side << ": " << _villages << std::endl;
+	DBG_AI_TESTING << msg << "_INCOME "     << side << ": " << _income << std::endl;
 
 	config c;
 	c["side"] = int(side);
@@ -90,8 +90,8 @@ void ai_testing::log_game_start()
 {
 	for (std::vector<team>::const_iterator tm = resources::gameboard->teams().begin(); tm != resources::gameboard->teams().end(); ++tm) {
 		int side = tm-resources::gameboard->teams().begin()+1;
-		LOG_AI_TESTING << "AI_IDENTIFIER"<<side<<": " << ai::manager::get_active_ai_identifier_for_side(side) <<std::endl;
-		LOG_AI_TESTING << "TEAM"<<side<<": " << tm->side() << std::endl;
+		LOG_AI_TESTING << "AI_IDENTIFIER " <<side << ": " << ai::manager::get_active_ai_identifier_for_side(side) << std::endl;
+		LOG_AI_TESTING << "TEAM " << side << ": " << tm->side() << std::endl;
 		resources::recorder->add_log_data("ai_log","ai_id"+std::to_string(side),ai::manager::get_active_ai_identifier_for_side(side));
 		///@todo 1.9: add information about ai_config
 	}
