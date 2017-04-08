@@ -39,6 +39,8 @@
 #include "statistics.hpp"
 #include "video.hpp"
 #include "wesnothd_connection.hpp"
+#include "resources.hpp"
+#include "replay.hpp"
 
 #include "utils/functional.hpp"
 
@@ -681,10 +683,10 @@ void start_local_game_commandline(CVideo& video, const config& game_config, save
 		connect_engine->start_game_commandline(cmdline_opts);
 	}
 
-	std::string label = "";
-	if(cmdline_opts.multiplayer_label) label = *cmdline_opts.multiplayer_label;
-
-	//resources::recorder->add_log_data("ai_log","ai_label",label);
+	if(resources::recorder && cmdline_opts.multiplayer_label) {
+		std::string label = *cmdline_opts.multiplayer_label;
+		resources::recorder->add_log_data("ai_log","ai_label",label);
+	}
 
 	unsigned int repeat = (cmdline_opts.multiplayer_repeat) ? *cmdline_opts.multiplayer_repeat : 1;
 	for(unsigned int i = 0; i < repeat; i++){
