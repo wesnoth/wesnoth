@@ -251,7 +251,7 @@ void story_viewer::display_part(window& window)
 	canvas& panel_canvas = find_widget<panel>(text_stack.get_layer_grid(1), "text_panel", false).get_canvas(0);
 
 	panel_canvas.set_variable("panel_position", wfl::variant(new_panel_mode));
-	panel_canvas.set_variable("title_present", wfl::variant(showing_title ? "yes" : "no")); // TODO: bool variant
+	panel_canvas.set_variable("title_present", wfl::variant(static_cast<int>(showing_title))); // cast to 0/1
 
 	const std::string& part_text = current_part_->text();
 
