@@ -256,6 +256,12 @@ public:
 		window& window_;
 	};
 
+	/** Is invalidate_layout blocked, see invalidate_layout_blocker. */
+	bool invalidate_layout_blocked() const
+	{
+		return invalidate_layout_blocked_;
+	}
+
 	/**
 	 * Updates the size of the window.
 	 *
@@ -521,7 +527,7 @@ private:
 	/** The variables of the canvas. */
 	wfl::map_formula_callable variables_;
 
-	/** Is invalidate layout blocked see invalidate_layout_blocker. */
+	/** Is invalidate_layout blocked, see invalidate_layout_blocker. */
 	bool invalidate_layout_blocked_;
 
 	/** Avoid drawing the window.  */

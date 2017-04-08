@@ -385,6 +385,11 @@ void grid::demand_reduce_height(const unsigned /*maximum_height*/)
 
 void grid::request_placement(dispatcher&, const event::ui_event, bool& handled, bool&)
 {
+	if (get_window()->invalidate_layout_blocked()) {
+		handled = true;
+		return;
+	}
+
 	point size = get_size();
 	point best_size = calculate_best_size();
 	if(size.x >= best_size.x && size.y >= best_size.y) {
