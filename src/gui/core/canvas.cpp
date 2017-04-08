@@ -792,20 +792,6 @@ void rectangle_shape::draw(surface& canvas,
 
 	surface_lock locker(canvas);
 
-	// Draw the border
-	for(int i = 0; i < border_thickness_; ++i) {
-		SDL_Rect dimensions {
-			x + i,
-			y + i,
-			w - (i * 2),
-			h - (i * 2)
-		};
-
-		set_renderer_color(renderer, border_color_);
-
-		SDL_RenderDrawRect(renderer, &dimensions);
-	}
-
 	// Fill the background, if applicable
 	if(!fill_color_.null() && w && h) {
 		set_renderer_color(renderer, fill_color_);
@@ -818,6 +804,20 @@ void rectangle_shape::draw(surface& canvas,
 		};
 
 		SDL_RenderFillRect(renderer, &area);
+	}
+
+	// Draw the border
+	for(int i = 0; i < border_thickness_; ++i) {
+		SDL_Rect dimensions {
+			x + i,
+			y + i,
+			w - (i * 2),
+			h - (i * 2)
+		};
+
+		set_renderer_color(renderer, border_color_);
+
+		SDL_RenderDrawRect(renderer, &dimensions);
 	}
 }
 
