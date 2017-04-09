@@ -27,7 +27,6 @@
 
 #include "font/text.hpp"
 #include "gettext.hpp"
-#include "intro.hpp"
 #include "language.hpp"
 #include "log.hpp"
 #include "sound.hpp"

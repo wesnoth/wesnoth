@@ -84,6 +84,7 @@
 #include "gui/dialogs/multiplayer/mp_join_game.hpp"
 #include "gui/dialogs/multiplayer/mp_join_game_password_prompt.hpp"
 #include "gui/dialogs/multiplayer/mp_staging.hpp"
+#include "gui/dialogs/outro.hpp"
 #include "gui/dialogs/depcheck_confirm_change.hpp"
 #include "gui/dialogs/depcheck_select_new.hpp"
 #include "gui/dialogs/multiplayer/mp_login.hpp"
@@ -449,6 +450,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<mp_method_selection>();
 	test<mp_server_list>();
 	//test<mp_staging>();
+	//test<outro>();
 	test<simple_item_selector>();
 	test<screenshot_notification>();
 	test<select_orb_colors>();
@@ -515,6 +517,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 		"attack_predictions",
 		"help_browser",
 		"story_viewer",
+		"outro",
 	};
 	std::sort(list.begin(), list.end());
 	std::sort(omitted.begin(), omitted.end());

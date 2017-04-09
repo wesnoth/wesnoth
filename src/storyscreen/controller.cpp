@@ -30,7 +30,6 @@
 #include "game_events/pump.hpp"
 #include "game_data.hpp"
 #include "gettext.hpp"
-#include "intro.hpp"
 #include "log.hpp"
 #include "resources.hpp"
 #include "widgets/button.hpp"

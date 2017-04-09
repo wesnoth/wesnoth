@@ -34,12 +34,12 @@
 #include "gui/dialogs/message.hpp" //for show error message
 #include "gui/dialogs/multiplayer/mp_host_game_prompt.hpp" //for host game prompt
 #include "gui/dialogs/multiplayer/mp_method_selection.hpp"
+#include "gui/dialogs/outro.hpp"
 #include "gui/dialogs/preferences_dialog.hpp"
 #include "gui/dialogs/transient_message.hpp"  // for show_transient_message
 #include "gui/dialogs/title_screen.hpp"  // for show_debug_clock_button
 #include "gui/widgets/settings.hpp"     // for new_widgets
 #include "gui/widgets/window.hpp"       // for window, etc
-#include "intro.hpp"
 #include "language.hpp"                 // for language_def, etc
 #include "log.hpp"                      // for LOG_STREAM, logger, general, etc
 #include "map/exception.hpp"
@@ -951,7 +951,9 @@ void game_launcher::launch_game(RELOAD_GAME_DATA reload)
 		// change this if MP campaigns are implemented
 		if(result == LEVEL_RESULT::VICTORY && !state_.classification().is_normal_mp_game()) {
 			preferences::add_completed_campaign(state_.classification().campaign, state_.classification().difficulty);
-			the_end(video(), state_.classification().end_text, state_.classification().end_text_duration);
+
+			gui2::dialogs::outro::display(state_.classification().end_text, state_.classification().end_text_duration, video());
+
 			if(state_.classification().end_credits) {
 				gui2::dialogs::end_credits::display(video(), state_.classification().campaign);
 			}
