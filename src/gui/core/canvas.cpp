@@ -282,11 +282,10 @@ private:
 	typed_formula<unsigned> x1_, /**< The start x coordinate of the line. */
 			y1_,			/**< The start y coordinate of the line. */
 			x2_,			/**< The end x coordinate of the line. */
-			y2_,			/**< The end y coordinate of the line. */
-			alpha_;			/**< Alpha value override computed as a formula. */
+			y2_;			/**< The end y coordinate of the line. */
 
 	/** The color of the line. */
-	color_t color_;
+	typed_formula<color_t> color_;
 
 	/**
 	 * The thickness of the line.
@@ -620,8 +619,7 @@ line_shape::line_shape(const config& cfg)
 	, y1_(cfg["y1"])
 	, x2_(cfg["x2"])
 	, y2_(cfg["y2"])
-	, alpha_(cfg["alpha"])
-	, color_(decode_color(cfg["color"]))
+	, color_(cfg["color"])
 	, thickness_(cfg["thickness"])
 {
 	const std::string& debug = (cfg["debug"]);
@@ -644,12 +642,6 @@ void line_shape::draw(surface& canvas,
 	const unsigned y1 = y1_(variables);
 	const unsigned x2 = x2_(variables);
 	const unsigned y2 = y2_(variables);
-	const unsigned alpha = alpha_(variables);
-
-	// Override alpha from color with formula.
-	if(alpha_.has_formula()) {
-		color_.a = alpha;
-	}
 
 	DBG_GUI_D << "Line: draw from " << x1 << ',' << y1 << " to " << x2 << ','
 			  << y2 << " canvas size " << canvas->w << ',' << canvas->h
@@ -666,7 +658,7 @@ void line_shape::draw(surface& canvas,
 	// lock the surface
 	surface_lock locker(canvas);
 
-	draw_line(canvas, renderer, color_, x1, y1, x2, y2);
+	draw_line(canvas, renderer, color_(variables), x1, y1, x2, y2);
 }
 
 /***** ***** ***** ***** ***** Rectangle ***** ***** ***** ***** *****/
