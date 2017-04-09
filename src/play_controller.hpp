@@ -99,6 +99,7 @@ public:
 	void save_replay();
 	void save_replay_auto(const std::string& filename);
 	void save_map();
+	replay& get_replay();
 
 	void init_side_begin();
 

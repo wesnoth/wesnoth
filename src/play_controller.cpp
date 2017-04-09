@@ -799,6 +799,11 @@ void play_controller::process_keyup_event(const SDL_Event& event)
 	}
 }
 
+replay& play_controller::get_replay() {
+	assert(replay_);
+	return *replay_.get();
+}
+
 void play_controller::save_game()
 {
 	if(save_blocker::try_block()) {

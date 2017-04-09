@@ -3120,6 +3120,26 @@ int game_lua_kernel::intf_remove_tile_overlay(lua_State *L)
 	return 0;
 }
 
+int game_lua_kernel::intf_log_replay(lua_State* L) {
+	replay& recorder = play_controller_.get_replay();
+	const int nargs = lua_gettop(L);
+	if(nargs < 2 || nargs > 3) {
+		return luaL_error(L, "Wrong number of arguments to ai.log_replay() - should be 2 or 3 arguments.");
+	}
+	const std::string key = nargs == 2 ? luaL_checkstring(L, 1) : luaL_checkstring(L, 2);
+	config cfg;
+	if(nargs == 2) {
+		recorder.add_log_data(key, luaL_checkstring(L, 2));
+	} else if(luaW_toconfig(L, 3, cfg)) {
+		recorder.add_log_data(luaL_checkstring(L, 1), key, cfg);
+	} else if(!lua_isstring(L, 3)) {
+		return luaL_argerror(L, 3, "accepts only string or config");
+	} else {
+		recorder.add_log_data(luaL_checkstring(L, 1), key, luaL_checkstring(L, 3));
+	}
+	return 0;
+}
+
 /// Adding new events
 int game_lua_kernel::intf_add_event(lua_State *L)
 {
@@ -4110,6 +4130,7 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "kill",                      &dispatch<&game_lua_kernel::intf_kill                       >        },
 		{ "label",                     &dispatch<&game_lua_kernel::intf_label                      >        },
 		{ "lock_view",                 &dispatch<&game_lua_kernel::intf_lock_view                  >        },
+		{ "log_replay",                &dispatch<&game_lua_kernel::intf_log_replay                 >        },
 		{ "log",                       &dispatch<&game_lua_kernel::intf_log                        >        },
 		{ "match_location",            &dispatch<&game_lua_kernel::intf_match_location             >        },
 		{ "match_side",                &dispatch<&game_lua_kernel::intf_match_side                 >        },
