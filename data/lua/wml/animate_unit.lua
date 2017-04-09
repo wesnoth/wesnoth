@@ -78,6 +78,7 @@ local function add_animation(anim, cfg)
 			local facing_loc = wesnoth.get_locations(facing)[1]
 			if facing_loc then
 				local dir = wesnoth.map_location.get_relative_dir(unit.x, unit.y, facing_loc[1], facing_loc[2])
+				unit.facing = dir
 				facing = wesnoth.map_location.get_direction(unit.x, unit.y, dir)
 			else
 				facing = nil
@@ -92,7 +93,7 @@ local function add_animation(anim, cfg)
 		end
 
 		anim:add(unit, cfg.flag, hits, {
-			facing = facing,
+			target = facing,
 			value = {tonumber(cfg.value) or 0, tonumber(cfg.value_second) or 0},
 			with_bars = not not cfg.with_bars,
 			text = text,

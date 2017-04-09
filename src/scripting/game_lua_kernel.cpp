@@ -359,8 +359,12 @@ static int impl_add_animation(lua_State* L)
 	const_attack_ptr primary, secondary;
 
 	if(lua_istable(L, 5)) {
-		lua_getfield(L, 5, "facing");
-		if(!luaW_tolocation(L, -1, dest)) {
+		lua_getfield(L, 5, "target");
+		if(luaW_tolocation(L, -1, dest)) {
+			if(!tiles_adjacent(dest, u.get_location())) {
+				return luaL_argerror(L, -1, "target must be adjacent to the animated unit");
+			}
+		} else {
 			// luaW_tolocation may set the location to (0,0) if it fails
 			dest = map_location();
 			if(!lua_isnoneornil(L, -1)) {
