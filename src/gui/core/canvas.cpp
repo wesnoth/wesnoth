@@ -699,14 +699,14 @@ private:
 	 *
 	 * If the color is fully transparent the border isn't drawn.
 	 */
-	color_t border_color_;
+	typed_formula<color_t> border_color_;
 
 	/**
 	 * The border color of the rectangle.
 	 *
 	 * If the color is fully transparent the rectangle won't be filled.
 	 */
-	color_t fill_color_;
+	typed_formula<color_t> fill_color_;
 };
 
 /*WIKI
@@ -749,10 +749,11 @@ rectangle_shape::rectangle_shape(const config& cfg)
 	, w_(cfg["w"])
 	, h_(cfg["h"])
 	, border_thickness_(cfg["border_thickness"])
-	, border_color_(decode_color(cfg["border_color"]))
-	, fill_color_(decode_color(cfg["fill_color"]))
+	, border_color_(cfg["border_color"], color_t::null_color())
+	, fill_color_(cfg["fill_color"], color_t::null_color())
 {
-	if(border_color_.null()) {
+	// Check if a raw color string evaluates to a null color.
+	if(!border_color_.has_formula() && border_color_().null()) {
 		border_thickness_ = 0;
 	}
 
@@ -787,9 +788,11 @@ void rectangle_shape::draw(surface& canvas,
 
 	surface_lock locker(canvas);
 
+	const color_t fill_color = fill_color_(variables);
+
 	// Fill the background, if applicable
-	if(!fill_color_.null() && w && h) {
-		set_renderer_color(renderer, fill_color_);
+	if(!fill_color.null() && w && h) {
+		set_renderer_color(renderer, fill_color);
 
 		SDL_Rect area {
 			x +  border_thickness_,
@@ -810,7 +813,7 @@ void rectangle_shape::draw(surface& canvas,
 			h - (i * 2)
 		};
 
-		set_renderer_color(renderer, border_color_);
+		set_renderer_color(renderer, border_color_(variables));
 
 		SDL_RenderDrawRect(renderer, &dimensions);
 	}
@@ -854,14 +857,14 @@ private:
 	 *
 	 * If the color is fully transparent the border isn't drawn.
 	 */
-	color_t border_color_;
+	typed_formula<color_t> border_color_;
 
 	/**
 	 * The border color of the rounded rectangle.
 	 *
 	 * If the color is fully transparent the rounded rectangle won't be filled.
 	 */
-	color_t fill_color_;
+	typed_formula<color_t> fill_color_;
 };
 
 /*WIKI
@@ -906,9 +909,11 @@ round_rectangle_shape::round_rectangle_shape(const config& cfg)
 	, h_(cfg["h"])
 	, r_(cfg["corner_radius"])
 	, border_thickness_(cfg["border_thickness"])
-	, border_color_(decode_color(cfg["border_color"]))
-	, fill_color_(decode_color(cfg["fill_color"])) {
-	if(border_color_.null()) {
+	, border_color_(cfg["border_color"], color_t::null_color())
+	, fill_color_(cfg["fill_color"], color_t::null_color())
+{
+	// Check if a raw color string evaluates to a null color.
+	if(!border_color_.has_formula() && border_color_().null()) {
 		border_thickness_ = 0;
 	}
 
@@ -920,7 +925,8 @@ round_rectangle_shape::round_rectangle_shape(const config& cfg)
 
 void round_rectangle_shape::draw(surface& canvas,
 	SDL_Renderer* renderer,
-	wfl::map_formula_callable& variables) {
+	wfl::map_formula_callable& variables)
+{
 	/**
 	 * @todo formulas are now recalculated every draw cycle which is a  bit
 	 * silly unless there has been a resize. So to optimize we should use an
@@ -943,9 +949,11 @@ void round_rectangle_shape::draw(surface& canvas,
 
 	surface_lock locker(canvas);
 
+	const color_t fill_color = fill_color_(variables);
+
 	// Fill the background, if applicable
-	if(!fill_color_.null() && w && h) {
-		set_renderer_color(renderer, fill_color_);
+	if(!fill_color.null() && w && h) {
+		set_renderer_color(renderer, fill_color);
 		static const int count = 3;
 		SDL_Rect area[count] = {
 			{x + r,                 y + border_thickness_, w - r                 * 2, r - border_thickness_ + 1},
@@ -955,15 +963,17 @@ void round_rectangle_shape::draw(surface& canvas,
 
 		SDL_RenderFillRects(renderer, area, count);
 
-		fill_circle<0xc0>(canvas, renderer, fill_color_, x + r,     y + r,     r);
-		fill_circle<0x03>(canvas, renderer, fill_color_, x + w - r, y + r,     r);
-		fill_circle<0x30>(canvas, renderer, fill_color_, x + r,     y + h - r, r);
-		fill_circle<0x0c>(canvas, renderer, fill_color_, x + w - r, y + h - r, r);
+		fill_circle<0xc0>(canvas, renderer, fill_color, x + r,     y + r,     r);
+		fill_circle<0x03>(canvas, renderer, fill_color, x + w - r, y + r,     r);
+		fill_circle<0x30>(canvas, renderer, fill_color, x + r,     y + h - r, r);
+		fill_circle<0x0c>(canvas, renderer, fill_color, x + w - r, y + h - r, r);
 	}
+
+	const color_t border_color = border_color_(variables);
 
 	// Draw the border
 	for(int i = 0; i < border_thickness_; ++i) {
-		set_renderer_color(renderer, border_color_);
+		set_renderer_color(renderer, border_color);
 
 		SDL_RenderDrawLine(renderer, x + r, y + i,     x + w - r, y + i);
 		SDL_RenderDrawLine(renderer, x + r, y + h - i, x + w - r, y + h - i);
@@ -971,10 +981,10 @@ void round_rectangle_shape::draw(surface& canvas,
 		SDL_RenderDrawLine(renderer, x + i,     y + r, x + i,     y + h - r);
 		SDL_RenderDrawLine(renderer, x + w - i, y + r, x + w - i, y + h - r);
 
-		draw_circle<0xc0>(canvas, renderer, border_color_, x + r,     y + r,     r - i);
-		draw_circle<0x03>(canvas, renderer, border_color_, x + w - r, y + r,     r - i);
-		draw_circle<0x30>(canvas, renderer, border_color_, x + r,     y + h - r, r - i);
-		draw_circle<0x0c>(canvas, renderer, border_color_, x + w - r, y + h - r, r - i);
+		draw_circle<0xc0>(canvas, renderer, border_color, x + r,     y + r,     r - i);
+		draw_circle<0x03>(canvas, renderer, border_color, x + w - r, y + r,     r - i);
+		draw_circle<0x30>(canvas, renderer, border_color, x + r,     y + h - r, r - i);
+		draw_circle<0x0c>(canvas, renderer, border_color, x + w - r, y + h - r, r - i);
 	}
 }
 
@@ -1004,7 +1014,7 @@ private:
 			radius_;	   /**< The radius of the circle. */
 
 	/** The border color of the circle. */
-	color_t border_color_, fill_color_; /**< The fill color of the circle. */
+	typed_formula<color_t> border_color_, fill_color_; /**< The fill color of the circle. */
 
 	/** The border thickness of the circle. */
 	unsigned int border_thickness_;
@@ -1045,8 +1055,8 @@ circle_shape::circle_shape(const config& cfg)
 	, x_(cfg["x"])
 	, y_(cfg["y"])
 	, radius_(cfg["radius"])
-	, border_color_(decode_color(cfg["border_color"]))
-	, fill_color_(decode_color(cfg["fill_color"]))
+	, border_color_(cfg["border_color"])
+	, fill_color_(cfg["fill_color"])
 	, border_thickness_(cfg["border_thickness"].to_int(1))
 {
 	const std::string& debug = (cfg["debug"]);
@@ -1097,12 +1107,14 @@ void circle_shape::draw(surface& canvas,
 	// lock the surface
 	surface_lock locker(canvas);
 
-	if(!fill_color_.null() && radius) {
-		fill_circle(canvas, renderer, fill_color_, x, y, radius);
+	const color_t fill_color = fill_color_(variables);
+	if(!fill_color.null() && radius) {
+		fill_circle(canvas, renderer, fill_color, x, y, radius);
 	}
 
+	const color_t border_color = border_color_(variables);
 	for(unsigned int i = 0; i < border_thickness_; i++) {
-		draw_circle(canvas, renderer, border_color_, x, y, radius - i);
+		draw_circle(canvas, renderer, border_color, x, y, radius - i);
 	}
 }
 
