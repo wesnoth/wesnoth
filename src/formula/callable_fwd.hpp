@@ -26,6 +26,7 @@ class formula_debugger;
 
 struct callable_die_subscriber {
 	virtual void notify_dead() {}
+	virtual ~callable_die_subscriber() {}
 };
 
 enum FORMULA_ACCESS_TYPE { FORMULA_READ_ONLY, FORMULA_WRITE_ONLY, FORMULA_READ_WRITE };
