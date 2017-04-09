@@ -207,7 +207,7 @@ public:
 	void add_to_playlist(const sound::music_track& track) {
 
 		if (music_tracks_.find(track.id()) == music_tracks_.end())
-				music_tracks_.insert(std::pair<std::string, sound::music_track>(track.id(), track));
+				music_tracks_.emplace(track.id(), track);
 		else music_tracks_.erase(track.id());
 	}
 

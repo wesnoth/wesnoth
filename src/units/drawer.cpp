@@ -443,7 +443,7 @@ const SDL_Rect& unit_drawer::calculate_energy_bar(surface surf) const
 			, first_row
 			, last_col-first_col
 			, last_row+1-first_row);
-	energy_bar_rects_.insert(std::pair<surface,SDL_Rect>(surf,res));
+	energy_bar_rects_.emplace(surf, res);
 	return calculate_energy_bar(surf);
 }
 

@@ -79,7 +79,7 @@ menu::basic_sorter& menu::basic_sorter::set_id_sort(int column)
 menu::basic_sorter& menu::basic_sorter::set_redirect_sort(int column, int to)
 {
 	if(column != to) {
-		redirect_sort_.insert(std::pair<int,int>(column,to));
+		redirect_sort_.emplace(column, to);
 	}
 
 	return *this;
@@ -1155,7 +1155,7 @@ SDL_Rect menu::get_item_rect_internal(size_t item) const
 	//only insert into the cache if the menu's co-ordinates have
 	//been initialized
 	if (loc.x > 0 && loc.y > 0)
-		itemRects_.insert(std::pair<int,SDL_Rect>(item,res));
+		itemRects_.emplace(item, res);
 
 	return res;
 }

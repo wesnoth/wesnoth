@@ -436,7 +436,7 @@ SDL_Rect line_size(const std::string& line, int font_size, int style)
 	res.h = s.height();
 	res.x = res.y = 0;
 
-	cache.insert(std::pair<std::string,SDL_Rect>(line,res));
+	cache.emplace(line,res);
 	return res;
 }
 

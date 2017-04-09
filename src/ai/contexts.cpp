@@ -400,9 +400,7 @@ void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_
 		 *       and calculate_possible_moves() become redundant, and one of
 		 *       them should probably be eliminated.
 		 */
-		res.insert(std::pair<map_location,pathfind::paths>(
-			un_it->get_location(), pathfind::paths(
-				*un_it, false, true, current_team(), 0, see_all)));
+		res.emplace(un_it->get_location(), pathfind::paths(*un_it, false, true, current_team(), 0, see_all));
 	}
 
 	// deactivate terrain filtering if it's just the dummy 'matches nothing'
@@ -442,8 +440,8 @@ void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_
 			}
 
 			if(src != dst && (resources::gameboard->find_visible_unit(dst, current_team()) == resources::gameboard->units().end()) ) {
-				srcdst.insert(std::pair<map_location,map_location>(src,dst));
-				dstsrc.insert(std::pair<map_location,map_location>(dst,src));
+				srcdst.emplace(src, dst);
+				dstsrc.emplace(dst, src);
 			}
 		}
 	}
@@ -515,7 +513,7 @@ const defensive_position& readonly_context_impl::best_defensive_position(const m
 		}
 	}
 
-	defensive_position_cache_.insert(std::pair<map_location,defensive_position>(loc,pos));
+	defensive_position_cache_.emplace(loc, pos);
 	return defensive_position_cache_[loc];
 }
 

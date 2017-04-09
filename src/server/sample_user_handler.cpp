@@ -40,7 +40,7 @@ suh::suh(config c)
 void suh::add_user(const std::string& name, const std::string& mail, const std::string& password) {
 	if(user_exists(name)) throw error("This nickname is already registered");
 
-	users_.insert(std::pair<std::string, user>(name, user()));
+	users_.emplace(name, user());
 
 	set_password(name, password);
 	set_mail(name, mail);

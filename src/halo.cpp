@@ -335,7 +335,7 @@ int halo_impl::add(int x, int y, const std::string& image, const map_location& l
 		image_vector.push_back(animated<image::locator>::frame_description(time,image::locator(str)));
 
 	}
-	haloes.insert(std::pair<int,effect>(id,effect(disp,x,y,image_vector,loc,orientation,infinite)));
+	haloes.emplace(id, effect(disp, x, y, image_vector, loc, orientation, infinite));
 	new_haloes.insert(id);
 	if(haloes.find(id)->second.does_change() || !infinite) {
 		changing_haloes.insert(id);

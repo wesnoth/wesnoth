@@ -1024,7 +1024,7 @@ void unit_type_data::set_config(config &cfg)
 	for (const config &r : cfg.child_range("race"))
 	{
 		const unit_race race(r);
-		races_.insert(std::pair<std::string,unit_race>(race.id(),race));
+		races_.emplace(race.id(), race);
 		gui2::dialogs::loading_screen::progress();
 	}
 

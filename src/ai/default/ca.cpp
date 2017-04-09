@@ -312,7 +312,7 @@ double move_leader_to_goals_phase::evaluate()
 	const pathfind::paths leader_paths(*leader, false, true, current_team());
 
 	std::map<map_location,pathfind::paths> possible_moves;
-	possible_moves.insert(std::pair<map_location,pathfind::paths>(leader->get_location(), leader_paths));
+	possible_moves.emplace(leader->get_location(), leader_paths);
 
 	map_location loc;
 	for (const map_location &l : route.steps)
@@ -720,7 +720,7 @@ void get_villages_phase::find_villages(
 			threat = vuln->second;
 		} else {
 			threat = power_projection(current_loc,enemy_dstsrc);
-			vulnerability.insert(std::pair<map_location,double>(current_loc,threat));
+			vulnerability.emplace(current_loc, threat);
 		}
 
 		const unit_map::const_iterator u = resources::gameboard->units().find(j->second);

@@ -1069,7 +1069,7 @@ surface reverse_image(const surface& surf)
 		return surface(nullptr);
 	}
 
-	reversed_images_.insert(std::pair<surface,surface>(surf,rev));
+	reversed_images_.emplace(surf, rev);
 	// sdl_add_ref(rev);
 	return rev;
 }

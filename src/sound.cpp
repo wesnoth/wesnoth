@@ -267,7 +267,7 @@ static std::string pick_one(const std::string &files)
 		prev_choices[files] = choice;
 	} else {
 		choice = rand()%ids.size();
-		prev_choices.insert(std::pair<std::string,unsigned int>(files,choice));
+		prev_choices.emplace(files,choice);
 	}
 
 	return ids[choice];

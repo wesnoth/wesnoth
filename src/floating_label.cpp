@@ -201,7 +201,7 @@ int add_floating_label(const floating_label& flabel)
 	}
 
 	++label_id;
-	labels.insert(std::pair<int, floating_label>(label_id, flabel));
+	labels.emplace(label_id, flabel);
 	label_contexts.top().insert(label_id);
 	return label_id;
 }

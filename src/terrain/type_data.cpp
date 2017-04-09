@@ -165,8 +165,7 @@ bool terrain_type_data::try_merge_terrains(const t_translation::terrain_code & t
 
 		terrain_type new_terrain(base_iter->second, overlay_iter->second);
 		terrainList_.push_back(new_terrain.number());
-		tcodeToTerrain_.insert(std::pair<t_translation::terrain_code, terrain_type>(
-								   new_terrain.number(), new_terrain));
+		tcodeToTerrain_.emplace(new_terrain.number(), new_terrain);
 		return true;
 	}
 	return true; // Terrain already exists, nothing to do

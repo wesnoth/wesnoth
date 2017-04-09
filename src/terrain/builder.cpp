@@ -823,7 +823,7 @@ void terrain_builder::parse_mapstring(const std::string &mapstring,
 				// Dots are simple placeholders,
 				// which do not represent actual terrains.
 			} else if (terrain.overlay != 0 ) {
-				anchors.insert(std::pair<int, map_location>(terrain.overlay, map_location(x, y)));
+				anchors.emplace(terrain.overlay, map_location(x, y));
 			} else if (terrain.base == t_translation::TB_STAR) {
 				add_constraints(br.constraints, map_location(x, y), t_translation::STAR, global_images);
 			} else {

@@ -715,7 +715,7 @@ void theme::add_object(const config& cfg)
 	if (const config &status_cfg = cfg.child("status"))
 	{
 		for(const config::any_child &i : status_cfg.all_children_range()) {
-			status_.insert(std::pair<std::string, status_item>(i.key, status_item(i.cfg)));
+			status_.emplace(i.key, status_item(i.cfg));
 		}
 		if (const config &unit_image_cfg = status_cfg.child("unit_image")) {
 			unit_image_ = object(unit_image_cfg);

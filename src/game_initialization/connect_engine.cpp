@@ -366,7 +366,7 @@ std::multimap<std::string, config> side_engine::get_side_children()
 
 	for(const std::string& children_to_swap : get_children_to_swap()) {
 		for(const config& child : cfg_.child_range(children_to_swap)) {
-			children.insert(std::pair<std::string, config>(children_to_swap, child));
+			children.emplace(children_to_swap, child);
 		}
 	}
 
