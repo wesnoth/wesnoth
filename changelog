@@ -5,11 +5,23 @@ Version 1.13.7+dev:
    * Greatly speeded up switching between add-ons in the add-on manager (bug #25523)
  * Editor:
    * Fixed a crash when placing units.
+ * Formula Engine:
+   * Fixed garbage data showing up in stack traces in the event of an error.
+   * Object types can now be used in contexts where previously only a list or map
+     was accepted - for example in the filter() function. They will be treated as
+     a map in such cases.
+ * Lua Engine:
+   * Add wesnoth.log_replay which exposes a little-used functionality of injecting arbitrary
+     logging data into a saved game.
  * User Interface:
    * Updated Attack Predictions dialog to GUI2.
    * Fixed file path being truncated on the wrong side in the File Browser.
  * WML Engine:
    * Add base_income key to [store_side]
+   * Fix issues with alpha animations on hidden units (#14503)
+   * Extensions to GUI2 Canvas ([drawing] tag in dialogs):
+     * New [round_rectangle] shape - a rectangle plus corner_radius
+	 * [circle] shape can now be drawn filled; color key is now border_color
 
 Version 1.13.7:
  * AI:
