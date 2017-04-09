@@ -257,7 +257,7 @@ inline void typed_formula<color_t>::convert(const std::string& str)
 
 
 template<typename T>
-inline T typed_formula<T>::execute(wfl::variant& v) const
+inline T typed_formula<T>::execute(wfl::variant& /*v*/) const
 {
 	// Every type needs its own execute function avoid instantiation of the
 	// default execute.
