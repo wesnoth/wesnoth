@@ -2058,7 +2058,6 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 		}
 
 		temp_advances = utils::parenthetical_split(amlas, ',');
-		std::vector<size_t> remove_indices;
 
 		for(int i = advancements_.size() - 1; i >= 0; i--) {
 			if(std::find(temp_advances.begin(), temp_advances.end(), advancements_[i]["id"]) != temp_advances.end()) {
