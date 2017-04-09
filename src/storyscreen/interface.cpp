@@ -39,26 +39,21 @@ static lg::log_domain log_engine("engine");
 void show_story(CVideo& video, const std::string &scenario_name,
 	const config::const_child_itors &story)
 {
-	if(gui2::new_widgets) {
-		// Combine all the [story] tags into a single config
-		config cfg;
-		for(const auto& iter : story) {
-			cfg.append_children(iter);
-		}
+	// Combine all the [story] tags into a single config
+	config cfg;
+	for(const auto& iter : story) {
+		cfg.append_children(iter);
+	}
 
-		if(!cfg.has_child("part")) {
-			return;
-		}
-
-		storyscreen::controller controller(video, vconfig(cfg, true), scenario_name, 0);
-
-		gui2::dialogs::story_viewer::display(controller, video);
-
-		video2::trigger_full_redraw();
-
+	if(!cfg.has_child("part")) {
 		return;
 	}
 
+	storyscreen::controller controller(video, vconfig(cfg, true), scenario_name, 0);
+
+	gui2::dialogs::story_viewer::display(controller, video);
+
+#if 0
 	events::event_context story_context;
 
 	int segment_count = 0;
@@ -92,4 +87,5 @@ void show_story(CVideo& video, const std::string &scenario_name,
 	}
 	video2::trigger_full_redraw();
 	return;
+#endif
 }
