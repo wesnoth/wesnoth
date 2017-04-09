@@ -94,7 +94,7 @@ protected:
 		END_TURN_SYNCED,
 	};
 	END_TURN_STATE end_turn_;
-	bool skip_next_turn_;
+	bool skip_next_turn_, ai_fallback_;
 	std::unique_ptr<replay_controller> replay_;
 	void linger();
 	void sync_end_turn() override;

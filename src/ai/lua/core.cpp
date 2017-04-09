@@ -344,6 +344,11 @@ static int cfun_ai_check_recall(lua_State *L)
 	return ai_recall(L, false);
 }
 
+static int cfun_ai_fallback_human(lua_State*)
+{
+	throw fallback_ai_to_human_exception();
+}
+
 // Goals and targets
 
 
@@ -971,6 +976,7 @@ static int impl_ai_get(lua_State* L)
 			{ "stopunit_attacks", &cfun_ai_execute_stopunit_attacks },
 			{ "stopunit_moves", &cfun_ai_execute_stopunit_moves },
 			{ "synced_command", &cfun_ai_execute_synced_command },
+			{ "fallback_human", &cfun_ai_fallback_human},
 			{ nullptr, nullptr } };
 	for (const luaL_Reg* p = mutating_callbacks; p->name; ++p) {
 		if(m == p->name) {
