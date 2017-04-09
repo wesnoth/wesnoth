@@ -605,9 +605,7 @@ void music_thinker::process(events::pump_info &info) {
 	}
 
 	if (unload_music) {
-		for (auto track : music_cache) {
-			Mix_FreeMusic(track.second.get());
-		}
+		// The custom shared_ptr deleter (Mix_FreeMusic) will handle the freeing of each track.
 		music_cache.clear();
 
 		Mix_HookMusicFinished(nullptr);
