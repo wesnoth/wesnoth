@@ -20,7 +20,7 @@
 color_t color_t::from_rgba_string(const std::string& c)
 {
 	if(c.empty()) {
-		return {0,0,0,0};
+		return null_color();
 	}
 
 	std::vector<std::string> fields = utils::split(c);
@@ -41,7 +41,7 @@ color_t color_t::from_rgba_string(const std::string& c)
 color_t color_t::from_rgb_string(const std::string& c)
 {
 	if(c.empty()) {
-		return {0,0,0,0};
+		return null_color();
 	}
 
 	std::vector<std::string> fields = utils::split(c);

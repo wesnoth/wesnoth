@@ -188,7 +188,7 @@ struct color_t
 
 	bool null() const
 	{
-		return r == 0 && g == 0 && b == 0 && a == 0;
+		return *this == null_color();
 	}
 
 	bool operator==(const color_t& c) const
@@ -231,6 +231,12 @@ struct color_t
 			static_cast<uint8_t>(255 - b),
 			a
 		};
+	}
+
+	/** Definition of a 'null' color - fully transparent black. */
+	static color_t null_color()
+	{
+		return {0,0,0,0};
 	}
 };
 
