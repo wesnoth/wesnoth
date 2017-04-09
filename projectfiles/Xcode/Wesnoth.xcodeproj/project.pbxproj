@@ -565,7 +565,6 @@
 		91E356621CACC67C00774252 /* game_preferences.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A790EC62181008DD061 /* game_preferences.cpp */; };
 		91E356631CACC67C00774252 /* game_state.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC387E6A195AFB1F00FC0342 /* game_state.cpp */; };
 		91E356641CACC6E000774252 /* halo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A150EC62181008DD061 /* halo.cpp */; };
-		91E356651CACC6E000774252 /* intro.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A0D0EC62181008DD061 /* intro.cpp */; };
 		91E356671CACC6E000774252 /* lobby_preferences.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8B2121359A600CFBDAB /* lobby_preferences.cpp */; };
 		91E356681CACC6E000774252 /* menu_events.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999EE0EC62181008DD061 /* menu_events.cpp */; };
 		91E356691CACC6E000774252 /* mouse_events.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999EA0EC62181008DD061 /* mouse_events.cpp */; };
@@ -906,7 +905,6 @@
 		B5599B2F0EC62181008DD061 /* log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A020EC62181008DD061 /* log.cpp */; };
 		B5599B330EC62181008DD061 /* language.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A090EC62181008DD061 /* language.cpp */; };
 		B5599B340EC62181008DD061 /* key.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A0B0EC62181008DD061 /* key.cpp */; };
-		B5599B350EC62181008DD061 /* intro.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A0D0EC62181008DD061 /* intro.cpp */; };
 		B5599B360EC62181008DD061 /* image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A0F0EC62181008DD061 /* image.cpp */; };
 		B5599B390EC62181008DD061 /* halo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A150EC62181008DD061 /* halo.cpp */; };
 		B5599B640EC62181008DD061 /* generic_event.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A730EC62181008DD061 /* generic_event.cpp */; };
@@ -1219,6 +1217,7 @@
 		ECDEAF79194FEA9D00DB2F47 /* game_classification.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECDEAF78194FEA9D00DB2F47 /* game_classification.cpp */; };
 		ECDF18201A3FE0DE00D157A6 /* manager_impl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECDF181E1A3FE0DE00D157A6 /* manager_impl.cpp */; };
 		ECDF18211A3FE0DE00D157A6 /* manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECDF181F1A3FE0DE00D157A6 /* manager.cpp */; };
+		ECE0293D1E9A77E100DC0A62 /* outro.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECE0293B1E9A77E100DC0A62 /* outro.cpp */; };
 		ECE113A61DAECF3D00EBD7C4 /* paths.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECE113A41DAECF3D00EBD7C4 /* paths.cpp */; };
 		ECE17E121A0DD79F00B76473 /* type_data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECE17E111A0DD79F00B76473 /* type_data.cpp */; };
 		ECEEB7F01A1E8AB20006575B /* default_map_generator_job.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECEEB7EF1A1E8AB20006575B /* default_map_generator_job.cpp */; };
@@ -2062,8 +2061,6 @@
 		B5599A090EC62181008DD061 /* language.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = language.cpp; sourceTree = "<group>"; };
 		B5599A0A0EC62181008DD061 /* key.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = key.hpp; sourceTree = "<group>"; };
 		B5599A0B0EC62181008DD061 /* key.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = key.cpp; sourceTree = "<group>"; };
-		B5599A0C0EC62181008DD061 /* intro.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = intro.hpp; sourceTree = "<group>"; };
-		B5599A0D0EC62181008DD061 /* intro.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = intro.cpp; sourceTree = "<group>"; };
 		B5599A0E0EC62181008DD061 /* image.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = image.hpp; sourceTree = "<group>"; };
 		B5599A0F0EC62181008DD061 /* image.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = image.cpp; sourceTree = "<group>"; };
 		B5599A140EC62181008DD061 /* halo.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = halo.hpp; sourceTree = "<group>"; };
@@ -2625,6 +2622,8 @@
 		ECDEAF78194FEA9D00DB2F47 /* game_classification.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game_classification.cpp; sourceTree = "<group>"; };
 		ECDF181E1A3FE0DE00D157A6 /* manager_impl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = manager_impl.cpp; sourceTree = "<group>"; };
 		ECDF181F1A3FE0DE00D157A6 /* manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = manager.cpp; sourceTree = "<group>"; };
+		ECE0293B1E9A77E100DC0A62 /* outro.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = outro.cpp; sourceTree = "<group>"; };
+		ECE0293C1E9A77E100DC0A62 /* outro.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = outro.hpp; sourceTree = "<group>"; };
 		ECE113A41DAECF3D00EBD7C4 /* paths.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = paths.cpp; sourceTree = "<group>"; };
 		ECE113A51DAECF3D00EBD7C4 /* paths.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = paths.hpp; sourceTree = "<group>"; };
 		ECE17E111A0DD79F00B76473 /* type_data.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = type_data.cpp; sourceTree = "<group>"; };
@@ -2996,8 +2995,6 @@
 				B5599A0E0EC62181008DD061 /* image.hpp */,
 				F4E4E0B21367244F001C7528 /* image_modifications.cpp */,
 				F4E4E0B31367244F001C7528 /* image_modifications.hpp */,
-				B5599A0D0EC62181008DD061 /* intro.cpp */,
-				B5599A0C0EC62181008DD061 /* intro.hpp */,
 				F444907513C5483E003B6442 /* joystick.cpp */,
 				F444907613C5483E003B6442 /* joystick.hpp */,
 				B5599A0B0EC62181008DD061 /* key.cpp */,
@@ -4384,6 +4381,8 @@
 				91F16D521C9F76C20041C047 /* multiplayer */,
 				F4EF0D7313AD52EA003C701D /* network_transmission.cpp */,
 				F4EF0D7213AD52EA003C701D /* network_transmission.hpp */,
+				ECE0293B1E9A77E100DC0A62 /* outro.cpp */,
+				ECE0293C1E9A77E100DC0A62 /* outro.hpp */,
 				91F462821C71139B0050A9C9 /* preferences_dialog.cpp */,
 				91F462831C71139B0050A9C9 /* preferences_dialog.hpp */,
 				EC19E6EE18B7F24B003B4B81 /* screenshot_notification.cpp */,
@@ -4859,6 +4858,7 @@
 				B514C70B0F5450CC00E273F0 /* manager.cpp in Sources */,
 				ECA556301E7B5E74006E907D /* linked_group_definition.cpp in Sources */,
 				EC2F601E1A0490970018C9D6 /* advanced_graphics_options.cpp in Sources */,
+				ECE0293D1E9A77E100DC0A62 /* outro.cpp in Sources */,
 				B54AC6D80FEA9EB5006F6FBD /* ai.cpp in Sources */,
 				B54AC6E40FEA9EB5006F6FBD /* ai.cpp in Sources */,
 				B5599B830EC62181008DD061 /* animated_game.cpp in Sources */,
@@ -5036,7 +5036,6 @@
 				F419A2C314F5BCFE002F9ADC /* info.cpp in Sources */,
 				62579C7E1573E70C003089D5 /* instance.cpp in Sources */,
 				B597EC150FC0835900CE81F5 /* interface.cpp in Sources */,
-				B5599B350EC62181008DD061 /* intro.cpp in Sources */,
 				62114CC91750B9AF00CA42C7 /* item_palette.cpp in Sources */,
 				49DA0D2E13550E9B000AFEBD /* iterator.cpp in Sources */,
 				F444914013C5483F003B6442 /* joystick.cpp in Sources */,
@@ -5468,7 +5467,6 @@
 				91E356621CACC67C00774252 /* game_preferences.cpp in Sources */,
 				91E356631CACC67C00774252 /* game_state.cpp in Sources */,
 				91E356641CACC6E000774252 /* halo.cpp in Sources */,
-				91E356651CACC6E000774252 /* intro.cpp in Sources */,
 				91E356671CACC6E000774252 /* lobby_preferences.cpp in Sources */,
 				91E356681CACC6E000774252 /* menu_events.cpp in Sources */,
 				91E356691CACC6E000774252 /* mouse_events.cpp in Sources */,
