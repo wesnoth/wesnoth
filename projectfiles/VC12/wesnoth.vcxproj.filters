@@ -1433,7 +1433,6 @@
     <ClCompile Include="..\..\src\hash.cpp" />
     <ClCompile Include="..\..\src\image.cpp" />
     <ClCompile Include="..\..\src\image_modifications.cpp" />
-    <ClCompile Include="..\..\src\intro.cpp" />
     <ClCompile Include="..\..\src\joystick.cpp" />
     <ClCompile Include="..\..\src\key.cpp" />
     <ClCompile Include="..\..\src\language.cpp" />
@@ -1526,6 +1525,9 @@
     </ClCompile>
     <ClCompile Include="..\..\src\formula\variant_value.cpp">
       <Filter>Formula</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\outro.cpp">
+      <Filter>Gui\Dialogs</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2836,7 +2838,6 @@
     <ClInclude Include="..\..\src\hash.hpp" />
     <ClInclude Include="..\..\src\image.hpp" />
     <ClInclude Include="..\..\src\image_modifications.hpp" />
-    <ClInclude Include="..\..\src\intro.hpp" />
     <ClInclude Include="..\..\src\joystick.hpp" />
     <ClInclude Include="..\..\src\key.hpp" />
     <ClInclude Include="..\..\src\language.hpp" />
@@ -2964,6 +2965,9 @@
     </ClInclude>
     <ClInclude Include="..\..\src\formula\variant_value.hpp">
       <Filter>Formula</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\outro.hpp">
+      <Filter>Gui\Dialogs</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

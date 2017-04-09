@@ -1906,6 +1906,13 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\outro.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\preferences_dialog.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
@@ -2461,7 +2468,6 @@
     </ClCompile>
     <ClCompile Include="..\..\src\image.cpp" />
     <ClCompile Include="..\..\src\image_modifications.cpp" />
-    <ClCompile Include="..\..\src\intro.cpp" />
     <ClCompile Include="..\..\src\joystick.cpp" />
     <ClCompile Include="..\..\src\key.cpp" />
     <ClCompile Include="..\..\src\language.cpp" />
@@ -3709,6 +3715,7 @@
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\plugin_executor.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\synced_choice_wait.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\network_transmission.hpp" />
+    <ClInclude Include="..\..\src\gui\dialogs\outro.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\preferences_dialog.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\screenshot_notification.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\select_orb_colors.hpp" />
@@ -3801,7 +3808,6 @@
     <ClInclude Include="..\..\src\hotkey\hotkey_manager.hpp" />
     <ClInclude Include="..\..\src\image.hpp" />
     <ClInclude Include="..\..\src\image_modifications.hpp" />
-    <ClInclude Include="..\..\src\intro.hpp" />
     <ClInclude Include="..\..\src\joystick.hpp" />
     <ClInclude Include="..\..\src\key.hpp" />
     <ClInclude Include="..\..\src\language.hpp" />
