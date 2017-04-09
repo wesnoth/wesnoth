@@ -376,59 +376,24 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 
 	switch(event.type) {
 		case SDL_MOUSEMOTION:
-#ifdef MOUSE_TOUCH_EMULATION
-//			SDL sends 2 events on touch: touch event and mouse event with which=SDL_TOUCH_MOUSEID itself.
-			if (event.motion.state & SDL_BUTTON(SDL_BUTTON_RIGHT))
+//			if (event.motion.which != SDL_TOUCH_MOUSEID)
 			{
-				touch_motion(point(event.motion.x, event.motion.y), point(event.motion.xrel, event.motion.yrel));
-				// Only send mouse event if "finger" (right mouse) is down.
-				mouse(SDL_MOUSE_MOTION, {event.motion.x, event.motion.y});
+				mouse(SDL_MOUSE_MOTION, {event.motion.x, event. motion.y});
 			}
-#else
-			mouse(SDL_MOUSE_MOTION, {event.motion.x, event.motion.y});
-#endif
 			break;
 
 		case SDL_MOUSEBUTTONDOWN:
-#ifdef MOUSE_TOUCH_EMULATION
-			if (event.button.button == SDL_BUTTON_RIGHT)
+//			if (event.button.which != SDL_TOUCH_MOUSEID)
 			{
-				// Emulate SDL mouse emulation
-				touch_down(point(event.button.x, event.button.y));
-				mouse_button_down({event.button.x, event.button.y}, SDL_BUTTON_LEFT);
+				mouse_button_down({event.button.x, event.button.y}, button);
 			}
-			else
-			{
-				mouse_button_down({event.button.x, event.button.y}, event.button.button);
-			}
-#else
-			// Monkey-patch support for SDL_TOUCH_MOUSEID. Probably we need a native support from all the controls?
-			if (event.button.which == SDL_TOUCH_MOUSEID)
-			{
-				button = SDL_BUTTON_LEFT;
-			}
-			mouse_button_down({event.button.x, event.button.y}, button);
-#endif
 			break;
 
 		case SDL_MOUSEBUTTONUP:
-#ifdef MOUSE_TOUCH_EMULATION
-			if (event.button.button == SDL_BUTTON_RIGHT)
+//			if (event.button.which != SDL_TOUCH_MOUSEID)
 			{
-				touch_up(point(event.button.x, event.button.y));
-				mouse_button_up({event.button.x, event.button.y}, SDL_BUTTON_LEFT);
+				mouse_button_up({event.button.x, event.button.y}, button);
 			}
-			else
-			{
-				mouse_button_up({event.button.x, event.button.y}, event.button.button);
-			}
-#else
-			if (event.button.which == SDL_TOUCH_MOUSEID)
-			{
-				button = SDL_BUTTON_LEFT;
-			}
-			mouse_button_up({event.button.x, event.button.y}, button);
-#endif
 			break;
 
 		case SDL_MOUSEWHEEL:
