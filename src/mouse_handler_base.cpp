@@ -220,12 +220,13 @@ bool mouse_handler_base::right_click_show_menu(int /*x*/, int /*y*/, const bool 
 
 bool mouse_handler_base::left_click(int x, int y, const bool /*browse*/)
 {
-	if(tooltips::click(x,y))
-		return true;
+	//if (tooltips::click(x, y)) 		
+			//return true;
 
 	// clicked on a hex on the minimap? then initiate minimap scrolling
 	const map_location& loc = gui().minimap_location_on(x, y);
 	minimap_scrolling_ = false;
+
 	if(loc.valid()) {
 		minimap_scrolling_ = true;
 		last_hex_ = loc;
