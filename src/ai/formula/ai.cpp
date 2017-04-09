@@ -105,6 +105,7 @@ formula_ai::formula_ai(readonly_context &context, const config &cfg)
 	cfg_(cfg),
 	recursion_counter_(context.get_recursion_count()),
 	keeps_cache_(),
+	attacks_callable(*this, resources::gameboard->units()),
 //	infinite_loop_guardian_(),
 	vars_(),
 	function_table_(*this)
@@ -162,13 +163,13 @@ std::string formula_ai::evaluate(const std::string& formula_str)
 
 		formula f(formula_str, &function_table_);
 
-		map_formula_callable callable(this);
+		map_formula_callable callable(fake_ptr());
 
 		//formula_debugger fdb;
 		const variant v = f.evaluate(callable,nullptr);
 
 		if (ai_ptr_) {
-			variant var = variant(this).execute_variant(v);
+			variant var = variant(this->fake_ptr()).execute_variant(v);
 
 			if (  !var.is_empty() ) {
 				return "Made move: " + var.to_debug_string();
@@ -194,7 +195,7 @@ wfl::variant formula_ai::make_action(wfl::const_formula_ptr formula_, const wfl:
 	variant res;
 
 	if (ai_ptr_) {
-		res = variant(this).execute_variant(var);
+		res = variant(this->fake_ptr()).execute_variant(var);
 	} else {
 		ERR_AI << "skipped execution of action because ai context is not set correctly" << std::endl;
 	}
@@ -276,7 +277,7 @@ variant villages_from_set(const Container& villages,
 		if(exclude && exclude->count(loc)) {
 			continue;
 		}
-		vars.emplace_back(new location_callable(loc));
+		vars.emplace_back(std::make_shared<location_callable>(loc));
 	}
 
 	return variant(vars);
@@ -368,7 +369,7 @@ variant formula_ai::get_value(const std::string& key) const
 
 	} else if(key == "my_side")
 	{
-		return variant(new team_callable(resources::gameboard->teams()[get_side()-1]));
+		return variant(std::make_shared<team_callable>(resources::gameboard->teams()[get_side()-1]));
 
 	} else if(key == "my_side_number")
 	{
@@ -378,7 +379,7 @@ variant formula_ai::get_value(const std::string& key) const
 	{
 		std::vector<variant> vars;
 		for(std::vector<team>::const_iterator i = resources::gameboard->teams().begin(); i != resources::gameboard->teams().end(); ++i) {
-			vars.emplace_back(new team_callable(*i));
+			vars.emplace_back(std::make_shared<team_callable>(*i));
 		}
 		return variant(vars);
 
@@ -415,7 +416,7 @@ variant formula_ai::get_value(const std::string& key) const
 			const unit_type *ut = unit_types.find(*i);
 			if (ut)
 			{
-				vars.emplace_back(new unit_type_callable(*ut));
+				vars.emplace_back(std::make_shared<unit_type_callable>(*ut));
 			}
 		}
 		return variant(vars);
@@ -441,7 +442,7 @@ variant formula_ai::get_value(const std::string& key) const
 				const unit_type *ut = unit_types.find(*str_it);
 				if (ut)
 				{
-					tmp[i].emplace_back(new unit_type_callable(*ut));
+					tmp[i].emplace_back(std::make_shared<unit_type_callable>(*ut));
 				}
 			}
 		}
@@ -454,7 +455,7 @@ variant formula_ai::get_value(const std::string& key) const
 	{
 		std::vector<variant> vars;
 		for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
-			vars.emplace_back(new unit_callable(*i));
+			vars.emplace_back(std::make_shared<unit_callable>(*i));
 		}
 		return variant(vars);
 
@@ -468,7 +469,7 @@ variant formula_ai::get_value(const std::string& key) const
 			tmp.push_back( v );
 		}
 		for(const unit &u : units) {
-			tmp[u.side() - 1].emplace_back(new unit_callable(u));
+			tmp[u.side() - 1].emplace_back(std::make_shared<unit_callable>(u));
 		}
 		for( size_t i = 0; i<tmp.size(); ++i)
 			vars.emplace_back(tmp[i]);
@@ -479,7 +480,7 @@ variant formula_ai::get_value(const std::string& key) const
 		std::vector<variant> vars;
 		for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
 			if (i->side() == get_side()) {
-				vars.emplace_back(new unit_callable(*i));
+				vars.emplace_back(std::make_shared<unit_callable>(*i));
 			}
 		}
 		return variant(vars);
@@ -490,7 +491,7 @@ variant formula_ai::get_value(const std::string& key) const
 		for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
 			if (current_team().is_enemy(i->side())) {
 				if (!i->incapacitated()) {
-					vars.emplace_back(new unit_callable(*i));
+					vars.emplace_back(std::make_shared<unit_callable>(*i));
 				}
 			}
 		}
@@ -498,14 +499,14 @@ variant formula_ai::get_value(const std::string& key) const
 
 	} else if(key == "my_moves")
 	{
-		return variant(new move_map_callable(get_srcdst(), get_dstsrc(), units));
+		return variant(std::make_shared<move_map_callable>(get_srcdst(), get_dstsrc(), units));
 
 	} else if(key == "my_attacks")
 	{
-		return variant(new attack_map_callable(*this, units));
+		return variant(attacks_callable.fake_ptr());
 	} else if(key == "enemy_moves")
 	{
-		return variant(new move_map_callable(get_enemy_srcdst(), get_enemy_dstsrc(), units));
+		return variant(std::make_shared<move_map_callable>(get_enemy_srcdst(), get_enemy_dstsrc(), units));
 
 	} else if(key == "my_leader")
 	{
@@ -513,27 +514,27 @@ variant formula_ai::get_value(const std::string& key) const
 		if(i == units.end()) {
 			return variant();
 		}
-		return variant(new unit_callable(*i));
+		return variant(std::make_shared<unit_callable>(*i));
 
 	} else if(key == "recall_list")
 	{
 		std::vector<variant> tmp;
 
 		for(std::vector<unit_ptr >::const_iterator i = current_team().recall_list().begin(); i != current_team().recall_list().end(); ++i) {
-			tmp.push_back( variant( new unit_callable(**i) ) );
+			tmp.push_back( variant(std::make_shared<unit_callable>(**i) ) );
 		}
 
 		return variant(tmp);
 
 	} else if(key == "vars")
 	{
-		return variant(&vars_);
+		return variant(vars_.fake_ptr());
 	} else if(key == "keeps")
 	{
 		return get_keeps();
 	} else if(key == "map")
 	{
-		return variant(new gamemap_callable(resources::gameboard->map()));
+		return variant(std::make_shared<gamemap_callable>(resources::gameboard->map()));
 	} else if(key == "villages")
 	{
 		return villages_from_set(resources::gameboard->map().villages());
@@ -609,7 +610,7 @@ variant formula_ai::get_keeps() const
 					get_adjacent_tiles(loc,adj);
 					for(size_t n = 0; n != 6; ++n) {
 						if(resources::gameboard->map().is_castle(adj[n])) {
-							vars.emplace_back(new location_callable(loc));
+							vars.emplace_back(std::make_shared<location_callable>(loc));
 							break;
 						}
 					}
@@ -683,7 +684,7 @@ void formula_ai::evaluate_candidate_action(ca_ptr fai_ca)
 
 bool formula_ai::execute_candidate_action(ca_ptr fai_ca)
 {
-	map_formula_callable callable(this);
+	map_formula_callable callable(fake_ptr());
 	fai_ca->update_callable_map( callable );
 	const_formula_ptr move_formula(fai_ca->get_action());
 	return !make_action(move_formula, callable).is_empty();

@@ -75,9 +75,19 @@ std::string variant_decimal::to_string_impl(const bool sign_value) const
 	return ss.str();
 }
 
-variant_callable::variant_callable(const formula_callable* callable)
+variant_callable::variant_callable(const_formula_callable_ptr callable)
 	: callable_(callable)
-{}
+{
+	if(callable_) {
+		callable_->subscribe_dtor(this);
+	}
+}
+
+variant_callable::~variant_callable() {
+	if(callable_) {
+		callable_->unsubscribe_dtor(this);
+	}
+}
 
 std::string variant_callable::get_serialized_string() const
 {
@@ -133,13 +143,13 @@ std::string variant_callable::get_debug_string(formula_seen_stack& seen, bool ve
 bool variant_callable::equals(variant_value_base& other) const
 {
 	variant_callable& other_ref = value_ref_cast<variant_callable>(other);
-	return callable_ ? callable_->equals(other_ref.callable_) : callable_ == other_ref.callable_;
+	return callable_ ? callable_->equals(*other_ref.callable_) : callable_ == other_ref.callable_;
 }
 
 bool variant_callable::less_than(variant_value_base& other) const
 {
 	variant_callable& other_ref = value_ref_cast<variant_callable>(other);
-	return callable_ ? callable_->less(other_ref.callable_) : other_ref.callable_ != nullptr;
+	return callable_ ? callable_->less(*other_ref.callable_) : other_ref.callable_ != nullptr;
 }
 
 boost::iterator_range<variant_iterator> variant_callable::make_iterator() const
@@ -359,7 +369,7 @@ bool variant_map::less_than(variant_value_base& other) const
 variant variant_map::deref_iterator(const boost::any& iter) const
 {
 	const variant_map_raw::value_type& p = *boost::any_cast<const variant_map_raw::const_iterator&>(iter);
-	key_value_pair* the_pair = new key_value_pair(p.first, p.second);
+	auto the_pair = std::make_shared<key_value_pair>(p.first, p.second);
 	return variant(the_pair);
 }
 

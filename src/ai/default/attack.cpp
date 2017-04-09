@@ -40,7 +40,7 @@ static lg::log_domain log_ai("ai/attack");
 
 namespace ai {
 
-extern ai_context& get_ai_context(const wfl::formula_callable* for_fai);
+extern ai_context& get_ai_context(wfl::const_formula_callable_ptr for_fai);
 
 void attack_analysis::analyze(const gamemap& map, unit_map& units,
                               const readonly_context& ai_obj,
@@ -335,13 +335,13 @@ wfl::variant attack_analysis::get_value(const std::string& key) const
 {
 	using namespace wfl;
 	if(key == "target") {
-		return variant(new location_callable(target));
+		return variant(std::make_shared<location_callable>(target));
 	} else if(key == "movements") {
 		std::vector<variant> res;
 		for(size_t n = 0; n != movements.size(); ++n) {
-			map_formula_callable* item = new map_formula_callable(nullptr);
-			item->add("src", variant(new location_callable(movements[n].first)));
-			item->add("dst", variant(new location_callable(movements[n].second)));
+			auto item = std::make_shared<map_formula_callable>(nullptr);
+			item->add("src", variant(std::make_shared<location_callable>(movements[n].first)));
+			item->add("dst", variant(std::make_shared<location_callable>(movements[n].second)));
 			res.emplace_back(item);
 		}
 
@@ -349,7 +349,7 @@ wfl::variant attack_analysis::get_value(const std::string& key) const
 	} else if(key == "units") {
 		std::vector<variant> res;
 		for(size_t n = 0; n != movements.size(); ++n) {
-			res.emplace_back(new location_callable(movements[n].first));
+			res.emplace_back(std::make_shared<location_callable>(movements[n].first));
 		}
 
 		return variant(res);
@@ -429,7 +429,7 @@ wfl::variant attack_analysis::execute_self(wfl::variant ctxt) {
 	//check if target is still valid
 	unit = units.find(att_dst);
 	if(unit == units.end()) {
-		return wfl::variant(new wfl::safe_call_result(this, attack_result::E_EMPTY_DEFENDER, move_from));
+		return wfl::variant(std::make_shared<wfl::safe_call_result>(fake_ptr(), attack_result::E_EMPTY_DEFENDER, move_from));
 	}
 
 	//check if we need to move
@@ -437,14 +437,14 @@ wfl::variant attack_analysis::execute_self(wfl::variant ctxt) {
 		//now check if location to which we want to move is still unoccupied
 		unit = units.find(att_src);
 		if(unit != units.end()) {
-			return wfl::variant(new wfl::safe_call_result(this, move_result::E_NO_UNIT, move_from));
+			return wfl::variant(std::make_shared<wfl::safe_call_result>(fake_ptr(), move_result::E_NO_UNIT, move_from));
 		}
 
 		ai::move_result_ptr result = get_ai_context(ctxt.as_callable()).execute_move_action(move_from, att_src);
 		if(!result->is_ok()) {
 			//move part failed
 			LOG_AI << "ERROR #" << result->get_status() << " while executing 'attack' formula function\n" << std::endl;
-			return wfl::variant(new wfl::safe_call_result(this, result->get_status(), result->get_unit_location()));
+			return wfl::variant(std::make_shared<wfl::safe_call_result>(fake_ptr(), result->get_status(), result->get_unit_location()));
 		}
 	}
 
@@ -453,7 +453,7 @@ wfl::variant attack_analysis::execute_self(wfl::variant ctxt) {
 		if(!result->is_ok()) {
 			//attack failed
 			LOG_AI << "ERROR #" << result->get_status() << " while executing 'attack' formula function\n" << std::endl;
-			return wfl::variant(new wfl::safe_call_result(this, result->get_status()));
+			return wfl::variant(std::make_shared<wfl::safe_call_result>(fake_ptr(), result->get_status()));
 		}
 	}
 	return wfl::variant(true);

@@ -77,7 +77,7 @@ candidate_action_with_filters::candidate_action_with_filters(
 
 variant candidate_action_with_filters::do_filtering(ai::formula_ai* ai, variant& input, const_formula_ptr formula)
 {
-	map_formula_callable callable(static_cast<const formula_callable*>(ai));
+	map_formula_callable callable(ai->fake_ptr());
 	callable.add("input", input);
 
 	return formula::evaluate(formula, callable);
@@ -102,7 +102,7 @@ void move_candidate_action::evaluate(ai::formula_ai* ai, unit_map& units)
 	for(unit_map::unit_iterator i = units.begin() ; i != units.end() ; ++i)
 	{
 		if (i->side() == ai->get_side() && i->movement_left() > 0) {
-			unit_vector.emplace_back(new unit_callable(*i));
+			unit_vector.emplace_back(std::make_shared<unit_callable>(*i));
 		}
 	}
 
@@ -122,7 +122,7 @@ void move_candidate_action::evaluate(ai::formula_ai* ai, unit_map& units)
 
 	for(variant_iterator i = filtered_units.begin() ; i != filtered_units.end() ; ++i)
 	{
-			map_formula_callable callable(static_cast<const formula_callable*>(ai));
+			map_formula_callable callable(ai->fake_ptr());
 			callable.add("me", *i);
 
 			int res = execute_formula(eval_, callable, ai);
@@ -161,12 +161,12 @@ void attack_candidate_action::evaluate(ai::formula_ai* ai, unit_map& units)
 		if (i->side() == ai->get_side())
 		{
 			if (i->attacks_left()) {
-				my_res.emplace_back(new unit_callable(*i));
+				my_res.emplace_back(std::make_shared<unit_callable>(*i));
 			}
 		} else
 		{
 			if (ai->current_team().is_enemy(i->side()) && !i->incapacitated() && !i->invisible(i->get_location(), *resources::gameboard)) {
-				enemy_res.emplace_back(new unit_callable(*i));
+				enemy_res.emplace_back(std::make_shared<unit_callable>(*i));
 			}
 		}
 	}
@@ -199,33 +199,35 @@ void attack_candidate_action::evaluate(ai::formula_ai* ai, unit_map& units)
 		return;
 	}
 
-	std::vector< const unit_callable* > my_units_flt;
-	std::vector< const unit_callable* > enemy_units_flt;
+	std::vector<variant> my_units_flt;
+	std::vector<variant> enemy_units_flt;
 
 	for(variant_iterator i = filtered_my_units.begin() ; i != filtered_my_units.end() ; ++i) {
-		const unit_callable* u_callable = (*i).try_convert<const unit_callable>();
-		if(u_callable == nullptr) {
+		auto u_callable = (*i).try_convert<const unit_callable>();
+		if(!u_callable) {
 			ERR_AI << "ERROR in "<< get_name() << "Candidate Action: Filter formula returned table that does not contain units" << std::endl;
 			return;
 		}
-		my_units_flt.push_back(u_callable);
+		my_units_flt.emplace_back(u_callable);
 	}
 
 	for(variant_iterator i = filtered_enemy_units.begin() ; i != filtered_enemy_units.end() ; ++i) {
-		const unit_callable* u_callable = (*i).try_convert<const unit_callable>();
-		if(u_callable == nullptr) {
+		auto u_callable = (*i).try_convert<const unit_callable>();
+		if(!u_callable) {
 			ERR_AI << "ERROR in "<< get_name() << "Candidate Action: Filter formula returned table that does not contain units" << std::endl;
 			return;
 		}
-		enemy_units_flt.push_back(u_callable);
+		enemy_units_flt.emplace_back(u_callable);
 	}
 
 	for( size_t my_unit = 0 ; my_unit < my_units_flt.size() ; ++my_unit){
-		const unit_callable* my_unit_callalbe = my_units_flt[my_unit];
+		auto my_unit_callable = my_units_flt[my_unit].convert_to<unit_callable>();
+		auto enemy_unit_callable = my_units_flt[my_unit].convert_to<unit_callable>();
 		for( size_t enemy_unit = 0 ; enemy_unit < enemy_units_flt.size() ; ++enemy_unit){
-			if( ai->can_reach_unit( my_unit_callalbe->get_location(), enemy_units_flt[enemy_unit]->get_location() )) {
+			auto enemy_unit_callable = enemy_units_flt[enemy_unit].convert_to<unit_callable>();
+			if(ai->can_reach_unit(my_unit_callable->get_location(), enemy_unit_callable->get_location())) {
 
-				map_formula_callable callable(static_cast<const formula_callable*>(ai));
+				map_formula_callable callable(ai->fake_ptr());
 				callable.add("me", filtered_my_units[my_unit]);
 				callable.add("target", filtered_enemy_units[enemy_unit]);
 

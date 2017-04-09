@@ -311,10 +311,11 @@ private:
 };
 
 
-class variant_callable : public variant_value_base
+class variant_callable : public variant_value_base, private callable_die_subscriber
 {
 public:
-	explicit variant_callable(const formula_callable* callable);
+	explicit variant_callable(const_formula_callable_ptr callable);
+	~variant_callable();
 
 	virtual bool as_bool() const override
 	{
@@ -326,7 +327,7 @@ public:
 		return 1;
 	}
 
-	const formula_callable* get_callable() const
+	const_formula_callable_ptr get_callable() const
 	{
 		return callable_;
 	}
@@ -360,9 +361,10 @@ public:
 	}
 
 private:
-	const formula_callable* callable_;
+	void notify_dead() override {callable_.reset();}
 
 	mutable formula_input_vector inputs; // for iteration
+	const_formula_callable_ptr callable_;
 };
 
 

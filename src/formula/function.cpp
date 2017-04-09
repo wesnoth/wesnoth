@@ -114,7 +114,7 @@ public:
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		variant var = args()[0]->evaluate(variables, fdb);
-		const formula_callable* callable = var.as_callable();
+		auto callable = var.as_callable();
 		formula_input_vector inputs = callable->inputs();
 		std::vector<variant> res;
 		for(size_t i=0; i<inputs.size(); ++i) {
@@ -422,7 +422,7 @@ private:
 		} else
 		{
 			for(variant_iterator it = var_1.begin(); it != var_1.end(); ++it) {
-				if (key_value_pair* kv = (*it).try_convert<key_value_pair>())
+				if(auto kv = (*it).try_convert<key_value_pair>())
 					tmp[kv->query_value("key")] = kv->query_value("value");
 				else {
 					std::map<variant, variant>::iterator map_it = tmp.find( *it );
@@ -1427,7 +1427,7 @@ public:
 	{}
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		return variant(new location_callable(map_location(
+		return variant(std::make_shared<location_callable>(map_location(
 							     args()[0]->evaluate(variables,add_debug_info(fdb,0,"loc:x")).as_int(),
 							     args()[1]->evaluate(variables,add_debug_info(fdb,1,"loc:y")).as_int(), wml_loc())));
 	}
@@ -1440,7 +1440,7 @@ public:
 	{}
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		return variant(new key_value_pair(
+		return variant(std::make_shared<key_value_pair>(
 			args()[0]->evaluate(variables,add_debug_info(fdb,0,"pair:key")),
 			args()[1]->evaluate(variables,add_debug_info(fdb,1,"pair_value"))
 		));
@@ -1487,7 +1487,7 @@ private:
 		const variant main = args()[0]->evaluate(variables, fdb);
 		const expression_ptr backup_formula = args()[1];
 
-		return variant(new safe_call_callable(main, backup_formula));
+		return variant(std::make_shared<safe_call_callable>(main, backup_formula));
 	}
 };
 
@@ -1497,7 +1497,7 @@ public:
 		: function_expression("set_var", args, 2, 2) {}
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		return variant(new set_var_callable(args()[0]->evaluate(variables, add_debug_info(fdb, 0, "set_var:key")).as_string(), args()[1]->evaluate(variables, add_debug_info(fdb, 1, "set_var:value"))));
+		return variant(std::make_shared<set_var_callable>(args()[0]->evaluate(variables, add_debug_info(fdb, 0, "set_var:key")).as_string(), args()[1]->evaluate(variables, add_debug_info(fdb, 1, "set_var:value"))));
 	}
 };
 

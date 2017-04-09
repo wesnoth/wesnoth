@@ -166,13 +166,14 @@ private:
 	virtual void get_inputs(wfl::formula_input_vector& inputs) const override;
 
 	mutable wfl::variant keeps_cache_;
+	wfl::attack_map_callable attacks_callable;
 
 //	gamestate_change_observer infinite_loop_guardian_;
 	wfl::map_formula_callable vars_;
 	wfl::ai_function_symbol_table function_table_;
 
 	friend class ai_default;
-	friend ai_context& get_ai_context(const formula_callable* for_fai);
+	friend ai_context& get_ai_context(wfl::const_formula_callable_ptr for_fai);
 };
 
 } //end of namespace ai
