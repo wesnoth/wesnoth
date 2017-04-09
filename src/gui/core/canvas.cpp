@@ -473,6 +473,9 @@ private:
  *                                     available. An alpha of 255 is fully
  *                                     transparent. Omitted values are set to
  *                                     0. $
+ *     f_color &                       A string which contains a color, or a formula
+ *                                     which evaluates to a list containing the color's
+ *                                     components. $
  *
  *     font_style &                    A string which contains the style of the
  *                                     font:
