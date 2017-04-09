@@ -62,6 +62,8 @@ public:
 
 	void mouse_motion_event(const SDL_MouseMotionEvent& event, const bool browse);
 
+	void touch_motion_event(const SDL_TouchFingerEvent& event, const bool browse);
+
 	/** Update the mouse with a fake mouse motion */
 	void mouse_update(const bool browse, map_location loc);
 
@@ -82,6 +84,10 @@ public:
 	 * implementation, possibly using mouse_motion_default().
 	 */
 	virtual void mouse_motion(
+			int x, int y, const bool browse, bool update = false, map_location new_loc = map_location::null_location())
+			= 0;
+
+	virtual void touch_motion(
 			int x, int y, const bool browse, bool update = false, map_location new_loc = map_location::null_location())
 			= 0;
 
@@ -214,6 +220,9 @@ protected:
 
 	/** LMB drag init flag */
 	bool dragging_left_;
+
+    /** Finger drag init flag */
+	bool dragging_touch_;
 
 	/** Actual drag flag */
 	bool dragging_started_;

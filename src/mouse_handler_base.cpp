@@ -54,6 +54,7 @@ mouse_handler_base::mouse_handler_base()
 	, dragging_left_(false)
 	, dragging_started_(false)
 	, dragging_right_(false)
+	, dragging_touch_(false)
 	, drag_from_x_(0)
 	, drag_from_y_(0)
 	, drag_from_hex_()
@@ -67,12 +68,17 @@ mouse_handler_base::mouse_handler_base()
 
 bool mouse_handler_base::is_dragging() const
 {
-	return dragging_left_ || dragging_right_;
+	return dragging_left_ || dragging_right_ || dragging_touch_;
 }
 
 void mouse_handler_base::mouse_motion_event(const SDL_MouseMotionEvent& event, const bool browse)
 {
 	mouse_motion(event.x, event.y, browse);
+}
+
+void mouse_handler_base::touch_motion_event(const SDL_TouchFingerEvent& event, const bool browse)
+{
+	touch_motion(event.x, event.y, browse);
 }
 
 void mouse_handler_base::mouse_update(const bool browse, map_location loc)
@@ -94,8 +100,7 @@ bool mouse_handler_base::mouse_motion_default(int x, int y, bool /*update*/)
 		// if the game is run in a window, we could miss a LMB/MMB up event
 		// if it occurs outside our window.
 		// thus, we need to check if the LMB/MMB is still down
-		minimap_scrolling_ = ((SDL_GetMouseState(nullptr, nullptr) & (SDL_BUTTON(1) | SDL_BUTTON(2))) != 0);
-
+		minimap_scrolling_ = ((SDL_GetMouseState(nullptr, nullptr) & (SDL_BUTTON(SDL_BUTTON_LEFT) | SDL_BUTTON(SDL_BUTTON_MIDDLE))) != 0);
 		if(minimap_scrolling_) {
 			const map_location& loc = gui().minimap_location_on(x, y);
 			if(loc.valid()) {
@@ -160,7 +165,7 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 		if (event.state == SDL_PRESSED) {
 			cancel_dragging();
 			touch_timestamp = time(NULL);
-			init_dragging(dragging_left_);
+			init_dragging(dragging_touch_);
 			left_click(event.x, event.y, browse);
 		} else if (event.state == SDL_RELEASED) {
 			minimap_scrolling_ = false;
@@ -227,8 +232,7 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 			scroll_started_ = false;
 		}
 	}
-
-	if(!dragging_left_ && !dragging_right_ && dragging_started_) {
+	if(!dragging_left_ && !dragging_right_ && !dragging_touch_ && dragging_started_) {
 		dragging_started_ = false;
 		cursor::set_dragging(false);
 	}
@@ -239,7 +243,7 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 bool mouse_handler_base::is_left_click(const SDL_MouseButtonEvent& event) const
 {
 	return (event.button == SDL_BUTTON_LEFT && !command_active())
-			|| event.which == SDL_TOUCH_MOUSEID
+			&& event.which != SDL_TOUCH_MOUSEID
 #ifdef MOUSE_TOUCH_EMULATION
 			|| event.button == SDL_BUTTON_RIGHT
 #endif
@@ -257,6 +261,9 @@ bool mouse_handler_base::is_right_click(const SDL_MouseButtonEvent& event) const
 	(void) event;
 	return false;
 #else
+    if (event.which == SDL_TOUCH_MOUSEID) {
+		return false;
+	}
 	return event.button == SDL_BUTTON_RIGHT
 			|| (event.button == SDL_BUTTON_LEFT && command_active());
 #endif
@@ -264,11 +271,7 @@ bool mouse_handler_base::is_right_click(const SDL_MouseButtonEvent& event) const
 
 bool mouse_handler_base::is_touch_click(const SDL_MouseButtonEvent& event) const
 {
-	return event.which == SDL_TOUCH_MOUSEID
-#ifdef MOUSE_TOUCH_EMULATION
-		   || event.button == SDL_BUTTON_RIGHT
-#endif
-			;
+	return event.which == SDL_TOUCH_MOUSEID;
 }
 
 bool mouse_handler_base::left_click(int x, int y, const bool /*browse*/)
@@ -358,6 +361,7 @@ void mouse_handler_base::cancel_dragging()
 {
 	dragging_started_ = false;
 	dragging_left_ = false;
+	dragging_touch_ = false;
 	dragging_right_ = false;
 	cursor::set_dragging(false);
 }
@@ -371,6 +375,13 @@ void mouse_handler_base::clear_dragging(const SDL_MouseButtonEvent& event, bool 
 
 	if(dragging_started_) {
 		dragging_started_ = false;
+
+		if(dragging_touch_) {
+			dragging_touch_ = false;
+			// Maybe to do: create touch_drag_end(). Do panning and what else there. OTOH, it's fine now.
+			left_drag_end(event.x, event.y, browse);
+		}
+
 		if(dragging_left_) {
 			dragging_left_ = false;
 			left_drag_end(event.x, event.y, browse);
@@ -383,6 +394,7 @@ void mouse_handler_base::clear_dragging(const SDL_MouseButtonEvent& event, bool 
 	} else {
 		dragging_left_ = false;
 		dragging_right_ = false;
+		dragging_touch_ = false;
 	}
 }
 
