@@ -64,7 +64,8 @@ static const std::string attributes_to_trim[] = {
 	"color",
 	"gold",
 	"income",
-	"allow_changes"
+	"allow_changes",
+	"faction"
 };
 
 namespace ng {
