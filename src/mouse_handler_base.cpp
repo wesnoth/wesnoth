@@ -54,6 +54,7 @@ mouse_handler_base::mouse_handler_base() :
 	dragging_left_(false),
 	dragging_started_(false),
 	dragging_right_(false),
+	dragging_touch_(false),
 	drag_from_x_(0),
 	drag_from_y_(0),
 	drag_from_hex_(),
@@ -67,12 +68,17 @@ mouse_handler_base::mouse_handler_base() :
 
 bool mouse_handler_base::is_dragging() const
 {
-	return dragging_left_ || dragging_right_;
+	return dragging_left_ || dragging_right_ || dragging_touch_;
 }
 
 void mouse_handler_base::mouse_motion_event(const SDL_MouseMotionEvent& event, const bool browse)
 {
 	mouse_motion(event.x,event.y, browse);
+}
+
+void mouse_handler_base::touch_motion_event(const SDL_TouchFingerEvent& event, const bool browse)
+{
+	touch_motion(event.x, event.y, browse);
 }
 
 void mouse_handler_base::mouse_update(const bool browse, map_location loc)
@@ -96,7 +102,7 @@ bool mouse_handler_base::mouse_motion_default(int x, int y, bool /*update*/)
 		//if the game is run in a window, we could miss a LMB/MMB up event
 		// if it occurs outside our window.
 		// thus, we need to check if the LMB/MMB is still down
-		minimap_scrolling_ = ((SDL_GetMouseState(nullptr,nullptr) & (SDL_BUTTON(1) | SDL_BUTTON(2))) != 0);
+		minimap_scrolling_ = ((SDL_GetMouseState(nullptr,nullptr) & (SDL_BUTTON(SDL_BUTTON_LEFT) | SDL_BUTTON(SDL_BUTTON_MIDDLE))) != 0);
 		if(minimap_scrolling_) {
 			const map_location& loc = gui().minimap_location_on(x,y);
 			if(loc.valid()) {
@@ -118,12 +124,6 @@ bool mouse_handler_base::mouse_motion_default(int x, int y, bool /*update*/)
 	int my = drag_from_y_;
 	if (is_dragging() && !dragging_started_) {
 		Uint32 mouse_state = dragging_left_ || dragging_right_ ? SDL_GetMouseState(&mx, &my) : 0;
-#ifdef MOUSE_TOUCH_EMULATION
-		if (dragging_left_ && (mouse_state & SDL_BUTTON(SDL_BUTTON_RIGHT))) {
-			// Monkey-patch touch controls again to make them look like left button.
-			mouse_state = SDL_BUTTON(SDL_BUTTON_LEFT);
-		}
-#endif
 		if ((dragging_left_ && (mouse_state & SDL_BUTTON(SDL_BUTTON_LEFT)) != 0)
 			|| (dragging_right_ && (mouse_state & SDL_BUTTON(SDL_BUTTON_RIGHT)) != 0)) {
 			const double drag_distance = std::pow(static_cast<double>(drag_from_x_- mx), 2)
@@ -147,22 +147,26 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 	mouse_update(browse, loc);
 	
 	static time_t touch_timestamp = 0;
+	using std::chrono::duration_cast;
+	using std::chrono::microseconds;
+	using std::chrono::high_resolution_clock;
+	high_resolution_clock::time_point touch_timestamp_cpp;
 	
 	if (is_touch_click(event)) {
 		if (event.state == SDL_PRESSED) {
 			cancel_dragging();
 			touch_timestamp = time(NULL);
-			init_dragging(dragging_left_);
+			touch_timestamp_cpp = high_resolution_clock::now();
+			init_dragging(dragging_touch_);
 			left_click(event.x, event.y, browse);
 		} else if (event.state == SDL_RELEASED) {
 			minimap_scrolling_ = false;
 
-			// FIXME: Move to touch_click()/touch_release()
-			touch_timestamp = 0;
-			if (!dragging_started_) {
-				// Alternatively, the condition if (dragging_left_) should work.
-				if (time(NULL) - touch_timestamp > 1) {
-					// Pop up context menu after at least 1s
+			if (!dragging_started_ /*&& !is_dragging()*/) {
+				time_t dt = time(NULL) - touch_timestamp;
+				auto dt_cpp = high_resolution_clock::now() - touch_timestamp_cpp;
+				long dt2 = duration_cast<microseconds>(dt_cpp).count() / 1000;
+				if (dt > 400) {
 					show_menu_ = true;
 				}
 			}
@@ -215,7 +219,7 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 			scroll_started_ = false;
 		}
 	}
-	if (!dragging_left_ && !dragging_right_ && dragging_started_) {
+	if (!dragging_left_ && !dragging_right_ && !dragging_touch_ && dragging_started_) {
 		dragging_started_ = false;
 		cursor::set_dragging(false);
 	}
@@ -225,12 +229,7 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 bool mouse_handler_base::is_left_click(
 		const SDL_MouseButtonEvent& event) const
 {
-	return (event.button == SDL_BUTTON_LEFT && !command_active())
-			|| event.which == SDL_TOUCH_MOUSEID
-#ifdef MOUSE_TOUCH_EMULATION
-			|| event.button == SDL_BUTTON_RIGHT
-#endif
-	;
+	return event.button == SDL_BUTTON_LEFT && !command_active() && event.which != SDL_TOUCH_MOUSEID;
 }
 
 bool mouse_handler_base::is_middle_click(
@@ -242,22 +241,16 @@ bool mouse_handler_base::is_middle_click(
 bool mouse_handler_base::is_right_click(
 		const SDL_MouseButtonEvent& event) const
 {
-#ifdef MOUSE_TOUCH_EMULATION
-	(void) event;
-	return false;
-#else
+	if (event.which == SDL_TOUCH_MOUSEID) {
+		return false;
+	}
 	return event.button == SDL_BUTTON_RIGHT
 			|| (event.button == SDL_BUTTON_LEFT && command_active());
-#endif
 }
 
 bool mouse_handler_base::is_touch_click(const SDL_MouseButtonEvent& event) const
 {
-	return event.which == SDL_TOUCH_MOUSEID
-#ifdef MOUSE_TOUCH_EMULATION
-		   || event.button == SDL_BUTTON_RIGHT
-#endif
-			;
+	return event.which == SDL_TOUCH_MOUSEID;
 }
 
 bool mouse_handler_base::allow_mouse_wheel_scroll(int /*x*/, int /*y*/)
@@ -391,6 +384,7 @@ void mouse_handler_base::cancel_dragging()
 {
 	dragging_started_ = false;
 	dragging_left_ = false;
+	dragging_touch_ = false;
 	dragging_right_ = false;
 	cursor::set_dragging(false);
 }
@@ -403,6 +397,11 @@ void mouse_handler_base::clear_dragging(const SDL_MouseButtonEvent& event, bool 
 	cursor::set_dragging(false);
 	if (dragging_started_) {
 		dragging_started_ = false;
+		if (dragging_touch_) {
+			dragging_touch_ = false;
+			// TODO: create touch_drag_end(). Do panning and what else there. OTOH, it's fine now.
+			left_drag_end(event.x, event.y, browse);
+		}
 		if (dragging_left_) {
 			dragging_left_ = false;
 			left_drag_end(event.x, event.y, browse);
@@ -414,6 +413,7 @@ void mouse_handler_base::clear_dragging(const SDL_MouseButtonEvent& event, bool 
 	} else {
 		dragging_left_ = false;
 		dragging_right_ = false;
+		dragging_touch_ = false;
 	}
 }
 

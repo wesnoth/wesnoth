@@ -53,6 +53,8 @@ void controller_base::handle_event(const SDL_Event& event)
 	}
 	static const hotkey::hotkey_command& quit_hotkey = hotkey::hotkey_command::get_command_by_command(hotkey::HOTKEY_QUIT_GAME);
 
+	SDL_Event new_event;
+
 	switch(event.type) {
 	case SDL_TEXTINPUT:
 		if(have_keyboard_focus()) {
@@ -87,12 +89,24 @@ void controller_base::handle_event(const SDL_Event& event)
 		break;
 	case SDL_MOUSEMOTION:
 		// Ignore old mouse motion events in the event queue
-		SDL_Event new_event;
 		if(SDL_PeepEvents(&new_event, 1, SDL_GETEVENT, SDL_MOUSEMOTION, SDL_MOUSEMOTION) > 0) {
 			while(SDL_PeepEvents(&new_event, 1, SDL_GETEVENT, SDL_MOUSEMOTION, SDL_MOUSEMOTION) > 0) {};
-			get_mouse_handler_base().mouse_motion_event(new_event.motion, is_browsing());
+			if (new_event.motion.which != SDL_TOUCH_MOUSEID) {
+				get_mouse_handler_base().mouse_motion_event(new_event.motion, is_browsing());
+			}
 		} else {
-			get_mouse_handler_base().mouse_motion_event(event.motion, is_browsing());
+			if (new_event.motion.which != SDL_TOUCH_MOUSEID) {
+				get_mouse_handler_base().mouse_motion_event(event.motion, is_browsing());
+			}
+		}
+		break;
+	case SDL_FINGERMOTION:
+		// TODO: Support finger specifically, like in panning the map. For now, SDL's "shadow mouse" events will do.
+		if(SDL_PeepEvents(&new_event, 1, SDL_GETEVENT, SDL_FINGERMOTION, SDL_FINGERMOTION) > 0) {
+			while(SDL_PeepEvents(&new_event, 1, SDL_GETEVENT, SDL_FINGERMOTION, SDL_FINGERMOTION) > 0) {};
+			get_mouse_handler_base().touch_motion_event(new_event.tfinger, is_browsing());
+		} else {
+			get_mouse_handler_base().touch_motion_event(event.tfinger, is_browsing());
 		}
 		break;
 	case SDL_MOUSEBUTTONDOWN:
@@ -102,20 +116,22 @@ void controller_base::handle_event(const SDL_Event& event)
 		}
 		hotkey::mbutton_event(event, get_hotkey_command_executor());
 		break;
+	case SDL_FINGERDOWN:
+		// handled by mouse case
+		break;
 	case SDL_MOUSEBUTTONUP:
 		get_mouse_handler_base().mouse_press(event.button, is_browsing());
 		if (get_mouse_handler_base().get_show_menu()){
 			show_menu(get_display().get_theme().context_menu()->items(),event.button.x,event.button.y,true, get_display());
 		}
 		break;
+	case SDL_FINGERUP:
+		// handled by mouse case
+		break;
 	case SDL_MOUSEWHEEL:
 		get_mouse_handler_base().mouse_wheel(event.wheel.x, event.wheel.y, is_browsing());
 		break;
 		
-	// TODO: Support finger specifically, like pan the map. For now, SDL's "shadow mouse" events will do.
-	case SDL_FINGERMOTION:
-	case SDL_FINGERDOWN:
-	case SDL_FINGERUP:
 	case SDL_MULTIGESTURE:
 	default:
 		break;
