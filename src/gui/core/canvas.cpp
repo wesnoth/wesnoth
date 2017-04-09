@@ -1443,7 +1443,7 @@ private:
 	typed_formula<PangoAlignment> text_alignment_;
 
 	/** The color of the text. */
-	color_t color_;
+	typed_formula<color_t> color_;
 
 	/** The text to draw. */
 	typed_formula<t_string> text_;
@@ -1529,7 +1529,7 @@ text_shape::text_shape(const config& cfg)
 	, font_size_(cfg["font_size"])
 	, font_style_(decode_font_style(cfg["font_style"]))
 	, text_alignment_(cfg["text_alignment"])
-	, color_(decode_color(cfg["color"]))
+	, color_(cfg["color"])
 	, text_(cfg["text"])
 	, text_markup_(cfg["text_markup"], false)
 	, link_aware_(cfg["text_link_aware"], false)
@@ -1573,7 +1573,7 @@ void text_shape::draw(surface& canvas,
 		.set_font_size(font_size_)
 		.set_font_style(font_style_)
 		.set_alignment(text_alignment_(variables))
-		.set_foreground_color(color_)
+		.set_foreground_color(color_(variables))
 		.set_maximum_width(maximum_width_(variables))
 		.set_maximum_height(maximum_height_(variables), true)
 		.set_ellipse_mode(variables.has_key("text_wrap_mode")
