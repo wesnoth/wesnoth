@@ -36,12 +36,13 @@ namespace dialogs
 class help_browser : public modal_dialog
 {
 public:
-	help_browser();
+	help_browser(const help::section& toplevel, const std::string& initial = "");
 
 	DEFINE_SIMPLE_DISPLAY_WRAPPER(help_browser)
 
 private:
 	std::string initial_topic_;
+	const help::section& toplevel_;
 
 	std::map<std::string, int> parsed_pages_;
 

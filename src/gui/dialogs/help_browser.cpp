@@ -47,9 +47,15 @@ namespace dialogs
 
 REGISTER_DIALOG(help_browser)
 
-help_browser::help_browser()
-	: initial_topic_("introduction")
+help_browser::help_browser(const help::section& toplevel, const std::string& initial)
+	: initial_topic_(initial.empty() ? help::default_show_topic : initial)
+	, toplevel_(toplevel)
 {
+	if(initial_topic_.compare(0, 2, "..") == 0) {
+		initial_topic_.replace(0, 2, "+");
+	} else {
+		initial_topic_.insert(0, "-");
+	}
 	help::init_help();
 }
 
@@ -70,7 +76,10 @@ void help_browser::pre_show(window& window)
 
 	window.keyboard_capture(&topic_tree);
 
-	add_topics_for_section(help::default_toplevel, topic_tree.get_root_node());
+	add_topics_for_section(toplevel_, topic_tree.get_root_node());
+
+	tree_view_node& initial_node = find_widget<tree_view_node>(&topic_tree, initial_topic_, false);
+	initial_node.select_node(true);
 
 	on_topic_select(window);
 }
@@ -199,7 +208,7 @@ void help_browser::on_topic_select(window& window)
 		topic_id.erase(topic_id.begin());
 	}
 
-	help::section& sec = help::default_toplevel;
+	const help::section& sec = toplevel_;
 
 	auto iter = parsed_pages_.find(topic_id);
 	if(iter == parsed_pages_.end()) {

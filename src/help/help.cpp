@@ -179,7 +179,7 @@ void show_help(const section &toplevel_sec,
 	CVideo& video = CVideo::get_singleton();
 
 	if(gui2::new_widgets) {
-		gui2::dialogs::help_browser::display(video);
+		gui2::dialogs::help_browser::display(video, toplevel_sec, show_topic);
 		return;
 	}
 
