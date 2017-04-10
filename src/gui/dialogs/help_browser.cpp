@@ -140,10 +140,11 @@ static std::string format_help_text(const config& cfg)
 			}
 			ss << "<big>" << font::escape_text(item.cfg["text"]) << "</big>";
 		} else if(item.key == "jump") {
-			// Seems like this creates something invisible?
+			// This appears to be something akin to tab stops.
 			if(item.cfg["amount"].empty() && item.cfg["to"].empty()) {
 				throw help::parse_error("Jump markup must have either a to or an amount attribute.");
 			}
+			ss << '\t';
 		} else if(item.key == "format") {
 			if(item.cfg["text"].empty()) {
 				throw help::parse_error("Header markup must have text attribute.");
@@ -210,6 +211,10 @@ void help_browser::on_topic_select(window& window)
 
 		item["label"] = format_help_text(topic->text.parsed_text());
 		data.emplace("topic_text", item);
+
+		item.clear();
+		item["label"] = topic->title;
+		data.emplace("topic_title", item);
 
 		parsed_pages_.emplace(topic_id, topic_pages.get_page_count());
 		topic_pages.add_page(data);
