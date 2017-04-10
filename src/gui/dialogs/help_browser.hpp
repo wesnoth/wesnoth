@@ -38,15 +38,16 @@ namespace dialogs
 class help_browser : public modal_dialog
 {
 public:
-	help_browser();
+	help_browser(const help::section& toplevel, const std::string& initial = "");
 
-	static void display(CVideo& video)
+	static void display(CVideo& video, const help::section& toplevel, const std::string& initial = "")
 	{
-		help_browser().show(video);
+		help_browser(toplevel, initial).show(video);
 	}
 
 private:
 	std::string initial_topic_;
+	const help::section& toplevel_;
 
 	std::map<std::string, int> parsed_pages_;
 
