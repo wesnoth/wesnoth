@@ -33,6 +33,7 @@
 #include "units/race.hpp"               // for unit_race, etc
 #include "resources.hpp"                // for tod_manager, config_manager
 #include "sdl/surface.hpp"                // for surface
+#include "serialization/parser.hpp"
 #include "serialization/string_utils.hpp"  // for split, quoted_split, etc
 #include "serialization/unicode_cast.hpp"  // for unicode_cast
 #include "serialization/utf8_exception.hpp"  // for char_t, etc
@@ -382,7 +383,7 @@ topic_text& topic_text::operator=(std::shared_ptr<topic_generator> g)
 	return *this;
 }
 
-const std::vector<std::string>& topic_text::parsed_text() const
+const config& topic_text::parsed_text() const
 {
 	if (generator_) {
 		parsed_text_ = parse_text((*generator_)());
@@ -1331,9 +1332,9 @@ section *find_section(section &sec, const std::string &id)
 	return const_cast<section *>(find_section(const_cast<const section &>(sec), id));
 }
 
-std::vector<std::string> parse_text(const std::string &text)
+config parse_text(const std::string &text)
 {
-	std::vector<std::string> res;
+	config res;
 	bool last_char_escape = false;
 	bool found_slash = false;
 	bool in_quotes = false;
@@ -1351,7 +1352,7 @@ std::vector<std::string> parse_text(const std::string &text)
 					if (last_char_escape) {
 						ss << c;
 					} else {
-						res.push_back(ss.str());
+						res.add_child("text", config("text", ss.str()));
 						ss.str("");
 						state = ELEMENT_NAME;
 					}
@@ -1382,7 +1383,7 @@ std::vector<std::string> parse_text(const std::string &text)
 
 					if (found_slash) {
 						// empty tag
-						res.push_back(convert_to_wml(element_name, attrs));
+						s.str(convert_to_wml(element_name, attrs));
 						found_slash = false;
 						pos = text.find(">", pos);
 					} else {
@@ -1395,11 +1396,20 @@ std::vector<std::string> parse_text(const std::string &text)
 							msg << "Unterminated element: " << element_name;
 							throw parse_error(msg.str());
 						}
-						s.str("");
 						const std::string contents = attrs + " " + text.substr(pos + 1, end_pos - pos - 1);
 						const std::string element = convert_to_wml(element_name, contents);
-						res.push_back(element);
+						s.str(element);
 						pos = end_pos + end_element_name.size() - 1;
+					}
+					s.seekg(0);
+					try {
+						config cfg;
+						read(cfg, s);
+						res.append_children(cfg);
+					} catch(config::error& e) {
+						std::stringstream msg;
+						msg << "Error when parsing help markup as WML: '" << e.message << "'";
+						throw parse_error(msg.str());
 					}
 					state = OTHER;
 				} else {
@@ -1422,7 +1432,7 @@ std::vector<std::string> parse_text(const std::string &text)
 	}
 	if (!ss.str().empty()) {
 		// Add the last string.
-		res.push_back(ss.str());
+		res.add_child("text", config("text", ss.str()));
 	}
 	return res;
 }

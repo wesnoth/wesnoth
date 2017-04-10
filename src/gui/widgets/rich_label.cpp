@@ -290,10 +290,9 @@ void rich_label::set_label(const t_string& text)
 	text_dom_.clear();
 	links_.clear();
 	help::topic_text marked_up_text(text);
-	std::vector<std::string> parsed_text = marked_up_text.parsed_text();
+	config parsed_text = marked_up_text.parsed_text();
 
 	config* curr_item = nullptr;
-	optional_config_impl<config> child;
 
 	bool is_image = false;
 	bool floating = false;
@@ -306,15 +305,10 @@ void rich_label::set_label(const t_string& text)
 	prev_blk_height_ = 0;
 	txt_height_ = 0;
 
-	for (size_t i = 0; i < parsed_text.size(); i++) {
-		bool last_entry = (i == parsed_text.size() - 1);
-		std::string line = parsed_text.at(i);
+	for(config::any_child tag : parsed_text.all_children_range()) {
+			config& child = tag.cfg;
 
-		if (!line.empty() && line.at(0) == '[') {
-			config cfg;
-			::read(cfg, line);
-
-			if ((child = cfg.optional_child("img"))) {
+			if(tag.key == "img") {
 
 				std::string name = child["src"];
 				floating = child["float"].to_bool();
@@ -347,35 +341,35 @@ void rich_label::set_label(const t_string& text)
 				// }---------- TEXT TAGS -----------{
 				int tmp_h = get_text_size(*curr_item, w_ - x_).y;
 
-				if ((child = cfg.optional_child("ref"))) {
+				if(tag.key == "ref") {
 
 					add_link(*curr_item, child["text"], child["dst"], img_size.x);
 					is_image = false;
 
 					DBG_GUI_RL << "ref: dst=" << child["dst"];
 
-				} else if ((child = cfg.optional_child("bold")) || (child = cfg.optional_child("b"))) {
+				} else if(tag.key == "bold" || tag.key == "b") {
 
 					add_text_with_attribute(*curr_item, child["text"], "bold");
 					is_image = false;
 
 					DBG_GUI_RL << "bold: text=" << child["text"];
 
-				} else if ((child = cfg.optional_child("italic")) || (child = cfg.optional_child("i"))) {
+				} else if(tag.key == "italic" || tag.key == "i") {
 
 					add_text_with_attribute(*curr_item, child["text"], "italic");
 					is_image = false;
 
 					DBG_GUI_RL << "italic: text=" << child["text"];
 
-				} else if ((child = cfg.optional_child("underline")) || (child = cfg.optional_child("u"))) {
+				} else if(tag.key == "underline" || tag.key == "u") {
 
 					add_text_with_attribute(*curr_item, child["text"], "underline");
 					is_image = false;
 
 					DBG_GUI_RL << "u: text=" << child["text"];
 
-				} else if ((child = cfg.optional_child("header")) || (child = cfg.optional_child("h"))) {
+				} else if(tag.key == "header" || tag.key == "h") {
 
 					// Header starts in a new line
 
@@ -398,7 +392,7 @@ void rich_label::set_label(const t_string& text)
 
 					DBG_GUI_RL << "h: text=" << child["text"];
 
-				} else if ((child = cfg.optional_child("span")) || (child = cfg.optional_child("format"))) {
+				} else if(tag.key == "span" || tag.key == "format") {
 
 					std::vector<std::string> attrs;
 					std::vector<std::string> attr_data;
@@ -406,7 +400,7 @@ void rich_label::set_label(const t_string& text)
 					DBG_GUI_RL << "span/format: text=" << child["text"];
 					DBG_GUI_RL << "attributes:";
 
-					for (const auto& attr : child.value().attribute_range()) {
+					for (const auto& attr : child.attribute_range()) {
 						if (attr.first != "text") {
 							attrs.push_back(attr.first);
 							attr_data.push_back(attr.second);
@@ -418,7 +412,7 @@ void rich_label::set_label(const t_string& text)
 					is_image = false;
 
 				// }---------- TABLE TAGS -----------{
-				} else if ((child = cfg.optional_child("table"))) {
+				} else if(tag.key == "table") {
 
 					in_table = true;
 
@@ -439,7 +433,7 @@ void rich_label::set_label(const t_string& text)
 					DBG_GUI_RL << "start table : " << "col=" << columns;
 					DBG_GUI_RL << "col_width : " << col_width;
 
-				} else if (cfg.optional_child("jump")) {
+				} else if(tag.key == "jump") {
 
 					if (col_width > 0) {
 
@@ -457,7 +451,7 @@ void rich_label::set_label(const t_string& text)
 						}
 					}
 
-				} else if (cfg.optional_child("break") || cfg.optional_child("br")) {
+				} else if(tag.key == "break" || tag.key == "br") {
 
 					if (in_table) {
 
@@ -480,7 +474,7 @@ void rich_label::set_label(const t_string& text)
 						new_text_block = true;
 					}
 
-				} else if (cfg.optional_child("endtable")) {
+				} else if(tag.key == "endtable") {
 
 					DBG_GUI_RL << "end table: " << max_col_height;
 					max_col_height = std::max(max_col_height, txt_height_);
@@ -494,9 +488,7 @@ void rich_label::set_label(const t_string& text)
 					max_col_height = 0;
 					txt_height_ = 0;
 
-					if (!last_entry) {
 						new_text_block = true;
-					}
 
 					in_table = false;
 				}
@@ -512,7 +504,8 @@ void rich_label::set_label(const t_string& text)
 				}
 			}
 
-		} else if (!line.empty()) {
+		if (tag.key == "text") {
+			std::string line = child["text"];
 			DBG_GUI_RL << "text: text=" << line.substr(1, 20) << "...";
 
 			// Start the text in a new paragraph if a newline follows after an image
@@ -601,9 +594,9 @@ void rich_label::set_label(const t_string& text)
 		DBG_GUI_RL << "Prev block height: " << prev_blk_height_ << " Current text block height: " << txt_height_;
 		DBG_GUI_RL << "Height: " << h_;
 		h_ = txt_height_ + prev_blk_height_;
-
+		DBG_GUI_RL << "-----------";
+	} // for loop ends
 		// reset all variables to zero, otherwise they grow infinitely
-		if (last_entry) {
 			if (static_cast<unsigned>(img_size.y) > h_) {
 				h_ = img_size.y;
 			}
@@ -613,11 +606,7 @@ void rich_label::set_label(const t_string& text)
 			default_text_config(&break_cfg);
 			break_cfg["text"] = " ";
 			break_cfg["actions"] = "([set_var('pos_x', 0), set_var('pos_y', 0), set_var('img_x', 0), set_var('img_y', 0)])";
-		}
 
-		DBG_GUI_RL << "-----------";
-
-	} // for loop ends
 
 } // function ends
 
