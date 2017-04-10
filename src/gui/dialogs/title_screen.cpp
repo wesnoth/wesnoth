@@ -282,11 +282,12 @@ void title_screen::pre_show(window& win)
 	// Help
 	//
 	register_button(win, "help", hotkey::HOTKEY_HELP, []() {
+		help::help_manager help_manager(&game_config_manager::get()->game_config());
+
 		if(gui2::new_widgets) {
 			gui2::dialogs::help_browser::display();
 		}
 
-		help::help_manager help_manager(&game_config_manager::get()->game_config());
 		help::show_help();
 	});
 
