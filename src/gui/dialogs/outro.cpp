@@ -57,8 +57,14 @@ void outro::pre_show(window& window)
 
 void outro::timer_callback(window& window)
 {
-	// If we've faded fully in...
-	if(fading_in_ && fade_step_ == 255) {
+	/* If we've faded fully in...
+	 *
+	 * NOTE: we want the fade in to happen in around half a second. Given this timer runs every
+	 * 50 ms, we limit ourselves to a reasonable 10 fade steps (500 ms / 50) with an alpha increase
+	 * (rounded up) of 25.5 each cycle. The actual calculation for alpha is done in the window
+	 * definition in WFL.
+	 */
+	if(fading_in_ && fade_step_ > 10) {
 		// Schedule the fadeout after the provided delay.
 		if(timer_id_secondary_ == 0) {
 			timer_id_secondary_ = add_timer(duration_, [this](size_t) { fading_in_ = false; });
@@ -81,9 +87,9 @@ void outro::timer_callback(window& window)
 	window.set_is_dirty(true);
 
 	if(fading_in_) {
-		fade_step_ += 5;
+		fade_step_ ++;
 	} else {
-		fade_step_ -= 5;
+		fade_step_ --;
 	}
 }
 
