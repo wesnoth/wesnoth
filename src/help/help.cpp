@@ -26,7 +26,9 @@
 #include "font/constants.hpp"           // for relative_size
 #include "game_preferences.hpp"
 #include "gettext.hpp"                  // for _
+#include "gui/dialogs/help_browser.hpp"
 #include "gui/dialogs/transient_message.hpp"
+#include "gui/widgets/settings.hpp"
 #include "help/help_browser.hpp"             // for help_browser
 #include "help/help_impl.hpp"                // for hidden_symbol, toplevel, etc
 #include "key.hpp"                      // for CKey
@@ -176,6 +178,11 @@ void show_help(CVideo& video, const section &toplevel_sec,
 			   const std::string& show_topic,
 			   int xloc, int yloc)
 {
+	if(gui2::new_widgets) {
+		gui2::dialogs::help_browser::display(video);
+		return;
+	}
+
 	const events::event_context dialog_events_context;
 	const gui::dialog_manager manager;
 
