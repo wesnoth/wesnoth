@@ -224,7 +224,9 @@ void help_browser::on_topic_select(window& window)
 	history_.push_back(topic_id);
 	history_pos_ = std::prev(history_.end());
 
-	find_widget<button>(&window, "back", false).set_visible(widget::visibility::visible);
+	if(history_pos_ != history_.begin()) {
+			find_widget<button>(&window, "back", false).set_visible(widget::visibility::visible);
+	}
 	find_widget<button>(&window, "next", false).set_visible(widget::visibility::hidden);
 
 	const unsigned topic_i = parsed_pages_.at(topic_id);
