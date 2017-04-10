@@ -28,6 +28,8 @@
 #include "preferences/preferences.hpp"
 #include "game_config_manager.hpp"
 #include "gettext.hpp"                  // for _
+#include "gui/dialogs/help_browser.hpp"
+#include "gui/widgets/settings.hpp"
 #include "help/help_browser.hpp"        // for help_browser
 #include "help/help_impl.hpp"           // for hidden_symbol, toplevel, etc
 #include "key.hpp"                      // for CKey
@@ -204,6 +206,11 @@ void show_with_toplevel(const section &toplevel_sec,
 			   const std::string& show_topic,
 			   int xloc, int yloc)
 {
+	if(gui2::new_widgets) {
+		gui2::dialogs::help_browser::display();
+		return;
+	}
+
 	const events::event_context dialog_events_context;
 	const gui::dialog_manager manager;
 
