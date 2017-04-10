@@ -34,8 +34,6 @@ public:
 private:
 	std::string initial_topic_;
 
-	const config& help_cfg_;
-
 	std::map<std::string, int> parsed_pages_;
 
 	virtual const std::string& window_id() const override;
@@ -44,7 +42,7 @@ private:
 
 	void on_topic_select();
 
-	void add_topic(const config& topic, bool expands, class tree_view_node* parent = nullptr);
+	void add_topic(const std::string& topic_id, const std::string& topic_title, bool expands, class tree_view_node* parent = nullptr);
 };
 
 } // namespace dialogs
