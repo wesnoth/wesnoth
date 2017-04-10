@@ -36,6 +36,7 @@
 #endif
 
 #include "help/help.hpp"
+#include "help/help_impl.hpp"
 
 namespace gui2
 {
@@ -46,8 +47,8 @@ REGISTER_DIALOG(help_browser)
 
 help_browser::help_browser()
 	: initial_topic_("introduction")
-	, help_cfg_(game_config_manager::get()->game_config().child("help"))
 {
+	help::init_help();
 }
 
 void help_browser::pre_show(window& window)
@@ -58,32 +59,30 @@ void help_browser::pre_show(window& window)
 
 	window.keyboard_capture(&topic_tree);
 
-	const config toc = help_cfg_.child("toplevel");
-
-	for(const std::string& section : utils::split(toc["sections"])) {
-		add_topic(window, help_cfg_.find_child("section", "id", section), true);
+	for(const help::section* section : help::default_toplevel.sections) {
+		add_topic(window, section->id, section->title, true);
 	}
 
-	for(const std::string& topic : utils::split(toc["topics"])) {
-		add_topic(window, help_cfg_.find_child("topic", "id", topic), false);
+	for(const help::topic& topic : help::default_toplevel.topics) {
+		add_topic(window, topic.id, topic.title, false);
 	}
 
 	on_topic_select(window);
 }
 
-void help_browser::add_topic(window& window, const config& topic, bool expands, tree_view_node*) {
+void help_browser::add_topic(window& window, const std::string& topic_id, const std::string& topic_title, bool expands, tree_view_node*) {
 	tree_view& topic_tree = find_widget<tree_view>(&window, "topic_tree", false);
 	std::map<std::string, string_map> data;
 	string_map item;
 
-	item["label"] = topic["title"];
+	item["label"] = topic_title;
 	data.emplace("topic_name", item);
 
 	item.clear();
-	item["label"] = expands ? "help/closed_section.png" : "help/topic.png";
+	item["label"] = expands ? help::closed_section_img : help::topic_img;
 	data.emplace("topic_icon", item);
 
-	topic_tree.add_node("topic", data).set_id(std::string(expands ? "+" : "-") + topic["id"]);
+	topic_tree.add_node("topic", data).set_id(std::string(expands ? "+" : "-") + topic_id);
 }
 
 void help_browser::on_topic_select(window& window)
@@ -108,17 +107,18 @@ void help_browser::on_topic_select(window& window)
 		topic_id.erase(topic_id.begin());
 	}
 
+	help::section& sec = help::default_toplevel;
 	auto iter = parsed_pages_.find(topic_id);
 	if(iter == parsed_pages_.end()) {
-		const config& topic = help_cfg_.find_child("topic", "id", topic_id);
-		if(!topic) {
+		const help::topic* topic = help::find_topic(sec, topic_id);
+		if(topic == nullptr) {
 			return;
 		}
 
 		std::map<std::string, string_map> data;
 		string_map item;
 
-		item["label"] = topic["text"];
+		item["label"] = utils::join(topic->text.parsed_text(), "");
 		data.emplace("topic_text", item);
 
 		parsed_pages_.emplace(topic_id, topic_pages.get_page_count());
