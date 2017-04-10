@@ -207,7 +207,7 @@ void show_with_toplevel(const section &toplevel_sec,
 			   int xloc, int yloc)
 {
 	if(gui2::new_widgets) {
-		gui2::dialogs::help_browser::display();
+		gui2::dialogs::help_browser::display(toplevel_sec, show_topic);
 		return;
 	}
 
