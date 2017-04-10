@@ -297,33 +297,32 @@ void story_viewer::draw_floating_image(window& window, floating_image_list::cons
 
 	const auto& floating_image = *image_iter;
 
-	// Since we have the necessary data here, just set these variables directly.
-	canvas& window_canvas = window.get_canvas(0);
+	std::ostringstream x_ss;
+	std::ostringstream y_ss;
 
-	window_canvas.set_variable("fi_ref_x", wfl::variant(floating_image.ref_x()));
-	window_canvas.set_variable("fi_ref_y", wfl::variant(floating_image.ref_y()));
+	// Floating images are scaled by the same factor as the background.
+	x_ss << "(trunc(fi_ref_x * base_scale_x) + base_origin.x";
+	y_ss << "(trunc(fi_ref_y * base_scale_y) + base_origin.y";
+
+	if(floating_image.centered()) {
+		x_ss << "- (image_original_width  / 2)";
+		y_ss << "- (image_original_height / 2)";
+	}
+
+	x_ss << " where fi_ref_x = " << floating_image.ref_x() << ")";
+	y_ss << " where fi_ref_y = " << floating_image.ref_y() << ")";
 
 	config cfg, image;
 
-	std::string image_x = "";
-	std::string image_y = "";
-
-	if(floating_image.centered()) {
-		image_x = "(trunc(fi_ref_x * base_scale_x) + base_origin.x - (image_original_width  / 2))";
-		image_y = "(trunc(fi_ref_y * base_scale_y) + base_origin.y - (image_original_height / 2))";
-	} else {
-		image_x = "(trunc(fi_ref_x * base_scale_x) + base_origin.x)";
-		image_y = "(trunc(fi_ref_y * base_scale_y) + base_origin.y)";
-	}
-
-	// Floating images are scaled by the same factor as the background.
-	image["x"] = image_x;
-	image["y"] = image_y;
+	image["x"] = x_ss.str();
+	image["y"] = y_ss.str();
 	image["w"] = floating_image.autoscale() ? "(width)"  : "(image_width)";
 	image["h"] = floating_image.autoscale() ? "(height)" : "(image_height)";
 	image["name"] = floating_image.file();
 
 	cfg.add_child("image", image);
+
+	canvas& window_canvas = window.get_canvas(0);
 
 	// Needed to make the background redraw correctly.
 	window_canvas.append_cfg(cfg);
