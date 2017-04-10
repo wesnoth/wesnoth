@@ -105,6 +105,7 @@ private:
 	void handle_header_cfg(const config &cfg);
 	void handle_jump_cfg(const config &cfg);
 	void handle_format_cfg(const config &cfg);
+	void handle_text_cfg(const config &cfg);
 
 	void draw_contents();
 

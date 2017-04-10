@@ -37,6 +37,8 @@
 
 #include "help/help.hpp"
 #include "help/help_impl.hpp"
+#include "font/pango/escape.hpp"
+#include "font/pango/hyperlink.hpp"
 
 namespace gui2
 {
@@ -85,6 +87,69 @@ void help_browser::add_topic(window& window, const std::string& topic_id, const 
 	topic_tree.add_node("topic", data).set_id(std::string(expands ? "+" : "-") + topic_id);
 }
 
+static std::string format_help_text(const config& cfg) {
+	std::stringstream ss;
+	for(auto& item : cfg.all_children_range()) {
+		if(item.key == "text") {
+			ss << font::escape_text(item.cfg["text"]);
+		} else if(item.key == "ref") {
+			if(item.cfg["dst"].empty()) {
+				std::stringstream msg;
+				msg << "Ref markup must have dst attribute. Please submit a bug"
+					" report if you have not modified the game files yourself. Erroneous config: " << cfg;
+				throw help::parse_error(msg.str());
+			};
+			// TODO: Get the proper link shade from somewhere
+			ss << font::format_as_link(font::escape_text(item.cfg["text"]), "#aaaa00");
+		} else if(item.key == "img") {
+			if(item.cfg["src"].empty()) {
+				throw help::parse_error("Img markup must have src attribute.");
+			}
+			// For now, just output a placeholder so we know an image is supposed to be there.
+			ss << "[img]" << font::escape_text(item.cfg["src"]) << "[/img]";
+		} else if(item.key == "bold") {
+			if(item.cfg["text"].empty()) {
+				throw help::parse_error("Bold markup must have text attribute.");
+			}
+			ss << "<b>" << font::escape_text(item.cfg["text"]) << "</b>";
+		} else if(item.key == "italic") {
+			if(item.cfg["text"].empty()) {
+				throw help::parse_error("Italic markup must have text attribute.");
+			}
+			ss << "<i>" << font::escape_text(item.cfg["text"]) << "</i>";
+		} else if(item.key == "header") {
+			if(item.cfg["text"].empty()) {
+				throw help::parse_error("Header markup must have text attribute.");
+			}
+			ss << "<big>" << font::escape_text(item.cfg["text"]) << "</big>";
+		} else if(item.key == "jump") {
+			// Seems like this creates something invisible?
+			if(item.cfg["amount"].empty() && item.cfg["to"].empty()) {
+				throw help::parse_error("Jump markup must have either a to or an amount attribute.");
+			}
+		} else if(item.key == "format") {
+			if(item.cfg["text"].empty()) {
+				throw help::parse_error("Header markup must have text attribute.");
+			}
+			ss << "<span";
+			if(item.cfg.has_attribute("font_size")) {
+				ss << " size='" << item.cfg["font_size"].to_int(font::SIZE_NORMAL) << "'";
+			}
+			if(item.cfg.has_attribute("color")) {
+				ss << " color='" << help::string_to_color(item.cfg["color"]).to_hex_string() << "'";
+			}
+			if(item.cfg["bold"]) {
+				ss << " font_weight='bold'";
+			}
+			if(item.cfg["italic"]) {
+				ss << " font_style='italic'";
+			}
+			ss << '>' << font::escape_text(item.cfg["text"]) << "</span>";
+		}
+	}
+	return ss.str();
+}
+
 void help_browser::on_topic_select(window& window)
 {
 	multi_page& topic_pages = find_widget<multi_page>(&window, "topic_text_pages", false);
@@ -118,7 +183,7 @@ void help_browser::on_topic_select(window& window)
 		std::map<std::string, string_map> data;
 		string_map item;
 
-		item["label"] = utils::join(topic->text.parsed_text(), "");
+		item["label"] = format_help_text(topic->text.parsed_text());
 		data.emplace("topic_text", item);
 
 		parsed_pages_.emplace(topic_id, topic_pages.get_page_count());
