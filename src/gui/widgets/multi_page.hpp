@@ -51,8 +51,10 @@ public:
 	 *
 	 * @param item                The data to send to the set_members of the
 	 *                            widget.
+	 *
+	 * @returns                   The grid of the newly added page.
 	 */
-	void add_page(const string_map& item);
+	grid& add_page(const string_map& item);
 
 	/**
 	 * Adds single page to the grid.
@@ -68,9 +70,10 @@ public:
 	 *                            id is an empty string, it is send to all
 	 *                            members. Having both empty and non-empty
 	 *                            id's gives undefined behavior.
+	 *
+	 * @returns                   The grid of the newly added page.
 	 */
-	void
-	add_page(const std::map<std::string /* widget id */, string_map>& data);
+	grid& add_page(const std::map<std::string /* widget id */, string_map>& data);
 
 	/**
 	 * Removes a page in the multi page.

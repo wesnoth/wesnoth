@@ -39,17 +39,21 @@ multi_page::multi_page()
 {
 }
 
-void multi_page::add_page(const string_map& item)
+grid& multi_page::add_page(const string_map& item)
 {
 	assert(generator_);
-	generator_->create_item(-1, page_builder_, item, nullptr);
+	grid& page = generator_->create_item(-1, page_builder_, item, nullptr);
+
+	return page;
 }
 
-void multi_page::add_page(
+grid& multi_page::add_page(
 		const std::map<std::string /* widget id */, string_map>& data)
 {
 	assert(generator_);
-	generator_->create_item(-1, page_builder_, data, nullptr);
+	grid& page = generator_->create_item(-1, page_builder_, data, nullptr);
+
+	return page;
 }
 
 void multi_page::remove_page(const unsigned page, unsigned count)
