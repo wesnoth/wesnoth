@@ -61,33 +61,44 @@ void help_browser::pre_show(window& window)
 
 	window.keyboard_capture(&topic_tree);
 
-	for(const help::section* section : help::default_toplevel.sections) {
-		add_topic(window, section->id, section->title, true);
-	}
-
-	for(const help::topic& topic : help::default_toplevel.topics) {
-		add_topic(window, topic.id, topic.title, false);
-	}
+	add_topics_for_section(help::default_toplevel, topic_tree.get_root_node());
 
 	on_topic_select(window);
 }
 
-void help_browser::add_topic(window& window, const std::string& topic_id, const std::string& topic_title, bool expands, tree_view_node*) {
-	tree_view& topic_tree = find_widget<tree_view>(&window, "topic_tree", false);
+void help_browser::add_topics_for_section(const help::section& parent_section, tree_view_node& parent_node)
+{
+	for(const help::section* section : parent_section.sections) {
+		tree_view_node& section_node = add_topic(section->id, section->title, true, parent_node);
+
+		add_topics_for_section(*section, section_node);
+	}
+
+	for(const help::topic& topic : parent_section.topics) {
+		add_topic(topic.id, topic.title, false, parent_node);
+	}
+}
+
+tree_view_node& help_browser::add_topic(const std::string& topic_id, const std::string& topic_title,
+		bool expands, tree_view_node& parent)
+{
 	std::map<std::string, string_map> data;
 	string_map item;
 
 	item["label"] = topic_title;
 	data.emplace("topic_name", item);
 
-	item.clear();
 	item["label"] = expands ? help::closed_section_img : help::topic_img;
 	data.emplace("topic_icon", item);
 
-	topic_tree.add_node("topic", data).set_id(std::string(expands ? "+" : "-") + topic_id);
+	tree_view_node& new_node = parent.add_child("topic", data);
+	new_node.set_id(std::string(expands ? "+" : "-") + topic_id);
+
+	return new_node;
 }
 
-static std::string format_help_text(const config& cfg) {
+static std::string format_help_text(const config& cfg)
+{
 	std::stringstream ss;
 	for(auto& item : cfg.all_children_range()) {
 		if(item.key == "text") {
@@ -100,7 +111,7 @@ static std::string format_help_text(const config& cfg) {
 				throw help::parse_error(msg.str());
 			};
 			// TODO: Get the proper link shade from somewhere
-			ss << font::format_as_link(font::escape_text(item.cfg["text"]), "#aaaa00");
+			ss << font::format_as_link(font::escape_text(item.cfg["text"]), "#ffff00");
 		} else if(item.key == "img") {
 			if(item.cfg["src"].empty()) {
 				throw help::parse_error("Img markup must have src attribute.");
@@ -131,19 +142,24 @@ static std::string format_help_text(const config& cfg) {
 			if(item.cfg["text"].empty()) {
 				throw help::parse_error("Header markup must have text attribute.");
 			}
+
 			ss << "<span";
 			if(item.cfg.has_attribute("font_size")) {
 				ss << " size='" << item.cfg["font_size"].to_int(font::SIZE_NORMAL) << "'";
 			}
+
 			if(item.cfg.has_attribute("color")) {
 				ss << " color='" << help::string_to_color(item.cfg["color"]).to_hex_string() << "'";
 			}
+
 			if(item.cfg["bold"]) {
 				ss << " font_weight='bold'";
 			}
+
 			if(item.cfg["italic"]) {
 				ss << " font_style='italic'";
 			}
+
 			ss << '>' << font::escape_text(item.cfg["text"]) << "</span>";
 		}
 	}
@@ -159,8 +175,17 @@ void help_browser::on_topic_select(window& window)
 		return;
 	}
 
-	assert(topic_tree.selected_item());
-	std::string topic_id = topic_tree.selected_item()->id();
+	tree_view_node* selected = topic_tree.selected_item();
+	assert(selected);
+
+	// FIXME: should we be manually doing this?
+	if(selected->is_folded()) {
+		selected->unfold();
+	} else {
+		selected->fold();
+	}
+
+	std::string topic_id = selected->id();
 
 	if(topic_id == "") {
 		return;
@@ -173,6 +198,7 @@ void help_browser::on_topic_select(window& window)
 	}
 
 	help::section& sec = help::default_toplevel;
+
 	auto iter = parsed_pages_.find(topic_id);
 	if(iter == parsed_pages_.end()) {
 		const help::topic* topic = help::find_topic(sec, topic_id);
@@ -188,12 +214,12 @@ void help_browser::on_topic_select(window& window)
 
 		parsed_pages_.emplace(topic_id, topic_pages.get_page_count());
 		topic_pages.add_page(data);
+
 		window.invalidate_layout();
 	}
 
 	const unsigned topic_i = parsed_pages_.at(topic_id);
 	topic_pages.select_page(topic_i);
-
 }
 
 } // namespace dialogs

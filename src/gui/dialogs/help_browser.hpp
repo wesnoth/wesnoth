@@ -17,6 +17,8 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 
+#include "help/help_impl.hpp"
+
 #include <map>
 
 class config;
@@ -24,6 +26,8 @@ class CVideo;
 
 namespace gui2
 {
+class tree_view_node;
+
 namespace dialogs
 {
 
@@ -51,7 +55,9 @@ private:
 
 	void on_topic_select(window& window);
 
-	void add_topic(window& window, const std::string& topic_id, const std::string& topic_title, bool expands, class tree_view_node* parent = nullptr);
+	void add_topics_for_section(const help::section& parent_section, tree_view_node& parent_node);
+	tree_view_node& add_topic(const std::string& topic_id, const std::string& topic_title,
+			bool expands, tree_view_node& parent);
 };
 
 } // namespace dialogs
