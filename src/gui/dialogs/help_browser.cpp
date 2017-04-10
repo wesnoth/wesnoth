@@ -53,54 +53,81 @@ help_browser::help_browser()
 void help_browser::pre_show(window& window)
 {
 	tree_view& topic_tree = find_widget<tree_view>(&window, "topic_tree", false);
-	multi_page& topic_pages = find_widget<multi_page>(&window, "topic_text_pages", false);
 
 	topic_tree.set_selection_change_callback(std::bind(&help_browser::on_topic_select, this, std::ref(window)));
 
 	window.keyboard_capture(&topic_tree);
 
-	unsigned id = 0;
+	const config toc = help_cfg_.child("toplevel");
 
-	for(const auto& topic : help_cfg_.child_range("topic")) {
-		std::map<std::string, string_map> data;
-		string_map item;
+	for(const std::string& section : utils::split(toc["sections"])) {
+		add_topic(window, help_cfg_.find_child("section", "id", section), true);
+	}
 
-		item["label"] = topic["title"];
-		data.emplace("topic_name", item);
-
-		topic_tree.add_node("topic", data).set_id(std::to_string(id));
-
-		// FIXME: maybe using a multi page isn't a good idea here... :| it causes massive lag when opening.
-		item.clear();
-		data.clear();
-
-		item["label"] = topic["text"].empty() ? "" : topic["text"].str();
-		data.emplace("topic_text", item);
-
-		topic_pages.add_page(data);
-
-		++id;
+	for(const std::string& topic : utils::split(toc["topics"])) {
+		add_topic(window, help_cfg_.find_child("topic", "id", topic), false);
 	}
 
 	on_topic_select(window);
 }
 
+void help_browser::add_topic(window& window, const config& topic, bool expands, tree_view_node*) {
+	tree_view& topic_tree = find_widget<tree_view>(&window, "topic_tree", false);
+	std::map<std::string, string_map> data;
+	string_map item;
+
+	item["label"] = topic["title"];
+	data.emplace("topic_name", item);
+
+	item.clear();
+	item["label"] = expands ? "help/closed_section.png" : "help/topic.png";
+	data.emplace("topic_icon", item);
+
+	topic_tree.add_node("topic", data).set_id(std::string(expands ? "+" : "-") + topic["id"]);
+}
+
 void help_browser::on_topic_select(window& window)
 {
-	tree_view& tree = find_widget<tree_view>(&window, "topic_tree", false);
+	multi_page& topic_pages = find_widget<multi_page>(&window, "topic_text_pages", false);
+	tree_view& topic_tree = find_widget<tree_view>(&window, "topic_tree", false);
 
-	if(tree.empty()) {
+	if(topic_tree.empty()) {
 		return;
 	}
 
-	assert(tree.selected_item());
+	assert(topic_tree.selected_item());
+	std::string topic_id = topic_tree.selected_item()->id();
 
-	if(tree.selected_item()->id() == "") {
+	if(topic_id == "") {
 		return;
 	}
 
-	const unsigned topic_i = lexical_cast<unsigned>(tree.selected_item()->id());
-	find_widget<multi_page>(&window, "topic_text_pages", false).select_page(topic_i);
+	if(topic_id[0] == '+') {
+		topic_id.replace(topic_id.begin(), topic_id.begin() + 1, 2, '.');
+	} else {
+		topic_id.erase(topic_id.begin());
+	}
+
+	auto iter = parsed_pages_.find(topic_id);
+	if(iter == parsed_pages_.end()) {
+		const config& topic = help_cfg_.find_child("topic", "id", topic_id);
+		if(!topic) {
+			return;
+		}
+
+		std::map<std::string, string_map> data;
+		string_map item;
+
+		item["label"] = topic["text"];
+		data.emplace("topic_text", item);
+
+		parsed_pages_.emplace(topic_id, topic_pages.get_page_count());
+		topic_pages.add_page(data);
+		window.invalidate_layout();
+	}
+
+	const unsigned topic_i = parsed_pages_.at(topic_id);
+	topic_pages.select_page(topic_i);
 
 }
 
