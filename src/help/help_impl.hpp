@@ -46,9 +46,9 @@
 #include <utility>                      // for pair, make_pair
 #include <vector>                       // for vector, etc
 #include <boost/logic/tribool.hpp>
+#include "config.hpp"
 
 class game_config_view;
-class config;
 class unit_type;
 class terrain_type_data;
 
@@ -81,7 +81,7 @@ public:
  */
 class topic_text
 {
-	mutable std::vector< std::string > parsed_text_;
+	mutable config parsed_text_;
 	mutable std::shared_ptr<topic_generator> generator_;
 public:
 	topic_text() = default;
@@ -105,7 +105,7 @@ public:
 	topic_text& operator=(const topic_text& t) = default;
 	topic_text& operator=(std::shared_ptr<topic_generator> g);
 
-	const std::vector<std::string>& parsed_text() const;
+    const config& parsed_text() const;
 };
 
 /** A topic contains a title, an id and some text. */
@@ -304,13 +304,10 @@ const topic *find_topic(const section &sec, const std::string &id);
 const section *find_section(const section &sec, const std::string &id);
 section *find_section(section &sec, const std::string &id);
 
-/**
- * Parse a xml style marked up text string. Return a vector with
- * the different parts of the text. Each markup item and the text
- * between markups are separate parts. Each line of returned vector
- * is valid WML.
- */
-std::vector<std::string> parse_text(const std::string &text);
+/// Parse a xml style marked up text string. Return a config with the different parts of the
+/// text. Each markup item is a separate part while the text between
+/// markups are separate parts.
+config parse_text(const std::string &text);
 
 /**
  * Convert the the text between start and end xml tags for element_name to
