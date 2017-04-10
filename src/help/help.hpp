@@ -56,6 +56,8 @@ struct help_manager {
  */
 std::unique_ptr<help_manager> ensure_cache_lifecycle();
 
+void init_help();
+
 /**
  * Open the help browser. The help browser will have the topic with id
  * show_topic open if it is not the empty string. The default topic

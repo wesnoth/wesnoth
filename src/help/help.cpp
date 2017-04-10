@@ -175,6 +175,25 @@ void show_variation_help(const std::string& unit, const std::string &variation, 
 	show_with_toplevel(default_toplevel, hidden_symbol(hidden) + variation_prefix + unit + "_" + variation, xloc, yloc);
 }
 
+void init_help() {
+	// Find all unit_types that have not been constructed yet and fill in the information
+	// needed to create the help topics
+	unit_types.build_all(unit_type::HELP_INDEXED);
+
+	auto& enc_units = prefs::get().encountered_units();
+	auto& enc_terrains = prefs::get().encountered_terrains();
+	if(enc_units.size() != size_t(last_num_encountered_units) ||
+		enc_terrains.size() != size_t(last_num_encountered_terrains) ||
+		last_debug_state != game_config::debug ||
+		last_num_encountered_units < 0) {
+		// More units or terrains encountered, update the contents.
+		last_num_encountered_units = enc_units.size();
+		last_num_encountered_terrains = enc_terrains.size();
+		last_debug_state = game_config::debug;
+		generate_contents();
+	}
+}
+
 /**
  * Open a help dialog using a toplevel other than the default.
  *
@@ -212,21 +231,7 @@ void show_with_toplevel(const section &toplevel_sec,
 	);
 	f.layout(xloc, yloc, width, height);
 
-	// Find all unit_types that have not been constructed yet and fill in the information
-	// needed to create the help topics
-	unit_types.build_all(unit_type::HELP_INDEXED);
-
-	if (prefs::get().encountered_units().size() != size_t(last_num_encountered_units) ||
-		prefs::get().encountered_terrains().size() != size_t(last_num_encountered_terrains) ||
-		last_debug_state != game_config::debug ||
-		last_num_encountered_units < 0)
-	{
-		// More units or terrains encountered, update the contents.
-		last_num_encountered_units = prefs::get().encountered_units().size();
-		last_num_encountered_terrains = prefs::get().encountered_terrains().size();
-		last_debug_state = game_config::debug;
-		generate_contents();
-	}
+	init_help();
 	try {
 		help_browser hb(toplevel_sec);
 		hb.set_location(xloc + left_padding, yloc + top_padding);
