@@ -230,11 +230,10 @@ struct parse_error : public game::error
 /// Dispatch generators to their appropriate functions.
 void generate_sections(const config *help_cfg, const std::string &generator, section &sec, int level);
 std::vector<topic> generate_topics(const bool sort_topics,const std::string &generator);
-std::string generate_topic_text(const std::string &generator, const config *help_cfg,
-const section &sec, const std::vector<topic>& generated_topics);
+std::string generate_topic_text(const std::string &generator, const config *help_cfg, const section &sec);
 std::string generate_about_text();
 std::string generate_contents_links(const std::string& section_name, config const *help_cfg);
-std::string generate_contents_links(const section &sec, const std::vector<topic>& topics);
+std::string generate_contents_links(const section &sec);
 
 /// return a hyperlink with the unit's name and pointing to the unit page
 /// return empty string if this unit is hidden. If not yet discovered add the (?) suffix
