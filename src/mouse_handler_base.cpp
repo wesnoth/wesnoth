@@ -52,9 +52,9 @@ mouse_handler_base::mouse_handler_base() :
 	simple_warp_(false),
 	minimap_scrolling_(false),
 	dragging_left_(false),
+	dragging_touch_(false),
 	dragging_started_(false),
 	dragging_right_(false),
-	dragging_touch_(false),
 	drag_from_x_(0),
 	drag_from_y_(0),
 	drag_from_hex_(),
@@ -146,27 +146,31 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 	map_location loc = gui().hex_clicked_on(event.x,event.y);
 	mouse_update(browse, loc);
 	
-	static time_t touch_timestamp = 0;
-	using std::chrono::duration_cast;
-	using std::chrono::microseconds;
-	using std::chrono::high_resolution_clock;
-	high_resolution_clock::time_point touch_timestamp_cpp;
+	static clock_t touch_timestamp = 0;
+//	using std::chrono::duration_cast;
+//	using std::chrono::duration;
+//	using std::chrono::milliseconds;
+//	using std::chrono::high_resolution_clock;
+//	high_resolution_clock::time_point touch_timestamp_cpp;
 	
 	if (is_touch_click(event)) {
 		if (event.state == SDL_PRESSED) {
 			cancel_dragging();
-			touch_timestamp = time(NULL);
-			touch_timestamp_cpp = high_resolution_clock::now();
+			touch_timestamp = clock();
+//			touch_timestamp_cpp = high_resolution_clock::now();
 			init_dragging(dragging_touch_);
 			left_click(event.x, event.y, browse);
 		} else if (event.state == SDL_RELEASED) {
 			minimap_scrolling_ = false;
 
 			if (!dragging_started_ /*&& !is_dragging()*/) {
-				time_t dt = time(NULL) - touch_timestamp;
-				auto dt_cpp = high_resolution_clock::now() - touch_timestamp_cpp;
-				long dt2 = duration_cast<microseconds>(dt_cpp).count() / 1000;
-				if (dt > 400) {
+				time_t dt = clock() - touch_timestamp;
+				// I couldn't make this work. Sorry for some C.
+//				auto dt_cpp = high_resolution_clock::now() - touch_timestamp_cpp;
+//				auto dt2 = duration_cast<milliseconds>(dt_cpp);
+//				auto menu_hold = milliseconds(300);
+//				if (dt2 > menu_hold) {
+				if (dt > CLOCKS_PER_SEC * 2 / 10) {
 					show_menu_ = true;
 				}
 			}
