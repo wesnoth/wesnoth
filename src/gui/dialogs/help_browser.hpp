@@ -15,6 +15,9 @@
 #pragma once
 
 #include "gui/dialogs/modal_dialog.hpp"
+#include <map>
+
+class config;
 
 namespace gui2
 {
@@ -34,6 +37,8 @@ private:
 
 	const config& help_cfg_;
 
+	std::map<std::string, int> parsed_pages_;
+
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const override;
 
@@ -41,6 +46,8 @@ private:
 	virtual void pre_show(window& window) override;
 
 	void on_topic_select(window& window);
+
+	void add_topic(window& window, const config& topic, bool expands, class tree_view_node* parent = nullptr);
 };
 
 } // namespace dialogs
