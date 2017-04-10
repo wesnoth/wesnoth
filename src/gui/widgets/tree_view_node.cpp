@@ -352,13 +352,45 @@ const widget* tree_view_node::find_at(const point& coordinate, const bool must_b
 widget* tree_view_node::find(const std::string& id, const bool must_be_active)
 {
 	widget* result = widget::find(id, must_be_active);
-	return result ? result : grid_.find(id, must_be_active);
+	if(result) {
+		return result;
+	}
+
+	result = grid_.find(id, must_be_active);
+	if(result) {
+		return result;
+	}
+
+	for(tree_view_node& child : children_) {
+		result = child.find(id, must_be_active);
+		if(result) {
+			return result;
+		}
+	}
+
+	return nullptr;
 }
 
 const widget* tree_view_node::find(const std::string& id, const bool must_be_active) const
 {
 	const widget* result = widget::find(id, must_be_active);
-	return result ? result : grid_.find(id, must_be_active);
+	if(result) {
+		return result;
+	}
+
+	result = grid_.find(id, must_be_active);
+	if(result) {
+		return result;
+	}
+
+	for(const tree_view_node& child : children_) {
+		result = child.find(id, must_be_active);
+		if(result) {
+			return result;
+		}
+	}
+
+	return nullptr;
 }
 
 void tree_view_node::impl_populate_dirty_list(window& caller, const std::vector<widget*>& call_stack)
