@@ -41,8 +41,6 @@ public:
 private:
 	std::string initial_topic_;
 
-	const config& help_cfg_;
-
 	std::map<std::string, int> parsed_pages_;
 
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
@@ -53,7 +51,7 @@ private:
 
 	void on_topic_select(window& window);
 
-	void add_topic(window& window, const config& topic, bool expands, class tree_view_node* parent = nullptr);
+	void add_topic(window& window, const std::string& topic_id, const std::string& topic_title, bool expands, class tree_view_node* parent = nullptr);
 };
 
 } // namespace dialogs
