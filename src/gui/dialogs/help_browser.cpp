@@ -84,7 +84,9 @@ void help_browser::add_topics_for_section(const help::section& parent_section, t
 	}
 
 	for(const help::topic& topic : parent_section.topics) {
-		add_topic(topic.id, topic.title, false, parent_node);
+		if(topic.id.compare(0,2,"..") != 0) {
+			add_topic(topic.id, topic.title, false, parent_node);
+		}
 	}
 }
 
