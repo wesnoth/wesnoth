@@ -19,6 +19,7 @@
 
 #include "game_config_manager.hpp"
 #include "gui/auxiliary/find_widget.hpp"
+#include "gui/widgets/button.hpp"
 #include "gui/widgets/multi_page.hpp"
 #include "gui/widgets/tree_view.hpp"
 #include "gui/widgets/tree_view_node.hpp"
@@ -49,6 +50,12 @@ help_browser::help_browser()
 void help_browser::pre_show(window& window)
 {
 	tree_view& topic_tree = find_widget<tree_view>(&window, "topic_tree", false);
+	button& back_button = find_widget<button>(&window, "back", false);
+	button& next_button = find_widget<button>(&window, "next", false);
+	next_button.set_visible(widget::visibility::hidden);
+	back_button.set_visible(widget::visibility::hidden);
+	connect_signal_mouse_left_click(back_button, std::bind(&help_browser::on_history_navigate, this, true));
+	connect_signal_mouse_left_click(next_button, std::bind(&help_browser::on_history_navigate, this, false));
 
 	connect_signal_notify_modified(topic_tree,
 		std::bind(&help_browser::on_topic_select, this));
@@ -212,8 +219,28 @@ void help_browser::on_topic_select()
 		invalidate_layout();
 	}
 
+	if(!history_.empty()) {
+		history_.erase(std::next(history_pos_), history_.end());
+	}
+	history_.push_back(topic_id);
+	history_pos_ = std::prev(history_.end());
+	find_widget<button>(this, "back", false).set_visible(widget::visibility::visible);
+	find_widget<button>(this, "next", false).set_visible(widget::visibility::hidden);
+
 	const unsigned topic_i = parsed_pages_.at(topic_id);
 	topic_pages.select_page(topic_i);
+}
+
+void help_browser::on_history_navigate(bool backwards) {
+	if(backwards) {
+		history_pos_--;
+	} else {
+		history_pos_++;
+	}
+	find_widget<button>(this, "back", false).set_visible(history_pos_ == history_.begin() ? widget::visibility::hidden : widget::visibility::visible);
+	find_widget<button>(this, "next", false).set_visible(history_pos_ == std::prev(history_.end()) ? widget::visibility::hidden : widget::visibility::visible);
+	const unsigned topic_i = parsed_pages_.at(*history_pos_);
+	find_widget<multi_page>(this, "topic_text_pages", false).select_page(topic_i);
 }
 
 } // namespace dialogs
