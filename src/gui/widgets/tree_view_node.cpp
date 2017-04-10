@@ -801,10 +801,17 @@ tree_view_node* tree_view_node::get_selectable_node_below()
 	return below;
 }
 
-void tree_view_node::select_node()
+void tree_view_node::select_node(bool expand_parents)
 {
 	if(!label_ || label_->get_value_bool()) {
 		return;
+	}
+
+	if(expand_parents) {
+		tree_view_node* root = &get_tree_view().get_root_node();
+		for(tree_view_node* cur = parent_node_; cur != root; cur = cur->parent_node_) {
+			cur->unfold();
+		}
 	}
 
 	if(get_tree_view().selected_item_ && get_tree_view().selected_item_->label_) {
