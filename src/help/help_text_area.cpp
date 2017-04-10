@@ -116,8 +116,8 @@ void help_text_area::set_items()
 	const config& parsed_items = shown_topic_->text.parsed_text();
 	for(auto& item : parsed_items.all_children_range()) {
 #define TRY(name) do { \
-		if (config &child = item.cfg.child(#name)) \
-			handle_##name##_cfg(child); \
+		if (item.key == #name) \
+			handle_##name##_cfg(item.cfg); \
 		} while (0)
 
 		TRY(text);
