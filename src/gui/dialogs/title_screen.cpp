@@ -29,7 +29,6 @@
 #include "gui/dialogs/achievements_dialog.hpp"
 #include "gui/dialogs/core_selection.hpp"
 #include "gui/dialogs/debug_clock.hpp"
-#include "gui/dialogs/game_version_dialog.hpp"
 #include "gui/dialogs/help_browser.hpp"
 #include "gui/dialogs/lua_interpreter.hpp"
 #include "gui/dialogs/message.hpp"
@@ -38,6 +37,7 @@
 #include "gui/dialogs/preferences_dialog.hpp"
 #include "gui/dialogs/screenshot_notification.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
+#include "gui/dialogs/game_version_dialog.hpp"
 #include "gui/dialogs/gui_test_dialog.hpp"
 #include "language.hpp"
 #include "log.hpp"
@@ -247,11 +247,6 @@ void title_screen::init_callbacks()
 	//
 	register_button("help", hotkey::HOTKEY_HELP, []() {
 		help::help_manager help_manager(&game_config_manager::get()->game_config());
-
-		if(gui2::new_widgets) {
-			gui2::dialogs::help_browser::display();
-		}
-
 		help::show_help();
 	});
 
