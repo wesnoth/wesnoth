@@ -83,7 +83,7 @@ private:
 class attack_type_callable : public formula_callable
 {
 public:
-	explicit attack_type_callable(const attack_type& attack) : att_(attack)
+	explicit attack_type_callable(const attack_type& attack) : att_(attack.shared_from_this())
 	{
 		type_ = ATTACK_TYPE_C;
 	}
@@ -93,10 +93,10 @@ public:
 
 	int do_compare(const formula_callable* callable) const override;
 
-	const attack_type& get_attack_type() const { return att_; }
+	const attack_type& get_attack_type() const { return *att_; }
 
 private:
-	const attack_type att_;
+	const_attack_ptr att_;
 };
 
 class unit_callable : public formula_callable

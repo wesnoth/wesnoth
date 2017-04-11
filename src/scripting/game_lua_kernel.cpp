@@ -434,7 +434,7 @@ static int impl_add_animation(lua_State* L)
 		lua_pop(L, 1);
 	}
 
-	anim.add_animation(&u, which, u.get_location(), dest, v1, bars, text, color, hits, primary.get(), secondary.get(), v2);
+	anim.add_animation(&u, which, u.get_location(), dest, v1, bars, text, color, hits, primary, secondary, v2);
 	return 0;
 }
 

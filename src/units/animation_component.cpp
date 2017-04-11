@@ -23,7 +23,7 @@
 
 const unit_animation* unit_animation_component::choose_animation(const display& disp, const map_location& loc,const std::string& event,
 		const map_location& second_loc,const int value,const unit_animation::hit_type hit,
-		const attack_type* attack, const attack_type* second_attack, int swing_num)
+		const_attack_ptr attack, const_attack_ptr second_attack, int swing_num)
 {
 	// Select one of the matching animations at random
 	std::vector<const unit_animation*> options;

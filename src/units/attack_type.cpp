@@ -71,10 +71,6 @@ attack_type::attack_type(const config& cfg) :
 	}
 }
 
-attack_type::~attack_type()
-{
-}
-
 std::string attack_type::accuracy_parry_description() const
 {
 	if(accuracy_ == 0 && parry_ == 0) {

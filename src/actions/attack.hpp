@@ -48,7 +48,7 @@ inline unsigned swarm_blows(unsigned min_blows, unsigned max_blows, unsigned hp,
 /** Structure describing the statistics of a unit involved in the battle. */
 struct battle_context_unit_stats
 {
-	const attack_type *weapon;	/**< The weapon used by the unit to attack the opponent, or nullptr if there is none. */
+	const_attack_ptr weapon;	/**< The weapon used by the unit to attack the opponent, or nullptr if there is none. */
 	int attack_num;			/**< Index into unit->attacks() or -1 for none. */
 	bool is_attacker;		/**< True if the unit is the attacker. */
 	bool is_poisoned;		/**< True if the unit is poisoned at the beginning of the battle. */
@@ -85,13 +85,13 @@ struct battle_context_unit_stats
 	battle_context_unit_stats(const unit &u, const map_location& u_loc,
 		   int u_attack_num, bool attacking,
 		   const unit &opp, const map_location& opp_loc,
-		   const attack_type *opp_weapon,
+		   const_attack_ptr opp_weapon,
 		   const unit_map& units);
 
 	/** Used by AI for combat analysis */
 	battle_context_unit_stats(const unit_type* u_type,
-		   const attack_type* att_weapon, bool attacking,
-		   const unit_type* opp_type, const attack_type* opp_weapon,
+		   const_attack_ptr att_weapon, bool attacking,
+		   const unit_type* opp_type, const_attack_ptr opp_weapon,
 		   unsigned int opp_terrain_defense,
 		   int lawful_bonus = 0);
 

@@ -213,8 +213,10 @@ bool matches_special_filter(const config &cfg, const vconfig& filter)
 		// better to not execute the event (so the problem is more obvious)
 		return false;
 	}
-	const attack_type attack(cfg);
-	return attack.matches_filter(filter.get_parsed_config());
+	// Though it may seem wasteful to put this on the heap, it's necessary.
+	// matches_filter() could potentially call a WFL formula, which would call shared_from_this().
+	auto attack = std::make_shared<const attack_type>(cfg);
+	return attack->matches_filter(filter.get_parsed_config());
 }
 
 } // end namespace game_events

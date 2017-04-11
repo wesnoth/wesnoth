@@ -679,7 +679,7 @@ std::string attack_type::weapon_specials(bool only_active, bool is_backstab) con
 void attack_type::set_specials_context(const map_location& unit_loc,
                                        const map_location& other_loc,
                                        bool attacking,
-                                       const attack_type *other_attack) const
+                                       const_attack_ptr other_attack) const
 {
 	self_loc_ = unit_loc;
 	other_loc_ = other_loc;
@@ -808,7 +808,7 @@ namespace { // Helpers for attack_type::special_active()
 	static bool special_unit_matches(const unit_map::const_iterator & un_it,
 									 const unit_map::const_iterator & u2,
 		                             const map_location & loc,
-		                             const attack_type * weapon,
+		                             const_attack_ptr weapon,
 		                             const config & filter,
 									 const bool for_listing,
 		                             const std::string & child_tag)
@@ -909,11 +909,11 @@ bool attack_type::special_active(const config& special, AFFECTS whom,
 	unit_map::const_iterator & def = is_attacker_ ? other : self;
 	const map_location & att_loc   = is_attacker_ ? self_loc_ : other_loc_;
 	const map_location & def_loc   = is_attacker_ ? other_loc_ : self_loc_;
-	const attack_type * att_weapon = is_attacker_ ? this : other_attack_;
-	const attack_type * def_weapon = is_attacker_ ? other_attack_ : this;
+	const_attack_ptr att_weapon = is_attacker_ ? shared_from_this() : other_attack_;
+	const_attack_ptr def_weapon = is_attacker_ ? other_attack_ : shared_from_this();
 
 	// Filter the units involved.
-	if (!special_unit_matches(self, other, self_loc_, this, special, is_for_listing_, "filter_self"))
+	if (!special_unit_matches(self, other, self_loc_, shared_from_this(), special, is_for_listing_, "filter_self"))
 		return false;
 	if (!special_unit_matches(other, self, other_loc_, other_attack_, special, is_for_listing_, "filter_opponent"))
 		return false;

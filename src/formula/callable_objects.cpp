@@ -66,33 +66,33 @@ void location_callable::serialize_to_string(std::string& str) const
 variant attack_type_callable::get_value(const std::string& key) const
 {
 	if(key == "id" || key == "name") {
-		return variant(att_.id());
+		return variant(att_->id());
 	} else if(key == "description") {
-		return variant(att_.name());
+		return variant(att_->name());
 	} else if(key == "type") {
-		return variant(att_.type());
+		return variant(att_->type());
 	} else if(key == "icon") {
-		return variant(att_.icon());
+		return variant(att_->icon());
 	} else if(key == "range") {
-		return variant(att_.range());
+		return variant(att_->range());
 	} else if(key == "damage") {
-		return variant(att_.damage());
+		return variant(att_->damage());
 	} else if(key == "number_of_attacks" || key == "number" || key == "num_attacks" || key == "attacks") {
-		return variant(att_.num_attacks());
+		return variant(att_->num_attacks());
 	} else if(key == "attack_weight") {
-		return variant(att_.attack_weight(), variant::DECIMAL_VARIANT);
+		return variant(att_->attack_weight(), variant::DECIMAL_VARIANT);
 	} else if(key == "defense_weight") {
-		return variant(att_.defense_weight(), variant::DECIMAL_VARIANT);
+		return variant(att_->defense_weight(), variant::DECIMAL_VARIANT);
 	} else if(key == "accuracy") {
-		return variant(att_.accuracy());
+		return variant(att_->accuracy());
 	} else if(key == "parry") {
-		return variant(att_.parry());
+		return variant(att_->parry());
 	} else if(key == "movement_used") {
-		return variant(att_.movement_used());
+		return variant(att_->movement_used());
 	} else if(key == "specials" || key == "special") {
 		std::vector<variant> res;
 
-		for(const auto& special : att_.specials().all_children_range()) {
+		for(const auto& special : att_->specials().all_children_range()) {
 			if(!special.cfg["id"].empty()) {
 				res.emplace_back(special.cfg["id"].str());
 			}
@@ -127,27 +127,27 @@ int attack_type_callable::do_compare(const formula_callable* callable) const
 		return formula_callable::do_compare(callable);
 	}
 
-	if(att_.damage() != att_callable->att_.damage()) {
-		return att_.damage() - att_callable->att_.damage();
+	if(att_->damage() != att_callable->att_->damage()) {
+		return att_->damage() - att_callable->att_->damage();
 	}
 
-	if(att_.num_attacks() != att_callable->att_.num_attacks()) {
-		return att_.num_attacks() - att_callable->att_.num_attacks();
+	if(att_->num_attacks() != att_callable->att_->num_attacks()) {
+		return att_->num_attacks() - att_callable->att_->num_attacks();
 	}
 
-	if(att_.id() != att_callable->att_.id()) {
-		return att_.id().compare(att_callable->att_.id());
+	if(att_->id() != att_callable->att_->id()) {
+		return att_->id().compare(att_callable->att_->id());
 	}
 
-	if(att_.type() != att_callable->att_.type()) {
-		return att_.type().compare(att_callable->att_.type());
+	if(att_->type() != att_callable->att_->type()) {
+		return att_->type().compare(att_callable->att_->type());
 	}
 
-	if(att_.range() != att_callable->att_.range()) {
-		return att_.range().compare(att_callable->att_.range());
+	if(att_->range() != att_callable->att_->range()) {
+		return att_->range().compare(att_callable->att_->range());
 	}
 
-	return att_.weapon_specials().compare(att_callable->att_.weapon_specials());
+	return att_->weapon_specials().compare(att_callable->att_->weapon_specials());
 }
 
 variant unit_callable::get_value(const std::string& key) const

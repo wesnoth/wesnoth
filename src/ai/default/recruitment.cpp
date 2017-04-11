@@ -1056,7 +1056,7 @@ struct attack_simulation {
 
 	attack_simulation(const unit_type* attacker, const unit_type* defender,
 			double attacker_defense, double defender_defense,
-			const attack_type* att_weapon, const attack_type* def_weapon,
+			const_attack_ptr att_weapon, const_attack_ptr def_weapon,
 			int average_lawful_bonus) :
 			attacker_type(attacker),
 			defender_type(defender),
@@ -1133,7 +1133,7 @@ void recruitment::simulate_attack(
 			std::shared_ptr<attack_simulation> simulation(new attack_simulation(
 					attacker, defender,
 					attacker_defense, defender_defense,
-					&att_weapon, &def_weapon, average_lawful_bonus_));
+					att_weapon.shared_from_this(), def_weapon.shared_from_this(), average_lawful_bonus_));
 			if (!best_def_response || simulation->better_result(best_def_response.get(), true)) {
 				best_def_response = simulation;
 			}
@@ -1144,7 +1144,7 @@ void recruitment::simulate_attack(
 			best_def_response.reset(new attack_simulation(
 					attacker, defender,
 					attacker_defense, defender_defense,
-					&att_weapon, nullptr, average_lawful_bonus_));
+					att_weapon.shared_from_this(), nullptr, average_lawful_bonus_));
 		}
 		if (!best_att_attack || best_def_response->better_result(best_att_attack.get(), false)) {
 			best_att_attack = best_def_response;

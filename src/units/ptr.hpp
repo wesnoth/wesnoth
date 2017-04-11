@@ -20,6 +20,7 @@
 #define UNIT_PTR_H_INCLUDED
 
 #include <boost/intrusive_ptr.hpp>
+#include <memory>
 
 class unit;
 
@@ -28,5 +29,12 @@ void intrusive_ptr_release(const unit *);
 
 typedef boost::intrusive_ptr<unit> unit_ptr;
 typedef boost::intrusive_ptr<const unit> unit_const_ptr;
+
+// And attacks too!
+
+class attack_type;
+
+using attack_ptr = std::shared_ptr<attack_type>;
+using const_attack_ptr = std::shared_ptr<const attack_type>;
 
 #endif

@@ -498,7 +498,7 @@ void move_unit(const std::vector<map_location>& path, unit_ptr u,
 void reset_helpers(const unit *attacker,const unit *defender);
 
 void unit_draw_weapon(const map_location& loc, unit& attacker,
-		const attack_type* attack,const attack_type* secondary_attack, const map_location& defender_loc,unit* defender)
+		const_attack_ptr attack,const_attack_ptr secondary_attack, const map_location& defender_loc,unit* defender)
 {
 	display* disp = display::get_singleton();
 	if(!disp ||disp->video().update_locked() || disp->video().faked() || disp->fogged(loc) || preferences::show_combat() == false) {
@@ -516,7 +516,7 @@ void unit_draw_weapon(const map_location& loc, unit& attacker,
 
 
 void unit_sheath_weapon(const map_location& primary_loc, unit* primary_unit,
-		const attack_type* primary_attack,const attack_type* secondary_attack, const map_location& secondary_loc,unit* secondary_unit)
+		const_attack_ptr primary_attack,const_attack_ptr secondary_attack, const map_location& secondary_loc,unit* secondary_unit)
 {
 	display* disp = display::get_singleton();
 	if(!disp ||disp->video().update_locked() || disp->video().faked() || disp->fogged(primary_loc) || preferences::show_combat() == false) {
@@ -546,7 +546,7 @@ void unit_sheath_weapon(const map_location& primary_loc, unit* primary_unit,
 
 
 void unit_die(const map_location& loc, unit& loser,
-		const attack_type* attack,const attack_type* secondary_attack, const map_location& winner_loc,unit* winner)
+		const_attack_ptr attack,const_attack_ptr secondary_attack, const map_location& winner_loc,unit* winner)
 {
 	display* disp = display::get_singleton();
 	if(!disp ||disp->video().update_locked() || disp->video().faked() || disp->fogged(loc) || preferences::show_combat() == false) {
@@ -571,7 +571,7 @@ void unit_die(const map_location& loc, unit& loser,
 
 void unit_attack(display * disp, game_board & board,
                  const map_location& a, const map_location& b, int damage,
-                 const attack_type& attack, const attack_type* secondary_attack,
+                 const attack_type& attack, const_attack_ptr secondary_attack,
                  int swing,const std::string& hit_text,int drain_amount,const std::string& att_text, const std::vector<std::string>* extra_hit_sounds)
 {
 	if(!disp ||disp->video().update_locked() || disp->video().faked() ||
@@ -618,12 +618,12 @@ void unit_attack(display * disp, game_board & board,
 	animator.add_animation(&attacker, "attack", att->get_location(),
 		def->get_location(), damage, true,  text_2,
 		(drain_amount >= 0) ? color_t(0,255,0) : color_t(255,0,0),
-		hit_type, &attack, secondary_attack, swing);
+		hit_type, attack.shared_from_this(), secondary_attack, swing);
 
 	// note that we take an anim from the real unit, we'll use it later
 	const unit_animation *defender_anim = def->anim_comp().choose_animation(*disp,
 		def->get_location(), "defend", att->get_location(), damage,
-		hit_type, &attack, secondary_attack, swing);
+		hit_type, attack.shared_from_this(), secondary_attack, swing);
 	animator.add_animation(&defender, defender_anim, def->get_location(),
 		true,  text , {255,0,0});
 
@@ -635,7 +635,7 @@ void unit_attack(display * disp, game_board & board,
 		leader->set_facing(ability.second.get_relative_dir(a));
 		animator.add_animation(&*leader, "leading", ability.second,
 			att->get_location(), damage, true,  "", {0,0,0},
-			hit_type, &attack, secondary_attack, swing);
+			hit_type, attack.shared_from_this(), secondary_attack, swing);
 	}
 	for (const unit_ability & ability : helpers) {
 		if(ability.second == a) continue;
@@ -645,7 +645,7 @@ void unit_attack(display * disp, game_board & board,
 		helper->set_facing(ability.second.get_relative_dir(b));
 		animator.add_animation(&*helper, "resistance", ability.second,
 			def->get_location(), damage, true,  "", {0,0,0},
-			hit_type, &attack, secondary_attack, swing);
+			hit_type, attack.shared_from_this(), secondary_attack, swing);
 	}
 
 

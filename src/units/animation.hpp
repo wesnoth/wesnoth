@@ -10,7 +10,7 @@
    but WITHOUT ANY WARRANTY.
 
    See the COPYING file for more details.
-   */
+*/
 #ifndef UNIT_ANIMATION_H_INCLUDED
 #define UNIT_ANIMATION_H_INCLUDED
 
@@ -21,7 +21,6 @@
 #include "units/ptr.hpp"
 #include "utils/make_enum.hpp"
 
-class attack_type;
 class display;
 class unit;
 
@@ -43,7 +42,7 @@ public:
 	static void fill_initial_animations(std::vector<unit_animation>& animations, const config& cfg);
 	static void add_anims(std::vector<unit_animation>& animations, const config& cfg);
 
-	int matches(const display& disp, const map_location& loc, const map_location& second_loc, const unit* my_unit, const std::string& event = "", const int value = 0, hit_type hit = hit_type::INVALID, const attack_type* attack = nullptr, const attack_type* second_attack = nullptr, int value2 = 0) const;
+	int matches(const display& disp, const map_location& loc, const map_location& second_loc, const unit* my_unit, const std::string& event = "", const int value = 0, hit_type hit = hit_type::INVALID, const_attack_ptr attack = nullptr, const_attack_ptr second_attack = nullptr, int value2 = 0) const;
 
 	const unit_frame& get_last_frame() const
 	{
@@ -208,8 +207,8 @@ public:
 		, const color_t text_color = {0,0,0}
 		, const unit_animation::hit_type hit_type =
 			unit_animation::hit_type::INVALID
-		, const attack_type* attack = nullptr
-		, const attack_type* second_attack = nullptr
+		, const_attack_ptr attack = nullptr
+		, const_attack_ptr second_attack = nullptr
 		, int value2 = 0);
 
 	void replace_anim_if_invalid(const unit* animated_unit
@@ -221,8 +220,8 @@ public:
 		, const std::string& text = ""
 		, const color_t text_color = {0,0,0}
 		, const unit_animation::hit_type hit_type = unit_animation::hit_type::INVALID
-		, const attack_type* attack = nullptr
-		, const attack_type* second_attack = nullptr
+		, const_attack_ptr attack = nullptr
+		, const_attack_ptr second_attack = nullptr
 		, int value2 = 0);
 	void start_animations();
 	void pause_animation();

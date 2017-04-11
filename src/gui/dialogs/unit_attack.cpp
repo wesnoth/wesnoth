@@ -109,8 +109,9 @@ void unit_attack::pre_show(window& window)
 	listbox& weapon_list = find_widget<listbox>(&window, "weapon_list", false);
 	window.keyboard_capture(&weapon_list);
 
-	const config empty;
-	const attack_type no_weapon(empty);
+	// Possible TODO: If a "blank weapon" is generally useful, add it as a static member in attack_type.
+	static const config empty;
+	static const_attack_ptr no_weapon(new attack_type(empty));
 
 	for(const auto & weapon : weapons_) {
 		const battle_context_unit_stats& attacker = weapon.get_attacker_stats();
@@ -119,7 +120,7 @@ void unit_attack::pre_show(window& window)
 		const attack_type& attacker_weapon =
 			*attacker.weapon;
 		const attack_type& defender_weapon = defender.weapon ?
-			*defender.weapon : no_weapon;
+			*defender.weapon : *no_weapon;
 
 		// Don't show if the atacker's weapon has at least one active "disable" special.
 		if(attacker_weapon.get_special_bool("disable")) {

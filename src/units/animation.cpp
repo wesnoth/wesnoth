@@ -10,7 +10,7 @@
    but WITHOUT ANY WARRANTY.
 
    See the COPYING file for more details.
-   */
+*/
 
 #include "units/animation.hpp"
 
@@ -374,8 +374,8 @@ unit_animation::unit_animation(const config& cfg,const std::string& frame_string
 }
 
 int unit_animation::matches(const display& disp, const map_location& loc, const map_location& second_loc,
-		const unit* my_unit, const std::string& event, const int value, hit_type hit, const attack_type* attack,
-		const attack_type* second_attack, int value2) const
+		const unit* my_unit, const std::string& event, const int value, hit_type hit, const_attack_ptr attack,
+		const_attack_ptr second_attack, int value2) const
 {
 	int result = base_score_;
 
@@ -1301,8 +1301,8 @@ void unit_animator::add_animation(const unit* animated_unit
 		, const std::string& text
 		, const color_t text_color
 		, const unit_animation::hit_type hit_type
-		, const attack_type* attack
-		, const attack_type* second_attack
+		, const_attack_ptr attack
+		, const_attack_ptr second_attack
 		, int value2)
 {
 	if(!animated_unit) return;
@@ -1355,8 +1355,8 @@ void unit_animator::replace_anim_if_invalid(const unit* animated_unit
 	, const std::string& text
 	, const color_t text_color
 	, const unit_animation::hit_type hit_type
-	, const attack_type* attack
-	, const attack_type* second_attack
+	, const_attack_ptr attack
+	, const_attack_ptr second_attack
 	, int value2)
 {
 	if(!animated_unit) return;

@@ -89,13 +89,13 @@ void move_unit(const std::vector<map_location>& path, unit_ptr u,
  * Play a pre-fight animation
  * First unit is the attacker, second unit the defender
  */
-void unit_draw_weapon( const map_location& loc, unit& u, const attack_type* attack=nullptr, const attack_type*secondary_attack=nullptr,const map_location& defender_loc = map_location::null_location(), unit * defender=nullptr);
+void unit_draw_weapon( const map_location& loc, unit& u, const_attack_ptr attack=nullptr, const_attack_ptr secondary_attack=nullptr,const map_location& defender_loc = map_location::null_location(), unit * defender=nullptr);
 
 /**
  * Play a post-fight animation
  * Both unit can be set to null, only valid units will play their animation
  */
-void unit_sheath_weapon( const map_location& loc, unit* u=nullptr, const attack_type* attack=nullptr, const attack_type*secondary_attack=nullptr,const map_location& defender_loc = map_location::null_location(), unit * defender=nullptr);
+void unit_sheath_weapon( const map_location& loc, unit* u=nullptr, const_attack_ptr attack=nullptr, const_attack_ptr secondary_attack=nullptr,const map_location& defender_loc = map_location::null_location(), unit * defender=nullptr);
 
 /**
  * Show a unit fading out.
@@ -103,7 +103,7 @@ void unit_sheath_weapon( const map_location& loc, unit* u=nullptr, const attack_
  * Note: this only shows the effect, it doesn't actually kill the unit.
  */
  void unit_die( const map_location& loc, unit& u,
-	const attack_type* attack=nullptr, const attack_type* secondary_attack=nullptr,
+	const_attack_ptr attack=nullptr, const_attack_ptr secondary_attack=nullptr,
 	const map_location& winner_loc=map_location::null_location(),
 	unit* winner=nullptr);
 
@@ -119,7 +119,7 @@ void unit_sheath_weapon( const map_location& loc, unit* u=nullptr, const attack_
  */
 void unit_attack(display * disp, game_board & board, //TODO: Would be nice if this could be purely a display function and defer damage dealing to its caller
 	const map_location& a, const map_location& b, int damage,
-	const attack_type& attack, const attack_type* secondary_attack,
+	const attack_type& attack, const_attack_ptr secondary_attack,
 	int swing, const std::string& hit_text, int drain_amount, const std::string& att_text, const std::vector<std::string>* extra_hit_sounds=nullptr);
 
 

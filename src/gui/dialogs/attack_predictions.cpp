@@ -126,7 +126,7 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 	ss.str("");
 
 	// Set specials context (for safety, it should not have changed normally).
-	const attack_type* weapon = attacker.stats_.weapon;
+	const_attack_ptr weapon = attacker.stats_.weapon;
 	weapon->set_specials_context(attacker.unit_.get_location(), defender.unit_.get_location(), attacker.stats_.is_attacker, defender.stats_.weapon);
 
 	// Get damage modifiers.
