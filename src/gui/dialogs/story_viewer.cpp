@@ -328,9 +328,18 @@ void story_viewer::draw_floating_image(window& window, floating_image_list::cons
 
 	window.set_is_dirty(true);
 
-	// Schedule the next image draw. This *must* be a non-repeating timer!
-	timer_id_ = add_timer(floating_image.display_delay(),
-		std::bind(&story_viewer::draw_floating_image, this, std::ref(window), ++image_iter, this_part_index), false);
+	++image_iter
+
+	// If a delay is specified, schedule the next image draw. This *must* be a non-repeating timer!
+	// Else draw the next image immediately.
+	const unsigned int draw_delay = floating_image.display_delay();
+
+	if(draw_delay != 0) {
+		timer_id_ = add_timer(draw_delay,
+			std::bind(&story_viewer::draw_floating_image, this, std::ref(window), image_iter, this_part_index), false);
+	} else {
+		draw_floating_image(window, image_iter, this_part_index);
+	}
 }
 
 void story_viewer::nav_button_callback(window& window, NAV_DIRECTION direction)
