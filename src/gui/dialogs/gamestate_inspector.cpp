@@ -365,29 +365,29 @@ public:
 	}
 
 	template<typename T>
-	T& get_controller()
+	std::shared_ptr<T> get_controller()
 	{
 		for(auto& c : controllers) {
-			if(T* p = dynamic_cast<T*>(c)) {
-				return *p;
+			if(std::shared_ptr<T> p = std::dynamic_pointer_cast<T>(c)) {
+				return p;
 			}
 		}
-		T* p = new T(*this);
+		std::shared_ptr<T> p = std::make_shared<T>(*this);
 		controllers.push_back(p);
-		return *p;
+		return p;
 	}
 
 	template<typename C>
 	void set_node_callback(const std::vector<int>& node_path, void (C::* fcn)(tree_view_node&))
 	{
-		C& sub_controller = get_controller<C>();
+		C& sub_controller = *get_controller<C>();
 		callbacks.emplace(node_path, std::bind(fcn, sub_controller, _1));
 	}
 
 	template<typename C, typename T>
 	void set_node_callback(const std::vector<int>& node_path, void (C::* fcn)(tree_view_node&, T), T param)
 	{
-		C& sub_controller = get_controller<C>();
+		C& sub_controller = *get_controller<C>();
 		callbacks.emplace(node_path, std::bind(fcn, sub_controller, _1, param));
 	}
 
@@ -480,7 +480,7 @@ private:
 	view& view_;
 	using node_callback = std::function<void(tree_view_node&)>;
 	using node_callback_map = std::map<std::vector<int>, node_callback>;
-	std::vector<single_mode_controller*> controllers;
+	std::vector<std::shared_ptr<single_mode_controller>> controllers;
 	node_callback_map callbacks;
 	const config& vars_;
 	const game_events::manager& events_;
