@@ -137,26 +137,24 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 										 + std::pow(static_cast<double>(drag_from_y_- my), 2);
 			if (drag_distance > drag_threshold()*drag_threshold()) {
 				dragging_started_ = true;
-//				cursor::set_dragging(true);
 			}
 		}
 	}
 	
-	// my own panning...
-	bool selected_hex_has_unit = find_unit(selected_hex_).valid();
-	if (!selected_hex_has_unit && is_dragging() && dragging_started_) {
-		// Here, naive pan. In general, is it a problem that panning is synchronous?
-		// Does it use CPU? I think on iOS GPU is much more appropriate for panning.
-		// What does SDL2 have to offer?
-		
+	// Not-so-smooth panning
+	const auto found_unit = find_unit(selected_hex_);
+	bool selected_hex_has_my_unit = found_unit.valid() && found_unit.get_shared_ptr()->side() == side_num_;
+	if((browse || !selected_hex_has_my_unit) && is_dragging() && dragging_started_) {
 		SDL_GetMouseState(&mx, &my);
 		
-		int dx = drag_from_x_ - mx;
-		int dy = drag_from_y_ - my;
-		
-		gui().scroll(dx, dy);
-		drag_from_x_ = mx;
-		drag_from_y_ = my;
+		if(sdl::point_in_rect(x, y, gui().map_area())) {
+			int dx = drag_from_x_ - mx;
+			int dy = drag_from_y_ - my;
+			
+			gui().scroll(dx, dy);
+			drag_from_x_ = mx;
+			drag_from_y_ = my;
+		}
 		return;
 	}
 	
@@ -193,9 +191,9 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 		if (!current_paths_.destinations.empty() && !show_partial_move_) {
 			{ // start planned unit map scope
 				wb::future_map_if_active planned_unit_map;
-				selected_hex_has_unit = find_unit(selected_hex_).valid();
+				selected_hex_has_my_unit = found_unit.valid();
 			} // end planned unit map scope
-			if(selected_hex_.valid() && selected_hex_has_unit ) {
+			if(selected_hex_.valid() && selected_hex_has_my_unit) {
 				// FIXME: vic: why doesn't this trigger when touch-dragging an unselected unit?
 				// reselect the unit without firing events (updates current_paths_)
 				select_hex(selected_hex_, true);
@@ -232,7 +230,7 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 	
 	{ // start planned unit map scope
 		wb::future_map_if_active planned_unit_map;
-		selected_unit = find_unit(selected_hex_);
+		selected_unit = found_unit;
 		mouseover_unit = find_unit(new_hex);
 		
 		// we search if there is an attack possibility and where
@@ -535,9 +533,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 			un.reset();
 	} //end planned unit map scope
 
-	if ( (!selected_hex_.valid()) && un && current_paths_.destinations.empty() &&
-			!gui().fogged(un->get_location()))
-	{
+	if(!selected_hex_.valid() && un && current_paths_.destinations.empty() && !gui().fogged(un->get_location())) {
 		if (un->side() == side_num_) {
 			//unit is on our team, show path if the unit has one
 			const map_location go_to = un->get_goto();
