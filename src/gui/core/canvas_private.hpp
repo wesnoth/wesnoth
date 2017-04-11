@@ -220,7 +220,8 @@ private:
 	enum resize_mode {
 		scale,
 		stretch,
-		tile
+		tile,
+		tile_center,
 	};
 
 	/** Converts a string to a resize mode. */
