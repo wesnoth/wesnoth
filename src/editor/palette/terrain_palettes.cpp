@@ -95,7 +95,7 @@ void terrain_palette::setup(const config& cfg)
 
 	std::map<std::string, item_group*> id_to_group;
 	for (item_group& group : groups_) {
-		id_to_group.insert(std::make_pair(group.id, &group));
+		id_to_group.emplace(group.id, &group);
 	}
 
 	// add the groups for all terrains to the map

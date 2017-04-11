@@ -3214,7 +3214,7 @@ namespace { // Types
 			loc_(loc),
 			too_many_recursions_(false)
 		{
-			counter::iterator inserted = counter_.insert(std::make_pair(loc_, 0)).first;
+			counter::iterator inserted = counter_.emplace(loc_, 0).first;
 			++inserted->second;
 			too_many_recursions_ = inserted->second >= max_recursion;
 		}

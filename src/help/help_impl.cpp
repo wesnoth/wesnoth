@@ -409,7 +409,7 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 			std::vector<std::pair<t_string, t_string> > specials = atk.special_tooltips();
 			for ( size_t i = 0; i != specials.size(); ++i )
 			{
-				special_description.insert(std::make_pair(specials[i].first, specials[i].second));
+				special_description.emplace(specials[i].first, specials[i].second);
 
 				if (!type.hide_help()) {
 					//add a link in the list of units having this special
@@ -430,7 +430,7 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 				if(effect["apply_to"] == "new_attack" && effect.has_child("specials")) {
 					for(config::any_child spec : effect.child("specials").all_children_range()) {
 						if(!spec.cfg["name"].empty()) {
-							special_description.insert(std::make_pair(spec.cfg["name"].t_str(), spec.cfg["description"].t_str()));
+							special_description.emplace(spec.cfg["name"].t_str(), spec.cfg["description"].t_str());
 							if(!type.hide_help()) {
 								//add a link in the list of units having this special
 								std::string type_name = type.type_name();
@@ -447,7 +447,7 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 				} else if(effect["apply_to"] == "attack" && effect.has_child("set_specials")) {
 					for(config::any_child spec : effect.child("set_specials").all_children_range()) {
 						if(!spec.cfg["name"].empty()) {
-							special_description.insert(std::make_pair(spec.cfg["name"].t_str(), spec.cfg["description"].t_str()));
+							special_description.emplace(spec.cfg["name"].t_str(), spec.cfg["description"].t_str());
 							if(!type.hide_help()) {
 								//add a link in the list of units having this special
 								std::string type_name = type.type_name();
@@ -517,7 +517,7 @@ std::vector<topic> generate_ability_topics(const bool sort_generated)
 					const std::string abil_desc =
 						j >= desc_vec.size() ? "" : desc_vec[j].str();
 
-					ability_description.insert(std::make_pair(abil_name, abil_desc));
+					ability_description.emplace(abil_name, abil_desc);
 
 					if (!type.hide_help()) {
 						//add a link in the list of units with this ability
@@ -671,7 +671,7 @@ std::vector<topic> generate_trait_topics(const bool sort_generated)
 
 	for (const config & trait : unit_types.traits()) {
 		const std::string trait_id = trait["id"];
-		trait_list.insert(std::make_pair(trait_id, trait));
+		trait_list.emplace(trait_id, trait);
 	}
 
 
@@ -682,13 +682,13 @@ std::vector<topic> generate_trait_topics(const bool sort_generated)
 			if (config::const_child_itors traits = type.possible_traits()) {
 				for (const config & trait : traits) {
 					const std::string trait_id = trait["id"];
-					trait_list.insert(std::make_pair(trait_id, trait));
+					trait_list.emplace(trait_id, trait);
 				}
 			}
 			if (const unit_race *r = unit_types.find_race(type.race_id())) {
 				for (const config & trait : r->additional_traits()) {
 					const std::string trait_id = trait["id"];
-					trait_list.insert(std::make_pair(trait_id, trait));
+					trait_list.emplace(trait_id, trait);
 				}
 			}
 		}

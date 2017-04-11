@@ -177,8 +177,8 @@ void server::load_config()
 	load_blacklist();
 
 	// Load any configured hooks.
-	hooks_.insert(std::make_pair(std::string("hook_post_upload"), cfg_["hook_post_upload"]));
-	hooks_.insert(std::make_pair(std::string("hook_post_erase"), cfg_["hook_post_erase"]));
+	hooks_.emplace(std::string("hook_post_upload"), cfg_["hook_post_upload"]);
+	hooks_.emplace(std::string("hook_post_erase"), cfg_["hook_post_erase"]);
 
 #ifndef _WIN32
 	// Open the control socket if enabled.

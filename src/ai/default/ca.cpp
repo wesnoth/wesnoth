@@ -474,14 +474,14 @@ double move_leader_to_keep_phase::evaluate()
 		return BAD_SCORE;
 	}
 	//define the next hop to have the lowest cost (0)
-	moves_toward_keep.insert(std::make_pair(0, next_hop));
+	moves_toward_keep.emplace(0, next_hop);
 
 	for (const pathfind::paths::step &dest : leader_paths.destinations) {
 		if (!units_.find(dest.curr).valid()) {
 			route = pathfind::a_star_search(dest.curr, next_hop, 10000.0, calc,
 					resources::gameboard->map().w(), resources::gameboard->map().h(), &allowed_teleports);
 			if (route.move_cost < next_hop_cost) {
-				moves_toward_keep.insert(std::make_pair(route.move_cost, dest.curr));
+				moves_toward_keep.emplace(route.move_cost, dest.curr);
 			}
 		}
 	}
@@ -613,7 +613,7 @@ void get_villages_phase::get_villages(
 			continue;
 		}
 		if(u_itor->side() == get_side() && u_itor->movement_left()) {
-			reachmap.insert(std::make_pair(u_itor->get_location(),	std::vector<map_location>()));
+			reachmap.emplace(u_itor->get_location(),	std::vector<map_location>());
 		}
 	}
 
@@ -990,7 +990,7 @@ void get_villages_phase::dispatch_complex(
 	for(size_t u = 0; u < unit_count; ++u, ++itor) {
 		units[u] = itor->first;
 		villages_per_unit[u] = itor->second.size();
-		unit_lookup.insert(std::make_pair(villages_per_unit[u], u));
+		unit_lookup.emplace(villages_per_unit[u], u);
 
 		assert(itor->second.size() >= 2);
 

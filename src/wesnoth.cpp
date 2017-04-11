@@ -255,7 +255,7 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 			}
 
 			LOG_PREPROC << "adding define: " << define << '\n';
-			defines_map.insert(std::make_pair(define, preproc_define(define)));
+			defines_map.emplace(define, preproc_define(define));
 
 			if (define == "SKIP_CORE")
 			{

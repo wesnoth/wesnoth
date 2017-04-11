@@ -65,24 +65,24 @@ void editor_toolkit::init_sidebar(const config& game_config)
 
 void editor_toolkit::init_mouse_actions(context_manager& cmanager)
 {
-	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_PAINT,
-		std::make_shared<mouse_action_paint>(&brush_, key_, *palette_manager_->terrain_palette_.get())));
-	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_FILL,
-		std::make_shared<mouse_action_fill>(key_, *palette_manager_->terrain_palette_.get())));
-	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_SELECT,
-		std::make_shared<mouse_action_select>(&brush_, key_, *palette_manager_->empty_palette_.get())));
-	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_STARTING_POSITION,
-		std::make_shared<mouse_action_starting_position>(key_, *palette_manager_->location_palette_.get())));
-	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_LABEL,
-		std::make_shared<mouse_action_map_label>(key_, *palette_manager_->empty_palette_.get())));
-	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_UNIT,
-		std::make_shared<mouse_action_unit>(key_, *palette_manager_->unit_palette_.get())));
-	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_VILLAGE,
-		std::make_shared<mouse_action_village>(key_, *palette_manager_->empty_palette_.get())));
-	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_CLIPBOARD_PASTE,
-		std::make_shared<mouse_action_paste>(cmanager.get_clipboard(), key_, *palette_manager_->empty_palette_.get())));
-	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_ITEM,
-		std::make_shared<mouse_action_item>(key_, *palette_manager_->item_palette_.get())));
+	mouse_actions_.emplace(hotkey::HOTKEY_EDITOR_TOOL_PAINT,
+		std::make_shared<mouse_action_paint>(&brush_, key_, *palette_manager_->terrain_palette_.get()));
+	mouse_actions_.emplace(hotkey::HOTKEY_EDITOR_TOOL_FILL,
+		std::make_shared<mouse_action_fill>(key_, *palette_manager_->terrain_palette_.get()));
+	mouse_actions_.emplace(hotkey::HOTKEY_EDITOR_TOOL_SELECT,
+		std::make_shared<mouse_action_select>(&brush_, key_, *palette_manager_->empty_palette_.get()));
+	mouse_actions_.emplace(hotkey::HOTKEY_EDITOR_TOOL_STARTING_POSITION,
+		std::make_shared<mouse_action_starting_position>(key_, *palette_manager_->location_palette_.get()));
+	mouse_actions_.emplace(hotkey::HOTKEY_EDITOR_TOOL_LABEL,
+		std::make_shared<mouse_action_map_label>(key_, *palette_manager_->empty_palette_.get()));
+	mouse_actions_.emplace(hotkey::HOTKEY_EDITOR_TOOL_UNIT,
+		std::make_shared<mouse_action_unit>(key_, *palette_manager_->unit_palette_.get()));
+	mouse_actions_.emplace(hotkey::HOTKEY_EDITOR_TOOL_VILLAGE,
+		std::make_shared<mouse_action_village>(key_, *palette_manager_->empty_palette_.get()));
+	mouse_actions_.emplace(hotkey::HOTKEY_EDITOR_CLIPBOARD_PASTE,
+		std::make_shared<mouse_action_paste>(cmanager.get_clipboard(), key_, *palette_manager_->empty_palette_.get()));
+	mouse_actions_.emplace(hotkey::HOTKEY_EDITOR_TOOL_ITEM,
+		std::make_shared<mouse_action_item>(key_, *palette_manager_->item_palette_.get()));
 
 	for (const theme::menu& menu : gui_.get_theme().menus()) {
 		if (menu.items().size() == 1) {

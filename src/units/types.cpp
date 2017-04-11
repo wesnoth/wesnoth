@@ -1017,7 +1017,7 @@ void unit_type_data::set_config(config &cfg)
 
 	for (const config &mt : cfg.child_range("movetype"))
 	{
-		movement_types_.insert(std::make_pair(mt["name"].str(), movetype(mt)));
+		movement_types_.emplace(mt["name"].str(), movetype(mt));
 		gui2::dialogs::loading_screen::progress();
 	}
 

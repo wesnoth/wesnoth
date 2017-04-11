@@ -220,13 +220,13 @@ teleport_map::teleport_map(
 			if(teleport_map_.count(*source_it) == 0) {
 				std::set<std::string> id_set;
 				id_set.insert(teleport_id);
-				teleport_map_.insert(std::make_pair(*source_it, id_set));
+				teleport_map_.emplace(*source_it, id_set);
 			} else {
 				(teleport_map_.find(*source_it)->second).insert(teleport_id);
 			}
 		}
-		sources_.insert(std::make_pair(teleport_id, locations.first));
-		targets_.insert(std::make_pair(teleport_id, locations.second));
+		sources_.emplace(teleport_id, locations.first);
+		targets_.emplace(teleport_id, locations.second);
 	}
 }
 

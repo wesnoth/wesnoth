@@ -243,7 +243,7 @@ void locator::init_index()
 
 	if ( i == locator_finder.end() ) {
 		index_ = last_index_++;
-		locator_finder.insert(std::make_pair(val_, index_));
+		locator_finder.emplace(val_, index_);
 	} else {
 		index_ = i->second;
 	}
@@ -1083,7 +1083,7 @@ bool exists(const image::locator& i_locator)
 
 	// The insertion will fail if there is already an element in the cache
 	std::pair< std::map< std::string, bool >::iterator, bool >
-		it = image_existence_map.insert(std::make_pair(i_locator.get_filename(), false));
+		it = image_existence_map.emplace(i_locator.get_filename(), false);
 	bool &cache = it.first->second;
 	if (it.second)
 		cache = !filesystem::get_binary_file_location("images", i_locator.get_filename()).empty();

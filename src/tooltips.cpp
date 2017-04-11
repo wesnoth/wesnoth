@@ -189,7 +189,7 @@ int add_tooltip(const SDL_Rect& rect, const std::string& message, const std::str
 
 	int id = tooltip_id++;
 
-	tips.insert(std::make_pair(id, tooltip(rect, message, action, use_markup, foreground) ));
+	tips.emplace(id, tooltip(rect, message, action, use_markup, foreground));
 
 	current_tooltip = tips.end();
 	return id;

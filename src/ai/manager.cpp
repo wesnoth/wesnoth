@@ -792,7 +792,7 @@ std::stack<holder>& manager::get_or_create_ai_stack_for_side( side_number side )
 	if (iter!=ai_map_.end()){
 		return iter->second;
 	}
-	return ai_map_.insert(std::make_pair(side, std::stack<holder>())).first->second;
+	return ai_map_.emplace(side, std::stack<holder>()).first->second;
 }
 
 // =======================================================================

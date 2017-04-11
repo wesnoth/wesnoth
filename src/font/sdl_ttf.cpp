@@ -94,7 +94,7 @@ struct char_block_map
 				return;
 			}
 		}
-		cbmap.insert(std::make_pair(first, block_t(last, id)));
+		cbmap.emplace(first, block_t(last, id));
 	}
 	/**
 	 * Compresses map by merging consecutive ranges with the same font, even
@@ -154,7 +154,7 @@ static TTF_Font* open_font(const std::string& fname, int size)
 	}
 
 	TTF_Font* result = open_font_impl(fname, size);
-	open_fonts.insert(std::make_pair(key, result));
+	open_fonts.emplace(key, result);
 	return result;
 }
 
@@ -226,7 +226,7 @@ TTF_Font* sdl_ttf::get_font(font_id id)
 	if ((id.style & TTF_STYLE_ITALIC) && italic_names[id.subset].size()) {
 		if (TTF_Font* font = open_font(italic_names[id.subset], id.size)) {
 			ttf_record rec = {font, TTF_STYLE_ITALIC};
-			font_table.insert(std::make_pair(id, rec));
+			font_table.emplace(id, rec);
 			return sdl_ttf::get_font(id);
 		}
 	}
@@ -235,7 +235,7 @@ TTF_Font* sdl_ttf::get_font(font_id id)
 	if ((id.style & TTF_STYLE_BOLD) && bold_names[id.subset].size()) {
 		if (TTF_Font* font = open_font(bold_names[id.subset], id.size)) {
 			ttf_record rec = {font, TTF_STYLE_BOLD};
-			font_table.insert(std::make_pair(id, rec));
+			font_table.emplace(id, rec);
 			return sdl_ttf::get_font(id);
 		}
 	}
@@ -244,14 +244,14 @@ TTF_Font* sdl_ttf::get_font(font_id id)
 	if (font_names[id.subset].size()) {
 		if(TTF_Font* font = open_font(font_names[id.subset], id.size)) {
 			ttf_record rec = {font, TTF_STYLE_NORMAL};
-			font_table.insert(std::make_pair(id, rec));
+			font_table.emplace(id, rec);
 			return sdl_ttf::get_font(id);
 		}
 	}
 
 	// Failed to find a font.
 	ttf_record rec = {nullptr, TTF_STYLE_NORMAL};
-	font_table.insert(std::make_pair(id, rec));
+	font_table.emplace(id, rec);
 	return nullptr;
 }
 

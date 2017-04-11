@@ -40,12 +40,12 @@ void plugins_context::initialize(const std::vector<Reg>& callbacks, const std::v
 {
 	for (const Reg& l : callbacks) {  /* fill the table with given functions */
 		if (l.name != nullptr) {
-			callbacks_.insert(std::make_pair(l.name, l.func));
+			callbacks_.emplace(l.name, l.func);
 		}
 	}
 	for (const aReg& r : accessors) {  /* fill the table with given functions */
 		if (r.name != nullptr) {
-			accessors_.insert(std::make_pair(r.name, r.func));
+			accessors_.emplace(r.name, r.func);
 		}
 	}
 }

@@ -70,7 +70,7 @@ void configuration::init(const config &game_config)
 		desc.text = ai_configuration["description"].t_str();
 		desc.cfg=ai_configuration;
 
-		ai_configurations_.insert(std::make_pair(id,desc));
+		ai_configurations_.emplace(id, desc);
 		LOG_AI_CONFIGURATION << "loaded AI config: " << ai_configuration["description"] << std::endl;
 	}
 }
@@ -95,7 +95,7 @@ void extract_ai_configurations(std::map<std::string, description> &storage, cons
 		desc.text = ai_configuration["description"].t_str();
 		desc.cfg=ai_configuration;
 
-		storage.insert(std::make_pair(id,desc));
+		storage.emplace(id, desc);
 		LOG_AI_CONFIGURATION << "loaded AI config: " << ai_configuration["description"] << std::endl;
 	}
 }
