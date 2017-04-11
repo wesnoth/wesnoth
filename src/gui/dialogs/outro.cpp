@@ -60,10 +60,10 @@ void outro::pre_show(window& window)
 
 void outro::set_next_draw()
 {
-	/* GUI2 runs at approximately 50 FPS - 1 frame every 20 ms. That means we run the draw callback
-	 *  every 3 frames here.
+	/* The UI is rendered at approximately 50 FPS - 1 frame every 20 ms - meaning fading progresses every 3 frames.
+	 * TODO: not sure if 60 is a better value in that case?
 	 */
-	next_draw_ = SDL_GetTicks() + 50;
+	next_draw_ = SDL_GetTicks() + 60;
 }
 
 void outro::draw_callback(window& window)
@@ -74,10 +74,9 @@ void outro::draw_callback(window& window)
 
 	/* If we've faded fully in...
 	 *
-	 * NOTE: we want the fade in to happen in around half a second. Given this function runs about every
-	 * 50 ms, we limit ourselves to a reasonable 10 fade steps (500 ms / 50) with an alpha increase
-	 * (rounded up) of 25.5 each cycle. The actual calculation for alpha is done in the window
-	 * definition in WFL.
+	 * NOTE: we want fading to take around half a second. Given this function runs about every 3 frames, we
+	 * limit ourselves to a reasonable 10 fade steps with an alpha difference (rounded up) of 25.5 each cycle.
+	 * The actual calculation for alpha is done in the window definition in WFL.
 	 */
 	if(fading_in_ && fade_step_ > 10) {
 		// Schedule the fadeout after the provided delay.
