@@ -650,7 +650,7 @@ std::string variant::to_debug_string(bool verbose, formula_seen_stack* seen) con
 {
 	if(!seen) {
 		formula_seen_stack seen_stack;
-		seen = &seen_stack;
+		return value_->get_debug_string(seen_stack, verbose);
 	}
 
 	return value_->get_debug_string(*seen, verbose);
