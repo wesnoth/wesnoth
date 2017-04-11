@@ -328,7 +328,7 @@ void story_viewer::draw_floating_image(window& window, floating_image_list::cons
 
 	window.set_is_dirty(true);
 
-	++image_iter
+	++image_iter;
 
 	// If a delay is specified, schedule the next image draw. This *must* be a non-repeating timer!
 	// Else draw the next image immediately.
