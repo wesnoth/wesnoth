@@ -369,8 +369,6 @@ sdl_event_handler::~sdl_event_handler()
 #endif
 }
 
-#define MOUSE_TOUCH_EMULATION
-
 void sdl_event_handler::handle_event(const SDL_Event& event)
 {
 	/** No dispatchers drop the event. */
