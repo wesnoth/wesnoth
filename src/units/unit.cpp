@@ -111,7 +111,7 @@ namespace {
 		"experience", "resting", "unrenamable", "alignment",
 		"canrecruit", "extra_recruit", "x", "y", "placement",
 		"parent_type", "description", "usage", "halo", "ellipse",
-		"random_taits", "upkeep", "random_traits", "generate_name",
+		"upkeep", "random_traits", "generate_name",
 		"profile", "small_profile",
 		// Useless attributes created when saving units to WML:
 		"flag_rgb", "language_name", "image", "image_icon"
