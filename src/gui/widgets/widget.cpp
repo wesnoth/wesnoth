@@ -482,9 +482,10 @@ void widget::set_visible(const visibility visible)
 		return;
 	}
 
-	// Switching to or from invisible should invalidate the layout.
+	// Switching to or from invisible should invalidate the layout
+	// if the widget has already been laid out.
 	const bool need_resize = visible_ == visibility::invisible
-							 || visible == visibility::invisible;
+		|| (visible == visibility::invisible && layout_size_ != point());
 	visible_ = visible;
 
 	if(need_resize) {
