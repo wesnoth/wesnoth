@@ -138,13 +138,34 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 			if (drag_distance > drag_threshold()*drag_threshold()) {
 				dragging_started_ = true;
 				printf("touch_motion dragging_started_ = true;\n");
-				cursor::set_dragging(true);
+//				cursor::set_dragging(true);
 			}
 		}
 	}
 	
 	if (!is_dragging()) {
 		printf("insane!\n");
+	}
+	
+	// my own panning...
+	
+	bool selected_hex_has_unit = find_unit(selected_hex_).valid();
+	if (!selected_hex_has_unit && is_dragging() && dragging_started_) {
+		// Here, naive pan. In general, is it a problem that panning is synchronous?
+		// Looks like it can do frameskips.
+		// but does it use CPU? I think on iOS GPU is much more appropriate for panning.
+		// What does SDL2 have to offer?
+		
+		SDL_GetMouseState(&mx, &my);
+		
+		int dx = drag_from_x_ - mx;
+		int dy = drag_from_y_ - my;
+		
+		printf("Dragging by %d,%d \n", dx, dy);
+		gui().scroll(dx, dy);
+		drag_from_x_ = mx;
+		drag_from_y_ = my;
+		return;
 	}
 	
 	// now copy-pasting mouse_handler::mouse_motion()
@@ -180,12 +201,12 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 	if (reachmap_invalid_) {
 		reachmap_invalid_ = false;
 		if (!current_paths_.destinations.empty() && !show_partial_move_) {
-			bool selected_hex_has_unit;
 			{ // start planned unit map scope
 				wb::future_map_if_active planned_unit_map;
 				selected_hex_has_unit = find_unit(selected_hex_).valid();
 			} // end planned unit map scope
 			if(selected_hex_.valid() && selected_hex_has_unit ) {
+				// FIXME: vic: why doesn't this trigger when touch-dragging an unselected unit?
 				// reselect the unit without firing events (updates current_paths_)
 				select_hex(selected_hex_, true);
 			}
