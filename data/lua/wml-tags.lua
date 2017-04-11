@@ -661,7 +661,7 @@ function wml_actions.heal_unit(cfg)
 		if heal_full then
 			u.hitpoints = u.max_hitpoints
 		else
-			heal_amount = math.min(math.max(1, cfg.amount), heal_amount)
+			heal_amount = math.min(math.max(0, cfg.amount), heal_amount)
 			u.hitpoints = u.hitpoints + heal_amount
 		end
 
