@@ -20,6 +20,7 @@
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "gui/core/canvas.hpp"
+#include "gui/core/canvas_private.hpp"
 
 #include "font/text.hpp"
 #include "formatter.hpp"
@@ -258,151 +259,7 @@ static void fill_circle(surface& canvas,
 	}
 }
 
-/***** ***** ***** ***** ***** LINE ***** ***** ***** ***** *****/
-
-/** Definition of a line shape. */
-class line_shape : public canvas::shape
-{
-public:
-	/**
-	 * Constructor.
-	 *
-	 * @param cfg                 The config object to define the line see
-	 *                            http://www.wesnoth.org/wiki/GUICanvasWML#Line
-	 *                            for more information.
-	 */
-	explicit line_shape(const config& cfg);
-
-	/** Implement shape::draw(). */
-	void draw(surface& canvas,
-			  SDL_Renderer* renderer,
-			  wfl::map_formula_callable& variables) override;
-
-private:
-	typed_formula<unsigned> x1_, /**< The start x coordinate of the line. */
-			y1_,			/**< The start y coordinate of the line. */
-			x2_,			/**< The end x coordinate of the line. */
-			y2_;			/**< The end y coordinate of the line. */
-
-	/** The color of the line. */
-	typed_formula<color_t> color_;
-
-	/**
-	 * The thickness of the line.
-	 *
-	 * if the value is odd the x and y are the middle of the line.
-	 * if the value is even the x and y are the middle of a line
-	 * with width - 1. (0 is special case, does nothing.)
-	 */
-	unsigned thickness_;
-};
-
-/*WIKI
- * @page = GUICanvasWML
- *
- * == Line ==
- * @begin{tag}{name="line"}{min="0"}{max="-1"}
- * Definition of a line. When drawing a line it doesn't get blended on the
- * surface but replaces the pixels instead. A blitting flag might be added later
- * if needed.
- *
- * Keys:
- * @begin{table}{config}
- *     x1 & f_unsigned & 0 &           The x coordinate of the startpoint. $
- *     y1 & f_unsigned & 0 &           The y coordinate of the startpoint. $
- *     x2 & f_unsigned & 0 &           The x coordinate of the endpoint. $
- *     y2 & f_unsigned & 0 &           The y coordinate of the endpoint. $
- *     color & color & "" &            The color of the line. $
- *     thickness & unsigned & 0 &      The thickness of the line if 0 nothing
- *                                     is drawn. $
- *     debug & string & "" &           Debug message to show upon creation
- *                                     this message is not stored. $
- * @end{table}
- * @end{tag}{name="line"}
- *
- * <span id="general_variables">Variables:</span>.
- * @begin{table}{formula}
- *     width & unsigned &                 The width of the canvas. $
- *     height & unsigned &                The height of the canvas. $
- *     text & tstring &                   The text to render on the widget. $
- *     text_maximum_width & unsigned &    The maximum width available for the
- *                                        text on the widget. $
- *     text_maximum_height & unsigned &   The maximum height available for the
- *                                        text on the widget. $
- *     text_wrap_mode & int  &            When the text doesn't fit in the
- *                                        available width there are several ways
- *                                        to fix that. This variable holds the
- *                                        best method. (NOTE this is a 'hidden'
- *                                        variable meant to copy state from a
- *                                        widget to its canvas so there's no
- *                                        reason to use this variable and thus
- *                                        its values are not listed and might
- *                                        change without further notice.) $
- *     text_alignment & h_align &         The way the text is aligned inside the
- *                                        canvas. $
- *@end{table}
- *
- * The size variables are copied to the window and will be determined at
- * runtime. This is needed since the main window can be resized and the dialog
- * needs to resize accordingly. The following variables are available:
- * @begin{table}{formula}
- *     screen_width & unsigned &        The usable width of the Wesnoth main
- *                                      window. $
- *     screen_height & unsigned &       The usable height of the Wesnoth main
- *                                      window. $
- *     gamemapx_offset & unsigned &     The distance between left edge of the
- *                                      screen and the game map. $
- *     gamemap_width & unsigned &       The usable width of the Wesnoth gamemap,
- *                                      if no gamemap shown it's the same value
- *                                      as screen_width. $
- *     gamemap_height & unsigned &      The usable height of the Wesnoth
- *                                      gamemap, if no gamemap shown it's the
- *                                      same value as screen_height. $
- *
- *     mouse_x & unsigned &             The x coordinate of the mouse pointer. $
- *     mouse_y & unsigned &             The y coordinate of the mouse pointer. $
- *
- *     window_width & unsigned &        The window width. This value has two
- *                                      meanings during the layout phase. This
- *                                      only applies if automatic placement is
- *                                      not enabled.
- *                                      - When set to 0 it should return the
- *                                        wanted maximum width. If no maximum
- *                                        is wanted it should be set to the
- *                                        '"(screen_width)"'.
- *                                      - When not equal to 0 its value is the
- *                                        best width for the window. When the
- *                                        size should remain unchanged it
- *                                        should be set to '"(window_width)"'.
- *                                        $
- *
- *     window_height & unsigned &       The window height. This value has two
- *                                      meanings during the layout phase. This
- *                                      only applies if automatic placement is
- *                                      not enabled.
- *                                      - When set to 0 it should return the
- *                                        wanted maximum height. If no maximum
- *                                        is wanted it should be set to the
- *                                        '"(screen_height)"'.
- *                                      - When not equal to 0 its value is the
- *                                        best height for the window. When the
- *                                        size should remain unchanged it
- *                                        should be set to '"(window_height)"'.
- *                                        $
- *
- *    size_request_mode & string &      A field foo:
- *                                      - maximum
- *                                      - size
- *
- * @end{table}
- *
- * Note when drawing the valid coordinates are:<br>
- * 0 -> width - 1 <br>
- * 0 -> height -1
- *
- * Drawing outside this area will result in unpredictable results including
- * crashing. (That should be fixed, when encountered.)
- */
+} // namespace
 
 /*WIKI - unclassified
  * This code can be used by a parser to generate the wiki page
@@ -613,6 +470,115 @@ private:
  * @end{table}
  */
 
+/***** ***** ***** ***** ***** LINE ***** ***** ***** ***** *****/
+
+/*WIKI
+ * @page = GUICanvasWML
+ *
+ * == Line ==
+ * @begin{tag}{name="line"}{min="0"}{max="-1"}
+ * Definition of a line. When drawing a line it doesn't get blended on the
+ * surface but replaces the pixels instead. A blitting flag might be added later
+ * if needed.
+ *
+ * Keys:
+ * @begin{table}{config}
+ *     x1 & f_unsigned & 0 &           The x coordinate of the startpoint. $
+ *     y1 & f_unsigned & 0 &           The y coordinate of the startpoint. $
+ *     x2 & f_unsigned & 0 &           The x coordinate of the endpoint. $
+ *     y2 & f_unsigned & 0 &           The y coordinate of the endpoint. $
+ *     color & color & "" &            The color of the line. $
+ *     thickness & unsigned & 0 &      The thickness of the line if 0 nothing
+ *                                     is drawn. $
+ *     debug & string & "" &           Debug message to show upon creation
+ *                                     this message is not stored. $
+ * @end{table}
+ * @end{tag}{name="line"}
+ *
+ * <span id="general_variables">Variables:</span>.
+ * @begin{table}{formula}
+ *     width & unsigned &                 The width of the canvas. $
+ *     height & unsigned &                The height of the canvas. $
+ *     text & tstring &                   The text to render on the widget. $
+ *     text_maximum_width & unsigned &    The maximum width available for the
+ *                                        text on the widget. $
+ *     text_maximum_height & unsigned &   The maximum height available for the
+ *                                        text on the widget. $
+ *     text_wrap_mode & int  &            When the text doesn't fit in the
+ *                                        available width there are several ways
+ *                                        to fix that. This variable holds the
+ *                                        best method. (NOTE this is a 'hidden'
+ *                                        variable meant to copy state from a
+ *                                        widget to its canvas so there's no
+ *                                        reason to use this variable and thus
+ *                                        its values are not listed and might
+ *                                        change without further notice.) $
+ *     text_alignment & h_align &         The way the text is aligned inside the
+ *                                        canvas. $
+ *@end{table}
+ *
+ * The size variables are copied to the window and will be determined at
+ * runtime. This is needed since the main window can be resized and the dialog
+ * needs to resize accordingly. The following variables are available:
+ * @begin{table}{formula}
+ *     screen_width & unsigned &        The usable width of the Wesnoth main
+ *                                      window. $
+ *     screen_height & unsigned &       The usable height of the Wesnoth main
+ *                                      window. $
+ *     gamemapx_offset & unsigned &     The distance between left edge of the
+ *                                      screen and the game map. $
+ *     gamemap_width & unsigned &       The usable width of the Wesnoth gamemap,
+ *                                      if no gamemap shown it's the same value
+ *                                      as screen_width. $
+ *     gamemap_height & unsigned &      The usable height of the Wesnoth
+ *                                      gamemap, if no gamemap shown it's the
+ *                                      same value as screen_height. $
+ *
+ *     mouse_x & unsigned &             The x coordinate of the mouse pointer. $
+ *     mouse_y & unsigned &             The y coordinate of the mouse pointer. $
+ *
+ *     window_width & unsigned &        The window width. This value has two
+ *                                      meanings during the layout phase. This
+ *                                      only applies if automatic placement is
+ *                                      not enabled.
+ *                                      - When set to 0 it should return the
+ *                                        wanted maximum width. If no maximum
+ *                                        is wanted it should be set to the
+ *                                        '"(screen_width)"'.
+ *                                      - When not equal to 0 its value is the
+ *                                        best width for the window. When the
+ *                                        size should remain unchanged it
+ *                                        should be set to '"(window_width)"'.
+ *                                        $
+ *
+ *     window_height & unsigned &       The window height. This value has two
+ *                                      meanings during the layout phase. This
+ *                                      only applies if automatic placement is
+ *                                      not enabled.
+ *                                      - When set to 0 it should return the
+ *                                        wanted maximum height. If no maximum
+ *                                        is wanted it should be set to the
+ *                                        '"(screen_height)"'.
+ *                                      - When not equal to 0 its value is the
+ *                                        best height for the window. When the
+ *                                        size should remain unchanged it
+ *                                        should be set to '"(window_height)"'.
+ *                                        $
+ *
+ *    size_request_mode & string &      A field foo:
+ *                                      - maximum
+ *                                      - size
+ *
+ * @end{table}
+ *
+ * Note when drawing the valid coordinates are:<br>
+ * 0 -> width - 1 <br>
+ * 0 -> height -1
+ *
+ * Drawing outside this area will result in unpredictable results including
+ * crashing. (That should be fixed, when encountered.)
+ */
+
 line_shape::line_shape(const config& cfg)
 	: shape(cfg)
 	, x1_(cfg["x1"])
@@ -662,52 +628,6 @@ void line_shape::draw(surface& canvas,
 }
 
 /***** ***** ***** ***** ***** Rectangle ***** ***** ***** ***** *****/
-
-/** Definition of a rectangle shape. */
-class rectangle_shape : public canvas::shape
-{
-public:
-	/**
-	 * Constructor.
-	 *
-	 * @param cfg                 The config object to define the rectangle see
-	 *                            http://www.wesnoth.org/wiki/GUICanvasWML#Rectangle
-	 *                            for more information.
-	 */
-	explicit rectangle_shape(const config& cfg);
-
-	/** Implement shape::draw(). */
-	void draw(surface& canvas,
-			  SDL_Renderer* renderer,
-			  wfl::map_formula_callable& variables) override;
-
-private:
-	typed_formula<int> x_, /**< The x coordinate of the rectangle. */
-			y_,			   /**< The y coordinate of the rectangle. */
-			w_,			   /**< The width of the rectangle. */
-			h_;			   /**< The height of the rectangle. */
-
-	/**
-	 * Border thickness.
-	 *
-	 * If 0 the fill color is used for the entire widget.
-	 */
-	int border_thickness_;
-
-	/**
-	 * The border color of the rectangle.
-	 *
-	 * If the color is fully transparent the border isn't drawn.
-	 */
-	typed_formula<color_t> border_color_;
-
-	/**
-	 * The border color of the rectangle.
-	 *
-	 * If the color is fully transparent the rectangle won't be filled.
-	 */
-	typed_formula<color_t> fill_color_;
-};
 
 /*WIKI
  * @page = GUICanvasWML
@@ -820,52 +740,6 @@ void rectangle_shape::draw(surface& canvas,
 }
 
 /***** ***** ***** ***** ***** Rounded Rectangle ***** ***** ***** ***** *****/
-
-/** Definition of a rounded rectangle shape. */
-class round_rectangle_shape : public canvas::shape {
-public:
-	/**
-	 * Constructor.
-	 *
-	 * @param cfg                 The config object to define the round rectangle see
-	 *                            http://www.wesnoth.org/wiki/GUICanvasWML#Rounded_Rectangle
-	 *                            for more information.
-	 */
-	explicit round_rectangle_shape(const config& cfg);
-
-	/** Implement shape::draw(). */
-	void draw(surface& canvas,
-		SDL_Renderer* renderer,
-		wfl::map_formula_callable& variables) override;
-
-private:
-	typed_formula<int> x_, /**< The x coordinate of the rectangle. */
-		y_,			   /**< The y coordinate of the rectangle. */
-		w_,			   /**< The width of the rectangle. */
-		h_,			   /**< The height of the rectangle. */
-		r_;			   /**< The radius of the corners. */
-
-	/**
-	 * Border thickness.
-	 *
-	 * If 0 the fill color is used for the entire widget.
-	 */
-	int border_thickness_;
-
-	/**
-	 * The border color of the rounded rectangle.
-	 *
-	 * If the color is fully transparent the border isn't drawn.
-	 */
-	typed_formula<color_t> border_color_;
-
-	/**
-	 * The border color of the rounded rectangle.
-	 *
-	 * If the color is fully transparent the rounded rectangle won't be filled.
-	 */
-	typed_formula<color_t> fill_color_;
-};
 
 /*WIKI
  * @page = GUICanvasWML
@@ -990,36 +864,6 @@ void round_rectangle_shape::draw(surface& canvas,
 
 /***** ***** ***** ***** ***** CIRCLE ***** ***** ***** ***** *****/
 
-/** Definition of a circle shape. */
-class circle_shape : public canvas::shape
-{
-public:
-	/**
-	 * Constructor.
-	 *
-	 * @param cfg                 The config object to define the circle see
-	 *                            http://www.wesnoth.org/wiki/GUICanvasWML#Circle
-	 *                            for more information.
-	 */
-	explicit circle_shape(const config& cfg);
-
-	/** Implement shape::draw(). */
-	void draw(surface& canvas,
-			  SDL_Renderer* renderer,
-			  wfl::map_formula_callable& variables) override;
-
-private:
-	typed_formula<unsigned> x_, /**< The center x coordinate of the circle. */
-			y_,			   /**< The center y coordinate of the circle. */
-			radius_;	   /**< The radius of the circle. */
-
-	/** The border color of the circle. */
-	typed_formula<color_t> border_color_, fill_color_; /**< The fill color of the circle. */
-
-	/** The border thickness of the circle. */
-	unsigned int border_thickness_;
-};
-
 /*WIKI
  * @page = GUICanvasWML
  *
@@ -1119,72 +963,6 @@ void circle_shape::draw(surface& canvas,
 }
 
 /***** ***** ***** ***** ***** IMAGE ***** ***** ***** ***** *****/
-
-/** Definition of an image shape. */
-class image_shape : public canvas::shape
-{
-public:
-	/**
-	 * Constructor.
-	 *
-	 * @param cfg                 The config object to define the image see
-	 *                            http://www.wesnoth.org/wiki/GUICanvasWML#Image
-	 *                            for more information.
-	 */
-	image_shape(const config& cfg, wfl::action_function_symbol_table& functions);
-
-	/** Implement shape::draw(). */
-	void draw(surface& canvas,
-			  SDL_Renderer* renderer,
-			  wfl::map_formula_callable& variables) override;
-
-private:
-	typed_formula<unsigned> x_, /**< The x coordinate of the image. */
-			y_,			   /**< The y coordinate of the image. */
-			w_,			   /**< The width of the image. */
-			h_;			   /**< The height of the image. */
-
-	/** Contains the size of the image. */
-	SDL_Rect src_clip_;
-
-	/** The image is cached in this surface. */
-	surface image_;
-
-	/**
-	 * Name of the image.
-	 *
-	 * This value is only used when the image name is a formula. If it isn't a
-	 * formula the image will be loaded in the constructor. If it's a formula it
-	 * will be loaded every draw cycles. This allows 'changing' images.
-	 */
-	typed_formula<std::string> image_name_;
-
-	/**
-	 * Determines the way an image will be resized.
-	 *
-	 * If the image is smaller is needed it needs to resized, how is determined
-	 * by the value of this enum.
-	 */
-	enum resize_mode {
-		scale,
-		stretch,
-		tile
-	};
-
-	/** Converts a string to a resize mode. */
-	resize_mode get_resize_mode(const std::string& resize_mode);
-
-	/** The resize mode for an image. */
-	resize_mode resize_mode_;
-
-	/** Mirror the image over the vertical axis. */
-	typed_formula<bool> vertical_mirror_;
-
-	// TODO: use a typed_formula?
-	wfl::formula actions_formula_;
-
-	static void dimension_validation(unsigned value, const std::string& name, const std::string& key);
-};
 
 /*WIKI
  * @page = GUICanvasWML
@@ -1410,67 +1188,6 @@ image_shape::resize_mode image_shape::get_resize_mode(const std::string& resize_
 
 /***** ***** ***** ***** ***** TEXT ***** ***** ***** ***** *****/
 
-/** Definition of a text shape. */
-class text_shape : public canvas::shape
-{
-public:
-	/**
-	 * Constructor.
-	 *
-	 * @param cfg                 The config object to define the text see
-	 *                            http://www.wesnoth.org/wiki/GUICanvasWML#Text
-	 *                            for more information.
-	 */
-	explicit text_shape(const config& cfg);
-
-	/** Implement shape::draw(). */
-	void draw(surface& canvas,
-			  SDL_Renderer* renderer,
-			  wfl::map_formula_callable& variables) override;
-
-private:
-	typed_formula<unsigned> x_, /**< The x coordinate of the text. */
-			y_,			   /**< The y coordinate of the text. */
-			w_,			   /**< The width of the text. */
-			h_;			   /**< The height of the text. */
-
-	/** The text font family. */
-	font::family_class font_family_;
-
-	/** The font size of the text. */
-	unsigned font_size_;
-
-	/** The style of the text. */
-	font::pango_text::FONT_STYLE font_style_;
-
-	/** The alignment of the text. */
-	typed_formula<PangoAlignment> text_alignment_;
-
-	/** The color of the text. */
-	typed_formula<color_t> color_;
-
-	/** The text to draw. */
-	typed_formula<t_string> text_;
-
-	/** The text markup switch of the text. */
-	typed_formula<bool> text_markup_;
-
-	/** The link aware switch of the text. */
-	typed_formula<bool> link_aware_;
-
-	/** The link color of the text. */
-	typed_formula<color_t> link_color_;
-
-	/** The maximum width for the text. */
-	typed_formula<int> maximum_width_;
-
-	/** The number of characters per line. */
-	unsigned characters_per_line_;
-
-	/** The maximum height for the text. */
-	typed_formula<int> maximum_height_;
-};
-
 /*WIKI
  * @page = GUICanvasWML
  *
@@ -1632,8 +1349,6 @@ void text_shape::draw(surface& canvas,
 	SDL_Rect dst = sdl::create_rect(x, y, canvas->w, canvas->h);
 	blit_surface(surf, 0, canvas, &dst);
 }
-
-} // namespace
 
 /***** ***** ***** ***** ***** CANVAS ***** ***** ***** ***** *****/
 

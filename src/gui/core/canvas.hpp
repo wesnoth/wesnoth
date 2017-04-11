@@ -48,7 +48,7 @@ public:
 	/**
 	 * Abstract base class for all other shapes.
 	 *
-	 * The other shapes are declared and defined in canvas.cpp, since the
+	 * The other shapes are declared and defined in canvas_private.hpp, since the
 	 * implementation details are not interesting for users of the canvas.
 	 */
 	class shape
