@@ -39,6 +39,7 @@ controller_base::controller_base(
 	, scroll_left_(false)
 	, scroll_right_(false)
 	, joystick_manager_()
+	, last_mouse_is_touch_(false)
 {
 }
 
@@ -110,6 +111,7 @@ void controller_base::handle_event(const SDL_Event& event)
 		}
 		break;
 	case SDL_MOUSEBUTTONDOWN:
+		last_mouse_is_touch_ = event.button.which == SDL_TOUCH_MOUSEID;
 		get_mouse_handler_base().mouse_press(event.button, is_browsing());
 		if (get_mouse_handler_base().get_show_menu()){
 			show_menu(get_display().get_theme().context_menu()->items(),event.button.x,event.button.y,true, get_display());
@@ -120,6 +122,7 @@ void controller_base::handle_event(const SDL_Event& event)
 		// handled by mouse case
 		break;
 	case SDL_MOUSEBUTTONUP:
+		last_mouse_is_touch_ = event.button.which == SDL_TOUCH_MOUSEID;
 		get_mouse_handler_base().mouse_press(event.button, is_browsing());
 		if (get_mouse_handler_base().get_show_menu()){
 			show_menu(get_display().get_theme().context_menu()->items(),event.button.x,event.button.y,true, get_display());
@@ -175,9 +178,10 @@ bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags, dou
 	dy += scroll_down_ * scroll_speed;
 	dx -= scroll_left_ * scroll_speed;
 	dx += scroll_right_ * scroll_speed;
-
+	
+	// TODO: DO edge-scroll when dragging a unit. Wow, that will require more coupling.
 	// scroll if mouse is placed near the edge of the screen
-	if (mouse_in_window) {
+	if (mouse_in_window && !last_mouse_is_touch_) {
 		if (mousey < scroll_threshold) {
 			dy -= scroll_speed;
 		}
