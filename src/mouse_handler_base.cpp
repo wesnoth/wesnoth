@@ -52,9 +52,9 @@ mouse_handler_base::mouse_handler_base()
 	: simple_warp_(false)
 	, minimap_scrolling_(false)
 	, dragging_left_(false)
+	, dragging_touch_(false)
 	, dragging_started_(false)
 	, dragging_right_(false)
-	, dragging_touch_(false)
 	, drag_from_x_(0)
 	, drag_from_y_(0)
 	, drag_from_hex_()
@@ -78,6 +78,8 @@ void mouse_handler_base::mouse_motion_event(const SDL_MouseMotionEvent& event, c
 
 void mouse_handler_base::touch_motion_event(const SDL_TouchFingerEvent& event, const bool browse)
 {
+	// This is wrong (needs to be scaled from -1..1 to screen size), but it's discarded in touch_motion anyway.
+	// Let's not waste CPU cycles.
 	touch_motion(event.x, event.y, browse);
 }
 
@@ -159,12 +161,13 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 	map_location loc = gui().hex_clicked_on(event.x, event.y);
 	mouse_update(browse, loc);
 
-	static time_t touch_timestamp = 0;
+	static clock_t touch_timestamp = 0;
 
 	if(is_touch_click(event)) {
 		if (event.state == SDL_PRESSED) {
 			cancel_dragging();
-			touch_timestamp = time(NULL);
+			touch_timestamp = clock();
+//			touch_timestamp_cpp = high_resolution_clock::now();
 			init_dragging(dragging_touch_);
 			left_click(event.x, event.y, browse);
 		} else if (event.state == SDL_RELEASED) {
@@ -291,6 +294,15 @@ bool mouse_handler_base::left_click(int x, int y, const bool /*browse*/)
 	}
 
 	return false;
+}
+
+void mouse_handler_base::move_action(const bool /*browse*/)
+{
+	// Overridden with unit move code elsewhere
+}
+
+void mouse_handler_base::touch_action(const map_location /*hex*/, bool /*browse*/)
+{
 }
 
 void mouse_handler_base::left_drag_end(int /*x*/, int /*y*/, const bool browse)
