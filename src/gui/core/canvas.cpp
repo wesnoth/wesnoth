@@ -477,9 +477,7 @@ static void fill_circle(surface& canvas,
  *
  * == Line ==
  * @begin{tag}{name="line"}{min="0"}{max="-1"}
- * Definition of a line. When drawing a line it doesn't get blended on the
- * surface but replaces the pixels instead. A blitting flag might be added later
- * if needed.
+ * Definition of a line.
  *
  * Keys:
  * @begin{table}{config}
@@ -487,7 +485,7 @@ static void fill_circle(surface& canvas,
  *     y1 & f_unsigned & 0 &           The y coordinate of the startpoint. $
  *     x2 & f_unsigned & 0 &           The x coordinate of the endpoint. $
  *     y2 & f_unsigned & 0 &           The y coordinate of the endpoint. $
- *     color & color & "" &            The color of the line. $
+ *     color & f_color & "" &          The color of the line. $
  *     thickness & unsigned & 0 &      The thickness of the line if 0 nothing
  *                                     is drawn. $
  *     debug & string & "" &           Debug message to show upon creation
@@ -650,9 +648,9 @@ void line_shape::draw(surface& canvas,
  *     border_thickness & unsigned & 0 &
  *                                     The thickness of the border; if the
  *                                     thickness is zero it's not drawn. $
- *     border_color & color & "" &     The color of the border; if empty it's
+ *     border_color & f_color & "" &   The color of the border; if empty it's
  *                                     not drawn. $
- *     fill_color & color & "" &       The color of the interior; if omitted
+ *     fill_color & f_color & "" &     The color of the interior; if omitted
  *                                     it's not drawn. $
  *     debug & string & "" &           Debug message to show upon creation;
  *                                     this message is not stored. $
@@ -763,9 +761,9 @@ void rectangle_shape::draw(surface& canvas,
  *     border_thickness & unsigned & 0 &
  *                                     The thickness of the border; if the
  *                                     thickness is zero it's not drawn. $
- *     border_color & color & "" &     The color of the border; if empty it's
+ *     border_color & f_color & "" &   The color of the border; if empty it's
  *                                     not drawn. $
- *     fill_color & color & "" &       The color of the interior; if omitted
+ *     fill_color & f_color & "" &     The color of the interior; if omitted
  *                                     it's not drawn. $
  *     debug & string & "" &           Debug message to show upon creation;
  *                                     this message is not stored. $
@@ -882,8 +880,8 @@ void round_rectangle_shape::draw(surface& canvas,
  *                                 drawn. $
  * border_thickness & unsigned & "" &
  *                                 The border thickness of the circle. $
- * border_color & color & "" &     The color of the circle. $
- * fill_color & color & "" &       The color of the circle. $
+ * border_color & f_color & "" &   The color of the circle. $
+ * fill_color & f_color & "" &     The color of the circle. $
  * debug & string & "" &           Debug message to show upon creation; this
  *                                 message is not stored. $
  * @end{table}
@@ -1211,7 +1209,7 @@ image_shape::resize_mode image_shape::get_resize_mode(const std::string& resize_
  *     font_style & font_style & "" &  The style of the text. $
  *     text_alignment & f_h_align & "left" &
  *                                     The alignment of the text. $
- *     color & color & "" &            The color of the text. $
+ *     color & f_color & "" &          The color of the text. $
  *     text & f_tstring & "" &         The text to draw (translatable). $
  *     text_markup & f_bool & false &  Can the text have mark-up? $
  *     text_link_aware & f_bool & false &
