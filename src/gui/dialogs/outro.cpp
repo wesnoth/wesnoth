@@ -36,7 +36,7 @@ outro::outro(const std::string& text, unsigned int duration)
 	, fade_step_(0)
 	, fading_in_(true)
 	, timer_id_(0)
-	, timer_id_secondary_(0)
+	, next_draw_(0)
 {
 	if(text_.empty()) {
 		text_ = _("The End");
@@ -52,22 +52,37 @@ void outro::pre_show(window& window)
 	window.set_enter_disabled(true);
 	window.get_canvas(0).set_variable("outro_text", wfl::variant(text_));
 
-	timer_id_ = add_timer(50, std::bind(&outro::timer_callback, this, std::ref(window)), true);
+	window.connect_signal<event::DRAW>(
+		std::bind(&outro::draw_callback, this, std::ref(window)), event::dispatcher::front_child);
+
+	set_next_draw();
 }
 
-void outro::timer_callback(window& window)
+void outro::set_next_draw()
 {
+	/* GUI2 runs at approximately 50 FPS - 1 frame every 20 ms. That means we run the draw callback
+	 *  every 3 frames here.
+	 */
+	next_draw_ = SDL_GetTicks() + 50;
+}
+
+void outro::draw_callback(window& window)
+{
+	if(SDL_GetTicks() < next_draw_) {
+		return;
+	}
+
 	/* If we've faded fully in...
 	 *
-	 * NOTE: we want the fade in to happen in around half a second. Given this timer runs every
+	 * NOTE: we want the fade in to happen in around half a second. Given this function runs about every
 	 * 50 ms, we limit ourselves to a reasonable 10 fade steps (500 ms / 50) with an alpha increase
 	 * (rounded up) of 25.5 each cycle. The actual calculation for alpha is done in the window
 	 * definition in WFL.
 	 */
 	if(fading_in_ && fade_step_ > 10) {
 		// Schedule the fadeout after the provided delay.
-		if(timer_id_secondary_ == 0) {
-			timer_id_secondary_ = add_timer(duration_, [this](size_t) { fading_in_ = false; });
+		if(timer_id_ == 0) {
+			timer_id_ = add_timer(duration_, [this](size_t) { fading_in_ = false; });
 		}
 
 		return;
@@ -91,15 +106,14 @@ void outro::timer_callback(window& window)
 	} else {
 		fade_step_ --;
 	}
+
+	set_next_draw();
 }
 
 void outro::post_show(window& /*window*/)
 {
 	remove_timer(timer_id_);
-	remove_timer(timer_id_secondary_);
-
 	timer_id_ = 0;
-	timer_id_secondary_ = 0;
 }
 
 } // namespace dialogs
