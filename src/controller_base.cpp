@@ -155,6 +155,8 @@ void controller_base::process_keyup_event(const SDL_Event& /*event*/) {
 	//no action by default
 }
 
+#define MOUSE_TOUCH_EMULATION
+
 bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags, double x_axis, double y_axis)
 {
 	sdl::window* window = CVideo::get_singleton().get_window();
@@ -176,8 +178,17 @@ bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags, dou
 	dx -= scroll_left_ * scroll_speed;
 	dx += scroll_right_ * scroll_speed;
 
+	// Hack for touch controls. We don't want edge-scrolling with touch;
+	// this is the opposite of what we need when touch-panning.
+	// A pity, SDL mouse state doesn't report which "mouse" is this.
+	const int SDL_BUTTON_MOUSE_ANY = SDL_BUTTON_MMASK | SDL_BUTTON_LMASK
+#ifndef MOUSE_TOUCH_EMULATION
+	| SDL_BUTTON_RMASK
+#endif
+	;
+	
 	// scroll if mouse is placed near the edge of the screen
-	if (mouse_in_window) {
+	if (mouse_in_window && (mouse_flags & SDL_BUTTON_MOUSE_ANY) != 0) {
 		if (mousey < scroll_threshold) {
 			dy -= scroll_speed;
 		}
