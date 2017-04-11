@@ -93,7 +93,7 @@ void select_orb_colors::setup_orb_group(const std::string& base_id, bool& shown,
 	group<std::string>& group = groups_[base_id];
 
 	using iteration::walker_base;
-	walker_base* iter = selection.create_walker();
+	std::unique_ptr<walker_base> iter(selection.create_walker());
 	while(!iter->at_end(walker_base::child)) {
 		widget* next = iter->get(walker_base::child);
 		if(toggle_button* button = dynamic_cast<toggle_button*>(next)) {
