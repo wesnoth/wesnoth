@@ -413,7 +413,9 @@ static void fill_circle(surface& canvas,
  *                                     @* tile         The image is placed
  *                                     several times until the entire surface
  *                                     is filled. The last images are
- *                                     truncated. $
+ *                                     truncated.
+ *                                     @* tile_center  Like tile, but the
+ *                                     image is first centered on the screen. $
  *
  *     grow_direction &                Determines how an image is resized.
  *                                     Possible values:
@@ -1144,6 +1146,11 @@ void image_shape::draw(surface& canvas,
 						  << image_->h << " to " << w << ',' << h << ".\n";
 
 				surf = tile_surface(image_, w, h, false);
+			} else if(resize_mode_ == tile_center) {
+				DBG_GUI_D << "Image: tiling centrally from " << image_->w << ','
+						  << image_->h << " to " << w << ',' << h << ".\n";
+
+				surf = tile_surface(image_, w, h, true);
 			} else {
 				if(resize_mode_ == stretch) {
 					ERR_GUI_D << "Image: failed to stretch image, "
@@ -1173,6 +1180,8 @@ image_shape::resize_mode image_shape::get_resize_mode(const std::string& resize_
 {
 	if(resize_mode == "tile") {
 		return image_shape::tile;
+	} else if(resize_mode == "tile_center") {
+		return image_shape::tile_center;
 	} else if(resize_mode == "stretch") {
 		return image_shape::stretch;
 	} else {
