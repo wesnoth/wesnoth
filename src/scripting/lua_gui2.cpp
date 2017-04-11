@@ -495,6 +495,15 @@ int intf_set_dialog_value(lua_State *L)
 			return luaW_type_error(L, 1, "unit or unit type");
 		}
 	}
+	else if(gui2::tree_view_node *node = dynamic_cast<gui2::tree_view_node *>(w)) {
+		const bool unfolded = luaW_toboolean(L, 1);
+		if(unfolded) {
+			node->unfold();
+		}
+		else {
+			node->fold();
+		}
+	}
 	else
 	{
 		t_string v = luaW_checktstring(L, 1);
