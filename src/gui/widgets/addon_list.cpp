@@ -228,41 +228,51 @@ void addon_list::set_addons(const addons_list& addons)
 		} else {
 			const bool is_updatable = tracking_info.state == ADDON_INSTALLED_OUTDATED;
 
-			find_widget<button>(row_grid, "single_install", false).set_active(true);
-			find_widget<button>(row_grid, "single_update", false).set_active(true);
-			find_widget<button>(row_grid, "single_uninstall", false).set_active(tracking_info.state == ADDON_INSTALLED);
+			button& install_button = find_widget<button>(row_grid, "single_install", false);
+			button& update_button = find_widget<button>(row_grid, "single_update", false);
+			button& uninstall_button = find_widget<button>(row_grid, "single_uninstall", false);
+
+			install_button.set_active(true);
+			update_button.set_active(true);
+			uninstall_button.set_active(tracking_info.state == ADDON_INSTALLED);
 
 			if(true) {
 				gui2::event::connect_signal_mouse_left_click(
-					find_widget<button>(row_grid, "single_install", false),
+					install_button,
 					[this, addon](gui2::event::dispatcher&, const gui2::event::ui_event, bool& handled, bool& halt)
 				{
 					publish_function_(addon);
 					handled = true;
 					halt = true;
 				});
+
+				install_button.set_tooltip(_("Publish add-on"));
 			}
 
 			if(is_updatable) {
 				gui2::event::connect_signal_mouse_left_click(
-					find_widget<button>(row_grid, "single_update", false),
+					update_button,
 					[this, addon](gui2::event::dispatcher&, const gui2::event::ui_event, bool& handled, bool& halt)
 				{
 					publish_function_(addon);
 					handled = true;
 					halt = true;
 				});
+
+				update_button.set_tooltip(_("Send new version to server"));
 			}
 
 			if(tracking_info.state == ADDON_INSTALLED) {
 				gui2::event::connect_signal_mouse_left_click(
-					find_widget<button>(row_grid, "single_uninstall", false),
+					uninstall_button,
 					[this, addon](gui2::event::dispatcher&, const gui2::event::ui_event, bool& handled, bool& halt)
 				{
 					delete_function_(addon);
 					handled = true;
 					halt = true;
 				});
+
+				uninstall_button.set_tooltip(_("Delete add-on from server"));
 			}
 
 			install_update_stack.select_layer(static_cast<int>(is_updatable));
