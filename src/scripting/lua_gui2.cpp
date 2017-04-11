@@ -840,16 +840,19 @@ int intf_add_dialog_tree_node(lua_State *L)
 	const int insert_pos = luaL_checkinteger(L, 2);
 	static const std::map<std::string, string_map> data;
 	gui2::widget *w = find_widget(L, 3, false);
-	gui2::tree_view_node *twn = dynamic_cast<gui2::tree_view_node *>(w);
-	if (!twn) {
-		if(gui2::tree_view* tw = dynamic_cast<gui2::tree_view *>(w)) {
-			twn = &tw->get_root_node();
-		}
-		else {
-			return luaL_argerror(L, lua_gettop(L), "unsupported widget");
-		}
+
+	if (gui2::tree_view_node *twn = dynamic_cast<gui2::tree_view_node *>(w)) {
+		twn->add_child(node_type, data, insert_pos);
 	}
-	twn->add_child(node_type, data, insert_pos);
+	else if (gui2::tree_view* tw = dynamic_cast<gui2::tree_view *>(w)) {
+		tw->get_root_node().add_child(node_type, data, insert_pos);
+	}
+	else if (gui2::multi_page *mp = dynamic_cast<gui2::multi_page *>(w)) {
+		mp->add_page(node_type, insert_pos, data);
+	}
+	else {
+		return luaL_argerror(L, lua_gettop(L), "unsupported widget");
+	}
 	return 0;
 }
 

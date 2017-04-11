@@ -55,6 +55,7 @@ public:
 	 * @returns                   The grid of the newly added page.
 	 */
 	grid& add_page(const string_map& item);
+	grid& add_page(const std::string& type, int insert_pos, const string_map& item);
 
 	/**
 	 * Adds single page to the grid.
@@ -74,6 +75,7 @@ public:
 	 * @returns                   The grid of the newly added page.
 	 */
 	grid& add_page(const std::map<std::string /* widget id */, string_map>& data);
+	grid& add_page(const std::string& type, int insert_pos, const std::map<std::string /* widget id */, string_map>& data);
 
 	/**
 	 * Removes a page in the multi page.
@@ -137,9 +139,10 @@ public:
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	void set_page_builder(builder_grid_ptr page_builder)
+	void set_page_builders(const std::map<std::string, builder_grid_const_ptr>& page_builders)
 	{
-		page_builder_ = page_builder;
+		assert(!page_builders.empty());
+		page_builders_ = page_builders;
 	}
 
 private:
@@ -160,7 +163,7 @@ private:
 	generator_base* generator_;
 
 	/** Contains the builder for the new items. */
-	builder_grid_const_ptr page_builder_;
+	std::map<std::string, builder_grid_const_ptr> page_builders_;
 
 	/** See @ref widget::impl_draw_background. */
 	virtual void impl_draw_background(surface& frame_buffer,
@@ -201,7 +204,7 @@ struct builder_multi_page : public builder_styled_widget
 
 	widget* build() const;
 
-	builder_grid_ptr builder;
+	std::map<std::string, builder_grid_const_ptr> builders;
 
 	/**
 	 * Multi page data.
