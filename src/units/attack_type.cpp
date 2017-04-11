@@ -60,7 +60,6 @@ attack_type::attack_type(const config& cfg) :
 	parry_(cfg["parry"]),
 	specials_(cfg.child_or_empty("specials"))
 {
-	assert(ref_count == 0);
 	if (description_.empty())
 		description_ = translation::egettext(id_.c_str());
 

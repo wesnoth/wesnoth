@@ -974,7 +974,7 @@ void unit::advance_to(const unit_type &u_type,
 	emit_zoc_ = new_type.has_zoc();
 	attacks_.clear();
 	std::transform(new_type.attacks().begin(), new_type.attacks().end(), std::back_inserter(attacks_), [](const attack_type& atk) {
-		return new attack_type(atk);
+		return std::make_shared<attack_type>(atk);
 	});
 	unit_value_ = new_type.cost();
 

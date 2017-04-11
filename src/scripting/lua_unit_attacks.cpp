@@ -81,7 +81,7 @@ attack_type& luaW_checkweapon(lua_State* L, int idx)
 }
 
 template<typename T>
-using attack_ptr_in = boost::intrusive_ptr<typename utils::const_clone<attack_type, typename std::remove_pointer<T>::type>::type>;
+using attack_ptr_in = std::shared_ptr<typename utils::const_clone<attack_type, typename std::remove_pointer<T>::type>::type>;
 
 // Note that these two templates are designed on the assumption that T is either unit or unit_type
 template<typename T>
@@ -139,7 +139,7 @@ static attack_itors::iterator get_attack_iter(unit& u, attack_ptr atk)
 {
 	// This is slightly inefficient since it walks the attack list a second time...
 	return std::find_if(u.attacks().begin(), u.attacks().end(), [&atk](const attack_type& atk2) {
-		return &atk2 == atk;
+		return &atk2 == atk.get();
 	});
 }
 

@@ -30,7 +30,7 @@ class unit_ability_list;
 
 //the 'attack type' is the type of attack, how many times it strikes,
 //and how much damage it does.
-class attack_type
+class attack_type : public std::enable_shared_from_this<attack_type>
 {
 public:
 
@@ -126,22 +126,10 @@ private:
 	int movement_used_;
 	int parry_;
 	config specials_;
-	mutable size_t ref_count = 0;
-
-	friend void intrusive_ptr_add_ref(const attack_type* atk) {
-		++atk->ref_count;
-	}
-
-	friend void intrusive_ptr_release(const attack_type* atk) {
-		assert(atk->ref_count < 1000000);
-		if(--atk->ref_count == 0) {
-			delete atk;
-		}
-	}
 };
 
-using attack_ptr = boost::intrusive_ptr<attack_type>;
-using const_attack_ptr = boost::intrusive_ptr<const attack_type>;
+using attack_ptr = std::shared_ptr<attack_type>;
+using const_attack_ptr = std::shared_ptr<const attack_type>;
 using attack_list = std::vector<attack_ptr>;
 using attack_itors = boost::iterator_range<boost::indirect_iterator<attack_list::iterator>>;
 using const_attack_itors = boost::iterator_range<boost::indirect_iterator<attack_list::const_iterator>>;
