@@ -13,6 +13,8 @@ Version 1.13.7+dev:
  * Lua Engine:
    * Add wesnoth.log_replay which exposes a little-used functionality of injecting arbitrary
      logging data into a saved game.
+   * Small change to animator API - facing parameter replaced with target and required to be
+     a space adjacent to the unit.
  * User Interface:
    * Updated Attack Predictions dialog to GUI2.
    * Fixed file path being truncated on the wrong side in the File Browser.
@@ -21,7 +23,10 @@ Version 1.13.7+dev:
    * Fix issues with alpha animations on hidden units (#14503)
    * Extensions to GUI2 Canvas ([drawing] tag in dialogs):
      * New [round_rectangle] shape - a rectangle plus corner_radius
-	 * [circle] shape can now be drawn filled; color key is now border_color
+     * [circle] shape can now be drawn filled; color key is now border_color
+     * [image] has new resize_mode=tile_center
+     * Canvas colors can now be expressed as formulas. The formula must return
+       the color as a list of its components, eg "([r, g, b, a])"
 
 Version 1.13.7:
  * AI:
