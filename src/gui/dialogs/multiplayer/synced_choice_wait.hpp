@@ -39,7 +39,7 @@ private:
 	/** Inherited from modal_dialog. */
 	virtual void pre_show(window& window) override;
 
-	virtual void handle_generic_event(const std::string& event_name);
+	virtual void handle_generic_event(const std::string& event_name) override;
 };
 } // namespace dialogs
 } // namespace gui2
