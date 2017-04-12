@@ -355,7 +355,7 @@ public:
 	{
 	}
 
-	virtual void pre_show()
+	void pre_show()
 	{
 		LOG_CHAT_LOG << "Entering chat_log::view::pre_show" << std::endl;
 		controller_.update_view_from_model(true);
