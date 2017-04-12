@@ -40,10 +40,10 @@ private:
 	display_context& viewer;
 
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
-	virtual const std::string& window_id() const;
+	virtual const std::string& window_id() const override;
 
 	/** Inherited from modal_dialog. */
-	void pre_show(window& window);
+	virtual void pre_show(window& window) override;
 
 	/** Callback for toggling a checkbox state. */
 	void toggle_category(widget& box, std::string category);

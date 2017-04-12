@@ -110,10 +110,10 @@ public:
 
 protected:
 	/** Inherited from modal_dialog. */
-	void pre_show(window& window);
+	virtual void pre_show(window& window) override;
 
 	/** Inherited from modal_dialog. */
-	void post_show(window& window);
+	virtual void post_show(window& window) override;
 
 private:
 	/** The title for the dialog. */
@@ -152,7 +152,7 @@ private:
 	std::vector<tbutton_status> buttons_;
 
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
-	virtual const std::string& window_id() const;
+	virtual const std::string& window_id() const override;
 };
 } // namespace dialogs
 

@@ -36,11 +36,11 @@ public:
 
 private:
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
-	virtual const std::string& window_id() const;
+	virtual const std::string& window_id() const override;
 
 	/** Inherited from modal_dialog. */
-	void pre_show(window& window);
-	void post_show(window& window);
+	virtual void pre_show(window& window) override;
+	virtual void post_show(window& window) override;
 
 	void list_item_clicked(window& window);
 

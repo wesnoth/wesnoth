@@ -164,10 +164,10 @@ private:
 	virtual void post_build(window& window) override;
 
 	/** Inherited from modal_dialog. */
-	void pre_show(window& window) override;
+	virtual void pre_show(window& window) override;
 
 	/** Inherited from modal_dialog. */
-	void post_show(window& window) override;
+	virtual void post_show(window& window) override;
 
 	const config& game_config_;
 

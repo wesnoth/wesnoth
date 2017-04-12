@@ -71,15 +71,15 @@ private:
 
 	window* build_window(CVideo& video) const;
 
-	virtual const std::string& window_id() const;
+	virtual const std::string& window_id() const override;
 
 	void timer_callback(window& window);
 
 	/** Inherited from modal_dialog. */
-	void pre_show(window& window);
+	virtual void pre_show(window& window) override;
 
 	/** Inherited from modal_dialog. */
-	void post_show(window& window);
+	virtual void post_show(window& window) override;
 
 	label* progress_stage_label_;
 	label* animation_label_;

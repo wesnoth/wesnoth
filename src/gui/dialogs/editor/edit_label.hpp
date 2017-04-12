@@ -62,7 +62,7 @@ private:
 	void save_color_component(uint8_t color_t::* component, const int value);
 	void register_color_component(std::string widget_id, uint8_t color_t::* component);
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
-	virtual const std::string& window_id() const;
+	virtual const std::string& window_id() const override;
 };
 } // namespace dialogs
 } // namespace gui2

@@ -322,7 +322,7 @@ public:
 	{
 	}
 
-	void pre_show(window& window)
+	virtual void pre_show(window& window)
 	{
 		model_.clear_sides();
 		controller_.show_sides_list();
@@ -380,7 +380,7 @@ public:
 #endif
 	}
 
-	void post_show(int retval, events::menu_handler* mh)
+	virtual void post_show(int retval, events::menu_handler* mh)
 	{
 		if(retval == window::OK) {
 			controller_.change_control(mh);

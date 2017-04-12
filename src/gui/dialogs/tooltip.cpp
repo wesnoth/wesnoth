@@ -108,10 +108,10 @@ private:
 	SDL_Rect source_rect_;
 
 	/** Inherited from modeless_dialog. */
-	virtual const std::string& window_id() const;
+	virtual const std::string& window_id() const override;
 
 	/** Inherited from modeless_dialog. */
-	void pre_show(window& window);
+	virtual void pre_show(window& window) override;
 };
 
 void tooltip::pre_show(window& window)

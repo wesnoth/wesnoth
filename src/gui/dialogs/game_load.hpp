@@ -48,10 +48,10 @@ public:
 
 private:
 	/** Inherited from modal_dialog. */
-	void pre_show(window& window);
+	virtual void pre_show(window& window) override;
 
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
-	virtual const std::string& window_id() const;
+	virtual const std::string& window_id() const override;
 
 	void filter_text_changed(text_box_base* textbox, const std::string& text);
 	void delete_button_callback(window& window);

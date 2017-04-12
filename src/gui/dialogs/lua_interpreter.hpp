@@ -38,7 +38,7 @@ public:
 	window* build_window(CVideo& video);
 
 	/** Inherited from modal_dialog. */
-	void pre_show(window& window);
+	virtual void pre_show(window& window) override;
 
 	enum WHICH_KERNEL { APP, GAME };
 	static void display(CVideo& video, lua_kernel_base * lk);
@@ -47,7 +47,7 @@ private:
 	const std::unique_ptr<controller> controller_;
 
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
-	virtual const std::string& window_id() const;
+	virtual const std::string& window_id() const override;
 };
 
 } // namespace dialogs

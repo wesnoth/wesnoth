@@ -38,12 +38,12 @@ public:
 	}
 
 private:
-	void pre_show(window& window);
+	virtual void pre_show(window& window) override;
 
 	void adjust_minimum_size_by_players(window& window);
 
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
-	virtual const std::string& window_id() const;
+	virtual const std::string& window_id() const override;
 
 	/** We need to own these fields to access the underlying widget */
 	field_integer* players_;
