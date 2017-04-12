@@ -73,7 +73,7 @@ tree_view_node::tree_view_node(
 			unfolded_ = true;
 		}
 
-		widget* toggle_widget = grid_.find("tree_view_node_icon", false);
+		widget* toggle_widget = grid_.find("tree_view_node_toggle", false);
 		toggle_ = dynamic_cast<selectable_item*>(toggle_widget);
 
 		if(toggle_) {
