@@ -38,7 +38,10 @@ namespace gui2
 class spacer : public styled_widget
 {
 public:
-	spacer() : styled_widget(0), best_size_(0, 0)
+	spacer(const std::string& w = "0", const std::string& h = "0")
+		: styled_widget(0)
+		, width_(w)
+		, height_(h)
 	{
 	}
 
@@ -71,14 +74,11 @@ public:
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	void set_best_size(const point& best_size)
-	{
-		best_size_ = best_size;
-	}
-
 private:
-	/** When we're used as a fixed size item, this holds the best size. */
-	point best_size_;
+	typed_formula<unsigned> width_;
+	typed_formula<unsigned> height_;
+
+	bool fills_available_space();
 
 	/** See @ref widget::impl_draw_background. */
 	virtual void impl_draw_background(surface& frame_buffer,
@@ -115,8 +115,10 @@ struct builder_spacer : public builder_styled_widget
 	widget* build() const;
 
 private:
-	typed_formula<unsigned> width_;
-	typed_formula<unsigned> height_;
+	// We store these as strings since they could contain formulas.
+	// The widget handles the parsing.
+	const std::string width_;
+	const std::string height_;
 };
 
 } // namespace implementation
