@@ -702,7 +702,7 @@ static std::string format_addon_time(time_t time)
 			? "%Y-%m-%d %I:%M %p"
 			: "%Y-%m-%d %H:%M";
 
-		ss << util::put_time(std::localtime(&time), format);
+		ss << utils::put_time(std::localtime(&time), format);
 
 		return ss.str();
 	}

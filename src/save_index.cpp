@@ -203,7 +203,7 @@ std::string save_info::format_time_local() const
 std::string save_info::format_time_summary() const
 {
 	time_t t = modified();
-	return util::format_time_summary(t);
+	return utils::format_time_summary(t);
 }
 
 bool save_info_less_time::operator() (const save_info& a, const save_info& b) const {

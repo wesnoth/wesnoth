@@ -19,7 +19,7 @@
 #include <cstdint>
 #include <string>
 
-namespace util {
+namespace utils {
 
 /**
  * Returns the MD5 digest for the specified input.
@@ -35,6 +35,6 @@ bool is_valid_hash(const std::string& hash);
 std::string encode_hash(const std::array<uint8_t, 16>& input);
 std::string create_hash(const std::string& password, const std::string& salt, int iteration_count =10);
 
-} // namespace util
+} // namespace utils
 
 #endif // HASH_HPP_INCLUDED

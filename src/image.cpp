@@ -749,7 +749,7 @@ template <scaling_function F>
 static surface scale_xbrz_helper(const surface & res, int w, int h)
 {
 	int best_integer_zoom = std::min(w / res.get()->w, h / res.get()->h);
-	int legal_zoom = util::clamp(best_integer_zoom, 1, 5);
+	int legal_zoom = utils::clamp(best_integer_zoom, 1, 5);
 	return F(scale_surface_xbrz(res, legal_zoom), w, h);
 }
 

@@ -62,8 +62,8 @@ public:
 	typedef map_t::difference_type difference_type;
 	typedef map_t::size_type       size_type;
 
-	typedef util::iterator_extend      <value_type, map_t, key, key> iterator;
-	typedef util::const_iterator_extend<value_type, map_t, key, key> const_iterator;
+	typedef utils::iterator_extend      <value_type, map_t, key, key> iterator;
+	typedef utils::const_iterator_extend<value_type, map_t, key, key> const_iterator;
 
 
 public:

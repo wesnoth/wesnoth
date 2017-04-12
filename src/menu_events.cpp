@@ -277,7 +277,7 @@ bool menu_handler::do_recruit(const std::string &name, int side_num,
 	team &current_team = teams()[side_num - 1];
 
 	//search for the unit to be recruited in recruits
-	if ( !util::contains(actions::get_recruits(side_num, last_hex), name) )
+	if ( !utils::contains(actions::get_recruits(side_num, last_hex), name) )
 		return false;
 
 	const unit_type *u_type = unit_types.find(name);

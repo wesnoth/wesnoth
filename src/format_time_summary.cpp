@@ -18,7 +18,7 @@
 #include "gettext.hpp"
 #include "preferences.hpp"
 
-namespace util {
+namespace utils {
 
 std::string format_time_summary(time_t t) {
 	time_t curtime = time(nullptr);

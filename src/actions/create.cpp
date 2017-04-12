@@ -380,7 +380,7 @@ namespace { // Helpers for check_recruit_location()
 
 		if ( !unit_type.empty() ) {
 			// Make sure the specified type is in the unit's recruit list.
-			if ( !util::contains(recruiter.recruits(), unit_type) )
+			if ( !utils::contains(recruiter.recruits(), unit_type) )
 				return RECRUIT_NO_ABLE_LEADER;
 		}
 
@@ -422,7 +422,7 @@ RECRUIT_CHECK check_recruit_location(const int side, map_location &recruit_locat
 
 	// If the specified unit type is in the team's recruit list, there is no
 	// need to check each leader's list.
-	if ( util::contains(resources::gameboard->teams()[side-1].recruits(), unit_type) )
+	if ( utils::contains(resources::gameboard->teams()[side-1].recruits(), unit_type) )
 		check_type.clear();
 
 	// If the check location is not valid, we will never get an "OK" result.

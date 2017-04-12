@@ -471,7 +471,7 @@ public:
 
 	bool contains(const variant& member) const
 	{
-		return util::contains<T, variant>(container_, member);
+		return utils::contains<T, variant>(container_, member);
 	}
 
 	// We implement these here since the interface is the same for all

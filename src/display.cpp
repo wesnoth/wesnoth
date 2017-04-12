@@ -2000,7 +2000,7 @@ bool display::zoom_at_min() const
 bool display::set_zoom(bool increase)
 {
 	// Ensure we don't try to access nonexistant vector indices.
-	zoom_index_ = util::clamp(increase ? zoom_index_ + 1 : zoom_index_ - 1, 0, final_zoom_index);
+	zoom_index_ = utils::clamp(increase ? zoom_index_ + 1 : zoom_index_ - 1, 0, final_zoom_index);
 
 	// No validation check is needed in the next step since we've already set the index here and
 	// know the new zoom value is indeed valid.
@@ -2009,7 +2009,7 @@ bool display::set_zoom(bool increase)
 
 bool display::set_zoom(unsigned int amount, const bool validate_value_and_set_index)
 {
-	const unsigned int new_zoom = util::clamp(amount, MinZoom, MaxZoom);
+	const unsigned int new_zoom = utils::clamp(amount, MinZoom, MaxZoom);
 
 	LOG_DP << "new_zoom = " << new_zoom << std::endl;
 

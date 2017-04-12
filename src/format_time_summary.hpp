@@ -18,7 +18,7 @@
 #include <ctime>
 #include <string>
 
-namespace util {
+namespace utils {
 	std::string format_time_summary(time_t t);
 }
 

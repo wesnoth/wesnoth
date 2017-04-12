@@ -827,7 +827,7 @@ inline void smart_list<Data>::iterator_base<Value, Reversed>::unref(node_t * old
 	}
 }
 
-}// namespace util
+}// namespace utils
 
 #endif // UTILS_SMART_LIST_HPP_INCLUDED
 

@@ -439,7 +439,7 @@ int font_scaling()
 
 void set_font_scaling(int scale)
 {
-	prefs["font_scale"] = util::clamp(scale, min_font_scaling, max_font_scaling);
+	prefs["font_scale"] = utils::clamp(scale, min_font_scaling, max_font_scaling);
 }
 
 int font_scaled(int size)
@@ -720,140 +720,140 @@ bool joystick_support_enabled()
 
 int joystick_mouse_deadzone()
 {
-	const int value = util::clamp<int>(lexical_cast_default<int>(get("joystick_scroll_deadzone"), 1500), 0, 16000);
+	const int value = utils::clamp<int>(lexical_cast_default<int>(get("joystick_scroll_deadzone"), 1500), 0, 16000);
 	return value;
 }
 
 int joystick_num_mouse_xaxis()
 {
-	const int value = util::clamp<int>(lexical_cast_default<int>(get("joystick_num_scroll_xaxis"), 0), -1, 3);
+	const int value = utils::clamp<int>(lexical_cast_default<int>(get("joystick_num_scroll_xaxis"), 0), -1, 3);
 	return value;
 }
 
 int joystick_mouse_xaxis_num()
 {
-	const int value = util::clamp<int>(lexical_cast_default<int>(get("joystick_scroll_xaxis_num"), 0), 0, 7);
+	const int value = utils::clamp<int>(lexical_cast_default<int>(get("joystick_scroll_xaxis_num"), 0), 0, 7);
 	return value;
 }
 
 int joystick_num_mouse_yaxis()
 {
-	const int value = util::clamp<int>(lexical_cast_default<int>(get("joystick_num_scroll_yaxis"), 0), -1, 3);
+	const int value = utils::clamp<int>(lexical_cast_default<int>(get("joystick_num_scroll_yaxis"), 0), -1, 3);
 	return value;
 }
 
 int joystick_mouse_yaxis_num()
 {
-	const int value = util::clamp<int>(lexical_cast_default<int>(get("joystick_scroll_yaxis_num"), 1), 0, 7);
+	const int value = utils::clamp<int>(lexical_cast_default<int>(get("joystick_scroll_yaxis_num"), 1), 0, 7);
 	return value;
 }
 
 int joystick_scroll_deadzone()
 {
-	const int value = util::clamp<int>(lexical_cast_default<int>(get("joystick_scroll_deadzone"), 1500), 0, 16000);
+	const int value = utils::clamp<int>(lexical_cast_default<int>(get("joystick_scroll_deadzone"), 1500), 0, 16000);
 	return value;
 }
 
 int joystick_cursor_deadzone()
 {
-	const int value = util::clamp<int>(lexical_cast_default<int>(get("joystick_cursor_deadzone"), 1500), 0, 16000);
+	const int value = utils::clamp<int>(lexical_cast_default<int>(get("joystick_cursor_deadzone"), 1500), 0, 16000);
 	return value;
 }
 
 int joystick_thrusta_deadzone()
 {
-	const int value = util::clamp<int>(lexical_cast_default<int>(get("joystick_thrusta_deadzone"), 1500), 0, 16000);
+	const int value = utils::clamp<int>(lexical_cast_default<int>(get("joystick_thrusta_deadzone"), 1500), 0, 16000);
 	return value;
 }
 
 int joystick_thrustb_deadzone()
 {
-	const int value = util::clamp<int>(lexical_cast_default<int>(get("joystick_thrustb_deadzone"), 1500), 0, 16000);
+	const int value = utils::clamp<int>(lexical_cast_default<int>(get("joystick_thrustb_deadzone"), 1500), 0, 16000);
 	return value;
 }
 
 int joystick_cursor_threshold()
 {
-	const int value = util::clamp<int>(lexical_cast_default<int>(get("joystick_cursor_threshold"), 10000), 0, 16000);
+	const int value = utils::clamp<int>(lexical_cast_default<int>(get("joystick_cursor_threshold"), 10000), 0, 16000);
 	return value;
 }
 
 int joystick_num_scroll_xaxis()
 {
-	const int value = util::clamp<int>(lexical_cast_default<int>(get("joystick_num_scroll_xaxis"), 0), -1, 3);
+	const int value = utils::clamp<int>(lexical_cast_default<int>(get("joystick_num_scroll_xaxis"), 0), -1, 3);
 	return value;
 }
 
 int joystick_scroll_xaxis_num()
 {
-	const int value = util::clamp<int>(lexical_cast_default<int>(get("joystick_scroll_xaxis_num"), 0), 0, 7);
+	const int value = utils::clamp<int>(lexical_cast_default<int>(get("joystick_scroll_xaxis_num"), 0), 0, 7);
 	return value;
 }
 
 int joystick_num_scroll_yaxis()
 {
-	const int value = util::clamp<int>(lexical_cast_default<int>(get("joystick_num_scroll_yaxis"), 0), -1, 3);
+	const int value = utils::clamp<int>(lexical_cast_default<int>(get("joystick_num_scroll_yaxis"), 0), -1, 3);
 	return value;
 }
 
 int joystick_scroll_yaxis_num()
 {
-	const int value = util::clamp<int>(lexical_cast_default<int>(get("joystick_scroll_yaxis_num"), 1), 0, 7);
+	const int value = utils::clamp<int>(lexical_cast_default<int>(get("joystick_scroll_yaxis_num"), 1), 0, 7);
 	return value;
 }
 
 int joystick_num_cursor_xaxis()
 {
-	const int value = util::clamp<int>(lexical_cast_default<int>(get("joystick_num_cursor_xaxis"), 0), -1, 3);
+	const int value = utils::clamp<int>(lexical_cast_default<int>(get("joystick_num_cursor_xaxis"), 0), -1, 3);
 	return value;
 }
 
 int joystick_cursor_xaxis_num()
 {
-	const int value = util::clamp<int>(lexical_cast_default<int>(get("joystick_cursor_xaxis_num"), 3), 0, 7);
+	const int value = utils::clamp<int>(lexical_cast_default<int>(get("joystick_cursor_xaxis_num"), 3), 0, 7);
 	return value;
 }
 
 int joystick_num_cursor_yaxis()
 {
-	const int value = util::clamp<int>(lexical_cast_default<int>(get("joystick_num_cursor_yaxis"), 0), -1, 3);
+	const int value = utils::clamp<int>(lexical_cast_default<int>(get("joystick_num_cursor_yaxis"), 0), -1, 3);
 	return value;
 }
 
 int joystick_cursor_yaxis_num()
 {
-	const int value = util::clamp<int>(lexical_cast_default<int>(get("joystick_cursor_yaxis_num"), 4), 0, 7);
+	const int value = utils::clamp<int>(lexical_cast_default<int>(get("joystick_cursor_yaxis_num"), 4), 0, 7);
 	return value;
 }
 
 int joystick_num_thrusta_axis()
 {
-	const int value = util::clamp<int>(lexical_cast_default<int>(get("joystick_num_thrusta_axis"), 0), -1, 3);
+	const int value = utils::clamp<int>(lexical_cast_default<int>(get("joystick_num_thrusta_axis"), 0), -1, 3);
 	return value;
 }
 
 int joystick_thrusta_axis_num()
 {
-	const int value = util::clamp<int>(lexical_cast_default<int>(get("joystick_thrusta_axis_num"), 2), 0, 7);
+	const int value = utils::clamp<int>(lexical_cast_default<int>(get("joystick_thrusta_axis_num"), 2), 0, 7);
 	return value;
 }
 
 int joystick_num_thrustb_axis()
 {
-	const int value = util::clamp<int>(lexical_cast_default<int>(get("joystick_num_thrustb_axis"), 0), -1, 3);
+	const int value = utils::clamp<int>(lexical_cast_default<int>(get("joystick_num_thrustb_axis"), 0), -1, 3);
 	return value;
 }
 
 int joystick_thrustb_axis_num()
 {
-	const int value = util::clamp<int>(lexical_cast_default<int>(get("joystick_thrustb_axis_num"), 2), 0, 7);
+	const int value = utils::clamp<int>(lexical_cast_default<int>(get("joystick_thrustb_axis_num"), 2), 0, 7);
 	return value;
 }
 
 
 int scroll_speed()
 {
-	const int value = util::clamp<int>(lexical_cast_default<int>(get("scroll"), 50), 1, 100);
+	const int value = utils::clamp<int>(lexical_cast_default<int>(get("scroll"), 50), 1, 100);
 	scroll = value/100.0;
 
 	return value;

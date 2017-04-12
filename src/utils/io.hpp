@@ -23,7 +23,7 @@ See the COPYING file for more details.
 
 #include <ctime>
 
-namespace util {
+namespace utils {
 	inline std::string put_time(struct tm* time, const char* fmt) {
 		char buf[256];
 		if(strftime(buf, 256, fmt, time)) {
@@ -37,7 +37,7 @@ namespace util {
 
 #include <iomanip>
 
-namespace util {
+namespace utils {
 	using std::put_time;
 }
 
