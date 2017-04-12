@@ -604,10 +604,8 @@ void preferences_dialog::post_build(window& window)
 				slider* setter_widget = build_single_widget_instance<slider>("slider", config {"definition", "minimal"});
 				setter_widget->set_id("setter");
 				// Maximum must be set first or this will assert
-				setter_widget->set_maximum_value(option["max"].to_int());
-				setter_widget->set_minimum_value(option["min"].to_int());
-				setter_widget->set_step_size(
-					option["step"].empty() ? 1 : option["step"].to_int());
+				setter_widget->set_value_range(option["min"].to_int(), option["max"].to_int());
+				setter_widget->set_step_size(option["step"].to_int(1));
 
 				details_grid.swap_child("setter", setter_widget, true);
 
