@@ -493,6 +493,9 @@ private:
 	 * When 0,0 the real best size is returned, but in the layout phase a
 	 * wrapping or a scrollbar might change the best size for that widget.
 	 * This variable holds that best value.
+	 *
+	 * If the widget size hasn't been changed from the default that
+	 * calculate_best_size() returns, layout_size_ is (0,0).
 	 */
 	point layout_size_;
 
