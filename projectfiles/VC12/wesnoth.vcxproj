@@ -331,6 +331,9 @@
     <None Include="..\..\src\language_win32.ii" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\src\gui\widgets\slider_base.cpp">
+      <ObjectFileName>$(IntDir)Gui\Widgets\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\about.cpp" />
     <ClCompile Include="..\..\src\actions\advancement.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Actions\</ObjectFileName>

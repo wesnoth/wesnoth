@@ -36,14 +36,8 @@ public:
 	/** Gets the selected value. */
 	virtual int get_value() const = 0;
 
-	/** Sets the minimum value. */
-	virtual void set_minimum_value(const int value) = 0;
-
 	/** Gets the minimum value. */
 	virtual int get_minimum_value() const = 0;
-
-	/** Sets the maximum value. */
-	virtual void set_maximum_value(const int value) = 0;
 
 	/** Gets the maximum value. */
 	virtual int get_maximum_value() const = 0;

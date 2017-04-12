@@ -294,8 +294,7 @@ void mp_options_helper::display_custom_options(const std::string& type, int node
 				slider* slide;
 				std::tie(slide, val) = add_node_and_get_widget<slider>(option_node, "option_slider", data, option_cfg);
 
-				slide->set_maximum_value(option_cfg["max"].to_int());
-				slide->set_minimum_value(option_cfg["min"].to_int());
+				slide->set_value_range(option_cfg["min"].to_int(), option_cfg["max"].to_int());
 				slide->set_step_size(option_cfg["step"].to_int(1));
 				slide->set_value(val.to_int());
 
