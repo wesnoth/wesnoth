@@ -96,6 +96,13 @@ void scroll_label::set_use_markup(bool use_markup)
 	}
 }
 
+void scroll_label::set_text_alpha(unsigned short alpha)
+{
+	if(label* widget = get_internal_label()) {
+		widget->set_text_alpha(alpha);
+	}
+}
+
 void scroll_label::set_self_active(const bool active)
 {
 	state_ = active ? ENABLED : DISABLED;

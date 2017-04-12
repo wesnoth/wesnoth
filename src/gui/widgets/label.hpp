@@ -75,6 +75,8 @@ public:
 		can_shrink_ = can_shrink;
 	}
 
+	void set_text_alpha(unsigned short alpha);
+
 private:
 	/**
 	 * Possible states of the widget.
@@ -119,6 +121,8 @@ private:
 	color_t link_color_;
 
 	bool can_shrink_;
+
+	unsigned short text_alpha_;
 
 	/** Inherited from styled_widget. */
 	virtual bool text_can_shrink() override

@@ -48,6 +48,7 @@ label::label()
 		, link_aware_(false)
 		, link_color_(color_t::from_hex_string("ffff00"))
 		, can_shrink_(false)
+		, text_alpha_(255)
 {
 	connect_signal<event::LEFT_BUTTON_CLICK>(std::bind(&label::signal_handler_left_button_click, this, _2, _3));
 	connect_signal<event::RIGHT_BUTTON_CLICK>(std::bind(&label::signal_handler_right_button_click, this, _2, _3));
@@ -71,6 +72,17 @@ bool label::get_link_aware() const
 color_t label::get_link_color() const
 {
 	return link_color_;
+}
+
+void label::set_text_alpha(unsigned short alpha)
+{
+	text_alpha_ = alpha;
+
+	for(auto& tmp : get_canvases()) {
+		tmp.set_variable("text_alpha", wfl::variant(text_alpha_));
+	}
+
+	set_is_dirty(true);
 }
 
 void label::set_active(const bool active)
@@ -332,6 +344,7 @@ widget* builder_label::build() const
 	lbl->set_can_wrap(wrap);
 	lbl->set_characters_per_line(characters_per_line);
 	lbl->set_text_alignment(text_alignment);
+	lbl->set_text_alpha(ALPHA_OPAQUE);
 	lbl->set_can_shrink(can_shrink);
 
 	DBG_GUI_G << "Window builder: placed label '" << id << "' with definition '"

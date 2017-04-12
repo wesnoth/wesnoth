@@ -70,6 +70,8 @@ public:
 	bool can_wrap() const override;
 	void set_can_wrap(bool can_wrap);
 
+	void set_text_alpha(unsigned short alpha);
+
 private:
 	/**
 	 * Possible states of the widget.
