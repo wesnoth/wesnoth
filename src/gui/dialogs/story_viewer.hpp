@@ -20,6 +20,8 @@
 #include "storyscreen/controller.hpp"
 #include "storyscreen/part.hpp"
 
+#include <boost/logic/tribool.hpp>
+
 class CVideo;
 
 namespace gui2
@@ -63,6 +65,12 @@ private:
 
 	void key_press_callback(window& window, const SDL_Keycode key);
 
+	void set_next_draw();
+	void begin_fade_draw(bool fade_in);
+	void halt_fade_draw();
+
+	void draw_callback(window& window);
+
 	storyscreen::controller controller_;
 
 	int part_index_;
@@ -70,6 +78,11 @@ private:
 	storyscreen::controller::part_pointer_type current_part_;
 
 	size_t timer_id_;
+	size_t next_draw_;
+
+	int fade_step_;
+
+	boost::tribool fading_in_;
 };
 
 } // namespace dialogs

@@ -28,6 +28,8 @@
 #include "gui/widgets/window.hpp"
 #include "sound.hpp"
 
+BOOST_TRIBOOL_THIRD_STATE(not_fading)
+
 namespace gui2
 {
 namespace dialogs
@@ -74,6 +76,9 @@ story_viewer::story_viewer(storyscreen::controller& controller)
 	, part_index_(0)
 	, current_part_(nullptr)
 	, timer_id_(0)
+	, next_draw_(0)
+	, fade_step_(0)
+	, fading_in_(not_fading)
 {
 	update_current_part_ptr();
 }
@@ -98,6 +103,9 @@ void story_viewer::pre_show(window& window)
 
 	connect_signal_mouse_left_click(find_widget<button>(&window, "back", false),
 		std::bind(&story_viewer::nav_button_callback, this, std::ref(window), DIR_BACKWARDS));
+
+	window.connect_signal<event::DRAW>(
+		std::bind(&story_viewer::draw_callback, this, std::ref(window)), event::dispatcher::front_child);
 
 	display_part(window);
 }
@@ -269,7 +277,10 @@ void story_viewer::display_part(window& window)
 	scroll_label& text_label = find_widget<scroll_label>(&window, "part_text", false);
 
 	text_label.set_text_alignment(story_text_alignment);
+	text_label.set_text_alpha(0);
 	text_label.set_label(part_text);
+
+	begin_fade_draw(true);
 
 	//
 	// Floating images (handle this last)
@@ -344,6 +355,22 @@ void story_viewer::draw_floating_image(window& window, floating_image_list::cons
 
 void story_viewer::nav_button_callback(window& window, NAV_DIRECTION direction)
 {
+	// If a button is pressed while fading in, abort and set alpha to full opaque.
+	if(fading_in_) {
+		halt_fade_draw();
+
+		find_widget<scroll_label>(&window, "part_text", false).set_text_alpha(ALPHA_OPAQUE);
+		return;
+	}
+	
+	// If a button is pressed while fading out, skip and show next part.
+	if(!fading_in_) {
+		display_part(window);
+		return;
+	}
+
+	assert(not_fading(fading_in_));
+
 	part_index_ = (direction == DIR_FORWARD ? part_index_ + 1 : part_index_ -1);
 
 	// If we've viewed all the parts, close the dialog.
@@ -358,7 +385,7 @@ void story_viewer::nav_button_callback(window& window, NAV_DIRECTION direction)
 
 	update_current_part_ptr();
 
-	display_part(window);
+	begin_fade_draw(false);
 }
 
 void story_viewer::key_press_callback(window& window, const SDL_Keycode key)
@@ -378,6 +405,60 @@ void story_viewer::key_press_callback(window& window, const SDL_Keycode key)
 	} else if(back_keydown) {
 		nav_button_callback(window, DIR_BACKWARDS);
 	}
+}
+
+void story_viewer::set_next_draw()
+{
+	next_draw_ = SDL_GetTicks() + 60;
+}
+
+void story_viewer::begin_fade_draw(bool fade_in)
+{
+	set_next_draw();
+
+	fade_step_ = fade_in ? 0 : 8;
+	fading_in_ = fade_in;
+}
+
+void story_viewer::halt_fade_draw()
+{
+	next_draw_ = 0;
+	fade_step_ = -1;
+	fading_in_ = not_fading;
+}
+
+void story_viewer::draw_callback(window& window)
+{
+	if(SDL_GetTicks() < next_draw_) {
+		return;
+	}
+
+	// If we've faded fully in...
+	if(fading_in_ && fade_step_ > 8) {
+		halt_fade_draw();
+		return;
+	}
+
+	// If we've faded fully out...
+	if(!fading_in_ && fade_step_ < 0) {
+		halt_fade_draw();
+
+		display_part(window);
+		return;
+	}
+
+	unsigned short new_alpha = std::min<unsigned short>(255, fade_step_ * 32);
+	find_widget<scroll_label>(&window, "part_text", false).set_text_alpha(new_alpha);
+
+	find_widget<stacked_widget>(&window, "text_and_control_stack", false).set_is_dirty(true);
+
+	if(fading_in_) {
+		fade_step_ ++;
+	} else if(!fading_in_) {
+		fade_step_ --;
+	}
+
+	set_next_draw();
 }
 
 } // namespace dialogs
