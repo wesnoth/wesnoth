@@ -80,6 +80,7 @@ preferences_dialog::preferences_dialog(CVideo& video, const config& game_cfg, co
 	, last_selected_item_(0)
 	, accl_speeds_({0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 3, 4, 8, 16})
 	, visible_hotkeys_()
+	, cat_names_()
 	, initial_index_(pef_view_map[initial_view])
 {
 	for(const config& adv : game_cfg.child_range("advanced_preference")) {
@@ -90,6 +91,25 @@ preferences_dialog::preferences_dialog(CVideo& video, const config& game_cfg, co
 		[](const config& lhs, const config& rhs) {
 			return lhs["name"].t_str().str() < rhs["name"].t_str().str();
 		});
+
+	cat_names_ = {
+		// TODO: This list needs to be synchronized with the hotkey::HOTKEY_CATEGORY enum
+		// Find some way to do that automatically
+		_("General"),
+		_("Saved Games"),
+		_("Map Commands"),
+		_("Unit Commands"),
+		_("Player Chat"),
+		_("Replay Control"),
+		_("Planning Mode"),
+		_("Scenario Editor"),
+		_("Editor Palettes"),
+		_("Editor Tools"),
+		_("Editor Clipboard"),
+		_("Debug Commands"),
+		_("Custom WML Commands"),
+		// HKCAT_PLACEHOLDER intentionally excluded (it shouldn't have any anyway)
+	};
 }
 
 // Helper function to refresh resolution list
@@ -679,56 +699,18 @@ void preferences_dialog::post_build(window& window)
 	// HOTKEYS PANEL
 	//
 
-	row_data.clear();
-
-	listbox& hotkey_categories = find_widget<listbox>(&window, "list_categories", false);
-
-	const std::string cat_names[] = {
-		// TODO: This list needs to be synchronized with the hotkey::HOTKEY_CATEGORY enum
-		// Find some way to do that automatically
-		_("General"),
-		_("Saved Games"),
-		_("Map Commands"),
-		_("Unit Commands"),
-		_("Player Chat"),
-		_("Replay Control"),
-		_("Planning Mode"),
-		_("Scenario Editor"),
-		_("Editor Palettes"),
-		_("Editor Tools"),
-		_("Editor Clipboard"),
-		_("Debug Commands"),
-		_("Custom WML Commands"),
-		// HKCAT_PLACEHOLDER intentionally excluded (it shouldn't have any anyway)
-	};
-
-	for(int i = 0; i < hotkey::HKCAT_PLACEHOLDER; i++) {
-		row_data["cat_label"]["label"] = cat_names[i];
-		hotkey_categories.add_row(row_data);
-		hotkey_categories.select_row(hotkey_categories.get_item_count() - 1);
+	std::vector<config> hotkey_category_entries;
+	for(const auto& name : cat_names_) {
+		hotkey_category_entries.emplace_back(config_of("label", name)("checkbox", false));
 	}
 
+	menu_button& hotkey_menu = find_widget<menu_button>(&window, "hotkey_category_menu", false);
+
+	hotkey_menu.set_values(hotkey_category_entries);
+	hotkey_menu.set_keep_open(true);
+	hotkey_menu.set_callback_toggle_state_change(std::bind(&preferences_dialog::hotkey_type_filter_callback, this, std::ref(window)));
+
 	listbox& hotkey_list = setup_hotkey_list(window);
-
-	hotkey_categories.set_callback_item_change([this, &hotkey_list, &hotkey_categories](size_t i) {
-		if(i >= hotkey::HKCAT_PLACEHOLDER) {
-			return;
-		}
-
-		hotkey::HOTKEY_CATEGORY cat = hotkey::HOTKEY_CATEGORY(i);
-
-		// For listboxes that allow multiple selection, get_selected_row() returns the most
-		// recently selected row. Thus, if it returns i, this row was just selected.
-		// Otherwise, it must have been deselected.
-		bool show = hotkey_categories.get_selected_row() == int(i);
-		boost::dynamic_bitset<> mask = hotkey_list.get_rows_shown();
-		for(size_t j = 0; j < visible_hotkeys_.size(); j++) {
-			if(visible_hotkeys_[j]->category == cat) {
-				mask[j] = show;
-			}
-		}
-		hotkey_list.set_row_shown(mask);
-	});
 
 	// Action column
 	hotkey_list.register_sorting_option(0, [this](const int i) { return visible_hotkeys_[i]->description.str(); });
@@ -887,6 +869,36 @@ void preferences_dialog::remove_hotkey_callback(listbox& hotkeys)
 	const hotkey::hotkey_command& hotkey_item = *visible_hotkeys_[row_number];
 	hotkey::clear_hotkeys(hotkey_item.command);
 	find_widget<label>(hotkeys.get_row_grid(row_number), "lbl_hotkey", false).set_label(hotkey::get_names(hotkey_item.command));
+}
+
+void preferences_dialog::hotkey_type_filter_callback(window& window) const
+{
+	const menu_button& hotkey_menu = find_widget<const menu_button>(&window, "hotkey_category_menu", false);
+
+	boost::dynamic_bitset<> toggle_states = hotkey_menu.get_toggle_states();
+	boost::dynamic_bitset<> res(visible_hotkeys_.size());
+
+	if(!toggle_states.none()) {
+		for(size_t h = 0; h < visible_hotkeys_.size(); ++h) {
+			int index = 0;
+
+			for(size_t i = 0; i < cat_names_.size(); ++i) {
+				hotkey::HOTKEY_CATEGORY cat = hotkey::HOTKEY_CATEGORY(i);
+
+				if(visible_hotkeys_[h]->category == cat) {
+					index = i;
+					break;
+				}
+			}
+
+			res[h] = toggle_states[index];
+		}
+	} else {
+		// Nothing selected. It means that *all* categories are shown.
+		res = ~res;
+	}
+
+	find_widget<listbox>(&window, "list_hotkeys", false).set_row_shown(res);
 }
 
 void preferences_dialog::on_advanced_prefs_list_select(listbox& list, window& window)

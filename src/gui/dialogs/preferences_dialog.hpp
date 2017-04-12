@@ -22,6 +22,8 @@
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/group.hpp"
 
+#include <boost/dynamic_bitset.hpp>
+
 // This file is not named preferences.hpp in order -I conflicts with
 // src/preferences.hpp.
 
@@ -83,9 +85,9 @@ private:
 	virtual const std::string& window_id() const override;
 
 	/** Inherited from modal_dialog. */
-	virtual void post_build(window& window);
+	virtual void post_build(window& window) override;
 	virtual void pre_show(window& window) override;
-	virtual void post_show(window& /*window*/);
+	virtual void post_show(window& /*window*/) override;
 
 	/** Initializers */
 	void initialize_tabs(window& window, listbox& selector);
@@ -113,6 +115,7 @@ private:
 	void add_hotkey_callback(listbox& hotkeys);
 	void remove_hotkey_callback(listbox& hotkeys);
 	void default_hotkey_callback(window& window);
+	void hotkey_type_filter_callback(window& window) const;
 
 	group<preferences::LOBBY_JOINS> lobby_joins_group;
 
@@ -130,6 +133,8 @@ private:
 
 	std::vector<double> accl_speeds_;
 	t_visible_hotkeys visible_hotkeys_;
+
+	std::vector<t_string> cat_names_;
 
 	// The page/tab index pairs for setting visible pages
 	const std::pair<int, int>& initial_index_;
