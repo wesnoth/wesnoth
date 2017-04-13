@@ -24,17 +24,8 @@ static lg::log_domain log_engine("engine");
 
 frame_parameters::frame_parameters()
 	: duration(0)
-	, image()
-	, image_diagonal()
-	, image_mod("")
-	, halo("")
 	, halo_x(0)
 	, halo_y(0)
-	, halo_mod("")
-	, sound("")
-	, text("")
-	, text_color({0,0,0})
-	, blend_with({0,0,0})
 	, blend_ratio(0.0)
 	, highlight_ratio(1.0)
 	, offset(0)
@@ -51,25 +42,6 @@ frame_parameters::frame_parameters()
 
 frame_builder::frame_builder()
 	: duration_(1)
-	, image_()
-	, image_diagonal_()
-	, image_mod_("")
-	, halo_("")
-	, halo_x_("")
-	, halo_y_("")
-	, halo_mod_("")
-	, sound_("")
-	, text_("")
-	, text_color_({0,0,0})
-	, blend_with_({0,0,0})
-	, blend_ratio_("")
-	, highlight_ratio_("")
-	, offset_("")
-	, submerge_("")
-	, x_("")
-	, y_("")
-	, directional_x_("")
-	, directional_y_("")
 	, auto_vflip_(boost::logic::indeterminate)
 	, auto_hflip_(boost::logic::indeterminate)
 	, primary_frame_(boost::logic::indeterminate)
@@ -87,8 +59,6 @@ frame_builder::frame_builder(const config& cfg,const std::string& frame_string)
 	, halo_mod_(cfg[frame_string + "halo_mod"])
 	, sound_(cfg[frame_string + "sound"])
 	, text_(cfg[frame_string + "text"])
-	, text_color_({0,0,0})
-	, blend_with_({0,0,0})
 	, blend_ratio_(cfg[frame_string + "blend_ratio"])
 	, highlight_ratio_(cfg[frame_string + "alpha"])
 	, offset_(cfg[frame_string + "offset"])
@@ -104,26 +74,20 @@ frame_builder::frame_builder(const config& cfg,const std::string& frame_string)
 {
 	if(!cfg.has_attribute(frame_string + "auto_vflip")) {
 		auto_vflip_ = boost::logic::indeterminate;
-	} else if(cfg[frame_string + "auto_vflip"].to_bool()) {
-		auto_vflip_ = true;
 	} else {
-		auto_vflip_ = false;
+		auto_vflip_ = cfg[frame_string + "auto_vflip"].to_bool();
 	}
 
 	if(!cfg.has_attribute(frame_string + "auto_hflip")) {
 		auto_hflip_ = boost::logic::indeterminate;
-	} else if(cfg[frame_string + "auto_hflip"].to_bool()) {
-		auto_hflip_ = true;
 	} else {
-		auto_hflip_ = false;
+		auto_hflip_ = cfg[frame_string + "auto_hflip"].to_bool();
 	}
 
 	if(!cfg.has_attribute(frame_string + "primary")) {
 		primary_frame_ = boost::logic::indeterminate;
-	} else if(cfg[frame_string + "primary"].to_bool()) {
-		primary_frame_ = true;
 	} else {
-		primary_frame_ = false;
+		primary_frame_ = cfg[frame_string + "primary"].to_bool();
 	}
 
 	std::vector<std::string> color = utils::split(cfg[frame_string + "text_color"]);
@@ -252,19 +216,19 @@ frame_builder& frame_builder::directional_y(const std::string& directional_y)
 
 frame_builder& frame_builder::auto_vflip(const bool auto_vflip)
 {
-	auto_vflip_ = auto_vflip ? true : false;
+	auto_vflip_ = auto_vflip;
 	return *this;
 }
 
 frame_builder& frame_builder::auto_hflip(const bool auto_hflip)
 {
-	auto_hflip_ = auto_hflip ? true : false;
+	auto_hflip_ = auto_hflip;
 	return *this;
 }
 
 frame_builder& frame_builder::primary_frame(const bool primary_frame)
 {
-	primary_frame_ = primary_frame ? true : false;
+	primary_frame_ = primary_frame;
 	return *this;
 }
 
@@ -451,7 +415,7 @@ std::vector<std::string> frame_parsed_parameters::debug_strings() const
 		v.push_back("text=" + text_);
 
 		if(text_color_) {
-			v.push_back("text_color=" + text_color_.get().to_rgba_string());
+			v.push_back("text_color=" + text_color_->to_rgba_string());
 		}
 	}
 
@@ -459,7 +423,7 @@ std::vector<std::string> frame_parsed_parameters::debug_strings() const
 		v.push_back("blend_ratio=" + blend_ratio_.get_original());
 
 		if(blend_with_) {
-			v.push_back("blend_with=" + blend_with_.get().to_rgba_string());
+			v.push_back("blend_with=" + blend_with_->to_rgba_string());
 		}
 	}
 
@@ -491,28 +455,16 @@ std::vector<std::string> frame_parsed_parameters::debug_strings() const
 		v.push_back("directional_y=" + directional_y_.get_original());
 	}
 
-	if(auto_vflip_ == true) {
-		v.push_back("auto_vflip=true");
+	if(!boost::indeterminate(auto_vflip_)) {
+		v.push_back("auto_vflip=" + std::string(auto_vflip_ ? "true" : "false"));
 	}
 
-	if(auto_vflip_ == false) {
-		v.push_back("auto_vflip=false");
+	if(!boost::indeterminate(auto_hflip_)) {
+		v.push_back("auto_hflip=" + std::string(auto_hflip_ ? "true" : "false"));
 	}
 
-	if(auto_hflip_ == true) {
-		v.push_back("auto_hflip=true");
-	}
-
-	if(auto_hflip_ == false) {
-		v.push_back("auto_hflip=false");
-	}
-
-	if(primary_frame_ == true) {
-		v.push_back("primary_frame=true");
-	}
-
-	if(primary_frame_ == false) {
-		v.push_back("primary_frame=false");
+	if(!boost::indeterminate(primary_frame_)) {
+		v.push_back("primary_frame=" + std::string(primary_frame_ ? "true" : "false"));
 	}
 
 	if(!drawing_layer_.get_original().empty()) {
@@ -550,7 +502,7 @@ void unit_frame::redraw(const int frame_time, bool on_start_time, bool in_scope_
 		}
 
 		if(!current_data.text.empty() && current_data.text_color) {
-			game_disp->float_label(src, current_data.text, current_data.text_color.get());
+			game_disp->float_label(src, current_data.text, *current_data.text_color);
 		}
 	}
 
@@ -604,7 +556,7 @@ void unit_frame::redraw(const int frame_time, bool on_start_time, bool in_scope_
 		game_display::get_singleton()->render_image(my_x, my_y,
 			static_cast<display::drawing_layer>(display::LAYER_UNIT_FIRST + current_data.drawing_layer),
 			src, image, facing_west, false,
-			ftofxp(current_data.highlight_ratio), current_data.blend_with ? current_data.blend_with.get() : color_t(),
+			ftofxp(current_data.highlight_ratio), current_data.blend_with ? *current_data.blend_with : color_t(),
 			current_data.blend_ratio, current_data.submerge, !facing_north);
 	}
 
@@ -869,14 +821,13 @@ const frame_parameters unit_frame::merge_parameters(int current_time, const fram
 	assert(engine_val.text.empty());
 	result.text = current_val.text.empty() ? animation_val.text : current_val.text;
 
-	// TODO: how should this be handled now that we use color_t?
-	//assert(!engine_val.text_color);
+	assert(!engine_val.text_color);
 	result.text_color = current_val.text_color ? current_val.text_color : animation_val.text_color;
 
 	/** The engine provides a blend color for poisoned units */
 	result.blend_with = current_val.blend_with ? current_val.blend_with : animation_val.blend_with;
 	if(primary && engine_val.blend_with && result.blend_with) {
-		result.blend_with = engine_val.blend_with.get().blend_lighten(result.blend_with.get());
+		result.blend_with = engine_val.blend_with->blend_lighten(*result.blend_with);
 	}
 
 	/** The engine provides a blend color for poisoned units */
@@ -948,7 +899,7 @@ const frame_parameters unit_frame::merge_parameters(int current_time, const fram
 	}
 
 	if(boost::logic::indeterminate(result.auto_vflip)) {
-		result.auto_vflip = primary ? false : true;
+		result.auto_vflip = !primary;
 	}
 
 	return result;
