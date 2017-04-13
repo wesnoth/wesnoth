@@ -102,7 +102,7 @@ void grid::set_child(widget* widget,
 	}
 }
 
-widget* grid::swap_child(const std::string& id,
+std::unique_ptr<widget> grid::swap_child(const std::string& id,
 						   widget* w,
 						   const bool recurse,
 						   widget* new_parent)
@@ -118,7 +118,7 @@ widget* grid::swap_child(const std::string& id,
 				grid* g = dynamic_cast<grid*>(child.get_widget());
 				if(g) {
 
-					widget* old = g->swap_child(id, w, true);
+					std::unique_ptr<widget> old = g->swap_child(id, w, true);
 					if(old) {
 						return old;
 					}
@@ -137,7 +137,7 @@ widget* grid::swap_child(const std::string& id,
 		w->set_visible(old->get_visible());
 		child.set_widget(w);
 
-		return old;
+		return std::unique_ptr<widget>(old);
 	}
 
 	return nullptr;

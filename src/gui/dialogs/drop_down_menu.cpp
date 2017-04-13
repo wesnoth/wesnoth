@@ -145,7 +145,7 @@ void drop_down_menu::pre_show(window& window)
 
 			grid* mi_grid = dynamic_cast<grid*>(new_row.find("menu_item", false));
 			if(mi_grid) {
-				delete mi_grid->swap_child("label", img, false);
+				mi_grid->swap_child("label", img, false);
 			}
 		}
 
@@ -161,7 +161,7 @@ void drop_down_menu::pre_show(window& window)
 
 			grid* mi_grid = dynamic_cast<grid*>(new_row.find("menu_item", false));
 			if(mi_grid) {
-				delete mi_grid->swap_child("icon", checkbox, false);
+				mi_grid->swap_child("icon", checkbox, false);
 			}
 		}
 	}

@@ -603,7 +603,7 @@ void preferences_dialog::post_build(window& window)
 			}
 
 			case ADVANCED_PREF_TYPE::SLIDER: {
-				slider* setter_widget = new slider;
+				slider* setter_widget = new slider();
 				setter_widget->set_definition("minimal");
 				setter_widget->set_id("setter");
 				// Maximum must be set first or this will assert
@@ -612,7 +612,7 @@ void preferences_dialog::post_build(window& window)
 				setter_widget->set_step_size(
 					option["step"].empty() ? 1 : option["step"].to_int());
 
-				delete details_grid.swap_child("setter", setter_widget, true);
+				details_grid.swap_child("setter", setter_widget, true);
 
 				slider& slide = find_widget<slider>(&details_grid, "setter", false);
 
@@ -646,11 +646,11 @@ void preferences_dialog::post_build(window& window)
 				const unsigned selected = std::find(option_ids.begin(), option_ids.end(),
 					get(pref_name, option["default"].str())) - option_ids.begin();
 
-				menu_button* setter_widget = new menu_button;
+				menu_button* setter_widget = new menu_button();
 				setter_widget->set_definition("default");
 				setter_widget->set_id("setter");
 
-				delete details_grid.swap_child("setter", setter_widget, true);
+				details_grid.swap_child("setter", setter_widget, true);
 
 				menu_button& menu = find_widget<menu_button>(&details_grid, "setter", false);
 
@@ -670,11 +670,11 @@ void preferences_dialog::post_build(window& window)
 			case ADVANCED_PREF_TYPE::SPECIAL: {
 				//main_grid->remove_child("setter");
 
-				image* value_widget = new image;
+				image* value_widget = new image();
 				value_widget->set_definition("default");
 				value_widget->set_label("icons/arrows/arrows_blank_right_25.png~CROP(3,3,18,18)");
 
-				delete main_grid->swap_child("value", value_widget, true);
+				main_grid->swap_child("value", value_widget, true);
 
 				break;
 			}

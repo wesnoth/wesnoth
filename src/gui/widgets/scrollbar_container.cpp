@@ -821,7 +821,7 @@ void scrollbar_container::finalize_setup()
 	content_->set_definition("default");
 
 	content_grid_ = dynamic_cast<grid*>(
-			get_grid().swap_child("_content_grid", content_, true));
+			get_grid().swap_child("_content_grid", content_, true).release());
 	assert(content_grid_);
 
 	content_grid_->set_parent(this);

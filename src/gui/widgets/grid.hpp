@@ -136,7 +136,7 @@ public:
 	 *                            the widget is cleared). If no widget found
 	 *                            and thus not replace nullptr will returned.
 	 */
-	widget* swap_child(const std::string& id,
+	std::unique_ptr<widget> swap_child(const std::string& id,
 						widget* w,
 						const bool recurse,
 						widget* new_parent = nullptr);

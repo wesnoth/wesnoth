@@ -602,7 +602,6 @@ public:
 
 		minimum_selection::delete_item(index);
 
-		delete items_[index];
 		items_.erase(items_.begin() + index);
 		order_dirty_ = true;
 	}
@@ -610,10 +609,6 @@ public:
 	/** Inherited from generator_base. */
 	void clear() override
 	{
-		for(auto item : items_)
-		{
-			delete item;
-		}
 		items_.clear();
 		order_dirty_ = true;
 		selected_item_count_ = 0;
@@ -762,7 +757,7 @@ public:
 
 		const unsigned item_index = index == -1 ? items_.size() : index;
 
-		items_.insert(items_.begin() + item_index, item);
+		items_.emplace(items_.begin() + item_index, item);
 		order_dirty_ = true;
 		minimum_selection::create_item(item_index);
 		my_placement::create_item(item_index);
@@ -795,7 +790,7 @@ public:
 	/** See @ref widget::layout_initialize. */
 	virtual void layout_initialize(const bool full_initialization) override
 	{
-		for(auto item : items_)
+		for(auto& item : items_)
 		{
 			if(item->child_grid.get_visible() != widget::visibility::invisible
 			   && item->shown) {
@@ -856,7 +851,7 @@ public:
 		calculate_order();
 		for(auto index : order_)
 		{
-			child* item = items_[index];
+			child* item = items_[index].get();
 			if(item->child_grid.get_visible() == widget::visibility::visible
 			   && item->shown) {
 
@@ -870,7 +865,7 @@ public:
 	child_populate_dirty_list(window& caller,
 							  const std::vector<widget*>& call_stack) override
 	{
-		for(auto item : items_)
+		for(auto& item : items_)
 		{
 			std::vector<widget*> child_call_stack = call_stack;
 			item->child_grid.populate_dirty_list(caller, child_call_stack);
@@ -894,7 +889,7 @@ public:
 	/** See @ref widget::disable_click_dismiss. */
 	bool disable_click_dismiss() const override
 	{
-		for(auto item : items_)
+		for(auto& item : items_)
 		{
 			if(item->child_grid.disable_click_dismiss()) {
 				return true;
@@ -994,7 +989,7 @@ private:
 	int last_selected_item_;
 
 	/** The items in the generator. */
-	typedef std::vector<child*> child_list;
+	typedef std::vector<std::unique_ptr<child>> child_list;
 	child_list items_;
 
 	/** the elements of order_ are indexes to items_ */

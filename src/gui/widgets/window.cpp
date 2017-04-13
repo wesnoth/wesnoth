@@ -1217,18 +1217,14 @@ void swap_grid(grid* g,
 		assert(parent_grid);
 	}
 	if(grid* grandparent_grid = dynamic_cast<grid*>(parent_grid->parent())) {
-		widget = grandparent_grid->swap_child(id, widget, false);
+		grandparent_grid->swap_child(id, widget, false);
 	} else if(container_base* c
 			  = dynamic_cast<container_base*>(parent_grid->parent())) {
 
-		widget = c->get_grid().swap_child(id, widget, true);
+		c->get_grid().swap_child(id, widget, true);
 	} else {
 		assert(false);
 	}
-
-	assert(widget);
-
-	delete widget;
 }
 
 } // namespace

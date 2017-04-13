@@ -85,10 +85,8 @@ void swap_grid(grid* g,
 	assert(parent_grid);
 
 	// Replace the child.
-	widget = parent_grid->swap_child(id, widget, false);
-	assert(widget);
-
-	delete widget;
+	auto old = parent_grid->swap_child(id, widget, false);
+	assert(old);
 }
 
 } // namespace

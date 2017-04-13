@@ -568,10 +568,8 @@ void swap_grid(grid* g,
 	assert(parent_grid);
 
 	// Replace the child.
-	wgt = parent_grid->swap_child(id, wgt, false);
-	assert(wgt);
-
-	delete wgt;
+	auto old = parent_grid->swap_child(id, wgt, false);
+	assert(old);
 }
 
 } // namespace
