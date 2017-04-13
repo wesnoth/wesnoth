@@ -47,6 +47,8 @@ public:
 	 * Actions that merely show a dialog are not included here.
 	 */
 	enum result {
+		// Window was resized, so needs redrawing
+		REDRAW_BACKGROUND = 0, // Needs to be 0, the value of gui2::window::NONE
 		// Start playing a single-player game, such as the tutorial or a campaign
 		LAUNCH_GAME,
 		// Connect to an MP server
@@ -65,15 +67,8 @@ public:
 		RELOAD_GAME_DATA,
 	};
 
-	bool redraw_background() const
-	{
-		return redraw_background_;
-	}
-
 private:
 	game_launcher& game_;
-
-	bool redraw_background_;
 
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const override;

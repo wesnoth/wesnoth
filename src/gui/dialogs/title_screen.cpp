@@ -136,7 +136,6 @@ bool show_debug_clock_button = false;
 
 title_screen::title_screen(game_launcher& game)
 	: game_(game)
-	, redraw_background_(true)
 	, debug_clock_(nullptr)
 {
 	set_restore(false);
@@ -210,9 +209,6 @@ void title_screen::pre_show(window& win)
 	win.set_click_dismiss(false);
 	win.set_enter_disabled(true);
 	win.set_escape_disabled(true);
-
-	// Each time the dialog shows, we set this to false
-	redraw_background_ = false;
 
 #ifdef DEBUG_TOOLTIP
 	win.connect_signal<event::SDL_MOUSE_MOTION>(
@@ -472,8 +468,7 @@ void title_screen::pre_show(window& win)
 
 void title_screen::on_resize(window& win)
 {
-	redraw_background_ = true;
-	win.close();
+	win.set_retval(REDRAW_BACKGROUND);
 }
 
 void title_screen::update_tip(window& win, const bool previous)

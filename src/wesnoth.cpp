@@ -785,7 +785,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 		 * Certain actions (such as window resizing) set the flag to true, which allows the dialog to reopen with any layout
 		 * changes such as those dictated by window resolution.
 		 */
-		while(dlg.redraw_background()) {
+		while(dlg.get_retval() == gui2::dialogs::title_screen::REDRAW_BACKGROUND) {
 			dlg.show(game->video());
 		}
 
@@ -825,6 +825,8 @@ static int do_gameloop(const std::vector<std::string>& args)
 			break;
 		case gui2::dialogs::title_screen::LAUNCH_GAME:
 			game->launch_game(should_reload);
+			break;
+		case gui2::dialogs::title_screen::REDRAW_BACKGROUND:
 			break;
 		}
 	}
