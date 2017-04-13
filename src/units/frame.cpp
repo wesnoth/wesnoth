@@ -826,8 +826,8 @@ const frame_parameters unit_frame::merge_parameters(int current_time, const fram
 
 	/** The engine provides a blend color for poisoned units */
 	result.blend_with = current_val.blend_with ? current_val.blend_with : animation_val.blend_with;
-	if(primary && engine_val.blend_with && result.blend_with) {
-		result.blend_with = engine_val.blend_with->blend_lighten(*result.blend_with);
+	if(primary && engine_val.blend_with) {
+		result.blend_with = engine_val.blend_with->blend_lighten(result.blend_with ? *result.blend_with : color_t(0,0,0));
 	}
 
 	/** The engine provides a blend color for poisoned units */
