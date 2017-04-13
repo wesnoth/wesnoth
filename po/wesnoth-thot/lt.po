@@ -7,15 +7,16 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2017-03-23 08:11+0100\n"
-"PO-Revision-Date: 2010-01-01 00:00+0300\n"
-"Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
-"Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
-"Language: Lithuanian\n"
+"PO-Revision-Date: 2017-04-08 15:47+0100\n"
+"Last-Translator: Andrius Štikonas <andrius@stikonas.eu>\n"
+"Language-Team: Lithuanian <wesnoth-lt@googlegroups.com>\n"
+"Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
+"X-Generator: Poedit 1.8.5\n"
 
 #. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:10
@@ -29,10 +30,8 @@ msgstr "TK"
 
 #. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:17
-#, fuzzy
-#| msgid "(Easy)"
 msgid "Easy"
-msgstr "(Lengvas)"
+msgstr "Lengvas"
 
 #. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:17
@@ -41,10 +40,8 @@ msgstr "Kovotojas"
 
 #. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:18
-#, fuzzy
-#| msgid "(Normal)"
 msgid "Normal"
-msgstr "(Normalus)"
+msgstr "Normalus"
 
 #. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:18
@@ -53,10 +50,8 @@ msgstr "Šarvuotis"
 
 #. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:19
-#, fuzzy
-#| msgid "(Challenging)"
 msgid "Challenging"
-msgstr "(Iššaukiantis)"
+msgstr "Iššaukiantis"
 
 #. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:19
@@ -107,7 +102,7 @@ msgstr "Minčių lietus, testavimas žaidžiant ir žmonos palaikymas"
 #. [about]
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:58
 msgid "Campaign Maintenance"
-msgstr ""
+msgstr "Kampanijos priežiūra"
 
 #. [scenario]: id=01_At_the_East_Gate
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:5
@@ -117,14 +112,6 @@ msgstr "Prie rytinių vartų"
 #. [part]
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:26
 #, fuzzy
-#| msgid ""
-#| "In the first few years after the founding of the Northern Alliance, the "
-#| "dwarves of Knalga and the human population of Dwarven Doors were fully "
-#| "preoccupied with rebuilding what had been broken by the long orcish "
-#| "occupation. But soon enough they prospered once again. The dwarves begin "
-#| "mining their past for inspiration in ways to rebuild Knalga so it would "
-#| "be even greater than before, and began also reaching out for contact with "
-#| "their scattered kinfolk."
 msgid ""
 "In the first few years after the founding of the Northern Alliance, the "
 "dwarves of Knalga and the human population of Dwarven Doors were fully "
@@ -497,7 +484,6 @@ msgstr "Jo, mano valdove Hameli."
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:219
 #, fuzzy
-#| msgid "The Order thanks you, Lord Hamel"
 msgid "The Order thanks you, Lord Hamel."
 msgstr "Ordinas dėkoja tau, valdove Hameli."
 
@@ -853,10 +839,8 @@ msgstr "Nuveskite Aiglondurą iki kelrodžio rytiniame perėjos gale"
 #. [objective]: condition=lose
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:117
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:128
-#, fuzzy
-#| msgid "Death of Angarthing"
 msgid "Death of Ratheln"
-msgstr "Angartingo mirtis"
+msgstr "Ratelno mirtis"
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:146
@@ -1098,11 +1082,6 @@ msgstr ""
 #. [message]: speaker=Master Perrin
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:203
 #, fuzzy
-#| msgid ""
-#| "We’re grateful for your assistance. And I’d like to send one of our "
-#| "senior apprentices with you to the east. It has come time for him to be "
-#| "journeyman... and I sense something being born to the east that I do not "
-#| "like the feel of."
 msgid ""
 "We’re grateful for your assistance. And I’d like to send one of our senior "
 "apprentices with you to the east. It has come time for him to be a "
@@ -1127,9 +1106,6 @@ msgstr "Darchas"
 #. [message]: speaker=narrator
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:243
 #, fuzzy
-#| msgid ""
-#| "The presence of Master Perrin’s journeymen gives you the ability to "
-#| "recruit mages."
 msgid ""
 "The presence of Lorinne and Darchas gives you the ability to recruit mages."
 msgstr "Meistro Perino samdinių buvimas leidžia jums samdyti magus."
@@ -1137,9 +1113,6 @@ msgstr "Meistro Perino samdinių buvimas leidžia jums samdyti magus."
 #. [message]: speaker=narrator
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:249
 #, fuzzy
-#| msgid ""
-#| "The presence of Master Perrin’s journeymen gives you the ability to "
-#| "recruit mages."
 msgid "The presence of Darchas gives you the ability to recruit mages."
 msgstr "Meistro Perino samdinių buvimas leidžia jums samdyti magus."
 
@@ -1249,10 +1222,8 @@ msgstr "Kaukėtas dvarfas"
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:171
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:207
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:286
-#, fuzzy
-#| msgid "Masked Dwarf"
 msgid "Masked Dwarves"
-msgstr "Kaukėtas dvarfas"
+msgstr "Kaukėti dvarfai"
 
 #. [objective]: condition=win
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:114
@@ -1404,10 +1375,8 @@ msgstr "Še tau mano šeimos atminimui, tu, žudike!"
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:354
-#, fuzzy
-#| msgid "They are defeated"
 msgid "They are defeated!"
-msgstr "Jie nugalėti"
+msgstr "Jie nugalėti!"
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:359
@@ -1575,10 +1544,8 @@ msgstr "Tan-Vagranas"
 
 #. [label]
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:210
-#, fuzzy
-#| msgid "East Gate"
 msgid "West Gate"
-msgstr "Rytiniai vartai"
+msgstr "Vakariniai vartai"
 
 #. [objective]: condition=lose
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:231
@@ -1904,7 +1871,7 @@ msgstr "Požemiai"
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:244
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:263
 msgid "Undead"
-msgstr ""
+msgstr "Nemirėliai"
 
 #. [side]: type=Lich, id=Fleleen
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:249
@@ -2012,10 +1979,6 @@ msgstr ""
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:542
 #, fuzzy
-#| msgid ""
-#| "I sense these bindings to be the work of common sorcery, not the power of "
-#| "the Hammer. Usually to each such locking spell there is some sort of key. "
-#| "If we can but find the key, we will able to open these doors."
 msgid ""
 "I sense these bindings to be the work of common sorcery, not the power of "
 "the Hammer. Usually to each such locking spell there is some sort of key. If "
@@ -2150,9 +2113,6 @@ msgstr ""
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:871
 #, fuzzy
-#| msgid ""
-#| "Freeing these prisoners is more of a blow to Karrag then we thought, for "
-#| "now he is unable to continue his foul sorcery."
 msgid ""
 "Freeing these prisoners is more of a blow to Karrag than we thought, for now "
 "he is unable to continue his foul sorcery."
@@ -2577,22 +2537,16 @@ msgstr ""
 #. [leadership]: id=inspire
 #: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:14
 msgid "inspire"
-msgstr "įkvėpimas"
+msgstr "įkvėpia"
 
 #. [leadership]: id=inspire
 #: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:15
-#, fuzzy
-#| msgid "inspire"
 msgid "female^inspire"
-msgstr "įkvėpimas"
+msgstr "įkvėpia"
 
 #. [leadership]: id=inspire
 #: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:16
 #, fuzzy
-#| msgid ""
-#| "This unit can inspire own L0 or L1 units that are next to it, making them "
-#| "fight better. Adjacent own units of L1 will do 25% more damage; L0 units "
-#| "will do 50% more."
 msgid ""
 "This unit can inspire own units that are next to it, making them fight "
 "better. Adjacent own units of lower or equal level will deal 25% more damage "
@@ -2678,10 +2632,8 @@ msgstr ""
 
 #. [object]: id=sorf	# Prevent it from being picked up more than once.
 #: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:85
-#, fuzzy
-#| msgid "Only mages can wield the Staff."
 msgid "Only a mage may wield this Staff."
-msgstr "Tik magai gali naudotis lazda."
+msgstr "Tik magas gali naudotis šia lazda."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:110
@@ -2689,33 +2641,3 @@ msgid ""
 "Aaarrgh! Though I die, the flame of righteousness shall send you down to "
 "darkness!"
 msgstr "Aaarrgh! Nors aš mirštu, teisingumo liepsna pasiųs jus visus į tamsą!"
-
-#~ msgid "No bandits in this village."
-#~ msgstr "Šiame kaime nėra plėšikų."
-
-#~ msgid "Death of West Gate commander"
-#~ msgstr "Vakarinių vartų vado mirtis"
-
-#~ msgid "Evil"
-#~ msgstr "Blogis"
-
-#~ msgid ""
-#~ "This unit can inspire own L0, L1, or L2 units that are next to it, making "
-#~ "them fight better. Adjacent own units of L2 will do more 25% more damage; "
-#~ "L1 units will do 50% more, and L0 will do 75% more."
-#~ msgstr ""
-#~ "Šis dalinys gali įkvėpti savus L0, L1 ar L2 karius esančius greta, "
-#~ "priversdamas juos kautis geriau. Šalia esantys L2 kariai darys 25% "
-#~ "daugiau žalos; L1 kariai darys 50% daugiau žalos, o L0 karys darys 75% "
-#~ "daugiau žalos."
-
-#~ msgid ""
-#~ "This unit can inspire own L0, L1, L2, or L3 units that are next to it, "
-#~ "making them fight better. Adjacent own units of L3 will do more 25% more "
-#~ "damage; L2 units will do 50% more, L1 will do 75% more, and L0 units will "
-#~ "do 100% more."
-#~ msgstr ""
-#~ "Šis dalinys gali įkvėpti savus L0, L1, L2 ar L3 karius esančius greta, "
-#~ "priversdamas juos kautis geriau. Šalia esantys L3 kariai darys 25% "
-#~ "daugiau žalos; L2 karys darys 50% daugiau žalos, L1 kariai darys 75% "
-#~ "daugiau žalos, o L0 karys darys 100% daugiau žalos."

@@ -5,17 +5,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-03-23 08:11+0100\n"
-"PO-Revision-Date: 2010-01-01 00:00+0300\n"
-"Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
-"Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
-"Language: Lithuanian\n"
+"POT-Creation-Date: 2017-03-23 08:40+0100\n"
+"PO-Revision-Date: 2017-04-08 15:44+0100\n"
+"Last-Translator: Andrius Štikonas <andrius@stikonas.eu>\n"
+"Language-Team: Lithuanian <wesnoth-lt@googlegroups.com>\n"
+"Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
-"X-Generator: Poedit 1.5.5\n"
+"X-Generator: Poedit 1.8.5\n"
 
 #. [terrain_type]: id=fence
 #. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
@@ -422,9 +422,8 @@ msgstr "Palmių giraitė"
 
 #. [terrain_type]: id=palm_forest
 #: data/core/terrain.cfg:574
-#, fuzzy
 msgid "Dense Palm Forest"
-msgstr "Palmių giraitė"
+msgstr "Tankus palmių miškas"
 
 #. [terrain_type]: id=savanna_forest
 #: data/core/terrain.cfg:586
@@ -530,9 +529,8 @@ msgstr "Kalnai"
 
 #. [terrain_type]: id=regular_mountains
 #: data/core/terrain.cfg:767
-#, fuzzy
 msgid "Regular Mountains"
-msgstr "Paprasti nepereinami kalnai"
+msgstr "Paprasti kalnai"
 
 #. [terrain_type]: id=dry_mountains
 #: data/core/terrain.cfg:777
@@ -546,10 +544,8 @@ msgstr "Apsnigti Kalnai"
 
 #. [terrain_type]: id=desert_mountains
 #: data/core/terrain.cfg:798
-#, fuzzy
-#| msgid "Dry Mountains"
 msgid "Desert Mountains"
-msgstr "Sausi kalnai"
+msgstr "Dykumos kalnai"
 
 #. [terrain_type]: id=wood_floor
 #: data/core/terrain.cfg:809
@@ -563,10 +559,8 @@ msgstr "Paprastos medinės grindys"
 
 #. [terrain_type]: id=old_wood_floor
 #: data/core/terrain.cfg:819 data/core/terrain.cfg:822
-#, fuzzy
-#| msgid "Wooden Floor"
 msgid "Old Wooden Floor"
-msgstr "Medinės grindys"
+msgstr "Senos medinės grindys"
 
 #. [terrain_type]: id=lit
 #: data/core/terrain.cfg:835
@@ -705,10 +699,8 @@ msgstr "Paprasti nepereinami kalnai"
 
 #. [terrain_type]: id=cloud_dry
 #: data/core/terrain.cfg:1054
-#, fuzzy
-#| msgid "Desert Impassable Mountains"
 msgid "Dry Impassable Mountains"
-msgstr "Dykumos nepereinami kalnai"
+msgstr "Sausi nepereinami kalnai"
 
 #. [terrain_type]: id=cloud_snow
 #: data/core/terrain.cfg:1065
@@ -737,10 +729,8 @@ msgstr "Natūrali urvo siena"
 #. [terrain_type]: id=wall_stone_mine
 #: data/core/terrain.cfg:1096 data/core/terrain.cfg:1097
 #: data/core/terrain.cfg:1153
-#, fuzzy
-#| msgid "Mine Rail"
 msgid "Mine Wall"
-msgstr "Kasyklų geležinkelis"
+msgstr "Kasyklų siena"
 
 #. [terrain_type]: id=cavewall_earthy
 #: data/core/terrain.cfg:1108
@@ -761,21 +751,18 @@ msgstr "Apšviesta akmeninė siena"
 #. [terrain_type]: id=wall_stone_mine
 #: data/core/terrain.cfg:1154
 #, fuzzy
-#| msgid "Mine Rail"
 msgid "Straight Mine Wall"
 msgstr "Kasyklų geležinkelis"
 
 #. [terrain_type]: id=wall_stone_white
 #: data/core/terrain.cfg:1164
 #, fuzzy
-#| msgid "Mine Rail"
 msgid "Interior Wall"
 msgstr "Kasyklų geležinkelis"
 
 #. [terrain_type]: id=wall_stone_white
 #: data/core/terrain.cfg:1165
 #, fuzzy
-#| msgid "Lit Stone Wall"
 msgid "Straight White Wall"
 msgstr "Apšviesta akmeninė siena"
 
@@ -783,7 +770,7 @@ msgstr "Apšviesta akmeninė siena"
 #. [terrain_type]: id=p_open_rusty
 #: data/core/terrain.cfg:1175 data/core/terrain.cfg:1201
 msgid "Gate"
-msgstr ""
+msgstr "Vardai"
 
 #. [terrain_type]: id=portal_gate_rusty
 #: data/core/terrain.cfg:1176
@@ -794,14 +781,12 @@ msgstr ""
 #. [terrain_type]: id=p_open_wooden
 #: data/core/terrain.cfg:1188 data/core/terrain.cfg:1213
 msgid "Door"
-msgstr ""
+msgstr "Durys"
 
 #. [terrain_type]: id=portal_door_wooden
 #: data/core/terrain.cfg:1189
-#, fuzzy
-#| msgid "Wooden Floor"
 msgid "Wooden Door"
-msgstr "Medinės grindys"
+msgstr "Medinės durys"
 
 #. [terrain_type]: id=p_open_rusty
 #: data/core/terrain.cfg:1202
@@ -810,10 +795,8 @@ msgstr ""
 
 #. [terrain_type]: id=p_open_wooden
 #: data/core/terrain.cfg:1214
-#, fuzzy
-#| msgid "Wooden Floor"
 msgid "Wooden Open Door"
-msgstr "Medinės grindys"
+msgstr "Medinės atviros durys"
 
 #. [terrain_type]: id=impassable_overlay
 #: data/core/terrain.cfg:1224
@@ -891,7 +874,6 @@ msgstr "Plūkto molio kaimas"
 #. [terrain_type]: id=desert_village_ruin
 #: data/core/terrain.cfg:1279
 #, fuzzy
-#| msgid "Adobe Village"
 msgid "Ruined Adobe Village"
 msgstr "Plūkto molio kaimas"
 
@@ -1150,14 +1132,12 @@ msgstr "Sugriuvusi dykumos pilis"
 #. [terrain_type]: id=aquatic_camp
 #: data/core/terrain.cfg:1832
 #, fuzzy
-#| msgid "Encampment"
 msgid "Aquatic Encampment"
 msgstr "Stovykla"
 
 #. [terrain_type]: id=aquatic_castle
 #: data/core/terrain.cfg:1845
 #, fuzzy
-#| msgid "Human Castle"
 msgid "Aquatic Castle"
 msgstr "Žmonių pilis"
 
@@ -1264,14 +1244,12 @@ msgstr "Sugriuvęs dykumos bokštas"
 #. [terrain_type]: id=merman_campkeep
 #: data/core/terrain.cfg:2043
 #, fuzzy
-#| msgid "Tall Encampment Keep"
 msgid "Aquatic Encampment Keep"
 msgstr "Aukštas stovyklos bokštas"
 
 #. [terrain_type]: id=merman_castlekeep
 #: data/core/terrain.cfg:2056
 #, fuzzy
-#| msgid "Ruined Keep"
 msgid "Aquatic Keep"
 msgstr "Sugriuvęs bokštas"
 
@@ -1690,24 +1668,18 @@ msgstr "Versija"
 
 #. [toggle_button]: id=sort_1
 #: data/gui/widget/addon_list.cfg:76
-#, fuzzy
-#| msgid "Author:"
 msgid "Author"
-msgstr "Autorius:"
+msgstr "Autorius"
 
 #. [toggle_button]: id=sort_2
 #: data/gui/widget/addon_list.cfg:90
-#, fuzzy
-#| msgid "Size:"
 msgid "Size"
-msgstr "Dydis:"
+msgstr "Dydis"
 
 #. [toggle_button]: id=sort_3
 #: data/gui/widget/addon_list.cfg:104
-#, fuzzy
-#| msgid "Downloads:"
 msgid "Downloads"
-msgstr "Atsiuntimai:"
+msgstr "Atsiuntimai"
 
 #. [toggle_button]: id=sort_4
 #. [toggle_button]: id=sort_1
@@ -1752,7 +1724,7 @@ msgstr "Užverti"
 #: data/gui/widget/unit_preview_pane.cfg:296
 #: data/gui/widget/unit_preview_pane.cfg:356
 msgid "Profile"
-msgstr ""
+msgstr "Profilis"
 
 #. [label]
 #. [widget]: id=name
@@ -1936,24 +1908,18 @@ msgstr ""
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:700
-#, fuzzy
-#| msgid "Status:"
 msgid "State:"
-msgstr "Būsena:"
+msgstr "Būsena"
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:811
-#, fuzzy
-#| msgid "Add-ons"
 msgid "Get Add-ons"
-msgstr "Priedai"
+msgstr "Gauti priedų"
 
 #. [button]: id=update_all
 #: data/gui/window/addon_manager.cfg:914
-#, fuzzy
-#| msgid "Speak to All"
 msgid "Update All"
-msgstr "Kalbėti su visais"
+msgstr "Atnaujinti viską"
 
 #. [button]: id=cancel
 #: data/gui/window/addon_manager.cfg:928
@@ -2008,7 +1974,6 @@ msgstr ""
 #. [label]
 #: data/gui/window/advanced_graphics_options.cfg:91
 #, fuzzy
-#| msgid "sound^Advanced Options"
 msgid "Advanced Graphics Options"
 msgstr "Sudėtingesni nustatymai"
 
@@ -2082,7 +2047,6 @@ msgstr ""
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:85
 #, fuzzy
-#| msgid "Leader"
 msgid "Leadership bonus"
 msgstr "Vadas"
 
@@ -2118,17 +2082,13 @@ msgstr ""
 
 #. [column]
 #: data/gui/window/attack_predictions.cfg:272
-#, fuzzy
-#| msgid "Attack"
 msgid "Attacker"
-msgstr "Pulti"
+msgstr "Puolantis"
 
 #. [column]
 #: data/gui/window/attack_predictions.cfg:282
-#, fuzzy
-#| msgid "Gender:"
 msgid "Defender"
-msgstr "Lytis:"
+msgstr "Besiginantis"
 
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:174
@@ -2166,7 +2126,6 @@ msgstr "Pasirinkite sudėtingumo lygį:"
 #. [label]
 #: data/gui/window/campaign_settings.cfg:48
 #, fuzzy
-#| msgid "sound^Advanced Options"
 msgid "Advanced Settings"
 msgstr "Sudėtingesni nustatymai"
 
@@ -2178,7 +2137,6 @@ msgstr ""
 #. [toggle_button]: id=mp_connect
 #: data/gui/window/campaign_settings.cfg:116
 #, fuzzy
-#| msgid "Configuration:"
 msgid "Configure sides"
 msgstr "Konfigūracija:"
 
@@ -2246,14 +2204,12 @@ msgstr "Kopijuoti"
 #. [button]: id=copy
 #: data/gui/window/chat_log.cfg:186 data/gui/window/lua_interpreter.cfg:106
 #, fuzzy
-#| msgid "Copy this URL to clipboard"
 msgid "Copy this log to clipboard"
 msgstr "Kopijuoti šį URL į iškarpinę"
 
 #. [label]
 #: data/gui/window/core_dialog.cfg:44
 #, fuzzy
-#| msgid "Load Game"
 msgid "Load Core"
 msgstr "Įkelti žaidimą"
 
@@ -2396,17 +2352,17 @@ msgstr "Tik komandai"
 #. [label]
 #: data/gui/window/editor_edit_label.cfg:106
 msgid "Category:"
-msgstr ""
+msgstr "Kategorija:"
 
 #. [label]
 #: data/gui/window/editor_edit_label.cfg:152
 msgid "Properties"
-msgstr ""
+msgstr "Savybės"
 
 #. [label]
 #: data/gui/window/editor_edit_label.cfg:164
 msgid "Color"
-msgstr ""
+msgstr "Spalva"
 
 #. [toggle_button]: id=immutable_toggle
 #: data/gui/window/editor_edit_label.cfg:181
@@ -2467,14 +2423,13 @@ msgstr "Pusė $side"
 
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:83
-#, fuzzy
 msgid "Number:"
-msgstr "Kalvų skaičius:"
+msgstr "Skaičius:"
 
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:111
 msgid "Team identifier:"
-msgstr ""
+msgstr "Komandos identifikatorius:"
 
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:138
@@ -2521,27 +2476,26 @@ msgstr "Auksas kaimui"
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:363
 msgid "Controller:"
-msgstr ""
+msgstr "Valdo:"
 
 #. [row]
 #: data/gui/window/editor_edit_side.cfg:373
 msgid "controller^Human"
-msgstr ""
+msgstr "Žmogus"
 
 #. [row]
 #: data/gui/window/editor_edit_side.cfg:375
 msgid "controller^AI only"
-msgstr ""
+msgstr "Tik DI"
 
 #. [row]
 #: data/gui/window/editor_edit_side.cfg:377
 msgid "controller^None"
-msgstr ""
+msgstr "Niekas"
 
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:396
 #, fuzzy
-#| msgid "Share view"
 msgid "Share Vision:"
 msgstr "Dalintis vaizdu"
 
@@ -2553,14 +2507,12 @@ msgstr ""
 #. [row]
 #: data/gui/window/editor_edit_side.cfg:408
 #, fuzzy
-#| msgid "Shroud"
 msgid "vision^Shroud"
 msgstr "Uždanga"
 
 #. [row]
 #: data/gui/window/editor_edit_side.cfg:410
 #, fuzzy
-#| msgid "translations^None"
 msgid "vision^None"
 msgstr "Nėra"
 
@@ -2573,7 +2525,6 @@ msgstr "Generuoti žemėlapį"
 #. [label]
 #: data/gui/window/editor_generate_map.cfg:58
 #, fuzzy
-#| msgid "Map Generator"
 msgid "Choose a map generator:"
 msgstr "Žemėlapio generatorius"
 
@@ -2678,7 +2629,7 @@ msgstr ""
 #. [label]
 #: data/gui/window/file_dialog.cfg:105
 msgid "Places"
-msgstr ""
+msgstr "Vietos"
 
 #. [button]: id=add_bookmark
 #: data/gui/window/file_dialog.cfg:302
@@ -2704,10 +2655,8 @@ msgstr "Naujas aplankas"
 
 #. [label]
 #: data/gui/window/file_dialog.cfg:394
-#, fuzzy
-#| msgid "File: "
 msgid "File:"
-msgstr "Failas: "
+msgstr "Failas:"
 
 #. [label]
 #: data/gui/window/formula_debugger.cfg:36
@@ -2769,7 +2718,6 @@ msgstr "Išjungti"
 #. [label]: id=title
 #: data/gui/window/game_cache_options.cfg:36
 #, fuzzy
-#| msgid "Cache:"
 msgid "WML Cache"
 msgstr "Podėlis:"
 
@@ -2785,10 +2733,8 @@ msgstr ""
 
 #. [label]
 #: data/gui/window/game_cache_options.cfg:81
-#, fuzzy
-#| msgid "Paths"
 msgid "Path:"
-msgstr "Keliai"
+msgstr "Kelias:"
 
 #. [button]: id=copy
 #. [button]: id=copy_
@@ -2796,7 +2742,7 @@ msgstr "Keliai"
 #: data/gui/window/game_version.cfg:46
 #: data/gui/window/screenshot_notification.cfg:33
 msgid "filesystem^Copy"
-msgstr ""
+msgstr "Kopijuoti"
 
 #. [button]: id=copy
 #. [button]: id=copy_
@@ -2811,7 +2757,7 @@ msgstr "Šį kelią kopijuoti į iškarpinę"
 #: data/gui/window/game_cache_options.cfg:126
 #: data/gui/window/game_version.cfg:62
 msgid "filesystem^Browse"
-msgstr ""
+msgstr "Naršyti"
 
 #. [button]: id=browse
 #. [button]: id=browse_
@@ -2936,10 +2882,8 @@ msgstr "Vadas"
 
 #. [toggle_button]: id=sort_1
 #: data/gui/window/game_stats.cfg:49
-#, fuzzy
-#| msgid "Team 1"
 msgid "Team"
-msgstr "Komanda 1"
+msgstr "Komanda"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [image]: id=gold_icon
@@ -2948,29 +2892,23 @@ msgstr "Komanda 1"
 #: data/gui/window/game_stats.cfg:63 data/gui/window/mp_join_game.cfg:219
 #: data/gui/window/mp_join_game.cfg:232
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:392
-#, fuzzy
-#| msgid "Gold:"
 msgid "Gold"
-msgstr "Auksas:"
+msgstr "Auksas"
 
 #. [toggle_button]: id=sort_3
 #: data/gui/window/game_stats.cfg:76
-#, fuzzy
-#| msgid "Villages:"
 msgid "Villages"
-msgstr "Kaimai:"
+msgstr "Kaimai"
 
 #. [toggle_button]: id=sort_4
 #: data/gui/window/game_stats.cfg:90
-#, fuzzy
-#| msgid "Unit List"
 msgid "Units"
-msgstr "Karių sąrašas"
+msgstr "Kariai"
 
 #. [toggle_button]: id=sort_5
 #: data/gui/window/game_stats.cfg:104
 msgid "Upkeep"
-msgstr ""
+msgstr "Išlaikymas"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [image]: id=income_icon
@@ -2979,10 +2917,8 @@ msgstr ""
 #: data/gui/window/game_stats.cfg:118 data/gui/window/mp_join_game.cfg:250
 #: data/gui/window/mp_join_game.cfg:263
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:398
-#, fuzzy
-#| msgid "Income:"
 msgid "Income"
-msgstr "Pajamos:"
+msgstr "Pajamos"
 
 #. [toggle_button]: id=sort_1
 #. [label]: id=side_title
@@ -2992,26 +2928,25 @@ msgstr "Pusė"
 
 #. [toggle_button]: id=sort_2
 #: data/gui/window/game_stats.cfg:311
-#, fuzzy
-#| msgid "Random starting time"
 msgid ""
 "Starting\n"
 "Gold"
-msgstr "Atsitiktinis pradžios laikas"
+msgstr ""
+"Pradžios\n"
+"auksas"
 
 #. [toggle_button]: id=sort_3
 #: data/gui/window/game_stats.cfg:325
-#, fuzzy
-#| msgid "Income:"
 msgid ""
 "Base\n"
 "Income"
-msgstr "Pajamos:"
+msgstr ""
+"Bazinės\n"
+"pajamos"
 
 #. [toggle_button]: id=sort_4
 #: data/gui/window/game_stats.cfg:340
 #, fuzzy
-#| msgid "Gold per village"
 msgid ""
 "Gold Per\n"
 "Village"
@@ -3028,30 +2963,23 @@ msgstr "Auksas kaimui"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/window/game_stats.cfg:704 src/gui/dialogs/game_stats.cpp:256
-#, fuzzy
-#| msgid "Current room"
 msgid "Current Status"
-msgstr "Dabartinis kambarys"
+msgstr "Dabartinė būsena"
 
 #. [widget]: id=tab_label
 #: data/gui/window/game_stats.cfg:779
-#, fuzzy
-#| msgid "Game Paths"
 msgid "Game Stats"
-msgstr "Žaidimo keliai"
+msgstr "Žaidimo statistika"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [widget]: id=tab_label
 #: data/gui/window/game_stats.cfg:792 src/gui/dialogs/game_stats.cpp:256
-#, fuzzy
-#| msgid "Edit Scenario Settings"
 msgid "Scenario Settings"
-msgstr "Keisti scenarijaus nustatymus"
+msgstr "Scenarijaus nustatymai"
 
 #. [button]: id=ok
 #: data/gui/window/game_stats.cfg:831 data/gui/window/unit_list.cfg:436
 #, fuzzy
-#| msgid "Scroll speed:"
 msgid "Scroll To"
 msgstr "Slinkimo greitis:"
 
@@ -3088,7 +3016,7 @@ msgstr "Podėlis:"
 #. [button]: id=open_stderr
 #: data/gui/window/game_version.cfg:161
 msgid "Open Log File"
-msgstr ""
+msgstr "Atverti žurnalo failą"
 
 #. [button]: id=open_stderr
 #: data/gui/window/game_version.cfg:162
@@ -3098,17 +3026,17 @@ msgstr ""
 #. [label]
 #: data/gui/window/game_version.cfg:195
 msgid "library^Name"
-msgstr ""
+msgstr "Pavadinimas"
 
 #. [label]
 #: data/gui/window/game_version.cfg:205
 msgid "library^Build version"
-msgstr ""
+msgstr "Versija kompiliuojant"
 
 #. [label]
 #: data/gui/window/game_version.cfg:215
 msgid "library^Runtime version"
-msgstr ""
+msgstr "Versija vykdant"
 
 #. [label]
 #: data/gui/window/game_version.cfg:293
@@ -3118,10 +3046,8 @@ msgstr ""
 
 #. [label]
 #: data/gui/window/game_version.cfg:447
-#, fuzzy
-#| msgid "Show Battle for Wesnoth help"
 msgid "The Battle for Wesnoth"
-msgstr "Rodyti Mūšio dėl Vesnoto pagalbą"
+msgstr "Mūšis dėl Vesnoto"
 
 #. [widget]: id=tab_label
 #: data/gui/window/game_version.cfg:526
@@ -3131,17 +3057,15 @@ msgstr "Keliai"
 #. [widget]: id=tab_label
 #: data/gui/window/game_version.cfg:539
 msgid "Libraries"
-msgstr ""
+msgstr "Bibliotekos"
 
 #. [widget]: id=tab_label
 #: data/gui/window/game_version.cfg:552
 msgid "Features"
-msgstr ""
+msgstr "Galimybės"
 
 #. [button]: id=copy_all
 #: data/gui/window/game_version.cfg:627
-#, fuzzy
-#| msgid "Copy"
 msgid "page^Copy"
 msgstr "Kopijuoti"
 
@@ -3168,14 +3092,12 @@ msgstr "Šį kelią kopijuoti į iškarpinę"
 #: data/gui/window/gamestate_inspector.cfg:348
 #: data/gui/window/lua_interpreter.cfg:38
 msgid "Lua Console"
-msgstr ""
+msgstr "Lua konsolė"
 
 #. [label]
 #: data/gui/window/generator_settings.cfg:89
-#, fuzzy
-#| msgid "Map Generator"
 msgid "Map Generator Settings"
-msgstr "Žemėlapio generatorius"
+msgstr "Žemėlapio generatoriaus nustatymai"
 
 #. [label]
 #. [grid]
@@ -3190,14 +3112,12 @@ msgstr "Žaidėjai:"
 #. [grid]
 #: data/gui/window/generator_settings.cfg:111
 #, fuzzy
-#| msgid "Number of hills:"
 msgid "Number of Hills:"
 msgstr "Kalvų skaičius:"
 
 #. [grid]
 #: data/gui/window/generator_settings.cfg:113
 #, fuzzy
-#| msgid "Max hill size:"
 msgid "Max Hill Size:"
 msgstr "Maks. kalvos dydis:"
 
@@ -3208,8 +3128,6 @@ msgstr "Kaimai:"
 
 #. [grid]
 #: data/gui/window/generator_settings.cfg:117
-#, fuzzy
-#| msgid "Castle size:"
 msgid "Castle Size:"
 msgstr "Pilies dydis:"
 
@@ -3220,15 +3138,11 @@ msgstr "Žemės forma:"
 
 #. [toggle_button]: id=connect_castles
 #: data/gui/window/generator_settings.cfg:135
-#, fuzzy
-#| msgid "Roads between castles"
 msgid "Roads Between Castles"
 msgstr "Keliai tarp pilių"
 
 #. [toggle_button]: id=show_labels
 #: data/gui/window/generator_settings.cfg:157
-#, fuzzy
-#| msgid "Show labels"
 msgid "Show Labels"
 msgstr "Rodyti žymes"
 
@@ -3239,10 +3153,8 @@ msgstr ""
 
 #. [label]: id=title
 #: data/gui/window/label_settings.cfg:42
-#, fuzzy
-#| msgid "Show floating labels"
 msgid "Show or Hide Labels"
-msgstr "Rodyti nuplaukiančius užrašus"
+msgstr "Rodyti arba slėpti žymes"
 
 #. [label]
 #. [grid]
@@ -3258,10 +3170,8 @@ msgstr "Pasirinkite pageidaujamą kalbą:"
 
 #. [label]: id=status
 #: data/gui/window/loadscreen.cfg:150
-#, fuzzy
-#| msgid "Load Game..."
 msgid "Loading..."
-msgstr "Įkelti žaidimą..."
+msgstr "Įkeliama..."
 
 #. [label]: id=map
 #: data/gui/window/lobby_main.cfg:59
@@ -3367,7 +3277,6 @@ msgstr "Invertuoti filtrą"
 #. [button]: id=quit
 #: data/gui/window/lobby_main.cfg:527 data/gui/window/lobby_main.cfg:697
 #, fuzzy
-#| msgid "Zoom Out"
 msgid "Log Out"
 msgstr "Nutolinti"
 
@@ -3402,14 +3311,12 @@ msgstr "Nustatymai"
 #. [option]
 #: data/gui/window/lobby_main.cfg:616 data/gui/window/lobby_main.cfg:767
 #, fuzzy
-#| msgid "Save Replay"
 msgid "Normal Replays"
 msgstr "Įrašyti peržaidimą"
 
 #. [option]
 #: data/gui/window/lobby_main.cfg:620 data/gui/window/lobby_main.cfg:771
 #, fuzzy
-#| msgid "Replay"
 msgid "Quick Replays"
 msgstr "Peržaidimas"
 
@@ -3442,17 +3349,15 @@ msgstr "Apie žaidėją – "
 #. [button]: id=add_to_friends
 #: data/gui/window/lobby_player_info.cfg:94
 #: data/gui/window/preferences/05_multiplayer.cfg:291
-#, fuzzy
-#| msgid "Add as Friend"
 msgid "Add Friend"
-msgstr "Pridėti kaip draugą"
+msgstr "Pridėti draugą"
 
 #. [button]: id=add_ignored
 #. [button]: id=add_to_ignores
 #: data/gui/window/lobby_player_info.cfg:105
 #: data/gui/window/preferences/05_multiplayer.cfg:304
 msgid "Block"
-msgstr ""
+msgstr "Blokuoti"
 
 #. [button]: id=remove_from_list
 #: data/gui/window/lobby_player_info.cfg:118
@@ -3467,7 +3372,6 @@ msgstr "Siųsti asmeninę žinutę"
 #. [label]
 #: data/gui/window/lobby_player_info.cfg:153
 #, fuzzy
-#| msgid "Moderation"
 msgid "Moderator Controls"
 msgstr "Moderavimas"
 
@@ -3483,10 +3387,8 @@ msgstr ""
 
 #. [button]: id=check_status
 #: data/gui/window/lobby_player_info.cfg:238
-#, fuzzy
-#| msgid "Check status"
 msgid "Check Status"
-msgstr "Patikrinti būseną"
+msgstr "Tikrinti būseną"
 
 #. [button]: id=kick
 #: data/gui/window/lobby_player_info.cfg:250
@@ -3497,7 +3399,6 @@ msgstr "Išspirti"
 #. [button]: id=kick_ban
 #: data/gui/window/lobby_player_info.cfg:262
 #, fuzzy
-#| msgid "Kick/ban"
 msgid "Kick + Ban"
 msgstr "Išspirti"
 
@@ -3510,7 +3411,6 @@ msgstr "Veiksmai"
 #. [button]: id=clear
 #: data/gui/window/lua_interpreter.cfg:117
 #, fuzzy
-#| msgid "Clean Gray Cobbles"
 msgid "Clear Console"
 msgstr "Švarus pilkas gargždas"
 
@@ -3522,7 +3422,6 @@ msgstr ""
 #. [label]: id=title
 #: data/gui/window/mp_alerts_options.cfg:95
 #, fuzzy
-#| msgid "Multiplayer"
 msgid "Multiplayer Alerts"
 msgstr "Daug žaidėjų"
 
@@ -3548,14 +3447,12 @@ msgstr "Pasirinkite raišką"
 #. [label]
 #: data/gui/window/mp_alerts_options.cfg:185
 #, fuzzy
-#| msgid "Lobby"
 msgid "In Lobby"
 msgstr "Vestibiulis"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:191
 #, fuzzy
-#| msgid "Players:"
 msgid "Player joins:"
 msgstr "Žaidėjai:"
 
@@ -3567,7 +3464,6 @@ msgstr ""
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:192
 #, fuzzy
-#| msgid "Players:"
 msgid "Player leaves:"
 msgstr "Žaidėjai:"
 
@@ -3589,7 +3485,6 @@ msgstr ""
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:194
 #, fuzzy
-#| msgid "Friends"
 msgid "Friend message:"
 msgstr "Draugai"
 
@@ -3601,7 +3496,6 @@ msgstr ""
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:195
 #, fuzzy
-#| msgid "Message:"
 msgid "Public message:"
 msgstr "Žinutė:"
 
@@ -3612,10 +3506,8 @@ msgstr ""
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:196
-#, fuzzy
-#| msgid "Send Private Message"
 msgid "Server message:"
-msgstr "Siųsti asmeninę žinutę"
+msgstr "Serverio žinutė:"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:196
@@ -3625,7 +3517,6 @@ msgstr ""
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:197
 #, fuzzy
-#| msgid "Random start time"
 msgid "Ready to start:"
 msgstr "Atsitiktinis pradžios laikas"
 
@@ -3637,7 +3528,7 @@ msgstr ""
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:198
 msgid "Game has begun:"
-msgstr ""
+msgstr "Žaidimas prasidėjo:"
 
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:198
@@ -3752,7 +3643,7 @@ msgstr "Žiūrėti sąrašą"
 #. [label]
 #: data/gui/window/mp_create_game.cfg:119
 msgid "Eras:"
-msgstr ""
+msgstr "Eros:"
 
 #. [label]
 #: data/gui/window/mp_create_game.cfg:155
@@ -3767,21 +3658,17 @@ msgstr ""
 #. [toggle_button]: id=use_map_settings
 #: data/gui/window/mp_create_game.cfg:313
 #, fuzzy
-#| msgid "Use map settings"
 msgid "Use Map Settings"
 msgstr "Naudoti žemėlapio nustatymus"
 
 #. [toggle_button]: id=use_map_settings
 #: data/gui/window/mp_create_game.cfg:314
 #, fuzzy
-#| msgid "Use map settings"
 msgid "Use scenario specific settings"
 msgstr "Naudoti žemėlapio nustatymus"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:330
-#, fuzzy
-#| msgid "Number of turns"
 msgid "Number of Turns"
 msgstr "Ėjimų skaičius"
 
@@ -3792,10 +3679,8 @@ msgstr ""
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:331
-#, fuzzy
-#| msgid "Unlimited"
 msgid "unlimited"
-msgstr "Neribotas"
+msgstr "neribotas"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:334
@@ -3804,8 +3689,6 @@ msgstr ""
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:334
-#, fuzzy
-#| msgid "Village gold"
 msgid "Village Gold"
 msgstr "Kaimo auksas"
 
@@ -3816,15 +3699,11 @@ msgstr ""
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:336
-#, fuzzy
-#| msgid "Village gold"
 msgid "Village Support"
-msgstr "Kaimo auksas"
+msgstr "Kaimo palaikymas"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:338
-#, fuzzy
-#| msgid "Experience modifier"
 msgid "Experience Modifier"
 msgstr "Patirties modifikatorius"
 
@@ -3851,14 +3730,11 @@ msgstr "Atsitiktinis pradžios laikas"
 #. [toggle_button]: id=random_start_time
 #: data/gui/window/mp_create_game.cfg:406
 #, fuzzy
-#| msgid "Random starting time"
 msgid "Randomize the starting time of day"
 msgstr "Atsitiktinis pradžios laikas"
 
 #. [toggle_button]: id=time_limit
 #: data/gui/window/mp_create_game.cfg:434
-#, fuzzy
-#| msgid "Time limit"
 msgid "Time Limit"
 msgstr "Laiko limitas"
 
@@ -3884,10 +3760,8 @@ msgstr ""
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:453
-#, fuzzy
-#| msgid "Turns:"
 msgid "Turn Bonus"
-msgstr "Ėjimai:"
+msgstr "Ėjimo premija"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:455
@@ -3901,10 +3775,8 @@ msgstr ""
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:457
-#, fuzzy
-#| msgid "Actions"
 msgid "Action Bonus"
-msgstr "Veiksmai"
+msgstr "Veiksmo premija"
 
 #. [grid]
 #: data/gui/window/mp_create_game.cfg:457
@@ -3917,10 +3789,8 @@ msgstr ""
 #: data/gui/window/mp_create_game.cfg:533 data/gui/window/preferences.cfg:291
 #: data/gui/window/preferences/05_multiplayer.cfg:430
 #: src/gui/dialogs/preferences_dialog.cpp:689
-#, fuzzy
-#| msgid "Generate"
 msgid "General"
-msgstr "Generuoti"
+msgstr "Bendri"
 
 #. [widget]: id=tab_label
 #: data/gui/window/mp_create_game.cfg:546
@@ -3930,10 +3800,8 @@ msgstr "Veiksmai"
 
 #. [widget]: id=tab_label
 #: data/gui/window/mp_create_game.cfg:559
-#, fuzzy
-#| msgid "Settings"
 msgid "Game Settings"
-msgstr "Nustatymai"
+msgstr "Žaidimo nustatymai"
 
 #. [slider]: id=num_players
 #: data/gui/window/mp_create_game.cfg:701
@@ -3942,31 +3810,25 @@ msgstr ""
 
 #. [label]
 #: data/gui/window/mp_create_game.cfg:833
-#, fuzzy
-#| msgid "Random starting time"
 msgid "Random map options: "
-msgstr "Atsitiktinis pradžios laikas"
+msgstr "Atsitiktinio žemėlapio parinktys: "
 
 #. [button]: id=random_map_regenerate
 #: data/gui/window/mp_create_game.cfg:854
-#, fuzzy
-#| msgid "Generate"
 msgid "Regenerate"
-msgstr "Generuoti"
+msgstr "Pergeneruoti"
 
 #: data/gui/window/mp_create_game.cfg:927
 msgid "Shuffle Sides"
-msgstr ""
+msgstr "Sumaišyti puses"
 
 #: data/gui/window/mp_create_game.cfg:931
 msgid "Allow users who are not playing to watch the game"
 msgstr ""
 
 #: data/gui/window/mp_create_game.cfg:931
-#, fuzzy
-#| msgid "Observe"
 msgid "Observers"
-msgstr "Stebėti"
+msgstr "Stebėtojai"
 
 #: data/gui/window/mp_create_game.cfg:935
 msgid "Allow only registered users to join the game"
@@ -4008,17 +3870,13 @@ msgstr ""
 #: data/gui/window/mp_create_game/default_resolution.cfg:169
 #: data/gui/window/mp_create_game/small_resolution.cfg:172
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:159
-#, fuzzy
-#| msgid "Map size: "
 msgid "Map size:"
-msgstr "Žemėlapio dydis: "
+msgstr "Žemėlapio dydis:"
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:116
-#, fuzzy
-#| msgid "Leader"
 msgid "Leader:"
-msgstr "Vadas"
+msgstr "Vadas:"
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:161
@@ -4031,7 +3889,7 @@ msgstr "Lytis:"
 #: data/gui/window/mp_faction_select.cfg:167
 #: src/gui/dialogs/multiplayer/faction_select.cpp:143
 msgid "Random"
-msgstr ""
+msgstr "Atsitiktinis"
 
 #. [toggle_button]: id=male_toggle
 #. [row]
@@ -4050,21 +3908,18 @@ msgstr "Moteris"
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:201
 #, fuzzy
-#| msgid "Recruit"
 msgid "Recruits:"
 msgstr "Samdyti"
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:280
 #, fuzzy
-#| msgid "Choose Resolution"
 msgid "Choose Your Faction"
 msgstr "Pasirinkite raišką"
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:305
 #, fuzzy
-#| msgid "Start Editor"
 msgid "Starting position:"
 msgstr "Paleisti redaktorių"
 
@@ -4090,17 +3945,13 @@ msgstr ""
 
 #. [label]
 #: data/gui/window/mp_join_game.cfg:162 data/gui/window/mp_staging.cfg:173
-#, fuzzy
-#| msgid "Gender:"
 msgid "<b>Gender:</b>"
-msgstr "Lytis:"
+msgstr "<b>Lytis:</b>"
 
 #. [label]
 #: data/gui/window/mp_join_game.cfg:330 data/gui/window/mp_staging.cfg:416
-#, fuzzy
-#| msgid "Choose Player"
 msgid "Connected Players"
-msgstr "Pasirinkite žaidėją"
+msgstr "Prisijungę žaidėjai"
 
 #. [button]: id=cancel
 #: data/gui/window/mp_join_game.cfg:418
@@ -4110,7 +3961,6 @@ msgstr ""
 #. [label]: id=title
 #: data/gui/window/mp_join_game.cfg:479 data/gui/window/mp_staging.cfg:631
 #, fuzzy
-#| msgid "Lobby"
 msgid "Game Lobby"
 msgstr "Vestibiulis"
 
@@ -4223,28 +4073,22 @@ msgstr "Pasirinkti"
 #. [button]: id=ok
 #: data/gui/window/mp_staging.cfg:505
 msgid "I’m Ready"
-msgstr ""
+msgstr "Aš pasiruošęs"
 
 #. [widget]: id=label
 #: data/gui/window/preferences.cfg:310
-#, fuzzy
-#| msgid "Hotkeys"
 msgid "Hotkeys"
 msgstr "Spartieji klavišai"
 
 #. [widget]: id=label
 #: data/gui/window/preferences.cfg:328
-#, fuzzy
-#| msgid "Refresh Display"
 msgid "Display"
-msgstr "Atnaujinti vaizdą"
+msgstr "Rodymas"
 
 #. [widget]: id=label
 #: data/gui/window/preferences.cfg:382
-#, fuzzy
-#| msgid "sound^Advanced Options"
 msgid "Advanced"
-msgstr "Sudėtingesni nustatymai"
+msgstr "Sudėtingesni"
 
 #. [label]
 #: data/gui/window/preferences/01_general.cfg:20
@@ -4278,10 +4122,8 @@ msgstr "Neanimuoti judančių DI dalinių"
 
 #. [column]
 #: data/gui/window/preferences/01_general.cfg:83
-#, fuzzy
-#| msgid "Speed: "
 msgid "Speed:"
-msgstr "Greitis: "
+msgstr "Greitis:"
 
 #. [column]
 #: data/gui/window/preferences/01_general.cfg:87
@@ -4296,7 +4138,6 @@ msgstr ""
 #. [toggle_button]: id=disable_auto_moves
 #: data/gui/window/preferences/01_general.cfg:104
 #, fuzzy
-#| msgid "Play a bell sound at the beginning of your turn"
 msgid "Do not allow automatic movements at the beginning of a turn"
 msgstr "Groti skambutį jūsų ėjimo pradžioje"
 
@@ -4366,7 +4207,6 @@ msgstr "Ištrinti autoišsaugojimus laimėjus VŽ/DŽ arba pralaimėjus DŽ"
 #. [column]
 #: data/gui/window/preferences/01_general.cfg:200
 #, fuzzy
-#| msgid "Maximum auto-saves: "
 msgid "Maximum auto-saves:"
 msgstr "Daugiausia autoišsaugojimų: "
 
@@ -4378,14 +4218,12 @@ msgstr "Nustatykite kiek daugiausia autoišsaugojimų norite"
 #. [button]: id=cachemg
 #: data/gui/window/preferences/01_general.cfg:220
 #, fuzzy
-#| msgid "Cache:"
 msgid "Cache"
 msgstr "Podėlis:"
 
 #. [button]: id=cachemg
 #: data/gui/window/preferences/01_general.cfg:221
 #, fuzzy
-#| msgid "Change the sample rate"
 msgid "Manage the game WML cache"
 msgstr "Pakeisti taktinį dažnį"
 
@@ -4397,7 +4235,6 @@ msgstr "Veiksmas"
 #. [toggle_button]: id=sort_1
 #: data/gui/window/preferences/02_hotkeys.cfg:99
 #, fuzzy
-#| msgid "Hotkeys"
 msgid "Hotkey"
 msgstr "Spartieji klavišai"
 
@@ -4443,17 +4280,14 @@ msgstr ""
 
 #. [label]
 #: data/gui/window/preferences/03_display.cfg:20
-#, fuzzy
-#| msgid "Change Resolution"
 msgid "Resolution:"
-msgstr "Pakeisti raišką"
+msgstr "Raiška:"
 
 #. [menu_button]: id=resolution_set
 #: data/gui/window/preferences/03_display.cfg:32
 #, fuzzy
-#| msgid "Change the sample rate"
 msgid "Change the game resolution"
-msgstr "Pakeisti taktinį dažnį"
+msgstr "Pakeisti raišką"
 
 #. [toggle_button]: id=fullscreen
 #: data/gui/window/preferences/03_display.cfg:48
@@ -4497,7 +4331,6 @@ msgstr "Rodyti tinklelį"
 #. [toggle_button]: id=show_grid
 #: data/gui/window/preferences/03_display.cfg:99
 #, fuzzy
-#| msgid "Overlay a grid onto the map"
 msgid "Overlay a grid over the map"
 msgstr "Ant žemėlapio uždėti tinklelį"
 
@@ -4513,15 +4346,12 @@ msgstr "Rodyti animuotą vietovių grafiką"
 
 #. [toggle_button]: id=animate_water
 #: data/gui/window/preferences/03_display.cfg:128
-#, fuzzy
-#| msgid "Animate map"
 msgid "Animate water"
-msgstr "Animuoti žemėlapį"
+msgstr "Animuoti vandenį"
 
 #. [toggle_button]: id=animate_water
 #: data/gui/window/preferences/03_display.cfg:129
 #, fuzzy
-#| msgid "Display animated terrain graphics"
 msgid "Display animated water graphics (can be slow)"
 msgstr "Rodyti animuotą vietovių grafiką"
 
@@ -4573,7 +4403,6 @@ msgstr "Tema"
 #. [button]: id=choose_theme
 #: data/gui/window/preferences/03_display.cfg:275
 #, fuzzy
-#| msgid "Change the sample rate"
 msgid "Change the in-game theme"
 msgstr "Pakeisti taktinį dažnį"
 
@@ -4639,8 +4468,6 @@ msgstr "Keisti skambučio garsumą"
 
 #. [column]
 #: data/gui/window/preferences/04_sound.cfg:137
-#, fuzzy
-#| msgid "Turn menu and button sounds on/off"
 msgid "Turn menu and button sounds on/off"
 msgstr "Įjunkite/išjunkite meniu ir mygtukų garsus"
 
@@ -4651,22 +4478,18 @@ msgstr "Naudotojo sąsajos garsai"
 
 #. [column]
 #: data/gui/window/preferences/04_sound.cfg:138
-#, fuzzy
-#| msgid "Change the sound volume for button clicks, etc."
 msgid "Change the sound volume for button clicks, etc."
 msgstr "Keisti mygtukų ir pan. garsumą"
 
 #. [label]
 #: data/gui/window/preferences/05_multiplayer.cfg:20
 #, fuzzy
-#| msgid "Chat lines: "
 msgid "Chat lines:"
 msgstr "Pokalbio eilutės: "
 
 #. [slider]: id=chat_lines
 #: data/gui/window/preferences/05_multiplayer.cfg:36
 #, fuzzy
-#| msgid "Set the amount of chat lines shown"
 msgid "Set the number of chat lines shown"
 msgstr "Nustato rodomų pokalbio eilučių skaičių"
 
@@ -4764,16 +4587,13 @@ msgstr ""
 #. [button]: id=mp_alerts
 #: data/gui/window/preferences/05_multiplayer.cfg:178
 #, fuzzy
-#| msgid "Configure the game’s settings"
 msgid "Configure multiplayer notification settings"
 msgstr "Konfigūruoti žaidimo nustatymus"
 
 #. [button]: id=mp_wesnothd
 #: data/gui/window/preferences/05_multiplayer.cfg:190
-#, fuzzy
-#| msgid "Send Private Message"
 msgid "Server Executable"
-msgstr "Siųsti asmeninę žinutę"
+msgstr ""
 
 #. [button]: id=mp_wesnothd
 #: data/gui/window/preferences/05_multiplayer.cfg:191
@@ -4817,7 +4637,7 @@ msgstr ""
 #. [label]: id=title
 #: data/gui/window/screenshot_notification.cfg:94
 msgid "Screenshot Saved"
-msgstr ""
+msgstr "Ekranvaizdis išsaugotas"
 
 #. [button]: id=browse_dir
 #: data/gui/window/screenshot_notification.cfg:184
@@ -4837,42 +4657,35 @@ msgstr ""
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:84
 #, fuzzy
-#| msgid "Show Enemy Moves"
 msgid "Show unmoved orb"
 msgstr "Rodyti priešų ėjimus"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:85
-#, fuzzy
-#| msgid "Show team colors"
 msgid "Show partial moved orb"
-msgstr "Rodyti komandų spalvas"
+msgstr ""
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:86
 #, fuzzy
-#| msgid "Show team colors"
 msgid "Show moved orb"
 msgstr "Rodyti komandų spalvas"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:87
 #, fuzzy
-#| msgid "Show all lobby joins"
 msgid "Show ally orb"
 msgstr "Rodyti visus prisijungimus prie vestibiulio"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:88
 #, fuzzy
-#| msgid "Show Enemy Moves"
 msgid "Show enemy orb"
 msgstr "Rodyti priešų ėjimus"
 
 #. [label]
 #: data/gui/window/sp_options_configure.cfg:40
 #, fuzzy
-#| msgid "Configuration:"
 msgid "Configure Options"
 msgstr "Konfigūracija:"
 
@@ -4883,10 +4696,8 @@ msgstr ""
 
 #. [label]
 #: data/gui/window/statistics_dialog.cfg:129
-#, fuzzy
-#| msgid "Image"
 msgid "Damage"
-msgstr "Paveikslėlis"
+msgstr "Žala"
 
 #. [label]
 #: data/gui/window/statistics_dialog.cfg:141
@@ -4895,10 +4706,8 @@ msgstr ""
 
 #. [label]
 #: data/gui/window/statistics_dialog.cfg:153
-#, fuzzy
-#| msgid "Turn"
 msgid "This Turn"
-msgstr "Ėjimas"
+msgstr "Šį ėjimą"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
@@ -4908,22 +4717,18 @@ msgstr "Statistika"
 
 #. [widget]: id=tab_label
 #: data/gui/window/statistics_dialog.cfg:485
-#, fuzzy
-#| msgid "Scenario start"
 msgid "Scenario"
-msgstr "Scenarijaus pradžia"
+msgstr "Scenarijus"
 
 #. [widget]: id=tab_label
 #: data/gui/window/statistics_dialog.cfg:498
-#, fuzzy
-#| msgid "Campaign"
 msgid "Campaign"
 msgstr "Kampanija"
 
 #. [label]: id=lblTitle
 #: data/gui/window/synced_choice_wait.cfg:40
 msgid "Waiting..."
-msgstr ""
+msgstr "Laukiama..."
 
 #. [label]: id=lblMessage
 #: data/gui/window/synced_choice_wait.cfg:60
@@ -4932,15 +4737,13 @@ msgstr ""
 
 #. [button]: id=btn_quit_game
 #: data/gui/window/synced_choice_wait.cfg:96
-#, fuzzy
-#| msgid "Quit Game"
 msgid "Quit game"
 msgstr "Išjungti žaidimą"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:21
 msgid "#"
-msgstr ""
+msgstr "#"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:57
@@ -4949,10 +4752,8 @@ msgstr ""
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:69
-#, fuzzy
-#| msgid "player"
 msgid "Layer"
-msgstr "zaidejas"
+msgstr "Sluoksnis"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:81
@@ -4971,15 +4772,13 @@ msgstr ""
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:339
-#, fuzzy
-#| msgid "Terrain Description"
 msgid "Terrain Layers"
-msgstr "Vietovės aprašymas"
+msgstr "Vietovių sluoksniai"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:384
 msgid "Flags"
-msgstr ""
+msgstr "Vėliavos"
 
 #. [label]
 #: data/gui/window/theme_list.cfg:51
@@ -5022,10 +4821,8 @@ msgstr "Apmokymas"
 #. [grid]
 #: data/gui/window/title_screen.cfg:252
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:98
-#, fuzzy
-#| msgid "Campaign"
 msgid "Campaigns"
-msgstr "Kampanija"
+msgstr "Kampanijos"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:252
@@ -5062,14 +4859,12 @@ msgstr "Atsiųsti naudotojų pagamintas kampanijas, eras ar žemėlapių rinkini
 #. [grid]
 #: data/gui/window/title_screen.cfg:256
 #, fuzzy
-#| msgid "Forest"
 msgid "Cores"
 msgstr "Miškas"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:256
 #, fuzzy
-#| msgid "Selected game"
 msgid "Select the game core data"
 msgstr "Pasirinktas žaidimas"
 
@@ -5116,7 +4911,6 @@ msgstr ""
 #. [label]
 #: data/gui/window/unit_advance.cfg:98
 #, fuzzy
-#| msgid "sound^Advanced Options"
 msgid "Advance Unit"
 msgstr "Sudėtingesni nustatymai"
 
@@ -5128,7 +4922,7 @@ msgstr ""
 #. [button]: id=damage_calculation
 #: data/gui/window/unit_attack.cfg:192
 msgid "Damage Calculation"
-msgstr ""
+msgstr "Žalos skaičiuotuvas"
 
 #. [button]: id=ok
 #: data/gui/window/unit_attack.cfg:220
@@ -5137,17 +4931,13 @@ msgstr "Pulti"
 
 #. [label]
 #: data/gui/window/unit_attack.cfg:305
-#, fuzzy
-#| msgid "Attack enemy"
 msgid "Attack Enemy"
 msgstr "Pulti priešą"
 
 #. [label]
 #: data/gui/window/unit_attack.cfg:331
-#, fuzzy
-#| msgid "Choose Resolution"
 msgid "Choose weapon:"
-msgstr "Pasirinkite raišką"
+msgstr "Pasirinkite ginklą"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -5163,24 +4953,24 @@ msgstr "Rasė"
 #. [toggle_button]: id=sort_2
 #: data/gui/window/unit_list.cfg:107
 msgid "Moves"
-msgstr ""
+msgstr "Žingsniai"
 
 #. [toggle_button]: id=sort_3
 #: data/gui/window/unit_list.cfg:135
 msgid "HP"
-msgstr ""
+msgstr "GT"
 
 #. [toggle_button]: id=sort_4
 #. [toggle_button]: id=sort_2
 #: data/gui/window/unit_list.cfg:149 data/gui/window/unit_recall.cfg:61
 msgid "Lvl"
-msgstr ""
+msgstr "Lyg"
 
 #. [toggle_button]: id=sort_5
 #. [toggle_button]: id=sort_3
 #: data/gui/window/unit_list.cfg:163 data/gui/window/unit_recall.cfg:75
 msgid "XP"
-msgstr ""
+msgstr "PT"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_6
@@ -5189,7 +4979,7 @@ msgstr ""
 #: src/gui/widgets/unit_preview_pane.cpp:319
 #: src/gui/widgets/unit_preview_pane.cpp:459
 msgid "Traits"
-msgstr ""
+msgstr "Bruožai"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -5200,7 +4990,6 @@ msgstr "Karių sąrašas"
 #. [label]: id=title
 #: data/gui/window/unit_recall.cfg:291
 #, fuzzy
-#| msgid "Rename Unit"
 msgid "Recall Unit"
 msgstr "Pervadinti karį"
 
@@ -5218,7 +5007,6 @@ msgstr "Grąžinti"
 #. [label]
 #: data/gui/window/unit_recruit.cfg:146
 #, fuzzy
-#| msgid "Recruit"
 msgid "Recruit Unit"
 msgstr "Samdyti"
 
@@ -5245,11 +5033,11 @@ msgstr "Detalės:"
 
 #: src/build_info.cpp:168
 msgid "feature^Experimental OpenMP support"
-msgstr ""
+msgstr "Eksperimentinis OpenMP palaikymas"
 
 #: src/build_info.cpp:173
 msgid "feature^PNG screenshots"
-msgstr ""
+msgstr "PNG ekranvaizdžiai"
 
 #: src/build_info.cpp:178
 msgid "feature^Lua console completion"
@@ -5285,23 +5073,23 @@ msgstr ""
 
 #: src/desktop/paths.cpp:205
 msgid "filesystem_path_game^Game data"
-msgstr ""
+msgstr "Žaidimo duomenys"
 
 #: src/desktop/paths.cpp:209
 msgid "filesystem_path_game^User data"
-msgstr ""
+msgstr "Naudotojo duomenys"
 
 #: src/desktop/paths.cpp:213
 msgid "filesystem_path_game^User preferences"
-msgstr ""
+msgstr "Naudotojo nustatymai"
 
 #: src/desktop/paths.cpp:226
 msgid "filesystem_path_system^Home"
-msgstr ""
+msgstr "Namai"
 
 #: src/desktop/paths.cpp:235
 msgid "filesystem_path_system^Root"
-msgstr ""
+msgstr "Šakninis"
 
 #: src/desktop/version.cpp:276
 msgid "operating_system^<unknown>"
@@ -5324,16 +5112,12 @@ msgid "player"
 msgstr "zaidejas"
 
 #: src/game_preferences.cpp:1044
-#, fuzzy
-#| msgid "%H:%M"
 msgid "[%H:%M]"
-msgstr "%H:%M"
+msgstr "[%H:%M]"
 
 #: src/game_preferences.cpp:1047
-#, fuzzy
-#| msgid "%I:%M %p"
 msgid "[%I:%M %p]"
-msgstr "%H:%M %p"
+msgstr "[%I:%M %p]"
 
 #: src/gui/core/canvas.cpp:596
 msgid "Line doesn't fit on canvas."
@@ -5442,7 +5226,6 @@ msgstr ""
 
 #: src/gui/dialogs/addon/manager.cpp:238
 #, fuzzy
-#| msgid "addons_of_type^Resources"
 msgid "addons_of_type^Cores"
 msgstr "Resursai"
 
@@ -5500,13 +5283,11 @@ msgstr ""
 
 #: src/gui/dialogs/addon/manager.cpp:308 src/gui/widgets/addon_list.cpp:94
 #, fuzzy
-#| msgid "addon_state^Installed"
 msgid "addon_state^Installed, not ready to publish"
 msgstr "Įdiegtas"
 
 #: src/gui/dialogs/addon/manager.cpp:309 src/gui/widgets/addon_list.cpp:94
 #, fuzzy
-#| msgid "addon_state^Not installed"
 msgid "addon_state^Ready to publish"
 msgstr "Neįdiegtas"
 
@@ -5538,7 +5319,6 @@ msgstr ""
 
 #: src/gui/dialogs/addon/manager.cpp:473
 #, fuzzy
-#| msgid "No description available."
 msgid "No Add-ons Available"
 msgstr "Nėra jokio aprašymo."
 
@@ -5558,7 +5338,7 @@ msgstr ""
 
 #: src/gui/dialogs/addon/manager.cpp:630
 msgid "Warning"
-msgstr ""
+msgstr "Dėmesio"
 
 #: src/gui/dialogs/addon/manager.cpp:631
 msgid ""
@@ -5593,7 +5373,6 @@ msgstr ""
 #: src/gui/dialogs/addon/manager.cpp:739 src/gui/dialogs/addon/manager.cpp:753
 #: src/gui/dialogs/campaign_selection.cpp:187
 #, fuzzy
-#| msgid "url^None"
 msgid "None"
 msgstr "Nėra"
 
@@ -5603,17 +5382,16 @@ msgstr ""
 
 #: src/gui/dialogs/attack_predictions.cpp:116
 #, fuzzy
-#| msgid "Choose Resolution"
 msgid "No usable weapon"
 msgstr "Pasirinkite raišką"
 
 #: src/gui/dialogs/attack_predictions.cpp:188
 msgid "Defender resistance vs"
-msgstr ""
+msgstr "Besiginančiojo atsparumas prieš"
 
 #: src/gui/dialogs/attack_predictions.cpp:190
 msgid "Attacker vulnerability vs"
-msgstr ""
+msgstr "Atakuojančiojo pažeidžiamumas prieš"
 
 #: src/gui/dialogs/campaign_settings.cpp:123
 msgid ""
@@ -5621,6 +5399,9 @@ msgid ""
 "\n"
 "Not allowed."
 msgstr ""
+"Era:\n"
+"\n"
+"Neleidžiama."
 
 #: src/gui/dialogs/campaign_settings.cpp:148
 msgid ""
@@ -5673,21 +5454,18 @@ msgstr "Sala"
 
 #: src/gui/dialogs/file_dialog.cpp:110
 msgid "Find File"
-msgstr ""
+msgstr "Rasti failą"
 
 #: src/gui/dialogs/file_dialog.cpp:186
 msgid "Open"
-msgstr ""
+msgstr "Atverti"
 
 #: src/gui/dialogs/file_dialog.cpp:186
-#, fuzzy
-#| msgid "Save Map"
 msgid "Save"
-msgstr "Įrašyti žemėlapį"
+msgstr "Įrašyti"
 
 #: src/gui/dialogs/file_dialog.cpp:316
 #, fuzzy
-#| msgid "Save already exists. Do you want to overwrite it?"
 msgid "The file already exists. Do you wish to overwrite it?"
 msgstr "Toks išsaugojimas jau yra. Ar norite perrašyti?"
 
@@ -5714,10 +5492,8 @@ msgid "The following file will be permanently deleted:"
 msgstr ""
 
 #: src/gui/dialogs/file_dialog.cpp:739
-#, fuzzy
-#| msgid "Do you really want to delete this game?"
 msgid "Do you wish to continue?"
-msgstr "Ar tikrai norite ištrinti šį žaidimą?"
+msgstr "Ar norite tęsti?"
 
 #: src/gui/dialogs/file_dialog.cpp:751
 msgid ""
@@ -5727,11 +5503,9 @@ msgstr ""
 
 #: src/gui/dialogs/folder_create.cpp:60
 msgid "New Bookmark"
-msgstr ""
+msgstr "Nauja žymelė"
 
 #: src/gui/dialogs/game_cache_options.cpp:140
-#, fuzzy
-#| msgid "addon_state^Unknown"
 msgid "dir_size^Unknown"
 msgstr "Nežinoma"
 
@@ -5768,7 +5542,6 @@ msgstr ""
 
 #: src/gui/dialogs/game_load.cpp:284
 #, fuzzy
-#| msgid "#(Invalid)"
 msgid "(Invalid)"
 msgstr "#(Negalioja)"
 
@@ -5815,24 +5588,19 @@ msgid "yes"
 msgstr "taip"
 
 #: src/gui/dialogs/game_version.cpp:139
-#, fuzzy
-#| msgid "Version "
 msgid "Version $version"
-msgstr "Versija "
+msgstr "Versija $version"
 
 #: src/gui/dialogs/game_version.cpp:143
 msgid "Running on $os"
 msgstr ""
 
 #: src/gui/dialogs/game_version.cpp:228
-#, fuzzy
-#| msgid "Version"
 msgid "version^N/A"
-msgstr "Versija"
+msgstr "nežinoma"
 
 #: src/gui/dialogs/label_settings.cpp:54
 #, fuzzy
-#| msgid "Clear Labels"
 msgid "Team Labels"
 msgstr "Valyti žymes"
 
@@ -5858,61 +5626,51 @@ msgstr ""
 
 #: src/gui/dialogs/loading_screen.cpp:49
 msgid "Initializing teams"
-msgstr ""
+msgstr "Paleidžiamos komandos"
 
 #: src/gui/dialogs/loading_screen.cpp:51
-#, fuzzy
-#| msgid "Configuration:"
 msgid "Loading game configuration"
-msgstr "Konfigūracija:"
+msgstr "Įkeliama žaidimo konfigūracija"
 
 #: src/gui/dialogs/loading_screen.cpp:52
-#, fuzzy
-#| msgid "Flowering Water Lilies"
 msgid "Loading data files"
-msgstr "Žydinti vandens lelija"
+msgstr "Įkeliami duomenų failai"
 
 #: src/gui/dialogs/loading_screen.cpp:53
 msgid "Loading level"
-msgstr ""
+msgstr "Įkeliamas lygis"
 
 #: src/gui/dialogs/loading_screen.cpp:54
 msgid "Initializing scripting engine"
 msgstr ""
 
 #: src/gui/dialogs/loading_screen.cpp:55
-#, fuzzy
-#| msgid "Enable planning mode on start"
 msgid "Initializing planning mode"
-msgstr "Žaidimo pradžioje įjungti planavimo režimą"
+msgstr "Paleidžiamas planavimo režimas"
 
 #: src/gui/dialogs/loading_screen.cpp:56
 msgid "Reading unit files"
-msgstr ""
+msgstr "Skaitomi karių failai"
 
 #: src/gui/dialogs/loading_screen.cpp:57
 msgid "Loading units"
-msgstr ""
+msgstr "Įkeliami kariai"
 
 #: src/gui/dialogs/loading_screen.cpp:58
 msgid "Searching for installed add-ons"
-msgstr ""
+msgstr "Ieškoma įdiegtų priedų"
 
 #: src/gui/dialogs/loading_screen.cpp:59
-#, fuzzy
-#| msgid "Random starting time"
 msgid "Starting game"
-msgstr "Atsitiktinis pradžios laikas"
+msgstr "Žaidimas paleidžiamas"
 
 #: src/gui/dialogs/loading_screen.cpp:60
 msgid "Verifying cache"
-msgstr ""
+msgstr "Tikrinamas podėlis"
 
 #: src/gui/dialogs/loading_screen.cpp:61
-#, fuzzy
-#| msgid "Connect to Server"
 msgid "Connecting to server"
-msgstr "Prisijungti prie serverio"
+msgstr "Jungiamasi prie serverio"
 
 #: src/gui/dialogs/loading_screen.cpp:62
 #, fuzzy
@@ -5921,39 +5679,31 @@ msgstr "Veiksmai"
 
 #: src/gui/dialogs/loading_screen.cpp:63
 msgid "Waiting for server"
-msgstr ""
+msgstr "Laukiama serverio"
 
 #: src/gui/dialogs/loading_screen.cpp:64
 #, fuzzy
-#| msgid "Connect to Server"
 msgid "Connecting to redirected server"
 msgstr "Prisijungti prie serverio"
 
 #: src/gui/dialogs/loading_screen.cpp:65
 msgid "Waiting for next scenario"
-msgstr ""
+msgstr "Laukiama kito scenarijaus"
 
 #: src/gui/dialogs/loading_screen.cpp:66
-#, fuzzy
-#| msgid "Random starting time"
 msgid "Getting game data"
-msgstr "Atsitiktinis pradžios laikas"
+msgstr "Gaunami žaidimo duomenys"
 
 #: src/gui/dialogs/lobby/lobby.cpp:105
-#, fuzzy
-#| msgid "Selected game"
 msgid "Selected Game"
 msgstr "Pasirinktas žaidimas"
 
 #: src/gui/dialogs/lobby/lobby.cpp:106
-#, fuzzy
-#| msgid "Other games"
 msgid "Other Games"
 msgstr "Kiti žaidimai"
 
 #: src/gui/dialogs/lobby/lobby.cpp:107
 #, fuzzy
-#| msgid "Current room"
 msgid "Current Room"
 msgstr "Dabartinis kambarys"
 
@@ -5963,7 +5713,6 @@ msgstr "Vestibiulis"
 
 #: src/gui/dialogs/lobby/lobby.cpp:124
 #, fuzzy
-#| msgid "Do you really want to delete this game?"
 msgid "Do you really want to log out?"
 msgstr "Ar tikrai norite ištrinti šį žaidimą?"
 
@@ -6018,47 +5767,39 @@ msgid "Side $side"
 msgstr "Pusė $side"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:97
-#, fuzzy
-#| msgid "Scenario start"
 msgid "Scenarios"
-msgstr "Scenarijaus pradžia"
+msgstr "Scenarijai"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:99
-#, fuzzy
-#| msgid "Close Map"
 msgid "User Maps"
-msgstr "Užverti žemėlapį"
+msgstr "Naudotojo žemėlapiai"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:100
 #, fuzzy
-#| msgid "New Scenario"
 msgid "User Scenarios"
 msgstr "Naujas scenarijus"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:101
-#, fuzzy
-#| msgid "Generate Random Map"
 msgid "Random Maps"
-msgstr "Generuoti atsitiktinį žemėlapį"
+msgstr "Atsitiktiniai žemėlapiai"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:105
 #, fuzzy
-#| msgid "Campaign"
 msgid "SP Campaigns"
 msgstr "Kampanija"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:179
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:180
 msgid "No games found."
-msgstr ""
+msgstr "Žaidimų nerasta."
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:212
 msgid "No eras found."
-msgstr ""
+msgstr "Erų nerasta."
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:213
 msgid "No eras found"
-msgstr ""
+msgstr "Erų nerasta"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:279
 msgid "Independent: Random factions assigned independently"
@@ -6078,7 +5819,6 @@ msgstr ""
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:531
 #, fuzzy
-#| msgid "No description available."
 msgid "No description available"
 msgstr "Nėra jokio aprašymo."
 
@@ -6092,42 +5832,33 @@ msgstr ""
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:186
 #, fuzzy
-#| msgid "Map Information"
 msgid "No era information found."
 msgstr "Žemėlapio informacija"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:241
-#, fuzzy
-#| msgid "Choose Player"
 msgid "Computer Player"
-msgstr "Pasirinkite žaidėją"
+msgstr "Kompiuterio žaidėjas"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:243
-#, fuzzy
-#| msgid "(empty list)"
 msgid "Empty slot"
-msgstr "(tuščias sąrašas)"
+msgstr "Tuščia vieta"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:245
 msgid "Reserved for $playername"
-msgstr ""
+msgstr "Rezervuota $playername"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:247
-#, fuzzy
-#| msgid "Vacant slots"
 msgid "Vacant slot"
-msgstr "Laisvos vietos"
+msgstr "Laisva vieta"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:251
 msgid "empty"
-msgstr ""
+msgstr "tuščia"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:325
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:158
-#, fuzzy
-#| msgid "Team 1"
 msgid "Team:"
-msgstr "Komanda 1"
+msgstr "Komanda:"
 
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:448
 msgid "Waiting for players to choose factions..."
@@ -6152,47 +5883,37 @@ msgstr "Netinkamas naudotojo vardas"
 
 #: src/gui/dialogs/preferences_dialog.cpp:227
 #, fuzzy
-#| msgid "View and edit your friends and ignores list"
 msgid "Not on friends or ignore lists"
 msgstr "Peržiūrėti ir keisti jūsų draugų ir ignoruojamų sąrašą"
 
 #: src/gui/dialogs/preferences_dialog.cpp:690
-#, fuzzy
-#| msgid "Save Game"
 msgid "Saved Games"
-msgstr "Išsaugoti žaidimą"
+msgstr "Įrašyti žaidimai"
 
 #: src/gui/dialogs/preferences_dialog.cpp:691
-#, fuzzy
 msgid "Map Commands"
-msgstr "Pasirinktinai"
+msgstr "Žemėlapio komandos"
 
 #: src/gui/dialogs/preferences_dialog.cpp:692
-#, fuzzy
 msgid "Unit Commands"
-msgstr "Pasirinktinai"
+msgstr "Karių komandos"
 
 #: src/gui/dialogs/preferences_dialog.cpp:693
-#, fuzzy
-#| msgid "Players: "
 msgid "Player Chat"
-msgstr "Žaidėjai: "
+msgstr "Žaidėjų pokalbis"
 
 #: src/gui/dialogs/preferences_dialog.cpp:694
 #, fuzzy
-#| msgid "Change Control"
 msgid "Replay Control"
 msgstr "Pakeisti valdymą"
 
 #: src/gui/dialogs/preferences_dialog.cpp:695
 msgid "Planning Mode"
-msgstr ""
+msgstr "Planavimo režimas"
 
 #: src/gui/dialogs/preferences_dialog.cpp:696
-#, fuzzy
-#| msgid "Scenario start"
 msgid "Scenario Editor"
-msgstr "Scenarijaus pradžia"
+msgstr "Scenarijų redaktorius"
 
 #: src/gui/dialogs/preferences_dialog.cpp:697
 msgid "Editor Palettes"
@@ -6200,7 +5921,6 @@ msgstr ""
 
 #: src/gui/dialogs/preferences_dialog.cpp:698
 #, fuzzy
-#| msgid "Unit Tool"
 msgid "Editor Tools"
 msgstr "Karių įrankis"
 
@@ -6209,9 +5929,8 @@ msgid "Editor Clipboard"
 msgstr ""
 
 #: src/gui/dialogs/preferences_dialog.cpp:700
-#, fuzzy
 msgid "Debug Commands"
-msgstr "Pasirinktinai"
+msgstr "Derinimo komandos"
 
 #: src/gui/dialogs/preferences_dialog.cpp:701
 #, fuzzy
@@ -6220,7 +5939,7 @@ msgstr "Pasirinktinai"
 
 #: src/gui/dialogs/preferences_dialog.cpp:787
 msgid "&#9679;"
-msgstr ""
+msgstr "&#9679;"
 
 #: src/gui/dialogs/preferences_dialog.cpp:848
 msgid ""
@@ -6242,49 +5961,40 @@ msgstr ""
 
 #: src/gui/dialogs/preferences_dialog.cpp:965
 msgid "∞"
-msgstr ""
+msgstr "∞"
 
 #: src/gui/dialogs/screenshot_notification.cpp:76
 #, fuzzy
-#| msgid "addon_state^Unknown"
 msgid "file_size^Unknown"
 msgstr "Nežinoma"
 
 #: src/gui/dialogs/statistics_dialog.cpp:194
-#, fuzzy
-#| msgid "Recruit"
 msgid "Recruits"
-msgstr "Samdyti"
+msgstr "Samdymai"
 
 #: src/gui/dialogs/statistics_dialog.cpp:195
-#, fuzzy
-#| msgid "Recall"
 msgid "Recalls"
-msgstr "Grąžinti"
+msgstr "Grąžinimai"
 
 #: src/gui/dialogs/statistics_dialog.cpp:196
-#, fuzzy
-#| msgid "sound^Advanced Options"
 msgid "Advancements"
-msgstr "Sudėtingesni nustatymai"
+msgstr "Patobulėjimai"
 
 #: src/gui/dialogs/statistics_dialog.cpp:197
 msgid "Losses"
-msgstr ""
+msgstr "Netektys"
 
 #: src/gui/dialogs/statistics_dialog.cpp:198
-#, fuzzy
-#| msgid "Hills"
 msgid "Kills"
-msgstr "Kalvos"
+msgstr "Nužudymai"
 
 #: src/gui/dialogs/statistics_dialog.cpp:212
 msgid "Inflicted"
-msgstr ""
+msgstr "Padaryta"
 
 #: src/gui/dialogs/statistics_dialog.cpp:220
 msgid "Taken"
-msgstr ""
+msgstr "Patirta"
 
 #: src/gui/dialogs/unit_recall.cpp:265
 msgid "This unit is loyal and requires no upkeep."
@@ -6293,14 +6003,12 @@ msgstr ""
 #: src/gui/dialogs/unit_recall.cpp:266 src/gui/dialogs/unit_recall.cpp:271
 #: src/gui/dialogs/unit_recall.cpp:276
 #, fuzzy
-#| msgid "Do you really want to delete this game?"
 msgid "Do you really want to dismiss him?"
 msgstr "Ar tikrai norite ištrinti šį žaidimą?"
 
 #: src/gui/dialogs/unit_recall.cpp:267 src/gui/dialogs/unit_recall.cpp:272
 #: src/gui/dialogs/unit_recall.cpp:277
 #, fuzzy
-#| msgid "Do you really want to delete this game?"
 msgid "Do you really want to dismiss her?"
 msgstr "Ar tikrai norite ištrinti šį žaidimą?"
 
@@ -6318,19 +6026,16 @@ msgstr ""
 
 #: src/gui/widgets/addon_list.cpp:98
 #, fuzzy
-#| msgid "addon_state^Installed"
 msgid "addon_state^Installed, upgradable"
 msgstr "Įdiegtas"
 
 #: src/gui/widgets/addon_list.cpp:98
 #, fuzzy
-#| msgid "addons_view^Upgradable"
 msgid "addon_state^Published, upgradable"
 msgstr "Yra atnaujinimas"
 
 #: src/gui/widgets/addon_list.cpp:102
 #, fuzzy
-#| msgid "addon_state^Installed"
 msgid "addon_state^Installed, outdated on server"
 msgstr "Įdiegtas"
 
@@ -6369,14 +6074,12 @@ msgid "Opening links is not supported, contact your packager"
 msgstr ""
 
 #: src/gui/widgets/label.cpp:181
-#, fuzzy
-#| msgid "Do you really want to delete this game?"
 msgid "Do you want to open this link?"
-msgstr "Ar tikrai norite ištrinti šį žaidimą?"
+msgstr "Ar tikrai norite atverti šią nuorodą?"
 
 #: src/gui/widgets/label.cpp:212
 msgid "Copied link!"
-msgstr ""
+msgstr "Nuoroda nukopijuota!"
 
 #: src/gui/widgets/listbox.cpp:935 src/gui/widgets/multi_page.cpp:299
 msgid ""
@@ -6416,13 +6119,11 @@ msgstr ""
 
 #: src/gui/widgets/size_lock.cpp:134
 #, fuzzy
-#| msgid "No list defined."
 msgid "No widget defined."
 msgstr "Neapibrėžtas joks sąrašas."
 
 #: src/gui/widgets/size_lock.cpp:157
 #, fuzzy
-#| msgid "Invalid username"
 msgid "Invalid size."
 msgstr "Netinkamas naudotojo vardas"
 
@@ -6432,7 +6133,6 @@ msgstr ""
 
 #: src/gui/widgets/stacked_widget.cpp:237
 #, fuzzy
-#| msgid "No stack defined."
 msgid "No stack layers defined."
 msgstr "Neapibrėžtas joks stekas."
 
@@ -6458,55 +6158,52 @@ msgstr ""
 
 #: src/gui/widgets/unit_preview_pane.cpp:130
 msgid "Resistances: "
-msgstr ""
+msgstr "Atsparumai: "
 
 #: src/gui/widgets/unit_preview_pane.cpp:132
 msgid "(Att / Def)"
-msgstr ""
+msgstr "(Puol / Gyn)"
 
 #: src/gui/widgets/unit_preview_pane.cpp:145
 msgid "Movement Costs:"
-msgstr ""
+msgstr "Judėjimo kaina:"
 
 #: src/gui/widgets/unit_preview_pane.cpp:208
 #, fuzzy
-#| msgid "Attack"
 msgid "Attacks"
 msgstr "Pulti"
 
 #: src/gui/widgets/unit_preview_pane.cpp:261
 #: src/gui/widgets/unit_preview_pane.cpp:388
 msgid "Lvl $lvl"
-msgstr ""
+msgstr "Lyg $lvl"
 
 #: src/gui/widgets/unit_preview_pane.cpp:289
 #: src/gui/widgets/unit_preview_pane.cpp:426
 #: src/gui/widgets/unit_preview_pane.cpp:439
 msgid "HP: "
-msgstr ""
+msgstr "GT: "
 
 #: src/gui/widgets/unit_preview_pane.cpp:294
 #: src/gui/widgets/unit_preview_pane.cpp:429
 #: src/gui/widgets/unit_preview_pane.cpp:444
 msgid "XP: "
-msgstr ""
+msgstr "PT: "
 
 #: src/gui/widgets/unit_preview_pane.cpp:296
 #: src/gui/widgets/unit_preview_pane.cpp:446
-#, fuzzy
-#| msgid "Experience modifier"
 msgid "Experience Modifier: "
-msgstr "Patirties modifikatorius"
+msgstr "Patirties modifikatorius: "
 
 #: src/gui/widgets/unit_preview_pane.cpp:299
 #: src/gui/widgets/unit_preview_pane.cpp:449
 msgid "MP: "
-msgstr ""
+msgstr "MT: "
 
 #: src/gui/widgets/unit_preview_pane.cpp:337
 #: src/gui/widgets/unit_preview_pane.cpp:477
 msgid "Abilities"
-msgstr ""
+msgstr "Galimybės"
 
 #: src/gui/widgets/window.cpp:988
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
@@ -6519,7 +6216,6 @@ msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:39
 #, fuzzy
-#| msgid "Scroll speed:"
 msgid "Scroll Up"
 msgstr "Slinkimo greitis:"
 
@@ -6529,7 +6225,6 @@ msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:41
 #, fuzzy
-#| msgid "Scroll speed:"
 msgid "Scroll Left"
 msgstr "Slinkimo greitis:"
 
@@ -6643,7 +6338,6 @@ msgstr "Kartoti samdymą"
 
 #: src/hotkey/hotkey_command.cpp:76
 #, fuzzy
-#| msgid "Show labels"
 msgid "Show/Hide Labels"
 msgstr "Rodyti žymes"
 
@@ -6699,11 +6393,11 @@ msgstr "Tęsti tinklo žaitimą"
 
 #: src/hotkey/hotkey_command.cpp:94
 msgid "Quit to Titlescreen"
-msgstr ""
+msgstr "Išjungti į pradžios ekraną"
 
 #: src/hotkey/hotkey_command.cpp:95
 msgid "Set Team Label"
-msgstr ""
+msgstr "Nustatyti komandos žymę"
 
 #: src/hotkey/hotkey_command.cpp:96
 msgid "Set Label"
@@ -6719,7 +6413,7 @@ msgstr "Rodyti priešų ėjimus"
 
 #: src/hotkey/hotkey_command.cpp:99
 msgid "Best Possible Enemy Moves"
-msgstr ""
+msgstr "Geriausi įmanomi priešo ėjimai"
 
 #: src/hotkey/hotkey_command.cpp:101
 #, fuzzy
@@ -6746,7 +6440,6 @@ msgstr "Kita pusė"
 
 #: src/hotkey/hotkey_command.cpp:106
 #, fuzzy
-#| msgid "Next page"
 msgid "Next Move"
 msgstr "Kitas puslapis"
 
@@ -6760,7 +6453,6 @@ msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:109
 #, fuzzy
-#| msgid "Human Castle"
 msgid "Human Team"
 msgstr "Žmonių pilis"
 
@@ -6770,29 +6462,28 @@ msgstr "Praleisti animaciją"
 
 #: src/hotkey/hotkey_command.cpp:111
 #, fuzzy
-#| msgid "Replay"
 msgid "End Replay"
 msgstr "Peržaidimas"
 
 #. TRANSLATORS: whiteboard menu entry: toggle planning mode
 #: src/hotkey/hotkey_command.cpp:114
 msgid "whiteboard^Planning Mode"
-msgstr ""
+msgstr "Planavimo režimas"
 
 #. TRANSLATORS: whiteboard menu entry: execute planned action
 #: src/hotkey/hotkey_command.cpp:116
 msgid "whiteboard^Execute Action"
-msgstr ""
+msgstr "Vykdyti veiksmą"
 
 #. TRANSLATORS: whiteboard menu entry: execute all planned actions
 #: src/hotkey/hotkey_command.cpp:118
 msgid "whiteboard^Execute All Actions"
-msgstr ""
+msgstr "Vykdyti visus veiksmus"
 
 #. TRANSLATORS: whiteboard menu entry: delete planned action
 #: src/hotkey/hotkey_command.cpp:120
 msgid "whiteboard^Delete Action"
-msgstr ""
+msgstr "Trinti veiksmą"
 
 #. TRANSLATORS: whiteboard menu entry: move planned action up queue
 #: src/hotkey/hotkey_command.cpp:122
@@ -6827,7 +6518,7 @@ msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:136
 msgid "Assign Local Time"
-msgstr ""
+msgstr "Priskirti vietinį laiką"
 
 #: src/hotkey/hotkey_command.cpp:138
 msgid "Time Schedule Editor"
@@ -6889,7 +6580,7 @@ msgstr ""
 #: src/hotkey/hotkey_command.cpp:155
 #, fuzzy
 msgid "Remove Location"
-msgstr "Veiksmai"
+msgstr "Pašalinti priedus"
 
 #: src/hotkey/hotkey_command.cpp:157
 msgid "Add New Side"
@@ -7036,7 +6727,7 @@ msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:186
 msgid "Next Brush"
-msgstr ""
+msgstr "Kitas teptukas"
 
 #: src/hotkey/hotkey_command.cpp:187
 msgid "Default Brush"
@@ -7056,11 +6747,11 @@ msgstr "Dvigubas spindulys"
 
 #: src/hotkey/hotkey_command.cpp:191
 msgid "Brush NW-SE"
-msgstr ""
+msgstr "Teptukas ŠV-PR"
 
 #: src/hotkey/hotkey_command.cpp:192
 msgid "Brush SW-NE"
-msgstr ""
+msgstr "Teptukas PV-ŠR"
 
 #: src/hotkey/hotkey_command.cpp:194
 msgid "Cut"
@@ -7143,9 +6834,8 @@ msgid "Apply a Mask"
 msgstr "Pritaikyti kaukę"
 
 #: src/hotkey/hotkey_command.cpp:214
-#, fuzzy
 msgid "Create Mask"
-msgstr "Sukurti žaidimą"
+msgstr "Sukurti kaukę"
 
 #: src/hotkey/hotkey_command.cpp:215
 msgid "Refresh Display"
@@ -7185,7 +6875,6 @@ msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:229
 #, fuzzy
-#| msgid "Number of turns"
 msgid "Draw Number of Bitmaps"
 msgstr "Ėjimų skaičius"
 
@@ -7212,14 +6901,12 @@ msgid "Edit Scenario"
 msgstr "Keisti scenarijų"
 
 #: src/hotkey/hotkey_command.cpp:237
-#, fuzzy
 msgid "Edit Side"
-msgstr "Pusė"
+msgstr "Keisti pusę"
 
 #: src/hotkey/hotkey_command.cpp:238
-#, fuzzy
 msgid "Remove Side"
-msgstr "Pašalinti"
+msgstr "Pašalinti pusę"
 
 #: src/hotkey/hotkey_command.cpp:240
 msgid "Delay Shroud Updates"
@@ -7300,7 +6987,6 @@ msgstr "Tvarkyti priedus"
 
 #: src/hotkey/hotkey_command.cpp:261
 #, fuzzy
-#| msgid "Manage Add-ons"
 msgid "Manage Cores"
 msgstr "Tvarkyti priedus"
 
@@ -7393,288 +7079,3 @@ msgid ""
 "The key '$deprecated_key' has been renamed to '$key'. Support for "
 "'$deprecated_key' will be removed in version $removal_version."
 msgstr ""
-
-#, fuzzy
-#~ msgid "Modifiers"
-#~ msgstr "Pasirinkite raišką"
-
-#~ msgid "Author:"
-#~ msgstr "Autorius:"
-
-#, fuzzy
-#~ msgid "Options"
-#~ msgstr "Veiksmai"
-
-#~ msgid "Installation status:"
-#~ msgstr "Diegimo būklė:"
-
-#~ msgid "Add-on types:"
-#~ msgstr "Priedų tipai:"
-
-#, fuzzy
-#~ msgid "Toggle All"
-#~ msgstr "Perjungti elipses"
-
-#~ msgid "sort^Ascending"
-#~ msgstr "Didėjančiai"
-
-#~ msgid "sort^Descending"
-#~ msgstr "Mažėjančiai"
-
-#~ msgid "Filter:"
-#~ msgstr "Filtras:"
-
-#, fuzzy
-#~| msgid "Speed: "
-#~ msgid "Seed:"
-#~ msgstr "Greitis: "
-
-#~ msgid "Filter"
-#~ msgstr "Filtras"
-
-#~ msgid "Set Password"
-#~ msgstr "Nustatyti slaptažodį"
-
-#~ msgid "Items"
-#~ msgstr "Daiktai"
-
-#, fuzzy
-#~ msgid "Contents"
-#~ msgstr "Turinys"
-
-#~ msgid "Add to Friends"
-#~ msgstr "Pridėti prie draugų"
-
-#~ msgid "Add to Ignores"
-#~ msgstr "Pridėti prie ignoruojamų"
-
-#~ msgid "Default"
-#~ msgstr "Numatyta"
-
-#~ msgid "Map to play:"
-#~ msgstr "Žaidžiamas žemėlapis:"
-
-#, fuzzy
-#~ msgid "Choose Modifications"
-#~ msgstr "Pasirinkite raišką"
-
-#, fuzzy
-#~ msgid "Show haloing effects"
-#~ msgstr "Garso efektai"
-
-#, fuzzy
-#~ msgid "Show special unit graphical effects"
-#~ msgstr "Garso efektai"
-
-#, fuzzy
-#~| msgid "Add as Ignore"
-#~ msgid "Add Ignored"
-#~ msgstr "Pridėti kaip ignoruojamą"
-
-#~ msgid "Delete File"
-#~ msgstr "Trinti failą"
-
-#~ msgid "Deletion of the file failed."
-#~ msgstr "Nepavyko failo trynimas."
-
-#~ msgid "Creation of the directory failed."
-#~ msgstr "Nepavyko aplanko sukūrimas."
-
-#~ msgid "Load Game..."
-#~ msgstr "Įkelti žaidimą..."
-
-#~ msgid "infinite"
-#~ msgstr "begalybė"
-
-#, fuzzy
-#~| msgid "Prefs section^General"
-#~ msgid "Prefs tab^General"
-#~ msgstr "Bendri"
-
-#~ msgid "Prefs section^General"
-#~ msgstr "Bendri"
-
-#, fuzzy
-#~| msgid "Prefs section^Game"
-#~ msgid "Prefs section^Hotkeys"
-#~ msgstr "Žaidimas"
-
-#~ msgid "Prefs section^Display"
-#~ msgstr "Vaizdas"
-
-#~ msgid "Prefs section^Sound"
-#~ msgstr "Garsas"
-
-#~ msgid "Prefs section^Multiplayer"
-#~ msgstr "Daug žaidėjų"
-
-#, fuzzy
-#~| msgid "Prefs section^Game"
-#~ msgid "Prefs section^Advanced"
-#~ msgstr "Žaidimas"
-
-#~ msgid "Version "
-#~ msgstr "Versija "
-
-#~ msgid "Manage Data"
-#~ msgstr "Tvarkyti duomenis"
-
-#~ msgid "Choose the game to load"
-#~ msgstr "Pasirinkite norimą užkrauti žaidimą"
-
-#~ msgid "Clear"
-#~ msgstr "Išvalyti"
-
-#~ msgid "Restore"
-#~ msgstr "Atstatyti"
-
-#~ msgid "Backup"
-#~ msgstr "Atsarginė kopija"
-
-#~ msgid "100/100"
-#~ msgstr "100/100"
-
-#, fuzzy
-#~| msgid "Moderation"
-#~ msgid "Mouse emulation"
-#~ msgstr "Moderavimas"
-
-#, fuzzy
-#~| msgid "Settings"
-#~ msgid "Joystick Settings"
-#~ msgstr "Nustatymai"
-
-#, fuzzy
-#~| msgid "Sound"
-#~ msgid "Play Sound:"
-#~ msgstr "Garsas"
-
-#, fuzzy
-#~| msgid "Send Private Message"
-#~ msgid "Private message:"
-#~ msgstr "Siųsti asmeninę žinutę"
-
-#, fuzzy
-#~| msgid "Random start time"
-#~ msgid "Ready to start game:"
-#~ msgstr "Atsitiktinis pradžios laikas"
-
-#~ msgid "Attack enemy"
-#~ msgstr "Pulti priešą"
-
-#~ msgid "Set Path to wesnothd"
-#~ msgstr "Nustatyti kelią iki wesnothd"
-
-#~ msgid "Friends List"
-#~ msgstr "Draugų sąrašas"
-
-#~ msgid "Multiplayer Options"
-#~ msgstr "Daugelio žaidėjų nustatymai"
-
-#~ msgid "Add As Friend"
-#~ msgstr "Pridėti kaip draugą"
-
-#~ msgid "Add As Ignore"
-#~ msgstr "Pridėti kaip ignoruojamą"
-
-#~ msgid "sound^Advanced Options"
-#~ msgstr "Sudėtingesni nustatymai"
-
-#~ msgid "sound^Standard Options"
-#~ msgstr "Standartiniai nustatymai"
-
-#~ msgid "Custom"
-#~ msgstr "Pasirinktinai"
-
-#~ msgid "Apply"
-#~ msgstr "Pritaikyti"
-
-#~ msgid "Sample rate (Hz):"
-#~ msgstr "Taktinis dažnis (Hz):"
-
-#~ msgid "User defined sample rate"
-#~ msgstr "Naudotojo nurodytas taktinis dažnis"
-
-#~ msgid "Change the buffer size"
-#~ msgstr "Keisti buferio dydį"
-
-#~ msgid "Buffer size: "
-#~ msgstr "Buferio dydis: "
-
-#~ msgid "Choose whether the game should run full screen or in a window"
-#~ msgstr "Pasirinkite, ar žaidimas turi veikti visame ekrane ar lange"
-
-#~ msgid "Back to the multiplayer options"
-#~ msgstr "Grįžti į daugelio žaidėjų nustatymus"
-
-#~ msgid "Insert a username"
-#~ msgstr "Įveskite naudotojo vardą"
-
-#~ msgid "Show text above a unit when it is hit to display damage inflicted"
-#~ msgstr "Parodo virš sužeisto dalinio kiek jis patyrė žalos"
-
-#~ msgid "Change the resolution the game runs at"
-#~ msgstr "Keisti raišką, kuria veikia žaidimas"
-
-#~ msgid "Change the theme the game runs with"
-#~ msgstr "Keisti temą, su kuria veikia žaidimas"
-
-#~ msgid "Use graphical special effects (may be slower)"
-#~ msgstr "Naudoti specialius grafinius efektus (gali būti lėčiau)"
-
-#~ msgid "View and configure keyboard shortcuts"
-#~ msgstr "Žiūrėti ir konfigūruoti sparčiuosius klavišus"
-
-#~ msgid "Advanced section^Advanced"
-#~ msgstr "Išsamiau"
-
-#~ msgid "Prefs section^Title Screen"
-#~ msgstr "Titulinis ekranas"
-
-#~ msgid "Prefs section^Editor"
-#~ msgstr "Redaktorius"
-
-#~ msgid "There are no alternative video modes available"
-#~ msgstr "Nėra jokių alternatyvių video režimų"
-
-#~ msgid "Button"
-#~ msgstr "Mygtukas"
-
-#~ msgid "Mouse"
-#~ msgstr "Pelė"
-
-#~ msgid "Joystick"
-#~ msgstr "Vairalazdė"
-
-#~ msgid "Up"
-#~ msgstr "Viršun"
-
-#~ msgid "Right"
-#~ msgstr "Dešinėn"
-
-#~ msgid "Down"
-#~ msgstr "Žemyn"
-
-#~ msgid "Left"
-#~ msgstr "Kairėn"
-
-#~ msgid ""
-#~ "The video mode could not be changed. Your window manager must be set to "
-#~ "16 bits per pixel to run the game in windowed mode. Your display must "
-#~ "support 1024x768x16 to run the game full screen."
-#~ msgstr ""
-#~ "Vaizdo režimas negali būti pakeistas. Jūsų langų tvarkyklė turi būti "
-#~ "nustatyta į 16 bitų pikseliui, kad žaidimas veiktų lango režime. Jūsų "
-#~ "ekranas turi palaikyti 1024x768x16, kad žaidimas veiktų pilname ekrane."
-
-#~ msgid "Share map"
-#~ msgstr "Dalintis žemėlapiu"
-
-#~ msgid "Quit Editor"
-#~ msgstr "Išjungti redaktorių"
-
-#~ msgid "Next Generator"
-#~ msgstr "Kitas generatorius"
-
-#~ msgid "Password: "
-#~ msgstr "Slaptažodis: "

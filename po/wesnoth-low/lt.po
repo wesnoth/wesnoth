@@ -6,16 +6,16 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2017-03-23 08:11+0100\n"
-"PO-Revision-Date: 2010-01-01 00:00+0300\n"
-"Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
-"Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
-"Language: Lithuanian\n"
+"PO-Revision-Date: 2017-03-23 15:02+0000\n"
+"Last-Translator: Andrius Štikonas <andrius@stikonas.eu>\n"
+"Language-Team: Lithuanian <wesnoth-lt@googlegroups.com>\n"
+"Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
-"X-Generator: Poedit 1.5.5\n"
+"X-Generator: Poedit 1.8.5\n"
 
 #. [campaign]: id=LOW, type=hybrid
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:47
@@ -47,10 +47,8 @@ msgstr "(Vidutinis lygis, 18 scenarijų.)"
 
 #. [campaign]: id=LOW, type=hybrid
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:53
-#, fuzzy
-#| msgid "(Easy)"
 msgid "Easy"
-msgstr "(Lengvas)"
+msgstr "Lengvas"
 
 #. [campaign]: id=LOW, type=hybrid
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:53
@@ -64,15 +62,13 @@ msgstr "Valdovas"
 
 #. [campaign]: id=LOW, type=hybrid
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:54
-#, fuzzy
-#| msgid "(Normal)"
 msgid "Normal"
-msgstr "(Vidutinis)"
+msgstr "Normalus"
 
 #. [campaign]: id=LOW, type=hybrid
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:55
 msgid "Challenging"
-msgstr ""
+msgstr "Iššaukiantis"
 
 #. [campaign]: id=LOW, type=hybrid
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:55
@@ -271,28 +267,20 @@ msgstr "Pirmas skyrius: Pabėgimas ir kova"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:30
-#, fuzzy
-#| msgid ""
-#| "<i>The Legend of Wesmere</i>,\n"
-#| "Chapter One"
 msgid ""
 "<i>The Legend of Wesmere</i>\n"
 "Chapter One"
 msgstr ""
-"<i>Vesmeros legenda</i>,\n"
+"<i>Vesmeros legenda</i>\n"
 "Pirmas skyrius"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:34
-#, fuzzy
-#| msgid ""
-#| "Chapter One,\n"
-#| "<i>Flight and Fight</i>"
 msgid ""
 "Chapter One\n"
 "<i>Flight and Fight</i>"
 msgstr ""
-"Pirmas skyrius,\n"
+"Pirmas skyrius\n"
 "<i>Pabėgimas ir kova</i>"
 
 #. [part]
@@ -1144,28 +1132,20 @@ msgstr "Antras skyrius: Iždinė"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:42
-#, fuzzy
-#| msgid ""
-#| "<i>The Legend of Wesmere</i>,\n"
-#| "Chapter Two"
 msgid ""
 "<i>The Legend of Wesmere</i>\n"
 "Chapter Two"
 msgstr ""
-"<i>Vesmeros legenda</i>,\n"
+"<i>Vesmeros legenda</i>\n"
 "Antras skyrius"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:47
-#, fuzzy
-#| msgid ""
-#| "Chapter Two,\n"
-#| "<i>The Treasury</i>"
 msgid ""
 "Chapter Two\n"
 "<i>The Treasury</i>"
 msgstr ""
-"Antras skyrius,\n"
+"Antras skyrius\n"
 "<i>Iždinė</i>"
 
 #. [part]
@@ -1377,10 +1357,8 @@ msgstr "Spahras"
 
 #. [objective]: condition=win
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:205
-#, fuzzy
-#| msgid "Enter the Saurian Treasury and leave with the gold"
 msgid "Enter the Saurian Treasury with a horse and leave with the gold"
-msgstr "Įeikite į roplių iždinę ir išeikite su auksu"
+msgstr "Įeikite į roplių iždinę su žirgu ir išeikite su auksu"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:272
@@ -1706,17 +1684,13 @@ msgstr "Truuglas"
 
 #. [objective]: condition=win
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:297
-#, fuzzy
-#| msgid ""
-#| "You must own the field and be capable of overwhelming your opponents. "
-#| "(Player(s) own more than 25 units while the foes’ numbers fell below 15)"
 msgid ""
 "You must own the field and be capable of overwhelming your opponents. "
 "(Player(s) own more than 25 units while the foes’ numbers fall below 15.)"
 msgstr ""
 "Privalote užvaldyti karo lauką ir nustelbti priešininkus. (Žaidėjui (-ams) "
 "turi priklausyti daugiau, nei 25 daliniai, tuo tarpu priešo pajėgos turi "
-"nukristi žemiau 15)"
+"nukristi žemiau 15.)"
 
 #. [message]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:375
@@ -1740,16 +1714,12 @@ msgstr ""
 
 #. [message]: id=Galtrid
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:387
-#, fuzzy
-#| msgid ""
-#| "She is right. Don’t let them lure you away from the Ka’lian, preparations "
-#| "for when more of them arrive return must be made."
 msgid ""
 "She is right. Don’t let them lure you away from the Ka’lian, preparations "
 "for when more of them arrive must be made."
 msgstr ""
 "Ji teisi. Nesileiskite nuviliojami nuo Ka’liano, reikia ruoštis jų "
-"sugrįžimui, o jų sugrįš daugiau."
+"sugrįžimui, kai jų sugrįš daugiau."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:400
@@ -1904,23 +1874,17 @@ msgstr "Ir su savimi turime tai, kas liko iš elfų iždinės!"
 
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:570
-#, fuzzy
-#| msgid "Perhaps the gold will our word weight with the council."
 msgid "Perhaps the gold will give our words more weight with the council."
-msgstr "Gal auksas priduos mūsų žodžiams svorio taryboje."
+msgstr "Gal auksas priduos mūsų žodžiams daugiau svorio taryboje."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:576
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:582
-#, fuzzy
-#| msgid ""
-#| " has left the recovered gold into the elvish treasury. You will start the "
-#| "next scenario with a preset amount."
 msgid ""
 " has returned any remaining gold into the elvish treasury. You will start "
 "the next scenario with a preset amount."
 msgstr ""
-" paliko atgautą auksą elfų iždinėj. Kitą scenarijų pradėsite su numatytu "
+" sugrąžino atgautą auksą elfų iždinėn. Kitą scenarijų pradėsite su numatytu "
 "aukso kiekiu."
 
 #. [part]
@@ -2282,28 +2246,20 @@ msgstr "Trečias skyrius: Krelanu knyga"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:28
-#, fuzzy
-#| msgid ""
-#| "<i>The Legend of Wesmere</i>,\n"
-#| "Chapter Three"
 msgid ""
 "<i>The Legend of Wesmere</i>\n"
 "Chapter Three"
 msgstr ""
-"<i>Vesmeros legenda</i>,\n"
+"<i>Vesmeros legenda</i>\n"
 "Trečias skyrius"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:35
-#, fuzzy
-#| msgid ""
-#| "Chapter Three,\n"
-#| "<i>The Book of Crelanu</i>"
 msgid ""
 "Chapter Three\n"
 "<i>The Book of Crelanu</i>"
 msgstr ""
-"Trečias skyrius,\n"
+"Trečias skyrius\n"
 "<i>Krelanu knyga</i>"
 
 #. [part]
@@ -2418,11 +2374,6 @@ msgstr ""
 
 #. [message]: id=Cleodil
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:391
-#, fuzzy
-#| msgid ""
-#| "Indeed, this river is, I believe, Arkan-Thoria. There are fell legends "
-#| "about it. May be they are but children’s tales... Still, be very careful "
-#| "when you cross it."
 msgid ""
 "Indeed, this river is, I believe, Arkan-Thoria. There are fell legends about "
 "it. Maybe they are but children’s tales... Still, be very careful when you "
@@ -3359,28 +3310,20 @@ msgstr "Žmonių sąjunga"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:42
-#, fuzzy
-#| msgid ""
-#| "<i>The Legend of Wesmere</i>,\n"
-#| "Chapter Four"
 msgid ""
 "<i>The Legend of Wesmere</i>\n"
 "Chapter Four"
 msgstr ""
-"<i>Vesmeros legenda</i>,\n"
+"<i>Vesmeros legenda</i>\n"
 "Ketvirtas skyrius"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:47
-#, fuzzy
-#| msgid ""
-#| "Chapter Four,\n"
-#| "<i>The Alliance</i>"
 msgid ""
 "Chapter Four\n"
 "<i>The Alliance</i>"
 msgstr ""
-"Ketvirtas skyrius,\n"
+"Ketvirtas skyrius\n"
 "<i>Sąjunga</i>"
 
 #. [part]
@@ -3676,14 +3619,6 @@ msgstr "Tylos! Kaip tu drįsti taip kalbėti su Karaliumi!"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/15_The_Treaty.cfg:42
-#, fuzzy
-#| msgid ""
-#| "Calm down, Aldar! The elf is right to reproach us. My father did not help "
-#| "when the orcs attacked you. But my father is dead. There are a lot of "
-#| "things my father did that I can not understand; he grew suspicious and "
-#| "strange in his last days. But <i>I</i> am the King of Wesnoth now, not my "
-#| "father! And it is my intention to renew our alliance by signing a new "
-#| "treaty here, with you."
 msgid ""
 "Calm down, Aldar! The elf is right to reproach us. My father did not help "
 "when the orcs attacked you. But my father is dead. There are a lot of things "
@@ -4340,28 +4275,20 @@ msgstr "Penktas skyrius: Pilietinis karas"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:35
-#, fuzzy
-#| msgid ""
-#| "<i>The Legend of Wesmere</i>,\n"
-#| "Chapter Five"
 msgid ""
 "<i>The Legend of Wesmere</i>\n"
 "Chapter Five"
 msgstr ""
-"<i>Vesmeros legenda</i>,\n"
+"<i>Vesmeros legenda</i>\n"
 "Penktas skyrius"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:40
-#, fuzzy
-#| msgid ""
-#| "Chapter Five,\n"
-#| "<i>Civil War</i>"
 msgid ""
 "Chapter Five\n"
 "<i>Civil War</i>"
 msgstr ""
-"Penktas skyrius,\n"
+"Penktas skyrius\n"
 "<i>Pilietinis karas</i>"
 
 #. [part]
@@ -4431,10 +4358,6 @@ msgstr "Nugalėkite visus priešų dalinius ir sunaikinkite visus kaimus"
 
 #. [message]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:246
-#, fuzzy
-#| msgid ""
-#| "We have finally reached Saurgrath, their capitol. Remember whose side "
-#| "they have taken in the war against us."
 msgid ""
 "We have finally reached Saurgrath, their capital. Remember whose side they "
 "have taken in the war against us."
@@ -4526,8 +4449,6 @@ msgstr "Jų kerštas yra siaubingas! Bijau dėl mūsų rūšies."
 
 #. [message]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:391
-#, fuzzy
-#| msgid "Don’t flee. We cannot abandon our capitol."
 msgid "Don’t flee. We cannot abandon our capital."
 msgstr "Nesprukite. Negalime apleisti savo sostinės."
 
@@ -4858,10 +4779,8 @@ msgstr "Išgyvenkite šešias dienas"
 
 #. [objective]: condition=lose
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/22_Northern_Battle.cfg:322
-#, fuzzy
-#| msgid "Survive for six days"
 msgid "Kalenz survives for six days"
-msgstr "Išgyvenkite šešias dienas"
+msgstr "Kalenzas išgyvena šešias dienas"
 
 #. [note]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/22_Northern_Battle.cfg:333
@@ -5111,10 +5030,8 @@ msgstr ""
 
 #. [unit_type]: id=Great Ogre, race=ogre
 #: data/campaigns/Legend_of_Wesmere/units/ogres/Great_Ogre.cfg:6
-#, fuzzy
-#| msgid "Creatures"
 msgid "Great Ogre"
-msgstr "Padarai"
+msgstr "Didysis žmogėdra"
 
 #. [unit_type]: id=Great Ogre, race=ogre
 #: data/campaigns/Legend_of_Wesmere/units/ogres/Great_Ogre.cfg:34
@@ -5311,56 +5228,3 @@ msgstr "Lik sveikas. Tavo ištikima tarnyba nebus užmiršta."
 #: data/campaigns/Legend_of_Wesmere/utils/deaths.cfg:140
 msgid "Oh, no! We are too late..."
 msgstr "O, ne! Pavėlavome..."
-
-#~ msgid "This is a stub!"
-#~ msgstr "This is a stub!"
-
-#~ msgid "Elvish Horse Archer"
-#~ msgstr "Elfų raitasis lankininkas"
-
-#~ msgid "sword"
-#~ msgstr "kardas"
-
-#~ msgid "bow"
-#~ msgstr "lankas"
-
-#~ msgid ""
-#~ "Kalenz, though very young you have been most tested in battle of any of "
-#~ "us. Will you take the command of all our troops?"
-#~ msgstr ""
-#~ "Kalenzai, nors ir labai jaunas, tu esi labiausiai iš visų mūsų išbandytas "
-#~ "mūšyje. Ar prisiimsi vadovavimą visais mūsų kariais?"
-
-#~ msgid "You do me great honor. I will strive to be worthy of it."
-#~ msgstr "Jūs suteikiate man didelę garbę. Aš bandysiu būti vertas jos."
-
-#~ msgid "You do me great honor, but I am not yet ready for this."
-#~ msgstr "Jūs suteikiate man didelę garbę, bet aš dar tam nepasiruošęs."
-
-#~ msgid "Khafa-Urg"
-#~ msgstr "Khafa-Urgas"
-
-#~ msgid "More of them arrive."
-#~ msgstr "Daugiau jų atvyksta."
-
-#~ msgid "Our wolves’ teeth will crack their bones! Attack!"
-#~ msgstr "Mūsų vilkų dantys sutraiškys jų kaulus! Pulkite!"
-
-#~ msgid "Blood and steel! Hunt the worms down and crush them!"
-#~ msgstr "Kraujas ir plienas! Sumedžiokite kirminus ir juos sutraiškykite!"
-
-#~ msgid "Har har har!"
-#~ msgstr "Har har har!"
-
-#~ msgid ""
-#~ "This is only a pause in their onslaught. Reform, men, and bind your "
-#~ "wounds as you may. They’ll be back."
-#~ msgstr ""
-#~ "Tai tėra tik atokvėpis nuo jų spaudimo. Vyrai, persirikiuokit ir "
-#~ "susitvarkykit žaizdas kaip tik sugebat. Jie tuoj sugrįš."
-
-#~ msgid "(Hard)"
-#~ msgstr "(Sunkus)"
-
-#~ msgid " Kalenz is able to recruit dwarves from now on."
-#~ msgstr " Kalenzas nuo šiol gali samdyti dvarfus."

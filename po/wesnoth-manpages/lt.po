@@ -4,17 +4,17 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
-"POT-Creation-Date: 2016-04-30 17:11+0300\n"
-"PO-Revision-Date: 2010-01-01 00:00+0300\n"
-"Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
-"Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
-"Language: Lithuanian\n"
+"POT-Creation-Date: 2017-03-19 00:05+0300\n"
+"PO-Revision-Date: 2017-03-29 22:18+0200\n"
+"Last-Translator: Andrius Štikonas <andrius@stikonas.eu>\n"
+"Language-Team: Lithuanian <wesnoth-lt@googlegroups.com>\n"
+"Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
-"X-Generator: Poedit 1.5.5\n"
+"X-Generator: Poedit 1.8.5\n"
 
 # type: TH
 #. type: TH
@@ -118,53 +118,42 @@ msgstr "PARAMETRAI"
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:45
-#, fuzzy, no-wrap
-#| msgid "B<--gunzip>I<\\ infile.gz>"
+#, no-wrap
 msgid "B<--bunzip>I<\\ infile.gz>"
-msgstr "B<--gunzip>I<\\ failas.gz>"
+msgstr "B<--bunzip>I<\\ failas.gz>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:51
-#, fuzzy
-#| msgid ""
-#| "decompresses a file which should be in gzip format and stores it without "
-#| "the .gz suffix. The I<infile.gz> will be removed."
 msgid ""
 "decompresses a file which should be in bzip2 format and stores it without "
 "the .bz2 suffix. The I<infile.bz2> will be removed."
 msgstr ""
-"išspaudžia failą, kuris turi būti gzip formatu ir išsaugo jį be .gz "
-"plėtinio. I<infile.gz> bus pašalintas."
+"išspaudžia failą, kuris turi būti bzip2 formatu ir išsaugo jį be .bz2 "
+"plėtinio. I<failas.bz2> bus pašalintas."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:51
-#, fuzzy, no-wrap
-#| msgid "B<--gzip>I<\\ infile>"
+#, no-wrap
 msgid "B<--bzip>I<\\ infile>"
-msgstr "B<--gzip>I<\\ failas>"
+msgstr "B<--bzip>I<\\ failas>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:57
-#, fuzzy
-#| msgid ""
-#| "compresses a file in gzip format, stores it as I<infile>.gz and removes "
-#| "I<infile>."
 msgid ""
 "compresses a file in bzip2 format, stores it as I<infile>.bz2 and removes "
 "I<infile>."
 msgstr ""
-"suspaudžia failą gzip formatu, išsaugo kaip I<infile>.gz ir pašalina  "
-"I<infile>."
+"suspaudžia failą bzip2 formatu, išsaugo kaip I<failas>.bz2 ir pašalina  "
+"I<failas>."
 
 #. type: TP
 #: doc/man/wesnoth.6:57
-#, fuzzy, no-wrap
-#| msgid "B<-c, --campaign \\ [E<lt>id_campaignE<gt>]>"
+#, no-wrap
 msgid "B<-c,\\ --campaign\\ [>I<id_campaign>B<]>"
-msgstr "B<-c, --campaign \\ [E<lt>kampanijos_idE<gt>]>"
+msgstr "B<-c,\\ --campaign\\ [>I<kampanijos_id>B<]>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:61
@@ -172,28 +161,27 @@ msgid ""
 "goes directly to the campaign with id E<lt>id_campaignE<gt>. A selection "
 "menu will appear if no id was specified."
 msgstr ""
+"eina tiesiai į kampaniją, kurios id yra E<lt>kampanijos_idE<gt>. Pasirinkimo "
+"meniu bus rodomas, jei id nenurodytas."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:61
-#, fuzzy, no-wrap
-#| msgid "B<-e,\\ --editor>I<\\ file>"
+#, no-wrap
 msgid "B<--core>I<\\ id_core>"
-msgstr "B<-e,\\ --editor>I<\\ failas>"
+msgstr "B<--core>I<\\ branduolio_id>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:64
 #, fuzzy
-#| msgid "overrides the data directory with the one specified"
 msgid "overrides the loaded core with the one whose id is specified."
 msgstr "naudoja nurodytą duomenų aplanką"
 
 #. type: TP
 #: doc/man/wesnoth.6:64
-#, fuzzy, no-wrap
-#| msgid "B<--campaign-difficulty [E<lt>difficultyE<gt>]>"
+#, no-wrap
 msgid "B<--campaign-difficulty\\ [>I<difficulty>B<]>"
-msgstr "B<--campaign-difficulty [E<lt>sunkumasE<gt>]>"
+msgstr "B<--campaign-difficulty\\ [>I<sunkumas>B<]>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:68
@@ -201,13 +189,14 @@ msgid ""
 "The difficulty of the specified campaign (1 to max). If none specified, the "
 "campaign difficulty selection widget will appear."
 msgstr ""
+"Nurodytos kampanijos sudėtingumo lygis (nuo 1 iki maksimalaus). Jei "
+"nenurodyta, bus rodomas kampanijos sudėtingumo pasirinkimo dialogas."
 
 #. type: TP
 #: doc/man/wesnoth.6:68
-#, fuzzy, no-wrap
-#| msgid "B<--campaign-scenario E<lt>id_scenarioE<gt>>"
+#, no-wrap
 msgid "B<--campaign-scenario>I<\\ id_scenario>"
-msgstr "B<--campaign-scenario E<lt>scenarijaus_idE<gt>>"
+msgstr "B<--campaign-scenario>I<\\ scenarijaus_id>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:71
@@ -215,13 +204,14 @@ msgid ""
 "The id of the scenario from the specified campaign. The default is the first "
 "scenario."
 msgstr ""
+"Scenarijaus id iš pasirinktos kampanijos. Pirmas scenarijus paleidžiamas "
+"pagal nutylėjimą."
 
 #. type: TP
 #: doc/man/wesnoth.6:71
-#, fuzzy, no-wrap
-#| msgid "B<--data-dir E<lt>directoryE<gt>>"
+#, no-wrap
 msgid "B<--data-dir>I<\\ directory>"
-msgstr "B<--data-dir E<lt>aplankasE<gt>>"
+msgstr "B<--data-dir>I<\\ aplankas>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:74
@@ -238,7 +228,6 @@ msgstr "B<--data-path>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:77
-#, fuzzy
 msgid "print the path of the data directory and exits."
 msgstr "išveda naudotojo konfigūracijos aplanko kelią ir išeina."
 
@@ -380,10 +369,9 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:122
-#, fuzzy, no-wrap
-#| msgid "B<-l,\\ --load>I<\\ file>"
+#, no-wrap
 msgid "B<-L,\\ --language>I<\\ lang>"
-msgstr "B<-l,\\ --load>I<\\ failas>"
+msgstr "B<-L,\\ --language>I<\\ kalba>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:129
@@ -391,6 +379,8 @@ msgid ""
 "uses language I<lang> (symbol) this session.  Example: B<--language "
 "ang_GB@latin>"
 msgstr ""
+"naudoja I<kalbos> (simbolį) šiai sesijai.  Pavyzdžiui: B<--language "
+"lt_LT@utf8>"
 
 # type: TP
 #. type: TP
@@ -411,10 +401,9 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:138
-#, fuzzy, no-wrap
-#| msgid "B<--nogui>"
+#, no-wrap
 msgid "B<--log-precise>"
-msgstr "B<--nogui>"
+msgstr "B<--log-precise>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:141
@@ -424,10 +413,9 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:141
-#, fuzzy, no-wrap
-#| msgid "B<--nomusic>"
+#, no-wrap
 msgid "B<--log-strict>"
-msgstr "B<--nomusic>"
+msgstr "B<--log-strict>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:147
@@ -440,10 +428,9 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:147
-#, fuzzy, no-wrap
-#| msgid "B<--logdomains\\ [filter]>"
+#, no-wrap
 msgid "B<--logdomains\\ [>I<filter>B<]>"
-msgstr "B<--logdomains\\ [filtras]>"
+msgstr "B<--logdomains\\ [>I<filtras>B<]>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:152
@@ -455,10 +442,9 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:152
-#, fuzzy, no-wrap
-#| msgid "B<--max-fps>"
+#, no-wrap
 msgid "B<--max-fps>I<\\ fps>"
-msgstr "B<--max-fps>"
+msgstr "B<--max-fps>I<\\ fps>"
 
 # type: Plain text
 #. type: Plain text
@@ -480,26 +466,19 @@ msgstr "B<-m, --multiplayer>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:163
-#, fuzzy
-#| msgid ""
-#| "runs a multiplayer game. There are additional options that can be used "
-#| "together with B<--multiplayer> as explained below. Only these additional "
-#| "options can follow B<--multiplayer>."
 msgid ""
 "runs a multiplayer game. There are additional options that can be used "
 "together with B<--multiplayer> as explained below."
 msgstr ""
 "paleidžia daugelio žaidėjų žaidimą. Yra papildomų parametrų, kurie gali būti "
-"naudojami kartu su B<--multiplayer>, kaip paaiškinta žemiau. Tik šie "
-"papildomi parametrai gali būti naudojami po B<--multiplayer>."
+"naudojami kartu su B<--multiplayer>, kaip paaiškinta žemiau."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:163
-#, fuzzy, no-wrap
-#| msgid "B<-t, --test>"
+#, no-wrap
 msgid "B<--mp-test>"
-msgstr "B<-t, --test>"
+msgstr "B<--mp-test>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:166
@@ -517,9 +496,6 @@ msgstr "B<--no-delay>"
 #. type: Plain text
 #: doc/man/wesnoth.6:171
 #, fuzzy
-#| msgid ""
-#| "runs the game without any delays for graphic benchmarking. This is "
-#| "automatically enabled by B<--nogui>."
 msgid ""
 "runs the game without any delays for graphic benchmarking.  This is "
 "automatically enabled by B<--nogui>."
@@ -530,18 +506,15 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:171
-#, fuzzy, no-wrap
-#| msgid "B<--nosound>"
+#, no-wrap
 msgid "B<--noaddons>"
-msgstr "B<--nosound>"
+msgstr "B<--noaddons>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:174
-#, fuzzy
-#| msgid "disables caching of game data."
 msgid "disables loading of user addons."
-msgstr "išjungia žaidimo duomenų podėlį"
+msgstr "išjungia naudotojo priedų įkėlimą."
 
 # type: TP
 #. type: TP
@@ -566,10 +539,8 @@ msgstr "B<--nogui>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:180
-#, fuzzy
-#| msgid "runs the game without music."
 msgid "runs the game without the GUI."
-msgstr "paleidžia žaidimą be muzikos."
+msgstr "paleidžia žaidimą be grafinės aplinkos."
 
 # type: TP
 #. type: TP
@@ -587,10 +558,9 @@ msgstr "paleidžia žaidimą be muzikos."
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:183
-#, fuzzy, no-wrap
-#| msgid "B<--nocache>"
+#, no-wrap
 msgid "B<--noreplaycheck>"
-msgstr "B<--nocache>"
+msgstr "B<--noreplaycheck>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:187
@@ -614,10 +584,9 @@ msgstr "paleidžia žaidimą be garsų ir muzikos."
 
 #. type: TP
 #: doc/man/wesnoth.6:190
-#, fuzzy, no-wrap
-#| msgid "B<--password>I<E<lt>passwordE<gt>>"
+#, no-wrap
 msgid "B<--password>I<\\ password>"
-msgstr "B<--password>I<E<lt>slaptažodisE<gt>>"
+msgstr "B<--password>I<\\ slaptažodis>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:193
@@ -625,6 +594,8 @@ msgid ""
 "uses E<lt>passwordE<gt> when connecting to a server, ignoring other "
 "preferences. Unsafe."
 msgstr ""
+"naudoja E<lt>slaptažodįE<gt> jungiantis prie serverio, nepaisant kitų "
+"nustatymų. Nesaugu."
 
 # type: TP
 #. type: TP
@@ -643,7 +614,7 @@ msgstr "atspausdina žaidimo duomenų aplanko pavadinimą ir išeina."
 #: doc/man/wesnoth.6:196
 #, no-wrap
 msgid "B<-p,\\ --preprocess>I<\\ source-file/folder>B<\\ >I<target-directory>"
-msgstr ""
+msgstr "B<-p,\\ --preprocess>I<\\ šaltinio failas/aplankas>B<\\ >I<išvesties-aplankas>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:206
@@ -662,7 +633,7 @@ msgstr ""
 #: doc/man/wesnoth.6:207
 #, no-wrap
 msgid "B<--preprocess-defines=>I<DEFINE1>B<,>I<DEFINE2>B<,>I<etc>"
-msgstr ""
+msgstr "B<--preprocess-defines=>I<APIBRĖŽIMAS1>B<,>I<APIBRĖŽIMAS2>B<,>I<ir t.t.>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:212
@@ -674,10 +645,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:212
-#, fuzzy, no-wrap
-#| msgid "B<--preprocess-input-macros E<lt>source fileE<gt>>"
+#, no-wrap
 msgid "B<--preprocess-input-macros>I<\\ source-file>"
-msgstr "B<--preprocess-input-macros E<lt>šaltinio failasE<gt>>"
+msgstr "B<--preprocess-input-macros>I<\\ šaltinio failas>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:216
@@ -688,10 +658,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:216
-#, fuzzy, no-wrap
-#| msgid "B<--preprocess-output-macros [E<lt>target fileE<gt>]>"
+#, no-wrap
 msgid "B<--preprocess-output-macros\\ [>I<target-file>B<]>"
-msgstr "B<--preprocess-output-macros [E<lt>išvesties failasE<gt>]>"
+msgstr "B<--preprocess-output-macros\\ [>I<išvesties failas>B<]>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:224
@@ -720,7 +689,7 @@ msgstr "nustato ekrano raišką. Pavyzdžiui: B<-r 800x600>"
 #: doc/man/wesnoth.6:228
 #, no-wrap
 msgid "B<--render-image>I<\\ image>B<\\ >I<output>"
-msgstr ""
+msgstr "B<--render-image>I<\\ paveikslėlis>B<\\ >I<išvestis>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:231
@@ -732,10 +701,9 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:231
-#, fuzzy, no-wrap
-#| msgid "B<--userconfig-dir>I<\\ name>"
+#, no-wrap
 msgid "B<--rng-seed>I<\\ seed>"
-msgstr "B<--userconfig-dir>I<\\ pavadinimas>"
+msgstr "B<--rng-seed>I<\\ sėkla>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:236
@@ -748,7 +716,7 @@ msgstr ""
 #: doc/man/wesnoth.6:236
 #, no-wrap
 msgid "B<--screenshot>I<\\ map>B<\\ >I<output>"
-msgstr ""
+msgstr "B<--screenshot>I<\\ žemėlapis>B<\\ >I<išvestis>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:239
@@ -760,10 +728,9 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:239
-#, fuzzy, no-wrap
-#| msgid "B<-s,\\ --server\\ [host]>"
+#, no-wrap
 msgid "B<-s,\\ --server\\ [>I<host>B<]>"
-msgstr "B<-s,\\ --server\\ [mazgas]>"
+msgstr "B<-s,\\ --server\\ [>I<mazgas>B<]>"
 
 # type: Plain text
 #. type: Plain text
@@ -779,15 +746,16 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:243
-#, fuzzy, no-wrap
-#| msgid "B<--nogui>"
+#, no-wrap
 msgid "B<--showgui>"
-msgstr "B<--nogui>"
+msgstr "B<--showgui>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:247
 msgid "runs the game with the GUI, overriding any implicit B<--nogui.>"
 msgstr ""
+"paleidžia žaidimą su grafine aplinka, ignoruojant bet kokį pagal nutylėjimą "
+"pridėtą B<--nogui.>"
 
 #. type: TP
 #: doc/man/wesnoth.6:247
@@ -798,13 +766,13 @@ msgstr "B<--strict-validation>"
 #. type: Plain text
 #: doc/man/wesnoth.6:250
 msgid "validation errors are treated as fatal errors."
-msgstr ""
+msgstr "patvirtinimo klaidos laikomos lemtingomis."
 
 #. type: TP
 #: doc/man/wesnoth.6:250
 #, no-wrap
 msgid "B<-t,\\ --test\\ [>I<scenario_id>B<]>"
-msgstr ""
+msgstr "B<-t,\\ --test\\ [>I<scenarijaus_id>B<]>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:256
@@ -816,10 +784,9 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:256
-#, fuzzy, no-wrap
-#| msgid "B<-e,\\ --editor>I<\\ file>"
+#, no-wrap
 msgid "B<-u,\\ --unit>I<\\ scenario-id>"
-msgstr "B<-e,\\ --editor>I<\\ failas>"
+msgstr "B<-u,\\ --unit>I<\\ scenarijaus-id>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:260
@@ -829,8 +796,7 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:260
-#, fuzzy, no-wrap
-#| msgid "B<--userconfig-dir>I<\\ name>"
+#, no-wrap
 msgid "B<--userconfig-dir>I<\\ name>"
 msgstr "B<--userconfig-dir>I<\\ pavadinimas>"
 
@@ -855,8 +821,7 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:271
-#, fuzzy, no-wrap
-#| msgid "B<--userconfig-path>"
+#, no-wrap
 msgid "B<--userconfig-path>"
 msgstr "B<--userconfig-path>"
 
@@ -891,10 +856,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:283
-#, fuzzy, no-wrap
-#| msgid "B<--username>I<E<lt>usernameE<gt>>"
+#, no-wrap
 msgid "B<--username>I<\\ username>"
-msgstr "B<--username>I<E<lt>naudotojo vardasE<gt>>"
+msgstr "B<--username>I<\\ naudotojo vardas>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:286
@@ -902,6 +866,8 @@ msgid ""
 "uses E<lt>usernameE<gt> when connecting to a server, ignoring other "
 "preferences."
 msgstr ""
+"naudoja E<lt>naudojo vardąE<gt> jungiantis prie serverio, nepaisant kitų "
+"nustatymų."
 
 # type: TP
 #. type: TP
@@ -992,10 +958,9 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:311
-#, fuzzy, no-wrap
-#| msgid "B<--ai_config>I<number>B<=>I<value>"
+#, no-wrap
 msgid "B<--ai_config>I<\\ number>B<:>I<value>"
-msgstr "B<--ai_config>I<numeris>B<=>I<vertė>"
+msgstr "B<--ai_config>I<\\ numeris>B<:>I<vertė>"
 
 # type: Plain text
 #. type: Plain text
@@ -1007,10 +972,9 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:314
-#, fuzzy, no-wrap
-#| msgid "B<--algorithm>I<number>B<=>I<value>"
+#, no-wrap
 msgid "B<--algorithm>I<\\ number>B<:>I<value>"
-msgstr "B<--algorithm>I<numeris>B<=>I<vertė>"
+msgstr "B<--algorithm>I<\\ numeris>B<:>I<vertė>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:324
@@ -1024,10 +988,9 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:324
-#, fuzzy, no-wrap
-#| msgid "B<--controller>I<number>B<=>I<value>"
+#, no-wrap
 msgid "B<--controller>I<\\ number>B<:>I<value>"
-msgstr "B<--controller>I<numeris>B<=>I<vertė>"
+msgstr "B<--controller>I<\\ numeris>B<:>I<vertė>"
 
 # type: Plain text
 #. type: Plain text
@@ -1039,10 +1002,9 @@ msgstr "parenka valdiklį šiai pusei. Galimos vertės: B<human> ir B<ai>."
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:330
-#, fuzzy, no-wrap
-#| msgid "B<--era=>I<value>"
+#, no-wrap
 msgid "B<--era>I<\\ value>"
-msgstr "B<--era=>I<vertė>"
+msgstr "B<--era>I<\\ vertė>"
 
 # type: Plain text
 #. type: Plain text
@@ -1089,10 +1051,9 @@ msgstr "nenaudoti žemėlapio nustatymų, vietoj to naudoti numatytus nustatymus
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:344
-#, fuzzy, no-wrap
-#| msgid "B<--multiplayer-repeat=>I<value>"
+#, no-wrap
 msgid "B<--multiplayer-repeat>I<\\ value>"
-msgstr "B<--multiplayer-repeat=>I<vertė>"
+msgstr "B<--multiplayer-repeat>I<\\ vertė>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:351
@@ -1104,10 +1065,9 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:351
-#, fuzzy, no-wrap
-#| msgid "B<--parm>I<number>B<=>I<name>B<:>I<value>"
+#, no-wrap
 msgid "B<--parm>I<\\ number>B<:>I<name>B<:>I<value>"
-msgstr "B<--parm>I<numeris>B<=>I<pavadinimas>B<:>I<vertė>"
+msgstr "B<--parm>I<\\ numeris>B<:>I<pavadinimas>B<:>I<vertė>"
 
 # type: Plain text
 #. type: Plain text
@@ -1124,10 +1084,9 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:360
-#, fuzzy, no-wrap
-#| msgid "B<--scenario=>I<value>"
+#, no-wrap
 msgid "B<--scenario>I<\\ value>"
-msgstr "B<--scenario=>I<vertė>"
+msgstr "B<--scenario>I<\\ vertė>"
 
 # type: Plain text
 #. type: Plain text
@@ -1142,10 +1101,9 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:364
-#, fuzzy, no-wrap
-#| msgid "B<--side>I<number>B<=>I<value>"
+#, no-wrap
 msgid "B<--side>I<\\ number>B<:>I<value>"
-msgstr "B<--side>I<numeris>B<=>I<vertė>"
+msgstr "B<--side>I<\\ numeris>B<:>I<vertė>"
 
 # type: Plain text
 #. type: Plain text
@@ -1158,10 +1116,9 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:369
-#, fuzzy, no-wrap
-#| msgid "B<--turns=>I<value>"
+#, no-wrap
 msgid "B<--turns>I<\\ value>"
-msgstr "B<--turns=>I<vertė>"
+msgstr "B<--turns>I<\\ vertė>"
 
 # type: Plain text
 #. type: Plain text
@@ -1177,19 +1134,14 @@ msgstr "IŠĖJIMO BŪSENA"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:379
-#, fuzzy
-#| msgid ""
-#| "Normal exit status is 0. An exit status of 1 indicates an (SDL, video, "
-#| "fonts, etc) initialization error. An exit status of 2 indicates an error "
-#| "with the command line options."
 msgid ""
 "Normal exit status is 0.  An exit status of 1 indicates an (SDL, video, "
 "fonts, etc) initialization error.  An exit status of 2 indicates an error "
 "with the command line options."
 msgstr ""
-"Normali išėjimo būsena yra 0. Išėjimo būsena lygi 1 nurodo paleidimo klaidą "
-"(SDL, video, šriftų ir t.t.). Išėjimo būsena lygi 2 nurodo klaidą komandinės "
-"eilutės parametruose."
+"Normali išėjimo būsena yra 0. Išėjimo būsena lygi 1 nurodo (SDL, video, "
+"šriftų ir t.t.) paleidimo klaidą. Išėjimo būsena lygi 2 nurodo klaidą "
+"komandinės eilutės parametruose."
 
 #. type: Plain text
 #: doc/man/wesnoth.6:393
@@ -1252,12 +1204,9 @@ msgstr "COPYRIGHT"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:407 doc/man/wesnothd.6:280
-#, fuzzy
-#| msgid ""
-#| "Copyright \\(co 2003-2013 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgid "Copyright \\(co 2003-2016 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
-"Copyright \\(co 2003-2013 David White E<lt>davidnwhite@verizon.netE<gt>"
+"Copyright \\(co 2003-2016 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 # type: Plain text
 #. type: Plain text
@@ -2142,36 +2091,3 @@ msgstr ""
 #: doc/man/wesnothd.6:286
 msgid "B<wesnoth>(6)."
 msgstr "B<wesnoth>(6)."
-
-# type: TP
-#~ msgid "B<--bpp>I<\\ number>"
-#~ msgstr "B<--bpp>I<\\ skaičius>"
-
-# type: Plain text
-#~ msgid "sets BitsPerPixel value. Example: B<--bpp 32>"
-#~ msgstr "nustato bitų vienam pikseliui vertę. Pavyzdžiui: B<--bpp 32>"
-
-# type: Plain text
-#, fuzzy
-#~ msgid "path the path of the data directory and exits."
-#~ msgstr "atspausdina žaidimo duomenų aplanko pavadinimą ir išeina."
-
-# type: Plain text
-#~ msgid "runs the game in a small test scenario."
-#~ msgstr "paleidžia žaidimą su mažu bandomuoju scenarijumi."
-
-# type: Plain text
-#~ msgid ""
-#~ "selects a non-standard algorithm to be used by the AI controller for this "
-#~ "side. Available values: B<idle_ai> and B<sample_ai>."
-#~ msgstr ""
-#~ "parenka nestandartinį algoritmą, kurį naudos DI valdiklis šiai pusei. "
-#~ "Galimos vertės: B<idle_ai> ir B<sample_ai>."
-
-# type: Plain text
-#~ msgid ""
-#~ "runs the game without the GUI. Must appear before B<--multiplayer> to "
-#~ "have the desired effect."
-#~ msgstr ""
-#~ "paleidžia žaidimą be grafinės sąsajos (GUI). Privalo pasirodyti prieš B<--"
-#~ "multiplayer> tam, kad turėtų norimą poveikį."

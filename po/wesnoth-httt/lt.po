@@ -6,16 +6,16 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2017-03-23 08:11+0100\n"
-"PO-Revision-Date: 2010-01-01 00:00+0300\n"
-"Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
-"Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
-"Language: Lithuanian\n"
+"PO-Revision-Date: 2017-03-23 14:49+0000\n"
+"Last-Translator: Andrius Štikonas <andrius@stikonas.eu>\n"
+"Language-Team: Lithuanian <wesnoth-lt@googlegroups.com>\n"
+"Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
-"X-Generator: Poedit 1.5.5\n"
+"X-Generator: Poedit 1.8.5\n"
 
 #. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:9
@@ -44,10 +44,8 @@ msgstr "(Pradedantysis lygis, 23 scenarijai.)"
 
 #. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:21
-#, fuzzy
-#| msgid "(Beginner)"
 msgid "Beginner"
-msgstr "(Pradedantysis)"
+msgstr "Pradedantysis"
 
 #. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:21
@@ -62,17 +60,13 @@ msgstr "Herojus"
 
 #. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:22
-#, fuzzy
-#| msgid "(Normal)"
 msgid "Normal"
-msgstr "(Normalus)"
+msgstr "Normalus"
 
 #. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:23
-#, fuzzy
-#| msgid "(Challenging)"
 msgid "Challenging"
-msgstr "(Iššaukiantis)"
+msgstr "Iššaukiantis"
 
 #. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:23
@@ -660,9 +654,6 @@ msgstr "Ir laivas paims mus į Alduiną?"
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:194
 #, fuzzy
-#| msgid ""
-#| "Yes, we will sail to the Isle of Alduin, my home Konrad, and the home of "
-#| "many magi."
 msgid ""
 "Yes, we will sail to the Isle of Alduin, my home, Konrad, and the home of "
 "many magi."
@@ -2103,10 +2094,8 @@ msgstr "Išmeskime šiuos įsibrovėlius! Šiandien miestas vėl bus mūsų!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:498
-#, fuzzy
-#| msgid "You can now recruit magi!"
 msgid "You can now recruit Thieves!"
-msgstr "Dabar galite samdyti magus!"
+msgstr "Dabar galite samdyti Vagis!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:518
@@ -2235,7 +2224,6 @@ msgstr ""
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:685
 #, fuzzy
-#| msgid "Oh, and you want me to get this scepter?"
 msgid "Oh, and you want me to get this Sceptre?"
 msgstr "O! Ir tu nori, kad aš gaučiau šį skeptrą?"
 
@@ -2438,18 +2426,14 @@ msgstr "Vesnoto Princesė"
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:23
 #, fuzzy
-#| msgid "Force Li’sar’s surrender (reduce her hitpoints to 0 or lower)"
 msgid "(reduce her hitpoints to 0 or lower)"
 msgstr ""
 "Priverskite Li’sar pasiduoti (sumažinkite jos gyvybės taškus iki 0 ar mažiau)"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:23
-#, fuzzy
-#| msgid "Force Li’sar’s surrender (reduce her hitpoints to 0 or lower)"
 msgid "Force Li’sar’s surrender"
-msgstr ""
-"Priverskite Li’sar pasiduoti (sumažinkite jos gyvybės taškus iki 0 ar mažiau)"
+msgstr "Priverskite Li’sar pasiduoti"
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:50
@@ -2831,7 +2815,6 @@ msgstr "Grifų kalnas"
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:35
 #, fuzzy
-#| msgid "Defeat the mother gryphon and the enemy commander"
 msgid "Defeat the mother gryphon before the enemy does"
 msgstr "Nugalėkite motiną grifę ir priešo vadą"
 
@@ -2847,10 +2830,8 @@ msgstr "Motina grifė"
 
 #. [side]: type=Gryphon, id=Mother Gryphon
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:111
-#, fuzzy
-#| msgid "Mother Gryphon"
 msgid "Gryphons"
-msgstr "Motina grifė"
+msgstr "Grifai"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:128
@@ -3244,8 +3225,6 @@ msgstr ""
 #. [message]
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:368
 #, fuzzy
-#| msgid ""
-#| "Stop! You shall not pass! Quick, reinforcements, protect the Princess!"
 msgid "Quick, reinforcements, protect the Princess!"
 msgstr "Stot! Nepraleisiu! Greičiau, pastiprinimą! Apginkite princesę!"
 
@@ -3256,10 +3235,8 @@ msgstr ""
 
 #. [message]
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:407
-#, fuzzy
-#| msgid "female^Battle Princess"
 msgid "Protect the Princess!"
-msgstr "Princesė kovotoja"
+msgstr "Apsaugokite Princesę!"
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:428
@@ -3491,11 +3468,6 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/12_Northern_Winter.cfg:371
 #, fuzzy
-#| msgid ""
-#| "Konrad finally decided he could not wait until the gryphons grew to "
-#| "maturity — Delfador’s insistence that the scepter must be recovered was "
-#| "too compelling. And so after many days of rest, the party set out once "
-#| "again for the dwarven kingdom..."
 msgid ""
 "Konrad finally decided he could not wait until the gryphons grew to maturity "
 "— Delfador’s insistence that the Sceptre must be recovered was too "
@@ -3518,11 +3490,6 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/12_Northern_Winter.cfg:383
 #, fuzzy
-#| msgid ""
-#| "Eventually Delfador’s insistence that the scepter must be recovered "
-#| "proved too compelling, even when it meant dismantling the camp without "
-#| "the spring having yet fully arrived. And so after many days of rest, the "
-#| "party set out once again for the dwarven kingdom..."
 msgid ""
 "Eventually Delfador’s insistence that the Sceptre must be recovered proved "
 "too compelling, even when it meant dismantling the camp without the spring "
@@ -4300,10 +4267,6 @@ msgstr ""
 #. [message]
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:235
 #, fuzzy
-#| msgid ""
-#| "I am of the merfolk, dweller of the vast oceans! Do not ask me what I am "
-#| "doing in a cave. My lord can be somewhat eccentric. We are fighting at "
-#| "the side of your fellow cave-dwellers to drive back the orcs and trolls."
 msgid ""
 "I am a merman, dweller of the vast oceans! Do not ask me what I am doing in "
 "a cave. My lord can be somewhat eccentric. We are fighting at the side of "
@@ -4316,10 +4279,6 @@ msgstr ""
 #. [message]
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:236
 #, fuzzy
-#| msgid ""
-#| "I am of the merfolk, dweller of the vast oceans! Do not ask me what I am "
-#| "doing in a cave. My lord can be somewhat eccentric. We are fighting at "
-#| "the side of your fellow cave-dwellers to drive back the orcs and trolls."
 msgid ""
 "I am a mermaid, dweller of the vast oceans! Do not ask me what I am doing in "
 "a cave. My lord can be somewhat eccentric. We are fighting at the side of "
@@ -4341,9 +4300,6 @@ msgstr ""
 #. [message]: speaker=Ulfdain
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:258
 #, fuzzy
-#| msgid ""
-#| "(sniffs) A mer-mahn. Never heard of it. I doubt yer as tasty as my "
-#| "friends here."
 msgid ""
 "(sniffs) A mer-mead. Never heard of it. I doubt yer as tasty as my friends "
 "here."
@@ -4412,9 +4368,6 @@ msgstr ""
 #. [message]: speaker=Ulfdain
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:343
 #, fuzzy
-#| msgid ""
-#| "Well, mer-mahn, we made it. I will fight for yer lord. He sounds like a "
-#| "brave fellow."
 msgid ""
 "Well, mer-mead, we made it. I will fight for yer lord. He sounds like a "
 "brave fellow."
@@ -4928,49 +4881,41 @@ msgstr ""
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:664
 #, fuzzy
-#| msgid "I sense the path to the sceptre is to the east of me."
 msgid "I sense the path to the Sceptre is to the east of me."
 msgstr "Jaučiu, kad kelias iki skeptro eina į rytus."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:665
 #, fuzzy
-#| msgid "I sense the path to the sceptre is to the south-east of me."
 msgid "I sense the path to the Sceptre is to the south-east of me."
 msgstr "Jaučiu, kad kelias iki skeptro eina į pietryčius."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:666
 #, fuzzy
-#| msgid "I sense the path to the sceptre is to the south of me."
 msgid "I sense the path to the Sceptre is to the south of me."
 msgstr "Jaučiu, kad kelias iki skeptro eina į pietus."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:667
 #, fuzzy
-#| msgid "I sense the path to the sceptre is to the south-west of me."
 msgid "I sense the path to the Sceptre is to the south-west of me."
 msgstr "Jaučiu, kad kelias iki skeptro eina į pietvakarius."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:668
 #, fuzzy
-#| msgid "I sense the path to the sceptre is to the west of me."
 msgid "I sense the path to the Sceptre is to the west of me."
 msgstr "Jaučiu, kad kelias iki skeptro eina į vakarus."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:669
 #, fuzzy
-#| msgid "I sense the path to the sceptre is to the north-west of me."
 msgid "I sense the path to the Sceptre is to the north-west of me."
 msgstr "Jaučiu, kad kelias iki skeptro eina į šiaurės vakarus."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:670
 #, fuzzy
-#| msgid "I sense the path to the sceptre is to the north of me."
 msgid "I sense the path to the Sceptre is to the north of me."
 msgstr "Jaučiu, kad kelias iki skeptro eina į šiaurę."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:671
 #, fuzzy
-#| msgid "I sense the path to the sceptre is to the north-east of me."
 msgid "I sense the path to the Sceptre is to the north-east of me."
 msgstr "Jaučiu, kad kelias iki skeptro eina į šiaurės rytus."
 
@@ -5522,11 +5467,6 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:371
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:203
 #, fuzzy
-#| msgid ""
-#| "I spent my entire childhood listening to my mother give orders and "
-#| "commanding armies around. I hid in the throne room as a little girl as "
-#| "she met with her generals. I now know she was having people killed... "
-#| "entire towns of people killed!"
 msgid ""
 "I spent my entire childhood listening to my mother give orders and command "
 "armies around. I hid in the throne room as a little girl as she met with her "
@@ -5890,9 +5830,6 @@ msgstr "Ką darysim toliau? Kiek dar upės liko?"
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:278
 #, fuzzy
-#| msgid ""
-#| "The mountains north of the river are impassable. Perhaps we should try "
-#| "moving south, to the swamps."
 msgid "The mountains north and south of the river are impassable."
 msgstr ""
 "Kalnai šiauriniame krante neįžengiami. Galbūt mums reiktų traukti į pietus, "
@@ -6066,7 +6003,6 @@ msgstr ""
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:382
 #, fuzzy
-#| msgid "But we can not go back. We are on an important mission."
 msgid "But we cannot go back. We are on an important mission."
 msgstr "Bet mes negalime grįžti atgal. Mes atliekame svarbią užduotį."
 
@@ -6146,9 +6082,6 @@ msgstr ""
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:725
 #, fuzzy
-#| msgid ""
-#| "I wonder why the drakes haven’t finished him by now? It is strange that "
-#| "there are not any drakes or undead in that area."
 msgid ""
 "I wonder why the drakes haven’t finished him by now? It is strange that "
 "there are not any drakes in that area."
@@ -6386,7 +6319,6 @@ msgstr "Ėjimai pasibaigs nepasiekus miško"
 #. [note]
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:52
 #, fuzzy
-#| msgid "Note: your encampment will be dismantled after the first turn."
 msgid "Your encampment will be dismantled after the first turn."
 msgstr "Dėmesio: po pirmojo ėjimo jūsų stovykla bus išardyta."
 
@@ -6716,10 +6648,6 @@ msgstr ""
 #. [message]
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:725
 #, fuzzy
-#| msgid ""
-#| "Greetings, Elf-friend! Welcome to Emetria, my hold in Lintanir. You must "
-#| "take shelter here until the battle passes. If you stay with me here for a "
-#| "little while, we will all be safe."
 msgid ""
 "Welcome to Emetria. You must take shelter here until the battle passes. If "
 "you stay for a while, we will all be safe."
@@ -6730,10 +6658,6 @@ msgstr ""
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:729
 #, fuzzy
-#| msgid ""
-#| "Thank you, Lord El’rien. The hospitality of the North Elves is as "
-#| "generous as that of your kin in the south! My men will help you hold out "
-#| "against our enemies."
 msgid ""
 "Thank you. The hospitality of the North Elves is as generous as that of your "
 "kin in the south! My men will help you hold out against our enemies."
@@ -6786,10 +6710,8 @@ msgstr "Išties. Palydėsime jus į sostinę, kur sušauksime tarybą."
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:848
-#, fuzzy
-#| msgid "Who then is your leader? Whom do we serve?"
 msgid "Where is your leader? Where is El’rien?"
-msgstr "Kas gi jūsų vadas? Kam mes tarnaujame?"
+msgstr "Kur jūsų vadas? Kur El’rienas?"
 
 #. [message]
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:852
@@ -6866,9 +6788,6 @@ msgstr ""
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:191
 #, fuzzy
-#| msgid ""
-#| "Move along, elf, unless you enjoy making camp in this icy waste. I, for "
-#| "one, do not!"
 msgid ""
 "Move along, elf, unless you enjoy making camp in this dank cave. I, for one, "
 "do not!"
@@ -6915,7 +6834,7 @@ msgstr ""
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:270
 msgid "What is this? Where is your leader?"
-msgstr ""
+msgstr "Kas tai? Kur jūsų vadas?"
 
 #. [message]
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:275
@@ -7057,7 +6976,7 @@ msgstr ""
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:521
 msgid "My head?"
-msgstr ""
+msgstr "Mano galva?"
 
 #. [message]: speaker=Haralamdum
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:529
@@ -7086,7 +7005,7 @@ msgstr ""
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:552
 msgid "Book?"
-msgstr ""
+msgstr "Knyga?"
 
 #. [message]: speaker=Haralamdum
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:557
@@ -7099,7 +7018,7 @@ msgstr ""
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:562
 msgid "I remember no book."
-msgstr ""
+msgstr "Neprisimenu jokios knygos."
 
 #. [message]: speaker=Haralamdum
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:567
@@ -7117,7 +7036,6 @@ msgstr ""
 #. [message]: speaker=Haralamdum
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:577
 #, fuzzy
-#| msgid "Haralamdum"
 msgid "So hasty. Har alam dum."
 msgstr "Haralamdumas"
 
@@ -7649,7 +7567,6 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/22_Return_to_Wesnoth.cfg:118
 #, fuzzy
-#| msgid "You can now recruit fearsome Gryphon Riders!"
 msgid "You can now recruit Gryphons!"
 msgstr "Dabar galite samdyti bebaimius grifų raitelius!"
 
@@ -7820,10 +7737,8 @@ msgstr "Nugalėkite $units_to_slay priešo dalinius"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:47
-#, fuzzy
-#| msgid "Defeat all enemy leaders"
 msgid "Defeat enemy leaders"
-msgstr "Nugalėkite visus priešų vadus"
+msgstr "Nugalėkite priešų vadus"
 
 #. [side]: type=Grand Knight, id=Sir Alric
 #. [side]: type=Grand Knight, id=Sir Ruga
@@ -8286,9 +8201,6 @@ msgstr ""
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:249
 #, fuzzy
-#| msgid ""
-#| "How long must the people endure your rule? Give the throne to your "
-#| "daughter. She is the rightful heir. We even hold the scepter to prove it!"
 msgid ""
 "How long must the people endure your rule? Give the throne to your daughter. "
 "She is the rightful heir. We even hold the Sceptre to prove it!"
@@ -8764,7 +8676,6 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:118
 #, fuzzy
-#| msgid "Do you want this unit to pick up the sword?"
 msgid "Should $unit.name| attempt to pick up the sword?"
 msgstr "Ar norite, kad šis dalinys pakeltų kalaviją?"
 
@@ -8794,11 +8705,6 @@ msgstr "Šį kalaviją gali turėti tiktai armijos vadas!"
 #. [message]: speaker=$unit.id|
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:142
 #, fuzzy
-#| msgid ""
-#| "As you place your hand around the glittering leather hilt, the sword "
-#| "roars to life! Strangely, you feel no heat once you pick it up, yet the "
-#| "grass at your feet bursts into flame as you test the heft of this mighty "
-#| "weapon."
 msgid ""
 "As $unit.name| places his hand around the glittering leather hilt, the sword "
 "roars to life! Strangely, he feels no heat once he picks it up, yet the "
@@ -8811,11 +8717,6 @@ msgstr ""
 #. [message]: speaker=$unit.id|
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:143
 #, fuzzy
-#| msgid ""
-#| "As you place your hand around the glittering leather hilt, the sword "
-#| "roars to life! Strangely, you feel no heat once you pick it up, yet the "
-#| "grass at your feet bursts into flame as you test the heft of this mighty "
-#| "weapon."
 msgid ""
 "As $unit.name| places her hand around the glittering leather hilt, the sword "
 "roars to life! Strangely, she feels no heat once she picks it up, yet the "
@@ -8833,7 +8734,6 @@ msgstr "liepsnojantis kalavijas"
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:201
 #, fuzzy
-#| msgid "Do you want this unit to pick up the armor?"
 msgid "Should $unit.name| attempt to pick up the armor?"
 msgstr "Ar norite, kad šis dalinys paimtų šarvus?"
 
@@ -8859,10 +8759,6 @@ msgstr "Tiktai galingas karys gali dėvėti šiuos šarvus!"
 #. [message]: speaker=$unit.id|
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:225
 #, fuzzy
-#| msgid ""
-#| "You struggle to lift and don the heavy plate. Once worn, however, it is "
-#| "amazingly comfortable. You have increased resistance to all physical "
-#| "damage!"
 msgid ""
 "$unit.name| struggles to lift and don the heavy plate. Once worn, however, "
 "it is amazingly comfortable. He feels an increased resistance to all "
@@ -8875,10 +8771,6 @@ msgstr ""
 #. [message]: speaker=$unit.id|
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:226
 #, fuzzy
-#| msgid ""
-#| "You struggle to lift and don the heavy plate. Once worn, however, it is "
-#| "amazingly comfortable. You have increased resistance to all physical "
-#| "damage!"
 msgid ""
 "$unit.name| struggles to lift and don the heavy plate. Once worn, however, "
 "it is amazingly comfortable. She feels an increased resistance to all "
@@ -8997,7 +8889,7 @@ msgstr "Kalenzas"
 #. [unit]: id=Li'sar, type=Princess
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:724
 msgid "Li'sar"
-msgstr ""
+msgstr "Li'sar"
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/utils/intro.cfg:5
@@ -9128,70 +9020,3 @@ msgstr ""
 "Pabėgęs į Ėtenvudą už pietvakarinės Vesnoto sienos, Delfadoras su elfų "
 "pagalba užaugino Konradą, liūdnai stebėdamas kaip įsisiūbuoja siaubingas "
 "Aševierės režimas."
-
-#~ msgid "This is taking too much time, I had best call some reinforcements!"
-#~ msgstr "Per ilgai terliojuosi, verčiau pakviesčiau pastiprinimą!"
-
-#~ msgid "Maybe I was not using enough forces..."
-#~ msgstr "Gal aš naudoju nepakankamai pajėgų..."
-
-#~ msgid ""
-#~ "I see that your forces draw near, impostor! I’ll not be defeated in my "
-#~ "own backyard so easily... Come forth and attack, my loyal duelist!"
-#~ msgstr ""
-#~ "Matau, kad tavo pajėgos artėja, apsišaukėli! Nesileisiu taip lengvai "
-#~ "nugalima savo pačios kieme... Išeik ir pulk, ištikimasis dvikovininke!"
-
-#~ msgid "Ronry"
-#~ msgstr "Ronri"
-
-#~ msgid "I’ll seize their keep, my Lady!"
-#~ msgstr "Aš užimsiu jų stovyklą, mano ponia!"
-
-#~ msgid "It sounds like there is something in the mine shaft."
-#~ msgstr "Atrodo, kažkas slapstosi kasykloje."
-
-#~ msgid "You’ve discovered my ploy! It doesn’t matter, I’ll still rout you!"
-#~ msgstr "Jūs mane demaskavot! Bet nesvarbu, vis tiek jus sutrypsiu!"
-
-#~ msgid ""
-#~ "The trap is foiled, but I’ll still flush this rabble from their keep!"
-#~ msgstr ""
-#~ "Pasala aptikta, bet aš vis tiek išvaikysiu šitą bandą iš jų stovyklos!"
-
-#~ msgid "saber"
-#~ msgstr "kardas"
-
-#~ msgid "sword"
-#~ msgstr "kalavijas"
-
-#~ msgid "bow"
-#~ msgstr "lankas"
-
-#~ msgid "claws"
-#~ msgstr "nagai"
-
-#~ msgid ""
-#~ "I don’t recommend it. Long ago, a lich who was at war with my people "
-#~ "appointed some of his most powerful minions to guard the swamps. We must "
-#~ "not go that way!"
-#~ msgstr ""
-#~ "Nepatarčiau. Kažkada seniai su mano tauta kariavęs ličas paskyrė "
-#~ "stipriausius savo parankinius saugoti pelkes. Tas kelias ne mums!"
-
-#~ msgid ""
-#~ "I slew the undead monster but somehow it has revived! Dark magic is "
-#~ "stirring around us!"
-#~ msgstr ""
-#~ "Aš sunaikinau nemirėlį, bet jis kažkaip vėl atgijo! Mus supa kažkokia "
-#~ "tamsi magija!"
-
-#~ msgid ""
-#~ "Those are some of the monsters I warned about. Such undead guardians are "
-#~ "indestructible. We must find another way to go."
-#~ msgstr ""
-#~ "Tai vieni iš tų monstrų, apie kuriuos pasakojau. Tokie nemirę sargai "
-#~ "nesunaikinami. Reikia rasti kitą kelią."
-
-#~ msgid "No gold carried over to the next scenario."
-#~ msgstr "Auksas į kitą scenarijų nepateks."

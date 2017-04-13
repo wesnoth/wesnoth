@@ -6,21 +6,19 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2017-03-23 08:11+0100\n"
-"PO-Revision-Date: 2010-01-01 00:00+0300\n"
-"Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
-"Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
-"Language: Lithuanian\n"
+"PO-Revision-Date: 2017-04-08 16:04+0100\n"
+"Last-Translator: Andrius Štikonas <andrius@stikonas.eu>\n"
+"Language-Team: Lithuanian <wesnoth-lt@googlegroups.com>\n"
+"Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
-"X-Generator: Poedit 1.5.5\n"
+"X-Generator: Poedit 1.8.5\n"
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:11
-#, fuzzy
-#| msgid "The Eastern Invasion"
 msgid "Eastern Invasion"
 msgstr "Rytų invazija"
 
@@ -31,10 +29,8 @@ msgstr "RI"
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:16
-#, fuzzy
-#| msgid "(Easy)"
 msgid "Easy"
-msgstr "(Lengvas)"
+msgstr "Lengvas)"
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:16
@@ -43,10 +39,8 @@ msgstr "Ietininkas"
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:17
-#, fuzzy
-#| msgid "(Normal)"
 msgid "Normal"
-msgstr "(Normalus)"
+msgstr "Normalus"
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:17
@@ -55,10 +49,8 @@ msgstr "Kardininkas"
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:18
-#, fuzzy
-#| msgid "(Challenging)"
 msgid "Challenging"
-msgstr "(Iššaukiantis)"
+msgstr "Iššaukiantis"
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:18
@@ -110,8 +102,6 @@ msgstr "Grafikos kūrimas"
 
 #. [lua]: wml_actions.bandit_village_capture
 #: data/campaigns/Eastern_Invasion/lua/bandits.lua:83
-#, fuzzy
-#| msgid "They’re here!"
 msgid "They're here!"
 msgstr "Jie čia!"
 
@@ -1278,17 +1268,13 @@ msgstr "Lanar-Skalas"
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:110
-#, fuzzy
-#| msgid "Find the outlaw leader and defeat him"
 msgid "Find the outlaw leader"
-msgstr "Suraskite nusikaltėlių vadą ir nugalėkite jį"
+msgstr "Suraskite nusikaltėlių vadą"
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:117
-#, fuzzy
-#| msgid "Shodrano"
 msgid "Kill Shodrano"
-msgstr "Šodranas"
+msgstr "Užmuškite Šodraną"
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:128
@@ -1906,7 +1892,7 @@ msgstr "Pelatsilis"
 #. [side]: type=Dwarvish Lord, id=Pelathsil
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:43
 msgid "Dwarves"
-msgstr ""
+msgstr "Dvarfai"
 
 #. [side]: type=Orcish Nightblade, id=Bagork
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:75
@@ -1921,7 +1907,7 @@ msgstr "Elandinas"
 #. [side]: type=Elvish Avenger, id=Elandin
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:102
 msgid "Elves"
-msgstr ""
+msgstr "Elfai"
 
 #. [side]: type=Orcish Warlord, id=Prok-Bak
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:129
@@ -2161,7 +2147,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:284
 msgid "Some time later..."
-msgstr ""
+msgstr "Po kiek laiko..."
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:305
@@ -2210,9 +2196,8 @@ msgstr "Karalius Dra-Nakas"
 
 #. [side]
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:80
-#, fuzzy
 msgid "Prisoners"
-msgstr "Kalėjimas"
+msgstr "Kaliniai"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:415
@@ -2259,15 +2244,13 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:491
-#, fuzzy
 msgid "Release the other prisoners"
-msgstr "Na, kur yra kaliniai?"
+msgstr "Išlaisvinkite kitus kalinius"
 
 #. [objective]: condition=lose
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:495
-#, fuzzy
 msgid "Death of the escapees"
-msgstr "Voleso mirtis"
+msgstr "Pasprukusiųjų mirtis"
 
 #. [message]: speaker=unit
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:512
@@ -2319,7 +2302,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:656
 msgid "After a while..."
-msgstr ""
+msgstr "Po kiek laiko..."
 
 #. [message]: id=$unit.id
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:687
@@ -2420,9 +2403,8 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1058
-#, fuzzy
 msgid "Release the remaining prisoners"
-msgstr "Na, kur yra kaliniai?"
+msgstr "Išlaisvinkite likusius kalinius"
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1145
@@ -3692,17 +3674,3 @@ msgstr "Aš negaliu naudoti šio daikto! Tegu kas kitas jį paima."
 #: data/campaigns/Eastern_Invasion/utils/macros.cfg:67
 msgid "Holy Amulet"
 msgstr "Šventas amuletas"
-
-#~ msgid "greatsword"
-#~ msgstr "didysis kalavijas"
-
-#~ msgid "morning star"
-#~ msgstr "ryto žvaigždė"
-
-#~ msgid "sword"
-#~ msgstr "kalavijas"
-
-#~ msgid ""
-#~ "There is a great fortune in this chest of treasure! I can count two "
-#~ "hundred pieces of gold."
-#~ msgstr "Šitoj skrynioj tikras lobis! Du šimtai aukso monetų!"
