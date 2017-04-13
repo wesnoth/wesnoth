@@ -135,9 +135,7 @@ void listbox::remove_row(const unsigned row, unsigned count)
 
 void listbox::clear()
 {
-	// Due to the removing from the linked group, don't use
-	// generator_->clear() directly.
-	remove_row(0, 0);
+	generator_->clear();
 }
 
 unsigned listbox::get_item_count() const
