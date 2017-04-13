@@ -614,6 +614,7 @@ public:
 		{
 			delete item;
 		}
+		items_.clear();
 		order_dirty_ = true;
 		selected_item_count_ = 0;
 	}
