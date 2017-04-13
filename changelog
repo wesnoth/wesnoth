@@ -1,8 +1,4 @@
 Version 1.13.7+dev:
- * Language and i18n:
-   * Updated translations: British English, Lithuanian, Spanish
- * Performance:
-   * Greatly speeded up switching between add-ons in the add-on manager (bug #25523)
  * Editor:
    * Fixed a crash when placing units.
  * Formula Engine:
@@ -10,11 +6,15 @@ Version 1.13.7+dev:
    * Object types can now be used in contexts where previously only a list or map
      was accepted - for example in the filter() function. They will be treated as
      a map in such cases.
+ * Language and i18n:
+   * Updated translations: British English, Lithuanian, Spanish
  * Lua Engine:
    * Add wesnoth.log_replay which exposes a little-used functionality of injecting arbitrary
      logging data into a saved game.
    * Small change to animator API - facing parameter replaced with target and required to be
      a space adjacent to the unit.
+ * Performance:
+   * Greatly speeded up switching between add-ons in the add-on manager (bug #25523)
  * User Interface:
    * Updated Attack Predictions dialog to GUI2.
    * Fixed file path being truncated on the wrong side in the File Browser.
