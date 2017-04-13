@@ -813,23 +813,9 @@ void unit::generate_name()
 	generate_name_ = false;
 }
 
-
-/**
- * Apply mandatory traits (e.g. undead, mechanical) to a unit and then
- * fill out with available (leaders have a restricted set of available traits)
- * traits until no more are available or the unit has its maximum number
- * of traits.
- * This routine does not apply the effects of added traits to a unit.
- * That must be done by the caller.
- * Note that random numbers used in config files don't work in multiplayer,
- * so that leaders should be barred from all random traits until that
- * is fixed. Later the restrictions will be based on play balance.
- * @a musthaveonly is true when you don't want to generate random traits or
- * you don't want to give any optional traits to a unit.
- */
-void unit::generate_traits(bool musthaveonly)
+void unit::generate_traits(bool must_have_only)
 {
-	LOG_UT << "Generating a trait for unit type " << type().log_id() << " with musthaveonly " << musthaveonly << "\n";
+	LOG_UT << "Generating a trait for unit type " << type().log_id() << " with must_have_only " << must_have_only << "\n";
 	const unit_type &u_type = type();
 
 	// Calculate the unit's traits
@@ -861,11 +847,11 @@ void unit::generate_traits(bool musthaveonly)
 
 		// The trait is still available, mark it as a candidate for randomizing.
 		// For leaders, only traits with availability "any" are considered.
-		if (!musthaveonly && (!can_recruit() || avl == "any"))
+		if (!must_have_only && (!can_recruit() || avl == "any"))
 			candidate_traits.push_back(&t);
 	}
 
-	if (musthaveonly) return;
+	if (must_have_only) return;
 
 	// Now randomly fill out to the number of traits required or until
 	// there aren't any more traits.
@@ -1150,12 +1136,6 @@ void unit::set_advances_to(const std::vector<std::string>& advances_to)
 	advances_to_ = advances_to;
 }
 
-/**
- * Set the unit's remaining movement to @a moves.
- * If @a unit_action is set to true, then additionally the "end turn" and
- * "hold position" flags will be cleared (as they should be if a unit acts,
- * as opposed to the movement being set by the engine for other reasons).
- */
 void unit::set_movement(int moves, bool unit_action)
 {
 	// If this was because the unit acted, clear its "not acting" flags.
@@ -1182,12 +1162,6 @@ inline bool mod_duration_match(const std::string & mod_dur,
 		return mod_dur == goal_dur;
 }
 
-/**
- * Clears those modifications whose duration has expired.
- * If @a duration is empty, then all temporary modifications (those not
- * lasting forever) have expired. Otherwise, modifications whose duration
- * equals @a duration have expired.
- */
 void unit::expire_modifications(const std::string & duration)
 {
 	// If any modifications expire, then we will need to rebuild the unit.
@@ -2402,12 +2376,6 @@ unit_movement_resetter::~unit_movement_resetter()
 	} catch (...) {}
 }
 
-bool unit::matches_id(const std::string& unit_id) const
-{
-	return id_ == unit_id;
-}
-
-
 std::string unit::TC_image_mods() const {
 	return formatter() << "~RC(" << team_color() << ">" << team::get_side_color_index(side()) << ")";
 }
@@ -2417,10 +2385,6 @@ std::string unit::image_mods() const {
 	}
 
 	return TC_image_mods();
-}
-
-const std::string& unit::effect_image_mods() const{
-	return image_mods_;
 }
 
 // Called by the Lua API after resetting an attack pointer.
@@ -2463,8 +2427,6 @@ void unit::set_image_halo(const std::string& halo)
 	anim_comp_->clear_haloes();
 	halo_.reset(new std::string(halo));
 }
-
-
 
 void unit::parse_upkeep(const config::attribute_value& upkeep)
 {

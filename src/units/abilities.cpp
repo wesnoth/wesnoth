@@ -251,15 +251,6 @@ namespace {
 	}
 }
 
-/**
- * Returns names and descriptions of the unit's abilities.
- * The returned triples consist of (in order) base name, male or female name as
- * appropriate for the unit, and description.
- * @param active_list  If nullptr, then all abilities are forced active. If not
- *                     null, this vector will be the same length as the returned
- *                     one and will indicate whether or not the corresponding
- *                     ability is active.
- */
 std::vector<std::tuple<t_string, t_string, t_string> > unit::ability_tooltips(boost::dynamic_bitset<>* active_list) const
 {
 	std::vector<std::tuple<t_string,t_string,t_string> > res;
