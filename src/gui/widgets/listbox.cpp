@@ -136,6 +136,7 @@ void listbox::remove_row(const unsigned row, unsigned count)
 void listbox::clear()
 {
 	generator_->clear();
+	update_content_size();
 }
 
 unsigned listbox::get_item_count() const
