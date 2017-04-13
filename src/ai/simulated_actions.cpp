@@ -212,7 +212,7 @@ void helper_place_unit(const unit& u, const map_location& loc){
 	unit new_unit = u;
 	new_unit.set_movement(0, true);
 	new_unit.set_attacks(0);
-	new_unit.heal_all();
+	new_unit.heal_fully();
 
 	std::pair<unit_map::iterator, bool> add_result = resources::gameboard->units().add(loc, new_unit);
 	assert(add_result.second);
@@ -250,7 +250,7 @@ void helper_advance_unit(const map_location& loc){
 		}
 		advanced_unit.set_experience(advanced_unit.experience() - advanced_unit.max_experience());
 		advanced_unit.advance_to(*advanced_type);
-		advanced_unit.heal_all();
+		advanced_unit.heal_fully();
 		advanced_unit.set_state(unit::STATE_POISONED, false);
 		advanced_unit.set_state(unit::STATE_SLOWED, false);
 		advanced_unit.set_state(unit::STATE_PETRIFIED, false);

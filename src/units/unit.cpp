@@ -1018,7 +1018,7 @@ std::string unit::small_profile() const
 	return absolute_image();
 }
 
-const std::string& unit::team_color() const {
+const std::string& unit::flag_rgb() const {
 	return flag_rgb_.empty() ? game_config::unit_rgb : flag_rgb_;
 }
 
@@ -1228,7 +1228,7 @@ void unit::new_scenario()
 	// Expire all temporary modifications.
 	expire_modifications("");
 
-	heal_all();
+	heal_fully();
 	set_state(STATE_SLOWED, false);
 	set_state(STATE_POISONED, false);
 	set_state(STATE_PETRIFIED, false);
@@ -1830,7 +1830,7 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 			max_hit_points_ = 1;
 
 		if (effect["heal_full"].to_bool()) {
-			heal_all();
+			heal_fully();
 		}
 
 		if(!increase_hp.empty()) {
@@ -2082,7 +2082,7 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 			advance_to(*new_type);
 			preferences::encountered_units().insert(new_type_id);
 			if(heal_full) {
-				heal_all();
+				heal_fully();
 			}
 		} else {
 			WRN_UT << "unknown type= in [effect]apply_to=type, ignoring" << std::endl;
@@ -2377,7 +2377,7 @@ unit_movement_resetter::~unit_movement_resetter()
 }
 
 std::string unit::TC_image_mods() const {
-	return formatter() << "~RC(" << team_color() << ">" << team::get_side_color_index(side()) << ")";
+	return formatter() << "~RC(" << flag_rgb() << ">" << team::get_side_color_index(side()) << ")";
 }
 std::string unit::image_mods() const {
 	if(!image_mods_.empty()) {

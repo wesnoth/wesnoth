@@ -602,7 +602,7 @@ public:
 	}
 
 	void heal(int amount);
-	void heal_all() // TODO: rename
+	void heal_fully()
 	{
 		hit_points_ = max_hitpoints();
 	}
@@ -1020,11 +1020,8 @@ public:
 
 	/**
 	 * Get the source color palette to use when recoloring the unit's image.
-	 *
-	 * @todo Rename this function or change its purpose. Right now it returns a source palette, such as
-	 *       'magenta', *not* a destination palette, such as 'red'.
 	 */
-	const std::string& team_color() const;
+	const std::string& flag_rgb() const;
 
 	/** Constructs a recolor (RC) IPF string for this unit's team color. */
 	std::string TC_image_mods() const;
@@ -1151,9 +1148,6 @@ public:
 	{
 		return *formula_man_;
 	}
-
-	// TODO: remove, no implementation
-	void backup_state();
 
 	/** Generates a random race-appropriate name if one has not already been provided. */
 	void generate_name();
