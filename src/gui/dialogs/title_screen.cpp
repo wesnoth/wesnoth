@@ -136,7 +136,7 @@ bool show_debug_clock_button = false;
 
 title_screen::title_screen(game_launcher& game)
 	: game_(game)
-	, debug_clock_(nullptr)
+	, debug_clock_()
 {
 	set_restore(false);
 
@@ -146,7 +146,6 @@ title_screen::title_screen(game_launcher& game)
 
 title_screen::~title_screen()
 {
-	delete debug_clock_;
 }
 
 using btn_callback = std::function<void(window&)>;
@@ -508,10 +507,9 @@ void title_screen::show_debug_clock_window(CVideo& video)
 	assert(show_debug_clock_button);
 
 	if(debug_clock_) {
-		delete debug_clock_;
-		debug_clock_ = nullptr;
+		debug_clock_.reset(nullptr);
 	} else {
-		debug_clock_ = new debug_clock();
+		debug_clock_.reset(new debug_clock());
 		debug_clock_->show(video, true);
 	}
 }

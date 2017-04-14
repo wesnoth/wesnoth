@@ -96,8 +96,8 @@ unit_type::unit_type(const unit_type& o) :
 	animations_(o.animations_),
     build_status_(o.build_status_)
 {
-	gender_types_[0] = o.gender_types_[0] != nullptr ? new unit_type(*o.gender_types_[0]) : nullptr;
-	gender_types_[1] = o.gender_types_[1] != nullptr ? new unit_type(*o.gender_types_[1]) : nullptr;
+	gender_types_[0].reset(gender_types_[0] != nullptr ? new unit_type(*o.gender_types_[0]) : nullptr);
+	gender_types_[1].reset(gender_types_[1] != nullptr ? new unit_type(*o.gender_types_[1]) : nullptr);
 }
 
 
@@ -152,14 +152,10 @@ unit_type::unit_type(const config &cfg, const std::string & parent_id) :
 {
 	check_id(id_);
 	check_id(base_id_);
-	gender_types_[0] = nullptr;
-	gender_types_[1] = nullptr;
 }
 
 unit_type::~unit_type()
 {
-	delete gender_types_[0];
-	delete gender_types_[1];
 }
 
 /**
@@ -175,8 +171,9 @@ void unit_type::build_full(const movement_type_map &mv_types,
 	build_help_index(mv_types, races, traits);
 
 	for (int i = 0; i < 2; ++i) {
-		if (gender_types_[i])
+		if (gender_types_[i]) {
 			gender_types_[i]->build_full(mv_types, races, traits);
+		}
 	}
 
 	if ( race_ != &unit_race::null_race )
@@ -366,22 +363,23 @@ void unit_type::build_created(const movement_type_map &mv_types,
 	// There is no preceding build level (other than being constructed).
 
 	// These should still be nullptr from the constructor.
-	assert(gender_types_[0] == nullptr);
-	assert(gender_types_[1] == nullptr);
+	assert(!gender_types_[0]);
+	assert(!gender_types_[1]);
 
 	if ( const config &male_cfg = cfg_.child("male") ) {
-		gender_types_[0] = new unit_type(male_cfg, id_);
+		gender_types_[0].reset(new unit_type(male_cfg, id_));
 		gender_types_[0]->debug_id_ = debug_id_ + " (male)";
 	}
 
 	if ( const config &female_cfg = cfg_.child("female") ) {
-		gender_types_[1] = new unit_type(female_cfg, id_);
+		gender_types_[1].reset(new unit_type(female_cfg, id_));
 		gender_types_[1]->debug_id_ = debug_id_ + " (female)";
 	}
 
-	for (int i = 0; i < 2; ++i) {
-		if (gender_types_[i])
+	for (unsigned i = 0; i < gender_types_.size(); ++i) {
+		if (gender_types_[i]) {
 			gender_types_[i]->build_created(mv_types, races, traits);
+		}
 	}
 
     const std::string& advances_to_val = cfg_["advances_to"];
@@ -441,8 +439,7 @@ const unit_type& unit_type::get_gender_unit_type(std::string gender) const
 const unit_type& unit_type::get_gender_unit_type(unit_race::GENDER gender) const
 {
 	const size_t i = gender;
-	if(i < sizeof(gender_types_)/sizeof(*gender_types_)
-	&& gender_types_[i] != nullptr) {
+	if(i < gender_types_.size() && gender_types_[i] != nullptr) {
 		return *gender_types_[i];
 	}
 
@@ -598,13 +595,15 @@ void unit_type::add_advancement(const unit_type &to_unit,int xp)
 
 	// Add advancements to gendered subtypes, if supported by to_unit
 	for(int gender=0; gender<=1; ++gender) {
-		if(gender_types_[gender] == nullptr) continue;
-		if(to_unit.gender_types_[gender] == nullptr) {
+		if(!gender_types_[gender]) { 
+			continue;
+		}
+		if(!to_unit.gender_types_[gender]) {
 			WRN_CF << to_unit.log_id() << " does not support gender " << gender << std::endl;
 			continue;
 		}
 		LOG_CONFIG << "gendered advancement " << gender << ": ";
-		gender_types_[gender]->add_advancement(*(to_unit.gender_types_[gender]),xp);
+		gender_types_[gender]->add_advancement(*(to_unit.gender_types_[gender]), xp);
 	}
 
 	if ( cfg_.has_child("variation") ) {

@@ -23,6 +23,7 @@
 #include "utils/math.hpp"
 #include "game_errors.hpp"
 
+#include <array>
 #include <map>
 #include <set>
 #include <string>
@@ -273,7 +274,7 @@ private:
 
 	unsigned int num_traits_;
 
-	unit_type* gender_types_[2];
+	std::array<std::unique_ptr<unit_type>, 2> gender_types_;
 
 	variations_map variations_;
 	std::string default_variation_;

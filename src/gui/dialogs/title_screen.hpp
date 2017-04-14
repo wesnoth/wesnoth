@@ -79,7 +79,7 @@ private:
 	void on_resize(window& window);
 
 	/** Holds the debug clock dialog. */
-	modeless_dialog* debug_clock_;
+	std::unique_ptr<modeless_dialog> debug_clock_;
 
 	/**
 	 * Updates the tip of day widget.

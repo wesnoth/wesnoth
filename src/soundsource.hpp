@@ -76,7 +76,7 @@ public:
 class manager : public events::observer
 {
 
-	typedef std::map<std::string, positional_source *> positional_source_map;
+	typedef std::map<std::string, std::unique_ptr<positional_source>> positional_source_map;
 	typedef positional_source_map::iterator            positional_source_iterator;
 	typedef positional_source_map::const_iterator      positional_source_const_iterator;
 

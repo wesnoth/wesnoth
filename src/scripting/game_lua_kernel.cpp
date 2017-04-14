@@ -1564,7 +1564,7 @@ int game_lua_kernel::intf_find_path(lua_State *L)
 	int viewing_side = 0;
 	bool ignore_units = false, see_all = false, ignore_teleport = false;
 	double stop_at = 10000;
-	pathfind::cost_calculator *calc = nullptr;
+	std::unique_ptr<pathfind::cost_calculator> calc;
 
 	if (lua_istable(L, arg))
 	{
@@ -1595,7 +1595,7 @@ int game_lua_kernel::intf_find_path(lua_State *L)
 	}
 	else if (lua_isfunction(L, arg))
 	{
-		calc = new lua_pathfind_cost_calculator(L, arg);
+		calc.reset(new lua_pathfind_cost_calculator(L, arg));
 	}
 
 	pathfind::teleport_map teleport_locations;
@@ -1608,13 +1608,12 @@ int game_lua_kernel::intf_find_path(lua_State *L)
 			teleport_locations = pathfind::get_teleport_locations(
 				*u, viewing_team, see_all, ignore_units);
 		}
-		calc = new pathfind::shortest_path_calculator(*u, viewing_team,
-			teams(), map, ignore_units, false, see_all);
+		calc.reset(new pathfind::shortest_path_calculator(*u, viewing_team,
+			teams(), map, ignore_units, false, see_all));
 	}
 
 	pathfind::plain_route res = pathfind::a_star_search(src, dst, stop_at, *calc, map.w(), map.h(),
 		&teleport_locations);
-	delete calc;
 
 	int nb = res.steps.size();
 	lua_createtable(L, nb, 0);

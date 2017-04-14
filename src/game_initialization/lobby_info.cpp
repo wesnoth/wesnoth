@@ -190,6 +190,7 @@ bool lobby_info::process_gamelist_diff(const config& data)
 			if(current_i->second->display_status == game_info::NEW) {
 				// This means the game never made it through to the user interface,
 				// so just deleting it is fine
+				// TODO: don't we have to delete the pointer or am i missing something?
 				games_by_id_.erase(current_i);
 			} else {
 				current_i->second->display_status = game_info::DELETED;
@@ -252,6 +253,7 @@ void lobby_info::sync_games_display_status()
 	game_info_map::iterator i = games_by_id_.begin();
 	while(i != games_by_id_.end()) {
 		if(i->second->display_status == game_info::DELETED) {
+			// TODO: don't we have to delete the pointer or am i missing something?
 			i = games_by_id_.erase(i);
 		} else {
 			i->second->display_status = game_info::CLEAN;
