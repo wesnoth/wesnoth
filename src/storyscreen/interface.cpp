@@ -44,7 +44,7 @@ void show_story(CVideo& video, const std::string &scenario_name,
 		cfg.append_children(iter);
 	}
 
-	if(!cfg.has_child("part")) {
+	if(cfg.empty()) {
 		return;
 	}
 
