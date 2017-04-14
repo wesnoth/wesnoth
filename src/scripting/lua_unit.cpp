@@ -300,13 +300,14 @@ static int impl_unit_get(lua_State *L)
 
 	if(strcmp(m, "upkeep") == 0) {
 		unit::upkeep_t upkeep = u.upkeep_raw();
-		if(boost::get<unit::upkeep_full>(&upkeep) != nullptr){
-			lua_pushstring(L, "full");
-		} else if(boost::get<unit::upkeep_loyal>(&upkeep) != nullptr){
-			lua_pushstring(L, "loyal");
+
+		if(int* v = boost::get<int>(&upkeep)) {
+			lua_push(L, *v);
 		} else {
-			lua_push(L, boost::get<int>(upkeep));
+			const std::string type = boost::apply_visitor(unit::upkeep_type_visitor(), upkeep);
+			lua_pushstring(L, type.c_str());
 		}
+
 		return 1;
 	}
 	if(strcmp(m, "advancements") == 0) {

@@ -1467,15 +1467,8 @@ int unit::upkeep() const
 	if(can_recruit()) {
 		return 0;
 	}
-	else if(boost::get<upkeep_full>(&upkeep_) != nullptr) {
-		return level();
-	}
-	else if(boost::get<upkeep_loyal>(&upkeep_) != nullptr) {
-		return 0;
-	}
-	else {
-		return boost::get<int>(upkeep_);
-	}
+
+	return boost::apply_visitor(upkeep_value_visitor(*this), upkeep_);
 }
 
 bool unit::loyal() const
@@ -1894,7 +1887,7 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 		if(increase.empty() == false) {
 			max_experience_ = utils::apply_modifier(max_experience_, increase, 1);
 		}
-	} else if(apply_to == "loyal") {
+	} else if(apply_to == upkeep_loyal::type()) {
 		upkeep_ = upkeep_loyal();;
 	} else if(apply_to == "status") {
 		const std::string& add = effect["add"];
@@ -2429,10 +2422,10 @@ void unit::parse_upkeep(const config::attribute_value& upkeep)
 	if(upkeep_int != -99) {
 		upkeep_ = upkeep_int;
 	}
-	else if(upkeep == "loyal" || upkeep == "free") {
+	else if(upkeep == upkeep_loyal::type() || upkeep == "free") {
 		upkeep_ = upkeep_loyal();
 	}
-	else if(upkeep == "full") {
+	else if(upkeep == upkeep_full::type()) {
 		upkeep_ = upkeep_full();
 	}
 	else {
@@ -2440,17 +2433,10 @@ void unit::parse_upkeep(const config::attribute_value& upkeep)
 		upkeep_ = upkeep_full();
 	}
 }
+
 void unit::write_upkeep(config::attribute_value& upkeep) const
 {
-	if(boost::get<upkeep_full>(&upkeep_) != nullptr) {
-		upkeep = "full";
-	}
-	else if(boost::get<upkeep_loyal>(&upkeep_) != nullptr) {
-		upkeep = "loyal";
-	}
-	else {
-		upkeep = boost::get<int>(upkeep_);
-	}
+	upkeep = boost::apply_visitor(upkeep_type_visitor(), upkeep_);
 }
 
 // Filters unimportant stats from the unit config and returns a checksum of

@@ -740,10 +740,58 @@ public:
 	 */
 	int upkeep() const;
 
-	// TODO: look for a cleaner solution than these structs
-	struct upkeep_full {};
-	struct upkeep_loyal {};
-	using upkeep_t =  boost::variant<upkeep_full, upkeep_loyal, int>;
+	struct upkeep_full
+	{
+		static std::string type() { static std::string v = "full"; return v; }
+	};
+
+	struct upkeep_loyal
+	{
+		static std::string type() { static std::string v = "loyal"; return v; }
+	};
+
+	/** Visitor helper class to fetch the appropriate upkeep value. */
+	class upkeep_value_visitor : public boost::static_visitor<int>
+	{
+	public:
+		explicit upkeep_value_visitor(const unit& unit) : u_(unit) {}
+
+		int operator()(const upkeep_full&) const
+		{
+			return u_.level();
+		}
+
+		int operator()(const upkeep_loyal&) const
+		{
+			return 0;
+		}
+
+		int operator()(int v) const
+		{
+			return v;
+		}
+
+	private:
+		const unit& u_;
+	};
+
+	/** Visitor helper struct to fetch the upkeep type flag if applicable, or the the value otherwise. */
+	struct upkeep_type_visitor : public boost::static_visitor<std::string>
+	{
+		template<typename T>
+		typename std::enable_if<!std::is_same<int, T>::value, std::string>::type
+		operator()(T& v) const
+		{
+			return v.type();
+		}
+
+		std::string operator()(int v) const
+		{
+			return std::to_string(v);
+		}
+	};
+
+	using upkeep_t = boost::variant<upkeep_full, upkeep_loyal, int>;
 
 	/**
 	 * Gets the raw variant controlling the upkeep value.
@@ -755,7 +803,7 @@ public:
 		return upkeep_;
 	}
 
-	/** Sets the upkeep value to a specific numeric value. */
+	/** Sets the upkeep value to a specific value value. Does not necessarily need to be numeric */
 	void set_upkeep(upkeep_t v)
 	{
 		upkeep_ = v;
