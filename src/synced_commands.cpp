@@ -435,10 +435,20 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_unit, child,  use_undo, /*show*/, /*error_
 	} else {
 		config cfg;
 		i->write(cfg);
-		resources::gameboard->units().erase(loc);
 		cfg[name] = value;
-		unit new_u(cfg, true);
-		resources::gameboard->units().add(loc, new_u);
+
+		// Attempt to create a new unit. If there are error (such an invalid type key), exit.
+		try{
+			unit new_u(cfg, true);
+
+			// Don't remove the unit until after we've verified there are no errors in creating the new one,
+			// or else the unit would simply be removed from the map with no replacement.
+			resources::gameboard->units().erase(loc);
+			resources::gameboard->units().add(loc, new_u);
+		} catch(unit_type::error& e) {
+			ERR_REPLAY << e.what() << std::endl; // TODO: more appropriate error message log
+			return false;
+		}
 	}
 	if (name == "fail") { //testcase for bug #18488
 		assert(i.valid());
@@ -508,7 +518,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_kill, child, use_undo, /*show*/, /*error_h
 		resources::undo_stack->clear();
 	}
 	debug_notification("kill debug command was used during turn of $player");
-	
+
 	const map_location loc(child["x"].to_int(), child["y"].to_int(), wml_loc());
 	const unit_map::iterator i = resources::gameboard->units().find(loc);
 	if (i != resources::gameboard->units().end()) {
