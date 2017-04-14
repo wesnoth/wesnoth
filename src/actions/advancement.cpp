@@ -346,13 +346,15 @@ void advance_unit(map_location loc, const advancement_option &advance_to, bool f
 	bool use_amla = boost::get<std::string>(&advance_to) == nullptr;
 	unit_ptr new_unit = use_amla ? get_amla_unit(*u, *boost::get<const config*>(advance_to)) :
 	                           get_advanced_unit(*u, boost::get<std::string>(advance_to));
+	new_unit->set_location(loc);
 	if ( !use_amla )
 	{
 		statistics::advance_unit(*new_unit);
 		preferences::encountered_units().insert(new_unit->type_id());
 		LOG_CF << "Added '" << new_unit->type_id() << "' to the encountered units.\n";
 	}
-	u = resources::gameboard->units().replace(loc, *new_unit).first;
+	resources::gameboard->units().erase(loc);
+	u = resources::gameboard->units().insert(new_unit).first;
 
 	// Update fog/shroud.
 	actions::shroud_clearer clearer;

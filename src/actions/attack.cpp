@@ -1154,10 +1154,9 @@ namespace {
 			if (reanimator)
 			{
 				LOG_NG << "found unit type:" << reanimator->id() << '\n';
-				unit newunit(*reanimator, attacker.get_unit().side(),
-					true, unit_race::MALE);
-				newunit.set_attacks(0);
-				newunit.set_movement(0, true);
+				unit_ptr newunit(new unit(*reanimator, attacker.get_unit().side(), true, unit_race::MALE));
+				newunit->set_attacks(0);
+				newunit->set_movement(0, true);
 				// Apply variation
 				if (undead_variation != "null")
 				{
@@ -1165,15 +1164,16 @@ namespace {
 					config &variation = mod.add_child("effect");
 					variation["apply_to"] = "variation";
 					variation["name"] = undead_variation;
-					newunit.add_modification("variation",mod);
-					newunit.heal_fully();
+					newunit->add_modification("variation",mod);
+					newunit->heal_fully();
 				}
-				units_.add(death_loc, newunit);
+				newunit->set_location(death_loc);
+				units_.insert(newunit);
 
-				game_events::entity_location reanim_loc(defender.loc_, newunit.underlying_id());
+				game_events::entity_location reanim_loc(defender.loc_, newunit->underlying_id());
 				resources::game_events->pump().fire("unit_placed", reanim_loc);
 
-				preferences::encountered_units().insert(newunit.type_id());
+				preferences::encountered_units().insert(newunit->type_id());
 				if (update_display_) {
 					resources::screen->invalidate(death_loc);
 				}
