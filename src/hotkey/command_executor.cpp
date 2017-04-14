@@ -645,6 +645,27 @@ void execute_command(const hotkey_command& command, command_executor* executor, 
 				}
 			}
 			break;
+		case HOTKEY_MUTE_MUSIC:
+		        {
+				// look if both is not playing
+				static struct before_muted_s
+				{
+					bool playing_sound, playing_music;
+					before_muted_s() : playing_sound(false), playing_music(false) {}
+				} before_muted;
+				if (preferences::music_on())
+				{
+					// then remember settings and mute both
+					before_muted.playing_music = preferences::music_on();
+					preferences::set_music(false);
+				}
+				else
+				{
+					// then set settings before mute
+					preferences::set_music(before_muted.playing_music);
+				}
+			}
+			break;
 		default:
 			DBG_G << "command_executor: unknown command number " << command.id << ", ignoring.\n";
 			break;
