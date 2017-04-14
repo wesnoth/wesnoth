@@ -282,6 +282,7 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 		case HOTKEY_MOUSE_SCROLL:
 		case HOTKEY_ANIMATE_MAP:
 		case HOTKEY_MUTE:
+		case HOTKEY_MUTE_MUSIC:
 		case HOTKEY_PREFERENCES:
 		case HOTKEY_HELP:
 		case HOTKEY_QUIT_GAME:
