@@ -209,12 +209,13 @@ void helper_check_village(const map_location& loc, int side){
 }
 
 void helper_place_unit(const unit& u, const map_location& loc){
-	unit new_unit = u;
-	new_unit.set_movement(0, true);
-	new_unit.set_attacks(0);
-	new_unit.heal_fully();
+	unit_ptr new_unit(new unit(u));
+	new_unit->set_movement(0, true);
+	new_unit->set_attacks(0);
+	new_unit->heal_fully();
+	new_unit->set_location(loc);
 
-	std::pair<unit_map::iterator, bool> add_result = resources::gameboard->units().add(loc, new_unit);
+	std::pair<unit_map::iterator, bool> add_result = resources::gameboard->units().insert(new_unit);
 	assert(add_result.second);
 	unit_map::iterator& new_unit_itor = add_result.first;
 
@@ -239,7 +240,7 @@ void helper_advance_unit(const map_location& loc){
 	int options_num = unit_helper::number_of_possible_advances(*advance_unit);
 
 	size_t advance_choice = rand() % options_num;
-	unit advanced_unit(*advance_unit);
+	unit_ptr advanced_unit(new unit(*advance_unit));
 
 	if(advance_choice < options.size()){
 		std::string advance_unit_typename = options[advance_choice];
@@ -248,20 +249,22 @@ void helper_advance_unit(const map_location& loc){
 			ERR_AI_SIM_ACTIONS << "Simulating advancing to unknown unit type: " << advance_unit_typename;
 			assert(false && "simulating to unknown unit type");
 		}
-		advanced_unit.set_experience(advanced_unit.experience() - advanced_unit.max_experience());
-		advanced_unit.advance_to(*advanced_type);
-		advanced_unit.heal_fully();
-		advanced_unit.set_state(unit::STATE_POISONED, false);
-		advanced_unit.set_state(unit::STATE_SLOWED, false);
-		advanced_unit.set_state(unit::STATE_PETRIFIED, false);
+		advanced_unit->set_experience(advanced_unit->experience() - advanced_unit->max_experience());
+		advanced_unit->advance_to(*advanced_type);
+		advanced_unit->heal_fully();
+		advanced_unit->set_state(unit::STATE_POISONED, false);
+		advanced_unit->set_state(unit::STATE_SLOWED, false);
+		advanced_unit->set_state(unit::STATE_PETRIFIED, false);
 	}else{
 		const config &mod_option = mod_options[advance_choice-options.size()];
-		advanced_unit.set_experience(advanced_unit.experience()-advanced_unit.max_experience());
-		advanced_unit.add_modification("advancement", mod_option);
+		advanced_unit->set_experience(advanced_unit->experience()-advanced_unit->max_experience());
+		advanced_unit->add_modification("advancement", mod_option);
 	}
 
-	resources::gameboard->units().replace(loc, advanced_unit);
-	LOG_AI_SIM_ACTIONS << advance_unit->type_name() << " at " << loc << " advanced to " << advanced_unit.type_name() << std::endl;
+	advanced_unit->set_location(loc);
+	resources::gameboard->units().erase(loc);
+	resources::gameboard->units().insert(advanced_unit);
+	LOG_AI_SIM_ACTIONS << advance_unit->type_name() << " at " << loc << " advanced to " << advanced_unit->type_name() << std::endl;
 }
 
 }// End namespace
