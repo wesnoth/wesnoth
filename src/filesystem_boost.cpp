@@ -761,12 +761,12 @@ std::string read_file(const std::string &fname)
 	return ss.str();
 }
 
-std::istream *istream_file(const std::string &fname, bool treat_failure_as_error)
+filesystem::scoped_istream istream_file(const std::string &fname, bool treat_failure_as_error)
 {
 	LOG_FS << "Streaming " << fname << " for reading.\n";
 	if (fname.empty()) {
 		ERR_FS << "Trying to open file with empty name.\n";
-		bfs::ifstream *s = new bfs::ifstream();
+		filesystem::scoped_istream s(new bfs::ifstream());
 		s->clear(std::ios_base::failbit);
 		return s;
 	}
@@ -780,7 +780,7 @@ std::istream *istream_file(const std::string &fname, bool treat_failure_as_error
 		if (!fd.is_open() && treat_failure_as_error) {
 			ERR_FS << "Could not open '" << fname << "' for reading.\n";
 		}
-		return new boost::iostreams::stream<boost::iostreams::file_descriptor_source>(fd, 4096, 0);
+		return filesystem::scoped_istream(new boost::iostreams::stream<boost::iostreams::file_descriptor_source>(fd, 4096, 0));
 	}
 	catch(const std::exception ex)
 	{
@@ -788,20 +788,20 @@ std::istream *istream_file(const std::string &fname, bool treat_failure_as_error
 		{
 			ERR_FS << "Could not open '" << fname << "' for reading.\n";
 		}
-		bfs::ifstream *s = new bfs::ifstream();
+		filesystem::scoped_istream s(new bfs::ifstream());
 		s->clear(std::ios_base::failbit);
 		return s;
 	}
 }
 
-std::ostream *ostream_file(const std::string& fname, bool create_directory)
+filesystem::scoped_ostream ostream_file(const std::string& fname, bool create_directory)
 {
 	LOG_FS << "streaming " << fname << " for writing.\n";
 #if 1
 	try
 	{
 		boost::iostreams::file_descriptor_sink fd(bfs::path(fname), std::ios_base::binary);
-		return new boost::iostreams::stream<boost::iostreams::file_descriptor_sink>(fd, 4096, 0);
+		return filesystem::scoped_ostream(new boost::iostreams::stream<boost::iostreams::file_descriptor_sink>(fd, 4096, 0));
 	}
 	catch(BOOST_IOSTREAMS_FAILURE& e)
 	{

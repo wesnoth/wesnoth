@@ -566,13 +566,12 @@ preprocessor_file::preprocessor_file(preprocessor_streambuf &t, const std::strin
 		}
 	}
 	else {
-		std::istream * file_stream = filesystem::istream_file(name);
+		filesystem::scoped_istream file_stream = filesystem::istream_file(name);
 		if (!file_stream->good()) {
 			ERR_PREPROC << "Could not open file " << name << std::endl;
-			delete file_stream;
 		}
 		else
-			new preprocessor_data(t, file_stream, "", filesystem::get_short_wml_path(name),
+			new preprocessor_data(t, file_stream.release(), "", filesystem::get_short_wml_path(name),
 				1, filesystem::directory_name(name), t.textdomain_, nullptr);
 	}
 	pos_ = files_.begin();
@@ -1331,7 +1330,7 @@ preprocessor_deleter::~preprocessor_deleter()
 	delete defines_;
 }
 
-std::istream *preprocess_file(const std::string& fname, preproc_map *defines)
+filesystem::scoped_istream preprocess_file(const std::string& fname, preproc_map *defines)
 {
 	log_scope("preprocessing file " + fname + " ...");
 	preproc_map *owned_defines = nullptr;
@@ -1346,7 +1345,7 @@ std::istream *preprocess_file(const std::string& fname, preproc_map *defines)
 	preprocessor_streambuf *buf = new preprocessor_streambuf(defines);
 
 	new preprocessor_file(*buf, fname);
-	return new preprocessor_deleter(buf, owned_defines);
+	return filesystem::scoped_istream(new preprocessor_deleter(buf, owned_defines));
 }
 
 void preprocess_resource(const std::string& res_name, preproc_map *defines_map,

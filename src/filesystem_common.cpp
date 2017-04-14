@@ -29,31 +29,6 @@ static lg::log_domain log_filesystem("filesystem");
 namespace filesystem
 {
 
-
-scoped_istream& scoped_istream::operator=(std::istream *s)
-{
-	delete stream;
-	stream = s;
-	return *this;
-}
-
-scoped_istream::~scoped_istream()
-{
-	delete stream;
-}
-
-scoped_ostream& scoped_ostream::operator=(std::ostream *s)
-{
-	delete stream;
-	stream = s;
-	return *this;
-}
-
-scoped_ostream::~scoped_ostream()
-{
-	delete stream;
-}
-
 std::string get_prefs_file()
 {
 	return get_user_config_dir() + "/preferences";

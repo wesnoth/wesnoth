@@ -39,7 +39,7 @@ SDL_RWops* load_RWops(const std::string &path) {
 
 	rw->type = 7; // Random number that is larger than 5
 
-	std::istream *ifs = istream_file(path);
+	std::istream *ifs = istream_file(path).release();
 	if(!ifs) {
 		ERR_FS << "load_RWops: istream_file returned NULL on " << path << '\n';
 		return NULL;

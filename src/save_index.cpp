@@ -225,17 +225,15 @@ bool save_info_less_time::operator() (const save_info& a, const save_info& b) co
 	}
 }
 
-static std::istream* find_save_file(const std::string &name, const std::string &alt_name, const std::vector<std::string> &suffixes) {
+static filesystem::scoped_istream find_save_file(const std::string &name, const std::string &alt_name, const std::vector<std::string> &suffixes) {
 	for (const std::string &suf : suffixes) {
-		std::istream *file_stream = filesystem::istream_file(filesystem::get_saves_dir() + "/" + name + suf);
+		filesystem::scoped_istream file_stream = filesystem::istream_file(filesystem::get_saves_dir() + "/" + name + suf);
 		if (file_stream->fail()) {
-			delete file_stream;
 			file_stream = filesystem::istream_file(filesystem::get_saves_dir() + "/" + alt_name + suf);
 		}
-		if (!file_stream->fail())
+		if (!file_stream->fail()) {
 			return file_stream;
-		else
-			delete file_stream;
+		}
 	}
 	LOG_SAVE << "Could not open supplied filename '" << name << "'\n";
 	throw game::load_game_failed();

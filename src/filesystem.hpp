@@ -25,6 +25,7 @@
 #include <iosfwd>
 #include <string>
 #include <vector>
+#include <memory>
 
 #include "exceptions.hpp"
 
@@ -33,6 +34,9 @@ class config;
 struct SDL_RWops;
 
 namespace filesystem {
+
+using scoped_istream = std::unique_ptr<std::istream>;
+using scoped_ostream = std::unique_ptr<std::ostream>;
 
 SDL_RWops* load_RWops(const std::string &path);
 
@@ -102,8 +106,8 @@ bool looks_like_pbl(const std::string& file);
 
 /** Basic disk I/O - read file. */
 std::string read_file(const std::string &fname);
-std::istream *istream_file(const std::string& fname, bool treat_failure_as_error = true);
-std::ostream *ostream_file(const std::string& fname, bool create_directory = true);
+filesystem::scoped_istream istream_file(const std::string& fname, bool treat_failure_as_error = true);
+filesystem::scoped_ostream ostream_file(const std::string& fname, bool create_directory = true);
 /** Throws io_exception if an error occurs. */
 void write_file(const std::string& fname, const std::string& data);
 
@@ -330,25 +334,6 @@ std::string get_independent_image_path(const std::string &filename);
  */
 std::string get_program_invocation(const std::string &program_name);
 
-class scoped_istream {
-	std::istream *stream;
-public:
-	scoped_istream(std::istream *s): stream(s) {}
-	scoped_istream& operator=(std::istream *);
-	std::istream &operator*() { return *stream; }
-	std::istream *operator->() { return stream; }
-	~scoped_istream();
-};
-
-class scoped_ostream {
-	std::ostream *stream;
-public:
-	scoped_ostream(std::ostream *s): stream(s) {}
-	scoped_ostream& operator=(std::ostream *);
-	std::ostream &operator*() { return *stream; }
-	std::ostream *operator->() { return stream; }
-	~scoped_ostream();
-};
 
 }
 

@@ -232,7 +232,7 @@ static std::pair<std::vector<std::string>, std::vector<std::string> > read_ignor
 		return patterns; // just default patterns
 	}
 	LOG_CFG << "found .ign file: " << ign_file << '\n';
-	std::istream *stream = filesystem::istream_file(ign_file);
+	std::istream *stream = filesystem::istream_file(ign_file).release();
 	std::string line;
 	while (std::getline(*stream, line)) {
 		boost::trim(line);
