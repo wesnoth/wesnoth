@@ -292,6 +292,7 @@ bool play_controller::hotkey_handler::can_execute_command(const hotkey::hotkey_c
 	case hotkey::HOTKEY_ANIMATE_MAP:
 	case hotkey::HOTKEY_STATUS_TABLE:
 	case hotkey::HOTKEY_MUTE:
+	case hotkey::HOTKEY_MUTE_MUSIC:
 	case hotkey::HOTKEY_PREFERENCES:
 	case hotkey::HOTKEY_OBJECTIVES:
 	case hotkey::HOTKEY_UNIT_LIST:
