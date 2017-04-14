@@ -37,7 +37,7 @@ More Information
 For extensive documentation about all aspects of the game, see the
 official Battle for Wesnoth web site.
 
-  <http://www.wesnoth.org/>
+  <https://www.wesnoth.org/>
 
 A (translated) description of how to play the game can be found in
 doc/manual/manual.*.html, or online at:
@@ -47,4 +47,4 @@ doc/manual/manual.*.html, or online at:
 The official Battle for Wesnoth Forums (with over 400,000 posts from more than
 20,000 registered members) can be found at:
 
-  <http://forums.wesnoth.org/>
+  <https://forums.wesnoth.org/>
