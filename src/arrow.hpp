@@ -61,7 +61,7 @@ public:
 	 * If it doesn't exist or has missing images, you'll get "under construction"
 	 * symbols instead of arrow graphics.
 	 */
-	std::string get_style() {return style_;}
+	std::string get_style() const {return style_;}
 	void set_style(const std::string& style);
 	///If you add more styles, you should look at move::update_arrow_style()
 	static const std::string STYLE_STANDARD;

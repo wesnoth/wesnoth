@@ -72,7 +72,7 @@ config candidate_action_evaluation_loop::to_config() const
 
 class desc_sorter_of_candidate_actions {
 public:
-	bool operator()(const candidate_action_ptr &a, const candidate_action_ptr &b)
+	bool operator()(const candidate_action_ptr &a, const candidate_action_ptr &b) const
 	{
 		return a->get_max_score() > b->get_max_score();
 	}

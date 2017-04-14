@@ -554,7 +554,7 @@ public:
 	events::generic_event& complete_redraw_event() { return complete_redraw_event_; }
 
 	/** Check if a tile is fully visible on screen. */
-	bool tile_fully_on_screen(const map_location& loc);
+	bool tile_fully_on_screen(const map_location& loc) const;
 
 	/** Checks if location @a loc or one of the adjacent tiles is visible on screen. */
 	bool tile_nearly_on_screen(const map_location &loc) const;

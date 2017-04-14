@@ -1094,7 +1094,7 @@ private:
 	struct indexer {
 		size_t i;
 		explicit indexer(size_t i) : i(i) {}
-		variant operator()(const variant& v) {
+		variant operator()(const variant& v) const {
 			if(i >= v.num_elements()) {
 				return variant();
 			} else {
@@ -1103,7 +1103,7 @@ private:
 		}
 	};
 	struct comparator {
-		bool operator()(const variant& a, const variant& b) {
+		bool operator()(const variant& a, const variant& b) const {
 			return a.num_elements() < b.num_elements();
 		}
 	};

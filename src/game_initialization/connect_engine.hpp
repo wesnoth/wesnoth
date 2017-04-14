@@ -92,7 +92,7 @@ public:
 			throw "No scenariodata found";
 	}
 	const std::set<std::string>& connected_users() const;
-	const std::vector<std::string>& user_team_names()
+	const std::vector<std::string>& user_team_names() const
 		{ return user_team_names_; }
 	std::vector<side_engine_ptr>& side_engines() { return side_engines_; }
 	const mp_game_settings& params() const { return params_; }
@@ -186,7 +186,7 @@ public:
 	// The id of the side of the previous scenario that should control this side.
 	std::string previous_save_id() const
 		{ return (!cfg_["previous_save_id"].empty()) ? cfg_["previous_save_id"] : save_id(); }
-	const std::vector<controller_option>& controller_options()
+	const std::vector<controller_option>& controller_options() const
 		{ return controller_options_; }
 	const config& cfg() const { return cfg_; }
 	ng::controller controller() const { return controller_; }
