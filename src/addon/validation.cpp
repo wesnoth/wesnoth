@@ -32,7 +32,7 @@ namespace {
 		/**
 		 * Returns whether the given add-on name char is not whitelisted.
 		 */
-		inline bool operator()(char c)
+		inline bool operator()(char c) const
 		{
 			switch(c)
 			{

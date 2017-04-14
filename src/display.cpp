@@ -2065,7 +2065,7 @@ void display::set_default_zoom()
 	}
 }
 
-bool display::tile_fully_on_screen(const map_location& loc)
+bool display::tile_fully_on_screen(const map_location& loc) const
 {
 	int x = get_location_x(loc);
 	int y = get_location_y(loc);

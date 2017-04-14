@@ -62,12 +62,12 @@ public:
 	}
 #endif
 
-	std::string str() {
+	std::string str() const {
 		return stream_.str();
 	}
 
 	// Implicit x-value conversion to string
-	operator std::string()
+	operator std::string() const
 #if HAVE_REF_QUALIFIERS
 		&&
 #endif

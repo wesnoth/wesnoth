@@ -32,7 +32,7 @@ template<typename T>
 class void_value
 {
 	public:
-		const T operator()() { return T(); }
+		const T operator()() const { return T(); }
 };
 
 template<typename T, typename T_void_value=void_value<T> >
