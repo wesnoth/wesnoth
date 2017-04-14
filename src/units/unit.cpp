@@ -267,7 +267,6 @@ unit::unit(const unit& o)
 	, unrenamable_(o.unrenamable_)
 	, side_(o.side_)
 	, gender_(o.gender_)
-	, alpha_(o.alpha_)
 	, formula_man_(new unit_formula_manager(o.formula_manager()))
 	, movement_(o.movement_)
 	, max_movement_(o.max_movement_)
@@ -359,7 +358,6 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg)
 	, unrenamable_(false)
 	, side_(0)
 	, gender_(generate_gender(*type_, cfg))
-	, alpha_()
 	, formula_man_(new unit_formula_manager())
 	, movement_(0)
 	, max_movement_(0)
@@ -473,9 +471,6 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg)
 	}
 	attacks_left_ = std::max(0, cfg["attacks_left"].to_int(max_attacks_));
 
-	if (const config::attribute_value *v = cfg.get("alpha")) {
-		alpha_ = lexical_cast_default<fixed_t>(*v);
-	}
 	if (const config::attribute_value *v = cfg.get("zoc")) {
 		emit_zoc_ = v->to_bool(level_ > 0);
 	}
@@ -647,7 +642,6 @@ unit::unit(const unit_type &u_type, int side, bool real_unit, unit_race::GENDER 
 	, side_(side)
 	, gender_(gender != unit_race::NUM_GENDERS ?
 		gender : generate_gender(u_type, real_unit))
-	, alpha_()
 	, formula_man_(new unit_formula_manager())
 	, movement_(0)
 	, max_movement_(0)
@@ -757,7 +751,6 @@ void unit::swap(unit & o)
 	swap(unrenamable_, o.unrenamable_);
 	swap(side_, o.side_);
 	swap(gender_, o.gender_);
-	swap(alpha_, o.alpha_);
 	swap(formula_man_, o.formula_man_);
 	swap(movement_, o.movement_);
 	swap(max_movement_, o.max_movement_);
@@ -949,7 +942,6 @@ void unit::advance_to(const unit_type &u_type,
 		recall_cost_ = new_type.recall_cost();
 	}
 	alignment_ = new_type.alignment();
-	alpha_ = new_type.alpha();
 	max_hit_points_ = new_type.hitpoints();
 	hp_bar_scaling_ = new_type.hp_bar_scaling();
 	xp_bar_scaling_ = new_type.xp_bar_scaling();
@@ -1441,7 +1433,6 @@ void unit::write(config& cfg) const
 	cfg["alignment"] = alignment_.to_string();
 	cfg["flag_rgb"] = flag_rgb_;
 	cfg["unrenamable"] = unrenamable_;
-	cfg["alpha"] = std::to_string(alpha_);
 
 	cfg["attacks_left"] = attacks_left_;
 	cfg["max_attacks"] = max_attacks_;

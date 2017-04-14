@@ -1065,16 +1065,6 @@ public:
 	 */
 	color_t xp_color() const;
 
-	/**
-	 * The current level of transparency this unit is being drawn at.
-	 *
-	 * @todo Should this really be part of this class?
-	 */
-	fixed_t alpha() const
-	{
-		return alpha_;
-	}
-
 	/***** ***** ***** ***** Ability functions. ***** ***** ***** *****/
 
 public:
@@ -1222,8 +1212,6 @@ private:
 	int side_;
 
 	unit_race::GENDER gender_;
-
-	fixed_t alpha_;
 
 	std::unique_ptr<unit_formula_manager> formula_man_;
 

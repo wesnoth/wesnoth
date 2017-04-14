@@ -162,8 +162,6 @@ public:
 	ALIGNMENT alignment() const { return alignment_; }
 	static std::string alignment_description(ALIGNMENT align, unit_race::GENDER gender = unit_race::MALE);
 
-	fixed_t alpha() const { return alpha_; }
-
 	const std::vector<t_string>& abilities() const { return abilities_; }
 	const std::vector<t_string>& ability_tooltips() const { return ability_tooltips_; }
 
@@ -282,8 +280,6 @@ private:
 	std::string variation_name_;
 
 	const unit_race* race_;	/// Never nullptr, but may point to the null race.
-
-	fixed_t alpha_;
 
 	std::vector<t_string> abilities_, adv_abilities_;
 	std::vector<t_string> ability_tooltips_, adv_ability_tooltips_;

@@ -79,7 +79,6 @@ unit_type::unit_type(const unit_type& o) :
 	default_variation_(o.default_variation_),
 	variation_name_(o.variation_name_),
 	race_(o.race_),
-	alpha_(o.alpha_),
 	abilities_(o.abilities_),
 	adv_abilities_(o.adv_abilities_),
 	ability_tooltips_(o.ability_tooltips_),
@@ -134,7 +133,6 @@ unit_type::unit_type(const config &cfg, const std::string & parent_id) :
 	default_variation_(cfg_["variation"]),
 	variation_name_(cfg_["variation_name"].t_str()),
 	race_(&unit_race::null_race),
-	alpha_(ftofxp(1.0)),
 	abilities_(),
 	adv_abilities_(),
 	ability_tooltips_(),
@@ -189,11 +187,6 @@ void unit_type::build_full(const movement_type_map &mv_types,
 	}
 
 	zoc_ = cfg_["zoc"].to_bool(level_ > 0);
-
-	const config::attribute_value & alpha_blend = cfg_["alpha"];
-	if(alpha_blend.empty() == false) {
-		alpha_ = ftofxp(alpha_blend.to_double());
-	}
 
 	game_config::add_color_info(cfg_);
 
