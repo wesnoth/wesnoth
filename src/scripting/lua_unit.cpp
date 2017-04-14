@@ -301,11 +301,12 @@ static int impl_unit_get(lua_State *L)
 	if(strcmp(m, "upkeep") == 0) {
 		unit::upkeep_t upkeep = u.upkeep_raw();
 
+		// Need to keep these seperate in order to ensure an int value is always used if applicable.
 		if(int* v = boost::get<int>(&upkeep)) {
 			lua_push(L, *v);
 		} else {
 			const std::string type = boost::apply_visitor(unit::upkeep_type_visitor(), upkeep);
-			lua_pushstring(L, type.c_str());
+			lua_push(L, type);
 		}
 
 		return 1;
