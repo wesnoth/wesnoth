@@ -901,16 +901,16 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine, const
 		cfg_["save_id"] = parent_.scenario()["id"].str() + "_" + std::to_string(index);
 	}
 
+	if(cfg_["controller"] != "human" && cfg_["controller"] != "ai" && cfg_["controller"] != "null") {
+		//an invalid contoller type was specified. Remove it to prevent asertion failures later.
+		cfg_.remove_attribute("controller");
+	}
+
 	update_controller_options();
 
 	// Tweak the controllers.
 	if(parent_.state_.classification().campaign_type == game_classification::CAMPAIGN_TYPE::SCENARIO && cfg_["controller"].blank()) {
 		cfg_["controller"] = "ai";
-	}
-
-	if(cfg_["controller"] != "human" && cfg_["controller"] != "ai" && cfg_["controller"] != "null") {
-		//an invalid contoller type was specified. Remove it to prevent asertion failures later.
-		cfg_.remove_attribute("controller");
 	}
 
 	if(cfg_["controller"] == "null") {
