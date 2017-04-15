@@ -96,7 +96,7 @@ public:
 	//undoable data includes moves such as placing a label or speaking, which is
 	//ignored by the undo system.
 	enum DATA_TYPE { ALL_DATA, NON_UNDO_DATA };
-	config get_data_range(int cmd_start, int cmd_end, DATA_TYPE data_type=ALL_DATA);
+	config get_data_range(int cmd_start, int cmd_end, DATA_TYPE data_type=ALL_DATA) const;
 
 	void undo();
 	/*
@@ -117,7 +117,7 @@ public:
 	bool at_end() const;
 	void set_to_end();
 
-	bool empty();
+	bool empty() const;
 
 	enum MARK_SENT { MARK_AS_UNSENT, MARK_AS_SENT };
 	void add_config(const config& cfg, MARK_SENT mark=MARK_AS_UNSENT);

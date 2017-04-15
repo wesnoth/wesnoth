@@ -110,7 +110,7 @@ game_data & menu_handler::gamedata() { return gamestate().gamedata_; }
 game_board & menu_handler::board() const { return gamestate().board_; }
 unit_map& menu_handler::units() { return gamestate().board_.units_; }
 std::vector<team>& menu_handler::teams() const { return gamestate().board_.teams_; }
-const gamemap& menu_handler::map() { return gamestate().board_.map(); }
+const gamemap& menu_handler::map() const { return gamestate().board_.map(); }
 
 gui::floating_textbox& menu_handler::get_textbox(){
 	return textbox_info_;
@@ -1412,7 +1412,7 @@ void console_handler::do_theme() {
 struct save_id_matches
 {
 	save_id_matches(const std::string& save_id) : save_id_(save_id) {}
-	bool operator()(const team& t)
+	bool operator()(const team& t) const
 	{
 		return t.save_id() == save_id_;
 	}

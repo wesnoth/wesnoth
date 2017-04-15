@@ -59,7 +59,7 @@ public:
 	positional_source(const sourcespec &spec);
 	~positional_source();
 
-	bool is_global();
+	bool is_global() const;
 
 	void update(unsigned int time, const display &disp);
 	void update_positions(unsigned int time, const display &disp);

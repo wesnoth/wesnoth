@@ -191,8 +191,8 @@ protected:
 	/** Customize the standard error message */
 	void set_error_message(const std::string& error_message) { error_message_ = error_message; }
 
-	const std::string& title() { return title_; }
-	const saved_game& gamestate() { return gamestate_; }
+	const std::string& title() const { return title_; }
+	const saved_game& gamestate() const { return gamestate_; }
 
 	/** If there needs to be some data fiddling before saving the game, this is the place to go. */
 	void before_save();

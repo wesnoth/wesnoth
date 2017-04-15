@@ -91,7 +91,7 @@ terrain_filter::terrain_filter_cache::terrain_filter_cache() :
 
 namespace {
 	struct cfg_isor {
-		bool operator() (std::pair<const std::string,const vconfig> val) {
+		bool operator() (std::pair<const std::string,const vconfig> val) const {
 			return val.first == "or";
 		}
 	};

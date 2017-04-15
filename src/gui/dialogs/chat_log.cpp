@@ -105,7 +105,7 @@ public:
 		msg_label->set_label("");
 	}
 
-	int count_of_pages()
+	int count_of_pages() const
 	{
 		int size = chat_log_history.size();
 		return (size % COUNT_PER_PAGE == 0) ? (size / COUNT_PER_PAGE)
