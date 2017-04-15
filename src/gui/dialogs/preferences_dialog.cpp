@@ -860,9 +860,6 @@ void preferences_dialog::default_hotkey_callback(window& window)
 	hotkey_list.set_active_sorting_option({0, listbox::SORT_ASCENDING}, true);
 
 	find_widget<menu_button>(&window, "hotkey_category_menu", false).reset_toggle_states();
-
-	// TODO: why is this necessary again?
-	window.invalidate_layout();
 }
 
 void preferences_dialog::remove_hotkey_callback(listbox& hotkeys)
