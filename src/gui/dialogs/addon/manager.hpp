@@ -31,6 +31,8 @@ class text_box_base;
 class text_box;
 class pane;
 class selectable_item;
+class button;
+class stacked_widget;
 namespace dialogs
 {
 
@@ -51,6 +53,7 @@ private:
 	std::vector<selectable_item*> orders_;
 
 	void on_addon_select(window& window);
+	void toggle_details(button& btn, stacked_widget& stk);
 
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const override;

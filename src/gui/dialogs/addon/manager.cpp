@@ -423,6 +423,12 @@ void addon_manager::pre_show(window& window)
 		find_widget<button>(&window, "show_help", false),
 		std::bind(&addon_manager::show_help, this, std::ref(window)));
 
+	if(stacked_widget* stk = find_widget<stacked_widget>(&window, "main_stack", false, false)) {
+		button& btn = find_widget<button>(&window, "details_toggle", false);
+		connect_signal_mouse_left_click(btn, std::bind(&addon_manager::toggle_details, this, std::ref(btn), std::ref(*stk)));
+		stk->select_layer(0);
+	}
+
 	on_addon_select(window);
 
 	window.set_enter_disabled(true);
@@ -432,6 +438,17 @@ void addon_manager::pre_show(window& window)
 
 	// Use handle the special addon_list retval to allow installing addons on double click
 	window.set_exit_hook(std::bind(&addon_manager::exit_hook, this, std::ref(window)));
+}
+
+void addon_manager::toggle_details(button& btn, stacked_widget& stk)
+{
+	if(stk.current_layer() == 0) {
+		btn.set_label(_("addons^Back to List"));
+		stk.select_layer(1);
+	} else {
+		btn.set_label(_("Addon Details"));
+		stk.select_layer(0);
+	}
 }
 
 void addon_manager::load_addon_list(window& window)
@@ -718,24 +735,29 @@ void addon_manager::on_addon_select(window& window)
 		return;
 	}
 
-	find_widget<drawing>(&window, "image", false).set_label(info->display_icon());
+	widget* parent = &window;
+	if(stacked_widget* stk = find_widget<stacked_widget>(&window, "main_stack", false, false)) {
+		parent = stk->get_layer_grid(1);
+	}
 
-	find_widget<styled_widget>(&window, "title", false).set_label(info->display_title());
-	find_widget<styled_widget>(&window, "description", false).set_label(info->description);
-	find_widget<styled_widget>(&window, "version", false).set_label(info->version.str());
-	find_widget<styled_widget>(&window, "author", false).set_label(info->author);
-	find_widget<styled_widget>(&window, "type", false).set_label(info->display_type());
+	find_widget<drawing>(parent, "image", false).set_label(info->display_icon());
 
-	styled_widget& status = find_widget<styled_widget>(&window, "status", false);
+	find_widget<styled_widget>(parent, "title", false).set_label(info->display_title());
+	find_widget<styled_widget>(parent, "description", false).set_label(info->description);
+	find_widget<styled_widget>(parent, "version", false).set_label(info->version.str());
+	find_widget<styled_widget>(parent, "author", false).set_label(info->author);
+	find_widget<styled_widget>(parent, "type", false).set_label(info->display_type());
+
+	styled_widget& status = find_widget<styled_widget>(parent, "status", false);
 	status.set_label(describe_status_verbose(tracking_info_[info->id]));
 	status.set_use_markup(true);
 
-	find_widget<styled_widget>(&window, "size", false).set_label(size_display_string(info->size));
-	find_widget<styled_widget>(&window, "downloads", false).set_label(std::to_string(info->downloads));
-	find_widget<styled_widget>(&window, "created", false).set_label(format_addon_time(info->created));
-	find_widget<styled_widget>(&window, "updated", false).set_label(format_addon_time(info->updated));
+	find_widget<styled_widget>(parent, "size", false).set_label(size_display_string(info->size));
+	find_widget<styled_widget>(parent, "downloads", false).set_label(std::to_string(info->downloads));
+	find_widget<styled_widget>(parent, "created", false).set_label(format_addon_time(info->created));
+	find_widget<styled_widget>(parent, "updated", false).set_label(format_addon_time(info->updated));
 
-	find_widget<styled_widget>(&window, "dependencies", false).set_label(!info->depends.empty()
+	find_widget<styled_widget>(parent, "dependencies", false).set_label(!info->depends.empty()
 		? make_display_dependencies(info->id, addons_, tracking_info_)
 		: _("None"));
 
@@ -751,41 +773,41 @@ void addon_manager::on_addon_select(window& window)
 		}
 	}
 
-	find_widget<styled_widget>(&window, "translations", false).set_label(!languages.empty() ? languages : _("None"));
+	find_widget<styled_widget>(parent, "translations", false).set_label(!languages.empty() ? languages : _("None"));
 
 	const std::string& feedback_url = info->feedback_url;
 
 	if(!feedback_url.empty()) {
-		find_widget<stacked_widget>(&window, "feedback_stack", false).select_layer(1);
-		find_widget<text_box>(&window, "url", false).set_value(feedback_url);
+		find_widget<stacked_widget>(parent, "feedback_stack", false).select_layer(1);
+		find_widget<text_box>(parent, "url", false).set_value(feedback_url);
 	} else {
-		find_widget<stacked_widget>(&window, "feedback_stack", false).select_layer(0);
+		find_widget<stacked_widget>(parent, "feedback_stack", false).select_layer(0);
 	}
 
 	bool installed = is_installed_addon_status(tracking_info_[info->id].state);
 	bool updatable = tracking_info_[info->id].state == ADDON_INSTALLED_UPGRADABLE;
 
-	stacked_widget& action_stack = find_widget<stacked_widget>(&window, "action_stack", false);
+	stacked_widget& action_stack = find_widget<stacked_widget>(parent, "action_stack", false);
 
 	if(!tracking_info_[info->id].can_publish) {
 		action_stack.select_layer(0);
 
-		stacked_widget& install_update_stack = find_widget<stacked_widget>(&window, "install_update_stack", false);
+		stacked_widget& install_update_stack = find_widget<stacked_widget>(parent, "install_update_stack", false);
 		install_update_stack.select_layer(updatable ? 1 : 0);
 
 		if(!updatable) {
-			find_widget<button>(&window, "install", false).set_active(!installed);
+			find_widget<button>(parent, "install", false).set_active(!installed);
 		} else {
-			find_widget<button>(&window, "update", false).set_active(true);
+			find_widget<button>(parent, "update", false).set_active(true);
 		}
 
-		find_widget<button>(&window, "uninstall", false).set_active(installed);
+		find_widget<button>(parent, "uninstall", false).set_active(installed);
 	} else {
 		action_stack.select_layer(1);
 
 		// TODO: are these the right flags to check?
-		find_widget<button>(&window, "publish", false).set_active(installed);
-		find_widget<button>(&window, "delete", false).set_active(!installed);
+		find_widget<button>(parent, "publish", false).set_active(installed);
+		find_widget<button>(parent, "delete", false).set_active(!installed);
 	}
 }
 
