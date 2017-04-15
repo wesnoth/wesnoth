@@ -489,7 +489,7 @@ void widget::set_visible(const visibility visible)
 	visible_ = visible;
 
 	if(need_resize) {
-		if(new_widgets) {
+		if(visible == visibility::visible && new_widgets) {
 			event::message message;
 			fire(event::REQUEST_PLACEMENT, *this, message);
 		} else {
