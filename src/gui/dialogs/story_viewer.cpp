@@ -154,13 +154,13 @@ void story_viewer::display_part(window& window)
 
 		if(layer.scale_horizontally() && preserve_ratio) {
 			height_formula = "(min((image_original_height * screen_width  / image_original_width), height))";
-		} else {
+		} else if(layer.scale_vertically()) {
 			height_formula = "(height)";
 		}
 
 		if(layer.scale_vertically() && preserve_ratio) {
 			width_formula  = "(min((image_original_width  * screen_height / image_original_height), width))";
-		} else {
+		} else if(layer.scale_horizontally()) {
 			width_formula  = "(width)";
 		}
 
