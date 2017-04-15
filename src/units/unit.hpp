@@ -35,7 +35,7 @@ struct color_t;
 
 namespace unit_detail
 {
-	template <typename T>
+	template<typename T>
 	const T& get_or_default(const std::unique_ptr<T>& v)
 	{
 		if(v) {
@@ -521,25 +521,51 @@ public:
 		role_ = role;
 	}
 
+	/**
+	 * Gets this unit's usage. This is relevant to the AI.
+	 *
+	 * Usage refers to how the AI may consider utilizing this unit in combat.
+	 * @todo document further
+	 */
 	std::string usage() const
 	{
 		return unit_detail::get_or_default(usage_);
 	}
 
+	/** Sets this unit's usage. */
 	void set_usage(const std::string& usage)
 	{
 		usage_.reset(new std::string(usage));
 	}
 
+	/**
+	 * Gets any user-defined variables this unit 'owns'.
+	 *
+	 * These are accessible via WML if the unit's data is serialized to a variable. They're strictly
+	 * user-facing; internal engine calculations shouldn't use this.
+	 */
 	config& variables()
 	{
 		return variables_;
 	}
 
+	/** Const overload of @ref variables. */
 	const config& variables() const
 	{
 		return variables_;
 	}
+
+	/**
+	 * Gets whether this unit is currently hidden on the map.
+	 * @todo document hiddenness
+	 */
+	bool get_hidden() const
+	{
+		return hidden_;
+	}
+
+	/** Sets whether the unit is hidden on the map. */
+	void set_hidden(bool state) const;
 
 	/**
 	 * The factor by which the HP bar should be scaled.
@@ -594,7 +620,6 @@ public:
 	void end_turn();
 	void new_scenario();
 
-	/** Called on every draw */
 	bool take_hit(int damage)
 	{
 		hit_points_ -= damage;
@@ -642,20 +667,22 @@ public:
 		return get_state(STATE_SLOWED);
 	}
 
-	/*** *** *** *** *** *** Attack and reisstance functions. *** *** *** *** *** ***/
+	/*** *** *** *** *** *** Attack and resistance functions. *** *** *** *** *** ***/
 
 public:
-	const_attack_itors attacks() const
-	{
-		return make_attack_itors(attacks_);
-	}
-
+	/** Gets an iterator over this unit's attacks. */
 	attack_itors attacks()
 	{
 		return make_attack_itors(attacks_);
 	}
 
-	template <typename... Args>
+	/** Const overload of @ref attacks. */
+	const_attack_itors attacks() const
+	{
+		return make_attack_itors(attacks_);
+	}
+
+	template<typename... Args>
 	attack_ptr add_attack(attack_itors::iterator position, Args... args)
 	{
 		return *attacks_.emplace(position.base(), new attack_type(args...));
@@ -664,21 +691,37 @@ public:
 	bool remove_attack(attack_ptr atk);
 	void remove_attacks_ai();
 
+	/**
+	 * Calculates the damage this unit would take from a certain attack.
+	 *
+	 * @param attack              The attack to consider.
+	 * @param attacker            Whether this unit should be considered the attacker.
+	 * @param loc                 TODO: what does this do?
+	 *
+	 * @returns                   The expected damage.
+	 */
 	int damage_from(const attack_type& attack, bool attacker, const map_location& loc) const
 	{
 		return resistance_against(attack, attacker, loc);
 	}
 
-	int attacks_left() const
-	{
-		return (attacks_left_ == 0 || incapacitated()) ? 0 : attacks_left_;
-	}
-
+	/** The maximum number of attacks this unit may perform per turn, usually 1. */
 	int max_attacks() const
 	{
 		return max_attacks_;
 	}
 
+	/**
+	 * Gets the remaining number of attacks this unit can perform this turn.
+	 *
+	 * If the 'incapacitated' is set, this will always be 0.
+	 */
+	int attacks_left() const
+	{
+		return (attacks_left_ == 0 || incapacitated()) ? 0 : attacks_left_;
+	}
+
+	/** Sets the number of attacks this unit has left this turn. */
 	void set_attacks(int left)
 	{
 		attacks_left_ = std::max<int>(0, left);
@@ -692,7 +735,7 @@ public:
 		return resistance_against(damage_type.type(), attacker, loc);
 	}
 
-	// return resistances without any abilities applied
+	/** Gets resistances without any abilities applied. */
 	utils::string_map get_base_resistances() const
 	{
 		return movement_type_.damage_table();
@@ -701,7 +744,7 @@ public:
 private:
 	bool resistance_filter_matches(const config& cfg, bool attacker, const std::string& damage_name, int res) const;
 
-	/*** *** *** *** *** *** Trait functions. *** *** *** *** *** ***/
+	/*** *** *** *** *** *** Trait and upkeep functions. *** *** *** *** *** ***/
 public:
 	/**
 	 * Applies mandatory traits (e.g. undead, mechanical) to a unit and then fills in the remaining traits
@@ -718,25 +761,52 @@ public:
 	 */
 	void generate_traits(bool must_have_only = false);
 
+	/**
+	 * Gets the names of the currently registered traits.
+	 *
+	 * @returns                   A list of translatable trait names.
+	 */
 	const std::vector<t_string>& trait_names() const
 	{
 		return trait_names_;
 	}
 
+	/**
+	 * Gets the descriptions of the currently registered traits.
+	 *
+	 * @returns                   A list of translatable trait descriptions.
+	 */
 	const std::vector<t_string>& trait_descriptions() const
 	{
 		return trait_descriptions_;
 	}
 
+	/**
+	 * Gets a list of the traits this unit currently has.
+	 *
+	 * @returns                   A list of trait IDs.
+	 */
 	std::vector<std::string> get_traits_list() const;
+
+	/**
+	 * Register a trait's name and its description for the UI's use.
+	 *
+	 * The resulting data can be fetched with @ref trait_names and @ref trait_descriptions.
+	 *
+	 * @param trait               A config containing the trait's attributes.
+	 * @param description         The translatable description of the trait.
+	 */
+	void add_trait_description(const config& trait, const t_string& description);
 
 	/**
 	 * Gets the amount of gold this unit costs a side per turn.
 	 *
-	 * @returns                   A gold value, evaluated based on the state of @ref upkeep_raw
-	 *                            If upkeep_loyal is set or @ref can_recruit is true, no upkeep is paid.
-	 *                            If upkeep_full is set, 'level' upkeep is paid. Otherwise this just returns
-	 *                            the specified upkeep value.
+	 * This fetches an actual numeric gold value:
+	 * - If @rec can_recruit is true, no upkeep is paid (0 is returned).
+	 * - If a special upkeep flag is set, the associated gold amount is returned (see @ref upkeep_value_visitor).
+	 * - If a numeric value is already set, it is returned directly.
+	 *
+	 * @returns                   A gold value, evaluated based on the state of @ref upkeep_raw.
 	 */
 	int upkeep() const;
 
@@ -756,11 +826,13 @@ public:
 	public:
 		explicit upkeep_value_visitor(const unit& unit) : u_(unit) {}
 
+		/** Full upkeep equals the unit's level. */
 		int operator()(const upkeep_full&) const
 		{
 			return u_.level();
 		}
 
+		/** Loyal units cost no upkeep. */
 		int operator()(const upkeep_loyal&) const
 		{
 			return 0;
@@ -782,6 +854,7 @@ public:
 		typename std::enable_if<!std::is_same<int, T>::value, std::string>::type
 		operator()(T& v) const
 		{
+			// Any special upkeep type should have an associated @ref type getter in its helper struct.
 			return v.type();
 		}
 
@@ -811,17 +884,6 @@ public:
 
 	/** Gets whether this unit is loyal - ie, it costs no upkeep. */
 	bool loyal() const;
-
-	void set_hidden(bool state) const;
-	bool get_hidden() const
-	{
-		return hidden_;
-	}
-
-	bool is_flying() const
-	{
-		return movement_type_.is_flying();
-	}
 
 	bool is_fearless() const
 	{
@@ -935,24 +997,31 @@ public:
 		loc_ = loc;
 	}
 
+	/** The current directin this unit is facing within its hex. */
+	map_location::DIRECTION facing() const
+	{
+		return facing_;
+	}
+
+	/** The this unit's facing. */
+	void set_facing(map_location::DIRECTION dir) const;
+
+	/** Gets whether this unit has a multi-turn destination set. */
 	bool has_goto() const
 	{
 		return get_goto().valid();
 	}
 
+	/** The map location to which this unit is moving over multiple turns, if any. */
 	const map_location& get_goto() const
 	{
 		return goto_;
 	}
 
+	/** Sets this unit's long term destination. */
 	void set_goto(const map_location& new_goto)
 	{
 		goto_ = new_goto;
-	}
-
-	const movetype& movement_type() const
-	{
-		return movement_type_;
 	}
 
 	int vision() const
@@ -964,13 +1033,6 @@ public:
 	{
 		return jamming_;
 	}
-
-	map_location::DIRECTION facing() const
-	{
-		return facing_;
-	}
-
-	void set_facing(map_location::DIRECTION dir) const;
 
 	bool move_interrupted() const
 	{
@@ -987,6 +1049,11 @@ public:
 		interrupted_move_ = interrupted_move;
 	}
 
+	const movetype& movement_type() const
+	{
+		return movement_type_;
+	}
+
 	int movement_cost(const t_translation::terrain_code& terrain) const
 	{
 		return movement_type_.movement_cost(terrain, get_state(STATE_SLOWED));
@@ -1000,6 +1067,11 @@ public:
 	int jamming_cost(const t_translation::terrain_code& terrain) const
 	{
 		return movement_type_.jamming_cost(terrain, get_state(STATE_SLOWED));
+	}
+
+	bool is_flying() const
+	{
+		return movement_type_.is_flying();
 	}
 
 	/***** ***** ***** ***** Modification functions. ***** ***** ***** *****/
@@ -1193,7 +1265,7 @@ public:
 	// Only see_all = true use caching
 	bool invisible(const map_location& loc, const display_context& dc, bool see_all = true) const;
 
-	bool is_visible_to_team(team const& team, display_context const& dc, bool const see_all = true) const;
+	bool is_visible_to_team(const team& team, const display_context& dc, bool const see_all = true) const;
 
 	/**
 	 * Serializes the current unit metadata values.
@@ -1221,17 +1293,18 @@ protected:
 	mutable long ref_count_; // used by intrusive_ptr
 
 private:
-	/** Register a trait's name and its description for UI's use*/
-	void add_trait_description(const config& trait, const t_string& description);
-
 	map_location loc_;
 
 	std::vector<std::string> advances_to_;
 
-	const unit_type* type_; /// Never nullptr. Adjusted for gender and variation.
-	t_string type_name_;    /// The displayed name of this unit type.
+	/** Never nullptr. Adjusted for gender and variation. */
+	const unit_type* type_;
 
-	const unit_race* race_; /// Never nullptr, but may point to the null race.
+	/** The displayed name of this unit type. */
+	t_string type_name_;
+
+	/** Never nullptr, but may point to the null race. */
+	const unit_race* race_;
 
 	std::string id_;
 	t_string name_;
