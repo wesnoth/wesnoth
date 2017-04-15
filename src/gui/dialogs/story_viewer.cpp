@@ -351,8 +351,11 @@ void story_viewer::nav_button_callback(window& window, NAV_DIRECTION direction)
 	if(fading_in_) {
 		halt_fade_draw();
 
-		find_widget<scroll_label>(&window, "part_text", false).set_text_alpha(ALPHA_OPAQUE);
-		return;
+		// Only set full alpha if Forward was pressed.
+		if(direction == DIR_FORWARD) {
+			find_widget<scroll_label>(&window, "part_text", false).set_text_alpha(ALPHA_OPAQUE);
+			return;
+		}
 	}
 
 	// If a button is pressed while fading out, skip and show next part.
