@@ -409,14 +409,14 @@ void story_viewer::key_press_callback(window& window, const SDL_Keycode key)
 
 void story_viewer::set_next_draw()
 {
-	next_draw_ = SDL_GetTicks() + 60;
+	next_draw_ = SDL_GetTicks() + 20;
 }
 
 void story_viewer::begin_fade_draw(bool fade_in)
 {
 	set_next_draw();
 
-	fade_step_ = fade_in ? 0 : 8;
+	fade_step_ = fade_in ? 0 : 10;
 	fading_in_ = fade_in;
 }
 
@@ -434,7 +434,7 @@ void story_viewer::draw_callback(window& window)
 	}
 
 	// If we've faded fully in...
-	if(fading_in_ && fade_step_ > 8) {
+	if(fading_in_ && fade_step_ > 10) {
 		halt_fade_draw();
 		return;
 	}
@@ -447,9 +447,10 @@ void story_viewer::draw_callback(window& window)
 		return;
 	}
 
-	unsigned short new_alpha = std::min<unsigned short>(255, fade_step_ * 32);
+	unsigned short new_alpha = std::min<unsigned short>(255, fade_step_ * 25.5);
 	find_widget<scroll_label>(&window, "part_text", false).set_text_alpha(new_alpha);
 
+	// The text stack also needs to be marked dirty so the background panel redraws correctly.
 	find_widget<stacked_widget>(&window, "text_and_control_stack", false).set_is_dirty(true);
 
 	if(fading_in_) {
