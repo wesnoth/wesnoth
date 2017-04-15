@@ -104,8 +104,8 @@ void unit_drawer::redraw_unit (const unit & u) const
 	params.submerge= is_flying ? -1.0 : terrain_info.unit_submerge();
 
 	if (u.invisible(loc, dc) &&
-			params.highlight_ratio > 0.5) {
-		params.highlight_ratio = 0.5;
+			params.highlight_ratio > 0.6) {
+		params.highlight_ratio = 0.6;
 	}
 	if (loc == sel_hex && params.highlight_ratio == 1.0) {
 		params.highlight_ratio = 1.5;
