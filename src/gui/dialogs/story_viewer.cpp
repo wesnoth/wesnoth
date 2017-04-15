@@ -153,13 +153,13 @@ void story_viewer::display_part(window& window)
 		std::string height_formula = "(image_original_height)";
 
 		if(layer.scale_horizontally() && preserve_ratio) {
-			height_formula = "(min((image_original_height * screen_width  / image_original_width), height))";
+			height_formula = "(min((image_original_height * width  / image_original_width), height))";
 		} else if(layer.scale_vertically()) {
 			height_formula = "(height)";
 		}
 
 		if(layer.scale_vertically() && preserve_ratio) {
-			width_formula  = "(min((image_original_width  * screen_height / image_original_height), width))";
+			width_formula  = "(min((image_original_width  * height / image_original_height), width))";
 		} else if(layer.scale_horizontally()) {
 			width_formula  = "(width)";
 		}
