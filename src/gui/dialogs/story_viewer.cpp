@@ -152,24 +152,16 @@ void story_viewer::display_part(window& window)
 		std::string width_formula  = "(image_original_width)";
 		std::string height_formula = "(image_original_height)";
 
-		// If scale width is true, the image will be stretched to screen width.
-		if(layer.scale_horizontally()) {
-			width_formula = "(width)";
-
-			// Override height formula to preserve ratio, if applicable.
-			if(preserve_ratio) {
-				height_formula = "(image_original_height * width / image_original_width)";
-			}
+		if(layer.scale_horizontally() && preserve_ratio) {
+			height_formula = "(min((image_original_height * screen_width  / image_original_width), height))";
+		} else {
+			height_formula = "(height)";
 		}
 
-		// If scale height is true, the image will be stretched to screen height.
-		if(layer.scale_vertically()) {
-			height_formula = "(height)";
-
-			// Override width formula to preserve ratio, if applicable.
-			if(preserve_ratio) {
-				width_formula = "(image_original_width * height / image_original_height)";
-			}
+		if(layer.scale_vertically() && preserve_ratio) {
+			width_formula  = "(min((image_original_width  * screen_height / image_original_height), width))";
+		} else {
+			width_formula  = "(width)";
 		}
 
 		// Background layers are always centered.
@@ -314,8 +306,8 @@ void story_viewer::draw_floating_image(window& window, floating_image_list::cons
 	y_ss << "(trunc(fi_ref_y * base_scale_y) + base_origin.y";
 
 	if(floating_image.centered()) {
-		x_ss << "- (image_original_width  / 2)";
-		y_ss << "- (image_original_height / 2)";
+		x_ss << " - (image_original_width  / 2)";
+		y_ss << " - (image_original_height / 2)";
 	}
 
 	x_ss << " where fi_ref_x = " << floating_image.ref_x() << ")";
@@ -362,7 +354,7 @@ void story_viewer::nav_button_callback(window& window, NAV_DIRECTION direction)
 		find_widget<scroll_label>(&window, "part_text", false).set_text_alpha(ALPHA_OPAQUE);
 		return;
 	}
-	
+
 	// If a button is pressed while fading out, skip and show next part.
 	if(!fading_in_) {
 		display_part(window);
