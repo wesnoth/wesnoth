@@ -400,7 +400,6 @@ static void enter_staging_mode(mp_workflow_helper_ptr helper)
 {
 	DBG_MP << "entering connect mode" << std::endl;
 
-	statistics::fresh_stats();
 	std::unique_ptr<mp_campaign_info> campaign_info;
 
 	// If we have a connection, set the appropriate info. No connection means we're in local game mode.
