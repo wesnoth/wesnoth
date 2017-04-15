@@ -140,9 +140,9 @@ website_stringfixes = {
 ("http://wiki.wesnoth.org", "//wiki.wesnoth.org"),
 ("http://forums.wesnoth.org", "//forums.wesnoth.org"),
 ("http://www.wesnoth.org", "//www.wesnoth.org"),
-("wesnoth-1.12.4/wesnoth-1.12.4.tar.bz2", "wesnoth-1.12.5/wesnoth-1.12.5.tar.bz2"),
-("wesnoth-1.12.4/wesnoth-1.12.4a-win32.exe", "wesnoth-1.12.5/wesnoth-1.12.5-win32.exe"),
-("wesnoth-1.12.4/Wesnoth_1.12.4.dmg", "wesnoth-1.12.5/Wesnoth_1.12.5.dmg"),
+("wesnoth-1.12.5/wesnoth-1.12.5.tar.bz2", "wesnoth-1.12.6/wesnoth-1.12.6.tar.bz2"),
+("wesnoth-1.12.5/wesnoth-1.12.5-win32.exe", "wesnoth-1.12.6/wesnoth-1.12.6-win32.exe"),
+("wesnoth-1.12.5/Wesnoth_1.12.5.dmg", "wesnoth-1.12.6/Wesnoth_1.12.6.dmg"),
 ),
 
 }
