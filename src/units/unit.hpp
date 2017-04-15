@@ -1352,9 +1352,9 @@ private:
 
 	std::set<std::string> states_;
 
-	// TODO: Somehow make a static const var for the 7 so that it can
-	// auto-update if new boolean states are ever added
-	std::bitset<7> known_boolean_states_;
+	static CONSTEXPR size_t num_bool_states = 7;
+
+	std::bitset<num_bool_states> known_boolean_states_;
 	static std::map<std::string, state_t> known_boolean_state_names_;
 
 	config variables_;
