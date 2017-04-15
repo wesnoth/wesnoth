@@ -1352,7 +1352,7 @@ private:
 
 	std::set<std::string> states_;
 
-	static CONSTEXPR size_t num_bool_states = 7;
+	static const size_t num_bool_states = 7;
 
 	std::bitset<num_bool_states> known_boolean_states_;
 	static std::map<std::string, state_t> known_boolean_state_names_;
