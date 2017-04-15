@@ -42,7 +42,7 @@
 #include "team.hpp"                     // for team
 #include "tod_manager.hpp"
 #include "tstring.hpp"                  // for t_string
-#include "units/unit.hpp"                     // for unit, intrusive_ptr_add_ref
+#include "units/unit.hpp"                     // for unit
 #include "units/animation_component.hpp"
 #include "scripting/game_lua_kernel.hpp"
 #include "units/ptr.hpp"                 // for unit_const_ptr

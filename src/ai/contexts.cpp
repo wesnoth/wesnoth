@@ -48,7 +48,7 @@
 #include "terrain/translation.hpp"      // for terrain_code
 #include "time_of_day.hpp"              // for time_of_day
 #include "tod_manager.hpp"           // for tod_manager
-#include "units/unit.hpp"                  // for unit, intrusive_ptr_release, etc
+#include "units/unit.hpp"                  // for unit
 #include "units/map.hpp"  // for unit_map::iterator_base, etc
 #include "units/ptr.hpp"                 // for unit_ptr
 #include "units/types.hpp"  // for attack_type, unit_type, etc

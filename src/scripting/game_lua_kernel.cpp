@@ -95,7 +95,7 @@
 #include "time_of_day.hpp"              // for time_of_day
 #include "tod_manager.hpp"              // for tod_manager
 #include "tstring.hpp"                  // for t_string, operator+
-#include "units/unit.hpp"                     // for unit, intrusive_ptr_add_ref, etc
+#include "units/unit.hpp"                     // for unit
 #include "units/animation_component.hpp"  // for unit_animation_component
 #include "units/udisplay.hpp"
 #include "units/filter.hpp"
