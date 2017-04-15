@@ -516,7 +516,7 @@ bool tod_manager::next_turn(game_data* vars)
 }
 
 
-bool tod_manager::is_time_left()
+bool tod_manager::is_time_left() const
 {
 	return num_turns_ == -1 || turn_ <= num_turns_;
 }

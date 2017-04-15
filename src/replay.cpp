@@ -385,7 +385,7 @@ const std::vector<chat_msg>& replay::build_chat_log() const
 	return message_log;
 }
 
-config replay::get_data_range(int cmd_start, int cmd_end, DATA_TYPE data_type)
+config replay::get_data_range(int cmd_start, int cmd_end, DATA_TYPE data_type) const
 {
 	config res;
 
@@ -624,7 +624,7 @@ void replay::set_to_end()
 	base_->set_to_end();
 }
 
-bool replay::empty()
+bool replay::empty() const
 {
 	return ncommands() == 0;
 }

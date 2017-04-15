@@ -49,7 +49,7 @@ public:
 	bool can_execute_command(const hotkey::hotkey_command& cmd, int index) const;
 	bool is_controlling_view() const { return vision_.is_initialized(); }
 	bool allow_reset_replay() const { return reset_state_.get() != nullptr; }
-	const std::shared_ptr<config>& get_reset_state() { return reset_state_; };
+	const std::shared_ptr<config>& get_reset_state() const { return reset_state_; };
 	void return_to_play_side(bool r = true) { return_to_play_side_ = r; }
 	void replay_show_everything();
 	void replay_show_each();

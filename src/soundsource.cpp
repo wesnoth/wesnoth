@@ -124,7 +124,7 @@ positional_source::~positional_source()
 	sound::reposition_sound(id_, DISTANCE_SILENT);
 }
 
-bool positional_source::is_global()
+bool positional_source::is_global() const
 {
 	return locations_.empty();
 }

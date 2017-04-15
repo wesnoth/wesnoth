@@ -49,7 +49,7 @@ public:
 
 	static CVideo& get_singleton() { return *singleton_; }
 
-	bool non_interactive();
+	bool non_interactive() const;
 
 	const static int DefaultBpp = 32;
 

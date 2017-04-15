@@ -122,7 +122,7 @@ CVideo::~CVideo()
 	LOG_DP << "called SDL_Quit()\n";
 }
 
-bool CVideo::non_interactive()
+bool CVideo::non_interactive() const
 {
 	return fake_interactive ? false : (window == nullptr);
 }

@@ -449,7 +449,7 @@ void saved_game::expand_carryover()
 	}
 }
 
-bool saved_game::valid()
+bool saved_game::valid() const
 {
 	return this->starting_pos_type_ != STARTINGPOS_INVALID;
 }

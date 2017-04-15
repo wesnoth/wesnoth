@@ -102,7 +102,7 @@ class gamestate_inspector::model
 public:
 	std::string name;
 
-	std::string get_data_full()
+	std::string get_data_full() const
 	{
 		return data;
 	}
@@ -251,9 +251,9 @@ protected:
 	gamestate_inspector::model& model();
 	gamestate_inspector::view& view();
 	gamestate_inspector::controller& c;
-	const config& vars();
-	const game_events::manager& events();
-	const display_context& dc();
+	const config& vars() const;
+	const game_events::manager& events() const;
+	const display_context& dc() const;
 };
 
 class variable_mode_controller : public single_mode_controller
@@ -495,15 +495,15 @@ gamestate_inspector::view& single_mode_controller::view() {
 	return c.view_;
 }
 
-const config& single_mode_controller::vars() {
+const config& single_mode_controller::vars() const {
 	return c.vars_;
 }
 
-const game_events::manager& single_mode_controller::events() {
+const game_events::manager& single_mode_controller::events() const {
 	return c.events_;
 }
 
-const display_context& single_mode_controller::dc() {
+const display_context& single_mode_controller::dc() const {
 	return c.dc_;
 }
 

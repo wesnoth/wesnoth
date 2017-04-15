@@ -171,12 +171,12 @@ class tod_manager
 		 *
 		 * @returns                   True if time has not expired.
 		 */
-		bool is_time_left();
-		bool has_turn_event_fired()
+		bool is_time_left() const;
+		bool has_turn_event_fired() const
 		{ return has_turn_event_fired_; }
 		void turn_event_fired()
 		{ has_turn_event_fired_ = true; }
-		bool has_tod_bonus_changed()
+		bool has_tod_bonus_changed() const
 		{ return has_tod_bonus_changed_; }
 	private:
 
