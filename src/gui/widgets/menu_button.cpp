@@ -183,7 +183,14 @@ void menu_button::signal_handler_left_button_click(const event::ui_event event, 
 	 * Passing the dynamic_bitset directly to the drop_down_menu ctor would mean bool values would need to be passed to this
 	 * class independently of the values config by dialogs that use this widget. However, the bool states are also saved
 	 * in a dynamic_bitset class member which can be fetched for other uses if necessary.
-	 */ 
+	 */
+	update_config_from_toggle_states();
+
+	handled = true;
+}
+
+void menu_button::update_config_from_toggle_states()
+{
 	for(unsigned i = 0; i < values_.size(); i++) {
 		::config& c = values_[i];
 
@@ -191,8 +198,12 @@ void menu_button::signal_handler_left_button_click(const event::ui_event event, 
 			c["checkbox"] = toggle_states_[i];
 		}
 	}
+}
 
-	handled = true;
+void menu_button::reset_toggle_states()
+{
+	toggle_states_.reset();
+	update_config_from_toggle_states();
 }
 
 void menu_button::toggle_state_changed()

@@ -107,6 +107,8 @@ public:
 		return toggle_states_;
 	}
 
+	void reset_toggle_states();
+
 	void set_keep_open(const bool keep_open)
 	{
 		keep_open_ = keep_open;
@@ -158,6 +160,8 @@ private:
 	std::function<void(widget&)> callback_state_change_;
 
 	std::function<void(boost::dynamic_bitset<>)> callback_toggle_state_change_;
+
+	void update_config_from_toggle_states();
 
 	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
