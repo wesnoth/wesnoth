@@ -56,8 +56,8 @@ namespace {
 	const int titlebox_font_size = 20; // pt?
 	const int storybox_font_size = 17; // pt?
 
-	const color_t titlebox_font_color = {255, 255, 255};
-	const color_t storybox_font_color = {221, 221, 255};
+	const color_t titlebox_font_color {255, 255, 255};
+	const color_t storybox_font_color {221, 221, 255};
 
 	// Hard-coded path to a suitable (tileable) pic for the storytxt box border.
 	const std::string storybox_top_border_path = "dialogs/translucent54-border-top.png";

@@ -190,7 +190,7 @@ void recall::draw_hex(map_location const& hex)
 			number_text << font::unicode_minus << cost;
 		}
 		size_t font_size = 16;
-		color_t color; color.r = 255; color.g = 0; color.b = 0; //red
+		color_t color {255, 0, 0}; //red
 		resources::screen->draw_text_in_hex(hex, display::LAYER_ACTIONS_NUMBERING,
 						number_text.str(), font_size, color, x_offset, y_offset);
 	}

@@ -70,7 +70,7 @@ static void show_tooltip(const tooltip& tip)
 
 	clear_tooltip();
 
-	const color_t bgcolor = {0,0,0,160};
+	const color_t bgcolor {0,0,0,160};
 	SDL_Rect area = screen_area();
 
 	unsigned int border = 10;

@@ -429,7 +429,7 @@ SDL_Rect line_size(const std::string& line, int font_size, int style)
 
 	SDL_Rect res;
 
-	const color_t col = { 0, 0, 0, 0 };
+	const color_t col { 0, 0, 0, 0 };
 	text_surface s(line, font_size, col, style);
 
 	res.w = s.width();

@@ -1039,7 +1039,7 @@ const std::string& unit::flag_rgb() const
 static color_t hp_color_impl(int hitpoints, int max_hitpoints)
 {
 	double unit_energy = 0.0;
-	color_t energy_color = {0,0,0,0};
+	color_t energy_color {0,0,0,0};
 
 	if(max_hitpoints > 0) {
 		unit_energy = double(hitpoints)/double(max_hitpoints);
@@ -1086,14 +1086,14 @@ color_t unit::hp_color(int new_hitpoints) const
 
 color_t unit::xp_color() const
 {
-	const color_t near_advance_color = {255,255,255,0};
-	const color_t mid_advance_color  = {150,255,255,0};
-	const color_t far_advance_color  = {0,205,205,0};
-	const color_t normal_color       = {0,160,225,0};
-	const color_t near_amla_color    = {225,0,255,0};
-	const color_t mid_amla_color     = {169,30,255,0};
-	const color_t far_amla_color     = {139,0,237,0};
-	const color_t amla_color         = {170,0,255,0};
+	const color_t near_advance_color {255,255,255,0};
+	const color_t mid_advance_color  {150,255,255,0};
+	const color_t far_advance_color  {0,205,205,0};
+	const color_t normal_color       {0,160,225,0};
+	const color_t near_amla_color    {225,0,255,0};
+	const color_t mid_amla_color     {169,30,255,0};
+	const color_t far_amla_color     {139,0,237,0};
+	const color_t amla_color         {170,0,255,0};
 
 	const bool near_advance = max_experience() - experience() <= game_config::kill_experience;
 	const bool mid_advance  = max_experience() - experience() <= game_config::kill_experience*2;

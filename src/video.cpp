@@ -389,7 +389,7 @@ int CVideo::set_help_string(const std::string& str)
 {
 	font::remove_floating_label(help_string_);
 
-	const color_t color = { 0, 0, 0, 0xbb };
+	const color_t color { 0, 0, 0, 0xbb };
 
 	int size = font::SIZE_LARGE;
 
