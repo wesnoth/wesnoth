@@ -2612,27 +2612,23 @@ void display::draw_hex(const map_location& loc) {
 		image::light_string lt;
 
 		if(have_overlays) {
-			const time_of_day& loc_tod = get_time_of_day(loc);
-			const tod_color& loc_col = loc_tod.color;
+			tod_color tod_col = tod.color;
 
-			if(loc_col != get_time_of_day().color) {
-				// Continue with local light. image::get_lighted_image
-				// doesn't take the image::TOD_COLORED type, so we need
-				// to apply the color_adjust_ ourselves.
-				tod_color col = loc_col + color_adjust_;
-				lt = image::get_light_string(-1, col.r, col.g, col.b);
+			if(tod_col != get_time_of_day().color) {
+				tod_col = tod_col + color_adjust_;
 			}
-		}
 
-		for( ; overlays.first != overlays.second; ++overlays.first) {
-			if ((overlays.first->second.team_name == "" ||
-					overlays.first->second.team_name.find(dc_->teams()[viewing_team()].team_name()) != std::string::npos)
-					&& !(fogged(loc) && !overlays.first->second.visible_in_fog))
-			{
+			lt = image::get_light_string(0, tod_col.r, tod_col.g, tod_col.b);
 
-				const surface surf =
-                        image::get_lighted_image(overlays.first->second.image, lt, image::SCALED_TO_HEX);
-				drawing_buffer_add(LAYER_TERRAIN_BG, loc, xpos, ypos, surf);
+			for( ; overlays.first != overlays.second; ++overlays.first) {
+				if ((overlays.first->second.team_name == "" ||
+						overlays.first->second.team_name.find(dc_->teams()[viewing_team()].team_name()) != std::string::npos)
+						&& !(fogged(loc) && !overlays.first->second.visible_in_fog))
+				{
+
+					const surface surf = image::get_lighted_image(overlays.first->second.image, lt, image::SCALED_TO_HEX);
+					drawing_buffer_add(LAYER_TERRAIN_BG, loc, xpos, ypos, surf);
+				}
 			}
 		}
 	}
