@@ -636,7 +636,9 @@ void play_controller::maybe_do_init_side(bool is_replay, bool only_visual) {
 	 * For all other sides it is recorded in replay and replay handler has to handle
 	 * calling do_init_side() functions.
 	 **/
-	if (is_replay || init_side_done_ || !current_team().is_local()) {
+	// Note: added check for team_index == player_number - 1 because it seems like a good reality check
+	// and it is hoped to fix bug #21459
+	if (is_replay || init_side_done_ || ( ((int) team_index) != player_number_ - 1) || !current_team().is_local()) {
 		return;
 	}
 
