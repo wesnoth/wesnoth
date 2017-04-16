@@ -12,8 +12,8 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_DIALOGS_story_viewer_HPP_INCLUDED
-#define GUI_DIALOGS_story_viewer_HPP_INCLUDED
+#ifndef GUI_DIALOGS_STORY_VIEWER_HPP_INCLUDED
+#define GUI_DIALOGS_STORY_VIEWER_HPP_INCLUDED
 
 #include "gui/dialogs/modal_dialog.hpp"
 

@@ -442,7 +442,7 @@ void story_viewer::draw_callback(window& window)
 		return;
 	}
 
-	unsigned short new_alpha = std::min<unsigned short>(255, fade_step_ * 25.5);
+	unsigned short new_alpha = utils::clamp<unsigned short>(fade_step_ * 25.5, 0, ALPHA_OPAQUE);
 	find_widget<scroll_label>(&window, "part_text", false).set_text_alpha(new_alpha);
 
 	// The text stack also needs to be marked dirty so the background panel redraws correctly.
