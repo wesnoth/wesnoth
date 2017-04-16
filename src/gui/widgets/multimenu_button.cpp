@@ -167,7 +167,8 @@ void multimenu_button::signal_handler_left_button_click(const event::ui_event ev
 	handled = true;
 }
 
-void multimenu_button::update_label() {
+void multimenu_button::update_label()
+{
 	std::vector<t_string> selected;
 	for(size_t i = 0; i < toggle_states_.size() && i < values_.size(); i++) {
 		if(!toggle_states_[i]) {
@@ -182,7 +183,7 @@ void multimenu_button::update_label() {
 	} else if(selected.size() == 1) {
 		set_label(selected[0]);
 	} else if(selected.size() == 2) {
-		const string_map variables = {{"first", selected[0]}, {"second", selected[1]}, {"excess", "1"}};
+		const string_map variables {{"first", selected[0]}, {"second", selected[1]}, {"excess", "1"}};
 		if(max_shown_ == 1) {
 			set_label(VNGETTEXT("multimenu^$first and 1 other","multimenu^$first and $excess others", 1, variables));
 		} else {
@@ -191,20 +192,22 @@ void multimenu_button::update_label() {
 	} else if(selected.size() == values_.size()) {
 		set_label(_("multimenu^All Selected"));
 	} else {
-		int excess = selected.size() - max_shown_;
+		const int excess = selected.size() - max_shown_;
 		if(max_shown_ > 0 && excess > 0) {
 			selected.resize(max_shown_);
 		}
+
 		std::string first = selected[0];
 		for(size_t i = 1; i < selected.size() - 1; i++) {
-			const string_map variables = {{"first", first}, {"second", selected[i]}};
+			const string_map variables {{"first", first}, {"second", selected[i]}};
 			first = VGETTEXT("multimenu^$first, $second", variables);
 		}
+
 		if(max_shown_ > 0 && excess > 0) {
-			const string_map variables = {{"first", first}, {"excess", std::to_string(excess + 1)}};
+			const string_map variables {{"first", first}, {"excess", std::to_string(excess + 1)}};
 			set_label(VNGETTEXT("multimenu^$first and 1 other","$first and $excess others", excess + 1, variables));
 		} else {
-			const string_map variables = {{"first", first}, {"second", selected.back()}};
+			const string_map variables {{"first", first}, {"second", selected.back()}};
 			set_label(VGETTEXT("multimenu^$first and $second", variables));
 		}
 	}
