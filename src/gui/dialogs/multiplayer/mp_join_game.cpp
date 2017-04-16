@@ -41,11 +41,20 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/tree_view.hpp"
 #include "gui/widgets/tree_view_node.hpp"
+#include "log.hpp"
 #include "mp_ui_alerts.hpp"
 #include "statistics.hpp"
 #include "units/types.hpp"
 #include "video.hpp"
 #include "wesnothd_connection.hpp"
+
+
+static lg::log_domain log_mp_connect_engine("mp/connect/engine");
+#define DBG_MP LOG_STREAM(debug, log_mp_connect_engine)
+#define LOG_MP LOG_STREAM(info, log_mp_connect_engine)
+#define WRN_MP LOG_STREAM(warn, log_mp_connect_engine)
+#define ERR_MP LOG_STREAM(err, log_mp_connect_engine)
+
 
 namespace gui2
 {
@@ -473,6 +482,10 @@ void mp_join_game::network_handler(window& window)
 		level_ = first_scenario_ ? data : data.child("next_scenario");
 
 		generate_side_list(window);
+	}
+
+	if (data.has_child("turn")) {
+		ERR_MP << "received replay data\n" << data << "\n in mp join\n";
 	}
 
 	// Update player list
