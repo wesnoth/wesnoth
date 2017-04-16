@@ -28,6 +28,7 @@ set(GETTEXT_XGETTEXT_OPTIONS
 	--keyword=_n:1,2
 	--keyword=sngettext:1,2
 	--keyword=vngettext:1,2
+	--keyword=VNGETTEXT:1,2
 )
 
 find_program(GETTEXT_MSGCAT_EXECUTABLE msgcat)

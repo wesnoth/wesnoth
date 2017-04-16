@@ -348,7 +348,7 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 
 		if(!increase_damage.empty()) {
 			add_and(desc);
-			desc << vngettext(
+			desc << VNGETTEXT(
 				// TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
 				"$number_or_percent damage",
 				"$number_or_percent damage",
@@ -359,7 +359,7 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 		if(!set_damage.empty()) {
 			add_and(desc);
 			// TRANSLATORS: Current value for WML code set_damage, documented in https://wiki.wesnoth.org/EffectWML
-			desc << vngettext(
+			desc << VNGETTEXT(
 				"$number damage",
 				"$number damage",
 				std::stoi(set_damage),
@@ -368,7 +368,7 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 
 		if(!increase_attacks.empty()) {
 			add_and(desc);
-			desc << vngettext(
+			desc << VNGETTEXT(
 				// TRANSLATORS: Current value for WML code increase_attacks, documented in https://wiki.wesnoth.org/EffectWML
 				"$number_or_percent strike",
 				"$number_or_percent strikes",
@@ -378,7 +378,7 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 
 		if(!set_attacks.empty()) {
 			add_and(desc);
-			desc << vngettext(
+			desc << VNGETTEXT(
 				// TRANSLATORS: Current value for WML code set_attacks, documented in https://wiki.wesnoth.org/EffectWML
 				"$number strike",
 				"$number strikes",
@@ -420,7 +420,7 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 
 		if(!set_movement.empty()) {
 			add_and(desc);
-			desc << vngettext(
+			desc << VNGETTEXT(
 				// TRANSLATORS: Current value for WML code set_movement, documented in https://wiki.wesnoth.org/EffectWML
 				"$number movement point",
 				"$number movement points",
@@ -430,7 +430,7 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 
 		if(!increase_movement.empty()) {
 			add_and(desc);
-			desc << vngettext(
+			desc << VNGETTEXT(
 				// TRANSLATORS: Current value for WML code increase_movement, documented in https://wiki.wesnoth.org/EffectWML
 				"$number_or_percent movement point",
 				"$number_or_percent movement points",

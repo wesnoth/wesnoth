@@ -87,7 +87,7 @@ void campaign_controller::report_victory(
 	// want to translate them differently.
 	if(t.carryover_add()) {
 		if(t.carryover_gold() > 0) {
-			goldmsg = vngettext(
+			goldmsg = VNGETTEXT(
 					"You will start the next scenario with $gold "
 					"on top of the defined minimum starting gold.",
 					"You will start the next scenario with $gold "
@@ -95,7 +95,7 @@ void campaign_controller::report_victory(
 					t.carryover_gold(), symbols);
 
 		} else {
-			goldmsg = vngettext(
+			goldmsg = VNGETTEXT(
 					"You will start the next scenario with "
 					"the defined minimum starting gold.",
 					"You will start the next scenario with "
@@ -103,7 +103,7 @@ void campaign_controller::report_victory(
 					t.carryover_gold(), symbols);
 		}
 	} else {
-		goldmsg = vngettext(
+		goldmsg = VNGETTEXT(
 			"You will start the next scenario with $gold "
 			"or its defined minimum starting gold, "
 			"whichever is higher.",

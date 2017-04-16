@@ -1781,7 +1781,7 @@ std::string unit::describe_builtin_effect(std::string apply_to, const config& ef
 			return "";
 		}
 		if(apply_to == "movement") {
-			return vngettext(
+			return VNGETTEXT(
 				"$number_or_percent move",
 				"$number_or_percent moves",
 				std::stoi(increase),
@@ -1799,7 +1799,7 @@ std::string unit::describe_builtin_effect(std::string apply_to, const config& ef
 				"$number_or_percent XP to advance",
 					utils::string_map({{"number_or_percent", utils::print_modifier(increase)}}));
 		} else if(apply_to == "max_attacks") {
-			return vngettext(
+			return VNGETTEXT(
 					"$number_or_percent attack per turn",
 					"$number_or_percent attacks per turn",
 					std::stoi(increase),

@@ -59,7 +59,7 @@ if "pot-update" in COMMAND_LINE_TARGETS:
                 """xgettext --force-po --default-domain=%s --directory=. --add-comments=TRANSLATORS: \
                 --from-code=UTF-8 --sort-by-file \
                 --keyword=_ --keyword=N_ --keyword=sgettext --keyword=vgettext --keyword=VGETTEXT \
-                --keyword=_n:1,2 --keyword=sngettext:1,2 --keyword=vngettext:1,2 \
+                --keyword=_n:1,2 --keyword=sngettext:1,2 --keyword=vngettext:1,2 --keyword=VNGETTEXT:1,2 \
                 --files-from=%s --copyright-holder='Wesnoth development team' --msgid-bugs-address=http://bugs.wesnoth.org/ \
                 --output=$TARGET \
                 ; sed -i s/charset=CHARSET/charset=UTF-8/ $TARGET \

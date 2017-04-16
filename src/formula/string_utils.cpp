@@ -263,3 +263,10 @@ std::string vngettext(const char* sing, const char* plur, int n, const utils::st
 	const std::string msg = utils::interpolate_variables_into_string(orig, &symbols);
 	return msg;
 }
+
+std::string vngettext(const char *domain, const char *sing, const char* plur, int n, const utils::string_map& symbols)
+{
+	const std::string orig(translation::dsngettext(domain, sing, plur, n));
+	const std::string msg = utils::interpolate_variables_into_string(orig, &symbols);
+	return msg;
+}

@@ -373,7 +373,7 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 	if (current_team.gold() - wb_gold < unit_cost) {
 		utils::string_map i18n_symbols;
 		i18n_symbols["cost"] = std::to_string(unit_cost);
-		std::string msg = vngettext(
+		std::string msg = VNGETTEXT(
 			"You must have at least 1 gold piece to recall a unit",
 			"You must have at least $cost gold pieces to recall this unit",
 			unit_cost, i18n_symbols);
