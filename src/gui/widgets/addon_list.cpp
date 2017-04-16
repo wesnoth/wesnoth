@@ -173,6 +173,10 @@ void addon_list::set_addons(const addons_list& addons)
 		// Set special retval for the toggle panels
 		find_widget<toggle_panel>(row_grid, "list_panel", false).set_retval(INSTALL_ADDON_RETVAL);
 
+		grid* control_grid = find_widget<grid>(row_grid, "single_install_buttons", false, false);
+		if(!control_grid) {
+			continue;
+		}
 		stacked_widget& install_update_stack = find_widget<stacked_widget>(row_grid, "install_update_stack", false);
 
 		if(!tracking_info.can_publish) {
@@ -183,10 +187,10 @@ void addon_list::set_addons(const addons_list& addons)
 			install_update_stack.select_layer(static_cast<int>(is_updatable));
 
 			if(!is_updatable) {
-				find_widget<button>(row_grid, "single_install", false).set_active(!is_installed);
+				find_widget<button>(control_grid, "single_install", false).set_active(!is_installed);
 				if(install_function_ != nullptr) {
 					gui2::event::connect_signal_mouse_left_click(
-						find_widget<button>(row_grid, "single_install", false),
+						find_widget<button>(control_grid, "single_install", false),
 						[this, addon](gui2::event::dispatcher&, const gui2::event::ui_event, bool& handled, bool& halt)
 					{
 						install_function_(addon);
@@ -195,10 +199,10 @@ void addon_list::set_addons(const addons_list& addons)
 					});
 				}
 			} else {
-				find_widget<button>(row_grid, "single_update", false).set_active(true);
+				find_widget<button>(control_grid, "single_update", false).set_active(true);
 				if(update_function_ != nullptr) {
 					gui2::event::connect_signal_mouse_left_click(
-						find_widget<button>(row_grid, "single_update", false),
+						find_widget<button>(control_grid, "single_update", false),
 						[this, addon](gui2::event::dispatcher&, const gui2::event::ui_event, bool& handled, bool& halt)
 					{
 						update_function_(addon);
@@ -211,7 +215,7 @@ void addon_list::set_addons(const addons_list& addons)
 			if(is_installed) {
 				if(uninstall_function_ != nullptr) {
 					gui2::event::connect_signal_mouse_left_click(
-						find_widget<button>(row_grid, "single_uninstall", false),
+						find_widget<button>(control_grid, "single_uninstall", false),
 						[this, addon](gui2::event::dispatcher&, const gui2::event::ui_event, bool& handled, bool& halt)
 					{
 						uninstall_function_(addon);
@@ -221,16 +225,16 @@ void addon_list::set_addons(const addons_list& addons)
 				}
 			}
 
-			find_widget<button>(row_grid, "single_uninstall", false).set_active(is_installed);
+			find_widget<button>(control_grid, "single_uninstall", false).set_active(is_installed);
 
-			find_widget<grid>(row_grid, "single_install_buttons", false).set_visible(install_buttons_visibility_);
+			find_widget<grid>(control_grid, "single_install_buttons", false).set_visible(install_buttons_visibility_);
 			find_widget<label>(row_grid, "installation_status", false).set_visible(install_status_visibility_);
 		} else {
 			const bool is_updatable = tracking_info.state == ADDON_INSTALLED_OUTDATED;
 
-			button& install_button = find_widget<button>(row_grid, "single_install", false);
-			button& update_button = find_widget<button>(row_grid, "single_update", false);
-			button& uninstall_button = find_widget<button>(row_grid, "single_uninstall", false);
+			button& install_button = find_widget<button>(control_grid, "single_install", false);
+			button& update_button = find_widget<button>(control_grid, "single_update", false);
+			button& uninstall_button = find_widget<button>(control_grid, "single_uninstall", false);
 
 			install_button.set_active(true);
 			update_button.set_active(true);
