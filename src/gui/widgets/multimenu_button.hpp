@@ -34,10 +34,10 @@ namespace gui2
 /**
  * Simple push button.
  */
-class menu_button : public styled_widget, public selectable_item
+class multimenu_button : public styled_widget
 {
 public:
-	menu_button();
+	multimenu_button();
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
@@ -69,30 +69,35 @@ public:
 		retval_ = retval;
 	}
 
-	void set_values(const std::vector<::config>& values, int selected = 0);
-
-	void set_selected(int selected);
-
-	/** Inherited from selectable_item */
-	virtual unsigned get_value() const override { return selected_; }
-
-	/** Inherited from selectable_item */
-	virtual void set_value(const unsigned value ) override { set_selected(value); }
-
-	/** Inherited from selectable_item */
-	virtual unsigned num_states() const override { return values_.size(); }
-
-	/** Inherited from selectable_item */
-	virtual void set_callback_state_change(std::function<void(widget&)> callback) override
+	void set_max_shown(const int max)
 	{
-		callback_state_change_ = callback;
+		max_shown_ = max;
+	}
+
+	int get_max_shown()
+	{
+		return max_shown_;
+	}
+
+	void set_values(const std::vector<::config>& values);
+
+	/**
+	 * Sets a callback that will be called immediately when any toggle button is selected or deselected.
+	 */
+	virtual void set_callback_toggle_state_change(std::function<void(boost::dynamic_bitset<>)> callback)
+	{
+		callback_toggle_state_change_ = callback;
 	}
 
 	/** Returns the value of the selected row */
-	std::string get_value_string() const
+	//std::string get_value_string() const;
+
+	boost::dynamic_bitset<> get_toggle_states() const
 	{
-		return values_[selected_]["label"];
+		return toggle_states_;
 	}
+
+	void reset_toggle_states();
 
 	void set_keep_open(const bool keep_open)
 	{
@@ -131,16 +136,23 @@ private:
 	 */
 	int retval_;
 
+	/**
+	 * The maximum number of selected states to list in the label
+	 */
+	int max_shown_;
+
 	std::vector<::config> values_;
 
-	int selected_;
+	boost::dynamic_bitset<> toggle_states_;
 
 	bool keep_open_;
 
 	dialogs::drop_down_menu* droplist_;
 
-	/** See selectable_item::set_callback_state_change. */
-	std::function<void(widget&)> callback_state_change_;
+	std::function<void(boost::dynamic_bitset<>)> callback_toggle_state_change_;
+
+	void update_config_from_toggle_states();
+	void update_label();
 
 	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
@@ -156,13 +168,15 @@ private:
 	void signal_handler_left_button_up(const event::ui_event event, bool& handled);
 
 	void signal_handler_left_button_click(const event::ui_event event, bool& handled);
+
+	void toggle_state_changed();
 };
 
 // }---------- DEFINITION ---------{
 
-struct menu_button_definition : public styled_widget_definition
+struct multimenu_button_definition : public styled_widget_definition
 {
-	explicit menu_button_definition(const config& cfg);
+	explicit multimenu_button_definition(const config& cfg);
 
 	struct resolution : public resolution_definition
 	{
@@ -177,10 +191,10 @@ class styled_widget;
 namespace implementation
 {
 
-struct builder_menu_button : public builder_styled_widget
+struct builder_multimenu_button : public builder_styled_widget
 {
 public:
-	explicit builder_menu_button(const config& cfg);
+	explicit builder_multimenu_button(const config& cfg);
 
 	using builder_styled_widget::build;
 
@@ -188,7 +202,7 @@ public:
 
 private:
 	std::string retval_id_;
-	int retval_;
+	int retval_, max_shown_;
 	std::vector<::config> options_;
 };
 

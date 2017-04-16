@@ -45,7 +45,6 @@ menu_button::menu_button()
 	, retval_(0)
 	, values_()
 	, selected_()
-	, toggle_states_()
 	, keep_open_(false)
 	, droplist_(nullptr)
 {
@@ -141,7 +140,7 @@ void menu_button::signal_handler_left_button_click(const event::ui_event event, 
 
 	// If a button has a retval do the default handling.
 	dialogs::drop_down_menu droplist(this->get_rectangle(), this->values_, this->selected_, this->get_use_markup(), this->keep_open_,
-		std::bind(&menu_button::toggle_state_changed, this));
+		nullptr);
 
 	droplist_ = &droplist;
 
@@ -176,45 +175,7 @@ void menu_button::signal_handler_left_button_click(const event::ui_event event, 
 
 	droplist_ = nullptr;
 
-	/* In order to allow toggle button states to be specified by verious dialogs in the values config, we write the state
-	 * bools to the values_ config here, but only if a checkbox= key was already provided. The value of the checkbox= key
-	 * is handled by the drop_down_menu widget.
-	 *
-	 * Passing the dynamic_bitset directly to the drop_down_menu ctor would mean bool values would need to be passed to this
-	 * class independently of the values config by dialogs that use this widget. However, the bool states are also saved
-	 * in a dynamic_bitset class member which can be fetched for other uses if necessary.
-	 */
-	update_config_from_toggle_states();
-
 	handled = true;
-}
-
-void menu_button::update_config_from_toggle_states()
-{
-	for(unsigned i = 0; i < values_.size(); i++) {
-		::config& c = values_[i];
-
-		if(c.has_attribute("checkbox")) {
-			c["checkbox"] = toggle_states_[i];
-		}
-	}
-}
-
-void menu_button::reset_toggle_states()
-{
-	toggle_states_.reset();
-	update_config_from_toggle_states();
-}
-
-void menu_button::toggle_state_changed()
-{
-	assert(droplist_ != nullptr);
-
-	toggle_states_ = droplist_->get_toggle_states();
-
-	if(callback_toggle_state_change_ != nullptr) {
-		callback_toggle_state_change_(toggle_states_);
-	}
 }
 
 void menu_button::set_values(const std::vector<::config>& values, int selected)
@@ -228,7 +189,6 @@ void menu_button::set_values(const std::vector<::config>& values, int selected)
 
 	values_ = values;
 	selected_ = selected;
-	toggle_states_.resize(values_.size(), false);
 
 	set_label(values_[selected_]["label"]);
 }

@@ -28,7 +28,7 @@
 #else
 #include "gui/widgets/listbox.hpp"
 #endif
-#include "gui/widgets/menu_button.hpp"
+#include "gui/widgets/multimenu_button.hpp"
 #include "gui/widgets/multi_page.hpp"
 #include "gui/widgets/scroll_label.hpp"
 #include "gui/widgets/settings.hpp"
@@ -165,7 +165,7 @@ void campaign_selection::pre_show(window& window)
 	//
 	// Set up Mods selection dropdown
 	//
-	menu_button& mods_menu = find_widget<menu_button>(&window, "mods_menu", false);
+	multimenu_button& mods_menu = find_widget<multimenu_button>(&window, "mods_menu", false);
 
 	if(!engine_.get_const_extras_by_type(ng::create_engine::MOD).empty()) {
 
@@ -218,7 +218,7 @@ void campaign_selection::post_show(window& window)
 
 void campaign_selection::mod_toggled(window& window)
 {
-	boost::dynamic_bitset<> new_mod_states = find_widget<menu_button>(&window, "mods_menu", false).get_toggle_states();
+	boost::dynamic_bitset<> new_mod_states = find_widget<multimenu_button>(&window, "mods_menu", false).get_toggle_states();
 
 	// Get a mask of any mods that were toggled, regardless of new state
 	mod_states_ = mod_states_ ^ new_mod_states;

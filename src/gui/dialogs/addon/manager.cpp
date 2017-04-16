@@ -35,6 +35,7 @@
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/menu_button.hpp"
+#include "gui/widgets/multimenu_button.hpp"
 #include "gui/widgets/stacked_widget.hpp"
 #include "gui/widgets/drawing.hpp"
 #include "gui/widgets/image.hpp"
@@ -359,7 +360,7 @@ void addon_manager::pre_show(window& window)
 	status_filter.set_values(status_filter_entries);
 	status_filter.connect_click_handler(std::bind(&addon_manager::apply_filters, this, std::ref(window)));
 
-	menu_button& type_filter = find_widget<menu_button>(&window, "type_filter", false);
+	multimenu_button& type_filter = find_widget<multimenu_button>(&window, "type_filter", false);
 
 	std::vector<config> type_filter_entries;
 	for(const auto& f : type_filter_types_) {
@@ -538,7 +539,7 @@ boost::dynamic_bitset<> addon_manager::get_status_filter_visibility(const window
 
 boost::dynamic_bitset<> addon_manager::get_type_filter_visibility(const window& window) const
 {
-	const menu_button& type_filter = find_widget<const menu_button>(&window, "type_filter", false);
+	const multimenu_button& type_filter = find_widget<const multimenu_button>(&window, "type_filter", false);
 
 	boost::dynamic_bitset<> toggle_states = type_filter.get_toggle_states();
 	if(toggle_states.none()) {

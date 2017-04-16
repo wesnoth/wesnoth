@@ -44,6 +44,7 @@
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/menu_button.hpp"
+#include "gui/widgets/multimenu_button.hpp"
 #include "gui/widgets/grid.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
@@ -704,7 +705,7 @@ void preferences_dialog::post_build(window& window)
 		hotkey_category_entries.emplace_back(config_of("label", name)("checkbox", false));
 	}
 
-	menu_button& hotkey_menu = find_widget<menu_button>(&window, "hotkey_category_menu", false);
+	multimenu_button& hotkey_menu = find_widget<multimenu_button>(&window, "hotkey_category_menu", false);
 
 	hotkey_menu.set_values(hotkey_category_entries);
 	hotkey_menu.set_keep_open(true);
@@ -859,7 +860,7 @@ void preferences_dialog::default_hotkey_callback(window& window)
 	listbox& hotkey_list = setup_hotkey_list(window);
 	hotkey_list.set_active_sorting_option({0, listbox::SORT_ASCENDING}, true);
 
-	find_widget<menu_button>(&window, "hotkey_category_menu", false).reset_toggle_states();
+	find_widget<multimenu_button>(&window, "hotkey_category_menu", false).reset_toggle_states();
 }
 
 void preferences_dialog::remove_hotkey_callback(listbox& hotkeys)
@@ -872,7 +873,7 @@ void preferences_dialog::remove_hotkey_callback(listbox& hotkeys)
 
 void preferences_dialog::hotkey_type_filter_callback(window& window) const
 {
-	const menu_button& hotkey_menu = find_widget<const menu_button>(&window, "hotkey_category_menu", false);
+	const multimenu_button& hotkey_menu = find_widget<const multimenu_button>(&window, "hotkey_category_menu", false);
 
 	boost::dynamic_bitset<> toggle_states = hotkey_menu.get_toggle_states();
 	boost::dynamic_bitset<> res(visible_hotkeys_.size());
