@@ -45,7 +45,7 @@ public:
 	bool is_owner(const network::connection player) const { return (player == owner_); }
 	bool is_member(const network::connection player) const
 	{ return is_player(player) || is_observer(player); }
-	bool allow_observers() const;
+	bool allow_observers(bool exclude_lingering=false) const;
 	bool is_observer(const network::connection player) const;
 	bool is_player(const network::connection player) const;
 
@@ -108,7 +108,8 @@ public:
 	const user_vector all_game_users() const;
 
 	void start_game(const player_map::const_iterator starter);
-	void perform_controller_tweaks(); 			//this is performed just before starting and before [start_game] signal
+	void perform_controller_tweaks(const player_map::const_iterator starter);
+					 			//this is performed just before starting and before [start_game] signal
 								//send scenario_diff's specific to each client so that they locally 
 								//control their human sides
 
@@ -355,6 +356,9 @@ private:
 
 	/** The side from which global variable data is expected*/
 	int global_wait_side_;
+
+	void set_all_players_to_not_updated();
+	bool are_updating_game_;
 };
 
 struct game_is_member {

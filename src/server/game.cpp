@@ -68,7 +68,8 @@ game::game(player_map& players, const network::connection host,
 	termination_(),
 	save_replays_(save_replays),
 	replay_save_path_(replay_save_path),
-	global_wait_side_(0)
+	global_wait_side_(0),
+	are_updating_game_(false)
 {
 	assert(owner_);
 	players_.push_back(owner_);
@@ -154,12 +155,19 @@ std::string game::list_users(user_vector users, const std::string& func) const
 	return list;
 }
 
-void game::perform_controller_tweaks() {
+void game::perform_controller_tweaks(const player_map::const_iterator starter) {
 	const simple_wml::node::child_list & sides = level_.root().children("side");
 
 	DBG_GAME << "****\n Performing controller tweaks. sides = " << std::endl; 
 	DBG_GAME << debug_sides_info() << std::endl;
 	DBG_GAME << "****" << std::endl;
+
+	//this needs to happen before the controller tweaks if some players are lingering.
+	if (are_updating_game_) {
+		set_all_players_to_not_updated();
+	}
+	starter->second.set_updated_level(true); //the host of course has the updated level.
+	are_updating_game = false;
 
 	update_side_data(); // Necessary to read the level_ and get sides_, etc. updated to match
 
@@ -273,10 +281,20 @@ void game::start_game(const player_map::const_iterator starter) {
 void game::update_game()
 {
 	started_ = false;
+	are_updating_game_ = true;
+
 	description_->set_attr("turn", "");
 
 	update_side_data();
 	describe_slots();
+}
+
+void game::set_all_players_to_not_updated()
+{
+	user_vector allusers = all_game_users(false); // false means we don't exclude lingering players from previous level, but there shouldn't be any right now
+	for (user_vector::const_iterator x = allusers.begin(); x != allusers.end(); ++x) {
+		x->set_updated_level(false); //the host now has updated the level, and the other players need to download it, and in the mean time not recieve game events. they will eventually get them in the history.
+	}
 }
 
 bool game::send_taken_side(simple_wml::document& cfg, const simple_wml::node::child_list::const_iterator side) const
@@ -1144,6 +1162,7 @@ bool game::add_player(const network::connection player, bool observer) {
 	DBG_GAME << debug_player_info();
 	// Send the user the game data.
 	if (!wesnothd::send_to_one(level_, player)) return false;
+	player.set_updated_level(true); //the player now has the updated level and needs to recieve game events.
 
 	if(started_) {
 		//tell this player that the game has started
@@ -1331,13 +1350,15 @@ void game::load_next_scenario(const player_map::const_iterator user) {
 	send_history(user->first);
 	// Send observer join of all the observers in the game to the user.
 	send_observerjoins(user->first);
+	user->first.set_updated_level(true); //the player now has the updated level and needs to recieve game events.
+
 }
 
 void game::send_data(simple_wml::document& data,
 						  const network::connection exclude,
 						  std::string packet_type) const
 {
-	wesnothd::send_to_many(data, all_game_users(), exclude, packet_type);
+	wesnothd::send_to_many(data, all_game_users(true), exclude, packet_type); //the flag (true) in all_game_users means exclude players lingering on last level
 }
 
 void game::send_data_team(simple_wml::document& data,
@@ -1345,8 +1366,9 @@ void game::send_data_team(simple_wml::document& data,
                           const network::connection exclude,
 						  std::string packet_type) const
 {
-	DBG_GAME << __func__ << "...\n";
-	wesnothd::send_to_many(data, players_,
+	DBG_GAME << __func__ << "...\n"; // TODO: This filter thing needs to be replaced with, get only the players which are not lingering on the last level.
+	const std::vector<network::connection> not_lingering_players = filter(players_);
+	wesnothd::send_to_many(data, not_lingering_players,
 		boost::bind(&game::is_on_team, this, boost::ref(team), _1),
 		exclude, packet_type);
 }
@@ -1547,11 +1569,24 @@ void game::allow_global(const simple_wml::document &data) {
 	global_wait_side_ = side;
 }
 
-const user_vector game::all_game_users() const {
+const user_vector game::all_game_users(bool exclude_lingering) const {
 	user_vector res;
 
-	res.insert(res.end(), players_.begin(), players_.end());
-	res.insert(res.end(), observers_.begin(), observers_.end());
+	if (exclude_lingering) {
+		for (user_vector::const_iterator x = players_.begin(); x != players_.end(); ++x) {
+			if (x->has_updated_level()) {
+				res.insert(res.end(),*x);
+			}
+		}
+		for (user_vector::const_iterator x = observers_.begin(); x != observers_.end(); ++x) {
+			if (x->has_updated_level()) {
+				res.insert(res.end(),*x);
+			}
+		}
+	} else {
+		res.insert(res.end(), players_.begin(), players_.end());
+		res.insert(res.end(), observers_.begin(), observers_.end());
+	}
 
 	return res;
 }
