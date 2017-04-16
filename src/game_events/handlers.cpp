@@ -74,6 +74,7 @@ handler_ptr handler_list::iterator::operator*()
 
 event_handler::event_handler(const config &cfg, bool imi, handler_vec::size_type index, manager & man)
 	: first_time_only_(cfg["first_time_only"].to_bool(true))
+	, remove_on_fire_(cfg["remove_on_fire"].to_bool(false))
 	, is_menu_item_(imi)
 	, index_(index)
 	, man_(&man)
@@ -117,8 +118,11 @@ void event_handler::handle_event(const queued_event& event_info, handler_ptr& ha
 		DBG_NG << cfg_["name"] << " will now invoke the following command(s):\n" << cfg_;
 	}
 
-	if (first_time_only_)
-	{
+	if (remove_on_fire_) {
+		(*man_->event_handlers_).remove_event_handler(cfg_["id"]);
+	}
+
+	if (first_time_only_) {
 		// Disable this handler.
 		disable();
 		// Also remove our caller's hold on us.

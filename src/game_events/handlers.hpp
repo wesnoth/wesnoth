@@ -67,6 +67,7 @@ namespace game_events
 
 		private:
 			bool first_time_only_;
+			bool remove_on_fire_;
 			bool is_menu_item_;
 			handler_vec::size_type index_;
 			manager * man_;
