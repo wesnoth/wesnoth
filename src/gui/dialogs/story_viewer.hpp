@@ -20,8 +20,6 @@
 #include "storyscreen/controller.hpp"
 #include "storyscreen/part.hpp"
 
-#include <boost/logic/tribool.hpp>
-
 class CVideo;
 
 namespace gui2
@@ -82,7 +80,13 @@ private:
 
 	int fade_step_;
 
-	boost::tribool fading_in_;
+	enum FADE_STATE {
+		FADING_IN,
+		FADING_OUT,
+		NOT_FADING
+	};
+
+	FADE_STATE fade_state_;
 };
 
 } // namespace dialogs

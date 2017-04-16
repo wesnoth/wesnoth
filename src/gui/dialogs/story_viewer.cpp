@@ -28,8 +28,6 @@
 #include "gui/widgets/window.hpp"
 #include "sound.hpp"
 
-BOOST_TRIBOOL_THIRD_STATE(not_fading)
-
 namespace gui2
 {
 namespace dialogs
@@ -78,7 +76,7 @@ story_viewer::story_viewer(storyscreen::controller& controller)
 	, timer_id_(0)
 	, next_draw_(0)
 	, fade_step_(0)
-	, fading_in_(not_fading)
+	, fade_state_(NOT_FADING)
 {
 	update_current_part_ptr();
 }
@@ -348,7 +346,7 @@ void story_viewer::draw_floating_image(window& window, floating_image_list::cons
 void story_viewer::nav_button_callback(window& window, NAV_DIRECTION direction)
 {
 	// If a button is pressed while fading in, abort and set alpha to full opaque.
-	if(fading_in_) {
+	if(fade_state_ == FADING_IN) {
 		halt_fade_draw();
 
 		// Only set full alpha if Forward was pressed.
@@ -359,12 +357,12 @@ void story_viewer::nav_button_callback(window& window, NAV_DIRECTION direction)
 	}
 
 	// If a button is pressed while fading out, skip and show next part.
-	if(!fading_in_) {
+	if(fade_state_ == FADING_OUT) {
 		display_part(window);
 		return;
 	}
 
-	assert(not_fading(fading_in_));
+	assert(fade_state_ == NOT_FADING);
 
 	part_index_ = (direction == DIR_FORWARD ? part_index_ + 1 : part_index_ -1);
 
@@ -412,30 +410,34 @@ void story_viewer::begin_fade_draw(bool fade_in)
 	set_next_draw();
 
 	fade_step_ = fade_in ? 0 : 10;
-	fading_in_ = fade_in;
+	fade_state_ = fade_in ? FADING_IN : FADING_OUT;
 }
 
 void story_viewer::halt_fade_draw()
 {
 	next_draw_ = 0;
 	fade_step_ = -1;
-	fading_in_ = not_fading;
+	fade_state_ = NOT_FADING;
 }
 
 void story_viewer::draw_callback(window& window)
 {
-	if(SDL_GetTicks() < next_draw_) {
+	if(next_draw_ && SDL_GetTicks() < next_draw_) {
+		return;
+	}
+
+	if(fade_state_ == NOT_FADING) {
 		return;
 	}
 
 	// If we've faded fully in...
-	if(fading_in_ && fade_step_ > 10) {
+	if(fade_state_ == FADING_IN && fade_step_ > 10) {
 		halt_fade_draw();
 		return;
 	}
 
 	// If we've faded fully out...
-	if(!fading_in_ && fade_step_ < 0) {
+	if(fade_state_ == FADING_OUT && fade_step_ < 0) {
 		halt_fade_draw();
 
 		display_part(window);
@@ -448,9 +450,9 @@ void story_viewer::draw_callback(window& window)
 	// The text stack also needs to be marked dirty so the background panel redraws correctly.
 	find_widget<stacked_widget>(&window, "text_and_control_stack", false).set_is_dirty(true);
 
-	if(fading_in_) {
+	if(fade_state_ == FADING_IN) {
 		fade_step_ ++;
-	} else if(!fading_in_) {
+	} else if(fade_state_ == FADING_OUT) {
 		fade_step_ --;
 	}
 
