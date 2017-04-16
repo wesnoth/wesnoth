@@ -124,8 +124,7 @@ private:
 			friends_list_button_, friends_back_button_,
 			friends_add_friend_button_, friends_add_ignore_button_,
 			friends_remove_button_, show_floating_labels_button_,
-			turn_dialog_button_, whiteboard_on_start_button_,
-			hide_whiteboard_button_, turn_bell_button_, show_team_colors_button_,
+			turn_dialog_button_, turn_bell_button_, show_team_colors_button_,
 			show_haloing_button_, video_mode_button_,
 			theme_button_, hotkeys_button_,
 			paths_button_,
@@ -195,8 +194,6 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  friends_remove_button_(disp.video(), _("Remove")),
 	  show_floating_labels_button_(disp.video(), _("Show floating labels"), gui::button::TYPE_CHECK),
 	  turn_dialog_button_(disp.video(), _("Turn dialog"), gui::button::TYPE_CHECK),
-	  whiteboard_on_start_button_(disp.video(), _("Enable planning mode on start"), gui::button::TYPE_CHECK),
-	  hide_whiteboard_button_(disp.video(), _("Hide allies’ plans by default"), gui::button::TYPE_CHECK),
 	  turn_bell_button_(disp.video(), _("Turn bell"), gui::button::TYPE_CHECK),
 	  show_team_colors_button_(disp.video(), _("Show team colors"), gui::button::TYPE_CHECK),
 	  show_haloing_button_(disp.video(), _("Show haloing effects"), gui::button::TYPE_CHECK),
@@ -414,12 +411,6 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	turn_dialog_button_.set_check(turn_dialog());
 	turn_dialog_button_.set_help_string(_("Display a dialog at the beginning of your turn"));
 
-	whiteboard_on_start_button_.set_check(enable_whiteboard_mode_on_start());
-	whiteboard_on_start_button_.set_help_string(_("Activates Planning Mode on game start"));
-
-	hide_whiteboard_button_.set_check(hide_whiteboard());
-	hide_whiteboard_button_.set_help_string(_("Hides allies’ Planning Mode plans in multiplayer games"));
-
 	turn_bell_button_.set_check(turn_bell());
 	turn_bell_button_.set_help_string(_("Play a bell sound at the beginning of your turn"));
 
@@ -477,8 +468,6 @@ handler_vector preferences_dialog::handler_members()
 	h.push_back(&advanced_combo_);
 	h.push_back(&show_floating_labels_button_);
 	h.push_back(&turn_dialog_button_);
-	h.push_back(&whiteboard_on_start_button_);
-	h.push_back(&hide_whiteboard_button_);
 	h.push_back(&turn_bell_button_);
 	h.push_back(&UI_sound_button_);
 	h.push_back(&show_team_colors_button_);
@@ -549,8 +538,6 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	turbo_slider_.set_location(turbo_rect);
 	ypos += item_interline; show_ai_moves_button_.set_location(rect.x, ypos);
 	ypos += short_interline; turn_dialog_button_.set_location(rect.x, ypos);
-	ypos += short_interline; whiteboard_on_start_button_.set_location(rect.x, ypos);
-	ypos += short_interline; hide_whiteboard_button_.set_location(rect.x, ypos);
 	ypos += short_interline; interrupt_when_ally_sighted_button_.set_location(rect.x, ypos);
 	ypos += item_interline; save_replays_button_.set_location(rect.x, ypos);
 	ypos += short_interline; delete_saves_button_.set_location(rect.x, ypos);
@@ -743,10 +730,6 @@ void preferences_dialog::process_event()
 			set_delete_saves(delete_saves_button_.checked());
 		if (turn_dialog_button_.pressed())
 			set_turn_dialog(turn_dialog_button_.checked());
-		if (whiteboard_on_start_button_.pressed())
-			set_enable_whiteboard_mode_on_start(whiteboard_on_start_button_.checked());
-		if (hide_whiteboard_button_.pressed())
-			set_hide_whiteboard(hide_whiteboard_button_.checked());
 		if (hotkeys_button_.pressed()) {
 			show_hotkeys_preferences_dialog(disp_);
 			parent->clear_buttons();
@@ -1300,8 +1283,6 @@ void preferences_dialog::set_selection(int index)
 	turbo_slider_.enable(turbo());
 	show_ai_moves_button_.hide(hide_general);
 	turn_dialog_button_.hide(hide_general);
-	whiteboard_on_start_button_.hide(hide_general);
-	hide_whiteboard_button_.hide(hide_general);
 	interrupt_when_ally_sighted_button_.hide(hide_general);
 	hotkeys_button_.hide(hide_general);
 	paths_button_.hide(hide_general);

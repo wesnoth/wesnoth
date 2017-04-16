@@ -102,6 +102,7 @@ hotkey::hotkey_command_temp hotkey_list_[] = {
 	{ hotkey::HOTKEY_REPLAY_SKIP_ANIMATION, "replayskipanimation", N_("Skip Animation"), false, hotkey::SCOPE_GAME, "" },
 	// Whiteboard commands
 	// TRANSLATORS: whiteboard menu entry: toggle planning mode
+	/*
 	{ hotkey::HOTKEY_WB_TOGGLE, "wbtoggle", N_("whiteboard^Planning Mode"), false, hotkey::SCOPE_GAME, "" },
 	// TRANSLATORS: whiteboard menu entry: execute planned action
 	{ hotkey::HOTKEY_WB_EXECUTE_ACTION, "wbexecuteaction", N_("whiteboard^Execute Action"), false, hotkey::SCOPE_GAME, "" },
@@ -115,6 +116,7 @@ hotkey::hotkey_command_temp hotkey_list_[] = {
 	{ hotkey::HOTKEY_WB_BUMP_DOWN_ACTION, "wbbumpdownaction", N_("whiteboard^Move Action Down"), false, hotkey::SCOPE_GAME, "" },
 	// TRANSLATORS: whiteboard menu entry: plan as though the chosen unit were dead
 	{ hotkey::HOTKEY_WB_SUPPOSE_DEAD, "wbsupposedead", N_("whiteboard^Suppose Dead"), false, hotkey::SCOPE_GAME, "" },
+	*/
 
 	{ hotkey::HOTKEY_EDITOR_QUIT_TO_DESKTOP, "editor-quit-to-desktop", N_("Quit to Desktop"), false, hotkey::SCOPE_EDITOR, "" },
 	{ hotkey::HOTKEY_EDITOR_MAP_CLOSE, "editor-close-map", N_("Close Map"), false, hotkey::SCOPE_EDITOR, "" },

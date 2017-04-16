@@ -2021,8 +2021,8 @@ class console_handler : public map_command_handler<console_handler>, private cha
 		void do_event();
 		void do_toggle_draw_coordinates();
 		void do_toggle_draw_terrain_codes();
-		void do_toggle_whiteboard();
-		void do_whiteboard_options();
+		//void do_toggle_whiteboard();
+		//void do_whiteboard_options();
 
 		std::string get_flags_description() const {
 			return _("(D) — debug only, (N) — network only, (A) — admin only");
@@ -2152,12 +2152,12 @@ class console_handler : public map_command_handler<console_handler>, private cha
 			register_command("show_terrain_codes", &console_handler::do_toggle_draw_terrain_codes,
 				_("Toggle overlaying of terrain codes on hexes."));
 			register_alias("show_terrain_codes", "tc");
-			register_command("whiteboard", &console_handler::do_toggle_whiteboard,
+/*			register_command("whiteboard", &console_handler::do_toggle_whiteboard,
 				_("Toggle planning mode."));
 			register_alias("whiteboard", "wb");
 			register_command("whiteboard_options", &console_handler::do_whiteboard_options,
 				_("Access whiteboard options dialog."));
-			register_alias("whiteboard_options", "wbo");
+			register_alias("whiteboard_options", "wbo");*/
 
 			if (const config &alias_list = preferences::get_alias())
 			{
@@ -3254,7 +3254,7 @@ void console_handler::do_toggle_draw_terrain_codes() {
 	menu_handler_.gui_->set_draw_terrain_codes(!menu_handler_.gui_->get_draw_terrain_codes());
 	menu_handler_.gui_->invalidate_all();
 }
-
+#if 0
 void console_handler::do_toggle_whiteboard() {
 	resources::whiteboard->set_active(!resources::whiteboard->is_active());
 	if (resources::whiteboard->is_active()) {
@@ -3264,11 +3264,14 @@ void console_handler::do_toggle_whiteboard() {
 		print(get_cmd(), _("Planning mode deactivated!"));
 	}
 }
+#endif
 
-void console_handler::do_whiteboard_options()
+#if 0
+console_handler::do_whiteboard_options()
 {
 	resources::whiteboard->options_dlg();
 }
+#endif
 
 void menu_handler::do_ai_formula(const std::string& str,
 	int side_num, mouse_handler& /*mousehandler*/)

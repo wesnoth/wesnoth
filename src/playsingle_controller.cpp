@@ -220,6 +220,7 @@ void playsingle_controller::clear_messages(){
 }
 
 void playsingle_controller::whiteboard_toggle() {
+#if 0
 	resources::whiteboard->set_active(!resources::whiteboard->is_active());
 
 	if (resources::whiteboard->is_active()) {
@@ -233,6 +234,7 @@ void playsingle_controller::whiteboard_toggle() {
 	}
 	//@todo Stop printing whiteboard help in the chat once we have better documentation/help
 	resources::whiteboard->print_help_once();
+#endif
 }
 
 void playsingle_controller::whiteboard_execute_action(){

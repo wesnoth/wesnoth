@@ -1141,9 +1141,11 @@ void play_controller::process_focus_keydown_event(const SDL_Event& event)
 }
 
 void play_controller::process_keydown_event(const SDL_Event& event) {
+#if 0
 	if (event.key.keysym.sym == SDLK_TAB) {
 		whiteboard_manager_->set_invert_behavior(true);
 	}
+#endif
 }
 
 void play_controller::process_keyup_event(const SDL_Event& event) {
@@ -1172,11 +1174,13 @@ void play_controller::process_keyup_event(const SDL_Event& event) {
 			}
 
 		}
+#if 0
 	} else if (event.key.keysym.sym == SDLK_TAB) {
 		static CKey keys;
 		if (!keys[SDLK_TAB]) {
 			whiteboard_manager_->set_invert_behavior(false);
 		}
+#endif
 	}
 }
 
