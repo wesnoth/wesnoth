@@ -225,6 +225,7 @@ void multimenu_button::reset_toggle_states()
 {
 	toggle_states_.reset();
 	update_config_from_toggle_states();
+	update_label();
 }
 
 void multimenu_button::toggle_state_changed()
