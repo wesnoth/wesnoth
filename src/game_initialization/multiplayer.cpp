@@ -443,7 +443,7 @@ static void enter_create_mode(mp_workflow_helper_ptr helper)
 
 		gui2::dialogs::mp_create_game dlg(helper->game_config, create_eng);
 		dlg.show(helper->video);
-		dlg_cancel = dlg.get_retval() == gui2::window::CANCEL
+		dlg_cancel = dlg.get_retval() == gui2::window::CANCEL;
 	}
 
 	if(!dlg_cancel) {
