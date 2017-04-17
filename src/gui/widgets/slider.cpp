@@ -14,6 +14,8 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
+#include <limits>
+
 #include "gui/widgets/slider.hpp"
 
 #include "formatter.hpp"
@@ -40,7 +42,7 @@ REGISTER_WIDGET(slider)
 slider::slider()
 	: scrollbar_base()
 	, best_slider_length_(0)
-	, minimum_value_(0)
+	, minimum_value_(std::numeric_limits<int>::min())
 	, minimum_value_label_()
 	, maximum_value_label_()
 	, value_labels_()
