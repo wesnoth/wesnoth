@@ -200,22 +200,17 @@ public:
 
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		bool found = false;
-		variant res(0);
-		for(size_t n = 0; n != args().size(); ++n) {
-			const variant v = args()[n]->evaluate(variables,fdb);
+		variant res = args()[0]->evaluate(variables, fdb);
+		if(res.is_list()) {
+			res = *std::min_element(res.begin(), res.end());
+		}
+		for(size_t n = 1; n < args().size(); ++n) {
+			variant v = args()[n]->evaluate(variables,fdb);
 			if(v.is_list()) {
-				for(size_t m = 0; m != v.num_elements(); ++m) {
-					if(!found || v[m] < res) {
-						res = v[m];
-						found = true;
-					}
-				}
-			} else if(v.is_int() || v.is_decimal()) {
-				if(!found || v < res) {
-					res = v;
-					found = true;
-				}
+				v = *std::min_element(v.begin(), v.end());
+			}
+			if(res.is_null() || v < res) {
+				res = v;
 			}
 		}
 
@@ -231,22 +226,17 @@ public:
 
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		bool found = false;
-		variant res(0);
-		for(size_t n = 0; n != args().size(); ++n) {
-			const variant v = args()[n]->evaluate(variables,fdb);
+		variant res = args()[0]->evaluate(variables, fdb);
+		if(res.is_list()) {
+			res = *std::max_element(res.begin(), res.end());
+		}
+		for(size_t n = 1; n < args().size(); ++n) {
+			variant v = args()[n]->evaluate(variables, fdb);
 			if(v.is_list()) {
-				for(size_t m = 0; m != v.num_elements(); ++m) {
-					if(!found || v[m] > res) {
-						res = v[m];
-						found = true;
-					}
-				}
-			} else if(v.is_int() || v.is_decimal()) {
-				if(!found || v > res) {
-					res = v;
-					found = true;
-				}
+				v = *std::max_element(v.begin(), v.end());
+			}
+			if(res.is_null() || v > res) {
+				res = v;
 			}
 		}
 
