@@ -462,6 +462,7 @@ void mp_join_game::network_handler(window& window)
 	if(data["failed"].to_bool()) {
 		window.set_retval(window::CANCEL);
 	} else if(data.child("start_game")) {
+		level_["started"] = true;
 		window.set_retval(window::OK);
 	} else if(data.child("leave_game")) {
 		window.set_retval(window::CANCEL);
