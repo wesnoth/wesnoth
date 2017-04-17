@@ -1139,6 +1139,7 @@
 		EC5C70BD19EEB54900432CF4 /* filesystem_common.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5C70BB19EEB54900432CF4 /* filesystem_common.cpp */; };
 		EC5C70BF19EEB57400432CF4 /* mp_alerts_options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5C70BE19EEB57400432CF4 /* mp_alerts_options.cpp */; };
 		EC5C70C119EEB58300432CF4 /* mp_ui_alerts.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5C70C019EEB58300432CF4 /* mp_ui_alerts.cpp */; };
+		EC62E0B91EA4FB0400BC208E /* multimenu_button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC62E0B71EA4FB0400BC208E /* multimenu_button.cpp */; };
 		EC64D7611A085CE60092EF75 /* seed_rng.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC64D75F1A085CE60092EF75 /* seed_rng.cpp */; };
 		EC64D7651A085F120092EF75 /* mt_rng.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC64D7641A085F120092EF75 /* mt_rng.cpp */; };
 		EC64D7661A085F120092EF75 /* mt_rng.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC64D7641A085F120092EF75 /* mt_rng.cpp */; };
@@ -2480,6 +2481,8 @@
 		EC5C70BB19EEB54900432CF4 /* filesystem_common.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = filesystem_common.cpp; sourceTree = "<group>"; };
 		EC5C70BE19EEB57400432CF4 /* mp_alerts_options.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mp_alerts_options.cpp; sourceTree = "<group>"; };
 		EC5C70C019EEB58300432CF4 /* mp_ui_alerts.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mp_ui_alerts.cpp; sourceTree = "<group>"; };
+		EC62E0B71EA4FB0400BC208E /* multimenu_button.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = multimenu_button.cpp; path = ../gui/widgets/multimenu_button.cpp; sourceTree = "<group>"; };
+		EC62E0B81EA4FB0400BC208E /* multimenu_button.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = multimenu_button.hpp; path = ../gui/widgets/multimenu_button.hpp; sourceTree = "<group>"; };
 		EC64D75C1A085C990092EF75 /* libboost_random-mt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_random-mt.dylib"; path = "lib/libboost_random-mt.dylib"; sourceTree = "<group>"; };
 		EC64D75F1A085CE60092EF75 /* seed_rng.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = seed_rng.cpp; sourceTree = "<group>"; };
 		EC64D7641A085F120092EF75 /* mt_rng.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mt_rng.cpp; sourceTree = "<group>"; };
@@ -3973,6 +3976,8 @@
 				B55999510EC62181008DD061 /* menu.cpp */,
 				B55999520EC62181008DD061 /* menu.hpp */,
 				B55999530EC62181008DD061 /* menu_style.cpp */,
+				EC62E0B71EA4FB0400BC208E /* multimenu_button.cpp */,
+				EC62E0B81EA4FB0400BC208E /* multimenu_button.hpp */,
 				B55999560EC62181008DD061 /* scrollarea.cpp */,
 				B55999570EC62181008DD061 /* scrollarea.hpp */,
 				B55999580EC62181008DD061 /* scrollbar.cpp */,
@@ -5341,6 +5346,7 @@
 				9132C1781D7A981D008F604E /* generator_settings.cpp in Sources */,
 				918E9D061D8211130080686E /* chatbox.cpp in Sources */,
 				91F06A7E1D85FE6E0005C353 /* end_credits.cpp in Sources */,
+				EC62E0B91EA4FB0400BC208E /* multimenu_button.cpp in Sources */,
 				91F860861D90B2E9008FE58F /* mp_staging.cpp in Sources */,
 				9107AE4B1DB3D8FE001927B0 /* standard_colors.cpp in Sources */,
 				9107AE4C1DB3D8FE001927B0 /* text_formatting.cpp in Sources */,
