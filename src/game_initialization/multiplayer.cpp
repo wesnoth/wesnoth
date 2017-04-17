@@ -379,15 +379,19 @@ static void enter_wait_mode(mp_workflow_helper_ptr helper, int game_id, bool obs
 		campaign_info->skip_replay_blindfolded = preferences::blindfold_replay();
 	}
 
-	gui2::dialogs::mp_join_game dlg(helper->state, *helper->lobby_info, *helper->connection, true, observe);
+	bool dlg_ok = false;
+	{
+		gui2::dialogs::mp_join_game dlg(helper->state, *helper->lobby_info, *helper->connection, true, observe);
 
-	if(!dlg.fetch_game_config(helper->video)) {
-		return;
+		if(!dlg.fetch_game_config(helper->video)) {
+			return;
+		}
+
+		dlg.show(helper->video);
+		dlg_ok = dlg.get_retval() == gui2::window::OK;
 	}
 
-	dlg.show(helper->video);
-
-	if(dlg.get_retval() == gui2::window::OK) {
+	if(dlg_ok) {
 		campaign_controller controller(helper->video, helper->state, helper->game_config, game_config_manager::get()->terrain_types());
 		controller.set_mp_info(campaign_info.get());
 		controller.play_game();
@@ -409,34 +413,40 @@ static void enter_staging_mode(mp_workflow_helper_ptr helper)
 		campaign_info->is_host = true;
 	}
 
+	bool dlg_ok = false;
 	{
 		ng::connect_engine_ptr connect_engine(new ng::connect_engine(helper->state, true, campaign_info.get()));
 
 		gui2::dialogs::mp_staging dlg(*connect_engine, *helper->lobby_info, helper->connection);
 		dlg.show(helper->video);
+		dlg_ok = dlg.get_retval() == gui2::window::OK;
+	} // end connect_engine_ptr, dlg scope
 
-		if(dlg.get_retval() == gui2::window::OK) {
-			campaign_controller controller(helper->video, helper->state, helper->game_config, game_config_manager::get()->terrain_types());
-			controller.set_mp_info(campaign_info.get());
-			controller.play_game();
-		}
+	if(dlg_ok) {
+		campaign_controller controller(helper->video, helper->state, helper->game_config, game_config_manager::get()->terrain_types());
+		controller.set_mp_info(campaign_info.get());
+		controller.play_game();
+	}
 
-		if(helper->connection) {
-			helper->connection->send_data(config("leave_game"));
-		}
-	} // end connect_engine_ptr scope
+	if(helper->connection) {
+		helper->connection->send_data(config("leave_game"));
+	}
 }
 
 static void enter_create_mode(mp_workflow_helper_ptr helper)
 {
 	DBG_MP << "entering create mode" << std::endl;
 
-	ng::create_engine create_eng(helper->video, helper->state);
+	bool dlg_cancel = false;
+	{
+		ng::create_engine create_eng(helper->video, helper->state);
 
-	gui2::dialogs::mp_create_game dlg(helper->game_config, create_eng);
-	dlg.show(helper->video);
+		gui2::dialogs::mp_create_game dlg(helper->game_config, create_eng);
+		dlg.show(helper->video);
+		dlg_cancel = dlg.get_retval() == gui2::window::CANCEL
+	}
 
-	if(dlg.get_retval() != gui2::window::CANCEL) {
+	if(!dlg_cancel) {
 		enter_staging_mode(helper);
 	} else if(helper->connection) {
 		helper->connection->send_data(config("refresh_lobby"));
@@ -463,13 +473,19 @@ static bool enter_lobby_mode(mp_workflow_helper_ptr helper, const std::vector<st
 			sound::stop_music();
 		}
 
-		mp::lobby_info li(helper->game_config, installed_addons);
-		helper->lobby_info = &li;
+		int dlg_retval = 0;
+		int dlg_joined_game_id = 0;
+		{
+			mp::lobby_info li(helper->game_config, installed_addons);
+			helper->lobby_info = &li;
 
-		gui2::dialogs::mp_lobby dlg(helper->game_config, li, *helper->connection);
-		dlg.show(helper->video);
+			gui2::dialogs::mp_lobby dlg(helper->game_config, li, *helper->connection);
+			dlg.show(helper->video);
+			dlg_retval = dlg.get_retval();
+			dlg_joined_game_id = dlg.get_joined_game_id();
+		}
 
-		switch(dlg.get_retval()) {
+		switch(dlg_retval) {
 			case gui2::dialogs::mp_lobby::CREATE:
 				try {
 					enter_create_mode(helper);
@@ -487,8 +503,8 @@ static bool enter_lobby_mode(mp_workflow_helper_ptr helper, const std::vector<st
 			case gui2::dialogs::mp_lobby::OBSERVE:
 				try {
 					enter_wait_mode(helper,
-						dlg.get_joined_game_id(),
-						dlg.get_retval() == gui2::dialogs::mp_lobby::OBSERVE
+						dlg_joined_game_id,
+						dlg_retval == gui2::dialogs::mp_lobby::OBSERVE
 					);
 				} catch(config::error& error) {
 					if(!error.message.empty()) {
