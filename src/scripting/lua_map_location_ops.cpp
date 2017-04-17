@@ -213,7 +213,7 @@ int intf_get_relative_dir(lua_State* L)
 		return lua_error(L);
 	}
 
-	const std::string dir = map_location::write_direction(l1.get_relative_dir(l1));
+	const std::string dir = map_location::write_direction(l1.get_relative_dir(l2));
 	lua_pushlstring(L, dir.c_str(), dir.length());
 	return 1;
 }
