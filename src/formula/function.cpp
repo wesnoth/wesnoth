@@ -589,7 +589,7 @@ private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		const double angle = args()[0]->evaluate(variables,fdb).as_decimal() / 1000.0;
 		const double result = tan(angle * pi<double>() / 180.0);
-		if(result != result || result <= INT_MIN || result >= INT_MAX) {
+		if(std::isnan(result) || result <= INT_MIN || result >= INT_MAX) {
 			return variant();
 		}
 		return variant(result, variant::DECIMAL_VARIANT);
@@ -606,7 +606,7 @@ private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		const double num = args()[0]->evaluate(variables,fdb).as_decimal() / 1000.0;
 		const double result = asin(num) * 180.0 / pi<double>();
-		if(result != result) {
+		if(std::isnan(result)) {
 			return variant();
 		}
 		return variant(result, variant::DECIMAL_VARIANT);
@@ -622,7 +622,7 @@ private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		const double num = args()[0]->evaluate(variables,fdb).as_decimal() / 1000.0;
 		const double result = acos(num) * 180.0 / pi<double>();
-		if(result != result) {
+		if(std::isnan(result)) {
 			return variant();
 		}
 		return variant(result, variant::DECIMAL_VARIANT);
@@ -651,7 +651,7 @@ private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		const double num = args()[0]->evaluate(variables,fdb).as_decimal() / 1000.0;
 		const double result = sqrt(num);
-		if(result != result) {
+		if(std::isnan(result)) {
 			return variant();
 		}
 		return variant(result, variant::DECIMAL_VARIANT);
@@ -681,7 +681,7 @@ private:
 		const double base = args()[0]->evaluate(variables,fdb).as_decimal() / 1000.0;
 		const double root = args()[1]->evaluate(variables,fdb).as_decimal() / 1000.0;
 		const double result = base < 0 && fmod(root,2) == 1 ? -pow(-base, 1.0 / root) : pow(base, 1.0 / root);
-		if(result != result) {
+		if(std::isnan(result)) {
 			return variant();
 		}
 		return variant(result, variant::DECIMAL_VARIANT);
@@ -698,14 +698,14 @@ private:
 		const double num = args()[0]->evaluate(variables,fdb).as_decimal() / 1000.0;
 		if(args().size() == 1) {
 			const double result = log(num);
-			if(result != result) {
+			if(std::isnan(result)) {
 				return variant();
 			}
 			return variant(result, variant::DECIMAL_VARIANT);
 		} else {
 			const double base = args()[1]->evaluate(variables,fdb).as_decimal() / 1000.0;
 			const double result = log(num) / log(base);
-			if(result != result) {
+			if(std::isnan(result)) {
 				return variant();
 			}
 			return variant(result, variant::DECIMAL_VARIANT);
