@@ -473,11 +473,12 @@ static bool enter_lobby_mode(mp_workflow_helper_ptr helper, const std::vector<st
 			sound::stop_music();
 		}
 
+		mp::lobby_info li(helper->game_config, installed_addons);
+		helper->lobby_info = &li;
+
 		int dlg_retval = 0;
 		int dlg_joined_game_id = 0;
 		{
-			mp::lobby_info li(helper->game_config, installed_addons);
-			helper->lobby_info = &li;
 
 			gui2::dialogs::mp_lobby dlg(helper->game_config, li, *helper->connection);
 			dlg.show(helper->video);
