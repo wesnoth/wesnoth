@@ -2626,7 +2626,9 @@ void display::draw_hex(const map_location& loc) {
 						&& !(fogged(loc) && !overlays.first->second.visible_in_fog))
 				{
 
-					const surface surf = image::get_lighted_image(overlays.first->second.image, lt, image::SCALED_TO_HEX);
+					const std::string image = overlays.first->second.image;
+					const surface surf = image.find("~NO_TOD_SHIFT()") == std::string::npos ?
+						image::get_lighted_image(image, lt, image::SCALED_TO_HEX) : image::get_image(image, image::SCALED_TO_HEX);
 					drawing_buffer_add(LAYER_TERRAIN_BG, loc, xpos, ypos, surf);
 				}
 			}
