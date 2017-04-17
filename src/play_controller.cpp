@@ -644,10 +644,8 @@ void play_controller::tab()
 		}
 
 		// Add nicks from friendlist
-		const std::map<std::string, std::string> friends = preferences::get_acquaintances_nice("friend");
-
-		for(std::map<std::string, std::string>::const_iterator iter = friends.begin(); iter != friends.end(); ++iter){
-			dictionary.insert((*iter).first);
+		BOOST_FOREACH(const std::string& f, gui_->get_chat_manager().online_friends()){
+			dictionary.insert(f);
 		}
 
 		//Exclude own nick from tab-completion.

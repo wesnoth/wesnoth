@@ -36,6 +36,10 @@ public:
 	void add_whisperer(const std::string& nick) { whisperers_.insert(nick); }
 	void remove_whisperer(const std::string& nick) { whisperers_.erase(nick); }
 	const std::set<std::string>& whisperers() const { return whisperers_; }
+	
+	void add_online_friend(const std::string& nick) {online_friends_.insert(nick); }
+	void remove_online_friend(const std::string& nick) { online_friends_.erase(nick); }
+	const std::set<std::string>& online_friends() const { return online_friends_; }
 
 	void add_chat_message(const time_t& time, const std::string& speaker,
 		int side, const std::string& msg, events::chat_handler::MESSAGE_TYPE type, bool bell);
@@ -45,6 +49,7 @@ public:
 private:
 	std::set<std::string> observers_;
 	std::set<std::string> whisperers_; //nicks who whisper you for tab-completition purpose
+	std::set<std::string> online_friends_;
 
 	struct chat_message
 	{

@@ -56,7 +56,27 @@ void display_chat_manager::add_chat_message(const time_t& time, const std::strin
 	std::string::size_type pos = message.find(" has disconnected");
 	if (pos != std::string::npos){
 		for(std::set<std::string>::const_iterator w = whisperers().begin(); w != whisperers().end(); ++w){
-			if (*w == message.substr(0,pos)) remove_whisperer(*w);
+			if (*w == message.substr(0,pos)){
+				remove_whisperer(*w);
+			}
+		}
+		//remove also from online_friends
+		const std::map<std::string, std::string> friends = preferences::get_acquaintances_nice("friend");
+		for(std::map<std::string, std::string>::const_iterator iter = friends.begin(); iter != friends.end(); ++iter){
+			if ((*iter).first == message.substr(0,pos)){
+				remove_online_friend((*iter).first);
+			}
+		}
+	}
+	//add connected friend to online_friends
+	pos = message.find(" has logged into the lobby");
+	if (pos != std::string::npos){
+		const std::map<std::string, std::string> friends = preferences::get_acquaintances_nice("friend");
+
+		for(std::map<std::string, std::string>::const_iterator iter = friends.begin(); iter != friends.end(); ++iter){
+			if ((*iter).first == message.substr(0,pos)){
+				add_online_friend((*iter).first);
+			}
 		}
 	}
 
