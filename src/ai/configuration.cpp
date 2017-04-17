@@ -342,6 +342,12 @@ void configuration::expand_simplified_aspects(side_number side, config &cfg) {
 			parsed_config.add_child("aspect", p.second);
 		}
 	}
+	// Support old recruitment aspect syntax
+	for(auto& child : parsed_config.child_range("aspect")) {
+		if(child["id"] == "recruitment") {
+			child["id"] = "recruitment_instructions";
+		}
+	}
 	if (algorithm.empty() && !parsed_config.has_child("stage")) {
 		base_config = get_ai_config_for("ai_default_rca");
 	}
