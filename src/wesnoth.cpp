@@ -984,7 +984,7 @@ int main(int argc, char** argv)
 	// To avoid that problem, we need to set the OMP_WAIT_POLICY env var
 	// but that var is read by OMP at library loading time (before main)
 	// thus the relaunching of ourselves after setting the variable.
-#if !defined(_WIN32) && !defined(__APPLE__)
+#if !defined(_WIN32)
 	if (!getenv("OMP_WAIT_POLICY")) {
 		setenv("OMP_WAIT_POLICY", "PASSIVE", 1);
 		execv(argv[0], argv);
