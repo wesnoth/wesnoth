@@ -1033,10 +1033,13 @@ void game::process_whiteboard(simple_wml::document& data, const player_map::cons
 	// Ensure "side" and "team_name" attributes match with user
 	simple_wml::string_span const& team_name = wb_node["team_name"];
 	size_t const side_num = wb_node["side"].to_int();
+	if(sides_[side_num-1] != user->first) {
+		//This case seems to happen quite frequently in mp matches, mute this warning since it gives us no new information.
+		return;
+	}
 	if(!is_on_team(team_name,user->first)
 			|| side_num < 1
-			|| side_num > gamemap::MAX_PLAYERS
-			|| sides_[side_num-1] != user->first)
+			|| side_num > gamemap::MAX_PLAYERS)
 	{
 		if(sides_[side_num-1] != user->first) {
 			//This case seems to happen quite frequently in mp matches, mute this warning since it gives us no new information.
