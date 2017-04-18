@@ -62,27 +62,50 @@ public:
 	 *
 	 * If more than one but not all layers are visible, this will be the number of
 	 * the last one made visible.
+	 *
+	 * @returns       The most recently shown layer
 	 */
 	int current_layer() const { return selected_layer_; }
+
+	/**
+	 * Tests if the specified layer is selected (ie, visible).
+	 *
+	 * @param layer    The layer to test
+	 * @returns        True if the specified layer is selected
+	 */
+	bool layer_selected(const unsigned layer);
 
 	/**
 	 * Selects and displays a particular layer.
 	 *
 	 * If layer -1 is selected, all layers will be displayed but only the
 	 * topmost (highest-numbered) layer will receive events.
+	 *
+	 * @param layer     The layer to select
 	 */
 	void select_layer(const int layer);
 
 	/**
 	 * Selects and displays multiple layers based on the state of the provided dynamic_bitset.
+	 *
+	 * @param mask      A mask specifying which layers to select and deselect
 	 */
 	void select_layers(const boost::dynamic_bitset<>& mask);
 
 	/**
 	 * Gets the total number of layers.
+	 *
+	 * @returns         The total number of layers
 	 */
 	unsigned int get_layer_count() const;
 
+	/**
+	 * Gets the grid for a specified layer.
+	 * This can be used to search for widgets in a hidden layer.
+	 *
+	 * @param           The layer to retrieve
+	 * @returns         The grid for the specified layer.
+	 */
 	grid* get_layer_grid(unsigned int i);
 
 private:

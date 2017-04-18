@@ -177,18 +177,25 @@ public:
 	grid* get_row_grid(const unsigned row);
 
 	/**
-	 * Selectes a row.
+	 * Selects a row.
 	 *
 	 * @param row                 The row to select.
 	 * @param select              Select or deselect the row.
+	 * @returns                   True if the operation succeeded.
 	 */
 	bool select_row(const unsigned row, const bool select = true);
 
 	/**
+	 * Check if a row is selected
+	 * @param row                 The row to test
+	 * @returns                   True if it is selected.
+	 */
+	bool row_selected(const unsigned row);
+
+	/**
 	 * Returns the first selected row
 	 *
-	 * @returns                   The first selected row.
-	 * @retval -1                 No row selected.
+	 * @returns                   The first selected row, or -1 if no row is selected.
 	 */
 	int get_selected_row() const;
 

@@ -46,7 +46,6 @@ multimenu_button::multimenu_button()
 	, retval_(0)
 	, values_()
 	, toggle_states_()
-	, keep_open_(false)
 	, droplist_(nullptr)
 {
 	values_.emplace_back(config_of("label", this->get_label()));
@@ -140,7 +139,7 @@ void multimenu_button::signal_handler_left_button_click(const event::ui_event ev
 	sound::play_UI_sound(settings::sound_button_click);
 
 	// If a button has a retval do the default handling.
-	dialogs::drop_down_menu droplist(this->get_rectangle(), this->values_, -1, this->get_use_markup(), this->keep_open_,
+	dialogs::drop_down_menu droplist(this->get_rectangle(), this->values_, -1, this->get_use_markup(), true,
 		std::bind(&multimenu_button::toggle_state_changed, this));
 
 	droplist_ = &droplist;
@@ -218,9 +217,7 @@ void multimenu_button::update_config_from_toggle_states()
 	for(unsigned i = 0; i < values_.size(); i++) {
 		::config& c = values_[i];
 
-		if(c.has_attribute("checkbox")) {
-			c["checkbox"] = toggle_states_[i];
-		}
+		c["checkbox"] = toggle_states_[i];
 	}
 }
 
@@ -242,6 +239,26 @@ void multimenu_button::toggle_state_changed()
 	if(callback_toggle_state_change_ != nullptr) {
 		callback_toggle_state_change_(toggle_states_);
 	}
+}
+
+void multimenu_button::select_option(const unsigned option, const bool selected)
+{
+	assert(option < values_.size());
+
+	if(option < toggle_states_.size()) {
+		toggle_states_.resize(option + 1);
+	}
+	toggle_states_[option] = selected;
+	update_config_from_toggle_states();
+	update_label();
+}
+
+void multimenu_button::select_options(boost::dynamic_bitset<> states)
+{
+	assert(states.size() == values_.size());
+	toggle_states_ = states;
+	update_config_from_toggle_states();
+	update_label();
 }
 
 void multimenu_button::set_values(const std::vector<::config>& values)

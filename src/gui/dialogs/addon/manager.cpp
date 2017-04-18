@@ -368,7 +368,6 @@ void addon_manager::pre_show(window& window)
 	}
 
 	type_filter.set_values(type_filter_entries);
-	type_filter.set_keep_open(true);
 	type_filter.set_callback_toggle_state_change(std::bind(&addon_manager::apply_filters, this, std::ref(window)));
 
 	button& url_go_button = find_widget<button>(&window, "url_go", false);

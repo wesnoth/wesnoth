@@ -158,6 +158,12 @@ void stacked_widget::update_selected_layer_index(const int i)
 	selected_layer_ = utils::clamp<int>(i, -1, get_layer_count() - 1);
 }
 
+bool stacked_widget::layer_selected(const unsigned layer)
+{
+	assert(layer < get_layer_count());
+	return generator_->is_selected(layer);
+}
+
 void stacked_widget::select_layer(const int layer)
 {
 	update_selected_layer_index(layer);

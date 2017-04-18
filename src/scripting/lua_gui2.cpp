@@ -25,6 +25,7 @@
 #include "gui/widgets/clickable_item.hpp"
 #include "gui/widgets/styled_widget.hpp"
 #include "gui/widgets/multi_page.hpp"
+#include "gui/widgets/multimenu_button.hpp"
 #include "gui/widgets/progress_bar.hpp"
 #include "gui/widgets/selectable_item.hpp"
 #include "gui/widgets/settings.hpp"
@@ -428,12 +429,25 @@ int intf_set_dialog_value(lua_State* L)
 	if(gui2::listbox* list = dynamic_cast<gui2::listbox*>(w))
 #endif
 	{
-		int v = luaL_checkinteger(L, 1);
-		int n = list->get_item_count();
-		if(1 <= v && v <= n) {
-			list->select_row(v - 1);
+		if(lua_istable(L, 1)) {
+			// Do two passes in case has_minimum is true
+			// Probably not the best way to do it, but should work in the majority of cases.
+			std::vector<int> selected_vec = lua_check<std::vector<int>>(L, 1);
+			std::set<int> selected(selected_vec.begin(), selected_vec.end());
+			for(unsigned i = 0; i < list->get_item_count(); i++) {
+				list->select_row(i, selected.count(i + 1));
+			}
+			for(unsigned i = 0; i < list->get_item_count(); i++) {
+				list->select_row(i, selected.count(i + 1));
+			}
 		} else {
-			return luaL_argerror(L, 1, "out of bounds");
+			int v = luaL_checkinteger(L, 1);
+			int n = list->get_item_count();
+			if(1 <= v && v <= n) {
+				list->select_row(v - 1);
+			} else {
+				return luaL_argerror(L, 1, "out of bounds");
+			}
 		}
 	} else if(gui2::multi_page* multi_page = dynamic_cast<gui2::multi_page*>(w)) {
 		int v = luaL_checkinteger(L, 1);
@@ -469,10 +483,21 @@ int intf_set_dialog_value(lua_State* L)
 			return luaL_argerror(L, 1, "out of bounds");
 		}
 	} else if(gui2::stacked_widget* stacked_widget = dynamic_cast<gui2::stacked_widget*>(w)) {
-		const int v = luaL_checkinteger(L, 1);
-		const int n = stacked_widget->get_layer_count();
-		if(v >= 0 && v <= n) {
-			stacked_widget->select_layer(v - 1);
+		if(lua_istable(L, 1)) {
+			boost::dynamic_bitset<> states;
+			states.resize(stacked_widget->get_layer_count());
+			for(unsigned i : lua_check<std::vector<unsigned>>(L, 1)) {
+				if(i > 0 && i <= stacked_widget->get_layer_count()) {
+					states[i] = true;
+				}
+			}
+			stacked_widget->select_layers(states);
+		} else {
+			const int v = luaL_checkinteger(L, 1);
+			const int n = stacked_widget->get_layer_count();
+			if(v >= 0 && v <= n) {
+				stacked_widget->select_layer(v - 1);
+			}
 		}
 	} else if(gui2::unit_preview_pane* unit_preview_pane = dynamic_cast<gui2::unit_preview_pane*>(w)) {
 		if(const unit_type* ut = luaW_tounittype(L, 1)) {
@@ -488,6 +513,25 @@ int intf_set_dialog_value(lua_State* L)
 			node->unfold();
 		} else {
 			node->fold();
+		}
+	} else if(gui2::multimenu_button* menu = dynamic_cast<gui2::multimenu_button*>(w)) {
+		if(lua_istable(L, 1)) {
+			boost::dynamic_bitset<> states;
+			states.resize(menu->num_options());
+			for(unsigned i : lua_check<std::vector<unsigned>>(L, 1)) {
+				if(i > 0 && i <= menu->num_options()) {
+					states[i] = true;
+				}
+			}
+			menu->select_options(states);
+		} else {
+			int v = luaL_checkinteger(L, 1);
+			int n = menu->num_options();
+			if(1 <= v && v <= n) {
+				menu->select_option(v - 1);
+			} else {
+				return luaL_argerror(L, 1, "out of bounds");
+			}
 		}
 	} else {
 		t_string v = luaW_checktstring(L, 1);
@@ -509,6 +553,7 @@ int intf_set_dialog_value(lua_State* L)
 int intf_get_dialog_value(lua_State* L)
 {
 	gui2::widget *w = find_widget(L, 1, true);
+	int num_rets = 1;
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	if(gui2::list_view* list = dynamic_cast<gui2::list_view*>(w))
@@ -517,6 +562,16 @@ int intf_get_dialog_value(lua_State* L)
 #endif
 	{
 		lua_pushinteger(L, list->get_selected_row() + 1);
+		num_rets = 2;
+		lua_newtable(L);
+		int count = 0;
+		for(unsigned i = 0; i < list->get_item_count(); i++) {
+			if(list->row_selected(i)) {
+				count++;
+				lua_pushnumber(L, i + 1);
+				lua_rawseti(L, -1, count);
+			}
+		}
 	} else if(gui2::multi_page* multi_page = dynamic_cast<gui2::multi_page*>(w)) {
 		lua_pushinteger(L, multi_page->get_selected_page() + 1);
 	} else if(gui2::selectable_item* selectable = dynamic_cast<gui2::selectable_item*>(w)) {
@@ -540,11 +595,32 @@ int intf_get_dialog_value(lua_State* L)
 		}
 	} else if(gui2::stacked_widget* stacked_widget = dynamic_cast<gui2::stacked_widget*>(w)) {
 		lua_pushinteger(L, stacked_widget->current_layer());
+		num_rets = 2;
+		lua_newtable(L);
+		int count = 0;
+		for(unsigned i = 0; i < stacked_widget->get_layer_count(); i++) {
+			if(stacked_widget->layer_selected(i)) {
+				count++;
+				lua_pushnumber(L, i + 1);
+				lua_rawseti(L, -1, count);
+			}
+		}
+	} else if(gui2::multimenu_button* menu = dynamic_cast<gui2::multimenu_button*>(w)) {
+		auto selected = menu->get_toggle_states();
+		int count = 0;
+		lua_newtable(L);
+		for(unsigned i = 0; i < selected.size(); i++) {
+			if(selected[i]) {
+				count++;
+				lua_pushnumber(L, i + 1);
+				lua_rawseti(L, -1, count);
+			}
+		}
 	} else {
 		return luaL_argerror(L, lua_gettop(L), "unsupported widget");
 	}
 
-	return 1;
+	return num_rets;
 }
 namespace
 {

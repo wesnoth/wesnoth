@@ -69,16 +69,57 @@ public:
 		retval_ = retval;
 	}
 
+	/**
+	 * Sets the maximum number of selected elements shown on the label.
+	 * If more are selected, the label will say "and N others".
+	 *
+	 * @param max      The maximum number of elements to show
+	 */
 	void set_max_shown(const int max)
 	{
 		max_shown_ = max;
 	}
 
+	/**
+	 * Get the maximum number of selected elements shown on the label.
+	 *
+	 * @returns        The maximum number of elements to show
+	 */
 	int get_max_shown()
 	{
 		return max_shown_;
 	}
 
+	/**
+	 * Get the number of options available in the menu
+	 *
+	 * @returns        The number of options in the menu
+	 */
+	unsigned num_options()
+	{
+		return values_.size();
+	}
+
+	/**
+	 * Select an option in the menu
+	 *
+	 * @param option   The option to select
+	 * @param selected True to select it, or false to deselect it
+	 */
+	void select_option(const unsigned option, const bool selected = true);
+
+	/**
+	 * Set the options selected in the menu.
+	 *
+	 * @param mask     A mask specifying which options to select and deselect
+	 */
+	void select_options(boost::dynamic_bitset<> states);
+
+	/**
+	 * Set the available menu options.
+	 *
+	 * @param values   A list of options to show in the menu
+	 */
 	void set_values(const std::vector<::config>& values);
 
 	/**
@@ -89,20 +130,20 @@ public:
 		callback_toggle_state_change_ = callback;
 	}
 
-	/** Returns the value of the selected row */
-	//std::string get_value_string() const;
-
+	/**
+	 * Get the current state of the menu options.
+	 *
+	 * @returns        A mask specifying which options are selected
+	 */
 	boost::dynamic_bitset<> get_toggle_states() const
 	{
 		return toggle_states_;
 	}
 
+	/**
+	 * Deselect all the menu options.
+	 */
 	void reset_toggle_states();
-
-	void set_keep_open(const bool keep_open)
-	{
-		keep_open_ = keep_open;
-	}
 
 private:
 	/**
@@ -144,8 +185,6 @@ private:
 	std::vector<::config> values_;
 
 	boost::dynamic_bitset<> toggle_states_;
-
-	bool keep_open_;
 
 	dialogs::drop_down_menu* droplist_;
 
