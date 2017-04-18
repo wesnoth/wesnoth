@@ -118,11 +118,11 @@ static gui2::widget *find_widget(lua_State *L, int i, bool readonly)
 {
 	if (!scoped_dialog::current) {
 		luaL_error(L, "no visible dialog");
-		error_call_destructors_1:
+		error_oob_call_dtors:
 		luaL_argerror(L, i, "out of bounds");
-		error_call_destructors_2:
+		error_not_str_call_dtors:
 		luaW_type_error(L, i, "string");
-		error_call_destructors_3:
+		error_no_wgt_call_dtors:
 		luaL_argerror(L, i, "widget not found");
 		return nullptr;
 	}
@@ -138,11 +138,11 @@ static gui2::widget *find_widget(lua_State *L, int i, bool readonly)
 		{
 			int v = lua_tointeger(L, i);
 			if (v < 1)
-				goto error_call_destructors_1;
+				goto error_oob_call_dtors;
 			int n = list->get_item_count();
 			if (v > n) {
 				if (readonly)
-					goto error_call_destructors_1;
+					goto error_oob_call_dtors;
 				utils::string_map dummy;
 				for (; n < v; ++n)
 					list->add_row(dummy);
@@ -153,11 +153,11 @@ static gui2::widget *find_widget(lua_State *L, int i, bool readonly)
 		{
 			int v = lua_tointeger(L, i);
 			if (v < 1)
-				goto error_call_destructors_1;
+				goto error_oob_call_dtors;
 			int n = multi_page->get_page_count();
 			if (v > n) {
 				if (readonly)
-					goto error_call_destructors_1;
+					goto error_oob_call_dtors;
 				utils::string_map dummy;
 				for (; n < v; ++n)
 					multi_page->add_page(dummy);
@@ -171,10 +171,10 @@ static gui2::widget *find_widget(lua_State *L, int i, bool readonly)
 			{
 				int v = lua_tointeger(L, i);
 				if (v < 1)
-					goto error_call_destructors_1;
+					goto error_oob_call_dtors;
 				int n = tvn.count_children();
 				if (v > n) {
-					goto error_call_destructors_1;
+					goto error_oob_call_dtors;
 				}
 				w = &tvn.get_child_at(v - 1);
 
@@ -191,10 +191,10 @@ static gui2::widget *find_widget(lua_State *L, int i, bool readonly)
 			{
 				int v = lua_tointeger(L, i);
 				if (v < 1)
-					goto error_call_destructors_1;
+					goto error_oob_call_dtors;
 				int n = tree_view_node->count_children();
 				if (v > n) {
-					goto error_call_destructors_1;
+					goto error_oob_call_dtors;
 				}
 				w = &tree_view_node->get_child_at(v - 1);
 
@@ -209,11 +209,11 @@ static gui2::widget *find_widget(lua_State *L, int i, bool readonly)
 			if(lua_isnumber(L, i)) {
 				int v = lua_tointeger(L, i);
 				if(v < 1) {
-					goto error_call_destructors_1;
+					goto error_oob_call_dtors;
 				}
 				int n = stacked_widget->get_layer_count();
 				if(v > n) {
-					goto error_call_destructors_1;
+					goto error_oob_call_dtors;
 				}
 				w = stacked_widget->get_layer_grid(v - 1);
 			} else {
@@ -224,10 +224,10 @@ static gui2::widget *find_widget(lua_State *L, int i, bool readonly)
 		else
 		{
 			char const *m = lua_tostring(L, i);
-			if (!m) goto error_call_destructors_2;
+			if (!m) goto error_not_str_call_dtors;
 			w = w->find(m, false);
 		}
-		if (!w) goto error_call_destructors_3;
+		if (!w) goto error_no_wgt_call_dtors;
 	}
 
 	return w;
