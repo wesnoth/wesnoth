@@ -275,7 +275,10 @@ void team::team_info::write(config& cfg) const
 	cfg["carryover_bonus"] = carryover_bonus;
 	cfg["carryover_gold"] = carryover_gold;
 
-	cfg.add_child("variables", variables);
+	if(!variables.empty()) {
+		cfg.add_child("variables", variables);
+	}
+
 	cfg.add_child("ai", ai::manager::to_config(side));
 }
 
