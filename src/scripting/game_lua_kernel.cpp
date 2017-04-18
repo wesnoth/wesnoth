@@ -70,6 +70,7 @@
 #include "recall_list_manager.hpp"      // for recall_list_manager
 #include "replay.hpp"                   // for get_user_choice, etc
 #include "reports.hpp"                  // for register_generator, etc
+#include "scripting/lua_audio.hpp"
 #include "scripting/lua_unit.hpp"
 #include "scripting/lua_unit_attacks.hpp"
 #include "scripting/lua_common.hpp"
@@ -2512,6 +2513,7 @@ int game_lua_kernel::intf_simulate_combat(lua_State *L)
  */
 static int intf_set_music(lua_State *L)
 {
+	lg::wml_error() << "set_music is deprecated; please use the wesnoth.playlist table instead!\n";
 	if (lua_isnoneornil(L, 1)) {
 		sound::commit_music_changes();
 		return 0;
@@ -4121,6 +4123,9 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	lua_setmetatable(L, -2);
 	lua_setfield(L, -2, "current");
 	lua_pop(L, 1);
+
+	// Create the playlist table with its metatable
+	cmd_log_ << lua_audio::register_table(L);
 
 	// Create the wml_actions table.
 	cmd_log_ << "Adding wml_actions table...\n";

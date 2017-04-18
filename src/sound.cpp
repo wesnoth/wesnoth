@@ -165,6 +165,33 @@ unsigned int current_track_index = 0;
 
 }
 
+namespace sound {
+	unsigned int get_current_track() {
+		return current_track_index;
+	}
+
+	unsigned int get_num_tracks() {
+		return current_track_list.size();
+	}
+
+	music_track& get_track(unsigned int i) {
+		static music_track dummy;
+		if(i < current_track_list.size()) {
+			return current_track_list[i];
+		}
+		if(i == current_track_list.size()) {
+			return current_track;
+		}
+		return dummy;
+	}
+
+	void set_track(unsigned int i, const music_track& to) {
+		if(i < current_track_list.size()) {
+			current_track_list[i] = to;
+		}
+	}
+}
+
 static bool track_ok(const std::string& id)
 {
 	LOG_AUDIO << "Considering " << id << "\n";
@@ -456,9 +483,9 @@ void stop_UI_sound() {
 
 void play_music_once(const std::string &file)
 {
-	// Clear list so it's not replayed.
-	current_track_list.clear();
 	current_track = music_track(file);
+	current_track.set_play_once(true);
+	current_track_index = current_track_list.size();
 	play_music();
 }
 
@@ -530,6 +557,7 @@ void play_music_repeatedly(const std::string &id)
 	// If we're already playing it, don't interrupt.
 	if (current_track != id) {
 		current_track = music_track(id);
+		current_track_index = 0;
 		play_music();
 	}
 }
@@ -545,6 +573,7 @@ void play_music_config(const config &music_node)
 	// If they say play once, we don't alter playlist.
 	if (track.play_once()) {
 		current_track = track;
+		current_track_index = current_track_list.size();
 		play_music();
 		return;
 	}
@@ -574,6 +603,7 @@ void play_music_config(const config &music_node)
 	// They can tell us to start playing this list immediately.
 	if (track.immediate()) {
 		current_track = track;
+		current_track_index = current_track_list.size() - 1;
 		play_music();
 	} else if (!track.append()) { // Make sure the current track is finished
 		current_track.set_play_once(true);

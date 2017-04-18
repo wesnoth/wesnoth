@@ -47,6 +47,9 @@ public:
 	const std::string& title() const { return title_; }
 
 	void set_play_once(bool v) { once_ = v; }
+	void set_shuffle(bool v) { shuffle_ = v; }
+	void set_ms_before(int v) { ms_before_ = v; }
+	void set_ms_after(int v) { ms_after_ = v; }
 
 private:
 	void resolve();
@@ -62,6 +65,9 @@ private:
 	bool immediate_;
 	bool shuffle_;
 };
+
+music_track& get_track(unsigned int i);
+void set_track(unsigned int i, const music_track& to);
 
 } /* end namespace sound */
 

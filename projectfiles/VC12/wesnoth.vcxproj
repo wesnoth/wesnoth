@@ -2581,6 +2581,12 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Scripting\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Scripting\</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="..\..\src\scripting\lua_audio.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Scripting\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Scripting\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Scripting\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Scripting\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\scripting\lua_common.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Scripting\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Scripting\</ObjectFileName>
@@ -3864,6 +3870,7 @@
     <ClInclude Include="..\..\src\scripting\application_lua_kernel.hpp" />
     <ClInclude Include="..\..\src\scripting\debug_lua.hpp" />
     <ClInclude Include="..\..\src\scripting\game_lua_kernel.hpp" />
+    <ClInclude Include="..\..\src\scripting\lua_audio.hpp" />
     <ClInclude Include="..\..\src\scripting\lua_common.hpp" />
     <ClInclude Include="..\..\src\scripting\lua_cpp_function.hpp" />
     <ClInclude Include="..\..\src\scripting\lua_fileops.hpp" />

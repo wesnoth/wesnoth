@@ -207,7 +207,7 @@ namespace lua_team {
 		};
 		luaL_setfuncs(L, callbacks, 0);
 
-		lua_pushstring(L, "side");
+		lua_pushstring(L, Team);
 		lua_setfield(L, -2, "__metatable");
 		// Side methods
 		luaW_getglobal(L, "wesnoth", "match_side");

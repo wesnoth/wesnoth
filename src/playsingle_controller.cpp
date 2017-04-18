@@ -323,6 +323,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 		// instead should they want special music.
 		const std::string& end_music = select_music(is_victory);
 		if((!is_victory || end_level.transient.carryover_report) && !end_music.empty()) {
+			sound::empty_playlist();
 			sound::play_music_once(end_music);
 		}
 		persist_.end_transaction();

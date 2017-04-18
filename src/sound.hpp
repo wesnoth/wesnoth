@@ -101,6 +101,9 @@ void set_sound_volume(int vol);
 void set_bell_volume(int vol);
 void set_UI_volume(int vol);
 
+unsigned int get_current_track();
+unsigned int get_num_tracks();
+
 }
 
 #endif

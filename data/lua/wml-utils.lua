@@ -155,7 +155,7 @@ function utils.handle_event_commands(cfg, scope_type)
 		current_exit = "none"
 	end
 	-- Apply music alterations once all the commands have been processed.
-	wesnoth.set_music()
+	wesnoth.music_list.force_refresh()
 	return current_exit
 end
 
