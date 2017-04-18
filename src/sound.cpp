@@ -896,6 +896,14 @@ void play_UI_sound(const std::string& files)
 	}
 }
 
+int get_music_volume()
+{
+	if(mix_ok) {
+		return Mix_VolumeMusic(-1);
+	}
+	return 0;
+}
+
 void set_music_volume(int vol)
 {
 	if(mix_ok && vol >= 0) {
@@ -904,6 +912,15 @@ void set_music_volume(int vol)
 
 		Mix_VolumeMusic(vol);
 	}
+}
+
+int get_sound_volume()
+{
+	if(mix_ok) {
+		// Since set_sound_volume sets all main channels to the same, just return the volume of any main channel
+		return Mix_Volume(source_channel_start, -1);
+	}
+	return 0;
 }
 
 void set_sound_volume(int vol)

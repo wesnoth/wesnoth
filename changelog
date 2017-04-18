@@ -30,10 +30,12 @@ Version 1.13.7+dev:
 	 * wesnoth.music_list.add appends a track to the playlist (as [music]append=yes)
 	 * wesnoth.music_list.clear clears the current playlist
 	 * wesnoth.music_list.force_refresh forces any pending playlist changes to be immediately applied
+	 * wesnoth.music_list.volume attribute gets/sets the current music volume, as [volume]music=
 	 * Each track has modifiable shuffle, once, ms_before, ms_after attributes and
 	   read-only append, immediate, name, title attributes. They are also
 	   comparable with == or ~=
    * wesnoth.set_music is now deprecated, in favour of the above new API
+   * New wesnoth.sound_volume function gets/sets the current sound volume, as [volume]sound=
  * Multiplayer:
    * Fixed statistics being lost when reloading an MP game.
  * Performance:
@@ -62,6 +64,7 @@ Version 1.13.7+dev:
    * New [change_theme] tag to change the theme mid-scenario
    * New [zoom] tag allows changing the zoom level from an event
    * [kill]animate=yes now plays victory animations if applicable
+   * Fix [volume] not accepting 100% as the new volume.
 
 Version 1.13.7:
  * AI:

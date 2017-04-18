@@ -19,6 +19,7 @@ See the COPYING file for more details.
 #include "sound.hpp"
 #include "sound_music_track.hpp"
 #include "config_assign.hpp"
+#include "preferences.hpp"
 
 static const char* Track = "music track";
 
@@ -71,6 +72,9 @@ static int impl_music_get(lua_State* L) {
 		}
 		return 1;
 	}
+	// This calculation reverses the one used in [volume] to get back the relative volume level.
+	// (Which is the same calculation that's duplicated in impl_music_set.)
+	return_float_attrib("volume", sound::get_music_volume() * 100.0f / preferences::music_volume());
 	return luaW_getmetafield(L, 1, m);
 }
 
@@ -80,6 +84,8 @@ static int impl_music_set(lua_State* L) {
 		sound::set_track(lua_tointeger(L, 2), *track);
 		return 0;
 	}
+	const char* m = luaL_checkstring(L, 2);
+	modify_float_attrib_check_range("volume", sound::set_music_volume(value * preferences::music_volume() / 100.0f), 0.0, 100.0);
 	// TODO: Set "current" and "current_i"
 	return 0;
 }

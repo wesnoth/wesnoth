@@ -96,6 +96,8 @@ public:
 // Save music playlist for snapshot
 void write_music_play_list(config& snapshot);
 
+int get_music_volume();
+int get_sound_volume();
 void set_music_volume(int vol);
 void set_sound_volume(int vol);
 void set_bell_volume(int vol);

@@ -286,6 +286,17 @@ function wml_actions.music(cfg)
 	end
 end
 
+function wml_actions.volume(cfg)
+	if cfg.music then
+		local rel = tonumber(cfg.music) or 100.0
+		wesnoth.music_list.volume = rel
+	end
+	if cfg.sound then
+		local rel = tonumber(cfg.sound) or 100.0
+		wesnoth.sound_volume(rel)
+	end
+end
+
 -- This is mainly for use in unit test macros, but maybe it can be useful elsewhere too
 function wml_actions.test_condition(cfg)
 	local logger = cfg.logger or "warning"

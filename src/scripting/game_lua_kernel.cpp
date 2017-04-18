@@ -2539,6 +2539,26 @@ int game_lua_kernel::intf_play_sound(lua_State *L)
 }
 
 /**
+ * Gets/sets the current sound volume
+ * - Arg 1: (optional) New volume to set
+ * - Return: Original volume
+ */
+static int intf_sound_volume(lua_State* L)
+{
+	int vol = preferences::sound_volume();
+	lua_pushnumber(L, sound::get_sound_volume() * 100.0f / vol);
+	if(lua_isnumber(L, 1)) {
+		float rel = lua_tonumber(L, 1);
+		if(rel < 0.0f || rel > 100.0f) {
+			return luaL_argerror(L, 1, "volume must be in range 0..100");
+		}
+		vol = static_cast<int>(rel*vol / 100.0f);
+		sound::set_sound_volume(vol);
+	}
+	return 1;
+}
+
+/**
  * Scrolls to given tile.
  * - Arg 1: location.
  * - Arg 2: boolean preventing scroll to fog.
@@ -3943,6 +3963,7 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "modify_ai",                &intf_modify_ai_old            },
 		{ "remove_modifications",     &intf_remove_modifications     },
 		{ "set_music",                &intf_set_music                },
+		{ "sound_volume",             &intf_sound_volume             },
 		{ "transform_unit",           &intf_transform_unit           },
 		{ "unit_defense",             &intf_unit_defense             },
 		{ "unit_movement_cost",       &intf_unit_movement_cost       },
