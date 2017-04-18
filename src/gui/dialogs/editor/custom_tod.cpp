@@ -178,10 +178,6 @@ const time_of_day& custom_tod::get_selected_tod() const
 
 void custom_tod::update_tod_display(window& window)
 {
-	::image::set_color_adjustment(tod_red_field_->get_value(),
-								tod_green_field_->get_value(),
-								tod_blue_field_->get_value());
-
 	// Prevent a floating slice of window appearing alone over the
 	// theme UI sidebar after redrawing tiles and before we have a
 	// chance to redraw the rest of this window.
@@ -195,6 +191,12 @@ void custom_tod::update_tod_display(window& window)
 	//
 	// If this ceases to be the case in the future, you'll need to call
 	// redraw_everything() instead.
+
+	display_.adjust_color_overlay(
+		tod_red_field_->get_value(),
+		tod_green_field_->get_value(),
+		tod_blue_field_->get_value()
+	);
 
 	// invalidate all tiles so they are redrawn with the new ToD tint next
 	display_.invalidate_all();
