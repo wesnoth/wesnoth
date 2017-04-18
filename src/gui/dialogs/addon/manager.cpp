@@ -695,6 +695,30 @@ void addon_manager::delete_addon(const addon_info& addon, window& window)
 	}
 }
 
+/** Called when the player double-clicks an add-on. */
+void addon_manager::execute_default_action(const addon_info& addon, window& window)
+{
+	switch(tracking_info_[addon.id].state) {
+		case ADDON_NONE:
+			install_addon(addon, window);
+			break;
+		case ADDON_INSTALLED:
+			if(!tracking_info_[addon.id].can_publish) {
+				uninstall_addon(addon, window);
+			}
+			break;
+		case ADDON_INSTALLED_UPGRADABLE:
+			update_addon(addon, window);
+			break;
+		case ADDON_INSTALLED_LOCAL_ONLY:
+		case ADDON_INSTALLED_OUTDATED:
+			publish_addon(addon, window);
+			break;
+		default:
+			break;
+	}
+}
+
 void addon_manager::show_help(window& window)
 {
 	help::show_help(window.video(), "installing_addons");
@@ -814,8 +838,8 @@ void addon_manager::on_addon_select(window& window)
 
 bool addon_manager::exit_hook(window& window)
 {
-	if(window.get_retval() == addon_list::INSTALL_ADDON_RETVAL) {
-		install_selected_addon(window);
+	if(window.get_retval() == addon_list::DEFAULT_ACTION_RETVAL) {
+		execute_default_action_on_selected_addon(window);
 		return false;
 	}
 

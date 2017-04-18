@@ -171,7 +171,7 @@ void addon_list::set_addons(const addons_list& addons)
 		grid* row_grid = &list.add_row(data);
 
 		// Set special retval for the toggle panels
-		find_widget<toggle_panel>(row_grid, "list_panel", false).set_retval(INSTALL_ADDON_RETVAL);
+		find_widget<toggle_panel>(row_grid, "list_panel", false).set_retval(DEFAULT_ACTION_RETVAL);
 
 		grid* control_grid = find_widget<grid>(row_grid, "single_install_buttons", false, false);
 		if(!control_grid) {

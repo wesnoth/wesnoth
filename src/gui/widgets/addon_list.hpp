@@ -51,7 +51,7 @@ public:
 	{}
 
 	/** Special retval for the toggle panels in the addons list */
-	static const int INSTALL_ADDON_RETVAL = 200;
+	static const int DEFAULT_ACTION_RETVAL = 200;
 
 	/** Sets the add-ons to show. */
 	void set_addons(const addons_list& addons);

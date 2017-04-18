@@ -112,6 +112,12 @@ private:
 		execute_action_on_selected_addon<&addon_manager::delete_addon>(window);
 	}
 
+	void execute_default_action(const addon_info& addon, window& window);
+	void execute_default_action_on_selected_addon(window& window)
+	{
+		execute_action_on_selected_addon<&addon_manager::execute_default_action>(window);
+	}
+
 	void update_all_addons(window& window);
 
 	void browse_url_callback(text_box& url_box);
