@@ -59,7 +59,7 @@ config random_generate_scenario(const std::string& name, const config &cfg)
 	std::unique_ptr<map_generator> generator(create_map_generator(name,cfg));
 	if(generator == nullptr) {
 		std::stringstream ss;
-		ss << "could not find map generator '" << parameters.front() << "'";
+		ss << "could not find map generator '" << name << "'";
 		throw mapgen_exception(ss.str());
 	}
 
