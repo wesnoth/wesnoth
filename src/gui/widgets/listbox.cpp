@@ -254,7 +254,7 @@ bool listbox::select_row(const unsigned row, const bool select)
 {
 	assert(generator_);
 
-	int before = generator_->get_selected_item_count();
+	unsigned int before = generator_->get_selected_item_count();
 	generator_->select_item(row, select);
 
 	return before != generator_->get_selected_item_count();
