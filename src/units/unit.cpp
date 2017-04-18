@@ -1382,6 +1382,15 @@ void unit::remove_ability_by_id(const std::string& ability)
 
 void unit::write(config& cfg) const
 {
+	auto write_subtag = [&cfg](const std::string& key, const config& child)
+	{
+		cfg.clear_children(key);
+
+		if(!child.empty()) {
+			cfg.add_child(key, child);
+		}
+	};
+
 	movement_type_.write(cfg);
 	cfg["small_profile"] = small_profile_;
 	cfg["profile"] = profile_;
@@ -1435,14 +1444,12 @@ void unit::write(config& cfg) const
 		status_flags[state] = true;
 	}
 
-	cfg.clear_children("variables");
-	cfg.add_child("variables",variables_);
+	write_subtag("variables", variables_);
+	write_subtag("filter_recall", filter_recall_);
+	write_subtag("status", status_flags);
+
 	cfg.clear_children("events");
 	cfg.append(events_);
-	cfg.clear_children("filter_recall");
-	cfg.add_child("filter_recall", filter_recall_);
-	cfg.clear_children("status");
-	cfg.add_child("status",status_flags);
 
 	cfg["overlays"] = utils::join(overlays_);
 
@@ -1488,14 +1495,15 @@ void unit::write(config& cfg) const
 	}
 
 	cfg["cost"] = unit_value_;
-	cfg.clear_children("modifications");
-	cfg.add_child("modifications", modifications_);
-	cfg.clear_children("abilities");
-	cfg.add_child("abilities", abilities_);
-	cfg.clear_children("advancement");
 
+	write_subtag("modifications", modifications_);
+	write_subtag("abilities", abilities_);
+
+	cfg.clear_children("advancement");
 	for(const config& advancement : this->advancements_) {
-		cfg.add_child("advancement", advancement);
+		if(!advancement.empty()) {
+			cfg.add_child("advancement", advancement);
+		}
 	}
 }
 
