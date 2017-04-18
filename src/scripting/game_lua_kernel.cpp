@@ -3589,21 +3589,11 @@ int game_lua_kernel::intf_set_time_of_day(lua_State * L)
 
 int game_lua_kernel::intf_scroll(lua_State * L)
 {
-	vconfig cfg = luaW_checkvconfig(L, 1);
+	int x = luaL_checkinteger(L, 1), y = luaL_checkinteger(L, 2);
 
 	if (game_display_) {
-		const std::vector<int> side_list = get_sides_vector(cfg);
-		bool side_match = false;
-		for (int side : side_list) {
-			if(board().get_team(side).is_local_human()) {
-				side_match = true;
-				break;
-			}
-		}
-		if ((cfg["side"].empty() && !cfg.has_child("filter_side")) || side_match) {
-			game_display_->scroll(cfg["x"], cfg["y"], true);
-			game_display_->draw(true,true);
-		}
+		game_display_->scroll(x, y, true);
+		game_display_->draw(true, true);
 	}
 
 	return 0;

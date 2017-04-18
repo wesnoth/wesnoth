@@ -17,6 +17,10 @@ Version 1.13.7+dev:
      required to be a space adjacent to the unit.
    * New modifiable theme attribute in wesnoth.game_config
    * New wesnoth.zoom() function allows changing the zoom level
+   * The wesnoth.scroll function scrolls the screen by an offset, similar to [scroll].
+     For example, wesnoth.scroll(5, -2)
+   * New is_local attribute in side proxy table allows you to detect whether or not the side is
+     controlled by a network player. Note that use of this has the potential for OOS errors.
  * Multiplayer:
    * Fixed statistics being lost when reloading an MP game.
  * Performance:

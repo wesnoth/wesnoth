@@ -919,7 +919,16 @@ function wml_actions.replace_schedule(cfg)
 end
 
 function wml_actions.scroll(cfg)
-	wesnoth.scroll(cfg)
+	local sides = utils.get_sides(cfg)
+	local have_human = false
+	for i, side in ipairs(sides) do
+		if side.controller == 'human' and side.is_local then
+			have_human = true
+		end
+	end
+	if have_human or #sides == 0 then
+		wesnoth.scroll(cfg.x, cfg.y)
+	end
 end
 
 function wml_actions.color_adjust(cfg)
