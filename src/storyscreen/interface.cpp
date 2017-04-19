@@ -22,18 +22,7 @@
 #include "storyscreen/interface.hpp"
 #include "storyscreen/controller.hpp"
 
-#include "gui/widgets/settings.hpp"
 #include "gui/dialogs/story_viewer.hpp"
-
-#include "font/text.hpp"
-#include "gettext.hpp"
-#include "language.hpp"
-#include "log.hpp"
-#include "sound.hpp"
-#include "video.hpp"
-
-static lg::log_domain log_engine("engine");
-#define LOG_NG LOG_STREAM(info, log_engine)
 
 void show_story(CVideo& video, const std::string &scenario_name,
 	const config::const_child_itors &story)
