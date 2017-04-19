@@ -620,7 +620,7 @@ bool game::describe_slots() {
 	std::string descr = buf.str();
 
 	if ((*description_)["slots"] != descr) {
-		description_->set_attr_dup("slots", descr);
+		description_->set_attr_dup("slots", descr.c_str());
 		return true;
 	} else {
 		return false;
