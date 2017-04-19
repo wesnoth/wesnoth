@@ -96,12 +96,8 @@
 // All supported versions of clang have these
 #define NORETURN [[noreturn]]
 #define FALLTHROUGH [[clang::fallthrough]]
-
-#if __has_cpp_attribute(deprecated)
-#define DEPRECATED(reason) [[deprecated(reason)]]
-#else
+// Use GCC-style attribute because the __has_cpp_attribute feature-checking macro doesn't exist in clang 3.5
 #define DEPRECATED(reason) __attribute__((deprecated(reason)))
-#endif
 
 #if __has_feature(cxx_constexpr)
 #define CONSTEXPR constexpr
@@ -133,11 +129,11 @@
 #define DEPRECATED(reason) __attribute__((deprecated(reason)))
 #endif
 
-// Fallthrough is supported from GCC 7 up; however, earlier versions supported it with __attribute__
+// Fallthrough is supported from GCC 7 up
 #if __GNUC__ >= 7
 #define FALLTHROUGH [[fallthrough]]
 #else
-#define FALLTHROUGH __attribute__((fallthrough))
+#define FALLTHROUGH
 #endif
 #endif
 
