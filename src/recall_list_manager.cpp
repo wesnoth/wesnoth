@@ -28,7 +28,7 @@
 unit_ptr recall_list_manager::find_if_matches_id(const std::string &unit_id)
 {
 	std::vector<unit_ptr >::iterator it = std::find_if(recall_list_.begin(), recall_list_.end(),
-		[&unit_id](const unit_ptr & ptr) { return ptr->matches_id(unit_id); });
+		[&unit_id](const unit_ptr & ptr) { return ptr->id(false) == unit_id; });
 	if (it != recall_list_.end()) {
 		return *it;
 	} else {
@@ -42,7 +42,7 @@ unit_ptr recall_list_manager::find_if_matches_id(const std::string &unit_id)
 unit_const_ptr recall_list_manager::find_if_matches_id(const std::string &unit_id) const
 {
 	std::vector<unit_ptr >::const_iterator it = std::find_if(recall_list_.begin(), recall_list_.end(),
-		[&unit_id](const unit_ptr & ptr) { return ptr->matches_id(unit_id); });
+		[&unit_id](const unit_ptr & ptr) { return ptr->id(false) == unit_id; });
 	if (it != recall_list_.end()) {
 		return *it;
 	} else {
@@ -56,7 +56,7 @@ unit_const_ptr recall_list_manager::find_if_matches_id(const std::string &unit_i
 void recall_list_manager::erase_if_matches_id(const std::string &unit_id)
 {
 	recall_list_.erase(std::remove_if(recall_list_.begin(), recall_list_.end(),
-		[&unit_id](const unit_ptr & ptr) { return ptr->matches_id(unit_id); }),
+		[&unit_id](const unit_ptr & ptr) { return ptr->id(false) == unit_id; }),
 	                       recall_list_.end());
 }
 
@@ -68,7 +68,7 @@ void recall_list_manager::add (const unit_ptr & ptr)
 size_t recall_list_manager::find_index(const std::string & unit_id) const
 {
 	std::vector<unit_ptr >::const_iterator it = std::find_if(recall_list_.begin(), recall_list_.end(),
-		[&unit_id](const unit_ptr & ptr) { return ptr->matches_id(unit_id); });
+		[&unit_id](const unit_ptr & ptr) { return ptr->id(false) == unit_id; });
 
 	return it - recall_list_.begin();
 }
@@ -76,7 +76,7 @@ size_t recall_list_manager::find_index(const std::string & unit_id) const
 unit_ptr recall_list_manager::extract_if_matches_id(const std::string &unit_id)
 {
 	std::vector<unit_ptr >::iterator it = std::find_if(recall_list_.begin(), recall_list_.end(),
-		[&unit_id](const unit_ptr & ptr) { return ptr->matches_id(unit_id); });
+		[&unit_id](const unit_ptr & ptr) { return ptr->id(false) == unit_id; });
 	if (it != recall_list_.end()) {
 		unit_ptr ret = *it;
 		recall_list_.erase(it);

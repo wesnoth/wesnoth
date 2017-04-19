@@ -280,12 +280,6 @@ public:
 		id_ = id;
 	}
 
-	DEPRECATED("Use comparison against id() instead")
-	bool matches_id(const std::string& unit_id) const
-	{
-		return id_ == unit_id;
-	}
-
 	/** This unit's unique internal ID. This should *not* be used for user-facing operations. */
 	size_t underlying_id() const
 	{
