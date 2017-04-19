@@ -1086,6 +1086,20 @@ function wml_actions.print(cfg)
 	wesnoth.print(cfg)
 end
 
+local originalRecall = wml_actions.recall
+
+function wml_actions.recall(cfg)
+	local filter = helper.shallow_literal(cfg)
+	if #wesnoth.get_recall_units(filter) > 0 then
+		originalRecall(filter)
+	else
+		for else_child in helper.child_range(cfg, "else") do
+			local action = utils.handle_event_commands(else_child, "conditional")
+			if action ~= "none" then return end
+		end
+	end
+end
+
 function wml_actions.role(cfg)
 	-- role= and type= are handled differently than in other tags,
 	-- so we need to remove them from the filter
