@@ -67,6 +67,10 @@ static config get_title_area_decor_config()
 	return cfg;
 }
 
+// Stacked widget layer constants for the text stack.
+static const unsigned int LAYER_BACKGROUND = 1;
+static const unsigned int LAYER_TEXT = 2;
+
 REGISTER_DIALOG(story_viewer)
 
 story_viewer::story_viewer(storyscreen::controller& controller)
@@ -246,7 +250,7 @@ void story_viewer::display_part(window& window)
 	 * We use get_layer_grid here to ensure the widget is always found regardless of
 	 * whether the background is visible or not.
 	 */
-	canvas& panel_canvas = find_widget<panel>(text_stack.get_layer_grid(1), "text_panel", false).get_canvas(0);
+	canvas& panel_canvas = find_widget<panel>(text_stack.get_layer_grid(LAYER_BACKGROUND), "text_panel", false).get_canvas(0);
 
 	panel_canvas.set_variable("panel_position", wfl::variant(new_panel_mode));
 	panel_canvas.set_variable("title_present", wfl::variant(static_cast<int>(showing_title))); // cast to 0/1
@@ -255,7 +259,7 @@ void story_viewer::display_part(window& window)
 
 	if(part_text.empty() || !has_background) {
 		// No text or no background for this part, hide the background layer.
-		text_stack.select_layer(2);
+		text_stack.select_layer(LAYER_TEXT);
 	} else if(text_stack.current_layer() != -1)  {
 		// If the background layer was previously hidden, re-show it.
 		text_stack.select_layer(-1);
