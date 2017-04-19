@@ -15,11 +15,8 @@
 #ifndef GUI_DIALOGS_CUSTOM_TOD_HPP_INCLUDED
 #define GUI_DIALOGS_CUSTOM_TOD_HPP_INCLUDED
 
-#include "display.hpp"
-#include "time_of_day.hpp"
-#include "gui/widgets/image.hpp"
-#include "gui/widgets/text_box.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
+#include "time_of_day.hpp"
 
 #include <vector>
 
@@ -37,17 +34,25 @@ namespace dialogs
 class custom_tod : public modal_dialog
 {
 public:
-	custom_tod(display& display,
-				const std::vector<time_of_day>& tods);
+	custom_tod(const std::vector<time_of_day>& times, int current_time);
 
-	static bool execute(display& display, const std::vector<time_of_day>& tods)
+	static bool execute(const std::vector<time_of_day>& times, int current_time, CVideo& video)
 	{
-		return custom_tod(display, tods).show(display.video());
+		return custom_tod(times, current_time).show(video);
 	}
 
+	using string_pair = std::pair<std::string, std::string>;
+	using tod_attribute_getter = std::function<string_pair(const time_of_day&)>;
+
 private:
-	/** Available time_of_days */
-	std::vector<time_of_day> tods_;
+	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
+	virtual const std::string& window_id() const override;
+
+	/** Inherited from modal_dialog. */
+	virtual void pre_show(window& window) override;
+
+	/** Inherited from modal_dialog. */
+	virtual void post_show(window& window) override;
 
 	/** Callback for the next tod button */
 	void do_next_tod(window& window);
@@ -56,10 +61,8 @@ private:
 	void do_new_tod(window& window);
 	void do_delete_tod(window& window);
 
-	void select_file(const std::string& filename,
-					 const std::string& default_dir,
-					 const std::string& attribute,
-					 window& window);
+	template<custom_tod::string_pair(*fptr)(const time_of_day&)>
+	void select_file(window& window, const std::string& default_dir);
 
 	void update_tod_display(window& window);
 
@@ -70,39 +73,17 @@ private:
 
 	void update_selected_tod_info(window& window);
 
-	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
-	virtual const std::string& window_id() const override;
+	void copy_to_clipboard_callback(tod_attribute_getter getter);
 
-	/** Inherited from modal_dialog. */
-	virtual void pre_show(window& window) override;
+	/** Available time_of_days */
+	std::vector<time_of_day> times_;
 
-	/** Inherited from modal_dialog. */
-	virtual void post_show(window& window) override;
-
-	/** Current map generator index */
+	/** Current ToD index */
 	int current_tod_;
 
-	/** Text boxes for name and id*/
-	text_box* current_tod_name_;
-	text_box* current_tod_id_;
-
-	/** Images for the current tod*/
-	image* current_tod_image_;
-	image* current_tod_mask_;
-
-	/** Labels for the current tod*/
-	label* current_tod_sound_;
-	label* current_tod_number_;
-
-	field_integer* lawful_bonus_field_;
-	slider* tod_red_field_;
-	slider* tod_green_field_;
-	slider* tod_blue_field_;
-
-	/**
-	 * The display to update when the ToD changes.
-	 */
-	display& display_;
+	field_integer* color_field_r_;
+	field_integer* color_field_g_;
+	field_integer* color_field_b_;
 };
 
 } // namespace dialogs

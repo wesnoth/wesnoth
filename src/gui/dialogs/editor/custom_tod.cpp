@@ -16,20 +16,20 @@
 
 #include "gui/dialogs/editor/custom_tod.hpp"
 
+#include "desktop/clipboard.hpp"
+#include "display.hpp"
 #include "filesystem.hpp"
-#include "editor/editor_preferences.hpp"
-#include "editor/editor_display.hpp"
+#include "formatter.hpp"
+#include "gettext.hpp"
 #include "gui/auxiliary/field.hpp"
 #include "gui/dialogs/file_dialog.hpp"
 #include "gui/dialogs/helper.hpp"
 #include "gui/widgets/button.hpp"
-#include "gui/widgets/label.hpp"
-#include "gui/widgets/slider.hpp"
-#include "gui/widgets/settings.hpp"
-#include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/image.hpp"
+#include "gui/widgets/label.hpp"
+#include "gui/widgets/settings.hpp"
+#include "gui/widgets/slider.hpp"
 #include "gui/widgets/text_box.hpp"
-#include "gettext.hpp"
 #include "image.hpp"
 
 #include "utils/functional.hpp"
@@ -85,208 +85,69 @@ namespace dialogs
  * @end{table}
  */
 
+static custom_tod::string_pair tod_getter_image(const time_of_day& tod)
+{
+	static std::string type = "image";
+	return {type, tod.image};
+}
+
+static custom_tod::string_pair tod_getter_mask(const time_of_day& tod)
+{
+	static std::string type = "mask";
+	return {type, tod.image_mask};
+}
+
+static custom_tod::string_pair tod_getter_sound(const time_of_day& tod)
+{
+	static std::string type = "sound";
+	return {type, tod.sounds};
+}
+
 REGISTER_DIALOG(custom_tod)
 
-custom_tod::custom_tod(display& display,
-						 const std::vector<time_of_day>& tods)
-	: tods_(tods)
-	, current_tod_(0)
-	, current_tod_name_(nullptr)
-	, current_tod_id_(nullptr)
-	, current_tod_image_(nullptr)
-	, current_tod_mask_(nullptr)
-	, current_tod_sound_(nullptr)
-	, current_tod_number_(nullptr)
-	, lawful_bonus_field_(register_integer("lawful_bonus", true))
-	, tod_red_field_(nullptr)
-	, tod_green_field_(nullptr)
-	, tod_blue_field_(nullptr)
-	, display_(display)
+custom_tod::custom_tod(const std::vector<time_of_day>& times, int current_time)
+	: times_(times)
+	, current_tod_(current_time)
+	, color_field_r_(register_integer("tod_red",   true))
+	, color_field_g_(register_integer("tod_green", true))
+	, color_field_b_(register_integer("tod_blue",  true))
 {
-}
-
-void custom_tod::select_file(const std::string& filename,
-							  const std::string& default_dir,
-							  const std::string& attribute,
-							  window& window)
-{
-	std::string fn = filesystem::base_name(filename);
-	std::string dn = filesystem::directory_name(fn);
-	if(dn.empty()) {
-		dn = default_dir;
-	}
-
-	gui2::dialogs::file_dialog dlg;
-
-	dlg.set_title(_("Choose File"))
-	   .set_ok_label(_("Select"))
-	   .set_path(dn)
-	   .set_read_only(true);
-
-	if(dlg.show(display_.video())) {
-		dn = dlg.path();
-
-		if(attribute == "image") {
-			tods_[current_tod_].image = dn;
-		} else if(attribute == "mask") {
-			tods_[current_tod_].image_mask = dn;
-		} else if(attribute == "sound") {
-			tods_[current_tod_].sounds = dn;
-		}
-	}
-	update_selected_tod_info(window);
-}
-
-void custom_tod::do_next_tod(window& window)
-{
-	current_tod_ = (current_tod_ + 1) % tods_.size();
-	update_selected_tod_info(window);
-}
-
-void custom_tod::do_prev_tod(window& window)
-{
-	current_tod_ = (current_tod_ ? current_tod_ : tods_.size()) - 1;
-	update_selected_tod_info(window);
-}
-
-void custom_tod::do_new_tod(window& window)
-{
-	tods_.insert(tods_.begin() + current_tod_, time_of_day());
-	update_selected_tod_info(window);
-}
-
-void custom_tod::do_delete_tod(window& window)
-{
-	assert(tods_.begin() + current_tod_ < tods_.end());
-	if(tods_.size() == 1) {
-		tods_.at(0) = time_of_day();
-		update_selected_tod_info(window);
-		return;
-	}
-	tods_.erase(tods_.begin() + current_tod_);
-	if(tods_.begin() + current_tod_ >= tods_.end()) {
-		current_tod_ = tods_.size() - 1;
-	}
-	update_selected_tod_info(window);
-}
-
-const time_of_day& custom_tod::get_selected_tod() const
-{
-	assert(static_cast<size_t>(current_tod_) < tods_.size());
-	return tods_[current_tod_];
-}
-
-void custom_tod::update_tod_display(window& window)
-{
-	// Prevent a floating slice of window appearing alone over the
-	// theme UI sidebar after redrawing tiles and before we have a
-	// chance to redraw the rest of this window.
-	window.undraw();
-
-	// NOTE: We only really want to re-render the gamemap tiles here.
-	// Redrawing everything is a significantly more expensive task.
-	// At this time, tiles are the only elements on which ToD tint is
-	// meant to have a visible effect. This is very strongly tied to
-	// the image caching mechanism.
-	//
-	// If this ceases to be the case in the future, you'll need to call
-	// redraw_everything() instead.
-
-	display_.adjust_color_overlay(
-		tod_red_field_->get_value(),
-		tod_green_field_->get_value(),
-		tod_blue_field_->get_value()
-	);
-
-	// invalidate all tiles so they are redrawn with the new ToD tint next
-	display_.invalidate_all();
-
-	// redraw tiles
-	display_.draw(false);
-
-	window.invalidate_layout();
-}
-
-void custom_tod::update_lawful_bonus(window& window)
-{
-	tods_[current_tod_].lawful_bonus
-			= lawful_bonus_field_->get_widget_value(window);
-}
-
-void custom_tod::update_selected_tod_info(window& window)
-{
-	current_tod_name_->set_value(get_selected_tod().name);
-	current_tod_id_->set_value(get_selected_tod().id);
-	current_tod_image_->set_image(get_selected_tod().image);
-	current_tod_mask_->set_image(get_selected_tod().image_mask);
-	current_tod_sound_->set_label(get_selected_tod().sounds);
-
-	std::stringstream ss;
-	ss << (current_tod_ + 1) << "/" << tods_.size();
-	current_tod_number_->set_label(ss.str());
-
-	lawful_bonus_field_->set_widget_value(window,
-										  get_selected_tod().lawful_bonus);
-	tod_red_field_->set_value(get_selected_tod().color.r);
-	tod_green_field_->set_value(get_selected_tod().color.g);
-	tod_blue_field_->set_value(get_selected_tod().color.b);
-
-	update_tod_display(window);
+	assert(!times_.empty());
 }
 
 void custom_tod::pre_show(window& window)
 {
-	assert(!tods_.empty());
+	static std::map<std::string, tod_attribute_getter> metadata_stuff {
+		{"image", tod_getter_image},
+		{"mask",  tod_getter_mask },
+		{"sound", tod_getter_sound}
+	};
 
-	tod_red_field_
-			= find_widget<slider>(&window, "tod_red", false, true);
+	for(const auto& data : metadata_stuff) {
+		find_widget<text_box>(&window, "path_" + data.first, false).set_active(false);
 
-	tod_green_field_
-			= find_widget<slider>(&window, "tod_green", false, true);
+		button& copy_w = find_widget<button>(&window, "copy_" + data.first, false);
 
-	tod_blue_field_
-			= find_widget<slider>(&window, "tod_blue", false, true);
+		connect_signal_mouse_left_click(copy_w,
+			std::bind(&custom_tod::copy_to_clipboard_callback, this, data.second));
 
-	current_tod_name_
-			= find_widget<text_box>(&window, "tod_name", false, true);
+		if(!desktop::clipboard::available()) {
+			copy_w.set_active(false);
+			copy_w.set_tooltip(_("Clipboard support not found, contact your packager"));
+		}
+	}
 
-	current_tod_id_ = find_widget<text_box>(&window, "tod_id", false, true);
+	connect_signal_mouse_left_click(
+			find_widget<button>(&window, "browse_image", false),
+			std::bind(&custom_tod::select_file<tod_getter_image>, this, std::ref(window), "data/core/images/misc"));
 
-	current_tod_image_
-			= find_widget<image>(&window, "current_tod_image", false, true);
+	connect_signal_mouse_left_click(
+			find_widget<button>(&window, "browse_mask", false),
+			std::bind(&custom_tod::select_file<tod_getter_mask>,  this, std::ref(window), "data/core/images"));
 
-	current_tod_mask_
-			= find_widget<image>(&window, "current_tod_mask", false, true);
-
-	current_tod_sound_
-			= find_widget<label>(&window, "current_sound", false, true);
-
-	current_tod_number_
-			= find_widget<label>(&window, "tod_number", false, true);
-
-	connect_signal_mouse_left_click(find_widget<button>(&window, "image_button", false),
-			std::bind(&custom_tod::select_file,
-					this,
-					get_selected_tod().image,
-					"data/core/images/misc",
-					"image",
-					std::ref(window)));
-
-	connect_signal_mouse_left_click(find_widget<button>(&window, "mask_button", false),
-			std::bind(&custom_tod::select_file,
-					this,
-					get_selected_tod().image_mask,
-					"data/core/images",
-					"mask",
-					std::ref(window)));
-
-	connect_signal_mouse_left_click(find_widget<button>(&window, "sound_button", false),
-			std::bind(&custom_tod::select_file,
-					this,
-					get_selected_tod().sounds,
-					"data/core/sounds/ambient",
-					"sound",
-					std::ref(window)));
+	connect_signal_mouse_left_click(
+			find_widget<button>(&window, "browse_sound", false),
+			std::bind(&custom_tod::select_file<tod_getter_sound>, this, std::ref(window), "data/core/sounds/ambient"));
 
 	connect_signal_mouse_left_click(
 			find_widget<button>(&window, "next_tod", false),
@@ -305,48 +166,175 @@ void custom_tod::pre_show(window& window)
 			std::bind(&custom_tod::do_delete_tod, this, std::ref(window)));
 
 	connect_signal_notify_modified(
-			*(lawful_bonus_field_->get_widget()),
-			std::bind(&custom_tod::update_lawful_bonus,
-					this,
-					std::ref(window)));
+			find_widget<slider>(&window, "lawful_bonus", false),
+			std::bind(&custom_tod::update_lawful_bonus, this, std::ref(window)));
 
 	connect_signal_notify_modified(
-			*tod_red_field_,
-			std::bind(&custom_tod::update_tod_display,
-					this,
-					std::ref(window)));
+			*(color_field_r_->get_widget()),
+			std::bind(&custom_tod::update_tod_display, this, std::ref(window)));
 
 	connect_signal_notify_modified(
-			*tod_green_field_,
-			std::bind(&custom_tod::update_tod_display,
-					this,
-					std::ref(window)));
+			*(color_field_g_->get_widget()),
+			std::bind(&custom_tod::update_tod_display, this, std::ref(window)));
 
 	connect_signal_notify_modified(
-			*tod_blue_field_,
-			std::bind(&custom_tod::update_tod_display,
-					this,
-					std::ref(window)));
+			*(color_field_b_->get_widget()),
+			std::bind(&custom_tod::update_tod_display, this, std::ref(window)));
 
-	for(size_t i = 0; i < tods_.size(); ++i) {
-		time_of_day& tod = tods_[i];
-		const int r = tod_red_field_->get_value();
-		const int g = tod_green_field_->get_value();
-		const int b = tod_blue_field_->get_value();
-		if(tod.color.r == r && tod.color.g == g && tod.color.b == b) {
-			current_tod_ = i;
-			update_selected_tod_info(window);
-			return;
+	update_selected_tod_info(window);
+}
+
+template<custom_tod::string_pair(*fptr)(const time_of_day&)>
+void custom_tod::select_file(window& window, const std::string& default_dir)
+{
+	const string_pair& data = (*fptr)(get_selected_tod());
+
+	std::string fn = filesystem::base_name(data.second);
+	std::string dn = filesystem::directory_name(fn);
+	if(dn.empty()) {
+		dn = default_dir;
+	}
+
+	gui2::dialogs::file_dialog dlg;
+
+	dlg.set_title(_("Choose File"))
+	   .set_ok_label(_("Select"))
+	   .set_path(dn)
+	   .set_read_only(true);
+
+	if(dlg.show(window.video())) {
+		dn = dlg.path();
+
+		if(data.first == "image") {
+			times_[current_tod_].image = dn;
+		} else if(data.first == "mask") {
+			times_[current_tod_].image_mask = dn;
+		} else if(data.first == "sound") {
+			times_[current_tod_].sounds = dn;
 		}
 	}
 
 	update_selected_tod_info(window);
 }
 
+void custom_tod::do_next_tod(window& window)
+{
+	current_tod_ = (current_tod_ + 1) % times_.size();
+	update_selected_tod_info(window);
+}
+
+void custom_tod::do_prev_tod(window& window)
+{
+	current_tod_ = (current_tod_ ? current_tod_ : times_.size()) - 1;
+	update_selected_tod_info(window);
+}
+
+void custom_tod::do_new_tod(window& window)
+{
+	times_.insert(times_.begin() + current_tod_, time_of_day());
+	update_selected_tod_info(window);
+}
+
+void custom_tod::do_delete_tod(window& window)
+{
+	assert(times_.begin() + current_tod_ < times_.end());
+
+	if(times_.size() == 1) {
+		times_.emplace_back();
+	} else {
+		times_.erase(times_.begin() + current_tod_);
+
+		if(times_.begin() + current_tod_ >= times_.end()) {
+			current_tod_ = times_.size() - 1;
+		}
+	}
+
+	update_selected_tod_info(window);
+}
+
+const time_of_day& custom_tod::get_selected_tod() const
+{
+	try {
+		return times_.at(current_tod_);
+	} catch(std::out_of_range&) {
+		assert(false && "Attempted to fetch a non-existant ToD!");
+	}
+}
+
+void custom_tod::update_tod_display(window& window)
+{
+	display* disp = display::get_singleton();
+	assert(disp && "Display pointer is null!");
+
+	// Prevent a floating slice of window appearing alone over the
+	// theme UI sidebar after redrawing tiles and before we have a
+	// chance to redraw the rest of this window.
+	window.undraw();
+
+	// NOTE: We only really want to re-render the gamemap tiles here.
+	// Redrawing everything is a significantly more expensive task.
+	// At this time, tiles are the only elements on which ToD tint is
+	// meant to have a visible effect. This is very strongly tied to
+	// the image caching mechanism.
+	//
+	// If this ceases to be the case in the future, you'll need to call
+	// redraw_everything() instead.
+
+	disp->adjust_color_overlay(
+		color_field_r_->get_widget_value(window),
+		color_field_g_->get_widget_value(window),
+		color_field_b_->get_widget_value(window)
+	);
+
+	// invalidate all tiles so they are redrawn with the new ToD tint next
+	disp->invalidate_all();
+
+	// redraw tiles
+	disp->draw(false);
+
+	window.invalidate_layout();
+}
+
+void custom_tod::update_lawful_bonus(window& window)
+{
+	times_[current_tod_].lawful_bonus = find_widget<slider>(&window, "lawful_bonus", false).get_value();
+}
+
+void custom_tod::update_selected_tod_info(window& window)
+{
+	const time_of_day& current_tod = get_selected_tod();
+
+	find_widget<text_box>(&window, "tod_name", false).set_value(current_tod.name);
+	find_widget<text_box>(&window, "tod_id", false).set_value(current_tod.id);
+
+	find_widget<text_box>(&window, "path_image", false).set_value(current_tod.image);
+	find_widget<text_box>(&window, "path_mask", false).set_value(current_tod.image_mask);
+	find_widget<text_box>(&window, "path_sound", false).set_value(current_tod.sounds);
+
+	find_widget<image>(&window, "current_tod_image", false).set_image(current_tod.image);
+	find_widget<image>(&window, "current_tod_mask", false).set_image(current_tod.image_mask);
+
+	find_widget<slider>(&window, "lawful_bonus", false).set_value(current_tod.lawful_bonus);
+
+	color_field_r_->set_widget_value(window, current_tod.color.r);
+	color_field_g_->set_widget_value(window, current_tod.color.g);
+	color_field_b_->set_widget_value(window, current_tod.color.b);
+
+	const std::string new_index_str = formatter() << (current_tod_ + 1) << "/" << times_.size();
+	find_widget<label>(&window, "tod_number", false).set_label(new_index_str);
+
+	update_tod_display(window);
+}
+
+void custom_tod::copy_to_clipboard_callback(tod_attribute_getter getter)
+{
+	desktop::clipboard::copy_to_clipboard(getter(get_selected_tod()).second, false);
+}
+
 void custom_tod::post_show(window& window)
 {
 	update_tod_display(window);
-	
+
 	if(get_retval() == window::OK) {
 		// TODO: save ToD
 	}
