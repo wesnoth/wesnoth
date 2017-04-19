@@ -28,29 +28,15 @@ class vconfig;
 
 namespace storyscreen {
 
-enum STORY_RESULT {
-	NEXT,
-	BACK,
-	QUIT
-};
-
 class part;
-class part_ui;
 class floating_image;
 
 class controller
 {
 public:
 	typedef std::shared_ptr< part    > part_pointer_type;
-	typedef std::shared_ptr< part_ui > render_pointer_type;
 
-	controller(CVideo& video, const vconfig& data, const std::string& scenario_name,
-		   int segment_index);
-
-	/**
-	 * Display all story screen parts in a first..last sequence.
-	 */
-	STORY_RESULT show(START_POSITION startpos=START_BEGINNING);
+	controller(const vconfig& data, const std::string& scenario_name, int segment_index);
 
 	part_pointer_type get_part(int index) const
 	{
@@ -65,8 +51,6 @@ public:
 private:
 	// Executes WML flow instructions and inserts parts.
 	void resolve_wml(const vconfig& cfg);
-
-	CVideo& video_;
 
 	std::string scenario_name_;
 	int segment_index_;

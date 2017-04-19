@@ -48,43 +48,7 @@ void show_story(CVideo& video, const std::string &scenario_name,
 		return;
 	}
 
-	storyscreen::controller controller(video, vconfig(cfg, true), scenario_name, 0);
+	storyscreen::controller controller(vconfig(cfg, true), scenario_name, 0);
 
 	gui2::dialogs::story_viewer::display(controller, video);
-
-#if 0
-	events::event_context story_context;
-
-	int segment_count = 0;
-	config::const_child_iterator itor = story.begin();
-	storyscreen::START_POSITION startpos = storyscreen::START_BEGINNING;
-	while (itor != story.end())
-	{
-		storyscreen::controller ctl(video, vconfig(*itor, true),
-			scenario_name, segment_count);
-		storyscreen::STORY_RESULT result = ctl.show(startpos);
-
-		switch(result) {
-		case storyscreen::NEXT:
-			if(itor != story.end()) {
-				++itor;
-				++segment_count;
-				startpos = storyscreen::START_BEGINNING;
-			}
-			break;
-		case storyscreen::BACK:
-			if(itor != story.begin()) {
-				--itor;
-				--segment_count;
-				startpos = storyscreen::START_END;
-			}
-			break;
-		case storyscreen::QUIT:
-			video2::trigger_full_redraw();
-			return;
-		}
-	}
-	video2::trigger_full_redraw();
-	return;
-#endif
 }
