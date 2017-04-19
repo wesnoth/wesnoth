@@ -223,13 +223,15 @@ void editor_controller::custom_tods_dialog()
 
 	image::color_adjustment_resetter adjust_resetter;
 
-	std::vector<time_of_day> schedule = context_manager_->get_map_context().get_time_manager()->times();
+	tod_manager& manager = *context_manager_->get_map_context().get_time_manager();
 
-	if(!gui2::dialogs::custom_tod::execute(gui(), schedule)) {
-		adjust_resetter.reset();
-	} else {
+	if(gui2::dialogs::custom_tod::execute(manager.times(), manager.get_current_time(), gui().video())) {
 		// TODO save the new tod here
 	}
+
+	// TODO: when saving the ToD is actually possible, deal with actually registering the choice of
+	//       ToD or changes in the ToD values with the manager. In that case this should be conditional again.
+	adjust_resetter.reset();
 
 	context_manager_->refresh_all();
 }
