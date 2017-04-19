@@ -73,8 +73,10 @@
 // Some sources claim MSVC 2015 supports them, but let's be safe...
 #if _MSC_VER >= 1910
 #define DEPRECATED(reason) [[deprecated(reason)]]
+#define FALLTHROUGH [[fallthrough]]
 #else
 #define DEPRECATED(reason) __declspec(deprecated)
+#define FALLTHROUGH
 #endif
 #endif
 
@@ -91,8 +93,9 @@
 // Clang has convenient feature detection macros \o/
 #define HAVE_REF_QUALIFIERS __has_feature(cxx_reference_qualified_functions)
 #define HAVE_INHERITING_CTORS __has_feature(cxx_inheriting_constructors)
-// All supported versions of clang have this
+// All supported versions of clang have these
 #define NORETURN [[noreturn]]
+#define FALLTHROUGH [[clang::fallthrough]]
 
 #if __has_cpp_attribute(deprecated)
 #define DEPRECATED(reason) [[deprecated(reason)]]
@@ -128,6 +131,13 @@
 #define DEPRECATED(reason) [[deprecated(reason)]]
 #else
 #define DEPRECATED(reason) __attribute__((deprecated(reason)))
+#endif
+
+// Fallthrough is supported from GCC 7 up; however, earlier versions supported it with __attribute__
+#if __GNUC__ >= 7
+#define FALLTHROUGH [[fallthrough]]
+#else
+#define FALLTHROUGH __attribute__((fallthrough))
 #endif
 #endif
 

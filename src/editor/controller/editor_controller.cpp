@@ -864,10 +864,11 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 			export_selection_coords();
 			return true;
 		case HOTKEY_EDITOR_SELECT_ALL:
-			if (!context_manager_->get_map().everything_selected()) {
+			if(!context_manager_->get_map().everything_selected()) {
 				context_manager_->perform_refresh(editor_action_select_all());
 				return true;
-			} //else intentionally fall through
+			}
+			FALLTHROUGH;
 		case HOTKEY_EDITOR_SELECT_INVERSE:
 			context_manager_->perform_refresh(editor_action_select_inverse());
 			return true;
@@ -957,9 +958,10 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 			context_manager_->set_update_trasitions_mode(0);
 			return true;
 		case HOTKEY_EDITOR_TOGGLE_TRANSITIONS:
-			if (context_manager_->toggle_update_transitions())
+			if(context_manager_->toggle_update_transitions()) {
 				return true;
-			// else intentionally fall through
+			}
+			FALLTHROUGH;
 		case HOTKEY_EDITOR_UPDATE_TRANSITIONS:
 			context_manager_->refresh_all();
 			return true;

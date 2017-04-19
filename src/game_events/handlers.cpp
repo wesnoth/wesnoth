@@ -161,7 +161,7 @@ bool event_handler::matches_name(const std::string &name, const game_data * gd) 
 			break;
 		case ' ':
 			do_skip = (match_it == match_begin || match_it == match_end);
-			// fall through to case '_'
+			FALLTHROUGH;
 		case '_':
 			do_eat = (match_it != match_end && (*match_it == ' ' || *match_it == '_'));
 			break;

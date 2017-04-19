@@ -41,16 +41,13 @@ walker_base::state_t tree_node::next(const level level)
 			if(widget_) {
 				widget_ = nullptr;
 				return invalid;
-			} else {
-				/* FALL DOWN */
 			}
+			FALLTHROUGH;
 		case internal:
 			assert(false);
 			return fail;
 		case child:
-			if(itor_ == children_.end()) {
-				/* FALL DOWN */
-			} else {
+			if(itor_ != children_.end()) {
 				++itor_;
 				return itor_ == children_.end() ? invalid : valid;
 			}

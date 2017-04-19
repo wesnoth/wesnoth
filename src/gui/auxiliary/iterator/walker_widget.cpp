@@ -43,12 +43,10 @@ walker_base::state_t widget::next(const level level)
 			if(widget_) {
 				widget_ = nullptr;
 				return invalid;
-			} else {
-				/* FALL DOWN */
 			}
-		case internal:  /* FALL DOWN */
-		case child: /* FALL DOWN */
-			;
+			FALLTHROUGH;
+		case internal: FALLTHROUGH;
+		case child: FALLTHROUGH;
 	}
 
 	assert(false);

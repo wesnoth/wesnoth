@@ -134,7 +134,7 @@ const token &tokenizer::next_token()
 			token_.value = current_;
 			break;
 		}
-		// no break
+		FALLTHROUGH;
 
 	default:
 		if (is_alnum(current_)) {

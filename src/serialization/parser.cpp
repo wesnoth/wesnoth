@@ -311,8 +311,10 @@ void parser::parse_variable()
 			ignore_next_newlines = true;
 			continue;
 		case token::STRING:
-			if (previous_string) buffer += " ";
-			//nobreak
+			if(previous_string) {
+				buffer += " ";
+			}
+			FALLTHROUGH;
 		default:
 			buffer += tok_.current_token().value;
 			break;
@@ -323,8 +325,10 @@ void parser::parse_variable()
 			error(_("Unterminated quoted string"));
 			break;
 		case token::LF:
-			if (ignore_next_newlines) continue;
-			//nobreak
+			if(ignore_next_newlines) {
+				continue;
+			}
+			FALLTHROUGH;
 		case token::END:
 			goto finish;
 		}

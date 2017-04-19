@@ -624,7 +624,7 @@ void play_controller::tab()
 	{
 		std::vector<std::string> commands = menu_handler_.get_commands_list();
 		dictionary.insert(commands.begin(), commands.end());
-		// no break here, we also want player names from the next case
+		FALLTHROUGH; // we also want player names from the next case
 	}
 	case gui::TEXTBOX_MESSAGE:
 	{

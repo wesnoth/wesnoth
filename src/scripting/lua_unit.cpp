@@ -167,10 +167,13 @@ static void unit_show_error(lua_State *L, int index, int error)
 	switch(error) {
 		case LU_NOT_UNIT:
 			luaW_type_error(L, index, "unit");
+			break;
 		case LU_NOT_VALID:
 			luaL_argerror(L, index, "unit not found");
+			break;
 		case LU_NOT_ON_MAP:
 			luaL_argerror(L, index, "unit not found on map");
+			break;
 	}
 }
 

@@ -453,7 +453,7 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 
 			// If ctrl-a is used for home drop the styled_widget modifier
 			modifier = static_cast<SDL_Keymod>(modifier & ~KMOD_CTRL);
-		/* FALL DOWN */
+			FALLTHROUGH;
 
 		case SDLK_HOME:
 			handle_key_home(modifier, handled);
@@ -467,7 +467,7 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 
 			// If ctrl-e is used for end drop the styled_widget modifier
 			modifier = static_cast<SDL_Keymod>(modifier & ~KMOD_CTRL);
-		/* FALL DOWN */
+			FALLTHROUGH;
 
 		case SDLK_END:
 			handle_key_end(modifier, handled);

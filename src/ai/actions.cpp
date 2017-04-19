@@ -571,9 +571,7 @@ void recall_result::do_check_before()
 	}
 
 	// Leader available for recalling?
-	switch ( ::actions::check_recall_location(get_side(), recall_location_,
-	                                          recall_from_, *to_recall) )
-	{
+	switch(::actions::check_recall_location(get_side(), recall_location_, recall_from_, *to_recall)) {
 	case ::actions::RECRUIT_NO_LEADER:
 	case ::actions::RECRUIT_NO_ABLE_LEADER:
 		set_error(E_NO_LEADER);
@@ -588,11 +586,11 @@ void recall_result::do_check_before()
 		return;
 
 	case ::actions::RECRUIT_ALTERNATE_LOCATION:
-		if ( location_specified ) {
+		if(location_specified) {
 			set_error(E_BAD_RECALL_LOCATION);
 			return;
 		}
-		// No break. If the location was not specified, this counts as "OK".
+		FALLTHROUGH; // If the location was not specified, this counts as "OK".
 	case ::actions::RECRUIT_OK:
 		location_checked_ = true;
 	}
@@ -723,9 +721,7 @@ void recruit_result::do_check_before()
 	}
 
 	// Leader available for recruiting?
-	switch ( ::actions::check_recruit_location(get_side(), recruit_location_,
-	                                           recruit_from_, unit_name_) )
-	{
+	switch(::actions::check_recruit_location(get_side(), recruit_location_, recruit_from_, unit_name_)) {
 	case ::actions::RECRUIT_NO_LEADER:
 	case ::actions::RECRUIT_NO_ABLE_LEADER:
 		set_error(E_NO_LEADER);
@@ -740,11 +736,11 @@ void recruit_result::do_check_before()
 		return;
 
 	case ::actions::RECRUIT_ALTERNATE_LOCATION:
-		if ( location_specified ) {
+		if(location_specified) {
 			set_error(E_BAD_RECRUIT_LOCATION);
 			return;
 		}
-		// No break. If the location was not specified, this counts as "OK".
+		FALLTHROUGH; // If the location was not specified, this counts as "OK".
 	case ::actions::RECRUIT_OK:
 		location_checked_ = true;
 	}

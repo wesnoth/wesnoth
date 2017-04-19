@@ -185,16 +185,14 @@ int show_message(CVideo& video,
 		case message::ok_cancel_buttons:
 			dlg.set_button_visible(message::ok, widget::visibility::visible);
 			dlg.set_button_caption(message::ok, _("OK"));
-		/* FALL DOWN */
+			FALLTHROUGH;
 		case message::cancel_button:
-			dlg.set_button_visible(message::cancel,
-								   widget::visibility::visible);
+			dlg.set_button_visible(message::cancel, widget::visibility::visible);
 			break;
 		case message::yes_no_buttons:
 			dlg.set_button_visible(message::ok, widget::visibility::visible);
 			dlg.set_button_caption(message::ok, _("Yes"));
-			dlg.set_button_visible(message::cancel,
-								   widget::visibility::visible);
+			dlg.set_button_visible(message::cancel,  widget::visibility::visible);
 			dlg.set_button_caption(message::cancel, _("No"));
 			break;
 	}

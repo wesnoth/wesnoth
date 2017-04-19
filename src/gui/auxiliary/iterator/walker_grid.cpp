@@ -40,16 +40,13 @@ walker_base::state_t grid::next(const level level)
 			if(widget_) {
 				widget_ = nullptr;
 				return invalid;
-			} else {
-				/* FALL DOWN */
 			}
+			FALLTHROUGH;
 		case internal:
 			assert(false);
 			return fail;
 		case child:
-			if(itor_ == grid_.end()) {
-				/* FALL DOWN */
-			} else {
+			if(itor_ != grid_.end()) {
 				++itor_;
 				return itor_ == grid_.end() ? invalid : valid;
 			}
