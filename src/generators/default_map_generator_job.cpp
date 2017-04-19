@@ -458,14 +458,12 @@ bool default_map_generator_job::generate_river_internal(const height_map& height
 	map_location current_loc(x,y);
 	map_location adj[6];
 	get_adjacent_tiles(current_loc,adj);
-	int items[6] = {0,1,2,3,4,5};
-	std::shuffle(items, items + 4, rng_);
+	std::shuffle(std::begin(adj), std::end(adj), rng_);
 
 	// Mark that we have attempted from this map_location
 	seen_locations.insert(current_loc);
 	river.push_back(current_loc);
-	for(int a = 0; a != 6; ++a) {
-		const map_location& loc = adj[items[a]];
+	for(const map_location& loc : adj) {
 		if(seen_locations.count(loc) == 0) {
 			const bool res = generate_river_internal(heights,terrain,loc.x,loc.y,river,seen_locations,river_uphill);
 			if(res) {
