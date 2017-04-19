@@ -846,10 +846,10 @@ public:
 	{
 		template<typename T>
 		typename std::enable_if<!std::is_same<int, T>::value, std::string>::type
-		operator()(T& v) const
+		operator()(T&) const
 		{
 			// Any special upkeep type should have an associated @ref type getter in its helper struct.
-			return v.type();
+			return T::type();
 		}
 
 		std::string operator()(int v) const

@@ -394,11 +394,8 @@ variant set_unit_var_callable::execute_self(variant ctxt) {
 }
 
 variant fallback_callable::execute_self(variant) {
-//	if(get_recursion_count() < recursion_counter::MAX_COUNTER_VALUE) {
-		//we want give control of the side to human for the rest of this turn
-		throw fallback_ai_to_human_exception();
-//	}
-	return variant(false);
+	// We want give control of the side to human for the rest of this turn
+	throw fallback_ai_to_human_exception();
 }
 
 }

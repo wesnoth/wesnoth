@@ -435,10 +435,10 @@ int intf_set_dialog_value(lua_State* L)
 			std::vector<int> selected_vec = lua_check<std::vector<int>>(L, 1);
 			std::set<int> selected(selected_vec.begin(), selected_vec.end());
 			for(unsigned i = 0; i < list->get_item_count(); i++) {
-				list->select_row(i, selected.count(i + 1));
+				list->select_row(i, selected.count(i + 1) > 0);
 			}
 			for(unsigned i = 0; i < list->get_item_count(); i++) {
-				list->select_row(i, selected.count(i + 1));
+				list->select_row(i, selected.count(i + 1) > 0);
 			}
 		} else {
 			int v = luaL_checkinteger(L, 1);
