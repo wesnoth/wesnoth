@@ -644,13 +644,14 @@ template<>
 struct dialog_tester<custom_tod>
 {
 	std::vector<time_of_day> times;
+	int current_tod = 0;
 	dialog_tester()
 	{
 		times.resize(1);
 	}
 	custom_tod* create()
 	{
-		return new custom_tod(test_utils::get_fake_display(-1, -1), times);
+		return new custom_tod(times, current_tod);
 	}
 };
 
