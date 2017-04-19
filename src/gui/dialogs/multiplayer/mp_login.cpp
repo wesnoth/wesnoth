@@ -67,35 +67,29 @@ REGISTER_DIALOG(mp_login)
 mp_login::mp_login(const std::string& label, const bool focus_password)
 {
 	register_label("login_label", false, label);
-	register_text("user_name",
-				  true,
-				  &preferences::login,
-				  &preferences::set_login,
-				  !focus_password);
+	register_text("user_name", true,
+		&preferences::login,
+		&preferences::set_login,
+		!focus_password);
 
-	register_text("password",
-				  true,
-				  &preferences::password,
-				  nullptr /* The password box returns '*' as value. */
-				  ,
-				  focus_password);
+	register_text("password",  true,
+		&preferences::password,
+		nullptr /* The password box returns '*' as value. */,
+		focus_password);
 
-	register_bool("remember_password",
-				  false,
-				  &preferences::remember_password,
-				  &preferences::set_remember_password);
+	register_bool("remember_password", false,
+		&preferences::remember_password,
+		&preferences::set_remember_password);
 }
 
 void mp_login::pre_show(window& win)
 {
-	if(button* btn
-	   = find_widget<button>(&win, "password_reminder", false, false)) {
+	if(button* btn = find_widget<button>(&win, "password_reminder", false, false)) {
 
 		btn->set_retval(1);
 	}
 
-	if(button* btn
-	   = find_widget<button>(&win, "change_username", false, false)) {
+	if(button* btn = find_widget<button>(&win, "change_username", false, false)) {
 
 		btn->set_retval(2);
 	}
@@ -104,9 +98,7 @@ void mp_login::pre_show(window& win)
 void mp_login::post_show(window& win)
 {
 	if(get_retval() == window::OK) {
-		preferences::set_password(
-				find_widget<password_box>(&win, "password", false)
-						.get_real_value());
+		preferences::set_password(find_widget<password_box>(&win, "password", false).get_real_value());
 	}
 }
 
