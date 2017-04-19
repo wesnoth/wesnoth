@@ -16,6 +16,7 @@
 
 #include "addon/manager.hpp" // for installed_addons
 #include "config_assign.hpp"
+#include "preferences/credentials.hpp"
 #include "formula/string_utils.hpp"
 #include "game_config_manager.hpp"
 #include "game_initialization/mp_game_utils.hpp"
@@ -191,7 +192,7 @@ static std::unique_ptr<wesnothd_connection> open_connection(CVideo& video, const
 			if(!*error) break;
 
 			do {
-				std::string password = preferences::password();
+				std::string password = preferences::password(host, login);
 
 				bool fall_through = (*error)["force_confirmation"].to_bool() ?
 					(gui2::show_message(video, _("Confirm"), (*error)["message"], gui2::dialogs::message::ok_cancel_buttons) == gui2::window::CANCEL) :
@@ -289,7 +290,7 @@ static std::unique_ptr<wesnothd_connection> open_connection(CVideo& video, const
 					error_message = (*error)["message"].str();
 				}
 
-				gui2::dialogs::mp_login dlg(error_message, !((*error)["password_request"].empty()));
+				gui2::dialogs::mp_login dlg(host, error_message, !((*error)["password_request"].empty()));
 				dlg.show(video);
 
 				switch(dlg.get_retval()) {

@@ -22,7 +22,7 @@
 #include "formula/string_utils.hpp"
 #include "game_board.hpp"
 #include "game_display.hpp"
-#include "preferences/game.hpp"
+#include "preferences/credentials.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/helper.hpp"
 #include "gui/widgets/label.hpp"

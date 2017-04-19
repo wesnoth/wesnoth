@@ -26,6 +26,7 @@
 #include "actions/vision.hpp"
 #include "ai/manager.hpp"
 #include "ai/testing.hpp"
+#include "preferences/credentials.hpp"
 #include "display_chat_manager.hpp"
 #include "formula/string_utils.hpp"
 #include "game_events/manager.hpp"

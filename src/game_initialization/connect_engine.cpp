@@ -15,6 +15,7 @@
 
 #include "ai/configuration.hpp"
 #include "config_assign.hpp"
+#include "preferences/credentials.hpp"
 #include "formula/string_utils.hpp"
 #include "game_initialization/mp_game_utils.hpp"
 #include "game_initialization/playcampaign.hpp"

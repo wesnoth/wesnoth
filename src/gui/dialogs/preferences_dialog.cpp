@@ -18,6 +18,7 @@
 #include "gui/dialogs/preferences_dialog.hpp"
 
 #include "config_assign.hpp"
+#include "preferences/credentials.hpp"
 #include "gettext.hpp"
 #include "filesystem.hpp"
 #include "formatter.hpp"

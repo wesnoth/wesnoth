@@ -34,6 +34,11 @@ std::string get_prefs_file()
 	return get_user_config_dir() + "/preferences";
 }
 
+std::string get_credentials_file()
+{
+	return get_user_config_dir() + "/credentials";
+}
+
 std::string get_default_prefs_file()
 {
 #ifdef HAS_RELATIVE_DEFPREF

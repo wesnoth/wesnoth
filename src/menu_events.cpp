@@ -30,6 +30,7 @@
 #include "chat_command_handler.hpp"
 #include "color.hpp"
 #include "config_assign.hpp"
+#include "preferences/credentials.hpp"
 #include "display_chat_manager.hpp"
 #include "font/standard_colors.hpp"
 #include "formatter.hpp"

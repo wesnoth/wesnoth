@@ -15,6 +15,7 @@
 #include "game_initialization/create_engine.hpp"
 
 #include "config_assign.hpp"
+#include "preferences/credentials.hpp"
 #include "filesystem.hpp"
 #include "formula/string_utils.hpp"
 #include "game_config_manager.hpp"

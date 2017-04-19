@@ -946,7 +946,7 @@ struct dialog_tester<mp_login>
 {
 	mp_login* create()
 	{
-		return new mp_login("label", true);
+		return new mp_login("wesnoth.org", "label", true);
 	}
 };
 

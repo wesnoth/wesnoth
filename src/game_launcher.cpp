@@ -15,6 +15,7 @@
 #include "game_launcher.hpp"
 #include "game_errors.hpp"
 
+#include "preferences/credentials.hpp"
 #include "commandline_options.hpp"      // for commandline_options
 #include "config.hpp"                   // for config, etc
 #include "config_assign.hpp"
@@ -239,14 +240,14 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts, const char
 			else
 				multiplayer_server_ = "";
 		}
-	}
-	if (cmdline_opts_.username) {
-		preferences::disable_preferences_save();
-		preferences::set_login(*cmdline_opts_.username);
-	}
-	if (cmdline_opts_.password) {
-		preferences::disable_preferences_save();
-		preferences::set_password(*cmdline_opts_.password);
+		if (cmdline_opts_.username) {
+			preferences::disable_preferences_save();
+			preferences::set_login(*cmdline_opts_.username);
+			if (cmdline_opts_.password) {
+				preferences::disable_preferences_save();
+				preferences::set_password(*cmdline_opts.server, *cmdline_opts.username, *cmdline_opts_.password);
+			}
+		}
 	}
 	if (cmdline_opts_.test)
 	{

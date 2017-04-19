@@ -24,6 +24,7 @@
 #include "mp_ui_alerts.hpp"
 #include "serialization/string_utils.hpp"
 #include "color.hpp"
+#include "preferences/credentials.hpp"
 
 #include <SDL_timer.h>
 
