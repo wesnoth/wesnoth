@@ -56,7 +56,7 @@ private:
 	bool generate_lake(t_translation::ter_map& terrain, int x, int y, int lake_fall_off, std::set<map_location>& locs_touched);
 	map_location random_point_at_side(size_t width, size_t height);
 
-	boost::random::mt19937 rng_;
+	std::mt19937 rng_;
 	const config& game_config_;
 
 };

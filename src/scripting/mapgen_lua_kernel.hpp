@@ -35,11 +35,11 @@ public:
 	config create_scenario(const char * prog, const config & generator, boost::optional<uint32_t> seed); // throws game::lua_error
 
 	virtual uint32_t get_random_seed();
-	boost::mt19937& get_default_rng();
+	std::mt19937& get_default_rng();
 private:
 	void run_generator(const char * prog, const config & generator);
 	boost::optional<uint32_t> random_seed_;
-	boost::optional<boost::mt19937> default_rng_;
+	boost::optional<std::mt19937> default_rng_;
 };
 
 #endif

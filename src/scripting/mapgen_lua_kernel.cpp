@@ -43,7 +43,7 @@ struct lua_State;
  */
 static int intf_random(lua_State *L)
 {
-	boost::mt19937& rng = lua_kernel_base::get_lua_kernel<mapgen_lua_kernel>(L).get_default_rng();
+	std::mt19937& rng = lua_kernel_base::get_lua_kernel<mapgen_lua_kernel>(L).get_default_rng();
 	if(lua_isnoneornil(L, 1)) {
 		double r = double (rng());
 		double r_max = double (rng.max());
@@ -201,10 +201,10 @@ uint32_t mapgen_lua_kernel::get_random_seed()
 	}
 }
 
-boost::mt19937& mapgen_lua_kernel::get_default_rng()
+std::mt19937& mapgen_lua_kernel::get_default_rng()
 {
 	if(!default_rng_) {
-		default_rng_ = boost::mt19937(get_random_seed());
+		default_rng_ = std::mt19937(get_random_seed());
 	}
 	return *default_rng_;
 }

@@ -28,7 +28,7 @@ BOOST_AUTO_TEST_SUITE( rng )
 */
 BOOST_AUTO_TEST_CASE( validate_mt19937 )
 {
-	boost::mt19937 rng;
+	std::mt19937 rng;
 	for (int i = 0; i < 9999 ; i++) {
 		rng();
 	}

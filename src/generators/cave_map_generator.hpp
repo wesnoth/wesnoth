@@ -86,7 +86,7 @@ private:
 		std::vector<chamber> chambers_;
 		std::vector<passage> passages_;
 		config res_;
-		boost::random::mt19937 rng_;
+		std::mt19937 rng_;
 	};
 
 	bool on_board(const map_location& loc) const

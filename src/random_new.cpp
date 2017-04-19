@@ -93,7 +93,7 @@ namespace random_new
 	 *  The simplified version I have written should work the same on all
 	 *  platforms, which is the most important thing for us.
 	 *  The existence of "modulo bias" seems less important when we have moved
-	 *  to boost::mt19937, since it guarantees that there are no "bad bits"
+	 *  to std::mt19937, since it guarantees that there are no "bad bits"
 	 *  and has a very large range.
 	 *
 	 *  If a standard cross platform version becomes available then this should
