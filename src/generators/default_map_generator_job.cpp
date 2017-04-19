@@ -41,15 +41,6 @@ typedef std::vector<std::vector<int> > height_map;
 typedef t_translation::ter_map terrain_map;
 
 namespace {
-
-	struct for_randomshuffle
-	{
-		for_randomshuffle(boost::random::mt19937& rng) : rng_(rng) {}
-		boost::random::mt19937& rng_;
-		uint32_t operator ()(uint32_t end) { return rng_() % end; }
-	};
-
-
 	/**
 	 * Calculates the cost of building a road over terrain. For use in the
 	 * a_star_search algorithm.
@@ -468,8 +459,7 @@ bool default_map_generator_job::generate_river_internal(const height_map& height
 	map_location adj[6];
 	get_adjacent_tiles(current_loc,adj);
 	int items[6] = {0,1,2,3,4,5};
-	for_randomshuffle shufflehelper(rng_);
-	std::random_shuffle(items, items + 4, shufflehelper);
+	std::shuffle(items, items + 4, rng_);
 
 	// Mark that we have attempted from this map_location
 	seen_locations.insert(current_loc);
