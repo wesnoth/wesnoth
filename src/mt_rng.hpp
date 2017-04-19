@@ -16,7 +16,7 @@
 #define MT_RNG_HPP_INCLUDED
 
 #include <cstdint>
-#include <boost/random/mersenne_twister.hpp>
+#include <random>
 
 class config;
 
@@ -24,8 +24,7 @@ namespace rand_rng
 {
 
 /*
-   This class provides an interface, similar to simple_rng, to the
-   boost mt19937 generator.
+   This class provides an interface, similar to simple_rng, to the mt19937 generator.
 */
 
 class mt_rng
@@ -65,8 +64,8 @@ private:
 	/** Initial seed for the pool. */
 	uint32_t random_seed_;
 
-	/** State for the random pool (boost mersenne twister random generator). */
-	boost::mt19937 mt_;
+	/** State for the random pool (mersenne twister random generator). */
+	std::mt19937 mt_;
 
 	/** Number of time a random number is generated. */
 	unsigned int random_calls_;
