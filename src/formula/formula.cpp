@@ -16,7 +16,7 @@
 
 #include "formula/callable.hpp"
 #include "formula/function.hpp"
-#include "random_new.hpp"
+#include "random.hpp"
 #include "serialization/string_utils.hpp"
 
 #include <cassert>
@@ -777,8 +777,8 @@ private:
 	{
 		int res = 0;
 		while(faces > 0 && num_rolls-- > 0) {
-			if(random_new::generator) {
-				res += (random_new::generator->next_random() % faces) + 1;
+			if(random::generator) {
+				res += (random::generator->next_random() % faces) + 1;
 			} else {
 				res += (rand() % faces) + 1;
 			}

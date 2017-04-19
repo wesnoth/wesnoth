@@ -15,8 +15,8 @@
 #define GETTEXT_DOMAIN "wesnoth-test"
 
 #include <boost/test/unit_test.hpp>
-#include "random_new_synced.hpp"
-#include "random_new_deterministic.hpp"
+#include "random_synced.hpp"
+#include "random_deterministic.hpp"
 #include "config.hpp"
 #include <sstream>
 #include <iomanip>
@@ -295,8 +295,8 @@ std::string validate_get_random_int_seed_generator()
 
 /**
  *  This test and the next validate that we are getting the correct values
- *  from the get_random_int function, in the class random_new.
- *  We test both subclasses of random_new.
+ *  from the get_random_int function, in the class random.
+ *  We test both subclasses of random.
  *  If these tests fail but the seed manipulation tests all pass,
  *  and validate_mt19937 passes, then it suggests that the implementation
  *  of get_random_int may not be working properly on your platform.
@@ -309,7 +309,7 @@ BOOST_AUTO_TEST_CASE( validate_get_random_int )
 
 	rand_rng::mt_rng mt_(cfg);
 
-	std::shared_ptr<random_new::rng> gen_ (new random_new::rng_deterministic(mt_));
+	std::shared_ptr<random::rng> gen_ (new random::rng_deterministic(mt_));
 
 	int val = gen_->get_random_int(0, validation_get_random_int_max);
 	BOOST_CHECK_EQUAL ( val , validation_get_random_int_correct_answer );
@@ -317,7 +317,7 @@ BOOST_AUTO_TEST_CASE( validate_get_random_int )
 
 BOOST_AUTO_TEST_CASE( validate_get_random_int2 )
 {
-	std::shared_ptr<random_new::rng> gen_ (new random_new::synced_rng(validate_get_random_int_seed_generator));
+	std::shared_ptr<random::rng> gen_ (new random::synced_rng(validate_get_random_int_seed_generator));
 
 	for (int i = 0; i < validation_get_random_int_num_draws; i++) {
 		gen_->next_random();

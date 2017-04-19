@@ -33,7 +33,7 @@
 #include "map/label.hpp"
 #include "pathfind/pathfind.hpp"
 #include "pathutils.hpp"
-#include "random_new.hpp"
+#include "random.hpp"
 #include "resources.hpp"
 #include "team.hpp"
 #include "tod_manager.hpp"
@@ -528,7 +528,7 @@ data* recruitment::get_best_leader_from_ratio_scores(std::vector<data>& leader_d
 	assert(ratio_score_sum > 0.0);
 
 	// Shuffle leader_data to break ties randomly.
-	std::shuffle(leader_data.begin(), leader_data.end(), random_new::rng::default_instance());
+	std::shuffle(leader_data.begin(), leader_data.end(), random::rng::default_instance());
 
 	// Find which leader should recruit according to ratio_scores.
 	data* best_leader_data = nullptr;

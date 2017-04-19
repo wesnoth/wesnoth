@@ -18,7 +18,7 @@
 
 #include "config.hpp"
 #include "game_preferences.hpp"
-#include "random_new.hpp"
+#include "random.hpp"
 #include "serialization/string_utils.hpp"
 
 namespace gui2
@@ -68,7 +68,7 @@ std::vector<game_tip> shuffle(const std::vector<game_tip>& tips)
 		}
 	}
 
-	std::shuffle(result.begin(), result.end(), random_new::rng::default_instance());
+	std::shuffle(result.begin(), result.end(), random::rng::default_instance());
 	return result;
 }
 

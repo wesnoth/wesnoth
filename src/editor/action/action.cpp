@@ -21,7 +21,7 @@
 #include "editor/action/action.hpp"
 #include "editor/map/map_context.hpp"
 #include "gettext.hpp"
-#include "random_new.hpp"
+#include "random.hpp"
 
 #include <memory>
 
@@ -298,7 +298,7 @@ void editor_action_shuffle_area::perform_without_undo(map_context& mc) const
 {
 	std::vector<map_location> shuffle;
 	std::copy(area_.begin(), area_.end(), std::inserter(shuffle, shuffle.begin()));
-	std::shuffle(shuffle.begin(), shuffle.end(), random_new::rng::default_instance());
+	std::shuffle(shuffle.begin(), shuffle.end(), random::rng::default_instance());
 	std::vector<map_location>::const_iterator shuffle_it = shuffle.begin();
 	std::set<map_location>::const_iterator orig_it = area_.begin();
 	while (orig_it != area_.end()) {

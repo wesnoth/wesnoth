@@ -11,7 +11,7 @@
 
    See the COPYING file for more details.
 */
-#include "random_new_synced.hpp"
+#include "random_synced.hpp"
 #include "log.hpp"
 
 static lg::log_domain log_random("random");
@@ -20,7 +20,7 @@ static lg::log_domain log_random("random");
 #define WRN_RND LOG_STREAM(warn, log_random)
 #define ERR_RND LOG_STREAM(err, log_random)
 
-namespace random_new
+namespace random
 {
 	synced_rng::synced_rng(std::function<std::string()> seed_generator)
 		: has_valid_seed_(false), seed_generator_(seed_generator), gen_()
@@ -35,7 +35,7 @@ namespace random_new
 		//getting here means random was called form inside a synced context.
 		uint32_t retv = gen_.get_next_random();
 
-		LOG_RND << "random_new::rng::next_random_impl returned " << retv;
+		LOG_RND << "random::rng::next_random_impl returned " << retv;
 		return retv;
 	}
 

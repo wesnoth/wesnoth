@@ -22,7 +22,7 @@ class gamemap;
 class unit_map;
 class game_data;
 
-namespace random_new
+namespace random
 {
 	class rng;
 }
@@ -39,7 +39,7 @@ class tod_manager
 		/**
 			handles random_start_time, should be called before the game starts.
 		*/
-		void resolve_random(random_new::rng& r);
+		void resolve_random(random::rng& r);
 		int get_current_time(const map_location& loc = map_location::null_location()) const;
 
 		void set_current_time(int time);

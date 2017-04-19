@@ -11,10 +11,10 @@
 
    See the COPYING file for more details.
 */
-#include "random_new_deterministic.hpp"
+#include "random_deterministic.hpp"
 
 
-namespace random_new
+namespace random
 {
 
 	rng_deterministic::rng_deterministic(rand_rng::mt_rng& gen)

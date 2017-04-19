@@ -29,7 +29,7 @@
 #include "gui/widgets/window.hpp" //gui2::window::OK
 #include "log.hpp"
 #include "play_controller.hpp" //resources::controller
-#include "random_new.hpp"
+#include "random.hpp"
 #include "resources.hpp"
 #include "statistics.hpp"
 #include "synced_user_choice.hpp"
@@ -207,8 +207,8 @@ namespace
 			{
 				//we are in the situation, that the unit is owned by a human, but he's not allowed to do this decision.
 				//because it's a mp game and it's not his turn.
-				//note that it doesn't matter whether we call random_new::generator->next_random() or rand().
-				res = random_new::generator->get_random_int(0, nb_options_-1);
+				//note that it doesn't matter whether we call random::generator->next_random() or rand().
+				res = random::generator->get_random_int(0, nb_options_-1);
 			}
 			LOG_NG << "unit at position " << loc_ << "choose advancement number " << res << "\n";
 			config retv;

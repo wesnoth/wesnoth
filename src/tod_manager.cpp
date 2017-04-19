@@ -21,7 +21,7 @@
 #include "log.hpp"
 #include "map/map.hpp"
 #include "play_controller.hpp"
-#include "random_new.hpp"
+#include "random.hpp"
 #include "units/unit.hpp"
 #include "units/abilities.hpp"
 #include "wml_exception.hpp"
@@ -77,7 +77,7 @@ tod_manager& tod_manager::operator=(const tod_manager& manager)
 	return *this;
 }
 
-void tod_manager::resolve_random(random_new::rng& r)
+void tod_manager::resolve_random(random::rng& r)
 {
 	//process the random_start_time string, which can be boolean yes/no true/false or a
 	//comma-separated string of integers >= 1 referring to the times_ array indices

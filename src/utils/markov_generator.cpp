@@ -20,7 +20,7 @@
 #include "utils/markov_generator.hpp"
 
 #include "serialization/unicode_cast.hpp"
-#include "random_new.hpp"
+#include "random.hpp"
 
 static void add_prefixes(const ucs4::string& str, size_t length, markov_prefix_map& res)
 {
@@ -65,7 +65,7 @@ static ucs4::string markov_generate_name(const markov_prefix_map& prefixes,
 	std::vector<int> random(max_len);
 	size_t j = 0;
 	for(; j < max_len; ++j) {
-		random[j] = random_new::generator->next_random();
+		random[j] = random::generator->next_random();
 	}
 
 	j = 0;

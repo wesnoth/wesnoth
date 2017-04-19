@@ -12,10 +12,10 @@
    See the COPYING file for more details.
 */
 
-#ifndef RANDOM_NEW_SYNCED_H_INCLUDED
-#define RANDOM_NEW_SYNCED_H_INCLUDED
+#ifndef RANDOM_SYNCED_H_INCLUDED
+#define RANDOM_SYNCED_H_INCLUDED
 
-#include "random_new.hpp"
+#include "random.hpp"
 #include "mt_rng.hpp"
 
 #include "utils/functional.hpp"
@@ -23,9 +23,9 @@
 /*
 todo: use a boost::random based solution.
 */
-namespace random_new
+namespace random
 {
-	class synced_rng : public random_new::rng
+	class synced_rng : public random::rng
 	{
 	public:
 		synced_rng(std::function<std::string()> seed_generator);

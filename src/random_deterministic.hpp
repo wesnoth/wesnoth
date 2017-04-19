@@ -11,12 +11,12 @@
 
    See the COPYING file for more details.
 */
-#ifndef RANDOM_NEW_DETERMINISTIC_H_INCLUDED
-#define RANDOM_NEW_DETERMINISTIC_H_INCLUDED
-#include "random_new.hpp"
+#ifndef RANDOM_DETERMINISTIC_H_INCLUDED
+#define RANDOM_DETERMINISTIC_H_INCLUDED
+#include "random.hpp"
 #include "mt_rng.hpp"
 
-namespace random_new
+namespace random
 {
 	/**
 		This rng is used when the normal synced rng is not available
@@ -24,7 +24,7 @@ namespace random_new
 
 		or during the "Deterministic SP mode"
 	*/
-	class rng_deterministic : public random_new::rng
+	class rng_deterministic : public random::rng
 	{
 	public:
 		rng_deterministic(rand_rng::mt_rng& gen);

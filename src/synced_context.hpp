@@ -18,8 +18,8 @@
 #include "synced_commands.hpp"
 #include "synced_checkup.hpp"
 #include "replay.hpp"
-#include "random_new.hpp"
-#include "random_new_synced.hpp"
+#include "random.hpp"
+#include "random_synced.hpp"
 #include "game_events/pump.hpp" // for queued_event
 #include "generic_event.hpp"
 #include "mouse_handler_base.hpp"
@@ -109,7 +109,7 @@ public:
 	/**
 		@return a rng_deterministic if in determinsic mode otherwise a rng_synced.
 	*/
-	static std::shared_ptr<random_new::rng> get_rng_for_action();
+	static std::shared_ptr<random::rng> get_rng_for_action();
 	/**
 		@return whether we already sended data about the current action to other clients. which means we cannot undo it.
 		returns is_simultaneously_
@@ -181,8 +181,8 @@ public:
 	set_scontext_synced_base();
 	~set_scontext_synced_base();
 protected:
-	std::shared_ptr<random_new::rng> new_rng_;
-	random_new::rng* old_rng_;
+	std::shared_ptr<random::rng> new_rng_;
+	random::rng* old_rng_;
 };
 /*
 	a RAII object to enter the synced context, cannot be called if we are already in a synced context.
@@ -218,7 +218,7 @@ public:
 	leave_synced_context();
 	~leave_synced_context();
 private:
-	random_new::rng* old_rng_;
+	random::rng* old_rng_;
 };
 
 /**

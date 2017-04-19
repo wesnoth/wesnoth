@@ -47,7 +47,7 @@
 #include "play_controller.hpp"
 #include "recall_list_manager.hpp"
 #include "replay.hpp"
-#include "random_new.hpp"
+#include "random.hpp"
 #include "resources.hpp"
 #include "scripting/game_lua_kernel.hpp"
 #include "side_filter.hpp"

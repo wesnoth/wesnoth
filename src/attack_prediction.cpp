@@ -41,7 +41,7 @@
 #include "actions/attack.hpp"
 #include "game_config.hpp"
 #include "preferences.hpp"
-#include "random_new.hpp"
+#include "random.hpp"
 #include "utils/general.hpp"
 #include <array>
 #include <cmath>
@@ -1292,12 +1292,12 @@ void monte_carlo_combat_matrix::simulate()
 	{
 		bool a_hit = false;
 		bool b_hit = false;
-		bool a_slowed = random_new::generator->get_random_bool(a_initially_slowed_chance_);
-		bool b_slowed = random_new::generator->get_random_bool(b_initially_slowed_chance_);
+		bool a_slowed = random::generator->get_random_bool(a_initially_slowed_chance_);
+		bool b_slowed = random::generator->get_random_bool(b_initially_slowed_chance_);
 		const std::vector<double>& a_initial = a_slowed ? a_initial_slowed_ : a_initial_;
 		const std::vector<double>& b_initial = b_slowed ? b_initial_slowed_ : b_initial_;
-		unsigned int a_hp = random_new::generator->get_random_element(a_initial.begin(), a_initial.end());
-		unsigned int b_hp = random_new::generator->get_random_element(b_initial.begin(), b_initial.end());
+		unsigned int a_hp = random::generator->get_random_element(a_initial.begin(), a_initial.end());
+		unsigned int b_hp = random::generator->get_random_element(b_initial.begin(), b_initial.end());
 		unsigned int a_strikes = calc_blows_a(a_hp);
 		unsigned int b_strikes = calc_blows_b(b_hp);
 
@@ -1307,7 +1307,7 @@ void monte_carlo_combat_matrix::simulate()
 			{
 				if (k < a_strikes)
 				{
-					if (random_new::generator->get_random_bool(a_hit_chance_))
+					if (random::generator->get_random_bool(a_hit_chance_))
 					{
 						// A hits B
 						unsigned int damage = a_slowed ? a_slow_damage_ : a_damage_;
@@ -1330,7 +1330,7 @@ void monte_carlo_combat_matrix::simulate()
 
 				if (k < b_strikes)
 				{
-					if (random_new::generator->get_random_bool(b_hit_chance_))
+					if (random::generator->get_random_bool(b_hit_chance_))
 					{
 						// B hits A
 						unsigned int damage = b_slowed ? b_slow_damage_ : b_damage_;

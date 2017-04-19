@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-#include "random_new.hpp"
+#include "random.hpp"
 #include "log.hpp"
 
 
@@ -29,7 +29,7 @@ static lg::log_domain log_random("random");
 
 namespace {
 
-	class rng_default : public random_new::rng
+	class rng_default : public random::rng
 	{
 	public:
 		rng_default()
@@ -51,7 +51,7 @@ namespace {
 	};
 }
 
-namespace random_new
+namespace random
 {
 
 	rng* generator = &rng::default_instance();

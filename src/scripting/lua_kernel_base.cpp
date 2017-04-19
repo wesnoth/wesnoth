@@ -20,7 +20,7 @@
 #include "gui/widgets/settings.hpp"
 #include "log.hpp"
 #include "lua_jailbreak_exception.hpp"  // for lua_jailbreak_exception
-#include "random_new.hpp"
+#include "random.hpp"
 #include "seed_rng.hpp"
 
 #ifdef DEBUG_LUA
@@ -219,7 +219,7 @@ static int intf_name_generator(lua_State *L)
 static int intf_random(lua_State *L)
 {
 	if (lua_isnoneornil(L, 1)) {
-		double r = double(random_new::generator->next_random());
+		double r = double(random::generator->next_random());
 		double r_max = double(std::numeric_limits<uint32_t>::max());
 		lua_push(L, r / (r_max + 1));
 		return 1;
@@ -238,7 +238,7 @@ static int intf_random(lua_State *L)
 		if (min > max) {
 			return luaL_argerror(L, 1, "min > max");
 		}
-		lua_push(L, random_new::generator->get_random_int(min, max));
+		lua_push(L, random::generator->get_random_int(min, max));
 		return 1;
 	}
 }

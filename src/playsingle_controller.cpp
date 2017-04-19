@@ -37,7 +37,7 @@
 #include "map/label.hpp"
 #include "map/map.hpp"
 #include "playturn.hpp"
-#include "random_new_deterministic.hpp"
+#include "random_deterministic.hpp"
 #include "replay_helper.hpp"
 #include "resources.hpp"
 #include "savegame.hpp"

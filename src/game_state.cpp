@@ -24,7 +24,7 @@
 #include "pathfind/teleport.hpp"
 #include "play_controller.hpp"
 #include "game_preferences.hpp"
-#include "random_new_deterministic.hpp"
+#include "random_deterministic.hpp"
 #include "reports.hpp"
 #include "scripting/game_lua_kernel.hpp"
 #include "teambuilder.hpp"
@@ -203,9 +203,9 @@ void game_state::init(const config& level, play_controller & pc)
 
 	{
 		//sync traits of start units and the random start time.
-		random_new::set_random_determinstic deterministic(gamedata_.rng());
+		random::set_random_determinstic deterministic(gamedata_.rng());
 
-		tod_manager_.resolve_random(*random_new::generator);
+		tod_manager_.resolve_random(*random::generator);
 
 		for(team_builder_ptr tb_ptr : team_builders)
 		{

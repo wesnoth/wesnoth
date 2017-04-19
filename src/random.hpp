@@ -11,15 +11,15 @@
 
    See the COPYING file for more details.
 */
-#ifndef RANDOM_NEW_H_INCLUDED
-#define RANDOM_NEW_H_INCLUDED
+#ifndef RANDOM_H_INCLUDED
+#define RANDOM_H_INCLUDED
 
 #include <cstdlib> //needed for RAND_MAX
 #include <cstdint>
 #include <iterator> //needed for std::distance
 #include <limits>
 
-namespace random_new
+namespace random
 {
 	/**
 		this class does not give synced random results derived classes might do.
