@@ -703,7 +703,13 @@ void addon_manager::execute_default_action(const addon_info& addon, window& wind
 			break;
 		case ADDON_INSTALLED:
 			if(!tracking_info_[addon.id].can_publish) {
-				uninstall_addon(addon, window);
+				utils::string_map symbols{ { "addon", addon.display_title() } };
+				int res = gui2::show_message(window.video(), _("Uninstall add-on"),
+					vgettext("Do you want to uninstall '$addon|'?", symbols),
+					gui2::dialogs::message::ok_cancel_buttons);
+				if(res == gui2::window::OK) {
+					uninstall_addon(addon, window);
+				}
 			}
 			break;
 		case ADDON_INSTALLED_UPGRADABLE:
