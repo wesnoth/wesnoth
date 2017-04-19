@@ -17,7 +17,7 @@
 #include <cstdlib> //needed for RAND_MAX
 #include <cstdint>
 #include <iterator> //needed for std::distance
-#include <numeric_limits>
+#include <limits>
 
 namespace random_new
 {
@@ -73,12 +73,12 @@ namespace random_new
 		 */
 		template <typename T>
 		unsigned int get_random_element(T first, T last);
-		
+
 		// For compatibility with the C++ UniformRandomBitGenerator concept
 		using result_type = uint32_t;
 		using base::min;
 		using base::max;
-		uint32_t operator() {return next_random();}
+		uint32_t operator()() { return next_random(); }
 
 		static rng& default_instance();
 	protected:
