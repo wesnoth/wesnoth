@@ -14,8 +14,6 @@
 
 #include "actions/attack.hpp"
 #include "attack_prediction.hpp"
-//#include "editor/editor_controller.hpp"
-//#include "editor/palette/terrain_palettes.hpp"
 #include "font/pango/escape.hpp"
 #include "font/text_formatting.hpp"
 #include "formatter.hpp"
@@ -826,31 +824,21 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 }
 
 // Conversion routine for both unscathed and damage change percentage.
-static void format_prob(char str_buf[10], double prob)
+static std::string format_prob(double prob)
 {
-
 	if(prob > 0.9995) {
-		snprintf(str_buf, 10, "100 %%");
-	} else if(prob >= 0.1) {
-		snprintf(str_buf, 10, "%4.1f %%", 100.0 * prob);
-	} else {
-		snprintf(str_buf, 10, " %3.1f %%", 100.0 * prob);
+		return "100%";
 	}
-
-	str_buf[9] = '\0';  //prevents _snprintf error
+	std::ostringstream res;
+	res << std::setprecision(1) << std::setw(4) << 100.0 * prob << "%";
+	return res.str();
 }
 
-static void format_hp(char str_buf[10], int hp)
+static std::string format_hp(unsigned hp)
 {
-	if(hp < 10) {
-		snprintf(str_buf, 10, "   %i", hp);
-	} else if(hp < 99) {
-		snprintf(str_buf, 10, "  %i", hp);
-	} else {
-		snprintf(str_buf, 10, " %i", hp);
-	}
-
-	str_buf[9] = '\0';  //prevents _snprintf error
+	std::ostringstream res;
+	res << ' ' << std::setw(3) << hp;
+	return res.str();
 }
 
 static config unit_weapons(reports::context & rc, const unit *attacker, const map_location &attacker_pos, const unit *defender, bool show_attacker)
@@ -954,23 +942,16 @@ static config unit_weapons(reports::context & rc, const unit *attacker, const ma
 		// And reverse the order. Might be doable in a better manor.
 		std::reverse(hp_prob_vector.begin(), hp_prob_vector.end());
 
-		for(i = 0;
-				i < static_cast<int>(hp_prob_vector.size()); i++) {
+		for(i = 0; i < static_cast<int>(hp_prob_vector.size()); i++) {
 
 			int hp = hp_prob_vector[i].first;
 			double prob = hp_prob_vector[i].second;
-
-			char prob_buf[10];
-			format_prob(prob_buf, prob);
-			char hp_buf[10];
-			format_hp(hp_buf, hp);
-
 			color_t prob_color = game_config::blue_to_white(prob * 100.0, true);
 
 			str		<< span_color(font::weapon_details_color) << "  " << "  "
-					<< span_color(u->hp_color(hp)) << hp_buf << naps
+					<< span_color(u->hp_color(hp)) << format_hp(hp) << naps
 					<< " " << font::weapon_numbers_sep << " "
-					<< span_color(prob_color) << prob_buf << naps
+					<< span_color(prob_color) << format_prob(prob) << naps
 					<< naps << "\n";
 		}
 

@@ -429,30 +429,31 @@ std::string unescape(const std::string &str)
 
 std::string urlencode(const std::string &str)
 {
-	static std::string nonresv =
+	static const std::string nonresv_str =
 		"-."
 		"0123456789"
 		"ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 		"_"
 		"abcdefghijklmnopqrstuvwxyz"
 		"~";
+	static const std::set<char> nonresv(nonresv_str.begin(), nonresv_str.end());
 
-	std::string res;
+	std::ostringstream res;
+	res << std::hex;
+	res.fill('0');
 
-	for(size_t n = 0; n < str.length(); ++n) {
-		const char& c = str[n];
-
-		if(nonresv.find(c) != std::string::npos) {
-			res += c;
+	for(char c : str) {
+		if(nonresv.count(c) == 0) {
+			res << c;
 			continue;
 		}
 
-		char buf[4];
-		snprintf(buf, sizeof(buf), "%%%02X", c);
-		res += buf;
+		res << '%';
+		res.width(2);
+		res << int(c);
 	}
 
-	return res;
+	return res.str();
 }
 
 bool string_bool(const std::string& str, bool def) {

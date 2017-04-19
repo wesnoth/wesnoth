@@ -278,9 +278,7 @@ public:
 		id_ = id;
 	}
 
-#ifdef HAVE_CXX14
-	[[deprecated("Use comparison against id() instead")]]
-#endif
+	DEPRECATED("Use comparison against id() instead")
 	bool matches_id(const std::string& unit_id) const
 	{
 		return id_ == unit_id;

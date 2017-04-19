@@ -20,9 +20,6 @@
 // Enable C99 support for VC14
 #if _MSC_VER>=1900
 #define STDC99
-#else
-#undef snprintf
-#define snprintf _snprintf
 #endif
 
 // Disable warning about source encoding not in current code page.
@@ -30,9 +27,6 @@
 
 // Disable warning about deprecated functions.
 #pragma warning(disable: 4996)
-
-// Disable warning when using time_t in snprintf.
-#pragma warning(disable: 4477)
 
 // Disable some MSVC warnings which are useless according to mordante
 #pragma warning(disable: 4244)
@@ -46,7 +40,7 @@
 #ifdef NDEBUG
 /*
  * Wesnoth uses asserts to avoid undefined behaviour. For example, to make sure
- * pointers are not nullptr before deferring them, or collections are not empty
+ * pointers are not nullptr before dereferencing them, or collections are not empty
  * before accessing their elements. Therefore Wesnoth should not be compiled
  * with assertions disabled.
  */
@@ -75,13 +69,20 @@
 #define NOEXCEPT throw()
 #define NORETURN __declspec(noreturn)
 #endif
+// MSVC supports these starting in 2017?
+// Some sources claim MSVC 2015 supports them, but let's be safe...
+#if _MSC_VER >= 1910
+#define DEPRECATED(reason) [[deprecated(reason)]]
+#else
+#define DEPRECATED(reason) __declspec(deprecated)
+#endif
 #endif
 
 #if defined(__clang__)
 #include <ciso646> // To ensure standard library version macros are defined
 // If it's libc++, no problem. Otherwise, attempt to detect libstdc++ version (needs GCC 5.1 or higher)
 // by testing for the existence of a header added in that version.
-#if defined(_LIBCPP_VERSION) || __has_include(<experimental/any>)
+#if defined(_LIBCPP_VERSION) || __has_include(<experimental/any>) || __has_include(<any>)
 #define HAVE_PUT_TIME 1
 #else
 #define HAVE_PUT_TIME 0
@@ -92,6 +93,12 @@
 #define HAVE_INHERITING_CTORS __has_feature(cxx_inheriting_constructors)
 // All supported versions of clang have this
 #define NORETURN [[noreturn]]
+
+#if __has_cpp_attribute(deprecated)
+#define DEPRECATED(reason) [[deprecated(reason)]]
+#else
+#define DEPRECATED(reason) __attribute__((deprecated(reason)))
+#endif
 
 #if __has_feature(cxx_constexpr)
 #define CONSTEXPR constexpr
@@ -115,6 +122,13 @@
 #define NORETURN [[noreturn]]
 #define HAVE_REF_QUALIFIERS 1
 #define HAVE_INHERITING_CTORS 1
+
+// Deprecated is supported from 4.9 up
+#if __GNUC__ >= 5 || (__GNUC__ == 4 && __GNUC_MINOR__ >= 9)
+#define DEPRECATED(reason) [[deprecated(reason)]]
+#else
+#define DEPRECATED(reason) __attribute__((deprecated(reason)))
+#endif
 #endif
 
 #endif //GLOBAL_HPP_INCLUDED
