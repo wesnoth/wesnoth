@@ -18,7 +18,7 @@
 #include "scripting/lua_kernel_base.hpp"
 #include <boost/optional.hpp>
 #include <cstdint>
-#include <boost/random/mersenne_twister.hpp>
+#include <random>
 
 class config;
 

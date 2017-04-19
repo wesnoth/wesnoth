@@ -23,7 +23,7 @@
 
 #include <set>
 #include <boost/optional.hpp>
-#include <boost/random.hpp>
+#include <random>
 
 class cave_map_generator : public map_generator
 {

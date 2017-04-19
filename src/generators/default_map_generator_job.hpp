@@ -25,7 +25,7 @@ class config;
 #include "terrain/translation.hpp"
 #include "utils/name_generator.hpp"
 
-#include <boost/random.hpp>
+#include <random>
 #include <cstdint>
 #include <map>
 #include <memory>
