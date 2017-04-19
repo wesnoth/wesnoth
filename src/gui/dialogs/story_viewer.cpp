@@ -279,6 +279,9 @@ void story_viewer::display_part(window& window)
 
 	// If we have images to draw, draw the first one now. A new non-repeating timer is added
 	// after every draw to schedule the next one after the specified interval.
+	//
+	// TODO: in the old GUI1 dialog, floating images delayed the appearance of the story panel until
+	//       drawing was finished. Might be worth looking into restoring that.
 	if(!floating_images.empty()) {
 		draw_floating_image(window, floating_images.begin(), part_index_);
 	}
@@ -318,6 +321,9 @@ void story_viewer::draw_floating_image(window& window, floating_image_list::cons
 	image["w"] = floating_image.autoscale() ? "(width)"  : "(image_width)";
 	image["h"] = floating_image.autoscale() ? "(height)" : "(image_height)";
 	image["name"] = floating_image.file();
+
+	// TODO: implement handling of the tiling options.
+	//image["resize_mode"] = "tile_centered"
 
 	cfg.add_child("image", image);
 
