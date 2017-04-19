@@ -80,7 +80,7 @@ void mt_rng::seed_random(const uint32_t seed, const unsigned int call_count)
 {
 	random_seed_ = seed;
 	mt_.seed(random_seed_);
-	discard(call_count); //mt_.discard(call_count);
+	mt_.discard(call_count);
 	DBG_RND << "Seeded random with " << std::hex << random_seed_ << std::dec << " with "
 		<< random_calls_ << " calls." << std::endl;
 }
@@ -103,13 +103,6 @@ std::string mt_rng::get_random_seed_str() const {
 	stream << std::hex;
 	stream << random_seed_;
 	return stream.str();
-}
-
-void mt_rng::discard(const unsigned int call_count)
-{
-	for(unsigned int i = 0; i < call_count; ++i) {
-		get_next_random();
-	}
 }
 
 } // ends rand_rng namespace

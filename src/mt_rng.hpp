@@ -70,12 +70,6 @@ private:
 	/** Number of time a random number is generated. */
 	unsigned int random_calls_;
 
-	/** On my local version of boost::random, I can use mt_.discard to discard a number of rng results.
-	In older versions this seems to be unavailable. I'm implementing as a private method of mt_rng,
-	following description here: http://www.boost.org/doc/libs/1_51_0/doc/html/boost/random/mersenne_twister_engine.html#id1408119-bb
-	*/
-	void discard(const unsigned int call_count);
-
 	/**
 	 *  Seeds the random pool. This is the old version, I would like to mark this private.
 	 *
