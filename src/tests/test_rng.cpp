@@ -309,7 +309,7 @@ BOOST_AUTO_TEST_CASE( validate_get_random_int )
 
 	rand_rng::mt_rng mt_(cfg);
 
-	std::shared_ptr<random::rng> gen_ (new random::rng_deterministic(mt_));
+	std::shared_ptr<randomness::rng> gen_ (new randomness::rng_deterministic(mt_));
 
 	int val = gen_->get_random_int(0, validation_get_random_int_max);
 	BOOST_CHECK_EQUAL ( val , validation_get_random_int_correct_answer );
@@ -317,7 +317,7 @@ BOOST_AUTO_TEST_CASE( validate_get_random_int )
 
 BOOST_AUTO_TEST_CASE( validate_get_random_int2 )
 {
-	std::shared_ptr<random::rng> gen_ (new random::synced_rng(validate_get_random_int_seed_generator));
+	std::shared_ptr<randomness::rng> gen_ (new randomness::synced_rng(validate_get_random_int_seed_generator));
 
 	for (int i = 0; i < validation_get_random_int_num_draws; i++) {
 		gen_->next_random();

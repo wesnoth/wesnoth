@@ -19,7 +19,7 @@
 #include <iterator> //needed for std::distance
 #include <limits>
 
-namespace random
+namespace randomness
 {
 	/**
 		this class does not give synced random results derived classes might do.

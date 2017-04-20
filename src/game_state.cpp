@@ -203,9 +203,9 @@ void game_state::init(const config& level, play_controller & pc)
 
 	{
 		//sync traits of start units and the random start time.
-		random::set_random_determinstic deterministic(gamedata_.rng());
+		randomness::set_random_determinstic deterministic(gamedata_.rng());
 
-		tod_manager_.resolve_random(*random::generator);
+		tod_manager_.resolve_random(*randomness::generator);
 
 		for(team_builder_ptr tb_ptr : team_builders)
 		{

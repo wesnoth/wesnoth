@@ -77,7 +77,7 @@ tod_manager& tod_manager::operator=(const tod_manager& manager)
 	return *this;
 }
 
-void tod_manager::resolve_random(random::rng& r)
+void tod_manager::resolve_random(randomness::rng& r)
 {
 	//process the random_start_time string, which can be boolean yes/no true/false or a
 	//comma-separated string of integers >= 1 referring to the times_ array indices

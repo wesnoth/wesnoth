@@ -528,7 +528,7 @@ data* recruitment::get_best_leader_from_ratio_scores(std::vector<data>& leader_d
 	assert(ratio_score_sum > 0.0);
 
 	// Shuffle leader_data to break ties randomly.
-	std::shuffle(leader_data.begin(), leader_data.end(), random::rng::default_instance());
+	std::shuffle(leader_data.begin(), leader_data.end(), randomness::rng::default_instance());
 
 	// Find which leader should recruit according to ratio_scores.
 	data* best_leader_data = nullptr;

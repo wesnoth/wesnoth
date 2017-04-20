@@ -14,7 +14,7 @@
 #include "random_deterministic.hpp"
 
 
-namespace random
+namespace randomness
 {
 
 	rng_deterministic::rng_deterministic(rand_rng::mt_rng& gen)

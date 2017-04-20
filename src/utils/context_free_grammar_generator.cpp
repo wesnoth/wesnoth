@@ -171,6 +171,6 @@ std::string context_free_grammar_generator::generate() const {
 
 void context_free_grammar_generator::init_seed(uint32_t seed[]) const {
 	for (unsigned short int i = 0; i < seed_size; i++) {
-		seed[i] = random::generator->next_random();
+		seed[i] = randomness::generator->next_random();
 	}
 }

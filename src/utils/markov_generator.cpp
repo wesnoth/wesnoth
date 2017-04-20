@@ -65,7 +65,7 @@ static ucs4::string markov_generate_name(const markov_prefix_map& prefixes,
 	std::vector<int> random(max_len);
 	size_t j = 0;
 	for(; j < max_len; ++j) {
-		random[j] = random::generator->next_random();
+		random[j] = randomness::generator->next_random();
 	}
 
 	j = 0;

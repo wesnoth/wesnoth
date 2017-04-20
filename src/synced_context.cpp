@@ -227,7 +227,7 @@ bool synced_context::can_undo()
 	//this method should only works in a synced context.
 	assert(is_synced());
 	//if we called the rng or if we sended data of this action over the network already, undoing is impossible.
-	return (!is_simultaneously_) && (random::generator->get_random_calls() == 0);
+	return (!is_simultaneously_) && (randomness::generator->get_random_calls() == 0);
 }
 
 void synced_context::set_last_unit_id(int id)
@@ -253,16 +253,16 @@ void synced_context::send_user_choice()
 	syncmp_registry::send_user_choice();
 }
 
-std::shared_ptr<random::rng> synced_context::get_rng_for_action()
+std::shared_ptr<randomness::rng> synced_context::get_rng_for_action()
 {
 	const std::string& mode = resources::classification->random_mode;
 	if(mode == "deterministic")
 	{
-		return std::shared_ptr<random::rng>(new random::rng_deterministic(resources::gamedata->rng()));
+		return std::shared_ptr<randomness::rng>(new randomness::rng_deterministic(resources::gamedata->rng()));
 	}
 	else
 	{
-		return std::shared_ptr<random::rng>(new random::synced_rng(generate_random_seed));
+		return std::shared_ptr<randomness::rng>(new randomness::synced_rng(generate_random_seed));
 	}
 }
 
@@ -377,7 +377,7 @@ void synced_context::reset_undo_commands()
 
 set_scontext_synced_base::set_scontext_synced_base()
 	: new_rng_(synced_context::get_rng_for_action())
-	, old_rng_(random::generator)
+	, old_rng_(randomness::generator)
 {
 	LOG_REPLAY << "set_scontext_synced_base::set_scontext_synced_base\n";
 	assert(!resources::whiteboard->has_planned_unit_map());
@@ -386,14 +386,14 @@ set_scontext_synced_base::set_scontext_synced_base()
 	synced_context::reset_is_simultaneously();
 	synced_context::set_last_unit_id(resources::gameboard->unit_id_manager().get_save_id());
 	synced_context::reset_undo_commands();
-	old_rng_ = random::generator;
-	random::generator = new_rng_.get();
+	old_rng_ = randomness::generator;
+	randomness::generator = new_rng_.get();
 }
 set_scontext_synced_base::~set_scontext_synced_base()
 {
 	LOG_REPLAY << "set_scontext_synced_base:: destructor\n";
 	assert(synced_context::get_synced_state() == synced_context::SYNCED);
-	random::generator = old_rng_;
+	randomness::generator = old_rng_;
 	synced_context::set_synced_state(synced_context::UNSYNCED);
 }
 
@@ -492,21 +492,21 @@ int set_scontext_synced::get_random_calls()
 
 
 leave_synced_context::leave_synced_context()
-	: old_rng_(random::generator)
+	: old_rng_(randomness::generator)
 {
 	assert(synced_context::get_synced_state() == synced_context::SYNCED);
 	synced_context::set_synced_state(synced_context::LOCAL_CHOICE);
 
 	//calling the synced rng form inside a local_choice would cause oos.
 	//TODO: should we also reset the synced checkup?
-	random::generator = &random::rng::default_instance();
+	randomness::generator = &randomness::rng::default_instance();
 }
 
 leave_synced_context::~leave_synced_context()
 {
 	assert(synced_context::get_synced_state() == synced_context::LOCAL_CHOICE);
 	synced_context::set_synced_state(synced_context::SYNCED);
-	random::generator = old_rng_;
+	randomness::generator = old_rng_;
 }
 
 set_scontext_unsynced::set_scontext_unsynced()

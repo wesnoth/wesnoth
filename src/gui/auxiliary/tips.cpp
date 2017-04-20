@@ -68,7 +68,7 @@ std::vector<game_tip> shuffle(const std::vector<game_tip>& tips)
 		}
 	}
 
-	std::shuffle(result.begin(), result.end(), random::rng::default_instance());
+	std::shuffle(result.begin(), result.end(), randomness::rng::default_instance());
 	return result;
 }
 

@@ -16,7 +16,7 @@
 #include "random.hpp"
 #include "mt_rng.hpp"
 
-namespace random
+namespace randomness
 {
 	/**
 		This rng is used when the normal synced rng is not available
@@ -24,7 +24,7 @@ namespace random
 
 		or during the "Deterministic SP mode"
 	*/
-	class rng_deterministic : public random::rng
+	class rng_deterministic : public randomness::rng
 	{
 	public:
 		rng_deterministic(rand_rng::mt_rng& gen);

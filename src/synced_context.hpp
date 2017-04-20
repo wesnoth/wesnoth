@@ -109,7 +109,7 @@ public:
 	/**
 		@return a rng_deterministic if in determinsic mode otherwise a rng_synced.
 	*/
-	static std::shared_ptr<random::rng> get_rng_for_action();
+	static std::shared_ptr<randomness::rng> get_rng_for_action();
 	/**
 		@return whether we already sended data about the current action to other clients. which means we cannot undo it.
 		returns is_simultaneously_
@@ -181,8 +181,8 @@ public:
 	set_scontext_synced_base();
 	~set_scontext_synced_base();
 protected:
-	std::shared_ptr<random::rng> new_rng_;
-	random::rng* old_rng_;
+	std::shared_ptr<randomness::rng> new_rng_;
+	randomness::rng* old_rng_;
 };
 /*
 	a RAII object to enter the synced context, cannot be called if we are already in a synced context.
@@ -218,7 +218,7 @@ public:
 	leave_synced_context();
 	~leave_synced_context();
 private:
-	random::rng* old_rng_;
+	randomness::rng* old_rng_;
 };
 
 /**

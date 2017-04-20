@@ -907,7 +907,7 @@ namespace {
 		int &abs_n = *(attacker_turn ? &abs_n_attack_ : &abs_n_defend_);
 		bool &update_fog = *(attacker_turn ? &update_def_fog_ : &update_att_fog_);
 
-		int ran_num = random::generator->get_random_int(0,99);
+		int ran_num = randomness::generator->get_random_int(0,99);
 		bool hits = (ran_num < attacker.cth_);
 
 		int damage = 0;

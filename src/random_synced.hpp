@@ -23,9 +23,9 @@
 /*
 todo: use a boost::random based solution.
 */
-namespace random
+namespace randomness
 {
-	class synced_rng : public random::rng
+	class synced_rng : public randomness::rng
 	{
 	public:
 		synced_rng(std::function<std::string()> seed_generator);

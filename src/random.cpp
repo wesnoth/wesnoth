@@ -29,7 +29,7 @@ static lg::log_domain log_random("random");
 
 namespace {
 
-	class rng_default : public random::rng
+	class rng_default : public randomness::rng
 	{
 	public:
 		rng_default()
@@ -51,7 +51,7 @@ namespace {
 	};
 }
 
-namespace random
+namespace randomness
 {
 
 	rng* generator = &rng::default_instance();
