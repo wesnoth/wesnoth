@@ -941,8 +941,8 @@ gui::button::TYPE display::string_to_button_type(std::string type)
 
 static const std::string& get_direction(size_t n)
 {
-	static const std::string dirs[6] = { "-n", "-ne", "-se", "-s", "-sw", "-nw" };
-	return dirs[n >= sizeof(dirs)/sizeof(*dirs) ? 0 : n];
+	static const std::array<std::string, 6> dirs { "-n", "-ne", "-se", "-s", "-sw", "-nw" };
+	return dirs[n >= dirs.size() ? 0 : n];
 }
 
 std::vector<surface> display::get_fog_shroud_images(const map_location& loc, image::TYPE image_type)
@@ -1203,7 +1203,7 @@ void display::drawing_buffer_add(const drawing_layer layer,
 // public into the definition of drawing_layer
 //
 // The drawing is done per layer_group, the range per group is [low, high).
-const display::drawing_layer display::drawing_buffer_key::layer_groups[] {
+const std::array<display::drawing_layer, 5> display::drawing_buffer_key::layer_groups {
 	LAYER_TERRAIN_BG,
 	LAYER_UNIT_FIRST,
 	LAYER_UNIT_MOVE_DEFAULT,
@@ -1213,7 +1213,7 @@ const display::drawing_layer display::drawing_buffer_key::layer_groups[] {
 };
 
 // no need to change this if layer_groups above is changed
-const unsigned int display::drawing_buffer_key::max_layer_group = sizeof(display::drawing_buffer_key::layer_groups) / sizeof(display::drawing_layer) - 2;
+const unsigned int display::drawing_buffer_key::max_layer_group = layer_groups.size() / sizeof(display::drawing_layer) - 2;
 
 enum {
 	// you may adjust the following when needed:

@@ -907,7 +907,7 @@ protected:
 	private:
 		unsigned int key_;
 
-		static const drawing_layer layer_groups[];
+		static const std::array<drawing_layer, 5> layer_groups;
 		static const unsigned int max_layer_group;
 
 	public:

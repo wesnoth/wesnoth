@@ -80,8 +80,7 @@ static lg::log_domain log_unit("unit");
 namespace
 {
 	// "advance" only kept around for backwards compatibility; only "advancement" should be used
-	const std::string ModificationTypes[] { "advancement", "advance", "trait", "object" };
-	const size_t NumModificationTypes = sizeof(ModificationTypes)/ sizeof(*ModificationTypes);
+	const std::array<std::string, 4> ModificationTypes { "advancement", "advance", "trait", "object" };
 
 	/**
 	 * Pointers to units which have data in their internal caches. The
@@ -1186,7 +1185,7 @@ void unit::expire_modifications(const std::string& duration)
 	const unit_type* rebuild_from = nullptr;
 
 	// Loop through all types of modifications.
-	for(unsigned int i = 0; i != NumModificationTypes; ++i) {
+	for(unsigned int i = 0; i != ModificationTypes.size(); ++i) {
 		const std::string& mod_name = ModificationTypes[i];
 		// Loop through all modifications of this type.
 		// Looping in reverse since we may delete the current modification.
@@ -2303,7 +2302,7 @@ void unit::apply_modifications()
 {
 	log_scope("apply mods");
 
-	for(size_t i = 0; i != NumModificationTypes; ++i) {
+	for(size_t i = 0; i != ModificationTypes.size(); ++i) {
 		const std::string& mod = ModificationTypes[i];
 		if(mod == "advance" && modifications_.has_child(mod)) {
 			lg::wml_error() << "[modifications][advance] is deprecated, use [advancement] instead" << std::endl;
