@@ -449,6 +449,9 @@
     <ClCompile Include="..\..\src\gui\widgets\minimap.cpp">
       <Filter>Gui\Widgets</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\widgets\multimenu_button.cpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\gui\widgets\multi_page.cpp">
       <Filter>Gui\Widgets</Filter>
     </ClCompile>
@@ -633,6 +636,9 @@
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\network_transmission.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\outro.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\preferences_dialog.cpp">
@@ -1322,6 +1328,9 @@
     <ClCompile Include="..\..\src\formula\variant.cpp">
       <Filter>Formula</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\formula\variant_value.cpp">
+      <Filter>Formula</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\terrain\builder.cpp">
       <Filter>Terrain</Filter>
     </ClCompile>
@@ -1457,9 +1466,9 @@
     <ClCompile Include="..\..\src\preferences.cpp" />
     <ClCompile Include="..\..\src\preferences_display.cpp" />
     <ClCompile Include="..\..\src\quit_confirmation.cpp" />
-    <ClCompile Include="..\..\src\random_new.cpp" />
-    <ClCompile Include="..\..\src\random_new_deterministic.cpp" />
-    <ClCompile Include="..\..\src\random_new_synced.cpp" />
+    <ClCompile Include="..\..\src\random.cpp" />
+    <ClCompile Include="..\..\src\random_deterministic.cpp" />
+    <ClCompile Include="..\..\src\random_synced.cpp" />
     <ClCompile Include="..\..\src\recall_list_manager.cpp" />
     <ClCompile Include="..\..\src\replay.cpp" />
     <ClCompile Include="..\..\src\replay_controller.cpp" />
@@ -1519,15 +1528,6 @@
     </ClCompile>
     <ClCompile Include="..\..\src\font\text_surface.cpp">
       <Filter>Font</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\formula\variant_value.cpp">
-      <Filter>Formula</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\outro.cpp">
-      <Filter>Gui\Dialogs</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\gui\widgets\multimenu_button.cpp">
-      <Filter>Gui\Widgets</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1825,6 +1825,9 @@
     <ClInclude Include="..\..\src\gui\widgets\minimap.hpp">
       <Filter>Gui\Widgets</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\multimenu_button.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\gui\widgets\multi_page.hpp">
       <Filter>Gui\Widgets</Filter>
     </ClInclude>
@@ -2026,6 +2029,9 @@
     <ClInclude Include="..\..\src\gui\dialogs\network_transmission.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\outro.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\preferences_dialog.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
@@ -2222,6 +2228,9 @@
       <Filter>Gui\Auxiliary\Iterator</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\core\canvas.hpp">
+      <Filter>Gui\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\core\canvas_private.hpp">
       <Filter>Gui\Core</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\core\layout_exception.hpp">
@@ -2713,6 +2722,9 @@
     <ClInclude Include="..\..\src\formula\variant.hpp">
       <Filter>Formula</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\formula\variant_value.hpp">
+      <Filter>Formula</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\terrain\builder.hpp">
       <Filter>Terrain</Filter>
     </ClInclude>
@@ -2865,9 +2877,9 @@
     <ClInclude Include="..\..\src\preferences.hpp" />
     <ClInclude Include="..\..\src\preferences_display.hpp" />
     <ClInclude Include="..\..\src\quit_confirmation.hpp" />
-    <ClInclude Include="..\..\src\random_new.hpp" />
-    <ClInclude Include="..\..\src\random_new_deterministic.hpp" />
-    <ClInclude Include="..\..\src\random_new_synced.hpp" />
+    <ClInclude Include="..\..\src\random.hpp" />
+    <ClInclude Include="..\..\src\random_deterministic.hpp" />
+    <ClInclude Include="..\..\src\random_synced.hpp" />
     <ClInclude Include="..\..\src\recall_list_manager.hpp" />
     <ClInclude Include="..\..\src\replay.hpp" />
     <ClInclude Include="..\..\src\replay_controller.hpp" />
@@ -2959,18 +2971,6 @@
     </ClInclude>
     <ClInclude Include="..\..\src\font\pango\stream_ops.hpp">
       <Filter>Font\Pango</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\formula\variant_value.hpp">
-      <Filter>Formula</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\gui\dialogs\outro.hpp">
-      <Filter>Gui\Dialogs</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\gui\core\canvas_private.hpp">
-      <Filter>Gui\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\gui\widgets\multimenu_button.hpp">
-      <Filter>Gui\Widgets</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
