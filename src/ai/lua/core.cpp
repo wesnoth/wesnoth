@@ -1148,10 +1148,9 @@ void lua_ai_action_handler::handle(const config &cfg, bool read_only, lua_object
 	lua_remove(L, -2); // [-1: AI action  -2: AI state]
 	
 	// Load the arguments
-	int iState = lua_absindex(L, -2);
-	lua_getfield(L, iState, "self");
-	luaW_pushconfig(L, cfg);
-	lua_getfield(L, iState, "data");
+	lua_getfield(L, -2, "self"); // [-1: self  -2: AI action  -3: AI state]
+	luaW_pushconfig(L, cfg); // [-1: cfg  -2: self  -3: AI action  -4: AI state]
+	lua_getfield(L, -4, "data"); // [-1: data  -2: cfg  -3: self  -4: AI action  -5: AI state]
 	
 	// Call the function
 	luaW_pcall(L, 3, l_obj ? 1 : 0, true);
