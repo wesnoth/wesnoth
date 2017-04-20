@@ -1185,8 +1185,7 @@ void unit::expire_modifications(const std::string& duration)
 	const unit_type* rebuild_from = nullptr;
 
 	// Loop through all types of modifications.
-	for(unsigned int i = 0; i != ModificationTypes.size(); ++i) {
-		const std::string& mod_name = ModificationTypes[i];
+	for(const auto& mod_name : ModificationTypes) {
 		// Loop through all modifications of this type.
 		// Looping in reverse since we may delete the current modification.
 		for(int j = modifications_.child_count(mod_name)-1; j >= 0; --j)
@@ -2302,15 +2301,14 @@ void unit::apply_modifications()
 {
 	log_scope("apply mods");
 
-	for(size_t i = 0; i != ModificationTypes.size(); ++i) {
-		const std::string& mod = ModificationTypes[i];
+	for(const auto& mod : ModificationTypes) {
 		if(mod == "advance" && modifications_.has_child(mod)) {
 			lg::wml_error() << "[modifications][advance] is deprecated, use [advancement] instead" << std::endl;
 		}
 
 		for(const config& m : modifications_.child_range(mod)) {
 			lg::scope_logger inner_scope_logging_object__(lg::general(), "add mod");
-			add_modification(ModificationTypes[i], m, true);
+			add_modification(mod, m, true);
 		}
 	}
 
