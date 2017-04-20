@@ -275,7 +275,7 @@ lua_kernel_base::lua_kernel_base()
 	// Debug and OS are not, but most of their functions will be disabled below.
 	cmd_log_ << "Adding standard libs...\n";
 
-	static const luaL_Reg safe_libs[] = {
+	static const luaL_Reg safe_libs[] {
 		{ "",       luaopen_base   },
 		{ "table",  luaopen_table  },
 		{ "string", luaopen_string },
@@ -344,7 +344,7 @@ lua_kernel_base::lua_kernel_base()
 	// Add some callback from the wesnoth lib
 	cmd_log_ << "Registering basic wesnoth API...\n";
 
-	static luaL_Reg const callbacks[] = {
+	static luaL_Reg const callbacks[] {
 		{ "compare_versions",         &intf_compare_versions         		},
 		{ "have_file",                &lua_fileops::intf_have_file          },
 		{ "read_file",                &lua_fileops::intf_read_file          },
@@ -403,7 +403,7 @@ lua_kernel_base::lua_kernel_base()
 	// Get some callbacks for map locations
 	cmd_log_ << "Adding map_location table...\n";
 
-	static luaL_Reg const map_callbacks[] = {
+	static luaL_Reg const map_callbacks[] {
 		{ "get_direction",		&lua_map_location::intf_get_direction         		},
 		{ "vector_sum",			&lua_map_location::intf_vector_sum			},
 		{ "vector_diff",			&lua_map_location::intf_vector_diff			},
@@ -430,7 +430,7 @@ lua_kernel_base::lua_kernel_base()
 
 	cmd_log_ << "Adding name generator metatable...\n";
 	luaL_newmetatable(L, Gen);
-	static luaL_Reg const generator[] = {
+	static luaL_Reg const generator[] {
 		{ "__call", &impl_name_generator_call},
 		{ "__gc", &impl_name_generator_collect},
 		{ nullptr, nullptr}

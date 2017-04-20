@@ -35,7 +35,7 @@ namespace {
 	hk_scopes scope_editor(1 << SCOPE_EDITOR);
 	hk_scopes scope_main(1 << SCOPE_MAIN_MENU);
 // this contains all static hotkeys
-hotkey_command_temp hotkey_list_[] = {
+hotkey_command_temp hotkey_list_[] {
 	{ HOTKEY_SCROLL_UP, "scroll-up", N_("Scroll Up"), false, scope_game | scope_editor, HKCAT_GENERAL, "" },
 	{ HOTKEY_SCROLL_DOWN, "scroll-down", N_("Scroll Down"), false, scope_game | scope_editor, HKCAT_GENERAL, "" },
 	{ HOTKEY_SCROLL_LEFT, "scroll-left", N_("Scroll Left"), false, scope_game | scope_editor, HKCAT_GENERAL, "" },

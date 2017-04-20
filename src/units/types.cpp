@@ -518,8 +518,8 @@ int unit_type::experience_needed(bool with_acceleration) const
 /*
 const char* unit_type::alignment_description(unit_type::ALIGNMENT align, unit_race::GENDER gender)
 {
-	static const char* aligns[] = { N_("lawful"), N_("neutral"), N_("chaotic"), N_("liminal") };
-	static const char* aligns_female[] = { N_("female^lawful"), N_("female^neutral"), N_("female^chaotic"), N_("female^liminal") };
+	static const char* aligns[] { N_("lawful"), N_("neutral"), N_("chaotic"), N_("liminal") };
+	static const char* aligns_female[] { N_("female^lawful"), N_("female^neutral"), N_("female^chaotic"), N_("female^liminal") };
 	const char** tlist = (gender == unit_race::MALE ? aligns : aligns_female);
 
 	return (translation::sgettext(tlist[align]));
@@ -759,7 +759,7 @@ const config & unit_type::build_unit_cfg() const
 
 	// Remove "pure" unit_type attributes (attributes that do not get directly
 	// copied to units; some do get copied, but under different keys).
-	static char const *unit_type_attrs[] = { "attacks", "base_ids", "die_sound",
+	static char const *unit_type_attrs[] { "attacks", "base_ids", "die_sound",
 		"experience", "flies", "healed_sound", "hide_help", "hitpoints",
 		"id", "ignore_race_traits", "inherit", "movement", "movement_type",
 		"name", "num_traits", "variation_id", "variation_name", "recall_cost",
@@ -1048,7 +1048,7 @@ void unit_type_data::set_config(config &cfg)
 	{
 		const std::string& ter_type = terrain["id"];
 		config temp_cfg;
-		static const std::string terrain_info_tags[] = {"movement", "vision", "jamming", "defense"};
+		static const std::string terrain_info_tags[] {"movement", "vision", "jamming", "defense"};
 		for (const std::string &tag : terrain_info_tags) {
 			if (!terrain.has_child(tag)) {
 				continue;

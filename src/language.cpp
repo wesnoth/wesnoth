@@ -170,7 +170,7 @@ static void wesnoth_setlocale(int category, const std::string& slocale,
 		 * The "" is the last item to work-around a problem in glibc picking
 		 * the non utf8 locale instead an utf8 version if available.
 		 */
-		char const *encoding[] = { ".utf-8", ".UTF-8", "" };
+		char const *encoding[] { ".utf-8", ".UTF-8", "" };
 		for (int j = 0; j != 3; ++j)
 		{
 			locale = lang + encoding[j] + extra;

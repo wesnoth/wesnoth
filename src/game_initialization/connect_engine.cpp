@@ -42,7 +42,7 @@ static lg::log_domain log_mp_connect_engine("mp/connect/engine");
 static lg::log_domain log_network("network");
 #define LOG_NW LOG_STREAM(info, log_network)
 
-static const std::string controller_names[] = {
+static const std::string controller_names[] {
 	"human",
 	"human",
 	"ai",
@@ -50,7 +50,7 @@ static const std::string controller_names[] = {
 	"reserved"
 };
 
-static const std::string attributes_to_trim[] = {
+static const std::string attributes_to_trim[] {
 	"side",
 	"type",
 	"gender",

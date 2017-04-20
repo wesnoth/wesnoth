@@ -81,7 +81,7 @@ void load_tables(lua_State* L)
 {
 	luaL_newmetatable(L, Rng);
 
-	static luaL_Reg const callbacks[] = {
+	static luaL_Reg const callbacks[] {
 		{ "create",         &impl_rng_create},
 		{ "__gc",           &impl_rng_destroy},
 		{ "seed", 	    &impl_rng_seed},

@@ -29,7 +29,7 @@ lua_map_generator::lua_map_generator(const config & cfg)
 	, lk_()
 	, generator_data_(cfg)
 {
-	const char* required[] = {"id", "config_name", "create_map"};
+	const char* required[] {"id", "config_name", "create_map"};
 	for (std::string req : required) {
 		if (!cfg.has_attribute(req)) {
 			if(req == "create_map" && cfg.has_attribute("create_scenario")) {

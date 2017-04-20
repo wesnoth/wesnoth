@@ -104,7 +104,7 @@ static void verify(const unit_map& units, const config& cfg) {
 		u->write(u_cfg);
 
 		bool is_ok = true;
-		static const std::string fields[] = {"type","hitpoints","experience","side",""};
+		static const std::string fields[] {"type","hitpoints","experience","side",""};
 		for(const std::string* str = fields; str->empty() == false; ++str) {
 			if (u_cfg[*str] != un[*str]) {
 				errbuf << "ERROR IN FIELD '" << *str << "' for unit at "

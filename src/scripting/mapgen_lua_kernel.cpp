@@ -132,7 +132,7 @@ mapgen_lua_kernel::mapgen_lua_kernel()
 
 	lua_settop(L, 0);
 
-	static luaL_Reg const callbacks[] = {
+	static luaL_Reg const callbacks[] {
 		{ "find_path",           &intf_find_path           },
 		{ "random",              &intf_random              },
 		{ nullptr, nullptr }

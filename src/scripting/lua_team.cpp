@@ -198,7 +198,7 @@ namespace lua_team {
 	{
 		luaL_newmetatable(L, Team);
 
-		static luaL_Reg const callbacks[] = {
+		static luaL_Reg const callbacks[] {
 			{ "__index", 	    &impl_side_get},
 			{ "__newindex",	    &impl_side_set},
 			{ "__eq",	        &impl_side_equal},

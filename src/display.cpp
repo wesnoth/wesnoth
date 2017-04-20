@@ -1203,7 +1203,7 @@ void display::drawing_buffer_add(const drawing_layer layer,
 // public into the definition of drawing_layer
 //
 // The drawing is done per layer_group, the range per group is [low, high).
-const display::drawing_layer display::drawing_buffer_key::layer_groups[] = {
+const display::drawing_layer display::drawing_buffer_key::layer_groups[] {
 	LAYER_TERRAIN_BG,
 	LAYER_UNIT_FIRST,
 	LAYER_UNIT_MOVE_DEFAULT,

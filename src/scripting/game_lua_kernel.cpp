@@ -464,7 +464,7 @@ static int intf_create_animator(lua_State* L)
 {
 	new(L) unit_animator;
 	if(luaL_newmetatable(L, animatorKey)) {
-		luaL_Reg metafuncs[] = {
+		luaL_Reg metafuncs[] {
 			{"__gc", impl_animator_collect},
 			{"__index", impl_animator_get},
 			{"add", impl_add_animation},
@@ -1474,7 +1474,7 @@ int game_lua_kernel::intf_get_end_level_data(lua_State* L)
 	auto data = play_controller_.get_end_level_data_const();
 	new(L) end_level_data(data);
 	if(luaL_newmetatable(L, "end level data")) {
-		static luaL_Reg const callbacks[] = {
+		static luaL_Reg const callbacks[] {
 			{ "__index", 	    &impl_end_level_data_get},
 			{ "__newindex",     &dispatch<&game_lua_kernel::impl_end_level_data_set>},
 			{ "__gc",           &impl_end_level_data_collect},
@@ -4060,7 +4060,7 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	cmd_log_ << "Registering game-specific wesnoth lib functions...\n";
 
 	// Put some callback functions in the scripting environment.
-	static luaL_Reg const callbacks[] = {
+	static luaL_Reg const callbacks[] {
 		{ "add_known_unit",           &intf_add_known_unit           },
 		{ "add_modification",         &intf_add_modification         },
 		{ "advance_unit",             &intf_advance_unit             },
@@ -4196,7 +4196,7 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	lua_cpp::set_functions(L, cpp_callbacks);
 
 	if(play_controller_.get_classification().campaign_type == game_classification::CAMPAIGN_TYPE::TEST) {
-		static luaL_Reg const test_callbacks[] = {
+		static luaL_Reg const test_callbacks[] {
 			{ "fire_wml_menu_item",        &dispatch<&game_lua_kernel::intf_fire_wml_menu_item         >        },
 			{ nullptr, nullptr }
 		};
@@ -4376,7 +4376,7 @@ void game_lua_kernel::set_game_display(game_display * gd) {
 /// These are the child tags of [scenario] (and the like) that are handled
 /// elsewhere (in the C++ code).
 /// Any child tags not in this list will be passed to Lua's on_load event.
-static char const *handled_file_tags[] = {
+static char const *handled_file_tags[] {
 	"color_palette", "color_range", "display", "end_level_data", "era",
 	"event", "generator", "label", "lua", "map", "menu_item",
 	"modification", "music", "options", "side", "sound_source",

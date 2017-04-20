@@ -95,7 +95,7 @@ namespace lua_race {
 	{
 		luaL_newmetatable(L, Race);
 
-		static luaL_Reg const callbacks[] = {
+		static luaL_Reg const callbacks[] {
 			{ "__index", 	    &impl_race_get},
 			{ nullptr, nullptr }
 		};

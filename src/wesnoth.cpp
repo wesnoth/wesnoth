@@ -666,10 +666,10 @@ static int do_gameloop(const std::vector<std::string>& args)
 
 	plugins_manager plugins_man(new application_lua_kernel);
 
-	plugins_context::Reg const callbacks[] = {
+	plugins_context::Reg const callbacks[] {
 		{ "play_multiplayer",		std::bind(&game_launcher::play_multiplayer, game.get(), game_launcher::MP_CONNECT)},
 	};
-	plugins_context::aReg const accessors[] = {
+	plugins_context::aReg const accessors[] {
 		{ "command_line",		std::bind(&commandline_options::to_config, &cmdline_opts)},
 	};
 
