@@ -1213,7 +1213,7 @@ const std::array<display::drawing_layer, 5> display::drawing_buffer_key::layer_g
 };
 
 // no need to change this if layer_groups above is changed
-const unsigned int display::drawing_buffer_key::max_layer_group = layer_groups.size() / sizeof(display::drawing_layer) - 2;
+const unsigned int display::drawing_buffer_key::max_layer_group = layer_groups.size() - 2;
 
 enum {
 	// you may adjust the following when needed:
