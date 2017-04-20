@@ -1203,17 +1203,13 @@ void display::drawing_buffer_add(const drawing_layer layer,
 // public into the definition of drawing_layer
 //
 // The drawing is done per layer_group, the range per group is [low, high).
-const std::array<display::drawing_layer, 5> display::drawing_buffer_key::layer_groups {
+const std::array<display::drawing_layer, 4> display::drawing_buffer_key::layer_groups {
 	LAYER_TERRAIN_BG,
 	LAYER_UNIT_FIRST,
 	LAYER_UNIT_MOVE_DEFAULT,
 	// Make sure the movement doesn't show above fog and reachmap.
-	LAYER_REACHMAP,
-	LAYER_LAST_LAYER
+	LAYER_REACHMAP
 };
-
-// no need to change this if layer_groups above is changed
-const unsigned int display::drawing_buffer_key::max_layer_group = layer_groups.size() - 2;
 
 enum {
 	// you may adjust the following when needed:
@@ -1241,11 +1237,12 @@ enum {
 inline display::drawing_buffer_key::drawing_buffer_key(const map_location &loc, drawing_layer layer)
 	: key_(0)
 {
-	// max_layer_group + 1 is the last valid entry in layer_groups, but it is always > layer
-	// thus the first --g is a given => start with max_layer_groups right away
-	unsigned int g = max_layer_group;
-	while (layer < layer_groups[g]) {
-		--g;
+	// Start with the index of last group entry...
+	unsigned int group_i = layer_groups.size() - 1;
+
+	// ...and works backwards until the group containing the specified layer is found.
+	while(layer < layer_groups[group_i]) {
+		--group_i;
 	}
 
 	enum {
@@ -1261,7 +1258,7 @@ inline display::drawing_buffer_key::drawing_buffer_key(const map_location &loc, 
 	// then the row containing all the even x. Since thus the least significant bit of x is
 	// not required for x ordering anymore it can be shifted out to the right.
 	const unsigned int x_parity = static_cast<unsigned int>(loc.x) & 1;
-	key_  = (g << SHIFT_LAYER_GROUP) | (static_cast<unsigned int>(loc.y + MAX_BORDER) << SHIFT_Y);
+	key_  = (group_i << SHIFT_LAYER_GROUP) | (static_cast<unsigned int>(loc.y + MAX_BORDER) << SHIFT_Y);
 	key_ |= (x_parity << SHIFT_X_PARITY);
 	key_ |= (static_cast<unsigned int>(layer) << SHIFT_LAYER) | static_cast<unsigned int>(loc.x + MAX_BORDER) / 2;
 }

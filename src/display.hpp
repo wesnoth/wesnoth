@@ -797,7 +797,7 @@ public:
 	 * the layers should be safe.
 	 * If needed in WML use the name and map that to the enum value.
 	 */
-	enum drawing_layer{
+	enum drawing_layer {
 		LAYER_TERRAIN_BG,          /**<
 		                            * Layer for the terrain drawn behind the
 		                            * unit.
@@ -838,12 +838,7 @@ public:
 		LAYER_MOVE_INFO,           /**< Movement info (defense%, etc...). */
 		LAYER_LINGER_OVERLAY,      /**< The overlay used for the linger mode. */
 		LAYER_BORDER,              /**< The border of the map. */
-
-		LAYER_LAST_LAYER           /**<
-		                            * Don't draw to this layer it's a dummy to
-		                            * size the vector.
-		                            */
-		};
+	};
 
 	/**
 	 * Draw an image at a certain location.
@@ -907,8 +902,7 @@ protected:
 	private:
 		unsigned int key_;
 
-		static const std::array<drawing_layer, 5> layer_groups;
-		static const unsigned int max_layer_group;
+		static const std::array<drawing_layer, 4> layer_groups;
 
 	public:
 		drawing_buffer_key(const map_location &loc, drawing_layer layer);
