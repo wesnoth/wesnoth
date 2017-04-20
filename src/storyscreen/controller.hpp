@@ -36,7 +36,7 @@ class controller
 public:
 	typedef std::shared_ptr< part    > part_pointer_type;
 
-	controller(const vconfig& data, const std::string& scenario_name, int segment_index);
+	controller(const vconfig& data, const std::string& scenario_name);
 
 	part_pointer_type get_part(int index) const
 	{
@@ -53,7 +53,6 @@ private:
 	void resolve_wml(const vconfig& cfg);
 
 	std::string scenario_name_;
-	int segment_index_;
 
 	// The part cache.
 	std::vector< part_pointer_type > parts_;

@@ -38,9 +38,8 @@ static lg::log_domain log_engine("engine");
 
 namespace storyscreen {
 
-controller::controller(const vconfig& data, const std::string& scenario_name, int segment_index)
+controller::controller(const vconfig& data, const std::string& scenario_name)
 	: scenario_name_(scenario_name)
-	, segment_index_(segment_index)
 	, parts_()
 {
 	assert(resources::gamedata != nullptr && "Ouch: gamedata is nullptr when initializing storyscreen controller");

@@ -37,7 +37,7 @@ void show_story(CVideo& video, const std::string &scenario_name,
 		return;
 	}
 
-	storyscreen::controller controller(vconfig(cfg, true), scenario_name, 0);
+	storyscreen::controller controller(vconfig(cfg, true), scenario_name);
 
 	gui2::dialogs::story_viewer::display(controller, video);
 }
