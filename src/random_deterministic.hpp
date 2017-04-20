@@ -27,13 +27,13 @@ namespace randomness
 	class rng_deterministic : public randomness::rng
 	{
 	public:
-		rng_deterministic(rand_rng::mt_rng& gen);
+		rng_deterministic(mt_rng& gen);
 		virtual ~rng_deterministic();
 
 	protected:
 		virtual uint32_t next_random_impl();
 	private:
-		rand_rng::mt_rng& generator_;
+		mt_rng& generator_;
 	};
 
 	/**
@@ -42,7 +42,7 @@ namespace randomness
 	class set_random_determinstic
 	{
 	public:
-		set_random_determinstic(rand_rng::mt_rng& rng);
+		set_random_determinstic(mt_rng& rng);
 		~set_random_determinstic();
 	private :
 		rng* old_rng_;

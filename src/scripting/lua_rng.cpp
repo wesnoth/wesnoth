@@ -31,7 +31,7 @@ static lg::log_domain log_lua("scripting/lua");
 // Begin lua rng bindings
 namespace lua_rng {
 
-using rand_rng::mt_rng;
+using randomness::mt_rng;
 
 static const char * Rng = "Rng";
 

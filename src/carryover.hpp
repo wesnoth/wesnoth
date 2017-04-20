@@ -90,8 +90,8 @@ public:
 	void set_variables(const config& vars) { variables_ = vars; }
 	const config& get_variables() const { return variables_; }
 
-	const rand_rng::mt_rng& rng() const { return rng_; }
-	rand_rng::mt_rng& rng() { return rng_; }
+	const randomness::mt_rng& rng() const { return rng_; }
+	randomness::mt_rng& rng() { return rng_; }
 
 	const std::string& next_scenario() const { return next_scenario_; }
 
@@ -101,7 +101,7 @@ public:
 private:
 	std::vector<carryover> carryover_sides_;
 	config variables_;
-	rand_rng::mt_rng rng_;
+	randomness::mt_rng rng_;
 	boost::ptr_vector<config> wml_menu_items_;
 	std::string next_scenario_;    /**< the scenario coming next (for campaigns) */
 	int next_underlying_unit_id_;

@@ -37,7 +37,7 @@ namespace randomness
 		void initialize();
 		bool has_valid_seed_;
 		std::function<std::string()> seed_generator_;
-		rand_rng::mt_rng gen_;
+		mt_rng gen_;
 	};
 }
 #endif

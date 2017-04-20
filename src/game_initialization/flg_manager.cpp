@@ -132,7 +132,7 @@ bool flg_manager::is_random_faction()
 // because there are too many sides, or some users have forced their faction choices to be matching, etc.
 // In that case we gracefully continue by ignoring the no mirror rule and  assigning as we would have if it were off.
 // If there is still no options we throw a config error because it means the era is misconfigured.
-void flg_manager::resolve_random(rand_rng::mt_rng& rng, const std::vector<std::string>& avoid)
+void flg_manager::resolve_random(randomness::mt_rng& rng, const std::vector<std::string>& avoid)
 {
 	if(is_random_faction()) {
 		std::vector<std::string> faction_choices, faction_excepts;

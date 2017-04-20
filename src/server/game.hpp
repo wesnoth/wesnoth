@@ -410,7 +410,7 @@ private:
 	std::string replay_save_path_;
 
 	/** A wrapper for mersenne twister rng which generates randomness for this game */
-	rand_rng::mt_rng rng_;
+	randomness::mt_rng rng_;
 	int last_choice_request_id_;
 };
 

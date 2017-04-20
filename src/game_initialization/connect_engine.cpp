@@ -391,7 +391,7 @@ void connect_engine::start_game()
 
 	// Resolves the "random faction", "random gender" and "random message"
 	// Must be done before shuffle sides, or some cases will cause errors
-	rand_rng::mt_rng rng; // Make an RNG for all the shuffling and random faction operations
+	randomness::mt_rng rng; // Make an RNG for all the shuffling and random faction operations
 	for(side_engine_ptr side : side_engines_) {
 		std::vector<std::string> avoid_faction_ids;
 
@@ -479,7 +479,7 @@ void connect_engine::start_game_commandline(const commandline_options& cmdline_o
 
 	typedef std::tuple<unsigned int, std::string> mp_option;
 
-	rand_rng::mt_rng rng;
+	randomness::mt_rng rng;
 
 	unsigned num = 0;
 	for(side_engine_ptr side : side_engines_) {
@@ -1223,7 +1223,7 @@ bool side_engine::available_for_user(const std::string& name) const
 	return false;
 }
 
-void side_engine::resolve_random(rand_rng::mt_rng & rng, const std::vector<std::string> & avoid_faction_ids)
+void side_engine::resolve_random(randomness::mt_rng & rng, const std::vector<std::string> & avoid_faction_ids)
 {
 	if(parent_.params_.saved_game) {
 		return;

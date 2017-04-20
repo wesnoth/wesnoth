@@ -19,7 +19,7 @@
 #include <vector>
 
 class config;
-namespace rand_rng { class mt_rng; }
+namespace randomness { class mt_rng; }
 
 namespace ng {
 
@@ -47,7 +47,7 @@ public:
 
 	// Second Argument is a list of faction ids we don't want to match, used to implement random faction modes.
 	// If it is not possible to resolve then we just proceed anyways rather than give an error.
-	void resolve_random(rand_rng::mt_rng & rng, const std::vector<std::string> & avoid);
+	void resolve_random(randomness::mt_rng & rng, const std::vector<std::string> & avoid);
 
 	bool is_saved_game() const
 	{

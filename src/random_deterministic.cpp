@@ -17,7 +17,7 @@
 namespace randomness
 {
 
-	rng_deterministic::rng_deterministic(rand_rng::mt_rng& gen)
+	rng_deterministic::rng_deterministic(mt_rng& gen)
 		: generator_(gen)
 	{
 
@@ -34,7 +34,7 @@ namespace randomness
 	}
 
 
-	set_random_determinstic::set_random_determinstic(rand_rng::mt_rng& rng)
+	set_random_determinstic::set_random_determinstic(mt_rng& rng)
 		: old_rng_(generator), new_rng_(rng)
 	{
 		generator = &new_rng_;

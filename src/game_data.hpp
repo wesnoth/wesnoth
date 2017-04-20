@@ -63,8 +63,8 @@ public:
 	/// does nothing if varname is no valid variable name.
 	void clear_variable_cfg(const std::string& varname);
 
-	const rand_rng::mt_rng& rng() const { return rng_; }
-	rand_rng::mt_rng& rng() { return rng_; }
+	const randomness::mt_rng& rng() const { return rng_; }
+	randomness::mt_rng& rng() { return rng_; }
 
 	enum PHASE {
 		INITIAL,
@@ -109,7 +109,7 @@ private:
 		return variable_access_throw(varname, variables_);
 	}
 
-	rand_rng::mt_rng rng_;
+	randomness::mt_rng rng_;
 	config variables_;
 	PHASE phase_;
 	bool can_end_turn_;

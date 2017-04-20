@@ -20,7 +20,7 @@
 
 class config;
 
-namespace rand_rng
+namespace randomness
 {
 
 /*
@@ -82,6 +82,6 @@ private:
 	void seed_random(const uint32_t seed, const unsigned int call_count = 0);
 };
 
-} // ends rand_rng namespace
+} // ends randomness namespace
 
 #endif

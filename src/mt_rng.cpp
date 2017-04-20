@@ -26,7 +26,7 @@ static lg::log_domain log_random("random");
 #define ERR_RND LOG_STREAM(err, log_random)
 
 
-namespace rand_rng
+namespace randomness
 {
 
 mt_rng::mt_rng() :
@@ -106,5 +106,5 @@ std::string mt_rng::get_random_seed_str() const {
 	return stream.str();
 }
 
-} // ends rand_rng namespace
+} // ends randomness namespace
 
