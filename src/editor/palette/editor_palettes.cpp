@@ -112,9 +112,9 @@ void editor_palette<Item>::expand_palette_groups_menu(std::vector< std::pair< st
 		items.push_back(std::pair<std::string, std::string>( img, groupname));
 	}
 }
-template void editor_palette<t_translation::terrain_code>::expand_palette_groups_menu(std::vector< std::pair< std::string, std::string> >& items, int i);
-template void editor_palette<unit_type>::expand_palette_groups_menu(std::vector< std::pair< std::string, std::string> >& items, int i);
-template void editor_palette<overlay>::expand_palette_groups_menu(std::vector< std::pair< std::string, std::string> >& items, int i);
+template void editor_palette<t_translation::terrain_code>::expand_palette_groups_menu(std::vector< std::pair< std::string, std::string> >& items, int /*i*/);
+template void editor_palette<unit_type>::expand_palette_groups_menu(std::vector< std::pair< std::string, std::string> >& items, int /*i*/);
+template void editor_palette<overlay>::expand_palette_groups_menu(std::vector< std::pair< std::string, std::string> >& items, int /*i*/);
 
 template<class Item>
 bool editor_palette<Item>::can_scroll_up()
