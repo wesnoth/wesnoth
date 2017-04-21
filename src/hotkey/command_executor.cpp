@@ -464,24 +464,19 @@ void command_executor::get_menu_images(display& disp, std::vector<config>& items
 		}
 
 		const theme::menu* menu = disp.get_theme().get_menu_item(item_id);
-		if (hk == hotkey::HOTKEY_NULL) {
-			if (menu) {
-				item["label"] = menu->title();
-			}
-		} else {
-			if (menu) {
-				item["label"] = menu->title();
-			} else {
-				std::string desc = hotkey::get_description(item_id);
-				if (hk == HOTKEY_ENDTURN) {
-					const theme::action *b = disp.get_theme().get_action_item("button-endturn");
-					if (b) {
-						desc = b->title();
-					}
+		if(menu) {
+			item["label"] = menu->title();
+		} else if(hk != hotkey::HOTKEY_NULL) {
+			std::string desc = hotkey::get_description(item_id);
+			if(hk == HOTKEY_ENDTURN) {
+				const theme::action *b = disp.get_theme().get_action_item("button-endturn");
+				if (b) {
+					desc = b->title();
 				}
-				item["label"] = desc;
-				item["details"] = hotkey::get_names(item_id);
 			}
+
+			item["label"] = desc;
+			item["details"] = hotkey::get_names(item_id);
 		}
 	}
 }
