@@ -692,14 +692,14 @@ void context_manager::save_scenario_as_dialog()
 void context_manager::init_map_generators(const config& game_config)
 {
 	for(const config& i : game_config.child_range("multiplayer")) {
-		if(i["map_generation"].empty() && !i["scenario_generation"].empty()) {
+		if(i["map_generation"].empty() && i["scenario_generation"].empty()) {
 			continue;
 		}
 
 		const config& generator_cfg = i.child("generator");
 		if(!generator_cfg) {
 			ERR_ED << "Scenario \"" << i["name"] << "\" with id " << i["id"]
-					<< " has map_generation= but no [generator] tag";
+					<< " has map_generation= but no [generator] tag" << std::endl;
 		} else {
 			map_generator* m = create_map_generator(i["map_generation"], generator_cfg);
 			map_generators_.push_back(m);
