@@ -63,8 +63,8 @@ public:
 	size_t start_num(void) override { return items_start_; }
 
 	/** Menu expanding for palette group list */
-	void expand_palette_groups_menu(std::vector< std::pair<std::string, std::string> >& items) override;
-	void expand_palette_groups_menu(std::vector<config>& items) override;
+	void expand_palette_groups_menu(std::vector< std::pair<std::string, std::string> >& items, int i) override;
+	void expand_palette_groups_menu(std::vector<config>& items, int i) override;
 
 	void set_group(size_t index) override;
 //	int active_group();

@@ -1036,73 +1036,70 @@ void editor_controller::show_menu(const std::vector<config>& items_arg, int xloc
 
 	if(first_id == "EDITOR-LOAD-MRU-PLACEHOLDER") {
 		active_menu_ = editor::LOAD_MRU;
-		context_manager_->expand_load_mru_menu(items);
+		context_manager_->expand_load_mru_menu(items, 0);
 	}
 
 	if(first_id == "editor-switch-map") {
 		active_menu_ = editor::MAP;
-		context_manager_->expand_open_maps_menu(items);
+		context_manager_->expand_open_maps_menu(items, 0);
 	}
 
 	if(first_id == "editor-palette-groups") {
 		active_menu_ = editor::PALETTE;
-		toolkit_->get_palette_manager()->active_palette().expand_palette_groups_menu(items);
+		toolkit_->get_palette_manager()->active_palette().expand_palette_groups_menu(items, 0);
 	}
 
 	if(first_id == "editor-switch-side") {
 		active_menu_ = editor::SIDE;
-		context_manager_->expand_sides_menu(items);
+		context_manager_->expand_sides_menu(items, 0);
 	}
 
 	if(first_id == "editor-switch-area") {
 		active_menu_ = editor::AREA;
-		context_manager_->expand_areas_menu(items);
+		context_manager_->expand_areas_menu(items, 0);
 	}
 
 	if(!items.empty() && items.front()["id"] == "editor-switch-time") {
 		active_menu_ = editor::TIME;
-		context_manager_->expand_time_menu(items);
+		context_manager_->expand_time_menu(items, 0);
 	}
 
 	if(first_id == "editor-assign-local-time") {
 		active_menu_ = editor::LOCAL_TIME;
-		context_manager_->expand_local_time_menu(items);
+		context_manager_->expand_local_time_menu(items, 0);
 	}
 
 	if(first_id == "menu-unit-facings") {
 		active_menu_ = editor::UNIT_FACING;
-		items.erase(items.begin());
-
-		for(int dir = 0; dir != map_location::NDIRECTIONS; ++dir) {
-			items.emplace_back(config_of("label", map_location::write_translated_direction(map_location::DIRECTION(dir))));
-		}
+		auto pos = items.erase(items.begin());
+		int dir = 0;
+		std::generate_n(std::inserter<std::vector<config>>(items, pos), int(map_location::NDIRECTIONS), [&dir]() -> config {
+			return config_of("label", map_location::write_translated_direction(map_location::DIRECTION(dir++)));
+		});
 	}
 
 	if(first_id == "editor-playlist") {
 		active_menu_ = editor::MUSIC;
-		items.erase(items.begin());
-
-		for(const sound::music_track& track : music_tracks_) {
-			items.emplace_back(config_of("label", track.title().empty() ? track.id() : track.title()));
-		}
+		auto pos = items.erase(items.begin());
+		std::transform(music_tracks_.begin(), music_tracks_.end(), std::inserter<std::vector<config>>(items, pos), [](const sound::music_track& track) -> config {
+			return config_of("label", track.title().empty() ? track.id() : track.title());
+		});
 	}
 
 	if(first_id == "editor-assign-schedule") {
 		active_menu_ = editor::SCHEDULE;
-
-		items.erase(items.begin());
-		for(const auto& tod : tods_) {
-			items.emplace_back(config_of("label", tod.second.first));
-		}
+		auto pos = items.erase(items.begin());
+		std::transform(tods_.begin(), tods_.end(), std::inserter<std::vector<config>>(items, pos), [](const tods_map::value_type& tod) -> config {
+			return config_of("label", tod.second.first);
+		});
 	}
 
 	if(first_id == "editor-assign-local-schedule") {
 		active_menu_ = editor::LOCAL_SCHEDULE;
-
-		items.erase(items.begin());
-		for(const auto& tod : tods_) {
-			items.emplace_back(config_of("label", tod.second.first));
-		}
+		auto pos = items.erase(items.begin());
+		std::transform(tods_.begin(), tods_.end(), std::inserter<std::vector<config>>(items, pos), [](const tods_map::value_type& tod) -> config {
+			return config_of("label", tod.second.first);
+		});
 	}
 
 	command_executor::show_menu(items, xloc, yloc, context_menu, disp);

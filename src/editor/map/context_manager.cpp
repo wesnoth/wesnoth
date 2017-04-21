@@ -293,182 +293,139 @@ void context_manager::new_scenario_dialog()
 	}
 }
 
-void context_manager::expand_open_maps_menu(std::vector<config>& items)
+void context_manager::expand_open_maps_menu(std::vector<config>& items, int i)
 {
-	for(unsigned int i = 0; i < items.size(); ++i) {
-		if(items[i]["id"] != "editor-switch-map") {
-			continue;
-		}
-
-		items.erase(items.begin() + i);
-		std::vector<config> contexts;
-		for(size_t mci = 0; mci < map_contexts_.size(); ++mci) {
-			std::string filename = map_contexts_[mci]->get_filename();
-			bool changed = map_contexts_[mci]->modified();
-			bool pure_map = map_contexts_[mci]->is_pure_map();
-			if(filename.empty()) {
-				if(pure_map) {
-					filename = _("(New Map)");
-				} else {
-					filename = _("(New Scenario)");
-				}
+	auto pos = items.erase(items.begin() + i);
+	std::vector<config> contexts;
+	for(size_t mci = 0; mci < map_contexts_.size(); ++mci) {
+		std::string filename = map_contexts_[mci]->get_filename();
+		bool changed = map_contexts_[mci]->modified();
+		bool pure_map = map_contexts_[mci]->is_pure_map();
+		if(filename.empty()) {
+			if(pure_map) {
+				filename = _("(New Map)");
+			} else {
+				filename = _("(New Scenario)");
 			}
-			std::string label = "[" + std::to_string(mci) + "] "
-				+ filename + (changed ? " [*]" : "");
-			if(map_contexts_[mci]->is_embedded()) {
-				label += " (E)";
-			}
-			contexts.emplace_back(config_of("label", label));
 		}
-		items.insert(items.begin() + i, contexts.begin(), contexts.end());
-		break;
+		std::string label = "[" + std::to_string(mci) + "] "
+			+ filename + (changed ? " [*]" : "");
+		if(map_contexts_[mci]->is_embedded()) {
+			label += " (E)";
+		}
+		contexts.emplace_back(config_of("label", label));
 	}
+	items.insert(pos, contexts.begin(), contexts.end());
 }
 
-void context_manager::expand_load_mru_menu(std::vector<config>& items)
+void context_manager::expand_load_mru_menu(std::vector<config>& items, int i)
 {
 	std::vector<std::string> mru = preferences::editor::recent_files();
 
-	for(unsigned int i = 0; i < items.size(); ++i) {
-		if(items[i]["id"] != "EDITOR-LOAD-MRU-PLACEHOLDER") {
-			continue;
-		}
+	auto pos = items.erase(items.begin() + i);
 
-		items.erase(items.begin() + i);
-
-		if(mru.empty()) {
-			items.insert(items.begin() + i, config_of("label", _("No Recent Files")));
-			continue;
-		}
-
-		for(std::string& path : mru) {
-			// TODO: add proper leading ellipsization instead, since otherwise
-			// it'll be impossible to tell apart files with identical names and
-			// different parent paths.
-			path = filesystem::base_name(path);
-		}
-
-		std::vector<config> temp;
-		std::transform(mru.begin(), mru.end(), std::back_inserter(temp), [](const std::string& str) {
-			return config_of("label", str);
-		});
-
-		items.insert(items.begin() + i, temp.begin(), temp.end());
-		break;
+	if(mru.empty()) {
+		items.insert(pos, config_of("label", _("No Recent Files")));
+		return;
 	}
 
+	for(std::string& path : mru) {
+		// TODO: add proper leading ellipsization instead, since otherwise
+		// it'll be impossible to tell apart files with identical names and
+		// different parent paths.
+		path = filesystem::base_name(path);
+	}
+
+	std::vector<config> temp;
+	std::transform(mru.begin(), mru.end(), std::back_inserter(temp), [](const std::string& str) {
+		return config_of("label", str);
+	});
+
+	items.insert(pos, temp.begin(), temp.end());
 }
 
-void context_manager::expand_areas_menu(std::vector<config>& items)
+void context_manager::expand_areas_menu(std::vector<config>& items, int i)
 {
 	tod_manager* tod = get_map_context().get_time_manager();
 	if(!tod) {
 		return;
 	}
 
-	for(unsigned int i = 0; i < items.size(); ++i) {
-		if(items[i]["id"] != "editor-switch-area") {
-			continue;
+	auto pos = items.erase(items.begin() + i);
+	std::vector<config> area_entries;
+
+	std::vector<std::string> area_ids = tod->get_area_ids();
+
+	for(size_t mci = 0; mci < area_ids.size(); ++mci) {
+
+		const std::string& area = area_ids[mci];
+		std::stringstream label;
+		label << "[" << mci + 1 << "] ";
+		label << (area.empty() ? _("(Unnamed Area)") : area);
+
+		if(mci == static_cast<size_t>(get_map_context().get_active_area())
+				&& tod->get_area_by_index(mci) != get_map_context().get_map().selection()) {
+			label << " [*]";
 		}
 
-		items.erase(items.begin() + i);
-		std::vector<config> area_entries;
-
-		std::vector<std::string> area_ids = tod->get_area_ids();
-
-		for(size_t mci = 0; mci < area_ids.size(); ++mci) {
-
-			const std::string& area = area_ids[mci];
-			std::stringstream label;
-			label << "[" << mci + 1 << "] ";
-			label << (area.empty() ? _("(Unnamed Area)") : area);
-
-			if(mci == static_cast<size_t>(get_map_context().get_active_area())
-					&& tod->get_area_by_index(mci) != get_map_context().get_map().selection()) {
-				label << " [*]";
-			}
-
-			area_entries.emplace_back(config_of("label", label.str()));
-		}
-
-		items.insert(items.begin() + i, area_entries.begin(), area_entries.end());
-		break;
+		area_entries.emplace_back(config_of("label", label.str()));
 	}
+
+	items.insert(pos, area_entries.begin(), area_entries.end());
 }
 
-void context_manager::expand_sides_menu(std::vector<config>& items)
+void context_manager::expand_sides_menu(std::vector<config>& items, int i)
 {
-	for(unsigned int i = 0; i < items.size(); ++i) {
-		if(items[i]["id"] != "editor-switch-side") {
-			continue;
-		}
+	auto pos = items.erase(items.begin() + i);
+	std::vector<config> contexts;
 
-		items.erase(items.begin() + i);
-		std::vector<config> contexts;
+	for(size_t mci = 0; mci < get_map_context().get_teams().size(); ++mci) {
 
-		for(size_t mci = 0; mci < get_map_context().get_teams().size(); ++mci) {
-
-			const team& t = get_map_context().get_teams()[mci];
-			const std::string& teamname = t.user_team_name();
-			std::stringstream label;
-			label << "[" << mci+1 << "] ";
-			label << (teamname.empty() ? _("(New Side)") : teamname);
-			contexts.emplace_back(config_of("label", label.str()));
-		}
-
-		items.insert(items.begin() + i, contexts.begin(), contexts.end());
-		break;
+		const team& t = get_map_context().get_teams()[mci];
+		const std::string& teamname = t.user_team_name();
+		std::stringstream label;
+		label << "[" << mci+1 << "] ";
+		label << (teamname.empty() ? _("(New Side)") : teamname);
+		contexts.emplace_back(config_of("label", label.str()));
 	}
+
+	items.insert(pos, contexts.begin(), contexts.end());
 }
 
-void context_manager::expand_time_menu(std::vector<config>& items)
+void context_manager::expand_time_menu(std::vector<config>& items, int i)
 {
-	for(unsigned int i = 0; i < items.size(); ++i) {
-		if(items[i]["id"] != "editor-switch-time") {
-			continue;
-		}
+	auto pos = items.erase(items.begin() + i);
+	std::vector<config> times;
 
-		items.erase(items.begin() + i);
-		std::vector<config> times;
+	tod_manager* tod_m = get_map_context().get_time_manager();
 
-		tod_manager* tod_m = get_map_context().get_time_manager();
+	assert(tod_m != nullptr);
 
-		assert(tod_m != nullptr);
-
-		for(const time_of_day& time : tod_m->times()) {
-			times.emplace_back(config_of
-				("details", time.name) // Use 'details' field here since the image will take the first column
-				("image", time.image)
-			);
-		}
-
-		items.insert(items.begin() + i, times.begin(), times.end());
-		break;
+	for(const time_of_day& time : tod_m->times()) {
+		times.emplace_back(config_of
+			("details", time.name) // Use 'details' field here since the image will take the first column
+			("image", time.image)
+		);
 	}
+
+	items.insert(pos, times.begin(), times.end());
 }
 
-void context_manager::expand_local_time_menu(std::vector<config>& items)
+void context_manager::expand_local_time_menu(std::vector<config>& items, int i)
 {
-	for(unsigned int i = 0; i < items.size(); ++i) {
-		if(items[i]["id"] != "editor-assign-local-time") {
-			continue;
-		}
+	auto pos = items.erase(items.begin() + i);
+	std::vector<config> times;
 
-		items.erase(items.begin() + i);
-		std::vector<config> times;
+	tod_manager* tod_m = get_map_context().get_time_manager();
 
-		tod_manager* tod_m = get_map_context().get_time_manager();
-
-		for(const time_of_day& time : tod_m->times(get_map_context().get_active_area())) {
-			times.emplace_back(config_of
-				("details", time.name) // Use 'details' field here since the image will take the first column
-				("image", time.image)
-			);
-		}
-
-		items.insert(items.begin() + i, times.begin(), times.end());
-		break;
+	for(const time_of_day& time : tod_m->times(get_map_context().get_active_area())) {
+		times.emplace_back(config_of
+			("details", time.name) // Use 'details' field here since the image will take the first column
+			("image", time.image)
+		);
 	}
+
+	items.insert(pos, times.begin(), times.end());
 }
 
 void context_manager::apply_mask_dialog()

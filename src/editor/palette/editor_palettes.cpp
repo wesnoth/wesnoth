@@ -42,48 +42,43 @@ template sdl_handler_vector editor_palette<unit_type>::handler_members();
 template sdl_handler_vector editor_palette<overlay>::handler_members();
 
 template<class Item>
-void editor_palette<Item>::expand_palette_groups_menu(std::vector<config>& items)
+void editor_palette<Item>::expand_palette_groups_menu(std::vector<config>& items, int i)
 {
-	for (unsigned int i = 0; i < items.size(); ++i) {
-		if (items[i]["id"] == "editor-palette-groups") {
-			items.erase(items.begin() + i);
+	auto pos = items.erase(items.begin() + i);
 
-			std::vector<config> groups;
-			const std::vector<item_group>& item_groups = get_groups();
+	std::vector<config> groups;
+	const std::vector<item_group>& item_groups = get_groups();
 
-			for (size_t mci = 0; mci < item_groups.size(); ++mci) {
-				std::string groupname = item_groups[mci].name;
-				if (groupname.empty()) {
-					groupname = _("(Unknown Group)");
-				}
-				std::stringstream i_ss;
-				i_ss << item_groups[mci].icon;
-				if (mci == active_group_index()) {
+	for (size_t mci = 0; mci < item_groups.size(); ++mci) {
+		std::string groupname = item_groups[mci].name;
+		if (groupname.empty()) {
+			groupname = _("(Unknown Group)");
+		}
+		std::stringstream i_ss;
+		i_ss << item_groups[mci].icon;
+		if (mci == active_group_index()) {
 
-					if (filesystem::file_exists(i_ss.str() + "_30-pressed.png" ) ) {
-						i_ss << "_30-pressed.png";
-					} else {
-						i_ss << "_30.png~CS(70,70,0)";
-					}
-
-				} else {
-					i_ss << "_30.png";
-				}
-
-				groups.emplace_back(config_of
-					("label", groupname)
-					("icon", i_ss.str())
-				);
+			if (filesystem::file_exists(i_ss.str() + "_30-pressed.png" ) ) {
+				i_ss << "_30-pressed.png";
+			} else {
+				i_ss << "_30.png~CS(70,70,0)";
 			}
 
-			items.insert(items.begin() + i, groups.begin(), groups.end());
-			break;
+		} else {
+			i_ss << "_30.png";
 		}
+
+		groups.emplace_back(config_of
+			("label", groupname)
+			("icon", i_ss.str())
+		);
 	}
+
+	items.insert(pos, groups.begin(), groups.end());
 }
-template void editor_palette<t_translation::terrain_code>::expand_palette_groups_menu(std::vector<config>& items);
-template void editor_palette<unit_type>::expand_palette_groups_menu(std::vector<config>& items);
-template void editor_palette<overlay>::expand_palette_groups_menu(std::vector<config>& items);
+template void editor_palette<t_translation::terrain_code>::expand_palette_groups_menu(std::vector<config>& items, int i);
+template void editor_palette<unit_type>::expand_palette_groups_menu(std::vector<config>& items, int i);
+template void editor_palette<overlay>::expand_palette_groups_menu(std::vector<config>& items, int i);
 
 template<class Item>
 bool editor_palette<Item>::scroll_up()
@@ -104,7 +99,7 @@ template bool editor_palette<unit_type>::scroll_up();
 template bool editor_palette<overlay>::scroll_up();
 
 template<class Item>
-void editor_palette<Item>::expand_palette_groups_menu(std::vector< std::pair< std::string, std::string> >& items)
+void editor_palette<Item>::expand_palette_groups_menu(std::vector< std::pair< std::string, std::string> >& items, int i)
 {
 	const std::vector<item_group>& item_groups = get_groups();
 
@@ -117,9 +112,9 @@ void editor_palette<Item>::expand_palette_groups_menu(std::vector< std::pair< st
 		items.push_back(std::pair<std::string, std::string>( img, groupname));
 	}
 }
-template void editor_palette<t_translation::terrain_code>::expand_palette_groups_menu(std::vector< std::pair< std::string, std::string> >& items);
-template void editor_palette<unit_type>::expand_palette_groups_menu(std::vector< std::pair< std::string, std::string> >& items);
-template void editor_palette<overlay>::expand_palette_groups_menu(std::vector< std::pair< std::string, std::string> >& items);
+template void editor_palette<t_translation::terrain_code>::expand_palette_groups_menu(std::vector< std::pair< std::string, std::string> >& items, int i);
+template void editor_palette<unit_type>::expand_palette_groups_menu(std::vector< std::pair< std::string, std::string> >& items, int i);
+template void editor_palette<overlay>::expand_palette_groups_menu(std::vector< std::pair< std::string, std::string> >& items, int i);
 
 template<class Item>
 bool editor_palette<Item>::can_scroll_up()
