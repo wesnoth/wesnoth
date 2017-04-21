@@ -178,7 +178,9 @@ local function remove_ssf_info_from(cfg)
 end
 
 function wml_actions.objectives(cfg)
-	cfg = helper.parsed(cfg)
+	if cfg.delayed_variable_substitution ~= true then
+		cfg = helper.parsed(cfg)
+	end
 
 	local sides = wesnoth.get_sides(cfg)
 	local silent = cfg.silent
