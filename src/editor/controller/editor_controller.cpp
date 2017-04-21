@@ -1008,84 +1008,100 @@ void editor_controller::show_help()
 
 void editor_controller::show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu, display& disp)
 {
-	if (context_menu) {
-		if (!context_manager_->get_map().on_board_with_border(gui().hex_clicked_on(xloc, yloc))) {
+	if(context_menu) {
+		if(!context_manager_->get_map().on_board_with_border(gui().hex_clicked_on(xloc, yloc))) {
 			return;
 		}
 	}
 
 	std::vector<config> items;
-	std::vector<config>::const_iterator i = items_arg.begin();
-	while(i != items_arg.end())
-	{
-		const hotkey::hotkey_command& command = hotkey::get_hotkey_command((*i)["id"]);
+	for(const auto& c : items_arg) {
+		const std::string& id = c["id"];
+		const hotkey::hotkey_command& command = hotkey::get_hotkey_command(id);
 
-		if ( ( can_execute_command(command)
-			&& (!context_menu || in_context_menu(command.id)) )
-			|| command.id == hotkey::HOTKEY_NULL) {
-			items.emplace_back(config_of("id", (*i)["id"]));
+		if((can_execute_command(command) && (!context_menu || in_context_menu(command.id)))
+			|| command.id == hotkey::HOTKEY_NULL)
+		{
+			items.emplace_back(config_of("id", id));
 		}
-		++i;
 	}
-	if (!items.empty() && items.front()["id"] == "EDITOR-LOAD-MRU-PLACEHOLDER") {
+
+	// No point in showing an empty menu.
+	if(items.empty()) {
+		return;
+	}
+
+	// Based on the ID of the first entry, we fill the menu contextually.
+	const std::string& first_id = items.front()["id"];
+
+	if(first_id == "EDITOR-LOAD-MRU-PLACEHOLDER") {
 		active_menu_ = editor::LOAD_MRU;
 		context_manager_->expand_load_mru_menu(items);
 	}
-	if (!items.empty() && items.front()["id"] == "editor-switch-map") {
+
+	if(first_id == "editor-switch-map") {
 		active_menu_ = editor::MAP;
 		context_manager_->expand_open_maps_menu(items);
 	}
-	if (!items.empty() && items.front()["id"] == "editor-palette-groups") {
+
+	if(first_id == "editor-palette-groups") {
 		active_menu_ = editor::PALETTE;
 		toolkit_->get_palette_manager()->active_palette().expand_palette_groups_menu(items);
 	}
-	if (!items.empty() && items.front()["id"] == "editor-switch-side") {
+
+	if(first_id == "editor-switch-side") {
 		active_menu_ = editor::SIDE;
 		context_manager_->expand_sides_menu(items);
 	}
-	if (!items.empty() && items.front()["id"] == "editor-switch-area") {
+
+	if(first_id == "editor-switch-area") {
 		active_menu_ = editor::AREA;
 		context_manager_->expand_areas_menu(items);
 	}
-	if (!items.empty() && items.front()["id"] == "editor-switch-time") {
+
+	if(!items.empty() && items.front()["id"] == "editor-switch-time") {
 		active_menu_ = editor::TIME;
 		context_manager_->expand_time_menu(items);
 	}
-	if (!items.empty() && items.front()["id"] == "editor-assign-local-time") {
+
+	if(first_id == "editor-assign-local-time") {
 		active_menu_ = editor::LOCAL_TIME;
 		context_manager_->expand_local_time_menu(items);
 	}
-	if (!items.empty() && items.front()["id"] == "menu-unit-facings") {
+
+	if(first_id == "menu-unit-facings") {
 		active_menu_ = editor::UNIT_FACING;
 		items.erase(items.begin());
-		for (int dir = 0; dir != map_location::NDIRECTIONS; dir++)
+
+		for(int dir = 0; dir != map_location::NDIRECTIONS; ++dir) {
 			items.emplace_back(config_of("label", map_location::write_translated_direction(map_location::DIRECTION(dir))));
+		}
 	}
-	if (!items.empty() && items.front()["id"] == "editor-playlist") {
+
+	if(first_id == "editor-playlist") {
 		active_menu_ = editor::MUSIC;
 		items.erase(items.begin());
-		for (const sound::music_track& track : music_tracks_) {
+
+		for(const sound::music_track& track : music_tracks_) {
 			items.emplace_back(config_of("label", track.title().empty() ? track.id() : track.title()));
 		}
 	}
-	if (!items.empty() && items.front()["id"] == "editor-assign-schedule") {
+
+	if(first_id == "editor-assign-schedule") {
 		active_menu_ = editor::SCHEDULE;
 
 		items.erase(items.begin());
-
-		for (tods_map::iterator iter = tods_.begin();
-				iter != tods_.end(); ++iter) 	{
-			items.emplace_back(config_of("label", iter->second.first));
+		for(const auto& tod : tods_) {
+			items.emplace_back(config_of("label", tod.second.first));
 		}
 	}
-	if (!items.empty() && items.front()["id"] == "editor-assign-local-schedule") {
+
+	if(first_id == "editor-assign-local-schedule") {
 		active_menu_ = editor::LOCAL_SCHEDULE;
 
 		items.erase(items.begin());
-
-		for (tods_map::iterator iter = tods_.begin();
-				iter != tods_.end(); ++iter) 	{
-			items.emplace_back(config_of("label", iter->second.first));
+		for(const auto& tod : tods_) {
+			items.emplace_back(config_of("label", tod.second.first));
 		}
 	}
 
