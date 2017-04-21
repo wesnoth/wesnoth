@@ -15,6 +15,7 @@
 #include "hotkey/hotkey_handler.hpp"
 
 #include "actions/create.hpp"
+#include "config_assign.hpp"
 #include "font/standard_colors.hpp"
 #include "formula/string_utils.hpp"
 #include "game_display.hpp"
@@ -361,9 +362,9 @@ bool play_controller::hotkey_handler::can_execute_command(const hotkey::hotkey_c
 }
 
 
-static void trim_items(std::vector<std::string>& newitems) {
+static void trim_items(std::vector<config>& newitems) {
 	if (newitems.size() > 5) {
-		std::vector<std::string> subitems;
+		std::vector<config> subitems;
 		subitems.push_back(newitems[0]);
 		subitems.push_back(newitems[1]);
 		subitems.push_back(newitems[newitems.size() / 3]);
@@ -373,31 +374,31 @@ static void trim_items(std::vector<std::string>& newitems) {
 	}
 }
 
-void play_controller::hotkey_handler::expand_autosaves(std::vector<std::string>& items)
+void play_controller::hotkey_handler::expand_autosaves(std::vector<config>& items)
 {
 	const compression::format comp_format =
 		preferences::save_compression_format();
 
 	savenames_.clear();
 	for (unsigned int i = 0; i < items.size(); ++i) {
-		if (items[i] == "AUTOSAVES") {
+		if (items[i]["id"] == "AUTOSAVES") {
 			items.erase(items.begin() + i);
-			std::vector<std::string> newitems;
-			std::vector<std::string> newsaves;
+			std::vector<config> newitems;
+			std::vector<config> newsaves;
 			for (unsigned int turn = play_controller_.turn(); turn != 0; turn--) {
 				std::string name = saved_game_.classification().label + "-" + _("Auto-Save") + std::to_string(turn);
 				if (savegame::save_game_exists(name, comp_format)) {
-					newsaves.push_back(
-						name + compression::format_extension(comp_format));
-					newitems.push_back(_("Back to Turn ") + std::to_string(turn));
+					newsaves.emplace_back(config_of("label",
+						name + compression::format_extension(comp_format)));
+					newitems.emplace_back(config_of("label", _("Back to Turn ") + std::to_string(turn)));
 				}
 			}
 
 			const std::string& start_name = saved_game_.classification().label;
 			if(savegame::save_game_exists(start_name, comp_format)) {
-				newsaves.push_back(
-					start_name + compression::format_extension(comp_format));
-				newitems.push_back(_("Back to Start"));
+				newsaves.emplace_back(config_of("label",
+					start_name + compression::format_extension(comp_format)));
+				newitems.emplace_back(config_of("label", _("Back to Start")));
 			}
 
 			// Make sure list doesn't get too long: keep top two,
@@ -405,20 +406,25 @@ void play_controller::hotkey_handler::expand_autosaves(std::vector<std::string>&
 			trim_items(newitems);
 			trim_items(newsaves);
 
+			std::vector<std::string> temp;
+			std::transform(newsaves.begin(), newsaves.end(), std::back_inserter(temp), [](const config& c) {
+				return c["label"].str();
+			});
+
 			items.insert(items.begin()+i, newitems.begin(), newitems.end());
-			savenames_.insert(savenames_.end(), newsaves.begin(), newsaves.end());
+			savenames_.insert(savenames_.end(), temp.begin(), temp.end());
 			break;
 		}
 		savenames_.push_back("");
 	}
 }
 
-void play_controller::hotkey_handler::expand_wml_commands(std::vector<std::string>& items)
+void play_controller::hotkey_handler::expand_wml_commands(std::vector<config>& items)
 {
 	wml_commands_.clear();
 	for (unsigned int i = 0; i < items.size(); ++i) {
-		if (items[i] == "wml") {
-			std::vector<std::string> newitems;
+		if (items[i]["id"] == "wml") {
+			std::vector<config> newitems;
 
 			// Replace this placeholder entry with available menu items.
 			items.erase(items.begin() + i);
@@ -434,7 +440,7 @@ void play_controller::hotkey_handler::expand_wml_commands(std::vector<std::strin
 	}
 }
 
-void play_controller::hotkey_handler::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& disp)
+void play_controller::hotkey_handler::show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu, display& disp)
 {
 	if (context_menu)
 	{
@@ -442,19 +448,19 @@ void play_controller::hotkey_handler::show_menu(const std::vector<std::string>& 
 		last_context_menu_y_ = yloc;
 	}
 
-	std::vector<std::string> items = items_arg;
+	std::vector<config> items = items_arg;
 	const hotkey::hotkey_command* cmd;
-	std::vector<std::string>::iterator i = items.begin();
+	std::vector<config>::iterator i = items.begin();
 	while(i != items.end()) {
-		if (*i == "AUTOSAVES") {
+		if ((*i)["id"] == "AUTOSAVES") {
 			// Autosave visibility is similar to LOAD_GAME hotkey
 
 			++i; continue; //cmd = &hotkey::hotkey_command::get_command_by_command(hotkey::HOTKEY_LOAD_GAME);
 		} else {
-			cmd = &hotkey::get_hotkey_command(*i);
+			cmd = &hotkey::get_hotkey_command((*i)["id"]);
 		}
 		// Remove commands that can't be executed or don't belong in this type of menu
-		if(*i != "wml" && (!can_execute_command(*cmd) || (context_menu && !in_context_menu(cmd->id)))) {
+		if((*i)["id"] != "wml" && (!can_execute_command(*cmd) || (context_menu && !in_context_menu(cmd->id)))) {
 			i = items.erase(i);
 			continue;
 		}

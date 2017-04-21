@@ -244,14 +244,14 @@ public:
 
 		const std::string& overlay() const { return overlay_; }
 
-		const std::vector<std::string>& items() const { return items_; }
+		const std::vector<config>& items() const { return items_; }
 
 		void set_title(const std::string& new_title) { title_ = new_title; }
 	private:
 		bool button_;
 		bool context_;
 		std::string title_, tooltip_, image_, overlay_;
-		std::vector<std::string> items_;
+		std::vector<config> items_;
 	};
 
 	explicit theme(const config& cfg, const SDL_Rect& screen);

@@ -1722,8 +1722,9 @@ void display::enable_menu(const std::string& item, bool enable)
 	for(std::vector<theme::menu>::const_iterator menu = theme_.menus().begin();
 			menu != theme_.menus().end(); ++menu) {
 
-		std::vector<std::string>::const_iterator hasitem =
-			std::find(menu->items().begin(), menu->items().end(), item);
+		const auto hasitem = std::find_if(menu->items().begin(), menu->items().end(),
+			[&item](const config& c) { return c["id"].str() == item; }
+		);
 
 		if(hasitem != menu->items().end()) {
 			const size_t index = menu - theme_.menus().begin();

@@ -288,17 +288,17 @@ void controller_base::play_slice(bool is_delay_enabled)
 	}
 }
 
-void controller_base::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& disp)
+void controller_base::show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu, display& disp)
 {
 	hotkey::command_executor * cmd_exec = get_hotkey_command_executor();
 	if (!cmd_exec) {
 		return;
 	}
 
-	std::vector<std::string> items = items_arg;
-	std::vector<std::string>::iterator i = items.begin();
+	std::vector<config> items = items_arg;
+	std::vector<config>::iterator i = items.begin();
 	while(i != items.end()) {
-		const hotkey::hotkey_command& command = hotkey::get_hotkey_command(*i);
+		const hotkey::hotkey_command& command = hotkey::get_hotkey_command((*i)["id"]);
 		if(!cmd_exec->can_execute_command(command)
 			|| (context_menu && !in_context_menu(command.id))) {
 			i = items.erase(i);

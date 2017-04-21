@@ -39,6 +39,7 @@
 #include "resources.hpp"
 #include "reports.hpp"
 
+#include "config_assign.hpp"
 #include "desktop/clipboard.hpp"
 #include "floating_label.hpp"
 #include "game_board.hpp"
@@ -655,8 +656,8 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 					//TODO mark the map as changed
 					sound::play_music_once(music_tracks_[index].id());
 					context_manager_->get_map_context().add_to_playlist(music_tracks_[index]);
-					std::vector<std::string> items;
-					items.push_back("editor-playlist");
+					std::vector<config> items;
+					items.emplace_back(config_of("id", "editor-playlist"));
 					std::shared_ptr<gui::button> b = gui_->find_menu_button("menu-playlist");
 					show_menu(items, b->location().x +1, b->location().y + b->height() +1, false, *gui_);
 					return true;
@@ -1005,7 +1006,7 @@ void editor_controller::show_help()
 	help::show_help(gui_->video(), "..editor");
 }
 
-void editor_controller::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& disp)
+void editor_controller::show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu, display& disp)
 {
 	if (context_menu) {
 		if (!context_manager_->get_map().on_board_with_border(gui().hex_clicked_on(xloc, yloc))) {
@@ -1013,79 +1014,78 @@ void editor_controller::show_menu(const std::vector<std::string>& items_arg, int
 		}
 	}
 
-	std::vector<std::string> items;
-	std::vector<std::string>::const_iterator i = items_arg.begin();
+	std::vector<config> items;
+	std::vector<config>::const_iterator i = items_arg.begin();
 	while(i != items_arg.end())
 	{
-
-		const hotkey::hotkey_command& command = hotkey::get_hotkey_command(*i);
+		const hotkey::hotkey_command& command = hotkey::get_hotkey_command((*i)["id"]);
 
 		if ( ( can_execute_command(command)
 			&& (!context_menu || in_context_menu(command.id)) )
 			|| command.id == hotkey::HOTKEY_NULL) {
-			items.push_back(*i);
+			items.emplace_back(config_of("id", (*i)["id"]));
 		}
 		++i;
 	}
-	if (!items.empty() && items.front() == "EDITOR-LOAD-MRU-PLACEHOLDER") {
+	if (!items.empty() && items.front()["id"] == "EDITOR-LOAD-MRU-PLACEHOLDER") {
 		active_menu_ = editor::LOAD_MRU;
 		context_manager_->expand_load_mru_menu(items);
 	}
-	if (!items.empty() && items.front() == "editor-switch-map") {
+	if (!items.empty() && items.front()["id"] == "editor-switch-map") {
 		active_menu_ = editor::MAP;
 		context_manager_->expand_open_maps_menu(items);
 	}
-	if (!items.empty() && items.front() == "editor-palette-groups") {
+	if (!items.empty() && items.front()["id"] == "editor-palette-groups") {
 		active_menu_ = editor::PALETTE;
 		toolkit_->get_palette_manager()->active_palette().expand_palette_groups_menu(items);
 	}
-	if (!items.empty() && items.front() == "editor-switch-side") {
+	if (!items.empty() && items.front()["id"] == "editor-switch-side") {
 		active_menu_ = editor::SIDE;
 		context_manager_->expand_sides_menu(items);
 	}
-	if (!items.empty() && items.front() == "editor-switch-area") {
+	if (!items.empty() && items.front()["id"] == "editor-switch-area") {
 		active_menu_ = editor::AREA;
 		context_manager_->expand_areas_menu(items);
 	}
-	if (!items.empty() && items.front() == "editor-switch-time") {
+	if (!items.empty() && items.front()["id"] == "editor-switch-time") {
 		active_menu_ = editor::TIME;
 		context_manager_->expand_time_menu(items);
 	}
-	if (!items.empty() && items.front() == "editor-assign-local-time") {
+	if (!items.empty() && items.front()["id"] == "editor-assign-local-time") {
 		active_menu_ = editor::LOCAL_TIME;
 		context_manager_->expand_local_time_menu(items);
 	}
-	if (!items.empty() && items.front() == "menu-unit-facings") {
+	if (!items.empty() && items.front()["id"] == "menu-unit-facings") {
 		active_menu_ = editor::UNIT_FACING;
 		items.erase(items.begin());
 		for (int dir = 0; dir != map_location::NDIRECTIONS; dir++)
-			items.push_back(map_location::write_translated_direction(map_location::DIRECTION(dir)));
+			items.emplace_back(config_of("label", map_location::write_translated_direction(map_location::DIRECTION(dir))));
 	}
-	if (!items.empty() && items.front() == "editor-playlist") {
+	if (!items.empty() && items.front()["id"] == "editor-playlist") {
 		active_menu_ = editor::MUSIC;
 		items.erase(items.begin());
 		for (const sound::music_track& track : music_tracks_) {
-			items.push_back(track.title().empty() ? track.id() : track.title());
+			items.emplace_back(config_of("label", track.title().empty() ? track.id() : track.title()));
 		}
 	}
-	if (!items.empty() && items.front() == "editor-assign-schedule") {
+	if (!items.empty() && items.front()["id"] == "editor-assign-schedule") {
 		active_menu_ = editor::SCHEDULE;
 
 		items.erase(items.begin());
 
 		for (tods_map::iterator iter = tods_.begin();
 				iter != tods_.end(); ++iter) 	{
-			items.push_back(iter->second.first);
+			items.emplace_back(config_of("label", iter->second.first));
 		}
 	}
-	if (!items.empty() && items.front() == "editor-assign-local-schedule") {
+	if (!items.empty() && items.front()["id"] == "editor-assign-local-schedule") {
 		active_menu_ = editor::LOCAL_SCHEDULE;
 
 		items.erase(items.begin());
 
 		for (tods_map::iterator iter = tods_.begin();
 				iter != tods_.end(); ++iter) 	{
-			items.push_back(iter->second.first);
+			items.emplace_back(config_of("label", iter->second.first));
 		}
 	}
 

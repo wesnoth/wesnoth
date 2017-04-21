@@ -16,6 +16,7 @@
 
 #include "editor/palette/editor_palettes.hpp"
 
+#include "config_assign.hpp"
 #include "gettext.hpp"
 #include "font/text_formatting.hpp"
 #include "tooltips.hpp"
@@ -24,8 +25,6 @@
 #include "units/types.hpp"
 
 #include "editor/toolkit/editor_toolkit.hpp"
-
-#include "wml_separators.hpp"
 
 namespace editor {
 
@@ -43,13 +42,13 @@ template sdl_handler_vector editor_palette<unit_type>::handler_members();
 template sdl_handler_vector editor_palette<overlay>::handler_members();
 
 template<class Item>
-void editor_palette<Item>::expand_palette_groups_menu(std::vector<std::string>& items)
+void editor_palette<Item>::expand_palette_groups_menu(std::vector<config>& items)
 {
 	for (unsigned int i = 0; i < items.size(); ++i) {
-		if (items[i] == "editor-palette-groups") {
+		if (items[i]["id"] == "editor-palette-groups") {
 			items.erase(items.begin() + i);
 
-			std::vector<std::string> groups;
+			std::vector<config> groups;
 			const std::vector<item_group>& item_groups = get_groups();
 
 			for (size_t mci = 0; mci < item_groups.size(); ++mci) {
@@ -57,32 +56,34 @@ void editor_palette<Item>::expand_palette_groups_menu(std::vector<std::string>& 
 				if (groupname.empty()) {
 					groupname = _("(Unknown Group)");
 				}
-				std::stringstream str;
-				str << IMAGE_PREFIX << item_groups[mci].icon;
+				std::stringstream i_ss;
+				i_ss << item_groups[mci].icon;
 				if (mci == active_group_index()) {
 
-					if (filesystem::file_exists(str.str() + "_30-pressed.png" ) ) {
-						str << "_30-pressed.png";
+					if (filesystem::file_exists(i_ss.str() + "_30-pressed.png" ) ) {
+						i_ss << "_30-pressed.png";
 					} else {
-						str << "_30.png~CS(70,70,0)";
+						i_ss << "_30.png~CS(70,70,0)";
 					}
 
 				} else {
-					str << "_30.png";
+					i_ss << "_30.png";
 				}
-				str << COLUMN_SEPARATOR << groupname;
-				groups.push_back(str.str());
 
-
+				groups.emplace_back(config_of
+					("label", groupname)
+					("icon", i_ss.str())
+				);
 			}
+
 			items.insert(items.begin() + i, groups.begin(), groups.end());
 			break;
 		}
 	}
 }
-template void editor_palette<t_translation::terrain_code>::expand_palette_groups_menu(std::vector<std::string>& items);
-template void editor_palette<unit_type>::expand_palette_groups_menu(std::vector<std::string>& items);
-template void editor_palette<overlay>::expand_palette_groups_menu(std::vector<std::string>& items);
+template void editor_palette<t_translation::terrain_code>::expand_palette_groups_menu(std::vector<config>& items);
+template void editor_palette<unit_type>::expand_palette_groups_menu(std::vector<config>& items);
+template void editor_palette<overlay>::expand_palette_groups_menu(std::vector<config>& items);
 
 template<class Item>
 bool editor_palette<Item>::scroll_up()

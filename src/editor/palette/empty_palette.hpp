@@ -73,7 +73,7 @@ public:
 
 	/** Menu expanding for palette group list */
 	virtual void expand_palette_groups_menu(std::vector< std::pair< std::string, std::string> >& /*items*/) override {}
-	virtual void expand_palette_groups_menu(std::vector< std::string> & /*items*/) override {}
+	virtual void expand_palette_groups_menu(std::vector< config> & /*items*/) override {}
 
     //item
 	virtual int num_items() override {return 0;}

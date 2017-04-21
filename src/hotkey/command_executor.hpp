@@ -130,9 +130,9 @@ public:
 	// Returns the appropriate menu image. Checkable items will get a checked/unchecked image.
 	std::string get_menu_image(display& disp, const std::string& command, int index=-1) const;
 	// Returns a vector of images for a given menu.
-	std::vector<config> get_menu_images(display &, const std::vector<std::string>& items_arg);
+	void get_menu_images(display &, std::vector<config>& items);
 
-	virtual void show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& gui);
+	virtual void show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu, display& gui);
 	void execute_action(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& gui);
 
 	virtual bool can_execute_command(const hotkey_command& command, int index=-1) const = 0;

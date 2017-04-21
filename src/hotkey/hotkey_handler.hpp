@@ -57,14 +57,14 @@ private:
 	typedef std::shared_ptr<const game_events::wml_menu_item> const_item_ptr;
 
 	// Expand AUTOSAVES in the menu items, setting the real savenames.
-	void expand_autosaves(std::vector<std::string>& items);
+	void expand_autosaves(std::vector<config>& items);
 
 	std::vector<std::string> savenames_;
 
 	/**
 	 * Replaces "wml" in @a items with all active WML menu items for the current field.
 	 */
-	void expand_wml_commands(std::vector<std::string>& items);
+	void expand_wml_commands(std::vector<config>& items);
 	std::vector<const_item_ptr> wml_commands_;
 	int last_context_menu_x_;
 	int last_context_menu_y_;
@@ -125,7 +125,7 @@ public:
 	/** Check if a command can be executed. */
 	virtual bool can_execute_command(const hotkey::hotkey_command& command, int index=-1) const override;
 	virtual bool execute_command(const hotkey::hotkey_command& command, int index=-1, bool press=true) override;
-	void show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& disp) override;
+	void show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu, display& disp) override;
 
 	/**
 	 *  Determines whether the command should be in the context menu or not.
