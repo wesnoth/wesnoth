@@ -26,26 +26,26 @@
 //or the tile below is obscured. This is because in the case where the tile
 //itself is visible, but the tile below is obscured, the bottom half of the
 //tile will still be shrouded, and the label being drawn looks weird.
-inline bool is_shrouded(const display& disp, const map_location& loc)
+inline bool is_shrouded(const display* disp, const map_location& loc)
 {
-	return disp.shrouded(loc) || disp.shrouded(loc.get_direction(map_location::SOUTH));
+	return disp->shrouded(loc) || disp->shrouded(loc.get_direction(map_location::SOUTH));
 }
 
 /// Rather simple test for a hex being fogged.
 /// This only exists because is_shrouded() does. (The code looks nicer if
 /// the test for being fogged looks similar to the test for being shrouded.)
-inline bool is_fogged(const display& disp, const map_location& loc)
+inline bool is_fogged(const display* disp, const map_location& loc)
 {
-	return disp.fogged(loc);
+	return disp->fogged(loc);
 }
 
-map_labels::map_labels(const display &disp, const team *team) :
-	disp_(disp), team_(team), labels_(), enabled_(true), categories_dirty(true)
+map_labels::map_labels(const team *team) :
+	team_(team), labels_(), enabled_(true), categories_dirty(true)
 {
 }
 
 map_labels::map_labels(const map_labels& other) :
-	disp_(other.disp_), team_(other.team_), labels_(), enabled_(true)
+	team_(other.team_), labels_(), enabled_(true)
 {
 	config cfg;
 	other.write(cfg);
@@ -113,12 +113,6 @@ const terrain_label* map_labels::get_label(const map_location& loc) const
 		return get_label(loc, "");
 	}
 	return res;
-}
-
-
-const display& map_labels::disp() const
-{
-	return disp_;
 }
 
 const std::string& map_labels::team_name() const
@@ -536,32 +530,43 @@ void terrain_label::calculate_shroud()
 SDL_Rect terrain_label::get_rect() const
 {
 	SDL_Rect rect;
-	int hex_size = parent_->disp().hex_size();
 
-	rect.x = parent_->disp().get_location_x(loc_) + hex_size / 4;
-	rect.y = parent_->disp().get_location_y(loc_);
-	rect.h = parent_->disp().hex_size();
-	rect.w = parent_->disp().hex_size() - hex_size/2;
+	display* disp = display::get_singleton();
+	if(!disp) {
+		return rect;
+	}
+
+	int hex_size = disp->hex_size();
+
+	rect.x = disp->get_location_x(loc_) + hex_size / 4;
+	rect.y = disp->get_location_y(loc_);
+	rect.h = disp->hex_size();
+	rect.w = disp->hex_size() - hex_size/2;
 
 	return rect;
 }
 
 void terrain_label::draw()
 {
+	display* disp = display::get_singleton();
+	if(!disp) {
+		return;
+	}
+
 	if (text_.empty() && tooltip_.empty()) {
 		return;
 	}
 	clear();
 
-	if (!viewable(parent_->disp().get_disp_context())) {
+	if (!viewable(disp->get_disp_context())) {
 		return;
 	}
 	//Note: the y part of loc_nextx is not used at all.
 	const map_location loc_nextx = loc_.get_direction(map_location::NORTH_EAST);
 	const map_location loc_nexty = loc_.get_direction(map_location::SOUTH);
-	const int xloc = (parent_->disp().get_location_x(loc_) +
-			parent_->disp().get_location_x(loc_nextx)*2)/3;
-	const int yloc = parent_->disp().get_location_y(loc_nexty) - font::SIZE_NORMAL;
+	const int xloc = (disp->get_location_x(loc_) +
+			disp->get_location_x(loc_nextx)*2)/3;
+	const int yloc = disp->get_location_y(loc_nexty) - font::SIZE_NORMAL;
 
 	// If a color is specified don't allow to override it with markup. (prevents faking map labels for example)
 	// FIXME: @todo Better detect if it's team label and not provided by
@@ -571,7 +576,7 @@ void terrain_label::draw()
 	font::floating_label flabel(text_.str());
 	flabel.set_color(color_);
 	flabel.set_position(xloc, yloc);
-	flabel.set_clip_rect(parent_->disp().map_outside_area());
+	flabel.set_clip_rect(disp->map_outside_area());
 	flabel.set_width(font::SIZE_NORMAL * 13);
 	flabel.set_height(font::SIZE_NORMAL * 4);
 	flabel.set_scroll_mode(font::ANCHOR_LABEL_MAP);
@@ -590,10 +595,15 @@ void terrain_label::draw()
  */
 bool terrain_label::hidden() const
 {
+	display* disp = display::get_singleton();
+	if(!disp) {
+		return false;
+	}
+
 	// Respect user's label preferences
 	std::string category = "cat:" + category_;
 	std::string creator = "side:" + std::to_string(creator_ + 1);
-	const std::vector<std::string>& hidden_categories = parent_->disp().get_disp_context().hidden_label_categories();
+	const std::vector<std::string>& hidden_categories = disp->get_disp_context().hidden_label_categories();
 
 	if(std::find(hidden_categories.begin(), hidden_categories.end(), category) != hidden_categories.end())
 		return true;
@@ -603,11 +613,11 @@ bool terrain_label::hidden() const
 		return true;
 
 	// Fog can hide some labels.
-	if ( !visible_in_fog_ && is_fogged(parent_->disp(), loc_) )
+	if ( !visible_in_fog_ && is_fogged(disp, loc_) )
 		return true;
 
 	// Shroud can hide some labels.
-	if ( !visible_in_shroud_ && is_shrouded(parent_->disp(), loc_) )
+	if ( !visible_in_shroud_ && is_shrouded(disp, loc_) )
 		return true;
 
 	return false;

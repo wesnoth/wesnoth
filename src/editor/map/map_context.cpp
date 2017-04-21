@@ -58,7 +58,7 @@ editor_team_info::editor_team_info(const team& t)
 
 const size_t map_context::max_action_stack_size_ = 100;
 
-map_context::map_context(const editor_map& map, const display& disp, bool pure_map, const config& schedule)
+map_context::map_context(const editor_map& map, bool pure_map, const config& schedule)
 	: filename_()
 	, map_data_key_()
 	, embedded_(false)
@@ -80,7 +80,7 @@ map_context::map_context(const editor_map& map, const display& disp, bool pure_m
     , victory_defeated_(true)
 	, random_time_(false)
 	, active_area_(-1)
-	, labels_(disp, nullptr)
+	, labels_(nullptr)
 	, units_()
 	, teams_()
 	, tod_manager_(new tod_manager(schedule))
@@ -90,7 +90,7 @@ map_context::map_context(const editor_map& map, const display& disp, bool pure_m
 {
 }
 
-map_context::map_context(const config& game_config, const std::string& filename, const display& disp)
+map_context::map_context(const config& game_config, const std::string& filename)
 	: filename_(filename)
 	, map_data_key_()
 	, embedded_(false)
@@ -112,7 +112,7 @@ map_context::map_context(const config& game_config, const std::string& filename,
 	, victory_defeated_(true)
 	, random_time_(false)
 	, active_area_(-1)
-	, labels_(disp, nullptr)
+	, labels_(nullptr)
 	, units_()
 	, teams_()
 	, tod_manager_(new tod_manager(game_config.find_child("editor_times", "id", "default")))

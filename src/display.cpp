@@ -172,7 +172,7 @@ display::display(const display_context * dc, CVideo& video, std::weak_ptr<wb::ma
 	turbo_speed_(2),
 	turbo_(false),
 	invalidateGameStatus_(true),
-	map_labels_(new map_labels(*this, 0)),
+	map_labels_(new map_labels(0)),
 	reports_object_(&reports_object),
 	scroll_event_("scrolled"),
 	complete_redraw_event_("completely_redrawn"),

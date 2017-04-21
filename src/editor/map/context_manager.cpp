@@ -485,7 +485,7 @@ void context_manager::apply_mask_dialog()
 
 	if(dlg.show(gui_.video())) {
 		try {
-			map_context mask(game_config_, dlg.path(), gui_);
+			map_context mask(game_config_, dlg.path());
 			editor_action_apply_mask a(mask.get_map());
 			perform_refresh(a);
 		} catch (editor_map_load_exception& e) {
@@ -528,7 +528,7 @@ void context_manager::create_mask_to_dialog()
 
 	if(dlg.show(gui_.video())) {
 		try {
-			map_context map(game_config_, dlg.path(), gui_);
+			map_context map(game_config_, dlg.path());
 			editor_action_create_mask a(map.get_map());
 			perform_refresh(a);
 		} catch (editor_map_load_exception& e) {
@@ -905,7 +905,7 @@ void context_manager::load_map(const std::string& filename, bool new_context)
 	LOG_ED << "Load map: " << filename << (new_context ? " (new)" : " (same)") << "\n";
 	try {
 		{
-			context_ptr mc(new map_context(game_config_, filename, gui_));
+			context_ptr mc(new map_context(game_config_, filename));
 			if(mc->get_filename() != filename) {
 				if(new_context && check_switch_open_map(mc->get_filename())) {
 					return;
@@ -968,10 +968,10 @@ void context_manager::new_map(int width, int height, const t_translation::terrai
 	editor_map m(game_config_, width, height, fill);
 
 	if(new_context) {
-		int new_id = add_map_context(m, gui_, true, default_schedule);
+		int new_id = add_map_context(m, true, default_schedule);
 		switch_context(new_id);
 	} else {
-		replace_map_context(m, gui_, true, default_schedule);
+		replace_map_context(m, true, default_schedule);
 	}
 }
 
@@ -981,10 +981,10 @@ void context_manager::new_scenario(int width, int height, const t_translation::t
 	editor_map m(game_config_, width, height, fill);
 
 	if(new_context) {
-		int new_id = add_map_context(m, gui_, false, default_schedule);
+		int new_id = add_map_context(m, false, default_schedule);
 		switch_context(new_id);
 	} else {
-		replace_map_context(m, gui_, false, default_schedule);
+		replace_map_context(m, false, default_schedule);
 	}
 }
 
@@ -1027,10 +1027,10 @@ void context_manager::create_default_context()
 			t_translation::read_terrain_code(game_config::default_terrain);
 
 		const config& default_schedule = game_config_.find_child("editor_times", "id", "default");
-		add_map_context(editor_map(game_config_, 44, 33, default_terrain), gui_, true, default_schedule);
+		add_map_context(editor_map(game_config_, 44, 33, default_terrain), true, default_schedule);
 	} else {
 		for(const std::string& filename : saved_windows_) {
-			add_map_context(game_config_, filename, gui_);
+			add_map_context(game_config_, filename);
 		}
 
 		saved_windows_.clear();

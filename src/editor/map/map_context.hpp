@@ -64,7 +64,7 @@ public:
 	 * empty, indicating a new map.
 	 * Marked "explicit" to avoid automatic conversions.
 	 */
-	explicit map_context(const editor_map& map, const display& disp, bool pure_map, const config& schedule);
+	explicit map_context(const editor_map& map, bool pure_map, const config& schedule);
 
 	/**
 	 * Create map_context from a map file. If the map cannot be loaded, an
@@ -74,7 +74,7 @@ public:
 	 * inside scenarios do not change the filename, but set the "embedded" flag
 	 * instead.
 	 */
-	map_context(const config& game_config, const std::string& filename, const display& disp);
+	map_context(const config& game_config, const std::string& filename);
 
 	/**
 	 * Map context destructor
