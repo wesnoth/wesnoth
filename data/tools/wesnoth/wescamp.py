@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 # vim: tabstop=4: shiftwidth=4: expandtab: softtabstop=4: autoindent:
 #
 """
@@ -23,14 +23,6 @@ import sys, os.path, argparse, tempfile, shutil, logging, socket
 # in case the wesnoth python package has not been installed
 sys.path.append("data/tools")
 
-print("""
-Note: campaignserver_client has since been moved to Python 3 - the
-easiest way to run this script is to use campaginserver_client from
-an earlier Wesnoth version. And then in the long run convert this
-script to Python 3 as well.
-""")
-sys.exit(1)
-
 #import CampaignClient as libwml
 import wesnoth.campaignserver_client as libwml
 
@@ -48,13 +40,14 @@ class tempdir:
 
         # We need to add a reference to shutil, otherwise __del__() will fail.
         # This is because when the object is destructed other globals may
-        #have already been torn down.
+        # have already been torn down.
         # In C++ this is known as the static deinitialization fiasco.
-        self.dummy = shutil
+        self.shutil = shutil
+        self.logging = logging
 
     def __del__(self):
-        self.dummy.rmtree(self.path)
-        logging.debug("removed tempdir '%s'", self.path)
+        self.shutil.rmtree(self.path)
+        self.logging.debug("removed tempdir '%s'", self.path)
 
 if __name__ == "__main__":
     git_version = None
@@ -508,23 +501,23 @@ if __name__ == "__main__":
         try:
             addons = list_addons(server, args.list_translatable)
         except libgithub.AddonError as e:
-            print "[ERROR github in {0}] {1}".format(e.addon, str(e.message))
+            print("[ERROR github in {0}] {1}".format(e.addon, str(e.message)))
             sys.exit(1)
         except libgithub.Error as e:
-            print "[ERROR github] " + str(e)
+            print("[ERROR github] " + str(e))
             sys.exit(1)
         except socket.error as e:
-            print "Socket error: " + str(e)
+            print("Socket error: " + str(e))
             sys.exit(e[0])
         except IOError as e:
-            print "Unexpected error occured: " + str(e)
+            print("Unexpected error occured: " + str(e))
             sys.exit(e[0])
 
-        for k, v in addons.iteritems():
+        for k, v in list(addons.items()):
             if(v):
-                print k + " translatable"
+                print(k + " translatable")
             else:
-                print k
+                print(k)
 
     # Upload an addon to wescamp.
     elif(args.upload != None):
@@ -537,16 +530,16 @@ if __name__ == "__main__":
         try:
             upload(server, args.upload, target, wescamp, build_sys_dir)
         except libgithub.AddonError as e:
-            print "[ERROR github in {0}] {1}".format(e.addon, str(e.message))
+            print("[ERROR github in {0}] {1}".format(e.addon, str(e.message)))
             sys.exit(1)
         except libgithub.Error as e:
-            print "[ERROR github] " + str(e)
+            print("[ERROR github] " + str(e))
             sys.exit(1)
         except socket.error as e:
-            print "Socket error: " + str(e)
+            print("Socket error: " + str(e))
             sys.exit(e[0])
         except IOError as e:
-            print "Unexpected error occured: " + str(e)
+            print("Unexpected error occured: " + str(e))
             sys.exit(e[0])
 
     # Upload all addons from wescamp.
@@ -561,25 +554,25 @@ if __name__ == "__main__":
         try:
             addons = list_addons(server, True)
         except socket.error as e:
-            print "Socket error: " + str(e)
+            print("Socket error: " + str(e))
             sys.exit(e[0])
-        for k, v in addons.iteritems():
+        for k, v in list(addons.items()):
             try:
                 logging.info("Processing addon '%s'", k)
                 # Create a new temp dir for every upload.
                 tmp = tempdir()
                 upload(server, k, tmp.path, wescamp, build_sys_dir)
             except libgithub.AddonError as e:
-                print "[ERROR github in {0}] {1}".format(e.addon, str(e.message))
+                print("[ERROR github in {0}] {1}".format(e.addon, str(e.message)))
                 error = True
             except libgithub.Error as e:
-                print "[ERROR github] in addon '{0}' {1}".format(k, str(e))
+                print("[ERROR github] in addon '{0}' {1}".format(k, str(e)))
                 error = True
             except socket.error as e:
-                print "Socket error: " + str(e)
+                print("Socket error: " + str(e))
                 error = True
             except IOError as e:
-                print "Unexpected error occured: " + str(e)
+                print("Unexpected error occured: " + str(e))
                 error = True
 
         if(error):
@@ -595,16 +588,16 @@ if __name__ == "__main__":
         try:
             checkout(wescamp, auth=git_auth, readonly=(args.checkout_readonly))
         except libgithub.AddonError as e:
-            print "[ERROR github in {0}] {1}".format(e.addon, str(e.message))
+            print("[ERROR github in {0}] {1}".format(e.addon, str(e.message)))
             sys.exit(1)
         except libgithub.Error as e:
-            print "[ERROR github] " + str(e)
+            print("[ERROR github] " + str(e))
             sys.exit(1)
         except socket.error as e:
-            print "Socket error: " + str(e)
+            print("Socket error: " + str(e))
             sys.exit(e[0])
         except IOError as e:
-            print "Unexpected error occured: " + str(e)
+            print("Unexpected error occured: " + str(e))
             sys.exit(e[0])
 
     else:

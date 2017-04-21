@@ -7,7 +7,7 @@ import wesnoth.wmlparser3 as wmlparser
 # src/network.cpp
 
 def append_attributes(tag, **attributes):
-    for k, v in attributes.items():
+    for k, v in list(attributes.items()):
         if isinstance(k, str): k = k.encode("utf8")
         if isinstance(v, str): v = v.encode("utf8")
         kn = wmlparser.AttributeNode(k)
