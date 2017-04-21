@@ -69,9 +69,7 @@ unit_ptr lua_unit::get_shared()
 bool lua_unit::put_map(const map_location &loc)
 {
 	if (ptr) {
-		ptr->set_location(loc);
-		resources::gameboard->units().erase(loc);
-		std::pair<unit_map::unit_iterator, bool> res = resources::gameboard->units().insert(ptr);
+		std::pair<unit_map::unit_iterator, bool> res = resources::gameboard->units().replace(loc, ptr);
 		if (res.second) {
 			ptr.reset();
 			uid = res.first->underlying_id();
@@ -84,8 +82,7 @@ bool lua_unit::put_map(const map_location &loc)
 		if (it) {
 			side = 0;
 			// uid may be changed by unit_map on insertion
-			it->set_location(loc);
-			uid = resources::gameboard->units().insert(it).first->underlying_id();
+			uid = resources::gameboard->units().replace(loc, it).first->underlying_id();
 		} else {
 			ERR_LUA << "Could not find unit " << uid << " on recall list of side " << side << '\n';
 			return false;
