@@ -80,7 +80,7 @@ static lg::log_domain log_unit("unit");
 namespace
 {
 	// "advance" only kept around for backwards compatibility; only "advancement" should be used
-	const std::array<std::string, 4> ModificationTypes { "advancement", "advance", "trait", "object" };
+	const std::array<std::string, 4> ModificationTypes {{ "advancement", "advance", "trait", "object" }};
 
 	/**
 	 * Pointers to units which have data in their internal caches. The
