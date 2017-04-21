@@ -949,13 +949,13 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 
 		// Transitions
 		case HOTKEY_EDITOR_PARTIAL_UPDATE_TRANSITIONS:
-			context_manager_->set_update_trasitions_mode(2);
+			context_manager_->set_update_transitions_mode(2);
 			return true;
 		case HOTKEY_EDITOR_AUTO_UPDATE_TRANSITIONS:
-			context_manager_->set_update_trasitions_mode(1);
+			context_manager_->set_update_transitions_mode(1);
 			return true;
 		case HOTKEY_EDITOR_NO_UPDATE_TRANSITIONS:
-			context_manager_->set_update_trasitions_mode(0);
+			context_manager_->set_update_transitions_mode(0);
 			return true;
 		case HOTKEY_EDITOR_TOGGLE_TRANSITIONS:
 			if(context_manager_->toggle_update_transitions()) {

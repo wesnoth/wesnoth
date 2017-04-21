@@ -18,43 +18,41 @@
 #include "editor/map/map_context.hpp"
 #include "editor/editor_preferences.hpp"
 #include "editor/map/map_fragment.hpp"
+
 class map_generator;
 
-namespace editor {
+namespace editor
+{
 
 map_labels* get_current_labels();
 
-class context_manager {
-
+class context_manager
+{
 public:
 	using context_ptr = std::unique_ptr<map_context>;
+
+	context_manager(editor_display& gui, const config& game_config);
+	~context_manager();
 
 	bool is_active_transitions_hotkey(const std::string& item);
 
 	size_t modified_maps(std::string& modified);
 
-	void set_update_trasitions_mode(int mode) {
+	void set_update_transitions_mode(int mode)
+	{
 		auto_update_transitions_ = mode;
 		preferences::editor::set_auto_update_transitions(mode);
 	}
 
-	bool toggle_update_transitions() {
-		auto_update_transitions_ = (auto_update_transitions_ + 1)
-				% preferences::editor::TransitionUpdateMode::count;
-		preferences::editor::set_auto_update_transitions(
-				auto_update_transitions_);
-		if (auto_update_transitions_
-				!= preferences::editor::TransitionUpdateMode::on) {
-			return true;
-		}
-		return false;
-	}
+	bool toggle_update_transitions();
 
-	bool clipboard_empty() {
+	bool clipboard_empty()
+	{
 		return clipboard_.empty();
 	}
 
-	map_fragment& get_clipboard() {
+	map_fragment& get_clipboard()
+	{
 		return clipboard_;
 	}
 
@@ -62,15 +60,13 @@ public:
 	void fill_selection();
 
 	/** Index into the map_contexts_ array */
-	int current_context_index() {
+	int current_context_index()
+	{
 		return current_context_index_;
 	}
 
-public:
-	context_manager(editor_display& gui, const config& game_config);
-	~context_manager();
-
-	size_t open_maps(void) {
+	size_t open_maps(void)
+	{
 		return map_contexts_.size();
 	}
 
@@ -89,7 +85,8 @@ public:
 	/** Save the map, open dialog if not named yet. */
 	void save_map();
 
-	editor_display& gui() {
+	editor_display& gui()
+	{
 		return gui_;
 	}
 
@@ -155,21 +152,28 @@ public:
 	/** Display a load map dialog and process user input. */
 	void resize_map_dialog();
 
-	size_t size() {
+	size_t size()
+	{
 		return map_contexts_.size();
 	}
 
 	/** Get the current map context object */
-	map_context& get_map_context() {
+	map_context& get_map_context()
+	{
 		return *map_contexts_[current_context_index_];
 	}
+
 	/** Get the map from the current map context object - const version*/
-	const editor_map& get_map() const {
+	const editor_map& get_map() const
+	{
 		return get_map_context().get_map();
 	}
 
 	/** Set the default dir (where the filebrowser is pointing at when there is no map file opened) */
-	void set_default_dir(const std::string& str);
+	void set_default_dir(const std::string& str)
+	{
+		default_dir_ = str;
+	}
 
 private:
 	/** init available random map generators */
@@ -182,7 +186,8 @@ private:
 	bool confirm_discard();
 
 	/** Get the current map context object - const version */
-	const map_context& get_map_context() const {
+	const map_context& get_map_context() const
+	{
 		return *map_contexts_[current_context_index_];
 	}
 
@@ -217,7 +222,8 @@ public:
 	void refresh_after_action(bool drag_part = false);
 
 	/** Get the map from the current map context object */
-	editor_map& get_map() {
+	editor_map& get_map()
+	{
 		return get_map_context().get_map();
 	}
 
@@ -246,14 +252,12 @@ private:
 	/**
 	 * Create a new map.
 	 */
-	void new_map(int width, int height, const t_translation::terrain_code & fill,
-			bool new_context);
+	void new_map(int width, int height, const t_translation::terrain_code & fill, bool new_context);
 
 	/**
 	 * Create a new scenario.
 	 */
-	void new_scenario(int width, int height, const t_translation::terrain_code & fill,
-			bool new_context);
+	void new_scenario(int width, int height, const t_translation::terrain_code & fill, bool new_context);
 
 	/**
 	 * Check if a map is already open.
@@ -272,6 +276,7 @@ private:
 	 * Displays the specified map name in the window titlebar
 	 */
 	void set_window_title();
+
 public:
 	/**
 	 * Load a map given the filename
@@ -290,7 +295,6 @@ public:
 	void reload_map();
 
 private:
-
 	editor_display& gui_;
 
 	const config& game_config_;
