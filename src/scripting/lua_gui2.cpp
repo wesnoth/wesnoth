@@ -569,7 +569,7 @@ int intf_get_dialog_value(lua_State* L)
 			if(list->row_selected(i)) {
 				count++;
 				lua_pushnumber(L, i + 1);
-				lua_rawseti(L, -1, count);
+				lua_rawseti(L, -2, count);
 			}
 		}
 	} else if(gui2::multi_page* multi_page = dynamic_cast<gui2::multi_page*>(w)) {
@@ -602,7 +602,7 @@ int intf_get_dialog_value(lua_State* L)
 			if(stacked_widget->layer_selected(i)) {
 				count++;
 				lua_pushnumber(L, i + 1);
-				lua_rawseti(L, -1, count);
+				lua_rawseti(L, -2, count);
 			}
 		}
 	} else if(gui2::multimenu_button* menu = dynamic_cast<gui2::multimenu_button*>(w)) {
@@ -613,7 +613,7 @@ int intf_get_dialog_value(lua_State* L)
 			if(selected[i]) {
 				count++;
 				lua_pushnumber(L, i + 1);
-				lua_rawseti(L, -1, count);
+				lua_rawseti(L, -2, count);
 			}
 		}
 	} else {
