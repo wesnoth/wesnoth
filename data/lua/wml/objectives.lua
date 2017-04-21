@@ -204,12 +204,19 @@ function wml_actions.objectives(cfg)
 	end
 end
 
+local function maybe_parsed(cfg)
+	if cfg.delayed_variable_substitution == false then
+		return helper.parsed(cfg)
+	end
+	return cfg
+end
+
 function wml_actions.show_objectives(cfg)
-	local cfg0 = scenario_objectives[0]
+	local cfg0 = maybe_parsed(scenario_objectives[0])
 	local function local_show_objectives(sides)
 		local objectives0 = cfg0 and generate_objectives(cfg0)
 		for i, team in ipairs(sides) do
-			cfg = scenario_objectives[team.side]
+			cfg = maybe_parsed(scenario_objectives[team.side])
 			local objectives = (cfg and generate_objectives(cfg)) or objectives0
 			if objectives then team.objectives = objectives end
 			team.objectives_changed = true
