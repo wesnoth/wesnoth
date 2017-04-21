@@ -313,7 +313,6 @@
 		91A215801CAD797900927AEA /* controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B597EC0C0FC0835900CE81F5 /* controller.cpp */; };
 		91A215811CAD797900927AEA /* interface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B597EC0E0FC0835900CE81F5 /* interface.cpp */; };
 		91A215821CAD797900927AEA /* part.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B597EC100FC0835900CE81F5 /* part.cpp */; };
-		91A215831CAD797900927AEA /* render.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B597EC120FC0835900CE81F5 /* render.cpp */; };
 		91A215841CAD797900927AEA /* filter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999930EC62181008DD061 /* filter.cpp */; };
 		91A215851CAD884A00927AEA /* abilities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B559997D0EC62181008DD061 /* abilities.cpp */; };
 		91A215861CAD884A00927AEA /* animation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B559997B0EC62181008DD061 /* animation.cpp */; };
@@ -581,9 +580,6 @@
 		91E356741CACC6E000774252 /* playsingle_controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999CA0EC62181008DD061 /* playsingle_controller.cpp */; };
 		91E356751CACC6E000774252 /* playturn.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999C80EC62181008DD061 /* playturn.cpp */; };
 		91E356761CACC6E000774252 /* playturn_network_adapter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC51DB7618F8BFA4004621D9 /* playturn_network_adapter.cpp */; };
-		91E356771CACC71A00774252 /* random_new.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC84245B18F30D9100FC1EEF /* random_new.cpp */; };
-		91E356781CACC71A00774252 /* random_new_deterministic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC84245718F30D9000FC1EEF /* random_new_deterministic.cpp */; };
-		91E356791CACC71A00774252 /* random_new_synced.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC84245918F30D9000FC1EEF /* random_new_synced.cpp */; };
 		91E3567A1CACC71A00774252 /* recall_list_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC1CB20619524AD600B0FA78 /* recall_list_manager.cpp */; };
 		91E3567B1CACC71A00774252 /* replay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999BB0EC62181008DD061 /* replay.cpp */; };
 		91E3567C1CACC71A00774252 /* replay_controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999B90EC62181008DD061 /* replay_controller.cpp */; };
@@ -969,7 +965,6 @@
 		B597EC140FC0835900CE81F5 /* controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B597EC0C0FC0835900CE81F5 /* controller.cpp */; };
 		B597EC150FC0835900CE81F5 /* interface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B597EC0E0FC0835900CE81F5 /* interface.cpp */; };
 		B597EC160FC0835900CE81F5 /* part.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B597EC100FC0835900CE81F5 /* part.cpp */; };
-		B597EC170FC0835900CE81F5 /* render.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B597EC120FC0835900CE81F5 /* render.cpp */; };
 		B597EC5A0FC08E0100CE81F5 /* canvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B597EC510FC08E0100CE81F5 /* canvas.cpp */; };
 		B597EC5B0FC08E0100CE81F5 /* log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B597EC550FC08E0100CE81F5 /* log.cpp */; };
 		B597EC5C0FC08E0100CE81F5 /* window_builder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B597EC570FC08E0100CE81F5 /* window_builder.cpp */; };
@@ -1057,6 +1052,9 @@
 		B5F4D7180F5B3B25005E204A /* campaign_selection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5F4D7170F5B3B25005E204A /* campaign_selection.cpp */; };
 		B5F9C5950F93BB0B00C02205 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B5F9C5930F93BB0B00C02205 /* InfoPlist.strings */; };
 		EC04E3511DA537F700025919 /* file_dialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC04E34F1DA537F700025919 /* file_dialog.cpp */; };
+		EC0680291EA920A300EEE03B /* random_deterministic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC0680231EA920A300EEE03B /* random_deterministic.cpp */; };
+		EC06802A1EA920A300EEE03B /* random_synced.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC0680251EA920A300EEE03B /* random_synced.cpp */; };
+		EC06802B1EA920A300EEE03B /* random.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC0680271EA920A300EEE03B /* random.cpp */; };
 		EC08023C194D0A80009E0050 /* formula_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC08023A194D0A80009E0050 /* formula_manager.cpp */; };
 		EC179B891E91475300B4178C /* variant_value.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC179B871E91475300B4178C /* variant_value.cpp */; };
 		EC19E6F018B7F24B003B4B81 /* screenshot_notification.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC19E6EE18B7F24B003B4B81 /* screenshot_notification.cpp */; };
@@ -1158,9 +1156,6 @@
 		EC74C11F197576F500B85A1A /* notifications.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC74C119197576F500B85A1A /* notifications.cpp */; };
 		EC74C120197576F500B85A1A /* open.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC74C11B197576F500B85A1A /* open.cpp */; };
 		EC79D70D19548D5000EC7C1F /* game_cache_options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC79D70C19548D5000EC7C1F /* game_cache_options.cpp */; };
-		EC84246718F30D9100FC1EEF /* random_new_deterministic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC84245718F30D9000FC1EEF /* random_new_deterministic.cpp */; };
-		EC84246818F30D9100FC1EEF /* random_new_synced.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC84245918F30D9000FC1EEF /* random_new_synced.cpp */; };
-		EC84246918F30D9100FC1EEF /* random_new.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC84245B18F30D9100FC1EEF /* random_new.cpp */; };
 		EC84246A18F30D9100FC1EEF /* replay_helper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC84245D18F30D9100FC1EEF /* replay_helper.cpp */; };
 		EC84246C18F30D9100FC1EEF /* synced_checkup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC84246018F30D9100FC1EEF /* synced_checkup.cpp */; };
 		EC84246D18F30D9100FC1EEF /* synced_commands.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC84246218F30D9100FC1EEF /* synced_commands.cpp */; };
@@ -2200,8 +2195,6 @@
 		B597EC0F0FC0835900CE81F5 /* interface.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = interface.hpp; sourceTree = "<group>"; };
 		B597EC100FC0835900CE81F5 /* part.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = part.cpp; sourceTree = "<group>"; };
 		B597EC110FC0835900CE81F5 /* part.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = part.hpp; sourceTree = "<group>"; };
-		B597EC120FC0835900CE81F5 /* render.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = render.cpp; sourceTree = "<group>"; };
-		B597EC130FC0835900CE81F5 /* render.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = render.hpp; sourceTree = "<group>"; };
 		B597EC510FC08E0100CE81F5 /* canvas.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = canvas.cpp; sourceTree = "<group>"; };
 		B597EC520FC08E0100CE81F5 /* canvas.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = canvas.hpp; sourceTree = "<group>"; };
 		B597EC530FC08E0100CE81F5 /* typed_formula.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = typed_formula.hpp; sourceTree = "<group>"; };
@@ -2377,6 +2370,12 @@
 		EC02FD501E9D1AE90018C9DF /* canvas_private.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = canvas_private.hpp; sourceTree = "<group>"; };
 		EC04E34F1DA537F700025919 /* file_dialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = file_dialog.cpp; sourceTree = "<group>"; };
 		EC04E3501DA537F700025919 /* file_dialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = file_dialog.hpp; sourceTree = "<group>"; };
+		EC0680231EA920A300EEE03B /* random_deterministic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = random_deterministic.cpp; sourceTree = "<group>"; };
+		EC0680241EA920A300EEE03B /* random_deterministic.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = random_deterministic.hpp; sourceTree = "<group>"; };
+		EC0680251EA920A300EEE03B /* random_synced.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = random_synced.cpp; sourceTree = "<group>"; };
+		EC0680261EA920A300EEE03B /* random_synced.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = random_synced.hpp; sourceTree = "<group>"; };
+		EC0680271EA920A300EEE03B /* random.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = random.cpp; sourceTree = "<group>"; };
+		EC0680281EA920A300EEE03B /* random.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = random.hpp; sourceTree = "<group>"; };
 		EC08023A194D0A80009E0050 /* formula_manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = formula_manager.cpp; sourceTree = "<group>"; };
 		EC08023B194D0A80009E0050 /* formula_manager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = formula_manager.hpp; sourceTree = "<group>"; };
 		EC179B871E91475300B4178C /* variant_value.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = variant_value.cpp; sourceTree = "<group>"; };
@@ -2510,12 +2509,6 @@
 		EC74C11C197576F500B85A1A /* open.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = open.hpp; sourceTree = "<group>"; };
 		EC79D70C19548D5000EC7C1F /* game_cache_options.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game_cache_options.cpp; sourceTree = "<group>"; };
 		EC84245618F30D9000FC1EEF /* config_assign.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = config_assign.hpp; sourceTree = "<group>"; };
-		EC84245718F30D9000FC1EEF /* random_new_deterministic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = random_new_deterministic.cpp; sourceTree = "<group>"; };
-		EC84245818F30D9000FC1EEF /* random_new_deterministic.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = random_new_deterministic.hpp; sourceTree = "<group>"; };
-		EC84245918F30D9000FC1EEF /* random_new_synced.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = random_new_synced.cpp; sourceTree = "<group>"; };
-		EC84245A18F30D9000FC1EEF /* random_new_synced.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = random_new_synced.hpp; sourceTree = "<group>"; };
-		EC84245B18F30D9100FC1EEF /* random_new.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = random_new.cpp; sourceTree = "<group>"; };
-		EC84245C18F30D9100FC1EEF /* random_new.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = random_new.hpp; sourceTree = "<group>"; };
 		EC84245D18F30D9100FC1EEF /* replay_helper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = replay_helper.cpp; sourceTree = "<group>"; };
 		EC84245E18F30D9100FC1EEF /* replay_helper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = replay_helper.hpp; sourceTree = "<group>"; };
 		EC84246018F30D9100FC1EEF /* synced_checkup.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = synced_checkup.cpp; sourceTree = "<group>"; };
@@ -3061,12 +3054,12 @@
 				B55999C10EC62181008DD061 /* preferences_display.hpp */,
 				ECC84C1B1B973C5900A5F451 /* quit_confirmation.cpp */,
 				ECC84C1C1B973C5900A5F451 /* quit_confirmation.hpp */,
-				EC84245B18F30D9100FC1EEF /* random_new.cpp */,
-				EC84245C18F30D9100FC1EEF /* random_new.hpp */,
-				EC84245718F30D9000FC1EEF /* random_new_deterministic.cpp */,
-				EC84245818F30D9000FC1EEF /* random_new_deterministic.hpp */,
-				EC84245918F30D9000FC1EEF /* random_new_synced.cpp */,
-				EC84245A18F30D9000FC1EEF /* random_new_synced.hpp */,
+				EC0680231EA920A300EEE03B /* random_deterministic.cpp */,
+				EC0680241EA920A300EEE03B /* random_deterministic.hpp */,
+				EC0680251EA920A300EEE03B /* random_synced.cpp */,
+				EC0680261EA920A300EEE03B /* random_synced.hpp */,
+				EC0680271EA920A300EEE03B /* random.cpp */,
+				EC0680281EA920A300EEE03B /* random.hpp */,
 				EC1CB20619524AD600B0FA78 /* recall_list_manager.cpp */,
 				EC1CB20719524AD600B0FA78 /* recall_list_manager.hpp */,
 				B55999BB0EC62181008DD061 /* replay.cpp */,
@@ -4210,8 +4203,6 @@
 				B597EC0F0FC0835900CE81F5 /* interface.hpp */,
 				B597EC100FC0835900CE81F5 /* part.cpp */,
 				B597EC110FC0835900CE81F5 /* part.hpp */,
-				B597EC120FC0835900CE81F5 /* render.cpp */,
-				B597EC130FC0835900CE81F5 /* render.hpp */,
 			);
 			path = storyscreen;
 			sourceTree = "<group>";
@@ -4911,6 +4902,7 @@
 				EC3024DC1E8469050098D797 /* help_browser.cpp in Sources */,
 				B5599B7B0EC62181008DD061 /* config_cache.cpp in Sources */,
 				B5599B7D0EC62181008DD061 /* config.cpp in Sources */,
+				EC0680291EA920A300EEE03B /* random_deterministic.cpp in Sources */,
 				B54AC69D0FEA9E8F006F6FBD /* configuration.cpp in Sources */,
 				EC2F600D1A048E220018C9D6 /* configure_engine.cpp in Sources */,
 				EC67F7F11DB3144A0038337E /* font_config.cpp in Sources */,
@@ -4994,6 +4986,7 @@
 				62CC8E4C1771E7E100C16B75 /* game_config_manager.cpp in Sources */,
 				B5599B6B0EC62181008DD061 /* game_config.cpp in Sources */,
 				EC387E6C195AFB1F00FC0342 /* game_data.cpp in Sources */,
+				EC06802B1EA920A300EEE03B /* random.cpp in Sources */,
 				B5951A951013BB3400C10B66 /* game_delete.cpp in Sources */,
 				B5599B6A0EC62181008DD061 /* game_display.cpp in Sources */,
 				F419A1F414E21246002F9ADC /* game_end_exceptions.cpp in Sources */,
@@ -5162,9 +5155,6 @@
 				B5599B070EC62181008DD061 /* preprocessor.cpp in Sources */,
 				B52EE89E1213590500CFBDAB /* progress_bar.cpp in Sources */,
 				62CC8E7817B9063E00C16B75 /* pump.cpp in Sources */,
-				EC84246718F30D9100FC1EEF /* random_new_deterministic.cpp in Sources */,
-				EC84246818F30D9100FC1EEF /* random_new_synced.cpp in Sources */,
-				EC84246918F30D9100FC1EEF /* random_new.cpp in Sources */,
 				B54AC6DC0FEA9EB5006F6FBD /* rca.cpp in Sources */,
 				EC1CB20819524AD600B0FA78 /* recall_list_manager.cpp in Sources */,
 				B52EE91B12135AC300CFBDAB /* recall.cpp in Sources */,
@@ -5172,7 +5162,6 @@
 				EC48D74D17F3148300DE80BF /* recruitment.cpp in Sources */,
 				ECFB9FAC193BFB6E00146ED0 /* rect.cpp in Sources */,
 				B54AC6A00FEA9E8F006F6FBD /* registry.cpp in Sources */,
-				B597EC170FC0835900CE81F5 /* render.cpp in Sources */,
 				B59271FB10E9577800A13911 /* repeating_button.cpp in Sources */,
 				B5599B0C0EC62181008DD061 /* replay_controller.cpp in Sources */,
 				EC84246A18F30D9100FC1EEF /* replay_helper.cpp in Sources */,
@@ -5221,6 +5210,7 @@
 				B5599B080EC62181008DD061 /* string_utils.cpp in Sources */,
 				F4E4E0B11367241E001C7528 /* suppose_dead.cpp in Sources */,
 				EC84246C18F30D9100FC1EEF /* synced_checkup.cpp in Sources */,
+				EC06802A1EA920A300EEE03B /* random_synced.cpp in Sources */,
 				EC84246D18F30D9100FC1EEF /* synced_commands.cpp in Sources */,
 				EC84246E18F30D9100FC1EEF /* synced_context.cpp in Sources */,
 				ECDEAF77194FEA8500DB2F47 /* syncmp_handler.cpp in Sources */,
@@ -5491,9 +5481,6 @@
 				91E356741CACC6E000774252 /* playsingle_controller.cpp in Sources */,
 				91E356751CACC6E000774252 /* playturn.cpp in Sources */,
 				91E356761CACC6E000774252 /* playturn_network_adapter.cpp in Sources */,
-				91E356771CACC71A00774252 /* random_new.cpp in Sources */,
-				91E356781CACC71A00774252 /* random_new_deterministic.cpp in Sources */,
-				91E356791CACC71A00774252 /* random_new_synced.cpp in Sources */,
 				91E3567A1CACC71A00774252 /* recall_list_manager.cpp in Sources */,
 				91E3567B1CACC71A00774252 /* replay.cpp in Sources */,
 				91E3567C1CACC71A00774252 /* replay_controller.cpp in Sources */,
@@ -5764,7 +5751,6 @@
 				91A215801CAD797900927AEA /* controller.cpp in Sources */,
 				91A215811CAD797900927AEA /* interface.cpp in Sources */,
 				91A215821CAD797900927AEA /* part.cpp in Sources */,
-				91A215831CAD797900927AEA /* render.cpp in Sources */,
 				91A215841CAD797900927AEA /* filter.cpp in Sources */,
 				91A215851CAD884A00927AEA /* abilities.cpp in Sources */,
 				91A215861CAD884A00927AEA /* animation.cpp in Sources */,
