@@ -27,6 +27,7 @@ map_labels* get_current_labels();
 class context_manager {
 
 public:
+	using context_ptr = std::unique_ptr<map_context>;
 
 	bool is_active_transitions_hotkey(const std::string& item);
 
@@ -171,11 +172,6 @@ public:
 	void set_default_dir(const std::string& str);
 
 private:
-
-	/**
-	 * Replace the current map context and refresh accordingly
-	 */
-	void replace_map_context(map_context* new_mc);
 	/** init available random map generators */
 	void init_map_generators(const config& game_config);
 
@@ -190,12 +186,22 @@ private:
 		return *map_contexts_[current_context_index_];
 	}
 
-
 	/**
 	 * Add a map context. The controller assumes ownership.
 	 * @return the index of the added map context in the map_contexts_ array
 	 */
-	int add_map_context(map_context* mc);
+	template<typename... T>
+	int add_map_context(const T&... args);
+
+	int add_map_context_of(context_ptr&& mc);
+
+	/**
+	 * Replace the current map context and refresh accordingly
+	 */
+	template<typename... T>
+	void replace_map_context(const T&... args);
+
+	void replace_map_context_with(context_ptr&& mc);
 
 	/**
 	 * Creates a default map context object, used to ensure there is always at least one.
@@ -301,9 +307,8 @@ private:
 	/** Flag to rebuild terrain on every terrain change */
 	int auto_update_transitions_;
 
-
 	/** The currently opened map context object */
-	std::vector<map_context*> map_contexts_;
+	std::vector<context_ptr> map_contexts_;
 
 	/** Clipboard map_fragment -- used for copy-paste. */
 	map_fragment clipboard_;

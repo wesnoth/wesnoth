@@ -118,7 +118,7 @@ bool context_manager::is_active_transitions_hotkey(const std::string& item) {
 
 size_t context_manager::modified_maps(std::string& message) {
 	std::vector<std::string> modified;
-	for (map_context* mc : map_contexts_) {
+	for (auto& mc : map_contexts_) {
 		if (mc->modified()) {
 			if (!mc->get_filename().empty()) {
 				modified.push_back(mc->get_filename());
@@ -155,9 +155,6 @@ context_manager::~context_manager()
 {
 	for (map_generator* m : map_generators_) {
 		delete m;
-	}
-	for (map_context* mc : map_contexts_) {
-		delete mc;
 	}
 
 	// Restore default window title
@@ -708,53 +705,10 @@ bool context_manager::confirm_discard()
 	}
 }
 
-int context_manager::add_map_context(map_context* mc)
-{
-	map_contexts_.push_back(mc);
-	return map_contexts_.size() - 1;
-}
-
-void context_manager::create_default_context()
-{
-	if(saved_windows_.empty()) {
-
-		t_translation::terrain_code default_terrain =
-				t_translation::read_terrain_code(game_config::default_terrain);
-		const config& default_schedule = game_config_.find_child("editor_times", "id", "default");
-		map_context* mc = new map_context(editor_map(game_config_, 44, 33, default_terrain), gui_, true, default_schedule);
-		add_map_context(mc);
-	} else {
-		for (const std::string& filename : saved_windows_) {
-			map_context* mc = new map_context(game_config_, filename, gui_);
-			add_map_context(mc);
-		}
-		saved_windows_.clear();
-	}
-}
-
 void context_manager::fill_selection()
 {
 	perform_refresh(editor_action_paint_area(get_map().selection(),
 			get_selected_bg_terrain()));
-}
-
-void context_manager::close_current_context()
-{
-	if (!confirm_discard()) return;
-	map_context* current = map_contexts_[current_context_index_];
-	if (map_contexts_.size() == 1) {
-		create_default_context();
-		map_contexts_.erase(map_contexts_.begin());
-	} else if (current_context_index_ == static_cast<int>(map_contexts_.size()) - 1) {
-		map_contexts_.pop_back();
-		current_context_index_--;
-	} else {
-		map_contexts_.erase(map_contexts_.begin() + current_context_index_);
-	}
-	map_context_refresher(*this, *current);
-	delete current;
-
-	set_window_title();
 }
 
 void context_manager::save_all_maps(bool auto_save_windows)
@@ -889,15 +843,17 @@ void context_manager::load_map(const std::string& filename, bool new_context)
 	if (new_context && check_switch_open_map(filename)) return;
 	LOG_ED << "Load map: " << filename << (new_context ? " (new)" : " (same)") << "\n";
 	try {
-		std::unique_ptr<map_context> mc(new map_context(game_config_, filename, gui_));
-		if (mc->get_filename() != filename) {
-			if (new_context && check_switch_open_map(mc->get_filename())) return;
-		}
-		if (new_context) {
-			int new_id = add_map_context(mc.release());
-			switch_context(new_id);
-		} else {
-			replace_map_context(mc.release());
+		{
+			context_ptr mc(new map_context(game_config_, filename, gui_));
+			if (mc->get_filename() != filename) {
+				if (new_context && check_switch_open_map(mc->get_filename())) return;
+			}
+			if (new_context) {
+				int new_id = add_map_context_of(std::move(mc));
+				switch_context(new_id);
+			} else {
+				replace_map_context_with(std::move(mc));
+			}
 		}
 		if (get_map_context().is_embedded()) {
 			const std::string& msg = _("Loaded embedded map data");
@@ -943,10 +899,10 @@ void context_manager::new_map(int width, int height, const t_translation::terrai
 	const config& default_schedule = game_config_.find_child("editor_times", "id", "default");
 	editor_map m(game_config_, width, height, fill);
 	if (new_context) {
-		int new_id = add_map_context(new map_context(m, gui_, true, default_schedule));
+		int new_id = add_map_context(m, gui_, true, default_schedule);
 		switch_context(new_id);
 	} else {
-		replace_map_context(new map_context(m, gui_, true, default_schedule));
+		replace_map_context(m, gui_, true, default_schedule);
 	}
 }
 
@@ -955,10 +911,10 @@ void context_manager::new_scenario(int width, int height, const t_translation::t
 	const config& default_schedule = game_config_.find_child("editor_times", "id", "default");
 	editor_map m(game_config_, width, height, fill);
 	if (new_context) {
-		int new_id = add_map_context(new map_context(m, gui_, false, default_schedule));
+		int new_id = add_map_context(m, gui_, false, default_schedule);
 		switch_context(new_id);
 	} else {
-		replace_map_context(new map_context(m, gui_, false, default_schedule));
+		replace_map_context(m, gui_, false, default_schedule);
 	}
 }
 
@@ -968,6 +924,72 @@ void context_manager::reload_map()
 	get_map_context().set_needs_reload(false);
 	get_map_context().reset_starting_position_labels(gui_);
 	refresh_all();
+}
+
+//
+// Context manipulation
+//
+
+template<typename... T>
+int context_manager::add_map_context(const T&... args)
+{
+	map_contexts_.emplace_back(new map_context(args...));
+	return map_contexts_.size() - 1;
+}
+
+int context_manager::add_map_context_of(context_ptr&& mc)
+{
+	map_contexts_.emplace_back(std::move(mc));
+	return map_contexts_.size() - 1;
+}
+
+template<typename... T>
+void context_manager::replace_map_context(const T&... args)
+{
+	context_ptr new_mc(new map_context(args...));
+	replace_map_context_with(std::move(new_mc));
+}
+
+void context_manager::replace_map_context_with(context_ptr&& mc)
+{
+	map_context_refresher mcr(*this, *mc);
+	map_contexts_[current_context_index_].swap(mc);
+
+	set_window_title();
+}
+
+void context_manager::create_default_context()
+{
+	if(saved_windows_.empty()) {
+
+		t_translation::terrain_code default_terrain =
+				t_translation::read_terrain_code(game_config::default_terrain);
+		const config& default_schedule = game_config_.find_child("editor_times", "id", "default");
+		add_map_context(editor_map(game_config_, 44, 33, default_terrain), gui_, true, default_schedule);
+	} else {
+		for (const std::string& filename : saved_windows_) {
+			add_map_context(game_config_, filename, gui_);
+		}
+		saved_windows_.clear();
+	}
+}
+
+void context_manager::close_current_context()
+{
+	if (!confirm_discard()) return;
+	map_context_refresher(*this, get_map_context());
+
+	if (map_contexts_.size() == 1) {
+		create_default_context();
+		map_contexts_.erase(map_contexts_.begin());
+	} else if (current_context_index_ == static_cast<int>(map_contexts_.size()) - 1) {
+		map_contexts_.pop_back();
+		current_context_index_--;
+	} else {
+		map_contexts_.erase(map_contexts_.begin() + current_context_index_);
+	}
+
+	set_window_title();
 }
 
 void context_manager::switch_context(const int index, const bool force)
@@ -982,15 +1004,6 @@ void context_manager::switch_context(const int index, const bool force)
 	map_context_refresher mcr(*this, *map_contexts_[index]);
 	current_labels = &get_map_context().get_labels();
 	current_context_index_ = index;
-
-	set_window_title();
-}
-
-void context_manager::replace_map_context(map_context* new_mc)
-{
-	const std::unique_ptr<map_context> del(map_contexts_[current_context_index_]);
-	map_context_refresher mcr(*this, *new_mc);
-	map_contexts_[current_context_index_] = new_mc;
 
 	set_window_title();
 }
