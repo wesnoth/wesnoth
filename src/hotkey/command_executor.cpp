@@ -386,7 +386,7 @@ void command_executor::show_menu(const std::vector<config>& items_arg, int xloc,
 		const std::vector<std::string>& sub_menu_items = submenu->items();
 
 		std::transform(sub_menu_items.begin(), sub_menu_items.end(), std::back_inserter(sub_items),
-			[](const std::string s) { return config_of("id", s); }
+			[](const std::string& s) { return config_of("id", s); }
 		);
 
 		this->show_menu(sub_items, x, y, submenu->is_context(), gui);
