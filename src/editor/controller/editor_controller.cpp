@@ -656,8 +656,8 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 					//TODO mark the map as changed
 					sound::play_music_once(music_tracks_[index].id());
 					context_manager_->get_map_context().add_to_playlist(music_tracks_[index]);
-					std::vector<config> items;
-					items.emplace_back(config_of("id", "editor-playlist"));
+					std::vector<std::string> items;
+					items.emplace_back("editor-playlist");
 					std::shared_ptr<gui::button> b = gui_->find_menu_button("menu-playlist");
 					show_menu(items, b->location().x +1, b->location().y + b->height() +1, false, *gui_);
 					return true;
@@ -1006,7 +1006,7 @@ void editor_controller::show_help()
 	help::show_help(gui_->video(), "..editor");
 }
 
-void editor_controller::show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu, display& disp)
+void editor_controller::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& disp)
 {
 	if(context_menu) {
 		if(!context_manager_->get_map().on_board_with_border(gui().hex_clicked_on(xloc, yloc))) {
@@ -1015,8 +1015,7 @@ void editor_controller::show_menu(const std::vector<config>& items_arg, int xloc
 	}
 
 	std::vector<config> items;
-	for(const auto& c : items_arg) {
-		const std::string& id = c["id"];
+	for(const std::string& id : items_arg) {
 		const hotkey::hotkey_command& command = hotkey::get_hotkey_command(id);
 
 		if((can_execute_command(command) && (!context_menu || in_context_menu(command.id)))

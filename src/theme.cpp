@@ -556,18 +556,14 @@ theme::menu::menu(const config &cfg):
 	context_(cfg["is_context_menu"].to_bool(false)),
 	title_(cfg["title"].str() + cfg["title_literal"].str()),
 	tooltip_(cfg["tooltip"]), image_(cfg["image"]), overlay_(cfg["overlay"]),
-	items_()
+	items_(utils::split(cfg["items"]))
 {
-	for(const auto& item : utils::split(cfg["items"])) {
-		items_.emplace_back(config_of("id", item));
-	}
-
 	if (cfg["auto_tooltip"].to_bool() && tooltip_.empty() && items_.size() == 1) {
-		tooltip_ = hotkey::get_description(items_[0]["id"])
-		+ hotkey::get_names(items_[0]["id"]) +  "\n" + hotkey::get_tooltip(items_[0]["id"]);
+		tooltip_ = hotkey::get_description(items_[0])
+		+ hotkey::get_names(items_[0]) +  "\n" + hotkey::get_tooltip(items_[0]);
 	} else if (cfg["tooltip_name_prepend"].to_bool() && items_.size() == 1) {
-		tooltip_ = hotkey::get_description(items_[0]["id"])
-		+ hotkey::get_names(items_[0]["id"]) + "\n" + tooltip_;
+		tooltip_ = hotkey::get_description(items_[0])
+		+ hotkey::get_names(items_[0]) + "\n" + tooltip_;
 	}
 }
 

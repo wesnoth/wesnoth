@@ -15,6 +15,7 @@
 #include "hotkey/command_executor.hpp"
 #include "hotkey/hotkey_item.hpp"
 
+#include "config_assign.hpp"
 #include "gui/dialogs/lua_interpreter.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/screenshot_notification.hpp"
@@ -380,7 +381,15 @@ void command_executor::show_menu(const std::vector<config>& items_arg, int xloc,
 	if (submenu) {
 		int y,x;
 		SDL_GetMouseState(&x,&y);
-		this->show_menu(submenu->items(), x, y, submenu->is_context(), gui);
+
+		std::vector<config> sub_items;
+		const std::vector<std::string>& sub_menu_items = submenu->items();
+
+		std::transform(sub_menu_items.begin(), sub_menu_items.end(), std::back_inserter(sub_items),
+			[](const std::string s) { return config_of("id", s); }
+		);
+
+		this->show_menu(sub_items, x, y, submenu->is_context(), gui);
 	} else {
 		const hotkey::hotkey_command& cmd = hotkey::get_hotkey_command(items[res]["id"]);
 		hotkey::execute_command(cmd,this,res);
@@ -637,9 +646,9 @@ void command_executor_default::set_button_state()
 		std::shared_ptr<gui::button> button = disp.find_menu_button(menu.get_id());
 		if (!button) continue;
 		bool enabled = false;
-		for (const auto& command : menu.items()) {
+		for (const std::string& command : menu.items()) {
 
-			const hotkey::hotkey_command& command_obj = hotkey::get_hotkey_command(command["id"]);
+			const hotkey::hotkey_command& command_obj = hotkey::get_hotkey_command(command);
 			bool can_execute = can_execute_command(command_obj);
 			if (can_execute) {
 				enabled = true;
