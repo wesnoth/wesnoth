@@ -361,15 +361,15 @@ bool play_controller::hotkey_handler::can_execute_command(const hotkey::hotkey_c
 	}
 }
 
-
-static void trim_items(std::vector<config>& newitems) {
-	if (newitems.size() > 5) {
+static void trim_items(std::vector<config>& newitems)
+{
+	if(newitems.size() > 5) {
 		std::vector<config> subitems;
-		subitems.push_back(newitems[0]);
-		subitems.push_back(newitems[1]);
-		subitems.push_back(newitems[newitems.size() / 3]);
-		subitems.push_back(newitems[newitems.size() * 2 / 3]);
-		subitems.push_back(newitems.back());
+		subitems.push_back(std::move(newitems[0]));
+		subitems.push_back(std::move(newitems[1]));
+		subitems.push_back(std::move(newitems[newitems.size() / 3]));
+		subitems.push_back(std::move(newitems[newitems.size() * 2 / 3]));
+		subitems.push_back(std::move(newitems.back()));
 		newitems = subitems;
 	}
 }
