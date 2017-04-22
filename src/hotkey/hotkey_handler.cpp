@@ -376,67 +376,55 @@ static void trim_items(std::vector<T>& newitems)
 	}
 }
 
-void play_controller::hotkey_handler::expand_autosaves(std::vector<config>& items)
+void play_controller::hotkey_handler::expand_autosaves(std::vector<config>& items, int i)
 {
 	const compression::format comp_format = preferences::save_compression_format();
 
 	savenames_.clear();
-	for(unsigned int i = 0; i < items.size(); ++i) {
-		if(items[i]["id"] != "AUTOSAVES") {
-			savenames_.emplace_back();
-			continue;
+	savenames_.resize(i);
+
+	auto pos = items.erase(items.begin() + i);
+	std::vector<config> newitems;
+	std::vector<std::string> newsaves;
+
+	const std::string& start_name = saved_game_.classification().label;
+
+	for(unsigned int turn = play_controller_.turn(); turn != 0; turn--) {
+		const std::string name = formatter() << start_name << "-" << _("Auto-Save") << turn;
+
+		if(savegame::save_game_exists(name, comp_format)) {
+			newsaves.emplace_back(name + compression::format_extension(comp_format));
+			newitems.emplace_back(config_of("label", _("Back to Turn ") + std::to_string(turn)));
 		}
-
-		items.erase(items.begin() + i);
-		std::vector<config> newitems;
-		std::vector<std::string> newsaves;
-
-		const std::string& start_name = saved_game_.classification().label;
-
-		for(unsigned int turn = play_controller_.turn(); turn != 0; turn--) {
-			const std::string name = formatter() << start_name << "-" << _("Auto-Save") << turn;
-
-			if(savegame::save_game_exists(name, comp_format)) {
-				newsaves.emplace_back(name + compression::format_extension(comp_format));
-				newitems.emplace_back(config_of("label", _("Back to Turn ") + std::to_string(turn)));
-			}
-		}
-
-		if(savegame::save_game_exists(start_name, comp_format)) {
-			newsaves.emplace_back(start_name + compression::format_extension(comp_format));
-			newitems.emplace_back(config_of("label", _("Back to Start")));
-		}
-
-		// Make sure list doesn't get too long: keep top two, midpoint and bottom.
-		trim_items(newitems);
-		trim_items(newsaves);
-
-		items.insert(items.begin() + i, newitems.begin(), newitems.end());
-		savenames_.insert(savenames_.end(), newsaves.begin(), newsaves.end());
-		break;
 	}
+
+	if(savegame::save_game_exists(start_name, comp_format)) {
+		newsaves.emplace_back(start_name + compression::format_extension(comp_format));
+		newitems.emplace_back(config_of("label", _("Back to Start")));
+	}
+
+	// Make sure list doesn't get too long: keep top two, midpoint and bottom.
+	trim_items(newitems);
+	trim_items(newsaves);
+
+	items.insert(pos, newitems.begin(), newitems.end());
+	savenames_.insert(savenames_.end(), newsaves.begin(), newsaves.end());
 }
 
-void play_controller::hotkey_handler::expand_wml_commands(std::vector<config>& items)
+void play_controller::hotkey_handler::expand_wml_commands(std::vector<config>& items, int i)
 {
 	wml_commands_.clear();
-	for(unsigned int i = 0; i < items.size(); ++i) {
-		if(items[i]["id"] != "wml") {
-			// Pad the commands with null pointers (keeps the indices of items and wml_commands_ synced).
-			wml_commands_.emplace_back(nullptr);
-			continue;
-		}
+	// Pad the commands with null pointers (keeps the indices of items and wml_commands_ synced).
+	wml_commands_.resize(i);
 
-		items.erase(items.begin() + i);
-		std::vector<config> newitems;
+	auto pos = items.erase(items.begin() + i);
+	std::vector<config> newitems;
 
-		gamestate().get_wml_menu_items().get_items(mouse_handler_.get_last_hex(), wml_commands_, newitems,
-			gamestate(), gamestate().gamedata_, gamestate().board_.units_);
+	gamestate().get_wml_menu_items().get_items(mouse_handler_.get_last_hex(), wml_commands_, newitems,
+		gamestate(), gamestate().gamedata_, gamestate().board_.units_);
 
-		// Replace this placeholder entry with available menu items.
-		items.insert(items.begin() + i, newitems.begin(), newitems.end());
-		break;
-	}
+	// Replace this placeholder entry with available menu items.
+	items.insert(pos, newitems.begin(), newitems.end());
 }
 
 void play_controller::hotkey_handler::show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu, display& disp)
@@ -457,8 +445,14 @@ void play_controller::hotkey_handler::show_menu(const std::vector<config>& items
 	}
 
 	// Add special non-hotkey items to the menu and remember their indices
-	expand_autosaves(items);
-	expand_wml_commands(items);
+	// Iterate in reverse to avoid also iterating over the new inserted items
+	for(int i = items.size() - 1; i >= 0; i--) {
+		if(items[i]["id"] == "AUTOSAVES") {
+			expand_autosaves(items, i);
+		} else if(items[i]["id"] == "wml") {
+			expand_wml_commands(items, i);
+		}
+	}
 
 	if(items.empty()) {
 		return;
