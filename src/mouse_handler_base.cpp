@@ -220,12 +220,13 @@ bool mouse_handler_base::right_click_show_menu(int /*x*/, int /*y*/, const bool 
 
 bool mouse_handler_base::left_click(int x, int y, const bool /*browse*/)
 {
-	if(tooltips::click(x,y))
-		return true;
+	//if (tooltips::click(x, y)) 		
+			//return true;
 
 	// clicked on a hex on the minimap? then initiate minimap scrolling
 	const map_location& loc = gui().minimap_location_on(x, y);
 	minimap_scrolling_ = false;
+
 	if(loc.valid()) {
 		minimap_scrolling_ = true;
 		last_hex_ = loc;
@@ -266,11 +267,16 @@ void mouse_handler_base::mouse_wheel(int scrollx, int scrolly, bool browse)
 	if (movex != 0 || movey != 0) {
 		CKey pressed;
 		// Alt + mousewheel do an 90° rotation on the scroll direction
-		if (pressed[SDLK_LALT] || pressed[SDLK_RALT]) {
-			gui().scroll(-movey,-movex);
-		} else {
-			gui().scroll(-movex,-movey);
+		if (pressed[SDLK_LALT]) {
+			gui().scroll(-movey, -movex);
 		}
+		else if (pressed[SDLK_RALT]) {
+			gui().scroll(-movex, -movey);
+		}
+		else {
+			gui().set_zoom(movey / 2);
+		}
+
 	}
 
 	if (scrollx < 0) {

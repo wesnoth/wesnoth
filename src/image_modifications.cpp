@@ -386,11 +386,6 @@ surface crop_modification::operator()(const surface& src) const
 	return temp;
 }
 
-const SDL_Rect& crop_modification::get_slice() const
-{
-	return slice_;
-}
-
 surface blit_modification::operator()(const surface& src) const
 {
 	if(x_ >= src->w) {
@@ -436,21 +431,6 @@ surface blit_modification::operator()(const surface& src) const
 	return nsrc;
 }
 
-const surface& blit_modification::get_surface() const
-{
-	return surf_;
-}
-
-int blit_modification::get_x() const
-{
-	return x_;
-}
-
-int blit_modification::get_y() const
-{
-	return y_;
-}
-
 surface mask_modification::operator()(const surface& src) const
 {
 	if(src->w == mask_->w &&  src->h == mask_->h && x_ == 0 && y_ == 0)
@@ -459,21 +439,6 @@ surface mask_modification::operator()(const surface& src) const
 	surface new_mask = create_neutral_surface(src->w, src->h);
 	sdl_blit(mask_, nullptr, new_mask, &r);
 	return mask_surface(src, new_mask);
-}
-
-const surface& mask_modification::get_mask() const
-{
-	return mask_;
-}
-
-int mask_modification::get_x() const
-{
-	return x_;
-}
-
-int mask_modification::get_y() const
-{
-	return y_;
 }
 
 surface light_modification::operator()(const surface& src) const {
@@ -488,11 +453,6 @@ surface light_modification::operator()(const surface& src) const {
 	return light_surface(src, nsurf);;
 }
 
-const surface& light_modification::get_surface() const
-{
-	return surf_;
-}
-
 surface scale_modification::operator()(const surface& src) const
 {
 	std::pair<int,int> sz = calculate_size(src);
@@ -502,16 +462,6 @@ surface scale_modification::operator()(const surface& src) const
 	} else {
 		return scale_surface(src, sz.first, sz.second);
 	}
-}
-
-int scale_modification::get_w() const
-{
-	return w_;
-}
-
-int scale_modification::get_h() const
-{
-	return h_;
 }
 
 std::pair<int,int> scale_exact_modification::calculate_size(const surface& src) const
@@ -611,11 +561,6 @@ surface o_modification::operator()(const surface& src) const
 	return nsurf;
 }
 
-float o_modification::get_opacity() const
-{
-	return opacity_;
-}
-
 surface cs_modification::operator()(const surface& src) const
 {
 	return(
@@ -625,55 +570,14 @@ surface cs_modification::operator()(const surface& src) const
 	);
 }
 
-int cs_modification::get_r() const
-{
-	return r_;
-}
-
-int cs_modification::get_g() const
-{
-	return g_;
-}
-
-int cs_modification::get_b() const
-{
-	return b_;
-}
-
 surface blend_modification::operator()(const surface& src) const
 {
 	return blend_surface(src, a_, color_t(r_, g_, b_));
-
-}
-
-int blend_modification::get_r() const
-{
-	return r_;
-}
-
-int blend_modification::get_g() const
-{
-	return g_;
-}
-
-int blend_modification::get_b() const
-{
-	return b_;
-}
-
-float blend_modification::get_a() const
-{
-	return a_;
 }
 
 surface bl_modification::operator()(const surface& src) const
 {
 	return blur_alpha_surface(src, depth_);
-}
-
-int bl_modification::get_depth() const
-{
-	return depth_;
 }
 
 surface background_modification::operator()(const surface &src) const
@@ -687,10 +591,6 @@ surface background_modification::operator()(const surface &src) const
 	return ret;
 }
 
-const color_t& background_modification::get_color() const
-{
-	return color_;
-}
 
 surface swap_modification::operator()(const surface &src) const
 {
