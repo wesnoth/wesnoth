@@ -105,7 +105,7 @@ struct end_level_data
 	void read(const config& cfg);
 
 	config to_config() const;
-	config to_config_full() const; //< Includes the transient data
+	config to_config_full() const; ///< Includes the transient data
 };
 inline void throw_quit_game_exception()
 {
