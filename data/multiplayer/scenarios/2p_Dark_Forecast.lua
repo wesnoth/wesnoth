@@ -222,7 +222,6 @@ local function place_units(unittypes, x, y)
 					flat = 1,
 					sand = 2,
 					forest = 2,
-					impassable = 3,
 					unwalkable = 3,
 					deep_water = 3,
 				}
