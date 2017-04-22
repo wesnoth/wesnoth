@@ -102,7 +102,7 @@ void display_chat_manager::add_chat_message(const time_t& time, const std::strin
 	try {
 		// We've had a joker who send an invalid utf-8 message to crash clients
 		// so now catch the exception and ignore the message.
-		msg = my_disp_.video().faked() ? "" : font::word_wrap_text(msg,font::SIZE_SMALL,my_disp_.map_outside_area().w*3/4);
+		msg = my_disp_.video().faked() ? "" : font::word_wrap_text(msg,font::SIZE_NORMAL,my_disp_.map_outside_area().w*3/4);
 	} catch (utf8::invalid_utf8_exception&) {
 		ERR_NG << "Invalid utf-8 found, chat message is ignored." << std::endl;
 		return;
@@ -151,7 +151,7 @@ void display_chat_manager::add_chat_message(const time_t& time, const std::strin
 	const SDL_Rect rect = my_disp_.map_outside_area();
 
 	font::floating_label spk_flabel(message_complete.str());
-	spk_flabel.set_font_size(font::SIZE_SMALL);
+	spk_flabel.set_font_size(font::SIZE_NORMAL);
 	spk_flabel.set_color(speaker_color);
 	spk_flabel.set_position(rect.x + chat_message_x, rect.y + ypos);
 	spk_flabel.set_clip_rect(rect);
@@ -163,7 +163,7 @@ void display_chat_manager::add_chat_message(const time_t& time, const std::strin
 	int speaker_handle = font::add_floating_label(spk_flabel);
 
 	font::floating_label msg_flabel(message_str.str());
-	msg_flabel.set_font_size(font::SIZE_SMALL);
+	msg_flabel.set_font_size(font::SIZE_NORMAL);
 	msg_flabel.set_color(message_color);
 	msg_flabel.set_position(rect.x + chat_message_x + font::get_floating_label_rect(speaker_handle).w,
 	rect.y + ypos);
