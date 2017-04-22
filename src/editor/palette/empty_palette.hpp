@@ -72,7 +72,6 @@ public:
 	virtual const std::vector<item_group>& get_groups() const override { return empty_; }
 
 	/** Menu expanding for palette group list */
-	virtual void expand_palette_groups_menu(std::vector< std::pair< std::string, std::string> >& /*items*/,int) override {}
 	virtual void expand_palette_groups_menu(std::vector< config> & /*items*/,int) override {}
 
     //item

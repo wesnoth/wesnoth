@@ -99,24 +99,6 @@ template bool editor_palette<unit_type>::scroll_up();
 template bool editor_palette<overlay>::scroll_up();
 
 template<class Item>
-void editor_palette<Item>::expand_palette_groups_menu(std::vector< std::pair< std::string, std::string> >& items, int i)
-{
-	const std::vector<item_group>& item_groups = get_groups();
-
-	for (size_t mci = 0; mci < item_groups.size(); ++mci) {
-		std::string groupname = item_groups[mci].name;
-		if (groupname.empty()) {
-			groupname = _("(Unknown Group)");
-		}
-		const std::string& img = item_groups[mci].icon;
-		items.push_back(std::pair<std::string, std::string>( img, groupname));
-	}
-}
-template void editor_palette<t_translation::terrain_code>::expand_palette_groups_menu(std::vector< std::pair< std::string, std::string> >& items, int /*i*/);
-template void editor_palette<unit_type>::expand_palette_groups_menu(std::vector< std::pair< std::string, std::string> >& items, int /*i*/);
-template void editor_palette<overlay>::expand_palette_groups_menu(std::vector< std::pair< std::string, std::string> >& items, int /*i*/);
-
-template<class Item>
 bool editor_palette<Item>::can_scroll_up()
 {
 	return (items_start_ != 0);

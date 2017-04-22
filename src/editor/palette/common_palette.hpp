@@ -76,7 +76,6 @@ public:
 
 	/** Menu expanding for palette group list */
 	virtual void expand_palette_groups_menu(std::vector<config>& items, int i) = 0;
-	virtual void expand_palette_groups_menu(std::vector< std::pair< std::string, std::string> >& items, int i) = 0;
 
     //item
 	virtual int num_items() = 0;
