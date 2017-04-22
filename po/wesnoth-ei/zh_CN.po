@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-03-23 08:11+0100\n"
-"PO-Revision-Date: 2015-02-11 23:10+0800\n"
+"POT-Creation-Date: 2017-03-23 08:40+0100\n"
+"PO-Revision-Date: 2017-03-26 22:51+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -16,12 +16,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 1.7.4\n"
+"X-Generator: Poedit 1.8.12\n"
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:11
-#, fuzzy
-#| msgid "The Eastern Invasion"
 msgid "Eastern Invasion"
 msgstr "东部入侵"
 
@@ -32,10 +30,8 @@ msgstr "EI"
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:16
-#, fuzzy
-#| msgid "(Easy)"
 msgid "Easy"
-msgstr "（容易）"
+msgstr "容易"
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:16
@@ -44,10 +40,8 @@ msgstr "矛兵"
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:17
-#, fuzzy
-#| msgid "(Normal)"
 msgid "Normal"
-msgstr "（普通）"
+msgstr "普通"
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:17
@@ -56,10 +50,8 @@ msgstr "剑士"
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:18
-#, fuzzy
-#| msgid "(Challenging)"
 msgid "Challenging"
-msgstr "（挑战）"
+msgstr "挑战"
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:18
@@ -110,15 +102,13 @@ msgstr "插图和图形设计"
 
 #. [lua]: wml_actions.bandit_village_capture
 #: data/campaigns/Eastern_Invasion/lua/bandits.lua:83
-#, fuzzy
-#| msgid "They’re here!"
 msgid "They're here!"
 msgstr "它们来了！"
 
 #. [lua]: wml_actions.bandit_village_capture
 #: data/campaigns/Eastern_Invasion/lua/bandits.lua:90
 msgid "No outlaws in this village."
-msgstr "这个村庄里没有强盗。"
+msgstr "此村庄里没有流寇。"
 
 #. [scenario]: id=01_The_Outpost
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:5
@@ -474,13 +464,13 @@ msgid ""
 "This outpost is already lost. We must defeat this evil if Wesnoth is to "
 "survive. Now, come on, we do not have much time to spare!"
 msgstr ""
-"这哨所已经丢了。若要让韦诺存在于世，我们必须击败这邪恶力量。现在赶快，我们没"
-"有多余的时间了！"
+"这哨所已经守不住了。若要让韦诺存在于世，我们必须击败这邪恶力量。现在赶快，我"
+"们没有多余的时间了！"
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:436
 msgid "Move Gweddry to the trapdoor"
-msgstr "把格温德利移动到活板门处"
+msgstr "将格温德利移动到活板门处"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:480
@@ -524,7 +514,7 @@ msgstr "努坦"
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:147
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:358
 msgid "Move Gweddry to the tunnel exit"
-msgstr "把格温德利移动到隧道出口处"
+msgstr "将格温德利移动到隧道出口处"
 
 #. [note]
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:168
@@ -780,7 +770,7 @@ msgstr "戈鲁嘎-哈"
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:114
 msgid "Defeat enemy leader"
-msgstr "击败敌军领袖"
+msgstr "击败敌军首领"
 
 #. [objective]: condition=lose
 #: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:126
@@ -881,7 +871,7 @@ msgstr "纳法加"
 msgid ""
 "Your Warlordship, I am the only assassin left! Do you want me to go poison "
 "their leader?"
-msgstr "阁下，我是唯一剩下的刺客！您希望我去让他们的领袖中毒吗？"
+msgstr "阁下，我是唯一剩下的刺客！您希望我去让他们的首领中毒吗？"
 
 #. [message]: speaker=Gruga-Har
 #: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:253
@@ -953,7 +943,7 @@ msgstr "玛尔-特纳拉德"
 #: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:103
 #: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:107
 msgid "Defeat either enemy leader"
-msgstr "击败任一敌军领袖"
+msgstr "击败任一敌军首领"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:134
@@ -1257,21 +1247,19 @@ msgstr "拉那-斯卡尔"
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:110
 #, fuzzy
-#| msgid "Find the outlaw leader and defeat him"
 msgid "Find the outlaw leader"
 msgstr "找到强盗首领并击败他"
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:117
 #, fuzzy
-#| msgid "Shodrano"
 msgid "Kill Shodrano"
 msgstr "朔德拉诺"
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:128
 msgid "Defeat the undead leader"
-msgstr "击败亡灵领袖"
+msgstr "击败亡灵首领"
 
 #. [objective]: condition=lose
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:146
@@ -1592,10 +1580,6 @@ msgstr "我们来到大河边了。是就地渡河，还是去找个浅滩？"
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:149
 #, fuzzy
-#| msgid ""
-#| "We must cross here. The undead are chasing us, and their hordes are much "
-#| "too great for us to defeat. Reinforcements for the undead will arrive "
-#| "soon. We must be across the river before that happens."
 msgid ""
 "We must cross here. The undead are chasing us, and their hordes are much too "
 "great for us to defeat. We've haven't faced even a small part of their force "
@@ -1709,7 +1693,7 @@ msgstr "玛尔-昂-卡拉德"
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:79
 msgid "Defeat the enemy leader"
-msgstr "击败敌军领袖"
+msgstr "击败敌军首领"
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:114
@@ -1936,7 +1920,7 @@ msgstr "普罗克-巴克"
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:169
 msgid "Defeat all enemy leaders"
-msgstr "击败所有敌军领袖"
+msgstr "击败所有敌军首领"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:210
@@ -2099,12 +2083,12 @@ msgstr "克拉伽克"
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:81
 msgid "Defeat the enemy leaders"
-msgstr "击败敌军领袖"
+msgstr "击败敌军首领"
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:91
 msgid "Move Dacyn to the stronghold"
-msgstr "把格温德利移动到要塞"
+msgstr "将格温德利移动到要塞里"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:148
@@ -2175,7 +2159,7 @@ msgstr "太好了。我马上开始研究。"
 #. [message]: speaker=narrator
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:284
 msgid "Some time later..."
-msgstr ""
+msgstr "过了一会儿……"
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:305
@@ -2506,9 +2490,6 @@ msgstr "摧毁桥梁或击败所有敌人"
 #. [note]
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:174
 #, fuzzy
-#| msgid ""
-#| "Note: every unit not south of the bridge when it is destroyed will be "
-#| "lost (including non-recalled units)"
 msgid ""
 "Every unit not south of the bridge when it is destroyed will be lost "
 "(including non-recalled units)"
@@ -2782,7 +2763,7 @@ msgstr "科纳德二世"
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/14_Approaching_Weldyn.cfg:128
 msgid "Move Gweddry to Weldyn castle"
-msgstr "把格温德利移动到维尔帝城堡"
+msgstr "将格温德利移动到维尔帝城堡里"
 
 #. [objective]: condition=lose
 #: data/campaigns/Eastern_Invasion/scenarios/14_Approaching_Weldyn.cfg:144
@@ -3574,7 +3555,6 @@ msgstr "韦诺的白银时代由此开始。史学家们将此称为大重建…
 #. [unit_type]: id=Bone Knight, race=undead
 #: data/campaigns/Eastern_Invasion/units/Bone_Knight.cfg:5
 #, fuzzy
-#| msgid "Mounted Fighter"
 msgid "Bone Knight"
 msgstr "骠骑战士"
 
@@ -3814,23 +3794,3 @@ msgstr "我不适合用这个装备！给其他人试试。"
 #: data/campaigns/Eastern_Invasion/utils/macros.cfg:67
 msgid "Holy Amulet"
 msgstr "神圣护身符"
-
-#~ msgid "greatsword"
-#~ msgstr "巨剑"
-
-#~ msgid "morning star"
-#~ msgstr "晨星之锤"
-
-#~ msgid "sword"
-#~ msgstr "剑"
-
-#~ msgid "I summon from the depths of the river beasts to destroy you!"
-#~ msgstr "我从大河深处召唤而来的野兽会摧毁你们！"
-
-#~ msgid "Argh! I’m dead! Well, dwarves are still the best!"
-#~ msgstr "啊！我要死了！呵，矮人还是最强的！"
-
-#~ msgid ""
-#~ "There is a great fortune in this chest of treasure! I can count two "
-#~ "hundred pieces of gold."
-#~ msgstr "在这个藏宝箱里有很多财宝！我点到了两百枚金币。"

@@ -1,65 +1,67 @@
-# #-#-#-#-#  wesnoth-ai.cpp.pot (PACKAGE VERSION)  #-#-#-#-#
-# Chinese translations for PACKAGE package.
-# Copyright (C) 2013 Wesnoth development team
-# This file is distributed under the same license as the PACKAGE package.
+# The Battle for Wesnoth - Simplified Chinese Translations
+# Copyright (C) 2005-2017 Wesnoth development team
+# This file is distributed under the same license as the Battle for Wesnoth package.
 # Automatically generated, 2013.
+# CloudiDust <cloudidust@gmail.com>, 2015.
+# Brian lee <haiyuan.2007@gmail.com>, 2016.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-03-23 08:11+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"POT-Creation-Date: 2017-03-23 08:40+0100\n"
+"PO-Revision-Date: 2016-12-12 12:52+0800\n"
+"Last-Translator: Brian lee <haiyuan.2007@gmail.com>\n"
+"Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"#-#-#-#-#  wesnoth-ai.cpp.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth-ai.wml.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"Plural-Forms: nplurals=2; plural=n>1;\n"
+"X-Generator: Poedit 1.5.7\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
 msgid "Multiplayer_AI^Default AI (RCA)"
-msgstr ""
+msgstr "默认AI（RCA）"
 
 #. [ai]: id=experimental_ai
 #: data/ai/ais/ai_generic_rush.cfg:10
 msgid "Multiplayer_AI^Experimental AI"
-msgstr ""
+msgstr "试验性AI"
 
 #. [ai]: id=ai_default_rca_alternate_recruiting
 #: data/ai/dev/ai_default_rca_alternate_recruiting.cfg:10
+#, fuzzy
 msgid "Multiplayer_AI^Dev AI: Default AI (RCA) with Alternate Recruiting"
-msgstr ""
+msgstr "开发AI：默认+旧征募规则"
 
 #. [ai]: id=formula_ai # id is needed to uniquely identify a MP AI, it is not needed in the scenario AI
 #: data/ai/dev/formula_ai.cfg:10
 msgid "Multiplayer_AI^Dev AI: Default + Experimental Recruitment (Formula AI)"
-msgstr ""
+msgstr "多人游戏_AI^Dev AI:默认 + 实验性招募(Formula AI)"
 
 #. [ai]: id=formula_ai_poisoning
 #: data/ai/dev/formula_ai_poisoning.cfg:9
 msgid "Multiplayer_AI^Dev AI: Default + Poisoning (Formula AI)"
-msgstr ""
+msgstr "多人游戏_AI^Dev AI: Default + 中毒  (Formula AI)"
 
 #. [ai]: id=idle_ai
 #: data/ai/dev/idle_ai.cfg:4
 msgid "Multiplayer_AI^Dev AI: Idle AI"
-msgstr ""
+msgstr "多人游戏_AI^Dev AI: 空闲 AI"
 
 #. [test]: id=The_Elves_Besieged
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:5
 msgid "The Elves Besieged"
-msgstr ""
+msgstr "精灵受困"
 
 #. [side]: type=Spearman, id=Konrad
 #. [unit]: type=Spearman, id=Konrad
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:34
 #: data/ai/micro_ais/scenarios/patrols.cfg:92
 msgid "Konrad"
-msgstr ""
+msgstr "科纳德"
 
 #. [side]: type=Spearman, id=Konrad
 #. [side]: type=Elvish Champion, id=Galdrad
@@ -68,17 +70,17 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:152
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:172
 msgid "Rebels"
-msgstr ""
+msgstr "反抗势力"
 
 #. [unit]: id=Delfador, type=Elder Mage
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:49
 msgid "Delfador"
-msgstr ""
+msgstr "黎伐多"
 
 #. [side]: type=Orcish Warlord, id=Urug-Telfar
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:86
 msgid "Urug-Telfar"
-msgstr ""
+msgstr "乌鲁戈-特尔法"
 
 #. [side]: id=Vanak, type=Orcish Ruler
 #. [side]: type=Orcish Warlord, id=Urug-Telfar
@@ -89,39 +91,39 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:130
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:24
 msgid "Orcs"
-msgstr ""
+msgstr " 兽人"
 
 #. [side]: type=Orcish Warlord, id=Knafa-Tan
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:105
 msgid "Knafa-Tan"
-msgstr ""
+msgstr "克纳法-坦"
 
 #. [side]: type=Orcish Warlord, id=Maga-Knafa
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:123
 msgid "Maga-Knafa"
-msgstr ""
+msgstr "马加-克纳法"
 
 #. [side]: type=Elvish Champion, id=Galdrad
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:142
 msgid "Galdrad"
-msgstr ""
+msgstr "伽尔德拉德"
 
 #. [side]: type=Elvish Shyde, id=Chantal
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:159
 msgid "Chantal"
-msgstr ""
+msgstr "香黛儿"
 
 #. [message]: speaker=Konrad
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:209
 msgid ""
 "Master Delfador! Look, there are orcs coming from all directions! What shall "
 "we do?"
-msgstr ""
+msgstr "主人黎伐多！看 ！兽人们正从所有的方向过来了！我们该怎么做？"
 
 #. [message]: speaker=Delfador
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:213
 msgid "There are too many to fight, far too many. We must escape!"
-msgstr ""
+msgstr "太多了，我们必须逃！"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:216
@@ -137,59 +139,61 @@ msgid ""
 "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
 "span> at http://wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
+"剧本再现，主要战役王座继承者之精灵受困,AI 正控制科纳德一方。目标是移动科纳德"
+"到西北的指示牌。同时保持科纳德和黎伐多生还。同样的AI在场景保卫 Unit中被使用"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:222
 msgid "Move Konrad here"
-msgstr ""
+msgstr "移动科纳德到这儿"
 
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:238
 msgid "Very well, we have made it this far! But where do we go next?"
-msgstr ""
+msgstr "太棒了，我们走了这么远了，但下一步我们去哪？"
 
 #. [message]: speaker=Delfador
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:243
 msgid ""
 "In HttT, we would travel north now, and try to make it to the Isle of "
 "Alduin. But for this demo campaign, we'll call it good here."
-msgstr ""
+msgstr "在HttT中，现在我们需要往北走，试着去安度云岛。但我们假装这儿不错"
 
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:268
 msgid "I... I don’t think I can make it anymore."
-msgstr ""
+msgstr "我。。。我快撑不住了。"
 
 #. [message]: speaker=Delfador
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:272
 msgid "Prince... you must keep fighting! Nooooooo!"
-msgstr ""
+msgstr "王子！你要挺住继续战斗！不！"
 
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:276
 msgid "It is over. I am doomed..."
-msgstr ""
+msgstr "结束了。我要死了。。。"
 
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:290
 msgid "I have... have failed in my duty to protect the prince! I am defeated."
-msgstr ""
+msgstr "我保护王子的职责失败了！我被打败了。"
 
 #. [message]: speaker=Konrad
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:294
 msgid "Don’t die, Delfador! Please, you have to stay alive!"
-msgstr ""
+msgstr "不要逝去，黎伐多！请必须活着！"
 
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:298
 msgid "Ugh!"
-msgstr ""
+msgstr "啊"
 
 #. [message]: speaker=Delfador
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:309
 msgid ""
 "Oh, no! We have run out of time, they have arrived with reinforcements..."
-msgstr ""
+msgstr "不，我们已经用光了时间，他们援军已经到了。。。"
 
 #: data/ai/micro_ais/scenarios/animals.cfg:4
 msgid ""
@@ -215,6 +219,19 @@ msgid ""
 "Wolves Multipack AI (used in a different scenario), this Wolves AI combines "
 "all wolves of the side in the same pack."
 msgstr ""
+"<u>General</u>: 设定这些AI来模拟这些动物在真实生活中如何行动。 这些包括他们是"
+"动物，意味着他们不是特别聪明。狼通常群体狩猎，但很容易靠近的猎物分散注意力。"
+"它们也很不错，不怎么围攻鹿。大部分时候，这是故意的。\n"
+"\n"
+"<u>熊 (被邪灵食尸鬼代替), 蜘蛛和 雪人</u> 大部分仅仅游荡在地图各自的部分。它"
+"们不参与其它人的事情（包括狗）但被逼绝境时也不互相攻击。它们攻击其它，更弱小"
+"的动物（鹿，等），如果这些动物在它们范围。\n"
+"\n"
+"<u>狼群</u>群体捕猎。它们活跃的追捕最近的鹿（只要它呆在森林里面）并且试图逼它"
+"到绝境（但不经常成功），但容易被其它靠近范围的猎物分心。狼群尝试远离熊、蜘"
+"蛛、狗和雪人的范围，除了他们开始准备袭击。如果你让他们移动足够远，他们也会意"
+"识到攻击tusklet是不健康的。当没有鹿留下时，他们随意闲逛。注意，不同于狼群多群"
+"体AI(被使用在不同场景），这些狼群AI包括了在同样群体一方的所有狼群。"
 
 #: data/ai/micro_ais/scenarios/animals.cfg:12
 msgid ""
@@ -251,13 +268,31 @@ msgid ""
 "threat to each other and leave each other alone, demonstrating the enormous "
 "self control of a well trained sheep dog."
 msgstr ""
+"每个<u>鹿群（被吸血蝙蝠替代）</u> 在森林范围内游荡，但当敌人靠近这些鹿的范围"
+"时，它将逃到它能逃离最远的地方。<u>Tuskers （由食人魔所取代）</u>展现和鹿群相"
+"同的行为，但当一个敌人在其中一个Tusker旁边时，这个敌人将要承受它的震怒。.\n"
+"\n"
+"<u>Tusklets(食人魔幼兽所取代）</u>盲目的跟随最近的成年长牙动物，但当没有成年"
+"长牙动物时，它的表现和鹿群一样。\n"
+"\n"
+"<u>兔子（由老鼠所取代）</u>也是盲目游荡，但当敌人靠近时，它们将逃到他们最近的"
+"洞穴（稻草代替）里面。如果安全了，在回合的开始，它们将在它们的洞穴重新出现\n"
+"\n"
+"<u>护羊犬（由走卒取代）</u>试图去保护羊群安全。这包括让羊群待在由小路围成的区"
+"域，护羊犬穿进草地，位于护羊犬和正在靠近的敌人之间，如果敌人靠的太近，便攻击"
+"他们。你可以让这个场景运行一大段时间，之后你可以看到一只有意思的狗/狼活动。如"
+"果没有活动的放牧或保护行动需要，狗狗们会在小路的任意地点。<u>牧羊犬（由巨魔幼"
+"崽代替）</u>漫无目的的游荡，但一只牧羊犬靠近它们时，它们就会跑开。如果可能的"
+"话，羊群也会远离正在靠近的敌人，狗狗们利用这点，位于羊群外围。羊群、狗狗和森"
+"林动物（鹿群、长牙动物、兔子）知道它们之间没有威胁并且远离彼此， 一只训练有素"
+"的牧羊犬表现出非常好的自控能力。"
 
 #. [event]
 #. [test]: id=animals
 #: data/ai/micro_ais/scenarios/animals.cfg:27
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:45
 msgid "Animals"
-msgstr ""
+msgstr "动物们"
 
 #. [side]: id=Rutburt, type=Outlaw
 #: data/ai/micro_ais/scenarios/animals.cfg:41
@@ -274,27 +309,27 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/goto.cfg:110
 #: data/ai/micro_ais/scenarios/wolves.cfg:27
 msgid "Humans"
-msgstr ""
+msgstr "人类"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/animals.cfg:63
 msgid "Forest Creatures"
-msgstr ""
+msgstr "森林生物"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/animals.cfg:77
 msgid "Ghasts"
-msgstr ""
+msgstr "邪灵食尸鬼"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/animals.cfg:91
 msgid "Spiders"
-msgstr ""
+msgstr "蜘蛛"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/animals.cfg:105
 msgid "Yetis"
-msgstr ""
+msgstr "雪人"
 
 #. [event]
 #. [side]
@@ -303,12 +338,12 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:48
 #: data/ai/micro_ais/scenarios/wolves.cfg:5
 msgid "Wolves"
-msgstr ""
+msgstr "狼群"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/animals.cfg:133
 msgid "Whelps"
-msgstr ""
+msgstr "幼兽"
 
 #. [set_menu_item]: id=m01_end_swarm
 #. [event]
@@ -337,7 +372,7 @@ msgstr "结束场景"
 #: data/ai/micro_ais/scenarios/wolves.cfg:101
 #: data/ai/micro_ais/scenarios/wolves.cfg:262
 msgid "Well, that was that."
-msgstr ""
+msgstr "好吧，那些是那些"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/animals.cfg:338
@@ -347,6 +382,9 @@ msgid ""
 "Wesnoth mainline, such as bears, sheep and sheep dogs, or deer. In this test "
 "scenario, these units have been replaced by mainline units."
 msgstr ""
+"<span color='#A00000'>重要:</span> 动物微型AI 在这个场景下，将用来编写在韦诺"
+"主线下不存在的一些动物单位类型，如熊，鹿和牧羊犬或者羊群。在这个测试场景下，"
+"这些单位将会被主线单位所替代。"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/animals.cfg:341
@@ -355,6 +393,9 @@ msgid ""
 "for watching only. The animal AIs behave as follows:\n"
 "\n"
 msgstr ""
+"这个有意思的场景，有一群不同的动物AIs,大部分仅仅可以观看。这些动物AIs表现如"
+"下：\n"
+"\n"
 
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/animals.cfg:349
@@ -362,7 +403,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:135
 #: data/ai/micro_ais/scenarios/wolves.cfg:196
 msgid "Question for the Player"
-msgstr ""
+msgstr "玩家问题"
 
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/animals.cfg:353
@@ -382,22 +423,32 @@ msgid ""
 "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
 "span> at http://wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
+"这可能包括一个人类控制的一方1，以便在每个回合行动停止来观察（或处理调试模"
+"式）\n"
+"\n"
+"注意本场景没有结局。为了展示的目的，在每回合开始任何被杀死的单位会被相同的其"
+"它单位替代。为了结束这个场景，有个右击选项-但仅仅在人类控制的模式下生效。在AI"
+"控制模式，你必须按下‘esc’键或重新载入上一个存档。\n"
+"\n"
+"注意：动物AIs 被编辑为 微观 AIs。 一个微观 AI 可以被增加和修改来适应场景的需"
+"求。很容易的使用WML和 [micro_ai]标签。查看 <span color='#00A000'>微观 AI "
+"wiki 页面</span>http://wiki.wesnoth.org/Micro_AIs 获取更多信息。"
 
 #. [option]
 #: data/ai/micro_ais/scenarios/animals.cfg:361
 msgid "<span font='16'>I'll just watch the animals.</span>"
-msgstr ""
+msgstr "<span font='16'>'我仅仅来观察动物。</span>"
 
 #. [option]
 #: data/ai/micro_ais/scenarios/animals.cfg:379
 #: data/ai/micro_ais/scenarios/wolves.cfg:224
 msgid "<span font='16'>I want to have control of Side 1.</span>"
-msgstr ""
+msgstr "<span font='16'>我想要控制1方。</span>"
 
 #. [objectives]
 #: data/ai/micro_ais/scenarios/animals.cfg:385
 msgid "Watch the animals do their things"
-msgstr ""
+msgstr "观看动物做它们的事情"
 
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/animals.cfg:387
@@ -405,13 +456,13 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/swarm.cfg:152
 #: data/ai/micro_ais/scenarios/wolves.cfg:236
 msgid "Use right-click option"
-msgstr ""
+msgstr "使用右击选项"
 
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/animals.cfg:391
 #: data/ai/micro_ais/scenarios/wolves.cfg:240
 msgid "Death of Rutburt"
-msgstr ""
+msgstr "Rutburt之死"
 
 #. [note]
 #: data/ai/micro_ais/scenarios/animals.cfg:395
@@ -419,7 +470,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/swarm.cfg:160
 #: data/ai/micro_ais/scenarios/wolves.cfg:244
 msgid "Check out the right-click menu options for additional actions"
-msgstr ""
+msgstr "查看右键菜单选项获得额外动作"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/animals.cfg:413
@@ -428,28 +479,30 @@ msgid ""
 "Translation: Those Ogres are mean!  We better stay away from them and their "
 "young."
 msgstr ""
+"Yowl!\n"
+"Translation:这些食人魔是小气鬼！我们最好离他们和他们的幼崽远些。"
 
 #. [test]: id=bottleneck_defense
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:5
 msgid "Bottleneck Defense"
-msgstr ""
+msgstr "瓶颈防御"
 
 #. [side]: type=Orcish Leader, id=Big Bad Orc
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:38
 msgid "Big Bad Orc"
-msgstr ""
+msgstr "极坏的兽人"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:85
 msgid "All right, chaps. Those orcs need to be stopped."
-msgstr ""
+msgstr "好了，家伙们。这些兽人需要停下来。"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:87
 #: data/ai/micro_ais/scenarios/guardians.cfg:514
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:135
 msgid "They there!  We them get!"
-msgstr ""
+msgstr "它们在那儿，捉住它们！"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:90
@@ -464,6 +517,13 @@ msgid ""
 "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
 "span> at http://wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
+"我们需要尽可能长的拖住它们。让我们把最强的战士放在前线，把负伤的单位带到后方"
+"疗伤。如果我们足够小心，我们可能甚至赢得这场战役。当我招募完毕后，我会尽快加"
+"入你来参与战斗。\n"
+"\n"
+"注意：瓶颈防御 AI 以微观AI来编译。微观AI可以添加和修改来适应场景的需要，很容"
+"易使用WML和 [micro_ai] 标签。查看<span color='#00A000'>Micro AI wiki 页面</"
+"span> http://wiki.wesnoth.org/Micro_AIs获取更多信息"
 
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:100
@@ -473,74 +533,76 @@ msgid ""
 "possible. Do you want to play the orc side or let the default (RCA) AI do "
 "that?"
 msgstr ""
+"这个场景中，AI 扮演在东方的人类，他们将组成一道防线尽可能长的拖住兽人。你想扮"
+"演兽人一边或让默认的（RCA)AI来扮演？"
 
 #. [option]
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:102
 msgid "<span font='16'>I'll watch the two AIs fight it out.</span>"
-msgstr ""
+msgstr "<span font='16'>我将来观看两边AIs谁将胜出。</span>"
 
 #. [option]
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:105
 msgid "<span font='16'>I'll play the orcs.</span>"
-msgstr ""
+msgstr "<span font='16'>我将扮演兽人</span>"
 
 #. [objectives]
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:116
 msgid "Take the pass"
-msgstr ""
+msgstr "获得通过"
 
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:118
 msgid "Defeat all humans"
-msgstr ""
+msgstr "打败所有的人类"
 
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:122
 msgid "Death of Big Bad Orc"
-msgstr ""
+msgstr "大坏兽人之死"
 
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:126
 msgid "Only one orc remains"
-msgstr ""
+msgstr "仅一个兽人留下"
 
 #. [then]
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:151
 msgid ""
 "I may have fallen, but we will continue to defend the pass to the last man!"
-msgstr ""
+msgstr "我可能倒下，但我们将持续守卫这个防线到最后一个战士！"
 
 #. [test]: id=dragon
 #. [event]
 #: data/ai/micro_ais/scenarios/dragon.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:54
 msgid "Dragon"
-msgstr ""
+msgstr "龙"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/dragon.cfg:21
 msgid "team_name^Rowck"
-msgstr ""
+msgstr "team_name^Rowck"
 
 #. [side]: type=Dread Bat, id=Dreadful Bat
 #: data/ai/micro_ais/scenarios/dragon.cfg:33
 msgid "Dreadful Bat"
-msgstr ""
+msgstr "恐怖蝙蝠"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/dragon.cfg:51
 msgid "Rowck's Home"
-msgstr ""
+msgstr "Rowck的老巢"
 
 #. [unit]: id=Rowck, type=Fire Dragon
 #: data/ai/micro_ais/scenarios/dragon.cfg:55
 msgid "Rowck"
-msgstr ""
+msgstr "Rowck"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/dragon.cfg:81
 msgid "Be careful to stay out of the way of that dragon. He's a mean one."
-msgstr ""
+msgstr "小心，远离那只小气的龙。"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/dragon.cfg:84
@@ -564,31 +626,44 @@ msgid ""
 "tag. Check out the <span color='#00A000'>Micro AI wiki page</span> at http://"
 "wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
+"喂，我是Rowck，这是我所做的:\n"
+"碰到当我饥饿时，我就闲逛在地图上，直到我进入一个敌人的范围。如果敌人在这范围"
+"以内，我将攻击并将摧毁他们最弱的一些，而后，我将退到我休息的地方，我将在那呆"
+"几个回合或直到康复.\n"
+"一些细节（特点，无bugs,如需要可更改）:\n"
+"-如果回家路被堵了，普通的 RCA AI 会取代我的行动。\n"
+"-然后，如果能到那儿，我将攻击占领我栖息位置的任何敌人。\n"
+"-当我是攻击者而非防御者时，一次猎杀仅仅让我回家。\n"
+"-偶尔我也根本不移动在走神时（有时龙必须休息！）\n"
+"\n"
+"注意：狩猎者 AI 编译为 Micro AI。  A Micro AI可以根据场景需要添加和修改， 可"
+"以很容易使用WML和 [micro_ai] 标签。查看 <span color='#00A000'>Micro AI wiki页"
+"面</span>http://wiki.wesnoth.org/Micro_AIs 获取更多信息"
 
 #. [objectives]
 #: data/ai/micro_ais/scenarios/dragon.cfg:96
 msgid "Move the bats around to explore how Rowck reacts"
-msgstr ""
+msgstr "四处移动蝙蝠来探索Rowck如何反应"
 
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/dragon.cfg:98
 msgid "Defeat Rowck"
-msgstr ""
+msgstr "打败Rowck"
 
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/dragon.cfg:102
 msgid "Move the lead bat to the signpost"
-msgstr ""
+msgstr "移动领头蝙蝠到指示牌"
 
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/dragon.cfg:106
 msgid "Death of the bat leader"
-msgstr ""
+msgstr "蝙蝠领袖之死"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/dragon.cfg:139
 msgid "I'm out of here."
-msgstr ""
+msgstr "我离开这儿"
 
 #. [test]: id=fast
 #: data/ai/micro_ais/scenarios/fast.cfg:5
@@ -613,57 +688,57 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/goto.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:84
 msgid "Goto"
-msgstr ""
+msgstr "Goto"
 
 #. [side]: id=Vaddan, type=Outlaw
 #: data/ai/micro_ais/scenarios/goto.cfg:27
 msgid "Vaddan"
-msgstr ""
+msgstr "Vaddan"
 
 #. [side]: type=Poacher, id=leader3
 #: data/ai/micro_ais/scenarios/goto.cfg:60
 msgid "Woodsmen"
-msgstr ""
+msgstr "护林人"
 
 #. [side]: type=Saurian Flanker, id=leader4
 #: data/ai/micro_ais/scenarios/goto.cfg:76
 msgid "Saurians"
-msgstr ""
+msgstr " 蜥蜴人"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/goto.cfg:125
 msgid "team_name^Animals"
-msgstr ""
+msgstr "小组_名称^动物"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/goto.cfg:138
 msgid "team_name^Ghosts"
-msgstr ""
+msgstr "team_name^鬼魂"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/goto.cfg:185
 msgid "General Minry"
-msgstr ""
+msgstr "Minry将军"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/goto.cfg:186
 msgid "Lieutenant Gadoc"
-msgstr ""
+msgstr "Gadoc队长"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/goto.cfg:187
 msgid "Lieutenant Senvan"
-msgstr ""
+msgstr "Senvan队长"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/goto.cfg:188
 msgid "Sergeant Aethubry"
-msgstr ""
+msgstr "Aethubry中士"
 
 #. [set_menu_item]: id=m01_new_footpad
 #: data/ai/micro_ais/scenarios/goto.cfg:339
 msgid "Place Side 1 Footpad"
-msgstr ""
+msgstr "放置阵营1走卒"
 
 #. [set_menu_item]: id=m05_kill_unit
 #. [set_menu_item]: id=m02_kill_unit
@@ -671,12 +746,12 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/swarm.cfg:113
 #: data/ai/micro_ais/scenarios/wolves.cfg:153
 msgid "Kill Unit under Cursor"
-msgstr ""
+msgstr "在光标下杀死单位"
 
 #. [set_menu_item]: id=m03_null_control
 #: data/ai/micro_ais/scenarios/goto.cfg:363
 msgid "Turn off human control of Side 1"
-msgstr ""
+msgstr "关闭阵营1人类控制"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/goto.cfg:413
@@ -695,26 +770,35 @@ msgid ""
 "tag. Check out the <span color='#00A000'>Micro AI wiki page</span> at http://"
 "wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
+"这个场景演示了Goto Micro AI各种使用。所有的AI 阵营由MAI控制（蜥蜴人除外，由"
+"Lurker Micro AI). 信息将贯穿全剧展示来指出这些单位正在做什么。\n"
+"\n"
+"玩家控制阵营1.右击菜单选择来增加地图上阵营1单位和把他们再次带离。测试阵营3的"
+"卫兵如何反应。\n"
+"\n"
+"注意：Goto AI 编译为 Micro AI。一种Micro AI 可以添加和适应一个场景的需求，非"
+"常容易使用WML和 [micro_ai]标签。查询 <span color='#00A000'>Micro AI Wiki 页面"
+"</span>http://wiki.wesnoth.org/Micro_AIs查询更多信息。"
 
 #. [objectives]
 #: data/ai/micro_ais/scenarios/goto.cfg:422
 msgid "Watch the AI units do their things"
-msgstr ""
+msgstr "观察AI单元做他们的事情"
 
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/goto.cfg:428
 msgid "Death of Vaddan"
-msgstr ""
+msgstr "Vaddan之死"
 
 #. [message]: speaker=messenger1
 #: data/ai/micro_ais/scenarios/goto.cfg:443
 msgid "The bridge is out. What do we do now?"
-msgstr ""
+msgstr "桥不在了，我们该如何做？"
 
 #. [message]: speaker=messenger2
 #: data/ai/micro_ais/scenarios/goto.cfg:447
 msgid "Looks like we need to take the long way around to get to General Minry."
-msgstr ""
+msgstr "似乎我们要走很长的路去General Minry"
 
 #. [message]: speaker=leader3
 #: data/ai/micro_ais/scenarios/goto.cfg:456
@@ -726,6 +810,11 @@ msgid ""
 "guardian units, although one of the dedicated Guardian Micro AIs will often "
 "be better suited for that purpose."
 msgstr ""
+"伙计们，除了骗子Vaddan 和他的人，忽视所有人。呆在你的地方直到他的单位进入8个"
+"范围内。\n"
+"\n"
+"注意：这是个Goto Micro Ai 如何用来编译卫兵单元的展示，即使有一个专注的卫兵"
+"Micro AIs将更好的符合那个目标。"
 
 #. [message]: type=Vampire Bat
 #: data/ai/micro_ais/scenarios/goto.cfg:467
@@ -735,16 +824,18 @@ msgid ""
 "behavior is set up with a single [micro_ai] tag, one with "
 "'unique_goals=yes', the other without."
 msgstr ""
+"使用四个蝙蝠到地图的四个角落（每一个到不同的角落），并且集体返回这儿。每种行"
+"为提供给一个单独[micro_ai]标签，一个 'unique_goals=yes'，另一个无。"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/goto.cfg:475
 msgid "Aaiiieeeeeee !!!"
-msgstr ""
+msgstr "Aaiiieeeeeee !!!"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/goto.cfg:476
 msgid "O no, a ghost!"
-msgstr ""
+msgstr "哦，不，幽灵！"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/goto.cfg:477
@@ -756,13 +847,17 @@ msgid ""
 "which they seem to get along just fine for some reason.  So as long as we "
 "don't corner them, they'll leave us alone."
 msgstr ""
+"别担心，这些其实是害羞的鬼魂。没人知道为什么，但它们常常消失在今年这个时候的"
+"北方并且移向南。这些幽灵也非常奇怪，它们似乎害怕任何人并且尽可能的避免与其它"
+"单位接触-除了蝙蝠和蜥蜴人，似乎因为一些原因，幽灵似乎很乐意与它们相处。因此只"
+"有我们不逼迫它们， 它们就不会干涉我们。"
 
 #. [message]: speaker=messenger2
 #: data/ai/micro_ais/scenarios/goto.cfg:536
 msgid ""
 "I'll take the route straight through the mountains. It's much shorter than "
 "following the trail all the way around in the south."
-msgstr ""
+msgstr "我将走这条路直接穿越群山，这将比一直沿着这条路环绕南方更近。"
 
 #. [message]: speaker=messenger1
 #: data/ai/micro_ais/scenarios/goto.cfg:540
@@ -773,11 +868,15 @@ msgid ""
 "Note: The messengers are controlled by Goto Micro AI definitions that differ "
 "by a single line, 'use_straight_line=yes/no'."
 msgstr ""
+"太疯狂了，像乌鸦飞那样，可能会更短，但它会永远的带你穿越那些群山。\n"
+"\n"
+"注意：Goto Micro Ai 控制这些信使。definitions that differ by a single line, "
+"'use_straight_line=yes/no'."
 
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/goto.cfg:574
 msgid "I told you so!"
-msgstr ""
+msgstr "我告诉过你了！"
 
 #. [message]: speaker=leader5
 #: data/ai/micro_ais/scenarios/goto.cfg:584
@@ -786,6 +885,8 @@ msgid ""
 "I want each and every one of you to report to him before going east to fight "
 "those saurians."
 msgstr ""
+"伙计们，去河边要塞并从Aethubry军士那里获得命令。在去东边与这些蜥蜴人交战之前"
+"我希望每个，你们当中每个人都向他汇报。"
 
 #. [message]: speaker=leader6
 #: data/ai/micro_ais/scenarios/goto.cfg:593
@@ -795,23 +896,25 @@ msgid ""
 "Sergeant Aethubry. Once that has happened, the rest of you can head into "
 "battle directly."
 msgstr ""
+"哈，这是为你准备的文员！伙计们，我希望你们也向河边要塞移动。但非常好的是你们"
+"其中的一个向Aethubry中士报告。一旦批准，你们剩下的可以直接投入战斗。"
 
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/goto.cfg:611
 msgid ""
 "$unit.language_name $unit.name from Lieutenant Gadoc's squadron reporting "
 "for duty, sir."
-msgstr ""
+msgstr "$unit.language_name $unit.name 来自Gadoc中尉中队报到，sir。"
 
 #. [message]: speaker=fort_commander
 #: data/ai/micro_ais/scenarios/goto.cfg:627
 msgid "Ready to fight those saurians, soldier?"
-msgstr ""
+msgstr "战士们，打算和这些蜥蜴人战斗吗？"
 
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/goto.cfg:631
 msgid "Yes, sir."
-msgstr ""
+msgstr "是的"
 
 #. [message]: speaker=fort_commander
 #: data/ai/micro_ais/scenarios/goto.cfg:639
@@ -819,30 +922,31 @@ msgid ""
 "Very good, $unit.language_name. Now go help your comrade get rid of that "
 "saurian infestation in the swamps."
 msgstr ""
+"非常好。 $unit.language_name.现在去帮助在沼泽地的战友们去除蜥蜴人的入侵。"
 
 #. [message]: speaker=fort_commander
 #: data/ai/micro_ais/scenarios/goto.cfg:647
 msgid "Maybe if I ignore them, they'll just go away?"
-msgstr ""
+msgstr "如果我可能忽视它们，它们会离开吗？"
 
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/goto.cfg:666
 msgid "Lieutenant Senvan's men reporting for duty, sir."
-msgstr ""
+msgstr "Senvan中尉的人l来报到，Sir."
 
 #. [message]: speaker=fort_commander
 #: data/ai/micro_ais/scenarios/goto.cfg:670
 msgid ""
 "Ah, Lieutenant Senvan... Is every single one of you going to bother me "
 "individually as well?"
-msgstr ""
+msgstr "啊，Senvan 中尉，你们也打算一个个来烦我？"
 
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/goto.cfg:674
 msgid ""
 "No, sir. Lieutenant Senvan ordered us to head into battle as soon as I have "
 "reported to you."
-msgstr ""
+msgstr "不，先生。一旦我向您汇报，Senvan 中尉命令我们投入战斗，"
 
 #. [message]: speaker=fort_commander
 #: data/ai/micro_ais/scenarios/goto.cfg:678
@@ -851,149 +955,151 @@ msgid ""
 "off you go then.\n"
 "\n"
 msgstr ""
+"好吧，松了一口气。有人知道如何使用他的。。。我的意思，好吧，然后离开。\n"
+"\n"
 
 #. [message]: speaker=fort_commander
 #: data/ai/micro_ais/scenarios/goto.cfg:680
 msgid ""
 "I wouldn't say anything negative about one of my superior officers now, "
 "would I?"
-msgstr ""
+msgstr "现在我没有说关于我们其中一位上级长官任何负面的东西，我会吗？"
 
 #. [message]: type=Vampire Bat
 #: data/ai/micro_ais/scenarios/goto.cfg:718
 msgid "We've all made it to the corners, let's get back together again."
-msgstr ""
+msgstr "我们一起把它逼到角落，让我们一起再次回来。"
 
 #. [message]: type=Vampire Bat
 #: data/ai/micro_ais/scenarios/goto.cfg:759
 msgid "We're back together, let's head out to the corners again."
-msgstr ""
+msgstr "我们一起回来，让我们再次驶向角落。"
 
 #. [test]: id=guardians
 #. [event]
 #: data/ai/micro_ais/scenarios/guardians.cfg:17
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:57
 msgid "Guardians"
-msgstr ""
+msgstr "卫兵们"
 
 #. [side]: id=Kraa, type=Gryphon
 #: data/ai/micro_ais/scenarios/guardians.cfg:31
 #: data/ai/micro_ais/scenarios/swarm.cfg:19
 msgid "Kraa"
-msgstr ""
+msgstr "Kraa"
 
 #. [side]: id=Kraa, type=Gryphon
 #: data/ai/micro_ais/scenarios/guardians.cfg:37
 #: data/ai/micro_ais/scenarios/swarm.cfg:27
 msgid "Gryphons"
-msgstr ""
+msgstr "狮鹫们"
 
 #. [side]: type=Orcish Leader, id=Another Bad Orc
 #: data/ai/micro_ais/scenarios/guardians.cfg:49
 msgid "Another Bad Orc"
-msgstr ""
+msgstr "又一个糟糕的兽人"
 
 #. [unit]: type=Dwarvish Guardsman, id=guardian1
 #: data/ai/micro_ais/scenarios/guardians.cfg:96
 msgid "Guardian 1"
-msgstr ""
+msgstr "卫兵1"
 
 #. [unit]: type=Dwarvish Guardsman, id=guardian2
 #: data/ai/micro_ais/scenarios/guardians.cfg:107
 msgid "Guardian 2"
-msgstr ""
+msgstr "卫兵2"
 
 #. [unit]: type=Giant Rat, id=coward1
 #: data/ai/micro_ais/scenarios/guardians.cfg:120
 msgid "Coward 1"
-msgstr ""
+msgstr "懦夫1"
 
 #. [unit]: type=Giant Rat, id=coward2
 #: data/ai/micro_ais/scenarios/guardians.cfg:142
 msgid "Coward 2"
-msgstr ""
+msgstr "懦夫2"
 
 #. [unit]: type=Giant Rat, id=coward3
 #: data/ai/micro_ais/scenarios/guardians.cfg:166
 msgid "Coward 3"
-msgstr ""
+msgstr "懦夫3"
 
 #. [unit]: type=Giant Rat, id=coward4
 #: data/ai/micro_ais/scenarios/guardians.cfg:191
 msgid "Coward 4"
-msgstr ""
+msgstr "懦夫4"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/guardians.cfg:211
 msgid "Move gryphons here to see different coward reactions"
-msgstr ""
+msgstr "把狮鹫们移到这儿去看不同懦夫的反应。"
 
 #. [unit]: type=Troll, id=return1
 #: data/ai/micro_ais/scenarios/guardians.cfg:220
 msgid "Return Guardian 1"
-msgstr ""
+msgstr "往返卫兵1"
 
 #. [unit]: type=Troll Whelp, id=return2
 #: data/ai/micro_ais/scenarios/guardians.cfg:239
 msgid "Return Guardian 2"
-msgstr ""
+msgstr "往返卫兵2"
 
 #. [unit]: type=Troll Whelp, id=home1
 #: data/ai/micro_ais/scenarios/guardians.cfg:259
 msgid "Home Guard 1"
-msgstr ""
+msgstr "地方志愿军1"
 
 #. [unit]: type=Troll, id=home 2
 #: data/ai/micro_ais/scenarios/guardians.cfg:271
 msgid "Home Guard 2"
-msgstr ""
+msgstr "地方志愿军2"
 
 #. [unit]: type=Skeleton Archer, id=stationed1
 #: data/ai/micro_ais/scenarios/guardians.cfg:284
 msgid "Stationed Guardian 1"
-msgstr ""
+msgstr "驻扎守护 1"
 
 #. [unit]: type=Skeleton, id=stationed2
 #: data/ai/micro_ais/scenarios/guardians.cfg:306
 msgid "Stationed Guardian 2"
-msgstr ""
+msgstr "驻扎守护 2"
 
 #. [unit]: type=Troll, id=zone1
 #: data/ai/micro_ais/scenarios/guardians.cfg:329
 msgid "Gate Keeper"
-msgstr ""
+msgstr "门卫"
 
 #. [unit]: type=Dwarvish Guardsman, id=zone2
 #: data/ai/micro_ais/scenarios/guardians.cfg:354
 msgid "Home Keeper"
-msgstr ""
+msgstr "警卫"
 
 #. [unit]: type=Naga Fighter, id=zone3
 #: data/ai/micro_ais/scenarios/guardians.cfg:383
 msgid "Water Guardian"
-msgstr ""
+msgstr "水源守卫"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/guardians.cfg:402
 msgid "Guarded Location"
-msgstr ""
+msgstr "防卫区域"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/guardians.cfg:403
 msgid "Station 1"
-msgstr ""
+msgstr "位置1"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/guardians.cfg:404
 msgid "Station 2"
-msgstr ""
+msgstr "位置2"
 
 #. [command]
 #. [set_menu_item]: id=m01_guardian
 #: data/ai/micro_ais/scenarios/guardians.cfg:425
 #: data/ai/micro_ais/scenarios/guardians.cfg:431
 msgid "Standard WML Guardian"
-msgstr ""
+msgstr "标准WML卫士"
 
 #. [command]
 #: data/ai/micro_ais/scenarios/guardians.cfg:431
@@ -1002,13 +1108,15 @@ msgid ""
 "guardians attack if there is an enemy within their movement range, otherwise "
 "they do nothing (except maybe retreating to a village for healing)."
 msgstr ""
+"这是一个内置 WML 卫士使用 'ai_special=guardian' 编译。如果敌人在他们的移动范"
+"围之内，卫士们就会攻击，否则不会有任何行动（可能退守村庄治疗）"
 
 #. [command]
 #. [set_menu_item]: id=m02_return
 #: data/ai/micro_ais/scenarios/guardians.cfg:436
 #: data/ai/micro_ais/scenarios/guardians.cfg:442
 msgid "Return Guardian"
-msgstr ""
+msgstr "返回卫士"
 
 #. [command]
 #: data/ai/micro_ais/scenarios/guardians.cfg:442
@@ -1024,13 +1132,21 @@ msgid ""
 "- If enemies are blocking your way back, do your best to get there anyway.\n"
 "- If you end up next to an enemy on the way back, attack after the move."
 msgstr ""
+"返回卫士是标准维诺卫士的一个变体。在袭击完走进的敌人后，将返回一个指定的防护"
+"位置：\n"
+"-如无敌人靠近守护位置，无动作。\n"
+"-如敌人靠近守卫区域，远离攻击默认AI(注意：如果敌人看起来太强，这可能包括不攻"
+"击）。\n"
+"-如不在守卫区域，返回那儿，无论敌人是否到达。\n"
+"-如敌人正在阻挡你回去的路，尽最大努力返回。\n"
+"-如你最终与返回的敌人撞见，在移动后攻击。"
 
 #. [command]
 #. [set_menu_item]: id=m03_home
 #: data/ai/micro_ais/scenarios/guardians.cfg:452
 #: data/ai/micro_ais/scenarios/guardians.cfg:458
 msgid "Home Guard"
-msgstr ""
+msgstr "地方守卫"
 
 #. [command]
 #: data/ai/micro_ais/scenarios/guardians.cfg:458
@@ -1049,13 +1165,21 @@ msgid ""
 "return and stationed guardians and the cowards are written in Lua AI. In "
 "addition the non-guardian units of the side follow the default AI behavior."
 msgstr ""
+"“地方守卫”是“守卫\"AI 的变体。通过这个变体，如果没有卷入战争和去村庄治疗或本"
+"回合占领村庄，这个单位有一个分配的”归属“位置。并且会返回那儿。（相反，标准的"
+"守卫AI会导致单位呆在上次它进攻的地方。）这个和在归属地的返回卫士会逼迫攻击不"
+"同，可能变得疲惫远离归宿区。而不是在每次攻击后返回。（也能被一系列紧密放置的"
+"村民所引诱开，但有时那是一个地图创建者能控制的。）\n"
+"这也展示了如何结合来自一方公式AI和Lua AI候选人的行动。地方守卫有Formula编写，"
+"然而返回守卫、驻扎守卫和胆怯者由Lua AI编写。另外非守卫单元的一边遵循默认AI行"
+"为。"
 
 #. [command]
 #. [set_menu_item]: id=m04_stationed
 #: data/ai/micro_ais/scenarios/guardians.cfg:464
 #: data/ai/micro_ais/scenarios/guardians.cfg:470
 msgid "Stationed Guardian"
-msgstr ""
+msgstr "驻扎守护"
 
 #. [command]
 #: data/ai/micro_ais/scenarios/guardians.cfg:470
@@ -1075,13 +1199,23 @@ msgid ""
 "rating and attack from there.\n"
 "  - If not in reach, move toward this unit."
 msgstr ""
+"驻扎守卫是比返回守卫有着某种程度上更加复杂行为的标准韦诺卫士的另外变体。有两"
+"种位置可以限定它，一种是“驻扎”位置，“守卫”位置，还有一种“距离”位置，行为如"
+"下：\n"
+"-如果没有敌人在守卫目前位置的范围内，没有任何行为。\n"
+"-另外：如果一个敌人在守卫的距离范围内，但不在守护位置和驻扎位置的相同距离内"
+"（所有的位置同时），移动守卫到驻扎位置.\n"
+"-另外:\n"
+"-挑选离守卫位置最近的敌人.\n"
+"-如果我们能到达那儿，挑选有着最高防御力的邻近方格并且从那儿攻击.\n"
+"-如果不能到达，移向这个单位。"
 
 #. [command]
 #. [set_menu_item]: id=m05_coward
 #: data/ai/micro_ais/scenarios/guardians.cfg:481
 #: data/ai/micro_ais/scenarios/guardians.cfg:487
 msgid "Coward"
-msgstr ""
+msgstr "懦夫"
 
 #. [command]
 #: data/ai/micro_ais/scenarios/guardians.cfg:487
@@ -1101,6 +1235,12 @@ msgid ""
 "- Both 'seek' and 'avoid' may consist of only one coordinate ('x' or 'y'), "
 "in which case not a single hex, but a line of hexes is sought or avoided."
 msgstr ""
+"懦夫像类似于守卫一样的单位，闲坐在那，除非有敌人靠近范围。然而，不像卫兵，一"
+"旦敌人靠近，他们就跑开了。可能是野兽、阻碍战斗未武装的平民，等等（？）。懦夫"
+"宏可以有两个选项位置，‘seek'和’avoid':\n"
+"- 如果两个都没有，懦夫将退到离逼近敌人的最远位置。\n"
+"- 如果是seek指令，它将优先走到那个位置（但优先远离敌人占领的位置）.\n"
+"- 如是avoid，"
 
 #. [command]
 #. [set_menu_item]: id=m06_zone
@@ -1146,7 +1286,7 @@ msgstr ""
 #. [objectives]
 #: data/ai/micro_ais/scenarios/guardians.cfg:525
 msgid "Move the Gryphons around to explore how the guardians react"
-msgstr ""
+msgstr "移动狮鹫们到周围来探究卫兵如何反应"
 
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/guardians.cfg:527
@@ -1157,7 +1297,7 @@ msgstr ""
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/guardians.cfg:531
 msgid "Move Kraa to the signpost"
-msgstr ""
+msgstr "移动kraa到指定路标"
 
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/guardians.cfg:535
@@ -1179,7 +1319,7 @@ msgstr ""
 #. [test]: id=hang_out
 #: data/ai/micro_ais/scenarios/hang_out.cfg:5
 msgid "Hang Out"
-msgstr ""
+msgstr "闲逛"
 
 #. [side]: id=Bad Outlaw, type=Outlaw
 #: data/ai/micro_ais/scenarios/hang_out.cfg:23
@@ -1407,7 +1547,7 @@ msgstr ""
 #. [objectives]
 #: data/ai/micro_ais/scenarios/lurkers.cfg:474
 msgid "Watch the lurkers move around and fight them if you want"
-msgstr ""
+msgstr "观察潜伏者的走动，如果你愿意的打败它们"
 
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/lurkers.cfg:476
@@ -1417,7 +1557,7 @@ msgstr ""
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/lurkers.cfg:480
 msgid "Move Pekzs to the signpost"
-msgstr ""
+msgstr "移动 Pekzs 到指示牌"
 
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/lurkers.cfg:484
@@ -1856,6 +1996,7 @@ msgstr ""
 
 #. [event]
 #: data/ai/micro_ais/scenarios/recruiting.cfg:90
+#, fuzzy
 msgid ""
 "If you have not changed anything in the scenario code, Side 1 uses the "
 "Random Recruitment Micro AI, with swordsmen and peasants having been given "
@@ -1871,6 +2012,8 @@ msgid ""
 "AI wiki page</span> at http://wiki.wesnoth.org/Micro_AIs for more "
 "information."
 msgstr ""
+"剧本再现，主要战役王座继承者之精灵受困,AI 正控制科纳德一方。目标是移动科纳德"
+"到西北的指示牌。同时保持科纳德和黎伐多生还。同样的AI在场景保卫 Unit中被使用"
 
 #. [test]: id=micro_ai_test
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:5

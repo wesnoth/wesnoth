@@ -1,5 +1,5 @@
 # The Battle for Wesnoth - Simplified Chinese Translations
-# Copyright (C) 2005-2015 Wesnoth development team
+# Copyright (C) 2005-2017 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # jan2xue <75jan@163.com>, 2005.
 # Huang huan <unicon221@gmail.com>, 2005.
@@ -9,10 +9,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth-1.12\n"
+"Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-03-23 08:11+0100\n"
-"PO-Revision-Date: 2015-02-07 13:07+0800\n"
+"POT-Creation-Date: 2017-03-23 08:40+0100\n"
+"PO-Revision-Date: 2017-03-26 12:09+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 1.7.4\n"
+"X-Generator: Poedit 1.8.12\n"
 
 #. [generic_multiplayer]: id=user_map
 #: data/multiplayer/_main.cfg:8
@@ -56,13 +56,13 @@ msgid ""
 "units available for recruit. Consists of six factions. Not considered "
 "balanced."
 msgstr ""
-"包含高阶单位的时代：领袖为三级，而一级和二级单位可供直接征募。包含六大派系。"
-"此时代并不可视为是平衡的。"
+"包含高阶单位的时代：首领为三级，而一级和二级单位可供直接征募。包含六大派系。"
+"此时代并不被认为是平衡的。"
 
 #. [era]: id=era_khalifate
 #: data/multiplayer/eras.cfg:83
 msgid "Default + Khalifate"
-msgstr "默认 + 哈里发"
+msgstr "默认 + 哈里发国"
 
 #. [era]: id=era_khalifate
 #: data/multiplayer/eras.cfg:84
@@ -82,7 +82,7 @@ msgstr ""
 #. [era]: id=era_khalifate_heroes
 #: data/multiplayer/eras.cfg:94
 msgid "Age of Heroes + Khalifate"
-msgstr "英雄时代 + 哈里发"
+msgstr "英雄时代 + 哈里发国"
 
 #. [era]: id=era_khalifate_heroes
 #: data/multiplayer/eras.cfg:95
@@ -102,7 +102,7 @@ msgstr ""
 #. [lua]: f
 #: data/multiplayer/eras.lua:62
 msgid "<span strikethrough='true' foreground='#%02x%02x%02x'>Side %d</span>"
-msgstr "<span strikethrough='true' foreground='#%02x%02x%02x'>阵营 %d</span>"
+msgstr "<span strikethrough='true' foreground='#%02x%02x%02x'>阵营%d</span>"
 
 #. [lua]: f
 #: data/multiplayer/eras.lua:76
@@ -110,7 +110,7 @@ msgid ""
 "<span foreground='#%02x%02x%02x'>Side %d</span>:  Income score = %d  Unit "
 "score = %d  Gold = %d"
 msgstr ""
-"<span foreground='#%02x%02x%02x'>阵营 %d</span>:  收入得分 = %d  单位得分 = "
+"<span foreground='#%02x%02x%02x'>阵营%d</span>:  收入得分 = %d  单位得分 = "
 "%d  金币 = %d"
 
 #. [lua]: f
@@ -121,7 +121,7 @@ msgstr "总得分：<b>%d</b>"
 #. [lua]: f
 #: data/multiplayer/eras.lua:87
 msgid "<span foreground='%s'>Side %d</span> has the advantage."
-msgstr "<span foreground='%s'>阵营 %d</span> 取得了优势。"
+msgstr "<span foreground='%s'>阵营%d</span>取得了优势。"
 
 #. [multiplayer_side]: id=Drakes, type=random
 #: data/multiplayer/factions/drakes-aoh.cfg:4
@@ -141,12 +141,17 @@ msgid ""
 "mobility but low defense, leading to unusual tactics for a "
 "<ref>text='Default Era' dst='..era_era_default'</ref> faction."
 msgstr ""
+"<bold>text='龙人部落'</bold>是由与巨龙相似的<ref>text='龙人' dst='.."
+"race_drake'</ref>以及他们的<ref>text='蜥蜴人' dst='..race_lizard'</ref>盟友所"
+"组成的派系。 龙人是巨龙的后裔，但身形较小。蜥蜴人则比龙人小得多，而且祖先也不"
+"同。结合起来说，龙人部落的机动性强但防御能力弱，因此，他们的战术在"
+"<ref>text='默认时代' dst='..era_era_default'</ref>的诸派系中，是不同寻常的。"
 
 #. [multiplayer_side]: id=Khalifate, type=random
 #: data/multiplayer/factions/khalifate-aoh.cfg:4
 #: data/multiplayer/factions/khalifate-default.cfg:4
 msgid "Khalifate"
-msgstr "哈里发"
+msgstr "哈里发国"
 
 #. [multiplayer_side]: id=Khalifate, type=random
 #: data/multiplayer/factions/khalifate-aoh.cfg:14
@@ -160,6 +165,10 @@ msgid ""
 "be more expensive than those of the Loyalist faction, they make up for this "
 "with high mobility — especially on hilly terrains."
 msgstr ""
+"<bold>text='哈里发国'</bold>是由来自南方沙漠和丘陵的人类所组成的派系。他们缺"
+"少魔法使用者，而是专精于利用地形特征来进行晨昏时段的协同攻击。他们的队伍中有"
+"很多守序和边缘单位、治疗师、出手精准的近战武士以及令人恐惧的骑射弓手。哈里发"
+"单位常常比保王党单位金贵，但他们以高机动性来弥补——尤其是在山丘地形之上。"
 
 #. [multiplayer_side]: id=Knalgan Alliance, type=random
 #: data/multiplayer/factions/knalgans-aoh.cfg:4
@@ -180,12 +189,18 @@ msgid ""
 "dwarves who are only good on certain terrain and humans who can cover ground "
 "that dwarves are not good at fighting in."
 msgstr ""
+"<bold>text='纳尔迦联盟'</bold>是由<ref>text='矮人' dst='..race_dwarf'</ref>以"
+"及他们的<ref>text='人类' dst='..race_human'</ref>流寇盟友所组成的派系。矮人是"
+"居住在地下的古老种族，他们拥有强壮但矮小的战士。游寇则是不被其种族的主流社会"
+"所接受的人类，但由于有共同的敌人，他们和矮人成为了盟友。这使得纳尔迦联盟成为"
+"了矮人与人类的组合。矮人强壮而擅长防御，但只在某些地形上善战，而人类则可以应"
+"对矮人们不擅长应付的地形。"
 
 #. [multiplayer_side]: id=Loyalists, type=random
 #: data/multiplayer/factions/loyalists-aoh.cfg:4
 #: data/multiplayer/factions/loyalists-default.cfg:4
 msgid "Loyalists"
-msgstr "保皇军队"
+msgstr "保王党人"
 
 #. [multiplayer_side]: id=Loyalists, type=random
 #: data/multiplayer/factions/loyalists-aoh.cfg:14
@@ -197,12 +212,16 @@ msgid ""
 "Loyalist faction is a very versatile melee-oriented faction with important "
 "ranged support from bowmen and mages."
 msgstr ""
+"<bold>text='保王党人'</bold>是由忠于韦诺君王的<ref>text='人类' dst='.."
+"race_human'</ref>所组成的派系。人类是多才多艺的种族，在许多方面都有专长。与此"
+"相似，保王党人是一个非常多样化的派系。他们倾向于近战，而又拥有来自弓手和法师"
+"的重要的远程火力支持。"
 
 #. [multiplayer_side]: id=Northerners, type=random, description=<img>src='portraits/orcs/warlord.png~BG()' align='middle'</img>
 #: data/multiplayer/factions/northerners-aoh.cfg:4
 #: data/multiplayer/factions/northerners-default.cfg:4
 msgid "Northerners"
-msgstr "北方民族"
+msgstr "北陆之民"
 
 #. [multiplayer_side]: id=Northerners, type=random, description=<img>src='portraits/orcs/warlord.png~BG()' align='middle'</img>
 #: data/multiplayer/factions/northerners-aoh.cfg:16
@@ -217,6 +236,12 @@ msgid ""
 "Northerners play best by taking advantage of having many low-cost and high "
 "HP soldiers."
 msgstr ""
+"The <bold>text='北陆之民'</bold>是由<ref>text='兽人' dst='..race_orc'</ref>以"
+"及他们的盟友所组成的派系。他们居住在主陆的北方，因此得名。北陆之民包括了尚武"
+"的兽人种族，为奴的<ref>text='地精' dst='..race_goblin'</ref>，被兽人骗来作战"
+"的<ref>text='巨魔' dst='..race_troll'</ref>以及蛇形的<ref>text='娜迦' dst='.."
+"race_naga'</ref>。北陆之民拥有数量众多的低成本而高生命值的士兵，要用好本派"
+"系，就得利用好这一优势。"
 
 #. [multiplayer_side]: id=Rebels, type=random
 #: data/multiplayer/factions/rebels-aoh.cfg:4
@@ -240,6 +265,14 @@ msgid ""
 "advantage of their high forest defense, mastery of ranged attacks, and the "
 "elves’ neutral alignment."
 msgstr ""
+"<bold>text='反抗势力'</bold>是由<ref>text='精灵' dst='..race_elf'</ref>以及他"
+"们居住在森林里的各种盟友所组成的派系。他们的人类称谓，反抗势力，来自于王座继"
+"承战争时期，那时，他们揭竿而起，反抗邪恶女王艾什薇尔。精灵是魔法种族，使弓的"
+"好手，又能比人类多活很多年。精灵与自然和谐共处，与<ref>text='人类' dst='.."
+"race_human'</ref>法师，某些<ref>text='人鱼' dst='..race_merman'</ref>，以及称"
+"为<ref>text='树人' dst='..race_wose'</ref>的树形生物结盟。反抗势力在森林中防"
+"御上佳，擅长远程攻击，而精灵则拥有中立立场。要用好反抗势力，就得利用好这些优"
+"势。"
 
 #. [multiplayer_side]: id=Undead, type=random
 #: data/multiplayer/factions/undead-aoh.cfg:4
@@ -260,6 +293,12 @@ msgid ""
 "Undead are a very aggressive faction and the most powerful "
 "<ref>text='Default Era' dst='..era_era_default'</ref> faction at nighttime."
 msgstr ""
+"The <bold>text='亡灵军团'</bold>是由<ref>text='亡灵' dst='..race_undead'</"
+"ref>生物以及伴随他们行动的<ref>text='人类' dst='..race_human'</ref>黑魔法使用"
+"者所组成的派系。通常来说，在这个派系中，“黑暗狂徒”的伤害输出最高，但他们有个"
+"重大的弱点——对邪恶禁术的使用，榨干了他们所有的能量，因此他们完全不能近战。亡"
+"灵军团是进攻性很强的派系，也是<ref>text='默认时代' dst='..era_era_default'</"
+"ref>中夜战最强的派系。"
 
 #. [multiplayer]: id=multiplayer_Aethermaw
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:4
@@ -288,7 +327,7 @@ msgstr ""
 "现实与年代之中，吸收了整块整块的大地。她用这些完全不同的宇宙做着试验，将它们"
 "改变，将它们结合，将它们在安瑟茂和原来所在的地方之间来回移动。也许，随着她对"
 "安瑟茂的控制力渐渐加强，苏拉终有一天会挣脱其束缚。直到那天到来之前，她还会继"
-"续迫使那些不幸被吸入安瑟茂深处的凡间生物互相征战，以此取乐。本地图由多克·帕特"
+"续迫使那些不幸被吸入安瑟茂深处的凡间生物互相征战，以此取乐。此地图由多克·帕特"
 "森设计。"
 
 #. [side]
@@ -369,17 +408,15 @@ msgstr "南军"
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:289
-#, fuzzy
-#| msgid "Death of your team leaders"
 msgid "Defeat enemy leader(s)"
-msgstr "团队领袖全部阵亡"
+msgstr "击败敌军首领"
 
 #. [note]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:293
 msgid ""
 "The Great Mage Sulla has transported your armies to this bizarre nexus, and "
 "demands that you amuse her by doing battle."
-msgstr ""
+msgstr "大法师苏拉把你的军队传送到了这诡异的能量结点，并要求你作战以取悦她。"
 
 #. [note]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:296
@@ -387,6 +424,7 @@ msgid ""
 "Units may not move into a hex with a rock cairn. They may, however, be "
 "recruited to, and move from, such hexes."
 msgstr ""
+"单位不能移动到有岩石界碑的格子中，但可以被征募到这种格子里，并移动出去。"
 
 #. [note]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:299
@@ -394,6 +432,8 @@ msgid ""
 "Beginning on turn 4, the Great Mage Sulla will begin to unite the two halves "
 "of the battlefield. The process will be complete by the end of turn 6."
 msgstr ""
+"从第四回合开始，大法师苏拉会将战场的两部分合为一体。这个过程将在第六回合结束"
+"时完成。"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:312
@@ -428,17 +468,17 @@ msgid ""
 "Great Mage Dauntless, may yet remain hidden, lost somewhere within the "
 "granite and obsidian walls of Arcanclave Citadel. Designed by Doc Paterson."
 msgstr ""
-"很久以前，哈德里克时代的无数个世纪之前，在林坦尼森林最东边缘之外的远方，发生"
-"了壮阔而恐怖的大战。据记载，曾有一位强大的战斗法师，一位聪慧的战术家与奥秘之"
-"法的使用者，他被追随者们授予了“无畏者”的头衔。在阿坎克雷夫之战中，无畏者和他"
-"的军队与被称为卡·鲁克的野蛮的恶魔巫师一族鏖战。当被成千上万的卡·鲁克包围之"
+"很久以前，哈德里克时代的无数个世纪之前，在林塔尼尔之森最东边缘之外的远方，发"
+"生了壮阔而恐怖的大战。据记载，曾有一位强大的战斗法师，一位聪慧的战术家与奥秘"
+"之法的使用者，他被追随者们授予了“无畏者”的头衔。在阿坎克雷夫之战中，无畏者和"
+"他的军队与被称为卡·鲁克的野蛮的恶魔巫师一族鏖战。当被成千上万的卡·鲁克包围之"
 "时，无畏者施法召唤了一个强大的土元素（不知为何，它欠了无畏者一个人情）。土元"
 "素从地中深处举起巨大的石块，在转瞬之间便将它们变成了巨大堡垒的城墙与墙垛。数"
 "千卡·鲁克在进攻阿坎克雷夫堡垒的尝试中命丧黄泉，而无畏者与他的军队取得了那天的"
 "胜利。一千多年以后，武士女王辛萨恩一世把一个死灵法师的氏族从阿坎克雷夫堡垒的"
 "废墟之上驱逐了出去，第二年，便将这片区域重建成了军事要塞。有传言说，有一些强"
 "大的，从大法师无畏者的时代遗留下来的魔法古物也许还在这里，遗落在了阿坎克雷夫"
-"堡垒的花岗岩与黑曜石的巨墙之间。本地图由多克·帕特森设计。"
+"堡垒的花岗岩与黑曜石的巨墙之间。此地图由多克·帕特森设计。"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:22
@@ -519,8 +559,8 @@ msgid ""
 "Basilisk. The petrified forms of his victims remain as monuments to his "
 "savage power."
 msgstr ""
-"这些洞穴曾经是具有传奇色彩的古老蛇怪“查克索·内伊克斯”的藏身之处。那些被他所石"
-"化的受害者们，至今仍然是他那狂暴力量的纪念碑。"
+"这些洞穴曾经是具有传奇色彩的古老蛇怪“查克索·内伊克斯”的藏身之处。那些被他石化"
+"的受害者们，至今仍是他那狂暴力量的纪念碑。"
 
 # verses are, in my opinion, untranslatable. anyone interested may want to give a try...
 # 自便
@@ -568,7 +608,7 @@ msgstr ""
 "有龙立此，尝离家行，\n"
 "之于何所？窃蛇之金。\n"
 "\n"
-"（洋人号御火天尊【Flametrooper】者刻）"
+"（御火天尊【Flametrooper】刻）"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:108
@@ -598,20 +638,20 @@ msgid ""
 "traveled far from the lake, Xikkrisx set the statue down inside of a small "
 "cave, and lay down to rest. He was awoken by a bone-chilling roar."
 msgstr ""
-"希雷兹克的西克雷斯克斯是一位强大的蜥蜴人战士，被里斯里尔雷罗兹克氏族（人类语"
-"翻译：“在沸腾的大河中猎杀敌人的氏族”）的长老们送到了这个区域。长老们正在准备"
-"对一个人类前哨站发动战争，因而需要欧克斯雷斯克的强大魔力。欧克斯雷斯克是一位"
-"蜥蜴人秘术师，人们最后一次见到他时他正在前往拉斯科库林湖。西克雷斯克斯发现了"
-"欧克斯雷斯克被石化的躯体以及一个被仔细包好的卷轴，那卷轴显然是被丢进了洞穴地"
-"面上的一个小缝隙里。他打开卷轴，粗略地读到了中间的一段文字：“当查克索被束缚起"
-"来，并被‘上层世界’放逐之后，他暴怒的灵魂渴求着解放，而且他还是能在上层世界的"
-"某些区域里造成破坏性的影响。通过‘石之小径’的联结，这种影响从地表一直深入到‘地"
-"底之河’。这无比的怒火使得大蜥蜴们的蛋变异了，将他们的身躯和灵魂塑造成了查克索"
-"的仇恨的具现物。”疑惑中，西克雷斯克斯把注意力集中到了当前的任务上。想到长老们"
-"或许可以找到救回欧克斯雷斯克的方法，他开始了漫长而费力的任务——把欧克斯雷斯克"
-"的雕像拖回里斯里尔雷罗兹克氏族的领地。待到西克雷斯克斯精疲力尽之时，他却还没"
-"有离开湖多远。他把雕像放进一个小洞穴里，就躺下休息了。他是被一声颤透骨髓的长"
-"啸声惊醒的。"
+"希雷兹克的西克雷斯克斯是一位强大的蜥蜴人战士，被里斯里尔雷罗兹克氏族（翻"
+"译：“在沸腾之河中猎杀敌人的氏族”）的长老们送到了这个区域。长老们正在准备对一"
+"个人类前哨站发动战争，因而需要欧克斯雷斯克的强大魔力。欧克斯雷斯克是一位蜥蜴"
+"人秘术师，人们最后一次见到他时他正在前往拉斯科库林湖。西克雷斯克斯发现了欧克"
+"斯雷斯克被石化的躯体以及一个被仔细包好的卷轴，那卷轴显然是被丢进了洞穴地面上"
+"的小缝隙里。他打开卷轴，粗略地读到了中间的一段文字：“当查克索被束缚起来，并"
+"被‘上层世界’放逐之后，他暴怒的灵魂渴求着解放，而且他还是能在上层世界的某些区"
+"域里造成破坏性的影响。通过‘石之小径’的联结，这种影响从地表一直深入到‘地底之"
+"河’。这无比的怒火使得大蜥蜴们的蛋变异了，将他们的身躯和灵魂塑造成了查克索的仇"
+"恨的具现物。”疑惑中，西克雷斯克斯把注意力集中到了当前的任务上。想到长老们或许"
+"可以找到救回欧克斯雷斯克的方法，他开始了漫长而费力的任务——把欧克斯雷斯克的雕"
+"像拖回里斯里尔雷罗兹克氏族的领地。待到西克雷斯克斯精疲力尽之时，他却还没有离"
+"开湖多远。他把雕像放进一个小洞穴里，就躺下休息了。他是被一声颤透骨髓的长啸声"
+"惊醒的。"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:117
@@ -670,12 +710,12 @@ msgid ""
 msgstr ""
 "精明的才干灵巧的手\n"
 "——七块石头，十一武人\n"
-"不存在的机会留给对手\n"
+"再小的机会不给对手\n"
 "——七块石头，十一武人\n"
-"神射手称作龙之克星\n"
+"神射手名唤龙之克星\n"
 "变成雕像，留在这里\n"
 "——七块石头——精灵武人\n"
-"（由Gauteamus所刻）"
+"（狂欢舞者【Gauteamus】刻）"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:137
@@ -706,10 +746,10 @@ msgstr ""
 "因此，当听说了关于居住在这片区域里的可怕怪物之事后，他骑着狼独自前往对付怪物"
 "便非常自然而然了。所有其他的地精都期待着他轻而易举地宰掉那生物，并把它的尸体"
 "带回来做大餐。\n"
-"看到那蛇怪的一瞬间，他就被震撼了。布拉姆·达克因惊恐而畏缩了，他试着让自己的狼"
-"掉过头来以便溜走，但狼却一动不动。那生物向他越逼越近，他喊出了自己的遗言：“俺"
-"的好高格，俺的好狗，你丫的狗腿子是石头做的么！”\n"
-"（由Elvish Pillager所刻）"
+"看到那蛇怪的一瞬间，他就被震撼了。布拉姆·达克因惊恐而畏缩，他试着让自己的狼掉"
+"过头来以便溜走，但狼却一动不动。那生物向他越逼越近，他喊出了自己的遗言：“俺的"
+"好高格，俺的好狗，你丫的狗腿子是石头做的么！”\n"
+"（精灵掠夺者【Elvish Pillager】刻）"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:146
@@ -751,7 +791,7 @@ msgstr ""
 "的人鱼们。这是他的湖，而不是别人的。尽管这个湖并不大，他仍然是湖的主人。接"
 "着，那只蛇怪出现了，他注视了巨蛇的眼睛。巨蛇并没有死，但他也不再活着。于是，"
 "湖的新主人到来了。\n"
-"（由Turin所刻）"
+"（图林【Turin】刻）"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:163
@@ -760,7 +800,7 @@ msgid ""
 "(inscribed by WinnerA)"
 msgstr ""
 "看上去没人知道这位勇猛士兵的故事。\n"
-"（由WinnerA所刻）"
+"（胜者某甲【WinnerA】刻）"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:171
@@ -768,8 +808,8 @@ msgid ""
 "The tale of this unlucky highwayman is yet to be told.\n"
 "(inscribed by WinnerB)"
 msgstr ""
-"这倒霉的拦路强盗的故事还没有人说过。\n"
-"（由WinnerB所刻）"
+"这倒霉的拦路强盗的故事还没人诉说过。\n"
+"（胜者某乙【WinnerB】刻）"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:179
@@ -783,11 +823,11 @@ msgid ""
 "(inscribed by Fynmiir)"
 msgstr ""
 "他是韦诺黄金时代的一位勇敢的英雄，这位伟大的人类骑手与指挥官在奇袭兽人时，来"
-"到了这邪恶的地方。他们被那些邪恶的生物打了一个措手不及，他的许多部下都英勇牺"
+"到了这邪恶的地方。他们被那些丑恶的生物打了一个措手不及，他的许多部下都英勇牺"
 "牲了，但他仍然勇敢地战斗，杀死了无数敌人。可惜！在杀死最后一个兽人的瞬间，他"
-"被邪恶的蛇怪变成了石头。现在，只余下一尊僵硬的石像，让人们忆起他曾经的风度与"
+"被丑恶的蛇怪变成了石头。现在，只余下一尊僵硬的石像，让人们忆起他曾经的风度与"
 "力量。\n"
-"（由Fynmiir所刻）"
+"（芬米尔【Fynmiir】刻）"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:184
@@ -824,7 +864,7 @@ msgstr ""
 "他被蛇怪出其不意地袭击了，甚至在他能辨认出这野兽之前，就被变成了石头。直至今"
 "天，他被石化的身体仍然站在那里，在开阔的天空之下被阳光温暖着。他最大的愿望实"
 "现了。\n"
-"（由Elvish Pillager所刻）"
+"（精灵掠夺者【Elvish Pillager】刻）"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:193
@@ -837,8 +877,8 @@ msgid ""
 "General Talael Ryndoc came to this place to fight a duel with the Grand "
 "Marshal Aethec Corryn, but the two men never found one another. "
 msgstr ""
-"塔拉埃尔•林多克将军来到这个地方与大元帅艾西克•科林决斗，但是这两人再也没有找"
-"到过对方。"
+"塔拉埃尔•林多克将军来到此地与大元帅艾西克•科林决斗，但是这两人再也没有找到过"
+"对方。"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:199
@@ -855,9 +895,9 @@ msgid ""
 "\n"
 "Perhaps he should not have shouted quite so loudly.... "
 msgstr ""
-"大元帅艾西克•科林的遗言是：“塔拉埃尔•林多克！我正在翻遍每一寸土地找你！我应该"
-"回到哈德里克大厅，告诉宫廷你是个不敢参加决斗的懦夫！那样你的耻辱比之被我在此"
-"杀死，会更让你痛苦万分！”\n"
+"大元帅艾西克•科林的遗言是：“塔拉埃尔•林多克！我正翻遍每一寸土地找你！我应该回"
+"到哈德里克大厅，告诉宫廷你是个不敢参加决斗的懦夫！那样你的耻辱比之被我在此杀"
+"死，会更让你痛苦万分！”\n"
 "\n"
 "也许他不应该喊得这么响……"
 
@@ -888,7 +928,7 @@ msgstr ""
 "某处长眠着。他做好了与巨蛇搏斗的准备，却遇到了两件非常意外的东西。其一是巨蛇"
 "拉斯科库林被石化的躯体。其二是查克索•内伊克斯，它活得好好的，而且，很奇怪的"
 "是，它还拥有着自己全部的牙齿。\n"
-"（由Paterson所刻）"
+"（帕特森【Paterson】刻）"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:218
@@ -923,14 +963,12 @@ msgstr ""
 "一年又是一年，\n"
 "她的双眼再也没有回望。\n"
 "\n"
-"（由MJQ所刻）"
+"（三字师【MJQ】刻）"
 
 #. [multiplayer]: id=multiplayer_Clearing_Gushes
 #: data/multiplayer/scenarios/2p_Clearing_Gushes.cfg:7
-#, fuzzy
-#| msgid "4p — Clash"
 msgid "2p — Clearing Gushes"
-msgstr "4p — 冲突"
+msgstr "2p — 清理涌流"
 
 #. [multiplayer]: id=multiplayer_Clearing_Gushes
 #: data/multiplayer/scenarios/2p_Clearing_Gushes.cfg:8
@@ -943,6 +981,10 @@ msgid ""
 "rigorous discipline and organization of Wesnoth's armies are in no small "
 "part driven by a constant need to patrol and defend these prosperous lands."
 msgstr ""
+"泰河两岸是已知的世界上最肥沃的土地之一。春季和夏季，泰河沿线多发大水，于是土"
+"壤肥沃，秋季丰收。韦诺王国已将此地变为了财富与繁荣的发动机——也变为了无数次掠"
+"袭与侵攻的目标。韦诺军队严格的纪律和组织，在很大的程度上正是因巡逻及保卫这些"
+"沃土的持续性需要而形成的。"
 
 #. [multiplayer]: id=multiplayer_Cynsaun_Battlefield
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:6
@@ -961,7 +1003,7 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_2p_Dark_Forecast
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:5
 msgid "2p — Dark Forecast (Survival)"
-msgstr "6p — 黑暗预想（生存）"
+msgstr "2p — 黑暗预想（生存）"
 
 #. [multiplayer]: id=multiplayer_2p_Dark_Forecast
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:6
@@ -977,7 +1019,7 @@ msgstr ""
 "“黑暗预想”是生存场景，供自残或双人组队娱乐，对抗随机生成的AI单位。获胜的方法"
 "是挺过对手的所有进攻波次。在游戏过程中，地形会随着随机的天气效果而变化。\n"
 "\n"
-"注意：您需要使用地图设置，以便让这个场景能够正确运行。"
+"注意：你需要使用地图设置，以便让这个场景能够正确运行。"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:19
@@ -994,25 +1036,25 @@ msgstr "人类"
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:100
 msgid "Death of your leader"
-msgstr "您的领袖阵亡"
+msgstr "你的首领阵亡"
 
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:101
 msgid ""
 "Since your team has only one leader, the enemy waves will not be at full "
 "strength."
-msgstr "您的队伍里只有一位领袖，因此敌人不会竭尽全力进攻。"
+msgstr "你的团队里只有一位首领，因此敌人不会竭尽全力进攻。"
 
 #. [else]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:104
 msgid "Death of both of your team’s leaders"
-msgstr "你队领袖全部阵亡"
+msgstr "你队首领全部阵亡"
 
 #. [else]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:105
 msgid ""
 "Since your team has two leaders, the enemy waves will be at full strength."
-msgstr "您的队伍里有两位领袖，因而敌人会竭尽全力攻打过来。"
+msgstr "你的团队里有两位首领，因而敌人会竭尽全力攻打过来。"
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:126
@@ -1022,7 +1064,7 @@ msgstr "撑过敌军所有波次的进攻"
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:146
 msgid "Dark Forecast — a random survival scenario"
-msgstr "黑暗预想——一个随机的生存场景"
+msgstr "黑暗预想——一个随机生存场景"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:151
@@ -1048,31 +1090,28 @@ msgid ""
 "<span color='green'>Rhuvaen:</span>\n"
 "• WML implementation"
 msgstr ""
-"您的目标是挺过敌人一波又一波的攻击，并打败最终的老怪。\n"
+"你的目标是挺过敌人一波又一波的攻击，并打败最终的敌方头目。\n"
 "\n"
 "敌人的进攻波次是随机生成的，所以黑暗预想每次都不一样的黑。\n"
 "\n"
-"\n"
 "他们出现在北方、南方、西方的地图边缘——虽说他们最可能出现在西边。两拨敌人的出"
-"现间隔有一定的规律。\n"
-"\n"
+"现间隔多少有一些规律。\n"
 "\n"
 "天气也会随机变化，会影响到地图的布局。\n"
 "\n"
 "\n"
-"\n"
 "<span color='red'>黑暗预想的作者是：</span>\n"
 "\n"
-"<span color='green'>jb:</span>\n"
+"<span color='green'>jb：</span>\n"
 "• 地图设计，敌军波次和场景的概念设定\n"
 "\n"
-"<span color='green'>Rhuvaen:</span>\n"
+"<span color='green'>Rhuvaen：</span>\n"
 "• WML实现"
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:171
 msgid "So this is the accursed valley — a land ours for the taking."
-msgstr "那这就是被诅咒的山谷——我们要征服的土地。"
+msgstr "这就是被诅咒的山谷——我们要征服的土地。"
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:175
@@ -1081,22 +1120,23 @@ msgid ""
 "our claim is not going to be unopposed. We must be prepared for the "
 "surprises of this land."
 msgstr ""
-"传闻说这里的居民是一个人与野兽的奇怪联盟，我们的主张是没可能不遇到反抗的。我"
-"们必须为这片土地所能带来的惊讶而做好准备。"
+"传闻说这里的居民是一个人与野兽的奇怪联盟，我们的主张是一定会遭到反抗的。我们"
+"必须准备好对付这片土地带给我们的惊喜。"
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:179
 msgid ""
 "Then let us discover what lies in waiting and teach them not to oppose our "
 "claim."
-msgstr "那就让我们看看是谁在等待我们，还有教会他们不要反对我们的主张。"
+msgstr ""
+"那就让我们看看是谁在等待我们，我们得教训他们，让他们不再反对我们的主张。"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:198
 msgid ""
 "Ugh! How can this be? Defeated by mere barbarians! My gods have forsaken "
 "me..."
-msgstr "哦呃！怎么会这样？败给微不足道的野蛮人！神哪，你抛弃了我……"
+msgstr "呃！怎么会这样？败给微不足道的野蛮人！神哪，你抛弃了我……"
 
 #. [message]: speaker=second_unit
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:212
@@ -1104,7 +1144,7 @@ msgid ""
 "Cheers of your enemy are the last thing you hear as you slip into death..."
 "their joy fills your last moments with pure hate."
 msgstr ""
-"敌人的欢呼是你堕入死亡之前所最后听到的声音……他们的欢乐使你的最后时刻充满了纯"
+"敌人的欢呼是你堕入死亡之前所听到的最后声音……他们的欢乐让你的最后时刻充满了纯"
 "粹的憎恨。"
 
 #. [message]
@@ -1120,7 +1160,7 @@ msgstr ""
 #. [slider]: id=enemey_gold_factor
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:245
 msgid "Changes the gold worth of the enemy spawns by a certain percentage"
-msgstr ""
+msgstr "对所生成的敌军的金币价值作出百分比修正"
 
 #. [lua]: final_spawn
 #: data/multiplayer/scenarios/2p_Dark_Forecast.lua:310
@@ -1128,8 +1168,8 @@ msgid ""
 "The last and most powerful of these creatures are almost upon us. I feel "
 "that if we can finish them off in time, we shall be victorious."
 msgstr ""
-"这些生物中最后也是最强的家伙就要来到我们面前了。我觉得如果我们能在时限内解决"
-"他们的话，那我们就能赢！"
+"这些生物中最后也是最强的家伙就要来到我们面前了。我觉得如果能在时限内解决他们"
+"的话，那就能赢！"
 
 #. [lua]: final_spawn
 #: data/multiplayer/scenarios/2p_Dark_Forecast.lua:338
@@ -1138,8 +1178,8 @@ msgid ""
 "blood soaked blade from the last of the rebels. There will be no more "
 "resistance from the local scum. Your reign has finally earned stability."
 msgstr ""
-"当您把浴血的剑刃从最后一个反抗者的体内拔出来时，尖叫声和求饶声最终都消散了。"
-"再也不会有本地渣滓们的反抗，您的统治终于稳定了下来。"
+"当你把浴血的剑刃从最后一个反抗者的体内拔出来时，尖叫声和求饶声最终都消散了。"
+"再也不会有本地渣滓们的反抗了。你的统治终于稳定了下来。"
 
 #. [lua]: weather_map
 #: data/multiplayer/scenarios/2p_Dark_Forecast.lua:459
@@ -1183,7 +1223,7 @@ msgid ""
 "creators."
 msgstr ""
 "这些最不同寻常的洞穴曾经被称为“惨笑恶魔之密室”，也曾是卡•鲁克鬼族的内部堡垒。"
-"卡•鲁克是一族邪恶又狡猾的食人恶魔。在从伊迪亚悄无声息地消失之前，他们曾让东部"
+"卡•鲁克是一族邪恶又狡猾的食人恶魔。在从伊迪亚悄无声息地消失之前，他们曾让东方"
 "大陆的居民恐惧了长达四百年的时间。从那时起，很多派系都参与了对鬼之巢穴统治权"
 "的争夺，他们希望能解开洞穴创造者们奇怪而又神秘的魔力的秘密。"
 
@@ -1198,7 +1238,7 @@ msgid ""
 "Fight through corridors and gardens, and dominate the eastern courtyard of "
 "what used to be the glorious city of Elensefar."
 msgstr ""
-"在回廊与花园之间杀出一条血路，将曾经辉煌过的都市埃仁撒伐的东侧庭院置于您的支"
+"在回廊与花园之间杀出一条血路，将曾经辉煌过的都市埃仁撒伐的东侧庭院置于你的支"
 "配之下。"
 
 #. [time]: id=underground_illum
@@ -1228,14 +1268,12 @@ msgstr "2p — 小村"
 msgid ""
 "Warfare transforms the simple farms and villages of a peaceful region into a "
 "subtly parceled battlefield. Designed by Doc Paterson."
-msgstr "战争把和平的农场与村庄化为细密分割的战场。本地图由多克·帕特森设计。"
+msgstr "战争把和平的农场与村庄化为细密分割的战场。此地图由多克·帕特森设计。"
 
 #. [multiplayer]: id=multiplayer_Hellhole
 #: data/multiplayer/scenarios/2p_Hellhole.cfg:7
-#, fuzzy
-#| msgid "2p — Hamlets"
 msgid "2p — Hellhole"
-msgstr "2p — 小村"
+msgstr "2p — 地狱之门"
 
 #. [multiplayer]: id=multiplayer_Hellhole
 #: data/multiplayer/scenarios/2p_Hellhole.cfg:8
@@ -1248,6 +1286,11 @@ msgid ""
 "eternal scar on the land that to this day summons forth legions of wandering "
 "undead."
 msgstr ""
+"曾经，米利雷尔镇是人类东方边境上的一座宁静村镇。但当巫妖军阀玛尔-拉瓦纳尔崛起"
+"之时，一切都永远改变了。他在小镇中心撕裂出了一道无法言说的黑暗巫术之门，作为"
+"他的死亡军团的第一个集结点。虽然玛尔-拉瓦纳尔已经被击败了，但米利雷尔仍然是一"
+"处荒芜残败的所在，那门乃是大地上永恒的伤疤，仍然召唤着四处徘徊的亡灵军团，直"
+"至今日。"
 
 #. [multiplayer]: id=multiplayer_Hornshark_Island
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:26
@@ -1260,8 +1303,8 @@ msgid ""
 "Players must forge strange alliances with the local inhabitants, in order to "
 "survive on this most unusual of islands. Designed by Doc Paterson."
 msgstr ""
-"玩家必须与土著居民结成奇怪的同盟，以在这片最诡异的群岛之上生存下去。由多克·帕"
-"特森设计。"
+"玩家必须与土著居民结成奇怪的同盟，以在这片最诡异的群岛之上生存下去。此地图由"
+"多克·帕特森设计。"
 
 #. [unit]: type=Young Ogre
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:89
@@ -1271,7 +1314,7 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:330
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:462
 msgid "Big Baby Bo"
-msgstr "大家伙波"
+msgstr "大小子阿波"
 
 #. [unit]: type=Drake Fighter
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:102
@@ -1324,7 +1367,7 @@ msgstr "索里克，死之天命"
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:774
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:906
 msgid "Big Baby Dro"
-msgstr "大家伙多"
+msgstr "大小子啊多"
 
 #. [unit]: type=Drake Fighter
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:547
@@ -1371,12 +1414,12 @@ msgstr "2p — 闹鬼荒地"
 msgid ""
 "Little remains of this once wealthy mining colony, now a haven for raiders "
 "and thieves."
-msgstr "曾经繁华的采矿殖民地的残余，现在是劫掠者和盗贼的避风港。"
+msgstr "曾经繁华的采矿殖民地的些许残余，现在是劫掠者和盗贼的避风港。"
 
 #. [multiplayer]: id=multiplayer_Ruined_Passage
 #: data/multiplayer/scenarios/2p_Ruined_Passage.cfg:7
 msgid "2p — Ruined Passage"
-msgstr ""
+msgstr "2p — 破败通路"
 
 #. [multiplayer]: id=multiplayer_Ruined_Passage
 #: data/multiplayer/scenarios/2p_Ruined_Passage.cfg:8
@@ -1390,18 +1433,23 @@ msgid ""
 "molten brimstone lies land kept pristine and untouched — yet mysteriously "
 "abandoned nonetheless."
 msgstr ""
+"长年以来的传说之中，在被泛滥的灾祸毁灭之前，遥远的西方被说成是万千生物的家"
+"园。传说记载了古人们在最后时刻的足智多谋，那时他们正努力击退狂暴的火焰与烟"
+"尘。直到最近，前往此地的秘密探险队才揭开了故事背后的真相——尤为惊人的是，他们"
+"发现了一排巨大的附魔城墙。在暴烈的火山岛和广阔的硫磺海之间，是一片保持原真、"
+"未受侵扰的土地——但还是被神秘地废弃了。"
 
 #. [multiplayer]: id=multiplayer_Ruphus_Isle
 #: data/multiplayer/scenarios/2p_Ruphus_Isle.cfg:7
 msgid "2p — Ruphus Isle"
-msgstr ""
+msgstr "2p — 鲁弗斯岛"
 
 #. [multiplayer]: id=multiplayer_Ruphus_Isle
 #: data/multiplayer/scenarios/2p_Ruphus_Isle.cfg:8
 msgid ""
 "Players must navigate the dispersive terrain of this small but "
 "topographically dense island."
-msgstr ""
+msgstr "玩家们必须在这麻雀虽小五脏俱全的岛上那多样的地形之中游走。"
 
 #. [multiplayer]: id=multiplayer_Sablestone_Delta
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:5
@@ -1453,7 +1501,8 @@ msgid ""
 "Flooded by the seas and battered by the winter elements, only ruins, water "
 "and ice now remain in the shadow of this once mighty empire."
 msgstr ""
-"经过洪水和严冬的洗礼，这个曾经强大的王国长长的影子里只剩下废墟，水，还有冰。"
+"经过洪水和严冬的洗礼，这个曾经强大的王国那长长的影子里只剩下废墟，水，还有"
+"冰。"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:86
@@ -1467,55 +1516,53 @@ msgid ""
 "Sulla the Tyrant, Empress of the Sinking Tower, Lady of the Walking Glacier, "
 "Sulla the Incinerator, Sulla the Proud and Sulla the Righteous."
 msgstr ""
-"这是苏拉大帝的石像。她也被称为正义的苏拉，暴君苏拉，沉没之塔的女皇，移动冰川"
-"之女爵，焚烧者苏拉，高傲的苏拉以及公正的苏拉。"
+"这是苏拉大帝的石像。她也被称为公正者苏拉，暴君苏拉，沉没之塔的女皇，移动冰川"
+"之女爵，焚烧者苏拉，高傲者苏拉以及正直者苏拉。"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:91
 msgid "Statue of Lhun-dup"
-msgstr "夯•达之像"
+msgstr "夯-达之像"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:93
 msgid "A stone-carved likeness of Lhun-dup, Servant of Sulla."
-msgstr "苏拉的侍从夯•达的石像。"
+msgstr "苏拉的侍从夯-达的石像。"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:95
 msgid "Statue of Ri-nzen"
-msgstr "理•曾之像"
+msgstr "理-曾之像"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:97
 msgid "A stone-carved likeness of Ri-nzen, Servant of Sulla."
-msgstr "苏拉的侍从理•曾的石像。"
+msgstr "苏拉的侍从理-曾的石像。"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:99
 msgid "Statue of Ten-zin"
-msgstr "坦•辛之像"
+msgstr "坦-辛之像"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:101
 msgid "A stone-carved likeness of Ten-zin, Servant of Sulla."
-msgstr "苏拉的侍从坦•辛的石像。"
+msgstr "苏拉的侍从坦-辛的石像。"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:103
 msgid "Statue of Lo-bsang"
-msgstr "罗•桑之像"
+msgstr "罗-桑之像"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:105
 msgid "A stone-carved likeness of Lo-bsang, Servant of Sulla."
-msgstr "苏拉的侍从罗•桑的石像。"
+msgstr "苏拉的侍从罗-桑的石像。"
 
 #. [multiplayer]: id=multiplayer_Swamp_of_Dread
 #: data/multiplayer/scenarios/2p_Swamp_of_Dread.cfg:7
-#, fuzzy
-#| msgid "2p — Sablestone Delta"
 msgid "2p — Swamp of Dread"
-msgstr "2p — 黑石三角洲"
+msgstr "2p — 恐惧沼泽"
 
 #. [multiplayer]: id=multiplayer_Swamp_of_Dread
 #: data/multiplayer/scenarios/2p_Swamp_of_Dread.cfg:8
@@ -1531,6 +1578,13 @@ msgid ""
 "great strategic value means it is fiercely contested by all with military "
 "aims in the Great Continent's heart."
 msgstr ""
+"恐惧沼泽位于泰河之北，是被邪恶魔法所诅咒的宽广而无法居住的泥沼。只有少数几条"
+"路径才不会通往几乎注定的陷阱或是死亡。即便如此，作为平坦的南方与崎岖的北方之"
+"间可以带来丰厚利益的通路，这些路径仍然广受欢迎。勇敢的探险家们穿越危险呃沼"
+"泽，寻找可以赚取利润的敌方建起贸易站。这些路径中最大的一条，艾雷斯之道，自上"
+"古时精灵与矮人的最初战争以来，一直是闻名遐迩的交叉口，亦是争议地区。尽管土地"
+"贫瘠，资源缺乏，但巨大的战略价值让艾雷斯之道成为了泰陆核心地区一切拥有武装力"
+"量的团体激烈争夺的所在。"
 
 #. [multiplayer]: id=multiplayer_The_Freelands
 #: data/multiplayer/scenarios/2p_The_Freelands.cfg:6
@@ -1554,10 +1608,8 @@ msgstr ""
 
 #. [multiplayer]: id=multiplayer_The_Walls_of_Pyrennis
 #: data/multiplayer/scenarios/2p_The_Walls_of_Pyrennis.cfg:7
-#, fuzzy
-#| msgid "2p — Den of Onis"
 msgid "2p — The Walls of Pyrennis"
-msgstr "2p — 鬼之巢穴"
+msgstr "2p — 菲伦尼斯之墙"
 
 #. [multiplayer]: id=multiplayer_The_Walls_of_Pyrennis
 #: data/multiplayer/scenarios/2p_The_Walls_of_Pyrennis.cfg:8
@@ -1573,6 +1625,12 @@ msgid ""
 "Pyrennis have proved astoundingly indestructible both to time and war — that "
 "is, what scattered segments of it were actually completed."
 msgstr ""
+"当兽人部落刚开始大举进入泰陆时，一位名为铁王欧尔高的勇猛统治者着手第一次将忙"
+"于内讧的兽人部落统一起来。他试图征服整片泰陆，将其置于兽人的统治之下，并下令"
+"建造了巨大的菲伦尼斯要塞，作为他的力量的纪念碑。然而，正是这座城堡成了他的败"
+"因——他的属下们不愿意在命定的征服完成之前建好要塞，于是反叛了欧尔高并杀了他，"
+"因而之后数世纪，兽人群落都四分五裂。菲伦尼斯的城墙历经时间与战争的洗礼，坚不"
+"可摧，令人震惊——那是说，它那实际完工的零星部分。"
 
 #. [multiplayer]: id=multiplayer_thousand_stings_garrison
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:37
@@ -1582,7 +1640,7 @@ msgstr "2p — 千刺卫戍军"
 #. [multiplayer]: id=multiplayer_thousand_stings_garrison
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:39
 msgid "A strange place. Designed by Doc Paterson"
-msgstr "一个奇怪的地方。由多克·帕特森设计"
+msgstr "一个奇怪的地方。此地图由多克·帕特森设计"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:85
@@ -1656,10 +1714,8 @@ msgstr "雕像"
 
 #. [multiplayer]: id=multiplayer_Tombs_of_Kesorak
 #: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:7
-#, fuzzy
-#| msgid "5p — Forest of Fear"
 msgid "2p — Tombs of Kesorak"
-msgstr "5p — 恐惧森林"
+msgstr "2p — 科索拉克之墓"
 
 #. [multiplayer]: id=multiplayer_Tombs_of_Kesorak
 #: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:8
@@ -1670,20 +1726,23 @@ msgid ""
 "whispering amongst the withered trees of this barren landscape. Unconcerned "
 "by their gloomy surroundings, your leaders have chosen this place to clash."
 msgstr ""
+"数百年前，战败的巫师科索拉克与他的追随者一起埋葬于此。如今，不洁的寒冷环绕着"
+"坟墓，许多人相信还是可以听到科索拉克的说话声，他在这贫瘠的土地之上枯萎的树丛"
+"之间低语。你们的首领们对身周的黑暗不以为意，还是选定这地方作为冲突的场所。"
 
 #. [note]
 #: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:179
 msgid ""
 "The map contains mausoleums and campfires that shift the time of the day by "
 "one step toward night and day, respectively."
-msgstr ""
+msgstr "此地图包含陵墓和篝火，会分别将时段往夜间和昼间移动一步。"
 
 #. [note]
 #: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:182
 msgid ""
 "The tile in the centre, which contains the casket of the titular "
 "necromancer, is always covered in pitch black fog."
-msgstr ""
+msgstr "中央的地块上有标题所述的死灵法师的灵柩，此处将一直被笼罩在漆黑的雾中。"
 
 #. [multiplayer]: id=multiplayer_Weldyn_Channel
 #: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:5
@@ -1695,7 +1754,7 @@ msgstr "2p — 维尔帝水道"
 msgid ""
 "This vital supply route has played a key role in many of Wesnoth’s greatest "
 "battles."
-msgstr "这个极其重要的运输通道在韦诺的许多最伟大的战役中都起着关键作用。"
+msgstr "这个极其重要的运输通道在韦诺的诸多最伟大的战斗中都起着关键作用。"
 
 #. [multiplayer]: id=multiplayer_Alirok_Marsh
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:5
@@ -1729,7 +1788,7 @@ msgstr "3p — 埃尔洛克沼泽"
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:8
 #: data/multiplayer/scenarios/8p_Morituri.cfg:7
 msgid " Recommended setting of 2 gold per village."
-msgstr " 建议设置每座村庄供给2个金币。"
+msgstr " 建议设置每座村庄供给2枚金币。"
 
 #. [multiplayer]: id=multiplayer_Alirok_Marsh
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:6
@@ -1746,7 +1805,7 @@ msgstr "3p — 霍拉蒂之岛"
 msgid ""
 "Controlling the central island is often the key to victory in this 21x21hex "
 "3 player free for all map."
-msgstr "在这幅21x21的3人自由对战地图上，掌控中央的岛屿常常是获得胜利的关键。"
+msgstr "在这幅21x21的3人自由对战地图上，掌控中央的岛屿往往是获得胜利的关键。"
 
 #. [multiplayer]: id=multiplayer_3p_Morituri
 #: data/multiplayer/scenarios/3p_Morituri.cfg:5
@@ -1758,14 +1817,12 @@ msgstr "3p — 濒临死亡"
 msgid ""
 "Only one faction will emerge victorious from this tightly bordered three-"
 "player map."
-msgstr "只有一个派别能够在这个紧凑的三人对战地图上获胜。"
+msgstr "只有一个派系能够在这幅紧凑的三人对战地图上获胜。"
 
 #. [multiplayer]: id=multiplayer_Bath_of_Glory
 #: data/multiplayer/scenarios/4p_Bath_of_Glory.cfg:7
-#, fuzzy
-#| msgid "4p — Paths of Daggers"
 msgid "4p — Bath of Glory"
-msgstr "4p — 匕首小道"
+msgstr "4p — 荣耀洗礼地"
 
 #. [multiplayer]: id=multiplayer_Bath_of_Glory
 #: data/multiplayer/scenarios/4p_Bath_of_Glory.cfg:9
@@ -1779,6 +1836,12 @@ msgid ""
 "wealthy nobles can turn into veritable battlegrounds — but even this has "
 "become a form of entertainment woven into the allure of the Bath."
 msgstr ""
+"遥远的传奇都市玛利萨特因诸多伟大的工程而闻名——其中最受重视的工程之一，是名"
+"为“荣耀洗礼地”的巨大建物群。浴场是为返家的疲惫将士们建设的休憩的天堂，是只用"
+"砂砾建立起来的惊人的绿洲。一段时间之后，它自身成为了一座城市，围绕着洗礼地那"
+"狂野的文化，美术与音乐兴盛起来。这建筑群十分广阔，也就意味着富有的贵族们之间"
+"的怒火，会让此地成为真正的战场——但就算是战斗，也成为了一种娱乐形式，成为了洗"
+"礼地的诱人之处之一。"
 
 #. [multiplayer]: id=multiplayer_Blue_Water_Province
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:5
@@ -1793,9 +1856,9 @@ msgid ""
 "snowcapped mountains of this small province, its villagers hardly seem to "
 "take notice."
 msgstr ""
-"根据历史记载，蓝水省曾被摧毁并重建了大约二十多次。现在，军队再一次集结在这个"
+"根据史家记载，蓝水省曾被摧毁并重建了大约二十多次。现在，军队再一次集结在这个"
 "有着岩石突兀的河流和白雪皑皑的山脉的小小省份里，而村民们看上去似乎已经完全不"
-"在意。"
+"在意了。"
 
 #. [side]
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:21
@@ -1826,12 +1889,12 @@ msgstr "团队2"
 #. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:5
 msgid "4p — Castle Hopping Isle"
-msgstr "4p — 小岛与城堡"
+msgstr "4p — 跳堡岛"
 
 #. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:7
 msgid "Hop from castle to castle while fighting over a central isle."
-msgstr "从一座城堡赶往另一座城堡，为中央的岛屿而战。"
+msgstr "从一座城堡跳往另一座城堡，为中央的岛屿而战。"
 
 #. [multiplayer]: id=multiplayer_Clash
 #: data/multiplayer/scenarios/4p_Clash.cfg:5
@@ -1845,10 +1908,8 @@ msgstr "适合于2v2对战的小型地图。"
 
 #. [multiplayer]: id=multiplayer_Geothermal
 #: data/multiplayer/scenarios/4p_Geothermal.cfg:7
-#, fuzzy
-#| msgid "2p — Aethermaw"
 msgid "4p — Geothermal"
-msgstr "2p — 安瑟茂"
+msgstr "4p — 地热"
 
 #. [multiplayer]: id=multiplayer_Geothermal
 #: data/multiplayer/scenarios/4p_Geothermal.cfg:9
@@ -1859,6 +1920,9 @@ msgid ""
 "perilous and unstable, is nonetheless rich thanks to numerous foundries "
 "using the heat of volcanoes and hot springs to fuel their forges."
 msgstr ""
+"心之山脉的西沿是一片反差强烈的土地——沸腾的火山口让深蓝色的河水蜿蜒曲绕，穿行"
+"在尖耸的覆雪山脉之中，被翠绿的平原所点缀。这片土地虽然有时危险而不稳定，但仍"
+"然富庶，这都多亏了那许许多多依靠火山和温泉来为锻炉提供热能的铸造厂。"
 
 #. [multiplayer]: id=multiplayer_4p_Hamlets
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:5
@@ -1885,9 +1949,9 @@ msgid ""
 "1&4 vs. 2&3 (northeast vs. southwest). Designed for 75 starting gold, 20 "
 "villages."
 msgstr ""
-"这是一幅非常小的2v2对战地图。在近距离对战中，成功地轮换单位并计划移动将显得非"
-"常重要。团队设定为1号和4号玩家对阵2号和3号玩家（东北对西南）。为75金币的起始"
-"资金而设计，图上有20个村庄。"
+"这是一幅非常小的2v2对战地图。在近距离对战中，成功地轮换单位并计划好行动将显得"
+"非常重要。团队设定为玩家1和4对阵玩家2和3（东北对阵西南）。为75枚金币的起始资"
+"金而设计，图上有20个村庄。"
 
 #. [side]
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:20
@@ -1927,7 +1991,7 @@ msgstr "4p — 山丘之王"
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:9
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:9
 msgid " Recommended setting of 2 gold per village and 150 starting gold."
-msgstr " 建议设置每座村庄供给2个金币，并有150个金币的起始资金。"
+msgstr " 建议设置每座村庄供给2枚金币，并有150枚金币的起始资金。"
 
 #. [multiplayer]: id=multiplayer_King_of_the_Hill
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:9
@@ -1935,7 +1999,7 @@ msgid ""
 "Controlling the area around the central keep is very lucrative in this 36X36 "
 "4 player FFA map. Works fine 2 vs. 2 as well. There are 36 villages."
 msgstr ""
-"在这幅36x36的4人自由对战地图上，控制中央要塞附近的地域有很大好处。本地图也很"
+"在这幅36x36的4人自由对战地图上，控制中央城堡附近的地域有很大好处。此地图也很"
 "适合2v2对战。图上有36座村庄。"
 
 #. [side]
@@ -1971,8 +2035,8 @@ msgid ""
 "A 25x25 2 vs. 2 map centered around a river with keeps in opposite corners. "
 "Designed for players 1&4 vs. 2&3. There are 28 villages."
 msgstr ""
-"这是一幅25x25的2v2对战地图，中间是河流，双方的要塞处在对角线上。适合玩家1和玩"
-"家4对阵玩家2和玩家3。图上有28座村庄。"
+"这是一幅25x25的2v2对战地图，以河流为中心，双方的城堡处于相对的角落。为玩家1和"
+"4对阵玩家2和3而设计。图上有28座村庄。"
 
 #. [multiplayer]: id=multiplayer_4p_Morituri
 #: data/multiplayer/scenarios/4p_Morituri.cfg:5
@@ -1992,7 +2056,7 @@ msgstr "4p — 匕首小道"
 #. [multiplayer]: id=multiplayer_Paths_of_Daggers
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:9
 msgid " Recommended setting of 2 gold per village, 28 villages."
-msgstr " 建议设置每座村庄供给2个金币，图上有28座村庄。"
+msgstr " 建议设置每座村庄供给2枚金币，图上有28座村庄。"
 
 #. [multiplayer]: id=multiplayer_Paths_of_Daggers
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:9
@@ -2000,8 +2064,9 @@ msgid ""
 "A 35X27 2 vs. 2 map with 5 separate paths of engagement. Balanced to be "
 "played east vs. west (1&4 vs. 2&3), but works well with any teams or FFA."
 msgstr ""
-"这是一幅35x27的2v2对战地图，有5条交战路线。从平衡考虑建议玩家组队为东部对阵西"
-"部（即玩家1、4对阵玩家2、3），但是其他组队方式或自由对战（FFA）也没有问题。"
+"这是一幅35x27的2v2对战地图，有5条独立的交战路线。从平衡考虑建议玩家最好组队为"
+"东部对阵西部（即玩家1和4对阵玩家2和3），但是其他组队方式或自由对战（FFA）也没"
+"有问题。"
 
 #. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
 #: data/multiplayer/scenarios/4p_Ruins_of_Terra-Dwelve.cfg:6
@@ -2039,7 +2104,7 @@ msgstr "4p — 地下世界"
 #. [multiplayer]: id=multiplayer_4p_Underworld
 #: data/multiplayer/scenarios/4p_Underworld.cfg:6
 msgid "A fast-paced 2 vs. 2 map set deep below the surface."
-msgstr "一幅快速的2v2地图，设定在地下深处。"
+msgstr "一幅快速2v2地图，设定在地下深处。"
 
 #. [multiplayer]: id=multiplayer_Xanthe_Chaos
 #: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:7
@@ -2051,7 +2116,8 @@ msgstr "4p — 桑希之混沌"
 msgid ""
 "A 24X28 2 vs. 2 map with auxiliary keeps, and a large messy battle in the "
 "center common."
-msgstr "这是一副24X28的2v2地图，地图中央有辅助城堡和大型而混乱的战斗。"
+msgstr ""
+"这是一副24X28的2v2地图，地图上有辅助城堡，地图中心将有大型而混乱的战斗。"
 
 #. [multiplayer]: id=multiplayer_Auction-X
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:5
@@ -2066,11 +2132,10 @@ msgid ""
 "and the best way to determine how much is an auction, LOWEST bid wins. It is "
 "a very small map so 75 gold is recommended for the other players."
 msgstr ""
-"这幅地图上，4个玩家包围着中心要塞，可以和AI玩生存风格的游戏，也可以自由对抗或"
-"者以4v1模式进行游戏。在自由对抗模式或者4v1模式中，中央的玩家需要更多的金币。"
-"决定这个额外金币数值的最好方法是竞价，最*低*出价者获胜。（译者：这个作者真是"
-"华丽丽地狡猾呀。）这是一幅非常小的地图，所以其他4个玩家的推荐初始资金为75金"
-"币。"
+"这幅地图上，4个玩家包围着一座中心城堡，可以和AI玩生存风格的游戏，也可以自由对"
+"战或者以4v1模式进行游戏。在自由对战模式或者4v1模式中，中央的玩家需要更多的金"
+"币。决定额外金币枚数的最好方法是竞价，最<b>低</b>出价者获胜。这是一幅非常小的"
+"地图，所以其他4个玩家的推荐初始资金为75枚金币。"
 
 #. [side]
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:69
@@ -2097,7 +2162,7 @@ msgstr "5p — 蛮荒之地"
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:38
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:7
 msgid " Recommended setting of 1 gold per village."
-msgstr " 推荐设置每座村庄供给1个金币。"
+msgstr " 推荐设置每座村庄供给1枚金币。"
 
 #. [multiplayer]: id=multiplayer_The_Wilderlands
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:38
@@ -2131,22 +2196,22 @@ msgstr "6p — 六角蛋糕"
 #. [multiplayer]: id=multiplayer_Hexcake
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:7
 msgid "2 vs. 2 or 3 vs. 3 team game."
-msgstr "2v2或3v3团队对战。"
+msgstr "2v2或3v3组队对战。"
 
 #. [multiplayer]: id=multiplayer_6p_Team_Survival
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:246
 msgid "6p — Team Survival"
-msgstr "6p — 团队生存"
+msgstr "6p — 组队生存"
 
 #. [multiplayer]: id=multiplayer_6p_Team_Survival
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:248
 msgid "Scenario where the objective is to survive for as long as possible."
-msgstr "本场景的目标是尽可能地存活最长的时间。"
+msgstr "本场景的目标是存活越长越好。"
 
 #. [side]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:261
 msgid "Attacker"
-msgstr "进攻者"
+msgstr "进攻方"
 
 #. [side]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:278
@@ -2156,7 +2221,7 @@ msgstr "进攻者"
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:330
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:343
 msgid "Defender"
-msgstr "防御者"
+msgstr "防御方"
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:361
@@ -2166,17 +2231,17 @@ msgstr "撑过敌军的所有攻击"
 #. [objective]: condition=lose
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:367
 msgid "Death of your team leaders"
-msgstr "团队领袖全部阵亡"
+msgstr "你队首领全部阵亡"
 
 #. [note]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:372
 msgid "Hint: Learning the enemy spawn points and types helps a lot."
-msgstr "提示：获知敌人刷新点的位置和敌人的种类会有很大帮助。"
+msgstr "提示：获知敌人刷新点的位置和敌人的种类会大有帮助。"
 
 #. [label]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:378
 msgid "Turn 2: Loyalists"
-msgstr "回合2：保皇军队"
+msgstr "回合2：保王党人"
 
 #. [label]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:383
@@ -2191,7 +2256,7 @@ msgstr "回合8：反抗势力"
 #. [label]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:393
 msgid "Turn 11: Northerners"
-msgstr "回合11：北方民族"
+msgstr "回合11：北陆之民"
 
 #. [label]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:398
@@ -2218,7 +2283,7 @@ msgstr "仙境"
 msgid ""
 "Congratulations for surviving the map that so many people claim is "
 "impossible!"
-msgstr ""
+msgstr "祝贺你！你成功地在这地图上存活下来了，而很多人声称这是不可能的！"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:530
@@ -2231,7 +2296,7 @@ msgid ""
 "You have lost this game, but fear not. You can always try again. And again. "
 "And again. *Muahahaha*"
 msgstr ""
-"您失败了，不过别气馁。您随时可以再试一次，再一次，再一次，再一次…… *嘛哈哈哈"
+"你失败了，不过别气馁。你总是可以再试一次，再一次，再一次，再一次…… *嘛哈哈哈"
 "哈哈哈哈哈*"
 
 #. [multiplayer]: id=multiplayer_The_Manzivan_Traps
@@ -2248,8 +2313,8 @@ msgid ""
 "starting gold, has 33 villages."
 msgstr ""
 "这是一幅40x20的3v3对战地图。曼西凡陷阱因让人迷惑的困难地形而著称，在这种地形"
-"上很容易因走错位置或过分扩张而失败。玩家1、4、5组队对阵玩家2、3、6（东部对阵"
-"西部）。适合100金币的起始资金，图上有33座村庄。"
+"上很容易因走错位置或过分扩张而失败。团队设定为玩家1、4、5组队对阵玩家2、3、"
+"6（东部对阵西部）。为100枚金币的起始资金而设计，图上有33座村庄。"
 
 #. [multiplayer]: id=multiplayer_Volcano
 #: data/multiplayer/scenarios/6p_Volcano.cfg:7
@@ -2278,9 +2343,9 @@ msgid ""
 "south), but having players 146 or 136 as a team is also interesting. "
 "Designed for 150 starting gold, has 44 villages."
 msgstr ""
-"这是一幅40x30的3v3对战地图。灵活地协调您的联盟是必须的，否则就有被敌方淹没的"
-"危险。玩家1、4、5组队对阵玩家2、3、6（北部对阵南部），但是由玩家1、4、6或1、"
-"3、6组队也很有意思。适合150金币的起始资金，图上有44座村庄。"
+"这是一幅40x30的3v3对战地图。灵活地协调你的联盟是必须的，否则就有被敌方淹没的"
+"危险。团队设定为玩家1、4、5对阵玩家2、3、6（北部对阵南部），但是由玩家1、4、6"
+"或1、3、6组队也很有意思。为150枚金币的起始资金而设计，图上有44座村庄。"
 
 #. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:5
@@ -2294,7 +2359,7 @@ msgid ""
 "requires two teams to coordinate on both offense and defense."
 msgstr ""
 "根据从“濒临死亡”中得到的灵感，这幅8人地图为一场史诗般的战斗创造了舞台，这需要"
-"两个团队在进攻和防守上都进行协调。"
+"两支团队在进攻和防守上都进行协调。"
 
 #. [multiplayer]: id=multiplayer_8p_Morituri
 #: data/multiplayer/scenarios/8p_Morituri.cfg:5
@@ -2324,7 +2389,7 @@ msgid ""
 msgstr ""
 "这是一幅非常小的3v3v3对战地图。因为玩家数量多，建议设置60秒的时限。玩家1、5、"
 "9一队，2、6、7一队，3、4、8一队（北部对东南对西南）。每个玩家平均拥有的村庄数"
-"很少，所以建议设定每座村庄提供3个金币。"
+"很少，所以建议设定每座村庄提供3枚金币。"
 
 #. [scenario]: id=multiplayer_Random_Map
 #. [multiplayer]: id=multiplayer_Random_Map
@@ -2339,7 +2404,7 @@ msgid ""
 "Randomly generated map. Note: random maps are often unbalanced, but if you "
 "have time, you can regenerate them until you get a good one."
 msgstr ""
-"一幅随机生成的地图。注意：随机地图往往不太平衡，但是如果您有足够的时间，可以"
+"一幅随机生成的地图。注意：随机地图往往不太平衡，但是如果你有足够的时间，可以"
 "不断地重新生成，直到得到一幅平衡的地图。"
 
 #. [scenario]: id=multiplayer_Random_Map_Desert
@@ -2356,7 +2421,7 @@ msgid ""
 "unbalanced, but if you have time, you can regenerate them until you get a "
 "good one."
 msgstr ""
-"一幅以沙地为主要地形的随机地图。注意：随机地图往往不太平衡，但是如果您有足够"
+"一幅以沙地为主要地形的随机地图。注意：随机地图往往不太平衡，但是如果你有足够"
 "的时间，可以不断地重新生成，直到得到一幅平衡的地图。"
 
 #. [scenario]: id=multiplayer_Random_Map_Marsh
@@ -2373,7 +2438,7 @@ msgid ""
 "unbalanced, but if you have time, you can regenerate them until you get a "
 "good one."
 msgstr ""
-"一幅以沼泽为主要地形的随机地图。注意：随机地图往往不太平衡，但是如果您有足够"
+"一幅以沼泽为主要地形的随机地图。注意：随机地图往往不太平衡，但是如果你有足够"
 "的时间，可以不断地重新生成，直到得到一幅平衡的地图。"
 
 #. [scenario]: id=multiplayer_Random_Map_Winter
@@ -2391,7 +2456,7 @@ msgid ""
 "can regenerate them until you get a good one."
 msgstr ""
 "一幅设定在冬去春来的时节，以雪地为主要地形的随机地图。注意：随机地图往往不太"
-"平衡，但是如果您有足够的时间，可以不断地重新生成，直到得到一幅平衡的地图。"
+"平衡，但是如果你有足够的时间，可以不断地重新生成，直到得到一幅平衡的地图。"
 
 #. [multiplayer]: id=wesbench_ai
 #: data/multiplayer/scenarios/Wesbench_AI.cfg:9
@@ -2434,65 +2499,3 @@ msgid ""
 msgstr ""
 "这是一幅韦诺基准测试图，命令行参数为：--no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end。"
-
-#~ msgid "Aethermaw — Created by Doc Paterson"
-#~ msgstr "安瑟茂 — 本地图由多克·帕特森设计。"
-
-#, fuzzy
-#~| msgid ""
-#~| "The Great Mage Sulla has transported your armies to this bizarre nexus, "
-#~| "and demands that you amuse her by doing battle.\n"
-#~| "\n"
-#~| "\n"
-#~| "\n"
-#~| "\n"
-#~| "<span color='red'>Note:</span>\n"
-#~| "\n"
-#~| "<span color='green'>Units may not move into a hex with a rock cairn. "
-#~| "They may, however, be recruited to, and move from, such hexes.</span>\n"
-#~| "\n"
-#~| "<span color='green'>Beginning on turn 4, the Great Mage Sulla will begin "
-#~| "to unite the two halves of the battlefield. The process will be complete "
-#~| "by the end of turn 6.</span>\n"
-#~ msgid ""
-#~ "The Great Mage Sulla has transported your armies to this bizarre nexus, "
-#~ "and demands that you amuse her by doing battle.\n"
-#~ "\n"
-#~ "<span color='red'>Note:</span>\n"
-#~ "\n"
-#~ "<span color='green'>Units may not move into a hex with a rock cairn. They "
-#~ "may, however, be recruited to, and move from, such hexes.</span>\n"
-#~ "\n"
-#~ "<span color='green'>Beginning on turn 4, the Great Mage Sulla will begin "
-#~ "to unite the two halves of the battlefield. The process will be complete "
-#~ "by the end of turn 6.</span>\n"
-#~ msgstr ""
-#~ "大法师苏拉把您的军队传送到了这诡异的能量结点，并要求您作战以取悦她。\n"
-#~ "\n"
-#~ "\n"
-#~ "\n"
-#~ "\n"
-#~ "<span color='red'>注意：</span>\n"
-#~ "\n"
-#~ "<span color='green'>单位不能移动到有岩石界碑的格子中，但可以被招募到这种格"
-#~ "子里，并移动出去。</span>\n"
-#~ "\n"
-#~ "<span color='green'>从第四回合开始，大法师苏拉会将战场的两部分何为一体。这"
-#~ "个过程将在第六回合结束时完成。</span>\n"
-
-#~ msgid ""
-#~ "Congratulations for surviving the map that so many people claim is "
-#~ "impossible. Frankly, I haven’t got a clue as to how you did it, so send "
-#~ "me the replay by mail to: roze@roze.mine.nu. Thank You!"
-#~ msgstr ""
-#~ "祝贺您在这个地图中生存了下来，尽管这被许多人认为是个不可能完成的任务。坦白"
-#~ "地说，我无法想像您是怎么做到的，所以请把录像通过邮件寄给我：roze@roze."
-#~ "mine.nu。非常感谢！"
-
-#, fuzzy
-#~| msgid "Random map"
-#~ msgid "Random map by YAMG"
-#~ msgstr "随机地图"
-
-#~ msgid "Custom"
-#~ msgstr "自定义"
