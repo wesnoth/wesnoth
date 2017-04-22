@@ -322,10 +322,10 @@ bool map_location::matches_range(const std::string& xloc, const std::string &ylo
 
 		size_t size;
 		for(size = xlocs.size(); size < ylocs.size(); ++size) {
-			xlocs.push_back("");
+			xlocs.emplace_back();
 		}
 		while(size > ylocs.size()) {
-			ylocs.push_back("");
+			ylocs.emplace_back();
 		}
 		for(size_t i = 0; i != size; ++i) {
 			if(matches_range(xlocs[i],ylocs[i]))

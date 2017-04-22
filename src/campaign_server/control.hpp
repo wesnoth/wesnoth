@@ -39,7 +39,7 @@ public:
 	control_line(const std::string& str) : args_(utils::split(str, ' '))
 	{
 		if(args_.empty()) {
-			args_.push_back("");
+			args_.emplace_back();
 		}
 	}
 

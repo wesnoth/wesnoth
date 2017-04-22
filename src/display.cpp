@@ -444,7 +444,7 @@ void display::fill_images_list(const std::string& prefix, std::vector<std::strin
 			break;
 	}
 	if (images.empty())
-		images.push_back("");
+		images.emplace_back();
 }
 
 const std::string& display::get_variant(const std::vector<std::string>& variants, const map_location &loc) const

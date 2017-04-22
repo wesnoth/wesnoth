@@ -525,13 +525,13 @@ void sdl_ttf::set_font_list(const std::vector<subset_descriptor>& fontlist)
 		if (f.bold_name && check_font_file(*f.bold_name)) {
 			bold_names.push_back(*f.bold_name);
 		} else {
-			bold_names.push_back("");
+			bold_names.emplace_back();
 		}
 
 		if (f.italic_name && check_font_file(*f.italic_name)) {
 			italic_names.push_back(*f.italic_name);
 		} else {
-			italic_names.push_back("");
+			italic_names.emplace_back();
 		}
 
 		for (const subset_descriptor::range &cp_range : f.present_codepoints) {

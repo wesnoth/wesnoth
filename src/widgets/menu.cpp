@@ -319,14 +319,14 @@ void menu::create_help_strings()
 		i->help.clear();
 		for(std::vector<std::string>::iterator j = i->fields.begin(); j != i->fields.end(); ++j) {
 			if(std::find(j->begin(),j->end(),static_cast<char>(HELP_STRING_SEPARATOR)) == j->end()) {
-				i->help.push_back("");
+				i->help.emplace_back();
 			} else {
 				const std::vector<std::string>& items = utils::split(*j, HELP_STRING_SEPARATOR, 0);
 				if(items.size() >= 2) {
 					*j = items.front();
 					i->help.push_back(items.back());
 				} else {
-					i->help.push_back("");
+					i->help.emplace_back();
 				}
 			}
 		}

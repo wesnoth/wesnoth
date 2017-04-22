@@ -236,7 +236,7 @@ void parser::parse_variable()
 {
 	config& cfg = *elements.top().cfg;
 	std::vector<std::string> variables;
-	variables.push_back("");
+	variables.emplace_back();
 
 	while (tok_.current_token().type != '=') {
 		switch(tok_.current_token().type) {
@@ -249,7 +249,7 @@ void parser::parse_variable()
 			if(variables.back().empty()) {
 				error(_("Empty variable name"));
 			} else {
-				variables.push_back("");
+				variables.emplace_back();
 			}
 			break;
 		default:
