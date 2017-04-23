@@ -18,6 +18,7 @@
 #include "variable.hpp" // vconfig
 #include "game_data.hpp"
 #include "units/unit.hpp"
+#include "sound.hpp"
 
 #include <cassert>
 #include <iterator>
@@ -113,6 +114,7 @@ namespace {
 
 		game_events::queued_event q(tag, "", map_location(x1, y1, wml_loc()), map_location(x2, y2, wml_loc()), e.data);
 		resources::lua_kernel->run_wml_action("command", vconfig(e.commands), q);
+		sound::commit_music_changes();
 
 		x1 = oldx1; y1 = oldy1;
 		x2 = oldx2; y2 = oldy2;

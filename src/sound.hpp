@@ -41,7 +41,7 @@ void stop_UI_sound();
 void stop_bell();
 
 // Read config entry, alter track list accordingly.
-void play_music_config(const config &music_node);
+void play_music_config(const config &music_node, int i = -1);
 // Act on any track list changes from above.
 void commit_music_changes();
 
@@ -105,6 +105,7 @@ void set_UI_volume(int vol);
 
 unsigned int get_current_track();
 unsigned int get_num_tracks();
+void remove_track(unsigned int i);
 
 }
 

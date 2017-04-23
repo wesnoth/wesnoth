@@ -190,6 +190,21 @@ namespace sound {
 			current_track_list[i] = to;
 		}
 	}
+
+	void remove_track(unsigned int i) {
+		if(i >= current_track_list.size()) {
+			return;
+		}
+		if(i == current_track_index) {
+			// Let the track finish playing
+			current_track.set_play_once(true);
+			// Set current index to the new size of the list
+			current_track_index = current_track_list.size() - 1;
+		} else if(i < current_track_index) {
+			current_track_index--;
+		}
+		current_track_list.erase(current_track_list.begin() + i);
+	}
 }
 
 static bool track_ok(const std::string& id)
@@ -562,7 +577,7 @@ void play_music_repeatedly(const std::string &id)
 	}
 }
 
-void play_music_config(const config &music_node)
+void play_music_config(const config &music_node, int i)
 {
 	music_track track( music_node );
 
@@ -583,18 +598,21 @@ void play_music_config(const config &music_node)
 		current_track_list.clear();
 	}
 
+	auto iter = current_track_list.end();
 	if(track.valid()) {
 		// Avoid 2 tracks with the same name, since that can cause an infinite loop
 		// in choose_track(), 2 tracks with the same name will always return the
 		// current track and track_ok() doesn't allow that.
-		std::vector<music_track>::const_iterator itor = current_track_list.begin();
-		while(itor != current_track_list.end()) {
-			if(track == *itor) break;
-			++itor;
-		}
-
-		if(itor == current_track_list.end()) {
-			current_track_list.push_back(track);
+		if(std::find(current_track_list.begin(), current_track_list.end(), track) == current_track_list.end()) {
+			if(i < 0 || static_cast<size_t>(i) >= current_track_list.size()) {
+				current_track_list.emplace_back(track);
+				iter = current_track_list.end() - 1;
+			} else {
+				iter = current_track_list.emplace(current_track_list.begin() + 1, track);
+				if(current_track_index >= static_cast<size_t>(i)) {
+					current_track_index++;
+				}
+			}
 		} else {
 			ERR_AUDIO << "tried to add duplicate track '" << track.file_path() << "'" << std::endl;
 		}
@@ -602,8 +620,8 @@ void play_music_config(const config &music_node)
 
 	// They can tell us to start playing this list immediately.
 	if (track.immediate()) {
-		current_track = track;
-		current_track_index = current_track_list.size() - 1;
+		current_track = *iter;
+		current_track_index = iter - current_track_list.begin();
 		play_music();
 	} else if (!track.append()) { // Make sure the current track is finished
 		current_track.set_play_once(true);
