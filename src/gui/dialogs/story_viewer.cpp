@@ -144,6 +144,7 @@ void story_viewer::display_part(window& window)
 	// Background images
 	//
 	bool has_background = false;
+	config* base_layer = nullptr;
 
 	for(const auto& layer : current_part_->get_background_layers()) {
 		has_background |= !layer.file().empty();
@@ -173,24 +174,32 @@ void story_viewer::display_part(window& window)
 		image["h"] = height_formula;
 		image["name"] = layer.file();
 
-		/* In order to avoid manually loading the image and calculating the scaling factor, we instead
-		 * delegate the task of setting the necessary variables to the canvas once the calculations
-		 * have been made internally.
-		 *
-		 * This sets the necessary values with the data for "this" image when its drawn.
-		 */
-		if(layer.is_base_layer()) {
-			image["actions"] = R"((
-				[
-					set_var('base_scale_x', as_decimal(image_width)  / as_decimal(image_original_width)),
-					set_var('base_scale_y', as_decimal(image_height) / as_decimal(image_original_height)),
-					set_var('base_origin', loc(clip_x, clip_y))
-				]
-			))";
-		}
+		config& layer_image = cfg.add_child("image", image);
 
-		cfg.add_child("image", image);
+		if(base_layer == nullptr && layer.is_base_layer()) {
+			base_layer = &layer_image;
+		}
 	}
+
+	if(base_layer == nullptr) {
+		// If no base layer was explicitly specified, assume the first one.
+		// TODO: What would happen if no background image was specified at all?
+		base_layer = &cfg.child("image");
+	}
+
+	/* In order to avoid manually loading the image and calculating the scaling factor, we instead
+	 * delegate the task of setting the necessary variables to the canvas once the calculations
+	 * have been made internally.
+	 *
+	 * This sets the necessary values with the data for "this" image when its drawn.
+	 */
+	(*base_layer)["actions"] = R"((
+		[
+			set_var('base_scale_x', as_decimal(image_width)  / as_decimal(image_original_width)),
+			set_var('base_scale_y', as_decimal(image_height) / as_decimal(image_original_height)),
+			set_var('base_origin', loc(clip_x, clip_y))
+		]
+	))";
 
 	cfg.add_child("image", get_title_area_decor_config());
 
