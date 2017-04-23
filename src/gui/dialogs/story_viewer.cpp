@@ -16,6 +16,7 @@
 
 #include "gui/dialogs/story_viewer.hpp"
 
+#include "formula/callable_objects.hpp"
 #include "formula/variant.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/point.hpp"
@@ -176,34 +177,36 @@ void story_viewer::display_part(window& window)
 
 		config& layer_image = cfg.add_child("image", image);
 
-		if(base_layer == nullptr && layer.is_base_layer()) {
+		if(base_layer == nullptr || layer.is_base_layer()) {
 			base_layer = &layer_image;
 		}
 	}
 
-	if(base_layer == nullptr) {
-		// If no base layer was explicitly specified, assume the first one.
-		// TODO: What would happen if no background image was specified at all?
-		base_layer = &cfg.child("image");
-	}
+	canvas& window_canvas = window.get_canvas(0);
 
 	/* In order to avoid manually loading the image and calculating the scaling factor, we instead
 	 * delegate the task of setting the necessary variables to the canvas once the calculations
 	 * have been made internally.
 	 *
-	 * This sets the necessary values with the data for "this" image when its drawn.
+	 * This sets the necessary values with the data for "this" image when its drawn. If no base
+	 * layer was found (which would be the case if no backgrounds were provided at all), simply set
+	 * some sane defaults directly.
 	 */
-	(*base_layer)["actions"] = R"((
-		[
-			set_var('base_scale_x', as_decimal(image_width)  / as_decimal(image_original_width)),
-			set_var('base_scale_y', as_decimal(image_height) / as_decimal(image_original_height)),
-			set_var('base_origin', loc(clip_x, clip_y))
-		]
-	))";
+	if(base_layer != nullptr) {
+		(*base_layer)["actions"] = R"((
+			[
+				set_var('base_scale_x', as_decimal(image_width)  / as_decimal(image_original_width)),
+				set_var('base_scale_y', as_decimal(image_height) / as_decimal(image_original_height)),
+				set_var('base_origin', loc(clip_x, clip_y))
+			]
+		))";
+	} else {
+		window_canvas.set_variable("base_scale_x", wfl::variant(1));
+		window_canvas.set_variable("base_scale_y", wfl::variant(1));
+		window_canvas.set_variable("base_origin",  wfl::variant(std::make_shared<wfl::location_callable>(map_location::ZERO())));
+	}
 
 	cfg.add_child("image", get_title_area_decor_config());
-
-	canvas& window_canvas = window.get_canvas(0);
 
 	window_canvas.set_cfg(cfg);
 
