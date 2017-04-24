@@ -64,6 +64,8 @@ private:
 	template<custom_tod::string_pair(*fptr)(const time_of_day&)>
 	void select_file(window& window, const std::string& default_dir);
 
+	void color_slider_callback(window& window);
+
 	void update_tod_display(window& window);
 
 	void update_lawful_bonus(window& window);

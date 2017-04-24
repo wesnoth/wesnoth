@@ -228,9 +228,6 @@ void editor_controller::custom_tods_dialog()
 		// TODO save the new tod here
 	}
 
-	// TODO: the Custom ToD dialog uses the color overlay mechanism - this needs to be fixed.
-	//       For now, reset any changes made here.
-	gui_->adjust_color_overlay(0,0,0);
 	gui_->update_tod();
 
 	context_manager_->refresh_all();

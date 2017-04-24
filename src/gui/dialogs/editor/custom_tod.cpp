@@ -171,15 +171,15 @@ void custom_tod::pre_show(window& window)
 
 	connect_signal_notify_modified(
 			*(color_field_r_->get_widget()),
-			std::bind(&custom_tod::update_tod_display, this, std::ref(window)));
+			std::bind(&custom_tod::color_slider_callback, this, std::ref(window)));
 
 	connect_signal_notify_modified(
 			*(color_field_g_->get_widget()),
-			std::bind(&custom_tod::update_tod_display, this, std::ref(window)));
+			std::bind(&custom_tod::color_slider_callback, this, std::ref(window)));
 
 	connect_signal_notify_modified(
 			*(color_field_b_->get_widget()),
-			std::bind(&custom_tod::update_tod_display, this, std::ref(window)));
+			std::bind(&custom_tod::color_slider_callback, this, std::ref(window)));
 
 	update_selected_tod_info(window);
 }
@@ -261,6 +261,17 @@ const time_of_day& custom_tod::get_selected_tod() const
 	}
 }
 
+void custom_tod::color_slider_callback(window& window)
+{
+	time_of_day& current_tod = times_[current_tod_];
+
+	current_tod.color.r = color_field_r_->get_widget_value(window);
+	current_tod.color.g = color_field_g_->get_widget_value(window);
+	current_tod.color.b = color_field_b_->get_widget_value(window);
+
+	update_tod_display(window);
+}
+
 void custom_tod::update_tod_display(window& window)
 {
 	display* disp = display::get_singleton();
@@ -280,11 +291,7 @@ void custom_tod::update_tod_display(window& window)
 	// If this ceases to be the case in the future, you'll need to call
 	// redraw_everything() instead.
 
-	disp->adjust_color_overlay(
-		color_field_r_->get_widget_value(window),
-		color_field_g_->get_widget_value(window),
-		color_field_b_->get_widget_value(window)
-	);
+	disp->update_tod(&get_selected_tod());
 
 	// invalidate all tiles so they are redrawn with the new ToD tint next
 	disp->invalidate_all();
