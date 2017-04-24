@@ -34,6 +34,10 @@
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
+#include "play_controller.hpp"
+#include "game_display.hpp"
+#include "game_config_manager.hpp"
+#include "resources.hpp"
 
 #include <boost/math/common_factor_rt.hpp>
 
@@ -120,9 +124,10 @@ bool show_theme_dialog(CVideo& video)
 	const int action = dlg.selected_index();
 
 	if (action >= 0) {
-		// FIXME: it would be preferable for the new theme to take effect
-		//        immediately.
 		preferences::set_theme(themes[action].id);
+		if(resources::screen && resources::controller) {
+			resources::screen->set_theme(resources::controller->get_theme(game_config_manager::get()->game_config(), themes[action].id));
+		}
 
 		return true;
 	}

@@ -375,6 +375,7 @@ public:
 	void clear_redraw_observers();
 
 	theme& get_theme() { return theme_; }
+	void set_theme(config theme_cfg);
 
 	/**
 	 * Retrieves a pointer to a theme UI button.

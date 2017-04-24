@@ -255,6 +255,13 @@ display::~display()
 	resources::fake_units = nullptr;
 }
 
+void display::set_theme(config theme_cfg) {
+	theme_ = theme(theme_cfg, screen_area());
+	menu_buttons_.clear();
+	action_buttons_.clear();
+	create_buttons();
+	invalidate_theme();
+}
 
 void display::init_flags() {
 
