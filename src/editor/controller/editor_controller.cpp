@@ -222,17 +222,16 @@ void editor_controller::custom_tods_dialog()
 		return;
 	}
 
-	image::color_adjustment_resetter adjust_resetter;
-
 	tod_manager& manager = *get_current_map_context().get_time_manager();
 
 	if(gui2::dialogs::custom_tod::execute(manager.times(), manager.get_current_time(), gui().video())) {
 		// TODO save the new tod here
 	}
 
-	// TODO: when saving the ToD is actually possible, deal with actually registering the choice of
-	//       ToD or changes in the ToD values with the manager. In that case this should be conditional again.
-	adjust_resetter.reset();
+	// TODO: the Custom ToD dialog uses the color overlay mechanism - this needs to be fixed.
+	//       For now, reset any changes made here.
+	gui_->adjust_color_overlay(0,0,0);
+	gui_->update_tod();
 
 	context_manager_->refresh_all();
 }
@@ -641,9 +640,7 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 			case TIME:
 				{
 					get_current_map_context().set_starting_time(index);
-					const tod_manager* tod = context_manager_->get_map_context().get_time_manager();
-					tod_color col = tod->times()[index].color;
-					gui_->adjust_color_overlay(col.r, col.g, col.b);
+					gui_->update_tod();
 					return true;
 				}
 			case LOCAL_TIME:
@@ -667,9 +664,8 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 					tods_map::iterator iter = tods_.begin();
 					std::advance(iter, index);
 					get_current_map_context().replace_schedule(iter->second.second);
-					const tod_manager* tod = get_current_map_context().get_time_manager();
-					tod_color col = tod->times()[0].color;
-					gui_->adjust_color_overlay(col.r, col.g, col.b);
+					// TODO: test again after the assign-schedule menu is fixed. Should work, though.
+					gui_->update_tod();
 					return true;
 				}
 			case LOCAL_SCHEDULE:
