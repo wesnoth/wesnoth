@@ -42,7 +42,7 @@ class addon_manager : public modal_dialog
 public:
 	explicit addon_manager(addons_client& client);
 
-	bool get_need_wml_cache_refresh_() const
+	bool get_need_wml_cache_refresh() const
 	{
 		return need_wml_cache_refresh_;
 	}

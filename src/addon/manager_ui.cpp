@@ -76,7 +76,7 @@ bool addons_manager_ui(CVideo& v, const std::string& remote_address)
 		gui2::dialogs::addon_manager dlg(client);
 		dlg.show(v);
 
-		need_wml_cache_refresh = dlg.get_need_wml_cache_refresh_();
+		need_wml_cache_refresh = dlg.get_need_wml_cache_refresh();
 	} catch(const config::error& e) {
 		ERR_CFG << "config::error thrown during transaction with add-on server; \""<< e.message << "\"" << std::endl;
 		gui2::show_error_message(v, _("Network communication error."));
