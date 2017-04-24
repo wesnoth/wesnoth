@@ -1354,7 +1354,7 @@ void text_shape::draw(surface& canvas,
 	}
 
 	SDL_Rect dst = sdl::create_rect(x, y, canvas->w, canvas->h);
-	blit_surface(surf, 0, canvas, &dst);
+	blit_surface(surf, nullptr, canvas, &dst);
 }
 
 /***** ***** ***** ***** ***** CANVAS ***** ***** ***** ***** *****/
