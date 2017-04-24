@@ -35,6 +35,7 @@
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
 #include "play_controller.hpp"
+#include "game_data.hpp"
 #include "game_display.hpp"
 #include "game_config_manager.hpp"
 #include "resources.hpp"
@@ -125,7 +126,7 @@ bool show_theme_dialog(CVideo& video)
 
 	if (action >= 0) {
 		preferences::set_theme(themes[action].id);
-		if(resources::screen && resources::controller) {
+		if(resources::screen && resources::controller && resources::gamedata && resources::gamedata->get_theme().empty()) {
 			resources::screen->set_theme(resources::controller->get_theme(game_config_manager::get()->game_config(), themes[action].id));
 		}
 
