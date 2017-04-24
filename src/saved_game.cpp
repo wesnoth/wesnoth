@@ -167,7 +167,7 @@ void saved_game::set_defaults()
 {
 	const bool is_loaded_game = this->starting_pos_type_ != STARTINGPOS_SCENARIO;
 	const bool is_multiplayer_tag = classification().get_tagname() == "multiplayer";
-	static const std::vector<std::string> team_defaults = {
+	static const std::vector<std::string> team_defaults {
 		"carryover_percentage",
 		"carryover_add",
 	};

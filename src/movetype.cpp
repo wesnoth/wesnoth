@@ -779,7 +779,7 @@ void movetype::merge(const config & new_cfg, bool overwrite)
 /**
  * The set of strings defining effects which apply to movetypes.
  */
-const std::set<std::string> movetype::effects = {"movement_costs",
+const std::set<std::string> movetype::effects {"movement_costs",
 	"vision_costs", "jamming_costs", "defense", "resistance"};
 
 /**

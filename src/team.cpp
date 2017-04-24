@@ -53,7 +53,7 @@ const int team::default_team_gold_ = 100;
 
 // Update this list of attributes if you change what is used to define a side
 // (excluding those attributes used to define the side's leader).
-const std::set<std::string> team::attributes = {"ai_config",
+const std::set<std::string> team::attributes {"ai_config",
 	"carryover_add", "carryover_percentage", "color", "controller", "current_player", "defeat_condition", "flag",
 	"flag_icon", "fog", "fog_data", "gold", "hidden", "income",
 	"no_leader", "objectives", "objectives_changed", "persistent", "lost",

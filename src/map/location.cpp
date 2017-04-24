@@ -49,7 +49,7 @@ std::ostream &operator<<(std::ostream &s, std::vector<map_location> const &v) {
  *
  **/
 const std::vector<map_location::DIRECTION> & map_location::default_dirs() {
-	static const std::vector<map_location::DIRECTION> dirs = {map_location::NORTH,
+	static const std::vector<map_location::DIRECTION> dirs {map_location::NORTH,
 				map_location::NORTH_EAST, map_location::SOUTH_EAST, map_location::SOUTH,
 				map_location::SOUTH_WEST, map_location::NORTH_WEST};
 	return dirs;

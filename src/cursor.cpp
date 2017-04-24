@@ -91,12 +91,12 @@ tribool cache_color[cursor::NUM_CURSORS] = {
 // This array must have members corresponding to cursor::CURSOR_TYPE enum members
 // Apple need 16x16 b&w cursors
 #ifdef __APPLE__
-const std::string bw_images[cursor::NUM_CURSORS] = { "normal.png", "wait-alt.png", "move.png", "attack.png", "select.png", "move_drag_alt.png" , "attack_drag_alt.png", "no_cursor.png"};
+const std::string bw_images[cursor::NUM_CURSORS] { "normal.png", "wait-alt.png", "move.png", "attack.png", "select.png", "move_drag_alt.png" , "attack_drag_alt.png", "no_cursor.png"};
 #else
-const std::string bw_images[cursor::NUM_CURSORS] = { "normal.png", "wait.png", "move.png", "attack.png", "select.png", "move_drag.png", "attack_drag.png", "no_cursor.png"};
+const std::string bw_images[cursor::NUM_CURSORS] { "normal.png", "wait.png", "move.png", "attack.png", "select.png", "move_drag.png", "attack_drag.png", "no_cursor.png"};
 #endif
 
-const std::string color_images[cursor::NUM_CURSORS] = { "normal.png", "wait.png", "move.png", "attack.png", "select.png", "move_drag.png", "attack_drag.png", ""};
+const std::string color_images[cursor::NUM_CURSORS] { "normal.png", "wait.png", "move.png", "attack.png", "select.png", "move_drag.png", "attack_drag.png", ""};
 
 // Position of the hotspot of the cursor, from the normal topleft
 // These are only for the color cursors

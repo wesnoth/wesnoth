@@ -774,7 +774,7 @@ std::pair<int, int> parse_range(const std::string& str)
 	const std::string::const_iterator dash = std::find(str.begin(), str.end(), '-');
 	const std::string a(str.begin(), dash);
 	const std::string b = dash != str.end() ? std::string(dash + 1, str.end()) : a;
-	std::pair<int,int> res = {0,0};
+	std::pair<int,int> res {0,0};
 	try {
 		res = std::make_pair(std::stoi(a), std::stoi(b));
 		if (res.second < res.first) {

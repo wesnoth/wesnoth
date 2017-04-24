@@ -200,7 +200,7 @@ BOOST_AUTO_TEST_CASE ( map_location_characterization_test_default_mode )
 
 BOOST_AUTO_TEST_CASE ( map_location_characterization_test_radial_mode )
 {
-	std::vector<std::pair<size_t, std::string> > generated_answers = {
+	std::vector<std::pair<size_t, std::string> > generated_answers {
 std::make_pair(7,	"se"),
 std::make_pair(6,	"sw"),
 std::make_pair(6,	"n"),

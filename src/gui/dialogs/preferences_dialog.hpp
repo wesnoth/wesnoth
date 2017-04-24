@@ -48,7 +48,7 @@ namespace preferences {
 	 * widget would allow specifying page by string id, but that would require changes to
 	 * generator. It's something to look into, however.
 	 */
-	static std::map<PREFERENCE_VIEW, std::pair<int,int>> pef_view_map = {
+	static std::map<PREFERENCE_VIEW, std::pair<int,int>> pef_view_map {
 		{VIEW_DEFAULT, {0,0}},
 		{VIEW_FRIENDS, {4,1}}
 	};

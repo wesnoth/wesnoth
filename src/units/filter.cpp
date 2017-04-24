@@ -145,7 +145,7 @@ public:
 			}
 			else {
 				static const int NUM_VALID_TAGS = 5;
-				static const std::string valid_tags[NUM_VALID_TAGS] = {
+				static const std::string valid_tags[NUM_VALID_TAGS] {
 					"filter_vision",
 					"filter_adjacent",
 					"filter_location",

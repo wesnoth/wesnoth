@@ -282,7 +282,7 @@ WML_HANDLER_FUNCTION(do_command,, cfg)
 		return;
 	}
 
-	static const std::set<std::string> allowed_tags = {"attack", "move", "recruit", "recall", "disband", "fire_event", "lua_ai"};
+	static const std::set<std::string> allowed_tags {"attack", "move", "recruit", "recall", "disband", "fire_event", "lua_ai"};
 
 	const bool is_too_early = resources::gamedata->phase() != game_data::START && resources::gamedata->phase() != game_data::PLAY;
 	if(is_too_early)

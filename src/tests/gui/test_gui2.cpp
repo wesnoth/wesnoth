@@ -480,7 +480,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test_tip("tooltip");
 
 	std::vector<std::string>& list = gui2::unit_test_registered_window_list();
-	std::vector<std::string> omitted = {
+	std::vector<std::string> omitted {
 		/*
 		 * The unit attack unit test are disabled for now, they calling parameters
 		 * don't allow 'nullptr's needs to be fixed.
@@ -939,7 +939,7 @@ struct dialog_tester<mp_join_game_password_prompt>
 template<>
 struct dialog_tester<depcheck_confirm_change>
 {
-	std::vector<std::string> mods = {"mod_one", "some other", "more"};
+	std::vector<std::string> mods {"mod_one", "some other", "more"};
 	depcheck_confirm_change* create()
 	{
 		return new depcheck_confirm_change(true, mods, "requester");
@@ -949,7 +949,7 @@ struct dialog_tester<depcheck_confirm_change>
 template<>
 struct dialog_tester<depcheck_select_new>
 {
-	std::vector<std::string> mods = {"mod_one", "some other", "more"};
+	std::vector<std::string> mods {"mod_one", "some other", "more"};
 	depcheck_select_new* create()
 	{
 		return new depcheck_select_new(ng::depcheck::MODIFICATION, mods);
@@ -994,7 +994,7 @@ struct dialog_tester<theme_list>
 		ti.description = name + " this is a description";
 		return ti;
 	}
-	std::vector<theme_info> themes = {make_theme("classic"), make_theme("new"), make_theme("more"), make_theme("themes")};
+	std::vector<theme_info> themes {make_theme("classic"), make_theme("new"), make_theme("more"), make_theme("themes")};
 	theme_list* create()
 	{
 		return new theme_list(themes, 0);
@@ -1112,7 +1112,7 @@ struct dialog_tester<title_screen>
 template<>
 struct dialog_tester<wml_error>
 {
-	std::vector<std::string> files = {"some", "files", "here"};
+	std::vector<std::string> files {"some", "files", "here"};
 	wml_error* create()
 	{
 		return new wml_error("Summary", "Post summary", files, "Details");

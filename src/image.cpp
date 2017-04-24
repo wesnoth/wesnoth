@@ -596,7 +596,7 @@ static surface apply_light(surface surf, const light_string& ls){
 	} else {
 		//build all the paths for lightmap sources
 		static const std::string p = "terrain/light/light";
-		static const std::string lm_img[19] = {
+		static const std::string lm_img[19] {
 			p+".png",
 			p+"-concave-2-tr.png", p+"-concave-2-r.png", p+"-concave-2-br.png",
 			p+"-concave-2-bl.png", p+"-concave-2-l.png", p+"-concave-2-tl.png",

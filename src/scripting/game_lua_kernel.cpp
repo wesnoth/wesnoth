@@ -4206,7 +4206,7 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "remove_shroud",             &dispatch2<&game_lua_kernel::intf_shroud_op, false >                 },
 		{ nullptr, nullptr }
 	};
-	std::vector<lua_cpp::Reg> const cpp_callbacks = {
+	std::vector<lua_cpp::Reg> const cpp_callbacks {
 		{"add_ai_component", std::bind(intf_modify_ai, _1, "add")},
 		{"delete_ai_component", std::bind(intf_modify_ai, _1, "delete")},
 		{"change_ai_component", std::bind(intf_modify_ai, _1, "change")},

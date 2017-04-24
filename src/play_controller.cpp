@@ -86,7 +86,7 @@ static lg::log_domain log_engine_enemies("engine/enemies");
  */
 static void copy_persistent(const config& src, config& dst)
 {
-	static const std::set<std::string> attrs = {
+	static const std::set<std::string> attrs {
 			"description",
 			"name",
 			"victory_when_enemies_defeated",
@@ -95,7 +95,7 @@ static void copy_persistent(const config& src, config& dst)
 			"experience_modifier",
 			"require_scenario"};
 
-	static const std::set<std::string> tags = {
+	static const std::set<std::string> tags {
 			"terrain_graphics",
 			"lua"};
 

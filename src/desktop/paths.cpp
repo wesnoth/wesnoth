@@ -105,7 +105,7 @@ void enumerate_storage_devices(std::vector<path_info>& res)
 	// reasoning here is that if any or all of them are non-empty, they are
 	// probably used for _something_ that might be of interest to the user (if not
 	// directly and actively controlled by the user themselves).
-	static const std::vector<std::string> candidates = { "/media", "/mnt" };
+	static const std::vector<std::string> candidates { "/media", "/mnt" };
 
 	for(const auto& mnt : candidates) {
 		bsys::error_code e;
