@@ -187,57 +187,74 @@ int luaW_pcall_internal(lua_State *L, int nArgs, int nRets);
 int luaW_type_error (lua_State *L, int narg, const char *tname);
 
 #define return_tstring_attrib(name, accessor) \
+do { \
 	if (strcmp(m, (name)) == 0) { \
 		luaW_pushtstring(L, (accessor)); \
 		return 1; \
-	}
+	} \
+} while(false)
 
 #define return_cstring_attrib(name, accessor) \
+do { \
 	if (strcmp(m, (name)) == 0) { \
 		lua_pushstring(L, (accessor)); \
 		return 1; \
-	}
+	} \
+} while(false)
 
 #define return_string_attrib(name, accessor) \
+do { \
 	if (strcmp(m, (name)) == 0) { \
 		const std::string& str = (accessor); \
 		lua_pushlstring(L, str.c_str(), str.length()); \
 		return 1; \
-	}
+	} \
+} while(false)
 
 #define return_int_attrib(name, accessor) \
+do { \
 	if (strcmp(m, (name)) == 0) { \
 		lua_pushinteger(L, (accessor)); \
 		return 1; \
-	}
+	} \
+} while(false)
 
 #define return_float_attrib(name, accessor) \
+do { \
 	if (strcmp(m, (name)) == 0) { \
 		lua_pushnumber(L, (accessor)); \
 		return 1; \
-	}
+	} \
+} while(false)
 
 #define return_bool_attrib(name, accessor) \
+do { \
 	if (strcmp(m, (name)) == 0) { \
 		lua_pushboolean(L, (accessor)); \
 		return 1; \
-	}
+	} \
+} while(false)
 
 #define return_cfg_attrib(name, accessor) \
+do { \
 	if (strcmp(m, (name)) == 0) { \
 		config cfg; \
 		{accessor;} \
 		luaW_pushconfig(L, cfg); \
 		return 1; \
-	}
+	} \
+} while(false)
 
 #define return_cfgref_attrib(name, accessor) \
+do { \
 	if (strcmp(m, (name)) == 0) { \
 		luaW_pushconfig(L, (accessor)); \
 		return 1; \
-	}
+	} \
+} while(false)
 
 #define return_vector_string_attrib(name, accessor) \
+do { \
 	if (strcmp(m, (name)) == 0) { \
 		const std::vector<std::string>& vector = (accessor); \
 		lua_createtable(L, vector.size(), 0); \
@@ -248,60 +265,76 @@ int luaW_type_error (lua_State *L, int narg, const char *tname);
 			++i; \
 		} \
 		return 1; \
-	}
+	} \
+} while(false)
 
 #define modify_tstring_attrib(name, accessor) \
+do { \
 	if (strcmp(m, (name)) == 0) { \
 		t_string value = luaW_checktstring(L, 3); \
 		{accessor;} \
 		return 0; \
-	}
+	} \
+} while(false)
 
 #define modify_string_attrib(name, accessor) \
+do { \
 	if (strcmp(m, (name)) == 0) { \
 		const char *value = luaL_checkstring(L, 3); \
 		{accessor;} \
 		return 0; \
-	}
+	} \
+} while(false)
 
 #define modify_int_attrib(name, accessor) \
+do { \
 	if (strcmp(m, (name)) == 0) { \
 		int value = static_cast<int>(luaL_checknumber(L, 3)); \
 		{accessor;} \
 		return 0; \
-	}
+	} \
+} while(false)
 
 #define modify_int_attrib_check_range(name, accessor, allowed_min, allowed_max) \
+do { \
 	if (strcmp(m, (name)) == 0) { \
 		int value = static_cast<int>(luaL_checknumber(L, 3)); \
 		if (value < (allowed_min) || (allowed_max) < value) return luaL_argerror(L, 3, "out of bounds"); \
 		{accessor;} \
 		return 0; \
-	}
+	} \
+} while(false)
 
 #define modify_float_attrib(name, accessor) \
+do { \
 	if (strcmp(m, (name)) == 0) { \
 		lua_Number value = luaL_checknumber(L, 3); \
 		{accessor;} \
 		return 0; \
-	}
+	} \
+} while(false)
 
 #define modify_float_attrib_check_range(name, accessor, allowed_min, allowed_max) \
+do { \
 	if (strcmp(m, (name)) == 0) { \
 		lua_Number value = luaL_checknumber(L, 3); \
 		if (value < (allowed_min) || (allowed_max) < value) return luaL_argerror(L, 3, "out of bounds"); \
 		{accessor;} \
 		return 0; \
-	}
+	} \
+} while(false)
 
 #define modify_bool_attrib(name, accessor) \
+do { \
 	if (strcmp(m, (name)) == 0) { \
 		bool value = luaW_toboolean(L, 3); \
 		{accessor;} \
 		return 0; \
-	}
+	} \
+} while(false)
 
 #define modify_vector_string_attrib(name, accessor) \
+do { \
 	if (strcmp(m, (name)) == 0) { \
 		std::vector<std::string> value; \
 		char const* message = "table with unnamed indices holding strings expected"; \
@@ -316,6 +349,7 @@ int luaW_type_error (lua_State *L, int narg, const char *tname);
 		} \
 		{accessor;} \
 		return 0; \
-	}
+	} \
+} while(false)
 
 #endif
