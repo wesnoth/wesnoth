@@ -727,17 +727,23 @@ void command_executor::lua_console()
 
 void command_executor_default::zoom_in()
 {
-	get_display().set_zoom(true);
+	if(!get_display().view_locked()) {
+		get_display().set_zoom(true);
+	}
 }
 
 void command_executor_default::zoom_out()
 {
-	get_display().set_zoom(false);
+	if(!get_display().view_locked()) {
+		get_display().set_zoom(false);
+	}
 }
 
 void command_executor_default::zoom_default()
 {
-	get_display().set_default_zoom();
+	if(!get_display().view_locked()) {
+		get_display().set_default_zoom();
+	}
 }
 
 void command_executor_default::map_screenshot()
