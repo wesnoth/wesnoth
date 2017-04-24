@@ -840,28 +840,26 @@ std::shared_ptr<gui::button> display::find_menu_button(const std::string& id)
 void display::layout_buttons()
 {
 	DBG_DP << "positioning menu buttons...\n";
-	const std::vector<theme::menu>& buttons = theme_.menus();
-	for(std::vector<theme::menu>::const_iterator i = buttons.begin(); i != buttons.end(); ++i) {
-		std::shared_ptr<gui::button> b = find_menu_button(i->get_id());
+	for(const auto& menu : theme_.menus()) {
+		std::shared_ptr<gui::button> b = find_menu_button(menu.get_id());
 		if(b) {
-			const SDL_Rect& loc = i->location(screen_area());
+			const SDL_Rect& loc = menu.location(screen_area());
 			b->set_location(loc);
 			b->set_measurements(0,0);
-			b->set_label(i->title());
-			b->set_image(i->image());
+			b->set_label(menu.title());
+			b->set_image(menu.image());
 		}
 	}
 
 	DBG_DP << "positioning action buttons...\n";
-	const std::vector<theme::action>& actions = theme_.actions();
-	for(std::vector<theme::action>::const_iterator i = actions.begin(); i != actions.end(); ++i) {
-		std::shared_ptr<gui::button> b = find_action_button(i->get_id());
+	for(const auto& action : theme_.actions()) {
+		std::shared_ptr<gui::button> b = find_action_button(action.get_id());
 		if(b) {
-			const SDL_Rect& loc = i->location(screen_area());
+			const SDL_Rect& loc = action.location(screen_area());
 			b->set_location(loc);
 			b->set_measurements(0,0);
-			b->set_label(i->title());
-			b->set_image(i->image());
+			b->set_label(action.title());
+			b->set_image(action.image());
 		}
 	}
 }
@@ -872,18 +870,16 @@ void display::create_buttons()
 	std::vector<std::shared_ptr<gui::button>> action_work;
 
 	DBG_DP << "creating menu buttons...\n";
-	const std::vector<theme::menu>& buttons = theme_.menus();
-	for(std::vector<theme::menu>::const_iterator i = buttons.begin(); i != buttons.end(); ++i) {
+	for(const auto& menu : theme_.menus()) {
+		if (!menu.is_button()) continue;
 
-		if (!i->is_button()) continue;
-
-		std::shared_ptr<gui::button> b(new gui::button(screen_, i->title(), gui::button::TYPE_PRESS, i->image(),
-				gui::button::DEFAULT_SPACE, false, i->overlay()));
-		DBG_DP << "drawing button " << i->get_id() << "\n";
+		std::shared_ptr<gui::button> b(new gui::button(screen_, menu.title(), gui::button::TYPE_PRESS, menu.image(),
+				gui::button::DEFAULT_SPACE, false, menu.overlay()));
+		DBG_DP << "drawing button " << menu.get_id() << "\n";
 		b->join_same(this);
-		b->set_id(i->get_id());
-		if (!i->tooltip().empty()){
-			b->set_tooltip_string(i->tooltip());
+		b->set_id(menu.get_id());
+		if (!menu.tooltip().empty()){
+			b->set_tooltip_string(menu.tooltip());
 		}
 
 		std::shared_ptr<gui::button> b_prev = find_menu_button(b->id());
@@ -893,17 +889,17 @@ void display::create_buttons()
 
 		menu_work.push_back(b);
 	}
-	DBG_DP << "creating action buttons...\n";
-	const std::vector<theme::action>& actions = theme_.actions();
-	for(std::vector<theme::action>::const_iterator i = actions.begin(); i != actions.end(); ++i) {
-		std::shared_ptr<gui::button> b(new gui::button(screen_, i->title(), string_to_button_type(i->type()), i->image(),
-				gui::button::DEFAULT_SPACE, false, i->overlay()));
 
-		DBG_DP << "drawing button " << i->get_id() << "\n";
-		b->set_id(i->get_id());
+	DBG_DP << "creating action buttons...\n";
+	for(const auto& action : theme_.actions()) {
+		std::shared_ptr<gui::button> b(new gui::button(screen_, action.title(), string_to_button_type(action.type()), action.image(),
+				gui::button::DEFAULT_SPACE, false, action.overlay()));
+
+		DBG_DP << "drawing button " << action.get_id() << "\n";
+		b->set_id(action.get_id());
 		b->join_same(this);
-		if (!i->tooltip(0).empty()){
-			b->set_tooltip_string(i->tooltip(0));
+		if (!action.tooltip(0).empty()){
+			b->set_tooltip_string(action.tooltip(0));
 		}
 
 		std::shared_ptr<gui::button> b_prev = find_action_button(b->id());
@@ -1159,11 +1155,9 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 		// Since it is themeable it can change,
 		// so don't make it static.
 		const std::string off_map_name = "terrain/" + theme_.border().tile_image;
-		for(std::vector<animated<image::locator> >::const_iterator it =
-				terrains->begin(); it != terrains->end(); ++it) {
-
+		for(const auto& terrain : *terrains) {
 			const image::locator &image = animate_map_ ?
-				it->get_current_frame() : it->get_first_frame();
+				terrain.get_current_frame() : terrain.get_first_frame();
 
 			// We prevent ToD coloring and brightening of off-map tiles,
 			// We need to test for the tile to be rendered and
@@ -1460,14 +1454,12 @@ void display::draw_all_panels()
 	 */
 	recalculate_minimap();
 
-	const std::vector<theme::panel>& panels = theme_.panels();
-	for(std::vector<theme::panel>::const_iterator p = panels.begin(); p != panels.end(); ++p) {
-		draw_panel(video(), *p, menu_buttons_);
+	for(const auto& panel : theme_.panels()) {
+		draw_panel(video(), panel, menu_buttons_);
 	}
 
-	const std::vector<theme::label>& labels = theme_.labels();
-	for(std::vector<theme::label>::const_iterator i = labels.begin(); i != labels.end(); ++i) {
-		draw_label(video(),screen,*i);
+	for(const auto& label : theme_.labels()) {
+		draw_label(video(), screen, label);
 	}
 
 	render_buttons();
@@ -1691,8 +1683,7 @@ void display::draw_wrap(bool update, bool force)
 
 const theme::action* display::action_pressed()
 {
-	for(std::vector<std::shared_ptr<gui::button>>::iterator i = action_buttons_.begin();
-			i != action_buttons_.end(); ++i) {
+	for(auto i = action_buttons_.begin(); i != action_buttons_.end(); ++i) {
 		if((*i)->pressed()) {
 			const size_t index = i - action_buttons_.begin();
 			if(index >= theme_.actions().size()) {
@@ -1708,7 +1699,7 @@ const theme::action* display::action_pressed()
 
 const theme::menu* display::menu_pressed()
 {
-	for(std::vector<std::shared_ptr<gui::button>>::iterator i = menu_buttons_.begin(); i != menu_buttons_.end(); ++i) {
+	for(auto i = menu_buttons_.begin(); i != menu_buttons_.end(); ++i) {
 		if((*i)->pressed()) {
 			const size_t index = i - menu_buttons_.begin();
 			if(index >= theme_.menus().size()) {
@@ -1724,9 +1715,7 @@ const theme::menu* display::menu_pressed()
 
 void display::enable_menu(const std::string& item, bool enable)
 {
-	for(std::vector<theme::menu>::const_iterator menu = theme_.menus().begin();
-			menu != theme_.menus().end(); ++menu) {
-
+	for(auto menu = theme_.menus().begin(); menu != theme_.menus().end(); ++menu) {
 		const auto hasitem = std::find(menu->items().begin(), menu->items().end(), item);
 
 		if(hasitem != menu->items().end()) {
@@ -1879,15 +1868,15 @@ void display::draw_minimap_units()
 	double xscaling = 1.0 * minimap_location_.w / get_map().w();
 	double yscaling = 1.0 * minimap_location_.h / get_map().h();
 
-	for(unit_map::const_iterator u = dc_->units().begin(); u != dc_->units().end(); ++u) {
-		if (fogged(u->get_location()) ||
-		    (dc_->teams()[currentTeam_].is_enemy(u->side()) &&
-		     u->invisible(u->get_location(), *dc_)) ||
-			 u->get_hidden()) {
+	for(const auto& u : dc_->units()) {
+		if (fogged(u.get_location()) ||
+		    (dc_->teams()[currentTeam_].is_enemy(u.side()) &&
+		     u.invisible(u.get_location(), *dc_)) ||
+			 u.get_hidden()) {
 			continue;
 		}
 
-		int side = u->side();
+		int side = u.side();
 		color_t col = team::get_minimap_color(side);
 
 		if (!preferences::minimap_movement_coding()) {
@@ -1898,9 +1887,9 @@ void display::draw_minimap_units()
 
 				if (currentTeam_ +1 == static_cast<unsigned>(side)) {
 
-					if (u->movement_left() == u->total_movement())
+					if (u.movement_left() == u.total_movement())
 						col = game_config::color_info(preferences::unmoved_color()).rep();
-					else if (u->movement_left() == 0)
+					else if (u.movement_left() == 0)
 						col = game_config::color_info(preferences::moved_color()).rep();
 					else
 						col = game_config::color_info(preferences::partial_color()).rep();
@@ -1910,8 +1899,8 @@ void display::draw_minimap_units()
 			}
 		}
 
-		double u_x = u->get_location().x * xscaling;
-		double u_y = (u->get_location().y + (is_odd(u->get_location().x) ? 1 : -1)/4.0) * yscaling;
+		double u_x = u.get_location().x * xscaling;
+		double u_y = (u.get_location().y + (is_odd(u.get_location().x) ? 1 : -1)/4.0) * yscaling;
  		// use 4/3 to compensate the horizontal hexes imbrication
 		double u_w = 4.0 / 3.0 * xscaling;
 		double u_h = yscaling;
@@ -3217,16 +3206,14 @@ void display::process_reachmap_changes()
 		// Invalidate everything except the non-darkened tiles
 		reach_map &full = reach_map_.empty() ? reach_map_old_ : reach_map_;
 
-		rect_of_hexes hexes = get_visible_hexes();
-		rect_of_hexes::iterator i = hexes.begin(), end = hexes.end();
-		for (;i != end; ++i) {
-			reach_map::iterator reach = full.find(*i);
+		for (const auto& hex : get_visible_hexes()) {
+			reach_map::iterator reach = full.find(hex);
 			if (reach == full.end()) {
 				// Location needs to be darkened or brightened
-				invalidate(*i);
+				invalidate(hex);
 			} else if (reach->second != 1) {
 				// Number needs to be displayed or cleared
-				invalidate(*i);
+				invalidate(hex);
 			}
 		}
 	} else if (!reach_map_.empty()) {
