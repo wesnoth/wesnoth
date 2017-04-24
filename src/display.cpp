@@ -417,17 +417,22 @@ const tod_manager & display::get_tod_man() const
 	return *resources::tod_manager;
 }
 
-void display::update_tod() {
-	const time_of_day& tod = get_time_of_day();
-	tod_color col = color_adjust_ + tod.color;
+void display::update_tod(const time_of_day* tod_override)
+{
+	const time_of_day* tod = tod_override;
+	if(tod == nullptr) {
+		tod = &get_time_of_day();
+	}
+
+	const tod_color col = color_adjust_ + tod->color;
 	image::set_color_adjustment(col.r, col.g, col.b);
 }
 
-void display::adjust_color_overlay(int r, int g, int b) {
+void display::adjust_color_overlay(int r, int g, int b)
+{
 	color_adjust_ = tod_color(r, g, b);
 	update_tod();
 }
-
 
 void display::fill_images_list(const std::string& prefix, std::vector<std::string>& images)
 {

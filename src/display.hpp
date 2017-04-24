@@ -171,10 +171,14 @@ public:
 	halo::manager & get_halo_manager() { return *halo_man_; }
 
 	/**
-	 * Add r,g,b from tod_manager to the map
+	 * Applies r,g,b coloring to the map.
 	 *
+	 * The color is usually taken from @ref get_time_of_day unless @a tod_override is given, in which
+	 * case that color is used.
+	 *
+	 * @param tod_override             The ToD to apply to the map instead of that of the current ToD's.
 	 */
-	void update_tod();
+	void update_tod(const time_of_day* tod_override = nullptr);
 
 	/**
 	 * Add r,g,b to the colors for all images displayed on the map.
