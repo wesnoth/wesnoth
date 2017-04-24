@@ -1236,6 +1236,7 @@ int game_lua_kernel::impl_game_config_get(lua_State *L)
 	return_int_attrib("last_turn", tod_man().number_of_turns());
 	return_string_attrib("version", game_config::version);
 	return_string_attrib("next_scenario", gamedata().next_scenario());
+	return_string_attrib("theme", gamedata().get_theme());
 	return_bool_attrib("debug", game_config::debug);
 	return_bool_attrib("debug_lua", game_config::debug_lua);
 	return_bool_attrib("mp_debug", game_config::mp_debug);
@@ -1285,6 +1286,11 @@ int game_lua_kernel::impl_game_config_set(lua_State *L)
 	modify_int_attrib("kill_experience", game_config::kill_experience = value);
 	modify_int_attrib("last_turn", tod_man().set_number_of_turns_by_wml(value));
 	modify_string_attrib("next_scenario", gamedata().set_next_scenario(value));
+	modify_string_attrib("theme",
+		gamedata().set_theme(value);
+		const config& game_config = game_config_manager::get()->game_config();
+		game_display_->set_theme(play_controller_.get_theme(game_config, value));
+	);
 	modify_vector_string_attrib("defeat_music", gamedata().set_defeat_music(std::move(value)));
 	modify_vector_string_attrib("victory_music", gamedata().set_victory_music(std::move(value)));
 	std::string err_msg = "unknown modifiable property of game_config: ";
