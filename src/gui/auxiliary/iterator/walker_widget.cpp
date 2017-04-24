@@ -45,8 +45,9 @@ walker_base::state_t widget::next(const level level)
 				return invalid;
 			}
 			FALLTHROUGH;
-		case internal: FALLTHROUGH;
-		case child: FALLTHROUGH;
+		case internal:
+		case child:
+			break;
 	}
 
 	assert(false);
@@ -58,7 +59,7 @@ bool widget::at_end(const level level) const
 	switch(level) {
 		case self:
 			return widget_ == nullptr;
-		case internal: /* FALL DOWN */
+		case internal:
 		case child:
 			return true;
 	}
@@ -72,7 +73,7 @@ gui2::widget* widget::get(const level level)
 	switch(level) {
 		case self:
 			return widget_;
-		case internal: /* FALL DOWN */
+		case internal:
 		case child:
 			return nullptr;
 	}
