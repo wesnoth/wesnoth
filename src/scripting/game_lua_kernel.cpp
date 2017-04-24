@@ -1285,8 +1285,8 @@ int game_lua_kernel::impl_game_config_set(lua_State *L)
 	modify_int_attrib("kill_experience", game_config::kill_experience = value);
 	modify_int_attrib("last_turn", tod_man().set_number_of_turns_by_wml(value));
 	modify_string_attrib("next_scenario", gamedata().set_next_scenario(value));
-	modify_vector_string_attrib("defeat_music", gamedata().set_defeat_music(std::move(vector)));
-	modify_vector_string_attrib("victory_music", gamedata().set_victory_music(std::move(vector)));
+	modify_vector_string_attrib("defeat_music", gamedata().set_defeat_music(std::move(value)));
+	modify_vector_string_attrib("victory_music", gamedata().set_victory_music(std::move(value)));
 	std::string err_msg = "unknown modifiable property of game_config: ";
 	err_msg += m;
 	return luaL_argerror(L, 2, err_msg.c_str());

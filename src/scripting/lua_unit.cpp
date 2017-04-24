@@ -399,8 +399,8 @@ static int impl_unit_set(lua_State *L)
 	modify_bool_attrib("zoc", u.set_emit_zoc(value));
 	modify_bool_attrib("canrecruit", u.set_can_recruit(value));
 
-	modify_vector_string_attrib("extra_recruit", u.set_recruits(vector));
-	modify_vector_string_attrib("advances_to", u.set_advances_to(vector));
+	modify_vector_string_attrib("extra_recruit", u.set_recruits(value));
+	modify_vector_string_attrib("advances_to", u.set_advances_to(value));
 	if(strcmp(m, "alignment") == 0) {
 		u.set_alignment(lua_check<unit_type::ALIGNMENT>(L, 3));
 		return 0;
