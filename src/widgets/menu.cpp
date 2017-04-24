@@ -801,7 +801,7 @@ void menu::sort_by(int column)
 }
 
 SDL_Rect menu::style::item_size(const std::string& item) const {
-	SDL_Rect res = {0,0,0,0};
+	SDL_Rect res {0,0,0,0};
 	std::vector<std::string> img_text_items = utils::split(item, IMG_TEXT_SEPARATOR, utils::REMOVE_EMPTY);
 	for (std::vector<std::string>::const_iterator it = img_text_items.begin();
 		 it != img_text_items.end(); ++it) {
@@ -819,7 +819,7 @@ SDL_Rect menu::style::item_size(const std::string& item) const {
 			}
 		}
 		else {
-			const SDL_Rect area = {0,0,10000,10000};
+			const SDL_Rect area {0,0,10000,10000};
 			const SDL_Rect font_size =
 				font::draw_text(nullptr,area,get_font_size(),font::NORMAL_COLOR,str,0,0);
 			res.w += font_size.w;

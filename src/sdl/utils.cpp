@@ -1579,7 +1579,7 @@ surface cut_surface(const surface &surf, SDL_Rect const &r)
 
 	// compute the areas to copy
 	SDL_Rect src_rect = r;
-	SDL_Rect dst_rect = { 0, 0, r.w, r.h };
+	SDL_Rect dst_rect { 0, 0, r.w, r.h };
 
 	if (src_rect.x < 0) {
 		if (src_rect.x + src_rect.w <= 0)
@@ -2130,7 +2130,7 @@ struct not_alpha
 
 SDL_Rect get_non_transparent_portion(const surface &surf)
 {
-	SDL_Rect res = {0,0,0,0};
+	SDL_Rect res {0,0,0,0};
 	surface nsurf(make_neutral_surface(surf));
 	if(nsurf == nullptr) {
 		std::cerr << "failed to make neutral surface\n";

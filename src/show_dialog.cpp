@@ -312,7 +312,7 @@ void dialog_frame::draw_background()
 	}
 	for(int i = 0; i < dim_.interior.w; i += bg_->w) {
 		for(int j = 0; j < dim_.interior.h; j += bg_->h) {
-			SDL_Rect src = {0,0,0,0};
+			SDL_Rect src {0,0,0,0};
 			src.w = std::min(dim_.interior.w - i, bg_->w);
 			src.h = std::min(dim_.interior.h - j, bg_->h);
 			SDL_Rect dst = src;

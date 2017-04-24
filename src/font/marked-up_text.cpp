@@ -146,7 +146,7 @@ std::string del_tags(const std::string& text){
 
 SDL_Rect text_area(const std::string& text, int size, int style)
 {
-	const SDL_Rect area = {0,0,10000,10000};
+	const SDL_Rect area {0,0,10000,10000};
 	return draw_text(nullptr, area, size, font::NORMAL_COLOR, text, 0, 0, false, style);
 }
 

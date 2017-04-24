@@ -508,7 +508,7 @@ bool display::is_blindfolded() const
 
 const SDL_Rect& display::max_map_area() const
 {
-	static SDL_Rect max_area = {0, 0, 0, 0};
+	static SDL_Rect max_area {0, 0, 0, 0};
 
 	// hex_size() is always a multiple of 4
 	// and hex_width() a multiple of 3,

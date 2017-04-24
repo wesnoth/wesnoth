@@ -395,7 +395,7 @@ int show_popup_dialog(lua_State *L, CVideo & video) {
  */
 int show_menu(lua_State* L, CVideo& video) {
 	std::vector<config> items = lua_check<std::vector<config>>(L, 1);
-	SDL_Rect pos = {1,1,1,1};
+	SDL_Rect pos {1,1,1,1};
 	SDL_GetMouseState(&pos.x, &pos.y);
 
 	int initial = -1;

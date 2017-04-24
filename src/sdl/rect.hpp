@@ -32,7 +32,7 @@ namespace gui2 {
 namespace sdl
 {
 
-CONSTEXPR const SDL_Rect empty_rect = { 0, 0, 0, 0 };
+CONSTEXPR const SDL_Rect empty_rect { 0, 0, 0, 0 };
 
 /**
  * Creates an empty SDL_Rect.

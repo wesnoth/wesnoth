@@ -427,7 +427,7 @@ surface blit_modification::operator()(const surface& src) const
 
 	surface nsrc = make_neutral_surface(src);
 	surface nsurf = make_neutral_surface(surf_);
-	SDL_Rect r = {x_, y_, 0, 0};
+	SDL_Rect r {x_, y_, 0, 0};
 	sdl_blit(nsurf, nullptr, nsrc, &r);
 	return nsrc;
 }
@@ -438,7 +438,7 @@ surface mask_modification::operator()(const surface& src) const
 		return mask_surface(src, mask_);
 	}
 
-	SDL_Rect r = {x_, y_, 0, 0};
+	SDL_Rect r {x_, y_, 0, 0};
 	surface new_mask = create_neutral_surface(src->w, src->h);
 	sdl_blit(mask_, nullptr, new_mask, &r);
 	return mask_surface(src, new_mask);
@@ -980,7 +980,7 @@ REGISTER_MOD_PARSER(CROP, args)
 		return nullptr;
 	}
 
-	SDL_Rect slice_rect = { 0, 0, 0, 0 };
+	SDL_Rect slice_rect { 0, 0, 0, 0 };
 
 	slice_rect.x = lexical_cast_default<Sint16, const std::string&>(slice_params[0]);
 

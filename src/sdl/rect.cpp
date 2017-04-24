@@ -86,7 +86,7 @@ void fill_rect_alpha(SDL_Rect &rect, Uint32 color, Uint8 alpha, surface target)
 
 	SDL_SetSurfaceBlendMode (tmp, SDL_BLENDMODE_BLEND);
 
-	SDL_Rect r = {0,0,rect.w,rect.h};
+	SDL_Rect r {0,0,rect.w,rect.h};
 	sdl::fill_rect(tmp,&r,color);
 	adjust_surface_alpha(tmp, alpha);
 	sdl_blit(tmp,nullptr,target,&rect);

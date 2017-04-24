@@ -727,7 +727,7 @@ std::set<map_location> unit_frame::get_overlaped_hex(const int frame_time, const
 
 			// Check if our underlying hexes are invalidated. If we need to update ourselves because we changed,
 			// invalidate our hexes and return whether or not was sucessful.
-			const SDL_Rect r = {my_x, my_y, w, h};
+			const SDL_Rect r {my_x, my_y, w, h};
 			display::rect_of_hexes underlying_hex = disp->hexes_under_rect(r);
 
 			result.insert(src);

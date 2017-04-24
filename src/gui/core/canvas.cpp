@@ -829,7 +829,7 @@ void round_rectangle_shape::draw(surface& canvas,
 	if(!fill_color.null() && w && h) {
 		set_renderer_color(renderer, fill_color);
 		static const int count = 3;
-		SDL_Rect area[count] = {
+		SDL_Rect area[count] {
 			{x + r,                 y + border_thickness_, w - r                 * 2, r - border_thickness_ + 1},
 			{x + border_thickness_, y + r + 1,             w - border_thickness_ * 2, h - r * 2},
 			{x + r,                 y - r + h + 1,         w - r                 * 2, r - border_thickness_},

@@ -130,7 +130,7 @@ surface floating_label::create_surface()
 			surface background = create_neutral_surface
 				(foreground->w + 4, foreground->h + 4);
 			sdl::fill_rect(background, nullptr, 0);
-			SDL_Rect r = { 2, 2, 0, 0 };
+			SDL_Rect r { 2, 2, 0, 0 };
 			sdl_blit(foreground, nullptr, background, &r);
 			background = shadow_image(background);
 

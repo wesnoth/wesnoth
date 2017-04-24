@@ -529,7 +529,7 @@ void terrain_label::calculate_shroud()
 
 SDL_Rect terrain_label::get_rect() const
 {
-	SDL_Rect rect = {0,0,0,0};
+	SDL_Rect rect {0,0,0,0};
 
 	display* disp = display::get_singleton();
 	if(!disp) {
