@@ -15,6 +15,7 @@ Version 1.13.7+dev:
    * Small change to animator API - facing parameter replaced with target and required to be
      a space adjacent to the unit.
    * New modifiable theme attribute in wesnoth.game_config
+   * New wesnoth.zoom() function allows changing the zoom level
  * Multiplayer:
    * Fixed statistics being lost when reloading an MP game.
  * Performance:
@@ -40,6 +41,7 @@ Version 1.13.7+dev:
        the color as a list of its components, eg "([r, g, b, a])"
    * Empty tags are no longer written to the configs of [unit]s and [side]s.
    * New [change_theme] tag to change the theme mid-scenario
+   * New [zoom] tag allows changing the zoom level from an event
 
 Version 1.13.7:
  * AI:

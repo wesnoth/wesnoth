@@ -1394,6 +1394,23 @@ int game_lua_kernel::intf_open_help(lua_State *L)
 	return 0;
 }
 
+int game_lua_kernel::intf_zoom(lua_State* L)
+{
+	if(!game_display_) {
+		return 0;
+	}
+	double factor = luaL_checknumber(L, 1);
+	bool relative = luaW_toboolean(L, 2);
+	if(relative) {
+		factor *= game_display_->get_zoom_factor();
+	}
+	// Passing true explicitly to avoid casting to int.
+	// Without doing one of the two, the call is ambiguous.
+	game_display_->set_zoom(factor * game_config::tile_size, true);
+	lua_pushnumber(L, game_display_->get_zoom_factor());
+	return 1;
+}
+
 /**
  * Dumps a wml table or userdata wml object into a pretty string.
  * - Arg 1: wml table or vconfig userdata
@@ -4181,6 +4198,7 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "switch_ai",                 &intf_switch_ai                                                      },
 		{ "synchronize_choice",        &intf_synchronize_choice                                             },
 		{ "synchronize_choices",       &intf_synchronize_choices                                            },
+		{ "zoom",                      &dispatch<&game_lua_kernel::intf_zoom                       >        },
 		{ "teleport",                  &dispatch<&game_lua_kernel::intf_teleport                   >        },
 		{ "unit_ability",              &dispatch<&game_lua_kernel::intf_unit_ability               >        },
 		{ "view_locked",               &dispatch<&game_lua_kernel::intf_view_locked                >        },

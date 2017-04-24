@@ -2006,7 +2006,7 @@ bool display::set_zoom(bool increase)
 
 bool display::set_zoom(unsigned int amount, const bool validate_value_and_set_index)
 {
-	const unsigned int new_zoom = utils::clamp(amount, MinZoom, MaxZoom);
+	unsigned int new_zoom = utils::clamp(amount, MinZoom, MaxZoom);
 
 	LOG_DP << "new_zoom = " << new_zoom << std::endl;
 
@@ -2016,13 +2016,22 @@ bool display::set_zoom(unsigned int amount, const bool validate_value_and_set_in
 
 	// Confirm this is indeed a valid zoom level.
 	if(validate_value_and_set_index) {
-		auto iter = std::find(zoom_levels.begin(), zoom_levels.end(), new_zoom);
+		auto iter = std::lower_bound(zoom_levels.begin(), zoom_levels.end(), new_zoom);
 
-		// TODO: do we need an error?
 		if(iter == zoom_levels.end()) {
+			// This should never happen, since the value was already clamped earlier
 			return false;
+		} else if(iter != zoom_levels.begin()) {
+			float diff = *iter - *(iter - 1);
+			float lower = (new_zoom - *(iter - 1)) / diff;
+			float upper = (*iter - new_zoom) / diff;
+			if(lower < upper) {
+				// It's actually closer to the previous element.
+				iter--;
+			}
 		}
 
+		new_zoom = *iter;
 		zoom_index_ = iter - zoom_levels.begin();
 	}
 

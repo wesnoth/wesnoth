@@ -1417,6 +1417,10 @@ function wesnoth.wml_actions.change_theme(cfg)
 	wesnoth.game_config.theme = cfg.theme
 end
 
+function wesnoth.wml_actions.zoom(cfg)
+	wesnoth.zoom(cfg.factor, cfg.relative)
+end
+
 function wesnoth.wml_conditionals.proceed_to_next_scenario(cfg)
 	local endlevel_data = wesnoth.get_end_level_data()
 	if not endlevel_data then

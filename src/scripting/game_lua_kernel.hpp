@@ -172,6 +172,7 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_toggle_fog(lua_State *L, const bool clear);
 	int intf_get_fog_or_shroud(lua_State *L, bool fog);
 	int intf_log_replay(lua_State* L);
+	int intf_zoom(lua_State* L);
 
 	//private helpers
 	std::string synced_state();
