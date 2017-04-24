@@ -13,6 +13,7 @@
 */
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
+#include "editor/controller/editor_controller.hpp"
 #include "editor/editor_display.hpp"
 #include "reports.hpp"
 #include "team.hpp"
@@ -53,11 +54,12 @@ const display_context * get_dummy_display_context() {
 
 // End dummy display context
 
-editor_display::editor_display(const display_context * dc, CVideo& video,
+editor_display::editor_display(editor_controller& controller, const display_context * dc, CVideo& video,
 		reports & reports_object,
 		const config& theme_cfg, const config& level)
 	: display(dc, video, std::shared_ptr<wb::manager>(), reports_object, theme_cfg, level)
 	, brush_locations_()
+	, controller_(controller)
 {
 	clear_screen();
 }
@@ -149,5 +151,14 @@ void editor_display::draw_sidebar()
 	}
 }
 
+const tod_manager& editor_display::get_tod_man() const
+{
+	return *controller_.get_current_map_context().get_time_manager();
+}
+
+const time_of_day& editor_display::get_time_of_day(const map_location& /*loc*/) const
+{
+	return get_tod_man().get_time_of_day();
+}
 
 } //end namespace editor

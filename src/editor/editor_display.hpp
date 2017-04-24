@@ -25,7 +25,7 @@ const display_context * get_dummy_display_context();
 class editor_display : public display
 {
 public:
-	editor_display(const display_context * dc, CVideo& video,
+	editor_display(editor_controller& controller, const display_context * dc, CVideo& video,
 			reports & reports_object,
 			const config& theme_cfg, const config& level);
 
@@ -37,6 +37,12 @@ public:
 	void remove_brush_loc(const map_location& hex);
 	const editor_map& map() const { return static_cast<const editor_map&>(get_map()); }
 	void rebuild_terrain(const map_location &loc);
+
+	/** Inherited from display. */
+	virtual const tod_manager& get_tod_man() const override;
+
+	/** Inherited from display. */
+	virtual const time_of_day& get_time_of_day(const map_location& loc = map_location::null_location()) const override;
 
 protected:
 	void pre_draw();
@@ -52,6 +58,8 @@ protected:
 
 	std::set<map_location> brush_locations_;
 
+	/* The controller that owns this display. */
+	editor_controller& controller_;
 };
 
 } //end namespace editor
