@@ -262,15 +262,9 @@ public:
 	 *
 	 * This is a unique string usually set by WML. It should *not* be used for internal tracking in
 	 * the unit_map. Use @ref underlying_id for that.
-	 *
-	 * @param fallback           If true (default), return this unit's type name if the id is empty.
 	 */
-	const std::string& id(bool fallback = true) const
+	const std::string& id() const
 	{
-		if(fallback && id_.empty()) {
-			return type_name();
-		}
-
 		return id_;
 	}
 
