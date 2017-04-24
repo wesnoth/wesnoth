@@ -1,6 +1,7 @@
 Version 1.13.7+dev:
  * Editor:
    * Fixed a crash when placing units.
+   * Restored the ability to preview different ToDs.
  * Formula Engine:
    * Fixed garbage data showing up in stack traces in the event of an error.
    * Object types can now be used in contexts where previously only a list or map
@@ -13,13 +14,18 @@ Version 1.13.7+dev:
      logging data into a saved game.
    * Small change to animator API - facing parameter replaced with target and required to be
      a space adjacent to the unit.
+ * Multiplayer:
+   * Fixed statistics being lost when reloading an MP game.
  * Performance:
    * Greatly speeded up switching between add-ons in the add-on manager (bug #25523)
  * User Interface:
    * Updated Attack Predictions dialog to GUI2.
+   * Updated Story screen to GUI2.
    * Double-clicking an add-on now installs, updates, uninstalls or publishes it depending
      on the situation.
    * Fixed file path being truncated on the wrong side in the File Browser.
+   * Improved Hotkey category sorting interface in Preferences.
+   * Improved Addon Manager and MP Staging interfaces at low resolutions.
  * WML Engine:
    * Add base_income key to [store_side]
    * Fix issues with alpha animations on hidden units (#14503)
@@ -29,6 +35,7 @@ Version 1.13.7+dev:
      * [image] has new resize_mode=tile_center
      * Canvas colors can now be expressed as formulas. The formula must return
        the color as a list of its components, eg "([r, g, b, a])"
+   * Empty tags are no longer written to the configs of [unit]s and [side]s.
 
 Version 1.13.7:
  * AI:
