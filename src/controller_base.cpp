@@ -15,7 +15,6 @@
 
 #include "controller_base.hpp"
 
-#include "config_assign.hpp"
 #include "show_dialog.hpp" //gui::in_dialog
 #include "display.hpp"
 #include "events.hpp"
@@ -289,26 +288,26 @@ void controller_base::play_slice(bool is_delay_enabled)
 	}
 }
 
-void controller_base::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& disp)
+void controller_base::show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu, display& disp)
 {
-	hotkey::command_executor* cmd_exec = get_hotkey_command_executor();
-	if(!cmd_exec) {
+	hotkey::command_executor * cmd_exec = get_hotkey_command_executor();
+	if (!cmd_exec) {
 		return;
 	}
 
-	std::vector<config> items;
-	for(const std::string& id : items_arg) {
-		const hotkey::hotkey_command& command = hotkey::get_hotkey_command(id);
-
-		if(cmd_exec->can_execute_command(command) && (!context_menu || in_context_menu(command.id))) {
-			items.emplace_back(config_of("id", id));
+	std::vector<config> items = items_arg;
+	std::vector<config>::iterator i = items.begin();
+	while(i != items.end()) {
+		const hotkey::hotkey_command& command = hotkey::get_hotkey_command((*i)["id"]);
+		if(!cmd_exec->can_execute_command(command)
+			|| (context_menu && !in_context_menu(command.id))) {
+			i = items.erase(i);
+			continue;
 		}
+		++i;
 	}
-
-	if(items.empty()) {
+	if(items.empty())
 		return;
-	}
-
 	cmd_exec->show_menu(items, xloc, yloc, context_menu, disp);
 }
 

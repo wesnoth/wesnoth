@@ -86,7 +86,7 @@ void editor_toolkit::init_mouse_actions(context_manager& cmanager)
 
 	for (const theme::menu& menu : gui_.get_theme().menus()) {
 		if (menu.items().size() == 1) {
-			hotkey::HOTKEY_COMMAND hk = hotkey::get_id(menu.items().front());
+			hotkey::HOTKEY_COMMAND hk = hotkey::get_id(menu.items().front()["id"]);
 			mouse_action_map::iterator i = mouse_actions_.find(hk);
 			if (i != mouse_actions_.end()) {
 				i->second->set_toolbar_button(&menu);
