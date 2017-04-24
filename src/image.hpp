@@ -166,15 +166,6 @@ namespace image {
 	///for representing day/night. Invalidates all scaled images.
 	void set_color_adjustment(int r, int g, int b);
 
-	class color_adjustment_resetter
-	{
-		public:
-			color_adjustment_resetter();
-			void reset();
-		private:
-			int r_, g_, b_;
-	};
-
 	///set the team colors used by the TC image modification
 	///use a vector with one string for each team
 	///using nullptr will reset to default TC

@@ -701,16 +701,6 @@ void set_color_adjustment(int r, int g, int b)
 	}
 }
 
-color_adjustment_resetter::color_adjustment_resetter()
-	: r_(red_adjust), g_(green_adjust), b_(blue_adjust)
-{
-}
-
-void color_adjustment_resetter::reset()
-{
-	display::get_singleton()->adjust_color_overlay(r_, g_, b_);
-}
-
 void set_team_colors(const std::vector<std::string>* colors)
 {
 	if (colors == nullptr)
