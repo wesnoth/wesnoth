@@ -25,9 +25,7 @@ const display_context * get_dummy_display_context();
 class editor_display : public display
 {
 public:
-	editor_display(editor_controller& controller, const display_context * dc, CVideo& video,
-			reports & reports_object,
-			const config& theme_cfg, const config& level);
+	editor_display(editor_controller& controller, CVideo& video, reports& reports_object, const config& theme_cfg);
 
 	bool in_editor() const { return true; }
 
