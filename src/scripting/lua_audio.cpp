@@ -25,22 +25,23 @@ See the COPYING file for more details.
 static const char* Track = "music track";
 
 class music_track {
-	int i;
-	sound::music_track& track;
+	std::shared_ptr<sound::music_track> track;
 public:
-	explicit music_track(int i) : i(i), track(sound::get_track(i)) {}
-	bool valid() {
-		sound::music_track& current = sound::get_track(i);
-		return &track == &current && track.valid() && track.id() == current.id();
+	explicit music_track(int i) : track(sound::get_track(i)) {}
+	bool valid() const {
+		return track && track->valid();
 	}
 	sound::music_track& operator*() {
+		return *track;
+	}
+	const sound::music_track& operator*() const {
+		return *track;
+	}
+	std::shared_ptr<sound::music_track> operator->() {
 		return track;
 	}
-	sound::music_track* operator->() {
-		return &track;
-	}
-	int index() {
-		return i;
+	std::shared_ptr<const sound::music_track> operator->() const {
+		return track;
 	}
 };
 
@@ -96,7 +97,7 @@ static int impl_music_set(lua_State* L) {
 			sound::play_music_config(cfg, i);
 		} else {
 			music_track& track = *get_track(L, 3);
-			sound::set_track(i, *track);
+			sound::set_track(i, track.operator->());
 		}
 		return 0;
 	}
