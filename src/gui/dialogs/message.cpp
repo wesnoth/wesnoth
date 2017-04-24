@@ -48,7 +48,7 @@ struct message_implementation
 	 * @param id                  The id of the button.
 	 */
 	static void init_button(window& window,
-							message::tbutton_status& button_status,
+							message::button_status& button_status,
 							const std::string& id)
 	{
 		button_status.ptr = find_widget<button>(&window, id, false, true);
@@ -136,7 +136,7 @@ void message::set_button_retval(const button_id button, const int retval)
 	}
 }
 
-message::tbutton_status::tbutton_status()
+message::button_status::button_status()
 	: ptr(nullptr)
 	, caption()
 	, visible(widget::visibility::invisible)

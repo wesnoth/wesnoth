@@ -138,9 +138,9 @@ private:
 	/** Whether to enable formatting markup for the dialog message. */
 	bool message_use_markup_;
 
-	struct tbutton_status
+	struct button_status
 	{
-		tbutton_status();
+		button_status();
 
 		button* ptr;
 		std::string caption;
@@ -149,7 +149,7 @@ private:
 	};
 
 	/** Holds a pointer to the buttons. */
-	std::vector<tbutton_status> buttons_;
+	std::vector<button_status> buttons_;
 
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const override;
