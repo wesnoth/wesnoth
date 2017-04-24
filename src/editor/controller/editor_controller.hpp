@@ -168,6 +168,11 @@ class editor_controller : public controller_base,
 
 		virtual hotkey::command_executor * get_hotkey_command_executor() override;
 
+		map_context& get_current_map_context() const
+		{
+			return context_manager_->get_map_context();
+		}
+
 	protected:
 		/* controller_base overrides */
 		void process_keyup_event(const SDL_Event& event) override;
