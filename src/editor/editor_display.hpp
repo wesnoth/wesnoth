@@ -27,7 +27,7 @@ class editor_display : public display
 public:
 	editor_display(editor_controller& controller, CVideo& video, reports& reports_object, const config& theme_cfg);
 
-	bool in_editor() const { return true; }
+	bool in_editor() const override { return true; }
 
 	void add_brush_loc(const map_location& hex);
 	void set_brush_locs(const std::set<map_location>& hexes);
@@ -43,16 +43,16 @@ public:
 	virtual const time_of_day& get_time_of_day(const map_location& loc = map_location::null_location()) const override;
 
 protected:
-	void pre_draw();
+	void pre_draw() override;
 	/**
 	* The editor uses different rules for terrain highlighting (e.g. selections)
 	*/
-	image::TYPE get_image_type(const map_location& loc);
+	image::TYPE get_image_type(const map_location& loc) override;
 
-	void draw_hex(const map_location& loc);
+	void draw_hex(const map_location& loc) override;
 
-	const SDL_Rect& get_clip_rect();
-	void draw_sidebar();
+	const SDL_Rect& get_clip_rect() override;
+	void draw_sidebar() override;
 
 	std::set<map_location> brush_locations_;
 
