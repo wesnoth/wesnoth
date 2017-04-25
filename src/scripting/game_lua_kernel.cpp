@@ -2979,9 +2979,10 @@ int game_lua_kernel::intf_get_sides(lua_State* L)
 	LOG_LUA << "intf_get_sides called: this = " << std::hex << this << std::dec << " myname = " << my_name() << std::endl;
 	std::vector<int> sides;
 	const vconfig ssf = luaW_checkvconfig(L, 1, true);
-	if(ssf.null()){
-		for(unsigned side_number = 1; side_number <= teams().size(); ++side_number)
+	if(ssf.null()) {
+		for (unsigned side_number = 1; side_number <= teams().size(); ++side_number) {
 			sides.push_back(side_number);
+		}
 	} else {
 		filter_context & fc = game_state_;
 
@@ -3370,13 +3371,12 @@ int game_lua_kernel::intf_kill(lua_State *L)
 	&& (cfg_y.empty() || cfg_y == "recall"))
 	{
 		//remove the unit from the corresponding team's recall list
-		for(std::vector<team>::iterator pi = teams().begin();
-				pi!=teams().end(); ++pi)
+		for(team& t : teams())
 		{
-			for(std::vector<unit_ptr>::iterator j = pi->recall_list().begin(); j != pi->recall_list().end();) { //TODO: This block is really messy, cleanup somehow...
-				scoped_recall_unit auto_store("this_unit", pi->save_id(), j - pi->recall_list().begin());
+			for(std::vector<unit_ptr>::iterator j = t.recall_list().begin(); j != t.recall_list().end();) { //TODO: This block is really messy, cleanup somehow...
+				scoped_recall_unit auto_store("this_unit", t.save_id(), j - t.recall_list().begin());
 				if (ufilt( *(*j), map_location() )) {
-					j = pi->recall_list().erase(j);
+					j = t.recall_list().erase(j);
 					++number_killed;
 				} else {
 					++j;

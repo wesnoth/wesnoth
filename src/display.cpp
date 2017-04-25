@@ -274,10 +274,10 @@ void display::init_flags() {
 	std::vector<std::string> side_colors;
 	side_colors.reserve(dc_->teams().size());
 
-	for(size_t i = 0; i != dc_->teams().size(); ++i) {
-		std::string side_color = dc_->teams()[i].color();
+	for(const team& t : dc_->teams()) {
+		std::string side_color = t.color();
 		side_colors.push_back(side_color);
-		init_flags_for_side_internal(i, side_color);
+		init_flags_for_side_internal(t.side() - 1, side_color);
 	}
 	image::set_team_colors(&side_colors);
 }
@@ -345,13 +345,13 @@ surface display::get_flag(const map_location& loc)
 		return surface(nullptr);
 	}
 
-	for(size_t i = 0; i != dc_->teams().size(); ++i) {
-		if(dc_->teams()[i].owns_village(loc) &&
-		  (!fogged(loc) || !dc_->teams()[currentTeam_].is_enemy(i+1)))
+	for (const team& t : dc_->teams()) {
+		if (t.owns_village(loc) && (!fogged(loc) || !dc_->get_team(viewing_side()).is_enemy(t.side())))
 		{
-			flags_[i].update_last_draw_time();
+			auto& flag = flags_[t.side() - 1];
+			flag.update_last_draw_time();
 			const image::locator &image_flag = animate_map_ ?
-				flags_[i].get_current_frame() : flags_[i].get_first_frame();
+				flag.get_current_frame() : flag.get_first_frame();
 			return image::get_image(image_flag, image::TOD_COLORED);
 		}
 	}

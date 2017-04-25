@@ -112,8 +112,9 @@ namespace { // Support functions
 		std::string img_mods = cfg["image_mods"];
 
 		size_t side_num = cfg["side"].to_int(1);
-		if ( side_num == 0  ||  side_num > resources::gameboard->teams().size() )
+		if (!resources::gameboard->has_team(side_num)) {
 			side_num = 1;
+		}
 
 		unit_race::GENDER gender = string_gender(cfg["gender"]);
 		const unit_type *ut = unit_types.find(type);
