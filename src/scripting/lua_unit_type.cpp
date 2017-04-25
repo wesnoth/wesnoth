@@ -49,6 +49,8 @@ static int impl_unit_type_get(lua_State *L)
 	return_string_attrib("id", ut.id());
 	return_string_attrib("alignment", ut.alignment().to_string());
 	return_string_attrib("race", ut.race_id());
+	return_string_attrib("image", ut.image());
+	return_string_attrib("icon", ut.icon());
 	return_int_attrib("max_hitpoints", ut.hitpoints());
 	return_int_attrib("max_moves", ut.movement());
 	return_int_attrib("max_experience", ut.experience_needed());
