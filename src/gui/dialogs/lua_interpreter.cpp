@@ -506,7 +506,7 @@ void lua_interpreter::controller::handle_clear_button_clicked(window & /*window*
 void lua_interpreter::controller::input_keypress_callback(bool& handled,
 							   bool& halt,
 							   const SDL_Keycode key,
-							   window& /*window*/)
+							   window& window)
 {
 	assert(lua_model_);
 	assert(text_entry);
@@ -517,6 +517,11 @@ void lua_interpreter::controller::input_keypress_callback(bool& handled,
 		execute();
 		handled = true;
 		halt = true;
+
+		// Commands such as `wesnoth.zoom` might cause the display to redraw and leave the window half-drawn.
+		// This preempts that.
+		window.set_is_dirty(true);
+
 		LOG_LUA << "finished executing\n";
 	} else if(key == SDLK_TAB) {	// handle tab completion
 		tab();
@@ -539,7 +544,6 @@ void lua_interpreter::controller::input_keypress_callback(bool& handled,
 		handled = true;
 		halt = true;
 	}
-
 }
 
 void lua_interpreter::controller::execute()
