@@ -299,7 +299,8 @@ void custom_tod::update_tod_display(window& window)
 	// redraw tiles
 	disp->draw(false);
 
-	window.invalidate_layout();
+	// NOTE: revert to invalidate_layout if necessary to display the ToD mask image.
+	window.set_is_dirty(true);
 }
 
 void custom_tod::update_lawful_bonus(window& window)
