@@ -266,12 +266,11 @@ void play_controller::init(CVideo& video, const config& level)
 			// Find first team that is allowed to be observed.
 			// If not set here observer would be without fog until
 			// the first turn of observable side
-			size_t i;
-			for (i=0;i < gamestate().board_.teams().size();++i)
+			for (const team& t : gamestate().board_.teams())
 			{
-				if (!gamestate().board_.teams()[i].get_disallow_observers())
+				if (!t.get_disallow_observers())
 				{
-					gui_->set_team(i);
+					gui_->set_team(t.side() - 1);
 				}
 			}
 		}
@@ -665,13 +664,13 @@ void play_controller::tab()
 
 team& play_controller::current_team()
 {
-	assert(current_side() > 0 && current_side() <= int(gamestate().board_.teams().size()));
+	assert(gamestate().board_.has_team(current_side()));
 	return gamestate().board_.get_team(current_side());
 }
 
 const team& play_controller::current_team() const
 {
-	assert(current_side() > 0 && current_side() <= int(gamestate().board_.teams().size()));
+	assert(gamestate().board_.has_team(current_side()));
 	return gamestate().board_.get_team(current_side());
 }
 
@@ -1068,8 +1067,9 @@ void play_controller::start_game()
 			return;
 		}
 
-		for ( int side = gamestate().board_.teams().size(); side != 0; --side )
-			actions::clear_shroud(side, false, false);
+		for (const team& t : gamestate().board_.teams()) {
+			actions::clear_shroud(t.side(), false, false);
+		}
 
 		init_gui();
 		LOG_NG << "first_time..." << (is_skipping_replay() ? "skipping" : "no skip") << "\n";
