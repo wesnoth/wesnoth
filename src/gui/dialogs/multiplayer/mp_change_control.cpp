@@ -328,19 +328,16 @@ public:
 		controller_.show_sides_list();
 		model_.clear_nicks();
 		controller_.update_view_from_model();
-		window.invalidate_layout(); // workaround for assertion failure
 	}
 
 	void handle_sides_list_item_clicked(window& window)
 	{
 		controller_.handle_sides_list_item_clicked();
-		window.invalidate_layout(); // workaround for assertion failure
 	}
 
 	void handle_nicks_list_item_clicked(window& window)
 	{
 		controller_.handle_nicks_list_item_clicked();
-		window.invalidate_layout(); // workaround for assertion failure
 	}
 
 	void bind(window& window)
