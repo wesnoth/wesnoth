@@ -1750,70 +1750,6 @@ void display::announce(const std::string& message, const color_t& color, int lif
 	font::add_floating_label(flabel);
 }
 
-
-void display::draw_border(const map_location& loc, const int xpos, const int ypos)
-{
-	/**
-	 * at the moment the border must be between 0.0 and 0.5
-	 * and the image should always be prepared for a 0.5 border.
-	 * This way this code doesn't need modifications for other border sizes.
-	 */
-
-	// First handle the corners :
-	if(loc.x == -1 && loc.y == -1) { // top left corner
-		drawing_buffer_add(LAYER_BORDER, loc, xpos + zoom_/4, ypos,
-			image::get_image(theme_.border().corner_image_top_left, image::SCALED_TO_ZOOM));
-	} else if(loc.x == get_map().w() && loc.y == -1) { // top right corner
-		// We use the map idea of odd and even, and map coords are internal coords + 1
-		if(loc.x%2 == 0) {
-			drawing_buffer_add(LAYER_BORDER, loc, xpos, ypos + zoom_/2,
-				image::get_image(theme_.border().corner_image_top_right_odd, image::SCALED_TO_ZOOM));
-		} else {
-			drawing_buffer_add(LAYER_BORDER, loc, xpos, ypos,
-				image::get_image(theme_.border().corner_image_top_right_even, image::SCALED_TO_ZOOM));
-		}
-	} else if(loc.x == -1 && loc.y == get_map().h()) { // bottom left corner
-		drawing_buffer_add(LAYER_BORDER, loc, xpos + zoom_/4, ypos,
-			image::get_image(theme_.border().corner_image_bottom_left, image::SCALED_TO_ZOOM));
-
-	} else if(loc.x == get_map().w() && loc.y == get_map().h()) { // bottom right corner
-		// We use the map idea of odd and even, and map coords are internal coords + 1
-		if(loc.x%2 == 1) {
-			drawing_buffer_add(LAYER_BORDER, loc, xpos, ypos,
-				image::get_image(theme_.border().corner_image_bottom_right_even, image::SCALED_TO_ZOOM));
-		} else {
-			drawing_buffer_add(LAYER_BORDER, loc, xpos, ypos,
-				image::get_image(theme_.border().corner_image_bottom_right_odd, image::SCALED_TO_ZOOM));
-		}
-
-	// Now handle the sides:
-	} else if(loc.x == -1) { // left side
-		drawing_buffer_add(LAYER_BORDER, loc, xpos + zoom_/4, ypos,
-			image::get_image(theme_.border().border_image_left, image::SCALED_TO_ZOOM));
-	} else if(loc.x == get_map().w()) { // right side
-		drawing_buffer_add(LAYER_BORDER, loc, xpos + zoom_/4, ypos,
-			image::get_image(theme_.border().border_image_right, image::SCALED_TO_ZOOM));
-	} else if(loc.y == -1) { // top side
-		// We use the map idea of odd and even, and map coords are internal coords + 1
-		if(loc.x%2 == 1) {
-			drawing_buffer_add(LAYER_BORDER, loc, xpos, ypos,
-				image::get_image(theme_.border().border_image_top_even, image::SCALED_TO_ZOOM));
-		} else {
-			drawing_buffer_add(LAYER_BORDER, loc, xpos, ypos + zoom_/2,
-				image::get_image(theme_.border().border_image_top_odd, image::SCALED_TO_ZOOM));
-		}
-	} else if(loc.y == get_map().h()) { // bottom side
-		// We use the map idea of odd and even, and map coords are internal coords + 1
-		if(loc.x%2 == 1) {
-			drawing_buffer_add(LAYER_BORDER, loc, xpos, ypos,
-				image::get_image(theme_.border().border_image_bottom_even, image::SCALED_TO_ZOOM));
-		} else {
-			drawing_buffer_add(LAYER_BORDER, loc, xpos, ypos + zoom_/2,
-				image::get_image(theme_.border().border_image_bottom_odd, image::SCALED_TO_ZOOM));
-		}
-	}
-}
-
 void display::draw_minimap()
 {
 	const SDL_Rect& area = minimap_area();
@@ -2553,10 +2489,6 @@ void display::draw_invalidated() {
 		}
 		draw_hex(loc);
 		drawn_hexes_+=1;
-		// If the tile is at the border, we start to blend it
-		/*if(!on_map) {
-			 draw_border(loc, xpos, ypos);
-		}*/
 	}
 	invalidated_hexes_ += invalidated_.size();
 

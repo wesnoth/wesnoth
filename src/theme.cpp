@@ -295,19 +295,7 @@ theme::object::object(const config& cfg) :
 theme::border_t::border_t() :
 	size(0.0),
 	background_image(),
-	tile_image(),
-	corner_image_top_left(),
-	corner_image_bottom_left(),
-	corner_image_top_right_odd(),
-	corner_image_top_right_even(),
-	corner_image_bottom_right_odd(),
-	corner_image_bottom_right_even(),
-	border_image_left(),
-	border_image_right(),
-	border_image_top_odd(),
-	border_image_top_even(),
-	border_image_bottom_odd(),
-	border_image_bottom_even()
+	tile_image()
 {
 }
 
@@ -315,25 +303,7 @@ theme::border_t::border_t(const config& cfg) :
 	size(cfg["border_size"].to_double()),
 
 	background_image(cfg["background_image"]),
-	tile_image(cfg["tile_image"]),
-
-	corner_image_top_left(cfg["corner_image_top_left"]),
-	corner_image_bottom_left(cfg["corner_image_bottom_left"]),
-
-	corner_image_top_right_odd(cfg["corner_image_top_right_odd"]),
-	corner_image_top_right_even(cfg["corner_image_top_right_even"]),
-
-	corner_image_bottom_right_odd(cfg["corner_image_bottom_right_odd"]),
-	corner_image_bottom_right_even(cfg["corner_image_bottom_right_even"]),
-
-	border_image_left(cfg["border_image_left"]),
-	border_image_right(cfg["border_image_right"]),
-
-	border_image_top_odd(cfg["border_image_top_odd"]),
-	border_image_top_even(cfg["border_image_top_even"]),
-
-	border_image_bottom_odd(cfg["border_image_bottom_odd"]),
-	border_image_bottom_even(cfg["border_image_bottom_even"])
+	tile_image(cfg["tile_image"])
 {
 	VALIDATE(size >= 0.0 && size <= 0.5, _("border_size should be between 0.0 and 0.5."));
 }

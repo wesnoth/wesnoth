@@ -85,25 +85,6 @@ class theme
 
 		std::string background_image;
 		std::string tile_image;
-
-		std::string corner_image_top_left;
-		std::string corner_image_bottom_left;
-
-		std::string corner_image_top_right_odd;
-		std::string corner_image_top_right_even;
-
-		std::string corner_image_bottom_right_odd;
-		std::string corner_image_bottom_right_even;
-
-		std::string border_image_left;
-		std::string border_image_right;
-
-		std::string border_image_top_odd;
-		std::string border_image_top_even;
-
-		std::string border_image_bottom_odd;
-		std::string border_image_bottom_even;
-
 	};
 
 public:

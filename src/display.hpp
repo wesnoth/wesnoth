@@ -690,19 +690,6 @@ protected:
 	 */
 	virtual void draw_sidebar() {}
 
-	/**
-	 * Draws the border tile overlay.
-	 * The routine determines by itself which border it is on
-	 * and draws an overlay accordingly. The definition of the
-	 * border is stored in the 'main_map_border' part of the theme.
-	 *
-	 * @param loc	the map location of the tile
-	 * @param xpos	the on-screen pixels x coordinate of the tile
-	 * @param ypos	the on-screen pixels y coordinate of the tile
-	 */
-	virtual void draw_border(const map_location& loc,
-		const int xpos, const int ypos);
-
 	void draw_minimap();
 
 	enum TERRAIN_TYPE { BACKGROUND, FOREGROUND};
