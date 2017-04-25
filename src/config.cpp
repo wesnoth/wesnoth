@@ -39,24 +39,6 @@ static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
 #define DBG_CF LOG_STREAM(debug, log_config)
 
-
-#ifdef USE_HETEROGENOUS_LOOKUPS
-struct config_simple_key
-{
-	const char* str;
-	int len;
-
-	friend bool operator<(const config_simple_key& l, const std::string& r)
-	{
-		return r.compare(0, r.size(), l.str, l.len) > 0;
-	}
-	friend bool operator<(const std::string& l, const config_simple_key& r)
-	{
-		return l.compare(0, l.size(), r.str, r.len) < 0;
-	}
-};
-#endif
-
 struct config_implementation
 {
 	/**
@@ -69,7 +51,7 @@ struct config_implementation
 	static typename utils::const_clone<config, T>::reference
 	child(
 			  T config
-			, const std::string& key
+			, config_key_type key
 			, const std::string& parent)
 	{
 		config->check_valid();
@@ -461,7 +443,7 @@ config::config(const config& cfg) : values(cfg.values), children(), ordered_chil
 	append_children(cfg);
 }
 
-config::config(const std::string& child) : values(), children(), ordered_children()
+config::config(config_key_type child) : values(), children(), ordered_children()
 {
 	add_child(child);
 }
@@ -495,7 +477,7 @@ config &config::operator=(config &&cfg)
 	return *this;
 }
 
-bool config::valid_id(const std::string& id)
+bool config::valid_id(config_key_type id)
 {
 	if (id.empty()) {
 		return false;
@@ -511,13 +493,13 @@ bool config::valid_id(const std::string& id)
 	return true;
 }
 
-bool config::has_attribute(const std::string &key) const
+bool config::has_attribute(config_key_type key) const
 {
 	check_valid();
 	return values.find(key) != values.end();
 }
 
-bool config::has_old_attribute(const std::string &key, const std::string &old_key, const std::string& msg) const
+bool config::has_old_attribute(config_key_type key, const std::string &old_key, const std::string& msg) const
 {
 	check_valid();
 	if (values.find(key) != values.end()) {
@@ -531,7 +513,7 @@ bool config::has_old_attribute(const std::string &key, const std::string &old_ke
 }
 
 
-void config::remove_attribute(const std::string &key)
+void config::remove_attribute(config_key_type key)
 {
 	check_valid();
 	values.erase(key);
@@ -604,7 +586,7 @@ void config::merge_children_by_attribute(const std::string& key, const std::stri
 	}
 }
 
-config::child_itors config::child_range(const std::string& key)
+config::child_itors config::child_range(config_key_type key)
 {
 	check_valid();
 
@@ -615,7 +597,7 @@ config::child_itors config::child_range(const std::string& key)
 	return child_itors(child_iterator(p->begin()), child_iterator(p->end()));
 }
 
-config::const_child_itors config::child_range(const std::string& key) const
+config::const_child_itors config::child_range(config_key_type key) const
 {
 	check_valid();
 
@@ -626,7 +608,7 @@ config::const_child_itors config::child_range(const std::string& key) const
 	return const_child_itors(const_child_iterator(p->begin()), const_child_iterator(p->end()));
 }
 
-unsigned config::child_count(const std::string &key) const
+unsigned config::child_count(config_key_type key) const
 {
 	check_valid();
 
@@ -649,14 +631,14 @@ unsigned config::attribute_count() const
 	});
 }
 
-bool config::has_child(const std::string &key) const
+bool config::has_child(config_key_type key) const
 {
 	check_valid();
 
 	return children.find(key) != children.end();
 }
 
-config &config::child(const std::string& key, int n)
+config &config::child(config_key_type key, int n)
 {
 	check_valid();
 
@@ -681,46 +663,19 @@ config &config::child(const std::string& key, int n)
 	}
 }
 
-#ifdef USE_HETEROGENOUS_LOOKUPS
-config &config::child_impl(const char* key, int len, int n)
-{
-	check_valid();
-
-	const child_map::const_iterator i = children.find(config_simple_key{ key, len });
-	if (i == children.end()) {
-		DBG_CF << "The config object has no child named »"
-			<< key << "«.\n";
-
-		return invalid;
-	}
-
-	if (n < 0) n = i->second.size() + n;
-	if (size_t(n) < i->second.size()) {
-		return *i->second[n];
-	}
-	else {
-		DBG_CF << "The config object has only »" << i->second.size()
-			<< "« children named »" << key
-			<< "«; request for the index »" << n << "« cannot be honored.\n";
-
-		return invalid;
-	}
-}
-#endif
-
-config& config::child(const std::string& key, const std::string& parent)
+config& config::child(config_key_type key, const std::string& parent)
 {
 	return config_implementation::child(this, key, parent);
 }
 
 const config& config::child(
-		  const std::string& key
+		  config_key_type key
 		, const std::string& parent) const
 {
 	return config_implementation::child(this, key, parent);
 }
 
-const config & config::child_or_empty(const std::string& key) const
+const config & config::child_or_empty(config_key_type key) const
 {
 	static const config empty_cfg;
 	check_valid();
@@ -732,7 +687,7 @@ const config & config::child_or_empty(const std::string& key) const
 	return empty_cfg;
 }
 
-config &config::child_or_add(const std::string &key)
+config &config::child_or_add(config_key_type key)
 {
 	child_map::const_iterator i = children.find(key);
 	if (i != children.end() && !i->second.empty())
@@ -741,7 +696,7 @@ config &config::child_or_add(const std::string &key)
 	return add_child(key);
 }
 
-config& config::add_child(const std::string& key)
+config& config::add_child(config_key_type key)
 {
 	check_valid();
 
@@ -751,7 +706,7 @@ config& config::add_child(const std::string& key)
 	return *v.back();
 }
 
-config& config::add_child(const std::string& key, const config& val)
+config& config::add_child(config_key_type key, const config& val)
 {
 	check_valid(val);
 
@@ -761,7 +716,7 @@ config& config::add_child(const std::string& key, const config& val)
 	return *v.back();
 }
 
-config &config::add_child(const std::string &key, config &&val)
+config &config::add_child(config_key_type key, config &&val)
 {
 	check_valid(val);
 
@@ -771,7 +726,7 @@ config &config::add_child(const std::string &key, config &&val)
 	return *v.back();
 }
 
-config &config::add_child_at(const std::string &key, const config &val, unsigned index)
+config &config::add_child_at(config_key_type key, const config &val, unsigned index)
 {
 	check_valid(val);
 
@@ -818,7 +773,7 @@ private:
 
 }
 
-void config::clear_children(const std::string& key)
+void config::clear_children(config_key_type key)
 {
 	check_valid();
 
@@ -858,7 +813,7 @@ void config::splice_children(config &src, const std::string &key)
 	}
 }
 
-void config::recursive_clear_value(const std::string& key)
+void config::recursive_clear_value(config_key_type key)
 {
 	check_valid();
 
@@ -899,7 +854,7 @@ config::all_children_iterator config::erase(const config::all_children_iterator&
 	return all_children_iterator(remove_child(i.i_->pos, i.i_->index));
 }
 
-void config::remove_child(const std::string &key, unsigned index)
+void config::remove_child(config_key_type key, unsigned index)
 {
 	check_valid();
 
@@ -913,7 +868,7 @@ void config::remove_child(const std::string &key, unsigned index)
 	remove_child(i, index);
 }
 
-const config::attribute_value &config::operator[](const std::string &key) const
+const config::attribute_value &config::operator[](config_key_type key) const
 {
 	check_valid();
 
@@ -923,32 +878,27 @@ const config::attribute_value &config::operator[](const std::string &key) const
 	return empty_attribute;
 }
 
-#ifdef USE_HETEROGENOUS_LOOKUPS
-const config::attribute_value& config::get_attribute(const char* key, int len) const
-{
-	check_valid();
-
-	const attribute_map::const_iterator i = values.find(config_simple_key { key, len });
-	if (i != values.end()) return i->second;
-	static const attribute_value empty_attribute;
-	return empty_attribute;
-}
-
-#endif
-const config::attribute_value *config::get(const std::string &key) const
+const config::attribute_value *config::get(config_key_type key) const
 {
 	check_valid();
 	attribute_map::const_iterator i = values.find(key);
 	return i != values.end() ? &i->second : nullptr;
 }
 
-config::attribute_value &config::operator[](const std::string &key)
+config::attribute_value& config::operator[](config_key_type key)
 {
 	check_valid();
-	return values[key];
+
+	auto res = values.lower_bound(key);
+	
+	if (res == values.end() || key != res->first) {
+		res = values.emplace_hint(res, std::piecewise_construct, std::forward_as_tuple(key), std::tuple<>());
+	}
+
+	return res->second;
 }
 
-const config::attribute_value &config::get_old_attribute(const std::string &key, const std::string &old_key, const std::string &msg) const
+const config::attribute_value &config::get_old_attribute(config_key_type key, const std::string &old_key, const std::string &msg) const
 {
 	check_valid();
 
@@ -1010,26 +960,7 @@ config::attr_itors config::attribute_range()
 	return range;
 }
 
-namespace {
-
-struct config_has_value {
-	config_has_value(const std::string& name, const std::string& value)
-		: name_(name), value_()
-	{
-		// TODO: This is assigned here instead of in the init-list because attribute_value doesn't have a matching constructor
-		value_ = value;
-	}
-
-	bool operator()(const config* cfg) const { return (*cfg)[name_] == value_; }
-
-private:
-	std::string name_;
-	config::attribute_value value_;
-};
-
-} // end namespace
-
-config &config::find_child(const std::string &key, const std::string &name,
+config &config::find_child(config_key_type key, const std::string &name,
 	const std::string &value)
 {
 	check_valid();
@@ -1044,7 +975,7 @@ config &config::find_child(const std::string &key, const std::string &name,
 
 	const child_list::iterator j = std::find_if(i->second.begin(),
 	                                            i->second.end(),
-	                                            config_has_value(name,value));
+	                                            [&](const config* cfg) { return (*cfg)[name] == value; });
 	if(j != i->second.end()) {
 		return **j;
 	} else {
@@ -1542,8 +1473,8 @@ std::string config::hash() const
 		if (val.second.blank()) {
 			continue;
 		}
-		for (std::string::const_iterator c = val.first.begin(); c != val.first.end(); ++c) {
-			hash_str[i] ^= *c;
+		for (char c : val.first) {
+			hash_str[i] ^= c;
 			if (++i == hash_length) i = 0;
 		}
 		std::string base_str = val.second.t_str().base_str();
