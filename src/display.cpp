@@ -84,7 +84,9 @@ unsigned int display::last_zoom_ = SmallZoom;
 void display::parse_team_overlays()
 {
 	const team& curr_team = dc_->teams()[playing_team()];
-	const team& prev_team = dc_->teams()[playing_team()-1 < dc_->teams().size() ? playing_team()-1 : dc_->teams().size()-1];
+	const team& prev_team = playing_team() - 1 < dc_->teams().size()
+		? dc_->get_team(playing_team())
+		: dc_->teams().back();
 	for (const game_display::overlay_map::value_type i : *overlays_) {
 		const overlay& ov = i.second;
 		if (!ov.team_name.empty() &&

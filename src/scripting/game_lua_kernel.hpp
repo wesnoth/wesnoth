@@ -53,7 +53,6 @@ class game_lua_kernel : public lua_kernel_base
 	reports & reports_;
 
 	// Private functions to ease access to parts of game_state
-	game_board & board();
 	unit_map & units();
 	game_data & gamedata();
 	tod_manager & tod_man();
@@ -180,6 +179,7 @@ class game_lua_kernel : public lua_kernel_base
 	std::vector<int> get_sides_vector(const vconfig& cfg);
 
 public:
+	game_board & board();
 	std::vector<team> & teams();
 	const gamemap & map() const;
 	/**

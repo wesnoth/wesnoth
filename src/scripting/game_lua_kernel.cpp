@@ -1627,7 +1627,10 @@ int game_lua_kernel::intf_find_path(lua_State *L)
 	if (!calc) {
 		if (!u) return luaL_argerror(L, 1, "unit not found");
 
-		const team &viewing_team = board().teams()[(viewing_side ? viewing_side : u->side()) - 1];
+		const team& viewing_team = viewing_side
+			? board().get_team(viewing_side)
+			: board().get_team(u->side());
+
 		if (!ignore_teleport) {
 			teleport_locations = pathfind::get_teleport_locations(
 				*u, viewing_team, see_all, ignore_units);
@@ -1712,7 +1715,10 @@ int game_lua_kernel::intf_find_reach(lua_State *L)
 		lua_pop(L, 1);
 	}
 
-	const team &viewing_team = board().teams()[(viewing_side ? viewing_side : u->side()) - 1];
+	const team& viewing_team = viewing_side
+		? board().get_team(viewing_side)
+		: board().get_team(u->side());
+
 	pathfind::paths res(*u, ignore_units, !ignore_teleport,
 		viewing_team, additional_turns, see_all, ignore_units);
 
@@ -1898,7 +1904,10 @@ int game_lua_kernel::intf_find_cost_map(lua_State *L)
 	++arg;
 
 	// build cost_map
-	const team &viewing_team = board().teams()[(viewing_side ? viewing_side : 1) - 1];
+	const team& viewing_team = viewing_side
+		? board().get_team(viewing_side)
+		: board().teams()[0];
+
 	pathfind::full_cost_map cost_map(
 			ignore_units, !ignore_teleport, viewing_team, see_all, ignore_units);
 
@@ -2651,7 +2660,7 @@ namespace
 
 		virtual config query_user(int side) const override
 		{
-			bool is_local_ai = lua_kernel_base::get_lua_kernel<game_lua_kernel>(L).teams()[side - 1].is_local_ai();
+			bool is_local_ai = lua_kernel_base::get_lua_kernel<game_lua_kernel>(L).board().get_team(side).is_local_ai();
 			config cfg;
 			query_lua(side, is_local_ai ? ai_choice_index : user_choice_index, cfg);
 			return cfg;
@@ -4010,7 +4019,7 @@ int game_lua_kernel::intf_toggle_fog(lua_State *L, const bool clear)
 		if(side_num < 1 || static_cast<size_t>(side_num) > teams().size()) {
 			continue;
 		}
-		team &t = board.get_team(side_num);
+		team &t = board().get_team(side_num);
 		if(!clear) {
 			// Extend fog.
 			t.remove_fog_override(locs);
