@@ -592,7 +592,7 @@ int game_lua_kernel::intf_match_unit(lua_State *L)
 			WRN_LUA << "wesnoth.match_unit called with a secondary unit (3rd argument), ";
 			WRN_LUA << "but unit to match was on recall list. ";
 			WRN_LUA << "Thus the 3rd argument is ignored.\n";
-			team &t = (teams())[side - 1];
+			team &t = board().get_team(side);
 			scoped_recall_unit auto_store("this_unit", t.save_id(), t.recall_list().find_index(u->id()));
 			lua_pushboolean(L, unit_filter(filter, &fc).matches(*u, map_location()));
 			return 1;
@@ -604,7 +604,7 @@ int game_lua_kernel::intf_match_unit(lua_State *L)
 	} else if(int side = u.on_recall_list()) {
 		map_location loc;
 		luaW_tolocation(L, 3, loc); // If argument 3 isn't a location, loc is unchanged
-		team &t = (teams())[side - 1];
+		team &t = board().get_team(side);
 		scoped_recall_unit auto_store("this_unit", t.save_id(), t.recall_list().find_index(u->id()));
 		lua_pushboolean(L, unit_filter(filter, &fc).matches(*u, loc));
 		return 1;

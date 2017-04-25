@@ -184,7 +184,7 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 
 			bool found = false;
 			for (const int side : sides) {
-				const team &viewing_team = fc_->get_disp_context().teams().at(side - 1);
+				const team &viewing_team = fc_->get_disp_context().get_team(side);
 				bool viewer_sees = respect_fog ? !viewing_team.fogged(loc) : !viewing_team.shrouded(loc);
 				if (visible == viewer_sees) {
 					found = true;
@@ -309,7 +309,7 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 		if(sides.empty() && fc_->get_disp_context().village_owner(loc) == -1)
 			found = true;
 		for(const int side : sides) {
-			if(fc_->get_disp_context().teams().at(side - 1).owns_village(loc)) {
+			if(fc_->get_disp_context().get_team(side).owns_village(loc)) {
 				found = true;
 				break;
 			}

@@ -108,7 +108,7 @@ void mp_change_control::pre_show(window& window)
 		: 0;
 
 	for(unsigned int side = 1; side <= num_sides; ++side) {
-		if(resources::gameboard->teams().at(side - 1).hidden()) {
+		if(resources::gameboard->get_team(side).hidden()) {
 			continue;
 		}
 

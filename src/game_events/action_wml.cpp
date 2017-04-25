@@ -913,7 +913,7 @@ WML_HANDLER_FUNCTION(unit,, cfg)
 		DBG_NG << parsed_cfg.debug();
 		return;
 	}
-	team &tm = resources::gameboard->teams().at(side-1);
+	team &tm = resources::gameboard->get_team(side);
 
 	unit_creator uc(tm,resources::gameboard->map().starting_position(side));
 

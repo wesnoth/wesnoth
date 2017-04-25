@@ -628,7 +628,7 @@ void manager::process_network_data(config const& cfg)
 		size_t count = wb_cfg.child_count("net_cmd");
 		LOG_WB << "Received wb data (" << count << ").\n";
 
-		team& team_from = resources::gameboard->teams().at(wb_cfg["side"]-1);
+		team& team_from = resources::gameboard->get_team(wb_cfg["side"]);
 		for(side_actions::net_cmd const& cmd : wb_cfg.child_range("net_cmd"))
 			team_from.get_side_actions()->execute_net_cmd(cmd);
 	}
@@ -1067,7 +1067,7 @@ int manager::get_spent_gold_for(int side)
 	if(wait_for_side_init_)
 		return 0;
 
-	return resources::gameboard->teams().at(side - 1).get_side_actions()->get_gold_spent();
+	return resources::gameboard->get_team(side).get_side_actions()->get_gold_spent();
 }
 
 void manager::options_dlg()

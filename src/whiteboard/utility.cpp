@@ -98,7 +98,7 @@ unit* future_visible_unit(map_location hex, int viewer_side)
 		return nullptr;
 	}
 	//use global method get_visible_unit
-	return resources::gameboard->get_visible_unit(hex, resources::gameboard->teams().at(viewer_side - 1), false);
+	return resources::gameboard->get_visible_unit(hex, resources::gameboard->get_team(viewer_side), false);
 }
 
 unit* future_visible_unit(int on_side, map_location hex, int viewer_side)
@@ -115,7 +115,7 @@ int path_cost(std::vector<map_location> const& path, unit const& u)
 	if(path.size() < 2)
 		return 0;
 
-	team const& u_team = resources::gameboard->teams().at(u.side()-1);
+	team const& u_team = resources::gameboard->get_team(u.side());
 	map_location const& dest = path.back();
 	if ( (resources::gameboard->map().is_village(dest) && !u_team.owns_village(dest))
 	     || pathfind::enemy_zoc(u_team, dest, u_team) )
