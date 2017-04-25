@@ -342,7 +342,7 @@ bool game_state::can_recruit_on(const map_location& leader_loc, const map_locati
 		// that comes to pass, just return.
 		return false;
 	}
-	const team & view_team = board_.teams()[side-1];
+	const team & view_team = board_.get_team(side);
 
 	if ( view_team.shrouded(recruit_loc) )
 		return false;

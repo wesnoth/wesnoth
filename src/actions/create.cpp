@@ -59,7 +59,7 @@ namespace actions {
 
 const std::set<std::string> get_recruits(int side, const map_location &recruit_loc)
 {
-	const team & current_team = resources::gameboard->teams()[side -1];
+	const team & current_team = resources::gameboard->get_team(side);
 
 	LOG_NG << "getting recruit list for side " << side << " at location " << recruit_loc << "\n";
 
@@ -131,7 +131,7 @@ namespace { // Helpers for get_recalls()
 	                                 std::vector< unit_const_ptr > & result,
 	                                 std::set<size_t> * already_added = nullptr)
 	{
-		const team& leader_team = resources::gameboard->teams()[leader->side()-1];
+		const team& leader_team = resources::gameboard->get_team(leader->side());
 		const std::string& save_id = leader_team.save_id();
 
 		const unit_filter ufilt(vconfig(leader->recall_filter()), resources::filter_con);
@@ -186,7 +186,7 @@ std::vector<unit_const_ptr > get_recalls(int side, const map_location &recall_lo
 			add_leader_filtered_recalls(find_it.get_shared_ptr(), result);
 			return result;
 		}
-		else if ( find_it->is_visible_to_team(resources::gameboard->teams()[side-1], *resources::gameboard, false) )
+		else if ( find_it->is_visible_to_team(resources::gameboard->get_team(side), *resources::gameboard, false) )
 		{
 			// This hex is visibly occupied, so we cannot recall here.
 			allow_local = false;
@@ -246,7 +246,7 @@ namespace { // Helpers for check_recall_location()
 			return RECRUIT_NO_LEADER;
 
 		// Make sure the recalling unit can recall this specific unit.
-		team& recall_team = (*resources::gameboard).teams()[recaller.side()-1];
+		team& recall_team = (*resources::gameboard).get_team(recaller.side());
 		scoped_recall_unit this_unit("this_unit", recall_team.save_id(),
 						recall_team.recall_list().find_index(recall_unit.id()));
 
@@ -422,7 +422,7 @@ RECRUIT_CHECK check_recruit_location(const int side, map_location &recruit_locat
 
 	// If the specified unit type is in the team's recruit list, there is no
 	// need to check each leader's list.
-	if ( utils::contains(resources::gameboard->teams()[side-1].recruits(), unit_type) )
+	if ( utils::contains(resources::gameboard->get_team(side).recruits(), unit_type) )
 		check_type.clear();
 
 	// If the check location is not valid, we will never get an "OK" result.
@@ -586,8 +586,8 @@ namespace { // Helpers for place_recruit()
 		int min_dist = INT_MAX;
 
 		for ( unit_itor = units.begin(); unit_itor != units.end(); ++unit_itor ) {
-			if (resources::gameboard->teams()[unit_itor->side()-1].is_enemy(new_unit.side()) &&
-				unit_itor->is_visible_to_team(resources::gameboard->teams()[new_unit.side()-1], *resources::gameboard, false)) {
+			if (resources::gameboard->get_team(unit_itor->side()).is_enemy(new_unit.side()) &&
+				unit_itor->is_visible_to_team(resources::gameboard->get_team(new_unit.side()), *resources::gameboard, false)) {
 				int dist = distance_between(unit_itor->get_location(),recruit_loc) - unit_itor->level();
 				if (dist < min_dist) {
 					min_dist = dist;
@@ -653,7 +653,7 @@ place_recruit_result place_recruit(unit_ptr u, const map_location &recruit_locat
 		new_unit_itor->set_hidden(true);
 	}
 	preferences::encountered_units().insert(new_unit_itor->type_id());
-	resources::gameboard->teams()[u->side()-1].spend_gold(cost);
+	resources::gameboard->get_team(u->side()).spend_gold(cost);
 
 	if ( show ) {
 		unit_display::unit_recruited(current_loc, leader_loc);

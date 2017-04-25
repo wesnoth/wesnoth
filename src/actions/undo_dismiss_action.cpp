@@ -37,7 +37,7 @@ void dismiss_action::write(config & cfg) const
  */
 bool dismiss_action::undo(int side)
 {
-	team &current_team = resources::gameboard->teams()[side-1];
+	team &current_team = resources::gameboard->get_team(side);
 
 	current_team.recall_list().add(dismissed_unit);
 	execute_undo_umc_wml();

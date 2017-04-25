@@ -121,7 +121,7 @@ std::map<int,config> mp_sync::get_user_choice_multiple_sides(const std::string &
 	for(int side : sides)
 	{
 		assert(1 <= side && side <= max_side);
-		if( resources::gameboard->teams()[side-1].is_empty())
+		if( resources::gameboard->get_team(side).is_empty())
 		{
 			empty_sides.insert(side);
 		}
@@ -187,7 +187,7 @@ config mp_sync::get_user_choice(const std::string &name, const mp_sync::user_cho
 		side = resources::controller->current_side();
 		LOG_REPLAY << " side changed to " << side << "\n";
 	}
-	is_side_null_controlled = resources::gameboard->teams()[side-1].is_empty();
+	is_side_null_controlled = resources::gameboard->get_team(side).is_empty();
 
 	LOG_REPLAY << "get_user_choice_called with"
 			<< " name=" << name
@@ -203,7 +203,7 @@ config mp_sync::get_user_choice(const std::string &name, const mp_sync::user_cho
 		//i think in that case we should better use uch.random_choice(),
 		//which could return something like config_of("invalid", true);
 		side = 1;
-		while ( side <= max_side  &&  resources::gameboard->teams()[side-1].is_empty() )
+		while ( side <= max_side  &&  resources::gameboard->get_team(side).is_empty() )
 			side++;
 		assert(side <= max_side);
 	}
@@ -239,7 +239,7 @@ user_choice_manager::user_choice_manager(const std::string &name, const mp_sync:
 	for(int side : required_)
 	{
 		assert(1 <= side && side <= max_side);
-		const team& t = resources::gameboard->teams()[side-1];
+		const team& t = resources::gameboard->get_team(side);
 		assert(!t.is_empty());
 		if(side != current_side_)
 		{
@@ -318,7 +318,7 @@ void user_choice_manager::update_local_choice()
 			sides_str += " ";
 			sides_str += std::to_string(side);
 			//and it is local
-			if(resources::gameboard->teams()[side-1].is_local() && !resources::gameboard->teams()[side-1].is_idle())
+			if(resources::gameboard->get_team(side).is_local() && !resources::gameboard->get_team(side).is_idle())
 			{
 				//then we have to make a local choice.
 				local_choice_ = side;

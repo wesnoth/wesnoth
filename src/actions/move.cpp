@@ -366,7 +366,7 @@ namespace { // Private helpers for move_unit()
 		orig_dir_(move_it_->facing()),
 		goto_( is_ai_move() ? move_it_->get_goto() : route.back() ),
 		current_side_(orig_side_),
-		current_team_(&resources::gameboard->teams()[current_side_-1]),
+		current_team_(&resources::gameboard->get_team(current_side_)),
 		current_uses_fog_(current_team_->fog_or_shroud()  &&
 		                  current_team_->auto_shroud_updates()),
 		move_loc_(begin_),
@@ -824,7 +824,7 @@ namespace { // Private helpers for move_unit()
 
 		// Update the current unit data.
 		current_side_ = found ? move_it_->side() : orig_side_;
-		current_team_ = &resources::gameboard->teams()[current_side_-1];
+		current_team_ = &resources::gameboard->get_team(current_side_);
 		current_uses_fog_ = current_team_->fog_or_shroud()  &&
 		                    ( current_side_ != orig_side_  ||
 		                      current_team_->auto_shroud_updates() );

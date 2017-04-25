@@ -209,7 +209,7 @@ action_ptr find_action_at(map_location hex, team_filter team_filter)
 
 std::deque<action_ptr> find_actions_of(unit const &target)
 {
-	return resources::gameboard->teams()[target.side()-1].get_side_actions()->actions_of(target);
+	return resources::gameboard->get_team(target.side()).get_side_actions()->actions_of(target);
 }
 
 } //end namespace wb

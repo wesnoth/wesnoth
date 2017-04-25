@@ -44,7 +44,7 @@ void ai_testing::log_turn_end(unsigned int side)
 void ai_testing::log_turn(const char* msg, unsigned int side)
 {
 	assert(side>=1);
-	team& current_team = resources::gameboard->teams()[side-1];
+	team& current_team = resources::gameboard->get_team(side);
 
 	int _turn_number = resources::tod_manager->turn();
 	int _units = resources::gameboard->side_units(side);

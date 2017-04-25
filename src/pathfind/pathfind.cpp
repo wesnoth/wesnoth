@@ -119,7 +119,7 @@ map_location find_vacant_tile(const map_location& loc, VACANT_TILE_TYPE vacancy,
 map_location find_vacant_castle(const unit & leader)
 {
 	return find_vacant_tile(leader.get_location(), VACANT_CASTLE,
-	                        nullptr, &resources::gameboard->teams()[leader.side()-1]);
+	                        nullptr, &resources::gameboard->get_team(leader.side()));
 }
 
 
@@ -635,7 +635,7 @@ marked_route mark_route(const plain_route &rt)
 
 	int turns = 0;
 	int movement = u.movement_left();
-	const team& unit_team = resources::gameboard->teams()[u.side()-1];
+	const team& unit_team = resources::gameboard->get_team(u.side());
 	bool zoc = false;
 
 	std::vector<map_location>::const_iterator i = rt.steps.begin();

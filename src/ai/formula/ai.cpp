@@ -369,7 +369,7 @@ variant formula_ai::get_value(const std::string& key) const
 
 	} else if(key == "my_side")
 	{
-		return variant(std::make_shared<team_callable>(resources::gameboard->teams()[get_side()-1]));
+		return variant(std::make_shared<team_callable>(resources::gameboard->get_team(get_side())));
 
 	} else if(key == "my_side_number")
 	{

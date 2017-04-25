@@ -40,12 +40,12 @@ bool display_context::would_be_discovered(const map_location & loc, int side_num
 			continue;
 		}
 		const unit & u = *u_it;
-		if (teams()[side_num-1].is_enemy(u.side()) && !u.incapacitated()) {
+		if (get_team(side_num).is_enemy(u.side()) && !u.incapacitated()) {
 			// Enemy spotted in adjacent tiles, check if we can see him.
 			// Watch out to call invisible with see_all=true to avoid infinite recursive calls!
 			if(see_all) {
 				return true;
-			} else if (!teams()[side_num-1].fogged(u_loc)
+			} else if (!get_team(side_num).fogged(u_loc)
 			&& !u.invisible(u_loc, *this, true)) {
 				return true;
 			}

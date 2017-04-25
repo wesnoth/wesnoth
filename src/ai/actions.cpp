@@ -166,7 +166,7 @@ game_info& action_result::get_info() const
 
 team& action_result::get_my_team() const
 {
-	return resources::gameboard->teams()[side_-1];
+	return resources::gameboard->get_team(side_);
 }
 
 

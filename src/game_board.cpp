@@ -111,7 +111,7 @@ void game_board::check_victory(bool & continue_level, bool & found_player, bool 
 	for (const unit & i : units())
 	{
 		DBG_EE << "Found a unit: " << i.id() << " on side " << i.side() << std::endl;
-		const team& tm = teams()[i.side()-1];
+		const team& tm = get_team(i.side());
 		DBG_EE << "That team's defeat condition is: " << tm.defeat_condition() << std::endl;
 		if (i.can_recruit() && tm.defeat_condition() == team::DEFEAT_CONDITION::NO_LEADER) {
 			not_defeated.insert(i.side());

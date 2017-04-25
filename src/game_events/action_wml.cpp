@@ -162,7 +162,7 @@ namespace { // Support functions
 				continue;
 			}
 			pathfind::shortest_path_calculator calc(fake_unit,
-					resources::gameboard->teams()[fake_unit.side()-1],
+					resources::gameboard->get_team(fake_unit.side()),
 					resources::gameboard->teams(),
 					*game_map);
 

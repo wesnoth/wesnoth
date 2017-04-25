@@ -122,7 +122,7 @@ bool simulated_move(int side, const map_location& from, const map_location& to, 
 bool simulated_recall(int side, const std::string& unit_id, const map_location& recall_location){
 	LOG_AI_SIM_ACTIONS << "Simulated recall" << std::endl;
 
-	team own_team = resources::gameboard->teams()[side-1];
+	team own_team = resources::gameboard->get_team(side);
 	unit_ptr recall_unit = own_team.recall_list().extract_if_matches_id(unit_id);
 
 	helper_place_unit(*recall_unit, recall_location);
@@ -141,7 +141,7 @@ bool simulated_recruit(int side, const unit_type* u, const map_location& recruit
 	const unit recruit_unit(*u, side, false);	// Random traits, name and gender are not needed. This will cause "duplicate id conflicts" inside unit_map::insert(), but engine will manage this issue correctly.
 	helper_place_unit(recruit_unit, recruit_location);
 
-	resources::gameboard->teams()[side-1].spend_gold(u->cost());
+	resources::gameboard->get_team(side).spend_gold(u->cost());
 
 	LOG_AI_SIM_ACTIONS << "recruit " << u->type_name() << " at "
 		<< recruit_location << " spend " << u->cost() << " gold" << std::endl;
