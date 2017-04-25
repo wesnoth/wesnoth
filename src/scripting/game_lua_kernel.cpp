@@ -3745,7 +3745,7 @@ int game_lua_kernel::intf_scroll(lua_State * L)
 		const std::vector<int> side_list = get_sides_vector(cfg);
 		bool side_match = false;
 		for (int side : side_list) {
-			if(teams()[side-1].is_local_human()) {
+			if(board().get_team(side).is_local_human()) {
 				side_match = true;
 				break;
 			}
@@ -4010,7 +4010,7 @@ int game_lua_kernel::intf_toggle_fog(lua_State *L, const bool clear)
 		if(side_num < 1 || static_cast<size_t>(side_num) > teams().size()) {
 			continue;
 		}
-		team &t = teams()[side_num-1];
+		team &t = board.get_team(side_num);
 		if(!clear) {
 			// Extend fog.
 			t.remove_fog_override(locs);
