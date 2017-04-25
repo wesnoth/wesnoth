@@ -840,7 +840,7 @@ int game_lua_kernel::intf_shroud_op(lua_State *L, bool place_shroud)
 	if(lua_isstring(L, 2)) {
 		std::string data = lua_tostring(L, 2);
 		// Special case - using a shroud_data string, or "all"
-		team& side = teams()[side_num - 1];
+		team& side = board().get_team(side_num);
 		if(place_shroud) {
 			side.reshroud();
 		}
@@ -856,7 +856,7 @@ int game_lua_kernel::intf_shroud_op(lua_State *L, bool place_shroud)
 	} else if(lua_istable(L, 2)) {
 		std::vector<map_location> locs_v = lua_check<std::vector<map_location>>(L, 2);
 		std::set<map_location> locs(locs_v.begin(), locs_v.end());
-		team &t = teams()[side_num - 1];
+		team &t = board().get_team(side_num);
 
 		for (map_location const &loc : locs)
 		{
@@ -1119,15 +1119,15 @@ int game_lua_kernel::intf_set_village_owner(lua_State *L)
 
 	int old_side = board().village_owner(loc) + 1;
 
-	if (new_side == old_side || new_side < 0 || new_side > static_cast<int>(teams().size()) || board().team_is_defeated(teams()[new_side - 1])) {
+	if (new_side == old_side || new_side < 0 || new_side > static_cast<int>(teams().size()) || board().team_is_defeated(board().get_team(new_side))) {
 		return 0;
 	}
 
 	if (old_side) {
-		teams()[old_side - 1].lose_village(loc);
+		board().get_team(old_side).lose_village(loc);
 	}
 	if (new_side) {
-		teams()[new_side - 1].get_village(loc, old_side, (luaW_toboolean(L, 4) ? &gamedata() : nullptr) );
+		board().get_team(new_side).get_village(loc, old_side, (luaW_toboolean(L, 4) ? &gamedata() : nullptr) );
 	}
 	return 0;
 }
@@ -2091,7 +2091,7 @@ int game_lua_kernel::intf_erase_unit(lua_State *L)
 				return luaL_argerror(L, 1, "invalid location");
 			}
 		} else if (int side = u.on_recall_list()) {
-			team &t = teams()[side - 1];
+			team &t = board().get_team(side);
 			// Should it use underlying ID instead?
 			t.recall_list().erase_if_matches_id(u->id());
 		} else {
@@ -2148,7 +2148,7 @@ int game_lua_kernel::intf_put_recall_unit(lua_State *L)
 	} else {
 		u->set_side(side);
 	}
-	team &t = teams()[side - 1];
+	team &t = board().get_team(side);
 	// Avoid duplicates in the recall list.
 	size_t uid = u->underlying_id();
 	t.recall_list().erase_by_underlying_id(uid);
@@ -2180,7 +2180,7 @@ int game_lua_kernel::intf_extract_unit(lua_State *L)
 		assert(u);
 		u->anim_comp().clear_haloes();
 	} else if (int side = lu->on_recall_list()) {
-		team &t = teams()[side - 1];
+		team &t = board().get_team(side);
 		unit_ptr v = unit_ptr(new unit(*u));
 		t.recall_list().erase_if_matches_id(u->id());
 		u = v;
@@ -2984,7 +2984,7 @@ int game_lua_kernel::intf_get_sides(lua_State* L)
 	lua_createtable(L, sides.size(), 0);
 	unsigned index = 1;
 	for(int side : sides) {
-		luaW_pushteam(L, teams()[side - 1]);
+		luaW_pushteam(L, board().get_team(side));
 		lua_rawseti(L, -2, index);
 		++index;
 	}
@@ -3969,7 +3969,7 @@ int game_lua_kernel::intf_get_fog_or_shroud(lua_State *L, bool fog)
 		return luaL_argerror(L, 1, error.c_str());
 	}
 
-	team& t = teams()[side - 1];
+	team& t = board().get_team(side);
 	lua_pushboolean(L, fog ? t.fogged(loc) : t.shrouded(loc));
 	return 1;
 }

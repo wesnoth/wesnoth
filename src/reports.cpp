@@ -202,7 +202,7 @@ static config unit_side(reports::context & rc, const unit* u)
 	if (!u) return config();
 
 	config report;
-	const team &u_team = rc.teams()[u->side() - 1];
+	const team &u_team = rc.dc().get_team(u->side());
 	std::string flag_icon = u_team.flag_icon();
 	std::string old_rgb = game_config::flag_rgb;
 	std::string new_rgb = u_team.color();
@@ -753,7 +753,7 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 	// We want weak resistances (= good damage) first.
 	std::map<int, std::set<std::string>, std::greater<int> > resistances;
 	std::set<std::string> seen_types;
-	const team &unit_team = rc.teams()[u.side() - 1];
+	const team &unit_team = rc.dc().get_team(u.side());
 	const team &viewing_team = rc.teams()[rc.screen().viewing_team()];
 	for (const unit &enemy : rc.units())
 	{
@@ -1222,7 +1222,7 @@ REPORT_GENERATOR(gold, rc)
 	std::ostringstream str;
 	int viewing_side = rc.screen().viewing_side();
 	// Suppose the full unit map is applied.
-	int fake_gold = rc.teams()[viewing_side - 1].gold();
+	int fake_gold = rc.dc().get_team(viewing_side).gold();
 
 	if (rc.wb())
 		fake_gold -= rc.wb()->get_spent_gold_for(viewing_side);
@@ -1244,7 +1244,7 @@ REPORT_GENERATOR(villages, rc)
 {
 	std::ostringstream str;
 	int viewing_side = rc.screen().viewing_side();
-	const team &viewing_team = rc.teams()[viewing_side - 1];
+	const team &viewing_team = rc.dc().get_team(viewing_side);
 	team_data td = rc.dc().calculate_team_data(viewing_team);
 	str << td.villages << '/';
 	if (viewing_team.uses_shroud()) {
@@ -1269,7 +1269,7 @@ REPORT_GENERATOR(upkeep, rc)
 {
 	std::ostringstream str;
 	int viewing_side = rc.screen().viewing_side();
-	const team &viewing_team = rc.teams()[viewing_side - 1];
+	const team &viewing_team = rc.dc().get_team(viewing_side);
 	team_data td = rc.dc().calculate_team_data(viewing_team);
 	str << td.expenses << " (" << td.upkeep << ")";
 	return gray_inactive(rc,str.str());
@@ -1278,7 +1278,7 @@ REPORT_GENERATOR(upkeep, rc)
 REPORT_GENERATOR(expenses, rc)
 {
 	int viewing_side = rc.screen().viewing_side();
-	const team &viewing_team = rc.teams()[viewing_side - 1];
+	const team &viewing_team = rc.dc().get_team(viewing_side);
 	team_data td = rc.dc().calculate_team_data(viewing_team);
 	return gray_inactive(rc,std::to_string(td.expenses));
 }
@@ -1287,7 +1287,7 @@ REPORT_GENERATOR(income, rc)
 {
 	std::ostringstream str;
 	int viewing_side = rc.screen().viewing_side();
-	const team &viewing_team = rc.teams()[viewing_side - 1];
+	const team &viewing_team = rc.dc().get_team(viewing_side);
 	team_data td = rc.dc().calculate_team_data(viewing_team);
 	char const *end = naps;
 	if (viewing_side != rc.screen().playing_side()) {
@@ -1371,7 +1371,7 @@ REPORT_GENERATOR(terrain, rc)
 {
 	const gamemap &map = rc.map();
 	int viewing_side = rc.screen().viewing_side();
-	const team &viewing_team = rc.teams()[viewing_side - 1];
+	const team &viewing_team = rc.dc().get_team(viewing_side);
 	map_location mouseover_hex = rc.screen().mouseover_hex();
 	if (!map.on_board(mouseover_hex) || viewing_team.shrouded(mouseover_hex))
 		return config();
@@ -1523,7 +1523,7 @@ REPORT_GENERATOR(report_clock, /*rc*/)
 REPORT_GENERATOR(report_countdown, rc)
 {
 	int viewing_side = rc.screen().viewing_side();
-	const team &viewing_team = rc.teams()[viewing_side - 1];
+	const team &viewing_team = rc.dc().get_team(viewing_side);
 	int min, sec;
 	if (viewing_team.countdown_time() == 0)
 		return report_report_clock(rc);
