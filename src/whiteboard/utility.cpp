@@ -57,7 +57,7 @@ side_actions_ptr viewer_actions()
 side_actions_ptr current_side_actions()
 {
 	side_actions_ptr side_actions =
-			resources::gameboard->teams()[resources::controller->current_side() - 1].get_side_actions();
+			resources::gameboard->get_team(resources::controller->current_side()).get_side_actions();
 	return side_actions;
 }
 

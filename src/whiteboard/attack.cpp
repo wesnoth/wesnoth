@@ -242,7 +242,7 @@ action::error attack::check_validity() const
 		return NO_ATTACK_LEFT;
 	}
 	// Verify that the attacker and target are enemies
-	if(!resources::gameboard->teams()[get_unit()->side() - 1].is_enemy(resources::gameboard->units().find(target_hex_)->side())){
+	if(!resources::gameboard->get_team(get_unit()->side()).is_enemy(resources::gameboard->units().find(target_hex_)->side())){
 		return NOT_AN_ENEMY;
 	}
 	//@todo: (maybe) verify that the target hex contains the same unit that before,

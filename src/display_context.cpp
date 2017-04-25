@@ -80,7 +80,7 @@ bool display_context::unit_can_move(const unit &u) const
 		return false;
 	}
 
-	const team &current_team = teams()[u.side() - 1];
+	const team &current_team = get_team(u.side());
 
 	map_location locs[6];
 	get_adjacent_tiles(u.get_location(), locs);

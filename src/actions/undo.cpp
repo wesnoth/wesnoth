@@ -440,7 +440,7 @@ void undo_list::redo()
 bool undo_list::apply_shroud_changes() const
 {
 	game_display &disp = *resources::screen;
-	team &tm = resources::gameboard->teams()[side_ - 1];
+	team &tm = resources::gameboard->get_team(side_);
 	// No need to do clearing if fog/shroud has been kept up-to-date.
 	if ( tm.auto_shroud_updates()  ||  !tm.fog_or_shroud() ) {
 		return false;

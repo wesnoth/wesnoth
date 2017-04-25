@@ -67,7 +67,7 @@ synced_command::map& synced_command::registry()
 SYNCED_COMMAND_HANDLER_FUNCTION(recruit, child, use_undo, show, error_handler)
 {
 	int current_team_num = resources::controller->current_side();
-	team &current_team = resources::gameboard->teams()[current_team_num - 1];
+	team &current_team = resources::gameboard->get_team(current_team_num);
 
 	map_location loc(child, resources::gamedata);
 	map_location from(child.child_or_empty("from"), resources::gamedata);
@@ -132,7 +132,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(recall, child, use_undo, show, error_handler)
 {
 
 	int current_team_num = resources::controller->current_side();
-	team &current_team = resources::gameboard->teams()[current_team_num - 1];
+	team &current_team = resources::gameboard->get_team(current_team_num);
 
 	const std::string& unit_id = child["value"];
 	map_location loc(child, resources::gamedata);
@@ -231,7 +231,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(disband, child, /*use_undo*/, /*show*/, error_ha
 {
 
 	int current_team_num = resources::controller->current_side();
-	team &current_team = resources::gameboard->teams()[current_team_num - 1];
+	team &current_team = resources::gameboard->get_team(current_team_num);
 
 	const std::string& unit_id = child["value"];
 	size_t old_size = current_team.recall_list().size();
@@ -254,7 +254,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(disband, child, /*use_undo*/, /*show*/, error_ha
 SYNCED_COMMAND_HANDLER_FUNCTION(move, child,  use_undo, show, error_handler)
 {
 	int current_team_num = resources::controller->current_side();
-	team &current_team = resources::gameboard->teams()[current_team_num - 1];
+	team &current_team = resources::gameboard->get_team(current_team_num);
 
 	std::vector<map_location> steps;
 

@@ -512,9 +512,9 @@ bool basic_unit_filter_impl::internal_matches_filter(const unit & u, const map_l
 
 		bool found = false;
 		for (const int viewer : viewers) {
-			bool fogged = fc_.get_disp_context().teams()[viewer - 1].fogged(loc);
+			bool fogged = fc_.get_disp_context().get_team(viewer).fogged(loc);
 			bool hiding = u.invisible(loc, fc_.get_disp_context())
-				&& fc_.get_disp_context().teams()[viewer - 1].is_enemy(u.side());
+				&& fc_.get_disp_context().get_team(viewer).is_enemy(u.side());
 			bool unit_hidden = fogged || hiding;
 			if (vision["visible"].to_bool(true) != unit_hidden) {
 				found = true;
@@ -552,7 +552,7 @@ bool basic_unit_filter_impl::internal_matches_filter(const unit & u, const map_l
 					is_enemy = adj_cfg["is_enemy"].to_bool();
 				}
 				if (!is_enemy || *is_enemy ==
-				    fc_.get_disp_context().teams()[u.side() - 1].is_enemy(unit_itor->side())) {
+				    fc_.get_disp_context().get_team(u.side()).is_enemy(unit_itor->side())) {
 					++match_count;
 				}
 			}

@@ -677,7 +677,7 @@ double recruitment::get_average_defense(const std::string& u_type) const {
  */
 const  pathfind::full_cost_map recruitment::get_cost_map_of_side(int side) const {
 	const unit_map& units = resources::gameboard->units();
-	const team& team = resources::gameboard->teams()[side - 1];
+	const team& team = resources::gameboard->get_team(side);
 
 	pathfind::full_cost_map cost_map(true, true, team, true, true);
 
@@ -748,7 +748,7 @@ void recruitment::update_average_lawful_bonus() {
 void recruitment::update_average_local_cost() {
 	average_local_cost_.clear();
 	const gamemap& map = resources::gameboard->map();
-	const team& team = resources::gameboard->teams()[get_side() - 1];
+	const team& team = resources::gameboard->get_team(get_side());
 
 	for(int x = 0; x < map.w(); ++x) {
 		for (int y = 0; y < map.h(); ++y) {
@@ -1411,7 +1411,7 @@ bool recruitment::remove_job_if_no_blocker(config* job) {
  * positive or negative.
  */
 double recruitment::get_estimated_income(int turns) const {
-	const team& team = resources::gameboard->teams()[get_side() - 1];
+	const team& team = resources::gameboard->get_team(get_side());
 	const size_t own_villages = team.villages().size();
 	const double village_gain = get_estimated_village_gain();
 	const double unit_gain = get_estimated_unit_gain();

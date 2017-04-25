@@ -666,13 +666,13 @@ void play_controller::tab()
 team& play_controller::current_team()
 {
 	assert(current_side() > 0 && current_side() <= int(gamestate().board_.teams().size()));
-	return gamestate().board_.teams_[current_side() - 1];
+	return gamestate().board_.get_team(current_side());
 }
 
 const team& play_controller::current_team() const
 {
 	assert(current_side() > 0 && current_side() <= int(gamestate().board_.teams().size()));
-	return gamestate().board_.teams()[current_side() - 1];
+	return gamestate().board_.get_team(current_side());
 }
 
 /// @returns: the number n in [min, min+mod ) so that (n - num) is a multiple of mod.
@@ -692,7 +692,7 @@ static int modulo(int num, int mod, int min)
 
 bool play_controller::is_team_visible(int team_num, bool observer) const
 {
-	const team& t = gamestate().board_.teams()[team_num - 1];
+	const team& t = gamestate().board_.get_team(team_num);
 	if(observer) {
 		return !t.get_disallow_observers() && !t.is_empty();
 	}
@@ -1132,7 +1132,7 @@ void play_controller::play_side()
 		// This flag can be set by derived classes (in overridden functions).
 		player_type_changed_ = false;
 
-		statistics::reset_turn_stats(gamestate().board_.teams()[current_side() - 1].save_id());
+		statistics::reset_turn_stats(gamestate().board_.get_team(current_side()).save_id());
 
 		play_side_impl();
 

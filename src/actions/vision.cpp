@@ -706,7 +706,7 @@ bool actor_sighted(const unit & target, const std::vector<int> * cache)
  */
 void recalculate_fog(int side)
 {
-	team &tm = resources::gameboard->teams()[side - 1];
+	team &tm = resources::gameboard->get_team(side);
 
 	if (!tm.uses_fog())
 		return;
@@ -755,7 +755,7 @@ void recalculate_fog(int side)
  */
 bool clear_shroud(int side, bool reset_fog, bool fire_events)
 {
-	team &tm = resources::gameboard->teams()[side - 1];
+	team &tm = resources::gameboard->get_team(side);
 	if (!tm.uses_shroud() && !tm.uses_fog())
 		return false;
 

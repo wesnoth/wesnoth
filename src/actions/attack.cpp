@@ -854,7 +854,7 @@ namespace {
 		// The event could have killed either the attacker or
 		// defender, so we have to make sure they still exist
 		refresh_bc();
-		if(!a_.valid() || !d_.valid() || !resources::gameboard->teams()[a_.get_unit().side() - 1].is_enemy(d_.get_unit().side())) {
+		if(!a_.valid() || !d_.valid() || !resources::gameboard->get_team(a_.get_unit().side()).is_enemy(d_.get_unit().side())) {
 			actions::recalculate_fog(defender_side);
 			if (update_display_){
 				resources::screen->redraw_minimap();

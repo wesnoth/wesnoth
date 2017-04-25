@@ -682,7 +682,7 @@ REPLAY_RETURN do_replay(bool one_move)
 REPLAY_RETURN do_replay_handle(bool one_move)
 {
 
-	//team &current_team = resources::gameboard->teams()[side_num - 1];
+	//team &current_team = resources::gameboard->get_team(side_num);
 
 	const int side_num = resources::controller->current_side();
 	while(true)
@@ -812,7 +812,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 
 				replay::process_error(errbuf.str());
 			} else {
-				resources::gameboard->teams()[tval - 1].set_countdown_time(val);
+				resources::gameboard->get_team(tval).set_countdown_time(val);
 			}
 		}
 		else if ((*cfg)["dependent"].to_bool(false))
