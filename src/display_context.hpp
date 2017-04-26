@@ -57,6 +57,8 @@ public:
 	virtual const std::vector<std::string> & hidden_label_categories() const = 0;
 	std::vector<std::string> & hidden_label_categories_ref();
 	const team& get_team(int side) const;
+
+	template<typename T = void>
 	bool has_team(int side) const
 	{
 		return side > 0 && side <= static_cast<int>(teams().size());
