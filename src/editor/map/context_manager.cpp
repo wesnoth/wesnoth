@@ -997,7 +997,6 @@ void context_manager::create_default_context()
 void context_manager::close_current_context()
 {
 	if(!confirm_discard()) return;
-	map_context_refresher(*this, get_map_context());
 
 	if(map_contexts_.size() == 1) {
 		create_default_context();
@@ -1009,6 +1008,7 @@ void context_manager::close_current_context()
 		map_contexts_.erase(map_contexts_.begin() + current_context_index_);
 	}
 
+	map_context_refresher(*this, get_map_context());
 	set_window_title();
 }
 
