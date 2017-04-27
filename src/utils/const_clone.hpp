@@ -17,13 +17,10 @@
 
 #include <type_traits>
 
-namespace utils {
-
+namespace utils
+{
 /**
  * Helper struct to clone the constness of one type to another.
- *
- * It's function is similar to the @ref tconst_duplicator, but a bit more
- * flexible.
  *
  * @warning It seems @c *this in a const member function is not a const object,
  * use @c this, which is a pointer to a const object.
@@ -35,50 +32,30 @@ namespace utils {
  *                                or reference and obviously is allowed to have
  *                                a cv-qualifier, although @c volatile has no
  *                                effect.
- * @tparam E                      The enable parameter for
- *                                @ref std::enable_if.
  */
-template<
-	  class D
-	, class S
-	, typename E = void
-	>
+template<typename D, typename S>
 struct const_clone
 {
-	/** The destination type, possibly const qualified. */
-	typedef D type;
-
-	/** A reference to the destination type, possibly const qualified. */
-	typedef D& reference;
-
-	/** A pointer to the destination type, possibly const qualified. */
-	typedef D* pointer;
-};
-
-/**
- * The specialised version of @ref const_clone.
- *
- * This version is used when the @p S is const-qualified.
- */
-template<
-	  class D
-	, class S
-	>
-struct const_clone<
-	  D
-	, S
-	, typename std::enable_if<
-		std::is_const<
+private:
+	using is_source_const =
+		typename std::is_const<
 			typename std::remove_pointer<
 				typename std::remove_reference<S>::type
-				>::type
-			>::value
-		>::type
-	>
-{
-	typedef const D type;
-	typedef const D& reference;
-	typedef const D* pointer;
+			>::type
+		>;
+
+public:
+	/** The destination type, possibly const qualified. */
+	using type =
+		typename std::conditional<is_source_const::value, const D, D>::type;
+
+	/** A reference to the destination type, possibly const qualified. */
+	using reference =
+		typename std::conditional<is_source_const::value, const D&, D&>::type;
+
+	/** A pointer to the destination type, possibly const qualified. */
+	using pointer =
+		typename std::conditional<is_source_const::value, const D*, D*>::type;
 };
 
 } // namespace utils
