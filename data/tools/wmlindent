@@ -74,11 +74,13 @@ def is_directive(str):
 def closer(str):
     "Are we looking at a closing tag?"
     if str.startswith("#"):
-        return False
+        return 0
     elif str.startswith("[/") or str.startswith(")"):
-        return True
+        return str.count("[/") + str.count(")")
     else:
-        return str.startswith(tuple(closer_prefixes))
+        if str.startswith(tuple(closer_prefixes)):
+            return 1
+    return 0
 
 def opener(str):
     "Are we looking at an opening tag?"
@@ -167,7 +169,13 @@ def reindent(name, infp, outfp):
         # In the close case, we must compute new indent *before* emitting
         # the new line so the close tag will be at the same level as the
         # one that started the block.
-        if closer(transformed):
+
+        # cnt_closers says how many closers we find on this same line, so that
+        # if more than one closer is find, we use the first closer to get the
+        # indent at the same level as the opener, and the subsequent to return
+        # the indent more levels back up
+        cnt_closers = closer(transformed)
+        if cnt_closers:
             if indent == "":
                 print('wmlindent: "%s", line %d: close tag %s with indent already zero.' % (name, countlines, transformed.strip()), file=sys.stderr)
             else:
@@ -187,6 +195,10 @@ def reindent(name, infp, outfp):
         # Here's where we apply the current indent
         if dostrip and transformed and not is_directive(transformed):
             output = indent + transformed
+            # Retreat indent the number of extra levels depending on how many
+            # closers found
+            if cnt_closers > 1:
+                indent = indent[:-len(wmltools.baseindent) * (cnt_closers - 1)]
         else:
             output = transformed
         # Nuke trailing space and canonicalize to Unix-style end-of-line
