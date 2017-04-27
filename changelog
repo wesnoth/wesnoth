@@ -4,28 +4,29 @@ Version 1.13.7+dev:
    * Restored the ability to preview different ToDs.
  * Formula Engine:
    * Fixed garbage data showing up in stack traces in the event of an error.
-   * Object types can now be used in contexts where previously only a list or map
-     was accepted - for example in the filter() function. They will be treated as
-     a map in such cases.
+   * Object types can now be used in contexts where previously only a list or
+     map was accepted - for example in the filter() function. They will be
+     treated as a map in such cases.
  * Language and i18n:
    * Updated translations: British English, Chinese (Simplified), Lithuanian,
      Slovak, Spanish
  * Lua Engine:
-   * Add wesnoth.log_replay which exposes a little-used functionality of injecting arbitrary
-     logging data into a saved game.
-   * Small change to animator API - facing parameter replaced with target and required to be
-     a space adjacent to the unit.
+   * Add wesnoth.log_replay which exposes a little-used functionality of
+     injecting arbitrary logging data into a saved game.
+   * Small change to animator API - facing parameter replaced with target and
+     required to be a space adjacent to the unit.
    * New modifiable theme attribute in wesnoth.game_config
    * New wesnoth.zoom() function allows changing the zoom level
  * Multiplayer:
    * Fixed statistics being lost when reloading an MP game.
  * Performance:
-   * Greatly speeded up switching between add-ons in the add-on manager (bug #25523)
+   * Greatly speeded up switching between add-ons in the add-on manager
+     (bug #25523)
  * User Interface:
    * Updated Attack Predictions dialog to GUI2.
    * Updated Story screen to GUI2.
-   * Double-clicking an add-on now installs, updates, uninstalls or publishes it depending
-     on the situation.
+   * Double-clicking an add-on now installs, updates, uninstalls or publishes it
+     depending on the situation.
    * Fixed file path being truncated on the wrong side in the File Browser.
    * Improved Hotkey category sorting interface in Preferences.
    * Improved Addon Manager and MP Staging interfaces at low resolutions.
