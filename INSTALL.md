@@ -8,8 +8,7 @@ Contents
   5. Build Options
 
 
-1. Prerequisites
-================
+## 1. Prerequisites
 
 Wesnoth requires a compiler with sufficient C++11 support such as GCC 4.8 and
 later, or Clang 3.3 and later.
@@ -61,8 +60,7 @@ Although not recommended, you may use libintl on platforms other than Windows
 instead of Boost.Locale. For scons, set the `libintl` option to `true`.
 
 
-2. Build Environment
-====================
+## 2. Build Environment
 
 You can obtain the source code tarball for the latest version from
 <http://www.wesnoth.org/downloads>.
@@ -96,8 +94,7 @@ For Windows users, a Visual C++ 2013 solution is included in _projectfiles/VC12_
 For OS X users, an XCode project is included in _projectfiles/XCode_.
 
 
-3. SCons Build
-==============
+## 3. SCons Build
 
 Unlike CMake or the classic "autotools" build-system (configure && make),
 configuration and building are done in the same step with SCons.
@@ -130,8 +127,7 @@ you may wish to use `/usr` instead:
     $ scons prefix=/usr
 
 
-4. CMake Build
-==============
+## 4. CMake Build
 
 Unlike SCons, CMake has separate configuration and build steps. Configuration
 is done using CMake itself, and the actual build is done using `make`.
@@ -166,8 +162,7 @@ and their cached values on a console and graphical UI, respectively.
     $ cmake-gui ..
 
 
-5. Build Options
-================
+## 5. Build Options
 
 A full list of options supported by SCons along with their descriptions and
 defaults is available by running `scons --help` from the Wesnoth source. For
