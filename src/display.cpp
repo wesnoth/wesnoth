@@ -76,6 +76,8 @@ namespace {
 	bool benchmark = false;
 
 	bool debug_foreground = false;
+
+	int prevLabel = 0;
 }
 
 unsigned int display::zoom_ = DefaultZoom;
@@ -1740,7 +1742,6 @@ void display::enable_menu(const std::string& item, bool enable)
 	}
 }
 
-int prevLabel = 0;
 void display::announce(const std::string& message, const color_t& color, int lifetime)
 {
 	font::remove_floating_label(prevLabel);
