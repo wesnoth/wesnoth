@@ -264,10 +264,10 @@ void menu_handler::recruit(int side_num, const map_location& last_hex)
 
 	std::set<std::string> recruits = actions::get_recruits(side_num, last_hex);
 
-	for(std::set<std::string>::const_iterator it = recruits.begin(); it != recruits.end(); ++it) {
-		const unit_type* type = unit_types.find(*it);
+	for(const auto& recruit : recruits) {
+		const unit_type* type = unit_types.find(recruit);
 		if(!type) {
-			ERR_NG << "could not find unit '" << *it << "'" << std::endl;
+			ERR_NG << "could not find unit '" << recruit << "'" << std::endl;
 			return;
 		}
 
@@ -445,14 +445,14 @@ void menu_handler::show_enemy_moves(bool ignore_units, int side_num)
 	gui_->unhighlight_reach();
 
 	// Compute enemy movement positions
-	for(unit_map::iterator u = units().begin(); u != units().end(); ++u) {
-		bool invisible = u->invisible(u->get_location(), gui_->get_disp_context());
+	for(auto& u : units()) {
+		bool invisible = u.invisible(u.get_location(), gui_->get_disp_context());
 
-		if(board().get_team(side_num).is_enemy(u->side()) && !gui_->fogged(u->get_location()) && !u->incapacitated()
+		if(board().get_team(side_num).is_enemy(u.side()) && !gui_->fogged(u.get_location()) && !u.incapacitated()
 				&& !invisible) {
-			const unit_movement_resetter move_reset(*u);
+			const unit_movement_resetter move_reset(u);
 			const pathfind::paths& path
-					= pathfind::paths(*u, false, true, teams()[gui_->viewing_team()], 0, false, ignore_units);
+					= pathfind::paths(u, false, true, teams()[gui_->viewing_team()], 0, false, ignore_units);
 
 			gui_->highlight_another_reach(path);
 		}
@@ -483,8 +483,8 @@ namespace
 /** Returns true if @a side_num has at least one living unit. */
 bool units_alive(int side_num, const unit_map& units)
 {
-	for(unit_map::const_iterator un = units.begin(); un != units.end(); ++un) {
-		if(un->side() == side_num) {
+	for(auto& unit : units) {
+		if(unit.side() == side_num) {
 			return true;
 		}
 	}
@@ -495,11 +495,11 @@ bool units_alive(int side_num, const unit_map& units)
 bool partmoved_units(
 		int side_num, const unit_map& units, const game_board& board, const std::shared_ptr<wb::manager>& whiteb)
 {
-	for(unit_map::const_iterator un = units.begin(); un != units.end(); ++un) {
-		if(un->side() == side_num) {
+	for(auto& unit : units) {
+		if(unit.side() == side_num) {
 			// @todo whiteboard should take into consideration units that have
 			// a planned move but can still plan more movement in the same turn
-			if(board.unit_can_move(*un) && !un->user_end_turn() && (!whiteb || !whiteb->unit_has_actions(&*un)))
+			if(board.unit_can_move(unit) && !unit.user_end_turn() && (!whiteb || !whiteb->unit_has_actions(&unit)))
 				return true;
 		}
 	}
@@ -512,10 +512,10 @@ bool partmoved_units(
 bool unmoved_units(
 		int side_num, const unit_map& units, const game_board& board, const std::shared_ptr<wb::manager>& whiteb)
 {
-	for(unit_map::const_iterator un = units.begin(); un != units.end(); ++un) {
-		if(un->side() == side_num) {
-			if(board.unit_can_move(*un) && !un->has_moved() && !un->user_end_turn()
-					&& (!whiteb || !whiteb->unit_has_actions(&*un))) {
+	for(auto& unit : units) {
+		if(unit.side() == side_num) {
+			if(board.unit_can_move(unit) && !unit.has_moved() && !unit.user_end_turn()
+					&& (!whiteb || !whiteb->unit_has_actions(&unit))) {
 				return true;
 			}
 		}
@@ -854,16 +854,16 @@ void menu_handler::execute_gotos(mouse_handler& mousehandler, int side)
 	do {
 		change = false;
 		blocked_unit = false;
-		for(unit_map::iterator ui = units().begin(); ui != units().end(); ++ui) {
-			if(ui->side() != side || ui->movement_left() == 0) {
+		for(auto& unit : units()) {
+			if(unit.side() != side || unit.movement_left() == 0) {
 				continue;
 			}
 
-			const map_location& current_loc = ui->get_location();
-			const map_location& goto_loc = ui->get_goto();
+			const map_location& current_loc = unit.get_location();
+			const map_location& goto_loc = unit.get_goto();
 
 			if(goto_loc == current_loc) {
-				ui->set_goto(map_location());
+				unit.set_goto(map_location());
 				continue;
 			}
 
@@ -876,7 +876,7 @@ void menu_handler::execute_gotos(mouse_handler& mousehandler, int side)
 				continue;
 			}
 
-			pathfind::marked_route route = mousehandler.get_route(&*ui, goto_loc, board().get_team(side));
+			pathfind::marked_route route = mousehandler.get_route(&unit, goto_loc, board().get_team(side));
 
 			if(route.steps.size() <= 1) { // invalid path
 				fully_moved.insert(current_loc);
@@ -1959,10 +1959,8 @@ void menu_handler::request_control_change(int side_num, const std::string& playe
 
 void menu_handler::custom_command()
 {
-	std::vector<std::string> commands = utils::split(preferences::custom_command(), ';');
-	std::vector<std::string>::iterator c = commands.begin();
-	for(; c != commands.end(); ++c) {
-		do_command(*c);
+	for(const std::string& command : utils::split(preferences::custom_command(), ';')) {
+		do_command(command);
 	}
 }
 
