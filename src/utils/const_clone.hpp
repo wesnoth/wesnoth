@@ -36,7 +36,6 @@ namespace utils
 template<typename D, typename S>
 struct const_clone
 {
-private:
 	static const bool is_source_const =
 		std::is_const<
 			typename std::remove_pointer<
@@ -44,7 +43,6 @@ private:
 			>::type
 		>::value;
 
-public:
 	/** The destination type, possibly const qualified. */
 	using type =
 		typename std::conditional<is_source_const, const D, D>::type;
