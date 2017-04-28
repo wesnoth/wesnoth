@@ -470,9 +470,10 @@ bool mouse_handler::right_click_show_menu(int x, int y, const bool /*browse*/)
 
 void mouse_handler::select_or_action(bool browse)
 {
-	if (!pc_.get_map_const().on_board(last_hex_))
+	if (!pc_.get_map_const().on_board(last_hex_)){
 		tooltips::click(drag_from_x_, drag_from_y_); 
 		return;
+		}
 
 	// Load whiteboard partial moves
 	wb::future_map_if_active planned_unit_map;
