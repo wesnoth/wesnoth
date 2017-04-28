@@ -1740,8 +1740,10 @@ void display::enable_menu(const std::string& item, bool enable)
 	}
 }
 
+int prevLabel = 0;
 void display::announce(const std::string& message, const color_t& color, int lifetime)
 {
+	font::remove_floating_label(prevLabel);
 	font::floating_label flabel(message);
 	flabel.set_font_size(font::SIZE_XLARGE);
 	flabel.set_color(color);
@@ -1749,7 +1751,7 @@ void display::announce(const std::string& message, const color_t& color, int lif
 	flabel.set_lifetime(lifetime);
 	flabel.set_clip_rect(map_outside_area());
 
-	font::add_floating_label(flabel);
+	prevLabel = font::add_floating_label(flabel);
 }
 
 void display::draw_minimap()
