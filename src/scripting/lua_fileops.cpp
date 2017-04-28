@@ -188,6 +188,33 @@ private:
 	const std::unique_ptr<std::istream> pistream_;
 };
 
+int impl_call_all(lua_State* L) {
+	lua_newtable(L);
+	for(lua_pushnil(L); lua_next(L, 1); ) {
+		std::cerr << lua_tostring(L, -2);
+		// Stack is currently: {} key value
+		lua_pushvalue(L, -2);
+		// Now: {} key value key
+		lua_insert(L, -2);
+		// Now: {} key key value
+		luaW_pcall(L, 0, 1);
+		// Now: {} key key value()
+		lua_settable(L, -4);
+		// Now: {key: value()} key
+	}
+	return 1;
+}
+
+void load_one_file(lua_State* L, const std::string& fname, const std::string& relativename) {
+	try {
+		if(lua_filestream::lua_loadfile(L, fname, relativename)) {
+			lua_error(L);
+		}
+	} catch(const std::exception& ex) {
+		luaL_argerror(L, -1, ex.what());
+	}
+}
+
 /**
  * Loads a Lua file and pushes the contents on the stack.
  * - Arg 1: string containing the file name.
@@ -212,15 +239,28 @@ int load_file(lua_State *L)
 	if (p.empty()) {
 		return luaL_argerror(L, -1, "file not found");
 	}
-	try
-	{
-		if(lua_filestream::lua_loadfile(L, p, m)) {
-			return lua_error(L);
+	if(filesystem::is_directory(p)) {
+		std::vector<std::string> files;
+		filesystem::get_files_in_dir(p, &files, nullptr, filesystem::ENTIRE_FILE_PATH);
+
+		lua_createtable(L, 0, files.size());
+		lua_createtable(L, 0, 1);
+		lua_pushcfunction(L, impl_call_all);
+		lua_setfield(L, -2, "__call");
+		lua_setmetatable(L, -2);
+		for(const std::string& f : files) {
+			// Not quite sure if this is okay; if slash is npos, is npos + 1 == 0?
+			size_t dot = f.find_last_of('.'), start = f.find_last_of('/') + 1;
+			if(dot == std::string::npos || f.substr(dot + 1) != "lua") {
+				continue;
+			}
+
+			const std::string module_name = f.substr(start, dot - start);
+			load_one_file(L, f, m + "/" + module_name + ".lua");
+			lua_setfield(L, -2, module_name.c_str());
 		}
-	}
-	catch(const std::exception & ex)
-	{
-		luaL_argerror(L, -1, ex.what());
+	} else {
+		load_one_file(L, p, m);
 	}
 	lua_remove(L, -2);	//remove the filename from the stack
 
