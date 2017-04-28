@@ -440,7 +440,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	//test<lua_interpreter>(& lua_kernel_base());
 	test<message>();
 	test<mp_alerts_options>();
-	test<mp_change_control>();
+	//test<mp_change_control>();
 	test<mp_cmd_wrapper>();
 	test<mp_connect>();
 	//test<mp_create_game>();
@@ -518,6 +518,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 		"help_browser",
 		"story_viewer",
 		"outro",
+		"mp_change_control", // Basically useless without a game_board object, so disabling
 	};
 	std::sort(list.begin(), list.end());
 	std::sort(omitted.begin(), omitted.end());
@@ -893,7 +894,7 @@ struct dialog_tester<message>
 		return new message("Title", "Message", false, false);
 	}
 };
-
+#if 0
 template<>
 struct dialog_tester<mp_change_control>
 {
@@ -902,7 +903,7 @@ struct dialog_tester<mp_change_control>
 		return new mp_change_control(nullptr);
 	}
 };
-
+#endif
 template<>
 struct dialog_tester<mp_cmd_wrapper>
 {
