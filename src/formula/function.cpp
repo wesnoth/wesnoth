@@ -303,7 +303,7 @@ private:
 			const variant var2 = args()[1]->evaluate(variables,fdb);
 			str2 = var2.to_debug_string(true);
 			LOG_SF << str1 << ": " << str2 << std::endl;
-			if(game_config::debug) {
+			if(game_config::debug && game_display::get_singleton()) {
 				game_display::get_singleton()->get_chat_manager().add_chat_message(time(nullptr), str1, 0, str2, events::chat_handler::MESSAGE_PUBLIC, false);
 			}
 			return var2;
@@ -337,7 +337,7 @@ private:
 		std::ostringstream str;
 		str << "Evaluated in " << (run_time / 1000.0) << " ms on average";
 		LOG_SF << speaker << ": " << str.str() << std::endl;
-		if(game_config::debug) {
+		if(game_config::debug && game_display::get_singleton()) {
 			game_display::get_singleton()->get_chat_manager().add_chat_message(time(nullptr), speaker, 0, str.str(), events::chat_handler::MESSAGE_PUBLIC, false);
 		}
 		return value;
