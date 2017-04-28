@@ -191,10 +191,10 @@ namespace {
 	};
 
 	typedef std::pair<unsigned, unsigned> resolution;
-	typedef std::vector<std::pair<unsigned, unsigned> > tresolution_list;
+	typedef std::vector<std::pair<unsigned, unsigned> > resolution_list;
 
 	template<class T>
-	void test_resolutions(const tresolution_list& resolutions)
+	void test_resolutions(const resolution_list& resolutions)
 	{
 		for(const resolution& resolution : resolutions) {
 			CVideo& video = test_utils::get_fake_display(resolution.first, resolution.second).video();
@@ -231,7 +231,7 @@ namespace {
 	}
 
 	template<class T>
-	void test_popup_resolutions(const tresolution_list& resolutions)
+	void test_popup_resolutions(const resolution_list& resolutions)
 	{
 		bool interact = false;
 		for(int i = 0; i < 2; ++i) {
@@ -279,7 +279,7 @@ namespace {
 #pragma warning(push)
 #pragma warning(disable: 4702)
 #endif
-	void test_tip_resolutions(const tresolution_list& resolutions
+	void test_tip_resolutions(const resolution_list& resolutions
 			, const std::string& id)
 	{
 		for(const resolution& resolution : resolutions) {
@@ -322,13 +322,13 @@ namespace {
 #pragma warning(pop)
 #endif
 
-const tresolution_list& get_gui_resolutions()
+const resolution_list& get_gui_resolutions()
 {
-	static tresolution_list result {
-		{800,  600}
-		{1024, 768}
-		{1280, 1024}
-		{1680, 1050}
+	static resolution_list result {
+		{800,  600},
+		{1024, 768},
+		{1280, 1024},
+		{1680, 1050},
 	};
 
 	return result;
