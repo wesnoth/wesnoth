@@ -1718,11 +1718,12 @@ void console_handler::do_unsafe_lua()
 		return;
 	}
 
-	if(gui2::show_message(menu_handler_.gui_->video(), _("Unsafe Lua scripts."),
-		_("You are about to open a security breach in Wesnoth. Are you sure you want to continue? If you have "
-		"downloaded add-ons, do not click 'ok'! They would instantly take over your computer. You have been "
-		"warned."), gui2::dialogs::message::ok_cancel_buttons) == gui2::window::OK)
-	{
+	const int retval = gui2::show_message(menu_handler_.gui_->video(), _("WARNING! Unsafe Lua Mode"),
+		_("Executing Lua code in in this manner opens your computer to potential security breaches from any"
+		"malicious add-ons or other programs you may have installed.\n\n"
+		"Do not continue unless you really know what you are doing."), gui2::dialogs::message::ok_cancel_buttons);
+
+	if(retval == gui2::window::OK) {
 		print(get_cmd(), _("Unsafe mode enabled!"));
 		menu_handler_.gamestate().lua_kernel_->load_package();
 	}
