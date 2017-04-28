@@ -113,7 +113,9 @@ enum ui_event {
 
 	SDL_TOUCH_MOTION,
 	SDL_TOUCH_UP,
-	SDL_TOUCH_DOWN
+	SDL_TOUCH_DOWN,
+
+	SDL_RAW_EVENT					/**< Raw SDL event. */
 };
 
 /**
@@ -212,6 +214,13 @@ typedef boost::mpl::set<boost::mpl::int_<MESSAGE_SHOW_TOOLTIP>,
 						boost::mpl::int_<MESSAGE_SHOW_HELPTIP>,
 						boost::mpl::int_<REQUEST_PLACEMENT> >
 set_event_message;
+
+/**
+ * Helper for catching use error of dispatcher::connect_signal.
+ *
+ * This version is for callbacks of raw events.
+ */
+typedef boost::mpl::set<boost::mpl::int_<SDL_RAW_EVENT> > set_event_raw_event;
 
 /**
  * Connects a dispatcher to the event handler.

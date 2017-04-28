@@ -379,11 +379,12 @@ void add_hotkey(const hotkey_ptr item);
  */
 void del_hotkey(const hotkey_ptr item);
 
-/** Create a new hotkey item bound to a keyboard key. */
-hotkey_ptr create_hotkey(const std::string& id, SDL_Scancode new_val);
-
-/** Create a new hotkey item bound to a mouse button. */
-hotkey_ptr create_hotkey(const std::string& id, Uint8 new_val);
+/**
+ * Create a new hotkey item for a command from an SDL_Event.
+ * @param id The command to bind to.
+ * @param event The SDL_Event to base the creation on.
+ */
+hotkey_ptr create_hotkey(const std::string &id, const SDL_Event &event);
 
 /**
  * Iterate through the list of hotkeys and return a hotkey that matches
@@ -436,8 +437,6 @@ std::string get_names(const std::string& id);
  * @param cfg The config to save to.
  */
 void save_hotkeys(config& cfg);
-
-hotkey_ptr show_binding_dialog(CVideo& video, const std::string& id);
 
 bool is_hotkeyable_event(const SDL_Event &event);
 

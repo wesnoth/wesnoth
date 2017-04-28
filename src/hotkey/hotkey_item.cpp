@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -143,7 +143,7 @@ void hotkey_base::save(config& item) const
 	save_helper(item);
 }
 
-hotkey_ptr create_hotkey(const std::string &id, SDL_Event &event)
+hotkey_ptr create_hotkey(const std::string &id, const SDL_Event &event)
 {
 	hotkey_ptr base = hotkey_ptr(new hotkey_void);
 	unsigned mods = sdl_get_mods();
@@ -450,7 +450,7 @@ void save_hotkeys(config& cfg)
 	}
 }
 
-std::string get_names(std::string id)
+std::string get_names(const std::string& id)
 {
 	// Names are used in places like the hot-key preferences menu
 	std::vector<std::string> names;

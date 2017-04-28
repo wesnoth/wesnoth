@@ -96,7 +96,10 @@ bool dispatcher::has_event(const ui_event event, const event_queue_type event_ty
 															   *this))
 		   || find<set_event_message>(event,
 									   dispatcher_implementation::has_handler(
-											   event_type, *this));
+											   event_type, *this))
+		   || find<set_event_raw_event>(event,
+									  dispatcher_implementation::has_handler(
+											  event_type, *this));
 }
 
 /**
@@ -248,6 +251,39 @@ bool dispatcher::fire(const ui_event event,
 			dynamic_cast<widget*>(this),
 			&target,
 			trigger_keyboard(key, modifier, unicode));
+}
+
+/** Helper struct to wrap the functor call. */
+class trigger_raw_event
+{
+public:
+	trigger_raw_event(const SDL_Event& sdlevent) : sdl_event_(sdlevent)
+	{
+	}
+
+	void operator()(signal_raw_event_function functor,
+					dispatcher& dispatcher,
+					const ui_event event,
+					bool& handled,
+					bool& halt)
+	{
+		functor(dispatcher, event, handled, halt, sdl_event_);
+	}
+
+private:
+	const SDL_Event& sdl_event_;
+};
+
+bool dispatcher::fire(const ui_event event,
+					  widget& target,
+					  const SDL_Event& sdlevent)
+{
+	assert(find<set_event_raw_event>(event, event_in_set()));
+	return fire_event<signal_raw_event_function>(
+			event,
+			dynamic_cast<widget*>(this),
+			&target,
+			trigger_raw_event(sdlevent));
 }
 
 /** Helper struct to wrap the functor call. */

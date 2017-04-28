@@ -164,6 +164,9 @@ private:
 
 	/***** Handlers *****/
 
+	/** Fires a raw SDL event. */
+	void raw_event(const SDL_Event &event);
+
 	/** Fires a draw event. */
 	using events::sdl_handler::draw;
 	void draw(const bool force);
@@ -445,6 +448,8 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 #endif
 			break;
 	}
+
+	raw_event(event);
 }
 
 void sdl_event_handler::handle_window_event(const SDL_Event& event)
@@ -556,6 +561,15 @@ void sdl_event_handler::video_resize(const point& new_size)
 	for(auto dispatcher : dispatchers_)
 	{
 		dispatcher->fire(SDL_VIDEO_RESIZE, dynamic_cast<widget&>(*dispatcher), new_size);
+	}
+}
+
+void sdl_event_handler::raw_event(const SDL_Event& event) {
+	DBG_GUI_E << "Firing raw event\n";
+
+	for(auto dispatcher : dispatchers_)
+	{
+		dispatcher->fire(SDL_RAW_EVENT, dynamic_cast<widget&>(*dispatcher), event);
 	}
 }
 
@@ -960,6 +974,9 @@ std::ostream& operator<<(std::ostream& stream, const ui_event event)
 			break;
 		case SDL_TOUCH_DOWN:
 			stream << "SDL touch down";
+			break;
+		case SDL_RAW_EVENT:
+			stream << "SDL raw event";
 			break;
 	}
 
