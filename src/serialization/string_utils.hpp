@@ -263,6 +263,9 @@ inline std::string quote(const std::string &str)
 /** Convert no, false, off, 0, 0.0 to false, empty to def, and others to true */
 bool string_bool(const std::string& str,bool def=false);
 
+/** Converts a bool value to 'true' or 'false' */
+std::string bool_string(const bool value);
+
 /** Convert into a signed value (using the Unicode "−" and +0 convention */
 std::string signed_value(int val);
 

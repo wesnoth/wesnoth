@@ -468,6 +468,14 @@ bool string_bool(const std::string& str, bool def) {
 	return true;
 }
 
+std::string bool_string(const bool value)
+{
+	std::ostringstream ss;
+	ss << std::boolalpha << value;
+
+	return ss.str();
+}
+
 std::string signed_value(int val)
 {
 	std::ostringstream oss;

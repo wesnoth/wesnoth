@@ -169,7 +169,7 @@ public:
 	{
 		string_map& item = data_[ref];
 		item["label"] = label;
-		item["use_markup"] = markup ? "true" : "false";
+		item["use_markup"] = utils::bool_string(markup);
 		return *this;
 	}
 

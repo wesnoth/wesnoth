@@ -456,15 +456,15 @@ std::vector<std::string> frame_parsed_parameters::debug_strings() const
 	}
 
 	if(!boost::indeterminate(auto_vflip_)) {
-		v.push_back("auto_vflip=" + std::string(auto_vflip_ ? "true" : "false"));
+		v.push_back("auto_vflip=" + utils::bool_string(auto_vflip_));
 	}
 
 	if(!boost::indeterminate(auto_hflip_)) {
-		v.push_back("auto_hflip=" + std::string(auto_hflip_ ? "true" : "false"));
+		v.push_back("auto_hflip=" + utils::bool_string(auto_hflip_));
 	}
 
 	if(!boost::indeterminate(primary_frame_)) {
-		v.push_back("primary_frame=" + std::string(primary_frame_ ? "true" : "false"));
+		v.push_back("primary_frame=" + utils::bool_string(primary_frame_));
 	}
 
 	if(!drawing_layer_.get_original().empty()) {
