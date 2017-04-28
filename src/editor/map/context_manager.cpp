@@ -64,9 +64,8 @@ map_labels* get_current_labels()
 class map_context_refresher
 {
 public:
-	map_context_refresher(context_manager& ec, const map_context& other_mc)
+	map_context_refresher(context_manager& ec)
 		: context_manager_(ec)
-		, size_changed_(!ec.get_map().same_size_as(other_mc.get_map()))
 		, refreshed_(false)
 	{
 	}
@@ -102,7 +101,6 @@ public:
 
 private:
 	context_manager& context_manager_;
-	bool size_changed_;
 	bool refreshed_;
 };
 
@@ -971,7 +969,7 @@ void context_manager::replace_map_context(const T&... args)
 
 void context_manager::replace_map_context_with(context_ptr&& mc)
 {
-	map_context_refresher mcr(*this, *mc);
+	map_context_refresher mcr(*this);
 	map_contexts_[current_context_index_].swap(mc);
 
 	set_window_title();
@@ -997,7 +995,6 @@ void context_manager::create_default_context()
 void context_manager::close_current_context()
 {
 	if(!confirm_discard()) return;
-	map_context_refresher(*this, get_map_context());
 
 	if(map_contexts_.size() == 1) {
 		create_default_context();
@@ -1009,6 +1006,7 @@ void context_manager::close_current_context()
 		map_contexts_.erase(map_contexts_.begin() + current_context_index_);
 	}
 
+	map_context_refresher(*this);
 	set_window_title();
 }
 
@@ -1023,7 +1021,7 @@ void context_manager::switch_context(const int index, const bool force)
 		return;
 	}
 
-	map_context_refresher mcr(*this, *map_contexts_[index]);
+	map_context_refresher mcr(*this);
 	current_labels = &get_map_context().get_labels();
 	current_context_index_ = index;
 

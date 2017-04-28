@@ -211,6 +211,30 @@ namespace {
 
 REGISTER_DIALOG(addon_manager)
 
+const std::vector<std::pair<ADDON_STATUS_FILTER, std::string>> addon_manager::status_filter_types_{
+	{FILTER_ALL,           _("addons_view^All Add-ons")},
+	{FILTER_INSTALLED,     _("addons_view^Installed")},
+	{FILTER_UPGRADABLE,    _("addons_view^Upgradable")},
+	{FILTER_NOT_INSTALLED, _("addons_view^Not Installed")},
+};
+
+const std::vector<std::pair<ADDON_TYPE, std::string>> addon_manager::type_filter_types_{
+	{ADDON_SP_CAMPAIGN,    _("addons_of_type^Campaigns")},
+	{ADDON_SP_SCENARIO,    _("addons_of_type^Scenarios")},
+	{ADDON_SP_MP_CAMPAIGN, _("addons_of_type^SP/MP campaigns")},
+	{ADDON_MP_CAMPAIGN,    _("addons_of_type^MP campaigns")},
+	{ADDON_MP_SCENARIO,    _("addons_of_type^MP scenarios")},
+	{ADDON_MP_MAPS,        _("addons_of_type^MP map-packs")},
+	{ADDON_MP_ERA,         _("addons_of_type^MP eras")},
+	{ADDON_MP_FACTION,     _("addons_of_type^MP factions")},
+	{ADDON_MP_MOD,         _("addons_of_type^MP modifications")},
+	{ADDON_CORE,           _("addons_of_type^Cores")},
+	{ADDON_MEDIA,          _("addons_of_type^Resources")},
+	// FIXME: (also in WML) should this and Unknown be a single option in the UI?
+	{ADDON_OTHER,          _("addons_of_type^Other")},
+	{ADDON_UNKNOWN,        _("addons_of_type^Unknown")},
+};
+
 addon_manager::addon_manager(addons_client& client)
 	: orders_()
 	, cfg_()
@@ -219,29 +243,6 @@ addon_manager::addon_manager(addons_client& client)
 	, tracking_info_()
 	, need_wml_cache_refresh_(false)
 {
-	status_filter_types_ = {
-		{FILTER_ALL,           _("addons_view^All Add-ons")},
-		{FILTER_INSTALLED,     _("addons_view^Installed")},
-		{FILTER_UPGRADABLE,    _("addons_view^Upgradable")},
-		{FILTER_NOT_INSTALLED, _("addons_view^Not Installed")},
-	};
-
-	type_filter_types_ = {
-		{ADDON_SP_CAMPAIGN,    _("addons_of_type^Campaigns")},
-		{ADDON_SP_SCENARIO,    _("addons_of_type^Scenarios")},
-		{ADDON_SP_MP_CAMPAIGN, _("addons_of_type^SP/MP campaigns")},
-		{ADDON_MP_CAMPAIGN,    _("addons_of_type^MP campaigns")},
-		{ADDON_MP_SCENARIO,    _("addons_of_type^MP scenarios")},
-		{ADDON_MP_MAPS,        _("addons_of_type^MP map-packs")},
-		{ADDON_MP_ERA,         _("addons_of_type^MP eras")},
-		{ADDON_MP_FACTION,     _("addons_of_type^MP factions")},
-		{ADDON_MP_MOD,         _("addons_of_type^MP modifications")},
-		{ADDON_CORE,           _("addons_of_type^Cores")},
-		{ADDON_MEDIA,          _("addons_of_type^Resources")},
-		// FIXME: (also in WML) should this and Unknown be a single option in the UI?
-		{ADDON_OTHER,          _("addons_of_type^Other")},
-		{ADDON_UNKNOWN,        _("addons_of_type^Unknown")},
-	};
 }
 
 void addon_manager::on_filtertext_changed(text_box_base* textbox, const std::string& text)
