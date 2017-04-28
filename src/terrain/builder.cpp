@@ -170,7 +170,7 @@ void terrain_builder::tile::rebuild_cache(const std::string& tod, logs* log)
 			}
 
 			if(log) {
-				log->push_back(std::make_pair(&ri, &variant));
+				log->emplace_back(&ri, &variant);
 			}
 
 			break; // found a matching variant

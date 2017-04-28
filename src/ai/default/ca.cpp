@@ -752,7 +752,7 @@ void get_villages_phase::find_villages(
 			move_result_ptr move_check_res = check_move_action(j->second,j->first,true);
 			if (move_check_res->is_ok()) {
 				DBG_AI_TESTING_AI_DEFAULT << "Dispatched unit at " << j->second << " to village " << j->first << '\n';
-				moves.push_back(std::make_pair(j->first, j->second));
+				moves.emplace_back(j->first, j->second);
 			}
 			reachmap.erase(j->second);
 			dispatched_units.push_back(j->second);
@@ -837,7 +837,7 @@ bool get_villages_phase::dispatch_unit_simple(treachmap& reachmap, tmoves& moves
 			result = true;
 
 			DBG_AI_TESTING_AI_DEFAULT << "Dispatched unit at " << itor->first << " to village " << village << '\n';
-			moves.push_back(std::make_pair(village, itor->first));
+			moves.emplace_back(village, itor->first);
 			reachmap.erase(itor++);
 
 			if(remove_village(reachmap, moves, village)) {
@@ -860,8 +860,7 @@ bool get_villages_phase::dispatch_unit_simple(treachmap& reachmap, tmoves& moves
 		DBG_AI_TESTING_AI_DEFAULT << "Dispatched _last_ unit at " << reachmap.begin()->first
 			<< " to village " << reachmap.begin()->second[0] << '\n';
 
-		moves.push_back(std::make_pair(
-			reachmap.begin()->second[0], reachmap.begin()->first));
+		moves.emplace_back(reachmap.begin()->second[0], reachmap.begin()->first);
 
 		reachmap.clear();
 		// We're done.
@@ -907,7 +906,7 @@ bool get_villages_phase::dispatch_village_simple(
 				result = true;
 
 				DBG_AI_TESTING_AI_DEFAULT << "Dispatched unit at " << itor->second[0] << " to village " << itor->first << '\n';
-				moves.push_back(std::make_pair(itor->first, itor->second[0]));
+				moves.emplace_back(itor->first, itor->second[0]);
 
 				reachmap.erase(itor->second[0]);
 				remove_village(reachmap, moves, village);
@@ -949,7 +948,7 @@ get_villages_phase::treachmap::iterator get_villages_phase::remove_unit(
 		DBG_AI_TESTING_AI_DEFAULT << "Dispatch leader at " << leader_loc_ << " closer to the keep at "
 			<< best_leader_loc_ << '\n';
 
-		moves.push_back(std::make_pair(best_leader_loc_, leader_loc_));
+		moves.emplace_back(best_leader_loc_, leader_loc_);
 	}
 
 	reachmap.erase(unit++);
@@ -1092,11 +1091,11 @@ void get_villages_phase::dispatch_complex(
 				// Dispatch
 				DBG_AI_TESTING_AI_DEFAULT << "Found a square.\nDispatched unit at " << units[src_itor->second]
 						<< " to village " << village1 << '\n';
-				moves.push_back(std::make_pair(village1, units[src_itor->second]));
+				moves.emplace_back(village1, units[src_itor->second]);
 
 				DBG_AI_TESTING_AI_DEFAULT << "Dispatched unit at " << units[dst_itor->second]
 						<< " to village " << village2 << '\n';
-				moves.push_back(std::make_pair(village2, units[dst_itor->second]));
+				moves.emplace_back(village2, units[dst_itor->second]);
 
 				// Remove the units
 				reachmap.erase(units[src_itor->second]);
@@ -1157,7 +1156,7 @@ void get_villages_phase::dispatch_complex(
 			std::vector<std::pair<map_location,map_location> > result;
 			for(size_t u = 0; u < max_options; ++u) {
 				if(matrix[u][perm[u]]) {
-					result.push_back(std::make_pair(villages[perm[u]], units[u]));
+					result.emplace_back(villages[perm[u]], units[u]);
 
 				}
 			}
@@ -1195,7 +1194,7 @@ void get_villages_phase::dispatch_complex(
 			std::vector<std::pair<map_location,map_location> > result;
 			for(size_t u = 0; u < unit_count; ++u) {
 				if(matrix[u][perm[u]]) {
-					result.push_back(std::make_pair(villages[perm[u]], units[u]));
+					result.emplace_back(villages[perm[u]], units[u]);
 
 				}
 			}
@@ -1237,7 +1236,7 @@ void get_villages_phase::dispatch_complex(
 			std::vector<std::pair<map_location,map_location> > result;
 			for(size_t v = 0; v < village_count; ++v) {
 				if(matrix[perm[v]][v]) {
-					result.push_back(std::make_pair(villages[v], units[perm[v]]));
+					result.emplace_back(villages[v], units[perm[v]]);
 
 				}
 			}
@@ -1274,7 +1273,7 @@ void get_villages_phase::full_dispatch(treachmap& reachmap, tmoves& moves)
 	for(size_t i = 0; i < reachmap.size(); ++i, ++itor) {
 		DBG_AI_TESTING_AI_DEFAULT << "Dispatched unit at " << itor->first
 				<< " to village " << itor->second[i] << '\n';
-		moves.push_back(std::make_pair(itor->second[i], itor->first));
+		moves.emplace_back(itor->second[i], itor->first);
 	}
 }
 

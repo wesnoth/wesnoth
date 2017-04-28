@@ -401,7 +401,7 @@ std::string unit_topic_generator::operator()() const {
 				continue;
 			}
 			const std::string ref_id = "traits_"+trait["id"].str();
-			((trait["availability"].str() == "musthave") ? must_have_traits : random_traits).push_back(std::make_pair(lang_trait_name, ref_id));
+			((trait["availability"].str() == "musthave") ? must_have_traits : random_traits).emplace_back(lang_trait_name, ref_id);
 		}
 
 		bool line1 = !must_have_traits.empty();
@@ -515,7 +515,7 @@ std::string unit_topic_generator::operator()() const {
 			std::vector<item> row;
 			std::stringstream attack_ss;
 			attack_ss << "<img>src='" << attack.icon() << "'</img>";
-			row.push_back(std::make_pair(attack_ss.str(),image_width(attack.icon())));
+			row.emplace_back(attack_ss.str(),image_width(attack.icon()));
 			push_tab_pair(row, lang_weapon);
 			push_tab_pair(row, lang_type);
 			attack_ss.str(clear_stringstream);
@@ -544,8 +544,7 @@ std::string unit_topic_generator::operator()() const {
 						attack_ss << ", "; //comma placed before next special
 					}
 				}
-				row.push_back(std::make_pair(attack_ss.str(),
-					font::line_width(lang_special, normal_font_size)));
+				row.emplace_back(attack_ss.str(), font::line_width(lang_special, normal_font_size));
 			}
 			table.push_back(row);
 		}
@@ -596,8 +595,7 @@ std::string unit_topic_generator::operator()() const {
 		const std::string markup = str.str();
 		str.str(clear_stringstream);
 		str << resist;
-		row.push_back(std::make_pair(markup,
-			font::line_width(str.str(), normal_font_size)));
+		row.emplace_back(markup, font::line_width(str.str(), normal_font_size));
 		resistance_table.push_back(row);
 	}
 	ss << generate_table(resistance_table);
@@ -652,9 +650,9 @@ std::string unit_topic_generator::operator()() const {
 
 				const std::string final_image = tc_base + "~RC(magenta>" + id + ")~BLIT(" + terrain_image + ")";
 
-				row.push_back(std::make_pair( "<img>src='" + final_image + "'</img> " +
+				row.emplace_back("<img>src='" + final_image + "'</img> " +
 						make_link(name, "..terrain_" + id),
-					font::line_width(name, normal_font_size) + (high_res ? 32 : 16) ));
+					font::line_width(name, normal_font_size) + (high_res ? 32 : 16) );
 
 				//defense  -  range: +10 % .. +70 %
 				const int defense = 100 - movement_type.defense_modifier(terrain);
@@ -674,8 +672,7 @@ std::string unit_topic_generator::operator()() const {
 				std::string markup = str.str();
 				str.str(clear_stringstream);
 				str << defense << "%";
-				row.push_back(std::make_pair(markup,
-					font::line_width(str.str(), normal_font_size)));
+				row.emplace_back(markup, font::line_width(str.str(), normal_font_size));
 
 				//movement  -  range: 1 .. 5, movetype::UNREACHABLE=impassable
 				str.str(clear_stringstream);
@@ -699,8 +696,7 @@ std::string unit_topic_generator::operator()() const {
 				markup = str.str();
 				str.str(clear_stringstream);
 				str << moves;
-				row.push_back(std::make_pair(markup,
-					font::line_width(str.str(), normal_font_size)));
+				row.emplace_back(markup, font::line_width(str.str(), normal_font_size));
 
 				//defense cap
 				if (has_terrain_defense_caps) {
@@ -718,8 +714,7 @@ std::string unit_topic_generator::operator()() const {
 					} else {
 						str << font::unicode_figure_dash;
 					}
-					row.push_back(std::make_pair(markup,
-						font::line_width(str.str(), normal_font_size)));
+					row.emplace_back(markup, font::line_width(str.str(), normal_font_size));
 				}
 
 				//vision
@@ -747,8 +742,7 @@ std::string unit_topic_generator::operator()() const {
 						markup = str.str();
 						str.str(clear_stringstream);
 						str << views;
-						row.push_back(std::make_pair(markup,
-							font::line_width(str.str(), normal_font_size)));
+						row.emplace_back(markup, font::line_width(str.str(), normal_font_size));
 					}
 
 				//jamming

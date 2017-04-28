@@ -353,7 +353,7 @@ std::vector<std::pair<int, int>> CVideo::get_available_resolutions(const bool in
 	for (int i = 0; i < modes; ++i) {
 		if(SDL_GetDisplayMode(0, i, &mode) == 0) {
 			if(mode.w >= min_res.first && mode.h >= min_res.second)
-				result.push_back(std::make_pair(mode.w, mode.h));
+				result.emplace_back(mode.w, mode.h);
 		}
 	}
 

@@ -60,12 +60,12 @@ struct subset_descriptor
 			std::vector<std::string> r = utils::split(i, '-');
 			if(r.size() == 1) {
 				size_t r1 = lexical_cast_default<size_t>(r[0], 0);
-				present_codepoints.push_back(std::pair<size_t, size_t>(r1, r1));
+				present_codepoints.emplace_back(r1, r1);
 			} else if(r.size() == 2) {
 				size_t r1 = lexical_cast_default<size_t>(r[0], 0);
 				size_t r2 = lexical_cast_default<size_t>(r[1], 0);
 
-				present_codepoints.push_back(std::pair<size_t, size_t>(r1, r2));
+				present_codepoints.emplace_back(r1, r2);
 			}
 		}
 	}

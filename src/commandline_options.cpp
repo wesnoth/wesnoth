@@ -479,7 +479,7 @@ void commandline_options::parse_log_domains_(const std::string &domains_string, 
 	{
 		if (!log)
 			log = std::vector<std::pair<int, std::string> >();
-		log->push_back(std::make_pair(severity, domain));
+		log->emplace_back(severity, domain);
 	}
 }
 
@@ -534,7 +534,7 @@ std::vector<std::pair<unsigned int,std::string> > commandline_options::parse_to_
 			throw bad_commandline_tuple(s, expected_format);
 		}
 
-		vec.push_back(std::make_pair(temp, tokens[1]));
+		vec.emplace_back(temp, tokens[1]);
 	}
 	return vec;
 }

@@ -1376,7 +1376,7 @@ void side_engine::add_controller_option(ng::controller controller,
 		return;
 	}
 
-	controller_options_.push_back(std::make_pair(controller, name));
+	controller_options_.emplace_back(controller, name);
 }
 
 } // end namespace ng

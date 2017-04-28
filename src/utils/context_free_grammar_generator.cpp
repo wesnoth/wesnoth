@@ -47,7 +47,7 @@ context_free_grammar_generator::context_free_grammar_generator(const std::string
 				throw name_generator_invalid_exception("[context_free_grammar_generator] Parsing error: nonterminals (, ! and ) may not be overridden");
 			}
 			current = &nonterminals_[key];
-			current->possibilities_.push_back(std::vector<std::string>());
+			current->possibilities_.emplace_back();
 			filled = &current->possibilities_.back();
 			buf.clear();
 		} else if (*reading == '\n') {
@@ -61,7 +61,7 @@ context_free_grammar_generator::context_free_grammar_generator(const std::string
 				throw name_generator_invalid_exception("[context_free_grammar_generator] Parsing error: misplaced | symbol");
 			}
 			filled->push_back(buf);
-			current->possibilities_.push_back(std::vector<std::string>());
+			current->possibilities_.emplace_back();
 			filled = &current->possibilities_.back();
 			buf.clear();
 		} else if (*reading == '\\' && reading[1] == 'n') {

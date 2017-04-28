@@ -692,7 +692,7 @@ void preprocessor_data::pop_token()
 		   prepare for it. */
 		if (inner_type == token_desc::MACRO_SPACE || inner_type == token_desc::MACRO_CHUNK) {
 			strings_.erase(strings_.begin() + stack_pos, strings_.end());
-			strings_.push_back(std::string());
+			strings_.emplace_back();
 		}
 		assert(stack_pos + 1 == strings_.size());
 		outer_type = token_desc::MACRO_CHUNK;

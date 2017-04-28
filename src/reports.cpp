@@ -919,7 +919,7 @@ static config unit_weapons(reports::context & rc, const unit *attacker, const ma
 
 			// We keep only values above 0.1%.
 			if(prob > 0.001)
-				prob_hp_vector.push_back(std::pair<double, int>(prob, i));
+				prob_hp_vector.emplace_back(prob, i);
 		}
 
 		std::sort(prob_hp_vector.begin(), prob_hp_vector.end());
@@ -933,8 +933,7 @@ static config unit_weapons(reports::context & rc, const unit *attacker, const ma
 		for(i = prob_hp_vector.size() - nb_elem;
 				i < static_cast<int>(prob_hp_vector.size()); i++) {
 
-			hp_prob_vector.push_back(std::pair<int, double>
-			(prob_hp_vector[i].second, prob_hp_vector[i].first));
+			hp_prob_vector.emplace_back(prob_hp_vector[i].second, prob_hp_vector[i].first);
 		}
 
 		// Then, we sort the hitpoint values in ascending order.

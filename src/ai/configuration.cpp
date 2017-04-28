@@ -282,7 +282,7 @@ void configuration::expand_simplified_aspects(side_number side, config &cfg) {
 			facet_config["turns"] = turns;
 			facet_config["time_of_day"] = time_of_day;
 			facet_config["value"] = attr.second;
-			facet_configs.push_back(std::make_pair(attr.first, facet_config));
+			facet_configs.emplace_back(attr.first, facet_config);
 		}
 		for (const config::any_child &child : aiparam.all_children_range()) {
 			if (just_copy_tags.count(child.key)) {
@@ -310,7 +310,7 @@ void configuration::expand_simplified_aspects(side_number side, config &cfg) {
 			// then it can be copied verbatim as a [facet] tag.
 			// Otherwise, it needs to be placed as a [value] within a [facet] tag.
 			if (child.key == "attacks" || child.cfg.has_attribute("value") || child.cfg.has_child("value")) {
-				facet_configs.push_back(std::make_pair(child.key, child.cfg));
+				facet_configs.emplace_back(child.key, child.cfg);
 			} else {
 				config facet_config;
 				facet_config["engine"] = engine;
@@ -325,7 +325,7 @@ void configuration::expand_simplified_aspects(side_number side, config &cfg) {
 						facet_config["id"] = child.cfg["id"];
 					}
 				}
-				facet_configs.push_back(std::make_pair(child.key, facet_config));
+				facet_configs.emplace_back(child.key, facet_config);
 			}
 		}
 		std::map<std::string, config> aspect_configs;

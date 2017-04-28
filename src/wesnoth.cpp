@@ -876,7 +876,7 @@ static std::vector<std::string> parse_commandline_arguments(std::string input)
 
 	while(parse_commandline_argument(start, end, buffer))
 	{
-		res.push_back(std::string());
+		res.emplace_back();
 		res.back().swap(buffer);
 	}
 	return res;
