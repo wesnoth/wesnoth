@@ -37,25 +37,25 @@ template<typename D, typename S>
 struct const_clone
 {
 private:
-	using is_source_const =
-		typename std::is_const<
+	static const bool is_source_const =
+		std::is_const<
 			typename std::remove_pointer<
 				typename std::remove_reference<S>::type
 			>::type
-		>;
+		>::value;
 
 public:
 	/** The destination type, possibly const qualified. */
 	using type =
-		typename std::conditional<is_source_const::value, const D, D>::type;
+		typename std::conditional<is_source_const, const D, D>::type;
 
 	/** A reference to the destination type, possibly const qualified. */
 	using reference =
-		typename std::conditional<is_source_const::value, const D&, D&>::type;
+		typename std::conditional<is_source_const, const D&, D&>::type;
 
 	/** A pointer to the destination type, possibly const qualified. */
 	using pointer =
-		typename std::conditional<is_source_const::value, const D*, D*>::type;
+		typename std::conditional<is_source_const, const D*, D*>::type;
 };
 
 } // namespace utils
