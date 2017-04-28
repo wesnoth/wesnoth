@@ -123,13 +123,13 @@ void drop_down_menu::pre_show(window& window)
 
 		if(!entry.has_attribute("image")) {
 			item["label"] = entry["label"];
-			item["use_markup"] = use_markup_ ? "true" : "false";
+			item["use_markup"] = utils::bool_string(use_markup_);
 			data.emplace("label", item);
 		}
 
 		if(entry.has_attribute("details")) {
 			item["label"] = entry["details"];
-			item["use_markup"] = use_markup_ ? "true" : "false";
+			item["use_markup"] = utils::bool_string(use_markup_);
 			data.emplace("details", item);
 		}
 

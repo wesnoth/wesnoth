@@ -126,7 +126,7 @@ protected:
 			throw game::load_game_failed("Map not found");
 		}
 
-		DBG_NG_TC << "snapshot: "<< (player_exists_ ? "true" : "false") <<std::endl;
+		DBG_NG_TC << "snapshot: " << utils::bool_string(player_exists_) <<std::endl;
 
 		unit_configs_.clear();
 		seen_ids_.clear();
