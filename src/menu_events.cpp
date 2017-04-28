@@ -1680,7 +1680,7 @@ void console_handler::do_inspect() {
 
 void console_handler::do_control_dialog()
 {
-	gui2::dialogs::mp_change_control mp_change_control(&menu_handler_);
+	gui2::dialogs::mp_change_control mp_change_control(menu_handler_);
 	mp_change_control.show(menu_handler_.gui_->video());
 }
 

@@ -72,7 +72,7 @@ namespace dialogs
 
 REGISTER_DIALOG(mp_change_control)
 
-mp_change_control::mp_change_control(events::menu_handler* mh)
+mp_change_control::mp_change_control(events::menu_handler& mh)
 	: menu_handler_(mh)
 	, selected_side_(0)
 	, selected_nick_(0)
@@ -103,12 +103,10 @@ void mp_change_control::pre_show(window& window)
 	//
 	// Initialize sides list
 	//
-	const unsigned int num_sides = resources::gameboard
-		? static_cast<unsigned int>(resources::gameboard->teams().size())
-		: 0;
+	const unsigned int num_sides = menu_handler_.board().teams().size();
 
 	for(unsigned int side = 1; side <= num_sides; ++side) {
-		if(resources::gameboard->get_team(side).hidden()) {
+		if(menu_handler_.board().get_team(side).hidden()) {
 			continue;
 		}
 
@@ -132,7 +130,7 @@ void mp_change_control::pre_show(window& window)
 	// Prepare set of available nicknames
 	//
 	std::set<std::string> temp_nicks;
-	for(const auto& team : resources::gameboard->teams()) {
+	for(const auto& team : menu_handler_.board().teams()) {
 		if(!team.is_local_ai() && !team.is_network_ai() && !team.is_idle()
 			&& !team.is_empty() && !team.current_player().empty())
 		{
@@ -182,7 +180,7 @@ void mp_change_control::handle_nicks_list_item_clicked(window& window)
 void mp_change_control::highlight_side_nick(window& window)
 {
 	listbox& nicks_list = find_widget<listbox>(&window, "nicks_list", false);
-	const auto& teams = resources::gameboard->teams();
+	const auto& teams = menu_handler_.board().teams();
 
 	int i = 0;
 	for(const std::string& nick : nicks_) {
@@ -208,12 +206,10 @@ void mp_change_control::post_show(window& window)
 		        << sides_[selected_side_] << " to nick "
 		        << nicks_[selected_nick_] << std::endl;
 
-		if(menu_handler_) { // since in unit tests we pass a null pointer to it
-			menu_handler_->request_control_change(
-				sides_[selected_side_],
-				nicks_[selected_nick_]
-			);
-		}
+		menu_handler_.request_control_change(
+			sides_[selected_side_],
+			nicks_[selected_nick_]
+		);
 	}
 }
 
