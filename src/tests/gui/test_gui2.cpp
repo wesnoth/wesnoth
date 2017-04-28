@@ -937,23 +937,23 @@ struct dialog_tester<mp_join_game_password_prompt>
 	}
 };
 
+static std::vector<std::string> depcheck_mods {"mod_one", "some other", "more"};
+
 template<>
 struct dialog_tester<depcheck_confirm_change>
 {
-	std::vector<std::string> mods {"mod_one", "some other", "more"};
 	depcheck_confirm_change* create()
 	{
-		return new depcheck_confirm_change(true, mods, "requester");
+		return new depcheck_confirm_change(true, depcheck_mods, "requester");
 	}
 };
 
 template<>
 struct dialog_tester<depcheck_select_new>
 {
-	std::vector<std::string> mods {"mod_one", "some other", "more"};
 	depcheck_select_new* create()
 	{
-		return new depcheck_select_new(ng::depcheck::MODIFICATION, mods);
+		return new depcheck_select_new(ng::depcheck::MODIFICATION, depcheck_mods);
 	}
 };
 
@@ -987,7 +987,7 @@ struct dialog_tester<screenshot_notification>
 template<>
 struct dialog_tester<theme_list>
 {
-	theme_info make_theme(std::string name)
+	static theme_info make_theme(std::string name)
 	{
 		theme_info ti;
 		ti.id = name;
@@ -995,12 +995,13 @@ struct dialog_tester<theme_list>
 		ti.description = name + " this is a description";
 		return ti;
 	}
-	std::vector<theme_info> themes {make_theme("classic"), make_theme("new"), make_theme("more"), make_theme("themes")};
+	static std::vector<theme_info> themes;
 	theme_list* create()
 	{
 		return new theme_list(themes, 0);
 	}
 };
+std::vector<theme_info> dialog_tester<theme_list>::themes {make_theme("classic"), make_theme("new"), make_theme("more"), make_theme("themes")};
 
 template<>
 struct dialog_tester<editor_generate_map>
@@ -1113,12 +1114,13 @@ struct dialog_tester<title_screen>
 template<>
 struct dialog_tester<wml_error>
 {
-	std::vector<std::string> files {"some", "files", "here"};
+	static std::vector<std::string> files;
 	wml_error* create()
 	{
 		return new wml_error("Summary", "Post summary", files, "Details");
 	}
 };
+std::vector<std::string> dialog_tester<wml_error>::files {"some", "files", "here"};
 
 template<>
 struct dialog_tester<wml_message_left>
