@@ -180,7 +180,10 @@ void menu_handler::save_map()
 
 	gui2::dialogs::file_dialog dlg;
 
-	dlg.set_title(_("Save Map As")).set_save_mode(true).set_path(input_name).set_extension(".map");
+	dlg.set_title(_("Save Map As"))
+	   .set_save_mode(true)
+	   .set_path(input_name)
+	   .set_extension(".map");
 
 	if(!dlg.show(gui_->video())) {
 		return;
@@ -1719,7 +1722,7 @@ void console_handler::do_unsafe_lua()
 	}
 
 	const int retval = gui2::show_message(menu_handler_.gui_->video(), _("WARNING! Unsafe Lua Mode"),
-		_("Executing Lua code in in this manner opens your computer to potential security breaches from any"
+		_("Executing Lua code in in this manner opens your computer to potential security breaches from any "
 		"malicious add-ons or other programs you may have installed.\n\n"
 		"Do not continue unless you really know what you are doing."), gui2::dialogs::message::ok_cancel_buttons);
 
