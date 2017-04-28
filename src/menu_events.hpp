@@ -103,6 +103,14 @@ public:
 	void do_command(const std::string &str);
 	void do_ai_formula(const std::string &str, int side_num, mouse_handler &mousehandler);
 	void send_to_server(const config& cfg) override;
+
+	game_state & gamestate() const;
+	game_data & gamedata();
+	game_board & board() const;
+	unit_map& units();
+	std::vector<team>& teams() const;
+	const gamemap& map() const;
+
 protected:
 	void add_chat_message(const time_t& time, const std::string& speaker,
 			int side, const std::string& message,
@@ -119,13 +127,6 @@ private:
 
 	game_display* gui_;
 	play_controller & pc_;
-
-	game_state & gamestate() const;
-	game_data & gamedata();
-	game_board & board() const;
-	unit_map& units();
-	std::vector<team>& teams() const;
-	const gamemap& map() const;
 
 	const config& game_config_;
 
