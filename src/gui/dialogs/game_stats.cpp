@@ -74,6 +74,11 @@ unit_const_ptr game_stats::get_leader(const int side)
 	return nullptr;
 }
 
+static std::string controller_name(const team& t) {
+	static const t_string names[3] = {_("controller^Human"), _("controller^Computer"), _("controller^Idle")};
+	return "    <span color='#808080'>(" + names[t.controller().v] + ")</span>";
+}
+
 void game_stats::pre_show(window& window)
 {
 	listbox& stats_list    = find_widget<listbox>(&window, "game_stats_list", false);
@@ -126,7 +131,7 @@ void game_stats::pre_show(window& window)
 		column_stats["label"] = leader_image;
 		row_data_stats.emplace("team_leader_image", column_stats);
 
-		column_stats["label"] = leader_name;
+		column_stats["label"] = leader_name + "\n" + controller_name(team);
 		row_data_stats.emplace("team_leader_name", column_stats);
 
 		column_stats["label"] = data.teamname.empty() ? team.team_name() : data.teamname;
@@ -174,7 +179,7 @@ void game_stats::pre_show(window& window)
 		column_settings["label"] = leader_image;
 		row_data_settings.emplace("team_leader_image", column_settings);
 
-		column_settings["label"] = leader_name;
+		column_settings["label"] = leader_name + "\n" + controller_name(team);
 		row_data_settings.emplace("team_leader_name", column_settings);
 
 		column_settings["label"] = std::to_string(team.side());
