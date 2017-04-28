@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2009 - 2017 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -53,10 +53,10 @@ public:
 	}
 
 
-	virtual const variant& get_variant() const = 0;
+	virtual const wfl::variant& get_variant() const = 0;
 
 
-	virtual std::shared_ptr<variant> get_variant_ptr() const = 0;
+	virtual std::shared_ptr<wfl::variant> get_variant_ptr() const = 0;
 
 
 	virtual void recalculate() const = 0;
@@ -134,12 +134,12 @@ public:
 	}
 
 
-	virtual const variant& get_variant() const
+	virtual const wfl::variant& get_variant() const
 	{
 		return *get_variant_ptr();
 	}
 
-	virtual std::shared_ptr<variant> get_variant_ptr() const
+	virtual std::shared_ptr<wfl::variant> get_variant_ptr() const
 	{
 		if (!valid_variant_) {
 			if (!valid_) {
@@ -147,11 +147,11 @@ public:
 			}
 
 			if (!valid_variant_ && valid_ ) {
-				value_variant_ = std::shared_ptr<variant>(new variant(variant_value_translator<T>::value_to_variant(this->get())));
+				value_variant_ = std::shared_ptr<wfl::variant>(new wfl::variant(variant_value_translator<T>::value_to_variant(this->get())));
 				valid_variant_ = true;
 			} else if (!valid_variant_ && valid_lua_) {
 				value_ = value_lua_->get();
-				value_variant_ = std::shared_ptr<variant>(new variant(variant_value_translator<T>::value_to_variant(this->get())));
+				value_variant_ = std::shared_ptr<wfl::variant>(new wfl::variant(variant_value_translator<T>::value_to_variant(this->get())));
 				valid_variant_ = true; // @note: temporary workaround
 			} else {
 				assert(valid_variant_);
@@ -187,7 +187,7 @@ public:
 
 protected:
 	mutable std::shared_ptr<T> value_;
-	mutable std::shared_ptr<variant> value_variant_;
+	mutable std::shared_ptr<wfl::variant> value_variant_;
 	mutable std::shared_ptr< lua_object<T> > value_lua_;
 };
 

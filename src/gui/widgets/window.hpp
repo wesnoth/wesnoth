@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2007 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -73,7 +73,7 @@ public:
 			typed_formula<unsigned> w,
 			typed_formula<unsigned> h,
 			typed_formula<bool> reevaluate_best_size,
-			const game_logic::function_symbol_table& functions,
+			const wfl::function_symbol_table& functions,
 			const bool automatic_placement,
 			const unsigned horizontal_placement,
 			const unsigned vertical_placement,
@@ -255,6 +255,12 @@ public:
 	private:
 		window& window_;
 	};
+
+	/** Is invalidate_layout blocked, see invalidate_layout_blocker. */
+	bool invalidate_layout_blocked() const
+	{
+		return invalidate_layout_blocked_;
+	}
 
 	/**
 	 * Updates the size of the window.
@@ -440,17 +446,12 @@ public:
 		click_dismiss_ = click_dismiss;
 	}
 
-	static void set_sunset(const unsigned interval)
-	{
-		sunset_ = interval ? interval : 5;
-	}
-
 	bool get_need_layout() const
 	{
 		return need_layout_;
 	}
 
-	void set_variable(const std::string& key, const variant& value)
+	void set_variable(const std::string& key, const wfl::variant& value)
 	{
 		variables_.add(key, value);
 		set_is_dirty(true);
@@ -524,9 +525,9 @@ private:
 	bool need_layout_;
 
 	/** The variables of the canvas. */
-	game_logic::map_formula_callable variables_;
+	wfl::map_formula_callable variables_;
 
-	/** Is invalidate layout blocked see invalidate_layout_blocker. */
+	/** Is invalidate_layout blocked, see invalidate_layout_blocker. */
 	bool invalidate_layout_blocked_;
 
 	/** Avoid drawing the window.  */
@@ -579,7 +580,7 @@ private:
 	typed_formula<bool> reevaluate_best_size_;
 
 	/** The formula definitions available for the calulation formulas. */
-	game_logic::function_symbol_table functions_;
+	wfl::function_symbol_table functions_;
 
 	/** The settings for the tooltip. */
 	builder_window::window_resolution::tooltip_info tooltip_;
@@ -611,15 +612,6 @@ private:
 
 	/** Disable the escape key see our setter for more info. */
 	bool escape_disabled_;
-
-	/**
-	 * Controls the sunset feature.
-	 *
-	 * If this value is not 0 it will darken the entire screen every
-	 * sunset_th drawing request that nothing has been modified. It's a debug
-	 * feature.
-	 */
-	static unsigned sunset_;
 
 	/**
 	 * Helper struct to force widgets the have the same size.
@@ -675,7 +667,7 @@ private:
 	 * @return                    Whether the event should be considered as
 	 *                            handled.
 	 */
-	bool click_dismiss(const Uint8 mouse_button_mask);
+	bool click_dismiss(const int mouse_button_mask);
 
 	/**
 	 * The state of the mouse button.
@@ -693,7 +685,7 @@ private:
 	 *
 	 * [1] https://gna.org/bugs/index.php?18970
 	 */
-	Uint8 mouse_button_state_;
+	int mouse_button_state_;
 
 	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
@@ -772,7 +764,7 @@ private:
 	void signal_handler_click_dismiss(const event::ui_event event,
 									  bool& handled,
 									  bool& halt,
-									  const Uint8 mouse_button_mask);
+									  const int mouse_button_mask);
 
 	void signal_handler_sdl_key_down(const event::ui_event event,
 									 bool& handled,

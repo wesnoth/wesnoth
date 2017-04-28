@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-11-05 23:31 UTC\n"
+"POT-Creation-Date: 2017-03-23 08:11+0100\n"
 "PO-Revision-Date: 2014-06-21 16:55+0100\n"
 "Last-Translator: Crommy\n"
 "Language-Team: Crommy <oli-lange@web.de>\n"
@@ -100,12 +100,12 @@ msgid "Art"
 msgstr "Grafik"
 
 #. [about]
-#: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:48
+#: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:52
 msgid "Brainstorming, playtesting, and spousal support"
 msgstr "Gedankenaustausch, Testspieler und weibliche Unterstützung"
 
 #. [about]
-#: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:54
+#: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:58
 msgid "Campaign Maintenance"
 msgstr ""
 
@@ -156,9 +156,9 @@ msgstr ""
 "Jahre 550 vor einer umherstreichenden Orkbande gewarnt wurde."
 
 #. [side]
-#. [side]: type=Dwarvish Lord, id=Hamel
 #. [side]: type=Orcish Warrior, id=Marth-Tak
 #. [side]: type=Great Mage, id=Master Perrin
+#. [side]: type=Dwarvish Lord, id=Hamel
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:43
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:33
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:47
@@ -186,13 +186,13 @@ msgstr "Allianz"
 msgid "Pelmathidrol"
 msgstr "Pelmathidrol"
 
-#. [side]: type=Orcish Warrior, id=Bashnark
 #. [side]: type=Orcish Warlord, id=Tan-Malgar
 #. [side]: type=Orcish Warlord, id=Tan-Grolak
 #. [side]: type=Orcish Warlord, id=Tan-Uthkar
 #. [side]: type=Orcish Warlord, id=Tan-Morgh
 #. [side]: type=Orcish Warlord, id=Tan-Garukh
 #. [side]: type=Orcish Warlord, id=Tan-Wagran
+#. [side]: type=Orcish Warrior, id=Bashnark
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:71
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:54
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:92
@@ -1234,6 +1234,11 @@ msgid "Fear"
 msgstr "Furcht"
 
 #. [event]
+#. [unit]: type={TYPE}
+#. [side]: type=Dwarvish Masked Steelclad, id=Dufon
+#. [side]: type=Dwarvish Masked Lord, id=Aragoth
+#. [side]: type=Dwarvish Masked Lord, id=Dranath
+#. [side]: type=Dwarvish Masked Steelclad, id=Sashaon
 #. [unit]: type=Dwarvish Ulfserker, id={ID_STRING}
 #. [unit]: type=Dwarvish Masked Steelclad
 #. [side]: type=Dwarvish Masked Steelclad, id=Masked Dwarf Leader
@@ -1241,11 +1246,6 @@ msgstr "Furcht"
 #. [unit]: type=Dwarvish Masked Steelclad, id=Magog
 #. [unit]: type=Dwarvish Ulfserker, id=Hekyll
 #. [unit]: type=Dwarvish Ulfserker, id=Jekyll
-#. [unit]: type={TYPE}
-#. [side]: type=Dwarvish Masked Steelclad, id=Dufon
-#. [side]: type=Dwarvish Masked Lord, id=Aragoth
-#. [side]: type=Dwarvish Masked Lord, id=Dranath
-#. [side]: type=Dwarvish Masked Steelclad, id=Sashaon
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:47
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:64
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:87
@@ -1262,12 +1262,12 @@ msgstr "Furcht"
 msgid "Masked Dwarf"
 msgstr "Maskierter Zwerg"
 
-#. [side]: type=Dwarvish Masked Steelclad, id=Masked Dwarf Leader
 #. [side]
 #. [side]: type=Dwarvish Masked Steelclad, id=Dufon
 #. [side]: type=Dwarvish Masked Lord, id=Aragoth
 #. [side]: type=Dwarvish Masked Lord, id=Dranath
 #. [side]: type=Dwarvish Masked Steelclad, id=Sashaon
+#. [side]: type=Dwarvish Masked Steelclad, id=Masked Dwarf Leader
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:59
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:77
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:132
@@ -2466,7 +2466,7 @@ msgid "Dwarvish Annalist"
 msgstr "Scriptor"
 
 #. [unit_type]: id=Dwarvish Annalist, race=dwarf
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Annalist.cfg:21
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Annalist.cfg:22
 msgid ""
 "Dwarvish Annalists are the historians of this ancient and proud race. They "
 "are few in number, and their very existence is not generally known to the "
@@ -2479,16 +2479,16 @@ msgstr ""
 "und Mineralen heilen sie zudem Vergiftungen."
 
 #. [attack]: type=impact
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Annalist.cfg:32
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Loremaster.cfg:35
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Witness.cfg:37
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Annalist.cfg:33
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Loremaster.cfg:36
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Witness.cfg:38
 msgid "morningstar"
 msgstr "Morgenstern"
 
 #. [attack]: type=impact
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Annalist.cfg:56
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Loremaster.cfg:60
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Witness.cfg:61
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Annalist.cfg:60
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Loremaster.cfg:64
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Witness.cfg:65
 msgid "bolas"
 msgstr "Bola"
 
@@ -2498,7 +2498,7 @@ msgid "Dwarvish Loremaster"
 msgstr "Zwergenältester"
 
 #. [unit_type]: id=Dwarvish Loremaster, race=dwarf
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Loremaster.cfg:23
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Loremaster.cfg:24
 msgid ""
 "Loremasters are the sages of the dwarvish race. Their counsel is greatly "
 "valued by war-leaders and chieftains, and they are viewed with awe by "
@@ -2597,7 +2597,7 @@ msgid "Dwarvish Witness"
 msgstr "Skalde"
 
 #. [unit_type]: id=Dwarvish Witness, race=dwarf
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Witness.cfg:27
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Witness.cfg:28
 msgid ""
 "A Witness functions as the eyes of the dwarves’ history, a deep lore that "
 "they never share with outsiders. The presence of a Witness inspires dwarvish "

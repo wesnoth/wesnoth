@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Tomasz Sniatowski <kailoran@gmail.com>
+   Copyright (C) 2008 - 2017 by Tomasz Sniatowski <kailoran@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,6 @@
    See the COPYING file for more details.
 */
 #define GETTEXT_DOMAIN "wesnoth-editor"
-
-#include "widgets/slider.hpp"
 
 #include "editor/map/context_manager.hpp"
 
@@ -41,6 +39,7 @@
 #include "resources.hpp"
 #include "reports.hpp"
 
+#include "config_assign.hpp"
 #include "desktop/clipboard.hpp"
 #include "floating_label.hpp"
 #include "game_board.hpp"
@@ -67,7 +66,7 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	, quit_confirmation(std::bind(&editor_controller::quit_confirm, this))
 	, active_menu_(editor::MAP)
 	, reports_(new reports())
-	, gui_(new editor_display(editor::get_dummy_display_context(), video, *reports_, controller_base::get_theme(game_config, "editor"), config()))
+	, gui_(new editor_display(*this, video, *reports_, controller_base::get_theme(game_config, "editor")))
 	, tods_()
 	, context_manager_(new context_manager(*gui_.get(), game_config_))
 	, toolkit_(nullptr)
@@ -84,7 +83,7 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	context_manager_->switch_context(0, true);
 	init_tods(game_config);
 	init_music(game_config);
-	context_manager_->get_map_context().set_starting_position_labels(gui());
+	get_current_map_context().set_starting_position_labels(gui());
 	cursor::set(cursor::NORMAL);
 
 	gui().create_buttons();
@@ -94,7 +93,7 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 
 void editor_controller::init_gui()
 {
-	gui_->change_display_context(&context_manager_->get_map_context());
+	gui_->change_display_context(&get_current_map_context());
 	preferences::set_preference_display_settings();
 	gui_->add_redraw_observer(std::bind(&editor_controller::display_redraw_callback, this, _1));
 	floating_label_manager_.reset(new font::floating_label_context());
@@ -162,11 +161,11 @@ void editor_controller::init_music(const config& game_config)
 
 editor_controller::~editor_controller()
 {
+	resources::units = nullptr;
 	resources::tod_manager = nullptr;
-	resources::gameboard = nullptr;
+	resources::filter_con = nullptr;
 
 	resources::classification = nullptr;
-	resources::mp_settings = nullptr;
 }
 
 EXIT_STATUS editor_controller::main_loop()
@@ -223,15 +222,13 @@ void editor_controller::custom_tods_dialog()
 		return;
 	}
 
-	image::color_adjustment_resetter adjust_resetter;
+	tod_manager& manager = *get_current_map_context().get_time_manager();
 
-	std::vector<time_of_day> schedule = context_manager_->get_map_context().get_time_manager()->times();
-
-	if(!gui2::dialogs::custom_tod::execute(gui(), schedule)) {
-		adjust_resetter.reset();
-	} else {
+	if(gui2::dialogs::custom_tod::execute(manager.times(), manager.get_current_time(), gui().video())) {
 		// TODO save the new tod here
 	}
+
+	gui_->update_tod();
 
 	context_manager_->refresh_all();
 }
@@ -292,10 +289,10 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 			return true; //general hotkeys we can always do
 
 		case hotkey::HOTKEY_UNIT_LIST:
-			return context_manager_->get_map_context().get_units().size() != 0;
+			return get_current_map_context().get_units().size() != 0;
 
 		case HOTKEY_STATUS_TABLE:
-			return !context_manager_->get_map_context().get_teams().empty();
+			return !get_current_map_context().get_teams().empty();
 
 		case HOTKEY_TERRAIN_DESCRIPTION:
 			return gui().mouseover_hex().valid();
@@ -312,16 +309,16 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 		case HOTKEY_UNIT_DESCRIPTION:
 		{
 			map_location loc = gui_->mouseover_hex();
-			const unit_map& units = context_manager_->get_map_context().get_units();
+			const unit_map& units = get_current_map_context().get_units();
 			return (toolkit_->is_mouse_action_set(HOTKEY_EDITOR_TOOL_UNIT) &&
 					units.find(loc) != units.end());
 		}
 		case HOTKEY_UNDO:
-			return context_manager_->get_map_context().can_undo();
+			return get_current_map_context().can_undo();
 		case HOTKEY_REDO:
-			return context_manager_->get_map_context().can_redo();
+			return get_current_map_context().can_redo();
 		case HOTKEY_EDITOR_PARTIAL_UNDO:
-			return context_manager_->get_map_context().can_undo();
+			return get_current_map_context().can_undo();
 		case TITLE_SCREEN__RELOAD_WML:
 		case HOTKEY_QUIT_TO_DESKTOP:
 		case HOTKEY_EDITOR_CUSTOM_TODS:
@@ -334,11 +331,11 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 
 		case HOTKEY_EDITOR_AREA_ADD:
 		case HOTKEY_EDITOR_SIDE_NEW:
-			return !context_manager_->get_map_context().is_pure_map();
+			return !get_current_map_context().is_pure_map();
 
 		case HOTKEY_EDITOR_SIDE_EDIT:
 		case HOTKEY_EDITOR_SIDE_REMOVE:
-			return !context_manager_->get_map_context().get_teams().empty();
+			return !get_current_map_context().get_teams().empty();
 
 		// brushes
 		case HOTKEY_EDITOR_BRUSH_NEXT:
@@ -354,7 +351,7 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 		case HOTKEY_EDITOR_PALETTE_ITEM_SWAP:
 			return toolkit_->get_palette_manager()->active_palette().supports_swap();
 		case HOTKEY_EDITOR_MAP_SAVE:
-			return context_manager_->get_map_context().modified();
+			return get_current_map_context().modified();
 		case HOTKEY_EDITOR_MAP_SAVE_ALL:
 			{
 				std::string dummy;
@@ -362,13 +359,13 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 			}
 		case HOTKEY_EDITOR_PLAYLIST:
 		case HOTKEY_EDITOR_SCHEDULE:
-			return !context_manager_->get_map_context().is_pure_map();
+			return !get_current_map_context().is_pure_map();
 		case HOTKEY_EDITOR_MAP_SWITCH:
 		case HOTKEY_EDITOR_MAP_CLOSE:
 			return true;
 		case HOTKEY_EDITOR_MAP_REVERT:
-			return !context_manager_->get_map_context().get_filename().empty()
-					&& context_manager_->get_map_context().modified();
+			return !get_current_map_context().get_filename().empty()
+					&& get_current_map_context().modified();
 
 		// Tools
 		// Pure map editing tools this can be used all the time.
@@ -381,20 +378,20 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 		case HOTKEY_EDITOR_SCENARIO_EDIT:
 		case HOTKEY_EDITOR_TOOL_LABEL:
 		case HOTKEY_EDITOR_TOOL_ITEM:
-			return !context_manager_->get_map_context().is_pure_map();
+			return !get_current_map_context().is_pure_map();
 		case HOTKEY_EDITOR_TOOL_UNIT:
 		case HOTKEY_EDITOR_TOOL_VILLAGE:
-			return !context_manager_->get_map_context().get_teams().empty();
+			return !get_current_map_context().get_teams().empty();
 
 		case HOTKEY_EDITOR_AREA_REMOVE:
 		case HOTKEY_EDITOR_AREA_RENAME:
 		case HOTKEY_EDITOR_LOCAL_TIME:
-			return !context_manager_->get_map_context().is_pure_map() &&
-					!context_manager_->get_map_context().get_time_manager()->get_area_ids().empty();
+			return !get_current_map_context().is_pure_map() &&
+					!get_current_map_context().get_time_manager()->get_area_ids().empty();
 
 		case HOTKEY_EDITOR_AREA_SAVE:
-			return 	!context_manager_->get_map_context().is_pure_map() &&
-					!context_manager_->get_map_context().get_time_manager()->get_area_ids().empty()
+			return 	!get_current_map_context().is_pure_map() &&
+					!get_current_map_context().get_time_manager()->get_area_ids().empty()
 					&& !context_manager_->get_map().selection().empty();
 
 		case HOTKEY_EDITOR_SELECTION_EXPORT:
@@ -422,8 +419,8 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 		case HOTKEY_EDITOR_SELECT_NONE:
 			return !toolkit_->is_mouse_action_set(HOTKEY_EDITOR_CLIPBOARD_PASTE);
 		case HOTKEY_EDITOR_SELECT_INVERSE:
-			return !context_manager_->get_map_context().get_map().selection().empty()
-					&& !context_manager_->get_map_context().get_map().everything_selected()
+			return !get_current_map_context().get_map().selection().empty()
+					&& !get_current_map_context().get_map().everything_selected()
 					&& !toolkit_->is_mouse_action_set(HOTKEY_EDITOR_CLIPBOARD_PASTE);
 		case HOTKEY_EDITOR_MAP_RESIZE:
 		case HOTKEY_EDITOR_MAP_GENERATE:
@@ -460,20 +457,20 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 	case HOTKEY_EDITOR_UNIT_TOGGLE_LOYAL:
 	{
 		unit_map::const_unit_iterator un =
-				context_manager_->get_map_context().get_units().find(gui_->mouseover_hex());
+				get_current_map_context().get_units().find(gui_->mouseover_hex());
 		return un->loyal() ? ACTION_ON : ACTION_OFF;
 
 	}
 	case HOTKEY_EDITOR_UNIT_TOGGLE_CANRECRUIT:
 	{
 		unit_map::const_unit_iterator un =
-				context_manager_->get_map_context().get_units().find(gui_->mouseover_hex());
+				get_current_map_context().get_units().find(gui_->mouseover_hex());
 		return un->can_recruit() ? ACTION_ON : ACTION_OFF;
 	}
 	case HOTKEY_EDITOR_UNIT_TOGGLE_RENAMEABLE:
 	{
 		unit_map::const_unit_iterator un =
-				context_manager_->get_map_context().get_units().find(gui_->mouseover_hex());
+				get_current_map_context().get_units().find(gui_->mouseover_hex());
 		return (!un->unrenamable()) ? ACTION_ON : ACTION_OFF;
 	}
 	//TODO remove hardcoded hotkey names
@@ -500,10 +497,10 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 	case HOTKEY_TOGGLE_GRID:
 		return preferences::grid() ? ACTION_ON : ACTION_OFF;
 	case HOTKEY_EDITOR_SELECT_ALL:
-		return context_manager_->get_map_context().get_map().everything_selected() ?
+		return get_current_map_context().get_map().everything_selected() ?
 				ACTION_SELECTED : ACTION_DESELECTED;
 	case HOTKEY_EDITOR_SELECT_NONE:
-		return context_manager_->get_map_context().get_map().selection().empty() ?
+		return get_current_map_context().get_map().selection().empty() ?
 				ACTION_SELECTED : ACTION_DESELECTED;
 	case HOTKEY_EDITOR_TOOL_FILL:
 	case HOTKEY_EDITOR_TOOL_LABEL:
@@ -545,27 +542,27 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 		case editor::PALETTE:
 			return ACTION_STATELESS;
 		case editor::AREA:
-			return index == context_manager_->get_map_context().get_active_area()
+			return index == get_current_map_context().get_active_area()
 					? ACTION_SELECTED : ACTION_DESELECTED;
 		case editor::SIDE:
 			return static_cast<size_t>(index) == gui_->playing_team()
 					? ACTION_SELECTED : ACTION_DESELECTED;
 		case editor::TIME:
-			return index ==	context_manager_->get_map_context().get_time_manager()->get_current_time()
+			return index ==	get_current_map_context().get_time_manager()->get_current_time()
 					? ACTION_SELECTED : ACTION_DESELECTED;
 		case editor::LOCAL_TIME:
-			return index ==	context_manager_->get_map_context().get_time_manager()->get_current_area_time(
-					context_manager_->get_map_context().get_active_area())
+			return index ==	get_current_map_context().get_time_manager()->get_current_area_time(
+					get_current_map_context().get_active_area())
 					? ACTION_SELECTED : ACTION_DESELECTED;
 		case editor::MUSIC:
-			return context_manager_->get_map_context().is_in_playlist(music_tracks_[index].id())
+			return get_current_map_context().is_in_playlist(music_tracks_[index].id())
 					? ACTION_ON : ACTION_OFF;
 		case editor::SCHEDULE:
 			{
 				tods_map::const_iterator it = tods_.begin();
 				std::advance(it, index);
 				const std::vector<time_of_day>& times1 = it->second.second;
-				const std::vector<time_of_day>& times2 = context_manager_->get_map_context().get_time_manager()->times();
+				const std::vector<time_of_day>& times2 = get_current_map_context().get_time_manager()->times();
 				return (times1 == times2) ? ACTION_SELECTED : ACTION_DESELECTED;
 			}
 		case editor::LOCAL_SCHEDULE:
@@ -573,14 +570,14 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 				tods_map::const_iterator it = tods_.begin();
 				std::advance(it, index);
 				const std::vector<time_of_day>& times1 = it->second.second;
-				int active_area = context_manager_->get_map_context().get_active_area();
-				const std::vector<time_of_day>& times2 = context_manager_->get_map_context().get_time_manager()->times(active_area);
+				int active_area = get_current_map_context().get_active_area();
+				const std::vector<time_of_day>& times2 = get_current_map_context().get_time_manager()->times(active_area);
 				return (times1 == times2) ? ACTION_SELECTED : ACTION_DESELECTED;
 			}
 		case editor::UNIT_FACING:
 			{
-				unit_map::const_unit_iterator un = context_manager_->get_map_context().get_units().find(gui_->mouseover_hex());
-				assert(un != context_manager_->get_map_context().get_units().end());
+				unit_map::const_unit_iterator un = get_current_map_context().get_units().find(gui_->mouseover_hex());
+				assert(un != get_current_map_context().get_units().end());
 				return un->facing() == index ? ACTION_SELECTED : ACTION_DESELECTED;
 			}
 		}
@@ -629,34 +626,32 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 				return true;
 			case AREA:
 				{
-					context_manager_->get_map_context().set_active_area(index);
+					get_current_map_context().set_active_area(index);
 					const std::set<map_location>& area =
-							context_manager_->get_map_context().get_time_manager()->get_area_by_index(index);
+							get_current_map_context().get_time_manager()->get_area_by_index(index);
 					std::vector<map_location> locs(area.begin(), area.end());
-					context_manager_->get_map_context().select_area(index);
+					get_current_map_context().select_area(index);
 					gui_->scroll_to_tiles(locs.begin(), locs.end());
 					return true;
 				}
 			case TIME:
 				{
-					context_manager_->get_map_context().set_starting_time(index);
-					const tod_manager* tod = context_manager_->get_map_context().get_time_manager();
-					tod_color col = tod->times()[index].color;
-					image::set_color_adjustment(col.r, col.g, col.b);
+					get_current_map_context().set_starting_time(index);
+					gui_->update_tod();
 					return true;
 				}
 			case LOCAL_TIME:
 				{
-					context_manager_->get_map_context().set_local_starting_time(index);
+					get_current_map_context().set_local_starting_time(index);
 					return true;
 				}
 			case MUSIC:
 				{
 					//TODO mark the map as changed
 					sound::play_music_once(music_tracks_[index].id());
-					context_manager_->get_map_context().add_to_playlist(music_tracks_[index]);
-					std::vector<std::string> items;
-					items.push_back("editor-playlist");
+					get_current_map_context().add_to_playlist(music_tracks_[index]);
+					std::vector<config> items;
+					items.emplace_back(config_of("id", "editor-playlist"));
 					std::shared_ptr<gui::button> b = gui_->find_menu_button("menu-playlist");
 					show_menu(items, b->location().x +1, b->location().y + b->height() +1, false, *gui_);
 					return true;
@@ -665,23 +660,22 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 				{
 					tods_map::iterator iter = tods_.begin();
 					std::advance(iter, index);
-					context_manager_->get_map_context().replace_schedule(iter->second.second);
-					const tod_manager* tod = context_manager_->get_map_context().get_time_manager();
-					tod_color col = tod->times()[0].color;
-					image::set_color_adjustment(col.r, col.g, col.b);
+					get_current_map_context().replace_schedule(iter->second.second);
+					// TODO: test again after the assign-schedule menu is fixed. Should work, though.
+					gui_->update_tod();
 					return true;
 				}
 			case LOCAL_SCHEDULE:
 				{
 					tods_map::iterator iter = tods_.begin();
 					std::advance(iter, index);
-					context_manager_->get_map_context().replace_local_schedule(iter->second.second);
+					get_current_map_context().replace_local_schedule(iter->second.second);
 					return true;
 				}
 			case UNIT_FACING:
 				{
-					unit_map::unit_iterator un = context_manager_->get_map_context().get_units().find(gui_->mouseover_hex());
-					assert(un != context_manager_->get_map_context().get_units().end());
+					unit_map::unit_iterator un = get_current_map_context().get_units().find(gui_->mouseover_hex());
+					assert(un != get_current_map_context().get_units().end());
 					un->set_facing(map_location::DIRECTION(index));
 					un->anim_comp().set_standing();
 					return true;
@@ -691,18 +685,18 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 
 			//Zoom
 		case HOTKEY_ZOOM_IN:
-			gui_->set_zoom(zoom_amount);
-			context_manager_->get_map_context().get_labels().recalculate_labels();
+			gui_->set_zoom(true);
+			get_current_map_context().get_labels().recalculate_labels();
 			toolkit_->set_mouseover_overlay(*gui_);
 			return true;
 		case HOTKEY_ZOOM_OUT:
-			gui_->set_zoom(-zoom_amount);
-			context_manager_->get_map_context().get_labels().recalculate_labels();
+			gui_->set_zoom(false);
+			get_current_map_context().get_labels().recalculate_labels();
 			toolkit_->set_mouseover_overlay(*gui_);
 			return true;
 		case HOTKEY_ZOOM_DEFAULT:
 			gui_->set_default_zoom();
-			context_manager_->get_map_context().get_labels().recalculate_labels();
+			get_current_map_context().get_labels().recalculate_labels();
 			toolkit_->set_mouseover_overlay(*gui_);
 			return true;
 
@@ -746,8 +740,8 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 			toolkit_->get_palette_manager()->active_palette().swap();
 			return true;
 		case HOTKEY_EDITOR_PARTIAL_UNDO:
-			if (dynamic_cast<const editor_action_chain*>(context_manager_->get_map_context().last_undo_action()) != nullptr) {
-				context_manager_->get_map_context().partial_undo();
+			if (dynamic_cast<const editor_action_chain*>(get_current_map_context().last_undo_action()) != nullptr) {
+				get_current_map_context().partial_undo();
 				context_manager_->refresh_after_action();
 			} else {
 				undo();
@@ -777,7 +771,7 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 		case HOTKEY_EDITOR_UNIT_RECRUIT_ASSIGN:
 		{
 			map_location loc = gui_->mouseover_hex();
-			const unit_map::unit_iterator un = context_manager_->get_map_context().get_units().find(loc);
+			const unit_map::unit_iterator un = get_current_map_context().get_units().find(loc);
 			const std::set<std::string>& recruit_set = toolkit_->get_palette_manager()->unit_palette_->get_selected_bg_items();
 			std::vector<std::string> recruits(recruit_set.begin(), recruit_set.end());
 			un->set_recruits(recruits);
@@ -786,7 +780,7 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 		case HOTKEY_EDITOR_UNIT_TOGGLE_RENAMEABLE:
 		{
 			map_location loc = gui_->mouseover_hex();
-			const unit_map::unit_iterator un = context_manager_->get_map_context().get_units().find(loc);
+			const unit_map::unit_iterator un = get_current_map_context().get_units().find(loc);
 			bool unrenamable = un->unrenamable();
 			un->set_unrenamable(!unrenamable);
 		}
@@ -794,7 +788,7 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 		case HOTKEY_EDITOR_UNIT_TOGGLE_CANRECRUIT:
 		{
 			map_location loc = gui_->mouseover_hex();
-			const unit_map::unit_iterator un = context_manager_->get_map_context().get_units().find(loc);
+			const unit_map::unit_iterator un = get_current_map_context().get_units().find(loc);
 			bool canrecruit = un->can_recruit();
 			un->set_can_recruit(!canrecruit);
 			un->anim_comp().set_standing();
@@ -864,10 +858,11 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 			export_selection_coords();
 			return true;
 		case HOTKEY_EDITOR_SELECT_ALL:
-			if (!context_manager_->get_map().everything_selected()) {
+			if(!context_manager_->get_map().everything_selected()) {
 				context_manager_->perform_refresh(editor_action_select_all());
 				return true;
-			} //else intentionally fall through
+			}
+			FALLTHROUGH;
 		case HOTKEY_EDITOR_SELECT_INVERSE:
 			context_manager_->perform_refresh(editor_action_select_inverse());
 			return true;
@@ -887,8 +882,8 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 			return true;
 
 		case HOTKEY_EDITOR_AREA_REMOVE:
-			context_manager_->get_map_context().remove_area(
-					context_manager_->get_map_context().get_active_area());
+			get_current_map_context().remove_area(
+					get_current_map_context().get_active_area());
 			return true;
 
 		// map specific
@@ -934,13 +929,13 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 
 		// Side specific ones
 		case HOTKEY_EDITOR_SIDE_NEW:
-			context_manager_->get_map_context().new_side();
+			get_current_map_context().new_side();
 			gui_->init_flags();
 			return true;
 		case HOTKEY_EDITOR_SIDE_REMOVE:
 			gui_->set_team(0, true);
 			gui_->set_playing_team(0);
-			context_manager_->get_map_context().remove_side();
+			get_current_map_context().remove_side();
 			return true;
 		case HOTKEY_EDITOR_SIDE_EDIT:
 			context_manager_->edit_side_dialog(gui_->viewing_team());
@@ -948,18 +943,19 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 
 		// Transitions
 		case HOTKEY_EDITOR_PARTIAL_UPDATE_TRANSITIONS:
-			context_manager_->set_update_trasitions_mode(2);
+			context_manager_->set_update_transitions_mode(2);
 			return true;
 		case HOTKEY_EDITOR_AUTO_UPDATE_TRANSITIONS:
-			context_manager_->set_update_trasitions_mode(1);
+			context_manager_->set_update_transitions_mode(1);
 			return true;
 		case HOTKEY_EDITOR_NO_UPDATE_TRANSITIONS:
-			context_manager_->set_update_trasitions_mode(0);
+			context_manager_->set_update_transitions_mode(0);
 			return true;
 		case HOTKEY_EDITOR_TOGGLE_TRANSITIONS:
-			if (context_manager_->toggle_update_transitions())
+			if(context_manager_->toggle_update_transitions()) {
 				return true;
-			// else intentionally fall through
+			}
+			FALLTHROUGH;
 		case HOTKEY_EDITOR_UPDATE_TRANSITIONS:
 			context_manager_->refresh_all();
 			return true;
@@ -1003,88 +999,100 @@ void editor_controller::show_help()
 	help::show_help(gui_->video(), "..editor");
 }
 
-void editor_controller::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& disp)
+void editor_controller::show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu, display& disp)
 {
-	if (context_menu) {
-		if (!context_manager_->get_map().on_board_with_border(gui().hex_clicked_on(xloc, yloc))) {
+	if(context_menu) {
+		if(!context_manager_->get_map().on_board_with_border(gui().hex_clicked_on(xloc, yloc))) {
 			return;
 		}
 	}
 
-	std::vector<std::string> items;
-	std::vector<std::string>::const_iterator i = items_arg.begin();
-	while(i != items_arg.end())
-	{
+	std::vector<config> items;
+	for(const auto& c : items_arg) {
+		const std::string& id = c["id"];
+		const hotkey::hotkey_command& command = hotkey::get_hotkey_command(id);
 
-		const hotkey::hotkey_command& command = hotkey::get_hotkey_command(*i);
-
-		if ( ( can_execute_command(command)
-			&& (!context_menu || in_context_menu(command.id)) )
-			|| command.id == hotkey::HOTKEY_NULL) {
-			items.push_back(*i);
+		if((can_execute_command(command) && (!context_menu || in_context_menu(command.id)))
+			|| command.id == hotkey::HOTKEY_NULL)
+		{
+			items.emplace_back(config_of("id", id));
 		}
-		++i;
 	}
-	if (!items.empty() && items.front() == "EDITOR-LOAD-MRU-PLACEHOLDER") {
+
+	// No point in showing an empty menu.
+	if(items.empty()) {
+		return;
+	}
+
+	// Based on the ID of the first entry, we fill the menu contextually.
+	const std::string& first_id = items.front()["id"];
+
+	if(first_id == "EDITOR-LOAD-MRU-PLACEHOLDER") {
 		active_menu_ = editor::LOAD_MRU;
-		context_manager_->expand_load_mru_menu(items);
+		context_manager_->expand_load_mru_menu(items, 0);
 	}
-	if (!items.empty() && items.front() == "editor-switch-map") {
+
+	if(first_id == "editor-switch-map") {
 		active_menu_ = editor::MAP;
-		context_manager_->expand_open_maps_menu(items);
+		context_manager_->expand_open_maps_menu(items, 0);
 	}
-	if (!items.empty() && items.front() == "editor-palette-groups") {
+
+	if(first_id == "editor-palette-groups") {
 		active_menu_ = editor::PALETTE;
-		toolkit_->get_palette_manager()->active_palette().expand_palette_groups_menu(items);
+		toolkit_->get_palette_manager()->active_palette().expand_palette_groups_menu(items, 0);
 	}
-	if (!items.empty() && items.front() == "editor-switch-side") {
+
+	if(first_id == "editor-switch-side") {
 		active_menu_ = editor::SIDE;
-		context_manager_->expand_sides_menu(items);
+		context_manager_->expand_sides_menu(items, 0);
 	}
-	if (!items.empty() && items.front() == "editor-switch-area") {
+
+	if(first_id == "editor-switch-area") {
 		active_menu_ = editor::AREA;
-		context_manager_->expand_areas_menu(items);
+		context_manager_->expand_areas_menu(items, 0);
 	}
-	if (!items.empty() && items.front() == "editor-switch-time") {
+
+	if(!items.empty() && items.front()["id"] == "editor-switch-time") {
 		active_menu_ = editor::TIME;
-		context_manager_->expand_time_menu(items);
+		context_manager_->expand_time_menu(items, 0);
 	}
-	if (!items.empty() && items.front() == "editor-assign-local-time") {
+
+	if(first_id == "editor-assign-local-time") {
 		active_menu_ = editor::LOCAL_TIME;
-		context_manager_->expand_local_time_menu(items);
+		context_manager_->expand_local_time_menu(items, 0);
 	}
-	if (!items.empty() && items.front() == "menu-unit-facings") {
+
+	if(first_id == "menu-unit-facings") {
 		active_menu_ = editor::UNIT_FACING;
-		items.erase(items.begin());
-		for (int dir = 0; dir != map_location::NDIRECTIONS; dir++)
-			items.push_back(map_location::write_translated_direction(map_location::DIRECTION(dir)));
+		auto pos = items.erase(items.begin());
+		int dir = 0;
+		std::generate_n(std::inserter<std::vector<config>>(items, pos), int(map_location::NDIRECTIONS), [&dir]() -> config {
+			return config_of("label", map_location::write_translated_direction(map_location::DIRECTION(dir++)));
+		});
 	}
-	if (!items.empty() && items.front() == "editor-playlist") {
+
+	if(first_id == "editor-playlist") {
 		active_menu_ = editor::MUSIC;
-		items.erase(items.begin());
-		for (const sound::music_track& track : music_tracks_) {
-			items.push_back(track.title().empty() ? track.id() : track.title());
-		}
+		auto pos = items.erase(items.begin());
+		std::transform(music_tracks_.begin(), music_tracks_.end(), std::inserter<std::vector<config>>(items, pos), [](const sound::music_track& track) -> config {
+			return config_of("label", track.title().empty() ? track.id() : track.title());
+		});
 	}
-	if (!items.empty() && items.front() == "editor-assign-schedule") {
+
+	if(first_id == "editor-assign-schedule") {
 		active_menu_ = editor::SCHEDULE;
-
-		items.erase(items.begin());
-
-		for (tods_map::iterator iter = tods_.begin();
-				iter != tods_.end(); ++iter) 	{
-			items.push_back(iter->second.first);
-		}
+		auto pos = items.erase(items.begin());
+		std::transform(tods_.begin(), tods_.end(), std::inserter<std::vector<config>>(items, pos), [](const tods_map::value_type& tod) -> config {
+			return config_of("label", tod.second.first);
+		});
 	}
-	if (!items.empty() && items.front() == "editor-assign-local-schedule") {
+
+	if(first_id == "editor-assign-local-schedule") {
 		active_menu_ = editor::LOCAL_SCHEDULE;
-
-		items.erase(items.begin());
-
-		for (tods_map::iterator iter = tods_.begin();
-				iter != tods_.end(); ++iter) 	{
-			items.push_back(iter->second.first);
-		}
+		auto pos = items.erase(items.begin());
+		std::transform(tods_.begin(), tods_.end(), std::inserter<std::vector<config>>(items, pos), [](const tods_map::value_type& tod) -> config {
+			return config_of("label", tod.second.first);
+		});
 	}
 
 	command_executor::show_menu(items, xloc, yloc, context_menu, disp);
@@ -1107,7 +1115,7 @@ void editor_controller::toggle_grid()
 void editor_controller::unit_description()
 {
 	map_location loc = gui_->mouseover_hex();
-	const unit_map & units = context_manager_->get_map_context().get_units();
+	const unit_map & units = get_current_map_context().get_units();
 	const unit_map::const_unit_iterator un = units.find(loc);
 	if(un != units.end()) {
 		help::show_unit_help(gui_->video(), un->type_id(), un->type().show_variations_in_help(), false);
@@ -1128,7 +1136,7 @@ void editor_controller::copy_selection()
 void editor_controller::change_unit_id()
 {
 	map_location loc = gui_->mouseover_hex();
-	unit_map& units = context_manager_->get_map_context().get_units();
+	unit_map& units = get_current_map_context().get_units();
 	const unit_map::unit_iterator& un = units.find(loc);
 
 	const std::string title(N_("Change Unit ID"));
@@ -1145,7 +1153,7 @@ void editor_controller::change_unit_id()
 void editor_controller::rename_unit()
 {
 	map_location loc = gui_->mouseover_hex();
-	unit_map& units = context_manager_->get_map_context().get_units();
+	unit_map& units = get_current_map_context().get_units();
 	const unit_map::unit_iterator& un = units.find(loc);
 
 	const std::string title(N_("Rename Unit"));
@@ -1174,13 +1182,13 @@ void editor_controller::cut_selection()
 void editor_controller::save_area()
 {
 	const std::set<map_location>& area = context_manager_->get_map().selection();
-	context_manager_->get_map_context().save_area(area);
+	get_current_map_context().save_area(area);
 }
 
 void editor_controller::add_area()
 {
 	const std::set<map_location>& area = context_manager_->get_map().selection();
-	context_manager_->get_map_context().new_area(area);
+	get_current_map_context().new_area(area);
 }
 
 void editor_controller::export_selection_coords()
@@ -1205,7 +1213,7 @@ void editor_controller::perform_delete(editor_action* action)
 {
 	if (action) {
 		const std::unique_ptr<editor_action> action_auto(action);
-		context_manager_->get_map_context().perform_action(*action);
+		get_current_map_context().perform_action(*action);
 	}
 }
 
@@ -1227,18 +1235,18 @@ void editor_controller::display_redraw_callback(display&)
 {
 	set_button_state();
 	toolkit_->adjust_size();
-	context_manager_->get_map_context().get_labels().recalculate_labels();
+	get_current_map_context().get_labels().recalculate_labels();
 }
 
 void editor_controller::undo()
 {
-	context_manager_->get_map_context().undo();
+	get_current_map_context().undo();
 	context_manager_->refresh_after_action();
 }
 
 void editor_controller::redo()
 {
-	context_manager_->get_map_context().redo();
+	get_current_map_context().redo();
 	context_manager_->refresh_after_action();
 }
 
@@ -1250,7 +1258,7 @@ void editor_controller::mouse_motion(int x, int y, const bool /*browse*/,
 	if (context_manager_->get_map().on_board_with_border(drag_from_hex_) && is_dragging()) {
 		editor_action* a = nullptr;
 		bool partial = false;
-		editor_action* last_undo = context_manager_->get_map_context().last_undo_action();
+		editor_action* last_undo = get_current_map_context().last_undo_action();
 		if (dragging_left_ && (SDL_GetMouseState(nullptr, nullptr) & SDL_BUTTON(1)) != 0) {
 			if (!context_manager_->get_map().on_board_with_border(hex_clicked)) return;
 			a = get_mouse_action().drag_left(*gui_, x, y, partial, last_undo);
@@ -1264,9 +1272,9 @@ void editor_controller::mouse_motion(int x, int y, const bool /*browse*/,
 		if (a != nullptr) {
 			const std::unique_ptr<editor_action> aa(a);
 			if (partial) {
-				context_manager_->get_map_context().perform_partial_action(*a);
+				get_current_map_context().perform_partial_action(*a);
 			} else {
-				context_manager_->get_map_context().perform_action(*a);
+				get_current_map_context().perform_action(*a);
 			}
 			context_manager_->refresh_after_action(true);
 		}
@@ -1317,14 +1325,6 @@ void editor_controller::left_mouse_up(int x, int y, const bool /*browse*/)
 	perform_delete(a);
 	if (a) set_button_state();
 	toolkit_->set_mouseover_overlay();
-	std::shared_ptr<gui::slider> s = gui_->find_slider("map-zoom-slider");
-	if (s && s->value_change()) {
-		if (gui_->set_zoom(s->value(), true)) {
-			context_manager_->get_map_context().get_labels().recalculate_labels();
-			toolkit_->set_mouseover_overlay(*gui_);
-			set_button_state();
-		}
-	}
 	context_manager_->refresh_after_action();
 }
 

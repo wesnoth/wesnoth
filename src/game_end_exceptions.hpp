@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2016 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2006 - 2017 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playturn Copyright (C) 2003 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -82,7 +82,6 @@ struct transient_end_level{
 
 	bool carryover_report;             /**< Should a summary of the scenario outcome be displayed? */
 	bool linger_mode;                  /**< Should linger mode be invoked? */
-	std::string custom_endlevel_music; /**< Custom short music played at the end. */
 	bool reveal_map;                   /**< Should we reveal map when game is ended? (Multiplayer only) */
 	
 	void write(config& cfg) const;
@@ -106,7 +105,7 @@ struct end_level_data
 	void read(const config& cfg);
 
 	config to_config() const;
-	config to_config_full() const; //< Includes the transient data
+	config to_config_full() const; ///< Includes the transient data
 };
 inline void throw_quit_game_exception()
 {

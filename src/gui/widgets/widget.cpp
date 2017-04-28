@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2007 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -14,10 +14,12 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
+#include "gui/widgets/grid.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "gui/core/event/message.hpp"
 #include "gui/core/log.hpp"
+#include "gui/core/window_builder/helper.hpp"
 #include "sdl/rect.hpp"
 
 namespace gui2
@@ -137,6 +139,16 @@ const window* widget::get_window() const
 	return dynamic_cast<const window*>(result);
 }
 
+grid* widget::get_parent_grid()
+{
+	widget* result = parent_;
+	while(result && dynamic_cast<grid*>(result) == nullptr) {
+		result = result->parent_;
+	}
+
+	return result ? dynamic_cast<grid*>(result) : nullptr;
+}
+
 dialogs::modal_dialog* widget::dialog()
 {
 	window* window = get_window();
@@ -155,7 +167,7 @@ widget* widget::parent()
 
 /***** ***** ***** ***** Size and layout functions. ***** ***** ***** *****/
 
-void widget::layout_initialise(const bool /*full_initialisation*/)
+void widget::layout_initialize(const bool /*full_initialization*/)
 {
 	assert(visible_ != visibility::invisible);
 	assert(get_window());
@@ -255,6 +267,32 @@ void widget::move(const int x_offset, const int y_offset)
 {
 	x_ += x_offset;
 	y_ += y_offset;
+}
+
+void widget::set_horizontal_alignment(const std::string& alignment)
+{
+	grid* parent_grid = get_parent_grid();
+	if(!parent_grid) {
+		return;
+	}
+
+	parent_grid->set_child_alignment(this, implementation::get_h_align(alignment), grid::HORIZONTAL_MASK);
+
+	// TODO: evaluate necessity
+	//get_window()->invalidate_layout();
+}
+
+void widget::set_vertical_alignment(const std::string& alignment)
+{
+	grid* parent_grid = get_parent_grid();
+	if(!parent_grid) {
+		return;
+	}
+
+	parent_grid->set_child_alignment(this, implementation::get_v_align(alignment), grid::VERTICAL_MASK);
+
+	// TODO: evaluate necessity
+	//get_window()->invalidate_layout();
 }
 
 void widget::layout_children()
@@ -444,13 +482,14 @@ void widget::set_visible(const visibility visible)
 		return;
 	}
 
-	// Switching to or from invisible should invalidate the layout.
+	// Switching to or from invisible should invalidate the layout
+	// if the widget has already been laid out.
 	const bool need_resize = visible_ == visibility::invisible
-							 || visible == visibility::invisible;
+		|| (visible == visibility::invisible && get_size() != point());
 	visible_ = visible;
 
 	if(need_resize) {
-		if(new_widgets) {
+		if(visible == visibility::visible && new_widgets) {
 			event::message message;
 			fire(event::REQUEST_PLACEMENT, *this, message);
 		} else {

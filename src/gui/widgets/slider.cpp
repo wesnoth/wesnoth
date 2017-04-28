@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -90,6 +90,8 @@ void slider::set_value(const int value)
 	} else {
 		set_item_position(value - minimum_value_);
 	}
+
+	fire(event::NOTIFY_MODIFIED, *this, nullptr);
 }
 
 void slider::set_minimum_value(const int minimum_value)
@@ -263,9 +265,9 @@ void slider::update_canvas()
 	// Inherited.
 	scrollbar_base::update_canvas();
 
-	for(auto & tmp : get_canvas())
+	for(auto & tmp : get_canvases())
 	{
-		tmp.set_variable("text", variant(get_value_label()));
+		tmp.set_variable("text", wfl::variant(get_value_label()));
 	}
 }
 
@@ -410,10 +412,10 @@ slider_definition::resolution::resolution(const config& cfg)
 									   "minimum_positioner_length"));
 
 	// Note the order should be the same as the enum state_t is slider.hpp.
-	state.push_back(state_definition(cfg.child("state_enabled")));
-	state.push_back(state_definition(cfg.child("state_disabled")));
-	state.push_back(state_definition(cfg.child("state_pressed")));
-	state.push_back(state_definition(cfg.child("state_focused")));
+	state.emplace_back(cfg.child("state_enabled"));
+	state.emplace_back(cfg.child("state_disabled"));
+	state.emplace_back(cfg.child("state_pressed"));
+	state.emplace_back(cfg.child("state_focused"));
 }
 
 // }---------- BUILDER -----------{

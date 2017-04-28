@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 by David White <dave@whitevine.net>
-   Copyright (C) 2005 - 2016 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Copyright (C) 2005 - 2017 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -62,6 +62,8 @@ std::string vgettext(const char* domain
 
 std::string vngettext(const char*, const char*, int, const utils::string_map&);
 
+std::string vngettext(const char*, const char*, const char*, int, const utils::string_map&);
+
 /**
  * @todo Convert all functions.
  *
@@ -72,8 +74,10 @@ std::string vngettext(const char*, const char*, int, const utils::string_map&);
 
 #ifdef GETTEXT_DOMAIN
 #define	VGETTEXT(msgid, symbols) vgettext(GETTEXT_DOMAIN, msgid, symbols)
+#define	VNGETTEXT(msgid, msgid_plural, count, symbols) vngettext(GETTEXT_DOMAIN, msgid, msgid_plural, count, symbols)
 #else
 #define	VGETTEXT(msgid, symbols) vgettext(msgid, symbols)
+#define	VNGETTEXT(msgid, msgid_plural, count, symbols) vngettext(msgid, msgid_plural, count, symbols)
 #endif
 
 #endif

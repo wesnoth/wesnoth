@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2016 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2006 - 2017 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playturn Copyright (C) 2003 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -19,6 +19,7 @@
 #include "chat_events.hpp"
 #include "floating_textbox.hpp"
 #include "units/map.hpp"
+#include "lua_jailbreak_exception.hpp"
 
 #include <vector>
 
@@ -35,7 +36,7 @@ namespace events {
 	class mouse_handler;
 }
 
-struct fallback_ai_to_human_exception {};
+struct fallback_ai_to_human_exception : public lua_jailbreak_exception {IMPLEMENT_LUA_JAILBREAK_EXCEPTION(fallback_ai_to_human_exception)};
 
 namespace events {
 
@@ -124,7 +125,7 @@ private:
 	game_board & board() const;
 	unit_map& units();
 	std::vector<team>& teams() const;
-	const gamemap& map();
+	const gamemap& map() const;
 
 	const config& game_config_;
 

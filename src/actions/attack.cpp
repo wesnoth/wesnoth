@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -35,7 +35,7 @@
 #include "map/map.hpp"
 #include "mouse_handler_base.hpp"
 #include "play_controller.hpp"
-#include "random_new.hpp"
+#include "random.hpp"
 #include "replay.hpp"
 #include "resources.hpp"
 #include "statistics.hpp"
@@ -67,7 +67,7 @@ static lg::log_domain log_config("config");
 battle_context_unit_stats::battle_context_unit_stats(const unit &u,
 		const map_location& u_loc, int u_attack_num, bool attacking,
 		const unit &opp, const map_location& opp_loc,
-		const attack_type *opp_weapon, const unit_map& units) :
+		const_attack_ptr opp_weapon, const unit_map& units) :
 	weapon(nullptr),
 	attack_num(u_attack_num),
 	is_attacker(attacking),
@@ -100,7 +100,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit &u,
 {
 	// Get the current state of the unit.
 	if (attack_num >= 0) {
-		weapon = &u.attacks()[attack_num];
+		weapon = u.attacks()[attack_num].shared_from_this();
 	}
 	if(u.hitpoints() < 0) {
 		LOG_CF << "Unit with " << u.hitpoints() << " hitpoints found, set to 0 for damage calculations\n";
@@ -168,8 +168,8 @@ battle_context_unit_stats::battle_context_unit_stats(const unit &u,
 		// Time of day bonus.
 		damage_multiplier += combat_modifier(resources::gameboard->units(), resources::gameboard->map(), u_loc, u.alignment(), u.is_fearless());
 		// Leadership bonus.
-		int leader_bonus = 0;
-		if (under_leadership(units, u_loc, &leader_bonus).valid())
+		int leader_bonus = under_leadership(units, u_loc).first;
+		if (leader_bonus != 0)
 			damage_multiplier += leader_bonus;
 		// Resistance modifier.
 		damage_multiplier *= opp.damage_from(*weapon, !attacking, opp_loc);
@@ -204,9 +204,9 @@ battle_context_unit_stats::battle_context_unit_stats(const unit &u,
 }
 
 battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
-	   const attack_type* att_weapon, bool attacking,
+	   const_attack_ptr att_weapon, bool attacking,
 	   const unit_type* opp_type,
-	   const attack_type* opp_weapon,
+	   const_attack_ptr opp_weapon,
 	   unsigned int opp_terrain_defense,
 	   int lawful_bonus) :
 	weapon(att_weapon),
@@ -332,7 +332,7 @@ battle_context::battle_context(const unit_map& units,
 	const unit &defender = *units.find(defender_loc);
 	const double harm_weight = 1.0 - aggression;
 
-	if (attacker_weapon == -1 && attacker.attacks().size() == 1 && attacker.attacks()[0].attack_weight() > 0 && !(&attacker.attacks()[0])->get_special_bool("disable", true))
+	if (attacker_weapon == -1 && attacker.attacks().size() == 1 && attacker.attacks()[0].attack_weight() > 0 && !attacker.attacks()[0].get_special_bool("disable", true))
 		attacker_weapon = 0;
 
 	if (attacker_weapon == -1) {
@@ -346,17 +346,17 @@ battle_context::battle_context(const unit_map& units,
 
 	// If those didn't have to generate statistics, do so now.
 	if (!attacker_stats_) {
-		const attack_type *adef = nullptr;
-		const attack_type *ddef = nullptr;
+		const_attack_ptr adef = nullptr;
+		const_attack_ptr ddef = nullptr;
 		if (attacker_weapon >= 0) {
 			VALIDATE(attacker_weapon < static_cast<int>(attacker.attacks().size()),
 					_("An invalid attacker weapon got selected."));
-			adef = &attacker.attacks()[attacker_weapon];
+			adef = attacker.attacks()[attacker_weapon].shared_from_this();
 		}
 		if (defender_weapon >= 0) {
 			VALIDATE(defender_weapon < static_cast<int>(defender.attacks().size()),
 					_("An invalid defender weapon got selected."));
-			ddef = &defender.attacks()[defender_weapon];
+			ddef = defender.attacks()[defender_weapon].shared_from_this();
 		}
 		assert(!defender_stats_ && !attacker_combatant_ && !defender_combatant_);
 		attacker_stats_ = new battle_context_unit_stats(attacker, attacker_loc, attacker_weapon,
@@ -493,7 +493,7 @@ int battle_context::choose_attacker_weapon(const unit &attacker,
 	if (choices.size() == 1) {
 		*defender_weapon = choose_defender_weapon(attacker, defender, choices[0], units,
 			attacker_loc, defender_loc, prev_def);
-		const attack_type *def_weapon = *defender_weapon >= 0 ? &defender.attacks()[*defender_weapon] : nullptr;
+		const_attack_ptr def_weapon = *defender_weapon >= 0 ? defender.attacks()[*defender_weapon].shared_from_this() : nullptr;
 		attacker_stats_ = new battle_context_unit_stats(attacker, attacker_loc, choices[0],
 						true, defender, defender_loc, def_weapon, units);
 		if (attacker_stats_->disable) {
@@ -503,7 +503,7 @@ int battle_context::choose_attacker_weapon(const unit &attacker,
 		}
 		const attack_type &att = attacker.attacks()[choices[0]];
 		defender_stats_ = new battle_context_unit_stats(defender, defender_loc, *defender_weapon, false,
-			attacker, attacker_loc, &att, units);
+			attacker, attacker_loc, att.shared_from_this(), units);
 		return choices[0];
 	}
 
@@ -517,9 +517,9 @@ int battle_context::choose_attacker_weapon(const unit &attacker,
 			attacker_loc, defender_loc, prev_def);
 		// If that didn't simulate, do so now.
 		if (!attacker_combatant_) {
-			const attack_type *def = nullptr;
+			const_attack_ptr def = nullptr;
 			if (def_weapon >= 0) {
-				def = &defender.attacks()[def_weapon];
+				def = defender.attacks()[def_weapon].shared_from_this();
 			}
 			attacker_stats_ = new battle_context_unit_stats(attacker, attacker_loc, choices[i],
 				true, defender, defender_loc, def, units);
@@ -529,7 +529,7 @@ int battle_context::choose_attacker_weapon(const unit &attacker,
 				continue;
 			}
 			defender_stats_ = new battle_context_unit_stats(defender, defender_loc, def_weapon, false,
-				attacker, attacker_loc, &att, units);
+				attacker, attacker_loc, att.shared_from_this(), units);
 			attacker_combatant_ = new combatant(*attacker_stats_);
 			defender_combatant_ = new combatant(*defender_stats_, prev_def);
 			attacker_combatant_->fight(*defender_combatant_);
@@ -599,7 +599,7 @@ int battle_context::choose_defender_weapon(const unit &attacker,
 		return -1;
 	if (choices.size() == 1) {
 		const battle_context_unit_stats def_stats(defender, defender_loc,
-				choices[0], false, attacker, attacker_loc, &att, units);
+				choices[0], false, attacker, attacker_loc, att.shared_from_this(), units);
 		return (def_stats.disable) ? -1 : choices[0];
 	}
 
@@ -616,7 +616,7 @@ int battle_context::choose_defender_weapon(const unit &attacker,
 			const attack_type &def = defender.attacks()[choices[i]];
 			if (def.defense_weight() >= max_weight) {
 				const battle_context_unit_stats def_stats(defender, defender_loc,
-						choices[i], false, attacker, attacker_loc, &att, units);
+						choices[i], false, attacker, attacker_loc, att.shared_from_this(), units);
 				if (def_stats.disable) continue;
 				max_weight = def.defense_weight();
 				int rating = static_cast<int>(def_stats.num_blows * def_stats.damage *
@@ -632,9 +632,9 @@ int battle_context::choose_defender_weapon(const unit &attacker,
 	for (i = 0; i < choices.size(); ++i) {
 		const attack_type &def = defender.attacks()[choices[i]];
 		battle_context_unit_stats *att_stats = new battle_context_unit_stats(attacker, attacker_loc, attacker_weapon,
-				true, defender, defender_loc, &def, units);
+				true, defender, defender_loc, def.shared_from_this(), units);
 		battle_context_unit_stats *def_stats = new battle_context_unit_stats(defender, defender_loc, choices[i], false,
-				attacker, attacker_loc, &att, units);
+				attacker, attacker_loc, att.shared_from_this(), units);
 		if (def_stats->disable) {
 			delete att_stats;
 			delete def_stats;
@@ -854,7 +854,7 @@ namespace {
 		// The event could have killed either the attacker or
 		// defender, so we have to make sure they still exist
 		refresh_bc();
-		if(!a_.valid() || !d_.valid() || !resources::gameboard->teams()[a_.get_unit().side() - 1].is_enemy(d_.get_unit().side())) {
+		if(!a_.valid() || !d_.valid() || !resources::gameboard->get_team(a_.get_unit().side()).is_enemy(d_.get_unit().side())) {
 			actions::recalculate_fog(defender_side);
 			if (update_display_){
 				resources::screen->redraw_minimap();
@@ -878,11 +878,11 @@ namespace {
 			// Fix pointer to weapons
 			const_cast<battle_context_unit_stats*>(a_stats_)->weapon =
 				a_.valid() && a_.weapon_ >= 0
-					? &a_.get_unit().attacks()[a_.weapon_] : nullptr;
+					? a_.get_unit().attacks()[a_.weapon_].shared_from_this() : nullptr;
 
 			const_cast<battle_context_unit_stats*>(d_stats_)->weapon =
 				d_.valid() && d_.weapon_ >= 0
-					? &d_.get_unit().attacks()[d_.weapon_] : nullptr;
+					? d_.get_unit().attacks()[d_.weapon_].shared_from_this() : nullptr;
 
 			return;
 		}
@@ -907,7 +907,7 @@ namespace {
 		int &abs_n = *(attacker_turn ? &abs_n_attack_ : &abs_n_defend_);
 		bool &update_fog = *(attacker_turn ? &update_def_fog_ : &update_att_fog_);
 
-		int ran_num = random_new::generator->get_random_int(0,99);
+		int ran_num = randomness::generator->get_random_int(0,99);
 		bool hits = (ran_num < attacker.cth_);
 
 		int damage = 0;
@@ -1154,10 +1154,9 @@ namespace {
 			if (reanimator)
 			{
 				LOG_NG << "found unit type:" << reanimator->id() << '\n';
-				unit newunit(*reanimator, attacker.get_unit().side(),
-					true, unit_race::MALE);
-				newunit.set_attacks(0);
-				newunit.set_movement(0, true);
+				unit_ptr newunit(new unit(*reanimator, attacker.get_unit().side(), true, unit_race::MALE));
+				newunit->set_attacks(0);
+				newunit->set_movement(0, true);
 				// Apply variation
 				if (undead_variation != "null")
 				{
@@ -1165,15 +1164,16 @@ namespace {
 					config &variation = mod.add_child("effect");
 					variation["apply_to"] = "variation";
 					variation["name"] = undead_variation;
-					newunit.add_modification("variation",mod);
-					newunit.heal_all();
+					newunit->add_modification("variation",mod);
+					newunit->heal_fully();
 				}
-				units_.add(death_loc, newunit);
+				newunit->set_location(death_loc);
+				units_.insert(newunit);
 
-				game_events::entity_location reanim_loc(defender.loc_, newunit.underlying_id());
+				game_events::entity_location reanim_loc(defender.loc_, newunit->underlying_id());
 				resources::game_events->pump().fire("unit_placed", reanim_loc);
 
-				preferences::encountered_units().insert(newunit.type_id());
+				preferences::encountered_units().insert(newunit->type_id());
 				if (update_display_) {
 					resources::screen->invalidate(death_loc);
 				}
@@ -1414,18 +1414,16 @@ void attack_unit_and_advance(const map_location &attacker, const map_location &d
 		advance_unit_at(advance_unit_params(defender).ai_advancements(ai_advancement));
 	}
 }
-map_location under_leadership(const unit_map& units, const map_location& loc,
-                              int* bonus)
+
+std::pair<int, map_location> under_leadership(const unit_map& units, const map_location& loc)
 {
 	const unit_map::const_iterator un = units.find(loc);
 	if(un == units.end()) {
-		return map_location::null_location();
+		return {0, map_location::null_location()};
 	}
+
 	unit_ability_list abil = un->get_abilities("leadership");
-	if(bonus) {
-		*bonus = abil.highest("value").first;
-	}
-	return abil.highest("value").second;
+	return abil.highest("value");
 }
 
 int combat_modifier(const unit_map & units, const gamemap & map, const map_location &loc, unit_type::ALIGNMENT alignment,

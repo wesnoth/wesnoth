@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2009 - 2017 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -33,7 +33,7 @@ static lg::log_domain log_formula_debugger("scripting/formula/debug");
 #define WRN_FDB LOG_STREAM(warn, log_formula_debugger)
 #define ERR_FDB LOG_STREAM(err, log_formula_debugger)
 
-namespace game_logic {
+namespace wfl {
 
 
 debug_info::debug_info(int arg_number, int counter, int level, const std::string &name, const std::string &str, const variant &value, bool evaluated)
@@ -120,7 +120,7 @@ void formula_debugger::add_debug_info(int arg_number, const std::string& f_name)
 }
 
 
-const std::deque<debug_info>& formula_debugger::get_call_stack() const
+const std::list<debug_info>& formula_debugger::get_call_stack() const
 {
 	return call_stack_;
 }
@@ -131,20 +131,20 @@ const breakpoint_ptr formula_debugger::get_current_breakpoint() const
 	return current_breakpoint_;
 }
 
-const std::deque<debug_info>& formula_debugger::get_execution_trace() const
+const std::list<debug_info>& formula_debugger::get_execution_trace() const
 {
 	return execution_trace_;
 }
 
 void formula_debugger::check_breakpoints()
 {
-	for( std::deque< breakpoint_ptr >::iterator b = breakpoints_.begin(); b!= breakpoints_.end(); ++b) {
+	for(std::list<breakpoint_ptr>::iterator b = breakpoints_.begin(); b != breakpoints_.end(); ++b) {
 		if ((*b)->is_break_now()){
 			current_breakpoint_ = (*b);
 			show_gui();
 			current_breakpoint_ = breakpoint_ptr();
 			if ((*b)->is_one_time_only()) {
-				breakpoints_.erase(b);
+				b = breakpoints_.erase(b);
 			}
 			break;
 		}
@@ -199,7 +199,7 @@ variant formula_debugger::evaluate_arg_callback(const formula_expression &expres
 	variant v = expression.execute(variables,this);
 	call_stack_set_value(v);
 	call_stack_set_evaluated(true);
-	msg(" evaluated expression: ",call_stack_.back()," to ",v.to_debug_string(nullptr,true).c_str());
+	msg(" evaluated expression: ",call_stack_.back()," to ",v.to_debug_string(true).c_str());
 	check_breakpoints();
 	call_stack_pop();
 	return v;
@@ -214,7 +214,7 @@ variant formula_debugger::evaluate_formula_callback(const formula &f, const form
 	variant v = f.execute(variables,this);
 	call_stack_set_value(v);
 	call_stack_set_evaluated(true);
-	msg(" evaluated formula: ",call_stack_.back()," to ",v.to_debug_string(nullptr,true).c_str());
+	msg(" evaluated formula: ",call_stack_.back()," to ",v.to_debug_string(true).c_str());
 	check_breakpoints();
 	call_stack_pop();
 	return v;
@@ -229,7 +229,7 @@ variant formula_debugger::evaluate_formula_callback(const formula &f)
 	variant v = f.execute(this);
 	call_stack_set_value(v);
 	call_stack_set_evaluated(true);
-	msg(" evaluated formula without variables: ",call_stack_.back()," to ",v.to_debug_string(nullptr,true).c_str());
+	msg(" evaluated formula without variables: ",call_stack_.back()," to ",v.to_debug_string(true).c_str());
 	check_breakpoints();
 	call_stack_pop();
 	return v;
@@ -272,8 +272,8 @@ public:
 
 	virtual bool is_break_now() const
 	{
-		const std::deque<debug_info> &call_stack = fdb_.get_call_stack();
-		if ((call_stack.size() == 1) && (call_stack[0].evaluated()) ) {
+		const std::list<debug_info> &call_stack = fdb_.get_call_stack();
+		if ((call_stack.size() == 1) && (call_stack.front().evaluated()) ) {
 			return true;
 		}
 		return false;
@@ -294,7 +294,7 @@ public:
 
 	virtual bool is_break_now() const
 	{
-		const std::deque<debug_info> &call_stack = fdb_.get_call_stack();
+		const std::list<debug_info> &call_stack = fdb_.get_call_stack();
 		if (call_stack.empty() || call_stack.back().evaluated()) {
 			return false;
 		}
@@ -317,7 +317,7 @@ public:
 
 	virtual bool is_break_now() const
 	{
-		const std::deque<debug_info> &call_stack = fdb_.get_call_stack();
+		const std::list<debug_info> &call_stack = fdb_.get_call_stack();
 		if (call_stack.empty() || call_stack.back().evaluated()) {
 			return false;
 		}
@@ -345,7 +345,7 @@ public:
 
 	virtual bool is_break_now() const
 	{
-		const std::deque<debug_info> &call_stack = fdb_.get_call_stack();
+		const std::list<debug_info> &call_stack = fdb_.get_call_stack();
 		if (call_stack.empty() || call_stack.back().evaluated()) {
 			return false;
 		}
@@ -387,4 +387,4 @@ void formula_debugger::add_breakpoint_next()
 }
 
 
-} // end of namespace game_logic
+} // end of namespace wfl

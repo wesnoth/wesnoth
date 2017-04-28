@@ -65,13 +65,11 @@ bool have_addon_in_vcs_tree(const std::string& addon_name);
  * Gets the publish information for an add-on.
  *
  * @param addon_name              The add-on's main directory/file name.
- * @param cfg                     A config object to store the add-on's
- *                                properties.
  *
  * @exception invalid_pbl_exception If it is not possible to read the .pbl file
  *                                  (often due to invalid WML).
  */
-void get_addon_pbl_info(const std::string& addon_name, class config& cfg);
+config get_addon_pbl_info(const std::string& addon_name);
 
 /**
  * Sets the publish information for an add-on

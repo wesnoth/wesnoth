@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2016 The Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2016 - 2017 The Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -738,8 +738,8 @@ chatbox_definition::chatbox_definition(const config& cfg)
 chatbox_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg), grid()
 {
-	state.push_back(state_definition(cfg.child("background")));
-	state.push_back(state_definition(cfg.child("foreground")));
+	state.emplace_back(cfg.child("background"));
+	state.emplace_back(cfg.child("foreground"));
 
 	const config& child = cfg.child("grid");
 	VALIDATE(child, _("No grid defined."));

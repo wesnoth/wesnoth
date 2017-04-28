@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -23,6 +23,7 @@
 #include "utils/math.hpp"
 #include "game_errors.hpp"
 
+#include <array>
 #include <map>
 #include <set>
 #include <string>
@@ -162,8 +163,6 @@ public:
 	ALIGNMENT alignment() const { return alignment_; }
 	static std::string alignment_description(ALIGNMENT align, unit_race::GENDER gender = unit_race::MALE);
 
-	fixed_t alpha() const { return alpha_; }
-
 	const std::vector<t_string>& abilities() const { return abilities_; }
 	const std::vector<t_string>& ability_tooltips() const { return ability_tooltips_; }
 
@@ -275,15 +274,13 @@ private:
 
 	unsigned int num_traits_;
 
-	unit_type* gender_types_[2];
+	std::array<std::unique_ptr<unit_type>, 2> gender_types_;
 
 	variations_map variations_;
 	std::string default_variation_;
 	std::string variation_name_;
 
 	const unit_race* race_;	/// Never nullptr, but may point to the null race.
-
-	fixed_t alpha_;
 
 	std::vector<t_string> abilities_, adv_abilities_;
 	std::vector<t_string> ability_tooltips_, adv_ability_tooltips_;

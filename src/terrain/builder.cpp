@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2004 - 2016 by Philippe Plantier <ayin@anathas.org>
+   Copyright (C) 2004 - 2017 by Philippe Plantier <ayin@anathas.org>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
@@ -823,7 +823,7 @@ void terrain_builder::parse_mapstring(const std::string &mapstring,
 				// Dots are simple placeholders,
 				// which do not represent actual terrains.
 			} else if (terrain.overlay != 0 ) {
-				anchors.insert(std::pair<int, map_location>(terrain.overlay, map_location(x, y)));
+				anchors.emplace(terrain.overlay, map_location(x, y));
 			} else if (terrain.base == t_translation::TB_STAR) {
 				add_constraints(br.constraints, map_location(x, y), t_translation::STAR, global_images);
 			} else {
@@ -1155,6 +1155,14 @@ void terrain_builder::build_terrains()
 			const t_translation::terrain_code t = map().get_terrain(loc);
 
 			terrain_by_type_[t].push_back(loc);
+
+			// Flag all hexes according to whether they're on the border or not,
+			// to make it easier for WML to draw the borders
+			if (!map().on_board(loc)) {
+				tile_map_[loc].flags.insert("_border");
+			} else {
+				tile_map_[loc].flags.insert("_board");
+			}
 		}
 	}
 

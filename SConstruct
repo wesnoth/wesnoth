@@ -496,7 +496,7 @@ for env in [test_env, client_env, env]:
 
     if "clang" in env["CXX"]:
         # Silence warnings about unused -I options and unknown warning switches.
-        env.AppendUnique(CCFLAGS = Split("-Qunused-arguments -Wno-unknown-warning-option"))
+        env.AppendUnique(CCFLAGS = Split("-Qunused-arguments -Wno-unknown-warning-option -Werror=non-virtual-dtor"))
 
     if "suncc" in env["TOOLS"]:
         env["OPT_FLAGS"] = "-g0"
@@ -523,7 +523,7 @@ if not env['static_test']:
     test_env.Append(CPPDEFINES = "BOOST_TEST_DYN_LINK")
 
 try:
-    if call(env.subst("utils/autorevision -t h > $build_dir/revision.h"), shell=True) == 0:
+    if call(env.subst("utils/autorevision.sh -t h > $build_dir/revision.h"), shell=True) == 0:
         env["have_autorevision"] = True
         if not call(env.subst("cmp -s $build_dir/revision.h src/revision.h"), shell=True) == 0:
             call(env.subst("cp $build_dir/revision.h src/revision.h"), shell=True)

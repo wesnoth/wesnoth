@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 - 2016 by Ignacio R. Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2010 - 2017 by Ignacio R. Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -62,6 +62,10 @@ struct addon_info
 	// is not serialized anywhere.
 	unsigned order;
 
+	// Flag to indicate whether this object was generaled from pbl info for an addon
+	// not previously published.
+	bool local_only;
+
 	addon_info()
 		: id(), title(), description(), icon()
 		, version(), author(), size(), downloads()
@@ -72,6 +76,7 @@ struct addon_info
 		, updated()
 		, created()
 		, order()
+		, local_only(false)
 	{}
 
 	explicit addon_info(const config& cfg)
@@ -84,6 +89,7 @@ struct addon_info
 		, updated()
 		, created()
 		, order()
+		, local_only(false)
 	{
 		this->read(cfg);
 	}
@@ -107,6 +113,7 @@ struct addon_info
 			this->updated = o.updated;
 			this->created = o.created;
 			this->order = o.order;
+			this->local_only = o.local_only;
 		}
 		return *this;
 	}

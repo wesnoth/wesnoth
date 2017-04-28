@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -16,8 +16,8 @@
 
 #include "editor/palette/editor_palettes.hpp"
 
+#include "config_assign.hpp"
 #include "gettext.hpp"
-#include "font/standard_colors.hpp"
 #include "font/text_formatting.hpp"
 #include "tooltips.hpp"
 #include "overlay.hpp"
@@ -25,8 +25,6 @@
 #include "units/types.hpp"
 
 #include "editor/toolkit/editor_toolkit.hpp"
-
-#include "wml_separators.hpp"
 
 namespace editor {
 
@@ -44,46 +42,43 @@ template sdl_handler_vector editor_palette<unit_type>::handler_members();
 template sdl_handler_vector editor_palette<overlay>::handler_members();
 
 template<class Item>
-void editor_palette<Item>::expand_palette_groups_menu(std::vector<std::string>& items)
+void editor_palette<Item>::expand_palette_groups_menu(std::vector<config>& items, int i)
 {
-	for (unsigned int i = 0; i < items.size(); ++i) {
-		if (items[i] == "editor-palette-groups") {
-			items.erase(items.begin() + i);
+	auto pos = items.erase(items.begin() + i);
 
-			std::vector<std::string> groups;
-			const std::vector<item_group>& item_groups = get_groups();
+	std::vector<config> groups;
+	const std::vector<item_group>& item_groups = get_groups();
 
-			for (size_t mci = 0; mci < item_groups.size(); ++mci) {
-				std::string groupname = item_groups[mci].name;
-				if (groupname.empty()) {
-					groupname = _("(Unknown Group)");
-				}
-				std::stringstream str;
-				str << IMAGE_PREFIX << item_groups[mci].icon;
-				if (mci == active_group_index()) {
-
-					if (filesystem::file_exists(str.str() + "_30-pressed.png" ) ) {
-						str << "_30-pressed.png";
-					} else {
-						str << "_30.png~CS(70,70,0)";
-					}
-
-				} else {
-					str << "_30.png";
-				}
-				str << COLUMN_SEPARATOR << groupname;
-				groups.push_back(str.str());
-
-
-			}
-			items.insert(items.begin() + i, groups.begin(), groups.end());
-			break;
+	for (size_t mci = 0; mci < item_groups.size(); ++mci) {
+		std::string groupname = item_groups[mci].name;
+		if (groupname.empty()) {
+			groupname = _("(Unknown Group)");
 		}
+		std::stringstream i_ss;
+		i_ss << item_groups[mci].icon;
+		if (mci == active_group_index()) {
+
+			if (filesystem::file_exists(i_ss.str() + "_30-pressed.png" ) ) {
+				i_ss << "_30-pressed.png";
+			} else {
+				i_ss << "_30.png~CS(70,70,0)";
+			}
+
+		} else {
+			i_ss << "_30.png";
+		}
+
+		groups.emplace_back(config_of
+			("label", groupname)
+			("icon", i_ss.str())
+		);
 	}
+
+	items.insert(pos, groups.begin(), groups.end());
 }
-template void editor_palette<t_translation::terrain_code>::expand_palette_groups_menu(std::vector<std::string>& items);
-template void editor_palette<unit_type>::expand_palette_groups_menu(std::vector<std::string>& items);
-template void editor_palette<overlay>::expand_palette_groups_menu(std::vector<std::string>& items);
+template void editor_palette<t_translation::terrain_code>::expand_palette_groups_menu(std::vector<config>& items, int i);
+template void editor_palette<unit_type>::expand_palette_groups_menu(std::vector<config>& items, int i);
+template void editor_palette<overlay>::expand_palette_groups_menu(std::vector<config>& items, int i);
 
 template<class Item>
 bool editor_palette<Item>::scroll_up()
@@ -102,24 +97,6 @@ bool editor_palette<Item>::scroll_up()
 template bool editor_palette<t_translation::terrain_code>::scroll_up();
 template bool editor_palette<unit_type>::scroll_up();
 template bool editor_palette<overlay>::scroll_up();
-
-template<class Item>
-void editor_palette<Item>::expand_palette_groups_menu(std::vector< std::pair< std::string, std::string> >& items)
-{
-	const std::vector<item_group>& item_groups = get_groups();
-
-	for (size_t mci = 0; mci < item_groups.size(); ++mci) {
-		std::string groupname = item_groups[mci].name;
-		if (groupname.empty()) {
-			groupname = _("(Unknown Group)");
-		}
-		const std::string& img = item_groups[mci].icon;
-		items.push_back(std::pair<std::string, std::string>( img, groupname));
-	}
-}
-template void editor_palette<t_translation::terrain_code>::expand_palette_groups_menu(std::vector< std::pair< std::string, std::string> >& items);
-template void editor_palette<unit_type>::expand_palette_groups_menu(std::vector< std::pair< std::string, std::string> >& items);
-template void editor_palette<overlay>::expand_palette_groups_menu(std::vector< std::pair< std::string, std::string> >& items);
 
 template<class Item>
 bool editor_palette<Item>::can_scroll_up()

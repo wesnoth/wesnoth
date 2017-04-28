@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -33,17 +33,17 @@ namespace mp_ui_alerts {
 
 namespace {
 
-bool lobby_pref(std::string id)
+bool lobby_pref(const std::string& id)
 {
 	return preferences::get(id + "_lobby", get_def_pref_lobby(id));
 }
 
-bool sound_pref(std::string id)
+bool sound_pref(const std::string& id)
 {
 	return preferences::get(id + "_sound", get_def_pref_sound(id));
 }
 
-bool notif_pref(std::string id)
+bool notif_pref(const std::string& id)
 {
 	return preferences::get(id + "_notif", get_def_pref_notif(id));
 }
@@ -51,7 +51,7 @@ bool notif_pref(std::string id)
 } // end anonymous namespace
 
 // Note: This list must agree with data/gui/.../lobby_sound_options.cfg
-const std::vector<std::string> items = {"player_joins", "player_leaves", "private_message", "friend_message", "public_message", "server_message", "ready_for_start", "game_has_begun", "turn_changed"};
+const std::vector<std::string> items {"player_joins", "player_leaves", "private_message", "friend_message", "public_message", "server_message", "ready_for_start", "game_has_begun", "turn_changed"};
 
 void player_joins(bool is_lobby)
 {

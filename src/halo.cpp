@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -56,7 +56,7 @@ public:
 	void add_overlay_location(std::set<map_location>& locations);
 private:
 
-	const image::locator& current_image() { return images_.get_current_frame(); }
+	const image::locator& current_image() const { return images_.get_current_frame(); }
 
 	animated<image::locator> images_;
 
@@ -112,7 +112,7 @@ public:
  * impl's of exposed functions
  */
 
-halo_impl(display & screen) :
+explicit halo_impl(display & screen) :
 	disp(&screen),
 	haloes(),
 	halo_id(1),
@@ -335,7 +335,7 @@ int halo_impl::add(int x, int y, const std::string& image, const map_location& l
 		image_vector.push_back(animated<image::locator>::frame_description(time,image::locator(str)));
 
 	}
-	haloes.insert(std::pair<int,effect>(id,effect(disp,x,y,image_vector,loc,orientation,infinite)));
+	haloes.emplace(id, effect(disp, x, y, image_vector, loc, orientation, infinite));
 	new_haloes.insert(id);
 	if(haloes.find(id)->second.does_change() || !infinite) {
 		changing_haloes.insert(id);

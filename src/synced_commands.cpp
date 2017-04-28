@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2014 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -15,7 +15,6 @@
 #include <cassert>
 
 #include "log.hpp"
-#include "resources.hpp"
 #include "map/location.hpp"
 #include "game_data.hpp"
 #include "units/unit.hpp"
@@ -68,7 +67,7 @@ synced_command::map& synced_command::registry()
 SYNCED_COMMAND_HANDLER_FUNCTION(recruit, child, use_undo, show, error_handler)
 {
 	int current_team_num = resources::controller->current_side();
-	team &current_team = resources::gameboard->teams()[current_team_num - 1];
+	team &current_team = resources::gameboard->get_team(current_team_num);
 
 	map_location loc(child, resources::gamedata);
 	map_location from(child.child_or_empty("from"), resources::gamedata);
@@ -133,7 +132,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(recall, child, use_undo, show, error_handler)
 {
 
 	int current_team_num = resources::controller->current_side();
-	team &current_team = resources::gameboard->teams()[current_team_num - 1];
+	team &current_team = resources::gameboard->get_team(current_team_num);
 
 	const std::string& unit_id = child["value"];
 	map_location loc(child, resources::gamedata);
@@ -232,7 +231,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(disband, child, /*use_undo*/, /*show*/, error_ha
 {
 
 	int current_team_num = resources::controller->current_side();
-	team &current_team = resources::gameboard->teams()[current_team_num - 1];
+	team &current_team = resources::gameboard->get_team(current_team_num);
 
 	const std::string& unit_id = child["value"];
 	size_t old_size = current_team.recall_list().size();
@@ -255,7 +254,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(disband, child, /*use_undo*/, /*show*/, error_ha
 SYNCED_COMMAND_HANDLER_FUNCTION(move, child,  use_undo, show, error_handler)
 {
 	int current_team_num = resources::controller->current_side();
-	team &current_team = resources::gameboard->teams()[current_team_num - 1];
+	team &current_team = resources::gameboard->get_team(current_team_num);
 
 	std::vector<map_location> steps;
 
@@ -436,10 +435,20 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_unit, child,  use_undo, /*show*/, /*error_
 	} else {
 		config cfg;
 		i->write(cfg);
-		resources::gameboard->units().erase(loc);
 		cfg[name] = value;
-		unit new_u(cfg, true);
-		resources::gameboard->units().add(loc, new_u);
+
+		// Attempt to create a new unit. If there are error (such an invalid type key), exit.
+		try{
+			unit_ptr new_u(new unit(cfg, true));
+			new_u->set_location(loc);
+			// Don't remove the unit until after we've verified there are no errors in creating the new one,
+			// or else the unit would simply be removed from the map with no replacement.
+			resources::gameboard->units().erase(loc);
+			resources::gameboard->units().insert(new_u);
+		} catch(unit_type::error& e) {
+			ERR_REPLAY << e.what() << std::endl; // TODO: more appropriate error message log
+			return false;
+		}
 	}
 	if (name == "fail") { //testcase for bug #18488
 		assert(i.valid());
@@ -468,22 +477,22 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_create_unit, child,  use_undo, /*show*/, e
 			? resources::controller->current_side() : 1;
 
 	// Create the unit.
-	unit created(*u_type, side_num, true, gender);
-	created.new_turn();
-
+	unit_ptr created(new unit(*u_type, side_num, true, gender));
+	created->new_turn();
+	created->set_location(loc);
 	// Add the unit to the board.
-	std::pair<unit_map::iterator, bool> add_result = resources::gameboard->units().replace(loc, created);
+	std::pair<unit_map::iterator, bool> add_result = resources::gameboard->units().insert(created);
 	resources::screen->invalidate_unit();
 	resources::game_events->pump().fire("unit_placed", loc);
 	unit_display::unit_recruited(loc);
 
 	// Village capture?
 	if ( resources::gameboard->map().is_village(loc) )
-		actions::get_village(loc, created.side());
+		actions::get_village(loc, created->side());
 
 	// Update fog/shroud.
 	actions::shroud_clearer clearer;
-	clearer.clear_unit(loc, created);
+	clearer.clear_unit(loc, *created);
 	clearer.fire_events();
 	if ( add_result.first.valid() ) // In case sighted events messed with the unit.
 		actions::actor_sighted(*add_result.first);
@@ -509,7 +518,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_kill, child, use_undo, /*show*/, /*error_h
 		resources::undo_stack->clear();
 	}
 	debug_notification("kill debug command was used during turn of $player");
-	
+
 	const map_location loc(child["x"].to_int(), child["y"].to_int(), wml_loc());
 	const unit_map::iterator i = resources::gameboard->units().find(loc);
 	if (i != resources::gameboard->units().end()) {

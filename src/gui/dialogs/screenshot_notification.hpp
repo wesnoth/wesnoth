@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2013 - 2016 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2013 - 2017 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -49,10 +49,10 @@ private:
 	const std::string screenshots_dir_path_;
 
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
-	virtual const std::string& window_id() const;
+	virtual const std::string& window_id() const override;
 
 	/** Inherited from modal_dialog. */
-	void pre_show(window& window);
+	virtual void pre_show(window& window) override;
 };
 } // namespace dialogs
 } // namespace gui2

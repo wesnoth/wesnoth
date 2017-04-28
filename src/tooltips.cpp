@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -23,7 +23,7 @@
 #include "resources.hpp"
 #include "video.hpp"
 
-#include <SDL.h> // Travis doesn't like this, although it works on my machine -> '#include <SDL_sound.h>
+#include <SDL_rect.h> // Travis doesn't like this, although it works on my machine -> '#include <SDL_sound.h>
 
 namespace {
 
@@ -70,7 +70,7 @@ static void show_tooltip(const tooltip& tip)
 
 	clear_tooltip();
 
-	const color_t bgcolor = {0,0,0,160};
+	const color_t bgcolor {0,0,0,160};
 	SDL_Rect area = screen_area();
 
 	unsigned int border = 10;
@@ -189,7 +189,7 @@ int add_tooltip(const SDL_Rect& rect, const std::string& message, const std::str
 
 	int id = tooltip_id++;
 
-	tips.insert(std::make_pair(id, tooltip(rect, message, action, use_markup, foreground) ));
+	tips.emplace(id, tooltip(rect, message, action, use_markup, foreground));
 
 	current_tooltip = tips.end();
 	return id;

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2016 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2006 - 2017 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playlevel Copyright (C) 2003 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -139,7 +139,7 @@ protected:
 	 */
 	virtual void process_keyup_event(const SDL_Event& event);
 
-	virtual void show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& disp);
+	virtual void show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu, display& disp);
 	virtual void execute_action(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu);
 
 	virtual bool in_context_menu(hotkey::HOTKEY_COMMAND command) const;

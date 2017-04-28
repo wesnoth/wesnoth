@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,6 +17,7 @@
 #include "gui/widgets/scrollbar_container_private.hpp"
 
 #include "gui/auxiliary/find_widget.hpp"
+#include "gui/core/event/message.hpp"
 #include "gui/core/log.hpp"
 #include "gui/core/layout_exception.hpp"
 #include "gui/widgets/clickable_item.hpp"
@@ -116,12 +117,12 @@ scrollbar_container::scrollbar_container(const unsigned canvas_count)
 			event::dispatcher::back_post_child);
 }
 
-void scrollbar_container::layout_initialise(const bool full_initialisation)
+void scrollbar_container::layout_initialize(const bool full_initialization)
 {
 	// Inherited.
-	container_base::layout_initialise(full_initialisation);
+	container_base::layout_initialize(full_initialization);
 
-	if(full_initialisation) {
+	if(full_initialization) {
 
 		assert(vertical_scrollbar_grid_);
 		switch(vertical_scrollbar_mode_) {
@@ -159,7 +160,7 @@ void scrollbar_container::layout_initialise(const bool full_initialisation)
 	}
 
 	assert(content_grid_);
-	content_grid_->layout_initialise(full_initialisation);
+	content_grid_->layout_initialize(full_initialization);
 }
 
 void scrollbar_container::request_reduce_height(const unsigned maximum_height)
@@ -352,7 +353,8 @@ set_scrollbar_mode(grid* scrollbar_grid,
 				   scrollbar_base* scrollbar,
 				   scrollbar_container::scrollbar_mode& scrollbar_mode,
 				   const unsigned items,
-				   const unsigned visible_items)
+				   const unsigned visible_items,
+				   grid* content_grid)
 {
 	assert(scrollbar_grid && scrollbar);
 
@@ -372,6 +374,13 @@ set_scrollbar_mode(grid* scrollbar_grid,
 		scrollbar_grid->set_visible(scrollbar_needed
 											? widget::visibility::visible
 											: widget::visibility::hidden);
+	} else if(scrollbar_mode == scrollbar_container::AUTO_VISIBLE_FIRST_RUN) {
+		if(items <= visible_items && content_grid != nullptr &&
+			scrollbar_grid->get_visible() == widget::visibility::visible) {
+			scrollbar_grid->set_visible(widget::visibility::invisible);
+			// Give newly freed space to the items.
+			content_grid->layout_initialize(false);
+		}
 	}
 }
 static bool is_inserted_before(unsigned insertion_pos, unsigned old_item_count, unsigned old_position, unsigned visible_items)
@@ -397,7 +406,7 @@ adjust_scrollbar_mode(grid* scrollbar_grid,
 {
 	assert(scrollbar_grid && scrollbar);
 	if(items_before != scrollbar->get_item_count()) {
-		return set_scrollbar_mode(scrollbar_grid, scrollbar, scrollbar_mode, items_after, visible_items);
+		return set_scrollbar_mode(scrollbar_grid, scrollbar, scrollbar_mode, items_after, visible_items, nullptr);
 	}
 	//TODO: does this also work well in case the items were removed?
 	const unsigned previous_item_position = scrollbar->get_item_position();
@@ -447,14 +456,16 @@ void scrollbar_container::place(const point& origin, const point& size)
 					   vertical_scrollbar_,
 					   vertical_scrollbar_mode_,
 					   content_grid_->get_height(),
-					   content_->get_height());
+					   content_->get_height(),
+					   content_grid_);
 
 	// Set horizontal scrollbar
 	set_scrollbar_mode(horizontal_scrollbar_grid_,
 					   horizontal_scrollbar_,
 					   horizontal_scrollbar_mode_,
 					   content_grid_->get_width(),
-					   content_->get_width());
+					   content_->get_width(),
+					   content_grid_);
 
 	// Update the buttons.
 	set_scrollbar_button_status();
@@ -582,10 +593,9 @@ bool scrollbar_container::content_resize_request(const bool force_sizing)
 				  == widget::visibility::invisible)) {
 
 			DBG_GUI_L << LOG_HEADER
-					  << " can't use horizontal scrollbar, ask window.\n";
-			window* window = get_window();
-			assert(window);
-			window->invalidate_layout();
+					  << " can't use horizontal scrollbar, request placement.\n";
+			event::message message;
+			fire(event::REQUEST_PLACEMENT, *this, message);
 			return false;
 		}
 	}
@@ -598,10 +608,9 @@ bool scrollbar_container::content_resize_request(const bool force_sizing)
 				  == widget::visibility::invisible)) {
 
 			DBG_GUI_L << LOG_HEADER
-					  << " can't use vertical scrollbar, ask window.\n";
-			window* window = get_window();
-			assert(window);
-			window->invalidate_layout();
+					  << " can't use vertical scrollbar, request placement.\n";
+			event::message message;
+			fire(event::REQUEST_PLACEMENT, *this, message);
 			return false;
 		}
 	}
@@ -812,7 +821,7 @@ void scrollbar_container::finalize_setup()
 	content_->set_definition("default");
 
 	content_grid_ = dynamic_cast<grid*>(
-			get_grid().swap_child("_content_grid", content_, true));
+			get_grid().swap_child("_content_grid", content_, true).release());
 	assert(content_grid_);
 
 	content_grid_->set_parent(this);

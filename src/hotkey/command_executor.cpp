@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -21,7 +21,6 @@
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/dialogs/drop_down_menu.hpp"
 #include "gui/widgets/window.hpp"
-#include "wml_separators.hpp"
 #include "filesystem.hpp"
 #include "construct_dialog.hpp"
 #include "gettext.hpp"
@@ -359,16 +358,17 @@ bool command_executor::execute_command(const hotkey_command&  cmd, int /*index*/
 }
 
 
-void command_executor::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool /*context_menu*/, display& gui)
+void command_executor::show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool /*context_menu*/, display& gui)
 {
-	std::vector<std::string> items = items_arg;
+	std::vector<config> items = items_arg;
 	if (items.empty()) return;
 
-	std::vector<config> menu = get_menu_images(gui, items);
+	get_menu_images(gui, items);
+
 	int res = -1;
 	{
-		SDL_Rect pos = {xloc, yloc, 1, 1};
-		gui2::dialogs::drop_down_menu mmenu(pos, menu, -1, false);
+		SDL_Rect pos {xloc, yloc, 1, 1};
+		gui2::dialogs::drop_down_menu mmenu(pos, items, -1, false, false); // TODO: last value should be variable
 		mmenu.show(gui.video());
 		if(mmenu.get_retval() == gui2::window::OK) {
 			res = mmenu.selected_item();
@@ -376,13 +376,13 @@ void command_executor::show_menu(const std::vector<std::string>& items_arg, int 
 	} // This will kill the dialog.
 	if (res < 0 || size_t(res) >= items.size()) return;
 
-	const theme::menu* submenu = gui.get_theme().get_menu_item(items[res]);
+	const theme::menu* submenu = gui.get_theme().get_menu_item(items[res]["id"]);
 	if (submenu) {
 		int y,x;
 		SDL_GetMouseState(&x,&y);
 		this->show_menu(submenu->items(), x, y, submenu->is_context(), gui);
 	} else {
-		const hotkey::hotkey_command& cmd = hotkey::get_hotkey_command(items[res]);
+		const hotkey::hotkey_command& cmd = hotkey::get_hotkey_command(items[res]["id"]);
 		hotkey::execute_command(cmd,this,res);
 		set_button_state();
 	}
@@ -449,60 +449,38 @@ std::string command_executor::get_menu_image(display& disp, const std::string& c
 	}
 }
 
-std::vector<config> command_executor::get_menu_images(display& disp, const std::vector<std::string>& items) {
-	std::vector<config> result;
-
+void command_executor::get_menu_images(display& disp, std::vector<config>& items)
+{
 	for(size_t i = 0; i < items.size(); ++i) {
-		const std::string& item = items[i];
-		const hotkey::HOTKEY_COMMAND hk = hotkey::get_id(item);
-		result.emplace_back();
+		config& item = items[i];
+
+		const std::string& item_id = item["id"];
+		const hotkey::HOTKEY_COMMAND hk = hotkey::get_id(item_id);
 
 		//see if this menu item has an associated image
-		std::string img(get_menu_image(disp, item, i));
+		std::string img(get_menu_image(disp, item_id, i));
 		if (img.empty() == false) {
-			result.back()["icon"] = img;
+			item["icon"] = img;
 		}
 
-		const theme::menu* menu = disp.get_theme().get_menu_item(item);
-		if (hk == hotkey::HOTKEY_NULL) {
-			if (menu)
-				result.back()["label"] = menu->title();
-			else {
-				std::string label(item.begin(), item.begin() + item.find_last_not_of(' ') + 1);
-
-				// TODO: To away with the fugly markup, both '=' and 0x01
-				size_t separator_pos = label.find_first_of('=');
-				if(separator_pos != std::string::npos)
-					result.back()["label"] = label.substr(separator_pos + 1);
-				else {
-					separator_pos = label.find_first_of(1);
-					if(separator_pos != std::string::npos) {
-						result.back()["details"] = label.substr(separator_pos + 1);
-						result.back()["image"] = label.substr(1, separator_pos - 1);
-					} else {
-						result.back()["label"] = label;
-					}
+		const theme::menu* menu = disp.get_theme().get_menu_item(item_id);
+		if(menu) {
+			item["label"] = menu->title();
+		} else if(hk != hotkey::HOTKEY_NULL) {
+			std::string desc = hotkey::get_description(item_id);
+			if(hk == HOTKEY_ENDTURN) {
+				const theme::action *b = disp.get_theme().get_action_item("button-endturn");
+				if (b) {
+					desc = b->title();
 				}
 			}
-		} else {
 
-			if (menu)
-				result.back()["label"] = menu->title();
-			else {
-				std::string desc = hotkey::get_description(item);
-				if (hk == HOTKEY_ENDTURN) {
-					const theme::action *b = disp.get_theme().get_action_item("button-endturn");
-					if (b) {
-						desc = b->title();
-					}
-				}
-				result.back()["label"] = desc;
-				result.back()["details"] = hotkey::get_names(item);
-			}
+			item["label"] = desc;
+			item["details"] = hotkey::get_names(item_id);
 		}
 	}
-	return result;
 }
+
 basic_handler::basic_handler(command_executor* exec) : exec_(exec) {}
 
 void basic_handler::handle_event(const SDL_Event& event)
@@ -659,9 +637,9 @@ void command_executor_default::set_button_state()
 		std::shared_ptr<gui::button> button = disp.find_menu_button(menu.get_id());
 		if (!button) continue;
 		bool enabled = false;
-		for (const std::string& command : menu.items()) {
+		for (const auto& command : menu.items()) {
 
-			const hotkey::hotkey_command& command_obj = hotkey::get_hotkey_command(command);
+			const hotkey::hotkey_command& command_obj = hotkey::get_hotkey_command(command["id"]);
 			bool can_execute = can_execute_command(command_obj);
 			if (can_execute) {
 				enabled = true;
@@ -717,10 +695,12 @@ void command_executor_default::recalculate_minimap()
 {
 	get_display().recalculate_minimap();
 }
+
 CVideo& command_executor_default::get_video()
 {
 	return get_display().video();
 }
+
 void command_executor_default::lua_console()
 {
 	if (get_display().in_game()) {
@@ -730,6 +710,7 @@ void command_executor_default::lua_console()
 	}
 
 }
+
 void command_executor::lua_console()
 {
 	gui2::dialogs::lua_interpreter::display(get_video(), gui2::dialogs::lua_interpreter::APP);
@@ -737,16 +718,25 @@ void command_executor::lua_console()
 
 void command_executor_default::zoom_in()
 {
-	get_display().set_zoom(zoom_amount);
+	if(!get_display().view_locked()) {
+		get_display().set_zoom(true);
+	}
 }
+
 void command_executor_default::zoom_out()
 {
-	get_display().set_zoom(-zoom_amount);
+	if(!get_display().view_locked()) {
+		get_display().set_zoom(false);
+	}
 }
+
 void command_executor_default::zoom_default()
 {
-	get_display().set_default_zoom();
+	if(!get_display().view_locked()) {
+		get_display().set_default_zoom();
+	}
 }
+
 void command_executor_default::map_screenshot()
 {
 	make_screenshot(_("Map-Screenshot"), get_video(),

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2009 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -77,6 +77,19 @@ typedef std::function<void(dispatcher& dispatcher,
 							 const SDL_Keymod modifier,
 							 const utf8::string& unicode)>
 signal_keyboard_function;
+
+/**
+ * Callback function signature.
+ *
+ * This function is used for the callbacks in set_event_touch.
+ */
+typedef std::function<void(dispatcher& dispatcher,
+							 const ui_event event,
+							 bool& handled,
+							 bool& halt,
+							 const point& pos,
+							 const point& distance)>
+signal_touch_function;
 
 /**
  * Callback function signature.
@@ -188,6 +201,19 @@ public:
 			  const SDL_Keycode key,
 			  const SDL_Keymod modifier,
 			  const utf8::string& unicode);
+
+	/**
+	 * Fires an event which takes touch parameters.
+	 *
+	 * @param event                  The event to fire.
+	 * @param target                 The widget that should receive the event.
+	 * @param pos                    The location touched.
+	 * @param distance               The distance moved.
+	 */
+	bool fire(const ui_event event,
+			  widget& target,
+			  const point& pos,
+			  const point& distance);
 
 	/**
 	 * Fires an event which takes notification parameters.
@@ -364,6 +390,39 @@ public:
 					  const queue_position position = back_child)
 	{
 		signal_keyboard_queue_.disconnect_signal(E, position, signal);
+	}
+
+	/**
+	 * Connect a signal for callback in set_event_touch.
+	 *
+	 * @tparam E                     The event the callback needs to react to.
+	 * @param signal                 The callback function.
+	 * @param position               The position to place the callback.
+	 */
+	template <ui_event E>
+	typename std::enable_if<has_key<set_event_touch, E>::value>::type
+	connect_signal(const signal_touch_function& signal,
+				   const queue_position position = back_child)
+	{
+		signal_touch_queue_.connect_signal(E, position, signal);
+	}
+
+	/**
+	 * Disconnect a signal for callback in set_event_touch.
+	 *
+	 * @tparam E                     The event the callback was used for.
+	 * @param signal                 The callback function.
+	 * @param position               The place where the function was added.
+	 *                               Needed remove the event from the right
+	 *                               place. (The function doesn't care whether
+	 *                               was added in front or back.)
+	 */
+	template <ui_event E>
+	typename std::enable_if<has_key<set_event_touch, E>::value>::type
+	disconnect_signal(const signal_touch_function& signal,
+					  const queue_position position = back_child)
+	{
+		signal_touch_queue_.disconnect_signal(E, position, signal);
 	}
 
 	/**
@@ -664,6 +723,9 @@ private:
 
 	/** Signal queue for callbacks in set_event_keyboard. */
 	signal_queue<signal_keyboard_function> signal_keyboard_queue_;
+
+	/** Signal queue for callbacks in set_event_touch. */
+	signal_queue<signal_touch_function> signal_touch_queue_;
 
 	/** Signal queue for callbacks in set_event_notification. */
 	signal_queue<signal_notification_function> signal_notification_queue_;

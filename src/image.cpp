@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -20,13 +20,13 @@
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "config.hpp"
+#include "display.hpp"
 #include "filesystem.hpp"
 #include "game_config.hpp"
 #include "image.hpp"
 #include "image_modifications.hpp"
 #include "log.hpp"
 #include "gettext.hpp"
-#include "gui/dialogs/advanced_graphics_options.hpp"
 #include "preferences.hpp"
 #include "sdl/rect.hpp"
 #include "utils/general.hpp"
@@ -244,7 +244,7 @@ void locator::init_index()
 
 	if ( i == locator_finder.end() ) {
 		index_ = last_index_++;
-		locator_finder.insert(std::make_pair(val_, index_));
+		locator_finder.emplace(val_, index_);
 	} else {
 		index_ = i->second;
 	}
@@ -521,7 +521,6 @@ static surface load_image_sub_file(const image::locator &loc)
 
 	while(!mods.empty()) {
 		modification* mod = mods.top();
-		mods.pop();
 
 		try {
 			surf = (*mod)(surf);
@@ -531,7 +530,9 @@ static surface load_image_sub_file(const image::locator &loc)
 				<< "Modifications: " << loc.get_modifications() << ".\n"
 				<< "Error: " << e.message;
 		}
-		delete mod;
+
+		// NOTE: do this *after* applying the mod or you'll get crashes!
+		mods.pop();
 	}
 
 	if(loc.get_loc().valid()) {
@@ -595,7 +596,7 @@ static surface apply_light(surface surf, const light_string& ls){
 	} else {
 		//build all the paths for lightmap sources
 		static const std::string p = "terrain/light/light";
-		static const std::string lm_img[19] = {
+		static const std::string lm_img[19] {
 			p+".png",
 			p+"-concave-2-tr.png", p+"-concave-2-r.png", p+"-concave-2-br.png",
 			p+"-concave-2-bl.png", p+"-concave-2-l.png", p+"-concave-2-tl.png",
@@ -700,16 +701,6 @@ void set_color_adjustment(int r, int g, int b)
 	}
 }
 
-color_adjustment_resetter::color_adjustment_resetter()
-: r_(red_adjust), g_(green_adjust), b_(blue_adjust)
-{
-}
-
-void color_adjustment_resetter::reset()
-{
-	set_color_adjustment(r_, g_, b_);
-}
-
 void set_team_colors(const std::vector<std::string>* colors)
 {
 	if (colors == nullptr)
@@ -749,11 +740,11 @@ template <scaling_function F>
 static surface scale_xbrz_helper(const surface & res, int w, int h)
 {
 	int best_integer_zoom = std::min(w / res.get()->w, h / res.get()->h);
-	int legal_zoom = util::clamp(best_integer_zoom, 1, 5);
+	int legal_zoom = utils::clamp(best_integer_zoom, 1, 5);
 	return F(scale_surface_xbrz(res, legal_zoom), w, h);
 }
 
-using SCALING_ALGORITHM = gui2::dialogs::advanced_graphics_options::SCALING_ALGORITHM;
+using SCALING_ALGORITHM = preferences::SCALING_ALGORITHM;
 
 static scaling_function select_algorithm(SCALING_ALGORITHM algo)
 {
@@ -943,10 +934,6 @@ surface get_image(const image::locator& i_locator, TYPE type)
 		return res;
 	}
 
-	// Optimizes surface before storing it
-	if(res)
-		adjust_surface_alpha(res, SDL_ALPHA_OPAQUE);
-
 #ifdef _OPENMP
 #pragma omp critical(image_cache)
 #endif //_OPENMP
@@ -999,9 +986,6 @@ surface get_lighted_image(const image::locator& i_locator, const light_string& l
 	default:
 		;
 	}
-
-	// Optimizes surface before storing it
-	adjust_surface_alpha(res, SDL_ALPHA_OPAQUE);
 
 	// record the lighted surface in the corresponding variants cache
 	i_locator.access_in_cache(*imap)[ls] = res;
@@ -1076,7 +1060,7 @@ surface reverse_image(const surface& surf)
 		return surface(nullptr);
 	}
 
-	reversed_images_.insert(std::pair<surface,surface>(surf,rev));
+	reversed_images_.emplace(surf, rev);
 	// sdl_add_ref(rev);
 	return rev;
 }
@@ -1090,7 +1074,7 @@ bool exists(const image::locator& i_locator)
 
 	// The insertion will fail if there is already an element in the cache
 	std::pair< std::map< std::string, bool >::iterator, bool >
-		it = image_existence_map.insert(std::make_pair(i_locator.get_filename(), false));
+		it = image_existence_map.emplace(i_locator.get_filename(), false);
 	bool &cache = it.first->second;
 	if (it.second)
 		cache = !filesystem::get_binary_file_location("images", i_locator.get_filename()).empty();
@@ -1170,14 +1154,14 @@ bool save_image(const surface & surf, const std::string & filename)
 
 bool update_from_preferences()
 {
-	SCALING_ALGORITHM algo = SCALING_ALGORITHM::LINEAR;
+	SCALING_ALGORITHM algo = preferences::default_scaling_algorithm;
 	try {
 		algo = SCALING_ALGORITHM::string_to_enum(preferences::get("scale_hex"));
 	} catch (bad_enum_cast &) {}
 
 	scale_to_hex_func = select_algorithm(algo);
 
-	algo = SCALING_ALGORITHM::LINEAR;
+	algo = preferences::default_scaling_algorithm;
 	try {
 		algo = SCALING_ALGORITHM::string_to_enum(preferences::get("scale_zoom"));
 	} catch (bad_enum_cast &) {}

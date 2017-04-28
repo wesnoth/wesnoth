@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2009 - 2017 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -102,7 +102,7 @@ class gamestate_inspector::model
 public:
 	std::string name;
 
-	std::string get_data_full()
+	std::string get_data_full() const
 	{
 		return data;
 	}
@@ -191,7 +191,7 @@ public:
 	{
 	}
 
-	stuff_list_adder stuff_list_entry(tree_view_node* parent, const std::string defn)
+	stuff_list_adder stuff_list_entry(tree_view_node* parent, const std::string& defn)
 	{
 		return stuff_list_adder(parent ? *parent : stuff_list_->get_root_node(), defn);
 	}
@@ -251,9 +251,9 @@ protected:
 	gamestate_inspector::model& model();
 	gamestate_inspector::view& view();
 	gamestate_inspector::controller& c;
-	const config& vars();
-	const game_events::manager& events();
-	const display_context& dc();
+	const config& vars() const;
+	const game_events::manager& events() const;
+	const display_context& dc() const;
 };
 
 class variable_mode_controller : public single_mode_controller
@@ -365,29 +365,29 @@ public:
 	}
 
 	template<typename T>
-	T& get_controller()
+	std::shared_ptr<T> get_controller()
 	{
 		for(auto& c : controllers) {
-			if(T* p = dynamic_cast<T*>(c)) {
-				return *p;
+			if(std::shared_ptr<T> p = std::dynamic_pointer_cast<T>(c)) {
+				return p;
 			}
 		}
-		T* p = new T(*this);
+		std::shared_ptr<T> p = std::make_shared<T>(*this);
 		controllers.push_back(p);
-		return *p;
+		return p;
 	}
 
 	template<typename C>
 	void set_node_callback(const std::vector<int>& node_path, void (C::* fcn)(tree_view_node&))
 	{
-		C& sub_controller = get_controller<C>();
+		C& sub_controller = *get_controller<C>();
 		callbacks.emplace(node_path, std::bind(fcn, sub_controller, _1));
 	}
 
 	template<typename C, typename T>
 	void set_node_callback(const std::vector<int>& node_path, void (C::* fcn)(tree_view_node&, T), T param)
 	{
-		C& sub_controller = get_controller<C>();
+		C& sub_controller = *get_controller<C>();
 		callbacks.emplace(node_path, std::bind(fcn, sub_controller, _1, param));
 	}
 
@@ -480,7 +480,7 @@ private:
 	view& view_;
 	using node_callback = std::function<void(tree_view_node&)>;
 	using node_callback_map = std::map<std::vector<int>, node_callback>;
-	std::vector<single_mode_controller*> controllers;
+	std::vector<std::shared_ptr<single_mode_controller>> controllers;
 	node_callback_map callbacks;
 	const config& vars_;
 	const game_events::manager& events_;
@@ -495,15 +495,15 @@ gamestate_inspector::view& single_mode_controller::view() {
 	return c.view_;
 }
 
-const config& single_mode_controller::vars() {
+const config& single_mode_controller::vars() const {
 	return c.vars_;
 }
 
-const game_events::manager& single_mode_controller::events() {
+const game_events::manager& single_mode_controller::events() const {
 	return c.events_;
 }
 
-const display_context& single_mode_controller::dc() {
+const display_context& single_mode_controller::dc() const {
 	return c.dc_;
 }
 

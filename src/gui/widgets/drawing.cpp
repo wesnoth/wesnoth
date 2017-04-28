@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2010 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -124,7 +124,7 @@ drawing_definition::resolution::resolution(const config& cfg)
 	 * original draw section is ignored, so send a dummy.
 	 */
 	static const config dummy("draw");
-	state.push_back(state_definition(dummy));
+	state.emplace_back(dummy);
 }
 
 // }---------- BUILDER -----------{
@@ -181,7 +181,7 @@ widget* builder_drawing::build() const
 
 	init_control(widget);
 
-	const game_logic::map_formula_callable& size = get_screen_size_variables();
+	const wfl::map_formula_callable& size = get_screen_size_variables();
 
 	const unsigned w = width(size);
 	const unsigned h = height(size);
@@ -190,7 +190,7 @@ widget* builder_drawing::build() const
 		widget->set_best_size(point(w, h));
 	}
 
-	widget->get_canvas().front().set_cfg(draw);
+	widget->set_drawing_data(draw);
 
 	DBG_GUI_G << "Window builder: placed drawing '" << id
 			  << "' with definition '" << definition << "'.\n";

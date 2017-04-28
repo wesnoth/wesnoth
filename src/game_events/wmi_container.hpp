@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -62,8 +62,8 @@ public:
 	typedef map_t::difference_type difference_type;
 	typedef map_t::size_type       size_type;
 
-	typedef util::iterator_extend      <value_type, map_t, key, key> iterator;
-	typedef util::const_iterator_extend<value_type, map_t, key, key> const_iterator;
+	typedef utils::iterator_extend      <value_type, map_t, key, key> iterator;
+	typedef utils::const_iterator_extend<value_type, map_t, key, key> const_iterator;
 
 
 public:
@@ -80,7 +80,7 @@ public:
 	/// Returns the menu items that can be shown for the given location.
 	void get_items(const map_location& hex,
 	               std::vector<std::shared_ptr<const wml_menu_item>>& items,
-                   std::vector<std::string>& descriptions,
+                   std::vector<config>& descriptions,
                    filter_context& fc, game_data& gamedata, unit_map& units) const;
 	/// Initializes the implicit event handlers for inlined [command]s.
 	void init_handlers() const;

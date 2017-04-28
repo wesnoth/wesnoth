@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2014 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -32,7 +32,7 @@ namespace gui2 {
 namespace sdl
 {
 
-CONSTEXPR const SDL_Rect empty_rect = { 0, 0, 0, 0 };
+CONSTEXPR const SDL_Rect empty_rect { 0, 0, 0, 0 };
 
 /**
  * Creates an empty SDL_Rect.

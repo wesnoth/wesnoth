@@ -13,6 +13,7 @@ end
 
 wesnoth.require "lua/wml-flow.lua"
 wesnoth.require "lua/wml/objectives.lua"
+wesnoth.require "lua/wml/animate_unit.lua"
 wesnoth.require "lua/wml/items.lua"
 wesnoth.require "lua/wml/message.lua"
 wesnoth.require "lua/wml/object.lua"
@@ -632,7 +633,71 @@ function wml_actions.unpetrify(cfg)
 end
 
 function wml_actions.heal_unit(cfg)
-	wesnoth.heal_unit(cfg)
+	local healers = helper.get_child(cfg, "filter_second")
+	if healers then
+		healers = wesnoth.get_units{
+			ability_type = "heals",
+			T["and"](healers)
+		}
+	else
+		healers = {}
+	end
+
+	local who = helper.get_child(cfg, "filter")
+	if who then
+		who = wesnoth.get_units(who)
+	else
+		who = wesnoth.get_units{
+			x = wesnoth.current.event_context.x1,
+			y = wesnoth.current.event_context.y1
+		}
+	end
+
+	local heal_full = cfg.amount == "full" or cfg.amount == nil
+	local moves_full = cfg.moves == "full"
+	local heal_amount_set = false
+	for i,u in ipairs(who) do
+		local heal_amount = u.max_hitpoints - u.hitpoints
+		if heal_full then
+			u.hitpoints = u.max_hitpoints
+		else
+			heal_amount = tonumber(cfg.amount) or heal_amount
+			local new_hitpoints = math.max(1, math.min(u.max_hitpoints, u.hitpoints + heal_amount))
+			heal_amount = new_hitpoints - u.hitpoints
+			u.hitpoints = new_hitpoints
+		end
+
+		if moves_full then
+			u.moves = u.max_moves
+		else
+			u.moves = math.min(u.max_moves, u.moves + (cfg.moves or 0))
+		end
+
+		if cfg.restore_attacks then
+			u.attacks_left = u.max_attacks
+		end
+
+		if cfg.restore_statuses == true or cfg.restore_statuses == nil then
+			u.status.poisoned = false
+			u.status.petrified = false
+			u.status.slowed = false
+			u.status.unhealable = false
+		end
+
+		if not heal_amount_set then
+			heal_amount_set = true
+			wesnoth.set_variable("heal_amount", heal_amount)
+		end
+
+		if cfg.animate then
+			local animator = wesnoth.create_animator()
+			animator:add(u, 'healed', 'hits', {value = heal_amount})
+			if #healers > 0 then
+				animator:add(healers[1], 'healing', 'hits', {value = heal_amount})
+			end
+			animator:run()
+		end
+	end
 end
 
 function wml_actions.transform_unit(cfg)
@@ -666,33 +731,51 @@ end
 function wml_actions.store_side(cfg)
 	local writer = utils.vwriter.init(cfg, "side")
 	for t, side_number in helper.get_sides(cfg) do
-		local container = {
-			controller = t.controller,
-			recruit = table.concat(t.recruit, ","),
-			fog = t.fog,
-			shroud = t.shroud,
-			hidden = t.hidden,
-			income = t.total_income,
-			village_gold = t.village_gold,
-			village_support = t.village_support,
-			team_name = t.team_name,
-			user_team_name = t.user_team_name,
-			color = t.color,
-			gold = t.gold,
-			scroll_to_leader = t.scroll_to_leader,
-			flag = t.flag,
-			flag_icon = t.flag_icon,
-			side = side_number
-		}
+		local container = t.__cfg
+		-- set values not properly handled by the __cfg
+		container.income = t.total_income
+		container.net_income = t.net_income
+		container.base_income = t.base_income
+		container.expenses = t.expenses
+		container.total_upkeep = t.total_upkeep
+		container.num_units = t.num_units
+		container.num_villages = t.num_villages
+		container.side = side_number
 		utils.vwriter.write(writer, container)
 	end
 end
 
--- This is the port of the old [modify_ai] into lua. It is different from wesnoth.modify_ai in that it uses a standard side filter.
--- I don't know why these functions were made to behave differently, but this seems to be the more powerful and useful one according
--- to mattsc's comments
 function wml_actions.modify_ai(cfg)
-	wesnoth.modify_ai_wml(cfg)
+	local sides = utils.get_sides(cfg)
+	local component, final
+	if cfg.action == "add" or cfg.action == "change" then
+		local start = string.find(cfg.path, "[a-z_]+%[[a-z0-9_*]*%]$")
+		final = start and (string.find(cfg.path, '[', start, true) - 1) or -1
+		start = start or string.find(cfg.path, "[^.]*$") or 1
+		local comp_type = string.sub(cfg.path, start, final)
+		component = helper.get_child(cfg, comp_type)
+		if component == nil then
+			helper.wml_error("Missing component definition in [modify_ai]")
+		end
+		component = helper.parsed(component)
+	end
+	for i = 1, #sides do
+		if cfg.action == "add" then
+			wesnoth.add_ai_component(sides[i].side, cfg.path, component)
+		elseif cfg.action == "delete" or cfg.action == "try_delete" then
+			wesnoth.delete_ai_component(sides[i].side, cfg.path)
+		elseif cfg.action == "change" then
+			local id_start = final + 2
+			local id_final = string.len(cfg.path) - 1
+			local id = string.sub(cfg.path, id_start, id_final)
+			if id == "*" then
+				helper.wml_error("[modify_ai] can only change one component at a time")
+			elseif not component.id and not id:match("[0-9]+") then
+				component.id = id
+			end
+			wesnoth.change_ai_component(sides[i].side, cfg.path, component)
+		end
+	end
 end
 
 function wml_actions.add_ai_behavior(cfg)
@@ -800,11 +883,19 @@ function wml_actions.set_menu_item(cfg)
 end
 
 function wml_actions.place_shroud(cfg)
-	wesnoth.place_shroud(cfg)
+	local sides = utils.get_sides(cfg)
+	local tiles = wesnoth.get_locations(cfg)
+	for i,side in ipairs(sides) do
+		wesnoth.place_shroud(side.side, tiles)
+	end
 end
 
 function wml_actions.remove_shroud(cfg)
-	wesnoth.remove_shroud(cfg)
+	local sides = utils.get_sides(cfg)
+	local tiles = wesnoth.get_locations(cfg)
+	for i,side in ipairs(sides) do
+		wesnoth.remove_shroud(side.side, tiles)
+	end
 end
 
 function wml_actions.time_area(cfg)
@@ -829,10 +920,6 @@ end
 
 function wml_actions.scroll(cfg)
 	wesnoth.scroll(cfg)
-end
-
-function wml_actions.animate_unit(cfg)
-	wesnoth.animate_unit(cfg)
 end
 
 function wml_actions.color_adjust(cfg)
@@ -875,8 +962,109 @@ function wml_actions.label( cfg )
 	end
 end
 
+local side_changes_needing_redraw = {
+	'shroud', 'fog', 'reset_map', 'reset_view', 'shroud_data',
+	'share_vision', 'share_maps', 'share_view',
+	'color', 'flag',
+}
 function wml_actions.modify_side(cfg)
-	wesnoth.modify_side(cfg)
+	local sides = utils.get_sides(cfg)
+	for i,side in ipairs(sides) do
+		if cfg.team_name then
+			side.team_name = cfg.team_name
+		end
+		if cfg.user_team_name then
+			side.user_team_name = cfg.user_team_name
+		end
+		if cfg.controller then
+			side.controller = cfg.controller
+		end
+		if cfg.defeat_condition then
+			side.defeat_condition = cfg.defeat_condition
+		end
+		if cfg.recruit then
+			local recruits = {}
+			for recruit in utils.split(cfg.recruit) do
+				table.insert(recruits, recruit)
+			end
+			side.recruit = recruits
+		end
+		if cfg.village_support then
+			side.village_support = cfg.village_support
+		end
+		if cfg.village_gold then
+			side.village_gold = cfg.village_gold
+		end
+		if cfg.income then
+			side.base_income = cfg.income
+		end
+		if cfg.gold then
+			side.gold = cfg.gold
+		end
+
+		if cfg.hidden ~= nil then
+			side.hidden = cfg.hidden
+		end
+		if cfg.color or cfg.flag then
+			wesnoth.set_side_id(side.side, cfg.flag, cfg.color)
+		end
+		if cfg.flag_icon then
+			side.flag_icon = cfg.flag_icon
+		end
+		if cfg.suppress_end_turn_confirmation ~= nil then
+			side.suppress_end_turn_confirmation = cfg.suppress_end_turn_confirmation
+		end
+		if cfg.scroll_to_leader ~= nil then
+			side.scroll_to_leader = cfg.scroll_to_leader
+		end
+
+		if cfg.shroud ~= nil then
+			side.shroud = cfg.shroud
+		end
+		if cfg.reset_maps then
+			wesnoth.remove_shroud(side.side, "all")
+		end
+		if cfg.fog ~= nil then
+			side.fog = cfg.fog
+		end
+		if cfg.reset_view then
+			wesnoth.add_fog(side.side, {}, true)
+		end
+		if cfg.shroud_data then
+			wesnoth.remove_shroud(side.side, cfg.shroud_data)
+		end
+
+		if cfg.share_vision then
+			side.share_vision = cfg.share_vision
+		end
+		-- Legacy support
+		if cfg.share_view ~= nil or cfg.share_maps ~= nil then
+			if cfg.share_view then
+				side.share_vision = 'all'
+			elseif cfg.share_maps then
+				side.share_vision = 'shroud'
+			else
+				side.share_vision = 'none'
+			end
+		end
+
+		if cfg.switch_ai then
+			wesnoth.switch_ai(side.side, cfg.switch_ai)
+		end
+		local ai = {}
+		for next_ai in helper.child_range(cfg, "ai") do
+			table.insert(ai, T.ai(next_ai))
+		end
+		if #ai > 0 then
+			wesnoth.append_ai(side.side, ai)
+		end
+	end
+	for i,key in ipairs(side_changes_needing_redraw) do
+		if cfg[key] ~= nil then
+			wml_actions.redraw{}
+			return
+		end
+	end
 end
 
 function wml_actions.open_help(cfg)
@@ -1027,12 +1215,13 @@ wml_actions.unstore_unit = function(cfg)
 	local unit = wesnoth.create_unit(unit_cfg)
 	local advance = cfg.advance ~= false
 	local animate = cfg.animate ~= false
+	local check_passability = cfg.check_passability ~= false or nil
 	local x = cfg.x or unit.x or -1
 	local y = cfg.y or unit.y or -1
 	wesnoth.add_known_unit(unit.type)
 	if on_board(x, y) then
 		if cfg.find_vacant then
-			x,y = wesnoth.find_vacant_tile(x, y, cfg.check_passability and unit)
+			x,y = wesnoth.find_vacant_tile(x, y, check_passability and unit)
 		end
 		unit:to_map(x, y, cfg.fire_event)
 		local text = nil
@@ -1222,6 +1411,14 @@ function wml_actions.set_variable(cfg)
 
 		wesnoth.set_variable(name, table.concat(string_to_join, separator))
 	end
+end
+
+function wesnoth.wml_actions.change_theme(cfg)
+	wesnoth.game_config.theme = cfg.theme
+end
+
+function wesnoth.wml_actions.zoom(cfg)
+	wesnoth.zoom(cfg.factor, cfg.relative)
 end
 
 function wesnoth.wml_conditionals.proceed_to_next_scenario(cfg)

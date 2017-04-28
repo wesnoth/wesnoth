@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2009 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -19,6 +19,8 @@
 
 #include "game_initialization/create_engine.hpp"
 
+#include <boost/dynamic_bitset.hpp>
+
 namespace gui2
 {
 namespace dialogs
@@ -27,10 +29,11 @@ namespace dialogs
 class campaign_selection : public modal_dialog
 {
 public:
-	explicit campaign_selection(ng::create_engine& eng) :
-		engine_(eng),
-		choice_(-1),
-		deterministic_(false)
+	explicit campaign_selection(ng::create_engine& eng)
+		: engine_(eng)
+		, choice_(-1)
+		, deterministic_(false)
+		, mod_states_()
 	{
 		set_restore(true);
 	}
@@ -52,18 +55,17 @@ private:
 	void campaign_selected(window& window);
 
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
-	virtual const std::string& window_id() const;
+	virtual const std::string& window_id() const override;
 
 	void show_settings(CVideo& video);
 
 	/** Inherited from modal_dialog. */
-	void pre_show(window& window);
+	virtual void pre_show(window& window) override;
 
 	/** Inherited from modal_dialog. */
-	void post_show(window& window);
+	virtual void post_show(window& window) override;
 
-
-	void mod_toggled(int id, widget &);
+	void mod_toggled(window& window);
 
 	ng::create_engine& engine_;
 
@@ -72,6 +74,8 @@ private:
 
 	/** whether the player checked the "Deterministic" checkbox. */
 	bool deterministic_;
+
+	boost::dynamic_bitset<> mod_states_;
 };
 
 } // namespace dialogs

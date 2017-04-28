@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2008 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -22,12 +22,9 @@
 
 #include <boost/math/constants/constants.hpp>
 #include <cctype>
+#include <deque>
+
 using namespace boost::math::constants;
-
-#ifdef HAVE_VISUAL_LEAK_DETECTOR
-#include "vld.h"
-#endif
-
 
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
@@ -36,7 +33,28 @@ static lg::log_domain log_scripting_formula("scripting/formula");
 #define WRN_SF LOG_STREAM(warn, log_scripting_formula)
 #define ERR_SF LOG_STREAM(err, log_scripting_formula)
 
-namespace game_logic {
+namespace wfl {
+
+static std::deque<std::string> call_stack;
+
+call_stack_manager::call_stack_manager(const std::string& str) {
+	call_stack.push_back(str);
+}
+
+call_stack_manager::~call_stack_manager() {
+	call_stack.pop_back();
+}
+
+std::string call_stack_manager::get() {
+	std::ostringstream res;
+	for(const auto& frame : call_stack) {
+		if(!frame.empty()) {
+			res << "  " << frame << "\n";
+		}
+	}
+
+	return res.str();
+}
 
 std::string function_expression::str() const
 {
@@ -56,7 +74,7 @@ std::string function_expression::str() const
 	return s.str();
 }
 
-namespace {
+namespace builtins {
 
 class debug_function : public function_expression {
 public:
@@ -96,15 +114,15 @@ public:
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		variant var = args()[0]->evaluate(variables, fdb);
-		const formula_callable* callable = var.as_callable();
-		std::vector<formula_input> inputs = callable->inputs();
+		auto callable = var.as_callable();
+		formula_input_vector inputs = callable->inputs();
 		std::vector<variant> res;
 		for(size_t i=0; i<inputs.size(); ++i) {
 			const formula_input& input = inputs[i];
-			res.push_back(variant(input.name));
+			res.emplace_back(input.name);
 		}
 
-		return variant(&res);
+		return variant(res);
 	}
 };
 
@@ -182,22 +200,17 @@ public:
 
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		bool found = false;
-		variant res(0);
-		for(size_t n = 0; n != args().size(); ++n) {
-			const variant v = args()[n]->evaluate(variables,fdb);
+		variant res = args()[0]->evaluate(variables, fdb);
+		if(res.is_list()) {
+			res = *std::min_element(res.begin(), res.end());
+		}
+		for(size_t n = 1; n < args().size(); ++n) {
+			variant v = args()[n]->evaluate(variables,fdb);
 			if(v.is_list()) {
-				for(size_t m = 0; m != v.num_elements(); ++m) {
-					if(!found || v[m] < res) {
-						res = v[m];
-						found = true;
-					}
-				}
-			} else if(v.is_int() || v.is_decimal()) {
-				if(!found || v < res) {
-					res = v;
-					found = true;
-				}
+				v = *std::min_element(v.begin(), v.end());
+			}
+			if(res.is_null() || v < res) {
+				res = v;
 			}
 		}
 
@@ -213,22 +226,17 @@ public:
 
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		bool found = false;
-		variant res(0);
-		for(size_t n = 0; n != args().size(); ++n) {
-			const variant v = args()[n]->evaluate(variables,fdb);
+		variant res = args()[0]->evaluate(variables, fdb);
+		if(res.is_list()) {
+			res = *std::max_element(res.begin(), res.end());
+		}
+		for(size_t n = 1; n < args().size(); ++n) {
+			variant v = args()[n]->evaluate(variables, fdb);
 			if(v.is_list()) {
-				for(size_t m = 0; m != v.num_elements(); ++m) {
-					if(!found || v[m] > res) {
-						res = v[m];
-						found = true;
-					}
-				}
-			} else if(v.is_int() || v.is_decimal()) {
-				if(!found || v > res) {
-					res = v;
-					found = true;
-				}
+				v = *std::max_element(v.begin(), v.end());
+			}
+			if(res.is_null() || v > res) {
+				res = v;
 			}
 		}
 
@@ -248,7 +256,7 @@ private:
                 const variant var0 = arguments[0]->evaluate(variables,fdb);
                 const variant var1 = arguments[1]->evaluate(variables,fdb);
 
-                const map_location location = convert_variant<location_callable>(var0)->loc();
+                const map_location location = var0.convert_to<location_callable>()->loc();
                 std::string text;
 
                 if(arguments.size() == 2) {
@@ -284,7 +292,7 @@ private:
 
 		if( args().size() == 1)
 		{
-			str1 = var1.to_debug_string(nullptr, true);
+			str1 = var1.to_debug_string(true);
 			LOG_SF << str1 << std::endl;
 			if(game_config::debug) {
 				game_display::get_singleton()->get_chat_manager().add_chat_message(time(nullptr), "WFL", 0, str1, events::chat_handler::MESSAGE_PUBLIC, false);
@@ -293,8 +301,8 @@ private:
 		} else {
 			str1 = var1.string_cast();
 			const variant var2 = args()[1]->evaluate(variables,fdb);
-			str2 = var2.to_debug_string(nullptr, true);
-			LOG_SF << str1 << str2 << std::endl;
+			str2 = var2.to_debug_string(true);
+			LOG_SF << str1 << ": " << str2 << std::endl;
 			if(game_config::debug) {
 				game_display::get_singleton()->get_chat_manager().add_chat_message(time(nullptr), str1, 0, str2, events::chat_handler::MESSAGE_PUBLIC, false);
 			}
@@ -378,7 +386,7 @@ private:
 			tmp.push_back( *it );
 		}
 
-		return variant( &tmp );
+		return variant(tmp);
 	}
 };
 
@@ -404,7 +412,7 @@ private:
 		} else
 		{
 			for(variant_iterator it = var_1.begin(); it != var_1.end(); ++it) {
-				if (key_value_pair* kv = (*it).try_convert<key_value_pair>())
+				if(auto kv = (*it).try_convert<key_value_pair>())
 					tmp[kv->query_value("key")] = kv->query_value("value");
 				else {
 					std::map<variant, variant>::iterator map_it = tmp.find( *it );
@@ -417,7 +425,7 @@ private:
 			}
 		}
 
-		return variant( &tmp );
+		return variant(tmp);
 	}
 };
 
@@ -581,7 +589,7 @@ private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		const double angle = args()[0]->evaluate(variables,fdb).as_decimal() / 1000.0;
 		const double result = tan(angle * pi<double>() / 180.0);
-		if(result != result || result <= INT_MIN || result >= INT_MAX) {
+		if(std::isnan(result) || result <= INT_MIN || result >= INT_MAX) {
 			return variant();
 		}
 		return variant(result, variant::DECIMAL_VARIANT);
@@ -598,7 +606,7 @@ private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		const double num = args()[0]->evaluate(variables,fdb).as_decimal() / 1000.0;
 		const double result = asin(num) * 180.0 / pi<double>();
-		if(result != result) {
+		if(std::isnan(result)) {
 			return variant();
 		}
 		return variant(result, variant::DECIMAL_VARIANT);
@@ -614,7 +622,7 @@ private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		const double num = args()[0]->evaluate(variables,fdb).as_decimal() / 1000.0;
 		const double result = acos(num) * 180.0 / pi<double>();
-		if(result != result) {
+		if(std::isnan(result)) {
 			return variant();
 		}
 		return variant(result, variant::DECIMAL_VARIANT);
@@ -643,7 +651,7 @@ private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		const double num = args()[0]->evaluate(variables,fdb).as_decimal() / 1000.0;
 		const double result = sqrt(num);
-		if(result != result) {
+		if(std::isnan(result)) {
 			return variant();
 		}
 		return variant(result, variant::DECIMAL_VARIANT);
@@ -673,7 +681,7 @@ private:
 		const double base = args()[0]->evaluate(variables,fdb).as_decimal() / 1000.0;
 		const double root = args()[1]->evaluate(variables,fdb).as_decimal() / 1000.0;
 		const double result = base < 0 && fmod(root,2) == 1 ? -pow(-base, 1.0 / root) : pow(base, 1.0 / root);
-		if(result != result) {
+		if(std::isnan(result)) {
 			return variant();
 		}
 		return variant(result, variant::DECIMAL_VARIANT);
@@ -690,14 +698,14 @@ private:
 		const double num = args()[0]->evaluate(variables,fdb).as_decimal() / 1000.0;
 		if(args().size() == 1) {
 			const double result = log(num);
-			if(result != result) {
+			if(std::isnan(result)) {
 				return variant();
 			}
 			return variant(result, variant::DECIMAL_VARIANT);
 		} else {
 			const double base = args()[1]->evaluate(variables,fdb).as_decimal() / 1000.0;
 			const double result = log(num) / log(base);
-			if(result != result) {
+			if(std::isnan(result)) {
 				return variant();
 			}
 			return variant(result, variant::DECIMAL_VARIANT);
@@ -839,7 +847,7 @@ class variant_comparator : public formula_callable {
 		}
 	}
 
-	void get_inputs(std::vector<formula_input>* inputs) const {
+	void get_inputs(formula_input_vector& inputs) const {
 		fallback_->get_inputs(inputs);
 	}
 public:
@@ -879,7 +887,7 @@ private:
 			std::sort(vars.begin(), vars.end(), variant_comparator(args()[1], variables));
 		}
 
-		return variant(&vars);
+		return variant(vars);
 	}
 };
 
@@ -899,7 +907,7 @@ private:
 		} else if(arg.is_list()) {
 			std::vector<variant> list = args()[0]->evaluate(variables,fdb).as_list();
 			std::reverse(list.begin(), list.end());
-			return variant(&list);
+			return variant(list);
 		}
 		return variant();
 	}
@@ -973,8 +981,8 @@ private:
 			}
 		}
 		if (items.is_map() )
-			return variant(&map_vars);
-		return variant(&list_vars);
+			return variant(map_vars);
+		return variant(list_vars);
 	}
 };
 
@@ -1043,8 +1051,8 @@ private:
 			}
 		}
 		if (items.is_map() )
-			return variant(&map_vars);
-		return variant(&list_vars);
+			return variant(map_vars);
+		return variant(list_vars);
 	}
 };
 
@@ -1063,7 +1071,7 @@ private:
 				break;
 		}
 		std::vector<variant> result(items.begin(), it);
-		return variant(&result);
+		return variant(result);
 	}
 };
 
@@ -1076,7 +1084,7 @@ private:
 	struct indexer {
 		size_t i;
 		explicit indexer(size_t i) : i(i) {}
-		variant operator()(const variant& v) {
+		variant operator()(const variant& v) const {
 			if(i >= v.num_elements()) {
 				return variant();
 			} else {
@@ -1085,7 +1093,7 @@ private:
 		}
 	};
 	struct comparator {
-		bool operator()(const variant& a, const variant& b) {
+		bool operator()(const variant& a, const variant& b) const {
 			return a.num_elements() < b.num_elements();
 		}
 	};
@@ -1112,9 +1120,9 @@ private:
 		for(size_t i = 0; i < max_i; i++) {
 			std::vector<variant> elem(input.size());
 			std::transform(input.begin(), input.end(), elem.begin(), indexer(i));
-			output.push_back(variant(&elem));
+			output.emplace_back(elem);
 		}
-		return variant(&output);
+		return variant(output);
 	}
 };
 
@@ -1160,7 +1168,7 @@ private:
 			if (items[0].is_list() )
 			{
 				std::vector<variant> tmp;
-				res = variant(&tmp);
+				res = variant(tmp);
 				if(args().size() >= 2) {
 					res = args()[1]->evaluate(variables,fdb);
 					if(!res.is_list())
@@ -1169,7 +1177,7 @@ private:
 			} else if( items[0].is_map() )
 			{
 				std::map<variant,variant> tmp;
-				res = variant(&tmp);
+				res = variant(tmp);
 				if(args().size() >= 2) {
 					res = args()[1]->evaluate(variables,fdb);
 					if(!res.is_map())
@@ -1212,7 +1220,7 @@ private:
 		std::advance(end, count);
 		std::vector<variant> res;
 		std::copy(it, end, std::back_inserter(res));
-		return variant(&res);
+		return variant(res);
 	}
 };
 
@@ -1236,7 +1244,7 @@ private:
 		std::advance(it, -count);
 		std::vector<variant> res;
 		std::copy(it, items.end(), std::back_inserter(res));
-		return variant(&res);
+		return variant(res);
 	}
 };
 
@@ -1409,7 +1417,7 @@ public:
 	{}
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		return variant(new location_callable(map_location(
+		return variant(std::make_shared<location_callable>(map_location(
 							     args()[0]->evaluate(variables,add_debug_info(fdb,0,"loc:x")).as_int(),
 							     args()[1]->evaluate(variables,add_debug_info(fdb,1,"loc:y")).as_int(), wml_loc())));
 	}
@@ -1422,7 +1430,7 @@ public:
 	{}
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		return variant(new key_value_pair(
+		return variant(std::make_shared<key_value_pair>(
 			args()[0]->evaluate(variables,add_debug_info(fdb,0,"pair:key")),
 			args()[1]->evaluate(variables,add_debug_info(fdb,1,"pair_value"))
 		));
@@ -1437,8 +1445,8 @@ public:
 
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		const map_location loc1 = convert_variant<location_callable>(args()[0]->evaluate(variables,add_debug_info(fdb,0,"distance_between:location_A")))->loc();
-		const map_location loc2 = convert_variant<location_callable>(args()[1]->evaluate(variables,add_debug_info(fdb,1,"distance_between:location_B")))->loc();
+		const map_location loc1 = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "distance_between:location_A")).convert_to<location_callable>()->loc();
+		const map_location loc2 = args()[1]->evaluate(variables, add_debug_info(fdb, 1, "distance_between:location_B")).convert_to<location_callable>()->loc();
 		return variant(distance_between(loc1, loc2));
 	}
 };
@@ -1456,7 +1464,34 @@ private:
 	}
 };
 
-}
+} // namespace builtins
+
+namespace actions {
+
+class safe_call_function : public function_expression {
+public:
+	explicit safe_call_function(const args_list& args)
+		: function_expression("safe_call", args, 2, 2) {}
+private:
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		const variant main = args()[0]->evaluate(variables, fdb);
+		const expression_ptr backup_formula = args()[1];
+
+		return variant(std::make_shared<safe_call_callable>(main, backup_formula));
+	}
+};
+
+class set_var_function : public function_expression {
+public:
+	explicit set_var_function(const args_list& args)
+		: function_expression("set_var", args, 2, 2) {}
+private:
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		return variant(std::make_shared<set_var_callable>(args()[0]->evaluate(variables, add_debug_info(fdb, 0, "set_var:key")).as_string(), args()[1]->evaluate(variables, add_debug_info(fdb, 1, "set_var:value"))));
+	}
+};
+
+} // namespace actions
 
 variant key_value_pair::get_value(const std::string& key) const
 {
@@ -1471,17 +1506,17 @@ variant key_value_pair::get_value(const std::string& key) const
 			return variant();
 }
 
-void key_value_pair::get_inputs(std::vector<game_logic::formula_input>* inputs) const {
-		inputs->push_back(game_logic::formula_input("key", game_logic::FORMULA_READ_ONLY));
-		inputs->push_back(game_logic::formula_input("value", game_logic::FORMULA_READ_ONLY));
+void key_value_pair::get_inputs(formula_input_vector& inputs) const {
+		add_input(inputs, "key");
+		add_input(inputs, "value");
 }
 
 
 void key_value_pair::serialize_to_string(std::string& str) const {
 	str += "pair(";
-	key_.serialize_to_string(str);
+	str += key_.serialize_to_string();
 	str += ",";
-	value_.serialize_to_string(str);
+	str += value_.serialize_to_string();
 	str += ")";
 }
 
@@ -1535,6 +1570,12 @@ function_expression_ptr user_formula_function::generate_function_expression(cons
 	return function_expression_ptr(new formula_function_expression(name_, args, formula_, precondition_, args_));
 }
 
+function_symbol_table::function_symbol_table(function_symbol_table* parent) : parent(parent) {}
+
+function_symbol_table::~function_symbol_table() {
+	if(parent) delete parent;
+}
+
 void function_symbol_table::add_function(const std::string& name, formula_function_ptr fcn)
 {
 	custom_formulas_[name] = fcn;
@@ -1547,26 +1588,36 @@ expression_ptr function_symbol_table::create_function(const std::string& fn, con
 		return i->second->generate_function_expression(args);
 	}
 
-	return expression_ptr();
+	expression_ptr res((parent ? parent : get_builtins())->create_function(fn, args));
+	if(res) {
+		return res;
+	}
+
+	throw formula_error("Unknown function: " + fn, "", "", 0);
 }
 
-std::vector<std::string> function_symbol_table::get_function_names() const
+std::set<std::string> function_symbol_table::get_function_names() const
 {
-	std::vector<std::string> res;
+	std::set<std::string> res;
+	if(parent) {
+		res = parent->get_function_names();
+	} else if(this != get_builtins()) {
+		res = get_builtins()->get_function_names();
+	}
 	for(functions_map::const_iterator iter = custom_formulas_.begin(); iter != custom_formulas_.end(); ++iter ) {
-		res.push_back((*iter).first);
+		res.insert((*iter).first);
 	}
 	return res;
 }
 
-namespace {
+#define FUNCTION(name) functions_table.add_function(#name, \
+			formula_function_ptr(new builtin_formula_function<name##_function>(#name)))
 
-function_symbol_table& get_functions_map() {
+function_symbol_table* function_symbol_table::get_builtins() {
 	static function_symbol_table functions_table;
 
 	if(functions_table.empty()) {
-#define FUNCTION(name) functions_table.add_function(#name, \
-			formula_function_ptr(new builtin_formula_function<name##_function>(#name)))
+		using namespace builtins;
 		FUNCTION(debug);
 		FUNCTION(dir);
 		FUNCTION(if);
@@ -1627,36 +1678,16 @@ function_symbol_table& get_functions_map() {
 		FUNCTION(pi);
 		FUNCTION(hypot);
 		FUNCTION(type);
-#undef FUNCTION
 	}
 
-	return functions_table;
+	return &functions_table;
 }
 
-}
-
-expression_ptr create_function(const std::string& fn,
-                               const std::vector<expression_ptr>& args,
-							   const function_symbol_table* symbols)
-{
-	if(symbols) {
-		expression_ptr res(symbols->create_function(fn, args));
-		if(res) {
-			return res;
-		}
-	}
-
-	expression_ptr res(get_functions_map().create_function(fn, args));
-	if(!res) {
-		throw formula_error("Unknown function: " + fn, "", "", 0);
-	}
-
-	return res;
-}
-
-std::vector<std::string> builtin_function_names()
-{
-	return get_functions_map().get_function_names();
+action_function_symbol_table::action_function_symbol_table() {
+	using namespace actions;
+	function_symbol_table& functions_table = *this;
+	FUNCTION(safe_call);
+	FUNCTION(set_var);
 }
 
 }

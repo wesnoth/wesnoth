@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 by David White <dave@whitevine.net>
-   Copyright (C) 2005 - 2016 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Copyright (C) 2005 - 2017 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -115,9 +115,9 @@ static std::string do_interpolation(const std::string &str, const variable_set& 
 				continue;
 			}
 			try {
-				const game_logic::formula form(std::string(var_begin+2, var_end-1));
+				const wfl::formula form(std::string(var_begin+2, var_end-1));
 				res.replace(var_begin, var_end, form.evaluate().string_cast());
-			} catch(game_logic::formula_error& e) {
+			} catch(wfl::formula_error& e) {
 				ERR_NG << "Formula in WML string cannot be evaluated due to "
 					<< e.type << "\n\t--> \""
 					<< e.formula << "\"\n";
@@ -198,7 +198,7 @@ static std::string do_interpolation(const std::string &str, const variable_set& 
 			if(var_end == res.end()) {
 				res.replace(var_begin, default_start - 1, val);
 			}
-			else if(!val.blank()) {
+			else if(!val.empty()) {
 				res.replace(var_begin, var_end + 1, val);
 			}
 			else {
@@ -253,13 +253,20 @@ std::string vgettext(const char *domain
 		, const char *msgid
 		, const utils::string_map& symbols)
 {
-	const std::string orig(translation::dgettext(domain, msgid));
+	const std::string orig(translation::dsgettext(domain, msgid));
 	const std::string msg = utils::interpolate_variables_into_string(orig, &symbols);
 	return msg;
 }
 std::string vngettext(const char* sing, const char* plur, int n, const utils::string_map& symbols)
 {
 	const std::string orig(_n(sing, plur, n));
+	const std::string msg = utils::interpolate_variables_into_string(orig, &symbols);
+	return msg;
+}
+
+std::string vngettext(const char *domain, const char *sing, const char* plur, int n, const utils::string_map& symbols)
+{
+	const std::string orig(translation::dsngettext(domain, sing, plur, n));
 	const std::string msg = utils::interpolate_variables_into_string(orig, &symbols);
 	return msg;
 }

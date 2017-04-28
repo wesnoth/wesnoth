@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2016 by Rusty Russell <rusty@rustcorp.com.au>
+   Copyright (C) 2006 - 2017 by Rusty Russell <rusty@rustcorp.com.au>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -41,7 +41,7 @@
 #include "actions/attack.hpp"
 #include "game_config.hpp"
 #include "preferences.hpp"
-#include "random_new.hpp"
+#include "random.hpp"
 #include "utils/general.hpp"
 #include <array>
 #include <cmath>
@@ -476,18 +476,18 @@ void prob_matrix::initialize_row(unsigned plane, unsigned row, double row_prob,
 	}
 }
 
-double &prob_matrix::val(unsigned p, unsigned row, unsigned col)
+double &prob_matrix::val(unsigned plane, unsigned row, unsigned col)
 {
 	assert(row < rows_);
 	assert(col < cols_);
-	return plane_[p][row * cols_ + col];
+	return plane_[plane][row * cols_ + col];
 }
 
-const double &prob_matrix::val(unsigned p, unsigned row, unsigned col) const
+const double &prob_matrix::val(unsigned plane, unsigned row, unsigned col) const
 {
 	assert(row < rows_);
 	assert(col < cols_);
-	return plane_[p][row * cols_ + col];
+	return plane_[plane][row * cols_ + col];
 }
 
 // xfer, shift_cols and shift_rows use up most of our time.  Careful!
@@ -584,12 +584,12 @@ void prob_matrix::shift_cols_in_row(unsigned dst, unsigned src, unsigned row,
 		// calculation easier to parse.
 		int col_i = static_cast<int>(cols[col_x]);
 		int drain_amount = col_i*drain_percent/100 + drain_constant;
-		unsigned newrow = util::clamp(row_i + drain_amount, 1, max_row);
+		unsigned newrow = utils::clamp(row_i + drain_amount, 1, max_row);
 		xfer(dst, src, newrow, 0, row, cols[col_x], prob);
 	}
 
 	// The remaining columns use the specified drainmax.
-	unsigned newrow = util::clamp(row_i + drainmax, 1, max_row);
+	unsigned newrow = utils::clamp(row_i + drainmax, 1, max_row);
 	for ( ; col_x < cols.size(); ++col_x )
 		xfer(dst, src, newrow, cols[col_x] - damage, row, cols[col_x], prob);
 }
@@ -651,12 +651,12 @@ void prob_matrix::shift_rows_in_col(unsigned dst, unsigned src, unsigned col,
 		// calculation easier to parse.
 		int row_i = static_cast<int>(rows[row_x]);
 		int drain_amount = row_i*drain_percent/100 + drain_constant;
-		unsigned newcol = util::clamp(col_i + drain_amount, 1, max_col);
+		unsigned newcol = utils::clamp(col_i + drain_amount, 1, max_col);
 		xfer(dst, src, 0, newcol, rows[row_x], col, prob);
 	}
 
 	// The remaining rows use the specified drainmax.
-	unsigned newcol = util::clamp(col_i + drainmax, 1, max_col);
+	unsigned newcol = utils::clamp(col_i + drainmax, 1, max_col);
 	for ( ; row_x < rows.size(); ++row_x )
 		xfer(dst, src, rows[row_x] - damage, newcol, rows[row_x], col, prob);
 }
@@ -1153,7 +1153,7 @@ void probability_combat_matrix::receive_blow_b(double hit_chance)
 		int dst = a_slows_ ? src|2 : src;
 
 		// A is slow in planes 1 and 3.
-		unsigned damage = src & 1 ? a_slow_damage_ : a_damage_;
+		unsigned damage = (src & 1) ? a_slow_damage_ : a_damage_;
 
 		shift_cols(dst, src, damage, hit_chance, a_drain_constant_, a_drain_percent_);
 	}
@@ -1173,7 +1173,7 @@ void probability_combat_matrix::receive_blow_a(double hit_chance)
 		int dst = b_slows_ ? src|1 : src;
 
 		// B is slow in planes 2 and 3.
-		unsigned damage = src & 2 ? b_slow_damage_ : b_damage_;
+		unsigned damage = (src & 2) ? b_slow_damage_ : b_damage_;
 
 		shift_rows(dst, src, damage, hit_chance, b_drain_constant_, b_drain_percent_);
 	}
@@ -1256,7 +1256,7 @@ private:
 	unsigned int calc_blows_a(unsigned int a_hp) const;
 	unsigned int calc_blows_b(unsigned int b_hp) const;
 	static void divide_all_elements(std::vector<double>& vec, double divisor);
-	static void scale_probabilities(const std::vector<double>& source, std::vector<double>& target, double multiplier, unsigned int singular_hp);
+	static void scale_probabilities(const std::vector<double>& source, std::vector<double>& target, double divisor, unsigned int singular_hp);
 };
 
 monte_carlo_combat_matrix::monte_carlo_combat_matrix(unsigned int a_max_hp, unsigned int b_max_hp,
@@ -1278,10 +1278,10 @@ monte_carlo_combat_matrix::monte_carlo_combat_matrix(unsigned int a_max_hp, unsi
 	a_split_(a_split), b_split_(b_split), rounds_(rounds), a_hit_chance_(a_hit_chance), b_hit_chance_(b_hit_chance),
 	a_initially_slowed_chance_(a_initially_slowed_chance), b_initially_slowed_chance_(b_initially_slowed_chance)
 {
-	scale_probabilities(a_summary[0], a_initial_, 1.0 / (1.0 - a_initially_slowed_chance), a_hp);
-	scale_probabilities(a_summary[1], a_initial_slowed_, 1.0 / a_initially_slowed_chance, a_hp);
-	scale_probabilities(b_summary[0], b_initial_, 1.0 / (1.0 - b_initially_slowed_chance), b_hp);
-	scale_probabilities(b_summary[1], b_initial_slowed_, 1.0 / b_initially_slowed_chance, b_hp);
+	scale_probabilities(a_summary[0], a_initial_, 1.0 - a_initially_slowed_chance, a_hp);
+	scale_probabilities(a_summary[1], a_initial_slowed_, a_initially_slowed_chance, a_hp);
+	scale_probabilities(b_summary[0], b_initial_, 1.0 - b_initially_slowed_chance, b_hp);
+	scale_probabilities(b_summary[1], b_initial_slowed_, b_initially_slowed_chance, b_hp);
 
 	clear();
 }
@@ -1292,12 +1292,12 @@ void monte_carlo_combat_matrix::simulate()
 	{
 		bool a_hit = false;
 		bool b_hit = false;
-		bool a_slowed = random_new::generator->get_random_bool(a_initially_slowed_chance_);
-		bool b_slowed = random_new::generator->get_random_bool(b_initially_slowed_chance_);
+		bool a_slowed = randomness::generator->get_random_bool(a_initially_slowed_chance_);
+		bool b_slowed = randomness::generator->get_random_bool(b_initially_slowed_chance_);
 		const std::vector<double>& a_initial = a_slowed ? a_initial_slowed_ : a_initial_;
 		const std::vector<double>& b_initial = b_slowed ? b_initial_slowed_ : b_initial_;
-		unsigned int a_hp = random_new::generator->get_random_element(a_initial.begin(), a_initial.end());
-		unsigned int b_hp = random_new::generator->get_random_element(b_initial.begin(), b_initial.end());
+		unsigned int a_hp = randomness::generator->get_random_element(a_initial.begin(), a_initial.end());
+		unsigned int b_hp = randomness::generator->get_random_element(b_initial.begin(), b_initial.end());
 		unsigned int a_strikes = calc_blows_a(a_hp);
 		unsigned int b_strikes = calc_blows_b(b_hp);
 
@@ -1307,7 +1307,7 @@ void monte_carlo_combat_matrix::simulate()
 			{
 				if (k < a_strikes)
 				{
-					if (random_new::generator->get_random_bool(a_hit_chance_))
+					if (randomness::generator->get_random_bool(a_hit_chance_))
 					{
 						// A hits B
 						unsigned int damage = a_slowed ? a_slow_damage_ : a_damage_;
@@ -1316,7 +1316,7 @@ void monte_carlo_combat_matrix::simulate()
 						b_slowed |= a_slows_;
 
 						int drain_amount = (a_drain_percent_ * static_cast<signed>(damage) / 100 + a_drain_constant_);
-						a_hp = util::clamp(a_hp + drain_amount, 1u, a_max_hp_);
+						a_hp = utils::clamp(a_hp + drain_amount, 1u, a_max_hp_);
 
 						b_hp -= damage;
 
@@ -1330,7 +1330,7 @@ void monte_carlo_combat_matrix::simulate()
 
 				if (k < b_strikes)
 				{
-					if (random_new::generator->get_random_bool(b_hit_chance_))
+					if (randomness::generator->get_random_bool(b_hit_chance_))
 					{
 						// B hits A
 						unsigned int damage = b_slowed ? b_slow_damage_ : b_damage_;
@@ -1339,7 +1339,7 @@ void monte_carlo_combat_matrix::simulate()
 						a_slowed |= b_slows_;
 
 						int drain_amount = (b_drain_percent_ * static_cast<signed>(damage) / 100 + b_drain_constant_);
-						b_hp = util::clamp(b_hp + drain_amount, 1u, b_max_hp_);
+						b_hp = utils::clamp(b_hp + drain_amount, 1u, b_max_hp_);
 
 						a_hp -= damage;
 
@@ -1435,9 +1435,9 @@ unsigned int monte_carlo_combat_matrix::calc_blows_b(unsigned int b_hp) const
 	return it->strikes;
 }
 
-void monte_carlo_combat_matrix::scale_probabilities(const std::vector<double>& source, std::vector<double>& target, double multiplier, unsigned int singular_hp)
+void monte_carlo_combat_matrix::scale_probabilities(const std::vector<double>& source, std::vector<double>& target, double divisor, unsigned int singular_hp)
 {
-	if (std::isinf(multiplier))
+	if (divisor == 0.0)
 	{
 		// Happens if the "target" HP distribution vector isn't used,
 		// in which case it's not necessary to scale the probabilities.
@@ -1451,7 +1451,7 @@ void monte_carlo_combat_matrix::scale_probabilities(const std::vector<double>& s
 	}
 	else
 	{
-		std::transform(source.begin(), source.end(), std::back_inserter(target), [=](double prob){ return multiplier * prob; });
+		std::transform(source.begin(), source.end(), std::back_inserter(target), [=](double prob){ return prob / divisor; });
 	}
 
 	assert(std::abs(std::accumulate(target.begin(), target.end(), 0.0) - 1.0) < 0.001);
@@ -1949,11 +1949,11 @@ void merge_slice_summary(std::vector<double> & dst, const std::vector<double> & 
 // Of course, one could be a woman.  Or both.
 // And either could be non-human, too.
 // Um, ok, it was a stupid thing to say.
-void combatant::fight(combatant &opp, bool levelup_considered)
+void combatant::fight(combatant &opponent, bool levelup_considered)
 {
 	// If defender has firststrike and we don't, reverse.
-	if (opp.u_.firststrike && !u_.firststrike) {
-		opp.fight(*this, levelup_considered);
+	if(opponent.u_.firststrike && !u_.firststrike) {
+		opponent.fight(*this, levelup_considered);
 		return;
 	}
 
@@ -1961,15 +1961,15 @@ void combatant::fight(combatant &opp, bool levelup_considered)
 	printf("A:\n");
 	dump(u_);
 	printf("B:\n");
-	dump(opp.u_);
+	dump(opponent.u_);
 #endif
 
 #if 0
-	std::vector<double> prev = summary[0], opp_prev = opp.summary[0];
-	complex_fight(opp, 1);
-	std::vector<double> res = summary[0], opp_res = opp.summary[0];
+	std::vector<double> prev = summary[0], opp_prev = opponent.summary[0];
+	complex_fight(opponent, 1);
+	std::vector<double> res = summary[0], opp_res = opponent.summary[0];
 	summary[0] = prev;
-	opp.summary[0] = opp_prev;
+	opponent.summary[0] = opp_prev;
 #endif
 
 	// The chance so far of not being hit this combat:
@@ -1979,10 +1979,10 @@ void combatant::fight(combatant &opp, bool levelup_considered)
 	// If we've fought before and we have swarm, we might have to split the
 	// calculation by number of attacks.
 	const std::vector<combat_slice> split = split_summary(u_, summary);
-	const std::vector<combat_slice> opp_split = split_summary(opp.u_, opp.summary);
+	const std::vector<combat_slice> opp_split = split_summary(opponent.u_, opponent.summary);
 
 	bool use_monte_carlo_simulation = (
-		fight_complexity(split.size(), opp_split.size(), u_, opp.u_) >
+		fight_complexity(split.size(), opp_split.size(), u_, opponent.u_) >
 		MONTE_CARLO_SIMULATION_THRESHOLD &&
 		preferences::damage_prediction_allow_monte_carlo_simulation());
 
@@ -1991,16 +1991,16 @@ void combatant::fight(combatant &opp, bool levelup_considered)
 		// A very complex fight. Use Monte Carlo simulation instead of exact
 		// probability calculations.
 		complex_fight(attack_prediction_mode::monte_carlo_simulation,
-			u_, opp.u_, u_.num_blows, opp.u_.num_blows,
-			summary, opp.summary, self_not_hit, opp_not_hit,
+			u_, opponent.u_, u_.num_blows, opponent.u_.num_blows,
+			summary, opponent.summary, self_not_hit, opp_not_hit,
 			levelup_considered,
-			split, opp_split, slowed, opp.slowed);
+			split, opp_split, slowed, opponent.slowed);
 	}
 	else if (split.size() == 1 && opp_split.size() == 1)
 	{
 		// No special treatment due to swarm is needed. Ignore the split.
-		do_fight(u_, opp.u_, u_.num_blows, opp.u_.num_blows,
-			summary, opp.summary, self_not_hit, opp_not_hit,
+		do_fight(u_, opponent.u_, u_.num_blows, opponent.u_.num_blows,
+			summary, opponent.summary, self_not_hit, opp_not_hit,
 			levelup_considered);
 	}
 	else
@@ -2022,10 +2022,10 @@ void combatant::fight(combatant &opp, bool levelup_considered)
 				                   split[s].end_hp, split[s].prob);
 				init_slice_summary(sit_summary[1], summary[1], split[s].begin_hp,
 				                   split[s].end_hp, split[s].prob);
-				init_slice_summary(sit_opp_summary[0], opp.summary[0],
+				init_slice_summary(sit_opp_summary[0], opponent.summary[0],
 				                   opp_split[t].begin_hp, opp_split[t].end_hp,
 				                   opp_split[t].prob);
-				init_slice_summary(sit_opp_summary[1], opp.summary[1],
+				init_slice_summary(sit_opp_summary[1], opponent.summary[1],
 				                   opp_split[t].begin_hp, opp_split[t].end_hp,
 				                   opp_split[t].prob);
 
@@ -2034,7 +2034,7 @@ void combatant::fight(combatant &opp, bool levelup_considered)
 				double sit_self_not_hit = sit_prob;
 				double sit_opp_not_hit = sit_prob;
 
-				do_fight(u_, opp.u_, split[s].strikes, opp_split[t].strikes,
+				do_fight(u_, opponent.u_, split[s].strikes, opp_split[t].strikes,
 				         sit_summary, sit_opp_summary, sit_self_not_hit,
 				         sit_opp_not_hit, levelup_considered);
 
@@ -2050,22 +2050,22 @@ void combatant::fight(combatant &opp, bool levelup_considered)
 		// Swap in the results.
 		summary[0].swap(summary_result[0]);
 		summary[1].swap(summary_result[1]);
-		opp.summary[0].swap(opp_summary_result[0]);
-		opp.summary[1].swap(opp_summary_result[1]);
+		opponent.summary[0].swap(opp_summary_result[0]);
+		opponent.summary[1].swap(opp_summary_result[1]);
 	}
 
 #if 0
 	assert(summary[0].size() == res.size());
-	assert(opp.summary[0].size() == opp_res.size());
+	assert(opponent.summary[0].size() == opp_res.size());
 	for (unsigned int i = 0; i < summary[0].size(); ++i) {
 		if (std::fabs(summary[0][i] - res[i]) > 0.000001) {
 			std::cerr << "Mismatch for " << i << " hp: " << summary[0][i] << " should have been " << res[i] << "\n";
 			assert(0);
 		}
 	}
-	for (unsigned int i = 0; i < opp.summary[0].size(); ++i) {
-		if (std::fabs(opp.summary[0][i] - opp_res[i])> 0.000001) {
-			std::cerr << "Mismatch for " << i << " hp: " << opp.summary[0][i] << " should have been " << opp_res[i] << "\n";
+	for (unsigned int i = 0; i < opponent.summary[0].size(); ++i) {
+		if (std::fabs(opponent.summary[0][i] - opp_res[i])> 0.000001) {
+			std::cerr << "Mismatch for " << i << " hp: " << opponent.summary[0][i] << " should have been " << opp_res[i] << "\n";
 			assert(0);
 		}
 	}
@@ -2080,29 +2080,29 @@ void combatant::fight(combatant &opp, bool levelup_considered)
 		for (unsigned int i = 0; i < size; ++i)
 			hp_dist[i] = summary[0][i] + summary[1][i];
 	}
-	if (opp.summary[1].empty())
-		opp.hp_dist = opp.summary[0];
+	if(opponent.summary[1].empty())
+		opponent.hp_dist = opponent.summary[0];
 	else {
-		const unsigned size = opp.summary[0].size();
-		opp.hp_dist.resize(size);
+		const unsigned size = opponent.summary[0].size();
+		opponent.hp_dist.resize(size);
 		for (unsigned int i = 0; i < size; ++i)
-			opp.hp_dist[i] = opp.summary[0][i] + opp.summary[1][i];
+			opponent.hp_dist[i] = opponent.summary[0][i] + opponent.summary[1][i];
 	}
 
 	// Chance that we / they were touched this time.
 	double touched = 1.0 - self_not_hit;
 	double opp_touched = 1.0 - opp_not_hit;
-	if (opp.u_.poisons)
+	if(opponent.u_.poisons)
 		poisoned += (1 - poisoned) * touched;
 	if (u_.poisons)
-		opp.poisoned += (1 - opp.poisoned) * opp_touched;
+		opponent.poisoned += (1 - opponent.poisoned) * opp_touched;
 
 	if(!use_monte_carlo_simulation)
 	{
-		if(opp.u_.slows)
+		if(opponent.u_.slows)
 			slowed += (1 - slowed) * touched;
 		if(u_.slows)
-			opp.slowed += (1 - opp.slowed) * opp_touched;
+			opponent.slowed += (1 - opponent.slowed) * opp_touched;
 	}
 	else
 	{
@@ -2111,11 +2111,11 @@ void combatant::fight(combatant &opp, bool levelup_considered)
 		 * We need to recalculate it based on the HP distribution.
 		 */
 		slowed = std::accumulate(summary[1].begin(), summary[1].end(), 0.0);
-		opp.slowed = std::accumulate(opp.summary[1].begin(), opp.summary[1].end(), 0.0);
+		opponent.slowed = std::accumulate(opponent.summary[1].begin(), opponent.summary[1].end(), 0.0);
 	}
 
 	untouched *= self_not_hit;
-	opp.untouched *= opp_not_hit;
+	opponent.untouched *= opp_not_hit;
 }
 
 double combatant::average_hp(unsigned int healing) const

@@ -1,3 +1,16 @@
+/*
+   Copyright (C) 2017 by the Battle for Wesnoth Project http://www.wesnoth.org/
+
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 2 of the License, or
+   (at your option) any later version.
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY.
+
+   See the COPYING file for more details.
+*/
+
 #include <fstream>
 
 #include "filesystem.hpp"
@@ -15,31 +28,6 @@ static lg::log_domain log_filesystem("filesystem");
 
 namespace filesystem
 {
-
-
-scoped_istream& scoped_istream::operator=(std::istream *s)
-{
-	delete stream;
-	stream = s;
-	return *this;
-}
-
-scoped_istream::~scoped_istream()
-{
-	delete stream;
-}
-
-scoped_ostream& scoped_ostream::operator=(std::ostream *s)
-{
-	delete stream;
-	stream = s;
-	return *this;
-}
-
-scoped_ostream::~scoped_ostream()
-{
-	delete stream;
-}
 
 std::string get_prefs_file()
 {

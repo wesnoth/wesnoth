@@ -1,3 +1,15 @@
+/*
+   Copyright (C) 2017 by the Battle for Wesnoth Project http://www.wesnoth.org/
+
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 2 of the License, or
+   (at your option) any later version.
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY.
+
+   See the COPYING file for more details.
+*/
 
 #ifndef CARRYOVER_H_INCLUDED
 #define CARRYOVER_H_INCLUDED
@@ -65,7 +77,7 @@ public:
 	/// @param from_snapshot true if cfg is a [snapshot], false if cfg is [carryover_sides(_start)]
 	explicit carryover_info(const config& cfg, bool from_snapshot = false);
 
-	carryover* get_side(std::string save_id);
+	carryover* get_side(const std::string& save_id);
 	std::vector<carryover>& get_all_sides();
 	void add_side(const config& cfg);
 	void add_side(const team& t, const int gold, const bool add);
@@ -78,8 +90,8 @@ public:
 	void set_variables(const config& vars) { variables_ = vars; }
 	const config& get_variables() const { return variables_; }
 
-	const rand_rng::mt_rng& rng() const { return rng_; }
-	rand_rng::mt_rng& rng() { return rng_; }
+	const randomness::mt_rng& rng() const { return rng_; }
+	randomness::mt_rng& rng() { return rng_; }
 
 	const std::string& next_scenario() const { return next_scenario_; }
 
@@ -89,7 +101,7 @@ public:
 private:
 	std::vector<carryover> carryover_sides_;
 	config variables_;
-	rand_rng::mt_rng rng_;
+	randomness::mt_rng rng_;
 	boost::ptr_vector<config> wml_menu_items_;
 	std::string next_scenario_;    /**< the scenario coming next (for campaigns) */
 	int next_underlying_unit_id_;

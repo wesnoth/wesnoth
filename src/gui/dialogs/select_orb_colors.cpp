@@ -1,15 +1,15 @@
 /*
- Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2017 by the Battle for Wesnoth Project http://www.wesnoth.org/
 
- This program is free software; you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
- the Free Software Foundation; either version 2 of the License, or
- (at your option) any later version.
- This program is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY.
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 2 of the License, or
+   (at your option) any later version.
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY.
 
- See the COPYING file for more details.
- */
+   See the COPYING file for more details.
+*/
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
@@ -93,7 +93,7 @@ void select_orb_colors::setup_orb_group(const std::string& base_id, bool& shown,
 	group<std::string>& group = groups_[base_id];
 
 	using iteration::walker_base;
-	walker_base* iter = selection.create_walker();
+	std::unique_ptr<walker_base> iter(selection.create_walker());
 	while(!iter->at_end(walker_base::child)) {
 		widget* next = iter->get(walker_base::child);
 		if(toggle_button* button = dynamic_cast<toggle_button*>(next)) {

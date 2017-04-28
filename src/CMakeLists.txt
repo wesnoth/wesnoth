@@ -238,8 +238,8 @@ target_link_libraries(wesnoth-core ${Boost_FILESYSTEM_LIBRARY})
 if(ENABLE_DISPLAY_REVISION)
 	add_custom_target(wesnoth-revision_dummy
 		COMMAND
-			${CMAKE_SOURCE_DIR}/utils/autorevision
-				-th
+			${CMAKE_SOURCE_DIR}/utils/autorevision.sh
+				-t h
 				> ${CMAKE_CURRENT_BINARY_DIR}/revision.dummy
 		WORKING_DIRECTORY
 			${CMAKE_SOURCE_DIR}

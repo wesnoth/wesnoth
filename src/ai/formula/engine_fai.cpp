@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2009 - 2017 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -42,7 +42,7 @@ static lg::log_domain log_ai_engine_fai("ai/engine/fai");
 
 class fai_candidate_action_wrapper : public candidate_action {
 public:
-	fai_candidate_action_wrapper( rca_context &context, const config &cfg, game_logic::candidate_action_ptr fai_ca, formula_ai &_formula_ai )
+	fai_candidate_action_wrapper( rca_context &context, const config &cfg, wfl::candidate_action_ptr fai_ca, formula_ai &_formula_ai )
 		: candidate_action(context,cfg),fai_ca_(fai_ca),formula_ai_(_formula_ai),cfg_(cfg)///@todo 1.7: implement fai_ca->to_config()
 	{
 
@@ -68,7 +68,7 @@ public:
 		return cfg_;
 	}
 private:
-	game_logic::candidate_action_ptr fai_ca_;
+	wfl::candidate_action_ptr fai_ca_;
 	formula_ai &formula_ai_;
 	const config cfg_;
 };
@@ -87,7 +87,7 @@ engine_fai::~engine_fai()
 
 
 void engine_fai::do_parse_candidate_action_from_config( rca_context &context, const config &cfg, std::back_insert_iterator<std::vector< candidate_action_ptr > > b ){
-	game_logic::candidate_action_ptr fai_ca = formula_ai_->load_candidate_action_from_config(cfg);
+	wfl::candidate_action_ptr fai_ca = formula_ai_->load_candidate_action_from_config(cfg);
 	if (!fai_ca) {
 		ERR_AI_ENGINE_FAI << "side "<<ai_.get_side()<< " : ERROR creating candidate_action["<<cfg["name"]<<"]"<< std::endl;
 		DBG_AI_ENGINE_FAI << "config snippet contains: " << std::endl << cfg << std::endl;

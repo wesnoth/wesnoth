@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Thomas Baumhauer <thomas.baumhauer@NOSPAMgmail.com>
+   Copyright (C) 2008 - 2017 by Thomas Baumhauer <thomas.baumhauer@NOSPAMgmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,7 +18,7 @@
 #include "md5.hpp"
 #include "hash.hpp"
 
-namespace util {
+namespace utils {
 
 const std::string itoa64 = "./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz" ;
 const std::string hash_prefix = "$H$";
@@ -82,4 +82,4 @@ std::string create_hash(const std::string& password, const std::string& salt, in
 	return encode_hash(output);
 }
 
-} // namespace util
+} // namespace utils

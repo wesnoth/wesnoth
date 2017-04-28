@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -20,7 +20,7 @@
 #include "gui/widgets/settings.hpp"
 #include "log.hpp"
 #include "lua_jailbreak_exception.hpp"  // for lua_jailbreak_exception
-#include "random_new.hpp"
+#include "random.hpp"
 #include "seed_rng.hpp"
 
 #ifdef DEBUG_LUA
@@ -219,7 +219,7 @@ static int intf_name_generator(lua_State *L)
 static int intf_random(lua_State *L)
 {
 	if (lua_isnoneornil(L, 1)) {
-		double r = double(random_new::generator->next_random());
+		double r = double(randomness::generator->next_random());
 		double r_max = double(std::numeric_limits<uint32_t>::max());
 		lua_push(L, r / (r_max + 1));
 		return 1;
@@ -238,7 +238,7 @@ static int intf_random(lua_State *L)
 		if (min > max) {
 			return luaL_argerror(L, 1, "min > max");
 		}
-		lua_push(L, random_new::generator->get_random_int(min, max));
+		lua_push(L, randomness::generator->get_random_int(min, max));
 		return 1;
 	}
 }
@@ -275,7 +275,7 @@ lua_kernel_base::lua_kernel_base()
 	// Debug and OS are not, but most of their functions will be disabled below.
 	cmd_log_ << "Adding standard libs...\n";
 
-	static const luaL_Reg safe_libs[] = {
+	static const luaL_Reg safe_libs[] {
 		{ "",       luaopen_base   },
 		{ "table",  luaopen_table  },
 		{ "string", luaopen_string },
@@ -344,7 +344,7 @@ lua_kernel_base::lua_kernel_base()
 	// Add some callback from the wesnoth lib
 	cmd_log_ << "Registering basic wesnoth API...\n";
 
-	static luaL_Reg const callbacks[] = {
+	static luaL_Reg const callbacks[] {
 		{ "compare_versions",         &intf_compare_versions         		},
 		{ "have_file",                &lua_fileops::intf_have_file          },
 		{ "read_file",                &lua_fileops::intf_read_file          },
@@ -403,19 +403,17 @@ lua_kernel_base::lua_kernel_base()
 	// Get some callbacks for map locations
 	cmd_log_ << "Adding map_location table...\n";
 
-	static luaL_Reg const map_callbacks[] = {
+	static luaL_Reg const map_callbacks[] {
 		{ "get_direction",		&lua_map_location::intf_get_direction         		},
 		{ "vector_sum",			&lua_map_location::intf_vector_sum			},
+		{ "vector_diff",			&lua_map_location::intf_vector_diff			},
 		{ "vector_negation",		&lua_map_location::intf_vector_negation			},
-		{ "zero",			&lua_map_location::intf_vector_zero			},
 		{ "rotate_right_around_center",	&lua_map_location::intf_rotate_right_around_center	},
 		{ "tiles_adjacent",		&lua_map_location::intf_tiles_adjacent			},
 		{ "get_adjacent_tiles",		&lua_map_location::intf_get_adjacent_tiles		},
 		{ "distance_between",		&lua_map_location::intf_distance_between		},
 		{ "get_in_basis_N_NE",		&lua_map_location::intf_get_in_basis_N_NE		},
 		{ "get_relative_dir",		&lua_map_location::intf_get_relative_dir		},
-		{ "parse_direction",		&lua_map_location::intf_parse_direction			},
-		{ "write_direction",		&lua_map_location::intf_write_direction			},
 		{ nullptr, nullptr }
 	};
 
@@ -432,7 +430,7 @@ lua_kernel_base::lua_kernel_base()
 
 	cmd_log_ << "Adding name generator metatable...\n";
 	luaL_newmetatable(L, Gen);
-	static luaL_Reg const generator[] = {
+	static luaL_Reg const generator[] {
 		{ "__call", &impl_name_generator_call},
 		{ "__gc", &impl_name_generator_collect},
 		{ nullptr, nullptr}

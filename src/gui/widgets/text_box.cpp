@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -167,21 +167,21 @@ void text_box::update_canvas()
 	const int max_width = get_text_maximum_width();
 	const int max_height = get_text_maximum_height();
 
-	for(auto & tmp : get_canvas())
+	for(auto & tmp : get_canvases())
 	{
 
-		tmp.set_variable("text", variant(get_value()));
-		tmp.set_variable("text_x_offset", variant(text_x_offset_));
-		tmp.set_variable("text_y_offset", variant(text_y_offset_));
-		tmp.set_variable("text_maximum_width", variant(max_width));
-		tmp.set_variable("text_maximum_height", variant(max_height));
+		tmp.set_variable("text", wfl::variant(get_value()));
+		tmp.set_variable("text_x_offset", wfl::variant(text_x_offset_));
+		tmp.set_variable("text_y_offset", wfl::variant(text_y_offset_));
+		tmp.set_variable("text_maximum_width", wfl::variant(max_width));
+		tmp.set_variable("text_maximum_height", wfl::variant(max_height));
 
 		tmp.set_variable("cursor_offset",
-						 variant(get_cursor_position(start + length).x));
+						 wfl::variant(get_cursor_position(start + length).x));
 
-		tmp.set_variable("selection_offset", variant(start_offset));
-		tmp.set_variable("selection_width", variant(end_offset - start_offset));
-		tmp.set_variable("text_wrap_mode", variant(ellipse_mode));
+		tmp.set_variable("selection_offset", wfl::variant(start_offset));
+		tmp.set_variable("selection_width", wfl::variant(end_offset - start_offset));
+		tmp.set_variable("text_wrap_mode", wfl::variant(ellipse_mode));
 	}
 }
 
@@ -253,19 +253,19 @@ void text_box::update_offsets()
 	// FIXME: This should use pango-cairo code path instead of sdl_ttf code path
 	text_height_ = font::get_max_height(conf->text_font_size);
 
-	game_logic::map_formula_callable variables;
-	variables.add("height", variant(get_height()));
-	variables.add("width", variant(get_width()));
-	variables.add("text_font_height", variant(text_height_));
+	wfl::map_formula_callable variables;
+	variables.add("height", wfl::variant(get_height()));
+	variables.add("width", wfl::variant(get_width()));
+	variables.add("text_font_height", wfl::variant(text_height_));
 
 	text_x_offset_ = conf->text_x_offset(variables);
 	text_y_offset_ = conf->text_y_offset(variables);
 
 	// Since this variable doesn't change set it here instead of in
 	// update_canvas().
-	for(auto & tmp : get_canvas())
+	for(auto & tmp : get_canvases())
 	{
-		tmp.set_variable("text_font_height", variant(text_height_));
+		tmp.set_variable("text_font_height", wfl::variant(text_height_));
 	}
 
 	// Force an update of the canvas since now text_font_height is known.
@@ -447,9 +447,9 @@ text_box_definition::resolution::resolution(const config& cfg)
 	, text_y_offset(cfg["text_y_offset"])
 {
 	// Note the order should be the same as the enum state_t in text_box.hpp.
-	state.push_back(state_definition(cfg.child("state_enabled")));
-	state.push_back(state_definition(cfg.child("state_disabled")));
-	state.push_back(state_definition(cfg.child("state_focused")));
+	state.emplace_back(cfg.child("state_enabled"));
+	state.emplace_back(cfg.child("state_disabled"));
+	state.emplace_back(cfg.child("state_focused"));
 }
 
 // }---------- BUILDER -----------{

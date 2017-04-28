@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2016 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2006 - 2017 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playturn Copyright (C) 2003 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -21,7 +21,6 @@
 transient_end_level::transient_end_level()
 	: carryover_report(true)
 	, linger_mode(true)
-	, custom_endlevel_music()
 	, reveal_map(true)
 {}
 
@@ -70,5 +69,4 @@ void transient_end_level::write(config& cfg) const
 	cfg["carryover_report"] = carryover_report;
 	cfg["linger_mode"] = linger_mode;
 	cfg["reveal_map"] = reveal_map;
-	cfg["music"] = custom_endlevel_music;
 }

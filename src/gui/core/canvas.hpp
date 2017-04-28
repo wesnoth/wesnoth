@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2007 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -21,11 +21,12 @@
 #ifndef GUI_AUXILIARY_CANVAS_HPP_INCLUDED
 #define GUI_AUXILIARY_CANVAS_HPP_INCLUDED
 
+#include "config.hpp"
 #include "formula/callable.hpp"
+#include "formula/function.hpp"
 #include "sdl/surface.hpp"
 
-class config;
-class variant;
+namespace wfl { class variant; }
 
 namespace gui2
 {
@@ -47,12 +48,16 @@ public:
 	/**
 	 * Abstract base class for all other shapes.
 	 *
-	 * The other shapes are declared and defined in canvas.cpp, since the
+	 * The other shapes are declared and defined in canvas_private.hpp, since the
 	 * implementation details are not interesting for users of the canvas.
 	 */
 	class shape
 	{
 	public:
+		explicit shape(const config& cfg) : immutable_(cfg["immutable"].to_bool(false))
+		{
+		}
+
 		virtual ~shape()
 		{
 		}
@@ -66,10 +71,20 @@ public:
 		 *                        definition, this parameter contains the values
 		 *                        for these formulas.
 		 */
-		virtual void draw(surface& canvas,
-						  SDL_Renderer* renderer,
-						  const game_logic::map_formula_callable& variables)
-				= 0;
+		virtual void draw(surface& canvas, SDL_Renderer* renderer,
+		                  wfl::map_formula_callable& variables) = 0;
+
+		bool immutable() const
+		{
+			return immutable_;
+		}
+
+	private:
+		/**
+		 * If this is true, this shape will not be removed from the canvas even if
+		 * the canvas's content is reset.
+		 */
+		bool immutable_;
 	};
 
 	typedef std::shared_ptr<shape> shape_ptr;
@@ -104,7 +119,20 @@ public:
 	 *                            http://www.wesnoth.org/wiki/GUICanvasWML for
 	 *                            more information.
 	 */
-	void set_cfg(const config& cfg)
+	void set_cfg(const config& cfg, const bool force = false)
+	{
+		clear_shapes(force);
+		parse_cfg(cfg);
+	}
+
+	/**
+	 * Appends data to the config.
+	 *
+	 * @param cfg                 The config object with the data to draw, see
+	 *                            http://www.wesnoth.org/wiki/GUICanvasWML for
+	 *                            more information.
+	 */
+	void append_cfg(const config& cfg)
 	{
 		parse_cfg(cfg);
 	}
@@ -116,6 +144,7 @@ public:
 		w_ = width;
 		set_is_dirty(true);
 	}
+
 	unsigned get_width() const
 	{
 		return w_;
@@ -126,6 +155,7 @@ public:
 		h_ = height;
 		set_is_dirty(true);
 	}
+
 	unsigned get_height() const
 	{
 		return h_;
@@ -136,10 +166,15 @@ public:
 		return canvas_;
 	}
 
-	void set_variable(const std::string& key, const variant& value)
+	void set_variable(const std::string& key, const wfl::variant& value)
 	{
 		variables_.add(key, value);
 		set_is_dirty(true);
+	}
+
+	void set_is_dirty(const bool is_dirty)
+	{
+		is_dirty_ = is_dirty;
 	}
 
 private:
@@ -168,15 +203,13 @@ private:
 	SDL_Renderer* renderer_;
 
 	/** The variables of the canvas. */
-	game_logic::map_formula_callable variables_;
+	wfl::map_formula_callable variables_;
+
+	/** Action function definitions for the canvas. */
+	wfl::action_function_symbol_table functions_;
 
 	/** The dirty state of the canvas. */
 	bool is_dirty_;
-
-	void set_is_dirty(const bool is_dirty)
-	{
-		is_dirty_ = is_dirty;
-	}
 
 	/**
 	 * Parses a config object.
@@ -189,6 +222,8 @@ private:
 	 *                            http://www.wesnoth.org/wiki/GUICanvasWML
 	 */
 	void parse_cfg(const config& cfg);
+
+	void clear_shapes(const bool force);
 };
 
 } // namespace gui2

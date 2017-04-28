@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Tomasz Sniatowski <kailoran@gmail.com>
+   Copyright (C) 2008 - 2017 by Tomasz Sniatowski <kailoran@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -64,7 +64,7 @@ public:
 	 * empty, indicating a new map.
 	 * Marked "explicit" to avoid automatic conversions.
 	 */
-	explicit map_context(const editor_map& map, const display& disp, bool pure_map, const config& schedule);
+	explicit map_context(const editor_map& map, bool pure_map, const config& schedule);
 
 	/**
 	 * Create map_context from a map file. If the map cannot be loaded, an
@@ -74,7 +74,7 @@ public:
 	 * inside scenarios do not change the filename, but set the "embedded" flag
 	 * instead.
 	 */
-	map_context(const config& game_config, const std::string& filename, const display& disp);
+	map_context(const config& game_config, const std::string& filename);
 
 	/**
 	 * Map context destructor
@@ -207,7 +207,7 @@ public:
 	void add_to_playlist(const sound::music_track& track) {
 
 		if (music_tracks_.find(track.id()) == music_tracks_.end())
-				music_tracks_.insert(std::pair<std::string, sound::music_track>(track.id(), track));
+				music_tracks_.emplace(track.id(), track);
 		else music_tracks_.erase(track.id());
 	}
 

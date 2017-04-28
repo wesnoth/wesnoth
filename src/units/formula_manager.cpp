@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -21,9 +21,9 @@
 #include "map/location.hpp"
 #include "log.hpp"
 
-void unit_formula_manager::add_formula_var(std::string str, variant var)
+void unit_formula_manager::add_formula_var(std::string str,wfl:: variant var)
 {
-	if(!formula_vars_) formula_vars_ = std::make_shared<game_logic::map_formula_callable>();
+	if(!formula_vars_) formula_vars_ = std::make_shared<wfl::map_formula_callable>();
 	formula_vars_->add(str, var);
 }
 
@@ -35,15 +35,15 @@ void unit_formula_manager::read(const config & ai)
 
 	if (const config &ai_vars = ai.child("vars"))
 	{
-		formula_vars_ = std::make_shared<game_logic::map_formula_callable>();
+		formula_vars_ = std::make_shared<wfl::map_formula_callable>();
 
-		variant var;
+		wfl::variant var;
 		for (const config::attribute &i : ai_vars.attribute_range()) {
 			var.serialize_from_string(i.second);
 			formula_vars_->add(i.first, var);
 		}
 	} else {
-		formula_vars_ = game_logic::map_formula_callable_ptr();
+		formula_vars_ = wfl::map_formula_callable_ptr();
 	}
 }
 
@@ -68,9 +68,9 @@ void unit_formula_manager::write(config & cfg)
 			config &ai_vars = ai.add_child("vars");
 
 			std::string str;
-			for(game_logic::map_formula_callable::const_iterator i = formula_vars_->begin(); i != formula_vars_->end(); ++i)
+			for(wfl::map_formula_callable::const_iterator i = formula_vars_->begin(); i != formula_vars_->end(); ++i)
 			{
-				i->second.serialize_to_string(str);
+				str = i->second.serialize_to_string();
 				if (!str.empty())
 				{
 					ai_vars[i->first] = str;

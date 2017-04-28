@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-11-05 23:29 UTC\n"
+"POT-Creation-Date: 2017-03-23 08:11+0100\n"
 "PO-Revision-Date: 2008-03-01 17:34+0200\n"
 "Last-Translator: Aleksej Korgenkov <grimpanto@mail.ru>\n"
 "Language-Team: none\n"
@@ -28,7 +28,7 @@ msgstr "Per kiu persono vi volas ludi?"
 #. [side]: type=Fighter, id=student
 #. [lua]: wml_actions.select_character
 #: data/campaigns/tutorial/lua/character_selection.lua:68
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:34
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:33
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:30
 msgid "Konrad"
 msgstr "Konrado"
@@ -46,7 +46,7 @@ msgid "Wesnoth Tutorial — Part I"
 msgstr "Vesnot Instruado Parto II"
 
 #. [side]: type=Fighter, id=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:30
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:29
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:26
 msgid "team_name^Student"
 msgstr ""
@@ -298,7 +298,7 @@ msgstr "Ĉu mi devas remarŝi?"
 #. [message]: speaker=Galdrad
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:370
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:675
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:684
 msgid "Good idea!"
 msgstr "Bona ideo!"
 
@@ -781,12 +781,12 @@ msgstr ""
 "realan laboron..."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:897
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:902
 msgid "Note"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:899
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:904
 #, fuzzy
 msgid ""
 "These dummies only attack if you are a single tile away. With care, you "
@@ -795,64 +795,27 @@ msgstr ""
 "Noto:\n"
 "La manekenoj povas ataki vin nur se vi okupas najbaran ĉelon."
 
-#. [set_menu_item]: id=skip_item
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:907
-msgid "End Scenario"
-msgstr ""
-
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:922
-msgid ""
-"Do you want to keep practicing? You can end this scenario at any time by "
-"using the <b>End Scenario</b> item in the context menu to move on to the "
-"next phase of your training."
-msgstr ""
-
-#. [option]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:930
-msgid "Yes, I’m still figuring it out."
-msgstr "Jes, mi restas."
-
-#. [option]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:939
-#, fuzzy
-#| msgid "Yes, I’m still figuring it out."
-msgid "female^Yes, I’m still figuring it out."
-msgstr "Jes, mi restas."
-
-#. [option]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:948
-msgid "No, I think I’ve got it."
-msgstr "Ne, mi pensas ke mi ellernis tion."
-
-#. [option]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:965
-#, fuzzy
-#| msgid "No, I think I’ve got it."
-msgid "female^No, I think I’ve got it."
-msgstr "Ne, mi pensas ke mi ellernis tion."
-
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:984
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:913
 msgid ""
 "Well, I think I know the basics. Onwards! Maybe I can fight in a real battle "
 "next?"
 msgstr ""
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:985
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:914
 msgid ""
 "female^Well, I think I know the basics. Onwards! Maybe I can fight in a real "
 "battle next?"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1001
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:930
 msgid "Victory"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1003
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:932
 #, fuzzy
 msgid ""
 "After your victory notice, the map will be grayed out to indicate that the "
@@ -1638,22 +1601,27 @@ msgstr ""
 "Memoru rekrutigi pli da militunoj ol estas bezonate: Pafarkistoj estas "
 "aparte efektivaj kontraŭ Gruntemuloj, Luprajdantoj kaj ilia Gvidanto."
 
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:651
+msgid "Hurry up and defeat the orcs before they become entrenched!"
+msgstr ""
+
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:669
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:678
 #, fuzzy
 #| msgid "I have no more money to recruit!"
 msgid "I have enough gold to recruit more units!"
 msgstr "Mi ne havas monon por varbi!"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:670
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:679
 #, fuzzy
 #| msgid "I have no more money to recruit!"
 msgid "female^I have enough gold to recruit more units!"
 msgstr "Mi ne havas monon por varbi!"
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:725
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:734
 msgid ""
 "That unit is about one kill (8 experience points) away from gaining a level! "
 "Do not let it die!"
@@ -1662,7 +1630,7 @@ msgstr ""
 "spertpoentoj)! Ne permesu mortigi ĝin!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:747
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:756
 #, fuzzy
 msgid ""
 "Their leader has moved into that village! He’s not as stupid as I thought. "
@@ -1672,7 +1640,7 @@ msgstr ""
 "orko resaniĝas dum ĉiu movo kaj havas bonan defendon."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:758
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:767
 #, fuzzy
 msgid ""
 "That unit has captured our village! You’d better get him out; it heals him "
@@ -1683,7 +1651,7 @@ msgstr ""
 
 #. [message]: speaker=unit
 #. The speaker is female
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:771
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:780
 msgid ""
 "Using me to attack is risky! I can slow the opponent with my ranged attack, "
 "but I hope you have a plan if I miss!"
@@ -1692,7 +1660,7 @@ msgstr ""
 "distanca atako, sed mi esperas ke vi ankaŭ havas planon se mi maltrafos!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:787
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:796
 #, fuzzy
 msgid ""
 "You are close to killing their leader! The unit who finishes him will gain "
@@ -1704,7 +1672,7 @@ msgstr ""
 "vian unuon zorgeme."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:812
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:821
 #, fuzzy
 msgid ""
 "We will miss $unit.name| because he had $unit.experience experience points. "
@@ -1715,7 +1683,7 @@ msgstr ""
 "la 2."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:818
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:827
 #, fuzzy
 msgid ""
 "We will miss $unit.name| because she had $unit.experience experience points. "
@@ -1726,7 +1694,7 @@ msgstr ""
 "la 2."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:847
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:856
 #, fuzzy
 msgid ""
 "We will miss $unit.name|, but at least he was not one of our experienced "
@@ -1736,7 +1704,7 @@ msgstr ""
 "el niaj spertaj militistoj!"
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:853
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:862
 #, fuzzy
 msgid ""
 "We will miss $unit.name|, but at least she was not one of our experienced "
@@ -1746,7 +1714,7 @@ msgstr ""
 "el niaj spertaj militistoj!"
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:873
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:881
 #, fuzzy
 msgid ""
 "Higher level units are powerful, but not invulnerable. Goodbye, $unit.name|."
@@ -1755,7 +1723,7 @@ msgstr ""
 "user_description|."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:887
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:895
 msgid ""
 "Losing a healer hurts all the troops! Keep them out of the enemy’s reach!"
 msgstr ""
@@ -1763,7 +1731,7 @@ msgstr ""
 "viajn militistojn!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:899
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:907
 #, fuzzy
 msgid ""
 "Beware of the orc leader: he can do 36 hitpoints of damage at night! Attack "
@@ -1774,7 +1742,7 @@ msgstr ""
 
 #. [message]: speaker=unit
 #. The speaker is female
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:913
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:921
 msgid ""
 "Advancing a level has fully healed me! I am able to heal units 8 hitpoints "
 "per turn, instead of just 4, and may also cure them of poison if they cannot "
@@ -1785,7 +1753,7 @@ msgstr ""
 
 #. [message]: speaker=unit
 #. The speaker is female
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:927
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:935
 msgid ""
 "Advancing a level has fully healed me! I cannot heal adjacent units anymore, "
 "but to compensate, I have a new, powerful faerie fire attack that deals 7 "
@@ -1794,7 +1762,7 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:941
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:949
 #, fuzzy
 msgid ""
 "Advancing a level has fully healed me! I always have a 60% chance of hitting "
@@ -1806,7 +1774,7 @@ msgstr ""
 "por ĉiu el la kvar atakoj. Uzu min por forpeli batrezistantajn unuojn."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:942
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:950
 #, fuzzy
 msgid ""
 "female^Advancing a level has fully healed me! I always have a 60% chance of "
@@ -1818,7 +1786,7 @@ msgstr ""
 "por ĉiu el la kvar atakoj. Uzu min por forpeli batrezistantajn unuojn."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:955
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:963
 #, fuzzy
 msgid ""
 "Advancing a level has fully healed me! I am good with both bow and sword, "
@@ -1831,7 +1799,7 @@ msgstr ""
 "tiam, kiam ili kontaktiĝas kun mi."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:956
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:964
 #, fuzzy
 msgid ""
 "female^Advancing a level has fully healed me! I am good with both bow and "
@@ -1844,7 +1812,7 @@ msgstr ""
 "tiam, kiam ili kontaktiĝas kun mi."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:970
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:978
 #, fuzzy
 msgid ""
 "Advancing a level has fully healed me! I am good with both bow and sword, "
@@ -1858,7 +1826,7 @@ msgstr ""
 "lokigu min zorgeme."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:983
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:991
 #, fuzzy
 msgid ""
 "Advancing a level has fully healed me! I am particularly good with the "
@@ -1870,28 +1838,28 @@ msgstr ""
 "Mi precipe bonas kun sabro: kvar atakoj donas po ok damaĝojn ĉiu."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:992
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1000
 #, fuzzy
 msgid "You took too long! Now we’ll never be rid of these orcs!"
 msgstr "Vi tro longe prokrastis, vi neniam liberiĝos de ĉi tiuj orkoj!"
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1008
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1016
 msgid "That... was foolish. Next time I should be more careful."
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1009
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1017
 msgid "female^That... was foolish. Next time I should be more careful."
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1032
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1040
 msgid "Agh! Now who will teach you how to defeat these orcs!"
 msgstr ""
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1058
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1066
 #, fuzzy
 msgid ""
 "You have beaten the orcs! You may want to try some novice-level campaigns "
@@ -1914,8 +1882,8 @@ msgstr "Batalanto"
 
 #. [unit_type]: id=Fighter, race=human
 #. [unit_type]: id=Fighteress, race=human
-#: data/campaigns/tutorial/units/Fighter.cfg:18
-#: data/campaigns/tutorial/units/Fighteress.cfg:20
+#: data/campaigns/tutorial/units/Fighter.cfg:19
+#: data/campaigns/tutorial/units/Fighteress.cfg:21
 #, fuzzy
 msgid ""
 "Young and brash, Fighters are skilled with swords and are vulnerable to "
@@ -1925,21 +1893,10 @@ msgstr ""
 "Juna kaj kuraĝa, Batalanto havas glavon kaj estas vundebla por atakoj de "
 "malamikoj. Tamen ili havas eblecon fariĝi grandajn militistojn unufoje."
 
-#. [attack]: type=blade
-#: data/campaigns/tutorial/units/Fighter.cfg:23
-msgid "sword"
-msgstr "glavo"
-
 #. [unit_type]: id=Fighteress, race=human
 #: data/campaigns/tutorial/units/Fighteress.cfg:4
 msgid "female^Fighter"
 msgstr "Batalantino"
-
-#. [attack]: type=blade
-#: data/campaigns/tutorial/units/Fighteress.cfg:24
-#, fuzzy
-msgid "saber"
-msgstr "sabro"
 
 #. [unit_type]: id=Quintain, race=mechanical
 #: data/campaigns/tutorial/units/Quintain.cfg:4
@@ -1954,11 +1911,6 @@ msgid ""
 msgstr ""
 "Birttimigiloj estas uzataj por praktiki skermon kaj duelon. Estas mirinde "
 "kaj tute nekutime esti atakata per unu."
-
-#. [attack]: type=impact
-#: data/campaigns/tutorial/units/Quintain.cfg:24
-msgid "flail"
-msgstr "draŝilo"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/utils/utils.cfg:36
@@ -1984,6 +1936,32 @@ msgid ""
 msgstr ""
 "\n"
 "*Klaku aŭ premu iun klavon por daŭrigi..."
+
+#~ msgid "Yes, I’m still figuring it out."
+#~ msgstr "Jes, mi restas."
+
+#, fuzzy
+#~| msgid "Yes, I’m still figuring it out."
+#~ msgid "female^Yes, I’m still figuring it out."
+#~ msgstr "Jes, mi restas."
+
+#~ msgid "No, I think I’ve got it."
+#~ msgstr "Ne, mi pensas ke mi ellernis tion."
+
+#, fuzzy
+#~| msgid "No, I think I’ve got it."
+#~ msgid "female^No, I think I’ve got it."
+#~ msgstr "Ne, mi pensas ke mi ellernis tion."
+
+#~ msgid "sword"
+#~ msgstr "glavo"
+
+#, fuzzy
+#~ msgid "saber"
+#~ msgstr "sabro"
+
+#~ msgid "flail"
+#~ msgstr "draŝilo"
 
 #, fuzzy
 #~ msgid ""

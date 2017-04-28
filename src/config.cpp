@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 by David White <dave@whitevine.net>
-   Copyright (C) 2005 - 2016 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Copyright (C) 2005 - 2017 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -1016,6 +1016,7 @@ struct config_has_value {
 	config_has_value(const std::string& name, const std::string& value)
 		: name_(name), value_()
 	{
+		// TODO: This is assigned here instead of in the init-list because attribute_value doesn't have a matching constructor
 		value_ = value;
 	}
 
@@ -1538,6 +1539,9 @@ std::string config::hash() const
 	i = 0;
 	for (const attribute &val : values)
 	{
+		if (val.second.blank()) {
+			continue;
+		}
 		for (std::string::const_iterator c = val.first.begin(); c != val.first.end(); ++c) {
 			hash_str[i] ^= *c;
 			if (++i == hash_length) i = 0;

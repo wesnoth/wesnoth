@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2016 by the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2016 - 2017 by the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -77,7 +77,7 @@ void end_credits::pre_show(window& window)
 	// Delay a little before beginning the scrolling
 	last_scroll_ = SDL_GetTicks() + 3000;
 
-	connect_signal_pre_key_press(window, std::bind(&end_credits::key_press_callback, this, _3, _4, _5));
+	connect_signal_pre_key_press(window, std::bind(&end_credits::key_press_callback, this, _5));
 
 	std::stringstream ss;
 	std::stringstream focus_ss;
@@ -109,7 +109,7 @@ void end_credits::pre_show(window& window)
 	}
 
 	// TODO: implement showing all available images as the credits scroll
-	window.get_canvas()[0].set_variable("background_image", variant(backgrounds_[0]));
+	window.get_canvas(0).set_variable("background_image", wfl::variant(backgrounds_[0]));
 
 	text_widget_ = find_widget<scroll_label>(&window, "text", false, true);
 
@@ -121,8 +121,10 @@ void end_credits::pre_show(window& window)
 	// Also, for some reason hiding the whole grid doesn't work, and the elements need to be hidden manually
 	if(grid* v_grid = dynamic_cast<grid*>(text_widget_->find("_vertical_scrollbar_grid", false))) {
 		find_widget<scrollbar_base>(v_grid, "_vertical_scrollbar", false).set_visible(widget::visibility::hidden);
-		find_widget<repeating_button>(v_grid, "_half_page_up", false).set_visible(widget::visibility::hidden);
-		find_widget<repeating_button>(v_grid, "_half_page_down", false).set_visible(widget::visibility::hidden);
+
+		// TODO: enable again if e24336afeb7 is reverted.
+		//find_widget<repeating_button>(v_grid, "_half_page_up", false).set_visible(widget::visibility::hidden);
+		//find_widget<repeating_button>(v_grid, "_half_page_down", false).set_visible(widget::visibility::hidden);
 	}
 }
 
@@ -150,7 +152,7 @@ void end_credits::timer_callback()
 	}
 }
 
-void end_credits::key_press_callback(bool&, bool&, const SDL_Keycode key)
+void end_credits::key_press_callback(const SDL_Keycode key)
 {
 	if(key == SDLK_UP && scroll_speed_ < 400) {
 		scroll_speed_ <<= 1;

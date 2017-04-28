@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2015 - 2016 by Ignacio R. Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2015 - 2017 by Ignacio R. Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -104,7 +104,7 @@ BOOST_AUTO_TEST_CASE( test_fs_enum )
 {
 	const std::string path = "data/test/test/filesystem/enum";
 
-	const std::vector<std::string> expected_filenames = {
+	const std::vector<std::string> expected_filenames {
 		"_initial.cfg",
 		"A1.cfg",
 		"A2.cfg",
@@ -113,7 +113,7 @@ BOOST_AUTO_TEST_CASE( test_fs_enum )
 		"B2.cfg",
 		"B3.cfg",
 		"_final.cfg"};
-	const std::vector<std::string> expected_dirnames = {
+	const std::vector<std::string> expected_dirnames {
 		"D1",
 		"D2",
 		"D3"};

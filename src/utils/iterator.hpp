@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2014 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -21,7 +21,7 @@
 
 #include <iterator>
 
-namespace util {
+namespace utils {
 
 // Forward declaration.
 template<typename Value, class Container, class Deref, class Key> class const_iterator_extend;
@@ -177,7 +177,7 @@ private:
 	base_iter_type iter_;
 };
 
-}// namespace util
+}// namespace utils
 
 
 /*
@@ -200,8 +200,8 @@ class int_vect {
 
 public:
 	// To the public, we will look like a container of ints.
-	typedef util::iterator_extend      <int, pint_vector, key, key> iterator;
-	typedef util::const_iterator_extend<int, pint_vector, key, key> const_iterator;
+	typedef utils::iterator_extend      <int, pint_vector, key, key> iterator;
+	typedef utils::const_iterator_extend<int, pint_vector, key, key> const_iterator;
 	// This gives us iterators that dereference to _int_, but otherwise
 	// behave like iterators of _pint_vector_. The first _key_ defines
 	// how to dereference, while the second _key_ prevents others from

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -146,7 +146,7 @@ private:
 
 std::list< sound_cache_chunk > sound_cache;
 typedef std::list< sound_cache_chunk >::iterator sound_cache_iterator;
-std::map<std::string,Mix_Music*> music_cache;
+std::map<std::string, std::shared_ptr<Mix_Music>> music_cache;
 
 std::vector<std::string> played_before;
 
@@ -267,7 +267,7 @@ static std::string pick_one(const std::string &files)
 		prev_choices[files] = choice;
 	} else {
 		choice = rand()%ids.size();
-		prev_choices.insert(std::pair<std::string,unsigned int>(files,choice));
+		prev_choices.emplace(files,choice);
 	}
 
 	return ids[choice];
@@ -486,19 +486,19 @@ static void play_new_music()
 
 	const std::string& filename = current_track.file_path();
 
-	std::map<std::string,Mix_Music*>::const_iterator itor = music_cache.find(filename);
+	auto itor = music_cache.find(filename);
 	if(itor == music_cache.end()) {
 		LOG_AUDIO << "attempting to insert track '" << filename << "' into cache\n";
 
 		SDL_RWops *rwops = filesystem::load_RWops(filename);
-		Mix_Music* const music = Mix_LoadMUSType_RW(rwops, MUS_NONE, true); // SDL takes ownership of rwops
+		const std::shared_ptr<Mix_Music> music(Mix_LoadMUSType_RW(rwops, MUS_NONE, true), &Mix_FreeMusic); // SDL takes ownership of rwops
 
 		if(music == nullptr) {
 			ERR_AUDIO << "Could not load music file '" << filename << "': "
 					  << Mix_GetError() << "\n";
 			return;
 		}
-		itor = music_cache.insert(std::pair<std::string,Mix_Music*>(filename,music)).first;
+		itor = music_cache.emplace(filename, music).first;
 		last_track=current_track;
 	}
 
@@ -509,7 +509,7 @@ static void play_new_music()
 		fading_time=0;
 	}
 
-	const int res = Mix_FadeInMusic(itor->second, 1, fading_time);
+	const int res = Mix_FadeInMusic(itor->second.get(), 1, fading_time);
 	if(res < 0)
 	{
 		ERR_AUDIO << "Could not play music: " << Mix_GetError() << " " << filename <<" " << std::endl;
@@ -605,9 +605,7 @@ void music_thinker::process(events::pump_info &info) {
 	}
 
 	if (unload_music) {
-		for (auto track : music_cache) {
-			Mix_FreeMusic(track.second);
-		}
+		// The custom shared_ptr deleter (Mix_FreeMusic) will handle the freeing of each track.
 		music_cache.clear();
 
 		Mix_HookMusicFinished(nullptr);

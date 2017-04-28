@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -155,31 +155,30 @@ void hotkey_base::save(config& item) const
 	save_helper(item);
 }
 
-hotkey_ptr create_hotkey(const std::string &id, SDL_Event &event)
+hotkey_ptr create_hotkey(const std::string& id, SDL_Scancode new_val)
 {
 	hotkey_ptr base = hotkey_ptr(new hotkey_void);
 
-	switch (event.type) {
-	case SDL_KEYDOWN:
-	case SDL_KEYUP: {
-		hotkey_keyboard_ptr keyboard(new hotkey_keyboard());
-		base = std::dynamic_pointer_cast<hotkey_base>(keyboard);
-		SDL_Scancode code;
-		code = event.key.keysym.scancode;
-		keyboard->set_scancode(code);
-		break;
-	}
-	case SDL_MOUSEBUTTONDOWN:
-	case SDL_MOUSEBUTTONUP: {
-		hotkey_mouse_ptr mouse(new hotkey_mouse());
-		base = std::dynamic_pointer_cast<hotkey_base>(mouse);
-		mouse->set_button(event.button.button);
-		break;
-	}
-	default:
-		ERR_G<< "Trying to bind an unknown event type:" << event.type << "\n";
-		break;
-	}
+	hotkey_keyboard_ptr keyboard(new hotkey_keyboard());
+	base = std::dynamic_pointer_cast<hotkey_base>(keyboard);
+
+	keyboard->set_scancode(new_val);
+
+	base->set_mods(sdl_get_mods());
+	base->set_command(id);
+	base->unset_default();
+
+	return base;
+}
+
+hotkey_ptr create_hotkey(const std::string& id, Uint8 new_val)
+{
+	hotkey_ptr base = hotkey_ptr(new hotkey_void);
+
+	hotkey_mouse_ptr mouse(new hotkey_mouse());
+	base = std::dynamic_pointer_cast<hotkey_base>(mouse);
+
+	mouse->set_button(new_val);
 
 	base->set_mods(sdl_get_mods());
 	base->set_command(id);
@@ -446,7 +445,7 @@ void save_hotkeys(config& cfg)
 	}
 }
 
-std::string get_names(std::string id)
+std::string get_names(const std::string& id)
 {
 	// Names are used in places like the hot-key preferences menu
 	std::vector<std::string> names;

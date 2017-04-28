@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2016 by Sytyi Nick <nsytyi@gmail.com>
+   Copyright (C) 2011 - 2017 by Sytyi Nick <nsytyi@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -102,7 +102,7 @@ void class_tag::add_link(const std::string &link){
 	std::string::size_type pos_last = link.rfind('/');
 	//if (pos_last == std::string::npos) return;
 	std::string name_link = link.substr(pos_last+1,link.length());
-	links_.insert(std::pair<std::string,std::string>(name_link,link));
+	links_.emplace(name_link, link);
 }
 
 const class_key * class_tag::find_key(const std::string &name) const{

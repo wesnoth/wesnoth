@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011, 2016 by Ignacio R. Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2011, 2017 by Ignacio R. Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -206,10 +206,10 @@ private:
 	int user_bookmarks_begin_;
 
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
-	virtual const std::string& window_id() const;
+	virtual const std::string& window_id() const override;
 
 	/** Inherited from modal_dialog. */
-	void pre_show(window& window);
+	virtual void pre_show(window& window) override;
 
 	/** Handles dialog exit events and decides whether to proceed or not. */
 	bool on_exit(window& window);

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2008 - 2017 by the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -24,15 +24,12 @@ namespace dialogs
 
 REGISTER_DIALOG(sp_options_configure)
 
-sp_options_configure::sp_options_configure(ng::create_engine& create_engine)
+sp_options_configure::sp_options_configure(ng::create_engine& create_engine, ng::configure_engine& config_engine)
 	: create_engine_(create_engine)
-	, config_engine_()
+	, config_engine_(config_engine)
 	, options_manager_()
 {
 	set_restore(true);
-
-	config_engine_.reset(new ng::configure_engine(create_engine_.get_state()));
-	config_engine_->update_initial_cfg(create_engine_.current_level().data());
 }
 
 void sp_options_configure::pre_show(window& window)
@@ -44,7 +41,7 @@ void sp_options_configure::pre_show(window& window)
 void sp_options_configure::post_show(window& window)
 {
 	if(window.get_retval() == window::OK) {
-		config_engine_->set_options(options_manager_->get_options_config());
+		config_engine_.set_options(options_manager_->get_options_config());
 	}
 }
 

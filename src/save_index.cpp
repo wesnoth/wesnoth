@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by Jörg Hinrichs, refactored from various
+   Copyright (C) 2003 - 2017 by Jörg Hinrichs, refactored from various
    places formerly created by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -203,7 +203,7 @@ std::string save_info::format_time_local() const
 std::string save_info::format_time_summary() const
 {
 	time_t t = modified();
-	return util::format_time_summary(t);
+	return utils::format_time_summary(t);
 }
 
 bool save_info_less_time::operator() (const save_info& a, const save_info& b) const {
@@ -225,17 +225,15 @@ bool save_info_less_time::operator() (const save_info& a, const save_info& b) co
 	}
 }
 
-static std::istream* find_save_file(const std::string &name, const std::string &alt_name, const std::vector<std::string> &suffixes) {
+static filesystem::scoped_istream find_save_file(const std::string &name, const std::string &alt_name, const std::vector<std::string> &suffixes) {
 	for (const std::string &suf : suffixes) {
-		std::istream *file_stream = filesystem::istream_file(filesystem::get_saves_dir() + "/" + name + suf);
+		filesystem::scoped_istream file_stream = filesystem::istream_file(filesystem::get_saves_dir() + "/" + name + suf);
 		if (file_stream->fail()) {
-			delete file_stream;
 			file_stream = filesystem::istream_file(filesystem::get_saves_dir() + "/" + alt_name + suf);
 		}
-		if (!file_stream->fail())
+		if (!file_stream->fail()) {
 			return file_stream;
-		else
-			delete file_stream;
+		}
 	}
 	LOG_SAVE << "Could not open supplied filename '" << name << "'\n";
 	throw game::load_game_failed();
@@ -246,7 +244,7 @@ void read_save_file(const std::string& name, config& cfg, std::string* error_log
 	std::string modified_name = name;
 	replace_space2underbar(modified_name);
 
-	static const std::vector<std::string> suffixes = {"", ".gz", ".bz2"};
+	static const std::vector<std::string> suffixes {"", ".gz", ".bz2"};
 	filesystem::scoped_istream file_stream = find_save_file(modified_name, name, suffixes);
 
 	cfg.clear();

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -23,7 +23,7 @@
 
 #include <set>
 #include <boost/optional.hpp>
-#include <boost/random.hpp>
+#include <random>
 
 class cave_map_generator : public map_generator
 {
@@ -86,7 +86,7 @@ private:
 		std::vector<chamber> chambers_;
 		std::vector<passage> passages_;
 		config res_;
-		boost::random::mt19937 rng_;
+		std::mt19937 rng_;
 	};
 
 	bool on_board(const map_location& loc) const

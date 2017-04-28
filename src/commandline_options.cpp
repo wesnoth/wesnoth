@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2016 by Lukasz Dobrogowski <lukasz.dobrogowski@gmail.com>
+   Copyright (C) 2011 - 2017 by Lukasz Dobrogowski <lukasz.dobrogowski@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -484,7 +484,7 @@ void commandline_options::parse_log_domains_(const std::string &domains_string, 
 }
 
 void commandline_options::parse_log_strictness (const std::string & severity ) {
-	static lg::logger const *loggers[] = { &lg::err(), &lg::warn(), &lg::info(), &lg::debug() };
+	static lg::logger const *loggers[] { &lg::err(), &lg::warn(), &lg::info(), &lg::debug() };
 	for (const lg::logger * l : loggers ) {
 		if (severity == l->get_name()) {
 			lg::set_strict_severity(*l);

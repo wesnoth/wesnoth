@@ -57,8 +57,11 @@ option(ENABLE_HISTORY "Enable using GNU history for history in lua console" ON)
 
 if(NOT CMAKE_CROSSCOMPILING)
 	try_run(IEEE754_TEST_RETURN_CODE IEEE754_TEST_COMPILED ${CMAKE_BINARY_DIR} ${CMAKE_SOURCE_DIR}/src/compile_time_tests/ieee_754.cpp
-		CMAKE_FLAGS "-DCMAKE_CXX_STANDARD=11")
-	if(NOT IEEE754_TEST_RETURN_CODE EQUAL 0)
+		CMAKE_FLAGS "-DCMAKE_CXX_STANDARD=11" COMPILE_OUTPUT_VARIABLE IEEE754_TEST_COMPILE_OUTPUT)
+	if(NOT IEEE754_TEST_COMPILED)
+		message(WARNING "Failed to compile the IEEE 754 test. Skipping it.")
+		message(${IEEE754_TEST_COMPILE_OUTPUT})
+	elseif(NOT IEEE754_TEST_RETURN_CODE EQUAL 0)
 		message(FATAL_ERROR "Your platform does not represent floating point numbers in the IEEE 754 format.")
 	endif()
 else()
@@ -147,8 +150,8 @@ if(NOT DEFINED ENABLE_DISPLAY_REVISION)
 	# the display of revision numbers by default.
 	execute_process(
 		COMMAND
-			${CMAKE_SOURCE_DIR}/utils/autorevision
-				-th
+			${CMAKE_SOURCE_DIR}/utils/autorevision.sh
+				-t h
 				> ${CMAKE_CURRENT_BINARY_DIR}/revision.dummy
 		WORKING_DIRECTORY
 			${CMAKE_SOURCE_DIR}

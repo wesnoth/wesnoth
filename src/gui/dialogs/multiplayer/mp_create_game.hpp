@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -45,13 +45,13 @@ public:
 
 private:
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
-	virtual const std::string& window_id() const;
+	virtual const std::string& window_id() const override;
 
 	/** Inherited from modal_dialog. */
-	void pre_show(window& window);
+	virtual void pre_show(window& window) override;
 
 	/** Inherited from modal_dialog. */
-	void post_show(window& window);
+	virtual void post_show(window& window) override;
 
 	const config& cfg_;
 
@@ -131,7 +131,7 @@ private:
 	 */
 	bool dialog_exit_hook(window&);
 
-	int convert_to_game_filtered_index(const int initial_index);
+	int convert_to_game_filtered_index(const unsigned int initial_index);
 
 	void load_game_callback(window& window);
 

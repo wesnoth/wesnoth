@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Ignacio R. Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2009 - 2017 by Ignacio R. Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -22,51 +22,22 @@
 #include "storyscreen/interface.hpp"
 #include "storyscreen/controller.hpp"
 
-#include "font/text.hpp"
-#include "gettext.hpp"
-#include "intro.hpp"
-#include "language.hpp"
-#include "log.hpp"
-#include "sound.hpp"
-#include "video.hpp"
-
-static lg::log_domain log_engine("engine");
-#define LOG_NG LOG_STREAM(info, log_engine)
+#include "gui/dialogs/story_viewer.hpp"
 
 void show_story(CVideo& video, const std::string &scenario_name,
 	const config::const_child_itors &story)
 {
-	events::event_context story_context;
-
-	int segment_count = 0;
-	config::const_child_iterator itor = story.begin();
-	storyscreen::START_POSITION startpos = storyscreen::START_BEGINNING;
-	while (itor != story.end())
-	{
-		storyscreen::controller ctl(video, vconfig(*itor, true),
-			scenario_name, segment_count);
-		storyscreen::STORY_RESULT result = ctl.show(startpos);
-
-		switch(result) {
-		case storyscreen::NEXT:
-			if(itor != story.end()) {
-				++itor;
-				++segment_count;
-				startpos = storyscreen::START_BEGINNING;
-			}
-			break;
-		case storyscreen::BACK:
-			if(itor != story.begin()) {
-				--itor;
-				--segment_count;
-				startpos = storyscreen::START_END;
-			}
-			break;
-		case storyscreen::QUIT:
-			video2::trigger_full_redraw();
-			return;
-		}
+	// Combine all the [story] tags into a single config
+	config cfg;
+	for(const auto& iter : story) {
+		cfg.append_children(iter);
 	}
-	video2::trigger_full_redraw();
-	return;
+
+	if(cfg.empty()) {
+		return;
+	}
+
+	storyscreen::controller controller(vconfig(cfg, true), scenario_name);
+
+	gui2::dialogs::story_viewer::display(controller, video);
 }

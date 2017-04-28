@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2013 - 2016 by Andrius Silinskas <silinskas.andrius@gmail.com>
+   Copyright (C) 2013 - 2017 by Andrius Silinskas <silinskas.andrius@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -413,7 +413,7 @@ void game_config_manager::load_addons_cfg()
 			cache_.get_config(addon.main_cfg, umc_cfg);
 
 			// Annotate "era", "modification", and scenario tags with addon_id info
-			const char * tags_with_addon_id [] = { "era", "modification", "multiplayer", "scenario", "campaign", nullptr };
+			const char * tags_with_addon_id [] { "era", "modification", "multiplayer", "scenario", "campaign", nullptr };
 
 			for (const char ** type = tags_with_addon_id; *type; type++)
 			{

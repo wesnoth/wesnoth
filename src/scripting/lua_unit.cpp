@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Copyright (C) 2009 - 2017 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -45,7 +45,7 @@ unit* lua_unit::get()
 	if (ptr) return ptr.get();
 	if (c_ptr) return c_ptr;
 	if (side) {
-		return resources::gameboard->teams()[side - 1].recall_list().find_if_matches_underlying_id(uid).get();
+		return resources::gameboard->get_team(side).recall_list().find_if_matches_underlying_id(uid).get();
 	}
 	unit_map::unit_iterator ui = resources::gameboard->units().find(uid);
 	if (!ui.valid()) return nullptr;
@@ -55,7 +55,7 @@ unit_ptr lua_unit::get_shared()
 {
 	if (ptr) return ptr;
 	if (side) {
-		return resources::gameboard->teams()[side - 1].recall_list().find_if_matches_underlying_id(uid);
+		return resources::gameboard->get_team(side).recall_list().find_if_matches_underlying_id(uid);
 	}
 	unit_map::unit_iterator ui = resources::gameboard->units().find(uid);
 	if (!ui.valid()) return unit_ptr();
@@ -80,11 +80,12 @@ bool lua_unit::put_map(const map_location &loc)
 			return false;
 		}
 	} else if (side) { // recall list
-		unit_ptr it = resources::gameboard->teams()[side - 1].recall_list().extract_if_matches_underlying_id(uid);
+		unit_ptr it = resources::gameboard->get_team(side).recall_list().extract_if_matches_underlying_id(uid);
 		if (it) {
 			side = 0;
 			// uid may be changed by unit_map on insertion
-			uid = resources::gameboard->units().replace(loc, *it).first->underlying_id();
+			it->set_location(loc);
+			uid = resources::gameboard->units().insert(it).first->underlying_id();
 		} else {
 			ERR_LUA << "Could not find unit " << uid << " on recall list of side " << side << '\n';
 			return false;
@@ -166,10 +167,13 @@ static void unit_show_error(lua_State *L, int index, int error)
 	switch(error) {
 		case LU_NOT_UNIT:
 			luaW_type_error(L, index, "unit");
+			break;
 		case LU_NOT_VALID:
 			luaL_argerror(L, index, "unit not found");
+			break;
 		case LU_NOT_ON_MAP:
 			luaL_argerror(L, index, "unit not found on map");
+			break;
 	}
 }
 
@@ -300,13 +304,15 @@ static int impl_unit_get(lua_State *L)
 
 	if(strcmp(m, "upkeep") == 0) {
 		unit::upkeep_t upkeep = u.upkeep_raw();
-		if(boost::get<unit::upkeep_full>(&upkeep) != nullptr){
-			lua_pushstring(L, "full");
-		} else if(boost::get<unit::upkeep_loyal>(&upkeep) != nullptr){
-			lua_pushstring(L, "loyal");
+
+		// Need to keep these seperate in order to ensure an int value is always used if applicable.
+		if(int* v = boost::get<int>(&upkeep)) {
+			lua_push(L, *v);
 		} else {
-			lua_push(L, boost::get<int>(upkeep));
+			const std::string type = boost::apply_visitor(unit::upkeep_type_visitor(), upkeep);
+			lua_push(L, type);
 		}
+
 		return 1;
 	}
 	if(strcmp(m, "advancements") == 0) {
@@ -393,8 +399,8 @@ static int impl_unit_set(lua_State *L)
 	modify_bool_attrib("zoc", u.set_emit_zoc(value));
 	modify_bool_attrib("canrecruit", u.set_can_recruit(value));
 
-	modify_vector_string_attrib("extra_recruit", u.set_recruits(vector));
-	modify_vector_string_attrib("advances_to", u.set_advances_to(vector));
+	modify_vector_string_attrib("extra_recruit", u.set_recruits(value));
+	modify_vector_string_attrib("advances_to", u.set_advances_to(value));
 	if(strcmp(m, "alignment") == 0) {
 		u.set_alignment(lua_check<unit_type::ALIGNMENT>(L, 3));
 		return 0;

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -41,15 +41,6 @@ typedef std::vector<std::vector<int> > height_map;
 typedef t_translation::ter_map terrain_map;
 
 namespace {
-
-	struct for_randomshuffle
-	{
-		for_randomshuffle(boost::random::mt19937& rng) : rng_(rng) {}
-		boost::random::mt19937& rng_;
-		uint32_t operator ()(uint32_t end) { return rng_() % end; }
-	};
-
-
 	/**
 	 * Calculates the cost of building a road over terrain. For use in the
 	 * a_star_search algorithm.
@@ -120,7 +111,7 @@ namespace {
 			res = child["cost"].to_double();
 		}
 
-		cache_.insert(std::pair<t_translation::terrain_code, double>(c,res));
+		cache_.emplace(c, res);
 		return windiness*res;
 	}
 
@@ -467,15 +458,12 @@ bool default_map_generator_job::generate_river_internal(const height_map& height
 	map_location current_loc(x,y);
 	map_location adj[6];
 	get_adjacent_tiles(current_loc,adj);
-	int items[6] = {0,1,2,3,4,5};
-	for_randomshuffle shufflehelper(rng_);
-	std::random_shuffle(items, items + 4, shufflehelper);
+	std::shuffle(std::begin(adj), std::end(adj), rng_);
 
 	// Mark that we have attempted from this map_location
 	seen_locations.insert(current_loc);
 	river.push_back(current_loc);
-	for(int a = 0; a != 6; ++a) {
-		const map_location& loc = adj[items[a]];
+	for(const map_location& loc : adj) {
 		if(seen_locations.count(loc) == 0) {
 			const bool res = generate_river_internal(heights,terrain,loc.x,loc.y,river,seen_locations,river_uphill);
 			if(res) {
@@ -685,10 +673,10 @@ static void flood_name(const map_location& start, const std::string& name, std::
 		const t_translation::terrain_code terr = terrain[adj[n].x + (width / 3)][adj[n].y + (height / 3)];
 		const map_location loc(adj[n].x, adj[n].y);
 		if((t_translation::terrain_matches(terr, tile_types)) && (tile_names.find(loc) == tile_names.end())) {
-			tile_names.insert(std::pair<map_location, std::string>(loc, name));
+			tile_names.emplace(loc, name);
 			//labeling decision: this is result of trial and error on what looks best in game
 			if(label_count % 6 == 0) { //ensure that labels do not occur more often than every 6 recursions
-				labels->insert(std::pair<map_location, std::string>(loc, full_name));
+				labels->emplace(loc, full_name);
 				label_count++; //ensure that no adjacent tiles get labeled
 			}
 			flood_name(adj[n], name, tile_names, tile_types, terrain, width, height, label_count++, labels, full_name);
@@ -823,10 +811,10 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 					const map_location loc(r->x-data.width/3,r->y-data.height/3);
 
 					if(((r - river.begin())%name_frequency) == name_frequency/2) {
-						misc_labels->insert(std::pair<map_location,std::string>(loc,name));
+						misc_labels->emplace(loc, name);
 					}
 
-					river_names.insert(std::pair<map_location,std::string>(loc,base_name));
+					river_names.emplace(loc, base_name);
 				}
 			}
 
@@ -859,12 +847,12 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 				if(!touches_other_lake) {
 					const map_location loc(x-data.width/3,y-data.height/3);
 					misc_labels->erase(loc);
-					misc_labels->insert(std::pair<map_location,std::string>(loc,name));
+					misc_labels->emplace(loc, name);
 				}
 
 				for(auto i : locs) {
 					const map_location loc(i.x-data.width/3,i.y-data.height/3);
-					lake_names.insert(std::pair<map_location, std::string>(loc, base_name));
+					lake_names.emplace(loc, base_name);
 				}
 			}
 
@@ -1099,8 +1087,8 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 					std::string bridge_base_name = base_name_generator->generate();
 					const std::string& name = bridge_name_generator->generate({{"base",  bridge_base_name}});
 					const map_location loc(x - data.width / 3, y-data.height/3);
-					misc_labels->insert(std::pair<map_location,std::string>(loc,name));
-					bridge_names.insert(std::pair<map_location,std::string>(loc, bridge_base_name)); //add to use for village naming
+					misc_labels->emplace(loc, name);
+					bridge_names.emplace(loc, bridge_base_name); //add to use for village naming
 					bridges.insert(loc);
 				}
 
@@ -1121,7 +1109,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 			if(!convert_to.empty()) {
 				const t_translation::terrain_code letter = t_translation::read_terrain_code(convert_to);
 				if(misc_labels != nullptr && terrain[x][y] != letter && name_count++ == name_frequency && !on_bridge) {
-					misc_labels->insert(std::pair<map_location,std::string>(map_location(x-data.width/3,y-data.height/3),road_name));
+					misc_labels->emplace(map_location(x - data.width / 3, y - data.height / 3), road_name);
 					name_count = 0;
 				}
 
@@ -1129,7 +1117,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 				if(misc_labels != nullptr) {
 					const map_location loc(x - data.width / 3, y - data.height / 3); //add to use for village naming
 					if(road_base_name != "")
-						road_names.insert(std::pair<map_location,std::string>(loc, road_base_name));
+						road_names.emplace(loc, road_base_name);
 				}
 			}
 		}
@@ -1189,8 +1177,8 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 							base_name = base_name_generator->generate();
 							name = mountain_name_generator->generate({{"base",  base_name}});
 						}
-						misc_labels->insert(std::pair<map_location, std::string>(loc, name));
-						mountain_names.insert(std::pair<map_location, std::string>(loc, base_name));
+						misc_labels->emplace(loc, name);
+						mountain_names.emplace(loc, base_name);
 					}
 				} else if(t_translation::terrain_matches(terr, t_translation::ALL_FORESTS)) {
 					// If the forest tile is not named yet, name it
@@ -1200,7 +1188,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 							base_name = base_name_generator->generate();
 							name = forest_name_generator->generate({{"base",  base_name}});
 						}
-						forest_names.insert(std::pair<map_location, std::string>(loc, base_name));
+						forest_names.emplace(loc, base_name);
 						// name all connected forest tiles accordingly
 						flood_name(loc, base_name, forest_names, t_translation::ALL_FORESTS, terrain, data.width, data.height, 0, misc_labels, name);
 					}
@@ -1212,7 +1200,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 							base_name = base_name_generator->generate();
 							name = swamp_name_generator->generate({{"base",  base_name}});
 						}
-						swamp_names.insert(std::pair<map_location, std::string>(loc, base_name));
+						swamp_names.emplace(loc, base_name);
 						// name all connected swamp tiles accordingly
 						flood_name(loc, base_name, swamp_names, t_translation::ALL_SWAMPS, terrain, data.width, data.height, 0, misc_labels, name);
 					}
@@ -1404,7 +1392,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 				}
 
 				used_names.insert(name);
-				village_labels->insert(std::pair<map_location,std::string>(loc,name));
+				village_labels->emplace(loc, name);
 			}
 		}
 	}

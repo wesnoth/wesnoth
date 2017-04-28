@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -14,6 +14,7 @@
 
 /** @file */
 
+#include "config_assign.hpp"
 #include "font/sdl_ttf.hpp"
 #include "gettext.hpp"
 #include "hotkey/hotkey_command.hpp"
@@ -294,19 +295,7 @@ theme::object::object(const config& cfg) :
 theme::border_t::border_t() :
 	size(0.0),
 	background_image(),
-	tile_image(),
-	corner_image_top_left(),
-	corner_image_bottom_left(),
-	corner_image_top_right_odd(),
-	corner_image_top_right_even(),
-	corner_image_bottom_right_odd(),
-	corner_image_bottom_right_even(),
-	border_image_left(),
-	border_image_right(),
-	border_image_top_odd(),
-	border_image_top_even(),
-	border_image_bottom_odd(),
-	border_image_bottom_even()
+	tile_image()
 {
 }
 
@@ -314,25 +303,7 @@ theme::border_t::border_t(const config& cfg) :
 	size(cfg["border_size"].to_double()),
 
 	background_image(cfg["background_image"]),
-	tile_image(cfg["tile_image"]),
-
-	corner_image_top_left(cfg["corner_image_top_left"]),
-	corner_image_bottom_left(cfg["corner_image_bottom_left"]),
-
-	corner_image_top_right_odd(cfg["corner_image_top_right_odd"]),
-	corner_image_top_right_even(cfg["corner_image_top_right_even"]),
-
-	corner_image_bottom_right_odd(cfg["corner_image_bottom_right_odd"]),
-	corner_image_bottom_right_even(cfg["corner_image_bottom_right_even"]),
-
-	border_image_left(cfg["border_image_left"]),
-	border_image_right(cfg["border_image_right"]),
-
-	border_image_top_odd(cfg["border_image_top_odd"]),
-	border_image_top_even(cfg["border_image_top_even"]),
-
-	border_image_bottom_odd(cfg["border_image_bottom_odd"]),
-	border_image_bottom_even(cfg["border_image_bottom_even"])
+	tile_image(cfg["tile_image"])
 {
 	VALIDATE(size >= 0.0 && size <= 0.5, _("border_size should be between 0.0 and 0.5."));
 }
@@ -555,14 +526,18 @@ theme::menu::menu(const config &cfg):
 	context_(cfg["is_context_menu"].to_bool(false)),
 	title_(cfg["title"].str() + cfg["title_literal"].str()),
 	tooltip_(cfg["tooltip"]), image_(cfg["image"]), overlay_(cfg["overlay"]),
-	items_(utils::split(cfg["items"]))
+	items_()
 {
+	for(const auto& item : utils::split(cfg["items"])) {
+		items_.emplace_back(config_of("id", item));
+	}
+
 	if (cfg["auto_tooltip"].to_bool() && tooltip_.empty() && items_.size() == 1) {
-		tooltip_ = hotkey::get_description(items_[0])
-		+ hotkey::get_names(items_[0]) +  "\n" + hotkey::get_tooltip(items_[0]);
+		tooltip_ = hotkey::get_description(items_[0]["id"])
+		+ hotkey::get_names(items_[0]["id"]) +  "\n" + hotkey::get_tooltip(items_[0]["id"]);
 	} else if (cfg["tooltip_name_prepend"].to_bool() && items_.size() == 1) {
-		tooltip_ = hotkey::get_description(items_[0])
-		+ hotkey::get_names(items_[0]) + "\n" + tooltip_;
+		tooltip_ = hotkey::get_description(items_[0]["id"])
+		+ hotkey::get_names(items_[0]["id"]) + "\n" + tooltip_;
 	}
 }
 
@@ -715,7 +690,7 @@ void theme::add_object(const config& cfg)
 	if (const config &status_cfg = cfg.child("status"))
 	{
 		for(const config::any_child &i : status_cfg.all_children_range()) {
-			status_.insert(std::pair<std::string, status_item>(i.key, status_item(i.cfg)));
+			status_.emplace(i.key, status_item(i.cfg));
 		}
 		if (const config &unit_image_cfg = status_cfg.child("unit_image")) {
 			unit_image_ = object(unit_image_cfg);
@@ -776,12 +751,10 @@ void theme::add_object(const config& cfg)
 
 	if (const config &c = cfg.child("main_map_border")) {
 		border_ = border_t(c);
-	} else {
-		border_ = border_t();
 	}
 }
 
-void theme::remove_object(std::string id){
+void theme::remove_object(const std::string& id){
 	for(std::vector<theme::panel>::iterator p = panels_.begin(); p != panels_.end(); ++p) {
 		if (p->get_id() == id){
 			panels_.erase(p);
@@ -873,7 +846,7 @@ void theme::modify(const config &cfg)
 	}
 }
 
-theme::object& theme::find_element(std::string id){
+theme::object& theme::find_element(const std::string& id){
 	static theme::object empty_object;
 	theme::object* res = &empty_object;
 	for (std::vector<theme::panel>::iterator p = panels_.begin(); p != panels_.end(); ++p){

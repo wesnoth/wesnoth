@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth-Dev Japanese\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-11-05 23:29 UTC\n"
+"POT-Creation-Date: 2017-03-23 08:11+0100\n"
 "PO-Revision-Date: 2016-04-17 04:07+0000\n"
 "Last-Translator: RatArmy <broadbarredfirefish@gmail.com>\n"
 "Language-Team: Japanese (http://www.transifex.com/wesnoth-jp/wesnoth-dev-"
@@ -121,9 +121,9 @@ msgid "Deoran"
 msgstr "Deoran"
 
 #. [side]: type=Horseman Commander, id=Deoran
-#. [side]: id=Deoran
 #. [side]: type=Troll Hero, id=Grek
 #. [side]
+#. [side]: id=Deoran
 #. [side]: type=Lieutenant, id=Plynry
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:37
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:41
@@ -151,12 +151,12 @@ msgid "Urza Mathin"
 msgstr "Urza Mathin"
 
 #. [side]: type=Bandit, id=Urza Mathin
+#. [side]: type=Rogue, id=Urza Fastik
+#. [side]: type=Outlaw, id=Jera Ilras
 #. [side]: type=Outlaw, id=Urza Nalmath
 #. [side]
-#. [side]: type=Rogue, id=Urza Fastik
-#. [side]: type=Outlaw, id=Urza Afalas
 #. [side]: type=Outlaw, id=Tharzo Kalain
-#. [side]: type=Outlaw, id=Jera Ilras
+#. [side]: type=Outlaw, id=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:59
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:63
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:102
@@ -1259,13 +1259,13 @@ msgstr "涙の谷"
 msgid "Mal A’kai"
 msgstr "Mal A’kai"
 
-#. [side]: type=Soulless, id=Gruth
-#. [side]: type=Lich, id=Mal M'Brin
-#. [side]
-#. [side]: type=Soulless, id=Groth
 #. [side]: type=Ancient Lich, id=Mal M'Brin
-#. [side]: type=Lich, id=Mal Tera
+#. [side]: type=Lich, id=Mal M'Brin
+#. [side]: type=Soulless, id=Groth
+#. [side]
 #. [side]: type=Dark Adept, type=Dark Sorcerer, type=Necromancer, id=Mal A'kai
+#. [side]: type=Soulless, id=Gruth
+#. [side]: type=Lich, id=Mal Tera
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:76
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:93
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:129
@@ -1887,10 +1887,10 @@ msgstr "恐れることはない。時がくれば俺が森から出してやる
 msgid "Death of Urza Afalas"
 msgstr "Urza Afalas の死"
 
-#. [message]: speaker=Urza Afalas
 #. [message]: speaker=unit
+#. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:710
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1134
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1110
 msgid "Now I pay for my crimes. But how many others will also suffer for them?"
 msgstr ""
 "さあ我が罪を償おう。しかしあとどれだけ多くの者がやつらに苦しめられるのだろう"
@@ -2553,22 +2553,22 @@ msgid "Get them!"
 msgstr "つかまえろ！"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1161
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1137
 msgid "Thank heaven we have escaped that awful forest!"
 msgstr "ありがたい。恐ろしい森を抜け出すことができた！"
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1165
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1141
 msgid "Indeed, Afalas, you’ve earned my trust today."
 msgstr "まさしく、Afalas。これから、私はおまえを信用することにした。"
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1169
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1145
 msgid "I can only hope for mercy when I return to Westin."
 msgstr "俺は Westin に戻ったら慈悲に期待するだけさ。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1174
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1150
 msgid "But there was a dark cloud looming behind Deoran and his men..."
 msgstr "しかし Deoran と彼の兵士の後ろには不気味な雲が迫ってきていました……"
 
@@ -2577,8 +2577,8 @@ msgstr "しかし Deoran と彼の兵士の後ろには不気味な雲が迫っ�
 msgid "Into the Depths"
 msgstr "奥底へ"
 
-#. [side]: type=Lich, id=Mal M'Brin
 #. [side]: type=Ancient Lich, id=Mal M'Brin
+#. [side]: type=Lich, id=Mal M'Brin
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:51
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:55
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:51
@@ -3368,7 +3368,7 @@ msgstr "Westin の評議会は $council_arrive_turn| ターンで到着します
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:519
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:332
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:321
 #: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:12
 msgid "I have failed my kingdom and duty..."
 msgstr "私は王国を守り、責務を果たすことができなかった……"
@@ -3512,7 +3512,7 @@ msgstr ""
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:225
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:226
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:227
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:299
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:292
 msgid "Disciple of Mebrin"
 msgstr "Mebrin の弟子"
 
@@ -3550,18 +3550,18 @@ msgid "Send Ethiliel to the Great Tree and parley with Ithelden"
 msgstr "Ethiliel を大木まで移動させ、Ithelden と交渉する"
 
 #. [message]: speaker=$new_elf.id
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:317
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:306
 msgid "For every one of us you strike down, more will rise!"
 msgstr "我々の一人一人が倒される度に、もっと多くの者が立ち上がる！"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:346
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:335
 #: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:64
 msgid "I have given my all for my kingdom! Avenge me, Deoran!"
 msgstr "私はすべてを王国にささげた！ 私の敵をとってくれ、Deoran！"
 
 #. [message]: speaker=Minister Hylas
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:359
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:348
 msgid ""
 "Ithelden’s elves have killed Ethiliel! Now we have no chance to come to an "
 "agreement with them. A war with the Elves is imminent."
@@ -3570,7 +3570,7 @@ msgstr ""
 "機会を失ってしまった。エルフ族との戦争は近い。"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:363
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:352
 msgid ""
 "We are far away from Weldyn. We’ll surely all be killed long before any "
 "reinforcements arrive."
@@ -3579,7 +3579,7 @@ msgstr ""
 "れてしまうだろう。"
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:401
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:390
 msgid ""
 "Take care, Deoran! My people are upset. Killing one will only draw more."
 msgstr ""
@@ -3635,18 +3635,6 @@ msgstr ""
 "するための訓練を受けています。彼らは Wesnoth の地方を平和に保っている警備隊を"
 "指揮しています。"
 
-#. [attack]: type=pierce
-#: data/campaigns/The_South_Guard/units/Horseman_Commander.cfg:30
-#: data/campaigns/The_South_Guard/units/Mounted_General.cfg:31
-msgid "lance"
-msgstr "ランス"
-
-#. [attack]: type=impact
-#: data/campaigns/The_South_Guard/units/Horseman_Commander.cfg:41
-#: data/campaigns/The_South_Guard/units/Mounted_General.cfg:42
-msgid "mace"
-msgstr "メイス"
-
 #. [unit_type]: id=Infantry Commander, race=human
 #: data/campaigns/The_South_Guard/units/Infantry_Commander.cfg:4
 msgid "Infantry Commander"
@@ -3666,11 +3654,6 @@ msgstr ""
 #: data/campaigns/The_South_Guard/units/Infantry_Lieutenant.cfg:29
 msgid "glaive"
 msgstr "剣"
-
-#. [attack]: type=impact
-#: data/campaigns/The_South_Guard/units/Infantry_Commander.cfg:39
-msgid "shield"
-msgstr "盾"
 
 #. [unit_type]: id=Infantry Lieutenant, race=human
 #: data/campaigns/The_South_Guard/units/Infantry_Lieutenant.cfg:4
@@ -3704,11 +3687,6 @@ msgstr ""
 "やっと 17 か 18 歳になると、騎士や君主の息子たちは馬と剣を与えられ、人間の"
 "リーダーになるよう教えられます。任務を果たすために十分な強い勇気を持ったもの"
 "が Wesnoth 軍の司令官になるのです。"
-
-#. [attack]: type=pierce
-#: data/campaigns/The_South_Guard/units/Junior_Commander.cfg:30
-msgid "spear"
-msgstr "槍"
 
 #. [unit_type]: id=Mounted General, race=human
 #: data/campaigns/The_South_Guard/units/Mounted_General.cfg:4
@@ -4109,6 +4087,18 @@ msgstr ""
 "頃、粉々になった多くの城壁の再建は終わっていました。ようやく、雪が溶け、彼ら"
 "の荷物が道を通ることができるようになった頃、Haldric 王のもとから使者がやって"
 "きました。"
+
+#~ msgid "lance"
+#~ msgstr "ランス"
+
+#~ msgid "mace"
+#~ msgstr "メイス"
+
+#~ msgid "shield"
+#~ msgstr "盾"
+
+#~ msgid "spear"
+#~ msgstr "槍"
 
 #~ msgid "Take the Citadel at Westin by the end of the ninth turn"
 #~ msgstr "9 ターンの終わりまでに Westin の要塞を手に入れる"

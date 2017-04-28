@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Ignacio R. Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2009 - 2017 by Ignacio R. Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -37,7 +37,6 @@
 #include "game_config.hpp"
 #include "gettext.hpp"
 #include "play_controller.hpp"
-#include "resources.hpp"
 #include "team.hpp"
 #include "units/types.hpp"
 
@@ -87,6 +86,7 @@ unit_create::unit_create()
 	, choice_(last_chosen_type_id)
 	, last_words_()
 {
+	set_restore(true);
 }
 
 void unit_create::pre_show(window& window)

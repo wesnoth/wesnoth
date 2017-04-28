@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Tomasz Sniatowski <kailoran@gmail.com>
+   Copyright (C) 2009 - 2017 by Tomasz Sniatowski <kailoran@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -70,20 +70,14 @@ struct player_list
 	tree_view* tree;
 };
 
-class lobby_main : public modal_dialog, public quit_confirmation, private plugin_executor
+class mp_lobby : public modal_dialog, public quit_confirmation, private plugin_executor
 {
 public:
-	lobby_main(const config& game_config, mp::lobby_info& info, wesnothd_connection &connection);
+	mp_lobby(const config& game_config, mp::lobby_info& info, wesnothd_connection &connection);
 
-	~lobby_main();
+	~mp_lobby();
 
-	/**
-	 * Set the callback used to show the preferences.
-	 */
-	void set_preferences_callback(std::function<void()> f)
-	{
-		preferences_callback_ = f;
-	}
+	int get_joined_game_id() const { return joined_game_id_; }
 
 	void update_gamelist();
 
@@ -105,7 +99,8 @@ public:
 		QUIT,
 		JOIN,
 		OBSERVE,
-		CREATE
+		CREATE,
+		RELOAD_CONFIG
 	};
 
 protected:
@@ -156,7 +151,7 @@ private:
 
 	void skip_replay_changed_callback(window& window);
 
-	void signal_handler_key_down(SDL_Keycode key, bool& handled, bool& halt);
+	bool exit_hook(window& window);
 
 	static bool logout_prompt();
 
@@ -169,10 +164,10 @@ private:
 	virtual void post_build(window& window) override;
 
 	/** Inherited from modal_dialog. */
-	void pre_show(window& window) override;
+	virtual void pre_show(window& window) override;
 
 	/** Inherited from modal_dialog. */
-	void post_show(window& window) override;
+	virtual void post_show(window& window) override;
 
 	const config& game_config_;
 
@@ -183,8 +178,6 @@ private:
 	mp::lobby_info& lobby_info_;
 
 	chatbox* chatbox_;
-
-	std::function<void()> preferences_callback_;
 
 	toggle_button* filter_friends_;
 
@@ -218,6 +211,8 @@ private:
 	bool delay_playerlist_update_;
 
 	bool delay_gamelist_update_;
+
+	int joined_game_id_;
 
 	friend struct lobby_delay_gamelist_update_guard;
 };

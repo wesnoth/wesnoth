@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2012 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -65,22 +65,22 @@ matrix::matrix(const implementation::builder_matrix& builder)
 			config());
 
 	builder_widget::replacements_map replacements;
-	replacements.insert(std::make_pair("_main", builder.builder_main));
+	replacements.emplace("_main", builder.builder_main);
 
 	if(builder.builder_top) {
-		replacements.insert(std::make_pair("_top", builder.builder_top));
+		replacements.emplace("_top", builder.builder_top);
 	}
 
 	if(builder.builder_left) {
-		replacements.insert(std::make_pair("_left", builder.builder_left));
+		replacements.emplace("_left", builder.builder_left);
 	}
 
 	if(builder.builder_right) {
-		replacements.insert(std::make_pair("_right", builder.builder_right));
+		replacements.emplace("_right", builder.builder_right);
 	}
 
 	if(builder.builder_bottom) {
-		replacements.insert(std::make_pair("_bottom", builder.builder_bottom));
+		replacements.emplace("_bottom", builder.builder_bottom);
 	}
 
 	cfg->content->build(content_, replacements);
@@ -108,9 +108,9 @@ void matrix::place(const point& origin, const point& size)
 	content_.place(origin, size);
 }
 
-void matrix::layout_initialise(const bool full_initialisation)
+void matrix::layout_initialize(const bool full_initialization)
 {
-	content_.layout_initialise(full_initialisation);
+	content_.layout_initialize(full_initialization);
 }
 
 void
@@ -227,8 +227,8 @@ matrix_definition::resolution::resolution(const config& cfg)
 	, content(new builder_grid(cfg.child("content", "[matrix_definition]")))
 {
 	// Note the order should be the same as the enum state_t in matrix.hpp.
-	state.push_back(state_definition(cfg.child("state_enabled")));
-	state.push_back(state_definition(cfg.child("state_disabled")));
+	state.emplace_back(cfg.child("state_enabled"));
+	state.emplace_back(cfg.child("state_disabled"));
 }
 
 // }---------- BUILDER -----------{

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2016 by Chris Beck<render787@gmail.com>
+   Copyright (C) 2016 - 2017 by Chris Beck<render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -94,7 +94,7 @@ struct char_block_map
 				return;
 			}
 		}
-		cbmap.insert(std::make_pair(first, block_t(last, id)));
+		cbmap.emplace(first, block_t(last, id));
 	}
 	/**
 	 * Compresses map by merging consecutive ranges with the same font, even
@@ -154,7 +154,7 @@ static TTF_Font* open_font(const std::string& fname, int size)
 	}
 
 	TTF_Font* result = open_font_impl(fname, size);
-	open_fonts.insert(std::make_pair(key, result));
+	open_fonts.emplace(key, result);
 	return result;
 }
 
@@ -226,7 +226,7 @@ TTF_Font* sdl_ttf::get_font(font_id id)
 	if ((id.style & TTF_STYLE_ITALIC) && italic_names[id.subset].size()) {
 		if (TTF_Font* font = open_font(italic_names[id.subset], id.size)) {
 			ttf_record rec = {font, TTF_STYLE_ITALIC};
-			font_table.insert(std::make_pair(id, rec));
+			font_table.emplace(id, rec);
 			return sdl_ttf::get_font(id);
 		}
 	}
@@ -235,7 +235,7 @@ TTF_Font* sdl_ttf::get_font(font_id id)
 	if ((id.style & TTF_STYLE_BOLD) && bold_names[id.subset].size()) {
 		if (TTF_Font* font = open_font(bold_names[id.subset], id.size)) {
 			ttf_record rec = {font, TTF_STYLE_BOLD};
-			font_table.insert(std::make_pair(id, rec));
+			font_table.emplace(id, rec);
 			return sdl_ttf::get_font(id);
 		}
 	}
@@ -244,14 +244,14 @@ TTF_Font* sdl_ttf::get_font(font_id id)
 	if (font_names[id.subset].size()) {
 		if(TTF_Font* font = open_font(font_names[id.subset], id.size)) {
 			ttf_record rec = {font, TTF_STYLE_NORMAL};
-			font_table.insert(std::make_pair(id, rec));
+			font_table.emplace(id, rec);
 			return sdl_ttf::get_font(id);
 		}
 	}
 
 	// Failed to find a font.
 	ttf_record rec = {nullptr, TTF_STYLE_NORMAL};
-	font_table.insert(std::make_pair(id, rec));
+	font_table.emplace(id, rec);
 	return nullptr;
 }
 
@@ -303,10 +303,8 @@ static surface render_text(const std::string& text, int fontsize, const color_t&
 		return surface();
 	} else if (surfaces.size() == 1 && surfaces.front().size() == 1) {
 		surface surf = surfaces.front().front();
-		adjust_surface_alpha(surf, SDL_ALPHA_OPAQUE);
 		return surf;
 	} else {
-
 		surface res(create_compatible_surface(surfaces.front().front(),width,height));
 		if (res.null())
 			return res;
@@ -319,9 +317,8 @@ static surface render_text(const std::string& text, int fontsize, const color_t&
 
 			for(std::vector<surface>::iterator j = i->begin(),
 					j_end = i->end(); j != j_end; ++j) {
-				adjust_surface_alpha(*j, SDL_ALPHA_TRANSPARENT); // direct blit without alpha blending
 				SDL_Rect dstrect = sdl::create_rect(xpos, ypos, 0, 0);
-				sdl_blit(*j, nullptr, res, &dstrect);
+				blit_surface(*j, nullptr, res, &dstrect);
 				xpos += (*j)->w;
 				height = std::max<size_t>((*j)->h, height);
 			}
@@ -432,14 +429,14 @@ SDL_Rect line_size(const std::string& line, int font_size, int style)
 
 	SDL_Rect res;
 
-	const color_t col = { 0, 0, 0, 0 };
+	const color_t col { 0, 0, 0, 0 };
 	text_surface s(line, font_size, col, style);
 
 	res.w = s.width();
 	res.h = s.height();
 	res.x = res.y = 0;
 
-	cache.insert(std::pair<std::string,SDL_Rect>(line,res));
+	cache.emplace(line,res);
 	return res;
 }
 
@@ -528,13 +525,13 @@ void sdl_ttf::set_font_list(const std::vector<subset_descriptor>& fontlist)
 		if (f.bold_name && check_font_file(*f.bold_name)) {
 			bold_names.push_back(*f.bold_name);
 		} else {
-			bold_names.push_back("");
+			bold_names.emplace_back();
 		}
 
 		if (f.italic_name && check_font_file(*f.italic_name)) {
 			italic_names.push_back(*f.italic_name);
 		} else {
-			italic_names.push_back("");
+			italic_names.emplace_back();
 		}
 
 		for (const subset_descriptor::range &cp_range : f.present_codepoints) {

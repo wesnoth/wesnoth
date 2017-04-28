@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2016 by Ján Dugáček
+   Copyright (C) 2016 - 2017 by Ján Dugáček
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -21,7 +21,7 @@
 #include "utils/context_free_grammar_generator.hpp"
 
 #include "log.hpp"
-#include "random_new.hpp"
+#include "random.hpp"
 #include "serialization/string_utils.hpp"
 
 #include <algorithm>
@@ -171,6 +171,6 @@ std::string context_free_grammar_generator::generate() const {
 
 void context_free_grammar_generator::init_seed(uint32_t seed[]) const {
 	for (unsigned short int i = 0; i < seed_size; i++) {
-		seed[i] = random_new::generator->next_random();
+		seed[i] = randomness::generator->next_random();
 	}
 }

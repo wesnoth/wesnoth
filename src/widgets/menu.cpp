@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -79,7 +79,7 @@ menu::basic_sorter& menu::basic_sorter::set_id_sort(int column)
 menu::basic_sorter& menu::basic_sorter::set_redirect_sort(int column, int to)
 {
 	if(column != to) {
-		redirect_sort_.insert(std::pair<int,int>(column,to));
+		redirect_sort_.emplace(column, to);
 	}
 
 	return *this;
@@ -319,14 +319,14 @@ void menu::create_help_strings()
 		i->help.clear();
 		for(std::vector<std::string>::iterator j = i->fields.begin(); j != i->fields.end(); ++j) {
 			if(std::find(j->begin(),j->end(),static_cast<char>(HELP_STRING_SEPARATOR)) == j->end()) {
-				i->help.push_back("");
+				i->help.emplace_back();
 			} else {
 				const std::vector<std::string>& items = utils::split(*j, HELP_STRING_SEPARATOR, 0);
 				if(items.size() >= 2) {
 					*j = items.front();
 					i->help.push_back(items.back());
 				} else {
-					i->help.push_back("");
+					i->help.emplace_back();
 				}
 			}
 		}
@@ -801,7 +801,7 @@ void menu::sort_by(int column)
 }
 
 SDL_Rect menu::style::item_size(const std::string& item) const {
-	SDL_Rect res = {0,0,0,0};
+	SDL_Rect res {0,0,0,0};
 	std::vector<std::string> img_text_items = utils::split(item, IMG_TEXT_SEPARATOR, utils::REMOVE_EMPTY);
 	for (std::vector<std::string>::const_iterator it = img_text_items.begin();
 		 it != img_text_items.end(); ++it) {
@@ -819,7 +819,7 @@ SDL_Rect menu::style::item_size(const std::string& item) const {
 			}
 		}
 		else {
-			const SDL_Rect area = {0,0,10000,10000};
+			const SDL_Rect area {0,0,10000,10000};
 			const SDL_Rect font_size =
 				font::draw_text(nullptr,area,get_font_size(),font::NORMAL_COLOR,str,0,0);
 			res.w += font_size.w;
@@ -1155,7 +1155,7 @@ SDL_Rect menu::get_item_rect_internal(size_t item) const
 	//only insert into the cache if the menu's co-ordinates have
 	//been initialized
 	if (loc.x > 0 && loc.y > 0)
-		itemRects_.insert(std::pair<int,SDL_Rect>(item,res));
+		itemRects_.emplace(item, res);
 
 	return res;
 }

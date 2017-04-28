@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -52,9 +52,10 @@ public:
 	unit_filter(const vconfig & cfg, const filter_context * fc, bool use_flat_tod = false); //!< Constructs a unit filter from a config and a context. This function should give the most efficient implementation available.
 
 	// Copy and Swap Idiom for the interface -- does not copy the underlying impl
-	unit_filter(const unit_filter & o ) : impl_(o.impl_) {}
+	unit_filter(const unit_filter & o ) : impl_(o.impl_), max_matches_() {}
 	void swap(unit_filter & o) {
 		impl_.swap(o.impl_);
+		std::swap(max_matches_, o.max_matches_);
 	}
 	unit_filter & operator=(unit_filter o) {
 		swap(o);

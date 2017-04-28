@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2016 by the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2016 - 2017 by the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -63,13 +63,13 @@ private:
 	void on_tab_select(window& window);
 
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
-	virtual const std::string& window_id() const;
+	virtual const std::string& window_id() const override;
 
 	/** Inherited from modal_dialog. */
-	void pre_show(window& window);
+	virtual void pre_show(window& window) override;
 
 	/** Inherited from modal_dialog. */
-	void post_show(window& window);
+	virtual void post_show(window& window) override;
 };
 
 } // namespace dialogs

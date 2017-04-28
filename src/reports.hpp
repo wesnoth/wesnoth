@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -78,8 +78,8 @@ public:
 
 	const std::set<std::string> &report_list();
 
+	using generator_function = std::function<config(reports::context&)>;
 
-	typedef config (*generator_function)(reports::context & );
 	typedef std::map<std::string, std::shared_ptr<reports::generator> > dynamic_report_generators;
 
 private:

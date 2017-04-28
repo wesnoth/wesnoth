@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -83,7 +83,7 @@ static bool can_see(const unit & viewer, const map_location & loc,
 	// Make sure we have a "jamming" map.
 	std::map<map_location, int> local_jamming;
 	if ( jamming == nullptr ) {
-		create_jamming_map(local_jamming, resources::gameboard->teams()[viewer.side()-1]);
+		create_jamming_map(local_jamming, resources::gameboard->get_team(viewer.side()));
 		jamming = &local_jamming;
 	}
 
@@ -463,7 +463,7 @@ bool shroud_clearer::clear_unit(const map_location &view_loc, team &view_team,
 bool shroud_clearer::clear_unit(const map_location &view_loc, const unit &viewer,
                                 bool can_delay, bool invalidate, bool instant)
 {
-	team & viewing_team = resources::gameboard->teams()[viewer.side()-1];
+	team & viewing_team = resources::gameboard->get_team(viewer.side());
 
 	// Abort if there is nothing to clear.
 	if ( !viewing_team.fog_or_shroud() )
@@ -495,7 +495,7 @@ bool shroud_clearer::clear_unit(const map_location &view_loc, const unit &viewer
  */
 bool shroud_clearer::clear_dest(const map_location &dest, const unit &viewer)
 {
-	team & viewing_team = resources::gameboard->teams()[viewer.side()-1];
+	team & viewing_team = resources::gameboard->get_team(viewer.side());
 	// A pair of dummy variables needed to simplify some logic.
 	size_t enemies, friends;
 
@@ -706,7 +706,7 @@ bool actor_sighted(const unit & target, const std::vector<int> * cache)
  */
 void recalculate_fog(int side)
 {
-	team &tm = resources::gameboard->teams()[side - 1];
+	team &tm = resources::gameboard->get_team(side);
 
 	if (!tm.uses_fog())
 		return;
@@ -755,7 +755,7 @@ void recalculate_fog(int side)
  */
 bool clear_shroud(int side, bool reset_fog, bool fire_events)
 {
-	team &tm = resources::gameboard->teams()[side - 1];
+	team &tm = resources::gameboard->get_team(side);
 	if (!tm.uses_shroud() && !tm.uses_fog())
 		return false;
 

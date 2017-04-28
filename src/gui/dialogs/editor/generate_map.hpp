@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -55,10 +55,10 @@ public:
 
 private:
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
-	virtual const std::string& window_id() const;
+	virtual const std::string& window_id() const override;
 
 	/** Inherited from modal_dialog. */
-	void pre_show(window& window);
+	virtual void pre_show(window& window) override;
 
 	/** Callback for generator list selection changes. */
 	void do_generator_selected(window& window);

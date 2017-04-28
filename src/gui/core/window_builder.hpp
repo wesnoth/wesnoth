@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -16,6 +16,7 @@
 #define GUI_AUXILIARY_WINDOW_BUILDER_HPP_INCLUDED
 
 #include "gui/auxiliary/typed_formula.hpp"
+#include "gui/core/linked_group_definition.hpp"
 #include "gui/widgets/grid.hpp"
 #include "color.hpp"
 
@@ -172,7 +173,7 @@ public:
 		typed_formula<unsigned> height;
 		typed_formula<bool> reevaluate_best_size;
 
-		game_logic::function_symbol_table functions;
+		wfl::function_symbol_table functions;
 
 		unsigned vertical_placement;
 		unsigned horizontal_placement;
@@ -184,18 +185,7 @@ public:
 
 		std::string definition;
 
-		struct linked_group
-		{
-			linked_group() : id(), fixed_width(false), fixed_height(false)
-			{
-			}
-
-			std::string id;
-			bool fixed_width;
-			bool fixed_height;
-		};
-
-		std::vector<linked_group> linked_groups;
+		std::vector<linked_group_definition> linked_groups;
 
 		/** Helper struct to store information about the tips. */
 		struct tooltip_info

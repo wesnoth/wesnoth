@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Ignacio R. Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2009 - 2017 by Ignacio R. Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -60,6 +60,11 @@ public:
 	floating_image& operator=(const floating_image& fi) {
 		assign(fi);
 		return *this;
+	}
+
+	std::string file() const
+	{
+		return file_;
 	}
 
 	/**

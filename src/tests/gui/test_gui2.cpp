@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2009 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,6 +18,7 @@
 #include <boost/test/unit_test.hpp>
 
 #include "addon/client.hpp"
+#include "addon/info.hpp"
 #include "config_assign.hpp"
 #include "config_cache.hpp"
 #include "editor/editor_display.hpp" // for dummy display context
@@ -32,6 +33,7 @@
 #include "generators/map_create.hpp"
 #include "gui/core/layout_exception.hpp"
 #include "gui/dialogs/addon/connect.hpp"
+#include "gui/dialogs/addon/install_dependencies.hpp"
 #include "gui/dialogs/addon/manager.hpp"
 #include "gui/dialogs/advanced_graphics_options.hpp"
 #include "gui/dialogs/attack_predictions.hpp"
@@ -63,6 +65,8 @@
 #include "gui/dialogs/game_save.hpp"
 #include "gui/dialogs/game_stats.hpp"
 #include "gui/dialogs/gamestate_inspector.hpp"
+#include "gui/dialogs/help_browser.hpp"
+#include "gui/dialogs/hotkey_bind.hpp"
 #include "gui/dialogs/label_settings.hpp"
 #include "gui/dialogs/language_selection.hpp"
 #include "gui/dialogs/loading_screen.hpp"
@@ -80,6 +84,7 @@
 #include "gui/dialogs/multiplayer/mp_join_game.hpp"
 #include "gui/dialogs/multiplayer/mp_join_game_password_prompt.hpp"
 #include "gui/dialogs/multiplayer/mp_staging.hpp"
+#include "gui/dialogs/outro.hpp"
 #include "gui/dialogs/depcheck_confirm_change.hpp"
 #include "gui/dialogs/depcheck_select_new.hpp"
 #include "gui/dialogs/multiplayer/mp_login.hpp"
@@ -89,6 +94,7 @@
 #include "gui/dialogs/select_orb_colors.hpp"
 #include "gui/dialogs/sp_options_configure.hpp"
 #include "gui/dialogs/statistics_dialog.hpp"
+#include "gui/dialogs/story_viewer.hpp"
 #include "gui/dialogs/theme_list.hpp"
 #include "gui/dialogs/terrain_layers.hpp"
 #include "gui/dialogs/title_screen.hpp"
@@ -423,15 +429,18 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<game_stats>();
 	test<gamestate_inspector>();
 	test<generator_settings>();
+	//test<help_browser>();
+	test<hotkey_bind>();
+	test<install_dependencies>();
 	test<language_selection>();
 	// test<loading_screen>(); TODO: enable
-	test<lobby_main>();
+	test<mp_lobby>();
 	test<lobby_player_info>();
 	test<log_settings>();
 	//test<lua_interpreter>(& lua_kernel_base());
 	test<message>();
 	test<mp_alerts_options>();
-	test<mp_change_control>();
+	//test<mp_change_control>();
 	test<mp_cmd_wrapper>();
 	test<mp_connect>();
 	//test<mp_create_game>();
@@ -441,11 +450,13 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<mp_method_selection>();
 	test<mp_server_list>();
 	//test<mp_staging>();
+	//test<outro>();
 	test<simple_item_selector>();
 	test<screenshot_notification>();
 	test<select_orb_colors>();
 	test<sp_options_configure>();
 	test<statistics_dialog>();
+	//test<story_viewer>();
 	test<theme_list>();
 	//test<terrain_layers>();
 	//test<title_screen>();
@@ -469,7 +480,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test_tip("tooltip");
 
 	std::vector<std::string>& list = gui2::unit_test_registered_window_list();
-	std::vector<std::string> omitted = {
+	std::vector<std::string> omitted {
 		/*
 		 * The unit attack unit test are disabled for now, they calling parameters
 		 * don't allow 'nullptr's needs to be fixed.
@@ -484,8 +495,6 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 		 * one.
 		 */
 		"label_settings",
-		"addon_description",
-		"addon_filter_options",
 		"addon_uninstall_list",
 		"addon_manager",
 		"loading_screen",
@@ -506,6 +515,10 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 		"mp_join_game",
 		"terrain_layers",
 		"attack_predictions",
+		"help_browser",
+		"story_viewer",
+		"outro",
+		"mp_change_control", // Basically useless without a game_board object, so disabling
 	};
 	std::sort(list.begin(), list.end());
 	std::sort(omitted.begin(), omitted.end());
@@ -632,13 +645,14 @@ template<>
 struct dialog_tester<custom_tod>
 {
 	std::vector<time_of_day> times;
+	int current_tod = 0;
 	dialog_tester()
 	{
 		times.resize(1);
 	}
 	custom_tod* create()
 	{
-		return new custom_tod(test_utils::get_fake_display(-1, -1), times);
+		return new custom_tod(times, current_tod);
 	}
 };
 
@@ -703,7 +717,7 @@ struct dialog_tester<editor_edit_side>
 template<>
 struct dialog_tester<formula_debugger>
 {
-	game_logic::formula_debugger debugger;
+	wfl::formula_debugger debugger;
 	formula_debugger* create()
 	{
 		return new formula_debugger(debugger);
@@ -778,6 +792,27 @@ struct dialog_tester<gamestate_inspector>
 
 };
 
+template<>
+struct dialog_tester<install_dependencies>
+{
+	addons_list addons;
+	install_dependencies* create()
+	{
+		return new install_dependencies(addons);
+	}
+};
+
+template<>
+struct dialog_tester<hotkey_bind>
+{
+	std::string id = "";
+
+	hotkey_bind* create()
+	{
+		return new hotkey_bind(id);
+	}
+};
+
 struct wesnothd_connection_init
 {
 	wesnothd_connection_init(wesnothd_connection& conn)
@@ -797,7 +832,7 @@ struct wesnothd_connection_init
 };
 
 template<>
-struct dialog_tester<lobby_main>
+struct dialog_tester<mp_lobby>
 {
 	config game_config;
 	wesnothd_connection connection;
@@ -807,9 +842,9 @@ struct dialog_tester<lobby_main>
 	dialog_tester() : connection("", ""), init(connection), li(game_config, installed_addons)
 	{
 	}
-	lobby_main* create()
+	mp_lobby* create()
 	{
-		return new lobby_main(game_config, li, connection);
+		return new mp_lobby(game_config, li, connection);
 	}
 };
 
@@ -859,7 +894,7 @@ struct dialog_tester<message>
 		return new message("Title", "Message", false, false);
 	}
 };
-
+#if 0
 template<>
 struct dialog_tester<mp_change_control>
 {
@@ -868,7 +903,7 @@ struct dialog_tester<mp_change_control>
 		return new mp_change_control(nullptr);
 	}
 };
-
+#endif
 template<>
 struct dialog_tester<mp_cmd_wrapper>
 {
@@ -905,7 +940,7 @@ struct dialog_tester<mp_join_game_password_prompt>
 template<>
 struct dialog_tester<depcheck_confirm_change>
 {
-	std::vector<std::string> mods = {"mod_one", "some other", "more"};
+	std::vector<std::string> mods {"mod_one", "some other", "more"};
 	depcheck_confirm_change* create()
 	{
 		return new depcheck_confirm_change(true, mods, "requester");
@@ -915,7 +950,7 @@ struct dialog_tester<depcheck_confirm_change>
 template<>
 struct dialog_tester<depcheck_select_new>
 {
-	std::vector<std::string> mods = {"mod_one", "some other", "more"};
+	std::vector<std::string> mods {"mod_one", "some other", "more"};
 	depcheck_select_new* create()
 	{
 		return new depcheck_select_new(ng::depcheck::MODIFICATION, mods);
@@ -960,7 +995,7 @@ struct dialog_tester<theme_list>
 		ti.description = name + " this is a description";
 		return ti;
 	}
-	std::vector<theme_info> themes = {make_theme("classic"), make_theme("new"), make_theme("more"), make_theme("themes")};
+	std::vector<theme_info> themes {make_theme("classic"), make_theme("new"), make_theme("more"), make_theme("themes")};
 	theme_list* create()
 	{
 		return new theme_list(themes, 0);
@@ -1078,7 +1113,7 @@ struct dialog_tester<title_screen>
 template<>
 struct dialog_tester<wml_error>
 {
-	std::vector<std::string> files = {"some", "files", "here"};
+	std::vector<std::string> files {"some", "files", "here"};
 	wml_error* create()
 	{
 		return new wml_error("Summary", "Post summary", files, "Details");
@@ -1156,11 +1191,13 @@ template<>
 struct dialog_tester<sp_options_configure>
 {
 	saved_game state;
-	ng::create_engine engine;
-	dialog_tester() : engine(test_utils::get_fake_display(-1, -1).video(), state) {}
+	ng::create_engine create_eng;
+	ng::configure_engine config_eng;
+	dialog_tester() : create_eng(test_utils::get_fake_display(-1, -1).video(), state)
+		, config_eng(create_eng.get_state()) {}
 	sp_options_configure* create()
 	{
-		return new sp_options_configure(engine);
+		return new sp_options_configure(create_eng, config_eng);
 	}
 };
 

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2013 - 2016 by Felix Bauer
+   Copyright (C) 2013 - 2017 by Felix Bauer
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -33,6 +33,7 @@
 #include "map/label.hpp"
 #include "pathfind/pathfind.hpp"
 #include "pathutils.hpp"
+#include "random.hpp"
 #include "resources.hpp"
 #include "team.hpp"
 #include "tod_manager.hpp"
@@ -527,7 +528,7 @@ data* recruitment::get_best_leader_from_ratio_scores(std::vector<data>& leader_d
 	assert(ratio_score_sum > 0.0);
 
 	// Shuffle leader_data to break ties randomly.
-	std::random_shuffle(leader_data.begin(), leader_data.end());
+	std::shuffle(leader_data.begin(), leader_data.end(), randomness::rng::default_instance());
 
 	// Find which leader should recruit according to ratio_scores.
 	data* best_leader_data = nullptr;
@@ -676,7 +677,7 @@ double recruitment::get_average_defense(const std::string& u_type) const {
  */
 const  pathfind::full_cost_map recruitment::get_cost_map_of_side(int side) const {
 	const unit_map& units = resources::gameboard->units();
-	const team& team = resources::gameboard->teams()[side - 1];
+	const team& team = resources::gameboard->get_team(side);
 
 	pathfind::full_cost_map cost_map(true, true, team, true, true);
 
@@ -747,7 +748,7 @@ void recruitment::update_average_lawful_bonus() {
 void recruitment::update_average_local_cost() {
 	average_local_cost_.clear();
 	const gamemap& map = resources::gameboard->map();
-	const team& team = resources::gameboard->teams()[get_side() - 1];
+	const team& team = resources::gameboard->get_team(get_side());
 
 	for(int x = 0; x < map.w(); ++x) {
 		for (int y = 0; y < map.h(); ++y) {
@@ -1056,7 +1057,7 @@ struct attack_simulation {
 
 	attack_simulation(const unit_type* attacker, const unit_type* defender,
 			double attacker_defense, double defender_defense,
-			const attack_type* att_weapon, const attack_type* def_weapon,
+			const_attack_ptr att_weapon, const_attack_ptr def_weapon,
 			int average_lawful_bonus) :
 			attacker_type(attacker),
 			defender_type(defender),
@@ -1133,7 +1134,7 @@ void recruitment::simulate_attack(
 			std::shared_ptr<attack_simulation> simulation(new attack_simulation(
 					attacker, defender,
 					attacker_defense, defender_defense,
-					&att_weapon, &def_weapon, average_lawful_bonus_));
+					att_weapon.shared_from_this(), def_weapon.shared_from_this(), average_lawful_bonus_));
 			if (!best_def_response || simulation->better_result(best_def_response.get(), true)) {
 				best_def_response = simulation;
 			}
@@ -1144,7 +1145,7 @@ void recruitment::simulate_attack(
 			best_def_response.reset(new attack_simulation(
 					attacker, defender,
 					attacker_defense, defender_defense,
-					&att_weapon, nullptr, average_lawful_bonus_));
+					att_weapon.shared_from_this(), nullptr, average_lawful_bonus_));
 		}
 		if (!best_att_attack || best_def_response->better_result(best_att_attack.get(), false)) {
 			best_att_attack = best_def_response;
@@ -1410,7 +1411,7 @@ bool recruitment::remove_job_if_no_blocker(config* job) {
  * positive or negative.
  */
 double recruitment::get_estimated_income(int turns) const {
-	const team& team = resources::gameboard->teams()[get_side() - 1];
+	const team& team = resources::gameboard->get_team(get_side());
 	const size_t own_villages = team.villages().size();
 	const double village_gain = get_estimated_village_gain();
 	const double unit_gain = get_estimated_unit_gain();

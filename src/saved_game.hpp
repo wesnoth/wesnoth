@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2017 by the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -79,13 +79,13 @@ public:
 	/// takes care of generate_map=, generate_scenario=, map= attributes
 	/// This should be called before expanding carryover or mp_events because this might completely replace starting_pos_.
 	void expand_random_scenario();
-	bool valid();
+	bool valid() const;
 	/// @return the snapshot in the savefile (get_starting_pos)
 	config& set_snapshot(config snapshot);
 	void set_scenario(config scenario);
 	void remove_snapshot();
 
-	bool is_mid_game_save()
+	bool is_mid_game_save() const
 	{
 		return starting_pos_type_ == STARTINGPOS_SNAPSHOT;
 	}

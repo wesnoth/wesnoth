@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2015 - 2016 by the Battle for Wesnoth Project
+   Copyright (C) 2015 - 2017 by the Battle for Wesnoth Project
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -89,22 +89,22 @@ class user_choice_manager : events::pump_monitor
 	const std::string& tagname_;
 	const int current_side_;
 	// private constructor, this object is only constructed by user_choice_manager::get_user_choice_internal
-	user_choice_manager(const std::string &name, const mp_sync::user_choice &uch, std::set<int> sides);
+	user_choice_manager(const std::string &name, const mp_sync::user_choice &uch, const std::set<int>& sides);
 	~user_choice_manager() {}
 	void search_in_replay();
 public:
 	void pull();
-	bool finished()
+	bool finished() const
 	{ return required_.size() == res_.size(); }
-	bool has_local_choice()
+	bool has_local_choice() const
 	{ return local_choice_ != 0; }
 	/// Note: currently finished() does not imply !waiting() so you may need to check both.
-	bool waiting()
+	bool waiting() const
 	{ return local_choice_ == 0 && !oos_; }
 	void update_local_choice();
 	void ask_local_choice();
 	void fix_oos();
-	const std::string& wait_message() { return wait_message_; }
+	const std::string& wait_message() const { return wait_message_; }
 	/// @param name: the tagname for this user choice in the replay
 	/// @param sides: an array of team numbers (beginning with 1). the specified sides may not have an empty controller.
 	static std::map<int, config> get_user_choice_internal(const std::string &name, const mp_sync::user_choice &uch, const std::set<int>& sides);

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -28,6 +28,7 @@
 #include "gui/widgets/pane.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/selectable_item.hpp"
+#include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/viewport.hpp"
 #include "gui/widgets/window.hpp"
 
@@ -134,9 +135,8 @@ void listbox::remove_row(const unsigned row, unsigned count)
 
 void listbox::clear()
 {
-	// Due to the removing from the linked group, don't use
-	// generator_->clear() directly.
-	remove_row(0, 0);
+	generator_->clear();
+	update_content_size();
 }
 
 unsigned listbox::get_item_count() const
@@ -160,7 +160,7 @@ void listbox::set_row_shown(const unsigned row, const bool shown)
 
 	const int selected_row = get_selected_row();
 
-	bool resize_needed;
+	bool resize_needed = false;
 	{
 		window::invalidate_layout_blocker invalidate_layout_blocker(*window);
 
@@ -198,7 +198,7 @@ void listbox::set_row_shown(const boost::dynamic_bitset<>& shown)
 
 	const int selected_row = get_selected_row();
 
-	bool resize_needed;
+	bool resize_needed = false;
 	{
 		window::invalidate_layout_blocker invalidate_layout_blocker(*window);
 
@@ -254,9 +254,17 @@ bool listbox::select_row(const unsigned row, const bool select)
 {
 	assert(generator_);
 
+	unsigned int before = generator_->get_selected_item_count();
 	generator_->select_item(row, select);
 
-	return true; // FIXME test what result should have been!!!
+	return before != generator_->get_selected_item_count();
+}
+
+bool listbox::row_selected(const unsigned row)
+{
+	assert(generator_);
+
+	return generator_->is_selected(row);
 }
 
 int listbox::get_selected_row() const
@@ -276,7 +284,13 @@ void listbox::list_item_clicked(widget& caller)
 	for(size_t i = 0; i < generator_->get_item_count(); ++i) {
 
 		if(generator_->item(i).has_widget(caller)) {
-			generator_->toggle_item(i);
+			toggle_button* checkbox = dynamic_cast<toggle_button*>(&caller);
+			if(checkbox != nullptr) {
+				generator_->select_item(i, checkbox->get_value_bool());
+			} else {
+				generator_->toggle_item(i);
+			}
+
 			if(callback_item_changed_) {
 				callback_item_changed_(i);
 			}
@@ -562,10 +576,8 @@ void swap_grid(grid* g,
 	assert(parent_grid);
 
 	// Replace the child.
-	wgt = parent_grid->swap_child(id, wgt, false);
-	assert(wgt);
-
-	delete wgt;
+	auto old = parent_grid->swap_child(id, wgt, false);
+	assert(old);
 }
 
 } // namespace
@@ -812,8 +824,8 @@ listbox_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg), grid(nullptr)
 {
 	// Note the order should be the same as the enum state_t in listbox.hpp.
-	state.push_back(state_definition(cfg.child("state_enabled")));
-	state.push_back(state_definition(cfg.child("state_disabled")));
+	state.emplace_back(cfg.child("state_enabled"));
+	state.emplace_back(cfg.child("state_disabled"));
 
 	const config& child = cfg.child("grid");
 	VALIDATE(child, _("No grid defined."));

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2004 - 2016 by Philippe Plantier <ayin@anathas.org>
+   Copyright (C) 2004 - 2017 by Philippe Plantier <ayin@anathas.org>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
@@ -32,7 +32,7 @@ template<typename T>
 class void_value
 {
 	public:
-		const T operator()() { return T(); }
+		const T operator()() const { return T(); }
 };
 
 template<typename T, typename T_void_value=void_value<T> >

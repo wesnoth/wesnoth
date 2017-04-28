@@ -21,7 +21,6 @@
 #include "gettext.hpp"
 #include "gui/dialogs/addon/connect.hpp"
 #include "gui/dialogs/addon/manager.hpp"
-#include "gui/dialogs/addon/description.hpp"
 #include "gui/dialogs/addon/uninstall_list.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
@@ -31,7 +30,6 @@
 #include "log.hpp"
 #include "serialization/parser.hpp"
 #include "version.hpp"
-#include "wml_separators.hpp"
 #include "formula/string_utils.hpp"
 #include "addon/client.hpp"
 
@@ -79,8 +77,9 @@ bool have_addon_pbl_info(const std::string& addon_name)
 	return filesystem::file_exists(get_pbl_file_path(addon_name));
 }
 
-void get_addon_pbl_info(const std::string& addon_name, config& cfg)
+config get_addon_pbl_info(const std::string& addon_name)
 {
+	config cfg;
 	const std::string& pbl_path = get_pbl_file_path(addon_name);
 	try {
 		filesystem::scoped_istream stream = filesystem::istream_file(pbl_path);
@@ -88,6 +87,8 @@ void get_addon_pbl_info(const std::string& addon_name, config& cfg)
 	} catch(const config::error& e) {
 		throw invalid_pbl_exception(pbl_path, e.message);
 	}
+
+	return cfg;
 }
 
 void set_addon_pbl_info(const std::string& addon_name, const config& cfg)
@@ -231,7 +232,7 @@ static std::pair<std::vector<std::string>, std::vector<std::string> > read_ignor
 		return patterns; // just default patterns
 	}
 	LOG_CFG << "found .ign file: " << ign_file << '\n';
-	std::istream *stream = filesystem::istream_file(ign_file);
+	auto stream = filesystem::istream_file(ign_file);
 	std::string line;
 	while (std::getline(*stream, line)) {
 		boost::trim(line);

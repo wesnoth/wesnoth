@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2016 by the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2016 - 2017 by the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -29,7 +29,7 @@
 #include "gui/widgets/window.hpp" //gui2::window::OK
 #include "log.hpp"
 #include "play_controller.hpp" //resources::controller
-#include "random_new.hpp"
+#include "random.hpp"
 #include "resources.hpp"
 #include "statistics.hpp"
 #include "synced_user_choice.hpp"
@@ -170,7 +170,7 @@ namespace
 		{
 			//the 'side' parameter might differ from side_num_-
 			int res = 0;
-			team t = resources::gameboard->teams()[side_num_ - 1];
+			team t = resources::gameboard->get_team(side_num_);
 			//i wonder how this got included here ?
 			bool is_mp = resources::controller->is_networked_mp();
 			bool is_current_side = resources::controller->current_side() == side_num_;
@@ -207,8 +207,8 @@ namespace
 			{
 				//we are in the situation, that the unit is owned by a human, but he's not allowed to do this decision.
 				//because it's a mp game and it's not his turn.
-				//note that it doesn't matter whether we call random_new::generator->next_random() or rand().
-				res = random_new::generator->get_random_int(0, nb_options_-1);
+				//note that it doesn't matter whether we call randomness::generator->next_random() or rand().
+				res = randomness::generator->get_random_int(0, nb_options_-1);
 			}
 			LOG_NG << "unit at position " << loc_ << "choose advancement number " << res << "\n";
 			config retv;
@@ -290,7 +290,7 @@ unit_ptr get_advanced_unit(const unit &u, const std::string& advance_to)
 	unit_ptr new_unit(new unit(u));
 	new_unit->set_experience(new_unit->experience() - new_unit->max_experience());
 	new_unit->advance_to(*new_type);
-	new_unit->heal_all();
+	new_unit->heal_fully();
 	new_unit->set_state(unit::STATE_POISONED, false);
 	new_unit->set_state(unit::STATE_SLOWED, false);
 	new_unit->set_state(unit::STATE_PETRIFIED, false);
@@ -346,13 +346,15 @@ void advance_unit(map_location loc, const advancement_option &advance_to, bool f
 	bool use_amla = boost::get<std::string>(&advance_to) == nullptr;
 	unit_ptr new_unit = use_amla ? get_amla_unit(*u, *boost::get<const config*>(advance_to)) :
 	                           get_advanced_unit(*u, boost::get<std::string>(advance_to));
+	new_unit->set_location(loc);
 	if ( !use_amla )
 	{
 		statistics::advance_unit(*new_unit);
 		preferences::encountered_units().insert(new_unit->type_id());
 		LOG_CF << "Added '" << new_unit->type_id() << "' to the encountered units.\n";
 	}
-	u = resources::gameboard->units().replace(loc, *new_unit).first;
+	resources::gameboard->units().erase(loc);
+	u = resources::gameboard->units().insert(new_unit).first;
 
 	// Update fog/shroud.
 	actions::shroud_clearer clearer;

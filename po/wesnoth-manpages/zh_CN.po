@@ -1,14 +1,14 @@
 # The Battle for Wesnoth - Simplified Chinese Translations
-# Copyright (C) 2005-2015 Wesnoth development team
+# Copyright (C) 2005-2017 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # sylecn <sylecn@gmail.com>, 2009.
 # CloudiDust <cloudidust@gmail.com>, 2010.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth-1.12\n"
-"POT-Creation-Date: 2016-04-30 17:11+0300\n"
-"PO-Revision-Date: 2015-02-07 13:06+0800\n"
+"Project-Id-Version: wesnoth-1.14\n"
+"POT-Creation-Date: 2017-03-19 00:05+0300\n"
+"PO-Revision-Date: 2017-01-01 09:58+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 1.7.4\n"
+"X-Generator: Poedit 1.8.11\n"
 
 #. type: TH
 #: doc/man/wesnoth.6:16
@@ -51,7 +51,7 @@ msgstr "命名"
 #. type: Plain text
 #: doc/man/wesnoth.6:20
 msgid "wesnoth - Battle for Wesnoth, a turn-based fantasy strategy game"
-msgstr "wesnoth - 韦诺之战（Battle for Wesnoth），一个回合制的奇幻策略游戏"
+msgstr "wesnoth - 韦诺之战（Battle for Wesnoth），一个回合制奇幻策略游戏"
 
 #. type: SH
 #: doc/man/wesnoth.6:21 doc/man/wesnothd.6:24
@@ -73,7 +73,7 @@ msgstr "描述"
 #. type: Plain text
 #: doc/man/wesnoth.6:32
 msgid "Battle for B<Wesnoth> is a turn-based fantasy strategy game."
-msgstr "韦诺之战（Battle for B<Wesnoth>）是一个奇幻回合制策略游戏。"
+msgstr "韦诺之战（Battle for B<Wesnoth>）是一个回合制奇幻策略游戏。"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:42
@@ -101,47 +101,38 @@ msgstr "选项"
 
 #. type: TP
 #: doc/man/wesnoth.6:45
-#, fuzzy, no-wrap
-#| msgid "B<--gunzip>I<\\ infile.gz>"
+#, no-wrap
 msgid "B<--bunzip>I<\\ infile.gz>"
-msgstr "B<--gunzip>I<\\ infile.gz>"
+msgstr "B<--bunzip>I<\\ infile.gz>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:51
-#, fuzzy
-#| msgid ""
-#| "decompresses a file which should be in gzip format and stores it without "
-#| "the .gz suffix. The I<infile.gz> will be removed."
 msgid ""
 "decompresses a file which should be in bzip2 format and stores it without "
 "the .bz2 suffix. The I<infile.bz2> will be removed."
-msgstr "解压缩gzip文件，解压后去掉.gz后缀。文件I<infile.gz>将被删除。"
+msgstr ""
+"解压缩应为bzip2格式的文件，解压后去掉.bz2后缀。文件I<infile.bz2>将被删除。"
 
 #. type: TP
 #: doc/man/wesnoth.6:51
-#, fuzzy, no-wrap
-#| msgid "B<--gzip>I<\\ infile>"
+#, no-wrap
 msgid "B<--bzip>I<\\ infile>"
-msgstr "B<--gzip>I<\\ infile>"
+msgstr "B<--bzip>I<\\ infile>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:57
-#, fuzzy
-#| msgid ""
-#| "compresses a file in gzip format, stores it as I<infile>.gz and removes "
-#| "I<infile>."
 msgid ""
 "compresses a file in bzip2 format, stores it as I<infile>.bz2 and removes "
 "I<infile>."
 msgstr ""
-"将I<infile>压缩为gzip格式文件，文件名为I<infile>.gz。文件I<infile>将被删除。"
+"将I<infile>压缩为bzip2格式文件，文件名为I<infile>.bz2。文件I<infile>将被删"
+"除。"
 
 #. type: TP
 #: doc/man/wesnoth.6:57
-#, fuzzy, no-wrap
-#| msgid "B<-c, --campaign \\ [E<lt>id_campaignE<gt>]>"
+#, no-wrap
 msgid "B<-c,\\ --campaign\\ [>I<id_campaign>B<]>"
-msgstr "B<-c, --campaign \\ [E<lt>id_campaignE<gt>]>"
+msgstr "B<-c,\\ --campaign\\ [>I<id_campaign>B<]>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:61
@@ -149,27 +140,24 @@ msgid ""
 "goes directly to the campaign with id E<lt>id_campaignE<gt>. A selection "
 "menu will appear if no id was specified."
 msgstr ""
+"直接进入ID为 E<lt>id_campaignE<gt> 的战役。如果没有指定ID，则会出现选择菜单。"
 
 #. type: TP
 #: doc/man/wesnoth.6:61
-#, fuzzy, no-wrap
-#| msgid "B<-e,\\ --editor>I<\\ file>"
+#, no-wrap
 msgid "B<--core>I<\\ id_core>"
-msgstr "B<-e,\\ --editor>I<\\ file>"
+msgstr "B<--core>I<\\ id_core>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:64
-#, fuzzy
-#| msgid "overrides the data directory with the one specified"
 msgid "overrides the loaded core with the one whose id is specified."
-msgstr "使用指定的目录作为数据目录"
+msgstr "使用指定ID对应的核心作为应读取的核心。"
 
 #. type: TP
 #: doc/man/wesnoth.6:64
-#, fuzzy, no-wrap
-#| msgid "B<--campaign-difficulty [E<lt>difficultyE<gt>]>"
+#, no-wrap
 msgid "B<--campaign-difficulty\\ [>I<difficulty>B<]>"
-msgstr "B<--campaign-difficulty [E<lt>difficultyE<gt>]>"
+msgstr "B<--campaign-difficulty\\ [>I<difficulty>B<]>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:68
@@ -177,15 +165,14 @@ msgid ""
 "The difficulty of the specified campaign (1 to max). If none specified, the "
 "campaign difficulty selection widget will appear."
 msgstr ""
-"指定战役的难度（从1到该战役的最大难度）。如果没有指定，那么战役难度选择界面会"
-"出现。"
+"指定战役的难度（从1到该战役的最大难度）。如果没有指定，则会出现战役难度选择界"
+"面。"
 
 #. type: TP
 #: doc/man/wesnoth.6:68
-#, fuzzy, no-wrap
-#| msgid "B<--campaign-scenario E<lt>id_scenarioE<gt>>"
+#, no-wrap
 msgid "B<--campaign-scenario>I<\\ id_scenario>"
-msgstr "B<--campaign-scenario E<lt>id_scenarioE<gt>>"
+msgstr "B<--campaign-scenario>I<\\ id_scenario>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:71
@@ -196,15 +183,14 @@ msgstr "指定战役中的场景ID。默认为第一个场景。"
 
 #. type: TP
 #: doc/man/wesnoth.6:71
-#, fuzzy, no-wrap
-#| msgid "B<--data-dir E<lt>directoryE<gt>>"
+#, no-wrap
 msgid "B<--data-dir>I<\\ directory>"
-msgstr "B<--data-dir E<lt>directoryE<gt>>"
+msgstr "B<--data-dir>I<\\ directory>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:74
 msgid "overrides the data directory with the one specified"
-msgstr "使用指定的目录作为数据目录"
+msgstr "使用指定的目录作为数据目录。"
 
 #. type: TP
 #: doc/man/wesnoth.6:74
@@ -214,10 +200,8 @@ msgstr "B<--data-path>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:77
-#, fuzzy
-#| msgid "prints the path of the userdata directory and exits."
 msgid "print the path of the data directory and exits."
-msgstr "打印用户数据目录的路径并退出。"
+msgstr "打印数据目录的路径并退出。"
 
 #. type: TP
 #: doc/man/wesnoth.6:77
@@ -283,7 +267,8 @@ msgstr "B<--gunzip>I<\\ infile.gz>"
 msgid ""
 "decompresses a file which should be in gzip format and stores it without "
 "the .gz suffix. The I<infile.gz> will be removed."
-msgstr "解压缩gzip文件，解压后去掉.gz后缀。文件I<infile.gz>将被删除。"
+msgstr ""
+"解压缩应为gzip格式的文件，解压后去掉.gz后缀。文件I<infile.gz>将被删除。"
 
 #. type: TP
 #: doc/man/wesnoth.6:101
@@ -331,10 +316,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:122
-#, fuzzy, no-wrap
-#| msgid "B<-l,\\ --load>I<\\ file>"
+#, no-wrap
 msgid "B<-L,\\ --language>I<\\ lang>"
-msgstr "B<-l,\\ --load>I<\\ file>"
+msgstr "B<-L,\\ --language>I<\\ lang>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:129
@@ -342,6 +326,7 @@ msgid ""
 "uses language I<lang> (symbol) this session.  Example: B<--language "
 "ang_GB@latin>"
 msgstr ""
+"在本次游戏期间使用语言 I<lang> （符号）。例如： B<--language ang_GB@latin>"
 
 #. type: TP
 #: doc/man/wesnoth.6:129 doc/man/wesnothd.6:58
@@ -361,22 +346,20 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:138
-#, fuzzy, no-wrap
-#| msgid "B<--nogui>"
+#, no-wrap
 msgid "B<--log-precise>"
-msgstr "B<--nogui>"
+msgstr "B<--log-precise>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:141
 msgid "shows the timestamps in the logfile with more precision."
-msgstr ""
+msgstr "在日志文件中显示更高精度的时间戳。"
 
 #. type: TP
 #: doc/man/wesnoth.6:141
-#, fuzzy, no-wrap
-#| msgid "B<--nomusic>"
+#, no-wrap
 msgid "B<--log-strict>"
-msgstr "B<--nomusic>"
+msgstr "B<--log-strict>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:147
@@ -385,13 +368,14 @@ msgid ""
 "this level or more severe will cause the unit test to fail regardless of the "
 "victory result. Only relevant when used with B<-u>."
 msgstr ""
+"设置日志记录器的严格度等级。若有任何信息记入此等级或更高等级日志域，则不论测"
+"试结果如何，单元测试都将失败。只有在和 B<-u> 共同使用时才有意义。"
 
 #. type: TP
 #: doc/man/wesnoth.6:147
-#, fuzzy, no-wrap
-#| msgid "B<--logdomains\\ [filter]>"
+#, no-wrap
 msgid "B<--logdomains\\ [>I<filter>B<]>"
-msgstr "B<--logdomains\\ [filter]>"
+msgstr "B<--logdomains\\ [>I<filter>B<]>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:152
@@ -400,14 +384,13 @@ msgid ""
 "exits"
 msgstr ""
 "列出游戏中定义的日志域（如果使用了B<filter>则只列出饱含该字符串的日志域）而后"
-"退出"
+"退出。"
 
 #. type: TP
 #: doc/man/wesnoth.6:152
-#, fuzzy, no-wrap
-#| msgid "B<--max-fps>"
+#, no-wrap
 msgid "B<--max-fps>I<\\ fps>"
-msgstr "B<--max-fps>"
+msgstr "B<--max-fps>I<\\ fps>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:157
@@ -424,29 +407,22 @@ msgstr "B<-m, --multiplayer>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:163
-#, fuzzy
-#| msgid ""
-#| "runs a multiplayer game. There are additional options that can be used "
-#| "together with B<--multiplayer> as explained below. Only these additional "
-#| "options can follow B<--multiplayer>."
 msgid ""
 "runs a multiplayer game. There are additional options that can be used "
 "together with B<--multiplayer> as explained below."
 msgstr ""
-"启动一个多人游戏。有更多选项可以与B<--multiplayer>一起使用，详见下述。只有这"
-"些选项可以跟在 B<--multiplayer>之后。"
+"运行一次多人游戏。有更多选项可以与 B<--multiplayer> 一起使用，详见下述。"
 
 #. type: TP
 #: doc/man/wesnoth.6:163
-#, fuzzy, no-wrap
-#| msgid "B<-t, --test>"
+#, no-wrap
 msgid "B<--mp-test>"
-msgstr "B<-t, --test>"
+msgstr "B<--mp-test>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:166
 msgid "load the test mp scenarios."
-msgstr ""
+msgstr "读取测试用多人游戏场景。"
 
 #. type: TP
 #: doc/man/wesnoth.6:166
@@ -456,30 +432,23 @@ msgstr "B<--no-delay>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:171
-#, fuzzy
-#| msgid ""
-#| "runs the game without any delays for graphic benchmarking. This is "
-#| "automatically enabled by B<--nogui>."
 msgid ""
 "runs the game without any delays for graphic benchmarking.  This is "
 "automatically enabled by B<--nogui>."
 msgstr ""
-"无任何延迟地运行游戏，以执行图形性能基准测试。使用 B<--nogui> 选项时会自动启"
+"运行游戏而不进行任何延迟，以执行图像基准测试。使用 B<--nogui> 选项时会自动启"
 "用本选项。"
 
 #. type: TP
 #: doc/man/wesnoth.6:171
-#, fuzzy, no-wrap
-#| msgid "B<--nosound>"
+#, no-wrap
 msgid "B<--noaddons>"
-msgstr "B<--nosound>"
+msgstr "B<--noaddons>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:174
-#, fuzzy
-#| msgid "disables caching of game data."
 msgid "disables loading of user addons."
-msgstr "禁止建立游戏数据的缓存。"
+msgstr "禁止读取用户附加组件。"
 
 #. type: TP
 #: doc/man/wesnoth.6:174
@@ -500,10 +469,8 @@ msgstr "B<--nogui>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:180
-#, fuzzy
-#| msgid "runs the game without music."
 msgid "runs the game without the GUI."
-msgstr "以无音乐的方式启动游戏。"
+msgstr "以无图形界面的方式运行游戏。"
 
 #. type: TP
 #: doc/man/wesnoth.6:180
@@ -514,21 +481,20 @@ msgstr "B<--nomusic>"
 #. type: Plain text
 #: doc/man/wesnoth.6:183
 msgid "runs the game without music."
-msgstr "以无音乐的方式启动游戏。"
+msgstr "以无音乐的方式运行游戏。"
 
 #. type: TP
 #: doc/man/wesnoth.6:183
-#, fuzzy, no-wrap
-#| msgid "B<--nocache>"
+#, no-wrap
 msgid "B<--noreplaycheck>"
-msgstr "B<--nocache>"
+msgstr "B<--noreplaycheck>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:187
 msgid ""
 "don't try to validate replay of unit test. Only relevant when used with B<-"
 "u>."
-msgstr ""
+msgstr "不尝试检查单元测试录像的有效性。只有在和 B<-u> 共同使用时才有意义。"
 
 #. type: TP
 #: doc/man/wesnoth.6:187
@@ -539,14 +505,13 @@ msgstr "B<--nosound>"
 #. type: Plain text
 #: doc/man/wesnoth.6:190
 msgid "runs the game without sounds and music."
-msgstr "以无音乐和音效的方式启动游戏。"
+msgstr "以无音乐和音效的方式运行游戏。"
 
 #. type: TP
 #: doc/man/wesnoth.6:190
-#, fuzzy, no-wrap
-#| msgid "B<--password>I<E<lt>passwordE<gt>>"
+#, no-wrap
 msgid "B<--password>I<\\ password>"
-msgstr "B<--password>I<E<lt>passwordE<gt>>"
+msgstr "B<--password>I<\\ password>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:193
@@ -568,10 +533,9 @@ msgstr "显示游戏数据目录的名称并退出。"
 
 #. type: TP
 #: doc/man/wesnoth.6:196
-#, fuzzy, no-wrap
-#| msgid "B<-p, --preprocess E<lt>source file/folderE<gt> E<lt>target directoryE<gt>>"
+#, no-wrap
 msgid "B<-p,\\ --preprocess>I<\\ source-file/folder>B<\\ >I<target-directory>"
-msgstr "B<-p, --preprocess E<lt>source file/folderE<gt> E<lt>target directoryE<gt>>"
+msgstr "B<-p,\\ --preprocess>I<\\ source-file/folder>B<\\ >I<target-directory>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:206
@@ -593,10 +557,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:207
-#, fuzzy, no-wrap
-#| msgid "B<--preprocess-defines=DEFINE1,DEFINE2,etc>"
+#, no-wrap
 msgid "B<--preprocess-defines=>I<DEFINE1>B<,>I<DEFINE2>B<,>I<etc>"
-msgstr "B<--preprocess-defines=DEFINE1,DEFINE2,etc>"
+msgstr "B<--preprocess-defines=>I<DEFINE1>B<,>I<DEFINE2>B<,>I<etc>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:212
@@ -610,10 +573,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:212
-#, fuzzy, no-wrap
-#| msgid "B<--preprocess-input-macros E<lt>source fileE<gt>>"
+#, no-wrap
 msgid "B<--preprocess-input-macros>I<\\ source-file>"
-msgstr "B<--preprocess-input-macros E<lt>source fileE<gt>>"
+msgstr "B<--preprocess-input-macros>I<\\ source-file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:216
@@ -626,19 +588,12 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:216
-#, fuzzy, no-wrap
-#| msgid "B<--preprocess-output-macros [E<lt>target fileE<gt>]>"
+#, no-wrap
 msgid "B<--preprocess-output-macros\\ [>I<target-file>B<]>"
-msgstr "B<--preprocess-output-macros [E<lt>target fileE<gt>]>"
+msgstr "B<--preprocess-output-macros\\ [>I<target-file>B<]>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:224
-#, fuzzy
-#| msgid ""
-#| "used only by the '--preprocess' command.  Will output all preprocessed "
-#| "macros in the target file. If the file is not specified the output will "
-#| "be file '_MACROS_.cfg' in the target directory of preprocess's command.  "
-#| "This switch should be typed before the --preprocess command."
 msgid ""
 "used only by the '--preprocess' command.  Will output all preprocessed "
 "macros in the target file. If the file is not specified the output will be "
@@ -648,7 +603,8 @@ msgid ""
 msgstr ""
 "仅供“--preprocess”命令使用。将会输出目标文件中所有经过了预处理的宏。如果没有"
 "指定文件，那么目标文件将是preprocess命令所指定的目标目录中的“_MACROS_.cfg”。"
-"这个开关选项必须出现在--preprocess命令之前。"
+"输出文件可传递给 B<--preprocess-input-macros> 。这个开关选项必须出现在--"
+"preprocess命令之前。"
 
 #. type: TP
 #: doc/man/wesnoth.6:224
@@ -665,7 +621,7 @@ msgstr "设定屏幕分辨率。例如：B<-r 800x600>"
 #: doc/man/wesnoth.6:228
 #, no-wrap
 msgid "B<--render-image>I<\\ image>B<\\ >I<output>"
-msgstr ""
+msgstr "B<--render-image>I<\\ image>B<\\ >I<output>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:231
@@ -673,40 +629,39 @@ msgid ""
 "takes a valid wesnoth 'image path string' with image path functions, and "
 "outputs to a windows .bmp file."
 msgstr ""
+"将有效的韦诺“图片路径字符串”传入图片路径函数中，并输出为Windows .bmp文件。"
 
 #. type: TP
 #: doc/man/wesnoth.6:231
-#, fuzzy, no-wrap
-#| msgid "B<--userconfig-dir>I<\\ name>"
+#, no-wrap
 msgid "B<--rng-seed>I<\\ seed>"
-msgstr "B<--userconfig-dir>I<\\ name>"
+msgstr "B<--rng-seed>I<\\ seed>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:236
 msgid ""
 "seeds the random number generator with number E<lt>argE<gt>.  Example: B<--"
 "rng-seed 0>"
-msgstr ""
+msgstr "使用 E<lt>argE<gt> 作为随机数生成器的种子。例如： B<--rng-seed 0>"
 
 #. type: TP
 #: doc/man/wesnoth.6:236
 #, no-wrap
 msgid "B<--screenshot>I<\\ map>B<\\ >I<output>"
-msgstr ""
+msgstr "B<--screenshot>I<\\ map>B<\\ >I<output>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:239
 msgid ""
 "saves a screenshot of E<lt>mapE<gt> to E<lt>outputE<gt> without initializing "
 "a screen."
-msgstr ""
+msgstr "将 E<lt>mapE<gt> 的截图存入 E<lt>outputE<gt> 而不在屏幕上显示。"
 
 #. type: TP
 #: doc/man/wesnoth.6:239
-#, fuzzy, no-wrap
-#| msgid "B<-s,\\ --server\\ [host]>"
+#, no-wrap
 msgid "B<-s,\\ --server\\ [>I<host>B<]>"
-msgstr "B<-s,\\ --server\\ [host]>"
+msgstr "B<-s,\\ --server\\ [>I<host>B<]>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:243
@@ -719,15 +674,14 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:243
-#, fuzzy, no-wrap
-#| msgid "B<--nogui>"
+#, no-wrap
 msgid "B<--showgui>"
-msgstr "B<--nogui>"
+msgstr "B<--showgui>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:247
 msgid "runs the game with the GUI, overriding any implicit B<--nogui.>"
-msgstr ""
+msgstr "以有图形界面的方式运行游戏，此选项将覆盖所有隐含的 B<--nogui> 选项。"
 
 #. type: TP
 #: doc/man/wesnoth.6:247
@@ -744,7 +698,7 @@ msgstr "将验证错误视为致命错误。"
 #: doc/man/wesnoth.6:250
 #, no-wrap
 msgid "B<-t,\\ --test\\ [>I<scenario_id>B<]>"
-msgstr ""
+msgstr "B<-t,\\ --test\\ [>I<scenario_id>B<]>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:256
@@ -752,35 +706,28 @@ msgid ""
 "runs the game in a small test scenario. The scenario should be one defined "
 "with a B<[test]> WML tag. The default is \"test\". Implies B<--nogui.>"
 msgstr ""
+"在小型测试场景中运行游戏。该场景应使用 B<[test]> WML标签定义。默认为“test”。"
+"隐含 B<--nogui> 。"
 
 #. type: TP
 #: doc/man/wesnoth.6:256
-#, fuzzy, no-wrap
-#| msgid "B<-e,\\ --editor>I<\\ file>"
+#, no-wrap
 msgid "B<-u,\\ --unit>I<\\ scenario-id>"
-msgstr "B<-e,\\ --editor>I<\\ file>"
+msgstr "B<-u,\\ --unit>I<\\ scenario-id>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:260
 msgid "runs the specified test scenario as a unit test. Implies B<--nogui.>"
-msgstr ""
+msgstr "将指定的测试场景作为单元测试运行。隐含 B<--nogui> 。"
 
 #. type: TP
 #: doc/man/wesnoth.6:260
-#, fuzzy, no-wrap
-#| msgid "B<--userconfig-dir>I<\\ name>"
+#, no-wrap
 msgid "B<--userconfig-dir>I<\\ name>"
 msgstr "B<--userconfig-dir>I<\\ name>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:271
-#, fuzzy
-#| msgid ""
-#| "sets the user configuration directory to I<name> under $HOME or \"My "
-#| "Documents\\eMy Games\" for windows.  You can also specify an absolute "
-#| "path for the configuration directory outside the $HOME or \"My Documents"
-#| "\\eMy Games\".  Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/."
-#| "config/wesnoth, on other systems to the userdata path."
 msgid ""
 "sets the user configuration directory to I<name> under $HOME or \"My "
 "Documents\\eMy Games\" for windows.  You can also specify an absolute path "
@@ -792,13 +739,14 @@ msgid ""
 msgstr ""
 "设置用户配置目录为$HOME或者Windows下“我的文档\\我的游戏（My Documents\\eMy "
 "Games）”下的I<name>目录。也可以为配置目录指定一条绝对路径，此路径可以在$HOME"
-"或者“My Documents\\eMy Games”之外。在X11下，配置目录默认为$XDG_CONFIG_HOME或"
-"者$HOME/.config/wesnoth。在其他系统上，配置目录默认为用户数据目录。"
+"或者“My Documents\\eMy Games”之外。在Windows下，也可以使用以“.\\e”或“..\\e”开"
+"头的路径来指定相对于游戏进程工作目录的目录。在X11下，配置目录默认为"
+"$XDG_CONFIG_HOME或者$HOME/.config/wesnoth。在其他系统上，配置目录默认为用户数"
+"据目录。"
 
 #. type: TP
 #: doc/man/wesnoth.6:271
-#, fuzzy, no-wrap
-#| msgid "B<--userconfig-path>"
+#, no-wrap
 msgid "B<--userconfig-path>"
 msgstr "B<--userconfig-path>"
 
@@ -815,11 +763,6 @@ msgstr "B<--userdata-dir>I<\\ name>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:283
-#, fuzzy
-#| msgid ""
-#| "sets the userdata directory to I<name> under $HOME or \"My Documents\\eMy "
-#| "Games\" for windows.  You can also specify an absolute path for the "
-#| "userdata directory outside the $HOME or \"My Documents\\eMy Games\"."
 msgid ""
 "sets the userdata directory to I<name> under $HOME or \"My Documents\\eMy "
 "Games\" for windows.  You can also specify an absolute path for the userdata "
@@ -829,14 +772,14 @@ msgid ""
 msgstr ""
 "设置用户数据目录为$HOME或者Windows下“我的文档\\我的游戏（My Documents\\eMy "
 "Games）”下的I<name>目录。也可以为配置目录指定一条绝对路径，此路径可以在$HOME"
-"或者“My Documents\\eMy Games”之外。"
+"或者“My Documents\\eMy Games”之外。在Windows下，也可以使用以“.\\e”或“..\\e”开"
+"头的路径来指定相对于游戏进程工作目录的目录。"
 
 #. type: TP
 #: doc/man/wesnoth.6:283
-#, fuzzy, no-wrap
-#| msgid "B<--username>I<E<lt>usernameE<gt>>"
+#, no-wrap
 msgid "B<--username>I<\\ username>"
-msgstr "B<--username>I<E<lt>usernameE<gt>>"
+msgstr "B<--username>I<\\ username>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:286
@@ -918,10 +861,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:311
-#, fuzzy, no-wrap
-#| msgid "B<--ai_config>I<number>B<=>I<value>"
+#, no-wrap
 msgid "B<--ai_config>I<\\ number>B<:>I<value>"
-msgstr "B<--ai_config>I<number>B<=>I<value>"
+msgstr "B<--ai_config>I<\\ number>B<:>I<value>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:314
@@ -931,10 +873,9 @@ msgstr "为该阵营的AI控制者选择一个配置文件来读取。"
 
 #. type: TP
 #: doc/man/wesnoth.6:314
-#, fuzzy, no-wrap
-#| msgid "B<--algorithm>I<number>B<=>I<value>"
+#, no-wrap
 msgid "B<--algorithm>I<\\ number>B<:>I<value>"
-msgstr "B<--algorithm>I<number>B<=>I<value>"
+msgstr "B<--algorithm>I<\\ number>B<:>I<value>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:324
@@ -944,13 +885,15 @@ msgid ""
 "either in \"data/ai/ais\" or \"data/ai/dev\" or an algorithm defined by an "
 "addon. Available values include: B<idle_ai> and B<experimental_ai>."
 msgstr ""
+"为该阵营的AI控制者选择一个非标准的算法。该算法以 B<[ai]> 标签定义，可以是在核"
+"心游戏的“data/ai/ais”或“data/ai/dev”中定义的算法，也可以是在附加组件中定义的"
+"算法。可选值有：B<idle_ai> 和 B<experimental_ai>。"
 
 #. type: TP
 #: doc/man/wesnoth.6:324
-#, fuzzy, no-wrap
-#| msgid "B<--controller>I<number>B<=>I<value>"
+#, no-wrap
 msgid "B<--controller>I<\\ number>B<:>I<value>"
-msgstr "B<--controller>I<number>B<=>I<value>"
+msgstr "B<--controller>I<\\ number>B<:>I<value>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:330
@@ -960,10 +903,9 @@ msgstr "选择该阵营的控制者。可选值有：B<human>和B<ai>。"
 
 #. type: TP
 #: doc/man/wesnoth.6:330
-#, fuzzy, no-wrap
-#| msgid "B<--era=>I<value>"
+#, no-wrap
 msgid "B<--era>I<\\ value>"
-msgstr "B<--era=>I<value>"
+msgstr "B<--era>I<\\ value>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:337
@@ -1004,10 +946,9 @@ msgstr "不使用地图设置，而使用默认值。"
 
 #. type: TP
 #: doc/man/wesnoth.6:344
-#, fuzzy, no-wrap
-#| msgid "B<--multiplayer-repeat=>I<value>"
+#, no-wrap
 msgid "B<--multiplayer-repeat>I<\\ value>"
-msgstr "B<--multiplayer-repeat=>I<value>"
+msgstr "B<--multiplayer-repeat>I<\\ value>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:351
@@ -1018,10 +959,9 @@ msgstr "重复进行多人游戏I<value>次。最好与B<--nogui>同用于可脚
 
 #. type: TP
 #: doc/man/wesnoth.6:351
-#, fuzzy, no-wrap
-#| msgid "B<--parm>I<number>B<=>I<name>B<:>I<value>"
+#, no-wrap
 msgid "B<--parm>I<\\ number>B<:>I<name>B<:>I<value>"
-msgstr "B<--parm>I<number>B<=>I<name>B<:>I<value>"
+msgstr "B<--parm>I<\\ number>B<:>I<name>B<:>I<value>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:360
@@ -1035,10 +975,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:360
-#, fuzzy, no-wrap
-#| msgid "B<--scenario=>I<value>"
+#, no-wrap
 msgid "B<--scenario>I<\\ value>"
-msgstr "B<--scenario=>I<value>"
+msgstr "B<--scenario>I<\\ value>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:364
@@ -1049,10 +988,9 @@ msgstr "通过id选择多人游戏地图。默认地图id是B<multiplayer_The_Fr
 
 #. type: TP
 #: doc/man/wesnoth.6:364
-#, fuzzy, no-wrap
-#| msgid "B<--side>I<number>B<=>I<value>"
+#, no-wrap
 msgid "B<--side>I<\\ number>B<:>I<value>"
-msgstr "B<--side>I<number>B<=>I<value>"
+msgstr "B<--side>I<\\ number>B<:>I<value>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:369
@@ -1065,10 +1003,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:369
-#, fuzzy, no-wrap
-#| msgid "B<--turns=>I<value>"
+#, no-wrap
 msgid "B<--turns>I<\\ value>"
-msgstr "B<--turns=>I<value>"
+msgstr "B<--turns>I<\\ value>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:373
@@ -1083,18 +1020,13 @@ msgstr "退出状态码"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:379
-#, fuzzy
-#| msgid ""
-#| "Normal exit status is 0. An exit status of 1 indicates an (SDL, video, "
-#| "fonts, etc) initialization error. An exit status of 2 indicates an error "
-#| "with the command line options."
 msgid ""
 "Normal exit status is 0.  An exit status of 1 indicates an (SDL, video, "
 "fonts, etc) initialization error.  An exit status of 2 indicates an error "
 "with the command line options."
 msgstr ""
-"正常退出时的状态码为0。状态码1代表发生了（SDL、视频、字体等）初始化错误。状态"
-"码2代表命令行选项中有错误。"
+"正常退出时的状态码为0。退出状态码1代表发生了（SDL、视频、字体等）初始化错误。"
+"退出状态码2代表命令行选项中有错误。"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:393
@@ -1107,6 +1039,11 @@ msgid ""
 "returned if B<--noreplaycheck> is not passed.  An exit status of 2 indicates "
 "that the test timed out, when used with the deprecated B<--timeout> option."
 msgstr ""
+"运行单元测试（使用 B<\\ -u> 时），退出状态码是不同的。退出状态码0代表测试通"
+"过，而1代表测试失败。退出状态码3代表测试通过，但生成了无效的录像文件。退出状"
+"态码4代表测试通过，但录像中产生了错误。后两个状态码仅在不传入 B<--"
+"noreplaycheck> 参数时才会返回。当与已废弃的 B<--noreplaycheck> 选项共同使用"
+"时，退出状态码2代表测试超时。"
 
 #. type: SH
 #: doc/man/wesnoth.6:394 doc/man/wesnothd.6:269
@@ -1150,11 +1087,8 @@ msgstr "版权"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:407 doc/man/wesnothd.6:280
-#, fuzzy
-#| msgid ""
-#| "Copyright \\(co 2003-2013 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgid "Copyright \\(co 2003-2016 David White E<lt>davidnwhite@verizon.netE<gt>"
-msgstr "版权所有 \\(co 2003-2013 David White E<lt>davidnwhite@verizon.netE<gt>"
+msgstr "版权所有 \\(co 2003-2016 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:410 doc/man/wesnothd.6:283
@@ -1205,13 +1139,12 @@ msgstr "wesnothd"
 #: doc/man/wesnothd.6:16
 #, no-wrap
 msgid "Battle for Wesnoth multiplayer network daemon"
-msgstr "Battle for Wesnoth 多人游戏守护进程（网络服务器）"
+msgstr "韦诺之战多人网络守护进程"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:23
 msgid "wesnothd - Battle for B<Wesnoth> multiplayer network daemon"
-msgstr ""
-"wesnothd - 韦诺之战（Battle for B<Wesnoth>） 多人游戏守护进程（网络服务器）"
+msgstr "wesnothd - 韦诺之战（Battle for B<Wesnoth>）多人网络守护进程"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:36
@@ -1556,7 +1489,7 @@ msgid ""
 "trailing /!) Defaults to `' which means the directory wesnothd was started "
 "in."
 msgstr ""
-"服务器用于存放游戏录像的目录。（不要忘了以/结尾！）默认为`'（空），意思是"
+"服务器用于存放游戏录像的目录。（不要忘了以/结尾！）默认为`'（空），意指"
 "wesnothd启动时的当前目录。"
 
 #. type: TP
@@ -1944,47 +1877,3 @@ msgstr ""
 #: doc/man/wesnothd.6:286
 msgid "B<wesnoth>(6)."
 msgstr "B<wesnoth>(6)."
-
-#~ msgid "B<--bpp>I<\\ number>"
-#~ msgstr "B<--bpp>I<\\ number>"
-
-#~ msgid "sets BitsPerPixel value. Example: B<--bpp 32>"
-#~ msgstr "设定每象素占多少位。例如：B<--bpp 32>"
-
-#, fuzzy
-#~| msgid ""
-#~| "goes directly to the campaign with id E<lt>id_campaignE<gt>. A selection "
-#~| "menu will appear if no id was specified.  B<Note:> When using this "
-#~| "switch please ensure that you specify the data directory path as the "
-#~| "final argument aswell, otherwise the game will take the campaign/"
-#~| "scenario id as the data dir."
-#~ msgid ""
-#~ "goes directly to the campaign with id E<lt>id_campaignE<gt>. A selection "
-#~ "menu will appear if no id was specified.  B<Note:> When using this switch "
-#~ "please ensure that you specify the data directory path as the final "
-#~ "argument as well, otherwise the game will take the campaign/scenario id "
-#~ "as the data dir."
-#~ msgstr ""
-#~ "直接进入ID为 E<lt>id_campaignE<gt> 的战役中。如果没有指定ID，则将出现一个"
-#~ "选择菜单。B<注意：>当使用本开关选项时，请确保将数据目录的路径作为最后一个"
-#~ "参数给出，否则游戏会将战役或者场景的ID作为数据目录名。"
-
-#~ msgid "path the path of the data directory and exits."
-#~ msgstr "打印游戏数据目录的路径并退出。"
-
-#~ msgid "runs the game in a small test scenario."
-#~ msgstr "使用一个小测试场景启动游戏。"
-
-#~ msgid ""
-#~ "selects a non-standard algorithm to be used by the AI controller for this "
-#~ "side. Available values: B<idle_ai> and B<sample_ai>."
-#~ msgstr ""
-#~ "为该阵营的AI控制者选择一个非标准的AI算法。可选值有：B<idle_ai>和"
-#~ "B<sample_ai>。"
-
-#~ msgid ""
-#~ "runs the game without the GUI. Must appear before B<--multiplayer> to "
-#~ "have the desired effect."
-#~ msgstr ""
-#~ "启动游戏，但不启用图形用户界面（GUI）。此选项必须在B<--multiplayer>之前使"
-#~ "用才有效。"

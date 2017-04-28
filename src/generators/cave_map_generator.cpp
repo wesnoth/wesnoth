@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -279,7 +279,7 @@ struct passage_path_calculator : pathfind::cost_calculator
 	passage_path_calculator(const t_translation::ter_map& mapdata,
 	                        const t_translation::terrain_code & wall,
 	                        double laziness, size_t windiness,
-							boost::random::mt19937& rng) :
+							std::mt19937& rng) :
 		map_(mapdata), wall_(wall), laziness_(laziness), windiness_(windiness), rng_(rng)
 	{}
 
@@ -289,7 +289,7 @@ private:
 	t_translation::terrain_code wall_;
 	double laziness_;
 	size_t windiness_;
-	boost::random::mt19937& rng_;
+	std::mt19937& rng_;
 };
 
 double passage_path_calculator::cost(const map_location& loc, const double) const

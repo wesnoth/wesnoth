@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -185,8 +185,8 @@ public:
 	void set_max_height(const int new_max_height);
 	void set_max_width(const int new_max_width);
 
-	int get_max_height() { return max_height_; }
-	int get_max_width() { return max_width_; }
+	int get_max_height() const { return max_height_; }
+	int get_max_width() const { return max_width_; }
 
 	size_t number_of_items() const { return items_.size(); }
 
@@ -203,8 +203,8 @@ public:
 	//this should be changed to a more object-oriented approach
 	void set_sorter(sorter *s);
 	void sort_by(int column);
-	int get_sort_by() {return sortby_;}
-	bool get_sort_reversed() {return sortreversed_;}
+	int get_sort_by() const {return sortby_;}
+	bool get_sort_reversed() const {return sortreversed_;}
 
 protected:
 	bool item_ends_with_image(const std::string& item) const;

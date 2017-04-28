@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -24,7 +24,6 @@
 #include "editor/toolkit/editor_toolkit.hpp"
 #include "gui/dialogs/edit_text.hpp"
 
-#include "wml_separators.hpp"
 #include "formula/string_utils.hpp"
 class location_palette_item : public gui::widget
 {

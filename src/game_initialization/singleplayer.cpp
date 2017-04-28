@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2008 - 2017 by the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -27,7 +27,7 @@ static lg::log_domain log_engine("engine");
 
 namespace sp {
 
-bool enter_create_mode(CVideo& video, const config& game_config, saved_game& state, jump_to_campaign_info jump_to_campaign, bool local_players_only)
+bool enter_create_mode(CVideo& video, const config& game_config, saved_game& state, jump_to_campaign_info jump_to_campaign)
 {
 	bool configure_canceled = false;
 
@@ -93,7 +93,7 @@ bool enter_create_mode(CVideo& video, const config& game_config, saved_game& sta
 			}
 
 			// Canceled difficulty dialog, relaunch the campaign selection dialog
-			return enter_create_mode(video, game_config, state, jump_to_campaign, local_players_only);
+			return enter_create_mode(video, game_config, state, jump_to_campaign);
 		}
 
 		create_eng.prepare_for_era_and_mods();
@@ -110,28 +110,35 @@ bool enter_create_mode(CVideo& video, const config& game_config, saved_game& sta
 			return false;
 		}
 
-		configure_canceled = !enter_configure_mode(video, game_config_manager::get()->game_config(), state, create_eng, local_players_only);
+		configure_canceled = !enter_configure_mode(video, game_config_manager::get()->game_config(), state, create_eng);
 
 	} while (configure_canceled);
 
 	return true;
 }
 
-bool enter_configure_mode(CVideo& video, const config& game_config, saved_game& state, ng::create_engine& create_eng, bool local_players_only)
+bool enter_configure_mode(CVideo& video, const config& game_config, saved_game& state, ng::create_engine& create_eng)
 {
-	if(!gui2::dialogs::sp_options_configure::execute(create_eng, video)) {
+	// We create the config engine here in order to ensure values like use_map_settings are set correctly
+	// TODO: should this be passed to this function instead of created here?
+	ng::configure_engine config_eng(create_eng.get_state());
+
+	// TODO: needed?
+	config_eng.update_initial_cfg(create_eng.current_level().data());
+
+	if(!gui2::dialogs::sp_options_configure::execute(create_eng, config_eng, video)) {
 		return false;
 	}
 
 	create_eng.get_parameters();
 	create_eng.prepare_for_new_level();
 
-	enter_connect_mode(video, game_config, state, local_players_only);
+	enter_connect_mode(video, game_config, state);
 
 	return true;
 }
 
-bool enter_connect_mode(CVideo& /*video*/, const config& /*game_config*/, saved_game& state, bool /*local_players_only*/)
+bool enter_connect_mode(CVideo& /*video*/, const config& /*game_config*/, saved_game& state)
 {
 	ng::connect_engine connect_eng(state, true, nullptr);
 
@@ -145,7 +152,7 @@ bool enter_connect_mode(CVideo& /*video*/, const config& /*game_config*/, saved_
 
 		if(dlg.get_retval() != gui2::window::OK) {
 			// TODO: enable the workflow loops from GUI1
-			//return enter_create_mode(video, game_config, state, jump_to_campaign_info(false, -1, "", ""), local_players_only);
+			//return enter_create_mode(video, game_config, state, jump_to_campaign_info(false, -1, "", ""));
 
 			return false;
 		}

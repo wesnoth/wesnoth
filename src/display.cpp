@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -63,24 +63,30 @@ static lg::log_domain log_display("display");
 #define DBG_DP LOG_STREAM(debug, log_display)
 
 namespace {
-	const int DefaultZoom = game_config::tile_size;
-	const int SmallZoom   = DefaultZoom / 2;
+	std::vector<unsigned int> zoom_levels {18, 24, 36, 54, 72, 90, 108, 144, 216, 288};
 
-	const int MinZoom = 4;
-	const int MaxZoom = 288;
-	size_t sunset_delay = 0;
+	const int final_zoom_index = static_cast<int>(zoom_levels.size()) - 1;
+
+	const unsigned int DefaultZoom = game_config::tile_size;
+	const unsigned int SmallZoom   = DefaultZoom / 2;
+
+	const unsigned int MinZoom = zoom_levels.front();
+	const unsigned int MaxZoom = zoom_levels.back();
 
 	bool benchmark = false;
 
 	bool debug_foreground = false;
 }
 
-int display::last_zoom_ = SmallZoom;
+unsigned int display::zoom_ = DefaultZoom;
+unsigned int display::last_zoom_ = SmallZoom;
 
 void display::parse_team_overlays()
 {
 	const team& curr_team = dc_->teams()[playing_team()];
-	const team& prev_team = dc_->teams()[playing_team()-1 < dc_->teams().size() ? playing_team()-1 : dc_->teams().size()-1];
+	const team& prev_team = playing_team() == 0
+		? dc_->teams().back()
+		: dc_->get_team(playing_team());
 	for (const game_display::overlay_map::value_type i : *overlays_) {
 		const overlay& ov = i.second;
 		if (!ov.team_name.empty() &&
@@ -140,9 +146,6 @@ void display::remove_single_overlay(const map_location& loc, const std::string& 
 	}
 }
 
-
-
-
 display::display(const display_context * dc, CVideo& video, std::weak_ptr<wb::manager> wb, reports & reports_object, const config& theme_cfg, const config& level, bool auto_join) :
 	video2::draw_layering(auto_join),
 	dc_(dc),
@@ -157,7 +160,7 @@ display::display(const display_context * dc, CVideo& video, std::weak_ptr<wb::ma
 	ypos_(0),
 	view_locked_(false),
 	theme_(theme_cfg, screen_area()),
-	zoom_(DefaultZoom),
+	zoom_index_(0),
 	fake_unit_man_(new fake_unit_manager(*this)),
 	builder_(new terrain_builder(level, &dc_->map(), theme_.border().tile_image)),
 	minimap_(nullptr),
@@ -171,7 +174,7 @@ display::display(const display_context * dc, CVideo& video, std::weak_ptr<wb::ma
 	turbo_speed_(2),
 	turbo_(false),
 	invalidateGameStatus_(true),
-	map_labels_(new map_labels(*this, 0)),
+	map_labels_(new map_labels(0)),
 	reports_object_(&reports_object),
 	scroll_event_("scrolled"),
 	complete_redraw_event_("completely_redrawn"),
@@ -181,7 +184,6 @@ display::display(const display_context * dc, CVideo& video, std::weak_ptr<wb::ma
 	reports_(),
 	menu_buttons_(),
 	action_buttons_(),
-	sliders_(),
 	invalidated_(),
 	previous_invalidated_(),
 	mouseover_hex_overlay_(nullptr),
@@ -237,11 +239,13 @@ display::display(const display_context * dc, CVideo& video, std::weak_ptr<wb::ma
 
 	set_idle_anim_rate(preferences::idle_anim_rate());
 
+	zoom_index_ = std::find(zoom_levels.begin(), zoom_levels.end(), zoom_) - zoom_levels.begin();
+
 	image::set_zoom(zoom_);
 
 	init_flags();
 
-	if(!menu_buttons_.empty() || !action_buttons_.empty() || !sliders_.empty() ) {
+	if(!menu_buttons_.empty() || !action_buttons_.empty()) {
 		create_buttons();
 	}
 
@@ -253,6 +257,13 @@ display::~display()
 	resources::fake_units = nullptr;
 }
 
+void display::set_theme(config theme_cfg) {
+	theme_ = theme(theme_cfg, screen_area());
+	menu_buttons_.clear();
+	action_buttons_.clear();
+	create_buttons();
+	invalidate_theme();
+}
 
 void display::init_flags() {
 
@@ -415,17 +426,22 @@ const tod_manager & display::get_tod_man() const
 	return *resources::tod_manager;
 }
 
-void display::update_tod() {
-	const time_of_day& tod = get_time_of_day();
-	tod_color col = color_adjust_ + tod.color;
+void display::update_tod(const time_of_day* tod_override)
+{
+	const time_of_day* tod = tod_override;
+	if(tod == nullptr) {
+		tod = &get_time_of_day();
+	}
+
+	const tod_color col = color_adjust_ + tod->color;
 	image::set_color_adjustment(col.r, col.g, col.b);
 }
 
-void display::adjust_color_overlay(int r, int g, int b) {
+void display::adjust_color_overlay(int r, int g, int b)
+{
 	color_adjust_ = tod_color(r, g, b);
 	update_tod();
 }
-
 
 void display::fill_images_list(const std::string& prefix, std::vector<std::string>& images)
 {
@@ -442,7 +458,7 @@ void display::fill_images_list(const std::string& prefix, std::vector<std::strin
 			break;
 	}
 	if (images.empty())
-		images.push_back("");
+		images.emplace_back();
 }
 
 const std::string& display::get_variant(const std::vector<std::string>& variants, const map_location &loc) const
@@ -494,7 +510,7 @@ bool display::is_blindfolded() const
 
 const SDL_Rect& display::max_map_area() const
 {
-	static SDL_Rect max_area = {0, 0, 0, 0};
+	static SDL_Rect max_area {0, 0, 0, 0};
 
 	// hex_size() is always a multiple of 4
 	// and hex_width() a multiple of 3,
@@ -830,53 +846,29 @@ std::shared_ptr<gui::button> display::find_menu_button(const std::string& id)
 	return nullptr;
 }
 
-std::shared_ptr<gui::zoom_slider> display::find_slider(const std::string& id)
-{
-	for (size_t i = 0; i < sliders_.size(); ++i) {
-		if(sliders_[i]->id() == id) {
-			return sliders_[i];
-		}
-	}
-	return nullptr;
-}
-
 void display::layout_buttons()
 {
-
-	DBG_DP << "positioning sliders...\n";
-	const std::vector<theme::slider>& sliders = theme_.sliders();
-	for(std::vector<theme::slider>::const_iterator i = sliders.begin(); i != sliders.end(); ++i) {
-		std::shared_ptr<gui::zoom_slider> s = find_slider(i->get_id());
-		if (s) {
-			const SDL_Rect& loc = i->location(screen_area());
-			s->set_location(loc);
-			s->set_measurements(0,0);
-		}
-	}
-
 	DBG_DP << "positioning menu buttons...\n";
-	const std::vector<theme::menu>& buttons = theme_.menus();
-	for(std::vector<theme::menu>::const_iterator i = buttons.begin(); i != buttons.end(); ++i) {
-		std::shared_ptr<gui::button> b = find_menu_button(i->get_id());
+	for(const auto& menu : theme_.menus()) {
+		std::shared_ptr<gui::button> b = find_menu_button(menu.get_id());
 		if(b) {
-			const SDL_Rect& loc = i->location(screen_area());
+			const SDL_Rect& loc = menu.location(screen_area());
 			b->set_location(loc);
 			b->set_measurements(0,0);
-			b->set_label(i->title());
-			b->set_image(i->image());
+			b->set_label(menu.title());
+			b->set_image(menu.image());
 		}
 	}
 
 	DBG_DP << "positioning action buttons...\n";
-	const std::vector<theme::action>& actions = theme_.actions();
-	for(std::vector<theme::action>::const_iterator i = actions.begin(); i != actions.end(); ++i) {
-		std::shared_ptr<gui::button> b = find_action_button(i->get_id());
+	for(const auto& action : theme_.actions()) {
+		std::shared_ptr<gui::button> b = find_action_button(action.get_id());
 		if(b) {
-			const SDL_Rect& loc = i->location(screen_area());
+			const SDL_Rect& loc = action.location(screen_area());
 			b->set_location(loc);
 			b->set_measurements(0,0);
-			b->set_label(i->title());
-			b->set_image(i->image());
+			b->set_label(action.title());
+			b->set_image(action.image());
 		}
 	}
 }
@@ -885,49 +877,18 @@ void display::create_buttons()
 {
 	std::vector<std::shared_ptr<gui::button>> menu_work;
 	std::vector<std::shared_ptr<gui::button>> action_work;
-	std::vector<std::shared_ptr<gui::zoom_slider>> slider_work;
-
-	DBG_DP << "creating sliders...\n";
-	const std::vector<theme::slider>& sliders = theme_.sliders();
-	for(std::vector<theme::slider>::const_iterator i = sliders.begin(); i != sliders.end(); ++i) {
-		std::shared_ptr<gui::zoom_slider> s(new gui::zoom_slider(screen_, i->image(), i->black_line()));
-		s->leave();
-		s->join_same(this);
-		DBG_DP << "drawing button " << i->get_id() << "\n";
-		s->set_id(i->get_id());
-		//TODO support for non zoom sliders
-		s->set_max(MaxZoom);
-		s->set_min(MinZoom);
-		s->set_value(zoom_);
-		if (!i->tooltip().empty()){
-			s->set_tooltip_string(i->tooltip());
-		}
-
-		std::shared_ptr<gui::zoom_slider> s_prev = find_slider(s->id());
-		if(s_prev) {
-			//s_prev->leave();
-			s->set_max(s_prev->max_value());
-			s->set_min(s_prev->min_value());
-			s->set_value(s_prev->value());
-			s->enable(s_prev->enabled());
-		}
-
-		slider_work.push_back(s);
-	}
 
 	DBG_DP << "creating menu buttons...\n";
-	const std::vector<theme::menu>& buttons = theme_.menus();
-	for(std::vector<theme::menu>::const_iterator i = buttons.begin(); i != buttons.end(); ++i) {
+	for(const auto& menu : theme_.menus()) {
+		if (!menu.is_button()) continue;
 
-		if (!i->is_button()) continue;
-
-		std::shared_ptr<gui::button> b(new gui::button(screen_, i->title(), gui::button::TYPE_PRESS, i->image(),
-				gui::button::DEFAULT_SPACE, false, i->overlay()));
-		DBG_DP << "drawing button " << i->get_id() << "\n";
+		std::shared_ptr<gui::button> b(new gui::button(screen_, menu.title(), gui::button::TYPE_PRESS, menu.image(),
+				gui::button::DEFAULT_SPACE, false, menu.overlay()));
+		DBG_DP << "drawing button " << menu.get_id() << "\n";
 		b->join_same(this);
-		b->set_id(i->get_id());
-		if (!i->tooltip().empty()){
-			b->set_tooltip_string(i->tooltip());
+		b->set_id(menu.get_id());
+		if (!menu.tooltip().empty()){
+			b->set_tooltip_string(menu.tooltip());
 		}
 
 		std::shared_ptr<gui::button> b_prev = find_menu_button(b->id());
@@ -937,17 +898,17 @@ void display::create_buttons()
 
 		menu_work.push_back(b);
 	}
-	DBG_DP << "creating action buttons...\n";
-	const std::vector<theme::action>& actions = theme_.actions();
-	for(std::vector<theme::action>::const_iterator i = actions.begin(); i != actions.end(); ++i) {
-		std::shared_ptr<gui::button> b(new gui::button(screen_, i->title(), string_to_button_type(i->type()), i->image(),
-				gui::button::DEFAULT_SPACE, false, i->overlay()));
 
-		DBG_DP << "drawing button " << i->get_id() << "\n";
-		b->set_id(i->get_id());
+	DBG_DP << "creating action buttons...\n";
+	for(const auto& action : theme_.actions()) {
+		std::shared_ptr<gui::button> b(new gui::button(screen_, action.title(), string_to_button_type(action.type()), action.image(),
+				gui::button::DEFAULT_SPACE, false, action.overlay()));
+
+		DBG_DP << "drawing button " << action.get_id() << "\n";
+		b->set_id(action.get_id());
 		b->join_same(this);
-		if (!i->tooltip(0).empty()){
-			b->set_tooltip_string(i->tooltip(0));
+		if (!action.tooltip(0).empty()){
+			b->set_tooltip_string(action.tooltip(0));
 		}
 
 		std::shared_ptr<gui::button> b_prev = find_action_button(b->id());
@@ -961,8 +922,6 @@ void display::create_buttons()
 	menu_buttons_.assign(menu_work.begin(), menu_work.end());
 	action_buttons_.clear();
 	action_buttons_.assign(action_work.begin(), action_work.end());
-	sliders_.clear();
-	sliders_.assign(slider_work.begin(), slider_work.end());
 
 	layout_buttons();
 	DBG_DP << "buttons created\n";
@@ -976,10 +935,6 @@ void display::render_buttons()
 
 	for (std::shared_ptr<gui::button> btn : action_buttons_) {
 		btn->set_dirty(true);
-	}
-
-	for (std::shared_ptr<gui::slider> sld : sliders_) {
-		sld->set_dirty(true);
 	}
 }
 
@@ -996,8 +951,8 @@ gui::button::TYPE display::string_to_button_type(std::string type)
 
 static const std::string& get_direction(size_t n)
 {
-	static const std::string dirs[6] = { "-n", "-ne", "-se", "-s", "-sw", "-nw" };
-	return dirs[n >= sizeof(dirs)/sizeof(*dirs) ? 0 : n];
+	static const std::array<std::string, 6> dirs {{ "-n", "-ne", "-se", "-s", "-sw", "-nw" }};
+	return dirs[n >= dirs.size() ? 0 : n];
 }
 
 std::vector<surface> display::get_fog_shroud_images(const map_location& loc, image::TYPE image_type)
@@ -1209,18 +1164,17 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 		// Since it is themeable it can change,
 		// so don't make it static.
 		const std::string off_map_name = "terrain/" + theme_.border().tile_image;
-		for(std::vector<animated<image::locator> >::const_iterator it =
-				terrains->begin(); it != terrains->end(); ++it) {
-
+		for(const auto& terrain : *terrains) {
 			const image::locator &image = animate_map_ ?
-				it->get_current_frame() : it->get_first_frame();
+				terrain.get_current_frame() : terrain.get_first_frame();
 
 			// We prevent ToD coloring and brightening of off-map tiles,
 			// We need to test for the tile to be rendered and
 			// not the location, since the transitions are rendered
 			// over the offmap-terrain and these need a ToD coloring.
 			surface surf;
-			const bool off_map = image.get_filename() == off_map_name;
+			const bool off_map = (image.get_filename() == off_map_name || image.get_modifications().find("NO_TOD_SHIFT()") != std::string::npos);
+
 			if(off_map) {
 				surf = image::get_image(image, off_map ? image::SCALED_TO_HEX : image_type);
 			} else if(lt.empty()) {
@@ -1257,17 +1211,13 @@ void display::drawing_buffer_add(const drawing_layer layer,
 // public into the definition of drawing_layer
 //
 // The drawing is done per layer_group, the range per group is [low, high).
-const display::drawing_layer display::drawing_buffer_key::layer_groups[] = {
+const std::array<display::drawing_layer, 4> display::drawing_buffer_key::layer_groups {{
 	LAYER_TERRAIN_BG,
 	LAYER_UNIT_FIRST,
 	LAYER_UNIT_MOVE_DEFAULT,
 	// Make sure the movement doesn't show above fog and reachmap.
-	LAYER_REACHMAP,
-	LAYER_LAST_LAYER
-};
-
-// no need to change this if layer_groups above is changed
-const unsigned int display::drawing_buffer_key::max_layer_group = sizeof(display::drawing_buffer_key::layer_groups) / sizeof(display::drawing_layer) - 2;
+	LAYER_REACHMAP
+}};
 
 enum {
 	// you may adjust the following when needed:
@@ -1295,11 +1245,12 @@ enum {
 inline display::drawing_buffer_key::drawing_buffer_key(const map_location &loc, drawing_layer layer)
 	: key_(0)
 {
-	// max_layer_group + 1 is the last valid entry in layer_groups, but it is always > layer
-	// thus the first --g is a given => start with max_layer_groups right away
-	unsigned int g = max_layer_group;
-	while (layer < layer_groups[g]) {
-		--g;
+	// Start with the index of last group entry...
+	unsigned int group_i = layer_groups.size() - 1;
+
+	// ...and works backwards until the group containing the specified layer is found.
+	while(layer < layer_groups[group_i]) {
+		--group_i;
 	}
 
 	enum {
@@ -1315,7 +1266,7 @@ inline display::drawing_buffer_key::drawing_buffer_key(const map_location &loc, 
 	// then the row containing all the even x. Since thus the least significant bit of x is
 	// not required for x ordering anymore it can be shifted out to the right.
 	const unsigned int x_parity = static_cast<unsigned int>(loc.x) & 1;
-	key_  = (g << SHIFT_LAYER_GROUP) | (static_cast<unsigned int>(loc.y + MAX_BORDER) << SHIFT_Y);
+	key_  = (group_i << SHIFT_LAYER_GROUP) | (static_cast<unsigned int>(loc.y + MAX_BORDER) << SHIFT_Y);
 	key_ |= (x_parity << SHIFT_X_PARITY);
 	key_ |= (static_cast<unsigned int>(layer) << SHIFT_LAYER) | static_cast<unsigned int>(loc.x + MAX_BORDER) / 2;
 }
@@ -1363,12 +1314,6 @@ void display::drawing_buffer_clear()
 	drawing_buffer_.clear();
 }
 
-void display::sunset(const size_t delay)
-{
-	// This allow both parametric and toggle use
-	sunset_delay = (sunset_delay == 0 && delay == 0) ? 3 : delay;
-}
-
 void display::toggle_benchmark()
 {
 	benchmark = !benchmark;
@@ -1387,15 +1332,6 @@ void display::flip()
 
 	surface& frameBuffer = video().getSurface();
 
-	// This is just the debug function "sunset" to progressively darken the map area
-	static size_t sunset_timer = 0;
-	if (sunset_delay && ++sunset_timer > sunset_delay) {
-		sunset_timer = 0;
-		SDL_Rect r = map_outside_area(); // Use frameBuffer to also test the UI
-		const Uint32 color =  SDL_MapRGBA(video().getSurface()->format,0,0,0,SDL_ALPHA_OPAQUE);
-		// Adjust the alpha if you want to balance cpu-cost / smooth sunset
-		sdl::fill_rect_alpha(r, color, 1, frameBuffer);
-	}
 	font::draw_floating_labels(frameBuffer);
 	events::raise_volatile_draw_event();
 
@@ -1527,14 +1463,12 @@ void display::draw_all_panels()
 	 */
 	recalculate_minimap();
 
-	const std::vector<theme::panel>& panels = theme_.panels();
-	for(std::vector<theme::panel>::const_iterator p = panels.begin(); p != panels.end(); ++p) {
-		draw_panel(video(), *p, menu_buttons_);
+	for(const auto& panel : theme_.panels()) {
+		draw_panel(video(), panel, menu_buttons_);
 	}
 
-	const std::vector<theme::label>& labels = theme_.labels();
-	for(std::vector<theme::label>::const_iterator i = labels.begin(); i != labels.end(); ++i) {
-		draw_label(video(),screen,*i);
+	for(const auto& label : theme_.labels()) {
+		draw_label(video(), screen, label);
 	}
 
 	render_buttons();
@@ -1605,18 +1539,18 @@ void display::render_image(int x, int y, const display::drawing_layer drawing_la
 		surf = image::reverse_image(surf);
 	}
 	if(vreverse) {
-		surf = flop_surface(surf, false);
+		surf = flop_surface(surf);
 	}
 
 	if(greyscale) {
-		surf = greyscale_image(surf, false);
+		surf = greyscale_image(surf);
 	}
 
 	if(blend_ratio != 0) {
-		surf = blend_surface(surf, blend_ratio, blendto, false);
+		surf = blend_surface(surf, blend_ratio, blendto);
 	}
 	if(alpha > ftofxp(1.0)) {
-		surf = brighten_image(surf, alpha, false);
+		surf = brighten_image(surf, alpha);
 	//} else if(alpha != 1.0 && blendto != 0) {
 	//	surf.assign(blend_surface(surf,1.0-alpha,blendto));
 	} else if(alpha != ftofxp(1.0)) {
@@ -1642,7 +1576,7 @@ void display::render_image(int x, int y, const display::drawing_layer drawing_la
 			float alpha_base = 0.3f; // 30% alpha at surface of water
 			float alpha_delta = 0.015f; // lose 1.5% per pixel depth
 			alpha_delta *= zoom_ / DefaultZoom; // adjust with zoom
-			surf = submerge_alpha(surf, depth, alpha_base, alpha_delta, false);
+			surf = submerge_alpha(surf, depth, alpha_base, alpha_delta);
 
 			srcrect.y = submerge_height;
 			srcrect.h = surf->h-submerge_height;
@@ -1758,8 +1692,7 @@ void display::draw_wrap(bool update, bool force)
 
 const theme::action* display::action_pressed()
 {
-	for(std::vector<std::shared_ptr<gui::button>>::iterator i = action_buttons_.begin();
-			i != action_buttons_.end(); ++i) {
+	for(auto i = action_buttons_.begin(); i != action_buttons_.end(); ++i) {
 		if((*i)->pressed()) {
 			const size_t index = i - action_buttons_.begin();
 			if(index >= theme_.actions().size()) {
@@ -1775,7 +1708,7 @@ const theme::action* display::action_pressed()
 
 const theme::menu* display::menu_pressed()
 {
-	for(std::vector<std::shared_ptr<gui::button>>::iterator i = menu_buttons_.begin(); i != menu_buttons_.end(); ++i) {
+	for(auto i = menu_buttons_.begin(); i != menu_buttons_.end(); ++i) {
 		if((*i)->pressed()) {
 			const size_t index = i - menu_buttons_.begin();
 			if(index >= theme_.menus().size()) {
@@ -1791,11 +1724,11 @@ const theme::menu* display::menu_pressed()
 
 void display::enable_menu(const std::string& item, bool enable)
 {
-	for(std::vector<theme::menu>::const_iterator menu = theme_.menus().begin();
-			menu != theme_.menus().end(); ++menu) {
+	for(auto menu = theme_.menus().begin(); menu != theme_.menus().end(); ++menu) {
 
-		std::vector<std::string>::const_iterator hasitem =
-			std::find(menu->items().begin(), menu->items().end(), item);
+		const auto hasitem = std::find_if(menu->items().begin(), menu->items().end(),
+			[&item](const config& c) { return c["id"].str() == item; }
+		);
 
 		if(hasitem != menu->items().end()) {
 			const size_t index = menu - theme_.menus().begin();
@@ -1819,70 +1752,6 @@ void display::announce(const std::string& message, const color_t& color, int lif
 	font::add_floating_label(flabel);
 }
 
-
-void display::draw_border(const map_location& loc, const int xpos, const int ypos)
-{
-	/**
-	 * at the moment the border must be between 0.0 and 0.5
-	 * and the image should always be prepared for a 0.5 border.
-	 * This way this code doesn't need modifications for other border sizes.
-	 */
-
-	// First handle the corners :
-	if(loc.x == -1 && loc.y == -1) { // top left corner
-		drawing_buffer_add(LAYER_BORDER, loc, xpos + zoom_/4, ypos,
-			image::get_image(theme_.border().corner_image_top_left, image::SCALED_TO_ZOOM));
-	} else if(loc.x == get_map().w() && loc.y == -1) { // top right corner
-		// We use the map idea of odd and even, and map coords are internal coords + 1
-		if(loc.x%2 == 0) {
-			drawing_buffer_add(LAYER_BORDER, loc, xpos, ypos + zoom_/2,
-				image::get_image(theme_.border().corner_image_top_right_odd, image::SCALED_TO_ZOOM));
-		} else {
-			drawing_buffer_add(LAYER_BORDER, loc, xpos, ypos,
-				image::get_image(theme_.border().corner_image_top_right_even, image::SCALED_TO_ZOOM));
-		}
-	} else if(loc.x == -1 && loc.y == get_map().h()) { // bottom left corner
-		drawing_buffer_add(LAYER_BORDER, loc, xpos + zoom_/4, ypos,
-			image::get_image(theme_.border().corner_image_bottom_left, image::SCALED_TO_ZOOM));
-
-	} else if(loc.x == get_map().w() && loc.y == get_map().h()) { // bottom right corner
-		// We use the map idea of odd and even, and map coords are internal coords + 1
-		if(loc.x%2 == 1) {
-			drawing_buffer_add(LAYER_BORDER, loc, xpos, ypos,
-				image::get_image(theme_.border().corner_image_bottom_right_even, image::SCALED_TO_ZOOM));
-		} else {
-			drawing_buffer_add(LAYER_BORDER, loc, xpos, ypos,
-				image::get_image(theme_.border().corner_image_bottom_right_odd, image::SCALED_TO_ZOOM));
-		}
-
-	// Now handle the sides:
-	} else if(loc.x == -1) { // left side
-		drawing_buffer_add(LAYER_BORDER, loc, xpos + zoom_/4, ypos,
-			image::get_image(theme_.border().border_image_left, image::SCALED_TO_ZOOM));
-	} else if(loc.x == get_map().w()) { // right side
-		drawing_buffer_add(LAYER_BORDER, loc, xpos + zoom_/4, ypos,
-			image::get_image(theme_.border().border_image_right, image::SCALED_TO_ZOOM));
-	} else if(loc.y == -1) { // top side
-		// We use the map idea of odd and even, and map coords are internal coords + 1
-		if(loc.x%2 == 1) {
-			drawing_buffer_add(LAYER_BORDER, loc, xpos, ypos,
-				image::get_image(theme_.border().border_image_top_even, image::SCALED_TO_ZOOM));
-		} else {
-			drawing_buffer_add(LAYER_BORDER, loc, xpos, ypos + zoom_/2,
-				image::get_image(theme_.border().border_image_top_odd, image::SCALED_TO_ZOOM));
-		}
-	} else if(loc.y == get_map().h()) { // bottom side
-		// We use the map idea of odd and even, and map coords are internal coords + 1
-		if(loc.x%2 == 1) {
-			drawing_buffer_add(LAYER_BORDER, loc, xpos, ypos,
-				image::get_image(theme_.border().border_image_bottom_even, image::SCALED_TO_ZOOM));
-		} else {
-			drawing_buffer_add(LAYER_BORDER, loc, xpos, ypos + zoom_/2,
-				image::get_image(theme_.border().border_image_bottom_odd, image::SCALED_TO_ZOOM));
-		}
-	}
-}
-
 void display::draw_minimap()
 {
 	const SDL_Rect& area = minimap_area();
@@ -1903,7 +1772,7 @@ void display::draw_minimap()
 	const surface& screen(screen_.getSurface());
 	clip_rect_setter clip_setter(screen, &area);
 
-	color_t back_color = {31,31,23,SDL_ALPHA_OPAQUE};
+	color_t back_color {31,31,23,SDL_ALPHA_OPAQUE};
 	draw_centered_on_background(minimap_, area, back_color, screen);
 
 	//update the minimap location for mouse and units functions
@@ -1947,15 +1816,15 @@ void display::draw_minimap_units()
 	double xscaling = 1.0 * minimap_location_.w / get_map().w();
 	double yscaling = 1.0 * minimap_location_.h / get_map().h();
 
-	for(unit_map::const_iterator u = dc_->units().begin(); u != dc_->units().end(); ++u) {
-		if (fogged(u->get_location()) ||
-		    (dc_->teams()[currentTeam_].is_enemy(u->side()) &&
-		     u->invisible(u->get_location(), *dc_)) ||
-			 u->get_hidden()) {
+	for(const auto& u : dc_->units()) {
+		if (fogged(u.get_location()) ||
+		    (dc_->teams()[currentTeam_].is_enemy(u.side()) &&
+		     u.invisible(u.get_location(), *dc_)) ||
+			 u.get_hidden()) {
 			continue;
 		}
 
-		int side = u->side();
+		int side = u.side();
 		color_t col = team::get_minimap_color(side);
 
 		if (!preferences::minimap_movement_coding()) {
@@ -1966,9 +1835,9 @@ void display::draw_minimap_units()
 
 				if (currentTeam_ +1 == static_cast<unsigned>(side)) {
 
-					if (u->movement_left() == u->total_movement())
+					if (u.movement_left() == u.total_movement())
 						col = game_config::color_info(preferences::unmoved_color()).rep();
-					else if (u->movement_left() == 0)
+					else if (u.movement_left() == 0)
 						col = game_config::color_info(preferences::moved_color()).rep();
 					else
 						col = game_config::color_info(preferences::partial_color()).rep();
@@ -1978,8 +1847,8 @@ void display::draw_minimap_units()
 			}
 		}
 
-		double u_x = u->get_location().x * xscaling;
-		double u_y = (u->get_location().y + (is_odd(u->get_location().x) ? 1 : -1)/4.0) * yscaling;
+		double u_x = u.get_location().x * xscaling;
+		double u_y = (u.get_location().y + (is_odd(u.get_location().x) ? 1 : -1)/4.0) * yscaling;
  		// use 4/3 to compensate the horizontal hexes imbrication
 		double u_w = 4.0 / 3.0 * xscaling;
 		double u_h = yscaling;
@@ -2066,60 +1935,84 @@ bool display::zoom_at_min() const
 	return zoom_ == MinZoom;
 }
 
-bool display::set_zoom(int amount, bool absolute)
+bool display::set_zoom(bool increase)
 {
-	int new_zoom = zoom_ + amount;
-	if (absolute)
-		new_zoom = amount;
-	if (new_zoom < MinZoom) {
-		new_zoom = MinZoom;
-	}
-	if (new_zoom > MaxZoom) {
-		new_zoom = MaxZoom;
-	}
+	// Ensure we don't try to access nonexistant vector indices.
+	zoom_index_ = utils::clamp(increase ? zoom_index_ + 1 : zoom_index_ - 1, 0, final_zoom_index);
+
+	// No validation check is needed in the next step since we've already set the index here and
+	// know the new zoom value is indeed valid.
+	return set_zoom(zoom_levels[zoom_index_], false);
+}
+
+bool display::set_zoom(unsigned int amount, const bool validate_value_and_set_index)
+{
+	unsigned int new_zoom = utils::clamp(amount, MinZoom, MaxZoom);
+
 	LOG_DP << "new_zoom = " << new_zoom << std::endl;
-	if (new_zoom != zoom_) {
-		std::shared_ptr<gui::slider> zoom_slider = find_slider("map-zoom-slider");
-		if (zoom_slider) {
-			zoom_slider->set_value(new_zoom);
-		}
-		SDL_Rect const &area = map_area();
-		xpos_ += (xpos_ + area.w / 2) * (absolute ? new_zoom - zoom_ : amount) / zoom_;
-		ypos_ += (ypos_ + area.h / 2) * (absolute ? new_zoom - zoom_ : amount) / zoom_;
 
-		zoom_ = new_zoom;
-		bounds_check_position();
-		if (zoom_ != DefaultZoom) {
-			last_zoom_ = zoom_;
-		}
-		image::set_zoom(zoom_);
-
-		labels().recalculate_labels();
-		redraw_background_ = true;
-		invalidate_all();
-
-		// Forces a redraw after zooming.
-		// This prevents some graphic glitches from occurring.
-		draw();
-		return true;
-	} else {
+	if(new_zoom == zoom_) {
 		return false;
 	}
+
+	// Confirm this is indeed a valid zoom level.
+	if(validate_value_and_set_index) {
+		auto iter = std::lower_bound(zoom_levels.begin(), zoom_levels.end(), new_zoom);
+
+		if(iter == zoom_levels.end()) {
+			// This should never happen, since the value was already clamped earlier
+			return false;
+		} else if(iter != zoom_levels.begin()) {
+			float diff = *iter - *(iter - 1);
+			float lower = (new_zoom - *(iter - 1)) / diff;
+			float upper = (*iter - new_zoom) / diff;
+			if(lower < upper) {
+				// It's actually closer to the previous element.
+				iter--;
+			}
+		}
+
+		new_zoom = *iter;
+		zoom_index_ = iter - zoom_levels.begin();
+	}
+
+	const SDL_Rect& area = map_area();
+
+	xpos_ += (xpos_ + area.w / 2) * amount / zoom_;
+	ypos_ += (ypos_ + area.h / 2) * amount / zoom_;
+
+	zoom_ = new_zoom;
+	bounds_check_position(xpos_, ypos_);
+	if(zoom_ != DefaultZoom) {
+		last_zoom_ = zoom_;
+	}
+
+	image::set_zoom(zoom_);
+
+	labels().recalculate_labels();
+	redraw_background_ = true;
+	invalidate_all();
+
+	// Forces a redraw after zooming.
+	// This prevents some graphic glitches from occurring.
+	draw();
+
+	return true;
 }
 
 void display::set_default_zoom()
 {
 	if (zoom_ != DefaultZoom) {
 		last_zoom_ = zoom_;
-		set_zoom(DefaultZoom - zoom_ );
+		set_zoom(DefaultZoom);
 	} else {
 		// When we are already at the default zoom,
 		// switch to the last zoom used
-		set_zoom(last_zoom_ - zoom_);
+		set_zoom(last_zoom_);
 	}
 }
 
-bool display::tile_fully_on_screen(const map_location& loc)
+bool display::tile_fully_on_screen(const map_location& loc) const
 {
 	int x = get_location_x(loc);
 	int y = get_location_y(loc);
@@ -2370,7 +2263,7 @@ void display::scroll_to_tiles(const std::vector<map_location>::const_iterator & 
 
 void display::bounds_check_position()
 {
-	const int orig_zoom = zoom_;
+	const unsigned int orig_zoom = zoom_;
 
 	if(zoom_ < MinZoom) {
 		zoom_ = MinZoom;
@@ -2448,7 +2341,7 @@ void display::redraw_everything()
 
 	theme_.set_resolution(screen_area());
 
-	if(!menu_buttons_.empty() || !action_buttons_.empty() || !sliders_.empty() ) {
+	if(!menu_buttons_.empty() || !action_buttons_.empty()) {
 		create_buttons();
 	}
 
@@ -2591,17 +2484,13 @@ void display::draw_invalidated() {
 		int xpos = get_location_x(loc);
 		int ypos = get_location_y(loc);
 
-		const bool on_map = get_map().on_board(loc);
+		//const bool on_map = get_map().on_board(loc);
 		SDL_Rect hex_rect = sdl::create_rect(xpos, ypos, zoom_, zoom_);
 		if(!sdl::rects_overlap(hex_rect,clip_rect)) {
 			continue;
 		}
 		draw_hex(loc);
 		drawn_hexes_+=1;
-		// If the tile is at the border, we start to blend it
-		if(!on_map) {
-			 draw_border(loc, xpos, ypos);
-		}
 	}
 	invalidated_hexes_ += invalidated_.size();
 
@@ -2628,7 +2517,6 @@ void display::draw_hex(const map_location& loc) {
 	int ypos = get_location_y(loc);
 	image::TYPE image_type = get_image_type(loc);
 	const bool on_map = get_map().on_board(loc);
-	const bool off_map_tile = (get_map().get_terrain(loc) == t_translation::OFF_MAP_USER);
 	const time_of_day& tod = get_time_of_day(loc);
 
 	int num_images_fg = 0;
@@ -2647,7 +2535,7 @@ void display::draw_hex(const map_location& loc) {
 		drawing_buffer_add(LAYER_TERRAIN_FG, loc, xpos, ypos, images_fg);
 
 		// Draw the grid, if that's been enabled
-		if(grid_ && on_map && !off_map_tile) {
+		if(grid_) {
 			static const image::locator grid_top(game_config::images::grid_top);
 			drawing_buffer_add(LAYER_GRID_TOP, loc, xpos, ypos,
 				image::get_image(grid_top, image::TOD_COLORED));
@@ -2667,27 +2555,25 @@ void display::draw_hex(const map_location& loc) {
 		image::light_string lt;
 
 		if(have_overlays) {
-			const time_of_day& loc_tod = get_time_of_day(loc);
-			const tod_color& loc_col = loc_tod.color;
+			tod_color tod_col = tod.color;
 
-			if(loc_col != get_time_of_day().color) {
-				// Continue with local light. image::get_lighted_image
-				// doesn't take the image::TOD_COLORED type, so we need
-				// to apply the color_adjust_ ourselves.
-				tod_color col = loc_col + color_adjust_;
-				lt = image::get_light_string(-1, col.r, col.g, col.b);
+			if(tod_col != get_time_of_day().color) {
+				tod_col = tod_col + color_adjust_;
 			}
-		}
 
-		for( ; overlays.first != overlays.second; ++overlays.first) {
-			if ((overlays.first->second.team_name == "" ||
-					overlays.first->second.team_name.find(dc_->teams()[viewing_team()].team_name()) != std::string::npos)
-					&& !(fogged(loc) && !overlays.first->second.visible_in_fog))
-			{
+			lt = image::get_light_string(0, tod_col.r, tod_col.g, tod_col.b);
 
-				const surface surf =
-                        image::get_lighted_image(overlays.first->second.image, lt, image::SCALED_TO_HEX);
-				drawing_buffer_add(LAYER_TERRAIN_BG, loc, xpos, ypos, surf);
+			for( ; overlays.first != overlays.second; ++overlays.first) {
+				if ((overlays.first->second.team_name == "" ||
+						overlays.first->second.team_name.find(dc_->teams()[viewing_team()].team_name()) != std::string::npos)
+						&& !(fogged(loc) && !overlays.first->second.visible_in_fog))
+				{
+
+					const std::string image = overlays.first->second.image;
+					const surface surf = image.find("~NO_TOD_SHIFT()") == std::string::npos ?
+						image::get_lighted_image(image, lt, image::SCALED_TO_HEX) : image::get_image(image, image::SCALED_TO_HEX);
+					drawing_buffer_add(LAYER_TERRAIN_BG, loc, xpos, ypos, surf);
+				}
 			}
 		}
 	}
@@ -3273,16 +3159,14 @@ void display::process_reachmap_changes()
 		// Invalidate everything except the non-darkened tiles
 		reach_map &full = reach_map_.empty() ? reach_map_old_ : reach_map_;
 
-		rect_of_hexes hexes = get_visible_hexes();
-		rect_of_hexes::iterator i = hexes.begin(), end = hexes.end();
-		for (;i != end; ++i) {
-			reach_map::iterator reach = full.find(*i);
+		for (const auto& hex : get_visible_hexes()) {
+			reach_map::iterator reach = full.find(hex);
 			if (reach == full.end()) {
 				// Location needs to be darkened or brightened
-				invalidate(*i);
+				invalidate(hex);
 			} else if (reach->second != 1) {
 				// Number needs to be displayed or cleared
-				invalidate(*i);
+				invalidate(hex);
 			}
 		}
 	} else if (!reach_map_.empty()) {

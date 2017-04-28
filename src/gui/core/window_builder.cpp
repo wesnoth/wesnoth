@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -144,7 +144,7 @@ void
 register_builder_widget(const std::string& id,
 						std::function<builder_widget_ptr(config)> functor)
 {
-	builder_widget_lookup().insert(std::make_pair(id, functor));
+	builder_widget_lookup().emplace(id, functor);
 }
 
 builder_widget_ptr create_builder_widget(const config& cfg)
@@ -266,7 +266,7 @@ const std::string& builder_window::read(const config& cfg)
 	VALIDATE(!cfgs.empty(), _("No resolution defined."));
 	for(const auto & i : cfgs)
 	{
-		resolutions.push_back(window_resolution(i));
+		resolutions.emplace_back(i);
 	}
 
 	return id_;
@@ -399,7 +399,7 @@ builder_window::window_resolution::window_resolution(const config& cfg)
 	, grid(0)
 {
 	if(!cfg["functions"].empty()) {
-		game_logic::formula(cfg["functions"], &functions).evaluate();
+		wfl::formula(cfg["functions"], &functions).evaluate();
 	}
 
 	const config& c = cfg.child("grid");
@@ -422,29 +422,7 @@ builder_window::window_resolution::window_resolution(const config& cfg)
 		definition = "default";
 	}
 
-	for(const auto & lg : cfg.child_range("linked_group"))
-	{
-		linked_group linked_group;
-		linked_group.id = lg["id"].str();
-		linked_group.fixed_width = lg["fixed_width"].to_bool();
-		linked_group.fixed_height = lg["fixed_height"].to_bool();
-
-		VALIDATE(!linked_group.id.empty(),
-				 missing_mandatory_wml_key("linked_group", "id"));
-
-		if(!(linked_group.fixed_width || linked_group.fixed_height)) {
-			utils::string_map symbols;
-			symbols["id"] = linked_group.id;
-			t_string msg
-					= vgettext("Linked '$id' group needs a 'fixed_width' or "
-							   "'fixed_height' key.",
-							   symbols);
-
-			FAIL(msg);
-		}
-
-		linked_groups.push_back(linked_group);
-	}
+	linked_groups = parse_linked_group_definitions(cfg);
 }
 
 builder_window::window_resolution::tooltip_info::tooltip_info(const config& cfg, const std::string& tagname) : id(cfg["id"])

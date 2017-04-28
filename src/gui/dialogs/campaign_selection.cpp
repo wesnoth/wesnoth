@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2009 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -16,6 +16,7 @@
 
 #include "gui/dialogs/campaign_selection.hpp"
 
+#include "config_assign.hpp"
 #include "game_preferences.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/helper.hpp"
@@ -27,6 +28,7 @@
 #else
 #include "gui/widgets/listbox.hpp"
 #endif
+#include "gui/widgets/multimenu_button.hpp"
 #include "gui/widgets/multi_page.hpp"
 #include "gui/widgets/scroll_label.hpp"
 #include "gui/widgets/settings.hpp"
@@ -160,38 +162,29 @@ void campaign_selection::pre_show(window& window)
 		pages.add_page(data);
 	}
 
+	//
+	// Set up Mods selection dropdown
+	//
+	multimenu_button& mods_menu = find_widget<multimenu_button>(&window, "mods_menu", false);
+
 	if(!engine_.get_const_extras_by_type(ng::create_engine::MOD).empty()) {
-		std::map<std::string, string_map> data;
-		string_map item;
 
-		item["label"] = "Modifications";
-		data.emplace("tree_view_node_label", item);
-
-		tree_view_node& mods_node = tree.add_node("campaign_group", data);
+		std::vector<config> mod_menu_values;
 		std::vector<std::string> enabled = engine_.active_mods();
 
-		id = 0;
 		for(const auto& mod : engine_.get_const_extras_by_type(ng::create_engine::MOD)) {
-			data.clear();
-			item.clear();
+			const bool active = std::find(enabled.begin(), enabled.end(), mod->id) != enabled.end();
 
-			bool active = std::find(enabled.begin(), enabled.end(), mod->id) != enabled.end();
+			mod_menu_values.emplace_back(config_of("label", mod->name)("checkbox", active));
 
-			/*** Add tree item ***/
-			item["label"] = mod->name;
-			data.emplace("checkb", item);
-
-			tree_view_node& node = mods_node.add_child("modification", data);
-
-			toggle_button* checkbox = dynamic_cast<toggle_button*>(node.find("checkb", true));
-			VALIDATE(checkbox, missing_widget("checkb"));
-
-			checkbox->set_value(active);
-			checkbox->set_label(mod->name);
-			checkbox->set_callback_state_change(std::bind(&campaign_selection::mod_toggled, this, id, _1));
-
-			++id;
+			mod_states_.push_back(active);
 		}
+
+		mods_menu.set_values(mod_menu_values);
+		mods_menu.set_callback_toggle_state_change(std::bind(&campaign_selection::mod_toggled, this, std::ref(window)));
+	} else {
+		mods_menu.set_active(false);
+		mods_menu.set_label(_("None"));
 	}
 
 	campaign_selected(window);
@@ -223,10 +216,22 @@ void campaign_selection::post_show(window& window)
 	preferences::set_modifications(engine_.active_mods(), false);
 }
 
-void campaign_selection::mod_toggled(int id, widget &)
+void campaign_selection::mod_toggled(window& window)
 {
-	engine_.set_current_mod_index(id);
-	engine_.toggle_current_mod();
+	boost::dynamic_bitset<> new_mod_states = find_widget<multimenu_button>(&window, "mods_menu", false).get_toggle_states();
+
+	// Get a mask of any mods that were toggled, regardless of new state
+	mod_states_ = mod_states_ ^ new_mod_states;
+
+	for(unsigned i = 0; i < mod_states_.size(); i++) {
+		if(mod_states_[i]) {
+			engine_.set_current_mod_index(i);
+			engine_.toggle_current_mod();
+		}
+	}
+
+	// Save the full toggle states for next time
+	mod_states_ = new_mod_states;
 }
 
 } // namespace dialogs

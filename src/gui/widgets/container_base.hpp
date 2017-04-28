@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -34,11 +34,7 @@ class container_base : public styled_widget
 	friend class debug_layout_graph;
 
 public:
-	explicit container_base(const unsigned canvas_count)
-		: styled_widget(canvas_count), grid_()
-	{
-		grid_.set_parent(this);
-	}
+	explicit container_base(const unsigned canvas_count);
 
 	/**
 	 * Returns the client rect.
@@ -52,8 +48,8 @@ public:
 
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
-	/** See @ref widget::layout_initialise. */
-	virtual void layout_initialise(const bool full_initialisation) override;
+	/** See @ref widget::layout_initialize. */
+	virtual void layout_initialize(const bool full_initialization) override;
 
 	/**
 	 * Tries to reduce the width of a container.

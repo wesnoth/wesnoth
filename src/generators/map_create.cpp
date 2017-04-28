@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -41,37 +41,27 @@ map_generator* create_map_generator(const std::string& name, const config &cfg)
 }
 
 //function to generate a random map, from a string which describes
-//the generator to use and its arguments
-std::string random_generate_map(const std::string& parms, const config &cfg)
+//the generator to use
+std::string random_generate_map(const std::string& name, const config &cfg)
 {
-	//the first token is the name of the generator, tokens after
-	//that are arguments to the generator
-	std::vector<std::string> parameters = utils::split(parms, ' ');
-	assert(!parameters.empty()); //we use parameters.front() in the next line.
-	std::unique_ptr<map_generator> generator(create_map_generator(parameters.front(),cfg));
+	std::unique_ptr<map_generator> generator(create_map_generator(name,cfg));
 	if(generator == nullptr) {
 		std::stringstream ss;
-		ss << "could not find map generator '" << parameters.front() << "'";
+		ss << "could not find map generator '" << name << "'";
 		throw mapgen_exception(ss.str());
 	}
 
-	parameters.erase(parameters.begin());
 	return generator.get()->create_map();
 }
 
-config random_generate_scenario(const std::string& parms, const config &cfg)
+config random_generate_scenario(const std::string& name, const config &cfg)
 {
-	//the first token is the name of the generator, tokens after
-	//that are arguments to the generator
-	std::vector<std::string> parameters = utils::split(parms, ' ');
-	assert(!parameters.empty()); //we use parameters.front() in the next line.
-	std::unique_ptr<map_generator> generator(create_map_generator(parameters.front(),cfg));
+	std::unique_ptr<map_generator> generator(create_map_generator(name,cfg));
 	if(generator == nullptr) {
 		std::stringstream ss;
-		ss << "could not find map generator '" << parameters.front() << "'";
+		ss << "could not find map generator '" << name << "'";
 		throw mapgen_exception(ss.str());
 	}
 
-	parameters.erase(parameters.begin());
 	return generator->create_scenario();
 }

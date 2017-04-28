@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2016 by Fabian Mueller <fabianmueller5@gmx.de>
+   Copyright (C) 2012 - 2017 by Fabian Mueller <fabianmueller5@gmx.de>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -39,7 +39,7 @@ void item_palette::setup(const config& cfg)
 
 		for (const config& item : group.child_range("item")) {
 
-			item_map_.insert(std::pair<std::string, overlay>(item["id"], overlay(item)));
+			item_map_.emplace(item["id"], overlay(item));
 			group_map_[group["id"]].push_back(item["id"]);
 			if (!group["core"].to_bool(false))
 				non_core_items_.insert(item["id"]);

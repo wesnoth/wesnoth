@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -25,6 +25,7 @@
 #include "map/map.hpp"                      // for gamemap
 #include "map/location.hpp"  // for map_location, operator<<, etc
 #include "mouse_handler_base.hpp"       // for command_disabler
+#include "preferences.hpp"
 #include "recall_list_manager.hpp"   // for recall_list_manager
 #include "replay.hpp"                // for recorder, replay
 #include "replay_helper.hpp"         // for replay_helper
@@ -309,15 +310,7 @@ void undo_list::read(const config & cfg)
 	// Build the redo stack.
 	for (const config & child : cfg.child_range("redo")) {
 		try {
-			undo_action_base * action = create_action(child);
-			if ( undo_action* undoable_action = dynamic_cast<undo_action*>(action)) {
-				redos_.push_back(undoable_action);
-			} else {
-				delete action;
-				ERR_NG << "Error: redo contained action that is not undoable" << std::endl;
-				ERR_NG << "config was: " << child.debug() << std::endl;
-				ERR_NG << "Skipping this redo action..." << std::endl;
-			}
+			redos_.push_back(new config(child));
 		} catch (bad_lexical_cast &) {
 			ERR_NG << "Error when parsing redo list from config: bad lexical cast." << std::endl;
 			ERR_NG << "config was: " << child.debug() << std::endl;
@@ -343,7 +336,7 @@ void undo_list::write(config & cfg) const
 		it->write(cfg.add_child("undo"));
 
 	for ( redos_list::const_iterator it = redos_.begin(); it != redos_.end(); ++it )
-		it->write(cfg.add_child("redo"));
+		cfg.add_child("redo") = *it;
 }
 
 
@@ -374,9 +367,9 @@ void undo_list::undo()
 		resources::gameboard->unit_id_manager().set_save_id(last_unit_id - undoable_action->unit_id_diff);
 
 		// Bookkeeping.
-		resources::recorder->undo_cut(undoable_action->replay_data);
-		//we can do a static cast here because we alreeady checked with the dynamic cast above.
-		redos_.push_back(static_cast<undo_action*>(action.release()));
+		redos_.push_back(new config());
+		resources::recorder->undo_cut(redos_.back());
+
 		resources::whiteboard->on_gamestate_change();
 
 		// Screen updates.
@@ -413,18 +406,20 @@ void undo_list::redo()
 	// Get the action to redo. (This will be placed on the undo stack, but
 	// only if the redo is successful.)
 	redos_list::auto_type action = redos_.pop_back();
-	int last_unit_id = resources::gameboard->unit_id_manager().get_save_id();
-	if ( !action->redo(side_) ) {
-		return;
-	}
-	if(last_unit_id + action->unit_id_diff < static_cast<int>(resources::gameboard->unit_id_manager().get_save_id())) {
-		ERR_NG << "Too many units were generated during redoing." << std::endl;
-	}
-	resources::gameboard->unit_id_manager().set_save_id(last_unit_id + action->unit_id_diff);
 
-	// Bookkeeping.
-	undos_.push_back(action.release());
-	resources::whiteboard->on_gamestate_change();
+	const config& command_wml = action->child("command");
+	std::string commandname = command_wml.all_children_range().front().key;
+	const config& data = command_wml.all_children_range().front().cfg;
+
+	resources::recorder->redo(const_cast<const config&>(*action));
+
+		
+	// synced_context::run readds the undo command with the normal undo_lis::add function whihc clears the
+	// redo stack which makes redoign of more than one move impossible. to work around that we save redo stack here and set it later.
+	redos_list temp;
+	temp.swap(redos_);
+	synced_context::run(commandname, data, /*use_undo*/ true, /*show*/ true);
+	temp.swap(redos_);
 
 	// Screen updates.
 	gui.invalidate_unit();
@@ -445,7 +440,7 @@ void undo_list::redo()
 bool undo_list::apply_shroud_changes() const
 {
 	game_display &disp = *resources::screen;
-	team &tm = resources::gameboard->teams()[side_ - 1];
+	team &tm = resources::gameboard->get_team(side_);
 	// No need to do clearing if fog/shroud has been kept up-to-date.
 	if ( tm.auto_shroud_updates()  ||  !tm.fog_or_shroud() ) {
 		return false;

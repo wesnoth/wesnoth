@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2016 The Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2016 - 2017 The Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -151,7 +151,7 @@ static inline std::string get_mp_tooltip(int total_movement, std::function<int (
 	}
 
 	for(t_translation::terrain_code terrain : preferences::encountered_terrains()) {
-		if(terrain == t_translation::FOGGED || terrain == t_translation::VOID_TERRAIN || terrain == t_translation::OFF_MAP_USER) {
+		if(terrain == t_translation::FOGGED || terrain == t_translation::VOID_TERRAIN || t_translation::terrain_matches(terrain, t_translation::ALL_OFF_MAP)) {
 			continue;
 		}
 
@@ -544,8 +544,8 @@ unit_preview_pane_definition::unit_preview_pane_definition(const config& cfg)
 unit_preview_pane_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg), grid()
 {
-	state.push_back(state_definition(cfg.child("background")));
-	state.push_back(state_definition(cfg.child("foreground")));
+	state.emplace_back(cfg.child("background"));
+	state.emplace_back(cfg.child("foreground"));
 
 	const config& child = cfg.child("grid");
 	VALIDATE(child, _("No grid defined."));

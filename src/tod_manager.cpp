@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Eugen Jiresch
+   Copyright (C) 2009 - 2017 by Eugen Jiresch
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -21,7 +21,7 @@
 #include "log.hpp"
 #include "map/map.hpp"
 #include "play_controller.hpp"
-#include "random_new.hpp"
+#include "random.hpp"
 #include "units/unit.hpp"
 #include "units/abilities.hpp"
 #include "wml_exception.hpp"
@@ -69,10 +69,15 @@ tod_manager& tod_manager::operator=(const tod_manager& manager)
 	turn_ = manager.turn_;
 	num_turns_ = manager.num_turns_;
 
+	has_turn_event_fired_ = manager.has_turn_event_fired_;
+	has_tod_bonus_changed_= manager.has_tod_bonus_changed_;
+
+	random_tod_ = manager.random_tod_;
+
 	return *this;
 }
 
-void tod_manager::resolve_random(random_new::rng& r)
+void tod_manager::resolve_random(randomness::rng& r)
 {
 	//process the random_start_time string, which can be boolean yes/no true/false or a
 	//comma-separated string of integers >= 1 referring to the times_ array indices
@@ -511,7 +516,7 @@ bool tod_manager::next_turn(game_data* vars)
 }
 
 
-bool tod_manager::is_time_left()
+bool tod_manager::is_time_left() const
 {
 	return num_turns_ == -1 || turn_ <= num_turns_;
 }

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2009 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -20,6 +20,8 @@
 #ifndef GUI_AUXILIRY_LAYOUT_EXCEPTION_HPP_INCLUDED
 #define GUI_AUXILIRY_LAYOUT_EXCEPTION_HPP_INCLUDED
 
+#include <exception>
+
 namespace gui2
 {
 
@@ -28,12 +30,12 @@ namespace gui2
  *
  * See layout_algorithm for more information.
  */
-struct layout_exception_width_modified
+struct layout_exception_width_modified : public std::exception
 {
 };
 
 /** Basic exception when the layout doesn't fit. */
-struct layout_exception_resize_failed
+struct layout_exception_resize_failed : public std::exception
 {
 };
 

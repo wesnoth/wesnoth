@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -70,7 +70,7 @@ namespace {
 /* Secure password storage functions */
 bool authenticate(config& campaign, const config::attribute_value& passphrase)
 {
-	return util::create_hash(passphrase, campaign["passsalt"]) == campaign["passhash"];
+	return utils::create_hash(passphrase, campaign["passsalt"]) == campaign["passhash"];
 }
 
 std::string generate_salt(size_t len)
@@ -92,7 +92,7 @@ void set_passphrase(config& campaign, std::string passphrase)
 {
 	std::string salt = generate_salt(16);
 	campaign["passsalt"] = salt;
-	campaign["passhash"] = util::create_hash(passphrase, salt);
+	campaign["passhash"] = utils::create_hash(passphrase, salt);
 }
 
 } // end anonymous namespace
@@ -177,14 +177,14 @@ void server::load_config()
 	load_blacklist();
 
 	// Load any configured hooks.
-	hooks_.insert(std::make_pair(std::string("hook_post_upload"), cfg_["hook_post_upload"]));
-	hooks_.insert(std::make_pair(std::string("hook_post_erase"), cfg_["hook_post_erase"]));
+	hooks_.emplace(std::string("hook_post_upload"), cfg_["hook_post_upload"]);
+	hooks_.emplace(std::string("hook_post_erase"), cfg_["hook_post_erase"]);
 
+#ifndef _WIN32
 	// Open the control socket if enabled.
 	if(!cfg_["control_socket"].empty()) {
 		const std::string& path = cfg_["control_socket"].str();
 
-#ifndef _WIN32
 		if(path != fifo_path_) {
 			const int res = mkfifo(path.c_str(),0660);
 			if(res != 0 && errno != EEXIST) {
@@ -198,8 +198,8 @@ void server::load_config()
 				fifo_path_ = path;
 			}
 		}
-#endif
 	}
+#endif
 
 	// Ensure the campaigns list WML exists even if empty, other functions
 	// depend on its existence.
@@ -429,13 +429,9 @@ void server::send_error(const std::string& msg, socket_ptr sock)
 	async_send_doc(sock, doc, std::bind(&server::handle_new_client, this, _1), null_handler);
 }
 
-void server::register_handler(const std::string& cmd, const request_handler& func)
-{
-	handlers_[cmd] = func;
-}
-
 #define REGISTER_CAMPAIGND_HANDLER(req_id) \
-	register_handler(#req_id, &server::handle_##req_id)
+	handlers_[#req_id] = std::bind(&server::handle_##req_id, \
+		std::placeholders::_1, std::placeholders::_2)
 
 void server::register_handlers()
 {

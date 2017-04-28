@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-11-05 23:29 UTC\n"
+"POT-Creation-Date: 2017-03-23 08:11+0100\n"
 "PO-Revision-Date: 2013-05-16 15:28+0100\n"
 "Last-Translator: trewe <sjrs456@yahoo.fr>\n"
 "Language-Team: none\n"
@@ -46,7 +46,7 @@ msgstr "Com quem você gostaria de jogar?"
 #. [side]: type=Fighter, id=student
 #. [lua]: wml_actions.select_character
 #: data/campaigns/tutorial/lua/character_selection.lua:68
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:34
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:33
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:30
 msgid "Konrad"
 msgstr "Konrad"
@@ -77,7 +77,7 @@ msgid "Wesnoth Tutorial — Part I"
 msgstr "Tutorial Wesnoth Parte I"
 
 #. [side]: type=Fighter, id=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:30
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:29
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:26
 msgid "team_name^Student"
 msgstr ""
@@ -454,7 +454,7 @@ msgstr "Devo recuar?"
 #. [message]: speaker=Galdrad
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:370
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:675
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:684
 msgid "Good idea!"
 msgstr "Boa idéia!"
 
@@ -1165,7 +1165,7 @@ msgstr ""
 # File: data/campaigns/tutorial/scenarios/1_Tutorial.cfg, line: 1124
 # File: data/campaigns/tutorial/scenarios/1_Tutorial.cfg, line: 1124
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:897
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:902
 msgid "Note"
 msgstr "Nota"
 
@@ -1173,7 +1173,7 @@ msgstr "Nota"
 # File: data/campaigns/tutorial/scenarios/1_Tutorial.cfg, line: 1126
 # File: data/campaigns/tutorial/scenarios/1_Tutorial.cfg, line: 1126
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:899
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:904
 msgid ""
 "These dummies only attack if you are a single tile away. With care, you "
 "should be able to kill them one at a time."
@@ -1181,67 +1181,15 @@ msgstr ""
 "Esses bonecos só atacam se você estiver a um hexágono de distância. Com "
 "cuidado, você poderá matá-los um de cada vez."
 
-#
-# File: data/campaigns/tutorial/scenarios/1_Tutorial.cfg, line: 1134
-# File: data/campaigns/tutorial/scenarios/1_Tutorial.cfg, line: 1134
-#. [set_menu_item]: id=skip_item
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:907
-msgid "End Scenario"
-msgstr "Terminar Cenário"
-
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:922
-msgid ""
-"Do you want to keep practicing? You can end this scenario at any time by "
-"using the <b>End Scenario</b> item in the context menu to move on to the "
-"next phase of your training."
-msgstr ""
-
-#
-# File: data/campaigns/tutorial/scenarios/1_Tutorial.cfg, line: 1149
-# File: data/campaigns/tutorial/scenarios/1_Tutorial.cfg, line: 1149
-#. [option]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:930
-msgid "Yes, I’m still figuring it out."
-msgstr "Sim, ainda estou pegando o jeito da coisa."
-
-#
-# File: data/campaigns/tutorial/scenarios/1_Tutorial.cfg, line: 1149
-# File: data/campaigns/tutorial/scenarios/1_Tutorial.cfg, line: 1149
-#. [option]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:939
-#, fuzzy
-#| msgid "Yes, I’m still figuring it out."
-msgid "female^Yes, I’m still figuring it out."
-msgstr "Sim, ainda estou pegando o jeito da coisa."
-
-#
-# File: data/campaigns/tutorial/scenarios/1_Tutorial.cfg, line: 1152
-# File: data/campaigns/tutorial/scenarios/1_Tutorial.cfg, line: 1152
-#. [option]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:948
-msgid "No, I think I’ve got it."
-msgstr "Não, acho que já entendi tudo."
-
-#
-# File: data/campaigns/tutorial/scenarios/1_Tutorial.cfg, line: 1152
-# File: data/campaigns/tutorial/scenarios/1_Tutorial.cfg, line: 1152
-#. [option]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:965
-#, fuzzy
-#| msgid "No, I think I’ve got it."
-msgid "female^No, I think I’ve got it."
-msgstr "Não, acho que já entendi tudo."
-
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:984
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:913
 msgid ""
 "Well, I think I know the basics. Onwards! Maybe I can fight in a real battle "
 "next?"
 msgstr ""
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:985
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:914
 msgid ""
 "female^Well, I think I know the basics. Onwards! Maybe I can fight in a real "
 "battle next?"
@@ -1251,7 +1199,7 @@ msgstr ""
 # File: data/campaigns/tutorial/scenarios/1_Tutorial.cfg, line: 1193
 # File: data/campaigns/tutorial/scenarios/1_Tutorial.cfg, line: 1193
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1001
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:930
 msgid "Victory"
 msgstr "Vitória"
 
@@ -1259,7 +1207,7 @@ msgstr "Vitória"
 # File: data/campaigns/tutorial/scenarios/1_Tutorial.cfg, line: 1194
 # File: data/campaigns/tutorial/scenarios/1_Tutorial.cfg, line: 1194
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1003
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:932
 #, fuzzy
 #| msgid ""
 #| "After your victory notice, the map will be grayed out to indicate that "
@@ -2277,11 +2225,16 @@ msgstr ""
 "Lembre-se de recrutar tropas úteis à situação. Arqueiros são particularmente "
 "efetivos contra Brutamontes, Montadores de Lobos e contra o líder deles."
 
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:651
+msgid "Hurry up and defeat the orcs before they become entrenched!"
+msgstr ""
+
 #
 # File: data/campaigns/tutorial/scenarios/2_Tutorial.cfg, line: 1066
 # File: data/campaigns/tutorial/scenarios/2_Tutorial.cfg, line: 1066
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:669
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:678
 #, fuzzy
 #| msgid "I have no more money to recruit!"
 msgid "I have enough gold to recruit more units!"
@@ -2291,7 +2244,7 @@ msgstr "Eu não tenho mais nenhum dinheiro para recrutar!"
 # File: data/campaigns/tutorial/scenarios/2_Tutorial.cfg, line: 1066
 # File: data/campaigns/tutorial/scenarios/2_Tutorial.cfg, line: 1066
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:670
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:679
 #, fuzzy
 #| msgid "I have no more money to recruit!"
 msgid "female^I have enough gold to recruit more units!"
@@ -2301,7 +2254,7 @@ msgstr "Eu não tenho mais nenhum dinheiro para recrutar!"
 # File: data/campaigns/tutorial/scenarios/2_Tutorial.cfg, line: 234
 # File: data/campaigns/tutorial/scenarios/2_Tutorial.cfg, line: 234
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:725
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:734
 msgid ""
 "That unit is about one kill (8 experience points) away from gaining a level! "
 "Do not let it die!"
@@ -2313,7 +2266,7 @@ msgstr ""
 # File: data/campaigns/tutorial/scenarios/2_Tutorial.cfg, line: 1305
 # File: data/campaigns/tutorial/scenarios/2_Tutorial.cfg, line: 1305
 #. [event]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:747
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:756
 msgid ""
 "Their leader has moved into that village! He’s not as stupid as I thought. "
 "The village heals him each turn and provides good defense."
@@ -2325,7 +2278,7 @@ msgstr ""
 # File: data/campaigns/tutorial/scenarios/2_Tutorial.cfg, line: 1316
 # File: data/campaigns/tutorial/scenarios/2_Tutorial.cfg, line: 1316
 #. [event]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:758
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:767
 msgid ""
 "That unit has captured our village! You’d better get him out; it heals him "
 "each turn and provides good defense."
@@ -2338,7 +2291,7 @@ msgstr ""
 # File: data/campaigns/tutorial/scenarios/2_Tutorial.cfg, line: 1328
 #. [message]: speaker=unit
 #. The speaker is female
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:771
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:780
 msgid ""
 "Using me to attack is risky! I can slow the opponent with my ranged attack, "
 "but I hope you have a plan if I miss!"
@@ -2353,7 +2306,7 @@ msgstr ""
 # File: data/campaigns/tutorial/scenarios/2_Tutorial.cfg, line: 1364
 # File: data/campaigns/tutorial/scenarios/2_Tutorial.cfg, line: 1380
 #. [event]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:787
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:796
 msgid ""
 "You are close to killing their leader! The unit who finishes him will gain "
 "16 experience points because he is second level. Choose your attacking unit "
@@ -2367,7 +2320,7 @@ msgstr ""
 # File: data/campaigns/tutorial/scenarios/2_Tutorial.cfg, line: 1429
 # File: data/campaigns/tutorial/scenarios/2_Tutorial.cfg, line: 1429
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:812
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:821
 #, fuzzy
 #| msgid ""
 #| "We will miss $deadguy.name| because he had $deadguy.experience experience "
@@ -2384,7 +2337,7 @@ msgstr ""
 # File: data/campaigns/tutorial/scenarios/2_Tutorial.cfg, line: 1432
 # File: data/campaigns/tutorial/scenarios/2_Tutorial.cfg, line: 1432
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:818
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:827
 #, fuzzy
 #| msgid ""
 #| "We will miss $deadguy.name| because she had $deadguy.experience "
@@ -2401,7 +2354,7 @@ msgstr ""
 # File: data/campaigns/tutorial/scenarios/2_Tutorial.cfg, line: 1449
 # File: data/campaigns/tutorial/scenarios/2_Tutorial.cfg, line: 1449
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:847
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:856
 #, fuzzy
 #| msgid ""
 #| "We will miss $deadguy.name|, but at least he was not one of our "
@@ -2417,7 +2370,7 @@ msgstr ""
 # File: data/campaigns/tutorial/scenarios/2_Tutorial.cfg, line: 1452
 # File: data/campaigns/tutorial/scenarios/2_Tutorial.cfg, line: 1452
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:853
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:862
 #, fuzzy
 #| msgid ""
 #| "We will miss $deadguy.name|, but at least she was not one of our "
@@ -2433,7 +2386,7 @@ msgstr ""
 # File: data/campaigns/tutorial/scenarios/2_Tutorial.cfg, line: 1472
 # File: data/campaigns/tutorial/scenarios/2_Tutorial.cfg, line: 1472
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:873
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:881
 #, fuzzy
 #| msgid ""
 #| "Second level units are powerful, but not invulnerable! Goodbye, $deadguy."
@@ -2448,7 +2401,7 @@ msgstr ""
 # File: data/campaigns/tutorial/scenarios/2_Tutorial.cfg, line: 1467
 # File: data/campaigns/tutorial/scenarios/2_Tutorial.cfg, line: 1467
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:887
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:895
 msgid ""
 "Losing a healer hurts all the troops! Keep them out of the enemy’s reach!"
 msgstr ""
@@ -2459,7 +2412,7 @@ msgstr ""
 # File: data/campaigns/tutorial/scenarios/2_Tutorial.cfg, line: 1487
 # File: data/campaigns/tutorial/scenarios/2_Tutorial.cfg, line: 1487
 #. [event]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:899
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:907
 msgid ""
 "Beware of the orc leader: he can do 36 hitpoints of damage at night! Attack "
 "with many units at once during the day."
@@ -2469,7 +2422,7 @@ msgstr ""
 
 #. [message]: speaker=unit
 #. The speaker is female
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:913
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:921
 msgid ""
 "Advancing a level has fully healed me! I am able to heal units 8 hitpoints "
 "per turn, instead of just 4, and may also cure them of poison if they cannot "
@@ -2480,7 +2433,7 @@ msgstr ""
 
 #. [message]: speaker=unit
 #. The speaker is female
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:927
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:935
 msgid ""
 "Advancing a level has fully healed me! I cannot heal adjacent units anymore, "
 "but to compensate, I have a new, powerful faerie fire attack that deals 7 "
@@ -2492,7 +2445,7 @@ msgstr ""
 # File: data/campaigns/tutorial/scenarios/2_Tutorial.cfg, line: 1507
 # File: data/campaigns/tutorial/scenarios/2_Tutorial.cfg, line: 1507
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:941
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:949
 #, fuzzy
 #| msgid ""
 #| "Advancing a level has fully healed me!\n"
@@ -2513,7 +2466,7 @@ msgstr ""
 # File: data/campaigns/tutorial/scenarios/2_Tutorial.cfg, line: 1516
 # File: data/campaigns/tutorial/scenarios/2_Tutorial.cfg, line: 1516
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:942
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:950
 #, fuzzy
 #| msgid ""
 #| "female^Advancing a level has fully healed me!\n"
@@ -2534,7 +2487,7 @@ msgstr ""
 # File: data/campaigns/tutorial/scenarios/2_Tutorial.cfg, line: 1532
 # File: data/campaigns/tutorial/scenarios/2_Tutorial.cfg, line: 1532
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:955
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:963
 #, fuzzy
 #| msgid ""
 #| "Advancing a level has fully healed me!\n"
@@ -2555,7 +2508,7 @@ msgstr ""
 # File: data/campaigns/tutorial/scenarios/2_Tutorial.cfg, line: 1532
 # File: data/campaigns/tutorial/scenarios/2_Tutorial.cfg, line: 1532
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:956
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:964
 #, fuzzy
 #| msgid ""
 #| "Advancing a level has fully healed me!\n"
@@ -2576,7 +2529,7 @@ msgstr ""
 # File: data/campaigns/tutorial/scenarios/2_Tutorial.cfg, line: 1546
 # File: data/campaigns/tutorial/scenarios/2_Tutorial.cfg, line: 1546
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:970
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:978
 #, fuzzy
 #| msgid ""
 #| "Advancing a level has fully healed me!\n"
@@ -2598,7 +2551,7 @@ msgstr ""
 # File: data/campaigns/tutorial/scenarios/2_Tutorial.cfg, line: 1561
 # File: data/campaigns/tutorial/scenarios/2_Tutorial.cfg, line: 1561
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:983
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:991
 #, fuzzy
 #| msgid ""
 #| "Advancing a level has fully healed me!\n"
@@ -2616,24 +2569,24 @@ msgstr ""
 # File: data/campaigns/tutorial/scenarios/2_Tutorial.cfg, line: 1730
 # File: data/campaigns/tutorial/scenarios/2_Tutorial.cfg, line: 1730
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:992
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1000
 #, fuzzy
 #| msgid "You took too long! We’ll never be rid of these orcs!"
 msgid "You took too long! Now we’ll never be rid of these orcs!"
 msgstr "Você demorou muito! Nós nunca nos livraremos desses orcs!"
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1008
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1016
 msgid "That... was foolish. Next time I should be more careful."
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1009
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1017
 msgid "female^That... was foolish. Next time I should be more careful."
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1032
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1040
 msgid "Agh! Now who will teach you how to defeat these orcs!"
 msgstr ""
 
@@ -2641,7 +2594,7 @@ msgstr ""
 # File: data/campaigns/tutorial/scenarios/2_Tutorial.cfg, line: 1753
 # File: data/campaigns/tutorial/scenarios/2_Tutorial.cfg, line: 1753
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1058
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1066
 #, fuzzy
 #| msgid ""
 #| "You have beaten the orcs! You may want to try some novice-level campaigns "
@@ -2679,8 +2632,8 @@ msgstr "Soldado"
 # File: data/campaigns/tutorial/units/Fighteress.cfg, line: 20
 #. [unit_type]: id=Fighter, race=human
 #. [unit_type]: id=Fighteress, race=human
-#: data/campaigns/tutorial/units/Fighter.cfg:18
-#: data/campaigns/tutorial/units/Fighteress.cfg:20
+#: data/campaigns/tutorial/units/Fighter.cfg:19
+#: data/campaigns/tutorial/units/Fighteress.cfg:21
 msgid ""
 "Young and brash, Fighters are skilled with swords and are vulnerable to "
 "attack from enemies. However, they have the potential to become great "
@@ -2691,28 +2644,12 @@ msgstr ""
 "grandes guerreiros um dia."
 
 #
-# File: data/campaigns/tutorial/units/Fighter.cfg, line: 24
-# File: data/campaigns/tutorial/units/Fighter.cfg, line: 24
-#. [attack]: type=blade
-#: data/campaigns/tutorial/units/Fighter.cfg:23
-msgid "sword"
-msgstr "espada"
-
-#
 # File: data/campaigns/tutorial/units/Fighteress.cfg, line: 4
 # File: data/campaigns/tutorial/units/Fighteress.cfg, line: 4
 #. [unit_type]: id=Fighteress, race=human
 #: data/campaigns/tutorial/units/Fighteress.cfg:4
 msgid "female^Fighter"
 msgstr "Soldado"
-
-#
-# File: data/campaigns/tutorial/units/Fighteress.cfg, line: 24
-# File: data/campaigns/tutorial/units/Fighteress.cfg, line: 24
-#. [attack]: type=blade
-#: data/campaigns/tutorial/units/Fighteress.cfg:24
-msgid "saber"
-msgstr "sabre"
 
 #
 # File: data/campaigns/tutorial/scenarios/1_Tutorial.cfg, line: 361
@@ -2735,14 +2672,6 @@ msgid ""
 msgstr ""
 "Esses bonecos são usados para a prática da esgrima e da justa. Seria "
 "extremamente estranho ser atacado por um deles."
-
-#
-# File: data/campaigns/tutorial/units/Quintain.cfg, line: 24
-# File: data/campaigns/tutorial/units/Quintain.cfg, line: 24
-#. [attack]: type=impact
-#: data/campaigns/tutorial/units/Quintain.cfg:24
-msgid "flail"
-msgstr "mangual"
 
 #
 # File: data/campaigns/tutorial/scenarios/2_Speaking.cfg, line: 31
@@ -2780,6 +2709,58 @@ msgstr ""
 "\n"
 "<big>Clique com um botão do mouse ou pressione a barra de espaço para "
 "continuar...</big>"
+
+#
+# File: data/campaigns/tutorial/scenarios/1_Tutorial.cfg, line: 1134
+# File: data/campaigns/tutorial/scenarios/1_Tutorial.cfg, line: 1134
+#~ msgid "End Scenario"
+#~ msgstr "Terminar Cenário"
+
+#
+# File: data/campaigns/tutorial/scenarios/1_Tutorial.cfg, line: 1149
+# File: data/campaigns/tutorial/scenarios/1_Tutorial.cfg, line: 1149
+#~ msgid "Yes, I’m still figuring it out."
+#~ msgstr "Sim, ainda estou pegando o jeito da coisa."
+
+#
+# File: data/campaigns/tutorial/scenarios/1_Tutorial.cfg, line: 1149
+# File: data/campaigns/tutorial/scenarios/1_Tutorial.cfg, line: 1149
+#, fuzzy
+#~| msgid "Yes, I’m still figuring it out."
+#~ msgid "female^Yes, I’m still figuring it out."
+#~ msgstr "Sim, ainda estou pegando o jeito da coisa."
+
+#
+# File: data/campaigns/tutorial/scenarios/1_Tutorial.cfg, line: 1152
+# File: data/campaigns/tutorial/scenarios/1_Tutorial.cfg, line: 1152
+#~ msgid "No, I think I’ve got it."
+#~ msgstr "Não, acho que já entendi tudo."
+
+#
+# File: data/campaigns/tutorial/scenarios/1_Tutorial.cfg, line: 1152
+# File: data/campaigns/tutorial/scenarios/1_Tutorial.cfg, line: 1152
+#, fuzzy
+#~| msgid "No, I think I’ve got it."
+#~ msgid "female^No, I think I’ve got it."
+#~ msgstr "Não, acho que já entendi tudo."
+
+#
+# File: data/campaigns/tutorial/units/Fighter.cfg, line: 24
+# File: data/campaigns/tutorial/units/Fighter.cfg, line: 24
+#~ msgid "sword"
+#~ msgstr "espada"
+
+#
+# File: data/campaigns/tutorial/units/Fighteress.cfg, line: 24
+# File: data/campaigns/tutorial/units/Fighteress.cfg, line: 24
+#~ msgid "saber"
+#~ msgstr "sabre"
+
+#
+# File: data/campaigns/tutorial/units/Quintain.cfg, line: 24
+# File: data/campaigns/tutorial/units/Quintain.cfg, line: 24
+#~ msgid "flail"
+#~ msgstr "mangual"
 
 #
 # File: data/campaigns/tutorial/scenarios/1_Tutorial.cfg, line: 376

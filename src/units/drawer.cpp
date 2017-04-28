@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -147,7 +147,7 @@ void unit_drawer::redraw_unit (const unit & u) const
 
 
 	if(u.incapacitated()) params.image_mod +="~GS()";
-	params.primary_frame = t_true;
+	params.primary_frame = true;
 
 
 	const frame_parameters adjusted_params = ac.anim_->get_current_params(params);
@@ -443,7 +443,7 @@ const SDL_Rect& unit_drawer::calculate_energy_bar(surface surf) const
 			, first_row
 			, last_col-first_col
 			, last_row+1-first_row);
-	energy_bar_rects_.insert(std::pair<surface,SDL_Rect>(surf,res));
+	energy_bar_rects_.emplace(surf, res);
 	return calculate_energy_bar(surf);
 }
 

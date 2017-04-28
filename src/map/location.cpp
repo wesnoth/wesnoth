@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -49,7 +49,7 @@ std::ostream &operator<<(std::ostream &s, std::vector<map_location> const &v) {
  *
  **/
 const std::vector<map_location::DIRECTION> & map_location::default_dirs() {
-	static const std::vector<map_location::DIRECTION> dirs = {map_location::NORTH,
+	static const std::vector<map_location::DIRECTION> dirs {map_location::NORTH,
 				map_location::NORTH_EAST, map_location::SOUTH_EAST, map_location::SOUTH,
 				map_location::SOUTH_WEST, map_location::NORTH_WEST};
 	return dirs;
@@ -57,7 +57,7 @@ const std::vector<map_location::DIRECTION> & map_location::default_dirs() {
 
 std::size_t hash_value(map_location  const & a){
 	std::hash<size_t> h;
-	return h( (a.x << 16) ^ a.y );
+	return h( (static_cast<uint32_t>(a.x) << 16) ^ static_cast<uint32_t>(a.y) );
 }
 
 
@@ -322,10 +322,10 @@ bool map_location::matches_range(const std::string& xloc, const std::string &ylo
 
 		size_t size;
 		for(size = xlocs.size(); size < ylocs.size(); ++size) {
-			xlocs.push_back("");
+			xlocs.emplace_back();
 		}
 		while(size > ylocs.size()) {
-			ylocs.push_back("");
+			ylocs.emplace_back();
 		}
 		for(size_t i = 0; i != size; ++i) {
 			if(matches_range(xlocs[i],ylocs[i]))

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2014 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -377,7 +377,7 @@ int movetype::terrain_info::data::value(
 {
 	// Check the cache.
 	std::pair<cache_t::iterator, bool> cache_it =
-		cache_.insert(std::make_pair(terrain, -127)); // Bogus value that should never be seen.
+		cache_.emplace(terrain, -127); // Bogus value that should never be seen.
 	if ( cache_it.second )
 		// The cache did not have an entry for this terrain, so calculate the value.
 		cache_it.first->second = calc_value(terrain, fallback, recurse_count);
@@ -779,7 +779,7 @@ void movetype::merge(const config & new_cfg, bool overwrite)
 /**
  * The set of strings defining effects which apply to movetypes.
  */
-const std::set<std::string> movetype::effects = {"movement_costs",
+const std::set<std::string> movetype::effects {"movement_costs",
 	"vision_costs", "jamming_costs", "defense", "resistance"};
 
 /**

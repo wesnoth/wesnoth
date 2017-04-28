@@ -58,7 +58,6 @@ ai/simulated_actions.cpp
 ai/testing.cpp
 animated_game.cpp
 attack_prediction.cpp
-attack_prediction_display.cpp
 build_info.cpp
 carryover.cpp
 chat_command_handler.cpp
@@ -113,6 +112,7 @@ formula/function.cpp
 formula/string_utils.cpp
 formula/tokenizer.cpp
 formula/variant.cpp
+formula/variant_value.cpp
 game_board.cpp
 game_classification.cpp
 game_config_manager.cpp
@@ -151,6 +151,7 @@ gui/core/canvas.cpp
 gui/core/event/dispatcher.cpp
 gui/core/event/distributor.cpp
 gui/core/event/handler.cpp
+gui/core/linked_group_definition.cpp
 gui/core/log.cpp
 gui/core/placer.cpp
 gui/core/placer/horizontal_list.cpp
@@ -162,8 +163,7 @@ gui/core/window_builder.cpp
 gui/core/window_builder/helper.cpp
 gui/core/window_builder/instance.cpp
 gui/dialogs/addon/connect.cpp
-gui/dialogs/addon/description.cpp
-gui/dialogs/addon/filter_options.cpp
+gui/dialogs/addon/install_dependencies.cpp
 gui/dialogs/addon/manager.cpp
 gui/dialogs/addon/uninstall_list.cpp
 gui/dialogs/advanced_graphics_options.cpp
@@ -199,6 +199,8 @@ gui/dialogs/game_save.cpp
 gui/dialogs/game_stats.cpp
 gui/dialogs/game_version.cpp
 gui/dialogs/gamestate_inspector.cpp
+gui/dialogs/help_browser.cpp
+gui/dialogs/hotkey_bind.cpp
 gui/dialogs/label_settings.cpp
 gui/dialogs/language_selection.cpp
 gui/dialogs/loading_screen.cpp
@@ -224,12 +226,14 @@ gui/dialogs/multiplayer/mp_options_helper.cpp
 gui/dialogs/multiplayer/mp_staging.cpp
 gui/dialogs/multiplayer/synced_choice_wait.cpp
 gui/dialogs/network_transmission.cpp
+gui/dialogs/outro.cpp
 gui/dialogs/preferences_dialog.cpp
 gui/dialogs/screenshot_notification.cpp
 gui/dialogs/select_orb_colors.cpp
 gui/dialogs/simple_item_selector.cpp
 gui/dialogs/sp_options_configure.cpp
 gui/dialogs/statistics_dialog.cpp
+gui/dialogs/story_viewer.cpp
 gui/dialogs/terrain_layers.cpp
 gui/dialogs/theme_list.cpp
 gui/dialogs/title_screen.cpp
@@ -260,6 +264,7 @@ gui/widgets/listbox.cpp
 gui/widgets/matrix.cpp
 gui/widgets/menu_button.cpp
 gui/widgets/minimap.cpp
+gui/widgets/multimenu_button.cpp
 gui/widgets/multi_page.cpp
 gui/widgets/pane.cpp
 gui/widgets/panel.cpp
@@ -298,8 +303,6 @@ help/help_topic_generators.cpp
 hotkey/hotkey_handler.cpp
 hotkey/hotkey_handler_mp.cpp
 hotkey/hotkey_handler_sp.cpp
-hotkey/hotkey_preferences_display.cpp
-intro.cpp
 lobby_preferences.cpp
 menu_events.cpp
 mouse_events.cpp
@@ -319,9 +322,9 @@ playsingle_controller.cpp
 playturn.cpp
 playturn_network_adapter.cpp
 preferences_display.cpp
-random_new.cpp
-random_new_deterministic.cpp
-random_new_synced.cpp
+random.cpp
+random_deterministic.cpp
+random_synced.cpp
 recall_list_manager.cpp
 replay.cpp
 replay_controller.cpp
@@ -358,7 +361,6 @@ statistics.cpp
 storyscreen/controller.cpp
 storyscreen/interface.cpp
 storyscreen/part.cpp
-storyscreen/render.cpp
 synced_checkup.cpp
 synced_commands.cpp
 synced_context.cpp
@@ -401,4 +403,3 @@ whiteboard/recruit.cpp
 whiteboard/side_actions.cpp
 whiteboard/suppose_dead.cpp
 whiteboard/utility.cpp
-widgets/scrollpane.cpp

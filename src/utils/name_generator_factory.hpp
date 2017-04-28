@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2016 by Marius Spix
+   Copyright (C) 2016 - 2017 by Marius Spix
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -48,7 +48,8 @@ private:
 	std::map<std::string, std::shared_ptr<name_generator>> name_generators_;
 
 	/**
-	 * Determines a name generator from WML data
+	 * Determines a name generator from WML data. Tries first to load a context-free generator,
+	 * then falls back to Markov.
 	 * @param config the WML data to be parsed for name generators
 	 * @param the prefix to look for
 	 * @returns a name generator or nullptr if not found

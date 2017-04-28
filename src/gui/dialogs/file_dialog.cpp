@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011, 2016 by Ignacio R. Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2011, 2017 by Ignacio R. Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -190,6 +190,8 @@ void file_dialog::pre_show(window& window)
 
 	listbox& bookmarks_bar = find_widget<listbox>(&window, "bookmarks", false);
 
+	find_widget<styled_widget>(&window, "current_dir", false).set_text_ellipse_mode(PANGO_ELLIPSIZE_START);
+
 	//
 	// Push hard-coded bookmarks.
 	//
@@ -340,6 +342,7 @@ bool file_dialog::process_submit_common(window& window, const std::string& name)
 				show_transient_error_message(window.video(), vgettext("The file or folder $path cannot be created.", {{"path", name}}));
 				break;
 			}
+			FALLTHROUGH;
 		case SELECTION_NOT_FOUND:
 			// We only get here if we aren't in save mode.
 			show_transient_error_message(window.video(), vgettext("The file or folder $path does not exist.", {{"path", name}}));
@@ -532,6 +535,8 @@ void file_dialog::refresh_fileview(window& window)
 
 	find_widget<styled_widget>(&window, "current_dir", false).set_label(current_dir_);
 	set_input_text(find_widget<text_box>(&window, "filename", false), current_entry_);
+
+	on_row_selected(window);
 }
 
 void file_dialog::push_fileview_row(listbox& filelist, const std::string& name, const std::string& icon, bool check_selection)

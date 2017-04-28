@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -90,7 +90,7 @@ public:
 	 * Before rendering it tests whether a redraw is needed and if so it first
 	 * redraws the surface before returning it.
 	 */
-	surface render() const;
+	surface& render() const;
 
 	/** Returns the width needed for the text. */
 	int get_width() const;

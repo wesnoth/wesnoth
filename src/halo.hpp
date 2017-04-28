@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -40,7 +40,7 @@ const int NO_HALO = 0;
 class manager
 {
 public:
-	manager(display& disp);
+	manager(display& screen);
 
 	/**
 	 * Add a haloing effect using 'image centered on (x,y).

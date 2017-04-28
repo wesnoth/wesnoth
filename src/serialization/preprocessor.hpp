@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 by David White <dave@whitevine.net>
-   Copyright (C) 2005 - 2016 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Copyright (C) 2005 - 2017 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -21,6 +21,7 @@
 #include <iosfwd>
 #include <map>
 #include <vector>
+#include "filesystem.hpp"
 
 #include "exceptions.hpp"
 
@@ -72,9 +73,9 @@ std::ostream& operator<<(std::ostream& stream, const preproc_map::value_type& de
  *
  * @returns                       The resulting preprocessed file data.
  */
-std::istream *preprocess_file(const std::string& fname, preproc_map *defines = nullptr);
+filesystem::scoped_istream preprocess_file(const std::string& fname, preproc_map *defines = nullptr);
 
 void preprocess_resource(const std::string& res_name, preproc_map *defines_map,
-			bool write_cfg=false, bool write_plain_cfg=false, std::string target_directory="");
+			bool write_cfg=false, bool write_plain_cfg=false, const std::string& target_directory="");
 
 #endif

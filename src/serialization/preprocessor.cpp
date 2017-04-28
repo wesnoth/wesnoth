@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 by David White <dave@whitevine.net>
-   Copyright (C) 2005 - 2016 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Copyright (C) 2005 - 2017 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -566,13 +566,12 @@ preprocessor_file::preprocessor_file(preprocessor_streambuf &t, const std::strin
 		}
 	}
 	else {
-		std::istream * file_stream = filesystem::istream_file(name);
+		filesystem::scoped_istream file_stream = filesystem::istream_file(name);
 		if (!file_stream->good()) {
 			ERR_PREPROC << "Could not open file " << name << std::endl;
-			delete file_stream;
 		}
 		else
-			new preprocessor_data(t, file_stream, "", filesystem::get_short_wml_path(name),
+			new preprocessor_data(t, file_stream.release(), "", filesystem::get_short_wml_path(name),
 				1, filesystem::directory_name(name), t.textdomain_, nullptr);
 	}
 	pos_ = files_.begin();
@@ -905,7 +904,7 @@ bool preprocessor_data::get_chunk()
 				} else {
 					if (found_arg > 0 && ++found_arg == 4) {
 						if (std::equal(buffer.end() - 3, buffer.end(), "arg")) {
-							buffer.erase(buffer.end() - 3, buffer.end());
+							buffer.erase(buffer.end() - 4, buffer.end());
 
 							skip_spaces();
 							std::string argname = read_word();
@@ -928,6 +927,7 @@ bool preprocessor_data::get_chunk()
 									if (std::equal(argbuffer.end() - 6, argbuffer.end(), "endarg")) {
 										argbuffer.erase(argbuffer.end() - 7, argbuffer.end());
 										optargs[argname] = argbuffer;
+										skip_eol();
 										break;
 									} else {
 										target_.error("Unterminated #arg definition", linenum_);
@@ -1330,7 +1330,7 @@ preprocessor_deleter::~preprocessor_deleter()
 	delete defines_;
 }
 
-std::istream *preprocess_file(const std::string& fname, preproc_map *defines)
+filesystem::scoped_istream preprocess_file(const std::string& fname, preproc_map *defines)
 {
 	log_scope("preprocessing file " + fname + " ...");
 	preproc_map *owned_defines = nullptr;
@@ -1345,11 +1345,11 @@ std::istream *preprocess_file(const std::string& fname, preproc_map *defines)
 	preprocessor_streambuf *buf = new preprocessor_streambuf(defines);
 
 	new preprocessor_file(*buf, fname);
-	return new preprocessor_deleter(buf, owned_defines);
+	return filesystem::scoped_istream(new preprocessor_deleter(buf, owned_defines));
 }
 
 void preprocess_resource(const std::string& res_name, preproc_map *defines_map,
-			 bool write_cfg, bool write_plain_cfg,std::string target_directory)
+			 bool write_cfg, bool write_plain_cfg,const std::string& target_directory)
 {
 	if (filesystem::is_directory(res_name))
 	{

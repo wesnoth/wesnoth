@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2012 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,12 +17,10 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/group.hpp"
-#include "utils/make_enum.hpp"
+#include "preferences.hpp"
 
 namespace gui2
 {
-class label;
-class toggle_button;
 namespace dialogs
 {
 
@@ -45,29 +43,24 @@ public:
 	// These names must match the infixes of the widget ids in advanced_graphics_options.cfg
 	static const std::vector<std::string> scale_cases;
 
-	// These names must match the suffixes of the widget ids in advanced_graphics_options.cfg
-	MAKE_ENUM(SCALING_ALGORITHM,
-		(LINEAR,		"linear")
-		(NEAREST_NEIGHBOR, 	"nn")
-		(XBRZ_LIN,		"xbrzlin")
-		(XBRZ_NN,		"xbrznn")
-	)
-
 private:
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
-	virtual const std::string& window_id() const;
+	virtual const std::string& window_id() const override;
 
 	/** Inherited from modal_dialog. */
-	void pre_show(window& window);
+	virtual void pre_show(window& window) override;
 
 	/** Inherited from modal_dialog. */
-	void post_show(window& window);
+	virtual void post_show(window& window) override;
 
-	void setup_scale_case(const std::string &, window &);
-	void update_scale_case(const std::string &);
+	void setup_scale_case(const std::string&, window&);
+	void update_scale_case(const std::string&);
+
+	using SCALING_ALGORITHM = preferences::SCALING_ALGORITHM;
+
 	SCALING_ALGORITHM get_scale_pref(const std::string& pref_id);
-	
-	std::map<std::string,group<SCALING_ALGORITHM> > groups_;
+
+	std::map<std::string, group<SCALING_ALGORITHM>> groups_;
 };
 
 } // namespace dialogs

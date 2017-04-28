@@ -373,7 +373,7 @@ class Parser:
             stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         out, err = p.communicate()
         if self.verbose:
-            print((out + err))
+            print((out + err).decode("utf8"))
         self.preprocessed = output + "/" + os.path.basename(self.path) +\
             ".plain"
         if not os.path.exists(self.preprocessed):
@@ -488,7 +488,7 @@ class Parser:
 
                 if not segment: continue
 
-                if segment.startswith(b"_"):
+                if segment.rstrip(b" ") == b"_":
                     self.translatable = True
                     segment = segment[1:].lstrip(b" ")
                     if not segment: continue
@@ -771,6 +771,18 @@ x = _ "abc" + {X}
     x=_<B>'abc' .. _<A>'abc'
 [/test]
 """, "textdomain")
+
+        test(
+"""
+[test]
+x,y = _1,_2
+[/test]
+""", """
+[test]
+    x='_1'
+    y='_2'
+[/test]
+""", "underscores")
 
         test(
 """

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2016 by Sergey Popov <loonycyborg@gmail.com>
+   Copyright (C) 2011 - 2017 by Sergey Popov <loonycyborg@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -84,10 +84,10 @@ public:
 
 protected:
 	/** Inherited from modal_dialog. */
-	void pre_show(window& window);
+	virtual void pre_show(window& window) override;
 
 	/** Inherited from modal_dialog. */
-	void post_show(window& window);
+	virtual void post_show(window& window) override;
 
 private:
 	/**
@@ -99,7 +99,7 @@ private:
 	std::string subtitle_;
 
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
-	virtual const std::string& window_id() const;
+	virtual const std::string& window_id() const override;
 };
 
 } // namespace dialogs

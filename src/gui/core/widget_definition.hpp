@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2007 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -19,6 +19,7 @@
 #include "font/font_options.hpp"
 #include "font/text.hpp"
 #include "gui/core/canvas.hpp"
+#include "gui/core/linked_group_definition.hpp"
 #include <vector>
 
 namespace gui2
@@ -56,18 +57,7 @@ struct resolution_definition
 	unsigned max_width;
 	unsigned max_height;
 
-	struct linked_group
-	{
-		linked_group() : id(), fixed_width(false), fixed_height(false)
-		{
-		}
-
-		std::string id;
-		bool fixed_width;
-		bool fixed_height;
-	};
-
-	std::vector<linked_group> linked_groups;
+	std::vector<linked_group_definition> linked_groups;
 
 	unsigned text_extra_width;
 	unsigned text_extra_height;
@@ -110,7 +100,7 @@ struct styled_widget_definition
 	{
 		for (const auto & resolution : cfg.child_range("resolution"))
 		{
-			resolutions.push_back(std::make_shared<T>(resolution));
+			resolutions.emplace_back(std::make_shared<T>(resolution));
 		}
 	}
 

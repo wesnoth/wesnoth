@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -15,7 +15,9 @@
 #include "hotkey/hotkey_handler.hpp"
 
 #include "actions/create.hpp"
+#include "config_assign.hpp"
 #include "font/standard_colors.hpp"
+#include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "game_display.hpp"
 #include "game_errors.hpp"
@@ -360,113 +362,101 @@ bool play_controller::hotkey_handler::can_execute_command(const hotkey::hotkey_c
 	}
 }
 
-
-static void trim_items(std::vector<std::string>& newitems) {
-	if (newitems.size() > 5) {
-		std::vector<std::string> subitems;
-		subitems.push_back(newitems[0]);
-		subitems.push_back(newitems[1]);
-		subitems.push_back(newitems[newitems.size() / 3]);
-		subitems.push_back(newitems[newitems.size() * 2 / 3]);
-		subitems.push_back(newitems.back());
+template<typename T>
+static void trim_items(std::vector<T>& newitems)
+{
+	if(newitems.size() > 5) {
+		std::vector<T> subitems;
+		subitems.push_back(std::move(newitems[0]));
+		subitems.push_back(std::move(newitems[1]));
+		subitems.push_back(std::move(newitems[newitems.size() / 3]));
+		subitems.push_back(std::move(newitems[newitems.size() * 2 / 3]));
+		subitems.push_back(std::move(newitems.back()));
 		newitems = subitems;
 	}
 }
 
-void play_controller::hotkey_handler::expand_autosaves(std::vector<std::string>& items)
+void play_controller::hotkey_handler::expand_autosaves(std::vector<config>& items, int i)
 {
-	const compression::format comp_format =
-		preferences::save_compression_format();
+	const compression::format comp_format = preferences::save_compression_format();
 
 	savenames_.clear();
-	for (unsigned int i = 0; i < items.size(); ++i) {
-		if (items[i] == "AUTOSAVES") {
-			items.erase(items.begin() + i);
-			std::vector<std::string> newitems;
-			std::vector<std::string> newsaves;
-			for (unsigned int turn = play_controller_.turn(); turn != 0; turn--) {
-				std::string name = saved_game_.classification().label + "-" + _("Auto-Save") + std::to_string(turn);
-				if (savegame::save_game_exists(name, comp_format)) {
-					newsaves.push_back(
-						name + compression::format_extension(comp_format));
-					newitems.push_back(_("Back to Turn ") + std::to_string(turn));
-				}
-			}
+	savenames_.resize(i);
 
-			const std::string& start_name = saved_game_.classification().label;
-			if(savegame::save_game_exists(start_name, comp_format)) {
-				newsaves.push_back(
-					start_name + compression::format_extension(comp_format));
-				newitems.push_back(_("Back to Start"));
-			}
+	auto pos = items.erase(items.begin() + i);
+	std::vector<config> newitems;
+	std::vector<std::string> newsaves;
 
-			// Make sure list doesn't get too long: keep top two,
-			// midpoint and bottom.
-			trim_items(newitems);
-			trim_items(newsaves);
+	const std::string& start_name = saved_game_.classification().label;
 
-			items.insert(items.begin()+i, newitems.begin(), newitems.end());
-			savenames_.insert(savenames_.end(), newsaves.begin(), newsaves.end());
-			break;
+	for(unsigned int turn = play_controller_.turn(); turn != 0; turn--) {
+		const std::string name = formatter() << start_name << "-" << _("Auto-Save") << turn;
+
+		if(savegame::save_game_exists(name, comp_format)) {
+			newsaves.emplace_back(name + compression::format_extension(comp_format));
+			newitems.emplace_back(config_of("label", _("Back to Turn ") + std::to_string(turn)));
 		}
-		savenames_.push_back("");
 	}
+
+	if(savegame::save_game_exists(start_name, comp_format)) {
+		newsaves.emplace_back(start_name + compression::format_extension(comp_format));
+		newitems.emplace_back(config_of("label", _("Back to Start")));
+	}
+
+	// Make sure list doesn't get too long: keep top two, midpoint and bottom.
+	trim_items(newitems);
+	trim_items(newsaves);
+
+	items.insert(pos, newitems.begin(), newitems.end());
+	savenames_.insert(savenames_.end(), newsaves.begin(), newsaves.end());
 }
 
-void play_controller::hotkey_handler::expand_wml_commands(std::vector<std::string>& items)
+void play_controller::hotkey_handler::expand_wml_commands(std::vector<config>& items, int i)
 {
 	wml_commands_.clear();
-	for (unsigned int i = 0; i < items.size(); ++i) {
-		if (items[i] == "wml") {
-			std::vector<std::string> newitems;
+	// Pad the commands with null pointers (keeps the indices of items and wml_commands_ synced).
+	wml_commands_.resize(i);
 
-			// Replace this placeholder entry with available menu items.
-			items.erase(items.begin() + i);
-			gamestate().get_wml_menu_items().get_items(mouse_handler_.get_last_hex(), wml_commands_, newitems,
-				gamestate(), gamestate().gamedata_, gamestate().board_.units_);
-			items.insert(items.begin()+i, newitems.begin(), newitems.end());
-			// End the "for" loop.
-			break;
-		}
-		// Pad the commands with null pointers (keeps the indices of items and
-		// wml_commands_ synced).
-		wml_commands_.push_back(const_item_ptr());
-	}
+	auto pos = items.erase(items.begin() + i);
+	std::vector<config> newitems;
+
+	gamestate().get_wml_menu_items().get_items(mouse_handler_.get_last_hex(), wml_commands_, newitems,
+		gamestate(), gamestate().gamedata_, gamestate().board_.units_);
+
+	// Replace this placeholder entry with available menu items.
+	items.insert(pos, newitems.begin(), newitems.end());
 }
 
-void play_controller::hotkey_handler::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& disp)
+void play_controller::hotkey_handler::show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu, display& disp)
 {
-	if (context_menu)
-	{
+	if(context_menu) {
 		last_context_menu_x_ = xloc;
 		last_context_menu_y_ = yloc;
 	}
 
-	std::vector<std::string> items = items_arg;
-	const hotkey::hotkey_command* cmd;
-	std::vector<std::string>::iterator i = items.begin();
-	while(i != items.end()) {
-		if (*i == "AUTOSAVES") {
-			// Autosave visibility is similar to LOAD_GAME hotkey
+	std::vector<config> items;
+	for(const auto& item : items_arg) {
+		const std::string& id = item["id"];
+		const hotkey::hotkey_command& command = hotkey::get_hotkey_command(id);
 
-			++i; continue; //cmd = &hotkey::hotkey_command::get_command_by_command(hotkey::HOTKEY_LOAD_GAME);
-		} else {
-			cmd = &hotkey::get_hotkey_command(*i);
+		if(id == "wml" || (can_execute_command(command) && (!context_menu || in_context_menu(command.id)))) {
+			items.emplace_back(config_of("id", id));
 		}
-		// Remove commands that can't be executed or don't belong in this type of menu
-		if(*i != "wml" && (!can_execute_command(*cmd) || (context_menu && !in_context_menu(cmd->id)))) {
-			i = items.erase(i);
-			continue;
-		}
-		++i;
 	}
 
 	// Add special non-hotkey items to the menu and remember their indices
-	expand_autosaves(items);
-	expand_wml_commands(items);
+	// Iterate in reverse to avoid also iterating over the new inserted items
+	for(int i = items.size() - 1; i >= 0; i--) {
+		if(items[i]["id"] == "AUTOSAVES") {
+			expand_autosaves(items, i);
+		} else if(items[i]["id"] == "wml") {
+			expand_wml_commands(items, i);
+		}
+	}
 
-	if(items.empty())
+	if(items.empty()) {
 		return;
+	}
 
 	command_executor::show_menu(items, xloc, yloc, context_menu, disp);
 }

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -91,7 +91,7 @@ terrain_filter::terrain_filter_cache::terrain_filter_cache() :
 
 namespace {
 	struct cfg_isor {
-		bool operator() (std::pair<const std::string,const vconfig> val) {
+		bool operator() (std::pair<const std::string,const vconfig> val) const {
 			return val.first == "or";
 		}
 	};
@@ -184,7 +184,7 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 
 			bool found = false;
 			for (const int side : sides) {
-				const team &viewing_team = fc_->get_disp_context().teams().at(side - 1);
+				const team &viewing_team = fc_->get_disp_context().get_team(side);
 				bool viewer_sees = respect_fog ? !viewing_team.fogged(loc) : !viewing_team.shrouded(loc);
 				if (visible == viewer_sees) {
 					found = true;
@@ -309,7 +309,7 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 		if(sides.empty() && fc_->get_disp_context().village_owner(loc) == -1)
 			found = true;
 		for(const int side : sides) {
-			if(fc_->get_disp_context().teams().at(side - 1).owns_village(loc)) {
+			if(fc_->get_disp_context().get_team(side).owns_village(loc)) {
 				found = true;
 				break;
 			}
@@ -323,19 +323,19 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 			return false;
 		}
 	}
-	
+
 	if(cfg_.has_attribute("formula")) {
 		try {
 			const gamemap& map = fc_->get_disp_context().map();
 			t_translation::terrain_code t = map.get_terrain(loc);
 			const terrain_type& ter = map.tdata()->get_terrain_info(t);
-			const terrain_callable callable(ter,loc);
-			const game_logic::formula form(cfg_["formula"]);
+			const wfl::terrain_callable callable(ter,loc);
+			const wfl::formula form(cfg_["formula"]);
 			if(!form.evaluate(callable).as_bool()) {
 				return false;
 			}
 			return true;
-		} catch(game_logic::formula_error& e) {
+		} catch(wfl::formula_error& e) {
 			lg::wml_error() << "Formula error in location filter: " << e.type << " at " << e.filename << ':' << e.line << ")\n";
 			// Formulae with syntax errors match nothing
 			return false;

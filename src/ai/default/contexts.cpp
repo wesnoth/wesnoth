@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2009 - 2017 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -82,7 +82,7 @@ int default_ai_context_impl::count_free_hexes_in_castle(const map_location &loc,
 			if (u == units_.end()
 				|| (current_team().is_enemy(u->side())
 					&& u->invisible(adj[n], *resources::gameboard))
-				|| ((&resources::gameboard->teams()[u->side() - 1]) == &current_team()
+				|| ((&resources::gameboard->get_team(u->side()) == &current_team())
 					&& u->movement_left() > 0)) {
 				ret += 1;
 			}

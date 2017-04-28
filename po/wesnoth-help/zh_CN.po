@@ -1,5 +1,5 @@
 # The Battle for Wesnoth - Simplified Chinese Translations
-# Copyright (C) 2005-2015 Wesnoth development team
+# Copyright (C) 2005-2017 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # jan2xue <75jan@163.com>, 2005.
 # Huang Huan <unicon221@gmail.com>, 2005.
@@ -11,10 +11,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth-1.12\n"
+"Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-11-06 02:27+0300\n"
-"PO-Revision-Date: 2015-02-14 20:22+0800\n"
+"POT-Creation-Date: 2017-03-19 00:05+0300\n"
+"PO-Revision-Date: 2017-01-28 17:24+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -22,62 +22,60 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 1.7.4\n"
+"X-Generator: Poedit 1.8.11\n"
 
 #. [time]: id=underground
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:498
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:499
 #: data/core/macros/schedules.cfg:109
 msgid "Underground"
 msgstr "地下"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:657
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:659
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:657
 #: data/core/macros/abilities.cfg:346
 msgid "berserk"
 msgstr "狂暴"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:659
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:661
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:659
 #: data/core/macros/abilities.cfg:347
 msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
 msgstr ""
-"不论是在进攻时还是在防御时，狂暴都将使得作战双方维持战斗状态，直到其中一方被"
-"杀，或者恶斗三十回合为止。"
+"不论是在进攻还是防御时，此攻击都会使作战双方维持战斗状态，直到其中一方被杀，"
+"或者恶斗三十回合为止。"
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:668
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:670
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:668
 #: data/core/macros/abilities.cfg:433
 msgid "magical"
 msgstr "魔法"
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:670
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:672
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:670
 #: data/core/macros/abilities.cfg:434
 msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the unit being attacked."
-msgstr "本攻击无视被攻击单位的闪避能力，而总是具有70%的命中率。"
+msgstr "此攻击无视被攻击单位的防御能力，而总是拥有70%的命中率。"
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:679
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:679
 #: data/core/macros/abilities.cfg:478
 msgid "first strike"
 msgstr "先制"
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:681
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:681
 #: data/core/macros/abilities.cfg:479
 msgid ""
 "This unit always strikes first with this attack, even if they are defending."
-msgstr "本单位每次都能率先攻击，即使是在防御时也不例外。"
+msgstr "此单位使用此攻击时，总是能率先攻击，即使是在防御时也不例外。"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
@@ -93,7 +91,6 @@ msgstr "治疗+4"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:18
-#: data/core/macros/abilities.cfg:12
 msgid ""
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
 "\n"
@@ -102,10 +99,10 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"允许本单位在每回合开始时治疗相邻区域内受伤的友军单位。\n"
+"允许此单位在我方回合开始时治疗相邻的友方单位。\n"
 "\n"
-"本治疗师所治疗的单位每回合最多能恢复4点生命值，或阻止毒药在该回合发作。\n"
-"中毒的单位不能由治疗师解毒，只有进入村庄或者被拥有治愈技能的单位治愈。"
+"此治疗师所治疗的单位每回合最多能恢复4点生命值，或阻止毒药在该回合发作。\n"
+"中毒的单位不能由治疗师解毒，只有进入村庄解毒，或者由拥有解毒能力的单位解毒。"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:39
@@ -121,7 +118,6 @@ msgstr "治疗+8"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:41
-#: data/core/macros/abilities.cfg:30
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -131,20 +127,20 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"本单位将魔法与草药混合使用以在战场上治疗单位，比通常可能的速度快得多。\n"
+"此单位将魔法与草药混合使用以在战场上治疗单位，比通常可能的速度快得多。\n"
 "\n"
-"本治疗师所治疗的单位每回合最多能恢复8点生命值，或阻止毒药在该回合发作。\n"
-"中毒的单位不能由治疗师解毒，只有进入村庄或者被拥有治愈技能的单位治愈。"
+"此治疗师所治疗的单位每回合最多能恢复8点生命值，或阻止毒药在该回合发作。\n"
+"中毒的单位不能由治疗师解毒，只有进入村庄解毒，或者由拥有解毒能力的单位解毒。"
 
 #. [section]: id=editor
 #: data/core/editor/help.cfg:5
 msgid "Map and Scenario Editor"
-msgstr ""
+msgstr "地图与场景编辑器"
 
 #. [topic]: id=editor_brush
 #: data/core/editor/help.cfg:13
 msgid "Editor Brush"
-msgstr ""
+msgstr "编辑笔刷"
 
 #. [topic]: id=editor_brush
 #. [topic]: id=editor_clipboard
@@ -155,21 +151,21 @@ msgstr ""
 #. [topic]: id=editor_time_schedule
 #. [topic]: id=editor_starting_positions_in_general
 #: data/core/editor/help.cfg:14 data/core/editor/help.cfg:22
-#: data/core/editor/help.cfg:79 data/core/editor/help.cfg:87
-#: data/core/editor/help.cfg:105 data/core/editor/help.cfg:113
-#: data/core/editor/help.cfg:252 data/core/editor/help.cfg:290
+#: data/core/editor/help.cfg:78 data/core/editor/help.cfg:86
+#: data/core/editor/help.cfg:104 data/core/editor/help.cfg:112
+#: data/core/editor/help.cfg:251 data/core/editor/help.cfg:289
 msgid "TODO"
-msgstr ""
+msgstr "TODO"
 
 #. [topic]: id=editor_clipboard
 #: data/core/editor/help.cfg:21
 msgid "Terrain Clipboard"
-msgstr ""
+msgstr "地形剪贴板"
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:29
 msgid "Paint Tool"
-msgstr ""
+msgstr "绘制工具"
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:30
@@ -178,101 +174,108 @@ msgid ""
 "\n"
 "The paint tool utilizes the brushes and the terrain palette."
 msgstr ""
+"在地图上绘制地形块。\n"
+"\n"
+"绘图工具使用笔刷和地形调色板。"
 
 #. [topic]: id=editor_tool_fill
 #: data/core/editor/help.cfg:39
 msgid "Fill Tool"
-msgstr ""
+msgstr "填充工具"
 
 #. [topic]: id=editor_tool_fill
 #: data/core/editor/help.cfg:40
-msgid "Evil Tool for painting."
-msgstr ""
-
-#. [topic]: id=editor_tool_fill
-#: data/core/editor/help.cfg:41
 msgid ""
 "Fill continuous regions of terrain with a different one!\n"
 "\n"
 "The fill tool utilizes the terrain palette."
 msgstr ""
+"将连续的地形区域填充为另一种地形！\n"
+"\n"
+"填充工具使用地形调色板。"
+
+#. [topic]: id=editor_tool_select
+#: data/core/editor/help.cfg:49
+msgid "Select Tool"
+msgstr "选取工具"
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:50
-msgid "Select Tool"
-msgstr ""
-
-#. [topic]: id=editor_tool_select
-#: data/core/editor/help.cfg:51
 msgid ""
 "Selects a set of hex fields. The best tool ever!\n"
 "\n"
 "This tool utilizes the brushes."
-msgstr ""
+msgstr "选中一组六角格区域。史上最棒的工具！此工具使用笔刷。"
+
+#. [topic]: id=editor_tool_paste
+#: data/core/editor/help.cfg:59
+msgid "Paste Tool"
+msgstr "粘贴工具"
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:60
-msgid "Paste Tool"
-msgstr ""
-
-#. [topic]: id=editor_tool_paste
-#: data/core/editor/help.cfg:61
 msgid "Paste the terrain in the clipboard"
-msgstr ""
+msgstr "粘贴剪贴板中的地形。"
+
+#. [topic]: id=editor_tool_starting
+#: data/core/editor/help.cfg:67
+msgid "Starting Tool"
+msgstr "起始位置工具"
 
 #. [topic]: id=editor_tool_starting
 #: data/core/editor/help.cfg:68
-msgid "Starting Tool"
-msgstr ""
-
-#. [topic]: id=editor_tool_starting
-#: data/core/editor/help.cfg:69
 msgid ""
 "Defines the side leader starting position\n"
 "\n"
 "This tool gives only limited control over the start locations of certain."
 msgstr ""
+"定义阵营领袖的起始位置\n"
+"\n"
+"此工具对于某些领袖的起始位置的控制是受限的。"
 
 #. [topic]: id=editor_tool_label
-#: data/core/editor/help.cfg:78
+#: data/core/editor/help.cfg:77
 msgid "Label Tool"
-msgstr ""
+msgstr "标签工具"
 
 #. [topic]: id=editor_tool_item
-#: data/core/editor/help.cfg:86
+#: data/core/editor/help.cfg:85
 msgid "Item Tool"
-msgstr ""
+msgstr "物品工具"
+
+#. [topic]: id=editor_tool_soundsource
+#: data/core/editor/help.cfg:93
+msgid "Soundsource Tool"
+msgstr "声源工具"
 
 #. [topic]: id=editor_tool_soundsource
 #: data/core/editor/help.cfg:94
-msgid "Soundsource Tool"
-msgstr ""
-
-#. [topic]: id=editor_tool_soundsource
-#: data/core/editor/help.cfg:95
 msgid ""
 "Places Soundsources on your maps!\n"
 "\n"
 "This tool has not been implemented yet."
 msgstr ""
+"把声源放置在你的地图上！\n"
+"\n"
+"此工具尚未实现。"
 
 #. [topic]: id=editor_tool_village
-#: data/core/editor/help.cfg:104
+#: data/core/editor/help.cfg:103
 msgid "Village Ownership Tool"
-msgstr ""
+msgstr "村庄所有权工具"
 
 #. [topic]: id=editor_tool_unit
-#: data/core/editor/help.cfg:112
+#: data/core/editor/help.cfg:111
 msgid "Unit Tool"
-msgstr ""
+msgstr "单位工具"
+
+#. [topic]: id=editor_named_area
+#: data/core/editor/help.cfg:119
+msgid "Named Areas"
+msgstr "具名区域"
 
 #. [topic]: id=editor_named_area
 #: data/core/editor/help.cfg:120
-msgid "Named Areas"
-msgstr ""
-
-#. [topic]: id=editor_named_area
-#: data/core/editor/help.cfg:121
 msgid ""
 "Named Areas are sets of gamefields which can be addressed during scenario "
 "scripting by a given name.\n"
@@ -282,27 +285,35 @@ msgid ""
 "This is a very powerful mechanism since it allows generic scenario codings "
 "working with different maps providing the needed named locations."
 msgstr ""
+"具名区域是在场景脚本中，可以用给定的名称来称呼的游戏区域。\n"
+"\n"
+"具名区域可以用于在效果实现和地图特定设置之间进行抽象。\n"
+"这是非常强大的机制，因为它允许通用的场景代码在不同的地图上运作，只需地图提供"
+"了所需的具名区域即可。"
+
+#. [topic]: id=editor_playlist
+#: data/core/editor/help.cfg:130
+msgid "Playlist Manager"
+msgstr "播放列表管理器"
 
 #. [topic]: id=editor_playlist
 #: data/core/editor/help.cfg:131
-msgid "Playlist Manager"
-msgstr ""
-
-#. [topic]: id=editor_playlist
-#: data/core/editor/help.cfg:132
 msgid ""
 "Saves a list of music tracks defining a random playlist to the scenario.\n"
 "\n"
 "Have a look at the addon server for easy to use additional music tracks."
 msgstr ""
+"此处保存了一份音轨列表，该列表即为场景所使用的随机播放列表。\n"
+"\n"
+"去附加组件服务器上浏览一番，可以找到易用的附加音轨。"
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:141
+#: data/core/editor/help.cfg:140
 msgid "Map/Scenario Editor"
-msgstr ""
+msgstr "地图/场景编辑器"
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:143
+#: data/core/editor/help.cfg:142
 msgid ""
 "Wesnoth's Map and Scenario Editor allows users to create and edit the maps "
 "on which every Wesnoth scenario takes place. It also provides a limited set "
@@ -310,25 +321,21 @@ msgid ""
 "\n"
 "The editor can be launched from the <italic>text='Map Editor'</italic>"
 msgstr ""
+"韦诺的地图与场景编辑器允许用户创建及编辑地图。韦诺的每个场景都是在这些地图上"
+"发生的。它也提供了能够搭建基本场景的功能有限的特性。\n"
+"\n"
+"编辑器可以通过点击标题画面中的<bold>text='地图编辑器'</bold>来启动。"
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:145
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Chance to Hit'</header>"
+#: data/core/editor/help.cfg:144
 msgid ""
 " option at the title screen. \n"
 "\n"
 "<header>text='What you get'</header>"
 msgstr ""
-"\n"
-"\n"
-"<header>text='命中率'</header>"
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:147
+#: data/core/editor/help.cfg:146
 msgid ""
 "\n"
 "\n"
@@ -341,7 +348,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:154
+#: data/core/editor/help.cfg:153
 msgid ""
 "\n"
 "Predefine the scenario's music track playlist.\n"
@@ -351,7 +358,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:159
+#: data/core/editor/help.cfg:158
 msgid ""
 "\n"
 "\n"
@@ -373,7 +380,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:173
+#: data/core/editor/help.cfg:172
 msgid ""
 "\n"
 "• <ref>dst='editor_modes' text='Editing Modes'</ref>\n"
@@ -385,17 +392,13 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_modes
-#: data/core/editor/help.cfg:185
+#: data/core/editor/help.cfg:184
 msgid "Editing Modes"
 msgstr ""
 
 #. [topic]: id=editor_modes
-#: data/core/editor/help.cfg:186
+#: data/core/editor/help.cfg:185
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Creator Resources'</header>"
 msgid ""
 "\n"
 "\n"
@@ -406,12 +409,12 @@ msgstr ""
 "<header>text='创造者资源'</header>"
 
 #. [topic]: id=editor_modes
-#: data/core/editor/help.cfg:186
+#: data/core/editor/help.cfg:185
 msgid "The editor features two separate modes of operation:"
 msgstr ""
 
 #. [topic]: id=editor_modes
-#: data/core/editor/help.cfg:188
+#: data/core/editor/help.cfg:187
 msgid ""
 "\n"
 "\n"
@@ -420,7 +423,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_modes
-#: data/core/editor/help.cfg:190
+#: data/core/editor/help.cfg:189
 msgid ""
 "\n"
 "How the information is saved depends on the loaded file:\n"
@@ -429,7 +432,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_modes
-#: data/core/editor/help.cfg:193
+#: data/core/editor/help.cfg:192
 msgid ""
 "\n"
 "A new map or file containing only the arguments to the map_data attribute.\n"
@@ -441,7 +444,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_modes
-#: data/core/editor/help.cfg:198
+#: data/core/editor/help.cfg:197
 msgid ""
 "\n"
 "Scenario files containing a valid map_data attribute (not a file include) "
@@ -451,12 +454,8 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_modes
-#: data/core/editor/help.cfg:199
+#: data/core/editor/help.cfg:198
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Creator Resources'</header>"
 msgid ""
 "\n"
 "\n"
@@ -467,7 +466,7 @@ msgstr ""
 "<header>text='创造者资源'</header>"
 
 #. [topic]: id=editor_modes
-#: data/core/editor/help.cfg:201
+#: data/core/editor/help.cfg:200
 msgid ""
 "\n"
 "\n"
@@ -480,12 +479,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_toolkit
-#: data/core/editor/help.cfg:212
+#: data/core/editor/help.cfg:211
 msgid "Editor Tools"
 msgstr ""
 
 #. [topic]: id=editor_toolkit
-#: data/core/editor/help.cfg:213
+#: data/core/editor/help.cfg:212
 msgid ""
 "The editor provides several tools for editing your maps and scenarios. At "
 "all times, one of the editor tools is active. The active tool's context "
@@ -507,14 +506,13 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_terrain
-#: data/core/editor/help.cfg:235
+#: data/core/editor/help.cfg:234
 #, fuzzy
-#| msgid "Terrain Modifiers"
 msgid "Terrain Editor"
 msgstr "地形影响"
 
 #. [topic]: id=editor_terrain
-#: data/core/editor/help.cfg:236
+#: data/core/editor/help.cfg:235
 msgid ""
 "The terrain editor's functionality is covered by the "
 "<ref>dst='editor_tool_paint' text='Paint'</ref> and "
@@ -522,29 +520,29 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:243
+#: data/core/editor/help.cfg:242
 msgid "Editor Mask Usage"
 msgstr ""
 
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:244
+#: data/core/editor/help.cfg:243
 msgid ""
 "Masks can be applied to a base map for reusal in several scenarios playing "
 "at the same locations."
 msgstr ""
 
 #. [topic]: id=editor_time_schedule
-#: data/core/editor/help.cfg:251
+#: data/core/editor/help.cfg:250
 msgid "Time Schedule Editor"
 msgstr ""
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:259
+#: data/core/editor/help.cfg:258
 msgid "Editor Palette"
 msgstr ""
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:260
+#: data/core/editor/help.cfg:259
 msgid ""
 "The editor palette contains the applicable items you may use with the "
 "currently selected tool. For example, the Paint tool will display a full "
@@ -553,12 +551,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=map_format
-#: data/core/editor/help.cfg:267
+#: data/core/editor/help.cfg:266
 msgid "Wesnoth Map Format"
 msgstr ""
 
 #. [topic]: id=map_format
-#: data/core/editor/help.cfg:268
+#: data/core/editor/help.cfg:267
 msgid ""
 "Wesnoth stores its maps in human readable plain text files.\n"
 "\n"
@@ -573,12 +571,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=scenario_format
-#: data/core/editor/help.cfg:281
+#: data/core/editor/help.cfg:280
 msgid "Scenario Format"
 msgstr ""
 
 #. [topic]: id=editor_starting_positions_in_general
-#: data/core/editor/help.cfg:289
+#: data/core/editor/help.cfg:288
 msgid "Starting Positions Howto"
 msgstr ""
 
@@ -617,23 +615,17 @@ msgstr ""
 #. [topic]: id=great_ocean
 #: data/core/encyclopedia/geography.cfg:32
 msgid "Great Ocean"
-msgstr "大洋"
+msgstr "泰洋"
 
 #. [topic]: id=great_ocean
 #: data/core/encyclopedia/geography.cfg:33
-#, fuzzy
-#| msgid ""
-#| "Lies to the west of the <ref>dst='great_continent' text='continent'</ref> "
-#| "and all rivers eventually flow to it. Far to the west in the the Great "
-#| "Ocean is a huge archipelago called <ref>dst='morogor' text='Morogor'</"
-#| "ref>."
 msgid ""
 "Lies to the west of the <ref>dst='great_continent' text='continent'</ref> "
 "and all rivers eventually flow to it. Far to the west in the Great Ocean is "
 "a huge archipelago called <ref>dst='morogor' text='Morogor'</ref>."
 msgstr ""
-"位于<ref>dst='great_continent' text='大陆'</ref>之西，一切河流终将汇入的所"
-"在。大洋的极西面有称为<ref>dst='morogor' text='莫罗戈'</ref>的巨大群岛。"
+"位于<ref>dst='great_continent' text='泰陆'</ref>之西，一切河流终将汇入的所"
+"在。泰洋的极西面时称为<ref>dst='morogor' text='莫罗戈'</ref>的巨大群岛。"
 
 #. [topic]: id=morogor
 #: data/core/encyclopedia/geography.cfg:38
@@ -642,13 +634,6 @@ msgstr "莫罗戈"
 
 #. [topic]: id=morogor
 #: data/core/encyclopedia/geography.cfg:39
-#, fuzzy
-#| msgid ""
-#| "Archipelago, located somewhere in the <ref>dst='great_ocean' text='Great "
-#| "Ocean'</ref> west of the <ref>dst='green_isle' text='Green Isle'</ref> "
-#| "and east of the <ref>dst=old_continent text='Old Continent'</ref>.\n"
-#| "It is mostly inhabited by <ref>dst='..race_drake' text='drakes'</ref>.\n"
-#| "The central island of the archipelago is also called ‘Morogor’."
 msgid ""
 "Archipelago, located somewhere in the <ref>dst='great_ocean' text='Great "
 "Ocean'</ref> east of the <ref>dst='green_isle' text='Green Isle'</ref> and "
@@ -656,9 +641,9 @@ msgid ""
 "It is mostly inhabited by <ref>dst='..race_drake' text='drakes'</ref>.\n"
 "The central island of the archipelago is also called ‘Morogor’."
 msgstr ""
-"群岛，位于<ref>dst='great_ocean' text='大洋'</ref>中的某处，在"
-"<ref>dst='green_isle' text='绿岛'</ref> 之西，<ref>dst=old_continent text='旧"
-"大陆'</ref>之东。\n"
+"群岛，位于<ref>dst='great_ocean' text='泰洋'</ref>中的某处，在"
+"<ref>dst='green_isle' text='绿岛'</ref> 之东，<ref>dst=great_continent "
+"text='泰陆'</ref>之西。\n"
 "此地居住的主要是<ref>dst='..race_drake' text='龙人'</ref>。\n"
 "群岛的中心岛也被称为“莫罗戈”。"
 
@@ -671,7 +656,7 @@ msgstr "绿岛"
 #: data/core/encyclopedia/geography.cfg:47
 msgid ""
 "A bigger island lying in the <ref>dst='great_ocean' text='Great Ocean'</ref>."
-msgstr "<ref>dst='great_ocean' text='大洋'</ref>中较大的一个岛。"
+msgstr "<ref>dst='great_ocean' text='泰洋'</ref>中较大的一个岛。"
 
 #. [topic]: id=old_continent
 #: data/core/encyclopedia/geography.cfg:52
@@ -685,12 +670,12 @@ msgid ""
 "<ref>dst='great_ocean' text='Great Ocean'</ref>."
 msgstr ""
 "在<ref>dst='morogor' text='莫罗戈'</ref>的西面，与它隔着"
-"<ref>dst='great_ocean' text='大洋'</ref>相望。"
+"<ref>dst='great_ocean' text='泰洋'</ref>相望。"
 
 #. [topic]: id=great_continent
 #: data/core/encyclopedia/geography.cfg:58
 msgid "Great Continent"
-msgstr "大陆"
+msgstr "泰陆"
 
 #. [topic]: id=great_continent
 #: data/core/encyclopedia/geography.cfg:59
@@ -700,12 +685,12 @@ msgid ""
 "<ref>dst='great_ocean' text='Great Ocean'</ref>."
 msgstr ""
 "<ref>dst='kingdom_wesnoth' text='韦诺王国'</ref>所在的大陆。其西海岸被"
-"<ref>dst='great_ocean' text='大洋'</ref>所包围。"
+"<ref>dst='great_ocean' text='泰洋'</ref>所包围。"
 
 #. [topic]: id=irdya
 #: data/core/encyclopedia/geography.cfg:64
 msgid "Irdya"
-msgstr "伊利迪亚"
+msgstr "伊迪亚"
 
 #. [topic]: id=irdya
 #: data/core/encyclopedia/geography.cfg:65
@@ -715,9 +700,9 @@ msgid ""
 "rarely used in the era depicted by the main map. People normally just say "
 "“the world” or, poetically, “the wide green world”."
 msgstr ""
-"<ref>dst='kingdom_wesnoth' text='韦诺'</ref>王国所在的世界的名字叫做“伊利迪"
-"亚”。然而，在主地图所描述的时代里，这个名字很少会被提起。人们通常只是说“世"
-"界”，或者更诗意一些，“宽广而翠绿的世界”。 "
+"<ref>dst='kingdom_wesnoth' text='韦诺'</ref>王国所在的世界的名字叫做“伊迪"
+"亚”。然而，在主地图所描述的时代里，这个名字很少被提起。人们通常只是说“世界”，"
+"或者更诗意一些，“宽广而翠绿的世界”。 "
 
 #. [topic]: id=kingdom_wesnoth
 #: data/core/encyclopedia/geography.cfg:70
@@ -727,63 +712,6 @@ msgstr "韦诺王国"
 #. [topic]: id=kingdom_wesnoth
 #: data/core/encyclopedia/geography.cfg:71
 #, fuzzy
-#| msgid ""
-#| "The Kingdom of Wesnoth is located in the north-central portion of the "
-#| "<ref>dst='great_continent' text='Great Continent'</ref>. Most of the "
-#| "mainline campaigns revolve around it. It is bounded on the map by the "
-#| "Great River to the north, the shore of the Great Ocean to the west, the "
-#| "Aethenwood to the <ref>dst='southwest_elven_lands' text='southwest'</"
-#| "ref>, and the Bitter Swamp to the southeast (lower right corner of the "
-#| "main map).\n"
-#| "\n"
-#| "Over the River Aethen, south of Fort Tahn, is a Wesnothian frontier "
-#| "region. It is bounded to the south (off-map) by dense woods of which the "
-#| "Aethenwood may be considered a northernmost extension.\n"
-#| "\n"
-#| "    • Notable cities:\n"
-#| "          ◦ Weldyn: The capital of Wesnoth.\n"
-#| "          ◦ Aldril: City lying on the Bay of Pearls.\n"
-#| "          ◦ Blackwater Port: City lying south of the Bay of Pearls.\n"
-#| "          ◦ Carcyn: Located between the Grey Woods and the Great River.\n"
-#| "          ◦ Dan’Tonk: Wesnoth’s largest city, located in the center of "
-#| "the country, just west and north of Weldyn.\n"
-#| "          ◦ Soradoc: The northernmost border outpost of Wesnoth, controls "
-#| "the confluence of the Weldyn River and the Great River.\n"
-#| "          ◦ Fort Tahn: The southernmost border outpost, controls the "
-#| "north/south road crossing the River Aethen.\n"
-#| "          ◦ Tath: Important fort city north of Dan’Tonk, exerts control "
-#| "over the wilderness country around the east of the Brown Hills and north "
-#| "to the Ford of Abez.\n"
-#| "\n"
-#| "    • Notable land features:\n"
-#| "          ◦ Gryphon Mountain: Home of the fabled Gryphons\n"
-#| "          ◦ Ford of Abez: Shallow part of the Great River, it is usually "
-#| "controlled by Wesnothian forces\n"
-#| "          ◦ Weldyn River: It branches from the Great River and goes "
-#| "south\n"
-#| "          ◦ Great Central Plain: Area bounded by Weldyn, Dan’Tonk, and "
-#| "Fort Tahn, this plain is Wesnoth’s bread basket and home to most of its "
-#| "population\n"
-#| "          ◦ Dulatus Hills: These rolling hills bordering the Great "
-#| "Central Plain provide much of Wesnoth’s livestock and agriculture\n"
-#| "          ◦ Brown Hills: Wasteland surrounding Gryphon Mountain that is "
-#| "not well-populated and occasionally very dangerous.\n"
-#| "          ◦ Horse Plains: Region of rolling plains just south of the "
-#| "Great River, bounded by Glyn’s Forest to the west and the River Weldyn to "
-#| "the east; the southern reach merges into the Central Plain. Home of the "
-#| "powerful Clans; the best horses in Wesnoth are bred here.\n"
-#| "          ◦ Estmark Hills: Largish range rising south of the Great River "
-#| "and east of the Weldyn River. The northernmost portion, nearest the River "
-#| "Weldyn, has at various times been settled by Wesnothians, but the "
-#| "Kingdom’s control is tenuous at best and banditry is common.\n"
-#| "          ◦ Glyn’s Forest: Sometimes known as the Royal Forest, named for "
-#| "one of Haldric II’s sons\n"
-#| "          ◦ Gray Woods: Large forest in the heart of the wilds of "
-#| "Wesnoth, located between Carcyn and Aldril and generally considered to be "
-#| "haunted\n"
-#| "          ◦ Green Swamp: Large swamp in the heart of the wilds of "
-#| "Wesnoth, south of Aldril. It receives drainage from the Brown Hills and "
-#| "feeds into the Great River. (Not shown on the main map.)"
 msgid ""
 "The Kingdom of Wesnoth is located in the north-central portion of the "
 "<ref>dst='great_continent' text='Great Continent'</ref>. Most of the "
@@ -886,22 +814,6 @@ msgstr "埃仁萨伐"
 #. [topic]: id=elensefar
 #: data/core/encyclopedia/geography.cfg:101
 #, fuzzy
-#| msgid ""
-#| "Elensefar is at times a province of <ref>dst='kingdom_wesnoth' "
-#| "text='Wesnoth'</ref>, at times an independent country, and at times in a "
-#| "treaty federation with Wesnoth. Its borders are the Great River to the "
-#| "north, a loosely defined line with Wesnoth to the east, the Bay of Pearls "
-#| "to the south, and the <ref>dst='great_ocean' text='ocean'</ref> to the "
-#| "west. More information is found in the historical narrative of Wesnoth.\n"
-#| "\n"
-#| "    • Notable cities:\n"
-#| "          ◦ Elensefar: The capital, located on an island in the "
-#| "<ref>dst='great_river' text='Great River'</ref> delta\n"
-#| "          ◦ Carcyn: City on the Wesnoth–Elensefar border, disputed with "
-#| "Wesnoth\n"
-#| "    • Notable land features:\n"
-#| "          ◦ <ref>dst='great_river' text='Great River'</ref>: It is very "
-#| "wide at this point, and only ships can cross it."
 msgid ""
 "Elensefar is at times a province of <ref>dst='kingdom_wesnoth' "
 "text='Wesnoth'</ref>, at times an independent country, and at times in a "
@@ -941,45 +853,6 @@ msgstr "北方大陆"
 #. [topic]: id=northlands
 #: data/core/encyclopedia/geography.cfg:114
 #, fuzzy
-#| msgid ""
-#| "There is no government of the Northlands. Various groups of orcs, "
-#| "dwarves, barbarian men and even elves populate the region. The northern "
-#| "and eastern borders are not defined, the southern border is the "
-#| "<ref>dst='great_river' text='Great River'</ref>, and the western border "
-#| "is the <ref>dst='great_ocean' text='Great Ocean'</ref>.\n"
-#| "\n"
-#| "    • Notable cities:\n"
-#| "          ◦ Glamdrol: An Orcish tribal capital\n"
-#| "          ◦ Wesmere: The location of the Ka’lian — the Elvish Council\n"
-#| "          ◦ Dwarven Doors: A mixed human/dwarven town in the region of "
-#| "Knalga in the southern Heart Mountains. A major trade center.\n"
-#| "          ◦ Dallben and Delwyn: Human villages originally built by "
-#| "settlers who crossed the Great River during Wesnoth’s Golden Age "
-#| "expansion. Now abandoned. The forested area northeast of Elensefar, where "
-#| "these villages were located, was named the Annuvin province by men but "
-#| "was known by the elves as Wesmere.\n"
-#| "\n"
-#| "    • Notable land features:\n"
-#| "          ◦ Heart Mountains: A virtually impassable barrier between the "
-#| "river country and the Northern Plains.\n"
-#| "          ◦ Heartfangs: the particularly forbidding stretch of high peaks "
-#| "southwest of Lake Vrug and north of the Forest of Wesmere. The most "
-#| "inhospitable and dangerous portion of the Heart Mountains; only hermits, "
-#| "madmen, and mages live there.\n"
-#| "          ◦ Swamp of Dread: a very large bog located between the Heart "
-#| "Mountains and the Great River. A notoriously dangerous place.\n"
-#| "          ◦ Lake Vrug: A large mountain lake whose river carves the only "
-#| "pathway through the Northern Mountains\n"
-#| "          ◦ Arkan-thoria: The river than comes out of Lake Vrug. This is "
-#| "the elvish name; among humans it is called Longlier.\n"
-#| "          ◦ River Listra: The south-running tributary of the Great River "
-#| "into which the Arkan-thoria empties.\n"
-#| "          ◦ Lintanir Forest: The southernmost portion of the Great "
-#| "Northern Forest, a gigantic wood whose eastern and northern boundaries "
-#| "are known only the elves. Their capitol, Elensiria, has only seldom been "
-#| "visited by humans.\n"
-#| "          ◦ Great River: The origin of this river is somewhere in the "
-#| "east of the northern lands"
 msgid ""
 "There is no government of the Northlands. Various groups of orcs, dwarves, "
 "barbarian men and even elves populate the region. The northern and eastern "
@@ -1058,18 +931,6 @@ msgstr "西南精灵领地"
 #. [topic]: id=southwest_elven_lands
 #: data/core/encyclopedia/geography.cfg:136
 #, fuzzy
-#| msgid ""
-#| "The Wood Elves are separate from those of the north, and have only "
-#| "intermittent relations with them and most other countries. Its borders "
-#| "are the Green Swamp to the northeast, the desert (not shown) to the "
-#| "south, and the <ref>dst='great_ocean' text='Ocean'</ref> to the west.\n"
-#| "\n"
-#| "    • Notable cities\n"
-#| "          ◦ None known\n"
-#| "    • Notable land features:\n"
-#| "          ◦ Aethen Forest: The largest southern forest, it extends far to "
-#| "the southwest—much farther than is charted—and is home to <ref>dst='.."
-#| "race_elf' text='elves'</ref>."
 msgid ""
 "The Wood Elves are separate from those of the north, and have only "
 "intermittent relations with them and most other countries. Its borders are "
@@ -1121,38 +982,6 @@ msgstr "极北之地"
 #. [topic]: id=far_north
 #: data/core/encyclopedia/geography.cfg:155
 #, fuzzy
-#| msgid ""
-#| "Cold, harsh, and inaccessible, the Far North is the ancestral home of the "
-#| "Orcish Clannate. It lies north of the <ref>dst='heart_mountains' "
-#| "text='Heart Mountains'</ref>, which the Orcs call the Haggid-Dargor and "
-#| "claim (without merit) as their own. To the east lie the Unaligned Tribes "
-#| "of the Wild Steppe, who fell out of the control of the Clannate, instead "
-#| "roaming with wild human barbarians and clashing with the High Elves of "
-#| "the North Plains (known as North Elves in human lands). The High Elves "
-#| "themselves reside further east, where it is rumored they rule a vast "
-#| "kingdom.\n"
-#| "\n"
-#| "    • Notable cities:\n"
-#| "          ◦ Barag Gor, a city home to the Orcish Council\n"
-#| "          ◦ Bitok\n"
-#| "          ◦ Borstep\n"
-#| "          ◦ Farzi\n"
-#| "          ◦ Lmarig\n"
-#| "          ◦ Melmog\n"
-#| "          ◦ Prestim\n"
-#| "          ◦ Tirigaz\n"
-#| "          ◦ Dorest, the northernmost human city\n"
-#| "    • Notable land features:\n"
-#| "          ◦ Black Marshes\n"
-#| "          ◦ Mountains of Dorth\n"
-#| "          ◦ Mountains of Haag\n"
-#| "          ◦ Greenwood\n"
-#| "          ◦ Silent Forest\n"
-#| "          ◦ Forest of Thelien\n"
-#| "          ◦ River Oumph\n"
-#| "          ◦ River Bork\n"
-#| "          ◦ Frosty Wastes\n"
-#| "          ◦ Barren Plains"
 msgid ""
 "Cold, harsh, and inaccessible, the Far North is the ancestral home of the "
 "Orcish Clannate. It lies north of the <ref>dst='heart_mountains' text='Heart "
@@ -1220,7 +1049,6 @@ msgstr ""
 #. [section]: id=schedule
 #: data/core/help.cfg:10
 #, fuzzy
-#| msgid "Time of Day"
 msgid "Time of Day Schedule"
 msgstr "时段"
 
@@ -1287,15 +1115,6 @@ msgstr "命令"
 #. [topic]: id=..introduction
 #: data/core/help.cfg:97
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<italic>text='Battle for Wesnoth'</italic> is a turn-based fantasy "
-#| "strategy game somewhat unusual among modern strategy games. While other "
-#| "games strive for complexity, <italic>text='Battle for Wesnoth'</italic> "
-#| "strives for simplicity of both rules and gameplay. This does not make the "
-#| "game simple, however — from these simple rules arise a wealth of "
-#| "strategy, making the game easy to learn but a challenge to master."
 msgid ""
 "\n"
 "\n"
@@ -1453,7 +1272,6 @@ msgstr ""
 #. [topic]: id=..gameplay
 #: data/core/help.cfg:176
 #, fuzzy
-#| msgid "<header>text='Units of this race'</header>"
 msgid ""
 "\n"
 "\n"
@@ -1464,12 +1282,6 @@ msgstr "<header>text='这个种族的单位'</header>"
 #. [topic]: id=..gameplay
 #: data/core/help.cfg:176
 #, fuzzy
-#| msgid ""
-#| "While playing, keep in mind that if you mouse-over many items in the "
-#| "game, such as the information displayed in the status pane, a brief "
-#| "description will be shown explaining each item. This is especially useful "
-#| "when you encounter new <ref>dst='..abilities_section' text='abilities'</"
-#| "ref> for the first time."
 msgid ""
 "While playing, keep in mind that you can mouse-over many items in the game, "
 "such as the information displayed in the status pane, to see a brief "
@@ -1505,14 +1317,6 @@ msgstr ""
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:189
 #, fuzzy
-#| msgid ""
-#| "Pay careful attention to the <bold>text='Objectives'</bold> pop-up box at "
-#| "the beginning of each scenario. Usually you will achieve victory by "
-#| "killing all enemy leaders, and only be defeated by having your leader "
-#| "killed. But scenarios may have other victory objectives — getting your "
-#| "leader to a designated point, say, or rescuing someone, or solving a "
-#| "puzzle, or holding out against a siege until a certain number of turns "
-#| "have elapsed."
 msgid ""
 "Pay careful attention to the <bold>text='Objectives'</bold> pop-up box at "
 "the beginning of each scenario. In most scenarios, you will achieve victory "
@@ -1551,18 +1355,6 @@ msgstr ""
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:199
 #, fuzzy
-#| msgid ""
-#| "Each side begins with one leader in their keep. At the start of any "
-#| "battle, and at times during it, you will need to recruit <ref>dst='.."
-#| "units' text='units'</ref> into your army. To recruit, you must have your "
-#| "leader (for instance, Konrad in the <italic>text='Heir to the Throne'</"
-#| "italic> campaign) on the keep hex of a <ref>dst='terrain_castle' "
-#| "text='castle'</ref>. Then you may recruit by either choosing "
-#| "<bold>text='Recruit'</bold> from the menu or right-clicking on a hex and "
-#| "selecting <bold>text='Recruit'</bold>. This brings up the recruit menu, "
-#| "which lists units available for recruitment, along with their gold cost. "
-#| "Click on a unit to see its statistics, then press the recruit button to "
-#| "recruit it."
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst='..units' "
@@ -1743,11 +1535,6 @@ msgstr ""
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:237
 #, fuzzy
-#| msgid ""
-#| "The hitpoints are also indicated by an energy bar next to each unit, "
-#| "which is green, yellow or red. A unit with at least 1 experience point "
-#| "has a blue experience bar, which turns white as the unit is about to "
-#| "<ref>dst='experience_and_advancement' text='advance'</ref>."
 msgid ""
 "The hitpoints are also indicated by an energy bar next to each unit, which "
 "is green, yellow or red. A unit with at least 1 experience point has a blue "
@@ -1761,7 +1548,6 @@ msgstr ""
 #. [topic]: id=advancement
 #: data/core/help.cfg:244
 #, fuzzy
-#| msgid "Advances to: "
 msgid "Advancement"
 msgstr "升级为："
 
@@ -1876,16 +1662,6 @@ msgstr ""
 #. [topic]: id=movement
 #: data/core/help.cfg:259
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Another thing to keep in mind while moving is <italic>text='zones of "
-#| "control'</italic>. Each unit generates a zone of control in the hexes "
-#| "immediately surrounding it, and any enemy unit entering those hexes "
-#| "immediately ends its movement. Learning how to use zones of control to "
-#| "your advantage is an important part of Wesnoth, as only "
-#| "<ref>dst='ability_skirmisher' text='skirmishers'</ref> can ignore zones "
-#| "of control."
 msgid ""
 "\n"
 "\n"
@@ -2002,16 +1778,6 @@ msgstr ""
 #. [topic]: id=combat
 #: data/core/help.cfg:283
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "The attacker gets the first strike, then the defender retaliates. Each "
-#| "strike either hits, doing a given amount of damage, or misses, doing no "
-#| "damage at all. Strikes alternate until each unit has used up all of its "
-#| "strikes. The number of strikes a unit has varies; for instance, an elvish "
-#| "fighter with a 5–4 attack may strike 4 times, each successful strike "
-#| "dealing 5 damage, while an orcish grunt with a 9–2 attack can only strike "
-#| "twice (but at 9 damage for each hit)."
 msgid ""
 "\n"
 "\n"
@@ -2096,16 +1862,6 @@ msgstr ""
 #. [topic]: id=combat
 #: data/core/help.cfg:293
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Each strike which hits causes a base amount of damage depending on the "
-#| "attack type. For instance, an elvish fighter with a 5–4 attack does 5 "
-#| "base damage. This is usually modified by two things: "
-#| "<ref>dst='damage_types_and_resistance' text='resistance'</ref> and "
-#| "<ref>dst='time_of_day' text='time of day'</ref>. To see how base damage "
-#| "is modified by the circumstances, select <bold>text='Damage "
-#| "Calculations'</bold> in the attack selection menu."
 msgid ""
 "\n"
 "\n"
@@ -2233,9 +1989,6 @@ msgstr " 黄色：表明本单位移动过，但还可以继续移动或攻击�
 #. [topic]: id=orbs
 #: data/core/help.cfg:321
 #, fuzzy
-#| msgid ""
-#| " black if it can no longer move or attack, or the user ended the unit’s "
-#| "turn."
 msgid ""
 " red if it can no longer move or attack, or the user ended the unit’s turn."
 msgstr "黑色：表明本单位不能继续移动或攻击，或玩家结束了其回合。"
@@ -2248,7 +2001,6 @@ msgstr " 蓝色：表明本单位是您所不能控制的友军。"
 #. [topic]: id=orbs
 #: data/core/help.cfg:323
 #, fuzzy
-#| msgid " Enemy units have a red orb on top of their energy bar."
 msgid " Enemy units have no orb on top of their energy bar."
 msgstr " 敌方单位的能量条上方有个红色的行动状态球。"
 
@@ -2260,12 +2012,6 @@ msgstr "时段"
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:331
 #, fuzzy
-#| msgid ""
-#| "The time of day affects the damage of certain units as follows:\n"
-#| " Lawful units get +25% damage in daytime, and −25% damage at night.\n"
-#| " Chaotic units get +25% damage at night, and −25% in daytime.\n"
-#| " Neutral units are unaffected by the time of day.\n"
-#| " Liminal units get −25% damage during both night and daytime."
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 "\n"
@@ -2286,12 +2032,6 @@ msgstr ""
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:336
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "The current time of day can be observed under the minimap in the status "
-#| "pane. For the usual day/night cycle, morning and afternoon count as day, "
-#| "first and second watch count as night:\n"
 msgid ""
 "\n"
 "\n"
@@ -2352,9 +2092,6 @@ msgstr "后半夜"
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:347
 #, fuzzy
-#| msgid ""
-#| "Keep in mind that some scenarios take place underground, where it is "
-#| "perpetually night!"
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!\n"
@@ -2382,11 +2119,6 @@ msgstr "治疗"
 #. [topic]: id=healing
 #: data/core/help.cfg:359
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<italic>text='Resting'</italic>: A unit which neither moves, attacks, nor "
-#| "is attacked will heal 2 HP in its next turn."
 msgid ""
 "\n"
 "\n"
@@ -2409,10 +2141,6 @@ msgstr ""
 #. [topic]: id=healing
 #: data/core/help.cfg:361
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "<italic>text='Villages'</italic>: A unit which starts a turn in a village "
-#| "will heal 8HP."
 msgid ""
 "\n"
 "• <bold>text='Villages'</bold>: A unit which starts a turn in a village or "
@@ -2425,10 +2153,6 @@ msgstr ""
 #. [topic]: id=healing
 #: data/core/help.cfg:362
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "<ref>dst='ability_regenerates' text='Regeneration'</ref>: Certain units "
-#| "(such as trolls) will automatically heal 8HP every turn."
 msgid ""
 "\n"
 "• <ref>dst='ability_regenerates' text='Regeneration'</ref>: Certain units "
@@ -2442,13 +2166,6 @@ msgstr ""
 #. [topic]: id=healing
 #: data/core/help.cfg:363
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "<italic>text='Healing units'</italic>: Units with the "
-#| "<ref>dst='ability_heals +4' text='Heals'</ref> ability will heal each "
-#| "allied adjacent unit, usually <ref>dst='ability_heals +4' text='4HP'</"
-#| "ref> or <ref>dst='ability_heals +8' text='8HP'</ref> per turn, or prevent "
-#| "Poison from causing that unit damage."
 msgid ""
 "\n"
 "• <bold>text='Healing units'</bold>: Units with the <ref>dst='ability_heals "
@@ -2465,12 +2182,6 @@ msgstr ""
 #. [topic]: id=healing
 #: data/core/help.cfg:364
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "<italic>text='Curing units'</italic>: Units with the "
-#| "<ref>dst='ability_cures' text='cures'</ref> ability will cure Poison in "
-#| "all allied adjacent units (in preference to healing, if it has that "
-#| "ability as well)."
 msgid ""
 "\n"
 "• <bold>text='Curing units'</bold>: Units with the <ref>dst='ability_cures' "
@@ -2557,12 +2268,6 @@ msgstr "许可证"
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:399
 #, fuzzy
-#| msgid ""
-#| "Most units have two traits. However, undead units are assigned the single "
-#| "trait <italic>text='undead'</italic>, and woses do not receive any "
-#| "traits. Traits are modifications that change a unit’s attributes "
-#| "slightly. They are usually randomly assigned to a unit when it is "
-#| "recruited."
 msgid ""
 "\n"
 "\n"
@@ -2587,13 +2292,6 @@ msgstr ""
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:401
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "The traits that are available to all non-undead units are "
-#| "<ref>dst='traits_intelligent' text='intelligent'</ref>, "
-#| "<ref>dst='traits_quick' text='quick'</ref>, <ref>dst='traits_resilient' "
-#| "text='resilient'</ref>, and <ref>dst='traits_strong' text='strong'</ref>."
 msgid ""
 "\n"
 "\n"
@@ -2610,14 +2308,6 @@ msgstr ""
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:403
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Other traits that may be assigned to units are <ref>dst='traits_dextrous' "
-#| "text='dextrous'</ref>, <ref>dst='traits_loyal' text='loyal'</ref>, and "
-#| "<ref>dst='traits_undead' text='undead'</ref>.\n"
-#| "\n"
 msgid ""
 "\n"
 "\n"
@@ -2629,12 +2319,6 @@ msgid ""
 "<ref>dst='traits_undead' text='undead'</ref>.\n"
 "\n"
 msgstr ""
-"\n"
-"\n"
-"单位能获得的其它特质有：<ref>dst='traits_dextrous' text='灵巧'</ref>，"
-"<ref>dst='traits_loyal' text='忠诚'</ref>，和<ref>dst='traits_undead' "
-"text='亡灵'</ref> 。\n"
-"\n"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:413
@@ -2657,10 +2341,6 @@ msgstr ""
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:415
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Creator Resources'</header>"
 msgid ""
 "\n"
 "\n"
@@ -2694,10 +2374,6 @@ msgstr ""
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:423
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Creator Resources'</header>"
 msgid ""
 "\n"
 "\n"
@@ -2782,10 +2458,6 @@ msgstr ""
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:445
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Creator Resources'</header>"
 msgid ""
 "\n"
 "\n"
@@ -2828,10 +2500,6 @@ msgstr ""
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:453
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Creator Resources'</header>"
 msgid ""
 "\n"
 "\n"
@@ -3089,7 +2757,6 @@ msgstr ""
 #. [topic]: id=general_commands
 #: data/core/help.cfg:538
 #, fuzzy
-#| msgid "General commands"
 msgid "General Commands"
 msgstr "常规命令"
 
@@ -3240,7 +2907,6 @@ msgstr ""
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:582
 #, fuzzy
-#| msgid "Multiplayer commands"
 msgid "Multiplayer Commands"
 msgstr "多人游戏命令"
 
@@ -3379,7 +3045,6 @@ msgstr ""
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:620
 #, fuzzy
-#| msgid "Debug mode commands"
 msgid "Debug Mode Commands"
 msgstr "调试模式命令"
 
@@ -3492,6 +3157,39 @@ msgid ""
 msgstr ""
 "\n"
 "使被选定单位连升N级。例如：:unit advances=2"
+
+#. [heals]: id=healing
+#: data/core/macros/abilities.cfg:12
+#, fuzzy
+msgid ""
+"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
+"\n"
+"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
+"from taking effect for that turn.\n"
+"This ability will not cure an affected unit of poison, however, only delay "
+"its effect."
+msgstr ""
+"允许此单位在我方回合开始时治疗相邻的友方单位。\n"
+"\n"
+"此治疗师所治疗的单位每回合最多能恢复4点生命值，或阻止毒药在该回合发作。\n"
+"中毒的单位不能由治疗师解毒，只有进入村庄解毒，或者由拥有解毒能力的单位解毒。"
+
+#. [heals]: id=healing
+#: data/core/macros/abilities.cfg:30
+#, fuzzy
+msgid ""
+"This unit combines herbal remedies with magic to heal units more quickly "
+"than is normally possible on the battlefield.\n"
+"\n"
+"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
+"from taking effect for that turn.\n"
+"This ability will not cure an affected unit of poison, however, only delay "
+"its effect."
+msgstr ""
+"此单位将魔法与草药混合使用以在战场上治疗单位，比通常可能的速度快得多。\n"
+"\n"
+"此治疗师所治疗的单位每回合最多能恢复8点生命值，或阻止毒药在该回合发作。\n"
+"中毒的单位不能由治疗师解毒，只有进入村庄解毒，或者由拥有解毒能力的单位解毒。"
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:47
@@ -3697,14 +3395,6 @@ msgstr "隐蔽"
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:287 data/core/macros/abilities.cfg:292
 #, fuzzy
-#| msgid ""
-#| "This unit can hide in villages (with the exception of water villages), "
-#| "and remain undetected by its enemies, except by those standing next to "
-#| "it.\n"
-#| "\n"
-#| "Enemy units can not see this unit while it is in a village, except if "
-#| "they have units next to it. Any enemy unit that first discovers this unit "
-#| "immediately loses all its remaining movement."
 msgid ""
 "This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it.\n"
@@ -3784,13 +3474,14 @@ msgstr "瘟疫"
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #: data/core/macros/abilities.cfg:379
+#, fuzzy
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
-"identical to and on the same side as the unit with the Plague attack. This "
-"doesn’t work on Undead or units in villages."
+"on the same side as the unit with the Plague attack. This doesn’t work on "
+"Undead or units in villages."
 msgstr ""
-"当一个单位被瘟疫攻击杀死时，这个单位将变成与进行瘟疫攻击的单位完全一样的单"
-"位，并与其属于同一阵营。这对亡灵或在村庄里的单位不起作用。 "
+"当一个单位被瘟疫攻击杀死时，这个单位将变成行尸，并与进行瘟疫攻击的单位属于同"
+"一阵营。这对亡灵或在村庄中的单位不起作用。"
 
 #. [plague]: id=plague, type=Walking Corpse
 #: data/core/macros/abilities.cfg:390
@@ -3894,10 +3585,6 @@ msgstr "毒素"
 #. [poison]: id=poison
 #: data/core/macros/abilities.cfg:489
 #, fuzzy
-#| msgid ""
-#| "This attack poisons living targets. Poisoned units lose 8 HP every turn "
-#| "until they are cured or are reduced to 1 HP. Poison can not, of itself, "
-#| "kill a unit."
 msgid ""
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
 "until they are cured or are reduced to 1 HP. Poison cannot, of itself, kill "
@@ -4483,9 +4170,6 @@ msgstr ""
 #. [trait]: id=strong
 #: data/core/macros/traits.cfg:104
 #, fuzzy
-#| msgid ""
-#| "<italic>text='Strong'</italic> units do 1 more damage for every "
-#| "successful strike in melee combat, and have 1 more HP."
 msgid ""
 "<italic>text='Strong'</italic> units do 1 more damage for every successful "
 "strike in melee combat, and have 1 additional hitpoint."
@@ -4558,9 +4242,6 @@ msgstr ""
 #. [trait]: id=quick
 #: data/core/macros/traits.cfg:142
 #, fuzzy
-#| msgid ""
-#| "<italic>text='Quick'</italic> units have 1 extra movement point, but 5% "
-#| "less HP than usual."
 msgid ""
 "<italic>text='Quick'</italic> units have 1 extra movement point, but 5% less "
 "hitpoints than usual."
@@ -4632,9 +4313,6 @@ msgstr ""
 #. [trait]: id=resilient
 #: data/core/macros/traits.cfg:178
 #, fuzzy
-#| msgid ""
-#| "<italic>text='Resilient'</italic> units have 4 HP plus 1 HP per level "
-#| "more than usual."
 msgid ""
 "<italic>text='Resilient'</italic> units have an additional 4 hitpoints, and "
 "gain 1 more per level."
@@ -4670,9 +4348,6 @@ msgstr ""
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:200
 #, fuzzy
-#| msgid ""
-#| "Renowned for their vitality, some dwarves are sturdier than others and "
-#| "can rest even when travelling."
 msgid ""
 "Renowned for their vitality, some dwarves are sturdier than others and can "
 "rest even when traveling."
@@ -4739,9 +4414,6 @@ msgstr "虚弱"
 #. [trait]: id=weak
 #: data/core/macros/traits.cfg:276
 #, fuzzy
-#| msgid ""
-#| "Units with trait <italic>text='weak'</italic> get a −1 increment in "
-#| "hitpoints and melee damage."
 msgid ""
 "Units with the <italic>text='weak'</italic> trait receive a 1 point decrease "
 "in hitpoints and melee damage."
@@ -4775,8 +4447,6 @@ msgstr ""
 #. [trait]: id=slow
 #: data/core/macros/traits.cfg:295
 #, fuzzy
-#| msgid ""
-#| "<italic>text='Slow'</italic> units have −1 movement but 5% more hitpoints."
 msgid ""
 "<italic>text='Slow'</italic> units have 1 less movement point but 5% more "
 "hitpoints."
@@ -4826,9 +4496,6 @@ msgstr "年长"
 #. [trait]: id=aged
 #: data/core/macros/traits.cfg:331
 #, fuzzy
-#| msgid ""
-#| "Units with trait <italic>text='aged'</italic> get a −8 increment in "
-#| "hitpoints and a −1 increment in movement and melee damage."
 msgid ""
 "Units with the <italic>text='aged'</italic> trait have 8 hitpoints less and "
 "suffer from a 1 point decrease in movement and melee damage."
@@ -4883,74 +4550,6 @@ msgstr "龙人"
 #. [race]: id=drake
 #: data/core/units.cfg:58
 #, fuzzy
-#| msgid ""
-#| "Drakes are large, winged and fire-breathing creatures, reminiscent of "
-#| "true dragons. On average, an adult drake stands around three meters tall "
-#| "and easily weighs more than a man and a horse combined. Their skin is "
-#| "made up of hard scales, resistant to most physical strikes except "
-#| "piercing and cold damage. Most drakes are capable of true flight and can "
-#| "travel long distances quickly. However, their sheer weight and bulk "
-#| "limits their flight ability somewhat, making them ungainly in the air. "
-#| "Where possible, they make use of terrain features such as hills, "
-#| "mountains and trees as launch points in order to gain greater height and "
-#| "speed. Fortunately for their enemies, they are still quite clumsy "
-#| "creatures and surprisingly slow in combat. This, combined with their "
-#| "large size, renders them easy targets for those who dare attack them.\n"
-#| "\n"
-#| "Drakes are inherently magical creatures, with a mysterious internal fire "
-#| "fueling their very lives. This can easily be witnessed when one of their "
-#| "kind perishes in combat; its internal fire is released, burning their "
-#| "remains in to ashes. Their internal fire is also their greatest weakness; "
-#| "it makes them extremely vulnerable to cold attacks. Despite their magical "
-#| "nature, drakes are incapable of channeling magic in a controlled manner. "
-#| "While the magic imbued within a drake’s body enables it to spit fire and "
-#| "gives it life, they have no willful control over the functions of this "
-#| "magic.\n"
-#| "\n"
-#| "<header>text='Society'</header>\n"
-#| "Drakes are a relatively warlike race and their societies can be best "
-#| "described as cultured martial societies. The core of a drake tribe is a "
-#| "small group of veteran warriors headed by a mutually respected — or "
-#| "simply feared — <ref>dst='dominant' text='dominant'</ref> who rules the "
-#| "society with an iron fist. Every drake is expected to earn their place in "
-#| "the strict hierarchy, to obey their superiors and command their "
-#| "inferiors. Entry to the ruling elite is only possible through challenging "
-#| "and defeating a superior in single combat, which is the way the hierarchy "
-#| "within the elite itself is established. The use of deception of any kind "
-#| "towards any fellow drake is, without exception, seen as cowardly and "
-#| "unacceptable.\n"
-#| "\n"
-#| "While their warlike nature and sense of territory drives them to defend "
-#| "their territories savagely, drakes rarely invade or trespass on areas "
-#| "already occupied by the other major races. Instead, they settle in "
-#| "unpopulated areas to establish their own territory there. They primarily "
-#| "feed on large game they hunt in the lowlands around their homes, but "
-#| "hatchlings and lower caste drakes are known to feed also on certain kinds "
-#| "of moss and fungi they cultivate deep in their caverns. The only "
-#| "technology drakes value is armor- and weapon-smithing, and neither know "
-#| "or need other science and culture besides this. However the few "
-#| "implements they do fashion are almost unrivaled in quality, only matched "
-#| "by those produced in the finest Dwarvish foundries.\n"
-#| "\n"
-#| "Drakes are hatched from eggs and usually live naturally between 20 to 30 "
-#| "years. Death in battle is the most preferred way for a drake to leave "
-#| "this world. Unlike the elder members of other races, drakes naturally "
-#| "grow more aggressive and reckless towards the ends of their natural "
-#| "lives, perhaps to help ensure their place in the heroic legends of their "
-#| "kind.\n"
-#| "\n"
-#| "<header>text='Geography'</header>\n"
-#| "Drakes originated from an archipelago of volcanic islands called "
-#| "<ref>dst='morogor' text='Morogor'</ref> in the <ref>dst='great_ocean' "
-#| "text='Great Ocean'</ref>. A combination of population pressure and the "
-#| "subsidence of many of their home islands has caused colonies of drakes to "
-#| "spread to the <ref>dst='great_continent' text='Great Continent'</ref>. "
-#| "Drakes tend to make their homes in mountain caverns near volcanoes to "
-#| "protect their eggs, hatchings and forges. While drakes naturally prefer "
-#| "warmth, their internal fire is more than capable of sustaining them even "
-#| "in a relatively cold climate, a feature which has allowed them to "
-#| "populate even some of the mountains of the far north of the Great "
-#| "Continent."
 msgid ""
 "Drakes are large, winged and fire-breathing creatures, reminiscent of true "
 "dragons. On average, an adult drake stands around three meters tall and "
@@ -5413,17 +5012,17 @@ msgstr ""
 #. [race]: id=khalifate
 #: data/core/units.cfg:203
 msgid "race^Khalifate Human"
-msgstr "哈里发"
+msgstr "沙漠"
 
 #. [race]: id=khalifate
 #: data/core/units.cfg:204
 msgid "race+female^Khalifate Human"
-msgstr "哈里发"
+msgstr "沙漠"
 
 #. [race]: id=khalifate
 #: data/core/units.cfg:205
 msgid "race+plural^Khalifate"
-msgstr "哈里发"
+msgstr "沙漠"
 
 #. [race]: id=khalifate
 #: data/core/units.cfg:206
@@ -5630,65 +5229,6 @@ msgstr "兽人"
 #. [race]: id=orc
 #: data/core/units.cfg:287
 #, fuzzy
-#| msgid ""
-#| "In appearance, orcs are half men and half beasts. They are taller, "
-#| "sturdier and stronger than humans. They are warlike, savage, and cruel by "
-#| "nature. Their blood is darker and thicker than that of normal humans and "
-#| "they have little care for personal hygiene or their personal appearance. "
-#| "Although Orcs are violent even among themselves creatures, they are pack-"
-#| "oriented; an orc never travels long or lives alone in groups smaller than "
-#| "half a dozen.\n"
-#| "\n"
-#| "<header>text='Society'</header>\n"
-#| "Almost every orc are a member of a tribe or a clan. Relations between "
-#| "neighboring tribes are usually violent, except in cases of a mutual enemy "
-#| "threatens their existence or prospects of great plunder override mutual "
-#| "animosity. Occasionally, a single strong chieftain may emerge to lead "
-#| "multiple tribes from time to time, usually through intimidation of "
-#| "followers. An orc tribe in times of peace tends to focus almost solely on "
-#| "strengthening itself in preparation for the next armed conflict. Orcs are "
-#| "known to possess a crude system of writing — usually in blood — although "
-#| "it’s most commonly used to trade insults or threats among tribal "
-#| "leaders.\n"
-#| "\n"
-#| "Orc societies are based on little else but strength; might makes right, "
-#| "and a leader leads and survives only as long as no one manages to wrest "
-#| "the title from him. A constant struggle for power simmers among potential "
-#| "tribal chiefs. An orcish leader rarely lives more than a handful of years "
-#| "to enjoy his absolute authority before being killed for his position — "
-#| "although history knows some notable exceptions. Orcs hold no particular "
-#| "honor code and while indisputable raw strength is usually the preferred "
-#| "method of displaying power, assassination, poisoning and backstabbing are "
-#| "completely viable means to further one’s own goals.\n"
-#| "\n"
-#| "Orcs mostly live in rural areas, often in foothills or mountainous "
-#| "regions, sometimes in caves. They grow no crops nor keep livestock, but "
-#| "are competent hunters as a result of their physical stature and "
-#| "brutality. Due to their large numbers they are capable of hunting an area "
-#| "virtually clean of anything larger than rodents in relatively short "
-#| "period of time. Due to this and their unstable leadership, orcish tribes "
-#| "tend to lead a semi-nomadic lifestyle, never settling in one region for "
-#| "too long. The larger tribes may establish themselves firmly in an area "
-#| "for years or even decades and build large encampments almost resembling "
-#| "cities, but even these are easily dismantled and abandoned if there is a "
-#| "need to relocate the horde.\n"
-#| "\n"
-#| "The oldest known orcs have been around 50 to 60 years of age, but very "
-#| "few individuals ever live to see over two or three decades before meeting "
-#| "their end either in war or by the hand of one of their kin. The oldest "
-#| "orcs are often shamans, which are perhaps the only ones most of their "
-#| "kind sees as being trustworthy and neutral. The origins of this custom "
-#| "are unknown, as the shamans do not directly contribute much to orcish "
-#| "societies but only act as advisors — not something orcs tend to otherwise "
-#| "tolerate. Shamans are in many ways the opposite of most other orcs: they "
-#| "are often physically withered and frail in comparison and lack skill in "
-#| "battle. Despite their reliance on raw strength, not nearly all orcs are "
-#| "destined to grow to possess any. Many orcs are born smaller and weaker "
-#| "than the rest, and already almost as newborns are put in their place by "
-#| "their stronger siblings. The stronger ones will routinely grab most of "
-#| "the food and thus grow stronger still, while their weaker siblings do "
-#| "not. Many of these individuals tend to specialize in other skills, like "
-#| "archery or assassination."
 msgid ""
 "In appearance, orcs are half men and half beasts. They are taller, sturdier "
 "and stronger than humans. They are warlike, savage, and cruel by nature. "
@@ -5803,42 +5343,6 @@ msgstr "巨魔"
 #. [race]: id=troll
 #: data/core/units.cfg:306
 #, fuzzy
-#| msgid ""
-#| "Trolls are ancient creatures, one of the oldest known races known to "
-#| "inhabit the Great Continent. They are large, slow, simple-minded, and "
-#| "live extremely long lives inside deep caves or atop high mountains. The "
-#| "most unique characteristic of trolls is an internal vitality that "
-#| "sustains and heals them from within. As a result they live very different "
-#| "lives from almost any known creature. Trolls have few real needs: they "
-#| "require little food or water, and thus they have little incentive to "
-#| "pursue much besides protection from those who are hostile towards them. "
-#| "This in turn means they rarely have to worry about anything and can spend "
-#| "much of their time sleeping or in contemplation. Trolls have a curious "
-#| "affinity with nature. They do not relate with living things like elves "
-#| "do, but instead with earth and stone. They are also somewhat curious of "
-#| "their surroundings and many younger whelps even enjoy traveling and "
-#| "seeing the world. As trolls grow older they tend to become increasingly "
-#| "passive, gradually losing interest in their environment and spending more "
-#| "of their time sleeping in a quiet, familiar corner of their home cave. "
-#| "This is until they finally pass away as their bodies themselves slowly "
-#| "turn into lifeless statues of stone.\n"
-#| "\n"
-#| "Trolls are seen by many as being little more than yet another race of "
-#| "savage monsters. This common misconception is in part perpetuated by orcs "
-#| "to persuade trolls to join their armies. Because they are rather simple "
-#| "and do not understand the ways of other races or sometimes can even tell "
-#| "them apart, it is usually easy for an orcish band to convince a group of "
-#| "trolls that by joining them they get to exact revenge on those that have "
-#| "before hunted them. These new recruits are then directed to attack "
-#| "whoever the orcs themselves are currently in conflict with, whether "
-#| "previously a foe of the trolls or not, accumulating even more enemies for "
-#| "the misled trolls. The most common enemy of trolls are dwarves, and the "
-#| "animosity between these two races is ancient.\n"
-#| "\n"
-#| "<header>text='Geography'</header>\n"
-#| "Trolls have inhabited the mountains of the Great Continent longer than "
-#| "the dwarves who migrated there. Trolls are a common sight on the mountain "
-#| "ranges north and east of Wesnoth, and wherever Orcish hordes travel."
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple-minded, and live extremely "
@@ -6053,625 +5557,16 @@ msgstr ""
 
 #: data/lua/feeding.lua:27 data/lua/feeding.lua:40
 msgid "+1 max HP"
-msgstr "+1 最大生命值"
+msgstr "+1最大生命值"
 
-#: src/help/help.cpp:183
+#: src/help/help.cpp:182
 msgid "Close"
 msgstr "关闭"
 
-#: src/help/help.cpp:186
+#: src/help/help.cpp:185
 msgid "The Battle for Wesnoth Help"
 msgstr "韦诺之战帮助"
 
-#: src/help/help.cpp:241
+#: src/help/help.cpp:240
 msgid "Parse error when parsing help text: "
-msgstr "分析帮助文本时出现语法错误："
-
-#~ msgid "Intelligent"
-#~ msgstr "聪慧"
-
-#~ msgid "Quick"
-#~ msgstr "迅捷"
-
-#~ msgid "Resilient"
-#~ msgstr "坚韧"
-
-#~ msgid "Strong"
-#~ msgstr "强壮"
-
-#~ msgid "Fearless"
-#~ msgstr "无畏"
-
-#~ msgid "Feral"
-#~ msgstr "野生"
-
-#~ msgid "Loyal"
-#~ msgstr "忠诚"
-
-#~ msgid "trait^Undead"
-#~ msgstr "亡灵"
-
-#~ msgid "trait^Mechanical"
-#~ msgstr "机械"
-
-#~ msgid "trait^Elemental"
-#~ msgstr "元素"
-
-#~ msgid "Dextrous"
-#~ msgstr "灵巧"
-
-#~ msgid "Healthy"
-#~ msgstr "活力"
-
-#~ msgid "Dim"
-#~ msgstr "愚笨"
-
-#~ msgid "Slow"
-#~ msgstr "缓慢"
-
-#~ msgid "Weak"
-#~ msgstr "虚弱"
-
-#~ msgid "trait^Aged"
-#~ msgstr "年长"
-
-#, fuzzy
-#~| msgid ""
-#~| "In combat, your units will inevitably take damage. When a unit "
-#~| "<ref>dst='experience_and_advancement' text='advances'</ref>, it will "
-#~| "heal fully. This can happen as you finish fighting an enemy, whether it "
-#~| "is your turn or not. Wesnoth offers several other ways for your units to "
-#~| "heal, all of which take place at the beginning of your turn, before you "
-#~| "take action."
-#~ msgid ""
-#~ "In combat, your units will inevitably take damage. When a unit "
-#~ "<ref>dst='advancement' text='advances'</ref>, it will heal fully. This "
-#~ "can happen as you finish fighting an enemy, whether it is your turn or "
-#~ "not. Wesnoth offers several other ways for your units to heal, all of "
-#~ "which take place at the beginning of your turn, before you take action."
-#~ msgstr ""
-#~ "战斗中，您的单位不可避免地会受到伤害。当一个单位"
-#~ "<ref>dst='experience_and_advancement' text='升级'</ref>时，其生命值会完全"
-#~ "回复。这会在您和敌人单位的战斗结束后发生，而不论当前是否是您的回合。韦诺还"
-#~ "为您的单位提供了几种其他的治疗方式，这些治疗全部在您的回合的开始，而您还没"
-#~ "有进行操作时发生。"
-
-#~ msgid "Caste"
-#~ msgstr "阶层"
-
-#~ msgid ""
-#~ "One of the variant forms of the drake: either be a <ref>dst='unit_Drake "
-#~ "Clasher' text='Clasher'</ref> or a <ref>dst='unit_Drake Fighter' "
-#~ "text='Drake Fighter'</ref>."
-#~ msgstr ""
-#~ "龙人的两种变体中的一种：或者是<ref>dst='unit_Drake Clasher' text='冲击"
-#~ "者'</ref>，或者是<ref>dst='unit_Drake Fighter' text='战士'</ref>。"
-
-#~ msgid "Aerie"
-#~ msgstr "龙穴"
-
-#~ msgid ""
-#~ "A very large castle-like structure that is home to a <ref>dst='flight' "
-#~ "text='flight'</ref>. It contains the <ref>dst='breeding_pen' "
-#~ "text='breeding pens'</ref>."
-#~ msgstr ""
-#~ "<ref>dst='flight' text='龙群'</ref>的家，一座非常巨大的类似城堡的建筑物。"
-#~ "其中有<ref>dst='breeding_pen' text='饲育栏'</ref>。"
-
-#~ msgid "Breeding Pen"
-#~ msgstr "饲育栏"
-
-#~ msgid ""
-#~ "The portion of an <ref>dst='aerie' text='aerie'</ref> where the "
-#~ "nonsentient <ref>dst='breeder' text='Breeders'</ref> live under the "
-#~ "<ref>dst='dominant' text='Dominant'</ref>’s eye."
-#~ msgstr ""
-#~ "<ref>dst='aerie' text='龙穴'</ref>的一部分，在这里，无意识的"
-#~ "<ref>dst='breeder' text=饲育者'</ref>们在<ref>dst='dominant' text='统御"
-#~ "者'</ref>的眼皮底下生活。"
-
-#~ msgid "Breeding Cycle"
-#~ msgstr "饲育周期"
-
-#~ msgid ""
-#~ "The time that passes between one <ref>dst=egg text='egg'</ref> laying to "
-#~ "the next."
-#~ msgstr ""
-#~ "从产下一个<ref>dst=egg text='蛋'</ref>到产下另一个蛋之间所经历的时间。"
-
-#~ msgid "World Ocean"
-#~ msgstr "世界洋"
-
-#~ msgid ""
-#~ "The World Ocean is the name of the open seas that surround the "
-#~ "archipelago of <ref>dst='morogor' text='Morogor'</ref>. The drakes "
-#~ "believe it to end at the <ref>dst='abyss' text='Abyss'</ref>, a vast and "
-#~ "deadly waterfall."
-#~ msgstr ""
-#~ "世界洋是环绕着<ref>dst='morogor' text='莫罗戈'</ref>群岛的开阔的大海的名"
-#~ "字。龙人们相信大洋在<ref>dst='abyss' text='深渊'</ref>终结，那是一片宽阔而"
-#~ "致命的瀑布。"
-
-#~ msgid "New Continent"
-#~ msgstr "新大陆"
-
-#~ msgid ""
-#~ "The great continent to the east of <ref>dst='morogor' text='Morogor'</"
-#~ "ref>. Its existence is unknown to the drakes until the flight of Galun."
-#~ msgstr ""
-#~ "位于<ref>dst='morogor' text='莫罗戈'</ref>东方的大陆。在伽朗部落到达之前，"
-#~ "其存在并不为龙人们所知。"
-
-#~ msgid "Abyss"
-#~ msgstr "深渊"
-
-#~ msgid ""
-#~ "In the cosmology of the Drakes, a vast and deadly waterfall where the "
-#~ "ocean falls off the world-disc."
-#~ msgstr ""
-#~ "在龙人的宇宙观里，这是一片宽广而致命的大瀑布，大洋在此坠落，消失于世。"
-
-#~ msgid "Spiral Path"
-#~ msgstr "灵魂之路"
-
-#~ msgid ""
-#~ "A quasi-secret organization among the drakes devoted to avoiding a "
-#~ "Malthusian final war. See also <ref>dst='straight_path' text='Straight "
-#~ "Path'</ref>"
-#~ msgstr ""
-#~ "一个准秘密的龙人组织，致力于阻止一场可能发生的马尔萨斯式的大决战。也请参见"
-#~ "<ref>dst='straight_path' text='正统之路'</ref>。"
-
-#~ msgid "Straight Path"
-#~ msgstr "正统之路"
-
-#~ msgid ""
-#~ "The drakish tradition of perpetual expansion and conquest. This term is "
-#~ "mostly used by the members of the <ref>dst='spiral_path' text='Spiral "
-#~ "Path'</ref>."
-#~ msgstr ""
-#~ "永不停止扩张与征服的龙人传统。这个术语通常是由<ref>dst='spiral_path' text="
-#~ "灵魂之路'</ref>的成员们使用的。"
-
-#~ msgid "Dominant"
-#~ msgstr "统御者"
-
-#~ msgid ""
-#~ "The <ref>dst='aspirant' text='Aspirant'</ref> that emerges as the drake "
-#~ "leader, the only drake in the tribe that is allowed to reproduce with the "
-#~ "<ref>dst='breeder' text='breeders'</ref>. Rarely, he may confer breeding "
-#~ "privileges on others."
-#~ msgstr ""
-#~ "成为龙人领袖的<ref>dst='aspirant' text='渴求者'</ref>，他是在部落中唯一一"
-#~ "个可以和<ref>dst='breeder' text='饲育者'</ref>繁衍后代的龙人。在很不常见的"
-#~ "情况下，他也可能把繁殖的权限赐予其他龙人。"
-
-#~ msgid "Vulcaniad"
-#~ msgstr "火山周期"
-
-#~ msgid ""
-#~ "The (irregular) period between consecutive eruptions of "
-#~ "<ref>dst='mount_morogor' text='Mount Morogor'</ref>. The "
-#~ "<ref>dst='long_count' text='Long Count'</ref> calendar is based upon it."
-#~ msgstr ""
-#~ "<ref>dst='mount_morogor' text='莫罗戈山'</ref>的（不规则的）喷发间歇期。 "
-#~ "<ref>dst='long_count' text='长时历'</ref>便是以此为基础的。"
-
-#~ msgid "Recorder"
-#~ msgstr "记录者"
-
-#~ msgid ""
-#~ "A Recorder is a Drakish scrollkeeper who has mastered the drakish "
-#~ "<ref>dst='drakish_script' text='script'</ref>. The recorders are the only "
-#~ "<ref>dst='caste' text='caste'</ref> of Drake not determined by biology: "
-#~ "they recruit their members from all of the other castes."
-#~ msgstr ""
-#~ "记录者是龙人的书记员，他们已经完全掌握了龙人的<ref>dst='drakish_script' "
-#~ "text='文字'</ref>。记录者<ref>dst='caste' text='阶层'</ref>是龙人阶层中唯"
-#~ "一一个不取决于遗传的：他们从所有其他的阶层中征募新成员。"
-
-#~ msgid "Laying"
-#~ msgstr "产卵"
-
-#~ msgid ""
-#~ "A portion of the <ref>dst='breeding_cycle' text='breeding cycle'</ref>."
-#~ msgstr "<ref>dst='breeding_cycle' text='饲育期'</ref>的一部分。"
-
-#~ msgid "Hatching"
-#~ msgstr "孵化"
-
-#~ msgid "Hatchling"
-#~ msgstr "幼仔"
-
-#~ msgid ""
-#~ "A young drake that has not yet seen another generation hatch. The younger "
-#~ "of the current generation of hatchlings are the most aggressive is the "
-#~ "behavior of the <ref>dst='flight' text='flight'</ref>."
-#~ msgstr ""
-#~ "最年幼的一代龙人。在每一代的幼仔中，总是越小的幼仔越具有侵略性，这是"
-#~ "<ref>dst='flight' text='龙群'</ref>的特点。"
-
-#~ msgid "Fledgling"
-#~ msgstr "雏龙"
-
-#~ msgid ""
-#~ "A young drake that has seen another generation hatch. If the "
-#~ "<ref>dst='flight' text='flight'</ref> can afford the loss of a generation "
-#~ "they start the <ref>dst='swarming' text='Swarming'</ref>."
-#~ msgstr ""
-#~ "稍大的一代幼年龙人，已有更幼小的一代后辈出生。如果<ref>dst='flight' "
-#~ "text='龙群'</ref>可以承受一下子失去一整代幼仔的代价的话，他们便会开始 "
-#~ "<ref>dst='swarming' text='云游'</ref>。"
-
-#~ msgid "Breeder"
-#~ msgstr "饲育者"
-
-#~ msgid ""
-#~ "The female drake. They are rare since <ref>dst='egg' text='eggs'</ref> "
-#~ "that become breeders have to be handled with extra care. The number of "
-#~ "breeders is also limited by the amounts of non-breeders around, since "
-#~ "breeders can't take care of their food for themselves when laying. Drake "
-#~ "breeders become fertile after the next <ref>dst='hatching' "
-#~ "text='hatching'</ref>."
-#~ msgstr ""
-#~ "雌性龙人。她们的数量很稀少，因为将孵化出饲育者的<ref>dst='egg' text='龙"
-#~ "蛋'</ref>必须要特别小心地照料才行。饲育者的数量也被周围非饲育者的数量所限"
-#~ "制，这是由于在产卵时，她们不能自己觅食。在下一次<ref>dst='hatching' "
-#~ "text='孵化'</ref>之后，龙人饲育者们会变得多产。"
-
-#~ msgid "Egg, Drake"
-#~ msgstr "龙人的蛋"
-
-#~ msgid ""
-#~ "The <ref>dst=caste text='caste'</ref> the <ref>dst='hatchling' "
-#~ "text='Hatchling'</ref> will belongs to is determined by the time it is "
-#~ "laid and to some extent the ambient temperature."
-#~ msgstr ""
-#~ "<ref>dst='hatchling' text='幼仔'</ref>所属的<ref>dst=caste text='阶层'</"
-#~ "ref>取决于它被产下的时间，也部分取决于周遭的温度。"
-
-#~ msgid "Flight"
-#~ msgstr "龙群"
-
-#~ msgid ""
-#~ "Tribe of Drakes, lives in an <ref>dst='aerie' text='Aerie'</ref>, "
-#~ "controlling a hunting range. Each tribe has one <ref>dst='dominant' "
-#~ "text='Dominant'</ref>, who confers mating privileges."
-#~ msgstr ""
-#~ "龙人的部落，他们生活在一个<ref>dst='aerie' text='龙穴'</ref>中，控制着一片"
-#~ "狩猎区。每个部落都有一位 <ref>dst='dominant' text='统御者'</ref>，他有权赐"
-#~ "予其他龙人交配的权利。"
-
-#~ msgid "Aspirant"
-#~ msgstr "渴求者"
-
-#~ msgid ""
-#~ "Male drake that has passed through a hormonal metamorphosis that makes "
-#~ "him able to mate with the <ref>dst='breeder' text='breeders'</ref>. The "
-#~ "secretion of the hormone is caused by hunt and combat actions in which "
-#~ "the drake is involved."
-#~ msgstr ""
-#~ "发育了的雄性龙人，他因此能够和<ref>dst='breeder' text='饲育者'</ref>们结"
-#~ "合。荷尔蒙的分泌是由这只龙人参与的狩猎和战斗行动所造成的。"
-
-#~ msgid "Ascendant"
-#~ msgstr "飞升者"
-
-#~ msgid ""
-#~ "The drake name for a true <ref>dst='unit_Fire Dragon' text='dragon'</ref>."
-#~ msgstr "龙人们对真正的<ref>dst='unit_Fire Dragon' text='巨龙'</ref>的称谓。"
-
-#~ msgid "Intendant"
-#~ msgstr "监督者"
-
-#~ msgid ""
-#~ "One of the <ref>dst='aspirant' text='Aspirant'</ref> lieutenants of a "
-#~ "<ref>dst='dominant' text='Dominant'</ref>. Traditionally he has one of "
-#~ "each <ref>dst=caste text='caste'</ref> other than his own. Additional "
-#~ "'Intendants' are sometimes designated for special duties. Intendants are "
-#~ "likeliest to be granted mating privileges, especially after a notable "
-#~ "service."
-#~ msgstr ""
-#~ "<ref>dst='dominant' text='统御者'</ref>手下的<ref>dst='aspirant' text='渴"
-#~ "求者'</ref>副官之一。传统上，除了统御者自己所在的<ref>dst=caste text='阶"
-#~ "层'</ref>之外，他在每个阶层里都有一位副官。有时候，另外的一些“监督者”会被"
-#~ "指派给特殊的使命。监督者们是最可能被赐予交配权限的，尤其是当他们立下显赫的"
-#~ "功劳之后。"
-
-#~ msgid "Swarm"
-#~ msgstr "游子"
-
-#~ msgid ""
-#~ "The <ref>dst='swarmlings' text='Swarmlings'</ref> that have left the "
-#~ "<ref>dst='aerie' text='aerie'</ref> to found a new one."
-#~ msgstr ""
-#~ "离开<ref>dst='aerie' text='龙穴'</ref>去寻找新家园的<ref>dst='swarmlings' "
-#~ "text='游子'</ref>。"
-
-#~ msgid "Swarming"
-#~ msgstr "云游"
-
-#~ msgid ""
-#~ " The <ref>dst='flight' text='flight'</ref> for a new drake "
-#~ "<ref>dst='aerie' text='aerie'</ref> that recurs every "
-#~ "<ref>dst='breeding_cycle' text='breeding cycle'</ref>. See "
-#~ "<ref>dst='swarm' text='Swarm'</ref>"
-#~ msgstr ""
-#~ " 为了寻找新<ref>dst='aerie' text='龙穴'</ref>的<ref>dst='flight' text='远"
-#~ "游'</ref>，每个<ref>dst='breeding_cycle' text='饲育周期'</ref>中都会重复一"
-#~ "次。请参见<ref>dst='swarm' text='游子'</ref>"
-
-#~ msgid "Runners"
-#~ msgstr "逃跑者"
-
-#~ msgid "Drakish term for escaped slaves hunted as game."
-#~ msgstr "龙人语中用来指逃跑后被当作猎物猎取的奴隶。"
-
-#~ msgid "Mount Morogor"
-#~ msgstr "莫罗戈山"
-
-#~ msgid ""
-#~ "Volcanic mountain on the central island of the archipelago "
-#~ "<ref>dst='morogor' text='Morogor'</ref>."
-#~ msgstr "位于<ref>dst='morogor' text='莫罗戈'</ref>群岛的中心岛上的火山。"
-
-#~ msgid "Long Count"
-#~ msgstr "长时历"
-
-#~ msgid ""
-#~ "The drake calender based on <ref>dst='vulcaniad' text='Vulcaniad'</ref> "
-#~ "and <ref>dst=breeding_cycle text='Breeding cycles'</ref>."
-#~ msgstr ""
-#~ "基于<ref>dst='vulcaniad' text='火山周期'</ref> and "
-#~ "<ref>dst=breeding_cycle text='饲育周期'</ref>的龙人历法。"
-
-#~ msgid "Long Pig"
-#~ msgstr "长猪"
-
-#~ msgid ""
-#~ "South Seas pidgin for human meat, used to translate a Drakish word with "
-#~ "the same meaning."
-#~ msgstr ""
-#~ "在南海商旅的黑话中，指的是人肉。这是用来翻译一个含义相同的龙人语汇的。"
-
-#~ msgid "Ceramics"
-#~ msgstr "制陶术"
-
-#~ msgid ""
-#~ "The drakes work metal, but are are masters in the craftsmanship of making "
-#~ "ceramics. Only the <ref>dst='unit_Drake Burner' text='burners'</ref> can "
-#~ "generate the amount of heat to cure the pieces to full strength."
-#~ msgstr ""
-#~ "陶瓷是龙人最常用的材料。他们是制陶术的大师。只有<ref>dst='unit_Drake "
-#~ "Burner' text='灼烧者'</ref>们才能产生出足够的热量，将陶瓷锻造到最坚固的程"
-#~ "度。"
-
-#~ msgid "Drakish, script"
-#~ msgstr "龙人文字"
-
-#~ msgid ""
-#~ "The scripted language of the drakes. Stored on <ref>dst='ceramic' "
-#~ "text='ceramic'</ref> tablets by members of the <ref>dst='recorder' "
-#~ "text='Recorder'</ref> vocation."
-#~ msgstr ""
-#~ "龙人的书面语。由<ref>dst='recorder' text='记录者'</ref>这一职阶的成员们书"
-#~ "写在<ref>dst='ceramic' text='陶瓷'</ref>版上。"
-
-#~ msgid "Drakish, language"
-#~ msgstr "龙人语"
-
-#~ msgid "The language spoken by the drakes."
-#~ msgstr "龙人所说的语言"
-
-#~ msgid "Factions"
-#~ msgstr "派系"
-
-#~ msgid "Overview"
-#~ msgstr "概述"
-
-#~ msgid "Fundamentals of Gameplay"
-#~ msgstr "游戏基础"
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "To begin with, it’s best to click the <bold>text='Tutorial'</bold> button "
-#~ "at the main menu. This will take you to the interactive tutorial, which "
-#~ "will teach you the basics of Wesnoth. After this, it is recommended that "
-#~ "you play the Heir to the Throne campaign first — click "
-#~ "<bold>text='Campaign'</bold> then <italic>text='Heir to the Throne'</"
-#~ "italic>. As <italic>text='Battle for Wesnoth'</italic> can be quite "
-#~ "challenging, you may wish to start on easy."
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "刚开始玩时，建议您在主菜单中点击<bold>text='教程'</bold>按钮。这将带您进入"
-#~ "互动教程，该模式将教给您韦诺的基本玩法。在这之后，建议您先玩“王座之承”战役"
-#~ "——先点击<bold>text='战役'</bold>，再点击<italic>text='王座之承'</italic>。"
-#~ "由于<italic>text='韦诺之战'</italic>可能具有很强的挑战性，您可能会希望从"
-#~ "<italic>text='容易'</italic>级别开始游戏。"
-
-#~ msgid ""
-#~ "These pages outline all you need to know to play <italic>text='Battle for "
-#~ "Wesnoth'</italic>. They cover how to play and the basic mechanics behind "
-#~ "the game. As you play the game, new information is added to these pages "
-#~ "as you come across new aspects of the game. For more detailed information "
-#~ "on special situations and exceptions, please follow the links included."
-#~ msgstr ""
-#~ "这些页面概述了玩<italic>text='韦诺之战'</italic>所需要的所有知识，包括基本"
-#~ "玩法与游戏背后的基本机制。当您在游戏时遇到新的要素时，相应的新信息也会添加"
-#~ "到这些页面中。欲了解特殊情形与例外情况的详细信息，请点击文中包含的链接。"
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<italic>text='Campaigns'</italic> consist of multiple scenarios that "
-#~ "follow on from each other, telling a story. In a campaign, you often need "
-#~ "to play more carefully, preserving your best troops so that they can be "
-#~ "used again in later scenarios in the campaign."
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<italic>text='战役'</italic>讲述着一个故事，是由一系列环环相扣的场景组成"
-#~ "的。在玩战役时，您常常得更小心谨慎，确保最精良的部队存活下来，使他们能够在"
-#~ "战役中的下一场景里继续战斗。"
-
-#~ msgid ""
-#~ "The game takes place over a series of battles, called "
-#~ "<italic>text='scenarios'</italic>. Each scenario pits your troops against "
-#~ "the troops of one or more adversaries. You can play against the computer, "
-#~ "or with friends who each take turns sitting at the computer (hotseat "
-#~ "play). If your computer is connected to a computer network, you can also "
-#~ "play against other people connected to that network. If your computer has "
-#~ "a connection to the Internet, you can play against other people across "
-#~ "the Internet."
-#~ msgstr ""
-#~ "本游戏由一系列的战斗，也称为<italic>text='场景'</italic>所组成。在每个场景"
-#~ "中，您的部队都将和一个或更多的对手作战。您可以和电脑对战，或和朋友在同一台"
-#~ "电脑上对战（热座模式）。如果您的电脑在局域网内，您也可以和局域网内的其他人"
-#~ "对战。如果您的电脑能连接因特网，则可以和因特网上的其他人对战。"
-
-#~ msgid "Experience and Advancement"
-#~ msgstr "经验值与升级"
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<italic>text='Healthy'</italic> units have 1 HP plus 1 HP per level more "
-#~ "than usual and rest heal the usual 2 HP after each turn they did not "
-#~ "fight. They also suffer a quarter less damage from poison."
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<italic>text='活力'</italic>单位天生拥有1点附加生命值，每次升级所增加的生"
-#~ "命值也多1点，并且在每个无战斗的回合后都会休息并恢复2点生命值。他们中毒时受"
-#~ "到的伤害也减少1/4。"
-
-#~ msgid "Help"
-#~ msgstr "帮助"
-
-#~ msgid "<header>text='Units having this special attack'</header>"
-#~ msgstr "<header>text='拥有这种特殊攻击的单位'</header>"
-
-#~ msgid "<header>text='Units having this ability'</header>"
-#~ msgstr "<header>text='拥有此技能的单位'</header>"
-
-#~ msgid "Leaders:"
-#~ msgstr "领袖： "
-
-#~ msgid "Recruits:"
-#~ msgstr "征募： "
-
-#~ msgid "Era:"
-#~ msgstr "时代："
-
-#~ msgid "Factions:"
-#~ msgstr "派系："
-
-#~ msgid "Factions are only used in multiplayer"
-#~ msgstr "派系只在多人游戏中使用"
-
-#~ msgid "Base Terrain: "
-#~ msgstr "基础地形"
-
-#~ msgid "level"
-#~ msgstr "等级"
-
-#~ msgid "Advances from: "
-#~ msgstr "升级自："
-
-#~ msgid "Base unit: "
-#~ msgstr "基类单位："
-
-#~ msgid "Base units: "
-#~ msgstr "基类单位："
-
-#~ msgid "Variations: "
-#~ msgstr "衍生兵种："
-
-#~ msgid "race^Miscellaneous"
-#~ msgstr "其他"
-
-#~ msgid "Race: "
-#~ msgstr "种族："
-
-#~ msgid "Abilities: "
-#~ msgstr "技能："
-
-#~ msgid "Ability Upgrades: "
-#~ msgstr "技能升级："
-
-#~ msgid "HP: "
-#~ msgstr "生命值："
-
-#~ msgid "Moves: "
-#~ msgstr "移动："
-
-#~ msgid "Vision: "
-#~ msgstr "视野："
-
-#~ msgid "Jamming: "
-#~ msgstr "干扰："
-
-#~ msgid "Cost: "
-#~ msgstr "价格："
-
-#~ msgid "Alignment: "
-#~ msgstr "立场："
-
-#~ msgid "Required XP: "
-#~ msgstr "升级所需经验值："
-
-#~ msgid "unit help^Attacks"
-#~ msgstr "攻击"
-
-#~ msgid "unit help^Name"
-#~ msgstr "名称"
-
-#~ msgid "Type"
-#~ msgstr "类型"
-
-#~ msgid "Strikes"
-#~ msgstr "输出"
-
-#~ msgid "Range"
-#~ msgstr "范围"
-
-#~ msgid "Special"
-#~ msgstr "特性"
-
-#~ msgid "Resistances"
-#~ msgstr "抗性"
-
-#~ msgid "Attack Type"
-#~ msgstr "攻击类型"
-
-#~ msgid "Resistance"
-#~ msgstr "抗性"
-
-#~ msgid "Terrain"
-#~ msgstr "地形"
-
-#~ msgid "Defense"
-#~ msgstr "闪避率"
-
-#~ msgid "Movement Cost"
-#~ msgstr "移动点数耗费"
-
-#~ msgid "Vision Cost"
-#~ msgstr "视野耗费"
-
-#~ msgid "Jamming Cost"
-#~ msgstr "干扰耗费"
-
-#~ msgid " < Back"
-#~ msgstr " < 后退"
-
-#~ msgid "Forward >"
-#~ msgstr "前进 >"
-
-#~ msgid "Reference to unknown topic: "
-#~ msgstr "引用了未知主题："
-
-#~ msgid "corrupted original file"
-#~ msgstr "原始文件出错"
+msgstr "分析帮助文本时出现分析错误："

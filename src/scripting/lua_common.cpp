@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -383,7 +383,7 @@ std::string register_gettext_metatable(lua_State *L)
 {
 	luaL_newmetatable(L, gettextKey);
 
-	static luaL_Reg const callbacks[] = {
+	static luaL_Reg const callbacks[] {
 		{ "__call", 	    &impl_gettext},
 		{ nullptr, nullptr }
 	};
@@ -402,7 +402,7 @@ std::string register_tstring_metatable(lua_State *L)
 {
 	luaL_newmetatable(L, tstringKey);
 
-	static luaL_Reg const callbacks[] = {
+	static luaL_Reg const callbacks[] {
 		{ "__concat", 	    &impl_tstring_concat},
 		{ "__gc",           &impl_tstring_collect},
 		{ "__tostring",	    &impl_tstring_tostring},
@@ -426,7 +426,7 @@ std::string register_vconfig_metatable(lua_State *L)
 {
 	luaL_newmetatable(L, vconfigKey);
 
-	static luaL_Reg const callbacks[] = {
+	static luaL_Reg const callbacks[] {
 		{ "__gc",           &impl_vconfig_collect},
 		{ "__index",        &impl_vconfig_get},
 		{ "__len",          &impl_vconfig_size},
@@ -898,7 +898,7 @@ bool luaW_checkvariable(lua_State *L, variable_access_create& v, int n)
 				if (luaW_toconfig(L, n, cfg)) {
 					return true;
 				}
-				// no break
+				FALLTHROUGH;
 			}
 		default:
 		default_explicit:

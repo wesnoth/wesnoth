@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2016 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2012 - 2017 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -32,24 +32,34 @@ addon_tracking_info get_addon_tracking_info(const addon_info& addon)
 
 	if(is_addon_installed(id)) {
 		if(t.can_publish) {
-			// Try to obtain the version number from the .pbl first.
-			config pbl;
-			get_addon_pbl_info(id, pbl);
+			if(addon.local_only) {
+				t.installed_version = addon.version;
+				//t.remote_version = version_info();
+			} else {
+				t.remote_version = addon.version;
 
-			if(pbl.has_attribute("version")) {
-				t.installed_version = pbl["version"].str();
+				// Try to obtain the version number from the .pbl first.
+				config pbl = get_addon_pbl_info(id);
+
+				if(pbl.has_attribute("version")) {
+					t.installed_version = pbl["version"].str();
+				} else {
+					t.installed_version = get_addon_version_info(id);
+				}
 			}
 		} else {
 			// We normally use the _info.cfg version instead.
 			t.installed_version = get_addon_version_info(id);
+			t.remote_version = addon.version;
 		}
-
-		t.remote_version = addon.version;
 
 		if(t.remote_version == t.installed_version) {
 			t.state = ADDON_INSTALLED;
 		} else if(t.remote_version > t.installed_version) {
 			t.state = ADDON_INSTALLED_UPGRADABLE;
+		} else if(t.remote_version == version_info()) {
+			// Remote version not set.
+			t.state = ADDON_INSTALLED_LOCAL_ONLY;
 		} else /* if(remote_version < t.installed_version) */ {
 			t.state = ADDON_INSTALLED_OUTDATED;
 		}

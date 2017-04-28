@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -24,7 +24,7 @@
 #include "pathfind/teleport.hpp"
 #include "play_controller.hpp"
 #include "game_preferences.hpp"
-#include "random_new_deterministic.hpp"
+#include "random_deterministic.hpp"
 #include "reports.hpp"
 #include "scripting/game_lua_kernel.hpp"
 #include "teambuilder.hpp"
@@ -203,9 +203,9 @@ void game_state::init(const config& level, play_controller & pc)
 
 	{
 		//sync traits of start units and the random start time.
-		random_new::set_random_determinstic deterministic(gamedata_.rng());
+		randomness::set_random_determinstic deterministic(gamedata_.rng());
 
-		tod_manager_.resolve_random(*random_new::generator);
+		tod_manager_.resolve_random(*randomness::generator);
 
 		for(team_builder_ptr tb_ptr : team_builders)
 		{
@@ -342,7 +342,7 @@ bool game_state::can_recruit_on(const map_location& leader_loc, const map_locati
 		// that comes to pass, just return.
 		return false;
 	}
-	const team & view_team = board_.teams()[side-1];
+	const team & view_team = board_.get_team(side);
 
 	if ( view_team.shrouded(recruit_loc) )
 		return false;

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -69,9 +69,10 @@ namespace game_config
 	extern std::vector<server_info> server_list;
 
 	extern std::string title_music,
-			lobby_music,
-			default_victory_music,
-			default_defeat_music;
+		lobby_music;
+
+	extern std::vector<std::string> default_defeat_music;
+	extern std::vector<std::string> default_victory_music;
 
 	namespace colors {
 	extern std::string unmoved_orb_color,

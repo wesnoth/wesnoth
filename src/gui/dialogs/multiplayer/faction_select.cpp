@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2016 by the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2016 - 2017 by the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -138,13 +138,13 @@ void faction_select::on_faction_select(window& window)
 
 		if(unit) {
 			const std::string icon = formatter() << unit->image() << "~RC(" << unit->flag_rgb() << ">" << tc_color_ << ")";
-			leaders.push_back(config_of("label", unit->type_name())("icon", icon));
+			leaders.emplace_back(config_of("label", unit->type_name())("icon", icon));
 		} else if(leader == "random") {
-			leaders.push_back(config_of("label", _("Random"))("icon", "units/random-dice.png"));
+			leaders.emplace_back(config_of("label", _("Random"))("icon", ng::random_enemy_picture));
 		} else if(leader == "null") {
-			leaders.push_back(config_of("label", font::unicode_em_dash));
+			leaders.emplace_back(config_of("label", font::unicode_em_dash));
 		} else {
-			leaders.push_back(config_of("label", "?"));
+			leaders.emplace_back(config_of("label", "?"));
 		}
 	}
 
@@ -196,7 +196,7 @@ void faction_select::on_gender_select(window& window)
 
 void faction_select::update_leader_image(window& window)
 {
-	std::string leader_image = "units/random-dice.png";
+	std::string leader_image = ng::random_enemy_picture;
 
 	if(const unit_type* ut = unit_types.find(flg_manager_.current_leader())) {
 		const unit_type& utg = ut->get_gender_unit_type(flg_manager_.current_gender());

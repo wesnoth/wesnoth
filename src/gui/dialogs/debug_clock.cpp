@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2010 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -149,11 +149,11 @@ void debug_clock::update_time(const bool force)
 	}
 
 	if(clock_) {
-		for(auto & canvas : clock_->get_canvas())
+		for(auto & canvas : clock_->get_canvases())
 		{
-			canvas.set_variable("hour", variant(hour_stamp));
-			canvas.set_variable("minute", variant(minute_stamp));
-			canvas.set_variable("second", variant(second_stamp));
+			canvas.set_variable("hour", wfl::variant(hour_stamp));
+			canvas.set_variable("minute", wfl::variant(minute_stamp));
+			canvas.set_variable("second", wfl::variant(second_stamp));
 		}
 		clock_->set_is_dirty(true);
 	}

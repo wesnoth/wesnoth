@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2017 by the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -20,7 +20,7 @@
 color_t color_t::from_rgba_string(const std::string& c)
 {
 	if(c.empty()) {
-		return {0,0,0,0};
+		return null_color();
 	}
 
 	std::vector<std::string> fields = utils::split(c);
@@ -41,7 +41,7 @@ color_t color_t::from_rgba_string(const std::string& c)
 color_t color_t::from_rgb_string(const std::string& c)
 {
 	if(c.empty()) {
-		return {0,0,0,0};
+		return null_color();
 	}
 
 	std::vector<std::string> fields = utils::split(c);

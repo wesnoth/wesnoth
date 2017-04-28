@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2009 - 2017 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -55,11 +55,11 @@ struct target {
 };
 
 
-class attack_analysis : public game_logic::formula_callable
+class attack_analysis : public wfl::action_callable
 {
 public:
 	attack_analysis() :
-		game_logic::formula_callable(),
+		wfl::action_callable(),
 		target(),
 		movements(),
 		target_value(0.0),
@@ -85,8 +85,8 @@ public:
 				 const move_map& enemy_dstsrc, double aggression);
 
 	double rating(double aggression, const readonly_context& ai_obj) const;
-	variant get_value(const std::string& key) const;
-	void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
+	wfl::variant get_value(const std::string& key) const override;
+	void get_inputs(wfl::formula_input_vector& inputs) const override;
 
 	bool attack_close(const map_location& loc) const;
 
@@ -138,6 +138,7 @@ public:
 	/** Is true if the units involved in this attack sequence are surrounded. */
 	bool is_surrounded;
 
+	wfl::variant execute_self(wfl::variant ctxt) override;
 };
 
 

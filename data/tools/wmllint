@@ -1013,7 +1013,7 @@ def is_translatable(key):
         "defeat_string", "gold_carryover_string", "notes_string", "text", "title",
         "title2", "tooltip", "translator_comment", "user_team_name"
         )
-    return key in translatables or (key.startswith(("type_", "range_")) and key != "type_tree")
+    return key in translatables or (key.startswith(("type_", "range_")) and key != "type_adv_tree")
 
 # This is a list of mainline campaigns, used to convert UMC from
 # "data/campaigns" to "data/add-ons" while not clobbering mainline.
@@ -1027,6 +1027,7 @@ mainline = ("An_Orcish_Incursion",
             "Liberty",
             "Northern_Rebirth",
             "Sceptre_of_Fire",
+            "Secrets_of_the_Ancients",
             "Son_Of_The_Black_Eye",
             "The_Hammer_of_Thursagan",
             "The_Rise_Of_Wesnoth",
@@ -2922,7 +2923,8 @@ directory.""")
                 if match:
                     aliases = match.group()
                     for (old, new) in aliaschanges:
-                        aliases = aliases.replace(old, new)
+                        old = r'\b' + old + r'\b'
+                        aliases = re.sub(old, new, aliases)
                     line = line.replace(match.group(), aliases)
         # Perform tag renaming for 1.5.  Note: this has to happen before
         # the sanity check, which assumes [unit] has already been

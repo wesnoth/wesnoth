@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 - 2016 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2010 - 2017 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -120,12 +120,10 @@ void simple_item_selector::pre_show(window& window)
 
 void simple_item_selector::post_show(window& window)
 {
-	if(get_retval() != window::OK) {
-		return;
+	if(get_retval() == window::OK || single_button_) {
+		index_ = find_widget<listbox>(&window, "listbox", false).get_selected_row();
 	}
-
-	listbox& list = find_widget<listbox>(&window, "listbox", false);
-	index_ = list.get_selected_row();
 }
+
 } // namespace dialogs
 } // namespace gui2

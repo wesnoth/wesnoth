@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -29,7 +29,7 @@ lua_map_generator::lua_map_generator(const config & cfg)
 	, lk_()
 	, generator_data_(cfg)
 {
-	const char* required[] = {"id", "config_name", "create_map"};
+	const char* required[] {"id", "config_name", "create_map"};
 	for (std::string req : required) {
 		if (!cfg.has_attribute(req)) {
 			if(req == "create_map" && cfg.has_attribute("create_scenario")) {

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -53,7 +53,7 @@ const int team::default_team_gold_ = 100;
 
 // Update this list of attributes if you change what is used to define a side
 // (excluding those attributes used to define the side's leader).
-const std::set<std::string> team::attributes = {"ai_config",
+const std::set<std::string> team::attributes {"ai_config",
 	"carryover_add", "carryover_percentage", "color", "controller", "current_player", "defeat_condition", "flag",
 	"flag_icon", "fog", "fog_data", "gold", "hidden", "income",
 	"no_leader", "objectives", "objectives_changed", "persistent", "lost",
@@ -62,7 +62,7 @@ const std::set<std::string> team::attributes = {"ai_config",
 	"suppress_end_turn_confirmation",
 	"team_name", "user_team_name", "side_name", "village_gold", "village_support", "is_local",
 	// Multiplayer attributes.
-	"player_id", "action_bonus_count", "allow_changes", "allow_player", "color_lock",
+	"player_id", "is_host","action_bonus_count", "allow_changes", "allow_player", "color_lock",
 	"countdown_time", "disallow_observers", "faction",
 	"faction_from_recruit", "faction_name", "gold_lock", "income_lock",
 	"leader", "random_leader", "team_lock", "terrain_liked",
@@ -275,7 +275,10 @@ void team::team_info::write(config& cfg) const
 	cfg["carryover_bonus"] = carryover_bonus;
 	cfg["carryover_gold"] = carryover_gold;
 
-	cfg.add_child("variables", variables);
+	if(!variables.empty()) {
+		cfg.add_child("variables", variables);
+	}
+
 	cfg.add_child("ai", ai::manager::to_config(side));
 }
 

@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Addon">
+      <UniqueIdentifier>{3f44d190-c2f6-4d26-9902-e9f9452dac22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Server">
+      <UniqueIdentifier>{4053cbc0-8a41-470e-aa62-45ea801ed834}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Campaign_Server">
+      <UniqueIdentifier>{1e0c6b2f-b2e7-44db-b7f6-81ee59a6caa3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\addon\validation.hpp">
+      <Filter>Addon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\server\simple_wml.hpp">
+      <Filter>Server</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\server\server_base.hpp">
+      <Filter>Server</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\campaign_server\control.hpp">
+      <Filter>Campaign_Server</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\campaign_server\addon_utils.hpp">
+      <Filter>Campaign_Server</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\campaign_server\blacklist.hpp">
+      <Filter>Campaign_Server</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\campaign_server\campaign_server.hpp">
+      <Filter>Campaign_Server</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\hash.hpp" />
+    <ClInclude Include="..\..\src\md5.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\addon\validation.cpp">
+      <Filter>Addon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\server\simple_wml.cpp">
+      <Filter>Server</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\server\server_base.cpp">
+      <Filter>Server</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\campaign_server\addon_utils.cpp">
+      <Filter>Campaign_Server</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\campaign_server\blacklist.cpp">
+      <Filter>Campaign_Server</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\campaign_server\campaign_server.cpp">
+      <Filter>Campaign_Server</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\hash.cpp" />
+    <ClCompile Include="..\..\src\md5.cpp" />
+  </ItemGroup>
+</Project>

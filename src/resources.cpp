@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Copyright (C) 2009 - 2017 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -31,8 +31,8 @@ namespace resources
 	fake_unit_manager    *fake_units = nullptr;
 	pathfind::manager    *tunnels = nullptr;
 	actions::undo_list   *undo_stack = nullptr;
+	unit_map             *units = nullptr;
 	std::shared_ptr<wb::manager> whiteboard = std::shared_ptr<wb::manager>();
 	game_classification  *classification = nullptr;
-	const mp_game_settings *mp_settings = nullptr;
 	bool                 simulation_ = false;
 }

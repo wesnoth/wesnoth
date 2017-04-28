@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -110,10 +110,10 @@ public:
 
 protected:
 	/** Inherited from modal_dialog. */
-	void pre_show(window& window);
+	virtual void pre_show(window& window) override;
 
 	/** Inherited from modal_dialog. */
-	void post_show(window& window);
+	virtual void post_show(window& window) override;
 
 private:
 	/** The title for the dialog. */
@@ -138,9 +138,9 @@ private:
 	/** Whether to enable formatting markup for the dialog message. */
 	bool message_use_markup_;
 
-	struct tbutton_status
+	struct button_status
 	{
-		tbutton_status();
+		button_status();
 
 		button* ptr;
 		std::string caption;
@@ -149,10 +149,10 @@ private:
 	};
 
 	/** Holds a pointer to the buttons. */
-	std::vector<tbutton_status> buttons_;
+	std::vector<button_status> buttons_;
 
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
-	virtual const std::string& window_id() const;
+	virtual const std::string& window_id() const override;
 };
 } // namespace dialogs
 

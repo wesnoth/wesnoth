@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -91,8 +91,8 @@ std::vector<color_t> palette(const color_range& cr)
 	for(int i = 255; i != 0; i--) {
 		const int j = 255 - i;
 
-		temp.emplace_back(0,0,i);
-		temp.emplace_back(j,j,255);
+		temp.emplace_back(static_cast<uint8_t>(0), static_cast<uint8_t>(0), static_cast<uint8_t>(i));
+		temp.emplace_back(static_cast<uint8_t>(j), static_cast<uint8_t>(j), static_cast<uint8_t>(255));
 	}
 
 	// Use recolor function to generate list of possible colors.

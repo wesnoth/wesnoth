@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-11-05 23:28 UTC\n"
+"POT-Creation-Date: 2017-03-23 08:11+0100\n"
 "PO-Revision-Date: 2007-12-11 22:43+0100\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
@@ -485,14 +485,14 @@ msgstr ""
 msgid "Civil Disobedience"
 msgstr "Civil olydnad"
 
+#. [side]: type=Highwayman, id=Baldras
 #. [side]: type=Bandit_Peasant, id=Baldras
 #. [side]
 #. [side]: type=Bandit, id=Baldras
-#. [side]: type=Highwayman_Peasant, id=Relana
 #. [side]: type=General, id=Lord Maddock
 #. [side]: type=Rogue, id=Hans
+#. [side]: type=Highwayman_Peasant, id=Relana
 #. [side]: type=Shadow Lord, id=Helicrom
-#. [side]: type=Highwayman, id=Baldras
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:26
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:61
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:27
@@ -515,12 +515,12 @@ msgstr ""
 msgid "Tarwen"
 msgstr "Tarwen"
 
+#. [side]: type=Royal Guard, id=Archarel
+#. [side]: type=Iron Mauler, id=Linneus
 #. [side]: type=Cavalier, id=Tarwen
 #. [side]: type=General, id=Kestrel
 #. [side]: type=Master Bowman, id=Quentin
 #. [side]
-#. [side]: type=Royal Guard, id=Archarel
-#. [side]: type=Iron Mauler, id=Linneus
 #. [side]: type=General, id=Dommel
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:40
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:80
@@ -2515,14 +2515,8 @@ msgstr ""
 "skeletthästar med hjälp av vanhelig magi. Deras syfte är att sprida skräck "
 "och förstörelse."
 
-#. [attack]: type=blade
-#: data/campaigns/Liberty/units/Bone_Knight.cfg:30
-#: data/campaigns/Liberty/units/Skeleton_Rider.cfg:40
-msgid "axe"
-msgstr "yxa"
-
 #. [attack]: type=impact
-#: data/campaigns/Liberty/units/Bone_Knight.cfg:39
+#: data/campaigns/Liberty/units/Bone_Knight.cfg:41
 msgid "trample"
 msgstr "trampa"
 
@@ -2547,18 +2541,13 @@ msgstr ""
 "själva bli dödsriddare. Under tiden så lär de sig en hel del av "
 "dödsriddarnas färdigheter, bland annat att kommendera undersåtar."
 
-#. [attack]: type=blade
-#: data/campaigns/Liberty/units/Death_Squire.cfg:31
-msgid "sword"
-msgstr "svärd"
-
 #. [unit_type]: id=Rogue Mage, race=human
 #: data/campaigns/Liberty/units/Rogue_Mage.cfg:5
 msgid "Rogue Mage"
 msgstr "Rövarmagiker"
 
 #. [unit_type]: id=Rogue Mage, race=human
-#: data/campaigns/Liberty/units/Rogue_Mage.cfg:18
+#: data/campaigns/Liberty/units/Rogue_Mage.cfg:17
 msgid ""
 "Some mages are thrown out of the mage’s guild for attempting to practice "
 "forbidden arts. Now completely outside the law, these rogue mages do "
@@ -2572,14 +2561,8 @@ msgstr ""
 "mer formell utbildning, men deras magi är ändock dödlig, samtidigt som deras "
 "leverne gett dem viss skicklighet med kortsvärd."
 
-#. [attack]: type=blade
-#: data/campaigns/Liberty/units/Rogue_Mage.cfg:23
-#: data/campaigns/Liberty/units/Shadow_Mage.cfg:32
-msgid "short sword"
-msgstr "kortsvärd"
-
 #. [attack]: type=cold
-#: data/campaigns/Liberty/units/Rogue_Mage.cfg:32
+#: data/campaigns/Liberty/units/Rogue_Mage.cfg:33
 msgid "ice blast"
 msgstr "isstöt"
 
@@ -2589,7 +2572,7 @@ msgid "Shadow Lord"
 msgstr "Skuggfurste"
 
 #. [unit_type]: id=Shadow Lord, race=human
-#: data/campaigns/Liberty/units/Shadow_Lord.cfg:22
+#: data/campaigns/Liberty/units/Shadow_Lord.cfg:21
 msgid ""
 "Few humans fathom the secrets of light and dark magic and retain their "
 "sanity. Those that can master that balance become Shadow Lords, fully "
@@ -2604,18 +2587,18 @@ msgstr ""
 "och sina underlydande."
 
 #. [attack]: type=blade
-#: data/campaigns/Liberty/units/Shadow_Lord.cfg:34
+#: data/campaigns/Liberty/units/Shadow_Lord.cfg:33
 msgid "astral blade"
 msgstr "andeklinga"
 
 #. [attack]: type=cold
-#: data/campaigns/Liberty/units/Shadow_Lord.cfg:45
-#: data/campaigns/Liberty/units/Shadow_Mage.cfg:44
+#: data/campaigns/Liberty/units/Shadow_Lord.cfg:44
+#: data/campaigns/Liberty/units/Shadow_Mage.cfg:45
 msgid "shadow bolt"
 msgstr "skuggblixt"
 
 #. [attack]: type=impact
-#: data/campaigns/Liberty/units/Shadow_Lord.cfg:57
+#: data/campaigns/Liberty/units/Shadow_Lord.cfg:56
 msgid "shadow blast"
 msgstr "skuggstöt"
 
@@ -2625,7 +2608,7 @@ msgid "Shadow Mage"
 msgstr "Skuggmagiker"
 
 #. [unit_type]: id=Shadow Mage, race=human
-#: data/campaigns/Liberty/units/Shadow_Mage.cfg:21
+#: data/campaigns/Liberty/units/Shadow_Mage.cfg:20
 msgid ""
 "Years of violence and brutality to support the study of forbidden magical "
 "arts have turned the shadow mages into feared fighters. Now completely "
@@ -2847,6 +2830,15 @@ msgid ""
 "left dead and the few survivors borne away to unknown fates. It was a bitter "
 "doom, but as Asheviere’s grip tightened they would live to see worse."
 msgstr ""
+
+#~ msgid "axe"
+#~ msgstr "yxa"
+
+#~ msgid "sword"
+#~ msgstr "svärd"
+
+#~ msgid "short sword"
+#~ msgstr "kortsvärd"
 
 #~ msgid "Holy Ankh"
 #~ msgstr "Helig Ankh"

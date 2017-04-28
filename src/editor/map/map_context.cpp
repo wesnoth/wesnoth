@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Tomasz Sniatowski <kailoran@gmail.com>
+   Copyright (C) 2008 - 2017 by Tomasz Sniatowski <kailoran@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -24,7 +24,6 @@
 #include "gettext.hpp"
 #include "map/exception.hpp"
 #include "map/label.hpp"
-#include "resources.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
 #include "terrain/type_data.hpp"
@@ -59,7 +58,7 @@ editor_team_info::editor_team_info(const team& t)
 
 const size_t map_context::max_action_stack_size_ = 100;
 
-map_context::map_context(const editor_map& map, const display& disp, bool pure_map, const config& schedule)
+map_context::map_context(const editor_map& map, bool pure_map, const config& schedule)
 	: filename_()
 	, map_data_key_()
 	, embedded_(false)
@@ -81,7 +80,7 @@ map_context::map_context(const editor_map& map, const display& disp, bool pure_m
     , victory_defeated_(true)
 	, random_time_(false)
 	, active_area_(-1)
-	, labels_(disp, nullptr)
+	, labels_(nullptr)
 	, units_()
 	, teams_()
 	, tod_manager_(new tod_manager(schedule))
@@ -91,7 +90,7 @@ map_context::map_context(const editor_map& map, const display& disp, bool pure_m
 {
 }
 
-map_context::map_context(const config& game_config, const std::string& filename, const display& disp)
+map_context::map_context(const config& game_config, const std::string& filename)
 	: filename_(filename)
 	, map_data_key_()
 	, embedded_(false)
@@ -113,7 +112,7 @@ map_context::map_context(const config& game_config, const std::string& filename,
 	, victory_defeated_(true)
 	, random_time_(false)
 	, active_area_(-1)
-	, labels_(disp, nullptr)
+	, labels_(nullptr)
 	, units_()
 	, teams_()
 	, tod_manager_(new tod_manager(game_config.find_child("editor_times", "id", "default")))
@@ -309,12 +308,11 @@ void map_context::load_scenario(const config& game_config)
 
 	for(const config& item : scenario.child_range("item")) {
 		const map_location loc(item);
-		overlays_.insert(std::pair<map_location,
-				overlay>(loc, overlay(item) ));
+		overlays_.emplace(loc, overlay(item));
 	}
 
 	for(const config& music : scenario.child_range("music")) {
-		music_tracks_.insert(std::pair<std::string, sound::music_track>(music["name"], sound::music_track(music)));
+		music_tracks_.emplace(music["name"], sound::music_track(music));
 	}
 
 	int i = 1;

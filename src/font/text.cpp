@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -100,7 +100,7 @@ pango_text::~pango_text()
 	surface_.assign(nullptr);
 }
 
-surface pango_text::render() const
+surface& pango_text::render() const
 {
 	this->rerender();
 	return surface_;
@@ -778,7 +778,7 @@ bool pango_text::set_markup_helper(const std::string& text)
 	}
 
 	/* Replacement worked, still warn the user about the error. */
-	ERR_GUI_L << "pango_text::" << __func__
+	WRN_GUI_L << "pango_text::" << __func__
 			<< " text '" << text
 			<< "' has unescaped ampersands '&', escaped them.\n";
 

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2017 the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -30,7 +30,7 @@
 inline bool chars_equal_insensitive(char a, char b) { return tolower(a) == tolower(b); }
 inline bool chars_less_insensitive(char a, char b) { return tolower(a) < tolower(b); }
 
-namespace util {
+namespace utils {
 
 // NOTE: remove once we have C++17 support and can use std::clamp
 template<typename T>
@@ -73,6 +73,6 @@ inline bool contains(const Container & container, const Value & value)
 	return detail::contains_impl<Container, Value>::eval(container, value);
 }
 
-}//namespace util
+}//namespace utils
 
 #endif

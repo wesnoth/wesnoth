@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-11-05 23:23 UTC\n"
+"POT-Creation-Date: 2017-03-23 08:11+0100\n"
 "PO-Revision-Date: 2016-01-07 12:02+0100\n"
 "Last-Translator: Liam Tailor <liado@wp.pl>\n"
 "Language-Team: none\n"
@@ -20,6 +20,440 @@ msgstr ""
 "X-Poedit-Basepath: /usr/local/share/wesnoth/\n"
 "X-Generator: Poedit 1.5.7\n"
 "X-Poedit-SearchPath-0: /usr/local/share/wesnoth\n"
+
+#. [attack]: type=impact
+#. [attack]: type=arcane
+#: data/campaigns/Dead_Water/units/Brawler.cfg:23
+#: data/campaigns/Dead_Water/units/Citizen.cfg:23
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Divine_Avatar.cfg:25
+#: data/campaigns/Under_the_Burning_Suns/units/monsters/Darawf.cfg:23
+#: data/campaigns/Under_the_Burning_Suns/units/monsters/Small_Mudcrawler.cfg:16
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Divine_Avatar.cfg:25
+#: data/core/units/monsters/Giant_Mudcrawler.cfg:31
+#: data/core/units/monsters/Yeti.cfg:37
+#: data/core/units/trolls/Rocklobber.cfg:25
+#: data/core/units/trolls/Troll_Shaman.cfg:36
+#: data/core/units/trolls/Whelp.cfg:24
+#: data/core/units/undead/Skeleton_Archer.cfg:37
+msgid "fist"
+msgstr "pięść"
+
+#. [attack]: type=impact
+#: data/campaigns/Dead_Water/units/Brawler.cfg:31
+#: data/core/units/monsters/Fire_Dragon.cfg:40
+msgid "tail"
+msgstr "ogon"
+
+#. [attack]: type=impact
+#: data/campaigns/Dead_Water/units/Kraken.cfg:31
+#: data/core/units/monsters/Cuttle_Fish.cfg:28
+#: data/core/units/monsters/Tentacle.cfg:29
+msgid "tentacle"
+msgstr "macka"
+
+#. [attack]: type=pierce
+#: data/campaigns/Dead_Water/units/Kraken.cfg:42
+#: data/core/units/monsters/Cuttle_Fish.cfg:39
+msgid "ink"
+msgstr "atrament"
+
+#. [attack]: type=impact
+#: data/campaigns/Dead_Water/units/Soldier_King.cfg:36
+#: data/campaigns/Dead_Water/units/Warrior_King.cfg:37
+#: data/campaigns/Dead_Water/units/Young_King.cfg:32
+#: data/campaigns/The_South_Guard/units/Horseman_Commander.cfg:42
+#: data/campaigns/The_South_Guard/units/Mounted_General.cfg:43
+#: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Guardian.cfg:27
+#: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Sentinel.cfg:28
+#: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Warden.cfg:27
+#: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:23
+#: data/core/units/khalifate/Faris.cfg:29
+#: data/core/units/khalifate/Hadaf.cfg:22
+#: data/core/units/khalifate/Hakim.cfg:25
+#: data/core/units/khalifate/Jawal.cfg:23
+#: data/core/units/khalifate/Khaiyal.cfg:38
+#: data/core/units/khalifate/Mufariq.cfg:31
+#: data/core/units/khalifate/Qanas.cfg:21 data/core/units/khalifate/Rami.cfg:22
+#: data/core/units/khalifate/Saree.cfg:22
+#: data/core/units/khalifate/Tabib.cfg:27
+msgid "mace"
+msgstr "buzdygan"
+
+#. [attack]: type=impact
+#: data/campaigns/Delfadors_Memoirs/units/Mage_Commander.cfg:21
+#: data/campaigns/Delfadors_Memoirs/units/Mage_Leader.cfg:19
+#: data/campaigns/Delfadors_Memoirs/units/Mage_Magister.cfg:24
+#: data/campaigns/Descent_Into_Darkness/units/Frontier_Baroness.cfg:64
+#: data/campaigns/Secrets_of_the_Ancients/units/Orcish_Shaman.cfg:27
+#: data/campaigns/Son_Of_The_Black_Eye/units/Novice_Orcish_Shaman.cfg:26
+#: data/campaigns/Son_Of_The_Black_Eye/units/Old_Orcish_Shaman.cfg:26
+#: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:26
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Lady.cfg:64
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Leader.cfg:65
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Outcast.cfg:64
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Druid.cfg:27
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Shaman.cfg:28
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Druid.cfg:27
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Mystic.cfg:27
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Shaman.cfg:27
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Shyde.cfg:28
+#: data/core/units/elves/Druid.cfg:28 data/core/units/elves/Enchantress.cfg:25
+#: data/core/units/elves/Shaman.cfg:28 data/core/units/elves/Sorceress.cfg:28
+#: data/core/units/humans/Mage.cfg:28 data/core/units/humans/Mage_Arch.cfg:35
+#: data/core/units/humans/Mage_Elder.cfg:26
+#: data/core/units/humans/Mage_Great.cfg:29
+#: data/core/units/humans/Mage_Red.cfg:28
+#: data/core/units/humans/Mage_Silver.cfg:35
+#: data/core/units/humans/Mage_White.cfg:44
+#: data/core/units/merfolk/Diviner.cfg:45
+#: data/core/units/merfolk/Enchantress.cfg:23
+#: data/core/units/merfolk/Initiate.cfg:25
+#: data/core/units/merfolk/Priestess.cfg:42
+#: data/core/units/saurians/Augur.cfg:24 data/core/units/saurians/Oracle.cfg:36
+#: data/core/units/saurians/Soothsayer.cfg:25
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:48
+msgid "staff"
+msgstr "kostur"
+
+#. [attack]: type=impact
+#: data/campaigns/Delfadors_Memoirs/units/Wose_Shaman.cfg:33
+#: data/core/units/wose/Ancient.cfg:34 data/core/units/wose/Elder.cfg:34
+#: data/core/units/wose/Wose.cfg:29
+msgid "crush"
+msgstr "zgniecenie"
+
+#. [attack]: type=impact
+#: data/campaigns/Delfadors_Memoirs/units/Wose_Shaman.cfg:42
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Shaman.cfg:38
+#: data/core/units/elves/Enchantress.cfg:35 data/core/units/elves/Shaman.cfg:37
+#: data/core/units/elves/Sorceress.cfg:38
+msgid "entangle"
+msgstr "oplątanie"
+
+#. [attack]: type=blade
+#: data/campaigns/Descent_Into_Darkness/units/Apprentice_Mage.cfg:23
+#: data/campaigns/Descent_Into_Darkness/units/Apprentice_Necromancer.cfg:22
+#: data/campaigns/Descent_Into_Darkness/units/Dark_Mage.cfg:23
+#: data/campaigns/Liberty/units/Rogue_Mage.cfg:23
+#: data/campaigns/Liberty/units/Shadow_Mage.cfg:32
+#: data/core/units/humans/Loyalist_Bowman.cfg:22
+#: data/core/units/orcs/Crossbowman.cfg:23 data/core/units/orcs/Slurbow.cfg:28
+msgid "short sword"
+msgstr "krótki miecz"
+
+#. [attack]: type=cold
+#: data/campaigns/Descent_Into_Darkness/units/Apprentice_Necromancer.cfg:31
+#: data/campaigns/Descent_Into_Darkness/units/Dark_Mage.cfg:35
+#: data/campaigns/Under_the_Burning_Suns/units/undead/Spider_Lich.cfg:35
+#: data/core/units/undead/Necro_Dark_Adept.cfg:29
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:57
+#: data/core/units/undead/Necromancer.cfg:38
+msgid "chill wave"
+msgstr "fala chłodu"
+
+#. [attack]: type=arcane
+#: data/campaigns/Descent_Into_Darkness/units/Apprentice_Necromancer.cfg:43
+#: data/campaigns/Descent_Into_Darkness/units/Dark_Mage.cfg:47
+#: data/campaigns/Secrets_of_the_Ancients/units/Necro_Ancient_Lich.cfg:54
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:101
+#: data/campaigns/Under_the_Burning_Suns/units/undead/Spider_Lich.cfg:47
+#: data/core/units/undead/Necro_Ancient_Lich.cfg:59
+#: data/core/units/undead/Necro_Dark_Adept.cfg:41
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:69
+#: data/core/units/undead/Necro_Lich.cfg:59
+#: data/core/units/undead/Necromancer.cfg:50
+msgid "shadow wave"
+msgstr "fala cienia"
+
+#. [attack]: type=impact
+#: data/campaigns/Descent_Into_Darkness/units/Frontier_Baroness.cfg:73
+#: data/campaigns/Secrets_of_the_Ancients/units/Delinquent.cfg:36
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Lady.cfg:73
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Leader.cfg:74
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Outcast.cfg:73
+#: data/core/units/humans/Outlaw.cfg:31
+#: data/core/units/humans/Outlaw_Footpad.cfg:33
+#: data/core/units/humans/Outlaw_Fugitive.cfg:36
+#: data/core/units/trolls/Rocklobber.cfg:34
+msgid "sling"
+msgstr "proca"
+
+#. [attack]: type=blade
+#: data/campaigns/Eastern_Invasion/units/Bone_Knight.cfg:31
+#: data/campaigns/Eastern_Invasion/units/Skeleton_Rider.cfg:41
+#: data/campaigns/Liberty/units/Bone_Knight.cfg:31
+#: data/campaigns/Liberty/units/Skeleton_Rider.cfg:41
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Fighter.cfg:32
+#: data/campaigns/Under_the_Burning_Suns/units/undead/Undead_Horseman.cfg:42
+#: data/core/units/dwarves/Explorer.cfg:33
+#: data/core/units/dwarves/Fighter.cfg:41
+#: data/core/units/dwarves/Pathfinder.cfg:36
+#: data/core/units/dwarves/Pathfinder.cfg:44
+#: data/core/units/dwarves/Scout.cfg:28 data/core/units/dwarves/Scout.cfg:36
+#: data/core/units/khalifate/Batal.cfg:22
+#: data/core/units/khalifate/Jundi.cfg:21
+#: data/core/units/khalifate/Muharib.cfg:21
+#: data/core/units/undead/Skele_Deathblade.cfg:53
+#: data/core/units/undead/Skele_Draug.cfg:30
+#: data/core/units/undead/Skele_Revenant.cfg:31
+#: data/core/units/undead/Skeleton.cfg:49
+msgid "axe"
+msgstr "topór"
+
+#. [attack]: type=blade
+#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:24
+#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:23
+#: data/core/units/orcs/Ruler.cfg:27 data/core/units/orcs/Sovereign.cfg:28
+#: data/core/units/orcs/Warlord.cfg:24 data/core/units/orcs/Warrior.cfg:22
+msgid "greatsword"
+msgstr "wielki miecz"
+
+#. [attack]: type=impact
+#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:33
+#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:32
+#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:32
+#: data/campaigns/tutorial/units/Quintain.cfg:25
+#: data/core/units/humans/Loyalist_Iron_Mauler.cfg:26
+#: data/core/units/humans/Loyalist_Shock_Trooper.cfg:23
+#: data/core/units/humans/Mage_of_Light.cfg:47
+msgid "flail"
+msgstr "kiścień"
+
+#. [attack]: type=blade
+#. [attack]: type=arcane
+#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:23
+#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:33
+#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:130
+#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:25
+#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:21
+#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:26
+#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:33
+#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:87
+#: data/campaigns/Heir_To_The_Throne/units/Sea_Orc.cfg:36
+#: data/campaigns/Liberty/units/Death_Squire.cfg:32
+#: data/campaigns/Sceptre_of_Fire/units/Haldric_II.cfg:26
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:27
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Fighter.cfg:23
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:28
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Corrupted_Elf.cfg:23
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Archer.cfg:40
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Avenger.cfg:35
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Captain.cfg:34
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Champion.cfg:24
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Fighter.cfg:22
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Hero.cfg:23
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Horseman.cfg:39
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Hunter.cfg:25
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Marksman.cfg:23
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Marshal.cfg:33
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Outrider.cfg:36
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Prowler.cfg:27
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Ranger.cfg:37
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Rider.cfg:35
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Scout.cfg:36
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Sentinel.cfg:26
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Sharpshooter.cfg:31
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:322
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Nym.cfg:22
+#: data/campaigns/Under_the_Burning_Suns/units/humans/Human_Commander.cfg:40
+#: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Hunter.cfg:25
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Archer.cfg:29
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Flanker.cfg:26
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Horseman.cfg:29
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Marksman.cfg:30
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Outrider.cfg:30
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Ranger.cfg:27
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Scout.cfg:26
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:423
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:477
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:531
+#: data/campaigns/tutorial/units/Fighter.cfg:25
+#: data/campaigns/tutorial/units/Fighteress.cfg:26
+#: data/core/units/elves/Archer.cfg:23 data/core/units/elves/Avenger.cfg:38
+#: data/core/units/elves/Captain.cfg:34 data/core/units/elves/Champion.cfg:24
+#: data/core/units/elves/Fighter.cfg:22 data/core/units/elves/Hero.cfg:22
+#: data/core/units/elves/High_Lord.cfg:45 data/core/units/elves/Lord.cfg:24
+#: data/core/units/elves/Marksman.cfg:29 data/core/units/elves/Marshal.cfg:33
+#: data/core/units/elves/Outrider.cfg:32 data/core/units/elves/Ranger.cfg:35
+#: data/core/units/elves/Rider.cfg:34 data/core/units/elves/Scout.cfg:32
+#: data/core/units/elves/Sharpshooter.cfg:24
+#: data/core/units/humans/Horse_Knight.cfg:23
+#: data/core/units/humans/Horse_Paladin.cfg:39
+#: data/core/units/humans/Loyalist_Cavalryman.cfg:44
+#: data/core/units/humans/Loyalist_Dragoon.cfg:36
+#: data/core/units/humans/Loyalist_Lieutenant.cfg:27
+#: data/core/units/humans/Loyalist_Longbowman.cfg:25
+#: data/core/units/humans/Loyalist_Master_Bowman.cfg:25
+#: data/core/units/humans/Loyalist_Sergeant.cfg:27
+#: data/core/units/humans/Loyalist_Swordsman.cfg:26
+#: data/core/units/humans/Woodsman_Ranger.cfg:44
+#: data/core/units/khalifate/Arif.cfg:21 data/core/units/khalifate/Ghazi.cfg:21
+#: data/core/units/khalifate/Khalid.cfg:28
+#: data/core/units/khalifate/Shuja.cfg:22 data/core/units/nagas/Fighter.cfg:30
+#: data/core/units/nagas/Myrmidon.cfg:29 data/core/units/nagas/Warrior.cfg:27
+#: data/core/units/orcs/Grunt.cfg:28 data/core/units/orcs/Leader.cfg:27
+msgid "sword"
+msgstr "miecz"
+
+#. [attack]: type=pierce
+#. [attack]: type=fire
+#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:34
+#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:35
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:36
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:37
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Archer.cfg:49
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Avenger.cfg:47
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Captain.cfg:43
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Champion.cfg:33
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Fighter.cfg:31
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Hero.cfg:32
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Horseman.cfg:48
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Marshal.cfg:42
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Outrider.cfg:45
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Ranger.cfg:49
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Rider.cfg:44
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Scout.cfg:45
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:331
+#: data/campaigns/Under_the_Burning_Suns/units/humans/Human_Commander.cfg:49
+#: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Hunter.cfg:34
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Archer.cfg:39
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Marksman.cfg:40
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:432
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:486
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:540
+#: data/core/units/elves/Archer.cfg:32 data/core/units/elves/Avenger.cfg:47
+#: data/core/units/elves/Captain.cfg:43 data/core/units/elves/Champion.cfg:33
+#: data/core/units/elves/Fighter.cfg:31 data/core/units/elves/Hero.cfg:31
+#: data/core/units/elves/Marshal.cfg:42 data/core/units/elves/Outrider.cfg:41
+#: data/core/units/elves/Ranger.cfg:44 data/core/units/elves/Rider.cfg:43
+#: data/core/units/elves/Scout.cfg:41
+#: data/core/units/humans/Loyalist_Bowman.cfg:31
+#: data/core/units/humans/Woodsman.cfg:37
+#: data/core/units/humans/Woodsman_Huntsman.cfg:45
+#: data/core/units/humans/Woodsman_Poacher.cfg:42
+#: data/core/units/humans/Woodsman_Ranger.cfg:53
+#: data/core/units/humans/Woodsman_Trapper.cfg:48
+#: data/core/units/khalifate/Hadaf.cfg:30
+#: data/core/units/khalifate/Qanas.cfg:29 data/core/units/orcs/Archer.cfg:33
+#: data/core/units/orcs/Archer.cfg:42 data/core/units/orcs/Warlord.cfg:33
+#: data/core/units/undead/Skele_Banebow.cfg:40
+#: data/core/units/undead/Skele_Bone_Shooter.cfg:38
+#: data/core/units/undead/Skeleton_Archer.cfg:46
+msgid "bow"
+msgstr "łuk"
+
+#. [attack]: type=blade
+#: data/campaigns/Heir_To_The_Throne/units/Sleeping_Gryphon.cfg:30
+#: data/campaigns/Under_the_Burning_Suns/units/monsters/Crab_Man.cfg:23
+#: data/core/units/drakes/Burner.cfg:25
+#: data/core/units/goblins/Direwolf_Rider.cfg:41
+#: data/core/units/gryphons/Gryphon.cfg:28
+#: data/core/units/gryphons/Gryphon_Master.cfg:28
+#: data/core/units/gryphons/Gryphon_Rider.cfg:27
+#: data/core/units/khalifate/Elder_Falcon.cfg:26
+#: data/core/units/khalifate/Falcon.cfg:25
+#: data/core/units/monsters/Skeletal_Dragon.cfg:42
+#: data/core/units/undead/Corpse_Ghoul.cfg:25
+#: data/core/units/undead/Corpse_Necrophage.cfg:26
+#: data/core/units/undead/Spirit_Nightgaunt.cfg:33
+#: data/core/units/undead/Spirit_Shadow.cfg:62
+msgid "claws"
+msgstr "szpony"
+
+#. [attack]: type=blade
+#: data/campaigns/Legend_of_Wesmere/units/ogres/Great_Ogre.cfg:40
+#: data/core/units/ogres/Ogre.cfg:25 data/core/units/ogres/Young_Ogre.cfg:24
+msgid "cleaver"
+msgstr "tasak"
+
+#. [attack]: type=blade
+#: data/campaigns/Secrets_of_the_Ancients/units/Bone_Captain.cfg:34
+#: data/campaigns/Secrets_of_the_Ancients/units/Sailor.cfg:23
+#: data/campaigns/Secrets_of_the_Ancients/units/Sea_Captain.cfg:26
+#: data/core/units/humans/Loyalist_Duelist.cfg:36
+#: data/core/units/humans/Loyalist_Fencer.cfg:52
+#: data/core/units/humans/Loyalist_Master_at_Arms.cfg:31
+msgid "saber"
+msgstr "szabla"
+
+#. [unit_type]: id=Walking Corpse, race=undead
+#. [unit_type]: id=Walking Corpse Shynal, race=undead
+#: data/campaigns/Secrets_of_the_Ancients/units/Corpse_Shynal.cfg:4
+#: data/core/units/undead/Corpse_Walking.cfg:57
+msgid "Walking Corpse"
+msgstr "Chodzący trup"
+
+#. [variation]
+#. [unit_type]: id=Walking Corpse, race=undead
+#. [unit_type]: id=Walking Corpse Shynal, race=undead
+#: data/campaigns/Secrets_of_the_Ancients/units/Corpse_Shynal.cfg:17
+#: data/core/units/undead/Corpse_Walking.cfg:68
+#: data/core/units/undead/Corpse_Walking.cfg:156
+msgid ""
+"Walking Corpses are the bodies of the dead, re-animated by dark magic. "
+"Though not especially dangerous to a trained soldier, the sight of one’s "
+"former comrades amongst their number is frightening to say the least."
+msgstr ""
+"Chodzące trupy to ciała zmarłych przywrócone do życia przez czarną magię. "
+"Choć nie stanowią one w walce poważnego zagrożenia dla wyszkolonego "
+"żołnierza, widok poległych towarzyszy walczących w szeregach wroga "
+"przerażającym doznaniem."
+
+#. [attack]: type=arcane
+#. [attack]: type=impact
+#. [attack]: type=fire
+#. [attack]: type=cold
+#: data/campaigns/Secrets_of_the_Ancients/units/Corpse_Shynal.cfg:35
+#: data/campaigns/Secrets_of_the_Ancients/units/Necro_Ancient_Lich.cfg:30
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Moon_Shyde.cfg:60
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Moon_Singer.cfg:27
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Shyde.cfg:30
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Singer.cfg:27
+#: data/campaigns/Under_the_Burning_Suns/units/undead/Spider_Lich.cfg:23
+#: data/core/units/undead/Corpse_Soulless.cfg:74
+#: data/core/units/undead/Corpse_Walking.cfg:73
+#: data/core/units/undead/Necro_Ancient_Lich.cfg:35
+#: data/core/units/undead/Necro_Lich.cfg:35
+#: data/core/units/undead/Spirit_Ghost.cfg:57
+msgid "touch"
+msgstr "dotyk"
+
+#. [attack]: type=impact
+#: data/campaigns/Secrets_of_the_Ancients/units/Delinquent.cfg:27
+#: data/core/units/humans/Outlaw_Footpad.cfg:24
+#: data/core/units/humans/Outlaw_Ruffian.cfg:22
+#: data/core/units/humans/Outlaw_Thug.cfg:23
+#: data/core/units/merfolk/Entangler.cfg:26
+#: data/core/units/merfolk/Netcaster.cfg:25 data/core/units/trolls/Troll.cfg:24
+msgid "club"
+msgstr "maczuga"
+
+#. [attack]: type=cold
+#: data/campaigns/Secrets_of_the_Ancients/units/Necro_Ancient_Lich.cfg:42
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:89
+#: data/core/units/undead/Necro_Ancient_Lich.cfg:47
+#: data/core/units/undead/Necro_Lich.cfg:47
+msgid "chill tempest"
+msgstr "nawałnica chłodu"
+
+#. [unit_type]: id=Necromancer, race=human
+#. [unit_type]: id=Sacrifice, race=human
+#: data/campaigns/Secrets_of_the_Ancients/units/Necro_Sacrifice.cfg:8
+#: data/core/units/undead/Necromancer.cfg:4
+msgid "Necromancer"
+msgstr "Nekromanta"
+
+#. [attack]: type=cold
+#. [attack]: type=pierce
+#: data/campaigns/Secrets_of_the_Ancients/units/Orcish_Shaman.cfg:36
+#: data/campaigns/Son_Of_The_Black_Eye/units/Novice_Orcish_Shaman.cfg:35
+#: data/campaigns/Son_Of_The_Black_Eye/units/Old_Orcish_Shaman.cfg:35
+#: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:35
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:36
+#: data/core/units/saurians/Augur.cfg:33 data/core/units/saurians/Oracle.cfg:45
+#: data/core/units/saurians/Soothsayer.cfg:34
+msgid "curse"
+msgstr "klątwa"
 
 #. [unit_type]: id=Dwarvish Dragonguard, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Dragonguard, race=dwarf
@@ -85,23 +519,6 @@ msgstr ""
 "sieją postrach w walce wręcz. Najlepiej sprawdzają się w górach i pod "
 "ziemią. Choć są powolni, z nawiązką nadrabiają to siłą i wytrzymałością."
 
-#. [attack]: type=blade
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Fighter.cfg:32
-#: data/core/units/dwarves/Explorer.cfg:33
-#: data/core/units/dwarves/Fighter.cfg:41
-#: data/core/units/dwarves/Pathfinder.cfg:36
-#: data/core/units/dwarves/Pathfinder.cfg:44
-#: data/core/units/dwarves/Scout.cfg:28 data/core/units/dwarves/Scout.cfg:36
-#: data/core/units/khalifate/Batal.cfg:22
-#: data/core/units/khalifate/Jundi.cfg:21
-#: data/core/units/khalifate/Muharib.cfg:21
-#: data/core/units/undead/Skele_Deathblade.cfg:53
-#: data/core/units/undead/Skele_Draug.cfg:30
-#: data/core/units/undead/Skele_Revenant.cfg:31
-#: data/core/units/undead/Skeleton.cfg:49
-msgid "axe"
-msgstr "topór"
-
 #. [attack]: type=impact
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Fighter.cfg:40
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Lord.cfg:37
@@ -137,6 +554,9 @@ msgstr ""
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Guardsman.cfg:28
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Sentinel.cfg:37
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Stalwart.cfg:32
+#: data/campaigns/The_South_Guard/units/Junior_Commander.cfg:31
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Corrupted_Elf.cfg:24
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Fighter.cfg:31
 #: data/core/units/drakes/Clasher.cfg:33 data/core/units/drakes/Thrasher.cfg:31
 #: data/core/units/dwarves/Guardsman.cfg:28
 #: data/core/units/dwarves/Sentinel.cfg:38
@@ -170,6 +590,11 @@ msgstr "włócznia"
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Guardsman.cfg:37
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Sentinel.cfg:46
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Stalwart.cfg:41
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Flagbearer.cfg:44
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Protector.cfg:48
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Rider.cfg:41
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Stalwart.cfg:45
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Vanguard.cfg:43
 #: data/core/units/dwarves/Guardsman.cfg:37
 #: data/core/units/dwarves/Sentinel.cfg:47
 #: data/core/units/dwarves/Stalwart.cfg:42
@@ -291,7 +716,7 @@ msgstr "Krasnoludzki runmistrz"
 #. [unit_type]: id=Dwarvish Rune Lord, race=dwarf
 #. [unit_type]: id=Undead Dwarvish Rune Lord
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:27
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:77
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:79
 #: data/core/units/dwarves/Runemaster.cfg:24
 msgid ""
 "Except for those with almost supernatural skill, the highest rank a "
@@ -308,29 +733,120 @@ msgstr ""
 "niemal niepokonany, gdyż za sprawą run uderzenia wrogów zadają mniejsze "
 "obrażenia, niż można by się spodziewać."
 
-#. [attack]: type=cold
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:87
-#: data/core/units/undead/Necro_Ancient_Lich.cfg:47
-#: data/core/units/undead/Necro_Lich.cfg:47
-msgid "chill tempest"
-msgstr "nawałnica chłodu"
-
-#. [attack]: type=arcane
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:99
-#: data/core/units/undead/Necro_Ancient_Lich.cfg:59
-#: data/core/units/undead/Necro_Dark_Adept.cfg:41
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:69
-#: data/core/units/undead/Necro_Lich.cfg:59
-#: data/core/units/undead/Necromancer.cfg:50
-msgid "shadow wave"
-msgstr "fala cienia"
-
 #. [unit_type]: id=Elvish Shyde, race=elf
 #. [unit_type]: id=Autumn Shyde, race=elf
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Autumn_Shyde.cfg:5
 #: data/core/units/elves/Shyde.cfg:4
 msgid "female^Elvish Shyde"
 msgstr "Wróżka elfów"
+
+#. [attack]: type=blade
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Familiar.cfg:33
+#: data/core/units/monsters/Fire_Dragon.cfg:31
+#: data/core/units/monsters/Giant_Rat.cfg:29
+#: data/core/units/undead/Corpse_Ghast.cfg:27
+msgid "bite"
+msgstr "ugryzienie"
+
+#. [attack]: type=pierce
+#: data/campaigns/The_South_Guard/units/Horseman_Commander.cfg:31
+#: data/campaigns/The_South_Guard/units/Mounted_General.cfg:32
+#: data/core/units/humans/Horse_Grand_Knight.cfg:33
+#: data/core/units/humans/Horse_Knight.cfg:32
+#: data/core/units/humans/Horse_Lancer.cfg:23
+#: data/core/units/humans/Horse_Paladin.cfg:48
+#: data/core/units/khalifate/Faris.cfg:21
+#: data/core/units/khalifate/Khaiyal.cfg:30
+#: data/core/units/khalifate/Mufariq.cfg:23
+msgid "lance"
+msgstr "lanca"
+
+#. [attack]: type=impact
+#: data/campaigns/The_South_Guard/units/Infantry_Commander.cfg:40
+#: data/core/units/khalifate/Ghazi.cfg:33
+#: data/core/units/khalifate/Khalid.cfg:40
+#: data/core/units/khalifate/Shuja.cfg:34
+msgid "shield bash"
+msgstr "uderzenie tarczą"
+
+#. [attack]: type=impact
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Druid.cfg:37
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Shyde.cfg:43
+#: data/core/units/elves/Druid.cfg:37 data/core/units/elves/Shyde.cfg:42
+msgid "ensnare"
+msgstr "usidlenie"
+
+#. [attack]: type=pierce
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Druid.cfg:49
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Shyde.cfg:55
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Druid.cfg:51
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Shaman.cfg:51
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Shyde.cfg:52
+#: data/core/units/elves/Druid.cfg:49 data/core/units/elves/Shyde.cfg:54
+msgid "thorns"
+msgstr "ciernie"
+
+#. [attack]: type=pierce
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Marksman.cfg:32
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Sharpshooter.cfg:40
+#: data/core/units/elves/Marksman.cfg:38
+#: data/core/units/elves/Sharpshooter.cfg:33
+#: data/core/units/humans/Loyalist_Longbowman.cfg:34
+#: data/core/units/humans/Loyalist_Master_Bowman.cfg:34
+msgid "longbow"
+msgstr "długi łuk"
+
+#. [attack]: type=impact
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Shyde.cfg:30
+#: data/core/units/elves/Shyde.cfg:29 data/core/units/elves/Sylph.cfg:28
+msgid "faerie touch"
+msgstr "dotyk wróżki"
+
+#. [attack]: type=arcane
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Divine_Avatar.cfg:33
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Divine_Avatar.cfg:33
+#: data/core/units/humans/Mage_White.cfg:53
+#: data/core/units/humans/Mage_of_Light.cfg:56
+#: data/core/units/merfolk/Diviner.cfg:54
+#: data/core/units/merfolk/Priestess.cfg:51
+msgid "lightbeam"
+msgstr "promień światła"
+
+#. [attack]: type=blade
+#. [attack]: type=pierce
+#: data/campaigns/Under_the_Burning_Suns/units/monsters/Alien_Minion.cfg:31
+#: data/campaigns/Under_the_Burning_Suns/units/monsters/Ant.cfg:23
+#: data/core/units/bats/Bat_Blood.cfg:116 data/core/units/bats/Bat_Dread.cfg:31
+#: data/core/units/bats/Bat_Vampire.cfg:115
+#: data/core/units/goblins/Direwolf_Rider.cfg:32
+#: data/core/units/goblins/Knight.cfg:34
+#: data/core/units/goblins/Pillager.cfg:32
+#: data/core/units/goblins/Wolf_Rider.cfg:46
+#: data/core/units/monsters/Giant_Spider.cfg:26
+#: data/core/units/monsters/Sea_Serpent.cfg:27
+#: data/core/units/monsters/Water_Serpent.cfg:41
+#: data/core/units/monsters/Wolf.cfg:47
+#: data/core/units/monsters/Wolf_Dire.cfg:38
+#: data/core/units/monsters/Wolf_Great.cfg:38
+msgid "fangs"
+msgstr "kły"
+
+#. [attack]: type=impact
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Flagbearer.cfg:32
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Vanguard.cfg:31
+#: data/core/units/drakes/Enforcer.cfg:43
+#: data/core/units/drakes/Thrasher.cfg:40
+msgid "ram"
+msgstr "taran"
+
+#. [attack]: type=arcane
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Shyde.cfg:39
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Singer.cfg:36
+#: data/core/units/elves/Enchantress.cfg:46
+#: data/core/units/elves/High_Lord.cfg:54 data/core/units/elves/Lord.cfg:33
+#: data/core/units/elves/Sorceress.cfg:49 data/core/units/elves/Sylph.cfg:53
+msgid "faerie fire"
+msgstr "płomień wróżek"
 
 #. [unit_type]: id=Blood Bat, race=bats
 #: data/core/units/bats/Bat_Blood.cfg:4
@@ -349,23 +865,6 @@ msgstr ""
 "za znak ich preferowanej diety. Stworzenia te poruszają się bardzo szybko i "
 "potrafią wysysać krew z atakowanych, odzyskując tym samym nieco życia "
 "odbieranego ofiarom."
-
-#. [attack]: type=blade
-#. [attack]: type=pierce
-#: data/core/units/bats/Bat_Blood.cfg:116 data/core/units/bats/Bat_Dread.cfg:31
-#: data/core/units/bats/Bat_Vampire.cfg:115
-#: data/core/units/goblins/Direwolf_Rider.cfg:32
-#: data/core/units/goblins/Knight.cfg:34
-#: data/core/units/goblins/Pillager.cfg:32
-#: data/core/units/goblins/Wolf_Rider.cfg:46
-#: data/core/units/monsters/Giant_Spider.cfg:26
-#: data/core/units/monsters/Sea_Serpent.cfg:27
-#: data/core/units/monsters/Water_Serpent.cfg:41
-#: data/core/units/monsters/Wolf.cfg:47
-#: data/core/units/monsters/Wolf_Dire.cfg:38
-#: data/core/units/monsters/Wolf_Great.cfg:38
-msgid "fangs"
-msgstr "kły"
 
 #. [unit_type]: id=Dread Bat, race=bats
 #: data/core/units/bats/Bat_Dread.cfg:4
@@ -577,22 +1076,6 @@ msgstr ""
 "ogniem, która w połączeniu z rozmiarem i potężnymi szponami czyni z nich "
 "niebezpiecznych przeciwników."
 
-#. [attack]: type=blade
-#: data/core/units/drakes/Burner.cfg:25
-#: data/core/units/goblins/Direwolf_Rider.cfg:41
-#: data/core/units/gryphons/Gryphon.cfg:28
-#: data/core/units/gryphons/Gryphon_Master.cfg:28
-#: data/core/units/gryphons/Gryphon_Rider.cfg:27
-#: data/core/units/khalifate/Elder_Falcon.cfg:26
-#: data/core/units/khalifate/Falcon.cfg:25
-#: data/core/units/monsters/Skeletal_Dragon.cfg:42
-#: data/core/units/undead/Corpse_Ghoul.cfg:25
-#: data/core/units/undead/Corpse_Necrophage.cfg:26
-#: data/core/units/undead/Spirit_Nightgaunt.cfg:33
-#: data/core/units/undead/Spirit_Shadow.cfg:62
-msgid "claws"
-msgstr "szpony"
-
 #. [unit_type]: id=Drake Clasher, race=drake
 #: data/core/units/drakes/Clasher.cfg:4
 msgid "Drake Clasher"
@@ -646,12 +1129,6 @@ msgstr ""
 "nie pozwala im ziać ogniem - liczy się tylko niezwykła siła, z jaką "
 "wyprowadzają ciosy. Przywódcy smoków bardzo uważają, by nie urazić dumy "
 "siepaczy i wzywają ich do boju tylko przeciwko najgroźniejszym przeciwnikom."
-
-#. [attack]: type=impact
-#: data/core/units/drakes/Enforcer.cfg:43
-#: data/core/units/drakes/Thrasher.cfg:40
-msgid "ram"
-msgstr "taran"
 
 #. [attack]: type=pierce
 #. [attack]: type=blade
@@ -738,9 +1215,16 @@ msgstr "Smok płomienny"
 
 #. [unit_type]: id=Drake Flare, race=drake
 #: data/core/units/drakes/Flare.cfg:17
+#, fuzzy
+#| msgid ""
+#| "Respected for the heat of their flame and revered for their charisma, "
+#| "Flares aspire to become great leaders of their people, both in war and "
+#| "peace. Though a small isolated tribe will sometimes accept a Flare as a "
+#| "leader, they are more often seen leading small war parties or mediating "
+#| "disputes with a subtle hand."
 msgid ""
 "Respected for the heat of their flame and revered for their charisma, Flares "
-"aspire to become great leaders of their people, both in war and peace. "
+"aspire to become great leaders of their people, both in war and in peace. "
 "Though a small isolated tribe will sometimes accept a Flare as a leader, "
 "they are more often seen leading small war parties or mediating disputes "
 "with a subtle hand."
@@ -1107,11 +1591,11 @@ msgstr "Pancerny krasnolud"
 #. [unit_type]: id=Dwarvish Steelclad, race=dwarf
 #: data/core/units/dwarves/Steelclad.cfg:18
 msgid ""
-"The more experienced Dwarvish Steelclad fighters wear heavy chain mail and "
-"plate armor, for which they are rightly famous."
+"Outfitted in the strongest plate and mail of Knalgan forges, the Steelclads "
+"are the vanguard of dwarvish armies. They are renowned for their resilience "
+"in the heat of battle, and their mastery of both battleaxe and warhammer "
+"make them imposing foes indeed."
 msgstr ""
-"Doświadczone w bojach pancerne krasnoludy noszą ciężką kolczugę i zbroję "
-"płytową, z których są szeroko znane."
 
 #. [unit_type]: id=Dwarvish Thunderer, race=dwarf
 #: data/core/units/dwarves/Thunderer.cfg:4
@@ -1162,55 +1646,6 @@ msgstr ""
 "wielu wybiera go jako swoją broń. Choć względny brak doświadczenia bojowego "
 "czyni je mało odpornymi w walce, dzięki naturalnej zwinności i tak "
 "przeważają nad jakimkolwiek nowym rekrutem w ludzkiej armii."
-
-#. [attack]: type=blade
-#. [attack]: type=arcane
-#: data/core/units/elves/Archer.cfg:23 data/core/units/elves/Avenger.cfg:38
-#: data/core/units/elves/Captain.cfg:34 data/core/units/elves/Champion.cfg:24
-#: data/core/units/elves/Fighter.cfg:22 data/core/units/elves/Hero.cfg:22
-#: data/core/units/elves/High_Lord.cfg:45 data/core/units/elves/Lord.cfg:24
-#: data/core/units/elves/Marksman.cfg:29 data/core/units/elves/Marshal.cfg:33
-#: data/core/units/elves/Outrider.cfg:32 data/core/units/elves/Ranger.cfg:35
-#: data/core/units/elves/Rider.cfg:34 data/core/units/elves/Scout.cfg:32
-#: data/core/units/elves/Sharpshooter.cfg:24
-#: data/core/units/humans/Horse_Knight.cfg:23
-#: data/core/units/humans/Horse_Paladin.cfg:39
-#: data/core/units/humans/Loyalist_Cavalryman.cfg:44
-#: data/core/units/humans/Loyalist_Dragoon.cfg:36
-#: data/core/units/humans/Loyalist_Lieutenant.cfg:27
-#: data/core/units/humans/Loyalist_Longbowman.cfg:25
-#: data/core/units/humans/Loyalist_Master_Bowman.cfg:25
-#: data/core/units/humans/Loyalist_Sergeant.cfg:27
-#: data/core/units/humans/Loyalist_Swordsman.cfg:26
-#: data/core/units/humans/Woodsman_Ranger.cfg:44
-#: data/core/units/nagas/Fighter.cfg:30 data/core/units/nagas/Myrmidon.cfg:29
-#: data/core/units/nagas/Warrior.cfg:27 data/core/units/orcs/Grunt.cfg:28
-#: data/core/units/orcs/Leader.cfg:27
-msgid "sword"
-msgstr "miecz"
-
-#. [attack]: type=pierce
-#. [attack]: type=fire
-#: data/core/units/elves/Archer.cfg:32 data/core/units/elves/Avenger.cfg:47
-#: data/core/units/elves/Captain.cfg:43 data/core/units/elves/Champion.cfg:33
-#: data/core/units/elves/Fighter.cfg:31 data/core/units/elves/Hero.cfg:31
-#: data/core/units/elves/Marshal.cfg:42 data/core/units/elves/Outrider.cfg:41
-#: data/core/units/elves/Ranger.cfg:44 data/core/units/elves/Rider.cfg:43
-#: data/core/units/elves/Scout.cfg:41
-#: data/core/units/humans/Loyalist_Bowman.cfg:31
-#: data/core/units/humans/Woodsman.cfg:37
-#: data/core/units/humans/Woodsman_Huntsman.cfg:45
-#: data/core/units/humans/Woodsman_Poacher.cfg:42
-#: data/core/units/humans/Woodsman_Ranger.cfg:53
-#: data/core/units/humans/Woodsman_Trapper.cfg:48
-#: data/core/units/khalifate/Hadaf.cfg:30
-#: data/core/units/khalifate/Qanas.cfg:29 data/core/units/orcs/Archer.cfg:33
-#: data/core/units/orcs/Archer.cfg:42 data/core/units/orcs/Warlord.cfg:33
-#: data/core/units/undead/Skele_Banebow.cfg:40
-#: data/core/units/undead/Skele_Bone_Shooter.cfg:38
-#: data/core/units/undead/Skeleton_Archer.cfg:46
-msgid "bow"
-msgstr "łuk"
 
 #. [female]
 #: data/core/units/elves/Archer.cfg:80
@@ -1315,35 +1750,6 @@ msgstr ""
 "Główną umiejętnością elfickich druidek jest leczenie i to za nią są one "
 "czczone przez swój lud."
 
-#. [attack]: type=impact
-#: data/core/units/elves/Druid.cfg:28 data/core/units/elves/Enchantress.cfg:25
-#: data/core/units/elves/Shaman.cfg:28 data/core/units/elves/Sorceress.cfg:28
-#: data/core/units/humans/Mage.cfg:28 data/core/units/humans/Mage_Arch.cfg:35
-#: data/core/units/humans/Mage_Elder.cfg:26
-#: data/core/units/humans/Mage_Great.cfg:29
-#: data/core/units/humans/Mage_Red.cfg:28
-#: data/core/units/humans/Mage_Silver.cfg:35
-#: data/core/units/humans/Mage_White.cfg:44
-#: data/core/units/merfolk/Diviner.cfg:45
-#: data/core/units/merfolk/Enchantress.cfg:23
-#: data/core/units/merfolk/Initiate.cfg:25
-#: data/core/units/merfolk/Priestess.cfg:42
-#: data/core/units/saurians/Augur.cfg:24 data/core/units/saurians/Oracle.cfg:36
-#: data/core/units/saurians/Soothsayer.cfg:25
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:48
-msgid "staff"
-msgstr "kostur"
-
-#. [attack]: type=impact
-#: data/core/units/elves/Druid.cfg:37 data/core/units/elves/Shyde.cfg:42
-msgid "ensnare"
-msgstr "usidlenie"
-
-#. [attack]: type=pierce
-#: data/core/units/elves/Druid.cfg:49 data/core/units/elves/Shyde.cfg:54
-msgid "thorns"
-msgstr "ciernie"
-
 #. [unit_type]: id=Elvish Enchantress, race=elf
 #: data/core/units/elves/Enchantress.cfg:4
 msgid "female^Elvish Enchantress"
@@ -1363,19 +1769,6 @@ msgstr ""
 "tajemnicze są istoty, którym udało się opanować arkana elfickiej magii. Choć "
 "wiadomo, że są przez swój lud darzone szacunkiem, trudno cokolwiek pewnego "
 "powiedzieć o faktycznej ich roli w społeczności elfów."
-
-#. [attack]: type=impact
-#: data/core/units/elves/Enchantress.cfg:35 data/core/units/elves/Shaman.cfg:37
-#: data/core/units/elves/Sorceress.cfg:38
-msgid "entangle"
-msgstr "oplątanie"
-
-#. [attack]: type=arcane
-#: data/core/units/elves/Enchantress.cfg:46
-#: data/core/units/elves/High_Lord.cfg:54 data/core/units/elves/Lord.cfg:33
-#: data/core/units/elves/Sorceress.cfg:49 data/core/units/elves/Sylph.cfg:53
-msgid "faerie fire"
-msgstr "płomień wróżek"
 
 #. [unit_type]: id=Elvish Fighter, race=elf
 #: data/core/units/elves/Fighter.cfg:4
@@ -1495,14 +1888,6 @@ msgstr ""
 "w momencie, gdy poprzednia dopiero zaczyna lecieć. Posiadanie tak "
 "niezwykłych umiejętności ma jednak swoją cenę, którą jest brak wprawy w "
 "walce mieczem."
-
-#. [attack]: type=pierce
-#: data/core/units/elves/Marksman.cfg:38
-#: data/core/units/elves/Sharpshooter.cfg:33
-#: data/core/units/humans/Loyalist_Longbowman.cfg:34
-#: data/core/units/humans/Loyalist_Master_Bowman.cfg:34
-msgid "longbow"
-msgstr "długi łuk"
 
 #. [female]
 #: data/core/units/elves/Marksman.cfg:89
@@ -1686,11 +2071,6 @@ msgstr ""
 "części swej natury, mogą się przemienić w istoty mające coś z obu światów. "
 "Te piękne strażniczki lasów stanowią uosobienie wdzięku i tajemniczości "
 "swego ludu, choć niewiele wiadomo o siłach, które nimi kierują."
-
-#. [attack]: type=impact
-#: data/core/units/elves/Shyde.cfg:29 data/core/units/elves/Sylph.cfg:28
-msgid "faerie touch"
-msgstr "dotyk wróżki"
 
 #. [unit_type]: id=Elvish Sorceress, race=elf
 #: data/core/units/elves/Sorceress.cfg:4
@@ -2003,19 +2383,10 @@ msgstr ""
 #: data/core/units/humans/Loyalist_General.cfg:43
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:38
 #: data/core/units/humans/Loyalist_Royal_Guard.cfg:27
+#: data/core/units/khalifate/Mighwar.cfg:25
+#: data/core/units/khalifate/Monawish.cfg:24
 msgid "longsword"
 msgstr "długi miecz"
-
-#. [attack]: type=pierce
-#: data/core/units/humans/Horse_Grand_Knight.cfg:33
-#: data/core/units/humans/Horse_Knight.cfg:32
-#: data/core/units/humans/Horse_Lancer.cfg:23
-#: data/core/units/humans/Horse_Paladin.cfg:48
-#: data/core/units/khalifate/Faris.cfg:21
-#: data/core/units/khalifate/Khaiyal.cfg:30
-#: data/core/units/khalifate/Mufariq.cfg:23
-msgid "lance"
-msgstr "lanca"
 
 #. [unit_type]: id=Knight, race=human
 #: data/core/units/humans/Horse_Knight.cfg:4
@@ -2152,12 +2523,6 @@ msgstr ""
 "mieszkańców lasów. Łucznicy zręcznie posługują się łukiem i krótkim mieczem, "
 "i są na polach bitew częstym widokiem."
 
-#. [attack]: type=blade
-#: data/core/units/humans/Loyalist_Bowman.cfg:22
-#: data/core/units/orcs/Crossbowman.cfg:23 data/core/units/orcs/Slurbow.cfg:28
-msgid "short sword"
-msgstr "krótki miecz"
-
 #. [unit_type]: id=Cavalier, race=human
 #: data/core/units/humans/Loyalist_Cavalier.cfg:4
 msgid "Cavalier"
@@ -2276,13 +2641,6 @@ msgstr ""
 "zawdzięczają życie drobnym odstępstwom od kodeksu honorowego na rzecz "
 "użyteczności kuszy w boju i jej zdolności do zwiększania szans przeżycia."
 
-#. [attack]: type=blade
-#: data/core/units/humans/Loyalist_Duelist.cfg:36
-#: data/core/units/humans/Loyalist_Fencer.cfg:52
-#: data/core/units/humans/Loyalist_Master_at_Arms.cfg:31
-msgid "saber"
-msgstr "szabla"
-
 #. [unit_type]: id=Fencer, race=human
 #: data/core/units/humans/Loyalist_Fencer.cfg:4
 msgid "Fencer"
@@ -2323,10 +2681,13 @@ msgstr "Generał"
 #: data/core/units/humans/Loyalist_General.cfg:29
 msgid ""
 "As the leaders of their armies, Generals are responsible for the protection "
-"of large or important areas in the kingdoms to which they have sworn fealty."
+"of large or important areas in the kingdoms to which they have sworn fealty. "
+"Well seasoned in the art of war, Generals can direct even the freshest "
+"recruits to strike strategically against imposing odds and emerge "
+"victorious. Recognized by nobility and citizenry alike, they are outfitted "
+"in ornate plate armor and granted some of the finest weaponry that human "
+"craftsmen can offer."
 msgstr ""
-"Jako wielcy przywódcy armii, generałowie zajmują się obroną dużych lub "
-"szczególnie ważnych obszarów królestw, którym przysięgli służyć."
 
 #. [unit_type]: id=Grand Marshal, race=human
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:4
@@ -2401,26 +2762,6 @@ msgstr ""
 "umocnionych pozycji. Kilku piechurów w bitewnych szeregach znacznie wzmocni "
 "linię, choć oczywiście kosztem ograniczenia możliwości taktycznych."
 
-#. [attack]: type=impact
-#: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:23
-#: data/core/units/humans/Loyalist_Iron_Mauler.cfg:26
-#: data/core/units/humans/Outlaw.cfg:23
-#: data/core/units/humans/Outlaw_Bandit.cfg:22
-#: data/core/units/humans/Outlaw_Fugitive.cfg:28
-#: data/core/units/humans/Outlaw_Highwayman.cfg:24
-#: data/core/units/humans/Royal_Warrior.cfg:33
-#: data/core/units/khalifate/Faris.cfg:29
-#: data/core/units/khalifate/Hadaf.cfg:22
-#: data/core/units/khalifate/Hakim.cfg:25
-#: data/core/units/khalifate/Jawal.cfg:23
-#: data/core/units/khalifate/Khaiyal.cfg:38
-#: data/core/units/khalifate/Mufariq.cfg:31
-#: data/core/units/khalifate/Qanas.cfg:21 data/core/units/khalifate/Rami.cfg:22
-#: data/core/units/khalifate/Saree.cfg:22
-#: data/core/units/khalifate/Tabib.cfg:27
-msgid "mace"
-msgstr "buzdygan"
-
 #. [unit_type]: id=Iron Mauler, race=human
 #: data/core/units/humans/Loyalist_Iron_Mauler.cfg:4
 msgid "Iron Mauler"
@@ -2484,11 +2825,13 @@ msgstr "Porucznik"
 #. [unit_type]: id=Lieutenant, race=human
 #: data/core/units/humans/Loyalist_Lieutenant.cfg:18
 msgid ""
-"Trained at swords and crossbows, Lieutenants lead small groups of human "
-"soldiers, coordinating their attacks."
+"Lieutenants are some of the more respected commanding officers among humans "
+"and are often seen leading smaller-scale incursions and managing the "
+"battlefield. Trained both with sword and crossbow, they excel at neither, "
+"and are somewhat less resilient than the warlords of other races — this is "
+"more than made up for by their superior knowledge and training in military "
+"strategy."
 msgstr ""
-"Porucznicy biegle posługują się mieczem i kuszą. Dowodzą małymi oddziałami "
-"ludzi, koordynując ich ataki."
 
 #. [unit_type]: id=Longbowman, race=human
 #: data/core/units/humans/Loyalist_Longbowman.cfg:4
@@ -2638,10 +2981,17 @@ msgstr "Sierżant"
 
 #. [unit_type]: id=Sergeant, race=human
 #: data/core/units/humans/Loyalist_Sergeant.cfg:18
+#, fuzzy
+#| msgid ""
+#| "The Sergeant is a low-ranking officer in the ranks of an army. Though "
+#| "academically trained, he will need some experience in the field before "
+#| "his leadership is sound and acknowledged."
 msgid ""
-"The Sergeant is a low-ranking officer in the ranks of an army. Though "
-"academically trained, he will need some experience in the field before his "
-"leadership is sound and acknowledged."
+"Sergeants are low-ranking officers of human armies. Though academically "
+"trained, they need some experience in the field before their leadership is "
+"sound and acknowledged. Still, their diligent bearing and basic insight of "
+"combat means they can more effectively rouse civilians and peasants in "
+"trying situations."
 msgstr ""
 "Sierżant jest podoficerem w szeregach królewskiej armii. Choć przeszedł "
 "szkolenie teoretyczne, to będzie jeszcze potrzebował doświadczenia bojowego, "
@@ -2673,11 +3023,6 @@ msgstr ""
 "zastanawiają się, czy pancerze nie kryją potworów zamiast ludzi. Wadą tak "
 "ciężkiego pancerza jest oczywiście długi czas, jakiego wymaga dotarcie na "
 "pole bitwy i jego opuszczenie."
-
-#. [attack]: type=impact
-#: data/core/units/humans/Loyalist_Shock_Trooper.cfg:23
-msgid "flail"
-msgstr "kiścień"
 
 #. [unit_type]: id=Spearman, race=human
 #: data/core/units/humans/Loyalist_Spearman.cfg:4
@@ -3003,14 +3348,6 @@ msgstr ""
 "Chociaż nie są szkoleni w boju, biali magowie mogą być potężnymi "
 "sprzymierzeńcami w walce z istotami magicznymi i nieumarłymi."
 
-#. [attack]: type=arcane
-#: data/core/units/humans/Mage_White.cfg:53
-#: data/core/units/humans/Mage_of_Light.cfg:56
-#: data/core/units/merfolk/Diviner.cfg:54
-#: data/core/units/merfolk/Priestess.cfg:51
-msgid "lightbeam"
-msgstr "promień światła"
-
 #. [female]
 #: data/core/units/humans/Mage_White.cfg:95
 msgid "female^White Mage"
@@ -3038,11 +3375,6 @@ msgstr ""
 "Przestrzegając ścisłego kodeksu pobożności i honoru, ci mężczyźni i kobiety "
 "pracują bez wytchnienia, by wnosić życie i porządek do utrapionego świata, w "
 "którym żyją."
-
-#. [attack]: type=impact
-#: data/core/units/humans/Mage_of_Light.cfg:47
-msgid "morning star"
-msgstr "morgensztern"
 
 #. [female]
 #: data/core/units/humans/Mage_of_Light.cfg:99
@@ -3073,12 +3405,13 @@ msgstr ""
 "podczas dnia, preferując osłonę nocy."
 
 #. [attack]: type=impact
-#: data/core/units/humans/Outlaw.cfg:31
-#: data/core/units/humans/Outlaw_Footpad.cfg:33
-#: data/core/units/humans/Outlaw_Fugitive.cfg:37
-#: data/core/units/trolls/Rocklobber.cfg:34
-msgid "sling"
-msgstr "proca"
+#: data/core/units/humans/Outlaw.cfg:23
+#: data/core/units/humans/Outlaw_Bandit.cfg:22
+#: data/core/units/humans/Outlaw_Fugitive.cfg:28
+#: data/core/units/humans/Outlaw_Highwayman.cfg:24
+#: data/core/units/humans/Royal_Warrior.cfg:28
+msgid "morning star"
+msgstr "morgensztern"
 
 #. [female]
 #: data/core/units/humans/Outlaw.cfg:74
@@ -3159,15 +3492,6 @@ msgstr ""
 "uzbrojenia rozbójnicy całkiem dobrze sprawdzają się w nękaniu przeciwników, "
 "szczególnie pod osłoną ciemności."
 
-#. [attack]: type=impact
-#: data/core/units/humans/Outlaw_Footpad.cfg:24
-#: data/core/units/humans/Outlaw_Ruffian.cfg:22
-#: data/core/units/humans/Outlaw_Thug.cfg:23
-#: data/core/units/merfolk/Entangler.cfg:26
-#: data/core/units/merfolk/Netcaster.cfg:25 data/core/units/trolls/Troll.cfg:24
-msgid "club"
-msgstr "maczuga"
-
 #. [female]
 #: data/core/units/humans/Outlaw_Footpad.cfg:87
 msgid "female^Footpad"
@@ -3191,7 +3515,7 @@ msgstr ""
 "starciu z licznymi zastępami regularnego wojska."
 
 #. [female]
-#: data/core/units/humans/Outlaw_Fugitive.cfg:81
+#: data/core/units/humans/Outlaw_Fugitive.cfg:80
 msgid "female^Fugitive"
 msgstr "Uciekinierka"
 
@@ -3319,11 +3643,18 @@ msgstr "Chłop"
 
 #. [unit_type]: id=Peasant, race=human
 #: data/core/units/humans/Peasant.cfg:18
+#, fuzzy
+#| msgid ""
+#| "Peasants are the backbone of the rural economy, and the soldiers of last "
+#| "resort. While not warlike by nature, they will stubbornly defend their "
+#| "homes. However, if you’re hurling peasants at your foes, you’re clearly "
+#| "out of superior forces."
 msgid ""
 "Peasants are the backbone of the rural economy, and the soldiers of last "
 "resort. While not warlike by nature, they will stubbornly defend their "
-"homes. However, if you’re hurling peasants at your foes, you’re clearly out "
-"of superior forces."
+"homes. Their lack of training and discipline makes them unfit to hold a "
+"line, though; their reliance on farming tools as weaponry means they are "
+"only on the field of battle under the most desperate situations."
 msgstr ""
 "Chłopi są podstawą wiejskiej gospodarki i za broń chwytają dopiero w "
 "ostateczności. Choć z natury są spokojni, będą wytrwale bronić swych domów. "
@@ -3341,13 +3672,15 @@ msgid "Royal Warrior"
 msgstr "Królewski wojownik"
 
 #. [unit_type]: id=Royal Warrior, race=human
-#: data/core/units/humans/Royal_Warrior.cfg:29
+#: data/core/units/humans/Royal_Warrior.cfg:24
 msgid ""
-"Royal warriors are the kings and princes of human noble houses, armed and "
-"armored to a degree heavier than that of their knights."
+"The kings and princes of human nobility are still often trained rigorously "
+"in the combat arts, partly out of tradition from when their ancestors made "
+"their wealth in war. Fitted in armor so skillfully made as to incite envy "
+"even from some dwarvish smiths, these nobles are well conditioned to the art "
+"of moving in heavy armor, and can maneuver across the battlefield much "
+"faster than their gilded plate would suggest."
 msgstr ""
-"Wojownicy królewscy to królowie i książęta z dworów ludzi. Są uzbrojeni i "
-"opancerzeni jeszcze silniej od swoich rycerzy."
 
 #. [unit_type]: id=Woodsman, race=human
 #: data/core/units/humans/Woodsman.cfg:4
@@ -3510,15 +3843,6 @@ msgstr ""
 "uniesionymi wysoko tarczami niejednokrotnie przyprawiał obrońców o "
 "zmartwienie co do wytrzymałości ich murów."
 
-#. [attack]: type=blade
-#: data/core/units/khalifate/Arif.cfg:21 data/core/units/khalifate/Ghazi.cfg:21
-#: data/core/units/khalifate/Khalid.cfg:28
-#: data/core/units/khalifate/Mighwar.cfg:25
-#: data/core/units/khalifate/Monawish.cfg:24
-#: data/core/units/khalifate/Shuja.cfg:22
-msgid "long sword"
-msgstr "długi miecz"
-
 #. [unit_type]: id=Batal, race=khalifate
 #: data/core/units/khalifate/Batal.cfg:4
 msgid "Batal"
@@ -3633,13 +3957,6 @@ msgstr ""
 "niespodziewających się takiego ataku przeciwników. Mimo że jest ich "
 "niewielu, ich obecność na polu bitwy może być decydującym czynnikiem w "
 "rozbiciu wrogiej obrony."
-
-#. [attack]: type=impact
-#: data/core/units/khalifate/Ghazi.cfg:33
-#: data/core/units/khalifate/Khalid.cfg:40
-#: data/core/units/khalifate/Shuja.cfg:34
-msgid "shield bash"
-msgstr "uderzenie tarczą"
 
 #. [unit_type]: id=Hadaf, race=khalifate
 #: data/core/units/khalifate/Hadaf.cfg:4
@@ -4164,11 +4481,12 @@ msgstr "Mermen wojownik"
 #. [unit_type]: id=Merman Fighter, race=merman
 #: data/core/units/merfolk/Fighter.cfg:17
 msgid ""
-"Skilled denizens of the sea, Mermen are powerful and quick in any watery "
-"environment, but lose most of their mobility on land."
+"Merfolk societies train their forces rigorously and carefully, and as a "
+"result the peace of their realm is kept by soldiers who are the undisputed "
+"champions of their aquatic homeland. Their resilience and skill with their "
+"iconic tridents make them mighty foes to try to combat in the seas, but they "
+"lose almost all their mobility if forced to fight on land."
 msgstr ""
-"Mermeni, zdolne stworzenia morskie, są silni i szybcy w środowisku wodnym, "
-"ale mają wielkie trudności z przemieszczaniem się na lądzie."
 
 #. [unit_type]: id=Merman Hoplite, race=merman
 #: data/core/units/merfolk/Hoplite.cfg:4
@@ -4363,10 +4681,17 @@ msgstr "Mermen tryton"
 
 #. [unit_type]: id=Merman Triton, race=merman
 #: data/core/units/merfolk/Triton.cfg:19
+#, fuzzy
+#| msgid ""
+#| "Tritons are combat masters of the sea. Skilled in use of the trident, "
+#| "Tritons easily defeat any enemy foolish enough to wander into their "
+#| "preferred environment."
 msgid ""
 "Tritons are combat masters of the sea. Skilled in use of the trident, "
 "Tritons easily defeat any enemy foolish enough to wander into their "
-"preferred environment."
+"preferred environment. Their mastery of their weapon affords them "
+"flexibility in its use, and the highest-ranking among them use weaponry more "
+"comparable to halberds than simple spears."
 msgstr ""
 "Trytony to władcy mórz. Potrafią posługiwać się trójzębami i z łatwością "
 "pokonają każdego na tyle nieostrożnego, by zapuścić się w ich przyrodzone "
@@ -4380,11 +4705,11 @@ msgstr "Mermen żołnierz"
 #. [unit_type]: id=Merman Warrior, race=merman
 #: data/core/units/merfolk/Warrior.cfg:17
 msgid ""
-"The Mermen Warriors form the core of the mermen armies. Wielding powerful "
-"tridents, they are a bane to any who dare enter their waters."
+"The Mermen Warriors form the core of the mermen armies. They wield their "
+"tridents with a skill and diligence impressive even compared to the soldiers "
+"of other races, but doubly so considering the difficulties of fighting "
+"underwater, as any who try to match them in their homes can attest."
 msgstr ""
-"Wojownicy mermenów tworzą trzon ich armii. Uzbrojeni w potężne trójzęby "
-"stają się zgubą każdego, kto ośmieli się zapuścić w ich wody."
 
 #. [unit_type]: id=Cuttle Fish, race=monster
 #: data/core/units/monsters/Cuttle_Fish.cfg:4
@@ -4402,17 +4727,6 @@ msgstr ""
 "Kałamarnice to gigantyczne stwory morskie. Łapią swoje ofiary potężnymi "
 "mackami albo opluwają trującym atramentem. Najlepszym sposobem na uniknięcie "
 "spotkania z kałamarnicą jest pozostanie na brzegu."
-
-#. [attack]: type=impact
-#: data/core/units/monsters/Cuttle_Fish.cfg:28
-#: data/core/units/monsters/Tentacle.cfg:29
-msgid "tentacle"
-msgstr "macka"
-
-#. [attack]: type=pierce
-#: data/core/units/monsters/Cuttle_Fish.cfg:39
-msgid "ink"
-msgstr "atrament"
 
 #. [unit_type]: id=Fire Dragon, race=monster
 #: data/core/units/monsters/Fire_Dragon.cfg:4
@@ -4442,18 +4756,6 @@ msgstr ""
 "\n"
 "Walka ze smokiem jest zadaniem skrajnie niebezpiecznym, które mógłby się "
 "podjąć tylko szaleniec lub szalenie odważny rycerz."
-
-#. [attack]: type=blade
-#: data/core/units/monsters/Fire_Dragon.cfg:31
-#: data/core/units/monsters/Giant_Rat.cfg:29
-#: data/core/units/undead/Corpse_Ghast.cfg:27
-msgid "bite"
-msgstr "ugryzienie"
-
-#. [attack]: type=impact
-#: data/core/units/monsters/Fire_Dragon.cfg:40
-msgid "tail"
-msgstr "ogon"
 
 #. [unit_type]: id=Fire Guardian, race=monster
 #: data/core/units/monsters/Fire_Guardian.cfg:4
@@ -4493,16 +4795,6 @@ msgid ""
 "also be seen roaming the wild from time to time, their earthy composition "
 "making them immune to wildlife that rely on poison to fight."
 msgstr ""
-
-#. [attack]: type=impact
-#: data/core/units/monsters/Giant_Mudcrawler.cfg:31
-#: data/core/units/monsters/Yeti.cfg:37
-#: data/core/units/trolls/Rocklobber.cfg:25
-#: data/core/units/trolls/Troll_Shaman.cfg:36
-#: data/core/units/trolls/Whelp.cfg:24
-#: data/core/units/undead/Skeleton_Archer.cfg:37
-msgid "fist"
-msgstr "pięść"
 
 #. [attack]: type=impact
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:40
@@ -4666,8 +4958,8 @@ msgstr ""
 msgid "Wolf"
 msgstr "Wilk"
 
-#. [unit_type]: id=Direwolf, race=wolf
 #. [unit_type]: id=Great Wolf, race=wolf
+#. [unit_type]: id=Direwolf, race=wolf
 #. [unit_type]: id=Wolf, race=wolf
 #: data/core/units/monsters/Wolf.cfg:33
 #: data/core/units/monsters/Wolf_Dire.cfg:24
@@ -4833,11 +5125,6 @@ msgstr ""
 "wyglądu są dość podobne do ludzi, choć duże i koślawe. Można je z łatwością "
 "przechytrzyć lub prześcignąć, ale nie wolno nie doceniać ich siły."
 
-#. [attack]: type=blade
-#: data/core/units/ogres/Ogre.cfg:25 data/core/units/ogres/Young_Ogre.cfg:24
-msgid "cleaver"
-msgstr "tasak"
-
 #. [unit_type]: id=Young Ogre, race=ogre
 #: data/core/units/ogres/Young_Ogre.cfg:4
 msgid "Young Ogre"
@@ -4928,13 +5215,13 @@ msgstr "Ork rębacz"
 #. [unit_type]: id=Orcish Grunt, race=orc
 #: data/core/units/orcs/Grunt.cfg:17
 msgid ""
-"Orcish Grunts form the core of the orcish forces. Although slower than human "
-"or elven fighters, Grunts can deliver much more powerful blows, and take "
-"more hits before falling."
+"Orcish Grunts are the mainstay of the orcish forces, made up of the biggest "
+"and strongest orcs the clan can muster, given the most basic of equipment "
+"and thrown into the field. Even these basic recruits can be dangerous, as "
+"the larger orcs are naturally strong and can survive many injuries before "
+"falling. What makes an orcish horde most threatening, however, is the sheer "
+"numbers in which these fighters can be fielded."
 msgstr ""
-"Rębacze stanowią trzon sił orków. Są wolniejsi od elfickich i ludzkich "
-"wojowników, atakują jednak znacznie silniej i mogą przyjąć znacznie więcej "
-"obrażeń."
 
 #. [unit_type]: id=Orcish Leader, race=orc
 #: data/core/units/orcs/Leader.cfg:4
@@ -5006,12 +5293,6 @@ msgstr ""
 "ich prawdziwym talentem jest rzadka umiejętność zagrzewania innych orków do "
 "walki i wydawania rozkazów, które są wykonywane nie ze strachu, a z "
 "lojalności."
-
-#. [attack]: type=blade
-#: data/core/units/orcs/Ruler.cfg:27 data/core/units/orcs/Sovereign.cfg:28
-#: data/core/units/orcs/Warlord.cfg:24 data/core/units/orcs/Warrior.cfg:22
-msgid "greatsword"
-msgstr "wielki miecz"
 
 #. [unit_type]: id=Orcish Slayer, race=orc
 #: data/core/units/orcs/Slayer.cfg:4
@@ -5092,13 +5373,17 @@ msgstr "Ork pogromca"
 #. [unit_type]: id=Orcish Warlord, race=orc
 #: data/core/units/orcs/Warlord.cfg:18
 msgid ""
-"Only orcs with both great cunning and unsurpassed strength can become "
-"Warlords. Masters of the sword, and even possessing some skill with the bow, "
-"these beast-warriors lead their brethren with iron will and iron hand."
+"In a race where might is the be-all end-all of supremacy and respect, the "
+"orcs who achieve victory time and time again become the rulers of much "
+"greater orcish tribes. Wearing the most ornate armor they plunder from their "
+"enemies, the Orcish Warlords are true champions of battle, their mastery of "
+"the blade able to match even the finest from vaunted elvish and human "
+"schools of swordsmen. They even have practice with the bow, their usage of "
+"this ordinarily cowardly weapon offset by the sheer admiration their "
+"warriors have for them. However, the Warlords lack the insight for strategy "
+"and leading charisma of some of the more cunning orcs, and so the hordes "
+"they lead often fall simply due to their inability to truly lead."
 msgstr ""
-"Tylko najsilniejsi i najbardziej przebiegli orkowie zostają pogromcami. Są "
-"mistrzami miecza, choć potrafią też nieźle strzelać z łuku. Żelazną ręką i "
-"niezłomną wolą prowadzą do boju oddziały swych pobratymców."
 
 #. [unit_type]: id=Orcish Warrior, race=orc
 #: data/core/units/orcs/Warrior.cfg:4
@@ -5108,13 +5393,13 @@ msgstr "Ork żołnierz"
 #. [unit_type]: id=Orcish Warrior, race=orc
 #: data/core/units/orcs/Warrior.cfg:17
 msgid ""
-"Having mastered the art of dual-sword fighting, Orcish Warriors are highly "
-"respected among the Orcs, and highly feared by their foes. Their only "
-"weakness is their inability to wield the bow."
+"Orcish Warriors are those orcs who have proved their strength on the "
+"battlefield, choosing to display their skill by fighting with a sword in "
+"each hand. Their prowess in battle has gained them the respect of other "
+"orcs, and they will typically be seen ordering lesser bands of raiders. "
+"Despite their position, they rarely possess the commanding skills held by "
+"the leaders of other armies."
 msgstr ""
-"Żołnierze orków osiągnęli mistrzostwo we władaniu dwoma mieczami naraz, "
-"przez co cieszą się olbrzymim szacunkiem współplemieńców i sieją postrach "
-"wśród wrogów. Jedyną ich słabością jest brak umiejętności strzelania z łuku."
 
 #. [unit_type]: id=Saurian Ambusher, race=lizard
 #: data/core/units/saurians/Ambusher.cfg:4
@@ -5157,12 +5442,6 @@ msgstr ""
 "magią, choć ich sztuki magiczne przypominają bardziej wróżbiarstwo i "
 "czarnoksięskie gusła. Choć o magii jaszczurów niewiele wiadomo, wszyscy, "
 "którym było dane jej doświadczyć, czują przed nią trwożny respekt."
-
-#. [attack]: type=cold
-#: data/core/units/saurians/Augur.cfg:33 data/core/units/saurians/Oracle.cfg:45
-#: data/core/units/saurians/Soothsayer.cfg:34
-msgid "curse"
-msgstr "klątwa"
 
 #. [unit_type]: id=Saurian Flanker, race=lizard
 #: data/core/units/saurians/Flanker.cfg:4
@@ -5474,8 +5753,10 @@ msgstr ""
 msgid "Soulless"
 msgstr "Bezduszny"
 
+#. [variation]
 #. [unit_type]: id=Soulless, race=undead
 #: data/core/units/undead/Corpse_Soulless.cfg:69
+#: data/core/units/undead/Corpse_Soulless.cfg:141
 msgid ""
 "The technique of animating a dead body is unfortunately well-known in the "
 "dark arts; practitioners often use it to raise servants and soldiers from "
@@ -5487,16 +5768,6 @@ msgstr ""
 "sług i wojowników. Ożywione w ten sposób istoty bywają liczne, ale są "
 "niezdarne i kruche. W wirze walki nierzadko nabierają jednak wigoru, stając "
 "się tym samym znacznie groźniejszymi przeciwnikami."
-
-#. [attack]: type=impact
-#. [attack]: type=arcane
-#: data/core/units/undead/Corpse_Soulless.cfg:74
-#: data/core/units/undead/Corpse_Walking.cfg:73
-#: data/core/units/undead/Necro_Ancient_Lich.cfg:35
-#: data/core/units/undead/Necro_Lich.cfg:35
-#: data/core/units/undead/Spirit_Ghost.cfg:57
-msgid "touch"
-msgstr "dotyk"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:100
@@ -5518,62 +5789,51 @@ msgstr ""
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:136
-#: data/core/units/undead/Corpse_Walking.cfg:147
+#: data/core/units/undead/Corpse_Walking.cfg:151
 msgid "wc_variation^Mounted"
 msgstr ""
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:145
+#: data/core/units/undead/Corpse_Soulless.cfg:146
 #: data/core/units/undead/Corpse_Walking.cfg:135
 msgid "wc_variation^Gryphon"
 msgstr ""
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:157
-#: data/core/units/undead/Corpse_Walking.cfg:156
+#: data/core/units/undead/Corpse_Soulless.cfg:162
+#: data/core/units/undead/Corpse_Walking.cfg:161
 msgid "wc_variation^Saurian"
 msgstr ""
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:166
-#: data/core/units/undead/Corpse_Walking.cfg:165
+#: data/core/units/undead/Corpse_Soulless.cfg:171
+#: data/core/units/undead/Corpse_Walking.cfg:170
 msgid "wc_variation^Swimmer"
-msgstr ""
-
-#. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:179
-#: data/core/units/undead/Corpse_Walking.cfg:178
-msgid "wc_variation^Troll"
 msgstr ""
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:188
 #: data/core/units/undead/Corpse_Walking.cfg:187
+msgid "wc_variation^Troll"
+msgstr ""
+
+#. [variation]
+#: data/core/units/undead/Corpse_Soulless.cfg:197
+#: data/core/units/undead/Corpse_Walking.cfg:196
 msgid "wc_variation^Wose"
 msgstr ""
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:200
-#: data/core/units/undead/Corpse_Walking.cfg:199
+#: data/core/units/undead/Corpse_Soulless.cfg:209
+#: data/core/units/undead/Corpse_Walking.cfg:208
+msgid "wc_variation^Wolf"
+msgstr ""
+
+#. [variation]
+#: data/core/units/undead/Corpse_Soulless.cfg:221
+#: data/core/units/undead/Corpse_Walking.cfg:220
 msgid "wc_variation^Bat"
 msgstr ""
-
-#. [unit_type]: id=Walking Corpse, race=undead
-#: data/core/units/undead/Corpse_Walking.cfg:57
-msgid "Walking Corpse"
-msgstr "Chodzący trup"
-
-#. [unit_type]: id=Walking Corpse, race=undead
-#: data/core/units/undead/Corpse_Walking.cfg:68
-msgid ""
-"Walking Corpses are the bodies of the dead, re-animated by dark magic. "
-"Though not especially dangerous to a trained soldier, the sight of one’s "
-"former comrades amongst their number is frightening to say the least."
-msgstr ""
-"Chodzące trupy to ciała zmarłych przywrócone do życia przez czarną magię. "
-"Choć nie stanowią one w walce poważnego zagrożenia dla wyszkolonego "
-"żołnierza, widok poległych towarzyszy walczących w szeregach wroga "
-"przerażającym doznaniem."
 
 #. [unit_type]: id=Ancient Lich, race=undead
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:4
@@ -5583,12 +5843,16 @@ msgstr "Starożytny licz"
 #. [unit_type]: id=Ancient Lich, race=undead
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:24
 msgid ""
-"A being of this order is a revenant of ages long past. Anyone who encounters "
-"an Ancient Lich likely has far worse things to worry about than death."
+"A lich that accrues enough power over its newfound immortal lifespan becomes "
+"one who can stain souls with despair and sow ruin across the world. "
+"Invariably in command of a nigh-limitless horde of risen warriors and undead "
+"monsters, a lich of this order has a mastery of dark sorcery that can bring "
+"dread to the most storied magi of human and elven kind. Such a figure "
+"usually marks a dark and bloody chapter in history, and in those times of "
+"need, it is only through the tireless efforts of the most valiant heroes "
+"that the rise of an Ancient Lich has not led to the shadows ruling the world "
+"for the rest of time."
 msgstr ""
-"Istota należąca do starożytnych liczów jest reliktem zamierzchłych czasów. "
-"Każdy, kto natknie się na starożytnego licza, będzie miał zmartwienia dużo "
-"większe niż śmierć."
 
 #. [unit_type]: id=Dark Adept, race=human
 #: data/core/units/undead/Necro_Dark_Adept.cfg:4
@@ -5631,13 +5895,6 @@ msgstr ""
 "\n"
 "W takim stanie ich jedyną bronią jest sztuka, której nauce tak całkowicie "
 "się oddały."
-
-#. [attack]: type=cold
-#: data/core/units/undead/Necro_Dark_Adept.cfg:29
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:57
-#: data/core/units/undead/Necromancer.cfg:38
-msgid "chill wave"
-msgstr "fala chłodu"
 
 #. [female]
 #: data/core/units/undead/Necro_Dark_Adept.cfg:146
@@ -5756,11 +6013,6 @@ msgstr ""
 "uzyskiwana jest w ten sposób nieśmiertelność, czy może tylko znaczne "
 "wydłużenie życia. Trzeba jednak przyznać, że już samo rozważanie tej kwestii "
 "oddaje cześć wielkości osiągnięcia mrocznych adeptów."
-
-#. [unit_type]: id=Necromancer, race=human
-#: data/core/units/undead/Necromancer.cfg:4
-msgid "Necromancer"
-msgstr "Nekromanta"
 
 #. [unit_type]: id=Necromancer, race=human
 #: data/core/units/undead/Necromancer.cfg:19
@@ -6104,12 +6356,6 @@ msgstr ""
 "Takie spotkania to wszystko, co wiadomo o przypuszczalnie najbardziej "
 "starożytnych drzewcach."
 
-#. [attack]: type=impact
-#: data/core/units/wose/Ancient.cfg:34 data/core/units/wose/Elder.cfg:34
-#: data/core/units/wose/Wose.cfg:29
-msgid "crush"
-msgstr "zgniecenie"
-
 #. [unit_type]: id=Elder Wose, race=wose
 #: data/core/units/wose/Elder.cfg:4
 msgid "Elder Wose"
@@ -6170,6 +6416,90 @@ msgstr ""
 "\n"
 "Drzewce są zupełnie nieprzystosowane do wojny, ale dysponują wielką siłą. "
 "Nie są również przyzwyczajone do szybkiego przemieszczania się."
+
+#~ msgid ""
+#~ "The more experienced Dwarvish Steelclad fighters wear heavy chain mail "
+#~ "and plate armor, for which they are rightly famous."
+#~ msgstr ""
+#~ "Doświadczone w bojach pancerne krasnoludy noszą ciężką kolczugę i zbroję "
+#~ "płytową, z których są szeroko znane."
+
+#~ msgid ""
+#~ "As the leaders of their armies, Generals are responsible for the "
+#~ "protection of large or important areas in the kingdoms to which they have "
+#~ "sworn fealty."
+#~ msgstr ""
+#~ "Jako wielcy przywódcy armii, generałowie zajmują się obroną dużych lub "
+#~ "szczególnie ważnych obszarów królestw, którym przysięgli służyć."
+
+#~ msgid ""
+#~ "Trained at swords and crossbows, Lieutenants lead small groups of human "
+#~ "soldiers, coordinating their attacks."
+#~ msgstr ""
+#~ "Porucznicy biegle posługują się mieczem i kuszą. Dowodzą małymi "
+#~ "oddziałami ludzi, koordynując ich ataki."
+
+#~ msgid ""
+#~ "Royal warriors are the kings and princes of human noble houses, armed and "
+#~ "armored to a degree heavier than that of their knights."
+#~ msgstr ""
+#~ "Wojownicy królewscy to królowie i książęta z dworów ludzi. Są uzbrojeni i "
+#~ "opancerzeni jeszcze silniej od swoich rycerzy."
+
+#~ msgid "long sword"
+#~ msgstr "długi miecz"
+
+#~ msgid ""
+#~ "Skilled denizens of the sea, Mermen are powerful and quick in any watery "
+#~ "environment, but lose most of their mobility on land."
+#~ msgstr ""
+#~ "Mermeni, zdolne stworzenia morskie, są silni i szybcy w środowisku "
+#~ "wodnym, ale mają wielkie trudności z przemieszczaniem się na lądzie."
+
+#~ msgid ""
+#~ "The Mermen Warriors form the core of the mermen armies. Wielding powerful "
+#~ "tridents, they are a bane to any who dare enter their waters."
+#~ msgstr ""
+#~ "Wojownicy mermenów tworzą trzon ich armii. Uzbrojeni w potężne trójzęby "
+#~ "stają się zgubą każdego, kto ośmieli się zapuścić w ich wody."
+
+#~ msgid ""
+#~ "Orcish Grunts form the core of the orcish forces. Although slower than "
+#~ "human or elven fighters, Grunts can deliver much more powerful blows, and "
+#~ "take more hits before falling."
+#~ msgstr ""
+#~ "Rębacze stanowią trzon sił orków. Są wolniejsi od elfickich i ludzkich "
+#~ "wojowników, atakują jednak znacznie silniej i mogą przyjąć znacznie "
+#~ "więcej obrażeń."
+
+#~ msgid ""
+#~ "Only orcs with both great cunning and unsurpassed strength can become "
+#~ "Warlords. Masters of the sword, and even possessing some skill with the "
+#~ "bow, these beast-warriors lead their brethren with iron will and iron "
+#~ "hand."
+#~ msgstr ""
+#~ "Tylko najsilniejsi i najbardziej przebiegli orkowie zostają pogromcami. "
+#~ "Są mistrzami miecza, choć potrafią też nieźle strzelać z łuku. Żelazną "
+#~ "ręką i niezłomną wolą prowadzą do boju oddziały swych pobratymców."
+
+#~ msgid ""
+#~ "Having mastered the art of dual-sword fighting, Orcish Warriors are "
+#~ "highly respected among the Orcs, and highly feared by their foes. Their "
+#~ "only weakness is their inability to wield the bow."
+#~ msgstr ""
+#~ "Żołnierze orków osiągnęli mistrzostwo we władaniu dwoma mieczami naraz, "
+#~ "przez co cieszą się olbrzymim szacunkiem współplemieńców i sieją postrach "
+#~ "wśród wrogów. Jedyną ich słabością jest brak umiejętności strzelania z "
+#~ "łuku."
+
+#~ msgid ""
+#~ "A being of this order is a revenant of ages long past. Anyone who "
+#~ "encounters an Ancient Lich likely has far worse things to worry about "
+#~ "than death."
+#~ msgstr ""
+#~ "Istota należąca do starożytnych liczów jest reliktem zamierzchłych "
+#~ "czasów. Każdy, kto natknie się na starożytnego licza, będzie miał "
+#~ "zmartwienia dużo większe niż śmierć."
 
 #~ msgid ""
 #~ "Giant Mudcrawlers are a larger kind of Mudcrawler, and are magical "

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -51,8 +51,26 @@ public:
 	 *
 	 * @param item                The data to send to the set_members of the
 	 *                            widget.
+	 *
+	 * @returns                   The grid of the newly added page.
 	 */
-	void add_page(const string_map& item);
+	grid& add_page(const string_map& item);
+	/**
+	 * Adds single page to the grid.
+	 *
+	 * This function expect a page to one multiple widget.
+	 *
+	 * @param item                The data to send to the set_members of the
+	 *                            widget.
+	 *
+	 * @param type                the id of the [page_definition] that shoduol be used
+	 *
+	 * @param insert_pos          the position where th new page is inserted, usually 
+	 *                            -1 for 'at end'
+	 *
+	 * @returns                   The grid of the newly added page.
+	 */
+	grid& add_page(const std::string& type, int insert_pos, const string_map& item);
 
 	/**
 	 * Adds single page to the grid.
@@ -68,9 +86,33 @@ public:
 	 *                            id is an empty string, it is send to all
 	 *                            members. Having both empty and non-empty
 	 *                            id's gives undefined behavior.
+	 *
+	 * @returns                   The grid of the newly added page.
 	 */
-	void
-	add_page(const std::map<std::string /* widget id */, string_map>& data);
+	grid& add_page(const std::map<std::string /* widget id */, string_map>& data);
+	/**
+	 * Adds single page to the grid.
+	 *
+	 * This function expect a page to have multiple widgets (either multiple
+	 * columns or one column with multiple widgets).
+	 *
+	 *
+	 * @param data                The data to send to the set_members of the
+	 *                            widgets. If the member id is not an empty
+	 *                            string it is only send to the widget that
+	 *                            has the wanted id (if any). If the member
+	 *                            id is an empty string, it is send to all
+	 *                            members. Having both empty and non-empty
+	 *                            id's gives undefined behavior.
+	 *
+	 * @param type                the id of the [page_definition] that shoduol be used
+	 *
+	 * @param insert_pos          the position where th new page is inserted, usually 
+	 *                            -1 for 'at end'
+	 *
+	 * @returns                   The grid of the newly added page.
+	 */
+	grid& add_page(const std::string& type, int insert_pos, const std::map<std::string /* widget id */, string_map>& data);
 
 	/**
 	 * Removes a page in the multi page.
@@ -134,9 +176,10 @@ public:
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	void set_page_builder(builder_grid_ptr page_builder)
+	void set_page_builders(const std::map<std::string, builder_grid_const_ptr>& page_builders)
 	{
-		page_builder_ = page_builder;
+		assert(!page_builders.empty());
+		page_builders_ = page_builders;
 	}
 
 private:
@@ -157,7 +200,7 @@ private:
 	generator_base* generator_;
 
 	/** Contains the builder for the new items. */
-	builder_grid_const_ptr page_builder_;
+	std::map<std::string, builder_grid_const_ptr> page_builders_;
 
 	/** See @ref widget::impl_draw_background. */
 	virtual void impl_draw_background(surface& frame_buffer,
@@ -198,7 +241,7 @@ struct builder_multi_page : public builder_styled_widget
 
 	widget* build() const;
 
-	builder_grid_ptr builder;
+	std::map<std::string, builder_grid_const_ptr> builders;
 
 	/**
 	 * Multi page data.

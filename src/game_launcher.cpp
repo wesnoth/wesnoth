@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -34,12 +34,12 @@
 #include "gui/dialogs/message.hpp" //for show error message
 #include "gui/dialogs/multiplayer/mp_host_game_prompt.hpp" //for host game prompt
 #include "gui/dialogs/multiplayer/mp_method_selection.hpp"
+#include "gui/dialogs/outro.hpp"
 #include "gui/dialogs/preferences_dialog.hpp"
 #include "gui/dialogs/transient_message.hpp"  // for show_transient_message
 #include "gui/dialogs/title_screen.hpp"  // for show_debug_clock_button
 #include "gui/widgets/settings.hpp"     // for new_widgets
 #include "gui/widgets/window.hpp"       // for window, etc
-#include "intro.hpp"
 #include "language.hpp"                 // for language_def, etc
 #include "log.hpp"                      // for LOG_STREAM, logger, general, etc
 #include "map/exception.hpp"
@@ -717,7 +717,7 @@ bool game_launcher::new_campaign()
 	play_replay_ = false;
 
 	return sp::enter_create_mode(video(), game_config_manager::get()->game_config(),
-		state_, jump_to_campaign_, true);
+		state_, jump_to_campaign_);
 }
 
 std::string game_launcher::jump_to_campaign_id() const
@@ -951,7 +951,9 @@ void game_launcher::launch_game(RELOAD_GAME_DATA reload)
 		// change this if MP campaigns are implemented
 		if(result == LEVEL_RESULT::VICTORY && !state_.classification().is_normal_mp_game()) {
 			preferences::add_completed_campaign(state_.classification().campaign, state_.classification().difficulty);
-			the_end(video(), state_.classification().end_text, state_.classification().end_text_duration);
+
+			gui2::dialogs::outro::display(state_.classification().end_text, state_.classification().end_text_duration, video());
+
 			if(state_.classification().end_credits) {
 				gui2::dialogs::end_credits::display(video(), state_.classification().campaign);
 			}
@@ -1007,7 +1009,6 @@ void game_launcher::clear_loaded_game()
 game_launcher::~game_launcher()
 {
 	try {
-		gui::dialog::delete_empty_menu();
 		sound::close_sound();
 	} catch (...) {}
 }

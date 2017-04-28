@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -170,7 +170,9 @@ void unit_creator::add_unit(const config &cfg, const vconfig* vcfg)
 		map_location loc = find_location(temp_cfg, new_unit.get());
 		if ( loc.valid() ) {
 			//add the new unit to map
-			board_->units().replace(loc, *new_unit);
+			new_unit->set_location(loc);
+			board_->units().erase(loc);
+			board_->units().insert(new_unit);
 			LOG_NG << "inserting unit for side " << new_unit->side() << "\n";
 			post_create(loc,*(board_->units().find(loc)),animate);
 		}
@@ -184,7 +186,9 @@ void unit_creator::add_unit(const config &cfg, const vconfig* vcfg)
 		//get unit from recall list
 		map_location loc = find_location(temp_cfg, recall_list_element.get());
 		if ( loc.valid() ) {
-			board_->units().replace(loc, *recall_list_element);
+			recall_list_element->set_location(loc);
+			board_->units().erase(loc);
+			board_->units().insert(recall_list_element);
 			LOG_NG << "inserting unit from recall list for side " << recall_list_element->side()<< " with id="<< id << "\n";
 			post_create(loc,*(board_->units().find(loc)),animate);
 			//if id is not empty, delete units with this ID from recall list

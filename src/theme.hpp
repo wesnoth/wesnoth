@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -85,25 +85,6 @@ class theme
 
 		std::string background_image;
 		std::string tile_image;
-
-		std::string corner_image_top_left;
-		std::string corner_image_bottom_left;
-
-		std::string corner_image_top_right_odd;
-		std::string corner_image_top_right_even;
-
-		std::string corner_image_bottom_right_odd;
-		std::string corner_image_bottom_right_even;
-
-		std::string border_image_left;
-		std::string border_image_right;
-
-		std::string border_image_top_odd;
-		std::string border_image_top_even;
-
-		std::string border_image_bottom_odd;
-		std::string border_image_bottom_even;
-
 	};
 
 public:
@@ -244,14 +225,14 @@ public:
 
 		const std::string& overlay() const { return overlay_; }
 
-		const std::vector<std::string>& items() const { return items_; }
+		const std::vector<config>& items() const { return items_; }
 
 		void set_title(const std::string& new_title) { title_ = new_title; }
 	private:
 		bool button_;
 		bool context_;
 		std::string title_, tooltip_, image_, overlay_;
-		std::vector<std::string> items_;
+		std::vector<config> items_;
 	};
 
 	explicit theme(const config& cfg, const SDL_Rect& screen);
@@ -294,9 +275,9 @@ public:
 	events::generic_event& theme_reset_event() { return theme_reset_event_; }
 
 private:
-	theme::object& find_element(std::string id);
+	theme::object& find_element(const std::string& id);
 	void add_object(const config& cfg);
-	void remove_object(std::string id);
+	void remove_object(const std::string& id);
 	void set_object_location(theme::object& element, std::string rect_str, std::string ref_id);
 
 	//notify observers that the theme has been rebuilt completely

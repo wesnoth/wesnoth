@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -150,7 +150,8 @@ class lua_filestream
 {
 public:
 	lua_filestream(const std::string& fname)
-		: pistream_(filesystem::istream_file(fname))
+		: buff_()
+		, pistream_(filesystem::istream_file(fname))
 	{
 
 	}

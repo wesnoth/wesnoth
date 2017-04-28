@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -25,6 +25,8 @@
 #define DRAWABLE_UNIT_H_INCLUDED
 
 #include "map/location.hpp"
+#include "utils/math.hpp"
+
 #include <map>
 #include <vector>
 
@@ -38,9 +40,6 @@ class unit;
 struct color_t;
 struct SDL_Rect;
 class surface;
-
-# include <SDL_types.h>
-typedef Sint32 fixed_t;
 
 class unit_drawer
 {

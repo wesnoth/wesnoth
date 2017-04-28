@@ -1,5 +1,5 @@
 /*
-Copyright (C) 2003 - 2016 the Battle for Wesnoth Project http://www.wesnoth.org/
+Copyright (C) 2003 - 2017 the Battle for Wesnoth Project http://www.wesnoth.org/
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -23,7 +23,7 @@ See the COPYING file for more details.
 
 #include <ctime>
 
-namespace util {
+namespace utils {
 	inline std::string put_time(struct tm* time, const char* fmt) {
 		char buf[256];
 		if(strftime(buf, 256, fmt, time)) {
@@ -37,7 +37,7 @@ namespace util {
 
 #include <iomanip>
 
-namespace util {
+namespace utils {
 	using std::put_time;
 }
 

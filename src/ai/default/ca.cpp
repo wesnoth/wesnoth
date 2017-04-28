@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2009 - 2017 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -312,7 +312,7 @@ double move_leader_to_goals_phase::evaluate()
 	const pathfind::paths leader_paths(*leader, false, true, current_team());
 
 	std::map<map_location,pathfind::paths> possible_moves;
-	possible_moves.insert(std::pair<map_location,pathfind::paths>(leader->get_location(), leader_paths));
+	possible_moves.emplace(leader->get_location(), leader_paths);
 
 	map_location loc;
 	for (const map_location &l : route.steps)
@@ -474,14 +474,14 @@ double move_leader_to_keep_phase::evaluate()
 		return BAD_SCORE;
 	}
 	//define the next hop to have the lowest cost (0)
-	moves_toward_keep.insert(std::make_pair(0, next_hop));
+	moves_toward_keep.emplace(0, next_hop);
 
 	for (const pathfind::paths::step &dest : leader_paths.destinations) {
 		if (!units_.find(dest.curr).valid()) {
 			route = pathfind::a_star_search(dest.curr, next_hop, 10000.0, calc,
 					resources::gameboard->map().w(), resources::gameboard->map().h(), &allowed_teleports);
 			if (route.move_cost < next_hop_cost) {
-				moves_toward_keep.insert(std::make_pair(route.move_cost, dest.curr));
+				moves_toward_keep.emplace(route.move_cost, dest.curr);
 			}
 		}
 	}
@@ -613,7 +613,7 @@ void get_villages_phase::get_villages(
 			continue;
 		}
 		if(u_itor->side() == get_side() && u_itor->movement_left()) {
-			reachmap.insert(std::make_pair(u_itor->get_location(),	std::vector<map_location>()));
+			reachmap.emplace(u_itor->get_location(),	std::vector<map_location>());
 		}
 	}
 
@@ -720,7 +720,7 @@ void get_villages_phase::find_villages(
 			threat = vuln->second;
 		} else {
 			threat = power_projection(current_loc,enemy_dstsrc);
-			vulnerability.insert(std::pair<map_location,double>(current_loc,threat));
+			vulnerability.emplace(current_loc, threat);
 		}
 
 		const unit_map::const_iterator u = resources::gameboard->units().find(j->second);
@@ -990,7 +990,7 @@ void get_villages_phase::dispatch_complex(
 	for(size_t u = 0; u < unit_count; ++u, ++itor) {
 		units[u] = itor->first;
 		villages_per_unit[u] = itor->second.size();
-		unit_lookup.insert(std::make_pair(villages_per_unit[u], u));
+		unit_lookup.emplace(villages_per_unit[u], u);
 
 		assert(itor->second.size() >= 2);
 
@@ -1631,7 +1631,7 @@ void leader_shares_keep_phase::execute()
 		//for each leader, check if he's allied and can reach our keep
 		for(path_map::const_iterator i = possible_moves.begin(); i != possible_moves.end(); ++i){
 			const unit_map::const_iterator itor = resources::gameboard->units().find(i->first);
-			team &leader_team = resources::gameboard->teams()[itor->side() - 1];
+			team &leader_team = resources::gameboard->get_team(itor->side());
 			if(itor != resources::gameboard->units().end() && itor->can_recruit() && itor->side() != get_side() && (leader_team.total_income() + leader_team.gold() > leader_team.minimum_recruit_price())){
 				pathfind::paths::dest_vect::const_iterator tokeep = i->second.destinations.find(keep);
 				if(tokeep != i->second.destinations.end()){

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -115,10 +115,6 @@
 
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 #include "gui/widgets/debug.hpp"
-#endif
-
-#ifdef HAVE_VISUAL_LEAK_DETECTOR
-#include "vld.h"
 #endif
 
 class end_level_exception;
@@ -259,7 +255,7 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 			}
 
 			LOG_PREPROC << "adding define: " << define << '\n';
-			defines_map.insert(std::make_pair(define, preproc_define(define)));
+			defines_map.emplace(define, preproc_define(define));
 
 			if (define == "SKIP_CORE")
 			{
@@ -670,10 +666,10 @@ static int do_gameloop(const std::vector<std::string>& args)
 
 	plugins_manager plugins_man(new application_lua_kernel);
 
-	plugins_context::Reg const callbacks[] = {
+	plugins_context::Reg const callbacks[] {
 		{ "play_multiplayer",		std::bind(&game_launcher::play_multiplayer, game.get(), game_launcher::MP_CONNECT)},
 	};
-	plugins_context::aReg const accessors[] = {
+	plugins_context::aReg const accessors[] {
 		{ "command_line",		std::bind(&commandline_options::to_config, &cmdline_opts)},
 	};
 
@@ -789,7 +785,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 		 * Certain actions (such as window resizing) set the flag to true, which allows the dialog to reopen with any layout
 		 * changes such as those dictated by window resolution.
 		 */
-		while(dlg.redraw_background()) {
+		while(dlg.get_retval() == gui2::dialogs::title_screen::REDRAW_BACKGROUND) {
 			dlg.show(game->video());
 		}
 
@@ -829,6 +825,8 @@ static int do_gameloop(const std::vector<std::string>& args)
 			break;
 		case gui2::dialogs::title_screen::LAUNCH_GAME:
 			game->launch_game(should_reload);
+			break;
+		case gui2::dialogs::title_screen::REDRAW_BACKGROUND:
 			break;
 		}
 	}
@@ -945,11 +943,6 @@ int wesnoth_main(int argc, char** argv)
 int main(int argc, char** argv)
 #endif
 {
-
-#ifdef HAVE_VISUAL_LEAK_DETECTOR
-	VLDEnable();
-#endif
-
 #ifdef _WIN32
 	(void)argc;
 	(void)argv;
@@ -1084,7 +1077,7 @@ int main(int argc, char** argv)
 		std::cerr << "WML exception:\nUser message: "
 			<< e.user_message << "\nDev message: " << e.dev_message << '\n';
 		error_exit(1);
-	} catch(game_logic::formula_error& e) {
+	} catch(wfl::formula_error& e) {
 		std::cerr << e.what()
 			<< "\n\nGame will be aborted.\n";
 		error_exit(1);

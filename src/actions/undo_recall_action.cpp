@@ -1,3 +1,16 @@
+/*
+   Copyright (C) 2017 the Battle for Wesnoth Project http://www.wesnoth.org/
+
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 2 of the License, or
+   (at your option) any later version.
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY.
+
+   See the COPYING file for more details.
+*/
+
 #include "actions/undo_recall_action.hpp"
 #include "actions/create.hpp"
 
@@ -40,7 +53,7 @@ bool recall_action::undo(int side)
 {
 	game_display & gui = *resources::screen;
 	unit_map &   units = resources::gameboard->units();
-	team &current_team = resources::gameboard->teams()[side-1];
+	team &current_team = resources::gameboard->get_team(side);
 
 	const map_location & recall_loc = route.front();
 	unit_map::iterator un_it = units.find(recall_loc);
@@ -72,47 +85,5 @@ bool recall_action::undo(int side)
 	return true;
 }
 
-/**
- * Redoes this action.
- * @return true on success; false on an error.
- */
-bool recall_action::redo(int side)
-{
-	game_display & gui = *resources::screen;
-	team &current_team = resources::gameboard->teams()[side-1];
-
-	map_location loc = route.front();
-	map_location from = recall_from;
-
-	unit_ptr un = current_team.recall_list().find_if_matches_id(id);
-	if ( !un ) {
-		ERR_NG << "Trying to redo a recall of '" << id
-		       << "', but that unit is not in the recall list.";
-		return false;
-	}
-
-	const std::string &msg = find_recall_location(side, loc, from, *un);
-	if ( msg.empty() ) {
-		resources::recorder->redo(replay_data);
-		replay_data.clear();
-		set_scontext_synced sync;
-		recall_unit(id, current_team, loc, from, true, false);
-
-		// Quick error check. (Abuse of [allow_undo]?)
-		if ( loc != route.front() ) {
-			ERR_NG << "When redoing a recall at " << route.front()
-			       << ", the location was moved to " << loc << ".\n";
-			// Not really fatal, I suppose. Just update the action so
-			// undoing this works.
-			route.front() = loc;
-		}
-		sync.do_final_checkup();
-	} else {
-		gui2::show_transient_message(gui.video(), "", msg);
-		return false;
-	}
-
-	return true;
-}
 }
 }

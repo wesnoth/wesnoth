@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2009 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -86,6 +86,10 @@ bool dispatcher::has_event(const ui_event event, const event_queue_type event_ty
 					  event,
 					  dispatcher_implementation::has_handler(event_type,
 															   *this))
+		   || find<set_event_touch>(
+					  event,
+					  dispatcher_implementation::has_handler(event_type,
+															   *this))
 		   || find<set_event_notification>(
 					  event,
 					  dispatcher_implementation::has_handler(event_type,
@@ -135,7 +139,7 @@ public:
 					dispatcher& dispatcher,
 					const ui_event event,
 					bool& handled,
-					bool& halt)
+					bool& halt) const
 	{
 		functor(dispatcher, event, handled, halt);
 	}
@@ -179,7 +183,7 @@ bool dispatcher::fire(const ui_event event, widget& target)
 class trigger_mouse
 {
 public:
-	trigger_mouse(const point& coordinate) : coordinate_(coordinate)
+	explicit trigger_mouse(const point& coordinate) : coordinate_(coordinate)
 	{
 	}
 
@@ -247,6 +251,43 @@ bool dispatcher::fire(const ui_event event,
 }
 
 /** Helper struct to wrap the functor call. */
+class trigger_touch
+{
+public:
+	trigger_touch(const point& pos, const point& distance)
+		: pos_(pos)
+		, distance_(distance)
+	{
+	}
+
+	void operator()(signal_touch_function functor,
+					dispatcher& dispatcher,
+					const ui_event event,
+					bool& handled,
+					bool& halt)
+	{
+		functor(dispatcher, event, handled, halt, pos_, distance_);
+	}
+
+private:
+	point pos_;
+	point distance_;
+};
+
+bool dispatcher::fire(const ui_event event,
+					   widget& target,
+					   const point& pos,
+					   const point& distance)
+{
+	assert(find<set_event_touch>(event, event_in_set()));
+	return fire_event<signal_touch_function>(
+			event,
+			dynamic_cast<widget*>(this),
+			&target,
+			trigger_touch(pos, distance));
+}
+
+/** Helper struct to wrap the functor call. */
 class trigger_notification
 {
 public:
@@ -254,7 +295,7 @@ public:
 					dispatcher& dispatcher,
 					const ui_event event,
 					bool& handled,
-					bool& halt)
+					bool& halt) const
 	{
 		functor(dispatcher, event, handled, halt, nullptr);
 	}
@@ -274,7 +315,7 @@ bool dispatcher::fire(const ui_event event, widget& target, void*)
 class trigger_message
 {
 public:
-	trigger_message(message& msg) : message_(msg)
+	explicit trigger_message(message& msg) : message_(msg)
 	{
 	}
 

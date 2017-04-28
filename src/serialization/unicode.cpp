@@ -1,7 +1,7 @@
 /*
    Copyright (C) 2003 by David White <dave@whitevine.net>
    Copyright (C) 2005 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
-   Copyright (C) 2005 - 2016 by Philippe Plantier <ayin@anathas.org>
+   Copyright (C) 2005 - 2017 by Philippe Plantier <ayin@anathas.org>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify

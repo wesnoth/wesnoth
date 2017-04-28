@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-11-05 23:29 UTC\n"
+"POT-Creation-Date: 2017-03-23 08:11+0100\n"
 "PO-Revision-Date: 2012-02-28 16:59+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -116,9 +116,9 @@ msgid "Deoran"
 msgstr "Deoran"
 
 #. [side]: type=Horseman Commander, id=Deoran
-#. [side]: id=Deoran
 #. [side]: type=Troll Hero, id=Grek
 #. [side]
+#. [side]: id=Deoran
 #. [side]: type=Lieutenant, id=Plynry
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:37
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:41
@@ -146,12 +146,12 @@ msgid "Urza Mathin"
 msgstr "Urza Mathin"
 
 #. [side]: type=Bandit, id=Urza Mathin
+#. [side]: type=Rogue, id=Urza Fastik
+#. [side]: type=Outlaw, id=Jera Ilras
 #. [side]: type=Outlaw, id=Urza Nalmath
 #. [side]
-#. [side]: type=Rogue, id=Urza Fastik
-#. [side]: type=Outlaw, id=Urza Afalas
 #. [side]: type=Outlaw, id=Tharzo Kalain
-#. [side]: type=Outlaw, id=Jera Ilras
+#. [side]: type=Outlaw, id=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:59
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:63
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:102
@@ -1241,13 +1241,13 @@ msgstr "눈물의 계곡"
 msgid "Mal A’kai"
 msgstr "Mal A’kai"
 
-#. [side]: type=Soulless, id=Gruth
-#. [side]: type=Lich, id=Mal M'Brin
-#. [side]
-#. [side]: type=Soulless, id=Groth
 #. [side]: type=Ancient Lich, id=Mal M'Brin
-#. [side]: type=Lich, id=Mal Tera
+#. [side]: type=Lich, id=Mal M'Brin
+#. [side]: type=Soulless, id=Groth
+#. [side]
 #. [side]: type=Dark Adept, type=Dark Sorcerer, type=Necromancer, id=Mal A'kai
+#. [side]: type=Soulless, id=Gruth
+#. [side]: type=Lich, id=Mal Tera
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:76
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:93
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:129
@@ -1861,10 +1861,10 @@ msgstr ""
 msgid "Death of Urza Afalas"
 msgstr ""
 
-#. [message]: speaker=Urza Afalas
 #. [message]: speaker=unit
+#. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:710
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1134
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1110
 msgid "Now I pay for my crimes. But how many others will also suffer for them?"
 msgstr ""
 
@@ -2477,22 +2477,22 @@ msgid "Get them!"
 msgstr ""
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1161
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1137
 msgid "Thank heaven we have escaped that awful forest!"
 msgstr ""
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1165
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1141
 msgid "Indeed, Afalas, you’ve earned my trust today."
 msgstr ""
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1169
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1145
 msgid "I can only hope for mercy when I return to Westin."
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1174
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1150
 msgid "But there was a dark cloud looming behind Deoran and his men..."
 msgstr ""
 
@@ -2501,8 +2501,8 @@ msgstr ""
 msgid "Into the Depths"
 msgstr "깊은 곳으로"
 
-#. [side]: type=Lich, id=Mal M'Brin
 #. [side]: type=Ancient Lich, id=Mal M'Brin
+#. [side]: type=Lich, id=Mal M'Brin
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:51
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:55
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:51
@@ -3234,7 +3234,7 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:519
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:332
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:321
 #: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:12
 msgid "I have failed my kingdom and duty..."
 msgstr "왕국과 내 의무를 저버리고 말았다..."
@@ -3378,7 +3378,7 @@ msgstr ""
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:225
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:226
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:227
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:299
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:292
 msgid "Disciple of Mebrin"
 msgstr "Mebrin의 추종자"
 
@@ -3415,18 +3415,18 @@ msgid "Send Ethiliel to the Great Tree and parley with Ithelden"
 msgstr "Ethiliel을 큰 나무로 보내어 Ithelden과 협상할 것"
 
 #. [message]: speaker=$new_elf.id
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:317
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:306
 msgid "For every one of us you strike down, more will rise!"
 msgstr "너희가 우리 하나를 쓰러뜨리면 더 많은 자가 일어난다!"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:346
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:335
 #: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:64
 msgid "I have given my all for my kingdom! Avenge me, Deoran!"
 msgstr "왕국을 위해 내 모든 것을 바쳤다! Deoran, 복수를 부탁합니다!"
 
 #. [message]: speaker=Minister Hylas
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:359
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:348
 msgid ""
 "Ithelden’s elves have killed Ethiliel! Now we have no chance to come to an "
 "agreement with them. A war with the Elves is imminent."
@@ -3435,14 +3435,14 @@ msgstr ""
 "어. 엘프들과의 전쟁이 목전이다."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:363
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:352
 msgid ""
 "We are far away from Weldyn. We’ll surely all be killed long before any "
 "reinforcements arrive."
 msgstr ""
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:401
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:390
 msgid ""
 "Take care, Deoran! My people are upset. Killing one will only draw more."
 msgstr ""
@@ -3494,18 +3494,6 @@ msgstr ""
 "통제하는 법도 훈련받았다. 이들은 Wesnth의 각 지방들의 주둔군을 지휘하며 그곳"
 "의 평화를 지킨다."
 
-#. [attack]: type=pierce
-#: data/campaigns/The_South_Guard/units/Horseman_Commander.cfg:30
-#: data/campaigns/The_South_Guard/units/Mounted_General.cfg:31
-msgid "lance"
-msgstr "기창"
-
-#. [attack]: type=impact
-#: data/campaigns/The_South_Guard/units/Horseman_Commander.cfg:41
-#: data/campaigns/The_South_Guard/units/Mounted_General.cfg:42
-msgid "mace"
-msgstr "메이스"
-
 #. [unit_type]: id=Infantry Commander, race=human
 #: data/campaigns/The_South_Guard/units/Infantry_Commander.cfg:4
 msgid "Infantry Commander"
@@ -3525,11 +3513,6 @@ msgstr ""
 #: data/campaigns/The_South_Guard/units/Infantry_Lieutenant.cfg:29
 msgid "glaive"
 msgstr "언월도"
-
-#. [attack]: type=impact
-#: data/campaigns/The_South_Guard/units/Infantry_Commander.cfg:39
-msgid "shield"
-msgstr "방패"
 
 #. [unit_type]: id=Infantry Lieutenant, race=human
 #: data/campaigns/The_South_Guard/units/Infantry_Lieutenant.cfg:4
@@ -3563,11 +3546,6 @@ msgstr ""
 "기사나 영주의 아들들은 17세나 18세가 되자마자 기마와 검을 받고 부하들을 이끌"
 "것을 요구받는다. 패기만만하여 임무를 수행하기 적합한 이들은 Wesnoth 군단의 사"
 "령관이 된다."
-
-#. [attack]: type=pierce
-#: data/campaigns/The_South_Guard/units/Junior_Commander.cfg:30
-msgid "spear"
-msgstr "창"
 
 #. [unit_type]: id=Mounted General, race=human
 #: data/campaigns/The_South_Guard/units/Mounted_General.cfg:4
@@ -3948,6 +3926,18 @@ msgid ""
 "melted and the roads bore their burdens again, a messenger came from King "
 "Haldric."
 msgstr ""
+
+#~ msgid "lance"
+#~ msgstr "기창"
+
+#~ msgid "mace"
+#~ msgstr "메이스"
+
+#~ msgid "shield"
+#~ msgstr "방패"
+
+#~ msgid "spear"
+#~ msgstr "창"
 
 #~ msgid "Take the Citadel at Westin by the end of the ninth turn"
 #~ msgstr "9 턴 안에 Westin 요새를 장악할 것"

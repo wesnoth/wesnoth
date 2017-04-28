@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -104,7 +104,7 @@ static void verify(const unit_map& units, const config& cfg) {
 		u->write(u_cfg);
 
 		bool is_ok = true;
-		static const std::string fields[] = {"type","hitpoints","experience","side",""};
+		static const std::string fields[] {"type","hitpoints","experience","side",""};
 		for(const std::string* str = fields; str->empty() == false; ++str) {
 			if (u_cfg[*str] != un[*str]) {
 				errbuf << "ERROR IN FIELD '" << *str << "' for unit at "
@@ -385,7 +385,7 @@ const std::vector<chat_msg>& replay::build_chat_log() const
 	return message_log;
 }
 
-config replay::get_data_range(int cmd_start, int cmd_end, DATA_TYPE data_type)
+config replay::get_data_range(int cmd_start, int cmd_end, DATA_TYPE data_type) const
 {
 	config res;
 
@@ -404,14 +404,22 @@ config replay::get_data_range(int cmd_start, int cmd_end, DATA_TYPE data_type)
 	return res;
 }
 
-void replay::redo(const config& cfg)
+void replay::redo(const config& cfg, bool set_to_end)
 {
 	assert(base_->get_pos() == ncommands());
+	int old_pos = base_->get_pos();
 	for (const config &cmd : cfg.child_range("command"))
 	{
 		base_->add_child() = cmd;
 	}
-	base_->set_to_end();
+	if(set_to_end) {
+		//The engine does not execute related wml events so mark ad dpendent actions as handled 
+		base_->set_to_end();
+	}
+	else {
+		//The engine does execute related wml events so it needs to reprocess depndent choices 
+		base_->set_pos(old_pos + 1);	
+	}
 
 }
 
@@ -616,7 +624,7 @@ void replay::set_to_end()
 	base_->set_to_end();
 }
 
-bool replay::empty()
+bool replay::empty() const
 {
 	return ncommands() == 0;
 }
@@ -674,7 +682,7 @@ REPLAY_RETURN do_replay(bool one_move)
 REPLAY_RETURN do_replay_handle(bool one_move)
 {
 
-	//team &current_team = resources::gameboard->teams()[side_num - 1];
+	//team &current_team = resources::gameboard->get_team(side_num);
 
 	const int side_num = resources::controller->current_side();
 	while(true)
@@ -804,7 +812,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 
 				replay::process_error(errbuf.str());
 			} else {
-				resources::gameboard->teams()[tval - 1].set_countdown_time(val);
+				resources::gameboard->get_team(tval).set_countdown_time(val);
 			}
 		}
 		else if ((*cfg)["dependent"].to_bool(false))

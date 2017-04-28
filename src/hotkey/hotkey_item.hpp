@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -371,12 +371,11 @@ void add_hotkey(const hotkey_ptr item);
  */
 void del_hotkey(const hotkey_ptr item);
 
-/**
- * Create a new hotkey item for a command from an SDL_Event.
- * @param id The command to bind to.
- * @param event The SDL_Event to base the creation on.
- */
-hotkey_ptr create_hotkey(const std::string &id, SDL_Event &event);
+/** Create a new hotkey item bound to a keyboard key. */
+hotkey_ptr create_hotkey(const std::string& id, SDL_Scancode new_val);
+
+/** Create a new hotkey item bound to a mouse button. */
+hotkey_ptr create_hotkey(const std::string& id, Uint8 new_val);
 
 /**
  * Iterate through the list of hotkeys and return a hotkey that matches
@@ -422,7 +421,7 @@ void clear_hotkeys();
  * "ctrl+l" or "n" or "mouse 1". The comman separated string is of the form "ctrl+l,n,mouse 1".
  * @return The comma separated string of hotkey names.
  */
-std::string get_names(std::string id);
+std::string get_names(const std::string& id);
 
 /**
  * Save the non-default hotkeys to the config.

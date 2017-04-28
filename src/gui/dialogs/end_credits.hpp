@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2016 by the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2016 - 2017 by the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -16,7 +16,7 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 
-#include <SDL.h>
+#include <SDL_keycode.h>
 #include <vector>
 
 class config;
@@ -44,13 +44,13 @@ public:
 
 private:
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
-	virtual const std::string& window_id() const;
+	virtual const std::string& window_id() const override;
 
 	/** Inherited from modal_dialog. */
-	void pre_show(window& window);
+	virtual void pre_show(window& window) override;
 
 	void timer_callback();
-	void key_press_callback(bool&, bool&, const SDL_Keycode key);
+	void key_press_callback(const SDL_Keycode key);
 
 	const std::string& focus_on_;
 

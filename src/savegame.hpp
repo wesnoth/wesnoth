@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by Jörg Hinrichs, refactored from various
+   Copyright (C) 2003 - 2017 by Jörg Hinrichs, refactored from various
    places formerly created by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -191,8 +191,8 @@ protected:
 	/** Customize the standard error message */
 	void set_error_message(const std::string& error_message) { error_message_ = error_message; }
 
-	const std::string& title() { return title_; }
-	const saved_game& gamestate() { return gamestate_; }
+	const std::string& title() const { return title_; }
+	const saved_game& gamestate() const { return gamestate_; }
 
 	/** If there needs to be some data fiddling before saving the game, this is the place to go. */
 	void before_save();

@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003-2005 by David White <dave@whitevine.net>
-   Copyright (C) 2005 - 2016 by Philippe Plantier <ayin@anathas.org>
+   Copyright (C) 2005 - 2017 by Philippe Plantier <ayin@anathas.org>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
@@ -87,7 +87,7 @@ void campaign_controller::report_victory(
 	// want to translate them differently.
 	if(t.carryover_add()) {
 		if(t.carryover_gold() > 0) {
-			goldmsg = vngettext(
+			goldmsg = VNGETTEXT(
 					"You will start the next scenario with $gold "
 					"on top of the defined minimum starting gold.",
 					"You will start the next scenario with $gold "
@@ -95,7 +95,7 @@ void campaign_controller::report_victory(
 					t.carryover_gold(), symbols);
 
 		} else {
-			goldmsg = vngettext(
+			goldmsg = VNGETTEXT(
 					"You will start the next scenario with "
 					"the defined minimum starting gold.",
 					"You will start the next scenario with "
@@ -103,7 +103,7 @@ void campaign_controller::report_victory(
 					t.carryover_gold(), symbols);
 		}
 	} else {
-		goldmsg = vngettext(
+		goldmsg = VNGETTEXT(
 			"You will start the next scenario with $gold "
 			"or its defined minimum starting gold, "
 			"whichever is higher.",
@@ -372,7 +372,7 @@ LEVEL_RESULT campaign_controller::play_game()
 
 				if (!connect_engine->can_start_game() || (game_config::debug && game_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER)) {
 					// Opens staging dialog to allow users to make an adjustments for scenario.
-					if(!mp::goto_mp_connect(video_, *connect_engine, game_config_, mp_info_ ? &mp_info_->connection : nullptr, state_.mp_settings().name)) {
+					if(!mp::goto_mp_connect(video_, *connect_engine, game_config_, mp_info_ ? &mp_info_->connection : nullptr)) {
 						return LEVEL_RESULT::QUIT;
 					}
 				} else {

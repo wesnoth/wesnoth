@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Copyright (C) 2009 - 2017 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -53,7 +53,6 @@ class game_lua_kernel : public lua_kernel_base
 	reports & reports_;
 
 	// Private functions to ease access to parts of game_state
-	game_board & board();
 	unit_map & units();
 	game_data & gamedata();
 	tod_manager & tod_man();
@@ -141,8 +140,8 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_get_villages(lua_State *L);
 	int intf_match_location(lua_State *L);
 	int intf_match_side(lua_State *L);
+	int intf_set_side_id(lua_State *L);
 	int intf_modify_ai_wml(lua_State *L);
-	int intf_modify_side(lua_State *L);
 	int intf_get_sides(lua_State* L);
 	int intf_add_tile_overlay(lua_State *L);
 	int intf_remove_tile_overlay(lua_State *L);
@@ -170,6 +169,9 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_get_sound_source(lua_State *L);
 	int intf_log(lua_State *L);
 	int intf_toggle_fog(lua_State *L, const bool clear);
+	int intf_get_fog_or_shroud(lua_State *L, bool fog);
+	int intf_log_replay(lua_State* L);
+	int intf_zoom(lua_State* L);
 
 	//private helpers
 	std::string synced_state();
@@ -177,6 +179,7 @@ class game_lua_kernel : public lua_kernel_base
 	std::vector<int> get_sides_vector(const vconfig& cfg);
 
 public:
+	game_board & board();
 	std::vector<team> & teams();
 	const gamemap & map() const;
 	/**

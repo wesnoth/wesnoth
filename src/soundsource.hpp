@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2016 by Karol Nowak <grzywacz@sul.uni.lodz.pl>
+   Copyright (C) 2006 - 2017 by Karol Nowak <grzywacz@sul.uni.lodz.pl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -59,7 +59,7 @@ public:
 	positional_source(const sourcespec &spec);
 	~positional_source();
 
-	bool is_global();
+	bool is_global() const;
 
 	void update(unsigned int time, const display &disp);
 	void update_positions(unsigned int time, const display &disp);
@@ -76,7 +76,7 @@ public:
 class manager : public events::observer
 {
 
-	typedef std::map<std::string, positional_source *> positional_source_map;
+	typedef std::map<std::string, std::unique_ptr<positional_source>> positional_source_map;
 	typedef positional_source_map::iterator            positional_source_iterator;
 	typedef positional_source_map::const_iterator      positional_source_const_iterator;
 

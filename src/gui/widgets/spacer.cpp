@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -28,28 +28,45 @@ namespace gui2
 
 REGISTER_WIDGET(spacer)
 
+bool spacer::fills_available_space()
+{
+	return (!width_.has_formula() && width_() == 0) && (!height_.has_formula() && height_() == 0);
+}
+
 void spacer::request_reduce_width(const unsigned maximum_width)
 {
-	if(best_size_ != point()) {
-		// This spacer is of fixed size, do nothing.
-	} else {
+	// Do nothing unless this widget fills all available space (has non-size size).
+	if(fills_available_space()) {
 		styled_widget::request_reduce_width(maximum_width);
 	}
 }
 
 void spacer::request_reduce_height(const unsigned maximum_height)
 {
-	if(best_size_ != point()) {
-		// This spacer is of fixed size, do nothing.
-	} else {
+	// Do nothing unless this widget fills all available space (has non-size size).
+	if(fills_available_space()) {
 		styled_widget::request_reduce_height(maximum_height);
 	}
 }
 
 point spacer::calculate_best_size() const
 {
-	return best_size_ != point() ? best_size_
-									  : styled_widget::calculate_best_size();
+	const wfl::map_formula_callable& size = get_screen_size_variables();
+
+	unsigned width = width_(size);
+	unsigned height = height_(size);
+
+	point best_size;
+
+	if(width || height) {
+		best_size = point(width, height);
+	}
+
+	if(best_size != point()) {
+		return best_size;
+	}
+
+	return styled_widget::calculate_best_size();
 }
 
 void spacer::set_active(const bool /*active*/)
@@ -161,18 +178,9 @@ builder_spacer::builder_spacer(const config& cfg)
 
 widget* builder_spacer::build() const
 {
-	spacer* widget = new spacer();
+	spacer* widget = new spacer(width_, height_);
 
 	init_control(widget);
-
-	const game_logic::map_formula_callable& size = get_screen_size_variables();
-
-	const unsigned width = width_(size);
-	const unsigned height = height_(size);
-
-	if(width || height) {
-		widget->set_best_size(point(width, height));
-	}
 
 	DBG_GUI_G << "Window builder: placed spacer '" << id
 			  << "' with definition '" << definition << "'.\n";

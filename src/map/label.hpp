@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -22,10 +22,9 @@
 
 #include <map>
 #include <string>
-#include <SDL.h>
+#include <SDL_rect.h>
 
 class config;
-class display;
 class display_context;
 class team;
 class terrain_label;
@@ -38,7 +37,7 @@ public:
 	typedef std::map<std::string,label_map> team_label_map;
 
 	map_labels(const map_labels&);
-	map_labels(const display& disp, const team*);
+	map_labels(const team*);
 	~map_labels();
 
 	map_labels& operator=(const map_labels&);
@@ -73,9 +72,6 @@ public:
 
 	bool visible_global_label(const map_location&) const;
 
-
-	const display& disp() const;
-
 	const std::string& team_name() const;
 	const std::vector<std::string>& all_categories() const;
 
@@ -92,7 +88,6 @@ private:
 	// Note: this is not an overload of get_label() so that we do not block
 	//       outsiders from calling get_label for a non-const map_labels object.
 
-	const display& disp_;
 	const team* team_;
 
 	team_label_map labels_;

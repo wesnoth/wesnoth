@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2008 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -15,7 +15,7 @@
 #ifndef FORMULA_FWD_HPP_INCLUDED
 #define FORMULA_FWD_HPP_INCLUDED
 
-namespace game_logic {
+namespace wfl {
 
 class formula_debugger;
 

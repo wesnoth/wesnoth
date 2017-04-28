@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -15,8 +15,8 @@
 #define GETTEXT_DOMAIN "wesnoth-test"
 
 #include <boost/test/unit_test.hpp>
-#include "random_new_synced.hpp"
-#include "random_new_deterministic.hpp"
+#include "random_synced.hpp"
+#include "random_deterministic.hpp"
 #include "config.hpp"
 #include <sstream>
 #include <iomanip>
@@ -28,7 +28,7 @@ BOOST_AUTO_TEST_SUITE( rng )
 */
 BOOST_AUTO_TEST_CASE( validate_mt19937 )
 {
-	boost::mt19937 rng;
+	std::mt19937 rng;
 	for (int i = 0; i < 9999 ; i++) {
 		rng();
 	}
@@ -45,7 +45,7 @@ BOOST_AUTO_TEST_CASE( test_mt_rng_seed_manip )
 
 	std::string seed_str = stream.str();
 
-	rand_rng::mt_rng rng;
+	randomness::mt_rng rng;
 	rng.seed_random(seed_str);
 
 	BOOST_CHECK (rng.get_random_seed() == seed);
@@ -91,7 +91,7 @@ BOOST_AUTO_TEST_CASE( test_mt_rng_config_seed_manip )
 	cfg["random_seed"] = seed_str;
 	cfg["random_calls"] = 0;
 
-	rand_rng::mt_rng rng(cfg);
+	randomness::mt_rng rng(cfg);
 
 	BOOST_CHECK (rng.get_random_seed() == seed);
 	BOOST_CHECK (rng.get_random_seed_str() == seed_str);
@@ -112,7 +112,7 @@ BOOST_AUTO_TEST_CASE( test_mt_rng_config_seed_manip )
 	cfg2["random_seed"] = seed_str3;
 	cfg2["random_calls"] = 0;
 
-	rand_rng::mt_rng rng2(cfg2);
+	randomness::mt_rng rng2(cfg2);
 
 	BOOST_CHECK (rng2.get_random_seed() == seed3);
 	BOOST_CHECK (rng2.get_random_seed_str() == seed_str3);
@@ -135,8 +135,8 @@ BOOST_AUTO_TEST_CASE( test_mt_rng_reproducibility )
 	cfg["random_seed"] = "5eedf00d";
 	cfg["random_calls"] = 0;
 
-	rand_rng::mt_rng rng1(cfg);
-	rand_rng::mt_rng rng2(cfg);
+	randomness::mt_rng rng1(cfg);
+	randomness::mt_rng rng2(cfg);
 
 	BOOST_CHECK(rng1 == rng2);
 	for (int i = 0; i < 10 ; i++) {
@@ -150,8 +150,8 @@ BOOST_AUTO_TEST_CASE( test_mt_rng_reproducibility2 )
 	cfg["random_seed"] = "18da5eed";
 	cfg["random_calls"] = 9999;
 
-	rand_rng::mt_rng rng1(cfg);
-	rand_rng::mt_rng rng2(cfg);
+	randomness::mt_rng rng1(cfg);
+	randomness::mt_rng rng2(cfg);
 
 	BOOST_CHECK(rng1 == rng2);
 	for (int i = 0; i < 10 ; i++) {
@@ -161,12 +161,12 @@ BOOST_AUTO_TEST_CASE( test_mt_rng_reproducibility2 )
 
 BOOST_AUTO_TEST_CASE( test_mt_rng_reproducibility3 )
 {
-	rand_rng::mt_rng rng1;
+	randomness::mt_rng rng1;
 	config cfg;
 	cfg["random_seed"] = rng1.get_random_seed_str();
 	cfg["random_calls"] = rng1.get_random_calls();
 
-	rand_rng::mt_rng rng2(cfg);
+	randomness::mt_rng rng2(cfg);
 
 	BOOST_CHECK(rng1 == rng2);
 	for (int i = 0; i < 10 ; i++) {
@@ -176,7 +176,7 @@ BOOST_AUTO_TEST_CASE( test_mt_rng_reproducibility3 )
 
 BOOST_AUTO_TEST_CASE( test_mt_rng_reproducibility4 )
 {
-	rand_rng::mt_rng rng1;
+	randomness::mt_rng rng1;
 
 	for (int i = 0; i < 5; i++) {
 		rng1.get_next_random();
@@ -186,7 +186,7 @@ BOOST_AUTO_TEST_CASE( test_mt_rng_reproducibility4 )
 	cfg["random_seed"] = rng1.get_random_seed_str();
 	cfg["random_calls"] = rng1.get_random_calls();
 
-	rand_rng::mt_rng rng2(cfg);
+	randomness::mt_rng rng2(cfg);
 
 	BOOST_CHECK(rng1 == rng2);
 	BOOST_CHECK(rng1.get_next_random() == rng2.get_next_random());
@@ -198,7 +198,7 @@ BOOST_AUTO_TEST_CASE( test_mt_rng_reproducibility5 )
 	cfg["random_seed"] = "5eedc0de";
 	cfg["random_calls"] = 0;
 
-	rand_rng::mt_rng rng(cfg);
+	randomness::mt_rng rng(cfg);
 
 	for (int i = 0; i < 9999 ; i++) {
 		rng.get_next_random();
@@ -208,7 +208,7 @@ BOOST_AUTO_TEST_CASE( test_mt_rng_reproducibility5 )
 	cfg2["random_seed"] = rng.get_random_seed_str();
 	cfg2["random_calls"] = rng.get_random_calls();
 
-	rand_rng::mt_rng rng2(cfg2);
+	randomness::mt_rng rng2(cfg2);
 
 	uint32_t result1 = rng.get_next_random();
 	uint32_t result2 = rng2.get_next_random();
@@ -224,7 +224,7 @@ BOOST_AUTO_TEST_CASE( test_mt_rng_reproducibility5 )
 
 	uint32_t result3 = rng.get_next_random();
 
-	rand_rng::mt_rng rng3(cfg_save);
+	randomness::mt_rng rng3(cfg_save);
 	uint32_t result4 = rng3.get_next_random();
 
 	BOOST_CHECK (rng == rng3);
@@ -241,7 +241,7 @@ void validate_seed_string(std::string seed_str)
 	cfg["random_seed"] = seed_str;
 	cfg["random_calls"] = 0;
 
-	rand_rng::mt_rng rng1(cfg);
+	randomness::mt_rng rng1(cfg);
 
 	for (int i = 0; i < 9999 ; i++) {
 		rng1.get_next_random();
@@ -251,7 +251,7 @@ void validate_seed_string(std::string seed_str)
 	cfg2["random_seed"] = rng1.get_random_seed_str();
 	cfg2["random_calls"] = rng1.get_random_calls();
 
-	rand_rng::mt_rng rng2(cfg2);
+	randomness::mt_rng rng2(cfg2);
 
 	for (int i = 0; i < 9999 ; i++) {
 		rng1.get_next_random();
@@ -295,8 +295,8 @@ std::string validate_get_random_int_seed_generator()
 
 /**
  *  This test and the next validate that we are getting the correct values
- *  from the get_random_int function, in the class random_new.
- *  We test both subclasses of random_new.
+ *  from the get_random_int function, in the class random.
+ *  We test both subclasses of random.
  *  If these tests fail but the seed manipulation tests all pass,
  *  and validate_mt19937 passes, then it suggests that the implementation
  *  of get_random_int may not be working properly on your platform.
@@ -307,9 +307,9 @@ BOOST_AUTO_TEST_CASE( validate_get_random_int )
 	cfg["random_seed"] = validate_get_random_int_seed_generator();
 	cfg["random_calls"] = validation_get_random_int_num_draws;
 
-	rand_rng::mt_rng mt_(cfg);
+	randomness::mt_rng mt_(cfg);
 
-	std::shared_ptr<random_new::rng> gen_ (new random_new::rng_deterministic(mt_));
+	std::shared_ptr<randomness::rng> gen_ (new randomness::rng_deterministic(mt_));
 
 	int val = gen_->get_random_int(0, validation_get_random_int_max);
 	BOOST_CHECK_EQUAL ( val , validation_get_random_int_correct_answer );
@@ -317,7 +317,7 @@ BOOST_AUTO_TEST_CASE( validate_get_random_int )
 
 BOOST_AUTO_TEST_CASE( validate_get_random_int2 )
 {
-	std::shared_ptr<random_new::rng> gen_ (new random_new::synced_rng(validate_get_random_int_seed_generator));
+	std::shared_ptr<randomness::rng> gen_ (new randomness::synced_rng(validate_get_random_int_seed_generator));
 
 	for (int i = 0; i < validation_get_random_int_num_draws; i++) {
 		gen_->next_random();

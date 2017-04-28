@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Copyright (C) 2009 - 2017 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -28,6 +28,7 @@ class game_lua_kernel;
 class play_controller;
 class fake_unit_manager;
 class tod_manager;
+class unit_map;
 class persist_manager;
 class game_classification;
 struct mp_game_settings;
@@ -55,13 +56,13 @@ namespace resources
 	extern game_classification    *classification;
 	extern game_display           *screen;
 	extern filter_context	      *filter_con;
-	extern const mp_game_settings *mp_settings;
 	extern soundsource::manager   *soundsources;
 	extern replay                 *recorder;
 	extern fake_unit_manager      *fake_units;
 	extern ::tod_manager          *tod_manager;
 	extern pathfind::manager      *tunnels;
 	extern actions::undo_list     *undo_stack;
+	extern unit_map               *units;
 	extern std::shared_ptr<wb::manager> whiteboard;
 	extern bool                   simulation_;
 }

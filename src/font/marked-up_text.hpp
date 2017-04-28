@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -25,7 +25,7 @@ class surface;
 #include <string>
 #include "serialization/unicode_types.hpp"
 
-#include <SDL.h>
+#include <SDL_rect.h>
 
 namespace font {
 
@@ -91,9 +91,6 @@ bool is_format_char(char c);
  * @retval false                  Input-char is a not CJK char.
  */
 bool is_cjk_char(const ucs4::char_t ch);
-
-/** Create string of color-markup, such as "<255,255,0>" for yellow. */
-std::string color2markup(const color_t &color);
 
 /**
  * Wrap text.

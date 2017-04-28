@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -48,7 +48,7 @@ struct message_implementation
 	 * @param id                  The id of the button.
 	 */
 	static void init_button(window& window,
-							message::tbutton_status& button_status,
+							message::button_status& button_status,
 							const std::string& id)
 	{
 		button_status.ptr = find_widget<button>(&window, id, false, true);
@@ -136,7 +136,7 @@ void message::set_button_retval(const button_id button, const int retval)
 	}
 }
 
-message::tbutton_status::tbutton_status()
+message::button_status::button_status()
 	: ptr(nullptr)
 	, caption()
 	, visible(widget::visibility::invisible)
@@ -185,16 +185,14 @@ int show_message(CVideo& video,
 		case message::ok_cancel_buttons:
 			dlg.set_button_visible(message::ok, widget::visibility::visible);
 			dlg.set_button_caption(message::ok, _("OK"));
-		/* FALL DOWN */
+			FALLTHROUGH;
 		case message::cancel_button:
-			dlg.set_button_visible(message::cancel,
-								   widget::visibility::visible);
+			dlg.set_button_visible(message::cancel, widget::visibility::visible);
 			break;
 		case message::yes_no_buttons:
 			dlg.set_button_visible(message::ok, widget::visibility::visible);
 			dlg.set_button_caption(message::ok, _("Yes"));
-			dlg.set_button_visible(message::cancel,
-								   widget::visibility::visible);
+			dlg.set_button_visible(message::cancel,  widget::visibility::visible);
 			dlg.set_button_caption(message::cancel, _("No"));
 			break;
 	}

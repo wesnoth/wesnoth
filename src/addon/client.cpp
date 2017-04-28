@@ -19,7 +19,9 @@
 #include "cursor.hpp"
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
+#include "gui/dialogs/addon/install_dependencies.hpp"
 #include "gui/dialogs/message.hpp"
+#include "gui/widgets/window.hpp"
 #include "log.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/string_utils.hpp"
@@ -155,8 +157,7 @@ bool addons_client::delete_remote_addon(const std::string& id, std::string& resp
 {
 	response_message.clear();
 
-	config cfg;
-	get_addon_pbl_info(id, cfg);
+	config cfg = get_addon_pbl_info(id);
 
 	utils::string_map i18n_symbols;
 	i18n_symbols["addon_title"] = cfg["title"];
@@ -259,6 +260,179 @@ bool addons_client::install_addon(config& archive_cfg, const addon_info& info)
 	LOG_ADDONS << "unpacking finished\n";
 
 	return true;
+}
+
+bool addons_client::try_fetch_addon(const addon_info & addon)
+{
+	config archive;
+
+	if(!(
+		download_addon(archive, addon.id, addon.title, !is_addon_installed(addon.id)) &&
+		install_addon(archive, addon)
+		)) {
+		const std::string& server_error = get_last_server_error();
+		if(!server_error.empty()) {
+			gui2::show_error_message(v_,
+				_("The server responded with an error:") + "\n" + server_error);
+		}
+		return false;
+	} else {
+		return true;
+	}
+}
+
+addons_client::install_result addons_client::do_resolve_addon_dependencies(const addons_list& addons, const addon_info& addon)
+{
+	install_result result;
+	result.outcome = install_outcome::success;
+	result.wml_changed = false;
+
+	std::unique_ptr<cursor::setter> cursor_setter(new cursor::setter(cursor::WAIT));
+
+	// TODO: We don't currently check for the need to upgrade. I'll probably
+	// work on that when implementing dependency tiers later.
+
+	const std::set<std::string>& deps = addon.resolve_dependencies(addons);
+
+	std::vector<std::string> missing_deps;
+	std::vector<std::string> broken_deps;
+
+	for(const std::string& dep : deps) {
+		if(!is_addon_installed(dep)) {
+			if(addons.find(dep) != addons.end()) {
+				missing_deps.push_back(dep);
+			} else {
+				broken_deps.push_back(dep);
+			}
+		}
+	}
+
+	cursor_setter.reset();
+
+	if(!broken_deps.empty()) {
+		std::string broken_deps_report;
+
+		broken_deps_report = _n(
+			"The selected add-on has the following dependency, which is not currently installed or available from the server. Do you wish to continue?",
+			"The selected add-on has the following dependencies, which are not currently installed or available from the server. Do you wish to continue?",
+			broken_deps.size());
+		broken_deps_report += "\n";
+
+		for(const std::string& broken_dep_id : broken_deps) {
+			broken_deps_report += "\n    " + font::unicode_bullet + " " + make_addon_title(broken_dep_id);
+		}
+
+		if(gui2::show_message(v_, _("Broken Dependencies"), broken_deps_report, gui2::dialogs::message::yes_no_buttons) != gui2::window::OK) {
+			result.outcome = install_outcome::abort;
+			return result; // canceled by user
+		}
+	}
+
+	if(missing_deps.empty()) {
+		// No dependencies to install, carry on.
+		return result;
+	}
+
+	{
+		addons_list options;
+		for(const std::string& dep : missing_deps) {
+			const addon_info& missing_addon = addons.at(dep);
+			options[dep] = missing_addon;
+		}
+
+		gui2::dialogs::install_dependencies dlg(options);
+		bool cont = dlg.show(v_);
+		if(!cont) {
+			return result; // the user has chosen to continue without installing anything.
+		}
+	}
+
+	//
+	// Install dependencies now.
+	//
+
+	std::vector<std::string> failed_titles;
+
+	for(const std::string& dep : missing_deps) {
+		const addon_info& missing_addon = addons.at(dep);
+
+		if(!try_fetch_addon(missing_addon)) {
+			failed_titles.push_back(missing_addon.title);
+		} else {
+			result.wml_changed = true;
+		}
+	}
+
+	if(!failed_titles.empty()) {
+		const std::string& failed_deps_report = _n(
+			"The following dependency could not be installed. Do you still wish to continue?",
+			"The following dependencies could not be installed. Do you still wish to continue?",
+			failed_titles.size()) + std::string("\n\n") + utils::bullet_list(failed_titles);
+
+		result.outcome = gui2::show_message(v_, _("Dependencies Installation Failed"), failed_deps_report, gui2::dialogs::message::yes_no_buttons) == gui2::window::OK ? install_outcome::success : install_outcome::abort; // If the user cancels, return abort. Otherwise, return success, since the user chose to ignore the failure.
+		return result;
+	}
+
+	return result;
+}
+
+bool addons_client::do_check_before_overwriting_addon(const addon_info& addon)
+{
+	const std::string& addon_id = addon.id;
+
+	const bool pbl = have_addon_pbl_info(addon_id);
+	const bool vcs = have_addon_in_vcs_tree(addon_id);
+
+	if(!pbl && !vcs) {
+		return true;
+	}
+
+	utils::string_map symbols;
+	symbols["addon"] = addon.title;
+	std::string text;
+	std::vector<std::string> extra_items;
+
+	text = vgettext("The add-on '$addon|' is already installed and contains additional information that will be permanently lost if you continue:", symbols);
+	text += "\n\n";
+
+	if(pbl) {
+		extra_items.push_back(_("Publishing information file (.pbl)"));
+	}
+
+	if(vcs) {
+		extra_items.push_back(_("Version control system (VCS) information"));
+	}
+
+	text += utils::bullet_list(extra_items) + "\n\n";
+	text += _("Do you really wish to continue?");
+
+	return gui2::show_message(v_, _("Confirm"), text, gui2::dialogs::message::yes_no_buttons) == gui2::window::OK;
+}
+
+addons_client::install_result addons_client::install_addon_with_checks(const addons_list& addons, const addon_info& addon)
+{
+	if(!(do_check_before_overwriting_addon(addon))) {
+		// Just do nothing and leave.
+		install_result result;
+		result.outcome = install_outcome::abort;
+		result.wml_changed = false;
+
+		return result;
+	}
+
+	// Resolve any dependencies
+	install_result res = do_resolve_addon_dependencies(addons, addon);
+	if(res.outcome != install_outcome::success) { // this function only returns SUCCESS and ABORT as outcomes
+		return res; // user aborted
+	}
+
+	if(!try_fetch_addon(addon)) {
+		res.outcome = install_outcome::failure;
+		return res; //wml_changed should have whatever value was obtained in resolving dependencies
+	} else {
+		res.wml_changed = true;
+		return res; //we successfully installed something, so now the wml was definitely changed
+	}
 }
 
 bool addons_client::update_last_error(config& response_cfg)

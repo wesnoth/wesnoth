@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -147,7 +147,7 @@ static void shrink_cache()
 	for(tcache::iterator itor = cache.begin(); itor != cache.end(); ++itor) {
 
 		itor->second.age /= 2;
-		items.push_back(std::make_pair(itor->second.age, itor));
+		items.emplace_back(itor->second.age, itor);
 	}
 
 	std::partial_sort(items.begin(),
@@ -208,7 +208,7 @@ const surface minimap::get_image(const int w, const int h) const
 	{
 		const gamemap map(std::make_shared<terrain_type_data>(*terrain_), map_data_);
 		const surface surf = image::getMinimap(w, h, map, nullptr);
-		cache.insert(std::make_pair(key, value_type(surf)));
+		cache.emplace(key, value_type(surf));
 #ifdef DEBUG_MINIMAP_CACHE
 		std::cerr << '-';
 #endif
@@ -287,7 +287,7 @@ minimap_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 {
 	// Note the order should be the same as the enum state_t in minimap.hpp.
-	state.push_back(state_definition(cfg.child("state_enabled")));
+	state.emplace_back(cfg.child("state_enabled"));
 }
 
 // }---------- BUILDER -----------{

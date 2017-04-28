@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2009 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -107,6 +107,7 @@ struct dispatcher_implementation
 
 	IMPLEMENT_EVENT_SIGNAL_WRAPPER(mouse)
 	IMPLEMENT_EVENT_SIGNAL_WRAPPER(keyboard)
+	IMPLEMENT_EVENT_SIGNAL_WRAPPER(touch)
 	IMPLEMENT_EVENT_SIGNAL_WRAPPER(notification)
 	IMPLEMENT_EVENT_SIGNAL_WRAPPER(message)
 
@@ -311,7 +312,7 @@ build_event_chain(const ui_event event, widget* dispatcher, widget* w)
 							 dispatcher::event_queue_type(dispatcher::pre
 													  | dispatcher::post))) {
 
-			result.push_back(std::make_pair(w, event));
+			result.emplace_back(w, event);
 		}
 	}
 
@@ -384,7 +385,7 @@ build_event_chain<signal_message_function>(const ui_event event,
 							 dispatcher::event_queue_type(dispatcher::pre
 													  | dispatcher::post))) {
 
-			result.insert(result.begin(), std::make_pair(w, event));
+			result.emplace(result.begin(), w, event);
 		}
 	}
 
@@ -552,14 +553,14 @@ fire_event_double_click(widget* dispatcher, widget* wgt, F functor)
 							dispatcher::event_queue_type(dispatcher::pre
 													 | dispatcher::post))) {
 
-				event_chain.push_back(std::make_pair(w, double_click));
+				event_chain.emplace_back(w, double_click);
 			}
 		} else {
 			if(w->has_event(click,
 							dispatcher::event_queue_type(dispatcher::pre
 													 | dispatcher::post))) {
 
-				event_chain.push_back(std::make_pair(w, click));
+				event_chain.emplace_back(w, click);
 			}
 		}
 	}

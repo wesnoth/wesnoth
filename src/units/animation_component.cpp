@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -23,7 +23,7 @@
 
 const unit_animation* unit_animation_component::choose_animation(const display& disp, const map_location& loc,const std::string& event,
 		const map_location& second_loc,const int value,const unit_animation::hit_type hit,
-		const attack_type* attack, const attack_type* second_attack, int swing_num)
+		const_attack_ptr attack, const_attack_ptr second_attack, int swing_num)
 {
 	// Select one of the matching animations at random
 	std::vector<const unit_animation*> options;
@@ -48,6 +48,7 @@ const unit_animation* unit_animation_component::choose_animation(const display& 
 void unit_animation_component::set_standing(bool with_bars)
 {
 	display *disp = display::get_singleton();
+	if(disp == nullptr) return;
 	if (preferences::show_standing_animations()&& !u_.incapacitated()) {
 		start_animation(INT_MAX, choose_animation(*disp, u_.loc_, "standing"),
 			with_bars,  "", {0,0,0}, STATE_STANDING);

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2009 - 2017 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -25,15 +25,15 @@
 #include <memory>
 #include <string>
 
-class variant;
 
-namespace game_logic {
+namespace wfl {
 
 class formula_debugger;
 class debug_info;
 class formula_expression;
 class formula;
 class formula_callable;
+class variant;
 
 class base_breakpoint;
 
@@ -48,6 +48,6 @@ variant evaluate_formula_callback(formula_debugger &fdb, const formula &f, const
 variant evaluate_formula_callback(formula_debugger &fdb, const formula &f);
 
 
-} // end of namespace game_logic
+} // end of namespace wfl
 
 #endif

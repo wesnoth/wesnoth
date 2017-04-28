@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2009 - 2017 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -49,7 +49,7 @@ public:
 private:
         const config &cfg_;
 	formula_ai &fai_;
-	game_logic::const_formula_ptr move_formula_;
+	wfl::const_formula_ptr move_formula_;
 
 };
 

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2010 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,6 +18,7 @@
 
 #include "config.hpp"
 #include "game_preferences.hpp"
+#include "random.hpp"
 #include "serialization/string_utils.hpp"
 
 namespace gui2
@@ -67,7 +68,7 @@ std::vector<game_tip> shuffle(const std::vector<game_tip>& tips)
 		}
 	}
 
-	std::random_shuffle(result.begin(), result.end());
+	std::shuffle(result.begin(), result.end(), randomness::rng::default_instance());
 	return result;
 }
 

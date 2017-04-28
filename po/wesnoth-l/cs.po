@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-11-05 23:28 UTC\n"
+"POT-Creation-Date: 2017-03-23 08:11+0100\n"
 "PO-Revision-Date: 2014-08-23 07:58+0200\n"
 "Last-Translator: Honza <Honza-mistic@seznam.cz>\n"
 "Language-Team: Mistic\n"
@@ -481,14 +481,14 @@ msgstr ""
 msgid "Civil Disobedience"
 msgstr "Občanská neposlušnost"
 
+#. [side]: type=Highwayman, id=Baldras
 #. [side]: type=Bandit_Peasant, id=Baldras
 #. [side]
 #. [side]: type=Bandit, id=Baldras
-#. [side]: type=Highwayman_Peasant, id=Relana
 #. [side]: type=General, id=Lord Maddock
 #. [side]: type=Rogue, id=Hans
+#. [side]: type=Highwayman_Peasant, id=Relana
 #. [side]: type=Shadow Lord, id=Helicrom
-#. [side]: type=Highwayman, id=Baldras
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:26
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:61
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:27
@@ -511,12 +511,12 @@ msgstr "Rebelové"
 msgid "Tarwen"
 msgstr "Tarwen"
 
+#. [side]: type=Royal Guard, id=Archarel
+#. [side]: type=Iron Mauler, id=Linneus
 #. [side]: type=Cavalier, id=Tarwen
 #. [side]: type=General, id=Kestrel
 #. [side]: type=Master Bowman, id=Quentin
 #. [side]
-#. [side]: type=Royal Guard, id=Archarel
-#. [side]: type=Iron Mauler, id=Linneus
 #. [side]: type=General, id=Dommel
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:40
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:80
@@ -2446,15 +2446,9 @@ msgstr ""
 "koní, jež povstaly nečistými silami ze země spolu s nimi a vydali se šířit "
 "strach a zkázu."
 
-#. [attack]: type=blade
-#: data/campaigns/Liberty/units/Bone_Knight.cfg:30
-#: data/campaigns/Liberty/units/Skeleton_Rider.cfg:40
-msgid "axe"
-msgstr "sekera"
-
 # hmmm... :-/
 #. [attack]: type=impact
-#: data/campaigns/Liberty/units/Bone_Knight.cfg:39
+#: data/campaigns/Liberty/units/Bone_Knight.cfg:41
 msgid "trample"
 msgstr "dupot"
 
@@ -2477,18 +2471,13 @@ msgstr ""
 "zatímco sbírají dost bezbožné síly, aby se stali rytíři Smrti. Při procesu "
 "přeměny dosáhnou Rytířskou moc, zahrnující velení podřízeným."
 
-#. [attack]: type=blade
-#: data/campaigns/Liberty/units/Death_Squire.cfg:31
-msgid "sword"
-msgstr "meč"
-
 #. [unit_type]: id=Rogue Mage, race=human
 #: data/campaigns/Liberty/units/Rogue_Mage.cfg:5
 msgid "Rogue Mage"
 msgstr "Potulný mág"
 
 #. [unit_type]: id=Rogue Mage, race=human
-#: data/campaigns/Liberty/units/Rogue_Mage.cfg:18
+#: data/campaigns/Liberty/units/Rogue_Mage.cfg:17
 msgid ""
 "Some mages are thrown out of the mage’s guild for attempting to practice "
 "forbidden arts. Now completely outside the law, these rogue mages do "
@@ -2503,14 +2492,8 @@ msgstr ""
 "smrtící, zatímco jejich banditství je zdokonalilo v dovednostech s krátkým "
 "mečem."
 
-#. [attack]: type=blade
-#: data/campaigns/Liberty/units/Rogue_Mage.cfg:23
-#: data/campaigns/Liberty/units/Shadow_Mage.cfg:32
-msgid "short sword"
-msgstr "krátký meč"
-
 #. [attack]: type=cold
-#: data/campaigns/Liberty/units/Rogue_Mage.cfg:32
+#: data/campaigns/Liberty/units/Rogue_Mage.cfg:33
 msgid "ice blast"
 msgstr "ledová koule"
 
@@ -2520,7 +2503,7 @@ msgid "Shadow Lord"
 msgstr "Stínový lord"
 
 #. [unit_type]: id=Shadow Lord, race=human
-#: data/campaigns/Liberty/units/Shadow_Lord.cfg:22
+#: data/campaigns/Liberty/units/Shadow_Lord.cfg:21
 msgid ""
 "Few humans fathom the secrets of light and dark magic and retain their "
 "sanity. Those that can master that balance become Shadow Lords, fully "
@@ -2534,18 +2517,18 @@ msgstr ""
 "strach svým nepřátelům i těm, kterým vládnou."
 
 #. [attack]: type=blade
-#: data/campaigns/Liberty/units/Shadow_Lord.cfg:34
+#: data/campaigns/Liberty/units/Shadow_Lord.cfg:33
 msgid "astral blade"
 msgstr "astrální čepel"
 
 #. [attack]: type=cold
-#: data/campaigns/Liberty/units/Shadow_Lord.cfg:45
-#: data/campaigns/Liberty/units/Shadow_Mage.cfg:44
+#: data/campaigns/Liberty/units/Shadow_Lord.cfg:44
+#: data/campaigns/Liberty/units/Shadow_Mage.cfg:45
 msgid "shadow bolt"
 msgstr "stínový blesk"
 
 #. [attack]: type=impact
-#: data/campaigns/Liberty/units/Shadow_Lord.cfg:57
+#: data/campaigns/Liberty/units/Shadow_Lord.cfg:56
 msgid "shadow blast"
 msgstr "závan smrti"
 
@@ -2555,7 +2538,7 @@ msgid "Shadow Mage"
 msgstr "Stínový mág"
 
 #. [unit_type]: id=Shadow Mage, race=human
-#: data/campaigns/Liberty/units/Shadow_Mage.cfg:21
+#: data/campaigns/Liberty/units/Shadow_Mage.cfg:20
 msgid ""
 "Years of violence and brutality to support the study of forbidden magical "
 "arts have turned the shadow mages into feared fighters. Now completely "
@@ -2787,6 +2770,15 @@ msgstr ""
 "v troskách mrtví; zbytek přeživších byl zřejmě odvlečen neznámo kam. Byl to "
 "strašlivý osud, a mělo být hůře. Wesnoth upadal do temnot. Ještě se dožijí "
 "horších věcí."
+
+#~ msgid "axe"
+#~ msgstr "sekera"
+
+#~ msgid "sword"
+#~ msgstr "meč"
+
+#~ msgid "short sword"
+#~ msgstr "krátký meč"
 
 # ankh = symbol života?
 #~ msgid "Holy Ankh"

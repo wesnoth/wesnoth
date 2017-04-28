@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2008 - 2017 by the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -143,7 +143,7 @@ void mp_staging::add_side_node(window& window, ng::side_engine_ptr side)
 	item["label"] = std::to_string(side->index() + 1);
 	data.emplace("side_number", item);
 
-	// TODO: don't hardcode meganta?
+	// TODO: don't hardcode magenta?
 	item["label"] = "units/unknown-unit.png~RC(magenta>" + std::to_string(side->color() + 1) + ")";
 	data.emplace("leader_image", item);
 
@@ -164,8 +164,17 @@ void mp_staging::add_side_node(window& window, ng::side_engine_ptr side)
 		team_tree_map_[side->team_name()] = &team_node;
 	}
 
+	// Find an appropriate position to insert this node. This ensures the side nodes are always
+	// arranged by descending index order in each team group.
+	int position = 0;
+	for(const auto& side_engine : connect_engine_.side_engines()) {
+		if(side->team() == side_engine->team() && side->index() > side_engine->index()) {
+			++position;
+		}
+	}
+
 	// Must be *after* the above if block, or the node ptr could be invalid
-	tree_view_node& node = team_tree_map_[side->team_name()]->add_child("side_panel", data);
+	tree_view_node& node = team_tree_map_[side->team_name()]->add_child("side_panel", data, position);
 
 	side_tree_map_[side] = &node;
 
@@ -192,7 +201,7 @@ void mp_staging::add_side_node(window& window, ng::side_engine_ptr side)
 	// We use an index-based loop in order to get the index of the selected option
 	std::vector<config> ai_options;
 	for(unsigned i = 0; i < ai_algorithms_.size(); i++) {
-		ai_options.push_back(config_of("label", ai_algorithms_[i]->text));
+		ai_options.emplace_back(config_of("label", ai_algorithms_[i]->text));
 
 		if(ai_algorithms_[i]->id == side->ai_algorithm()) {
 			selection = i;
@@ -211,7 +220,7 @@ void mp_staging::add_side_node(window& window, ng::side_engine_ptr side)
 	//
 	std::vector<config> controller_names;
 	for(const auto& controller : side->controller_options()) {
-		controller_names.push_back(config_of("label", controller.second));
+		controller_names.emplace_back(config_of("label", controller.second));
 	}
 
 	menu_button& controller_selection = find_widget<menu_button>(&row_grid, "controller", false);
@@ -237,7 +246,7 @@ void mp_staging::add_side_node(window& window, ng::side_engine_ptr side)
 	//
 	std::vector<config> team_names;
 	for(const auto& team : side->player_teams()) {
-		team_names.push_back(config_of("label", team));
+		team_names.emplace_back(config_of("label", team));
 	}
 
 	menu_button& team_selection = find_widget<menu_button>(&row_grid, "side_team", false);
@@ -255,7 +264,7 @@ void mp_staging::add_side_node(window& window, ng::side_engine_ptr side)
 	//
 	std::vector<config> color_options;
 	for(const auto& color : side->color_options()) {
-		color_options.push_back(config_of
+		color_options.emplace_back(config_of
 			("label", font::get_color_string_pango(color))
 			("icon", (formatter() << "misc/status.png~RC(magenta>" << color << ")").str())
 		);
@@ -348,6 +357,10 @@ void mp_staging::on_color_select(ng::side_engine_ptr side, grid& row_grid)
 
 void mp_staging::on_team_select(window& window, ng::side_engine_ptr side, menu_button& team_menu, bool& handled, bool& halt)
 {
+	if(static_cast<int>(team_menu.get_value()) == side->team()) {
+		return;
+	}
+
 	side->set_team(team_menu.get_value());
 
 	// First, remove the node from the tree
@@ -364,7 +377,7 @@ void mp_staging::on_team_select(window& window, ng::side_engine_ptr side, menu_b
 
 void mp_staging::select_leader_callback(window& window, ng::side_engine_ptr side, grid& row_grid)
 {
-	gui2::dialogs::faction_select dlg(side->flg(), std::to_string(side->color() + 1), side->index() + 1);
+	gui2::dialogs::faction_select dlg(side->flg(), side->color_id(), side->index() + 1);
 	dlg.show(window.video());
 
 	if(dlg.get_retval() == window::OK) {
@@ -457,10 +470,10 @@ void mp_staging::network_handler(window& window)
 	// TODO: why is this needed...
 	const bool was_able_to_start = connect_engine_.can_start_game();
 
-	bool quit_signal_recieved;
-	std::tie(quit_signal_recieved, std::ignore) = connect_engine_.process_network_data(data);
+	bool quit_signal_received;
+	std::tie(quit_signal_received, std::ignore) = connect_engine_.process_network_data(data);
 
-	if(quit_signal_recieved) {
+	if(quit_signal_received) {
 		window.set_retval(window::CANCEL);
 	}
 
@@ -475,7 +488,7 @@ void mp_staging::network_handler(window& window)
 
 		std::vector<config> controller_names;
 		for(const auto& controller : side->controller_options()) {
-			controller_names.push_back(config_of("label", controller.second));
+			controller_names.emplace_back(config_of("label", controller.second));
 		}
 
 		menu_button& controller_selection = find_widget<menu_button>(&row_grid, "controller", false);

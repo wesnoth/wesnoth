@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2016 by Fabian Mueller <fabianmueller5@gmx.de>
+   Copyright (C) 2012 - 2017 by Fabian Mueller <fabianmueller5@gmx.de>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -37,7 +37,7 @@ void unit_palette::setup(const config& /*cfg*/)
 	{
 		if (i.second.do_not_list())
 			continue;
-		item_map_.insert(std::pair<std::string, unit_type>(i.second.id(), i.second));
+		item_map_.emplace(i.second.id(), i.second);
 		group_map_[i.second.race_id()].push_back(i.second.id());
 		nmax_items_ = std::max<int>(nmax_items_, group_map_[i.second.race_id()].size());
 		//TODO

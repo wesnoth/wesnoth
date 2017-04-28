@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Tomasz Sniatowski <kailoran@gmail.com>
+   Copyright (C) 2009 - 2017 by Tomasz Sniatowski <kailoran@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -190,6 +190,8 @@ bool lobby_info::process_gamelist_diff(const config& data)
 			if(current_i->second->display_status == game_info::NEW) {
 				// This means the game never made it through to the user interface,
 				// so just deleting it is fine
+				// TODO: use std::unique_ptr instead of deleting manually.
+				delete current_i->second;
 				games_by_id_.erase(current_i);
 			} else {
 				current_i->second->display_status = game_info::DELETED;
@@ -252,6 +254,7 @@ void lobby_info::sync_games_display_status()
 	game_info_map::iterator i = games_by_id_.begin();
 	while(i != games_by_id_.end()) {
 		if(i->second->display_status == game_info::DELETED) {
+			delete i->second;
 			i = games_by_id_.erase(i);
 		} else {
 			i->second->display_status = game_info::CLEAN;
@@ -299,6 +302,17 @@ const room_info* lobby_info::get_room(const std::string& name) const
 bool lobby_info::has_room(const std::string& name) const
 {
 	return get_room(name) != nullptr;
+}
+
+user_info* lobby_info::get_user(const std::string& name)
+{
+	for(auto& user : users_) {
+		if(user.name == name) {
+			return &user;
+		}
+	}
+
+	return nullptr;
 }
 
 chat_session& lobby_info::get_whisper_log(const std::string& name)

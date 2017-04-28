@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -43,6 +43,7 @@ game_board::game_board(const ter_data_cache & tdata, const config & level)
 
 game_board::game_board(const game_board & other)
 	: teams_(other.teams_)
+	, labels_(other.labels_)
 	, map_(new gamemap(*(other.map_)))
 	, unit_id_manager_(other.unit_id_manager_)
 	, units_(other.units_) {}
@@ -110,7 +111,7 @@ void game_board::check_victory(bool & continue_level, bool & found_player, bool 
 	for (const unit & i : units())
 	{
 		DBG_EE << "Found a unit: " << i.id() << " on side " << i.side() << std::endl;
-		const team& tm = teams()[i.side()-1];
+		const team& tm = get_team(i.side());
 		DBG_EE << "That team's defeat condition is: " << tm.defeat_condition() << std::endl;
 		if (i.can_recruit() && tm.defeat_condition() == team::DEFEAT_CONDITION::NO_LEADER) {
 			not_defeated.insert(i.side());

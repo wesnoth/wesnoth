@@ -18,22 +18,12 @@ CHANGES
 Example contents.
 [/rasection]
 
-[rasection="New campaign SotA Mainlined"]
-
-[/rasection]
-
 
 [rawarn="Deprecations and breaking changes"]
 [list]
-[*]FOREACH is now deprecated (this was fogotten in previous annocement?)
+[*] example entry
 [/list]
 [/rawarn]
-
-[rasection="New lua/wml features"]
-[list]
-[*] new lua function wesnoth.add_widget_definition()
-[/list]
-[/rasection]
 
 
 ==========
@@ -44,9 +34,7 @@ KNOWN BUGS
 [b]General bugs:[/b]
 
 [list]
-[*]Crashes may occur during the loading screen. If those crashes happen to you, you can disable the loading screen animation by addding disable_loading screen_animation=yes in your preferences file.
 [*]The MP server has trouble with Local player types in campaigns (bug [bug]21965[/bug]). We have decided to postpone dealing with this. In the meantime, you might try assigning such sides to the host, or running multiple instances of Wesnoth.
-[*]Dialog In Replay Clearing Issue (bug [bug]24491[/bug]).
 [/list]
 [/raissue]
 

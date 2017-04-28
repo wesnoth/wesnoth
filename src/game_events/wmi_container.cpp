@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -24,6 +24,7 @@
 #include "play_controller.hpp"
 
 #include "config.hpp"
+#include "config_assign.hpp"
 #include "game_data.hpp"
 #include "log.hpp"
 #include "map/location.hpp"
@@ -106,7 +107,7 @@ bool wmi_container::fire_item(const std::string & id, const map_location & hex, 
  */
 void wmi_container::get_items(const map_location& hex,
                               std::vector<std::shared_ptr<const wml_menu_item>>& items,
-                              std::vector<std::string>& descriptions,
+                              std::vector<config>& descriptions,
                               filter_context& fc, game_data& gamedata, unit_map& units) const
 {
 	if ( empty() ) {
@@ -127,7 +128,7 @@ void wmi_container::get_items(const map_location& hex,
 		{
 			// Include this item.
 			items.push_back(item);
-			descriptions.push_back(item->menu_text());
+			descriptions.emplace_back(config_of("id", item->menu_text()));
 		}
 	}
 	return;

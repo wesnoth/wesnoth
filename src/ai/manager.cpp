@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2009 - 2017 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -148,33 +148,6 @@ ai_composite& holder::get_ai_ref()
 }
 
 
-void holder::modify_side_ai_config(config cfg)
-{
-	// only handle aspects
-	// transform ai_parameters to new-style config
-
-	configuration::expand_simplified_aspects(this->side_, cfg);
-	cfg = cfg.child("ai");
-	//at this point we have a single config which contains [aspect][facet] tags
-	DBG_AI_MANAGER << "after transforming [modify_side][ai] into new syntax, config contains:"<< std::endl << cfg << std::endl;
-
-	// TODO: Also add [goal] tags. And what about [stage] or [engine] tags? (Maybe they're not important.)
-	if (this->readonly_context_ == nullptr) {
-		// if not initialized, append that config to the bottom of base cfg
-		// then, merge aspects with the same id
-		cfg_.append_children(cfg);
-		cfg_.merge_children_by_attribute("aspect","id");
-	} else {
-		// else run 'add_facet' command on each [aspect][facet]
-		for (const config &cfg_a : cfg.child_range("aspect")) {
-			for (const config &cfg_f : cfg_a.child_range("facet")) {
-				readonly_context_->add_facet(cfg_a["id"],cfg_f);
-			}
-		}
-	}
-}
-
-
 void holder::modify_ai(const config &cfg)
 {
 	if (!this->ai_) {
@@ -182,9 +155,9 @@ void holder::modify_ai(const config &cfg)
 		get_ai_ref();
 	}
 	const std::string &act = cfg["action"];
-	LOG_AI_MOD << "side "<< side_ << "        [modify_ai] "<<act<<" \""<<cfg["path"]<<"\""<<std::endl;
+	LOG_AI_MOD << "side "<< side_ << "        "<<act<<"_ai_component \""<<cfg["path"]<<"\""<<std::endl;
 	DBG_AI_MOD << std::endl << cfg << std::endl;
-	DBG_AI_MOD << "side "<< side_ << " before [modify_ai]"<<std::endl << to_config() << std::endl;
+	DBG_AI_MOD << "side "<< side_ << " before "<<act<<"_ai_component"<<std::endl << to_config() << std::endl;
 	bool res = false;
 	if (act == "add") {
 		res = component_manager::add_component(&*this->ai_,cfg["path"],cfg);
@@ -192,22 +165,37 @@ void holder::modify_ai(const config &cfg)
 		res = component_manager::change_component(&*this->ai_,cfg["path"],cfg);
 	} else if (act == "delete") {
 		res = component_manager::delete_component(&*this->ai_,cfg["path"]);
-	} else if (act == "try_delete") {
-		res = component_manager::delete_component(&*this->ai_,cfg["path"]);
-		if (!res) {
-			LOG_AI_MOD << "[modify_ai] "<<act<<" failed, ignoring because it's a try_delete"<< std::endl;
-			res = true;
-		}
 	} else {
 		ERR_AI_MOD << "modify_ai tag has invalid 'action' attribute " << act << std::endl;
 	}
 	DBG_AI_MOD << "side "<< side_ << "  after [modify_ai]"<<act<<std::endl << to_config() << std::endl;
 	if (!res) {
-		LOG_AI_MOD << "[modify_ai] "<<act<<" failed"<< std::endl;
+		LOG_AI_MOD << act << "_ai_component failed"<< std::endl;
 	} else {
-		LOG_AI_MOD << "[modify_ai] "<<act<<" success"<< std::endl;
+		LOG_AI_MOD << act << "_ai_component success"<< std::endl;
 	}
 
+}
+
+void holder::append_ai(const config& cfg)
+{
+	if(!this->ai_) {
+		get_ai_ref();
+	}
+	for(const config& aspect : cfg.child_range("aspect")) {
+		const std::string& id = aspect["id"];
+		for(const config& facet : aspect.child_range("facet")) {
+			ai_->add_facet(id, facet);
+		}
+	}
+	for(const config& goal : cfg.child_range("goal")) {
+		ai_->add_goal(goal);
+	}
+	for(const config& stage : cfg.child_range("stage")) {
+		if(stage["name"] != "empty") {
+			ai_->add_stage(stage);
+		}
+	}
 }
 
 config holder::to_config() const
@@ -704,20 +692,6 @@ void manager::clear_ais()
 	ai_map_.clear();
 }
 
-// =======================================================================
-// Work with active AI parameters
-// =======================================================================
-
-void manager::modify_active_ai_config_old_for_side ( side_number side, const config::const_child_itors &ai_parameters )
-{
-	config cfgs;
-	for (const config& cfg : ai_parameters) {
-		cfgs.add_child("ai", cfg);
-	}
-	cfgs.child_or_add("ai").add_child("stage")["name"] = "empty";
-	get_active_ai_holder_for_side(side).modify_side_ai_config(cfgs);
-}
-
 
 void manager::modify_active_ai_for_side ( side_number side, const config &cfg )
 {
@@ -728,6 +702,14 @@ void manager::modify_active_ai_for_side ( side_number side, const config &cfg )
 	get_active_ai_holder_for_side(side).modify_ai(cfg);
 }
 
+
+void manager::append_active_ai_for_side(side_number side, const config& cfg)
+{
+	if(!ai_info_) {
+		return;
+	}
+	get_active_ai_holder_for_side(side).append_ai(cfg);
+}
 
 std::string manager::get_active_ai_overview_for_side( side_number side)
 {
@@ -810,7 +792,7 @@ std::stack<holder>& manager::get_or_create_ai_stack_for_side( side_number side )
 	if (iter!=ai_map_.end()){
 		return iter->second;
 	}
-	return ai_map_.insert(std::make_pair(side, std::stack<holder>())).first->second;
+	return ai_map_.emplace(side, std::stack<holder>()).first->second;
 }
 
 // =======================================================================

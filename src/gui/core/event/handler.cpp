@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2009 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -219,6 +219,14 @@ private:
 	dispatcher* keyboard_dispatcher();
 
 	/**
+	 * Fires a generic touch event.
+	 *
+	 * @param position               The position touched.
+	 * @param distance               The distance moved.
+	 */
+	void touch_motion(const point& position, const point& distance);
+
+	/**
 	 * Handles a hat motion event.
 	 *
 	 * @param event                  The SDL joystick hat event triggered.
@@ -413,6 +421,10 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 			text_input(event.text.text);
 			break;
 
+		case SDL_FINGERMOTION:
+			touch_motion(point(event.tfinger.x, event.tfinger.y), point(event.tfinger.dx, event.tfinger.dy));
+			break;
+
 #if(defined(_X11) && !defined(__APPLE__)) || defined(_WIN32)
 		case SDL_SYSWMEVENT:
 			/* DO NOTHING */
@@ -422,6 +434,8 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 		// Silently ignored events.
 		case SDL_KEYUP:
 		case DOUBLE_CLICK_EVENT:
+		case SDL_FINGERUP:
+		case SDL_FINGERDOWN:
 			break;
 
 		default:
@@ -644,6 +658,13 @@ dispatcher* sdl_event_handler::keyboard_dispatcher()
 	}
 
 	return nullptr;
+}
+
+void sdl_event_handler::touch_motion(const point& position, const point& distance)
+{
+	for(auto& dispatcher : boost::adaptors::reverse(dispatchers_)) {
+		dispatcher->fire(SDL_TOUCH_MOTION , dynamic_cast<widget&>(*dispatcher), position, distance);
+	}
 }
 
 void sdl_event_handler::hat_motion(const SDL_Event& event)
@@ -930,6 +951,15 @@ std::ostream& operator<<(std::ostream& stream, const ui_event event)
 			break;
 		case REQUEST_PLACEMENT:
 			stream << "request placement";
+			break;
+		case SDL_TOUCH_MOTION:
+			stream << "SDL touch motion";
+			break;
+		case SDL_TOUCH_UP:
+			stream << "SDL touch up";
+			break;
+		case SDL_TOUCH_DOWN:
+			stream << "SDL touch down";
 			break;
 	}
 

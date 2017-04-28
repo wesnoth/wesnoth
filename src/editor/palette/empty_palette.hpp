@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2016 by Fabian Mueller <fabianmueller5@gmx.de>
+   Copyright (C) 2012 - 2017 by Fabian Mueller <fabianmueller5@gmx.de>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -72,8 +72,7 @@ public:
 	virtual const std::vector<item_group>& get_groups() const override { return empty_; }
 
 	/** Menu expanding for palette group list */
-	virtual void expand_palette_groups_menu(std::vector< std::pair< std::string, std::string> >& /*items*/) override {}
-	virtual void expand_palette_groups_menu(std::vector< std::string> & /*items*/) override {}
+	virtual void expand_palette_groups_menu(std::vector< config> & /*items*/,int) override {}
 
     //item
 	virtual int num_items() override {return 0;}

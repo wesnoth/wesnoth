@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2009 - 2017 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -53,7 +53,7 @@ stage_unit_formulas::~stage_unit_formulas()
 bool stage_unit_formulas::do_play_stage()
 {
 	//execute units formulas first
-	game_logic::unit_formula_set units_with_formulas;
+	wfl::unit_formula_set units_with_formulas;
 
 	unit_map &units_ = resources::gameboard->units();
 
@@ -64,32 +64,32 @@ bool stage_unit_formulas::do_play_stage()
 				int priority = 0;
 				if (i->formula_manager().has_priority_formula()) {
 					try {
-						game_logic::const_formula_ptr priority_formula(fai_.create_optional_formula(i->formula_manager().get_priority_formula()));
+						wfl::const_formula_ptr priority_formula(fai_.create_optional_formula(i->formula_manager().get_priority_formula()));
 						if (priority_formula) {
-							game_logic::map_formula_callable callable(&fai_);
-							callable.add("me", variant(new unit_callable(*i)));
-							priority = (game_logic::formula::evaluate(priority_formula, callable)).as_int();
+							wfl::map_formula_callable callable(fai_.fake_ptr());
+							callable.add("me", wfl::variant(std::make_shared<wfl::unit_callable>(*i)));
+							priority = (wfl::formula::evaluate(priority_formula, callable)).as_int();
 						} else {
 							WRN_AI << "priority formula skipped, maybe it's empty or incorrect"<< std::endl;
 						}
-					} catch(game_logic::formula_error& e) {
+					} catch(wfl::formula_error& e) {
 						if(e.filename == "formula")
 							e.line = 0;
 						fai_.handle_exception( e, "Unit priority formula error for unit: '" + i->type_id() + "' standing at (" + std::to_string(i->get_location().wml_x()) + "," + std::to_string(i->get_location().wml_y()) + ")");
 
 						priority = 0;
-					} catch(type_error& e) {
+					} catch(wfl::type_error& e) {
 						priority = 0;
 						ERR_AI << "formula type error while evaluating unit priority formula  " << e.message << std::endl;
 					}
 				}
 
-				units_with_formulas.insert( game_logic::unit_formula_pair( i, priority ) );
+				units_with_formulas.insert( wfl::unit_formula_pair( i, priority ) );
 			}
 		}
         }
 
-	for(game_logic::unit_formula_set::iterator pair_it = units_with_formulas.begin() ; pair_it != units_with_formulas.end() ; ++pair_it)
+	for(wfl::unit_formula_set::iterator pair_it = units_with_formulas.begin() ; pair_it != units_with_formulas.end() ; ++pair_it)
 	{
 		unit_map::iterator i = pair_it->first;
 
@@ -97,16 +97,16 @@ bool stage_unit_formulas::do_play_stage()
 
 			if (i->formula_manager().has_formula()) {
 				try {
-					game_logic::const_formula_ptr formula(fai_.create_optional_formula(i->formula_manager().get_formula()));
+					wfl::const_formula_ptr formula(fai_.create_optional_formula(i->formula_manager().get_formula()));
 					if (formula) {
-						game_logic::map_formula_callable callable(&fai_);
-						callable.add("me", variant(new unit_callable(*i)));
+						wfl::map_formula_callable callable(fai_.fake_ptr());
+						callable.add("me", wfl::variant(std::make_shared<wfl::unit_callable>(*i)));
 						fai_.make_action(formula, callable);
 					} else {
 						WRN_AI << "unit formula skipped, maybe it's empty or incorrect" << std::endl;
 					}
 				}
-				catch(game_logic::formula_error& e) {
+				catch(wfl::formula_error& e) {
 					if(e.filename == "formula") {
 						e.line = 0;
 					}
@@ -119,17 +119,17 @@ bool stage_unit_formulas::do_play_stage()
 			if (i->formula_manager().has_loop_formula())
 			{
 				try {
-					game_logic::const_formula_ptr loop_formula(fai_.create_optional_formula(i->formula_manager().get_loop_formula()));
+					wfl::const_formula_ptr loop_formula(fai_.create_optional_formula(i->formula_manager().get_loop_formula()));
 					if (loop_formula) {
-						game_logic::map_formula_callable callable(&fai_);
-						callable.add("me", variant(new unit_callable(*i)));
+						wfl::map_formula_callable callable(fai_.fake_ptr());
+						callable.add("me", wfl::variant(std::make_shared<wfl::unit_callable>(*i)));
 						while ( !fai_.make_action(loop_formula, callable).is_empty() && i.valid() )
 						{
 						}
 					} else {
 						WRN_AI << "Loop formula skipped, maybe it's empty or incorrect" << std::endl;
 					}
-				} catch(game_logic::formula_error& e) {
+				} catch(wfl::formula_error& e) {
 					if (e.filename == "formula") {
 						e.line = 0;
 					}

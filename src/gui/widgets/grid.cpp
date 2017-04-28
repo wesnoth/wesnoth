@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,9 +17,11 @@
 #include "gui/widgets/grid_private.hpp"
 
 #include "gui/auxiliary/iterator/walker_grid.hpp"
+#include "gui/core/event/message.hpp"
 #include "gui/core/log.hpp"
 #include "gui/core/layout_exception.hpp"
 #include "gui/widgets/styled_widget.hpp"
+#include "gui/widgets/window.hpp"
 
 #include <numeric>
 
@@ -43,6 +45,10 @@ grid::grid(const unsigned rows, const unsigned cols)
 	, col_grow_factor_(cols)
 	, children_(rows * cols)
 {
+	connect_signal<event::REQUEST_PLACEMENT>(
+		std::bind(&grid::request_placement, this,
+			std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4),
+		event::dispatcher::back_pre_child);
 }
 
 grid::~grid()
@@ -96,7 +102,7 @@ void grid::set_child(widget* widget,
 	}
 }
 
-widget* grid::swap_child(const std::string& id,
+std::unique_ptr<widget> grid::swap_child(const std::string& id,
 						   widget* w,
 						   const bool recurse,
 						   widget* new_parent)
@@ -112,7 +118,7 @@ widget* grid::swap_child(const std::string& id,
 				grid* g = dynamic_cast<grid*>(child.get_widget());
 				if(g) {
 
-					widget* old = g->swap_child(id, w, true);
+					std::unique_ptr<widget> old = g->swap_child(id, w, true);
 					if(old) {
 						return old;
 					}
@@ -131,7 +137,7 @@ widget* grid::swap_child(const std::string& id,
 		w->set_visible(old->get_visible());
 		child.set_widget(w);
 
-		return old;
+		return std::unique_ptr<widget>(old);
 	}
 
 	return nullptr;
@@ -188,16 +194,16 @@ void grid::set_active(const bool active)
 	}
 }
 
-void grid::layout_initialise(const bool full_initialisation)
+void grid::layout_initialize(const bool full_initialization)
 {
 	// Inherited.
-	widget::layout_initialise(full_initialisation);
+	widget::layout_initialize(full_initialization);
 
 	// Clear child caches.
 	for(auto & child : children_)
 	{
 
-		child.layout_initialise(full_initialisation);
+		child.layout_initialize(full_initialization);
 	}
 }
 
@@ -227,7 +233,7 @@ void grid::reduce_width(const unsigned maximum_width)
 
 	/** @todo Implement. */
 
-	/***** ***** ***** ***** Acknowlegde failure ***** ***** ***** *****/
+	/***** ***** ***** ***** Acknowledge failure ***** ***** ***** *****/
 
 	DBG_GUI_L << LOG_HEADER << " Resizing failed.\n";
 
@@ -305,7 +311,7 @@ void grid::reduce_height(const unsigned maximum_height)
 
 	/** @todo Implement. */
 
-	/***** ***** ***** ***** Acknowlegde failure ***** ***** ***** *****/
+	/***** ***** ***** ***** Acknowledge failure ***** ***** ***** *****/
 
 	DBG_GUI_L << LOG_HEADER << " Resizing failed.\n";
 
@@ -375,6 +381,47 @@ void grid::request_reduce_height(const unsigned maximum_height)
 void grid::demand_reduce_height(const unsigned /*maximum_height*/)
 {
 	/** @todo Implement. */
+}
+
+void grid::request_placement(dispatcher&, const event::ui_event, bool& handled, bool&)
+{
+	if (get_window()->invalidate_layout_blocked()) {
+		handled = true;
+		return;
+	}
+
+	point size = get_size();
+	point best_size = calculate_best_size();
+	if(size.x >= best_size.x && size.y >= best_size.y) {
+		place(get_origin(), size);
+		handled = true;
+		return;
+	}
+
+	recalculate_best_size();
+
+	if(size.y >= best_size.y) {
+		// We have enough space in the Y direction, but not in the X direction.
+		// Try wrapping the content.
+		request_reduce_width(size.x);
+		best_size = get_best_size();
+
+		if(size.x >= best_size.x && size.y >= best_size.y) {
+			// Wrapping succeeded, we still fit vertically.
+			place(get_origin(), size);
+			handled = true;
+			return;
+		} else {
+			// Wrapping failed, we no longer fit.
+			// Reset the sizes of child widgets.
+			layout_initialize(true);
+		}
+	}
+
+	/*
+	Not enough space.
+	Let the event flow higher up.
+	This is a pre-event handler, so the event flows upwards. */
 }
 
 point grid::recalculate_best_size()
@@ -855,12 +902,12 @@ void grid::child::place(point origin, point size)
 	get_widget()->place(widget_orig, widget_size);
 }
 
-void grid::child::layout_initialise(const bool full_initialisation)
+void grid::child::layout_initialize(const bool full_initialization)
 {
 	assert(widget_);
 
 	if(widget_->get_visible() != widget::visibility::invisible) {
-		widget_->layout_initialise(full_initialisation);
+		widget_->layout_initialize(full_initialization);
 	}
 }
 
@@ -888,6 +935,49 @@ point grid::child::border_space() const
 	}
 
 	return result;
+}
+
+grid::child* grid::get_child(widget* w)
+{
+	if(!w) {
+		return nullptr;
+	}
+
+	for(auto& child : children_) {
+		if(w == child.get_widget()) {
+			return &child;
+		}
+	}
+
+	return nullptr;
+}
+
+void grid::set_child_alignment(widget* widget, unsigned set_flag, unsigned mode_mask)
+{
+	grid::child* cell = get_child(widget);
+	if(!cell) {
+		return;
+	}
+
+	unsigned flags = cell->get_flags();
+
+	if((flags & mode_mask) == HORIZONTAL_GROW_SEND_TO_CLIENT) {
+		ERR_GUI_G << "Cannot set horizontal alignment (grid cell specifies dynamic growth)" << std::endl;
+		return;
+	}
+
+	if((flags & mode_mask) == VERTICAL_GROW_SEND_TO_CLIENT) {
+		ERR_GUI_G << "Cannot set vertical alignment (grid cell specifies dynamic growth)" << std::endl;
+		return;
+	}
+
+	flags &= ~mode_mask;
+	flags |= set_flag;
+
+	cell->set_flags(flags);
+
+	event::message message;
+	fire(event::REQUEST_PLACEMENT, *this, message);
 }
 
 void grid::layout(const point& origin)

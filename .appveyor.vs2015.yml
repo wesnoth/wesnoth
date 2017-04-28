@@ -22,8 +22,5 @@ before_build:
 build_script:
   - msbuild projectfiles\VC14\wesnoth.sln /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
 
-on_success:
-  - "python utils\\appveyor\\irc-notify.py wesnoth-dev {bold}{project_name} - {configuration_name} {color_green}{author}{plain} {bold}{short_commit}: {plain}{message} {color_green}Succeeded,{bold}Details: {plain}{build_url}"
-
 on_failure:
   - "python utils\\appveyor\\irc-notify.py wesnoth-dev {bold}{project_name} - {configuration_name} {color_green}{author}{plain} {bold}{short_commit}: {plain}{message} {color_red}Failed,{bold}Details: {plain}{build_url}"

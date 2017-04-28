@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -154,7 +154,7 @@ void text_box_base::insert_char(const utf8::string& unicode)
 	if(text_.insert_text(selection_start_, unicode)) {
 
 		// Update status
-		set_cursor(selection_start_ + 1, false);
+		set_cursor(selection_start_ + utf8::size(unicode), false);
 		update_canvas();
 		set_is_dirty(true);
 	}
@@ -280,8 +280,8 @@ void text_box_base::cursor_timer_callback()
 			cursor_alpha_ = (~cursor_alpha_) & 0xFF;
 	}
 
-	for(auto& tmp : get_canvas()) {
-		tmp.set_variable("cursor_alpha", variant(cursor_alpha_));
+	for(auto& tmp : get_canvases()) {
+		tmp.set_variable("cursor_alpha", wfl::variant(cursor_alpha_));
 	}
 
 	set_is_dirty(true);
@@ -295,8 +295,8 @@ void text_box_base::reset_cursor_state()
 
 	cursor_alpha_ = 255;
 
-	for(auto& tmp : get_canvas()) {
-		tmp.set_variable("cursor_alpha", variant(cursor_alpha_));
+	for(auto& tmp : get_canvases()) {
+		tmp.set_variable("cursor_alpha", wfl::variant(cursor_alpha_));
 	}
 
 	// Restart the blink timer.
@@ -453,7 +453,7 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 
 			// If ctrl-a is used for home drop the styled_widget modifier
 			modifier = static_cast<SDL_Keymod>(modifier & ~KMOD_CTRL);
-		/* FALL DOWN */
+			FALLTHROUGH;
 
 		case SDLK_HOME:
 			handle_key_home(modifier, handled);
@@ -467,7 +467,7 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 
 			// If ctrl-e is used for end drop the styled_widget modifier
 			modifier = static_cast<SDL_Keymod>(modifier & ~KMOD_CTRL);
-		/* FALL DOWN */
+			FALLTHROUGH;
 
 		case SDLK_END:
 			handle_key_end(modifier, handled);

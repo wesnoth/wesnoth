@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2016 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2006 - 2017 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playlevel Copyright (C) 2003 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -43,8 +43,8 @@ playmp_controller::playmp_controller(const config& level,
 		saved_game& state_of_game, const config& game_config,
 		const ter_data_cache & tdata, CVideo& video,
 		mp_campaign_info* mp_info)
-	: playsingle_controller(level, state_of_game,
-	game_config, tdata, video, mp_info && mp_info->skip_replay_until_turn != 0) //this || means that if blindfold is enabled, quick replays will be on.
+	: playsingle_controller(level, state_of_game, game_config, tdata, video,
+			mp_info && mp_info->skip_replay)
 	, network_processing_stopped_(false)
 	, blindfold_(*gui_, mp_info && mp_info->skip_replay_blindfolded)
 	, mp_info_(mp_info)
@@ -53,9 +53,7 @@ playmp_controller::playmp_controller(const config& level,
 
 	//turn_data_.set_host(is_host);
 	turn_data_.host_transfer().attach_handler(this);
-	// We stop quick replay if play isn't yet past turn 1
-	if (!mp_info_ || mp_info_->skip_replay_until_turn > 0)
-	{
+	if (!mp_info || mp_info->current_turn == turn()) {
 		skip_replay_ = false;
 	}
 }
@@ -147,7 +145,7 @@ void playmp_controller::play_human_turn()
 				{
 					font::floating_label flabel(_("Undoing moves not yet transmitted to the server."));
 
-					color_t color = {255,255,255,SDL_ALPHA_OPAQUE};
+					color_t color {255,255,255,SDL_ALPHA_OPAQUE};
 					flabel.set_color(color);
 					SDL_Rect rect = gui_->map_area();
 					flabel.set_position(rect.w/2, rect.h/2);
@@ -334,7 +332,7 @@ void playmp_controller::play_network_turn(){
 	{
 		if (!network_processing_stopped_) {
 			process_network_data();
-			if (!mp_info_ || mp_info_->skip_replay_until_turn > 0) {
+			if (!mp_info_ || mp_info_->current_turn == turn()) {
 				skip_replay_ = false;
 			}
 		}

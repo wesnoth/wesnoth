@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2009 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -135,7 +135,7 @@ size_t add_timer(const Uint32 interval,
 
 	timer.callback = callback;
 
-	timers.insert(std::make_pair(next_timer_id, timer));
+	timers.emplace(next_timer_id, timer);
 
 	DBG_GUI_E << "Added timer " << next_timer_id << ".\n";
 	return next_timer_id;

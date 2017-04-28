@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -21,15 +21,13 @@ class display;
 
 #include "config.hpp"
 #include "terrain/translation.hpp"
-
-#include <SDL.h>
+#include "utils/make_enum.hpp"
 
 #include <utility>
 
 namespace hotkey {
 	class hotkey_item;
 }
-
 
 namespace preferences {
 
@@ -47,6 +45,15 @@ namespace preferences {
 
 	extern const int min_font_scaling;
 	extern const int max_font_scaling;
+
+	MAKE_ENUM(SCALING_ALGORITHM,
+		(LINEAR, "linear")
+		(NEAREST_NEIGHBOR, "nn")
+		(XBRZ_LIN, "xbrzlin")
+		(XBRZ_NN, "xbrznn")
+	)
+
+	extern const SCALING_ALGORITHM default_scaling_algorithm;
 
 	void write_preferences();
 

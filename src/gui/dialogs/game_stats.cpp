@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2016 by the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2016 - 2017 by the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -139,7 +139,7 @@ void game_stats::pre_show(window& window)
 				gold_str = utils::half_signed_value(data.gold);
 			}
 
-			column_stats["label"] = gold_str;
+			column_stats["label"] = data.gold < 0 ? "<span color='#ff0000'>" + gold_str + "</span>" : gold_str;
 			row_data_stats.emplace("team_gold", column_stats);
 
 			std::string village_count = std::to_string(data.villages);

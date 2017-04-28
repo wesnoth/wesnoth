@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -21,6 +21,9 @@
 
 #include "log.hpp" //LOG_STREAM
 #include "variable.hpp" //scoped_wml_variable
+#include "serialization/string_utils.hpp"
+
+#include <boost/range/adaptor/reversed.hpp>
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
@@ -28,39 +31,33 @@ static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
 #define DBG_NG LOG_STREAM(debug, log_engine)
 
-game_data::game_data()
-		: variable_set()
-		, scoped_variables()
-		, last_selected(map_location::null_location())
-		, rng_()
-		, variables_()
-		, phase_(INITIAL)
-		, can_end_turn_(true)
-		, next_scenario_()
-		{}
-
 game_data::game_data(const config& level)
-		: variable_set()
-		, scoped_variables()
-		, last_selected(map_location::null_location())
-		, rng_(level)
-		, variables_(level.child_or_empty("variables"))
-		, phase_(INITIAL)
-		, can_end_turn_(level["can_end_turn"].to_bool(true))
-		, next_scenario_(level["next_scenario"])
+	: variable_set()
+	, scoped_variables()
+	, last_selected(map_location::null_location())
+	, rng_(level)
+	, variables_(level.child_or_empty("variables"))
+	, phase_(INITIAL)
+	, can_end_turn_(level["can_end_turn"].to_bool(true))
+	, next_scenario_(level["next_scenario"])
+	, id_(level["id"])
+	, theme_(level["theme"])
+	, defeat_music_(utils::split(level["defeat_music"]))
+	, victory_music_(utils::split(level["victory_music"]))
 {
 }
 
 game_data::game_data(const game_data& data)
-		: variable_set() // variable set is just an interface.
-		, scoped_variables(data.scoped_variables)
-		, last_selected(data.last_selected)
-		, rng_(data.rng_)
-		, variables_(data.variables_)
-		, phase_(data.phase_)
-		, can_end_turn_(data.can_end_turn_)
-		, next_scenario_(data.next_scenario_)
-{}
+	: variable_set() // variable set is just an interface.
+	, scoped_variables(data.scoped_variables)
+	, last_selected(data.last_selected)
+	, rng_(data.rng_)
+	, variables_(data.variables_)
+	, phase_(data.phase_)
+	, can_end_turn_(data.can_end_turn_)
+	, next_scenario_(data.next_scenario_)
+{
+}
 //throws
 config::attribute_value &game_data::get_variable(const std::string& key)
 {
@@ -98,7 +95,7 @@ void game_data::set_variable(const std::string& key, const t_string& value)
 //throws
 config& game_data::add_variable_cfg(const std::string& key, const config& value)
 {
-	std::vector<config> temp = {value};
+	std::vector<config> temp {value};
 	return get_variable_access_write(key).append_array(temp).front();
 }
 
@@ -129,6 +126,10 @@ void game_data::clear_variable(const std::string& varname)
 void game_data::write_snapshot(config& cfg) const
 {
 	cfg["next_scenario"] = next_scenario_;
+	cfg["id"] = id_;
+	cfg["theme"] = theme_;
+	cfg["defeat_music"] = utils::join(defeat_music_);
+	cfg["victory_music"] = utils::join(victory_music_);
 
 	cfg["can_end_turn"] = can_end_turn_;
 
@@ -146,22 +147,20 @@ namespace {
 
 void game_data::activate_scope_variable(std::string var_name) const
 {
-
-	if(recursive_activation)
+	if (recursive_activation) {
 		return;
+	}
+
 	const std::string::iterator itor = std::find(var_name.begin(),var_name.end(),'.');
 	if(itor != var_name.end()) {
 		var_name.erase(itor, var_name.end());
 	}
-	std::vector<scoped_wml_variable*>::const_reverse_iterator rit;
-	for(
-		rit = scoped_variables.rbegin();
-		rit != scoped_variables.rend();
-	++rit) {
-		if((**rit).name() == var_name) {
+
+	for (scoped_wml_variable* v : boost::adaptors::reverse(scoped_variables)) {
+		if (v->name() == var_name) {
 			recursive_activation = true;
-			if(!(**rit).activated()) {
-				(**rit).activate();
+			if (!v->activated()) {
+				v->activate();
 			}
 			recursive_activation = false;
 			break;

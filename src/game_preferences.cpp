@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -220,9 +220,9 @@ bool is_authenticated() {
 
 void parse_admin_authentication(const std::string& sender, const std::string& message) {
 	if(sender != "server") return;
-	if(message.find("You are now recognized as an administrator.") == 0) {
+	if(message.compare(0, 43, "You are now recognized as an administrator.") == 0) {
 		authenticated = true;
-	} else if(message.find("You are no longer recognized as an administrator.") == 0) {
+	} else if(message.compare(0, 50, "You are no longer recognized as an administrator.") == 0) {
 		authenticated = false;
 	}
 }
@@ -772,7 +772,7 @@ void set_countdown(bool value)
 
 int countdown_init_time()
 {
-	return util::clamp<int>(
+	return utils::clamp<int>(
 		lexical_cast_default<int>(preferences::get("mp_countdown_init_time"), 270), 0, 1500);
 }
 
@@ -783,7 +783,7 @@ void set_countdown_init_time(int value)
 
 int countdown_reservoir_time()
 {
-	return util::clamp<int>(
+	return utils::clamp<int>(
 		lexical_cast_default<int>(preferences::get("mp_countdown_reservoir_time"), 330), 30, 1500);
 }
 
@@ -794,7 +794,7 @@ void set_countdown_reservoir_time(int value)
 
 int countdown_turn_bonus()
 {
-	return util::clamp<int>(
+	return utils::clamp<int>(
 		lexical_cast_default<int>(preferences::get("mp_countdown_turn_bonus"), 60), 0, 300);
 }
 
@@ -805,7 +805,7 @@ void set_countdown_turn_bonus(int value)
 
 int countdown_action_bonus()
 {
-	return util::clamp<int>(
+	return utils::clamp<int>(
 		lexical_cast_default<int>(preferences::get("mp_countdown_action_bonus"), 13), 0, 30);
 }
 

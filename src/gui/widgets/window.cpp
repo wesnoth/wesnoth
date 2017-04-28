@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2007 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -63,7 +63,7 @@
 
 #include "utils/functional.hpp"
 
-namespace game_logic { class function_symbol_table; }
+namespace wfl { class function_symbol_table; }
 namespace gui2 { class button; }
 
 static lg::log_domain log_gui("gui/layout");
@@ -102,8 +102,6 @@ public:
 
 } // namespace implementation
 REGISTER_WIDGET(window)
-
-unsigned window::sunset_ = 0;
 
 namespace
 {
@@ -296,7 +294,7 @@ window::window(CVideo& video,
 				 typed_formula<unsigned> w,
 				 typed_formula<unsigned> h,
 				 typed_formula<bool> reevaluate_best_size,
-				 const game_logic::function_symbol_table& functions,
+				 const wfl::function_symbol_table& functions,
 				 const bool automatic_placement,
 				 const unsigned horizontal_placement,
 				 const unsigned vertical_placement,
@@ -335,7 +333,7 @@ window::window(CVideo& video,
 	, enter_disabled_(false)
 	, escape_disabled_(false)
 	, linked_size_()
-	, mouse_button_state_(0) /**< Needs to be initialised in @ref show. */
+	, mouse_button_state_(0) /**< Needs to be initialized in @ref show. */
 	, dirty_list_()
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	, debug_layout_(new debug_layout_graph(this))
@@ -632,13 +630,13 @@ int window::show(const bool restore, const unsigned auto_close_timeout)
 	try
 	{
 		// Start our loop drawing will happen here as well.
-		bool mouse_button_state_initialised = false;
+		bool mouse_button_state_initialized = false;
 		for(status_ = SHOWING; status_ != CLOSED;) {
 			// process installed callback if valid, to allow e.g. network
 			// polling
 			events::pump();
 
-			if(!mouse_button_state_initialised) {
+			if(!mouse_button_state_initialized) {
 				/*
 				 * The state must be initialize when showing the dialogue.
 				 * However when initialized before this point there were random
@@ -650,7 +648,7 @@ int window::show(const bool restore, const unsigned auto_close_timeout)
 				 * works fine.
 				 */
 				mouse_button_state_ = SDL_GetMouseState(nullptr, nullptr);
-				mouse_button_state_initialised = true;
+				mouse_button_state_initialized = true;
 			}
 
 			if(status_ == REQUEST_CLOSE) {
@@ -728,7 +726,7 @@ void window::draw()
 		}
 
 		// Need full redraw so only set ourselves dirty.
-		dirty_list_.push_back(std::vector<widget*>(1, this));
+		dirty_list_.emplace_back(1, this);
 	} else {
 
 		// Let widgets update themselves, which might dirty some things.
@@ -741,23 +739,11 @@ void window::draw()
 		} else {
 			/* Force to update and redraw the entire screen */
 			dirty_list_.clear();
-			dirty_list_.push_back(std::vector<widget*>(1, this));
+			dirty_list_.emplace_back(1, this);
 		}
 	}
 
 	if (dirty_list_.empty()) {
-		if (sunset_) {
-			/** @todo should probably be moved to event::sdl_event_handler::draw. */
-			static unsigned i = 0;
-			if (++i % sunset_ == 0) {
-				SDL_Rect r = sdl::create_rect(
-					0, 0, frame_buffer->w, frame_buffer->h);
-				const Uint32 color
-					= SDL_MapRGBA(frame_buffer->format, 0, 0, 0, SDL_ALPHA_OPAQUE);
-
-				sdl::fill_rect_alpha(r, color, 1, frame_buffer);
-			}
-		}
 		return;
 	}
 
@@ -774,7 +760,7 @@ void window::draw()
 // update. This way an item rendered at the wrong place is directly visible.
 #if 0
 		dirty_list_.clear();
-		dirty_list_.push_back(std::vector<widget*>(1, this));
+		dirty_list_.emplace_back(1, this);
 #else
 		clip_rect_setter clip(frame_buffer, &dirty_rect);
 #endif
@@ -968,11 +954,11 @@ void window::layout()
 	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
 
 	const point mouse = get_mouse_position();
-	variables_.add("mouse_x", variant(mouse.x));
-	variables_.add("mouse_y", variant(mouse.y));
-	variables_.add("window_width", variant(0));
-	variables_.add("window_height", variant(0));
-	variables_.add("size_request_mode", variant("maximum"));
+	variables_.add("mouse_x", wfl::variant(mouse.x));
+	variables_.add("mouse_y", wfl::variant(mouse.y));
+	variables_.add("window_width", wfl::variant(0));
+	variables_.add("window_height", wfl::variant(0));
+	variables_.add("size_request_mode", wfl::variant("maximum"));
 	get_screen_size_variables(variables_);
 
 	const int maximum_width = automatic_placement_ ? maximum_width_
@@ -1003,8 +989,8 @@ void window::layout()
 	}
 
 	/***** Layout. *****/
-	layout_initialise(true);
-	generate_dot_file("layout_initialise", LAYOUT);
+	layout_initialize(true);
+	generate_dot_file("layout_initialize", LAYOUT);
 
 	layout_linked_widgets();
 
@@ -1038,8 +1024,8 @@ void window::layout()
 				*click_dismiss_button,
 				std::bind(&window::set_retval, this, OK, true));
 
-		layout_initialise(true);
-		generate_dot_file("layout_initialise", LAYOUT);
+		layout_initialize(true);
+		generate_dot_file("layout_initialize", LAYOUT);
 
 		layout_linked_widgets();
 
@@ -1104,28 +1090,28 @@ void window::layout()
 		}
 	} else {
 
-		variables_.add("window_width", variant(size.x));
-		variables_.add("window_height", variant(size.y));
+		variables_.add("window_width", wfl::variant(size.x));
+		variables_.add("window_height", wfl::variant(size.y));
 
 		while(reevaluate_best_size_(variables_, &functions_)) {
-			layout_initialise(true);
+			layout_initialize(true);
 
 			window_implementation::layout(*this,
 										   w_(variables_, &functions_),
 										   h_(variables_, &functions_));
 
 			size = get_best_size();
-			variables_.add("window_width", variant(size.x));
-			variables_.add("window_height", variant(size.y));
+			variables_.add("window_width", wfl::variant(size.x));
+			variables_.add("window_height", wfl::variant(size.y));
 		}
 
-		variables_.add("size_request_mode", variant("size"));
+		variables_.add("size_request_mode", wfl::variant("size"));
 
 		size.x = w_(variables_, &functions_);
 		size.y = h_(variables_, &functions_);
 
-		variables_.add("window_width", variant(size.x));
-		variables_.add("window_height", variant(size.y));
+		variables_.add("window_width", wfl::variant(size.x));
+		variables_.add("window_height", wfl::variant(size.y));
 
 		origin.x = x_(variables_, &functions_);
 		origin.y = y_(variables_, &functions_);
@@ -1186,7 +1172,7 @@ void window::layout_linked_widgets()
 	}
 }
 
-bool window::click_dismiss(const Uint8 mouse_button_mask)
+bool window::click_dismiss(const int mouse_button_mask)
 {
 	if(does_click_dismiss()) {
 		if((mouse_button_state_ & mouse_button_mask) == 0) {
@@ -1231,18 +1217,14 @@ void swap_grid(grid* g,
 		assert(parent_grid);
 	}
 	if(grid* grandparent_grid = dynamic_cast<grid*>(parent_grid->parent())) {
-		widget = grandparent_grid->swap_child(id, widget, false);
+		grandparent_grid->swap_child(id, widget, false);
 	} else if(container_base* c
 			  = dynamic_cast<container_base*>(parent_grid->parent())) {
 
-		widget = c->get_grid().swap_child(id, widget, true);
+		c->get_grid().swap_child(id, widget, true);
 	} else {
 		assert(false);
 	}
-
-	assert(widget);
-
-	delete widget;
 }
 
 } // namespace
@@ -1327,7 +1309,7 @@ void window_implementation::layout(window& window,
 		DBG_GUI_L << LOG_IMPL_HEADER
 				  << " Status: Width has been modified, rerun.\n";
 
-		window.layout_initialise(false);
+		window.layout_initialize(false);
 		window.layout_linked_widgets();
 		layout(window, maximum_width, maximum_height);
 		return;
@@ -1376,7 +1358,7 @@ void window::signal_handler_sdl_video_resize(const event::ui_event event,
 void window::signal_handler_click_dismiss(const event::ui_event event,
 										   bool& handled,
 										   bool& halt,
-										   const Uint8 mouse_button_mask)
+										   const int mouse_button_mask)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << " mouse_button_mask "
 			  << static_cast<unsigned>(mouse_button_mask) << ".\n";
@@ -1557,7 +1539,7 @@ window_definition::resolution::resolution(const config& cfg)
  * Here is the algorithm used to layout the window:
  *
  * - Perform a full initialization
- *   (@ref gui2::widget::layout_initialise (full_initialisation = true)):
+ *   (@ref gui2::widget::layout_initialize (full_initialization = true)):
  *   - Clear the internal best size cache for all widgets.
  *   - For widgets with scrollbars hide them unless the
  *     @ref gui2::scrollbar_container::scrollbar_mode "scrollbar_mode" is
@@ -1649,7 +1631,7 @@ window_definition::resolution::resolution(const config& cfg)
  *
  * - Relayout:
  *   - Initialize all widgets
- *     (@ref gui2::widget::layout_initialise (full_initialisation = false))
+ *     (@ref gui2::widget::layout_initialize (full_initialization = false))
  *   - Handle shared sizes, since the reinitialization resets that state.
  *   - Goto start layout loop.
  *

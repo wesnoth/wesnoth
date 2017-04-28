@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2017 by the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -188,7 +188,7 @@ struct color_t
 
 	bool null() const
 	{
-		return r == 0 && g == 0 && b == 0 && a == 0;
+		return *this == null_color();
 	}
 
 	bool operator==(const color_t& c) const
@@ -231,6 +231,12 @@ struct color_t
 			static_cast<uint8_t>(255 - b),
 			a
 		};
+	}
+
+	/** Definition of a 'null' color - fully transparent black. */
+	static color_t null_color()
+	{
+		return {0,0,0,0};
 	}
 };
 

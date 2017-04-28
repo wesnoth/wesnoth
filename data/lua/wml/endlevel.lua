@@ -11,7 +11,7 @@ function wesnoth.wml_actions.endlevel(cfg)
 
 	local next_scenario = cfg.next_scenario
 	if next_scenario then
-		wesnoth.set_next_scenario(next_scenario)
+		wesnoth.game_config.next_scenario = next_scenario
 	end
 
 	local end_text = cfg.end_text
@@ -80,10 +80,17 @@ function wesnoth.wml_actions.endlevel(cfg)
 			v.carryover_percentage = cfg.carryover_percentage
 		end
 	end
+
 	local proceed_to_next_level = there_is_a_human_victory or (not there_is_a_human_defeat and cfg.result ~= "defeat") 
 	local victory = there_is_a_local_human_victory or (not there_is_a_local_human_defeat and proceed_to_next_level)
+
+	if victory and cfg.music then
+		wesnoth.game_config.victory_music = cfg.music
+	elseif cfg.music then
+		wesnoth.game_config.defeat_music = cfg.music
+	end
+
 	wesnoth.end_level {
-		music = cfg.music,
 		carryover_report = cfg.carryover_report,
 		save = cfg.save,
 		replay_save = cfg.replay_save,

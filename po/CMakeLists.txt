@@ -20,6 +20,7 @@ set(NORMAL_DOMAINS
 	wesnoth-multiplayer
 	wesnoth-nr
 	wesnoth-sof
+	wesnoth-sota
 	wesnoth-sotbe
 	wesnoth-tb
 	wesnoth-test

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2014 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -827,7 +827,7 @@ inline void smart_list<Data>::iterator_base<Value, Reversed>::unref(node_t * old
 	}
 }
 
-}// namespace util
+}// namespace utils
 
 #endif // UTILS_SMART_LIST_HPP_INCLUDED
 

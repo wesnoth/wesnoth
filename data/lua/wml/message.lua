@@ -12,7 +12,7 @@ local function get_image(cfg, speaker)
 	local image = cfg.image
 	local left_side = true
 
-	if speaker and (image == nil or image == "") then
+	if speaker and (image == nil or image == "") and (cfg.second_image == nil or cfg.second_image == "") then
 		image = speaker.portrait
 	end
 
@@ -354,7 +354,7 @@ function wesnoth.wml_actions.message(cfg)
 	else
 		-- Check ~= false, because the default if omitted should be true
 		if cfg.scroll ~= false then
-			wesnoth.scroll_to_tile(speaker.x, speaker.y)
+			wesnoth.scroll_to_tile(speaker.x, speaker.y, false, false, true)
 		end
 
 		wesnoth.highlight_hex(speaker.x, speaker.y)

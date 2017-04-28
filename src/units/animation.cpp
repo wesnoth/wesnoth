@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2016 by Jeremy Rosen <jeremy.rosen@enst-bretagne.fr>
+   Copyright (C) 2006 - 2017 by Jeremy Rosen <jeremy.rosen@enst-bretagne.fr>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -10,7 +10,7 @@
    but WITHOUT ANY WARRANTY.
 
    See the COPYING file for more details.
-   */
+*/
 
 #include "units/animation.hpp"
 
@@ -374,8 +374,8 @@ unit_animation::unit_animation(const config& cfg,const std::string& frame_string
 }
 
 int unit_animation::matches(const display& disp, const map_location& loc, const map_location& second_loc,
-		const unit* my_unit, const std::string& event, const int value, hit_type hit, const attack_type* attack,
-		const attack_type* second_attack, int value2) const
+		const unit* my_unit, const std::string& event, const int value, hit_type hit, const_attack_ptr attack,
+		const_attack_ptr second_attack, int value2) const
 {
 	int result = base_score_;
 
@@ -1084,10 +1084,10 @@ void unit_animation::redraw(frame_parameters& value, halo::manager& halo_man)
 	invalidated_ = false;
 	overlaped_hex_.clear();
 
-	value.primary_frame = t_true;
+	value.primary_frame = true;
 	unit_anim_.redraw(value,src_,dst_, halo_man);
 
-	value.primary_frame = t_false;
+	value.primary_frame = false;
 	for(auto& anim : sub_anims_) {
 		anim.second.redraw(value, src_, dst_, halo_man);
 	}
@@ -1111,9 +1111,9 @@ bool unit_animation::invalidate(frame_parameters& value)
 
 	if(overlaped_hex_.empty()) {
 		if(complete_redraw) {
-			value.primary_frame = t_true;
+			value.primary_frame = true;
 			overlaped_hex_ = unit_anim_.get_overlaped_hex(value, src_, dst_);
-			value.primary_frame = t_false;
+			value.primary_frame = false;
 
 			for(auto& anim : sub_anims_) {
 				std::set<map_location> tmp = anim.second.get_overlaped_hex(value, src_, dst_);
@@ -1301,8 +1301,8 @@ void unit_animator::add_animation(const unit* animated_unit
 		, const std::string& text
 		, const color_t text_color
 		, const unit_animation::hit_type hit_type
-		, const attack_type* attack
-		, const attack_type* second_attack
+		, const_attack_ptr attack
+		, const_attack_ptr second_attack
 		, int value2)
 {
 	if(!animated_unit) return;
@@ -1355,8 +1355,8 @@ void unit_animator::replace_anim_if_invalid(const unit* animated_unit
 	, const std::string& text
 	, const color_t text_color
 	, const unit_animation::hit_type hit_type
-	, const attack_type* attack
-	, const attack_type* second_attack
+	, const_attack_ptr attack
+	, const_attack_ptr second_attack
 	, int value2)
 {
 	if(!animated_unit) return;

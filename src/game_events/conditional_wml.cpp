@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -213,8 +213,10 @@ bool matches_special_filter(const config &cfg, const vconfig& filter)
 		// better to not execute the event (so the problem is more obvious)
 		return false;
 	}
-	const attack_type attack(cfg);
-	return attack.matches_filter(filter.get_parsed_config());
+	// Though it may seem wasteful to put this on the heap, it's necessary.
+	// matches_filter() could potentially call a WFL formula, which would call shared_from_this().
+	auto attack = std::make_shared<const attack_type>(cfg);
+	return attack->matches_filter(filter.get_parsed_config());
 }
 
 } // end namespace game_events

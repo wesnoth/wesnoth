@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2007 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -20,8 +20,8 @@
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "gui/core/canvas.hpp"
+#include "gui/core/canvas_private.hpp"
 
-#include "config.hpp"
 #include "font/text.hpp"
 #include "formatter.hpp"
 #include "gettext.hpp"
@@ -140,11 +140,13 @@ static void draw_line(surface& canvas,
  *
  * @param canvas          The canvas to draw upon, the caller should lock the
  *                        surface before calling.
- * @param color           The color of the circle to draw.
+ * @param color           The border color of the circle to draw.
  * @param x_center        The x coordinate of the center of the circle to draw.
  * @param y_center        The y coordinate of the center of the circle to draw.
  * @param radius          The radius of the circle to draw.
+ * @tparam octants        A bitfield indicating which octants to draw, starting at twelve o'clock and moving clockwise.
  */
+template<unsigned int octants = 0xff>
 static void draw_circle(surface& canvas,
 						SDL_Renderer* renderer,
 						color_t color,
@@ -158,10 +160,10 @@ static void draw_circle(surface& canvas,
 			  << " with radius " << radius << " canvas width " << w
 			  << " canvas height " << canvas->h << ".\n";
 
-	assert((x_center + radius) < canvas->w);
-	assert((x_center - radius) >= 0);
-	assert((y_center + radius) < canvas->h);
-	assert((y_center - radius) >= 0);
+	if(octants & 0x0f) assert((x_center + radius) < canvas->w);
+	if(octants & 0xf0) assert((x_center - radius) >= 0);
+	if(octants & 0x3c) assert((y_center + radius) < canvas->h);
+	if(octants & 0xc3) assert((y_center - radius) >= 0);
 
 	set_renderer_color(renderer, color);
 
@@ -175,15 +177,15 @@ static void draw_circle(surface& canvas,
 	std::vector<SDL_Point> points;
 
 	while(!(y > x)) {
-		points.push_back({x_center + x, y_center + y});
-		points.push_back({x_center + x, y_center - y});
-		points.push_back({x_center - x, y_center + y});
-		points.push_back({x_center - x, y_center - y});
+		if(octants & 0x04) points.push_back({x_center + x, y_center + y});
+		if(octants & 0x02) points.push_back({x_center + x, y_center - y});
+		if(octants & 0x20) points.push_back({x_center - x, y_center + y});
+		if(octants & 0x40) points.push_back({x_center - x, y_center - y});
 
-		points.push_back({x_center + y, y_center + x});
-		points.push_back({x_center + y, y_center - x});
-		points.push_back({x_center - y, y_center + x});
-		points.push_back({x_center - y, y_center - x});
+		if(octants & 0x08) points.push_back({x_center + y, y_center + x});
+		if(octants & 0x01) points.push_back({x_center + y, y_center - x});
+		if(octants & 0x10) points.push_back({x_center - y, y_center + x});
+		if(octants & 0x80) points.push_back({x_center - y, y_center - x});
 
 		d += 2 * y + 1;
 		++y;
@@ -196,54 +198,288 @@ static void draw_circle(surface& canvas,
 	SDL_RenderDrawPoints(renderer, points.data(), points.size());
 }
 
-/***** ***** ***** ***** ***** LINE ***** ***** ***** ***** *****/
-
-/** Definition of a line shape. */
-class line_shape : public canvas::shape
+/**
+ * Draws a filled circle on a surface.
+ *
+ * @pre                   The circle must fit on the canvas.
+ * @pre                   The @p surface is locked.
+ *
+ * @param canvas          The canvas to draw upon, the caller should lock the
+ *                        surface before calling.
+ * @param color           The fill color of the circle to draw.
+ * @param x_center        The x coordinate of the center of the circle to draw.
+ * @param y_center        The y coordinate of the center of the circle to draw.
+ * @param radius          The radius of the circle to draw.
+ * @tparam octants        A bitfield indicating which octants to draw, starting at twelve o'clock and moving clockwise.
+ */
+template<unsigned int octants = 0xff>
+static void fill_circle(surface& canvas,
+						SDL_Renderer* renderer,
+						color_t color,
+						const int x_center,
+						const int y_center,
+						const int radius)
 {
-public:
-	/**
-	 * Constructor.
-	 *
-	 * @param cfg                 The config object to define the line see
-	 *                            http://www.wesnoth.org/wiki/GUICanvasWML#Line
-	 *                            for more information.
-	 */
-	explicit line_shape(const config& cfg);
+	unsigned w = canvas->w;
 
-	/** Implement shape::draw(). */
-	void draw(surface& canvas,
-			  SDL_Renderer* renderer,
-			  const game_logic::map_formula_callable& variables);
+	DBG_GUI_D << "Shape: draw filled circle at " << x_center << ',' << y_center
+			  << " with radius " << radius << " canvas width " << w
+			  << " canvas height " << canvas->h << ".\n";
 
-private:
-	typed_formula<unsigned> x1_, /**< The start x coordinate of the line. */
-			y1_,			/**< The start y coordinate of the line. */
-			x2_,			/**< The end x coordinate of the line. */
-			y2_,			/**< The end y coordinate of the line. */
-			alpha_;			/**< Alpha value override computed as a formula. */
+	if(octants & 0x0f) assert((x_center + radius) < canvas->w);
+	if(octants & 0xf0) assert((x_center - radius) >= 0);
+	if(octants & 0x3c) assert((y_center + radius) < canvas->h);
+	if(octants & 0xc3) assert((y_center - radius) >= 0);
 
-	/** The color of the line. */
-	color_t color_;
+	set_renderer_color(renderer, color);
 
-	/**
-	 * The thickness of the line.
-	 *
-	 * if the value is odd the x and y are the middle of the line.
-	 * if the value is even the x and y are the middle of a line
-	 * with width - 1. (0 is special case, does nothing.)
-	 */
-	unsigned thickness_;
-};
+	int d = -static_cast<int>(radius);
+	int x = radius;
+	int y = 0;
+
+	while(!(y > x)) {
+		// I use the formula of Bresenham's line algorithm to determine the boundaries of a segment.
+		// The slope of the line is always 1 or -1 in this case.
+		if(octants & 0x04) SDL_RenderDrawLine(renderer, x_center + x,     y_center + y + 1, x_center + y + 1, y_center + y + 1); // x2 - 1 = y2 - (y_center + 1) + x_center
+		if(octants & 0x02) SDL_RenderDrawLine(renderer, x_center + x,     y_center - y,     x_center + y + 1, y_center - y);     // x2 - 1 = y_center - y2 + x_center
+		if(octants & 0x20) SDL_RenderDrawLine(renderer, x_center - x - 1, y_center + y + 1, x_center - y - 2, y_center + y + 1); // x2 + 1 = (y_center + 1) - y2 + (x_center - 1)
+		if(octants & 0x40) SDL_RenderDrawLine(renderer, x_center - x - 1, y_center - y,     x_center - y - 2, y_center - y);     // x2 + 1 = y2 - y_center + (x_center - 1)
+
+		if(octants & 0x08) SDL_RenderDrawLine(renderer, x_center + y,     y_center + x + 1, x_center + y,     y_center + y + 1); // y2 = x2 - x_center + (y_center + 1)
+		if(octants & 0x01) SDL_RenderDrawLine(renderer, x_center + y,     y_center - x,     x_center + y,     y_center - y);     // y2 = x_center - x2 + y_center
+		if(octants & 0x10) SDL_RenderDrawLine(renderer, x_center - y - 1, y_center + x + 1, x_center - y - 1, y_center + y + 1); // y2 = (x_center - 1) - x2 + (y_center + 1)
+		if(octants & 0x80) SDL_RenderDrawLine(renderer, x_center - y - 1, y_center - x,     x_center - y - 1, y_center - y);     // y2 = x2 - (x_center - 1) + y_center
+
+		d += 2 * y + 1;
+		++y;
+		if(d > 0) {
+			d += -2 * x + 2;
+			--x;
+		}
+	}
+}
+
+} // namespace
+
+/*WIKI - unclassified
+ * This code can be used by a parser to generate the wiki page
+ * structure
+ * [tag name]
+ * param type_info description
+ *
+ * param                               Name of the parameter.
+ *
+ * type_info = ( type = default_value) The info about a optional parameter.
+ * type_info = ( type )                The info about a mandatory parameter
+ * type_info = [ type_info ]           The info about a conditional parameter
+ *                                     description should explain the reason.
+ *
+ * description                         Description of the parameter.
+ *
+ *
+ *
+ *
+ * Formulas are a function between brackets, that way the engine can see whether
+ * there is standing a plain number or a formula eg:
+ * 0     A value of zero
+ * (0)   A formula returning zero
+ *
+ * When formulas are available the text should state the available variables
+ * which are available in that function.
+ */
+
+/*WIKI
+ * @page = GUIVariable
+ *
+ * {{Autogenerated}}
+ *
+ * = Variables =
+ *
+ * In various parts of the GUI there are several variables types in use. This
+ * page describes them.
+ *
+ * == Simple types ==
+ *
+ * The simple types are types which have one value or a short list of options.
+ *
+ * @begin{table}{variable_types}
+ *     unsigned &                      Unsigned number (positive whole numbers
+ *                                     and zero). $
+ *     f_unsigned &                    Unsigned number or formula returning an
+ *                                     unsigned number. $
+ *     int &                           Signed number (whole numbers). $
+ *     f_int &                         Signed number or formula returning an
+ *                                     signed number. $
+ *     bool &                          A boolean value accepts the normal
+ *                                     values as the rest of the game. $
+ *     f_bool &                        Boolean value or a formula returning a
+ *                                     boolean value. $
+ *     string &                        A text. $
+ *     tstring &                       A translatable string. $
+ *     f_tstring &                     Formula returning a translatable string.
+ *                                     $
+ *     function &                      A string containing a set of function
+ *                                     definition for the formula language. $
+ *
+ *     color &                         A string which contains the color, this
+ *                                     a group of 4 numbers between 0 and 255
+ *                                     separated by a comma. The numbers are red
+ *                                     component, green component, blue
+ *                                     component and alpha. A color of 0 is not
+ *                                     available. An alpha of 255 is fully
+ *                                     transparent. Omitted values are set to
+ *                                     0. $
+ *     f_color &                       A string which contains a color, or a formula
+ *                                     which evaluates to a list containing the color's
+ *                                     components. $
+ *
+ *     font_style &                    A string which contains the style of the
+ *                                     font:
+ *                                     @* normal    normal font
+ *                                     @* bold      bold font
+ *                                     @* italic    italic font
+ *                                     @* underline underlined font
+ *                                     @-Since SDL has problems combining these
+ *                                     styles only one can be picked. Once SDL
+ *                                     will allow multiple options, this type
+ *                                     will be transformed to a comma separated
+ *                                     list. If empty we default to the normal
+ *                                     style. Since the render engine is
+ *                                     replaced by Pango markup this field will
+ *                                     change later on. Note widgets that allow
+ *                                     marked up text can use markup to change
+ *                                     the font style. $
+ *
+ *     v_align &                       Vertical alignment; how an item is
+ *                                     aligned vertically in the available
+ *                                     space. Possible values:
+ *                                     @* top    aligned at the top
+ *                                     @* bottom aligned at the bottom
+ *                                     @* center centered
+ *                                     @-When nothing is set or an another
+ *                                     value as in the list the item is
+ *                                     centered. $
+ *
+ *     h_align &                       Horizontal alignment; how an item is
+ *                                     aligned horizontal in the available
+ *                                     space. Possible values:
+ *                                     @* left   aligned at the left side
+ *                                     @* right  aligned at the right side
+ *                                     @* center centered $
+ *
+ *     f_h_align &                     A horizontal alignment or a formula
+ *                                     returning a horizontal alignment. $
+ *
+ *     border &                        Comma separated list of borders to use.
+ *                                     Possible values:
+ *                                     @* left   border at the left side
+ *                                     @* right  border at the right side
+ *                                     @* top    border at the top
+ *                                     @* bottom border at the bottom
+ *                                     @* all    alias for "left, right, top,
+ *                                     bottom" $
+ *
+ *     scrollbar_mode &                How to show the scrollbar of a widget.
+ *                                     Possible values:
+ *                                     @* always       The scrollbar is always
+ *                                     shown, regardless whether it's required
+ *                                     or not.
+ *                                     @* never        The scrollbar is never
+ *                                     shown, even not when needed. (Note when
+ *                                     setting this mode dialogs might
+ *                                     not properly fit anymore).
+ *                                     @* auto         Shows the scrollbar when
+ *                                     needed. The widget will reserve space for
+ *                                     the scrollbar, but only show when needed.
+ *                                     @* initial_auto Like auto, but when the
+ *                                     scrollbar is not needed the space is not
+ *                                     reserved.
+ *                                     @-Use auto when the list can be changed
+ *                                     dynamically eg the game list in the
+ *                                     lobby. For optimization you can also
+ *                                     use auto when you really expect a
+ *                                     scrollbar, but don't want it to be shown
+ *                                     when not needed eg the language list
+ *                                     will need a scrollbar on most screens. $
+ *
+ *     resize_mode &                   Determines how an image is resized.
+ *                                     Possible values:
+ *                                     @* scale        The image is scaled.
+ *                                     @* stretch      The first row or column
+ *                                     of pixels is copied over the entire
+ *                                     image. (Can only be used to scale resize
+ *                                     in one direction, else falls
+ *                                     back to scale.)
+ *                                     @* tile         The image is placed
+ *                                     several times until the entire surface
+ *                                     is filled. The last images are
+ *                                     truncated.
+ *                                     @* tile_center  Like tile, but the
+ *                                     image is first centered on the screen. $
+ *
+ *     grow_direction &                Determines how an image is resized.
+ *                                     Possible values:
+ *                                     @* scale        The image is scaled.
+ *                                     @* stretch      The first row or column
+ *                                     of pixels is copied over the entire
+ *                                     image. (Can only be used to scale resize
+ *                                     in one direction, else falls
+ *                                     back to scale.)
+ *                                     @* tile         The image is placed
+ *                                     several times until the entire surface
+ *                                     is filled. The last images are
+ *                                     truncated. $
+ * @end{table}
+ * @allow{type}{name="unsigned"}{value="^\d+$"}
+ * @allow{type}{name="f_unsigned"}{value="^.+$"}
+ * @allow{type}{name="int"}{value="^-?\d+$"}
+ * @allow{type}{name="f_int"}{value="^.*$"}
+ * @allow{type}{name="bool"}{value="^true|false|yes|no$"}
+ * @allow{type}{name="f_bool"}{value="^.*$"}
+ * @allow{type}{name="string"}{value="^.*$"}
+ * @allow{type}{name="t_string"}{value="^_?.*$"}
+ * @allow{type}{name="f_string"}{value="^.*$"}
+ * @allow{type}{name="f_tstring"}{value="^_?.*$"}
+ * @allow{type}{name="function"}{value="^_?.*$"}
+ *
+ * @allow{type}{name="color"}{value="^(?:2[0-5][0-5]|[01]?\d?\d)[.,]\s*(?:2[0-5][0-5]|[01]?\d?\d)[.,]\s*(?:2[0-5][0-5]|[01]?\d?\d)[.,]\s*(?:2[0-5][0-5]|[01]?\d?\d)$"}
+ *
+ * @allow{type}{name="font_style"}{value="^(normal|bold|italic|underline)?$"}
+ * @allow{type}{name="v_align"}{value="^top|bottom|center$"}
+ * @allow{type}{name="h_align"}{value="^left|right|center$"}
+ * @allow{type}{name="f_h_align"}{value="^.*$"}
+ * @allow{type}{name="border"}{value="^(top|bottom|left|right|all)?(,\s*(top|bottom|left|right|all))*$"}
+ * @allow{type}{name="scrollbar_mode"}{value="^always|never|auto|initial_auto$"}
+ * @allow{type}{name="resize_mode"}{value="^scale|stretch|tile$"}
+ * @allow{type}{name="grow_direction"}{value="^horizontal|vertical$"}
+ *
+ * @remove{type}{name="section"}
+ * @remove{type}{name="config"}
+ * @remove{type}{name="grid"}
+ * == Section types ==
+ *
+ * For more complex parts, there are sections. Sections contain of several
+ * lines of WML and can have sub sections. For example a grid has sub sections
+ * which contain various widgets. Here's the list of sections.
+ *
+ * @begin{table}{variable_types}
+ *     section &                       A generic section. The documentation
+ *                                     about the section should describe the
+ *                                     section in further detail. $
+ *
+ *     grid &                          A grid contains several widgets. (TODO
+ *                                     add link to generic grid page.) $
+ * @end{table}
+ */
+
+/***** ***** ***** ***** ***** LINE ***** ***** ***** ***** *****/
 
 /*WIKI
  * @page = GUICanvasWML
  *
  * == Line ==
  * @begin{tag}{name="line"}{min="0"}{max="-1"}
- * Definition of a line. When drawing a line it doesn't get blended on the
- * surface but replaces the pixels instead. A blitting flag might be added later
- * if needed.
+ * Definition of a line.
  *
  * Keys:
  * @begin{table}{config}
@@ -251,7 +487,7 @@ private:
  *     y1 & f_unsigned & 0 &           The y coordinate of the startpoint. $
  *     x2 & f_unsigned & 0 &           The x coordinate of the endpoint. $
  *     y2 & f_unsigned & 0 &           The y coordinate of the endpoint. $
- *     color & color & "" &            The color of the line. $
+ *     color & f_color & "" &          The color of the line. $
  *     thickness & unsigned & 0 &      The thickness of the line if 0 nothing
  *                                     is drawn. $
  *     debug & string & "" &           Debug message to show upon creation
@@ -343,219 +579,13 @@ private:
  * crashing. (That should be fixed, when encountered.)
  */
 
-/*WIKI - unclassified
- * This code can be used by a parser to generate the wiki page
- * structure
- * [tag name]
- * param type_info description
- *
- * param                               Name of the parameter.
- *
- * type_info = ( type = default_value) The info about a optional parameter.
- * type_info = ( type )                The info about a mandatory parameter
- * type_info = [ type_info ]           The info about a conditional parameter
- *                                     description should explain the reason.
- *
- * description                         Description of the parameter.
- *
- *
- *
- *
- * Formulas are a function between brackets, that way the engine can see whether
- * there is standing a plain number or a formula eg:
- * 0     A value of zero
- * (0)   A formula returning zero
- *
- * When formulas are available the text should state the available variables
- * which are available in that function.
- */
-
-/*WIKI
- * @page = GUIVariable
- *
- * {{Autogenerated}}
- *
- * = Variables =
- *
- * In various parts of the GUI there are several variables types in use. This
- * page describes them.
- *
- * == Simple types ==
- *
- * The simple types are types which have one value or a short list of options.
- *
- * @begin{table}{variable_types}
- *     unsigned &                      Unsigned number (positive whole numbers
- *                                     and zero). $
- *     f_unsigned &                    Unsigned number or formula returning an
- *                                     unsigned number. $
- *     int &                           Signed number (whole numbers). $
- *     f_int &                         Signed number or formula returning an
- *                                     signed number. $
- *     bool &                          A boolean value accepts the normal
- *                                     values as the rest of the game. $
- *     f_bool &                        Boolean value or a formula returning a
- *                                     boolean value. $
- *     string &                        A text. $
- *     tstring &                       A translatable string. $
- *     f_tstring &                     Formula returning a translatable string.
- *                                     $
- *     function &                      A string containing a set of function
- *                                     definition for the formula language. $
- *
- *     color &                         A string which contains the color, this
- *                                     a group of 4 numbers between 0 and 255
- *                                     separated by a comma. The numbers are red
- *                                     component, green component, blue
- *                                     component and alpha. A color of 0 is not
- *                                     available. An alpha of 255 is fully
- *                                     transparent. Omitted values are set to
- *                                     0. $
- *
- *     font_style &                    A string which contains the style of the
- *                                     font:
- *                                     @* normal    normal font
- *                                     @* bold      bold font
- *                                     @* italic    italic font
- *                                     @* underline underlined font
- *                                     @-Since SDL has problems combining these
- *                                     styles only one can be picked. Once SDL
- *                                     will allow multiple options, this type
- *                                     will be transformed to a comma separated
- *                                     list. If empty we default to the normal
- *                                     style. Since the render engine is
- *                                     replaced by Pango markup this field will
- *                                     change later on. Note widgets that allow
- *                                     marked up text can use markup to change
- *                                     the font style. $
- *
- *     v_align &                       Vertical alignment; how an item is
- *                                     aligned vertically in the available
- *                                     space. Possible values:
- *                                     @* top    aligned at the top
- *                                     @* bottom aligned at the bottom
- *                                     @* center centered
- *                                     @-When nothing is set or an another
- *                                     value as in the list the item is
- *                                     centered. $
- *
- *     h_align &                       Horizontal alignment; how an item is
- *                                     aligned horizontal in the available
- *                                     space. Possible values:
- *                                     @* left   aligned at the left side
- *                                     @* right  aligned at the right side
- *                                     @* center centered $
- *
- *     f_h_align &                     A horizontal alignment or a formula
- *                                     returning a horizontal alignment. $
- *
- *     border &                        Comma separated list of borders to use.
- *                                     Possible values:
- *                                     @* left   border at the left side
- *                                     @* right  border at the right side
- *                                     @* top    border at the top
- *                                     @* bottom border at the bottom
- *                                     @* all    alias for "left, right, top,
- *                                     bottom" $
- *
- *     scrollbar_mode &                How to show the scrollbar of a widget.
- *                                     Possible values:
- *                                     @* always       The scrollbar is always
- *                                     shown, regardless whether it's required
- *                                     or not.
- *                                     @* never        The scrollbar is never
- *                                     shown, even not when needed. (Note when
- *                                     setting this mode dialogs might
- *                                     not properly fit anymore).
- *                                     @* auto         Shows the scrollbar when
- *                                     needed. The widget will reserve space for
- *                                     the scrollbar, but only show when needed.
- *                                     @* initial_auto Like auto, but when the
- *                                     scrollbar is not needed the space is not
- *                                     reserved.
- *                                     @-Use auto when the list can be changed
- *                                     dynamically eg the game list in the
- *                                     lobby. For optimization you can also
- *                                     use auto when you really expect a
- *                                     scrollbar, but don't want it to be shown
- *                                     when not needed eg the language list
- *                                     will need a scrollbar on most screens. $
- *
- *     resize_mode &                   Determines how an image is resized.
- *                                     Possible values:
- *                                     @* scale        The image is scaled.
- *                                     @* stretch      The first row or column
- *                                     of pixels is copied over the entire
- *                                     image. (Can only be used to scale resize
- *                                     in one direction, else falls
- *                                     back to scale.)
- *                                     @* tile         The image is placed
- *                                     several times until the entire surface
- *                                     is filled. The last images are
- *                                     truncated. $
- *
- *     grow_direction &                Determines how an image is resized.
- *                                     Possible values:
- *                                     @* scale        The image is scaled.
- *                                     @* stretch      The first row or column
- *                                     of pixels is copied over the entire
- *                                     image. (Can only be used to scale resize
- *                                     in one direction, else falls
- *                                     back to scale.)
- *                                     @* tile         The image is placed
- *                                     several times until the entire surface
- *                                     is filled. The last images are
- *                                     truncated. $
- * @end{table}
- * @allow{type}{name="unsigned"}{value="^\d+$"}
- * @allow{type}{name="f_unsigned"}{value="^.+$"}
- * @allow{type}{name="int"}{value="^-?\d+$"}
- * @allow{type}{name="f_int"}{value="^.*$"}
- * @allow{type}{name="bool"}{value="^true|false|yes|no$"}
- * @allow{type}{name="f_bool"}{value="^.*$"}
- * @allow{type}{name="string"}{value="^.*$"}
- * @allow{type}{name="t_string"}{value="^_?.*$"}
- * @allow{type}{name="f_string"}{value="^.*$"}
- * @allow{type}{name="f_tstring"}{value="^_?.*$"}
- * @allow{type}{name="function"}{value="^_?.*$"}
- *
- * @allow{type}{name="color"}{value="^(?:2[0-5][0-5]|[01]?\d?\d)[.,]\s*(?:2[0-5][0-5]|[01]?\d?\d)[.,]\s*(?:2[0-5][0-5]|[01]?\d?\d)[.,]\s*(?:2[0-5][0-5]|[01]?\d?\d)$"}
- *
- * @allow{type}{name="font_style"}{value="^(normal|bold|italic|underline)?$"}
- * @allow{type}{name="v_align"}{value="^top|bottom|center$"}
- * @allow{type}{name="h_align"}{value="^left|right|center$"}
- * @allow{type}{name="f_h_align"}{value="^.*$"}
- * @allow{type}{name="border"}{value="^(top|bottom|left|right|all)?(,\s*(top|bottom|left|right|all))*$"}
- * @allow{type}{name="scrollbar_mode"}{value="^always|never|auto|initial_auto$"}
- * @allow{type}{name="resize_mode"}{value="^scale|stretch|tile$"}
- * @allow{type}{name="grow_direction"}{value="^horizontal|vertical$"}
- *
- * @remove{type}{name="section"}
- * @remove{type}{name="config"}
- * @remove{type}{name="grid"}
- * == Section types ==
- *
- * For more complex parts, there are sections. Sections contain of several
- * lines of WML and can have sub sections. For example a grid has sub sections
- * which contain various widgets. Here's the list of sections.
- *
- * @begin{table}{variable_types}
- *     section &                       A generic section. The documentation
- *                                     about the section should describe the
- *                                     section in further detail. $
- *
- *     grid &                          A grid contains several widgets. (TODO
- *                                     add link to generic grid page.) $
- * @end{table}
- */
-
 line_shape::line_shape(const config& cfg)
-	: x1_(cfg["x1"])
+	: shape(cfg)
+	, x1_(cfg["x1"])
 	, y1_(cfg["y1"])
 	, x2_(cfg["x2"])
 	, y2_(cfg["y2"])
-	, alpha_(cfg["alpha"])
-	, color_(decode_color(cfg["color"]))
+	, color_(cfg["color"])
 	, thickness_(cfg["thickness"])
 {
 	const std::string& debug = (cfg["debug"]);
@@ -566,7 +596,7 @@ line_shape::line_shape(const config& cfg)
 
 void line_shape::draw(surface& canvas,
 				 SDL_Renderer* renderer,
-				 const game_logic::map_formula_callable& variables)
+				 wfl::map_formula_callable& variables)
 {
 	/**
 	 * @todo formulas are now recalculated every draw cycle which is a bit silly
@@ -578,12 +608,6 @@ void line_shape::draw(surface& canvas,
 	const unsigned y1 = y1_(variables);
 	const unsigned x2 = x2_(variables);
 	const unsigned y2 = y2_(variables);
-	const unsigned alpha = alpha_(variables);
-
-	// Override alpha from color with formula.
-	if(alpha_.has_formula()) {
-		color_.a = alpha;
-	}
 
 	DBG_GUI_D << "Line: draw from " << x1 << ',' << y1 << " to " << x2 << ','
 			  << y2 << " canvas size " << canvas->w << ',' << canvas->h
@@ -600,56 +624,10 @@ void line_shape::draw(surface& canvas,
 	// lock the surface
 	surface_lock locker(canvas);
 
-	draw_line(canvas, renderer, color_, x1, y1, x2, y2);
+	draw_line(canvas, renderer, color_(variables), x1, y1, x2, y2);
 }
 
 /***** ***** ***** ***** ***** Rectangle ***** ***** ***** ***** *****/
-
-/** Definition of a rectangle shape. */
-class rectangle_shape : public canvas::shape
-{
-public:
-	/**
-	 * Constructor.
-	 *
-	 * @param cfg                 The config object to define the rectangle see
-	 *                            http://www.wesnoth.org/wiki/GUICanvasWML#Rectangle
-	 *                            for more information.
-	 */
-	explicit rectangle_shape(const config& cfg);
-
-	/** Implement shape::draw(). */
-	void draw(surface& canvas,
-			  SDL_Renderer* renderer,
-			  const game_logic::map_formula_callable& variables);
-
-private:
-	typed_formula<int> x_, /**< The x coordinate of the rectangle. */
-			y_,			   /**< The y coordinate of the rectangle. */
-			w_,			   /**< The width of the rectangle. */
-			h_;			   /**< The height of the rectangle. */
-
-	/**
-	 * Border thickness.
-	 *
-	 * If 0 the fill color is used for the entire widget.
-	 */
-	int border_thickness_;
-
-	/**
-	 * The border color of the rectangle.
-	 *
-	 * If the color is fully transparent the border isn't drawn.
-	 */
-	color_t border_color_;
-
-	/**
-	 * The border color of the rectangle.
-	 *
-	 * If the color is fully transparent the rectangle won't be filled.
-	 */
-	color_t fill_color_;
-};
 
 /*WIKI
  * @page = GUICanvasWML
@@ -670,13 +648,13 @@ private:
  *     w & f_unsigned & 0 &            The width of the rectangle. $
  *     h & f_unsigned & 0 &            The height of the rectangle. $
  *     border_thickness & unsigned & 0 &
- *                                     The thickness of the border if the
+ *                                     The thickness of the border; if the
  *                                     thickness is zero it's not drawn. $
- *     border_color & color & "" &     The color of the border if empty it's
+ *     border_color & f_color & "" &   The color of the border; if empty it's
  *                                     not drawn. $
- *     fill_color & color & "" &       The color of the interior if omitted
+ *     fill_color & f_color & "" &     The color of the interior; if omitted
  *                                     it's not drawn. $
- *     debug & string & "" &           Debug message to show upon creation
+ *     debug & string & "" &           Debug message to show upon creation;
  *                                     this message is not stored. $
  * @end{table}
  * @end{tag}{name="rectangle"}
@@ -685,15 +663,17 @@ private:
  *
  */
 rectangle_shape::rectangle_shape(const config& cfg)
-	: x_(cfg["x"])
+	: shape(cfg)
+	, x_(cfg["x"])
 	, y_(cfg["y"])
 	, w_(cfg["w"])
 	, h_(cfg["h"])
 	, border_thickness_(cfg["border_thickness"])
-	, border_color_(decode_color(cfg["border_color"]))
-	, fill_color_(decode_color(cfg["fill_color"]))
+	, border_color_(cfg["border_color"], color_t::null_color())
+	, fill_color_(cfg["fill_color"], color_t::null_color())
 {
-	if(border_color_.null()) {
+	// Check if a raw color string evaluates to a null color.
+	if(!border_color_.has_formula() && border_color_().null()) {
 		border_thickness_ = 0;
 	}
 
@@ -705,7 +685,7 @@ rectangle_shape::rectangle_shape(const config& cfg)
 
 void rectangle_shape::draw(surface& canvas,
 					  SDL_Renderer* renderer,
-					  const game_logic::map_formula_callable& variables)
+					  wfl::map_formula_callable& variables)
 {
 	/**
 	 * @todo formulas are now recalculated every draw cycle which is a  bit
@@ -728,23 +708,11 @@ void rectangle_shape::draw(surface& canvas,
 
 	surface_lock locker(canvas);
 
-	// Draw the border
-	for(int i = 0; i < border_thickness_; ++i) {
-		SDL_Rect dimensions {
-			x + i,
-			y + i,
-			w - (i * 2),
-			h - (i * 2)
-		};
-
-		set_renderer_color(renderer, border_color_);
-
-		SDL_RenderDrawRect(renderer, &dimensions);
-	}
+	const color_t fill_color = fill_color_(variables);
 
 	// Fill the background, if applicable
-	if(!fill_color_.null() && w && h) {
-		set_renderer_color(renderer, fill_color_);
+	if(!fill_color.null() && w && h) {
+		set_renderer_color(renderer, fill_color);
 
 		SDL_Rect area {
 			x +  border_thickness_,
@@ -755,36 +723,146 @@ void rectangle_shape::draw(surface& canvas,
 
 		SDL_RenderFillRect(renderer, &area);
 	}
+
+	// Draw the border
+	for(int i = 0; i < border_thickness_; ++i) {
+		SDL_Rect dimensions {
+			x + i,
+			y + i,
+			w - (i * 2),
+			h - (i * 2)
+		};
+
+		set_renderer_color(renderer, border_color_(variables));
+
+		SDL_RenderDrawRect(renderer, &dimensions);
+	}
+}
+
+/***** ***** ***** ***** ***** Rounded Rectangle ***** ***** ***** ***** *****/
+
+/*WIKI
+ * @page = GUICanvasWML
+ *
+ * == Rounded Rectangle ==
+ * @begin{tag}{name="round_rectangle"}{min="0"}{max="-1"}
+ *
+ * Definition of a rounded rectangle. When drawing a rounded rectangle it doesn't get blended on
+ * the surface but replaces the pixels instead. A blitting flag might be added
+ * later if needed.
+ *
+ * Keys:
+ * @begin{table}{config}
+ *     x & f_unsigned & 0 &            The x coordinate of the top left corner.
+ *                                     $
+ *     y & f_unsigned & 0 &            The y coordinate of the top left corner.
+ *                                     $
+ *     w & f_unsigned & 0 &            The width of the rounded rectangle. $
+ *     h & f_unsigned & 0 &            The height of the rounded rectangle. $
+ *     corner_radius & f_unsigned & 0 &The radius of the rectangle's corners. $
+ *     border_thickness & unsigned & 0 &
+ *                                     The thickness of the border; if the
+ *                                     thickness is zero it's not drawn. $
+ *     border_color & f_color & "" &   The color of the border; if empty it's
+ *                                     not drawn. $
+ *     fill_color & f_color & "" &     The color of the interior; if omitted
+ *                                     it's not drawn. $
+ *     debug & string & "" &           Debug message to show upon creation;
+ *                                     this message is not stored. $
+ * @end{table}
+ * @end{tag}{name="round_rectangle"}
+ * Variables:
+ * See [[#general_variables|Line]].
+ *
+ */
+round_rectangle_shape::round_rectangle_shape(const config& cfg)
+	: shape(cfg)
+	, x_(cfg["x"])
+	, y_(cfg["y"])
+	, w_(cfg["w"])
+	, h_(cfg["h"])
+	, r_(cfg["corner_radius"])
+	, border_thickness_(cfg["border_thickness"])
+	, border_color_(cfg["border_color"], color_t::null_color())
+	, fill_color_(cfg["fill_color"], color_t::null_color())
+{
+	// Check if a raw color string evaluates to a null color.
+	if(!border_color_.has_formula() && border_color_().null()) {
+		border_thickness_ = 0;
+	}
+
+	const std::string& debug = (cfg["debug"]);
+	if(!debug.empty()) {
+		DBG_GUI_P << "Rounded Rectangle: found debug message '" << debug << "'.\n";
+	}
+}
+
+void round_rectangle_shape::draw(surface& canvas,
+	SDL_Renderer* renderer,
+	wfl::map_formula_callable& variables)
+{
+	/**
+	 * @todo formulas are now recalculated every draw cycle which is a  bit
+	 * silly unless there has been a resize. So to optimize we should use an
+	 * extra flag or do the calculation in a separate routine.
+	 */
+	const int x = x_(variables);
+	const int y = y_(variables);
+	const int w = w_(variables);
+	const int h = h_(variables);
+	const int r = r_(variables);
+
+	DBG_GUI_D << "Rounded Rectangle: draw from " << x << ',' << y << " width " << w
+		<< " height " << h << " canvas size " << canvas->w << ','
+		<< canvas->h << ".\n";
+
+	VALIDATE(x     <  canvas->w
+		&& x + w <= canvas->w
+		&& y     <  canvas->h
+		&& y + h <= canvas->h, _("Rounded Rectangle doesn't fit on canvas."));
+
+	surface_lock locker(canvas);
+
+	const color_t fill_color = fill_color_(variables);
+
+	// Fill the background, if applicable
+	if(!fill_color.null() && w && h) {
+		set_renderer_color(renderer, fill_color);
+		static const int count = 3;
+		SDL_Rect area[count] {
+			{x + r,                 y + border_thickness_, w - r                 * 2, r - border_thickness_ + 1},
+			{x + border_thickness_, y + r + 1,             w - border_thickness_ * 2, h - r * 2},
+			{x + r,                 y - r + h + 1,         w - r                 * 2, r - border_thickness_},
+		};
+
+		SDL_RenderFillRects(renderer, area, count);
+
+		fill_circle<0xc0>(canvas, renderer, fill_color, x + r,     y + r,     r);
+		fill_circle<0x03>(canvas, renderer, fill_color, x + w - r, y + r,     r);
+		fill_circle<0x30>(canvas, renderer, fill_color, x + r,     y + h - r, r);
+		fill_circle<0x0c>(canvas, renderer, fill_color, x + w - r, y + h - r, r);
+	}
+
+	const color_t border_color = border_color_(variables);
+
+	// Draw the border
+	for(int i = 0; i < border_thickness_; ++i) {
+		set_renderer_color(renderer, border_color);
+
+		SDL_RenderDrawLine(renderer, x + r, y + i,     x + w - r, y + i);
+		SDL_RenderDrawLine(renderer, x + r, y + h - i, x + w - r, y + h - i);
+
+		SDL_RenderDrawLine(renderer, x + i,     y + r, x + i,     y + h - r);
+		SDL_RenderDrawLine(renderer, x + w - i, y + r, x + w - i, y + h - r);
+
+		draw_circle<0xc0>(canvas, renderer, border_color, x + r,     y + r,     r - i);
+		draw_circle<0x03>(canvas, renderer, border_color, x + w - r, y + r,     r - i);
+		draw_circle<0x30>(canvas, renderer, border_color, x + r,     y + h - r, r - i);
+		draw_circle<0x0c>(canvas, renderer, border_color, x + w - r, y + h - r, r - i);
+	}
 }
 
 /***** ***** ***** ***** ***** CIRCLE ***** ***** ***** ***** *****/
-
-/** Definition of a circle shape. */
-class circle_shape : public canvas::shape
-{
-public:
-	/**
-	 * Constructor.
-	 *
-	 * @param cfg                 The config object to define the circle see
-	 *                            http://www.wesnoth.org/wiki/GUICanvasWML#Circle
-	 *                            for more information.
-	 */
-	explicit circle_shape(const config& cfg);
-
-	/** Implement shape::draw(). */
-	void draw(surface& canvas,
-			  SDL_Renderer* renderer,
-			  const game_logic::map_formula_callable& variables);
-
-private:
-	typed_formula<unsigned> x_, /**< The center x coordinate of the circle. */
-			y_,			   /**< The center y coordinate of the circle. */
-			radius_;	   /**< The radius of the circle. */
-
-	/** The color of the circle. */
-	color_t color_;
-};
 
 /*WIKI
  * @page = GUICanvasWML
@@ -800,10 +878,13 @@ private:
  * @begin{table}{config}
  * x      & f_unsigned & 0 &       The x coordinate of the center. $
  * y      & f_unsigned & 0 &       The y coordinate of the center. $
- * radius & f_unsigned & 0 &       The radius of the circle if 0 nothing is
+ * radius & f_unsigned & 0 &       The radius of the circle; if 0 nothing is
  *                                 drawn. $
- * color & color & "" &            The color of the circle. $
- * debug & string & "" &           Debug message to show upon creation this
+ * border_thickness & unsigned & "" &
+ *                                 The border thickness of the circle. $
+ * border_color & f_color & "" &   The color of the circle. $
+ * fill_color & f_color & "" &     The color of the circle. $
+ * debug & string & "" &           Debug message to show upon creation; this
  *                                 message is not stored. $
  * @end{table}
  * @end{tag}{name="circle"}
@@ -814,10 +895,13 @@ private:
  * crashing. (That should be fixed, when encountered.)
  */
 circle_shape::circle_shape(const config& cfg)
-	: x_(cfg["x"])
+	: shape(cfg)
+	, x_(cfg["x"])
 	, y_(cfg["y"])
 	, radius_(cfg["radius"])
-	, color_(decode_color(cfg["color"]))
+	, border_color_(cfg["border_color"])
+	, fill_color_(cfg["fill_color"])
+	, border_thickness_(cfg["border_thickness"].to_int(1))
 {
 	const std::string& debug = (cfg["debug"]);
 	if(!debug.empty()) {
@@ -827,7 +911,7 @@ circle_shape::circle_shape(const config& cfg)
 
 void circle_shape::draw(surface& canvas,
 				   SDL_Renderer* renderer,
-				   const game_logic::map_formula_callable& variables)
+				   wfl::map_formula_callable& variables)
 {
 	/**
 	 * @todo formulas are now recalculated every draw cycle which is a bit
@@ -867,73 +951,18 @@ void circle_shape::draw(surface& canvas,
 	// lock the surface
 	surface_lock locker(canvas);
 
-	draw_circle(canvas, renderer, color_, x, y, radius);
+	const color_t fill_color = fill_color_(variables);
+	if(!fill_color.null() && radius) {
+		fill_circle(canvas, renderer, fill_color, x, y, radius);
+	}
+
+	const color_t border_color = border_color_(variables);
+	for(unsigned int i = 0; i < border_thickness_; i++) {
+		draw_circle(canvas, renderer, border_color, x, y, radius - i);
+	}
 }
 
 /***** ***** ***** ***** ***** IMAGE ***** ***** ***** ***** *****/
-
-/** Definition of an image shape. */
-class image_shape : public canvas::shape
-{
-public:
-	/**
-	 * Constructor.
-	 *
-	 * @param cfg                 The config object to define the image see
-	 *                            http://www.wesnoth.org/wiki/GUICanvasWML#Image
-	 *                            for more information.
-	 */
-	explicit image_shape(const config& cfg);
-
-	/** Implement shape::draw(). */
-	void draw(surface& canvas,
-			  SDL_Renderer* renderer,
-			  const game_logic::map_formula_callable& variables);
-
-private:
-	typed_formula<unsigned> x_, /**< The x coordinate of the image. */
-			y_,			   /**< The y coordinate of the image. */
-			w_,			   /**< The width of the image. */
-			h_;			   /**< The height of the image. */
-
-	/** Contains the size of the image. */
-	SDL_Rect src_clip_;
-
-	/** The image is cached in this surface. */
-	surface image_;
-
-
-
-	/**
-	 * Name of the image.
-	 *
-	 * This value is only used when the image name is a formula. If it isn't a
-	 * formula the image will be loaded in the constructor. If it's a formula it
-	 * will be loaded every draw cycles. This allows 'changing' images.
-	 */
-	typed_formula<std::string> image_name_;
-
-	/**
-	 * Determines the way an image will be resized.
-	 *
-	 * If the image is smaller is needed it needs to resized, how is determined
-	 * by the value of this enum.
-	 */
-	enum resize_mode {
-		scale,
-		stretch,
-		tile
-	};
-
-	/** Converts a string to a resize mode. */
-	resize_mode get_resize_mode(const std::string& resize_mode);
-
-	/** The resize mode for an image. */
-	resize_mode resize_mode_;
-
-	/** Mirror the image over the vertical axis. */
-	typed_formula<bool> vertical_mirror_;
-};
 
 /*WIKI
  * @page = GUICanvasWML
@@ -991,8 +1020,10 @@ private:
  * @end{table}
  * Also the general variables are available, see [[#general_variables|Line]].
  */
-image_shape::image_shape(const config& cfg)
-	: x_(cfg["x"])
+
+image_shape::image_shape(const config& cfg, wfl::action_function_symbol_table& functions)
+	: shape(cfg)
+	, x_(cfg["x"])
 	, y_(cfg["y"])
 	, w_(cfg["w"])
 	, h_(cfg["h"])
@@ -1001,6 +1032,7 @@ image_shape::image_shape(const config& cfg)
 	, image_name_(cfg["name"])
 	, resize_mode_(get_resize_mode(cfg["resize_mode"]))
 	, vertical_mirror_(cfg["vertical_mirror"])
+	, actions_formula_(cfg["actions"], &functions)
 {
 	const std::string& debug = (cfg["debug"]);
 	if(!debug.empty()) {
@@ -1008,9 +1040,18 @@ image_shape::image_shape(const config& cfg)
 	}
 }
 
+void image_shape::dimension_validation(unsigned value, const std::string& name, const std::string& key)
+{
+	const int as_int = static_cast<int>(value);
+
+	VALIDATE_WITH_DEV_MESSAGE(as_int >= 0, _("Image doesn't fit on canvas."),
+		formatter() << "Image '" << name << "', " << key << " = " << as_int << "."
+	);
+}
+
 void image_shape::draw(surface& canvas,
 				  SDL_Renderer* /*renderer*/,
-				  const game_logic::map_formula_callable& variables)
+				  wfl::map_formula_callable& variables)
 {
 	DBG_GUI_D << "Image: draw.\n";
 
@@ -1033,8 +1074,7 @@ void image_shape::draw(surface& canvas,
 	surface tmp(image::get_image(image::locator(name)));
 
 	if(!tmp) {
-		ERR_GUI_D << "Image: '" << name << "' not found and won't be drawn."
-				  << std::endl;
+		ERR_GUI_D << "Image: '" << name << "' not found and won't be drawn." << std::endl;
 		return;
 	}
 
@@ -1042,40 +1082,30 @@ void image_shape::draw(surface& canvas,
 	assert(image_);
 	src_clip_ = sdl::create_rect(0, 0, image_->w, image_->h);
 
-	game_logic::map_formula_callable local_variables(variables);
-	local_variables.add("image_original_width", variant(image_->w));
-	local_variables.add("image_original_height", variant(image_->h));
+	wfl::map_formula_callable local_variables(variables);
+	local_variables.add("image_original_width", wfl::variant(image_->w));
+	local_variables.add("image_original_height", wfl::variant(image_->h));
 
 	unsigned w = w_(local_variables);
-	VALIDATE_WITH_DEV_MESSAGE(static_cast<int>(w) >= 0,
-							  _("Image doesn't fit on canvas."),
-							  formatter() << "Image '" << name
-										   << "', w = " << static_cast<int>(w)
-										   << ".");
+	dimension_validation(w, name, "w");
 
 	unsigned h = h_(local_variables);
-	VALIDATE_WITH_DEV_MESSAGE(static_cast<int>(h) >= 0,
-							  _("Image doesn't fit on canvas."),
-							  formatter() << "Image '" << name
-										   << "', h = " << static_cast<int>(h)
-										   << ".");
+	dimension_validation(h, name, "h");
 
-	local_variables.add("image_width", variant(w ? w : image_->w));
-	local_variables.add("image_height", variant(h ? h : image_->h));
+	local_variables.add("image_width", wfl::variant(w ? w : image_->w));
+	local_variables.add("image_height", wfl::variant(h ? h : image_->h));
 
 	const unsigned clip_x = x_(local_variables);
-	VALIDATE_WITH_DEV_MESSAGE(static_cast<int>(clip_x) >= 0,
-							  _("Image doesn't fit on canvas."),
-							  formatter() << "Image '" << name
-										   << "', x = " << static_cast<int>(clip_x)
-										   << ".");
+	dimension_validation(clip_x, name, "x");
 
 	const unsigned clip_y = y_(local_variables);
-	VALIDATE_WITH_DEV_MESSAGE(static_cast<int>(clip_y) >= 0,
-							  _("Image doesn't fit on canvas."),
-							  formatter() << "Image '" << name
-										   << "', y = " << static_cast<int>(clip_y)
-										   << ".");
+	dimension_validation(clip_y, name, "y");
+
+	local_variables.add("clip_x", wfl::variant(clip_x));
+	local_variables.add("clip_y", wfl::variant(clip_y));
+
+	// Execute the provided actions for this context.
+	wfl::variant(variables.fake_ptr()).execute_variant(actions_formula_.evaluate(local_variables));
 
 	// Copy the data to local variables to avoid overwriting the originals.
 	SDL_Rect src_clip = src_clip_;
@@ -1091,7 +1121,7 @@ void image_shape::draw(surface& canvas,
 				DBG_GUI_D << "Image: vertical stretch from " << image_->w << ','
 						  << image_->h << " to a height of " << h << ".\n";
 
-				surf = stretch_surface_vertical(image_, h, false);
+				surf = stretch_surface_vertical(image_, h);
 				done = true;
 			}
 			w = image_->w;
@@ -1103,7 +1133,7 @@ void image_shape::draw(surface& canvas,
 						  << ',' << image_->h << " to a width of " << w
 						  << ".\n";
 
-				surf = stretch_surface_horizontal(image_, w, false);
+				surf = stretch_surface_horizontal(image_, w);
 				done = true;
 			}
 			h = image_->h;
@@ -1115,18 +1145,12 @@ void image_shape::draw(surface& canvas,
 				DBG_GUI_D << "Image: tiling from " << image_->w << ','
 						  << image_->h << " to " << w << ',' << h << ".\n";
 
-				const int columns = (w + image_->w - 1) / image_->w;
-				const int rows = (h + image_->h - 1) / image_->h;
-				surf = create_neutral_surface(w, h);
+				surf = tile_surface(image_, w, h, false);
+			} else if(resize_mode_ == tile_center) {
+				DBG_GUI_D << "Image: tiling centrally from " << image_->w << ','
+						  << image_->h << " to " << w << ',' << h << ".\n";
 
-				for(int x = 0; x < columns; ++x) {
-					for(int y = 0; y < rows; ++y) {
-						const SDL_Rect dest = sdl::create_rect(
-								x * image_->w, y * image_->h, 0, 0);
-						blit_surface(image_, nullptr, surf, &dest);
-					}
-				}
-
+				surf = tile_surface(image_, w, h, true);
 			} else {
 				if(resize_mode_ == stretch) {
 					ERR_GUI_D << "Image: failed to stretch image, "
@@ -1136,7 +1160,7 @@ void image_shape::draw(surface& canvas,
 				DBG_GUI_D << "Image: scaling from " << image_->w << ','
 						  << image_->h << " to " << w << ',' << h << ".\n";
 
-				surf = scale_surface(image_, w, h, false);
+				surf = scale_surface(image_, w, h);
 			}
 		}
 		src_clip.w = w;
@@ -1146,7 +1170,7 @@ void image_shape::draw(surface& canvas,
 	}
 
 	if(vertical_mirror_(local_variables)) {
-		surf = flip_surface(surf, false);
+		surf = flip_surface(surf);
 	}
 
 	blit_surface(surf, &src_clip, canvas, &dst_clip);
@@ -1156,6 +1180,8 @@ image_shape::resize_mode image_shape::get_resize_mode(const std::string& resize_
 {
 	if(resize_mode == "tile") {
 		return image_shape::tile;
+	} else if(resize_mode == "tile_center") {
+		return image_shape::tile_center;
 	} else if(resize_mode == "stretch") {
 		return image_shape::stretch;
 	} else {
@@ -1168,67 +1194,6 @@ image_shape::resize_mode image_shape::get_resize_mode(const std::string& resize_
 }
 
 /***** ***** ***** ***** ***** TEXT ***** ***** ***** ***** *****/
-
-/** Definition of a text shape. */
-class text_shape : public canvas::shape
-{
-public:
-	/**
-	 * Constructor.
-	 *
-	 * @param cfg                 The config object to define the text see
-	 *                            http://www.wesnoth.org/wiki/GUICanvasWML#Text
-	 *                            for more information.
-	 */
-	explicit text_shape(const config& cfg);
-
-	/** Implement shape::draw(). */
-	void draw(surface& canvas,
-			  SDL_Renderer* renderer,
-			  const game_logic::map_formula_callable& variables);
-
-private:
-	typed_formula<unsigned> x_, /**< The x coordinate of the text. */
-			y_,			   /**< The y coordinate of the text. */
-			w_,			   /**< The width of the text. */
-			h_;			   /**< The height of the text. */
-
-	/** The text font family. */
-	font::family_class font_family_;
-
-	/** The font size of the text. */
-	unsigned font_size_;
-
-	/** The style of the text. */
-	font::pango_text::FONT_STYLE font_style_;
-
-	/** The alignment of the text. */
-	typed_formula<PangoAlignment> text_alignment_;
-
-	/** The color of the text. */
-	color_t color_;
-
-	/** The text to draw. */
-	typed_formula<t_string> text_;
-
-	/** The text markup switch of the text. */
-	typed_formula<bool> text_markup_;
-
-	/** The link aware switch of the text. */
-	typed_formula<bool> link_aware_;
-
-	/** The link color of the text. */
-	typed_formula<color_t> link_color_;
-
-	/** The maximum width for the text. */
-	typed_formula<int> maximum_width_;
-
-	/** The number of characters per line. */
-	unsigned characters_per_line_;
-
-	/** The maximum height for the text. */
-	typed_formula<int> maximum_height_;
-};
 
 /*WIKI
  * @page = GUICanvasWML
@@ -1253,7 +1218,7 @@ private:
  *     font_style & font_style & "" &  The style of the text. $
  *     text_alignment & f_h_align & "left" &
  *                                     The alignment of the text. $
- *     color & color & "" &            The color of the text. $
+ *     color & f_color & "" &          The color of the text. $
  *     text & f_tstring & "" &         The text to draw (translatable). $
  *     text_markup & f_bool & false &  Can the text have mark-up? $
  *     text_link_aware & f_bool & false &
@@ -1283,7 +1248,8 @@ private:
  */
 
 text_shape::text_shape(const config& cfg)
-	: x_(cfg["x"])
+	: shape(cfg)
+	, x_(cfg["x"])
 	, y_(cfg["y"])
 	, w_(cfg["w"])
 	, h_(cfg["h"])
@@ -1291,7 +1257,7 @@ text_shape::text_shape(const config& cfg)
 	, font_size_(cfg["font_size"])
 	, font_style_(decode_font_style(cfg["font_style"]))
 	, text_alignment_(cfg["text_alignment"])
-	, color_(decode_color(cfg["color"]))
+	, color_(cfg["color"])
 	, text_(cfg["text"])
 	, text_markup_(cfg["text_markup"], false)
 	, link_aware_(cfg["text_link_aware"], false)
@@ -1310,7 +1276,7 @@ text_shape::text_shape(const config& cfg)
 
 void text_shape::draw(surface& canvas,
 				 SDL_Renderer* /*renderer*/,
-				 const game_logic::map_formula_callable& variables)
+				 wfl::map_formula_callable& variables)
 {
 	assert(variables.has_key("text"));
 
@@ -1326,36 +1292,33 @@ void text_shape::draw(surface& canvas,
 
 	static font::pango_text text_renderer;
 
-	text_renderer.set_link_aware(link_aware_(variables))
-			.set_link_color(link_color_(variables));
-	text_renderer.set_text(text, text_markup_(variables));
-
 	text_renderer
-			.set_family_class(font_family_)
-			.set_font_size(font_size_)
-			.set_font_style(font_style_)
-			.set_alignment(text_alignment_(variables))
-			.set_foreground_color(color_)
-			.set_maximum_width(maximum_width_(variables))
-			.set_maximum_height(maximum_height_(variables), true)
-			.set_ellipse_mode(
-					 variables.has_key("text_wrap_mode")
-							 ? static_cast<PangoEllipsizeMode>(
-									   variables.query_value("text_wrap_mode")
-											   .as_int())
-							 : PANGO_ELLIPSIZE_END)
-			.set_characters_per_line(characters_per_line_);
+		.set_link_aware(link_aware_(variables))
+		.set_link_color(link_color_(variables))
+		.set_text(text, text_markup_(variables));
 
-	surface surf = text_renderer.render();
+	text_renderer.set_family_class(font_family_)
+		.set_font_size(font_size_)
+		.set_font_style(font_style_)
+		.set_alignment(text_alignment_(variables))
+		.set_foreground_color(color_(variables))
+		.set_maximum_width(maximum_width_(variables))
+		.set_maximum_height(maximum_height_(variables), true)
+		.set_ellipse_mode(variables.has_key("text_wrap_mode")
+				? static_cast<PangoEllipsizeMode>(variables.query_value("text_wrap_mode").as_int())
+				: PANGO_ELLIPSIZE_END)
+		.set_characters_per_line(characters_per_line_);
+
+	surface& surf = text_renderer.render();
 	if(surf->w == 0) {
 		DBG_GUI_D << "Text: Rendering '" << text
 				  << "' resulted in an empty canvas, leave.\n";
 		return;
 	}
 
-	game_logic::map_formula_callable local_variables(variables);
-	local_variables.add("text_width", variant(surf->w));
-	local_variables.add("text_height", variant(surf->h));
+	wfl::map_formula_callable local_variables(variables);
+	local_variables.add("text_width", wfl::variant(surf->w));
+	local_variables.add("text_height", wfl::variant(surf->h));
 	/*
 		std::cerr << "Text: drawing text '" << text
 			<< " maximum width " << maximum_width_(variables)
@@ -1391,10 +1354,8 @@ void text_shape::draw(surface& canvas,
 	}
 
 	SDL_Rect dst = sdl::create_rect(x, y, canvas->w, canvas->h);
-	blit_surface(surf, 0, canvas, &dst);
+	blit_surface(surf, nullptr, canvas, &dst);
 }
-
-} // namespace
 
 /***** ***** ***** ***** ***** CANVAS ***** ***** ***** ***** *****/
 
@@ -1406,6 +1367,7 @@ canvas::canvas()
 	, canvas_()
 	, renderer_(nullptr)
 	, variables_()
+	, functions_()
 	, is_dirty_(true)
 {
 }
@@ -1413,7 +1375,6 @@ canvas::canvas()
 canvas::~canvas()
 {
 	SDL_DestroyRenderer(renderer_);
-
 }
 
 void canvas::draw(const bool force)
@@ -1426,8 +1387,8 @@ void canvas::draw(const bool force)
 
 	if(is_dirty_) {
 		get_screen_size_variables(variables_);
-		variables_.add("width", variant(w_));
-		variables_.add("height", variant(h_));
+		variables_.add("width", wfl::variant(w_));
+		variables_.add("height", wfl::variant(h_));
 	}
 
 	// create surface
@@ -1467,7 +1428,7 @@ void canvas::blit(surface& surf, SDL_Rect rect)
 			// Can't directly blur the surface if not 32 bpp.
 			SDL_Rect r = rect;
 			surface s = get_surface_portion(surf, r);
-			s = blur_surface(s, blur_depth_, false);
+			s = blur_surface(s, blur_depth_);
 			sdl_blit(s, nullptr, surf, &r);
 		}
 	}
@@ -1478,7 +1439,6 @@ void canvas::blit(surface& surf, SDL_Rect rect)
 void canvas::parse_cfg(const config& cfg)
 {
 	log_scope2(log_gui_parse, "Canvas: parsing config.");
-	shapes_.clear();
 
 	for(const auto & shape : cfg.all_children_range())
 	{
@@ -1488,15 +1448,17 @@ void canvas::parse_cfg(const config& cfg)
 		DBG_GUI_P << "Canvas: found shape of the type " << type << ".\n";
 
 		if(type == "line") {
-			shapes_.push_back(std::make_shared<line_shape>(data));
+			shapes_.emplace_back(std::make_shared<line_shape>(data));
 		} else if(type == "rectangle") {
-			shapes_.push_back(std::make_shared<rectangle_shape>(data));
+			shapes_.emplace_back(std::make_shared<rectangle_shape>(data));
+		} else if(type == "round_rectangle") {
+			shapes_.emplace_back(std::make_shared<round_rectangle_shape>(data));
 		} else if(type == "circle") {
-			shapes_.push_back(std::make_shared<circle_shape>(data));
+			shapes_.emplace_back(std::make_shared<circle_shape>(data));
 		} else if(type == "image") {
-			shapes_.push_back(std::make_shared<image_shape>(data));
+			shapes_.emplace_back(std::make_shared<image_shape>(data, functions_));
 		} else if(type == "text") {
-			shapes_.push_back(std::make_shared<text_shape>(data));
+			shapes_.emplace_back(std::make_shared<text_shape>(data));
 		} else if(type == "pre_commit") {
 
 			/* note this should get split if more preprocessing is used. */
@@ -1518,6 +1480,16 @@ void canvas::parse_cfg(const config& cfg)
 			assert(false);
 		}
 	}
+}
+
+void canvas::clear_shapes(const bool force)
+{
+	const auto iter = std::remove_if(shapes_.begin(), shapes_.end(), [&force](const shape_ptr s)
+	{
+		return !s->immutable() && !force;
+	});
+
+	shapes_.erase(iter, shapes_.end());
 }
 
 /***** ***** ***** ***** ***** SHAPE ***** ***** ***** ***** *****/

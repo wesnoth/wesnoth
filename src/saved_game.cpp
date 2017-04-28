@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2017 by the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -167,7 +167,7 @@ void saved_game::set_defaults()
 {
 	const bool is_loaded_game = this->starting_pos_type_ != STARTINGPOS_SCENARIO;
 	const bool is_multiplayer_tag = classification().get_tagname() == "multiplayer";
-	static const std::vector<std::string> team_defaults = {
+	static const std::vector<std::string> team_defaults {
 		"carryover_percentage",
 		"carryover_add",
 	};
@@ -372,7 +372,14 @@ void saved_game::expand_mp_options()
 			{
 				for(const config& option : cfg.child_range("option"))
 				{
-					variables[option["id"]] = option["value"];
+					try
+					{
+						variable_access_create(option["id"], variables).as_scalar() = option["value"];
+					}
+					catch(const invalid_variablename_exception&)
+					{
+						ERR_NG << "variable " << option["id"] << "cannot be set to " << option["value"] << std::endl;
+					}
 				}
 			}
 			else
@@ -442,7 +449,7 @@ void saved_game::expand_carryover()
 	}
 }
 
-bool saved_game::valid()
+bool saved_game::valid() const
 {
 	return this->starting_pos_type_ != STARTINGPOS_INVALID;
 }

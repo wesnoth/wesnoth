@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -15,15 +15,15 @@
 #ifndef GUI_WIDGETS_FORMULA_HPP_INCLUDED
 #define GUI_WIDGETS_FORMULA_HPP_INCLUDED
 
+#include "color.hpp"
 #include "formula/callable.hpp"
-#include "formula/function.hpp"
 #include "formula/formula.hpp"
+#include "formula/function.hpp"
 #include "gui/core/log.hpp"
 #include "gui/widgets/helper.hpp"
 #include "lexical_cast.hpp"
 #include "serialization/string_utils.hpp"
 #include "tstring.hpp"
-#include "color.hpp"
 
 #include <cassert>
 
@@ -45,7 +45,7 @@ namespace gui2
  *                                lexical_cast or a template specialization in
  *                                this header.
  */
-template <class T>
+template<typename T>
 class typed_formula
 {
 public:
@@ -75,18 +75,21 @@ public:
 	/**
 	 * Returns the value, can always be used.
 	 *
-	 * @param variables           The variables, which can be used during the
-	 *                            evaluation of the formula.
+	 * @param variables           The state variables which might be used in
+	 *                            the formula. For example, screen_width can
+	 *                            be set so the formula can return the half
+	 *                            width of the screen.
+	 *
 	 * @param functions           The variables, which can be called during the
-	 *                            evaluation of the formula. (Note is is also
+	 *                            evaluation of the formula. (Note it is also
 	 *                            possible to add extra functions to the table,
 	 *                            when the variable is not @c nullptr.
 	 *
 	 * @returns                   The stored result or the result of the
 	 *                            evaluation of the formula.
 	 */
-	T operator()(const game_logic::map_formula_callable& variables,
-				 game_logic::function_symbol_table* functions = nullptr) const;
+	T operator()(const wfl::map_formula_callable& variables,
+				 wfl::function_symbol_table* functions = nullptr) const;
 
 	/** Determine whether the class contains a formula. */
 	bool has_formula() const
@@ -111,19 +114,12 @@ private:
 	 * This function does the calculation and can only be called if the object
 	 * contains a formula.
 	 *
-	 * @param variables           The state variables which might be used in
-	 *                            the formula. For example a screen_width can
-	 *                            be set so the formula can return the half
-	 *                            width of the screen.
-	 * @param functions           The variables, which can be called during the
-	 *                            evaluation of the formula. (Note is is also
-	 *                            possible to add extra functions to the table,
-	 *                            when the variable is not @c nullptr.
+	 * @param v                   A variant object containing the evaluated value
+	 *                            of the formula.
 	 *
 	 * @returns                   The calculated value.
 	 */
-	T execute(const game_logic::map_formula_callable& variables,
-			  game_logic::function_symbol_table* functions) const;
+	T execute(wfl::variant& v) const;
 
 	/**
 	 * Contains the formula for the variable.
@@ -136,7 +132,7 @@ private:
 	T value_;
 };
 
-template <class T>
+template<typename T>
 typed_formula<T>::typed_formula(const std::string& str, const T value)
 	: formula_(), value_(value)
 {
@@ -151,97 +147,119 @@ typed_formula<T>::typed_formula(const std::string& str, const T value)
 	}
 }
 
-template <class T>
+template<typename T>
 inline T typed_formula<T>::
-operator()(const game_logic::map_formula_callable& variables,
-		   game_logic::function_symbol_table* functions) const
+operator()(const wfl::map_formula_callable& variables, wfl::function_symbol_table* functions) const
 {
-	if(has_formula()) {
-		const T& result = execute(variables, functions);
-		LOG_GUI_D << "Formula: execute '" << formula_ << "' result '" << result
-				  << "'.\n";
-		return result;
-	} else {
+	if(!has_formula()) {
 		return value_;
 	}
+
+	wfl::variant v = wfl::formula(formula_, functions).evaluate(variables);
+	const T& result = execute(v);
+
+	LOG_GUI_D << "Formula: execute '" << formula_ << "' result '" << result << "'.\n";
+
+	return result;
 }
 
-template <>
-inline bool
-typed_formula<bool>::execute(const game_logic::map_formula_callable& variables,
-						game_logic::function_symbol_table* functions) const
-{
-	return game_logic::formula(formula_, functions)
-			.evaluate(variables)
-			.as_bool();
-}
+/**
+ * Template specializations.
+ *
+ * Each type must have an @ref execute specialization, and optionally one for @ref convert.
+ */
 
-template <>
-inline int
-typed_formula<int>::execute(const game_logic::map_formula_callable& variables,
-					   game_logic::function_symbol_table* functions) const
+template<>
+inline bool typed_formula<bool>::execute(wfl::variant& v) const
 {
-	return game_logic::formula(formula_, functions)
-			.evaluate(variables)
-			.as_int();
-}
-
-template <>
-inline unsigned
-typed_formula<unsigned>::execute(const game_logic::map_formula_callable& variables,
-							game_logic::function_symbol_table* functions) const
-{
-	return game_logic::formula(formula_, functions)
-			.evaluate(variables)
-			.as_int();
-}
-
-template <>
-inline std::string typed_formula<std::string>::execute(
-		const game_logic::map_formula_callable& variables,
-		game_logic::function_symbol_table* functions) const
-{
-	return game_logic::formula(formula_, functions)
-			.evaluate(variables)
-			.as_string();
-}
-
-template <>
-inline t_string
-typed_formula<t_string>::execute(const game_logic::map_formula_callable& variables,
-							game_logic::function_symbol_table* functions) const
-{
-	return game_logic::formula(formula_, functions)
-			.evaluate(variables)
-			.as_string();
-}
-
-template <>
-inline PangoAlignment typed_formula<PangoAlignment>::execute(
-		const game_logic::map_formula_callable& variables,
-		game_logic::function_symbol_table* functions) const
-{
-	return decode_text_alignment(game_logic::formula(formula_, functions)
-										 .evaluate(variables)
-										 .as_string());
+	return v.as_bool();
 }
 
 template<>
-inline color_t typed_formula<color_t>::execute(
-		const game_logic::map_formula_callable& variables,
-		game_logic::function_symbol_table* functions) const
+inline void typed_formula<bool>::convert(const std::string& str)
 {
-	const variant v = game_logic::formula(formula_, functions).evaluate(variables);
-	const auto& result = v.as_list();
-	int alpha = result.size() == 4 ? result[3].as_int() : ALPHA_OPAQUE;
-	return color_t(result.at(0).as_int(), result.at(1).as_int(), result.at(2).as_int(), alpha);
+	value_ = utils::string_bool(str);
 }
 
-template <class T>
-inline T
-typed_formula<T>::execute(const game_logic::map_formula_callable& /*variables*/
-					 ,
-					 game_logic::function_symbol_table* /*functions*/) const
+
+template<>
+inline int typed_formula<int>::execute(wfl::variant& v) const
+{
+	return v.as_int();
+}
+
+
+template<>
+inline unsigned typed_formula<unsigned>::execute(wfl::variant& v) const
+{
+	// FIXME: Validate this? As is, the formula could return a negative number which is blindly converted to unsigned.
+	// Unfortunately, some places rely on this happening for diagnostic messages...
+	return v.as_int();
+}
+
+
+template<>
+inline std::string typed_formula<std::string>::execute(wfl::variant& v) const
+{
+	return v.as_string();
+}
+
+template<>
+inline void typed_formula<std::string>::convert(const std::string& str)
+{
+	value_ = str;
+}
+
+
+template<>
+inline t_string typed_formula<t_string>::execute(wfl::variant& v) const
+{
+	return v.as_string();
+}
+
+template<>
+inline void typed_formula<t_string>::convert(const std::string& str)
+{
+	value_ = str;
+}
+
+
+template<>
+inline PangoAlignment typed_formula<PangoAlignment>::execute(wfl::variant& v) const
+{
+	return decode_text_alignment(v.as_string());
+}
+
+template<>
+inline void typed_formula<PangoAlignment>::convert(const std::string& str)
+{
+	value_ = decode_text_alignment(str);
+}
+
+
+template<>
+inline color_t typed_formula<color_t>::execute(wfl::variant& v) const
+{
+	const auto& result = v.as_list();
+	const int alpha = result.size() == 4 ? result[3].as_int() : ALPHA_OPAQUE;
+
+	return color_t(
+		result.at(0).as_int(),
+		result.at(1).as_int(),
+		result.at(2).as_int(),
+		alpha
+	);
+}
+
+template<>
+inline void typed_formula<color_t>::convert(const std::string& str)
+{
+	value_ = color_t::from_rgba_string(str);
+}
+
+
+template<typename T>
+inline T typed_formula<T>::execute(wfl::variant& /*v*/) const
 {
 	// Every type needs its own execute function avoid instantiation of the
 	// default execute.
@@ -249,37 +267,7 @@ typed_formula<T>::execute(const game_logic::map_formula_callable& /*variables*/
 	return T();
 }
 
-template <>
-inline void typed_formula<bool>::convert(const std::string& str)
-{
-	value_ = utils::string_bool(str);
-}
-
-template <>
-inline void typed_formula<std::string>::convert(const std::string& str)
-{
-	value_ = str;
-}
-
-template <>
-inline void typed_formula<t_string>::convert(const std::string& str)
-{
-	value_ = str;
-}
-
-template <>
-inline void typed_formula<PangoAlignment>::convert(const std::string& str)
-{
-	value_ = decode_text_alignment(str);
-}
-
-template <>
-inline void typed_formula<color_t>::convert(const std::string& str)
-{
-	value_ = color_t::from_rgba_string(str);
-}
-
-template <class T>
+template<class T>
 inline void typed_formula<T>::convert(const std::string& str)
 {
 	value_ = lexical_cast_default<T>(str);

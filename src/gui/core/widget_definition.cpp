@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2007 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -16,11 +16,9 @@
 
 #include "gui/core/widget_definition.hpp"
 
-#include "formula/string_utils.hpp"
 #include "gettext.hpp"
 #include "gui/core/log.hpp"
 #include "gui/widgets/helper.hpp"
-#include "serialization/string_utils.hpp"
 #include "wml_exception.hpp"
 
 namespace gui2
@@ -111,28 +109,7 @@ resolution_definition::resolution_definition(const config& cfg)
 	DBG_GUI_P << "Parsing resolution " << window_width << ", " << window_height
 			  << '\n';
 
-	for(const config& lg : cfg.child_range("linked_group")) {
-		linked_group linked_group;
-		linked_group.id = lg["id"].str();
-		linked_group.fixed_width = lg["fixed_width"].to_bool();
-		linked_group.fixed_height = lg["fixed_height"].to_bool();
-
-		VALIDATE(!linked_group.id.empty(),
-			missing_mandatory_wml_key("linked_group", "id"));
-
-		if(!(linked_group.fixed_width || linked_group.fixed_height)) {
-			utils::string_map symbols;
-			symbols["id"] = linked_group.id;
-			t_string msg
-				= vgettext("Linked '$id' group needs a 'fixed_width' or "
-					"'fixed_height' key.",
-					symbols);
-
-			FAIL(msg);
-		}
-
-		linked_groups.push_back(linked_group);
-	}
+	linked_groups = parse_linked_group_definitions(cfg);
 }
 
 /*WIKI

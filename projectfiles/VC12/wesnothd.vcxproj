@@ -1,10 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
-    <ProjectConfiguration Include="Debug_with_VLD|Win32">
-      <Configuration>Debug_with_VLD</Configuration>
-      <Platform>Win32</Platform>
-    </ProjectConfiguration>
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
       <Platform>Win32</Platform>
@@ -30,11 +26,6 @@
     <CharacterSet>NotSet</CharacterSet>
     <WholeProgramOptimization>true</WholeProgramOptimization>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
-    <PlatformToolset>v120</PlatformToolset>
-    <CharacterSet>NotSet</CharacterSet>
-  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <PlatformToolset>v120</PlatformToolset>
@@ -50,9 +41,6 @@
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'" Label="PropertySheets">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-  </ImportGroup>
-  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
@@ -75,11 +63,6 @@
     <IntDir>$(Configuration)\wesnothd\</IntDir>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">
-    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
-    <IntDir>$(Configuration)\wesnothd\</IntDir>
-    <LinkIncremental>true</LinkIncremental>
-  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">
     <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
     <IntDir>$(Configuration)\wesnothd\</IntDir>
@@ -92,9 +75,6 @@
     <LocalDebuggerWorkingDirectory>$(SolutionDir)..\..\</LocalDebuggerWorkingDirectory>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LocalDebuggerWorkingDirectory>$(SolutionDir)..\..\</LocalDebuggerWorkingDirectory>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">
     <LocalDebuggerWorkingDirectory>$(SolutionDir)..\..\</LocalDebuggerWorkingDirectory>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -152,31 +132,6 @@
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
   </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">
-    <BuildLog>
-      <Path>$(IntDir)BuildLog-wesnothd.htm</Path>
-    </BuildLog>
-    <ClCompile>
-      <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\..\src;..\..\..\external\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;_WIN32_WINNT=_WIN32_WINNT_WINXP;HAVE_PYTHON;USE_GZIP;NOMINMAX;_SCL_SECURE_NO_WARNINGS;HAVE_VISUAL_LEAK_DETECTOR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <MinimalRebuild>true</MinimalRebuild>
-      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
-      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <OpenMPSupport>true</OpenMPSupport>
-      <WarningLevel>Level4</WarningLevel>
-      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <DisableSpecificWarnings>4503;4127;4512;%(DisableSpecificWarnings)</DisableSpecificWarnings>
-      <ForcedIncludeFiles>boost-patched/bind/arg.hpp;%(ForcedIncludeFiles)</ForcedIncludeFiles>
-    </ClCompile>
-    <Link>
-      <AdditionalDependencies>SDL2main.lib;SDL2.lib;SDL2_net.lib;winmm.lib;ws2_32.lib;Shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\..\external\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
-      <SubSystem>Console</SubSystem>
-      <TargetMachine>MachineX86</TargetMachine>
-    </Link>
-  </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">
     <BuildLog>
       <Path>$(IntDir)BuildLog-wesnothd.htm</Path>
@@ -216,55 +171,46 @@
     <ClCompile Include="..\..\src\mt_rng.cpp" />
     <ClCompile Include="..\..\src\seed_rng.cpp" />
     <ClCompile Include="..\..\src\server\ban.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Server\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\src\server\forum_user_handler.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Server\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\src\server\game.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Server\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\src\server\metrics.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Server\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\src\server\player.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Server\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\src\server\player_connection.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Server\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\src\server\player_network.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Server\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\src\server\sample_user_handler.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Server\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\src\server\server.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Server\</ObjectFileName>
@@ -273,17 +219,14 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Server\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Server\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\src\server\simple_wml.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Server\</ObjectFileName>
       <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">4706;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Server\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\src\server\user_handler.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Server\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Server\</ObjectFileName>

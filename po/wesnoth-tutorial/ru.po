@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: comp\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-11-05 23:29 UTC\n"
+"POT-Creation-Date: 2017-03-23 08:11+0100\n"
 "PO-Revision-Date: 2014-11-15 12:03+0300\n"
 "Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,7 +34,7 @@ msgstr "Кем бы вы хотели играть?"
 #. [side]: type=Fighter, id=student
 #. [lua]: wml_actions.select_character
 #: data/campaigns/tutorial/lua/character_selection.lua:68
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:34
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:33
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:30
 msgid "Konrad"
 msgstr "Конрад"
@@ -51,7 +51,7 @@ msgid "Wesnoth Tutorial — Part I"
 msgstr "Введение в Веснот, часть I"
 
 #. [side]: type=Fighter, id=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:30
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:29
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:26
 msgid "team_name^Student"
 msgstr ""
@@ -314,7 +314,7 @@ msgstr "Может, отступить?"
 #. [message]: speaker=Galdrad
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:370
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:675
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:684
 msgid "Good idea!"
 msgstr "Хорошая мысль!"
 
@@ -814,12 +814,12 @@ msgstr ""
 "ждёт настоящее дело..."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:897
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:902
 msgid "Note"
 msgstr "Примечание"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:899
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:904
 msgid ""
 "These dummies only attack if you are a single tile away. With care, you "
 "should be able to kill them one at a time."
@@ -827,47 +827,8 @@ msgstr ""
 "Эти манекены атакуют только тех, кто находится от них на расстоянии одной "
 "клетки. При должной осторожности вы сможете перебить их по одному."
 
-#. [set_menu_item]: id=skip_item
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:907
-msgid "End Scenario"
-msgstr "Завершить сценарий"
-
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:922
-msgid ""
-"Do you want to keep practicing? You can end this scenario at any time by "
-"using the <b>End Scenario</b> item in the context menu to move on to the "
-"next phase of your training."
-msgstr ""
-"Хотите продолжить тренировку? Вы можете завершить этот сценарий в любой "
-"момент, выбрав пункт <b>Завершить сценарий</b> в контекстном меню."
-
-#. [option]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:930
-msgid "Yes, I’m still figuring it out."
-msgstr "Да, мне не помешало бы еще поучиться."
-
-#. [option]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:939
-#, fuzzy
-#| msgid "Yes, I’m still figuring it out."
-msgid "female^Yes, I’m still figuring it out."
-msgstr "Да, мне не помешало бы еще поучиться."
-
-#. [option]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:948
-msgid "No, I think I’ve got it."
-msgstr "Нет, думаю, мне всё уже ясно."
-
-#. [option]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:965
-#, fuzzy
-#| msgid "No, I think I’ve got it."
-msgid "female^No, I think I’ve got it."
-msgstr "Нет, думаю, мне всё уже ясно."
-
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:984
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:913
 msgid ""
 "Well, I think I know the basics. Onwards! Maybe I can fight in a real battle "
 "next?"
@@ -876,7 +837,7 @@ msgstr ""
 "битва?"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:985
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:914
 #, fuzzy
 #| msgid ""
 #| "Well, I think I know the basics. Onwards! Maybe I can fight in a real "
@@ -889,12 +850,12 @@ msgstr ""
 "битва?"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1001
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:930
 msgid "Victory"
 msgstr "Победа"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1003
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:932
 msgid ""
 "After your victory notice, the map will be grayed out to indicate that the "
 "scenario is over; this is called <i>linger mode</i>. You will still be able "
@@ -1759,20 +1720,25 @@ msgstr ""
 "Нанимай бойцов, необходимых в данной ситуации. Лучники обычно хороши против "
 "пехотинцев, волчьих всадников, и лидера орков."
 
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:651
+msgid "Hurry up and defeat the orcs before they become entrenched!"
+msgstr ""
+
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:669
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:678
 msgid "I have enough gold to recruit more units!"
 msgstr "У меня хватит денег, чтобы завербовать ещё бойцов!"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:670
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:679
 #, fuzzy
 #| msgid "I have enough gold to recruit more units!"
 msgid "female^I have enough gold to recruit more units!"
 msgstr "У меня хватит денег, чтобы завербовать ещё бойцов!"
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:725
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:734
 msgid ""
 "That unit is about one kill (8 experience points) away from gaining a level! "
 "Do not let it die!"
@@ -1781,7 +1747,7 @@ msgstr ""
 "получить уровень! Не дай ему погибнуть!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:747
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:756
 msgid ""
 "Their leader has moved into that village! He’s not as stupid as I thought. "
 "The village heals him each turn and provides good defense."
@@ -1790,7 +1756,7 @@ msgstr ""
 "хорошо защищён и будет лечиться каждый ход."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:758
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:767
 msgid ""
 "That unit has captured our village! You’d better get him out; it heals him "
 "each turn and provides good defense."
@@ -1800,7 +1766,7 @@ msgstr ""
 
 #. [message]: speaker=unit
 #. The speaker is female
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:771
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:780
 msgid ""
 "Using me to attack is risky! I can slow the opponent with my ranged attack, "
 "but I hope you have a plan if I miss!"
@@ -1809,7 +1775,7 @@ msgstr ""
 "атакой, но, надеюсь, у вас есть план на случай, если я промахнусь!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:787
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:796
 msgid ""
 "You are close to killing their leader! The unit who finishes him will gain "
 "16 experience points because he is second level. Choose your attacking unit "
@@ -1820,7 +1786,7 @@ msgstr ""
 "прикончить его!"
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:812
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:821
 msgid ""
 "We will miss $unit.name| because he had $unit.experience experience points. "
 "He would have advanced a level soon."
@@ -1829,7 +1795,7 @@ msgstr ""
 "опыта, он мог очень скоро достичь второго уровня."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:818
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:827
 msgid ""
 "We will miss $unit.name| because she had $unit.experience experience points. "
 "She would have advanced a level soon."
@@ -1838,14 +1804,14 @@ msgstr ""
 "опыта, она могла очень скоро достичь второго уровня."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:847
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:856
 msgid ""
 "We will miss $unit.name|, but at least he was not one of our experienced "
 "troops!"
 msgstr "Нам будет не хватать $unit.name|, хотя он был не самым опытным бойцом!"
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:853
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:862
 msgid ""
 "We will miss $unit.name|, but at least she was not one of our experienced "
 "troops!"
@@ -1853,20 +1819,20 @@ msgstr ""
 "Нам будет не хватать $unit.name|, хотя она была не самым опытным бойцом!"
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:873
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:881
 msgid ""
 "Higher level units are powerful, but not invulnerable. Goodbye, $unit.name|."
 msgstr "Бойцы второго уровня сильны, но не бессмертны! Прощай, $unit.name|."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:887
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:895
 msgid ""
 "Losing a healer hurts all the troops! Keep them out of the enemy’s reach!"
 msgstr ""
 "Потеря лекаря скажется на всех солдатах! Держи их подальше от противника!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:899
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:907
 msgid ""
 "Beware of the orc leader: he can do 36 hitpoints of damage at night! Attack "
 "with many units at once during the day."
@@ -1876,7 +1842,7 @@ msgstr ""
 
 #. [message]: speaker=unit
 #. The speaker is female
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:913
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:921
 msgid ""
 "Advancing a level has fully healed me! I am able to heal units 8 hitpoints "
 "per turn, instead of just 4, and may also cure them of poison if they cannot "
@@ -1892,7 +1858,7 @@ msgstr ""
 
 #. [message]: speaker=unit
 #. The speaker is female
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:927
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:935
 msgid ""
 "Advancing a level has fully healed me! I cannot heal adjacent units anymore, "
 "but to compensate, I have a new, powerful faerie fire attack that deals 7 "
@@ -1905,7 +1871,7 @@ msgstr ""
 "всегда есть 70%-ый шанс попасть в противника."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:941
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:949
 msgid ""
 "Advancing a level has fully healed me! I always have a 60% chance of hitting "
 "with my <i>Marksman</i> ability, and I deal 9 damage each for 4 attacks. Use "
@@ -1917,7 +1883,7 @@ msgstr ""
 "хорошо защищёнными врагами."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:942
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:950
 #, fuzzy
 #| msgid ""
 #| "female^Advancing a level has fully healed me!\n"
@@ -1935,7 +1901,7 @@ msgstr ""
 "помощью вы можете добраться до самых труднодоступных врагов."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:955
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:963
 msgid ""
 "Advancing a level has fully healed me! I am good with both bow and sword, "
 "and I have a special ability: <i>Ambush</i>. I can hide in forests where "
@@ -1946,7 +1912,7 @@ msgstr ""
 "лесу так, что враг увидит меня только если встанет подойдёт совсем близко."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:956
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:964
 #, fuzzy
 #| msgid ""
 #| "Advancing a level has fully healed me! I am good with both bow and sword, "
@@ -1962,7 +1928,7 @@ msgstr ""
 "лесу так, что враг увидит меня только если встанет подойдёт совсем близко."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:970
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:978
 msgid ""
 "Advancing a level has fully healed me! I am good with both bow and sword, "
 "and I have a special ability: <i>Leadership</i>. I do less damage myself "
@@ -1975,7 +1941,7 @@ msgstr ""
 "выбирайте место моей дислокации."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:983
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:991
 msgid ""
 "Advancing a level has fully healed me! I am particularly good with the "
 "sword, dealing 8 damage in 4 attacks. While I don’t have the Leadership "
@@ -1988,30 +1954,30 @@ msgstr ""
 "больше урона!"
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:992
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1000
 msgid "You took too long! Now we’ll never be rid of these orcs!"
 msgstr ""
 "Ты слишком долго возишься! Теперь мы никогда не избавимся от этих орков!"
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1008
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1016
 msgid "That... was foolish. Next time I should be more careful."
 msgstr "Это... было глупо. Мне надо быть осторожнее."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1009
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1017
 #, fuzzy
 #| msgid "That... was foolish. Next time I should be more careful."
 msgid "female^That... was foolish. Next time I should be more careful."
 msgstr "Это... было глупо. Мне надо быть осторожнее."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1032
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1040
 msgid "Agh! Now who will teach you how to defeat these orcs!"
 msgstr "И кто теперь тебе расскажет, как победить этих орков?!"
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1058
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1066
 msgid ""
 "You have beaten the orcs! You may want to try some novice-level campaigns "
 "next, such as: <i>The South Guard</i>, <i>An Orcish Incursion</i>, <i>A Tale "
@@ -2035,8 +2001,8 @@ msgstr "Ученик"
 
 #. [unit_type]: id=Fighter, race=human
 #. [unit_type]: id=Fighteress, race=human
-#: data/campaigns/tutorial/units/Fighter.cfg:18
-#: data/campaigns/tutorial/units/Fighteress.cfg:20
+#: data/campaigns/tutorial/units/Fighter.cfg:19
+#: data/campaigns/tutorial/units/Fighteress.cfg:21
 msgid ""
 "Young and brash, Fighters are skilled with swords and are vulnerable to "
 "attack from enemies. However, they have the potential to become great "
@@ -2045,20 +2011,10 @@ msgstr ""
 "Молодые и дерзкие, ученики вооружены мечом и уязвимы к вражеским атакам. Тем "
 "не менее, у них есть все шансы однажды стать великими воинами."
 
-#. [attack]: type=blade
-#: data/campaigns/tutorial/units/Fighter.cfg:23
-msgid "sword"
-msgstr "меч"
-
 #. [unit_type]: id=Fighteress, race=human
 #: data/campaigns/tutorial/units/Fighteress.cfg:4
 msgid "female^Fighter"
 msgstr "Ученица"
-
-#. [attack]: type=blade
-#: data/campaigns/tutorial/units/Fighteress.cfg:24
-msgid "saber"
-msgstr "сабля"
 
 #. [unit_type]: id=Quintain, race=mechanical
 #: data/campaigns/tutorial/units/Quintain.cfg:4
@@ -2073,11 +2029,6 @@ msgid ""
 msgstr ""
 "Манекены используются в тренировках и рыцарских турнирах. Как правило, на "
 "людей не нападают."
-
-#. [attack]: type=impact
-#: data/campaigns/tutorial/units/Quintain.cfg:24
-msgid "flail"
-msgstr "кистень"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/utils/utils.cfg:36
@@ -2100,6 +2051,42 @@ msgid ""
 msgstr ""
 "\n"
 "<big>Щёлкните мышкой или нажмите пробел для продолжения...</big>"
+
+#~ msgid "End Scenario"
+#~ msgstr "Завершить сценарий"
+
+#~ msgid ""
+#~ "Do you want to keep practicing? You can end this scenario at any time by "
+#~ "using the <b>End Scenario</b> item in the context menu to move on to the "
+#~ "next phase of your training."
+#~ msgstr ""
+#~ "Хотите продолжить тренировку? Вы можете завершить этот сценарий в любой "
+#~ "момент, выбрав пункт <b>Завершить сценарий</b> в контекстном меню."
+
+#~ msgid "Yes, I’m still figuring it out."
+#~ msgstr "Да, мне не помешало бы еще поучиться."
+
+#, fuzzy
+#~| msgid "Yes, I’m still figuring it out."
+#~ msgid "female^Yes, I’m still figuring it out."
+#~ msgstr "Да, мне не помешало бы еще поучиться."
+
+#~ msgid "No, I think I’ve got it."
+#~ msgstr "Нет, думаю, мне всё уже ясно."
+
+#, fuzzy
+#~| msgid "No, I think I’ve got it."
+#~ msgid "female^No, I think I’ve got it."
+#~ msgstr "Нет, думаю, мне всё уже ясно."
+
+#~ msgid "sword"
+#~ msgstr "меч"
+
+#~ msgid "saber"
+#~ msgstr "сабля"
+
+#~ msgid "flail"
+#~ msgstr "кистень"
 
 #~ msgid ""
 #~ "You have $student_hp hitpoints and a sword, boy. I’m fairly sure you’ll "

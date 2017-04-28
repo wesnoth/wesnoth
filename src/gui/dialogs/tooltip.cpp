@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2011 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -108,23 +108,23 @@ private:
 	SDL_Rect source_rect_;
 
 	/** Inherited from modeless_dialog. */
-	virtual const std::string& window_id() const;
+	virtual const std::string& window_id() const override;
 
 	/** Inherited from modeless_dialog. */
-	void pre_show(window& window);
+	virtual void pre_show(window& window) override;
 };
 
 void tooltip::pre_show(window& window)
 {
 	find_widget<styled_widget>(&window, "label", false).set_label(message_);
 
-	window.set_variable("mouse_x", variant(mouse_.x));
-	window.set_variable("mouse_y", variant(mouse_.y));
+	window.set_variable("mouse_x", wfl::variant(mouse_.x));
+	window.set_variable("mouse_y", wfl::variant(mouse_.y));
 
-	window.set_variable("source_x", variant(source_rect_.x));
-	window.set_variable("source_y", variant(source_rect_.y));
-	window.set_variable("source_w", variant(source_rect_.w));
-	window.set_variable("source_h", variant(source_rect_.h));
+	window.set_variable("source_x", wfl::variant(source_rect_.x));
+	window.set_variable("source_y", wfl::variant(source_rect_.y));
+	window.set_variable("source_w", wfl::variant(source_rect_.w));
+	window.set_variable("source_h", wfl::variant(source_rect_.h));
 }
 
 const std::string& tooltip::window_id() const

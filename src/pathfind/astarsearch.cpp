@@ -122,7 +122,7 @@ class comp {
 
 public:
 	comp(const std::vector<node>& n) : nodes_(n) { }
-	bool operator()(int a, int b) {
+	bool operator()(int a, int b) const {
 		return nodes_[b] < nodes_[a];
 	}
 };
@@ -132,7 +132,7 @@ class indexer {
 
 public:
 	indexer(size_t w) : w_(w) { }
-	size_t operator()(const map_location& loc) {
+	size_t operator()(const map_location& loc) const {
 		return loc.y * w_ + loc.x;
 	}
 };

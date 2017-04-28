@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -149,10 +149,10 @@ void scrollbar_base::set_item_position(const unsigned item_position)
 void scrollbar_base::update_canvas()
 {
 
-	for(auto & tmp : get_canvas())
+	for(auto & tmp : get_canvases())
 	{
-		tmp.set_variable("positioner_offset", variant(positioner_offset_));
-		tmp.set_variable("positioner_length", variant(positioner_length_));
+		tmp.set_variable("positioner_offset", wfl::variant(positioner_offset_));
+		tmp.set_variable("positioner_length", wfl::variant(positioner_length_));
 	}
 	set_is_dirty(true);
 }
@@ -306,10 +306,10 @@ void scrollbar_base::move_positioner(const int distance)
 void scrollbar_base::load_config_extra()
 {
 	// These values won't change so set them here.
-	for(auto & tmp : get_canvas())
+	for(auto & tmp : get_canvases())
 	{
-		tmp.set_variable("offset_before", variant(offset_before()));
-		tmp.set_variable("offset_after", variant(offset_after()));
+		tmp.set_variable("offset_before", wfl::variant(offset_before()));
+		tmp.set_variable("offset_after", wfl::variant(offset_after()));
 	}
 }
 

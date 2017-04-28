@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2009 - 2017 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -48,7 +48,7 @@
 #include "terrain/translation.hpp"      // for terrain_code
 #include "time_of_day.hpp"              // for time_of_day
 #include "tod_manager.hpp"           // for tod_manager
-#include "units/unit.hpp"                  // for unit, intrusive_ptr_release, etc
+#include "units/unit.hpp"                  // for unit
 #include "units/map.hpp"  // for unit_map::iterator_base, etc
 #include "units/ptr.hpp"                 // for unit_ptr
 #include "units/types.hpp"  // for attack_type, unit_type, etc
@@ -104,7 +104,7 @@ void readwrite_context_impl::raise_gamestate_changed() const
 
 team& readwrite_context_impl::current_team_w()
 {
-	return resources::gameboard->teams()[get_side()-1];
+	return resources::gameboard->get_team(get_side());
 }
 
 attack_result_ptr readwrite_context_impl::execute_attack_action(const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon){
@@ -333,7 +333,7 @@ void readonly_context_impl::diagnostic(const std::string& msg)
 
 const team& readonly_context_impl::current_team() const
 {
-	return resources::gameboard->teams()[get_side()-1];
+	return resources::gameboard->get_team(get_side());
 }
 
 
@@ -400,9 +400,7 @@ void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_
 		 *       and calculate_possible_moves() become redundant, and one of
 		 *       them should probably be eliminated.
 		 */
-		res.insert(std::pair<map_location,pathfind::paths>(
-			un_it->get_location(), pathfind::paths(
-				*un_it, false, true, current_team(), 0, see_all)));
+		res.emplace(un_it->get_location(), pathfind::paths(*un_it, false, true, current_team(), 0, see_all));
 	}
 
 	// deactivate terrain filtering if it's just the dummy 'matches nothing'
@@ -442,8 +440,8 @@ void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_
 			}
 
 			if(src != dst && (resources::gameboard->find_visible_unit(dst, current_team()) == resources::gameboard->units().end()) ) {
-				srcdst.insert(std::pair<map_location,map_location>(src,dst));
-				dstsrc.insert(std::pair<map_location,map_location>(dst,src));
+				srcdst.emplace(src, dst);
+				dstsrc.emplace(dst, src);
 			}
 		}
 	}
@@ -515,7 +513,7 @@ const defensive_position& readonly_context_impl::best_defensive_position(const m
 		}
 	}
 
-	defensive_position_cache_.insert(std::pair<map_location,defensive_position>(loc,pos));
+	defensive_position_cache_.emplace(loc, pos);
 	return defensive_position_cache_[loc];
 }
 
@@ -577,12 +575,12 @@ const attacks_vector& readonly_context_impl::get_attacks() const
 }
 
 
-const variant& readonly_context_impl::get_attacks_as_variant() const
+const wfl::variant& readonly_context_impl::get_attacks_as_variant() const
 {
 	if (attacks_) {
 		return attacks_->get_variant();
 	}
-	static variant v;///@todo 1.9: replace with variant::null_variant;
+	static wfl::variant v;///@todo 1.9: replace with variant::null_variant;
 	return v;
 }
 
@@ -1121,8 +1119,8 @@ double readonly_context_impl::power_projection(const map_location& loc, const mo
 			}
 
 			// The 0.5 power avoids underestimating too much the damage of a wounded unit.
-			int hp = int(sqrt(double(un.hitpoints()) / un.max_hitpoints()) * 1000);
-			int most_damage = 0;
+			int64_t hp = int(sqrt(double(un.hitpoints()) / un.max_hitpoints()) * 1000);
+			int64_t most_damage = 0;
 			for(const attack_type &att : un.attacks())
 			{
 				int damage = att.damage() * att.num_attacks() * (100 + tod_modifier);
@@ -1131,9 +1129,13 @@ double readonly_context_impl::power_projection(const map_location& loc, const mo
 				}
 			}
 
-			int village_bonus = map_.is_village(terrain) ? 3 : 2;
-			int defense = 100 - un.defense_modifier(terrain);
-			int rating = hp * defense * most_damage * village_bonus / 200;
+			int64_t village_bonus = map_.is_village(terrain) ? 3 : 2;
+			int64_t defense = 100 - un.defense_modifier(terrain);
+			int64_t rating_64 = hp * defense * most_damage * village_bonus / 200;
+			int rating = rating_64;
+			if(static_cast<int64_t>(rating) != rating_64) {
+				WRN_AI << "overflow in ai attack calculation\n";
+			}
 			if(rating > best_rating) {
 				map_location *pos = std::find(beg_used, end_used, it->second);
 				// Check if the spot is the same or better than an older one.

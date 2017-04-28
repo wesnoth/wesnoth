@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2009 - 2017 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -72,7 +72,7 @@ config candidate_action_evaluation_loop::to_config() const
 
 class desc_sorter_of_candidate_actions {
 public:
-	bool operator()(const candidate_action_ptr &a, const candidate_action_ptr &b)
+	bool operator()(const candidate_action_ptr &a, const candidate_action_ptr &b) const
 	{
 		return a->get_max_score() > b->get_max_score();
 	}

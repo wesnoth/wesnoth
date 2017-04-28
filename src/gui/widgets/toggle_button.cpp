@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -102,10 +102,10 @@ void toggle_button::update_canvas()
 	styled_widget::update_canvas();
 
 	// set icon in canvases
-	std::vector<canvas>& canvases = styled_widget::get_canvas();
+	std::vector<canvas>& canvases = styled_widget::get_canvases();
 	for(auto & canvas : canvases)
 	{
-		canvas.set_variable("icon", variant(icon_name_));
+		canvas.set_variable("icon", wfl::variant(icon_name_));
 	}
 
 	set_is_dirty(true);
@@ -119,6 +119,11 @@ void toggle_button::set_value(const unsigned selected)
 	state_num_ = selected % num_states();
 	set_is_dirty(true);
 
+	// Check for get_window() is here to prevent the callback from
+	// being called when the initial value is set.
+	if(callback_state_change_ && get_window() != nullptr) {
+		callback_state_change_(*this);
+	}
 }
 
 void toggle_button::set_retval(const int retval)
@@ -172,9 +177,6 @@ void toggle_button::signal_handler_left_button_click(const event::ui_event event
 
 	fire(event::NOTIFY_MODIFIED, *this, nullptr);
 
-	if(callback_state_change_) {
-		callback_state_change_(*this);
-	}
 	handled = true;
 }
 
@@ -247,9 +249,9 @@ toggle_button_definition::resolution::resolution(const config& cfg)
 	// toggle_button.hpp.
 	for(const auto& c : cfg.child_range("state"))
 	{
-		state.push_back(state_definition(c.child("enabled")));
-		state.push_back(state_definition(c.child("disabled")));
-		state.push_back(state_definition(c.child("focused")));
+		state.emplace_back(c.child("enabled"));
+		state.emplace_back(c.child("disabled"));
+		state.emplace_back(c.child("focused"));
 	}
 }
 

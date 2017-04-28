@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-11-05 23:28 UTC\n"
+"POT-Creation-Date: 2017-03-23 08:11+0100\n"
 "PO-Revision-Date: 2011-11-22 15:51+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -468,14 +468,14 @@ msgstr ""
 msgid "Civil Disobedience"
 msgstr "시민 불복종"
 
+#. [side]: type=Highwayman, id=Baldras
 #. [side]: type=Bandit_Peasant, id=Baldras
 #. [side]
 #. [side]: type=Bandit, id=Baldras
-#. [side]: type=Highwayman_Peasant, id=Relana
 #. [side]: type=General, id=Lord Maddock
 #. [side]: type=Rogue, id=Hans
+#. [side]: type=Highwayman_Peasant, id=Relana
 #. [side]: type=Shadow Lord, id=Helicrom
-#. [side]: type=Highwayman, id=Baldras
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:26
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:61
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:27
@@ -498,12 +498,12 @@ msgstr "저항군"
 msgid "Tarwen"
 msgstr "Tarwen"
 
+#. [side]: type=Royal Guard, id=Archarel
+#. [side]: type=Iron Mauler, id=Linneus
 #. [side]: type=Cavalier, id=Tarwen
 #. [side]: type=General, id=Kestrel
 #. [side]: type=Master Bowman, id=Quentin
 #. [side]
-#. [side]: type=Royal Guard, id=Archarel
-#. [side]: type=Iron Mauler, id=Linneus
 #. [side]: type=General, id=Dommel
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:40
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:80
@@ -2426,14 +2426,8 @@ msgstr ""
 "한때 평원을 가로지르던 위대한 전사였던 이 기수들은 부정한 마법으로 죽음에서 "
 "돌아와, 해골마에 올라타고 공포와 파멸을 불러일으킨다."
 
-#. [attack]: type=blade
-#: data/campaigns/Liberty/units/Bone_Knight.cfg:30
-#: data/campaigns/Liberty/units/Skeleton_Rider.cfg:40
-msgid "axe"
-msgstr "도끼"
-
 #. [attack]: type=impact
-#: data/campaigns/Liberty/units/Bone_Knight.cfg:39
+#: data/campaigns/Liberty/units/Bone_Knight.cfg:41
 msgid "trample"
 msgstr "짓밟기"
 
@@ -2456,18 +2450,13 @@ msgstr ""
 "마력을 축적해 간다. 그 과정에서 그들은 기사의 힘 중 많은 부분을 얻게 되는데, "
 "그 중에는 수하들을 지휘하는 능력도 포함되어 있다."
 
-#. [attack]: type=blade
-#: data/campaigns/Liberty/units/Death_Squire.cfg:31
-msgid "sword"
-msgstr "검"
-
 #. [unit_type]: id=Rogue Mage, race=human
 #: data/campaigns/Liberty/units/Rogue_Mage.cfg:5
 msgid "Rogue Mage"
 msgstr "범죄 마법사"
 
 #. [unit_type]: id=Rogue Mage, race=human
-#: data/campaigns/Liberty/units/Rogue_Mage.cfg:18
+#: data/campaigns/Liberty/units/Rogue_Mage.cfg:17
 msgid ""
 "Some mages are thrown out of the mage’s guild for attempting to practice "
 "forbidden arts. Now completely outside the law, these rogue mages do "
@@ -2481,14 +2470,8 @@ msgstr ""
 "을 발휘하는 못해도 이들의 마법은 꽤나 위협적인데, 그 이유는 여러 번의 강도질"
 "로 이들이 어느 정도 수준의 단검술을 보유하게 되었기 때문이다."
 
-#. [attack]: type=blade
-#: data/campaigns/Liberty/units/Rogue_Mage.cfg:23
-#: data/campaigns/Liberty/units/Shadow_Mage.cfg:32
-msgid "short sword"
-msgstr "단검"
-
 #. [attack]: type=cold
-#: data/campaigns/Liberty/units/Rogue_Mage.cfg:32
+#: data/campaigns/Liberty/units/Rogue_Mage.cfg:33
 msgid "ice blast"
 msgstr "얼음탄"
 
@@ -2498,7 +2481,7 @@ msgid "Shadow Lord"
 msgstr "그림자 군주"
 
 #. [unit_type]: id=Shadow Lord, race=human
-#: data/campaigns/Liberty/units/Shadow_Lord.cfg:22
+#: data/campaigns/Liberty/units/Shadow_Lord.cfg:21
 msgid ""
 "Few humans fathom the secrets of light and dark magic and retain their "
 "sanity. Those that can master that balance become Shadow Lords, fully "
@@ -2513,18 +2496,18 @@ msgstr ""
 "에게 공포의 대상이 된다."
 
 #. [attack]: type=blade
-#: data/campaigns/Liberty/units/Shadow_Lord.cfg:34
+#: data/campaigns/Liberty/units/Shadow_Lord.cfg:33
 msgid "astral blade"
 msgstr "영혼도"
 
 #. [attack]: type=cold
-#: data/campaigns/Liberty/units/Shadow_Lord.cfg:45
-#: data/campaigns/Liberty/units/Shadow_Mage.cfg:44
+#: data/campaigns/Liberty/units/Shadow_Lord.cfg:44
+#: data/campaigns/Liberty/units/Shadow_Mage.cfg:45
 msgid "shadow bolt"
 msgstr "그림자 화살"
 
 #. [attack]: type=impact
-#: data/campaigns/Liberty/units/Shadow_Lord.cfg:57
+#: data/campaigns/Liberty/units/Shadow_Lord.cfg:56
 msgid "shadow blast"
 msgstr "그림자탄"
 
@@ -2534,7 +2517,7 @@ msgid "Shadow Mage"
 msgstr "그림자 마법사"
 
 #. [unit_type]: id=Shadow Mage, race=human
-#: data/campaigns/Liberty/units/Shadow_Mage.cfg:21
+#: data/campaigns/Liberty/units/Shadow_Mage.cfg:20
 msgid ""
 "Years of violence and brutality to support the study of forbidden magical "
 "arts have turned the shadow mages into feared fighters. Now completely "
@@ -2752,6 +2735,15 @@ msgstr ""
 "며 소수의 생존자들은 끌려가서 알 수 없는 운명을 맞이했다. 이것은 참혹한 최후"
 "라 할 수 있었지만, Asheviere의 권력이 견고해져 가면서 그들은 점점 더 나쁜 상"
 "황을 맞이하게 되었다."
+
+#~ msgid "axe"
+#~ msgstr "도끼"
+
+#~ msgid "sword"
+#~ msgstr "검"
+
+#~ msgid "short sword"
+#~ msgstr "단검"
 
 #, fuzzy
 #~ msgid "Relnan"

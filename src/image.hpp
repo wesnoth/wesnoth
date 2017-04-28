@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -165,15 +165,6 @@ namespace image {
 	///their pixels. i.e. add a certain color hint to images. useful
 	///for representing day/night. Invalidates all scaled images.
 	void set_color_adjustment(int r, int g, int b);
-
-	class color_adjustment_resetter
-	{
-		public:
-			color_adjustment_resetter();
-			void reset();
-		private:
-			int r_, g_, b_;
-	};
 
 	///set the team colors used by the TC image modification
 	///use a vector with one string for each team

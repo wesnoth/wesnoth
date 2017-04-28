@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2015 - 2016 by the Battle for Wesnoth Project
+   Copyright (C) 2015 - 2017 by the Battle for Wesnoth Project
    <http://www.wesnoth.org/>
 
    This program is free software; you can redistribute it and/or modify
@@ -18,7 +18,7 @@
 #include "video.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/widgets/window.hpp"
-#include "resources.hpp"
+
 #include <boost/range/adaptor/reversed.hpp>
 
 std::vector<quit_confirmation*> quit_confirmation::blockers_ = std::vector<quit_confirmation*>();

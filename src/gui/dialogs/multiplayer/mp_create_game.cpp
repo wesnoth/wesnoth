@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -172,7 +172,7 @@ void mp_create_game::pre_show(window& win)
 	//
 	std::vector<config> game_types;
 	for(level_type_info& type_info : level_types_) {
-		game_types.push_back(config_of("label", type_info.second));
+		game_types.emplace_back(config_of("label", type_info.second));
 	}
 
 	if(game_types.empty()) {
@@ -205,7 +205,7 @@ void mp_create_game::pre_show(window& win)
 
 	std::vector<config> era_names;
 	for(const auto& era : create_engine_.get_const_extras_by_type(ng::create_engine::ERA)) {
-		era_names.push_back(config_of("label", era->name)("tooltip", era->description));
+		era_names.emplace_back(config_of("label", era->name)("tooltip", era->description));
 	}
 
 	if(era_names.empty()) {
@@ -272,7 +272,7 @@ void mp_create_game::pre_show(window& win)
 	//
 	std::vector<config> rfm_options;
 	for(const auto& type : rfm_types_) {
-		rfm_options.push_back(config_of("label", mp_game_settings::RANDOM_FACTION_MODE::enum_to_string(type)));
+		rfm_options.emplace_back(config_of("label", mp_game_settings::RANDOM_FACTION_MODE::enum_to_string(type)));
 	};
 
 	// Manually insert tooltips. Need to find a better way to do this
@@ -318,7 +318,7 @@ void mp_create_game::pre_show(window& win)
 			dialog_callback<mp_create_game, &mp_create_game::on_tab_select>);
 #endif
 
-	on_tab_select(win);
+	// We call on_tab_select farther down.
 
 	//
 	// Main games list
@@ -336,8 +336,11 @@ void mp_create_game::pre_show(window& win)
 
 	win.add_to_keyboard_chain(&list);
 
-	// This handles both the initial game and tab selection
+	// This handles the initial game selection as well
 	display_games_of_type(win, level_types_[get_initial_type_index()].first, preferences::level());
+
+	// Initial tab selection must be done after game selection so the field widgets are set to their correct active state.
+	on_tab_select(win);
 
 	//
 	// Set up the Lua plugin context
@@ -476,6 +479,22 @@ void mp_create_game::on_tab_select(window& window)
 {
 	const int i = find_widget<listbox>(&window, "tab_bar", false).get_selected_row();
 	find_widget<stacked_widget>(&window, "pager", false).select_layer(i);
+
+	/* HACK: the GUI2 field functions always internally save the correct value when set_widget_value is called
+	 *       - ie, when on_game_select calls update_map_settings, the correct values will be stored in the field,
+	 *       but if the settings tab isn't selected the widgets will not display the correct values. This forces
+	 *       an update when we switch to that tab so the widgets correctly display their values.
+	 *
+	 *       A possible better fix would be storing a pointer to the widget in question in the field object. It
+	 *       seems widgets will still correctly update even if they are not on the currently selected page if a
+	 *       pointer already exists.
+	 *
+	 *       Another possible fix would be allowing stacked_widget to return widgets on any page, not just on the
+	 *       currently visible one.
+	 */
+	if(i == TAB_SETTINGS) {
+		update_map_settings(window);
+	}
 }
 
 void mp_create_game::on_mod_select(window& window)
@@ -583,7 +602,7 @@ void mp_create_game::regenerate_random_map(window& window)
 	update_details(window);
 }
 
-int mp_create_game::convert_to_game_filtered_index(const int initial_index)
+int mp_create_game::convert_to_game_filtered_index(const unsigned int initial_index)
 {
 	const std::vector<size_t>& filtered_indices = create_engine_.get_filtered_level_indices(create_engine_.current_level_type());
 	return std::find(filtered_indices.begin(), filtered_indices.end(), initial_index) - filtered_indices.begin();

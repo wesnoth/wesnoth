@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -564,10 +564,10 @@ struct BlendResult
 struct Kernel_4x4 //kernel for preprocessing step
 {
     uint32_t
-    /**/a, b, c, d,
-    /**/e, f, g, h,
-    /**/i, j, k, l,
-    /**/m, n, o, p;
+    /**/a=0, b=0, c=0, d=0,
+    /**/e=0, f=0, g=0, h=0,
+    /**/i=0, j=0, k=0, l=0,
+    /**/m=0, n=0, o=0, p=0;
 
     Kernel_4x4() {}
 };
@@ -625,9 +625,9 @@ BlendResult preProcessCorners(const Kernel_4x4& ker, const xbrz::ScalerCfg& cfg)
 struct Kernel_3x3
 {
     uint32_t
-    /**/a,  b,  c,
-    /**/d,  e,  f,
-    /**/g,  h,  i;
+    /**/a=0,  b=0,  c=0,
+    /**/d=0,  e=0,  f=0,
+    /**/g=0,  h=0,  i=0;
 
     Kernel_3x3() {}
 };
@@ -799,7 +799,7 @@ void scaleImage(const uint32_t* src, uint32_t* trg, int srcWidth, int srcHeight,
     //"sizeof(uint32_t) * srcWidth * (yLast - yFirst)" bytes without risk of accidental overwriting before accessing
     const int bufferSize = srcWidth;
     unsigned char* preProcBuffer = reinterpret_cast<unsigned char*>(trg + yLast * Scaler::scale * trgWidth) - bufferSize;
-    std::fill(preProcBuffer, preProcBuffer + bufferSize, 0);
+    std::fill(preProcBuffer, preProcBuffer + bufferSize, static_cast<unsigned char>(0));
     //static_assert(BLEND_NONE == 0, "");
 
     //initialize preprocessing buffer for first row: detect upper left and right corner blending

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -246,14 +246,14 @@ std::string unit_topic_generator::operator()() const {
 
 	ss << "<img>src='" << male_type.image();
 	ss << "~RC(" << male_type.flag_rgb() << ">red)";
-	if (screen_width >= 1600) ss << "~XBRZ(2)";
+	if (screen_width >= 1200) ss << "~XBRZ(2)";
 	ss << "' box='no'</img> ";
 
 
 	if (&female_type != &male_type) {
 		ss << "<img>src='" << female_type.image();
 		ss << "~RC(" << female_type.flag_rgb() << ">red)";
-		if (screen_width >= 1600) ss << "~XBRZ(2)";
+		if (screen_width >= 1200) ss << "~XBRZ(2)";
 		ss << "' box='no'</img> ";
 	}
 
@@ -633,7 +633,7 @@ std::string unit_topic_generator::operator()() const {
 		for (; terrain_it != preferences::encountered_terrains().end();
 			 	++terrain_it) {
 			const t_translation::terrain_code terrain = *terrain_it;
-			if (terrain == t_translation::FOGGED || terrain == t_translation::VOID_TERRAIN || terrain == t_translation::OFF_MAP_USER) {
+			if (terrain == t_translation::FOGGED || terrain == t_translation::VOID_TERRAIN || t_translation::terrain_matches(terrain, t_translation::ALL_OFF_MAP)) {
 				continue;
 			}
 			const terrain_type& info = tdata->get_terrain_info(terrain);

@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-11-05 23:28 UTC\n"
-"PO-Revision-Date: 2014-10-19 21:36+0100\n"
+"POT-Creation-Date: 2017-03-23 08:11+0100\n"
+"PO-Revision-Date: 2017-03-27 20:42+0200\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Wesnoth\n"
 "Language: es\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.6.9\n"
+"X-Generator: Poedit 1.8.7.1\n"
 
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:10 data/campaigns/Liberty/_main.cfg:11
@@ -32,10 +32,8 @@ msgstr "Libertad"
 
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:18
-#, fuzzy
-#| msgid "(Easy)"
 msgid "Easy"
-msgstr "(Fácil)"
+msgstr "Fácil"
 
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:18
@@ -44,10 +42,8 @@ msgstr "Campesino"
 
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:19
-#, fuzzy
-#| msgid "(Normal)"
 msgid "Normal"
-msgstr "(Normal)"
+msgstr "Normal"
 
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:19
@@ -56,10 +52,8 @@ msgstr "Forajido"
 
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:20
-#, fuzzy
-#| msgid "(Difficult)"
 msgid "Difficult"
-msgstr "(Difícil)"
+msgstr "Difícil"
 
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:20
@@ -498,14 +492,14 @@ msgstr ""
 msgid "Civil Disobedience"
 msgstr "Desobediencia civil"
 
+#. [side]: type=Highwayman, id=Baldras
 #. [side]: type=Bandit_Peasant, id=Baldras
 #. [side]
 #. [side]: type=Bandit, id=Baldras
-#. [side]: type=Highwayman_Peasant, id=Relana
 #. [side]: type=General, id=Lord Maddock
 #. [side]: type=Rogue, id=Hans
+#. [side]: type=Highwayman_Peasant, id=Relana
 #. [side]: type=Shadow Lord, id=Helicrom
-#. [side]: type=Highwayman, id=Baldras
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:26
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:61
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:27
@@ -528,12 +522,12 @@ msgstr "Rebeldes "
 msgid "Tarwen"
 msgstr "Tarwen"
 
+#. [side]: type=Royal Guard, id=Archarel
+#. [side]: type=Iron Mauler, id=Linneus
 #. [side]: type=Cavalier, id=Tarwen
 #. [side]: type=General, id=Kestrel
 #. [side]: type=Master Bowman, id=Quentin
 #. [side]
-#. [side]: type=Royal Guard, id=Archarel
-#. [side]: type=Iron Mauler, id=Linneus
 #. [side]: type=General, id=Dommel
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:40
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:80
@@ -887,12 +881,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:271
-#, fuzzy
-#| msgid ""
-#| "Baldras and Relana returned to their villages to find them destroyed, "
-#| "with those who fought left dead and the few survivors born away to "
-#| "unguessable fates. It was a bitter doom, and as Wesnoth descended into "
-#| "darkness they would live to see worse."
 msgid ""
 "Baldras and Relana returned to their villages to find them destroyed, with "
 "those who fought left dead and the few survivors borne away to unknown "
@@ -1195,6 +1183,8 @@ msgstr "Lleve a Baldras a encontrarse con el líder de la insurgencia"
 msgid ""
 "Remember that in fog, units always see one hex further than they can move."
 msgstr ""
+"Recuerde que en la niebla, las unidades siempre ven una casilla más allá de "
+"donde pueden mover."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:310
@@ -2537,14 +2527,8 @@ msgstr ""
 "montados sobre sus caballos esqueléticos fueron levantados desde el suelo "
 "por magia profana para extender el miedo y la destrucción."
 
-#. [attack]: type=blade
-#: data/campaigns/Liberty/units/Bone_Knight.cfg:30
-#: data/campaigns/Liberty/units/Skeleton_Rider.cfg:40
-msgid "axe"
-msgstr "hacha"
-
 #. [attack]: type=impact
-#: data/campaigns/Liberty/units/Bone_Knight.cfg:39
+#: data/campaigns/Liberty/units/Bone_Knight.cfg:41
 msgid "trample"
 msgstr "pisoteo"
 
@@ -2569,18 +2553,13 @@ msgstr ""
 "cantidad del poder de los caballeros, incluyendo la habilidad de comandar "
 "súbditos."
 
-#. [attack]: type=blade
-#: data/campaigns/Liberty/units/Death_Squire.cfg:31
-msgid "sword"
-msgstr "espada"
-
 #. [unit_type]: id=Rogue Mage, race=human
 #: data/campaigns/Liberty/units/Rogue_Mage.cfg:5
 msgid "Rogue Mage"
 msgstr "Mago renegado"
 
 #. [unit_type]: id=Rogue Mage, race=human
-#: data/campaigns/Liberty/units/Rogue_Mage.cfg:18
+#: data/campaigns/Liberty/units/Rogue_Mage.cfg:17
 msgid ""
 "Some mages are thrown out of the mage’s guild for attempting to practice "
 "forbidden arts. Now completely outside the law, these rogue mages do "
@@ -2595,14 +2574,8 @@ msgstr ""
 "puede ser bastante letal, mientras que su vandalismo ha resultado en una "
 "habilidad moderada con la espada corta."
 
-#. [attack]: type=blade
-#: data/campaigns/Liberty/units/Rogue_Mage.cfg:23
-#: data/campaigns/Liberty/units/Shadow_Mage.cfg:32
-msgid "short sword"
-msgstr "espada corta"
-
 #. [attack]: type=cold
-#: data/campaigns/Liberty/units/Rogue_Mage.cfg:32
+#: data/campaigns/Liberty/units/Rogue_Mage.cfg:33
 msgid "ice blast"
 msgstr "ráfaga helada"
 
@@ -2612,7 +2585,7 @@ msgid "Shadow Lord"
 msgstr "Señor sombrío"
 
 #. [unit_type]: id=Shadow Lord, race=human
-#: data/campaigns/Liberty/units/Shadow_Lord.cfg:22
+#: data/campaigns/Liberty/units/Shadow_Lord.cfg:21
 msgid ""
 "Few humans fathom the secrets of light and dark magic and retain their "
 "sanity. Those that can master that balance become Shadow Lords, fully "
@@ -2627,18 +2600,18 @@ msgstr ""
 "tanto para sus enemigos como para aquellos sobre los que lideran."
 
 #. [attack]: type=blade
-#: data/campaigns/Liberty/units/Shadow_Lord.cfg:34
+#: data/campaigns/Liberty/units/Shadow_Lord.cfg:33
 msgid "astral blade"
 msgstr "espada astral"
 
 #. [attack]: type=cold
-#: data/campaigns/Liberty/units/Shadow_Lord.cfg:45
-#: data/campaigns/Liberty/units/Shadow_Mage.cfg:44
+#: data/campaigns/Liberty/units/Shadow_Lord.cfg:44
+#: data/campaigns/Liberty/units/Shadow_Mage.cfg:45
 msgid "shadow bolt"
 msgstr "proyectil sombrío"
 
 #. [attack]: type=impact
-#: data/campaigns/Liberty/units/Shadow_Lord.cfg:57
+#: data/campaigns/Liberty/units/Shadow_Lord.cfg:56
 msgid "shadow blast"
 msgstr "ráfaga sombría"
 
@@ -2648,7 +2621,7 @@ msgid "Shadow Mage"
 msgstr "Mago sombrío"
 
 #. [unit_type]: id=Shadow Mage, race=human
-#: data/campaigns/Liberty/units/Shadow_Mage.cfg:21
+#: data/campaigns/Liberty/units/Shadow_Mage.cfg:20
 msgid ""
 "Years of violence and brutality to support the study of forbidden magical "
 "arts have turned the shadow mages into feared fighters. Now completely "
@@ -2870,12 +2843,6 @@ msgstr "¿Cómo puede ser? Hemos perdido."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Liberty/utils/utils.cfg:78
-#, fuzzy
-#| msgid ""
-#| "They returned to their village to find it destroyed, with those who "
-#| "fought left dead and the few survivors borne away to unguessable fates. "
-#| "It was a bitter doom, but as Asheviere’s grip tightened they would live "
-#| "to see worse."
 msgid ""
 "They returned to their village to find it destroyed, with those who fought "
 "left dead and the few survivors borne away to unknown fates. It was a bitter "
@@ -2883,8 +2850,17 @@ msgid ""
 msgstr ""
 "Volvieron a sus hogares sólo para encontrar ruinas, muertos aquellos que "
 "opusieron resistencia y los pocos supervivientes arrastrados a un destino "
-"inimaginable. Amarga desventura, entretanto el dominio de Asheviere se "
-"impone; les depara un destino aún peor."
+"inimaginable. Amarga desventura, pero mientras el dominio de Asheviere se "
+"impone les depara un destino aún peor."
+
+#~ msgid "axe"
+#~ msgstr "hacha"
+
+#~ msgid "sword"
+#~ msgstr "espada"
+
+#~ msgid "short sword"
+#~ msgstr "espada corta"
 
 #~ msgid "Holy Ankh"
 #~ msgstr "Amuleto sagrado"

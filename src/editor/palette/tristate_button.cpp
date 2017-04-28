@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2013 - 2016 by Fabian Mueller <fabianmueller5@gmx.de>
+   Copyright (C) 2013 - 2017 by Fabian Mueller <fabianmueller5@gmx.de>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -27,7 +27,6 @@
 #include "serialization/string_utils.hpp"
 #include "sound.hpp"
 #include "video.hpp"
-#include "wml_separators.hpp"
 
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
@@ -250,11 +249,6 @@ void tristate_button::draw_contents() {
 		sdl_blit(noverlay, nullptr, nbase, nullptr);
 	}
 
-//  TODO for later reference
-//	adjust_surface_alpha(nbase, SDL_ALPHA_OPAQUE);
-//	adjust_surface_alpha(image, SDL_ALPHA_TRANSPARENT);
-//
-//	TODO might be needed.
 	bg_restore();
 
 	image = nbase;

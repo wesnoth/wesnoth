@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-tsg\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-11-05 23:29 UTC\n"
+"POT-Creation-Date: 2017-03-23 08:11+0100\n"
 "PO-Revision-Date: 2011-12-10 10:17+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -126,9 +126,9 @@ msgid "Deoran"
 msgstr "Деоран"
 
 #. [side]: type=Horseman Commander, id=Deoran
-#. [side]: id=Deoran
 #. [side]: type=Troll Hero, id=Grek
 #. [side]
+#. [side]: id=Deoran
 #. [side]: type=Lieutenant, id=Plynry
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:37
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:41
@@ -156,12 +156,12 @@ msgid "Urza Mathin"
 msgstr "Урза Матин"
 
 #. [side]: type=Bandit, id=Urza Mathin
+#. [side]: type=Rogue, id=Urza Fastik
+#. [side]: type=Outlaw, id=Jera Ilras
 #. [side]: type=Outlaw, id=Urza Nalmath
 #. [side]
-#. [side]: type=Rogue, id=Urza Fastik
-#. [side]: type=Outlaw, id=Urza Afalas
 #. [side]: type=Outlaw, id=Tharzo Kalain
-#. [side]: type=Outlaw, id=Jera Ilras
+#. [side]: type=Outlaw, id=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:59
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:63
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:102
@@ -1288,13 +1288,13 @@ msgstr "Долина суза"
 msgid "Mal A’kai"
 msgstr "мал Акаји"
 
-#. [side]: type=Soulless, id=Gruth
-#. [side]: type=Lich, id=Mal M'Brin
-#. [side]
-#. [side]: type=Soulless, id=Groth
 #. [side]: type=Ancient Lich, id=Mal M'Brin
-#. [side]: type=Lich, id=Mal Tera
+#. [side]: type=Lich, id=Mal M'Brin
+#. [side]: type=Soulless, id=Groth
+#. [side]
 #. [side]: type=Dark Adept, type=Dark Sorcerer, type=Necromancer, id=Mal A'kai
+#. [side]: type=Soulless, id=Gruth
+#. [side]: type=Lich, id=Mal Tera
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:76
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:93
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:129
@@ -1920,10 +1920,10 @@ msgstr "Не бојте се, ја вас могу повести напоље �
 msgid "Death of Urza Afalas"
 msgstr "Настрада ли Урза Афалас"
 
-#. [message]: speaker=Urza Afalas
 #. [message]: speaker=unit
+#. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:710
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1134
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1110
 msgid "Now I pay for my crimes. But how many others will also suffer for them?"
 msgstr ""
 "Сада ја испаштам за своја недјела. Али колико ће других још испаштати због "
@@ -2604,22 +2604,22 @@ msgid "Get them!"
 msgstr "Држите их!"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1161
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1137
 msgid "Thank heaven we have escaped that awful forest!"
 msgstr "Хвала небесима те избегосмо из те грозне шуметине!"
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1165
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1141
 msgid "Indeed, Afalas, you’ve earned my trust today."
 msgstr "Заиста, Афаласе, данас си задобио моје повјерење."
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1169
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1145
 msgid "I can only hope for mercy when I return to Westin."
 msgstr "Само ми остаје да се надам милости када се вратимо у Вестин."
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1174
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1150
 msgid "But there was a dark cloud looming behind Deoran and his men..."
 msgstr "Али се над Деорана и његове људе надви мрачан облак..."
 
@@ -2628,8 +2628,8 @@ msgstr "Али се над Деорана и његове људе надви м
 msgid "Into the Depths"
 msgstr "У дубине"
 
-#. [side]: type=Lich, id=Mal M'Brin
 #. [side]: type=Ancient Lich, id=Mal M'Brin
+#. [side]: type=Lich, id=Mal M'Brin
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:51
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:55
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:51
@@ -3424,7 +3424,7 @@ msgstr "Вестинско веће стиже у потезу $council_arrive_t
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:519
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:332
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:321
 #: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:12
 msgid "I have failed my kingdom and duty..."
 msgstr "Изневјерих своје краљевство и дужност..."
@@ -3566,7 +3566,7 @@ msgstr ""
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:225
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:226
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:227
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:299
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:292
 msgid "Disciple of Mebrin"
 msgstr "сљедбеник Мебринов"
 
@@ -3603,18 +3603,18 @@ msgid "Send Ethiliel to the Great Tree and parley with Ithelden"
 msgstr "Отправиш ли Етилијел до Великог дрвета на надмудривање са Ителденом"
 
 #. [message]: speaker=$new_elf.id
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:317
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:306
 msgid "For every one of us you strike down, more will rise!"
 msgstr "За сваког од нас кога посијечете, још ће их се уздићи!"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:346
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:335
 #: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:64
 msgid "I have given my all for my kingdom! Avenge me, Deoran!"
 msgstr "Дадох све од себе за своје краљевство! Освети ме, Деоране!"
 
 #. [message]: speaker=Minister Hylas
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:359
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:348
 msgid ""
 "Ithelden’s elves have killed Ethiliel! Now we have no chance to come to an "
 "agreement with them. A war with the Elves is imminent."
@@ -3623,7 +3623,7 @@ msgstr ""
 "Рат са вилењацима је неизбијежан."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:363
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:352
 msgid ""
 "We are far away from Weldyn. We’ll surely all be killed long before any "
 "reinforcements arrive."
@@ -3632,7 +3632,7 @@ msgstr ""
 "пристигну појачања."
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:401
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:390
 msgid ""
 "Take care, Deoran! My people are upset. Killing one will only draw more."
 msgstr ""
@@ -3688,18 +3688,6 @@ msgstr ""
 "и боре се, већ и да воде. Они заповиједају гарнизонима који одржавају мир у "
 "покрајинама Веснота."
 
-#. [attack]: type=pierce
-#: data/campaigns/The_South_Guard/units/Horseman_Commander.cfg:30
-#: data/campaigns/The_South_Guard/units/Mounted_General.cfg:31
-msgid "lance"
-msgstr "бојно копље"
-
-#. [attack]: type=impact
-#: data/campaigns/The_South_Guard/units/Horseman_Commander.cfg:41
-#: data/campaigns/The_South_Guard/units/Mounted_General.cfg:42
-msgid "mace"
-msgstr "топуз"
-
 #. [unit_type]: id=Infantry Commander, race=human
 #: data/campaigns/The_South_Guard/units/Infantry_Commander.cfg:4
 msgid "Infantry Commander"
@@ -3719,11 +3707,6 @@ msgstr ""
 #: data/campaigns/The_South_Guard/units/Infantry_Lieutenant.cfg:29
 msgid "glaive"
 msgstr "глифа"
-
-#. [attack]: type=impact
-#: data/campaigns/The_South_Guard/units/Infantry_Commander.cfg:39
-msgid "shield"
-msgstr "штит"
 
 #. [unit_type]: id=Infantry Lieutenant, race=human
 #: data/campaigns/The_South_Guard/units/Infantry_Lieutenant.cfg:4
@@ -3757,11 +3740,6 @@ msgstr ""
 "Са непуних 17 или 18 лета, синовима витезова и господара дају се коњи и "
 "мачеви, и упућују се да постану вођи људима. Они кова дораслог задатку, "
 "постају господари војски Веснота."
-
-#. [attack]: type=pierce
-#: data/campaigns/The_South_Guard/units/Junior_Commander.cfg:30
-msgid "spear"
-msgstr "копље"
 
 #. [unit_type]: id=Mounted General, race=human
 #: data/campaigns/The_South_Guard/units/Mounted_General.cfg:4
@@ -4182,6 +4160,18 @@ msgstr ""
 "Деоран је проводио дане у посјетама рањенима и управљању људи на обнови "
 "разрушених зидина и шанаца града. Коначно, како се снијег истопи и путеви "
 "поново прихватише своју намену, стиже гласник краља Халдрика."
+
+#~ msgid "lance"
+#~ msgstr "бојно копље"
+
+#~ msgid "mace"
+#~ msgstr "топуз"
+
+#~ msgid "shield"
+#~ msgstr "штит"
+
+#~ msgid "spear"
+#~ msgstr "копље"
 
 #~ msgid "Take the Citadel at Westin by the end of the ninth turn"
 #~ msgstr "Заузмеш ли утврђење у Вестину до краја деветог потеза"

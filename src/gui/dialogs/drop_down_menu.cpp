@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -22,6 +22,7 @@
 #include "gui/widgets/integer_selector.hpp"
 #include "gui/widgets/scrollbar.hpp"
 #include "gui/widgets/settings.hpp"
+#include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/toggle_panel.hpp"
 #include "gui/widgets/window.hpp"
 
@@ -35,33 +36,61 @@ namespace dialogs
 
 REGISTER_DIALOG(drop_down_menu)
 
-namespace {
-	void click_callback(window& window, bool&, bool&, point coordinate)
+namespace
+{
+	void click_callback(window& window, bool keep_open, bool&, bool&, point coordinate)
 	{
-		/* FIXME: This dialog uses a listbox with 'has_minimum = false'. This allows a listbox to have 0 or more selections,
+		listbox& list = find_widget<listbox>(&window, "list", true);
+
+		/* Disregard clicks on scrollbars and toggle buttons so the dropdown menu can be scrolled or have an embedded
+		 * toggle button selected without the menu closing.
+		 *
+		 * This works since this click_callback function is called before widgets' left-button-up handlers.
+		 *
+		 * Additionally, this is done before row deselection so selecting/deselecting a toggle button doesn't also leave 
+		 * the list with no row visually selected. Oddly, the visial deselection doesn't seem to cause any crashes, and
+		 * the previously selected row is reselected when the menu is opened again. Still, it's odd to see your selection
+		 * vanish.
+		 */
+		if(list.vertical_scrollbar()->get_state() == scrollbar_base::PRESSED) {
+			return;
+		}
+
+		if(dynamic_cast<toggle_button*>(window.find_at(coordinate, true)) != nullptr) {
+			return;
+		}
+
+		/* FIXME: This dialog uses a listbox with 'has_minimum = false'. This allows a listbox to have 0 or 1 selections,
 		 * and selecting the same entry toggles that entry's state (ie, if it was selected, it will be deselected). Because
 		 * of this, selecting the same entry in the dropdown list essentially sets the list's selected row to -1, causing problems.
 		 *
 		 * In order to work around this, we first manually deselect the selected entry here. This handler is called *before*
 		 * the listbox's click handler, and as such the selected item will remain toggled on when the click handler fires.
 		 */
-		listbox& list = find_widget<listbox>(&window, "list", true);
 		const int sel = list.get_selected_row();
 		if(sel >= 0) {
 			list.select_row(sel, false);
 		}
 
-		// Disregard clicks if they're on the scrollbar
-		// This check works since this function is called before scrollbar_base's left-button-up handler
-		if(list.vertical_scrollbar()->get_state() == scrollbar_base::PRESSED) {
-			return;
-		}
-
 		SDL_Rect rect = window.get_rectangle();
 		if(!sdl::point_in_rect(coordinate, rect)) {
 			window.set_retval(window::CANCEL);
-		} else {
+		} else if(!keep_open) {
 			window.set_retval(window::OK);
+		}
+	}
+
+	void callback_flip_embedded_toggle(window& window)
+	{
+		listbox& list = find_widget<listbox>(&window, "list", true);
+
+		/* If the currently selected row has a toggle button, toggle it.
+		 * Note this cannot be handled in click_callback since at that point the new row selection has not registered,
+		 * meaning the currently selected row's button is toggled.
+		 */
+		grid* row_grid = list.get_row_grid(list.get_selected_row());
+		if(toggle_button* checkbox = find_widget<toggle_button>(row_grid, "checkbox", false, false)) {
+			checkbox->set_value_bool(!checkbox->get_value_bool());
 		}
 	}
 
@@ -74,10 +103,12 @@ namespace {
 
 void drop_down_menu::pre_show(window& window)
 {
-	window.set_variable("button_x", variant(button_pos_.x));
-	window.set_variable("button_y", variant(button_pos_.y));
-	window.set_variable("button_w", variant(button_pos_.w));
-	window.set_variable("button_h", variant(button_pos_.h));
+	window_ = &window;
+
+	window.set_variable("button_x", wfl::variant(button_pos_.x));
+	window.set_variable("button_y", wfl::variant(button_pos_.y));
+	window.set_variable("button_w", wfl::variant(button_pos_.w));
+	window.set_variable("button_h", wfl::variant(button_pos_.h));
 
 	listbox& list = find_widget<listbox>(&window, "list", true);
 
@@ -108,13 +139,29 @@ void drop_down_menu::pre_show(window& window)
 		find_widget<toggle_panel>(&new_row, "panel", false).set_tooltip(entry["tooltip"]);
 
 		if(entry.has_attribute("image")) {
-			image* img = new image;
+			image* img = new image();
 			img->set_definition("default");
 			img->set_label(entry["image"]);
 
 			grid* mi_grid = dynamic_cast<grid*>(new_row.find("menu_item", false));
 			if(mi_grid) {
-				delete mi_grid->swap_child("label", img, false);
+				mi_grid->swap_child("label", img, false);
+			}
+		}
+
+		if(entry.has_attribute("checkbox")) {
+			toggle_button* checkbox = new toggle_button();
+			checkbox->set_definition("default");
+			checkbox->set_id("checkbox");
+			checkbox->set_value_bool(entry["checkbox"].to_bool(false));
+
+			if(callback_toggle_state_change_ != nullptr) {
+				checkbox->set_callback_state_change(std::bind(callback_toggle_state_change_));
+			}
+
+			grid* mi_grid = dynamic_cast<grid*>(new_row.find("menu_item", false));
+			if(mi_grid) {
+				mi_grid->swap_child("icon", checkbox, false);
 			}
 		}
 	}
@@ -126,7 +173,13 @@ void drop_down_menu::pre_show(window& window)
 	window.keyboard_capture(&list);
 
 	// Dismiss on click outside the window
-	window.connect_signal<event::SDL_LEFT_BUTTON_UP>(std::bind(&click_callback, std::ref(window), _3, _4, _5), event::dispatcher::front_child);
+	window.connect_signal<event::SDL_LEFT_BUTTON_UP>(
+		std::bind(&click_callback, std::ref(window), keep_open_, _3, _4, _5), event::dispatcher::front_child);
+
+	// Handle embedded button toggling.
+	// For some reason this works as a listbox value callback but don't ask me why.
+	// -vultraz 2/17/17
+	list.set_callback_value_change(std::bind(&callback_flip_embedded_toggle, std::ref(window)));
 
 	// Dismiss on resize
 	window.connect_signal<event::SDL_VIDEO_RESIZE>(std::bind(&resize_callback, std::ref(window)), event::dispatcher::front_child);
@@ -134,7 +187,32 @@ void drop_down_menu::pre_show(window& window)
 
 void drop_down_menu::post_show(window& window)
 {
-	selected_item_ = find_widget<listbox>(&window, "list", true).get_selected_row();
+	listbox& list = find_widget<listbox>(&window, "list", true);
+
+	selected_item_ = list.get_selected_row();
+
+	window_ = nullptr;
+}
+
+boost::dynamic_bitset<> drop_down_menu::get_toggle_states() const
+{
+	assert(window_ != nullptr);
+
+	const listbox& list = find_widget<const listbox>(window_, "list", true);
+
+	boost::dynamic_bitset<> states;
+
+	for(unsigned i = 0; i < list.get_item_count(); ++i) {
+		const grid* row_grid = list.get_row_grid(i);
+
+		if(const toggle_button* checkbox = find_widget<const toggle_button>(row_grid, "checkbox", false, false)) {
+			states.push_back(checkbox->get_value_bool());
+		} else {
+			states.push_back(false);
+		}
+	}
+
+	return states;
 }
 
 } // namespace dialogs

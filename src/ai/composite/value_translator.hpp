@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2009 - 2017 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -212,24 +212,24 @@ template<typename T>
 class variant_value_translator {
 public:
 
-	static void variant_to_value(const variant &/*var*/, T &/*value*/)
+	static void variant_to_value(const wfl::variant &/*var*/, T &/*value*/)
 	{
 	        assert(false);//not implemented
 	}
 
-	static void value_to_variant(const T &/*value*/, variant &/*var*/)
+	static void value_to_variant(const T &/*value*/, wfl::variant &/*var*/)
 	{
 		assert(false);//not implemented
 	}
 
-	static variant value_to_variant(const T &value)
+	static wfl::variant value_to_variant(const T &value)
 	{
-		variant var;
+		wfl::variant var;
 		value_to_variant(value,var);
 		return var;
 	}
 
-	static T variant_to_value(const variant &var)
+	static T variant_to_value(const wfl::variant &var)
 	{
 		T value = T();
 		variant_to_value(var,value);
@@ -241,24 +241,24 @@ template<>
 class variant_value_translator<int> {
 public:
 
-	static void variant_to_value(const variant &var, int &value)
+	static void variant_to_value(const wfl::variant &var, int &value)
 	{
 	        value = var.as_int();
 	}
 
-	static void value_to_variant(const int &value, variant &var)
+	static void value_to_variant(const int &value, wfl::variant &var)
 	{
-		var = variant(value);
+		var = wfl::variant(value);
 	}
 
-	static variant value_to_variant(const int &value)
+	static wfl::variant value_to_variant(const int &value)
 	{
-		variant var;
+		wfl::variant var;
 		value_to_variant(value,var);
 		return var;
 	}
 
-	static int variant_to_value(const variant &var)
+	static int variant_to_value(const wfl::variant &var)
 	{
 		int value;
 		variant_to_value(var,value);
@@ -271,24 +271,24 @@ template<>
 class variant_value_translator<bool> {
 public:
 
-	static void variant_to_value(const variant &var, bool &value)
+	static void variant_to_value(const wfl::variant &var, bool &value)
 	{
 	        value = var.as_bool();
 	}
 
-	static void value_to_variant(const bool &value, variant &var)
+	static void value_to_variant(const bool &value, wfl::variant &var)
 	{
-		var = variant(value);
+		var = wfl::variant(value);
 	}
 
-	static variant value_to_variant(const bool &value)
+	static wfl::variant value_to_variant(const bool &value)
 	{
-		variant var;
+		wfl::variant var;
 		value_to_variant(value,var);
 		return var;
 	}
 
-	static bool variant_to_value(const variant &var)
+	static bool variant_to_value(const wfl::variant &var)
 	{
 		bool value;
 		variant_to_value(var,value);
@@ -302,24 +302,24 @@ template<>
 class variant_value_translator<std::string> {
 public:
 
-	static void variant_to_value(const variant &var, std::string &value)
+	static void variant_to_value(const wfl::variant &var, std::string &value)
 	{
 	        value = var.as_string();
 	}
 
-	static void value_to_variant(const std::string &value, variant &var)
+	static void value_to_variant(const std::string &value, wfl::variant &var)
 	{
-		var = variant(value);
+		var = wfl::variant(value);
 	}
 
-	static variant value_to_variant(const std::string &value)
+	static wfl::variant value_to_variant(const std::string &value)
 	{
-		variant var;
+		wfl::variant var;
 		value_to_variant(value,var);
 		return var;
 	}
 
-	static std::string variant_to_value(const variant &var)
+	static std::string variant_to_value(const wfl::variant &var)
 	{
 		std::string value;
 		variant_to_value(var,value);
@@ -333,28 +333,28 @@ template<>
 class variant_value_translator<attacks_vector> {
 public:
 
-	static void variant_to_value(const variant &/*var*/, attacks_vector &/*value*/)
+	static void variant_to_value(const wfl::variant &/*var*/, attacks_vector &/*value*/)
 	{
 		assert(false);//not implemented
 	}
 
-	static void value_to_variant(const attacks_vector &value, variant &var)
+	static void value_to_variant(const attacks_vector &value, wfl::variant &var)
 	{
-                std::vector<variant> vars;
+                std::vector<wfl::variant> vars;
                 for(attacks_vector::const_iterator i = value.begin(); i != value.end(); ++i) {
-                        vars.push_back(variant(new attack_analysis(*i)));
+                        vars.emplace_back(std::make_shared<attack_analysis>(*i));
                 }
-		var = variant(&vars);
+		var = wfl::variant(vars);
 	}
 
-	static variant value_to_variant(const attacks_vector &value)
+	static wfl::variant value_to_variant(const attacks_vector &value)
 	{
-		variant var;
+		wfl::variant var;
 		value_to_variant(value,var);
 		return var;
 	}
 
-	static attacks_vector variant_to_value(const variant &var)
+	static attacks_vector variant_to_value(const wfl::variant &var)
 	{
 		attacks_vector value;
 		variant_to_value(var,value);
@@ -367,24 +367,24 @@ template<>
 class variant_value_translator<terrain_filter> {
 public:
 
-	static void variant_to_value(const variant &/*var*/, terrain_filter &/*value*/)
+	static void variant_to_value(const wfl::variant &/*var*/, terrain_filter &/*value*/)
 	{
 	        assert(false);//not implemented
 	}
 
-	static void value_to_variant(const terrain_filter &/*value*/, variant &/*var*/)
+	static void value_to_variant(const terrain_filter &/*value*/, wfl::variant &/*var*/)
 	{
 		assert(false);//not implemented
 	}
 
-	static variant value_to_variant(const terrain_filter &value)
+	static wfl::variant value_to_variant(const terrain_filter &value)
 	{
-		variant var;
+		wfl::variant var;
 		value_to_variant(value,var);
 		return var;
 	}
 
-	static terrain_filter variant_to_value(const variant &var)
+	static terrain_filter variant_to_value(const wfl::variant &var)
 	{
 		static config c("not");
 		terrain_filter value(vconfig(c),resources::filter_con);

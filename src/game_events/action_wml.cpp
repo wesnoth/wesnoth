@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -47,7 +47,7 @@
 #include "play_controller.hpp"
 #include "recall_list_manager.hpp"
 #include "replay.hpp"
-#include "random_new.hpp"
+#include "random.hpp"
 #include "resources.hpp"
 #include "scripting/game_lua_kernel.hpp"
 #include "side_filter.hpp"
@@ -162,7 +162,7 @@ namespace { // Support functions
 				continue;
 			}
 			pathfind::shortest_path_calculator calc(fake_unit,
-					resources::gameboard->teams()[fake_unit.side()-1],
+					resources::gameboard->get_team(fake_unit.side()),
 					resources::gameboard->teams(),
 					*game_map);
 
@@ -282,7 +282,7 @@ WML_HANDLER_FUNCTION(do_command,, cfg)
 		return;
 	}
 
-	static const std::set<std::string> allowed_tags = {"attack", "move", "recruit", "recall", "disband", "fire_event", "lua_ai"};
+	static const std::set<std::string> allowed_tags {"attack", "move", "recruit", "recall", "disband", "fire_event", "lua_ai"};
 
 	const bool is_too_early = resources::gamedata->phase() != game_data::START && resources::gamedata->phase() != game_data::PLAY;
 	if(is_too_early)
@@ -681,7 +681,7 @@ WML_HANDLER_FUNCTION(set_variables,, cfg)
 
 				for(std::vector<std::string>::iterator i=split_vector.begin(); i!=split_vector.end(); ++i)
 				{
-					data.push_back(config_of(key_name, *i));
+					data.emplace_back(config_of(key_name, *i));
 				}
 			}
 		}
@@ -857,6 +857,7 @@ WML_HANDLER_FUNCTION(terrain_mask,, cfg)
 WML_HANDLER_FUNCTION(tunnel,, cfg)
 {
 	const bool remove = cfg["remove"].to_bool(false);
+	const bool delay = cfg["delayed_variable_substitution"].to_bool(true);
 	if (remove) {
 		const std::vector<std::string> ids = utils::split(cfg["id"]);
 		for (const std::string &id : ids) {
@@ -868,11 +869,11 @@ WML_HANDLER_FUNCTION(tunnel,, cfg)
 		ERR_WML << "[tunnel] is missing a mandatory tag:\n"
 			 << cfg.get_config().debug();
 	} else {
-		pathfind::teleport_group tunnel(cfg, false);
+		pathfind::teleport_group tunnel(delay ? cfg : vconfig(cfg.get_parsed_config()), false);
 		resources::tunnels->add(tunnel);
 
 		if(cfg["bidirectional"].to_bool(true)) {
-			tunnel = pathfind::teleport_group(cfg, true);
+			tunnel = pathfind::teleport_group(delay ? cfg : vconfig(cfg.get_parsed_config()), true);
 			resources::tunnels->add(tunnel);
 		}
 	}
@@ -912,7 +913,7 @@ WML_HANDLER_FUNCTION(unit,, cfg)
 		DBG_NG << parsed_cfg.debug();
 		return;
 	}
-	team &tm = resources::gameboard->teams().at(side-1);
+	team &tm = resources::gameboard->get_team(side);
 
 	unit_creator uc(tm,resources::gameboard->map().starting_position(side));
 
@@ -965,13 +966,8 @@ WML_HANDLER_FUNCTION(on_undo, event_info, cfg)
 	}
 }
 
-WML_HANDLER_FUNCTION(on_redo, event_info, cfg)
+WML_HANDLER_FUNCTION(on_redo, , )
 {
-	if(cfg["delayed_variable_substitution"].to_bool(false)) {
-		synced_context::add_redo_commands(cfg.get_config(), event_info);
-	} else {
-		synced_context::add_redo_commands(cfg.get_parsed_config(), event_info);
-	}
 }
 
 } // end namespace game_events

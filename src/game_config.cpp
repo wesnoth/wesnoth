@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -134,11 +134,10 @@ bool
 //
 // Music constants
 //
-std::string
-	title_music,
-	lobby_music,
-	default_victory_music,
-	default_defeat_music;
+std::string title_music, lobby_music;
+
+std::vector<std::string> default_defeat_music;
+std::vector<std::string> default_victory_music;
 
 //
 // Color info
@@ -272,8 +271,9 @@ void load_config(const config &v)
 
 	title_music           = v["title_music"].str();
 	lobby_music           = v["lobby_music"].str();
-	default_victory_music = v["default_victory_music"].str();
-	default_defeat_music  = v["default_defeat_music"].str();
+
+	default_victory_music = utils::split(v["default_victory_music"].str());
+	default_defeat_music  = utils::split(v["default_defeat_music"].str());
 
 	if(const config& i = v.child("colors")){
 		using namespace game_config::colors;
@@ -496,12 +496,14 @@ const std::vector<color_t>& tc_info(const std::string& name)
 	}
 
 	std::vector<color_t> temp;
-	try {
-		temp.push_back(color_t::from_hex_string(name));
-	} catch(std::invalid_argument&) {
-		static std::vector<color_t> stv;
-		ERR_NG << "Invalid color palette: " << name << std::endl;
-		return stv;
+	for(const auto& s : utils::split(name)) {
+		try {
+			temp.push_back(color_t::from_hex_string(s));
+		} catch(std::invalid_argument&) {
+			static std::vector<color_t> stv;
+			ERR_NG << "Invalid color in palette: " << s << std::endl;
+			return stv;
+		}
 	}
 
 	team_rgb_colors.insert({name, temp});
@@ -512,7 +514,7 @@ color_t red_to_green(int val, bool for_text)
 {
 	const std::vector<color_t>& color_scale = for_text ? red_green_scale_text : red_green_scale;
 
-	val = util::clamp(val, 0, 100);
+	val = utils::clamp(val, 0, 100);
 	const int lvl = (color_scale.size() - 1) * val / 100;
 
 	return color_scale[lvl];
@@ -522,7 +524,7 @@ color_t blue_to_white(int val, bool for_text)
 {
 	const std::vector<color_t>& color_scale = for_text ? blue_white_scale_text : blue_white_scale;
 
-	val = util::clamp(val, 0, 100);
+	val = utils::clamp(val, 0, 100);
 	const int lvl = (color_scale.size() - 1) * val / 100;
 
 	return color_scale[lvl];

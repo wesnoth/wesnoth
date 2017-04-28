@@ -1,5 +1,4 @@
 local H = wesnoth.require "lua/helper.lua"
-local W = H.set_wml_action_metatable {}
 
 local ca_healer_initialize = {}
 
@@ -12,25 +11,18 @@ function ca_healer_initialize:evaluation()
 end
 
 function ca_healer_initialize:execution(cfg, data)
-    W.modify_ai {
-        side = wesnoth.current.side,
-        action = "try_delete",
-        path = "aspect[attacks].facet[no_healers_attack]"
-    }
+    wesnoth.delete_ai_component(wesnoth.current.side, "aspect[attacks].facet[no_healers_attack]")
 
-    W.modify_ai {
-        side = wesnoth.current.side,
-        action = "add",
-        path = "aspect[attacks].facet",
-        { "facet", {
+    wesnoth.add_ai_component(wesnoth.current.side, "aspect[attacks].facet",
+        {
             name = "ai_default_rca::aspect_attacks",
             id = "no_healers_attack",
             invalidate_on_gamestate_change = "yes",
             { "filter_own", {
                { "not", { ability = "healing", { "and", H.get_child(cfg, "filter") } } }
             } }
-        } }
-    }
+        }
+    )
 
     -- We also need to set the score of healer moves to happen after
     -- combat (of other units) at beginning of turn

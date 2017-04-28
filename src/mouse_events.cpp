@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2016 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2006 - 2017 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playturn Copyright (C) 2003 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -42,13 +42,12 @@
 #include "team.hpp"                     // for team
 #include "tod_manager.hpp"
 #include "tstring.hpp"                  // for t_string
-#include "units/unit.hpp"                     // for unit, intrusive_ptr_add_ref
+#include "units/unit.hpp"                     // for unit
 #include "units/animation_component.hpp"
 #include "scripting/game_lua_kernel.hpp"
 #include "units/ptr.hpp"                 // for unit_const_ptr
 #include "whiteboard/manager.hpp"       // for manager, etc
 #include "whiteboard/typedefs.hpp"      // for whiteboard_lock
-#include "wml_separators.hpp"           // for COLUMN_SEPARATOR, etc
 
 #include <cassert>                     // for assert
 #include <new>                          // for bad_alloc
@@ -467,46 +466,6 @@ bool mouse_handler::right_click_show_menu(int x, int y, const bool /*browse*/)
 {
 	return ( selected_hex_.valid() ? false :
 			sdl::point_in_rect(x, y, gui().map_area()) );
-}
-
-void mouse_handler::left_mouse_up(int /*x*/, int /*y*/, const bool /*browse*/)
-{
-	std::shared_ptr<gui::slider> s = gui_->find_slider("map-zoom-slider");
-	if (s && s->value_change())
-		if (gui_->set_zoom(s->value(), true))
-			pc_.get_hotkey_command_executor()->set_button_state();
-}
-
-void mouse_handler::mouse_wheel_up(int /*x*/, int /*y*/, const bool /*browse*/)
-{
-	std::shared_ptr<gui::slider> s = gui_->find_slider("map-zoom-slider");
-	if (s && s->value_change())
-		if (gui_->set_zoom(s->value(), true))
-			pc_.get_hotkey_command_executor()->set_button_state();
-}
-
-void mouse_handler::mouse_wheel_down(int /*x*/, int /*y*/, const bool /*browse*/)
-{
-	std::shared_ptr<gui::slider> s = gui_->find_slider("map-zoom-slider");
-	if (s && s->value_change())
-		if (gui_->set_zoom(s->value(), true))
-			pc_.get_hotkey_command_executor()->set_button_state();
-}
-
-void mouse_handler::mouse_wheel_left(int /*x*/, int /*y*/, const bool /*browse*/)
-{
-	std::shared_ptr<gui::slider> s = gui_->find_slider("map-zoom-slider");
-	if (s && s->value_change())
-		if (gui_->set_zoom(s->value(), true))
-			pc_.get_hotkey_command_executor()->set_button_state();
-}
-
-void mouse_handler::mouse_wheel_right(int /*x*/, int /*y*/, const bool /*browse*/)
-{
-	std::shared_ptr<gui::slider> s = gui_->find_slider("map-zoom-slider");
-	if (s && s->value_change())
-		if (gui_->set_zoom(s->value(), true))
-			pc_.get_hotkey_command_executor()->set_button_state();
 }
 
 void mouse_handler::select_or_action(bool browse)

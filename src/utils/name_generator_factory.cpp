@@ -1,5 +1,5 @@
 /*
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2017 by the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -39,6 +39,7 @@ void name_generator_factory::add_name_generator_from_config(const config& config
 	if(config.has_attribute(cfg_name)) {
 		try {
 			name_generators_[id] = std::shared_ptr<name_generator>(new context_free_grammar_generator(config[cfg_name]));
+			return;
 		}
 		catch (const name_generator_invalid_exception& ex) {
 			lg::wml_error() << ex.what() << '\n';

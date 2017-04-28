@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2016 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2006 - 2017 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playturn Copyright (C) 2003 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -223,6 +223,10 @@ bool mouse_handler_base::left_click(int x, int y, const bool /*browse*/)
 	if(tooltips::click(x,y))
 		return true;
 
+	if(gui().view_locked()) {
+		return false;
+	}
+
 	// clicked on a hex on the minimap? then initiate minimap scrolling
 	const map_location& loc = gui().minimap_location_on(x, y);
 	minimap_scrolling_ = false;
@@ -257,10 +261,9 @@ void mouse_handler_base::mouse_wheel(int scrollx, int scrolly, bool browse)
 	int movex = scrollx * preferences::scroll_speed();
 	int movey = scrolly * preferences::scroll_speed();
 
-	// Don't scroll map and map zoom slider at same time
-	std::shared_ptr<gui::slider> s = gui().find_slider("map-zoom-slider");
-	if (s && sdl::point_in_rect(x, y, s->location())) {
-		movex = 0; movey = 0;
+	// Don't scroll map if cursor is not in gamemap area
+	if(!sdl::point_in_rect(x, y, gui().map_area())) {
+		return;
 	}
 
 	if (movex != 0 || movey != 0) {

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -122,7 +122,7 @@ CVideo::~CVideo()
 	LOG_DP << "called SDL_Quit()\n";
 }
 
-bool CVideo::non_interactive()
+bool CVideo::non_interactive() const
 {
 	return fake_interactive ? false : (window == nullptr);
 }
@@ -389,7 +389,7 @@ int CVideo::set_help_string(const std::string& str)
 {
 	font::remove_floating_label(help_string_);
 
-	const color_t color = { 0, 0, 0, 0xbb };
+	const color_t color { 0, 0, 0, 0xbb };
 
 	int size = font::SIZE_LARGE;
 

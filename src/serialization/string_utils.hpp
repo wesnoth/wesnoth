@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 by David White <dave@whitevine.net>
-   Copyright (C) 2005 - 2016 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Copyright (C) 2005 - 2017 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -281,7 +281,7 @@ inline std::string signed_percent(int val) {return signed_value(val) + "%";}
  *
  * There are no default values because they would not be translatable.
  */
-std::string si_string(double input, bool base2, std::string unit);
+std::string si_string(double input, bool base2, const std::string& unit);
 
 /**
  * Try to complete the last word of 'text' with the 'wordlist'.

@@ -1,7 +1,7 @@
 /*
    Copyright (C) 2003 by David White <dave@whitevine.net>
    Copyright (C) 2005 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
-   Copyright (C) 2005 - 2016 by Philippe Plantier <ayin@anathas.org>
+   Copyright (C) 2005 - 2017 by Philippe Plantier <ayin@anathas.org>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -429,30 +429,31 @@ std::string unescape(const std::string &str)
 
 std::string urlencode(const std::string &str)
 {
-	static std::string nonresv =
+	static const std::string nonresv_str =
 		"-."
 		"0123456789"
 		"ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 		"_"
 		"abcdefghijklmnopqrstuvwxyz"
 		"~";
+	static const std::set<char> nonresv(nonresv_str.begin(), nonresv_str.end());
 
-	std::string res;
+	std::ostringstream res;
+	res << std::hex;
+	res.fill('0');
 
-	for(size_t n = 0; n < str.length(); ++n) {
-		const char& c = str[n];
-
-		if(nonresv.find(c) != std::string::npos) {
-			res += c;
+	for(char c : str) {
+		if(nonresv.count(c) == 0) {
+			res << c;
 			continue;
 		}
 
-		char buf[4];
-		snprintf(buf, sizeof(buf), "%%%02X", c);
-		res += buf;
+		res << '%';
+		res.width(2);
+		res << int(c);
 	}
 
-	return res;
+	return res.str();
 }
 
 bool string_bool(const std::string& str, bool def) {
@@ -502,7 +503,7 @@ static void si_string_impl_stream_write(std::stringstream &ss, double input) {
 	ss.precision(oldprec);
 }
 
-std::string si_string(double input, bool base2, std::string unit) {
+std::string si_string(double input, bool base2, const std::string& unit) {
 	const double multiplier = base2 ? 1024 : 1000;
 
 	typedef std::array<std::string, 9> strings9;
@@ -773,7 +774,7 @@ std::pair<int, int> parse_range(const std::string& str)
 	const std::string::const_iterator dash = std::find(str.begin(), str.end(), '-');
 	const std::string a(str.begin(), dash);
 	const std::string b = dash != str.end() ? std::string(dash + 1, str.end()) : a;
-	std::pair<int,int> res = {0,0};
+	std::pair<int,int> res {0,0};
 	try {
 		res = std::make_pair(std::stoi(a), std::stoi(b));
 		if (res.second < res.first) {

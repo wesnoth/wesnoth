@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2013 - 2016 by Andrius Silinskas <silinskas.andrius@gmail.com>
+   Copyright (C) 2013 - 2017 by Andrius Silinskas <silinskas.andrius@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -20,7 +20,7 @@
 #include "saved_game.hpp"
 #include <set>
 
-namespace rand_rng { class mt_rng; }
+namespace randomness { class mt_rng; }
 struct mp_campaign_info;
 
 namespace ng {
@@ -92,7 +92,7 @@ public:
 			throw "No scenariodata found";
 	}
 	const std::set<std::string>& connected_users() const;
-	const std::vector<std::string>& user_team_names()
+	const std::vector<std::string>& user_team_names() const
 		{ return user_team_names_; }
 	std::vector<side_engine_ptr>& side_engines() { return side_engines_; }
 	const mp_game_settings& params() const { return params_; }
@@ -100,6 +100,11 @@ public:
 	bool force_lock_settings() const { return force_lock_settings_; }
 
 	bool receive_from_server(config& dst) const;
+
+	const mp_campaign_info* campaign_info() const
+	{
+		return campaign_info_;
+	}
 
 private:
 	connect_engine(const connect_engine&) = delete;
@@ -156,9 +161,7 @@ public:
 	// players are allowed.
 	bool available_for_user(const std::string& name = "") const;
 
-	bool swap_sides_on_drop_target(const unsigned drop_target);
-
-	void resolve_random( rand_rng::mt_rng & rng, const std::vector<std::string> & avoid_faction_ids = std::vector<std::string>());
+	void resolve_random( randomness::mt_rng & rng, const std::vector<std::string> & avoid_faction_ids = std::vector<std::string>());
 
 	// Resets this side to its default state.
 	void reset();
@@ -183,7 +186,7 @@ public:
 	// The id of the side of the previous scenario that should control this side.
 	std::string previous_save_id() const
 		{ return (!cfg_["previous_save_id"].empty()) ? cfg_["previous_save_id"] : save_id(); }
-	const std::vector<controller_option>& controller_options()
+	const std::vector<controller_option>& controller_options() const
 		{ return controller_options_; }
 	const config& cfg() const { return cfg_; }
 	ng::controller controller() const { return controller_; }

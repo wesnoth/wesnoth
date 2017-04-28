@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2008 - 2017 by the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -41,11 +41,20 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/tree_view.hpp"
 #include "gui/widgets/tree_view_node.hpp"
+#include "log.hpp"
 #include "mp_ui_alerts.hpp"
 #include "statistics.hpp"
 #include "units/types.hpp"
 #include "video.hpp"
 #include "wesnothd_connection.hpp"
+
+
+static lg::log_domain log_mp_connect_engine("mp/connect/engine");
+#define DBG_MP LOG_STREAM(debug, log_mp_connect_engine)
+#define LOG_MP LOG_STREAM(info, log_mp_connect_engine)
+#define WRN_MP LOG_STREAM(warn, log_mp_connect_engine)
+#define ERR_MP LOG_STREAM(err, log_mp_connect_engine)
+
 
 namespace gui2
 {
@@ -296,9 +305,6 @@ void mp_join_game::pre_show(window& window)
 	plugins_context_->set_callback("launch", [&window](const config&) { window.set_retval(window::OK); }, false);
 	plugins_context_->set_callback("quit",   [&window](const config&) { window.set_retval(window::CANCEL); }, false);
 	plugins_context_->set_callback("chat",   [&chat](const config& cfg) { chat.send_chat_message(cfg["message"], false); }, true);
-
-	// TODO: the old mp wait dialog didn't have an OK button. Evaluate if we want to add one. Hiding it for now
-	find_widget<button>(&window, "ok", false).set_visible(widget::visibility::hidden);
 }
 
 void mp_join_game::generate_side_list(window& window)
@@ -456,6 +462,7 @@ void mp_join_game::network_handler(window& window)
 	if(data["failed"].to_bool()) {
 		window.set_retval(window::CANCEL);
 	} else if(data.child("start_game")) {
+		level_["started"] = true;
 		window.set_retval(window::OK);
 	} else if(data.child("leave_game")) {
 		window.set_retval(window::CANCEL);
@@ -476,6 +483,10 @@ void mp_join_game::network_handler(window& window)
 		level_ = first_scenario_ ? data : data.child("next_scenario");
 
 		generate_side_list(window);
+	}
+
+	if (data.has_child("turn")) {
+		ERR_MP << "received replay data\n" << data << "\n in mp join\n";
 	}
 
 	// Update player list

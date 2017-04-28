@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -75,8 +75,7 @@ public:
 	virtual const std::vector<item_group>& get_groups() const = 0;
 
 	/** Menu expanding for palette group list */
-	virtual void expand_palette_groups_menu(std::vector<std::string>& items) = 0;
-	virtual void expand_palette_groups_menu(std::vector< std::pair< std::string, std::string> >& items) = 0;
+	virtual void expand_palette_groups_menu(std::vector<config>& items, int i) = 0;
 
     //item
 	virtual int num_items() = 0;

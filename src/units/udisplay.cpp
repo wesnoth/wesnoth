@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -217,7 +217,7 @@ void unit_mover::replace_temporary(unit_ptr u)
 	u->set_hidden(true);
 
 	// Update cached data.
-	is_enemy_ =	resources::gameboard->teams()[u->side()-1].is_enemy(disp_->viewing_side());
+	is_enemy_ =	resources::gameboard->get_team(u->side()).is_enemy(disp_->viewing_side());
 }
 
 
@@ -498,7 +498,7 @@ void move_unit(const std::vector<map_location>& path, unit_ptr u,
 void reset_helpers(const unit *attacker,const unit *defender);
 
 void unit_draw_weapon(const map_location& loc, unit& attacker,
-		const attack_type* attack,const attack_type* secondary_attack, const map_location& defender_loc,unit* defender)
+		const_attack_ptr attack,const_attack_ptr secondary_attack, const map_location& defender_loc,unit* defender)
 {
 	display* disp = display::get_singleton();
 	if(!disp ||disp->video().update_locked() || disp->video().faked() || disp->fogged(loc) || preferences::show_combat() == false) {
@@ -516,7 +516,7 @@ void unit_draw_weapon(const map_location& loc, unit& attacker,
 
 
 void unit_sheath_weapon(const map_location& primary_loc, unit* primary_unit,
-		const attack_type* primary_attack,const attack_type* secondary_attack, const map_location& secondary_loc,unit* secondary_unit)
+		const_attack_ptr primary_attack,const_attack_ptr secondary_attack, const map_location& secondary_loc,unit* secondary_unit)
 {
 	display* disp = display::get_singleton();
 	if(!disp ||disp->video().update_locked() || disp->video().faked() || disp->fogged(primary_loc) || preferences::show_combat() == false) {
@@ -546,7 +546,7 @@ void unit_sheath_weapon(const map_location& primary_loc, unit* primary_unit,
 
 
 void unit_die(const map_location& loc, unit& loser,
-		const attack_type* attack,const attack_type* secondary_attack, const map_location& winner_loc,unit* winner)
+		const_attack_ptr attack,const_attack_ptr secondary_attack, const map_location& winner_loc,unit* winner)
 {
 	display* disp = display::get_singleton();
 	if(!disp ||disp->video().update_locked() || disp->video().faked() || disp->fogged(loc) || preferences::show_combat() == false) {
@@ -571,8 +571,8 @@ void unit_die(const map_location& loc, unit& loser,
 
 void unit_attack(display * disp, game_board & board,
                  const map_location& a, const map_location& b, int damage,
-                 const attack_type& attack, const attack_type* secondary_attack,
-                 int swing,std::string hit_text,int drain_amount,std::string att_text, const std::vector<std::string>* extra_hit_sounds)
+                 const attack_type& attack, const_attack_ptr secondary_attack,
+                 int swing,const std::string& hit_text,int drain_amount,const std::string& att_text, const std::vector<std::string>* extra_hit_sounds)
 {
 	if(!disp ||disp->video().update_locked() || disp->video().faked() ||
 			(disp->fogged(a) && disp->fogged(b)) || preferences::show_combat() == false) {
@@ -618,12 +618,12 @@ void unit_attack(display * disp, game_board & board,
 	animator.add_animation(&attacker, "attack", att->get_location(),
 		def->get_location(), damage, true,  text_2,
 		(drain_amount >= 0) ? color_t(0,255,0) : color_t(255,0,0),
-		hit_type, &attack, secondary_attack, swing);
+		hit_type, attack.shared_from_this(), secondary_attack, swing);
 
 	// note that we take an anim from the real unit, we'll use it later
 	const unit_animation *defender_anim = def->anim_comp().choose_animation(*disp,
 		def->get_location(), "defend", att->get_location(), damage,
-		hit_type, &attack, secondary_attack, swing);
+		hit_type, attack.shared_from_this(), secondary_attack, swing);
 	animator.add_animation(&defender, defender_anim, def->get_location(),
 		true,  text , {255,0,0});
 
@@ -635,7 +635,7 @@ void unit_attack(display * disp, game_board & board,
 		leader->set_facing(ability.second.get_relative_dir(a));
 		animator.add_animation(&*leader, "leading", ability.second,
 			att->get_location(), damage, true,  "", {0,0,0},
-			hit_type, &attack, secondary_attack, swing);
+			hit_type, attack.shared_from_this(), secondary_attack, swing);
 	}
 	for (const unit_ability & ability : helpers) {
 		if(ability.second == a) continue;
@@ -645,7 +645,7 @@ void unit_attack(display * disp, game_board & board,
 		helper->set_facing(ability.second.get_relative_dir(b));
 		animator.add_animation(&*helper, "resistance", ability.second,
 			def->get_location(), damage, true,  "", {0,0,0},
-			hit_type, &attack, secondary_attack, swing);
+			hit_type, attack.shared_from_this(), secondary_attack, swing);
 	}
 
 
@@ -766,129 +766,4 @@ void unit_healing(unit &healed, const std::vector<unit *> &healers, int healing,
 	animator.set_all_standing();
 }
 
-void wml_animation_internal(unit_animator &animator, const vconfig &cfg, const map_location &default_location = map_location::null_location());
-
-void wml_animation(const vconfig &cfg, const map_location &default_location)
-{
-	game_display &disp = *resources::screen;
-	if (disp.video().update_locked() || disp.video().faked()) return;
-	unit_animator animator;
-	wml_animation_internal(animator, cfg, default_location);
-	animator.start_animations();
-	animator.wait_for_end();
-	animator.set_all_standing();
-}
-
-void wml_animation_internal(unit_animator &animator, const vconfig &cfg, const map_location &default_location)
-{
-	unit_const_ptr u;
-
-	unit_map::const_iterator u_it = resources::gameboard->units().find(default_location);
-	if (u_it.valid()) {
-		u = u_it.get_shared_ptr();
-	}
-
-	// Search for a valid unit filter,
-	// and if we have one, look for the matching unit
-	vconfig filter = cfg.child("filter");
-	if(!filter.null()) {
-		const unit_filter ufilt(filter, resources::filter_con);
-		u = ufilt.first_match_on_map();
-	}
-
-	// We have found a unit that matches the filter
-	if (u && !resources::screen->fogged(u->get_location()))
-	{
-		attack_type *primary = nullptr;
-		attack_type *secondary = nullptr;
-		color_t text_color;
-		unit_animation::hit_type hits=  unit_animation::hit_type::INVALID;
-		const_attack_itors attacks = u->attacks();
-		const_attack_itors::const_iterator itor;
-		attack_ptr dummy_primary;
-		attack_ptr dummy_secondary;
-
-		// death and victory animations are handled here because usually
-		// the code iterates through all the unit's attacks
-		// but in these two specific cases we need to create dummy attacks
-		// to fire correctly certain animations
-		// this is especially evident with the Wose's death animations
-		if (cfg["flag"] == "death" || cfg["flag"] == "victory") {
-			filter = cfg.child("primary_attack");
-			if(!filter.null()) {
-				dummy_primary.reset(new attack_type(filter.get_config()));
-				primary = dummy_primary.get();
-			}
-			filter = cfg.child("secondary_attack");
-			if(!filter.null()) {
-				dummy_secondary.reset(new attack_type(filter.get_config()));
-				secondary = dummy_secondary.get();
-			}
-		}
-
-		else {
-			filter = cfg.child("primary_attack");
-			if(!filter.null()) {
-				for(itor = attacks.begin(); itor != attacks.end(); ++itor){
-					if(itor->matches_filter(filter.get_parsed_config())) {
-						primary = &*itor;
-						break;
-					}
-				}
-			}
-
-			filter = cfg.child("secondary_attack");
-			if(!filter.null()) {
-				for(itor = attacks.begin(); itor != attacks.end(); ++itor){
-					if(itor->matches_filter(filter.get_parsed_config())) {
-						secondary = &*itor;
-						break;
-					}
-				}
-			}
-		}
-
-		if(cfg["hits"] == "yes" || cfg["hits"] == "hit") {
-			hits = unit_animation::hit_type::HIT;
-		}
-		if(cfg["hits"] == "no" || cfg["hits"] == "miss") {
-			hits = unit_animation::hit_type::MISS;
-		}
-		if( cfg["hits"] == "kill" ) {
-			hits = unit_animation::hit_type::KILL;
-		}
-		if(cfg["red"].empty() && cfg["green"].empty() && cfg["blue"].empty()) {
-			text_color = color_t(0xff,0xff,0xff);
-		} else {
-			text_color = color_t(cfg["red"], cfg["green"], cfg["blue"]);
-		}
-		resources::screen->scroll_to_tile(u->get_location(), game_display::ONSCREEN, true, false);
-		vconfig t_filter_data = cfg.child("facing");
-		map_location secondary_loc = map_location::null_location();
-		if(!t_filter_data.empty()) {
-			terrain_filter t_filter(t_filter_data, resources::filter_con);
-			std::set<map_location> locs;
-			t_filter.get_locations(locs);
-			if (!locs.empty() && u->get_location() != *locs.begin()) {
-				map_location::DIRECTION dir =u->get_location().get_relative_dir(*locs.begin());
-				u->set_facing(dir);
-				secondary_loc = u->get_location().get_direction(dir);
-			}
-		}
-		config::attribute_value text = u->gender() == unit_race::FEMALE ? cfg["female_text"] : cfg["male_text"];
-		if(text.blank()) {
-			text = cfg["text"];
-		}
-		animator.add_animation(&*u, cfg["flag"], u->get_location(),
-			secondary_loc, cfg["value"], cfg["with_bars"].to_bool(),
-			text.str(), text_color, hits, primary, secondary,
-			cfg["value_second"]);
-	}
-	const vconfig::child_list sub_anims = cfg.get_children("animate");
-	vconfig::child_list::const_iterator anim_itor;
-	for(anim_itor = sub_anims.begin(); anim_itor != sub_anims.end();++anim_itor) {
-		wml_animation_internal(animator, *anim_itor);
-	}
-
-}
 } // end unit_display namespace

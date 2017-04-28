@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
+ * Copyright (C) 2008 - 2017 by Mark de Wever <koraq@xs4all.nl>
  * Part of the Battle for Wesnoth Project http://www.wesnoth.org/
  *
  * This program is free software; you can redistribute it and/or modify
@@ -17,18 +17,18 @@
 namespace font {
 
 const color_t
-	NORMAL_COLOR    {0xDD, 0xDD, 0xDD},
-	GRAY_COLOR      {0x77, 0x77, 0x77},
-	LOBBY_COLOR     {0xBB, 0xBB, 0xBB},
-	GOOD_COLOR      {0x00, 0xFF, 0x00},
-	BAD_COLOR       {0xFF, 0x00, 0x00},
-	BLACK_COLOR     {0x00, 0x00, 0x00},
-	YELLOW_COLOR    {0xFF, 0xFF, 0x00},
-	BUTTON_COLOR    {0xBC, 0xB0, 0x88},
-	PETRIFIED_COLOR {0xA0, 0xA0, 0xA0},
-	TITLE_COLOR     {0xBC, 0xB0, 0x88},
-	LABEL_COLOR     {0x6B, 0x8C, 0xFF},
-	BIGMAP_COLOR    {0xFF, 0xFF, 0xFF};
+	NORMAL_COLOR    {221, 221, 221},
+	GRAY_COLOR      {119, 119, 119},
+	LOBBY_COLOR     {187, 187, 187},
+	GOOD_COLOR      {0  , 255, 0  },
+	BAD_COLOR       {255, 0  , 0  },
+	BLACK_COLOR     {0  , 0  , 0  },
+	YELLOW_COLOR    {255, 255, 0  },
+	BUTTON_COLOR    {186, 172, 125},
+	PETRIFIED_COLOR {160, 160, 160},
+	TITLE_COLOR     {186, 172, 125},
+	LABEL_COLOR     {107, 140, 255},
+	BIGMAP_COLOR    {255, 255, 255};
 
 const color_t DISABLED_COLOR = PETRIFIED_COLOR.inverse();
 

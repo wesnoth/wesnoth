@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2012 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -37,10 +37,10 @@ placer_vertical_list::placer_vertical_list(const unsigned maximum_columns)
 	assert(maximum_columns_ > 0);
 }
 
-void placer_vertical_list::initialise()
+void placer_vertical_list::initialize()
 {
 	rows_.clear();
-	rows_.push_back(std::make_pair(0, 0));
+	rows_.emplace_back(0, 0);
 	std::fill(columns_.begin(), columns_.end(), 0);
 	row_ = 0;
 	column_ = 0;
@@ -62,7 +62,7 @@ void placer_vertical_list::add_item(const point& size)
 		++row_;
 
 		const int origin = rows_.back().first + rows_.back().second;
-		rows_.push_back(std::make_pair(origin, 0));
+		rows_.emplace_back(origin, 0);
 	}
 }
 

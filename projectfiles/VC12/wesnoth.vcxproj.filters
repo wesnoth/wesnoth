@@ -398,6 +398,9 @@
     <ClCompile Include="..\..\src\editor\controller\editor_controller.cpp">
       <Filter>Editor\Controller</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\widgets\addon_list.cpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\gui\widgets\button.cpp">
       <Filter>Gui\Widgets</Filter>
     </ClCompile>
@@ -444,6 +447,9 @@
       <Filter>Gui\Widgets</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\widgets\minimap.cpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\widgets\multimenu_button.cpp">
       <Filter>Gui\Widgets</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\widgets\multi_page.cpp">
@@ -599,6 +605,12 @@
     <ClCompile Include="..\..\src\gui\dialogs\gamestate_inspector.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\help_browser.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\hotkey_bind.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\label_settings.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
@@ -626,6 +638,9 @@
     <ClCompile Include="..\..\src\gui\dialogs\network_transmission.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\outro.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\preferences_dialog.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
@@ -642,6 +657,9 @@
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\statistics_dialog.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\story_viewer.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\terrain_layers.cpp">
@@ -692,10 +710,7 @@
     <ClCompile Include="..\..\src\gui\dialogs\addon\connect.cpp">
       <Filter>Gui\Dialogs\Addon</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\addon\description.cpp">
-      <Filter>Gui\Dialogs\Addon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\addon\filter_options.cpp">
+    <ClCompile Include="..\..\src\gui\dialogs\addon\install_dependencies.cpp">
       <Filter>Gui\Dialogs\Addon</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\addon\manager.cpp">
@@ -792,6 +807,9 @@
       <Filter>Gui\Auxiliary\Iterator</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\core\canvas.cpp">
+      <Filter>Gui\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\core\linked_group_definition.cpp">
       <Filter>Gui\Core</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\core\log.cpp">
@@ -911,9 +929,6 @@
     <ClCompile Include="..\..\src\storyscreen\part.cpp">
       <Filter>Storyscreen</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\storyscreen\render.cpp">
-      <Filter>Storyscreen</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\whiteboard\action.cpp">
       <Filter>Whiteboard</Filter>
     </ClCompile>
@@ -965,12 +980,6 @@
     <ClCompile Include="..\..\src\widgets\scrollbar.cpp">
       <Filter>Widgets</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\widgets\scrollpane.cpp">
-      <Filter>Widgets</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\widgets\slider.cpp">
-      <Filter>Widgets</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\widgets\textbox.cpp">
       <Filter>Widgets</Filter>
     </ClCompile>
@@ -1014,6 +1023,9 @@
       <Filter>Tests</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\tests\test_formula_ai.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\tests\test_formula_core.cpp">
       <Filter>Tests</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\tests\test_formula_function.cpp">
@@ -1199,9 +1211,6 @@
     <ClCompile Include="..\..\src\hotkey\hotkey_manager.cpp">
       <Filter>Hotkeys</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\hotkey\hotkey_preferences_display.cpp">
-      <Filter>Hotkeys</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\sdl\exception.cpp">
       <Filter>SDL</Filter>
     </ClCompile>
@@ -1319,6 +1328,9 @@
     <ClCompile Include="..\..\src\formula\variant.cpp">
       <Filter>Formula</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\formula\variant_value.cpp">
+      <Filter>Formula</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\terrain\builder.cpp">
       <Filter>Terrain</Filter>
     </ClCompile>
@@ -1392,7 +1404,6 @@
     <ClCompile Include="..\..\src\animated_game.cpp" />
     <ClCompile Include="..\..\src\arrow.cpp" />
     <ClCompile Include="..\..\src\attack_prediction.cpp" />
-    <ClCompile Include="..\..\src\attack_prediction_display.cpp" />
     <ClCompile Include="..\..\src\boilerplate-header.cpp" />
     <ClCompile Include="..\..\src\build_info.cpp" />
     <ClCompile Include="..\..\src\carryover.cpp" />
@@ -1428,7 +1439,6 @@
     <ClCompile Include="..\..\src\hash.cpp" />
     <ClCompile Include="..\..\src\image.cpp" />
     <ClCompile Include="..\..\src\image_modifications.cpp" />
-    <ClCompile Include="..\..\src\intro.cpp" />
     <ClCompile Include="..\..\src\joystick.cpp" />
     <ClCompile Include="..\..\src\key.cpp" />
     <ClCompile Include="..\..\src\language.cpp" />
@@ -1456,9 +1466,9 @@
     <ClCompile Include="..\..\src\preferences.cpp" />
     <ClCompile Include="..\..\src\preferences_display.cpp" />
     <ClCompile Include="..\..\src\quit_confirmation.cpp" />
-    <ClCompile Include="..\..\src\random_new.cpp" />
-    <ClCompile Include="..\..\src\random_new_deterministic.cpp" />
-    <ClCompile Include="..\..\src\random_new_synced.cpp" />
+    <ClCompile Include="..\..\src\random.cpp" />
+    <ClCompile Include="..\..\src\random_deterministic.cpp" />
+    <ClCompile Include="..\..\src\random_synced.cpp" />
     <ClCompile Include="..\..\src\recall_list_manager.cpp" />
     <ClCompile Include="..\..\src\replay.cpp" />
     <ClCompile Include="..\..\src\replay_controller.cpp" />
@@ -1518,9 +1528,6 @@
     </ClCompile>
     <ClCompile Include="..\..\src\font\text_surface.cpp">
       <Filter>Font</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\gui\widgets\addon_list.cpp">
-      <Filter>Gui\Widgets</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1749,6 +1756,9 @@
     <ClInclude Include="..\..\src\editor\controller\editor_controller.hpp">
       <Filter>Editor\Controller</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\addon_list.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\gui\widgets\button.hpp">
       <Filter>Gui\Widgets</Filter>
     </ClInclude>
@@ -1813,6 +1823,9 @@
       <Filter>Gui\Widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\widgets\minimap.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\multimenu_button.hpp">
       <Filter>Gui\Widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\widgets\multi_page.hpp">
@@ -1980,7 +1993,13 @@
     <ClInclude Include="..\..\src\gui\dialogs\gamestate_inspector.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\help_browser.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\helper.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\hotkey_bind.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\label_settings.hpp">
@@ -2010,6 +2029,9 @@
     <ClInclude Include="..\..\src\gui\dialogs\network_transmission.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\outro.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\preferences_dialog.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
@@ -2026,6 +2048,9 @@
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\statistics_dialog.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\story_viewer.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\terrain_layers.hpp">
@@ -2076,10 +2101,7 @@
     <ClInclude Include="..\..\src\gui\dialogs\addon\connect.hpp">
       <Filter>Gui\Dialogs\Addon</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\gui\dialogs\addon\description.hpp">
-      <Filter>Gui\Dialogs\Addon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\gui\dialogs\addon\filter_options.hpp">
+    <ClInclude Include="..\..\src\gui\dialogs\addon\install_dependencies.hpp">
       <Filter>Gui\Dialogs\Addon</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\addon\manager.hpp">
@@ -2208,7 +2230,13 @@
     <ClInclude Include="..\..\src\gui\core\canvas.hpp">
       <Filter>Gui\Core</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\gui\core\canvas_private.hpp">
+      <Filter>Gui\Core</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\gui\core\layout_exception.hpp">
+      <Filter>Gui\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\core\linked_group_definition.hpp">
       <Filter>Gui\Core</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\core\log.hpp">
@@ -2346,9 +2374,6 @@
     <ClInclude Include="..\..\src\storyscreen\part.hpp">
       <Filter>Storyscreen</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\storyscreen\render.hpp">
-      <Filter>Storyscreen</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\whiteboard\action.hpp">
       <Filter>Whiteboard</Filter>
     </ClInclude>
@@ -2401,12 +2426,6 @@
       <Filter>Widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\widgets\scrollbar.hpp">
-      <Filter>Widgets</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\widgets\scrollpane.hpp">
-      <Filter>Widgets</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\widgets\slider.hpp">
       <Filter>Widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\widgets\textbox.hpp">
@@ -2613,9 +2632,6 @@
     <ClInclude Include="..\..\src\game_initialization\lobby_info.hpp">
       <Filter>Game_Initialization</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\game_initialization\lobby_reload_request_exception.hpp">
-      <Filter>Game_Initialization</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\game_initialization\mp_game_utils.hpp">
       <Filter>Game_Initialization</Filter>
     </ClInclude>
@@ -2706,6 +2722,9 @@
     <ClInclude Include="..\..\src\formula\variant.hpp">
       <Filter>Formula</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\formula\variant_value.hpp">
+      <Filter>Formula</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\terrain\builder.hpp">
       <Filter>Terrain</Filter>
     </ClInclude>
@@ -2743,6 +2762,9 @@
       <Filter>Units</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\units\frame.hpp">
+      <Filter>Units</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\units\frame_private.hpp">
       <Filter>Units</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\units\helper.hpp">
@@ -2785,7 +2807,6 @@
     <ClInclude Include="..\..\src\animated.hpp" />
     <ClInclude Include="..\..\src\arrow.hpp" />
     <ClInclude Include="..\..\src\attack_prediction.hpp" />
-    <ClInclude Include="..\..\src\attack_prediction_display.hpp" />
     <ClInclude Include="..\..\src\build_info.hpp" />
     <ClInclude Include="..\..\src\buffered_istream.hpp" />
     <ClInclude Include="..\..\src\carryover.hpp" />
@@ -2826,7 +2847,6 @@
     <ClInclude Include="..\..\src\hash.hpp" />
     <ClInclude Include="..\..\src\image.hpp" />
     <ClInclude Include="..\..\src\image_modifications.hpp" />
-    <ClInclude Include="..\..\src\intro.hpp" />
     <ClInclude Include="..\..\src\joystick.hpp" />
     <ClInclude Include="..\..\src\key.hpp" />
     <ClInclude Include="..\..\src\language.hpp" />
@@ -2857,9 +2877,9 @@
     <ClInclude Include="..\..\src\preferences.hpp" />
     <ClInclude Include="..\..\src\preferences_display.hpp" />
     <ClInclude Include="..\..\src\quit_confirmation.hpp" />
-    <ClInclude Include="..\..\src\random_new.hpp" />
-    <ClInclude Include="..\..\src\random_new_deterministic.hpp" />
-    <ClInclude Include="..\..\src\random_new_synced.hpp" />
+    <ClInclude Include="..\..\src\random.hpp" />
+    <ClInclude Include="..\..\src\random_deterministic.hpp" />
+    <ClInclude Include="..\..\src\random_synced.hpp" />
     <ClInclude Include="..\..\src\recall_list_manager.hpp" />
     <ClInclude Include="..\..\src\replay.hpp" />
     <ClInclude Include="..\..\src\replay_controller.hpp" />
@@ -2951,9 +2971,6 @@
     </ClInclude>
     <ClInclude Include="..\..\src\font\pango\stream_ops.hpp">
       <Filter>Font\Pango</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\gui\widgets\addon_list.hpp">
-      <Filter>Gui\Widgets</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

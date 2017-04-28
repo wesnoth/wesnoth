@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2016 by Lukasz Dobrogowski <lukasz.dobrogowski@gmail.com>
+   Copyright (C) 2011 - 2017 by Lukasz Dobrogowski <lukasz.dobrogowski@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -23,7 +23,7 @@ BOOST_AUTO_TEST_SUITE( cmdline_opts )
 BOOST_AUTO_TEST_CASE (test_empty_options)
 {
 
-	std::vector<std::string> args = {"wesnoth"};
+	std::vector<std::string> args {"wesnoth"};
 	commandline_options co(args);
 
 	BOOST_CHECK(!co.campaign);
@@ -91,7 +91,7 @@ BOOST_AUTO_TEST_CASE (test_empty_options)
 
 BOOST_AUTO_TEST_CASE (test_default_options)
 {
-	std::vector<std::string> args = {
+	std::vector<std::string> args {
 		"wesnoth",
 		"--campaign",
 		"--editor",
@@ -166,7 +166,7 @@ BOOST_AUTO_TEST_CASE (test_default_options)
 
 BOOST_AUTO_TEST_CASE (test_full_options)
 {
-	std::vector<std::string> args = {
+	std::vector<std::string> args {
 		"wesnoth",
 		"--ai-config=1:aifoo",
 		"--ai-config=2:aibar",
@@ -322,7 +322,7 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 
 BOOST_AUTO_TEST_CASE (test_positional_options)
 {
-	std::vector<std::string> args = {
+	std::vector<std::string> args {
 		"wesnoth",
 		"datadirfoo"};
 

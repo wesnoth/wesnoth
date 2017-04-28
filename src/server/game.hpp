@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -410,7 +410,7 @@ private:
 	std::string replay_save_path_;
 
 	/** A wrapper for mersenne twister rng which generates randomness for this game */
-	rand_rng::mt_rng rng_;
+	randomness::mt_rng rng_;
 	int last_choice_request_id_;
 };
 

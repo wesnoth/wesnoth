@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2012 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -73,8 +73,8 @@ public:
 	/** See @ref widget::place. */
 	virtual void place(const point& origin, const point& size) override;
 
-	/** See @ref widget::layout_initialise. */
-	virtual void layout_initialise(const bool full_initialisation) override;
+	/** See @ref widget::layout_initialize. */
+	virtual void layout_initialize(const bool full_initialization) override;
 
 	/** See @ref widget::impl_draw_children. */
 	virtual void impl_draw_children(surface& frame_buffer,

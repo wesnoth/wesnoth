@@ -5,17 +5,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-11-05 23:32 UTC\n"
-"PO-Revision-Date: 2010-01-01 00:00+0300\n"
-"Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
-"Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
-"Language: Lithuanian\n"
+"POT-Creation-Date: 2017-03-23 08:11+0100\n"
+"PO-Revision-Date: 2017-03-28 22:31+0200\n"
+"Last-Translator: Andrius Štikonas <andrius@stikonas.eu>\n"
+"Language-Team: Lithuanian <wesnoth-lt@googlegroups.com>\n"
+"Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
-"X-Generator: Poedit 1.5.5\n"
+"X-Generator: Poedit 1.8.5\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
@@ -78,10 +78,10 @@ msgstr "Delfadoras"
 msgid "Urug-Telfar"
 msgstr "Urug-Telfaras"
 
+#. [side]: id=Vanak, type=Orcish Ruler
 #. [side]: type=Orcish Warlord, id=Urug-Telfar
 #. [side]: type=Orcish Warlord, id=Knafa-Tan
 #. [side]: type=Orcish Warlord, id=Maga-Knafa
-#. [side]: id=Vanak, type=Orcish Ruler
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:98
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:112
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:130
@@ -251,8 +251,8 @@ msgid ""
 "self control of a well trained sheep dog."
 msgstr ""
 
-#. [test]: id=animals
 #. [event]
+#. [test]: id=animals
 #: data/ai/micro_ais/scenarios/animals.cfg:27
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:45
 msgid "Animals"
@@ -263,10 +263,10 @@ msgstr "Gyvūnai"
 msgid "Rutburt"
 msgstr ""
 
-#. [side]: id=Rutburt, type=Outlaw
 #. [side]: type=General, id=leader2
 #. [side]: type=Lieutenant, id=leader5
 #. [side]: type=Lieutenant, id=leader6
+#. [side]: id=Rutburt, type=Outlaw
 #: data/ai/micro_ais/scenarios/animals.cfg:48
 #: data/ai/micro_ais/scenarios/goto.cfg:43
 #: data/ai/micro_ais/scenarios/goto.cfg:93
@@ -295,8 +295,8 @@ msgstr "Vorai"
 msgid "Yetis"
 msgstr "Ječiai"
 
-#. [side]
 #. [event]
+#. [side]
 #. [test]: id=wolves
 #: data/ai/micro_ais/scenarios/animals.cfg:119
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:48
@@ -309,11 +309,11 @@ msgstr "Vilkai"
 msgid "Whelps"
 msgstr ""
 
-#. [set_menu_item]: id=m01_end_animals
-#. [event]
 #. [set_menu_item]: id=m01_end_swarm
-#. [set_menu_item]: id=m01_end_wolves
+#. [event]
 #. [set_menu_item]: id=m04_end_animals
+#. [set_menu_item]: id=m01_end_animals
+#. [set_menu_item]: id=m01_end_wolves
 #: data/ai/micro_ais/scenarios/animals.cfg:209
 #: data/ai/micro_ais/scenarios/dragon.cfg:48
 #: data/ai/micro_ais/scenarios/goto.cfg:382
@@ -636,9 +636,8 @@ msgstr ""
 
 #. [side]
 #: data/ai/micro_ais/scenarios/goto.cfg:138
-#, fuzzy
 msgid "team_name^Ghosts"
-msgstr "Vilkai"
+msgstr "Vaiduokliai"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/goto.cfg:185
@@ -869,8 +868,8 @@ msgstr ""
 msgid "We're back together, let's head out to the corners again."
 msgstr ""
 
-#. [event]
 #. [test]: id=guardians
+#. [event]
 #: data/ai/micro_ais/scenarios/guardians.cfg:17
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:57
 msgid "Guardians"
@@ -1532,8 +1531,8 @@ msgstr ""
 msgid "Nooo!  All is lost. We will never stop the orcs now!"
 msgstr ""
 
-#. [test]: id=patrols
 #. [event]
+#. [test]: id=patrols
 #: data/ai/micro_ais/scenarios/patrols.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:75
 msgid "Patrols"
@@ -1694,8 +1693,8 @@ msgstr ""
 msgid "Let's go home, chaps."
 msgstr "Eima namo, vyručiai."
 
-#. [test]: id=protect_unit
 #. [event]
+#. [test]: id=protect_unit
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:63
 msgid "Protect Unit"
@@ -1836,8 +1835,8 @@ msgstr ""
 msgid "I made it"
 msgstr ""
 
-#. [test]: id=recruiting
 #. [event]
+#. [test]: id=recruiting
 #: data/ai/micro_ais/scenarios/recruiting.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:78
 msgid "Recruiting"
@@ -1891,8 +1890,8 @@ msgstr ""
 msgid "team_name^Grnk"
 msgstr ""
 
-#. [event]
 #. [test]: id=swarm
+#. [event]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:51
 #: data/ai/micro_ais/scenarios/swarm.cfg:5
 msgid "Swarm"
@@ -2605,24 +2604,3 @@ msgstr ""
 #: data/ai/scenarios/scenario-lua_ai_old_syntax.cfg:87
 msgid "Kiressh"
 msgstr ""
-
-#~ msgid "first"
-#~ msgstr "pirmas"
-
-#~ msgid "second"
-#~ msgstr "antras"
-
-#~ msgid "third"
-#~ msgstr "trečias"
-
-#~ msgid "Bilbo"
-#~ msgstr "Bilbas"
-
-#~ msgid "Sirené"
-#~ msgstr "Sirenė"
-
-#~ msgid "Rark"
-#~ msgstr "Rarkas"
-
-#~ msgid "AI under test"
-#~ msgstr "Testuojamas DI"
