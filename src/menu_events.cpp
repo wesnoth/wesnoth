@@ -263,8 +263,6 @@ void menu_handler::recruit(int side_num, const map_location& last_hex)
 {
 	std::vector<const unit_type*> sample_units;
 
-	gui_->draw(); // clear the old menu
-
 	std::set<std::string> recruits = actions::get_recruits(side_num, last_hex);
 
 	for(const auto& recruit : recruits) {
@@ -364,8 +362,6 @@ void menu_handler::recall(int side_num, const map_location& last_hex)
 		wb::future_map future; // ensures recall list has planned recalls removed
 		recall_list_team = actions::get_recalls(side_num, last_hex);
 	}
-
-	gui_->draw(); // clear the old menu
 
 	DBG_WB << "menu_handler::recall: Contents of wb-modified recall list:\n";
 	for(const unit_const_ptr& unit : recall_list_team) {
