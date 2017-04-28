@@ -212,27 +212,27 @@ namespace {
 REGISTER_DIALOG(addon_manager)
 
 const std::vector<std::pair<ADDON_STATUS_FILTER, std::string>> addon_manager::status_filter_types_{
-	{FILTER_ALL,           _("addons_view^All Add-ons")},
-	{FILTER_INSTALLED,     _("addons_view^Installed")},
-	{FILTER_UPGRADABLE,    _("addons_view^Upgradable")},
-	{FILTER_NOT_INSTALLED, _("addons_view^Not Installed")},
+	{FILTER_ALL,           N_("addons_view^All Add-ons")},
+	{FILTER_INSTALLED,     N_("addons_view^Installed")},
+	{FILTER_UPGRADABLE,    N_("addons_view^Upgradable")},
+	{FILTER_NOT_INSTALLED, N_("addons_view^Not Installed")},
 };
 
 const std::vector<std::pair<ADDON_TYPE, std::string>> addon_manager::type_filter_types_{
-	{ADDON_SP_CAMPAIGN,    _("addons_of_type^Campaigns")},
-	{ADDON_SP_SCENARIO,    _("addons_of_type^Scenarios")},
-	{ADDON_SP_MP_CAMPAIGN, _("addons_of_type^SP/MP campaigns")},
-	{ADDON_MP_CAMPAIGN,    _("addons_of_type^MP campaigns")},
-	{ADDON_MP_SCENARIO,    _("addons_of_type^MP scenarios")},
-	{ADDON_MP_MAPS,        _("addons_of_type^MP map-packs")},
-	{ADDON_MP_ERA,         _("addons_of_type^MP eras")},
-	{ADDON_MP_FACTION,     _("addons_of_type^MP factions")},
-	{ADDON_MP_MOD,         _("addons_of_type^MP modifications")},
-	{ADDON_CORE,           _("addons_of_type^Cores")},
-	{ADDON_MEDIA,          _("addons_of_type^Resources")},
+	{ADDON_SP_CAMPAIGN,    N_("addons_of_type^Campaigns")},
+	{ADDON_SP_SCENARIO,    N_("addons_of_type^Scenarios")},
+	{ADDON_SP_MP_CAMPAIGN, N_("addons_of_type^SP/MP campaigns")},
+	{ADDON_MP_CAMPAIGN,    N_("addons_of_type^MP campaigns")},
+	{ADDON_MP_SCENARIO,    N_("addons_of_type^MP scenarios")},
+	{ADDON_MP_MAPS,        N_("addons_of_type^MP map-packs")},
+	{ADDON_MP_ERA,         N_("addons_of_type^MP eras")},
+	{ADDON_MP_FACTION,     N_("addons_of_type^MP factions")},
+	{ADDON_MP_MOD,         N_("addons_of_type^MP modifications")},
+	{ADDON_CORE,           N_("addons_of_type^Cores")},
+	{ADDON_MEDIA,          N_("addons_of_type^Resources")},
 	// FIXME: (also in WML) should this and Unknown be a single option in the UI?
-	{ADDON_OTHER,          _("addons_of_type^Other")},
-	{ADDON_UNKNOWN,        _("addons_of_type^Unknown")},
+	{ADDON_OTHER,          N_("addons_of_type^Other")},
+	{ADDON_UNKNOWN,        N_("addons_of_type^Unknown")},
 };
 
 addon_manager::addon_manager(addons_client& client)
@@ -355,7 +355,7 @@ void addon_manager::pre_show(window& window)
 
 	std::vector<config> status_filter_entries;
 	for(const auto& f : status_filter_types_) {
-		status_filter_entries.emplace_back(config_of("label", f.second));
+		status_filter_entries.emplace_back(config_of("label", t_string(f.second, GETTEXT_DOMAIN)));
 	}
 
 	status_filter.set_values(status_filter_entries);
@@ -365,7 +365,7 @@ void addon_manager::pre_show(window& window)
 
 	std::vector<config> type_filter_entries;
 	for(const auto& f : type_filter_types_) {
-		type_filter_entries.emplace_back(config_of("label", f.second)("checkbox", false));
+		type_filter_entries.emplace_back(config_of("label", t_string(f.second, GETTEXT_DOMAIN))("checkbox", false));
 	}
 
 	type_filter.set_values(type_filter_entries);
