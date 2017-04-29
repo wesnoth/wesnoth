@@ -1394,11 +1394,11 @@ void config::merge_with(const config& c)
 	}
 
 	// Now add any unvisited tags
-	for(child_map::const_iterator j = c.children.begin(); j != c.children.end(); ++j) {
-		const std::string& tag = j->first;
+	for(const auto& pair : c.children) {
+		const std::string& tag = pair.first;
 		unsigned &visits = visitations[tag];
-		while(visits < j->second.size()) {
-			add_child(tag, *j->second[visits++]);
+		while(visits < pair.second.size()) {
+			add_child(tag, *pair.second[visits++]);
 		}
 	}
 
