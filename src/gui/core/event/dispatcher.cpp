@@ -20,10 +20,8 @@
 
 namespace gui2
 {
-
 namespace event
 {
-
 /***** dispatcher class. *****/
 
 dispatcher::dispatcher()
@@ -76,30 +74,20 @@ bool dispatcher::has_event(const ui_event event, const event_queue_type event_ty
 			<< ".\n";
 #endif
 
-	return find<set_event>(
-				   event,
-				   dispatcher_implementation::has_handler(event_type, *this))
-		   || find<set_event_mouse>(event,
-									 dispatcher_implementation::has_handler(
-											 event_type, *this))
-		   || find<set_event_keyboard>(
-					  event,
-					  dispatcher_implementation::has_handler(event_type,
-															   *this))
-		   || find<set_event_touch>(
-					  event,
-					  dispatcher_implementation::has_handler(event_type,
-															   *this))
-		   || find<set_event_notification>(
-					  event,
-					  dispatcher_implementation::has_handler(event_type,
-															   *this))
-		   || find<set_event_message>(event,
-									   dispatcher_implementation::has_handler(
-											   event_type, *this))
-		   || find<set_event_raw_event>(event,
-									  dispatcher_implementation::has_handler(
-											  event_type, *this));
+	return find<set_event>(event,
+			dispatcher_implementation::has_handler(event_type, *this))
+	    || find<set_event_mouse>(event,
+			dispatcher_implementation::has_handler(event_type, *this))
+	    || find<set_event_keyboard>(event,
+			dispatcher_implementation::has_handler(event_type, *this))
+	    || find<set_event_touch>(event,
+			dispatcher_implementation::has_handler(event_type, *this))
+	    || find<set_event_notification>(event,
+			dispatcher_implementation::has_handler(event_type, *this))
+	    || find<set_event_message>(event,
+			dispatcher_implementation::has_handler(event_type, *this))
+	    || find<set_event_raw_event>(event,
+			dispatcher_implementation::has_handler(event_type, *this));
 }
 
 /**
@@ -138,11 +126,8 @@ public:
 class trigger
 {
 public:
-	void operator()(signal_function functor,
-					dispatcher& dispatcher,
-					const ui_event event,
-					bool& handled,
-					bool& halt) const
+	void operator()(signal_function functor, dispatcher& dispatcher,
+		const ui_event event, bool& handled, bool& halt) const
 	{
 		functor(dispatcher, event, handled, halt);
 	}
@@ -153,32 +138,22 @@ bool dispatcher::fire(const ui_event event, widget& target)
 	assert(find<set_event>(event, event_in_set()));
 	switch(event) {
 		case LEFT_BUTTON_DOUBLE_CLICK:
-			return fire_event_double_click<LEFT_BUTTON_CLICK,
-										   LEFT_BUTTON_DOUBLE_CLICK,
-										   &event_executor::
-													wants_mouse_left_double_click,
-										   signal_function>(
+			return fire_event_double_click<LEFT_BUTTON_CLICK, LEFT_BUTTON_DOUBLE_CLICK,
+					&event_executor::wants_mouse_left_double_click, signal_function>(
 					dynamic_cast<widget*>(this), &target, trigger());
 
 		case MIDDLE_BUTTON_DOUBLE_CLICK:
-			return fire_event_double_click<MIDDLE_BUTTON_CLICK,
-										   MIDDLE_BUTTON_DOUBLE_CLICK,
-										   &event_executor::
-													wants_mouse_middle_double_click,
-										   signal_function>(
+			return fire_event_double_click<MIDDLE_BUTTON_CLICK, MIDDLE_BUTTON_DOUBLE_CLICK,
+					&event_executor::wants_mouse_middle_double_click, signal_function>(
 					dynamic_cast<widget*>(this), &target, trigger());
 
 		case RIGHT_BUTTON_DOUBLE_CLICK:
-			return fire_event_double_click<RIGHT_BUTTON_CLICK,
-										   RIGHT_BUTTON_DOUBLE_CLICK,
-										   &event_executor::
-													wants_mouse_right_double_click,
-										   signal_function>(
+			return fire_event_double_click<RIGHT_BUTTON_CLICK, RIGHT_BUTTON_DOUBLE_CLICK,
+					&event_executor::wants_mouse_right_double_click, signal_function>(
 					dynamic_cast<widget*>(this), &target, trigger());
 
 		default:
-			return fire_event<signal_function>(
-					event, dynamic_cast<widget*>(this), &target, trigger());
+			return fire_event<signal_function>(event, dynamic_cast<widget*>(this), &target, trigger());
 	}
 }
 
@@ -186,15 +161,13 @@ bool dispatcher::fire(const ui_event event, widget& target)
 class trigger_mouse
 {
 public:
-	explicit trigger_mouse(const point& coordinate) : coordinate_(coordinate)
+	explicit trigger_mouse(const point& coordinate)
+		: coordinate_(coordinate)
 	{
 	}
 
-	void operator()(signal_mouse_function functor,
-					dispatcher& dispatcher,
-					const ui_event event,
-					bool& handled,
-					bool& halt)
+	void operator()(signal_mouse_function functor, dispatcher& dispatcher,
+		const ui_event event, bool& handled, bool& halt)
 	{
 		functor(dispatcher, event, handled, halt, coordinate_);
 	}
@@ -203,32 +176,26 @@ private:
 	point coordinate_;
 };
 
-bool
-dispatcher::fire(const ui_event event, widget& target, const point& coordinate)
+bool dispatcher::fire(const ui_event event, widget& target, const point& coordinate)
 {
 	assert(find<set_event_mouse>(event, event_in_set()));
-	return fire_event<signal_mouse_function>(event,
-											  dynamic_cast<widget*>(this),
-											  &target,
-											  trigger_mouse(coordinate));
+	return fire_event<signal_mouse_function>(
+		event, dynamic_cast<widget*>(this), &target, trigger_mouse(coordinate));
 }
 
 /** Helper struct to wrap the functor call. */
 class trigger_keyboard
 {
 public:
-	trigger_keyboard(const SDL_Keycode key,
-					  const SDL_Keymod modifier,
-					  const utf8::string& unicode)
-		: key_(key), modifier_(modifier), unicode_(unicode)
+	trigger_keyboard(const SDL_Keycode key, const SDL_Keymod modifier, const utf8::string& unicode)
+		: key_(key)
+		, modifier_(modifier)
+		, unicode_(unicode)
 	{
 	}
 
-	void operator()(signal_keyboard_function functor,
-					dispatcher& dispatcher,
-					const ui_event event,
-					bool& handled,
-					bool& halt)
+	void operator()(signal_keyboard_function functor, dispatcher& dispatcher,
+		const ui_event event, bool& handled, bool& halt)
 	{
 		functor(dispatcher, event, handled, halt, key_, modifier_, unicode_);
 	}
@@ -240,32 +207,27 @@ private:
 };
 
 bool dispatcher::fire(const ui_event event,
-					   widget& target,
-					   const SDL_Keycode key,
-					   const SDL_Keymod modifier,
-					   const utf8::string& unicode)
+		widget& target,
+		const SDL_Keycode key,
+		const SDL_Keymod modifier,
+		const utf8::string& unicode)
 {
 	assert(find<set_event_keyboard>(event, event_in_set()));
 	return fire_event<signal_keyboard_function>(
-			event,
-			dynamic_cast<widget*>(this),
-			&target,
-			trigger_keyboard(key, modifier, unicode));
+		event, dynamic_cast<widget*>(this), &target, trigger_keyboard(key, modifier, unicode));
 }
 
 /** Helper struct to wrap the functor call. */
 class trigger_raw_event
 {
 public:
-	trigger_raw_event(const SDL_Event& sdlevent) : sdl_event_(sdlevent)
+	trigger_raw_event(const SDL_Event& sdlevent)
+		: sdl_event_(sdlevent)
 	{
 	}
 
-	void operator()(signal_raw_event_function functor,
-					dispatcher& dispatcher,
-					const ui_event event,
-					bool& handled,
-					bool& halt)
+	void operator()(signal_raw_event_function functor, dispatcher& dispatcher,
+		const ui_event event, bool& handled, bool& halt)
 	{
 		functor(dispatcher, event, handled, halt, sdl_event_);
 	}
@@ -274,16 +236,11 @@ private:
 	const SDL_Event& sdl_event_;
 };
 
-bool dispatcher::fire(const ui_event event,
-					  widget& target,
-					  const SDL_Event& sdlevent)
+bool dispatcher::fire(const ui_event event, widget& target, const SDL_Event& sdlevent)
 {
 	assert(find<set_event_raw_event>(event, event_in_set()));
 	return fire_event<signal_raw_event_function>(
-			event,
-			dynamic_cast<widget*>(this),
-			&target,
-			trigger_raw_event(sdlevent));
+		event, dynamic_cast<widget*>(this), &target, trigger_raw_event(sdlevent));
 }
 
 /** Helper struct to wrap the functor call. */
@@ -296,11 +253,8 @@ public:
 	{
 	}
 
-	void operator()(signal_touch_function functor,
-					dispatcher& dispatcher,
-					const ui_event event,
-					bool& handled,
-					bool& halt)
+	void operator()(signal_touch_function functor, dispatcher& dispatcher,
+		const ui_event event, bool& handled, bool& halt)
 	{
 		functor(dispatcher, event, handled, halt, pos_, distance_);
 	}
@@ -310,17 +264,11 @@ private:
 	point distance_;
 };
 
-bool dispatcher::fire(const ui_event event,
-					   widget& target,
-					   const point& pos,
-					   const point& distance)
+bool dispatcher::fire(const ui_event event, widget& target, const point& pos, const point& distance)
 {
 	assert(find<set_event_touch>(event, event_in_set()));
 	return fire_event<signal_touch_function>(
-			event,
-			dynamic_cast<widget*>(this),
-			&target,
-			trigger_touch(pos, distance));
+		event, dynamic_cast<widget*>(this), &target, trigger_touch(pos, distance));
 }
 
 /** Helper struct to wrap the functor call. */
@@ -328,10 +276,10 @@ class trigger_notification
 {
 public:
 	void operator()(signal_notification_function functor,
-					dispatcher& dispatcher,
-					const ui_event event,
-					bool& handled,
-					bool& halt) const
+			dispatcher& dispatcher,
+			const ui_event event,
+			bool& handled,
+			bool& halt) const
 	{
 		functor(dispatcher, event, handled, halt, nullptr);
 	}
@@ -341,25 +289,20 @@ bool dispatcher::fire(const ui_event event, widget& target, void*)
 {
 	assert(find<set_event_notification>(event, event_in_set()));
 	return fire_event<signal_notification_function>(
-			event,
-			dynamic_cast<widget*>(this),
-			&target,
-			trigger_notification());
+		event, dynamic_cast<widget*>(this), &target, trigger_notification());
 }
 
 /** Helper struct to wrap the functor call. */
 class trigger_message
 {
 public:
-	explicit trigger_message(message& msg) : message_(msg)
+	explicit trigger_message(message& msg)
+		: message_(msg)
 	{
 	}
 
-	void operator()(signal_message_function functor,
-					dispatcher& dispatcher,
-					const ui_event event,
-					bool& handled,
-					bool& halt)
+	void operator()(signal_message_function functor, dispatcher& dispatcher,
+		const ui_event event, bool& handled, bool& halt)
 	{
 		functor(dispatcher, event, handled, halt, message_);
 	}
@@ -371,22 +314,18 @@ private:
 bool dispatcher::fire(const ui_event event, widget& target, message& msg)
 {
 	assert(find<set_event_message>(event, event_in_set()));
-	return fire_event<signal_message_function>(event,
-												dynamic_cast<widget*>(this),
-												&target,
-												trigger_message(msg));
+	return fire_event<signal_message_function>(
+		event, dynamic_cast<widget*>(this), &target, trigger_message(msg));
 }
 
-void dispatcher::register_hotkey(const hotkey::HOTKEY_COMMAND id,
-								  const thotkey_function& function)
+void dispatcher::register_hotkey(const hotkey::HOTKEY_COMMAND id, const thotkey_function& function)
 {
 	hotkeys_[id] = function;
 }
 
 bool dispatcher::execute_hotkey(const hotkey::HOTKEY_COMMAND id)
 {
-	std::map<hotkey::HOTKEY_COMMAND, thotkey_function>::iterator itor
-			= hotkeys_.find(id);
+	std::map<hotkey::HOTKEY_COMMAND, thotkey_function>::iterator itor = hotkeys_.find(id);
 
 	if(itor == hotkeys_.end()) {
 		return false;
