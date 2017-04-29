@@ -68,6 +68,18 @@
 #	define USE_HETEROGENOUS_LOOKUPS
 #endif
 
+#ifdef USE_HETEROGENOUS_LOOKUPS
+#if BOOST_VERSION > 106100
+#include <boost/utility/string_view.hpp>
+using config_key_type = boost::string_view;
+#else
+#include <boost/utility/string_ref.hpp>
+using config_key_type = boost::string_ref;
+#endif
+#else
+using config_key_type = const std::string &;
+#endif
+
 class config;
 class enum_tag;
 
@@ -106,7 +118,7 @@ public:
 	/**
 	 * Creates a config object with an empty child of name @a child.
 	 */
-	explicit config(const std::string &child);
+	explicit config(config_key_type child);
 
 	~config();
 
@@ -453,9 +465,9 @@ public:
 	typedef boost::iterator_range<const_attribute_iterator> const_attr_itors;
 	typedef boost::iterator_range<attribute_iterator> attr_itors;
 
-	child_itors child_range(const std::string& key);
-	const_child_itors child_range(const std::string& key) const;
-	unsigned child_count(const std::string &key) const;
+	child_itors child_range(config_key_type key);
+	const_child_itors child_range(config_key_type key) const;
+	unsigned child_count(config_key_type key) const;
 	unsigned all_children_count() const;
 	/** Count the number of non-blank attributes */
 	unsigned attribute_count() const;
@@ -467,12 +479,12 @@ public:
 	 *
 	 * @returns                   Whether a child is available.
 	 */
-	bool has_child(const std::string& key) const;
+	bool has_child(config_key_type key) const;
 
 	/**
 	 * Returns the first child with the given @a key, or an empty config if there is none.
 	 */
-	const config & child_or_empty(const std::string &key) const;
+	const config & child_or_empty(config_key_type key) const;
 
 	/**
 	 * Returns the nth child with the given @a key, or
@@ -480,30 +492,16 @@ public:
 	 * @note A negative @a n accesses from the end of the object.
 	 *       For instance, -1 is the index of the last child.
 	 */
-	config &child(const std::string& key, int n = 0);
+	config &child(config_key_type key, int n = 0);
 
-#ifdef USE_HETEROGENOUS_LOOKUPS
-	template<int N>
-	config &child(const char(&key)[N], int n = 0)
-	{ return child_impl(key, N - 1, n); }
-private:
-	config &child_impl(const char* key, int len, int n = 0);
-public:
-#endif
 	/**
 	 * Returns the nth child with the given @a key, or
 	 * a reference to an invalid config if there is none.
 	 * @note A negative @a n accesses from the end of the object.
 	 *       For instance, -1 is the index of the last child.
 	 */
-	const config &child(const std::string& key, int n = 0) const
+	const config& child(config_key_type key, int n = 0) const
 	{ return const_cast<config *>(this)->child(key, n); }
-
-#ifdef USE_HETEROGENOUS_LOOKUPS
-	template<int N>
-	const config &child(const char(&key)[N], int n = 0) const
-	{ return const_cast<config *>(this)->child_impl(key, N- 1, n); }
-#endif
 	/**
 	 * Returns a mandatory child node.
 	 *
@@ -518,7 +516,7 @@ public:
 	 *
 	 * @returns                   The wanted child node.
 	 */
-	config& child(const std::string& key, const std::string& parent);
+	config& child(config_key_type key, const std::string& parent);
 
 	/**
 	 * Returns a mandatory child node.
@@ -535,72 +533,54 @@ public:
 	 * @returns                   The wanted child node.
 	 */
 	const config& child(
-			  const std::string& key
+		config_key_type key
 			, const std::string& parent) const;
 
-	config& add_child(const std::string& key);
-	config& add_child(const std::string& key, const config& val);
-	config& add_child_at(const std::string &key, const config &val, unsigned index);
+	config& add_child(config_key_type key);
+	config& add_child(config_key_type key, const config& val);
+	config& add_child_at(config_key_type key, const config &val, unsigned index);
 
-	config &add_child(const std::string &key, config &&val);
+	config &add_child(config_key_type key, config &&val);
 
 	/**
 	 * Returns a reference to the attribute with the given @a key.
 	 * Creates it if it does not exist.
 	 */
-	attribute_value &operator[](const std::string &key);
+	attribute_value &operator[](config_key_type key);
 
 	/**
 	 * Returns a reference to the attribute with the given @a key
 	 * or to a dummy empty attribute if it does not exist.
 	 */
-	const attribute_value &operator[](const std::string &key) const;
+	const attribute_value &operator[](config_key_type key) const;
 
-#ifdef USE_HETEROGENOUS_LOOKUPS
-	/**
-	 * Returns a reference to the attribute with the given @a key
-	 * or to a dummy empty attribute if it does not exist.
-	 */
-	template<int N>
-	inline const attribute_value &operator[](const char (&key)[N]) const
-	{
-		//-1 for the terminating null character.
-		return get_attribute(key, N - 1);
-	}
-
-	template<int N>
-	inline attribute_value& operator[](const char (&key)[N])
-	{
-		return (*this)[std::string(key)];
-	}
-#endif
 	/**
 	 * Returns a pointer to the attribute with the given @a key
 	 * or nullptr if it does not exist.
 	 */
-	const attribute_value *get(const std::string &key) const;
+	const attribute_value *get(config_key_type key) const;
 
 	/**
 	 * Function to handle backward compatibility
 	 * Get the value of key and if missing try old_key
 	 * and log msg as a WML error (if not empty)
 	*/
-	const attribute_value &get_old_attribute(const std::string &key, const std::string &old_key, const std::string& msg = "") const;
+	const attribute_value &get_old_attribute(config_key_type key, const std::string &old_key, const std::string& msg = "") const;
 	/**
 	 * Returns a reference to the first child with the given @a key.
 	 * Creates the child if it does not yet exist.
 	 */
-	config &child_or_add(const std::string &key);
+	config &child_or_add(config_key_type key);
 
-	bool has_attribute(const std::string &key) const;
+	bool has_attribute(config_key_type key) const;
 	/**
 	 * Function to handle backward compatibility
 	 * Check if has key or old_key
 	 * and log msg as a WML error (if not empty)
 	*/
-	bool has_old_attribute(const std::string &key, const std::string &old_key, const std::string& msg = "") const;
+	bool has_old_attribute(config_key_type key, const std::string &old_key, const std::string& msg = "") const;
 
-	void remove_attribute(const std::string &key);
+	void remove_attribute(config_key_type key);
 	void merge_attributes(const config &);
 	template<typename... T>
 	void remove_attributes(T... keys) {
@@ -616,17 +596,17 @@ public:
 	 * Returns the first child of tag @a key with a @a name attribute
 	 * containing @a value.
 	 */
-	config &find_child(const std::string &key, const std::string &name,
+	config& find_child(config_key_type key, const std::string &name,
 		const std::string &value);
 
-	const config &find_child(const std::string &key, const std::string &name,
+	const config& find_child(config_key_type key, const std::string &name,
 		const std::string &value) const
 	{ return const_cast<config *>(this)->find_child(key, name, value); }
 
-	void clear_children(const std::string& key);
+	void clear_children(config_key_type key);
 	template<typename... T>
 	void clear_children(T... keys) {
-		for(std::string key : {keys...}) {
+		for(auto key : {keys...}) {
 			clear_children(key);
 		}
 	}
@@ -636,8 +616,8 @@ public:
 	 */
 	void splice_children(config &src, const std::string &key);
 
-	void remove_child(const std::string &key, unsigned index);
-	void recursive_clear_value(const std::string& key);
+	void remove_child(config_key_type key, unsigned index);
+	void recursive_clear_value(config_key_type key);
 
 	void clear();
 	bool empty() const;

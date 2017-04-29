@@ -204,16 +204,14 @@ std::pair<unit_map::unit_iterator, bool> unit_map::insert(unit_ptr p) {
 	return std::make_pair( make_unit_iterator( uinsert.first ), true);
 }
 
-std::pair<unit_map::unit_iterator, bool> unit_map::replace(const map_location &l, const unit &u) {
+std::pair<unit_map::unit_iterator, bool> unit_map::replace(const map_location &l, unit_ptr p)
+{
 	self_check();
-	//when 'l' is the reference to map_location that is part
-	//of that unit iterator which is to be deleted by erase,
-	// 'l' is invalidated by erase, too. Thus, 'add(l,u)' fails.
-	// So, we need to make a copy of that map_location.
-	map_location loc = l;
-	erase(loc);
-	return add(loc, u);
+	p->set_location(l);
+	erase(l);
+	return insert(p);
 }
+
 
 size_t unit_map::num_iters() const  {
 	///Add up number of extant iterators

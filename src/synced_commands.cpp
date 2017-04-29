@@ -479,9 +479,8 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_create_unit, child,  use_undo, /*show*/, e
 	// Create the unit.
 	unit_ptr created(new unit(*u_type, side_num, true, gender));
 	created->new_turn();
-	created->set_location(loc);
 	// Add the unit to the board.
-	std::pair<unit_map::iterator, bool> add_result = resources::gameboard->units().insert(created);
+	std::pair<unit_map::iterator, bool> add_result = resources::gameboard->units().replace(loc, created);
 	resources::screen->invalidate_unit();
 	resources::game_events->pump().fire("unit_placed", loc);
 	unit_display::unit_recruited(loc);
