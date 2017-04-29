@@ -38,6 +38,7 @@
 #include <utility>
 #include <vector>
 #include <type_traits>
+#include <memory>
 
 #include <boost/exception/exception.hpp>
 #include <boost/variant/apply_visitor.hpp>
@@ -127,7 +128,7 @@ public:
 	explicit operator bool() const
 	{ return this != &invalid; }
 
-	typedef std::vector<config*> child_list;
+	typedef std::vector<std::unique_ptr<config>> child_list;
 	typedef std::map<std::string, child_list
 #ifdef USE_HETEROGENOUS_LOOKUPS
 		, std::less<>
@@ -724,7 +725,7 @@ public:
 		this_type& operator+=(difference_type n) { i_ += n; return *this; }
 		this_type& operator-=(difference_type n) { i_ -= n; return *this; }
 
-		reference operator[](difference_type n) const { return any_child(&i_[n].pos->first, i_[n].pos->second[i_->index]); }
+		reference operator[](difference_type n) const { return any_child(&i_[n].pos->first, i_[n].pos->second[i_->index].get()); }
 		friend difference_type operator-(const this_type& a, const this_type& b) { return a.i_ - b.i_; }
 		friend this_type operator-(const this_type& a, difference_type n) { return this_type(a.i_ - n); }
 		friend this_type operator+(const this_type& a, difference_type n) { return this_type(a.i_ + n); }
@@ -777,7 +778,7 @@ public:
 		this_type& operator+=(difference_type n) { i_ += n; return *this; }
 		this_type& operator-=(difference_type n) { i_ -= n; return *this; }
 
-		reference operator[](difference_type n) const { return any_child(&i_[n].pos->first, i_[n].pos->second[i_->index]); }
+		reference operator[](difference_type n) const { return any_child(&i_[n].pos->first, i_[n].pos->second[i_->index].get()); }
 		friend difference_type operator-(const this_type& a, const this_type& b) { return a.i_ - b.i_; }
 		friend this_type operator-(const this_type& a, difference_type n) { return this_type(a.i_ - n); }
 		friend this_type operator+(const this_type& a, difference_type n) { return this_type(a.i_ + n); }

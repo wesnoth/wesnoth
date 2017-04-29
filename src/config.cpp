@@ -811,10 +811,6 @@ void config::clear_children_impl(config_key_type key)
 	ordered_children.erase(std::remove_if(ordered_children.begin(),
 		ordered_children.end(), remove_ordered(i)), ordered_children.end());
 
-	for (config *c : i->second) {
-		delete c;
-	}
-
 	children_.erase(i);
 }
 
@@ -849,7 +845,7 @@ void config::recursive_clear_value(config_key_type key)
 	map_erase_key(values_, key);
 
 	for(std::pair<const std::string, child_list>& p : children_) {
-		for(config* cfg : p.second) {
+		for(auto& cfg : p.second) {
 			cfg->recursive_clear_value(key);
 		}
 	}
@@ -871,7 +867,6 @@ std::vector<config::child_pos>::iterator config::remove_child(
 	}
 
 	// Remove from the child map.
-	delete pos->second[index];
 	pos->second.erase(pos->second.begin() + index);
 
 	// Erase from the ordering and return the next position.
@@ -1009,7 +1004,7 @@ config &config::find_child(config_key_type key, const std::string &name,
 
 	const child_list::iterator j = std::find_if(i->second.begin(),
 	                                            i->second.end(),
-	                                            [&](const config* cfg) { return (*cfg)[name] == value; });
+	                                            [&](const std::unique_ptr<config>& pcfg) { const config& cfg = *pcfg; return cfg[name] == value; });
 	if(j != i->second.end()) {
 		return **j;
 	} else {
@@ -1042,49 +1037,7 @@ namespace {
 void config::clear()
 {
 	// No validity check for this function.
-
-	if (!children_.empty()) {
-		//start with this node, the first entry in the child map,
-		//zeroeth element in that entry
-		config_clear_state init;
-		init.c = this;
-		init.mi = children_.begin();
-		init.vi = 0;
-		std::deque<config_clear_state> l;
-		l.push_back(init);
-
-		while (!l.empty()) {
-			config_clear_state& state = l.back();
-			if (state.mi != state.c->children_.end()) {
-				std::vector<config*>& v = state.mi->second;
-				if (state.vi < v.size()) {
-					config* c = v[state.vi];
-					++state.vi;
-					if (c->children_.empty()) {
-						delete c; //special case for a slight speed increase?
-					} else {
-						//descend to the next level
-						config_clear_state next;
-						next.c = c;
-						next.mi = c->children_.begin();
-						next.vi = 0;
-						l.push_back(next);
-					}
-				} else {
-					state.vi = 0;
-					++state.mi;
-				}
-			} else {
-				//reached end of child map for this element - all child nodes
-				//have been deleted, so it's safe to clear the map, delete the
-				//node and move up one level
-				state.c->children_.clear();
-				if (state.c != this) delete state.c;
-				l.pop_back();
-			}
-		}
-	}
-
+	children_.clear();
 	values_.clear();
 	ordered_children.clear();
 }
@@ -1098,12 +1051,12 @@ bool config::empty() const
 
 config::all_children_iterator::reference config::all_children_iterator::operator*() const
 {
-	return any_child(&i_->pos->first, i_->pos->second[i_->index]);
+	return any_child(&i_->pos->first, i_->pos->second[i_->index].get());
 }
 
 config::const_all_children_iterator::reference config::const_all_children_iterator::operator*() const
 {
-	return any_child(&i_->pos->first, i_->pos->second[i_->index]);
+	return any_child(&i_->pos->first, i_->pos->second[i_->index].get());
 }
 
 config::const_all_children_iterator config::ordered_begin() const
@@ -1359,7 +1312,7 @@ void config::clear_diff_track(const config& diff)
 		}
 	}
 	for(std::pair<const std::string, child_list>& p : children_) {
-		for(config* cfg : p.second) {
+		for(auto& cfg : p.second) {
 			cfg->remove_attribute(diff_track_attribute);
 		}
 	}
