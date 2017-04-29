@@ -92,7 +92,13 @@ public:
 
 		context_manager_.reload_map();
 
-		current_labels->enable(false);
+		// In the case of switching contexts, this is needed to hide the labels in the previous context.
+		// However, if a context is already, destroyed before reaching this point (such as happens when
+		// closing a map), do nothing; destroying the context also clears its labels.
+		if(current_labels) {
+			current_labels->enable(false);
+		}
+
 		current_labels = &context_manager_.get_map_context().get_labels();
 		current_labels->enable(true);
 
