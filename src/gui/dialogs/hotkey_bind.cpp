@@ -36,37 +36,20 @@ hotkey_bind::hotkey_bind(const std::string& hotkey_id)
 
 void hotkey_bind::pre_show(window& window)
 {
-	connect_signal_pre_key_press(window, std::bind(&hotkey_bind::key_press_callback, this, std::ref(window), _5));
+	window.connect_signal<event::SDL_RAW_EVENT>(
+			std::bind(&hotkey_bind::sdl_event_callback, this, std::ref(window), _5),
+			event::dispatcher::front_child);
 
-	window.connect_signal<event::SDL_LEFT_BUTTON_DOWN>(
-		std::bind(&hotkey_bind::mouse_button_callback, this, std::ref(window), SDL_BUTTON_LEFT), event::dispatcher::front_child);
-	window.connect_signal<event::SDL_MIDDLE_BUTTON_DOWN>(
-		std::bind(&hotkey_bind::mouse_button_callback, this, std::ref(window), SDL_BUTTON_MIDDLE), event::dispatcher::front_child);
-	window.connect_signal<event::SDL_RIGHT_BUTTON_DOWN>(
-		std::bind(&hotkey_bind::mouse_button_callback, this, std::ref(window), SDL_BUTTON_RIGHT), event::dispatcher::front_child);
 }
 
-void hotkey_bind::key_press_callback(window& window, const SDL_Keycode key)
+void hotkey_bind::sdl_event_callback(window& win, const SDL_Event &event)
 {
-	/* HACK: SDL_KEYDOWN and SDL_TEXTINPUT events forward to the same GUI2 event (SDL_KEY_DOWN), meaning
-	 *       this even gets fired twice, causing problems since 'key' will be 0 in the latter case. SDLK_UNKNOWN
-	 *       is the key value used by SDL_TEXTINPUT handling, so exit here if that's detected.
-	 */
-	if(key == SDLK_UNKNOWN) {
-		return;
+	if (hotkey::is_hotkeyable_event(event)) {
+		new_binding_ = hotkey::create_hotkey(hotkey_id_, event);
+		win.set_retval(window::OK);
 	}
-
-	new_binding_ = hotkey::create_hotkey(hotkey_id_, SDL_GetScancodeFromKey(key));
-
-	window.set_retval(window::OK);
 }
 
-void hotkey_bind::mouse_button_callback(window& window, Uint8 button)
-{
-	new_binding_ = hotkey::create_hotkey(hotkey_id_, button);
-
-	window.set_retval(window::OK);
-}
 
 } // namespace dialogs
 } // namespace gui2
