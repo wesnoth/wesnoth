@@ -852,9 +852,6 @@ public:
 	void swap(config& cfg);
 
 private:
-#ifdef USE_HETEROGENOUS_LOOKUPS
-	const attribute_value& get_attribute(const char* key, int len) const;
-#endif
 	/**
 	 * Removes the child at position @a pos of @a l.
 	 */
