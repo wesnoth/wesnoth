@@ -58,6 +58,7 @@ public:
 	std::vector<std::string> & hidden_label_categories_ref();
 	const team& get_team(int side) const;
 
+	// this one is only a template function to prevent compilation erros when class team is an incomplete type.
 	template<typename T = void>
 	bool has_team(int side) const
 	{
