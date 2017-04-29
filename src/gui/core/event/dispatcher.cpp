@@ -16,6 +16,7 @@
 
 #include "gui/core/event/dispatcher_private.hpp"
 
+#include "gui/core/event/message.hpp"
 #include "gui/core/log.hpp"
 
 namespace gui2
@@ -114,97 +115,32 @@ public:
 	}
 };
 
-/**
- * Helper struct to wrap the functor call.
- *
- * The template function @ref fire_event needs to call a functor with extra
- * parameter. In order to facilitate this we send the parameter in the
- * constructor of the class and let operator() call the functor with the
- * default parameters and the stored parameters. This allows the core part of
- * @ref dispatcher::fire to be generic.
- */
-class trigger
-{
-public:
-	void operator()(signal_function functor, dispatcher& dispatcher,
-		const ui_event event, bool& handled, bool& halt) const
-	{
-		functor(dispatcher, event, handled, halt);
-	}
-};
-
 bool dispatcher::fire(const ui_event event, widget& target)
 {
 	assert(find<set_event>(event, event_in_set()));
 	switch(event) {
 		case LEFT_BUTTON_DOUBLE_CLICK:
 			return fire_event_double_click<LEFT_BUTTON_CLICK, LEFT_BUTTON_DOUBLE_CLICK,
-					&event_executor::wants_mouse_left_double_click, signal_function>(
-					dynamic_cast<widget*>(this), &target, trigger());
+					&event_executor::wants_mouse_left_double_click, signal_function>(this, &target);
 
 		case MIDDLE_BUTTON_DOUBLE_CLICK:
 			return fire_event_double_click<MIDDLE_BUTTON_CLICK, MIDDLE_BUTTON_DOUBLE_CLICK,
-					&event_executor::wants_mouse_middle_double_click, signal_function>(
-					dynamic_cast<widget*>(this), &target, trigger());
+					&event_executor::wants_mouse_middle_double_click, signal_function>(this, &target);
 
 		case RIGHT_BUTTON_DOUBLE_CLICK:
 			return fire_event_double_click<RIGHT_BUTTON_CLICK, RIGHT_BUTTON_DOUBLE_CLICK,
-					&event_executor::wants_mouse_right_double_click, signal_function>(
-					dynamic_cast<widget*>(this), &target, trigger());
+					&event_executor::wants_mouse_right_double_click, signal_function>(this, &target);
 
 		default:
-			return fire_event<signal_function>(event, dynamic_cast<widget*>(this), &target, trigger());
+			return fire_event<signal_function>(event, this, &target);
 	}
 }
-
-/** Helper struct to wrap the functor call. */
-class trigger_mouse
-{
-public:
-	explicit trigger_mouse(const point& coordinate)
-		: coordinate_(coordinate)
-	{
-	}
-
-	void operator()(signal_mouse_function functor, dispatcher& dispatcher,
-		const ui_event event, bool& handled, bool& halt)
-	{
-		functor(dispatcher, event, handled, halt, coordinate_);
-	}
-
-private:
-	point coordinate_;
-};
 
 bool dispatcher::fire(const ui_event event, widget& target, const point& coordinate)
 {
 	assert(find<set_event_mouse>(event, event_in_set()));
-	return fire_event<signal_mouse_function>(
-		event, dynamic_cast<widget*>(this), &target, trigger_mouse(coordinate));
+	return fire_event<signal_mouse_function>(event, this, &target, coordinate);
 }
-
-/** Helper struct to wrap the functor call. */
-class trigger_keyboard
-{
-public:
-	trigger_keyboard(const SDL_Keycode key, const SDL_Keymod modifier, const utf8::string& unicode)
-		: key_(key)
-		, modifier_(modifier)
-		, unicode_(unicode)
-	{
-	}
-
-	void operator()(signal_keyboard_function functor, dispatcher& dispatcher,
-		const ui_event event, bool& handled, bool& halt)
-	{
-		functor(dispatcher, event, handled, halt, key_, modifier_, unicode_);
-	}
-
-private:
-	SDL_Keycode key_;
-	SDL_Keymod modifier_;
-	utf8::string unicode_;
-};
 
 bool dispatcher::fire(const ui_event event,
 		widget& target,
@@ -213,109 +149,33 @@ bool dispatcher::fire(const ui_event event,
 		const utf8::string& unicode)
 {
 	assert(find<set_event_keyboard>(event, event_in_set()));
-	return fire_event<signal_keyboard_function>(
-		event, dynamic_cast<widget*>(this), &target, trigger_keyboard(key, modifier, unicode));
+	return fire_event<signal_keyboard_function>(event, this, &target, key, modifier, unicode);
 }
-
-/** Helper struct to wrap the functor call. */
-class trigger_raw_event
-{
-public:
-	trigger_raw_event(const SDL_Event& sdlevent)
-		: sdl_event_(sdlevent)
-	{
-	}
-
-	void operator()(signal_raw_event_function functor, dispatcher& dispatcher,
-		const ui_event event, bool& handled, bool& halt)
-	{
-		functor(dispatcher, event, handled, halt, sdl_event_);
-	}
-
-private:
-	const SDL_Event& sdl_event_;
-};
 
 bool dispatcher::fire(const ui_event event, widget& target, const SDL_Event& sdlevent)
 {
 	assert(find<set_event_raw_event>(event, event_in_set()));
-	return fire_event<signal_raw_event_function>(
-		event, dynamic_cast<widget*>(this), &target, trigger_raw_event(sdlevent));
+	return fire_event<signal_raw_event_function>(event, this, &target, sdlevent);
 }
-
-/** Helper struct to wrap the functor call. */
-class trigger_touch
-{
-public:
-	trigger_touch(const point& pos, const point& distance)
-		: pos_(pos)
-		, distance_(distance)
-	{
-	}
-
-	void operator()(signal_touch_function functor, dispatcher& dispatcher,
-		const ui_event event, bool& handled, bool& halt)
-	{
-		functor(dispatcher, event, handled, halt, pos_, distance_);
-	}
-
-private:
-	point pos_;
-	point distance_;
-};
 
 bool dispatcher::fire(const ui_event event, widget& target, const point& pos, const point& distance)
 {
 	assert(find<set_event_touch>(event, event_in_set()));
-	return fire_event<signal_touch_function>(
-		event, dynamic_cast<widget*>(this), &target, trigger_touch(pos, distance));
+	return fire_event<signal_touch_function>(event, this, &target, pos, distance);
 }
-
-/** Helper struct to wrap the functor call. */
-class trigger_notification
-{
-public:
-	void operator()(signal_notification_function functor,
-			dispatcher& dispatcher,
-			const ui_event event,
-			bool& handled,
-			bool& halt) const
-	{
-		functor(dispatcher, event, handled, halt, nullptr);
-	}
-};
 
 bool dispatcher::fire(const ui_event event, widget& target, void*)
 {
 	assert(find<set_event_notification>(event, event_in_set()));
-	return fire_event<signal_notification_function>(
-		event, dynamic_cast<widget*>(this), &target, trigger_notification());
+	return fire_event<signal_notification_function>(event, this, &target, nullptr);
 }
 
-/** Helper struct to wrap the functor call. */
-class trigger_message
-{
-public:
-	explicit trigger_message(message& msg)
-		: message_(msg)
-	{
-	}
-
-	void operator()(signal_message_function functor, dispatcher& dispatcher,
-		const ui_event event, bool& handled, bool& halt)
-	{
-		functor(dispatcher, event, handled, halt, message_);
-	}
-
-private:
-	message& message_;
-};
-
+// TODO: is there any reason msg isn't a const reference?
 bool dispatcher::fire(const ui_event event, widget& target, message& msg)
 {
 	assert(find<set_event_message>(event, event_in_set()));
-	return fire_event<signal_message_function>(
-		event, dynamic_cast<widget*>(this), &target, trigger_message(msg));
+	// NOTE: std::ref() needed here to prevent reference decay.
+	return fire_event<signal_message_function>(event, this, &target, std::ref(msg));
 }
 
 void dispatcher::register_hotkey(const hotkey::HOTKEY_COMMAND id, const thotkey_function& function)

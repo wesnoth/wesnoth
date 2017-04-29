@@ -402,12 +402,12 @@ build_event_chain<signal_message_function>(const ui_event event,
  * This is called with the same parameters as fire_event except for the
  * event_chain, which contains the widgets with the events to call for them.
  */
-template <class T, class F>
+template <class T, class... F>
 inline bool fire_event(const ui_event event,
 					   std::vector<std::pair<widget*, ui_event> >& event_chain,
 					   widget* dispatcher,
 					   widget* w,
-					   F functor)
+					   F&&... params)
 {
 	bool handled = false;
 	bool halt = false;
@@ -426,7 +426,7 @@ inline bool fire_event(const ui_event event,
 			itor != signal.pre_child.end();
 			++itor) {
 
-			functor(*itor, *dispatcher, ritor_widget->second, handled, halt);
+			(*itor)(*dispatcher, ritor_widget->second, handled, halt, std::forward<F>(params)...);
 			if(halt) {
 				assert(handled);
 				break;
@@ -448,7 +448,7 @@ inline bool fire_event(const ui_event event,
 			itor != signal.child.end();
 			++itor) {
 
-			functor(*itor, *dispatcher, event, handled, halt);
+			(*itor)(*dispatcher, event, handled, halt, std::forward<F>(params)...);
 
 			if(halt) {
 				assert(handled);
@@ -475,7 +475,7 @@ inline bool fire_event(const ui_event event,
 			itor != signal.post_child.end();
 			++itor) {
 
-			functor(*itor, *dispatcher, itor_widget->second, handled, halt);
+			(*itor)(*dispatcher, itor_widget->second, handled, halt, std::forward<F>(params)...);
 			if(halt) {
 				assert(handled);
 				break;
@@ -500,51 +500,53 @@ inline bool fire_event(const ui_event event,
  * A helper to allow the common event firing code to be shared between the
  * different signal function types.
  *
- * @pre                           dispatcher != nullptr
- * @pre                           widget != nullptr
+ * @pre                           d != nullptr
+ * @pre                           w != nullptr
  *
  * @tparam T                      The signal type of the event to handle.
- * @tparam F                      The type of the functor.
+ * @tparam F                      The paramater pack type.
  *
  *
  * @param event                   The event to fire.
- * @param dispatcher              The dispatcher that handles the event.
- * @param widget                  The widget that should receive the event.
- * @param functor                 The functor to execute the actual event.
- *                                Since some functions need different
- *                                parameters this functor stores them before
- *                                firing the event.
+ * @param d                       The dispatcher that handles the event.
+ * @param w                       The widget that should receive the event.
+ * @param params                  Zero or more additional arguments to pass
+ *                                to the signal function when it's executed.
  *
  * @returns                       Whether or not the event was handled.
  */
-template <class T, class F>
+template <class T, class... F>
 inline bool
-fire_event(const ui_event event, widget* dispatcher, widget* w, F functor)
+fire_event(const ui_event event, dispatcher* d, widget* w, F&&... params)
 {
-	assert(dispatcher);
+	assert(d);
 	assert(w);
 
+	widget* dispatcher_w = dynamic_cast<widget*>(d);
+
 	std::vector<std::pair<widget*, ui_event> > event_chain
-			= implementation::build_event_chain<T>(event, dispatcher, w);
+			= implementation::build_event_chain<T>(event, dispatcher_w, w);
 
 	return implementation::fire_event<T>(
-			event, event_chain, dispatcher, w, functor);
+			event, event_chain, dispatcher_w, w, std::forward<F>(params)...);
 }
 
 template <ui_event click,
 		  ui_event double_click,
 		  bool (event_executor::*wants_double_click)() const,
 		  class T,
-		  class F>
+		  class... F>
 inline bool
-fire_event_double_click(widget* dispatcher, widget* wgt, F functor)
+fire_event_double_click(dispatcher* dsp, widget* wgt, F&&... params)
 {
-	assert(dispatcher);
+	assert(dsp);
 	assert(wgt);
 
 	std::vector<std::pair<widget*, ui_event> > event_chain;
 	widget* w = wgt;
-	while(w != dispatcher) {
+	widget* d = dynamic_cast<widget*>(dsp);
+
+	while(w != d) {
 		w = w->parent();
 		assert(w);
 
@@ -568,10 +570,10 @@ fire_event_double_click(widget* dispatcher, widget* wgt, F functor)
 
 	if((wgt->*wants_double_click)()) {
 		return implementation::fire_event<T>(
-				double_click, event_chain, dispatcher, wgt, functor);
+				double_click, event_chain, d, wgt, std::forward<F>(params)...);
 	} else {
 		return implementation::fire_event<T>(
-				click, event_chain, dispatcher, wgt, functor);
+				click, event_chain, d, wgt, std::forward<F>(params)...);
 	}
 }
 
