@@ -895,10 +895,10 @@ private:
 	std::vector<child_pos>::iterator remove_child(const child_map::iterator &l, unsigned pos);
 
 	/** All the attributes of this node. */
-	attribute_map values;
+	attribute_map values_;
 
 	/** A list of all children of this node. */
-	child_map children;
+	child_map children_;
 
 	std::vector<child_pos> ordered_children;
 };
