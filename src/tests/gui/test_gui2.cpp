@@ -324,13 +324,13 @@ namespace {
 
 const tresolution_list& get_gui_resolutions()
 {
-	static tresolution_list result;
-	if(result.empty()) {
-		result.push_back(std::make_pair(800, 600));
-		result.push_back(std::make_pair(1024, 768));
-		result.push_back(std::make_pair(1280, 1024));
-		result.push_back(std::make_pair(1680, 1050));
-	}
+	static tresolution_list result {
+		{800,  600}
+		{1024, 768}
+		{1280, 1024}
+		{1680, 1050}
+	};
+
 	return result;
 }
 

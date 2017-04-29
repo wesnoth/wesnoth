@@ -33,7 +33,7 @@ namespace dialogs
 class mp_change_control : public modal_dialog
 {
 public:
-	explicit mp_change_control(events::menu_handler* mh);
+	explicit mp_change_control(events::menu_handler& mh);
 
 private:
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
@@ -50,7 +50,7 @@ private:
 
 	void highlight_side_nick(window& window);
 
-	events::menu_handler* menu_handler_;
+	events::menu_handler& menu_handler_;
 
 	unsigned int selected_side_;
 	unsigned int selected_nick_;
@@ -60,8 +60,6 @@ private:
 
 	// Contains the mapping from listbox labels to actual nicks
 	std::vector<std::string> nicks_;
-
-	//std::map<int, std::string> side_nick_map_;
 };
 
 } // namespace dialogs

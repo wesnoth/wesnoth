@@ -931,10 +931,12 @@ void display::render_buttons()
 {
 	for (std::shared_ptr<gui::button> btn : menu_buttons_) {
 		btn->set_dirty(true);
+		btn->draw();
 	}
 
 	for (std::shared_ptr<gui::button> btn : action_buttons_) {
 		btn->set_dirty(true);
+		btn->draw();
 	}
 }
 

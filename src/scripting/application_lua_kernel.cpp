@@ -335,7 +335,7 @@ application_lua_kernel::request_list application_lua_kernel::thread::run_script(
 
 	for (const plugins_manager::event & req : this_context_backend->requests) {
 		results.push_back(std::bind(ctxt.callbacks_.find(req.name)->second, req.data));
-		//results.push_back(std::make_pair(ctxt.callbacks_.find(req.name)->second, req.data));
+		//results.emplace_back(ctxt.callbacks_.find(req.name)->second, req.data);
 	}
 	return results;
 }

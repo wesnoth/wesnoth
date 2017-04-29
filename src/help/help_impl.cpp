@@ -1488,7 +1488,7 @@ unsigned image_width(const std::string &filename)
 
 void push_tab_pair(std::vector<std::pair<std::string, unsigned int> > &v, const std::string &s)
 {
-	v.push_back(std::make_pair(s, font::line_width(s, normal_font_size)));
+	v.emplace_back(s, font::line_width(s, normal_font_size));
 }
 
 std::string generate_table(const table_spec &tab, const unsigned int spacing)

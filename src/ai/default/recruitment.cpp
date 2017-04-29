@@ -928,7 +928,7 @@ void recruitment::do_combat_analysis(std::vector<data>* leader_data) {
 		if (!current_team().is_enemy(unit.side()) || unit.incapacitated()) {
 			continue;
 		}
-		enemy_units.push_back(std::make_pair(unit.type_id(), unit.hitpoints()));
+		enemy_units.emplace_back(unit.type_id(), unit.hitpoints());
 	}
 	if (enemy_units.size() < UNIT_THRESHOLD) {
 		// Use also enemies recruitment lists and insert units into enemy_units.
@@ -949,7 +949,7 @@ void recruitment::do_combat_analysis(std::vector<data>* leader_data) {
 				const unit_type* recruit_type = unit_types.find(possible_recruit);
 				if (recruit_type) {
 					int hp = recruit_type->hitpoints();
-					enemy_units.push_back(std::make_pair(possible_recruit, hp));
+					enemy_units.emplace_back(possible_recruit, hp);
 				}
 			}
 		}

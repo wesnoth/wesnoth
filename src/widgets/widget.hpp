@@ -84,7 +84,9 @@ protected:
 
 	CVideo& video() const { return *video_; }
 
+public:
 	virtual void draw();
+protected:
 	virtual void draw_contents() {}
 	virtual void update_location(SDL_Rect const &rect);
 

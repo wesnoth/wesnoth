@@ -1218,8 +1218,8 @@ void unit_type_data::read_hide_help(const config& cfg)
 	if (!cfg)
 		return;
 
-	hide_help_race_.push_back(std::set<std::string>());
-	hide_help_type_.push_back(std::set<std::string>());
+	hide_help_race_.emplace_back();
+	hide_help_type_.emplace_back();
 
 	std::vector<std::string> races = utils::split(cfg["race"]);
 	hide_help_race_.back().insert(races.begin(), races.end());

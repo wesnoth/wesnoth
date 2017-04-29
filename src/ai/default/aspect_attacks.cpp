@@ -322,7 +322,7 @@ void aspect_attacks_base::do_attack_analysis(
 		if(cur_position != -1) {
 			units.erase(units.begin() + i);
 
-			cur_analysis.movements.push_back(std::pair<map_location,map_location>(current_unit,tiles[cur_position]));
+			cur_analysis.movements.emplace_back(current_unit,tiles[cur_position]);
 
 			cur_analysis.vulnerability += best_vulnerability;
 

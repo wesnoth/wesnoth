@@ -39,7 +39,7 @@ struct configr_of
 
 	configr_of& operator()(const std::string& tagname, const configr_of& child)
 	{
-		subtags_.push_back(std::make_pair(&tagname, &child));
+		subtags_.emplace_back(&tagname, &child);
 		return *this;
 	}
 	std::vector<std::pair<const std::string*, const configr_of*>> subtags_;
