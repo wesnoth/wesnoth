@@ -20,7 +20,7 @@ matrix:
       env: OPT=-O2 CXXSTD=11 NLS=false
     - compiler: gcc
       env: NLS=true
-    - compiler: clang
+    - compiler: gcc
       env: OPT=-O2 CXXSTD=1y NLS=false
     - compiler: clang
       env: OPT=-O0 CXXSTD=11 NLS=false
