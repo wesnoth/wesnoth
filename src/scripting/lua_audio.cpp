@@ -16,6 +16,7 @@ See the COPYING file for more details.
 #include "lua/lua.h"
 #include "lua/lauxlib.h"
 #include "scripting/lua_common.hpp"
+#include "scripting/push_check.hpp"
 #include "sound.hpp"
 #include "sound_music_track.hpp"
 #include "config_assign.hpp"
@@ -74,6 +75,14 @@ static int impl_music_get(lua_State* L) {
 		}
 		return 1;
 	}
+	if(strcmp(m, "all") == 0) {
+		config playlist;
+		sound::write_music_play_list(playlist);
+		const auto& range = playlist.child_range("music");
+		std::vector<config> tracks(range.begin(), range.end());
+		lua_push(L, tracks);
+		return 1;
+	}
 	// This calculation reverses the one used in [volume] to get back the relative volume level.
 	// (Which is the same calculation that's duplicated in impl_music_set.)
 	return_float_attrib("volume", sound::get_music_volume() * 100.0f / preferences::music_volume());
@@ -82,28 +91,39 @@ static int impl_music_get(lua_State* L) {
 
 static int impl_music_set(lua_State* L) {
 	if(lua_isnumber(L, 2)) {
-		int i = lua_tointeger(L, 2) - 1;
+		unsigned int i = lua_tointeger(L, 2) - 1;
 		config cfg;
 		if(lua_isnil(L, 3)) {
-			sound::remove_track(i);
+			if(i < sound::get_num_tracks()) {
+				sound::remove_track(i);
+			}
 		} else if(luaW_toconfig(L, 3, cfg)) {
 			// Don't allow play_once=yes
 			if(cfg["play_once"]) {
 				return luaL_argerror(L, 3, "For play_once, use wesnoth.music_list.play instead");
 			}
-			// Remove the track at that index and add the new one in its place
-			// It's a little inefficient though...
-			sound::remove_track(i);
-			sound::play_music_config(cfg, i);
+			if(i < sound::get_num_tracks()) {
+				sound::play_music_config(cfg);
+			} else {
+				// Remove the track at that index and add the new one in its place
+				// It's a little inefficient though...
+				sound::remove_track(i);
+				sound::play_music_config(cfg, i);
+			}
 		} else {
 			music_track& track = *get_track(L, 3);
-			sound::set_track(i, track.operator->());
+			if(i < sound::get_num_tracks()) {
+				sound::set_track(i, track.operator->());
+			} else {
+				track->write(cfg, true);
+				sound::play_music_config(cfg);
+			}
 		}
 		return 0;
 	}
 	const char* m = luaL_checkstring(L, 2);
 	modify_float_attrib_check_range("volume", sound::set_music_volume(value * preferences::music_volume() / 100.0f), 0.0, 100.0);
-	// TODO: Set "current" and "current_i"
+	modify_int_attrib_check_range("current_i", sound::play_track(value - 1), 1, static_cast<int>(sound::get_num_tracks()));
 	return 0;
 }
 
@@ -114,6 +134,14 @@ static int impl_music_len(lua_State* L) {
 
 static int intf_music_play(lua_State* L) {
 	sound::play_music_once(luaL_checkstring(L, 1));
+	return 0;
+}
+
+static int intf_music_next(lua_State* L) {
+	size_t n = sound::get_num_tracks();
+	if(n > 0) {
+		sound::play_track(n);
+	}
 	return 0;
 }
 
@@ -239,6 +267,7 @@ namespace lua_audio {
 			{ "add", intf_music_add },
 			{ "clear", intf_music_clear },
 			{ "remove", intf_music_remove },
+			{ "next", intf_music_next },
 			{ "force_refresh", intf_music_commit },
 			{ nullptr, nullptr },
 		};

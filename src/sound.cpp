@@ -288,9 +288,9 @@ static std::shared_ptr<sound::music_track> choose_track()
 		current_track_index = track;
 	}
 
-	//LOG_AUDIO << "Next track will be " << current_track_list[track].file_path() << "\n";
+	DBG_AUDIO << "Next track will be " << current_track_list[current_track_index]->file_path() << "\n";
 	played_before.push_back( current_track_list[current_track_index]->file_path() );
-	return current_track_list[current_track_index++];
+	return current_track_list[current_track_index];
 }
 
 static std::string pick_one(const std::string &files)
@@ -522,6 +522,16 @@ void play_music()
 	want_new_music=true;
 	no_fading=false;
 	fadingout_time = current_track->ms_after();
+}
+
+void play_track(unsigned int i) {
+	if(i >= current_track_list.size()) {
+		current_track = choose_track();
+	} else {
+		current_track_index = i;
+		current_track = current_track_list[i];
+	}
+	play_music();
 }
 
 static void play_new_music()
