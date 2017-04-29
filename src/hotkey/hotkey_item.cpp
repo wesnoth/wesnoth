@@ -164,7 +164,11 @@ hotkey_ptr create_hotkey(const std::string &id, const SDL_Event &event)
 	case SDL_TEXTINPUT: {
 		hotkey_keyboard_ptr keyboard(new hotkey_keyboard());
 		base = std::dynamic_pointer_cast<hotkey_base>(keyboard);
-		keyboard->set_text(std::string(event.text.text));
+		std::string text =  std::string(event.text.text);
+		keyboard->set_text(text);
+		if (text == ":") {
+			mods = mods & ~KMOD_SHIFT;
+		}
 	}
 		break;
 	case SDL_MOUSEBUTTONDOWN:
@@ -179,7 +183,7 @@ hotkey_ptr create_hotkey(const std::string &id, const SDL_Event &event)
 		break;
 	}
 
-	base->set_mods(sdl_get_mods());
+	base->set_mods(mods);
 	base->set_command(id);
 	base->unset_default();
 
@@ -345,7 +349,7 @@ bool hotkey_keyboard::bindings_equal_helper(hotkey_ptr other) const
 		return false;
 	}
 
-	return keycode_ == other_k->keycode_;
+	return text_ == other_k->text_;
 }
 
 void del_hotkey(hotkey_ptr item)
