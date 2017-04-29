@@ -315,6 +315,7 @@ window::window(CVideo& video,
 	, invalidate_layout_blocked_(false)
 	, suspend_drawing_(true)
 	, restore_(true)
+	, is_toplevel_(!is_in_dialog())
 	, restorer_()
 	, automatic_placement_(automatic_placement)
 	, horizontal_placement_(horizontal_placement)
@@ -717,7 +718,7 @@ void window::draw()
 
 		// We want the labels underneath the window so draw them and use them
 		// as restore point.
-		if(!is_in_dialog()) {
+		if(is_toplevel_) {
 			font::draw_floating_labels(frame_buffer);
 		}
 
