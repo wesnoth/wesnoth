@@ -564,7 +564,7 @@ void config::merge_children(const std::string& key)
 		merged_children.append(cfg);
 	}
 
-	clear_children(key);
+	clear_children_impl(key);
 	add_child(key,merged_children);
 }
 
@@ -580,7 +580,7 @@ void config::merge_children_by_attribute(const std::string& key, const std::stri
 		merged_children_map[cfg[attribute]].append(cfg);
 	}
 
-	clear_children(key);
+	clear_children_impl(key);
 	for (const config_map::value_type &i : merged_children_map) {
 		add_child(key,i.second);
 	}
@@ -773,7 +773,7 @@ private:
 
 }
 
-void config::clear_children(config_key_type key)
+void config::clear_children_impl(config_key_type key)
 {
 	check_valid();
 

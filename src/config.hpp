@@ -603,11 +603,11 @@ public:
 		const std::string &value) const
 	{ return const_cast<config *>(this)->find_child(key, name, value); }
 
-	void clear_children(config_key_type key);
+	void clear_children_impl(config_key_type key);
 	template<typename... T>
 	void clear_children(T... keys) {
 		for(auto key : {keys...}) {
-			clear_children(key);
+			clear_children_impl(key);
 		}
 	}
 
