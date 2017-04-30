@@ -22,6 +22,7 @@
 #include <SDL_events.h>
 
 #include <boost/mpl/for_each.hpp>
+#include <boost/range/adaptor/reversed.hpp>
 
 namespace gui2
 {
@@ -413,20 +414,15 @@ inline bool fire_event(const ui_event event,
 	bool halt = false;
 
 	/***** ***** ***** Pre ***** ***** *****/
-	for(std::vector<std::pair<widget*, ui_event> >::reverse_iterator ritor_widget
-		= event_chain.rbegin();
-		ritor_widget != event_chain.rend();
-		++ritor_widget) {
+	for(auto ritor_widget : boost::adaptors::reverse(event_chain)) {
 
 		dispatcher::signal_type<T>& signal
 				= dispatcher_implementation::event_signal<T>(
-						*ritor_widget->first, ritor_widget->second);
+						*ritor_widget.first, ritor_widget.second);
 
-		for(typename std::vector<T>::iterator itor = signal.pre_child.begin();
-			itor != signal.pre_child.end();
-			++itor) {
+		for(auto& pre_func : signal.pre_child) {
 
-			(*itor)(*dispatcher, ritor_widget->second, handled, halt, std::forward<F>(params)...);
+			pre_func(*dispatcher, ritor_widget.second, handled, halt, std::forward<F>(params)...);
 			if(halt) {
 				assert(handled);
 				break;
@@ -444,11 +440,9 @@ inline bool fire_event(const ui_event event,
 		dispatcher::signal_type<T>& signal
 				= dispatcher_implementation::event_signal<T>(*w, event);
 
-		for(typename std::vector<T>::iterator itor = signal.child.begin();
-			itor != signal.child.end();
-			++itor) {
+		for(auto& func : signal.child) {
 
-			(*itor)(*dispatcher, event, handled, halt, std::forward<F>(params)...);
+			func(*dispatcher, event, handled, halt, std::forward<F>(params)...);
 
 			if(halt) {
 				assert(handled);
@@ -462,20 +456,15 @@ inline bool fire_event(const ui_event event,
 	}
 
 	/***** ***** ***** Post ***** ***** *****/
-	for(std::vector<std::pair<widget*, ui_event> >::iterator itor_widget
-		= event_chain.begin();
-		itor_widget != event_chain.end();
-		++itor_widget) {
+	for(auto& itor_widget : event_chain) {
 
 		dispatcher::signal_type<T>& signal
 				= dispatcher_implementation::event_signal<T>(
-						*itor_widget->first, itor_widget->second);
+						*itor_widget.first, itor_widget.second);
 
-		for(typename std::vector<T>::iterator itor = signal.post_child.begin();
-			itor != signal.post_child.end();
-			++itor) {
+		for(auto& post_func : signal.post_child) {
 
-			(*itor)(*dispatcher, itor_widget->second, handled, halt, std::forward<F>(params)...);
+			post_func(*dispatcher, itor_widget.second, handled, halt, std::forward<F>(params)...);
 			if(halt) {
 				assert(handled);
 				break;
