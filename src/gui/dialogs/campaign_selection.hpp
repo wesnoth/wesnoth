@@ -57,8 +57,6 @@ private:
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const override;
 
-	void show_settings(CVideo& video);
-
 	/** Inherited from modal_dialog. */
 	virtual void pre_show(window& window) override;
 

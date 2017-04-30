@@ -39,7 +39,6 @@
 #include "gui/dialogs/attack_predictions.hpp"
 #include "gui/dialogs/campaign_difficulty.hpp"
 #include "gui/dialogs/campaign_selection.hpp"
-#include "gui/dialogs/campaign_settings.hpp"
 #include "gui/dialogs/chat_log.hpp"
 #include "gui/dialogs/core_selection.hpp"
 #include "gui/dialogs/debug_clock.hpp"
@@ -399,7 +398,6 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	//test<attack_predictions>();
 	test<campaign_difficulty>();
 	test<campaign_selection>();
-	test<campaign_settings>();
 	test<chat_log>();
 	test<core_selection>();
 	test<custom_tod>();
@@ -596,20 +594,6 @@ struct dialog_tester<campaign_selection>
 	campaign_selection* create()
 	{
 		return new campaign_selection(ng);
-	}
-};
-
-template<>
-struct dialog_tester<campaign_settings>
-{
-	saved_game state;
-	ng::create_engine ng;
-	dialog_tester() : state(config_of("campaign_type", "scenario")), ng(test_utils::get_fake_display(-1, -1).video(), state)
-	{
-	}
-	campaign_settings* create()
-	{
-		return new campaign_settings(ng);
 	}
 };
 

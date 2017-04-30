@@ -20,7 +20,6 @@
 #include "game_preferences.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/helper.hpp"
-#include "gui/dialogs/campaign_settings.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/image.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
@@ -106,11 +105,6 @@ void campaign_selection::campaign_selected(window& window)
 
 }
 
-void campaign_selection::show_settings(CVideo& video) {
-	campaign_settings settings_dlg(engine_);
-	settings_dlg.show(video);
-}
-
 void campaign_selection::pre_show(window& window)
 {
 	/***** Setup campaign tree. *****/
@@ -189,14 +183,6 @@ void campaign_selection::pre_show(window& window)
 	}
 
 	campaign_selected(window);
-
-	/***** Setup advanced settings button *****/
-	button* advanced_settings_button =
-			find_widget<button>(&window, "advanced_settings", false, false);
-	if(advanced_settings_button) {
-		advanced_settings_button->connect_click_handler(
-			std::bind(&campaign_selection::show_settings, this, std::ref(window.video())));
-	}
 }
 
 void campaign_selection::post_show(window& window)
