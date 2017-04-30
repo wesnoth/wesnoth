@@ -64,8 +64,8 @@ namespace dialogs
 
 REGISTER_DIALOG(editor_generate_map)
 
-editor_generate_map::editor_generate_map()
-	: map_generators_()
+editor_generate_map::editor_generate_map(std::vector<map_generator*>& mg)
+	: map_generators_(mg)
 	, last_map_generator_(nullptr)
 	, current_map_generator_(0)
 	, random_seed_()

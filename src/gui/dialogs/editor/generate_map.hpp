@@ -35,14 +35,9 @@ namespace dialogs
 class editor_generate_map : public modal_dialog
 {
 public:
-	editor_generate_map();
+	explicit editor_generate_map(std::vector<map_generator*>& mg);
 
-	void set_map_generators(std::vector<map_generator*> mg)
-	{
-		map_generators_ = mg;
-	}
-
-	std::vector<map_generator*> get_map_generators()
+	std::vector<map_generator*>& get_map_generators()
 	{
 		return map_generators_;
 	}
@@ -67,7 +62,7 @@ private:
 	void do_settings();
 
 	/** Available map generators */
-	std::vector<map_generator*> map_generators_;
+	std::vector<map_generator*>& map_generators_;
 
 	/** Last used map generator, must be in map_generators_ */
 	map_generator* last_map_generator_;

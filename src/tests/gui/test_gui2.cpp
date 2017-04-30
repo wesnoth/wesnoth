@@ -992,9 +992,6 @@ struct dialog_tester<editor_generate_map>
 {
 	editor_generate_map* create()
 	{
-		editor_generate_map* result = new editor_generate_map();
-		BOOST_REQUIRE_MESSAGE(result, "Failed to create a dialog.");
-
 		std::vector<map_generator*> map_generators;
 		for(const config &i : main_config.child_range("multiplayer")) {
 			if(i["scenario_generation"] == "default") {
@@ -1005,7 +1002,9 @@ struct dialog_tester<editor_generate_map>
 				}
 			}
 		}
-		result->set_map_generators(map_generators);
+
+		editor_generate_map* result = new editor_generate_map(map_generators);
+		BOOST_REQUIRE_MESSAGE(result, "Failed to create a dialog.");
 
 		return result;
 	}

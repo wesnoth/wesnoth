@@ -662,8 +662,7 @@ void context_manager::generate_map_dialog()
 		return;
 	}
 
-	gui2::dialogs::editor_generate_map dialog;
-	dialog.set_map_generators(map_generators_);
+	gui2::dialogs::editor_generate_map dialog(map_generators_);
 	dialog.select_map_generator(last_map_generator_);
 	dialog.show(gui_.video());
 
