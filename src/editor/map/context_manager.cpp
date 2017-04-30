@@ -52,11 +52,6 @@ namespace editor {
 static std::vector<std::string> saved_windows_;
 static map_labels* current_labels;
 
-map_labels* get_current_labels()
-{
-	return current_labels;
-}
-
 /**
  * Utility class to properly refresh the display when the map context object is replaced
  * without duplicating code.
