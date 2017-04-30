@@ -23,6 +23,7 @@
 #include "events.hpp"
 
 #include <memory>
+#include <string>
 
 class CVideo;
 class vconfig;
