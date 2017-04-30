@@ -50,7 +50,6 @@
 namespace editor {
 
 static std::vector<std::string> saved_windows_;
-static map_labels* current_labels;
 
 /**
  * Utility class to properly refresh the display when the map context object is replaced
@@ -87,15 +86,8 @@ public:
 
 		context_manager_.reload_map();
 
-		// In the case of switching contexts, this is needed to hide the labels in the previous context.
-		// However, if a context is already, destroyed before reaching this point (such as happens when
-		// closing a map), do nothing; destroying the context also clears its labels.
-		if(current_labels) {
-			current_labels->enable(false);
-		}
-
-		current_labels = &context_manager_.get_map_context().get_labels();
-		current_labels->enable(true);
+		// Enable the labels of the current context;
+		context_manager_.get_labels().enable(true);
 
 		refreshed_ = true;
 	}
@@ -1022,8 +1014,11 @@ void context_manager::switch_context(const int index, const bool force)
 		return;
 	}
 
+	// Disable the labels of the current context before switching.
+	// The refresher handles enabling the new ones.
+	get_labels().enable(false);
+
 	map_context_refresher mcr(*this);
-	current_labels = &get_map_context().get_labels();
 	current_context_index_ = index;
 
 	set_window_title();
