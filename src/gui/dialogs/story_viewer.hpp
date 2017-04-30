@@ -31,13 +31,24 @@ namespace dialogs
 class story_viewer : public modal_dialog
 {
 public:
-	explicit story_viewer(storyscreen::controller& controller);
+	story_viewer(const std::string& scenario_name, const config& cfg_parsed);
 
 	~story_viewer();
 
-	static void display(storyscreen::controller& controller, CVideo& video)
+	static void display(const std::string& scenario_name, const config::const_child_itors& story, CVideo& video)
 	{
-		story_viewer(controller).show(video);
+		// Combine all the [story] tags into a single config. Handle this here since
+		// storyscreen::controller doesn't have a default constructor.
+		config cfg;
+		for(const auto& iter : story) {
+			cfg.append_children(iter);
+		}
+
+		if(cfg.empty()) {
+			return;
+		}
+
+		story_viewer(scenario_name, cfg).show(video);
 	}
 
 private:
