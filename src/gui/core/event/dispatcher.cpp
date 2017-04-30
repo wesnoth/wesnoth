@@ -174,8 +174,7 @@ bool dispatcher::fire(const ui_event event, widget& target, void*)
 bool dispatcher::fire(const ui_event event, widget& target, message& msg)
 {
 	assert(find<set_event_message>(event, event_in_set()));
-	// NOTE: std::ref() needed here to prevent reference decay.
-	return fire_event<signal_message_function>(event, this, &target, std::ref(msg));
+	return fire_event<signal_message_function>(event, this, &target, msg);
 }
 
 void dispatcher::register_hotkey(const hotkey::HOTKEY_COMMAND id, const thotkey_function& function)
