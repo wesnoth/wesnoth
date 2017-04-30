@@ -414,7 +414,7 @@ inline bool fire_event(const ui_event event,
 	bool halt = false;
 
 	/***** ***** ***** Pre ***** ***** *****/
-	for(auto ritor_widget : boost::adaptors::reverse(event_chain)) {
+	for(auto& ritor_widget : boost::adaptors::reverse(event_chain)) {
 
 		dispatcher::signal_type<T>& signal
 				= dispatcher_implementation::event_signal<T>(
