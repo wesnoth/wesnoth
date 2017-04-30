@@ -101,9 +101,6 @@ const std::string hotkey_base::get_name() const
 
 bool hotkey_base::bindings_equal(hotkey_ptr other)
 {
-
-	bool ret;
-
 	if (other == hotkey_ptr()) {
 		return false;
 	}
@@ -115,9 +112,7 @@ bool hotkey_base::bindings_equal(hotkey_ptr other)
 		return false;
 	}
 
-	ret = mod_ == other->mod_ && bindings_equal_helper(other);
-
-	return ret;
+	return mod_ == other->mod_ && bindings_equal_helper(other);
 }
 
 bool hotkey_base::matches(const SDL_Event &event) const
