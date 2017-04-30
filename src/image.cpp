@@ -739,7 +739,7 @@ void set_zoom(int amount)
 template <scaling_function F>
 static surface scale_xbrz_helper(const surface & res, int w, int h)
 {
-	int best_integer_zoom = std::min(w / res.get()->w, h / res.get()->h);
+	int best_integer_zoom = std::min(w / res->w, h / res->h);
 	int legal_zoom = utils::clamp(best_integer_zoom, 1, 5);
 	return F(scale_surface_xbrz(res, legal_zoom), w, h);
 }
@@ -812,7 +812,7 @@ static surface get_scaled_to_zoom(const locator& i_locator)
 	surface res(get_image(i_locator, UNSCALED));
 	// For some reason haloes seems to have invalid images, protect against crashing
 	if(!res.null()) {
-		return scale_to_zoom_func(res, ((res.get()->w * zoom) / tile_size), ((res.get()->h * zoom) / tile_size));
+		return scale_to_zoom_func(res, ((res->w * zoom) / tile_size), ((res->h * zoom) / tile_size));
 	} else {
 		return surface(nullptr);
 	}

@@ -4384,10 +4384,10 @@ int game_lua_kernel::cfun_builtin_effect(lua_State *L)
 	cfg["times"] = 1;
 
 	if(need_apply) {
-		u.get()->apply_builtin_effect(which_effect, cfg);
+		u->apply_builtin_effect(which_effect, cfg);
 		return 0;
 	} else {
-		std::string description = u.get()->describe_builtin_effect(which_effect, cfg);
+		std::string description = u->describe_builtin_effect(which_effect, cfg);
 		lua_pushstring(L, description.c_str());
 		return 1;
 	}

@@ -89,9 +89,9 @@ std::string scenario::map_size() const
 	std::stringstream map_size;
 
 	if(map_.get() != nullptr) {
-		map_size << map_.get()->w();
+		map_size << map_->w();
 		map_size << font::unicode_multiplication_sign;
-		map_size << map_.get()->h();
+		map_size << map_->h();
 	} else {
 		map_size << _("not available.");
 	}

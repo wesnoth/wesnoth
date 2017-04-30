@@ -712,7 +712,7 @@ void map_context::partial_undo()
 		delete undo_chain;
 		undo_stack_.pop_back();
 	}
-	redo_stack_.push_back(first_action_in_chain.get()->perform(*this));
+	redo_stack_.push_back(first_action_in_chain->perform(*this));
 	//actions_since_save_ -= last_redo_action()->action_count();
 }
 

@@ -51,7 +51,7 @@ std::string random_generate_map(const std::string& name, const config &cfg)
 		throw mapgen_exception(ss.str());
 	}
 
-	return generator.get()->create_map();
+	return generator->create_map();
 }
 
 config random_generate_scenario(const std::string& name, const config &cfg)

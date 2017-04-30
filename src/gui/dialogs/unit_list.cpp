@@ -199,7 +199,7 @@ void unit_list::post_show(window& window)
 	if(get_retval() == window::OK) {
 		const int selected_row = find_widget<listbox>(&window, "units_list", false).get_selected_row();
 
-		scroll_to_ = unit_list_[selected_row].get()->get_location();
+		scroll_to_ = unit_list_[selected_row]->get_location();
 	}
 }
 
