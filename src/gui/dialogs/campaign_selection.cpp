@@ -181,6 +181,7 @@ void campaign_selection::pre_show(window& window)
 		}
 
 		mods_menu.set_values(mod_menu_values);
+		mods_menu.select_options(mod_states_);
 		mods_menu.set_callback_toggle_state_change(std::bind(&campaign_selection::mod_toggled, this, std::ref(window)));
 	} else {
 		mods_menu.set_active(false);
