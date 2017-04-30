@@ -75,20 +75,20 @@ bool dispatcher::has_event(const ui_event event, const event_queue_type event_ty
 			<< ".\n";
 #endif
 
-	return find<set_event>(event,
-			dispatcher_implementation::has_handler(event_type, *this))
-	    || find<set_event_mouse>(event,
-			dispatcher_implementation::has_handler(event_type, *this))
-	    || find<set_event_keyboard>(event,
-			dispatcher_implementation::has_handler(event_type, *this))
-	    || find<set_event_touch>(event,
-			dispatcher_implementation::has_handler(event_type, *this))
-	    || find<set_event_notification>(event,
-			dispatcher_implementation::has_handler(event_type, *this))
-	    || find<set_event_message>(event,
-			dispatcher_implementation::has_handler(event_type, *this))
-	    || find<set_event_raw_event>(event,
-			dispatcher_implementation::has_handler(event_type, *this));
+	return find<set_event>(
+			event, dispatcher_implementation::has_handler(event_type, *this))
+	    || find<set_event_mouse>(
+			event, dispatcher_implementation::has_handler(event_type, *this))
+	    || find<set_event_keyboard>(
+			event, dispatcher_implementation::has_handler(event_type, *this))
+	    || find<set_event_touch>(
+			event, dispatcher_implementation::has_handler(event_type, *this))
+	    || find<set_event_notification>(
+			event, dispatcher_implementation::has_handler(event_type, *this))
+	    || find<set_event_message>(
+			event, dispatcher_implementation::has_handler(event_type, *this))
+	    || find<set_event_raw_event>(
+			event, dispatcher_implementation::has_handler(event_type, *this));
 }
 
 /**

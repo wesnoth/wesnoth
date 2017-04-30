@@ -60,10 +60,10 @@ struct dispatcher_implementation
 	 * @returns                   The signal of the type                       \
 	 *                            dispatcher::signal_type<FUNCTION>            \
 	 */                                                                        \
-	template <class F>                                                         \
+	template<typename F>                                                       \
 	static typename std::enable_if<std::is_same<F, FUNCTION>::value,           \
-									 dispatcher::signal_type<FUNCTION> >::type&\
-	event_signal(dispatcher& dispatcher, const ui_event event)                  \
+									 dispatcher::signal_type<FUNCTION>>::type& \
+	event_signal(dispatcher& dispatcher, const ui_event event)                 \
 	{                                                                          \
 		return dispatcher.QUEUE.queue[event];                                  \
 	}                                                                          \
@@ -81,10 +81,10 @@ struct dispatcher_implementation
 	 * @returns                   The signal of the type                       \
 	 *                            dispatcher::signal_type<FUNCTION>            \
 	 */                                                                        \
-	template <class K>                                                         \
+	template<typename K>                                                       \
 	static typename std::enable_if<boost::mpl::has_key<SET, K>::value,         \
-									 dispatcher::signal_type<FUNCTION> >::type&\
-	event_signal(dispatcher& dispatcher, const ui_event event)                  \
+									 dispatcher::signal_type<FUNCTION>>::type& \
+	event_signal(dispatcher& dispatcher, const ui_event event)                 \
 	{                                                                          \
 		return dispatcher.QUEUE.queue[event];                                  \
 	}
@@ -101,7 +101,7 @@ struct dispatcher_implementation
  * @param TYPE                    The type to wrap for @ref
  *                                IMPLEMENT_EVENT_SIGNAL.
  */
-#define IMPLEMENT_EVENT_SIGNAL_WRAPPER(TYPE)                                   \
+#define IMPLEMENT_EVENT_SIGNAL_WRAPPER(TYPE)                                  \
 	IMPLEMENT_EVENT_SIGNAL(set_event_##TYPE,                                  \
 						   signal_##TYPE##_function,                          \
 						   signal_##TYPE##_queue_)
@@ -127,10 +127,9 @@ struct dispatcher_implementation
 		 * Constructor.
 		 *
 		 * @param event_type      The type of event to look for.
-		* @param dispatcher      The dispatcher whose signal queue is used.
+		 * @param dispatcher      The dispatcher whose signal queue is used.
 		 */
-		has_handler(const dispatcher::event_queue_type event_type,
-					 dispatcher& dispatcher)
+		has_handler(const dispatcher::event_queue_type event_type, dispatcher& dispatcher)
 			: event_type_(event_type), dispatcher_(dispatcher)
 		{
 		}
@@ -143,27 +142,30 @@ struct dispatcher_implementation
 		 *
 		 * @tparam T              A key from an event set used to instantiate
 		 *                        the proper @p event_signal function.
-		* @param event           The event to get the signal for.
+		 * @param event           The event to get the signal for.
 		 *
 		 * @returns               Whether or not the handler is found.
 		 */
 		// not called operator() to work around a problem in MSVC
 		// (known to affect all versions up to 2015)
-		template <class T>
+		template<typename T>
 		bool oper(ui_event event)
 		{
 			if((event_type_ & dispatcher::pre)
 			   && !event_signal<T>(dispatcher_, event).pre_child.empty()) {
 				return true;
 			}
+
 			if((event_type_ & dispatcher::child)
 			   && !event_signal<T>(dispatcher_, event).child.empty()) {
 				return true;
 			}
+
 			if((event_type_ & dispatcher::post)
 			   && !event_signal<T>(dispatcher_, event).post_child.empty()) {
 				return true;
 			}
+
 			return false;
 		}
 
@@ -178,10 +180,10 @@ namespace implementation
 {
 
 /** Specialized class when itor == end */
-template <bool done = true>
+template<bool done = true>
 struct find
 {
-	template <typename itor, typename end, typename E, typename F>
+	template<typename itor, typename end, typename E, typename F>
 	static bool execute(itor*, end*, E, F)
 	{
 		return false;
@@ -189,15 +191,14 @@ struct find
 };
 
 /** Specialized class when itor != end */
-template <>
+template<>
 struct find<false>
 {
-	template <typename itor, typename end, typename E, typename F>
+	template<typename itor, typename end, typename E, typename F>
 	static bool execute(itor*, end*, E event, F functor)
 	{
 		typedef typename boost::mpl::deref<itor>::type item;
-		typedef typename boost::mpl::apply1<boost::mpl::identity<>, item>::type
-		arg;
+		typedef typename boost::mpl::apply1<boost::mpl::identity<>, item>::type arg;
 
 		boost::value_initialized<arg> x;
 
@@ -236,14 +237,14 @@ struct find<false>
  *
  * @returns                       Whether or not the function found a result.
  */
-template <typename sequence, typename E, typename F>
+template<typename sequence, typename E, typename F>
 inline bool find(E event, F functor)
 {
 	typedef typename boost::mpl::begin<sequence>::type begin;
 	typedef typename boost::mpl::end<sequence>::type end;
 
 	return implementation::find<std::is_same<begin, end>::value>::execute(
-			static_cast<begin*>(nullptr), static_cast<end*>(nullptr), event, functor);
+		static_cast<begin*>(nullptr), static_cast<end*>(nullptr), event, functor);
 }
 
 namespace implementation
@@ -297,23 +298,20 @@ namespace implementation
  *                                * container 1
  *                                * dispatcher
  */
-template <class T>
-inline std::vector<std::pair<widget*, ui_event> >
+template<typename T>
+inline std::vector<std::pair<widget*, ui_event>>
 build_event_chain(const ui_event event, widget* dispatcher, widget* w)
 {
 	assert(dispatcher);
 	assert(w);
 
-	std::vector<std::pair<widget*, ui_event> > result;
+	std::vector<std::pair<widget*, ui_event>> result;
 
 	while(w != dispatcher) {
 		w = w->parent();
 		assert(w);
 
-		if(w->has_event(event,
-							 dispatcher::event_queue_type(dispatcher::pre
-													  | dispatcher::post))) {
-
+		if(w->has_event(event, dispatcher::event_queue_type(dispatcher::pre | dispatcher::post))) {
 			result.emplace_back(w, event);
 		}
 	}
@@ -330,20 +328,16 @@ build_event_chain(const ui_event event, widget* dispatcher, widget* w)
  *
  * @returns                       An empty vector.
  */
-template <>
-inline std::vector<std::pair<widget*, ui_event> >
-build_event_chain<signal_notification_function>(const ui_event event,
-												 widget* dispatcher,
-												 widget* w)
+template<>
+inline std::vector<std::pair<widget*, ui_event>>
+build_event_chain<signal_notification_function>(const ui_event event, widget* dispatcher, widget* w)
 {
 	assert(dispatcher);
 	assert(w);
 
-	assert(!w->has_event(event,
-							  dispatcher::event_queue_type(dispatcher::pre
-													   | dispatcher::post)));
+	assert(!w->has_event(event, dispatcher::event_queue_type(dispatcher::pre | dispatcher::post)));
 
-	return std::vector<std::pair<widget*, ui_event> >();
+	return std::vector<std::pair<widget*, ui_event>>();
 }
 
 #ifdef _MSC_VER
@@ -367,26 +361,21 @@ build_event_chain<signal_notification_function>(const ui_event event,
  *                                * container 1
  *                                * container 2
  */
-template <>
-inline std::vector<std::pair<widget*, ui_event> >
-build_event_chain<signal_message_function>(const ui_event event,
-											widget* dispatcher,
-											widget* w)
+template<>
+inline std::vector<std::pair<widget*, ui_event>>
+build_event_chain<signal_message_function>(const ui_event event, widget* dispatcher, widget* w)
 {
 	assert(dispatcher);
 	assert(w);
 	assert(w == dispatcher);
 
-	std::vector<std::pair<widget*, ui_event> > result;
+	std::vector<std::pair<widget*, ui_event>> result;
 
 	/* We only should add the parents of the widget to the chain. */
 	while((w = w->parent())) {
 		assert(w);
 
-		if(w->has_event(event,
-							 dispatcher::event_queue_type(dispatcher::pre
-													  | dispatcher::post))) {
-
+		if(w->has_event(event, dispatcher::event_queue_type(dispatcher::pre | dispatcher::post))) {
 			result.emplace(result.begin(), w, event);
 		}
 	}
@@ -403,9 +392,9 @@ build_event_chain<signal_message_function>(const ui_event event,
  * This is called with the same parameters as fire_event except for the
  * event_chain, which contains the widgets with the events to call for them.
  */
-template <class T, class... F>
+template<typename T, typename... F>
 inline bool fire_event(const ui_event event,
-					   std::vector<std::pair<widget*, ui_event> >& event_chain,
+					   std::vector<std::pair<widget*, ui_event>>& event_chain,
 					   widget* dispatcher,
 					   widget* w,
 					   F&&... params)
@@ -415,14 +404,12 @@ inline bool fire_event(const ui_event event,
 
 	/***** ***** ***** Pre ***** ***** *****/
 	for(auto& ritor_widget : boost::adaptors::reverse(event_chain)) {
-
-		dispatcher::signal_type<T>& signal
-				= dispatcher_implementation::event_signal<T>(
-						*ritor_widget.first, ritor_widget.second);
+		dispatcher::signal_type<T>& signal =
+			dispatcher_implementation::event_signal<T>(*ritor_widget.first, ritor_widget.second);
 
 		for(auto& pre_func : signal.pre_child) {
-
 			pre_func(*dispatcher, ritor_widget.second, handled, halt, std::forward<F>(params)...);
+
 			if(halt) {
 				assert(handled);
 				break;
@@ -436,12 +423,10 @@ inline bool fire_event(const ui_event event,
 
 	/***** ***** ***** Child ***** ***** *****/
 	if(w->has_event(event, dispatcher::child)) {
-
-		dispatcher::signal_type<T>& signal
-				= dispatcher_implementation::event_signal<T>(*w, event);
+		dispatcher::signal_type<T>& signal =
+			dispatcher_implementation::event_signal<T>(*w, event);
 
 		for(auto& func : signal.child) {
-
 			func(*dispatcher, event, handled, halt, std::forward<F>(params)...);
 
 			if(halt) {
@@ -457,14 +442,12 @@ inline bool fire_event(const ui_event event,
 
 	/***** ***** ***** Post ***** ***** *****/
 	for(auto& itor_widget : event_chain) {
-
-		dispatcher::signal_type<T>& signal
-				= dispatcher_implementation::event_signal<T>(
-						*itor_widget.first, itor_widget.second);
+		dispatcher::signal_type<T>& signal =
+			dispatcher_implementation::event_signal<T>(*itor_widget.first, itor_widget.second);
 
 		for(auto& post_func : signal.post_child) {
-
 			post_func(*dispatcher, itor_widget.second, handled, halt, std::forward<F>(params)...);
+
 			if(halt) {
 				assert(handled);
 				break;
@@ -504,7 +487,7 @@ inline bool fire_event(const ui_event event,
  *
  * @returns                       Whether or not the event was handled.
  */
-template <class T, class... F>
+template<typename T, typename... F>
 inline bool
 fire_event(const ui_event event, dispatcher* d, widget* w, F&&... params)
 {
@@ -513,25 +496,24 @@ fire_event(const ui_event event, dispatcher* d, widget* w, F&&... params)
 
 	widget* dispatcher_w = dynamic_cast<widget*>(d);
 
-	std::vector<std::pair<widget*, ui_event> > event_chain
-			= implementation::build_event_chain<T>(event, dispatcher_w, w);
+	std::vector<std::pair<widget*, ui_event>> event_chain =
+		implementation::build_event_chain<T>(event, dispatcher_w, w);
 
-	return implementation::fire_event<T>(
-			event, event_chain, dispatcher_w, w, std::forward<F>(params)...);
+	return implementation::fire_event<T>(event, event_chain, dispatcher_w, w, std::forward<F>(params)...);
 }
 
-template <ui_event click,
+template<ui_event click,
 		  ui_event double_click,
-		  bool (event_executor::*wants_double_click)() const,
-		  class T,
-		  class... F>
+		  bool(event_executor::*wants_double_click)() const,
+		  typename T,
+		  typename... F>
 inline bool
 fire_event_double_click(dispatcher* dsp, widget* wgt, F&&... params)
 {
 	assert(dsp);
 	assert(wgt);
 
-	std::vector<std::pair<widget*, ui_event> > event_chain;
+	std::vector<std::pair<widget*, ui_event>> event_chain;
 	widget* w = wgt;
 	widget* d = dynamic_cast<widget*>(dsp);
 
@@ -540,18 +522,11 @@ fire_event_double_click(dispatcher* dsp, widget* wgt, F&&... params)
 		assert(w);
 
 		if((w->*wants_double_click)()) {
-
-			if(w->has_event(double_click,
-							dispatcher::event_queue_type(dispatcher::pre
-													 | dispatcher::post))) {
-
+			if(w->has_event(double_click, dispatcher::event_queue_type(dispatcher::pre | dispatcher::post))) {
 				event_chain.emplace_back(w, double_click);
 			}
 		} else {
-			if(w->has_event(click,
-							dispatcher::event_queue_type(dispatcher::pre
-													 | dispatcher::post))) {
-
+			if(w->has_event(click, dispatcher::event_queue_type(dispatcher::pre | dispatcher::post))) {
 				event_chain.emplace_back(w, click);
 			}
 		}
@@ -559,10 +534,10 @@ fire_event_double_click(dispatcher* dsp, widget* wgt, F&&... params)
 
 	if((wgt->*wants_double_click)()) {
 		return implementation::fire_event<T>(
-				double_click, event_chain, d, wgt, std::forward<F>(params)...);
+			double_click, event_chain, d, wgt, std::forward<F>(params)...);
 	} else {
 		return implementation::fire_event<T>(
-				click, event_chain, d, wgt, std::forward<F>(params)...);
+			click, event_chain, d, wgt, std::forward<F>(params)...);
 	}
 }
 
