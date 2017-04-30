@@ -998,9 +998,6 @@
     <ClCompile Include="..\..\src\utils\name_generator_factory.cpp">
       <Filter>utils</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\utils\sha1.cpp">
-      <Filter>utils</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\serialization\tag.cpp">
       <Filter>serialization</Filter>
     </ClCompile>
@@ -1438,7 +1435,6 @@
     <ClCompile Include="..\..\src\key.cpp" />
     <ClCompile Include="..\..\src\language.cpp" />
     <ClCompile Include="..\..\src\lua_jailbreak_exception.cpp" />
-    <ClCompile Include="..\..\src\md5.cpp" />
     <ClCompile Include="..\..\src\menu_events.cpp" />
     <ClCompile Include="..\..\src\minimap.cpp" />
     <ClCompile Include="..\..\src\mouse_events.cpp" />
@@ -2480,9 +2476,6 @@
     <ClInclude Include="..\..\src\utils\reference_counter.hpp">
       <Filter>utils</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\utils\sha1.hpp">
-      <Filter>utils</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\utils\smart_list.hpp">
       <Filter>utils</Filter>
     </ClInclude>
@@ -2854,7 +2847,6 @@
     <ClInclude Include="..\..\src\language.hpp" />
     <ClInclude Include="..\..\src\lua_jailbreak_exception.hpp" />
     <ClInclude Include="..\..\src\map_command_handler.hpp" />
-    <ClInclude Include="..\..\src\md5.hpp" />
     <ClInclude Include="..\..\src\menu_events.hpp" />
     <ClInclude Include="..\..\src\minimap.hpp" />
     <ClInclude Include="..\..\src\mouse_events.hpp" />

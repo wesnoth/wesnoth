@@ -93,6 +93,7 @@ set(common-external-libs
 
 set(game-external-libs
 	${common-external-libs}
+	${CRYPTO_LIBRARY}
 	${Boost_SYSTEM_LIBRARIES}
 	${Boost_RANDOM_LIBRARY}
 	${Boost_THREAD_LIBRARY}

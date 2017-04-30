@@ -18,20 +18,43 @@
 #include <cstdint>
 #include <string>
 
+#include "global.hpp"
+
 namespace utils {
 
-/**
- * Returns the MD5 digest for the specified input.
- *
- * @note The returned value points to a fixed-size 16 bytes array representing
- *       the raw MD5 value, not a null-terminated string. Use encode_hash if
- *       you need the text representation instead.
- */
-std::array<uint8_t, 16> md5(const std::string& input);
-int get_iteration_count(const std::string& hash);
-std::string get_salt(const std::string& hash);
-bool is_valid_hash(const std::string& hash);
-std::string encode_hash(const std::array<uint8_t, 16>& input);
-std::string create_hash(const std::string& password, const std::string& salt, int iteration_count =10);
+class hash_base
+{
+public:
+	virtual std::string hex_digest() const = 0;
+	virtual ~hash_base() {}
+};
+
+template<size_t sz>
+class hash_digest : public hash_base
+{
+protected:
+	std::array<uint8_t, sz> hash;
+public:
+	static const int DIGEST_SIZE = sz;
+	std::array<uint8_t, sz> raw_digest() const {return hash;}
+};
+
+class md5 : public hash_digest<16>
+{
+public:
+	static int get_iteration_count(const std::string& hash);
+	static std::string get_salt(const std::string& hash);
+	static bool is_valid_hash(const std::string& hash);
+	explicit md5(const std::string& input);
+	md5(const std::string& input, const std::string& salt, int iteration_count = 10);
+	virtual std::string hex_digest() const override;
+};
+
+class sha1 : public hash_digest<20>
+{
+public:
+	explicit sha1(const std::string& input);
+	virtual std::string hex_digest() const override;
+};
 
 } // namespace utils

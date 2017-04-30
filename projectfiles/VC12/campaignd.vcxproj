@@ -52,7 +52,7 @@
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>..\..\..\external\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Shlwapi.lib;libeay32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -70,7 +70,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>..\..\..\external\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Shlwapi.lib;libeay32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -85,7 +85,6 @@
     <ClInclude Include="..\..\src\campaign_server\campaign_server.hpp" />
     <ClInclude Include="..\..\src\campaign_server\control.hpp" />
     <ClInclude Include="..\..\src\hash.hpp" />
-    <ClInclude Include="..\..\src\md5.hpp" />
     <ClInclude Include="..\..\src\server\server_base.hpp" />
     <ClInclude Include="..\..\src\server\simple_wml.hpp" />
   </ItemGroup>
@@ -103,9 +102,6 @@
       <ObjectFileName>$(IntDir)Campaign_Server\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\src\hash.cpp">
-      <ObjectFileName>$(IntDir)</ObjectFileName>
-    </ClCompile>
-    <ClCompile Include="..\..\src\md5.cpp">
       <ObjectFileName>$(IntDir)</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\src\server\server_base.cpp">

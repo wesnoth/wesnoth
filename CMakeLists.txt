@@ -74,6 +74,7 @@ else()
 	find_package(SDL2 2.0.4 REQUIRED)
 endif()
 
+find_package(Crypto 1.0 REQUIRED)
 find_package(Boost 1.36 REQUIRED COMPONENTS iostreams program_options regex system thread)
 find_package(Boost 1.40 REQUIRED COMPONENTS random)
 
@@ -643,7 +644,7 @@ if(ENABLE_GAME OR ENABLE_TESTS)
 		pkg_check_modules( CAIRO REQUIRED cairo>=1.10 )
 		pkg_check_modules( PANGOCAIRO REQUIRED pangocairo>=1.21.3 )
 		pkg_check_modules( FONTCONFIG REQUIRED fontconfig>=2.4.1 )
-	pkg_check_modules( SYSTEMD systemd )
+		pkg_check_modules( SYSTEMD systemd )
 	endif(NOT MSVC)
 
 endif(ENABLE_GAME OR ENABLE_TESTS)

@@ -19,7 +19,7 @@
 #include "gettext.hpp"
 #include "game_config.hpp"
 #include "log.hpp"
-#include "utils/sha1.hpp"
+#include "hash.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/string_utils.hpp"
@@ -166,7 +166,7 @@ void config_cache::read_cache(const std::string& file_path, config& cfg)
 		// Use a hash for a shorter display of the defines.
 		const std::string fname = cache_path + "/" +
 								  cache_file_prefix_ +
-								  sha1_hash(defines_string.str()).display();
+								  utils::sha1(defines_string.str()).hex_digest();
 		const std::string fname_checksum = fname + ".checksum" + extension;
 
 		filesystem::file_tree_checksum dir_checksum;

@@ -37,6 +37,7 @@ order to build Wesnoth:
  * Vorbisfile
  * libbz2
  * libz
+ * libcrypto (from OpenSSL)
 
 The following libraries are optional dependencies that enable additional
 features:
