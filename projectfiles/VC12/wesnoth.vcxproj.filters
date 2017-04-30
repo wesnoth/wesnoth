@@ -866,6 +866,9 @@
     <ClCompile Include="..\..\src\scripting\game_lua_kernel.cpp">
       <Filter>Scripting</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\scripting\lua_audio.cpp">
+      <Filter>Scripting</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\scripting\lua_common.cpp">
       <Filter>Scripting</Filter>
     </ClCompile>
@@ -1522,9 +1525,6 @@
     </ClCompile>
     <ClCompile Include="..\..\src\font\text_surface.cpp">
       <Filter>Font</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\scripting\lua_audio.cpp">
-      <Filter>Scripting</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2302,6 +2302,9 @@
     <ClInclude Include="..\..\src\scripting\game_lua_kernel.hpp">
       <Filter>Scripting</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\scripting\lua_audio.hpp">
+      <Filter>Scripting</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\scripting\lua_common.hpp">
       <Filter>Scripting</Filter>
     </ClInclude>
@@ -2962,9 +2965,6 @@
     </ClInclude>
     <ClInclude Include="..\..\src\font\pango\stream_ops.hpp">
       <Filter>Font\Pango</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\scripting\lua_audio.hpp">
-      <Filter>Scripting</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
