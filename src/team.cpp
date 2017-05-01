@@ -105,7 +105,7 @@ team::team_info::team_info() :
 	hidden(true),
 	no_turn_confirmation(false),
 	color(),
-	side(0),
+	side(1),
 	persistent(false),
 	lost(false),
 	carryover_percentage(game_config::gold_carryover_percentage),
