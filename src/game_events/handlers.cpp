@@ -30,6 +30,7 @@
 #include "reports.hpp"
 #include "scripting/game_lua_kernel.hpp"
 #include "serialization/string_utils.hpp"
+#include "sound.hpp"
 #include "soundsource.hpp"
 
 #include <iostream>
@@ -127,6 +128,7 @@ void event_handler::handle_event(const queued_event& event_info, handler_ptr& ha
 	// *WARNING*: At this point, dereferencing this could be a memory violation!
 
 	lk.run_wml_action("command", vcfg, event_info);
+	sound::commit_music_changes();
 }
 
 bool event_handler::matches_name(const std::string &name, const game_data * gd) const

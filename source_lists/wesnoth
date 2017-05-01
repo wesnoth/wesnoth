@@ -170,7 +170,6 @@ gui/dialogs/advanced_graphics_options.cpp
 gui/dialogs/attack_predictions.cpp
 gui/dialogs/campaign_difficulty.cpp
 gui/dialogs/campaign_selection.cpp
-gui/dialogs/campaign_settings.cpp
 gui/dialogs/chat_log.cpp
 gui/dialogs/core_selection.cpp
 gui/dialogs/debug_clock.cpp
@@ -338,6 +337,7 @@ savegame.cpp
 scripting/application_lua_kernel.cpp
 scripting/debug_lua.cpp
 scripting/game_lua_kernel.cpp
+scripting/lua_audio.cpp
 scripting/lua_common.cpp
 scripting/lua_cpp_function.cpp
 scripting/lua_fileops.cpp
@@ -359,7 +359,6 @@ settings.cpp
 side_filter.cpp
 statistics.cpp
 storyscreen/controller.cpp
-storyscreen/interface.cpp
 storyscreen/part.cpp
 synced_checkup.cpp
 synced_commands.cpp

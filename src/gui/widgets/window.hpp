@@ -536,6 +536,9 @@ private:
 	/** Whether the window should undraw the window using restorer_ */
 	bool restore_;
 
+	/** Whether the window has other windows behind it */
+	bool is_toplevel_;
+
 	/** When the window closes this surface is used to undraw the window. */
 	surface restorer_;
 

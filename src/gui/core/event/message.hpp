@@ -46,6 +46,11 @@ namespace event
  */
 struct message
 {
+	message() = default;
+
+	// Disallow copying because constructing a copy loses the exact type.
+	message(const message&) = delete;
+
 	virtual ~message()
 	{
 	}

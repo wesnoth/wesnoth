@@ -28,6 +28,7 @@
 #include "gui/widgets/stacked_widget.hpp"
 #include "gui/widgets/window.hpp"
 #include "sound.hpp"
+#include "variable.hpp"
 
 namespace gui2
 {
@@ -74,8 +75,8 @@ static const unsigned int LAYER_TEXT = 2;
 
 REGISTER_DIALOG(story_viewer)
 
-story_viewer::story_viewer(storyscreen::controller& controller)
-	: controller_(controller)
+story_viewer::story_viewer(const std::string& scenario_name, const config& cfg_parsed)
+	: controller_(vconfig(cfg_parsed, true), scenario_name)
 	, part_index_(0)
 	, current_part_(nullptr)
 	, timer_id_(0)

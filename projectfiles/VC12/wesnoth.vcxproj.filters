@@ -545,9 +545,6 @@
     <ClCompile Include="..\..\src\gui\dialogs\campaign_selection.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\campaign_settings.cpp">
-      <Filter>Gui\Dialogs</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\chat_log.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
@@ -869,6 +866,9 @@
     <ClCompile Include="..\..\src\scripting\game_lua_kernel.cpp">
       <Filter>Scripting</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\scripting\lua_audio.cpp">
+      <Filter>Scripting</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\scripting\lua_common.cpp">
       <Filter>Scripting</Filter>
     </ClCompile>
@@ -921,9 +921,6 @@
       <Filter>Scripting\Plugins</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\storyscreen\controller.cpp">
-      <Filter>Storyscreen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\storyscreen\interface.cpp">
       <Filter>Storyscreen</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\storyscreen\part.cpp">
@@ -1933,9 +1930,6 @@
     <ClInclude Include="..\..\src\gui\dialogs\campaign_selection.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\gui\dialogs\campaign_settings.hpp">
-      <Filter>Gui\Dialogs</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\chat_log.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
@@ -2308,6 +2302,9 @@
     <ClInclude Include="..\..\src\scripting\game_lua_kernel.hpp">
       <Filter>Scripting</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\scripting\lua_audio.hpp">
+      <Filter>Scripting</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\scripting\lua_common.hpp">
       <Filter>Scripting</Filter>
     </ClInclude>
@@ -2366,9 +2363,6 @@
       <Filter>Scripting\Plugins</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\storyscreen\controller.hpp">
-      <Filter>Storyscreen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\storyscreen\interface.hpp">
       <Filter>Storyscreen</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\storyscreen\part.hpp">

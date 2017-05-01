@@ -24,8 +24,6 @@ class map_generator;
 namespace editor
 {
 
-map_labels* get_current_labels();
-
 class context_manager
 {
 public:
@@ -167,6 +165,11 @@ public:
 	const editor_map& get_map() const
 	{
 		return get_map_context().get_map();
+	}
+
+	map_labels& get_labels()
+	{
+		return get_map_context().get_labels();
 	}
 
 	/** Set the default dir (where the filebrowser is pointing at when there is no map file opened) */

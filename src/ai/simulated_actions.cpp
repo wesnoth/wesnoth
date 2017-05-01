@@ -261,9 +261,7 @@ void helper_advance_unit(const map_location& loc){
 		advanced_unit->add_modification("advancement", mod_option);
 	}
 
-	advanced_unit->set_location(loc);
-	resources::gameboard->units().erase(loc);
-	resources::gameboard->units().insert(advanced_unit);
+	resources::gameboard->units().replace(loc, advanced_unit);
 	LOG_AI_SIM_ACTIONS << advance_unit->type_name() << " at " << loc << " advanced to " << advanced_unit->type_name() << std::endl;
 }
 

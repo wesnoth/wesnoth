@@ -1080,8 +1080,8 @@ void manager::options_dlg()
 	std::vector<std::string> options;
 	utils::string_map t_vars;
 
-	options.push_back(_("SHOW ALL allies’ plans"));
-	options.push_back(_("HIDE ALL allies’ plans"));
+	options.emplace_back(_("SHOW ALL allies’ plans"));
+	options.emplace_back(_("HIDE ALL allies’ plans"));
 
 	//populate list of networked allies
 	for(team &t : resources::gameboard->teams())
@@ -1095,9 +1095,9 @@ void manager::options_dlg()
 		t_vars["player"] = t.current_player();
 		size_t t_index = t.side()-1;
 		if(team_plans_hidden_[t_index])
-			options.push_back(vgettext("Show plans for $player", t_vars));
+			options.emplace_back(vgettext("Show plans for $player", t_vars));
 		else
-			options.push_back(vgettext("Hide plans for $player", t_vars));
+			options.emplace_back(vgettext("Hide plans for $player", t_vars));
 	}
 
 	gui2::dialogs::simple_item_selector dlg("", _("Whiteboard Options"), options);

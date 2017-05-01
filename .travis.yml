@@ -28,8 +28,6 @@ matrix:
     - os: osx
       compiler: clang
       env: opt=-O0 CXXSTD=11 NLS=false
-  allow_failures:
-    - env: OPT=-O2 CXXSTD=1y NLS=false
 
 before_install:
     - export TARGETS="wesnoth wesnothd campaignd test"

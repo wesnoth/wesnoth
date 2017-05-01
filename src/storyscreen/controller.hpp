@@ -21,7 +21,9 @@
 #define STORYSCREEN_CONTROLLER_HPP_INCLUDED
 
 #include "events.hpp"
-#include "interface.hpp"
+
+#include <memory>
+#include <string>
 
 class CVideo;
 class vconfig;

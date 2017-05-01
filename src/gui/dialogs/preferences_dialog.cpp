@@ -826,7 +826,7 @@ void preferences_dialog::add_hotkey_callback(listbox& hotkeys)
 		return;
 	}
 
-	if(oldhk) {
+	if(oldhk && oldhk->get_command() != "null") {
 		const std::string text = vgettext("“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\nDo you wish to reassign it to “<b>$new_hotkey_action|</b>”?", {
 			{"hotkey_sequence",   oldhk->get_name()},
 			{"old_hotkey_action", hotkey::get_description(oldhk->get_command())},

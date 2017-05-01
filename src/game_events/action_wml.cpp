@@ -112,8 +112,9 @@ namespace { // Support functions
 		std::string img_mods = cfg["image_mods"];
 
 		size_t side_num = cfg["side"].to_int(1);
-		if ( side_num == 0  ||  side_num > resources::gameboard->teams().size() )
+		if (!resources::gameboard->has_team(side_num)) {
 			side_num = 1;
+		}
 
 		unit_race::GENDER gender = string_gender(cfg["gender"]);
 		const unit_type *ut = unit_types.find(type);
@@ -926,34 +927,6 @@ WML_HANDLER_FUNCTION(unit,, cfg)
 		.allow_show(true);
 
 	uc.add_unit(parsed_cfg, &cfg);
-
-}
-
-WML_HANDLER_FUNCTION(volume,, cfg)
-{
-
-	int vol;
-	float rel;
-	std::string music = cfg["music"];
-	std::string sound = cfg["sound"];
-
-	if(!music.empty()) {
-		vol = preferences::music_volume();
-		rel = atof(music.c_str());
-		if (rel >= 0.0f && rel < 100.0f) {
-			vol = static_cast<int>(rel*vol/100.0f);
-		}
-		sound::set_music_volume(vol);
-	}
-
-	if(!sound.empty()) {
-		vol = preferences::sound_volume();
-		rel = atof(sound.c_str());
-		if (rel >= 0.0f && rel < 100.0f) {
-			vol = static_cast<int>(rel*vol/100.0f);
-		}
-		sound::set_sound_volume(vol);
-	}
 
 }
 

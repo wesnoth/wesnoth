@@ -521,7 +521,7 @@ variant formula_ai::get_value(const std::string& key) const
 		std::vector<variant> tmp;
 
 		for(std::vector<unit_ptr >::const_iterator i = current_team().recall_list().begin(); i != current_team().recall_list().end(); ++i) {
-			tmp.push_back( variant(std::make_shared<unit_callable>(**i) ) );
+			tmp.emplace_back(std::make_shared<unit_callable>(**i));
 		}
 
 		return variant(tmp);
@@ -543,7 +543,7 @@ variant formula_ai::get_value(const std::string& key) const
 		std::vector<variant> vars;
 		for(size_t i = 0; i<resources::gameboard->teams().size(); ++i)
 		{
-			vars.push_back( variant() );
+			vars.emplace_back();
 		}
 		for(size_t i = 0; i<vars.size(); ++i)
 		{

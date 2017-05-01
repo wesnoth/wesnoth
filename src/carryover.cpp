@@ -134,7 +134,7 @@ carryover_info::carryover_info(const config& cfg, bool from_snpashot)
 			assert(from_snpashot);
 			continue;
 		}
-		this->carryover_sides_.push_back(carryover(side));
+		this->carryover_sides_.emplace_back(side);
 	}
 	for(const config& item : cfg.child_range("menu_item"))
 	{

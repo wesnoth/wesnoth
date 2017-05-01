@@ -199,7 +199,7 @@ std::vector<combat_slice> split_summary(const battle_context_unit_stats& unit_st
 	if (unit_stats.swarm_min == unit_stats.swarm_max || summary[0].empty())
 	{
 		// We use the same number of blows for all possibilities.
-		result.push_back(combat_slice(summary, unit_stats.num_blows));
+		result.emplace_back(summary, unit_stats.num_blows);
 		return result;
 	}
 

@@ -548,7 +548,7 @@ private:
 
                 std::vector<variant> res;
                 for (const map_location& ml : visited_locs) {
-                    res.push_back( variant(std::make_shared<location_callable>( ml ) ) );
+                    res.emplace_back(std::make_shared<location_callable>( ml ));
                 }
 
 		return variant(res);
@@ -974,7 +974,7 @@ private:
                 }
 
                 for (std::vector<map_location>::const_iterator loc_iter = route.steps.begin() + 1 ; loc_iter !=route.steps.end(); ++loc_iter) {
-                    locations.push_back( variant(std::make_shared<location_callable>(*loc_iter) ));
+                    locations.emplace_back(std::make_shared<location_callable>(*loc_iter));
                 }
 
 		return variant(locations);
@@ -1027,7 +1027,7 @@ private:
 
                 for (std::vector<map_location>::const_iterator loc_iter = route.steps.begin() + 1 ; loc_iter !=route.steps.end(); ++loc_iter) {
                     if (unit_it->movement_cost((resources::gameboard->map())[*loc_iter]) < movetype::UNREACHABLE )
-                        locations.push_back( variant(std::make_shared<location_callable>(*loc_iter) ));
+                        locations.emplace_back(std::make_shared<location_callable>(*loc_iter));
                     else
                         break;
                 }

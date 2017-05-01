@@ -367,7 +367,7 @@ hp_probability_vector attack_predictions::get_hitpoint_probabilities(const std::
 
 		// We keep only values above 0.1%.
 		if(prob > 0.001) {
-			temp_vec.push_back({i, prob});
+			temp_vec.emplace_back(i, prob);
 		}
 	}
 

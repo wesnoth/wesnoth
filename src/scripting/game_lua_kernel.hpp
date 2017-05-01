@@ -149,7 +149,6 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_remove_event(lua_State *L);
 	int intf_color_adjust(lua_State *L);
 	int intf_delay(lua_State *L);
-	int intf_kill(lua_State *L);
 	int intf_label(lua_State *L);
 	int intf_redraw(lua_State *L);
 	int intf_replace_schedule(lua_State *l);

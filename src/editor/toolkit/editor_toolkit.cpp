@@ -48,11 +48,11 @@ editor_toolkit::~editor_toolkit()
 void editor_toolkit::init_brushes(const config& game_config)
 {
 	for (const config &i : game_config.child_range("brush")) {
-		brushes_.push_back(brush(i));
+		brushes_.emplace_back(i);
 	}
 	if (brushes_.empty()) {
 		ERR_ED << "No brushes defined!";
-		brushes_.push_back(brush());
+		brushes_.emplace_back();
 		brushes_[0].add_relative_location(0, 0);
 	}
 	brush_ = &brushes_[0];

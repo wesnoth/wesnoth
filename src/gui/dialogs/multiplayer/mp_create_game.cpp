@@ -102,7 +102,7 @@ mp_create_game::mp_create_game(const config& cfg, ng::create_engine& create_eng)
 	};
 
 	if(game_config::debug) {
-		level_types_.push_back({ng::level::TYPE::SP_CAMPAIGN, _("SP Campaigns")});
+		level_types_.emplace_back(ng::level::TYPE::SP_CAMPAIGN, _("SP Campaigns"));
 	}
 
 	level_types_.erase(std::remove_if(level_types_.begin(), level_types_.end(),
@@ -548,7 +548,7 @@ void mp_create_game::display_games_of_type(window& window, ng::level::TYPE type,
 	list.clear();
 
 	for(const auto& game : create_engine_.get_levels_by_type_unfiltered(type)) {
-		if(!game.get()->can_launch_game()) {
+		if(!game->can_launch_game()) {
 			continue;
 		}
 
@@ -556,11 +556,11 @@ void mp_create_game::display_games_of_type(window& window, ng::level::TYPE type,
 		string_map item;
 
 		if(type == ng::level::TYPE::CAMPAIGN || type == ng::level::TYPE::SP_CAMPAIGN) {
-			item["label"] = game.get()->icon();
+			item["label"] = game->icon();
 			data.emplace("game_icon", item);
 		}
 
-		item["label"] = game.get()->name();
+		item["label"] = game->name();
 		data.emplace("game_name", item);
 
 		list.add_row(data);

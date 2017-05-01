@@ -216,6 +216,20 @@ map_context::map_context(const config& game_config, const std::string& filename)
 	add_to_recent_files();
 }
 
+void map_context::new_side()
+{
+	teams_.emplace_back();
+
+	config cfg;
+	cfg["side"] = teams_.size(); // side is 1-indexed, so we can just use size()
+	cfg["hidden"] = false;
+
+	// TODO: build might be slight overkill here just to set the side...
+	teams_.back().build(cfg, get_map());
+
+	actions_since_save_++;
+}
+
 void map_context::set_side_setup(editor_team_info& info)
 {
 	assert(teams_.size() >= static_cast<unsigned int>(info.side));
@@ -318,10 +332,10 @@ void map_context::load_scenario(const config& game_config)
 	int i = 1;
 	for(config &side : scenario.child_range("side"))
 	{
-		team t;
+		teams_.emplace_back();
+
 		side["side"] = i;
-		t.build(side, map_);
-		teams_.push_back(t);
+		teams_.back().build(side, map_);
 
 		for(config &a_unit : side.child_range("unit")) {
 			map_location loc(a_unit, nullptr);
@@ -712,7 +726,7 @@ void map_context::partial_undo()
 		delete undo_chain;
 		undo_stack_.pop_back();
 	}
-	redo_stack_.push_back(first_action_in_chain.get()->perform(*this));
+	redo_stack_.push_back(first_action_in_chain->perform(*this));
 	//actions_since_save_ -= last_redo_action()->action_count();
 }
 

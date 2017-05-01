@@ -165,29 +165,29 @@ version_table_manager::version_table_manager()
 	// Features table.
 	//
 
-	features.push_back(N_("feature^Experimental OpenMP support"));
+	features.emplace_back(N_("feature^Experimental OpenMP support"));
 #ifdef _OPENMP
 	features.back().enabled = true;
 #endif
 
-	features.push_back(N_("feature^PNG screenshots"));
+	features.emplace_back(N_("feature^PNG screenshots"));
 #ifdef HAVE_LIBPNG
 	features.back().enabled = true;
 #endif
 
-	features.push_back(N_("feature^Lua console completion"));
+	features.emplace_back(N_("feature^Lua console completion"));
 #ifdef HAVE_HISTORY
 	features.back().enabled = true;
 #endif
 
-	features.push_back(N_("feature^Legacy bidirectional rendering"));
+	features.emplace_back(N_("feature^Legacy bidirectional rendering"));
 #ifdef HAVE_FRIBIDI
 	features.back().enabled = true;
 #endif
 
 #ifdef _X11
 
-	features.push_back(N_("feature^D-Bus notifications back end"));
+	features.emplace_back(N_("feature^D-Bus notifications back end"));
 #ifdef HAVE_LIBDBUS
 	features.back().enabled = true;
 #endif
@@ -196,18 +196,18 @@ version_table_manager::version_table_manager()
 
 #ifdef _WIN32
 	// Always compiled in.
-	features.push_back(N_("feature^Win32 notifications back end"));
+	features.emplace_back(N_("feature^Win32 notifications back end"));
 	features.back().enabled = true;
 #endif
 
 #ifdef __APPLE__
 
-	features.push_back(N_("feature^Cocoa notifications back end"));
+	features.emplace_back(N_("feature^Cocoa notifications back end"));
 #ifdef HAVE_NS_USER_NOTIFICATION
 	features.back().enabled = true;
 #endif
 
-	features.push_back(N_("feature^Growl notifications back end"));
+	features.emplace_back(N_("feature^Growl notifications back end"));
 #ifdef HAVE_GROWL
 	features.back().enabled = true;
 #endif

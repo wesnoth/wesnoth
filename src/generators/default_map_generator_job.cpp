@@ -882,7 +882,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 
 	std::vector<terrain_converter> converters;
 	for(const config& cv : cfg.child_range("convert")) {
-		converters.push_back(terrain_converter(cv));
+		converters.emplace_back(cv);
 	}
 
 	LOG_NG << "Created terrain converters. " << (SDL_GetTicks() - ticks) << " ticks elapsed" << "\n";

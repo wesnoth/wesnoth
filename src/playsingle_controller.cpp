@@ -31,6 +31,7 @@
 #include "game_events/pump.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
+#include "gui/dialogs/story_viewer.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "hotkey/hotkey_handler_sp.hpp"
 #include "log.hpp"
@@ -49,7 +50,6 @@
 #include "scripting/plugins/context.hpp"
 #include "soundsource.hpp"
 #include "statistics.hpp"
-#include "storyscreen/interface.hpp"
 #include "units/unit.hpp"
 #include "wesnothd_connection_error.hpp"
 #include "whiteboard/manager.hpp"
@@ -235,7 +235,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 	sound::commit_music_changes();
 
 	if(!this->is_skipping_replay()) {
-		show_story(gui_->video(), get_scenario_name(), level.child_range("story"));
+		gui2::dialogs::story_viewer::display(get_scenario_name(), level.child_range("story"), gui_->video());
 	}
 	gui_->labels().read(level);
 
@@ -323,6 +323,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 		// instead should they want special music.
 		const std::string& end_music = select_music(is_victory);
 		if((!is_victory || end_level.transient.carryover_report) && !end_music.empty()) {
+			sound::empty_playlist();
 			sound::play_music_once(end_music);
 		}
 		persist_.end_transaction();

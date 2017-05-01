@@ -17,6 +17,7 @@
 #include "editor/action/action_label.hpp"
 
 #include "editor/editor_display.hpp"
+#include "editor/controller/editor_controller.hpp"
 #include "editor/map/context_manager.hpp"
 
 #include "gui/dialogs/editor/edit_label.hpp"
@@ -46,7 +47,7 @@ editor_action* mouse_action_map_label::drag_left(editor_display& disp, int x, in
 	click_ = false;
 
 	editor_action_chain* chain = nullptr;
-	const terrain_label* label = get_current_labels()->get_label(last_draged_);
+	const terrain_label* label = disp.get_controller().get_current_map_context().get_labels().get_label(last_draged_);
 
 
 	if (label) {
@@ -70,7 +71,7 @@ editor_action* mouse_action_map_label::up_left(editor_display& disp, int x, int 
 		return nullptr;
 	}
 
-	const terrain_label* old_label = editor::get_current_labels()->get_label(hex);
+	const terrain_label* old_label = disp.get_controller().get_current_map_context().get_labels().get_label(hex);
 	std::string label     = old_label ? old_label->text()              : "";
 	std::string team_name = old_label ? old_label->team_name()         : "";
 	std::string category  = old_label ? old_label->category()          : "";
@@ -79,10 +80,7 @@ editor_action* mouse_action_map_label::up_left(editor_display& disp, int x, int 
 	bool immutable        = old_label ? old_label->immutable()         : true;
 	color_t color       = old_label ? old_label->color()             : font::NORMAL_COLOR;
 
-	// TODO: remove once color_t is used everywhere
-	color_t c(color);
-
-	gui2::dialogs::editor_edit_label d(label, immutable, visible_fog, visible_shroud, c, category);
+	gui2::dialogs::editor_edit_label d(label, immutable, visible_fog, visible_shroud, color, category);
 
 	editor_action* a = nullptr;
 	if(d.show(disp.video())) {

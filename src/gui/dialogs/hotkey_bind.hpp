@@ -41,9 +41,7 @@ private:
 
 	hotkey::hotkey_ptr new_binding_;
 
-	void key_press_callback(window& window, const SDL_Keycode key);
-
-	void mouse_button_callback(window& window, Uint8 button);
+	void sdl_event_callback(window& win, const SDL_Event &event);
 
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const override;

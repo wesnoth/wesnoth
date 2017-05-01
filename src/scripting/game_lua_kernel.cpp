@@ -70,6 +70,7 @@
 #include "recall_list_manager.hpp"      // for recall_list_manager
 #include "replay.hpp"                   // for get_user_choice, etc
 #include "reports.hpp"                  // for register_generator, etc
+#include "scripting/lua_audio.hpp"
 #include "scripting/lua_unit.hpp"
 #include "scripting/lua_unit_attacks.hpp"
 #include "scripting/lua_common.hpp"
@@ -2512,6 +2513,7 @@ int game_lua_kernel::intf_simulate_combat(lua_State *L)
  */
 static int intf_set_music(lua_State *L)
 {
+	lg::wml_error() << "set_music is deprecated; please use the wesnoth.playlist table instead!\n";
 	if (lua_isnoneornil(L, 1)) {
 		sound::commit_music_changes();
 		return 0;
@@ -2534,6 +2536,26 @@ int game_lua_kernel::intf_play_sound(lua_State *L)
 	int repeats = lua_tointeger(L, 2);
 	sound::play_sound(m, sound::SOUND_FX, repeats);
 	return 0;
+}
+
+/**
+ * Gets/sets the current sound volume
+ * - Arg 1: (optional) New volume to set
+ * - Return: Original volume
+ */
+static int intf_sound_volume(lua_State* L)
+{
+	int vol = preferences::sound_volume();
+	lua_pushnumber(L, sound::get_sound_volume() * 100.0f / vol);
+	if(lua_isnumber(L, 1)) {
+		float rel = lua_tonumber(L, 1);
+		if(rel < 0.0f || rel > 100.0f) {
+			return luaL_argerror(L, 1, "volume must be in range 0..100");
+		}
+		vol = static_cast<int>(rel*vol / 100.0f);
+		sound::set_sound_volume(vol);
+	}
+	return 1;
 }
 
 /**
@@ -2979,9 +3001,10 @@ int game_lua_kernel::intf_get_sides(lua_State* L)
 	LOG_LUA << "intf_get_sides called: this = " << std::hex << this << std::dec << " myname = " << my_name() << std::endl;
 	std::vector<int> sides;
 	const vconfig ssf = luaW_checkvconfig(L, 1, true);
-	if(ssf.null()){
-		for(unsigned side_number = 1; side_number <= teams().size(); ++side_number)
+	if(ssf.null()) {
+		for (unsigned side_number = 1; side_number <= teams().size(); ++side_number) {
 			sides.push_back(side_number);
+		}
 	} else {
 		filter_context & fc = game_state_;
 
@@ -3229,165 +3252,6 @@ int game_lua_kernel::intf_delay(lua_State *L)
 		CVideo::delay(10);
 	} while (int(final - SDL_GetTicks()) > 0);
 	return 0;
-}
-
-namespace { // Types
-
-	class recursion_preventer {
-		typedef std::map<map_location, int> counter;
-		static counter counter_;
-		static const int max_recursion = 10;
-
-		map_location loc_;
-		bool too_many_recursions_;
-
-		public:
-		recursion_preventer(map_location& loc) :
-			loc_(loc),
-			too_many_recursions_(false)
-		{
-			counter::iterator inserted = counter_.emplace(loc_, 0).first;
-			++inserted->second;
-			too_many_recursions_ = inserted->second >= max_recursion;
-		}
-		~recursion_preventer()
-		{
-			counter::iterator itor = counter_.find(loc_);
-			if (--itor->second == 0)
-			{
-				counter_.erase(itor);
-			}
-		}
-		bool too_many_recursions() const
-		{
-			return too_many_recursions_;
-		}
-	};
-	recursion_preventer::counter recursion_preventer::counter_;
-	typedef std::unique_ptr<recursion_preventer> recursion_preventer_ptr;
-} // end anonymouse namespace (types)
-
-int game_lua_kernel::intf_kill(lua_State *L)
-{
-	vconfig cfg(luaW_checkvconfig(L, 1));
-
-	const game_events::queued_event &event_info = get_event_info();
-
-	size_t number_killed = 0;
-
-	bool secondary_unit = cfg.has_child("secondary_unit");
-	game_events::entity_location killer_loc(map_location(0, 0));
-	if(cfg["fire_event"].to_bool() && secondary_unit)
-	{
-		secondary_unit = false;
-		const unit_filter ufilt(cfg.child("secondary_unit"), &game_state_);
-		for(unit_map::const_unit_iterator unit = units().begin(); unit; ++unit) {
-				if ( ufilt( *unit) )
-				{
-					killer_loc = game_events::entity_location(*unit);
-					secondary_unit = true;
-					break;
-				}
-		}
-		if(!secondary_unit) {
-			WRN_LUA << "failed to match [secondary_unit] in [kill] with a single on-board unit" << std::endl;
-		}
-	}
-
-	//Find all the dead units first, because firing events ruins unit_map iteration
-	std::vector<unit *> dead_men_walking;
-	const unit_filter ufilt(cfg, &game_state_);
-	for (unit & u : units()){
-		if ( ufilt(u) ) {
-			dead_men_walking.push_back(&u);
-		}
-	}
-
-	for(unit * un : dead_men_walking) {
-		map_location loc(un->get_location());
-		bool fire_event = false;
-		game_events::entity_location death_loc(*un);
-		if(!secondary_unit) {
-			killer_loc = game_events::entity_location(*un);
-		}
-
-		if (cfg["fire_event"].to_bool())
-			{
-				// Prevent infinite recursion of 'die' events
-				fire_event = true;
-				recursion_preventer_ptr recursion_prevent;
-
-				if (event_info.loc1 == death_loc && (event_info.name == "die" || event_info.name == "last breath"))
-					{
-						recursion_prevent.reset(new recursion_preventer(death_loc));
-
-						if(recursion_prevent->too_many_recursions())
-							{
-								fire_event = false;
-
-								ERR_LUA << "tried to fire 'die' or 'last breath' event on primary_unit inside its own 'die' or 'last breath' event with 'first_time_only' set to false!" << std::endl;
-							}
-					}
-			}
-		if (fire_event) {
-			play_controller_.pump().fire("last_breath", death_loc, killer_loc);
-		}
-
-		// Visual consequences of the kill.
-		if (game_display_) {
-			if (cfg["animate"].to_bool()) {
-				game_display_->scroll_to_tile(loc);
-				if (unit_map::iterator iun = units().find(loc)) {
-					unit_display::unit_die(loc, *iun);
-				}
-			} else {
-				// Make sure the unit gets (fully) cleaned off the screen.
-				game_display_->invalidate(loc);
-				if (unit_map::iterator iun = units().find(loc)) {
-					iun->anim_comp().invalidate(*game_display_);
-				}
-			}
-			game_display_->redraw_minimap();
-		}
-
-		if (fire_event) {
-			play_controller_.pump().fire("die", death_loc, killer_loc);
-			unit_map::iterator iun = units().find(death_loc);
-			if ( death_loc.matches_unit(iun) ) {
-				units().erase(iun);
-			}
-		}
-		else units().erase(loc);
-
-		++number_killed;
-	}
-
-	// If the filter doesn't contain positional information,
-	// then it may match units on all recall lists.
-	const config::attribute_value cfg_x = cfg["x"];
-	const config::attribute_value cfg_y = cfg["y"];
-	if((cfg_x.empty() || cfg_x == "recall")
-	&& (cfg_y.empty() || cfg_y == "recall"))
-	{
-		//remove the unit from the corresponding team's recall list
-		for(std::vector<team>::iterator pi = teams().begin();
-				pi!=teams().end(); ++pi)
-		{
-			for(std::vector<unit_ptr>::iterator j = pi->recall_list().begin(); j != pi->recall_list().end();) { //TODO: This block is really messy, cleanup somehow...
-				scoped_recall_unit auto_store("this_unit", pi->save_id(), j - pi->recall_list().begin());
-				if (ufilt( *(*j), map_location() )) {
-					j = pi->recall_list().erase(j);
-					++number_killed;
-				} else {
-					++j;
-				}
-			}
-		}
-	}
-
-	lua_pushinteger(L, number_killed);
-
-	return 1;
 }
 
 int game_lua_kernel::intf_label(lua_State *L)
@@ -3748,21 +3612,11 @@ int game_lua_kernel::intf_set_time_of_day(lua_State * L)
 
 int game_lua_kernel::intf_scroll(lua_State * L)
 {
-	vconfig cfg = luaW_checkvconfig(L, 1);
+	int x = luaL_checkinteger(L, 1), y = luaL_checkinteger(L, 2);
 
 	if (game_display_) {
-		const std::vector<int> side_list = get_sides_vector(cfg);
-		bool side_match = false;
-		for (int side : side_list) {
-			if(board().get_team(side).is_local_human()) {
-				side_match = true;
-				break;
-			}
-		}
-		if ((cfg["side"].empty() && !cfg.has_child("filter_side")) || side_match) {
-			game_display_->scroll(cfg["x"], cfg["y"], true);
-			game_display_->draw(true,true);
-		}
+		game_display_->scroll(x, y, true);
+		game_display_->draw(true, true);
 	}
 
 	return 0;
@@ -4110,6 +3964,7 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "modify_ai",                &intf_modify_ai_old            },
 		{ "remove_modifications",     &intf_remove_modifications     },
 		{ "set_music",                &intf_set_music                },
+		{ "sound_volume",             &intf_sound_volume             },
 		{ "transform_unit",           &intf_transform_unit           },
 		{ "unit_defense",             &intf_unit_defense             },
 		{ "unit_movement_cost",       &intf_unit_movement_cost       },
@@ -4163,7 +4018,6 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "get_displayed_unit",        &dispatch<&game_lua_kernel::intf_get_displayed_unit         >        },
 		{ "highlight_hex",             &dispatch<&game_lua_kernel::intf_highlight_hex              >        },
 		{ "is_enemy",                  &dispatch<&game_lua_kernel::intf_is_enemy                   >        },
-		{ "kill",                      &dispatch<&game_lua_kernel::intf_kill                       >        },
 		{ "label",                     &dispatch<&game_lua_kernel::intf_label                      >        },
 		{ "lock_view",                 &dispatch<&game_lua_kernel::intf_lock_view                  >        },
 		{ "log_replay",                &dispatch<&game_lua_kernel::intf_log_replay                 >        },
@@ -4291,6 +4145,9 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	lua_setmetatable(L, -2);
 	lua_setfield(L, -2, "current");
 	lua_pop(L, 1);
+
+	// Create the playlist table with its metatable
+	cmd_log_ << lua_audio::register_table(L);
 
 	// Create the wml_actions table.
 	cmd_log_ << "Adding wml_actions table...\n";
@@ -4527,10 +4384,10 @@ int game_lua_kernel::cfun_builtin_effect(lua_State *L)
 	cfg["times"] = 1;
 
 	if(need_apply) {
-		u.get()->apply_builtin_effect(which_effect, cfg);
+		u->apply_builtin_effect(which_effect, cfg);
 		return 0;
 	} else {
-		std::string description = u.get()->describe_builtin_effect(which_effect, cfg);
+		std::string description = u->describe_builtin_effect(which_effect, cfg);
 		lua_pushstring(L, description.c_str());
 		return 1;
 	}

@@ -380,7 +380,6 @@ void play_controller::hotkey_handler::expand_autosaves(std::vector<config>& item
 {
 	const compression::format comp_format = preferences::save_compression_format();
 
-	savenames_.clear();
 	savenames_.resize(i);
 
 	auto pos = items.erase(items.begin() + i);
@@ -413,7 +412,6 @@ void play_controller::hotkey_handler::expand_autosaves(std::vector<config>& item
 
 void play_controller::hotkey_handler::expand_wml_commands(std::vector<config>& items, int i)
 {
-	wml_commands_.clear();
 	// Pad the commands with null pointers (keeps the indices of items and wml_commands_ synced).
 	wml_commands_.resize(i);
 
@@ -446,6 +444,9 @@ void play_controller::hotkey_handler::show_menu(const std::vector<config>& items
 
 	// Add special non-hotkey items to the menu and remember their indices
 	// Iterate in reverse to avoid also iterating over the new inserted items
+	savenames_.clear();
+	wml_commands_.clear();
+
 	for(int i = items.size() - 1; i >= 0; i--) {
 		if(items[i]["id"] == "AUTOSAVES") {
 			expand_autosaves(items, i);

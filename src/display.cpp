@@ -76,6 +76,8 @@ namespace {
 	bool benchmark = false;
 
 	bool debug_foreground = false;
+
+	int prevLabel = 0;
 }
 
 unsigned int display::zoom_ = DefaultZoom;
@@ -274,10 +276,10 @@ void display::init_flags() {
 	std::vector<std::string> side_colors;
 	side_colors.reserve(dc_->teams().size());
 
-	for(size_t i = 0; i != dc_->teams().size(); ++i) {
-		std::string side_color = dc_->teams()[i].color();
+	for(const team& t : dc_->teams()) {
+		std::string side_color = t.color();
 		side_colors.push_back(side_color);
-		init_flags_for_side_internal(i, side_color);
+		init_flags_for_side_internal(t.side() - 1, side_color);
 	}
 	image::set_team_colors(&side_colors);
 }
@@ -345,13 +347,13 @@ surface display::get_flag(const map_location& loc)
 		return surface(nullptr);
 	}
 
-	for(size_t i = 0; i != dc_->teams().size(); ++i) {
-		if(dc_->teams()[i].owns_village(loc) &&
-		  (!fogged(loc) || !dc_->teams()[currentTeam_].is_enemy(i+1)))
+	for (const team& t : dc_->teams()) {
+		if (t.owns_village(loc) && (!fogged(loc) || !dc_->get_team(viewing_side()).is_enemy(t.side())))
 		{
-			flags_[i].update_last_draw_time();
+			auto& flag = flags_[t.side() - 1];
+			flag.update_last_draw_time();
 			const image::locator &image_flag = animate_map_ ?
-				flags_[i].get_current_frame() : flags_[i].get_first_frame();
+				flag.get_current_frame() : flag.get_first_frame();
 			return image::get_image(image_flag, image::TOD_COLORED);
 		}
 	}
@@ -1744,6 +1746,7 @@ void display::enable_menu(const std::string& item, bool enable)
 
 void display::announce(const std::string& message, const color_t& color, int lifetime)
 {
+	font::remove_floating_label(prevLabel);
 	font::floating_label flabel(message);
 	flabel.set_font_size(font::SIZE_XLARGE);
 	flabel.set_color(color);
@@ -1751,7 +1754,7 @@ void display::announce(const std::string& message, const color_t& color, int lif
 	flabel.set_lifetime(lifetime);
 	flabel.set_clip_rect(map_outside_area());
 
-	font::add_floating_label(flabel);
+	prevLabel = font::add_floating_label(flabel);
 }
 
 void display::draw_minimap()
@@ -2363,16 +2366,16 @@ void display::redraw_everything()
 
 	redraw_background_ = true;
 
+	for(std::function<void(display&)> f : redraw_observers_) {
+		f(*this);
+	}
+
 	int ticks1 = SDL_GetTicks();
 	invalidate_all();
 	int ticks2 = SDL_GetTicks();
 	draw(true,true);
 	int ticks3 = SDL_GetTicks();
 	LOG_DP << "invalidate and draw: " << (ticks3 - ticks2) << " and " << (ticks2 - ticks1) << "\n";
-
-	for (std::function<void(display&)> f : redraw_observers_) {
-		f(*this);
-	}
 
 	complete_redraw_event_.notify_observers();
 }

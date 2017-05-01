@@ -42,6 +42,11 @@ public:
 	/** Inherited from display. */
 	virtual const time_of_day& get_time_of_day(const map_location& loc = map_location::null_location()) const override;
 
+	editor_controller& get_controller()
+	{
+		return controller_;
+	}
+
 protected:
 	void pre_draw() override;
 	/**

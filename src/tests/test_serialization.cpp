@@ -65,9 +65,20 @@ BOOST_AUTO_TEST_CASE( utils_unicode_test )
 	utf16::string water_u16 = unicode_cast<utf16::string>(water_u4);
 
 	BOOST_CHECK_EQUAL(water_u4[0], water_u16[0]);
+#if defined(_WIN32) || defined(_WIN64)
+	// Windows complains it can't be represented in the currentl code-page.
+	// So instead, check directly for its UTF-8 representation.
+	BOOST_CHECK_EQUAL(water_u8, "\xE6\xB0\xB4");
+#else
 	BOOST_CHECK_EQUAL(water_u8, "\u6C34");
+#endif
 
+#if defined(_WIN32) || defined(_WIN64)
+	// Same as above.
+	utf8::string nonbmp_u8("\xF0\x90\x80\x80");
+#else
 	utf8::string nonbmp_u8("\U00010000");
+#endif
 	ucs4::string nonbmp_u4 = unicode_cast<ucs4::string>(nonbmp_u8);
 	utf16::string nonbmp_u16 = unicode_cast<utf16::string>(nonbmp_u4);
 
