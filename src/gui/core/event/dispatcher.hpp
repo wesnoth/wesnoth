@@ -690,12 +690,12 @@ public:
 				case back_pre_child: {
 					signal_type<T>& signal_queue = queue[event];
 					for(typename std::list<T>::iterator itor
-						= signal_queue.child.begin();
-						itor != signal_queue.child.end();
+						= signal_queue.pre_child.begin();
+						itor != signal_queue.pre_child.end();
 						++itor) {
 
 						if(signal.target_type() == itor->target_type()) {
-							signal_queue.child.erase(itor);
+							signal_queue.pre_child.erase(itor);
 							return;
 						}
 					}
@@ -720,12 +720,12 @@ public:
 				case back_post_child: {
 					signal_type<T>& signal_queue = queue[event];
 					for(typename std::list<T>::iterator itor
-						= signal_queue.child.begin();
-						itor != signal_queue.child.end();
+						= signal_queue.post_child.begin();
+						itor != signal_queue.post_child.end();
 						++itor) {
 
 						if(signal.target_type() == itor->target_type()) {
-							signal_queue.child.erase(itor);
+							signal_queue.post_child.erase(itor);
 							return;
 						}
 					}
