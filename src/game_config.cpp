@@ -429,7 +429,7 @@ void add_color_info(const config& v)
 			}
 		}
 
-		team_rgb_range.insert({id, color_range(temp)});
+		team_rgb_range.emplace(id, color_range(temp));
 		team_rgb_name[id] = teamC["name"];
 
 		LOG_NG << "registered color range '" << id << "': " << team_rgb_range[id].debug() << '\n';
@@ -440,7 +440,7 @@ void add_color_info(const config& v)
 			continue;
 		}
 
-		team_rgb_colors.insert({id, tp});
+		team_rgb_colors.emplace(id, tp);
 	}
 
 	for(const config &cp : v.child_range("color_palette")) {
@@ -454,7 +454,7 @@ void add_color_info(const config& v)
 				}
 			}
 
-			team_rgb_colors.insert({rgb.first, temp});
+			team_rgb_colors.emplace(rgb.first, temp);
 			LOG_NG << "registered color palette: " << rgb.first << '\n';
 		}
 	}
@@ -484,7 +484,7 @@ const color_range& color_info(const std::string& name)
 		}
 	}
 
-	team_rgb_range.insert({name, color_range(temp)});
+	team_rgb_range.emplace(name, color_range(temp));
 	return color_info(name);
 }
 
@@ -506,7 +506,7 @@ const std::vector<color_t>& tc_info(const std::string& name)
 		}
 	}
 
-	team_rgb_colors.insert({name, temp});
+	team_rgb_colors.emplace(name, temp);
 	return tc_info(name);
 }
 

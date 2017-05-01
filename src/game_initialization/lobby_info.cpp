@@ -174,7 +174,7 @@ bool lobby_info::process_gamelist_diff(const config& data)
 		const std::string& diff_result = c[config::diff_track_attribute];
 		if(diff_result == "new" || diff_result == "modified") {
 			if(current_i == games_by_id_.end()) {
-				games_by_id_.insert({game_id, new game_info(c, game_config_, installed_addons_)});
+				games_by_id_.emplace(game_id, new game_info(c, game_config_, installed_addons_));
 				continue;
 			}
 
