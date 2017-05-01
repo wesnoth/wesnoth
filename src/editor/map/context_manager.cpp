@@ -223,13 +223,7 @@ void context_manager::edit_side_dialog(int side_index)
 {
 	team& t = get_map_context().get_teams()[side_index];
 
-	//TODO
-	//t.support()
-
 	editor_team_info team_info(t);
-
-	// The side number perhaps should have been set in map_context::new_side() but the design of team::team_info appears to be read-only.
-	team_info.side = side_index + 1;	// note team_info::side is supposed to be 1 to n, while side/team indexes are 0 to n-1
 
 	if(gui2::dialogs::editor_edit_side::execute(team_info, gui_.video())) {
 		get_map_context().set_side_setup(team_info);
