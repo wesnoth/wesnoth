@@ -19,13 +19,15 @@
 #include "hotkey/hotkey_command.hpp"
 #include "serialization/unicode_types.hpp"
 
+#include "utils/functional.hpp"
+
 #include <SDL_events.h>
 
-#include "utils/functional.hpp"
 #include <boost/mpl/int.hpp>
-#include <type_traits>
 
+#include <list>
 #include <map>
+#include <type_traits>
 
 namespace gui2
 {
@@ -632,9 +634,9 @@ public:
 		{
 		}
 
-		std::vector<T> pre_child;
-		std::vector<T> child;
-		std::vector<T> post_child;
+		std::list<T> pre_child;
+		std::list<T> child;
+		std::list<T> post_child;
 	};
 
 	/** Helper struct to generate the various event queues. */
@@ -653,24 +655,21 @@ public:
 		{
 			switch(position) {
 				case front_pre_child:
-					queue[event].pre_child.insert(
-							queue[event].pre_child.begin(), signal);
+					queue[event].pre_child.push_front(signal);
 					break;
 				case back_pre_child:
 					queue[event].pre_child.push_back(signal);
 					break;
 
 				case front_child:
-					queue[event]
-							.child.insert(queue[event].child.begin(), signal);
+					queue[event].child.push_front(signal);
 					break;
 				case back_child:
 					queue[event].child.push_back(signal);
 					break;
 
 				case front_post_child:
-					queue[event].post_child.insert(
-							queue[event].post_child.begin(), signal);
+					queue[event].post_child.push_front(signal);
 					break;
 				case back_post_child:
 					queue[event].post_child.push_back(signal);
@@ -690,7 +689,7 @@ public:
 				case front_pre_child:
 				case back_pre_child: {
 					signal_type<T>& signal_queue = queue[event];
-					for(typename std::vector<T>::iterator itor
+					for(typename std::list<T>::iterator itor
 						= signal_queue.child.begin();
 						itor != signal_queue.child.end();
 						++itor) {
@@ -705,7 +704,7 @@ public:
 				case front_child:
 				case back_child: {
 					signal_type<T>& signal_queue = queue[event];
-					for(typename std::vector<T>::iterator itor
+					for(typename std::list<T>::iterator itor
 						= signal_queue.child.begin();
 						itor != signal_queue.child.end();
 						++itor) {
@@ -720,7 +719,7 @@ public:
 				case front_post_child:
 				case back_post_child: {
 					signal_type<T>& signal_queue = queue[event];
-					for(typename std::vector<T>::iterator itor
+					for(typename std::list<T>::iterator itor
 						= signal_queue.child.begin();
 						itor != signal_queue.child.end();
 						++itor) {
