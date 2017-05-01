@@ -2366,16 +2366,16 @@ void display::redraw_everything()
 
 	redraw_background_ = true;
 
+	for(std::function<void(display&)> f : redraw_observers_) {
+		f(*this);
+	}
+
 	int ticks1 = SDL_GetTicks();
 	invalidate_all();
 	int ticks2 = SDL_GetTicks();
 	draw(true,true);
 	int ticks3 = SDL_GetTicks();
 	LOG_DP << "invalidate and draw: " << (ticks3 - ticks2) << " and " << (ticks2 - ticks1) << "\n";
-
-	for (std::function<void(display&)> f : redraw_observers_) {
-		f(*this);
-	}
 
 	complete_redraw_event_.notify_observers();
 }
