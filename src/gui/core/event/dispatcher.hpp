@@ -681,54 +681,35 @@ public:
 							   const queue_position position,
 							   const T& signal)
 		{
-			/*
-			 * The function doesn't differentiate between front and back
-			 * position so fall down from front to back.
+			signal_type<T>& signal_queue = queue[event];
+
+			/* The function doesn't differentiate between front and back position so fall
+			 * down from front to back.
+			 *
+			 * NOTE: This used to only remove the first signal of matching target type.
+			 *       That behavior could be restored in the future if needed.
+			 * - vultraz 5/2/2017
 			 */
 			switch(position) {
 				case front_pre_child:
 				case back_pre_child: {
-					signal_type<T>& signal_queue = queue[event];
-					for(typename std::list<T>::iterator itor
-						= signal_queue.pre_child.begin();
-						itor != signal_queue.pre_child.end();
-						++itor) {
-
-						if(signal.target_type() == itor->target_type()) {
-							signal_queue.pre_child.erase(itor);
-							return;
-						}
-					}
+					signal_queue.pre_child.remove_if(
+						[&signal](T& element) { return signal.target_type() == element.target_type(); }
+					);
 				} break;
 
 				case front_child:
 				case back_child: {
-					signal_type<T>& signal_queue = queue[event];
-					for(typename std::list<T>::iterator itor
-						= signal_queue.child.begin();
-						itor != signal_queue.child.end();
-						++itor) {
-
-						if(signal.target_type() == itor->target_type()) {
-							signal_queue.child.erase(itor);
-							return;
-						}
-					}
+					signal_queue.child.remove_if(
+						[&signal](T& element) { return signal.target_type() == element.target_type(); }
+					);
 				} break;
 
 				case front_post_child:
 				case back_post_child: {
-					signal_type<T>& signal_queue = queue[event];
-					for(typename std::list<T>::iterator itor
-						= signal_queue.post_child.begin();
-						itor != signal_queue.post_child.end();
-						++itor) {
-
-						if(signal.target_type() == itor->target_type()) {
-							signal_queue.post_child.erase(itor);
-							return;
-						}
-					}
+					signal_queue.post_child.remove_if(
+						[&signal](T& element) { return signal.target_type() == element.target_type(); }
+					);
 				} break;
 			}
 		}
