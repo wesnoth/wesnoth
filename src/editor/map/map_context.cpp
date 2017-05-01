@@ -332,10 +332,10 @@ void map_context::load_scenario(const config& game_config)
 	int i = 1;
 	for(config &side : scenario.child_range("side"))
 	{
-		team t;
+		teams_.emplace_back();
+
 		side["side"] = i;
-		t.build(side, map_);
-		teams_.push_back(t);
+		teams_.back().build(side, map_);
 
 		for(config &a_unit : side.child_range("unit")) {
 			map_location loc(a_unit, nullptr);
