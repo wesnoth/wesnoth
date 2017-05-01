@@ -216,6 +216,20 @@ map_context::map_context(const config& game_config, const std::string& filename)
 	add_to_recent_files();
 }
 
+void map_context::new_side()
+{
+	teams_.emplace_back();
+
+	config cfg;
+	cfg["side"] = teams_.size(); // side is 1-indexed, so we can just use size()
+	cfg["hidden"] = false;
+
+	// TODO: build might be slight overkill here just to set the side...
+	teams_.back().build(cfg, get_map());
+
+	actions_since_save_++;
+}
+
 void map_context::set_side_setup(editor_team_info& info)
 {
 	assert(teams_.size() >= static_cast<unsigned int>(info.side));

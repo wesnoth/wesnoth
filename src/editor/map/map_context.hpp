@@ -98,12 +98,7 @@ public:
 	const editor_map& get_map() const { return map_; }
 
 	/** Adds a new side to the map */
-	void new_side() {
-		team t;
-		t.set_hidden(false);
-    	teams_.push_back(t);
-    	actions_since_save_++;
-    }
+	void new_side();
 
 	/** removes the last side from the scenario */
 	void remove_side() {
