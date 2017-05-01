@@ -53,6 +53,8 @@ std::vector<game_tip> shuffle(const std::vector<game_tip>& tips);
 class game_tip
 {
 public:
+	game_tip(const t_string& text, const t_string& source, const std::string& unit_filter);
+
 	const t_string& text() const
 	{
 		return text_;
@@ -66,8 +68,6 @@ public:
 private:
 	friend std::vector<game_tip> tip_of_the_day::load(const config&);
 	friend std::vector<game_tip> tip_of_the_day::shuffle(const std::vector<game_tip>& tips);
-
-	game_tip(const t_string& text, const t_string& source, const std::string& unit_filter);
 
 	/** The text of the tip. */
 	t_string text_;

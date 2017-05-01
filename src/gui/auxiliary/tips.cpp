@@ -37,7 +37,7 @@ std::vector<game_tip> load(const config& cfg)
 	std::vector<game_tip> result;
 
 	for(const auto& tip : cfg.child_range("tip")) {
-		result.push_back(game_tip(tip["text"], tip["source"], tip["encountered_units"]));
+		result.emplace_back(tip["text"], tip["source"], tip["encountered_units"]);
 	}
 
 	return result;
@@ -45,23 +45,29 @@ std::vector<game_tip> load(const config& cfg)
 
 std::vector<game_tip> shuffle(const std::vector<game_tip>& tips)
 {
-	std::vector<game_tip> result;
-
+	std::vector<game_tip> result = tips;
 	const std::set<std::string>& units = preferences::encountered_units();
 
-	for(const auto& tip : tips) {
-		if(tip.unit_filter_.empty()) {
-			result.push_back(tip);
-		} else {
-			for(const auto& unit : tip.unit_filter_) {
-				if(units.find(unit) != units.end()) {
-					result.push_back(tip);
-					break;
-				}
-			}
-		}
-	}
+	// Remove entries whose filters do not match from the tips list.
+	const auto iter = std::remove_if(result.begin(), result.end(), [&units](const game_tip& tip) {
+		const auto& filters = tip.unit_filter_;
 
+		// Filter passes there's no filter at all or if every unit specified has already been
+		// encountered in-game.
+		const bool passes_filter = filters.empty()
+			? true
+			: std::all_of(filters.begin(), filters.end(), [&units](const std::string& u) {
+				return units.find(u) != units.end();
+			});
+
+		return !passes_filter;
+	});
+
+	// Prune invalid entries and shrink the list.
+	result.erase(iter, result.end());
+	result.shrink_to_fit();
+
+	// Shuffle the list.
 	std::shuffle(result.begin(), result.end(), randomness::rng::default_instance());
 	return result;
 }
