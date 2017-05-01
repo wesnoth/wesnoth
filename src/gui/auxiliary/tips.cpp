@@ -23,25 +23,21 @@
 
 namespace gui2
 {
-
-game_tip::game_tip(const t_string& text,
-		   const t_string& source,
-		   const std::string& unit_filter)
-	: text_(text), source_(source), unit_filter_(utils::split(unit_filter))
+game_tip::game_tip(const t_string& text, const t_string& source, const std::string& unit_filter)
+	: text_(text)
+	, source_(source)
+	, unit_filter_(utils::split(unit_filter))
 {
 }
 
 namespace tip_of_the_day
 {
-
 std::vector<game_tip> load(const config& cfg)
 {
 	std::vector<game_tip> result;
 
-	for(const auto & tip : cfg.child_range("tip"))
-	{
-		result.push_back(
-				game_tip(tip["text"], tip["source"], tip["encountered_units"]));
+	for(const auto& tip : cfg.child_range("tip")) {
+		result.push_back(game_tip(tip["text"], tip["source"], tip["encountered_units"]));
 	}
 
 	return result;
@@ -53,13 +49,11 @@ std::vector<game_tip> shuffle(const std::vector<game_tip>& tips)
 
 	const std::set<std::string>& units = preferences::encountered_units();
 
-	for(const auto & tip : tips)
-	{
+	for(const auto& tip : tips) {
 		if(tip.unit_filter_.empty()) {
 			result.push_back(tip);
 		} else {
-			for(const auto & unit : tip.unit_filter_)
-			{
+			for(const auto& unit : tip.unit_filter_) {
 				if(units.find(unit) != units.end()) {
 					result.push_back(tip);
 					break;

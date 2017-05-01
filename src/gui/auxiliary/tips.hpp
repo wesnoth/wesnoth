@@ -23,12 +23,10 @@ class config;
 
 namespace gui2
 {
-
 class game_tip;
 
 namespace tip_of_the_day
 {
-
 /**
  * Loads the tips from a config.
  *
@@ -59,6 +57,7 @@ public:
 	{
 		return text_;
 	}
+
 	const t_string& source() const
 	{
 		return source_;
@@ -67,9 +66,8 @@ public:
 private:
 	friend std::vector<game_tip> tip_of_the_day::load(const config&);
 	friend std::vector<game_tip> tip_of_the_day::shuffle(const std::vector<game_tip>& tips);
-	game_tip(const t_string& text,
-		 const t_string& source,
-		 const std::string& unit_filter);
+
+	game_tip(const t_string& text, const t_string& source, const std::string& unit_filter);
 
 	/** The text of the tip. */
 	t_string text_;
@@ -81,8 +79,7 @@ private:
 	 * List of units to filter the tip upon.
 	 *
 	 * If the list is empty the tip is shown.
-	 * Else the unit must have encountered at least one of the units in the
-	 * list.
+	 * Else the unit must have encountered at least one of the units in the list.
 	 */
 	std::vector<std::string> unit_filter_;
 };
