@@ -468,7 +468,7 @@ void manager::raise_map_changed() {
 const std::string manager::evaluate_command( side_number side, const std::string& str )
 {
 	//insert new command into history
-	history_.push_back(command_history_item(history_item_counter_++,str));
+	history_.emplace_back(history_item_counter_++,str);
 
 	//prune history - erase 1/2 of it if it grows too large
 	if (history_.size()>MAX_HISTORY_SIZE){

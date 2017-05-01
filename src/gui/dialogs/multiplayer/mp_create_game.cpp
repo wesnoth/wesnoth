@@ -102,7 +102,7 @@ mp_create_game::mp_create_game(const config& cfg, ng::create_engine& create_eng)
 	};
 
 	if(game_config::debug) {
-		level_types_.push_back({ng::level::TYPE::SP_CAMPAIGN, _("SP Campaigns")});
+		level_types_.emplace_back(ng::level::TYPE::SP_CAMPAIGN, _("SP Campaigns"));
 	}
 
 	level_types_.erase(std::remove_if(level_types_.begin(), level_types_.end(),

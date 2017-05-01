@@ -131,7 +131,7 @@ void editor_controller::init_tods(const config& game_config)
 		}
 
 		for (const config &time : schedule.child_range("time")) {
-			times->second.second.push_back(time_of_day(time));
+			times->second.second.emplace_back(time);
 		}
 
 	}
@@ -153,7 +153,7 @@ void editor_controller::init_music(const config& game_config)
 				if (track.file_path().empty())
 					WRN_ED << "Music track " << track.id() << " not found." << std::endl;
 				else
-					music_tracks_.push_back(sound::music_track(music));
+					music_tracks_.emplace_back(music);
 			}
 		}
 	}

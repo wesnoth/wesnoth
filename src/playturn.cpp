@@ -260,7 +260,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 				//if you want that) and not ai or empty and if it is not the dropping side itself,
 				//get this team in as well
 				t_vars["player"] = t->current_player();
-				options.push_back(vgettext("Give control to their ally $player", t_vars));
+				options.emplace_back(vgettext("Give control to their ally $player", t_vars));
 				control_change_options++;
 			}
 
@@ -269,15 +269,15 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			//get all observers in as options to transfer control
 			for (const std::string &screen_observers : resources::screen->observers()) {
 				t_vars["player"] = screen_observers;
-				options.push_back(vgettext("Give control to observer $player", t_vars));
+				options.emplace_back(vgettext("Give control to observer $player", t_vars));
 				observers.push_back(screen_observers);
 				control_change_options++;
 			}
 
-			options.push_back(_("Replace with AI"));
-			options.push_back(_("Replace with local player"));
-			options.push_back(_("Set side to idle"));
-			options.push_back(_("Save and abort game"));
+			options.emplace_back(_("Replace with AI"));
+			options.emplace_back(_("Replace with local player"));
+			options.emplace_back(_("Set side to idle"));
+			options.emplace_back(_("Save and abort game"));
 
 			t_vars["player"] = tm.current_player();
 			const std::string gettext_message =  vgettext("$player has left the game. What do you want to do?", t_vars);

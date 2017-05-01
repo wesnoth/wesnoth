@@ -167,7 +167,7 @@ void formula_debugger::show_gui()
 
 void formula_debugger::call_stack_push(const std::string &str)
 {
-	call_stack_.push_back(debug_info(arg_number_extra_debug_info,counter_++,call_stack_.size(),f_name_extra_debug_info,str,variant(),false));
+	call_stack_.emplace_back(arg_number_extra_debug_info,counter_++,call_stack_.size(),f_name_extra_debug_info,str,variant(),false);
 	arg_number_extra_debug_info = -1;
 	f_name_extra_debug_info = "";
 	execution_trace_.push_back(call_stack_.back());
@@ -361,28 +361,28 @@ private:
 
 void formula_debugger::add_breakpoint_continue_to_end()
 {
-	breakpoints_.push_back(breakpoint_ptr(new end_breakpoint(*this)));
+	breakpoints_.emplace_back(new end_breakpoint(*this));
 	LOG_FDB << "added 'end' breakpoint"<< std::endl;
 }
 
 
 void formula_debugger::add_breakpoint_step_into()
 {
-	breakpoints_.push_back(breakpoint_ptr(new step_in_breakpoint(*this)));
+	breakpoints_.emplace_back(new step_in_breakpoint(*this));
 	LOG_FDB << "added 'step into' breakpoint"<< std::endl;
 }
 
 
 void formula_debugger::add_breakpoint_step_out()
 {
-	breakpoints_.push_back(breakpoint_ptr(new step_out_breakpoint(*this)));
+	breakpoints_.emplace_back(new step_out_breakpoint(*this));
 	LOG_FDB << "added 'step out' breakpoint"<< std::endl;
 }
 
 
 void formula_debugger::add_breakpoint_next()
 {
-	breakpoints_.push_back(breakpoint_ptr(new next_breakpoint(*this)));
+	breakpoints_.emplace_back(new next_breakpoint(*this));
 	LOG_FDB << "added 'next' breakpoint"<< std::endl;
 }
 

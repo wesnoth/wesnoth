@@ -167,7 +167,7 @@ std::vector<target> default_ai_context_impl::find_targets(const move_map& enemy_
 			const double value = threat/double(threats.size());
 			for(std::set<map_location>::const_iterator i = threats.begin(); i != threats.end(); ++i) {
 				LOG_AI << "found threat target... " << *i << " with value: " << value << "\n";
-				targets.push_back(target(*i,value,target::TYPE::THREAT));
+				targets.emplace_back(*i,value,target::TYPE::THREAT);
 			}
 		}
 	}
@@ -215,7 +215,7 @@ std::vector<target> default_ai_context_impl::find_targets(const move_map& enemy_
 				LOG_AI << "found village target... " << *t
 					<< " with value: " << value
 					<< " distance: " << leader_distance << '\n';
-				targets.push_back(target(*t,value,target::TYPE::VILLAGE));
+				targets.emplace_back(*t,value,target::TYPE::VILLAGE);
 			}
 		}
 	}
@@ -231,7 +231,7 @@ std::vector<target> default_ai_context_impl::find_targets(const move_map& enemy_
 			    && !u->invisible(u->get_location(), *resources::gameboard)) {
 				assert(map_.on_board(u->get_location()));
 				LOG_AI << "found enemy leader (side: " << u->side() << ") target... " << u->get_location() << " with value: " << get_leader_value() << "\n";
-				targets.push_back(target(u->get_location(), get_leader_value(), target::TYPE::LEADER));
+				targets.emplace_back(u->get_location(), get_leader_value(), target::TYPE::LEADER);
 			}
 		}
 

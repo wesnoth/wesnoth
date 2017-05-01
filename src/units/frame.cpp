@@ -376,99 +376,99 @@ std::vector<std::string> frame_parsed_parameters::debug_strings() const
 	std::vector<std::string> v;
 
 	if(duration_ > 0) {
-		v.push_back("duration=" + utils::half_signed_value(duration_));
+		v.emplace_back("duration=" + utils::half_signed_value(duration_));
 	}
 
 	if(!image_.get_original().empty()) {
-		v.push_back("image=" + image_.get_original());
+		v.emplace_back("image=" + image_.get_original());
 	}
 
 	if(!image_diagonal_.get_original().empty()) {
-		v.push_back("image_diagonal=" + image_diagonal_.get_original());
+		v.emplace_back("image_diagonal=" + image_diagonal_.get_original());
 	}
 
 	if(!image_mod_.empty()) {
-		v.push_back("image_mod=" + image_mod_);
+		v.emplace_back("image_mod=" + image_mod_);
 	}
 
 	if(!halo_.get_original().empty()) {
-		v.push_back("halo=" + halo_.get_original());
+		v.emplace_back("halo=" + halo_.get_original());
 	}
 
 	if(!halo_x_.get_original().empty()) {
-		v.push_back("halo_x=" + halo_x_.get_original());
+		v.emplace_back("halo_x=" + halo_x_.get_original());
 	}
 
 	if(!halo_y_.get_original().empty()) {
-		v.push_back("halo_y=" + halo_y_.get_original());
+		v.emplace_back("halo_y=" + halo_y_.get_original());
 	}
 
 	if(!halo_mod_.empty()) {
-		v.push_back("halo_mod=" + halo_mod_);
+		v.emplace_back("halo_mod=" + halo_mod_);
 	}
 
 	if(!sound_.empty()) {
-		v.push_back("sound=" + sound_);
+		v.emplace_back("sound=" + sound_);
 	}
 
 	if(!text_.empty()) {
-		v.push_back("text=" + text_);
+		v.emplace_back("text=" + text_);
 
 		if(text_color_) {
-			v.push_back("text_color=" + text_color_->to_rgba_string());
+			v.emplace_back("text_color=" + text_color_->to_rgba_string());
 		}
 	}
 
 	if(!blend_ratio_.get_original().empty()) {
-		v.push_back("blend_ratio=" + blend_ratio_.get_original());
+		v.emplace_back("blend_ratio=" + blend_ratio_.get_original());
 
 		if(blend_with_) {
-			v.push_back("blend_with=" + blend_with_->to_rgba_string());
+			v.emplace_back("blend_with=" + blend_with_->to_rgba_string());
 		}
 	}
 
 	if(!highlight_ratio_.get_original().empty()) {
-		v.push_back("highlight_ratio=" + highlight_ratio_.get_original());
+		v.emplace_back("highlight_ratio=" + highlight_ratio_.get_original());
 	}
 
 	if(!offset_.get_original().empty()) {
-		v.push_back("offset=" + offset_.get_original());
+		v.emplace_back("offset=" + offset_.get_original());
 	}
 
 	if(!submerge_.get_original().empty()) {
-		v.push_back("submerge=" + submerge_.get_original());
+		v.emplace_back("submerge=" + submerge_.get_original());
 	}
 
 	if(!x_.get_original().empty()) {
-		v.push_back("x=" + x_.get_original());
+		v.emplace_back("x=" + x_.get_original());
 	}
 
 	if(!y_.get_original().empty()) {
-		v.push_back("y=" + y_.get_original());
+		v.emplace_back("y=" + y_.get_original());
 	}
 
 	if(!directional_x_.get_original().empty()) {
-		v.push_back("directional_x=" + directional_x_.get_original());
+		v.emplace_back("directional_x=" + directional_x_.get_original());
 	}
 
 	if(!directional_y_.get_original().empty()) {
-		v.push_back("directional_y=" + directional_y_.get_original());
+		v.emplace_back("directional_y=" + directional_y_.get_original());
 	}
 
 	if(!boost::indeterminate(auto_vflip_)) {
-		v.push_back("auto_vflip=" + utils::bool_string(auto_vflip_));
+		v.emplace_back("auto_vflip=" + utils::bool_string(auto_vflip_));
 	}
 
 	if(!boost::indeterminate(auto_hflip_)) {
-		v.push_back("auto_hflip=" + utils::bool_string(auto_hflip_));
+		v.emplace_back("auto_hflip=" + utils::bool_string(auto_hflip_));
 	}
 
 	if(!boost::indeterminate(primary_frame_)) {
-		v.push_back("primary_frame=" + utils::bool_string(primary_frame_));
+		v.emplace_back("primary_frame=" + utils::bool_string(primary_frame_));
 	}
 
 	if(!drawing_layer_.get_original().empty()) {
-		v.push_back("drawing_layer=" + drawing_layer_.get_original());
+		v.emplace_back("drawing_layer=" + drawing_layer_.get_original());
 	}
 
 	return v;
