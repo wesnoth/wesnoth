@@ -56,16 +56,15 @@ std::vector<game_tip> shuffle(const std::vector<game_tip>& tips)
 		// encountered in-game.
 		const bool passes_filter = filters.empty()
 			? true
-			: std::all_of(filters.begin(), filters.end(), [&units](const std::string& u) {
+			: std::any_of(filters.begin(), filters.end(), [&units](const std::string& u) {
 				return units.find(u) != units.end();
 			});
 
 		return !passes_filter;
 	});
 
-	// Prune invalid entries and shrink the list.
+	// Prune invalid entries.
 	result.erase(iter, result.end());
-	result.shrink_to_fit();
 
 	// Shuffle the list.
 	std::shuffle(result.begin(), result.end(), randomness::rng::default_instance());
