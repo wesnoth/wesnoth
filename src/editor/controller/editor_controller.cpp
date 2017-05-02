@@ -1235,6 +1235,7 @@ void editor_controller::display_redraw_callback(display&)
 {
 	set_button_state();
 	toolkit_->adjust_size();
+	toolkit_->get_palette_manager()->draw_contents();
 	get_current_map_context().get_labels().recalculate_labels();
 }
 
