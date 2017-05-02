@@ -1017,7 +1017,7 @@ struct dialog_tester<editor_new_map>
 	int height = 10;
 	editor_new_map* create()
 	{
-		return new editor_new_map(width, height);
+		return new editor_new_map("Test", width, height);
 	}
 };
 
