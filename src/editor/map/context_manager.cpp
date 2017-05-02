@@ -313,7 +313,7 @@ void context_manager::expand_open_maps_menu(std::vector<config>& items, int i)
 		}
 
 		std::ostringstream ss;
-		ss << "[" << mci << "] ";
+		ss << "[" << mci + 1 << "] ";
 
 		const bool changed = mc.modified();
 
