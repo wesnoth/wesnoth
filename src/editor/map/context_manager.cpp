@@ -51,6 +51,19 @@ namespace editor {
 
 static std::vector<std::string> saved_windows_;
 
+static const std::string get_menu_marker(const bool changed)
+{
+	std::ostringstream ss;
+	ss << "[<span ";
+
+	if(changed) {
+		ss << "color='#f00' ";
+	}
+
+	ss << "size='large'>" << font::unicode_bullet << "</span>]";
+	return ss.str();
+}
+
 /**
  * Utility class to properly refresh the display when the map context object is replaced
  * without duplicating code.
@@ -315,17 +328,7 @@ void context_manager::expand_open_maps_menu(std::vector<config>& items, int i)
 		}
 
 		const std::string label = ss.str();
-
-		ss.str("");
-		ss << " [<span ";
-
-		if(changed) {
-			ss << "color='#f00' ";
-		}
-
-		ss << "size='large'>" << font::unicode_bullet << "</span>]";
-
-		const std::string details = ss.str();
+		const std::string details = get_menu_marker(changed);
 
 		contexts.emplace_back(config_of("label", label)("details", details));
 	}
@@ -372,18 +375,25 @@ void context_manager::expand_areas_menu(std::vector<config>& items, int i)
 	std::vector<std::string> area_ids = tod->get_area_ids();
 
 	for(size_t mci = 0; mci < area_ids.size(); ++mci) {
-
 		const std::string& area = area_ids[mci];
-		std::stringstream label;
-		label << "[" << mci + 1 << "] ";
-		label << (area.empty() ? _("(Unnamed Area)") : area);
 
-		if(mci == static_cast<size_t>(get_map_context().get_active_area())
-				&& tod->get_area_by_index(mci) != get_map_context().get_map().selection()) {
-			label << " [*]";
+		std::stringstream ss;
+		ss << "[" << mci + 1 << "] ";\
+
+		if(area.empty()) {
+			ss << "<i>" << _("Unnamed Area") << "</i>";
+		} else {
+			ss << area;
 		}
 
-		area_entries.emplace_back(config_of("label", label.str()));
+		const bool changed =
+			mci == static_cast<size_t>(get_map_context().get_active_area())
+			&& tod->get_area_by_index(mci) != get_map_context().get_map().selection();
+
+		const std::string label = ss.str();
+		const std::string details = get_menu_marker(changed);
+
+		area_entries.emplace_back(config_of("label", label)("details", details));
 	}
 
 	items.insert(pos, area_entries.begin(), area_entries.end());
@@ -400,7 +410,13 @@ void context_manager::expand_sides_menu(std::vector<config>& items, int i)
 		const std::string& teamname = t.user_team_name();
 		std::stringstream label;
 		label << "[" << mci+1 << "] ";
-		label << (teamname.empty() ? _("(New Side)") : teamname);
+
+		if(teamname.empty()) {
+			label << "<i>" << _("New Side") << "</i>";
+		} else {
+			label << teamname;
+		}
+
 		contexts.emplace_back(config_of("label", label.str()));
 	}
 
