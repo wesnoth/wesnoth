@@ -762,4 +762,9 @@ void map_context::perform_action_between_stacks(action_stack& from, action_stack
 	trim_stack(to);
 }
 
+const t_string  map_context::get_default_context_name() const
+{
+	return is_pure_map() ? _("New Map") : _("New Scenario");
+}
+
 } //end namespace editor
