@@ -187,15 +187,17 @@ sdl_handler_vector location_palette::handler_members()
 	return h;
 }
 
-void location_palette::hide(bool hidden) {
+void location_palette::hide(bool hidden)
+{
 	widget::hide(hidden);
-	if (!hidden) {
-		help_handle_ = disp_.video().set_help_string(get_help_string());
-	}
-	else {
-		disp_.video().clear_help_string(help_handle_);
-	}
-	for (auto& w : handler_members()) {
+
+	disp_.video().clear_help_string(help_handle_);
+
+	std::shared_ptr<gui::button> palette_menu_button = disp_.find_menu_button("menu-editor-terrain");
+	palette_menu_button->set_overlay("");
+	palette_menu_button->enable(false);
+
+	for(auto& w : handler_members()) {
 		static_cast<gui::widget&>(*w).hide(hidden);
 	}
 }
