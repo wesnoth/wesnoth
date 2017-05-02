@@ -180,7 +180,7 @@ size_t context_manager::modified_maps(std::string& message)
 			if(!mc->get_filename().empty()) {
 				modified.push_back(mc->get_filename());
 			} else {
-				modified.push_back(_("(New Map)"));
+				modified.push_back(mc->get_default_context_name());
 			}
 		}
 	}
