@@ -350,21 +350,17 @@ void game_board::write_config(config & cfg) const
 		side["side"] = std::to_string(side_num);
 
 		//current units
-		{
-			for (const unit & i : units_) {
-				if (i.side() == side_num) {
-					config& u = side.add_child("unit");
-					i.get_location().write(u);
-					i.write(u);
-				}
+		for(const unit & i : units_) {
+			if(i.side() == side_num) {
+				config& u = side.add_child("unit");
+				i.get_location().write(u);
+				i.write(u);
 			}
 		}
 		//recall list
-		{
-			for (const unit_const_ptr & j : t->recall_list()) {
-				config& u = side.add_child("unit");
-				j->write(u);
-			}
+		for(const unit_const_ptr & j : t->recall_list()) {
+			config& u = side.add_child("unit");
+			j->write(u);
 		}
 	}
 
