@@ -928,7 +928,12 @@ void config::merge_attributes(const config &cfg)
 		std::string key = v.first;
 		if (key.substr(0,7) == "add_to_") {
 			std::string add_to = key.substr(7);
-			values[add_to] = values[add_to].to_int() + v.second.to_int();
+			values[add_to] = values[add_to].to_double() + v.second.to_double();
+		} else if(key.substr(0,10) == "concat_to_") {
+			std::string concat_to = key.substr(10);
+			// TODO: Only use t_string if one or both are actually translatable?
+			// That probably requires using a visitor though.
+			values[concat_to] = values[concat_to].t_str() + v.second.t_str();
 		} else
 			values[v.first] = v.second;
 	}
