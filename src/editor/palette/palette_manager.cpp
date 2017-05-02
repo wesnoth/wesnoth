@@ -47,7 +47,7 @@ void palette_manager::set_group(size_t index)
 
 void palette_manager::adjust_size()
 {
-	resrote_palete_bg(false);
+	restore_palette_bg(false);
 	const SDL_Rect& rect = gui_.palette_area();
 	set_location(rect);
 	palette_start_ = rect.y;
@@ -92,10 +92,10 @@ void palette_manager::scroll_up()
 
 void palette_manager::scroll_top()
 {
-	resrote_palete_bg(true);
+	restore_palette_bg(true);
 }
 
-void palette_manager::resrote_palete_bg(bool scroll_top)
+void palette_manager::restore_palette_bg(bool scroll_top)
 {
 	const SDL_Rect rect = gui_.palette_area();
 	if (scroll_top) {
