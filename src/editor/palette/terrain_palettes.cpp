@@ -87,7 +87,7 @@ void terrain_palette::setup(const config& cfg)
 
 			group_cfg["icon"] = "icons/terrain/terrain_" + group["icon"].str();
 			group_cfg["core"] = group["core"];
-			groups_.push_back(item_group(group_cfg));
+			groups_.emplace_back(group_cfg);
 
 			group_names.insert(groups_.back().id);
 		}

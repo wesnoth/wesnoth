@@ -60,7 +60,7 @@ void unit_palette::setup(const config& /*cfg*/)
 		cfg["name"] = i.second.plural_name();
 		cfg["icon"] = "icons/unit-groups/race_" + i.second.id();
 		cfg["core"] = "yes";
-		groups_.push_back(item_group(cfg));
+		groups_.emplace_back(cfg);
 	}
 
 	//TODO

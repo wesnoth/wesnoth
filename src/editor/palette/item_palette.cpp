@@ -35,7 +35,7 @@ void item_palette::setup(const config& cfg)
 
 	for (const config& group : cfg.child_range("item_group")) {
 
-		groups_.push_back(item_group(group));
+		groups_.emplace_back(group);
 
 		for (const config& item : group.child_range("item")) {
 
