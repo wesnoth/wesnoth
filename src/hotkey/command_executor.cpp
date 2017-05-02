@@ -368,7 +368,7 @@ void command_executor::show_menu(const std::vector<config>& items_arg, int xloc,
 	int res = -1;
 	{
 		SDL_Rect pos {xloc, yloc, 1, 1};
-		gui2::dialogs::drop_down_menu mmenu(pos, items, -1, false, false); // TODO: last value should be variable
+		gui2::dialogs::drop_down_menu mmenu(pos, items, -1, true, false); // TODO: last value should be variable
 		mmenu.show(gui.video());
 		if(mmenu.get_retval() == gui2::window::OK) {
 			res = mmenu.selected_item();
