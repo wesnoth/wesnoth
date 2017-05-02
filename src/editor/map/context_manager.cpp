@@ -285,13 +285,8 @@ void context_manager::expand_open_maps_menu(std::vector<config>& items, int i)
 	for(size_t mci = 0; mci < map_contexts_.size(); ++mci) {
 		std::string filename = map_contexts_[mci]->get_filename();
 		bool changed = map_contexts_[mci]->modified();
-		bool pure_map = map_contexts_[mci]->is_pure_map();
 		if(filename.empty()) {
-			if(pure_map) {
-				filename = _("(New Map)");
-			} else {
-				filename = _("(New Scenario)");
-			}
+			filename = map_contexts_[mci]->get_default_context_name();
 		}
 		std::string label = "[" + std::to_string(mci) + "] "
 			+ filename + (changed ? " [*]" : "");
@@ -1025,7 +1020,7 @@ void context_manager::set_window_title()
 	std::string map_name = filesystem::base_name(get_map_context().get_filename());
 
 	if(map_name.empty()){
-		map_name = get_map_context().is_pure_map() ? _("New Map") : _("New Scenario");
+		map_name = get_map_context().get_default_context_name();
 	}
 
 	const std::string& wm_title_string = map_name + " - " + game_config::get_default_title_string();
