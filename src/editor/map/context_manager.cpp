@@ -262,12 +262,18 @@ void context_manager::edit_scenario_dialog()
 	bool victory = context.victory_defeated();
 	bool random  = context.random_start_time();
 
-	bool ok = gui2::dialogs::editor_edit_scenario::execute(
+	const bool ok = gui2::dialogs::editor_edit_scenario::execute(
 		id, name, description, turns, xp_mod, victory, random, gui_.video()
 	);
 
-	if(ok) {
-		context.set_scenario_setup(id, name, description, turns, xp_mod, victory, random);
+	if(!ok) {
+		return;
+	}
+
+	context.set_scenario_setup(id, name, description, turns, xp_mod, victory, random);
+
+	if(!name.empty()) {
+		set_window_title();
 	}
 }
 
@@ -1068,13 +1074,17 @@ void context_manager::switch_context(const int index, const bool force)
 
 void context_manager::set_window_title()
 {
-	std::string map_name = filesystem::base_name(get_map_context().get_filename());
+	std::string name = get_map_context().get_name();
 
-	if(map_name.empty()){
-		map_name = get_map_context().get_default_context_name();
+	if(name.empty()) {
+		name = filesystem::base_name(get_map_context().get_filename());
 	}
 
-	const std::string& wm_title_string = map_name + " - " + game_config::get_default_title_string();
+	if(name.empty()){
+		name = get_map_context().get_default_context_name();
+	}
+
+	const std::string& wm_title_string = name + " - " + game_config::get_default_title_string();
 	CVideo::get_singleton().set_window_title(wm_title_string);
 }
 
