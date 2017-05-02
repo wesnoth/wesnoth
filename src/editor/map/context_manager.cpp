@@ -177,10 +177,10 @@ size_t context_manager::modified_maps(std::string& message)
 	std::vector<std::string> modified;
 	for(auto& mc : map_contexts_) {
 		if(mc->modified()) {
-			if(!mc->get_filename().empty()) {
-				modified.push_back(mc->get_filename());
-			} else if(!mc->get_name().empty()) {
+			if(!mc->get_name().empty()) {
 				modified.push_back(mc->get_name());
+			} else if(!mc->get_filename().empty()) {
+				modified.push_back(mc->get_filename());
 			} else {
 				modified.push_back(mc->get_default_context_name());
 			}
