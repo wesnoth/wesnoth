@@ -306,7 +306,7 @@ def Warning(message):
 
 from metasconf import init_metasconf
 configure_args = dict(
-    custom_tests = init_metasconf(env, ["ieee_754", "cplusplus", "python_devel", "sdl", "boost", "pango", "pkgconfig", "gettext", "lua"]),
+    custom_tests = init_metasconf(env, ["ieee_754", "cplusplus", "python_devel", "sdl", "boost", "cairo", "pango", "pkgconfig", "gettext", "lua"]),
     config_h = "$build_dir/config.h",
     log_file="$build_dir/config.log", conf_dir="$build_dir/sconf_temp")
 
@@ -384,6 +384,7 @@ if env["prereqs"]:
         conf.CheckOgg())) & \
         conf.CheckPNG() & \
         conf.CheckJPG() & \
+        conf.CheckCairo(min_version = "1.10") & \
         conf.CheckPango("cairo", require_version = "1.21.3") & \
         conf.CheckPKG("fontconfig") & \
         conf.CheckBoost("program_options", require_version = boost_version) & \
