@@ -179,6 +179,8 @@ size_t context_manager::modified_maps(std::string& message)
 		if(mc->modified()) {
 			if(!mc->get_filename().empty()) {
 				modified.push_back(mc->get_filename());
+			} else if(!mc->get_name().empty()) {
+				modified.push_back(mc->get_name());
 			} else {
 				modified.push_back(mc->get_default_context_name());
 			}
