@@ -282,19 +282,52 @@ void context_manager::expand_open_maps_menu(std::vector<config>& items, int i)
 {
 	auto pos = items.erase(items.begin() + i);
 	std::vector<config> contexts;
+
 	for(size_t mci = 0; mci < map_contexts_.size(); ++mci) {
-		std::string filename = map_contexts_[mci]->get_filename();
-		bool changed = map_contexts_[mci]->modified();
+		map_context& mc = *map_contexts_[mci];
+
+		std::string filename;
+		if(mc.is_pure_map()) {
+			filename = filesystem::base_name(mc.get_filename());
+		} else {
+			filename = mc.get_name();
+		}
+
 		if(filename.empty()) {
-			filename = map_contexts_[mci]->get_default_context_name();
+			filename = mc.get_default_context_name();
 		}
-		std::string label = "[" + std::to_string(mci) + "] "
-			+ filename + (changed ? " [*]" : "");
-		if(map_contexts_[mci]->is_embedded()) {
-			label += " (E)";
+
+		std::ostringstream ss;
+		ss << "[" << mci << "] ";
+
+		const bool changed = mc.modified();
+
+		if(changed) {
+			ss << "<i>" << filename << "</i>";
+		} else {
+			ss << filename;
 		}
-		contexts.emplace_back(config_of("label", label));
+
+		if(mc.is_embedded()) {
+			ss << " (E)";
+		}
+
+		const std::string label = ss.str();
+
+		ss.str("");
+		ss << " [<span";
+
+		if(changed) {
+			ss << " color='#f00' ";
+		}
+
+		ss << "size='large'>" << font::unicode_bullet << "</span>]";
+
+		const std::string details = ss.str();
+
+		contexts.emplace_back(config_of("label", label)("details", details));
 	}
+
 	items.insert(pos, contexts.begin(), contexts.end());
 }
 
