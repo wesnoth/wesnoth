@@ -136,14 +136,14 @@ void palette_manager::draw_contents()
 	std::shared_ptr<gui::button> downscroll_button = gui_.find_action_button("downscroll-button-editor");
 	if (downscroll_button)
 		downscroll_button->hide(false);
-	std::shared_ptr<gui::button> palette_menu_button = gui_.find_action_button("menu-editor-terrain");
+	std::shared_ptr<gui::button> palette_menu_button = gui_.find_menu_button("menu-editor-terrain");
 	if (palette_menu_button)
 		palette_menu_button->hide(false);
 
 //	bg_restore(loc);
 	active_palette().set_dirty(true);
+	active_palette().hide(false);
 	active_palette().draw();
-	//active_palette().hide(false);
 
 //	set_dirty(false);
 }
