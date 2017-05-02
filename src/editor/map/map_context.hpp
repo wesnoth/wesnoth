@@ -293,6 +293,11 @@ public:
 	const std::string& get_description() const { return scenario_description_; }
 	const std::string& get_name() const { return scenario_name_; }
 
+	const t_string get_default_context_name() const
+	{
+		return is_pure_map() ? _("New Map") : _("New Scenario");
+	}
+
 	int get_xp_mod() const { return xp_mod_; }
 
 	bool random_start_time() const { return random_time_; }
