@@ -317,10 +317,10 @@ void context_manager::expand_open_maps_menu(std::vector<config>& items, int i)
 		const std::string label = ss.str();
 
 		ss.str("");
-		ss << " [<span";
+		ss << " [<span ";
 
 		if(changed) {
-			ss << " color='#f00' ";
+			ss << "color='#f00' ";
 		}
 
 		ss << "size='large'>" << font::unicode_bullet << "</span>]";
