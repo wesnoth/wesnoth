@@ -46,23 +46,15 @@ public:
 	virtual void adjust_size(const SDL_Rect& /*target*/) override {}
 	virtual void draw() override {}
 
-	void hide(bool hidden) override {
-		if (!hidden) {
-			std::shared_ptr<gui::button> upscroll_button = gui_.find_action_button("upscroll-button-editor");
-			upscroll_button->enable(false);
-			std::shared_ptr<gui::button> downscroll_button = gui_.find_action_button("downscroll-button-editor");
-			downscroll_button->enable(false);
-			std::shared_ptr<gui::button> palette_menu_button = gui_.find_menu_button("menu-editor-terrain");
-			palette_menu_button->set_overlay("");
-			palette_menu_button->enable(false);
-		} else {
-			std::shared_ptr<gui::button> upscroll_button = gui_.find_action_button("upscroll-button-editor");
-			upscroll_button->enable(true);
-			std::shared_ptr<gui::button> downscroll_button = gui_.find_action_button("downscroll-button-editor");
-			downscroll_button->enable(true);
-			std::shared_ptr<gui::button> palette_menu_button = gui_.find_menu_button("menu-editor-terrain");
-			palette_menu_button->enable(true);
-		}
+	void hide(bool /*hidden*/) override
+	{
+		std::shared_ptr<gui::button> upscroll_button = gui_.find_action_button("upscroll-button-editor");
+		upscroll_button->enable(false);
+		std::shared_ptr<gui::button> downscroll_button = gui_.find_action_button("downscroll-button-editor");
+		downscroll_button->enable(false);
+		std::shared_ptr<gui::button> palette_menu_button = gui_.find_menu_button("menu-editor-terrain");
+		palette_menu_button->set_overlay("");
+		palette_menu_button->enable(false);
 	}
 
 	std::vector<gui::widget>* get_widgets() { return nullptr; }
