@@ -42,7 +42,10 @@ public:
 	size_t start_num(void) override { return items_start_; }
 
 	/** Menu expanding for palette group list */
-	void expand_palette_groups_menu(std::vector<config>&,int) override {}
+	void expand_palette_groups_menu(std::vector<config>& items, int i) override
+	{
+		items.erase(items.begin() + i);
+	}
 
 	virtual void set_group(size_t /*index*/) override {}
 	virtual void next_group() override {}
