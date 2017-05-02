@@ -23,6 +23,8 @@
 
 namespace editor {
 
+static std::vector<item_group> empty_group_vector {};
+
 /** Empty palette */
 class empty_palette : public common_palette {
 
@@ -30,7 +32,7 @@ public:
 
 	empty_palette(display& gui) :
 		common_palette(gui.video()),
-		gui_(gui), empty_() {}
+		gui_(gui) {}
 
 	//event handling
 	virtual bool mouse_click() { return false;}
@@ -69,7 +71,7 @@ public:
 	virtual void set_group(size_t /*index*/) override {}
 	virtual void next_group() override {}
 	virtual void prev_group() override {}
-	virtual const std::vector<item_group>& get_groups() const override { return empty_; }
+	virtual const std::vector<item_group>& get_groups() const override { return empty_group_vector; }
 
 	/** Menu expanding for palette group list */
 	virtual void expand_palette_groups_menu(std::vector<config>& items, int i) override
@@ -86,9 +88,7 @@ public:
 
 private:
 	display& gui_;
-	std::vector<item_group> empty_;
 };
-
 
 }
 #endif
