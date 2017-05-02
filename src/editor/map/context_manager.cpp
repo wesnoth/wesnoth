@@ -927,6 +927,9 @@ void context_manager::new_scenario(int width, int height, const t_translation::t
 	} else {
 		replace_map_context(m, false, default_schedule);
 	}
+
+	// Give the new scenario an initial side.
+	get_map_context().new_side();
 }
 
 //
