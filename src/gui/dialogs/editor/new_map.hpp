@@ -17,6 +17,8 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 
+#include "tstring.hpp"
+
 namespace gui2
 {
 namespace dialogs
@@ -28,6 +30,7 @@ public:
 	/**
 	 * Constructor.
 	 *
+	 * @param title               The title of the dialog.
 	 * @param [in, out] width     The parameter's usage is:
 	 *                            - Input: The initial width of the map.
 	 *                            - Output: The selected width of the map if
@@ -39,12 +42,12 @@ public:
 	 *                              the dialog returns @ref window::OK
 	 *                              undefined otherwise.
 	 */
-	editor_new_map(int& width, int& height);
+	editor_new_map(const t_string& title, int& width, int& height);
 
 	/** The execute function see @ref modal_dialog for more information. */
-	static bool execute(int& width, int& height, CVideo& video)
+	static bool execute(const t_string& title, int& width, int& height, CVideo& video)
 	{
-		return editor_new_map(width, height).show(video);
+		return editor_new_map(title, width, height).show(video);
 	}
 
 private:

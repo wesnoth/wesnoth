@@ -261,7 +261,7 @@ void context_manager::new_map_dialog()
 	int w = get_map().w();
 	int h = get_map().h();
 
-	if(gui2::dialogs::editor_new_map::execute(w, h, gui_.video())) {
+	if(gui2::dialogs::editor_new_map::execute(_("New Map"), w, h, gui_.video())) {
 		const t_translation::terrain_code& fill = get_selected_bg_terrain();
 		new_map(w, h, fill, true);
 	}
@@ -272,7 +272,7 @@ void context_manager::new_scenario_dialog()
 	int w = get_map().w();
 	int h = get_map().h();
 
-	if(gui2::dialogs::editor_new_map::execute(w, h, gui_.video())) {
+	if(gui2::dialogs::editor_new_map::execute(_("New Scenario"), w, h, gui_.video())) {
 		const t_translation::terrain_code& fill = get_selected_bg_terrain();
 		new_scenario(w, h, fill, true);
 	}

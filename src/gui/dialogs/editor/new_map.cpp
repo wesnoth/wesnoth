@@ -43,8 +43,10 @@ namespace dialogs
 
 REGISTER_DIALOG(editor_new_map)
 
-editor_new_map::editor_new_map(int& width, int& height)
+editor_new_map::editor_new_map(const t_string& title, int& width, int& height)
 {
+	register_label("title", true, title);
+
 	register_integer("width", true, width);
 	register_integer("height", true, height);
 }
