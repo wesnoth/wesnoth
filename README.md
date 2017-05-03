@@ -3,6 +3,7 @@
 
 About
 =====
+Contributors: Akash Chanda, Peter Banis, Jesse Torres, Thomas van Haastrecht, Jordan Alvarez
 
 **The Battle for Wesnoth** is a Free, turn-based tactical strategy game with a
 high fantasy theme, featuring both singleplayer and online/hotseat multiplayer
