@@ -20,6 +20,7 @@
 #include "game_errors.hpp"
 #include "log.hpp"
 #include "scripting/lua_common.hpp"	// for chat_message, luaW_pcall
+#include "scripting/push_check.hpp"
 
 #include <exception>
 #include <string>
@@ -106,7 +107,7 @@ int intf_have_file(lua_State *L)
 }
 
 /**
- * Reads a file into a string.
+ * Reads a file into a string, or a directory into a list of files therein.
  * - Arg 1: string containing the file name.
  * - Ret 1: string
  */
@@ -128,6 +129,16 @@ int intf_read_file(lua_State *L)
 	std::string p = filesystem::get_wml_location(m);
 	if(p.empty()) {
 		return luaL_argerror(L, -1, "file not found");
+	}
+	if(filesystem::is_directory(p)) {
+		std::vector<std::string> files, dirs;
+		filesystem::get_files_in_dir(p, &files, &dirs);
+		size_t ndirs = dirs.size();
+		std::copy(files.begin(), files.end(), std::back_inserter(dirs));
+		lua_push(L, dirs);
+		lua_pushnumber(L, ndirs);
+		lua_setfield(L, -2, "ndirs");
+		return 1;
 	}
 	const std::unique_ptr<std::istream> fs(filesystem::istream_file(p));
 	fs->exceptions(std::ios_base::goodbit);
