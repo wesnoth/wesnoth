@@ -237,17 +237,6 @@ public:
 	};
 
 	/**
-	 * Currently used to indicate where the page title should be placed.
-	 * It always takes as little space (horizontally) as possible,
-	 * and it is always placed at the top of the screen.
-	 */
-	enum TEXT_ALIGNMENT {
-		TEXT_LEFT,     /**< Top-left corner. */
-		TEXT_CENTERED, /**< Center on the topmost edge of the screen. */
-		TEXT_RIGHT     /**< Top-right corner. */
-	};
-
-	/**
 	 * Used to signal user actions.
 	 */
 	enum RESULT {
@@ -311,13 +300,13 @@ public:
 	}
 
 	/** Retrieves the alignment of the story text within the text area. */
-	TEXT_ALIGNMENT story_text_alignment() const
+	const std::string& story_text_alignment() const
 	{
 		return text_alignment_;
 	}
 
 	/** Retrieves the alignment of the title text against the screen. */
-	TEXT_ALIGNMENT title_text_alignment() const
+	const std::string& title_text_alignment() const
 	{
 		return title_alignment_;
 	}
@@ -342,14 +331,13 @@ private:
 	virtual void resolve_wml_helper(const std::string& key, const vconfig& node) override;
 
 	static BLOCK_LOCATION string_tblock_loc(const std::string& s);
-	static TEXT_ALIGNMENT string_title_align(const std::string& s);
 
 	bool show_title_;
 	std::string text_;
 	std::string text_title_;
 	BLOCK_LOCATION text_block_loc_;
-	TEXT_ALIGNMENT text_alignment_;
-	TEXT_ALIGNMENT title_alignment_;
+	std::string text_alignment_;
+	std::string title_alignment_;
 
 	std::string music_;
 	std::string sound_;

@@ -35,26 +35,6 @@ namespace gui2
 namespace dialogs
 {
 
-// TODO: change the internal part handling to either use PangoAlignment or plain strings
-//       once the GUI1 screen is dropped.
-static PangoAlignment storyscreen_alignment_to_pango(const storyscreen::part::TEXT_ALIGNMENT alignment)
-{
-	PangoAlignment text_alignment = PANGO_ALIGN_LEFT;
-
-	switch(alignment) {
-		case storyscreen::part::TEXT_CENTERED:
-			text_alignment = PANGO_ALIGN_CENTER;
-			break;
-		case storyscreen::part::TEXT_RIGHT:
-			text_alignment = PANGO_ALIGN_RIGHT;
-			break;
-		default:
-			break; // already set before
-	}
-
-	return text_alignment;
-}
-
 // Helper function to get the canvas shape data for the shading under the title area until
 // I can figure out how to ensure it always stays on top of the canvas stack.
 static config get_title_area_decor_config()
@@ -226,7 +206,7 @@ void story_viewer::display_part(window& window)
 	if(current_part_->show_title() && !title_text.empty()) {
 		showing_title = true;
 
-		PangoAlignment title_text_alignment = storyscreen_alignment_to_pango(current_part_->title_text_alignment());
+		PangoAlignment title_text_alignment = decode_text_alignment(current_part_->title_text_alignment());
 
 		title_label.set_visible(widget::visibility::visible);
 		title_label.set_text_alignment(title_text_alignment);
@@ -279,7 +259,7 @@ void story_viewer::display_part(window& window)
 	}
 
 	// Convert the story part text alignment types into the Pango equivalents
-	PangoAlignment story_text_alignment = storyscreen_alignment_to_pango(current_part_->story_text_alignment());
+	PangoAlignment story_text_alignment = decode_text_alignment(current_part_->story_text_alignment());
 
 	scroll_label& text_label = find_widget<scroll_label>(&window, "part_text", false);
 

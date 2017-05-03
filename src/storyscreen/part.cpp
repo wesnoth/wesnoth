@@ -123,8 +123,8 @@ part::part(const vconfig& part_cfg)
 	, text_()
 	, text_title_()
 	, text_block_loc_(part::BLOCK_BOTTOM)
-	, text_alignment_(part::TEXT_LEFT)
-	, title_alignment_(part::TEXT_LEFT)
+	, text_alignment_("left")
+	, title_alignment_("left")
 	, music_()
 	, sound_()
 	, background_layers_()
@@ -144,19 +144,6 @@ part::BLOCK_LOCATION part::string_tblock_loc(const std::string& s)
 	}
 
 	return part::BLOCK_BOTTOM;
-}
-
-part::TEXT_ALIGNMENT part::string_title_align(const std::string& s)
-{
-	if(s.empty() != true) {
-		if(s == "right") {
-			return part::TEXT_RIGHT;
-		} else if(s == "center") {
-			return part::TEXT_CENTERED;
-		}
-	}
-
-	return part::TEXT_LEFT;
 }
 
 void part::resolve_wml(const vconfig& cfg)
@@ -224,11 +211,11 @@ void part::resolve_wml(const vconfig& cfg)
 	}
 
 	if(cfg.has_attribute("text_alignment")) {
-		text_alignment_ = string_title_align(cfg["text_alignment"]);
+		text_alignment_ = cfg["text_alignment"].str();
 	}
 
 	if(cfg.has_attribute("title_alignment")) {
-		title_alignment_ = string_title_align(cfg["title_alignment"]);
+		title_alignment_ = cfg["title_alignment"].str();
 	}
 
 	if(cfg.has_attribute("music")) {
