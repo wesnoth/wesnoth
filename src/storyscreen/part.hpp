@@ -20,6 +20,8 @@
 #ifndef STORYSCREEN_PART_HPP_INCLUDED
 #define STORYSCREEN_PART_HPP_INCLUDED
 
+#include "storyscreen/parser.hpp"
+
 #include <string>
 #include <utility>
 #include <vector>
@@ -220,7 +222,7 @@ private:
 /**
  * Represents and contains information about a single storyscreen part.
  */
-class part
+class part : private story_parser
 {
 public:
 	/**
@@ -333,8 +335,11 @@ public:
 	}
 
 private:
-	/** Takes care of initializing and branching properties. */
-	void resolve_wml(const vconfig& cfg);
+	/** Inherited from story_parser. */
+	virtual void resolve_wml(const vconfig& cfg) override;
+
+	/** Inherited from story_parser. */
+	virtual void resolve_wml_helper(const std::string& key, const vconfig& node) override;
 
 	static BLOCK_LOCATION string_tblock_loc(const std::string& s);
 	static TEXT_ALIGNMENT string_title_align(const std::string& s);

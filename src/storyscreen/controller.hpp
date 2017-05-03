@@ -21,18 +21,17 @@
 #define STORYSCREEN_CONTROLLER_HPP_INCLUDED
 
 #include "events.hpp"
+#include "storyscreen/parser.hpp"
 
 #include <memory>
 #include <string>
-
-class vconfig;
 
 namespace storyscreen
 {
 class part;
 class floating_image;
 
-class controller
+class controller : private story_parser
 {
 public:
 	typedef std::shared_ptr<part> part_pointer_type;
@@ -50,8 +49,8 @@ public:
 	}
 
 private:
-	// Executes WML flow instructions and inserts parts.
-	void resolve_wml(const vconfig& cfg);
+	/** Inherited from story_parser. */
+	virtual void resolve_wml_helper(const std::string& key, const vconfig& node) override;
 
 	std::string scenario_name_;
 
