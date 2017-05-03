@@ -31,7 +31,7 @@ public:
 	story_parser() = default;
 
 	story_parser(const story_parser&) = delete;
-	operator=(const story_parser&) = delete;
+	story_parser& operator=(const story_parser&) = delete;
 
 	/** Takes care of initializing and branching properties. */
 	virtual void resolve_wml(const vconfig& cfg);
