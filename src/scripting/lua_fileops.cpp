@@ -94,12 +94,16 @@ int intf_have_file(lua_State *L)
 {
 	char const *m = luaL_checkstring(L, 1);
 	std::string p = filesystem::get_wml_location(m);
-	if (p.empty()) { lua_pushboolean(L, false); }
-	else { lua_pushboolean(L, true); }
+	if(p.empty()) {
+		lua_pushboolean(L, false);
+	} else {
+		lua_pushboolean(L, true);
+	}
 	return 1;
 }
+
 /**
- * Checks if a file exists (not necessarily a Lua script).
+ * Reads a file into a string.
  * - Arg 1: string containing the file name.
  * - Ret 1: string
  */
