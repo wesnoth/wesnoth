@@ -982,6 +982,7 @@ void context_manager::new_scenario(int width, int height, const t_translation::t
 
 	// Give the new scenario an initial side.
 	get_map_context().new_side();
+	gui_.init_flags();
 }
 
 //
