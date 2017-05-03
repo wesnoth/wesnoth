@@ -395,9 +395,19 @@ lua_kernel_base::lua_kernel_base()
 	lua_pushcfunction(L, &dispatch<&lua_kernel_base::intf_print>);
 	lua_setglobal(L, "print");
 
+	cmd_log_ << "Initializing package repository...\n";
+	static const char* pkg_name = "lua/package.lua";
+	lua_settop(L, 0);
+	lua_pushstring(L, pkg_name);
+	int res = intf_dofile(L);
+	if(res != 1) {
+		cmd_log_ << "Error: Failed to initialize package repository. Falling back to less flexible C++ implementation.\n";
+	}
 	// Create the package table.
 	lua_getglobal(L, "wesnoth");
 	lua_newtable(L);
+	lua_pushvalue(L, -3);
+	lua_setfield(L, -2, pkg_name);
 	lua_setfield(L, -2, "package");
 	lua_pop(L, 1);
 
