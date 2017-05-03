@@ -16,24 +16,20 @@
 
 #include "gui/widgets/helper.hpp"
 
+#include "color.hpp"
+#include "formula/callable.hpp"
+#include "formula/string_utils.hpp"
 #include "gui/core/log.hpp"
 #include "gui/core/point.hpp"
 #include "gui/widgets/settings.hpp"
-#include "color.hpp"
 #include "sdl/rect.hpp"
-#include "formula/callable.hpp"
-#include "formula/string_utils.hpp"
 #include "tstring.hpp"
 
 #include <SDL.h>
 
 namespace gui2
 {
-
-namespace
-{
 static bool initialized_ = false;
-}
 
 bool init()
 {
@@ -44,7 +40,6 @@ bool init()
 	load_settings();
 
 	initialized_ = true;
-
 	return initialized_;
 }
 
@@ -68,7 +63,7 @@ font::pango_text::FONT_STYLE decode_font_style(const std::string& style)
 	}
 
 	if(font_style_map.find(style) == font_style_map.end()) {
-		ERR_GUI_G << "Unknown style '" << style << "' using 'normal' instead." << std::endl;
+		ERR_GUI_G << "Unknown style '" << style << "', using 'normal' instead." << std::endl;
 		return font::pango_text::STYLE_NORMAL;
 	}
 
@@ -86,13 +81,13 @@ PangoAlignment decode_text_alignment(const std::string& alignment)
 		return PANGO_ALIGN_CENTER;
 	} else if(alignment == "right") {
 		return PANGO_ALIGN_RIGHT;
-	} else {
-		if(!alignment.empty() && alignment != "left") {
-			ERR_GUI_E << "Invalid text alignment '" << alignment
-					  << "' falling back to 'left'.\n";
-		}
-		return PANGO_ALIGN_LEFT;
 	}
+
+	if(!alignment.empty() && alignment != "left") {
+		ERR_GUI_E << "Invalid text alignment '" << alignment << "', falling back to 'left'." << std::endl;
+	}
+
+	return PANGO_ALIGN_LEFT;
 }
 
 std::string encode_text_alignment(const PangoAlignment alignment)
@@ -105,9 +100,9 @@ std::string encode_text_alignment(const PangoAlignment alignment)
 		case PANGO_ALIGN_CENTER:
 			return "center";
 	}
+
 	assert(false);
-	// FIXME: without this "styled_widget reaches end of non-void function" in release
-	// mode
+	// FIXME: without this "styled_widget reaches end of non-void function" in release mode
 	throw "Control should not reach this point.";
 }
 

@@ -15,8 +15,8 @@
 #ifndef GUI_WIDGETS_HELPER_HPP_INCLUDED
 #define GUI_WIDGETS_HELPER_HPP_INCLUDED
 
-#include "font/text.hpp"
 #include "color.hpp"
+#include "font/text.hpp"
 
 #include <pango/pango-layout.h>
 
@@ -24,7 +24,6 @@
 #include <string>
 
 struct SDL_Rect;
-class surface;
 class t_string;
 
 namespace wfl
@@ -34,7 +33,6 @@ class map_formula_callable;
 
 namespace gui2
 {
-
 struct point;
 
 /**
@@ -58,7 +56,7 @@ SDL_Rect create_rect(const point& origin, const point& size);
 /**
  * Converts a color string to a color.
  *
- * @param color                  A color string see
+ * @param color                   A color string see
  *                                http://www.wesnoth.org/wiki/GUIVariable for
  *                                more info.
  *
@@ -80,7 +78,7 @@ PangoAlignment decode_text_alignment(const std::string& alignment);
 /**
  * Converts a text alignment to its string representation.
  *
- * @param alignment              An alignment.
+ * @param alignment               An alignment.
  *
  * @returns                       An alignment string see
  *                                http://www.wesnoth.org/wiki/GUIVariable for
