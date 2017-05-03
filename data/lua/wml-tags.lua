@@ -12,16 +12,7 @@ function wesnoth.game_events.on_save()
 end
 
 wesnoth.require "wml-flow"
-wesnoth.require "wml/objectives"
-wesnoth.require "wml/animate_unit"
-wesnoth.require "wml/items"
-wesnoth.require "wml/message"
-wesnoth.require "wml/object"
-wesnoth.require "wml/modify_unit"
-wesnoth.require "wml/harm_unit"
-wesnoth.require "wml/find_path"
-wesnoth.require "wml/endlevel"
-wesnoth.require "wml/random_placement"
+wesnoth.require "wml"
 
 local helper = wesnoth.require "helper"
 local location_set = wesnoth.require "location_set"

@@ -2,6 +2,9 @@
 local empty_pkg = {}
 
 local function resolve_package(pkg_name)
+	if pkg_name[#pkg_name] == '/' then
+		pkg_name = pkg_name:sub(1, -2)
+	end
 	if wesnoth.have_file(pkg_name) then return pkg_name end
 	if pkg_name:sub(-4) ~= ".lua" then
 		if wesnoth.have_file(pkg_name .. ".lua") then
@@ -28,8 +31,21 @@ function wesnoth.require(pkg_name)
 		return wesnoth.package[loaded_name]
 	end
 
-	-- Next, load the package with dofile
-	local pkg = wesnoth.dofile(loaded_name)
-	wesnoth.package[loaded_name] = pkg or empty_pkg
-	return pkg
+	-- Next, if it's a single file, load the package with dofile
+	if wesnoth.have_file(loaded_name, true) then
+		local pkg = wesnoth.dofile(loaded_name)
+		wesnoth.package[loaded_name] = pkg or empty_pkg
+		return pkg
+	else -- If it's a directory, load all the files therein
+		local files = wesnoth.read_file(loaded_name)
+		local pkg = {}
+		for i = files.ndirs + 1, #files do
+			if files[i]:sub(-4) == ".lua" then
+				local subpkg_name = files[i]:sub(1, -5)
+				pkg[subpkg_name] = wesnoth.require(loaded_name .. '/' .. files[i])
+			end
+		end
+		wesnoth.package[loaded_name] = pkg
+		return pkg
+	end
 end
