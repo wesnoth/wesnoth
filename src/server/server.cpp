@@ -1172,10 +1172,12 @@ void server::handle_join_game(socket_ptr socket, simple_wml::node& join)
 	int game_id = join["id"].to_int();
 
 	auto g_iter = player_connections_.get<game_t>().find(game_id);
-	const std::shared_ptr<game> g = g_iter->get_game();
+	std::shared_ptr<game> g;
+	if(g_iter != player_connections_.get<game_t>().end())
+		g = g_iter->get_game();
 
 	static simple_wml::document leave_game_doc("[leave_game]\n[/leave_game]\n", simple_wml::INIT_COMPRESSED);
-	if (g_iter == player_connections_.get<game_t>().end()) {
+	if (!g) {
 		WRN_SERVER << client_address(socket) << "\t" << player_connections_.find(socket)->info().name()
 				   << "\tattempted to join unknown game:\t" << game_id << ".\n";
 		async_send_doc(socket, leave_game_doc);
