@@ -73,10 +73,7 @@ static toggle_button * setup_pref_toggle_button(const std::string & id, bool def
 		preferences::set(id, def);
 	}
 
-	//Needed to disambiguate overloaded function
-	void (*set) (const std::string &, bool) = &preferences::set;
-
-	connect_signal_mouse_left_click(*b, std::bind(set, id, std::bind(&toggle_button::get_value_bool, b)));
+	connect_signal_mouse_left_click(*b, std::bind([&, id]() { preferences::set(id, b->get_value_bool()); }));
 
 	return b;
 }
