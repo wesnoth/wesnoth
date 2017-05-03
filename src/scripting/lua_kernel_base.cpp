@@ -615,11 +615,13 @@ void lua_kernel_base::interactive_run(char const * prog) {
  */
 int lua_kernel_base::intf_dofile(lua_State* L)
 {
+	lua_rotate(L, 1, -1);
 	if (lua_fileops::load_file(L) != 1) return 0;
 	//^ should end with the file contents loaded on the stack. actually it will call lua_error otherwise, the return 0 is redundant.
 
 	error_handler eh = std::bind(&lua_kernel_base::log_error, this, _1, _2 );
-	this->protected_call(0, LUA_MULTRET, eh);
+	lua_rotate(L, 1, 1);
+	this->protected_call(lua_gettop(L) - 1, LUA_MULTRET, eh);
 	return lua_gettop(L);
 }
 
