@@ -52,11 +52,10 @@ void story_parser::resolve_wml(const vconfig& cfg)
 				bool elseif_flag = false;
 				// for each [elseif]: test if it has a [then] child
 				// if the condition matches, execute [then] and raise flag
-				for(vconfig::child_list::const_iterator elseif = elseif_children.begin();
-						elseif != elseif_children.end(); ++elseif) {
-					if(game_events::conditional_passed(*elseif)) {
-						if(elseif->has_child("then")) {
-							resolve_wml(elseif->child("then"));
+				for(const auto& elseif : elseif_children) {
+					if(game_events::conditional_passed(elseif)) {
+						if(elseif.has_child("then")) {
+							resolve_wml(elseif.child("then"));
 						}
 
 						elseif_flag = true;
