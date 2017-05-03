@@ -21,23 +21,23 @@
 #include "storyscreen/controller.hpp"
 #include "storyscreen/part.hpp"
 
-#include <cassert>
-#include "variable.hpp"
-
+#include "game_data.hpp"
 #include "game_events/conditional_wml.hpp"
 #include "game_events/manager.hpp"
 #include "game_events/pump.hpp"
-#include "game_data.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "resources.hpp"
+#include "variable.hpp"
+
+#include <cassert>
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
 #define LOG_NG LOG_STREAM(info, log_engine)
 
-namespace storyscreen {
-
+namespace storyscreen
+{
 controller::controller(const vconfig& data, const std::string& scenario_name)
 	: scenario_name_(scenario_name)
 	, parts_()
@@ -48,8 +48,7 @@ controller::controller(const vconfig& data, const std::string& scenario_name)
 
 void controller::resolve_wml(const vconfig& cfg)
 {
-	for(vconfig::all_children_iterator i = cfg.ordered_begin(); i != cfg.ordered_end(); ++i)
-	{
+	for(vconfig::all_children_iterator i = cfg.ordered_begin(); i != cfg.ordered_end(); ++i) {
 		// i->first and i->second are goddamn temporaries; do not make references
 		const std::string key = i->first;
 		const vconfig node = i->second;
@@ -58,16 +57,17 @@ void controller::resolve_wml(const vconfig& cfg)
 			part_pointer_type const story_part(new part(node));
 			// Use scenario name as part title if the WML doesn't supply a custom one.
 			if((*story_part).show_title() && (*story_part).title().empty()) {
-				(*story_part).set_title( scenario_name_ );
+				(*story_part).set_title(scenario_name_);
 			}
+
 			parts_.push_back(story_part);
 		}
 		// [if]
 		else if(key == "if") {
 			// check if the [if] tag has a [then] child;
 			// if we try to execute a non-existing [then], we get a segfault
-			if (game_events::conditional_passed(node)) {
-				if (node.has_child("then")) {
+			if(game_events::conditional_passed(node)) {
+				if(node.has_child("then")) {
 					resolve_wml(node.child("then"));
 				}
 			}
@@ -78,17 +78,20 @@ void controller::resolve_wml(const vconfig& cfg)
 				bool elseif_flag = false;
 				// for each [elseif]: test if it has a [then] child
 				// if the condition matches, execute [then] and raise flag
-				for (vconfig::child_list::const_iterator elseif = elseif_children.begin(); elseif != elseif_children.end(); ++elseif) {
-					if (game_events::conditional_passed(*elseif)) {
-						if (elseif->has_child("then")) {
+				for(vconfig::child_list::const_iterator elseif = elseif_children.begin();
+						elseif != elseif_children.end(); ++elseif) {
+					if(game_events::conditional_passed(*elseif)) {
+						if(elseif->has_child("then")) {
 							resolve_wml(elseif->child("then"));
 						}
+
 						elseif_flag = true;
 						break;
 					}
 				}
+
 				// if we have an [else] tag and no [elseif] was successful (flag not raised), execute it
-				if (node.has_child("else") && !elseif_flag) {
+				if(node.has_child("else") && !elseif_flag) {
 					resolve_wml(node.child("else"));
 				}
 			}
@@ -100,19 +103,23 @@ void controller::resolve_wml(const vconfig& cfg)
 			bool case_not_found = true;
 
 			for(vconfig::all_children_iterator j = node.ordered_begin(); j != node.ordered_end(); ++j) {
-				if(j->first != "case") continue;
+				if(j->first != "case") {
+					continue;
+				}
 
 				// Enter all matching cases.
 				const std::string var_expected_value = (j->second)["value"];
-			    if(var_actual_value == var_expected_value) {
+				if(var_actual_value == var_expected_value) {
 					case_not_found = false;
 					resolve_wml(j->second);
-			    }
+				}
 			}
 
 			if(case_not_found) {
 				for(vconfig::all_children_iterator j = node.ordered_begin(); j != node.ordered_end(); ++j) {
-					if(j->first != "else") continue;
+					if(j->first != "else") {
+						continue;
+					}
 
 					// Enter all elses.
 					resolve_wml(j->second);
@@ -128,7 +135,8 @@ void controller::resolve_wml(const vconfig& cfg)
 		else if(key == "wml_message") {
 			// As with [deprecated_message],
 			// it won't appear until the scenario start event is complete.
-			resources::game_events->pump().put_wml_message(node["logger"], node["message"], node["in_chat"].to_bool(false));
+			resources::game_events->pump().put_wml_message(
+				node["logger"], node["message"], node["in_chat"].to_bool(false));
 		}
 	}
 }

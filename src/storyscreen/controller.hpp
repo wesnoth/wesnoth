@@ -25,18 +25,17 @@
 #include <memory>
 #include <string>
 
-class CVideo;
 class vconfig;
 
-namespace storyscreen {
-
+namespace storyscreen
+{
 class part;
 class floating_image;
 
 class controller
 {
 public:
-	typedef std::shared_ptr< part    > part_pointer_type;
+	typedef std::shared_ptr<part> part_pointer_type;
 
 	controller(const vconfig& data, const std::string& scenario_name);
 
@@ -57,7 +56,7 @@ private:
 	std::string scenario_name_;
 
 	// The part cache.
-	std::vector< part_pointer_type > parts_;
+	std::vector<part_pointer_type> parts_;
 };
 
 } // end namespace storyscreen
