@@ -24,8 +24,6 @@
 #include <utility>
 #include <vector>
 
-#include "sdl/surface.hpp"
-
 class config;
 class vconfig;
 class display;
@@ -39,12 +37,6 @@ namespace storyscreen {
 class floating_image
 {
 public:
-	struct render_input
-	{
-		SDL_Rect rect;	/**< Corrected rectangle for rendering surf. */
-		surface image;	/**< Surface, scaled if required. */
-	};
-
 	/**
 	 * WML-based constructor.
 	 * @param cfg Object corresponding to a [image] block's contents from
@@ -69,7 +61,7 @@ public:
 
 	/**
 	 * Returns the referential X coordinate of the image.
-	 * The actual (corrected) value is determined at render time - see get_render_input().
+	 * The actual (corrected) value is determined at render time.
 	 */
 	int ref_x() const {
 		return x_;
@@ -77,7 +69,7 @@ public:
 
 	/**
 	 * Returns the referential Y coordinate of the image.
-	 * The actual (corrected) value is determined at render time - see get_render_input().
+	 * The actual (corrected) value is determined at render time.
 	 */
 	int ref_y() const {
 		return y_;
@@ -99,12 +91,6 @@ public:
 	 * Delay before displaying, in milliseconds.
 	 */
 	int display_delay() const { return delay_; }
-
-	/**
-	 * Gets a render_input object for use by the rendering code after applying
-	 * any geometric transformations required.
-	 */
-	render_input get_render_input(double xscale, double yscale, SDL_Rect& dst_rect) const;
 
 private:
 	std::string file_;

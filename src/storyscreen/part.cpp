@@ -28,7 +28,6 @@
 #include "game_events/pump.hpp"
 #include "image.hpp"
 #include "serialization/string_utils.hpp"
-#include "sdl/utils.hpp"
 #include "variable.hpp"
 
 namespace storyscreen {
@@ -61,35 +60,6 @@ void floating_image::assign(const floating_image& fi)
 
 	file_ = fi.file_; x_ = fi.x_; y_ = fi.y_; delay_ = fi.delay_;
 	autoscaled_ = fi.autoscaled_; centered_ = fi.centered_;
-}
-
-floating_image::render_input floating_image::get_render_input(double xscale, double yscale, SDL_Rect& dst_rect) const
-{
-	render_input ri = {
-		{0,0,0,0},
-		file_.empty() ? nullptr : image::get_image(file_)
-	};
-
-	if(!ri.image.null()) {
-		if(autoscaled_) {
-			ri.image = scale_surface(
-				ri.image,
-				static_cast<int>(ri.image->w * xscale),
-				static_cast<int>(ri.image->h * yscale)
-			);
-		}
-
-		ri.rect.x = static_cast<int>(x_*xscale) + dst_rect.x;
-		ri.rect.y = static_cast<int>(y_*yscale) + dst_rect.y;
-		ri.rect.w = ri.image->w;
-		ri.rect.h = ri.image->h;
-
-		if(centered_) {
-			ri.rect.x -= ri.rect.w / 2;
-			ri.rect.y -= ri.rect.h / 2;
-		}
-	}
-	return ri;
 }
 
 background_layer::background_layer()
