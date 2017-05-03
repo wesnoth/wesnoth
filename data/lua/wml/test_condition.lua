@@ -1,16 +1,16 @@
 local helper = wesnoth.require "helper"
 
 -- This function returns true if it managed to explain the failure
-local function explain(current_cfg, expect)
+local function explain(current_cfg, expect, logger)
 	for i,t in ipairs(current_cfg) do
 		local tag, this_cfg = t[1], t[2]
 		-- Some special cases
 		if tag == "or" or tag == "and" then
-			if explain(this_cfg, expect) then
+			if explain(this_cfg, expect, logger) then
 				return true
 			end
 		elseif tag == "not" then
-			if explain(this_cfg, not expect) then
+			if explain(this_cfg, not expect, logger) then
 				return true
 			end
 		elseif tag == "true" or tag == "false" then
@@ -49,5 +49,5 @@ function wesnoth.wml_actions.test_condition(cfg)
 	local logger = cfg.logger or "warning"
 
 	-- Use not twice here to convert nil to false
-	explain(cfg, not not cfg.result)
+	explain(cfg, not not cfg.result, logger)
 end
