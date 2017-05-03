@@ -50,7 +50,7 @@ public:
 
 private:
 	/** Inherited from story_parser. */
-	virtual void resolve_wml_helper(const std::string& key, const vconfig& node) override;
+	virtual bool resolve_wml_helper(const std::string& key, const vconfig& node) override;
 
 	std::string scenario_name_;
 

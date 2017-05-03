@@ -41,8 +41,10 @@ controller::controller(const vconfig& data, const std::string& scenario_name)
 	resolve_wml(data);
 }
 
-void controller::resolve_wml_helper(const std::string& key, const vconfig& node)
+bool controller::resolve_wml_helper(const std::string& key, const vconfig& node)
 {
+	bool found = false;
+
 	if(key == "part" && !node.empty()) {
 		part_pointer_type const story_part(new part(node));
 		// Use scenario name as part title if the WML doesn't supply a custom one.
@@ -51,7 +53,10 @@ void controller::resolve_wml_helper(const std::string& key, const vconfig& node)
 		}
 
 		parts_.push_back(story_part);
+		found = true;
 	}
+
+	return found;
 }
 
 } // end namespace storyscreen

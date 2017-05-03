@@ -230,16 +230,22 @@ void part::resolve_wml(const vconfig& cfg)
 	story_parser::resolve_wml(cfg);
 }
 
-void part::resolve_wml_helper(const std::string& key, const vconfig& node)
+bool part::resolve_wml_helper(const std::string& key, const vconfig& node)
 {
+	bool found = false;
+
 	// [background_layer]
 	if(key == "background_layer") {
 		background_layers_.push_back(node.get_parsed_config());
+		found = true;
 	}
 	// [image]
 	else if(key == "image") {
 		floating_images_.push_back(node.get_parsed_config());
+		found = true;
 	}
+
+	return found;
 }
 
 } // end namespace storyscreen

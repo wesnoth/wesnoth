@@ -40,7 +40,7 @@ public:
 	 * May be implemented by derived classes to perform additional actions
 	 * When executing @ref resolve_wml.
 	 */
-	virtual void resolve_wml_helper(const std::string& key, const vconfig& node) = 0;
+	virtual bool resolve_wml_helper(const std::string& key, const vconfig& node) = 0;
 };
 
 } // namespace storyscreen

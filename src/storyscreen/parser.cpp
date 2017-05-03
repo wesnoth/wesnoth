@@ -34,7 +34,9 @@ void story_parser::resolve_wml(const vconfig& cfg)
 		const vconfig node = i->second;
 
 		// Execute any special actions derived classes provide.
-		resolve_wml_helper(key, node);
+		if(resolve_wml_helper(key, node)) {
+			continue;
+		}
 
 		// [if]
 		if(key == "if") {

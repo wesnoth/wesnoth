@@ -328,7 +328,7 @@ private:
 	virtual void resolve_wml(const vconfig& cfg) override;
 
 	/** Inherited from story_parser. */
-	virtual void resolve_wml_helper(const std::string& key, const vconfig& node) override;
+	virtual bool resolve_wml_helper(const std::string& key, const vconfig& node) override;
 
 	static BLOCK_LOCATION string_tblock_loc(const std::string& s);
 
