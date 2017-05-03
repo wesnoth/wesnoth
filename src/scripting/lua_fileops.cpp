@@ -88,6 +88,7 @@ static bool resolve_filename(std::string& filename, const std::string& currentdi
 /**
  * Checks if a file exists (not necessarily a Lua script).
  * - Arg 1: string containing the file name.
+ * - Arg 2: if true, the file must be a real file and not a directory
  * - Ret 1: boolean
  */
 int intf_have_file(lua_State *L)
@@ -96,6 +97,8 @@ int intf_have_file(lua_State *L)
 	std::string p = filesystem::get_wml_location(m);
 	if(p.empty()) {
 		lua_pushboolean(L, false);
+	} else if(luaW_toboolean(L, 2)) {
+		lua_pushboolean(L, !filesystem::is_directory(p));
 	} else {
 		lua_pushboolean(L, true);
 	}
