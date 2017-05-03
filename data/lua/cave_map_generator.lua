@@ -1,6 +1,6 @@
-local helper = wesnoth.require "lua/helper.lua"
-local MG = wesnoth.require "lua/mapgen_helper.lua"
-local LS = wesnoth.require "lua/location_set.lua"
+local helper = wesnoth.require "helper"
+local MG = wesnoth.require "mapgen_helper"
+local LS = wesnoth.require "location_set"
 local T = helper.set_wml_tag_metatable {}
 local random = wesnoth.random
 

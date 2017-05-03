@@ -11,21 +11,21 @@ function wesnoth.game_events.on_save()
 	return {}
 end
 
-wesnoth.require "lua/wml-flow.lua"
-wesnoth.require "lua/wml/objectives.lua"
-wesnoth.require "lua/wml/animate_unit.lua"
-wesnoth.require "lua/wml/items.lua"
-wesnoth.require "lua/wml/message.lua"
-wesnoth.require "lua/wml/object.lua"
-wesnoth.require "lua/wml/modify_unit.lua"
-wesnoth.require "lua/wml/harm_unit.lua"
-wesnoth.require "lua/wml/find_path.lua"
-wesnoth.require "lua/wml/endlevel.lua"
-wesnoth.require "lua/wml/random_placement.lua"
+wesnoth.require "wml-flow"
+wesnoth.require "wml/objectives"
+wesnoth.require "wml/animate_unit"
+wesnoth.require "wml/items"
+wesnoth.require "wml/message"
+wesnoth.require "wml/object"
+wesnoth.require "wml/modify_unit"
+wesnoth.require "wml/harm_unit"
+wesnoth.require "wml/find_path"
+wesnoth.require "wml/endlevel"
+wesnoth.require "wml/random_placement"
 
-local helper = wesnoth.require "lua/helper.lua"
-local location_set = wesnoth.require "lua/location_set.lua"
-local utils = wesnoth.require "lua/wml-utils.lua"
+local helper = wesnoth.require "helper"
+local location_set = wesnoth.require "location_set"
+local utils = wesnoth.require "wml-utils"
 local wml_actions = wesnoth.wml_actions
 local T = helper.set_wml_tag_metatable {}
 
@@ -987,7 +987,7 @@ function wml_actions.inspect(cfg)
 	wesnoth.gamestate_inspector(cfg)
 end
 
-local kill_recursion_preventer = wesnoth.require("lua/location_set.lua").create()
+local kill_recursion_preventer = location_set.create()
 function wml_actions.kill(cfg)
 	local number_killed = 0
 	local secondary_unit = helper.get_child(cfg, "secondary_unit")

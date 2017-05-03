@@ -1,4 +1,4 @@
-local helper = wesnoth.require "lua/helper.lua"
+local helper = wesnoth.require "helper"
 local T = helper.set_wml_tag_metatable {}
 
 function wesnoth.wml_actions.find_respawn_point(cfg)

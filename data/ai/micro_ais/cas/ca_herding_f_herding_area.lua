@@ -1,5 +1,5 @@
-local H = wesnoth.require "lua/helper.lua"
-local LS = wesnoth.require "lua/location_set.lua"
+local H = wesnoth.require "helper"
+local LS = wesnoth.require "location_set"
 
 return function(cfg)
     -- Find the area that the sheep can occupy

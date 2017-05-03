@@ -1,4 +1,4 @@
-local helper = wesnoth.require "lua/helper.lua"
+local helper = wesnoth.require "helper"
 local T = helper.set_wml_tag_metatable{}
 
 local function get_fake_attack(unit, cfg)

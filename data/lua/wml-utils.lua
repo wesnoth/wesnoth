@@ -1,5 +1,5 @@
 
-local helper = wesnoth.require "lua/helper.lua"
+local helper = wesnoth.require "helper"
 local utils = {vwriter = {}}
 
 function utils.trim(s)

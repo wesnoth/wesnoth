@@ -1,5 +1,5 @@
-local helper = wesnoth.require "lua/helper.lua"
-local utils = wesnoth.require "lua/wml-utils.lua"
+local helper = wesnoth.require "helper"
+local utils = wesnoth.require "wml-utils"
 
 function wesnoth.wml_actions.find_path(cfg)
 	local filter_unit = helper.get_child(cfg, "traveler") or helper.wml_error("[find_path] missing required [traveler] tag")

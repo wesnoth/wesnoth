@@ -23,10 +23,10 @@ return {
         end
         math.randomseed(os.time())
 
-        local H = wesnoth.require "lua/helper.lua"
+        local H = wesnoth.require "helper"
         local W = H.set_wml_action_metatable {}
         local AH = wesnoth.require "ai/lua/ai_helper.lua"
-        local LS = wesnoth.require "lua/location_set.lua"
+        local LS = wesnoth.require "location_set"
 
         local function print_time(...)
             if turn_start_time then

@@ -4,7 +4,7 @@ local labels = {}
 local wml_label = wesnoth.wml_actions.label
 local replace_map = wesnoth.wml_actions.replace_map
 
-local helper = wesnoth.require "lua/helper.lua"
+local helper = wesnoth.require "helper"
 local wml_actions = wesnoth.wml_actions
 local T = helper.set_wml_tag_metatable {}
 local V = helper.set_wml_var_metatable {}

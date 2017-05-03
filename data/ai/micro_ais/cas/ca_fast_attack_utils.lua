@@ -1,6 +1,6 @@
-local H = wesnoth.require "lua/helper.lua"
+local H = wesnoth.require "helper"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
-local LS = wesnoth.require "lua/location_set.lua"
+local LS = wesnoth.require "location_set"
 local T = H.set_wml_tag_metatable{}
 
 -- Functions to perform fast evaluation of attacks and attack combinations.
