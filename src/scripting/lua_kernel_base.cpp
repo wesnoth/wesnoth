@@ -367,6 +367,7 @@ lua_kernel_base::lua_kernel_base()
 		{ "show_menu",               &video_dispatch<lua_gui2::show_menu>  },
 		{ "show_message_dialog",     &video_dispatch<lua_gui2::show_message_dialog> },
 		{ "show_popup_dialog",       &video_dispatch<lua_gui2::show_popup_dialog>   },
+		{ "show_story",              &video_dispatch<lua_gui2::show_story>          },
 		{ "show_lua_console",	      &dispatch<&lua_kernel_base::intf_show_lua_console> },
 		{ "compile_formula",          &lua_formula_bridge::intf_compile_formula},
 		{ "eval_formula",             &lua_formula_bridge::intf_eval_formula},

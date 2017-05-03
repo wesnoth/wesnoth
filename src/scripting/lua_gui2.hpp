@@ -38,6 +38,7 @@ int show_dialog(lua_State *L, CVideo & video);
 int show_message_dialog(lua_State *L, CVideo & video);
 int show_popup_dialog(lua_State *L, CVideo & video);
 int show_menu(lua_State* L, CVideo& video);
+int show_story(lua_State* L, CVideo& video);
 int show_lua_console(lua_State*L, CVideo & video, lua_kernel_base * lk);
 int show_gamestate_inspector(CVideo& video, const vconfig& cfg, const game_data& data, const game_state& state);
 int intf_remove_dialog_item(lua_State *L);

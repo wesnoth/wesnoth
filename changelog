@@ -39,6 +39,7 @@ Version 1.13.7+dev:
 	   comparable with == or ~=
    * wesnoth.set_music is now deprecated, in favour of the above new API
    * New wesnoth.sound_volume function gets/sets the current sound volume, as [volume]sound=
+   * New wesnoth.show_story function launches the storyscreen viewer
  * Multiplayer:
    * Fixed statistics being lost when reloading an MP game.
  * Performance:
@@ -71,6 +72,7 @@ Version 1.13.7+dev:
    * [kill]animate=yes now plays victory animations if applicable
    * Fix [volume] not accepting 100% as the new volume.
    * New concat_to_* keys in unit_type inheritance allow amending keys
+   * Accept [story] as ActionWML in events
  * Miscellaneous and bug fixes:
    * Fixed base animation showing on walking corpse & soulless bats (bug #25673)
 

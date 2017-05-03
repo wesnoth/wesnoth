@@ -36,20 +36,9 @@ public:
 
 	~story_viewer();
 
-	static void display(const std::string& scenario_name, const config::const_child_itors& story, CVideo& video)
+	static void display(const std::string& scenario_name, const config& story, CVideo& video)
 	{
-		// Combine all the [story] tags into a single config. Handle this here since
-		// storyscreen::controller doesn't have a default constructor.
-		config cfg;
-		for(const auto& iter : story) {
-			cfg.append_children(iter);
-		}
-
-		if(cfg.empty()) {
-			return;
-		}
-
-		story_viewer(scenario_name, cfg).show(video);
+		story_viewer(scenario_name, story).show(video);
 	}
 
 private:

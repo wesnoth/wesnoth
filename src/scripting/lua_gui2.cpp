@@ -21,6 +21,7 @@
 #include "gui/dialogs/gamestate_inspector.hpp"
 #include "gui/dialogs/lua_interpreter.hpp"
 #include "gui/dialogs/wml_message.hpp"
+#include "gui/dialogs/story_viewer.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/clickable_item.hpp"
 #include "gui/widgets/styled_widget.hpp"
@@ -384,6 +385,18 @@ int show_popup_dialog(lua_State *L, CVideo & video) {
 	std::string image = lua_isnoneornil(L, 3) ? "" : luaL_checkstring(L, 3);
 
 	gui2::show_transient_message(video, title, msg, image, true, true);
+	return 0;
+}
+
+/**
+ * Displays a story screen
+ * - Arg 1: The story config
+ * - Arg 2: The default title
+ */
+int show_story(lua_State* L, CVideo& video) {
+	config story = luaW_checkconfig(L, 1);
+	std::string title = luaL_checkstring(L, 2);
+	gui2::dialogs::story_viewer::display(title, story, video);
 	return 0;
 }
 

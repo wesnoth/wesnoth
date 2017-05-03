@@ -235,7 +235,16 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 	sound::commit_music_changes();
 
 	if(!this->is_skipping_replay()) {
-		gui2::dialogs::story_viewer::display(get_scenario_name(), level.child_range("story"), gui_->video());
+		// Combine all the [story] tags into a single config. Handle this here since
+		// storyscreen::controller doesn't have a default constructor.
+		config cfg;
+		for(const auto& iter : level.child_range("story")) {
+			cfg.append_children(iter);
+		}
+
+		if(!cfg.empty()) {
+			gui2::dialogs::story_viewer::display(get_scenario_name(), cfg, gui_->video());
+		}
 	}
 	gui_->labels().read(level);
 
