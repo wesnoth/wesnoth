@@ -43,6 +43,7 @@
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
 #define LOG_NG LOG_STREAM(info, log_engine)
+#define WARN_NG LOG_STREAM(warn, log_engine)
 #define ERR_NG LOG_STREAM(err, log_engine)
 
 unit_creator::unit_creator(team &tm, const map_location &start_pos, game_board* board)
@@ -110,6 +111,9 @@ map_location unit_creator::find_location(const config &cfg, const unit* pass_che
 	placements.push_back("map");
 	placements.push_back("recall");
 
+	bool pass = cfg["passable"].to_bool(false);
+	bool vacant = !cfg["overwrite"].to_bool(false);
+
 	for (const std::string& place : placements)
 	{
 		map_location loc;
@@ -126,19 +130,31 @@ map_location unit_creator::find_location(const config &cfg, const unit* pass_che
 			} else {
 				loc = start_pos_;
 			}
+			if(place == "leader_passable") {
+				WARN_NG << "placement=leader_passable is deprecated; please use placement=leader and passable=yes instead\n";
+				pass = true;
+			}
 		}
 
 		// "map", "map_passable", and "map_overwrite".
-		else if ( place == "map"  ||  place.compare(0, 4, "map_") == 0 ) {
-			loc = map_location(cfg, resources::gamedata);
-		}
-		else {
-			loc = board_->map().special_location(place);
+		else if(place == "map"  ||  place == "map_passable" || place == "map_overwrite") {
+			if(cfg.has_attribute("location_id")) {
+				loc = board_->map().special_location(cfg["location_id"]);
+			}
+			if(!loc.valid()) {
+				loc = map_location(cfg, resources::gamedata);
+			}
+			if(place == "map_passable") {
+				WARN_NG << "placement=map_passable is deprecated; please use placement=map and passable=yes instead\n";
+				pass = true;
+			} else if(place == "map_overwrite") {
+				WARN_NG << "placement=map_overwrite is deprecated; please use placement=map and overwrite=yes instead\n";
+				vacant = false;
+			}
 		}
 
 		if(loc.valid() && board_->map().on_board(loc)) {
-			const bool pass((place == "leader_passable") || (place == "map_passable"));
-			if ( place != "map_overwrite" ) {
+			if(vacant) {
 				loc = find_vacant_tile(loc, pathfind::VACANT_ANY,
 				                       pass ? pass_check : nullptr, nullptr, board_);
 			}
