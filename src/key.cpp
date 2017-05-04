@@ -30,6 +30,7 @@ bool CKey::is_uncomposable(const SDL_KeyboardEvent &event) {
 		case SDLK_RETURN:
 		case SDLK_ESCAPE:
 		case SDLK_BACKSPACE:
+		case SDLK_BACKQUOTE:
 		case SDLK_TAB:
 		case SDLK_F1:
 		case SDLK_F2:
