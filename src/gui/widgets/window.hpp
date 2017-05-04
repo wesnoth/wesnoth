@@ -30,6 +30,7 @@
 #include "gui/widgets/panel.hpp"
 
 #include <map>
+#include <memory>
 #include <string>
 #include <vector>
 
@@ -722,7 +723,7 @@ private:
 	}
 #endif
 
-	event::distributor* event_distributor_;
+	std::unique_ptr<event::distributor> event_distributor_;
 
 public:
 	// mouse and keyboard_capture should be renamed and stored in the

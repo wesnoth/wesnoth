@@ -360,7 +360,7 @@ window::window(CVideo& video,
 			&window::signal_handler_sdl_video_resize, this, _2, _3, _5));
 
 	connect_signal<event::SDL_ACTIVATE>(std::bind(
-			&event::distributor::initialize_state, event_distributor_));
+			&event::distributor::initialize_state, event_distributor_.get()));
 
 	connect_signal<event::SDL_LEFT_BUTTON_UP>(
 			std::bind(&window::signal_handler_click_dismiss,
@@ -451,7 +451,6 @@ window::~window()
 	delete debug_layout_;
 
 #endif
-	delete event_distributor_;
 }
 
 window* window::window_instance(const unsigned handle)
