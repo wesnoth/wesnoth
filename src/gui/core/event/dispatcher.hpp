@@ -128,7 +128,7 @@ typedef std::function<void(dispatcher& dispatcher,
 
 /** Hotkey function handler signature. */
 typedef std::function<bool(dispatcher& dispatcher,
-							 hotkey::HOTKEY_COMMAND id)> thotkey_function;
+							 hotkey::HOTKEY_COMMAND id)> hotkey_function;
 
 /**
  * Base class for event handling.
@@ -727,7 +727,7 @@ public:
 	 * @param function            The callback function to call.
 	 */
 	void register_hotkey(const hotkey::HOTKEY_COMMAND id,
-						 const thotkey_function& function);
+						 const hotkey_function& function);
 
 	/**
 	 * Executes a hotkey.
@@ -780,7 +780,7 @@ private:
 	bool connected_;
 
 	/** The registered hotkeys for this dispatcher. */
-	std::map<hotkey::HOTKEY_COMMAND, thotkey_function> hotkeys_;
+	std::map<hotkey::HOTKEY_COMMAND, hotkey_function> hotkeys_;
 };
 
 /***** ***** ***** ***** ***** Common helpers  ***** ***** ***** ***** *****/

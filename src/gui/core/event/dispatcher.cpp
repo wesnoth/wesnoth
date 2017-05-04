@@ -177,14 +177,14 @@ bool dispatcher::fire(const ui_event event, widget& target, message& msg)
 	return fire_event<signal_message_function>(event, this, &target, msg);
 }
 
-void dispatcher::register_hotkey(const hotkey::HOTKEY_COMMAND id, const thotkey_function& function)
+void dispatcher::register_hotkey(const hotkey::HOTKEY_COMMAND id, const hotkey_function& function)
 {
 	hotkeys_[id] = function;
 }
 
 bool dispatcher::execute_hotkey(const hotkey::HOTKEY_COMMAND id)
 {
-	std::map<hotkey::HOTKEY_COMMAND, thotkey_function>::iterator itor = hotkeys_.find(id);
+	std::map<hotkey::HOTKEY_COMMAND, hotkey_function>::iterator itor = hotkeys_.find(id);
 
 	if(itor == hotkeys_.end()) {
 		return false;
