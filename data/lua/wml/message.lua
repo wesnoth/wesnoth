@@ -1,7 +1,7 @@
 
-local helper = wesnoth.require "lua/helper.lua"
-local utils = wesnoth.require "lua/wml-utils.lua"
-local location_set = wesnoth.require "lua/location_set.lua"
+local helper = wesnoth.require "helper"
+local utils = wesnoth.require "wml-utils"
+local location_set = wesnoth.require "location_set"
 local _ = wesnoth.textdomain "wesnoth"
 
 local function log(msg, level)

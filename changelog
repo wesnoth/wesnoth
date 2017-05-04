@@ -40,6 +40,9 @@ Version 1.13.7+dev:
    * wesnoth.set_music is now deprecated, in favour of the above new API
    * New wesnoth.sound_volume function gets/sets the current sound volume, as [volume]sound=
    * New wesnoth.show_story function launches the storyscreen viewer
+   * wesnoth.dofile now forwards any excess arguments to the file in the "..." argument
+   * wesnoth.require can now load all modules in a directory and accepts some shortened paths,
+     for example omitting the ".lua" file extension.
  * Multiplayer:
    * Fixed statistics being lost when reloading an MP game.
  * Performance:

@@ -1,4 +1,4 @@
-local H = wesnoth.require "lua/helper.lua"
+local H = wesnoth.require "helper"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local MAIUV = wesnoth.require "ai/micro_ais/micro_ai_unit_variables.lua"
 local WMPF = wesnoth.require "ai/micro_ais/cas/ca_wolves_multipacks_functions.lua"

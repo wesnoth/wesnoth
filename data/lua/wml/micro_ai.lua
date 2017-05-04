@@ -1,20 +1,11 @@
-local H = wesnoth.require "lua/helper.lua"
+local H = wesnoth.require "helper"
 local W = H.set_wml_action_metatable {}
 local MAIH = wesnoth.require("ai/micro_ais/micro_ai_helper.lua")
 
 wesnoth.micro_ais = {}
 
 -- Load all default MicroAIs
-wesnoth.require("ai/micro_ais/mai-defs/animals.lua")
-wesnoth.require("ai/micro_ais/mai-defs/bottleneck.lua")
-wesnoth.require("ai/micro_ais/mai-defs/escort.lua")
-wesnoth.require("ai/micro_ais/mai-defs/fast.lua")
-wesnoth.require("ai/micro_ais/mai-defs/guardian.lua")
-wesnoth.require("ai/micro_ais/mai-defs/healers.lua")
-wesnoth.require("ai/micro_ais/mai-defs/misc.lua")
-wesnoth.require("ai/micro_ais/mai-defs/patrol.lua")
-wesnoth.require("ai/micro_ais/mai-defs/protect.lua")
-wesnoth.require("ai/micro_ais/mai-defs/recruiting.lua")
+wesnoth.require("ai/micro_ais/mai-defs")
 
 function wesnoth.wml_actions.micro_ai(cfg)
     local CA_path = 'ai/micro_ais/cas/'

@@ -1,6 +1,6 @@
-local H = wesnoth.require "lua/helper.lua"
+local H = wesnoth.require "helper"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
-local LS = wesnoth.require "lua/location_set.lua"
+local LS = wesnoth.require "location_set"
 local MAIUV = wesnoth.require "ai/micro_ais/micro_ai_unit_variables.lua"
 local MAISD = wesnoth.require "ai/micro_ais/micro_ai_self_data.lua"
 

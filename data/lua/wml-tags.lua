@@ -11,21 +11,15 @@ function wesnoth.game_events.on_save()
 	return {}
 end
 
-wesnoth.require "lua/wml-flow.lua"
-wesnoth.require "lua/wml/objectives.lua"
-wesnoth.require "lua/wml/animate_unit.lua"
-wesnoth.require "lua/wml/items.lua"
-wesnoth.require "lua/wml/message.lua"
-wesnoth.require "lua/wml/object.lua"
-wesnoth.require "lua/wml/modify_unit.lua"
-wesnoth.require "lua/wml/harm_unit.lua"
-wesnoth.require "lua/wml/find_path.lua"
-wesnoth.require "lua/wml/endlevel.lua"
-wesnoth.require "lua/wml/random_placement.lua"
+wesnoth.require "wml-flow"
+wesnoth.require "wml"
+-- Note: When adding new WML tags, unless they're very simple, it's preferred to
+-- add a new file in the "data/lua/wml" directory. The file will then automatically
+-- be loaded by the above require statement.
 
-local helper = wesnoth.require "lua/helper.lua"
-local location_set = wesnoth.require "lua/location_set.lua"
-local utils = wesnoth.require "lua/wml-utils.lua"
+local helper = wesnoth.require "helper"
+local location_set = wesnoth.require "location_set"
+local utils = wesnoth.require "wml-utils"
 local wml_actions = wesnoth.wml_actions
 local T = helper.set_wml_tag_metatable {}
 
@@ -297,58 +291,6 @@ function wml_actions.volume(cfg)
 	end
 end
 
--- This is mainly for use in unit test macros, but maybe it can be useful elsewhere too
-function wml_actions.test_condition(cfg)
-	local logger = cfg.logger or "warning"
-
-	-- This function returns true if it managed to explain the failure
-	local function explain(current_cfg, expect)
-		for i,t in ipairs(current_cfg) do
-			local tag, this_cfg = t[1], t[2]
-			-- Some special cases
-			if tag == "or" or tag == "and" then
-				if explain(this_cfg, expect) then
-					return true
-				end
-			elseif tag == "not" then
-				if explain(this_cfg, not expect) then
-					return true
-				end
-			elseif tag == "true" or tag == "false" then
-				-- We don't explain these ones.
-				return true
-			elseif wesnoth.eval_conditional{t} == expect then
-				local explanation = "The following conditional test %s:"
-				if expect then
-					explanation = explanation:format("passed")
-				else
-					explanation = explanation:format("failed")
-				end
-				explanation = string.format("%s\n\t[%s]", explanation, tag)
-				for k,v in pairs(this_cfg) do
-					if type(k) ~= "number" then
-						local format = "%s\n\t\t%s=%s"
-						local literal = tostring(helper.literal(this_cfg)[k])
-						if literal ~= v then
-							format = format .. "=%s"
-						end
-						explanation = string.format(format, explanation, k, literal, tostring(v))
-					end
-				end
-				explanation = string.format("%s\n\t[/%s]", explanation, tag)
-				if tag == "variable" then
-					explanation = string.format("%s\n\tNote: The variable %s currently has the value %q.", explanation, this_cfg.name, tostring(wesnoth.get_variable(this_cfg.name)))
-				end
-				wesnoth.log(logger, explanation, true)
-				return true
-			end
-		end
-	end
-
-	-- Use not twice here to convert nil to false
-	explain(cfg, not not cfg.result)
-end
-
 function wml_actions.scroll_to(cfg)
 	local loc = wesnoth.get_locations( cfg )[1]
 	if not loc then return end
@@ -529,69 +471,6 @@ function wml_actions.unhide_unit(cfg)
 	wml_actions.redraw {}
 end
 
-function wml_actions.move_unit(cfg)
-	local coordinate_error = "invalid coordinate in [move_unit]"
-	local to_x = tostring(cfg.to_x or helper.wml_error(coordinate_error))
-	local to_y = tostring(cfg.to_y or helper.wml_error(coordinate_error))
-	local fire_event = cfg.fire_event
-	local muf_force_scroll = cfg.force_scroll
-	local check_passability = cfg.check_passability
-	if check_passability == nil then check_passability = true end
-	cfg = helper.literal(cfg)
-	cfg.to_x, cfg.to_y, cfg.fire_event = nil, nil, nil
-	local units = wesnoth.get_units(cfg)
-
-	local pattern = "[^%s,]+"
-	for current_unit_index, current_unit in ipairs(units) do
-		if not fire_event or current_unit.valid then
-			local xs, ys = string.gmatch(to_x, pattern), string.gmatch(to_y, pattern)
-			local move_string_x = current_unit.x
-			local move_string_y = current_unit.y
-			local pass_check = nil
-			if check_passability then pass_check = current_unit end
-
-			local x, y = xs(), ys()
-			local prevX, prevY = tonumber(current_unit.x), tonumber(current_unit.y)
-			while true do
-				x = tonumber(x) or helper.wml_error(coordinate_error)
-				y = tonumber(y) or helper.wml_error(coordinate_error)
-				if not (x == prevX and y == prevY) then x, y = wesnoth.find_vacant_tile(x, y, pass_check) end
-				if not x or not y then helper.wml_error("Could not find a suitable hex near to one of the target hexes in [move_unit].") end
-				move_string_x = string.format("%s,%u", move_string_x, x)
-				move_string_y = string.format("%s,%u", move_string_y, y)
-				local next_x, next_y = xs(), ys()
-				if not next_x and not next_y then break end
-				prevX, prevY = x, y
-				x, y = next_x, next_y
-			end
-
-			if current_unit.x < x then current_unit.facing = "se"
-			elseif current_unit.x > x then current_unit.facing = "sw"
-			end
-
-			wesnoth.extract_unit(current_unit)
-			local current_unit_cfg = current_unit.__cfg
-			wml_actions.move_unit_fake {
-				type = current_unit_cfg.type,
-				gender = current_unit_cfg.gender,
-				variation = current_unit_cfg.variation,
-				image_mods = current_unit.image_mods,
-				side = current_unit_cfg.side,
-				x = move_string_x,
-				y = move_string_y,
-				force_scroll = muf_force_scroll
-			}
-			local x2, y2 = current_unit.x, current_unit.y
-			current_unit.x, current_unit.y = x, y
-			wesnoth.put_unit(current_unit)
-
-			if fire_event then
-				wesnoth.fire_event("moveto", x, y, x2, y2)
-			end
-		end
-	end
-end
-
 function wml_actions.capture_village(cfg)
 	local side = cfg.side
 	local filter_side = helper.get_child(cfg, "filter_side")
@@ -660,74 +539,6 @@ function wml_actions.unpetrify(cfg)
 	end
 end
 
-function wml_actions.heal_unit(cfg)
-	local healers = helper.get_child(cfg, "filter_second")
-	if healers then
-		healers = wesnoth.get_units{
-			ability_type = "heals",
-			T["and"](healers)
-		}
-	else
-		healers = {}
-	end
-
-	local who = helper.get_child(cfg, "filter")
-	if who then
-		who = wesnoth.get_units(who)
-	else
-		who = wesnoth.get_units{
-			x = wesnoth.current.event_context.x1,
-			y = wesnoth.current.event_context.y1
-		}
-	end
-
-	local heal_full = cfg.amount == "full" or cfg.amount == nil
-	local moves_full = cfg.moves == "full"
-	local heal_amount_set = false
-	for i,u in ipairs(who) do
-		local heal_amount = u.max_hitpoints - u.hitpoints
-		if heal_full then
-			u.hitpoints = u.max_hitpoints
-		else
-			heal_amount = tonumber(cfg.amount) or heal_amount
-			local new_hitpoints = math.max(1, math.min(u.max_hitpoints, u.hitpoints + heal_amount))
-			heal_amount = new_hitpoints - u.hitpoints
-			u.hitpoints = new_hitpoints
-		end
-
-		if moves_full then
-			u.moves = u.max_moves
-		else
-			u.moves = math.min(u.max_moves, u.moves + (cfg.moves or 0))
-		end
-
-		if cfg.restore_attacks then
-			u.attacks_left = u.max_attacks
-		end
-
-		if cfg.restore_statuses == true or cfg.restore_statuses == nil then
-			u.status.poisoned = false
-			u.status.petrified = false
-			u.status.slowed = false
-			u.status.unhealable = false
-		end
-
-		if not heal_amount_set then
-			heal_amount_set = true
-			wesnoth.set_variable("heal_amount", heal_amount)
-		end
-
-		if cfg.animate then
-			local animator = wesnoth.create_animator()
-			animator:add(u, 'healed', 'hits', {value = heal_amount})
-			if #healers > 0 then
-				animator:add(healers[1], 'healing', 'hits', {value = heal_amount})
-			end
-			animator:run()
-		end
-	end
-end
-
 function wml_actions.transform_unit(cfg)
 	local transform_to = cfg.transform_to
 
@@ -770,39 +581,6 @@ function wml_actions.store_side(cfg)
 		container.num_villages = t.num_villages
 		container.side = side_number
 		utils.vwriter.write(writer, container)
-	end
-end
-
-function wml_actions.modify_ai(cfg)
-	local sides = utils.get_sides(cfg)
-	local component, final
-	if cfg.action == "add" or cfg.action == "change" then
-		local start = string.find(cfg.path, "[a-z_]+%[[a-z0-9_*]*%]$")
-		final = start and (string.find(cfg.path, '[', start, true) - 1) or -1
-		start = start or string.find(cfg.path, "[^.]*$") or 1
-		local comp_type = string.sub(cfg.path, start, final)
-		component = helper.get_child(cfg, comp_type)
-		if component == nil then
-			helper.wml_error("Missing component definition in [modify_ai]")
-		end
-		component = helper.parsed(component)
-	end
-	for i = 1, #sides do
-		if cfg.action == "add" then
-			wesnoth.add_ai_component(sides[i].side, cfg.path, component)
-		elseif cfg.action == "delete" or cfg.action == "try_delete" then
-			wesnoth.delete_ai_component(sides[i].side, cfg.path)
-		elseif cfg.action == "change" then
-			local id_start = final + 2
-			local id_final = string.len(cfg.path) - 1
-			local id = string.sub(cfg.path, id_start, id_final)
-			if id == "*" then
-				helper.wml_error("[modify_ai] can only change one component at a time")
-			elseif not component.id and not id:match("[0-9]+") then
-				component.id = id
-			end
-			wesnoth.change_ai_component(sides[i].side, cfg.path, component)
-		end
 	end
 end
 
@@ -987,185 +765,11 @@ function wml_actions.inspect(cfg)
 	wesnoth.gamestate_inspector(cfg)
 end
 
-local kill_recursion_preventer = wesnoth.require("lua/location_set.lua").create()
-function wml_actions.kill(cfg)
-	local number_killed = 0
-	local secondary_unit = helper.get_child(cfg, "secondary_unit")
-	local killer_loc = {0, 0}
-	if secondary_unit then
-		secondary_unit = wesnoth.get_units(secondary_unit)[1]
-		if cfg.fire_event then
-			if secondary_unit then
-				killer_loc = {secondary_unit.loc}
-			else
-				wesnoth.log("warn", "failed to match [secondary_unit] in [kill] with a single on-board unit")
-			end
-		end
-	end
-	local dead_men_walking = wesnoth.get_units(cfg)
-	for i,unit in ipairs(dead_men_walking) do
-		local death_loc = {x = tonumber(unit.x) or 0, y = tonumber(unit.y) or 0}
-		if not secondary_unit then killer_loc = death_loc end
-		local can_fire = false
-
-		local recursion = (kill_recursion_preventer:get(death_loc.x, death_loc.y) or 0) + 1
-		if cfg.fire_event then
-			kill_recursion_preventer:insert(death_loc.x, death_loc.y, recursion)
-			can_fire = true
-			if death_loc.x == wesnoth.current.event.x1 and death_loc.y == wesnoth.current.event.y1 then
-				if wesnoth.current.event.name == "die" or wesnoth.current.event.name == "last breath" then
-					if recursion >= 10 then
-						can_fire = false;
-						wesnoth.log("error", "tried to fire 'die' or 'last breath' event on unit from the unit's 'die' or 'last breath' event with first_time_only=no!")
-					end
-				end
-			end
-		end
-		if can_fire then
-			wesnoth.fire_event("last breath", death_loc, killer_loc)
-		end
-		if cfg.animate then
-			wesnoth.scroll_to_tile(death_loc)
-			local anim = wesnoth.create_animator()
-			-- Possible TODO: Add weapon selection? (That's kinda a pain right now; see animate_unit defn)
-			anim:add(unit, "death", "kill")
-			if secondary_unit then
-				anim:add(secondary_unit, "victory", "kill")
-			end
-			anim:run()
-		end
-		wml_actions.redraw{}
-
-		if can_fire then
-			wesnoth.fire_event("die", death_loc, killer_loc)
-		end
-		if cfg.fire_event then
-			if recursion <= 1 then
-				kill_recursion_preventer:remove(death_loc.x, death_loc.y)
-			else
-				kill_recursion_preventer:insert(death_loc.x, death_loc.y, recursion)
-			end
-		end
-		-- Test that it's valid (and still on the map) first, in case the event erased (or extracted) it.
-		if unit.valid == "map" then unit:erase() end
-
-		number_killed = number_killed + 1
-	end
-
-	-- TODO: Do I need to check recall lists or  was that covered by the above loop?
-	return number_killed
-end
-
 function wml_actions.label( cfg )
 	local new_cfg = helper.parsed( cfg )
 	for index, location in ipairs( wesnoth.get_locations( cfg ) ) do
 		new_cfg.x, new_cfg.y = location[1], location[2]
 		wesnoth.label( new_cfg )
-	end
-end
-
-local side_changes_needing_redraw = {
-	'shroud', 'fog', 'reset_map', 'reset_view', 'shroud_data',
-	'share_vision', 'share_maps', 'share_view',
-	'color', 'flag',
-}
-function wml_actions.modify_side(cfg)
-	local sides = utils.get_sides(cfg)
-	for i,side in ipairs(sides) do
-		if cfg.team_name then
-			side.team_name = cfg.team_name
-		end
-		if cfg.user_team_name then
-			side.user_team_name = cfg.user_team_name
-		end
-		if cfg.controller then
-			side.controller = cfg.controller
-		end
-		if cfg.defeat_condition then
-			side.defeat_condition = cfg.defeat_condition
-		end
-		if cfg.recruit then
-			local recruits = {}
-			for recruit in utils.split(cfg.recruit) do
-				table.insert(recruits, recruit)
-			end
-			side.recruit = recruits
-		end
-		if cfg.village_support then
-			side.village_support = cfg.village_support
-		end
-		if cfg.village_gold then
-			side.village_gold = cfg.village_gold
-		end
-		if cfg.income then
-			side.base_income = cfg.income
-		end
-		if cfg.gold then
-			side.gold = cfg.gold
-		end
-
-		if cfg.hidden ~= nil then
-			side.hidden = cfg.hidden
-		end
-		if cfg.color or cfg.flag then
-			wesnoth.set_side_id(side.side, cfg.flag, cfg.color)
-		end
-		if cfg.flag_icon then
-			side.flag_icon = cfg.flag_icon
-		end
-		if cfg.suppress_end_turn_confirmation ~= nil then
-			side.suppress_end_turn_confirmation = cfg.suppress_end_turn_confirmation
-		end
-		if cfg.scroll_to_leader ~= nil then
-			side.scroll_to_leader = cfg.scroll_to_leader
-		end
-
-		if cfg.shroud ~= nil then
-			side.shroud = cfg.shroud
-		end
-		if cfg.reset_maps then
-			wesnoth.remove_shroud(side.side, "all")
-		end
-		if cfg.fog ~= nil then
-			side.fog = cfg.fog
-		end
-		if cfg.reset_view then
-			wesnoth.add_fog(side.side, {}, true)
-		end
-		if cfg.shroud_data then
-			wesnoth.remove_shroud(side.side, cfg.shroud_data)
-		end
-
-		if cfg.share_vision then
-			side.share_vision = cfg.share_vision
-		end
-		-- Legacy support
-		if cfg.share_view ~= nil or cfg.share_maps ~= nil then
-			if cfg.share_view then
-				side.share_vision = 'all'
-			elseif cfg.share_maps then
-				side.share_vision = 'shroud'
-			else
-				side.share_vision = 'none'
-			end
-		end
-
-		if cfg.switch_ai then
-			wesnoth.switch_ai(side.side, cfg.switch_ai)
-		end
-		local ai = {}
-		for next_ai in helper.child_range(cfg, "ai") do
-			table.insert(ai, T.ai(next_ai))
-		end
-		if #ai > 0 then
-			wesnoth.append_ai(side.side, ai)
-		end
-	end
-	for i,key in ipairs(side_changes_needing_redraw) do
-		if cfg[key] ~= nil then
-			wml_actions.redraw{}
-			return
-		end
 	end
 end
 
@@ -1186,115 +790,6 @@ end
 
 function wml_actions.print(cfg)
 	wesnoth.print(cfg)
-end
-
-function wml_actions.role(cfg)
-	-- role= and type= are handled differently than in other tags,
-	-- so we need to remove them from the filter
-	local role = cfg.role
-	local filter = helper.shallow_literal(cfg)
-
-	if role == nil then
-		helper.wml_error("missing role= in [role]")
-	end
-
-	local types = {}
-
-	if cfg.type then
-		for value in utils.split(cfg.type) do
-			table.insert(types, utils.trim(value))
-		end
-	end
-
-	filter.role, filter.type = nil, nil
-	local search_map, search_recall, reassign = true, true, true
-	if cfg.search_recall_list == "only" then
-		search_map = false
-	elseif cfg.search_recall_list ~= nil then
-		search_recall = not not cfg.search_recall_list
-	end
-	if cfg.reassign ~= nil then
-		reassign = not not cfg.reassign
-	end
-
-	-- pre-build a new [recall] from the [auto_recall]
-	-- copy only recall-specific attributes, no SUF at all
-	-- the SUF will be id= which we will add in a moment
-	-- keep this in sync with the C++ recall function!!!
-	local recall = nil
-	local child = helper.get_child(cfg, "auto_recall")
-	if child ~= nil then
-		if helper.get_nth_child(cfg, "auto_recall", 2) ~= nil then
-			wesnoth.log("debug", "More than one [auto_recall] found within [role]", true)
-		end
-		local original = helper.shallow_literal(child)
-		recall = {}
-		recall.x = original.x
-		recall.y = original.y
-		recall.show = original.show
-		recall.fire_event = original.fire_event
-		recall.check_passability = original.check_passability
-	end
-
-	if not reassign then
-		if search_map then
-			local unit = wesnoth.get_units{role=role}[1]
-			if unit then
-				return
-			end
-		end
-		if recall and search_recall then
-			local unit = wesnoth.get_recall_units{role=role}[1]
-			if unit then
-				recall.id = unit.id
-				wml_actions.recall(recall)
-				return
-			end
-		end
-	end
-
-	if search_map then
-		-- first attempt to match units on the map
-		local i = 1
-		repeat
-			-- give precedence based on the order specified in type=
-			if #types > 0 then
-				filter.type = types[i]
-			end
-			local unit = wesnoth.get_units(filter)[1]
-			if unit then
-				unit.role = role
-				return
-			end
-			i = i + 1
-		until #types == 0 or i > #types
-	end
-
-	if search_recall then
-		-- then try to match units on the recall lists
-		i = 1
-		repeat
-			if #types > 0 then
-				filter.type = types[i]
-			end
-			local unit = wesnoth.get_recall_units(filter)[1]
-			if unit then
-				unit.role = role
-				if recall then
-					recall.id = unit.id
-					wml_actions.recall(recall)
-				end
-				return
-			end
-			i = i + 1
-		until #types == 0 or i > #types
-	end
-
-	-- no matching unit found, try the [else] tags
-	for else_child in helper.child_range(cfg, "else") do
-		local action = utils.handle_event_commands(else_child, "conditional")
-		if action ~= "none" then return end
-	end
 end
 
 function wml_actions.unsynced(cfg)
@@ -1395,123 +890,6 @@ function wml_actions.reset_fog(cfg)
 	local locs, sides = parse_fog_cfg(cfg)
 	for i = 1, #sides do
 		wesnoth.add_fog(sides[i].side, locs, cfg.reset_view)
-	end
-end
-
-function wml_actions.set_variable(cfg)
-	local name = cfg.name or helper.wml_error "trying to set a variable with an empty name"
-
-	if cfg.value ~= nil then -- check for nil because user may try to set a variable as false
-		wesnoth.set_variable(name, cfg.value)
-	end
-
-	if cfg.literal ~= nil then
-		wesnoth.set_variable(name, helper.shallow_literal(cfg).literal)
-	end
-
-	if cfg.to_variable then
-		wesnoth.set_variable(name, wesnoth.get_variable(cfg.to_variable))
-	end
-
-	if cfg.add then
-		wesnoth.set_variable(name, (tonumber(wesnoth.get_variable(name)) or 0) + (tonumber(cfg.add) or 0))
-	end
-
-	if cfg.sub then
-		wesnoth.set_variable(name, (tonumber(wesnoth.get_variable(name)) or 0) - (tonumber(cfg.sub) or 0))
-	end
-
-	if cfg.multiply then
-		wesnoth.set_variable(name, (tonumber(wesnoth.get_variable(name)) or 0) * (tonumber(cfg.multiply) or 0))
-	end
-
-	if cfg.divide then
-		local divide = tonumber(cfg.divide) or 0
-		if divide == 0 then helper.wml_error("division by zero on variable " .. name) end
-		wesnoth.set_variable(name, (tonumber(wesnoth.get_variable(name)) or 0) / divide)
-	end
-
-	if cfg.modulo then
-		local modulo = tonumber(cfg.modulo) or 0
-		if modulo == 0 then helper.wml_error("division by zero on variable " .. name) end
-		wesnoth.set_variable(name, (tonumber(wesnoth.get_variable(name)) or 0) % modulo)
-	end
-
-	if cfg.abs then
-		wesnoth.set_variable(name, math.abs(tonumber(wesnoth.get_variable(name)) or 0))
-	end
-
-	if cfg.root then
-		if cfg.root == "square" then
-			local radicand = tonumber(wesnoth.get_variable(name)) or 0
-			if radicand < 0 then helper.wml_error("square root of negative number on variable " .. name) end
-			wesnoth.set_variable(name, math.sqrt(radicand))
-		end
-	end
-
-	if cfg.power then
-		wesnoth.set_variable(name, (tonumber(wesnoth.get_variable(name)) or 0) ^ (tonumber(cfg.power) or 0))
-	end
-
-	if cfg.round then
-		local var = tonumber(wesnoth.get_variable(name) or 0)
-		local round_val = cfg.round
-		if round_val == "ceil" then
-			wesnoth.set_variable(name, math.ceil(var))
-		elseif round_val == "floor" then
-			wesnoth.set_variable(name, math.floor(var))
-		else
-			local decimals, discarded = math.modf(tonumber(round_val) or 0)
-			local value = var * (10 ^ decimals)
-			value = helper.round(value)
-			value = value * (10 ^ -decimals)
-			wesnoth.set_variable(name, value)
-		end
-	end
-
-	-- unlike the other math operations, ipart and fpart do not act on
-	-- the value already contained in the variable
-	-- but on the value assigned to the respective key
-	if cfg.ipart then
-		local ivalue, fvalue = math.modf(tonumber(cfg.ipart) or 0)
-		wesnoth.set_variable(name, ivalue)
-	end
-
-	if cfg.fpart then
-		local ivalue, fvalue = math.modf(tonumber(cfg.fpart) or 0)
-		wesnoth.set_variable(name, fvalue)
-	end
-
-	if cfg.string_length ~= nil then
-		wesnoth.set_variable(name, string.len(tostring(cfg.string_length)))
-	end
-
-	if cfg.time then
-		if cfg.time == "stamp" then
-			wesnoth.set_variable(name, wesnoth.get_time_stamp())
-		end
-	end
-
-	if cfg.rand then
-		wesnoth.set_variable(name, helper.rand(tostring(cfg.rand)))
-	end
-
-	local join_child = helper.get_child(cfg, "join")
-	if join_child then
-		local array_name = join_child.variable or helper.wml_error "missing variable= attribute in [join]"
-		local separator = join_child.separator
-		local key_name = join_child.key or "value"
-		local remove_empty = join_child.remove_empty
-
-		local string_to_join = {}
-
-		for i, element in ipairs(helper.get_variable_array(array_name)) do
-			if element[key_name] ~= nil or (not remove_empty) then
-				table.insert(string_to_join, tostring(element[key_name]))
-			end
-		end
-
-		wesnoth.set_variable(name, table.concat(string_to_join, separator))
 	end
 end
 

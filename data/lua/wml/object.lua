@@ -1,6 +1,6 @@
 
-local helper = wesnoth.require "lua/helper.lua"
-local utils = wesnoth.require "lua/wml-utils.lua"
+local helper = wesnoth.require "helper"
+local utils = wesnoth.require "wml-utils"
 local T = helper.set_wml_tag_metatable {}
 local wml_actions = wesnoth.wml_actions
 

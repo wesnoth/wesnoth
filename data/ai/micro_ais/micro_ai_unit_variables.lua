@@ -9,7 +9,7 @@
 -- with different ai_CA values affecting the same unit)
 -- For the time being, we only allow key=value style variables.
 
-local H = wesnoth.require "lua/helper.lua"
+local H = wesnoth.require "helper"
 
 local micro_ai_unit_variables = {}
 

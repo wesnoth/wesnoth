@@ -20,6 +20,7 @@
 #include "game_errors.hpp"
 #include "log.hpp"
 #include "scripting/lua_common.hpp"	// for chat_message, luaW_pcall
+#include "scripting/push_check.hpp"
 
 #include <exception>
 #include <string>
@@ -88,18 +89,25 @@ static bool resolve_filename(std::string& filename, const std::string& currentdi
 /**
  * Checks if a file exists (not necessarily a Lua script).
  * - Arg 1: string containing the file name.
+ * - Arg 2: if true, the file must be a real file and not a directory
  * - Ret 1: boolean
  */
 int intf_have_file(lua_State *L)
 {
 	char const *m = luaL_checkstring(L, 1);
 	std::string p = filesystem::get_wml_location(m);
-	if (p.empty()) { lua_pushboolean(L, false); }
-	else { lua_pushboolean(L, true); }
+	if(p.empty()) {
+		lua_pushboolean(L, false);
+	} else if(luaW_toboolean(L, 2)) {
+		lua_pushboolean(L, !filesystem::is_directory(p));
+	} else {
+		lua_pushboolean(L, true);
+	}
 	return 1;
 }
+
 /**
- * Checks if a file exists (not necessarily a Lua script).
+ * Reads a file into a string, or a directory into a list of files therein.
  * - Arg 1: string containing the file name.
  * - Ret 1: string
  */
@@ -121,6 +129,16 @@ int intf_read_file(lua_State *L)
 	std::string p = filesystem::get_wml_location(m);
 	if(p.empty()) {
 		return luaL_argerror(L, -1, "file not found");
+	}
+	if(filesystem::is_directory(p)) {
+		std::vector<std::string> files, dirs;
+		filesystem::get_files_in_dir(p, &files, &dirs);
+		size_t ndirs = dirs.size();
+		std::copy(files.begin(), files.end(), std::back_inserter(dirs));
+		lua_push(L, dirs);
+		lua_pushnumber(L, ndirs);
+		lua_setfield(L, -2, "ndirs");
+		return 1;
 	}
 	const std::unique_ptr<std::istream> fs(filesystem::istream_file(p));
 	fs->exceptions(std::ios_base::goodbit);

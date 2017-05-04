@@ -1,4 +1,4 @@
-local H = wesnoth.require "lua/helper.lua"
+local H = wesnoth.require "helper"
 
 function wesnoth.micro_ais.fast_ai(cfg)
 	local optional_keys = {

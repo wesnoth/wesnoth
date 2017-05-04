@@ -395,9 +395,19 @@ lua_kernel_base::lua_kernel_base()
 	lua_pushcfunction(L, &dispatch<&lua_kernel_base::intf_print>);
 	lua_setglobal(L, "print");
 
+	cmd_log_ << "Initializing package repository...\n";
+	static const char* pkg_name = "lua/package.lua";
+	lua_settop(L, 0);
+	lua_pushstring(L, pkg_name);
+	int res = intf_dofile(L);
+	if(res != 1) {
+		cmd_log_ << "Error: Failed to initialize package repository. Falling back to less flexible C++ implementation.\n";
+	}
 	// Create the package table.
 	lua_getglobal(L, "wesnoth");
 	lua_newtable(L);
+	lua_pushvalue(L, -3);
+	lua_setfield(L, -2, pkg_name);
 	lua_setfield(L, -2, "package");
 	lua_pop(L, 1);
 
@@ -615,11 +625,13 @@ void lua_kernel_base::interactive_run(char const * prog) {
  */
 int lua_kernel_base::intf_dofile(lua_State* L)
 {
+	lua_rotate(L, 1, -1);
 	if (lua_fileops::load_file(L) != 1) return 0;
 	//^ should end with the file contents loaded on the stack. actually it will call lua_error otherwise, the return 0 is redundant.
 
 	error_handler eh = std::bind(&lua_kernel_base::log_error, this, _1, _2 );
-	this->protected_call(0, LUA_MULTRET, eh);
+	lua_rotate(L, 1, 1);
+	this->protected_call(lua_gettop(L) - 1, LUA_MULTRET, eh);
 	return lua_gettop(L);
 }
 

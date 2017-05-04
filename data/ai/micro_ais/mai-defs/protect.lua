@@ -1,4 +1,4 @@
-local H = wesnoth.require "lua/helper.lua"
+local H = wesnoth.require "helper"
 local MAIH = wesnoth.require("ai/micro_ais/micro_ai_helper.lua")
 
 function wesnoth.micro_ais.protect_unit(cfg)

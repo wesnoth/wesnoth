@@ -3,7 +3,7 @@
 -- Allows the player to choose whether they want to play Konrad or Li’sar
 -- for the tutorial
 
-local helper = wesnoth.require "lua/helper.lua"
+local helper = wesnoth.require "helper"
 local T = helper.set_wml_tag_metatable {}
 local wml_actions = wesnoth.wml_actions
 local _ = wesnoth.textdomain "wesnoth-tutorial"

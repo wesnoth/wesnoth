@@ -2,7 +2,7 @@
 
 -- This file may provide an implementation of Lua functions removed from the engine.
 
-local helper = wesnoth.require "lua/helper.lua"
+local helper = wesnoth.require "helper"
 
 function wesnoth.set_music(cfg)
 	wesnoth.wml_actions.music(cfg)

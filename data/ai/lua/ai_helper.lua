@@ -1,6 +1,6 @@
-local H = wesnoth.require "lua/helper.lua"
+local H = wesnoth.require "helper"
 local W = H.set_wml_action_metatable {}
-local LS = wesnoth.require "lua/location_set.lua"
+local LS = wesnoth.require "location_set"
 
 -- This is a collection of Lua functions used for custom AI development.
 -- Note that this is still work in progress with significant changes occurring

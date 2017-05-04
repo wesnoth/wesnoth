@@ -1,4 +1,4 @@
-local LS = wesnoth.require "lua/location_set.lua"
+local LS = wesnoth.require "location_set"
 
 local mapgen_helper, map_mt = {}, {__index = {}}
 

@@ -1,4 +1,4 @@
-local helper = wesnoth.require "lua/helper.lua"
+local helper = wesnoth.require "helper"
 local wml_actions = wesnoth.wml_actions
 local game_events = wesnoth.game_events
 
