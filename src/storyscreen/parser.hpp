@@ -29,6 +29,7 @@ class story_parser
 {
 public:
 	story_parser() = default;
+	virtual ~story_parser() = default;
 
 	story_parser(const story_parser&) = delete;
 	story_parser& operator=(const story_parser&) = delete;
