@@ -2438,6 +2438,8 @@ void display::draw(bool update,bool force) {
 	// * case of unit in hex but was there last turn=>its hexes are invalidated too
 	// * case of unit in hex not there last turn => it moved, so was invalidated previously
 	if(!get_map().empty()) {
+		//int simulate_delay = 0;
+
 		/*
 		 * draw_invalidated() also invalidates the halos, so also needs to be
 		 * ran if invalidated_.empty() == true.
@@ -2449,6 +2451,9 @@ void display::draw(bool update,bool force) {
 		drawing_buffer_commit();
 		post_commit();
 		draw_sidebar();
+
+		// Simulate slow PC:
+		//SDL_Delay(2*simulate_delay + rand() % 20);
 	}
 	draw_wrap(update, force);
 	post_draw();
