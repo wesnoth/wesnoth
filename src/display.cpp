@@ -1646,6 +1646,7 @@ void display::draw_init()
 		const SDL_Rect clip_rect = map_outside_area();
 		const surface& screen = get_screen_surface();
 		clip_rect_setter set_clip_rect(screen, &clip_rect);
+		SDL_FillRect(screen, &clip_rect, 0x00000000);
 		draw_background(screen, clip_rect, theme_.border().background_image);
 		redraw_background_ = false;
 
