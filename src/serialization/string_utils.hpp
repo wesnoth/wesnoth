@@ -22,6 +22,7 @@
 #include <set>
 #include <sstream>
 #include <string>
+#include <utility>
 #include <vector>
 
 class t_string;
@@ -29,6 +30,34 @@ class t_string;
 namespace utils {
 
 using string_map = std::map<std::string, t_string>;
+
+// TODO: when https://github.com/aquileia/external has boost::string_view,
+// replace this class with it.
+class string_view
+{
+public:
+	const char* str;
+	const int size;
+
+	string_view(const std::string& str_, int offset, int size_)
+		: str(&str_[offset])
+		, size(size_)
+	{
+	}
+
+	string_view(const std::string& str_)
+		: str(str_.c_str())
+		, size(str_.size())
+	{
+	}
+
+	string_view(const string_view&) = default;
+
+	explicit operator std::string() const
+	{
+		return std::string(str, size);
+	}
+};
 
 bool isnewline(const char c);
 bool portable_isspace(const char c);
@@ -143,6 +172,19 @@ std::vector<std::string> square_parenthetical_split(
 	const std::string& left = "([",
 	const std::string& right = ")]",
 	const int flags = REMOVE_EMPTY | STRIP_SPACES);
+
+/**
+ * Splits a string into two parts as evenly as possible based on lines.
+ * For example, if the string contains 3288 lines, then both parts will
+ * be 1644 lines long.
+ *
+ * The line separator in between won't be in either of the parts the
+ * function returns.
+ *
+ * Because this function is intended for extremely long strings
+ * (kilobytes long), it returns string_views for performance.
+ */
+std::pair<string_view, string_view> vertical_split(const std::string& val);
 
 /**
  * Generates a new string joining container items in a list.
