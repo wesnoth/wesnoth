@@ -320,8 +320,8 @@ bool hotkey_mouse::bindings_equal_helper(hotkey_ptr other) const
 
 void hotkey_keyboard::save_helper(config &item) const
 {
-	if (keycode_ != SDLK_UNKNOWN) {
-		item["key"] = SDL_GetKeyName(keycode_);
+	if(!text_.empty()) {
+		item["key"] = text_;
 	}
 }
 
