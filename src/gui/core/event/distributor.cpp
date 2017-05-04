@@ -364,21 +364,9 @@ void mouse_motion::stop_hover_timer()
 #define LOG_HEADER                                                             \
 	"distributor mouse button " << name_ << " [" << owner_.id() << "]: "
 
-template <ui_event sdl_button_down,
-		  ui_event sdl_button_up,
-		  ui_event button_down,
-		  ui_event button_up,
-		  ui_event button_click,
-		  ui_event button_double_click>
-mouse_button<sdl_button_down,
-			  sdl_button_up,
-			  button_down,
-			  button_up,
-			  button_click,
-			  button_double_click>::mouse_button(const std::string& name_,
-												  widget& owner,
-												  const dispatcher::queue_position
-														  queue_position)
+template<typename T>
+mouse_button<T>::mouse_button(const std::string& name_, widget& owner,
+		const dispatcher::queue_position queue_position)
 	: mouse_motion(owner, queue_position)
 	, last_click_stamp_(0)
 	, last_clicked_widget_(nullptr)
@@ -388,27 +376,15 @@ mouse_button<sdl_button_down,
 	, signal_handler_sdl_button_down_entered_(false)
 	, signal_handler_sdl_button_up_entered_(false)
 {
-	owner_.connect_signal<sdl_button_down>(
-			std::bind(&mouse_button<sdl_button_down,
-									   sdl_button_up,
-									   button_down,
-									   button_up,
-									   button_click,
-									   button_double_click>::
-								 signal_handler_sdl_button_down,
+	owner_.connect_signal<T::sdl_button_down_t>(
+			std::bind(&mouse_button<T>::signal_handler_sdl_button_down,
 						this,
 						_2,
 						_3,
 						_5),
 			queue_position);
-	owner_.connect_signal<sdl_button_up>(
-			std::bind(&mouse_button<sdl_button_down,
-									   sdl_button_up,
-									   button_down,
-									   button_up,
-									   button_click,
-									   button_double_click>::
-								 signal_handler_sdl_button_up,
+	owner_.connect_signal<T::sdl_button_up_t>(
+			std::bind(&mouse_button<T>::signal_handler_sdl_button_up,
 						this,
 						_2,
 						_3,
@@ -416,18 +392,8 @@ mouse_button<sdl_button_down,
 			queue_position);
 }
 
-template <ui_event sdl_button_down,
-		  ui_event sdl_button_up,
-		  ui_event button_down,
-		  ui_event button_up,
-		  ui_event button_click,
-		  ui_event button_double_click>
-void mouse_button<sdl_button_down,
-				   sdl_button_up,
-				   button_down,
-				   button_up,
-				   button_click,
-				   button_double_click>::initialize_state(const bool is_down)
+template<typename T>
+void mouse_button<T>::initialize_state(const bool is_down)
 {
 	last_click_stamp_ = 0;
 	last_clicked_widget_ = nullptr;
@@ -435,21 +401,9 @@ void mouse_button<sdl_button_down,
 	is_down_ = is_down;
 }
 
-template <ui_event sdl_button_down,
-		  ui_event sdl_button_up,
-		  ui_event button_down,
-		  ui_event button_up,
-		  ui_event button_click,
-		  ui_event button_double_click>
-void mouse_button<sdl_button_down,
-				   sdl_button_up,
-				   button_down,
-				   button_up,
-				   button_click,
-				   button_double_click>::
-		signal_handler_sdl_button_down(const event::ui_event event,
-									   bool& handled,
-									   const point& coordinate)
+template<typename T>
+void mouse_button<T>::signal_handler_sdl_button_down(const event::ui_event event, bool& handled,
+		const point& coordinate)
 {
 	if(signal_handler_sdl_button_down_entered_) {
 		return;
@@ -471,10 +425,10 @@ void mouse_button<sdl_button_down,
 	if(mouse_captured_) {
 		assert(mouse_focus_);
 		focus_ = mouse_focus_;
-		DBG_GUI_E << LOG_HEADER << "Firing: " << sdl_button_down << ".\n";
-		if(!owner_.fire(sdl_button_down, *focus_, coordinate)) {
-			DBG_GUI_E << LOG_HEADER << "Firing: " << button_down << ".\n";
-			owner_.fire(button_down, *mouse_focus_);
+		DBG_GUI_E << LOG_HEADER << "Firing: " << T::sdl_button_down_t << ".\n";
+		if(!owner_.fire(T::sdl_button_down_t, *focus_, coordinate)) {
+			DBG_GUI_E << LOG_HEADER << "Firing: " << T::button_down_t << ".\n";
+			owner_.fire(T::button_down_t, *mouse_focus_);
 		}
 	} else {
 		widget* mouse_over = owner_.find_at(coordinate, true);
@@ -491,30 +445,18 @@ void mouse_button<sdl_button_down,
 		}
 
 		focus_ = mouse_over;
-		DBG_GUI_E << LOG_HEADER << "Firing: " << sdl_button_down << ".\n";
-		if(!owner_.fire(sdl_button_down, *focus_, coordinate)) {
-			DBG_GUI_E << LOG_HEADER << "Firing: " << button_down << ".\n";
-			owner_.fire(button_down, *focus_);
+		DBG_GUI_E << LOG_HEADER << "Firing: " << T::sdl_button_down_t << ".\n";
+		if(!owner_.fire(T::sdl_button_down_t, *focus_, coordinate)) {
+			DBG_GUI_E << LOG_HEADER << "Firing: " << T::button_down_t << ".\n";
+			owner_.fire(T::button_down_t, *focus_);
 		}
 	}
 	handled = true;
 }
 
-template <ui_event sdl_button_down,
-		  ui_event sdl_button_up,
-		  ui_event button_down,
-		  ui_event button_up,
-		  ui_event button_click,
-		  ui_event button_double_click>
-void mouse_button<sdl_button_down,
-				   sdl_button_up,
-				   button_down,
-				   button_up,
-				   button_click,
-				   button_double_click>::
-		signal_handler_sdl_button_up(const event::ui_event event,
-									 bool& handled,
-									 const point& coordinate)
+template<typename T>
+void mouse_button<T>::signal_handler_sdl_button_up(const event::ui_event event, bool& handled,
+		const point& coordinate)
 {
 	if(signal_handler_sdl_button_up_entered_) {
 		return;
@@ -531,10 +473,10 @@ void mouse_button<sdl_button_down,
 	is_down_ = false;
 
 	if(focus_) {
-		DBG_GUI_E << LOG_HEADER << "Firing: " << sdl_button_up << ".\n";
-		if(!owner_.fire(sdl_button_up, *focus_, coordinate)) {
-			DBG_GUI_E << LOG_HEADER << "Firing: " << button_up << ".\n";
-			owner_.fire(button_up, *focus_);
+		DBG_GUI_E << LOG_HEADER << "Firing: " << T::sdl_button_up_t << ".\n";
+		if(!owner_.fire(T::sdl_button_up_t, *focus_, coordinate)) {
+			DBG_GUI_E << LOG_HEADER << "Firing: " << T::button_up_t << ".\n";
+			owner_.fire(T::button_up_t, *focus_);
 		}
 	}
 
@@ -564,33 +506,23 @@ void mouse_button<sdl_button_down,
 	handled = true;
 }
 
-template <ui_event sdl_button_down,
-		  ui_event sdl_button_up,
-		  ui_event button_down,
-		  ui_event button_up,
-		  ui_event button_click,
-		  ui_event button_double_click>
-void mouse_button<sdl_button_down,
-				   sdl_button_up,
-				   button_down,
-				   button_up,
-				   button_click,
-				   button_double_click>::mouse_button_click(widget* widget)
+template<typename T>
+void mouse_button<T>::mouse_button_click(widget* widget)
 {
 	Uint32 stamp = SDL_GetTicks();
 	if(last_click_stamp_ + settings::double_click_time >= stamp
 	   && last_clicked_widget_ == widget) {
 
-		DBG_GUI_E << LOG_HEADER << "Firing: " << button_double_click << ".\n";
+		DBG_GUI_E << LOG_HEADER << "Firing: " << T::button_double_click_t << ".\n";
 
-		owner_.fire(button_double_click, *widget);
+		owner_.fire(T::button_double_click_t, *widget);
 		last_click_stamp_ = 0;
 		last_clicked_widget_ = nullptr;
 
 	} else {
 
-		DBG_GUI_E << LOG_HEADER << "Firing: " << button_click << ".\n";
-		owner_.fire(button_click, *widget);
+		DBG_GUI_E << LOG_HEADER << "Firing: " << T::button_click_t << ".\n";
+		owner_.fire(T::button_click_t, *widget);
 		last_click_stamp_ = stamp;
 		last_clicked_widget_ = widget;
 	}

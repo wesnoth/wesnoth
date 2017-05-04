@@ -151,12 +151,28 @@ private:
 
 /***** ***** ***** ***** mouse_button ***** ***** ***** ***** *****/
 
-template <ui_event sdl_button_down,
-		  ui_event sdl_button_up,
-		  ui_event button_down,
-		  ui_event button_up,
-		  ui_event button_click,
-		  ui_event button_double_click>
+/**
+ * Small helper metastruct to specialize mouse_button with and provide ui_event type
+ * aliases without needing to make mouse_button take a million template types.
+ */
+template<
+		ui_event sdl_button_down,
+		ui_event sdl_button_up,
+		ui_event button_down,
+		ui_event button_up,
+		ui_event button_click,
+		ui_event button_double_click>
+struct mouse_button_event_types_wrapper
+{
+	static const ui_event sdl_button_down_t     = sdl_button_down;
+	static const ui_event sdl_button_up_t       = sdl_button_up;
+	static const ui_event button_down_t         = button_down;
+	static const ui_event button_up_t           = button_up;
+	static const ui_event button_click_t        = button_click;
+	static const ui_event button_double_click_t = button_double_click;
+};
+
+template<typename T>
 class mouse_button : public virtual mouse_motion
 {
 public:
@@ -209,32 +225,42 @@ private:
 
 /***** ***** ***** ***** distributor ***** ***** ***** ***** *****/
 
-typedef mouse_button<SDL_LEFT_BUTTON_DOWN,
-					  SDL_LEFT_BUTTON_UP,
-					  LEFT_BUTTON_DOWN,
-					  LEFT_BUTTON_UP,
-					  LEFT_BUTTON_CLICK,
-					  LEFT_BUTTON_DOUBLE_CLICK> mouse_button_left;
+using mouse_button_left = mouse_button<
+	mouse_button_event_types_wrapper<
+		SDL_LEFT_BUTTON_DOWN,
+		SDL_LEFT_BUTTON_UP,
+		LEFT_BUTTON_DOWN,
+		LEFT_BUTTON_UP,
+		LEFT_BUTTON_CLICK,
+		LEFT_BUTTON_DOUBLE_CLICK>
+	>;
 
-typedef mouse_button<SDL_MIDDLE_BUTTON_DOWN,
-					  SDL_MIDDLE_BUTTON_UP,
-					  MIDDLE_BUTTON_DOWN,
-					  MIDDLE_BUTTON_UP,
-					  MIDDLE_BUTTON_CLICK,
-					  MIDDLE_BUTTON_DOUBLE_CLICK> mouse_button_middle;
+using mouse_button_middle = mouse_button<
+	mouse_button_event_types_wrapper<
+		SDL_MIDDLE_BUTTON_DOWN,
+		SDL_MIDDLE_BUTTON_UP,
+		MIDDLE_BUTTON_DOWN,
+		MIDDLE_BUTTON_UP,
+		MIDDLE_BUTTON_CLICK,
+		MIDDLE_BUTTON_DOUBLE_CLICK>
+	>;
 
-typedef mouse_button<SDL_RIGHT_BUTTON_DOWN,
-					  SDL_RIGHT_BUTTON_UP,
-					  RIGHT_BUTTON_DOWN,
-					  RIGHT_BUTTON_UP,
-					  RIGHT_BUTTON_CLICK,
-					  RIGHT_BUTTON_DOUBLE_CLICK> mouse_button_right;
+using mouse_button_right = mouse_button<
+	mouse_button_event_types_wrapper<
+		SDL_RIGHT_BUTTON_DOWN,
+		SDL_RIGHT_BUTTON_UP,
+		RIGHT_BUTTON_DOWN,
+		RIGHT_BUTTON_UP,
+		RIGHT_BUTTON_CLICK,
+		RIGHT_BUTTON_DOUBLE_CLICK>
+	>;
 
 
 /** The event handler class for the widget library. */
-class distributor : public mouse_button_left,
-					 public mouse_button_middle,
-					 public mouse_button_right
+class distributor :
+	public mouse_button_left,
+	public mouse_button_middle,
+	public mouse_button_right
 {
 public:
 	distributor(widget& owner, const dispatcher::queue_position queue_position);
