@@ -412,7 +412,7 @@ lua_kernel_base::lua_kernel_base()
 	lua_pop(L, 1);
 
 	// Get some callbacks for map locations
-	cmd_log_ << "Adding map_location table...\n";
+	cmd_log_ << "Adding map table...\n";
 
 	static luaL_Reg const map_callbacks[] {
 		{ "get_direction",		&lua_map_location::intf_get_direction         		},
@@ -432,7 +432,7 @@ lua_kernel_base::lua_kernel_base()
 	lua_getglobal(L, "wesnoth");
 	lua_newtable(L);
 	luaL_setfuncs(L, map_callbacks, 0);
-	lua_setfield(L, -2, "map_location");
+	lua_setfield(L, -2, "map");
 	lua_pop(L, 1);
 
 	// Add mersenne twister rng wrapper
