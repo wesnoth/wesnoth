@@ -990,9 +990,9 @@ std::vector<theme_info> dialog_tester<theme_list>::themes {make_theme("classic")
 template<>
 struct dialog_tester<editor_generate_map>
 {
+	std::vector<map_generator*> map_generators;
 	editor_generate_map* create()
 	{
-		std::vector<map_generator*> map_generators;
 		for(const config &i : main_config.child_range("multiplayer")) {
 			if(i["scenario_generation"] == "default") {
 				const config &generator_cfg = i.child("generator");
