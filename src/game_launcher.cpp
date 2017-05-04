@@ -458,6 +458,20 @@ bool game_launcher::init_lua_script()
 	return !error;
 }
 
+void game_launcher::set_test(const std::string& id)
+{
+	state_ = saved_game();
+	state_.classification().campaign_type = game_classification::CAMPAIGN_TYPE::TEST;
+	state_.classification().campaign_define = "TEST";
+
+	state_.mp_settings().mp_era = "era_default";
+	state_.mp_settings().show_connect = false;
+
+	state_.set_carryover_sides_start(
+		config_of("next_scenario", id)
+	);
+}
+
 bool game_launcher::play_test()
 {
 	static bool first_time = true;
@@ -470,17 +484,8 @@ bool game_launcher::play_test()
 
 	first_time = false;
 
-	state_.classification().campaign_type = game_classification::CAMPAIGN_TYPE::TEST;
+	set_test(test_scenario_);
 	state_.classification().campaign_define = "TEST";
-
-	state_.mp_settings().mp_era = "era_default";
-	state_.mp_settings().show_connect = false;
-
-	state_.set_carryover_sides_start(
-		config_of("next_scenario", test_scenario_)
-	);
-
-
 
 	game_config_manager::get()->
 		load_game_config_for_game(state_.classification());

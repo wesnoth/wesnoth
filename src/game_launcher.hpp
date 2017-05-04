@@ -69,6 +69,7 @@ public:
 	void clear_loaded_game();
 	bool load_game();
 	void set_tutorial();
+	void set_test(const std::string& id);
 
 	std::string jump_to_campaign_id() const;
 	bool new_campaign();

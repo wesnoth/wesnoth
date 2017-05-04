@@ -48,7 +48,7 @@ public:
 
 	void load_game_config_for_editor();
 	void load_game_config_for_game(const game_classification& classification);
-	void load_game_config_for_create(bool is_mp);
+	void load_game_config_for_create(bool is_mp, bool is_test = false);
 
 	static game_config_manager * get();
 

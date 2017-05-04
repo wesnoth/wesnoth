@@ -32,7 +32,9 @@
 #include "gui/dialogs/help_browser.hpp"
 #include "gui/dialogs/language_selection.hpp"
 #include "gui/dialogs/lua_interpreter.hpp"
+#include "game_config_manager.hpp"
 #include "gui/dialogs/message.hpp"
+#include "gui/dialogs/simple_item_selector.hpp"
 #include "gui/dialogs/multiplayer/mp_host_game_prompt.hpp"
 #include "gui/dialogs/multiplayer/mp_method_selection.hpp"
 #include "log.hpp"
@@ -222,6 +224,25 @@ void title_screen::pre_show(window& win)
 	//
 	win.register_hotkey(hotkey::TITLE_SCREEN__RELOAD_WML, [](event::dispatcher& w, hotkey::HOTKEY_COMMAND) {
 		dynamic_cast<window&>(w).set_retval(RELOAD_GAME_DATA);
+		return true;
+	});
+
+	win.register_hotkey(hotkey::TITLE_SCREEN__TEST, [this](event::dispatcher& w, hotkey::HOTKEY_COMMAND) {
+		game_config_manager::get()->load_game_config_for_create(false, true);
+		std::vector<std::string> options;
+		for(const config &sc : game_config_manager::get()->game_config().child_range("test")) {
+			if(!sc["is_unit_test"].to_bool(false)) {
+				options.emplace_back(sc["id"]);
+			}
+		}
+		std::sort(options.begin(), options.end());
+		gui2::dialogs::simple_item_selector dlg(_("Choose Test"), "", options);
+		dlg.show(game_.video());
+		int choice = dlg.selected_index();
+		if(choice >= 0) {
+			game_.set_test(options[choice]);
+			dynamic_cast<window&>(w).set_retval(LAUNCH_GAME);
+		}
 		return true;
 	});
 
