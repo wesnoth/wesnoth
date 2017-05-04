@@ -43,6 +43,8 @@ Version 1.13.7+dev:
    * wesnoth.dofile now forwards any excess arguments to the file in the "..." argument
    * wesnoth.require can now load all modules in a directory and accepts some shortened paths,
      for example omitting the ".lua" file extension.
+   * New wesnoth.create_weapon function to make a weapon that's not attached to a unit
+     (which could be useful for animations)
  * Multiplayer:
    * Fixed statistics being lost when reloading an MP game.
  * Performance:
@@ -77,6 +79,7 @@ Version 1.13.7+dev:
    * New [change_theme] tag to change the theme mid-scenario
    * New [zoom] tag allows changing the zoom level from an event
    * [kill]animate=yes now plays victory animations if applicable
+   * [kill] now supports [primary_attack] and [secondary_attack] for the animation
    * Fix [volume] not accepting 100% as the new volume.
    * New concat_to_* keys in unit_type inheritance allow amending keys
    * Accept [story] as ActionWML in events

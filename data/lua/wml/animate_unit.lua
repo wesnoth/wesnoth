@@ -2,14 +2,8 @@ local helper = wesnoth.require "helper"
 local T = helper.set_wml_tag_metatable{}
 
 local function get_fake_attack(unit, cfg)
-	-- This hacky-looking code is because the only way to create an
-	-- attack object in Lua is by adding the attack to a unit.
-	-- In this case, it's immediately deleted afterwards.
-	local n = #unit.attacks + 1
-	unit.attacks[n] = cfg
-	local atk = unit.attacks[n]
-	unit.attacks[n] = nil
-	return atk
+	-- unit is unused; only needed to get the same signature as get_real_attack
+	return wesnoth.create_weapon(cfg)
 end
 
 local function get_real_attack(unit, filter)

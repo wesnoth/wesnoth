@@ -321,6 +321,13 @@ static int impl_unit_attack_collect(lua_State* L)
 	return 0;
 }
 
+static int intf_create_attack(lua_State* L)
+{
+	auto atk = std::make_shared<attack_type>(luaW_checkconfig(L, 1));
+	luaW_pushweapon(L, atk);
+	return 1;
+}
+
 namespace lua_units {
 	std::string register_attacks_metatables(lua_State* L)
 	{
@@ -355,6 +362,12 @@ namespace lua_units {
 		lua_setfield(L, -2, "__metatable");
 		lua_pushcfunction(L, impl_unit_attack_match);
 		lua_setfield(L, -2, "matches");
+
+		// Add create_attack
+		luaW_getglobal(L, "wesnoth");
+		lua_pushcfunction(L, intf_create_attack);
+		lua_setfield(L, -2, "create_weapon");
+		lua_pop(L, 1);
 
 		return cmd_out.str();
 	}

@@ -42,10 +42,13 @@ function wesnoth.wml_actions.kill(cfg)
 		if cfg.animate then
 			wesnoth.scroll_to_tile(death_loc)
 			local anim = wesnoth.create_animator()
-			-- Possible TODO: Add weapon selection? (That's kinda a pain right now; see animate_unit defn)
-			anim:add(unit, "death", "kill")
+			local primary = helper.get_child(cfg, "primary_attack")
+			local secondary = helper.get_child(cfg, "secondary_attack")
+			if primary then primary = wesnoth.create_weapon(primary) end
+			if secondary then secondary = wesnoth.create_weapon(secondary) end
+			anim:add(unit, "death", "kill", "hits", {primary = primary, secondary = secondary})
 			if secondary_unit then
-				anim:add(secondary_unit, "victory", "kill")
+				anim:add(secondary_unit, "victory", "kill", "hits", {primary = primary, secondary = secondary})
 			end
 			anim:run()
 		end
