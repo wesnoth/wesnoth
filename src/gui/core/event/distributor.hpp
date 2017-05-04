@@ -164,12 +164,12 @@ template<
 		ui_event button_double_click>
 struct mouse_button_event_types_wrapper
 {
-	static const ui_event sdl_button_down_t     = sdl_button_down;
-	static const ui_event sdl_button_up_t       = sdl_button_up;
-	static const ui_event button_down_t         = button_down;
-	static const ui_event button_up_t           = button_up;
-	static const ui_event button_click_t        = button_click;
-	static const ui_event button_double_click_t = button_double_click;
+	static const ui_event sdl_button_down_event     = sdl_button_down;
+	static const ui_event sdl_button_up_event       = sdl_button_up;
+	static const ui_event button_down_event         = button_down;
+	static const ui_event button_up_event           = button_up;
+	static const ui_event button_click_event        = button_click;
+	static const ui_event button_double_click_event = button_double_click;
 };
 
 template<typename T>
