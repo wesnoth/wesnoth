@@ -26,7 +26,7 @@
 #include "gui/widgets/window.hpp"
 
 #include "mp_ui_alerts.hpp"
-#include "preferences.hpp"
+#include "preferences/general.hpp"
 #include "formula/string_utils.hpp"
 
 #include "utils/functional.hpp"

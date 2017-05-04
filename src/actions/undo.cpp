@@ -25,7 +25,7 @@
 #include "map/map.hpp"                      // for gamemap
 #include "map/location.hpp"  // for map_location, operator<<, etc
 #include "mouse_handler_base.hpp"       // for command_disabler
-#include "preferences.hpp"
+#include "preferences/general.hpp"
 #include "recall_list_manager.hpp"   // for recall_list_manager
 #include "replay.hpp"                // for recorder, replay
 #include "replay_helper.hpp"         // for replay_helper

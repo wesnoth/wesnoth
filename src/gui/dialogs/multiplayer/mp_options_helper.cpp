@@ -16,7 +16,7 @@
 #include "gui/dialogs/multiplayer/mp_options_helper.hpp"
 
 #include "config_assign.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/menu_button.hpp"

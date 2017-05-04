@@ -36,7 +36,7 @@
 #include "gui/widgets/helper.hpp"       // for init
 #include "image.hpp"                    // for flush_cache, etc
 #include "log.hpp"                      // for LOG_STREAM, general, logger, etc
-#include "preferences.hpp"              // for core_id, etc
+#include "preferences/general.hpp"              // for core_id, etc
 #include "scripting/application_lua_kernel.hpp"
 #include "scripting/plugins/context.hpp"
 #include "scripting/plugins/manager.hpp"

@@ -12,9 +12,9 @@
    See the COPYING file for more details.
 */
 
-#include "editor/editor_preferences.hpp"
+#include "preferences/editor.hpp"
 #include "config.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "lexical_cast.hpp"
 #include "serialization/string_utils.hpp"
 

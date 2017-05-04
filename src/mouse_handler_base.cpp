@@ -18,7 +18,7 @@
 #include "cursor.hpp"
 #include "display.hpp"
 #include "log.hpp"
-#include "preferences.hpp"
+#include "preferences/general.hpp"
 #include "tooltips.hpp"
 #include "sdl/rect.hpp"
 

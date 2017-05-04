@@ -14,7 +14,7 @@
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
 #include "editor/action/action.hpp"
-#include "editor/editor_preferences.hpp"
+#include "preferences/editor.hpp"
 #include "editor/map/map_context.hpp"
 
 #include "config_assign.hpp"

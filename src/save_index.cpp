@@ -21,7 +21,7 @@
 #include "formula/string_utils.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_errors.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "serialization/binary_or_text.hpp"

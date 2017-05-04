@@ -25,7 +25,7 @@
 
 #include "editor/action/mouse/mouse_action.hpp"
 
-#include "editor/editor_preferences.hpp"
+#include "preferences/editor.hpp"
 
 #include "gui/dialogs/edit_text.hpp"
 #include "gui/dialogs/editor/custom_tod.hpp"
@@ -43,9 +43,9 @@
 #include "desktop/clipboard.hpp"
 #include "floating_label.hpp"
 #include "game_board.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "gettext.hpp"
-#include "preferences_display.hpp"
+#include "preferences/display.hpp"
 #include "sound.hpp"
 #include "units/unit.hpp"
 #include "units/animation_component.hpp"

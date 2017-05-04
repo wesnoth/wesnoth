@@ -39,7 +39,7 @@
 #include "actions/attack.hpp"
 #include "actions/create.hpp"
 #include "attack_prediction.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
 #include "mouse_handler_base.hpp"

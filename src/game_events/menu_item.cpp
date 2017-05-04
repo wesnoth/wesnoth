@@ -32,7 +32,7 @@
 #include "hotkey/hotkey_command.hpp"
 #include "hotkey/hotkey_handler.hpp"
 #include "play_controller.hpp"
-#include "preferences.hpp"
+#include "preferences/general.hpp"
 #include "replay.hpp"
 #include "replay_helper.hpp"
 #include "resources.hpp"

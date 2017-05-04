@@ -23,7 +23,7 @@
 #include "formula/string_utils.hpp"
 #include "game_config.hpp"
 #include "gettext.hpp"
-#include "preferences.hpp"
+#include "preferences/general.hpp"
 #include "sound.hpp"
 
 #include <string>

@@ -34,7 +34,7 @@
 #include "formula/string_utils.hpp"
 #include "wml_exception.hpp"
 #include "gui/core/log.hpp"
-#include "preferences.hpp"
+#include "preferences/general.hpp"
 
 namespace gui2
 {

@@ -16,7 +16,7 @@
 #include "gettext.hpp"
 #include "language.hpp"
 #include "log.hpp"
-#include "preferences.hpp"
+#include "preferences/general.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
 

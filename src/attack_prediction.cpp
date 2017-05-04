@@ -40,7 +40,7 @@
 
 #include "actions/attack.hpp"
 #include "game_config.hpp"
-#include "preferences.hpp"
+#include "preferences/general.hpp"
 #include "random.hpp"
 #include "utils/general.hpp"
 #include <array>

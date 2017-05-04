@@ -23,7 +23,7 @@
 #include "fake_unit_manager.hpp"
 #include "font/standard_colors.hpp"
 #include "font/text.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "gettext.hpp"
 #include "halo.hpp"
 #include "hotkey/command_executor.hpp"

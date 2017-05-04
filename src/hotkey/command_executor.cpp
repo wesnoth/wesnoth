@@ -25,7 +25,7 @@
 #include "construct_dialog.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
-#include "preferences.hpp"
+#include "preferences/general.hpp"
 #include "game_end_exceptions.hpp"
 #include "display.hpp"
 #include "quit_confirmation.hpp"

@@ -24,7 +24,7 @@
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
 
-#include "preferences.hpp"
+#include "preferences/general.hpp"
 #include "game_config.hpp"
 
 #include "utils/functional.hpp"

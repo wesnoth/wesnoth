@@ -33,7 +33,7 @@
 #include "filesystem.hpp"
 #include "game_classification.hpp"
 #include "game_display.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/window.hpp"

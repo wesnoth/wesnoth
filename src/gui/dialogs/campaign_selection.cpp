@@ -17,7 +17,7 @@
 #include "gui/dialogs/campaign_selection.hpp"
 
 #include "config_assign.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/helper.hpp"
 #include "gui/widgets/button.hpp"

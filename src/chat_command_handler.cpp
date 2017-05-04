@@ -15,8 +15,8 @@
 #include "map_command_handler.hpp"
 #include "chat_command_handler.hpp"
 #include "chat_events.hpp"
-#include "game_preferences.hpp"
-#include "preferences_display.hpp"
+#include "preferences/game.hpp"
+#include "preferences/display.hpp"
 #include "video.hpp"
 #include "game_config_manager.hpp"
 

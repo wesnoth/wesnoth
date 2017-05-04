@@ -19,7 +19,7 @@
 #include "display_context.hpp"          // for display_context
 #include "game_config.hpp"              // for debug, menu_contract, etc
 #include "game_config_manager.hpp"      // for game_config_manager
-#include "game_preferences.hpp"         // for encountered_terrains, etc
+#include "preferences/game.hpp"         // for encountered_terrains, etc
 #include "gettext.hpp"                  // for _, gettext, N_
 #include "help/help_topic_generators.hpp"
 #include "hotkey/hotkey_command.hpp"    // for is_scope_active, etc

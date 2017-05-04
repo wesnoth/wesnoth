@@ -24,7 +24,7 @@
 #include "log.hpp"
 #include "mp_ui_alerts.hpp"
 #include "playturn.hpp"
-#include "preferences.hpp"
+#include "preferences/general.hpp"
 #include "game_initialization/playcampaign.hpp"
 #include "resources.hpp"
 #include "savegame.hpp"

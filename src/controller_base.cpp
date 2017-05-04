@@ -19,7 +19,7 @@
 #include "show_dialog.hpp" //gui::in_dialog
 #include "display.hpp"
 #include "events.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "hotkey/command_executor.hpp"
 #include "hotkey/hotkey_command.hpp"
 #include "log.hpp"

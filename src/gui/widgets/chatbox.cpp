@@ -34,8 +34,8 @@
 #include "gettext.hpp"
 #include "wesnothd_connection.hpp"
 #include "config_assign.hpp"
-#include "game_preferences.hpp"
-#include "lobby_preferences.hpp"
+#include "preferences/game.hpp"
+#include "preferences/lobby.hpp"
 #include "log.hpp"
 #include "scripting/plugins/manager.hpp"
 

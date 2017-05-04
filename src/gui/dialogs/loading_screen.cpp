@@ -30,7 +30,7 @@
 #include "cursor.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
-#include "preferences.hpp"
+#include "preferences/general.hpp"
 #include "utils/functional.hpp"
 #include <boost/thread.hpp>
 

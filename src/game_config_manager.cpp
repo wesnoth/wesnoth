@@ -27,7 +27,7 @@
 #include "hotkey/hotkey_command.hpp"
 #include "language.hpp"
 #include "log.hpp"
-#include "preferences.hpp"
+#include "preferences/general.hpp"
 #include "scripting/game_lua_kernel.hpp"
 #include "terrain/builder.hpp"
 #include "terrain/type_data.hpp"

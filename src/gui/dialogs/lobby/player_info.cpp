@@ -20,7 +20,7 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box.hpp"
 
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "gettext.hpp"
 
 #include "utils/functional.hpp"

@@ -44,9 +44,9 @@
 #include "addon/manager_ui.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "gettext.hpp"
-#include "lobby_preferences.hpp"
+#include "preferences/lobby.hpp"
 #include "playmp_controller.hpp"
 #include "wesnothd_connection.hpp"
 

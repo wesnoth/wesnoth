@@ -17,7 +17,7 @@
 #include "font/pango/escape.hpp"
 #include "font/text_formatting.hpp"
 #include "formatter.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "gettext.hpp"
 #include "language.hpp"
 #include "map/map.hpp"

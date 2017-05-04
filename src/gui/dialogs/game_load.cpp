@@ -20,7 +20,7 @@
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
 #include "game_config.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "game_classification.hpp"
 #include "gui/auxiliary/field.hpp"
 #include "gui/core/log.hpp"

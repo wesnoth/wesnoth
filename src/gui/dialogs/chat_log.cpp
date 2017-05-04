@@ -33,7 +33,7 @@
 #include "font/pango/escape.hpp"
 #include "desktop/clipboard.hpp"
 #include "serialization/unicode.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "log.hpp"
 #include "replay.hpp"
 #include "gettext.hpp"

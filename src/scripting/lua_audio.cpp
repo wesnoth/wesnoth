@@ -20,7 +20,7 @@ See the COPYING file for more details.
 #include "sound.hpp"
 #include "sound_music_track.hpp"
 #include "config_assign.hpp"
-#include "preferences.hpp"
+#include "preferences/general.hpp"
 #include <set>
 
 static const char* Track = "music track";

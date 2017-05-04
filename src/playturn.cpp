@@ -29,7 +29,7 @@
 #include "map/label.hpp"
 #include "play_controller.hpp"          // for play_controller
 #include "playturn_network_adapter.hpp"  // for playturn_network_adapter
-#include "preferences.hpp"              // for message_bell
+#include "preferences/general.hpp"              // for message_bell
 #include "replay.hpp"                   // for replay, recorder, do_replay, etc
 #include "resources.hpp"                // for gameboard, screen, etc
 #include "serialization/string_utils.hpp"  // for string_map

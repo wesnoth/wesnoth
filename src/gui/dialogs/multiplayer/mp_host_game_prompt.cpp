@@ -15,7 +15,7 @@
 
 #include "gui/dialogs/multiplayer/mp_host_game_prompt.hpp"
 
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "gui/widgets/settings.hpp"
 
 namespace gui2

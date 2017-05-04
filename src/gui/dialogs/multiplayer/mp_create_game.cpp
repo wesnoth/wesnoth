@@ -18,7 +18,7 @@
 
 #include "config_assign.hpp"
 #include "game_config_manager.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/field.hpp"
 #include "gui/dialogs/helper.hpp"

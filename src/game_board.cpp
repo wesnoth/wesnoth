@@ -14,7 +14,7 @@
 
 #include "config.hpp"
 #include "game_board.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
 #include "recall_list_manager.hpp"

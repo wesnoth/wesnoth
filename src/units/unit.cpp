@@ -28,7 +28,7 @@
 #include "game_data.hpp"
 #include "game_errors.hpp"		   // for game_error
 #include "game_events/manager.hpp" // for add_events
-#include "game_preferences.hpp"	// for encountered_units
+#include "preferences/game.hpp"	// for encountered_units
 #include "gettext.hpp"			   // for N_
 #include "lexical_cast.hpp"
 #include "log.hpp"						 // for LOG_STREAM, logger, etc

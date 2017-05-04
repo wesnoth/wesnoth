@@ -23,7 +23,7 @@
 #include "pathfind/pathfind.hpp"
 #include "pathfind/teleport.hpp"
 #include "play_controller.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "random_deterministic.hpp"
 #include "reports.hpp"
 #include "scripting/game_lua_kernel.hpp"

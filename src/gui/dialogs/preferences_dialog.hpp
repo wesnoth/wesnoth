@@ -17,7 +17,7 @@
 #define GUI_DIALOGS_PREFERENCES_DIALOG_HPP_INCLUDED
 
 #include "config.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "utils/make_enum.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/group.hpp"

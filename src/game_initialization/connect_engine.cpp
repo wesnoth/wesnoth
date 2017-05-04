@@ -18,7 +18,7 @@
 #include "formula/string_utils.hpp"
 #include "game_initialization/mp_game_utils.hpp"
 #include "game_initialization/playcampaign.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "map/map.hpp"

@@ -16,7 +16,7 @@
 #define CONTEXT_MANAGER_HPP_INCLUDED
 
 #include "editor/map/map_context.hpp"
-#include "editor/editor_preferences.hpp"
+#include "preferences/editor.hpp"
 #include "editor/map/map_fragment.hpp"
 
 class map_generator;

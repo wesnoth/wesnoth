@@ -54,7 +54,7 @@
 #include "game_events/entity_location.hpp"
 #include "game_events/manager.hpp"	// for add_event_handler
 #include "game_events/pump.hpp"         // for queued_event
-#include "game_preferences.hpp"         // for encountered_units
+#include "preferences/game.hpp"         // for encountered_units
 #include "help/help.hpp"
 #include "image.hpp"                    // for get_image, locator
 #include "log.hpp"                      // for LOG_STREAM, logger, etc

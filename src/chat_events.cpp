@@ -20,8 +20,8 @@
 #include "log.hpp"
 #include "map_command_handler.hpp"
 #include "chat_command_handler.hpp"
-#include "preferences.hpp"
-#include "game_preferences.hpp"
+#include "preferences/general.hpp"
+#include "preferences/game.hpp"
 
 #include <boost/range/algorithm/find_if.hpp>
 

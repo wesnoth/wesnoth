@@ -18,7 +18,7 @@
 #include "floating_label.hpp"
 #include "image.hpp"
 #include "log.hpp"
-#include "preferences.hpp"
+#include "preferences/general.hpp"
 #include "sdl/window.hpp"
 
 #include <cassert>

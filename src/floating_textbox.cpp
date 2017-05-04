@@ -19,7 +19,7 @@
 #include "floating_label.hpp"
 #include "font/standard_colors.hpp"
 #include "game_display.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "log.hpp"
 #include "resources.hpp"
 

@@ -15,7 +15,7 @@
 #include "game_initialization/lobby_data.hpp"
 
 #include "config.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "gui/dialogs/campaign_difficulty.hpp"
 #include "filesystem.hpp"
 #include "formatter.hpp"

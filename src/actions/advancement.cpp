@@ -23,7 +23,7 @@
 #include "ai/lua/aspect_advancements.hpp"
 #include "game_events/manager.hpp"
 #include "game_events/pump.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "game_data.hpp" //resources::gamedata->phase()
 #include "gui/dialogs/unit_advance.hpp"
 #include "gui/widgets/window.hpp" //gui2::window::OK

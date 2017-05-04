@@ -287,8 +287,6 @@
 		<Unit filename="../../src/editor/editor_display.hpp" />
 		<Unit filename="../../src/editor/editor_main.cpp" />
 		<Unit filename="../../src/editor/editor_main.hpp" />
-		<Unit filename="../../src/editor/editor_preferences.cpp" />
-		<Unit filename="../../src/editor/editor_preferences.hpp" />
 		<Unit filename="../../src/editor/map/context_manager.cpp" />
 		<Unit filename="../../src/editor/map/context_manager.hpp" />
 		<Unit filename="../../src/editor/map/editor_map.cpp" />
@@ -439,8 +437,6 @@
 		<Unit filename="../../src/game_initialization/singleplayer.hpp" />
 		<Unit filename="../../src/game_launcher.cpp" />
 		<Unit filename="../../src/game_launcher.hpp" />
-		<Unit filename="../../src/game_preferences.cpp" />
-		<Unit filename="../../src/game_preferences.hpp" />
 		<Unit filename="../../src/game_state.cpp" />
 		<Unit filename="../../src/game_state.hpp" />
 		<Unit filename="../../src/generators/cave_map_generator.cpp" />
@@ -829,8 +825,6 @@
 		<Unit filename="../../src/language_win32.ii" />
 		<Unit filename="../../src/lexical_cast.hpp" />
 		<Unit filename="../../src/libc_error.hpp" />
-		<Unit filename="../../src/lobby_preferences.cpp" />
-		<Unit filename="../../src/lobby_preferences.hpp" />
 		<Unit filename="../../src/log.cpp" />
 		<Unit filename="../../src/log.hpp" />
 		<Unit filename="../../src/log_windows.cpp" />
@@ -912,10 +906,16 @@
 		<Unit filename="../../src/playturn.hpp" />
 		<Unit filename="../../src/playturn_network_adapter.cpp" />
 		<Unit filename="../../src/playturn_network_adapter.hpp" />
-		<Unit filename="../../src/preferences.cpp" />
-		<Unit filename="../../src/preferences.hpp" />
-		<Unit filename="../../src/preferences_display.cpp" />
-		<Unit filename="../../src/preferences_display.hpp" />
+		<Unit filename="../../src/preferences/display.cpp" />
+		<Unit filename="../../src/preferences/display.hpp" />
+		<Unit filename="../../src/preferences/editor.cpp" />
+		<Unit filename="../../src/preferences/editor.hpp" />
+		<Unit filename="../../src/preferences/game.cpp" />
+		<Unit filename="../../src/preferences/game.hpp" />
+		<Unit filename="../../src/preferences/general.cpp" />
+		<Unit filename="../../src/preferences/general.hpp" />
+		<Unit filename="../../src/preferences/lobby.cpp" />
+		<Unit filename="../../src/preferences/lobby.hpp" />
 		<Unit filename="../../src/quit_confirmation.cpp" />
 		<Unit filename="../../src/quit_confirmation.hpp" />
 		<Unit filename="../../src/random.cpp" />

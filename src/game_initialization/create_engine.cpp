@@ -18,7 +18,7 @@
 #include "filesystem.hpp"
 #include "formula/string_utils.hpp"
 #include "game_config_manager.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "generators/map_create.hpp"
 #include "gui/dialogs/campaign_difficulty.hpp"
 #include "hash.hpp"

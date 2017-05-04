@@ -17,7 +17,7 @@
 #include "config.hpp"
 #include "display.hpp"
 #include "map/map.hpp"
-#include "preferences.hpp"
+#include "preferences/general.hpp"
 #include "units/unit.hpp"
 #include "units/types.hpp"
 

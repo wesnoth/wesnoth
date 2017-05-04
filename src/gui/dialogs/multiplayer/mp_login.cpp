@@ -16,7 +16,7 @@
 
 #include "gui/dialogs/multiplayer/mp_login.hpp"
 
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/password_box.hpp"

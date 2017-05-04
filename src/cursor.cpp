@@ -19,9 +19,9 @@
 
 #include "cursor.hpp"
 
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "image.hpp"
-#include "preferences_display.hpp"
+#include "preferences/display.hpp"
 #include "sdl/rect.hpp"
 
 #include <iostream>

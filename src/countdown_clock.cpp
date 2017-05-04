@@ -15,7 +15,7 @@
 
 #include "team.hpp"
 #include "saved_game.hpp"
-#include "preferences.hpp"
+#include "preferences/general.hpp"
 #include "sound.hpp"
 
 namespace {

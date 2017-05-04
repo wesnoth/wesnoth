@@ -27,7 +27,7 @@
 #include "image_modifications.hpp"
 #include "log.hpp"
 #include "gettext.hpp"
-#include "preferences.hpp"
+#include "preferences/general.hpp"
 #include "sdl/rect.hpp"
 #include "utils/general.hpp"
 

@@ -15,7 +15,7 @@
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "config.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "formula/string_utils.hpp"
 
 #include "gui/dialogs/campaign_difficulty.hpp"

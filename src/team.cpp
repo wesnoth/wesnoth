@@ -28,7 +28,7 @@
 #include "map/map.hpp"
 #include "resources.hpp"
 #include "play_controller.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "color.hpp"
 #include "units/types.hpp"
 #include "synced_context.hpp"

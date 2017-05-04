@@ -15,7 +15,7 @@
 #include "game_initialization/lobby_info.hpp"
 
 #include "config.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
 #include "log.hpp"

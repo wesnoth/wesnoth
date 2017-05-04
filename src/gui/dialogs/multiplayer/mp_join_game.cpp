@@ -21,7 +21,7 @@
 #include "game_config.hpp"
 #include "game_config_manager.hpp"
 #include "game_initialization/mp_game_utils.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/helper.hpp"

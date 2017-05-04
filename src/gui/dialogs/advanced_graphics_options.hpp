@@ -17,7 +17,7 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/group.hpp"
-#include "preferences.hpp"
+#include "preferences/general.hpp"
 
 namespace gui2
 {

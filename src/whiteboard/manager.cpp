@@ -36,7 +36,7 @@
 #include "fake_unit_ptr.hpp"
 #include "formula/string_utils.hpp"
 #include "game_board.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "game_state.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"

@@ -24,7 +24,7 @@
 #include "game_config.hpp"
 #include "log.hpp"
 #include "font/marked-up_text.hpp"
-#include "preferences.hpp"
+#include "preferences/general.hpp"
 #include "tooltips.hpp"
 
 #include "sdl/rect.hpp"

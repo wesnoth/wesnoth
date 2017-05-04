@@ -12,8 +12,8 @@
    See the COPYING file for more details.
 */
 
-#include "lobby_preferences.hpp"
-#include "game_preferences.hpp"
+#include "preferences/lobby.hpp"
+#include "preferences/game.hpp"
 #include "serialization/string_utils.hpp"
 
 namespace preferences {

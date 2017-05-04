@@ -53,7 +53,7 @@
 #include "formula/string_utils.hpp"
 #include "image.hpp"
 #include "language.hpp"
-#include "preferences.hpp"
+#include "preferences/general.hpp"
 #include "utils/general.hpp"
 
 #include "config.hpp"

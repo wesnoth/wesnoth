@@ -29,7 +29,7 @@
 
 #include "editor/action/action.hpp"
 #include "editor/controller/editor_controller.hpp"
-#include "editor/editor_preferences.hpp"
+#include "preferences/editor.hpp"
 
 #include "gui/dialogs/edit_text.hpp"
 #include "gui/dialogs/editor/generate_map.hpp"

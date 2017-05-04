@@ -17,7 +17,7 @@
 #include "editor/editor_main.hpp"       // for EXIT_STATUS
 #include "events.hpp"                   // for event_context
 #include "font/font_config.hpp"         // for manager
-#include "game_preferences.hpp"         // for manager
+#include "preferences/game.hpp"         // for manager
 #include "hotkey/hotkey_manager.hpp"    // for manager
 #include "image.hpp"                    // for manager
 #include "saved_game.hpp"               // for saved_game

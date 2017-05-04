@@ -16,7 +16,7 @@
 #define MULTIPLAYER_CONFIGURE_ENGINE_INCLUDED
 
 #include "gettext.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "mp_game_settings.hpp"
 #include "saved_game.hpp"
 

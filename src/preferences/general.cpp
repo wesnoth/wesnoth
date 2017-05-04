@@ -25,7 +25,7 @@
 #include "hotkey/hotkey_item.hpp"
 #include "lexical_cast.hpp"
 #include "log.hpp"
-#include "preferences.hpp"
+#include "preferences/general.hpp"
 #include "sound.hpp"
 #include "video.hpp" // non_interactive()
 #include "serialization/parser.hpp"

@@ -20,7 +20,7 @@
 #include "filesystem.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
-#include "preferences.hpp"
+#include "preferences/general.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
 

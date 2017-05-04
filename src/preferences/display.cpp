@@ -19,13 +19,13 @@
  *  Manage display-related preferences, e.g. screen-size, etc.
  */
 
-#include "preferences_display.hpp"
+#include "preferences/display.hpp"
 
 #include "display.hpp"
 #include "filesystem.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/file_dialog.hpp"
 #include "gui/dialogs/message.hpp"

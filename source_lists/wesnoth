@@ -86,7 +86,6 @@ editor/action/mouse/mouse_action_village.cpp
 editor/controller/editor_controller.cpp
 editor/editor_display.cpp
 editor/editor_main.cpp
-editor/editor_preferences.cpp
 editor/map/context_manager.cpp
 editor/map/editor_map.cpp
 editor/map/map_context.cpp
@@ -139,7 +138,6 @@ game_initialization/multiplayer.cpp
 game_initialization/playcampaign.cpp
 game_initialization/singleplayer.cpp
 game_launcher.cpp
-game_preferences.cpp
 game_state.cpp
 gui/auxiliary/iterator/iterator.cpp
 gui/auxiliary/iterator/walker_grid.cpp
@@ -302,7 +300,6 @@ help/help_topic_generators.cpp
 hotkey/hotkey_handler.cpp
 hotkey/hotkey_handler_mp.cpp
 hotkey/hotkey_handler_sp.cpp
-lobby_preferences.cpp
 menu_events.cpp
 mouse_events.cpp
 mouse_handler_base.cpp
@@ -320,7 +317,10 @@ playmp_controller.cpp
 playsingle_controller.cpp
 playturn.cpp
 playturn_network_adapter.cpp
-preferences_display.cpp
+preferences/display.cpp
+preferences/editor.cpp
+preferences/game.cpp
+preferences/lobby.cpp
 random.cpp
 random_deterministic.cpp
 random_synced.cpp

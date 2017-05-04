@@ -31,7 +31,7 @@
 #include "sdl/utils.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
-#include "preferences.hpp"
+#include "preferences/general.hpp"
 
 #include <cassert>
 #include <cstring>

@@ -29,7 +29,7 @@
 #include "font/text_formatting.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "gettext.hpp"
 #include "help/help.hpp"
 #include "help/help_impl.hpp"

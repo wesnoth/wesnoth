@@ -22,12 +22,12 @@
 #include "filesystem.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "hotkey/hotkey_command.hpp"
 #include "hotkey/hotkey_item.hpp"
-#include "lobby_preferences.hpp"
-#include "preferences.hpp"
-#include "preferences_display.hpp"
+#include "preferences/lobby.hpp"
+#include "preferences/general.hpp"
+#include "preferences/display.hpp"
 #include "video.hpp"
 
 // Sub-dialog includes

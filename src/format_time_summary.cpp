@@ -16,7 +16,7 @@
 
 #include "assert.h"
 #include "gettext.hpp"
-#include "preferences.hpp"
+#include "preferences/general.hpp"
 
 namespace utils {
 

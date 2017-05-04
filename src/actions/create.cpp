@@ -30,7 +30,7 @@
 #include "game_events/manager.hpp"
 #include "game_events/pump.hpp"
 #include "game_state.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "game_data.hpp"
 #include "gettext.hpp"
 #include "log.hpp"

@@ -52,8 +52,8 @@
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 #include "gui/widgets/debug.hpp"
 #endif
-#include "preferences.hpp"
-#include "preferences_display.hpp"
+#include "preferences/general.hpp"
+#include "preferences/display.hpp"
 #include "sdl/rect.hpp"
 #include "sdl/surface.hpp"
 #include "tstring.hpp"

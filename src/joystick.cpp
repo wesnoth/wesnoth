@@ -13,7 +13,7 @@
 */
 
 #include "joystick.hpp"
-#include "preferences.hpp"
+#include "preferences/general.hpp"
 #include "log.hpp"
 #include "sdl/surface.hpp"
 #include "utils/math.hpp"

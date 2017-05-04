@@ -23,7 +23,7 @@
 #include "carryover.hpp"
 #include "game_config.hpp"
 #include "game_errors.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "generators/map_create.hpp"
 #include "generators/map_generator.hpp"
 #include "gui/dialogs/message.hpp"

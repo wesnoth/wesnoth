@@ -18,7 +18,7 @@
 #include "display.hpp"
 #include "floating_label.hpp"
 #include "game_board.hpp" // <-- only needed for is_observer()
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "log.hpp"
 #include "font/marked-up_text.hpp"
 #include "mp_ui_alerts.hpp"

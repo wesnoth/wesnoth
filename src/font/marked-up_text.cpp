@@ -29,7 +29,7 @@
 #include "serialization/unicode.hpp"
 #include "video.hpp"
 #include "wml_exception.hpp"
-#include "preferences.hpp"
+#include "preferences/general.hpp"
 
 namespace font {
 

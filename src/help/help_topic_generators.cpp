@@ -16,7 +16,7 @@
 
 #include "font/sdl_ttf.hpp"             // for line_width
 #include "game_config.hpp"              // for debug, menu_contract, etc
-#include "game_preferences.hpp"         // for encountered_terrains, etc
+#include "preferences/game.hpp"         // for encountered_terrains, etc
 #include "gettext.hpp"                  // for _, gettext, N_
 #include "language.hpp"                 // for string_table, symbol_table
 #include "log.hpp"                      // for LOG_STREAM, logger, etc

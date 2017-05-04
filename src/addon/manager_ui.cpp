@@ -20,7 +20,7 @@
 #include "addon/manager.hpp"
 #include "filesystem.hpp"
 #include "formula/string_utils.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/addon/manager.hpp"
 #include "gui/dialogs/addon/uninstall_list.hpp"

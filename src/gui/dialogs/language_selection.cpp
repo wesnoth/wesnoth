@@ -25,7 +25,7 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "language.hpp"
-#include "preferences.hpp"
+#include "preferences/general.hpp"
 
 namespace gui2
 {

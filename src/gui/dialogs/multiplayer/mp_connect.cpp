@@ -16,7 +16,7 @@
 
 #include "gui/dialogs/multiplayer/mp_connect.hpp"
 
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "gui/auxiliary/field.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/button.hpp"

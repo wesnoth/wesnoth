@@ -17,7 +17,7 @@
 #include "display.hpp"
 #include "display_context.hpp"
 #include "formatter.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "halo.hpp"
 #include "map/map.hpp"
 #include "map/location.hpp"

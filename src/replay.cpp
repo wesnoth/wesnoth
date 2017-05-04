@@ -26,7 +26,7 @@
 #include "display_chat_manager.hpp"
 #include "floating_label.hpp"
 #include "game_display.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "game_data.hpp"
 #include "log.hpp"
 #include "map/label.hpp"

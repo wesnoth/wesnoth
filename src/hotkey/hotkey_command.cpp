@@ -18,7 +18,7 @@
 #include "hotkey/hotkey_command.hpp"
 #include "hotkey/hotkey_item.hpp"
 #include "config.hpp"
-#include "preferences.hpp"
+#include "preferences/general.hpp"
 #include "log.hpp"
 
 static lg::log_domain log_config("config");

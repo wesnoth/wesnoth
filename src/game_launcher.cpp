@@ -46,8 +46,8 @@
 #include "game_initialization/multiplayer.hpp"              // for start_client, etc
 #include "game_initialization/create_engine.hpp"
 #include "game_initialization/playcampaign.hpp"             // for play_game, etc
-#include "preferences.hpp"              // for disable_preferences_save, etc
-#include "preferences_display.hpp"
+#include "preferences/general.hpp"              // for disable_preferences_save, etc
+#include "preferences/display.hpp"
 #include "savegame.hpp"                 // for clean_saves, etc
 #include "scripting/application_lua_kernel.hpp"
 #include "sdl/surface.hpp"                // for surface

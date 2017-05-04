@@ -17,7 +17,7 @@
 #include "gui/auxiliary/tips.hpp"
 
 #include "config.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "random.hpp"
 #include "serialization/string_utils.hpp"
 
