@@ -164,6 +164,9 @@
     <Filter Include="Font\Pango">
       <UniqueIdentifier>{c4a05de3-89fe-417e-a054-751a5d9d171b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Preferences">
+      <UniqueIdentifier>{b0433154-cf07-4ead-b777-917bbb4d553c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\..\packaging\windows\wesnoth.rc">
@@ -312,9 +315,6 @@
       <Filter>Editor</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\editor\editor_main.cpp">
-      <Filter>Editor</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\editor\editor_preferences.cpp">
       <Filter>Editor</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\editor\action\action.cpp">
@@ -1432,7 +1432,6 @@
     <ClCompile Include="..\..\src\game_display.cpp" />
     <ClCompile Include="..\..\src\game_end_exceptions.cpp" />
     <ClCompile Include="..\..\src\game_launcher.cpp" />
-    <ClCompile Include="..\..\src\game_preferences.cpp" />
     <ClCompile Include="..\..\src\game_state.cpp" />
     <ClCompile Include="..\..\src\generic_event.cpp" />
     <ClCompile Include="..\..\src\halo.cpp" />
@@ -1442,7 +1441,6 @@
     <ClCompile Include="..\..\src\joystick.cpp" />
     <ClCompile Include="..\..\src\key.cpp" />
     <ClCompile Include="..\..\src\language.cpp" />
-    <ClCompile Include="..\..\src\lobby_preferences.cpp" />
     <ClCompile Include="..\..\src\lua_jailbreak_exception.cpp" />
     <ClCompile Include="..\..\src\md5.cpp" />
     <ClCompile Include="..\..\src\menu_events.cpp" />
@@ -1463,8 +1461,6 @@
     <ClCompile Include="..\..\src\playsingle_controller.cpp" />
     <ClCompile Include="..\..\src\playturn.cpp" />
     <ClCompile Include="..\..\src\playturn_network_adapter.cpp" />
-    <ClCompile Include="..\..\src\preferences.cpp" />
-    <ClCompile Include="..\..\src\preferences_display.cpp" />
     <ClCompile Include="..\..\src\quit_confirmation.cpp" />
     <ClCompile Include="..\..\src\random.cpp" />
     <ClCompile Include="..\..\src\random_deterministic.cpp" />
@@ -1528,6 +1524,21 @@
     </ClCompile>
     <ClCompile Include="..\..\src\font\text_surface.cpp">
       <Filter>Font</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\preferences\display.cpp">
+      <Filter>Preferences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\preferences\editor.cpp">
+      <Filter>Preferences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\preferences\game.cpp">
+      <Filter>Preferences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\preferences\general.cpp">
+      <Filter>Preferences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\preferences\lobby.cpp">
+      <Filter>Preferences</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1667,9 +1678,6 @@
       <Filter>Editor</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\editor\editor_main.hpp">
-      <Filter>Editor</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\editor\editor_preferences.hpp">
       <Filter>Editor</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\editor\action\action.hpp">
@@ -2839,7 +2847,6 @@
     <ClInclude Include="..\..\src\game_end_exceptions.hpp" />
     <ClInclude Include="..\..\src\game_errors.hpp" />
     <ClInclude Include="..\..\src\game_launcher.hpp" />
-    <ClInclude Include="..\..\src\game_preferences.hpp" />
     <ClInclude Include="..\..\src\game_state.hpp" />
     <ClInclude Include="..\..\src\generic_event.hpp" />
     <ClInclude Include="..\..\src\global.hpp" />
@@ -2850,7 +2857,6 @@
     <ClInclude Include="..\..\src\joystick.hpp" />
     <ClInclude Include="..\..\src\key.hpp" />
     <ClInclude Include="..\..\src\language.hpp" />
-    <ClInclude Include="..\..\src\lobby_preferences.hpp" />
     <ClInclude Include="..\..\src\lua_jailbreak_exception.hpp" />
     <ClInclude Include="..\..\src\map_command_handler.hpp" />
     <ClInclude Include="..\..\src\md5.hpp" />
@@ -2874,8 +2880,6 @@
     <ClInclude Include="..\..\src\playsingle_controller.hpp" />
     <ClInclude Include="..\..\src\playturn.hpp" />
     <ClInclude Include="..\..\src\playturn_network_adapter.hpp" />
-    <ClInclude Include="..\..\src\preferences.hpp" />
-    <ClInclude Include="..\..\src\preferences_display.hpp" />
     <ClInclude Include="..\..\src\quit_confirmation.hpp" />
     <ClInclude Include="..\..\src\random.hpp" />
     <ClInclude Include="..\..\src\random_deterministic.hpp" />
@@ -2971,6 +2975,21 @@
     </ClInclude>
     <ClInclude Include="..\..\src\font\pango\stream_ops.hpp">
       <Filter>Font\Pango</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\preferences\display.hpp">
+      <Filter>Preferences</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\preferences\editor.hpp">
+      <Filter>Preferences</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\preferences\game.hpp">
+      <Filter>Preferences</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\preferences\general.hpp">
+      <Filter>Preferences</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\preferences\lobby.hpp">
+      <Filter>Preferences</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

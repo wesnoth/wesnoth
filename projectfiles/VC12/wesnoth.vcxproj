@@ -890,13 +890,6 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Editor\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Editor\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\editor\editor_preferences.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Editor\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Editor\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Editor\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Editor\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Editor\</ObjectFileName>
-    </ClCompile>
     <ClCompile Include="..\..\src\editor\map\context_manager.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Editor\Map\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Editor\Map\</ObjectFileName>
@@ -1266,7 +1259,6 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Game_Initialization\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\src\game_launcher.cpp" />
-    <ClCompile Include="..\..\src\game_preferences.cpp" />
     <ClCompile Include="..\..\src\game_state.cpp" />
     <ClCompile Include="..\..\src\generators\cave_map_generator.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)generators\</ObjectFileName>
@@ -2471,7 +2463,6 @@
     <ClCompile Include="..\..\src\joystick.cpp" />
     <ClCompile Include="..\..\src\key.cpp" />
     <ClCompile Include="..\..\src\language.cpp" />
-    <ClCompile Include="..\..\src\lobby_preferences.cpp" />
     <ClCompile Include="..\..\src\lua_jailbreak_exception.cpp" />
     <ClCompile Include="..\..\src\map\label.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Map\</ObjectFileName>
@@ -2536,8 +2527,41 @@
     <ClCompile Include="..\..\src\playturn.cpp" />
     <ClCompile Include="..\..\src\playturn_network_adapter.cpp" />
     <ClCompile Include="..\..\src\play_controller.cpp" />
-    <ClCompile Include="..\..\src\preferences.cpp" />
-    <ClCompile Include="..\..\src\preferences_display.cpp" />
+    <ClCompile Include="..\..\src\preferences\display.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Preferences\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Preferences\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Preferences\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Preferences\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Preferences\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\src\preferences\editor.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Preferences\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Preferences\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Preferences\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Preferences\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Preferences\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\src\preferences\game.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Preferences\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Preferences\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Preferences\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Preferences\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Preferences\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\src\preferences\general.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Preferences\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Preferences\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Preferences\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Preferences\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Preferences\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\src\preferences\lobby.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Preferences\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Preferences\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Preferences\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Preferences\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Preferences\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\quit_confirmation.cpp" />
     <ClCompile Include="..\..\src\random.cpp" />
     <ClCompile Include="..\..\src\random_deterministic.cpp" />
@@ -3523,7 +3547,6 @@
     <ClInclude Include="..\..\src\editor\editor_common.hpp" />
     <ClInclude Include="..\..\src\editor\editor_display.hpp" />
     <ClInclude Include="..\..\src\editor\editor_main.hpp" />
-    <ClInclude Include="..\..\src\editor\editor_preferences.hpp" />
     <ClInclude Include="..\..\src\editor\map\context_manager.hpp" />
     <ClInclude Include="..\..\src\editor\map\editor_map.hpp" />
     <ClInclude Include="..\..\src\editor\map\map_context.hpp" />
@@ -3605,7 +3628,6 @@
     <ClInclude Include="..\..\src\game_initialization\playcampaign.hpp" />
     <ClInclude Include="..\..\src\game_initialization\singleplayer.hpp" />
     <ClInclude Include="..\..\src\game_launcher.hpp" />
-    <ClInclude Include="..\..\src\game_preferences.hpp" />
     <ClInclude Include="..\..\src\game_state.hpp" />
     <ClInclude Include="..\..\src\generators\cave_map_generator.hpp" />
     <ClInclude Include="..\..\src\generators\default_map_generator.hpp" />
@@ -3814,7 +3836,6 @@
     <ClInclude Include="..\..\src\joystick.hpp" />
     <ClInclude Include="..\..\src\key.hpp" />
     <ClInclude Include="..\..\src\language.hpp" />
-    <ClInclude Include="..\..\src\lobby_preferences.hpp" />
     <ClInclude Include="..\..\src\lua_jailbreak_exception.hpp" />
     <ClInclude Include="..\..\src\map\exception.hpp" />
     <ClInclude Include="..\..\src\map\label.hpp" />
@@ -3844,8 +3865,11 @@
     <ClInclude Include="..\..\src\playturn.hpp" />
     <ClInclude Include="..\..\src\playturn_network_adapter.hpp" />
     <ClInclude Include="..\..\src\play_controller.hpp" />
-    <ClInclude Include="..\..\src\preferences.hpp" />
-    <ClInclude Include="..\..\src\preferences_display.hpp" />
+    <ClInclude Include="..\..\src\preferences\display.hpp" />
+    <ClInclude Include="..\..\src\preferences\editor.hpp" />
+    <ClInclude Include="..\..\src\preferences\game.hpp" />
+    <ClInclude Include="..\..\src\preferences\general.hpp" />
+    <ClInclude Include="..\..\src\preferences\lobby.hpp" />
     <ClInclude Include="..\..\src\quit_confirmation.hpp" />
     <ClInclude Include="..\..\src\random.hpp" />
     <ClInclude Include="..\..\src\random_deterministic.hpp" />
