@@ -22,6 +22,8 @@
 #include <pango/pango.h>
 #include <pango/pangocairo.h>
 
+#include <functional>
+#include <memory>
 #include <string>
 #include <vector>
 
@@ -80,8 +82,6 @@ public:
 
     pango_text(const pango_text &) = delete;
     pango_text & operator = (const pango_text &) = delete;
-
-	~pango_text();
 
 	/**
 	 * Returns the rendered text.
@@ -246,8 +246,8 @@ public:
 private:
 
 	/***** ***** ***** *****  Pango variables ***** ***** ***** *****/
-	PangoContext* context_;
-	PangoLayout* layout_;
+	std::unique_ptr<PangoContext, std::function<void(void*)>> context_;
+	std::unique_ptr<PangoLayout, std::function<void(void*)>> layout_;
 	mutable PangoRectangle rect_;
 
 	/** The SDL surface to render upon used as a cache. */
