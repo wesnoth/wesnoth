@@ -1,6 +1,18 @@
 -- Note: This file is loaded automatically by the engine.
 
-local empty_pkg = {}
+local mt = {
+	__index = function(self, k)
+		if k ~= "__tostring" then
+			error("Tried to access an empty package")
+		end
+	end,
+	__newindex = function()
+		error("Tried to access an empty package")
+	end,
+	__metatable = "empty package",
+	__tostring = function() return "{empty package}" end,
+}
+local empty_pkg = setmetatable({}, mt)
 
 local function resolve_package(pkg_name)
 	if pkg_name[#pkg_name] == '/' then
@@ -50,3 +62,5 @@ function wesnoth.require(pkg_name)
 		return pkg
 	end
 end
+
+return empty_pkg
