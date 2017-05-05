@@ -125,6 +125,7 @@ void end_credits::pre_show(window& window)
 	text_widget_ = find_widget<scroll_label>(&window, "text", false, true);
 
 	text_widget_->set_use_markup(true);
+	text_widget_->set_link_aware(false);
 	text_widget_->set_label((focus_ss.str().empty() ? ss : focus_ss).str());
 
 	// HACK: always hide the scrollbar, even if it's needed.

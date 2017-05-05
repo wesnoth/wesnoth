@@ -71,6 +71,8 @@ public:
 
 	void set_text_alpha(unsigned short alpha);
 
+	void set_link_aware(bool l);
+
 private:
 	/**
 	 * Possible states of the widget.

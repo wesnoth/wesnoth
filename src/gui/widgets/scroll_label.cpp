@@ -103,6 +103,13 @@ void scroll_label::set_text_alpha(unsigned short alpha)
 	}
 }
 
+void scroll_label::set_link_aware(bool l)
+{
+	if(label* widget = get_internal_label()) {
+		widget->set_link_aware(l);
+	}
+}
+
 void scroll_label::set_self_active(const bool active)
 {
 	state_ = active ? ENABLED : DISABLED;
