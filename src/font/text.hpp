@@ -90,7 +90,7 @@ public:
 	 * Before rendering it tests whether a redraw is needed and if so it first
 	 * redraws the surface before returning it.
 	 */
-	surface& render() const;
+	surface& render();
 
 	/** Returns the width needed for the text. */
 	int get_width() const;
@@ -247,9 +247,12 @@ public:
 private:
 
 	/***** ***** ***** *****  Pango variables ***** ***** ***** *****/
-	std::unique_ptr<PangoContext, void(*)(void*)> context_;
-	std::unique_ptr<PangoLayout, void(*)(void*)> layout_;
+	std::unique_ptr<PangoContext, std::function<void(void*)>> context_;
+	std::unique_ptr<PangoLayout, std::function<void(void*)>> layout_;
 	mutable PangoRectangle rect_;
+
+	// Used if the text is too long to fit into a single Cairo surface.
+	std::vector<std::unique_ptr<PangoLayout, std::function<void(void*)>>> sublayouts_;
 
 	/** The SDL surface to render upon used as a cache. */
 	mutable surface surface_;
@@ -351,6 +354,9 @@ private:
 	 */
 	void recalculate(const bool force = false) const;
 
+	/** Calculates surface size. */
+	PangoRectangle calculate_size(PangoLayout& layout) const;
+
 	/** The dirty state of the surface. */
 	mutable bool surface_dirty_;
 
@@ -362,7 +368,10 @@ private:
 	 * @param force               Render even if not dirty? This parameter is
 	 *                            also send to recalculate().
 	 */
-	void rerender(const bool force = false) const;
+	void rerender(const bool force = false);
+
+	void render(PangoLayout& layout, const PangoRectangle& rect,
+		const size_t surface_buffer_offset, const unsigned stride);
 
 	/**
 	 * Buffer to store the image on.
@@ -403,7 +412,28 @@ private:
 
 	bool set_markup_helper(utils::string_view text, PangoLayout& layout);
 
-    std::string format_link_tokens(const std::string & text) const;
+	/** Splits the text to two Cairo surfaces.
+	 *
+	 * The implementation isn't recursive: the function only splits the text once.
+	 * As a result, it only doubles the maximum surface height to 64,000 pixels
+	 * or so.
+	 * The reason for this is that a recursive implementation would be more complex
+	 * and it's unnecessary for now, as the longest surface in the game
+	 * (end credits) is only about 40,000 pixels high with the default_large widget
+	 * definition.
+	 * If we need even larger surfaces in the future, the implementation can be made
+	 * recursive.
+	 */
+	void split_surface();
+
+	bool is_surface_split() const
+	{
+		return sublayouts_.size() > 0;
+	}
+
+	static void copy_layout_properties(PangoLayout& src, PangoLayout& dst);
+
+	std::string format_link_tokens(const std::string & text) const;
 
 	std::string handle_token(const std::string & token) const;
 };
