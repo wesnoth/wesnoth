@@ -3300,7 +3300,7 @@ int game_lua_kernel::intf_redraw(lua_State *L)
 		screen.draw(true,true);
 	}
 	return 0;
-}}
+}
 
 /**
  * Lua frontend to the modify_ai functionality

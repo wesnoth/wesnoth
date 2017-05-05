@@ -38,6 +38,7 @@
 
 #include "version.hpp"                  // for do_version_check, etc
 #include "video.hpp"
+#include "image.hpp"
 
 #include "serialization/string_utils.hpp"
 #include "utils/functional.hpp"
@@ -299,7 +300,7 @@ static int intf_get_image_size(lua_State *L) {
 static int intf_get_time_stamp(lua_State *L) {
 	lua_pushinteger(L, SDL_GetTicks());
 	return 1;
-
+}
 
 // End Callback implementations
 
