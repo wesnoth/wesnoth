@@ -5,6 +5,7 @@
 -- Steve Donovan, 2007
 -- Adapted by iceiceice for wesnoth, 2014
 -- Retrived from: http://lua-users.org/files/wiki_insecure/users/steved/ilua.lua
+-- Note: This file is loaded automatically by the engine.
 
 local pretty_print_limit = 20
 local max_depth = 7

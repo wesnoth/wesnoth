@@ -473,6 +473,13 @@ lua_kernel_base::lua_kernel_base()
 		cmd_log_ << "Error: failed to load ilua.\n";
 	}
 	lua_settop(L, 0);
+
+	cmd_log_ << "Loading core...\n";
+	lua_pushstring(L, "lua/core.lua");
+	if(intf_require(L) != 1) {
+		cmd_log_ << "Error: Failed to load core.\n";
+	}
+	lua_settop(L, 0);
 }
 
 lua_kernel_base::~lua_kernel_base()

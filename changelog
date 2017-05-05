@@ -45,6 +45,8 @@ Version 1.13.7+dev:
      for example omitting the ".lua" file extension.
    * New wesnoth.create_weapon function to make a weapon that's not attached to a unit
      (which could be useful for animations)
+   * New wesnoth.show_message function shows a simple alert dialog, possibly with a choice
+   * New wesnoth.alert and wesnoth.confirm functions - simple shortcuts for the above.
  * Multiplayer:
    * Fixed statistics being lost when reloading an MP game.
  * Performance:

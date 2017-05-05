@@ -1,3 +1,4 @@
+-- Note: This file is loaded automatically by the engine.
 
 local empty_pkg = {}
 
