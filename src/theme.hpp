@@ -20,10 +20,11 @@
 #ifndef THEME_HPP_INCLUDED
 #define THEME_HPP_INCLUDED
 
+#include "color.hpp"
 #include "config.hpp"
 #include "generic_event.hpp"
 
-#include <SDL_video.h>
+#include <SDL_rect.h>
 
 struct _rect { size_t x1,y1,x2,y2; };
 
@@ -104,13 +105,13 @@ public:
 		bool empty() const { return text_.empty() && icon_.empty(); }
 
 		size_t font_size() const { return font_; }
-		Uint32 font_rgb() const { return font_rgb_; }
+		color_t font_rgb() const { return font_rgb_; }
 		bool font_rgb_set() const { return font_rgb_set_; }
 	private:
 		std::string text_, icon_;
 		size_t font_;
 		bool font_rgb_set_;
-		Uint32 font_rgb_;
+		color_t font_rgb_;
 	};
 
 	class status_item : public object
@@ -128,7 +129,7 @@ public:
 		const label* get_label() const { return label_.empty() ? nullptr : &label_; }
 
 		size_t font_size() const { return font_; }
-		Uint32 font_rgb() const { return font_rgb_; }
+		color_t font_rgb() const { return font_rgb_; }
 		bool font_rgb_set() const { return font_rgb_set_; }
 
 	private:
@@ -136,7 +137,7 @@ public:
 		label label_;
 		size_t font_;
 		bool font_rgb_set_;
-		Uint32 font_rgb_;
+		color_t font_rgb_;
 	};
 
 	class panel : public object

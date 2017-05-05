@@ -1419,16 +1419,13 @@ static void draw_label(CVideo& video, surface target, const theme::label& label)
 {
 	//log_scope("draw label");
 
-	Uint32 RGB=label.font_rgb();
-	int red = (RGB & 0x00FF0000)>>16;
-	int green = (RGB & 0x0000FF00)>>8;
-	int blue = (RGB & 0x000000FF);
+	const color_t& RGB = label.font_rgb();
 
 	std::string c_start="<";
 	std::string c_sep=",";
 	std::string c_end=">";
 	std::stringstream color;
-	color<< c_start << red << c_sep << green << c_sep << blue << c_end;
+	color<< c_start << RGB.r << c_sep << RGB.g << c_sep << RGB.b << c_end;
 	std::string text = label.text();
 
 	if(label.font_rgb_set()) {
@@ -2836,10 +2833,7 @@ void display::refresh_report(const std::string& report_name, const config * new_
 			// Draw a text element.
 			font::pango_text text;
 			if (item->font_rgb_set()) {
-				// font_rgb() has no alpha channel and uses a 0x00RRGGBB
-				// layout instead of 0xRRGGBBAA which is what pango_text expects,
-				// so shift the value to the left and add fully-opaque alpha.
-				text.set_foreground_color(color_t::from_rgba_bytes((item->font_rgb() << 8) + 0xFF));
+				text.set_foreground_color(item->font_rgb());
 			}
 			bool eol = false;
 			if (t[t.size() - 1] == '\n') {
