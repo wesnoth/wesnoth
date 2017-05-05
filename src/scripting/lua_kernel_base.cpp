@@ -57,6 +57,7 @@
 #include "lua/lualib.h"
 
 static lg::log_domain log_scripting_lua("scripting/lua");
+static lg::log_domain log_user("scripting/lua/user");
 #define DBG_LUA LOG_STREAM(debug, log_scripting_lua)
 #define LOG_LUA LOG_STREAM(info, log_scripting_lua)
 #define WRN_LUA LOG_STREAM(warn, log_scripting_lua)
@@ -251,6 +252,30 @@ static int intf_wml_matches_filter(lua_State* L)
 	return 1;
 }
 
+/**
+* Logs a message
+* Arg 1: (optional) Logger
+* Arg 2: Message
+*/
+int intf_log(lua_State *L) {
+	const std::string& logger = lua_isstring(L, 2) ? luaL_checkstring(L, 1) : "";
+	std::string msg = lua_isstring(L, 2) ? luaL_checkstring(L, 2) : luaL_checkstring(L, 1);
+	if(msg.empty() || msg[msg.size() - 1] != '\n') {
+		msg += '\n';
+	}
+
+	if(logger == "err" || logger == "error") {
+		LOG_STREAM(err, log_user) << msg;
+	} else if(logger == "warn" || logger == "wrn" || logger == "warning") {
+		LOG_STREAM(warn, log_user) << msg;
+	} else if((logger == "debug" || logger == "dbg")) {
+		LOG_STREAM(debug, log_user) << msg;
+	} else {
+		LOG_STREAM(info, log_user) << msg;
+	}
+	return 0;
+}
+
 // End Callback implementations
 
 // Template which allows to push member functions to the lua kernel base into lua as C functions, using a shim
@@ -375,6 +400,7 @@ lua_kernel_base::lua_kernel_base()
 		{ "name_generator",           &intf_name_generator           },
 		{ "random",                   &intf_random                   },
 		{ "wml_matches_filter",       &intf_wml_matches_filter       },
+		{ "log",                      &intf_log                      },
 		{ nullptr, nullptr }
 	};
 
