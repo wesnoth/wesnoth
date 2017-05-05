@@ -535,7 +535,7 @@ BOOST_AUTO_TEST_CASE(test_make_test_fake)
 	CVideo& video = test_utils::get_fake_display(10, 10).video();
 
 	try {
-		message dlg("title", "message", true, false);
+		message dlg("title", "message", true, false, false);
 		dlg.show(video, 1);
 	} catch(wml_exception& e) {
 		BOOST_CHECK(e.user_message == _("Failed to show a dialog, "
