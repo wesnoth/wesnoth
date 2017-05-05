@@ -179,7 +179,7 @@ namespace image {
 
 	///sets the amount scaled images should be scaled. Invalidates all
 	///scaled images.
-	void set_zoom(int zoom);
+	void set_zoom(unsigned int zoom);
 
 	/// UNSCALED : image will be drawn "as is" without changing size, even in case of redraw
 	/// SCALED_TO_ZOOM : image will be scaled taking zoom into account

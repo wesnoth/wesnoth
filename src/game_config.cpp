@@ -81,10 +81,12 @@ const int gold_carryover_percentage = 80;
 //
 // Terrain-related constants
 //
-int tile_size = 72;
+unsigned int tile_size = 72;
 
 std::string default_terrain;
 std::string shroud_prefix, fog_prefix;
+
+std::vector<unsigned int> zoom_levels {36, 72, 144};
 
 //
 // Display scale constants
@@ -268,6 +270,14 @@ void load_config(const config &v)
 	lobby_refresh    = v["lobby_refresh"].to_int(2000);
 	default_terrain  = v["default_terrain"].str();
 	tile_size        = v["tile_size"].to_int(72);
+
+	std::vector<std::string> zoom_levels_str = utils::split(v["zoom_levels"]);
+	if(!zoom_levels_str.empty()) {
+		zoom_levels.clear();
+		std::transform(zoom_levels_str.begin(), zoom_levels_str.end(), std::back_inserter(zoom_levels), [](const std::string zoom) {
+			return std::stold(zoom) * tile_size;
+		});
+	}
 
 	title_music           = v["title_music"].str();
 	lobby_music           = v["lobby_music"].str();

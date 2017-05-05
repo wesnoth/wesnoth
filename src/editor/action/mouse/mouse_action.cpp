@@ -186,7 +186,7 @@ void mouse_action::set_terrain_mouse_overlay(editor_display& disp, const t_trans
 	adjust_surface_alpha(image, alpha);
 
 	// scale the image
-	const int zoom = disp.hex_size();
+	const unsigned int zoom = disp.hex_size();
 	if (zoom != game_config::tile_size) {
 		image = scale_surface(image, zoom, zoom);
 	}

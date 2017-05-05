@@ -35,13 +35,15 @@ namespace game_config
 	extern int rest_heal_amount;
 	extern int recall_cost;
 	extern int kill_experience;
-	extern int tile_size;
+	extern unsigned int tile_size;
 	extern unsigned lobby_network_timer;
 	extern unsigned lobby_refresh;
 	extern const std::string version;
 	extern const std::string revision;
 	extern const std::string default_title_string;
 	extern std::string default_terrain;
+
+	extern std::vector<unsigned int> zoom_levels;
 
 	inline int kill_xp(int level)
 	{

@@ -190,8 +190,8 @@ int red_adjust = 0, green_adjust = 0, blue_adjust = 0;
 /** List of colors used by the TC image modification */
 std::vector<std::string> team_colors;
 
-int zoom = tile_size;
-int cached_zoom = 0;
+unsigned int zoom = tile_size;
+unsigned int cached_zoom = 0;
 
 /** Algorithm choices */
 //typedef std::function<surface(const surface &, int, int)> scaling_function;
@@ -715,7 +715,7 @@ const std::vector<std::string>& get_team_colors()
 	return team_colors;
 }
 
-void set_zoom(int amount)
+void set_zoom(unsigned int amount)
 {
 	if(amount != zoom) {
 		zoom = amount;

@@ -62,17 +62,15 @@ static lg::log_domain log_display("display");
 #define LOG_DP LOG_STREAM(info, log_display)
 #define DBG_DP LOG_STREAM(debug, log_display)
 
+// These are macros instead of proper constants so that they auto-update if the game config is reloaded.
+#define zoom_levels      (game_config::zoom_levels)
+#define final_zoom_index (static_cast<int>(zoom_levels.size()) - 1)
+#define DefaultZoom      (game_config::tile_size)
+#define SmallZoom        (DefaultZoom / 2)
+#define MinZoom          (zoom_levels.front())
+#define MaxZoom          (zoom_levels.back())
+
 namespace {
-	std::vector<unsigned int> zoom_levels {18, 24, 36, 54, 72, 90, 108, 144, 216, 288};
-
-	const int final_zoom_index = static_cast<int>(zoom_levels.size()) - 1;
-
-	const unsigned int DefaultZoom = game_config::tile_size;
-	const unsigned int SmallZoom   = DefaultZoom / 2;
-
-	const unsigned int MinZoom = zoom_levels.front();
-	const unsigned int MaxZoom = zoom_levels.back();
-
 	bool benchmark = false;
 
 	bool debug_foreground = false;
