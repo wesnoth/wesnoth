@@ -11,7 +11,7 @@ local function plugin()
 
   local events, context, info
 
-  local helper = wesnoth.require("lua/helper.lua")
+  local helper = wesnoth.require "helper"
 
   local function find_test_game(info)
     local g = info.game_list()
