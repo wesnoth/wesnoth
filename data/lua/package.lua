@@ -43,6 +43,10 @@ function wesnoth.require(pkg_name)
 	if loaded_name and wesnoth.package[loaded_name] then
 		return wesnoth.package[loaded_name]
 	end
+	if not loaded_name then
+		wesnoth.log("err", "Failed to load required package: " .. pkg_name, true)
+		return nil
+	end
 
 	-- Next, if it's a single file, load the package with dofile
 	if wesnoth.have_file(loaded_name, true) then
