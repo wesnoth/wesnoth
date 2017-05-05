@@ -79,6 +79,7 @@ void message::pre_show(window& window)
 	styled_widget& title_widget = find_widget<label>(&window, "title", false);
 	if(!title_.empty()) {
 		title_widget.set_label(title_);
+		title_widget.set_use_markup(title_use_markup_);
 	} else {
 		title_widget.set_visible(widget::visibility::invisible);
 	}
@@ -153,9 +154,10 @@ void show_message(CVideo& video,
 				  const std::string& msg,
 				  const std::string& button_caption,
 				  const bool auto_close,
-				  const bool message_use_markup)
+				  const bool message_use_markup,
+				  const bool title_use_markup)
 {
-	message dlg(title, msg, auto_close, message_use_markup);
+	message dlg(title, msg, auto_close, message_use_markup, title_use_markup);
 	dlg.set_button_caption(message::ok, button_caption);
 	dlg.show(video);
 }
@@ -165,12 +167,13 @@ int show_message(CVideo& video,
 				 const std::string& msg,
 				 const message::button_style button_style,
 				 bool message_use_markup,
-				 bool /*message_title_mode*/)
+				 bool title_use_markup)
 {
 	message dlg(title,
 				 msg,
 				 button_style == message::auto_close,
-				 message_use_markup);
+				 message_use_markup,
+				 title_use_markup);
 
 	switch(button_style) {
 		case message::auto_close:

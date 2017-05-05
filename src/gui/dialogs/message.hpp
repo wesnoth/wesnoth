@@ -40,12 +40,14 @@ public:
 	message(const std::string& title,
 			 const std::string& message,
 			 const bool auto_close,
-			 const bool message_use_markup)
+			 const bool message_use_markup,
+			 const bool title_use_markup)
 		: title_(title)
 		, image_()
 		, message_(message)
 		, auto_close_(auto_close)
 		, message_use_markup_(message_use_markup)
+		, title_use_markup_(title_use_markup)
 		, buttons_(count)
 	{
 	}
@@ -138,6 +140,9 @@ private:
 	/** Whether to enable formatting markup for the dialog message. */
 	bool message_use_markup_;
 
+	/** Whether to enable formatting markup for the dialog title. */
+	bool title_use_markup_;
+
 	struct button_status
 	{
 		button_status();
@@ -169,13 +174,16 @@ private:
  * @param auto_close          When true the window will hide the ok button
  *                            when the message doesn't need a scrollbar to
  *                            show itself.
+ * @param message_use_markup  Use markup for the message?
+ * @param title_use_markup    Use markup for the title?
  */
 void show_message(CVideo& video,
 				  const std::string& title,
 				  const std::string& message,
 				  const std::string& button_caption = "",
 				  const bool auto_close = true,
-				  const bool message_use_markup = false);
+				  const bool message_use_markup = false,
+				  const bool title_use_markup = false);
 
 /**
  * Shows a message to the user.

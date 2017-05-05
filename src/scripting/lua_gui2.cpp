@@ -23,6 +23,7 @@
 #include "gui/dialogs/wml_message.hpp"
 #include "gui/dialogs/story_viewer.hpp"
 #include "gui/dialogs/transient_message.hpp"
+#include "gui/dialogs/message.hpp"
 #include "gui/widgets/clickable_item.hpp"
 #include "gui/widgets/styled_widget.hpp"
 #include "gui/widgets/multi_page.hpp"
@@ -62,6 +63,7 @@
 #include <map>
 #include <utility>
 #include <vector>
+#include <boost/optional.hpp>
 
 #include "lua/lauxlib.h"                // for luaL_checkinteger, etc
 #include "lua/lua.h"                    // for lua_setfield, etc
@@ -425,6 +427,41 @@ int show_menu(lua_State* L, CVideo& video) {
 	menu.show(video);
 	lua_pushinteger(L, menu.selected_item() + 1);
 	return 1;
+}
+
+/**
+ * Displays a simple message box.
+ */
+int show_message_box(lua_State* L, CVideo& video) {
+	const std::string title = luaL_checkstring(L, 1), message = luaL_checkstring(L, 2);
+	std::string button = luaL_optstring(L, 3, "ok");
+	std::transform(button.begin(), button.end(), button.begin(), std::tolower);
+	bool markup = lua_isnoneornil(L, 3) ? luaW_toboolean(L, 3) : luaW_toboolean(L, 4);
+	using button_style = gui2::dialogs::message::button_style;
+	boost::optional<button_style> style;
+	if(button.empty()) {
+		style = button_style::auto_close;
+	} else if(button == "ok") {
+		style = button_style::ok_button;
+	} else if(button == "close") {
+		style = button_style::close_button;
+	} else if(button == "ok_cancel") {
+		style = button_style::ok_cancel_buttons;
+	} else if(button == "cancel") {
+		style = button_style::cancel_button;
+	} else if(button == "yes_no") {
+		style = button_style::yes_no_buttons;
+	}
+	if(style) {
+		int result = gui2::show_message(video, title, message, *style, markup, markup);
+		if(style == button_style::ok_cancel_buttons || style == button_style::yes_no_buttons) {
+			lua_pushboolean(L, result == gui2::window::OK);
+			return 1;
+		}
+	} else {
+		gui2::show_message(video, title, message, button, false, markup, markup);
+	}
+	return 0;
 }
 
 /**
