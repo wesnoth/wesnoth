@@ -875,7 +875,7 @@ struct dialog_tester<message>
 {
 	message* create()
 	{
-		return new message("Title", "Message", false, false);
+		return new message("Title", "Message", false, false, false);
 	}
 };
 #if 0
