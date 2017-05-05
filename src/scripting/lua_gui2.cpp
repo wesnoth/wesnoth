@@ -435,7 +435,7 @@ int show_menu(lua_State* L, CVideo& video) {
 int show_message_box(lua_State* L, CVideo& video) {
 	const std::string title = luaL_checkstring(L, 1), message = luaL_checkstring(L, 2);
 	std::string button = luaL_optstring(L, 3, "ok");
-	std::transform(button.begin(), button.end(), button.begin(), std::tolower);
+	std::transform(button.begin(), button.end(), button.begin(), [](char c) { return std::tolower(c); });
 	bool markup = lua_isnoneornil(L, 3) ? luaW_toboolean(L, 3) : luaW_toboolean(L, 4);
 	using button_style = gui2::dialogs::message::button_style;
 	boost::optional<button_style> style;
