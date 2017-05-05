@@ -38,18 +38,32 @@ static lg::log_domain log_scripting_lua("scripting/lua");
 #define ERR_LUA LOG_STREAM(err, log_scripting_lua)
 
 namespace lua_fileops {
-/// resolves @a filename to an absolute path
-/// @returns true if the filename was sucessfully resolved.
-static bool resolve_filename(lua_State* L, std::string& filename, std::string* rel = nullptr)
+static std::string get_calling_file(lua_State* L)
 {
-	std::string currentdir = "";
+	std::string currentdir;
 	lua_Debug ar;
 	if(lua_getstack(L, 1, &ar)) {
 		lua_getinfo(L, "S", &ar);
 		if(ar.source[0] == '@') {
-			currentdir = filesystem::directory_name(std::string(ar.source + 1));
+			std::string calling_file(ar.source + 1);
+			for(int stack_pos = 2; calling_file == "lua/package.lua"; stack_pos++) {
+				if(!lua_getstack(L, stack_pos, &ar)) {
+					return currentdir;
+				}
+				lua_getinfo(L, "S", &ar);
+				if(ar.source[0] == '@') {
+					calling_file.assign(ar.source + 1);
+				}
+			}
+			currentdir = filesystem::directory_name(calling_file);
 		}
 	}
+	return currentdir;
+}
+/// resolves @a filename to an absolute path
+/// @returns true if the filename was sucessfully resolved.
+static bool resolve_filename(std::string& filename, std::string currentdir, std::string* rel = nullptr)
+{
 	if(filename.size() < 2) {
 		return false;
 	}
@@ -110,7 +124,7 @@ static bool resolve_filename(lua_State* L, std::string& filename, std::string* r
 int intf_have_file(lua_State *L)
 {
 	std::string m = luaL_checkstring(L, 1);
-	if(!resolve_filename(L, m)) {
+	if(!resolve_filename(m, get_calling_file(L))) {
 		lua_pushboolean(L, false);
 	} else if(luaW_toboolean(L, 2)) {
 		lua_pushboolean(L, !filesystem::is_directory(m));
@@ -129,7 +143,7 @@ int intf_read_file(lua_State *L)
 {
 	std::string p = luaL_checkstring(L, 1);
 	
-	if(!resolve_filename(L, p)) {
+	if(!resolve_filename(p, get_calling_file(L))) {
 		return luaL_argerror(L, -1, "file not found");
 	}
 
@@ -219,7 +233,7 @@ int load_file(lua_State *L)
 	std::string p = luaL_checkstring(L, -1);
 	std::string rel;
 	
-	if(!resolve_filename(L, p, &rel)) {
+	if(!resolve_filename(p, get_calling_file(L), &rel)) {
 		return luaL_argerror(L, -1, "file not found");
 	}
 
