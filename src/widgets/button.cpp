@@ -394,7 +394,7 @@ bool button::hit(int x, int y) const
 	return sdl::point_in_rect(x,y,location());
 }
 
-static bool is_valid_image(const std::string& str) { return str[0] != IMAGE_PREFIX; }
+static bool is_valid_image(const std::string& str) { return !str.empty() && str[0] != IMAGE_PREFIX; }
 
 void button::set_image(const std::string& image_file)
 {
@@ -409,7 +409,8 @@ void button::set_image(const std::string& image_file)
 
 void button::set_overlay(const std::string& image_file)
 {
-	if(!is_valid_image(image_file)) {
+	// We allow empty paths for overlays
+	if(image_file[0] == IMAGE_PREFIX) {
 		return;
 	}
 
