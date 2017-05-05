@@ -38,11 +38,18 @@ static lg::log_domain log_scripting_lua("scripting/lua");
 #define ERR_LUA LOG_STREAM(err, log_scripting_lua)
 
 namespace lua_fileops {
-/// resolves @a filename where @a currentdir is the current directory, note that @a currentdir
-/// is no absolute directory
-/// @returns true iff the filename was sucesful resolved.
-static bool resolve_filename(std::string& filename, const std::string& currentdir)
+/// resolves @a filename to an absolute path
+/// @returns true if the filename was sucessfully resolved.
+static bool resolve_filename(lua_State* L, std::string& filename, std::string* rel = nullptr)
 {
+	std::string currentdir = "";
+	lua_Debug ar;
+	if(lua_getstack(L, 1, &ar)) {
+		lua_getinfo(L, "S", &ar);
+		if(ar.source[0] == '@') {
+			currentdir = filesystem::directory_name(std::string(ar.source + 1));
+		}
+	}
 	if(filename.size() < 2) {
 		return false;
 	}
@@ -83,6 +90,14 @@ static bool resolve_filename(std::string& filename, const std::string& currentdi
 	if(filename.find("..") != std::string::npos) {
 		return false;
 	}
+	std::string p = filesystem::get_wml_location(filename);
+	if(p.empty()) {
+		return false;
+	}
+	if(rel) {
+		*rel = filename;
+	}
+	filename = p;
 	return true;
 }
 
@@ -94,12 +109,11 @@ static bool resolve_filename(std::string& filename, const std::string& currentdi
  */
 int intf_have_file(lua_State *L)
 {
-	char const *m = luaL_checkstring(L, 1);
-	std::string p = filesystem::get_wml_location(m);
-	if(p.empty()) {
+	std::string m = luaL_checkstring(L, 1);
+	if(!resolve_filename(L, m)) {
 		lua_pushboolean(L, false);
 	} else if(luaW_toboolean(L, 2)) {
-		lua_pushboolean(L, !filesystem::is_directory(p));
+		lua_pushboolean(L, !filesystem::is_directory(m));
 	} else {
 		lua_pushboolean(L, true);
 	}
@@ -113,23 +127,12 @@ int intf_have_file(lua_State *L)
  */
 int intf_read_file(lua_State *L)
 {
-	std::string m = luaL_checkstring(L, 1);
+	std::string p = luaL_checkstring(L, 1);
 	
-	std::string current_dir = "";
-	lua_Debug ar;
-	if(lua_getstack(L, 1, &ar)) {
-		lua_getinfo(L, "S", &ar);
-		if(ar.source[0] == '@') {
-			current_dir = filesystem::directory_name(std::string(ar.source + 1));
-		}
-	}
-	if(!resolve_filename(m, current_dir)) {
+	if(!resolve_filename(L, p)) {
 		return luaL_argerror(L, -1, "file not found");
 	}
-	std::string p = filesystem::get_wml_location(m);
-	if(p.empty()) {
-		return luaL_argerror(L, -1, "file not found");
-	}
+
 	if(filesystem::is_directory(p)) {
 		std::vector<std::string> files, dirs;
 		filesystem::get_files_in_dir(p, &files, &dirs);
@@ -213,26 +216,16 @@ private:
  */
 int load_file(lua_State *L)
 {
-	std::string m = luaL_checkstring(L, -1);
+	std::string p = luaL_checkstring(L, -1);
+	std::string rel;
 	
-	std::string current_dir = "";
-	lua_Debug ar;
-	if(lua_getstack(L, 1, &ar)) {
-		lua_getinfo(L, "S", &ar);
-		if(ar.source[0] == '@') {
-			current_dir = filesystem::directory_name(std::string(ar.source + 1));
-		}
-	}
-	if(!resolve_filename(m, current_dir)) {
+	if(!resolve_filename(L, p, &rel)) {
 		return luaL_argerror(L, -1, "file not found");
 	}
-	std::string p = filesystem::get_wml_location(m);
-	if (p.empty()) {
-		return luaL_argerror(L, -1, "file not found");
-	}
+
 	try
 	{
-		if(lua_filestream::lua_loadfile(L, p, m)) {
+		if(lua_filestream::lua_loadfile(L, p, rel)) {
 			return lua_error(L);
 		}
 	}
