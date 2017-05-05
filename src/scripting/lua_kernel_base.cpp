@@ -276,6 +276,31 @@ int intf_log(lua_State *L) {
 	return 0;
 }
 
+/**
+* Gets the dimension of an image.
+* - Arg 1: string.
+* - Ret 1: width.
+* - Ret 2: height.
+*/
+static int intf_get_image_size(lua_State *L) {
+	char const *m = luaL_checkstring(L, 1);
+	image::locator img(m);
+	if(!img.file_exists()) return 0;
+	surface s = get_image(img);
+	lua_pushinteger(L, s->w);
+	lua_pushinteger(L, s->h);
+	return 2;
+}
+
+/**
+* Returns the time stamp, exactly as [set_variable] time=stamp does.
+* - Ret 1: integer
+*/
+static int intf_get_time_stamp(lua_State *L) {
+	lua_pushinteger(L, SDL_GetTicks());
+	return 1;
+
+
 // End Callback implementations
 
 // Template which allows to push member functions to the lua kernel base into lua as C functions, using a shim
@@ -401,6 +426,8 @@ lua_kernel_base::lua_kernel_base()
 		{ "random",                   &intf_random                   },
 		{ "wml_matches_filter",       &intf_wml_matches_filter       },
 		{ "log",                      &intf_log                      },
+		{ "get_image_size",           &intf_get_image_size           },
+		{ "get_time_stamp",           &intf_get_time_stamp           },
 		{ nullptr, nullptr }
 	};
 

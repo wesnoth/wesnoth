@@ -3300,34 +3300,7 @@ int game_lua_kernel::intf_redraw(lua_State *L)
 		screen.draw(true,true);
 	}
 	return 0;
-}
-
-/**
- * Gets the dimension of an image.
- * - Arg 1: string.
- * - Ret 1: width.
- * - Ret 2: height.
- */
-static int intf_get_image_size(lua_State *L)
-{
-	char const *m = luaL_checkstring(L, 1);
-	image::locator img(m);
-	if (!img.file_exists()) return 0;
-	surface s = get_image(img);
-	lua_pushinteger(L, s->w);
-	lua_pushinteger(L, s->h);
-	return 2;
-}
-
-/**
- * Returns the time stamp, exactly as [set_variable] time=stamp does.
- * - Ret 1: integer
- */
-static int intf_get_time_stamp(lua_State *L)
-{
-	lua_pushinteger(L, SDL_GetTicks());
-	return 1;
-}
+}}
 
 /**
  * Lua frontend to the modify_ai functionality
@@ -3957,8 +3930,6 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "debug_ai",                 &intf_debug_ai                 },
 		{ "eval_conditional",         &intf_eval_conditional         },
 		{ "get_era",                  &intf_get_era                  },
-		{ "get_image_size",           &intf_get_image_size           },
-		{ "get_time_stamp",           &intf_get_time_stamp           },
 		{ "get_traits",               &intf_get_traits               },
 		{ "get_viewing_side",         &intf_get_viewing_side         },
 		{ "modify_ai",                &intf_modify_ai_old            },
