@@ -397,20 +397,17 @@ lua_kernel_base::lua_kernel_base()
 	lua_setglobal(L, "print");
 
 	cmd_log_ << "Initializing package repository...\n";
-	static const char* pkg_name = "lua/package.lua";
-	lua_settop(L, 0);
-	lua_pushstring(L, pkg_name);
-	int res = intf_dofile(L);
-	if(res != 1) {
-		cmd_log_ << "Error: Failed to initialize package repository. Falling back to less flexible C++ implementation.\n";
-	}
 	// Create the package table.
 	lua_getglobal(L, "wesnoth");
 	lua_newtable(L);
-	lua_pushvalue(L, -3);
-	lua_setfield(L, -2, pkg_name);
 	lua_setfield(L, -2, "package");
 	lua_pop(L, 1);
+	lua_settop(L, 0);
+	lua_pushstring(L, "lua/package.lua");
+	int res = intf_require(L);
+	if(res != 1) {
+		cmd_log_ << "Error: Failed to initialize package repository. Falling back to less flexible C++ implementation.\n";
+	}
 
 	// Get some callbacks for map locations
 	cmd_log_ << "Adding map table...\n";
@@ -456,9 +453,9 @@ lua_kernel_base::lua_kernel_base()
 	cmd_log_ << "Loading ilua...\n";
 
 	lua_settop(L, 0);
+	luaW_getglobal(L, "wesnoth", "require");
 	lua_pushstring(L, "lua/ilua.lua");
-	int result = intf_require(L);
-	if (result == 1) {
+	if(protected_call(1, 1)) {
 		//run "ilua.set_strict()"
 		lua_pushstring(L, "set_strict");
 		lua_gettable(L, -2);
@@ -475,8 +472,9 @@ lua_kernel_base::lua_kernel_base()
 	lua_settop(L, 0);
 
 	cmd_log_ << "Loading core...\n";
+	luaW_getglobal(L, "wesnoth", "require");
 	lua_pushstring(L, "lua/core.lua");
-	if(intf_require(L) != 1) {
+	if(!protected_call(1, 1)) {
 		cmd_log_ << "Error: Failed to load core.\n";
 	}
 	lua_settop(L, 0);
