@@ -17,6 +17,7 @@
 #include "font/font_options.hpp"
 #include "color.hpp"
 #include "sdl/surface.hpp"
+#include "serialization/string_utils.hpp"
 #include "serialization/unicode_types.hpp"
 
 #include <pango/pango.h>
@@ -246,8 +247,8 @@ public:
 private:
 
 	/***** ***** ***** *****  Pango variables ***** ***** ***** *****/
-	std::unique_ptr<PangoContext, std::function<void(void*)>> context_;
-	std::unique_ptr<PangoLayout, std::function<void(void*)>> layout_;
+	std::unique_ptr<PangoContext, void(*)(void*)> context_;
+	std::unique_ptr<PangoLayout, void(*)(void*)> layout_;
 	mutable PangoRectangle rect_;
 
 	/** The SDL surface to render upon used as a cache. */
@@ -398,9 +399,9 @@ private:
 	 *                            unrecoverable error occurred and the text is
 	 *                            set as plain text with an error message.
 	 */
-	bool set_markup(const std::string& text);
+	bool set_markup(utils::string_view text, PangoLayout& layout);
 
-	bool set_markup_helper(const std::string & text);
+	bool set_markup_helper(utils::string_view text, PangoLayout& layout);
 
     std::string format_link_tokens(const std::string & text) const;
 

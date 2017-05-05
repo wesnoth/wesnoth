@@ -19,6 +19,7 @@
 
 #include <algorithm>
 #include <map>
+#include <ostream>
 #include <set>
 #include <sstream>
 #include <string>
@@ -53,7 +54,18 @@ public:
 
 	string_view(const string_view&) = default;
 
+	friend std::ostream& operator<<(std::ostream& stream, const string_view& str)
+	{
+		stream.write(str.str, str.size);
+		return stream;
+	}
+
 	explicit operator std::string() const
+	{
+		return std::string(str, size);
+	}
+
+	std::string to_str() const
 	{
 		return std::string(str, size);
 	}

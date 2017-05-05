@@ -157,7 +157,7 @@ gui2::point pango_text::get_cursor_position(
 
 	// First we need to determine the byte offset, if more routines need it it
 	// would be a good idea to make it a separate function.
-	std::unique_ptr<PangoLayoutIter, std::function<void(PangoLayoutIter*)>> itor(
+	std::unique_ptr<PangoLayoutIter, void(*)(PangoLayoutIter*)> itor(
 		pango_layout_get_iter(layout_.get()), pango_layout_iter_free);
 
 	// Go the wanted line.
@@ -279,7 +279,7 @@ gui2::point pango_text::get_column_line(const gui2::point& position) const
 bool pango_text::set_text(const std::string& text, const bool markedup)
 {
 	if(markedup != markedup_text_ || text != text_) {
-		// assert(layout_);
+		assert(layout_ != nullptr);
 
 		const ucs4::string wide = unicode_cast<ucs4::string>(text);
 		const std::string narrow = unicode_cast<utf8::string>(wide);
@@ -289,7 +289,7 @@ bool pango_text::set_text(const std::string& text, const bool markedup)
 					<< "' contains invalid utf-8, trimmed the invalid parts.\n";
 		}
 		if(markedup) {
-			if(!this->set_markup(narrow)) {
+			if(!this->set_markup(narrow, *layout_)) {
 				return false;
 			}
 		} else {
@@ -693,8 +693,8 @@ void pango_text::create_surface_buffer(const size_t size) const
 	for (auto & c : surface_buffer_) { c = 0; }
 }
 
-bool pango_text::set_markup(const std::string & text) {
-	return this->set_markup_helper(link_aware_ ? this->format_link_tokens(text) : text);
+bool pango_text::set_markup(utils::string_view text, PangoLayout& layout) {
+	return this->set_markup_helper(link_aware_ ? this->format_link_tokens(text.to_str()) : text, layout);
 }
 
 std::string pango_text::format_link_tokens(const std::string & text) const {
@@ -728,13 +728,13 @@ std::string pango_text::handle_token(const std::string & token) const
 	}
 }
 
-bool pango_text::set_markup_helper(const std::string& text)
+bool pango_text::set_markup_helper(utils::string_view text, PangoLayout& layout)
 {
-	if(pango_parse_markup(text.c_str(), text.size()
-			, 0, nullptr, nullptr, nullptr, nullptr)) {
+	if(pango_parse_markup(text.str, text.size,
+		0, nullptr, nullptr, nullptr, nullptr)) {
 
 		/* Markup is valid so set it. */
-		pango_layout_set_markup(layout_.get(), text.c_str(), text.size());
+		pango_layout_set_markup(&layout, text.str, text.size);
 		return true;
 	}
 
@@ -746,14 +746,14 @@ bool pango_text::set_markup_helper(const std::string& text)
 	 * So only try to recover from broken ampersands, by simply replacing them
 	 * with the escaped version.
 	 */
-	std::string semi_escaped{semi_escape_text(text)};
+	std::string semi_escaped{semi_escape_text(text.to_str())};
 
 	/*
 	 * If at least one ampersand is replaced the semi-escaped string
 	 * is longer than the original. If this isn't the case then the
 	 * markup wasn't (only) broken by ampersands in the first place.
 	 */
-	if(text.size() == semi_escaped.size()
+	if(text.size == semi_escaped.size()
 			|| !pango_parse_markup(semi_escaped.c_str(), semi_escaped.size()
 				, 0, nullptr, nullptr, nullptr, nullptr)) {
 
@@ -762,7 +762,7 @@ bool pango_text::set_markup_helper(const std::string& text)
 				<< " text '" << text
 				<< "' has broken markup, set to normal text.\n";
 
-		this->set_text(_("The text contains invalid markup: ") + text, false);
+		this->set_text(_("The text contains invalid markup: ") + text.to_str(), false);
 		return false;
 	}
 
@@ -771,7 +771,7 @@ bool pango_text::set_markup_helper(const std::string& text)
 			<< " text '" << text
 			<< "' has unescaped ampersands '&', escaped them.\n";
 
-	pango_layout_set_markup(layout_.get(), semi_escaped.c_str(), semi_escaped.size());
+	pango_layout_set_markup(&layout, semi_escaped.c_str(), semi_escaped.size());
 	return true;
 }
 
