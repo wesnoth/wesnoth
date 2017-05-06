@@ -71,10 +71,12 @@ static void parse_about_tag(const config& cfg, std::stringstream& ss)
 
 void end_credits::pre_show(window& window)
 {
-	timer_id_ = add_timer(10, std::bind(&end_credits::timer_callback, this), true);
-
-	// Delay a little before beginning the scrolling
-	last_scroll_ = SDL_GetTicks() + 3000;
+	window.set_callback_next_draw([this]()
+	{
+		timer_id_ = add_timer(10, std::bind(&end_credits::timer_callback, this), true);
+		// Delay a little before beginning the scrolling
+		last_scroll_ = SDL_GetTicks() + 3000;
+	});
 
 	connect_signal_pre_key_press(window, std::bind(&end_credits::key_press_callback, this, _5));
 

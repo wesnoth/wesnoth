@@ -28,6 +28,7 @@
 #include "gui/core/window_builder.hpp"
 #include "gui/widgets/panel.hpp"
 
+#include <functional>
 #include <map>
 #include <memory>
 #include <string>
@@ -490,6 +491,17 @@ public:
 		};
 	}
 
+	/**
+	 * Sets a callback that will be called after the window is drawn next time.
+	 * The callback is automatically removed after calling it once.
+	 * Useful if you need to do something after the window is drawn for the first time
+	 * and it's timing-sensitive (i.e. pre_show is too early).
+	 */
+	void set_callback_next_draw(std::function<void()> func)
+	{
+		callback_next_draw_ = func;
+	}
+
 private:
 	/** Needed so we can change what's drawn on the screen. */
 	CVideo& video_;
@@ -797,6 +809,7 @@ private:
 										  bool& handled);
 
 	std::function<bool(window&)> exit_hook_ = [](window&)->bool { return true; };
+	std::function<void()> callback_next_draw_;
 };
 
 // }---------- DEFINITION ---------{
