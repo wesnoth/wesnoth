@@ -593,27 +593,31 @@ void lua_interpreter::controller::tab()
 		text = text.substr(prefix_end_pos + 1);
 	}
 
+	static std::vector<std::string> static_matches {
+		"and",
+		"break",
+		"else",
+		"elseif",
+		"end",
+		"false",
+		"for",
+		"function",
+		"local",
+		"nil",
+		"not",
+		"repeat",
+		"return",
+		"then",
+		"true",
+		"until",
+		"while"
+	};
+
 	std::vector<std::string> matches;
 
 	if (text.find('.') == std::string::npos) {
 		matches = lua_model_->get_globals();
-		matches.push_back("and");
-		matches.push_back("break");
-		matches.push_back("else");
-		matches.push_back("elseif");
-		matches.push_back("end");
-		matches.push_back("false");
-		matches.push_back("for");
-		matches.push_back("function");
-		matches.push_back("local");
-		matches.push_back("nil");
-		matches.push_back("not");
-		matches.push_back("repeat");
-		matches.push_back("return");
-		matches.push_back("then");
-		matches.push_back("true");
-		matches.push_back("until");
-		matches.push_back("while");
+		matches.insert(matches.end(), static_matches.begin(), static_matches.end());
 	} else {
 		matches = lua_model_->get_attribute_names(text);
 	}
