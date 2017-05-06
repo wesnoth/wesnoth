@@ -123,7 +123,7 @@ public:
 	~config();
 
 	// Verifies that the string can be used as an attribute or tag name
-	static bool valid_id(const std::string& id);
+	static bool valid_id(config_key_type id);
 
 	explicit operator bool() const
 	{ return this != &invalid; }
