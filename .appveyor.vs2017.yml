@@ -16,6 +16,9 @@ before_build:
   - mkdir projectfiles\VC15
   - xcopy /E /I /H /Y projectfiles\VC12 projectfiles\VC15
   - cd projectfiles\VC15
+  - cd "c:\\Program Files (x86)\\Microsoft Visual Studio\\2017"
+  - ls
+  - dir
   - "\"c:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Enterprise\\Common7\\IDE\\devenv.exe\" wesnoth.sln /upgrade"
   - cd ..\..
   - set PATH=C:\projects\external\dll;%PATH%
