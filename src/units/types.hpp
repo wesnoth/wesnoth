@@ -339,7 +339,6 @@ private:
 	/** Parses the [hide_help] tag. */
 	void read_hide_help(const config &cfg);
 
-	std::pair<unit_type_map::iterator, bool> insert(const std::pair<std::string, unit_type> &utype) { return types_.insert(utype); }
 	void clear();
 
 	void add_advancefrom(const config& unit_cfg) const;

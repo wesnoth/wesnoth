@@ -1128,7 +1128,7 @@ void unit_type_data::set_config(config &cfg)
 		handle_variations(ut);
 
 		// Record this unit type.
-		if ( insert(std::make_pair(id, unit_type(ut))).second ) {
+		if(types_.emplace(id, unit_type(ut)).second) {
 			LOG_CONFIG << "added " << id << " to unit_type list (unit_type_data.unit_types)\n";
 		} else {
 			ERR_CF << "Multiple [unit_type]s with id=" << id << " encountered." << std::endl;
