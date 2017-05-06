@@ -73,7 +73,11 @@
 // Some sources claim MSVC 2015 supports them, but let's be safe...
 #if _MSC_VER >= 1910
 #define DEPRECATED(reason) [[deprecated(reason)]]
+#if _MSVC_LANG > 201402	// fallthrough only supported when MSVC targets later than C++14
 #define FALLTHROUGH [[fallthrough]]
+#else
+#define FALLTHROUGH
+#endif
 #else
 #define DEPRECATED(reason) __declspec(deprecated)
 #define FALLTHROUGH
