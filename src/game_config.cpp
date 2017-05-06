@@ -280,7 +280,7 @@ void load_config(const config &v)
 	if(!zoom_levels_str.empty()) {
 		zoom_levels.clear();
 		std::transform(zoom_levels_str.begin(), zoom_levels_str.end(), std::back_inserter(zoom_levels), [](const std::string zoom) {
-			return std::stold(zoom) * tile_size;
+			return static_cast<int>(std::stold(zoom) * tile_size);
 		});
 	}
 
