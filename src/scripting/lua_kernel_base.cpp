@@ -544,7 +544,7 @@ lua_kernel_base::~lua_kernel_base()
 
 void lua_kernel_base::log_error(char const * msg, char const * context)
 {
-	ERR_LUA << context << ": " << msg;
+	ERR_LUA << context << ": " << msg << '\n';
 }
 
 void lua_kernel_base::throw_exception(char const * msg, char const * context)
@@ -578,15 +578,15 @@ bool lua_kernel_base::protected_call(lua_State * L, int nArgs, int nRets, error_
 
 		std::string context = "When executing, ";
 		if (errcode == LUA_ERRRUN) {
-			context += "Lua runtime error";
+			context += "Lua runtime error: ";
 		} else if (errcode == LUA_ERRERR) {
-			context += "Lua error in attached debugger";
+			context += "Lua error in attached debugger: ";
 		} else if (errcode == LUA_ERRMEM) {
-			context += "Lua out of memory error";
+			context += "Lua out of memory error: ";
 		} else if (errcode == LUA_ERRGCMM) {
-			context += "Lua error in garbage collection metamethod";
+			context += "Lua error in garbage collection metamethod: ";
 		} else {
-			context += "unknown lua error";
+			context += "unknown lua error: ";
 		}
 		context +=  msg ? msg : "null string";
 
