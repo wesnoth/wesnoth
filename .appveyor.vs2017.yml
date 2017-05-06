@@ -16,11 +16,11 @@ before_build:
   - mkdir projectfiles\VC15
   - xcopy /E /I /H /Y projectfiles\VC12 projectfiles\VC15
   - cd projectfiles\VC15
-  - "\"c:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\Common7\\IDE\\devenv.exe\" wesnoth.sln /upgrade"
+  - "\"c:\\Program Files (x86)\\Microsoft Visual Studio 15\\Common7\\IDE\\devenv.exe\" wesnoth.sln /upgrade"
   - cd ..\..
   - set PATH=C:\projects\external\dll;%PATH%
 build_script:
-  - msbuild projectfiles\VC14\wesnoth.sln /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
+  - msbuild projectfiles\VC15\wesnoth.sln /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
 
 on_failure:
   - "python utils\\appveyor\\irc-notify.py wesnoth-dev {bold}{project_name} - {configuration_name} {color_green}{author}{plain} {bold}{short_commit}: {plain}{message} {color_red}Failed,{bold}Details: {plain}{build_url}"
