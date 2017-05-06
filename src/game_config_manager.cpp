@@ -463,7 +463,7 @@ void game_config_manager::set_multiplayer_hashes()
 {
 	config& hashes = game_config_.add_child("multiplayer_hashes");
 	for (const config &ch : game_config_.child_range("multiplayer")) {
-		hashes[ch["id"]] = ch.hash();
+		hashes[ch["id"].str()] = ch.hash();
 	}
 }
 
