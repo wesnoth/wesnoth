@@ -42,7 +42,7 @@ static lg::log_domain log_config("config");
 namespace {
 //std::map::operator[] does not support heterogenous lookup so we need this to work around.
 template<typename Map, typename Key>
-typename Map::mapped_type& map_get(Map&& map, Key&& key)
+typename Map::mapped_type& map_get(Map& map, Key&& key)
 {
 	auto res = map.lower_bound(key);
 	
