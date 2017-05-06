@@ -143,10 +143,13 @@ BOOST_AUTO_TEST_CASE( test_fs_binary_path )
 	BOOST_CHECK_EQUAL( get_binary_dir_location("images", "."), gamedata + "/images/." );
 
 	BOOST_CHECK_EQUAL( get_binary_file_location("images", "././././././"),
-	                   gamedata + "/images/././././././" );
+	                   gamedata + "/images/" );
 
 	BOOST_CHECK_EQUAL( get_binary_file_location("images", "wesnoth-icon.png"),
 	                   gamedata + "/data/core/images/wesnoth-icon.png" );
+
+	BOOST_CHECK_EQUAL(get_binary_file_location("images", "terrain/../scenery/dwarven-doors-closed.png"),
+					  gamedata + "/data/core/images/scenery/dwarven-doors-closed.png");
 
 	BOOST_CHECK_EQUAL( get_binary_file_location("music", "silence.ogg"),
 	                   gamedata + "/data/core/music/silence.ogg" );
@@ -157,14 +160,18 @@ BOOST_AUTO_TEST_CASE( test_fs_binary_path )
 	BOOST_CHECK_EQUAL( get_independent_image_path("wesnoth-icon.png"),
 	                   "data/core/images/wesnoth-icon.png" );
 
-	// Inexistent paths are resolved empty.
+	// Nonexistent paths are resolved empty.
 	BOOST_CHECK( get_binary_dir_location("images", "").empty() );
-	BOOST_CHECK( get_binary_dir_location("inexistent_resource_type", "").empty() );
+	BOOST_CHECK( get_binary_dir_location("nonexistent_resource_type", "").empty() );
 	BOOST_CHECK( get_binary_file_location("image", "wesnoth-icon.png").empty() );
 	BOOST_CHECK( get_binary_file_location("images", "bunnies_and_ponies_and_rainbows_oh_em_gee.psd").empty() );
 	BOOST_CHECK( get_binary_file_location("music", "this_track_does_not_exist.aiff").empty() );
 	BOOST_CHECK( get_binary_file_location("sounds", "rude_noises.aiff").empty() );
 	BOOST_CHECK( get_independent_image_path("dopefish.txt").empty() );
+
+	// Unsafe paths are resolved empty.
+	BOOST_CHECK(get_binary_file_location("images", "..").empty());
+	BOOST_CHECK(get_binary_file_location("images", "../sounds/bell.wav").empty())
 }
 
 BOOST_AUTO_TEST_CASE( test_fs_wml_path )
@@ -175,12 +182,24 @@ BOOST_AUTO_TEST_CASE( test_fs_wml_path )
 
 	BOOST_CHECK_EQUAL( get_wml_location("_main.cfg"), gamedata + "/data/_main.cfg" );
 	BOOST_CHECK_EQUAL( get_wml_location("core/_main.cfg"), gamedata + "/data/core/_main.cfg" );
-	BOOST_CHECK_EQUAL( get_wml_location("."), gamedata + "/data/." );
+	BOOST_CHECK_EQUAL(get_wml_location("core/units"), gamedata + "/data/core/units");
+	BOOST_CHECK_EQUAL( get_wml_location("."), gamedata + "/data" );
+	BOOST_CHECK_EQUAL(get_wml_location("/"), gamedata + "/data")
 
 	BOOST_CHECK_EQUAL( get_wml_location("~/"), userdata + "/data/" );
+	BOOST_CHECK_EQUAL(get_wml_lcation("~addons"), userdata + "/data/addons");
 
-	// Inexistent paths are resolved empty.
+	BOOST_CHECK_EQUAL(get_wml_location(".", get_wml_location("core/units")), gamedata + "/data/core/units");
+	BOOST_CHECK_EQUAL(get_wml_location("./bats", get_wml_location("core/units")), gamedata + "/data/core/units/bats");
+	BOOST_CHECK_EQUAL(get_wml_location("../macros/ai.cfg", get_wml_location("core/units")), gamedata + "data/core/macros/ai.cfg");
+
+	// Nonexistent paths are resolved empty.
 	BOOST_CHECK( get_wml_location("why_would_anyone_ever_name_a_file_like_this").empty() );
+
+	// Unsafe paths are resolved empty.
+	BOOST_CHECK(get_wml_location("..").empty());
+	BOOST_CHECK(get_wml_location("core/../..").empty());
+	BOOST_CHECK(get_wml_location("../..", get_wml_location("core")).empty());
 }
 
 BOOST_AUTO_TEST_CASE( test_fs_search )

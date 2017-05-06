@@ -64,54 +64,13 @@ static std::string get_calling_file(lua_State* L)
 /// @returns true if the filename was successfully resolved.
 static bool resolve_filename(std::string& filename, std::string currentdir, std::string* rel = nullptr)
 {
-	if(filename.size() < 2) {
-		return false;
-	}
-	if(filename[0] == '.' && filename[1] == '/') {
-		filename = currentdir + filename.substr(1);
-	}
-	if(std::find(filename.begin(), filename.end(), '\\') != filename.end()) {
-		return false;
-	}
-	//resolve /./
-	while(true) {
-		std::size_t pos = filename.find("/./");
-		if(pos == std::string::npos) {
-			break;
-		}
-		filename = filename.replace(pos, 2, "");
-	}
-	//resolve //
-	while(true) {
-		std::size_t pos = filename.find("//");
-		if(pos == std::string::npos) {
-			break;
-		}
-		filename = filename.replace(pos, 1, "");
-	}
-	//resolve /../
-	while(true) {
-		std::size_t pos = filename.find("/..");
-		if(pos == std::string::npos) {
-			break;
-		}
-		std::size_t pos2 = filename.find_last_of('/', pos - 1);
-		if(pos2 == std::string::npos || pos2 >= pos) {
-			return false;
-		}
-		filename = filename.replace(pos2, pos- pos2 + 3, "");
-	}
-	if(filename.find("..") != std::string::npos) {
-		return false;
-	}
-	std::string p = filesystem::get_wml_location(filename);
-	if(p.empty()) {
+	filename = filesystem::get_wml_location(filename, currentdir);
+	if(filename.empty()) {
 		return false;
 	}
 	if(rel) {
-		*rel = filename;
+		*rel = filesystem::get_short_wml_path(filename);
 	}
-	filename = p;
 	return true;
 }
 

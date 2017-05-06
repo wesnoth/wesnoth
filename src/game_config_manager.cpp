@@ -214,9 +214,9 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 			}
 
 			const std::string& path = core["path"];
-			if (!filesystem::file_exists(filesystem::get_wml_location(path))) {
-				events::call_in_main_thread([&]() {
-					gui2::dialogs::wml_error::display(
+			// get_wml_location() returns empty if the path does not exist
+			if(filesystem::get_wml_location(path).empty()) {
+				gui2::dialogs::wml_error::display(
 						_("Error validating data core."),
 						_("Core ID: ") + id
 						+ '\n' + _("Core Path: ") + path

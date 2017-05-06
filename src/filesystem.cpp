@@ -1206,6 +1206,57 @@ void clear_binary_paths_cache()
 	binary_paths_cache.clear();
 }
 
+static std::string resolve_filename(std::string filename, const std::string relative_to)
+{
+	// Collapses any . or .. components in the filename
+	if(filename.empty()) {
+		return filename;
+	}
+	// We'll assume it's relative if the first character is a dot.
+	if(filename[0] == '.') {
+		filename = relative_to + '/' + filename;
+	}
+	// Drop initial slash ("root" directory is an empty string in Wesnoth)
+	if(filename[0] == '/') {
+		filename.erase(0, 1);
+	}
+	// Resolve /./
+	while(true) {
+		size_t pos = filename.find("/./");
+		if(pos == std::string::npos) {
+			break;
+		}
+		filename.erase(pos, 2);
+	}
+	// Resolve //
+	while(true) {
+		size_t pos = filename.find("//");
+		if(pos == std::string::npos) {
+			break;
+		}
+		filename.erase(pos, 1);
+	}
+	// Resolve /../
+	while(true) {
+		size_t pos = filename.find("/..");
+		if(pos == std::string::npos) {
+			break;
+		}
+		size_t pos2 = filename.find_last_of('/', pos - 1);
+		if(pos2 == std::string::npos) {
+			// Means there is no earlier slash
+			pos2 = filename[0] == '~' ? 1 : 0;
+			pos += 1;
+		}
+		filename.erase(pos, 3);
+		filename.erase(pos2, pos - pos2);
+	}
+	if(filename.find("~../") == 0) {
+		filename.erase(0, 4);
+	}
+	return filename;
+}
+
 static bool is_legal_file(const std::string& filename_str)
 {
 	DBG_FS << "Looking for '" << filename_str << "'.\n";
@@ -1215,8 +1266,8 @@ static bool is_legal_file(const std::string& filename_str)
 		return false;
 	}
 
-	if(filename_str.find("..") != std::string::npos) {
-		ERR_FS << "Illegal path '" << filename_str << "' (\"..\" not allowed).\n";
+	if (filename.size() >= 2 && filename[0] == '.' && filename[1] == '.') {
+		ERR_FS << "Illegal path '" << filename << "' (initial \"..\" not allowed).\n";
 		return false;
 	}
 
@@ -1282,20 +1333,9 @@ const std::vector<std::string>& get_binary_paths(const std::string& type)
 	return res;
 }
 
-std::string get_binary_file_location(const std::string& type, const std::string& filename)
+std::string get_binary_file_location(const std::string& type, const std::string& filename_unresolved)
 {
-	// We define ".." as "remove everything before" this is needed because
-	// on the one hand allowing ".." would be a security risk but
-	// especially for terrains the c++ engine puts a hardcoded "terrain/" before filename
-	// and there would be no way to "escape" from "terrain/" otherwise. This is not the
-	// best solution but we cannot remove it without another solution (subtypes maybe?).
-
-	{
-		std::string::size_type pos = filename.rfind("../");
-		if(pos != std::string::npos) {
-			return get_binary_file_location(type, filename.substr(pos + 3));
-		}
-	}
+	const std::string& filename = resolve_filename(filename_unresolved, "");
 
 	if(!is_legal_file(filename)) {
 		return std::string();
@@ -1317,9 +1357,11 @@ std::string get_binary_file_location(const std::string& type, const std::string&
 	return std::string();
 }
 
-std::string get_binary_dir_location(const std::string& type, const std::string& filename)
+std::string get_binary_dir_location(const std::string &type, const std::string &filename_unresolved)
 {
-	if(!is_legal_file(filename)) {
+	const std::string& filename = resolve_filename(filename_unresolved, "");
+
+	if (!is_legal_file(filename))
 		return std::string();
 	}
 
@@ -1337,15 +1379,22 @@ std::string get_binary_dir_location(const std::string& type, const std::string& 
 	return std::string();
 }
 
-std::string get_wml_location(const std::string& filename, const std::string& current_dir)
+std::string get_wml_location(const std::string &filename_unresolved, const std::string &current_dir)
 {
-	if(!is_legal_file(filename)) {
+	// Special cases first:
+	if(filename_unresolved == "/") {
+		return game_config::path;
+	} else if(filename_unresolved == ".") {
+		return current_dir.empty() ? game_config::path : current_dir;
+	}
+	const std::string& filename = resolve_filename(filename_unresolved, get_short_wml_path(current_dir));
+
+	if (!is_legal_file(filename))
 		return std::string();
 	}
 
 	assert(game_config::path.empty() == false);
 
-	bfs::path fpath(filename);
 	bfs::path result;
 
 	if(filename[0] == '~') {
