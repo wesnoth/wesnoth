@@ -140,9 +140,10 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 		prev_def = &bc->get_defender_combatant(prev_def);
 
 		if ( !from_cache ) {
-			ai_obj.unit_stats_cache().insert(
-				std::make_pair(cache_key, std::make_pair(bc->get_attacker_stats(),
-				                                         bc->get_defender_stats())));
+			ai_obj.unit_stats_cache().emplace(cache_key, std::make_pair(
+				bc->get_attacker_stats(),
+				bc->get_defender_stats()
+			));
 		}
 
 		// Note we didn't fight at all if defender is already dead.

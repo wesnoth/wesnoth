@@ -139,7 +139,7 @@ public:
 			return;
 		}
 		factory_ptr ptr_to_this(this);
-		get_list().insert(make_pair(name,ptr_to_this));
+		get_list().emplace(name,ptr_to_this);
 	}
 
 	virtual ~engine_factory() {}

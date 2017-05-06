@@ -230,7 +230,7 @@ public:
 		if (c) {
 			assert (c->get_id()== this->get_name());
 			where_ = c;
-			aspects_.insert(make_pair(this->get_name(),c));
+			aspects_.emplace(this->get_name(),c);
 		} else {
 			LOG_STREAM(debug, aspect::log()) << "typesafe_known_aspect [" << this->get_name() << "] : while setting aspect, got null. this might be caused by invalid [aspect] WML" << std::endl;
 		}
@@ -493,7 +493,7 @@ public:
 			return;
 		}
 		factory_ptr ptr_to_this(this);
-		get_list().insert(make_pair(name,ptr_to_this));
+		get_list().emplace(name,ptr_to_this);
 	}
 
 	virtual ~aspect_factory() {}
@@ -536,7 +536,7 @@ public:
 	lua_aspect_factory( const std::string &name )
 	{
 		factory_ptr ptr_to_this(this);
-		get_list().insert(make_pair(name,ptr_to_this));
+		get_list().emplace(name,ptr_to_this);
 	}
 
 	virtual ~lua_aspect_factory() {}

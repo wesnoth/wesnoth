@@ -177,7 +177,7 @@ template<typename T>
 void readonly_context_impl::add_known_aspect(const std::string &name, std::shared_ptr< typesafe_aspect <T> > &where)
 {
 	std::shared_ptr< typesafe_known_aspect <T> > ka_ptr(new typesafe_known_aspect<T>(name,where,aspects_));
-	known_aspects_.insert(make_pair(name,ka_ptr));
+	known_aspects_.emplace(name,ka_ptr);
 }
 
 readonly_context_impl::readonly_context_impl(side_context &context, const config &cfg)
