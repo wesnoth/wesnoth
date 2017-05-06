@@ -52,6 +52,18 @@ typename Map::mapped_type& map_get(Map& map, Key&& key)
 
 	return res->second;
 }
+//std::map::erase does not support heterogenous lookup so we need this to work around.
+template<typename Map, typename Key>
+int map_erase_key(Map& map, Key&& key)
+{
+
+	auto i = map.find(key);
+	if (i != map.end()) {
+		map.erase(i);
+		return 1;
+	}
+	return 0;
+}
 }
 struct config_implementation
 {
@@ -530,11 +542,7 @@ bool config::has_old_attribute(config_key_type key, const std::string &old_key, 
 void config::remove_attribute(config_key_type key)
 {
 	check_valid();
-
-	auto i = values.find(key);
-	if (i != values.end()) {
-		values.erase(i);
-	}
+	map_erase_key(values, key);
 }
 
 void config::append_children(const config &cfg)
@@ -834,8 +842,7 @@ void config::splice_children(config &src, const std::string &key)
 void config::recursive_clear_value(config_key_type key)
 {
 	check_valid();
-
-	values.erase(key);
+	map_erase_key(values, key);
 
 	for(std::pair<const std::string, child_list>& p : children) {
 		for(config* cfg : p.second) {
