@@ -257,6 +257,11 @@ std::string
 
 } // sounds
 
+static void add_color_info(const config& v, bool build_defaults);
+void add_color_info(const config& v)
+{
+	add_color_info(v, false);
+}
 
 void load_config(const config &v)
 {
@@ -293,7 +298,6 @@ void load_config(const config &v)
 		partial_orb_color  = i["partial_orb_color"].str();
 		enemy_orb_color    = i["enemy_orb_color"].str();
 		ally_orb_color     = i["ally_orb_color"].str();
-		default_color_list = i["default_color_list"].str();
 	} // colors
 
 	show_ally_orb     = v["show_ally_orb"].to_bool(true);
@@ -344,7 +348,7 @@ void load_config(const config &v)
 	shroud_prefix = v["shroud_prefix"].str();
 	fog_prefix    = v["fog_prefix"].str();
 
-	add_color_info(v);
+	add_color_info(v, true);
 
 	if(const config::attribute_value* a = v.get("flag_rgb")) {
 		flag_rgb = a->str();
@@ -418,8 +422,12 @@ void load_config(const config &v)
 	}
 }
 
-void add_color_info(const config& v)
+void add_color_info(const config& v, bool build_defaults)
 {
+	if(build_defaults) {
+		default_colors.clear();
+	}
+
 	for(const config& teamC : v.child_range("color_range")) {
 		const config::attribute_value* a1 = teamC.get("id"), *a2 = teamC.get("rgb");
 		if(!a1 || !a2) {
@@ -440,17 +448,19 @@ void add_color_info(const config& v)
 		}
 
 		team_rgb_range.emplace(id, color_range(temp));
-		team_rgb_name[id] = teamC["name"];
+		team_rgb_name.emplace(id, teamC["name"].t_str());
 
 		LOG_NG << "registered color range '" << id << "': " << team_rgb_range[id].debug() << '\n';
 
 		// Ggenerate palette of same name;
 		std::vector<color_t> tp = palette(team_rgb_range[id]);
-		if(tp.empty()) {
-			continue;
+		if(!tp.empty()) {
+			team_rgb_colors.emplace(id, tp);
 		}
 
-		team_rgb_colors.emplace(id, tp);
+		if(build_defaults && teamC["default"].to_bool()) {
+			default_colors.push_back(*a1);
+		}
 	}
 
 	for(const config &cp : v.child_range("color_palette")) {
@@ -468,14 +478,14 @@ void add_color_info(const config& v)
 			LOG_NG << "registered color palette: " << rgb.first << '\n';
 		}
 	}
+}
 
+void reset_color_info()
+{
 	default_colors.clear();
-
-	for(const auto& color : utils::split(game_config::colors::default_color_list)) {
-		if(team_rgb_name.find(color) != team_rgb_name.end()) {
-			default_colors.push_back(color);
-		}
-	}
+	team_rgb_colors.clear();
+	team_rgb_name.clear();
+	team_rgb_range.clear();
 }
 
 const color_range& color_info(const std::string& name)

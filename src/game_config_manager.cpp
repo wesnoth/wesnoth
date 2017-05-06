@@ -87,6 +87,7 @@ bool game_config_manager::init_game_config(FORCE_RELOAD_CONFIG force_reload)
 	game_config::scoped_preproc_define title_screen("TITLE_SCREEN",
 		!cmdline_opts_.multiplayer && !cmdline_opts_.test && !jump_to_editor_);
 
+	game_config::reset_color_info();
 	load_game_config_with_loadscreen(force_reload);
 
 	game_config::load_config(game_config_.child("game_config"));
@@ -291,8 +292,8 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 		game_config_.splice_children(core_terrain_rules, "terrain_graphics");
 
 		set_multiplayer_hashes();
-		set_color_info();
 		set_unit_data();
+		game_config::add_color_info(game_config_);
 
 		terrain_builder::set_terrain_rules_cfg(game_config());
 		tdata_ = std::make_shared<terrain_type_data>(game_config_);
@@ -464,14 +465,6 @@ void game_config_manager::set_multiplayer_hashes()
 	for (const config &ch : game_config_.child_range("multiplayer")) {
 		hashes[ch["id"]] = ch.hash();
 	}
-}
-
-void game_config_manager::set_color_info()
-{
-	config colorsys_info;
-	colorsys_info.splice_children(game_config_, "color_range");
-	colorsys_info.splice_children(game_config_, "color_palette");
-	game_config::add_color_info(colorsys_info);
 }
 
 void game_config_manager::set_unit_data()

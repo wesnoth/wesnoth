@@ -65,7 +65,6 @@ private:
 	// load_game_config() helper functions.
 	void load_addons_cfg();
 	void set_multiplayer_hashes();
-	void set_color_info();
 	void set_unit_data();
 
 	const commandline_options& cmdline_opts_;

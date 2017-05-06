@@ -169,6 +169,7 @@ namespace game_config
 	void load_config(const config &cfg);
 
 	void add_color_info(const config& v);
+	void reset_color_info();
 	const std::vector<color_t>& tc_info(const std::string& name);
 	const color_range& color_info(const std::string& name);
 

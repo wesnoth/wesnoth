@@ -238,7 +238,12 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 
 				int side = (resources::gameboard ? resources::gameboard->village_owner(loc) : -1); //check needed for mp create dialog
 
-				color_t col = game_config::team_rgb_range.find("white")->second.min();
+				// TODO: Add a key to [game_config][colors] for this
+				auto iter = game_config::team_rgb_range.find("white");
+				color_t col(255,255,255);
+				if(iter != game_config::team_rgb_range.end()) {
+					col = iter->second.min();
+				}
 
 				if (!fogged) {
 					if (side > -1) {
