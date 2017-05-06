@@ -551,7 +551,7 @@ void variable_mode_controller::show_var(tree_view_node& node)
 {
 	widget* w = node.find("name", false);
 	if(label* lbl = dynamic_cast<label*>(w)) {
-		model().set_data(vars()[lbl->get_label()]);
+		model().set_data(vars()[lbl->get_label().str()]);
 	}
 }
 
