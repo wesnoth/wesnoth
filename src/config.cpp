@@ -39,6 +39,20 @@ static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
 #define DBG_CF LOG_STREAM(debug, log_config)
 
+namespace {
+//std::map::operator[] does not support heterogenous lookup so we need this to work around.
+template<typename Map, typename Key>
+map_get(Map&& map, Key&& key)
+{
+	auto res = map.lower_bound(key);
+	
+	if (res == map.end() || key != res->first) {
+		res = map.emplace_hint(res, std::piecewise_construct, std::forward_as_tuple(key), std::tuple<>());
+	}
+
+	return res->second;
+}
+}
 struct config_implementation
 {
 	/**
@@ -704,7 +718,7 @@ config& config::add_child(config_key_type key)
 {
 	check_valid();
 
-	child_list& v = children[key];
+	child_list& v = map_get(children, key);
 	v.push_back(new config());
 	ordered_children.push_back(child_pos(children.find(key),v.size()-1));
 	return *v.back();
@@ -714,7 +728,7 @@ config& config::add_child(config_key_type key, const config& val)
 {
 	check_valid(val);
 
-	child_list& v = children[key];
+	child_list& v = map_get(children, key);
 	v.push_back(new config(val));
 	ordered_children.push_back(child_pos(children.find(key),v.size()-1));
 	return *v.back();
@@ -724,7 +738,7 @@ config &config::add_child(config_key_type key, config &&val)
 {
 	check_valid(val);
 
-	child_list &v = children[key];
+	child_list &v = map_get(children, key);
 	v.push_back(new config(std::move(val)));
 	ordered_children.push_back(child_pos(children.find(key), v.size() - 1));
 	return *v.back();
@@ -734,7 +748,7 @@ config &config::add_child_at(config_key_type key, const config &val, unsigned in
 {
 	check_valid(val);
 
-	child_list& v = children[key];
+	child_list& v = map_get(children, key);
 	if(index > v.size()) {
 		throw error("illegal index to add child at");
 	}
@@ -805,7 +819,7 @@ void config::splice_children(config &src, const std::string &key)
 		src.ordered_children.end(), remove_ordered(i_src)),
 		src.ordered_children.end());
 
-	child_list &dst = children[key];
+	child_list &dst = map_get(children, key);
 	child_map::iterator i_dst = children.find(key);
 	unsigned before = dst.size();
 	dst.insert(dst.end(), i_src->second.begin(), i_src->second.end());
