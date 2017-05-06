@@ -516,7 +516,11 @@ bool config::has_old_attribute(config_key_type key, const std::string &old_key, 
 void config::remove_attribute(config_key_type key)
 {
 	check_valid();
-	values.erase(key);
+
+	auto i = values.find(key);
+	if (i != values.end()) {
+		values.erase(i);
+	}
 }
 
 void config::append_children(const config &cfg)
