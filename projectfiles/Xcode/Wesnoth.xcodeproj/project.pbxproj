@@ -253,7 +253,6 @@
 		91A215021CAD66E500927AEA /* minimap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999EC0EC62181008DD061 /* minimap.cpp */; };
 		91A215031CAD66E500927AEA /* astarsearch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55BE02D11234AAB00154E6C /* astarsearch.cpp */; };
 		91A215041CAD66E500927AEA /* pathutils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999D20EC62181008DD061 /* pathutils.cpp */; };
-		91A215051CAD66F000927AEA /* preferences.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999C40EC62181008DD061 /* preferences.cpp */; };
 		91A215061CAD673700927AEA /* quit_confirmation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECC84C1B1B973C5900A5F451 /* quit_confirmation.cpp */; };
 		91A215071CAD673700927AEA /* race.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999C00EC62181008DD061 /* race.cpp */; };
 		91A215081CAD673700927AEA /* reports.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999B70EC62181008DD061 /* reports.cpp */; };
@@ -340,7 +339,6 @@
 		91A2159D1CAD887700927AEA /* suppose_dead.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4E4E0AF1367241E001C7528 /* suppose_dead.cpp */; };
 		91A2159E1CAD887700927AEA /* utility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B553B6B812189C5900CC8C58 /* utility.cpp */; };
 		91A215A31CAD915400927AEA /* gettext_boost.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC4DF45419FEA7A8000EC086 /* gettext_boost.cpp */; };
-		91A215A41CAD917B00927AEA /* preferences_display.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999C20EC62181008DD061 /* preferences_display.cpp */; };
 		91A215A51CAD91AB00927AEA /* version.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999670EC62181008DD061 /* version.cpp */; };
 		91A215A61CAD91BE00927AEA /* location.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999F90EC62181008DD061 /* location.cpp */; };
 		91A215A71CAD924000927AEA /* binary_or_text.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999A70EC62181008DD061 /* binary_or_text.cpp */; };
@@ -560,10 +558,8 @@
 		91E3565E1CACC67C00774252 /* game_classification.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECDEAF78194FEA9D00DB2F47 /* game_classification.cpp */; };
 		91E3565F1CACC67C00774252 /* game_display.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A7E0EC62181008DD061 /* game_display.cpp */; };
 		91E356611CACC67C00774252 /* game_launcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2194471960634100420969 /* game_launcher.cpp */; };
-		91E356621CACC67C00774252 /* game_preferences.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A790EC62181008DD061 /* game_preferences.cpp */; };
 		91E356631CACC67C00774252 /* game_state.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC387E6A195AFB1F00FC0342 /* game_state.cpp */; };
 		91E356641CACC6E000774252 /* halo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A150EC62181008DD061 /* halo.cpp */; };
-		91E356671CACC6E000774252 /* lobby_preferences.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8B2121359A600CFBDAB /* lobby_preferences.cpp */; };
 		91E356681CACC6E000774252 /* menu_events.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999EE0EC62181008DD061 /* menu_events.cpp */; };
 		91E356691CACC6E000774252 /* mouse_events.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999EA0EC62181008DD061 /* mouse_events.cpp */; };
 		91E3566A1CACC6E000774252 /* mouse_handler_base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999E80EC62181008DD061 /* mouse_handler_base.cpp */; };
@@ -663,7 +659,6 @@
 		91E356CF1CACC8F200774252 /* editor_controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECB58C8B19E71347007D074F /* editor_controller.cpp */; };
 		91E356D01CACC8F200774252 /* editor_display.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599FFF0EC8FE2E008DD061 /* editor_display.cpp */; };
 		91E356D11CACC8F200774252 /* editor_main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B559A0030EC8FE2E008DD061 /* editor_main.cpp */; };
-		91E356D21CACC8F200774252 /* editor_preferences.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B561F38F104B11F7001369F5 /* editor_preferences.cpp */; };
 		91E356D31CACC90100774252 /* action.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6295C3A7150FC95C0077D8C5 /* action.cpp */; };
 		91E356D41CACC90100774252 /* action_item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62114CC01750B97F00CA42C7 /* action_item.cpp */; };
 		91E356D51CACC90100774252 /* action_label.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6295C3AA150FC95C0077D8C5 /* action_label.cpp */; };
@@ -793,7 +788,6 @@
 		B52EE8CE121359A600CFBDAB /* debugger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8A8121359A600CFBDAB /* debugger.cpp */; };
 		B52EE8CF121359A600CFBDAB /* string_utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8AA121359A600CFBDAB /* string_utils.cpp */; };
 		B52EE8D0121359A600CFBDAB /* hash.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8AD121359A600CFBDAB /* hash.cpp */; };
-		B52EE8D2121359A600CFBDAB /* lobby_preferences.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8B2121359A600CFBDAB /* lobby_preferences.cpp */; };
 		B52EE8D6121359A600CFBDAB /* persist_context.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8B9121359A600CFBDAB /* persist_context.cpp */; };
 		B52EE8D7121359A600CFBDAB /* persist_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8BB121359A600CFBDAB /* persist_manager.cpp */; };
 		B52EE8D8121359A600CFBDAB /* persist_var.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8BD121359A600CFBDAB /* persist_var.cpp */; };
@@ -880,8 +874,6 @@
 		B5599B0B0EC62181008DD061 /* reports.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999B70EC62181008DD061 /* reports.cpp */; };
 		B5599B0C0EC62181008DD061 /* replay_controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999B90EC62181008DD061 /* replay_controller.cpp */; };
 		B5599B0D0EC62181008DD061 /* replay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999BB0EC62181008DD061 /* replay.cpp */; };
-		B5599B100EC62181008DD061 /* preferences_display.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999C20EC62181008DD061 /* preferences_display.cpp */; };
-		B5599B110EC62181008DD061 /* preferences.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999C40EC62181008DD061 /* preferences.cpp */; };
 		B5599B130EC62181008DD061 /* playturn.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999C80EC62181008DD061 /* playturn.cpp */; };
 		B5599B140EC62181008DD061 /* playsingle_controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999CA0EC62181008DD061 /* playsingle_controller.cpp */; };
 		B5599B150EC62181008DD061 /* playmp_controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999CC0EC62181008DD061 /* playmp_controller.cpp */; };
@@ -902,7 +894,6 @@
 		B5599B360EC62181008DD061 /* image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A0F0EC62181008DD061 /* image.cpp */; };
 		B5599B390EC62181008DD061 /* halo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A150EC62181008DD061 /* halo.cpp */; };
 		B5599B640EC62181008DD061 /* generic_event.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A730EC62181008DD061 /* generic_event.cpp */; };
-		B5599B680EC62181008DD061 /* game_preferences.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A790EC62181008DD061 /* game_preferences.cpp */; };
 		B5599B6A0EC62181008DD061 /* game_display.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A7E0EC62181008DD061 /* game_display.cpp */; };
 		B5599B6B0EC62181008DD061 /* game_config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A800EC62181008DD061 /* game_config.cpp */; settings = {COMPILER_FLAGS = "-DWESNOTH_PATH='\"./\"'"; }; };
 		B5599B6D0EC62181008DD061 /* tokenizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A830EC62181008DD061 /* tokenizer.cpp */; };
@@ -939,7 +930,6 @@
 		B55BE05411234B3300154E6C /* tree_view.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55BE05111234B3300154E6C /* tree_view.cpp */; };
 		B561F368104B1042001369F5 /* component.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B561F366104B1042001369F5 /* component.cpp */; };
 		B561F370104B11B6001369F5 /* formula_debugger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B561F36E104B11B6001369F5 /* formula_debugger.cpp */; };
-		B561F391104B11F7001369F5 /* editor_preferences.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B561F38F104B11F7001369F5 /* editor_preferences.cpp */; };
 		B5795A680F05858100EB190E /* horizontal_scrollbar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5795A610F05858100EB190E /* horizontal_scrollbar.cpp */; };
 		B5795A690F05858100EB190E /* scrollbar_container.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5795A640F05858100EB190E /* scrollbar_container.cpp */; };
 		B5795A6A0F05858100EB190E /* generator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5795A670F05858100EB190E /* generator.cpp */; };
@@ -1110,6 +1100,11 @@
 		EC5012701E06151800C4DFC6 /* attack_predictions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC50126E1E06151800C4DFC6 /* attack_predictions.cpp */; };
 		EC51DB7818F8BFA4004621D9 /* playturn_network_adapter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC51DB7618F8BFA4004621D9 /* playturn_network_adapter.cpp */; };
 		EC53B04E1B23BB0E002F758F /* make_enum.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC53B04D1B23BB0E002F758F /* make_enum.cpp */; };
+		EC5401851EBE0C4500AE66EE /* display.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC54017B1EBE0C4500AE66EE /* display.cpp */; };
+		EC5401861EBE0C4500AE66EE /* editor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC54017D1EBE0C4500AE66EE /* editor.cpp */; };
+		EC5401871EBE0C4500AE66EE /* game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC54017F1EBE0C4500AE66EE /* game.cpp */; };
+		EC5401881EBE0C4500AE66EE /* general.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5401811EBE0C4500AE66EE /* general.cpp */; };
+		EC5401891EBE0C4500AE66EE /* lobby.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5401831EBE0C4500AE66EE /* lobby.cpp */; };
 		EC5430231A4E6024006D206C /* lua_team.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5430211A4E6024006D206C /* lua_team.cpp */; };
 		EC5430241A4E6024006D206C /* lua_unit_type.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5430221A4E6024006D206C /* lua_unit_type.cpp */; };
 		EC5590771A0B11C600675179 /* lua_map_generator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5590761A0B11C600675179 /* lua_map_generator.cpp */; };
@@ -1836,8 +1831,6 @@
 		B52EE8AD121359A600CFBDAB /* hash.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hash.cpp; sourceTree = "<group>"; };
 		B52EE8AE121359A600CFBDAB /* hash.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = hash.hpp; sourceTree = "<group>"; };
 		B52EE8B1121359A600CFBDAB /* lexical_cast.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = lexical_cast.hpp; sourceTree = "<group>"; };
-		B52EE8B2121359A600CFBDAB /* lobby_preferences.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lobby_preferences.cpp; sourceTree = "<group>"; };
-		B52EE8B3121359A600CFBDAB /* lobby_preferences.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = lobby_preferences.hpp; sourceTree = "<group>"; };
 		B52EE8B9121359A600CFBDAB /* persist_context.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = persist_context.cpp; sourceTree = "<group>"; };
 		B52EE8BA121359A600CFBDAB /* persist_context.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = persist_context.hpp; sourceTree = "<group>"; };
 		B52EE8BB121359A600CFBDAB /* persist_manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = persist_manager.cpp; sourceTree = "<group>"; };
@@ -2015,10 +2008,6 @@
 		B55999BB0EC62181008DD061 /* replay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = replay.cpp; sourceTree = "<group>"; };
 		B55999BF0EC62181008DD061 /* race.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = race.hpp; sourceTree = "<group>"; };
 		B55999C00EC62181008DD061 /* race.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = race.cpp; sourceTree = "<group>"; };
-		B55999C10EC62181008DD061 /* preferences_display.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = preferences_display.hpp; sourceTree = "<group>"; };
-		B55999C20EC62181008DD061 /* preferences_display.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = preferences_display.cpp; sourceTree = "<group>"; };
-		B55999C30EC62181008DD061 /* preferences.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = preferences.hpp; sourceTree = "<group>"; };
-		B55999C40EC62181008DD061 /* preferences.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = preferences.cpp; sourceTree = "<group>"; };
 		B55999C70EC62181008DD061 /* playturn.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = playturn.hpp; sourceTree = "<group>"; };
 		B55999C80EC62181008DD061 /* playturn.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = playturn.cpp; sourceTree = "<group>"; };
 		B55999C90EC62181008DD061 /* playsingle_controller.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = playsingle_controller.hpp; sourceTree = "<group>"; };
@@ -2061,8 +2050,6 @@
 		B5599A6F0EC62181008DD061 /* global.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = global.hpp; sourceTree = "<group>"; };
 		B5599A720EC62181008DD061 /* generic_event.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = generic_event.hpp; sourceTree = "<group>"; };
 		B5599A730EC62181008DD061 /* generic_event.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = generic_event.cpp; sourceTree = "<group>"; };
-		B5599A780EC62181008DD061 /* game_preferences.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = game_preferences.hpp; sourceTree = "<group>"; };
-		B5599A790EC62181008DD061 /* game_preferences.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game_preferences.cpp; sourceTree = "<group>"; };
 		B5599A7C0EC62181008DD061 /* game_errors.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = game_errors.hpp; sourceTree = "<group>"; };
 		B5599A7D0EC62181008DD061 /* game_display.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = game_display.hpp; sourceTree = "<group>"; };
 		B5599A7E0EC62181008DD061 /* game_display.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game_display.cpp; sourceTree = "<group>"; };
@@ -2135,8 +2122,6 @@
 		B561F367104B1042001369F5 /* component.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = component.hpp; sourceTree = "<group>"; };
 		B561F36E104B11B6001369F5 /* formula_debugger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = formula_debugger.cpp; sourceTree = "<group>"; };
 		B561F36F104B11B6001369F5 /* formula_debugger.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = formula_debugger.hpp; sourceTree = "<group>"; };
-		B561F38F104B11F7001369F5 /* editor_preferences.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = editor_preferences.cpp; sourceTree = "<group>"; };
-		B561F390104B11F7001369F5 /* editor_preferences.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = editor_preferences.hpp; sourceTree = "<group>"; };
 		B5795A5E0F05858100EB190E /* horizontal_scrollbar.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = horizontal_scrollbar.hpp; sourceTree = "<group>"; };
 		B5795A5F0F05858100EB190E /* event_executor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = event_executor.hpp; sourceTree = "<group>"; };
 		B5795A600F05858100EB190E /* integer_selector.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = integer_selector.hpp; sourceTree = "<group>"; };
@@ -2453,6 +2438,16 @@
 		EC51DB7618F8BFA4004621D9 /* playturn_network_adapter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = playturn_network_adapter.cpp; sourceTree = "<group>"; };
 		EC51DB7718F8BFA4004621D9 /* playturn_network_adapter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = playturn_network_adapter.hpp; sourceTree = "<group>"; };
 		EC53B04D1B23BB0E002F758F /* make_enum.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = make_enum.cpp; sourceTree = "<group>"; };
+		EC54017B1EBE0C4500AE66EE /* display.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = display.cpp; path = preferences/display.cpp; sourceTree = "<group>"; };
+		EC54017C1EBE0C4500AE66EE /* display.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = display.hpp; path = preferences/display.hpp; sourceTree = "<group>"; };
+		EC54017D1EBE0C4500AE66EE /* editor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = editor.cpp; path = preferences/editor.cpp; sourceTree = "<group>"; };
+		EC54017E1EBE0C4500AE66EE /* editor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = editor.hpp; path = preferences/editor.hpp; sourceTree = "<group>"; };
+		EC54017F1EBE0C4500AE66EE /* game.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = game.cpp; path = preferences/game.cpp; sourceTree = "<group>"; };
+		EC5401801EBE0C4500AE66EE /* game.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = game.hpp; path = preferences/game.hpp; sourceTree = "<group>"; };
+		EC5401811EBE0C4500AE66EE /* general.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = general.cpp; path = preferences/general.cpp; sourceTree = "<group>"; };
+		EC5401821EBE0C4500AE66EE /* general.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = general.hpp; path = preferences/general.hpp; sourceTree = "<group>"; };
+		EC5401831EBE0C4500AE66EE /* lobby.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = lobby.cpp; path = preferences/lobby.cpp; sourceTree = "<group>"; };
+		EC5401841EBE0C4500AE66EE /* lobby.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = lobby.hpp; path = preferences/lobby.hpp; sourceTree = "<group>"; };
 		EC5430211A4E6024006D206C /* lua_team.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_team.cpp; sourceTree = "<group>"; };
 		EC5430221A4E6024006D206C /* lua_unit_type.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_unit_type.cpp; sourceTree = "<group>"; };
 		EC5590761A0B11C600675179 /* lua_map_generator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_map_generator.cpp; sourceTree = "<group>"; };
@@ -2969,8 +2964,6 @@
 				91B621A71B76A86700B00E0F /* game_initialization */,
 				EC2194471960634100420969 /* game_launcher.cpp */,
 				EC2194481960634100420969 /* game_launcher.hpp */,
-				B5599A790EC62181008DD061 /* game_preferences.cpp */,
-				B5599A780EC62181008DD061 /* game_preferences.hpp */,
 				EC387E6A195AFB1F00FC0342 /* game_state.cpp */,
 				EC387E6B195AFB1F00FC0342 /* game_state.hpp */,
 				62CC8E7917B9064B00C16B75 /* generators */,
@@ -2997,8 +2990,6 @@
 				B5599A090EC62181008DD061 /* language.cpp */,
 				B5599A080EC62181008DD061 /* language.hpp */,
 				B52EE8B1121359A600CFBDAB /* lexical_cast.hpp */,
-				B52EE8B2121359A600CFBDAB /* lobby_preferences.cpp */,
-				B52EE8B3121359A600CFBDAB /* lobby_preferences.hpp */,
 				B5599A020EC62181008DD061 /* log.cpp */,
 				B5599A010EC62181008DD061 /* log.hpp */,
 				F419E44413354E620031448A /* lua_jailbreak_exception.cpp */,
@@ -3046,10 +3037,7 @@
 				B55999C70EC62181008DD061 /* playturn.hpp */,
 				EC51DB7618F8BFA4004621D9 /* playturn_network_adapter.cpp */,
 				EC51DB7718F8BFA4004621D9 /* playturn_network_adapter.hpp */,
-				B55999C40EC62181008DD061 /* preferences.cpp */,
-				B55999C30EC62181008DD061 /* preferences.hpp */,
-				B55999C20EC62181008DD061 /* preferences_display.cpp */,
-				B55999C10EC62181008DD061 /* preferences_display.hpp */,
+				EC54017A1EBE0C2B00AE66EE /* preferences */,
 				ECC84C1B1B973C5900A5F451 /* quit_confirmation.cpp */,
 				ECC84C1C1B973C5900A5F451 /* quit_confirmation.hpp */,
 				EC0680231EA920A300EEE03B /* random_deterministic.cpp */,
@@ -4022,8 +4010,6 @@
 				B559A0000EC8FE2E008DD061 /* editor_display.hpp */,
 				B559A0030EC8FE2E008DD061 /* editor_main.cpp */,
 				B559A0040EC8FE2E008DD061 /* editor_main.hpp */,
-				B561F38F104B11F7001369F5 /* editor_preferences.cpp */,
-				B561F390104B11F7001369F5 /* editor_preferences.hpp */,
 				6295C3BB150FC9750077D8C5 /* map */,
 				6295C3C5150FC9EB0077D8C5 /* palette */,
 				62D24F261519982500350848 /* toolkit */,
@@ -4583,6 +4569,23 @@
 			path = ../../src/server;
 			sourceTree = "<group>";
 		};
+		EC54017A1EBE0C2B00AE66EE /* preferences */ = {
+			isa = PBXGroup;
+			children = (
+				EC54017B1EBE0C4500AE66EE /* display.cpp */,
+				EC54017C1EBE0C4500AE66EE /* display.hpp */,
+				EC54017D1EBE0C4500AE66EE /* editor.cpp */,
+				EC54017E1EBE0C4500AE66EE /* editor.hpp */,
+				EC54017F1EBE0C4500AE66EE /* game.cpp */,
+				EC5401801EBE0C4500AE66EE /* game.hpp */,
+				EC5401811EBE0C4500AE66EE /* general.cpp */,
+				EC5401821EBE0C4500AE66EE /* general.hpp */,
+				EC5401831EBE0C4500AE66EE /* lobby.cpp */,
+				EC5401841EBE0C4500AE66EE /* lobby.hpp */,
+			);
+			name = preferences;
+			sourceTree = "<group>";
+		};
 		EC67F7E81DB3142D0038337E /* font */ = {
 			isa = PBXGroup;
 			children = (
@@ -4949,7 +4952,6 @@
 				B5A9BD350ECA805A002BE442 /* new_map.cpp in Sources */,
 				6295C3D6150FC9EB0077D8C5 /* editor_palettes.cpp in Sources */,
 				EC3863641EB6286E0048B0C8 /* lua_audio.cpp in Sources */,
-				B561F391104B11F7001369F5 /* editor_preferences.cpp in Sources */,
 				B5A9BD360ECA805A002BE442 /* resize_map.cpp in Sources */,
 				F4728DB1145A59CF00F0E1E1 /* set_starting_position.cpp in Sources */,
 				62D24F2F1519982500350848 /* editor_toolkit.cpp in Sources */,
@@ -4992,7 +4994,6 @@
 				EC2194491960634100420969 /* game_launcher.cpp in Sources */,
 				B595EFE2100436C900C10B66 /* game_load.cpp in Sources */,
 				EC218EA31A106673007C910C /* game_lua_kernel.cpp in Sources */,
-				B5599B680EC62181008DD061 /* game_preferences.cpp in Sources */,
 				B597EC630FC08E5D00CE81F5 /* game_save.cpp in Sources */,
 				EC387E6D195AFB1F00FC0342 /* game_state.cpp in Sources */,
 				ECABDA351B6A9461001407C1 /* game_version.cpp in Sources */,
@@ -5050,15 +5051,16 @@
 				B55BE04C11234B1A00154E6C /* lobby_info.cpp in Sources */,
 				B54AC6F50FEA9F92006F6FBD /* lobby.cpp in Sources */,
 				B59F96ED1034796700A57C1A /* player_info.cpp in Sources */,
-				B52EE8D2121359A600CFBDAB /* lobby_preferences.cpp in Sources */,
 				B5599B2F0EC62181008DD061 /* log.cpp in Sources */,
 				B597EC5B0FC08E0100CE81F5 /* log.cpp in Sources */,
 				EC67F7FB1DB314580038337E /* text_cache.cpp in Sources */,
+				EC5401871EBE0C4500AE66EE /* game.cpp in Sources */,
 				EC218EA01A106648007C910C /* lua_common.cpp in Sources */,
 				ECD5D7BF1A22DC8600114175 /* lua_cpp_function.cpp in Sources */,
 				ECA4A67B1A1EC319006BCCF2 /* lua_fileops.cpp in Sources */,
 				ECA1E0F21A1271AC00426E00 /* lua_gui2.cpp in Sources */,
 				EC2F9A041A18112D00A14878 /* lua_interpreter.cpp in Sources */,
+				EC5401851EBE0C4500AE66EE /* display.cpp in Sources */,
 				F4D5483E15198D060058C8A7 /* lua_jailbreak_exception.cpp in Sources */,
 				EC218EA11A106648007C910C /* lua_kernel_base.cpp in Sources */,
 				EC5590771A0B11C600675179 /* lua_map_generator.cpp in Sources */,
@@ -5148,8 +5150,6 @@
 				B5599B130EC62181008DD061 /* playturn.cpp in Sources */,
 				F4C5DD68158CFD5E0044F754 /* point.cpp in Sources */,
 				4944F4141354FB970027E614 /* modeless_dialog.cpp in Sources */,
-				B5599B100EC62181008DD061 /* preferences_display.cpp in Sources */,
-				B5599B110EC62181008DD061 /* preferences.cpp in Sources */,
 				B5599B070EC62181008DD061 /* preprocessor.cpp in Sources */,
 				B52EE89E1213590500CFBDAB /* progress_bar.cpp in Sources */,
 				62CC8E7817B9063E00C16B75 /* pump.cpp in Sources */,
@@ -5197,6 +5197,7 @@
 				B5599B000EC62181008DD061 /* sound.cpp in Sources */,
 				B5599AFF0EC62181008DD061 /* soundsource.cpp in Sources */,
 				ECA5562D1E7B5E3A006E907D /* tag.cpp in Sources */,
+				EC5401861EBE0C4500AE66EE /* editor.cpp in Sources */,
 				B5A9BD6D0ECA805A002BE442 /* spacer.cpp in Sources */,
 				B508D2161001560100B12852 /* stacked_widget.cpp in Sources */,
 				B54AC6E80FEA9EB5006F6FBD /* stage_rca.cpp in Sources */,
@@ -5305,6 +5306,7 @@
 				91F462841C71139C0050A9C9 /* preferences_dialog.cpp in Sources */,
 				91F462881C7115C50050A9C9 /* menu_button.cpp in Sources */,
 				91F462941C7117400050A9C9 /* drop_down_menu.cpp in Sources */,
+				EC5401891EBE0C4500AE66EE /* lobby.cpp in Sources */,
 				9130A4601C73BB6100852782 /* select_orb_colors.cpp in Sources */,
 				91DCA6891C9066CC0030F8D0 /* unit_preview_pane.cpp in Sources */,
 				91DCA68D1C9066EC0030F8D0 /* unit_recruit.cpp in Sources */,
@@ -5319,6 +5321,7 @@
 				918C8A201D05F9AA009744A0 /* wesnothd_connection.cpp in Sources */,
 				918C8A231D05FDAA009744A0 /* log_settings.cpp in Sources */,
 				914F2F861D35253900A42440 /* location_palette.cpp in Sources */,
+				EC5401881EBE0C4500AE66EE /* general.cpp in Sources */,
 				913D26771D3C9697002FF3AB /* name_generator_factory.cpp in Sources */,
 				918438611D503E4000C42277 /* unit_recall.cpp in Sources */,
 				9176FECE1D59745F006EF694 /* unit_list.cpp in Sources */,
@@ -5460,10 +5463,8 @@
 				91E3565E1CACC67C00774252 /* game_classification.cpp in Sources */,
 				91E3565F1CACC67C00774252 /* game_display.cpp in Sources */,
 				91E356611CACC67C00774252 /* game_launcher.cpp in Sources */,
-				91E356621CACC67C00774252 /* game_preferences.cpp in Sources */,
 				91E356631CACC67C00774252 /* game_state.cpp in Sources */,
 				91E356641CACC6E000774252 /* halo.cpp in Sources */,
-				91E356671CACC6E000774252 /* lobby_preferences.cpp in Sources */,
 				91E356681CACC6E000774252 /* menu_events.cpp in Sources */,
 				91E356691CACC6E000774252 /* mouse_events.cpp in Sources */,
 				91E3566A1CACC6E000774252 /* mouse_handler_base.cpp in Sources */,
@@ -5563,7 +5564,6 @@
 				91E356CF1CACC8F200774252 /* editor_controller.cpp in Sources */,
 				91E356D01CACC8F200774252 /* editor_display.cpp in Sources */,
 				91E356D11CACC8F200774252 /* editor_main.cpp in Sources */,
-				91E356D21CACC8F200774252 /* editor_preferences.cpp in Sources */,
 				91E356D31CACC90100774252 /* action.cpp in Sources */,
 				91E356D41CACC90100774252 /* action_item.cpp in Sources */,
 				91E356D51CACC90100774252 /* action_label.cpp in Sources */,
@@ -5689,7 +5689,6 @@
 				91A215021CAD66E500927AEA /* minimap.cpp in Sources */,
 				91A215031CAD66E500927AEA /* astarsearch.cpp in Sources */,
 				91A215041CAD66E500927AEA /* pathutils.cpp in Sources */,
-				91A215051CAD66F000927AEA /* preferences.cpp in Sources */,
 				91A215061CAD673700927AEA /* quit_confirmation.cpp in Sources */,
 				91A215071CAD673700927AEA /* race.cpp in Sources */,
 				91A215081CAD673700927AEA /* reports.cpp in Sources */,
@@ -5775,7 +5774,6 @@
 				91A2159D1CAD887700927AEA /* suppose_dead.cpp in Sources */,
 				91A2159E1CAD887700927AEA /* utility.cpp in Sources */,
 				91A215A31CAD915400927AEA /* gettext_boost.cpp in Sources */,
-				91A215A41CAD917B00927AEA /* preferences_display.cpp in Sources */,
 				91A215A51CAD91AB00927AEA /* version.cpp in Sources */,
 				91A215A61CAD91BE00927AEA /* location.cpp in Sources */,
 				91A215A71CAD924000927AEA /* binary_or_text.cpp in Sources */,
