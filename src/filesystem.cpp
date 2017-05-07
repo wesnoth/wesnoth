@@ -1379,18 +1379,11 @@ std::string get_binary_dir_location(const std::string &type, const std::string &
 	return std::string();
 }
 
-std::string get_wml_location(const std::string &filename_unresolved, const std::string &current_dir_abs)
+std::string get_wml_location(const std::string &filename_unresolved, const std::string &current_dir_input)
 {
 	std::string current_dir;
-	if(is_relative(current_dir_abs)) {
-		current_dir = current_dir_abs;
-	} else {
-		current_dir = get_short_wml_path(current_dir_abs);
-		if(current_dir == current_dir_abs && !is_relative(current_dir)) {
-			// Could happen if current_dir somehow pointed outside gamedata and userdata
-			// For example, if a Lua load() call set the chunk name
-			current_dir.clear();
-		}
+	if(is_relative(current_dir_input)) {
+		current_dir = current_dir_input;
 	}
 	// Special cases first:
 	if(filename_unresolved == "/") {

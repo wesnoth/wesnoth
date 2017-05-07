@@ -804,7 +804,7 @@ preprocessor_data::preprocessor_data(preprocessor_streambuf& t,
 	: preprocessor(t)
 	, in_scope_(std::move(i))
 	, in_(*in_scope_)
-	, directory_(directory)
+	, directory_(filesystem::get_short_wml_path(directory))
 	, strings_()
 	, local_defines_(std::move(defines))
 	, tokens_()
