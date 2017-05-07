@@ -20,23 +20,23 @@ local function resolve_package(pkg_name)
 	end
 	if wesnoth.have_file(pkg_name) then return pkg_name end
 	if pkg_name:sub(-4) ~= ".lua" then
-		if wesnoth.have_file(pkg_name .. ".lua") then
-			return pkg_name .. ".lua"
-		end
-		if pkg_name:sub(1, 4) ~= "lua/" then
-			if wesnoth.have_file("lua/" .. pkg_name .. ".lua") then
-				return "lua/" .. pkg_name .. ".lua"
-			end
-		end
+		local test = resolve_package(pkg_name .. ".lua")
+		if test then return test end
 	end
 	if pkg_name:sub(1, 4) ~= "lua/" then
 		if wesnoth.have_file("lua/" .. pkg_name) then
 			return "lua/" .. pkg_name
 		end
 	end
+	if pkg_name:sub(1, 2) ~= "./" then
+		if wesnoth.have_file("./" .. pkg_name) then
+			return "./" .. pkg_name
+		end
+	end
 	return nil
 end
 
+-- TODO: Currently if you require a file by different (relative) paths, each will be a different copy.
 function wesnoth.require(pkg_name)
 	-- First, check if the package is already loaded
 	local loaded_name = resolve_package(pkg_name)
