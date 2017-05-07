@@ -390,6 +390,20 @@ bool basic_unit_filter_impl::internal_matches_filter(const unit & u, const map_l
 		if (!match) return false;
 	}
 
+	if(!vcfg["ability_type_active"].empty()) {
+		bool match = false;
+
+		for(const std::string& ability : utils::split(vcfg["ability_type_active"])) {
+			if(!u.get_abilities(ability, loc).empty()) {
+				match = true;
+				break;
+			}
+		}
+		if(!match) {
+			return false;
+		}
+	}
+
 	if (!vcfg["race"].empty()) {
 		std::vector<std::string> races = utils::split(vcfg["race"]);
 		if (std::find(races.begin(), races.end(), u.race()->id()) == races.end()) {
