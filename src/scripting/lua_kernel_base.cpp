@@ -693,13 +693,12 @@ int lua_kernel_base::intf_dofile(lua_State* L)
 	lua_rotate(L, 1, -1);
 	if (lua_fileops::load_file(L) != 1) return 0;
 	//^ should end with the file contents loaded on the stack. actually it will call lua_error otherwise, the return 0 is redundant.
-
-	error_handler eh = std::bind(&lua_kernel_base::log_error, this, _1, _2 );
 	lua_rotate(L, 1, 1);
-	if(this->protected_call(lua_gettop(L) - 1, LUA_MULTRET, eh)) {
-		return lua_gettop(L);
-	}
-	return 0;
+	// Using a non-protected call here appears to fix an issue in plugins.
+	// The protected call isn't technically necessary anyway, because this function is called from Lua code,
+	// which should already be in a protected environment.
+	lua_call(L, lua_gettop(L) - 1, LUA_MULTRET);
+	return lua_gettop(L);
 }
 
 /**
