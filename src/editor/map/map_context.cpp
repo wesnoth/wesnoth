@@ -176,7 +176,7 @@ map_context::map_context(const config& game_config, const std::string& filename)
 	if (!boost::regex_search(map_data, matched_macro, rexpression_macro)) {
 		// We have a map_data string but no macro ---> embedded or scenario
 
-		boost::regex rexpression_scenario(R"""(\[(scenario|test|multiplayer)\])""");
+		boost::regex rexpression_scenario(R"""(\[(scenario|test|multiplayer|tutorial)\])""");
 		if (!boost::regex_search(file_string, rexpression_scenario)) {
 			LOG_ED << "Loading generated scenario file" << std::endl;
 			// 4.0 editor generated scenario
@@ -200,7 +200,7 @@ map_context::map_context(const config& game_config, const std::string& filename)
 	const std::string& macro_argument = matched_macro[1];
 	LOG_ED << "Map looks like a scenario, trying {" << macro_argument << "}" << std::endl;
 	std::string new_filename = filesystem::get_wml_location(macro_argument,
-			filesystem::directory_name(macro_argument));
+			filesystem::directory_name(filesystem::get_short_wml_path(filename_)));
 	if (new_filename.empty()) {
 		std::string message = _("The map file looks like a scenario, "
 				"but the map_data value does not point to an existing file")
