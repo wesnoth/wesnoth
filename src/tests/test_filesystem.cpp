@@ -171,7 +171,7 @@ BOOST_AUTO_TEST_CASE( test_fs_binary_path )
 
 	// Unsafe paths are resolved empty.
 	BOOST_CHECK(get_binary_file_location("images", "..").empty());
-	BOOST_CHECK(get_binary_file_location("images", "../sounds/bell.wav").empty())
+	BOOST_CHECK(get_binary_file_location("images", "../sounds/bell.wav").empty());
 }
 
 BOOST_AUTO_TEST_CASE( test_fs_wml_path )
@@ -187,7 +187,7 @@ BOOST_AUTO_TEST_CASE( test_fs_wml_path )
 	BOOST_CHECK_EQUAL(get_wml_location("/"), gamedata + "/data")
 
 	BOOST_CHECK_EQUAL( get_wml_location("~/"), userdata + "/data/" );
-	BOOST_CHECK_EQUAL(get_wml_lcation("~addons"), userdata + "/data/addons");
+	BOOST_CHECK_EQUAL(get_wml_location("~addons"), userdata + "/data/addons");
 
 	BOOST_CHECK_EQUAL(get_wml_location(".", get_wml_location("core/units")), gamedata + "/data/core/units");
 	BOOST_CHECK_EQUAL(get_wml_location("./bats", get_wml_location("core/units")), gamedata + "/data/core/units/bats");
