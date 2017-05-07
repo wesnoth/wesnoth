@@ -44,14 +44,6 @@ static std::vector<Mix_Chunk*> channel_chunks;
 // Channel-id mapping for use with sound sources (to check if given source
 // is playing on a channel for fading/panning)
 static std::vector<int> channel_ids;
-
-static void play_sound_internal(const std::string& files,
-		channel_group group,
-		unsigned int repeats = 0,
-		unsigned int distance = 0,
-		int id = -1,
-		int loop_ticks = 0,
-		int fadein_ticks = 0);
 }
 
 namespace
@@ -843,13 +835,6 @@ void stop_sound(int id)
 	reposition_sound(id, DISTANCE_SILENT);
 }
 
-void play_sound_positioned(const std::string& files, int id, int repeats, unsigned int distance)
-{
-	if(preferences::sound_on()) {
-		play_sound_internal(files, SOUND_SOURCES, repeats, distance, id);
-	}
-}
-
 struct chunk_load_exception
 {
 };
@@ -910,13 +895,13 @@ static Mix_Chunk* load_chunk(const std::string& file, channel_group group)
 	return sound_cache.begin()->get_data();
 }
 
-void play_sound_internal(const std::string& files,
+static void play_sound_internal(const std::string& files,
 		channel_group group,
-		unsigned int repeats,
-		unsigned int distance,
-		int id,
-		int loop_ticks,
-		int fadein_ticks)
+		unsigned int repeats = 0,
+		unsigned int distance = 0,
+		int id = -1,
+		int loop_ticks = 0,
+		int fadein_ticks = 0)
 {
 	if(files.empty() || distance >= DISTANCE_SILENT || !mix_ok) {
 		return;
@@ -984,6 +969,13 @@ void play_sound(const std::string& files, channel_group group, unsigned int repe
 {
 	if(preferences::sound_on()) {
 		play_sound_internal(files, group, repeats);
+	}
+}
+
+void play_sound_positioned(const std::string& files, int id, int repeats, unsigned int distance)
+{
+	if(preferences::sound_on()) {
+		play_sound_internal(files, SOUND_SOURCES, repeats, distance, id);
 	}
 }
 
