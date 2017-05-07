@@ -634,6 +634,8 @@ void play_music_repeatedly(const std::string& id)
 	if(!last_track || *last_track != *current_track) {
 		play_music();
 	}
+
+	last_track.reset();
 }
 
 void play_music_config(const config& music_node, int i)
