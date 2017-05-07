@@ -597,10 +597,6 @@ void play_music_repeatedly(const std::string &id)
 
 void play_music_config(const config &music_node, int i)
 {
-	if(!preferences::music_on()) {
-		return;
-	}
-
 	music_track track( music_node );
 
 	if (!track.valid() && !track.id().empty()) {
