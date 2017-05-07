@@ -1266,7 +1266,7 @@ static bool is_legal_file(const std::string& filename_str)
 		return false;
 	}
 
-	if (filename.size() >= 2 && filename[0] == '.' && filename[1] == '.') {
+	if(filename.find("..") != std::string::npos) {
 		ERR_FS << "Illegal path '" << filename << "' (initial \"..\" not allowed).\n";
 		return false;
 	}
