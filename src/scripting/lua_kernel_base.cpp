@@ -588,7 +588,11 @@ bool lua_kernel_base::protected_call(lua_State * L, int nArgs, int nRets, error_
 		} else {
 			context += "unknown lua error: ";
 		}
-		context +=  msg ? msg : "null string";
+		if(lua_isstring(L, -1)) {
+			context +=  msg ? msg : "null string";
+		} else {
+			context += lua_typename(L, lua_type(L, -1));
+		}
 
 		lua_pop(L, 1);
 
@@ -685,14 +689,17 @@ void lua_kernel_base::interactive_run(char const * prog) {
  */
 int lua_kernel_base::intf_dofile(lua_State* L)
 {
+	luaL_checkstring(L, 1);
 	lua_rotate(L, 1, -1);
 	if (lua_fileops::load_file(L) != 1) return 0;
 	//^ should end with the file contents loaded on the stack. actually it will call lua_error otherwise, the return 0 is redundant.
 
 	error_handler eh = std::bind(&lua_kernel_base::log_error, this, _1, _2 );
 	lua_rotate(L, 1, 1);
-	this->protected_call(lua_gettop(L) - 1, LUA_MULTRET, eh);
-	return lua_gettop(L);
+	if(this->protected_call(lua_gettop(L) - 1, LUA_MULTRET, eh)) {
+		return lua_gettop(L);
+	}
+	return 0;
 }
 
 /**
