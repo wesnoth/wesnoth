@@ -23,8 +23,6 @@
 
 namespace editor {
 
-static std::vector<item_group> empty_group_vector {};
-
 /** Empty palette */
 class empty_palette : public common_palette {
 
@@ -63,7 +61,7 @@ public:
 	virtual void set_group(size_t /*index*/) override {}
 	virtual void next_group() override {}
 	virtual void prev_group() override {}
-	virtual const std::vector<item_group>& get_groups() const override { return empty_group_vector; }
+	virtual const std::vector<item_group>& get_groups() const override { static const std::vector<item_group> empty; return empty; }
 
 	/** Menu expanding for palette group list */
 	virtual void expand_palette_groups_menu(std::vector<config>& items, int i) override
