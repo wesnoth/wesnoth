@@ -2404,6 +2404,8 @@ static void luaW_pushsimdata(lua_State *L, const combatant &cmb)
 	lua_setfield(L, -2, "poisoned");
 	lua_pushnumber(L, cmb.slowed);
 	lua_setfield(L, -2, "slowed");
+	lua_pushnumber(L, cmb.untouched);
+	lua_setfield(L, -2, "untouched");
 	lua_pushnumber(L, cmb.average_hp());
 	lua_setfield(L, -2, "average_hp");
 	lua_createtable(L, n, 0);
@@ -2454,12 +2456,16 @@ static void luaW_pushsimweapon(lua_State *L, const battle_context_unit_stats &bc
 
 	//if we called simulate_combat without giving an explicit weapon this can be useful.
 	lua_pushnumber(L, bcustats.attack_num);
-	lua_setfield(L, -2, "attack_num");
+	lua_setfield(L, -2, "attack_num"); // DEPRECATED
+	lua_pushnumber(L, bcustats.attack_num + 1);
+	lua_setfield(L, -2, "number");
 	//this is nullptr when there is no counter weapon
 	if(bcustats.weapon != nullptr)
 	{
 		lua_pushstring(L, bcustats.weapon->id().c_str());
 		lua_setfield(L, -2, "name");
+		luaW_pushweapon(L, bcustats.weapon);
+		lua_setfield(L, -2, "weapon");
 	}
 
 }
