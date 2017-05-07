@@ -506,14 +506,10 @@ void stop_sound()
 	if(mix_ok) {
 		Mix_HaltGroup(SOUND_SOURCES);
 		Mix_HaltGroup(SOUND_FX);
-		sound_cache_iterator itor = sound_cache.begin();
-		while(itor != sound_cache.end()) {
-			if(itor->group == SOUND_SOURCES || itor->group == SOUND_FX) {
-				itor = sound_cache.erase(itor);
-			} else {
-				++itor;
-			}
-		}
+
+		sound_cache.remove_if([](const sound_cache_chunk& c) {
+			return c.group == SOUND_SOURCES || c.group == SOUND_FX;
+		});
 	}
 }
 
@@ -525,14 +521,10 @@ void stop_bell()
 	if(mix_ok) {
 		Mix_HaltGroup(SOUND_BELL);
 		Mix_HaltGroup(SOUND_TIMER);
-		sound_cache_iterator itor = sound_cache.begin();
-		while(itor != sound_cache.end()) {
-			if(itor->group == SOUND_BELL || itor->group == SOUND_TIMER) {
-				itor = sound_cache.erase(itor);
-			} else {
-				++itor;
-			}
-		}
+
+		sound_cache.remove_if([](const sound_cache_chunk& c) {
+			return c.group == SOUND_BELL || c.group == SOUND_TIMER;
+		});
 	}
 }
 
@@ -540,14 +532,10 @@ void stop_UI_sound()
 {
 	if(mix_ok) {
 		Mix_HaltGroup(SOUND_UI);
-		sound_cache_iterator itor = sound_cache.begin();
-		while(itor != sound_cache.end()) {
-			if(itor->group == SOUND_UI) {
-				itor = sound_cache.erase(itor);
-			} else {
-				++itor;
-			}
-		}
+
+		sound_cache.remove_if([](const sound_cache_chunk& c) {
+			return c.group == SOUND_UI;
+		});
 	}
 }
 
