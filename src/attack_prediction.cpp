@@ -119,16 +119,16 @@ struct combat_slice
 	unsigned strikes;
 
 
-	combat_slice(const std::vector<double> src_summary[2],
+	combat_slice(const std::array<std::vector<double>, 2> src_summary,
 		unsigned begin, unsigned end, unsigned num_strikes);
-	combat_slice(const std::vector<double> src_summary[2], unsigned num_strikes);
+	combat_slice(const std::array<std::vector<double>, 2> src_summary, unsigned num_strikes);
 };
 
 
 /**
 * Creates a slice from a summary, and associates a number of strikes.
 */
-combat_slice::combat_slice(const std::vector<double> src_summary[2],
+combat_slice::combat_slice(const std::array<std::vector<double>, 2> src_summary,
 	unsigned begin, unsigned end,
 	unsigned num_strikes) :
 	begin_hp(begin),
@@ -159,7 +159,7 @@ combat_slice::combat_slice(const std::vector<double> src_summary[2],
 * Creates a slice from the summaries, and associates a number of strikes.
 * This version of the constructor creates a slice consisting of everything.
 */
-combat_slice::combat_slice(const std::vector<double> src_summary[2],
+combat_slice::combat_slice(const std::array<std::vector<double>, 2> src_summary,
 	unsigned num_strikes) :
 	begin_hp(0),
 	end_hp(src_summary[0].size()),
@@ -192,7 +192,7 @@ unsigned hp_for_next_attack(unsigned cur_hp,
 * Split the combat by number of attacks per combatant (for swarm).
 * This also clears the current summaries.
 */
-std::vector<combat_slice> split_summary(const battle_context_unit_stats& unit_stats, std::vector<double> summary[2])
+std::vector<combat_slice> split_summary(const battle_context_unit_stats& unit_stats, std::array<std::vector<double>, 2> summary)
 {
 	std::vector<combat_slice> result;
 
@@ -237,8 +237,8 @@ public:
 	prob_matrix(unsigned int a_max, unsigned int b_max,
 	            bool need_a_slowed, bool need_b_slowed,
 	            unsigned int a_cur, unsigned int b_cur,
-	            const std::vector<double> a_initial[2],
-	            const std::vector<double> b_initial[2]);
+	            const std::array<std::vector<double>, 2> a_initial,
+	            const std::array<std::vector<double>, 2> b_initial);
 
 	~prob_matrix();
 
@@ -352,8 +352,8 @@ private: // data
 prob_matrix::prob_matrix(unsigned int a_max, unsigned int b_max,
                          bool need_a_slowed, bool need_b_slowed,
                          unsigned int a_cur, unsigned int b_cur,
-                         const std::vector<double> a_initial[2],
-                         const std::vector<double> b_initial[2])
+                         const std::array<std::vector<double>, 2> a_initial,
+                         const std::array<std::vector<double>, 2> b_initial)
 	: rows_(a_max+1)
 	, cols_(b_max+1)
 	, plane_()
@@ -935,8 +935,8 @@ class combat_matrix : protected prob_matrix
 public:
 	combat_matrix(unsigned int a_max_hp, unsigned int b_max_hp,
 	              unsigned int a_hp, unsigned int b_hp,
-	              const std::vector<double> a_summary[2],
-	              const std::vector<double> b_summary[2],
+	              const std::array<std::vector<double>, 2> a_summary,
+	              const std::array<std::vector<double>, 2> b_summary,
 	              bool a_slows, bool b_slows,
 	              unsigned int a_damage, unsigned int b_damage,
 	              unsigned int a_slow_damage, unsigned int b_slow_damage,
@@ -956,8 +956,8 @@ public:
 	void conditional_levelup_b();
 
 	// Its over, and here's the bill.
-	virtual void extract_results(std::vector<double> summary_a[2],
-	                             std::vector<double> summary_b[2]) = 0;
+	virtual void extract_results(std::array<std::vector<double>, 2> summary_a,
+	                             std::array<std::vector<double>, 2> summary_b) = 0;
 
 	void dump() const { prob_matrix::dump(); }
 
@@ -991,8 +991,8 @@ protected:
  */
 combat_matrix::combat_matrix(unsigned int a_max_hp, unsigned int b_max_hp,
                              unsigned int a_hp, unsigned int b_hp,
-                             const std::vector<double> a_summary[2],
-                             const std::vector<double> b_summary[2],
+                             const std::array<std::vector<double>, 2> a_summary,
+                             const std::array<std::vector<double>, 2> b_summary,
                              bool a_slows, bool b_slows,
                              unsigned int a_damage, unsigned int b_damage,
                              unsigned int a_slow_damage, unsigned int b_slow_damage,
@@ -1090,8 +1090,8 @@ class probability_combat_matrix : public combat_matrix
 public:
 	probability_combat_matrix(unsigned int a_max_hp, unsigned int b_max_hp,
 	                          unsigned int a_hp, unsigned int b_hp,
-	                          const std::vector<double> a_summary[2],
-	                          const std::vector<double> b_summary[2],
+	                          const std::array<std::vector<double>, 2> a_summary,
+	                          const std::array<std::vector<double>, 2> b_summary,
 	                          bool a_slows, bool b_slows,
 	                          unsigned int a_damage, unsigned int b_damage,
 	                          unsigned int a_slow_damage, unsigned int b_slow_damage,
@@ -1110,8 +1110,8 @@ public:
 	/// What is the chance that combatant 'b' is dead?
 	double dead_prob_b() const  { return prob_of_zero(false, true); }
 
-	void extract_results(std::vector<double> summary_a[2],
-	                     std::vector<double> summary_b[2]) override;
+	void extract_results(std::array<std::vector<double>, 2> summary_a,
+	                     std::array<std::vector<double>, 2> summary_b) override;
 };
 
 /**
@@ -1127,8 +1127,8 @@ public:
  */
 probability_combat_matrix::probability_combat_matrix(unsigned int a_max_hp, unsigned int b_max_hp,
 	unsigned int a_hp, unsigned int b_hp,
-	const std::vector<double> a_summary[2],
-	const std::vector<double> b_summary[2],
+	const std::array<std::vector<double>, 2> a_summary,
+	const std::array<std::vector<double>, 2> b_summary,
 	bool a_slows, bool b_slows,
 	unsigned int a_damage, unsigned int b_damage,
 	unsigned int a_slow_damage, unsigned int b_slow_damage,
@@ -1179,8 +1179,8 @@ void probability_combat_matrix::receive_blow_a(double hit_chance)
 	}
 }
 
-void probability_combat_matrix::extract_results(std::vector<double> summary_a[2],
-                                                std::vector<double> summary_b[2])
+void probability_combat_matrix::extract_results(std::array<std::vector<double>, 2> summary_a,
+                                                std::array<std::vector<double>, 2> summary_b)
 {
 	// Reset the summaries.
 	summary_a[0] = std::vector<double>(num_rows());
@@ -1216,8 +1216,8 @@ class monte_carlo_combat_matrix : public combat_matrix
 public:
 	monte_carlo_combat_matrix(unsigned int a_max_hp, unsigned int b_max_hp,
 	                          unsigned int a_hp, unsigned int b_hp,
-	                          const std::vector<double> a_summary[2],
-	                          const std::vector<double> b_summary[2],
+	                          const std::array<std::vector<double>, 2> a_summary,
+	                          const std::array<std::vector<double>, 2> b_summary,
 	                          bool a_slows, bool b_slows,
 	                          unsigned int a_damage, unsigned int b_damage,
 	                          unsigned int a_slow_damage, unsigned int b_slow_damage,
@@ -1230,8 +1230,8 @@ public:
 
 	void simulate();
 
-	void extract_results(std::vector<double> summary_a[2],
-		std::vector<double> summary_b[2]) override;
+	void extract_results(std::array<std::vector<double>, 2> summary_a,
+		std::array<std::vector<double>, 2> summary_b) override;
 
 	double get_a_hit_probability() const;
 	double get_b_hit_probability() const;
@@ -1261,8 +1261,8 @@ private:
 
 monte_carlo_combat_matrix::monte_carlo_combat_matrix(unsigned int a_max_hp, unsigned int b_max_hp,
 	unsigned int a_hp, unsigned int b_hp,
-	const std::vector<double> a_summary[2],
-	const std::vector<double> b_summary[2],
+	const std::array<std::vector<double>, 2> a_summary,
+	const std::array<std::vector<double>, 2> b_summary,
 	bool a_slows, bool b_slows,
 	unsigned int a_damage, unsigned int b_damage,
 	unsigned int a_slow_damage, unsigned int b_slow_damage,
@@ -1364,8 +1364,8 @@ void monte_carlo_combat_matrix::simulate()
  * Otherwise the same as in probability_combat_matrix, but this needs to divide the values
  * by the number of iterations.
  */
-void monte_carlo_combat_matrix::extract_results(std::vector<double> summary_a[2],
-	std::vector<double> summary_b[2])
+void monte_carlo_combat_matrix::extract_results(std::array<std::vector<double>, 2> summary_a,
+	std::array<std::vector<double>, 2> summary_b)
 {
 	// Reset the summaries.
 	summary_a[0] = std::vector<double>(num_rows());
@@ -1741,8 +1741,8 @@ void complex_fight(attack_prediction_mode mode,
                    const battle_context_unit_stats &stats,
                    const battle_context_unit_stats &opp_stats,
                    unsigned strikes, unsigned opp_strikes,
-                   std::vector<double> summary[2],
-                   std::vector<double> opp_summary[2],
+                   std::array<std::vector<double>, 2> summary,
+                   std::array<std::vector<double>, 2> opp_summary,
                    double & self_not_hit, double & opp_not_hit,
                    bool levelup_considered,
                    std::vector<combat_slice> split,
@@ -1861,7 +1861,7 @@ void complex_fight(attack_prediction_mode mode,
 void do_fight(const battle_context_unit_stats &stats,
               const battle_context_unit_stats &opp_stats,
               unsigned strikes, unsigned opp_strikes,
-              std::vector<double> summary[2], std::vector<double> opp_summary[2],
+              std::array<std::vector<double>, 2> summary, std::array<std::vector<double>, 2> opp_summary,
               double & self_not_hit, double & opp_not_hit,
               bool levelup_considered)
 {
@@ -2006,7 +2006,7 @@ void combatant::fight(combatant &opponent, bool levelup_considered)
 	else
 	{
 		// Storage for the accumulated hit point distributions.
-		std::vector<double> summary_result[2], opp_summary_result[2];
+		std::array<std::vector<double>, 2> summary_result, opp_summary_result;
 		// The chance of not being hit becomes an accumulated chance:
 		self_not_hit = 0.0;
 		opp_not_hit = 0.0;
@@ -2017,7 +2017,7 @@ void combatant::fight(combatant &opponent, bool levelup_considered)
 				const double sit_prob = split[s].prob * opp_split[t].prob;
 
 				// Create summaries for this potential combat situation.
-				std::vector<double> sit_summary[2], sit_opp_summary[2];
+				std::array<std::vector<double>, 2> sit_summary, sit_opp_summary;
 				init_slice_summary(sit_summary[0], summary[0], split[s].begin_hp,
 				                   split[s].end_hp, split[s].prob);
 				init_slice_summary(sit_summary[1], summary[1], split[s].begin_hp,

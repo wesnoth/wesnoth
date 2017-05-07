@@ -18,7 +18,7 @@
 #define ATTACK_PREDICTION_H_INCLUDED
 
 #include <vector>
-
+#include <array>
 #include <cstring>
 
 struct battle_context_unit_stats;
@@ -67,7 +67,7 @@ private:
 
 	/** Summary of matrix used to calculate last battle (unslowed & slowed).
 	 *  Invariant: summary[1].size() == summary[0].size() or summary[1].empty() */
-	std::vector<double> summary[2];
+	std::array<std::vector<double>, 2> summary;
 };
 
 #endif
