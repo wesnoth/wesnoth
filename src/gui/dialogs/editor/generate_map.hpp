@@ -16,8 +16,10 @@
 #define GUI_DIALOGS_EDITOR_GENERATE_MAP_HPP_INCLUDED
 
 #include "gui/dialogs/modal_dialog.hpp"
+
 #include <boost/optional/optional.hpp>
 #include <cstdint>
+#include <memory>
 
 class map_generator;
 class display;
@@ -35,9 +37,9 @@ namespace dialogs
 class editor_generate_map : public modal_dialog
 {
 public:
-	explicit editor_generate_map(std::vector<map_generator*>& mg);
+	explicit editor_generate_map(std::vector<std::unique_ptr<map_generator>>& mg);
 
-	std::vector<map_generator*>& get_map_generators()
+	std::vector<std::unique_ptr<map_generator>>& get_map_generators()
 	{
 		return map_generators_;
 	}
@@ -62,7 +64,7 @@ private:
 	void do_settings();
 
 	/** Available map generators */
-	std::vector<map_generator*>& map_generators_;
+	std::vector<std::unique_ptr<map_generator>>& map_generators_;
 
 	/** Last used map generator, must be in map_generators_ */
 	map_generator* last_map_generator_;

@@ -132,10 +132,6 @@ context_manager::context_manager(editor_display& gui, const config& game_config)
 
 context_manager::~context_manager()
 {
-	for(map_generator* m : map_generators_) {
-		delete m;
-	}
-
 	// Restore default window title
 	CVideo::get_singleton().set_window_title(game_config::get_default_title_string());
 }
@@ -695,8 +691,7 @@ void context_manager::init_map_generators(const config& game_config)
 			ERR_ED << "Scenario \"" << i["name"] << "\" with id " << i["id"]
 					<< " has map_generation= but no [generator] tag" << std::endl;
 		} else {
-			map_generator* m = create_map_generator(i["map_generation"], generator_cfg);
-			map_generators_.push_back(m);
+			map_generators_.emplace_back(create_map_generator(i["map_generation"], generator_cfg));
 		}
 	}
 }

@@ -64,7 +64,7 @@ namespace dialogs
 
 REGISTER_DIALOG(editor_generate_map)
 
-editor_generate_map::editor_generate_map(std::vector<map_generator*>& mg)
+editor_generate_map::editor_generate_map(std::vector<std::unique_ptr<map_generator>>& mg)
 	: map_generators_(mg)
 	, last_map_generator_(nullptr)
 	, current_map_generator_(0)
@@ -96,7 +96,7 @@ map_generator* editor_generate_map::get_selected_map_generator()
 {
 	assert(static_cast<size_t>(current_map_generator_)
 		   < map_generators_.size());
-	return map_generators_[current_map_generator_];
+	return map_generators_[current_map_generator_].get();
 }
 
 void editor_generate_map::select_map_generator(map_generator* mg)
@@ -122,7 +122,7 @@ void editor_generate_map::pre_show(window& window)
 
 		list.add_row(lrow);
 
-		if(gen == last_map_generator_) {
+		if(gen.get() == last_map_generator_) {
 			list.select_row(list.get_item_count() - 1);
 		}
 	}

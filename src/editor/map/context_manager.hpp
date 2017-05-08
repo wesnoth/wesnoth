@@ -306,7 +306,7 @@ private:
 	std::string default_dir_;
 
 	/** Available random map generators */
-	std::vector<map_generator*> map_generators_;
+	std::vector<std::unique_ptr<map_generator>> map_generators_;
 	map_generator* last_map_generator_;
 
 	int current_context_index_;
