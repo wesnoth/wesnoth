@@ -14,6 +14,8 @@
 #ifndef SDL_SURFACE_HEADER_INCLUDED
 #define SDL_SURFACE_HEADER_INCLUDED
 
+#include "utils/const_clone.hpp"
+
 #include <SDL.h>
 
 class CVideo;
@@ -112,29 +114,36 @@ private:
  * @note This class should be used only with neutral surfaces, so that
  *       the pointer returned by #pixels is meaningful.
  */
-struct surface_lock
+template<typename T>
+class surface_locker
 {
-	surface_lock(surface &surf);
-	~surface_lock();
+private:
+	using pixel_t = typename utils::const_clone<Uint32, T>::type;
 
-	Uint32* pixels() { return reinterpret_cast<Uint32*>(surface_->pixels); }
+public:
+	surface_locker(T& surf) : surface_(surf), locked_(false)
+	{
+		if(SDL_MUSTLOCK(surface_)) {
+			locked_ = SDL_LockSurface(surface_) == 0;
+		}
+	}
+
+	~surface_locker()
+	{
+		if(locked_) {
+			SDL_UnlockSurface(surface_);
+		}
+	}
+
+	pixel_t* pixels() const { return reinterpret_cast<pixel_t*>(surface_->pixels); }
 
 private:
-	surface& surface_;
+	T& surface_;
 	bool locked_;
 };
 
-struct const_surface_lock
-{
-	const_surface_lock(const surface &surf);
-	~const_surface_lock();
-
-	const Uint32* pixels() const { return reinterpret_cast<const Uint32*>(surface_->pixels); }
-
-private:
-	const surface& surface_;
-	bool locked_;
-};
+using surface_lock = surface_locker<surface>;
+using const_surface_lock = surface_locker<const surface>;
 
 struct clip_rect_setter
 {
