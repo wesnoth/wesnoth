@@ -25,10 +25,10 @@ See the COPYING file for more details.
 
 static const char* Track = "music track";
 
-class music_track {
+class lua_music_track {
 	std::shared_ptr<sound::music_track> track;
 public:
-	explicit music_track(int i) : track(sound::get_track(i)) {}
+	explicit lua_music_track(int i) : track(sound::get_track(i)) {}
 	bool valid() const {
 		return track && track->valid();
 	}
@@ -46,14 +46,14 @@ public:
 	}
 };
 
-static music_track* push_track(lua_State* L, int i) {
-	music_track* trk = new(L) music_track(i);
+static lua_music_track* push_track(lua_State* L, int i) {
+	lua_music_track* trk = new(L) lua_music_track(i);
 	luaL_setmetatable(L, Track);
 	return trk;
 }
 
-static music_track* get_track(lua_State* L, int i) {
-	return static_cast<music_track*>(luaL_checkudata(L, i, Track));
+static lua_music_track* get_track(lua_State* L, int i) {
+	return static_cast<lua_music_track*>(luaL_checkudata(L, i, Track));
 }
 
 static int impl_music_get(lua_State* L) {
@@ -111,7 +111,7 @@ static int impl_music_set(lua_State* L) {
 				sound::play_music_config(cfg, i);
 			}
 		} else {
-			music_track& track = *get_track(L, 3);
+			lua_music_track& track = *get_track(L, 3);
 			if(i < sound::get_num_tracks()) {
 				sound::set_track(i, track.operator->());
 			} else {
@@ -203,7 +203,7 @@ static int intf_music_commit(lua_State*) {
 }
 
 static int impl_track_get(lua_State* L) {
-	music_track& track = *get_track(L, 1);
+	lua_music_track& track = *get_track(L, 1);
 	const char* m = luaL_checkstring(L, 2);
 	return_bool_attrib("valid", track.valid());
 	if(!track.valid()) {
@@ -221,7 +221,7 @@ static int impl_track_get(lua_State* L) {
 }
 
 static int impl_track_set(lua_State* L) {
-	music_track& track = *get_track(L, 1);
+	lua_music_track& track = *get_track(L, 1);
 	const char* m = luaL_checkstring(L, 2);
 	modify_bool_attrib("shuffle", track->set_shuffle(value));
 	modify_bool_attrib("once", track->set_play_once(value));
@@ -231,8 +231,8 @@ static int impl_track_set(lua_State* L) {
 }
 
 static int impl_track_eq(lua_State* L) {
-	music_track* a = get_track(L, 1);
-	music_track* b = get_track(L, 2);
+	lua_music_track* a = get_track(L, 1);
+	lua_music_track* b = get_track(L, 2);
 	if(!a || !b) {
 		// This implies that one argument is not a music track, though I suspect this is dead code...?
 		// Does Lua ever call this if the arguments are not of the same type?
@@ -244,8 +244,8 @@ static int impl_track_eq(lua_State* L) {
 		return 1;
 	}
 	if(a->valid() && b->valid()) {
-		music_track& lhs = *a;
-		music_track& rhs = *b;
+		lua_music_track& lhs = *a;
+		lua_music_track& rhs = *b;
 		lua_pushboolean(L, lhs->id() == rhs->id() && lhs->shuffle() == rhs->shuffle() && lhs->play_once() == rhs->play_once() && lhs->ms_before() == rhs->ms_before() && lhs->ms_after() == rhs->ms_after());
 		return 1;
 	}
