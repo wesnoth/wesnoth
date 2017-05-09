@@ -61,7 +61,7 @@ static lua_music_track* get_track(lua_State* L, int i) {
  */
 static int impl_track_collect(lua_State* L)
 {
-	lua_music_track* u = static_cast<lua_music_track*>(lua_touserdata(L, 1));
+	lua_music_track* u = get_track(L, 1);
 	u->lua_music_track::~lua_music_track();
 	return 0;
 }
