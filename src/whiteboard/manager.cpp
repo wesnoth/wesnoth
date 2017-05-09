@@ -859,6 +859,10 @@ bool manager::save_recruit(const std::string& name, int side_num, const map_loca
 		}
 		else
 		{
+// Bug #24022 highlights one of the many problems with planning mode
+// Without anyone knowledgeable about the whiteboard/planning code the most expedient
+// solution as of December 2015 appears to be to simply disable planned recruits
+#ifdef ENABLE_PLANNED_RECRUITS
 			side_actions& sa = *viewer_actions();
 			unit* recruiter;
 			{ wb::future_map raii;
@@ -870,6 +874,11 @@ bool manager::save_recruit(const std::string& name, int side_num, const map_loca
 			created_planned_recruit = true;
 
 			print_help_once();
+#else
+			UNUSED (name);
+			UNUSED (recruit_hex);
+			created_planned_recruit = false;
+#endif
 		}
 	}
 	return created_planned_recruit;
