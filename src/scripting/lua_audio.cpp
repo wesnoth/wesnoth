@@ -56,6 +56,16 @@ static lua_music_track* get_track(lua_State* L, int i) {
 	return static_cast<lua_music_track*>(luaL_checkudata(L, i, Track));
 }
 
+/**
+ * Destroys a lua_music_track object before it is collected (__gc metamethod).
+ */
+static int impl_track_collect(lua_State* L)
+{
+	lua_music_track* u = static_cast<lua_music_track*>(lua_touserdata(L, 1));
+	u->lua_music_track::~lua_music_track();
+	return 0;
+}
+
 static int impl_music_get(lua_State* L) {
 	if(lua_isnumber(L, 2)) {
 		push_track(L, lua_tointeger(L, 2) - 1);
@@ -280,7 +290,9 @@ namespace lua_audio {
 
 		// The music track metatable
 		luaL_newmetatable(L, Track);
+		lua_pushcfunction(L, impl_track_collect);
 		static luaL_Reg track_callbacks[] = {
+			{"__gc", impl_track_collect},
 			{ "__index", impl_track_get },
 			{ "__newindex", impl_track_set },
 			{ "__eq", impl_track_eq },
