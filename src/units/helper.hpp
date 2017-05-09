@@ -14,8 +14,7 @@
 
 /** @file */
 
-#ifndef UNIT_HELPER_HPP_INCLUDED
-#define UNIT_HELPER_HPP_INCLUDED
+#pragma once
 
 #include "units/map.hpp"
 
@@ -42,5 +41,3 @@ int number_of_possible_advances(const unit &unit);
 std::string resistance_color(const int resistance);
 
 }
-
-#endif

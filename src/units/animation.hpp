@@ -11,8 +11,8 @@
 
    See the COPYING file for more details.
 */
-#ifndef UNIT_ANIMATION_H_INCLUDED
-#define UNIT_ANIMATION_H_INCLUDED
+
+#pragma once
 
 #include "animated.hpp"
 #include "config.hpp"
@@ -265,5 +265,3 @@ private:
 	std::vector<anim_elem> animated_units_;
 	int start_time_;
 };
-
-#endif

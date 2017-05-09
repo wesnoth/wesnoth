@@ -11,8 +11,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_UNIT_PREVIEW_PANE_HPP_INCLUDED
-#define GUI_WIDGETS_UNIT_PREVIEW_PANE_HPP_INCLUDED
+#pragma once
 
 #include "gui/widgets/container_base.hpp"
 
@@ -160,5 +159,3 @@ private:
 // }------------ END --------------
 
 } // namespace gui2
-
-#endif

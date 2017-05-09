@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef INC_LOBBY_DATA
-#define INC_LOBBY_DATA
+#pragma once
 
 #include <set>
 #include <deque>
@@ -205,5 +204,3 @@ struct game_info
 };
 
 }
-
-#endif

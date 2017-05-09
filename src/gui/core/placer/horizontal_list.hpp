@@ -17,8 +17,7 @@
  * Placement helper for the horizontal list.
  */
 
-#ifndef GUI_AUXILIARY_PLACER_HORIZONTAL_LIST_HPP_INCLUDED
-#define GUI_AUXILIARY_PLACER_HORIZONTAL_LIST_HPP_INCLUDED
+#pragma once
 
 #include "gui/core/placer.hpp"
 
@@ -88,5 +87,3 @@ private:
 } // namespace implementation
 
 } // namespace gui2
-
-#endif

@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GAME_CLASSIFICATION_HPP_INCLUDED
-#define GAME_CLASSIFICATION_HPP_INCLUDED
+#pragma once
 
 #include "utils/make_enum.hpp"
 
@@ -61,5 +60,3 @@ public:
 	std::string random_mode;
 	bool oos_debug;
 };
-
-#endif

@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef TEXT_HPP_INCLUDED
-#define TEXT_HPP_INCLUDED
+#pragma once
 
 #include "font/font_options.hpp"
 #include "color.hpp"
@@ -409,6 +408,3 @@ private:
 };
 
 } // namespace font
-
-#endif
-

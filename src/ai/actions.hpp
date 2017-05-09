@@ -17,8 +17,7 @@
  * @file
  * */
 
-#ifndef AI_ACTIONS_HPP_INCLUDED
-#define AI_ACTIONS_HPP_INCLUDED
+#pragma once
 
 #include "ai/game_info.hpp"
 
@@ -462,4 +461,3 @@ std::ostream &operator<<(std::ostream &s, ai::recruit_result const &r);
 std::ostream &operator<<(std::ostream &s, ai::stopunit_result const &r);
 std::ostream &operator<<(std::ostream &s, ai::synced_command_result const &r);
 
-#endif

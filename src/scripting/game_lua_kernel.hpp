@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef SCRIPTING_LUA_HPP
-#define SCRIPTING_LUA_HPP
+#pragma once
 
 #include "scripting/lua_kernel_base.hpp" // for lua_kernel_base
 
@@ -219,5 +218,3 @@ public:
 	void mouse_over_hex_callback(const map_location& loc);
 	void select_hex_callback(const map_location& loc);
 };
-
-#endif

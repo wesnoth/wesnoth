@@ -11,8 +11,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_DIALOGS_GENERATOR_SETTINGS_HPP_INCLUDED
-#define GUI_DIALOGS_GENERATOR_SETTINGS_HPP_INCLUDED
+#pragma once
 
 #include "gui/dialogs/modal_dialog.hpp"
 #include "generators/default_map_generator.hpp"
@@ -55,5 +54,3 @@ private:
 
 } // namespace dialogs
 } // namespace gui2
-
-#endif /* ! GUI_DIALOGS_GENERATOR_SETTINGS_HPP_INCLUDED */

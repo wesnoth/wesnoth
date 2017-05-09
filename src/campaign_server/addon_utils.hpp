@@ -13,8 +13,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef CAMPAIGN_SERVER_ADDON_UTILS_HPP_INCLUDED
-#define CAMPAIGN_SERVER_ADDON_UTILS_HPP_INCLUDED
+#pragma once
 
 #include <string>
 
@@ -80,5 +79,3 @@ void find_translations(const config& base_dir, config& addon);
 void add_license(config& cfg);
 
 }
-
-#endif

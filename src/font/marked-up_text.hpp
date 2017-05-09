@@ -14,8 +14,7 @@
 
 /** @file */
 
-#ifndef MARKED_UP_TEXT_HPP_INCLUDED
-#define MARKED_UP_TEXT_HPP_INCLUDED
+#pragma once
 
 #include "color.hpp"
 
@@ -103,6 +102,3 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size,
 	int max_width, int max_height = -1, int max_lines = -1, bool partial_line = false);
 
 } // end namespace font
-
-#endif // MARKED_UP_TEXT_HPP_INCLUDED
-

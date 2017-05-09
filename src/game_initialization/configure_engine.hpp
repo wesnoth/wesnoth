@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef MULTIPLAYER_CONFIGURE_ENGINE_INCLUDED
-#define MULTIPLAYER_CONFIGURE_ENGINE_INCLUDED
+#pragma once
 
 #include "gettext.hpp"
 #include "preferences/game.hpp"
@@ -137,5 +136,3 @@ private:
 };
 
 } // end namespace ng
-#endif
-

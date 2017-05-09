@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef PLAYTURN_HPP_INCLUDED
-#define PLAYTURN_HPP_INCLUDED
+#pragma once
 
 #include <string>                       // for string
 #include "generic_event.hpp"            // for generic_event
@@ -72,5 +71,3 @@ private:
 
 	playturn_network_adapter& network_reader_;
 };
-
-#endif

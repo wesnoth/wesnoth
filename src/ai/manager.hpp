@@ -19,8 +19,7 @@
  * @todo 1.9 AI Interface command to clear the history.
  */
 
-#ifndef AI_MANAGER_HPP_INCLUDED
-#define AI_MANAGER_HPP_INCLUDED
+#pragma once
 
 #include "config.hpp"                // for config, etc
 #include "ai/game_info.hpp"                // for side_number, ai_ptr
@@ -537,5 +536,3 @@ private:
 };
 
 } //end of namespace ai
-
-#endif

@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef WIDGET_HPP_INCLUDED
-#define WIDGET_HPP_INCLUDED
+#pragma once
 
 #include "events.hpp"
 #include "sdl/surface.hpp"
@@ -132,5 +131,3 @@ private:
 };
 
 }
-
-#endif

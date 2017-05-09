@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef CONTEXT_FREE_GRAMMAR_GENERATOR_INCLUDED
-#define CONTEXT_FREE_GRAMMAR_GENERATOR_INCLUDED
+#pragma once
 
 #include "utils/name_generator.hpp"
 
@@ -54,5 +53,3 @@ public:
 
 	~context_free_grammar_generator();
 };
-
-#endif

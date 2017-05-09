@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef SCRIPTING_LUA_API_HPP
-#define SCRIPTING_LUA_API_HPP
+#pragma once
 
 #include <cstddef>
 #include <string>
@@ -121,5 +120,3 @@ inline lua_unit* luaW_pushunit(lua_State *L, Args... args) {
 namespace lua_units {
 	std::string register_metatables(lua_State *L);
 }
-
-#endif

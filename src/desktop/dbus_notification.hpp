@@ -12,13 +12,10 @@
    See the COPYING file for more details.
 */
 
-#ifndef DBUS_NOTIFICATION_HPP_
-#define DBUS_NOTIFICATION_HPP_
+#pragma once
 
 #include <string>
 
 namespace dbus {
 	void send_notification(const std::string& owner, const std::string& message, bool with_history);
 }
-
-#endif

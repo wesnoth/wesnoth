@@ -17,8 +17,7 @@
  * Declarations for a class that implements WML-defined (right-click) menu items.
  */
 
-#ifndef GAME_EVENTS_MENU_ITEM_HPP_INCLUDED
-#define GAME_EVENTS_MENU_ITEM_HPP_INCLUDED
+#pragma once
 
 #include "config.hpp"
 #include "tstring.hpp"
@@ -104,6 +103,3 @@ private: // Data
 };
 
 } // end namespace game_events
-
-#endif // GAME_EVENTS_MENU_ITEM_HPP_INCLUDED
-

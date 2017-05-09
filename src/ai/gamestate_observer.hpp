@@ -17,8 +17,7 @@
  * A helper class to observe the game state
  */
 
-#ifndef AI_GAMESTATE_OBSERVER_HPP_INCLUDED
-#define AI_GAMESTATE_OBSERVER_HPP_INCLUDED
+#pragma once
 
 #include "generic_event.hpp"
 
@@ -55,5 +54,3 @@ private:
 };
 
 } //of namespace ai
-
-#endif

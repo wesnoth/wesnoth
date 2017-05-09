@@ -11,8 +11,8 @@
 
    See the COPYING file for more details.
 */
-#ifndef SOUNDSOURCE_HPP_INCLUDED
-#define SOUNDSOURCE_HPP_INCLUDED
+
+#pragma once
 
 #include <map>
 
@@ -202,5 +202,3 @@ public:
 };
 
 } // namespace soundsource
-
-#endif

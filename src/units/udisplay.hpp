@@ -17,8 +17,7 @@
  *  Display units performing various actions: moving, attacking, and dying.
  */
 
-#ifndef UNIT_DISPLAY_HPP_INCLUDED
-#define UNIT_DISPLAY_HPP_INCLUDED
+#pragma once
 
 #include "fake_unit_ptr.hpp"
 #include "map/location.hpp"
@@ -133,5 +132,3 @@ void unit_healing(unit &healed, const std::vector<unit *> &healers, int healing,
                   const std::string & extra_text="");
 
 }
-
-#endif

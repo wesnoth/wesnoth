@@ -13,8 +13,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef ADDON_CLIENT_HPP_INCLUDED
-#define ADDON_CLIENT_HPP_INCLUDED
+#pragma once
 
 #include "addon/info.hpp"
 #include "gui/dialogs/network_transmission.hpp"
@@ -204,7 +203,3 @@ private:
 
 	bool update_last_error(config& response_cfg);
 };
-
-#endif
-
-

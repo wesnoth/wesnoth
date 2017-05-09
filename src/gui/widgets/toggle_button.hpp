@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_TOGGLE_BUTTON_HPP_INCLUDED
-#define GUI_WIDGETS_TOGGLE_BUTTON_HPP_INCLUDED
+#pragma once
 
 #include "gui/widgets/styled_widget.hpp"
 #include "gui/widgets/selectable_item.hpp"
@@ -180,5 +179,3 @@ private:
 // }------------ END --------------
 
 } // namespace gui2
-
-#endif

@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef COMMON_PALETTES_H_INCLUDED
-#define COMMON_PALETTES_H_INCLUDED
+#pragma once
 
 #include "config.hpp"
 #include "tstring.hpp"
@@ -101,5 +100,3 @@ public:
 };
 
 }
-
-#endif

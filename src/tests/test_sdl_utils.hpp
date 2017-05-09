@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef TESTS_TEST_SDL_UTILS_HPP_INCLUDED
-#define TESTS_TEST_SDL_UTILS_HPP_INCLUDED
+#pragma once
 
 #include "sdl/surface.hpp"
 
@@ -48,5 +47,3 @@ blend_get_filename(std::string root, const Uint8 amount, const Uint32 color)
 
 	return root + filename;
 }
-
-#endif

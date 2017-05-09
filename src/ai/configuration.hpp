@@ -17,8 +17,7 @@
  * @file
  * */
 
-#ifndef AI_CONFIGURATION_HPP_INCLUDED
-#define AI_CONFIGURATION_HPP_INCLUDED
+#pragma once
 
 #include "config.hpp"
 #include "ai/game_info.hpp"
@@ -125,4 +124,3 @@ private:
 };
 
 } //end of namespace ai
-#endif

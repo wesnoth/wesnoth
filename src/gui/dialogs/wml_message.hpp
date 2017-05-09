@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_DIALOGS_WML_MESSAGE_HPP_INCLUDED
-#define GUI_DIALOGS_WML_MESSAGE_HPP_INCLUDED
+#pragma once
 
 #include "gui/dialogs/modal_dialog.hpp"
 
@@ -256,5 +255,3 @@ int show_wml_message(CVideo& video,
 
 } // namespace dialogs
 } // namespace gui2
-
-#endif

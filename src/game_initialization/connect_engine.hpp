@@ -11,8 +11,8 @@
 
    See the COPYING file for more details.
 */
-#ifndef MULTIPLAYER_CONNECT_ENGINE_HPP_INCLUDED
-#define MULTIPLAYER_CONNECT_ENGINE_HPP_INCLUDED
+
+#pragma once
 
 #include "commandline_options.hpp"
 #include "config.hpp"
@@ -277,5 +277,3 @@ private:
 };
 
 } // end namespace ng
-
-#endif

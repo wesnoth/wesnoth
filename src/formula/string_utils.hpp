@@ -13,8 +13,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef FORMULA_STRING_UTILS_HPP_INCLUDED
-#define FORMULA_STRING_UTILS_HPP_INCLUDED
+#pragma once
 
 #include "serialization/string_utils.hpp"
 
@@ -78,6 +77,4 @@ std::string vngettext(const char*, const char*, const char*, int, const utils::s
 #else
 #define	VGETTEXT(msgid, symbols) vgettext(msgid, symbols)
 #define	VNGETTEXT(msgid, msgid_plural, count, symbols) vngettext(msgid, msgid_plural, count, symbols)
-#endif
-
 #endif

@@ -12,8 +12,7 @@
  * See the COPYING file for more details.
  */
 
-#ifndef FONT_STANDARD_COLORS_HPP
-#define FONT_STANDARD_COLORS_HPP
+#pragma once
 
 #include "color.hpp"
 
@@ -49,5 +48,3 @@ extern const color_t
 	unit_type_color,
 	race_color;
 }
-
-#endif

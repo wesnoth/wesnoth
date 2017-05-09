@@ -13,8 +13,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef SERIALIZATION_STRING_UTILS_HPP_INCLUDED
-#define SERIALIZATION_STRING_UTILS_HPP_INCLUDED
+#pragma once
 
 #include "font/constants.hpp"
 
@@ -332,5 +331,3 @@ bool isvalid_wildcard(const std::string& login);
 void ellipsis_truncate(std::string& str, const size_t size);
 
 } // end namespace utils
-
-#endif

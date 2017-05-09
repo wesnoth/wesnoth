@@ -16,8 +16,7 @@
  * Manages all the palettes in the editor.
  */
 
-#ifndef PALETTE_MANAGER_H_INCLUDED
-#define PALETTE_MANAGER_H_INCLUDED
+#pragma once
 
 #include "editor/palette/common_palette.hpp"
 
@@ -90,5 +89,3 @@ public:
 };
 
 }
-
-#endif

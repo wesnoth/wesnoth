@@ -11,8 +11,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_DIALOGS_MP_OPTIONS_HELPER_HPP_INCLUDED
-#define GUI_DIALOGS_MP_OPTIONS_HELPER_HPP_INCLUDED
+#pragma once
 
 #include "game_initialization/create_engine.hpp"
 #include "gui/widgets/generator.hpp"
@@ -104,5 +103,3 @@ private:
 
 } // namespace dialogs
 } // namespace gui2
-
-#endif

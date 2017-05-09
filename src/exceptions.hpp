@@ -11,8 +11,8 @@
 
    See the COPYING file for more details.
 */
-#ifndef EXCEPTIONS_HPP_INCLUDED
-#define EXCEPTIONS_HPP_INCLUDED
+
+#pragma once
 
 #include "global.hpp"
 
@@ -41,5 +41,3 @@ struct error : std::exception
 };
 
 }
-
-#endif

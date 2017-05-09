@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_GRID_HPP_INCLUDED
-#define GUI_WIDGETS_GRID_HPP_INCLUDED
+#pragma once
 
 #include "gui/widgets/widget.hpp"
 
@@ -544,5 +543,3 @@ private:
 void set_single_child(grid& grid, widget* widget);
 
 } // namespace gui2
-
-#endif

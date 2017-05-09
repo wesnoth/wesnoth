@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef TESTS_UTILS_PLAY_SCENARIO_HPP_INCLUDED
-#define TESTS_UTILS_PLAY_SCENARIO_HPP_INCLUDED
+#pragma once
 
 #include "tests/utils/fake_event_source.hpp"
 
@@ -21,5 +20,3 @@
 
 class config;
 class terrain_type_data;
-
-#endif

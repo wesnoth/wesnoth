@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef INCLUDED_MAPGEN_LUA_KERNEL
-#define INCLUDED_MAPGEN_LUA_KERNEL
+#pragma once
 
 #include "scripting/lua_kernel_base.hpp"
 #include <boost/optional.hpp>
@@ -41,5 +40,3 @@ private:
 	boost::optional<uint32_t> random_seed_;
 	boost::optional<std::mt19937> default_rng_;
 };
-
-#endif

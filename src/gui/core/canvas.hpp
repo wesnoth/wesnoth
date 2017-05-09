@@ -18,8 +18,7 @@
  * draw (temporally) images on.
  */
 
-#ifndef GUI_AUXILIARY_CANVAS_HPP_INCLUDED
-#define GUI_AUXILIARY_CANVAS_HPP_INCLUDED
+#pragma once
 
 #include "config.hpp"
 #include "formula/callable.hpp"
@@ -227,5 +226,3 @@ private:
 };
 
 } // namespace gui2
-
-#endif

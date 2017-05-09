@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef RESOURCES_H_
-#define RESOURCES_H_
+#pragma once
 
 #include <memory>
 #include <vector>
@@ -66,5 +65,3 @@ namespace resources
 	extern std::shared_ptr<wb::manager> whiteboard;
 	extern bool                   simulation_;
 }
-
-#endif

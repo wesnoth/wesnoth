@@ -17,8 +17,7 @@
  * Desktop environment interaction functions.
  */
 
-#ifndef DESKTOP_OPEN_HPP_INCLUDED
-#define DESKTOP_OPEN_HPP_INCLUDED
+#pragma once
 
 #include <string>
 
@@ -54,5 +53,3 @@ bool open_object(const std::string& path_or_url);
 bool open_object_is_supported();
 
 }
-
-#endif

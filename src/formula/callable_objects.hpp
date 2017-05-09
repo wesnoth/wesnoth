@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef CALLABLE_OBJECTS_HPP_INCLUDED
-#define CALLABLE_OBJECTS_HPP_INCLUDED
+#pragma once
 
 #include "formula/callable.hpp"
 #include "formula/formula.hpp"
@@ -241,5 +240,3 @@ private:
 };
 
 } // namespace wfl
-
-#endif

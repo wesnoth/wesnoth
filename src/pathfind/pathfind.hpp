@@ -17,8 +17,7 @@
  * This module contains various pathfinding functions and utilities.
  */
 
-#ifndef PATHFIND_H_INCLUDED
-#define PATHFIND_H_INCLUDED
+#pragma once
 
 class gamemap;
 class team;
@@ -303,5 +302,3 @@ private:
 	const bool ignore_units_;
 };
 }
-
-#endif

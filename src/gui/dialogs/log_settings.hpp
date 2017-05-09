@@ -11,8 +11,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_LOGGING_HPP_INCLUDED
-#define GUI_LOGGING_HPP_INCLUDED
+#pragma once
 
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/group.hpp"
@@ -61,5 +60,3 @@ private:
 
 } // namespace dialogs
 } // end namespace gui2
-
-#endif

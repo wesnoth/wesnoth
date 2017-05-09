@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef COMMANDLINE_OPTIONS_HPP_INCLUDED
-#define COMMANDLINE_OPTIONS_HPP_INCLUDED
+#pragma once
 
 #include <boost/optional.hpp>           // for optional
 #include <boost/program_options/options_description.hpp>
@@ -226,5 +225,3 @@ private:
 	boost::program_options::options_description visible_;
 	boost::program_options::options_description hidden_;
 };
-
-#endif

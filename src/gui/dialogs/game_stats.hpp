@@ -11,8 +11,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_DIALOGS_GAME_STATS_HPP_INCLUDED
-#define GUI_DIALOGS_GAME_STATS_HPP_INCLUDED
+#pragma once
 
 #include "game_board.hpp"
 #include "gettext.hpp"
@@ -74,5 +73,3 @@ private:
 
 } // namespace dialogs
 } // namespace gui2
-
-#endif /* ! GUI_DIALOGS_GAME_STATS_HPP_INCLUDED */

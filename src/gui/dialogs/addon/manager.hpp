@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_DIALOGS_ADDON_LIST_HPP_INCLUDED
-#define GUI_DIALOGS_ADDON_LIST_HPP_INCLUDED
+#pragma once
 
 #include "addon/client.hpp"
 #include "addon/info.hpp"
@@ -134,5 +133,3 @@ private:
 
 } // namespace dialogs
 } // namespace gui2
-
-#endif

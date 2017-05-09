@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef TERRAIN_FILTER_H_INCLUDED
-#define TERRAIN_FILTER_H_INCLUDED
+#pragma once
 
 #include "game_config.hpp"
 #include "pathutils.hpp"
@@ -85,6 +84,3 @@ private:
 	size_t max_loop_;
 	bool flat_;
 };
-
-#endif
-

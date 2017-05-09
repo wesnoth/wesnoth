@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef INCLUDED_HELP_MENU
-#define INCLUDED_HELP_MENU
+#pragma once
 
 #include <set>                          // for set
 #include <string>                       // for string, basic_string
@@ -101,5 +100,3 @@ private:
 };
 
 } // end namespace help
-
-#endif

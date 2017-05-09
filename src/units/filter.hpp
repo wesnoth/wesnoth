@@ -23,8 +23,7 @@
  * these to speed up repeated application of the filter.
  */
 
-#ifndef INCLUDED_UNIT_FILTER_HPP_
-#define INCLUDED_UNIT_FILTER_HPP_
+#pragma once
 
 #include "units/ptr.hpp"
 
@@ -109,5 +108,3 @@ private:
 	std::shared_ptr<unit_filter_abstract_impl> impl_;
 	unsigned max_matches_;
 };
-
-#endif

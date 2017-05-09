@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef DESKTOP_WINDOWS_LOG_HPP_INCLUDED
-#define DESKTOP_WINDOWS_LOG_HPP_INCLUDED
+#pragma once
 
 #include <string>
 
@@ -87,5 +86,3 @@ void enable_native_console_output();
 bool using_own_console();
 
 }
-
-#endif

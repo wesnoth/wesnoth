@@ -16,8 +16,7 @@
  * @file A list whose iterators never invalidate.
  */
 
-#ifndef UTILS_SMART_LIST_HPP_INCLUDED
-#define UTILS_SMART_LIST_HPP_INCLUDED
+#pragma once
 
 #include <cassert>
 #include <iterator>
@@ -828,6 +827,3 @@ inline void smart_list<Data>::iterator_base<Value, Reversed>::unref(node_t * old
 }
 
 }// namespace utils
-
-#endif // UTILS_SMART_LIST_HPP_INCLUDED
-

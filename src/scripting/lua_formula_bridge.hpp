@@ -11,8 +11,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef LUA_FORMULA_BRIDGE_HPP_INCLUDED
-#define LUA_FORMULA_BRIDGE_HPP_INCLUDED
+#pragma once
 
 #include <memory>
 #include <string>
@@ -42,5 +41,3 @@ namespace lua_formula_bridge {
 	};
 
 } // end namespace lua_formula_bridge
-
-#endif

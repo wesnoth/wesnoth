@@ -15,8 +15,7 @@
 
 /** @file */
 
-#ifndef SERIALIZATION_PARSER_HPP_INCLUDED
-#define SERIALIZATION_PARSER_HPP_INCLUDED
+#pragma once
 
 #include "config.hpp"
 #include "configr_assign.hpp"
@@ -38,5 +37,3 @@ void write_bz2(std::ostream &out, configr_of const &cfg);
 void write_key_val(std::ostream &out, const std::string &key, const config::attribute_value &value, unsigned level, std::string &textdomain);
 void write_open_child(std::ostream &out, const std::string &child, unsigned int level);
 void write_close_child(std::ostream &out, const std::string &child, unsigned int level);
-
-#endif

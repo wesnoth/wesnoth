@@ -13,8 +13,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef TOKENIZER_H_INCLUDED
-#define TOKENIZER_H_INCLUDED
+#pragma once
 
 //#define DEBUG_TOKENIZER
 
@@ -177,6 +176,3 @@ private:
 	buffered_istream in_;
 	char char_types_[128];
 };
-
-#endif
-

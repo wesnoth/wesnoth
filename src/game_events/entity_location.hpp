@@ -17,8 +17,7 @@
  * Define locations as used by the game's events mechanism.
  */
 
-#ifndef GAME_EVENTS_ENTITY_LOCATION_H_INCLUDED
-#define GAME_EVENTS_ENTITY_LOCATION_H_INCLUDED
+#pragma once
 
 #include "map/location.hpp"
 #include "units/map.hpp"
@@ -55,6 +54,3 @@ namespace game_events
 		map_location filter_loc_;
 	};
 }
-
-#endif // GAME_EVENTS_ENTITY_LOCATION_H_INCLUDED
-

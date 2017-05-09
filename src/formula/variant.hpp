@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef VARIANT_HPP_INCLUDED
-#define VARIANT_HPP_INCLUDED
+#pragma once
 
 #include "formula/variant_value.hpp"
 
@@ -218,5 +217,3 @@ private:
 };
 
 }
-
-#endif

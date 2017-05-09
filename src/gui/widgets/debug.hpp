@@ -14,8 +14,7 @@
 
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 
-#ifndef GUI_WIDGETS_DEBUG_HPP_INCLUDED
-#define GUI_WIDGETS_DEBUG_HPP_INCLUDED
+#pragma once
 
 #include "gui/widgets/grid.hpp"
 
@@ -194,5 +193,4 @@ private:
 
 } // namespace gui2
 
-#endif
 #endif

@@ -17,8 +17,7 @@
  * Arrows destined to be drawn on the map. Created for the whiteboard project.
  */
 
-#ifndef ARROW_HPP_INCLUDED
-#define ARROW_HPP_INCLUDED
+#pragma once
 
 #include "display.hpp"
 
@@ -105,4 +104,3 @@ protected:
 
 	bool hidden_;
 };
-#endif

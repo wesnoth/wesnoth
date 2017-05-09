@@ -17,8 +17,7 @@
  *  Replay control code.
  */
 
-#ifndef REPLAY_H_INCLUDED
-#define REPLAY_H_INCLUDED
+#pragma once
 
 #include "map/location.hpp"
 
@@ -179,5 +178,3 @@ private:
 	replay& obj_;
 	int upto_;
 };
-
-#endif

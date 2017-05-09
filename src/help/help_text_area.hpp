@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef HELP_TEXT_AREA_HPP
-#define HELP_TEXT_AREA_HPP
+#pragma once
 
 #include <list>                         // for list
 #include <string>                       // for string
@@ -165,5 +164,3 @@ private:
 };
 
 } // end namespace help
-
-#endif

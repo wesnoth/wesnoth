@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef SDL_RECT_HPP_INCLUDED
-#define SDL_RECT_HPP_INCLUDED
+#pragma once
 
 /**
  * @file
@@ -147,5 +146,3 @@ bool operator==(const SDL_Rect& a, const SDL_Rect& b);
 bool operator!=(const SDL_Rect& a, const SDL_Rect& b);
 
 std::ostream& operator<<(std::ostream& s, const SDL_Rect& rect);
-
-#endif

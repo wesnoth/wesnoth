@@ -12,9 +12,7 @@
    See the COPYING file for more details.
 */
 
-
-#ifndef UNIT_FORMULA_MANAGER_HPP
-#define UNIT_FORMULA_MANAGER_HPP
+#pragma once
 
 #include "formula/callable.hpp"
 
@@ -52,5 +50,3 @@ private:
 	std::string unit_priority_formula_;
 	wfl::map_formula_callable_ptr formula_vars_;
 };
-
-#endif

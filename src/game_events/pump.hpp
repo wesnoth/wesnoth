@@ -25,8 +25,7 @@
  * See events.hpp for how they are handled.
  */
 
-#ifndef GAME_EVENTS_PUMP_H_INCLUDED
-#define GAME_EVENTS_PUMP_H_INCLUDED
+#pragma once
 
 #include "game_events/entity_location.hpp"
 #include "game_events/handlers.hpp"
@@ -137,6 +136,3 @@ namespace game_events
 		void put_wml_message(lg::logger& logger, const std::string& prefix, const std::string& message, bool in_chat);
 	};
 }
-
-#endif // GAME_EVENTS_PUMP_H_INCLUDED
-

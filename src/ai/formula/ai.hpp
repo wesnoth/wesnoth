@@ -17,9 +17,7 @@
  * Defines formula ai
  * */
 
-
-#ifndef AI_FORMULA_AI_HPP_INCLUDED
-#define AI_FORMULA_AI_HPP_INCLUDED
+#pragma once
 
 #include "ai/contexts.hpp"
 #include "ai/formula/function_table.hpp"           // for ai_function_symbol_table
@@ -180,6 +178,4 @@ private:
 
 #ifdef _MSC_VER
 #pragma warning(pop)
-#endif
-
 #endif

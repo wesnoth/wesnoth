@@ -16,8 +16,7 @@
  * This file contains information about validation abstract level interface.
  */
 
-#ifndef SERIALIZATION_VALIDATOR_HPP_INCLUDED
-#define SERIALIZATION_VALIDATOR_HPP_INCLUDED
+#pragma once
 
 #include "exceptions.hpp"
 
@@ -93,4 +92,3 @@ public:
 		error(const std::string& message) : game::error(message) {}
 	};
 };
-#endif // SERIALIZATION_VALIDATOR_HPP_INCLUDED

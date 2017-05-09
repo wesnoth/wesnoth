@@ -24,8 +24,7 @@
  * include this header file.
  */
 
-#ifndef EDITOR_ACTION_BASE_HPP_INCLUDED
-#define EDITOR_ACTION_BASE_HPP_INCLUDED
+#pragma once
 
 #include "editor/editor_common.hpp"
 
@@ -110,5 +109,3 @@ struct editor_action_exception : public editor_exception
 };
 
 } //end namespace editor
-
-#endif

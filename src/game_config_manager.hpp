@@ -11,8 +11,8 @@
 
    See the COPYING file for more details.
 */
-#ifndef GAME_CONFIG_MANAGER_HPP_INCLUDED
-#define GAME_CONFIG_MANAGER_HPP_INCLUDED
+
+#pragma once
 
 #include "commandline_options.hpp"
 #include "config_cache.hpp"
@@ -81,5 +81,3 @@ private:
 
 	ter_data_cache tdata_;
 };
-
-#endif

@@ -17,8 +17,7 @@
  * Contains code for tracing the code.
  */
 
-#ifndef TRACER_HPP_INCLUDED
-#define TRACER_HPP_INCLUDED
+#pragma once
 
 #include <map>
 #include <string>
@@ -102,5 +101,3 @@ struct tracer
 	do {                                                                     \
 		++tracer.counters[std::make_pair(__LINE__, marker)];                 \
 	} while(0)
-
-#endif

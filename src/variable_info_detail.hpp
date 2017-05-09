@@ -13,8 +13,8 @@
 
    See the COPYING file for more details.
 */
-#ifndef VARIABLE_INFO_DETAIL_HPP_INCLUDED
-#define VARIABLE_INFO_DETAIL_HPP_INCLUDED
+
+#pragma once
 
 #include <string>
 #include "config.hpp"
@@ -93,5 +93,3 @@ namespace variable_info_detail
 		variable_info_state_type type_;
 	};
 }
-
-#endif

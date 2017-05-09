@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_GENERATOR_PRIVATE_HPP_INCLUDED
-#define GUI_WIDGETS_GENERATOR_PRIVATE_HPP_INCLUDED
+#pragma once
 
 #include "gui/widgets/generator.hpp"
 
@@ -1130,5 +1129,3 @@ private:
 };
 
 } // namespace gui2
-
-#endif

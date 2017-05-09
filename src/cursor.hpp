@@ -14,8 +14,7 @@
 
 /** @file */
 
-#ifndef CURSOR_HPP_INCLUDED
-#define CURSOR_HPP_INCLUDED
+#pragma once
 
 class surface;
 
@@ -54,5 +53,3 @@ private:
 };
 
 } // end namespace cursor
-
-#endif

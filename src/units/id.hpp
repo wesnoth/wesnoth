@@ -12,9 +12,7 @@
    See the COPYING file for more details.
 */
 
-
-#ifndef UNIT_ID_HPP_INCLUDED
-#define UNIT_ID_HPP_INCLUDED
+#pragma once
 
 #include <ctime>
 
@@ -63,5 +61,3 @@ namespace n_unit {
 	};
 
 }
-
-#endif

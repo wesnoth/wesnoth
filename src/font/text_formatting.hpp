@@ -11,8 +11,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef TEXT_FORMATTING_HPP_INCLUDED
-#define TEXT_FORMATTING_HPP_INCLUDED
+#pragma once
 
 #include "color.hpp"
 
@@ -53,5 +52,3 @@ std::string get_pango_color_from_id(const std::string& id);
 std::string get_color_string_pango(const std::string& id);
 
 }
-
-#endif

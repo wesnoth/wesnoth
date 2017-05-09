@@ -16,8 +16,7 @@
 // is an intrusive pointer then this requires some boilerplate taken
 // care of here.
 
-#ifndef UNIT_PTR_H_INCLUDED
-#define UNIT_PTR_H_INCLUDED
+#pragma once
 
 #include <boost/intrusive_ptr.hpp>
 #include <memory>
@@ -36,5 +35,3 @@ class attack_type;
 
 using attack_ptr = std::shared_ptr<attack_type>;
 using const_attack_ptr = std::shared_ptr<const attack_type>;
-
-#endif

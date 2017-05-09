@@ -14,8 +14,7 @@
 
 /** @file */
 
-#ifndef CAVE_MAP_GENERATOR_HPP_INCLUDED
-#define CAVE_MAP_GENERATOR_HPP_INCLUDED
+#pragma once
 
 #include "config.hpp"
 #include "generators/map_generator.hpp"
@@ -103,5 +102,3 @@ private:
 	// to make the scenario appear all random. This is kept track of here.
 	int flipx_chance_, flipy_chance_;
 };
-
-#endif

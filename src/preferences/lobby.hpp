@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef LOBBY_PREFERENCES_HPP_INCLUDED
-#define LOBBY_PREFERENCES_HPP_INCLUDED
+#pragma once
 
 #include <string>
 
@@ -54,6 +53,3 @@ namespace preferences {
 	std::string fi_text();
 	void set_fi_text(const std::string& search_string);
 } //end namespace preferences
-
-
-#endif

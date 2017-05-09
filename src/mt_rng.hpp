@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef MT_RNG_HPP_INCLUDED
-#define MT_RNG_HPP_INCLUDED
+#pragma once
 
 #include <cstdint>
 #include <random>
@@ -83,5 +82,3 @@ private:
 };
 
 } // ends randomness namespace
-
-#endif

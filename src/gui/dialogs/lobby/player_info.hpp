@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_DIALOGS_LOBBY_PLAYER_INFO_HPP_INCLUDED
-#define GUI_DIALOGS_LOBBY_PLAYER_INFO_HPP_INCLUDED
+#pragma once
 
 #include "gui/dialogs/modal_dialog.hpp"
 #include "chat_events.hpp"
@@ -94,5 +93,3 @@ private:
 
 } // namespace dialogs
 } // end namespace gui2
-
-#endif

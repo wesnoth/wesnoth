@@ -17,9 +17,7 @@
  * Stage which executes side formulas
  * */
 
-
-#ifndef AI_FORMULA_STAGE_SIDE_FORMULAS_HPP_INCLUDED
-#define AI_FORMULA_STAGE_SIDE_FORMULAS_HPP_INCLUDED
+#pragma once
 
 #include "ai/composite/stage.hpp"
 #include "formula/formula_fwd.hpp"
@@ -57,6 +55,4 @@ private:
 
 #ifdef _MSC_VER
 #pragma warning(pop)
-#endif
-
 #endif

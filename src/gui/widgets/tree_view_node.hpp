@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_TREE_VIEW_NODE_HPP_INCLUDED
-#define GUI_WIDGETS_TREE_VIEW_NODE_HPP_INCLUDED
+#pragma once
 
 #include "gui/widgets/widget.hpp"
 #include "gui/widgets/grid.hpp"
@@ -351,5 +350,3 @@ private:
 };
 
 } // namespace gui2
-
-#endif

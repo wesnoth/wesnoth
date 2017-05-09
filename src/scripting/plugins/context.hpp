@@ -17,8 +17,7 @@
  * application is context switching.
  */
 
-#ifndef INCLUDED_PLUGINS_CONTEXT_HPP_
-#define INCLUDED_PLUGINS_CONTEXT_HPP_
+#pragma once
 
 #include "utils/functional.hpp"
 
@@ -81,5 +80,3 @@ private:
 	accessor_list accessors_;
 	std::string name_;
 };
-
-#endif

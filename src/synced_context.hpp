@@ -11,8 +11,8 @@
 
    See the COPYING file for more details.
 */
-#ifndef SYNCED_CONTEXT_H_INCLUDED
-#define SYNCED_CONTEXT_H_INCLUDED
+
+#pragma once
 
 #include "utils/functional.hpp"
 #include "synced_commands.hpp"
@@ -233,5 +233,3 @@ public:
 private:
 	const std::unique_ptr<leave_synced_context> leaver_;
 };
-
-#endif

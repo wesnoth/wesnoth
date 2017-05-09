@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef WINDOWS_TRAY_NOTIFICATION_HPP_INCLUDED
-#define WINDOWS_TRAY_NOTIFICATION_HPP_INCLUDED
+#pragma once
 
 #include <SDL.h>
 #include <string>
@@ -81,5 +80,3 @@ private:
 	windows_tray_notification(const windows_tray_notification& w);
 	windows_tray_notification& operator=(const windows_tray_notification& w);
 };
-
-#endif // WINDOWS_TRAY_NOTIFICATION_HPP_INCLUDED

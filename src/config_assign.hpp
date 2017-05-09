@@ -11,8 +11,8 @@
 
    See the COPYING file for more details.
 */
-#ifndef CONFIG_ASSIGN_H_INCLUDED
-#define CONFIG_ASSIGN_H_INCLUDED
+
+#pragma once
 
 #include <string>
 #include "config.hpp"
@@ -57,4 +57,3 @@ public:
 private:
 	config data_;
 };
-#endif

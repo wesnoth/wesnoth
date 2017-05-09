@@ -23,8 +23,7 @@
  *   need to ensure the pointer is deleted.
  */
 
-#ifndef EDITOR_ACTION_SELECT_HPP
-#define EDITOR_ACTION_SELECT_HPP
+#pragma once
 
 #include "editor/action/action.hpp"
 
@@ -112,5 +111,3 @@ class editor_action_select_inverse : public editor_action
 
 
 } //end namespace editor
-
-#endif

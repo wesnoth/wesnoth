@@ -17,8 +17,7 @@
  * Define the common filters for the @ref gui2::pane class.
  */
 
-#ifndef GUI_AUXILIARY_FILTER_HPP_INCLUDED
-#define GUI_AUXILIARY_FILTER_HPP_INCLUDED
+#pragma once
 
 #include "gui/widgets/text_box.hpp"
 #include "lexical_cast.hpp"
@@ -71,5 +70,3 @@ inline bool contains(const pane::item& item,
 }
 
 } // namespace gui2
-
-#endif

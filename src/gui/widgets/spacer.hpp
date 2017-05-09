@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_SPACER_HPP_INCLUDED
-#define GUI_WIDGETS_SPACER_HPP_INCLUDED
+#pragma once
 
 #include "gui/widgets/styled_widget.hpp"
 
@@ -126,5 +125,3 @@ private:
 // }------------ END --------------
 
 } // namespace gui2
-
-#endif

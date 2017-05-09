@@ -42,8 +42,7 @@
  * design greatly enough that it doesn't seem worth it.
  */
 
-#ifndef LOG_HPP_INCLUDED
-#define LOG_HPP_INCLUDED
+#pragma once
 
 #ifndef __func__
  #ifdef __FUNCTION__
@@ -189,5 +188,3 @@ std::stringstream& wml_error();
 
 // When using log_scope/log_scope2 it is nice to have all output indented.
 #define LOG_STREAM_INDENT(level,domain) if (lg::level().dont_log(domain)) ; else lg::level()(domain, true, true)
-
-#endif

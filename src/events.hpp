@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef EVENTS_HPP_INCLUDED
-#define EVENTS_HPP_INCLUDED
+#pragma once
 
 #include <SDL_events.h>
 #include <vector>
@@ -175,6 +174,3 @@ void discard_input();
 }
 
 typedef std::vector<events::sdl_handler*> sdl_handler_vector;
-
-
-#endif

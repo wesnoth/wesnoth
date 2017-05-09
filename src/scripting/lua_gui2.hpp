@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef LUA_GUI2_HPP_INCLUDED
-#define LUA_GUI2_HPP_INCLUDED
+#pragma once
 
 struct lua_State;
 class CVideo;
@@ -45,5 +44,3 @@ int show_gamestate_inspector(CVideo& video, const vconfig& cfg, const game_data&
 int intf_remove_dialog_item(lua_State *L);
 
 } // end namespace lua_gui2
-
-#endif

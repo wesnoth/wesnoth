@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_INTEGER_SELECTOR_HPP_INCLUDED
-#define GUI_WIDGETS_INTEGER_SELECTOR_HPP_INCLUDED
+#pragma once
 
 namespace gui2
 {
@@ -51,5 +50,3 @@ public:
 };
 
 } // namespace gui2
-
-#endif

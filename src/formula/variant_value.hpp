@@ -11,8 +11,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef VARIANT_PRIVATE_HPP_INCLUDED
-#define VARIANT_PRIVATE_HPP_INCLUDED
+#pragma once
 
 #include "exceptions.hpp"
 #include "formula/callable_fwd.hpp"
@@ -554,5 +553,3 @@ private:
 };
 
 } // namespace wfl
-
-#endif

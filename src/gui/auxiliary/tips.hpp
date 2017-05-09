@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_AUXILIARY_TIPS_HPP_INCLUDED
-#define GUI_AUXILIARY_TIPS_HPP_INCLUDED
+#pragma once
 
 #include "tstring.hpp"
 
@@ -85,5 +84,3 @@ private:
 };
 
 } // namespace gui2
-
-#endif

@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef SYNCED_CHECKUP_H_INCLUDED
-#define SYNCED_CHECKUP_H_INCLUDED
+#pragma once
 
 class config;
 struct map_location;
@@ -78,5 +77,3 @@ public:
 */
 
 extern checkup* checkup_instance;
-
-#endif

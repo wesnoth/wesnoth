@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_AUXILIARY_EVENT_DISTRIBUTOR_HPP_INCLUDED
-#define GUI_WIDGETS_AUXILIARY_EVENT_DISTRIBUTOR_HPP_INCLUDED
+#pragma once
 
 /**
  * @file
@@ -358,5 +357,3 @@ private:
 } // namespace event
 
 } // namespace gui2
-
-#endif

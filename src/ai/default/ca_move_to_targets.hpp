@@ -17,8 +17,7 @@
  * Strategic movement routine, for experimentation
  */
 
-#ifndef AI_TESTING_CA_TESTING_MOVE_TO_TARGETS_HPP_INCLUDED
-#define AI_TESTING_CA_TESTING_MOVE_TO_TARGETS_HPP_INCLUDED
+#pragma once
 
 #include "ai/composite/rca.hpp"
 
@@ -85,6 +84,4 @@ protected:
 
 #ifdef _MSC_VER
 #pragma warning(pop)
-#endif
-
 #endif

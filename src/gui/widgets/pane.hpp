@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_PANE_HPP_INCLUDED
-#define GUI_WIDGETS_PANE_HPP_INCLUDED
+#pragma once
 
 #include "gui/widgets/widget.hpp"
 #include "gui/core/window_builder.hpp"
@@ -221,5 +220,3 @@ struct builder_pane : public builder_widget
 // }------------ END --------------
 
 } // namespace gui2
-
-#endif

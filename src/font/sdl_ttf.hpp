@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef FONT_SDL_TTF_HPP
-#define FONT_SDL_TTF_HPP
+#pragma once
 
 #include "constants.hpp"
 #include "font_id.hpp"
@@ -86,5 +85,3 @@ struct sdl_ttf {
 
 
 } // end namespace font
-
-#endif

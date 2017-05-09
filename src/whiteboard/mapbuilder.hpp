@@ -16,8 +16,7 @@
  * @file
  */
 
-#ifndef WB_MAPBUILDER_HPP_
-#define WB_MAPBUILDER_HPP_
+#pragma once
 
 #include "side_actions.hpp"
 
@@ -77,5 +76,3 @@ private:
 };
 
 }
-
-#endif /* WB_MAPBUILDER_HPP_ */

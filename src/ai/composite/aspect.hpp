@@ -16,8 +16,7 @@
  * @file
  */
 
-#ifndef AI_COMPOSITE_ASPECT_HPP_INCLUDED
-#define AI_COMPOSITE_ASPECT_HPP_INCLUDED
+#pragma once
 
 #include "ai/composite/property_handler.hpp"
 #include "ai/composite/value_translator.hpp"
@@ -564,6 +563,4 @@ public:
 
 #ifdef _MSC_VER
 #pragma warning(pop)
-#endif
-
 #endif

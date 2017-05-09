@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_GRID_PRIVATE_HPP_INCLUDED
-#define GUI_WIDGETS_GRID_PRIVATE_HPP_INCLUDED
+#pragma once
 
 /**
  * @file
@@ -157,5 +156,3 @@ private:
 };
 
 } // namespace gui2
-
-#endif

@@ -12,8 +12,8 @@
    See the COPYING file for more details.
 */
 
-#ifndef PERSIST_CONTEXT_H_INCLUDED
-#define PERSIST_CONTEXT_H_INCLUDED
+#pragma once
+
 #include "config.hpp"
 #include "log.hpp"
 static lg::log_domain log_persist("engine/persistence");
@@ -193,4 +193,3 @@ public:
 		return true;
 	}
 };
-#endif

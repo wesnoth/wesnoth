@@ -11,8 +11,8 @@
 
    See the COPYING file for more details.
 */
-#ifndef SYNCED_COMMANDS_H_INCLUDED
-#define SYNCED_COMMANDS_H_INCLUDED
+
+#pragma once
 
 #include <map>
 #include <exception>
@@ -54,5 +54,3 @@ class synced_command {
 	static bool synced_command_func_##pname(const config & pcfg, bool use_undo, bool show, synced_command::error_handler_function error_handler ); \
 	static synced_command synced_command_action_##pname(#pname, &synced_command_func_##pname);  \
 	static bool synced_command_func_##pname(const config & pcfg, bool use_undo, bool show, synced_command::error_handler_function error_handler)
-
-#endif

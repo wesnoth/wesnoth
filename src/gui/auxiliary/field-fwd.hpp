@@ -17,8 +17,7 @@
  * Contains all forward declarations for field.hpp.
  */
 
-#ifndef GUI_DIALOGS_FIELD_FORWARD_HPP_INCLUDED
-#define GUI_DIALOGS_FIELD_FORWARD_HPP_INCLUDED
+#pragma once
 
 namespace gui2
 {
@@ -38,5 +37,3 @@ class integer_selector;
 typedef field<int, integer_selector> field_integer;
 
 } // namespace gui2
-
-#endif

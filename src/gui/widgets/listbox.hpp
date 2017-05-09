@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_LISTBOX_HPP_INCLUDED
-#define GUI_WIDGETS_LISTBOX_HPP_INCLUDED
+#pragma once
 
 #ifndef GUI2_EXPERIMENTAL_LISTBOX
 
@@ -505,5 +504,4 @@ struct builder_grid_listbox : public builder_styled_widget
 
 } // namespace gui2
 
-#endif
 #endif

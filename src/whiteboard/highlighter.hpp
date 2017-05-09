@@ -16,8 +16,7 @@
  * @file
  */
 
-#ifndef WB_HIGHLIGHTER_HPP_
-#define WB_HIGHLIGHTER_HPP_
+#pragma once
 
 #include "visitor.hpp"
 #include "map/location.hpp"
@@ -127,5 +126,3 @@ private:
 };
 
 } // end namespace wb
-
-#endif /* WB_HIGHLIGHTER_HPP_ */

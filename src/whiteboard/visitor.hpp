@@ -18,8 +18,7 @@
  *       action.accept(visitor)   calls    visitor.visit(action)
  */
 
-#ifndef WB_VISITOR_HPP_
-#define WB_VISITOR_HPP_
+#pragma once
 
 #include "typedefs.hpp"
 
@@ -43,5 +42,3 @@ protected:
 };
 
 }
-
-#endif /* WB_VISITOR_HPP_ */

@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef SDL_WINDOW_HPP_INCLUDED
-#define SDL_WINDOW_HPP_INCLUDED
+#pragma once
 
 /**
  * @file
@@ -179,6 +178,3 @@ private:
 };
 
 } // namespace sdl
-
-
-#endif

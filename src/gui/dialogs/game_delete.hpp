@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_DIALOGS_DELETE_GAME_HPP_INCLUDED
-#define GUI_DIALOGS_DELETE_GAME_HPP_INCLUDED
+#pragma once
 
 #include "gui/dialogs/modal_dialog.hpp"
 
@@ -39,5 +38,3 @@ private:
 };
 } // namespace dialogs
 } // namespace gui2
-
-#endif

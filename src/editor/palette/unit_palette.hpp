@@ -16,8 +16,7 @@
  * Manage the unit-palette in the editor.
  */
 
-#ifndef UNIT_PALETTES_H_INCLUDED
-#define UNIT_PALETTES_H_INCLUDED
+#pragma once
 
 #include "editor/palette/editor_palettes.hpp"
 
@@ -60,4 +59,3 @@ private:
 };
 
 }
-#endif

@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GAME_EVENTS_MANAGER_IMPL_HPP
-#define GAME_EVENTS_MANAGER_IMPL_HPP
+#pragma once
 
 #include "game_events/handlers.hpp"
 
@@ -77,5 +76,3 @@ namespace game_events {
 	};//event_handlers
 
 } //end namespace game_events
-
-#endif

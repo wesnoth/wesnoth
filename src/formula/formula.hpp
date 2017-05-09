@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef FORMULA_HPP_INCLUDED
-#define FORMULA_HPP_INCLUDED
+#pragma once
 
 #include "formula/debugger_fwd.hpp"
 #include "formula/formula_fwd.hpp"
@@ -109,5 +108,3 @@ struct formula_error : public game::error
 };
 
 } // namespace wfl
-
-#endif

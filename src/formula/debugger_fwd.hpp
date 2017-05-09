@@ -18,9 +18,7 @@
  *
  */
 
-
-#ifndef FORMULA_DEBUGGER_FWD_HPP_INCLUDED
-#define FORMULA_DEBUGGER_FWD_HPP_INCLUDED
+#pragma once
 
 #include <memory>
 #include <string>
@@ -49,5 +47,3 @@ variant evaluate_formula_callback(formula_debugger &fdb, const formula &f);
 
 
 } // end of namespace wfl
-
-#endif

@@ -11,8 +11,8 @@
 
    See the COPYING file for more details.
 */
-#ifndef SOUND_HPP_INCLUDED
-#define SOUND_HPP_INCLUDED
+
+#pragma once
 
 #include "events.hpp"
 
@@ -109,5 +109,3 @@ void remove_track(unsigned int i);
 void play_track(unsigned int i);
 
 }
-
-#endif

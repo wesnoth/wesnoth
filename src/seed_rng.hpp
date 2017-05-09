@@ -22,11 +22,10 @@
    anywhere except for default constructors of prg classes, or similar.
 */
 
+#pragma once
+
 #include <cstdint>
 #include <string>
-
-#ifndef SEED_RNG_HPP_INCLUDED
-#define SEED_RNG_HPP_INCLUDED
 
 namespace seed_rng {
 
@@ -34,5 +33,3 @@ uint32_t next_seed();
 std::string next_seed_str();
 
 } // ends seed_rng namespace
-
-#endif

@@ -16,8 +16,7 @@
  * Note: Specific to SDL_TTF code path
  */
 
-#ifndef FONT_FONT_ID_HPP
-#define FONT_FONT_ID_HPP
+#pragma once
 
 #include <string>
 #include <SDL_ttf.h>
@@ -70,5 +69,3 @@ struct text_chunk
 };
 
 } // end namespace font
-
-#endif

@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef INCL_DISPLAY_CHAT_MGR_HPP_
-#define INCL_DISPLAY_CHAT_MGR_HPP_
+#pragma once
 
 #include "chat_events.hpp"
 
@@ -61,5 +60,3 @@ private:
 
 	display & my_disp_;
 };
-
-#endif

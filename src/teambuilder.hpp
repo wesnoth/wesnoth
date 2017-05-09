@@ -12,10 +12,7 @@
    See the COPYING file for more details.
 */
 
-
-
-#ifndef TEAMBUILDER_HPP_INCLUDED
-#define TEAMBUILDER_HPP_INCLUDED
+#pragma once
 
 #include <memory>
 #include <vector>
@@ -37,5 +34,3 @@ void build_team_stage_one(team_builder_ptr tb_ptr);
 
 //do second stage of team initialization (unit placement)
 void build_team_stage_two(team_builder_ptr tb_ptr);
-
-#endif

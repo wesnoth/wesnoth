@@ -17,8 +17,7 @@
  * Platform identification and version information functions.
  */
 
-#ifndef DESKTOP_VERSION_HPP_INCLUDED
-#define DESKTOP_VERSION_HPP_INCLUDED
+#pragma once
 
 #include <string>
 
@@ -36,5 +35,3 @@ namespace desktop
 std::string os_version();
 
 }
-
-#endif

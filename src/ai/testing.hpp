@@ -17,8 +17,7 @@
  * Gather statistics important for AI testing and output them
  */
 
-#ifndef AI_TESTING_HPP_INCLUDED
-#define AI_TESTING_HPP_INCLUDED
+#pragma once
 
 #include <vector>
 
@@ -64,5 +63,3 @@ protected:
 	static void log_turn( const char *msg, unsigned int side );
 
 };
-
-#endif

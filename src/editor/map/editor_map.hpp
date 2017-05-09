@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef EDITOR_EDITOR_MAP_HPP_INCLUDED
-#define EDITOR_EDITOR_MAP_HPP_INCLUDED
+#pragma once
 
 #include "editor/editor_common.hpp"
 
@@ -207,5 +206,3 @@ protected:
 
 
 } //end namespace editor
-
-#endif

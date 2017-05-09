@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef STORYSCREEN_PARSER_HPP_INCLUDED
-#define STORYSCREEN_PARSER_HPP_INCLUDED
+#pragma once
 
 #include <string>
 
@@ -45,5 +44,3 @@ public:
 };
 
 } // namespace storyscreen
-
-#endif

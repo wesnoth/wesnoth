@@ -17,8 +17,7 @@
  * Note: this is a near-straight rip from the old editor.
 */
 
-#ifndef TERRAIN_PALETTES_H_INCLUDED
-#define TERRAIN_PALETTES_H_INCLUDED
+#pragma once
 
 #include "editor/palette/editor_palettes.hpp"
 
@@ -61,4 +60,3 @@ private:
 };
 
 }
-#endif

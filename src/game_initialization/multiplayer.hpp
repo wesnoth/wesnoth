@@ -11,8 +11,8 @@
 
    See the COPYING file for more details.
 */
-#ifndef MULTIPLAYER_HPP_INCLUDED
-#define MULTIPLAYER_HPP_INCLUDED
+
+#pragma once
 
 #include "commandline_options.hpp"
 #include "connect_engine.hpp"
@@ -70,4 +70,3 @@ bool goto_mp_connect(CVideo& video, ng::connect_engine& engine,
 bool goto_mp_wait(CVideo& video, saved_game& state, const config& game_config, wesnothd_connection* connection, bool observe);
 
 }
-#endif

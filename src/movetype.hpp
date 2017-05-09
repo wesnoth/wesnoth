@@ -11,8 +11,8 @@
 
    See the COPYING file for more details.
 */
-#ifndef MOVETYPE_H_INCLUDED
-#define MOVETYPE_H_INCLUDED
+
+#pragma once
 
 #include "config.hpp"
 #include "serialization/string_utils.hpp"
@@ -242,7 +242,3 @@ private:
 
 	bool flying_;
 };
-
-
-#endif // MOVETYPE_H_INCLUDED
-

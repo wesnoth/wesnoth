@@ -15,8 +15,7 @@
 
 /** @file */
 
-#ifndef SERIALIZATION_BINARY_OR_TEXT_HPP_INCLUDED
-#define SERIALIZATION_BINARY_OR_TEXT_HPP_INCLUDED
+#pragma once
 
 #include "config.hpp"
 #include "preprocessor.hpp"
@@ -59,5 +58,3 @@ private:
 	unsigned int level_;
 	std::string textdomain_;
 };
-
-#endif

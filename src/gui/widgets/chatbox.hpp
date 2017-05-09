@@ -11,8 +11,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_CHATBOX_HPP_INCLUDED
-#define GUI_WIDGETS_CHATBOX_HPP_INCLUDED
+#pragma once
 
 #include "gui/widgets/container_base.hpp"
 #include "game_initialization/lobby_data.hpp"
@@ -291,5 +290,3 @@ private:
 // }------------ END --------------
 
 } // namespace gui2
-
-#endif

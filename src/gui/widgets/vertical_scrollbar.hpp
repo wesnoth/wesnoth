@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_VERTICAL_SCROLLBAR_HPP_INCLUDED
-#define GUI_WIDGETS_VERTICAL_SCROLLBAR_HPP_INCLUDED
+#pragma once
 
 #include "gui/widgets/scrollbar.hpp"
 
@@ -105,5 +104,3 @@ struct builder_vertical_scrollbar : public builder_styled_widget
 // }------------ END --------------
 
 } // namespace gui2
-
-#endif

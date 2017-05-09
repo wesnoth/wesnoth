@@ -16,8 +16,7 @@
  * Note: Specific to sdl_ttf
  */
 
-#ifndef FONT_TEXT_CACHE_HPP
-#define FONT_TEXT_CACHE_HPP
+#pragma once
 
 #include "text_surface.hpp"
 
@@ -37,5 +36,3 @@ private:
 };
 
 } // end namespace font
-
-#endif

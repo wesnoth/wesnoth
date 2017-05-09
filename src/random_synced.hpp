@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef RANDOM_SYNCED_H_INCLUDED
-#define RANDOM_SYNCED_H_INCLUDED
+#pragma once
 
 #include "random.hpp"
 #include "mt_rng.hpp"
@@ -40,4 +39,3 @@ namespace randomness
 		mt_rng gen_;
 	};
 }
-#endif

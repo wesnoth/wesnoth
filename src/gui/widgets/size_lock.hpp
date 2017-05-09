@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_SIZE_FIXATER_HPP_INCLUDED
-#define GUI_WIDGETS_SIZE_FIXATER_HPP_INCLUDED
+#pragma once
 
 #include <gui/widgets/container_base.hpp>
 
@@ -133,5 +132,3 @@ private:
 };
 }
 }
-
-#endif

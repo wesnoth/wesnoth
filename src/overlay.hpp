@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef OVERLAY_INCLUDED
-#define OVERLAY_INCLUDED
+#pragma once
 
 #include "halo.hpp"
 
@@ -43,6 +42,3 @@ struct overlay
 	bool visible_in_fog;
 
 };
-
-
-#endif

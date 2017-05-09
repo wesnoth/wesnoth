@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef HELP_TOPIC_GENERATORS_HPP
-#define HELP_TOPIC_GENERATORS_HPP
+#pragma once
 
 #include "help_impl.hpp"
 
@@ -50,5 +49,3 @@ public:
 };
 
 } // end namespace help/
-
-#endif

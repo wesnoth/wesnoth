@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef TERRAIN_TYPE_DATA_HPP_INCLUDED
-#define TERRAIN_TYPE_DATA_HPP_INCLUDED
+#pragma once
 
 #include "terrain/terrain.hpp"
 
@@ -88,4 +87,3 @@ public:
 };
 
 typedef std::shared_ptr<terrain_type_data> ter_data_cache;
-#endif

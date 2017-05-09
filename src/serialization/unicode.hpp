@@ -13,8 +13,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef SERIALIZATION_UNICODE_HPP_INCLUDED
-#define SERIALIZATION_UNICODE_HPP_INCLUDED
+#pragma once
 
 #include "ucs4_iterator_base.hpp"
 #include "unicode_types.hpp"
@@ -95,5 +94,3 @@ namespace utf8 {
 	 */
 	void truncate_as_ucs4(utf8::string& str, const size_t size);
 } // end namespace utf8
-
-#endif

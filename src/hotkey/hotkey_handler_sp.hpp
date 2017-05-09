@@ -18,8 +18,7 @@
  * SP wesnoth features like whiteboard, end turn, etc.
  */
 
-#ifndef HOTKEY_HANDLER_SP_HPP_INCL_
-#define HOTKEY_HANDLER_SP_HPP_INCL_
+#pragma once
 
 #include "playsingle_controller.hpp"
 
@@ -96,5 +95,3 @@ public:
 	virtual void load_autosave(const std::string& filename) override;
 	virtual hotkey::ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND command, int index) const override;
 };
-
-#endif

@@ -11,8 +11,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef PLAYTURN_NETWORK_ADAPTER_HPP_INCLUDED
-#define PLAYTURN_NETWORK_ADAPTER_HPP_INCLUDED
+#pragma once
 
 #include "config.hpp"
 #include <list>
@@ -51,4 +50,3 @@ private:
 	//a function to receive data from the network.
 	source_type network_reader_;
 };
-#endif

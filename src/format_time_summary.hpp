@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef FORMAT_TIME_SUMMARY_H_INCLUDED
-#define FORMAT_TIME_SUMMARY_H_INCLUDED
+#pragma once
 
 #include <ctime>
 #include <string>
@@ -21,5 +20,3 @@
 namespace utils {
 	std::string format_time_summary(time_t t);
 }
-
-#endif

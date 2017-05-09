@@ -27,8 +27,7 @@
  * object it's possible to make the callback as fancy as wanted.
  */
 
-#ifndef GUI_WIDGETS_AUXILIARY_TIMER_HPP_INCLUDED
-#define GUI_WIDGETS_AUXILIARY_TIMER_HPP_INCLUDED
+#pragma once
 
 #include "utils/functional.hpp"
 
@@ -84,5 +83,3 @@ bool remove_timer(const size_t id);
 bool execute_timer(const size_t id);
 
 } // namespace gui2
-
-#endif

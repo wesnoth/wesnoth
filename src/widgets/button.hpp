@@ -11,8 +11,8 @@
 
    See the COPYING file for more details.
 */
-#ifndef BUTTON_H_INCLUDED
-#define BUTTON_H_INCLUDED
+
+#pragma once
 
 #include "widget.hpp"
 
@@ -94,5 +94,3 @@ private:
 }; //end class button
 
 }
-
-#endif

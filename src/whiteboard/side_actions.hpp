@@ -16,8 +16,7 @@
  * @file
  */
 
-#ifndef WB_SIDE_ACTIONS_HPP_
-#define WB_SIDE_ACTIONS_HPP_
+#pragma once
 
 #include <deque>
 
@@ -615,5 +614,3 @@ side_actions::const_iterator side_actions::find_first_action_of(std::pair<T,T> b
 }
 
 } //end namespace wb
-
-#endif /* WB_SIDE_ACTIONS_HPP_ */

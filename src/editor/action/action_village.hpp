@@ -23,8 +23,7 @@
  *   need to ensure the pointer is deleted.
  */
 
-#ifndef EDITOR_ACTION_VILLAGE_HPP
-#define EDITOR_ACTION_VILLAGE_HPP
+#pragma once
 
 #include "editor/action/action.hpp"
 
@@ -67,5 +66,3 @@ class editor_action_village_delete : public editor_action_location
 
 
 } //end namespace editor
-
-#endif

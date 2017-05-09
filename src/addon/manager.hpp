@@ -13,8 +13,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef ADDON_MANAGER_HPP_INCLUDED
-#define ADDON_MANAGER_HPP_INCLUDED
+#pragma once
 
 class config;
 class version_info;
@@ -114,5 +113,3 @@ void refresh_addon_version_info_cache();
 
 /** Returns a particular installed add-on's version information. */
 version_info get_addon_version_info(const std::string& addon);
-
-#endif /* !ADDON_MANAGEMENT_HPP_INCLUDED */

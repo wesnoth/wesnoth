@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_AUXILIARY_ITERATOR_WALKER_HPP_INCLUDED
-#define GUI_WIDGETS_AUXILIARY_ITERATOR_WALKER_HPP_INCLUDED
+#pragma once
 
 namespace gui2
 {
@@ -117,5 +116,3 @@ public:
 } // namespace iteration
 
 } // namespace gui2
-
-#endif

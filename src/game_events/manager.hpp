@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GAME_EVENTS_MANAGER_HPP
-#define GAME_EVENTS_MANAGER_HPP
+#pragma once
 
 #include "game_events/handlers.hpp"
 #include "game_events/wmi_container.hpp"
@@ -121,5 +120,3 @@ namespace game_events {
 		game_events::wml_event_pump & pump();
 	};
 }
-
-#endif

@@ -33,8 +33,7 @@
  * and provide some accessors needed for event handling.
  */
 
-#ifndef CONTROLLER_BASE_H_INCLUDED
-#define CONTROLLER_BASE_H_INCLUDED
+#pragma once
 
 #include "events.hpp"
 #include "hotkey/hotkey_command.hpp"
@@ -153,6 +152,3 @@ protected:
 	bool scroll_right_;
 	joystick_manager joystick_manager_;
 };
-
-
-#endif

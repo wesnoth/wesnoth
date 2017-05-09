@@ -16,8 +16,7 @@
  * @file
  */
 
-#ifndef WB_UTILITY_HPP_
-#define WB_UTILITY_HPP_
+#pragma once
 
 #include <vector>
 #include <deque>
@@ -149,5 +148,3 @@ action_ptr find_action_at(map_location hex, team_filter team_filter = team_has_v
 std::deque<action_ptr> find_actions_of(unit const &target);
 
 } //end namespace wb
-
-#endif /* WB_UTILITY_HPP_ */

@@ -16,8 +16,7 @@
  * @file
  */
 
-#ifndef WB_RECRUIT_HPP_
-#define WB_RECRUIT_HPP_
+#pragma once
 
 #include <string>
 
@@ -101,5 +100,3 @@ std::ostream& operator<<(std::ostream& s, recruit_ptr recruit);
 std::ostream& operator<<(std::ostream& s, recruit_const_ptr recruit);
 
 }
-
-#endif /* WB_RECRUIT_HPP_ */

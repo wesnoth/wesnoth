@@ -16,9 +16,7 @@
  * @file
  */
 
-#ifndef AI_COMPOSITE_GOAL_HPP_INCLUDED
-#define AI_COMPOSITE_GOAL_HPP_INCLUDED
-
+#pragma once
 
 #ifdef _MSC_VER
 #pragma warning(push)
@@ -226,6 +224,4 @@ public:
 
 #ifdef _MSC_VER
 #pragma warning(pop)
-#endif
-
 #endif

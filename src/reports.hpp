@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef REPORTS_HPP_INCLUDED
-#define REPORTS_HPP_INCLUDED
+#pragma once
 
 #include "display_context.hpp"
 
@@ -89,5 +88,3 @@ private:
 	dynamic_report_generators dynamic_generators_;
 
 };
-
-#endif

@@ -17,8 +17,7 @@
  * @file
  */
 
-#ifndef AI_COMPOSITE_ENGINE_DEFAULT_HPP_INCLUDED
-#define AI_COMPOSITE_ENGINE_DEFAULT_HPP_INCLUDED
+#pragma once
 
 #include "ai/composite/engine.hpp"
 
@@ -49,5 +48,3 @@ public:
 };
 
 } //end of namespace ai
-
-#endif

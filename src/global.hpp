@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GLOBAL_HPP_INCLUDED
-#define GLOBAL_HPP_INCLUDED
+#pragma once
 
 #ifdef _MSC_VER
 
@@ -140,5 +139,3 @@
 #define FALLTHROUGH
 #endif
 #endif
-
-#endif //GLOBAL_HPP_INCLUDED

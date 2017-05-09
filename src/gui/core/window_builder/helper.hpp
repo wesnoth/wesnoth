@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_AUXILIARY_WINDOW_BUILDER_HELPER_HPP_INCLUDED
-#define GUI_AUXILIARY_WINDOW_BUILDER_HELPER_HPP_INCLUDED
+#pragma once
 
 #include "gui/widgets/scrollbar_container.hpp"
 
@@ -89,5 +88,3 @@ int get_retval(const std::string& retval_id,
 } // namespace implementation
 
 } // namespace gui2
-
-#endif

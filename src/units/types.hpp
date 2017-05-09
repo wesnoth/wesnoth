@@ -11,8 +11,8 @@
 
    See the COPYING file for more details.
 */
-#ifndef UNIT_TYPES_H_INCLUDED
-#define UNIT_TYPES_H_INCLUDED
+
+#pragma once
 
 #include "gettext.hpp"
 #include "utils/make_enum.hpp"
@@ -369,5 +369,3 @@ struct unit_experience_accelerator {
 private:
 	int old_value_;
 };
-
-#endif

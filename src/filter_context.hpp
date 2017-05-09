@@ -21,8 +21,7 @@
  *
  **/
 
-#ifndef FILTER_CONTEXT_HPP_INCLUDED
-#define FILTER_CONTEXT_HPP_INCLUDED
+#pragma once
 
 #include <vector>
 
@@ -44,5 +43,3 @@ public:
 
 	virtual ~filter_context() {}
 };
-
-#endif

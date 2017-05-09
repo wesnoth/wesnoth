@@ -18,8 +18,7 @@
  * doesn't contain any problems that might crash the game.
  */
 
-#ifndef WML_EXCEPTION_HPP_INCLUDED
-#define WML_EXCEPTION_HPP_INCLUDED
+#pragma once
 
 #include "config.hpp"
 #include "lua_jailbreak_exception.hpp"
@@ -198,6 +197,3 @@ const config::attribute_value& get_renamed_config_attribute(
 		, const std::string& deprecated_key
 		, const std::string& key
 		, const std::string& removal_version);
-
-#endif
-

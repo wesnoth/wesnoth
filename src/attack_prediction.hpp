@@ -14,8 +14,7 @@
 
 /** @file */
 
-#ifndef ATTACK_PREDICTION_H_INCLUDED
-#define ATTACK_PREDICTION_H_INCLUDED
+#pragma once
 
 #include <vector>
 #include <array>
@@ -69,5 +68,3 @@ private:
 	 *  Invariant: summary[1].size() == summary[0].size() or summary[1].empty() */
 	std::array<std::vector<double>, 2> summary;
 };
-
-#endif

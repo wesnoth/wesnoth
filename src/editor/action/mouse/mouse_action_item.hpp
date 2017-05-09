@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef EDITOR_MOUSE_ACTION_ITEM_HPP
-#define EDITOR_MOUSE_ACTION_ITEM_HPP
+#pragma once
 
 #include "editor/action/mouse/mouse_action.hpp"
 #include "editor/palette/item_palette.hpp"
@@ -76,5 +75,3 @@ private:
 
 
 } //end namespace editor
-
-#endif

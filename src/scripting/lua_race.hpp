@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef LUA_RACE_HPP_INCLUDED
-#define LUA_RACE_HPP_INCLUDED
+#pragma once
 
 class unit_race;
 struct lua_State;
@@ -31,5 +30,3 @@ namespace lua_race {
 // Create a lua reference to the race.
 void luaW_pushrace(lua_State *, const unit_race &);
 void luaW_pushracetable(lua_State *);
-
-#endif

@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GAME_BOARD_HPP_INCLUDED
-#define GAME_BOARD_HPP_INCLUDED
+#pragma once
 
 #include "display_context.hpp"
 #include "team.hpp"
@@ -216,6 +215,3 @@ private:
 	int old_moves_;
 	unit_ptr temp_;
 };
-
-
-#endif

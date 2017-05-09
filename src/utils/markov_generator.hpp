@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef MARKOV_GENERATOR_HPP_INCLUDED
-#define MARKOV_GENERATOR_HPP_INCLUDED
+#pragma once
 
 #include "serialization/unicode_types.hpp"
 #include "utils/name_generator.hpp"
@@ -28,5 +27,3 @@ public:
 	markov_generator(const std::vector<std::string>& items, size_t chain_size, size_t max_len);
 	std::string generate() const override;
 };
-
-#endif

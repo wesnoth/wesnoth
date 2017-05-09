@@ -11,8 +11,8 @@
 
    See the COPYING file for more details.
 */
-#ifndef RANDOM_H_INCLUDED
-#define RANDOM_H_INCLUDED
+
+#pragma once
 
 #include <cstdlib> //needed for RAND_MAX
 #include <cstdint>
@@ -122,4 +122,3 @@ namespace randomness
 		return std::distance(first, it);
 	}
 }
-#endif

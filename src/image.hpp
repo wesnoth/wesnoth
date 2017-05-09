@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef IMAGE_HPP_INCLUDED
-#define IMAGE_HPP_INCLUDED
+#pragma once
 
 #include "map/location.hpp"
 #include "terrain/translation.hpp"
@@ -225,6 +224,3 @@ namespace image {
 	bool save_image(const locator& i_locator, const std::string& outfile);
 	bool save_image(const surface& surf, const std::string& outfile);
 }
-
-#endif
-

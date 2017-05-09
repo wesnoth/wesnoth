@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_STACKED_WIDGET_HPP_INCLUDED
-#define GUI_WIDGETS_STACKED_WIDGET_HPP_INCLUDED
+#pragma once
 
 #include "gui/widgets/container_base.hpp"
 
@@ -190,5 +189,3 @@ struct builder_stacked_widget : public builder_styled_widget
 // }------------ END --------------
 
 } // namespace gui2
-
-#endif

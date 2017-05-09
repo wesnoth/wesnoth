@@ -19,8 +19,7 @@
  *
  **/
 
-#ifndef DISPLAY_CONTEXT_HPP_INCLUDED
-#define DISPLAY_CONTEXT_HPP_INCLUDED
+#pragma once
 
 #include <string>
 #include <vector>
@@ -111,6 +110,3 @@ public:
 
 	virtual ~display_context() {}
 };
-
-
-#endif

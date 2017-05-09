@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef JOYSTICK_HPP_
-#define JOYSTICK_HPP_
+#pragma once
 
 #include <vector>
 #include "map/location.hpp"
@@ -97,5 +96,3 @@ private:
 	int joystick_area_;
 	int counter_;
 };
-
-#endif /* JOYSTICK_HPP_ */

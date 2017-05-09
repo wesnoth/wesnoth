@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef UTILS_CONST_CLONE_HPP_INCLUDED
-#define UTILS_CONST_CLONE_HPP_INCLUDED
+#pragma once
 
 #include <type_traits>
 
@@ -57,5 +56,3 @@ struct const_clone
 };
 
 } // namespace utils
-
-#endif

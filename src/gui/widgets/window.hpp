@@ -18,8 +18,7 @@
  *  which has the event management as well.
  */
 
-#ifndef GUI_WIDGETS_WINDOW_HPP_INCLUDED
-#define GUI_WIDGETS_WINDOW_HPP_INCLUDED
+#pragma once
 
 #include "cursor.hpp"
 #include "formula/callable.hpp"
@@ -805,5 +804,3 @@ struct window_definition : public styled_widget_definition
 // }------------ END --------------
 
 } // namespace gui2
-
-#endif

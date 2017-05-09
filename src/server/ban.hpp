@@ -12,8 +12,8 @@
    See the COPYING file for more details.
 */
 
-#ifndef SERVER_GAME_HPP_INCLUDED
-#define SERVER_GAME_HPP_INCLUDED
+#pragma once
+
 #include "exceptions.hpp"
 
 #include <set>
@@ -169,5 +169,3 @@ namespace wesnothd {
 
 	};
 }
-
-#endif

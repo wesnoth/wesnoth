@@ -14,8 +14,7 @@
 
 /** @file */
 
-#ifndef MAP_GEN_HPP_INCLUDED
-#define MAP_GEN_HPP_INCLUDED
+#pragma once
 
 class config;
 class CVideo;
@@ -71,5 +70,3 @@ public:
 
 	virtual config create_scenario(boost::optional<uint32_t> randomseed = boost::none);
 };
-
-#endif

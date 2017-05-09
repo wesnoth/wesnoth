@@ -14,8 +14,7 @@
 
 /** @file */
 
-#ifndef UNIT_ABILITIES_HPP_INCLUDED
-#define UNIT_ABILITIES_HPP_INCLUDED
+#pragma once
 
 #include "map/location.hpp"
 
@@ -60,7 +59,3 @@ class effect
 
 
 }
-
-
-#endif
-

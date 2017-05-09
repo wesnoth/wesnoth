@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef KEY_HPP_INCLUDED
-#define KEY_HPP_INCLUDED
+#pragma once
 
 #include <cstdint>
 #include <SDL.h>
@@ -34,5 +33,3 @@ public:
 	bool operator[](int k) const;
 	static bool is_uncomposable(const SDL_KeyboardEvent &event);
 };
-
-#endif

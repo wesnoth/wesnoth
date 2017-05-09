@@ -14,8 +14,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_PASSWORD_BOX_HPP_INCLUDED
-#define GUI_WIDGETS_PASSWORD_BOX_HPP_INCLUDED
+#pragma once
 
 #include "gui/widgets/text_box.hpp"
 
@@ -88,5 +87,3 @@ private:
 // }------------ END --------------
 
 } // namespace gui2
-
-#endif

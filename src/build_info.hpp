@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef BUILD_CONFIG_HPP_INCLUDED
-#define BUILD_CONFIG_HPP_INCLUDED
+#pragma once
 
 #include <string>
 #include <vector>
@@ -77,5 +76,3 @@ const std::string& library_name(LIBRARY_ID lib);
 std::string library_versions_report();
 
 } // end namespace game_config
-
-#endif

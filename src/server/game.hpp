@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GAME_HPP_INCLUDED
-#define GAME_HPP_INCLUDED
+#pragma once
 
 #include "player_connection.hpp"
 #include "player.hpp"
@@ -430,5 +429,3 @@ private:
 	int id_;
 };
 }
-#endif
-

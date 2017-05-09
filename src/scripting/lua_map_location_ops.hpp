@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef LUA_MAP_LOCATION_OPS_HPP_INCLUDED
-#define LUA_MAP_LOCATION_OPS_HPP_INCLUDED
+#pragma once
 
 /**
  * This namespace contains the implementations for wesnoth's
@@ -36,5 +35,3 @@ int intf_get_in_basis_N_NE(lua_State*);
 int intf_get_relative_dir(lua_State*);
 
 } // end namespace lua_map_location
-
-#endif

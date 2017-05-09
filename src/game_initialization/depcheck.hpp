@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef MP_DEPCHECK_HPP_INCLUDED
-#define MP_DEPCHECK_HPP_INCLUDED
+#pragma once
 
 #include <string>
 #include <vector>
@@ -380,5 +379,3 @@ private:
 } //namespace depcheck
 
 } //namespace ng
-
-#endif

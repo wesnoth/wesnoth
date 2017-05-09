@@ -17,9 +17,7 @@
  * Contains typedefs for the whiteboard.
  */
 
-
-#ifndef WB_TYPEDEFS_HPP_
-#define WB_TYPEDEFS_HPP_
+#pragma once
 
 #include "log.hpp"
 static lg::log_domain log_whiteboard("whiteboard");
@@ -79,5 +77,3 @@ typedef std::shared_ptr<suppose_dead> suppose_dead_ptr;
 typedef std::shared_ptr<suppose_dead const> suppose_dead_const_ptr;
 
 } // end namespace wb
-
-#endif /* WB_TYPEDEFS_HPP_ */

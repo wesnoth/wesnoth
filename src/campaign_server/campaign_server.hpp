@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef CAMPAIGN_SERVER_HPP_INCLUDED
-#define CAMPAIGN_SERVER_HPP_INCLUDED
+#pragma once
 
 #include "campaign_server/blacklist.hpp"
 #include "server/server_base.hpp"
@@ -188,5 +187,3 @@ private:
 };
 
 } // end namespace campaignd
-
-#endif

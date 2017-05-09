@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef UNIT_H_INCLUDED
-#define UNIT_H_INCLUDED
+#pragma once
 
 #include "units/id.hpp"
 #include "units/ptr.hpp"
@@ -1452,5 +1451,3 @@ private:
  *  @returns                    the checksum for a unit
  */
 std::string get_checksum(const unit& u);
-
-#endif

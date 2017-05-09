@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef FORMULA_AI_CALLABLE_OBJECTS_HPP_INCLUDED
-#define	FORMULA_AI_CALLABLE_OBJECTS_HPP_INCLUDED
+#pragma once
 
 #include "ai/game_info.hpp"
 #include "actions/attack.hpp"
@@ -256,6 +255,3 @@ public:
 };
 
 }
-
-#endif	/* FORMULA_AI_CALLABLE_OBJECTS_HPP_INCLUDED */
-

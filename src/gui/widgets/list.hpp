@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_LIST_HPP_INCLUDED
-#define GUI_WIDGETS_LIST_HPP_INCLUDED
+#pragma once
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 
@@ -298,5 +297,4 @@ typedef list_view listbox;
 
 } // namespace gui2
 
-#endif
 #endif

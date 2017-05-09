@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_DIALOGS_TIP_HPP_INCLUDED
-#define GUI_DIALOGS_TIP_HPP_INCLUDED
+#pragma once
 
 #include <SDL_rect.h>
 #include <string>
@@ -60,5 +59,3 @@ void remove();
 } // namespace tip
 } // namespace dialogs
 } // namespace gui2
-
-#endif

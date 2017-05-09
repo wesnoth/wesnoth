@@ -18,8 +18,7 @@
  * Composite AI contexts
  */
 
-#ifndef AI_COMPOSITE_CONTEXTS_HPP_INCLUDED
-#define AI_COMPOSITE_CONTEXTS_HPP_INCLUDED
+#pragma once
 
 #include "ai/default/contexts.hpp"
 
@@ -160,7 +159,4 @@ private:
 
 #ifdef _MSC_VER
 #pragma warning(pop)
-#endif
-
-
 #endif

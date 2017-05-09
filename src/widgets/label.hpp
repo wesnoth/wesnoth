@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef LABEL_HPP_INCLUDED
-#define LABEL_HPP_INCLUDED
+#pragma once
 
 #include "font/constants.hpp"
 #include "font/standard_colors.hpp"
@@ -42,6 +41,3 @@ private:
 };
 
 }
-
-#endif
-

@@ -11,8 +11,8 @@
 
    See the COPYING file for more details.
 */
-#ifndef HELP_HPP_INCLUDED
-#define HELP_HPP_INCLUDED
+
+#pragma once
 
 class config;
 class display;
@@ -58,5 +58,3 @@ void show_unit_description(CVideo& video, const unit &u);
 void show_terrain_description(CVideo& video, const terrain_type& t);
 
 } // End namespace help.
-
-#endif

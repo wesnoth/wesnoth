@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef MAP_LABEL_HPP_INCLUDED
-#define MAP_LABEL_HPP_INCLUDED
+#pragma once
 
 #include "font/standard_colors.hpp"
 #include "map/location.hpp"
@@ -180,5 +179,3 @@ private:
 
 	SDL_Rect get_rect() const;
 };
-
-#endif

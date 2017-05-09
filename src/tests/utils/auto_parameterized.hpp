@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef TESTS_UTILS_AUTO_PARAMETERIZED_HPP_INCLUDED
-#define TESTS_UTILS_AUTO_PARAMETERIZED_HPP_INCLUDED
+#pragma once
 
 #include <boost/version.hpp>
 
@@ -79,4 +78,3 @@ void test_name::test_method(const type_name& param_name)                \
 #endif
 
 }
-#endif

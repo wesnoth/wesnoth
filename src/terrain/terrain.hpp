@@ -11,8 +11,8 @@
 
    See the COPYING file for more details.
 */
-#ifndef TERRAIN_H_INCLUDED
-#define TERRAIN_H_INCLUDED
+
+#pragma once
 
 #include "config.hpp"
 #include "terrain/translation.hpp"
@@ -140,5 +140,3 @@ void create_terrain_maps(const config::const_child_itors &cfgs,
                          std::map<t_translation::terrain_code, terrain_type>& letter_to_terrain);
 
 void merge_alias_lists(t_translation::ter_list& first, const t_translation::ter_list& second);
-
-#endif

@@ -75,8 +75,7 @@
  * See src/tests/test_make_enum.cpp for example code.
  */
 
-#ifndef MAKE_ENUM_HPP
-#define MAKE_ENUM_HPP
+#pragma once
 
 #include "global.hpp"
 
@@ -294,6 +293,3 @@ private: \
 	/* template<typename T, typename = typename boost::enable_if<Cond>::type> \
 	operator T(); */\
 };
-
-
-#endif

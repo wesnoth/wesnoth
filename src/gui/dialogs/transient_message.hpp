@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_DIALOGS_TRANSIENT_MESSAGE_HPP_INCLUDED
-#define GUI_DIALOGS_TRANSIENT_MESSAGE_HPP_INCLUDED
+#pragma once
 
 #include "gui/dialogs/modal_dialog.hpp"
 
@@ -89,5 +88,3 @@ void show_transient_error_message(CVideo& video,
 								  const bool message_use_markup = false);
 
 } // namespace gui2
-
-#endif

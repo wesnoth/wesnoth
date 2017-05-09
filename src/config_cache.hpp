@@ -17,8 +17,7 @@
  * to speed up startup
  ***/
 
-#ifndef CONFIG_CACHE_HPP_INCLUDED
-#define CONFIG_CACHE_HPP_INCLUDED
+#pragma once
 
 #include <cassert>
 #include <list>
@@ -279,4 +278,3 @@ class fake_transaction
 };
 
 }
-#endif

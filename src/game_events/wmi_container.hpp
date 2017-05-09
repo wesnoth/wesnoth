@@ -17,8 +17,7 @@
  * Declarations for a container for wml_menu_item.
  */
 
-#ifndef GAME_EVENTS_WMI_CONTAINER_HPP_INCLUDED
-#define GAME_EVENTS_WMI_CONTAINER_HPP_INCLUDED
+#pragma once
 
 #include "utils/iterator.hpp"
 
@@ -108,6 +107,3 @@ private: // data
 };
 
 } // end namespace game_events
-
-#endif // GAME_EVENTS_WMI_CONTAINER_HPP_INCLUDED
-

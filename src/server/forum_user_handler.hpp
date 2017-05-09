@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef FORUM_USER_HANDLER_HPP_INCLUDED
-#define FORUM_USER_HANDLER_HPP_INCLUDED
+#pragma once
 
 #include "user_handler.hpp"
 
@@ -113,5 +112,3 @@ class fuh : public user_handler {
 		// Same as user_exists() but checks if we have a row for this user in the extra table
 		bool extra_row_exists(const std::string& name);
 };
-
-#endif //FORUM_USER_HANDLER_HPP_INCLUDED

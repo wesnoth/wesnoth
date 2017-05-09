@@ -12,8 +12,8 @@
 
    See the COPYING file for more details.
 */
-#ifndef GAME_ERRORS_HPP_INCLUDED
-#define GAME_ERRORS_HPP_INCLUDED
+
+#pragma once
 
 #include "exceptions.hpp"
 #include "lua_jailbreak_exception.hpp"
@@ -56,5 +56,3 @@ struct lua_error : public error {
 };
 
 }
-
-#endif

@@ -11,8 +11,8 @@
 
    See the COPYING file for more details.
 */
-#ifndef TRISTATE_BUTTON_H_INCLUDED
-#define TRISTATE_BUTTON_H_INCLUDED
+
+#pragma once
 
 #include "widgets/widget.hpp"
 
@@ -116,5 +116,3 @@ private:
 }; //end class button
 
 }
-
-#endif

@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_AUXILIARY_NOTIFIEE_HPP_INCLUDED
-#define GUI_WIDGETS_AUXILIARY_NOTIFIEE_HPP_INCLUDED
+#pragma once
 
 #include <cstdlib>
 
@@ -52,5 +51,3 @@ private:
 };
 
 } // namespace gui2
-
-#endif

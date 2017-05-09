@@ -11,8 +11,8 @@
 
    See the COPYING file for more details.
 */
-#ifndef SYNCMP_HANDLER_HPP_INCLUDED
-#define SYNCMP_HANDLER_HPP_INCLUDED
+
+#pragma once
 
 #include<vector>
 /*
@@ -41,5 +41,3 @@ private:
 	static void add_handler(syncmp_handler* handler);
 	static handler_list& handlers();
 };
-
-#endif

@@ -13,8 +13,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef CONSTRUCT_DIALOG_H_INCLUDED
-#define CONSTRUCT_DIALOG_H_INCLUDED
+#pragma once
 
 #include "show_dialog.hpp"
 
@@ -83,4 +82,3 @@ private:
 };
 
 } //end namespace gui
-#endif

@@ -18,8 +18,7 @@
  *
  */
 
-#ifndef FORMULA_DEBUGGER_HPP_INCLUDED
-#define FORMULA_DEBUGGER_HPP_INCLUDED
+#pragma once
 
 #include "formula/variant.hpp"
 #include "formula/debugger_fwd.hpp"
@@ -156,5 +155,3 @@ private:
 
 
 } // end of namespace wfl
-
-#endif

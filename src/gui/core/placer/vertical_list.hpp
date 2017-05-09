@@ -17,8 +17,7 @@
  * Placement helper for the vertical list.
  */
 
-#ifndef GUI_AUXILIARY_PLACER_VERTICAL_LIST_HPP_INCLUDED
-#define GUI_AUXILIARY_PLACER_VERTICAL_LIST_HPP_INCLUDED
+#pragma once
 
 #include "gui/core/placer.hpp"
 
@@ -87,5 +86,3 @@ private:
 } // namespace implementation
 
 } // namespace gui2
-
-#endif

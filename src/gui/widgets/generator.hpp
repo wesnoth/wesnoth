@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_GENERATOR_HPP_INCLUDED
-#define GUI_WIDGETS_GENERATOR_HPP_INCLUDED
+#pragma once
 
 #include "widget.hpp"
 #include "tstring.hpp"
@@ -385,5 +384,3 @@ public:
 using generator_sort_array = std::array<generator_base::torder_func, 2>;
 
 } // namespace gui2
-
-#endif

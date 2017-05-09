@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef MULTIPLAYER_CREATE_ENGINE_HPP_INCLUDED
-#define MULTIPLAYER_CREATE_ENGINE_HPP_INCLUDED
+#pragma once
 
 #include "config.hpp"
 #include "game_initialization/depcheck.hpp"
@@ -466,5 +465,3 @@ private:
 };
 
 } // end namespace ng
-
-#endif

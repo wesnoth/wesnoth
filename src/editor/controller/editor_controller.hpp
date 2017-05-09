@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef EDITOR_EDITOR_CONTROLLER_HPP_INCLUDED
-#define EDITOR_EDITOR_CONTROLLER_HPP_INCLUDED
+#pragma once
 
 #include "editor/editor_display.hpp"
 #include "editor/editor_main.hpp"
@@ -262,5 +261,3 @@ class editor_controller : public controller_base,
 };
 
 } //end namespace editor
-
-#endif

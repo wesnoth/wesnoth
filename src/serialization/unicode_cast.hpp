@@ -11,8 +11,8 @@
 
    See the COPYING file for more details.
 */
-#ifndef SERIALIZATION_UNICODE_CAST_HPP_INCLUDED
-#define SERIALIZATION_UNICODE_CAST_HPP_INCLUDED
+
+#pragma once
 
 #include "ucs4_convert_impl.hpp"
 #include <iostream>   //for std::cerr
@@ -112,4 +112,3 @@ TD unicode_cast(ucs4::char_t onechar)
 	}
 	return res;
 }
-#endif

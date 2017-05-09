@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_TEXT_BOX_HPP_INCLUDED
-#define GUI_WIDGETS_TEXT_BOX_HPP_INCLUDED
+#pragma once
 
 #include "gui/widgets/text_box_base.hpp"
 
@@ -317,5 +316,3 @@ public:
 // }------------ END --------------
 
 } // namespace gui2
-
-#endif

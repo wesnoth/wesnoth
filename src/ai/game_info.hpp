@@ -17,8 +17,7 @@
  * Game information for the AI
  */
 
-#ifndef AI_GAME_INFO_HPP_INCLUDED
-#define AI_GAME_INFO_HPP_INCLUDED
+#pragma once
 
 #include "map/location.hpp"
 namespace pathfind {
@@ -125,5 +124,3 @@ public:
 };
 
 } //of namespace ai
-
-#endif

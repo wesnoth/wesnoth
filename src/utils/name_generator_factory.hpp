@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef NAME_GENERATOR_FACTORY_HPP_INCLUDED
-#define NAME_GENERATOR_FACTORY_HPP_INCLUDED
+#pragma once
 
 #include "utils/name_generator.hpp"
 #include "config.hpp"
@@ -56,5 +55,3 @@ private:
 	 */
 	void add_name_generator_from_config(const config& config, const std::string id, const std::string prefix);
 };
-
-#endif

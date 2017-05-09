@@ -16,8 +16,7 @@
  * @file
  */
 
-#ifndef WB_MOVE_HPP_
-#define WB_MOVE_HPP_
+#pragma once
 
 #include "action.hpp"
 
@@ -129,5 +128,3 @@ std::ostream &operator<<(std::ostream &s, move_ptr move);
 std::ostream &operator<<(std::ostream &s, move_const_ptr move);
 
 } // end namespace wb
-
-#endif /* WB_MOVE_HPP_ */

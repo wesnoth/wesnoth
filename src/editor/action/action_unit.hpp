@@ -23,8 +23,7 @@
  *   need to ensure the pointer is deleted.
  */
 
-#ifndef EDITOR_ACTION_UNIT_HPP
-#define EDITOR_ACTION_UNIT_HPP
+#pragma once
 
 #include "editor/action/action.hpp"
 
@@ -101,5 +100,3 @@ protected:
 
 
 } //end namespace editor
-
-#endif

@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef EDITOR_MOUSE_ACTION_SELECT_HPP
-#define EDITOR_MOUSE_ACTION_SELECT_HPP
+#pragma once
 
 #include "editor/action/mouse/mouse_action.hpp"
 
@@ -67,5 +66,3 @@ public:
 };
 
 } //end namespace editor
-
-#endif

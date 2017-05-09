@@ -16,8 +16,7 @@
  * @file Enable range-for iteration over pairs of iterators.
  */
 
-#ifndef UTILS_ITERABLE_PAIR_HPP_INCLUDED
-#define UTILS_ITERABLE_PAIR_HPP_INCLUDED
+#pragma once
 
 #include <utility>
 #include <iterator>
@@ -67,5 +66,3 @@ inline std::reverse_iterator<T> crend(const std::pair<T, T>& p) {
 }
 
 }
-
-#endif

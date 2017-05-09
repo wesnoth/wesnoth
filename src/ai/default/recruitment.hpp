@@ -18,8 +18,7 @@
  * See http://wiki.wesnoth.org/AI_Recruitment
  */
 
-#ifndef AI_DEFAULT_RECRUITMENT_HPP_INCLUDED
-#define AI_DEFAULT_RECRUITMENT_HPP_INCLUDED
+#pragma once
 
 #include "ai/composite/aspect.hpp"
 #include "ai/composite/rca.hpp"
@@ -293,6 +292,4 @@ private:
 
 #ifdef _MSC_VER
 #pragma warning(pop)
-#endif
-
 #endif

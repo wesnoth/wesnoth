@@ -17,8 +17,7 @@
  * in lua, and macros to get them from the stack.
  */
 
-#ifndef LUA_COMMON_HPP_INCLUDED
-#define LUA_COMMON_HPP_INCLUDED
+#pragma once
 
 struct lua_State;
 class t_string;
@@ -351,5 +350,3 @@ do { \
 		return 0; \
 	} \
 } while(false)
-
-#endif

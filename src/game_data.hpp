@@ -14,8 +14,7 @@
 
 /** @file */
 
-#ifndef GAME_DATA_HPP_INCLUDED
-#define GAME_DATA_HPP_INCLUDED
+#pragma once
 
 #include "config.hpp"
 #include "game_end_exceptions.hpp"
@@ -121,5 +120,3 @@ private:
 	std::vector<std::string> defeat_music_;
 	std::vector<std::string> victory_music_;
 };
-
-#endif

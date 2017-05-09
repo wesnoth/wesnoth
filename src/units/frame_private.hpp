@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef UNIT_FRAME_PRIVATE_HPP_INCLUDED
-#define UNIT_FRAME_PRIVATE_HPP_INCLUDED
+#pragma once
 
 #include "lexical_cast.hpp"
 #include "serialization/string_utils.hpp"
@@ -227,5 +226,3 @@ using progressive_double = progressive_pair<double>;
 
 using progressive_string = progressive_single<std::string>;
 using progressive_image = progressive_single<image::locator>;
-
-#endif

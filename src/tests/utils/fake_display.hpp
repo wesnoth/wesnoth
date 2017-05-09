@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef TESTS_UTILS_FAKE_DISPLAY_HPP_INCLUDED
-#define TESTS_UTILS_FAKE_DISPLAY_HPP_INCLUDED
+#pragma once
 
 class game_display;
 
@@ -35,4 +34,3 @@ namespace test_utils {
 
 
 }
-#endif

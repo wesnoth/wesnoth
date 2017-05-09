@@ -18,8 +18,7 @@
  * this is part of AI interface
  */
 
-#ifndef AI_CONTEXTS_HPP_INCLUDED
-#define AI_CONTEXTS_HPP_INCLUDED
+#pragma once
 
 #include "ai/game_info.hpp"                // for move_map, aspect_type, etc
 
@@ -1683,6 +1682,4 @@ private:
 
 #ifdef _MSC_VER
 #pragma warning(pop)
-#endif
-
 #endif

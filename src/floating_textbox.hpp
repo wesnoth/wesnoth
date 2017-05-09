@@ -13,8 +13,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef FLOATING_TEXTBOX_H_INCLUDED
-#define FLOATING_TEXTBOX_H_INCLUDED
+#pragma once
 
 // Scoped_resource can't use a pointer to an incomplete pointer with MSVC.
 #include "widgets/textbox.hpp"
@@ -58,5 +57,3 @@ namespace gui{
 		int label_;
 	};
 }
-
-#endif

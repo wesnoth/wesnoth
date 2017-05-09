@@ -11,8 +11,8 @@
 
    See the COPYING file for more details.
 */
-#ifndef GAME_CONFIG_H_INCLUDED
-#define GAME_CONFIG_H_INCLUDED
+
+#pragma once
 
 class config;
 class version_info;
@@ -189,5 +189,3 @@ namespace game_config
 
 	std::string get_default_title_string();
 }
-
-#endif

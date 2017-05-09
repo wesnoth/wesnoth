@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GENERIC_EVENT_HPP_INCLUDED
-#define GENERIC_EVENT_HPP_INCLUDED
+#pragma once
 
 #include <string>
 #include <vector>
@@ -65,5 +64,3 @@ private:
 	bool notify_active_;
 };
 }
-
-#endif

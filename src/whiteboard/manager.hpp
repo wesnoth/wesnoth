@@ -16,8 +16,7 @@
  * @file
  */
 
-#ifndef WB_MANAGER_HPP_
-#define WB_MANAGER_HPP_
+#pragma once
 
 #include "side_actions.hpp"
 
@@ -287,5 +286,3 @@ struct real_map
 };
 
 } // end namespace wb
-
-#endif /* WB_MANAGER_HPP_ */

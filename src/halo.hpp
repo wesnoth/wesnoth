@@ -14,8 +14,7 @@
 
 /** @file */
 
-#ifndef HALO_HPP_INCLUDED
-#define HALO_HPP_INCLUDED
+#pragma once
 
 class display;
 
@@ -98,5 +97,3 @@ private:
 };
 
 } // end namespace halo
-
-#endif

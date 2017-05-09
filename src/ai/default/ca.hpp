@@ -18,8 +18,7 @@
  * @file
  */
 
-#ifndef AI_TESTING_CA_HPP_INCLUDED
-#define AI_TESTING_CA_HPP_INCLUDED
+#pragma once
 
 #include "units/map.hpp"
 
@@ -275,6 +274,4 @@ public:
 
 #ifdef _MSC_VER
 #pragma warning(pop)
-#endif
-
 #endif

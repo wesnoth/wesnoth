@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef FORMULA_FWD_HPP_INCLUDED
-#define FORMULA_FWD_HPP_INCLUDED
+#pragma once
 
 namespace wfl {
 
@@ -24,5 +23,3 @@ typedef std::shared_ptr<formula> formula_ptr;
 typedef std::shared_ptr<const formula> const_formula_ptr;
 
 }
-
-#endif

@@ -14,8 +14,7 @@
 
 /** @file */
 
-#ifndef MAP_H_INCLUDED
-#define MAP_H_INCLUDED
+#pragma once
 
 class config;
 
@@ -229,5 +228,3 @@ protected:
 	int w_;
 	int h_;
 };
-
-#endif

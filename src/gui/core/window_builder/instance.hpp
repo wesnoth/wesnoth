@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_AUXILIARY_WINDOW_BUILDER_INSTANCE_HPP_INCLUDED
-#define GUI_AUXILIARY_WINDOW_BUILDER_INSTANCE_HPP_INCLUDED
+#pragma once
 
 #include "gui/core/window_builder.hpp"
 
@@ -45,5 +44,3 @@ struct builder_instance : public builder_widget
 } // namespace implementation
 
 } // namespace gui2
-
-#endif

@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef EDITOR_BRUSH_HPP_INCLUDED
-#define EDITOR_BRUSH_HPP_INCLUDED
+#pragma once
 
 #include "editor/map/editor_map.hpp"
 
@@ -69,5 +68,3 @@ protected:
 
 
 } //end namespace editor
-
-#endif

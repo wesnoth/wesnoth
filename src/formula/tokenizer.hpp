@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef FORMULA_TOKENIZER_HPP_INCLUDED
-#define FORMULA_TOKENIZER_HPP_INCLUDED
+#pragma once
 
 #include <string>
 
@@ -72,5 +71,3 @@ struct token_error
 }
 
 }
-
-#endif

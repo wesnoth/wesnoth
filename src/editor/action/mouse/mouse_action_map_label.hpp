@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef EDITOR_MOUSE_ACTION_MAP_LABEL_HPP
-#define EDITOR_MOUSE_ACTION_MAP_LABEL_HPP
+#pragma once
 
 #include "mouse_action.hpp"
 #include "editor/palette/empty_palette.hpp"
@@ -62,5 +61,3 @@ private:
 };
 
 } //end namespace editor
-
-#endif

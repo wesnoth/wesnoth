@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef PREFERENCES_DISPLAY_HPP_INCLUDED
-#define PREFERENCES_DISPLAY_HPP_INCLUDED
+#pragma once
 
 class config;
 class display;
@@ -35,5 +34,3 @@ namespace preferences {
 	void show_wesnothd_server_search(CVideo&);
 	bool show_theme_dialog(CVideo& disp);
 } // end namespace preferences
-
-#endif

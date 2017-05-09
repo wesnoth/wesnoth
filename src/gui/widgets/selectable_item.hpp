@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_SELECTABLE_HPP_INCLUDED
-#define GUI_WIDGETS_SELECTABLE_HPP_INCLUDED
+#pragma once
 
 #include "utils/functional.hpp"
 #include <cassert>
@@ -65,5 +64,3 @@ public:
 };
 
 } // namespace gui2
-
-#endif

@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_DIALOGS_EDITOR_EDIT_SIDE_HPP_INCLUDED
-#define GUI_DIALOGS_EDITOR_EDIT_SIDE_HPP_INCLUDED
+#pragma once
 
 #include "editor/map/map_context.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
@@ -54,5 +53,3 @@ private:
 };
 } // namespace dialogs
 } // namespace gui2
-
-#endif /* ! GUI_DIALOGS_EDIT_LABEL_INCLUDED */

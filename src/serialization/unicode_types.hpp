@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef SERIALIZATION_UNICODE_TYPES_HPP_INCLUDED
-#define SERIALIZATION_UNICODE_TYPES_HPP_INCLUDED
+#pragma once
 
 #include <string>
 #include <vector>
@@ -49,5 +48,3 @@ namespace utf16 {
 	typedef wchar_t char_t;
 	typedef std::vector<char_t> string;
 }
-
-#endif

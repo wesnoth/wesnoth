@@ -17,8 +17,7 @@
  * Storyscreen controller (interface).
  */
 
-#ifndef STORYSCREEN_CONTROLLER_HPP_INCLUDED
-#define STORYSCREEN_CONTROLLER_HPP_INCLUDED
+#pragma once
 
 #include "events.hpp"
 #include "storyscreen/parser.hpp"
@@ -59,5 +58,3 @@ private:
 };
 
 } // end namespace storyscreen
-
-#endif /* ! STORYSCREEN_CONTROLLER_HPP_INCLUDED */

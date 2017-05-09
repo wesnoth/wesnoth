@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_DIALOGS_MESSAGE_HPP_INCLUDED
-#define GUI_DIALOGS_MESSAGE_HPP_INCLUDED
+#pragma once
 
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/styled_widget.hpp"
@@ -221,5 +220,3 @@ void show_error_message(CVideo& video,
 						bool message_use_markup = false);
 
 } // namespace gui2
-
-#endif

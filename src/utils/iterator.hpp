@@ -16,8 +16,7 @@
  * @file Generic iterator definitions, to take some mess out of other headers.
  */
 
-#ifndef UTILS_ITERATOR_HPP_INCLUDED
-#define UTILS_ITERATOR_HPP_INCLUDED
+#pragma once
 
 #include <iterator>
 
@@ -232,5 +231,3 @@ public:
 };
 
 */
-
-#endif // UTILS_ITERATOR_HPP_INCLUDED

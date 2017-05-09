@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef WIDGET_MENU_HPP_INCLUDED
-#define WIDGET_MENU_HPP_INCLUDED
+#pragma once
 
 #include <map>
 #include <set>
@@ -318,8 +317,4 @@ private:
 	std::set<int> invalid_;
 };
 
-
-
 }
-
-#endif

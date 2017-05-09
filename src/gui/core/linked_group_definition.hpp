@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_CORE_LINKED_GROUP_DEFINITION_HPP_INCLUDED
-#define GUI_CORE_LINKED_GROUP_DEFINITION_HPP_INCLUDED
+#pragma once
 
 #include "config.hpp"
 #include <string>
@@ -43,5 +42,3 @@ struct linked_group_definition
 std::vector<linked_group_definition> parse_linked_group_definitions(const config& cfg);
 
 }
-
-#endif

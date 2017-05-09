@@ -14,8 +14,7 @@
 
 /** @file */
 
-#ifndef SDL_UTILS_INCLUDED
-#define SDL_UTILS_INCLUDED
+#pragma once
 
 #include "color_range.hpp"
 #include "color.hpp"
@@ -320,5 +319,3 @@ Uint32 get_pixel(const surface& surf, const const_surface_lock& surf_lock, int x
 // and a add a colored background
 void draw_centered_on_background(surface surf, const SDL_Rect& rect,
 	const color_t& color, surface target);
-
-#endif

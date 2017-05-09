@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_AUXILIARY_FIND_WIDGET_TPP_INCLUDED
-#define GUI_AUXILIARY_FIND_WIDGET_TPP_INCLUDED
+#pragma once
 
 #include "gui/widgets/helper.hpp"
 #include "gui/widgets/widget.hpp"
@@ -101,5 +100,3 @@ T& find_widget(typename utils::const_clone<widget, T>::pointer widget,
 }
 
 } // namespace gui2
-
-#endif

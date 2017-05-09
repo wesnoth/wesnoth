@@ -14,8 +14,7 @@
 
 /** @file */
 
-#ifndef STATISTICS_HPP_INCLUDED
-#define STATISTICS_HPP_INCLUDED
+#pragma once
 
 class config;
 class config_writer;
@@ -116,5 +115,3 @@ namespace statistics
 	/// Returns a list of names and stats for each scenario in the current campaign.
 	levels level_stats(const std::string & save_id);
 } // end namespace statistics
-
-#endif

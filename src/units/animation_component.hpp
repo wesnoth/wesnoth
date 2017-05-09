@@ -14,8 +14,7 @@
 
 // This class encapsulates the animation functionality of unit.
 
-#ifndef UNIT_ANIM_COMP_HPP
-#define UNIT_ANIM_COMP_HPP
+#pragma once
 
 #include "halo.hpp"
 #include "units/animation.hpp" //Note: only needed for enum
@@ -123,5 +122,3 @@ private:
 
 	halo::handle unit_halo_; //!< handle to the halo of this unit
 };
-
-#endif

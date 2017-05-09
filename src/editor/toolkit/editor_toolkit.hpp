@@ -12,9 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef EDITOR_TOOLKIT_H_INCLUDED
-#define EDITOR_TOOLKIT_H_INCLUDED
-
+#pragma once
 
 #include "editor/map/context_manager.hpp"
 #include "editor/palette/palette_manager.hpp"
@@ -112,5 +110,3 @@ private:
 };
 
 }
-
-#endif

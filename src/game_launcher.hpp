@@ -11,8 +11,8 @@
 
    See the COPYING file for more details.
 */
-#ifndef GAME_LAUNCHER_H_INCLUDED
-#define GAME_LAUNCHER_H_INCLUDED
+
+#pragma once
 
 #include "editor/editor_main.hpp"       // for EXIT_STATUS
 #include "events.hpp"                   // for event_context
@@ -129,5 +129,3 @@ private:
 	bool jump_to_editor_;
 	std::unique_ptr<savegame::load_game_metadata> load_data_;
 };
-
-#endif

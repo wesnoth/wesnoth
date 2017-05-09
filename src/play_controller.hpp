@@ -13,8 +13,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef PLAY_CONTROLLER_H_INCLUDED
-#define PLAY_CONTROLLER_H_INCLUDED
+#pragma once
 
 #include "controller_base.hpp"
 #include "floating_label.hpp"
@@ -367,6 +366,3 @@ protected:
 	virtual void update_viewing_player() = 0;
 	void play_turn();
 };
-
-
-#endif

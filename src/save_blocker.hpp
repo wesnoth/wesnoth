@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef SAVE_BLOCKER_H_INCLUDED
-#define SAVE_BLOCKER_H_INCLUDED
+#pragma once
 
 #include <SDL_mutex.h>
 
@@ -69,5 +68,3 @@ private:
 	static void (play_controller::*callback_)();
 	static SDL_sem* sem_;
 };
-
-#endif

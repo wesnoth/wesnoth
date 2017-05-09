@@ -17,8 +17,7 @@
  * Animate units.
  */
 
-#ifndef ANIMATED_IMAGE_H_INCLUDED
-#define ANIMATED_IMAGE_H_INCLUDED
+#pragma once
 
 #include <string>
 #include <map>
@@ -134,6 +133,3 @@ private:
 };
 
 #include "animated.tpp"
-
-#endif
-

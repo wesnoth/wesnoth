@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_DETAIL_REGISTER_TPP_INCLUDED
-#define GUI_WIDGETS_DETAIL_REGISTER_TPP_INCLUDED
+#pragma once
 
 /**
  * Registers a widget.
@@ -57,5 +56,3 @@
  * "Calls" REGISTER_WIDGET3(id_definition, id, nullptr)
  */
 #define REGISTER_WIDGET(id) REGISTER_WIDGET3(id##_definition, id, nullptr)
-
-#endif

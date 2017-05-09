@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef ADDON_INFO_HPP_INCLUDED
-#define ADDON_INFO_HPP_INCLUDED
+#pragma once
 
 #include "version.hpp"
 
@@ -187,5 +186,3 @@ std::string size_display_string(double size);
  *       somehow.
  */
 std::string make_addon_title(const std::string& id);
-
-#endif

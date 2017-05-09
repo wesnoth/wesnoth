@@ -17,8 +17,7 @@
  * Default AI contexts
  */
 
-#ifndef AI_DEFAULT_CONTEXTS_HPP_INCLUDED
-#define AI_DEFAULT_CONTEXTS_HPP_INCLUDED
+#pragma once
 
 #include "ai/contexts.hpp"
 #include "formula/callable.hpp"
@@ -302,7 +301,4 @@ private:
 
 #ifdef _MSC_VER
 #pragma warning(pop)
-#endif
-
-
 #endif

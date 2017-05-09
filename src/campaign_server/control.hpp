@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef CAMPAIGN_SERVER_CONTROL_HPP_INCLUDED
-#define CAMPAIGN_SERVER_CONTROL_HPP_INCLUDED
+#pragma once
 
 #include "serialization/string_utils.hpp"
 
@@ -118,5 +117,3 @@ private:
 };
 
 }  // end namespace campaignd
-
-#endif // CAMPAIGN_SERVER_CONTROL_HPP_INCLUDED

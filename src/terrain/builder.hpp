@@ -17,8 +17,7 @@
  * Definitions for the terrain builder.
  */
 
-#ifndef TERRAIN_BUILDER_H_INCLUDED
-#define TERRAIN_BUILDER_H_INCLUDED
+#pragma once
 
 #include "animated.hpp"
 #include "game_config.hpp"
@@ -850,5 +849,3 @@ private:
 	/** Config used to parse global terrain rules */
 	static const config* rules_cfg_;
 };
-
-#endif

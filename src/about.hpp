@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef ABOUT_H_INCLUDED
-#define ABOUT_H_INCLUDED
+#pragma once
 
 class config;
 
@@ -36,5 +35,3 @@ std::vector<std::string> get_background_images(const std::string& campaign);
 void set_about(const config& cfg);
 
 }
-
-#endif

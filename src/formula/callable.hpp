@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef FORMULA_CALLABLE_HPP_INCLUDED
-#define FORMULA_CALLABLE_HPP_INCLUDED
+#pragma once
 
 #include "formula/callable_fwd.hpp"
 #include "formula/variant.hpp"
@@ -307,5 +306,3 @@ using map_formula_callable_ptr = std::shared_ptr<map_formula_callable>;
 using const_map_formula_callable_ptr = std::shared_ptr<const map_formula_callable>;
 
 } // namespace wfl
-
-#endif

@@ -17,8 +17,7 @@
  *  General math utility functions.
  */
 
-#ifndef UTIL_H_INCLUDED
-#define UTIL_H_INCLUDED
+#pragma once
 
 #include <cmath>
 #include <cstddef>
@@ -322,6 +321,4 @@ typedef float fixed_t;
 # define fxpmult(x,y) ((x)*(y))
 # define fxpdiv(x,y) (static_cast<float>(x) / static_cast<float>(y))
 # define fxptoi(x) ( static_cast<int>(x) )
-#endif
-
 #endif

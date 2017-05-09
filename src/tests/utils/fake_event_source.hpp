@@ -12,12 +12,9 @@
    See the COPYING file for more details.
 */
 
-#ifndef TESTS_UTILS_FAKE_EVENT_SOURCE_HPP_INCLUDED
-#define TESTS_UTILS_FAKE_EVENT_SOURCE_HPP_INCLUDED
+#pragma once
 
 #include <queue>
 #include <SDL.h>
 
 #include "events.hpp"
-
-#endif

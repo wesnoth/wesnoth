@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef NAME_GENERATOR_HPP_INCLUDED
-#define NAME_GENERATOR_HPP_INCLUDED
+#pragma once
 
 #include "global.hpp"
 
@@ -46,5 +45,3 @@ public:
 	proxy_name_generator(const name_generator& b) : base(b) {}
 	std::string generate() const override { return base.generate(); }
 };
-
-#endif

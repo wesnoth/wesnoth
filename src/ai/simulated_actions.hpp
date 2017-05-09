@@ -17,8 +17,7 @@
  * @file
  */
 
-#ifndef AI_SIMULATED_ACTIONS_HPP_INCLUDED
-#define AI_SIMULATED_ACTIONS_HPP_INCLUDED
+#pragma once
 
 #include "ai/game_info.hpp"
 
@@ -41,5 +40,3 @@ bool simulated_stopunit(const map_location& unit_location, bool remove_movement,
 bool simulated_synced_command();
 
 }
-
-#endif

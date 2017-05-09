@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_MULTIMENU_BUTTON_HPP_INCLUDED
-#define GUI_WIDGETS_MULTIMENU_BUTTON_HPP_INCLUDED
+#pragma once
 
 #include "gui/core/widget_definition.hpp"
 #include "gui/core/window_builder.hpp"
@@ -251,5 +250,3 @@ private:
 // }------------ END --------------
 
 } // namespace gui2
-
-#endif

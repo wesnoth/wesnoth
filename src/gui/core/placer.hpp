@@ -21,8 +21,7 @@
  * for the items and the best size for the children.
  */
 
-#ifndef GUI_AUXILIARY_PLACER_HPP_INCLUDED
-#define GUI_AUXILIARY_PLACER_HPP_INCLUDED
+#pragma once
 
 #include "utils/make_enum.hpp"
 
@@ -120,5 +119,3 @@ public:
 };
 
 } // namespace gui2
-
-#endif

@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_CLICKABLE_HPP_INCLUDED
-#define GUI_WIDGETS_CLICKABLE_HPP_INCLUDED
+#pragma once
 
 #include "gui/core/event/dispatcher.hpp"
 
@@ -66,5 +65,3 @@ public:
 };
 
 } // namespace gui2
-
-#endif

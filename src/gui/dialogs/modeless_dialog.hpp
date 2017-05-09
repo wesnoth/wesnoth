@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_DIALOGS_POPUP_HPP_INCLUDED
-#define GUI_DIALOGS_POPUP_HPP_INCLUDED
+#pragma once
 
 #include <string>
 
@@ -123,5 +122,3 @@ private:
 
 } // namespace dialogs
 } // namespace gui2
-
-#endif

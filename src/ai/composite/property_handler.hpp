@@ -17,9 +17,7 @@
  * @file
  */
 
-
-#ifndef AI_COMPOSITE_PROPERTY_HANDLER_HPP_INCLUDED
-#define AI_COMPOSITE_PROPERTY_HANDLER_HPP_INCLUDED
+#pragma once
 
 #include "utils/functional.hpp"
 #include "config.hpp"
@@ -313,5 +311,3 @@ static inline void register_aspect_property(property_handler_map& property_handl
 }
 
 } //of namespace ai
-
-#endif

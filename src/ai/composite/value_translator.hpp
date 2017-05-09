@@ -16,8 +16,7 @@
  * @file
  */
 
-#ifndef VALUE_TRANSLATOR_HPP_INCLUDED
-#define VALUE_TRANSLATOR_HPP_INCLUDED
+#pragma once
 
 #include "ai/composite/engine.hpp"
 #include "ai/composite/stage.hpp"
@@ -393,5 +392,3 @@ public:
 	}
 };
 }  //end of namespace ai
-
-#endif

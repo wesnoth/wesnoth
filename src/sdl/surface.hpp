@@ -11,8 +11,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef SDL_SURFACE_HEADER_INCLUDED
-#define SDL_SURFACE_HEADER_INCLUDED
+#pragma once
 
 #include "utils/const_clone.hpp"
 
@@ -168,5 +167,3 @@ private:
 	SDL_Rect rect_;
 	const bool operate_;
 };
-
-#endif

@@ -29,8 +29,7 @@
  * design pattern.
  */
 
-#ifndef HELP_IMPL_INCLUDED
-#define HELP_IMPL_INCLUDED
+#pragma once
 
 #include "exceptions.hpp"               // for error
 #include "font/sdl_ttf.hpp"             // for line_width, relative_size
@@ -413,5 +412,3 @@ unsigned image_width(const std::string &filename);
 void push_tab_pair(std::vector<std::pair<std::string, unsigned int> > &v, const std::string &s);
 
 } // end namespace help
-
-#endif

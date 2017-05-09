@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef SCRIPTING_LUA_KERNEL_BASE_HPP
-#define SCRIPTING_LUA_KERNEL_BASE_HPP
+#pragma once
 
 #include <sstream>
 #include <string>
@@ -138,5 +137,3 @@ private:
 	static lua_kernel_base*& get_lua_kernel_base_ptr(lua_State *L);
 	std::vector<std::tuple<std::string, std::string>> registered_widget_definitions_;
 };
-
-#endif

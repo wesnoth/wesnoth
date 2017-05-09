@@ -13,8 +13,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef MOUSE_EVENTS_H_INCLUDED
-#define MOUSE_EVENTS_H_INCLUDED
+#pragma once
 
 #include "game_display.hpp"             // for game_display -> display conversion.
 #include "map/location.hpp"             // for map_location
@@ -149,5 +148,3 @@ private:
 };
 
 }
-
-#endif

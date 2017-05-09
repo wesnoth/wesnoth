@@ -17,8 +17,7 @@
  * Various functions that implement the undoing (and redoing) of in-game commands.
  */
 
-#ifndef ACTIONS_UNDO_H_INCLUDED
-#define ACTIONS_UNDO_H_INCLUDED
+#pragma once
 
 #include "vision.hpp"
 #include "map/location.hpp"
@@ -117,5 +116,3 @@ private: // data
 
 
 }//namespace actions
-
-#endif

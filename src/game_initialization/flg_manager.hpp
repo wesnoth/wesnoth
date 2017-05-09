@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef FLG_MANAGER_HPP_INCLUDED
-#define FLG_MANAGER_HPP_INCLUDED
+#pragma once
 
 #include <string>
 #include <vector>
@@ -133,5 +132,3 @@ private:
 };
 
 } // end namespace ng
-
-#endif

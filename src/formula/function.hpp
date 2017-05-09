@@ -13,8 +13,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef FORMULA_FUNCTION_HPP_INCLUDED
-#define FORMULA_FUNCTION_HPP_INCLUDED
+#pragma once
 
 #include "formula/formula.hpp"
 #include "formula/callable.hpp"
@@ -194,5 +193,3 @@ private:
 };
 
 }
-
-#endif

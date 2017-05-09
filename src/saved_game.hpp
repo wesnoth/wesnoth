@@ -11,8 +11,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef SAVED_GAME_HPP_INCLUDED
-#define SAVED_GAME_HPP_INCLUDED
+#pragma once
 
 #include "config.hpp"
 #include "game_classification.hpp"
@@ -139,6 +138,3 @@ private:
 
 	replay_recorder_base replay_data_;
 };
-
-
-#endif

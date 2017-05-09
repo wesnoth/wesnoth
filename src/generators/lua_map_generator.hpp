@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef LUA_MAP_GENERATOR_HPP_INCLUDED
-#define LUA_MAP_GENERATOR_HPP_INCLUDED
+#pragma once
 
 #include "config.hpp"
 #include "map_generator.hpp"
@@ -56,5 +55,3 @@ private:
 
 	config generator_data_;
 };
-
-#endif

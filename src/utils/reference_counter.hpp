@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef UTILS_REFERENCE_COUTER_H_INCLUDED
-#define UTILS_REFERENCE_COUTER_H_INCLUDED
+#pragma once
 
 /**
  * @file
@@ -66,5 +65,3 @@ public:
 
 
 }//end namepace
-
-#endif

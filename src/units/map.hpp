@@ -15,8 +15,7 @@
 
 /** @file */
 
-#ifndef UNIT_MAP_H_INCLUDED
-#define UNIT_MAP_H_INCLUDED
+#pragma once
 
 #include "utils/reference_counter.hpp"
 #include "map/location.hpp"
@@ -438,7 +437,3 @@ size_t unit_map::erase(const T& iter) {
 
 	return erase(iter->get_location());
 }
-
-
-
-#endif	// UNIT_MAP_H_INCLUDED

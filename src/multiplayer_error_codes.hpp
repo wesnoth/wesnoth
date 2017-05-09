@@ -17,8 +17,7 @@
  * Define the errors the server may send during the login procedure
  */
 
-#ifndef MULTIPLAYER_ERROR_CODES_HPP_INCLUDED
-#define MULTIPLAYER_ERROR_CODES_HPP_INCLUDED
+#pragma once
 
 #define MP_MUST_LOGIN					"100"
 #define MP_NAME_TAKEN_ERROR				"101"
@@ -33,8 +32,3 @@
 #define MP_NO_SEED_ERROR				"202"
 #define MP_INCORRECT_PASSWORD_ERROR			"203"
 #define MP_TOO_MANY_ATTEMPTS_ERROR			"204"
-
-#endif // MULTIPLAYER_ERROR_CODES_HPP_INCLUDES
-
-
-

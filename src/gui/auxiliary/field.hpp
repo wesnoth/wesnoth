@@ -20,8 +20,7 @@
  *
  */
 
-#ifndef GUI_DIALOGS_FIELD_HPP_INCLUDED
-#define GUI_DIALOGS_FIELD_HPP_INCLUDED
+#pragma once
 
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/auxiliary/field-fwd.hpp"
@@ -651,5 +650,3 @@ private:
 };
 
 } // namespace gui2
-
-#endif

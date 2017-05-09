@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef FONT_OPTIONS_HPP_INCLUDED
-#define FONT_OPTIONS_HPP_INCLUDED
+#pragma once
 
 #include <string>
 
@@ -39,5 +38,3 @@ inline family_class str_to_family_class(const std::string& str)
 }
 
 } // end namespace font
-
-#endif /* FONT_OPTIONS_HPP_INCLUDED */

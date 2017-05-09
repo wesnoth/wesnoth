@@ -13,8 +13,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef SERVER_PLAYER_NETWORK_HPP_INCLUDED
-#define SERVER_PLAYER_NETWORK_HPP_INCLUDED
+#pragma once
 
 #include "player.hpp"
 #include "simple_wml.hpp"
@@ -34,5 +33,3 @@ namespace chat_message {
 } // end chat_message namespace
 
 } //end namespace wesnothd
-
-#endif

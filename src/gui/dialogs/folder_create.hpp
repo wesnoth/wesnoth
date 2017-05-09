@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_DIALOGS_FOLDER_CREATE_HPP_INCLUDED
-#define GUI_DIALOGS_FOLDER_CREATE_HPP_INCLUDED
+#pragma once
 
 #include "gui/dialogs/modal_dialog.hpp"
 
@@ -74,5 +73,3 @@ public:
 
 } // namespace dialogs
 } // namespace gui2
-
-#endif /* ! GUI_DIALOGS_EDIT_LABEL_INCLUDED */

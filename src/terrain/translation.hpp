@@ -14,8 +14,7 @@
 
 /** @file */
 
-#ifndef TERRAIN_TRANSLATION_H_INCLUDED
-#define TERRAIN_TRANSLATION_H_INCLUDED
+#pragma once
 
 #include <vector>
 #include <map>
@@ -373,5 +372,3 @@ namespace t_translation {
 	ter_map read_builder_map(const std::string& str);
 
 } // end namespace t_translation
-
-#endif

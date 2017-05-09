@@ -12,9 +12,7 @@
    See the COPYING file for more details.
 */
 
-
-#ifndef SCRIPTING_APP_LUA_KERNEL_HPP
-#define SCRIPTING_APP_LUA_KERNEL_HPP
+#pragma once
 
 #include "scripting/lua_kernel_base.hpp"
 #include "scripting/plugins/context.hpp"
@@ -54,5 +52,3 @@ public:
 	thread * load_script_from_string(const std::string &);	//throws
 	thread * load_script_from_file(const std::string &);	//throws
 };
-
-#endif

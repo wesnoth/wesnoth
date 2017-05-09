@@ -11,8 +11,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GENERAL_UTILS_INCLUDED
-#define GENERAL_UTILS_INCLUDED
+#pragma once
 
 #include "global.hpp"
 
@@ -74,5 +73,3 @@ inline bool contains(const Container & container, const Value & value)
 }
 
 }//namespace utils
-
-#endif

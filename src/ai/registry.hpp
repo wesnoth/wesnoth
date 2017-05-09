@@ -17,8 +17,7 @@
  * All known AI parts
  */
 
-#ifndef AI_REGISTRY_HPP_INCLUDED
-#define AI_REGISTRY_HPP_INCLUDED
+#pragma once
 
 namespace ai {
 namespace registry {
@@ -27,5 +26,3 @@ void init();
 
 }
 } //end of namespace ai
-
-#endif

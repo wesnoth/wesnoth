@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef LUA_TEAM_HPP_INCLUDED
-#define LUA_TEAM_HPP_INCLUDED
+#pragma once
 
 class team;
 struct lua_State;
@@ -36,5 +35,3 @@ team* luaW_toteam(lua_State*, int);
 
 /// Test if the top stack element is a team, and if not, error
 team& luaW_checkteam(lua_State*, int);
-
-#endif

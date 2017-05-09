@@ -15,8 +15,7 @@
 
 /** @file */
 
-#ifndef PLAYCAMPAIGN_H_INCLUDED
-#define PLAYCAMPAIGN_H_INCLUDED
+#pragma once
 
 #include "game_end_exceptions.hpp"
 
@@ -89,6 +88,3 @@ private:
 	void show_carryover_message(playsingle_controller& playcontroller, const end_level_data& end_level, LEVEL_RESULT res);
 	static void report_victory(std::ostringstream &report, team& t,	int finishing_bonus_per_turn, int turns_left, int finishing_bonus);
 };
-
-#endif // PLAYCAMPAIGN_H_INCLUDED
-

@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef EDITOR_PREFERENCES_HPP_INCLUDED
-#define EDITOR_PREFERENCES_HPP_INCLUDED
+#pragma once
 
 #include <string>
 #include <vector>
@@ -55,6 +54,3 @@ namespace editor {
 } //end namespace editor
 
 } //end namespace preferences
-
-
-#endif

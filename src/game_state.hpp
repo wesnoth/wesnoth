@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef INCL_GAME_STATE_HPP_
-#define INCL_GAME_STATE_HPP_
+#pragma once
 
 class config;
 
@@ -103,5 +102,3 @@ public:
 	/// Checks if any of the sides leaders can recruit at a location
 	bool side_can_recruit_on(int side, map_location loc) const;
 };
-
-#endif

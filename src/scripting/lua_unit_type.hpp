@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef LUA_UNIT_TYPE_HPP_INCLUDED
-#define LUA_UNIT_TYPE_HPP_INCLUDED
+#pragma once
 
 struct lua_State;
 class unit_type;
@@ -38,5 +37,3 @@ const unit_type* luaW_tounittype(lua_State*, int);
 
 /// Test if a stack element is a unit type, and return it if so
 const unit_type& luaW_checkunittype(lua_State*, int);
-
-#endif

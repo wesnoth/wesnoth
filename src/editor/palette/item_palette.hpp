@@ -16,8 +16,7 @@
  * Manage the item-palette in the editor.
  */
 
-#ifndef ITEM_PALETTES_H_INCLUDED
-#define ITEM_PALETTES_H_INCLUDED
+#pragma once
 
 #include "editor/palette/editor_palettes.hpp"
 #include "overlay.hpp"
@@ -49,4 +48,3 @@ private:
 };
 
 }
-#endif

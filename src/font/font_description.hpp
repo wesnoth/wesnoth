@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef FONT_FONT_DESCRIPTION_HPP
-#define FONT_FONT_DESCRIPTION_HPP
+#pragma once
 
 #include "config.hpp"
 #include "lexical_cast.hpp"
@@ -79,4 +78,3 @@ struct subset_descriptor
 };
 
 } // end namespace font
-#endif

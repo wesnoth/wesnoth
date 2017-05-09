@@ -13,8 +13,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef MOUSE_HANDLER_BASE_H_INCLUDED
-#define MOUSE_HANDLER_BASE_H_INCLUDED
+#pragma once
 
 #include "map/location.hpp"
 #include <SDL_events.h>
@@ -206,5 +205,3 @@ protected:
 };
 
 } // end namespace events
-
-#endif

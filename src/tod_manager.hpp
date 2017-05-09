@@ -11,8 +11,8 @@
 
    See the COPYING file for more details.
  */
-#ifndef TOD_MANAGER_HPP_INCLUDED
-#define TOD_MANAGER_HPP_INCLUDED
+
+#pragma once
 
 #include "map/location.hpp"
 #include "config.hpp"
@@ -240,4 +240,3 @@ class tod_manager
 		//
 		config::attribute_value random_tod_;
 };
-#endif

@@ -25,8 +25,7 @@
  * game.
  */
 
-#ifndef CONFIG_HPP_INCLUDED
-#define CONFIG_HPP_INCLUDED
+#pragma once
 
 #include "global.hpp"
 
@@ -913,5 +912,3 @@ public:
 
 inline std::ostream &operator<<(std::ostream &os, const config::attribute_value::true_false &v) { return os << v.str(); }
 inline std::ostream &operator<<(std::ostream &os, const config::attribute_value::yes_no &v)     { return os << v.str(); }
-
-#endif

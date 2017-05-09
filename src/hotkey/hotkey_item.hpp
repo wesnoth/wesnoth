@@ -12,9 +12,7 @@
    See the COPYING file for more details.
 */
 
-
-#ifndef HOTKEY_ITEM_HPP_INCLUDED
-#define HOTKEY_ITEM_HPP_INCLUDED
+#pragma once
 
 #include <SDL_events.h>
 #include <SDL.h>
@@ -441,5 +439,3 @@ void save_hotkeys(config& cfg);
 bool is_hotkeyable_event(const SDL_Event &event);
 
 }
-
-#endif

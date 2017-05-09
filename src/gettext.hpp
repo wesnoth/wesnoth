@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GETTEXT_HPP_INCLUDED
-#define GETTEXT_HPP_INCLUDED
+#pragma once
 
 /**
  * How to use gettext for wesnoth source files:
@@ -96,5 +95,3 @@ inline UNUSEDNOWARN static std::string _n(const char* str1, const char* str2, in
 
 #define gettext_noop(String) String
 #define N_(String) gettext_noop (String)
-
-#endif

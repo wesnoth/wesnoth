@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_DIALOGS_MP_DEPCHECK_CONFIRM_CHANGE_HPP_INCLUDED
-#define GUI_DIALOGS_MP_DEPCHECK_CONFIRM_CHANGE_HPP_INCLUDED
+#pragma once
 
 #include "gui/dialogs/modal_dialog.hpp"
 #include <vector>
@@ -47,5 +46,3 @@ protected:
 
 } // namespace dialogs
 } // namespace gui2
-
-#endif

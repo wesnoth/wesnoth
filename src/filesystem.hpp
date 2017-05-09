@@ -17,8 +17,7 @@
  * Declarations for File-IO.
  */
 
-#ifndef FILESYSTEM_HPP_INCLUDED
-#define FILESYSTEM_HPP_INCLUDED
+#pragma once
 
 #include <ctime>
 
@@ -336,5 +335,3 @@ std::string get_program_invocation(const std::string &program_name);
 
 
 }
-
-#endif

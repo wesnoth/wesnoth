@@ -17,8 +17,7 @@
  * A component of the AI framework
  */
 
-#ifndef AI_COMPOSITE_COMPONENT_HPP_INCLUDED
-#define AI_COMPOSITE_COMPONENT_HPP_INCLUDED
+#pragma once
 
 class config;
 
@@ -96,6 +95,4 @@ std::ostream &operator<<(std::ostream &o, const ai::path_element &e);
 
 #ifdef _MSC_VER
 #pragma warning(pop)
-#endif
-
 #endif

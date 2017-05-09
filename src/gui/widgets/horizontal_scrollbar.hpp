@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_HORIZONTAL_SCROLLBAR_HPP_INCLUDED
-#define GUI_WIDGETS_HORIZONTAL_SCROLLBAR_HPP_INCLUDED
+#pragma once
 
 #include "gui/widgets/scrollbar.hpp"
 
@@ -108,5 +107,3 @@ struct builder_horizontal_scrollbar : public builder_styled_widget
 // }------------ END --------------
 
 } // namespace gui2
-
-#endif

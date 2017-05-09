@@ -11,8 +11,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_MP_PLUGIN_EXECUTOR_HPP_INCLUDED
-#define GUI_MP_PLUGIN_EXECUTOR_HPP_INCLUDED
+#pragma once
 
 #include "gui/core/timer.hpp"
 #include "gui/widgets/window.hpp"
@@ -54,4 +53,3 @@ protected:
 
 } // namespace dialogs
 } // namespace gui2
-#endif

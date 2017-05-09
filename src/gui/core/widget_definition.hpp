@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_AUXILIARY_WIDGET_DEFINITION_HPP_INCLUDED
-#define GUI_AUXILIARY_WIDGET_DEFINITION_HPP_INCLUDED
+#pragma once
 
 #include "config.hpp"
 #include "font/font_options.hpp"
@@ -113,5 +112,3 @@ struct styled_widget_definition
 typedef std::shared_ptr<styled_widget_definition> styled_widget_definition_ptr;
 
 } // namespace gui2
-
-#endif

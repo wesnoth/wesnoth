@@ -23,8 +23,7 @@
  *   need to ensure the pointer is deleted.
  */
 
-#ifndef EDITOR_ACTION_LABEL_HPP
-#define EDITOR_ACTION_LABEL_HPP
+#pragma once
 
 #include "editor/action/action.hpp"
 
@@ -74,5 +73,3 @@ class editor_action_label_delete : public editor_action_location
 };
 
 } //end namespace editor
-
-#endif

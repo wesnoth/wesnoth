@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef SERIALIZATION_UCS4_CONVERT_IMPL_HPP_INCLUDED
-#define SERIALIZATION_UCS4_CONVERT_IMPL_HPP_INCLUDED
+#pragma once
 
 #include "unicode_types.hpp"
 #include "utils/math.hpp"
@@ -234,5 +233,3 @@ namespace ucs4_convert_impl
 		typedef utf32_impl type;
 	};
 }
-
-#endif

@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef FONT_ERROR_HPP
-#define FONT_ERROR_HPP
+#pragma once
 
 #include "exceptions.hpp"
 #include <string>
@@ -25,5 +24,3 @@ struct error : public game::error {
 };
 
 } // end namespace font
-
-#endif

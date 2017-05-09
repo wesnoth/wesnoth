@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_AUXILIARY_EVENT_DISPATCHER_HPP_INCLUDED
-#define GUI_WIDGETS_AUXILIARY_EVENT_DISPATCHER_HPP_INCLUDED
+#pragma once
 
 #include "gui/core/event/handler.hpp"
 #include "hotkey/hotkey_command.hpp"
@@ -828,5 +827,3 @@ connect_signal_notify_modified(dispatcher& dispatcher,
 } // namespace event
 
 } // namespace gui2
-
-#endif

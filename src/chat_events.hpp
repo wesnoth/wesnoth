@@ -13,8 +13,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef CHAT_EVENTS_H_INCLUDED
-#define CHAT_EVENTS_H_INCLUDED
+#pragma once
 
 class config;
 #include <ctime>
@@ -68,4 +67,3 @@ protected:
 };
 
 }
-#endif

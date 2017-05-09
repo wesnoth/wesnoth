@@ -13,8 +13,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef PLAYSINGLE_CONTROLLER_H_INCLUDED
-#define PLAYSINGLE_CONTROLLER_H_INCLUDED
+#pragma once
 
 #include "play_controller.hpp"
 
@@ -101,6 +100,3 @@ protected:
 	void update_viewing_player() override;
 	void reset_replay();
 };
-
-
-#endif

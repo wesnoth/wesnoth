@@ -14,8 +14,7 @@
 
 /** @file */
 
-#ifndef SCROLLAREA_HPP_INCLUDED
-#define SCROLLAREA_HPP_INCLUDED
+#pragma once
 
 #include "scrollbar.hpp"
 
@@ -66,5 +65,3 @@ private:
 };
 
 } // end namespace gui
-
-#endif

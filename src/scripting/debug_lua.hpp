@@ -14,14 +14,10 @@
 
 #ifdef DEBUG_LUA
 
-#ifndef DEBUG_LUA_HPP_INCLUDED
-#define DEBUG_LUA_HPP_INCLUDED
+#pragma once
 
 #include "lua/lualib.h"
 
-
 void ds(lua_State *L, const bool verbose_table = true);
-
-#endif
 
 #endif

@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef TEXTBOX_HPP_INCLUDED
-#define TEXTBOX_HPP_INCLUDED
+#pragma once
 
 #include "serialization/unicode.hpp"
 #include "font/constants.hpp"
@@ -121,5 +120,3 @@ private:
 };
 
 }
-
-#endif

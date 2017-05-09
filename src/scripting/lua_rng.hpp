@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef LUA_RNG_HPP_INCLUDED
-#define LUA_RNG_HPP_INCLUDED
+#pragma once
 
 /**
  * This namespace contains bindings for lua to hold a mt19937 object
@@ -34,5 +33,3 @@ int impl_rng_draw(lua_State*);
 void load_tables(lua_State*);
 
 } // end namespace lua_rng
-
-#endif

@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_VIEWPORT_HPP_INCLUDED
-#define GUI_WIDGETS_VIEWPORT_HPP_INCLUDED
+#pragma once
 
 #include "gui/core/window_builder.hpp"
 #include "gui/widgets/widget.hpp"
@@ -120,5 +119,3 @@ struct builder_viewport : public builder_widget
 // }------------ END --------------
 
 } // namespace gui2
-
-#endif

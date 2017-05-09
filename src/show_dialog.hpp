@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef SHOW_DIALOG_HPP_INCLUDED
-#define SHOW_DIALOG_HPP_INCLUDED
+#pragma once
 
 class config;
 class display;
@@ -150,5 +149,3 @@ public:
 };
 
 }
-
-#endif

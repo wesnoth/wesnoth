@@ -13,8 +13,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef PLAYMP_CONTROLLER_H_INCLUDED
-#define PLAYMP_CONTROLLER_H_INCLUDED
+#pragma once
 
 #include "playsingle_controller.hpp"
 #include "syncmp_handler.hpp"
@@ -72,5 +71,3 @@ private:
 	void process_network_data();
 	mp_campaign_info* mp_info_;
 };
-
-#endif

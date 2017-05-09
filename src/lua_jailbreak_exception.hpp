@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef LUA_JAILBREAK_EXCEPTION
-#define LUA_JAILBREAK_EXCEPTION
+#pragma once
 
 #include "global.hpp"
 
@@ -94,6 +93,3 @@ private:
 		type exception(dynamic_cast<type&>(*jailbreak_exception));   \
 		throw exception;                                             \
 	}
-
-#endif
-

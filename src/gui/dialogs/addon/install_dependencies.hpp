@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_DIALOGS_ADDON_INSTALL_DEPENDENCIES_HPP_INCLUDED
-#define GUI_DIALOGS_ADDON_INSTALL_DEPENDENCIES_HPP_INCLUDED
+#pragma once
 
 #include "addon/info.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
@@ -43,5 +42,3 @@ private:
 
 }
 }
-
-#endif

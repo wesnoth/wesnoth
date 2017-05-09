@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef PERSIST_MANAGER_HPP_INCLUDED
-#define PERSIST_MANAGER_HPP_INCLUDED
+#pragma once
 
 #include <map>
 #include <string>
@@ -36,5 +35,3 @@ class persist_manager {
 
 		persist_context &get_context(const std::string &ns);
 };
-
-#endif

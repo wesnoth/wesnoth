@@ -16,8 +16,7 @@
  * @file
  */
 
-#ifndef WB_RECALL_HPP_
-#define WB_RECALL_HPP_
+#pragma once
 
 #include "action.hpp"
 #include "map/location.hpp"
@@ -91,5 +90,3 @@ std::ostream& operator<<(std::ostream& s, recall_ptr recall);
 std::ostream& operator<<(std::ostream& s, recall_const_ptr recall);
 
 }
-
-#endif /* WB_RECALL_HPP_ */

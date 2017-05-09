@@ -21,8 +21,7 @@
  * This module is responsible for tracking these definitions.
  */
 
-#ifndef GAME_EVENTS_HANDLERS_H_INCLUDED
-#define GAME_EVENTS_HANDLERS_H_INCLUDED
+#pragma once
 
 #include "config.hpp"
 #include "utils/smart_list.hpp"
@@ -143,6 +142,3 @@ namespace game_events
 		list_t data_;
 	};
 }
-
-#endif // GAME_EVENTS_HANDLERS_H_INCLUDED
-

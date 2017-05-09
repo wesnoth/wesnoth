@@ -11,8 +11,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef COLOR_T_HPP_INCLUDED
-#define COLOR_T_HPP_INCLUDED
+#pragma once
 
 #include <algorithm> // for max
 #include <cstdint>
@@ -257,5 +256,3 @@ namespace std
 		}
 	};
 }
-
-#endif

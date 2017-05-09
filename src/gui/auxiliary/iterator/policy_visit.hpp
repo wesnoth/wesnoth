@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_AUXILIARY_ITERATOR_POLICY_VISIT_HPP_INCLUDED
-#define GUI_WIDGETS_AUXILIARY_ITERATOR_POLICY_VISIT_HPP_INCLUDED
+#pragma once
 
 #include "gui/auxiliary/iterator/walker.hpp"
 
@@ -125,5 +124,3 @@ class visit_level<true, level> : public visit::visit_level<level>
 } // namespace iteration
 
 } // namespace gui2
-
-#endif

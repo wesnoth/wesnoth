@@ -17,8 +17,7 @@
  *  General settings and defaults for scenarios.
  */
 
-#ifndef SETTINGS_HPP_INCLUDED
-#define SETTINGS_HPP_INCLUDED
+#pragma once
 
 #include <string>
 #include "game_classification.hpp"
@@ -85,5 +84,3 @@ namespace settings {
 	int get_xp_modifier(const std::string& value);
 
 } // namespace settings
-
-#endif

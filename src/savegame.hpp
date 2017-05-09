@@ -13,8 +13,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef SAVEGAME_H_INCLUDED
-#define SAVEGAME_H_INCLUDED
+#pragma once
 
 #include "config.hpp"
 #include "filesystem.hpp"
@@ -302,5 +301,3 @@ private:
 };
 
 } //end of namespace savegame
-
-#endif

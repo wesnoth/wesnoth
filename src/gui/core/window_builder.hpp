@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_AUXILIARY_WINDOW_BUILDER_HPP_INCLUDED
-#define GUI_AUXILIARY_WINDOW_BUILDER_HPP_INCLUDED
+#pragma once
 
 #include "gui/auxiliary/typed_formula.hpp"
 #include "gui/core/linked_group_definition.hpp"
@@ -214,5 +213,3 @@ private:
 window* build(CVideo& video, const builder_window::window_resolution* res);
 
 } // namespace gui2
-
-#endif

@@ -17,8 +17,7 @@
  * Desktop paths, storage media and bookmark functions.
  */
 
-#ifndef DESKTOP_PATHS_HPP_INCLUDED
-#define DESKTOP_PATHS_HPP_INCLUDED
+#pragma once
 
 #include "tstring.hpp"
 
@@ -103,5 +102,3 @@ void remove_user_bookmark(unsigned index);
 std::vector<bookmark_info> user_bookmarks();
 
 } // namespace desktop
-
-#endif

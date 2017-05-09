@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_AUXILIARY_OLD_MARKUP_INCLUDED
-#define GUI_AUXILIARY_OLD_MARKUP_INCLUDED
+#pragma once
 
 #include <string>
 
@@ -90,5 +89,3 @@ private:
 	bool default_;
 };
 }
-
-#endif

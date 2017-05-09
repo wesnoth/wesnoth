@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef USER_HANDLER_HPP_INCLUDED
-#define USER_HANDLER_HPP_INCLUDED
+#pragma once
 
 class config;
 
@@ -157,5 +156,3 @@ class user_handler {
 		 */
 		virtual std::string get_mail(const std::string& user) =0;
 };
-
-#endif //USER_HANDLER_HPP_INCLUDED

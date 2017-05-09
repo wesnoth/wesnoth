@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef EDITOR_PALETTES_H_INCLUDED
-#define EDITOR_PALETTES_H_INCLUDED
+#pragma once
 
 #include "editor/editor_display.hpp"
 #include "editor/palette/common_palette.hpp"
@@ -187,5 +186,3 @@ private:
 
 
 } //end namespace editor
-#endif // EDITOR_PALETTES_H_INCLUDED
-

@@ -17,8 +17,7 @@
  * Storyscreen parts and floating images representation.
  */
 
-#ifndef STORYSCREEN_PART_HPP_INCLUDED
-#define STORYSCREEN_PART_HPP_INCLUDED
+#pragma once
 
 #include "storyscreen/parser.hpp"
 
@@ -347,5 +346,3 @@ private:
 };
 
 } // end namespace storyscreen
-
-#endif /* ! STORYSCREEN_PART_HPP_INCLUDED */

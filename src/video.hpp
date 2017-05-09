@@ -11,8 +11,8 @@
 
    See the COPYING file for more details.
 */
-#ifndef VIDEO_HPP_INCLUDED
-#define VIDEO_HPP_INCLUDED
+
+#pragma once
 
 #include "events.hpp"
 #include "exceptions.hpp"
@@ -239,4 +239,3 @@ protected:
 };
 void trigger_full_redraw();
 }
-#endif

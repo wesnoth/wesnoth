@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef FORMATTER_HPP_INCLUDED
-#define FORMATTER_HPP_INCLUDED
+#pragma once
 
 #include <sstream>
 #include <utility>
@@ -78,5 +77,3 @@ public:
 private:
 	std::ostringstream stream_;
 };
-
-#endif

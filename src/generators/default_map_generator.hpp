@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef DEFAULT_MAP_GENERATOR_HPP_INCLUDED
-#define DEFAULT_MAP_GENERATOR_HPP_INCLUDED
+#pragma once
 
 #include "config.hpp"
 #include "generators/map_generator.hpp"
@@ -59,5 +58,3 @@ private:
 
 	generator_data data_;
 };
-
-#endif

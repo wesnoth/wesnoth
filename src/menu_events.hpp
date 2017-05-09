@@ -13,8 +13,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef MENU_EVENTS_H_INCLUDED
-#define MENU_EVENTS_H_INCLUDED
+#pragma once
 
 #include "chat_events.hpp"
 #include "floating_textbox.hpp"
@@ -152,5 +151,3 @@ private:
 	map_location last_search_hit_;
 };
 }
-
-#endif

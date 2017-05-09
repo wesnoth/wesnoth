@@ -14,8 +14,7 @@
 
 /** @file */
 
-#ifndef METRICS_HPP_INCLUDED
-#define METRICS_HPP_INCLUDED
+#pragma once
 
 #include <iosfwd>
 
@@ -78,5 +77,3 @@ private:
 };
 
 std::ostream& operator<<(std::ostream& out, metrics& met);
-
-#endif

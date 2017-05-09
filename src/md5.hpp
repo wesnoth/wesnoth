@@ -39,8 +39,7 @@ documentation and/or software.
 
 */
 
-#ifndef MD5_HPP_INCLUDED
-#define MD5_HPP_INCLUDED
+#pragma once
 
 #include <array>
 #include <cstdint>
@@ -94,5 +93,3 @@ private:
 			    uint4 s, uint4 ac);
 
 };
-
-#endif

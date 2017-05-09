@@ -17,8 +17,7 @@
  * Defines the exception classes for the layout algorithm.
  */
 
-#ifndef GUI_AUXILIRY_LAYOUT_EXCEPTION_HPP_INCLUDED
-#define GUI_AUXILIRY_LAYOUT_EXCEPTION_HPP_INCLUDED
+#pragma once
 
 #include <exception>
 
@@ -60,5 +59,3 @@ struct layout_exception_height_resize_failed
 };
 
 } // namespace gui2
-
-#endif

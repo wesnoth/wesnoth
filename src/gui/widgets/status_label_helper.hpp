@@ -11,8 +11,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_STATUS_LABEL_HELPER_HPP_INCLUDED
-#define GUI_WIDGETS_STATUS_LABEL_HELPER_HPP_INCLUDED
+#pragma once
 
 #include "gettext.hpp"
 #include "gui/core/event/dispatcher.hpp"
@@ -78,5 +77,3 @@ std::function<void()> bind_status_label(widget& find_in, const std::string& id,
 }
 
 } // namespace gui2
-
-#endif

@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_MATRIX_HPP_INCLUDED
-#define GUI_WIDGETS_MATRIX_HPP_INCLUDED
+#pragma once
 
 #include "gui/widgets/styled_widget.hpp"
 #include "gui/widgets/pane.hpp"
@@ -275,5 +274,3 @@ struct builder_matrix : public builder_styled_widget
 // }------------ END --------------
 
 } // namespace gui2
-
-#endif

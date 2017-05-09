@@ -14,8 +14,7 @@
 
 /** @file */
 
-#ifndef TIME_OF_DAY_HPP_INCLUDED
-#define TIME_OF_DAY_HPP_INCLUDED
+#pragma once
 
 #include "tstring.hpp"
 #include "utils/general.hpp"
@@ -114,5 +113,3 @@ struct time_of_day
 	 */
 	static void parse_times(const config& cfg, std::vector<time_of_day>& normal_times);
 };
-
-#endif

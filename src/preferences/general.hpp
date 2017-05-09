@@ -14,8 +14,7 @@
 
 /** @file */
 
-#ifndef PREFERENCES_HPP_INCLUDED
-#define PREFERENCES_HPP_INCLUDED
+#pragma once
 
 class display;
 
@@ -288,5 +287,3 @@ namespace preferences {
 	void set_damage_prediction_allow_monte_carlo_simulation(bool value);
 
 } // end namespace preferences
-
-#endif

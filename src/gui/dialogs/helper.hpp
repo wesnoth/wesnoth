@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_DIALOGS_HELPER_HPP_INCLUDED
-#define GUI_DIALOGS_HELPER_HPP_INCLUDED
+#pragma once
 
 #include "gui/widgets/window.hpp"
 
@@ -41,5 +40,3 @@ void dialog_callback(widget& caller)
 
 } // namespace dialogs
 } // namespace gui2
-
-#endif

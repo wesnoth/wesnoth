@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_DIALOGS_MP_DEPCHECK_SELECT_NEW_HPP_INCLUDED
-#define GUI_DIALOGS_MP_DEPCHECK_SELECT_NEW_HPP_INCLUDED
+#pragma once
 
 #include "gui/dialogs/modal_dialog.hpp"
 #include "game_initialization/depcheck.hpp"
@@ -67,4 +66,3 @@ private:
 };
 } // namespace dialogs
 } // namespace gui2
-#endif

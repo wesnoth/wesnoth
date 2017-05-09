@@ -15,8 +15,7 @@
  * Wrapper header to allow use of placeholder variables without a namespace.
  */
 
-#ifndef INCL_FUNCTIONAL_HPP_
-#define INCL_FUNCTIONAL_HPP_
+#pragma once
 
 #include "global.hpp"
 #include <functional>
@@ -115,5 +114,3 @@ This is also relied upon in several places.
 If behaviour #1 is needed, we can use boost::bind, though a lambda with unused arguments may be better.
 For behaviour #2, the bind_void function is provided.
 */
-
-#endif

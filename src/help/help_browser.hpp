@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef HELP_BROWSER_HPP
-#define HELP_BROWSER_HPP
+#pragma once
 
 #include <deque>                        // for deque
 #include <string>                       // for string
@@ -64,5 +63,3 @@ private:
 };
 
 } // end namespace help
-
-#endif

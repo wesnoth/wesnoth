@@ -13,8 +13,8 @@
 
    See the COPYING file for more details.
 */
-#ifndef VARIABLE_H_INCLUDED
-#define VARIABLE_H_INCLUDED
+
+#pragma once
 
 #include "config.hpp"
 #include "map/location.hpp"
@@ -255,5 +255,3 @@ private:
 	const std::string player_;
 	unsigned int recall_index_;
 };
-
-#endif

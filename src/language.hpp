@@ -11,8 +11,8 @@
 
    See the COPYING file for more details.
 */
-#ifndef LANGUAGE_HPP_INCLUDED
-#define LANGUAGE_HPP_INCLUDED
+
+#pragma once
 
 #include "tstring.hpp"
 #include "serialization/string_utils.hpp"
@@ -92,5 +92,3 @@ void init_textdomains(const config& cfg);
 bool init_strings(const config& cfg);
 
 bool load_language_list();
-
-#endif

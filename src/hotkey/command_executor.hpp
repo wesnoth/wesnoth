@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef COMMAND_EXECUTOR_HPP_INCLUDED
-#define COMMAND_EXECUTOR_HPP_INCLUDED
+#pragma once
 
 #include "hotkey_command.hpp"
 #include "game_end_exceptions.hpp"
@@ -183,4 +182,3 @@ private:
 
 
 }
-#endif

@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef SERVER_HPP_INCLUDED
-#define SERVER_HPP_INCLUDED
+#pragma once
 
 #include "config.hpp"
 #include "server/user_handler.hpp"
@@ -227,5 +226,3 @@ private:
 };
 
 }
-
-#endif

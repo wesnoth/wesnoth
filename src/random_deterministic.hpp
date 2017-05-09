@@ -11,8 +11,9 @@
 
    See the COPYING file for more details.
 */
-#ifndef RANDOM_DETERMINISTIC_H_INCLUDED
-#define RANDOM_DETERMINISTIC_H_INCLUDED
+
+#pragma once
+
 #include "random.hpp"
 #include "mt_rng.hpp"
 
@@ -49,5 +50,3 @@ namespace randomness
 		rng_deterministic new_rng_;
 	};
 }
-
-#endif

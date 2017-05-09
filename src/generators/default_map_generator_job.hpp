@@ -14,8 +14,7 @@
 
 /** @file */
 
-#ifndef DEFAULT_MAP_GENERATOR_JOB_HPP_INCLUDED
-#define DEFAULT_MAP_GENERATOR_JOB_HPP_INCLUDED
+#pragma once
 
 class config;
 
@@ -60,4 +59,3 @@ private:
 	const config& game_config_;
 
 };
-#endif

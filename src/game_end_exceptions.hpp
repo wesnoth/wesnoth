@@ -19,8 +19,7 @@
  * completion of a scenario, campaign or turn.
  */
 
-#ifndef GAME_END_EXCEPTIONS_HPP_INCLUDED
-#define GAME_END_EXCEPTIONS_HPP_INCLUDED
+#pragma once
 
 #include "lua_jailbreak_exception.hpp"
 
@@ -114,4 +113,3 @@ inline void throw_quit_game_exception()
 	//   Quit but continue with the [endlevel] instead.
 	throw quit_game_exception();
 }
-#endif /* ! GAME_END_EXCEPTIONS_HPP_INCLUDED */

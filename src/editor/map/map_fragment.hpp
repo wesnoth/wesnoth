@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef EDITOR_MAP_FRAGMENT_HPP_INCLUDED
-#define EDITOR_MAP_FRAGMENT_HPP_INCLUDED
+#pragma once
 
 #include "editor/map/editor_map.hpp"
 
@@ -138,5 +137,3 @@ class map_fragment
 };
 
 } //end namespace editor
-
-#endif

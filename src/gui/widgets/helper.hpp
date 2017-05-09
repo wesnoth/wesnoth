@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_HELPER_HPP_INCLUDED
-#define GUI_WIDGETS_HELPER_HPP_INCLUDED
+#pragma once
 
 #include "color.hpp"
 #include "font/text.hpp"
@@ -142,5 +141,3 @@ point get_mouse_position();
 std::string debug_truncate(const std::string& text);
 
 } // namespace gui2
-
-#endif

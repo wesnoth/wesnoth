@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef SHA1_H_INCLUDED
-#define SHA1_H_INCLUDED
+#pragma once
 
 #include <string>
 #include <cstdint>
@@ -34,5 +33,3 @@ private:
 	uint32_t H0, H1, H2, H3, H4;
 
 };
-
-#endif

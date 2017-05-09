@@ -11,8 +11,8 @@
 
    See the COPYING file for more details.
 */
-#ifndef TEAM_H_INCLUDED
-#define TEAM_H_INCLUDED
+
+#pragma once
 
 #include "color_range.hpp"
 #include "game_config.hpp"
@@ -432,6 +432,3 @@ private:
 //function which will validate a side. Throws game::game_error
 //if the side is invalid
 void validate_side(int side); //throw game::game_error
-
-#endif
-

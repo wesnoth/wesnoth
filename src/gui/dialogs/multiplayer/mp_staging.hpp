@@ -11,8 +11,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_DIALOGS_MP_STAGING_HPP_INCLUDED
-#define GUI_DIALOGS_MP_STAGING_HPP_INCLUDED
+#pragma once
 
 #include "ai/configuration.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
@@ -93,5 +92,3 @@ private:
 
 } // namespace dialogs
 } // namespace gui2
-
-#endif

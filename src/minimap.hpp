@@ -11,8 +11,8 @@
 
    See the COPYING file for more details.
 */
-#ifndef MINIMAP_HPP_INCLUDED
-#define MINIMAP_HPP_INCLUDED
+
+#pragma once
 
 #include <cstddef>
 #include <map>
@@ -29,5 +29,3 @@ namespace image {
 	///the surface returned must be freed by the user
 	surface getMinimap(int w, int h, const gamemap &map_, const team *vm = nullptr, const std::map<map_location,unsigned int> *reach_map = nullptr);
 }
-
-#endif

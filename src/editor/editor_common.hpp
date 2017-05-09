@@ -18,8 +18,7 @@
  * logging macro definitions and base exception declarations
  */
 
-#ifndef EDITOR_EDITOR_COMMON_HPP_INCLUDED
-#define EDITOR_EDITOR_COMMON_HPP_INCLUDED
+#pragma once
 
 #include "exceptions.hpp"
 #include "log.hpp"
@@ -64,5 +63,3 @@ class map_fragment;
 class mouse_action;
 
 } //end namespace editor
-
-#endif

@@ -17,8 +17,7 @@
  * @file
  */
 
-#ifndef AI_COMPOSITE_ENGINE_FAI_HPP_INCLUDED
-#define AI_COMPOSITE_ENGINE_FAI_HPP_INCLUDED
+#pragma once
 
 #include "ai/composite/engine.hpp"
 #include "ai/default/contexts.hpp"
@@ -48,5 +47,3 @@ private:
 };
 
 } //end of namespace ai
-
-#endif

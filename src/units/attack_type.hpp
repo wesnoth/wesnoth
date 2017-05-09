@@ -11,8 +11,8 @@
 
    See the COPYING file for more details.
 */
-#ifndef UNIT_ATTACK_TYPE_H_INCLUDED
-#define UNIT_ATTACK_TYPE_H_INCLUDED
+
+#pragma once
 
 #include "map/location.hpp"
 #include "tstring.hpp"
@@ -138,5 +138,3 @@ inline attack_itors make_attack_itors(attack_list& atks) {
 inline const_attack_itors make_attack_itors(const attack_list& atks) {
 	return boost::make_iterator_range(boost::make_indirect_iterator(atks.begin()), boost::make_indirect_iterator(atks.end()));
 }
-
-#endif

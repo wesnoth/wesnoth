@@ -11,8 +11,8 @@
 
    See the COPYING file for more details.
 */
-#ifndef GAME_PREFERENCES_HPP_INCLUDED
-#define GAME_PREFERENCES_HPP_INCLUDED
+
+#pragma once
 
 class game_board;
 class gamemap;
@@ -331,5 +331,3 @@ private:
 };
 
 }
-
-#endif

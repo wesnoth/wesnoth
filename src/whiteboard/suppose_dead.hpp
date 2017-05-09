@@ -16,8 +16,7 @@
  * @file
  */
 
-#ifndef WB_SUPPOSE_DEAD_HPP_
-#define WB_SUPPOSE_DEAD_HPP_
+#pragma once
 
 #include "action.hpp"
 
@@ -87,6 +86,3 @@ private:
 std::ostream &operator<<(std::ostream &s, suppose_dead_ptr sup_d);
 std::ostream &operator<<(std::ostream &s, suppose_dead_const_ptr sup_d);
 } // end namespace wb
-
-#endif /* WB_SUPPOSE_DEAD_HPP_ */
-

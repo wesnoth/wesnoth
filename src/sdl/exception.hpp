@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef SDL_EXCEPTION_HPP_INCLUDED
-#define SDL_EXCEPTION_HPP_INCLUDED
+#pragma once
 
 /**
  * @file
@@ -41,5 +40,3 @@ struct exception : public game::error
 
 
 } // namespace sdl
-
-#endif

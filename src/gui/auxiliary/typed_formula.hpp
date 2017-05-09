@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_FORMULA_HPP_INCLUDED
-#define GUI_WIDGETS_FORMULA_HPP_INCLUDED
+#pragma once
 
 #include "color.hpp"
 #include "formula/callable.hpp"
@@ -274,5 +273,3 @@ inline void typed_formula<T>::convert(const std::string& str)
 }
 
 } // namespace gui2
-
-#endif

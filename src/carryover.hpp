@@ -11,8 +11,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef CARRYOVER_H_INCLUDED
-#define CARRYOVER_H_INCLUDED
+#pragma once
 
 class team;
 class config;
@@ -106,6 +105,3 @@ private:
 	std::string next_scenario_;    /**< the scenario coming next (for campaigns) */
 	int next_underlying_unit_id_;
 };
-
-
-#endif

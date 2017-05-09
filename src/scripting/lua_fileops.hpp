@@ -12,9 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef LUA_FILEOPS_HPP_INCLUDED
-#define LUA_FILEOPS_HPP_INCLUDED
-
+#pragma once
 /**
  * This namespace contains the implementations for wesnoth's
  * safe fileops for lua.
@@ -29,5 +27,3 @@ int intf_read_file(lua_State*);
 int load_file(lua_State*);
 
 } // end namespace lua_fileops
-
-#endif

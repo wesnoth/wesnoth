@@ -13,8 +13,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef ADDON_MANAGER_UI_HPP_INCLUDED
-#define ADDON_MANAGER_UI_HPP_INCLUDED
+#pragma once
 
 #include <string>
 #include <vector>
@@ -42,5 +41,3 @@ bool manage_addons(CVideo& v);
  * @return @a true when we successfully installed the target (possibly the user chose to ignore failures)
  */
 bool ad_hoc_addon_fetch_session(CVideo& v, const std::vector<std::string>& addon_ids);
-
-#endif

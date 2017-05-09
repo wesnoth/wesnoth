@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_DIALOGS_DIALOG_HPP_INCLUDED
-#define GUI_DIALOGS_DIALOG_HPP_INCLUDED
+#pragma once
 
 #include "gui/auxiliary/field-fwd.hpp"
 
@@ -426,5 +425,3 @@ private:
 
 } // namespace dialogs
 } // namespace gui2
-
-#endif

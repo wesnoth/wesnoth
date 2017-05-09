@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef ADDON_STATE_HPP_INCLUDED
-#define ADDON_STATE_HPP_INCLUDED
+#pragma once
 
 #include "addon/info.hpp"
 #include <map>
@@ -105,5 +104,3 @@ enum ADDON_SORT_DIRECTION {
 	DIRECTION_ASCENDING,		/**< Ascending sort. */
 	DIRECTION_DESCENDING		/**< Descending sort. */
 };
-
-#endif

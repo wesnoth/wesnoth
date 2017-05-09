@@ -21,8 +21,7 @@
  *
  **/
 
-#ifndef DRAWABLE_UNIT_H_INCLUDED
-#define DRAWABLE_UNIT_H_INCLUDED
+#pragma once
 
 #include "map/location.hpp"
 #include "utils/math.hpp"
@@ -83,4 +82,3 @@ private:
 	 */
 	const SDL_Rect& calculate_energy_bar(surface surf) const;
 };
-#endif

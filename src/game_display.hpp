@@ -14,8 +14,7 @@
 
 /** @file */
 
-#ifndef GAME_DISPLAY_H_INCLUDED
-#define GAME_DISPLAY_H_INCLUDED
+#pragma once
 
 class config;
 class tod_manager;
@@ -263,5 +262,3 @@ private:
 	bool needs_rebuild_;
 
 };
-
-#endif

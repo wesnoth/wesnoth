@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef INC_LOBBY_INFO
-#define INC_LOBBY_INFO
+#pragma once
 
 #include "config.hpp"
 #include "game_initialization/lobby_data.hpp"
@@ -139,4 +138,3 @@ void do_notify(notify_mode mode, const std::string & sender, const std::string &
 inline void do_notify(notify_mode mode) { do_notify(mode, "", ""); }
 
 }
-#endif

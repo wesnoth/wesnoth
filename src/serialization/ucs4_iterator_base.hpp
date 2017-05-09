@@ -11,8 +11,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef UCS4_ITERATOR_BASE_HPP_INCLUDED
-#define UCS4_ITERATOR_BASE_HPP_INCLUDED
+#pragma once
 
 #include <iterator>  //input_iterator_tag
 #include <utility>   //pair
@@ -107,5 +106,3 @@ namespace ucs4
 	};
 
 }
-
-#endif

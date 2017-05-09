@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef EDITOR_MOUSE_ACTION_HPP
-#define EDITOR_MOUSE_ACTION_HPP
+#pragma once
 
 #include "editor/action/action_base.hpp"
 #include "editor/map/editor_map.hpp"
@@ -397,5 +396,3 @@ private:
 
 
 } //end namespace editor
-
-#endif

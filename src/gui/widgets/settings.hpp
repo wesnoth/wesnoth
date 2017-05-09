@@ -17,8 +17,7 @@
  * This file contains the settings handling of the widget library.
  */
 
-#ifndef GUI_WIDGETS_SETTING_HPP_INCLUDED
-#define GUI_WIDGETS_SETTING_HPP_INCLUDED
+#pragma once
 
 #include "utils/functional.hpp"
 #include "config.hpp"
@@ -175,5 +174,3 @@ std::vector<game_tip> get_tips();
 }
 
 } // namespace gui2
-
-#endif

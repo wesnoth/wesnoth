@@ -13,8 +13,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_DIALOGS_PREFERENCES_DIALOG_HPP_INCLUDED
-#define GUI_DIALOGS_PREFERENCES_DIALOG_HPP_INCLUDED
+#pragma once
 
 #include "config.hpp"
 #include "preferences/game.hpp"
@@ -142,5 +141,3 @@ private:
 
 } // namespace dialogs
 } // namespace gui2
-
-#endif /* ! GUI_DIALOGS_PREFERENCES_DIALOG_HPP_INCLUDED */

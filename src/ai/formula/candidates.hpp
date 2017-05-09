@@ -17,8 +17,7 @@
  * Defines formula ai candidate actions - headers
  * */
 
-#ifndef AI_FORMULA_CANDIDATES_HPP_INCLUDED
-#define AI_FORMULA_CANDIDATES_HPP_INCLUDED
+#pragma once
 
 #include <set>
 
@@ -105,6 +104,3 @@ protected:
 };
 
 }
-
-#endif	/* AI_FORMULA_CANDIDATES_HPP_INCLUDED */
-

@@ -14,8 +14,7 @@
 
 /** @file */
 
-#ifndef COLOR_RANGE_H_INCLUDED
-#define COLOR_RANGE_H_INCLUDED
+#pragma once
 
 #include "color.hpp"
 
@@ -134,5 +133,3 @@ std::vector<color_t> palette(const color_range& cr);
  *               are the result of applying the color range conversion on it.
  */
 color_range_map recolor_range(const color_range& new_rgb, const std::vector<color_t>& old_rgb);
-
-#endif

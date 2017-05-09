@@ -18,8 +18,7 @@
  * a.k.a. conditional actions WML.
  */
 
-#ifndef GAME_EVENTS_CONDITIONAL_WML_H_INCLUDED
-#define GAME_EVENTS_CONDITIONAL_WML_H_INCLUDED
+#pragma once
 
 class  config;
 class vconfig;
@@ -36,6 +35,3 @@ namespace game_events
 		bool variable_matches(const vconfig& cfg);
 	}
 }
-
-#endif // GAME_EVENTS_CONDITIONAL_WML_H_INCLUDED
-

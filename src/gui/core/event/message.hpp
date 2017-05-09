@@ -19,8 +19,7 @@
  * The class is used in the @ref gui2::event::signal_message_function
  */
 
-#ifndef GUI_WIDGETS_AUXILIARY_EVENT_MESSAGE_HPP_INCLUDED
-#define GUI_WIDGETS_AUXILIARY_EVENT_MESSAGE_HPP_INCLUDED
+#pragma once
 
 #include "gui/widgets/helper.hpp"
 
@@ -95,5 +94,3 @@ struct message_show_helptip : public message
 } // namespace event
 
 } // namespace gui2
-
-#endif

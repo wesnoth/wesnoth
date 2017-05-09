@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_SCROLLBAR_CONTAINER_HPP_INCLUDED
-#define GUI_WIDGETS_SCROLLBAR_CONTAINER_HPP_INCLUDED
+#pragma once
 
 #include "gui/core/notifiee.hpp"
 #include "gui/widgets/container_base.hpp"
@@ -574,5 +573,3 @@ public:
 };
 
 } // namespace gui2
-
-#endif

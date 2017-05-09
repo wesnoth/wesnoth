@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_TEXT_HPP_INCLUDED
-#define GUI_WIDGETS_TEXT_HPP_INCLUDED
+#pragma once
 
 //#include "gui/core/event/dispatcher.hpp"
 #include "gui/widgets/styled_widget.hpp"
@@ -489,5 +488,3 @@ private:
 };
 
 } // namespace gui2
-
-#endif

@@ -21,12 +21,7 @@
  * real job. This is done for the unit tests but should normally not be done.
  */
 
-#ifdef LEXICAL_CAST_DEBUG
-#undef LEXICAL_CAST_HPP_INCLUDED
-#endif
-
-#ifndef LEXICAL_CAST_HPP_INCLUDED
-#define LEXICAL_CAST_HPP_INCLUDED
+#pragma once
 
 #ifdef LEXICAL_CAST_DEBUG
 
@@ -490,6 +485,3 @@ struct lexical_caster<
 };
 
 } // namespace implementation
-
-#endif
-

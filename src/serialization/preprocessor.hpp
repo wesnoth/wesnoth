@@ -15,8 +15,7 @@
 
 /** @file */
 
-#ifndef SERIALIZATION_PREPROCESSOR_HPP_INCLUDED
-#define SERIALIZATION_PREPROCESSOR_HPP_INCLUDED
+#pragma once
 
 #include <iosfwd>
 #include <map>
@@ -77,5 +76,3 @@ filesystem::scoped_istream preprocess_file(const std::string& fname, preproc_map
 
 void preprocess_resource(const std::string& res_name, preproc_map *defines_map,
 			bool write_cfg=false, bool write_plain_cfg=false, const std::string& target_directory="");
-
-#endif

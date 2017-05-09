@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef CAMPAIGN_SERVER_BLACKLIST_HPP_INCLUDED
-#define CAMPAIGN_SERVER_BLACKLIST_HPP_INCLUDED
+#pragma once
 
 #include "config.hpp"
 
@@ -97,5 +96,3 @@ private:
 };
 
 }
-
-#endif

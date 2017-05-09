@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef EDITOR_MAP_CONTEXT_HPP_INCLUDED
-#define EDITOR_MAP_CONTEXT_HPP_INCLUDED
+#pragma once
 
 #include "editor/map/editor_map.hpp"
 #include "game_classification.hpp"
@@ -516,5 +515,3 @@ public:
 
 
 } //end namespace editor
-
-#endif

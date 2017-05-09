@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef TOOLTIPS_HPP_INCLUDED
-#define TOOLTIPS_HPP_INCLUDED
+#pragma once
 
 #include <string>
 #include "sdl/surface.hpp"
@@ -45,5 +44,3 @@ void process(int mousex, int mousey);
 bool click(int mousex, int mousey);
 
 }
-
-#endif

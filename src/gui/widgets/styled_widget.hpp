@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_CONTROL_HPP_INCLUDED
-#define GUI_WIDGETS_CONTROL_HPP_INCLUDED
+#pragma once
 
 #include "gui/core/widget_definition.hpp"
 #include "gui/core/window_builder.hpp"
@@ -571,5 +570,3 @@ public:
 // }------------ END --------------
 
 } // namespace gui2
-
-#endif

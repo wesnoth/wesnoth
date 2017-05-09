@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef EDITOR_EDITOR_MAIN_H_INCLUDED
-#define EDITOR_EDITOR_MAIN_H_INCLUDED
+#pragma once
 
 #include <string>
 
@@ -38,5 +37,3 @@ enum EXIT_STATUS {
 EXIT_STATUS start(const config& game_config, CVideo& video, const std::string& filename = "", bool take_screenshot = false, const std::string& screenshot_filename = "map_screenshot.bmp");
 
 } //end namespace editor
-
-#endif

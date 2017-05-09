@@ -19,8 +19,7 @@
  * result of combat.
  */
 
-#ifndef ACTIONS_ATTACK_H_INCLUDED
-#define ACTIONS_ATTACK_H_INCLUDED
+#pragma once
 
 struct combatant;
 struct map_location;
@@ -239,5 +238,3 @@ int generic_combat_modifier(int lawful_bonus, unit_type::ALIGNMENT alignment,
 bool backstab_check(const map_location& attacker_loc,
                     const map_location& defender_loc,
                     const unit_map& units, const std::vector<team>& teams);
-
-#endif

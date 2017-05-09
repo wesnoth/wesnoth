@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef HOTKEY_COMMAND_HPP_INCLUDED
-#define HOTKEY_COMMAND_HPP_INCLUDED
+#pragma once
 
 #include "tooltips.hpp"
 #include "tstring.hpp"
@@ -304,5 +303,3 @@ void clear_hotkey_commands();
 /// returns get_hotkey_command(command).id
 HOTKEY_COMMAND get_id(const std::string& command);
 }
-
-#endif

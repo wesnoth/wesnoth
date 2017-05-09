@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef RACE_HPP_INCLUDED
-#define RACE_HPP_INCLUDED
+#pragma once
 
 #include "config.hpp"
 #include "utils/name_generator.hpp"
@@ -71,5 +70,3 @@ unit_race::GENDER string_gender(const std::string& str,unit_race::GENDER def=uni
 const std::string& gender_string(unit_race::GENDER gender);
 
 typedef std::map<std::string,unit_race> race_map;
-
-#endif

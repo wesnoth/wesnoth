@@ -17,8 +17,7 @@
  * candidate action framework
  */
 
-#ifndef AI_COMPOSITE_RCA_HPP_INCLUDED
-#define AI_COMPOSITE_RCA_HPP_INCLUDED
+#pragma once
 
 #include "ai/composite/component.hpp"
 #include "ai/composite/contexts.hpp"
@@ -200,6 +199,4 @@ std::ostream &operator<<(std::ostream &s, ai::candidate_action const &ca);
 
 #ifdef _MSC_VER
 #pragma warning(pop)
-#endif
-
 #endif

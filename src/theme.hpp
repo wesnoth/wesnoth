@@ -17,8 +17,7 @@
  *  Definitions related to theme-support.
  */
 
-#ifndef THEME_HPP_INCLUDED
-#define THEME_HPP_INCLUDED
+#pragma once
 
 #include "color.hpp"
 #include "config.hpp"
@@ -303,5 +302,3 @@ private:
 
 	border_t border_;
 };
-
-#endif

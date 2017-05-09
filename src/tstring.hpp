@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef TSTRING_H_INCLUDED
-#define TSTRING_H_INCLUDED
+#pragma once
 
 #include <memory>
 #include <string>
@@ -196,5 +195,3 @@ inline bool operator!=(const std::string &a, const t_string &b)    { return b !=
 inline bool operator!=(const char *a, const t_string &b)           { return b != a; }
 inline t_string operator+(const std::string &a, const t_string &b) { return t_string(a) + b; }
 inline t_string operator+(const char *a, const t_string &b)        { return t_string(a) + b; }
-#endif
-

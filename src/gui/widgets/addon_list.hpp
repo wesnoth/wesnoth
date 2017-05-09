@@ -11,8 +11,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_ADDON_LIST_HPP_INCLUDED
-#define GUI_WIDGETS_ADDON_LIST_HPP_INCLUDED
+#pragma once
 
 #include "addon/info.hpp"
 #include "addon/manager.hpp"
@@ -210,5 +209,3 @@ private:
 };
 }
 }
-
-#endif

@@ -18,8 +18,7 @@
  * play controller.
  */
 
-#ifndef HOTKEY_HANDLER_HPP_INCL_
-#define HOTKEY_HANDLER_HPP_INCL_
+#pragma once
 
 #include "play_controller.hpp"
 
@@ -134,5 +133,3 @@ public:
 	bool in_context_menu(hotkey::HOTKEY_COMMAND command) const;
 
 };
-
-#endif

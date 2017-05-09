@@ -16,8 +16,7 @@
  * Manage the empty-palette in the editor.
  */
 
-#ifndef EMPTY_PALETTE_H_INCLUDED
-#define EMPTY_PALETTE_H_INCLUDED
+#pragma once
 
 #include "editor/palette/editor_palettes.hpp"
 
@@ -81,4 +80,3 @@ private:
 };
 
 }
-#endif

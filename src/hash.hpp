@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef HASH_HPP_INCLUDED
-#define HASH_HPP_INCLUDED
+#pragma once
 
 #include <array>
 #include <cstdint>
@@ -36,5 +35,3 @@ std::string encode_hash(const std::array<uint8_t, 16>& input);
 std::string create_hash(const std::string& password, const std::string& salt, int iteration_count =10);
 
 } // namespace utils
-
-#endif // HASH_HPP_INCLUDED

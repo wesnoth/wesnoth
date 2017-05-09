@@ -14,8 +14,7 @@
 
 /** @file */
 
-#ifndef CLIPBOARD_HPP_INCLUDED
-#define CLIPBOARD_HPP_INCLUDED
+#pragma once
 
 #include <string>
 
@@ -54,5 +53,3 @@ bool available();
 } // end namespace clipboard
 
 } // end namespace desktop
-
-#endif

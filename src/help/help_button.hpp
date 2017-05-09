@@ -12,8 +12,8 @@
    See the COPYING file for more details.
 */
 
-#ifndef HELP_BUTTON_HPP
-#define HELP_BUTTON_HPP
+#pragma once
+
 #include "hotkey/command_executor.hpp"
 #include "construct_dialog.hpp"
 
@@ -41,5 +41,3 @@ private:
 };
 
 } // end namespace help
-
-#endif

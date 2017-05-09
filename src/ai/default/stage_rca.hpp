@@ -17,8 +17,7 @@
  * candidate action evaluator
  */
 
-#ifndef AI_TESTING_STAGE_RCA_HPP_INCLUDED
-#define AI_TESTING_STAGE_RCA_HPP_INCLUDED
+#pragma once
 
 #include "ai/composite/rca.hpp"
 #include "ai/composite/stage.hpp"
@@ -62,6 +61,4 @@ private:
 
 #ifdef _MSC_VER
 #pragma warning(pop)
-#endif
-
 #endif

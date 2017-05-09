@@ -11,8 +11,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef TELEPORT_H_INCLUDED
-#define TELEPORT_H_INCLUDED
+#pragma once
 
 #include "config.hpp"
 #include "map/location.hpp"
@@ -186,5 +185,3 @@ private:
 };
 
 }
-
-#endif /* TELEPORT_H_INCLUDED */

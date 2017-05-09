@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef IMAGE_MODIFICATIONS_HPP_INCLUDED
-#define IMAGE_MODIFICATIONS_HPP_INCLUDED
+#pragma once
 
 #include "color_range.hpp"
 #include "lua_jailbreak_exception.hpp"
@@ -609,5 +608,3 @@ private:
 };
 
 } /* end namespace image */
-
-#endif /* !defined(IMAGE_MODIFICATIONS_HPP_INCLUDED) */

@@ -16,8 +16,7 @@
  * @file
  */
 
-#ifndef ATTACK_HPP_
-#define ATTACK_HPP_
+#pragma once
 
 #include "move.hpp"
 
@@ -89,5 +88,3 @@ std::ostream& operator<<(std::ostream &s, attack_ptr attack);
 std::ostream& operator<<(std::ostream &s, attack_const_ptr attack);
 
 } // end namespace wb
-
-#endif /* ATTACK_HPP_ */

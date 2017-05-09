@@ -12,16 +12,13 @@
    See the COPYING file for more details.
 */
 
-#ifndef SCHEMA_VALIDATOR_HPP
-#define SCHEMA_VALIDATOR_HPP
+#pragma once
 
 #include "serialization/validator.hpp"
 #include "serialization/tag.hpp"
 
 #include "config_cache.hpp"
 #include "serialization/parser.hpp"
-
-
 
 #include <boost/regex.hpp>
 
@@ -149,5 +146,3 @@ private:
 	 std::map<std::string,boost::regex> types_;
 };
 }//namespace schema_validation{
-
-#endif // SCHEMA_VALIDATOR_HPP

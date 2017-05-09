@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef FONT_TEXT_SURFACE_HPP
-#define FONT_TEXT_SURFACE_HPP
+#pragma once
 
 #include "font_id.hpp" // for text_chunk
 #include "color.hpp"
@@ -65,5 +64,3 @@ private:
 };
 
 } // end namespace font
-
-#endif

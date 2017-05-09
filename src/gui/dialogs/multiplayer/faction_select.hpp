@@ -11,8 +11,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_DIALOGS_FACTION_SELECT_HPP_INCLUDED
-#define GUI_DIALOGS_FACTION_SELECT_HPP_INCLUDED
+#pragma once
 
 #include "game_initialization/flg_manager.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
@@ -58,5 +57,3 @@ private:
 
 } // namespace dialogs
 } // namespace gui2
-
-#endif /* ! GUI_DIALOGS_FACTION_SELECT_HPP_INCLUDED */

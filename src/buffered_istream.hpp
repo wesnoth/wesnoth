@@ -17,8 +17,7 @@
  * Helper class for buffering a @c std::istream.
  */
 
-#ifndef BUFFERED_ISTREAM_HPP_INCLUDED
-#define BUFFERED_ISTREAM_HPP_INCLUDED
+#pragma once
 
 #include "utils/general.hpp"
 
@@ -172,5 +171,3 @@ private:
 		}
 	}
 };
-
-#endif

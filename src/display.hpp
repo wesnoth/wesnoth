@@ -30,8 +30,7 @@
  *   for the current unit.
  */
 
-#ifndef DISPLAY_H_INCLUDED
-#define DISPLAY_H_INCLUDED
+#pragma once
 
 class config;
 class fake_unit_manager;
@@ -1068,7 +1067,3 @@ private:
 	display& display_;
 	bool blind;
 };
-
-
-#endif
-

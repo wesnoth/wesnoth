@@ -14,8 +14,7 @@
 
 /// This class encapsulates the recall list of a team.
 
-#ifndef RECALL_LIST_MGR_HPP
-#define RECALL_LIST_MGR_HPP
+#pragma once
 
 #include "units/ptr.hpp"
 
@@ -64,5 +63,3 @@ private:
 
 	friend class ai::readonly_context_impl; //!< Friend AI module for ease of implementation there.
 };
-
-#endif

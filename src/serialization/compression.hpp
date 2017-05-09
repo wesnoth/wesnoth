@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef COMPRESSION_HPP_INCLUDED
-#define COMPRESSION_HPP_INCLUDED
+#pragma once
 
 #include <string>
 
@@ -37,5 +36,3 @@ namespace compression {
 		return "";
 	}
 }
-
-#endif

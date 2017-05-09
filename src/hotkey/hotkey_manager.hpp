@@ -12,9 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef HOTKEY_MANAGER_HPP_INCLUDED
-#define HOTKEY_MANAGER_HPP_INCLUDED
-
+#pragma once
 
 /* The hotkey system allows hotkey definitions to be loaded from
  * configuration objects, and then detect if a keyboard event
@@ -33,5 +31,3 @@ public:
 };
 
 }
-
-#endif

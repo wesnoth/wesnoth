@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef SINGLEPLAYER_HPP_INCLUDED
-#define SINGLEPLAYER_HPP_INCLUDED
+#pragma once
 
 #include "game_launcher.hpp"
 #include "create_engine.hpp"
@@ -32,5 +31,3 @@ bool enter_connect_mode(CVideo& video, const config& game_config,
 	saved_game& state);
 
 } // end namespace sp
-
-#endif

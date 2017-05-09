@@ -12,9 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef PLAYER_HPP_INCLUDED
-#define PLAYER_HPP_INCLUDED
-
+#pragma once
 
 #include "simple_wml.hpp"
 
@@ -87,5 +85,3 @@ private:
 };
 
 } //namespace wesnothd
-
-#endif

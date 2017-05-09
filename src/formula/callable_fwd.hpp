@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef FORMULA_CALLABLE_FWD_HPP_INCLUDED
-#define FORMULA_CALLABLE_FWD_HPP_INCLUDED
+#pragma once
 
 #include <memory>
 #include <vector>
@@ -45,5 +44,3 @@ using const_formula_callable_ptr = std::shared_ptr<const formula_callable>;
 using formula_seen_stack = std::vector<const_formula_callable_ptr>;
 
 }
-
-#endif

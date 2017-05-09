@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef CONTEXT_MANAGER_HPP_INCLUDED
-#define CONTEXT_MANAGER_HPP_INCLUDED
+#pragma once
 
 #include "editor/map/map_context.hpp"
 #include "preferences/editor.hpp"
@@ -322,5 +321,3 @@ private:
 };
 
 }
-
-#endif

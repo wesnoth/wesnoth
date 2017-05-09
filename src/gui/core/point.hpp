@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_LIB_TYPES_POINT_HPP_INCLUDED
-#define GUI_LIB_TYPES_POINT_HPP_INCLUDED
+#pragma once
 
 #include <iosfwd>
 
@@ -74,5 +73,3 @@ std::ostream& operator<<(std::ostream& stream, const point& point);
 
 
 } // namespace gui2
-
-#endif

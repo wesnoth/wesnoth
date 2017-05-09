@@ -13,8 +13,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef SOUND_MUSIC_TRACK_HPP_INCLUDED
-#define SOUND_MUSIC_TRACK_HPP_INCLUDED
+#pragma once
 
 #include <string>
 #include <memory>
@@ -78,5 +77,3 @@ inline bool operator==(const sound::music_track& a, const sound::music_track& b)
 inline bool operator!=(const sound::music_track& a, const sound::music_track& b) {
 	return a.file_path() != b.file_path();
 }
-
-#endif /* ! SOUND_MUSIC_TRACK_HPP_INCLUDED */

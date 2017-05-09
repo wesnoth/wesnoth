@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef SCRIPTING_LUA_UNIT_PREFERENCES_HPP
-#define SCRIPTING_LUA_UNIT_PREFERENCES_HPP
+#pragma once
 
 #include <string>
 
@@ -23,5 +22,3 @@ namespace lua_preferences
 {
 	std::string register_table(lua_State* L);
 }
-
-#endif

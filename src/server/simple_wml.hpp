@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef SIMPLE_WML_HPP_INCLUDED
-#define SIMPLE_WML_HPP_INCLUDED
+#pragma once
 
 #include <cstring>
 
@@ -301,5 +300,3 @@ private:
 };
 
 }
-
-#endif

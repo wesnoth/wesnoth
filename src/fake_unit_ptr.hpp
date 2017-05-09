@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef INCL_FAKE_UNIT_HPP_
-#define INCL_FAKE_UNIT_HPP_
+#pragma once
 
 #include "units/ptr.hpp"
 
@@ -72,5 +71,3 @@ public:
 	explicit operator bool() const
 	{ return unit_.get() != nullptr; }
 };
-
-#endif

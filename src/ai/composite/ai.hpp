@@ -17,8 +17,7 @@
  * Composite AI with turn sequence which is a vector of stages
  */
 
-#ifndef AI_COMPOSITE_AI_HPP_INCLUDED
-#define AI_COMPOSITE_AI_HPP_INCLUDED
+#pragma once
 
 #include "ai/composite/contexts.hpp"
 #include "ai/composite/component.hpp"
@@ -135,6 +134,4 @@ protected:
 
 #ifdef _MSC_VER
 #pragma warning(pop)
-#endif
-
 #endif

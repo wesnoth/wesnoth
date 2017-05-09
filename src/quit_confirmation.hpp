@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef QUIT_CONFIRMATION_HPP_INCLUDED
-#define QUIT_CONFIRMATION_HPP_INCLUDED
+#pragma once
 
 class CVideo;
 
@@ -58,5 +57,3 @@ private:
 
 	std::function<bool()> prompt_;
 };
-
-#endif

@@ -18,8 +18,7 @@
  * information about tags and keys while annotation parsing.
  */
 
-#ifndef TOOLS_SCHEMA_TAG_HPP_INCLUDED
-#define TOOLS_SCHEMA_TAG_HPP_INCLUDED
+#pragma once
 
 #include <algorithm>
 #include <iostream>
@@ -356,4 +355,3 @@ private:
 };
 
 }
-#endif // TOOLS_SCHEMA_TAG_HPP_INCLUDED

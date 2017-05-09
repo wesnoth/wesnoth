@@ -12,8 +12,8 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_AUXILIARY_EVENT_HANDLER_HPP_INCLUDED
-#define GUI_WIDGETS_AUXILIARY_EVENT_HANDLER_HPP_INCLUDED
+#pragma once
+
 #ifdef BOOST_MPL_LIMIT_SET_SIZE
 #undef BOOST_MPL_LIMIT_SET_SIZE
 #endif
@@ -294,5 +294,3 @@ extern std::vector<window*> open_window_stack;
 bool is_in_dialog();
 
 } // namespace gui2
-
-#endif

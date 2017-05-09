@@ -17,8 +17,7 @@
  *  Frame for unit's animation sequence.
  */
 
-#ifndef UNIT_FRAME_H_INCLUDED
-#define UNIT_FRAME_H_INCLUDED
+#pragma once
 
 #include "units/frame_private.hpp"
 
@@ -246,5 +245,3 @@ public:
 private:
 	frame_parsed_parameters builder_;
 };
-
-#endif

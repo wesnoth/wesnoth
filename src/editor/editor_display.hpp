@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef EDITOR_EDITOR_DISPLAY_HPP_INCLUDED
-#define EDITOR_EDITOR_DISPLAY_HPP_INCLUDED
+#pragma once
 
 #include "map/editor_map.hpp"
 #include "display.hpp"
@@ -66,4 +65,3 @@ protected:
 };
 
 } //end namespace editor
-#endif
