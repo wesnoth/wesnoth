@@ -114,38 +114,4 @@ private:
 	bool dirty_;
 };
 
-//frame_measurements draw_dialog_frame(int x, int y, int w, int h, CVideo &video, const std::string* dialog_style=nullptr, surface_restorer* restorer=nullptr);
-
-//SDL_Rect draw_dialog_background(int x, int y, int w, int h, CVideo &video, const std::string& dialog_style);
-
-//given the location of a dialog, will draw its title.
-//Returns the area the title takes up
-//SDL_Rect draw_dialog_title(int x, int y, CVideo* disp, const std::string& text, label** label_widget);
-
-//function to draw a dialog on the screen. x,y,w,h give the dimensions of the client area
-//of the dialog. 'title' is the title of the dialog. The title will be displayed at the
-//top of the dialog above the client area. 'dialog_style' if present gives the style of
-//the dialog to use.
-//'buttons' contains pointers to standard dialog buttons such as 'ok' and 'cancel' that
-//will appear on the dialog. If present, they will be located at the bottom of the dialog,
-//below the client area.
-//if 'restorer' is present, it will be set to a restorer that will reset the screen area
-//to its original state after the dialog is drawn.
-//void draw_dialog(int x, int y, int w, int h, CVideo &video, const std::string& title,
- //                const std::string* dialog_style=nullptr, std::vector<button*>* buttons=nullptr,
- //                surface_restorer* restorer=nullptr, button* help_button=nullptr, label** label_widget);
-//void draw_dialog(frame_measurements &fm, CVideo &video, const std::string& title,
- //                const std::string* dialog_style=nullptr, std::vector<button*>* buttons=nullptr,
- //                surface_restorer* restorer=nullptr, button* help_button=nullptr, label** label_widget);
-
-class dialog_button_action
-{
-public:
-	virtual ~dialog_button_action() {}
-
-	typedef DIALOG_RESULT RESULT;
-
-	virtual RESULT button_pressed() = 0;
-};
-
 }
