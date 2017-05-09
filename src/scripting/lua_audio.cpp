@@ -290,7 +290,6 @@ namespace lua_audio {
 
 		// The music track metatable
 		luaL_newmetatable(L, Track);
-		lua_pushcfunction(L, impl_track_collect);
 		static luaL_Reg track_callbacks[] = {
 			{"__gc", impl_track_collect},
 			{ "__index", impl_track_get },
