@@ -11,7 +11,8 @@
    See the COPYING file for more details.
 */
 
-#pragma once
+#ifndef GUI_DIALOGS_LOADING_SCREEN_HPP_INCLUDED
+#define GUI_DIALOGS_LOADING_SCREEN_HPP_INCLUDED
 
 #include "gui/dialogs/modal_dialog.hpp"
 #include "tstring.hpp"
@@ -100,3 +101,5 @@ private:
 
 } // namespace dialogs
 } // namespace gui2
+
+#endif
