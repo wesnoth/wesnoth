@@ -2344,7 +2344,7 @@ double combatant::average_hp(unsigned int healing) const
 #if defined(BENCHMARK) || defined(CHECK)
 // We create a significant number of nasty-to-calculate units,
 // and test each one against the others.
-#define NUM_UNITS 50
+static CONSTEXPR unsigned int NUM_UNITS = 50;
 
 #ifdef ATTACK_PREDICTION_DEBUG
 void list_combatant(const battle_context_unit_stats& stats, unsigned fighter)
