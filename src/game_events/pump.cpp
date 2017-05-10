@@ -488,7 +488,7 @@ void wml_event_pump::raise(const std::string& event,
 
 	DBG_EH << "raising event name=" << event << ", id=" << id << "\n";
 
-	impl_->events_queue.push_back(queued_event(event, id, loc1, loc2, data));
+	impl_->events_queue.emplace_back(event, id, loc1, loc2, data);
 }
 
 bool wml_event_pump::operator()()

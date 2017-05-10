@@ -443,7 +443,7 @@ std::vector<map_location> gamemap::parse_location_range(const std::string &x, co
 
 		for(int x2 = xrange.first; x2 <= xrange.second; ++x2) {
 			for(int y2 = yrange.first; y2 <= yrange.second; ++y2) {
-				res.push_back(map_location(x2-1,y2-1));
+				res.emplace_back(x2-1,y2-1);
 			}
 		}
 	}

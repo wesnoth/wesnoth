@@ -111,7 +111,7 @@ move::move(config const& cfg, bool hidden)
 		throw action::ctor_err("move: Invalid route_");
 	route_->move_cost = route_cfg["move_cost"];
 	for(config const& loc_cfg : route_cfg.child_range("step")) {
-		route_->steps.push_back(map_location(loc_cfg["x"],loc_cfg["y"], wml_loc()));
+		route_->steps.emplace_back(loc_cfg["x"],loc_cfg["y"], wml_loc());
 	}
 	for(config const& mark_cfg : route_cfg.child_range("mark")) {
 		route_->marks[map_location(mark_cfg["x"],mark_cfg["y"], wml_loc())]

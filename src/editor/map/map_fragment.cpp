@@ -33,7 +33,7 @@ map_fragment::map_fragment(const gamemap& map, const std::set<map_location>& are
 void map_fragment::add_tile(const gamemap& map, const map_location& loc)
 {
 	if (area_.find(loc) == area_.end()) {
-		items_.push_back(tile_info(map, loc));
+		items_.emplace_back(map, loc);
 		area_.insert(loc);
 	}
 }

@@ -175,7 +175,7 @@ void display_chat_manager::add_chat_message(const time_t& time, const std::strin
 
 	int message_handle = font::add_floating_label(msg_flabel);
 
-	chat_messages_.push_back(chat_message(speaker_handle,message_handle));
+	chat_messages_.emplace_back(speaker_handle,message_handle);
 
 	prune_chat_messages();
 }

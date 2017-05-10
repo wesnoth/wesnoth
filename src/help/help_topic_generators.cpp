@@ -783,7 +783,7 @@ std::string unit_topic_generator::operator()() const {
 }
 
 void unit_topic_generator::push_header(std::vector< item > &row,  const std::string& name) const {
-	row.push_back(item(bold(name), font::line_width(name, normal_font_size, TTF_STYLE_BOLD)));
+	row.emplace_back(bold(name), font::line_width(name, normal_font_size, TTF_STYLE_BOLD));
 }
 
 } // end namespace help

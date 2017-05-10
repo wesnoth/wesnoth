@@ -364,7 +364,7 @@ std::vector<topic> generate_time_of_day_topics(const bool /*sort_generated*/)
 
 	if (! resources::tod_manager) {
 		toplevel << N_("Only available during a scenario.");
-		topics.push_back( topic("Time of Day Schedule", "..schedule", toplevel.str()) );
+		topics.emplace_back("Time of Day Schedule", "..schedule", toplevel.str());
 		return topics;
 	}
 	const std::vector<time_of_day>& times = resources::tod_manager->times();
@@ -382,10 +382,10 @@ std::vector<topic> generate_time_of_day_topics(const bool /*sort_generated*/)
 				"Lawful Bonus: " << time.lawful_bonus << '\n' <<
 				'\n' << make_link(N_("Schedule"), "..schedule");
 
-		topics.push_back( topic(time.name.str(), id, text.str()) );
+		topics.emplace_back(time.name.str(), id, text.str());
 	}
 
-	topics.push_back( topic("Time of Day Schedule", "..schedule", toplevel.str()) );
+	topics.emplace_back("Time of Day Schedule", "..schedule", toplevel.str());
 	return topics;
 }
 
@@ -478,7 +478,7 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 			text << font::unicode_bullet << " " << (*u) << "\n";
 		}
 
-		topics.push_back( topic(s->first, id, text.str()) );
+		topics.emplace_back(s->first, id, text.str());
 	}
 
 	if (sort_generated)
@@ -544,7 +544,7 @@ std::vector<topic> generate_ability_topics(const bool sort_generated)
 			text << font::unicode_bullet << " " << (*u) << "\n";
 		}
 
-		topics.push_back( topic(a->first, id, text.str()) );
+		topics.emplace_back(a->first, id, text.str());
 	}
 
 	if (sort_generated)
@@ -657,7 +657,7 @@ std::vector<topic> generate_faction_topics(const config & era, const bool sort_g
 
 		const std::string name = f["name"];
 		const std::string ref_id = faction_prefix + id;
-		topics.push_back( topic(name, ref_id, text.str()) );
+		topics.emplace_back(name, ref_id, text.str());
 	}
 	if (sort_generated)
 		std::sort(topics.begin(), topics.end(), title_less());
@@ -713,7 +713,7 @@ std::vector<topic> generate_trait_topics(const bool sort_generated)
 		if (name.empty()) name = trait["female_name"].str();
 		if (name.empty()) name = trait["name"].str();
 
-		topics.push_back( topic(name, id, text.str()) );
+		topics.emplace_back(name, id, text.str());
 	}
 
 	if (sort_generated)
@@ -961,7 +961,7 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 		    std::string title = additional_topic["title"];
 		    std::string text = additional_topic["text"];
 		    //topic additional_topic(title, id, text);
-		    topics.push_back(topic(title,id,text));
+		    topics.emplace_back(title,id,text);
 			std::string link = make_link(title, id);
 			race_topics.insert(link);
 		  }
@@ -990,7 +990,7 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 		text << font::unicode_bullet << " " << (*u) << "\n";
 	}
 
-	topics.push_back(topic(race_name, race_id, text.str()) );
+	topics.emplace_back(race_name, race_id, text.str());
 
 	if (sort_generated)
 		std::sort(topics.begin(), topics.end(), title_less());
@@ -1045,7 +1045,7 @@ std::string generate_contents_links(const std::string& section_name, config cons
 			if (config const &topic_cfg = help_cfg->find_child("topic", "id", *t)) {
 				std::string id = topic_cfg["id"];
 				if (is_visible_id(id))
-					topics_links.push_back(link(topic_cfg["title"], id));
+					topics_links.emplace_back(topic_cfg["title"], id);
 			}
 		}
 

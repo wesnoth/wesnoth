@@ -99,14 +99,13 @@ bool load_language_list()
 	}
 
 	known_languages.clear();
-	known_languages.push_back(
-		language_def("", t_string(N_("System default language"), "wesnoth"), "ltr", "", "A"));
+	known_languages.emplace_back("", t_string(N_("System default language"), "wesnoth"), "ltr", "", "A");
 
 	for (const config &lang : cfg.child_range("locale"))
 	{
-		known_languages.push_back(
-			language_def(lang["locale"], lang["name"], lang["dir"],
-			             lang["alternates"], lang["sort_name"]));
+		known_languages.emplace_back(
+			lang["locale"], lang["name"], lang["dir"],
+			lang["alternates"], lang["sort_name"]);
 	}
 
 	return true;

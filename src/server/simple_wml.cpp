@@ -264,7 +264,7 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 			s = end + 1;
 
 			children_[list_index].second.push_back(new node(doc, this, str, depth+1));
-			ordered_children_.push_back(node_pos(list_index, children_[list_index].second.size() - 1));
+			ordered_children_.emplace_back(list_index, children_[list_index].second.size() - 1);
 			check_ordered_children();
 
 			break;
@@ -357,7 +357,7 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 
 			s = end + 1;
 
-			attr_.push_back(attribute(name, value));
+			attr_.emplace_back(name, value);
 		}
 		}
 	}
@@ -475,7 +475,7 @@ node& node::add_child(const char* name)
 	check_ordered_children();
 	child_list& list = children_[list_index].second;
 	list.push_back(new node(*doc_, this));
-	ordered_children_.push_back(node_pos(list_index, list.size() - 1));
+	ordered_children_.emplace_back(list_index, list.size() - 1);
 	check_ordered_children();
 	return *list.back();
 }
@@ -524,7 +524,7 @@ void node::insert_ordered_child(int child_map_index, int child_list_index)
 	}
 
 	if(!inserted) {
-		ordered_children_.push_back(node_pos(child_map_index, child_list_index));
+		ordered_children_.emplace_back(child_map_index, child_list_index);
 	}
 }
 
@@ -661,7 +661,7 @@ int node::get_children(const string_span& name)
 		}
 	}
 
-	children_.push_back(child_pair(string_span(name), child_list()));
+	children_.emplace_back(string_span(name), child_list());
 	return children_.size() - 1;
 }
 

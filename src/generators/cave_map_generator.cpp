@@ -209,7 +209,7 @@ void cave_map_generator::cave_map_generator_job::generate_chambers()
 
 			assert(itor->second < chambers_.size());
 
-			passages_.push_back(passage(new_chamber.center, chambers_[itor->second].center, p));
+			passages_.emplace_back(new_chamber.center, chambers_[itor->second].center, p);
 		}
 	}
 }

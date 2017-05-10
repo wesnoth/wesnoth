@@ -46,7 +46,7 @@ carryover::carryover(const team& t, const int gold, const bool add)
 		, variables_(t.variables())
 {
 	for(const unit_const_ptr & u : t.recall_list()) {
-		recall_list_.push_back(config());
+		recall_list_.emplace_back();
 		u->write(recall_list_.back());
 	}
 }
@@ -147,7 +147,7 @@ std::vector<carryover>& carryover_info::get_all_sides() {
 }
 
 void carryover_info::add_side(const config& cfg) {
-	carryover_sides_.push_back(carryover(cfg));
+	carryover_sides_.emplace_back(cfg);
 }
 
 void carryover_info::remove_side(const std::string& id) {

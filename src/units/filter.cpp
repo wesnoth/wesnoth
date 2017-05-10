@@ -140,7 +140,7 @@ public:
 			if(type.parse(cond_name)) {
 				const vconfig& cond_filter = cond.get_child();
 
-				cond_children_.push_back(unit_filter(cond_filter, &fc_, use_flat_tod_));
+				cond_children_.emplace_back(cond_filter, &fc_, use_flat_tod_);
 				cond_child_types_.push_back(type);
 			}
 			else {

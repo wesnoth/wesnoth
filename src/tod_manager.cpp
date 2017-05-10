@@ -344,7 +344,7 @@ const std::set<map_location>& tod_manager::get_area_by_index(int index) const
 
 void tod_manager::add_time_area(const gamemap & map, const config& cfg)
 {
-	areas_.push_back(area_time_of_day());
+	areas_.emplace_back();
 	area_time_of_day &area = areas_.back();
 	area.id = cfg["id"].str();
 	area.xsrc = cfg["x"].str();
@@ -359,7 +359,7 @@ void tod_manager::add_time_area(const gamemap & map, const config& cfg)
 void tod_manager::add_time_area(const std::string& id, const std::set<map_location>& locs,
 		const config& time_cfg)
 {
-	areas_.push_back(area_time_of_day());
+	areas_.emplace_back();
 	area_time_of_day& area = areas_.back();
 	area.id = id;
 	area.hexes = locs;

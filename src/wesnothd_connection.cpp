@@ -190,7 +190,7 @@ void wesnothd_connection::handle_read(
 	if(ec && ec != boost::asio::error::eof)
 		throw system_error(ec);
 	std::istream is(&read_buf_);
-	recv_queue_.push_back(config());
+	recv_queue_.emplace_back();
 	read_gz(recv_queue_.back(), is);
 	DBG_NW << "Received " << recv_queue_.back() << " bytes.\n";
 

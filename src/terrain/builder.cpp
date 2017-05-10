@@ -748,7 +748,7 @@ terrain_builder::terrain_constraint& terrain_builder::add_constraints(terrain_bu
 
 	if(!cons) {
 		// The terrain at the current location did not exist, so create it
-		constraints.push_back(terrain_constraint(loc));
+		constraints.emplace_back(loc);
 		cons = &constraints.back();
 	}
 

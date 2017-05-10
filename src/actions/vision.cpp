@@ -160,8 +160,7 @@ inline void shroud_clearer::record_sighting(
 	const unit & seen, const map_location & seen_loc,
 	size_t sighter_id, const map_location & sighter_loc)
 {
-	sightings_.push_back(sight_data(seen.underlying_id(), seen_loc,
-	                                sighter_id, sighter_loc));
+	sightings_.emplace_back(seen.underlying_id(), seen_loc, sighter_id, sighter_loc);
 }
 
 

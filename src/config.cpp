@@ -728,7 +728,7 @@ config& config::add_child(config_key_type key)
 
 	child_list& v = map_get(children, key);
 	v.push_back(new config());
-	ordered_children.push_back(child_pos(children.find(key),v.size()-1));
+	ordered_children.emplace_back(children.find(key),v.size()-1);
 	return *v.back();
 }
 
@@ -738,7 +738,7 @@ config& config::add_child(config_key_type key, const config& val)
 
 	child_list& v = map_get(children, key);
 	v.push_back(new config(val));
-	ordered_children.push_back(child_pos(children.find(key),v.size()-1));
+	ordered_children.emplace_back(children.find(key),v.size()-1);
 	return *v.back();
 }
 
@@ -748,7 +748,7 @@ config &config::add_child(config_key_type key, config &&val)
 
 	child_list &v = map_get(children, key);
 	v.push_back(new config(std::move(val)));
-	ordered_children.push_back(child_pos(children.find(key), v.size() - 1));
+	ordered_children.emplace_back(children.find(key), v.size() - 1);
 	return *v.back();
 }
 
@@ -835,7 +835,7 @@ void config::splice_children(config &src, const std::string &key)
 	// key might be a reference to i_src->first, so it is no longer usable.
 
 	for (unsigned j = before; j < dst.size(); ++j) {
-		ordered_children.push_back(child_pos(i_dst, j));
+		ordered_children.emplace_back(i_dst, j);
 	}
 }
 

@@ -328,9 +328,9 @@ void saved_game::expand_mp_events()
 			| boost::adaptors::transformed(modevents_entry_for("modification"))
 			, std::back_inserter(mods) );
 		if(mp_settings_.mp_era != "") //We don't want the error message below if there is no era (= if this is a sp game)
-		{ mods.push_back(modevents_entry("era", mp_settings_.mp_era)); }
+		{ mods.emplace_back("era", mp_settings_.mp_era); }
 		if(classification_.campaign != "")
-		{ mods.push_back(modevents_entry("campaign", classification_.campaign)); }
+		{ mods.emplace_back("campaign", classification_.campaign); }
 
 		// In the first iteration mod contains no [resource]s in all other iterations, mods contains only [resource]s
 		do {
@@ -342,7 +342,7 @@ void saved_game::expand_mp_events()
 			for(const config& cfg : starting_pos_.child_range("load_resource"))
 			{
 				if(loaded_resources.find(cfg["id"].str()) == loaded_resources.end()) {
-					mods.push_back(modevents_entry("resource", cfg["id"].str()));
+					mods.emplace_back("resource", cfg["id"].str());
 					loaded_resources.insert(cfg["id"].str());
 				}
 			}
@@ -361,9 +361,9 @@ void saved_game::expand_mp_options()
 		boost::copy( mp_settings_.active_mods
 			| boost::adaptors::transformed(modevents_entry_for("modification"))
 			, std::back_inserter(mods) );
-		mods.push_back(modevents_entry("era", mp_settings_.mp_era));
-		mods.push_back(modevents_entry("multiplayer", get_scenario_id()));
-		mods.push_back(modevents_entry("campaign", classification().campaign));
+		mods.emplace_back("era", mp_settings_.mp_era);
+		mods.emplace_back("multiplayer", get_scenario_id());
+		mods.emplace_back("campaign", classification().campaign);
 
 		config& variables = carryover_.child_or_add("variables");
 		for(modevents_entry& mod : mods)

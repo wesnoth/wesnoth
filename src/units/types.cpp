@@ -595,7 +595,7 @@ void unit_type::add_advancement(const unit_type &to_unit,int xp)
 
 	// Add advancements to gendered subtypes, if supported by to_unit
 	for(int gender=0; gender<=1; ++gender) {
-		if(!gender_types_[gender]) { 
+		if(!gender_types_[gender]) {
 			continue;
 		}
 		if(!to_unit.gender_types_[gender]) {

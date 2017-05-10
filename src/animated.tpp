@@ -64,10 +64,10 @@ inline void animated<T,T_void_value>::add_frame(int duration, const T& value,boo
 {
 	if (frames_.empty() ) {
 		does_not_change_=!force_change;
-		frames_.push_back( frame(duration,value,starting_frame_time_));
+		frames_.emplace_back(duration,value,starting_frame_time_);
 	} else {
 		does_not_change_=false;
-		frames_.push_back( frame(duration,value,frames_.back().start_time_+frames_.back().duration_));
+		frames_.emplace_back(duration,value,frames_.back().start_time_+frames_.back().duration_);
 	}
 }
 

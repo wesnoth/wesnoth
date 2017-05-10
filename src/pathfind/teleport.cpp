@@ -272,7 +272,7 @@ const teleport_map get_teleport_locations(const unit &u,
 			const int tunnel_count = (teleport.first)->child_count("tunnel");
 			for(int i = 0; i < tunnel_count; ++i) {
 				config teleport_group_cfg = (teleport.first)->child("tunnel", i);
-				groups.push_back(teleport_group(vconfig(teleport_group_cfg, true), false));
+				groups.emplace_back(vconfig(teleport_group_cfg, true), false);
 			}
 		}
 	}

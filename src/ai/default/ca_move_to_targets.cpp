@@ -314,7 +314,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 	for(std::vector<target>::iterator tg = targets.begin(); tg != targets.end(); ++tg) {
 		// passing a dummy route to have the maximal rating
 		double max_rating = rate_target(*tg, u, dstsrc, enemy_dstsrc, dummy_route);
-		rated_targets.push_back( rated_target(tg, max_rating) );
+		rated_targets.emplace_back(tg, max_rating);
 	}
 
 	//use stable_sort for the moment to preserve old AI behavior
@@ -563,7 +563,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 			for(std::set<map_location>::const_iterator j = mass_locations.begin(); j != mass_locations.end(); ++j) {
 				if(*j != best_loc && distance_between(*j,best_loc) < 3) {
 					LOG_AI << "found mass-to-attack target... " << *j << " with value: " << value*4.0 << "\n";
-					targets.push_back(target(*j,value*4.0,target::TYPE::MASS));
+					targets.emplace_back(*j,value*4.0,target::TYPE::MASS);
 					best_target = targets.end() - 1;
 				}
 			}
@@ -592,7 +592,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 						//try to take the target
 						if(is_dangerous) {
 							LOG_AI << "found reinforcement target... " << its.first->first << " with value: " << value*2.0 << "\n";
-							targets.push_back(target(its.first->first,value*2.0,target::TYPE::BATTLE_AID));
+							targets.emplace_back(its.first->first,value*2.0,target::TYPE::BATTLE_AID);
 						}
 
 						best_target->value = value;
@@ -618,7 +618,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 
 		//this sounds like the road ahead might be dangerous, and that's why we don't advance.
 		//create this as a target, attempting to rally units around
-		targets.push_back(target(best->get_location(), best_target->value));
+		targets.emplace_back(best->get_location(), best_target->value);
 		best_target = targets.end() - 1;
 		return std::make_pair(best->get_location(), best->get_location());
 	}

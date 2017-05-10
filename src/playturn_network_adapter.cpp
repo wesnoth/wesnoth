@@ -28,7 +28,7 @@ void playturn_network_adapter::read_from_network()
 {
 	assert(!data_.empty());
 
-	this->data_.push_back(config());
+	this->data_.emplace_back();
 	config& back = data_.back();
 	bool has_data = false;
 	try
