@@ -56,13 +56,6 @@
 #include <chrono>
 #include <cstdio>
 #include <cstdlib>
-
-// Set some default values so this file can stand alone.
-namespace game_config
-{
-int kill_experience = 8;
-int tile_size = 72; // Not really needed, but it's used in image.hpp.
-}
 #endif
 
 #ifdef ATTACK_PREDICTION_DEBUG
