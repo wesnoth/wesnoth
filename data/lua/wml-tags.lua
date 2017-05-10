@@ -1,16 +1,5 @@
 --! #textdomain wesnoth
 
-function wesnoth.game_events.on_load(cfg)
-	if #cfg == 0 then return end
-	local t = {}
-	for i = 1,#cfg do t[i] = string.format("[%s]", cfg[i][1]) end
-	error(string.format("~wml:%s not supported at scenario toplevel", table.concat(t, ', ')), 0)
-end
-
-function wesnoth.game_events.on_save()
-	return {}
-end
-
 wesnoth.require "wml-flow"
 wesnoth.require "wml"
 -- Note: When adding new WML tags, unless they're very simple, it's preferred to
@@ -22,6 +11,17 @@ local location_set = wesnoth.require "location_set"
 local utils = wesnoth.require "wml-utils"
 local wml_actions = wesnoth.wml_actions
 local T = helper.set_wml_tag_metatable {}
+
+function wesnoth.game_events.on_load(cfg)
+	if #cfg == 0 then return end
+	local t = {}
+	for i = 1,#cfg do t[i] = string.format("[%s]", cfg[i][1]) end
+	helper.wml_error(string.format("%s not supported at scenario toplevel", table.concat(t, ', ')))
+end
+
+function wesnoth.game_events.on_save()
+	return {}
+end
 
 function wml_actions.sync_variable(cfg)
 	local names = cfg.name or helper.wml_error "[sync_variable] missing required name= attribute."

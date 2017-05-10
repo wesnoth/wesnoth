@@ -185,7 +185,7 @@ end
 
 function ai_helper.checked_action_error(action, error_code)
     if wesnoth.game_config.debug then
-        error(action .. ' could not be executed. Error code: ' .. error_code)
+        error(action .. ' could not be executed. Error code: ' .. error_code, 3)
     end
 end
 
@@ -519,7 +519,7 @@ function ai_helper.serialize(input)
         end
         str = str .. "}"
     else
-        error("cannot serialize a " .. type(input))
+        error("cannot serialize a " .. type(input), 2)
     end
 
     return str
@@ -997,10 +997,10 @@ function ai_helper.get_visible_units(viewing_side, filter)
     --   Example 2: { { "filter_location", { x = 10, y = 12, radius = 5 } } }
 
     if (not viewing_side) then
-        error('ai_helper.get_visible_units() is missing required parameter viewing_side.')
+        error('ai_helper.get_visible_units() is missing required parameter viewing_side.', 2)
     end
     if (type(viewing_side) ~= 'number') then
-        error('ai_helper.get_visible_units(): parameter viewing_side must be a number.')
+        error('ai_helper.get_visible_units(): parameter viewing_side must be a number., 2')
     end
 
     local filter_plus_vision = {}
@@ -1028,10 +1028,10 @@ function ai_helper.is_visible_unit(viewing_side, unit)
     -- @unit: unit proxy table
 
     if (not viewing_side) then
-        error('ai_helper.is_visible_unit() is missing required parameter viewing_side.')
+        error('ai_helper.is_visible_unit() is missing required parameter viewing_side.', 2)
     end
     if (type(viewing_side) ~= 'number') then
-        error('ai_helper.is_visible_unit(): parameter viewing_side must be a number.')
+        error('ai_helper.is_visible_unit(): parameter viewing_side must be a number.', 2)
     end
 
     if (not unit) then return false end

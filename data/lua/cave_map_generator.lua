@@ -153,7 +153,7 @@ function callbacks.generate_map(params)
 				if MG.is_valid_transform(t) then
 					table.insert(transforms, t)
 				else
-					error("Unknown transformation '" .. t .. "'")
+					helper.wml_error("Unknown transformation '" .. t .. "'")
 				end
 			end
 			map[transforms[random(#transforms)]](map)

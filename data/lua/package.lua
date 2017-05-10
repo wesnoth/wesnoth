@@ -3,11 +3,11 @@
 local mt = {
 	__index = function(self, k)
 		if k ~= "__tostring" then
-			error("Tried to access an empty package")
+			error("Tried to access an empty package", 2)
 		end
 	end,
 	__newindex = function()
-		error("Tried to access an empty package")
+		error("Tried to access an empty package", 2)
 	end,
 	__metatable = "empty package",
 	__tostring = function() return "{empty package}" end,
