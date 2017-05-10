@@ -21,6 +21,8 @@
 #include "units/unit.hpp"
 #include "units/types.hpp"
 
+#include <set>
+
 const unit_animation* unit_animation_component::choose_animation(const display& disp, const map_location& loc,const std::string& event,
 		const map_location& second_loc,const int value,const unit_animation::hit_type hit,
 		const_attack_ptr attack, const_attack_ptr second_attack, int swing_num)
@@ -61,7 +63,7 @@ void unit_animation_component::set_standing(bool with_bars)
 void unit_animation_component::set_ghosted(bool with_bars)
 {
 	display *disp = display::get_singleton();
-	start_animation(INT_MAX, choose_animation(*disp, u_.loc_, "ghosted"),
+	start_animation(INT_MAX, choose_animation(*disp, u_.loc_, "_ghosted_"),
 			with_bars);
 	anim_->pause_animation();
 }
@@ -69,7 +71,7 @@ void unit_animation_component::set_ghosted(bool with_bars)
 void unit_animation_component::set_disabled_ghosted(bool with_bars)
 {
 	display *disp = display::get_singleton();
-	start_animation(INT_MAX, choose_animation(*disp, u_.loc_, "disabled_ghosted"),
+	start_animation(INT_MAX, choose_animation(*disp, u_.loc_, "_disabled_ghosted_"),
 			with_bars);
 }
 
@@ -202,4 +204,15 @@ void unit_animation_component::apply_new_animation_effect(const config & effect)
 		}
 		animations_.insert(animations_.end(),built.begin(),built.end());
 	}
+}
+
+std::vector<std::string> unit_animation_component::get_flags() {
+	std::set<std::string> result;
+	for(const auto& anim : animations_) {
+		const std::vector<std::string>& flags = anim.get_flags();
+		std::copy_if(flags.begin(), flags.end(), std::inserter(result, result.begin()), [](const std::string flag) {
+			return !(flag.empty() || (flag.front() == '_' && flag.back() == '_'));
+		});
+	}
+	return std::vector<std::string>(result.begin(), result.end());
 }

@@ -509,11 +509,11 @@ void unit_animation::fill_initial_animations(std::vector<unit_animation>& animat
 		animations.back().play_offscreen_ = false;
 
 		animations.push_back(base);
-		animations.back().event_ = { "ghosted" };
+		animations.back().event_ = { "_ghosted_" };
 		animations.back().unit_anim_.override(0, animations.back().unit_anim_.get_animation_duration(),particle::UNSET,"0.9", "", {0,0,0}, "", "", "~GS()");
 
 		animations.push_back(base);
-		animations.back().event_ = { "disabled_ghosted" };
+		animations.back().event_ = { "_disabled_ghosted_" };
 		animations.back().unit_anim_.override(0, 1, particle::UNSET, "0.4", "", {0,0,0}, "", "", "~GS()");
 
 		animations.push_back(base);
@@ -668,7 +668,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		animations.push_back(unit_animation(anim));
 	}
 
-	// Atanding animations are also used as default animations
+	// Standing animations are also used as default animations
 	for(const animation_branch& ab : prepare_animation(cfg, "standing_anim")) {
 		config anim = ab.merge();
 		anim["apply_to"] = "default";

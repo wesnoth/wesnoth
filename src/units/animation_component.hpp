@@ -104,6 +104,9 @@ public:
 	/** Get a pointer to the current animation. */
 	unit_animation* get_animation() const { return anim_.get(); }
 
+	/** Get the flags of all registered animations. */
+	std::vector<std::string> get_flags();
+
 	friend class unit;
 	friend class unit_drawer;
 private:

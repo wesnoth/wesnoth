@@ -54,6 +54,11 @@ public:
 		unit_anim_.add_frame(duration,value,force_change);
 	}
 
+	std::vector<std::string> get_flags() const
+	{
+		return event_;
+	}
+
 	bool need_update() const;
 	bool need_minimal_update() const;
 	bool animation_finished() const;

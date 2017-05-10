@@ -24,6 +24,7 @@
 #include "scripting/game_lua_kernel.hpp"
 #include "units/unit.hpp"
 #include "units/map.hpp"
+#include "units/animation_component.hpp"
 
 #include "lua/lauxlib.h"
 #include "lua/lua.h"                    // for lua_State, lua_settop, etc
@@ -346,6 +347,7 @@ static int impl_unit_get(lua_State *L)
 		push_unit_attacks_table(L, 1);
 		return 1;
 	}
+	return_vector_string_attrib("animations", u.anim_comp().get_flags());
 	return_cfg_attrib("recall_filter", cfg = u.recall_filter());
 	return_bool_attrib("hidden", u.get_hidden());
 	return_bool_attrib("petrified", u.incapacitated());
