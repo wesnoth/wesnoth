@@ -294,11 +294,6 @@ std::vector<std::tuple<t_string, t_string, t_string> > unit::ability_tooltips(bo
 	return res;
 }
 
-/*
- *
- * cfg: an ability WML structure
- *
- */
 bool unit::ability_active(const std::string& ability,const config& cfg,const map_location& loc) const
 {
 	bool illuminates = ability == "illuminates";
@@ -369,11 +364,7 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
 	}
 	return true;
 }
-/*
- *
- * cfg: an ability WML structure
- *
- */
+
 bool unit::ability_affects_adjacent(const std::string& ability, const config& cfg,int dir,const map_location& loc,const unit& from) const
 {
 	bool illuminates = ability == "illuminates";
@@ -397,11 +388,7 @@ bool unit::ability_affects_adjacent(const std::string& ability, const config& cf
 	}
 	return false;
 }
-/*
- *
- * cfg: an ability WML structure
- *
- */
+
 bool unit::ability_affects_self(const std::string& ability,const config& cfg,const map_location& loc) const
 {
 	const config &filter = cfg.child("filter_self");

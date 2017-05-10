@@ -116,7 +116,10 @@ public:
 
 	unit& operator=(unit);
 
-	/*** *** *** *** *** *** Advancement functions *** *** *** *** *** ***/
+	/**
+	 * @defgroup unit_advance Advancement functions
+	 * @{
+	 */
 
 	/** Advances this unit to another type */
 	void advance_to(const unit_type& t, bool use_traits = false);
@@ -204,8 +207,8 @@ public:
 	 */
 	std::vector<std::pair<std::string, std::string>> amla_icons() const;
 
-	/** The raw, unparsed data for modification advancements. */
 	using advancements_list= boost::ptr_vector<config>;
+	/** The raw, unparsed data for modification advancements. */
 	const advancements_list& modification_advancements() const
 	{
 		return advancements_;
@@ -214,7 +217,11 @@ public:
 	/** Sets the raw modification advancement option data */
 	void set_advancements(std::vector<config> advancements);
 
-	/*** *** *** *** *** *** Basic data setters and getters *** *** *** *** *** ***/
+	/**
+	 * @}
+	 * @defgroup unit_access Basic data setters and getters
+	 * @{
+	 **/
 
 public:
 	/**
@@ -572,11 +579,19 @@ public:
 		return xp_bar_scaling_;
 	}
 
+	/**
+	 * Whether the unit has been instructed to hold its position.
+	 * This excludes it from the unit cycling function.
+	 * @return true if it is holding position
+	 */
 	bool hold_position() const
 	{
 		return hold_position_;
 	}
 
+	/**
+	 * Toggle the unit's hold position status.
+	 */
 	void toggle_hold_position()
 	{
 		hold_position_ = !hold_position_;
@@ -585,11 +600,19 @@ public:
 		}
 	}
 
+	/**
+	 * Set whether the user ended their turn
+	 * @todo Verify meaning and explain better
+	 */
 	void set_user_end_turn(bool value = true)
 	{
 		end_turn_ = value;
 	}
 
+	/**
+	 * Toggle whether the user ended their turn
+	 * @todo Verify meaning and explain better
+	 */
 	void toggle_user_end_turn()
 	{
 		end_turn_ = !end_turn_;
@@ -598,63 +621,140 @@ public:
 		}
 	}
 
+	/**
+	 * Check whether the user ended their turn
+	 * @todo Verify meaning and explain better
+	 */
 	bool user_end_turn() const
 	{
 		return end_turn_;
 	}
 
+	/**
+	 * Refresh unit for the beginning of a turn
+	 */
 	void new_turn();
+
+	/**
+	 * Refresh unit for the end of a turn
+	 */
 	void end_turn();
+
+	/**
+	 * Refresh unit for the beginning of a new scenario
+	 */
 	void new_scenario();
 
+	/**
+	 * Damage the unit.
+	 * @returns true if the unit dies as a result
+	 */
 	bool take_hit(int damage)
 	{
 		hit_points_ -= damage;
 		return hit_points_ <= 0;
 	}
 
+	/**
+	 * Heal the unit
+	 * @amount The number of hitpoints to gain
+	 */
 	void heal(int amount);
+
+	/**
+	 * Fully heal the unit, restoring it to max hitpoints
+	 */
 	void heal_fully()
 	{
 		hit_points_ = max_hitpoints();
 	}
 
+	/**
+	 * Get the status effects currently affecting the unit.
+	 * @return A set of status keys
+	 */
 	const std::set<std::string> get_states() const;
+
+	/**
+	 * Check if the unit is affected by a status effect
+	 * @param state The status effect to check
+	 * @returns true if the unit is affected by the status effect
+	 */
 	bool get_state(const std::string& state) const;
+
+	/**
+	 * Set whether the unit is affected by a status effect
+	 * @param state The status effect to change
+	 * @param value Whether the unit should be affected by the status
+	 */
 	void set_state(const std::string& state, bool value);
 
+	/**
+	 * Built-in status effects known to the engine
+	 */
 	enum state_t {
-		STATE_SLOWED = 0,
-		STATE_POISONED,
-		STATE_PETRIFIED,
-		STATE_UNCOVERED,
-		STATE_NOT_MOVED,
-		STATE_UNHEALABLE,
-		STATE_GUARDIAN,
-		STATE_UNKNOWN = -1
+		STATE_SLOWED = 0, ///< The unit is slowed - it moves slower and does less damage
+		STATE_POISONED,   ///< The unit is poisoned - it loses health each turn
+		STATE_PETRIFIED,  ///< The unit is petrified - it cannot move or be attacked
+		STATE_UNCOVERED,  ///< The unit is uncovered - it was hiding but has been spotted
+		STATE_NOT_MOVED,  ///< The unit has not moved @todo Explain better
+		STATE_UNHEALABLE, ///< The unit cannot be healed
+		STATE_GUARDIAN,   ///< The unit is a guardian - it won't move unless a target is sighted
+		STATE_UNKNOWN = -1///< A status effect not known to the engine
 	};
 
+	/**
+	 * Set whether the unit is affected by a status effect
+	 * @param state The status effect to change
+	 * @param value Whether the unit should be affected by the status
+	 */
 	void set_state(state_t state, bool value);
+
+	/**
+	 * Check if the unit is affected by a status effect
+	 * @param state The status effect to check
+	 * @returns true if the unit is affected by the status effect
+	 */
 	bool get_state(state_t state) const;
 
+	/**
+	 * Convert a string status effect ID to a built-in status effect ID
+	 * @returns the state_t representing the status, or STATE_UNKNOWN if it's not built-in
+	 */
 	static state_t get_known_boolean_state_id(const std::string& state);
 
+	/**
+	 * Check if the unit has been poisoned
+	 * @returns true if it's poisoned
+	 */
 	bool poisoned() const
 	{
 		return get_state(STATE_POISONED);
 	}
 
+	/**
+	 * Check if the unit has been petrified
+	 * @returns true if it's petrified
+	 */
 	bool incapacitated() const
 	{
 		return get_state(STATE_PETRIFIED);
 	}
 
+	/**
+	 * Check if the unit has been slowed
+	 * @returns true if it's slowed
+	 */
 	bool slowed() const
 	{
 		return get_state(STATE_SLOWED);
 	}
 
-	/*** *** *** *** *** *** Attack and resistance functions. *** *** *** *** *** ***/
+	/**
+	 * @}
+	 * @defgroup unit_atk Attack and resistance functions
+	 * @{
+	 */
 
 public:
 	/** Gets an iterator over this unit's attacks. */
@@ -669,13 +769,27 @@ public:
 		return make_attack_itors(attacks_);
 	}
 
+	/**
+	 * Adds a new attack to the unit.
+	 * @param position An iterator pointing to the attack before which to insert the new one.
+	 * @param args The arguments for constructing the attack
+	 */
 	template<typename... Args>
 	attack_ptr add_attack(attack_itors::iterator position, Args... args)
 	{
 		return *attacks_.emplace(position.base(), new attack_type(args...));
 	}
 
+	/**
+	 * Remove an attack from the unit
+	 * @param atk A pointer to the attack to remove
+	 * @return true if the attack was removed, false if it didn't exist on the unit
+	 */
 	bool remove_attack(attack_ptr atk);
+
+	/**
+	 * Set the unit to have no attacks left for this turn.
+	 */
 	void remove_attacks_ai();
 
 	/**
@@ -701,25 +815,45 @@ public:
 	/**
 	 * Gets the remaining number of attacks this unit can perform this turn.
 	 *
-	 * If the 'incapacitated' is set, this will always be 0.
+	 * If the 'incapacitated' status is set, this will always be 0.
 	 */
 	int attacks_left() const
 	{
 		return (attacks_left_ == 0 || incapacitated()) ? 0 : attacks_left_;
 	}
 
-	/** Sets the number of attacks this unit has left this turn. */
+	/**
+	 * Sets the number of attacks this unit has left this turn.
+	 * @param left The number of attacks left
+	 */
 	void set_attacks(int left)
 	{
 		attacks_left_ = std::max<int>(0, left);
 	}
 
+	/**
+	 * The unit's defense on a given terrain
+	 * @param terrain The terrain to check
+	 */
 	int defense_modifier(const t_translation::terrain_code& terrain) const;
 
+	/**
+	 * The unit's resistance against a given damage type
+	 * @param damage_name The damage type
+	 * @param attacker True if this unit is on the offensive (to resolve [resistance] abilities)
+	 * @param loc The unit's location (to resolve [resistance] abilities)
+	 */
 	int resistance_against(const std::string& damage_name, bool attacker, const map_location& loc) const;
-	int resistance_against(const attack_type& damage_type, bool attacker, const map_location& loc) const
+
+	/**
+	 * The unit's resistance against a given attack
+	 * @param atk The attack
+	 * @param attacker True if this unit is on the offensive (to resolve [resistance] abilities)
+	 * @param loc The unit's location (to resolve [resistance] abilities)
+	 */
+	int resistance_against(const attack_type& atk, bool attacker, const map_location& loc) const
 	{
-		return resistance_against(damage_type.type(), attacker, loc);
+		return resistance_against(atk.type(), attacker, loc);
 	}
 
 	/** Gets resistances without any abilities applied. */
@@ -731,7 +865,11 @@ public:
 private:
 	bool resistance_filter_matches(const config& cfg, bool attacker, const std::string& damage_name, int res) const;
 
-	/*** *** *** *** *** *** Trait and upkeep functions. *** *** *** *** *** ***/
+	/**
+	 * @}
+	 * @defgroup unit_trait Trait and upkeep functions
+	 * @}
+	 */
 public:
 	/**
 	 * Applies mandatory traits (e.g. undead, mechanical) to a unit and then fills in the remaining traits
@@ -872,17 +1010,23 @@ public:
 	/** Gets whether this unit is loyal - ie, it costs no upkeep. */
 	bool loyal() const;
 
+	/** Gets whether this unit is fearless - ie, unaffected by time of day. */
 	bool is_fearless() const
 	{
 		return is_fearless_;
 	}
 
+	/** Gets whether this unit is healthy - ie, always rest heals. */
 	bool is_healthy() const
 	{
 		return is_healthy_;
 	}
 
-	/*** *** *** *** *** *** Movement and location functions. *** *** *** *** *** ***/
+	/**
+	 * @}
+	 * @defgroup unit_mvmt Movement and location functions
+	 * @{
+	 */
 
 public:
 	/** The maximum moves this unit has. */
@@ -931,6 +1075,7 @@ public:
 		return movement_left() != total_movement();
 	}
 
+	/** Sets the unit to have no moves left for this turn. */
 	void remove_movement_ai();
 
 	/**
@@ -1011,71 +1156,114 @@ public:
 		goto_ = new_goto;
 	}
 
+	/** Gets the unit's vision points. */
 	int vision() const
 	{
 		return vision_ < 0 ? max_movement_ : vision_;
 	}
 
+	/** Gets the unit's jamming points. */
 	int jamming() const
 	{
 		return jamming_;
 	}
 
+	/** Check whether the unit's move has been interrupted. */
 	bool move_interrupted() const
 	{
 		return movement_left() > 0 && interrupted_move_.x >= 0 && interrupted_move_.y >= 0;
 	}
 
+	/** Get the target location of the unit's interrupted move. */
 	const map_location& get_interrupted_move() const
 	{
 		return interrupted_move_;
 	}
 
+	/** Set the target location of the unit's interrupted move. */
 	void set_interrupted_move(const map_location& interrupted_move)
 	{
 		interrupted_move_ = interrupted_move;
 	}
 
+	/** Get the unit's movement type. */
 	const movetype& movement_type() const
 	{
 		return movement_type_;
 	}
 
+	/**
+	 * Get the unit's movement cost on a particular terrain
+	 * @param terrain The terrain to check
+	 * @returns the number of movement points to enter that terrain
+	 */
 	int movement_cost(const t_translation::terrain_code& terrain) const
 	{
 		return movement_type_.movement_cost(terrain, get_state(STATE_SLOWED));
 	}
 
+	/**
+	 * Get the unit's vision cost on a particular terrain
+	 * @param terrain The terrain to check
+	 * @returns the number of vision points to see into that terrain
+	 */
 	int vision_cost(const t_translation::terrain_code& terrain) const
 	{
 		return movement_type_.vision_cost(terrain, get_state(STATE_SLOWED));
 	}
 
+	/**
+	 * Get the unit's jamming cost on a particular terrain
+	 * @param terrain The terrain to check
+	 * @returns the number of jamming points to jam that terrain
+	 */
 	int jamming_cost(const t_translation::terrain_code& terrain) const
 	{
 		return movement_type_.jamming_cost(terrain, get_state(STATE_SLOWED));
 	}
 
+	/** Check if the unit is a flying unit. */
 	bool is_flying() const
 	{
 		return movement_type_.is_flying();
 	}
 
-	/***** ***** ***** ***** Modification functions. ***** ***** ***** *****/
+	/**
+	 * @}
+	 * @defgroup unit_mod Modification functions
+	 * @{
+	 */
 
 public:
+	/** Get the raw modifications. */
 	config& get_modifications()
 	{
 		return modifications_;
 	}
 
+	/** Set the raw modifications. */
 	const config& get_modifications() const
 	{
 		return modifications_;
 	}
 
+	/**
+	 * Count modifications of a particular type.
+	 * @param The type of modification to count.
+	 *        Valid values are "advancement", "trait", "object"
+	 * @param id The ID of the modification to count
+	 * @return The total number of modifications of that type and ID.
+	 */
 	size_t modification_count(const std::string& type, const std::string& id) const;
 
+	/**
+	 * Add a new modification to the unit.
+	 * @param The type of modification to add.
+	 *        Valid values are "advancement", "trait", "object"
+	 * @param modification The details of the modification
+	 * @param no_add If true, apply the modification but don't save it for unit rebuild time.
+	 *               Defaults to false.
+	 */
 	void add_modification(const std::string& type, const config& modification, bool no_add = false);
 
 	/**
@@ -1088,15 +1276,31 @@ public:
 
 	static const std::set<std::string> builtin_effects;
 
+	/**
+	 * Apply a builtin effect to the unit.
+	 * @param type The effect to apply. Must be one of the effects in @ref builtin_effects.
+	 * @param effect The details of the effect
+	 */
 	void apply_builtin_effect(std::string type, const config& effect);
 
+	/**
+	 * Construct a string describing a built-in effect.
+	 * @param type The effect to describe. Must be one of the effects in @ref builtin_effects.
+	 * @param effect The details of the effect
+	 */
 	std::string describe_builtin_effect(std::string type, const config& effect);
 
+	/** Re-apply all saved modifications. */
 	void apply_modifications();
 
-	/***** ***** ***** ***** Image and animations functions. ***** ***** ***** *****/
+	/**
+	 * @}
+	 * @defgroup unit_img Image and animations functions
+	 * @{
+	 */
 
 public:
+	/** @todo Document this */
 	unit_animation_component& anim_comp() const
 	{
 		return *anim_comp_;
@@ -1108,18 +1312,22 @@ public:
 	/** The default image to use for animation frames with no defined image. */
 	std::string default_anim_image() const;
 
+	/** Get the unit's halo image. */
 	std::string image_halo() const
 	{
 		return unit_detail::get_or_default(halo_);
 	}
 
+	/** Set the unit's halo image. */
 	void set_image_halo(const std::string& halo);
 
+	/** Get the unit's ellipse image. */
 	std::string image_ellipse() const
 	{
 		return unit_detail::get_or_default(ellipse_);
 	}
 
+	/** Set the unit's ellipse image. */
 	void set_image_ellipse(const std::string& ellipse)
 	{
 		ellipse_.reset(new std::string(ellipse));
@@ -1146,6 +1354,7 @@ public:
 	 */
 	std::string image_mods() const;
 
+	/** Get the unit's overlay images. */
 	const std::vector<std::string>& overlays() const
 	{
 		return overlays_;
@@ -1172,7 +1381,11 @@ public:
 	 */
 	color_t xp_color() const;
 
-	/***** ***** ***** ***** Ability functions. ***** ***** ***** *****/
+	/**
+	 * @}
+	 * @defgroup unit_abil Ability functions
+	 * @{
+	 */
 
 public:
 	/**
@@ -1204,7 +1417,19 @@ public:
 		return get_ability_bool(tag_name, loc_, dc);
 	}
 
+	/**
+	 * Gets the unit's active abilities of a particular type if it were on a specified location.
+	 * @param tag_name The type of ability to check for
+	 * @param loc The location to use for resolving abilities
+	 * @return A list of active abilities, paired with the location they are active on
+	 */
 	unit_ability_list get_abilities(const std::string& tag_name, const map_location& loc) const;
+
+	/**
+	 * Gets the unit's active abilities of a particular type.
+	 * @param tag_name The type of ability to check for
+	 * @return A list of active abilities, paired with the location they are active on
+	 */
 	unit_ability_list get_abilities(const std::string& tag_name) const
 	{
 		return get_abilities(tag_name, loc_);
@@ -1223,24 +1448,58 @@ public:
 	std::vector<std::tuple<t_string, t_string, t_string>>
 	ability_tooltips(boost::dynamic_bitset<>* active_list = nullptr) const;
 
+	/** Get a list of all abilities by ID. */
 	std::vector<std::string> get_ability_list() const;
 
+	/**
+	 * Check if the unit has an ability of a specific type.
+	 * @param ability The type of ability (tag name) to check for.
+	 * @returns true if the ability is present
+	 */
 	bool has_ability_type(const std::string& ability) const;
 
-	// Needed for unit_filter
+	/**
+	 * Check if the unit has an ability of a specific ID.
+	 * @param ability The ID of ability to check for.
+	 * @returns true if the ability is present
+	 */
 	bool has_ability_by_id(const std::string& ability) const;
 
+	/**
+	 * Removes a unit's abilities with a specific ID.
+	 * @param ability The type of ability (tag name) to remove.
+	 */
 	void remove_ability_by_id(const std::string& ability);
 
 private:
 	/**
-	 * @param cfg: an ability WML structure
+	 * Check if an ability is active.
+	 * @param ability The type (tag name) of the ability
+	 * @param cfg an ability WML structure
+	 * @param loc The location on which to resolve the ability
+	 * @returns true if it is active
 	 */
 	bool ability_active(const std::string& ability, const config& cfg, const map_location& loc) const;
+
+	/**
+	 * Check if an ability affects adjacent units.
+	 * @param ability The type (tag name) of the ability
+	 * @param cfg an ability WML structure
+	 * @param loc The location on which to resolve the ability
+	 * @param from The "other unit" for filter matching
+	 */
 	bool ability_affects_adjacent(const std::string& ability, const config& cfg, int dir, const map_location& loc, const unit& from) const;
+
+	/**
+	 * Check if an ability affects the owning unit.
+	 * @param ability The type (tag name) of the ability
+	 * @param cfg an ability WML structure
+	 * @param loc The location on which to resolve the ability
+	 */
 	bool ability_affects_self(const std::string& ability, const config& cfg, const map_location& loc) const;
 
 public:
+	/** Get the unit formula manager. */
 	unit_formula_manager& formula_manager() const
 	{
 		return *formula_man_;
@@ -1267,6 +1526,8 @@ public:
 	 * @returns                   self (for convenience)
 	 */
 	unit& clone(bool is_temporary = true);
+
+	/** @} */
 
 	long ref_count() const
 	{
