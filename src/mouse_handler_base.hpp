@@ -109,6 +109,8 @@ public:
 	 * Overridden in derived class. Called on drag+drop movements.
 	 */
 	virtual void move_action(bool browse);
+	
+	virtual void touch_action(const map_location hex, bool browse);
 
 	/**
 	 * Called whenever the left mouse drag has "ended".
