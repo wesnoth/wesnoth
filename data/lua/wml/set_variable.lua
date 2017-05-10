@@ -105,14 +105,17 @@ function wesnoth.wml_actions.set_variable(cfg)
 		local key_name = join_child.key or "value"
 		local remove_empty = join_child.remove_empty
 
-		local string_to_join = {}
+		local string_to_join = ''
 
 		for i, element in ipairs(helper.get_variable_array(array_name)) do
 			if element[key_name] ~= nil or (not remove_empty) then
-				table.insert(string_to_join, tostring(element[key_name]))
+				if #string_to_join > 0 then
+					string_to_join = string_to_join .. separator
+				end
+				string_to_join = string_to_join .. element[key_name]
 			end
 		end
 
-		wesnoth.set_variable(name, table.concat(string_to_join, separator))
+		wesnoth.set_variable(name, string_to_join)
 	end
 end
