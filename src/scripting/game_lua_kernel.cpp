@@ -362,7 +362,9 @@ static int impl_add_animation(lua_State* L)
 	if(lua_istable(L, 5)) {
 		lua_getfield(L, 5, "target");
 		if(luaW_tolocation(L, -1, dest)) {
-			if(!tiles_adjacent(dest, u.get_location())) {
+			if(dest == u.get_location()) {
+				return luaL_argerror(L, 5, "target location must be different from animated unit's location");
+			} else if(!tiles_adjacent(dest, u.get_location())) {
 				return luaL_argerror(L, 5, "target location must be adjacent to the animated unit");
 			}
 		} else {
