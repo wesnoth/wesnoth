@@ -145,11 +145,6 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 	mouse_update(browse, loc);
 	
 	static clock_t touch_timestamp = 0;
-//	using std::chrono::duration_cast;
-//	using std::chrono::duration;
-//	using std::chrono::milliseconds;
-//	using std::chrono::high_resolution_clock;
-//	high_resolution_clock::time_point touch_timestamp_cpp;
 	
 	if (is_touch_click(event)) {
 		if (event.state == SDL_PRESSED) {
@@ -161,7 +156,7 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 		} else if (event.state == SDL_RELEASED) {
 			minimap_scrolling_ = false;
 
-			if (!dragging_started_ /*&& !is_dragging()*/) {
+			if (!dragging_started_) {
 				time_t dt = clock() - touch_timestamp;
 				// I couldn't make this work. Sorry for some C.
 //				auto dt_cpp = high_resolution_clock::now() - touch_timestamp_cpp;
@@ -169,7 +164,7 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 //				auto menu_hold = milliseconds(300);
 //				if (dt2 > menu_hold) {
 				if (dt > CLOCKS_PER_SEC * 2 / 10) {
-					show_menu_ = true;
+					right_click(event.x, event.y, browse); // show_menu_ = true;
 				}
 			}
 
@@ -287,6 +282,11 @@ bool mouse_handler_base::left_click(int x, int y, const bool /*browse*/)
 void mouse_handler_base::move_action(const bool /*browse*/)
 {
 	// Overridden with unit move code elsewhere
+}
+
+void mouse_handler_base::touch_action(const map_location hex, bool browse)
+{
+
 }
 
 void mouse_handler_base::left_drag_end(int /*x*/, int /*y*/, const bool browse)
