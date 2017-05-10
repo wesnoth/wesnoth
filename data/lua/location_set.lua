@@ -153,6 +153,14 @@ function methods:of_wml_var(name)
 	end
 end
 
+function methods:of_triples(t)
+    -- Create a location set from a table of 3-element tables
+    -- Elements 1 and 2 are x,y coordinates, #3 is value to be inserted
+    for k,v in pairs(t) do
+        self:insert(v[1], v[2], v[3])
+    end
+end
+
 function methods:to_pairs()
 	local res = {}
 	self:iter(function(x, y) table.insert(res, { x, y }) end)
@@ -178,6 +186,12 @@ function methods:to_wml_var(name)
 	end)
 end
 
+function methods:to_triples()
+    local res = {}
+    self:iter(function(x, y, v) table.insert(res, { x, y, v }) end)
+    return res
+end
+
 function location_set.create()
 	if wesnoth.get_map_size then
 		-- If called from the mapgen kernel, there's no map
@@ -197,6 +211,12 @@ function location_set.of_wml_var(name)
 	local s = location_set.create()
 	s:of_wml_var(name)
 	return s
+end
+
+function location_set.of_triples(t)
+    local s = location_set.create()
+    s:of_triples(t)
+    return s
 end
 
 return location_set

@@ -78,7 +78,7 @@ local function bottleneck_triple_from_keys(key_x, key_y, max_value)
         i = i + 1
     end
 
-    return AH.LS_of_triples(coords)
+    return LS.of_triples(coords)
 end
 
 local function bottleneck_create_positioning_map(max_value, data)
@@ -101,10 +101,10 @@ local function bottleneck_create_positioning_map(max_value, data)
     end)
 
     -- We need to sort the map, and assign descending values
-    local locs = AH.LS_to_triples(map)
+    local locs = map:to_triples()
     table.sort(locs, function(a, b) return a[3] > b[3] end)
     for i,loc in ipairs(locs) do loc[3] = max_value + 10 - i * 10 end
-    map = AH.LS_of_triples(locs)
+    map = LS.of_triples(locs)
 
     -- We merge the defense map into this, as healers/leaders (by default)
     -- can take position on the front line

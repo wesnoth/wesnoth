@@ -547,23 +547,6 @@ function ai_helper.get_LS_xy(index)
     return xy[1], xy[2]
 end
 
-function ai_helper.LS_of_triples(table)
-    -- Create a location set from a table of 3-element tables
-    -- Elements 1 and 2 are x,y coordinates, #3 is value to be inserted
-
-    local set = LS.create()
-    for k,v in pairs(table) do
-        set:insert(v[1], v[2], v[3])
-    end
-    return set
-end
-
-function ai_helper.LS_to_triples(set)
-    local res = {}
-    set:iter(function(x, y, v) table.insert(res, { x, y, v }) end)
-    return res
-end
-
 function ai_helper.LS_random_hex(map)
     -- Select a random hex from the hexes in location set @map
     -- This seems "inelegant", but I can't come up with another way without creating an extra array
