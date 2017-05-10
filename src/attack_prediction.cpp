@@ -790,12 +790,9 @@ void prob_matrix::shift_rows(
  */
 void prob_matrix::move_column(unsigned d_plane, unsigned s_plane, unsigned d_col, unsigned s_col)
 {
-	std::set<unsigned>::const_iterator rows_end = used_rows_[s_plane].end();
-	std::set<unsigned>::const_iterator row_it = used_rows_[s_plane].begin();
-
 	// Transfer the data.
-	for(; row_it != rows_end; ++row_it) {
-		xfer(d_plane, s_plane, *row_it, d_col, *row_it, s_col);
+	for(const unsigned& row : used_rows_[s_plane]) {
+		xfer(d_plane, s_plane, row, d_col, row, s_col);
 	}
 }
 
@@ -804,12 +801,9 @@ void prob_matrix::move_column(unsigned d_plane, unsigned s_plane, unsigned d_col
  */
 void prob_matrix::move_row(unsigned d_plane, unsigned s_plane, unsigned d_row, unsigned s_row)
 {
-	std::set<unsigned>::const_iterator cols_end = used_cols_[s_plane].end();
-	std::set<unsigned>::const_iterator col_it = used_cols_[s_plane].begin();
-
 	// Transfer the data.
-	for(; col_it != cols_end; ++col_it) {
-		xfer(d_plane, s_plane, d_row, *col_it, s_row, *col_it);
+	for(const unsigned& col : used_cols_[s_plane]) {
+		xfer(d_plane, s_plane, d_row, col, s_row, col);
 	}
 }
 
@@ -819,8 +813,8 @@ void prob_matrix::move_row(unsigned d_plane, unsigned s_plane, unsigned d_row, u
  */
 void prob_matrix::merge_col(unsigned d_plane, unsigned s_plane, unsigned col, unsigned d_row)
 {
-	std::set<unsigned>::const_iterator rows_end = used_rows_[s_plane].end();
-	std::set<unsigned>::const_iterator row_it = used_rows_[s_plane].begin();
+	auto rows_end = used_rows_[s_plane].end();
+	auto row_it = used_rows_[s_plane].begin();
 
 	// Transfer the data, excluding row zero.
 	for(++row_it; row_it != rows_end; ++row_it) {
@@ -834,16 +828,13 @@ void prob_matrix::merge_col(unsigned d_plane, unsigned s_plane, unsigned col, un
  */
 void prob_matrix::merge_cols(unsigned d_plane, unsigned s_plane, unsigned d_row)
 {
-	std::set<unsigned>::const_iterator rows_end = used_rows_[s_plane].end();
-	std::set<unsigned>::const_iterator row_it = used_rows_[s_plane].begin();
-	std::set<unsigned>::const_iterator cols_end = used_cols_[s_plane].end();
-	std::set<unsigned>::const_iterator cols_begin = used_cols_[s_plane].begin();
-	std::set<unsigned>::const_iterator col_it;
+	auto rows_end = used_rows_[s_plane].end();
+	auto row_it = used_rows_[s_plane].begin();
 
 	// Transfer the data, excluding row zero.
 	for(++row_it; row_it != rows_end; ++row_it) {
-		for(col_it = cols_begin; col_it != cols_end; ++col_it) {
-			xfer(d_plane, s_plane, d_row, *col_it, *row_it, *col_it);
+		for(const unsigned& col : used_cols_[s_plane]) {
+			xfer(d_plane, s_plane, d_row, col, *row_it, col);
 		}
 	}
 }
@@ -854,8 +845,8 @@ void prob_matrix::merge_cols(unsigned d_plane, unsigned s_plane, unsigned d_row)
  */
 void prob_matrix::merge_row(unsigned d_plane, unsigned s_plane, unsigned row, unsigned d_col)
 {
-	std::set<unsigned>::const_iterator cols_end = used_cols_[s_plane].end();
-	std::set<unsigned>::const_iterator col_it = used_cols_[s_plane].begin();
+	auto cols_end = used_cols_[s_plane].end();
+	auto col_it = used_cols_[s_plane].begin();
 
 	// Transfer the data, excluding column zero.
 	for(++col_it; col_it != cols_end; ++col_it) {
@@ -869,18 +860,13 @@ void prob_matrix::merge_row(unsigned d_plane, unsigned s_plane, unsigned row, un
  */
 void prob_matrix::merge_rows(unsigned d_plane, unsigned s_plane, unsigned d_col)
 {
-	std::set<unsigned>::const_iterator rows_end = used_rows_[s_plane].end();
-	std::set<unsigned>::const_iterator row_it = used_rows_[s_plane].begin();
-	std::set<unsigned>::const_iterator cols_end = used_cols_[s_plane].end();
-	std::set<unsigned>::const_iterator cols_begin = used_cols_[s_plane].begin();
-	// (excluding column zero)
-	++cols_begin;
-	std::set<unsigned>::const_iterator col_it;
+	auto cols_end = used_cols_[s_plane].end();
+	auto col_it = used_cols_[s_plane].begin();
 
 	// Transfer the data, excluding column zero.
-	for(; row_it != rows_end; ++row_it) {
-		for(col_it = cols_begin; col_it != cols_end; ++col_it) {
-			xfer(d_plane, s_plane, *row_it, d_col, *row_it, *col_it);
+	for(const unsigned& row : used_rows_[s_plane]) {
+		for(++col_it; col_it != cols_end; ++col_it) {
+			xfer(d_plane, s_plane, row, d_col, row, *col_it);
 		}
 	}
 }
@@ -947,18 +933,16 @@ double prob_matrix::prob_of_zero(bool check_a, bool check_b) const
 
 		// Column 0 is where b is at zero.
 		if(check_b) {
-			std::set<unsigned>::const_iterator rows_end = used_rows_[p].end();
-			std::set<unsigned>::const_iterator row_it = used_rows_[p].begin();
-			for(; row_it != rows_end; ++row_it)
-				prob += val(p, *row_it, 0);
+			for(const unsigned& row : used_rows_[p]) {
+				prob += val(p, row, 0);
+			}
 		}
 
 		// Row 0 is where a is at zero.
 		if(check_a) {
-			std::set<unsigned>::const_iterator cols_end = used_cols_[p].end();
-			std::set<unsigned>::const_iterator col_it = used_cols_[p].begin();
-			for(; col_it != cols_end; ++col_it)
-				prob += val(p, 0, *col_it);
+			for(const unsigned& col : used_cols_[p]) {
+				prob += val(p, 0, col);
+			}
 		}
 		// Theoretically, if checking both, we should subtract the chance that
 		// both are dead, but that chance is zero, so don't worry about it.
@@ -974,17 +958,11 @@ double prob_matrix::prob_of_zero(bool check_a, bool check_b) const
  */
 void prob_matrix::sum(unsigned plane, std::vector<double>& row_sums, std::vector<double>& col_sums) const
 {
-	std::set<unsigned>::const_iterator rows_end = used_rows_[plane].end();
-	std::set<unsigned>::const_iterator row_it = used_rows_[plane].begin();
-	std::set<unsigned>::const_iterator cols_end = used_cols_[plane].end();
-	std::set<unsigned>::const_iterator cols_begin = used_cols_[plane].begin();
-	std::set<unsigned>::const_iterator col_it;
-
-	for(; row_it != rows_end; ++row_it) {
-		for(col_it = cols_begin; col_it != cols_end; ++col_it) {
-			const double& prob = val(plane, *row_it, *col_it);
-			row_sums[*row_it] += prob;
-			col_sums[*col_it] += prob;
+	for(const unsigned& row : used_rows_[plane]) {
+		for(const unsigned& col : used_cols_[plane]) {
+			const double& prob = val(plane, row, col);
+			row_sums[row] += prob;
+			col_sums[col] += prob;
 		}
 	}
 }
@@ -1724,9 +1702,9 @@ void forced_levelup(std::vector<double>& hp_dist)
 	/* If we survive the combat, we will level up. So the probability
 	   of death is unchanged, but all other cases get merged into the
 	   fully healed case. */
-	std::vector<double>::iterator i = hp_dist.begin();
-	++i; // Skip to the second value.
-	for(; i != hp_dist.end(); ++i) {
+	auto i = hp_dist.begin();
+	// Skip to the second value.
+	for(++i; i != hp_dist.end(); ++i) {
 		*i = 0;
 	}
 
@@ -1745,9 +1723,9 @@ void conditional_levelup(std::vector<double>& hp_dist, double kill_prob)
 		scalefactor = 1 - kill_prob / chance_to_survive;
 	}
 
-	std::vector<double>::iterator i = hp_dist.begin();
-	++i; // Skip to the second value.
-	for(; i != hp_dist.end(); ++i) {
+	auto i = hp_dist.begin();
+	// Skip to the second value.
+	for(++i; i != hp_dist.end(); ++i) {
 		*i *= scalefactor;
 	}
 
