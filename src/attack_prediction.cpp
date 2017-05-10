@@ -48,6 +48,7 @@
 #include <cfloat>
 #include <cmath>
 #include <iostream>
+#include <memory>
 #include <numeric>
 #include <sstream>
 
@@ -256,8 +257,6 @@ public:
 			const summary_t& a_initial,
 			const summary_t& b_initial);
 
-	~prob_matrix();
-
 	// Shift columns on this plane (b taking damage).
 	void shift_cols(unsigned dst, unsigned src, unsigned damage, double prob, int drain_constant, int drain_percent);
 	// Shift rows on this plane (a taking damage).
@@ -371,7 +370,7 @@ private:
 
 private: // data
 	const unsigned int rows_, cols_;
-	std::array<double*, NUM_PLANES> plane_;
+	std::array<std::unique_ptr<double[]>, NUM_PLANES> plane_;
 
 	// For optimization, we keep track of the rows and columns with data.
 	// (The matrices are likely going to be rather sparse, with data on a grid.)
@@ -420,10 +419,10 @@ prob_matrix::prob_matrix(unsigned int a_max,
 	need_b_slowed = need_b_slowed || !b_initial[1].empty();
 
 	// Allocate the needed planes.
-	plane_[NEITHER_SLOWED] = new_plane();
-	plane_[A_SLOWED] = !need_a_slowed ? nullptr : new_plane();
-	plane_[B_SLOWED] = !need_b_slowed ? nullptr : new_plane();
-	plane_[BOTH_SLOWED] = !(need_a_slowed && need_b_slowed) ? nullptr : new_plane();
+	plane_[NEITHER_SLOWED] = std::unique_ptr<double[]>(new_plane());
+	plane_[A_SLOWED] = !need_a_slowed ? nullptr : std::unique_ptr<double[]>(new_plane());
+	plane_[B_SLOWED] = !need_b_slowed ? nullptr : std::unique_ptr<double[]>(new_plane());
+	plane_[BOTH_SLOWED] = !(need_a_slowed && need_b_slowed) ? nullptr : std::unique_ptr<double[]>(new_plane());
 
 	// Initialize the probability distribution.
 	initialize_plane(NEITHER_SLOWED, a_cur, b_cur, a_initial[0], b_initial[0]);
@@ -450,14 +449,6 @@ prob_matrix::prob_matrix(unsigned int a_max,
 		debug(("B has fought before (or is slowed).\n"));
 		dump();
 	}
-}
-
-prob_matrix::~prob_matrix()
-{
-	delete[] plane_[NEITHER_SLOWED];
-	delete[] plane_[A_SLOWED];
-	delete[] plane_[B_SLOWED];
-	delete[] plane_[BOTH_SLOWED];
 }
 
 /** Allocate a new probability array, initialized to 0. */
