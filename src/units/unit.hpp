@@ -775,9 +775,9 @@ public:
 	 * @param args The arguments for constructing the attack
 	 */
 	template<typename... Args>
-	attack_ptr add_attack(attack_itors::iterator position, Args... args)
+	attack_ptr add_attack(attack_itors::iterator position, Args&&... args)
 	{
-		return *attacks_.emplace(position.base(), new attack_type(args...));
+		return *attacks_.emplace(position.base(), new attack_type(std::forward<Args>(args)...));
 	}
 
 	/**
