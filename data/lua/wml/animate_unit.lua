@@ -14,6 +14,7 @@ end
 
 local function add_animation(anim, cfg)
 	cfg = helper.shallow_parsed(cfg)
+	local flag = cfg.flag or helper.wml_error("[animate_unit] is missing flag")
 	local filter = helper.get_child(cfg, "filter")
 	local unit
 	if filter then
@@ -86,7 +87,7 @@ local function add_animation(anim, cfg)
 			text = cfg.male_text
 		end
 
-		anim:add(unit, cfg.flag, hits, {
+		anim:add(unit, flag, hits, {
 			target = facing,
 			value = {tonumber(cfg.value) or 0, tonumber(cfg.value_second) or 0},
 			with_bars = not not cfg.with_bars,
