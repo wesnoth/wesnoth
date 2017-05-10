@@ -103,6 +103,8 @@ void dump(const battle_context_unit_stats& stats)
 
 namespace
 {
+using summary_t = std::array<std::vector<double>, 2>;
+
 /**
 * A struct to describe one possible combat scenario.
 * (Needed when the number of attacks can vary due to swarm.)
@@ -120,15 +122,15 @@ struct combat_slice
 	unsigned strikes;
 
 	combat_slice(
-			const std::array<std::vector<double>, 2>& src_summary, unsigned begin, unsigned end, unsigned num_strikes);
-	combat_slice(const std::array<std::vector<double>, 2>& src_summary, unsigned num_strikes);
+			const summary_t& src_summary, unsigned begin, unsigned end, unsigned num_strikes);
+	combat_slice(const summary_t& src_summary, unsigned num_strikes);
 };
 
 /**
 * Creates a slice from a summary, and associates a number of strikes.
 */
 combat_slice::combat_slice(
-		const std::array<std::vector<double>, 2>& src_summary, unsigned begin, unsigned end, unsigned num_strikes)
+		const summary_t& src_summary, unsigned begin, unsigned end, unsigned num_strikes)
 	: begin_hp(begin)
 	, end_hp(end)
 	, prob(0.0)
@@ -161,7 +163,7 @@ combat_slice::combat_slice(
 * Creates a slice from the summaries, and associates a number of strikes.
 * This version of the constructor creates a slice consisting of everything.
 */
-combat_slice::combat_slice(const std::array<std::vector<double>, 2>& src_summary, unsigned num_strikes)
+combat_slice::combat_slice(const summary_t& src_summary, unsigned num_strikes)
 	: begin_hp(0)
 	, end_hp(src_summary[0].size())
 	, prob(1.0)
@@ -195,7 +197,7 @@ unsigned hp_for_next_attack(unsigned cur_hp, const battle_context_unit_stats& st
 * This also clears the current summaries.
 */
 std::vector<combat_slice> split_summary(
-		const battle_context_unit_stats& unit_stats, std::array<std::vector<double>, 2>& summary)
+		const battle_context_unit_stats& unit_stats, summary_t& summary)
 {
 	std::vector<combat_slice> result;
 
@@ -242,8 +244,8 @@ public:
 			bool need_b_slowed,
 			unsigned int a_cur,
 			unsigned int b_cur,
-			const std::array<std::vector<double>, 2>& a_initial,
-			const std::array<std::vector<double>, 2>& b_initial);
+			const summary_t& a_initial,
+			const summary_t& b_initial);
 
 	~prob_matrix();
 
@@ -386,8 +388,8 @@ prob_matrix::prob_matrix(unsigned int a_max,
 		bool need_b_slowed,
 		unsigned int a_cur,
 		unsigned int b_cur,
-		const std::array<std::vector<double>, 2>& a_initial,
-		const std::array<std::vector<double>, 2>& b_initial)
+		const summary_t& a_initial,
+		const summary_t& b_initial)
 	: rows_(a_max + 1)
 	, cols_(b_max + 1)
 	, plane_()
@@ -1018,8 +1020,8 @@ public:
 			unsigned int b_max_hp,
 			unsigned int a_hp,
 			unsigned int b_hp,
-			const std::array<std::vector<double>, 2>& a_summary,
-			const std::array<std::vector<double>, 2>& b_summary,
+			const summary_t& a_summary,
+			const summary_t& b_summary,
 			bool a_slows,
 			bool b_slows,
 			unsigned int a_damage,
@@ -1047,7 +1049,7 @@ public:
 
 	// Its over, and here's the bill.
 	virtual void extract_results(
-			std::array<std::vector<double>, 2>& summary_a, std::array<std::vector<double>, 2>& summary_b)
+			summary_t& summary_a, summary_t& summary_b)
 			= 0;
 
 	void dump() const
@@ -1089,8 +1091,8 @@ combat_matrix::combat_matrix(unsigned int a_max_hp,
 		unsigned int b_max_hp,
 		unsigned int a_hp,
 		unsigned int b_hp,
-		const std::array<std::vector<double>, 2>& a_summary,
-		const std::array<std::vector<double>, 2>& b_summary,
+		const summary_t& a_summary,
+		const summary_t& b_summary,
 		bool a_slows,
 		bool b_slows,
 		unsigned int a_damage,
@@ -1207,8 +1209,8 @@ public:
 			unsigned int b_max_hp,
 			unsigned int a_hp,
 			unsigned int b_hp,
-			const std::array<std::vector<double>, 2>& a_summary,
-			const std::array<std::vector<double>, 2>& b_summary,
+			const summary_t& a_summary,
+			const summary_t& b_summary,
 			bool a_slows,
 			bool b_slows,
 			unsigned int a_damage,
@@ -1244,7 +1246,7 @@ public:
 	}
 
 	void extract_results(
-			std::array<std::vector<double>, 2>& summary_a, std::array<std::vector<double>, 2>& summary_b) override;
+			summary_t& summary_a, summary_t& summary_b) override;
 };
 
 /**
@@ -1264,8 +1266,8 @@ probability_combat_matrix::probability_combat_matrix(unsigned int a_max_hp,
 		unsigned int b_max_hp,
 		unsigned int a_hp,
 		unsigned int b_hp,
-		const std::array<std::vector<double>, 2>& a_summary,
-		const std::array<std::vector<double>, 2>& b_summary,
+		const summary_t& a_summary,
+		const summary_t& b_summary,
 		bool a_slows,
 		bool b_slows,
 		unsigned int a_damage,
@@ -1338,7 +1340,7 @@ void probability_combat_matrix::receive_blow_a(double hit_chance)
 }
 
 void probability_combat_matrix::extract_results(
-		std::array<std::vector<double>, 2>& summary_a, std::array<std::vector<double>, 2>& summary_b)
+		summary_t& summary_a, summary_t& summary_b)
 {
 	// Reset the summaries.
 	summary_a[0] = std::vector<double>(num_rows());
@@ -1380,8 +1382,8 @@ public:
 			unsigned int b_max_hp,
 			unsigned int a_hp,
 			unsigned int b_hp,
-			const std::array<std::vector<double>, 2>& a_summary,
-			const std::array<std::vector<double>, 2>& b_summary,
+			const summary_t& a_summary,
+			const summary_t& b_summary,
 			bool a_slows,
 			bool b_slows,
 			unsigned int a_damage,
@@ -1403,7 +1405,7 @@ public:
 	void simulate();
 
 	void extract_results(
-			std::array<std::vector<double>, 2>& summary_a, std::array<std::vector<double>, 2>& summary_b) override;
+			summary_t& summary_a, summary_t& summary_b) override;
 
 	double get_a_hit_probability() const;
 	double get_b_hit_probability() const;
@@ -1436,8 +1438,8 @@ monte_carlo_combat_matrix::monte_carlo_combat_matrix(unsigned int a_max_hp,
 		unsigned int b_max_hp,
 		unsigned int a_hp,
 		unsigned int b_hp,
-		const std::array<std::vector<double>, 2>& a_summary,
-		const std::array<std::vector<double>, 2>& b_summary,
+		const summary_t& a_summary,
+		const summary_t& b_summary,
 		bool a_slows,
 		bool b_slows,
 		unsigned int a_damage,
@@ -1557,7 +1559,7 @@ void monte_carlo_combat_matrix::simulate()
  * by the number of iterations.
  */
 void monte_carlo_combat_matrix::extract_results(
-		std::array<std::vector<double>, 2>& summary_a, std::array<std::vector<double>, 2>& summary_b)
+		summary_t& summary_a, summary_t& summary_b)
 {
 	// Reset the summaries.
 	summary_a[0] = std::vector<double>(num_rows());
@@ -1959,8 +1961,8 @@ void complex_fight(attack_prediction_mode mode,
 		const battle_context_unit_stats& opp_stats,
 		unsigned strikes,
 		unsigned opp_strikes,
-		std::array<std::vector<double>, 2>& summary,
-		std::array<std::vector<double>, 2>& opp_summary,
+		summary_t& summary,
+		summary_t& opp_summary,
 		double& self_not_hit,
 		double& opp_not_hit,
 		bool levelup_considered,
@@ -2073,8 +2075,8 @@ void do_fight(const battle_context_unit_stats& stats,
 		const battle_context_unit_stats& opp_stats,
 		unsigned strikes,
 		unsigned opp_strikes,
-		std::array<std::vector<double>, 2>& summary,
-		std::array<std::vector<double>, 2>& opp_summary,
+		summary_t& summary,
+		summary_t& opp_summary,
 		double& self_not_hit,
 		double& opp_not_hit,
 		bool levelup_considered)
@@ -2204,7 +2206,7 @@ void combatant::fight(combatant& opponent, bool levelup_considered)
 				opp_not_hit, levelup_considered);
 	} else {
 		// Storage for the accumulated hit point distributions.
-		std::array<std::vector<double>, 2> summary_result, opp_summary_result;
+		summary_t summary_result, opp_summary_result;
 		// The chance of not being hit becomes an accumulated chance:
 		self_not_hit = 0.0;
 		opp_not_hit = 0.0;
@@ -2215,7 +2217,7 @@ void combatant::fight(combatant& opponent, bool levelup_considered)
 				const double sit_prob = split[s].prob * opp_split[t].prob;
 
 				// Create summaries for this potential combat situation.
-				std::array<std::vector<double>, 2> sit_summary, sit_opp_summary;
+				summary_t sit_summary, sit_opp_summary;
 				init_slice_summary(sit_summary[0], summary[0], split[s].begin_hp, split[s].end_hp, split[s].prob);
 				init_slice_summary(sit_summary[1], summary[1], split[s].begin_hp, split[s].end_hp, split[s].prob);
 				init_slice_summary(sit_opp_summary[0], opponent.summary[0], opp_split[t].begin_hp, opp_split[t].end_hp,
