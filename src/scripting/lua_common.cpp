@@ -990,7 +990,15 @@ bool luaW_pcall(lua_State *L, int nArgs, int nRets, bool allow_wml_error)
 
 // Originally luaL_typerror, now deprecated.
 // Easier to define it for Wesnoth and not have to worry about it if we update Lua.
-int luaW_type_error (lua_State *L, int narg, const char *tname) {
+int luaW_type_error(lua_State *L, int narg, const char *tname) {
 	const char *msg = lua_pushfstring(L, "%s expected, got %s", tname, luaL_typename(L, narg));
+	return luaL_argerror(L, narg, msg);
+}
+
+// An alternate version which raises an error for a key in a table.
+// In this version, narg should refer to the stack index of the table rather than the stack index of the key.
+// kpath should be the key name or a string such as "key[idx].key2" specifying a path to the key.
+int luaW_type_error (lua_State *L, int narg, const char* kpath, const char *tname) {
+	const char *msg = lua_pushfstring(L, "%s expected for '%s', got %s", tname, kpath, luaL_typename(L, narg));
 	return luaL_argerror(L, narg, msg);
 }

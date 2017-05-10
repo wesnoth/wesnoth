@@ -363,13 +363,13 @@ static int impl_add_animation(lua_State* L)
 		lua_getfield(L, 5, "target");
 		if(luaW_tolocation(L, -1, dest)) {
 			if(!tiles_adjacent(dest, u.get_location())) {
-				return luaL_argerror(L, -1, "target must be adjacent to the animated unit");
+				return luaL_argerror(L, 5, "target location must be adjacent to the animated unit");
 			}
 		} else {
 			// luaW_tolocation may set the location to (0,0) if it fails
 			dest = map_location();
 			if(!lua_isnoneornil(L, -1)) {
-				return luaW_type_error(L, -1, "location table");
+				return luaW_type_error(L, 5, "target", "location table");
 			}
 		}
 		lua_pop(L, 1);
@@ -385,7 +385,7 @@ static int impl_add_animation(lua_State* L)
 			v2 = lua_tonumber(L, -1);
 			lua_pop(L, 1);
 		} else if(!lua_isnoneornil(L, -1)) {
-			return luaW_type_error(L, -1, "number or array of two numbers");
+			return luaW_type_error(L, 5, "value", "number or array of two numbers");
 		}
 		lua_pop(L, 1);
 
@@ -393,7 +393,7 @@ static int impl_add_animation(lua_State* L)
 		if(lua_isboolean(L, -1)) {
 			bars = luaW_toboolean(L, -1);
 		} else if(!lua_isnoneornil(L, -1)) {
-			return luaW_type_error(L, -1, lua_typename(L, LUA_TBOOLEAN));
+			return luaW_type_error(L, 5, "with_bars", lua_typename(L, LUA_TBOOLEAN));
 		}
 		lua_pop(L, 1);
 
@@ -403,7 +403,7 @@ static int impl_add_animation(lua_State* L)
 		} else if(luaW_totstring(L, -1, text)) {
 			// Do nothing; luaW_totstring already assigned the value
 		} else if(!lua_isnoneornil(L, -1)) {
-			return luaW_type_error(L, -1, lua_typename(L, LUA_TSTRING));
+			return luaW_type_error(L, 5, "text", lua_typename(L, LUA_TSTRING));
 		}
 		lua_pop(L, 1);
 
@@ -416,21 +416,21 @@ static int impl_add_animation(lua_State* L)
 			color = color_t(lua_tonumber(L, -3), lua_tonumber(L, -2), lua_tonumber(L, -1));
 			lua_pop(L, 3);
 		} else if(!lua_isnoneornil(L, -1)) {
-			return luaW_type_error(L, -1, "array of three numbers");
+			return luaW_type_error(L, 5, "color", "array of three numbers");
 		}
 		lua_pop(L, 1);
 
 		lua_getfield(L, 5, "primary");
 		primary = luaW_toweapon(L, -1);
 		if(!primary && !lua_isnoneornil(L, -1)) {
-			return luaW_type_error(L, -1, "weapon");
+			return luaW_type_error(L, 5, "primary", "weapon");
 		}
 		lua_pop(L, 1);
 
 		lua_getfield(L, 5, "secondary");
 		secondary = luaW_toweapon(L, -1);
 		if(!secondary && !lua_isnoneornil(L, -1)) {
-			return luaW_type_error(L, -1, "weapon");
+			return luaW_type_error(L, 5, "secondary", "weapon");
 		}
 		lua_pop(L, 1);
 	}
