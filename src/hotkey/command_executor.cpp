@@ -22,13 +22,13 @@
 #include "gui/dialogs/drop_down_menu.hpp"
 #include "gui/widgets/window.hpp"
 #include "filesystem.hpp"
-#include "construct_dialog.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "preferences/general.hpp"
 #include "game_end_exceptions.hpp"
 #include "display.hpp"
 #include "quit_confirmation.hpp"
+#include "show_dialog.hpp"
 
 #include "utils/functional.hpp"
 

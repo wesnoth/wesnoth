@@ -18,7 +18,6 @@
 #include "commandline_options.hpp"      // for commandline_options
 #include "config.hpp"                   // for config, etc
 #include "config_assign.hpp"
-#include "construct_dialog.hpp"         // for dialog
 #include "cursor.hpp"                   // for set, CURSOR_TYPE::NORMAL
 #include "exceptions.hpp"               // for error
 #include "filesystem.hpp"               // for get_user_config_dir, etc
