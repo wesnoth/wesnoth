@@ -1,6 +1,7 @@
 local H = wesnoth.require "helper"
 local W = H.set_wml_action_metatable {}
 local LS = wesnoth.require "location_set"
+local F = wesnoth.require "functional"
 
 -- This is a collection of Lua functions used for custom AI development.
 -- Note that this is still work in progress with significant changes occurring
@@ -457,32 +458,11 @@ end
 ----- General functionality and maths helper functions ------
 
 function ai_helper.filter(input, condition)
-    -- Equivalent of filter() function in Formula AI
-
-    local filtered_table = {}
-
-    for _,v in ipairs(input) do
-        if condition(v) then
-            table.insert(filtered_table, v)
-        end
-    end
-
-    return filtered_table
+    return F.filter(input, condition)
 end
 
 function ai_helper.choose(input, value)
-    -- Equivalent of choose() function in Formula AI
-    -- Returns element of a table with the largest @value (a function)
-    -- Also returns the max value and the index
-
-    local max_value, best_input, best_key = -9e99
-    for k,v in pairs(input) do
-        if value(v) > max_value then
-            max_value, best_input, best_key = value(v), v, k
-        end
-    end
-
-    return best_input, max_value, best_key
+    return F.choose(input, value)
 end
 
 function ai_helper.table_copy(t)
