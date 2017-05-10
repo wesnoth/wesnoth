@@ -34,18 +34,22 @@
  * for wesnoth-attack-sim.c).
  */
 
-#include <cfloat>
-
 #include "attack_prediction.hpp"
 
 #include "actions/attack.hpp"
 #include "game_config.hpp"
+#include "log.hpp"
 #include "preferences/general.hpp"
 #include "random.hpp"
+#include "serialization/string_utils.hpp"
 #include "utils/general.hpp"
+
 #include <array>
+#include <cfloat>
 #include <cmath>
+#include <iostream>
 #include <numeric>
+#include <sstream>
 
 #if defined(BENCHMARK) || defined(CHECK)
 #include <chrono>
@@ -69,34 +73,39 @@ int tile_size = 72; // Not really needed, but it's used in image.hpp.
 #ifdef ATTACK_PREDICTION_DEBUG
 namespace
 {
-/** Dumps the statistics of a unit on stdout. Remove it eventually. */
-// Moved from attack/attack.cpp
+/** Prints the attack statistics of a unit to cout. */
 void dump(const battle_context_unit_stats& stats)
 {
-	printf("==================================\n");
-	printf("is_attacker:    %d\n", static_cast<int>(stats.is_attacker));
-	printf("is_poisoned:    %d\n", static_cast<int>(stats.is_poisoned));
-	printf("is_slowed:      %d\n", static_cast<int>(stats.is_slowed));
-	printf("slows:          %d\n", static_cast<int>(stats.slows));
-	printf("drains:         %d\n", static_cast<int>(stats.drains));
-	printf("petrifies:      %d\n", static_cast<int>(stats.petrifies));
-	printf("poisons:        %d\n", static_cast<int>(stats.poisons));
-	printf("backstab_pos:   %d\n", static_cast<int>(stats.backstab_pos));
-	printf("swarm:          %d\n", static_cast<int>(stats.swarm));
-	printf("rounds:         %u\n", stats.rounds);
-	printf("firststrike:    %d\n", static_cast<int>(stats.firststrike));
-	printf("\n");
-	printf("hp:             %u\n", stats.hp);
-	printf("max_hp:         %u\n", stats.max_hp);
-	printf("chance_to_hit:  %u\n", stats.chance_to_hit);
-	printf("damage:         %d\n", stats.damage);
-	printf("slow_damage:    %d\n", stats.slow_damage);
-	printf("drain_percent:  %d\n", stats.drain_percent);
-	printf("drain_constant: %d\n", stats.drain_constant);
-	printf("num_blows:      %u\n", stats.num_blows);
-	printf("swarm_min:      %u\n", stats.swarm_min);
-	printf("swarm_max:      %u\n", stats.swarm_max);
-	printf("\n");
+	std::ostringstream ss;
+
+	ss << "==================================";
+	   << std::boolalpha
+	   << "\n" << "is_attacker:    " << stats.is_attacker
+	   << "\n" << "is_poisoned:    " << stats.is_poisoned
+	   << "\n" << "is_slowed:      " << stats.is_slowed
+	   << "\n" << "slows:          " << stats.slows
+	   << "\n" << "drains:         " << stats.drains
+	   << "\n" << "petrifies:      " << stats.petrifies
+	   << "\n" << "poisons:        " << stats.poisons
+	   << "\n" << "backstab_pos:   " << stats.backstab_pos
+	   << "\n" << "swarm:          " << stats.swarm
+	   << "\n" << "firststrike:    " << stats.firststrike
+	   << std::noboolalpha
+	   << "\n" << "rounds:         " << stats.rounds
+	   << "\n\n"
+	   << "\n" << "hp:             " << stats.hp
+	   << "\n" << "max_hp:         " << stats.max_hp
+	   << "\n" << "chance_to_hit:  " << stats.chance_to_hit
+	   << "\n" << "damage:         " << stats.damage
+	   << "\n" << "slow_damage:    " << stats.slow_damage
+	   << "\n" << "drain_percent:  " << stats.drain_percent
+	   << "\n" << "drain_constant: " << stats.drain_constant
+	   << "\n" << "num_blows:      " << stats.num_blows
+	   << "\n" << "swarm_min:      " << stats.swarm_min
+	   << "\n" << "swarm_max:      " << stats.swarm_max
+	   << "\n\n";
+
+	std::cout << ss.rdbuf() << std::endl;
 }
 }
 #endif
@@ -2340,29 +2349,35 @@ double combatant::average_hp(unsigned int healing) const
 #ifdef ATTACK_PREDICTION_DEBUG
 void list_combatant(const battle_context_unit_stats& stats, unsigned fighter)
 {
-	printf("#%02u: %u-%d; %2uhp; %02u%% to hit; ", fighter, stats.swarm_max, stats.damage, stats.hp,
-			stats.chance_to_hit);
+	std::ostringstream ss;
+
+	// TODO: swarm_max? not strikes?
+	ss << "#" << fighter << ": " << stats.swarm_max << "-" << stats.damage << "; "
+	   << stats.chance_to_hit << "% chance to hit; ";
+
 	if(stats.drains) {
-		printf("drains,");
+		ss << "drains, ";
 	}
 
 	if(stats.slows) {
-		printf("slows,");
+		ss << "slows, ";
 	}
 
 	if(stats.rounds > 1) {
-		printf("berserk,");
+		ss << "berserk, ";
 	}
 
 	if(stats.swarm) {
-		printf("swarm(%u),", stats.num_blows);
+		ss << "swarm(" << stats.num_blows << "), ";
 	}
 
 	if(stats.firststrike) {
-		printf("firststrike,");
+		ss << "firststrike, ";
 	}
 
-	printf("maxhp=%u\n", stats.max_hp);
+	ss << "max hp = " << stats.max_hp << "\n";
+
+	std::cout << ss.rdbuf() << std::endl;
 }
 #else
 void list_combatant(const battle_context_unit_stats&, unsigned)
@@ -2373,28 +2388,35 @@ void list_combatant(const battle_context_unit_stats&, unsigned)
 #ifdef HUMAN_READABLE
 void combatant::print(const char label[], unsigned int battle, unsigned int fighter) const
 {
+	std::ostringstream ss;
+
+	// TODO: add this to the stream... no idea how to convert it properly...
 	printf("#%06u: (%02u) %s%*c %u-%d; %uhp; %02u%% to hit; %.2f%% unscathed; ", battle, fighter, label,
 			int(strlen(label)) - 12, ':', u_.swarm_max, u_.damage, u_.hp, u_.chance_to_hit, untouched * 100.0);
+
 	if(u_.drains) {
-		printf("drains,");
+		ss << "drains, ";
 	}
 
 	if(u_.slows) {
-		printf("slows,");
+		ss << "slows, ";
 	}
 
 	if(u_.rounds > 1) {
-		printf("berserk,");
+		ss << "berserk, ";
 	}
 
 	if(u_.swarm) {
-		printf("swarm,");
+		ss << "swarm, ";
 	}
 
 	if(u_.firststrike) {
-		printf("firststrike,");
+		ss << "firststrike, ";
 	}
 
+	std::cout << ss.rdbuf() << std::endl;
+
+	// TODO: add to stream
 	printf("maxhp=%zu ", hp_dist.size() - 1);
 
 	int num_outputs = 0;
@@ -2415,28 +2437,34 @@ void combatant::print(const char label[], unsigned int battle, unsigned int figh
 #elif defined(CHECK)
 void combatant::print(const char label[], unsigned int battle, unsigned int /*fighter*/) const
 {
+	std::ostringstream ss;
+
 	printf("#%u: %s: %d %u %u %2g%% ", battle, label, u_.damage, u_.swarm_max, u_.hp,
 			static_cast<float>(u_.chance_to_hit));
+
 	if(u_.drains) {
-		printf("drains,");
+		ss << "drains, ";
 	}
 
 	if(u_.slows) {
-		printf("slows,");
+		ss << "slows, ";
 	}
 
 	if(u_.rounds > 1) {
-		printf("berserk,");
+		ss << "berserk, ";
 	}
 
 	if(u_.swarm) {
-		printf("swarm,");
+		ss << "swarm, ";
 	}
 
 	if(u_.firststrike) {
-		printf("firststrike,");
+		ss << "firststrike, ";
 	}
 
+	std::cout << ss.rdbuf() << std::endl;
+
+	// TODO: add to stream
 	printf("maxhp=%zu ", hp_dist.size() - 1);
 	printf(" %.2f", untouched);
 	for(unsigned int i = 0; i < hp_dist.size(); ++i) {
@@ -2568,14 +2596,14 @@ static battle_context_unit_stats* parse_unit(char*** argv)
 		if(max) {
 			max_hp = atoi(max + strlen("maxhp="));
 			if(max_hp < hitpoints) {
-				fprintf(stderr, "maxhp must be at least hitpoints.");
+				std::cerr << "maxhp must be at least hitpoints." << std::endl;
 				exit(1);
 			}
 		}
 
 		if(strstr((*argv)[5], "drain")) {
 			if(!max) {
-				fprintf(stderr, "WARNING: drain specified without maxhp; assuming uninjured.\n");
+				std::cerr << "WARNING: drain specified without maxhp; assuming uninjured." << std::endl;
 			}
 
 			drains = true;
@@ -2599,7 +2627,7 @@ static battle_context_unit_stats* parse_unit(char*** argv)
 
 		if(strstr((*argv)[5], "swarm")) {
 			if(!max) {
-				fprintf(stderr, "WARNING: swarm specified without maxhp; assuming uninjured.\n");
+				std::cerr << "WARNING: swarm specified without maxhp; assuming uninjured." << std::endl;
 			}
 
 			swarm = true;
@@ -2624,11 +2652,11 @@ int main(int argc, char* argv[])
 		run(argv[1] ? atoi(argv[1]) : 0);
 
 	if(argc < 9) {
-		fprintf(stderr,
-				"Usage: %s [<battle>]\n"
-				"\t%s <damage> <attacks> <hp> <hitprob> [drain,slows,slowed,swarm,firststrike,berserk,maxhp=<num>] "
-				"<damage> <attacks> <hp> <hitprob> [drain,slows,slowed,berserk,firststrike,swarm,maxhp=<num>] ...\n",
-				argv[0], argv[0]);
+		std::cerr
+			<< "Usage: " << argv[0] << " [<battle>]\n\t" << argv[0] << " "
+			<< "<damage> <attacks> <hp> <hitprob> [drain,slows,slowed,swarm,firststrike,berserk,maxhp=<num>] "
+			<< "<damage> <attacks> <hp> <hitprob> [drain,slows,slowed,berserk,firststrike,swarm,maxhp=<num>] ..."
+			<< std::endl;
 		exit(1);
 	}
 
