@@ -187,34 +187,40 @@ namespace {
 		std::vector<std::string>& files = patterns.first;
 		std::vector<std::string>& dirs  = patterns.second;
 
-		/* Don't upload dot-files/dirs, which are hidden files in
-		   UNIX platforms */
-		files.push_back(".*");
-		dirs.push_back(".*");
-		/* MacOS X metadata-like cruft (http://floatingsun.net/2007/02/07/whats-with-__macosx-in-zip-files/) */
-		dirs.push_back("__MACOSX");
+		static const std::vector<std::string> default_ignored_files {
+			/* Don't upload dot-files/dirs, which are hidden files in UNIX platforms */
+			".*",
+			"#*#",
+			"*~",
+			"*-bak",
+			"*.swp",
+			"*.pbl",
+			"*.ign",
+			"_info.cfg",
+			"*.exe",
+			"*.bat",
+			"*.cmd",
+			"*.com",
+			"*.scr",
+			"*.sh",
+			"*.js",
+			"*.vbs",
+			"*.o",
+			/* Remove junk created by certain file manager ;) */
+			"Thumbs.db",
+			/* Eclipse plugin */
+			"*.wesnoth",
+			"*.project",
+		};
+	
+		static const std::vector<std::string> default_ignored_dirs {
+			".*",
+			/* macOS metadata-like cruft (http://floatingsun.net/2007/02/07/whats-with-__macosx-in-zip-files/) */
+			"__MACOSX",
+		};
 
-		files.push_back("#*#");
-		files.push_back("*~");
-		files.push_back("*-bak");
-		files.push_back("*.swp");
-		files.push_back("*.pbl");
-		files.push_back("*.ign");
-		files.push_back("_info.cfg");
-		files.push_back("*.exe");
-		files.push_back("*.bat");
-		files.push_back("*.cmd");
-		files.push_back("*.com");
-		files.push_back("*.scr");
-		files.push_back("*.sh");
-		files.push_back("*.js");
-		files.push_back("*.vbs");
-		files.push_back("*.o");
-		/* Remove junk created by certain file manager ;) */
-		files.push_back("Thumbs.db");
-        /* Eclipse plugin */
-        files.push_back("*.wesnoth");
-        files.push_back("*.project");
+		files.insert(files.end(), default_ignored_files.begin(), default_ignored_files.end());
+		dirs.insert(dirs.end(), default_ignored_dirs.begin(), default_ignored_dirs.end());
     }
 }
 
