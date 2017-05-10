@@ -46,6 +46,7 @@ hotkey_command_temp hotkey_list_[] {
 	{ HOTKEY_DESELECT_HEX, "deselecthex", N_("Deselect Hex"), false, scope_game, HKCAT_MAP, "" },
 	{ HOTKEY_MOVE_ACTION, "moveaction", N_("Move/Attack"), false, scope_game, HKCAT_UNITS, "" },
 	{ HOTKEY_SELECT_AND_ACTION, "selectmoveaction", N_("Select/Move/Attack"), false, scope_game, HKCAT_UNITS, "" },
+	{ HOTKEY_TOUCH_HEX, "touchhex", N_("Touch"), false, scope_game, HKCAT_UNITS, "" },
 	{ HOTKEY_ANIMATE_MAP, "animatemap", N_("Animate Map"), false, scope_game | scope_editor, HKCAT_MAP, "" },
 	{ HOTKEY_CYCLE_UNITS, "cycle", N_("Next Unit"), false, scope_game, HKCAT_UNITS, "" },
 	{ HOTKEY_CYCLE_BACK_UNITS, "cycleback", N_("Previous Unit"), false, scope_game, HKCAT_UNITS, "" },

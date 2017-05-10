@@ -126,6 +126,8 @@ public:
 		// Overridden with unit move code elsewhere
 	}
 
+    virtual void touch_action(const map_location hex, bool browse);
+
 	/** Called whenever the left mouse drag has "ended". */
 	virtual void left_drag_end(int /*x*/, int /*y*/, const bool /*browse*/);
 
