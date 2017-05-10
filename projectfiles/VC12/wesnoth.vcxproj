@@ -736,7 +736,6 @@
     <ClCompile Include="..\..\src\chat_events.cpp" />
     <ClCompile Include="..\..\src\commandline_options.cpp" />
     <ClCompile Include="..\..\src\config_cache.cpp" />
-    <ClCompile Include="..\..\src\construct_dialog.cpp" />
     <ClCompile Include="..\..\src\controller_base.cpp" />
     <ClCompile Include="..\..\src\countdown_clock.cpp" />
     <ClCompile Include="..\..\src\cursor.cpp" />
@@ -2374,13 +2373,6 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Help\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Help\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\help\help_button.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Help\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Help\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Help\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Help\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Help\</ObjectFileName>
-    </ClCompile>
     <ClCompile Include="..\..\src\help\help_impl.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Help\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Help\</ObjectFileName>
@@ -3517,7 +3509,6 @@
     <ClInclude Include="..\..\src\commandline_options.hpp" />
     <ClInclude Include="..\..\src\config.hpp" />
     <ClInclude Include="..\..\src\config_cache.hpp" />
-    <ClInclude Include="..\..\src\construct_dialog.hpp" />
     <ClInclude Include="..\..\src\controller_base.hpp" />
     <ClInclude Include="..\..\src\countdown_clock.hpp" />
     <ClInclude Include="..\..\src\cursor.hpp" />
@@ -3819,7 +3810,6 @@
     <ClInclude Include="..\..\src\hash.hpp" />
     <ClInclude Include="..\..\src\help\help.hpp" />
     <ClInclude Include="..\..\src\help\help_browser.hpp" />
-    <ClInclude Include="..\..\src\help\help_button.hpp" />
     <ClInclude Include="..\..\src\help\help_impl.hpp" />
     <ClInclude Include="..\..\src\help\help_menu.hpp" />
     <ClInclude Include="..\..\src\help\help_text_area.hpp" />
