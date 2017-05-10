@@ -38,7 +38,7 @@ function ca_herding_sheep_move:execution(cfg)
     -- Choose one of the possible locations  at random (or the current location, if no move possible)
     local x, y = sheep.x, sheep.y
     if (reach_map:size() > 0) then
-        x, y = AH.LS_random_hex(reach_map)
+        x, y = reach_map:random()
     end
 
     -- If this move remains within herding area or dogs have no moves left, or sheep doesn't move

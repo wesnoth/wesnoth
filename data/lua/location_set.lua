@@ -192,6 +192,19 @@ function methods:to_triples()
     return res
 end
 
+function methods:random()
+	-- Select a random hex from the hexes in the location set
+	-- This seems "inelegant", but I can't come up with another way without creating an extra array
+	-- Return -1, -1 if empty
+	local r = wesnoth.random(self:size())
+	local i, xr, yr = 1, -1, -1
+	map:iter( function(x, y, v)
+		if (i == r) then xr, yr = x, y end
+		i = i + 1
+	end)
+	return xr, yr
+end
+
 function location_set.create()
 	if wesnoth.get_map_size then
 		-- If called from the mapgen kernel, there's no map

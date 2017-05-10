@@ -527,21 +527,6 @@ function ai_helper.get_LS_xy(index)
     return xy[1], xy[2]
 end
 
-function ai_helper.LS_random_hex(map)
-    -- Select a random hex from the hexes in location set @map
-    -- This seems "inelegant", but I can't come up with another way without creating an extra array
-    -- Return -1, -1 if @map is empty
-
-    local r = math.random(map:size())
-    local i, xr, yr = 1, -1, -1
-    map:iter( function(x, y, v)
-        if (i == r) then xr, yr = x, y end
-        i = i + 1
-    end)
-
-    return xr, yr
-end
-
 --------- Location, position or hex related helper functions ----------
 
 function ai_helper.cartesian_coords(x, y)
