@@ -172,23 +172,28 @@ bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags, dou
 		}
 	}
 
+#ifdef MOUSE_TOUCH_EMULATION
+	if ((mouse_flags & SDL_BUTTON_RMASK) != 0) {
+		return false;
+	}
+#endif
+	
+	if (SDL_GetNumTouchDevices() > 0) {
+		SDL_TouchID touch_device = SDL_GetTouchDevice(0);
+		if (SDL_GetNumTouchFingers(touch_device) > 0) {
+			// No edge-scrolling when a finger is down.
+			return false;
+		}
+	}
+
 	// apply keyboard scrolling
 	dy -= scroll_up_ * scroll_speed;
 	dy += scroll_down_ * scroll_speed;
 	dx -= scroll_left_ * scroll_speed;
 	dx += scroll_right_ * scroll_speed;
 
-	// Hack for touch controls. We don't want edge-scrolling with touch;
-	// this is the opposite of what we need when touch-panning.
-	// A pity, SDL mouse state doesn't report which "mouse" is this.
-	const int SDL_BUTTON_MOUSE_ANY = SDL_BUTTON_MMASK | SDL_BUTTON_LMASK
-#ifndef MOUSE_TOUCH_EMULATION
-	| SDL_BUTTON_RMASK
-#endif
-	;
-	
 	// scroll if mouse is placed near the edge of the screen
-	if (mouse_in_window && (mouse_flags & SDL_BUTTON_MOUSE_ANY) != 0) {
+	if (mouse_in_window) {
 		if (mousey < scroll_threshold) {
 			dy -= scroll_speed;
 		}
