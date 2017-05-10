@@ -135,6 +135,13 @@ static int impl_tstring_concat(lua_State *L)
 	return 1;
 }
 
+static int impl_tstring_len(lua_State* L)
+{
+	t_string* t = static_cast<t_string*>(lua_touserdata(L, 1));
+	lua_pushnumber(L, t->size());
+	return 1;
+}
+
 /**
  * Destroys a t_string object before it is collected (__gc metamethod).
  */
@@ -406,6 +413,7 @@ std::string register_tstring_metatable(lua_State *L)
 		{ "__concat", 	    &impl_tstring_concat},
 		{ "__gc",           &impl_tstring_collect},
 		{ "__tostring",	    &impl_tstring_tostring},
+		{ "__len",          &impl_tstring_len},
 		{ "__lt",	        &impl_tstring_lt},
 		{ "__le",	        &impl_tstring_le},
 		{ "__eq",	        &impl_tstring_eq},
