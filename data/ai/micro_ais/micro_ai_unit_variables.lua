@@ -19,12 +19,11 @@ function micro_ai_unit_variables.modify_mai_unit_variables(unit, ai_id, action, 
     -- @action (string): "delete", "set" or "insert"
     -- @vars_table: table of key=value pairs with the variables to be set or inserted (not needed for @action="delete")
 
-    local unit_cfg = unit.__cfg
-    local variables, ind = H.get_child(unit_cfg, "variables")
+    local variables = unit.variables.__cfg
 
     -- Always delete the respective [variables][micro_ai] tag, if it exists
     local existing_table
-    for i,mai in ipairs(variables, "micro_ai") do
+    for i,mai in ipairs(variables) do
         if (mai[1] == "micro_ai") and (mai[2].ai_id == ai_id) then
             existing_table = mai[2]
             table.remove(variables, i)
@@ -45,11 +44,11 @@ function micro_ai_unit_variables.modify_mai_unit_variables(unit, ai_id, action, 
             tag[2] = existing_table
         end
 
-        table.insert(unit_cfg[ind][2], tag)
+        table.insert(variables, tag)
     end
 
     -- All of this so far was only on the table dump -> apply to unit
-    wesnoth.put_unit(unit_cfg)
+    unit.variables.__cfg = variables
 end
 
 function micro_ai_unit_variables.delete_mai_unit_variables(unit, ai_id)
