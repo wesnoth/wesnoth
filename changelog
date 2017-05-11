@@ -28,56 +28,76 @@ Version 1.13.7+dev:
      required to be a space adjacent to the unit.
    * New modifiable theme attribute in wesnoth.game_config
    * New wesnoth.zoom() function allows changing the zoom level
-   * The wesnoth.scroll function scrolls the screen by an offset, similar to [scroll].
-     For example, wesnoth.scroll(5, -2)
-   * New is_local attribute in side proxy table allows you to detect whether or not the side is
-     controlled by a network player. Note that use of this has the potential for OOS errors.
+   * The wesnoth.scroll function scrolls the screen by an offset, similar to
+     [scroll]. For example, wesnoth.scroll(5, -2)
+   * New is_local attribute in side proxy table allows you to detect whether
+     or not the side is controlled by a network player. Note that use of this
+     has the potential for OOS errors.
    * New wesnoth.music_list table which allows controlling the music playlist:
-     * wesnoth.music_list[1] etc returns mutable information about a specific track on the playlist
+     * wesnoth.music_list[1] etc returns mutable information about a specific
+       track on the playlist
      * #wesnoth.music_list counts the number of tracks on the playlist
-     * wesnoth.music_list.current returns mutable information about the currently-playing track
-     * wesnoth.music_list.current_i returns the index of the current track on the list
-       It is writeable, allowing you to switch to any track on the list. This respects fade values.
-     * wesnoth.music_list.all returns a copy of the playlist that can be stored in a variable.
+     * wesnoth.music_list.current returns mutable information about the
+       currently-playing track
+     * wesnoth.music_list.current_i returns the index of the current track on
+       the list It is writeable, allowing you to switch to any track on the
+       list. This respects fade values.
+     * wesnoth.music_list.all returns a copy of the playlist that can be
+       stored in a variable.
      * wesnoth.music_list.play plays a specific track (as [music]play_once=yes)
-     * wesnoth.music_list.add appends a track to the playlist (as [music]append=yes)
+     * wesnoth.music_list.add appends a track to the playlist (as
+       [music]append=yes)
      * wesnoth.music_list.clear clears the current playlist
-     * wesnoth.music_list.next fades out the current track and moves to a new track on the playlist
-     * wesnoth.music_list.force_refresh forces any pending playlist changes to be immediately applied
-     * wesnoth.music_list.volume attribute gets/sets the current music volume, as [volume]music=
-     * Each track has modifiable shuffle, once, ms_before, ms_after attributes and
-       read-only append, immediate, name, title attributes. They are also
-       comparable with == or ~=
+     * wesnoth.music_list.next fades out the current track and moves to a new
+       track on the playlist
+     * wesnoth.music_list.force_refresh forces any pending playlist changes
+       to be immediately applied
+     * wesnoth.music_list.volume attribute gets/sets the current music
+       volume, as [volume]music=
+     * Each track has modifiable shuffle, once, ms_before, ms_after
+       attributes and read-only append, immediate, name, title attributes.
+       They are also comparable with == or ~=
    * wesnoth.set_music is now deprecated, in favour of the above new API
-   * New wesnoth.sound_volume function gets/sets the current sound volume, as [volume]sound=
+   * New wesnoth.sound_volume function gets/sets the current sound volume, as
+     [volume]sound=
    * New wesnoth.show_story function launches the storyscreen viewer
-   * wesnoth.dofile now forwards any excess arguments to the file in the "..." argument
-   * wesnoth.require can now load all modules in a directory and accepts some shortened paths,
-     for example omitting the ".lua" file extension and searching in the current directory.
-   * When you require a package that has no return value, you now get a table that errors on
-     any access to it, rather than nil.
-   * New wesnoth.create_weapon function to make a weapon that's not attached to a unit
-     (which could be useful for animations)
-   * New wesnoth.show_message function shows a simple alert dialog, possibly with a choice
-   * New wesnoth.alert and wesnoth.confirm functions - simple shortcuts for the above.
-   * Various functions for working with hex locations have been added under wesnoth.map.
-     In particular, helper.distance_between is deprecated in favour of wesnoth.map.distance_between
-   * The following existing functions now also work in plugins and map generators:
-     wesnoth.log, wesnoth.get_time_stamp, wesnoth.get_image_size
-   * Several error messages now point more accurately to the actual location of the error.
+   * wesnoth.dofile now forwards any excess arguments to the file in the
+     "..." argument
+   * wesnoth.require can now load all modules in a directory and accepts some
+     shortened paths, for example omitting the ".lua" file extension and
+     searching in the current directory.
+   * When you require a package that has no return value, you now get a table
+     that errors on any access to it, rather than nil.
+   * New wesnoth.create_weapon function to make a weapon that's not attached
+     to a unit (which could be useful for animations)
+   * New wesnoth.show_message function shows a simple alert dialog, possibly
+     with a choice
+   * New wesnoth.alert and wesnoth.confirm functions - simple shortcuts for
+     the above.
+   * Functions for working with hex locations have been added under wesnoth.map
+     In particular, helper.distance_between is deprecated in favour of
+     wesnoth.map.distance_between
+   * The following existing functions now also work in plugins and map
+     generators: wesnoth.log, wesnoth.get_time_stamp, wesnoth.get_image_size
+   * Several error messages now point more accurately to the actual location
+     of the error.
    * wesnoth.simulate_combat output has additional keys:
-     * untouched (in first two return values) indicates whether the unit took any damage
-     * number (in second two return values) contains the Lua index of the attack, as opposed
-       to attack_num which contains the WML index.
+     * untouched (in first two return values) indicates whether the unit took
+       any damage
+     * number (in second two return values) contains the Lua index of the
+       attack, as opposed to attack_num which contains the WML index.
      * weapon (in second two return values) contains the actual weapon userdata
    * New methods in location_set: of_triples, to_triples, random
-   * New animations key in Lua unit proxy returns a list of defined flags for animation
-   * New functional.lua file implements a number of higher-order functions from WFL
-   * The length operator now works on translatable strings, returning the length of the translation.
+   * New animations key in Lua unit proxy returns a list of defined flags for
+     animation
+   * New functional.lua file implements a number of higher-order functions
+     from WFL
+   * The length operator now works on translatable strings, returning the
+     length of the translation.
    * wesnoth.set_side_variable and unit.variables can now clear variables
-   * helper.get_variable_array and helper.set_variable_array now work on units and sides
-     (pass the unit, side, or side number as an extra parameter)
-     Note: helper.get_variable_proxy_array does *not* work on units and sides (yet)
+   * helper.get_variable_array and helper.set_variable_array now work on
+     units and sides (pass a unit, side, or side number as an extra parameter)
+     Note: helper.get_variable_proxy_array does *not* work on units and sides
  * Multiplayer:
    * Fixed statistics being lost when reloading an MP game.
  * Performance:
@@ -86,15 +106,16 @@ Version 1.13.7+dev:
  * User Interface:
    * Updated Attack Predictions dialog to GUI2.
    * Updated Story screen to GUI2.
-   * Double-clicking an add-on now installs, updates, uninstalls or publishes it
-     depending on the situation.
+   * Double-clicking an add-on now installs, updates, uninstalls or publishes
+     it depending on the situation.
    * Fixed file path being truncated on the wrong side in the File Browser.
    * Improved Hotkey category sorting interface in Preferences.
    * Improved Addon Manager and MP Staging interfaces at low resolutions.
    * Fixed bug that allows you to use the minimap to bypass view locking
    * You can now change the theme (in preferences) while a game is in progress.
    * Fixed units moving after in game help exit. (#24644)
-   * Fixed a bug that caused rapid announce messages to overlap each other. (bug #21634)
+   * Fixed a bug that caused rapid announce messages to overlap each other.
+     (bug #21634)
    * Fix buttons disappearing while menus are open.
    * Fix map labels disappearing when a dialog is open.
    * Improve tooltip placement.
@@ -102,7 +123,8 @@ Version 1.13.7+dev:
    * Add a hotkey to launch test scenarios from the titlescreen
    * Added a Cutscene and Minimal Cutscene theme for UMC authors to use.
    * Improve layout of MP Create at low resolutions.
-   * Game Load screen now lists the gold and total number of units for each side.
+   * Game Load screen now lists the gold and total number of units for each
+     side.
  * WML Engine:
    * Add base_income key to [store_side]
    * Fix issues with alpha animations on hidden units (#14503)
@@ -116,14 +138,15 @@ Version 1.13.7+dev:
    * New [change_theme] tag to change the theme mid-scenario
    * New [zoom] tag allows changing the zoom level from an event
    * [kill]animate=yes now plays victory animations if applicable
-   * [kill] now supports [primary_attack] and [secondary_attack] for the animation
+   * [kill] now supports [primary_attack] and [secondary_attack] for the
+     animation
    * Fix [volume] not accepting 100% as the new volume.
    * New concat_to_* keys in unit_type inheritance allow amending keys
    * Accept [story] as ActionWML in events
    * Added a ~NO_TOD_SHIFT() ImagePathFunction which can be used on terrain and
      item images to prevent them from being affected by ToD lighting.
-   * [unit]placement=name is now [unit]location_id=name and also honours the new
-     overwrite and passable keys, which deprecate placement=map_overwrite etc.
+   * [unit]placement=name is now [unit]location_id=name and also honours the
+     new overwrite and passable keys, deprecating placement=map_overwrite etc.
    * New zoom_levels key in [game_config] defines the allowed zoom levels.
    * The default color list is now defined via a default key in [color_range],
      rather than the default_color_list key in [game_config][colors].
@@ -132,7 +155,8 @@ Version 1.13.7+dev:
    * [animate_unit] now raises an error if the flag key is missing
    * Fix [set_variable][join] not working with translatable strings
  * Miscellaneous and bug fixes:
-   * Fixed base animation showing on walking corpse & soulless bats (bug #25673)
+   * Fixed base animation showing on walking corpse & soulless bats
+     (bug #25673)
 
 Version 1.13.7:
  * AI:
