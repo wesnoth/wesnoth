@@ -494,7 +494,7 @@ static int impl_unit_variables_get(lua_State *L)
 	lua_rawgeti(L, 1, 1);
 	const unit* u = luaW_tounit(L, -1);
 	if(!u) {
-		return luaL_argerror(L, 1, "unknown unit");
+		return luaL_argerror(L, 2, "unknown unit");
 	}
 	char const *m = luaL_checkstring(L, 2);
 	return_cfgref_attrib("__cfg", u->variables());
@@ -517,7 +517,7 @@ static int impl_unit_variables_set(lua_State *L)
 	lua_rawgeti(L, 1, 1);
 	unit* u = luaW_tounit(L, -1);
 	if(!u) {
-		return luaL_argerror(L, 1, "unknown unit");
+		return luaL_argerror(L, 2, "unknown unit");
 	}
 	char const *m = luaL_checkstring(L, 2);
 	if(strcmp(m, "__cfg") == 0) {
