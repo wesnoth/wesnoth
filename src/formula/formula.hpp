@@ -78,10 +78,10 @@ private:
 	variant execute(const formula_callable& variables, formula_debugger* fdb = nullptr) const;
 	variant execute(formula_debugger* fdb) const;
 
-	bool managing_symbols;
-	function_symbol_table* symbols_;
 	expression_ptr expr_;
 	std::string str_;
+	function_symbol_table* symbols_;
+	bool managing_symbols;
 
 	friend class formula_debugger;
 };
