@@ -22,7 +22,6 @@ class team;
 class unit_map;
 class game_board;
 
-#include "animated.hpp"
 #include "chat_events.hpp"
 #include "display.hpp"
 #include "display_chat_manager.hpp"
