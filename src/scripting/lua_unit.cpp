@@ -524,7 +524,15 @@ static int impl_unit_variables_set(lua_State *L)
 		u->variables() = luaW_checkconfig(L, 3);
 		return 0;
 	}
-	variable_access_create v(m, u->variables());
+	config& vars = u->variables();
+	if(lua_isnoneornil(L, 3)) {
+		try {
+			variable_access_throw(m, vars).clear(false);
+		} catch(const invalid_variablename_exception&) {
+		}
+		return 0;
+	}
+	variable_access_create v(m, vars);
 	luaW_checkvariable(L, v, 3);
 	return 0;
 }

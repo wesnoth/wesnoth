@@ -762,13 +762,20 @@ int game_lua_kernel::intf_get_side_variable(lua_State *L)
  */
 int game_lua_kernel::intf_set_side_variable(lua_State *L)
 {
-	unsigned side_index = luaL_checkinteger(L, 1) - 1;
-	if(side_index >= teams().size()) {
+	unsigned side = luaL_checkinteger(L, 1);
+	if(side > teams().size() || side == 0) {
 		return luaL_argerror(L, 1, "invalid side number");
 	}
 	char const *m = luaL_checkstring(L, 2);
-	//TODO: maybe support removing values with an empty arg3.
-	variable_access_create v(m, teams()[side_index].variables());
+	config& vars = game_state_.board_.get_team(side).variables();
+	if(lua_isnoneornil(L, 3)) {
+		try {
+			variable_access_throw(m, vars).clear(false);
+		} catch(const invalid_variablename_exception&) {
+		}
+		return 0;
+	}
+	variable_access_create v(m, vars);
 	luaW_checkvariable(L, v, 3);
 	return 0;
 }
