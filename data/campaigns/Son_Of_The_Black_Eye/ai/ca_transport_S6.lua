@@ -15,8 +15,7 @@ function ca_transport:evaluation()
     local units = wesnoth.get_units { side = wesnoth.current.side, formula = 'movement_left > 0' }
 
     for i,u in ipairs(units) do
-        local vars = H.get_child(u.__cfg, "variables")
-        if vars.destination_x and vars.destination_y then
+        if u.variables.destination_x and u.variables.destination_y then
             return 300000
         end
     end
