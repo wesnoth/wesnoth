@@ -191,7 +191,7 @@ local function get_speaker(cfg)
 	return speaker
 end
 
-local function message_user_choice(cfg, speaker, options, text_input)
+local function message_user_choice(cfg, speaker, options, text_input, sound)
 	local image, left_side = get_image(cfg, speaker)
 	local caption = get_caption(cfg, speaker)
 
@@ -234,6 +234,7 @@ local function message_user_choice(cfg, speaker, options, text_input)
 	end
 
 	return function()
+		if sound then wesnoth.play_sound(sound) end
 		local option_chosen, ti_content = wesnoth.show_message_dialog(msg_cfg, options, text_input)
 
 		if option_chosen == -2 then -- Pressed Escape (only if no input)
@@ -361,9 +362,7 @@ function wesnoth.wml_actions.message(cfg)
 		wesnoth.fire("redraw")
 	end
 
-	if cfg.sound then wesnoth.play_sound(cfg.sound) end
-
-	local msg_dlg = message_user_choice(cfg, speaker, options, text_input)
+	local msg_dlg = message_user_choice(cfg, speaker, options, text_input, cfg.sound)
 
 	local option_chosen
 	if not has_input then
