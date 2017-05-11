@@ -102,6 +102,7 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 	const std::vector<std::string> filter_name = utils::split(filter["name"]);
 	const std::vector<std::string> filter_type = utils::split(filter["type"]);
 	const std::string filter_special = filter["special"];
+	const std::string filter_special_active = filter["special_active"];
 	const std::string filter_formula = filter["formula"];
 
 	if ( !filter_range.empty() && std::find(filter_range.begin(), filter_range.end(), attack.range()) == filter_range.end() )
@@ -129,6 +130,9 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 		return false;
 
 	if ( !filter_special.empty() && !attack.get_special_bool(filter_special, true) )
+		return false;
+
+	if ( !filter_special_active.empty() && !attack.get_special_bool(filter_special_active, false) )
 		return false;
 
 	if (!filter_formula.empty()) {
