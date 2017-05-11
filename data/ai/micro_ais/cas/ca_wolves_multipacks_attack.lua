@@ -2,6 +2,7 @@ local H = wesnoth.require "helper"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local MAIUV = wesnoth.require "ai/micro_ais/micro_ai_unit_variables.lua"
 local WMPF = wesnoth.require "ai/micro_ais/cas/ca_wolves_multipacks_functions.lua"
+local M = wesnoth.map
 
 local ca_wolves_multipacks_attack = {}
 
@@ -46,7 +47,7 @@ function ca_wolves_multipacks_attack:execution(cfg)
                 local attack_splits_pack = false
                 for _,wolf in ipairs(wolves) do
                     local nh = AH.next_hop(wolf, attack.dst.x, attack.dst.y)
-                    local dist = H.distance_between(nh[1], nh[2], attack.dst.x, attack.dst.y)
+                    local dist = M.distance_between(nh[1], nh[2], attack.dst.x, attack.dst.y)
                     if (dist > 3) then
                         attack_splits_pack = true
                         break
@@ -165,7 +166,7 @@ function ca_wolves_multipacks_attack:execution(cfg)
                     local best_hex = AH.find_best_move(wolf_moves, function(x, y)
                         local rating = 0
                         for _,wolf_no_moves in ipairs(wolves_no_moves) do
-                            rating = rating - H.distance_between(x, y, wolf_no_moves.x, wolf_no_moves.y)
+                            rating = rating - M.distance_between(x, y, wolf_no_moves.x, wolf_no_moves.y)
                         end
                         return rating
                     end)

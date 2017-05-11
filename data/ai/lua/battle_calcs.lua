@@ -1,6 +1,7 @@
 local H = wesnoth.require "helper"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local LS = wesnoth.require "location_set"
+local M = wesnoth.map
 
 -- This is a collection of Lua functions used for custom AI development.
 -- Note that this is still work in progress with significant changes occurring
@@ -938,8 +939,8 @@ function battle_calcs.attack_rating(attacker, defender, dst, cfg, cache)
     -- 'relative_distances' is larger for attack hexes closer to the side leader (possible values: -1 .. 1)
     if leader then
         local relative_distances =
-            H.distance_between(defender.x, defender.y, leader.x, leader.y)
-            - H.distance_between(dst[1], dst[2], leader.x, leader.y)
+            M.distance_between(defender.x, defender.y, leader.x, leader.y)
+            - M.distance_between(dst[1], dst[2], leader.x, leader.y)
         defender_value = defender_value + relative_distances * distance_leader_weight
     end
 
@@ -1517,9 +1518,9 @@ function battle_calcs.get_attack_combos_subset(units, enemy, cfg)
             if (not blocked_hexes:get(xa, ya) or ((xa == unit.x) and (ya == unit.y))) then
 
                 -- Check whether the unit can get to the hex
-                -- helper.distance_between() is much faster than wesnoth.find_path()
+                -- wesnoth.map.distance_between() is much faster than wesnoth.find_path()
                 --> pre-filter using the former
-                local cost = H.distance_between(unit.x, unit.y, xa, ya)
+                local cost = M.distance_between(unit.x, unit.y, xa, ya)
 
                 -- If the distance is <= the unit's MP, then see if it can actually get there
                 -- This also means that only short paths have to be evaluated (in most situations)

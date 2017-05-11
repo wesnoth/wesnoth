@@ -1,6 +1,7 @@
 local H = wesnoth.require "helper"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local LS = wesnoth.require "location_set"
+local M = wesnoth.map
 
 local function get_guardian(cfg)
     local filter = H.get_child(cfg, "filter") or { id = cfg.id }
@@ -28,7 +29,7 @@ function ca_zone_guardian:execution(cfg)
     if enemies[1] then
         local min_dist, target = 9e99
         for _,enemy in ipairs(enemies) do
-            local dist = H.distance_between(guardian.x, guardian.y, enemy.x, enemy.y)
+            local dist = M.distance_between(guardian.x, guardian.y, enemy.x, enemy.y)
             if (dist < min_dist) then
                 target, min_dist = enemy, dist
             end
@@ -70,7 +71,7 @@ function ca_zone_guardian:execution(cfg)
                     if (not AH.is_visible_unit(wesnoth.current.side, unit_in_way))
                         or (unit_in_way == guardian)
                     then
-                        local dist = H.distance_between(hex[1], hex[2], target.x, target.y)
+                        local dist = M.distance_between(hex[1], hex[2], target.x, target.y)
                         if (dist < min_dist) then
                             min_dist, nh = dist, { hex[1], hex[2] }
                         end

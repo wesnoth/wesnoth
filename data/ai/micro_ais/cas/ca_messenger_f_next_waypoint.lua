@@ -32,7 +32,7 @@ return function(cfg)
 
         -- If this messenger is within 3 hexes of the next waypoint, we go on to the one after that
         -- except if it's the last one
-        local dist_wp = H.distance_between(messenger.x, messenger.y, wp_x, wp_y)
+        local dist_wp = wesnoth.map.distance_between(messenger.x, messenger.y, wp_x, wp_y)
         if (dist_wp <= 3) and (wp_i < #waypoint_x) then wp_i = wp_i + 1 end
 
         -- Also store the rating for each messenger

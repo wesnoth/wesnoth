@@ -1,6 +1,7 @@
 local H = wesnoth.require "helper"
 local W = H.set_wml_action_metatable {}
 local MAIUV = wesnoth.require "ai/micro_ais/micro_ai_unit_variables.lua"
+local M = wesnoth.map
 
 local wolves_multipacks_functions = {}
 
@@ -60,8 +61,8 @@ function wolves_multipacks_functions.assign_packs(cfg)
             local min_dist, best_wolf, best_ind = 9e99
             for ind,wolf in ipairs(nopack_wolves) do
                 -- Criterion is distance from the first two wolves of the pack
-                local dist1 = H.distance_between(wolf.x, wolf.y, pack[1].x, pack[1].y)
-                local dist2 = H.distance_between(wolf.x, wolf.y, pack[2].x, pack[2].y)
+                local dist1 = M.distance_between(wolf.x, wolf.y, pack[1].x, pack[1].y)
+                local dist2 = M.distance_between(wolf.x, wolf.y, pack[2].x, pack[2].y)
                 if (dist1 + dist2 < min_dist) then
                     min_dist = dist1 + dist2
                     best_wolf, best_ind = wolf, ind
@@ -100,7 +101,7 @@ function wolves_multipacks_functions.assign_packs(cfg)
             for ind,nopack_wolf in ipairs(nopack_wolves) do
                 local dist = 0
                 for _,pack_wolf in ipairs(new_pack_wolves) do
-                    dist = dist + H.distance_between(nopack_wolf.x, nopack_wolf.y, pack_wolf.x, pack_wolf.y)
+                    dist = dist + M.distance_between(nopack_wolf.x, nopack_wolf.y, pack_wolf.x, pack_wolf.y)
                 end
                 if dist < min_dist then
                     min_dist, best_wolf, best_wolf_ind = dist, nopack_wolf, ind

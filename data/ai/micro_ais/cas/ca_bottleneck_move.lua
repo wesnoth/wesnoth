@@ -3,6 +3,7 @@ local LS = wesnoth.require "location_set"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local BC = wesnoth.require "ai/lua/battle_calcs.lua"
 local MAISD = wesnoth.require "ai/micro_ais/micro_ai_self_data.lua"
+local M = wesnoth.map
 
 local function bottleneck_is_my_territory(map, enemy_map)
     -- Create map that contains 'true' for all hexes that are
@@ -163,7 +164,7 @@ local function bottleneck_get_rating(unit, x, y, has_leadership, is_healer, data
     if (rating <= 0) and data.BD_is_my_territory:get(x, y) then
         local combined_dist = 0
         data.BD_def_map:iter(function(x_def, y_def, v)
-            combined_dist = combined_dist + H.distance_between(x, y, x_def, y_def)
+            combined_dist = combined_dist + M.distance_between(x, y, x_def, y_def)
         end)
         combined_dist = combined_dist / data.BD_def_map:size()
         rating = 1000 - combined_dist * 10.
@@ -274,7 +275,7 @@ function ca_bottleneck_move:evaluation(cfg, data)
             if data.BD_is_my_territory:get(xa, ya) then
                 local min_dist = 9e99
                 data.BD_def_map:iter( function(xd, yd, vd)
-                    local dist_line = H.distance_between(xa, ya, xd, yd)
+                    local dist_line = M.distance_between(xa, ya, xd, yd)
                     if (dist_line < min_dist) then min_dist = dist_line end
                 end)
                 if (min_dist > 0) then

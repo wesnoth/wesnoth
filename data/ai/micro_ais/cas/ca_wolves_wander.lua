@@ -47,7 +47,7 @@ function ca_wolves_wander:execution(cfg)
     for _,wolf in ipairs(wolves) do
         -- For each wolf, we need to check that goal hex is reachable, and out of harm's way
         local best_hex = AH.find_best_move(wolf, function(x, y)
-            local rating = - H.distance_between(x, y, goal_hex[1], goal_hex[2])
+            local rating = -wesnoth.map.distance_between(x, y, goal_hex[1], goal_hex[2])
             if avoid_map:get(x, y) then rating = rating - 1000 end
             return rating
         end)

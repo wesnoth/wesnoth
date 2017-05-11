@@ -1,5 +1,6 @@
 local H = wesnoth.require "helper"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
+local M = wesnoth.map
 
 local function get_sheep(cfg)
     local sheep = wesnoth.get_units {
@@ -54,13 +55,13 @@ function ca_herding_attack_close_enemy:execution(cfg)
             local reach_map = AH.get_reachable_unocc(dog)
             reach_map:iter( function(x, y, v)
                 -- Most important: distance from enemy
-                local rating = - H.distance_between(x, y, enemy.x, enemy.y) * 100.
+                local rating = -M.distance_between(x, y, enemy.x, enemy.y) * 100.
                 -- 2nd: distance from any sheep
                 for _,single_sheep in ipairs(sheep) do
-                    rating = rating - H.distance_between(x, y, single_sheep.x, single_sheep.y)
+                    rating = rating - M.distance_between(x, y, single_sheep.x, single_sheep.y)
                 end
                 -- 3rd: most distant dog goes first
-                rating = rating + H.distance_between(enemy.x, enemy.y, dog.x, dog.y) / 100.
+                rating = rating + M.distance_between(enemy.x, enemy.y, dog.x, dog.y) / 100.
                 reach_map:insert(x, y, rating)
 
                 if (rating > max_rating) then
@@ -93,7 +94,7 @@ function ca_herding_attack_close_enemy:execution(cfg)
     local min_dist, closest_sheep, closest_enemy = 9e99
     for _,enemy in ipairs(enemies) do
         for _,single_sheep in ipairs(sheep) do
-            local dist = H.distance_between(enemy.x, enemy.y, single_sheep.x, single_sheep.y)
+            local dist = M.distance_between(enemy.x, enemy.y, single_sheep.x, single_sheep.y)
             if dist < min_dist then
                 min_dist = dist
                 closest_sheep, closest_enemy = single_sheep, enemy
@@ -108,14 +109,14 @@ function ca_herding_attack_close_enemy:execution(cfg)
         reach_map:iter( function(x, y, v)
             -- We want equal distance between enemy and closest sheep
             local rating = - math.abs(
-                H.distance_between(x, y, closest_sheep.x, closest_sheep.y)
-                - H.distance_between(x, y, closest_enemy.x, closest_enemy.y)
+                M.distance_between(x, y, closest_sheep.x, closest_sheep.y)
+                - M.distance_between(x, y, closest_enemy.x, closest_enemy.y)
             ) * 100
             -- 2nd: closeness to sheep
-            rating = rating - H.distance_between(x, y, closest_sheep.x, closest_sheep.y)
+            rating = rating - M.distance_between(x, y, closest_sheep.x, closest_sheep.y)
             reach_map:insert(x, y, rating)
             -- 3rd: most distant dog goes first
-            rating = rating + H.distance_between(closest_enemy.x, closest_enemy.y, dog.x, dog.y) / 100.
+            rating = rating + M.distance_between(closest_enemy.x, closest_enemy.y, dog.x, dog.y) / 100.
             reach_map:insert(x, y, rating)
 
             if (rating > max_rating) then

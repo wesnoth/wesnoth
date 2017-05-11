@@ -40,7 +40,7 @@ function wesnoth.wml_actions.find_path(cfg)
 		-- we test if location passed to pathfinder is invalid (border); if is, do nothing, do not return and continue the cycle
 		if location[1] == 0 or location[1] == ( width + 1 ) or location[2] == 0 or location[2] == ( heigth + 1 ) then
 		else
-			local distance = helper.distance_between ( unit.x, unit.y, location[1], location[2] )
+			local distance = wesnoth.map.distance_between ( unit.x, unit.y, location[1], location[2] )
 			-- if we pass an unreachable locations an high value will be returned
 			local path, cost = wesnoth.find_path( unit, location[1], location[2], { max_cost = max_cost, ignore_units = ignore_units, ignore_teleport = ignore_teleport, viewing_side = viewing_side } )
 

@@ -3,6 +3,7 @@ local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local LS = wesnoth.require "location_set"
 local MAIUV = wesnoth.require "ai/micro_ais/micro_ai_unit_variables.lua"
 local MAISD = wesnoth.require "ai/micro_ais/micro_ai_self_data.lua"
+local M = wesnoth.map
 
 local function get_hang_out_units(cfg)
     local units = AH.get_units_with_moves {
@@ -95,14 +96,14 @@ function ca_hang_out:execution(cfg)
                 if (not avoid_map:get(x, y)) then
                     for _,loc in ipairs(locs) do
                         -- Main rating is the distance from any of the goal hexes
-                        local rating = -H.distance_between(x, y, loc[1], loc[2])
+                        local rating = -M.distance_between(x, y, loc[1], loc[2])
 
                         -- Fastest unit moves first
                         rating = rating + unit.max_moves / 100.
 
                         -- Minor penalty for distance from current position of unit
                         -- so that there's not too much shuffling around
-                        local rating = rating - H.distance_between(x, y, unit.x, unit.y) / 1000.
+                        local rating = rating - M.distance_between(x, y, unit.x, unit.y) / 1000.
 
                         if (rating > max_rating_unit) then
                             max_rating_unit = rating

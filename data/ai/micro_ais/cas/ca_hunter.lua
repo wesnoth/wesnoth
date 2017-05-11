@@ -2,6 +2,7 @@ local H = wesnoth.require "helper"
 local W = H.set_wml_action_metatable {}
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local MAIUV = wesnoth.require "ai/micro_ais/micro_ai_unit_variables.lua"
+local M = wesnoth.map
 
 local function hunter_attack_weakest_adj_enemy(ai, hunter)
     -- Attack the enemy with the fewest hitpoints adjacent to 'hunter', if there is one
@@ -77,7 +78,7 @@ function ca_hunter:execution(cfg)
         local max_rating, best_hex = -9e99
         reach_map:iter( function(x, y, v)
             -- Distance from goal is first rating
-            local rating = - H.distance_between(x, y, hunter_vars.goal_x, hunter_vars.goal_y)
+            local rating = -M.distance_between(x, y, hunter_vars.goal_x, hunter_vars.goal_y)
 
             -- Huge rating bonus if this is next to an enemy
             local enemy_hp = 500
@@ -137,7 +138,7 @@ function ca_hunter:execution(cfg)
             if (not hunter) or (not hunter.valid) then return end
 
             -- If there's an enemy on the 'home' hex and we got right next to it, attack that enemy
-            if (H.distance_between(cfg.home_x, cfg.home_y, hunter.x, hunter.y) == 1) then
+            if (M.distance_between(cfg.home_x, cfg.home_y, hunter.x, hunter.y) == 1) then
                 local enemy = wesnoth.get_unit(cfg.home_x, cfg.home_y)
                 if AH.is_attackable_enemy(enemy) then
                     if cfg.show_messages then

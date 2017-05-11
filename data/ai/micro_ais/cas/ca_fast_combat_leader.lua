@@ -81,7 +81,7 @@ function ca_fast_combat_leader:evaluation(cfg, data)
 
     for _,enemy in ipairs(enemies) do
         -- Only need to consider enemies that are close enough
-        if (H.distance_between(leader.x, leader.y, enemy.x, enemy.y) <= (enemy.max_moves + leader.max_moves + 1)) then
+        if (wesnoth.map.distance_between(leader.x, leader.y, enemy.x, enemy.y) <= (enemy.max_moves + leader.max_moves + 1)) then
             enemy_power = enemy.hitpoints
 
             local old_moves = enemy.moves

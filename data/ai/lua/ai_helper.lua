@@ -2,6 +2,7 @@ local H = wesnoth.require "helper"
 local W = H.set_wml_action_metatable {}
 local LS = wesnoth.require "location_set"
 local F = wesnoth.require "functional"
+local M = wesnoth.map
 
 -- This is a collection of Lua functions used for custom AI development.
 -- Note that this is still work in progress with significant changes occurring
@@ -593,7 +594,7 @@ function ai_helper.find_opposite_hex_adjacent(hex, center_hex)
     --   (or no opposite hex is found, e.g. for hexes on border)
 
     -- If the two input hexes are not adjacent, return nil
-    if (H.distance_between(hex[1], hex[2], center_hex[1], center_hex[2]) ~= 1) then return nil end
+    if (M.distance_between(hex[1], hex[2], center_hex[1], center_hex[2]) ~= 1) then return nil end
 
     -- Finding the opposite x position is easy
     local opp_x = center_hex[1] + (center_hex[1] - hex[1])
@@ -648,13 +649,13 @@ function ai_helper.get_closest_location(hex, location_filter, unit)
     -- Find the maximum distance from 'hex' that's possible on the map
     local max_distance = 0
     local width, height = wesnoth.get_map_size()
-    local to_top_left = H.distance_between(hex[1], hex[2], 0, 0)
+    local to_top_left = M.distance_between(hex[1], hex[2], 0, 0)
     if (to_top_left > max_distance) then max_distance = to_top_left end
-    local to_top_right = H.distance_between(hex[1], hex[2], width+1, 0)
+    local to_top_right = M.distance_between(hex[1], hex[2], width+1, 0)
     if (to_top_right > max_distance) then max_distance = to_top_right end
-    local to_bottom_left = H.distance_between(hex[1], hex[2], 0, height+1)
+    local to_bottom_left = M.distance_between(hex[1], hex[2], 0, height+1)
     if (to_bottom_left > max_distance) then max_distance = to_bottom_left end
-    local to_bottom_right = H.distance_between(hex[1], hex[2], width+1, height+1)
+    local to_bottom_right = M.distance_between(hex[1], hex[2], width+1, height+1)
     if (to_bottom_right > max_distance) then max_distance = to_bottom_right end
 
     local radius = 0
@@ -728,7 +729,7 @@ function ai_helper.distance_map(units, map)
         map:iter(function(x, y, data)
             local dist = 0
             for _,unit in ipairs(units) do
-                dist = dist + H.distance_between(unit.x, unit.y, x, y)
+                dist = dist + M.distance_between(unit.x, unit.y, x, y)
             end
             DM:insert(x, y, dist)
         end)
@@ -738,7 +739,7 @@ function ai_helper.distance_map(units, map)
             for y = 1,height do
                 local dist = 0
                 for _,unit in ipairs(units) do
-                    dist = dist + H.distance_between(unit.x, unit.y, x, y)
+                    dist = dist + M.distance_between(unit.x, unit.y, x, y)
                 end
                 DM:insert(x, y, dist)
             end
@@ -758,7 +759,7 @@ function ai_helper.inverse_distance_map(units, map)
         map:iter(function(x, y, data)
             local dist = 0
             for _,unit in ipairs(units) do
-                dist = dist + 1. / (H.distance_between(unit.x, unit.y, x, y) + 1)
+                dist = dist + 1. / (M.distance_between(unit.x, unit.y, x, y) + 1)
             end
             IDM:insert(x, y, dist)
         end)
@@ -768,7 +769,7 @@ function ai_helper.inverse_distance_map(units, map)
             for y = 1,height do
                 local dist = 0
                 for _,unit in ipairs(units) do
-                    dist = dist + 1. / (H.distance_between(unit.x, unit.y, x, y) + 1)
+                    dist = dist + 1. / (M.distance_between(unit.x, unit.y, x, y) + 1)
                 end
                 IDM:insert(x, y, dist)
             end
@@ -790,7 +791,7 @@ function ai_helper.generalized_distance(x1, y1, x2, y2)
     if (not y2) then return math.abs(x1 - x2) end
 
     -- Otherwise, return standard distance
-    return H.distance_between(x1, y1, x2, y2)
+    return M.distance_between(x1, y1, x2, y2)
 end
 
 function ai_helper.xyoff(x, y, ori, hex)
@@ -1078,7 +1079,7 @@ function ai_helper.get_closest_enemy(loc, side, cfg)
 
     local closest_distance, location = 9e99
     for _,enemy in ipairs(enemies) do
-        enemy_distance = H.distance_between(x, y, enemy.x, enemy.y)
+        enemy_distance = M.distance_between(x, y, enemy.x, enemy.y)
         if (enemy_distance < closest_distance) then
             closest_distance = enemy_distance
             location = { x = enemy.x, y = enemy.y}
@@ -1847,9 +1848,9 @@ function ai_helper.get_attack_combos(units, enemy, cfg)
         for _,unit in ipairs(units) do
             if ((unit.x == xa) and (unit.y == ya)) or (not blocked_hexes:get(xa, ya)) then
 
-                -- helper.distance_between() is much faster than wesnoth.find_path()
+                -- wesnoth.map.distance_between() is much faster than wesnoth.find_path()
                 --> pre-filter using the former
-                local cost = H.distance_between(unit.x, unit.y, xa, ya)
+                local cost = M.distance_between(unit.x, unit.y, xa, ya)
 
                 -- If the distance is <= the unit's MP, then see if it can actually get there
                 -- This also means that only short paths have to be evaluated (in most situations)

@@ -1,5 +1,6 @@
 local H = wesnoth.require "helper"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
+local M = wesnoth.map
 
 local function get_enemies(cfg)
     local scatter_distance = cfg.scatter_distance or 3
@@ -33,7 +34,7 @@ function ca_swarm_scatter:execution(cfg)
     for _,unit in ipairs(units) do
         local unit_enemies = {}
         for _,enemy in ipairs(enemies) do
-            if (H.distance_between(unit.x, unit.y, enemy.x, enemy.y) <= vision_distance) then
+            if (M.distance_between(unit.x, unit.y, enemy.x, enemy.y) <= vision_distance) then
                 table.insert(unit_enemies, enemy)
             end
         end
@@ -42,7 +43,7 @@ function ca_swarm_scatter:execution(cfg)
             local best_hex = AH.find_best_move(unit, function(x, y)
                 local rating = 0
                 for _,enemy in ipairs(unit_enemies) do
-                    rating = rating + H.distance_between(x, y, enemy.x, enemy.y)
+                    rating = rating + M.distance_between(x, y, enemy.x, enemy.y)
                 end
                 return rating
             end)

@@ -2,6 +2,7 @@ local H = wesnoth.require "helper"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local LS = wesnoth.require "location_set"
 local T = H.set_wml_tag_metatable{}
+local M = wesnoth.map
 
 -- Functions to perform fast evaluation of attacks and attack combinations.
 -- The emphasis with all of this is on speed, not elegance.
@@ -411,8 +412,8 @@ function ca_fast_attack_utils.attack_rating(attacker_infos, defender_info, dsts,
         local rel_dist_rating = 0.
         for _,dst in ipairs(dsts) do
             local relative_distance =
-                H.distance_between(defender_x, defender_y, leader_x, leader_y)
-                - H.distance_between(dst[1], dst[2], leader_x, leader_y)
+                M.distance_between(defender_x, defender_y, leader_x, leader_y)
+                - M.distance_between(dst[1], dst[2], leader_x, leader_y)
             rel_dist_rating = rel_dist_rating + relative_distance
         end
         rel_dist_rating = rel_dist_rating / #dsts * distance_leader_weight

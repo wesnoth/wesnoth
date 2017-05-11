@@ -78,7 +78,7 @@ local function messenger_find_clearing_attack(messenger, goal_x, goal_y, cfg)
 
         -- Give a huge bonus for closeness to enemy_in_way
         local tmp_defender = wesnoth.get_unit(attack.target.x, attack.target.y)
-        local dist = H.distance_between(enemy_in_way.x, enemy_in_way.y, tmp_defender.x, tmp_defender.y)
+        local dist = wesnoth.map.distance_between(enemy_in_way.x, enemy_in_way.y, tmp_defender.x, tmp_defender.y)
 
         rating = rating + 100. / dist
 

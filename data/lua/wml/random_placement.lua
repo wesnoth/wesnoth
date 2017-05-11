@@ -47,7 +47,7 @@ wesnoth.wml_actions.random_placement = function(cfg)
 				local y1 = locs[j][2]
 				local x2 = point[1]
 				local y2 = point[2]
-				-- optimisation: same effect as "if helper.distance_between(x1,y1,x2,y2) <= distance then goto continue; end" but faster.
+				-- optimisation: same effect as "if wesnoth.map.distance_between(x1,y1,x2,y2) <= distance then goto continue; end" but faster.
 				local d_x = math_abs(x1-x2)
 				if d_x > distance then
 					goto continue

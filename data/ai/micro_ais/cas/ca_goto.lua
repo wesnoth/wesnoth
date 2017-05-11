@@ -4,6 +4,7 @@ local BC = wesnoth.require "ai/lua/battle_calcs.lua"
 local LS = wesnoth.require "location_set"
 local MAIUV = wesnoth.require "ai/micro_ais/micro_ai_unit_variables.lua"
 local MAISD = wesnoth.require "ai/micro_ais/micro_ai_self_data.lua"
+local M = wesnoth.map
 
 local function custom_cost(x, y, unit, enemy_map, enemy_attack_map, multiplier)
     local terrain = wesnoth.get_terrain(x, y)
@@ -123,10 +124,10 @@ function ca_goto:execution(cfg, data)
             -- hex to the goal that the unit can get to
             if cfg.use_straight_line then
                 local hex, _, rating = AH.find_best_move(unit, function(x, y)
-                    local r = - H.distance_between(x, y, loc[1], loc[2])
+                    local r = -M.distance_between(x, y, loc[1], loc[2])
                     -- Also add distance from unit as very small rating component
                     -- This is mostly here to keep unit in place when no better hexes are available
-                    r = r - H.distance_between(x, y, unit.x, unit.y) / 1000.
+                    r = r - M.distance_between(x, y, unit.x, unit.y) / 1000.
                     return r
                 end, { no_random = true })
 

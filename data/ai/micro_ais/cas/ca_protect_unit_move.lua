@@ -52,7 +52,7 @@ function ca_protect_unit_move:execution(cfg, data)
 
     local goal_distance_map = LS.create()
     reach_map:iter(function(x, y, data)
-        goal_distance_map:insert(x, y, H.distance_between(x, y, goal[1], goal[2]))
+        goal_distance_map:insert(x, y, wesnoth.map.distance_between(x, y, goal[1], goal[2]))
     end)
 
     -- Configuration parameters (no option to change these enabled at the moment)

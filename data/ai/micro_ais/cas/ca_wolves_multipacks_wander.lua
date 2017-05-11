@@ -3,6 +3,7 @@ local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local MAIUV = wesnoth.require "ai/micro_ais/micro_ai_unit_variables.lua"
 local LS = wesnoth.require "location_set"
 local WMPF = wesnoth.require "ai/micro_ais/cas/ca_wolves_multipacks_functions.lua"
+local M = wesnoth.map
 
 local ca_wolves_multipacks_wander = {}
 
@@ -85,7 +86,7 @@ function ca_wolves_multipacks_wander:execution(cfg)
         reach_map:iter( function(x, y, v)
             local rating = reach_map:get(x, y)
             if (rating == #pack * 100) then
-                rating = rating - H.distance_between(x, y, goal[1], goal[2])
+                rating = rating - M.distance_between(x, y, goal[1], goal[2])
                 reach_map:insert(x,y, rating)
                 if rating > max_rating then
                     max_rating, goto_hex = rating, { x, y }
@@ -111,7 +112,7 @@ function ca_wolves_multipacks_wander:execution(cfg)
 
             -- Find closest move for Wolf #1 to that position, which then becomes the goto hex
             goto_hex = AH.find_best_move(wolves[1], function(x, y)
-                return -H.distance_between(x, y, cg[1], cg[2])
+                return -M.distance_between(x, y, cg[1], cg[2])
             end)
             -- We could move this wolf right here, but for convenience all the actual moves
             -- are done together below. This should be a small extra calculation cost
@@ -121,8 +122,8 @@ function ca_wolves_multipacks_wander:execution(cfg)
         -- Distance to goal hex is taken into account as secondary criterion
         for _,wolf in ipairs(wolves) do
             local best_hex = AH.find_best_move(wolf, function(x, y)
-                local rating = - H.distance_between(x, y, goto_hex[1], goto_hex[2])
-                rating = rating - H.distance_between(x, y, goal[1], goal[2]) / 100.
+                local rating = -M.distance_between(x, y, goto_hex[1], goto_hex[2])
+                rating = rating -M.distance_between(x, y, goal[1], goal[2]) / 100.
                 return rating
             end)
 

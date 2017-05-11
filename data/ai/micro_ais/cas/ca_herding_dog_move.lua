@@ -1,6 +1,7 @@
 local H = wesnoth.require "helper"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local LS = wesnoth.require "location_set"
+local M = wesnoth.map
 
 local function get_dog(cfg)
     local dogs = AH.get_units_with_moves {
@@ -27,7 +28,7 @@ function ca_herding_dog_move:execution(cfg)
     -- Find average distance of herding_perimeter from center
     local av_dist = 0
     herding_perimeter:iter( function(x, y, v)
-        av_dist = av_dist + H.distance_between(x, y, cfg.herd_x, cfg.herd_y)
+        av_dist = av_dist + M.distance_between(x, y, cfg.herd_x, cfg.herd_y)
     end)
     av_dist = av_dist / herding_perimeter:size()
 
@@ -39,7 +40,7 @@ function ca_herding_dog_move:execution(cfg)
             rating = rating + 1000 + math.random(99) / 100.
         else
             rating = rating
-                - math.abs(H.distance_between(x, y, cfg.herd_x, cfg.herd_y) - av_dist)
+                - math.abs(M.distance_between(x, y, cfg.herd_x, cfg.herd_y) - av_dist)
                 + math.random(99) / 100.
         end
 

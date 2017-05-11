@@ -1,5 +1,6 @@
 local H = wesnoth.require "helper"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
+local M = wesnoth.map
 
 local function get_next_sheep_enemies(cfg)
     local sheep = AH.get_units_with_moves {
@@ -17,7 +18,7 @@ local function get_next_sheep_enemies(cfg)
     for _,single_sheep in ipairs(sheep) do
         local close_enemies = {}
         for _,enemy in ipairs(enemies) do
-            if (H.distance_between(single_sheep.x, single_sheep.y, enemy.x, enemy.y) <= attention_distance) then
+            if (M.distance_between(single_sheep.x, single_sheep.y, enemy.x, enemy.y) <= attention_distance) then
                 table.insert(close_enemies, enemy)
             end
         end
@@ -42,7 +43,7 @@ function ca_herding_sheep_runs_enemy:execution(cfg)
     local best_hex = AH.find_best_move(sheep, function(x, y)
         local rating = 0
         for _,enemy in ipairs(close_enemies) do
-            rating = rating + H.distance_between(x, y, enemy.x, enemy.y)
+            rating = rating + M.distance_between(x, y, enemy.x, enemy.y)
         end
         return rating
     end)

@@ -1,6 +1,7 @@
 local H = wesnoth.require "helper"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local FAU = wesnoth.require "ai/micro_ais/cas/ca_fast_attack_utils.lua"
+local M = wesnoth.map
 
 local ca_fast_move = {}
 
@@ -54,7 +55,7 @@ function ca_fast_move:execution(cfg)
             for j = i+1,#villages do
                 local v2 = villages[j]
 
-                local dist = H.distance_between(v1[1], v1[2], v2[1], v2[2])
+                local dist = M.distance_between(v1[1], v1[2], v2[1], v2[2])
                 dist = math.ceil(dist / 5.)  -- In discrete steps of 5 hexes
 
                 v1.rating = (v1.rating or 0) + 1. / dist
@@ -67,7 +68,7 @@ function ca_fast_move:execution(cfg)
             local dist = 1  -- Just in case there is no leader
             dist = math.ceil(dist / 5.)  -- In discrete steps of 5 hexes
             if leader then
-                dist = H.distance_between(village[1], village[2], leader.x, leader.y)
+                dist = M.distance_between(village[1], village[2], leader.x, leader.y)
             end
 
             village.rating = (village.rating or 1.) * 1. / dist
@@ -93,7 +94,7 @@ function ca_fast_move:execution(cfg)
 
                 for _,village in ipairs(villages) do
                     village.rating = village.rating / base_rating
-                        * H.distance_between(x, y, village[1], village[2])
+                        * M.distance_between(x, y, village[1], village[2])
                 end
             end
         end
@@ -105,8 +106,8 @@ function ca_fast_move:execution(cfg)
     -- Sort enemy leaders by distance to AI leader
     if leader then
         table.sort(enemy_leaders, function(a, b)
-            local dist_a = H.distance_between(leader.x, leader.y, a.x, a.y)
-            local dist_b = H.distance_between(leader.x, leader.y, b.x, b.y)
+            local dist_a = M.distance_between(leader.x, leader.y, a.x, a.y)
+            local dist_b = m.distance_between(leader.x, leader.y, b.x, b.y)
             return (dist_a < dist_b)
         end)
     end
@@ -123,7 +124,7 @@ function ca_fast_move:execution(cfg)
     for _,goal in ipairs(goals) do
         -- Insert information about the units
         for i_u,unit in ipairs(units) do
-            local dist = H.distance_between(unit.x, unit.y, goal.x, goal.y)
+            local dist = M.distance_between(unit.x, unit.y, goal.x, goal.y)
 
             goal[i_u] = {
                 dist = dist / unit.max_moves,
@@ -201,8 +202,8 @@ function ca_fast_move:execution(cfg)
             local max_rating, best_hex = -9e99
             for _,loc in ipairs(reach) do
                 if (not avoid_map:get(loc[1], loc[2])) then
-                    local rating = - H.distance_between(loc[1], loc[2], short_goal[1], short_goal[2])
-                    local other_rating = - H.distance_between(loc[1], loc[2], goal.x, goal.y) / 10.
+                    local rating = -M.distance_between(loc[1], loc[2], short_goal[1], short_goal[2])
+                    local other_rating = -M.distance_between(loc[1], loc[2], goal.x, goal.y) / 10.
                     rating = rating + other_rating
 
                     local unit_in_way
