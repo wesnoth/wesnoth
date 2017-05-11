@@ -1,4 +1,11 @@
 Version 1.13.7+dev:
+  * Campaigns:
+   * Son of the Black-Eye:
+     * Balancing changes for 'Silent Forest'.
+   * Under the Burning Suns:
+     * New sprites for Quenoth Youth (Kaleh and Nym) and Human Commander.
+     * Applied a color shift to the human units in S8 and S9 to give them a more
+       unique look.
  * Editor:
    * Fixed a crash when placing units.
    * Restored the ability to preview different ToDs.
@@ -7,6 +14,10 @@ Version 1.13.7+dev:
    * Object types can now be used in contexts where previously only a list or
      map was accepted - for example in the filter() function. They will be
      treated as a map in such cases.
+ * Graphics:
+   * Fixed items not receiving ToD lighting.
+   * Portraits for many Walking Corpse and Soulless race variants.
+   * New animations: Dwarvish Fighter idle.
  * Language and i18n:
    * Updated translations: British English, Chinese (Simplified), Lithuanian,
      Slovak, Spanish
@@ -87,6 +98,8 @@ Version 1.13.7+dev:
    * Fix [volume] not accepting 100% as the new volume.
    * New concat_to_* keys in unit_type inheritance allow amending keys
    * Accept [story] as ActionWML in events
+   * Added a ~NO_TOD_SHIFT() ImagePathFunction which can be used on terrain and
+     item images to prevent them from being affected by ToD lighting.
  * Miscellaneous and bug fixes:
    * Fixed base animation showing on walking corpse & soulless bats (bug #25673)
 
