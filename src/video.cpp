@@ -191,6 +191,9 @@ void CVideo::update_framebuffer()
 	}
 
 	surface fb = SDL_GetWindowSurface(*window);
+    if (fb.get() == NULL) {
+        fprintf(stderr, "SDL_GetWindowSurface failed: %s\n", SDL_GetError());
+    }
 	if(!frameBuffer) {
 		frameBuffer = fb;
 	} else {
@@ -222,6 +225,11 @@ void CVideo::init_window()
 	} else if(preferences::maximized()) {
 		video_flags |= SDL_WINDOW_MAXIMIZED;
 	}
+	
+#ifdef __IPHONEOS__
+	// Hide iOS status bar
+	video_flags |= SDL_WINDOW_BORDERLESS;
+#endif
 
 	// Initialize window
 	window.reset(new sdl::window("", x, y, w, h, video_flags, SDL_RENDERER_SOFTWARE));
