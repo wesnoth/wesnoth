@@ -313,7 +313,7 @@ public:
 
 private:
 	// This gives me 10% speed improvement over std::vector<> (g++4.0.3 x86)
-	double* new_plane();
+	std::unique_ptr<double[]> new_plane();
 
 	void initialize_plane(unsigned plane,
 			unsigned a_cur,
@@ -412,10 +412,10 @@ prob_matrix::prob_matrix(unsigned int a_max,
 	need_b_slowed = need_b_slowed || !b_initial[1].empty();
 
 	// Allocate the needed planes.
-	plane_[NEITHER_SLOWED] = std::unique_ptr<double[]>(new_plane());
-	plane_[A_SLOWED] = !need_a_slowed ? nullptr : std::unique_ptr<double[]>(new_plane());
-	plane_[B_SLOWED] = !need_b_slowed ? nullptr : std::unique_ptr<double[]>(new_plane());
-	plane_[BOTH_SLOWED] = !(need_a_slowed && need_b_slowed) ? nullptr : std::unique_ptr<double[]>(new_plane());
+	plane_[NEITHER_SLOWED] = new_plane();
+	plane_[A_SLOWED] = !need_a_slowed ? nullptr : new_plane();
+	plane_[B_SLOWED] = !need_b_slowed ? nullptr : new_plane();
+	plane_[BOTH_SLOWED] = !(need_a_slowed && need_b_slowed) ? nullptr : new_plane();
 
 	// Initialize the probability distribution.
 	initialize_plane(NEITHER_SLOWED, a_cur, b_cur, a_initial[0], b_initial[0]);
@@ -445,12 +445,12 @@ prob_matrix::prob_matrix(unsigned int a_max,
 }
 
 /** Allocate a new probability array, initialized to 0. */
-double* prob_matrix::new_plane()
+std::unique_ptr<double[]> prob_matrix::new_plane()
 {
 	unsigned int size = rows_ * cols_;
 	double* arr = new double[size];
 	memset(arr, 0, sizeof(double) * size);
-	return arr;
+	return std::unique_ptr<double[]>(arr);
 }
 
 /**
@@ -2306,7 +2306,7 @@ double combatant::average_hp(unsigned int healing) const
 #if defined(BENCHMARK) || defined(CHECK)
 // We create a significant number of nasty-to-calculate units,
 // and test each one against the others.
-static CONSTEXPR unsigned int NUM_UNITS = 50;
+static const unsigned int NUM_UNITS = 50;
 
 #ifdef ATTACK_PREDICTION_DEBUG
 void list_combatant(const battle_context_unit_stats& stats, unsigned fighter)
