@@ -3761,6 +3761,7 @@ int game_lua_kernel::intf_add_sound_source(lua_State *L)
 	try {
 		soundsource::sourcespec spec(cfg);
 		man->add(spec);
+		man->update();
 	} catch (bad_lexical_cast &) {
 		ERR_LUA << "Error when parsing sound_source config: invalid parameter." << std::endl;
 		ERR_LUA << "sound_source config was: " << cfg.debug() << std::endl;
