@@ -198,7 +198,7 @@ function methods:random()
 	-- Return -1, -1 if empty
 	local r = wesnoth.random(self:size())
 	local i, xr, yr = 1, -1, -1
-	map:iter( function(x, y, v)
+	self:iter( function(x, y, v)
 		if (i == r) then xr, yr = x, y end
 		i = i + 1
 	end)
