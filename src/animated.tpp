@@ -48,9 +48,8 @@ inline animated<T, T_void_value>::animated(const std::vector<std::pair<int, T>>&
 	, last_update_tick_(0)
 	, current_frame_key_(0)
 {
-	typename std::vector<std::pair<int, T>>::const_iterator itor = cfg.begin();
-	for(; itor != cfg.end(); ++itor) {
-		add_frame(itor->first, itor->second, force_change);
+	for(const auto& config_pair : cfg) {
+		add_frame(config_pair.first, config_pair.second, force_change);
 	}
 }
 
@@ -389,7 +388,7 @@ inline void animated<T, T_void_value>::set_begin_time(int new_begin_time)
 {
 	const int variation = new_begin_time - starting_frame_time_;
 	starting_frame_time_ += variation;
-	for(typename std::vector<frame>::iterator itor = frames_.begin(); itor != frames_.end(); ++itor) {
-		itor->start_time_ += variation;
+	for(auto& frame : frames_) {
+		frame.start_time_ += variation;
 	}
 }
