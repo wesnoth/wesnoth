@@ -1,11 +1,3 @@
---! #textdomain wesnoth
-
-wesnoth.require "wml-flow"
-wesnoth.require "wml"
--- Note: When adding new WML tags, unless they're very simple, it's preferred to
--- add a new file in the "data/lua/wml" directory. The file will then automatically
--- be loaded by the above require statement.
-
 local helper = wesnoth.require "helper"
 local location_set = wesnoth.require "location_set"
 local utils = wesnoth.require "wml-utils"
@@ -22,6 +14,20 @@ end
 function wesnoth.game_events.on_save()
 	return {}
 end
+
+wesnoth.require "wml-flow"
+wesnoth.require "wml"
+
+--[[
+
+Note: When adding new WML tags, unless they're very simple, it's preferred to
+add a new file in the "data/lua/wml" directory rather than implementing it in this file.
+The file will then automatically be loaded by the above require statement.
+
+Also note: The above on_load event needs to be registered before any other on_load events.
+That means before loading the WML tags via wesnoth.require "wml".
+
+]]
 
 function wml_actions.sync_variable(cfg)
 	local names = cfg.name or helper.wml_error "[sync_variable] missing required name= attribute."
