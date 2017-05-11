@@ -53,11 +53,31 @@ Version 1.13.7+dev:
    * New wesnoth.show_story function launches the storyscreen viewer
    * wesnoth.dofile now forwards any excess arguments to the file in the "..." argument
    * wesnoth.require can now load all modules in a directory and accepts some shortened paths,
-     for example omitting the ".lua" file extension.
+     for example omitting the ".lua" file extension and searching in the current directory.
+   * When you require a package that has no return value, you now get a table that errors on
+     any access to it, rather than nil.
    * New wesnoth.create_weapon function to make a weapon that's not attached to a unit
      (which could be useful for animations)
    * New wesnoth.show_message function shows a simple alert dialog, possibly with a choice
    * New wesnoth.alert and wesnoth.confirm functions - simple shortcuts for the above.
+   * Various functions for working with hex locations have been added under wesnoth.map.
+     In particular, helper.distance_between is deprecated in favour of wesnoth.map.distance_between
+   * The following existing functions now also work in plugins and map generators:
+     wesnoth.log, wesnoth.get_time_stamp, wesnoth.get_image_size
+   * Several error messages now point more accurately to the actual location of the error.
+   * wesnoth.simulate_combat output has additional keys:
+     * untouched (in first two return values) indicates whether the unit took any damage
+     * number (in second two return values) contains the Lua index of the attack, as opposed
+       to attack_num which contains the WML index.
+     * weapon (in second two return values) contains the actual weapon userdata
+   * New methods in location_set: of_triples, to_triples, random
+   * New animations key in Lua unit proxy returns a list of defined flags for animation
+   * New functional.lua file implements a number of higher-order functions from WFL
+   * The length operator now works on translatable strings, returning the length of the translation.
+   * wesnoth.set_side_variable and unit.variables can now clear variables
+   * helper.get_variable_array and helper.set_variable_array now work on units and sides
+     (pass the unit, side, or side number as an extra parameter)
+	 Note: helper.get_variable_proxy_array does *not* work on units and sides (yet)
  * Multiplayer:
    * Fixed statistics being lost when reloading an MP game.
  * Performance:
@@ -81,6 +101,8 @@ Version 1.13.7+dev:
    * Move recruit/recall to top of context menu
    * Add a hotkey to launch test scenarios from the titlescreen
    * Added a Cutscene and Minimal Cutscene theme for UMC authors to use.
+   * Improve layout of MP Create at low resolutions.
+   * Game Load screen now lists the gold and total number of units for each side.
  * WML Engine:
    * Add base_income key to [store_side]
    * Fix issues with alpha animations on hidden units (#14503)
@@ -100,6 +122,15 @@ Version 1.13.7+dev:
    * Accept [story] as ActionWML in events
    * Added a ~NO_TOD_SHIFT() ImagePathFunction which can be used on terrain and
      item images to prevent them from being affected by ToD lighting.
+   * [unit]placement=name is now [unit]location_id=name and also honours the new
+     overwrite and passable keys, which deprecate placement=map_overwrite etc.
+   * New zoom_levels key in [game_config] defines the allowed zoom levels.
+   * The default color list is now defined via a default key in [color_range],
+     rather than the default_color_list key in [game_config][colors].
+   * Standard Unit Filter has new ability_type_active and trait keys
+   * Standard Weapon Filter has new special_active key
+   * [animate_unit] now raises an error if the flag key is missing
+   * Fix [set_variable][join] not working with translatable strings
  * Miscellaneous and bug fixes:
    * Fixed base animation showing on walking corpse & soulless bats (bug #25673)
 
