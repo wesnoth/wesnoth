@@ -18,13 +18,8 @@
  */
 
 #include "animated.hpp"
-// Force compilation of the following template instantiations
 
-#include "units/frame.hpp"
-
-template class animated< image::locator >;
-template class animated< std::string >;
-template class animated< unit_frame >;
+#include <SDL_timer.h>
 
 // Put these here to ensure that there's only
 // one instance of the current_ticks variable
