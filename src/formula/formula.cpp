@@ -66,12 +66,12 @@ expression_ptr parse_expression(const tk::token* i1, const tk::token* i2, functi
 const char* const formula::id_chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_";
 
 formula::formula(const std::string& text, function_symbol_table* symbols)
-	: expr_()
+try : expr_()
 	, str_(text)
 	, symbols_(symbols)
 	, managing_symbols(symbols == nullptr)
 {
-	if(symbols == nullptr) {
+	if(managing_symbols) {
 		symbols_ = new function_symbol_table;
 	}
 
@@ -208,6 +208,11 @@ formula::formula(const std::string& text, function_symbol_table* symbols)
 	} else {
 		expr_ = expression_ptr(new null_expression());
 	}
+} catch(...) {
+	if(managing_symbols) {
+		delete symbols_;
+	}
+	throw;
 }
 
 formula::formula(const tk::token* i1, const tk::token* i2, function_symbol_table* symbols)
