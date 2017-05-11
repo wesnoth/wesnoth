@@ -272,21 +272,50 @@ function helper.set_wml_tag_metatable(t)
 	return setmetatable(t, create_tag_mt)
 end
 
+local function resolve_variable_context(ctx, err_hint)
+	if ctx == nil then
+		return {get = wesnoth.get_variable, set = wesnoth.set_variable}
+	elseif type(ctx) == 'number' and ctx > 0 and ctx <= #wesnoth.sides then
+		return resolve_variable_context(wesnoth.sides[ctx])
+	elseif type(ctx) == 'string' then
+		-- TODO: Treat it as a namespace for a global (persistent) variable
+		-- (Need Lua API for accessing them first, though.)
+	elseif getmetatable(ctx) == "unit" then
+		return {
+			get = function(path) return ctx.variables[path] end,
+			set = function(path, val) ctx.variables[path] = val end,
+		}
+	elseif getmetatable(ctx) == "side" then
+		return {
+			get = function(path) return wesnoth.get_side_variable(ctx.side, path) end,
+			set = function(path, val) wesnoth.set_side_variable(ctx.side, path, val) end,
+		}
+	elseif getmetatable(ctx) == "unit variables" or getmetatable(ctx) == "side variables" then
+		return {
+			get = function(path) return ctx[path] end,
+			set = function(path, val) ctx[path] = val end,
+		}
+	end
+	error(string.format("Invalid context for %s: expected nil, side, or unit", err_hint), 3)
+end
+
 --! Fetches all the WML container variables with name @a var.
 --! @returns a table containing all the variables (starting at index 1).
-function helper.get_variable_array(var)
+function helper.get_variable_array(var, context)
+	context = resolve_variable_context(context, "get_variable_array")
 	local result = {}
-	for i = 1, wesnoth.get_variable(var .. ".length") do
-		result[i] = wesnoth.get_variable(string.format("%s[%d]", var, i - 1))
+	for i = 1, context.get(var .. ".length") do
+		result[i] = context.get(string.format("%s[%d]", var, i - 1))
 	end
 	return result
 end
 
 --! Puts all the elements of table @a t inside a WML container with name @a var.
-function helper.set_variable_array(var, t)
-	wesnoth.set_variable(var)
+function helper.set_variable_array(var, t, context)
+	context = resolve_variable_context(context, "set_variable_array")
+	context.set(var)
 	for i, v in ipairs(t) do
-		wesnoth.set_variable(string.format("%s[%d]", var, i - 1), v)
+		context.set(string.format("%s[%d]", var, i - 1), v)
 	end
 end
 
