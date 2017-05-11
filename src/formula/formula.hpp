@@ -18,6 +18,7 @@
 #include "formula/formula_fwd.hpp"
 #include "formula/tokenizer.hpp"
 #include "formula/variant.hpp"
+#include <memory>
 
 namespace wfl
 {
@@ -34,8 +35,6 @@ class formula
 public:
 	formula(const std::string& str, function_symbol_table* symbols = nullptr);
 	formula(const tk::token* i1, const tk::token* i2, function_symbol_table* symbols = nullptr);
-
-	~formula();
 
 	static variant evaluate(
 			const const_formula_ptr& f,
@@ -80,8 +79,10 @@ private:
 
 	expression_ptr expr_;
 	std::string str_;
+	// Can't be a unique_ptr because function_symbol_table is an incomplete type,
+	// and the header it's declared in depends on this one.
+	const std::shared_ptr<function_symbol_table> managed_symbols_;
 	function_symbol_table* symbols_;
-	bool managing_symbols;
 
 	friend class formula_debugger;
 };

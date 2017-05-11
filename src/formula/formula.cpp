@@ -68,13 +68,9 @@ const char* const formula::id_chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNO
 formula::formula(const std::string& text, function_symbol_table* symbols)
 	: expr_()
 	, str_(text)
-	, symbols_(symbols)
-	, managing_symbols(symbols == nullptr)
+	, managed_symbols_(symbols ? nullptr : new function_symbol_table)
+	, symbols_(symbols ? symbols : managed_symbols_.get())
 {
-	if(symbols == nullptr) {
-		symbols_ = new function_symbol_table;
-	}
-
 	std::vector<tk::token> tokens;
 	std::string::const_iterator i1 = text.begin(), i2 = text.end();
 
@@ -213,24 +209,13 @@ formula::formula(const std::string& text, function_symbol_table* symbols)
 formula::formula(const tk::token* i1, const tk::token* i2, function_symbol_table* symbols)
 	: expr_()
 	, str_()
-	, symbols_(symbols)
-	, managing_symbols(symbols == nullptr)
+	, managed_symbols_(symbols ? nullptr : new function_symbol_table)
+	, symbols_(symbols ? symbols : managed_symbols_.get())
 {
-	if(symbols == nullptr) {
-		symbols_ = new function_symbol_table;
-	}
-
 	if(i1 != i2) {
 		expr_ = parse_expression(i1, i2, symbols);
 	} else {
 		expr_ = expression_ptr(new null_expression());
-	}
-}
-
-formula::~formula()
-{
-	if(managing_symbols) {
-		delete symbols_;
 	}
 }
 
