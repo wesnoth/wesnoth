@@ -373,6 +373,8 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 			std::string leader_image;
 			std::string leader_image_tc_modifier;
 			std::string leader_name;
+			int gold = side["gold"];
+			int units = 0, recall_units = 0;
 
 			if(side["controller"] != team::CONTROLLER::enum_to_string(team::CONTROLLER::HUMAN)) {
 				continue;
@@ -383,16 +385,23 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 			}
 
 			for(const config &u : side.child_range("unit")) {
-				if(!u["canrecruit"].to_bool()) {
+				if(u.has_attribute("x") && u.has_attribute("y")) {
+					units++;
+				} else {
+					recall_units++;
+				}
+
+				// Only take the first leader
+				if(!leader.empty() || !u["canrecruit"].to_bool()) {
 					continue;
 				}
 
+				// Don't count it among the troops
+				units--;
 				leader = u["id"].str();
 				leader_name = u["name"].str();
 				leader_image = u["image"].str();
 				leader_image_tc_modifier = "~RC(" + u["flag_rgb"].str() + ">" + u["side"].str() + ")";
-
-				break;
 			}
 
 			// We need a binary path-independent path to the leader image here so it can be displayed
@@ -413,6 +422,9 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 			leader_config["leader_name"] = leader_name;
 			leader_config["leader_image"] = leader_image;
 			leader_config["leader_image_tc_modifier"] = leader_image_tc_modifier;
+			leader_config["gold"] = gold;
+			leader_config["units"] = units;
+			leader_config["recall_units"] = recall_units;
 
 			cfg_summary.add_child("leader", leader_config);
 		}

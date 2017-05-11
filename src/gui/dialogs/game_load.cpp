@@ -198,6 +198,15 @@ void game_load::display_savegame(window& window)
 		item["label"] = leader["leader_name"];
 		data.emplace("leader_name", item);
 
+		item["label"] = leader["gold"];
+		data.emplace("leader_gold", item);
+
+		item["label"] = leader["units"];
+		data.emplace("leader_troops", item);
+
+		item["label"] = leader["recall_units"];
+		data.emplace("leader_reserves", item);
+
 		leader_list.add_row(data);
 	}
 
