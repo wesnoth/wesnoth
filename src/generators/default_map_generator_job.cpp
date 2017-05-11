@@ -31,7 +31,7 @@
 #include "seed_rng.hpp"
 #include "wml_exception.hpp"
 
-#include <SDL.h>
+#include <SDL_timer.h>
 
 static lg::log_domain log_mapgen("mapgen");
 #define ERR_NG LOG_STREAM(err, log_mapgen)
