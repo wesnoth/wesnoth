@@ -101,6 +101,7 @@ void story_viewer::update_current_part_ptr()
 
 void story_viewer::display_part(window& window)
 {
+	static const int VOICE_SOUND_SOURCE_ID = 255;
 	// Update Back button state. Doing this here so it gets called in pre_show too.
 	find_widget<button>(&window, "back", false).set_active(part_index_ != 0);
 
@@ -118,6 +119,11 @@ void story_viewer::display_part(window& window)
 
 	if(!current_part_->sound().empty()) {
 		sound::play_sound(current_part_->sound());
+	}
+
+	sound::stop_sound(VOICE_SOUND_SOURCE_ID);
+	if(!current_part_->voice().empty()) {
+		sound::play_sound_positioned(current_part_->voice(), VOICE_SOUND_SOURCE_ID, 0, 0);
 	}
 
 	config cfg, image;

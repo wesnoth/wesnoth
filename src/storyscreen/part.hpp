@@ -292,6 +292,12 @@ public:
 		return sound_;
 	}
 
+	/** Retrieves a voice track. */
+	const std::string& voice() const
+	{
+		return voice_;
+	}
+
 	/** Retrieves the area of the screen on which the story text is displayed. */
 	BLOCK_LOCATION story_text_location() const
 	{
@@ -340,6 +346,7 @@ private:
 
 	std::string music_;
 	std::string sound_;
+	std::string voice_;
 
 	std::vector<background_layer> background_layers_;
 	std::vector<floating_image> floating_images_;

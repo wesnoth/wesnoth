@@ -226,6 +226,10 @@ void part::resolve_wml(const vconfig& cfg)
 		sound_ = cfg["sound"].str();
 	}
 
+	if(cfg.has_attribute("voice")) {
+		voice_ = cfg["voice"].str();
+	}
+
 	// Inherited
 	story_parser::resolve_wml(cfg);
 }

@@ -121,7 +121,7 @@ positional_source::positional_source(const sourcespec &spec) :
 
 positional_source::~positional_source()
 {
-	sound::reposition_sound(id_, DISTANCE_SILENT);
+	sound::stop_sound(id_);
 }
 
 bool positional_source::is_global() const
