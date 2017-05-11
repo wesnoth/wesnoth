@@ -404,6 +404,16 @@ bool basic_unit_filter_impl::internal_matches_filter(const unit & u, const map_l
 		}
 	}
 
+	if(!vcfg["trait"].empty()) {
+		std::vector<std::string> check_traits = utils::split(vcfg["trait"]), have_traits = u.get_traits_list(), isect;
+		std::sort(check_traits.begin(), check_traits.end());
+		std::sort(have_traits.begin(), have_traits.end());
+		std::set_intersection(check_traits.begin(), check_traits.end(), have_traits.begin(), have_traits.end(), std::back_inserter(isect));
+		if(isect.empty()) {
+			return false;
+		}
+	}
+
 	if (!vcfg["race"].empty()) {
 		std::vector<std::string> races = utils::split(vcfg["race"]);
 		if (std::find(races.begin(), races.end(), u.race()->id()) == races.end()) {
