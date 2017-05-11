@@ -62,12 +62,14 @@ inline animated<T,T_void_value>::animated(const std::vector<std::pair<int,T> > &
 template<typename T, typename T_void_value>
 inline void animated<T,T_void_value>::add_frame(int duration, const T& value,bool force_change)
 {
+	// NOTE: We cannot use emplace_back here, because the value may be a reference into the same vector,
+	// which case emplace_back could invalidate it before the new frame is constructed.
 	if (frames_.empty() ) {
 		does_not_change_=!force_change;
-		frames_.emplace_back(duration,value,starting_frame_time_);
+		frames_.push_back(frame(duration,value,starting_frame_time_));
 	} else {
 		does_not_change_=false;
-		frames_.emplace_back(duration,value,frames_.back().start_time_+frames_.back().duration_);
+		frames_.push_back(frame(duration,value,frames_.back().start_time_+frames_.back().duration_));
 	}
 }
 
