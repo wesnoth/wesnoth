@@ -33,16 +33,15 @@ std::string unit_palette::get_help_string() {
 
 void unit_palette::setup(const config& /*cfg*/)
 {
-	for (const unit_type_data::unit_type_map::value_type &i : unit_types.types())
-	{
-		if (i.second.do_not_list())
+	for(const unit_type_data::unit_type_map::value_type &i : unit_types.types()) {
+		if(i.second.do_not_list())
 			continue;
 		item_map_.emplace(i.second.id(), i.second);
 		group_map_[i.second.race_id()].push_back(i.second.id());
 		nmax_items_ = std::max<int>(nmax_items_, group_map_[i.second.race_id()].size());
 		//TODO
 		bool core = true;
-		if (core) {
+		if(core) {
 			// Add the unit to the default group
 			group_map_["all"].push_back(i.second.id());
 			nmax_items_ = std::max<int>(nmax_items_, group_map_["all"].size());
@@ -51,9 +50,8 @@ void unit_palette::setup(const config& /*cfg*/)
 		}
 	}
 
-	for (const race_map::value_type &i : unit_types.races())
-	{
-		if (group_map_[i.second.id()].empty())
+	for(const race_map::value_type &i : unit_types.races()) {
+		if(group_map_[i.second.id()].empty())
 			continue;
 		config cfg;
 		cfg["id"] = i.second.id();
@@ -89,15 +87,14 @@ void unit_palette::draw_item(const unit_type& u, surface& image, std::stringstre
 		tooltip_text << "IMAGE NOT FOUND\n";
 		ERR_ED << "image for unit type: '" << filename.str() << "' not found" << std::endl;
 		image = image::get_image(game_config::images::missing);
-		if (image == nullptr) {
+		if(image == nullptr) {
 			ERR_ED << "Placeholder image not found" << std::endl;
 			return;
 		}
 	}
 
 	if(image->w != item_size_ || image->h != item_size_) {
-		image.assign(scale_surface(image,
-				item_size_, item_size_));
+		image.assign(scale_surface(image, item_size_, item_size_));
 	}
 
 	tooltip_text << u.type_name();
@@ -123,9 +120,11 @@ bool unit_palette::is_selected_bg_item(const std::string& id)
 
 void unit_palette::select_bg_item(const std::string& item_id) {
 
-	if (selected_bg_items_.count(item_id) != 0)
+	if(selected_bg_items_.count(item_id) != 0) {
 		selected_bg_items_.erase(item_id);
-	else selected_bg_items_.insert(item_id);
+	} else {
+		selected_bg_items_.insert(item_id);
+	}
 
 	set_dirty();
 }
