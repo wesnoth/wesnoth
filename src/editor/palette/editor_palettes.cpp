@@ -51,23 +51,21 @@ void editor_palette<Item>::expand_palette_groups_menu(std::vector<config>& items
 		if (groupname.empty()) {
 			groupname = _("(Unknown Group)");
 		}
-		std::stringstream i_ss;
-		i_ss << item_groups[mci].icon;
+		std::string img = item_groups[mci].icon + "_30";
 		if (mci == active_group_index()) {
-
-			if (filesystem::file_exists(i_ss.str() + "_30-pressed.png" ) ) {
-				i_ss << "_30-pressed.png";
+			std::string pressed_img = img + "-pressed.png";
+			if(!filesystem::get_binary_file_location("images", pressed_img).empty()) {
+				img = pressed_img;
 			} else {
-				i_ss << "_30.png~CS(70,70,0)";
+				img += ".png~CS(70,70,0)";
 			}
-
 		} else {
-			i_ss << "_30.png";
+			img += ".png";
 		}
 
 		groups.emplace_back(config_of
 			("label", groupname)
-			("icon", i_ss.str())
+			("icon", img)
 		);
 	}
 

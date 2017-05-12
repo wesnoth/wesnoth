@@ -63,6 +63,7 @@ unit_race::unit_race() :
 unit_race::unit_race(const config& cfg) :
 		cfg_(cfg),
 		id_(cfg["id"]),
+		icon_(cfg["editor_icon"]),
 		plural_name_(cfg["plural_name"].t_str()),
 		description_(cfg["description"].t_str()),
 		ntraits_(cfg["num_traits"]),

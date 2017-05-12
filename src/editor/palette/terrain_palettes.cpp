@@ -77,8 +77,21 @@ void terrain_palette::setup(const config& cfg)
 
 	// Get the available groups and add them to the structure
 	std::set<std::string> group_names;
+	for(const config &group : cfg.child_range("terrain_group")) {
+		if(group_names.count(group["id"]) == 0) {
+			config group_cfg;
+			group_cfg["id"] = group["id"];
+			group_cfg["name"] = group["name"];
+
+			group_cfg["icon"] = group["icon"].str();
+			group_cfg["core"] = group["core"];
+			groups_.emplace_back(group_cfg);
+
+			group_names.insert(groups_.back().id);
+		}
+	}
 	for(const config &group : cfg.child_range("editor_group")) {
-		if(group_names.find(group["id"]) == group_names.end()) {
+		if(group_names.count(group["id"]) == 0) {
 			config group_cfg;
 			group_cfg["id"] = group["id"];
 			group_cfg["name"] = group["name"];

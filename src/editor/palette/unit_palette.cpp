@@ -39,7 +39,7 @@ void unit_palette::setup(const config& /*cfg*/)
 		item_map_.emplace(i.second.id(), i.second);
 		group_map_[i.second.race_id()].push_back(i.second.id());
 		nmax_items_ = std::max<int>(nmax_items_, group_map_[i.second.race_id()].size());
-		//TODO
+		// TODO: Implement the concept of "core" units
 		bool core = true;
 		if(core) {
 			// Add the unit to the default group
@@ -56,8 +56,12 @@ void unit_palette::setup(const config& /*cfg*/)
 		config cfg;
 		cfg["id"] = i.second.id();
 		cfg["name"] = i.second.plural_name();
-		cfg["icon"] = "icons/unit-groups/race_" + i.second.id();
-		cfg["core"] = "yes";
+		if(i.second.editor_icon().empty()) {
+			cfg["icon"] = "icons/unit-groups/race_" + i.second.id();
+		} else {
+			cfg["icon"] = i.second.editor_icon();
+		}
+		cfg["core"] = true;
 		groups_.emplace_back(cfg);
 	}
 

@@ -30,6 +30,7 @@ public:
 
 	const config& get_cfg() const { return cfg_; }
 	const std::string& id() const { return id_; }
+	const std::string& editor_icon() const { return icon_; }
 	const t_string& name(GENDER gender=MALE) const { return name_[gender]; }
 	const t_string& plural_name() const { return plural_name_; }
 	const t_string& description() const { return description_; }
@@ -54,6 +55,7 @@ private:
 	const config cfg_;
 
 	std::string id_;
+	std::string icon_;
 	t_string name_[NUM_GENDERS];
 	t_string plural_name_;
 	t_string description_;
