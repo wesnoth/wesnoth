@@ -40,7 +40,7 @@ text_box_base::text_box_base()
 	, selection_length_(0)
 	, cursor_timer_(0)
 	, cursor_alpha_(0)
-	, cursor_blink_rate_ms_(0) // TODO: disabled until there's a way to deal with textboxes on multiple windows
+	, cursor_blink_rate_ms_(750)
 	, text_changed_callback_()
 {
 #ifdef __unix__
@@ -277,7 +277,11 @@ void text_box_base::cursor_timer_callback()
 			cursor_alpha_ = 255;
 			return;
 		default:
-			cursor_alpha_ = (~cursor_alpha_) & 0xFF;
+			if(get_window() != open_window_stack.back()) {
+				cursor_alpha_ = 0;
+			} else {
+				cursor_alpha_ = (~cursor_alpha_) & 0xFF;
+			}
 	}
 
 	for(auto& tmp : get_canvases()) {
