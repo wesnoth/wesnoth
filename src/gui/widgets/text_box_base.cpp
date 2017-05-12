@@ -269,6 +269,7 @@ void text_box_base::toggle_cursor_timer(bool enable)
 
 void text_box_base::cursor_timer_callback()
 {
+	unsigned was_alpha = cursor_alpha_;
 	switch(state_) {
 		case DISABLED:
 			cursor_alpha_ = 0;
@@ -282,6 +283,10 @@ void text_box_base::cursor_timer_callback()
 			} else {
 				cursor_alpha_ = (~cursor_alpha_) & 0xFF;
 			}
+	}
+
+	if(was_alpha == cursor_alpha_) {
+		return;
 	}
 
 	for(auto& tmp : get_canvases()) {
