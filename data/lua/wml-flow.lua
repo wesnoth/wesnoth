@@ -130,7 +130,7 @@ wesnoth.wml_actions["for"] = function(cfg)
 			return wesnoth.get_variable(i_var) > sentinel
 		else
 			sentinel = sentinel + 1
-			return wesnoth.get_variable(i_var) > sentinel
+			return wesnoth.get_variable(i_var) < sentinel
 		end
 	end
 	while loop_condition() do
