@@ -27,8 +27,8 @@ function wesnoth.wml_actions.kill(cfg)
 		if cfg.fire_event then
 			kill_recursion_preventer:insert(death_loc.x, death_loc.y, recursion)
 			can_fire = true
-			if death_loc.x == wesnoth.current.event.x1 and death_loc.y == wesnoth.current.event.y1 then
-				if wesnoth.current.event.name == "die" or wesnoth.current.event.name == "last breath" then
+			if death_loc.x == wesnoth.current.event_context.x1 and death_loc.y == wesnoth.current.event_context.y1 then
+				if wesnoth.current.event_context.name == "die" or wesnoth.current.event_context.name == "last breath" then
 					if recursion >= 10 then
 						can_fire = false;
 						wesnoth.log("error", "tried to fire 'die' or 'last breath' event on unit from the unit's 'die' or 'last breath' event with first_time_only=no!")
