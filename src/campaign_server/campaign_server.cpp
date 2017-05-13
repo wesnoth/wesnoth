@@ -580,7 +580,7 @@ void server::handle_request_terms(const server::request& req)
 	}
 
 	LOG_CS << "sending terms " << req.addr << "\n";
-	send_message("All content within add-ons uploaded to this server must be licensed under the terms of the GNU General Public License (GPL), with the sole exception of artwork and audio explicitly denoted as released under a Creative Commons license either in a) a toplevel file named ART_LICENSE, e.g. `add-ons/My_Addon/ART_LICENSE`, or b) a file with the same path as the asset with `.license` appended, e.g. `add-ons/My_Addon/images/units/axeman.png.license`. By uploading content to this server, you certify that you have the right a) to release all included art and audio explicitly denoted with a Creative Commons license in the proscribed manner under that license, and b) to release all other included content under the terms of the GPL; and that you choose to do so.", req.sock);
+	send_message("All content within add-ons uploaded to this server must be licensed under the terms of the GNU General Public License (GPL), with the sole exception of graphics and audio explicitly denoted as released under a Creative Commons license either in a) a combined toplevel file, e.g. `add-ons/My_Addon/ART_LICENSE`, or b) a file with the same path as the asset with `.license` appended, e.g. `add-ons/My_Addon/images/units/axeman.png.license`. By uploading content to this server, you certify that you have the right a) to release all included art and audio explicitly denoted with a Creative Commons license in the proscribed manner under that license, and b) to release all other included content under the terms of the GPL; and that you choose to do so.", req.sock);
 	LOG_CS << " Done\n";
 }
 
