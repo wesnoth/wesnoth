@@ -9,6 +9,10 @@ Version 1.13.7+dev:
  * Editor:
    * Fixed a crash when placing units.
    * Restored the ability to preview different ToDs.
+   * Fixed editor sides not having the correct side number.
+   * Redesigned Windows, Areas, and Sides menus.
+   * Windows will now display maps starting from 1 rather than 0.
+   * Display scenario name in more places if available.
  * Formula Engine:
    * Fixed garbage data showing up in stack traces in the event of an error.
    * Object types can now be used in contexts where previously only a list or
