@@ -8,11 +8,13 @@ Version 1.13.7+dev:
        unique look.
  * Editor:
    * Fixed a crash when placing units.
-   * Restored the ability to preview different ToDs.
+   * Restored the ability to preview different ToDs. Note this still does not
+     work when invoked form the Custom ToD window.
    * Fixed editor sides not having the correct side number.
    * Redesigned Windows, Areas, and Sides menus.
-   * Windows will now display maps starting from 1 rather than 0.
-   * Display scenario name in more places if available.
+   * The Windows menu will now display maps starting from 1 rather than 0.
+     This is likewise reflected in the default map filename.
+   * Scenario names are now displayed in more places if available.
  * Formula Engine:
    * Fixed garbage data showing up in stack traces in the event of an error.
    * Object types can now be used in contexts where previously only a list or
@@ -44,7 +46,7 @@ Version 1.13.7+dev:
      * wesnoth.music_list.current returns mutable information about the
        currently-playing track
      * wesnoth.music_list.current_i returns the index of the current track on
-       the list It is writeable, allowing you to switch to any track on the
+       the list. It is writable, allowing you to switch to any track on the
        list. This respects fade values.
      * wesnoth.music_list.all returns a copy of the playlist that can be
        stored in a variable.
@@ -102,13 +104,13 @@ Version 1.13.7+dev:
    * helper.get_variable_array and helper.set_variable_array now work on
      units and sides (pass a unit, side, or side number as an extra parameter)
      Note: helper.get_variable_proxy_array does *not* work on units and sides
-   * helper.rand now has a secodn parameter that defaults to wesnoth.random
-   * add wesnoth.game_config.victory_music and wesnoth.game_config.defeat_music
+   * helper.rand now has a second parameter that defaults to wesnoth.random
+   * Add wesnoth.game_config.victory_music and wesnoth.game_config.defeat_music
      setters
-   * add wesnoth.game_config.scenario_id getter
+   * Add wesnoth.game_config.scenario_id getter
    * wesnoth.set_next_scenario() was replaced with
      wesnoth.game_config.next_scenario setter/getter
-   * wesnoth.set_dialog_value can now (un-) fodl treeview nodes
+   * wesnoth.set_dialog_value can now (un-) fold GUI2 tree view nodes
  * Multiplayer:
    * Fixed statistics being lost when reloading an MP game.
  * Performance:
@@ -171,7 +173,7 @@ Version 1.13.7+dev:
    * New voice key in [message] and [story][part]
    * [objectives] now supports delayed_variable_substitution=yes and also
      delayed substitution with $|variable syntax.
-   * items in [options] now again support container variables  
+   * Items in [options] now support container variables again.
  * Miscellaneous and bug fixes:
    * Fixed base animation showing on walking corpse & soulless bats
      (bug #25673)
