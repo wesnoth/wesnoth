@@ -102,6 +102,12 @@ Version 1.13.7+dev:
    * helper.get_variable_array and helper.set_variable_array now work on
      units and sides (pass a unit, side, or side number as an extra parameter)
      Note: helper.get_variable_proxy_array does *not* work on units and sides
+   * helper.rand now has a secodn parameter that defaults to wesnoth.random
+   * add wesnoth.game_config.victory_music and wesnoth.game_config.defeat_music
+     setters
+   * add wesnoth.game_config.scenario_id getter
+   * wesnoth.set_next_scenario() was replaced with
+     wesnoth.game_config.next_scenario setter/getter
  * Multiplayer:
    * Fixed statistics being lost when reloading an MP game.
  * Performance:
@@ -163,6 +169,7 @@ Version 1.13.7+dev:
    * New voice key in [message] and [story][part]
    * [objectives] now supports delayed_variable_substitution=yes and also
      delayed substitution with $|variable syntax.
+   * items in [options] now again support container variables  
  * Miscellaneous and bug fixes:
    * Fixed base animation showing on walking corpse & soulless bats
      (bug #25673)
