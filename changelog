@@ -108,6 +108,7 @@ Version 1.13.7+dev:
    * add wesnoth.game_config.scenario_id getter
    * wesnoth.set_next_scenario() was replaced with
      wesnoth.game_config.next_scenario setter/getter
+   * wesnoth.set_dialog_value can now (un-) fodl treeview nodes
  * Multiplayer:
    * Fixed statistics being lost when reloading an MP game.
  * Performance:
@@ -136,6 +137,7 @@ Version 1.13.7+dev:
    * Game Load screen now lists the gold and total number of units for each
      side.
    * Textboxes now have a blinking cursor when focused.
+   * multi pages can now contain different types of pages
  * WML Engine:
    * Add base_income key to [store_side]
    * Fix issues with alpha animations on hidden units (#14503)
@@ -303,6 +305,7 @@ Version 1.13.7:
    * {SOUND_POISON} and {SOUND_SLOW} have been deprecated and replaced with empty
      macros.
    * [tunnel] now accepts delayed_variable_substitution=yes/no.
+   * [on_redo] is now deprecated and does nothing if used
  * Miscellaneous and bug fixes:
    * Fixed severe lag/freeze on slow PCs (bug #25356)
    * Updated wmlscope to handle the square braces syntax in file paths
