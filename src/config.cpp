@@ -681,25 +681,6 @@ config &config::find_child(config_key_type key, const std::string &name,
 	}
 }
 
-namespace {
-	/**
-	 * Helper struct for iterative config clearing.
-	 */
-	struct config_clear_state
-	{
-		config_clear_state()
-			: c(nullptr)
-			, mi()
-			, vi(0)
-		{
-		}
-
-		config* c; //the config being inspected
-		config::child_map::iterator mi; //current child map entry
-		size_t vi; //index into the child map item vector
-	};
-}
-
 void config::clear()
 {
 	// No validity check for this function.
