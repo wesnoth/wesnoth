@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12 (wesnoth-multiplayer)\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-03-23 08:11+0100\n"
+"POT-Creation-Date: 2017-05-13 22:46 UTC\n"
 "PO-Revision-Date: 2014-10-28 12:33-0000\n"
 "Last-Translator: trewe <sjrs456@yandex.com>\n"
 "Language-Team: wesn-pt-trans <wesn-pt-trans-users@lists.sourceforge.net>\n"
@@ -1861,19 +1861,19 @@ msgstr ""
 msgid "3p — Alirok Marsh"
 msgstr "3j — O Pântano de Alirok"
 
-#. [multiplayer]: id=multiplayer_4p_Underworld
-#. [multiplayer]: id=multiplayer_3p_Morituri
-#. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
-#. [multiplayer]: id=multiplayer_4p_Morituri
-#. [multiplayer]: id=multiplayer_Blue_Water_Province
 #. [multiplayer]: id=multiplayer_Alirok_Marsh
-#. [multiplayer]: id=multiplayer_Loris_River
+#. [multiplayer]: id=multiplayer_3p_Morituri
+#. [multiplayer]: id=multiplayer_Blue_Water_Province
+#. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
+#. [multiplayer]: id=multiplayer_Clash
 #. [multiplayer]: id=multiplayer_4p_Hamlets
+#. [multiplayer]: id=multiplayer_4p_Morituri
+#. [multiplayer]: id=multiplayer_4p_Underworld
 #. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
-#. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
 #. [multiplayer]: id=multiplayer_8p_Morituri
 #. [multiplayer]: id=multiplayer_Island_of_the_Horatii
-#. [multiplayer]: id=multiplayer_Clash
+#. [multiplayer]: id=multiplayer_Loris_River
+#. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:6
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
 #: data/multiplayer/scenarios/3p_Morituri.cfg:6
@@ -1905,9 +1905,13 @@ msgstr "3j — A Ilha dos Horatii"
 #
 #. [multiplayer]: id=multiplayer_Island_of_the_Horatii
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
+#, fuzzy
+#| msgid ""
+#| "Controlling the central island is often the key to victory in this "
+#| "21x21hex 3 player free for all map."
 msgid ""
-"Controlling the central island is often the key to victory in this 21x21hex "
-"3 player free for all map."
+"Controlling the central island is often the key to victory in this 3 player "
+"free for all map."
 msgstr ""
 "Controlar a ilha central é, em geral, a chave para a vitória neste mapa de "
 "21X21 para 3 jogadores todos-contra-todos."
@@ -2053,10 +2057,16 @@ msgstr "4j — A travessia de Isar"
 #
 #. [multiplayer]: id=multiplayer_Isars_Cross
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:9
+#, fuzzy
+#| msgid ""
+#| "A very small 2 vs. 2 map. Close quarters fighting means the successful "
+#| "rotation of units and planning of moves is important. Teams set for "
+#| "players 1&4 vs. 2&3 (northeast vs. southwest). Designed for 75 starting "
+#| "gold, 20 villages."
 msgid ""
 "A very small 2 vs. 2 map. Close quarters fighting means the successful "
 "rotation of units and planning of moves is important. Teams set for players "
-"1&4 vs. 2&3 (northeast vs. southwest). Designed for 75 starting gold, 20 "
+"1+4 vs. 2+3 (northeast vs. southwest). Designed for 75 starting gold, 20 "
 "villages."
 msgstr ""
 "Um mapa muito pequeno 2 x 2. Lutar num local apertado significa que rodar "
@@ -2108,9 +2118,13 @@ msgstr " Definição recomendada de 2 ouro por aldeia e 150 de ouro inicial."
 #
 #. [multiplayer]: id=multiplayer_King_of_the_Hill
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:9
+#, fuzzy
+#| msgid ""
+#| "Controlling the area around the central keep is very lucrative in this "
+#| "36X36 4 player FFA map. Works fine 2 vs. 2 as well. There are 36 villages."
 msgid ""
-"Controlling the area around the central keep is very lucrative in this 36X36 "
-"4 player FFA map. Works fine 2 vs. 2 as well. There are 36 villages."
+"Controlling the area around the central keep is very lucrative in this 4 "
+"player FFA map. Works fine 2 vs. 2 as well. There are 36 villages."
 msgstr ""
 "Controlar a área à volta da torre central é muito lucrativo nesta partida "
 "para 4 todos-contra-todos de 36X36. Pode também ser jogado como 2X2. Existem "
@@ -2146,9 +2160,13 @@ msgstr "4j — Rio Lóris"
 #
 #. [multiplayer]: id=multiplayer_Loris_River
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:9
+#, fuzzy
+#| msgid ""
+#| "A 25x25 2 vs. 2 map centered around a river with keeps in opposite "
+#| "corners. Designed for players 1&4 vs. 2&3. There are 28 villages."
 msgid ""
-"A 25x25 2 vs. 2 map centered around a river with keeps in opposite corners. "
-"Designed for players 1&4 vs. 2&3. There are 28 villages."
+"2 vs. 2 map centered around a river with keeps in opposite corners. Designed "
+"for players 1+4 vs. 2+3. There are 28 villages."
 msgstr ""
 "Um mapa 25X25 de 2 x 2 centrado ao longo de um rio com torres nos cantos "
 "opostos. Designado para jogadores 1 e 4 x 2 e 3. Existem 28 aldeias."
@@ -2178,9 +2196,13 @@ msgstr " Definição recomendada de 2 ouro por aldeia, existem 28 aldeias."
 #
 #. [multiplayer]: id=multiplayer_Paths_of_Daggers
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:9
+#, fuzzy
+#| msgid ""
+#| "A 35X27 2 vs. 2 map with 5 separate paths of engagement. Balanced to be "
+#| "played east vs. west (1&4 vs. 2&3), but works well with any teams or FFA."
 msgid ""
-"A 35X27 2 vs. 2 map with 5 separate paths of engagement. Balanced to be "
-"played east vs. west (1&4 vs. 2&3), but works well with any teams or FFA."
+"A 2 vs. 2 map with 5 separate paths of engagement. Balanced to be played "
+"east vs. west (1+4 vs. 2+3), but works well with any teams or FFA."
 msgstr ""
 "Um mapa 35X27 de 2 x 2 com 5 diferentes caminhos de confronto. Balanceado "
 "para ser jogado este contra oeste (1 e 4 x 2 e 3), mas também dá com outras "
@@ -2194,9 +2216,13 @@ msgstr "4j — As Ruínas das Terras Escavadas"
 #
 #. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
 #: data/multiplayer/scenarios/4p_Ruins_of_Terra-Dwelve.cfg:7
+#, fuzzy
+#| msgid ""
+#| "Battle over the legendary treasures of the ancient ruins of Terra-Dwelve. "
+#| "Large multi-fronted 2vs2 set in a vast underground complex."
 msgid ""
 "Battle over the legendary treasures of the ancient ruins of Terra-Dwelve. "
-"Large multi-fronted 2vs2 set in a vast underground complex."
+"Large multi-fronted 2 vs. 2 set in a vast underground complex."
 msgstr ""
 "Combate pelos tesouros lendários das ruínas ancestrais das Terras Escavadas. "
 "Um 2 x 2 largo com várias frentes num vasto complexo subterrâneo."
@@ -2209,8 +2235,13 @@ msgstr "4j — Castelos Sitiados"
 #
 #. [multiplayer]: id=multiplayer_Siege_Castles
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:9
+#, fuzzy
+#| msgid ""
+#| "36X36 4 player map where 4 mighty castles face off at the convergence of "
+#| "two rivers. Works well as 2 vs. 2 or FFA. There are approximately 45 "
+#| "villages."
 msgid ""
-"36X36 4 player map where 4 mighty castles face off at the convergence of two "
+"A 4 player map where 4 mighty castles face off at the convergence of two "
 "rivers. Works well as 2 vs. 2 or FFA. There are approximately 45 villages."
 msgstr ""
 "Um mapa 36x36 para 4 jogadores onde 4 castelos poderosos se defrontam na "
@@ -2237,9 +2268,13 @@ msgstr "4j — Caos de Xanthe"
 #
 #. [multiplayer]: id=multiplayer_Xanthe_Chaos
 #: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:9
+#, fuzzy
+#| msgid ""
+#| "A 24X28 2 vs. 2 map with auxiliary keeps, and a large messy battle in the "
+#| "center common."
 msgid ""
-"A 24X28 2 vs. 2 map with auxiliary keeps, and a large messy battle in the "
-"center common."
+"A 2 vs. 2 map with auxiliary keeps, and a large messy battle in the center "
+"common."
 msgstr ""
 "Um mapa 24X28 de 2 x 2 com torres auxiliares, e um campo de batalha largo e "
 "confuso ao centro."
@@ -2252,8 +2287,15 @@ msgstr "5j — Leilão"
 #
 #. [multiplayer]: id=multiplayer_Auction-X
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:7
+#, fuzzy
+#| msgid ""
+#| "4 players surround a central keep, play vs the AI survival style, or as a "
+#| "FFA or 4 vs. 1. The center player will need more gold in a 4 vs. 1 or "
+#| "FFA, and the best way to determine how much is an auction, LOWEST bid "
+#| "wins. It is a very small map so 75 gold is recommended for the other "
+#| "players."
 msgid ""
-"4 players surround a central keep, play vs the AI survival style, or as a "
+"4 players surround a central keep, play vs. the AI survival style, or as a "
 "FFA or 4 vs. 1. The center player will need more gold in a 4 vs. 1 or FFA, "
 "and the best way to determine how much is an auction, LOWEST bid wins. It is "
 "a very small map so 75 gold is recommended for the other players."
@@ -2287,8 +2329,8 @@ msgid "5p — The Wilderlands"
 msgstr "5j — As Terras Selvagens"
 
 #
-#. [multiplayer]: id=multiplayer_Crusaders_Field
 #. [multiplayer]: id=multiplayer_The_Wilderlands
+#. [multiplayer]: id=multiplayer_Crusaders_Field
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:38
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:7
 msgid " Recommended setting of 1 gold per village."
@@ -2447,11 +2489,17 @@ msgstr "6j — A Armadilha de Manzivan"
 #
 #. [multiplayer]: id=multiplayer_The_Manzivan_Traps
 #: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:10
+#, fuzzy
+#| msgid ""
+#| "A 40X20 3 vs. 3 map. The Manzivan Traps are widely known as a difficult "
+#| "and confusing area of terrain where it is easy to end up out of position "
+#| "or over extended. Teams set for players 145 vs. 236 (east vs west). "
+#| "Designed for 100 starting gold, has 33 villages."
 msgid ""
-"A 40X20 3 vs. 3 map. The Manzivan Traps are widely known as a difficult and "
+"A 3 vs. 3 map. The Manzivan Traps are widely known as a difficult and "
 "confusing area of terrain where it is easy to end up out of position or over "
-"extended. Teams set for players 145 vs. 236 (east vs west). Designed for 100 "
-"starting gold, has 33 villages."
+"extended. Teams set for players 145 vs. 236 (east vs. west). Designed for "
+"100 starting gold, has 33 villages."
 msgstr ""
 "Um mapa 40X20 de 3 x 3. As armadilhas de Marzivan são bem conhecidas como "
 "uma área confusa e difícil de terreno onde é fácil ficar fora de posição ou "
@@ -2466,8 +2514,12 @@ msgstr "6j — O Vulcão"
 #
 #. [multiplayer]: id=multiplayer_Volcano
 #: data/multiplayer/scenarios/6p_Volcano.cfg:9
+#, fuzzy
+#| msgid ""
+#| "A 3vs3 battle to control the ashes of a kingdom long ago collapsed from a "
+#| "volcanic eruption. It has 36 villages."
 msgid ""
-"A 3vs3 battle to control the ashes of a kingdom long ago collapsed from a "
+"A 3 vs. 3 battle to control the ashes of a kingdom long ago collapsed from a "
 "volcanic eruption. It has 36 villages."
 msgstr ""
 "Uma batalha 3vs3 para controlar as cinzas de um reino há muito tempo "
@@ -2481,11 +2533,17 @@ msgstr "6j — Pôr do Sol em Waterloo"
 #
 #. [multiplayer]: id=multiplayer_Waterloo_Sunset
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:9
+#, fuzzy
+#| msgid ""
+#| "A 40X30 3 vs. 3 map. Flexible coordination of your alliance is required "
+#| "to avoid being outnumbered. Teams set for players 145 vs. 236 (north vs. "
+#| "south), but having players 146 or 136 as a team is also interesting. "
+#| "Designed for 150 starting gold, has 44 villages."
 msgid ""
-"A 40X30 3 vs. 3 map. Flexible coordination of your alliance is required to "
-"avoid being outnumbered. Teams set for players 145 vs. 236 (north vs. "
-"south), but having players 146 or 136 as a team is also interesting. "
-"Designed for 150 starting gold, has 44 villages."
+"A 3 vs. 3 map. Flexible coordination of your alliance is required to avoid "
+"being outnumbered. Teams set for players 145 vs. 236 (north vs. south), but "
+"having players 146 or 136 as a team is also interesting. Designed for 150 "
+"starting gold, has 44 villages."
 msgstr ""
 "Um mapa de 40X30 de 3 x 3. Uma coordenação flexível da tua aliança é "
 "requerida para evitar a ser flanqueado. Equipas definidas dos jogadores 145 "

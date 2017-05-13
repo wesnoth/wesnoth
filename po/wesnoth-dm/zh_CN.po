@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-03-23 08:40+0100\n"
+"POT-Creation-Date: 2017-05-13 22:46 UTC\n"
 "PO-Revision-Date: 2017-04-30 16:34+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -320,19 +320,19 @@ msgstr "此谷归我"
 msgid "Grogor-Tuk"
 msgstr "格罗高-图克"
 
-#. [side]: type=Orcish Slayer, id=Hagha-Tan
+#. [side]: type=Goblin Pillager, id=Grogor-Tuk
+#. [side]: type=Orcish Warrior, id=Tan-Garthak
+#. [side]: type=Orcish Warlord, id=Tish Golub
 #. [side]: type=Orcish Warlord, id=Knafa-ord
 #. [side]: type=Orcish Warlord, id=Tan-drul
 #. [side]: type=Orcish Warlord, id=Krardul
-#. [side]: type=Goblin Pillager, id=Grogor-Tuk
-#. [side]: type=Orcish Warrior, id=Urthaka-Tan
-#. [side]: type=Orcish Warlord, id=Upgar
-#. [side]: type=Orcish Warlord, id=Tish Golub
 #. [side]: type=Orcish Sovereign, id=Zorlan
 #. [side]: type=Orcish Warrior, id=T'bhan
 #. [side]: type=Orcish Warrior, id=Qgthun
 #. [side]: type=Great Troll, type=Troll Hero, id=Trgrau
-#. [side]: type=Orcish Warrior, id=Tan-Garthak
+#. [side]: type=Orcish Warlord, id=Upgar
+#. [side]: type=Orcish Warrior, id=Urthaka-Tan
+#. [side]: type=Orcish Slayer, id=Hagha-Tan
 #: data/campaigns/Delfadors_Memoirs/scenarios/02_This_Valley_Belongs_to_Me.cfg:46
 #: data/campaigns/Delfadors_Memoirs/scenarios/03_The_Road_to_Weldyn.cfg:42
 #: data/campaigns/Delfadors_Memoirs/scenarios/04_Leollyn.cfg:76
@@ -607,9 +607,9 @@ msgstr ""
 "也许让我们的一些同伴跟你一起去维尔帝比较好。这些地方对孤独的旅行者来说不安"
 "全，而且我们也许能发现是什么把兽人招来这么南的地方的。"
 
+#. [unit]: type=Arch Mage, id=Leollyn
 #. [side]: type=Arch Mage, id=Leollyn
 #. [scenario]: id=04_Leollyn
-#. [unit]: type=Arch Mage, id=Leollyn
 #: data/campaigns/Delfadors_Memoirs/scenarios/04_Leollyn.cfg:3
 #: data/campaigns/Delfadors_Memoirs/scenarios/04_Leollyn.cfg:83
 #: data/campaigns/Delfadors_Memoirs/scenarios/05_Council_in_Weldyn.cfg:49
@@ -621,17 +621,17 @@ msgstr "利欧林"
 msgid "Hagha-Tan"
 msgstr "哈格哈-坦"
 
-#. [modify_side]
 #. [side]: type=Journeyman Mage
-#. [side]: type=Arch Mage, id=Leollyn
-#. [side]: type=General, id=Pilafman
-#. [side]: type=Lieutenant, id=Niktor
 #. [side]: type=King of Wesnoth, id=Garard
-#. [side]: type=Mage Commander
-#. [side]
+#. [modify_side]
 #. [side]: type=King of Wesnoth, id=Garard II
+#. [side]: type=Mage Commander
 #. [side]: type=General, id=Eldred
 #. [side]: type=General, id=Lowel
+#. [side]: type=Lieutenant, id=Niktor
+#. [side]
+#. [side]: type=General, id=Pilafman
+#. [side]: type=Arch Mage, id=Leollyn
 #: data/campaigns/Delfadors_Memoirs/scenarios/04_Leollyn.cfg:97
 #: data/campaigns/Delfadors_Memoirs/scenarios/05_Council_in_Weldyn.cfg:20
 #: data/campaigns/Delfadors_Memoirs/scenarios/05_Council_in_Weldyn.cfg:31
@@ -1092,17 +1092,17 @@ msgstr "沼泽之夜"
 #. [side]: type=Death Knight, id=Rudimil
 #. [side]: type=Necromancer, id=Roth-Malal
 #. [side]: type=Necromancer, id=Barth-Malal
-#. [side]: type=Death Knight, id=Arakar
-#. [side]: type=Death Knight, id=Prepolur
-#. [side]: type=Dark Adept, id=Unuvim
 #. [side]: type=Necromancer, id=Gruv-Malal
 #. [side]: type=Lich, id=Sagus
 #. [side]: type=Necromancer, id=Iliah-Malal
 #. [side]: type=Death Knight, id=Dirator
-#. [side]
+#. [side]: type=Death Knight, id=Arakar
+#. [side]: type=Death Knight, id=Prepolur
+#. [side]: type=Dark Adept, id=Unuvim
 #. [side]: type=Lich, id=Iliah-Malal
 #. [side]: type=Necromancer, id=Maldun
 #. [side]: type=Death Knight, id=Alderoth
+#. [side]
 #: data/campaigns/Delfadors_Memoirs/scenarios/07_Night_in_the_Swamp.cfg:45
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:35
 #: data/campaigns/Delfadors_Memoirs/scenarios/10_The_Gate_Between_Worlds.cfg:35
@@ -1779,8 +1779,8 @@ msgstr ""
 msgid "The Gate Between Worlds"
 msgstr "两界之门"
 
-#. [unit]: id=Iliah-Malal, type=Lich
 #. [side]: type=Necromancer, id=Iliah-Malal
+#. [unit]: id=Iliah-Malal, type=Lich
 #. [side]: type=Lich, id=Iliah-Malal
 #: data/campaigns/Delfadors_Memoirs/scenarios/10_The_Gate_Between_Worlds.cfg:29
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:154
@@ -1874,9 +1874,9 @@ msgstr "不毛之地"
 msgid "Tish Golub"
 msgstr "蒂什·戈卢布"
 
+#. [side]: type=Elvish Druid
 #. [side]: id=Delfador
 #. [side]: type=Elvish Captain, id=Clartakis
-#. [side]: type=Elvish Druid
 #: data/campaigns/Delfadors_Memoirs/scenarios/11_Wasteland.cfg:52
 #: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:42
 #: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:178
@@ -3411,8 +3411,8 @@ msgstr ""
 "我想我们年轻又缺乏经验的朋友高估了敌人的力量。我觉得他们根本不是韦诺军队的对"
 "手。"
 
-#. [side]: type=Lich, id=Sagus
 #. [part]
+#. [side]: type=Lich, id=Sagus
 #: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:59
 #: data/campaigns/Delfadors_Memoirs/scenarios/22_Face_of_the_Enemy.cfg:44
 msgid "Sagus"
@@ -4363,8 +4363,8 @@ msgstr ""
 "也许吧。现在我再考虑这事，我想我最好比我来时更快地回到王宫，尽管我得跑死三匹"
 "马。"
 
-#. [side]: type=Journeyman Mage
 #. [modify_side]
+#. [side]: type=Journeyman Mage
 #: data/campaigns/Delfadors_Memoirs/scenarios/20_Prince_of_Wesnoth.cfg:240
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_Clash_at_the_Manor.cfg:51
 #: data/campaigns/Delfadors_Memoirs/scenarios/22_Face_of_the_Enemy.cfg:34

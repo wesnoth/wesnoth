@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-multiplayer\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-03-23 08:11+0100\n"
+"POT-Creation-Date: 2017-05-13 22:46 UTC\n"
 "PO-Revision-Date: 2011-12-26 13:33+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -1773,19 +1773,19 @@ msgstr ""
 msgid "3p — Alirok Marsh"
 msgstr "3i: Aliročka močvara"
 
-#. [multiplayer]: id=multiplayer_4p_Underworld
-#. [multiplayer]: id=multiplayer_3p_Morituri
-#. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
-#. [multiplayer]: id=multiplayer_4p_Morituri
-#. [multiplayer]: id=multiplayer_Blue_Water_Province
 #. [multiplayer]: id=multiplayer_Alirok_Marsh
-#. [multiplayer]: id=multiplayer_Loris_River
+#. [multiplayer]: id=multiplayer_3p_Morituri
+#. [multiplayer]: id=multiplayer_Blue_Water_Province
+#. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
+#. [multiplayer]: id=multiplayer_Clash
 #. [multiplayer]: id=multiplayer_4p_Hamlets
+#. [multiplayer]: id=multiplayer_4p_Morituri
+#. [multiplayer]: id=multiplayer_4p_Underworld
 #. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
-#. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
 #. [multiplayer]: id=multiplayer_8p_Morituri
 #. [multiplayer]: id=multiplayer_Island_of_the_Horatii
-#. [multiplayer]: id=multiplayer_Clash
+#. [multiplayer]: id=multiplayer_Loris_River
+#. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:6
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
 #: data/multiplayer/scenarios/3p_Morituri.cfg:6
@@ -1815,9 +1815,13 @@ msgstr "3i: Ostrvo Horatij"
 
 #. [multiplayer]: id=multiplayer_Island_of_the_Horatii
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
+#, fuzzy
+#| msgid ""
+#| "Controlling the central island is often the key to victory in this "
+#| "21x21hex 3 player free for all map."
 msgid ""
-"Controlling the central island is often the key to victory in this 21x21hex "
-"3 player free for all map."
+"Controlling the central island is often the key to victory in this 3 player "
+"free for all map."
 msgstr ""
 "Vladati središnjim ostrvom često je ključ pobjede na ovoj 21×21 mapi za tri "
 "igrača."
@@ -1957,10 +1961,16 @@ msgstr "4i: Izarov prelaz"
 
 #. [multiplayer]: id=multiplayer_Isars_Cross
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:9
+#, fuzzy
+#| msgid ""
+#| "A very small 2 vs. 2 map. Close quarters fighting means the successful "
+#| "rotation of units and planning of moves is important. Teams set for "
+#| "players 1&4 vs. 2&3 (northeast vs. southwest). Designed for 75 starting "
+#| "gold, 20 villages."
 msgid ""
 "A very small 2 vs. 2 map. Close quarters fighting means the successful "
 "rotation of units and planning of moves is important. Teams set for players "
-"1&4 vs. 2&3 (northeast vs. southwest). Designed for 75 starting gold, 20 "
+"1+4 vs. 2+3 (northeast vs. southwest). Designed for 75 starting gold, 20 "
 "villages."
 msgstr ""
 "Vrlo mala 2 na 2 mapa. Borba u tijesnim područjima zahtijeva djelotvornu "
@@ -2009,9 +2019,13 @@ msgstr " Preporučene postavke su 2 zlatnika po selu i 150 na početku."
 
 #. [multiplayer]: id=multiplayer_King_of_the_Hill
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:9
+#, fuzzy
+#| msgid ""
+#| "Controlling the area around the central keep is very lucrative in this "
+#| "36X36 4 player FFA map. Works fine 2 vs. 2 as well. There are 36 villages."
 msgid ""
-"Controlling the area around the central keep is very lucrative in this 36X36 "
-"4 player FFA map. Works fine 2 vs. 2 as well. There are 36 villages."
+"Controlling the area around the central keep is very lucrative in this 4 "
+"player FFA map. Works fine 2 vs. 2 as well. There are 36 villages."
 msgstr ""
 "Držanje područja oko središnjeg zamka vrlo je unosno na ovoj 36×36 mapi za "
 "četiri igrača, svi protiv svih. Dobra je i za 2 na 2. Postoji 36 sela."
@@ -2045,9 +2059,13 @@ msgstr "4i: Rijeka Loris"
 
 #. [multiplayer]: id=multiplayer_Loris_River
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:9
+#, fuzzy
+#| msgid ""
+#| "A 25x25 2 vs. 2 map centered around a river with keeps in opposite "
+#| "corners. Designed for players 1&4 vs. 2&3. There are 28 villages."
 msgid ""
-"A 25x25 2 vs. 2 map centered around a river with keeps in opposite corners. "
-"Designed for players 1&4 vs. 2&3. There are 28 villages."
+"2 vs. 2 map centered around a river with keeps in opposite corners. Designed "
+"for players 1+4 vs. 2+3. There are 28 villages."
 msgstr ""
 "25×25, 2 na 2 mapa, usredsrijeđena oko rijeke sa zamkovima u suprotnim "
 "uglovima. Napravljena za igrače 1 i 4 pr. 2 i 3. Postoji 28 sela."
@@ -2074,9 +2092,13 @@ msgstr " Preporučene postavke su 2 zlatnika po selu, 28 sela."
 
 #. [multiplayer]: id=multiplayer_Paths_of_Daggers
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:9
+#, fuzzy
+#| msgid ""
+#| "A 35X27 2 vs. 2 map with 5 separate paths of engagement. Balanced to be "
+#| "played east vs. west (1&4 vs. 2&3), but works well with any teams or FFA."
 msgid ""
-"A 35X27 2 vs. 2 map with 5 separate paths of engagement. Balanced to be "
-"played east vs. west (1&4 vs. 2&3), but works well with any teams or FFA."
+"A 2 vs. 2 map with 5 separate paths of engagement. Balanced to be played "
+"east vs. west (1+4 vs. 2+3), but works well with any teams or FFA."
 msgstr ""
 "35×27, 2 na 2 mapa, sa 5 razdvojenih puteva za napad. Odmjerena da se igra "
 "istok pr. zapada (1 i 4 pr. 2 i 3), ali može i sa drugim rasporedima, ili "
@@ -2089,9 +2111,13 @@ msgstr "4i: Ruševine Tera-dvelve"
 
 #. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
 #: data/multiplayer/scenarios/4p_Ruins_of_Terra-Dwelve.cfg:7
+#, fuzzy
+#| msgid ""
+#| "Battle over the legendary treasures of the ancient ruins of Terra-Dwelve. "
+#| "Large multi-fronted 2vs2 set in a vast underground complex."
 msgid ""
 "Battle over the legendary treasures of the ancient ruins of Terra-Dwelve. "
-"Large multi-fronted 2vs2 set in a vast underground complex."
+"Large multi-fronted 2 vs. 2 set in a vast underground complex."
 msgstr ""
 "Bitka za legendarna blaga drevnih ruševina Tera-dvelve. Velika "
 "višefrontovska 2 na 2 postavka u ogromnom podzemnom kompleksu."
@@ -2103,8 +2129,13 @@ msgstr "4i: Opsadni zamkovi"
 
 #. [multiplayer]: id=multiplayer_Siege_Castles
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:9
+#, fuzzy
+#| msgid ""
+#| "36X36 4 player map where 4 mighty castles face off at the convergence of "
+#| "two rivers. Works well as 2 vs. 2 or FFA. There are approximately 45 "
+#| "villages."
 msgid ""
-"36X36 4 player map where 4 mighty castles face off at the convergence of two "
+"A 4 player map where 4 mighty castles face off at the convergence of two "
 "rivers. Works well as 2 vs. 2 or FFA. There are approximately 45 villages."
 msgstr ""
 "36×36 mapa za 4 igrača, gdje se 4 moćna zamka sučeljavaju na ušću dvaju "
@@ -2127,9 +2158,13 @@ msgstr "4i: Ksantijski metež"
 
 #. [multiplayer]: id=multiplayer_Xanthe_Chaos
 #: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:9
+#, fuzzy
+#| msgid ""
+#| "A 24X28 2 vs. 2 map with auxiliary keeps, and a large messy battle in the "
+#| "center common."
 msgid ""
-"A 24X28 2 vs. 2 map with auxiliary keeps, and a large messy battle in the "
-"center common."
+"A 2 vs. 2 map with auxiliary keeps, and a large messy battle in the center "
+"common."
 msgstr ""
 "24×28, 2 na 2 mapa, sa dopunskim kulama, i velikom zbrkanom bitkom u "
 "središnjem području."
@@ -2141,8 +2176,15 @@ msgstr "5i: Aukcija-iks"
 
 #. [multiplayer]: id=multiplayer_Auction-X
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:7
+#, fuzzy
+#| msgid ""
+#| "4 players surround a central keep, play vs the AI survival style, or as a "
+#| "FFA or 4 vs. 1. The center player will need more gold in a 4 vs. 1 or "
+#| "FFA, and the best way to determine how much is an auction, LOWEST bid "
+#| "wins. It is a very small map so 75 gold is recommended for the other "
+#| "players."
 msgid ""
-"4 players surround a central keep, play vs the AI survival style, or as a "
+"4 players surround a central keep, play vs. the AI survival style, or as a "
 "FFA or 4 vs. 1. The center player will need more gold in a 4 vs. 1 or FFA, "
 "and the best way to determine how much is an auction, LOWEST bid wins. It is "
 "a very small map so 75 gold is recommended for the other players."
@@ -2173,8 +2215,8 @@ msgstr "Na ovom miješanom pejzažu, pet vojski se bori za premoć."
 msgid "5p — The Wilderlands"
 msgstr "5i: Divljozemlje"
 
-#. [multiplayer]: id=multiplayer_Crusaders_Field
 #. [multiplayer]: id=multiplayer_The_Wilderlands
+#. [multiplayer]: id=multiplayer_Crusaders_Field
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:38
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:7
 msgid " Recommended setting of 1 gold per village."
@@ -2325,11 +2367,17 @@ msgstr "6i: Zamke Manzivana"
 
 #. [multiplayer]: id=multiplayer_The_Manzivan_Traps
 #: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:10
+#, fuzzy
+#| msgid ""
+#| "A 40X20 3 vs. 3 map. The Manzivan Traps are widely known as a difficult "
+#| "and confusing area of terrain where it is easy to end up out of position "
+#| "or over extended. Teams set for players 145 vs. 236 (east vs west). "
+#| "Designed for 100 starting gold, has 33 villages."
 msgid ""
-"A 40X20 3 vs. 3 map. The Manzivan Traps are widely known as a difficult and "
+"A 3 vs. 3 map. The Manzivan Traps are widely known as a difficult and "
 "confusing area of terrain where it is easy to end up out of position or over "
-"extended. Teams set for players 145 vs. 236 (east vs west). Designed for 100 "
-"starting gold, has 33 villages."
+"extended. Teams set for players 145 vs. 236 (east vs. west). Designed for "
+"100 starting gold, has 33 villages."
 msgstr ""
 "40×20, 3 na 3 mapa. Zamke Manzivana nadaleko su poznate kao zbunjujuća "
 "oblast teškog terena, u kojoj je lako završiti van položaja ili previše "
@@ -2343,8 +2391,12 @@ msgstr "6i: Vulkan"
 
 #. [multiplayer]: id=multiplayer_Volcano
 #: data/multiplayer/scenarios/6p_Volcano.cfg:9
+#, fuzzy
+#| msgid ""
+#| "A 3vs3 battle to control the ashes of a kingdom long ago collapsed from a "
+#| "volcanic eruption. It has 36 villages."
 msgid ""
-"A 3vs3 battle to control the ashes of a kingdom long ago collapsed from a "
+"A 3 vs. 3 battle to control the ashes of a kingdom long ago collapsed from a "
 "volcanic eruption. It has 36 villages."
 msgstr ""
 "3 na 3 bitka za prevlast nad pepelom kraljevstva davno zatrpanog vulkanskom "
@@ -2357,11 +2409,17 @@ msgstr "6i: Sumrak Vaterloa"
 
 #. [multiplayer]: id=multiplayer_Waterloo_Sunset
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:9
+#, fuzzy
+#| msgid ""
+#| "A 40X30 3 vs. 3 map. Flexible coordination of your alliance is required "
+#| "to avoid being outnumbered. Teams set for players 145 vs. 236 (north vs. "
+#| "south), but having players 146 or 136 as a team is also interesting. "
+#| "Designed for 150 starting gold, has 44 villages."
 msgid ""
-"A 40X30 3 vs. 3 map. Flexible coordination of your alliance is required to "
-"avoid being outnumbered. Teams set for players 145 vs. 236 (north vs. "
-"south), but having players 146 or 136 as a team is also interesting. "
-"Designed for 150 starting gold, has 44 villages."
+"A 3 vs. 3 map. Flexible coordination of your alliance is required to avoid "
+"being outnumbered. Teams set for players 145 vs. 236 (north vs. south), but "
+"having players 146 or 136 as a team is also interesting. Designed for 150 "
+"starting gold, has 44 villages."
 msgstr ""
 "40×40, 3 na 3 mapa. Prilagodljiva koordinacija saveznika neophodna je da se "
 "izbjegne popuštanje pod brojnošću protivnika. Podešeno za timove 145 pr. 236 "

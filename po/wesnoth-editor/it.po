@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-03-23 08:11+0100\n"
+"POT-Creation-Date: 2017-05-14 01:46+0300\n"
 "PO-Revision-Date: 2016-05-11 15:13+0000\n"
 "Last-Translator: Antonio \"Antro\" Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -237,17 +237,17 @@ msgid "units"
 msgstr "unità"
 
 #. [menu]: id=switch_time
-#: data/themes/editor.cfg:464
+#: data/themes/editor.cfg:454
 msgid "Time Schedule Menu"
 msgstr "Menù dello schema temporale"
 
 #. [menu]: id=menu-playlist
-#: data/themes/editor.cfg:475
+#: data/themes/editor.cfg:465
 msgid "Playlist"
 msgstr "Colonna sonora"
 
 #. [menu]: id=menu-editor-schedule
-#: data/themes/editor.cfg:481
+#: data/themes/editor.cfg:471
 msgid "Assign Time Schedule"
 msgstr "Assegna schema temporale"
 
@@ -275,15 +275,15 @@ msgstr "Costo:"
 msgid "Recruit: "
 msgstr "Reclutamento: "
 
-#: src/editor/controller/editor_controller.cpp:176
+#: src/editor/controller/editor_controller.cpp:178
 msgid "Fatal error"
 msgstr "Errore fatale"
 
-#: src/editor/controller/editor_controller.cpp:205
+#: src/editor/controller/editor_controller.cpp:207
 msgid "Do you really want to quit?"
 msgstr "Vuoi davvero uscire?"
 
-#: src/editor/controller/editor_controller.cpp:207
+#: src/editor/controller/editor_controller.cpp:209
 msgid ""
 "Do you really want to quit? Changes to this map since the last save will be "
 "lost."
@@ -291,7 +291,7 @@ msgstr ""
 "Vuoi davvero uscire? Le modifiche apportate alla mappa dopo l’ultimo "
 "salvataggio saranno perdute."
 
-#: src/editor/controller/editor_controller.cpp:209
+#: src/editor/controller/editor_controller.cpp:211
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -299,150 +299,145 @@ msgstr ""
 "Vuoi davvero uscire? Le seguenti mappe sono state modificate e tutte le "
 "modifiche apportate dopo l’ultimo salvataggio saranno perdute:"
 
-#: src/editor/controller/editor_controller.cpp:219
+#: src/editor/controller/editor_controller.cpp:221
 msgid "No editor time-of-day found."
 msgstr ""
 "Non è stato possibile trovare un periodo della giornata applicabile "
 "all’editor."
 
-#: src/editor/controller/editor_controller.cpp:1131
+#: src/editor/controller/editor_controller.cpp:1142
 msgid "Change Unit ID"
 msgstr "Cambia ID dell’unità"
 
-#: src/editor/controller/editor_controller.cpp:1132
+#: src/editor/controller/editor_controller.cpp:1143
 msgid "ID:"
 msgstr "ID:"
 
-#: src/editor/controller/editor_controller.cpp:1148
+#: src/editor/controller/editor_controller.cpp:1159
 msgid "Rename Unit"
 msgstr "Rinomina unità"
 
-#: src/editor/controller/editor_controller.cpp:1149
+#: src/editor/controller/editor_controller.cpp:1160
 msgid "Name:"
 msgstr "Nome:"
 
-#: src/editor/map/context_manager.cpp:125
-#: src/editor/map/context_manager.cpp:286
-msgid "(New Map)"
-msgstr "(Nuova mappa)"
-
-#: src/editor/map/context_manager.cpp:191
+#: src/editor/map/context_manager.cpp:215
 msgid "Load Map"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:288
-msgid "(New Scenario)"
-msgstr "(Nuovo scenario)"
+#: src/editor/map/context_manager.cpp:281 src/editor/map/map_context.cpp:767
+msgid "New Map"
+msgstr "Nuova mappa"
 
-#: src/editor/map/context_manager.cpp:315
+#: src/editor/map/context_manager.cpp:292 src/editor/map/map_context.cpp:767
+msgid "New Scenario"
+msgstr "Nuovo scenario"
+
+#: src/editor/map/context_manager.cpp:348
 msgid "No Recent Files"
 msgstr "Nessun file recente"
 
-#: src/editor/map/context_manager.cpp:352
-msgid "(Unnamed Area)"
+#: src/editor/map/context_manager.cpp:386
+#, fuzzy
+#| msgid "(Unnamed Area)"
+msgid "Unnamed Area"
 msgstr "(Area senza nome)"
 
-#: src/editor/map/context_manager.cpp:381
-msgid "(New Side)"
+#: src/editor/map/context_manager.cpp:417
+#, fuzzy
+#| msgid "(New Side)"
+msgid "New Side"
 msgstr "(Nuova fazione)"
 
-#: src/editor/map/context_manager.cpp:450
+#: src/editor/map/context_manager.cpp:473
 msgid "Apply Mask"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:459
+#: src/editor/map/context_manager.cpp:482
 msgid "Error loading mask"
 msgstr "Errore di caricamento della maschera"
 
-#: src/editor/map/context_manager.cpp:478
+#: src/editor/map/context_manager.cpp:502
 msgid "Identifier:"
 msgstr "Identificativo:"
 
-#: src/editor/map/context_manager.cpp:478
+#: src/editor/map/context_manager.cpp:502
 msgid "Rename Area"
 msgstr "Rinomina area"
 
-#: src/editor/map/context_manager.cpp:492
+#: src/editor/map/context_manager.cpp:516
 msgid "Choose Target Map"
 msgstr "Scegli la mappa di destinazione"
 
-#: src/editor/map/context_manager.cpp:501
-#: src/editor/map/context_manager.cpp:924
+#: src/editor/map/context_manager.cpp:525
+#: src/editor/map/context_manager.cpp:933
 msgid "Error loading map"
 msgstr "Errore di caricamento della mappa"
 
-#: src/editor/map/context_manager.cpp:616
+#: src/editor/map/context_manager.cpp:649
 #, fuzzy
 #| msgid "Save the Map As"
 msgid "Save Map As"
 msgstr "Salva mappa come"
 
-#: src/editor/map/context_manager.cpp:637
+#: src/editor/map/context_manager.cpp:670
 #, fuzzy
 #| msgid "Save the Scenario As"
 msgid "Save Scenario As"
 msgstr "Salva scenario come"
 
-#: src/editor/map/context_manager.cpp:671
+#: src/editor/map/context_manager.cpp:702
 msgid "No random map generators found."
 msgstr "Nessun generatore di mappe casuali trovato."
 
-#: src/editor/map/context_manager.cpp:684
-#: src/editor/map/context_manager.cpp:688
+#: src/editor/map/context_manager.cpp:716
+#: src/editor/map/context_manager.cpp:721
 msgid "Map creation failed."
 msgstr "Creazione della mappa non riuscita."
 
-#: src/editor/map/context_manager.cpp:702
+#: src/editor/map/context_manager.cpp:736
 msgid "Unsaved Changes"
 msgstr "Modifiche non salvate"
 
-#: src/editor/map/context_manager.cpp:703
+#: src/editor/map/context_manager.cpp:737
 msgid "Do you want to discard all changes made to the map since the last save?"
 msgstr ""
 "Vuoi rimuovere tutte le modifiche apportate alla mappa dopo l’ultimo "
 "salvataggio?"
 
-#: src/editor/map/context_manager.cpp:802
+#: src/editor/map/context_manager.cpp:793
 msgid "This scenario is already open."
 msgstr "Questo scenario è già aperto."
 
-#: src/editor/map/context_manager.cpp:824
+#: src/editor/map/context_manager.cpp:816
 #: src/editor/map/context_manager.cpp:879
 msgid "This map is already open."
 msgstr "Questa mappa è già aperta."
 
-#: src/editor/map/context_manager.cpp:845
+#: src/editor/map/context_manager.cpp:840
 msgid "Scenario saved."
 msgstr "Scenario salvato."
 
-#: src/editor/map/context_manager.cpp:859
+#: src/editor/map/context_manager.cpp:855
 msgid "Map saved."
 msgstr "Mappa salvata."
 
-#: src/editor/map/context_manager.cpp:902
+#: src/editor/map/context_manager.cpp:912
 msgid "Loaded embedded map data"
 msgstr "Caricati tutti i dati incorporati nella mappa"
 
-#: src/editor/map/context_manager.cpp:903
-#: src/editor/map/context_manager.cpp:917
+#: src/editor/map/context_manager.cpp:913
+#: src/editor/map/context_manager.cpp:926
 msgid "Map loaded from scenario"
 msgstr "Mappa caricata a partire dallo scenario"
 
-#: src/editor/map/context_manager.cpp:913
+#: src/editor/map/context_manager.cpp:923
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
 msgstr ""
 "Caricato il file di riferimento della mappa:\n"
 "$new"
-
-#: src/editor/map/context_manager.cpp:1002
-msgid "New Map"
-msgstr "Nuova mappa"
-
-#: src/editor/map/context_manager.cpp:1002
-msgid "New Scenario"
-msgstr "Nuovo scenario"
 
 #: src/editor/map/editor_map.cpp:149
 #: src/editor/palette/location_palette.cpp:111
@@ -473,60 +468,63 @@ msgstr ""
 "Il file della mappa assomiglia a uno scenario, ma il valore map_data non "
 "indica un file esistente"
 
-#: src/editor/map/map_context.cpp:543
+#: src/editor/map/map_context.cpp:556
 msgid "Could not save the scenario: $msg"
 msgstr "Impossibile salvare lo scenario: $msg"
 
-#: src/editor/map/map_context.cpp:570
+#: src/editor/map/map_context.cpp:583
 msgid "Could not save into scenario"
 msgstr "Impossibile salvare nello scenario"
 
-#: src/editor/map/map_context.cpp:578
+#: src/editor/map/map_context.cpp:591
 msgid "Could not save the map: $msg"
 msgstr "Impossibile salvare la mappa: $msg"
 
-#: src/editor/palette/editor_palettes.cpp:58
-#: src/editor/palette/editor_palettes.cpp:113
+#: src/editor/palette/editor_palettes.cpp:52
 msgid "(Unknown Group)"
 msgstr "(Gruppo sconosciuto)"
 
-#: src/editor/palette/editor_palettes.cpp:357
+#: src/editor/palette/editor_palettes.cpp:285
 msgid "(non-core)"
 msgstr "(dato non core)"
 
-#: src/editor/palette/editor_palettes.cpp:358
+#: src/editor/palette/editor_palettes.cpp:286
 msgid "Will not work in game without extra care."
 msgstr "Non funzionerà all’interno del gioco senza particolari attenzioni."
 
-#: src/editor/palette/location_palette.cpp:245
+#: src/editor/palette/location_palette.cpp:248
 msgid "Go To"
 msgstr ""
 
-#: src/editor/palette/location_palette.cpp:252
+#: src/editor/palette/location_palette.cpp:255
 msgid "Add"
 msgstr ""
 
-#: src/editor/palette/location_palette.cpp:254
+#: src/editor/palette/location_palette.cpp:257
 msgid "New Location Identifer"
 msgstr ""
 
-#: src/editor/palette/location_palette.cpp:258
+#: src/editor/palette/location_palette.cpp:261
 msgid "Delete"
 msgstr ""
 
-#: src/editor/palette/terrain_palettes.cpp:222
+#: src/editor/palette/terrain_palettes.cpp:231
 msgid "FG: "
 msgstr "PP: "
 
-#: src/editor/palette/terrain_palettes.cpp:223
+#: src/editor/palette/terrain_palettes.cpp:232
 msgid "BG: "
 msgstr "SF: "
 
-#: src/gui/dialogs/editor/custom_tod.cpp:121
+#: src/gui/dialogs/editor/custom_tod.cpp:136
+msgid "Clipboard support not found, contact your packager"
+msgstr ""
+
+#: src/gui/dialogs/editor/custom_tod.cpp:200
 msgid "Choose File"
 msgstr "Scegli un file"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:122
+#: src/gui/dialogs/editor/custom_tod.cpp:201
 msgid "Select"
 msgstr ""
 
@@ -537,6 +535,12 @@ msgstr "Nessuno"
 #: src/gui/dialogs/editor/set_starting_position.cpp:101
 msgid "Player $player_number"
 msgstr "Giocatore $player_number"
+
+#~ msgid "(New Map)"
+#~ msgstr "(Nuova mappa)"
+
+#~ msgid "(New Scenario)"
+#~ msgstr "(Nuovo scenario)"
 
 #~ msgid "Choose a File to Open"
 #~ msgstr "Scegli un file da aprire"

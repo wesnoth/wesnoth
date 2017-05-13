@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6+dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-03-23 08:11+0100\n"
+"POT-Creation-Date: 2017-05-14 01:46+0300\n"
 "PO-Revision-Date: 2009-05-12 18:51-0000\n"
 "Last-Translator: Gabríel A. Pétursson <gabrielp@simnet.is>\n"
 "Language-Team: none\n"
@@ -240,17 +240,17 @@ msgid "units"
 msgstr ""
 
 #. [menu]: id=switch_time
-#: data/themes/editor.cfg:464
+#: data/themes/editor.cfg:454
 msgid "Time Schedule Menu"
 msgstr ""
 
 #. [menu]: id=menu-playlist
-#: data/themes/editor.cfg:475
+#: data/themes/editor.cfg:465
 msgid "Playlist"
 msgstr ""
 
 #. [menu]: id=menu-editor-schedule
-#: data/themes/editor.cfg:481
+#: data/themes/editor.cfg:471
 msgid "Assign Time Schedule"
 msgstr ""
 
@@ -278,15 +278,15 @@ msgstr ""
 msgid "Recruit: "
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:176
+#: src/editor/controller/editor_controller.cpp:178
 msgid "Fatal error"
 msgstr "Alvarleg villa"
 
-#: src/editor/controller/editor_controller.cpp:205
+#: src/editor/controller/editor_controller.cpp:207
 msgid "Do you really want to quit?"
 msgstr "Ertu viss um að þú viljir hætta?"
 
-#: src/editor/controller/editor_controller.cpp:207
+#: src/editor/controller/editor_controller.cpp:209
 #, fuzzy
 #| msgid ""
 #| "Do you really want to quit? Changes in the map since the last save will "
@@ -298,7 +298,7 @@ msgstr ""
 "Ertu viss um að þú viljir hætta? Breytingar á kortinu síðan síðustu vistun "
 "munu glatast."
 
-#: src/editor/controller/editor_controller.cpp:209
+#: src/editor/controller/editor_controller.cpp:211
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -306,108 +306,109 @@ msgstr ""
 "Ertu viss um að þú viljir hætta? Eftirfarandi kort voru breytt og allar "
 "breytingar síðan síðustu vistum munu glatast."
 
-#: src/editor/controller/editor_controller.cpp:219
+#: src/editor/controller/editor_controller.cpp:221
 msgid "No editor time-of-day found."
 msgstr "Enginn tími dags fundinn."
 
-#: src/editor/controller/editor_controller.cpp:1131
+#: src/editor/controller/editor_controller.cpp:1142
 msgid "Change Unit ID"
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:1132
+#: src/editor/controller/editor_controller.cpp:1143
 msgid "ID:"
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:1148
+#: src/editor/controller/editor_controller.cpp:1159
 msgid "Rename Unit"
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:1149
+#: src/editor/controller/editor_controller.cpp:1160
 msgid "Name:"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:125
-#: src/editor/map/context_manager.cpp:286
-msgid "(New Map)"
-msgstr "(Nýtt kort)"
-
-#: src/editor/map/context_manager.cpp:191
+#: src/editor/map/context_manager.cpp:215
 msgid "Load Map"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:288
+#: src/editor/map/context_manager.cpp:281 src/editor/map/map_context.cpp:767
 #, fuzzy
 #| msgid "(New Map)"
-msgid "(New Scenario)"
+msgid "New Map"
 msgstr "(Nýtt kort)"
 
-#: src/editor/map/context_manager.cpp:315
+#: src/editor/map/context_manager.cpp:292 src/editor/map/map_context.cpp:767
+#, fuzzy
+#| msgid "(New Map)"
+msgid "New Scenario"
+msgstr "(Nýtt kort)"
+
+#: src/editor/map/context_manager.cpp:348
 msgid "No Recent Files"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:352
+#: src/editor/map/context_manager.cpp:386
 #, fuzzy
 #| msgid "(New Map)"
-msgid "(Unnamed Area)"
+msgid "Unnamed Area"
 msgstr "(Nýtt kort)"
 
-#: src/editor/map/context_manager.cpp:381
+#: src/editor/map/context_manager.cpp:417
 #, fuzzy
 #| msgid "(New Map)"
-msgid "(New Side)"
+msgid "New Side"
 msgstr "(Nýtt kort)"
 
-#: src/editor/map/context_manager.cpp:450
+#: src/editor/map/context_manager.cpp:473
 msgid "Apply Mask"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:459
+#: src/editor/map/context_manager.cpp:482
 msgid "Error loading mask"
 msgstr "Villa við hlöðun skugga"
 
-#: src/editor/map/context_manager.cpp:478
+#: src/editor/map/context_manager.cpp:502
 msgid "Identifier:"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:478
+#: src/editor/map/context_manager.cpp:502
 msgid "Rename Area"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:492
+#: src/editor/map/context_manager.cpp:516
 msgid "Choose Target Map"
 msgstr "Veldu miðkort"
 
-#: src/editor/map/context_manager.cpp:501
-#: src/editor/map/context_manager.cpp:924
+#: src/editor/map/context_manager.cpp:525
+#: src/editor/map/context_manager.cpp:933
 msgid "Error loading map"
 msgstr "Villa við hlöðun korts"
 
-#: src/editor/map/context_manager.cpp:616
+#: src/editor/map/context_manager.cpp:649
 #, fuzzy
 #| msgid "Save the Map As"
 msgid "Save Map As"
 msgstr "Vista kort sem"
 
-#: src/editor/map/context_manager.cpp:637
+#: src/editor/map/context_manager.cpp:670
 #, fuzzy
 #| msgid "Save the Map As"
 msgid "Save Scenario As"
 msgstr "Vista kort sem"
 
-#: src/editor/map/context_manager.cpp:671
+#: src/editor/map/context_manager.cpp:702
 msgid "No random map generators found."
 msgstr "Engar sjálfvirkar kortagerðarforrit fundust."
 
-#: src/editor/map/context_manager.cpp:684
-#: src/editor/map/context_manager.cpp:688
+#: src/editor/map/context_manager.cpp:716
+#: src/editor/map/context_manager.cpp:721
 msgid "Map creation failed."
 msgstr "Gerð korts mistókst."
 
-#: src/editor/map/context_manager.cpp:702
+#: src/editor/map/context_manager.cpp:736
 msgid "Unsaved Changes"
 msgstr "Óvistaðar breytingar"
 
-#: src/editor/map/context_manager.cpp:703
+#: src/editor/map/context_manager.cpp:737
 #, fuzzy
 #| msgid ""
 #| "Do you want to discard all changes you made to the map since the last "
@@ -416,55 +417,43 @@ msgid "Do you want to discard all changes made to the map since the last save?"
 msgstr ""
 "Viltu eyða öllum breytingum sem hafa verið gerðar síðan síðustu vistun?"
 
-#: src/editor/map/context_manager.cpp:802
+#: src/editor/map/context_manager.cpp:793
 #, fuzzy
 #| msgid "This map is already open."
 msgid "This scenario is already open."
 msgstr "Þetta kort er nú þegar opið."
 
-#: src/editor/map/context_manager.cpp:824
+#: src/editor/map/context_manager.cpp:816
 #: src/editor/map/context_manager.cpp:879
 msgid "This map is already open."
 msgstr "Þetta kort er nú þegar opið."
 
-#: src/editor/map/context_manager.cpp:845
+#: src/editor/map/context_manager.cpp:840
 #, fuzzy
 #| msgid "Map saved."
 msgid "Scenario saved."
 msgstr "Kort vistað."
 
-#: src/editor/map/context_manager.cpp:859
+#: src/editor/map/context_manager.cpp:855
 msgid "Map saved."
 msgstr "Kort vistað."
 
-#: src/editor/map/context_manager.cpp:902
+#: src/editor/map/context_manager.cpp:912
 msgid "Loaded embedded map data"
 msgstr "Hlóð fylgigögn korts"
 
-#: src/editor/map/context_manager.cpp:903
-#: src/editor/map/context_manager.cpp:917
+#: src/editor/map/context_manager.cpp:913
+#: src/editor/map/context_manager.cpp:926
 msgid "Map loaded from scenario"
 msgstr "Kort hlaðið úr atburðarás"
 
-#: src/editor/map/context_manager.cpp:913
+#: src/editor/map/context_manager.cpp:923
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
 msgstr ""
 "Hlóð ávísað kort:\n"
 "$new"
-
-#: src/editor/map/context_manager.cpp:1002
-#, fuzzy
-#| msgid "(New Map)"
-msgid "New Map"
-msgstr "(Nýtt kort)"
-
-#: src/editor/map/context_manager.cpp:1002
-#, fuzzy
-#| msgid "(New Map)"
-msgid "New Scenario"
-msgstr "(Nýtt kort)"
 
 #: src/editor/map/editor_map.cpp:149
 #: src/editor/palette/location_palette.cpp:111
@@ -493,64 +482,67 @@ msgstr ""
 "Þetta kort lýtur út fyrir að vera atburðarás, en breytan map_data vísar ekki "
 "yfir í gilda skrá"
 
-#: src/editor/map/map_context.cpp:543
+#: src/editor/map/map_context.cpp:556
 #, fuzzy
 #| msgid "Could not save the map: $msg"
 msgid "Could not save the scenario: $msg"
 msgstr "Gat ekki vistað kortið: $msg"
 
-#: src/editor/map/map_context.cpp:570
+#: src/editor/map/map_context.cpp:583
 msgid "Could not save into scenario"
 msgstr "Gat ekki vistað yfir í atburðarás"
 
-#: src/editor/map/map_context.cpp:578
+#: src/editor/map/map_context.cpp:591
 msgid "Could not save the map: $msg"
 msgstr "Gat ekki vistað kortið: $msg"
 
-#: src/editor/palette/editor_palettes.cpp:58
-#: src/editor/palette/editor_palettes.cpp:113
+#: src/editor/palette/editor_palettes.cpp:52
 msgid "(Unknown Group)"
 msgstr ""
 
-#: src/editor/palette/editor_palettes.cpp:357
+#: src/editor/palette/editor_palettes.cpp:285
 msgid "(non-core)"
 msgstr ""
 
-#: src/editor/palette/editor_palettes.cpp:358
+#: src/editor/palette/editor_palettes.cpp:286
 msgid "Will not work in game without extra care."
 msgstr ""
 
-#: src/editor/palette/location_palette.cpp:245
+#: src/editor/palette/location_palette.cpp:248
 msgid "Go To"
 msgstr ""
 
-#: src/editor/palette/location_palette.cpp:252
+#: src/editor/palette/location_palette.cpp:255
 msgid "Add"
 msgstr ""
 
-#: src/editor/palette/location_palette.cpp:254
+#: src/editor/palette/location_palette.cpp:257
 msgid "New Location Identifer"
 msgstr ""
 
-#: src/editor/palette/location_palette.cpp:258
+#: src/editor/palette/location_palette.cpp:261
 msgid "Delete"
 msgstr ""
 
-#: src/editor/palette/terrain_palettes.cpp:222
+#: src/editor/palette/terrain_palettes.cpp:231
 msgid "FG: "
 msgstr ""
 
-#: src/editor/palette/terrain_palettes.cpp:223
+#: src/editor/palette/terrain_palettes.cpp:232
 msgid "BG: "
 msgstr ""
 
-#: src/gui/dialogs/editor/custom_tod.cpp:121
+#: src/gui/dialogs/editor/custom_tod.cpp:136
+msgid "Clipboard support not found, contact your packager"
+msgstr ""
+
+#: src/gui/dialogs/editor/custom_tod.cpp:200
 #, fuzzy
 #| msgid "Choose player"
 msgid "Choose File"
 msgstr "Veldu spilara"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:122
+#: src/gui/dialogs/editor/custom_tod.cpp:201
 msgid "Select"
 msgstr ""
 
@@ -563,6 +555,14 @@ msgstr "Enginn"
 #: src/gui/dialogs/editor/set_starting_position.cpp:101
 msgid "Player $player_number"
 msgstr ""
+
+#~ msgid "(New Map)"
+#~ msgstr "(Nýtt kort)"
+
+#, fuzzy
+#~| msgid "(New Map)"
+#~ msgid "(New Scenario)"
+#~ msgstr "(Nýtt kort)"
 
 #, fuzzy
 #~| msgid "Choose a Map to Open"

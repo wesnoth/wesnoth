@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-03-23 08:11+0100\n"
+"POT-Creation-Date: 2017-05-13 22:46 UTC\n"
 "PO-Revision-Date: 2010-08-23 17:35+0800\n"
 "Last-Translator: YP_Lin <yenpinlin@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -1690,19 +1690,19 @@ msgstr "這個關鍵的運輸通道，在韋諾的許多偉大的戰役中都起
 msgid "3p — Alirok Marsh"
 msgstr "3p — 埃爾洛克沼澤"
 
-#. [multiplayer]: id=multiplayer_4p_Underworld
-#. [multiplayer]: id=multiplayer_3p_Morituri
-#. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
-#. [multiplayer]: id=multiplayer_4p_Morituri
-#. [multiplayer]: id=multiplayer_Blue_Water_Province
 #. [multiplayer]: id=multiplayer_Alirok_Marsh
-#. [multiplayer]: id=multiplayer_Loris_River
+#. [multiplayer]: id=multiplayer_3p_Morituri
+#. [multiplayer]: id=multiplayer_Blue_Water_Province
+#. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
+#. [multiplayer]: id=multiplayer_Clash
 #. [multiplayer]: id=multiplayer_4p_Hamlets
+#. [multiplayer]: id=multiplayer_4p_Morituri
+#. [multiplayer]: id=multiplayer_4p_Underworld
 #. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
-#. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
 #. [multiplayer]: id=multiplayer_8p_Morituri
 #. [multiplayer]: id=multiplayer_Island_of_the_Horatii
-#. [multiplayer]: id=multiplayer_Clash
+#. [multiplayer]: id=multiplayer_Loris_River
+#. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:6
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
 #: data/multiplayer/scenarios/3p_Morituri.cfg:6
@@ -1731,9 +1731,13 @@ msgstr "3p — 霍拉蒂之島"
 
 #. [multiplayer]: id=multiplayer_Island_of_the_Horatii
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
+#, fuzzy
+#| msgid ""
+#| "Controlling the central island is often the key to victory in this "
+#| "21x21hex 3 player free for all map."
 msgid ""
-"Controlling the central island is often the key to victory in this 21x21hex "
-"3 player free for all map."
+"Controlling the central island is often the key to victory in this 3 player "
+"free for all map."
 msgstr "在這幅21x21的3人自由對戰地圖上，掌控中央的島嶼通常是獲得勝利的關鍵。"
 
 #. [multiplayer]: id=multiplayer_3p_Morituri
@@ -1867,10 +1871,16 @@ msgstr "4p — 伊薩爾交叉口"
 
 #. [multiplayer]: id=multiplayer_Isars_Cross
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:9
+#, fuzzy
+#| msgid ""
+#| "A very small 2 vs. 2 map. Close quarters fighting means the successful "
+#| "rotation of units and planning of moves is important. Teams set for "
+#| "players 1&4 vs. 2&3 (northeast vs. southwest). Designed for 75 starting "
+#| "gold, 20 villages."
 msgid ""
 "A very small 2 vs. 2 map. Close quarters fighting means the successful "
 "rotation of units and planning of moves is important. Teams set for players "
-"1&4 vs. 2&3 (northeast vs. southwest). Designed for 75 starting gold, 20 "
+"1+4 vs. 2+3 (northeast vs. southwest). Designed for 75 starting gold, 20 "
 "villages."
 msgstr ""
 "這是一張非常小的2v2對戰地圖。在近距離對戰中，如何支援前線、計劃您的行動將顯得"
@@ -1919,9 +1929,13 @@ msgstr "建議起始資源設定為150個金幣，每座村莊提供2個金幣�
 
 #. [multiplayer]: id=multiplayer_King_of_the_Hill
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:9
+#, fuzzy
+#| msgid ""
+#| "Controlling the area around the central keep is very lucrative in this "
+#| "36X36 4 player FFA map. Works fine 2 vs. 2 as well. There are 36 villages."
 msgid ""
-"Controlling the area around the central keep is very lucrative in this 36X36 "
-"4 player FFA map. Works fine 2 vs. 2 as well. There are 36 villages."
+"Controlling the area around the central keep is very lucrative in this 4 "
+"player FFA map. Works fine 2 vs. 2 as well. There are 36 villages."
 msgstr ""
 "在這個36x36的4人自由對戰地圖上，控制中央的要塞有很大好處。也很適合2v2對戰。圖"
 "上有36座村莊。"
@@ -1955,9 +1969,13 @@ msgstr "4p — 洛里斯河"
 
 #. [multiplayer]: id=multiplayer_Loris_River
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:9
+#, fuzzy
+#| msgid ""
+#| "A 25x25 2 vs. 2 map centered around a river with keeps in opposite "
+#| "corners. Designed for players 1&4 vs. 2&3. There are 28 villages."
 msgid ""
-"A 25x25 2 vs. 2 map centered around a river with keeps in opposite corners. "
-"Designed for players 1&4 vs. 2&3. There are 28 villages."
+"2 vs. 2 map centered around a river with keeps in opposite corners. Designed "
+"for players 1+4 vs. 2+3. There are 28 villages."
 msgstr ""
 "這是一個25x25的2v2地圖，中間是河流，雙方的要塞處在對角綫上。適合玩家1和玩家4"
 "對陣玩家2和玩家3。地圖上有28座村莊。"
@@ -1984,9 +2002,13 @@ msgstr "地圖上有28座村莊。建議設置每座村莊提供2個金幣。"
 
 #. [multiplayer]: id=multiplayer_Paths_of_Daggers
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:9
+#, fuzzy
+#| msgid ""
+#| "A 35X27 2 vs. 2 map with 5 separate paths of engagement. Balanced to be "
+#| "played east vs. west (1&4 vs. 2&3), but works well with any teams or FFA."
 msgid ""
-"A 35X27 2 vs. 2 map with 5 separate paths of engagement. Balanced to be "
-"played east vs. west (1&4 vs. 2&3), but works well with any teams or FFA."
+"A 2 vs. 2 map with 5 separate paths of engagement. Balanced to be played "
+"east vs. west (1+4 vs. 2+3), but works well with any teams or FFA."
 msgstr ""
 "這是一個35x27的2v2地圖，有五條交戰路線。建議玩家組隊為東部對陣西部（即玩家1、"
 "4對玩家2、3），但是其他組隊方式或自由對戰（FFA）也没有問題。"
@@ -1998,9 +2020,13 @@ msgstr "4p — 泰拉‧德維爾夫遺跡"
 
 #. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
 #: data/multiplayer/scenarios/4p_Ruins_of_Terra-Dwelve.cfg:7
+#, fuzzy
+#| msgid ""
+#| "Battle over the legendary treasures of the ancient ruins of Terra-Dwelve. "
+#| "Large multi-fronted 2vs2 set in a vast underground complex."
 msgid ""
 "Battle over the legendary treasures of the ancient ruins of Terra-Dwelve. "
-"Large multi-fronted 2vs2 set in a vast underground complex."
+"Large multi-fronted 2 vs. 2 set in a vast underground complex."
 msgstr ""
 "發生在具有傳奇色彩的遠古泰拉‧德維爾夫遺跡上的戰鬥。這是設定在廣闊而複雜的地下"
 "空間中的大型多戰線2v2地圖。"
@@ -2014,7 +2040,7 @@ msgstr "4p — 城堡圍攻"
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:9
 #, fuzzy
 msgid ""
-"36X36 4 player map where 4 mighty castles face off at the convergence of two "
+"A 4 player map where 4 mighty castles face off at the convergence of two "
 "rivers. Works well as 2 vs. 2 or FFA. There are approximately 45 villages."
 msgstr ""
 "這是一個40x30的地圖，四座城堡對立於兩條河流交匯之處。適合2v2或自由組隊"
@@ -2037,9 +2063,13 @@ msgstr "4p — 桑希之混沌"
 
 #. [multiplayer]: id=multiplayer_Xanthe_Chaos
 #: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:9
+#, fuzzy
+#| msgid ""
+#| "A 24X28 2 vs. 2 map with auxiliary keeps, and a large messy battle in the "
+#| "center common."
 msgid ""
-"A 24X28 2 vs. 2 map with auxiliary keeps, and a large messy battle in the "
-"center common."
+"A 2 vs. 2 map with auxiliary keeps, and a large messy battle in the center "
+"common."
 msgstr "這是一個24X28的2v2地圖, 地圖中央有城堡輔助和激烈的戰鬥."
 
 #. [multiplayer]: id=multiplayer_Auction-X
@@ -2049,8 +2079,15 @@ msgstr "5p — 公開出價－X"
 
 #. [multiplayer]: id=multiplayer_Auction-X
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:7
+#, fuzzy
+#| msgid ""
+#| "4 players surround a central keep, play vs the AI survival style, or as a "
+#| "FFA or 4 vs. 1. The center player will need more gold in a 4 vs. 1 or "
+#| "FFA, and the best way to determine how much is an auction, LOWEST bid "
+#| "wins. It is a very small map so 75 gold is recommended for the other "
+#| "players."
 msgid ""
-"4 players surround a central keep, play vs the AI survival style, or as a "
+"4 players surround a central keep, play vs. the AI survival style, or as a "
 "FFA or 4 vs. 1. The center player will need more gold in a 4 vs. 1 or FFA, "
 "and the best way to determine how much is an auction, LOWEST bid wins. It is "
 "a very small map so 75 gold is recommended for the other players."
@@ -2080,8 +2117,8 @@ msgstr "在這混合了多種地形的地方，五支部隊為爭奪霸權而戰
 msgid "5p — The Wilderlands"
 msgstr "5p — 蠻荒之地"
 
-#. [multiplayer]: id=multiplayer_Crusaders_Field
 #. [multiplayer]: id=multiplayer_The_Wilderlands
+#. [multiplayer]: id=multiplayer_Crusaders_Field
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:38
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:7
 msgid " Recommended setting of 1 gold per village."
@@ -2229,11 +2266,17 @@ msgstr "6p — 曼西凡陷阱"
 
 #. [multiplayer]: id=multiplayer_The_Manzivan_Traps
 #: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:10
+#, fuzzy
+#| msgid ""
+#| "A 40X20 3 vs. 3 map. The Manzivan Traps are widely known as a difficult "
+#| "and confusing area of terrain where it is easy to end up out of position "
+#| "or over extended. Teams set for players 145 vs. 236 (east vs west). "
+#| "Designed for 100 starting gold, has 33 villages."
 msgid ""
-"A 40X20 3 vs. 3 map. The Manzivan Traps are widely known as a difficult and "
+"A 3 vs. 3 map. The Manzivan Traps are widely known as a difficult and "
 "confusing area of terrain where it is easy to end up out of position or over "
-"extended. Teams set for players 145 vs. 236 (east vs west). Designed for 100 "
-"starting gold, has 33 villages."
+"extended. Teams set for players 145 vs. 236 (east vs. west). Designed for "
+"100 starting gold, has 33 villages."
 msgstr ""
 "這是一個40x20的3v3對戰地圖。曼西凡陷阱以讓人迷惑的困難地形而著稱，在這種地形"
 "上，很容易因站錯位置或過分擴張而失敗。玩家1、4、5組隊對陣玩家2、3、6（東部對"
@@ -2249,7 +2292,7 @@ msgstr "6p — 六角蛋糕"
 #. [multiplayer]: id=multiplayer_Volcano
 #: data/multiplayer/scenarios/6p_Volcano.cfg:9
 msgid ""
-"A 3vs3 battle to control the ashes of a kingdom long ago collapsed from a "
+"A 3 vs. 3 battle to control the ashes of a kingdom long ago collapsed from a "
 "volcanic eruption. It has 36 villages."
 msgstr ""
 
@@ -2260,11 +2303,17 @@ msgstr "6p — 滑鐵盧日落"
 
 #. [multiplayer]: id=multiplayer_Waterloo_Sunset
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:9
+#, fuzzy
+#| msgid ""
+#| "A 40X30 3 vs. 3 map. Flexible coordination of your alliance is required "
+#| "to avoid being outnumbered. Teams set for players 145 vs. 236 (north vs. "
+#| "south), but having players 146 or 136 as a team is also interesting. "
+#| "Designed for 150 starting gold, has 44 villages."
 msgid ""
-"A 40X30 3 vs. 3 map. Flexible coordination of your alliance is required to "
-"avoid being outnumbered. Teams set for players 145 vs. 236 (north vs. "
-"south), but having players 146 or 136 as a team is also interesting. "
-"Designed for 150 starting gold, has 44 villages."
+"A 3 vs. 3 map. Flexible coordination of your alliance is required to avoid "
+"being outnumbered. Teams set for players 145 vs. 236 (north vs. south), but "
+"having players 146 or 136 as a team is also interesting. Designed for 150 "
+"starting gold, has 44 villages."
 msgstr ""
 "這是一個40x30的3v3對戰地圖。必須靈活地與隊友協調進攻與防守，否則就有被圍攻的"
 "危險。玩家1、4、5組隊對陣玩家2、3、6（北部對陣南部），但是由玩家1、4、6或1、"

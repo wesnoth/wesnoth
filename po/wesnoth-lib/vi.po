@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-03-23 08:11+0100\n"
+"POT-Creation-Date: 2017-05-14 01:46+0300\n"
 "PO-Revision-Date: 2014-06-05 22:47+0700\n"
 "Last-Translator: \n"
 "Language-Team: Vietnamese <kde-i18n-doc@kde.org>\n"
@@ -15,8 +15,8 @@ msgstr ""
 "X-Generator: Lokalize 1.4\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#. [terrain_type]: id=fence
 #. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
+#. [terrain_type]: id=fence
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:6
 #: data/core/terrain.cfg:452
 msgid "Fence"
@@ -1876,35 +1876,35 @@ msgstr ""
 
 #. [toggle_button]: id=sort_0
 #. [label]: id=name
-#. [toggle_button]: id=sort_1
 #. [label]
-#: data/gui/widget/addon_list.cfg:47 data/gui/window/game_load.cfg:286
+#. [toggle_button]: id=sort_1
+#: data/gui/widget/addon_list.cfg:78 data/gui/window/game_load.cfg:155
 #: data/gui/window/mp_server_list.cfg:107 data/gui/window/terrain_layers.cfg:45
 #: data/gui/window/unit_list.cfg:93 data/gui/window/unit_recall.cfg:47
 msgid "Name"
 msgstr "Tên"
 
 #. [label]
-#: data/gui/widget/addon_list.cfg:62
+#: data/gui/widget/addon_list.cfg:93
 msgid "Version"
 msgstr "Phiên bản"
 
 #. [toggle_button]: id=sort_1
-#: data/gui/widget/addon_list.cfg:76
+#: data/gui/widget/addon_list.cfg:107
 #, fuzzy
 #| msgid "Author:"
 msgid "Author"
 msgstr "Tác giả:"
 
 #. [toggle_button]: id=sort_2
-#: data/gui/widget/addon_list.cfg:90
+#: data/gui/widget/addon_list.cfg:121
 #, fuzzy
 #| msgid "Size:"
 msgid "Size"
 msgstr "Kích thước:"
 
 #. [toggle_button]: id=sort_3
-#: data/gui/widget/addon_list.cfg:104
+#: data/gui/widget/addon_list.cfg:135
 #, fuzzy
 #| msgid "Downloads:"
 msgid "Downloads"
@@ -1913,10 +1913,34 @@ msgstr "Lượt tải về:"
 #. [toggle_button]: id=sort_4
 #. [toggle_button]: id=sort_1
 #. [toggle_button]: id=sort_0
-#: data/gui/widget/addon_list.cfg:118 data/gui/window/unit_create.cfg:136
+#: data/gui/widget/addon_list.cfg:151 data/gui/window/unit_create.cfg:136
 #: data/gui/window/unit_list.cfg:79 data/gui/window/unit_recall.cfg:33
 msgid "Type"
 msgstr "Kiểu"
+
+#. [button]: id=single_install
+#. [button]: id=install
+#: data/gui/widget/addon_list.cfg:363 data/gui/window/addon_manager.cfg:202
+msgid "Install add-on"
+msgstr ""
+
+#. [button]: id=single_update
+#. [button]: id=update
+#: data/gui/widget/addon_list.cfg:386 data/gui/window/addon_manager.cfg:224
+#, fuzzy
+#| msgid "Speak to All"
+msgid "Update add-on"
+msgstr "Nói với tất cả"
+
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=single_uninstall
+#. [button]: id=uninstall
+#: data/gui/widget/addon_list.cfg:409 data/gui/window/addon_manager.cfg:246
+#: src/gui/dialogs/addon/manager.cpp:708
+#, fuzzy
+#| msgid "Uninstall Add-ons"
+msgid "Uninstall add-on"
+msgstr "Gỡ bỏ phần bổ sung"
 
 #. [label]: id=room
 #: data/gui/widget/chatbox.cfg:22
@@ -1928,10 +1952,10 @@ msgstr "Phòng"
 msgid "Messages waiting"
 msgstr "Tin nhắn đang chờ"
 
-#. [button]: id=click_dismiss
 #. [button]: id=close_window
-#. [button]: id=ok
+#. [button]: id=click_dismiss
 #. [button]: id=cancel
+#. [button]: id=ok
 #: data/gui/widget/chatbox.cfg:64 data/gui/widget/window_default.cfg:106
 #: data/gui/window/attack_predictions.cfg:304 data/gui/window/chat_log.cfg:199
 #: data/gui/window/end_credits.cfg:146
@@ -1939,6 +1963,7 @@ msgstr "Tin nhắn đang chờ"
 #: data/gui/window/game_stats.cfg:842 data/gui/window/game_version.cfg:643
 #: data/gui/window/gamestate_inspector.cfg:397
 #: data/gui/window/generator_settings.cfg:190
+#: data/gui/window/help_browser.cfg:188
 #: data/gui/window/lobby_player_info.cfg:282
 #: data/gui/window/lua_interpreter.cfg:130 data/gui/window/message.cfg:135
 #: data/gui/window/mp_alerts_options.cfg:249
@@ -2000,34 +2025,34 @@ msgstr "Kết nối"
 #: data/gui/window/advanced_graphics_options.cfg:178
 #: data/gui/window/campaign_dialog.cfg:388
 #: data/gui/window/campaign_difficulty.cfg:259
-#: data/gui/window/core_dialog.cfg:240 data/gui/window/custom_tod.cfg:400
+#: data/gui/window/core_dialog.cfg:240 data/gui/window/custom_tod.cfg:444
 #: data/gui/window/depcheck_select_new.cfg:165
 #: data/gui/window/edit_label.cfg:153 data/gui/window/edit_text.cfg:130
 #: data/gui/window/editor_edit_label.cfg:315
 #: data/gui/window/editor_edit_scenario.cfg:301
 #: data/gui/window/editor_edit_side.cfg:455
 #: data/gui/window/editor_generate_map.cfg:214
-#: data/gui/window/editor_new_map.cfg:125
+#: data/gui/window/editor_new_map.cfg:126
 #: data/gui/window/editor_resize_map.cfg:284
 #: data/gui/window/editor_set_starting_position.cfg:175
 #: data/gui/window/file_dialog.cfg:454 data/gui/window/folder_create.cfg:133
-#: data/gui/window/game_load.cfg:507 data/gui/window/game_save.cfg:134
+#: data/gui/window/game_load.cfg:576 data/gui/window/game_save.cfg:134
 #: data/gui/window/label_settings.cfg:149
 #: data/gui/window/language_selection.cfg:162 data/gui/window/logging.cfg:169
-#: data/gui/window/message.cfg:149 data/gui/window/mp_change_control.cfg:160
+#: data/gui/window/message.cfg:149 data/gui/window/mp_change_control.cfg:216
 #: data/gui/window/mp_cmd_wrapper.cfg:477 data/gui/window/mp_connect.cfg:173
-#: data/gui/window/mp_create_game/default_resolution.cfg:454
-#: data/gui/window/mp_create_game/small_resolution.cfg:369
-#: data/gui/window/mp_create_game/tiny_resolution.cfg:329
+#: data/gui/window/mp_create_game/default_resolution.cfg:459
+#: data/gui/window/mp_create_game/small_resolution.cfg:374
+#: data/gui/window/mp_create_game/tiny_resolution.cfg:334
 #: data/gui/window/mp_faction_select.cfg:391
 #: data/gui/window/mp_join_game_password_prompt.cfg:149
 #: data/gui/window/mp_login.cfg:271 data/gui/window/mp_method_selection.cfg:298
-#: data/gui/window/mp_server_list.cfg:231 data/gui/window/mp_staging.cfg:516
+#: data/gui/window/mp_server_list.cfg:231 data/gui/window/mp_staging.cfg:505
 #: data/gui/window/network_transmission.cfg:114
 #: data/gui/window/select_orb_colors.cfg:124
 #: data/gui/window/simple_item_selector.cfg:158
-#: data/gui/window/sp_options_configure.cfg:113
-#: data/gui/window/theme_list.cfg:172 data/gui/window/unit_attack.cfg:233
+#: data/gui/window/sp_options_configure.cfg:117
+#: data/gui/window/theme_list.cfg:155 data/gui/window/unit_attack.cfg:233
 #: data/gui/window/unit_create.cfg:279 data/gui/window/unit_recall.cfg:430
 #: data/gui/window/unit_recruit.cfg:231 src/hotkey/hotkey_command.cpp:44
 msgid "Cancel"
@@ -2048,120 +2073,141 @@ msgstr "Phiên bản:"
 msgid "No description available."
 msgstr "Không có mô tả."
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=publish
+#: data/gui/window/addon_manager.cfg:269 src/gui/widgets/addon_list.cpp:253
+msgid "Publish add-on"
+msgstr ""
+
+#. [button]: id=delete
+#: data/gui/window/addon_manager.cfg:283
+#, fuzzy
+#| msgid "Delete ToD"
+msgid "Delete add-on"
+msgstr "Xóa TĐTN"
+
 #. [label]
-#: data/gui/window/addon_manager.cfg:312 data/gui/window/addon_manager.cfg:726
+#: data/gui/window/addon_manager.cfg:317 data/gui/window/addon_manager.cfg:731
 msgid "Type:"
 msgstr "Kiểu:"
 
 #. [label]
-#: data/gui/window/addon_manager.cfg:338
+#: data/gui/window/addon_manager.cfg:343
 #, fuzzy
 #| msgid "date^First uploaded:"
 msgid "date^Uploaded:"
 msgstr "Tải lên lần đầu tiên:"
 
 #. [label]
-#: data/gui/window/addon_manager.cfg:371
+#: data/gui/window/addon_manager.cfg:376
 msgid "Status:"
 msgstr "Trạng thái:"
 
 #. [label]
-#: data/gui/window/addon_manager.cfg:401
+#: data/gui/window/addon_manager.cfg:406
 #, fuzzy
 #| msgid "date^Last updated:"
 msgid "date^Updated:"
 msgstr "Cập nhật lần cuối cùng:"
 
 #. [label]
-#: data/gui/window/addon_manager.cfg:431
+#: data/gui/window/addon_manager.cfg:436
 #: data/gui/window/game_cache_options.cfg:160
 #: data/gui/window/screenshot_notification.cfg:139
 msgid "Size:"
 msgstr "Kích thước:"
 
 #. [label]
-#: data/gui/window/addon_manager.cfg:457
+#: data/gui/window/addon_manager.cfg:462
 msgid "Downloads:"
 msgstr "Lượt tải về:"
 
 #. [label]
-#: data/gui/window/addon_manager.cfg:503
+#: data/gui/window/addon_manager.cfg:508
 msgid "Dependencies:"
 msgstr "Thành phần phụ thuộc:"
 
 #. [label]: id=dependencies
-#: data/gui/window/addon_manager.cfg:517
+#: data/gui/window/addon_manager.cfg:522
 msgid "addon_dependencies^None"
 msgstr "Không có"
 
 #. [label]
-#: data/gui/window/addon_manager.cfg:537
+#: data/gui/window/addon_manager.cfg:542
 msgid "Translations:"
 msgstr "Bản dịch:"
 
 #. [label]: id=translations
-#: data/gui/window/addon_manager.cfg:551
+#: data/gui/window/addon_manager.cfg:556
 msgid "translations^None"
 msgstr "Không có"
 
 #. [label]
-#: data/gui/window/addon_manager.cfg:569
+#: data/gui/window/addon_manager.cfg:574
 msgid "Website:"
 msgstr "Website:"
 
 #. [label]: id=url_none
-#: data/gui/window/addon_manager.cfg:592
+#: data/gui/window/addon_manager.cfg:597
 msgid "url^None"
 msgstr "Không có"
 
 #. [button]: id=url_copy
-#: data/gui/window/addon_manager.cfg:627
+#: data/gui/window/addon_manager.cfg:632
 msgid "url^Copy"
 msgstr "Chép"
 
 #. [button]: id=url_copy
-#: data/gui/window/addon_manager.cfg:628
+#: data/gui/window/addon_manager.cfg:633
 msgid "Copy this URL to clipboard"
 msgstr "Chép URL này vào bảng chọn"
 
 #. [button]: id=url_go
-#: data/gui/window/addon_manager.cfg:641
+#: data/gui/window/addon_manager.cfg:646
 msgid "url^Go"
 msgstr "Đi"
 
 #. [button]: id=url_go
-#: data/gui/window/addon_manager.cfg:642
+#: data/gui/window/addon_manager.cfg:647
 msgid "Visit this URL with a web browser"
 msgstr "Thăm URL này bằng trình duyệt web"
 
 #. [text_box]: id=filter
-#: data/gui/window/addon_manager.cfg:688
+#: data/gui/window/addon_manager.cfg:693
 msgid "Filters on addon descripton, version, type or author."
 msgstr ""
 
 #. [label]
-#: data/gui/window/addon_manager.cfg:700
+#: data/gui/window/addon_manager.cfg:705
 #, fuzzy
 #| msgid "Status:"
 msgid "State:"
 msgstr "Trạng thái:"
 
 #. [label]
-#: data/gui/window/addon_manager.cfg:811
+#: data/gui/window/addon_manager.cfg:819 data/gui/window/addon_manager.cfg:993
 #, fuzzy
 #| msgid "Add-ons"
 msgid "Get Add-ons"
 msgstr "Phần bổ sung"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=details_toggle
+#: data/gui/window/addon_manager.cfg:921 src/gui/dialogs/addon/manager.cpp:450
+#, fuzzy
+#| msgid "Details:"
+msgid "Addon Details"
+msgstr "Chi tiết:"
+
 #. [button]: id=update_all
-#: data/gui/window/addon_manager.cfg:914
+#: data/gui/window/addon_manager.cfg:935 data/gui/window/addon_manager.cfg:1096
 #, fuzzy
 #| msgid "Speak to All"
 msgid "Update All"
 msgstr "Nói với tất cả"
 
 #. [button]: id=cancel
-#: data/gui/window/addon_manager.cfg:928
+#: data/gui/window/addon_manager.cfg:949 data/gui/window/addon_manager.cfg:1110
 msgid "Exit"
 msgstr ""
 
@@ -2170,8 +2216,8 @@ msgstr ""
 msgid "Choose the add-ons you want to remove."
 msgstr "Chọn phần bổ sung bạn muốn xóa."
 
-#. [button]: id=ok
 #. [button]: id=remove
+#. [button]: id=ok
 #: data/gui/window/addon_uninstall_list.cfg:161
 #: data/gui/window/mp_cmd_wrapper.cfg:198
 #: data/gui/window/preferences/05_multiplayer.cfg:317
@@ -2247,8 +2293,7 @@ msgstr ""
 #: data/gui/window/advanced_graphics_options.cfg:165
 #: data/gui/window/campaign_dialog.cfg:374
 #: data/gui/window/campaign_difficulty.cfg:246
-#: data/gui/window/campaign_settings.cfg:322
-#: data/gui/window/core_dialog.cfg:227 data/gui/window/custom_tod.cfg:388
+#: data/gui/window/core_dialog.cfg:227 data/gui/window/custom_tod.cfg:431
 #: data/gui/window/depcheck_select_new.cfg:151
 #: data/gui/window/edit_label.cfg:139 data/gui/window/edit_text.cfg:116
 #: data/gui/window/editor_edit_label.cfg:301
@@ -2256,21 +2301,21 @@ msgstr ""
 #: data/gui/window/editor_edit_side.cfg:443
 #: data/gui/window/editor_set_starting_position.cfg:162
 #: data/gui/window/file_dialog.cfg:441 data/gui/window/folder_create.cfg:119
-#: data/gui/window/game_load.cfg:494 data/gui/window/game_save.cfg:120
+#: data/gui/window/game_load.cfg:563 data/gui/window/game_save.cfg:120
 #: data/gui/window/label_settings.cfg:137
 #: data/gui/window/language_selection.cfg:148 data/gui/window/logging.cfg:159
-#: data/gui/window/mp_change_control.cfg:150
+#: data/gui/window/mp_change_control.cfg:203
 #: data/gui/window/mp_faction_select.cfg:379
 #: data/gui/window/mp_join_game_password_prompt.cfg:136
 #: data/gui/window/mp_login.cfg:243 data/gui/window/mp_method_selection.cfg:284
 #: data/gui/window/screenshot_notification.cfg:200
 #: data/gui/window/select_orb_colors.cfg:113
 #: data/gui/window/simple_item_selector.cfg:145
-#: data/gui/window/sp_options_configure.cfg:101
-#: data/gui/window/theme_list.cfg:159 data/gui/window/unit_advance.cfg:189
+#: data/gui/window/sp_options_configure.cfg:105
+#: data/gui/window/theme_list.cfg:142 data/gui/window/unit_advance.cfg:189
 #: data/gui/window/unit_create.cfg:268 data/gui/window/wml_error.cfg:162
-#: data/gui/window/wml_message.cfg:430 src/gui/dialogs/message.cpp:180
-#: src/gui/dialogs/message.cpp:187
+#: data/gui/window/wml_message.cfg:436 src/gui/dialogs/message.cpp:183
+#: src/gui/dialogs/message.cpp:190
 msgid "OK"
 msgstr "Đồng ý"
 
@@ -2372,40 +2417,6 @@ msgid "Select difficulty level:"
 msgstr "Chọn mức độ khó:"
 
 #. [label]
-#: data/gui/window/campaign_settings.cfg:48
-#, fuzzy
-#| msgid "sound^Advanced Options"
-msgid "Advanced Settings"
-msgstr "Tùy chọn nâng cao"
-
-#. [label]
-#: data/gui/window/campaign_settings.cfg:77
-msgid "Additional dialogs:"
-msgstr ""
-
-#. [toggle_button]: id=mp_connect
-#: data/gui/window/campaign_settings.cfg:116
-#, fuzzy
-#| msgid "Configuration:"
-msgid "Configure sides"
-msgstr "Cấu hình:"
-
-#. [label]: id=era_label
-#: data/gui/window/campaign_settings.cfg:157 data/gui/window/lobby_main.cfg:132
-msgid "Era:"
-msgstr "Thời đại:"
-
-#. [label]: id=mod_label
-#. [label]: id=mods_label
-#. [label]: id=mods_header
-#: data/gui/window/campaign_settings.cfg:246 data/gui/window/lobby_main.cfg:167
-#: data/gui/window/mp_create_game.cfg:203
-#, fuzzy
-#| msgid "Choose Modifications"
-msgid "Modifications:"
-msgstr "Chọn bản sửa đổi"
-
-#. [label]
 #: data/gui/window/chat_log.cfg:36
 msgid "Chat Log"
 msgstr "Nhật ký tán gẫu"
@@ -2420,11 +2431,9 @@ msgstr "Trang:"
 msgid "Last"
 msgstr "Cuối cùng"
 
-#. [button]: id=previous_tod
-#. [button]: id=previous_tip
 #. [button]: id=previous_page
-#: data/gui/window/chat_log.cfg:105 data/gui/window/custom_tod.cfg:327
-#: data/gui/window/title_screen.cfg:190
+#. [button]: id=previous_tip
+#: data/gui/window/chat_log.cfg:105 data/gui/window/title_screen.cfg:190
 msgid "Previous"
 msgstr "Trước"
 
@@ -2433,11 +2442,9 @@ msgstr "Trước"
 msgid "Previous page"
 msgstr "Trang trước"
 
-#. [button]: id=next_tod
-#. [button]: id=next_tip
 #. [button]: id=next_page
-#: data/gui/window/chat_log.cfg:114 data/gui/window/custom_tod.cfg:352
-#: data/gui/window/title_screen.cfg:205
+#. [button]: id=next_tip
+#: data/gui/window/chat_log.cfg:114 data/gui/window/title_screen.cfg:205
 msgid "Next"
 msgstr "Kế tiếp"
 
@@ -2466,15 +2473,45 @@ msgstr "Chép URL này vào bảng chọn"
 msgid "Load Core"
 msgstr "Tải trò chơi"
 
+#. [button]: id=copy_
+#. [button]: id=copy
+#: data/gui/window/custom_tod.cfg:50 data/gui/window/game_cache_options.cfg:110
+#: data/gui/window/game_version.cfg:46
+#: data/gui/window/screenshot_notification.cfg:33
+msgid "filesystem^Copy"
+msgstr "Chép"
+
+#. [button]: id=copy_
+#. [button]: id=copy
+#: data/gui/window/custom_tod.cfg:51 data/gui/window/game_cache_options.cfg:111
+#: data/gui/window/game_version.cfg:47
+#: data/gui/window/screenshot_notification.cfg:34
+msgid "Copy this path to clipboard"
+msgstr "Chép đường dẫn này vào bảng chọn"
+
+#. [button]: id=browse_
+#. [button]: id=browse
+#: data/gui/window/custom_tod.cfg:66 data/gui/window/game_cache_options.cfg:126
+#: data/gui/window/game_version.cfg:62
+msgid "filesystem^Browse"
+msgstr "Duyệt"
+
+#. [button]: id=browse_
+#. [button]: id=browse
+#: data/gui/window/custom_tod.cfg:67 data/gui/window/game_cache_options.cfg:127
+#: data/gui/window/game_version.cfg:63
+msgid "Browse this location using a file manager"
+msgstr "Duyệt địa điểm này sử dụng trình quản lý tập tin"
+
 #. [label]
-#: data/gui/window/custom_tod.cfg:45
+#: data/gui/window/custom_tod.cfg:147
 #, fuzzy
 #| msgid "Custom Time of Day Schedule"
-msgid "Custom Time Schedule"
+msgid "Edit Time Schedule"
 msgstr "Thời gian biểu thời điểm trong ngày tùy chỉnh"
 
 #. [label]
-#: data/gui/window/custom_tod.cfg:63
+#: data/gui/window/custom_tod.cfg:177
 #: data/gui/window/editor_edit_scenario.cfg:106
 #: data/gui/window/folder_create.cfg:72 data/gui/window/game_save.cfg:72
 #: data/gui/window/game_save_message.cfg:92
@@ -2484,69 +2521,66 @@ msgid "Name:"
 msgstr "Tên:"
 
 #. [label]
-#: data/gui/window/custom_tod.cfg:97
+#: data/gui/window/custom_tod.cfg:204
 msgid "ID:"
 msgstr "Định danh:"
 
-#. [label]
-#: data/gui/window/custom_tod.cfg:131
-msgid "Metadata:"
-msgstr "Siêu dữ liệu:"
-
-#. [label]
-#. [button]: id=image_button
-#: data/gui/window/custom_tod.cfg:146 data/gui/window/terrain_layers.cfg:33
-msgid "Image"
+#. [grid]
+#: data/gui/window/custom_tod.cfg:285
+#, fuzzy
+#| msgid "Image"
+msgid "Image:"
 msgstr "Ảnh"
 
-#. [button]: id=mask_button
-#: data/gui/window/custom_tod.cfg:157
-msgid "Mask"
+#. [grid]
+#: data/gui/window/custom_tod.cfg:286
+#, fuzzy
+#| msgid "Mask"
+msgid "Mask:"
 msgstr "Mặt nạ"
 
-#. [label]
-#. [button]: id=sound_button
-#. [widget]: id=label
-#: data/gui/window/custom_tod.cfg:168 data/gui/window/mp_alerts_options.cfg:154
-#: data/gui/window/preferences.cfg:346
-msgid "Sound"
+#. [grid]
+#: data/gui/window/custom_tod.cfg:287
+#, fuzzy
+#| msgid "Sound"
+msgid "Sound:"
 msgstr "Âm thanh"
 
 #. [label]
-#: data/gui/window/custom_tod.cfg:201
+#: data/gui/window/custom_tod.cfg:316
 msgid "Lawful Bonus:"
 msgstr "Thưởng chính thống:"
 
-#. [label]
-#: data/gui/window/custom_tod.cfg:230
+#. [grid]
+#: data/gui/window/custom_tod.cfg:339
 msgid "Red:"
 msgstr "Đỏ:"
 
-#. [label]
-#: data/gui/window/custom_tod.cfg:259
+#. [grid]
+#: data/gui/window/custom_tod.cfg:340
 msgid "Green:"
 msgstr "Xanh lục:"
 
-#. [label]
-#: data/gui/window/custom_tod.cfg:288
+#. [grid]
+#: data/gui/window/custom_tod.cfg:341
 msgid "Blue:"
 msgstr "Xanh lam:"
 
 #. [button]: id=new
-#: data/gui/window/custom_tod.cfg:364
+#: data/gui/window/custom_tod.cfg:405
 msgid "New ToD"
 msgstr "TĐTN mới"
 
 #. [button]: id=delete
-#: data/gui/window/custom_tod.cfg:376
+#: data/gui/window/custom_tod.cfg:418
 msgid "Delete ToD"
 msgstr "Xóa TĐTN"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/depcheck_confirm_change.cfg:40
-#: src/gui/dialogs/addon/manager.cpp:664 src/gui/dialogs/file_dialog.cpp:317
-#: src/gui/dialogs/file_dialog.cpp:741 src/gui/widgets/label.cpp:181
+#: src/gui/dialogs/addon/manager.cpp:683 src/gui/dialogs/file_dialog.cpp:319
+#: src/gui/dialogs/file_dialog.cpp:746 src/gui/widgets/label.cpp:193
 msgid "Confirm"
 msgstr "Xác nhận"
 
@@ -2562,7 +2596,7 @@ msgstr "Bạn có muốn áp dụng các thay đổi không?"
 #: data/gui/window/game_save_message.cfg:139
 #: data/gui/window/game_save_oos.cfg:191
 #: data/gui/window/game_save_overwrite.cfg:96
-#: data/gui/window/mp_host_game_prompt.cfg:105 src/gui/dialogs/message.cpp:195
+#: data/gui/window/mp_host_game_prompt.cfg:105 src/gui/dialogs/message.cpp:197
 msgid "Yes"
 msgstr "Có"
 
@@ -2573,7 +2607,7 @@ msgstr "Có"
 #: data/gui/window/game_save_message.cfg:153
 #: data/gui/window/game_save_oos.cfg:205
 #: data/gui/window/game_save_overwrite.cfg:110
-#: data/gui/window/mp_host_game_prompt.cfg:118 src/gui/dialogs/message.cpp:198
+#: data/gui/window/mp_host_game_prompt.cfg:118 src/gui/dialogs/message.cpp:199
 msgid "No"
 msgstr "Không"
 
@@ -2694,7 +2728,6 @@ msgstr "Không có người lãnh đạo"
 
 #. [toggle_button]: id=fog
 #: data/gui/window/editor_edit_side.cfg:208
-#: data/gui/window/mp_create_game.cfg:372
 msgid "Fog of war"
 msgstr "Sương mù chiến tranh"
 
@@ -2704,7 +2737,7 @@ msgid "Hide in status table"
 msgstr "Ẩn trong bảng trạng thái"
 
 #. [label]
-#: data/gui/window/editor_edit_side.cfg:249 data/gui/window/mp_staging.cfg:309
+#: data/gui/window/editor_edit_side.cfg:249 data/gui/window/mp_staging.cfg:316
 msgid "Gold:"
 msgstr "Vàng:"
 
@@ -2714,7 +2747,7 @@ msgid "Gold per village:"
 msgstr "Vàng mỗi làng:"
 
 #. [label]
-#: data/gui/window/editor_edit_side.cfg:305 data/gui/window/mp_staging.cfg:341
+#: data/gui/window/editor_edit_side.cfg:305 data/gui/window/mp_staging.cfg:348
 msgid "Income:"
 msgstr "Thu nhập:"
 
@@ -2728,8 +2761,9 @@ msgstr "Hỗ trợ mỗi làng:"
 msgid "Controller:"
 msgstr "Điều khiển:"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [row]
-#: data/gui/window/editor_edit_side.cfg:373
+#: data/gui/window/editor_edit_side.cfg:373 src/gui/dialogs/game_stats.cpp:78
 msgid "controller^Human"
 msgstr "Con người"
 
@@ -2785,7 +2819,7 @@ msgstr "Trình tạo bản đồ"
 #. [button]: id=settings
 #. [button]: id=random_map_settings
 #: data/gui/window/editor_generate_map.cfg:128
-#: data/gui/window/mp_create_game.cfg:875
+#: data/gui/window/mp_create_game.cfg:876
 msgid "Settings"
 msgstr "Thiết lập"
 
@@ -2800,27 +2834,27 @@ msgid "Generate"
 msgstr "Tạo"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [label]
-#: data/gui/window/editor_new_map.cfg:35 src/hotkey/hotkey_command.cpp:140
+#. [label]: id=title
+#: data/gui/window/editor_new_map.cfg:36 src/hotkey/hotkey_command.cpp:140
 msgid "New Map"
 msgstr "Bản đồ mới"
 
 #. [label]
 #. [grid]
-#: data/gui/window/editor_new_map.cfg:54
+#: data/gui/window/editor_new_map.cfg:55
 #: data/gui/window/generator_settings.cfg:107
 msgid "Width:"
 msgstr "Chiều rộng:"
 
 #. [label]
 #. [grid]
-#: data/gui/window/editor_new_map.cfg:81
+#: data/gui/window/editor_new_map.cfg:82
 #: data/gui/window/generator_settings.cfg:109
 msgid "Height:"
 msgstr "Chiều cao:"
 
 #. [button]: id=ok
-#: data/gui/window/editor_new_map.cfg:115
+#: data/gui/window/editor_new_map.cfg:116
 msgid "Create"
 msgstr "Tạo"
 
@@ -2897,7 +2931,7 @@ msgstr ""
 
 #. [button]: id=delete_file
 #. [button]: id=delete
-#: data/gui/window/file_dialog.cfg:342 data/gui/window/game_load.cfg:408
+#: data/gui/window/file_dialog.cfg:342 data/gui/window/game_load.cfg:477
 msgid "Delete"
 msgstr "Xóa"
 
@@ -2964,8 +2998,8 @@ msgstr "Tiếp tục"
 msgid "Execution trace"
 msgstr "Dấu vết thi hành"
 
-#. [grid]
 #. [button]: id=cancel
+#. [grid]
 #: data/gui/window/formula_debugger.cfg:234
 #: data/gui/window/title_screen.cfg:261
 msgid "Quit"
@@ -2994,36 +3028,6 @@ msgstr ""
 #| msgid "Paths"
 msgid "Path:"
 msgstr "Đường dẫn"
-
-#. [button]: id=copy
-#. [button]: id=copy_
-#: data/gui/window/game_cache_options.cfg:110
-#: data/gui/window/game_version.cfg:46
-#: data/gui/window/screenshot_notification.cfg:33
-msgid "filesystem^Copy"
-msgstr "Chép"
-
-#. [button]: id=copy
-#. [button]: id=copy_
-#: data/gui/window/game_cache_options.cfg:111
-#: data/gui/window/game_version.cfg:47
-#: data/gui/window/screenshot_notification.cfg:34
-msgid "Copy this path to clipboard"
-msgstr "Chép đường dẫn này vào bảng chọn"
-
-#. [button]: id=browse
-#. [button]: id=browse_
-#: data/gui/window/game_cache_options.cfg:126
-#: data/gui/window/game_version.cfg:62
-msgid "filesystem^Browse"
-msgstr "Duyệt"
-
-#. [button]: id=browse
-#. [button]: id=browse_
-#: data/gui/window/game_cache_options.cfg:127
-#: data/gui/window/game_version.cfg:63
-msgid "Browse this location using a file manager"
-msgstr "Duyệt địa điểm này sử dụng trình quản lý tập tin"
 
 #. [button]: id=clean
 #: data/gui/window/game_cache_options.cfg:194
@@ -3062,46 +3066,63 @@ msgstr "Bạn có thực sự muốn xóa trò chơi này không?"
 msgid "Do not show again"
 msgstr "Không hiện lại nữa"
 
+#. [grid]
+#: data/gui/window/game_load.cfg:108
+#, fuzzy
+#| msgid "Scroll Palette Left"
+msgid "Gold Left:"
+msgstr "Cuộn bảng màu sang trái"
+
+#. [grid]
+#: data/gui/window/game_load.cfg:111
+msgid "Active Troops:"
+msgstr ""
+
+#. [grid]
+#: data/gui/window/game_load.cfg:114
+msgid "Reserve Troops:"
+msgstr ""
+
+#. [toggle_button]: id=sort_1
+#: data/gui/window/game_load.cfg:169
+msgid "Date"
+msgstr "Ngày"
+
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=load_game
 #. [label]: id=lblTitle
-#: data/gui/window/game_load.cfg:53 data/gui/window/mp_create_game.cfg:896
+#: data/gui/window/game_load.cfg:284 data/gui/window/mp_create_game.cfg:897
 #: src/hotkey/hotkey_command.cpp:72
 msgid "Load Game"
 msgstr "Tải trò chơi"
 
-#. [toggle_button]: id=sort_1
-#: data/gui/window/game_load.cfg:300
-msgid "Date"
-msgstr "Ngày"
-
 #. [toggle_button]: id=change_difficulty
-#: data/gui/window/game_load.cfg:391
+#: data/gui/window/game_load.cfg:460
 msgid "Change difficulty"
 msgstr "Thay đổi độ khó"
 
 #. [toggle_button]: id=change_difficulty
-#: data/gui/window/game_load.cfg:392
+#: data/gui/window/game_load.cfg:461
 msgid "Change campaign difficulty before loading"
 msgstr "Thay đổi độ khó của chiến dịch trước khi tải"
 
 #. [toggle_button]: id=show_replay
-#: data/gui/window/game_load.cfg:433
+#: data/gui/window/game_load.cfg:502
 msgid "Show replay"
 msgstr "Hiện bản phát lại"
 
 #. [toggle_button]: id=show_replay
-#: data/gui/window/game_load.cfg:434
+#: data/gui/window/game_load.cfg:503
 msgid "Play the embedded replay from the saved game if applicable"
 msgstr "Phát bản phát lại nhúng từ bản lưu trò chơi nếu có thể"
 
 #. [toggle_button]: id=cancel_orders
-#: data/gui/window/game_load.cfg:453
+#: data/gui/window/game_load.cfg:522
 msgid "Cancel orders"
 msgstr "Hủy bỏ chỉ thị"
 
 #. [toggle_button]: id=cancel_orders
-#: data/gui/window/game_load.cfg:454
+#: data/gui/window/game_load.cfg:523
 msgid "Cancel any pending unit movements in the saved game"
 msgstr "Hủy bỏ mọi di chuyển còn lại của đơn vị trong bản lưu trò chơi"
 
@@ -3147,12 +3168,12 @@ msgid "Team"
 msgstr "Đội 1"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [toggle_button]: id=sort_2
 #. [image]: id=gold_icon
 #. [label]: id=side_gold
-#. [toggle_button]: id=sort_2
 #: data/gui/window/game_stats.cfg:63 data/gui/window/mp_join_game.cfg:219
 #: data/gui/window/mp_join_game.cfg:232
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:392
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:401
 #, fuzzy
 #| msgid "Gold:"
 msgid "Gold"
@@ -3178,12 +3199,12 @@ msgid "Upkeep"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [toggle_button]: id=sort_6
 #. [image]: id=income_icon
 #. [label]: id=side_income
-#. [toggle_button]: id=sort_6
 #: data/gui/window/game_stats.cfg:118 data/gui/window/mp_join_game.cfg:250
 #: data/gui/window/mp_join_game.cfg:263
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:398
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:407
 #, fuzzy
 #| msgid "Income:"
 msgid "Income"
@@ -3191,7 +3212,7 @@ msgstr "Thu nhập:"
 
 #. [toggle_button]: id=sort_1
 #. [label]: id=side_title
-#: data/gui/window/game_stats.cfg:297 data/gui/window/mp_change_control.cfg:21
+#: data/gui/window/game_stats.cfg:297 data/gui/window/mp_change_control.cfg:22
 msgid "Side"
 msgstr "Phe"
 
@@ -3233,7 +3254,7 @@ msgstr "Hỗ trợ mỗi làng:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
-#: data/gui/window/game_stats.cfg:704 src/gui/dialogs/game_stats.cpp:256
+#: data/gui/window/game_stats.cfg:704 src/gui/dialogs/game_stats.cpp:261
 #, fuzzy
 #| msgid "Current room"
 msgid "Current Status"
@@ -3248,7 +3269,7 @@ msgstr "Đường dẫn trò chơi"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [widget]: id=tab_label
-#: data/gui/window/game_stats.cfg:792 src/gui/dialogs/game_stats.cpp:256
+#: data/gui/window/game_stats.cfg:792 src/gui/dialogs/game_stats.cpp:261
 #, fuzzy
 #| msgid "Edit Scenario Settings"
 msgid "Scenario Settings"
@@ -3387,9 +3408,9 @@ msgstr "Trình tạo bản đồ"
 #. [grid]
 #: data/gui/window/generator_settings.cfg:105
 #: data/gui/window/mp_create_game.cfg:682
-#: data/gui/window/mp_create_game/default_resolution.cfg:125
-#: data/gui/window/mp_create_game/small_resolution.cfg:142
-#: data/gui/window/mp_create_game/tiny_resolution.cfg:132
+#: data/gui/window/mp_create_game/default_resolution.cfg:130
+#: data/gui/window/mp_create_game/small_resolution.cfg:147
+#: data/gui/window/mp_create_game/tiny_resolution.cfg:137
 msgid "Players:"
 msgstr "Số người chơi:"
 
@@ -3439,6 +3460,13 @@ msgid "Show Labels"
 msgstr "Hiện nhãn"
 
 #. [label]
+#: data/gui/window/help_browser.cfg:116
+#, fuzzy
+#| msgid "Show Battle for Wesnoth help"
+msgid "Battle For Wesnoth Help"
+msgstr "Hiện trợ giúp Trận chiến vì Wesnoth"
+
+#. [label]
 #: data/gui/window/hotkey_bind.cfg:35
 msgid "Press desired hotkey (Esc cancels)"
 msgstr "Ấn phím tắt mong muốn (Esc hủy bỏ)"
@@ -3474,8 +3502,21 @@ msgstr "Tải trò chơi..."
 msgid "Games"
 msgstr "Trò chơi"
 
+#. [label]: id=era_label
+#: data/gui/window/lobby_main.cfg:132
+msgid "Era:"
+msgstr "Thời đại:"
+
+#. [label]: id=mods_label
+#. [label]: id=mods_header
+#: data/gui/window/lobby_main.cfg:167 data/gui/window/mp_create_game.cfg:203
+#, fuzzy
+#| msgid "Choose Modifications"
+msgid "Modifications:"
+msgstr "Chọn bản sửa đổi"
+
 #. [row]
-#: data/gui/window/lobby_main.cfg:215 data/gui/window/mp_create_game.cfg:927
+#: data/gui/window/lobby_main.cfg:215 data/gui/window/mp_create_game.cfg:928
 msgid "Assign sides to players at random"
 msgstr "Gán phe ngẫu nhiên cho người chơi"
 
@@ -3582,23 +3623,23 @@ msgstr "Thu nhỏ"
 msgid "Refresh"
 msgstr "Tải lại"
 
-#. [button]: id=create
 #. [label]
 #. [button]: id=ok
+#. [button]: id=create
 #: data/gui/window/lobby_main.cfg:557 data/gui/window/lobby_main.cfg:731
-#: data/gui/window/mp_create_game/default_resolution.cfg:38
-#: data/gui/window/mp_create_game/default_resolution.cfg:439
-#: data/gui/window/mp_create_game/small_resolution.cfg:39
-#: data/gui/window/mp_create_game/small_resolution.cfg:354
-#: data/gui/window/mp_create_game/tiny_resolution.cfg:42
-#: data/gui/window/mp_create_game/tiny_resolution.cfg:315
+#: data/gui/window/mp_create_game/default_resolution.cfg:43
+#: data/gui/window/mp_create_game/default_resolution.cfg:444
+#: data/gui/window/mp_create_game/small_resolution.cfg:44
+#: data/gui/window/mp_create_game/small_resolution.cfg:359
+#: data/gui/window/mp_create_game/tiny_resolution.cfg:47
+#: data/gui/window/mp_create_game/tiny_resolution.cfg:320
 msgid "Create Game"
 msgstr "Tạo trò chơi"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [grid]
 #. [button]: id=show_preferences
 #. [label]: id=title
+#. [grid]
 #: data/gui/window/lobby_main.cfg:567 data/gui/window/lobby_main.cfg:720
 #: data/gui/window/preferences.cfg:212 data/gui/window/title_screen.cfg:259
 #: src/hotkey/hotkey_command.cpp:88
@@ -3746,6 +3787,13 @@ msgstr ""
 msgid "Event"
 msgstr ""
 
+#. [label]
+#. [widget]: id=label
+#: data/gui/window/mp_alerts_options.cfg:154
+#: data/gui/window/preferences.cfg:346
+msgid "Sound"
+msgstr "Âm thanh"
+
 #. [label]: id=notification_label
 #: data/gui/window/mp_alerts_options.cfg:170
 #, fuzzy
@@ -3864,11 +3912,11 @@ msgstr ""
 msgid "When a new turn has begun"
 msgstr ""
 
-#. [button]: id=revert_to_defaults
 #. [button]: id=btn_reset_hotkeys
+#. [button]: id=revert_to_defaults
 #. [button]: id=orb_defaults
 #: data/gui/window/mp_alerts_options.cfg:234
-#: data/gui/window/preferences/02_hotkeys.cfg:269
+#: data/gui/window/preferences/02_hotkeys.cfg:263
 #: data/gui/window/select_orb_colors.cfg:102
 msgid "Defaults"
 msgstr "Mặc định"
@@ -3881,12 +3929,12 @@ msgid "Reset all options to their default values"
 msgstr "Đặt lại tất cả các phím tắt về giá trị mặc định"
 
 #. [label]: id=nick_title
-#: data/gui/window/mp_change_control.cfg:73
+#: data/gui/window/mp_change_control.cfg:75
 msgid "Nickname"
 msgstr "Biệt danh"
 
 #. [label]
-#: data/gui/window/mp_change_control.cfg:194
+#: data/gui/window/mp_change_control.cfg:140
 msgid "Change Control"
 msgstr "Thay đổi quyền điều khiển"
 
@@ -3940,8 +3988,8 @@ msgstr "Lý do:"
 msgid "Time:"
 msgstr "Thời gian:"
 
-#. [label]
 #. [button]: id=status
+#. [label]
 #: data/gui/window/mp_cmd_wrapper.cfg:378 data/gui/window/unit_list.cfg:121
 msgid "Status"
 msgstr "Trạng thái"
@@ -4046,6 +4094,13 @@ msgid "The amount of experience a unit needs to advance"
 msgstr ""
 
 #. [toggle_button]: id=fog
+#: data/gui/window/mp_create_game.cfg:372
+#, fuzzy
+#| msgid "Fog of war"
+msgid "Fog of War"
+msgstr "Sương mù chiến tranh"
+
+#. [toggle_button]: id=fog
 #: data/gui/window/mp_create_game.cfg:373
 msgid "Enemy units cannot be seen unless they are in range of your units"
 msgstr ""
@@ -4057,7 +4112,9 @@ msgstr ""
 
 #. [toggle_button]: id=random_start_time
 #: data/gui/window/mp_create_game.cfg:405
-msgid "Random start time"
+#, fuzzy
+#| msgid "Random start time"
+msgid "Random Start Time"
 msgstr "Thời điểm ban đầu ngẫu nhiên"
 
 #. [toggle_button]: id=random_start_time
@@ -4128,7 +4185,7 @@ msgstr ""
 #. [widget]: id=label
 #: data/gui/window/mp_create_game.cfg:533 data/gui/window/preferences.cfg:291
 #: data/gui/window/preferences/05_multiplayer.cfg:430
-#: src/gui/dialogs/preferences_dialog.cpp:689
+#: src/gui/dialogs/preferences_dialog.cpp:99
 #, fuzzy
 #| msgid "Generate"
 msgid "General"
@@ -4154,63 +4211,63 @@ msgid "Any"
 msgstr ""
 
 #. [label]
-#: data/gui/window/mp_create_game.cfg:833
+#: data/gui/window/mp_create_game.cfg:834
 #, fuzzy
 #| msgid "Random starting time"
 msgid "Random map options: "
 msgstr "Thời điểm ban đầu ngẫu nhiên"
 
 #. [button]: id=random_map_regenerate
-#: data/gui/window/mp_create_game.cfg:854
+#: data/gui/window/mp_create_game.cfg:855
 #, fuzzy
 #| msgid "Generate"
 msgid "Regenerate"
 msgstr "Tạo"
 
-#: data/gui/window/mp_create_game.cfg:927
+#: data/gui/window/mp_create_game.cfg:928
 msgid "Shuffle Sides"
 msgstr ""
 
-#: data/gui/window/mp_create_game.cfg:931
+#: data/gui/window/mp_create_game.cfg:932
 msgid "Allow users who are not playing to watch the game"
 msgstr ""
 
-#: data/gui/window/mp_create_game.cfg:931
+#: data/gui/window/mp_create_game.cfg:932
 #, fuzzy
 #| msgid "Observe"
 msgid "Observers"
 msgstr "Quan sát"
 
-#: data/gui/window/mp_create_game.cfg:935
+#: data/gui/window/mp_create_game.cfg:936
 msgid "Allow only registered users to join the game"
 msgstr ""
 
-#: data/gui/window/mp_create_game.cfg:935
+#: data/gui/window/mp_create_game.cfg:936
 msgid "Registered Users Only"
 msgstr ""
 
-#: data/gui/window/mp_create_game.cfg:939
+#: data/gui/window/mp_create_game.cfg:940
 msgid "Strict Synchronization"
 msgstr ""
 
-#: data/gui/window/mp_create_game.cfg:939
+#: data/gui/window/mp_create_game.cfg:940
 msgid "Stricter checks for out-of-sync errors"
 msgstr ""
 
 #. [label]
-#: data/gui/window/mp_create_game.cfg:955
+#: data/gui/window/mp_create_game.cfg:956
 msgid "Name of game:"
 msgstr "Tên trò chơi:"
 
 #. [label]
-#: data/gui/window/mp_create_game.cfg:987
+#: data/gui/window/mp_create_game.cfg:988
 #: data/gui/window/mp_join_game_password_prompt.cfg:90
 #: data/gui/window/mp_login.cfg:143
 msgid "Password:"
 msgstr "Mật khẩu:"
 
 #. [text_box]: id=game_password
-#: data/gui/window/mp_create_game.cfg:1001
+#: data/gui/window/mp_create_game.cfg:1002
 msgid ""
 "Set the password that people wanting to join your game as players must enter."
 msgstr ""
@@ -4218,9 +4275,9 @@ msgstr ""
 "khẩu."
 
 #. [label]
-#: data/gui/window/mp_create_game/default_resolution.cfg:169
-#: data/gui/window/mp_create_game/small_resolution.cfg:172
-#: data/gui/window/mp_create_game/tiny_resolution.cfg:159
+#: data/gui/window/mp_create_game/default_resolution.cfg:174
+#: data/gui/window/mp_create_game/small_resolution.cfg:177
+#: data/gui/window/mp_create_game/tiny_resolution.cfg:164
 #, fuzzy
 #| msgid "Map size: "
 msgid "Map size:"
@@ -4246,15 +4303,15 @@ msgstr "Giới tính:"
 msgid "Random"
 msgstr ""
 
-#. [toggle_button]: id=male_toggle
 #. [row]
+#. [toggle_button]: id=male_toggle
 #: data/gui/window/mp_faction_select.cfg:169
 #: data/gui/window/unit_create.cfg:216
 msgid "Male"
 msgstr "Nam"
 
-#. [toggle_button]: id=female_toggle
 #. [row]
+#. [toggle_button]: id=female_toggle
 #: data/gui/window/mp_faction_select.cfg:171
 #: data/gui/window/unit_create.cfg:228
 msgid "Female"
@@ -4300,19 +4357,19 @@ msgstr ""
 "Bạn có muốn tiếp tục không?"
 
 #. [label]
-#: data/gui/window/mp_join_game.cfg:130 data/gui/window/mp_staging.cfg:141
+#: data/gui/window/mp_join_game.cfg:130 data/gui/window/mp_staging.cfg:143
 msgid "<b>Faction:</b>"
 msgstr ""
 
 #. [label]
-#: data/gui/window/mp_join_game.cfg:162 data/gui/window/mp_staging.cfg:173
+#: data/gui/window/mp_join_game.cfg:162 data/gui/window/mp_staging.cfg:176
 #, fuzzy
 #| msgid "Gender:"
 msgid "<b>Gender:</b>"
 msgstr "Giới tính:"
 
 #. [label]
-#: data/gui/window/mp_join_game.cfg:330 data/gui/window/mp_staging.cfg:416
+#: data/gui/window/mp_join_game.cfg:330 data/gui/window/mp_staging.cfg:412
 #, fuzzy
 #| msgid "Choose Player"
 msgid "Connected Players"
@@ -4324,7 +4381,8 @@ msgid "Leave"
 msgstr ""
 
 #. [label]: id=title
-#: data/gui/window/mp_join_game.cfg:479 data/gui/window/mp_staging.cfg:631
+#: data/gui/window/mp_join_game.cfg:479 data/gui/window/mp_staging.cfg:622
+#: data/gui/window/mp_staging.cfg:799
 #, fuzzy
 #| msgid "Lobby"
 msgid "Game Lobby"
@@ -4332,7 +4390,8 @@ msgstr "Phòng gặp gỡ"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=status_label
-#: data/gui/window/mp_join_game.cfg:548 data/gui/window/mp_staging.cfg:700
+#: data/gui/window/mp_join_game.cfg:548 data/gui/window/mp_staging.cfg:684
+#: data/gui/window/mp_staging.cfg:868
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:447
 msgid "Waiting for players to join..."
 msgstr ""
@@ -4373,12 +4432,12 @@ msgid "Password Reminder"
 msgstr "Trình nhắc nhở mật khẩu"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [grid]
 #. [label]
 #. [widget]: id=label
+#. [grid]
 #: data/gui/window/mp_method_selection.cfg:44
 #: data/gui/window/preferences.cfg:364 data/gui/window/title_screen.cfg:253
-#: src/gui/dialogs/game_load.cpp:320
+#: src/gui/dialogs/game_load.cpp:329
 msgid "Multiplayer"
 msgstr "Nhiều người chơi"
 
@@ -4439,12 +4498,43 @@ msgstr "Địa chỉ"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
-#: data/gui/window/mp_server_list.cfg:217 src/preferences_display.cpp:153
+#: data/gui/window/mp_server_list.cfg:217 src/preferences/display.cpp:159
 msgid "Select"
 msgstr "Chọn"
 
+#. [button]: id=select_leader
+#: data/gui/window/mp_staging.cfg:70
+msgid "Select the faction and leader for this side"
+msgstr ""
+
+#. [menu_button]: id=controller
+#: data/gui/window/mp_staging.cfg:231
+#, fuzzy
+#| msgid "Change the music volume"
+msgid "Change the side's controller"
+msgstr "Thay đổi mức âm lượng âm nhạc"
+
+#. [menu_button]: id=ai_controller
+#: data/gui/window/mp_staging.cfg:247
+#, fuzzy
+#| msgid "Change the music volume"
+msgid "Change the AI side's behaviour"
+msgstr "Thay đổi mức âm lượng âm nhạc"
+
+#. [menu_button]: id=side_team
+#: data/gui/window/mp_staging.cfg:274
+msgid "Which team this side belongs to"
+msgstr ""
+
+#. [menu_button]: id=side_color
+#: data/gui/window/mp_staging.cfg:290
+#, fuzzy
+#| msgid "Show team colors"
+msgid "The team color"
+msgstr "Hiện màu của đội"
+
 #. [button]: id=ok
-#: data/gui/window/mp_staging.cfg:505
+#: data/gui/window/mp_staging.cfg:494
 msgid "I’m Ready"
 msgstr ""
 
@@ -4623,55 +4713,60 @@ msgstr "Bộ nhớ đệm:"
 msgid "Manage the game WML cache"
 msgstr "Thay đổi tỷ lệ lấy mẫu"
 
+#. [label]
+#: data/gui/window/preferences/02_hotkeys.cfg:25
+msgid "Categories:"
+msgstr ""
+
 #. [toggle_button]: id=sort_0
-#: data/gui/window/preferences/02_hotkeys.cfg:87
+#: data/gui/window/preferences/02_hotkeys.cfg:81
 msgid "Action"
 msgstr "Hành động"
 
 #. [toggle_button]: id=sort_1
-#: data/gui/window/preferences/02_hotkeys.cfg:99
+#: data/gui/window/preferences/02_hotkeys.cfg:93
 #, fuzzy
 #| msgid "Hotkeys"
 msgid "Hotkey"
 msgstr "Phím tắt"
 
 #. [toggle_button]: id=sort_2
-#: data/gui/window/preferences/02_hotkeys.cfg:110
+#: data/gui/window/preferences/02_hotkeys.cfg:104
 msgid "game_hotkeys^G"
 msgstr ""
 
 #. [toggle_button]: id=sort_2
-#: data/gui/window/preferences/02_hotkeys.cfg:111
+#: data/gui/window/preferences/02_hotkeys.cfg:105
 msgid "Available in game"
 msgstr ""
 
 #. [toggle_button]: id=sort_3
-#: data/gui/window/preferences/02_hotkeys.cfg:122
+#: data/gui/window/preferences/02_hotkeys.cfg:116
 msgid "editor_hotkeys^E"
 msgstr ""
 
 #. [toggle_button]: id=sort_3
-#: data/gui/window/preferences/02_hotkeys.cfg:123
+#: data/gui/window/preferences/02_hotkeys.cfg:117
 msgid "Available in editor"
 msgstr ""
 
 #. [toggle_button]: id=sort_4
-#: data/gui/window/preferences/02_hotkeys.cfg:134
+#: data/gui/window/preferences/02_hotkeys.cfg:128
 msgid "titlescreen_hotkeys^T"
 msgstr ""
 
 #. [toggle_button]: id=sort_4
-#: data/gui/window/preferences/02_hotkeys.cfg:135
+#: data/gui/window/preferences/02_hotkeys.cfg:129
 msgid "Available at titlescreen"
 msgstr ""
 
 #. [button]: id=btn_add_hotkey
-#: data/gui/window/preferences/02_hotkeys.cfg:247
+#: data/gui/window/preferences/02_hotkeys.cfg:241
 msgid "Add Hotkey"
 msgstr "Thêm phím tắt"
 
 #. [button]: id=btn_clear_hotkey
-#: data/gui/window/preferences/02_hotkeys.cfg:258
+#: data/gui/window/preferences/02_hotkeys.cfg:252
 msgid "Clear Hotkey"
 msgstr "Xóa phím tắt"
 
@@ -5110,14 +5205,14 @@ msgid "Show enemy orb"
 msgstr "Hiện di chuyển của kẻ thù"
 
 #. [label]
-#: data/gui/window/sp_options_configure.cfg:40
+#: data/gui/window/sp_options_configure.cfg:44
 #, fuzzy
 #| msgid "Configuration:"
 msgid "Configure Options"
 msgstr "Cấu hình:"
 
 #. [label]
-#: data/gui/window/sp_options_configure.cfg:58
+#: data/gui/window/sp_options_configure.cfg:62
 msgid "Configure settings for the selected custom modifications."
 msgstr ""
 
@@ -5160,6 +5255,11 @@ msgstr "Mở đầu màn"
 msgid "Campaign"
 msgstr "Chiến dịch"
 
+#. [button]: id=cancel
+#: data/gui/window/story_viewer.cfg:131
+msgid "Skip"
+msgstr ""
+
 #. [label]: id=lblTitle
 #: data/gui/window/synced_choice_wait.cfg:40
 msgid "Waiting..."
@@ -5181,6 +5281,11 @@ msgstr "Thoát trò chơi"
 #: data/gui/window/terrain_layers.cfg:21
 msgid "#"
 msgstr ""
+
+#. [label]
+#: data/gui/window/terrain_layers.cfg:33
+msgid "Image"
+msgstr "Ảnh"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:57
@@ -5228,11 +5333,6 @@ msgstr ""
 msgid "Choose Theme"
 msgstr "Chọn sắc thái"
 
-#. [label]
-#: data/gui/window/theme_list.cfg:67
-msgid "The new theme will take effect after loading or starting a new game."
-msgstr "Sắc thái mới sẽ có hiệu lực sau khi tải hoặc bắt đầu một trò chơi mới."
-
 #. [button]: id=help
 #: data/gui/window/title_screen.cfg:175
 msgid "Show Battle for Wesnoth help"
@@ -5255,7 +5355,7 @@ msgstr "Hướng dẫn làm quen với trò chơi"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
-#: data/gui/window/title_screen.cfg:251 src/gui/dialogs/game_load.cpp:323
+#: data/gui/window/title_screen.cfg:251 src/gui/dialogs/game_load.cpp:332
 msgid "Tutorial"
 msgstr "Hướng dẫn"
 
@@ -5473,8 +5573,8 @@ msgstr "Tuyển quân"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/window/wml_error.cfg:40 src/gui/dialogs/message.cpp:212
-#: src/gui/dialogs/preferences_dialog.cpp:200
+#: data/gui/window/wml_error.cfg:40 src/gui/dialogs/message.cpp:213
+#: src/gui/dialogs/preferences_dialog.cpp:221
 #: src/gui/dialogs/transient_message.cpp:81
 msgid "Error"
 msgstr "Lỗi"
@@ -5558,49 +5658,34 @@ msgstr "Chiều rộng văn bản tối đa nhỏ hơn 1."
 msgid "The text contains invalid markup: "
 msgstr "Văn bản chứa đánh dấu không hợp lệ: "
 
-#: src/game_preferences.cpp:410
-msgid "No server has been defined."
-msgstr "Không xác định được máy chủ nào."
-
-#: src/game_preferences.cpp:509
-msgid "player"
-msgstr "người chơi"
-
-#: src/game_preferences.cpp:1044
-#, fuzzy
-#| msgid "%H:%M"
-msgid "[%H:%M]"
-msgstr "%H:%M"
-
-#: src/game_preferences.cpp:1047
-#, fuzzy
-#| msgid "%I:%M %p"
-msgid "[%I:%M %p]"
-msgstr "%I:%M %p"
-
-#: src/gui/core/canvas.cpp:596
+#: src/gui/core/canvas.cpp:620
 msgid "Line doesn't fit on canvas."
 msgstr "Đường thẳng không khớp với họa tiết nền."
 
-#: src/gui/core/canvas.cpp:727
+#: src/gui/core/canvas.cpp:707
 msgid "Rectangle doesn't fit on canvas."
 msgstr "Hình chữ nhật không khớp với họa tiết nền."
 
-#: src/gui/core/canvas.cpp:847 src/gui/core/canvas.cpp:852
-#: src/gui/core/canvas.cpp:857 src/gui/core/canvas.cpp:863
+#: src/gui/core/canvas.cpp:822
+#, fuzzy
+#| msgid "Rectangle doesn't fit on canvas."
+msgid "Rounded Rectangle doesn't fit on canvas."
+msgstr "Hình chữ nhật không khớp với họa tiết nền."
+
+#: src/gui/core/canvas.cpp:931 src/gui/core/canvas.cpp:936
+#: src/gui/core/canvas.cpp:941 src/gui/core/canvas.cpp:947
 msgid "Circle doesn't fit on canvas."
 msgstr "Đường tròn không khớp với họa tiết nền."
 
-#: src/gui/core/canvas.cpp:1051 src/gui/core/canvas.cpp:1058
-#: src/gui/core/canvas.cpp:1068 src/gui/core/canvas.cpp:1075
+#: src/gui/core/canvas.cpp:1047
 msgid "Image doesn't fit on canvas."
 msgstr "Hình ảnh không khớp với họa tiết nền."
 
-#: src/gui/core/canvas.cpp:1303
+#: src/gui/core/canvas.cpp:1269
 msgid "Text has a font size of 0."
 msgstr "Văn bản có kích thước phông bằng 0."
 
-#: src/gui/core/canvas.cpp:1380
+#: src/gui/core/canvas.cpp:1343
 msgid "Text doesn't start on canvas."
 msgstr "Văn bản không bắt đầu trên họa tiết nền."
 
@@ -5612,11 +5697,11 @@ msgstr "Không xác định được độ phân giải."
 msgid "Linked '$id' group has multiple definitions."
 msgstr "Nhóm '$id' đã liên kết có nhiều định nghĩa."
 
-#: src/gui/core/window_builder.cpp:407 src/gui/widgets/addon_list.cpp:355
-#: src/gui/widgets/chatbox.cpp:745 src/gui/widgets/listbox.cpp:826
-#: src/gui/widgets/multi_page.cpp:216 src/gui/widgets/panel.cpp:199
-#: src/gui/widgets/scroll_label.cpp:194 src/gui/widgets/scrollbar_panel.cpp:99
-#: src/gui/widgets/size_lock.cpp:99 src/gui/widgets/stacked_widget.cpp:200
+#: src/gui/core/window_builder.cpp:407 src/gui/widgets/addon_list.cpp:369
+#: src/gui/widgets/chatbox.cpp:745 src/gui/widgets/listbox.cpp:831
+#: src/gui/widgets/multi_page.cpp:235 src/gui/widgets/panel.cpp:199
+#: src/gui/widgets/scroll_label.cpp:219 src/gui/widgets/scrollbar_panel.cpp:99
+#: src/gui/widgets/size_lock.cpp:99 src/gui/widgets/stacked_widget.cpp:240
 #: src/gui/widgets/toggle_panel.cpp:421 src/gui/widgets/tree_view.cpp:314
 #: src/gui/widgets/unit_preview_pane.cpp:551
 msgid "No grid defined."
@@ -5630,137 +5715,137 @@ msgstr "Hàng phải có cột."
 msgid "Number of columns differ."
 msgstr "Số cột sai khác."
 
-#: src/gui/dialogs/addon/manager.cpp:222
+#: src/gui/dialogs/addon/manager.cpp:215
 msgid "addons_view^All Add-ons"
 msgstr "Tất cả các phần bổ sung"
 
-#: src/gui/dialogs/addon/manager.cpp:223
+#: src/gui/dialogs/addon/manager.cpp:216
 msgid "addons_view^Installed"
 msgstr "Đã cài đặt"
 
-#: src/gui/dialogs/addon/manager.cpp:224
+#: src/gui/dialogs/addon/manager.cpp:217
 msgid "addons_view^Upgradable"
 msgstr "Có thể nâng cấp"
 
-#: src/gui/dialogs/addon/manager.cpp:225
+#: src/gui/dialogs/addon/manager.cpp:218
 msgid "addons_view^Not Installed"
 msgstr "Chưa cài đặt"
 
-#: src/gui/dialogs/addon/manager.cpp:229
+#: src/gui/dialogs/addon/manager.cpp:222
 msgid "addons_of_type^Campaigns"
 msgstr "Chiến dịch"
 
-#: src/gui/dialogs/addon/manager.cpp:230
+#: src/gui/dialogs/addon/manager.cpp:223
 msgid "addons_of_type^Scenarios"
 msgstr "Màn chơi"
 
-#: src/gui/dialogs/addon/manager.cpp:231
+#: src/gui/dialogs/addon/manager.cpp:224
 msgid "addons_of_type^SP/MP campaigns"
 msgstr "Chiến dịch 1NC/NNC "
 
-#: src/gui/dialogs/addon/manager.cpp:232
+#: src/gui/dialogs/addon/manager.cpp:225
 msgid "addons_of_type^MP campaigns"
 msgstr "Chiến dịch NNC "
 
-#: src/gui/dialogs/addon/manager.cpp:233
+#: src/gui/dialogs/addon/manager.cpp:226
 msgid "addons_of_type^MP scenarios"
 msgstr "Tài nguyên NNC"
 
-#: src/gui/dialogs/addon/manager.cpp:234
+#: src/gui/dialogs/addon/manager.cpp:227
 msgid "addons_of_type^MP map-packs"
 msgstr "Gói bản đồ NNC"
 
-#: src/gui/dialogs/addon/manager.cpp:235
+#: src/gui/dialogs/addon/manager.cpp:228
 msgid "addons_of_type^MP eras"
 msgstr "Thời đại NNC"
 
-#: src/gui/dialogs/addon/manager.cpp:236
+#: src/gui/dialogs/addon/manager.cpp:229
 msgid "addons_of_type^MP factions"
 msgstr "Liên minh NNC"
 
-#: src/gui/dialogs/addon/manager.cpp:237
+#: src/gui/dialogs/addon/manager.cpp:230
 msgid "addons_of_type^MP modifications"
 msgstr "Bản sửa đổi NNC"
 
-#: src/gui/dialogs/addon/manager.cpp:238
+#: src/gui/dialogs/addon/manager.cpp:231
 #, fuzzy
 #| msgid "addons_of_type^Resources"
 msgid "addons_of_type^Cores"
 msgstr "Tài nguyên"
 
-#: src/gui/dialogs/addon/manager.cpp:239
+#: src/gui/dialogs/addon/manager.cpp:232
 msgid "addons_of_type^Resources"
 msgstr "Tài nguyên"
 
-#: src/gui/dialogs/addon/manager.cpp:241
+#: src/gui/dialogs/addon/manager.cpp:234
 msgid "addons_of_type^Other"
 msgstr "Khác"
 
-#: src/gui/dialogs/addon/manager.cpp:242
+#: src/gui/dialogs/addon/manager.cpp:235
 msgid "addons_of_type^Unknown"
 msgstr "Không xác định"
 
-#: src/gui/dialogs/addon/manager.cpp:277 src/gui/widgets/addon_list.cpp:83
+#: src/gui/dialogs/addon/manager.cpp:279 src/gui/widgets/addon_list.cpp:83
 msgid "addon_state^Not installed"
 msgstr "Chưa cài đặt"
 
-#: src/gui/dialogs/addon/manager.cpp:278 src/gui/widgets/addon_list.cpp:83
+#: src/gui/dialogs/addon/manager.cpp:280 src/gui/widgets/addon_list.cpp:83
 msgid "addon_state^Published, not installed"
 msgstr "Đã phát hành, chưa cài đặt"
 
-#: src/gui/dialogs/addon/manager.cpp:282 src/gui/widgets/addon_list.cpp:91
+#: src/gui/dialogs/addon/manager.cpp:284 src/gui/widgets/addon_list.cpp:91
 msgid "addon_state^Installed"
 msgstr "Đã cài đặt"
 
-#: src/gui/dialogs/addon/manager.cpp:283 src/gui/widgets/addon_list.cpp:91
+#: src/gui/dialogs/addon/manager.cpp:285 src/gui/widgets/addon_list.cpp:91
 msgid "addon_state^Published"
 msgstr "Đã phát hành"
 
-#: src/gui/dialogs/addon/manager.cpp:287
+#: src/gui/dialogs/addon/manager.cpp:289
 msgid "addon_state^Installed, not tracking local version"
 msgstr "Đã cài đặt, không theo dõi phiên bản cục bộ"
 
-#: src/gui/dialogs/addon/manager.cpp:290
+#: src/gui/dialogs/addon/manager.cpp:292
 msgid "addon_state^Published, not tracking local version"
 msgstr "Đã phát hành, không theo dõi phiên bản cục bộ"
 
-#: src/gui/dialogs/addon/manager.cpp:294
+#: src/gui/dialogs/addon/manager.cpp:296
 msgid "addon_state^Installed ($local_version|), upgradable"
 msgstr "Đã cài đặt ($local_version|), có thể nâng cấp"
 
-#: src/gui/dialogs/addon/manager.cpp:295
+#: src/gui/dialogs/addon/manager.cpp:297
 msgid "addon_state^Published ($local_version| installed), upgradable"
 msgstr "Đã phát hành (đã cài đặt $local_version|), có thể nâng cấp"
 
-#: src/gui/dialogs/addon/manager.cpp:301
+#: src/gui/dialogs/addon/manager.cpp:303
 msgid "addon_state^Installed ($local_version|), outdated on server"
 msgstr "Đã cài đặt ($local_version|), hết hạn trên máy chủ"
 
-#: src/gui/dialogs/addon/manager.cpp:302
+#: src/gui/dialogs/addon/manager.cpp:304
 msgid "addon_state^Published ($local_version| installed), outdated on server"
 msgstr "Đã phát hành (đã cài đặt $local_version|), hết hạn trên máy chủ"
 
-#: src/gui/dialogs/addon/manager.cpp:308 src/gui/widgets/addon_list.cpp:94
+#: src/gui/dialogs/addon/manager.cpp:310 src/gui/widgets/addon_list.cpp:94
 #, fuzzy
 #| msgid "addon_state^Installed ($local_version|), outdated on server"
 msgid "addon_state^Installed, not ready to publish"
 msgstr "Đã cài đặt ($local_version|), hết hạn trên máy chủ"
 
-#: src/gui/dialogs/addon/manager.cpp:309 src/gui/widgets/addon_list.cpp:94
+#: src/gui/dialogs/addon/manager.cpp:311 src/gui/widgets/addon_list.cpp:94
 #, fuzzy
 #| msgid "addon_state^Published"
 msgid "addon_state^Ready to publish"
 msgstr "Đã phát hành"
 
-#: src/gui/dialogs/addon/manager.cpp:313 src/gui/widgets/addon_list.cpp:106
+#: src/gui/dialogs/addon/manager.cpp:315 src/gui/widgets/addon_list.cpp:106
 msgid "addon_state^Installed, broken"
 msgstr "Đã cài đặt, bị hỏng"
 
-#: src/gui/dialogs/addon/manager.cpp:314 src/gui/widgets/addon_list.cpp:106
+#: src/gui/dialogs/addon/manager.cpp:316 src/gui/widgets/addon_list.cpp:106
 msgid "addon_state^Published, broken"
 msgstr "Đã phát hành, bị hỏng"
 
-#: src/gui/dialogs/addon/manager.cpp:317 src/gui/widgets/addon_list.cpp:110
+#: src/gui/dialogs/addon/manager.cpp:319 src/gui/widgets/addon_list.cpp:110
 msgid "addon_state^Unknown"
 msgstr "Không xác định"
 
@@ -5774,66 +5859,76 @@ msgstr "Không xác định"
 msgid "Clipboard support not found, contact your packager"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:446
+#: src/gui/dialogs/addon/manager.cpp:447
+msgid "addons^Back to List"
+msgstr ""
+
+#: src/gui/dialogs/addon/manager.cpp:463
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:473
+#: src/gui/dialogs/addon/manager.cpp:490
 #, fuzzy
 #| msgid "No description available."
 msgid "No Add-ons Available"
 msgstr "Không có mô tả."
 
-#: src/gui/dialogs/addon/manager.cpp:473
+#: src/gui/dialogs/addon/manager.cpp:490
 msgid "There are no add-ons available for download from this server."
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:580
+#: src/gui/dialogs/addon/manager.cpp:599
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:588
+#: src/gui/dialogs/addon/manager.cpp:607
 msgid "The following add-on could not be deleted properly:"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:630
+#: src/gui/dialogs/addon/manager.cpp:649
 msgid "Warning"
 msgstr "Cảnh báo"
 
-#: src/gui/dialogs/addon/manager.cpp:631
+#: src/gui/dialogs/addon/manager.cpp:650
 msgid ""
 "The remote version of this add-on is greater or equal to the version being "
 "uploaded. Do you really wish to continue?"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:640
+#: src/gui/dialogs/addon/manager.cpp:659
 msgid "Invalid icon path. Make sure the path points to a valid image."
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:643 src/gui/dialogs/addon/manager.cpp:647
-#: src/gui/dialogs/addon/manager.cpp:672
+#: src/gui/dialogs/addon/manager.cpp:662 src/gui/dialogs/addon/manager.cpp:666
+#: src/gui/dialogs/addon/manager.cpp:691
 msgid "The server responded with an error:"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:644
+#: src/gui/dialogs/addon/manager.cpp:663
 msgid "Terms"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:649 src/gui/dialogs/addon/manager.cpp:675
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:450
+#: src/gui/dialogs/addon/manager.cpp:668 src/gui/dialogs/addon/manager.cpp:694
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:459
 msgid "Response"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:659
+#: src/gui/dialogs/addon/manager.cpp:678
 msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:739 src/gui/dialogs/addon/manager.cpp:753
-#: src/gui/dialogs/campaign_selection.cpp:187
+#: src/gui/dialogs/addon/manager.cpp:709
+#, fuzzy
+#| msgid "Do you really want to delete this game?"
+msgid "Do you want to uninstall '$addon|'?"
+msgstr "Bạn có thực sự muốn xóa trò chơi này không?"
+
+#: src/gui/dialogs/addon/manager.cpp:793 src/gui/dialogs/addon/manager.cpp:807
+#: src/gui/dialogs/campaign_selection.cpp:182
 #, fuzzy
 #| msgid "url^None"
 msgid "None"
@@ -5855,20 +5950,6 @@ msgstr ""
 
 #: src/gui/dialogs/attack_predictions.cpp:190
 msgid "Attacker vulnerability vs"
-msgstr ""
-
-#: src/gui/dialogs/campaign_settings.cpp:123
-msgid ""
-"Era:\n"
-"\n"
-"Not allowed."
-msgstr ""
-
-#: src/gui/dialogs/campaign_settings.cpp:148
-msgid ""
-"Modifications:\n"
-"\n"
-"None found."
 msgstr ""
 
 #: src/gui/dialogs/depcheck_confirm_change.cpp:66
@@ -5933,41 +6014,41 @@ msgstr ""
 msgid "Save"
 msgstr "Lưu bản đồ"
 
-#: src/gui/dialogs/file_dialog.cpp:316
+#: src/gui/dialogs/file_dialog.cpp:318
 #, fuzzy
 #| msgid "Save already exists. Do you want to overwrite it?"
 msgid "The file already exists. Do you wish to overwrite it?"
 msgstr "Bản lưu đã tồn tại. Bạn có muốn ghi đè lên không?"
 
-#: src/gui/dialogs/file_dialog.cpp:340
+#: src/gui/dialogs/file_dialog.cpp:342
 msgid "The file or folder $path cannot be created."
 msgstr ""
 
-#: src/gui/dialogs/file_dialog.cpp:345
+#: src/gui/dialogs/file_dialog.cpp:348
 msgid "The file or folder $path does not exist."
 msgstr ""
 
-#: src/gui/dialogs/file_dialog.cpp:719
+#: src/gui/dialogs/file_dialog.cpp:724
 msgid ""
 "Could not create a new folder at $path|. Make sure you have the appropriate "
 "permissions to write to this location."
 msgstr ""
 
-#: src/gui/dialogs/file_dialog.cpp:737
+#: src/gui/dialogs/file_dialog.cpp:742
 msgid "The following folder and its contents will be permanently deleted:"
 msgstr ""
 
-#: src/gui/dialogs/file_dialog.cpp:738
+#: src/gui/dialogs/file_dialog.cpp:743
 msgid "The following file will be permanently deleted:"
 msgstr ""
 
-#: src/gui/dialogs/file_dialog.cpp:739
+#: src/gui/dialogs/file_dialog.cpp:744
 #, fuzzy
 #| msgid "Do you really want to delete this game?"
 msgid "Do you wish to continue?"
 msgstr "Bạn có thực sự muốn xóa trò chơi này không?"
 
-#: src/gui/dialogs/file_dialog.cpp:751
+#: src/gui/dialogs/file_dialog.cpp:756
 msgid ""
 "Could not delete $path|. Make sure you have the appropriate permissions to "
 "write to this location."
@@ -6014,51 +6095,63 @@ msgstr ""
 msgid "The game data cache could not be purged."
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:284
+#: src/gui/dialogs/game_load.cpp:293
 #, fuzzy
 #| msgid "#(Invalid)"
 msgid "(Invalid)"
 msgstr "#(Không hợp lệ)"
 
-#: src/gui/dialogs/game_load.cpp:311
+#: src/gui/dialogs/game_load.cpp:320
 msgid "Campaign: $campaign_name"
 msgstr "Chiến dịch: $campaign_name"
 
-#: src/gui/dialogs/game_load.cpp:326
+#: src/gui/dialogs/game_load.cpp:335
 msgid "Test scenario"
 msgstr "Màn chơi kiểm tra"
 
-#: src/gui/dialogs/game_load.cpp:336
+#: src/gui/dialogs/game_load.cpp:345
 msgid "Replay"
 msgstr "Phát lại"
 
-#: src/gui/dialogs/game_load.cpp:338
+#: src/gui/dialogs/game_load.cpp:347
 msgid "Turn"
 msgstr "Lượt"
 
-#: src/gui/dialogs/game_load.cpp:340
+#: src/gui/dialogs/game_load.cpp:349
 msgid "Scenario start"
 msgstr "Mở đầu màn"
 
-#: src/gui/dialogs/game_load.cpp:343
+#: src/gui/dialogs/game_load.cpp:352
 msgid "Difficulty: "
 msgstr "Độ khó: "
 
-#: src/gui/dialogs/game_load.cpp:347
+#: src/gui/dialogs/game_load.cpp:356
 msgid "Version: "
 msgstr "Phiên bản: "
 
-#: src/gui/dialogs/game_stats.cpp:109 src/gui/dialogs/label_settings.cpp:72
+#: src/gui/dialogs/game_stats.cpp:78
+#, fuzzy
+#| msgid "controller^None"
+msgid "controller^Computer"
+msgstr "Không có"
+
+#: src/gui/dialogs/game_stats.cpp:78
+#, fuzzy
+#| msgid "controller^None"
+msgid "controller^Idle"
+msgstr "Không có"
+
+#: src/gui/dialogs/game_stats.cpp:114 src/gui/dialogs/label_settings.cpp:72
 msgid "Unknown"
 msgstr "Không xác định"
 
-#: src/gui/dialogs/game_stats.cpp:195 src/gui/dialogs/game_stats.cpp:198
-#: src/gui/dialogs/preferences_dialog.cpp:579
+#: src/gui/dialogs/game_stats.cpp:200 src/gui/dialogs/game_stats.cpp:203
+#: src/gui/dialogs/preferences_dialog.cpp:600
 msgid "no"
 msgstr "không"
 
-#: src/gui/dialogs/game_stats.cpp:195 src/gui/dialogs/game_stats.cpp:198
-#: src/gui/dialogs/preferences_dialog.cpp:579
+#: src/gui/dialogs/game_stats.cpp:200 src/gui/dialogs/game_stats.cpp:203
+#: src/gui/dialogs/preferences_dialog.cpp:600
 msgid "yes"
 msgstr "có"
 
@@ -6258,13 +6351,13 @@ msgid ""
 "multiplayer lobby. Please report this at http://bugs.wesnoth.org."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_alerts_options.cpp:135
+#: src/gui/dialogs/multiplayer/mp_alerts_options.cpp:132
 msgid ""
 "This build of wesnoth does not include support for desktop notifications, "
 "contact your package manager"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_change_control.cpp:252
+#: src/gui/dialogs/multiplayer/mp_change_control.cpp:118
 msgid "Side $side"
 msgstr "Phe $side"
 
@@ -6341,39 +6434,39 @@ msgstr ""
 msgid "Select at which point to begin this campaign."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:186
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:195
 #, fuzzy
 #| msgid "Map Information"
 msgid "No era information found."
 msgstr "Thông tin bản đồ"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:241
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:250
 #, fuzzy
 #| msgid "Choose Player"
 msgid "Computer Player"
 msgstr "Chọn người chơi"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:243
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:252
 #, fuzzy
 #| msgid "(empty list)"
 msgid "Empty slot"
 msgstr "(danh sách rỗng)"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:245
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:254
 msgid "Reserved for $playername"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:247
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:256
 #, fuzzy
 #| msgid "Vacant slots"
 msgid "Vacant slot"
 msgstr "Còn trống"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:251
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:260
 msgid "empty"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:325
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:334
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:158
 #, fuzzy
 #| msgid "Team 1"
@@ -6384,102 +6477,106 @@ msgstr "Đội 1"
 msgid "Waiting for players to choose factions..."
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:127
-msgid "friend"
-msgstr "bạn bè"
-
-#: src/gui/dialogs/preferences_dialog.cpp:132
-msgid "ignored"
-msgstr "từ chối"
-
-#: src/gui/dialogs/preferences_dialog.cpp:186
-#: src/gui/dialogs/preferences_dialog.cpp:222
-msgid "No username specified"
+#: src/gui/dialogs/outro.cpp:42
+msgid "The End"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:200
-msgid "Invalid username"
-msgstr "Tên người dùng không hợp lệ"
-
-#: src/gui/dialogs/preferences_dialog.cpp:227
-#, fuzzy
-#| msgid "View and edit your friends and ignores list"
-msgid "Not on friends or ignore lists"
-msgstr "Xem và sửa danh sách bạn bè và danh sách từ chối của bạn"
-
-#: src/gui/dialogs/preferences_dialog.cpp:690
+#: src/gui/dialogs/preferences_dialog.cpp:100
 #, fuzzy
 #| msgid "Save Game"
 msgid "Saved Games"
 msgstr "Lưu trò chơi"
 
-#: src/gui/dialogs/preferences_dialog.cpp:691
+#: src/gui/dialogs/preferences_dialog.cpp:101
 #, fuzzy
 #| msgid "Custom Command"
 msgid "Map Commands"
 msgstr "Lệnh tùy chỉnh"
 
-#: src/gui/dialogs/preferences_dialog.cpp:692
+#: src/gui/dialogs/preferences_dialog.cpp:102
 #, fuzzy
 #| msgid "Custom Command"
 msgid "Unit Commands"
 msgstr "Lệnh tùy chỉnh"
 
-#: src/gui/dialogs/preferences_dialog.cpp:693
+#: src/gui/dialogs/preferences_dialog.cpp:103
 #, fuzzy
 #| msgid "Players: "
 msgid "Player Chat"
 msgstr "Số người chơi: "
 
-#: src/gui/dialogs/preferences_dialog.cpp:694
+#: src/gui/dialogs/preferences_dialog.cpp:104
 #, fuzzy
 #| msgid "Change Control"
 msgid "Replay Control"
 msgstr "Thay đổi quyền điều khiển"
 
-#: src/gui/dialogs/preferences_dialog.cpp:695
+#: src/gui/dialogs/preferences_dialog.cpp:105
 #, fuzzy
 #| msgid "whiteboard^Planning Mode"
 msgid "Planning Mode"
 msgstr "Chế độ lập kế hoạch"
 
-#: src/gui/dialogs/preferences_dialog.cpp:696
+#: src/gui/dialogs/preferences_dialog.cpp:106
 #, fuzzy
 #| msgid "Scenario start"
 msgid "Scenario Editor"
 msgstr "Mở đầu màn"
 
-#: src/gui/dialogs/preferences_dialog.cpp:697
+#: src/gui/dialogs/preferences_dialog.cpp:107
 msgid "Editor Palettes"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:698
+#: src/gui/dialogs/preferences_dialog.cpp:108
 #, fuzzy
 #| msgid "Unit Tool"
 msgid "Editor Tools"
 msgstr "Công cụ Đơn vị"
 
-#: src/gui/dialogs/preferences_dialog.cpp:699
+#: src/gui/dialogs/preferences_dialog.cpp:109
 msgid "Editor Clipboard"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:700
+#: src/gui/dialogs/preferences_dialog.cpp:110
 #, fuzzy
 #| msgid "Custom Command"
 msgid "Debug Commands"
 msgstr "Lệnh tùy chỉnh"
 
-#: src/gui/dialogs/preferences_dialog.cpp:701
+#: src/gui/dialogs/preferences_dialog.cpp:111
 #, fuzzy
 #| msgid "Custom Command"
 msgid "Custom WML Commands"
 msgstr "Lệnh tùy chỉnh"
 
-#: src/gui/dialogs/preferences_dialog.cpp:787
+#: src/gui/dialogs/preferences_dialog.cpp:148
+msgid "friend"
+msgstr "bạn bè"
+
+#: src/gui/dialogs/preferences_dialog.cpp:153
+msgid "ignored"
+msgstr "từ chối"
+
+#: src/gui/dialogs/preferences_dialog.cpp:207
+#: src/gui/dialogs/preferences_dialog.cpp:243
+msgid "No username specified"
+msgstr ""
+
+#: src/gui/dialogs/preferences_dialog.cpp:221
+msgid "Invalid username"
+msgstr "Tên người dùng không hợp lệ"
+
+#: src/gui/dialogs/preferences_dialog.cpp:248
+#, fuzzy
+#| msgid "View and edit your friends and ignores list"
+msgid "Not on friends or ignore lists"
+msgstr "Xem và sửa danh sách bạn bè và danh sách từ chối của bạn"
+
+#: src/gui/dialogs/preferences_dialog.cpp:769
 msgid "&#9679;"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:848
+#: src/gui/dialogs/preferences_dialog.cpp:830
 #, fuzzy
 #| msgid ""
 #| "\"$hotkey_sequence|\" is in use by \"$old_hotkey_action|\". Do you wish "
@@ -6491,19 +6588,19 @@ msgstr ""
 "\"$hotkey_sequence|\" đang được sử dụng bởi \"$old_hotkey_action|\". Bạn có "
 "muốn gán lại nó cho \"$new_hotkey_action|\" không?"
 
-#: src/gui/dialogs/preferences_dialog.cpp:854
+#: src/gui/dialogs/preferences_dialog.cpp:836
 msgid "Reassign Hotkey"
 msgstr "Gán lại phím tắt"
 
-#: src/gui/dialogs/preferences_dialog.cpp:871
+#: src/gui/dialogs/preferences_dialog.cpp:853
 msgid "All hotkeys have been reset to their default values."
 msgstr "Tất cả các phím tắt đã được đặt lại v giá trị mặc định."
 
-#: src/gui/dialogs/preferences_dialog.cpp:871
+#: src/gui/dialogs/preferences_dialog.cpp:853
 msgid "Hotkeys Reset"
 msgstr "Đặt lại phím tắt"
 
-#: src/gui/dialogs/preferences_dialog.cpp:965
+#: src/gui/dialogs/preferences_dialog.cpp:976
 msgid "∞"
 msgstr ""
 
@@ -6513,41 +6610,47 @@ msgstr ""
 msgid "file_size^Unknown"
 msgstr "Không xác định"
 
-#: src/gui/dialogs/statistics_dialog.cpp:194
+#: src/gui/dialogs/statistics_dialog.cpp:195
 #, fuzzy
 #| msgid "Recruit"
 msgid "Recruits"
 msgstr "Tuyển quân"
 
-#: src/gui/dialogs/statistics_dialog.cpp:195
+#: src/gui/dialogs/statistics_dialog.cpp:196
 #, fuzzy
 #| msgid "Recall"
 msgid "Recalls"
 msgstr "Gọi lại"
 
-#: src/gui/dialogs/statistics_dialog.cpp:196
+#: src/gui/dialogs/statistics_dialog.cpp:197
 #, fuzzy
 #| msgid "sound^Advanced Options"
 msgid "Advancements"
 msgstr "Tùy chọn nâng cao"
 
-#: src/gui/dialogs/statistics_dialog.cpp:197
+#: src/gui/dialogs/statistics_dialog.cpp:198
 msgid "Losses"
 msgstr ""
 
-#: src/gui/dialogs/statistics_dialog.cpp:198
+#: src/gui/dialogs/statistics_dialog.cpp:199
 #, fuzzy
 #| msgid "Hills"
 msgid "Kills"
 msgstr "Đồi"
 
-#: src/gui/dialogs/statistics_dialog.cpp:212
+#: src/gui/dialogs/statistics_dialog.cpp:213
 msgid "Inflicted"
 msgstr ""
 
-#: src/gui/dialogs/statistics_dialog.cpp:220
+#: src/gui/dialogs/statistics_dialog.cpp:221
 msgid "Taken"
 msgstr ""
+
+#: src/gui/dialogs/title_screen.cpp:239
+#, fuzzy
+#| msgid "Choose Theme"
+msgid "Choose Test"
+msgstr "Chọn sắc thái"
 
 #: src/gui/dialogs/unit_recall.cpp:265
 msgid "This unit is loyal and requires no upkeep."
@@ -6603,6 +6706,16 @@ msgstr "Đã cài đặt ($local_version|), hết hạn trên máy chủ"
 msgid "addon_state^Published, outdated on server"
 msgstr "Đã phát hành, chưa cài đặt"
 
+#: src/gui/widgets/addon_list.cpp:266
+#, fuzzy
+#| msgid "Connect to Server"
+msgid "Send new version to server"
+msgstr "Kết nối đến máy chủ"
+
+#: src/gui/widgets/addon_list.cpp:279
+msgid "Delete add-on from server"
+msgstr ""
+
 #: src/gui/widgets/chatbox.cpp:264
 msgid "whisper to $receiver"
 msgstr "gửi tin nhắn riêng đến $receiver"
@@ -6633,58 +6746,82 @@ msgstr "$player đã vào phòng"
 msgid "$player has left the room"
 msgstr "$player đã rời khỏi phòng"
 
-#: src/gui/widgets/helper.cpp:116
+#: src/gui/widgets/helper.cpp:111
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Không xác định được thành phần đồ họa bắt buộc '$id'."
 
-#: src/gui/widgets/label.cpp:162
+#: src/gui/widgets/label.cpp:174
 msgid "Opening links is not supported, contact your packager"
 msgstr ""
 
-#: src/gui/widgets/label.cpp:181
+#: src/gui/widgets/label.cpp:193
 #, fuzzy
 #| msgid "Do you really want to delete this game?"
 msgid "Do you want to open this link?"
 msgstr "Bạn có thực sự muốn xóa trò chơi này không?"
 
-#: src/gui/widgets/label.cpp:212
+#: src/gui/widgets/label.cpp:224
 msgid "Copied link!"
 msgstr ""
 
-#: src/gui/widgets/listbox.cpp:935 src/gui/widgets/multi_page.cpp:299
+#: src/gui/widgets/listbox.cpp:940 src/gui/widgets/multi_page.cpp:321
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr "'list_data' phải có cùng số cột với 'list_definition'."
 
-#: src/gui/widgets/listbox.cpp:979 src/gui/widgets/listbox.cpp:1104
-#: src/gui/widgets/listbox.cpp:1229 src/gui/widgets/scrollbar_panel.cpp:148
+#: src/gui/widgets/listbox.cpp:984 src/gui/widgets/listbox.cpp:1109
+#: src/gui/widgets/listbox.cpp:1234 src/gui/widgets/scrollbar_panel.cpp:148
 msgid "No list defined."
 msgstr "Không xác định được danh sách."
 
-#: src/gui/widgets/listbox.cpp:983 src/gui/widgets/listbox.cpp:1108
-#: src/gui/widgets/listbox.cpp:1233
+#: src/gui/widgets/listbox.cpp:988 src/gui/widgets/listbox.cpp:1113
+#: src/gui/widgets/listbox.cpp:1238
 msgid "A 'list_definition' should contain one row."
 msgstr "'list_definition' phải chứa một hàng."
 
-#: src/gui/widgets/multi_page.cpp:274
+#: src/gui/widgets/multi_page.cpp:297
 msgid "No page defined."
 msgstr "Không xác định được trang."
+
+#: src/gui/widgets/multimenu_button.cpp:181
+#: src/gui/widgets/multimenu_button.cpp:272
+msgid "multimenu^None Selected"
+msgstr ""
+
+#: src/gui/widgets/multimenu_button.cpp:187
+#: src/gui/widgets/multimenu_button.cpp:207
+msgid "multimenu^$first and 1 other"
+msgid_plural "multimenu^$first and $excess others"
+msgstr[0] ""
+
+#: src/gui/widgets/multimenu_button.cpp:189
+#: src/gui/widgets/multimenu_button.cpp:210
+msgid "multimenu^$first and $second"
+msgstr ""
+
+#: src/gui/widgets/multimenu_button.cpp:192
+msgid "multimenu^All Selected"
+msgstr ""
+
+#: src/gui/widgets/multimenu_button.cpp:202
+msgid "multimenu^$first, $second"
+msgstr ""
 
 #: src/gui/widgets/pane.cpp:432
 msgid "Need at least 1 parallel item."
 msgstr "Cần ít nhất 1 mục song song."
 
-#: src/gui/widgets/settings.cpp:461
+#: src/gui/widgets/settings.cpp:459
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr ""
 "Định nghĩa thành phần đồ họa '$definition' không chứa định nghĩa cho '$id'."
 
-#: src/gui/widgets/settings.cpp:541
+#: src/gui/widgets/settings.cpp:539
 msgid "No default gui defined."
 msgstr "Không xác định được giao diện người dùng đồ họa mặc định."
 
-#: src/gui/widgets/settings.cpp:575
+#: src/gui/widgets/settings.cpp:573
 msgid "No state or draw section defined."
 msgstr "Không xác định được trạng thái hoặc vùng vẽ."
 
@@ -6704,13 +6841,13 @@ msgstr "Tên người dùng không hợp lệ"
 msgid "The number of value_labels and values don't match."
 msgstr "Số value_labels và values không khớp nhau."
 
-#: src/gui/widgets/stacked_widget.cpp:237
+#: src/gui/widgets/stacked_widget.cpp:277
 #, fuzzy
 #| msgid "No stack defined."
 msgid "No stack layers defined."
 msgstr "Không xác định được ngăn xếp."
 
-#: src/gui/widgets/styled_widget.cpp:694
+#: src/gui/widgets/styled_widget.cpp:703
 msgid "Found a widget with a helptip and without a tooltip."
 msgstr "Tìm thấy một thành phần đồ họa có trợ giúp mà không có chú giải."
 
@@ -6787,7 +6924,7 @@ msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr "Nhấn giải tán cần một nút 'click_dismiss' hoặc 'ok'."
 
 #: src/gui/widgets/window.cpp:1013 src/gui/widgets/window.cpp:1050
-#: src/tests/gui/test_gui2.cpp:533
+#: src/tests/gui/test_gui2.cpp:541
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Thất bại khi hiện hộp thoại, nó không vừa với màn hình."
 
@@ -7589,15 +7726,21 @@ msgstr "Khởi chạy trình chỉnh sửa bản đồ"
 msgid "Show Credits"
 msgstr "Hiện danh sách đóng góp"
 
-#: src/hotkey/hotkey_command.cpp:265
+#: src/hotkey/hotkey_command.cpp:264
+#, fuzzy
+#| msgid "Test scenario"
+msgid "Start Test Scenario"
+msgstr "Màn chơi kiểm tra"
+
+#: src/hotkey/hotkey_command.cpp:266
 msgid "Show Helptip"
 msgstr "Hiện phần trợ giúp"
 
-#: src/hotkey/hotkey_command.cpp:267
+#: src/hotkey/hotkey_command.cpp:268
 msgid "Show Lua Console"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:270
+#: src/hotkey/hotkey_command.cpp:271
 msgid "Unrecognized Command"
 msgstr "Lệnh không xác định"
 
@@ -7611,25 +7754,45 @@ msgstr "Lệnh không xác định"
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/image.cpp:448
+#: src/image.cpp:449
 msgid "language code for localized resources^en_US"
 msgstr "vi"
 
-#: src/preferences_display.cpp:106
+#: src/preferences/display.cpp:111
 msgid "No known themes. Try changing from within an existing game."
 msgstr ""
 "Không có sắc thái nào. Thử thay đổi từ bên trong một trò chơi đang chạy."
 
-#: src/preferences_display.cpp:147
+#: src/preferences/display.cpp:153
 msgid ""
 "The <b>$filename</b> server application provides multiplayer server "
 "functionality and is required for hosting local network games. It will "
 "normally be found in the same folder as the game executable."
 msgstr ""
 
-#: src/preferences_display.cpp:151
+#: src/preferences/display.cpp:157
 msgid "Find Server Application"
 msgstr ""
+
+#: src/preferences/game.cpp:410
+msgid "No server has been defined."
+msgstr "Không xác định được máy chủ nào."
+
+#: src/preferences/game.cpp:509
+msgid "player"
+msgstr "người chơi"
+
+#: src/preferences/game.cpp:1044
+#, fuzzy
+#| msgid "%H:%M"
+msgid "[%H:%M]"
+msgstr "%H:%M"
+
+#: src/preferences/game.cpp:1047
+#, fuzzy
+#| msgid "%I:%M %p"
+msgid "[%I:%M %p]"
+msgstr "%I:%M %p"
 
 #: src/terrain/translation.cpp:709
 msgid ""
@@ -7678,6 +7841,23 @@ msgid ""
 msgstr ""
 "Khóa '$deprecated_key' đã được đổi tên thành '$key'. Hỗ trợ cho khóa "
 "'$deprecated_key' sẽ bị gỡ bỏ trong phiên bản $removal_version."
+
+#, fuzzy
+#~| msgid "sound^Advanced Options"
+#~ msgid "Advanced Settings"
+#~ msgstr "Tùy chọn nâng cao"
+
+#, fuzzy
+#~| msgid "Configuration:"
+#~ msgid "Configure sides"
+#~ msgstr "Cấu hình:"
+
+#~ msgid "Metadata:"
+#~ msgstr "Siêu dữ liệu:"
+
+#~ msgid "The new theme will take effect after loading or starting a new game."
+#~ msgstr ""
+#~ "Sắc thái mới sẽ có hiệu lực sau khi tải hoặc bắt đầu một trò chơi mới."
 
 #, fuzzy
 #~| msgid "Choose Modifications"

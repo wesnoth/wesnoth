@@ -149,7 +149,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: el_gr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-03-23 08:11+0100\n"
+"POT-Creation-Date: 2017-05-13 22:46 UTC\n"
 "PO-Revision-Date: 2012-08-05 00:49+0200\n"
 "Last-Translator: \n"
 "Language-Team:  <el@li.org>\n"
@@ -396,7 +396,7 @@ msgstr "ουρά"
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Sharpshooter.cfg:31
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:322
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Nym.cfg:22
-#: data/campaigns/Under_the_Burning_Suns/units/humans/Human_Commander.cfg:40
+#: data/campaigns/Under_the_Burning_Suns/units/humans/Human_Commander.cfg:35
 #: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Hunter.cfg:25
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Archer.cfg:29
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Flanker.cfg:26
@@ -455,7 +455,7 @@ msgstr "σπαθί"
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Rider.cfg:44
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Scout.cfg:45
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:331
-#: data/campaigns/Under_the_Burning_Suns/units/humans/Human_Commander.cfg:49
+#: data/campaigns/Under_the_Burning_Suns/units/humans/Human_Commander.cfg:44
 #: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Hunter.cfg:34
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Archer.cfg:39
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Marksman.cfg:40
@@ -541,8 +541,8 @@ msgstr ""
 
 #. [attack]: type=arcane
 #. [attack]: type=impact
-#. [attack]: type=fire
 #. [attack]: type=cold
+#. [attack]: type=fire
 #: data/campaigns/Secrets_of_the_Ancients/units/Corpse_Shynal.cfg:35
 #: data/campaigns/Secrets_of_the_Ancients/units/Necro_Ancient_Lich.cfg:30
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Moon_Shyde.cfg:60
@@ -594,6 +594,18 @@ msgstr "Νεκρομάντης"
 #: data/core/units/saurians/Soothsayer.cfg:34
 msgid "curse"
 msgstr "κατάρα"
+
+#. [attack]: type=impact
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Annalist.cfg:34
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Loremaster.cfg:37
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Witness.cfg:39
+#: data/core/units/humans/Outlaw.cfg:23
+#: data/core/units/humans/Outlaw_Bandit.cfg:22
+#: data/core/units/humans/Outlaw_Fugitive.cfg:28
+#: data/core/units/humans/Outlaw_Highwayman.cfg:24
+#: data/core/units/humans/Royal_Warrior.cfg:28
+msgid "morning star"
+msgstr "αγκυλωτή σφύρα"
 
 #. [unit_type]: id=Dwarvish Dragonguard, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Dragonguard, race=dwarf
@@ -3471,15 +3483,6 @@ msgstr ""
 "κάπως αδύναμοι στην μάχη κατά τη διάρκεια της ημέρας, προτιμώντας την κάλυψη "
 "του σούρουπου."
 
-#. [attack]: type=impact
-#: data/core/units/humans/Outlaw.cfg:23
-#: data/core/units/humans/Outlaw_Bandit.cfg:22
-#: data/core/units/humans/Outlaw_Fugitive.cfg:28
-#: data/core/units/humans/Outlaw_Highwayman.cfg:24
-#: data/core/units/humans/Royal_Warrior.cfg:28
-msgid "morning star"
-msgstr "αγκυλωτή σφύρα"
-
 #. [female]
 #: data/core/units/humans/Outlaw.cfg:74
 msgid "female^Outlaw"
@@ -4869,8 +4872,8 @@ msgid "Wolf"
 msgstr "Λύκος"
 
 #. [unit_type]: id=Great Wolf, race=wolf
-#. [unit_type]: id=Direwolf, race=wolf
 #. [unit_type]: id=Wolf, race=wolf
+#. [unit_type]: id=Direwolf, race=wolf
 #: data/core/units/monsters/Wolf.cfg:33
 #: data/core/units/monsters/Wolf_Dire.cfg:24
 #: data/core/units/monsters/Wolf_Great.cfg:24

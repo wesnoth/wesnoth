@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6+dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-03-23 08:11+0100\n"
+"POT-Creation-Date: 2017-05-13 22:46 UTC\n"
 "PO-Revision-Date: 2009-05-10 12:21-0000\n"
 "Last-Translator: Gabríel A. Pétursson <gabrielp@simnet.is>\n"
 "Language-Team: none\n"
@@ -249,7 +249,7 @@ msgstr "skott"
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Sharpshooter.cfg:31
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:322
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Nym.cfg:22
-#: data/campaigns/Under_the_Burning_Suns/units/humans/Human_Commander.cfg:40
+#: data/campaigns/Under_the_Burning_Suns/units/humans/Human_Commander.cfg:35
 #: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Hunter.cfg:25
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Archer.cfg:29
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Flanker.cfg:26
@@ -308,7 +308,7 @@ msgstr "sverð"
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Rider.cfg:44
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Scout.cfg:45
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:331
-#: data/campaigns/Under_the_Burning_Suns/units/humans/Human_Commander.cfg:49
+#: data/campaigns/Under_the_Burning_Suns/units/humans/Human_Commander.cfg:44
 #: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Hunter.cfg:34
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Archer.cfg:39
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Marksman.cfg:40
@@ -391,8 +391,8 @@ msgstr ""
 
 #. [attack]: type=arcane
 #. [attack]: type=impact
-#. [attack]: type=fire
 #. [attack]: type=cold
+#. [attack]: type=fire
 #: data/campaigns/Secrets_of_the_Ancients/units/Corpse_Shynal.cfg:35
 #: data/campaigns/Secrets_of_the_Ancients/units/Necro_Ancient_Lich.cfg:30
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Moon_Shyde.cfg:60
@@ -444,6 +444,18 @@ msgstr ""
 #: data/core/units/saurians/Soothsayer.cfg:34
 msgid "curse"
 msgstr "bölvun"
+
+#. [attack]: type=impact
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Annalist.cfg:34
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Loremaster.cfg:37
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Witness.cfg:39
+#: data/core/units/humans/Outlaw.cfg:23
+#: data/core/units/humans/Outlaw_Bandit.cfg:22
+#: data/core/units/humans/Outlaw_Fugitive.cfg:28
+#: data/core/units/humans/Outlaw_Highwayman.cfg:24
+#: data/core/units/humans/Royal_Warrior.cfg:28
+msgid "morning star"
+msgstr "morgunstjarna"
 
 #. [unit_type]: id=Dwarvish Dragonguard, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Dragonguard, race=dwarf
@@ -2713,15 +2725,6 @@ msgid ""
 "nightfall."
 msgstr ""
 
-#. [attack]: type=impact
-#: data/core/units/humans/Outlaw.cfg:23
-#: data/core/units/humans/Outlaw_Bandit.cfg:22
-#: data/core/units/humans/Outlaw_Fugitive.cfg:28
-#: data/core/units/humans/Outlaw_Highwayman.cfg:24
-#: data/core/units/humans/Royal_Warrior.cfg:28
-msgid "morning star"
-msgstr "morgunstjarna"
-
 #. [female]
 #: data/core/units/humans/Outlaw.cfg:74
 msgid "female^Outlaw"
@@ -3905,8 +3908,8 @@ msgid "Wolf"
 msgstr "Úlfur"
 
 #. [unit_type]: id=Great Wolf, race=wolf
-#. [unit_type]: id=Direwolf, race=wolf
 #. [unit_type]: id=Wolf, race=wolf
+#. [unit_type]: id=Direwolf, race=wolf
 #: data/core/units/monsters/Wolf.cfg:33
 #: data/core/units/monsters/Wolf_Dire.cfg:24
 #: data/core/units/monsters/Wolf_Great.cfg:24
