@@ -157,6 +157,8 @@ Version 1.13.7+dev:
    * Fix [set_variable][join] not working with translatable strings
    * [sound_source] now starts playing the sound immediately
    * New voice key in [message] and [story][part]
+   * [objectives] now supports delayed_variable_substitution=yes and also
+     delayed substitution with $|variable syntax.
  * Miscellaneous and bug fixes:
    * Fixed base animation showing on walking corpse & soulless bats
      (bug #25673)
