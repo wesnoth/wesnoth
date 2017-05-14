@@ -51,7 +51,6 @@ public:
 		, label_level_(nullptr)
 		, label_race_(nullptr)
 		, label_details_(nullptr)
-		, label_details_minimal_(nullptr)
 		, tree_details_(nullptr)
 		, button_profile_(nullptr)
 		, image_mods_()
@@ -99,7 +98,6 @@ private:
 	label* label_race_;
 
 	styled_widget* label_details_;
-	styled_widget* label_details_minimal_;
 	tree_view* tree_details_;
 
 	button* button_profile_;

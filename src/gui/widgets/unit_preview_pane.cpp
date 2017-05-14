@@ -73,10 +73,9 @@ void unit_preview_pane::finalize_setup()
 	label_name_             = find_widget<label>(this, "type_name", false, false);
 	label_level_            = find_widget<label>(this, "type_level", false, false);
 	label_race_             = find_widget<label>(this, "type_race_label", false, false);
-	label_details_          = find_widget<styled_widget>(this, "type_details", false, false);
-	label_details_minimal_  = find_widget<styled_widget>(this, "type_details_minimal", false, false);
+	label_details_          = find_widget<styled_widget>(this, "type_details_minimal", false, false);
 
-	tree_details_           = find_widget<tree_view>(this, "tree_details", false, false);
+	tree_details_           = find_widget<tree_view>(this, "type_details", false, false);
 
 	// Profile button
 	button_profile_ = find_widget<button>(this, "type_profile", false, false);
@@ -408,7 +407,7 @@ void unit_preview_pane::set_displayed_unit(const unit& u)
 			u.gender()));
 	}
 
-	if(label_details_minimal_) {
+	if(label_details_) {
 		std::stringstream str;
 
 		const std::string name = "<span size='large'>" + (!u.name().empty() ? u.name() : " ") + "</span>";
@@ -428,8 +427,8 @@ void unit_preview_pane::set_displayed_unit(const unit& u)
 		str << font::span_color(u.xp_color())
 			<< _("XP: ") << u.experience() << "/" << u.max_experience() << "</span>";
 
-		label_details_minimal_->set_label(str.str());
-		label_details_minimal_->set_use_markup(true);
+		label_details_->set_label(str.str());
+		label_details_->set_use_markup(true);
 	}
 
 	if(tree_details_) {
