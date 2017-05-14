@@ -93,6 +93,9 @@ void mp_login::pre_show(window& win)
 
 		btn->set_retval(2);
 	}
+
+	win.add_to_tab_order(find_widget<text_box>(&win, "user_name", false, false));
+	win.add_to_tab_order(find_widget<text_box>(&win, "password", false, false));
 }
 
 void mp_login::post_show(window& win)

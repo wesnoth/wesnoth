@@ -112,6 +112,8 @@ void lobby_player_info::pre_show(window& window)
 
 	time_ = find_widget<text_box>(&window, "time", false, true);
 	reason_ = find_widget<text_box>(&window, "reason", false, true);
+	window.add_to_tab_order(reason_);
+	window.add_to_tab_order(time_);
 
 	find_widget<label>(&window, "location_info", false).set_label(loc.str());
 

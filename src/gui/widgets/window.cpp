@@ -389,10 +389,10 @@ window::window(CVideo& video,
 
 	connect_signal<event::SDL_KEY_DOWN>(
 			std::bind(
-					&window::signal_handler_sdl_key_down, this, _2, _3, _5),
+					&window::signal_handler_sdl_key_down, this, _2, _3, _5, _6, true),
 			event::dispatcher::back_post_child);
 	connect_signal<event::SDL_KEY_DOWN>(std::bind(
-			&window::signal_handler_sdl_key_down, this, _2, _3, _5));
+			&window::signal_handler_sdl_key_down, this, _2, _3, _5, _6, false));
 
 	connect_signal<event::MESSAGE_SHOW_TOOLTIP>(
 			std::bind(&window::signal_handler_message_show_tooltip,
@@ -1340,6 +1340,22 @@ void window::remove_from_keyboard_chain(widget* widget)
 	event_distributor_->keyboard_remove_from_chain(widget);
 }
 
+void window::add_to_tab_order(widget* widget, int at)
+{
+	if(std::find(tab_order.begin(), tab_order.end(), widget) != tab_order.end()) {
+		return;
+	}
+	assert(event_distributor_);
+	if(tab_order.empty() && !event_distributor_->keyboard_focus()) {
+		keyboard_capture(widget);
+	}
+	if(at < 0 || at >= static_cast<int>(tab_order.size())) {
+		tab_order.push_back(widget);
+	} else {
+		tab_order.insert(tab_order.begin() + at, widget);
+	}
+}
+
 void window::signal_handler_sdl_video_resize(const event::ui_event event,
 											  bool& handled,
 											  const point& new_size)
@@ -1366,9 +1382,19 @@ void window::signal_handler_click_dismiss(const event::ui_event event,
 	handled = halt = click_dismiss(mouse_button_mask);
 }
 
+static bool is_active(const widget* wgt)
+{
+	if(const styled_widget* control = dynamic_cast<const styled_widget*>(wgt)) {
+		return control->get_active() && control->get_visible() == window::visibility::visible;
+	}
+	return false;
+}
+
 void window::signal_handler_sdl_key_down(const event::ui_event event,
 										  bool& handled,
-										  SDL_Keycode key)
+										  const SDL_Keycode key,
+										  const SDL_Keymod mod,
+										  bool handle_tab)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
@@ -1380,6 +1406,29 @@ void window::signal_handler_sdl_key_down(const event::ui_event event,
 		handled = true;
 	} else if(key == SDLK_SPACE) {
 		handled = click_dismiss(0);
+	} else if(handle_tab && !tab_order.empty() && key == SDLK_TAB) {
+		assert(event_distributor_);
+		widget* focus = event_distributor_->keyboard_focus();
+		auto iter = std::find(tab_order.begin(), tab_order.end(), focus);
+		do {
+			if(mod & KMOD_SHIFT) {
+				if(iter == tab_order.begin()) {
+					iter = tab_order.end();
+				}
+				iter--;
+			} else {
+				if(iter == tab_order.end()) {
+					iter = tab_order.begin();
+				} else {
+					iter++;
+					if(iter == tab_order.end()) {
+						iter = tab_order.begin();
+					}
+				}
+			}
+		} while(!is_active(*iter));
+		keyboard_capture(*iter);
+		handled = true;
 	}
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	if(key == SDLK_F12) {

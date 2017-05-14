@@ -643,6 +643,9 @@ private:
 	/** List of the widgets, whose size are linked together. */
 	std::map<std::string, linked_size> linked_size_;
 
+	/** List of widgets in the tabbing order. */
+	std::vector<widget*> tab_order;
+
 	/**
 	 * Layouts the window.
 	 *
@@ -749,6 +752,13 @@ public:
 	 */
 	void remove_from_keyboard_chain(widget* widget);
 
+	/**
+	 * Add the widget to the tabbing order
+	 * @param widget              The widget to be added to the tabbing order
+	 * @param at                  A hint for where to place the widget in the tabbing order
+	 */
+	void add_to_tab_order(widget* widget, int at = -1);
+
 private:
 	/***** ***** ***** signal handlers ***** ****** *****/
 
@@ -771,7 +781,9 @@ private:
 
 	void signal_handler_sdl_key_down(const event::ui_event event,
 									 bool& handled,
-									 const SDL_Keycode key);
+									 const SDL_Keycode key,
+									 const SDL_Keymod mod,
+									 bool handle_tab);
 
 	void signal_handler_message_show_tooltip(const event::ui_event event,
 											 bool& handled,

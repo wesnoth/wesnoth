@@ -551,7 +551,7 @@ distributor::distributor(widget& owner,
 	, tooltip_(0)
 	, help_popup_(0)
 #endif
-	, keyboard_focus_(0)
+	, keyboard_focus_(nullptr)
 	, keyboard_focus_chain_()
 {
 	if(SDL_WasInit(SDL_INIT_TIMER) == 0) {
@@ -587,6 +587,11 @@ void distributor::initialize_state()
 	mouse_button_right::initialize_state((button_state & SDL_BUTTON(3)) != 0);
 
 	init_mouse_location();
+}
+
+widget* distributor::keyboard_focus() const
+{
+	return keyboard_focus_;
 }
 
 void distributor::keyboard_capture(widget* widget)

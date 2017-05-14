@@ -297,6 +297,11 @@ public:
 	 */
 	void keyboard_remove_from_chain(widget* widget);
 
+	/**
+	 * Return the widget currently capturing keyboard input.
+	 */
+	widget* keyboard_focus() const;
+
 private:
 	class layer : public video2::draw_layering
 	{

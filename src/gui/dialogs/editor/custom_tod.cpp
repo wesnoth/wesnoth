@@ -123,6 +123,9 @@ void custom_tod::pre_show(window& window)
 		{"sound", tod_getter_sound}
 	};
 
+	window.add_to_tab_order(find_widget<text_box>(&window, "tod_name", false, false));
+	window.add_to_tab_order(find_widget<text_box>(&window, "tod_id", false, false));
+
 	for(const auto& data : metadata_stuff) {
 		find_widget<text_box>(&window, "path_" + data.first, false).set_active(false);
 

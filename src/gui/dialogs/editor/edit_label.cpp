@@ -16,7 +16,10 @@
 
 #include "gui/dialogs/editor/edit_label.hpp"
 
+#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/settings.hpp"
+#include "gui/widgets/text_box.hpp"
+#include "gui/widgets/window.hpp"
 
 #include "utils/functional.hpp"
 
@@ -79,6 +82,12 @@ editor_edit_label::editor_edit_label(std::string& text,
 	register_color_component("slider_red", &color_t::r);
 	register_color_component("slider_green", &color_t::g);
 	register_color_component("slider_blue", &color_t::b);
+}
+
+void editor_edit_label::pre_show(window& win)
+{
+	win.add_to_tab_order(find_widget<text_box>(&win, "label", false, false));
+	win.add_to_tab_order(find_widget<text_box>(&win, "category", false, false));
 }
 
 void editor_edit_label::register_color_component(std::string widget_id, uint8_t color_t::* component) {
