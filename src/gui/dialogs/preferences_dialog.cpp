@@ -353,27 +353,29 @@ void preferences_dialog::post_build(window& window)
 	//
 
 	/* FULLSCREEN TOGGLE */
-	toggle_button& toggle_fullscreen =
-			find_widget<toggle_button>(&window, "fullscreen", false);
-
-	toggle_fullscreen.set_value(fullscreen());
-
-	// We bind a special callback function, so setup_single_toggle() is not used
-	connect_signal_mouse_left_click(toggle_fullscreen, std::bind(
-			&preferences_dialog::fullscreen_toggle_callback,
-			this, std::ref(window)));
+	toggle_button* toggle_fullscreen =
+			find_widget<toggle_button>(&window, "fullscreen", false, false);
+	
+	if (toggle_fullscreen != nullptr) {
+		toggle_fullscreen->set_value(fullscreen());
+		
+		// We bind a special callback function, so setup_single_toggle() is not used
+		connect_signal_mouse_left_click(*toggle_fullscreen, std::bind(
+				&preferences_dialog::fullscreen_toggle_callback,
+				this, std::ref(window)));
+	}
 
 	/* SET RESOLUTION */
-	menu_button& res_list = find_widget<menu_button>(&window, "resolution_set", false);
-
-	res_list.set_use_markup(true);
-	res_list.set_active(!fullscreen());
-
-	set_resolution_list(res_list, window.video());
-
-	res_list.connect_click_handler(
-			std::bind(&preferences_dialog::handle_res_select,
-			this, std::ref(window)));
+	menu_button* res_list = find_widget<menu_button>(&window, "resolution_set", false, false);
+	if (res_list != nullptr) {
+		res_list->set_use_markup(true);
+		res_list->set_active(!fullscreen());
+		
+		set_resolution_list(*res_list, window.video());
+		
+		res_list->connect_click_handler(
+				std::bind(&preferences_dialog::handle_res_select, this, std::ref(window)));
+	}
 
 	/* SHOW FLOATING LABELS */
 	register_bool("show_floating_labels", true,
@@ -411,11 +413,11 @@ void preferences_dialog::post_build(window& window)
 		font_scaling, set_font_scaling);
 
 	/* SELECT THEME */
-	connect_signal_mouse_left_click(
-			find_widget<button>(&window, "choose_theme", false),
-			bind_void(&show_theme_dialog,
-			std::ref(window.video())));
-
+	button *theme_button = find_widget<button>(&window, "choose_theme", false, false);
+	if (theme_button != nullptr) {
+		connect_signal_mouse_left_click(
+				*theme_button, bind_void(&show_theme_dialog, std::ref(window.video())));
+	}
 
 	//
 	// SOUND PANEL
@@ -705,43 +707,45 @@ void preferences_dialog::post_build(window& window)
 		hotkey_category_entries.emplace_back(config {"label", name, "checkbox", false});
 	}
 
-	multimenu_button& hotkey_menu = find_widget<multimenu_button>(&window, "hotkey_category_menu", false);
+	multimenu_button* hotkey_menu = find_widget<multimenu_button>(&window, "hotkey_category_menu", false, false);
 
-	hotkey_menu.set_values(hotkey_category_entries);
-	hotkey_menu.set_callback_toggle_state_change(std::bind(&preferences_dialog::hotkey_type_filter_callback, this, std::ref(window)));
+	if (hotkey_menu != nullptr) {
+		hotkey_menu->set_values(hotkey_category_entries);
+		hotkey_menu->set_callback_toggle_state_change(std::bind(&preferences_dialog::hotkey_type_filter_callback, this, std::ref(window)));
 
-	listbox& hotkey_list = setup_hotkey_list(window);
-
-	// Action column
-	hotkey_list.register_sorting_option(0, [this](const int i) { return visible_hotkeys_[i]->description.str(); });
-
-	// Hotkey column
-	hotkey_list.register_sorting_option(1, [this](const int i) { return hotkey::get_names(visible_hotkeys_[i]->command); });
-
-	// Scope columns
-	hotkey_list.register_sorting_option(2, [this](const int i) { return !visible_hotkeys_[i]->scope[hotkey::SCOPE_GAME]; });
-	hotkey_list.register_sorting_option(3, [this](const int i) { return !visible_hotkeys_[i]->scope[hotkey::SCOPE_EDITOR]; });
-	hotkey_list.register_sorting_option(4, [this](const int i) { return !visible_hotkeys_[i]->scope[hotkey::SCOPE_MAIN_MENU]; });
-
-	hotkey_list.set_active_sorting_option({0, listbox::SORT_ASCENDING}, true);
-
-	connect_signal_mouse_left_click(
-		find_widget<button>(&window, "btn_add_hotkey", false), std::bind(
-			&preferences_dialog::add_hotkey_callback,
-			this,
-			std::ref(hotkey_list)));
-
-	connect_signal_mouse_left_click(
-		find_widget<button>(&window, "btn_clear_hotkey", false), std::bind(
-			&preferences_dialog::remove_hotkey_callback,
-			this,
-			std::ref(hotkey_list)));
-
-	connect_signal_mouse_left_click(
-		find_widget<button>(&window, "btn_reset_hotkeys", false), std::bind(
-			&preferences_dialog::default_hotkey_callback,
-			this,
-			std::ref(window)));
+		listbox& hotkey_list = setup_hotkey_list(window);
+	
+		// Action column
+		hotkey_list.register_sorting_option(0, [this](const int i) { return visible_hotkeys_[i]->description.str(); });
+	
+		// Hotkey column
+		hotkey_list.register_sorting_option(1, [this](const int i) { return hotkey::get_names(visible_hotkeys_[i]->command); });
+	
+		// Scope columns
+		hotkey_list.register_sorting_option(2, [this](const int i) { return !visible_hotkeys_[i]->scope[hotkey::SCOPE_GAME]; });
+		hotkey_list.register_sorting_option(3, [this](const int i) { return !visible_hotkeys_[i]->scope[hotkey::SCOPE_EDITOR]; });
+		hotkey_list.register_sorting_option(4, [this](const int i) { return !visible_hotkeys_[i]->scope[hotkey::SCOPE_MAIN_MENU]; });
+	
+		hotkey_list.set_active_sorting_option({0, listbox::SORT_ASCENDING}, true);
+	
+		connect_signal_mouse_left_click(
+			find_widget<button>(&window, "btn_add_hotkey", false), std::bind(
+				&preferences_dialog::add_hotkey_callback,
+				this,
+				std::ref(hotkey_list)));
+	
+		connect_signal_mouse_left_click(
+			find_widget<button>(&window, "btn_clear_hotkey", false), std::bind(
+				&preferences_dialog::remove_hotkey_callback,
+				this,
+				std::ref(hotkey_list)));
+	
+		connect_signal_mouse_left_click(
+			find_widget<button>(&window, "btn_reset_hotkeys", false), std::bind(
+				&preferences_dialog::default_hotkey_callback,
+				this,
+				std::ref(window)));
+	}
 }
 
 listbox& preferences_dialog::setup_hotkey_list(window& window)

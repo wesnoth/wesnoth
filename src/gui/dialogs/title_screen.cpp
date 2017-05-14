@@ -160,9 +160,13 @@ static void register_button(window& win, const std::string& id, hotkey::HOTKEY_C
 			return true;
 		});
 	}
-
-	event::connect_signal_mouse_left_click(find_widget<button>(&win, id, false),
-		[callback](event::dispatcher& w, event::ui_event, bool&, bool&) { callback(dynamic_cast<window&>(w)); });
+	
+	button* the_button = find_widget<button>(&win, id, false, false);
+	if (the_button == nullptr) {
+		return;
+	}
+	event::connect_signal_mouse_left_click(*the_button,
+			[callback](event::dispatcher& w, event::ui_event, bool&, bool&) { callback(dynamic_cast<window&>(w)); });
 }
 
 static bool fullscreen(CVideo& video)
