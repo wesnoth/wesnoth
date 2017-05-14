@@ -415,7 +415,8 @@ void unit_preview_pane::set_displayed_unit(const unit& u)
 
 		str << "<span color='#a69275'>" << u.type_name() << "</span>" << "\n";
 
-		str << "Lvl " << u.level() << "\n";
+		std::string l_str = vgettext("Lvl $lvl", {{"lvl", std::to_string(u.level())}});
+		str << l_str << "\n";
 
 		str << u.alignment() << "\n";
 
