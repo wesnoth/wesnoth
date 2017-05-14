@@ -246,7 +246,7 @@ protected:
 		// this hack shall be removed, since it messes up with 'multiple leaders'
 
 		// If this side tag describes the leader of the side
-		if (side_cfg_.has_attribute("type") && side_cfg_["type"] != "null" ) {
+		if (!side_cfg_["type"].empty() && side_cfg_["type"] != "null" ) {
 			handle_leader(side_cfg_);
 		}
 		for (const config &l : side_cfg_.child_range("leader")) {
