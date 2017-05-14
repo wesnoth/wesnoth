@@ -280,6 +280,28 @@ void unit_preview_pane::set_displayed_type(const unit_type& type)
 			type.genders().front()));
 	}
 
+	if(label_details_) {
+		std::stringstream str;
+
+		str << "<span size='large'> </span>" << "\n";
+
+		str << "<span color='#a69275'>" << type.type_name() << "</span>" << "\n";
+
+		std::string l_str = vgettext("Lvl $lvl", {{"lvl", std::to_string(type.level())}});
+		str << l_str << "\n";
+
+		str << type.alignment() << "\n";
+
+		str << "\n"; // Leave a blank line where traits would be
+
+		str <<  _("HP: ") << type.hitpoints() << "\n";
+
+		str << _("XP: ") << type.experience_needed(true);
+
+		label_details_->set_label(str.str());
+		label_details_->set_use_markup(true);
+	}
+
 	if(tree_details_) {
 
 		tree_details_->clear();
