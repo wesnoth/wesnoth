@@ -61,8 +61,8 @@ editor_edit_scenario::editor_edit_scenario(
 		bool& random_start_time)
 {
 	register_text("id", true, id, true);
-	register_text("name", true, name, true);
-	register_text("description", true, description, true);
+	register_text("name", true, name, false);
+	register_text("description", true, description, false);
 	register_integer("turns", true, turns);
 	register_integer("experience_modifier", true, experience_modifier);
 	register_bool("victory_when_enemies_defeated",

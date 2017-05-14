@@ -59,7 +59,7 @@ editor_edit_side::editor_edit_side(editor::editor_team_info& info)
 	register_label("side_number", true, std::to_string(info.side), true);
 
 	register_text("team_name", true, info.id, true);
-	register_text("user_team_name", true, info.name, true);
+	register_text("user_team_name", true, info.name, false);
 
 	register_integer("gold", true, info.gold);
 	register_integer("income", true, info.income);
