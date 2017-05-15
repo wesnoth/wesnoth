@@ -39,7 +39,7 @@ typename V::result_t apply_visitor(typename V::param_t state, T&&... args)
 	static_assert(std::is_base_of<
 		info_visitor_base<
 			typename V::result_t,
-			typename std::remove_reference<typename V::param_t>::type>,
+			utils::remove_reference_t<typename V::param_t>>,
 		V>::value, "Invalid visitor type.");
 
 	// Create the visitor.

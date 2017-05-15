@@ -19,6 +19,7 @@
 #include "serialization/unicode_types.hpp"
 
 #include "utils/functional.hpp"
+#include "utils/type_trait_aliases.hpp"
 
 #include <SDL_events.h>
 
@@ -329,7 +330,7 @@ public:
 	 * @param position               The position to place the callback.
 	 */
 	template <ui_event E>
-	typename std::enable_if<has_key<set_event, E>::value>::type
+	utils::enable_if_t<has_key<set_event, E>::value>
 	connect_signal(const signal_function& signal,
 				   const queue_position position = back_child)
 	{
@@ -347,7 +348,7 @@ public:
 	 *                               was added in front or back.)
 	 */
 	template <ui_event E>
-	typename std::enable_if<has_key<set_event, E>::value>::type
+	utils::enable_if_t<has_key<set_event, E>::value>
 	disconnect_signal(const signal_function& signal,
 					  const queue_position position = back_child)
 	{
@@ -362,7 +363,7 @@ public:
 	 * @param position               The position to place the callback.
 	 */
 	template <ui_event E>
-	typename std::enable_if<has_key<set_event_mouse, E>::value>::type
+	utils::enable_if_t<has_key<set_event_mouse, E>::value>
 	connect_signal(const signal_mouse_function& signal,
 				   const queue_position position = back_child)
 	{
@@ -380,7 +381,7 @@ public:
 	 *                               was added in front or back.)
 	 */
 	template <ui_event E>
-	typename std::enable_if<has_key<set_event_mouse, E>::value>::type
+	utils::enable_if_t<has_key<set_event_mouse, E>::value>
 	disconnect_signal(const signal_mouse_function& signal,
 					  const queue_position position = back_child)
 	{
@@ -395,7 +396,7 @@ public:
 	 * @param position               The position to place the callback.
 	 */
 	template <ui_event E>
-	typename std::enable_if<has_key<set_event_keyboard, E>::value>::type
+	utils::enable_if_t<has_key<set_event_keyboard, E>::value>
 	connect_signal(const signal_keyboard_function& signal,
 				   const queue_position position = back_child)
 	{
@@ -413,7 +414,7 @@ public:
 	 *                               was added in front or back.)
 	 */
 	template <ui_event E>
-	typename std::enable_if<has_key<set_event_keyboard, E>::value>::type
+	utils::enable_if_t<has_key<set_event_keyboard, E>::value>
 	disconnect_signal(const signal_keyboard_function& signal,
 					  const queue_position position = back_child)
 	{
@@ -428,7 +429,7 @@ public:
 	 * @param position               The position to place the callback.
 	 */
 	template <ui_event E>
-	typename std::enable_if<has_key<set_event_touch, E>::value>::type
+	utils::enable_if_t<has_key<set_event_touch, E>::value>
 	connect_signal(const signal_touch_function& signal,
 				   const queue_position position = back_child)
 	{
@@ -446,7 +447,7 @@ public:
 	 *                               was added in front or back.)
 	 */
 	template <ui_event E>
-	typename std::enable_if<has_key<set_event_touch, E>::value>::type
+	utils::enable_if_t<has_key<set_event_touch, E>::value>
 	disconnect_signal(const signal_touch_function& signal,
 					  const queue_position position = back_child)
 	{
@@ -464,7 +465,7 @@ public:
 	 *                               and shouldn't be used.
 	 */
 	template <ui_event E>
-	typename std::enable_if<has_key<set_event_notification, E>::value>::type
+	utils::enable_if_t<has_key<set_event_notification, E>::value>
 	connect_signal(const signal_notification_function& signal,
 				   const queue_position position = back_child)
 	{
@@ -487,7 +488,7 @@ public:
 	 *                               front_pre_child)
 	 */
 	template <ui_event E>
-	typename std::enable_if<has_key<set_event_notification, E>::value>::type
+	utils::enable_if_t<has_key<set_event_notification, E>::value>
 	disconnect_signal(const signal_notification_function& signal,
 					  const queue_position position = back_child)
 	{
@@ -505,7 +506,7 @@ public:
 	 *                               and shouldn't be used.
 	 */
 	template <ui_event E>
-	typename std::enable_if<has_key<set_event_message, E>::value>::type
+	utils::enable_if_t<has_key<set_event_message, E>::value>
 	connect_signal(const signal_message_function& signal,
 				   const queue_position position = back_child)
 	{
@@ -528,7 +529,7 @@ public:
 	 *                               front_pre_child)
 	 */
 	template <ui_event E>
-	typename std::enable_if<has_key<set_event_message, E>::value>::type
+	utils::enable_if_t<has_key<set_event_message, E>::value>
 	disconnect_signal(const signal_message_function& signal,
 					  const queue_position position = back_child)
 	{
@@ -543,7 +544,7 @@ public:
 	 * @param position               The position to place the callback.
 	 */
 	template <ui_event E>
-	typename std::enable_if<has_key<set_event_raw_event, E>::value>::type
+	utils::enable_if_t<has_key<set_event_raw_event, E>::value>
 	connect_signal(const signal_raw_event_function& signal,
 				   const queue_position position = back_child)
 	{
@@ -561,7 +562,7 @@ public:
 	 *                               was added in front or back.)
 	 */
 	template <ui_event E>
-	typename std::enable_if<has_key<set_event_raw_event, E>::value>::type
+	utils::enable_if_t<has_key<set_event_raw_event, E>::value>
 	disconnect_signal(const signal_raw_event_function& signal,
 					  const queue_position position = back_child)
 	{

@@ -47,6 +47,8 @@
 
 #include "global.hpp"
 
+#include "utils/type_trait_aliases.hpp"
+
 #include <cstdlib>
 #include <limits>
 #include <string>
@@ -169,8 +171,7 @@ struct lexical_caster<
 	  std::string
 	, From
 	, void
-	, typename std::enable_if<std::is_integral<
-			typename std::remove_pointer<From>::type>::value >::type
+	, utils::enable_if_t<std::is_integral<utils::remove_pointer_t<From>>::value>
 >
 {
 	std::string operator()(From value, boost::optional<std::string>) const
@@ -195,8 +196,7 @@ struct lexical_caster<
 	  long long
 	, From
 	, void
-	, typename std::enable_if<boost::mpl::has_key<boost::mpl::set<
-			char*, const char*> , From>::value >::type
+	, utils::enable_if_t<boost::mpl::has_key<boost::mpl::set<char*, const char*> , From>::value>
 	>
 {
 	long long operator()(From value, boost::optional<long long> fallback) const
@@ -251,9 +251,8 @@ template <class To, class From>
 struct lexical_caster<
 	  To
 	, From
-	, typename std::enable_if<std::is_integral<To>::value && std::is_signed<To>::value && !std::is_same<To, long long>::value >::type
-	, typename std::enable_if<boost::mpl::has_key<boost::mpl::set<
-			char*, const char*> , From>::value >::type
+	, utils::enable_if_t<std::is_integral<To>::value && std::is_signed<To>::value && !std::is_same<To, long long>::value>
+	, utils::enable_if_t<boost::mpl::has_key<boost::mpl::set<char*, const char*> , From>::value>
 	>
 {
 	To operator()(From value, boost::optional<To> fallback) const
@@ -277,7 +276,7 @@ template <class To>
 struct lexical_caster<
 	  To
 	, std::string
-	, typename std::enable_if<std::is_integral<To>::value && std::is_signed<To>::value && !std::is_same<To, long long>::value >::type
+	, utils::enable_if_t<std::is_integral<To>::value && std::is_signed<To>::value && !std::is_same<To, long long>::value>
 	>
 {
 	To operator()(const std::string& value, boost::optional<To> fallback) const
@@ -310,9 +309,8 @@ template <class To, class From>
 struct lexical_caster<
 	  To
 	, From
-	, typename std::enable_if<std::is_floating_point<To>::value >::type
-	, typename std::enable_if<boost::mpl::has_key<boost::mpl::set<
-			char*, const char*> , From>::value >::type
+	, utils::enable_if_t<std::is_floating_point<To>::value>
+	, utils::enable_if_t<boost::mpl::has_key<boost::mpl::set<char*, const char*> , From>::value>
 	>
 {
 	To operator()(From value, boost::optional<To> fallback) const
@@ -336,7 +334,7 @@ template <class To>
 struct lexical_caster<
 	  To
 	, std::string
-	, typename std::enable_if<std::is_floating_point<To>::value >::type
+	, utils::enable_if_t<std::is_floating_point<To>::value>
 	>
 {
 	To operator()(const std::string& value, boost::optional<To> fallback) const
@@ -381,8 +379,7 @@ struct lexical_caster<
 	  unsigned long long
 	, From
 	, void
-	, typename std::enable_if<boost::mpl::has_key<boost::mpl::set<
-	char*, const char*> , From>::value >::type
+	, utils::enable_if_t<boost::mpl::has_key<boost::mpl::set<char*, const char*> , From>::value>
 	>
 {
 	unsigned long long operator()(From value, boost::optional<unsigned long long> fallback) const
@@ -438,9 +435,8 @@ template <class To, class From>
 struct lexical_caster<
 	  To
 	, From
-	, typename std::enable_if<std::is_unsigned<To>::value && !std::is_same<To, unsigned long long>::value >::type
-	, typename std::enable_if<boost::mpl::has_key<boost::mpl::set<
-			char*, const char*> , From>::value >::type
+	, utils::enable_if_t<std::is_unsigned<To>::value && !std::is_same<To, unsigned long long>::value>
+	, utils::enable_if_t<boost::mpl::has_key<boost::mpl::set<char*, const char*> , From>::value>
 	>
 {
 	To operator()(From value, boost::optional<To> fallback) const
@@ -464,7 +460,7 @@ template <class To>
 struct lexical_caster<
 	  To
 	, std::string
-	, typename std::enable_if<std::is_unsigned<To>::value >::type
+	, utils::enable_if_t<std::is_unsigned<To>::value>
 	>
 {
 	To operator()(const std::string& value, boost::optional<To> fallback) const

@@ -28,6 +28,7 @@
 #pragma once
 
 #include "global.hpp"
+#include "utils/type_trait_aliases.hpp"
 
 #include <climits>
 #include <ctime>
@@ -172,7 +173,7 @@ public:
 	config_attribute_value& operator=(const std::string &v);
 	config_attribute_value& operator=(const t_string &v);
 	template<typename T>
-	typename std::enable_if<std::is_base_of<enum_tag, T>::value, config_attribute_value &>::type operator=(const T &v)
+	utils::enable_if_t<std::is_base_of<enum_tag, T>::value, config_attribute_value&> operator=(const T &v)
 	{
 		return operator=(T::enum_to_string(v));
 	}
@@ -192,7 +193,7 @@ public:
 		TODO: Fix this in c++11 using constexpr types.
 	*/
 	template<typename T>
-	typename std::enable_if<std::is_base_of<enum_tag, T>::value, T>::type to_enum(const T &v) const
+	utils::enable_if_t<std::is_base_of<enum_tag, T>::value, T> to_enum(const T &v) const
 	{
 		return T::string_to_enum(this->str(), v);
 	}
@@ -219,14 +220,14 @@ public:
 	// These function prevent t_string creation in case of c["a"] == "b" comparisons.
 	// The templates are needed to prevent using these function in case of c["a"] == 0 comparisons.
 	template<typename T>
-	typename std::enable_if<std::is_same<const std::string, typename std::add_const<T>::type>::value, bool>::type
+	utils::enable_if_t<std::is_same<const std::string, utils::add_const_t<T>>::value, bool>
 		friend operator==(const config_attribute_value &val, const T &str)
 	{
 		return val.equals(str);
 	}
 
 	template<typename T>
-	typename std::enable_if<std::is_same<const char*, T>::value, bool>::type
+	utils::enable_if_t<std::is_same<const char*, T>::value, bool>
 		friend operator==(const config_attribute_value& val, T str)
 	{
 		return val.equals(std::string(str));

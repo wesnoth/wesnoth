@@ -17,6 +17,7 @@
 #include "gui/core/event/dispatcher.hpp"
 
 #include "gui/widgets/widget.hpp"
+#include "utils/type_trait_aliases.hpp"
 
 #include <SDL_events.h>
 
@@ -60,8 +61,7 @@ struct dispatcher_implementation
 	 *                            dispatcher::signal_type<FUNCTION>            \
 	 */                                                                        \
 	template<typename F>                                                       \
-	static typename std::enable_if<std::is_same<F, FUNCTION>::value,           \
-									 dispatcher::signal_type<FUNCTION>>::type& \
+	static utils::enable_if_t<std::is_same<F, FUNCTION>::value, dispatcher::signal_type<FUNCTION>>& \
 	event_signal(dispatcher& dispatcher, const ui_event event)                 \
 	{                                                                          \
 		return dispatcher.QUEUE.queue[event];                                  \
@@ -81,8 +81,7 @@ struct dispatcher_implementation
 	 *                            dispatcher::signal_type<FUNCTION>            \
 	 */                                                                        \
 	template<typename K>                                                       \
-	static typename std::enable_if<boost::mpl::has_key<SET, K>::value,         \
-									 dispatcher::signal_type<FUNCTION>>::type& \
+	static utils::enable_if_t<boost::mpl::has_key<SET, K>::value, dispatcher::signal_type<FUNCTION>>& \
 	event_signal(dispatcher& dispatcher, const ui_event event)                 \
 	{                                                                          \
 		return dispatcher.QUEUE.queue[event];                                  \
