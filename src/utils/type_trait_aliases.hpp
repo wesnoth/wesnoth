@@ -20,8 +20,8 @@
 namespace utils
 {
 //
-// These aliases are available in C++14. Forward to their declarations
-// if building with that.
+// These aliases are part of the standard starting with C++14.
+// Forward to their declarations if appropriate.
 //
 #ifdef HAVE_CXX14
 
@@ -32,7 +32,7 @@ using std::remove_const_t;
 using std::remove_reference_t;
 using std::remove_pointer_t;
 
-#else
+#else // We do not have C++14
 
 // add_const
 template<typename T>
@@ -62,30 +62,35 @@ using remove_pointer_t = typename std::remove_pointer<T>::type;
 
 //
 // These aliases are part of the standard starting with C++17.
-// Since we're not even near supporting that, we define them directly.
-// They can be added to a conditional block once we have a define for C++17.
+// However, they can also be implemented using variable templates in C++14. VS doesn't
+// support variable templates until VS 2017, so fall back to the C++11 implementation
+// if applicable.
 //
+#ifdef HAVE_CXX17
 
-// MSVC 2013 doesn't support constexpr :(
-#if defined(_MSC_VER) && _MSC_VER < 1900
+using std::is_base_of_v;
+using std::is_same_v;
 
-// is_base_of
-template<typename Base, typename Derived>
-static const bool is_base_of_v = std::is_base_of<Base, Derived>::value;
-
-// is_same
-template<typename T, typename U>
-static const bool is_same_v = std::is_same<T, U>::value;
-
-#else
+#elif defined(HAVE_CXX14) || defined(_MSC_VER) && _MSC_VER >= 1910 // We have C++14, and are using VC >= 2017
 
 // is_base_of
 template<typename Base, typename Derived>
-inline constexpr bool is_base_of_v = std::is_base_of<Base, Derived>::value;
+static constexpr bool is_base_of_v = std::is_base_of<Base, Derived>::value;
 
 // is_same
 template<typename T, typename U>
-inline constexpr bool is_same_v = std::is_same<T, U>::value;
+static constexpr bool is_same_v = std::is_same<T, U>::value;
 
-#endif
-}
+#else // We do not have C++14 or C++17
+
+// is_base_of
+template<typename Base, typename Derived>
+using is_base_of_v = typename std::is_base_of<Base, Derived>::value;
+
+// is_same
+template<typename T, typename U>
+using is_same_v = typename std::is_same<T, U>::value;
+
+#endif // HAVE_CXX17
+
+} // end namespace utils
