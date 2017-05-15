@@ -24,7 +24,7 @@ namespace utils
 // MSVC included them itself starting as of VS 2013 (our min supported version).
 // Forward to their declarations as appropriate.
 //
-#ifdef HAVE_CXX14 || defined(_MSC_VER)
+#if defined(HAVE_CXX14) || defined(_MSC_VER)
 
 using std::add_const_t;
 using std::conditional_t;
