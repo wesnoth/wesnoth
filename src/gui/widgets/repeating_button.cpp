@@ -137,8 +137,8 @@ repeating_button::signal_handler_left_button_down(const event::ui_event event,
 		window* window = get_window();
 		if(window) {
 			repeat_timer_ = add_timer(settings::repeat_button_repeat_time,
-									  [this, window](unsigned int) { 
-											window->fire(event::LEFT_BUTTON_DOWN, *this); 
+									  [this, window](unsigned int) {
+											window->fire(event::LEFT_BUTTON_DOWN, *this);
 									  },true);
 
 			window->mouse_capture();

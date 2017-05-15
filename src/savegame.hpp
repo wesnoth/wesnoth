@@ -118,7 +118,7 @@ public:
 	{
 		return load_data_;
 	}
-	
+
 	/** GUI Dialog sequence which confirms attempts to load saves from previous game versions. */
 	static bool check_version_compatibility(const version_info & version, CVideo & video);
 

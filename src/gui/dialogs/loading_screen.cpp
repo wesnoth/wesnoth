@@ -132,7 +132,7 @@ void loading_screen::pre_show(window& window)
 	cursor_setter_.reset(new cursor::setter(cursor::WAIT));
 	progress_stage_label_ = &find_widget<label>(&window, "status", false);
 	animation_label_ = &find_widget<label>(&window, "test_animation", false);
-	
+
 	window.set_enter_disabled(true);
 	window.set_escape_disabled(true);
 }

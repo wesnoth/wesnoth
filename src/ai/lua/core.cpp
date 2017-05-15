@@ -802,7 +802,7 @@ static int impl_ai_aspect_get(lua_State* L)
 	if(iter == aspects.end()) {
 		return 0;
 	}
-	
+
 	typedef std::vector<std::string> string_list;
 	if(typesafe_aspect<bool>* aspect_as_bool = try_aspect_as<bool>(iter->second)) {
 		lua_pushboolean(L, aspect_as_bool->get());
@@ -1036,20 +1036,20 @@ lua_ai_context* lua_ai_context::create(lua_State *L, char const *code, ai::engin
 void lua_ai_context::update_state()
 {
 	lua_ai_load ctx(*this, true); // [-1: AI state table]
-	
+
 	// Load the AI code and arguments
 	lua_getfield(L, -1, "update_self"); // [-1: AI code  -2: AI state]
 	lua_getfield(L, -2, "params"); // [-1: Arguments  -2: AI code  -3: AI state]
 	lua_getfield(L, -3, "data"); // [-1: Persistent data  -2: Arguments  -3: AI code  -4: AI state]
-	
+
 	// Call the function
 	if (!luaW_pcall(L, 2, 1, true)) { // [-1: Result  -2: AI state]
 		return; // return with stack size 0 []
 	}
-	
+
 	// Store the state for use by components
 	lua_setfield(L, -2, "self"); // [-1: AI state]
-	
+
 	// And return with empty stack.
 	lua_pop(L, 1);
 }
@@ -1100,7 +1100,7 @@ lua_ai_load::lua_ai_load(lua_ai_context& ctx, bool read_only) : L(ctx.L), was_re
 	lua_getfield(L, LUA_REGISTRYINDEX, aisKey); // [-1: AI registry]
 	lua_rawgeti(L, -1, ctx.num_); // [-1: AI state  -2: AI registry]
 	lua_remove(L,-2); // [-1: AI state]
-	
+
 	// Load the AI functions table into global scope
 	lua_getfield(L, -1, "ai"); // [-1: AI functions  -2: AI state]
 	lua_pushstring(L, "read_only"); // [-1: key  -2: AI functions  -3: AI state]
@@ -1138,7 +1138,7 @@ lua_ai_context::~lua_ai_context()
 void lua_ai_action_handler::handle(const config &cfg, bool read_only, lua_object_ptr l_obj)
 {
 	int initial_top = lua_gettop(L);//get the old stack size
-	
+
 	// Load the context
 	lua_ai_load ctx(context_, read_only); // [-1: AI state table]
 
@@ -1146,13 +1146,13 @@ void lua_ai_action_handler::handle(const config &cfg, bool read_only, lua_object
 	lua_getfield(L, LUA_REGISTRYINDEX, aisKey); // [-1: AI registry  -2: AI state]
 	lua_rawgeti(L, -1, num_); // [-1: AI action  -2: AI registry  -3: AI state]
 	lua_remove(L, -2); // [-1: AI action  -2: AI state]
-	
+
 	// Load the arguments
 	int iState = lua_absindex(L, -2);
 	lua_getfield(L, iState, "self");
 	luaW_pushconfig(L, cfg);
 	lua_getfield(L, iState, "data");
-	
+
 	// Call the function
 	luaW_pcall(L, 3, l_obj ? 1 : 0, true);
 	if (l_obj) {

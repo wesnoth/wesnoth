@@ -62,12 +62,12 @@ struct shroud_clearing_action
 	int original_village_owner;
 	/// Whether this actions got a timebonus becasue it took a village.
 	bool take_village_timebonus;
-	
+
 	/// Change village owner on undo.
 	void return_village();
 	/// Change village owner on redo.
 	void take_village();
-	
+
 	void write(config & cfg) const
 	{
 		write_locations(route, cfg);

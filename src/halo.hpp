@@ -80,7 +80,7 @@ class halo_record
 public:
 	halo_record(const halo_record&) = delete;
 	halo_record& operator=(const halo_record&) = delete;
-	
+
 	halo_record();
 	halo_record(int id, const std::shared_ptr<halo_impl> & my_manager);
 	~halo_record();

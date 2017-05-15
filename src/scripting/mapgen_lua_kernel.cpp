@@ -87,7 +87,7 @@ static int intf_find_path(lua_State *L)
 	src.set_wml_y(luaL_checkinteger(L, 2));
 	dst.set_wml_x(luaL_checkinteger(L, 3));
 	dst.set_wml_y(luaL_checkinteger(L, 4));
-	if(lua_isfunction(L, arg)) { 
+	if(lua_isfunction(L, arg)) {
 		const char *msg = lua_pushfstring(L, "%s expected, got %s", lua_typename(L, LUA_TFUNCTION), luaL_typename(L, 5));
 		return luaL_argerror(L, 5, msg);
 	}

@@ -294,7 +294,7 @@ WML_HANDLER_FUNCTION(do_command,, cfg)
 	if(!resources::controller->current_team().is_local() && synced_context::get_synced_state() == synced_context::UNSYNCED)
 	{
 		ERR_NG << "[do_command] can only be used from clients that control the currently playing side" << std::endl;
-		return;		
+		return;
 	}
 	for(vconfig::all_children_iterator i = cfg.ordered_begin(); i != cfg.ordered_end(); ++i)
 	{

@@ -142,7 +142,7 @@ int intf_have_file(lua_State *L)
 int intf_read_file(lua_State *L)
 {
 	std::string p = luaL_checkstring(L, 1);
-	
+
 	if(!resolve_filename(p, get_calling_file(L))) {
 		return luaL_argerror(L, -1, "file not found");
 	}
@@ -172,7 +172,7 @@ int intf_read_file(lua_State *L)
 	luaL_Buffer b;
 	luaL_buffinit(L, &b);
 	//throws an exception if malloc failed.
-	char* out = luaL_prepbuffsize(&b, size); 
+	char* out = luaL_prepbuffsize(&b, size);
 	fs->read(out, size);
 	if(fs->good()) {
 		luaL_addsize(&b, size);
@@ -232,7 +232,7 @@ int load_file(lua_State *L)
 {
 	std::string p = luaL_checkstring(L, -1);
 	std::string rel;
-	
+
 	if(!resolve_filename(p, get_calling_file(L), &rel)) {
 		return luaL_argerror(L, -1, "file not found");
 	}

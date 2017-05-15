@@ -254,7 +254,7 @@ void title_screen::pre_show(window& win)
 	//
 	if(game_config::images::game_title.empty()) {
 		ERR_CF << "No title image defined" << std::endl;
-	} 
+	}
 
 	win.get_canvas(0).set_variable("title_image", wfl::variant(game_config::images::game_title));
 

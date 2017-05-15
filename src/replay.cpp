@@ -413,12 +413,12 @@ void replay::redo(const config& cfg, bool set_to_end)
 		base_->add_child() = cmd;
 	}
 	if(set_to_end) {
-		//The engine does not execute related wml events so mark ad dpendent actions as handled 
+		//The engine does not execute related wml events so mark ad dpendent actions as handled
 		base_->set_to_end();
 	}
 	else {
-		//The engine does execute related wml events so it needs to reprocess depndent choices 
-		base_->set_pos(old_pos + 1);	
+		//The engine does execute related wml events so it needs to reprocess depndent choices
+		base_->set_pos(old_pos + 1);
 	}
 
 }

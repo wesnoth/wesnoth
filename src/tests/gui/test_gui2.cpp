@@ -282,7 +282,7 @@ namespace {
 			, const std::string& id)
 	{
 		for(const resolution& resolution : resolutions) {
-			
+
 			CVideo& video = test_utils::get_fake_display(resolution.first, resolution.second).video();
 
 			std::vector<std::string>& list =
@@ -802,13 +802,13 @@ struct wesnothd_connection_init
 	wesnothd_connection_init(wesnothd_connection& conn)
 	{
 		//Swallow the 'cannot connect' execption so that the connection object doesn't throw while we test the dialog.
-		try 
+		try
 		{
 			while (true) {
 				conn.poll();
 			}
 		}
-		catch (...) 
+		catch (...)
 		{
 
 		}

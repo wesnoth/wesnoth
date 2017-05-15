@@ -45,7 +45,7 @@ template<typename Map, typename Key>
 typename Map::mapped_type& map_get(Map& map, Key&& key)
 {
 	auto res = map.lower_bound(key);
-	
+
 	if (res == map.end() || key != res->first) {
 		res = map.emplace_hint(res, std::piecewise_construct, std::forward_as_tuple(key), std::tuple<>());
 	}
@@ -493,7 +493,7 @@ void config::splice_children(config &src, const std::string &key)
 
 	child_list &dst = map_get(children_, key);
 	child_map::iterator i_dst = children_.find(key);
-	
+
 	unsigned before = dst.size();
 	dst.insert(dst.end(), std::make_move_iterator(i_src->second.begin()), std::make_move_iterator(i_src->second.end()));
 	src.children_.erase(i_src);
@@ -580,7 +580,7 @@ config::attribute_value& config::operator[](config_key_type key)
 	check_valid();
 
 	auto res = values_.lower_bound(key);
-	
+
 	if (res == values_.end() || key != res->first) {
 		res = values_.emplace_hint(res, std::piecewise_construct, std::forward_as_tuple(key), std::tuple<>());
 	}

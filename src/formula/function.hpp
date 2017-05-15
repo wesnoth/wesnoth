@@ -85,7 +85,7 @@ class key_value_pair : public formula_callable {
 	void get_inputs(formula_input_vector& inputs) const override;
 public:
 	explicit key_value_pair(const variant& key, const variant& value) : key_(key), value_(value) {}
-	
+
 	void serialize_to_string(std::string& str) const override;
 };
 

@@ -1,13 +1,13 @@
 /*
  Copyright (C) by the Battle for Wesnoth Project http://www.wesnoth.org/
- 
+
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation; either version 2 of the License, or
  (at your option) any later version.
  This program is distributed in the hope that it will be useful,
  but WITHOUT ANY WARRANTY.
- 
+
  See the COPYING file for more details.
  */
 
@@ -43,47 +43,47 @@ namespace detail {
 	private:
 		std::function<Ret(T...)> fcn;
 	};
-	
+
 	template<typename Ret, typename... T>
 	apply<Ret, T...> make_apply(std::function<Ret(T...)> fcn) {
 		return apply<Ret, T...>(fcn);
 	}
-	
+
 	template<typename F>
 	struct function_base {
 		using type = typename function_base<decltype(&F::operator())>::type;
 	};
-	
+
 	template<typename Ret, typename... P>
 	struct function_base<Ret(P...)> {
 		typedef Ret type(P...);
 	};
-	
+
 	template<typename Ret, typename... P>
 	struct function_base<Ret(*)(P...)> {
 		typedef Ret type(P...);
 	};
-	
+
 	template<typename Ret, typename Class, typename... P>
 	struct function_base<Ret(Class::*)(P...)> {
 		typedef Ret type(Class,P...);
 	};
-	
+
 	template<typename Ret, typename Class, typename... P>
 	struct function_base<Ret(Class::*)(P...)const> {
 		typedef Ret type(const Class,P...);
 	};
-	
+
 	template<typename Ret, typename Class, typename... P>
 	struct function_base<Ret(Class::*)(P...)volatile > {
 		typedef Ret type(volatile Class,P...);
 	};
-	
+
 	template<typename Ret, typename Class, typename... P>
 	struct function_base<Ret(Class::*)(P...)const volatile> {
 		typedef Ret type(const volatile Class,P...);
 	};
-	
+
 	template<typename Ret, typename... P>
 	struct function_base<std::function<Ret(P...)>> {
 		typedef Ret type(P...);

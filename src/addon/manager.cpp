@@ -212,7 +212,7 @@ namespace {
 			"*.wesnoth",
 			"*.project",
 		};
-	
+
 		static const std::vector<std::string> default_ignored_dirs {
 			".*",
 			/* macOS metadata-like cruft (http://floatingsun.net/2007/02/07/whats-with-__macosx-in-zip-files/) */

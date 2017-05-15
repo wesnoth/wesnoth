@@ -638,11 +638,11 @@ bool luaW_tolocation(lua_State *L, int index, map_location& loc) {
 		// Need this special check because luaW_tovconfig returns true in this case
 		return false;
 	}
-	
+
 	vconfig dummy_vcfg = vconfig::unconstructed_vconfig();
-	
+
 	index = lua_absindex(L, index);
-	
+
 	if (lua_istable(L, index) || luaW_tounit(L, index) || luaW_tovconfig(L, index, dummy_vcfg)) {
 		map_location result;
 		int x_was_num = 0, y_was_num = 0;

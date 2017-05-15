@@ -23,7 +23,7 @@ struct wesnothd_error : public game::error
 	wesnothd_error(const std::string& error) : game::error(error) {}
 };
 
-///We received invalid data from wesnothd during a game 
+///We received invalid data from wesnothd during a game
 ///This means we cannot continue with the game but we can stay connected to wesnothd and start a new game
 ///TODO: find a short name
 struct ingame_wesnothd_error : public wesnothd_error ,public lua_jailbreak_exception

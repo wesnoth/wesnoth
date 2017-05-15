@@ -40,7 +40,7 @@ public:
 	 * @param source the definition of the context-free grammar to use
 	 */
 	context_free_grammar_generator(const std::string& source);
-	
+
 	/** Initialisation
 	 * @param source A map of nonterminals to lists of possibilities
 	 */

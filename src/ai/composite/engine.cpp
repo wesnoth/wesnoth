@@ -147,7 +147,7 @@ readonly_context& engine::get_readonly_context()
 {
 	return ai_;
 }
-	
+
 // This is defined in the source file so that it can easily access the logger
 bool engine_factory::is_duplicate(const std::string& name)
 {

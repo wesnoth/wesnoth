@@ -168,7 +168,7 @@ void stacked_widget::select_layer(const int layer)
 {
 	update_selected_layer_index(layer);
 
-	select_layer_impl([this](unsigned int i) 
+	select_layer_impl([this](unsigned int i)
 	{
 		return i == static_cast<unsigned int>(selected_layer_);
 	});

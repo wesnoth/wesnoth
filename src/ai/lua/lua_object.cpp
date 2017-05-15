@@ -32,10 +32,10 @@ namespace ai {
 	{
 		// empty
 	}
-	
+
 	// MSVC fails to compile without this line
 	template class lua_object<aspect_attacks_lua_filter>;
-	
+
 	template <>
 	std::shared_ptr<aspect_attacks_lua_filter> lua_object<aspect_attacks_lua_filter>::to_type(lua_State *L, int n)
 	{

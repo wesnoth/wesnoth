@@ -170,7 +170,7 @@ private:
 
 	template<tree_view_node* (tree_view_node::*func) ()>
 	tree_view_node* get_next_node();
-	
+
 	template<tree_view_node* (tree_view_node::*func) ()>
 	bool handle_up_down_arrow();
 };

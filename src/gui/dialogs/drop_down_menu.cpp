@@ -47,7 +47,7 @@ namespace
 		 *
 		 * This works since this click_callback function is called before widgets' left-button-up handlers.
 		 *
-		 * Additionally, this is done before row deselection so selecting/deselecting a toggle button doesn't also leave 
+		 * Additionally, this is done before row deselection so selecting/deselecting a toggle button doesn't also leave
 		 * the list with no row visually selected. Oddly, the visial deselection doesn't seem to cause any crashes, and
 		 * the previously selected row is reselected when the menu is opened again. Still, it's odd to see your selection
 		 * vanish.

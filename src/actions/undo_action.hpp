@@ -22,7 +22,7 @@
 
 namespace actions {
 	class undo_list;
-	
+
 	struct undo_event {
 		config commands, data;
 		map_location loc1, loc2, filter_loc1, filter_loc2;

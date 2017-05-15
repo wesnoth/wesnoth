@@ -221,7 +221,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			ERR_NW << "unknown controller type issued from server on side drop: " << side_drop_c["controller"] << std::endl;
 			throw ingame_wesnothd_error("");
 		}
-		
+
 		if (ctrl == team::CONTROLLER::AI) {
 			resources::gameboard->side_drop_to(side_drop, ctrl);
 			return restart ? PROCESS_RESTART_TURN:PROCESS_CONTINUE;
@@ -297,7 +297,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 
 		if (action < control_change_options) {
 			// Grant control to selected ally
-			
+
 			{
 				// Server thinks this side is ours now so in case of error transferring side we have to make local state to same as what server thinks it is.
 				resources::gameboard->side_drop_to(side_drop, team::CONTROLLER::HUMAN, team::PROXY_CONTROLLER::PROXY_IDLE);

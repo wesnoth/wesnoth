@@ -38,7 +38,7 @@ class network_transmission : public modal_dialog
 {
 public:
 	//A wrapper of either a wesnothd_connection or a network_asio::connection
-	class connection_data 
+	class connection_data
 	{
 	public:
 		virtual size_t total() { return 0; }

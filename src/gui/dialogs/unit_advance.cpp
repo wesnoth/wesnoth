@@ -74,7 +74,7 @@ void unit_advance::pre_show(window& window)
 		string_map column;
 
 		std::string image_string, name = sample.type_name();
-		
+
 		// This checks if we've finished iterating over the last unit type advancements
 		// and are into the modification-based advancements.
 		if(i >= last_real_advancement_) {

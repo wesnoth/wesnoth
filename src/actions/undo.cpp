@@ -413,7 +413,7 @@ void undo_list::redo()
 
 	resources::recorder->redo(const_cast<const config&>(*action));
 
-		
+
 	// synced_context::run readds the undo command with the normal undo_lis::add function whihc clears the
 	// redo stack which makes redoign of more than one move impossible. to work around that we save redo stack here and set it later.
 	redos_list temp;

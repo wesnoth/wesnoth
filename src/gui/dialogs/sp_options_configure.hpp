@@ -42,7 +42,7 @@ public:
 		const bool have_campaign_options = std::any_of(campaign_mods.begin(), campaign_mods.end(), [](config& mod) {
 			return !mod.empty();
 		});
-	
+
 		// Check active mod options.
 		bool have_mod_options = false;
 

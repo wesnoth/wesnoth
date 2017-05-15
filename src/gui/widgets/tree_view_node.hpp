@@ -319,7 +319,7 @@ private:
 	virtual void impl_draw_children(surface& frame_buffer,
 									int x_offset,
 									int y_offset) override;
-									
+
 	/** See selectable_item::set_callback_state_change. */
 	std::function<void(widget&)> callback_state_change_;
 

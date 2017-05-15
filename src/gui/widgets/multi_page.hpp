@@ -63,7 +63,7 @@ public:
 	 *
 	 * @param type                the id of the [page_definition] that shoduol be used
 	 *
-	 * @param insert_pos          the position where th new page is inserted, usually 
+	 * @param insert_pos          the position where th new page is inserted, usually
 	 *                            -1 for 'at end'
 	 *
 	 * @returns                   The grid of the newly added page.
@@ -105,7 +105,7 @@ public:
 	 *
 	 * @param type                the id of the [page_definition] that shoduol be used
 	 *
-	 * @param insert_pos          the position where th new page is inserted, usually 
+	 * @param insert_pos          the position where th new page is inserted, usually
 	 *                            -1 for 'at end'
 	 *
 	 * @returns                   The grid of the newly added page.
