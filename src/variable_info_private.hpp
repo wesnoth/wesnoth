@@ -58,7 +58,7 @@ int parse_index(const char* index_str)
 	char* endptr;
 	int res = strtol(index_str, &endptr, 10);
 
-	if(*endptr != ']' || res > int(game_config::max_loop) || endptr == index_str) {
+	if(*endptr != ']' || res > static_cast<int>(game_config::max_loop) || endptr == index_str) {
 		throw invalid_variablename_exception();
 	}
 
@@ -279,7 +279,7 @@ public:
 template<>
 config::const_child_itors as_array_visitor<const vi_policy_const>::from_indexed(as_array_visitor::param_t state) const
 {
-	if(int(state.child_->child_count(state.key_)) <= state.index_) {
+	if(static_cast<int>(state.child_->child_count(state.key_)) <= state.index_) {
 		return get_child_range(non_empty_const_cfg, "_", 0, 1);
 	}
 
