@@ -21,9 +21,10 @@ namespace utils
 {
 //
 // These aliases are part of the standard starting with C++14.
-// Forward to their declarations if appropriate.
+// MSVC included them itself starting as of VS 2013 (our min supported version).
+// Forward to their declarations as appropriate.
 //
-#ifdef HAVE_CXX14
+#ifdef HAVE_CXX14 || defined(_MSC_VER)
 
 using std::add_const_t;
 using std::conditional_t;
@@ -32,7 +33,7 @@ using std::remove_const_t;
 using std::remove_reference_t;
 using std::remove_pointer_t;
 
-#else // We do not have C++14
+#else // We do not have C++14 or MSVC
 
 // add_const
 template<typename T>
@@ -60,18 +61,21 @@ using remove_pointer_t = typename std::remove_pointer<T>::type;
 
 #endif // HAVE_CXX14
 
+// Since there's really no way to implement these without variable templates, I've commented
+// this whole section out until we bump our min compiler support to VS 2015 and GCC 5.
+#if 0
+
 //
 // These aliases are part of the standard starting with C++17.
-// However, they can also be implemented using variable templates in C++14. VS doesn't
-// support variable templates until VS 2017, so fall back to the C++11 implementation
-// if applicable.
+// However, MSVC includes them as of VS 2015 Update 2, and they can also be implemented
+// using variable templates in C++14.
 //
-#ifdef HAVE_CXX17
+#ifdef HAVE_CXX17 || defined(_MSC_VER) && _MSC_VER >= 1900
 
 using std::is_base_of_v;
 using std::is_same_v;
 
-#elif defined(HAVE_CXX14) || defined(_MSC_VER) && _MSC_VER >= 1910 // We have C++14, and are using VC >= 2017
+#elif defined(HAVE_CXX14)
 
 // is_base_of
 template<typename Base, typename Derived>
@@ -81,16 +85,8 @@ static constexpr bool is_base_of_v = std::is_base_of<Base, Derived>::value;
 template<typename T, typename U>
 static constexpr bool is_same_v = std::is_same<T, U>::value;
 
-#else // We do not have C++14 or C++17
-
-// is_base_of
-template<typename Base, typename Derived>
-using is_base_of_v = typename std::is_base_of<Base, Derived>::value;
-
-// is_same
-template<typename T, typename U>
-using is_same_v = typename std::is_same<T, U>::value;
-
 #endif // HAVE_CXX17
+
+#endif
 
 } // end namespace utils
