@@ -51,11 +51,11 @@ struct grid_implementation
 	 * @tparam W                  widget or const widget.
 	 */
 	template <class W>
-	static W* find_at(typename utils::const_clone<grid, W>::reference grid,
+	static W* find_at(utils::const_clone_ref<grid, W> grid,
 					  const point& coordinate,
 					  const bool must_be_active)
 	{
-		typedef typename utils::const_clone<grid::child, W>::type hack;
+		typedef utils::const_clone_t<grid::child, W> hack;
 		for(hack & child : grid.children_)
 		{
 
@@ -81,7 +81,7 @@ struct grid_implementation
 	 * @tparam W                  widget or const widget.
 	 */
 	template <class W>
-	static W* find(typename utils::const_clone<grid, W>::reference grid,
+	static W* find(utils::const_clone_ref<grid, W> grid,
 				   const std::string& id,
 				   const bool must_be_active)
 	{
@@ -91,7 +91,7 @@ struct grid_implementation
 			return widget;
 		}
 
-		typedef typename utils::const_clone<grid::child, W>::type hack;
+		typedef utils::const_clone_t<grid::child, W> hack;
 		for(hack & child : grid.children_)
 		{
 

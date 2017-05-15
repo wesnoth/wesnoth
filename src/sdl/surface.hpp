@@ -117,7 +117,7 @@ template<typename T>
 class surface_locker
 {
 private:
-	using pixel_t = typename utils::const_clone<Uint32, T>::type;
+	using pixel_t = utils::const_clone_t<Uint32, T>;
 
 public:
 	surface_locker(T& surf) : surface_(surf), locked_(false)

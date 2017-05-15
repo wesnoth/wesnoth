@@ -65,7 +65,7 @@ T& get_parent(widget& child)
  * @returns                   The widget with the id.
  */
 template <class T>
-T* find_widget(typename utils::const_clone<widget, T>::pointer widget,
+T* find_widget(utils::const_clone_ptr<widget, T> widget,
 			   const std::string& id,
 			   const bool must_be_active,
 			   const bool must_exist)
@@ -92,7 +92,7 @@ T* find_widget(typename utils::const_clone<widget, T>::pointer widget,
  * @returns                   The widget with the id.
  */
 template <class T>
-T& find_widget(typename utils::const_clone<widget, T>::pointer widget,
+T& find_widget(utils::const_clone_ptr<widget, T> widget,
 			   const std::string& id,
 			   const bool must_be_active)
 {

@@ -320,7 +320,7 @@ private:
 
 public:
 	template <class W>
-	static W* find_at(typename utils::const_clone<tree_view_node, W>::reference tree_view_node,
+	static W* find_at(utils::const_clone_ref<tree_view_node, W> tree_view_node,
 					  const point& coordinate,
 					  const bool must_be_active)
 	{

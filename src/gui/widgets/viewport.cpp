@@ -44,7 +44,7 @@ struct viewport_implementation
 	 * @tparam W                  A pointer to the pane.
 	 */
 	template <class W>
-	static typename utils::const_clone<widget, W>::pointer
+	static utils::const_clone_ptr<widget, W>
 	find_at(W viewport, point coordinate, const bool must_be_active)
 	{
 
@@ -66,7 +66,7 @@ struct viewport_implementation
 	}
 
 	template <class W>
-	static typename utils::const_clone<widget, W>::pointer
+	static utils::const_clone_ptr<widget, W>
 	find(W viewport, const std::string& id, const bool must_be_active)
 	{
 		if(viewport->widget::find(id, must_be_active)) {

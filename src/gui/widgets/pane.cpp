@@ -51,7 +51,7 @@ struct pane_implementation
 	 * @tparam W                  A pointer to the pane.
 	 */
 	template <class W>
-	static typename utils::const_clone<widget, W>::pointer
+	static utils::const_clone_ptr<widget, W>
 	find_at(W pane, point coordinate, const bool must_be_active)
 	{
 
@@ -92,7 +92,7 @@ struct pane_implementation
 	 * @tparam W                  A pointer to the pane.
 	 */
 	template <class W>
-	static typename utils::const_clone<grid, W>::pointer
+	static utils::const_clone_ptr<grid, W>
 	get_grid(W pane, const unsigned id)
 	{
 		for(auto item : pane->items_)
