@@ -44,47 +44,34 @@ namespace lua_check_impl
 		BOOST_MPL_HAS_XXX_TRAIT_DEF(second_type)
 	}
 
-	template <typename T, typename Enable = void>
+	template<typename T, typename T2 = utils::remove_reference_t<T>>
 	struct is_container
 		: boost::mpl::bool_<
-			detail::has_value_type<T>::value &&
-			detail::has_iterator<T>::value &&
-			detail::has_size_type<T>::value &&
-			detail::has_reference<T>::value
+			detail::has_value_type<T2>::value &&
+			detail::has_iterator<T2>::value &&
+			detail::has_size_type<T2>::value &&
+			detail::has_reference<T2>::value
 		>
 	{};
 
-	template <typename T, typename Enable = void>
+	template<typename T, typename T2 = utils::remove_reference_t<T>>
 	struct is_map
 		: boost::mpl::bool_<
-			detail::has_key_type<T>::value &&
-			detail::has_mapped_type<T>::value
+			detail::has_key_type<T2>::value &&
+			detail::has_mapped_type<T2>::value
 		>
 	{};
 
-	template <typename T, typename Enable = void>
+	template<typename T, typename T2 = utils::remove_reference_t<T>>
 	struct is_pair
 		: boost::mpl::bool_<
-			detail::has_first_type<T>::value &&
-			detail::has_second_type<T>::value
+			detail::has_first_type<T2>::value &&
+			detail::has_second_type<T2>::value
 		>
-	{};
-
-	template <typename T>
-	struct is_container<T&>
-		: is_container<T>
-	{};
-
-	template <typename T>
-	struct is_map<T&>
-		: is_map<T>
 	{};
 
 	template<typename T>
-	struct remove_constref
-	{
-		typedef utils::remove_const_t<utils::remove_reference_t<utils::remove_const_t<T>>> type;
-	};
+	using remove_constref = utils::remove_const_t<utils::remove_reference_t<utils::remove_const_t<T>>>;
 
 	//std::string
 	template<typename T>
@@ -243,7 +230,7 @@ namespace lua_check_impl
 			for (int i = 1, i_end = lua_rawlen(L, n); i <= i_end; ++i)
 			{
 				lua_rawgeti(L, n, i);
-				res.push_back(lua_check_impl::lua_check<typename remove_constref<typename T::reference>::type>(L, -1));
+				res.push_back(lua_check_impl::lua_check<remove_constref<typename T::reference>>(L, -1));
 				lua_pop(L, 1);
 			}
 			return res;
@@ -275,7 +262,7 @@ namespace lua_check_impl
 		lua_createtable(L, list.size(), 0);
 		int i = 1;
 		for(typename T::const_iterator iter = list.begin(); iter != list.end(); ++iter) {
-			lua_check_impl::lua_push<typename remove_constref<typename T::reference>::type>(L, *iter);
+			lua_check_impl::lua_push<remove_constref<typename T::reference>>(L, *iter);
 			lua_rawseti(L, -2, i++);
 		}
 	}
@@ -289,8 +276,8 @@ namespace lua_check_impl
 		lua_newtable(L);
 		for(const typename T::value_type& pair : map)
 		{
-			lua_check_impl::lua_push<typename remove_constref<typename T::key_type>::type>(L, pair.first);
-			lua_check_impl::lua_push<typename remove_constref<typename T::mapped_type>::type>(L, pair.second);
+			lua_check_impl::lua_push<remove_constref<typename T::key_type>>(L, pair.first);
+			lua_check_impl::lua_push<remove_constref<typename T::mapped_type>>(L, pair.second);
 			lua_settable(L, -3);
 		}
 	}
@@ -298,14 +285,14 @@ namespace lua_check_impl
 }
 
 template<typename T>
-typename lua_check_impl::remove_constref<T>::type lua_check(lua_State *L, int n)
+lua_check_impl::remove_constref<T> lua_check(lua_State *L, int n)
 {
 	//remove possible const& to make life easier for the impl namespace.
-	return lua_check_impl::lua_check<typename lua_check_impl::remove_constref<T>::type>(L, n);
+	return lua_check_impl::lua_check<lua_check_impl::remove_constref<T>>(L, n);
 }
 
 template<typename T>
 void lua_push(lua_State *L, const T& val)
 {
-	return lua_check_impl::lua_push<typename lua_check_impl::remove_constref<T>::type>(L, val);
+	return lua_check_impl::lua_push<lua_check_impl::remove_constref<T>>(L, val);
 }
