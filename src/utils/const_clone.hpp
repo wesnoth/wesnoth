@@ -55,4 +55,13 @@ struct const_clone
 		typename std::conditional<is_source_const, const D*, D*>::type;
 };
 
+template<typename D, typename S>
+using const_clone_t = typename const_clone<D, S>::type;
+
+template<typename D, typename S>
+using const_clone_ref = typename const_clone<D, S>::reference;
+
+template<typename D, typename S>
+using const_clone_ptr = typename const_clone<D, S>::pointer;
+
 } // namespace utils
