@@ -87,7 +87,7 @@ struct config_implementation
 		assert(parent[parent.size() - 1] == ']');
 
 		if(config->has_child(key)) {
-			return *(config->children.find(key)->second.front());
+			return *(config->children_.find(key)->second.front());
 		}
 
 		/**
@@ -105,340 +105,6 @@ struct config_implementation
 		throw config::error(sstr.str());
 	}
 };
-
-
-/* ** Attribute value implementation ** */
-
-
-// Special string values.
-const std::string config::attribute_value::s_yes("yes");
-const std::string config::attribute_value::s_no("no");
-const std::string config::attribute_value::s_true("true");
-const std::string config::attribute_value::s_false("false");
-
-
-/** Default implementation, but defined out-of-line for efficiency reasons. */
-config::attribute_value::attribute_value()
-	: value_()
-{
-}
-
-/** Default implementation, but defined out-of-line for efficiency reasons. */
-config::attribute_value::~attribute_value()
-{
-}
-
-/** Default implementation, but defined out-of-line for efficiency reasons. */
-config::attribute_value::attribute_value(const config::attribute_value &that)
-	: value_(that.value_)
-{
-}
-
-/** Default implementation, but defined out-of-line for efficiency reasons. */
-config::attribute_value &config::attribute_value::operator=(const config::attribute_value &that)
-{
-	value_ = that.value_;
-	return *this;
-}
-
-config::attribute_value &config::attribute_value::operator=(bool v)
-{
-	value_ = yes_no(v);
-	return *this;
-}
-
-config::attribute_value &config::attribute_value::operator=(int v)
-{
-	value_ = v;
-	return *this;
-}
-
-config::attribute_value &config::attribute_value::operator=(long long v)
-{
-	if ( v > 0 )
-		// We can store this unsigned.
-		return *this = static_cast<unsigned long long>(v);
-
-	if ( v >= INT_MIN )
-		// We can store this as an int.
-		return *this = static_cast<int>(v);
-
-	// Getting to this point should be rare. (Currently, getting here means
-	// something like there was so much draining in a campaign that the
-	// total damage taken is not only negative, but so negative that an
-	// int cannot hold the value.) So rare that it is not worth precise
-	// treatment; just use a double.
-	value_ = static_cast<double>(v);
-	return *this;
-}
-
-config::attribute_value &config::attribute_value::operator=(unsigned long long v)
-{
-	// Use int for smaller numbers.
-	if ( v <= INT_MAX )
-		return *this = static_cast<int>(v);
-
-	value_ = v;
-	return *this;
-}
-
-config::attribute_value &config::attribute_value::operator=(double v)
-{
-	// Try to store integers in other types.
-	if ( v > 0.0 ) {
-		// Convert to unsigned and pass this off to that assignment operator.
-		unsigned long long ull = static_cast<unsigned long long>(v);
-		if ( static_cast<double>(ull) == v )
-			return *this = ull;
-	}
-	else {
-		// Convert to integer and pass this off to that assignment operator.
-		int i = static_cast<int>(v);
-		if ( static_cast<double>(i) == v )
-			return *this = i;
-	}
-
-	// If we get here, this does in fact get stored as a double.
-	value_ = v;
-	return *this;
-}
-
-namespace {
-	/**
-	 * Attempts to convert @a source to the template type.
-	 * This is to avoid "overzealous reinterpretations of certain WML strings as
-	 * numeric types" (c.f. bug #19201).
-	 * @returns true if the conversion was successful and the source string
-	 *          can be reobtained by streaming the result.
-	 */
-	template<typename To>
-	bool from_string_verify(const std::string & source, To & res)
-	{
-		// Check 1: convertable to the target type.
-		std::istringstream in_str(source);
-		if ( !(in_str >> res) )
-			return false;
-
-		// Check 2: convertable back to the same string.
-		std::ostringstream out_str;
-		out_str << res;
-		return out_str.str() == source;
-	}
-}
-config::attribute_value &config::attribute_value::operator=(const std::string &v)
-{
-	// Handle some special strings.
-	if (v.empty()) { value_ = v; return *this; }
-	if ( v == s_yes )   { value_ = yes_no(true);  return *this; }
-	if ( v == s_no )    { value_ = yes_no(false); return *this; }
-	if ( v == s_true )  { value_ = true_false(true);  return *this; }
-	if ( v == s_false ) { value_ = true_false(false); return *this; }
-
-	// Attempt to convert to a number.
-	char *eptr;
-	double d = strtod(v.c_str(), &eptr);
-	if ( *eptr == '\0' ) {
-		// Possibly a number. See what type it should be stored in.
-		// (All conversions will be from the string since the largest integer
-		// type could have more precision than a double.)
-		if ( d > 0.0 ) {
-			// The largest type for positive integers is unsigned long long.
-			unsigned long long ull = 0;
-			if ( from_string_verify<unsigned long long>(v, ull) )
-				return *this = ull;
-		}
-		else {
-			// The largest (variant) type for negative integers is int.
-			int i = 0;
-			if ( from_string_verify<int>(v, i) )
-				return *this = i;
-		}
-
-		// This does not look like an integer, so it should be a double.
-		// However, make sure it can convert back to the same string (in
-		// case this is a string that just looks like a numeric value).
-		std::ostringstream tester;
-		tester << d;
-		if ( tester.str() == v ) {
-			value_ = d;
-			return *this;
-		}
-	}
-
-	// No conversion possible. Store the string.
-	value_ = v;
-	return *this;
-}
-
-config::attribute_value &config::attribute_value::operator=(const t_string &v)
-{
-	if (!v.translatable()) return *this = v.str();
-	value_ = v;
-	return *this;
-}
-
-
-bool config::attribute_value::to_bool(bool def) const
-{
-	if ( const yes_no *p = boost::get<const yes_no>(&value_) )
-		return *p;
-	if ( const true_false *p = boost::get<const true_false>(&value_) )
-		return *p;
-
-	// No other types are ever recognized as boolean.
-	return def;
-}
-
-namespace {
-	/// Visitor for converting a variant to a numeric type (T).
-	template <typename T>
-	class attribute_numeric_visitor : public boost::static_visitor<T>
-	{
-	public:
-		// Constructor stores the default value.
-		attribute_numeric_visitor(T def) : def_(def) {}
-
-		T operator()(boost::blank const &) const { return def_; }
-		T operator()(bool)                 const { return def_; }
-		T operator()(int i)                const { return static_cast<T>(i); }
-		T operator()(unsigned long long u) const { return static_cast<T>(u); }
-		T operator()(double d)             const { return static_cast<T>(d); }
-		T operator()(const std::string& s) const { return lexical_cast_default<T>(s, def_); }
-		T operator()(t_string const &)     const { return def_; }
-
-	private:
-		const T def_;
-	};
-}
-
-int config::attribute_value::to_int(int def) const
-{
-	return apply_visitor(attribute_numeric_visitor<int>(def));
-}
-
-long long config::attribute_value::to_long_long(long long def) const
-{
-	return apply_visitor(attribute_numeric_visitor<long long>(def));
-}
-
-unsigned config::attribute_value::to_unsigned(unsigned def) const
-{
-	return apply_visitor(attribute_numeric_visitor<unsigned>(def));
-}
-
-size_t config::attribute_value::to_size_t(size_t def) const
-{
-	return apply_visitor(attribute_numeric_visitor<size_t>(def));
-}
-
-time_t config::attribute_value::to_time_t(time_t def) const
-{
-	return apply_visitor(attribute_numeric_visitor<time_t>(def));
-}
-
-double config::attribute_value::to_double(double def) const
-{
-	return apply_visitor(attribute_numeric_visitor<double>(def));
-}
-
-/// Visitor for converting a variant to a string.
-class config::attribute_value::string_visitor
-	: public boost::static_visitor<std::string>
-{
-	const std::string default_;
-public:
-	string_visitor(const std::string& fallback) : default_(fallback) {}
-	std::string operator()(const boost::blank &) const { return default_; }
-	std::string operator()(const yes_no & b)     const { return b.str(); }
-	std::string operator()(const true_false & b) const { return b.str(); }
-	std::string operator()(int i)                const { return lexical_cast<std::string>(i); }
-	std::string operator()(unsigned long long u) const { return lexical_cast<std::string>(u); }
-	std::string operator()(double d)             const { return lexical_cast<std::string>(d); }
-	std::string operator()(const std::string& s) const { return s; }
-	std::string operator()(t_string const &s)    const { return s.str(); }
-};
-
-std::string config::attribute_value::str(const std::string& fallback) const
-{
-	return apply_visitor(string_visitor(fallback));
-}
-
-t_string config::attribute_value::t_str() const
-{
-	if (const t_string *p = boost::get<const t_string>(&value_)) return *p;
-	return str();
-}
-
-/**
- * Tests for an attribute that was never set.
- */
-bool config::attribute_value::blank() const
-{
-	return boost::get<const boost::blank>(&value_) != nullptr;
-}
-
-/**
- * Tests for an attribute that either was never set or was set to "".
- */
-bool config::attribute_value::empty() const
-{
-	if (boost::get<const boost::blank>(&value_)) return true;
-	if (const std::string *p = boost::get<const std::string>(&value_)) return p->empty();
-	return false;
-}
-
-
-/// Visitor handling equality checks.
-class config::attribute_value::equality_visitor
-	: public boost::static_visitor<bool>
-{
-public:
-	// Most generic: not equal.
-	template <typename T, typename U>
-	bool operator()(const T &, const U &) const { return false; }
-
-	// Same types are comparable and might be equal.
-	template <typename T>
-	bool operator()(const T & lhs, const T & rhs) const { return lhs == rhs; }
-
-	// Boolean values can be compared.
-	bool operator()(const true_false & lhs, const yes_no & rhs) const { return bool(lhs) == bool(rhs); }
-	bool operator()(const yes_no & lhs, const true_false & rhs) const { return bool(lhs) == bool(rhs); }
-};
-
-/**
- * Checks for equality of the attribute values when viewed as strings.
- * Exception: Boolean synonyms can be equal ("yes" == "true").
- * Note: Blanks have no string representation, so do not equal "" (an empty string).
- */
-bool config::attribute_value::operator==(const config::attribute_value &other) const
-{
-	return boost::apply_visitor(equality_visitor(), value_, other.value_);
-}
-
-/**
- * Checks for equality of the attribute values when viewed as strings.
- * Exception: Boolean synonyms can be equal ("yes" == "true").
- * Note: Blanks have no string representation, so do not equal "" (an empty string).
- * Also note that translatable string are never equal to non translatable strings.
- */
-bool config::attribute_value::equals(const std::string &str) const
-{
-	attribute_value v;
-	v = str;
-	return *this == v;
-	// if c["a"] = "1" then this solution would have resulted in c["a"] == "1" beeing false
-	// because a["a"] is '1' and not '"1"'.
-	// return boost::apply_visitor(std::bind( equality_visitor(), _1, std::cref(str) ), value_);
-	// that's why we don't use it.
-}
-
-std::ostream &operator<<(std::ostream &os, const config::attribute_value &v)
-{
-	// Simple implementation, but defined out-of-line because of the templating
-	// involved.
-	return os << v.value_;
-}
 
 
 /* ** config implementation ** */
@@ -460,16 +126,16 @@ void config::check_valid(const config &cfg) const
 		throw error("Mandatory WML child missing yet untested for. Please report.");
 }
 
-config::config() : values(), children(), ordered_children()
+config::config() : values_(), children_(), ordered_children()
 {
 }
 
-config::config(const config& cfg) : values(cfg.values), children(), ordered_children()
+config::config(const config& cfg) : values_(cfg.values_), children_(), ordered_children()
 {
 	append_children(cfg);
 }
 
-config::config(config_key_type child) : values(), children(), ordered_children()
+config::config(config_key_type child) : values_(), children_(), ordered_children()
 {
 	add_child(child);
 }
@@ -490,8 +156,8 @@ config& config::operator=(const config& cfg)
 }
 
 config::config(config &&cfg):
-	values(std::move(cfg.values)),
-	children(std::move(cfg.children)),
+	values_(std::move(cfg.values_)),
+	children_(std::move(cfg.children_)),
 	ordered_children(std::move(cfg.ordered_children))
 {
 }
@@ -522,15 +188,15 @@ bool config::valid_id(config_key_type id)
 bool config::has_attribute(config_key_type key) const
 {
 	check_valid();
-	return values.find(key) != values.end();
+	return values_.find(key) != values_.end();
 }
 
 bool config::has_old_attribute(config_key_type key, const std::string &old_key, const std::string& msg) const
 {
 	check_valid();
-	if (values.find(key) != values.end()) {
+	if (values_.find(key) != values_.end()) {
 		return true;
-	} else if (values.find(old_key) != values.end()) {
+	} else if (values_.find(old_key) != values_.end()) {
 		if (!msg.empty())
 			lg::wml_error() << msg;
 		return true;
@@ -542,7 +208,7 @@ bool config::has_old_attribute(config_key_type key, const std::string &old_key, 
 void config::remove_attribute(config_key_type key)
 {
 	check_valid();
-	map_erase_key(values, key);
+	map_erase_key(values_, key);
 }
 
 void config::append_children(const config &cfg)
@@ -557,8 +223,8 @@ void config::append_children(const config &cfg)
 void config::append_attributes(const config &cfg)
 {
 	check_valid(cfg);
-	for (const attribute &v : cfg.values) {
-		values[v.first] = v.second;
+	for (const attribute &v : cfg.values_) {
+		values_[v.first] = v.second;
 	}
 }
 
@@ -574,8 +240,8 @@ void config::append_children(const config &cfg, const std::string& key)
 void config::append(const config &cfg)
 {
 	append_children(cfg);
-	for (const attribute &v : cfg.values) {
-		values[v.first] = v.second;
+	for (const attribute &v : cfg.values_) {
+		values_[v.first] = v.second;
 	}
 }
 
@@ -616,10 +282,10 @@ config::child_itors config::child_range(config_key_type key)
 {
 	check_valid();
 
-	child_map::iterator i = children.find(key);
+	child_map::iterator i = children_.find(key);
 	static child_list dummy;
 	child_list *p = &dummy;
-	if (i != children.end()) p = &i->second;
+	if (i != children_.end()) p = &i->second;
 	return child_itors(child_iterator(p->begin()), child_iterator(p->end()));
 }
 
@@ -627,10 +293,10 @@ config::const_child_itors config::child_range(config_key_type key) const
 {
 	check_valid();
 
-	child_map::const_iterator i = children.find(key);
+	child_map::const_iterator i = children_.find(key);
 	static child_list dummy;
 	const child_list *p = &dummy;
-	if (i != children.end()) p = &i->second;
+	if (i != children_.end()) p = &i->second;
 	return const_child_itors(const_child_iterator(p->begin()), const_child_iterator(p->end()));
 }
 
@@ -638,8 +304,8 @@ unsigned config::child_count(config_key_type key) const
 {
 	check_valid();
 
-	child_map::const_iterator i = children.find(key);
-	if(i != children.end()) {
+	child_map::const_iterator i = children_.find(key);
+	if(i != children_.end()) {
 		return i->second.size();
 	}
 	return 0;
@@ -652,7 +318,7 @@ unsigned config::all_children_count() const
 
 unsigned config::attribute_count() const
 {
-	return std::count_if(values.begin(), values.end(), [](const attribute& v) {
+	return std::count_if(values_.begin(), values_.end(), [](const attribute& v) {
 		return !v.second.blank();
 	});
 }
@@ -661,15 +327,15 @@ bool config::has_child(config_key_type key) const
 {
 	check_valid();
 
-	return children.find(key) != children.end();
+	return children_.find(key) != children_.end();
 }
 
 config &config::child(config_key_type key, int n)
 {
 	check_valid();
 
-	const child_map::const_iterator i = children.find(key);
-	if (i == children.end()) {
+	const child_map::const_iterator i = children_.find(key);
+	if (i == children_.end()) {
 		DBG_CF << "The config object has no child named »"
 				<< key << "«.\n";
 
@@ -706,8 +372,8 @@ const config & config::child_or_empty(config_key_type key) const
 	static const config empty_cfg;
 	check_valid();
 
-	child_map::const_iterator i = children.find(key);
-	if (i != children.end() && !i->second.empty())
+	child_map::const_iterator i = children_.find(key);
+	if (i != children_.end() && !i->second.empty())
 		return *i->second.front();
 
 	return empty_cfg;
@@ -715,8 +381,8 @@ const config & config::child_or_empty(config_key_type key) const
 
 config &config::child_or_add(config_key_type key)
 {
-	child_map::const_iterator i = children.find(key);
-	if (i != children.end() && !i->second.empty())
+	child_map::const_iterator i = children_.find(key);
+	if (i != children_.end() && !i->second.empty())
 		return *i->second.front();
 
 	return add_child(key);
@@ -726,9 +392,9 @@ config& config::add_child(config_key_type key)
 {
 	check_valid();
 
-	child_list& v = map_get(children, key);
-	v.push_back(new config());
-	ordered_children.emplace_back(children.find(key),v.size()-1);
+	child_list& v = map_get(children_, key);
+	v.emplace_back(new config());
+	ordered_children.emplace_back(children_.find(key),v.size()-1);
 	return *v.back();
 }
 
@@ -736,9 +402,10 @@ config& config::add_child(config_key_type key, const config& val)
 {
 	check_valid(val);
 
-	child_list& v = map_get(children, key);
-	v.push_back(new config(val));
-	ordered_children.emplace_back(children.find(key),v.size()-1);
+	child_list& v = map_get(children_, key);
+	v.emplace_back(new config(val));
+	ordered_children.emplace_back(children_.find(key),v.size()-1);
+
 	return *v.back();
 }
 
@@ -746,9 +413,10 @@ config &config::add_child(config_key_type key, config &&val)
 {
 	check_valid(val);
 
-	child_list &v = map_get(children, key);
-	v.push_back(new config(std::move(val)));
-	ordered_children.emplace_back(children.find(key), v.size() - 1);
+	child_list &v = map_get(children_, key);
+	v.emplace_back(new config(std::move(val)));
+	ordered_children.emplace_back(children_.find(key), v.size() - 1);
+
 	return *v.back();
 }
 
@@ -756,16 +424,16 @@ config &config::add_child_at(config_key_type key, const config &val, unsigned in
 {
 	check_valid(val);
 
-	child_list& v = map_get(children, key);
+	child_list& v = map_get(children_, key);
 	if(index > v.size()) {
 		throw error("illegal index to add child at");
 	}
 
-	v.insert(v.begin()+index,new config(val));
+	v.emplace(v.begin()+index,new config(val));
 
 	bool inserted = false;
 
-	const child_pos value(children.find(key),index);
+	const child_pos value(children_.find(key),index);
 
 	std::vector<child_pos>::iterator ord = ordered_children.begin();
 	for(; ord != ordered_children.end(); ++ord) {
@@ -803,35 +471,32 @@ void config::clear_children_impl(config_key_type key)
 {
 	check_valid();
 
-	child_map::iterator i = children.find(key);
-	if (i == children.end()) return;
+	child_map::iterator i = children_.find(key);
+	if (i == children_.end()) return;
 
 	ordered_children.erase(std::remove_if(ordered_children.begin(),
 		ordered_children.end(), remove_ordered(i)), ordered_children.end());
 
-	for (config *c : i->second) {
-		delete c;
-	}
-
-	children.erase(i);
+	children_.erase(i);
 }
 
 void config::splice_children(config &src, const std::string &key)
 {
 	check_valid(src);
 
-	child_map::iterator i_src = src.children.find(key);
-	if (i_src == src.children.end()) return;
+	child_map::iterator i_src = src.children_.find(key);
+	if (i_src == src.children_.end()) return;
 
 	src.ordered_children.erase(std::remove_if(src.ordered_children.begin(),
 		src.ordered_children.end(), remove_ordered(i_src)),
 		src.ordered_children.end());
 
-	child_list &dst = map_get(children, key);
-	child_map::iterator i_dst = children.find(key);
+	child_list &dst = map_get(children_, key);
+	child_map::iterator i_dst = children_.find(key);
+	
 	unsigned before = dst.size();
-	dst.insert(dst.end(), i_src->second.begin(), i_src->second.end());
-	src.children.erase(i_src);
+	dst.insert(dst.end(), std::make_move_iterator(i_src->second.begin()), std::make_move_iterator(i_src->second.end()));
+	src.children_.erase(i_src);
 	// key might be a reference to i_src->first, so it is no longer usable.
 
 	for (unsigned j = before; j < dst.size(); ++j) {
@@ -842,10 +507,11 @@ void config::splice_children(config &src, const std::string &key)
 void config::recursive_clear_value(config_key_type key)
 {
 	check_valid();
-	map_erase_key(values, key);
 
-	for(std::pair<const std::string, child_list>& p : children) {
-		for(config* cfg : p.second) {
+	map_erase_key(values_, key);
+
+	for(std::pair<const std::string, child_list>& p : children_) {
+		for(auto& cfg : p.second) {
 			cfg->recursive_clear_value(key);
 		}
 	}
@@ -867,7 +533,6 @@ std::vector<config::child_pos>::iterator config::remove_child(
 	}
 
 	// Remove from the child map.
-	delete pos->second[index];
 	pos->second.erase(pos->second.begin() + index);
 
 	// Erase from the ordering and return the next position.
@@ -883,8 +548,8 @@ void config::remove_child(config_key_type key, unsigned index)
 {
 	check_valid();
 
-	child_map::iterator i = children.find(key);
-	if (i == children.end() || index >= i->second.size()) {
+	child_map::iterator i = children_.find(key);
+	if (i == children_.end() || index >= i->second.size()) {
 		ERR_CF << "Error: attempting to delete non-existing child: "
 			<< key << "[" << index << "]\n";
 		return;
@@ -897,8 +562,8 @@ const config::attribute_value &config::operator[](config_key_type key) const
 {
 	check_valid();
 
-	const attribute_map::const_iterator i = values.find(key);
-	if (i != values.end()) return i->second;
+	const attribute_map::const_iterator i = values_.find(key);
+	if (i != values_.end()) return i->second;
 	static const attribute_value empty_attribute;
 	return empty_attribute;
 }
@@ -906,18 +571,18 @@ const config::attribute_value &config::operator[](config_key_type key) const
 const config::attribute_value *config::get(config_key_type key) const
 {
 	check_valid();
-	attribute_map::const_iterator i = values.find(key);
-	return i != values.end() ? &i->second : nullptr;
+	attribute_map::const_iterator i = values_.find(key);
+	return i != values_.end() ? &i->second : nullptr;
 }
 
 config::attribute_value& config::operator[](config_key_type key)
 {
 	check_valid();
 
-	auto res = values.lower_bound(key);
+	auto res = values_.lower_bound(key);
 	
-	if (res == values.end() || key != res->first) {
-		res = values.emplace_hint(res, std::piecewise_construct, std::forward_as_tuple(key), std::tuple<>());
+	if (res == values_.end() || key != res->first) {
+		res = values_.emplace_hint(res, std::piecewise_construct, std::forward_as_tuple(key), std::tuple<>());
 	}
 
 	return res->second;
@@ -927,12 +592,12 @@ const config::attribute_value &config::get_old_attribute(config_key_type key, co
 {
 	check_valid();
 
-	attribute_map::const_iterator i = values.find(key);
-	if (i != values.end())
+	attribute_map::const_iterator i = values_.find(key);
+	if (i != values_.end())
 		return i->second;
 
-	i = values.find(old_key);
-	if (i != values.end()) {
+	i = values_.find(old_key);
+	if (i != values_.end()) {
 		if (!msg.empty())
 			lg::wml_error() << msg;
 		return i->second;
@@ -948,19 +613,19 @@ void config::merge_attributes(const config &cfg)
 	check_valid(cfg);
 
 	assert(this != &cfg);
-	for (const attribute &v : cfg.values) {
+	for (const attribute &v : cfg.values_) {
 
 		std::string key = v.first;
 		if (key.substr(0,7) == "add_to_") {
 			std::string add_to = key.substr(7);
-			values[add_to] = values[add_to].to_double() + v.second.to_double();
+			values_[add_to] = values_[add_to].to_double() + v.second.to_double();
 		} else if(key.substr(0,10) == "concat_to_") {
 			std::string concat_to = key.substr(10);
 			// TODO: Only use t_string if one or both are actually translatable?
 			// That probably requires using a visitor though.
-			values[concat_to] = values[concat_to].t_str() + v.second.t_str();
+			values_[concat_to] = values_[concat_to].t_str() + v.second.t_str();
 		} else
-			values[v.first] = v.second;
+			values_[v.first] = v.second;
 	}
 }
 
@@ -968,8 +633,8 @@ config::const_attr_itors config::attribute_range() const
 {
 	check_valid();
 
-	const_attr_itors range (const_attribute_iterator(values.begin()),
-	                        const_attribute_iterator(values.end()));
+	const_attr_itors range (const_attribute_iterator(values_.begin()),
+	                        const_attribute_iterator(values_.end()));
 
 	// Ensure the first element is not blank, as a few places assume this
 	while(range.begin() != range.end() && range.begin()->second.blank()) {
@@ -981,7 +646,7 @@ config::const_attr_itors config::attribute_range() const
 config::attr_itors config::attribute_range()
 {
 	check_valid();
-	attr_itors range(attribute_iterator(values.begin()), attribute_iterator(values.end()));
+	attr_itors range(attribute_iterator(values_.begin()), attribute_iterator(values_.end()));
 
 	// Ensure the first element is not blank, as a few places assume this
 	while(range.begin() != range.end() && range.begin()->second.blank()) {
@@ -995,8 +660,8 @@ config &config::find_child(config_key_type key, const std::string &name,
 {
 	check_valid();
 
-	const child_map::iterator i = children.find(key);
-	if(i == children.end()) {
+	const child_map::iterator i = children_.find(key);
+	if(i == children_.end()) {
 		DBG_CF << "Key »" << name << "« value »" << value
 				<< "« pair not found as child of key »" << key << "«.\n";
 
@@ -1005,7 +670,7 @@ config &config::find_child(config_key_type key, const std::string &name,
 
 	const child_list::iterator j = std::find_if(i->second.begin(),
 	                                            i->second.end(),
-	                                            [&](const config* cfg) { return (*cfg)[name] == value; });
+	                                            [&](const std::unique_ptr<config>& pcfg) { const config& cfg = *pcfg; return cfg[name] == value; });
 	if(j != i->second.end()) {
 		return **j;
 	} else {
@@ -1016,72 +681,11 @@ config &config::find_child(config_key_type key, const std::string &name,
 	}
 }
 
-namespace {
-	/**
-	 * Helper struct for iterative config clearing.
-	 */
-	struct config_clear_state
-	{
-		config_clear_state()
-			: c(nullptr)
-			, mi()
-			, vi(0)
-		{
-		}
-
-		config* c; //the config being inspected
-		config::child_map::iterator mi; //current child map entry
-		size_t vi; //index into the child map item vector
-	};
-}
-
 void config::clear()
 {
 	// No validity check for this function.
-
-	if (!children.empty()) {
-		//start with this node, the first entry in the child map,
-		//zeroeth element in that entry
-		config_clear_state init;
-		init.c = this;
-		init.mi = children.begin();
-		init.vi = 0;
-		std::deque<config_clear_state> l;
-		l.push_back(init);
-
-		while (!l.empty()) {
-			config_clear_state& state = l.back();
-			if (state.mi != state.c->children.end()) {
-				std::vector<config*>& v = state.mi->second;
-				if (state.vi < v.size()) {
-					config* c = v[state.vi];
-					++state.vi;
-					if (c->children.empty()) {
-						delete c; //special case for a slight speed increase?
-					} else {
-						//descend to the next level
-						config_clear_state next;
-						next.c = c;
-						next.mi = c->children.begin();
-						next.vi = 0;
-						l.push_back(next);
-					}
-				} else {
-					state.vi = 0;
-					++state.mi;
-				}
-			} else {
-				//reached end of child map for this element - all child nodes
-				//have been deleted, so it's safe to clear the map, delete the
-				//node and move up one level
-				state.c->children.clear();
-				if (state.c != this) delete state.c;
-				l.pop_back();
-			}
-		}
-	}
-
-	values.clear();
+	children_.clear();
+	values_.clear();
 	ordered_children.clear();
 }
 
@@ -1089,17 +693,17 @@ bool config::empty() const
 {
 	check_valid();
 
-	return children.empty() && values.empty();
+	return children_.empty() && values_.empty();
 }
 
 config::all_children_iterator::reference config::all_children_iterator::operator*() const
 {
-	return any_child(&i_->pos->first, i_->pos->second[i_->index]);
+	return any_child(&i_->pos->first, i_->pos->second[i_->index].get());
 }
 
 config::const_all_children_iterator::reference config::const_all_children_iterator::operator*() const
 {
-	return any_child(&i_->pos->first, i_->pos->second[i_->index]);
+	return any_child(&i_->pos->first, i_->pos->second[i_->index].get());
 }
 
 config::const_all_children_iterator config::ordered_begin() const
@@ -1163,10 +767,10 @@ void config::get_diff(const config& c, config& res) const
 	config* inserts = nullptr;
 
 	attribute_map::const_iterator i;
-	for(i = values.begin(); i != values.end(); ++i) {
+	for(i = values_.begin(); i != values_.end(); ++i) {
 		if(i->second.blank()) continue;
-		const attribute_map::const_iterator j = c.values.find(i->first);
-		if(j == c.values.end() || (i->second != j->second && !i->second.blank() )) {
+		const attribute_map::const_iterator j = c.values_.find(i->first);
+		if(j == c.values_.end() || (i->second != j->second && !i->second.blank() )) {
 			if(inserts == nullptr) {
 				inserts = &res.add_child("insert");
 			}
@@ -1177,10 +781,10 @@ void config::get_diff(const config& c, config& res) const
 
 	config* deletes = nullptr;
 
-	for(i = c.values.begin(); i != c.values.end(); ++i) {
+	for(i = c.values_.begin(); i != c.values_.end(); ++i) {
 		if(i->second.blank()) continue;
-		const attribute_map::const_iterator itor = values.find(i->first);
-		if(itor == values.end() || itor->second.blank()) {
+		const attribute_map::const_iterator itor = values_.find(i->first);
+		if(itor == values_.end() || itor->second.blank()) {
 			if(deletes == nullptr) {
 				deletes = &res.add_child("delete");
 			}
@@ -1192,26 +796,26 @@ void config::get_diff(const config& c, config& res) const
 	std::vector<std::string> entities;
 
 	child_map::const_iterator ci;
-	for(ci = children.begin(); ci != children.end(); ++ci) {
+	for(ci = children_.begin(); ci != children_.end(); ++ci) {
 		entities.push_back(ci->first);
 	}
 
-	for(ci = c.children.begin(); ci != c.children.end(); ++ci) {
-		if(children.count(ci->first) == 0) {
+	for(ci = c.children_.begin(); ci != c.children_.end(); ++ci) {
+		if(children_.count(ci->first) == 0) {
 			entities.push_back(ci->first);
 		}
 	}
 
 	for(std::vector<std::string>::const_iterator itor = entities.begin(); itor != entities.end(); ++itor) {
 
-		const child_map::const_iterator itor_a = children.find(*itor);
-		const child_map::const_iterator itor_b = c.children.find(*itor);
+		const child_map::const_iterator itor_a = children_.find(*itor);
+		const child_map::const_iterator itor_b = c.children_.find(*itor);
 
 		static const child_list dummy;
 
 		// Get the two child lists. 'b' has to be modified to look like 'a'.
-		const child_list& a = itor_a != children.end() ? itor_a->second : dummy;
-		const child_list& b = itor_b != c.children.end() ? itor_b->second : dummy;
+		const child_list& a = itor_a != children_.end() ? itor_a->second : dummy;
+		const child_list& b = itor_b != c.children_.end() ? itor_b->second : dummy;
 
 		size_t ndeletes = 0;
 		size_t ai = 0, bi = 0;
@@ -1230,7 +834,7 @@ void config::get_diff(const config& c, config& res) const
 				if(b.size() - bi > a.size() - ai) {
 					config& new_delete = res.add_child("delete_child");
 					buf << bi - ndeletes;
-					new_delete.values["index"] = buf.str();
+					new_delete.values_["index"] = buf.str();
 					new_delete.add_child(*itor);
 
 					++ndeletes;
@@ -1242,7 +846,7 @@ void config::get_diff(const config& c, config& res) const
 				else if(b.size() - bi < a.size() - ai) {
 					config& new_insert = res.add_child("insert_child");
 					buf << ai;
-					new_insert.values["index"] = buf.str();
+					new_insert.values_["index"] = buf.str();
 					new_insert.add_child(*itor,*a[ai]);
 
 					++ai;
@@ -1253,7 +857,7 @@ void config::get_diff(const config& c, config& res) const
 				else {
 					config& new_change = res.add_child("change_child");
 					buf << bi;
-					new_change.values["index"] = buf.str();
+					new_change.values_["index"] = buf.str();
 					new_change.add_child(*itor,a[ai]->get_diff(*b[bi]));
 
 					++ai;
@@ -1268,17 +872,17 @@ void config::apply_diff(const config& diff, bool track /* = false */)
 {
 	check_valid(diff);
 
-	if (track) values[diff_track_attribute] = "modified";
+	if (track) values_[diff_track_attribute] = "modified";
 
 	if (const config &inserts = diff.child("insert")) {
 		for (const attribute &v : inserts.attribute_range()) {
-			values[v.first] = v.second;
+			values_[v.first] = v.second;
 		}
 	}
 
 	if (const config &deletes = diff.child("delete")) {
 		for (const attribute &v : deletes.attribute_range()) {
-			values.erase(v.first);
+			values_.erase(v.first);
 		}
 	}
 
@@ -1291,8 +895,8 @@ void config::apply_diff(const config& diff, bool track /* = false */)
 				continue;
 			}
 
-			const child_map::iterator itor = children.find(item.key);
-			if(itor == children.end() || index >= itor->second.size()) {
+			const child_map::iterator itor = children_.find(item.key);
+			if(itor == children_.end() || index >= itor->second.size()) {
 				throw error("error in diff: could not find element '" + item.key + "'");
 			}
 
@@ -1316,11 +920,11 @@ void config::apply_diff(const config& diff, bool track /* = false */)
 			if (!track) {
 				remove_child(item.key, index);
 			} else {
-				const child_map::iterator itor = children.find(item.key);
-				if(itor == children.end() || index >= itor->second.size()) {
+				const child_map::iterator itor = children_.find(item.key);
+				if(itor == children_.end() || index >= itor->second.size()) {
 					throw error("error in diff: could not find element '" + item.key + "'");
 				}
-				itor->second[index]->values[diff_track_attribute] = "deleted";
+				itor->second[index]->values_[diff_track_attribute] = "deleted";
 			}
 		}
 	}
@@ -1346,16 +950,16 @@ void config::clear_diff_track(const config& diff)
 				continue;
 			}
 
-			const child_map::iterator itor = children.find(item.key);
-			if(itor == children.end() || index >= itor->second.size()) {
+			const child_map::iterator itor = children_.find(item.key);
+			if(itor == children_.end() || index >= itor->second.size()) {
 				throw error("error in diff: could not find element '" + item.key + "'");
 			}
 
 			itor->second[index]->clear_diff_track(item.cfg);
 		}
 	}
-	for(std::pair<const std::string, child_list>& p : children) {
-		for(config* cfg : p.second) {
+	for(std::pair<const std::string, child_list>& p : children_) {
+		for(auto& cfg : p.second) {
 			cfg->remove_attribute(diff_track_attribute);
 		}
 	}
@@ -1378,8 +982,8 @@ void config::merge_with(const config& c)
 	all_children_iterator::Itor i, i_end = ordered_children.end();
 	for(i = ordered_children.begin(); i != i_end; ++i) {
 		const std::string& tag = i->pos->first;
-		const child_map::const_iterator j = c.children.find(tag);
-		if (j != c.children.end()) {
+		const child_map::const_iterator j = c.children_.find(tag);
+		if (j != c.children_.end()) {
 			unsigned &visits = visitations[tag];
 			if(visits < j->second.size()) {
 				// Get a const config so we do not add attributes.
@@ -1394,11 +998,11 @@ void config::merge_with(const config& c)
 	}
 
 	// Now add any unvisited tags
-	for(child_map::const_iterator j = c.children.begin(); j != c.children.end(); ++j) {
-		const std::string& tag = j->first;
+	for(const auto& pair : c.children_) {
+		const std::string& tag = pair.first;
 		unsigned &visits = visitations[tag];
-		while(visits < j->second.size()) {
-			add_child(tag, *j->second[visits++]);
+		while(visits < pair.second.size()) {
+			add_child(tag, *pair.second[visits++]);
 		}
 	}
 
@@ -1498,7 +1102,7 @@ std::string config::hash() const
 	hash_str[hash_length] = 0;
 
 	i = 0;
-	for (const attribute &val : values)
+	for (const attribute &val : values_)
 	{
 		if (val.second.blank()) {
 			continue;
@@ -1538,8 +1142,8 @@ void config::swap(config& cfg)
 {
 	check_valid(cfg);
 
-	values.swap(cfg.values);
-	children.swap(cfg.children);
+	values_.swap(cfg.values_);
+	children_.swap(cfg.children_);
 	ordered_children.swap(cfg.ordered_children);
 }
 
@@ -1547,7 +1151,7 @@ bool operator==(const config& a, const config& b)
 {
 	a.check_valid(b);
 
-	if (a.values != b.values)
+	if (a.values_ != b.values_)
 		return false;
 
 	config::const_all_children_itors x = a.all_children_range(), y = b.all_children_range();

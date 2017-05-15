@@ -38,12 +38,14 @@
 #include <utility>
 #include <vector>
 #include <type_traits>
+#include <memory>
 
 #include <boost/exception/exception.hpp>
 #include <boost/variant/apply_visitor.hpp>
 #include <boost/variant/variant.hpp>
 #include <boost/range/iterator_range.hpp>
 
+#include "config_attribute_value.hpp"
 #include "exceptions.hpp"
 #include "tstring.hpp"
 
@@ -127,7 +129,7 @@ public:
 	explicit operator bool() const
 	{ return this != &invalid; }
 
-	typedef std::vector<config*> child_list;
+	typedef std::vector<std::unique_ptr<config>> child_list;
 	typedef std::map<std::string, child_list
 #ifdef USE_HETEROGENOUS_LOOKUPS
 		, std::less<>
@@ -231,168 +233,7 @@ public:
 	 * @note The blank variant is only used when querying missing attributes.
 	 *       It is not stored in config objects.
 	 */
-	class attribute_value
-	{
-		/// A wrapper for bool to get the correct streaming ("true"/"false").
-		/// Most visitors can simply treat this as bool.
-	public:
-		class true_false
-		{
-			bool value_;
-		public:
-			explicit true_false(bool value = false) : value_(value) {}
-			operator bool() const { return value_; }
-
-			const std::string & str() const
-			{ return value_ ? config::attribute_value::s_true :
-			                  config::attribute_value::s_false; }
-		};
-		friend std::ostream& operator<<(std::ostream &os, const true_false &v);
-
-		/// A wrapper for bool to get the correct streaming ("yes"/"no").
-		/// Most visitors can simply treat this as bool.
-		class yes_no
-		{
-			bool value_;
-		public:
-			explicit yes_no(bool value = false) : value_(value) {}
-			operator bool() const { return value_; }
-
-			const std::string & str() const
-			{ return value_ ? config::attribute_value::s_yes :
-			                  config::attribute_value::s_no; }
-		};
-		friend std::ostream& operator<<(std::ostream &os, const yes_no &v);
-	private:
-		/// Visitor for checking equality.
-		class equality_visitor;
-		/// Visitor for converting a variant to a string.
-		class string_visitor;
-
-		// Data will be stored in a variant, allowing for the possibility of
-		// boolean, numeric, and translatable data in addition to basic string
-		// data. For most purposes, int is the preferred type for numeric data
-		// as it is fast (often natural word size). While it is desirable to
-		// use few types (to keep the overhead low), we do have use cases for
-		// fractions (double) and huge numbers (up to the larger of LLONG_MAX
-		// and SIZE_MAX).
-		typedef boost::variant<boost::blank,
-		                       true_false, yes_no,
-		                       int, unsigned long long, double,
-		                       std::string, t_string
-		                      > value_type;
-		/// The stored value will always use the first type from the variant
-		/// definition that can represent it and that can be streamed to the
-		/// correct string representation (if applicable).
-		/// This is enforced upon assignment.
-		value_type value_;
-
-	public:
-		/// Default implementation, but defined out-of-line for efficiency reasons.
-		attribute_value();
-		/// Default implementation, but defined out-of-line for efficiency reasons.
-		~attribute_value();
-		/// Default implementation, but defined out-of-line for efficiency reasons.
-		attribute_value(const attribute_value &);
-		/// Default implementation, but defined out-of-line for efficiency reasons.
-		attribute_value &operator=(const attribute_value &);
-
-		// Numeric assignments:
-		attribute_value &operator=(bool v);
-		attribute_value &operator=(int v);
-		attribute_value &operator=(long v)          { return operator=(static_cast<long long>(v)); }
-		attribute_value &operator=(long long v);
-		attribute_value &operator=(unsigned v)      { return operator=(static_cast<unsigned long long>(v)); }
-		attribute_value &operator=(unsigned long v) { return operator=(static_cast<unsigned long long>(v)); }
-		attribute_value &operator=(unsigned long long v);
-		attribute_value &operator=(double v);
-
-		// String assignments:
-		attribute_value &operator=(const char *v)   { return operator=(std::string(v)); }
-		attribute_value &operator=(const std::string &v);
-		attribute_value &operator=(const t_string &v);
-		template<typename T>
-		typename std::enable_if<std::is_base_of<enum_tag, T>::value, attribute_value &>::type operator=(const T &v)
-		{
-			return operator=(T::enum_to_string(v));
-		}
-		// Extracting as a specific type:
-		bool to_bool(bool def = false) const;
-		int to_int(int def = 0) const;
-		long long to_long_long(long long def = 0) const;
-		unsigned to_unsigned(unsigned def = 0) const;
-		size_t to_size_t(size_t def = 0) const;
-		time_t to_time_t(time_t def = 0) const;
-		double to_double(double def = 0.) const;
-		std::string str(const std::string& fallback = "") const;
-		t_string t_str() const;
-		/**
-			@param T a type created with MAKE_ENUM macro
-			NOTE: since T::VALUE constants is not of type T but of the underlying enum type you must specify the template parameter explicitly
-			TODO: Fix this in c++11 using constexpr types.
-		*/
-		template<typename T>
-		typename std::enable_if<std::is_base_of<enum_tag, T>::value, T>::type to_enum(const T &v) const
-		{
-			return T::string_to_enum(this->str(), v);
-		}
-
-		// Implicit conversions:
-		operator int() const { return to_int(); }
-		operator std::string() const { return str(); }
-		operator t_string() const { return t_str(); }
-
-		/// Tests for an attribute that was never set.
-		bool blank() const;
-		/// Tests for an attribute that either was never set or was set to "".
-		bool empty() const;
-
-
-		// Comparisons:
-		bool operator==(const attribute_value &other) const;
-		bool operator!=(const attribute_value &other) const
-		{ return !operator==(other); }
-
-		bool equals(const std::string& str) const;
-		// These function prevent t_string creation in case of c["a"] == "b" comparisons.
-		// The templates are needed to prevent using these function in case of c["a"] == 0 comparisons.
-		template<typename T>
-		typename std::enable_if<std::is_same<const std::string, typename std::add_const<T>::type>::value, bool>::type
-		friend operator==(const attribute_value &val, const T &str)
-		{ return val.equals(str); }
-
-		template<typename T>
-		typename std::enable_if<std::is_same<const char*, T>::value, bool>::type
-		friend operator==(const attribute_value &val, T str)
-		{ return val.equals(std::string(str)); }
-
-		template<typename T>
-		bool friend operator==(const T &str, const attribute_value &val)
-		{ return val == str; }
-
-		template<typename T>
-		bool friend operator!=(const attribute_value &val, const T &str)
-		{ return !(val == str); }
-
-		template<typename T>
-		bool friend operator!=(const T &str, const attribute_value &val)
-		{ return !(val == str); }
-
-		// Streaming:
-		friend std::ostream& operator<<(std::ostream &os, const attribute_value &v);
-
-		// Visitor support:
-		/// Applies a visitor to the underlying variant.
-		/// (See the documentation for Boost.Variant.)
-		template <typename V>
-		typename V::result_type apply_visitor(const V & visitor) const
-		{ return boost::apply_visitor(visitor, value_); }
-
-	private:
-		// Special strings.
-		static const std::string s_yes, s_no;
-		static const std::string s_true, s_false;
-	};
+	using attribute_value = config_attribute_value;
 
 	typedef std::map<
 		std::string
@@ -724,7 +565,7 @@ public:
 		this_type& operator+=(difference_type n) { i_ += n; return *this; }
 		this_type& operator-=(difference_type n) { i_ -= n; return *this; }
 
-		reference operator[](difference_type n) const { return any_child(&i_[n].pos->first, i_[n].pos->second[i_->index]); }
+		reference operator[](difference_type n) const { return any_child(&i_[n].pos->first, i_[n].pos->second[i_->index].get()); }
 		friend difference_type operator-(const this_type& a, const this_type& b) { return a.i_ - b.i_; }
 		friend this_type operator-(const this_type& a, difference_type n) { return this_type(a.i_ - n); }
 		friend this_type operator+(const this_type& a, difference_type n) { return this_type(a.i_ + n); }
@@ -777,7 +618,7 @@ public:
 		this_type& operator+=(difference_type n) { i_ += n; return *this; }
 		this_type& operator-=(difference_type n) { i_ -= n; return *this; }
 
-		reference operator[](difference_type n) const { return any_child(&i_[n].pos->first, i_[n].pos->second[i_->index]); }
+		reference operator[](difference_type n) const { return any_child(&i_[n].pos->first, i_[n].pos->second[i_->index].get()); }
 		friend difference_type operator-(const this_type& a, const this_type& b) { return a.i_ - b.i_; }
 		friend this_type operator-(const this_type& a, difference_type n) { return this_type(a.i_ - n); }
 		friend this_type operator+(const this_type& a, difference_type n) { return this_type(a.i_ + n); }
@@ -895,10 +736,10 @@ private:
 	std::vector<child_pos>::iterator remove_child(const child_map::iterator &l, unsigned pos);
 
 	/** All the attributes of this node. */
-	attribute_map values;
+	attribute_map values_;
 
 	/** A list of all children of this node. */
-	child_map children;
+	child_map children_;
 
 	std::vector<child_pos> ordered_children;
 };
@@ -910,5 +751,3 @@ public:
 	virtual config::attribute_value get_variable_const(const std::string &id) const = 0;
 };
 
-inline std::ostream &operator<<(std::ostream &os, const config::attribute_value::true_false &v) { return os << v.str(); }
-inline std::ostream &operator<<(std::ostream &os, const config::attribute_value::yes_no &v)     { return os << v.str(); }
