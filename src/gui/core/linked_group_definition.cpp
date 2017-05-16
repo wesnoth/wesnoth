@@ -25,27 +25,22 @@ std::vector<linked_group_definition> parse_linked_group_definitions(const config
 {
 	std::vector<linked_group_definition> definitions;
 
-	for(const auto & lg : cfg.child_range("linked_group")) {
-		linked_group_definition linked_group;
+	for(const auto& lg : cfg.child_range("linked_group")) {
+		definitions.emplace_back();
+		linked_group_definition& linked_group = definitions.back();
+
 		linked_group.id = lg["id"].str();
 		linked_group.fixed_width = lg["fixed_width"].to_bool();
 		linked_group.fixed_height = lg["fixed_height"].to_bool();
 
-		VALIDATE(!linked_group.id.empty(),
-			missing_mandatory_wml_key("linked_group", "id"));
+		VALIDATE(!linked_group.id.empty(), missing_mandatory_wml_key("linked_group", "id"));
 
-		if(!(linked_group.fixed_width || linked_group.fixed_height)) {
-			utils::string_map symbols;
-			symbols["id"] = linked_group.id;
-			t_string msg
-				= vgettext("Linked '$id' group needs a 'fixed_width' or "
-				"'fixed_height' key.",
-				symbols);
+		if(!linked_group.fixed_width && !linked_group.fixed_height) {
+			const t_string msg = vgettext(
+				"Linked group '$id' needs a 'fixed_width' or 'fixed_height' key.", {{"id", linked_group.id}});
 
 			FAIL(msg);
 		}
-
-		definitions.push_back(linked_group);
 	}
 
 	return definitions;
