@@ -21,19 +21,27 @@ namespace utils
 {
 //
 // These aliases are part of the standard starting with C++14.
-// MSVC included them itself starting as of VS 2013 (our min supported version).
+// MSVC included them itself starting from VS2013 (our min supported version).
+// However, they can't be used via alias templates in VS2013 due to lack of
+// support for expression SFINAE.
 // Forward to their declarations as appropriate.
 //
-#if defined(HAVE_CXX14) || defined(_MSC_VER)
+#if defined(HAVE_CXX14) || _MSC_VER >= 1900
 
-using std::add_const_t;
-using std::conditional_t;
-using std::enable_if_t;
-using std::remove_const_t;
-using std::remove_reference_t;
-using std::remove_pointer_t;
+template<typename T>
+using add_const_t = std::add_const_t<T>;
+template<bool B, typename T, typename F>
+using conditional_t = std::conditional_t<B, T, F>;
+template<bool B, typename T = void>
+using enable_if_t = std::enable_if_t<B, T>;
+template<typename T>
+using remove_const_t = std::remove_const_t<T>;
+template<typename T>
+using remove_reference_t = std::remove_reference_t<T>;
+template<typename T>
+using remove_pointer_t = std::remove_pointer_t<T>;
 
-#else // We do not have C++14 or MSVC
+#else // We do not have C++14 or MSVC >= 2015
 
 // add_const
 template<typename T>
@@ -59,7 +67,7 @@ using remove_reference_t = typename std::remove_reference<T>::type;
 template<typename T>
 using remove_pointer_t = typename std::remove_pointer<T>::type;
 
-#endif // HAVE_CXX14
+#endif // defined(HAVE_CXX14) || _MSC_VER >= 1900
 
 // Since there's really no way to implement these without variable templates, I've commented
 // this whole section out until we bump our min compiler support to VS 2015 and GCC 5.

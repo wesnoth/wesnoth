@@ -14,6 +14,9 @@
     <Filter Include="spirit_po">
       <UniqueIdentifier>{36afc638-474c-4646-b7ac-c1d8df8344f2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Utils">
+      <UniqueIdentifier>{dd5bcb3f-5af9-4dce-bcf3-9c23cec65372}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\serialization\binary_or_text.cpp">
@@ -128,5 +131,8 @@
       <Filter>spirit_po</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\spirit_po.hpp" />
+    <ClInclude Include="..\..\src\utils\type_trait_aliases.hpp">
+      <Filter>Utils</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
