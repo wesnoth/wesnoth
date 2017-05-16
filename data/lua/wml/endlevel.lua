@@ -1,4 +1,5 @@
 local helper = wesnoth.require "helper"
+local utils = wesnoth.require "wml-utils"
 local already_ended = false
 
 function wesnoth.wml_actions.endlevel(cfg)
@@ -85,9 +86,9 @@ function wesnoth.wml_actions.endlevel(cfg)
 	local victory = there_is_a_local_human_victory or (not there_is_a_local_human_defeat and proceed_to_next_level)
 
 	if victory and cfg.music then
-		wesnoth.game_config.victory_music = cfg.music
+		wesnoth.game_config.victory_music = utils.split(cfg.music)
 	elseif cfg.music then
-		wesnoth.game_config.defeat_music = cfg.music
+		wesnoth.game_config.defeat_music = utils.split(cfg.music)
 	end
 
 	wesnoth.end_level {
