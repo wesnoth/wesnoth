@@ -1136,7 +1136,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 		starting_positions.insert(t_translation::starting_positions::value_type(std::to_string(player), coord));
 		terrain[x][y] = t_translation::HUMAN_KEEP;
 
-		const int castle_array[13][2] = {
+		const int castle_array[13][2] {
 			{-1, 0}, {-1, -1}, {0, -1}, {1, -1}, {1, 0}, {0, 1}, {-1, 1},
 			{-2, 1}, {-2, 0}, {-2, -1}, {-1, -2}, {0, -2}, {1, -2}
 		};

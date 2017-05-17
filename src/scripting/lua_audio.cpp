@@ -269,7 +269,7 @@ namespace lua_audio {
 		lua_getglobal(L, "wesnoth");
 		lua_newuserdata(L, 0);
 		lua_createtable(L, 0, 4);
-		static luaL_Reg pl_callbacks[] = {
+		static luaL_Reg pl_callbacks[] {
 			{ "__index", impl_music_get },
 			{ "__newindex", impl_music_set },
 			{ "__len", impl_music_len },
@@ -290,7 +290,7 @@ namespace lua_audio {
 
 		// The music track metatable
 		luaL_newmetatable(L, Track);
-		static luaL_Reg track_callbacks[] = {
+		static luaL_Reg track_callbacks[] {
 			{"__gc", impl_track_collect},
 			{ "__index", impl_track_get },
 			{ "__newindex", impl_track_set },

@@ -82,8 +82,8 @@ static SDL_Cursor* create_cursor(surface surf)
 
 namespace {
 
-SDL_Cursor* cache[cursor::NUM_CURSORS] = { nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr};
-tribool cache_color[cursor::NUM_CURSORS] = {
+SDL_Cursor* cache[cursor::NUM_CURSORS] { nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr};
+tribool cache_color[cursor::NUM_CURSORS] {
 	indeterminate, indeterminate, indeterminate, indeterminate,
 	indeterminate, indeterminate, indeterminate, indeterminate,
 };
@@ -100,8 +100,8 @@ const std::string color_images[cursor::NUM_CURSORS] { "normal.png", "wait.png", 
 
 // Position of the hotspot of the cursor, from the normal topleft
 // These are only for the color cursors
-const int shift_x[cursor::NUM_CURSORS] = {0, 0, 0, 0, 0, 2, 3, 0};
-const int shift_y[cursor::NUM_CURSORS] = {0, 0, 0, 0, 0, 20, 22, 0};
+const int shift_x[cursor::NUM_CURSORS] {0, 0, 0, 0, 0, 2, 3, 0};
+const int shift_y[cursor::NUM_CURSORS] {0, 0, 0, 0, 0, 20, 22, 0};
 
 cursor::CURSOR_TYPE current_cursor = cursor::NORMAL;
 

@@ -189,7 +189,7 @@ std::string os_version()
 	static const std::string base
 			= !on_wine() ? "Microsoft Windows" : "Wine/Microsoft Windows";
 
-	OSVERSIONINFOEX v = { sizeof(OSVERSIONINFOEX) };
+	OSVERSIONINFOEX v { sizeof(OSVERSIONINFOEX) };
 
 	if(!GetVersionEx(reinterpret_cast<OSVERSIONINFO*>(&v))) {
 		ERR_DU << "os_version: GetVersionEx error ("

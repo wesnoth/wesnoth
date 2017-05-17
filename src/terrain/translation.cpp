@@ -789,7 +789,7 @@ static std::string number_to_string_(terrain_code terrain, const std::string& st
 	 * some uninitialized fields might be used. Its analysis are wrong, but
 	 * Initialize to keep it happy.
 	 */
-	unsigned char tcode[9] = {0};
+	unsigned char tcode[9] {0};
 	// Insert the terrain tcode
 	tcode[0] = ((terrain.base & 0xFF000000) >> 24);
 	tcode[1] = ((terrain.base & 0x00FF0000) >> 16);

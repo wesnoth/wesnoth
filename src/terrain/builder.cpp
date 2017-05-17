@@ -496,7 +496,7 @@ void terrain_builder::rotate(terrain_constraint& ret, int angle)
 		int ij;
 		int ji;
 		int jj;
-	} rotations[6] = {{1, 0, 0, 1}, {1, 1, -1, 0}, {0, 1, -1, -1}, {-1, 0, 0, -1}, {-1, -1, 1, 0}, {0, -1, 1, 1}};
+	} rotations[6] {{1, 0, 0, 1}, {1, 1, -1, 0}, {0, 1, -1, -1}, {-1, 0, 0, -1}, {-1, -1, 1, 0}, {0, -1, 1, 1}};
 
 	// The following array of matrices is intended to rotate the (x,y)
 	// coordinates of a point in a wesnoth hex (and wesnoth hexes are not
@@ -531,7 +531,7 @@ void terrain_builder::rotate(terrain_constraint& ret, int angle)
 		double xy;
 		double yx;
 		double yy;
-	} xyrotations[6] = {
+	} xyrotations[6] {
 		{ 1.,         0.,  0., 1.    },
 		{ 1./2. , -3./4.,  1., 1./2. },
 		{ -1./2., -3./4.,   1, -1./2.},

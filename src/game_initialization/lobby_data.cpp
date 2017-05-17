@@ -444,7 +444,7 @@ game_info::ADDON_REQ game_info::check_addon_version_compatibility(const config& 
 	}
 
 	if(const config& game_req = game.find_child("addon", "id", local_item["addon_id"])) {
-		required_addon r = {local_item["addon_id"].str(), SATISFIED, ""};
+		required_addon r {local_item["addon_id"].str(), SATISFIED, ""};
 
 		// Local version
 		const version_info local_ver(local_item["addon_version"].str());

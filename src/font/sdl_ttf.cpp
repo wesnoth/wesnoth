@@ -225,7 +225,7 @@ TTF_Font* sdl_ttf::get_font(font_id id)
 	// Favor to use the shipped Italic font over bold if both are present and are needed.
 	if ((id.style & TTF_STYLE_ITALIC) && italic_names[id.subset].size()) {
 		if (TTF_Font* font = open_font(italic_names[id.subset], id.size)) {
-			ttf_record rec = {font, TTF_STYLE_ITALIC};
+			ttf_record rec {font, TTF_STYLE_ITALIC};
 			font_table.emplace(id, rec);
 			return sdl_ttf::get_font(id);
 		}
@@ -234,7 +234,7 @@ TTF_Font* sdl_ttf::get_font(font_id id)
 	// Now see if the shipped Bold font is useful and available.
 	if ((id.style & TTF_STYLE_BOLD) && bold_names[id.subset].size()) {
 		if (TTF_Font* font = open_font(bold_names[id.subset], id.size)) {
-			ttf_record rec = {font, TTF_STYLE_BOLD};
+			ttf_record rec {font, TTF_STYLE_BOLD};
 			font_table.emplace(id, rec);
 			return sdl_ttf::get_font(id);
 		}
@@ -243,14 +243,14 @@ TTF_Font* sdl_ttf::get_font(font_id id)
 	// Try just to use the basic version of the font then.
 	if (font_names[id.subset].size()) {
 		if(TTF_Font* font = open_font(font_names[id.subset], id.size)) {
-			ttf_record rec = {font, TTF_STYLE_NORMAL};
+			ttf_record rec {font, TTF_STYLE_NORMAL};
 			font_table.emplace(id, rec);
 			return sdl_ttf::get_font(id);
 		}
 	}
 
 	// Failed to find a font.
-	ttf_record rec = {nullptr, TTF_STYLE_NORMAL};
+	ttf_record rec {nullptr, TTF_STYLE_NORMAL};
 	font_table.emplace(id, rec);
 	return nullptr;
 }

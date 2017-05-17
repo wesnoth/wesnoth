@@ -771,7 +771,7 @@ void call_in_main_thread(const std::function<void(void)>& f)
 	}
 
 
-	invoked_function_data fdata = { false, f };
+	invoked_function_data fdata { false, f };
 
 	SDL_Event sdl_event;
 	SDL_UserEvent sdl_userevent;

@@ -1256,7 +1256,7 @@ REGISTER_MOD_PARSER(RIGHT, )
 // Add a background color.
 REGISTER_MOD_PARSER(BG, args)
 {
-	int c[4] = { 0, 0, 0, SDL_ALPHA_OPAQUE };
+	int c[4] { 0, 0, 0, SDL_ALPHA_OPAQUE };
 	std::vector<std::string> factors = utils::split(args, ',');
 
 	for(int i = 0; i < std::min<int>(factors.size(), 4); ++i) {

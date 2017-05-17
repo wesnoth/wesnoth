@@ -597,7 +597,7 @@ void grid::place(const point& origin, const point& size)
 
 void grid::set_origin(const point& origin)
 {
-	const point movement = {origin.x - get_x(), origin.y - get_y()};
+	const point movement {origin.x - get_x(), origin.y - get_y()};
 
 	// Inherited.
 	widget::set_origin(origin);

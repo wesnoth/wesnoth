@@ -39,7 +39,7 @@ const int YDim = 768;
 const size_t DefaultFontSize = font::SIZE_NORMAL;
 const color_t DefaultFontRGB {200, 200, 200};
 
-_rect ref_rect = {0, 0, 0, 0};
+_rect ref_rect {0, 0, 0, 0};
 }
 
 static size_t compute(std::string expr, size_t ref1, size_t ref2 = 0)
@@ -58,7 +58,7 @@ static size_t compute(std::string expr, size_t ref1, size_t ref2 = 0)
 // If x2 or y2 are not specified, use x1 and y1 values
 static _rect read_rect(const config& cfg)
 {
-	_rect rect = {0, 0, 0, 0};
+	_rect rect {0, 0, 0, 0};
 	std::vector<std::string> items = utils::split(cfg["rect"].str());
 	if(items.size() >= 1)
 		rect.x1 = atoi(items[0].c_str());
@@ -93,7 +93,7 @@ static SDL_Rect read_sdl_rect(const config& cfg)
 
 static std::string resolve_rect(const std::string& rect_str)
 {
-	_rect rect = {0, 0, 0, 0};
+	_rect rect {0, 0, 0, 0};
 	std::stringstream resolved;
 	const std::vector<std::string> items = utils::split(rect_str.c_str());
 	if(items.size() >= 1) {
@@ -391,7 +391,7 @@ void theme::object::modify_location(const _rect& rect)
 
 void theme::object::modify_location(std::string rect_str, SDL_Rect location_ref_rect)
 {
-	_rect rect = {0, 0, 0, 0};
+	_rect rect {0, 0, 0, 0};
 	const std::vector<std::string> items = utils::split(rect_str.c_str());
 	if(items.size() >= 1) {
 		rect.x1 = compute(items[0], location_ref_rect.x, location_ref_rect.x + location_ref_rect.w);

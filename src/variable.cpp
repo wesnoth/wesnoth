@@ -322,7 +322,7 @@ vconfig::attribute_iterator::pointer vconfig::attribute_iterator::operator->() c
 	if(resources::gamedata) {
 		val.second.apply_visitor(vconfig_expand_visitor(val.second));
 	}
-	pointer_proxy p = {val};
+	pointer_proxy p {val};
 	return p;
 }
 
@@ -394,7 +394,7 @@ vconfig::all_children_iterator::reference vconfig::all_children_iterator::operat
 
 vconfig::all_children_iterator::pointer vconfig::all_children_iterator::operator->() const
 {
-	pointer_proxy p = { value_type(get_key(), get_child()) };
+	pointer_proxy p { value_type(get_key(), get_child()) };
 	return p;
 }
 

@@ -37,10 +37,10 @@ namespace
 {
 
 static const std::string button_up_names[]
-		= { "_begin", "_line_up", "_half_page_up", "_page_up" };
+		{ "_begin", "_line_up", "_half_page_up", "_page_up" };
 
 static const std::string button_down_names[]
-		= { "_end", "_line_down", "_half_page_down", "_page_down" };
+		{ "_end", "_line_down", "_half_page_down", "_page_down" };
 
 /**
  * Returns a map with the names of all buttons and the scrollbar jump they're
@@ -1156,7 +1156,7 @@ void scrollbar_container::scrollbar_moved()
 								 : vertical_scrollbar_->get_item_position()
 								   * vertical_scrollbar_->get_step_size();
 
-	const point content_origin = {content_->get_x() - x_offset, content_->get_y() - y_offset};
+	const point content_origin {content_->get_x() - x_offset, content_->get_y() - y_offset};
 
 	content_grid_->set_origin(content_origin);
 	content_grid_->set_visible_rectangle(content_visible_area_);

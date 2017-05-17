@@ -519,11 +519,11 @@ std::string si_string(double input, bool base2, const std::string& unit) {
 	strings9 prefixes;
 	strings9::const_iterator prefix;
 	if (input == 0.0) {
-		strings9 tmp = { { "","","","","","","","","" } };
+		strings9 tmp { { "","","","","","","","","" } };
 		prefixes = tmp;
 		prefix = prefixes.begin();
 	} else if (input < 1.0) {
-		strings9 tmp = { {
+		strings9 tmp { {
 			"",
 			_("prefix_milli^m"),
 			_("prefix_micro^µ"),
@@ -541,7 +541,7 @@ std::string si_string(double input, bool base2, const std::string& unit) {
 			++prefix;
 		}
 	} else {
-		strings9 tmp = { {
+		strings9 tmp { {
 			"",
 			(base2 ?
 				_("prefix_kibi^K") :

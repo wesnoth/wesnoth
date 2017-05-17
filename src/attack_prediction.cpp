@@ -955,7 +955,7 @@ void prob_matrix::sum(unsigned plane, std::vector<double>& row_sums, std::vector
 void prob_matrix::dump() const
 {
 	unsigned int row, col, m;
-	const char* names[] = {"NEITHER_SLOWED", "A_SLOWED", "B_SLOWED", "BOTH_SLOWED"};
+	const char* names[] {"NEITHER_SLOWED", "A_SLOWED", "B_SLOWED", "BOTH_SLOWED"};
 
 	for(m = 0; m < NUM_PLANES; ++m) {
 		if(!plane_used(m)) {

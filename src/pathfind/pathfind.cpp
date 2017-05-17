@@ -472,7 +472,7 @@ void paths::dest_vect::insert(const map_location &loc)
 {
 	iterator i = std::lower_bound(begin(), end(), loc, step_compare);
 	if (i != end() && i->curr == loc) return;
-	paths::step s = { loc, map_location(), 0 };
+	paths::step s { loc, map_location(), 0 };
 	std::vector<step>::insert(i, s);
 }
 

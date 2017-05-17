@@ -125,7 +125,7 @@ void preferences_dialog::set_resolution_list(menu_button& res_list, CVideo& vide
 		option["label"] = formatter() << res.first << font::unicode_multiplication_sign << res.second;
 
 		const int div = boost::math::gcd(res.first, res.second);
-		const int ratio[2] = {res.first/div, res.second/div};
+		const int ratio[2] {res.first/div, res.second/div};
 		if(ratio[0] <= 10 || ratio[1] <= 10) {
 			option["details"] = formatter() << "<span color='#777777'>(" << ratio[0] << ':' << ratio[1] << ")</span>";
 		}

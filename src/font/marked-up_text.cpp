@@ -116,7 +116,7 @@ std::string::const_iterator parse_markup(std::string::const_iterator i1,
 				}
 				blue=temp;
 				if (i1 != i2 && '>' == (*i1)) {
-					color_t temp_color = {red, green, blue, 0};
+					color_t temp_color {red, green, blue, 0};
 					if (color) *color = temp_color;
 				} else {
 					// stop parsing and do not consume any chars
