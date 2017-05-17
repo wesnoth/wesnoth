@@ -43,7 +43,7 @@ class surface;
 class unit_drawer
 {
 public:
-	unit_drawer(display & thedisp, std::map<surface,SDL_Rect> & bar_rects);
+	explicit unit_drawer(display & thedisp);
 
 private:
 	display & disp;
@@ -51,7 +51,6 @@ private:
 	const gamemap & map;
 	const std::vector<team> & teams;
 	halo::manager & halo_man;
-	std::map<surface,SDL_Rect> & energy_bar_rects_;
 	size_t viewing_team;
 	size_t playing_team;
 	const team & viewing_team_ref;

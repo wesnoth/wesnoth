@@ -711,7 +711,6 @@ protected:
 	CVideo& screen_;
 	size_t currentTeam_;
 	bool dont_show_all_; //const team *viewpoint_;
-	std::map<surface,SDL_Rect> energy_bar_rects_;
 	int xpos_, ypos_;
 	bool view_locked_;
 	theme theme_;

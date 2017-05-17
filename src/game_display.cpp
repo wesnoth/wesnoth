@@ -252,7 +252,7 @@ void game_display::draw_invalidated()
 	if (fake_unit_man_->empty()) {
 		return;
 	}
-	unit_drawer drawer = unit_drawer(*this, energy_bar_rects_);
+	unit_drawer drawer = unit_drawer(*this);
 
 	for (const unit* temp_unit : *fake_unit_man_) {
 		const map_location& loc = temp_unit->get_location();

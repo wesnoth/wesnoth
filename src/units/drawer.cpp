@@ -29,13 +29,15 @@
 #include "units/animation_component.hpp"
 #include "units/frame.hpp"
 
-unit_drawer::unit_drawer(display & thedisp, std::map<surface,SDL_Rect> & bar_rects) :
+// Map of different energy bar surfaces and their dimensions.
+static std::map<surface, SDL_Rect> energy_bar_rects;
+
+unit_drawer::unit_drawer(display & thedisp) :
 	disp(thedisp),
 	dc(disp.get_disp_context()),
 	map(dc.map()),
 	teams(dc.teams()),
 	halo_man(thedisp.get_halo_manager()),
-	energy_bar_rects_(bar_rects),
 	viewing_team(disp.viewing_team()),
 	playing_team(disp.playing_team()),
 	viewing_team_ref(teams[viewing_team]),
@@ -411,8 +413,8 @@ struct is_energy_color {
 
 const SDL_Rect& unit_drawer::calculate_energy_bar(surface surf) const
 {
-	const std::map<surface,SDL_Rect>::const_iterator i = energy_bar_rects_.find(surf);
-	if(i != energy_bar_rects_.end()) {
+	const std::map<surface,SDL_Rect>::const_iterator i = energy_bar_rects.find(surf);
+	if(i != energy_bar_rects.end()) {
 		return i->second;
 	}
 
@@ -446,7 +448,7 @@ const SDL_Rect& unit_drawer::calculate_energy_bar(surface surf) const
 			, last_col-first_col
 			, last_row+1-first_row
 	};
-	energy_bar_rects_.emplace(surf, res);
+	energy_bar_rects.emplace(surf, res);
 	return calculate_energy_bar(surf);
 }
 
