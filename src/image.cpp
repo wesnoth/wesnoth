@@ -44,7 +44,6 @@
 #include <boost/algorithm/string.hpp>
 #include <boost/functional/hash.hpp>
 
-#include <list>
 #include <set>
 
 static lg::log_domain log_display("display");
@@ -246,7 +245,7 @@ void flush_cache()
 
 void locator::init_index()
 {
-	locator_finder_t::iterator i = locator_finder.find(val_);
+	auto i = locator_finder.find(val_);
 
 	if(i == locator_finder.end()) {
 		index_ = last_index_++;
@@ -443,17 +442,21 @@ static bool localized_file_uptodate(const std::string& loc_file)
 		std::string fsep = "\xC2\xA6"; // UTF-8 for "broken bar"
 		std::string trackpath = filesystem::get_binary_file_location("", "l10n-track");
 		std::string contents = filesystem::read_file(trackpath);
-		std::vector<std::string> lines = utils::split(contents, '\n');
-		for(const std::string& line : lines) {
+
+		for(const std::string& line : utils::split(contents, '\n')) {
 			size_t p1 = line.find(fsep);
-			if(p1 == std::string::npos)
+			if(p1 == std::string::npos) {
 				continue;
+			}
+
 			std::string state = line.substr(0, p1);
 			boost::trim(state);
 			if(state == "fuzzy") {
 				size_t p2 = line.find(fsep, p1 + fsep.length());
-				if(p2 == std::string::npos)
+				if(p2 == std::string::npos) {
 					continue;
+				}
+
 				std::string relpath = line.substr(p1 + fsep.length(), p2 - p1 - fsep.length());
 				fuzzy_localized_files.insert(game_config::path + '/' + relpath);
 			}
@@ -516,11 +519,8 @@ static void add_localized_overlay(const std::string& ovr_file, surface& orig_sur
 		return;
 	}
 
-	SDL_Rect area;
-	area.x = 0;
-	area.y = 0;
-	area.w = ovr_surf->w;
-	area.h = ovr_surf->h;
+	SDL_Rect area {0, 0, ovr_surf->w, ovr_surf->h};
+
 	sdl_blit(ovr_surf, 0, orig_surf, &area);
 }
 
@@ -584,8 +584,12 @@ static surface load_image_sub_file(const image::locator& loc)
 	}
 
 	if(loc.get_loc().valid()) {
-		SDL_Rect srcrect = sdl::create_rect(((tile_size * 3) / 4) * loc.get_loc().x,
-				tile_size * loc.get_loc().y + (tile_size / 2) * (loc.get_loc().x % 2), tile_size, tile_size);
+		SDL_Rect srcrect = sdl::create_rect(
+			((tile_size * 3) / 4)                           *  loc.get_loc().x,
+			  tile_size * loc.get_loc().y + (tile_size / 2) * (loc.get_loc().x % 2),
+			  tile_size,
+			  tile_size
+		);
 
 		if(loc.get_center_x() >= 0 && loc.get_center_y() >= 0) {
 			srcrect.x += surf->w / 2 - loc.get_center_x();
@@ -641,7 +645,7 @@ static surface apply_light(surface surf, const light_string& ls)
 
 	// check if the lightmap is already cached or need to be generated
 	surface lightmap = nullptr;
-	lit_variants::iterator i = lightmaps_.find(ls);
+	auto i = lightmaps_.find(ls);
 	if(i != lightmaps_.end()) {
 		lightmap = i->second;
 	} else {
@@ -1028,7 +1032,7 @@ surface get_lighted_image(const image::locator& i_locator, const light_string& l
 	// need access to add it if not found
 	{ // enclose reference pointing to data stored in a changing vector
 		const lit_variants& lvar = i_locator.locate_in_cache(*imap);
-		lit_variants::const_iterator lvi = lvar.find(ls);
+		auto lvi = lvar.find(ls);
 		if(lvi != lvar.end()) {
 			return lvi->second;
 		}
@@ -1043,10 +1047,10 @@ surface get_lighted_image(const image::locator& i_locator, const light_string& l
 	case SCALED_TO_HEX:
 		// we light before scaling to reuse the unscaled cache
 		res = get_lighted_image(i_locator, ls, HEXED);
-		res = scale_surface(res, zoom, zoom);;
+		res = scale_surface(res, zoom, zoom);
 		break;
 	default:
-		;
+		break;
 	}
 
 	// record the lighted surface in the corresponding variants cache
@@ -1112,7 +1116,7 @@ surface reverse_image(const surface& surf)
 		return surface(nullptr);
 	}
 
-	const std::map<surface, surface>::iterator itor = reversed_images_.find(surf);
+	const auto itor = reversed_images_.find(surf);
 	if(itor != reversed_images_.end()) {
 		// sdl_add_ref(itor->second);
 		return itor->second;
@@ -1137,10 +1141,14 @@ bool exists(const image::locator& i_locator)
 	}
 
 	// The insertion will fail if there is already an element in the cache
-	std::pair<std::map<std::string, bool>::iterator, bool> it
-			= image_existence_map.emplace(i_locator.get_filename(), false);
-	bool& cache = it.first->second;
-	if(it.second) {
+	// and this will point to the existing element.
+	auto iter = image_existence_map.begin();
+	bool success;
+
+	std::tie(iter, success) = image_existence_map.emplace(i_locator.get_filename(), false);
+
+	bool& cache = iter->second;
+	if(success) {
 		cache = !filesystem::get_binary_file_location("images", i_locator.get_filename()).empty();
 	}
 
@@ -1165,12 +1173,12 @@ static void precache_file_existence_internal(const std::string& dir, const std::
 	filesystem::get_files_in_dir(checked_dir, &files_found, &dirs_found, filesystem::FILE_NAME_ONLY,
 			filesystem::NO_FILTER, filesystem::DONT_REORDER);
 
-	for(std::vector<std::string>::const_iterator f = files_found.begin(); f != files_found.end(); ++f) {
-		image_existence_map[subdir + *f] = true;
+	for(const auto& f : files_found) {
+		image_existence_map[subdir + f] = true;
 	}
 
-	for(std::vector<std::string>::const_iterator d = dirs_found.begin(); d != dirs_found.end(); ++d) {
-		precache_file_existence_internal(dir, subdir + *d + "/");
+	for(const auto& d : dirs_found) {
+		precache_file_existence_internal(dir, subdir + d + "/");
 	}
 }
 
@@ -1178,14 +1186,14 @@ void precache_file_existence(const std::string& subdir)
 {
 	const std::vector<std::string>& paths = filesystem::get_binary_paths("images");
 
-	for(std::vector<std::string>::const_iterator p = paths.begin(); p != paths.end(); ++p) {
-		precache_file_existence_internal(*p, subdir);
+	for(const auto& p : paths) {
+		precache_file_existence_internal(p, subdir);
 	}
 }
 
 bool precached_file_exists(const std::string& file)
 {
-	std::map<std::string, bool>::const_iterator b = image_existence_map.find(file);
+	const auto b = image_existence_map.find(file);
 	if(b != image_existence_map.end()) {
 		return b->second;
 	}
