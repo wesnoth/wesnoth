@@ -26,8 +26,9 @@
 #include "scripting/game_lua_kernel.hpp"
 #include "serialization/string_utils.hpp"
 
-#include <iostream>
+#include <boost/algorithm/string.hpp>
 
+#include <iostream>
 
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
@@ -61,24 +62,13 @@ namespace game_events {
 	 */
 	std::string event_handlers::standardize_name(const std::string & name)
 	{
-		std::string retval;
-		size_t name_index = 0;
-		size_t name_size = name.size();
+		std::string retval = name;
 
-		// Trim trailing spaces off the name.
-		while ( name_size > 0  &&  name[name_size-1] == ' ' )
-			--name_size	;
+		// Trim leading and trailing spaces.
+		boost::trim(retval);
 
-		// Trim leading spaces off the name.
-		while ( name_index < name_size  &&  name[name_index] == ' ' )
-			++name_index;
-
-		// Copy the rest, converting any remaining spaces to underscores.
-		retval.reserve(name_size - name_index);
-		while ( name_index < name_size ) {
-			char c = name[name_index++];
-			retval.push_back(c == ' ' ? '_' : c);
-		}
+		// Replace internal spaces with underscores.
+		boost::replace_all(retval, " ", "_");
 
 		return retval;
 	}
