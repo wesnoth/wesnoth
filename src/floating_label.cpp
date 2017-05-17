@@ -119,7 +119,7 @@ surface floating_label::create_surface()
 			// (where the text was blitted directly on screen)
 			adjust_surface_alpha(foreground, ftofxp(1.13));
 
-			SDL_Rect r = sdl::create_rect( border_, border_, 0, 0);
+			SDL_Rect r {border_, border_, 0, 0};
 			adjust_surface_alpha(foreground, SDL_ALPHA_OPAQUE);
 			sdl_blit(foreground, nullptr, background, &r);
 
@@ -249,7 +249,7 @@ SDL_Rect get_floating_label_rect(int handle)
 	if(i != labels.end()) {
 		const surface surf = i->second.create_surface();
 		if(surf != nullptr) {
-			return sdl::create_rect(0, 0, surf->w, surf->h);
+			return {0, 0, surf->w, surf->h};
 		}
 	}
 	return sdl::empty_rect;

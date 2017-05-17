@@ -98,11 +98,12 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 			// if not, only the bottom half-hexes are clipped
 			// and it looks asymmetrical.
 
-			SDL_Rect maprect = sdl::create_rect(
+			SDL_Rect maprect {
 					x * scale * 3 / 4 - (scale / 4)
 					, y * scale + scale / 4 * (is_odd(x) ? 1 : -1) - (scale / 4)
 					, 0
-					, 0);
+					, 0
+			};
 
 			if (preferences_minimap_draw_terrain) {
 
@@ -148,7 +149,7 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 
 							if(overlay != nullptr && overlay != tile) {
 								surface combined = create_neutral_surface(tile->w, tile->h);
-								SDL_Rect r = sdl::create_rect(0,0,0,0);
+								SDL_Rect r {0,0,0,0};
 								sdl_blit(tile, nullptr, combined, &r);
 								r.x = std::max(0, (tile->w - overlay->w)/2);
 								r.y = std::max(0, (tile->h - overlay->h)/2);
@@ -228,7 +229,7 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 							col.b = col.b - (col.b - tmp.b)/2;
 						}
 					}
-					SDL_Rect fillrect = sdl::create_rect(maprect.x, maprect.y, scale * 3/4, scale);
+					SDL_Rect fillrect {maprect.x, maprect.y, scale * 3/4, scale};
 					const Uint32 mapped_col = SDL_MapRGB(minimap->format,col.r,col.g,col.b);
 					sdl::fill_rect(minimap, &fillrect, mapped_col);
 				}
@@ -262,12 +263,12 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 					}
 				}
 
-				SDL_Rect fillrect = sdl::create_rect(
+				SDL_Rect fillrect {
 						maprect.x
 						, maprect.y
 						, scale * 3/4
 						, scale
-				);
+				};
 
 				const Uint32 mapped_col = SDL_MapRGB(minimap->format,col.r,col.g,col.b);
 				sdl::fill_rect(minimap, &fillrect, mapped_col);

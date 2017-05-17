@@ -1315,7 +1315,7 @@ surface blur_surface(const surface &surf, int depth)
 		return nullptr;
 	}
 
-	SDL_Rect rect = sdl::create_rect(0, 0, surf->w, surf->h);
+	SDL_Rect rect {0, 0, surf->w, surf->h};
 	blur_surface(res, rect, depth);
 
 	return res;
@@ -1942,7 +1942,7 @@ void blit_surface(const surface& surf,
 	const surface& src = is_neutral(surf) ? surf : make_neutral_surface(surf);
 
 	// Get the areas to blit
-	SDL_Rect dst_rect = sdl::create_rect(0, 0, dst->w, dst->h);
+	SDL_Rect dst_rect {0, 0, dst->w, dst->h};
 	if(dstrect) {
 		dst_rect.x = dstrect->x;
 		dst_rect.w -= dstrect->x;
@@ -1952,7 +1952,7 @@ void blit_surface(const surface& surf,
 
 	}
 
-	SDL_Rect src_rect = sdl::create_rect(0, 0, src->w, src->h);
+	SDL_Rect src_rect {0, 0, src->w, src->h};
 	if(srcrect && srcrect->w && srcrect->h) {
 		src_rect.x = srcrect->x;
 		src_rect.y = srcrect->y;

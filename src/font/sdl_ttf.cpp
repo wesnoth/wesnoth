@@ -347,7 +347,7 @@ SDL_Rect draw_text_line(surface& gui_surface, const SDL_Rect& area, int size,
 	}
 
 	if(area.w == 0) {  // no place to draw
-		return sdl::create_rect(0, 0, 0, 0);
+		return {0, 0, 0, 0};
 	}
 
 	const std::string etext = make_text_ellipsis(text, size, area.w);
@@ -355,7 +355,7 @@ SDL_Rect draw_text_line(surface& gui_surface, const SDL_Rect& area, int size,
 	// for the main current use, we already parsed markup
 	surface surface(render_text(etext,size,color,style,false));
 	if(surface == nullptr) {
-		return sdl::create_rect(0, 0, 0, 0);
+		return {0, 0, 0, 0};
 	}
 
 	SDL_Rect dest;

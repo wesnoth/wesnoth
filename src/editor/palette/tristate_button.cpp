@@ -241,7 +241,7 @@ void tristate_button::draw_contents() {
 	surface nbase = make_neutral_surface(base);
 
 	//TODO avoid magic numbers
-	SDL_Rect r = sdl::create_rect(1, 1, 0, 0);
+	SDL_Rect r {1, 1, 0, 0};
 	sdl_blit(nitem, nullptr, nbase, &r);
 
 	if (!overlay.null()) {

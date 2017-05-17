@@ -1300,7 +1300,7 @@ void display::drawing_buffer_commit()
 			// Note that dstrect can be changed by sdl_blit
 			// and so a new instance should be initialized
 			// to pass to each call to sdl_blit.
-			SDL_Rect dstrect = sdl::create_rect(blit.x(), blit.y(), 0, 0);
+			SDL_Rect dstrect {blit.x(), blit.y(), 0, 0};
 			SDL_Rect srcrect = blit.clip();
 			SDL_Rect *srcrectArg = (srcrect.x | srcrect.y | srcrect.w | srcrect.h)
 				? &srcrect : nullptr;
@@ -1527,7 +1527,7 @@ void display::render_image(int x, int y, const display::drawing_layer drawing_la
 	if (image==nullptr)
 		return;
 
-	SDL_Rect image_rect = sdl::create_rect(x, y, image->w, image->h);
+	SDL_Rect image_rect {x, y, image->w, image->h};
 	SDL_Rect clip_rect = map_area();
 	if (!sdl::rects_overlap(image_rect, clip_rect))
 		return;
@@ -1567,7 +1567,7 @@ void display::render_image(int x, int y, const display::drawing_layer drawing_la
 		// divide the surface into 2 parts
 		const int submerge_height = std::max<int>(0, surf->h*(1.0-submerged));
 		const int depth = surf->h - submerge_height;
-		SDL_Rect srcrect = sdl::create_rect(0, 0, surf->w, submerge_height);
+		SDL_Rect srcrect {0, 0, surf->w, submerge_height};
 		drawing_buffer_add(drawing_layer, loc, x, y, surf, srcrect);
 
 		if(submerge_height != surf->h) {
@@ -1854,10 +1854,12 @@ void display::draw_minimap_units()
 		double u_w = 4.0 / 3.0 * xscaling;
 		double u_h = yscaling;
 
-		SDL_Rect r = sdl::create_rect(minimap_location_.x + round_double(u_x)
+		SDL_Rect r {
+				  minimap_location_.x + round_double(u_x)
 				, minimap_location_.y + round_double(u_y)
 				, round_double(u_w)
-				, round_double(u_h));
+				, round_double(u_h)
+		};
 		const Uint32 mapped_col = SDL_MapRGB(video().getSurface()->format,col.r,col.g,col.b);
 		sdl::fill_rect(video().getSurface(), &r, mapped_col);
 	}
@@ -2628,7 +2630,7 @@ void display::draw_hex(const map_location& loc) {
 			int off_y = ypos + hex_size()/2;
 			surface text = font::get_rendered_text(lexical_cast<std::string>(loc), font::SIZE_SMALL, font::NORMAL_COLOR);
 			surface bg = create_neutral_surface(text->w, text->h);
-			SDL_Rect bg_rect = sdl::create_rect(0, 0, text->w, text->h);
+			SDL_Rect bg_rect {0, 0, text->w, text->h};
 			sdl::fill_rect(bg, &bg_rect, 0xaa000000);
 			off_x -= text->w / 2;
 			off_y -= text->h / 2;
@@ -2646,7 +2648,7 @@ void display::draw_hex(const map_location& loc) {
 			int off_y = ypos + hex_size()/2;
 			surface text = font::get_rendered_text(lexical_cast<std::string>(get_map().get_terrain(loc)), font::SIZE_SMALL, font::NORMAL_COLOR);
 			surface bg = create_neutral_surface(text->w, text->h);
-			SDL_Rect bg_rect = sdl::create_rect(0, 0, text->w, text->h);
+			SDL_Rect bg_rect {0, 0, text->w, text->h};
 			sdl::fill_rect(bg, &bg_rect, 0xaa000000);
 			off_x -= text->w / 2;
 			off_y -= text->h / 2;
@@ -2663,7 +2665,7 @@ void display::draw_hex(const map_location& loc) {
 			int off_y = ypos + hex_size()/2;
 			surface text = font::get_rendered_text(lexical_cast<std::string>(num_images_bg + num_images_fg), font::SIZE_SMALL, font::NORMAL_COLOR);
 			surface bg = create_neutral_surface(text->w, text->h);
-			SDL_Rect bg_rect = sdl::create_rect(0, 0, text->w, text->h);
+			SDL_Rect bg_rect {0, 0, text->w, text->h};
 			sdl::fill_rect(bg, &bg_rect, 0xaa000000);
 			off_x -= text->w / 2;
 			off_y -= text->h / 2;
@@ -2820,7 +2822,7 @@ void display::refresh_report(const std::string& report_name, const config * new_
 	for (config::const_child_itors elements = report.child_range("element");
 		 elements.begin() != elements.end(); elements.pop_front())
 	{
-		SDL_Rect area = sdl::create_rect(x, y, rect.w + rect.x - x, rect.h + rect.y - y);
+		SDL_Rect area {x, y, rect.w + rect.x - x, rect.h + rect.y - y};
 		if (area.h <= 0) break;
 
 		std::string t = elements.front()["text"];

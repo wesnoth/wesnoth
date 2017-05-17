@@ -171,12 +171,12 @@ void mouse_action::set_terrain_mouse_overlay(editor_display& disp, const t_trans
 
 	// Blit left side
 	image_fg = scale_surface(image_fg, new_size, new_size);
-	SDL_Rect rcDestLeft = sdl::create_rect(offset, quarter_size, 0, 0);
+	SDL_Rect rcDestLeft {offset, quarter_size, 0, 0};
 	sdl_blit( image_fg, nullptr, image, &rcDestLeft );
 
 	// Blit right side
 	image_bg = scale_surface(image_bg, new_size, new_size);
-	SDL_Rect rcDestRight = sdl::create_rect(half_size, quarter_size, 0, 0);
+	SDL_Rect rcDestRight {half_size, quarter_size, 0, 0};
 	sdl_blit( image_bg, nullptr, image, &rcDestRight );
 
 	//apply mask so the overlay is contained within the mouseover hex
@@ -336,7 +336,7 @@ void mouse_action_paste::set_mouse_overlay(editor_display& disp)
 	//TODO avoid hardcoded hex field size
 	surface image = create_neutral_surface(72,72);
 
-	SDL_Rect r = sdl::create_rect(6, 6, 0, 0);
+	SDL_Rect r {6, 6, 0, 0};
 	sdl_blit(image60, nullptr, image, &r);
 
 	Uint8 alpha = 196;
@@ -454,7 +454,7 @@ void mouse_action_starting_position::set_mouse_overlay(editor_display& disp)
 	//TODO avoid hardcoded hex field size
 	surface image = create_neutral_surface(72,72);
 
-	SDL_Rect r = sdl::create_rect(6, 6, 0, 0);
+	SDL_Rect r {6, 6, 0, 0};
 	sdl_blit(image60, nullptr, image, &r);
 
 	Uint8 alpha = 196;

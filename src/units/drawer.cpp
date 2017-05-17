@@ -175,7 +175,7 @@ void unit_drawer::redraw_unit (const unit & u) const
 	// We draw bars only if wanted, visible on the map view
 	bool draw_bars = ac.draw_bars_ ;
 	if (draw_bars) {
-		SDL_Rect unit_rect = sdl::create_rect(xsrc, ysrc +adjusted_params.y, hex_size, hex_size);
+		SDL_Rect unit_rect {xsrc, ysrc +adjusted_params.y, hex_size, hex_size};
 		draw_bars = sdl::rects_overlap(unit_rect, disp.map_outside_area());
 	}
 	surface ellipse_front(nullptr);
@@ -362,11 +362,12 @@ void unit_drawer::draw_bar(const std::string& image, int xpos, int ypos,
 	else {
 		const fixed_t xratio = fxpdiv(surf->w,bar_surf->w);
 		const fixed_t yratio = fxpdiv(surf->h,bar_surf->h);
-		const SDL_Rect scaled_bar_loc = sdl::create_rect(
+		const SDL_Rect scaled_bar_loc {
 			    fxptoi(unscaled_bar_loc. x * xratio)
 			  , fxptoi(unscaled_bar_loc. y * yratio + 127)
 			  , fxptoi(unscaled_bar_loc. w * xratio + 255)
-			  , fxptoi(unscaled_bar_loc. h * yratio + 255));
+			  , fxptoi(unscaled_bar_loc. h * yratio + 255)
+		};
 		bar_loc = scaled_bar_loc;
 	}
 
@@ -383,7 +384,7 @@ void unit_drawer::draw_bar(const std::string& image, int xpos, int ypos,
 
 	const size_t skip_rows = bar_loc.h - height;
 
-	SDL_Rect top = sdl::create_rect(0, 0, surf->w, bar_loc.y);
+	SDL_Rect top {0, 0, surf->w, bar_loc.y};
 	SDL_Rect bot = sdl::create_rect(0, bar_loc.y + skip_rows, surf->w, 0);
 	bot.h = surf->w - bot.y;
 
@@ -439,10 +440,12 @@ const SDL_Rect& unit_drawer::calculate_energy_bar(surface surf) const
 		}
 	}
 
-	const SDL_Rect res = sdl::create_rect(first_col
+	const SDL_Rect res {
+			  first_col
 			, first_row
 			, last_col-first_col
-			, last_row+1-first_row);
+			, last_row+1-first_row
+	};
 	energy_bar_rects_.emplace(surf, res);
 	return calculate_energy_bar(surf);
 }

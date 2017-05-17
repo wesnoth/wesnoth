@@ -94,11 +94,10 @@ void fill_rect_alpha(SDL_Rect &rect, Uint32 color, Uint8 alpha, surface target)
 
 void draw_rectangle(int x, int y, int w, int h, Uint32 color, surface target)
 {
-
-	SDL_Rect top = create_rect(x, y, w, 1);
-	SDL_Rect bot = create_rect(x, y + h - 1, w, 1);
-	SDL_Rect left = create_rect(x, y, 1, h);
-	SDL_Rect right = create_rect(x + w - 1, y, 1, h);
+	SDL_Rect top {x, y, w, 1};
+	SDL_Rect bot {x, y + h - 1, w, 1};
+	SDL_Rect left {x, y, 1, h};
+	SDL_Rect right {x + w - 1, y, 1, h};
 
 	sdl::fill_rect(target,&top,color);
 	sdl::fill_rect(target,&bot,color);
@@ -111,7 +110,7 @@ void draw_solid_tinted_rectangle(int x, int y, int w, int h,
 								 double alpha, surface target)
 {
 
-	SDL_Rect rect = create_rect(x, y, w, h);
+	SDL_Rect rect {x, y, w, h};
 	fill_rect_alpha(rect,SDL_MapRGB(target->format,r,g,b),Uint8(alpha*255),target);
 }
 

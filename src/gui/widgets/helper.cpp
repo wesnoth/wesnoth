@@ -45,7 +45,7 @@ bool init()
 
 SDL_Rect create_rect(const point& origin, const point& size)
 {
-	return sdl::create_rect(origin.x, origin.y, size.x, size.y);
+	return {origin.x, origin.y, size.x, size.y};
 }
 
 font::pango_text::FONT_STYLE decode_font_style(const std::string& style)

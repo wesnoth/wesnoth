@@ -1080,7 +1080,7 @@ void image_shape::draw(surface& canvas,
 
 	image_.assign(make_neutral_surface(tmp));
 	assert(image_);
-	src_clip_ = sdl::create_rect(0, 0, image_->w, image_->h);
+	src_clip_ = {0, 0, image_->w, image_->h};
 
 	wfl::map_formula_callable local_variables(variables);
 	local_variables.add("image_original_width", wfl::variant(image_->w));

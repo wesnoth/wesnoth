@@ -89,11 +89,12 @@ namespace gui{
 
 		if(box_ != nullptr) {
 			box_->set_volatile(true);
-			const SDL_Rect rect = sdl::create_rect(
+			const SDL_Rect rect {
 				  area.x + label_area.w + border_size * 2
 				, ypos
 				, textbox_width
-				, box_->height());
+				, box_->height()
+			};
 
 			box_->set_location(rect);
 		}

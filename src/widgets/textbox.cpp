@@ -107,10 +107,12 @@ void textbox::append_text(const std::string& text, bool auto_scroll, const color
 	sdl_blit(text_image_,nullptr,new_surface,nullptr);
 	SDL_SetSurfaceBlendMode(text_image_, SDL_BLENDMODE_BLEND);
 
-	SDL_Rect target = sdl::create_rect(0
+	SDL_Rect target {
+			  0
 			, text_image_->h
 			, new_text->w
-			, new_text->h);
+			, new_text->h
+	};
 	SDL_SetSurfaceBlendMode(new_text, SDL_BLENDMODE_NONE);
 	sdl_blit(new_text,nullptr,new_surface,&target);
 	text_image_.assign(new_surface);
@@ -169,10 +171,12 @@ void textbox::set_cursor_pos(const int cursor_pos)
 void textbox::draw_cursor(int pos, CVideo &video) const
 {
 	if(show_cursor_ && editable_ && enabled()) {
-		SDL_Rect rect = sdl::create_rect(location().x + pos
+		SDL_Rect rect {
+				  location().x + pos
 				, location().y
 				, 1
-				, location().h);
+				, location().h
+		};
 
 		surface frame_buffer = video.getSurface();
 		sdl::fill_rect(frame_buffer,&rect,SDL_MapRGB(frame_buffer->format,255,255,255));

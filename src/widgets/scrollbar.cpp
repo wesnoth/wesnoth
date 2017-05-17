@@ -227,7 +227,7 @@ SDL_Rect scrollbar::grip_area() const
 	if (h < minimum_grip_height_)
 		h = minimum_grip_height_;
 	int y = loc.y + (static_cast<int>(loc.h) - h) * grip_position_ / (full_height_ - grip_height_);
-	return sdl::create_rect(loc.x, y, loc.w, h);
+	return {loc.x, y, loc.w, h};
 }
 
 void scrollbar::draw_contents()
