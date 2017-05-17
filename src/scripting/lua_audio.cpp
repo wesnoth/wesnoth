@@ -156,9 +156,9 @@ static int intf_music_next(lua_State*) {
 }
 
 static int intf_music_add(lua_State* L) {
-	int i = -1;
+	int index = -1;
 	if(lua_isinteger(L, 1)) {
-		i = lua_tointeger(L, 1);
+		index = lua_tointeger(L, 1);
 		lua_remove(L, 1);
 	}
 	config cfg = config_of
@@ -186,7 +186,7 @@ static int intf_music_add(lua_State* L) {
 			return luaL_argerror(L, i, "unrecognized argument");
 		}
 	}
-	sound::play_music_config(cfg, i);
+	sound::play_music_config(cfg, index);
 	return 0;
 }
 

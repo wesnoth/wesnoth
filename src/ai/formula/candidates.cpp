@@ -222,7 +222,6 @@ void attack_candidate_action::evaluate(ai::formula_ai* ai, unit_map& units)
 
 	for( size_t my_unit = 0 ; my_unit < my_units_flt.size() ; ++my_unit){
 		auto my_unit_callable = my_units_flt[my_unit].convert_to<unit_callable>();
-		auto enemy_unit_callable = my_units_flt[my_unit].convert_to<unit_callable>();
 		for( size_t enemy_unit = 0 ; enemy_unit < enemy_units_flt.size() ; ++enemy_unit){
 			auto enemy_unit_callable = enemy_units_flt[enemy_unit].convert_to<unit_callable>();
 			if(ai->can_reach_unit(my_unit_callable->get_location(), enemy_unit_callable->get_location())) {
