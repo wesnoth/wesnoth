@@ -20,8 +20,8 @@
 #include "game_events/wmi_container.hpp"
 #include "game_events/handlers.hpp"
 #include "game_events/menu_item.hpp"
-#include "resources.hpp"
 #include "play_controller.hpp"
+#include "resources.hpp"
 
 #include "config.hpp"
 #include "config_assign.hpp"
@@ -36,10 +36,10 @@ static lg::log_domain log_engine("engine");
 // This file is in the game_events namespace.
 namespace game_events
 {
-
 wmi_container::wmi_container()
 	: wml_menu_items_()
-{}
+{
+}
 
 /**
  * Destructor.
@@ -50,14 +50,13 @@ wmi_container::~wmi_container()
 {
 }
 
-
 /** Erases the item with id @a key. */
-wmi_container::size_type wmi_container::erase(const std::string & id)
+wmi_container::size_type wmi_container::erase(const std::string& id)
 {
 	// Locate the item to erase.
 	const map_t::iterator iter = wml_menu_items_.find(id);
 
-	if ( iter == wml_menu_items_.end() ) {
+	if(iter == wml_menu_items_.end()) {
 		WRN_NG << "Trying to remove non-existent menu item '" << id << "'; ignoring." << std::endl;
 		// No such item.
 		return 0;
@@ -78,14 +77,15 @@ wmi_container::size_type wmi_container::erase(const std::string & id)
  * NOTE: The return value could be altered if it is decided that
  * play_controller::execute_command() needs something different.
  */
-bool wmi_container::fire_item(const std::string & id, const map_location & hex, game_data & gamedata, filter_context & fc, unit_map & units) const
+bool wmi_container::fire_item(
+		const std::string& id, const map_location& hex, game_data& gamedata, filter_context& fc, unit_map& units) const
 {
 	// Does this item exist?
 	const_iterator iter = find(id);
-	if ( iter == end() ) {
+	if(iter == end()) {
 		return false;
 	}
-	const wml_menu_item & wmi = **iter;
+	const wml_menu_item& wmi = **iter;
 
 	// Prepare for can show().
 	gamedata.get_variable("x1") = hex.wml_x();
@@ -93,7 +93,7 @@ bool wmi_container::fire_item(const std::string & id, const map_location & hex, 
 	scoped_xy_unit highlighted_unit("unit", hex, units);
 
 	// Can this item be shown?
-	if ( wmi.can_show(hex, gamedata, fc) ) {
+	if(wmi.can_show(hex, gamedata, fc)) {
 		wmi.fire_event(hex, gamedata);
 	}
 	return true;
@@ -106,11 +106,13 @@ bool wmi_container::fire_item(const std::string & id, const map_location & hex, 
  * @param[out] descriptions Menu item text will be pushed onto @a descriptions (in the same order as @a items).
  */
 void wmi_container::get_items(const map_location& hex,
-                              std::vector<std::shared_ptr<const wml_menu_item>>& items,
-                              std::vector<config>& descriptions,
-                              filter_context& fc, game_data& gamedata, unit_map& units) const
+		std::vector<std::shared_ptr<const wml_menu_item>>& items,
+		std::vector<config>& descriptions,
+		filter_context& fc,
+		game_data& gamedata,
+		unit_map& units) const
 {
-	if ( empty() ) {
+	if(empty()) {
 		// Nothing to do (skip setting game variables).
 		return;
 	}
@@ -121,11 +123,10 @@ void wmi_container::get_items(const map_location& hex,
 	scoped_xy_unit highlighted_unit("unit", hex, units);
 
 	// Check each menu item.
-	for (const item_ptr & item : *this)
-	{
+	for(const item_ptr& item : *this) {
 		// Can this item be shown?
-		if ( item->use_wml_menu() && (!item->is_synced() || resources::controller->can_use_synced_wml_menu()) && item->can_show(hex, gamedata, fc) )
-		{
+		if(item->use_wml_menu() && (!item->is_synced() || resources::controller->can_use_synced_wml_menu())
+				&& item->can_show(hex, gamedata, fc)) {
 			// Include this item.
 			items.push_back(item);
 			descriptions.emplace_back(config_of("id", item->menu_text()));
@@ -151,7 +152,7 @@ void wmi_container::init_handlers() const
 	unsigned wmi_count = 0;
 
 	// Loop through each menu item.
-	for (const item_ptr & wmi : *this) {
+	for(const item_ptr& wmi : *this) {
 		// If this menu item has a [command], add a handler for it.
 		wmi->init_handler();
 		// Count the menu items (for the diagnostic message).
@@ -159,7 +160,7 @@ void wmi_container::init_handlers() const
 	}
 
 	// Diagnostic:
-	if ( wmi_count > 0 ) {
+	if(wmi_count > 0) {
 		LOG_NG << wmi_count << " WML menu items found, loaded." << std::endl;
 	}
 }
@@ -167,8 +168,7 @@ void wmi_container::init_handlers() const
 void wmi_container::to_config(config& cfg) const
 {
 	// Loop through our items.
-	for (const item_ptr & item : *this)
-	{
+	for(const item_ptr& item : *this) {
 		// Add this item as a child of cfg.
 		item->to_config(cfg.add_child("menu_item"));
 	}
@@ -183,7 +183,7 @@ void wmi_container::set_item(const std::string& id, const vconfig& menu_item)
 	// entry with insertion.
 	map_t::iterator add_it = wml_menu_items_.insert(map_t::value_type(id, item_ptr())).first;
 
-	if ( add_it->second )
+	if(add_it->second)
 		// Create a new menu item based on the old. This leaves the old item
 		// alone in case someone else is holding on to (and processing) it.
 		add_it->second.reset(new wml_menu_item(id, menu_item, *add_it->second));
@@ -198,13 +198,14 @@ void wmi_container::set_item(const std::string& id, const vconfig& menu_item)
 void wmi_container::set_menu_items(const config& cfg)
 {
 	wml_menu_items_.clear();
-	for (const config &item : cfg.child_range("menu_item"))
-	{
-		if(!item.has_attribute("id")){ continue; }
+	for(const config& item : cfg.child_range("menu_item")) {
+		if(!item.has_attribute("id")) {
+			continue;
+		}
 
 		std::string id = item["id"];
-		item_ptr & mref = wml_menu_items_[id];
-		if ( !mref ) {
+		item_ptr& mref = wml_menu_items_[id];
+		if(!mref) {
 			mref.reset(new wml_menu_item(id, item));
 		} else {
 			WRN_NG << "duplicate menu item (" << id << ") while loading from config" << std::endl;
@@ -213,4 +214,3 @@ void wmi_container::set_menu_items(const config& cfg)
 }
 
 } // end namespace game_events
-
