@@ -135,6 +135,16 @@ void wmi_container::get_items(const map_location& hex,
 	return;
 }
 
+wmi_container::item_ptr wmi_container::get_item(const std::string& id) const
+{
+	auto iter = wml_menu_items_.find(id);
+	if(iter == wml_menu_items_.end()) {
+		return iter->second;
+	}
+
+	return item_ptr(nullptr);
+}
+
 /**
  * Initializes the implicit event handlers for inlined [command]s.
  */

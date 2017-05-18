@@ -41,8 +41,10 @@ class wml_menu_item;
 
 /// A container of wml_menu_item.
 class wmi_container{
+public:
 	/// Pointers to our elements.
 	typedef std::shared_ptr<wml_menu_item> item_ptr;
+private:
 	/// The underlying storage type.
 	typedef std::map<std::string, item_ptr> map_t;
 	/// The key for interaction with our iterators.
@@ -76,6 +78,15 @@ public:
 
 	/// Fires the menu item with the given @a id.
 	bool fire_item(const std::string & id, const map_location & hex, game_data & gamedata, filter_context & fc, unit_map & units) const;
+
+	/**
+	 * Gets the menu item with the specified ID.
+	 *
+	 * @param               Item id.
+	 * @returns             Pointer to the relavent item, or nullptr if not found.
+	 */
+	item_ptr get_item(const std::string& id) const;
+
 	/// Returns the menu items that can be shown for the given location.
 	void get_items(const map_location& hex,
 	               std::vector<std::shared_ptr<const wml_menu_item>>& items,
