@@ -190,17 +190,18 @@ void wmi_manager::to_config(config& cfg) const
  */
 void wmi_manager::set_item(const std::string& id, const vconfig& menu_item)
 {
-	// Try to insert a dummy value. This combines looking for an existing
-	// entry with insertion.
-	auto add_it = wml_menu_items_.emplace(id, item_ptr()).first;
+	auto iter = wml_menu_items_.begin();
+	bool success;
 
-	if(add_it->second)
+	// First, try to insert a brand new menu item.
+	std::tie(iter, success) = wml_menu_items_.emplace(id, item_ptr(new wml_menu_item(id, menu_item)));
+
+	// If an entry already exists, reset it.
+	if(!success) {
 		// Create a new menu item based on the old. This leaves the old item
 		// alone in case someone else is holding on to (and processing) it.
-		add_it->second.reset(new wml_menu_item(id, menu_item, *add_it->second));
-	else
-		// This is a new menu item.
-		add_it->second.reset(new wml_menu_item(id, menu_item));
+		iter->second.reset(new wml_menu_item(id, menu_item, *iter->second));
+	}
 }
 
 /**
@@ -214,11 +215,12 @@ void wmi_manager::set_menu_items(const config& cfg)
 			continue;
 		}
 
-		std::string id = item["id"];
-		item_ptr& mref = wml_menu_items_[id];
-		if(!mref) {
-			mref.reset(new wml_menu_item(id, item));
-		} else {
+		const std::string& id = item["id"];
+		bool success;
+
+		std::tie(std::ignore, success) = wml_menu_items_.emplace(id, item_ptr(new wml_menu_item(id, item)));
+
+		if(!success) {
 			WRN_NG << "duplicate menu item (" << id << ") while loading from config" << std::endl;
 		}
 	}
