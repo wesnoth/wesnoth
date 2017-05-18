@@ -17,7 +17,7 @@
  * Definitions for a container for wml_menu_item.
  */
 
-#include "game_events/wmi_container.hpp"
+#include "game_events/wmi_manager.hpp"
 #include "game_events/handlers.hpp"
 #include "game_events/menu_item.hpp"
 #include "play_controller.hpp"
@@ -36,7 +36,7 @@ static lg::log_domain log_engine("engine");
 // This file is in the game_events namespace.
 namespace game_events
 {
-wmi_container::wmi_container()
+wmi_manager::wmi_manager()
 	: wml_menu_items_()
 {
 }
@@ -46,12 +46,12 @@ wmi_container::wmi_container()
  * Default implementation, but defined here because this function needs to be
  * able to see wml_menu_item's destructor.
  */
-wmi_container::~wmi_container()
+wmi_manager::~wmi_manager()
 {
 }
 
 /** Erases the item with id @a key. */
-bool wmi_container::erase(const std::string& id)
+bool wmi_manager::erase(const std::string& id)
 {
 	// Locate the item to erase.
 	const auto iter = wml_menu_items_.find(id);
@@ -77,7 +77,7 @@ bool wmi_container::erase(const std::string& id)
  * NOTE: The return value could be altered if it is decided that
  * play_controller::execute_command() needs something different.
  */
-bool wmi_container::fire_item(
+bool wmi_manager::fire_item(
 		const std::string& id, const map_location& hex, game_data& gamedata, filter_context& fc, unit_map& units) const
 {
 	// Does this item exist?
@@ -104,7 +104,7 @@ bool wmi_container::fire_item(
  * @param[out] items        Pointers to applicable menu items will be pushed onto @a items.
  * @param[out] descriptions Menu item text will be pushed onto @a descriptions (in the same order as @a items).
  */
-void wmi_container::get_items(const map_location& hex,
+void wmi_manager::get_items(const map_location& hex,
 		std::vector<std::shared_ptr<const wml_menu_item>>& items,
 		std::vector<config>& descriptions,
 		filter_context& fc,
@@ -135,7 +135,7 @@ void wmi_container::get_items(const map_location& hex,
 	}
 }
 
-wmi_container::item_ptr wmi_container::get_item(const std::string& id) const
+wmi_manager::item_ptr wmi_manager::get_item(const std::string& id) const
 {
 	auto iter = wml_menu_items_.find(id);
 	if(iter == wml_menu_items_.end()) {
@@ -148,7 +148,7 @@ wmi_container::item_ptr wmi_container::get_item(const std::string& id) const
 /**
  * Initializes the implicit event handlers for inlined [command]s.
  */
-void wmi_container::init_handlers() const
+void wmi_manager::init_handlers() const
 {
 	// Applying default hotkeys here currently does not work because
 	// the hotkeys are reset by play_controler::init_managers() ->
@@ -176,7 +176,7 @@ void wmi_container::init_handlers() const
 	}
 }
 
-void wmi_container::to_config(config& cfg) const
+void wmi_manager::to_config(config& cfg) const
 {
 	// Loop through our items.
 	for(const auto& item : wml_menu_items_) {
@@ -188,7 +188,7 @@ void wmi_container::to_config(config& cfg) const
 /**
  * Updates or creates (as appropriate) the menu item with the given @a id.
  */
-void wmi_container::set_item(const std::string& id, const vconfig& menu_item)
+void wmi_manager::set_item(const std::string& id, const vconfig& menu_item)
 {
 	// Try to insert a dummy value. This combines looking for an existing
 	// entry with insertion.
@@ -206,7 +206,7 @@ void wmi_container::set_item(const std::string& id, const vconfig& menu_item)
 /**
  * Sets the current menu items to the "menu_item" children of @a cfg.
  */
-void wmi_container::set_menu_items(const config& cfg)
+void wmi_manager::set_menu_items(const config& cfg)
 {
 	wml_menu_items_.clear();
 	for(const config& item : cfg.child_range("menu_item")) {

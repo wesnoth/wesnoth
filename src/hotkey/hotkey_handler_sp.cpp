@@ -23,7 +23,7 @@
 #include "playsingle_controller.hpp"
 #include "whiteboard/manager.hpp"
 #include "game_events/menu_item.hpp"
-#include "game_events/wmi_container.hpp"
+#include "game_events/wmi_manager.hpp"
 #include "map/map.hpp"
 #include "save_index.hpp"
 #include "gui/dialogs/message.hpp"
@@ -205,7 +205,7 @@ bool playsingle_controller::hotkey_handler::can_execute_command(const hotkey::ho
 				return false;
 			}
 
-			game_events::wmi_container::item_ptr item = gamestate().get_wml_menu_items().get_item(cmd.command.substr(prefixlen));
+			game_events::wmi_manager::item_ptr item = gamestate().get_wml_menu_items().get_item(cmd.command.substr(prefixlen));
 			if(!item) {
 				return false;
 			}

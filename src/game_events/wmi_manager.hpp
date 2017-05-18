@@ -36,14 +36,14 @@ namespace game_events
 class wml_menu_item;
 
 /// A container of wml_menu_item.
-class wmi_container
+class wmi_manager
 {
 public:
 	/// Pointers to our elements.
 	typedef std::shared_ptr<wml_menu_item> item_ptr;
 
-	wmi_container();
-	~wmi_container();
+	wmi_manager();
+	~wmi_manager();
 
 	/// Returns true if *this contains no data.
 	bool empty() const { return wml_menu_items_.empty(); }

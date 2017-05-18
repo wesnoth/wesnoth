@@ -15,7 +15,7 @@
 #pragma once
 
 #include "game_events/handlers.hpp"
-#include "game_events/wmi_container.hpp"
+#include "game_events/wmi_manager.hpp"
 
 #include <set>
 #include <string>
@@ -96,7 +96,7 @@ namespace game_events {
 		std::set<std::string> unit_wml_ids_;
 
 		const std::unique_ptr<game_events::wml_event_pump> pump_;
-		game_events::wmi_container wml_menu_items_;
+		game_events::wmi_manager wml_menu_items_;
 
 	public:
 		manager(const manager&) = delete;

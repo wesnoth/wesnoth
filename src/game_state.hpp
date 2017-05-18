@@ -27,7 +27,7 @@ class play_controller;
 class game_lua_kernel;
 class reports;
 
-namespace game_events { class manager; class wmi_container; }
+namespace game_events { class manager; class wmi_manager; }
 namespace game_events { struct event_context; }
 
 namespace pathfind { class manager; }
@@ -62,8 +62,8 @@ public:
 	bool& init_side_done() { return init_side_done_; }
 
 
-	game_events::wmi_container& get_wml_menu_items();
-	const game_events::wmi_container& get_wml_menu_items() const;
+	game_events::wmi_manager& get_wml_menu_items();
+	const game_events::wmi_manager& get_wml_menu_items() const;
 	int first_human_team_; //needed to initialize the viewpoint during setup
 	bool has_human_sides() const { return first_human_team_ != -1; }
 

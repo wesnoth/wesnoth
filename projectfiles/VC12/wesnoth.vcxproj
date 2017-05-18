@@ -1178,7 +1178,7 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Game_Events\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Game_Events\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\game_events\wmi_container.cpp">
+    <ClCompile Include="..\..\src\game_events\wmi_manager.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Game_Events\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Game_Events\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Game_Events\</ObjectFileName>
@@ -3611,7 +3611,7 @@
     <ClInclude Include="..\..\src\game_events\manager_impl.hpp" />
     <ClInclude Include="..\..\src\game_events\menu_item.hpp" />
     <ClInclude Include="..\..\src\game_events\pump.hpp" />
-    <ClInclude Include="..\..\src\game_events\wmi_container.hpp" />
+    <ClInclude Include="..\..\src\game_events\wmi_manager.hpp" />
     <ClInclude Include="..\..\src\game_initialization\configure_engine.hpp" />
     <ClInclude Include="..\..\src\game_initialization\connect_engine.hpp" />
     <ClInclude Include="..\..\src\game_initialization\create_engine.hpp" />

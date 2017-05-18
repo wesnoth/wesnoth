@@ -22,7 +22,7 @@
 #include "game_display.hpp"
 #include "game_errors.hpp"
 #include "game_events/menu_item.hpp"
-#include "game_events/wmi_container.hpp"
+#include "game_events/wmi_manager.hpp"
 #include "preferences/game.hpp"
 #include "game_state.hpp"
 #include "hotkey/hotkey_command.hpp"

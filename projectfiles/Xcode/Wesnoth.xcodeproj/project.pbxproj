@@ -697,7 +697,7 @@
 		91E356F81CACC97400774252 /* manager_impl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECDF181E1A3FE0DE00D157A6 /* manager_impl.cpp */; };
 		91E356F91CACC97400774252 /* menu_item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC44E37E181DDAF90037A62F /* menu_item.cpp */; };
 		91E356FA1CACC97400774252 /* pump.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62CC8E7217B9063D00C16B75 /* pump.cpp */; };
-		91E356FB1CACC97400774252 /* wmi_container.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC44E380181DDAF90037A62F /* wmi_container.cpp */; };
+		91E356FB1CACC97400774252 /* wmi_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC44E380181DDAF90037A62F /* wmi_manager.cpp */; };
 		91E356FC1CACC9B200774252 /* configure_engine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2F5FFD1A048E210018C9D6 /* configure_engine.cpp */; };
 		91E356FD1CACC9B200774252 /* connect_engine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2F5FFE1A048E210018C9D6 /* connect_engine.cpp */; };
 		91E356FE1CACC9B200774252 /* create_engine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2F5FFF1A048E210018C9D6 /* create_engine.cpp */; };
@@ -1081,7 +1081,7 @@
 		EC387E70195AFB5C00FC0342 /* drawer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC387E6E195AFB5C00FC0342 /* drawer.cpp */; };
 		EC387E73195AFC8400FC0342 /* fake_unit_ptr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC387E71195AFC8400FC0342 /* fake_unit_ptr.cpp */; };
 		EC44E382181DDAF90037A62F /* menu_item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC44E37E181DDAF90037A62F /* menu_item.cpp */; };
-		EC44E383181DDAF90037A62F /* wmi_container.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC44E380181DDAF90037A62F /* wmi_container.cpp */; };
+		EC44E383181DDAF90037A62F /* wmi_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC44E380181DDAF90037A62F /* wmi_manager.cpp */; };
 		EC45DEDD1AD1CEA300BD760C /* countdown_clock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC45DEDC1AD1CEA300BD760C /* countdown_clock.cpp */; };
 		EC45DEDF1AD1CED100BD760C /* replay_recorder_base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC45DEDE1AD1CED100BD760C /* replay_recorder_base.cpp */; };
 		EC45DEE11AD1CEF600BD760C /* floating_label.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC45DEE01AD1CEF600BD760C /* floating_label.cpp */; };
@@ -2409,8 +2409,8 @@
 		EC387E72195AFC8400FC0342 /* fake_unit_ptr.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = fake_unit_ptr.hpp; sourceTree = "<group>"; };
 		EC44E37E181DDAF90037A62F /* menu_item.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = menu_item.cpp; sourceTree = "<group>"; };
 		EC44E37F181DDAF90037A62F /* menu_item.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = menu_item.hpp; sourceTree = "<group>"; };
-		EC44E380181DDAF90037A62F /* wmi_container.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wmi_container.cpp; sourceTree = "<group>"; };
-		EC44E381181DDAF90037A62F /* wmi_container.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = wmi_container.hpp; sourceTree = "<group>"; };
+		EC44E380181DDAF90037A62F /* wmi_manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wmi_manager.cpp; sourceTree = "<group>"; };
+		EC44E381181DDAF90037A62F /* wmi_manager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = wmi_manager.hpp; sourceTree = "<group>"; };
 		EC45DEDC1AD1CEA300BD760C /* countdown_clock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = countdown_clock.cpp; sourceTree = "<group>"; };
 		EC45DEDE1AD1CED100BD760C /* replay_recorder_base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = replay_recorder_base.cpp; sourceTree = "<group>"; };
 		EC45DEE01AD1CEF600BD760C /* floating_label.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = floating_label.cpp; sourceTree = "<group>"; };
@@ -3362,8 +3362,8 @@
 				EC44E37F181DDAF90037A62F /* menu_item.hpp */,
 				62CC8E7217B9063D00C16B75 /* pump.cpp */,
 				62CC8E7317B9063D00C16B75 /* pump.hpp */,
-				EC44E380181DDAF90037A62F /* wmi_container.cpp */,
-				EC44E381181DDAF90037A62F /* wmi_container.hpp */,
+				EC44E380181DDAF90037A62F /* wmi_manager.cpp */,
+				EC44E381181DDAF90037A62F /* wmi_manager.hpp */,
 			);
 			path = game_events;
 			sourceTree = "<group>";
@@ -5278,7 +5278,7 @@
 				B5A9BD750ECA805A002BE442 /* widget.cpp in Sources */,
 				B597EC5C0FC08E0100CE81F5 /* window_builder.cpp in Sources */,
 				B5A9BD760ECA805A002BE442 /* window.cpp in Sources */,
-				EC44E383181DDAF90037A62F /* wmi_container.cpp in Sources */,
+				EC44E383181DDAF90037A62F /* wmi_manager.cpp in Sources */,
 				ECF3A0B318AD3E8800DD643A /* wml_error.cpp in Sources */,
 				B5599AD30EC62181008DD061 /* wml_exception.cpp in Sources */,
 				B55A80540EDF3DFB00C9D97A /* wml_message.cpp in Sources */,
@@ -5590,7 +5590,7 @@
 				91E356F81CACC97400774252 /* manager_impl.cpp in Sources */,
 				91E356F91CACC97400774252 /* menu_item.cpp in Sources */,
 				91E356FA1CACC97400774252 /* pump.cpp in Sources */,
-				91E356FB1CACC97400774252 /* wmi_container.cpp in Sources */,
+				91E356FB1CACC97400774252 /* wmi_manager.cpp in Sources */,
 				91E356FC1CACC9B200774252 /* configure_engine.cpp in Sources */,
 				91E356FD1CACC9B200774252 /* connect_engine.cpp in Sources */,
 				91E356FE1CACC9B200774252 /* create_engine.cpp in Sources */,
