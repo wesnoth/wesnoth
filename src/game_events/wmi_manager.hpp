@@ -21,8 +21,8 @@
 
 #include <map>
 #include <memory>
-#include <vector>
 #include <string>
+#include <vector>
 
 class config;
 class filter_context;
@@ -35,23 +35,30 @@ namespace game_events
 {
 class wml_menu_item;
 
-/// A container of wml_menu_item.
 class wmi_manager
 {
 public:
-	/// Pointers to our elements.
-	typedef std::shared_ptr<wml_menu_item> item_ptr;
+	/** wml_menu_item pointers */
+	using item_ptr = std::shared_ptr<wml_menu_item>;
 
 	wmi_manager();
 	~wmi_manager();
 
-	/// Returns true if *this contains no data.
-	bool empty() const { return wml_menu_items_.empty(); }
-	/// Erases the item with the provided @a id.
-	bool erase(const std::string & id);
+	/** Returns true if no menu items are being managed. */
+	bool empty() const
+	{
+		return wml_menu_items_.empty();
+	}
 
-	/// Fires the menu item with the given @a id.
-	bool fire_item(const std::string & id, const map_location & hex, game_data & gamedata, filter_context & fc, unit_map & units) const;
+	/** Erases the item with the provided @a id. */
+	bool erase(const std::string& id);
+
+	/** Fires the menu item with the given @a id. */
+	bool fire_item(const std::string& id,
+			const map_location& hex,
+			game_data& gamedata,
+			filter_context& fc,
+			unit_map& units) const;
 
 	/**
 	 * Gets the menu item with the specified ID.
@@ -61,22 +68,32 @@ public:
 	 */
 	item_ptr get_item(const std::string& id) const;
 
-	/// Returns the menu items that can be shown for the given location.
+	/** Returns the menu items that can be shown for the given location. */
 	void get_items(const map_location& hex,
-	               std::vector<std::shared_ptr<const wml_menu_item>>& items,
-                   std::vector<config>& descriptions,
-                   filter_context& fc, game_data& gamedata, unit_map& units) const;
-	/// Initializes the implicit event handlers for inlined [command]s.
+			std::vector<std::shared_ptr<const wml_menu_item>>& items,
+			std::vector<config>& descriptions,
+			filter_context& fc,
+			game_data& gamedata,
+			unit_map& units) const;
+
+	/** Initializes the implicit event handlers for inlined [command]s. */
 	void init_handlers() const;
+
 	void to_config(config& cfg) const;
-	/// Updates or creates (as appropriate) the menu item with the given @a id.
+
+	/** Updates or creates (as appropriate) the menu item with the given @a id. */
 	void set_item(const std::string& id, const vconfig& menu_item);
-	/// Sets the current menu items to the "menu_item" children of @a cfg.
+
+	/** Sets the current menu items to the "menu_item" children of @a cfg. */
 	void set_menu_items(const config& cfg);
 
-	size_t size() const { return wml_menu_items_.size(); }
+	/** Gets the number of menu items owned. */
+	size_t size() const
+	{
+		return wml_menu_items_.size();
+	}
 
-private: // data
+private:
 	std::map<std::string, item_ptr> wml_menu_items_;
 };
 
