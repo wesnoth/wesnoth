@@ -22,7 +22,6 @@ class config;
 
 #include "config.hpp"
 #include "mt_rng.hpp"
-#include "game_events/wmi_container.hpp"
 
 class carryover
 {
