@@ -24,16 +24,11 @@
 #include "game_events/manager.hpp"
 #include "game_events/pump.hpp"
 
-#include "actions/undo.hpp"
 #include "game_config.hpp"
 #include "game_data.hpp"
-#include "hotkey/hotkey_command.hpp"
 #include "hotkey/hotkey_handler.hpp"
 #include "log.hpp"
-#include "mouse_handler_base.hpp"
 #include "play_controller.hpp"
-#include "preferences/general.hpp"
-#include "replay.hpp"
 #include "replay_helper.hpp"
 #include "resources.hpp"
 #include "synced_context.hpp"
@@ -164,7 +159,6 @@ bool wml_menu_item::can_show(const map_location& hex, const game_data& data, fil
 	return true;
 }
 
-#define STR(X) #X
 void wml_menu_item::fire_event(const map_location& event_hex, const game_data& data) const
 {
 	if(!this->is_synced()) {

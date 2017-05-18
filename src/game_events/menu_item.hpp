@@ -20,13 +20,11 @@
 #pragma once
 
 #include "config.hpp"
-#include "tstring.hpp"
 #include "variable.hpp"
 
 class filter_context;
 class game_data;
 struct map_location;
-class unit_map;
 
 namespace game_events
 {
