@@ -1035,6 +1035,8 @@
 		B5CF7BBC10D55F5A00A8BEB5 /* timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5CF7BBA10D55F5A00A8BEB5 /* timer.cpp */; };
 		B5F4D7180F5B3B25005E204A /* campaign_selection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5F4D7170F5B3B25005E204A /* campaign_selection.cpp */; };
 		B5F9C5950F93BB0B00C02205 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B5F9C5930F93BB0B00C02205 /* InfoPlist.strings */; };
+		EC0341E11ECF46FE000F2E2B /* config_attribute_value.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC0341DF1ECF46FE000F2E2B /* config_attribute_value.cpp */; };
+		EC0341E21ECF4712000F2E2B /* config_attribute_value.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC0341DF1ECF46FE000F2E2B /* config_attribute_value.cpp */; };
 		EC04E3511DA537F700025919 /* file_dialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC04E34F1DA537F700025919 /* file_dialog.cpp */; };
 		EC0680291EA920A300EEE03B /* random_deterministic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC0680231EA920A300EEE03B /* random_deterministic.cpp */; };
 		EC06802A1EA920A300EEE03B /* random_synced.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC0680251EA920A300EEE03B /* random_synced.cpp */; };
@@ -2341,6 +2343,8 @@
 		B5F4D7170F5B3B25005E204A /* campaign_selection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = campaign_selection.cpp; sourceTree = "<group>"; };
 		B5F9C5940F93BB0B00C02205 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		EC02FD501E9D1AE90018C9DF /* canvas_private.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = canvas_private.hpp; sourceTree = "<group>"; };
+		EC0341DF1ECF46FE000F2E2B /* config_attribute_value.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = config_attribute_value.cpp; sourceTree = "<group>"; };
+		EC0341E01ECF46FE000F2E2B /* config_attribute_value.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = config_attribute_value.hpp; sourceTree = "<group>"; };
 		EC04E34F1DA537F700025919 /* file_dialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = file_dialog.cpp; sourceTree = "<group>"; };
 		EC04E3501DA537F700025919 /* file_dialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = file_dialog.hpp; sourceTree = "<group>"; };
 		EC0680231EA920A300EEE03B /* random_deterministic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = random_deterministic.cpp; sourceTree = "<group>"; };
@@ -2897,6 +2901,8 @@
 				B5599AA80EC62181008DD061 /* config.cpp */,
 				B5599AA70EC62181008DD061 /* config.hpp */,
 				EC84245618F30D9000FC1EEF /* config_assign.hpp */,
+				EC0341DF1ECF46FE000F2E2B /* config_attribute_value.cpp */,
+				EC0341E01ECF46FE000F2E2B /* config_attribute_value.hpp */,
 				B5599AA40EC62181008DD061 /* config_cache.cpp */,
 				B5599AA30EC62181008DD061 /* config_cache.hpp */,
 				918C8A191D05F9AA009744A0 /* configr_assign.hpp */,
@@ -5020,6 +5026,7 @@
 				B5A9BD630ECA805A002BE442 /* image.cpp in Sources */,
 				F419A2C314F5BCFE002F9ADC /* info.cpp in Sources */,
 				62579C7E1573E70C003089D5 /* instance.cpp in Sources */,
+				EC0341E11ECF46FE000F2E2B /* config_attribute_value.cpp in Sources */,
 				62114CC91750B9AF00CA42C7 /* item_palette.cpp in Sources */,
 				49DA0D2E13550E9B000AFEBD /* iterator.cpp in Sources */,
 				F444914013C5483F003B6442 /* joystick.cpp in Sources */,
@@ -5924,6 +5931,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC0341E21ECF4712000F2E2B /* config_attribute_value.cpp in Sources */,
 				B5BB6B8B0F893E7500444FBF /* ban.cpp in Sources */,
 				B5BB6C8D0F89447200444FBF /* binary_or_text.cpp in Sources */,
 				B5BB6C820F89437400444FBF /* color_range.cpp in Sources */,
