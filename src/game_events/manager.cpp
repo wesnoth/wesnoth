@@ -164,7 +164,7 @@ handler_ptr manager::iteration::operator*()
 	main_is_current_ = main_index <= var_index;
 
 	if(!current_is_known_) {
-		return handler_ptr(); // End of list; return a null pointer.
+		return nullptr; // End of list; return a null pointer.
 	}
 
 	return main_is_current_ ? main_ptr : var_ptr;

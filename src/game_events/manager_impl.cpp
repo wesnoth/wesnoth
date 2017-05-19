@@ -87,7 +87,7 @@ const handler_list& event_handlers::get(const std::string& name) const
 	static const handler_list empty_list;
 
 	// Look for the name in the name map.
-	map_t::const_iterator find_it = by_name_.find(standardize_name(name));
+	auto find_it = by_name_.find(standardize_name(name));
 	return find_it == by_name_.end() ? empty_list : find_it->second;
 }
 
@@ -103,7 +103,7 @@ void event_handlers::add_event_handler(const config& cfg, manager& man, bool is_
 
 	if(!id.empty()) {
 		// Ignore this handler if there is already one with this ID.
-		id_map_t::iterator find_it = id_map_.find(id);
+		auto find_it = id_map_.find(id);
 		if(find_it != id_map_.end() && !find_it->second.expired()) {
 			DBG_EH << "ignoring event handler for name='" << name << "' with id '" << id << "'\n";
 			return;
@@ -113,14 +113,14 @@ void event_handlers::add_event_handler(const config& cfg, manager& man, bool is_
 	// Create a new handler.
 	DBG_EH << "inserting event handler for name=" << name << " with id=" << id << "\n";
 	handler_ptr new_handler(new event_handler(cfg, is_menu_item, active_.size(), man));
+
 	active_.push_back(new_handler);
 
 	// File by name.
 	if(utils::might_contain_variables(name)) {
 		dynamic_.push_back(new_handler);
 	} else {
-		std::vector<std::string> name_list = utils::split(name);
-		for(const std::string& single_name : name_list) {
+		for(const std::string& single_name : utils::split(name)) {
 			by_name_[standardize_name(single_name)].push_back(new_handler);
 		}
 	}
@@ -146,7 +146,7 @@ void event_handlers::remove_event_handler(const std::string& id)
 	DBG_EH << "removing event handler with id " << id << "\n";
 
 	// Find the existing handler with this ID.
-	id_map_t::iterator find_it = id_map_.find(id);
+	auto find_it = id_map_.find(id);
 	if(find_it != id_map_.end()) {
 		handler_ptr handler = find_it->second.lock();
 
@@ -165,12 +165,12 @@ void event_handlers::remove_event_handler(const std::string& id)
 
 const handler_ptr event_handlers::get_event_handler_by_id(const std::string& id)
 {
-	id_map_t::iterator find_it = id_map_.find(id);
+	auto find_it = id_map_.find(id);
 	if(find_it != id_map_.end() && !find_it->second.expired()) {
-		return handler_ptr(find_it->second);
+		return find_it->second.lock();
 	}
 
-	return handler_ptr();
+	return nullptr;
 }
 
 } // end namespace game_events
