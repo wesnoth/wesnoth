@@ -26,29 +26,34 @@
 #include <utility>
 #include <vector>
 
+#if BOOST_VERSION > 106100
+#include <boost/utility/string_view.hpp>
+#endif
+
 class t_string;
 
 namespace utils {
 
 using string_map = std::map<std::string, t_string>;
 
-// TODO: when https://github.com/aquileia/external has boost::string_view,
-// replace this class with it.
+#if BOOST_VERSION > 106100
+using boost::string_view;
+#else
 class string_view
 {
 public:
 	const char* str;
-	const int size;
+	const int size_;
 
-	string_view(const std::string& str_, int offset, int size_)
-		: str(&str_[offset])
-		, size(size_)
+	string_view(const char* str_, size_t len)
+		: str(str_)
+		, size_(len)
 	{
 	}
 
 	string_view(const std::string& str_)
 		: str(str_.c_str())
-		, size(str_.size())
+		, size_(str_.size())
 	{
 	}
 
@@ -62,14 +67,20 @@ public:
 
 	explicit operator std::string() const
 	{
-		return std::string(str, size);
+		return std::string(str, size_);
 	}
 
-	std::string to_str() const
+	std::string to_string() const
 	{
-		return std::string(str, size);
+		return std::string(str, size_);
+	}
+
+	size_t size() const
+	{
+		return size_;
 	}
 };
+#endif
 
 bool isnewline(const char c);
 bool portable_isspace(const char c);

@@ -733,7 +733,7 @@ void pango_text::create_surface_buffer(const size_t size) const
 }
 
 bool pango_text::set_markup(utils::string_view text, PangoLayout& layout) {
-	return this->set_markup_helper(link_aware_ ? this->format_link_tokens(text.to_str()) : text, layout);
+	return this->set_markup_helper(link_aware_ ? this->format_link_tokens(text.to_string()) : text, layout);
 }
 
 std::string pango_text::format_link_tokens(const std::string & text) const {
@@ -769,11 +769,11 @@ std::string pango_text::handle_token(const std::string & token) const
 
 bool pango_text::set_markup_helper(utils::string_view text, PangoLayout& layout)
 {
-	if(pango_parse_markup(text.str, text.size,
+	if(pango_parse_markup(text.data(), text.size(),
 		0, nullptr, nullptr, nullptr, nullptr)) {
 
 		/* Markup is valid so set it. */
-		pango_layout_set_markup(&layout, text.str, text.size);
+		pango_layout_set_markup(&layout, text.data(), text.size());
 		return true;
 	}
 
@@ -785,14 +785,14 @@ bool pango_text::set_markup_helper(utils::string_view text, PangoLayout& layout)
 	 * So only try to recover from broken ampersands, by simply replacing them
 	 * with the escaped version.
 	 */
-	std::string semi_escaped{semi_escape_text(text.to_str())};
+	std::string semi_escaped{semi_escape_text(text.to_string())};
 
 	/*
 	 * If at least one ampersand is replaced the semi-escaped string
 	 * is longer than the original. If this isn't the case then the
 	 * markup wasn't (only) broken by ampersands in the first place.
 	 */
-	if(text.size == semi_escaped.size()
+	if(text.size() == semi_escaped.size()
 			|| !pango_parse_markup(semi_escaped.c_str(), semi_escaped.size()
 				, 0, nullptr, nullptr, nullptr, nullptr)) {
 
@@ -801,7 +801,7 @@ bool pango_text::set_markup_helper(utils::string_view text, PangoLayout& layout)
 				<< " text '" << text
 				<< "' has broken markup, set to normal text.\n";
 
-		this->set_text(_("The text contains invalid markup: ") + text.to_str(), false);
+		this->set_text(_("The text contains invalid markup: ") + text.to_string(), false);
 		return false;
 	}
 

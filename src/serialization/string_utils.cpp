@@ -407,8 +407,8 @@ std::pair<string_view, string_view> vertical_split(const std::string& val)
 
 	assert(split_point != 0);
 
-	return { string_view(val, 0, split_point),
-		string_view(val, split_point + 1, val.size() - (split_point + 1)) };
+	return { string_view(val.data(), split_point),
+		string_view(&val[split_point + 1], val.size() - (split_point + 1)) };
 }
 
 // Modify a number by string representing integer difference, or optionally %
