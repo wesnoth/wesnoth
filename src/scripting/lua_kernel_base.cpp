@@ -40,11 +40,13 @@
 #include "video.hpp"
 #include "image.hpp"
 
+#include "formula/string_utils.hpp"
 #include "serialization/string_utils.hpp"
 #include "utils/functional.hpp"
 #include "utils/name_generator.hpp"
 #include "utils/markov_generator.hpp"
 #include "utils/context_free_grammar_generator.hpp"
+#include "variable.hpp" // for config_variable_set
 
 #include <cstring>
 #include <exception>
@@ -302,6 +304,20 @@ static int intf_get_time_stamp(lua_State *L) {
 	return 1;
 }
 
+static int intf_format(lua_State* L)
+{
+	config cfg = luaW_checkconfig(L, 2);
+	config_variable_set variables(cfg);
+	if(lua_isstring(L, 1)) {
+		std::string str = lua_tostring(L, 1);
+		lua_push(L, utils::interpolate_variables_into_string(str, variables));
+		return 1;
+	}
+	t_string str = luaW_checktstring(L, 1);
+	lua_push(L, utils::interpolate_variables_into_tstring(str, variables));
+	return 1;
+}
+
 // End Callback implementations
 
 // Template which allows to push member functions to the lua kernel base into lua as C functions, using a shim
@@ -429,6 +445,7 @@ lua_kernel_base::lua_kernel_base()
 		{ "log",                      &intf_log                      },
 		{ "get_image_size",           &intf_get_image_size           },
 		{ "get_time_stamp",           &intf_get_time_stamp           },
+		{ "format",                   &intf_format                   },
 		{ nullptr, nullptr }
 	};
 
