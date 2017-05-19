@@ -58,7 +58,8 @@
 #include "serialization/binary_or_text.hpp"
 #include "variable_info.hpp"
 #include "formula/string_utils.hpp"
-#include "config.hpp" //Also for variable_set
+#include "config.hpp"
+#include "variable.hpp" // for config_variable_set
 
 #include <boost/range/adaptors.hpp>
 #include <boost/range/algorithm/copy.hpp>
@@ -229,27 +230,9 @@ void saved_game::expand_scenario()
 		}
 	}
 }
+
 namespace
 {
-	struct config_variable_set : public variable_set
-	{
-		const config& cfg_;
-		config_variable_set(const config& cfg) : cfg_(cfg) {}
-		virtual config::attribute_value get_variable_const(const std::string &id) const
-		{
-			try
-			{
-				variable_access_const variable(id, cfg_);
-				return variable.as_scalar();
-			}
-			catch(const invalid_variablename_exception&)
-			{
-				ERR_NG << "invalid variablename " << id << "\n";
-				return config::attribute_value();
-			}
-		};
-	};
-
 	bool variable_to_bool(const config& vars, const std::string& expression)
 	{
 		std::string res = utils::interpolate_variables_into_string(expression, config_variable_set(vars));

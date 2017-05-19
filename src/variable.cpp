@@ -56,6 +56,16 @@ namespace
 	}
 }
 
+config_attribute_value config_variable_set::get_variable_const(const std::string &id) const {
+	try {
+		variable_access_const variable(id, cfg_);
+		return variable.as_scalar();
+	} catch(const invalid_variablename_exception&) {
+		ERR_NG << "invalid variablename " << id << "\n";
+		return config::attribute_value();
+	}
+}
+
 const config vconfig::default_empty_config = config();
 
 

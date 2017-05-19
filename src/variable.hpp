@@ -23,6 +23,13 @@
 
 class unit_map;
 
+class config_variable_set : public variable_set {
+	const config& cfg_;
+public:
+	config_variable_set(const config& cfg) : cfg_(cfg) {}
+	virtual config::attribute_value get_variable_const(const std::string &id) const;
+};
+
 /**
  * A variable-expanding proxy for the config class. This class roughly behaves
  * as a constant config object, but automatically expands variables.
