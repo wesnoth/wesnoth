@@ -138,11 +138,11 @@ void wmi_manager::get_items(const map_location& hex,
 wmi_manager::item_ptr wmi_manager::get_item(const std::string& id) const
 {
 	auto iter = wml_menu_items_.find(id);
-	if(iter == wml_menu_items_.end()) {
+	if(iter != wml_menu_items_.end()) {
 		return iter->second;
 	}
 
-	return item_ptr(nullptr);
+	return nullptr;
 }
 
 /**
