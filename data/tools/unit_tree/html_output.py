@@ -200,7 +200,7 @@ class HTMLOutput:
             new_units_added = {}
             for uid, u in list(units_added.items()):
                 for auid in u.advance:
-                    if not auid in units_added:
+                    if not auid in forest.lookup:
                         try:
                             au = self.wesnoth.unit_lookup[auid]
                         except KeyError:
