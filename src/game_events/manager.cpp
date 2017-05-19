@@ -99,7 +99,7 @@ manager::~manager()
  */
 manager::iteration::iteration(const std::string& event_name, manager& man)
 	: main_list_(man.event_handlers_->get(event_name))
-	, var_list_(man.event_handlers_->get())
+	, var_list_(man.event_handlers_->get_dynamic())
 	, event_name_(event_name)
 	, end_(man.event_handlers_->size())
 	, current_is_known_(false)
@@ -192,7 +192,7 @@ void manager::add_events(const config::const_child_itors& cfgs, const std::strin
 
 void manager::write_events(config& cfg) const
 {
-	for(const handler_ptr& eh : *event_handlers_) {
+	for(const handler_ptr& eh : event_handlers_->get_active()) {
 		if(!eh || eh->is_menu_item()) {
 			continue;
 		}

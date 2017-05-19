@@ -23,25 +23,21 @@ namespace game_events {
 
 	//event_handlers is essentially the implementation details of the manager
 	class event_handlers {
+	private:
 		typedef std::unordered_map<std::string, handler_list> map_t;
 		typedef std::unordered_map<std::string, std::weak_ptr<event_handler> > id_map_t;
 
-	public:
-		typedef handler_vec::iterator iterator;
-		typedef handler_vec::const_iterator const_iterator;
-
-	private:
 		handler_vec  active_;  /// Active event handlers. Will not have elements removed unless the event_handlers is clear()ed.
 		map_t        by_name_; /// Active event handlers with fixed event names, organized by event name.
 		handler_list dynamic_; /// Active event handlers with variables in their event names.
 		id_map_t     id_map_;  /// Allows quick locating of handlers by id.
-
 
 		void log_handlers();
 		/// Utility to standardize the event names used in by_name_.
 		static std::string standardize_name(const std::string & name);
 
 	public:
+		// TODO: remove
 		typedef handler_vec::size_type size_type;
 
 		event_handlers()
@@ -52,7 +48,11 @@ namespace game_events {
 		{}
 
 		/// Read-only access to the handlers with varying event names.
-		const handler_list & get() const { return dynamic_; }
+		const handler_list & get_dynamic() const { return dynamic_; }
+
+		/// Read-only access to the active event handlers.
+		const handler_vec& get_active() const { return active_; }
+
 		/// Read-only access to the handlers with fixed event names, by event name.
 		const handler_list & get(const std::string & name) const;
 
@@ -62,12 +62,6 @@ namespace game_events {
 		void remove_event_handler(const std::string& id);
 		/// Gets an event handler, identified by its ID.
 		const handler_ptr get_event_handler_by_id(const std::string & id);
-
-		iterator begin() { return active_.begin(); }
-		const_iterator begin() const { return active_.begin(); }
-
-		iterator end() { return active_.end(); }
-		const_iterator end() const { return active_.end(); }
 
 		/// The number of active event handlers.
 		size_type size() const { return active_.size(); }
