@@ -1187,9 +1187,6 @@
     <ClCompile Include="..\..\src\game_events\pump.cpp">
       <Filter>Game_Events</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\game_events\wmi_container.cpp">
-      <Filter>Game_Events</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\hotkey\command_executor.cpp">
       <Filter>Hotkeys</Filter>
     </ClCompile>
@@ -1535,6 +1532,9 @@
     </ClCompile>
     <ClCompile Include="..\..\src\preferences\lobby.cpp">
       <Filter>Preferences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game_events\wmi_manager.cpp">
+      <Filter>Game_Events</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2456,9 +2456,6 @@
     <ClInclude Include="..\..\src\utils\iterable_pair.hpp">
       <Filter>utils</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\utils\iterator.hpp">
-      <Filter>utils</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\utils\make_enum.hpp">
       <Filter>utils</Filter>
     </ClInclude>
@@ -2571,9 +2568,6 @@
       <Filter>Game_Events</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\game_events\pump.hpp">
-      <Filter>Game_Events</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\game_events\wmi_container.hpp">
       <Filter>Game_Events</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\hotkey\command_executor.hpp">
@@ -2983,6 +2977,9 @@
     </ClInclude>
     <ClInclude Include="..\..\src\preferences\lobby.hpp">
       <Filter>Preferences</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game_events\wmi_manager.hpp">
+      <Filter>Game_Events</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
