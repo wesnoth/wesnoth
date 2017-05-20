@@ -41,7 +41,7 @@ namespace game_events {
 	/// If a second manager object is created before destroying the previous
 	/// one, the game will crash with an assertion failure.
 	class manager {
-	public:
+	private:
 		/// This class is similar to an input iterator through event handlers,
 		/// except each instance knows its own end (determined when constructed).
 		/// Subsequent dereferences are not guaranteed to return the same element,
@@ -92,7 +92,6 @@ namespace game_events {
 			game_data * gamedata_;
 		};
 
-	private:
 		// Performs an assertion check to ensure these members are not null.
 		friend void event_handler::disable();
 
@@ -120,6 +119,9 @@ namespace game_events {
 		void add_events(const config::const_child_itors &cfgs,
 		                const std::string& type = std::string());
 		void write_events(config& cfg) const;
+
+		using event_func_t = std::function<void(game_events::manager&, handler_ptr)>;
+		void execute_on_events(const std::string& event_id, event_func_t func);
 
 		game_events::wml_event_pump & pump();
 

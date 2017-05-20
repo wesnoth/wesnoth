@@ -204,6 +204,16 @@ void manager::write_events(config& cfg) const
 	wml_menu_items_.to_config(cfg);
 }
 
+void manager::execute_on_events(const std::string& event_id, manager::event_func_t func)
+{
+	iteration iter(event_id, *this);
+
+	while(handler_ptr hand = *iter) {
+		func(*this, hand);
+		++iter;
+	}
+}
+
 game_events::wml_event_pump& manager::pump()
 {
 	return *pump_;

@@ -329,14 +329,13 @@ void wml_menu_item::update_command(const config& new_command)
 	// If there is an old command, remove it from the event handlers.
 	if(!command_.empty()) {
 		assert(resources::game_events);
-		manager::iteration iter(event_name_, *resources::game_events);
-		while(handler_ptr hand = *iter) {
-			if(hand->is_menu_item()) {
+
+		resources::game_events->execute_on_events(event_name_, [=](game_events::manager& man, handler_ptr ptr) {
+			if(ptr->is_menu_item()) {
 				LOG_NG << "Removing command for " << event_name_ << ".\n";
-				resources::game_events->remove_event_handler(command_["id"].str());
+				man.remove_event_handler(command_["id"].str());
 			}
-			++iter;
-		}
+		});
 	}
 
 	// Update our stored command.

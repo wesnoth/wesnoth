@@ -552,20 +552,16 @@ bool wml_event_pump::operator()()
 
 		if ( event_id.empty() ) {
 
-			// Initialize an iteration over event handlers matching this event.
-			manager::iteration handler_iter(event_name, *impl_->my_manager);
-
-			// While there is a potential handler for this event name.
-			while ( handler_ptr cur_handler = *handler_iter ) {
+			// Handle events of this name.
+			impl_->my_manager->execute_on_events(event_name, [=](game_events::manager&, handler_ptr ptr) {
 				DBG_EH << "processing event " << event_name << " with id="<<
-				cur_handler->get_config()["id"] << "\n";
+				ptr->get_config()["id"] << "\n";
+
 				// Let this handler process our event.
-				process_event(cur_handler, ev);
-				// NOTE: cur_handler may be null at this point!
+				process_event(ptr, ev);
 
-				++handler_iter;
-			}
-
+				// NOTE: ptr may be null at this point!
+			});
 		}
 		else {
 
