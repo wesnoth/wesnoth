@@ -20,7 +20,6 @@
 
 #include "game_events/action_wml.hpp"
 #include "game_events/conditional_wml.hpp"
-#include "game_events/manager.hpp"
 #include "game_events/pump.hpp"
 
 #include "actions/attack.hpp"

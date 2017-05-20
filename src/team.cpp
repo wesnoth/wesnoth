@@ -22,7 +22,6 @@
 #include "ai/manager.hpp"
 #include "font/text_formatting.hpp"
 #include "formula/string_utils.hpp"
-#include "game_events/manager.hpp"
 #include "game_events/pump.hpp"
 #include "game_data.hpp"
 #include "map/map.hpp"

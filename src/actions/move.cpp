@@ -23,7 +23,6 @@
 #include "actions/vision.hpp"
 
 #include "config_assign.hpp"
-#include "game_events/manager.hpp"
 #include "game_events/pump.hpp"
 #include "preferences/game.hpp"
 #include "gettext.hpp"

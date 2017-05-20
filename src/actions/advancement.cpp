@@ -21,7 +21,6 @@
 #include "actions/vision.hpp"
 
 #include "ai/lua/aspect_advancements.hpp"
-#include "game_events/manager.hpp"
 #include "game_events/pump.hpp"
 #include "preferences/game.hpp"
 #include "game_data.hpp" //resources::gamedata->phase()

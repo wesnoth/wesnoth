@@ -19,7 +19,6 @@
  */
 
 #include "game_events/handlers.hpp"
-#include "game_events/manager.hpp"
 #include "game_events/manager_impl.hpp"
 #include "game_events/menu_item.hpp"
 #include "game_events/pump.hpp"

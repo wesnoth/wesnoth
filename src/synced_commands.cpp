@@ -27,7 +27,6 @@
 #include "actions/undo.hpp"
 #include "preferences/general.hpp"
 #include "preferences/game.hpp"
-#include "game_events/manager.hpp"
 #include "game_events/pump.hpp"
 #include "map/map.hpp"
 #include "units/helper.hpp"

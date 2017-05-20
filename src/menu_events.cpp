@@ -37,7 +37,6 @@
 #include "game_board.hpp"
 #include "game_config_manager.hpp"
 #include "game_end_exceptions.hpp"
-#include "game_events/manager.hpp"
 #include "game_events/pump.hpp"
 #include "preferences/game.hpp"
 #include "game_state.hpp"

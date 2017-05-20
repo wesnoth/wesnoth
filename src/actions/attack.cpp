@@ -26,7 +26,6 @@
 #include "attack_prediction.hpp"
 #include "config_assign.hpp"
 #include "game_config.hpp"
-#include "game_events/manager.hpp"
 #include "game_events/pump.hpp"
 #include "preferences/game.hpp"
 #include "game_data.hpp"

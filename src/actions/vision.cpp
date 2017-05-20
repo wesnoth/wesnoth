@@ -22,7 +22,6 @@
 #include "actions/move.hpp"
 
 #include "config.hpp"
-#include "game_events/manager.hpp"
 #include "game_events/pump.hpp"
 #include "log.hpp"
 #include "map/map.hpp"

@@ -20,7 +20,6 @@
 #include "ai/manager.hpp"
 
 #include "config.hpp"             // for config, etc
-#include "game_events/manager.hpp"
 #include "game_events/pump.hpp"
 #include "generic_event.hpp"      // for generic_event, etc
 #include "log.hpp"
