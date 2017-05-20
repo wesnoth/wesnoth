@@ -35,7 +35,6 @@
 
 #include <iostream>
 
-
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
 #define LOG_NG LOG_STREAM(info, log_engine)
@@ -44,10 +43,9 @@ static lg::log_domain log_engine("engine");
 static lg::log_domain log_event_handler("event_handler");
 #define DBG_EH LOG_STREAM(debug, log_event_handler)
 
-
 // This file is in the game_events namespace.
-namespace game_events {
-
+namespace game_events
+{
 /* ** handler_list::iterator ** */
 
 /**
@@ -57,29 +55,30 @@ namespace game_events {
 handler_ptr handler_list::iterator::operator*()
 {
 	// Check for an available handler.
-	while ( iter_.derefable() ) {
+	while(iter_.derefable()) {
 		// Handler still accessible?
-		if ( handler_ptr lock = iter_->lock() )
+		if(handler_ptr lock = iter_->lock()) {
 			return lock;
-		else
+		} else {
 			// Remove the now-defunct entry.
 			iter_ = list_t::erase(iter_);
+		}
 	}
 
 	// End of the list.
 	return handler_ptr();
 }
 
-
 /* ** event_handler ** */
 
-event_handler::event_handler(const config &cfg, bool imi, handler_vec::size_type index, manager & man)
+event_handler::event_handler(const config& cfg, bool imi, handler_vec::size_type index, manager& man)
 	: first_time_only_(cfg["first_time_only"].to_bool(true))
 	, is_menu_item_(imi)
 	, index_(index)
 	, man_(&man)
 	, cfg_(cfg)
-{}
+{
+}
 
 /**
  * Disables *this, removing it from the game.
@@ -93,8 +92,10 @@ void event_handler::disable()
 {
 	assert(man_);
 	assert(man_->event_handlers_);
+
 	// Handlers must have an index after they're created.
-	assert ( index_ < man_->event_handlers_->size() );
+	assert(index_ < man_->event_handlers_->size());
+
 	// Disable this handler.
 	(*man_->event_handlers_)[index_].reset();
 }
@@ -108,20 +109,21 @@ void event_handler::disable()
  * @param[in,out] handler_p   The caller's smart pointer to *this. It may be
  *                            reset() during processing.
  */
-void event_handler::handle_event(const queued_event& event_info, handler_ptr& handler_p, game_lua_kernel & lk)
+void event_handler::handle_event(const queued_event& event_info, handler_ptr& handler_p, game_lua_kernel& lk)
 {
 	// We will need our config after possibly self-destructing. Make a copy now.
-	// TODO: instead of copying possibly huge config objects we should use shared things and only increase a refcount here.
+	// TODO: instead of copying possibly huge config objects we should use shared things and only increase a refcount
+	// here.
 	vconfig vcfg(cfg_, true);
 
-	if (is_menu_item_) {
+	if(is_menu_item_) {
 		DBG_NG << cfg_["name"] << " will now invoke the following command(s):\n" << cfg_;
 	}
 
-	if (first_time_only_)
-	{
+	if(first_time_only_) {
 		// Disable this handler.
 		disable();
+
 		// Also remove our caller's hold on us.
 		handler_p.reset();
 	}
@@ -131,20 +133,23 @@ void event_handler::handle_event(const queued_event& event_info, handler_ptr& ha
 	sound::commit_music_changes();
 }
 
-bool event_handler::matches_name(const std::string &name, const game_data * gd) const
+bool event_handler::matches_name(const std::string& name, const game_data* gd) const
 {
-	const std::string my_names = !gd ? cfg_["name"].str() :
-		utils::interpolate_variables_into_string(cfg_["name"], *gd);
-	std::string::const_iterator itor,
-		it_begin = my_names.begin(),
-		it_end = my_names.end(),
-		match_it = name.begin(),
-		match_begin = name.begin(),
-		match_end = name.end();
+	const std::string my_names = !gd
+		? cfg_["name"].str()
+		: utils::interpolate_variables_into_string(cfg_["name"], *gd);
+
+	std::string::const_iterator
+		itor, it_begin = my_names.begin(),
+		it_end         = my_names.end(),
+		match_it       = name.begin(),
+		match_begin    = name.begin(),
+		match_end      = name.end();
+
 	int skip_count = 0;
 	for(itor = it_begin; itor != it_end; ++itor) {
-		bool do_eat = false,
-			do_skip = false;
+		bool do_eat = false, do_skip = false;
+
 		switch(*itor) {
 		case ',':
 			if(itor - it_begin - skip_count == match_it - match_begin && match_it == match_end) {
@@ -171,6 +176,7 @@ bool event_handler::matches_name(const std::string &name, const game_data * gd) 
 			do_eat = (match_it != match_end && *match_it == *itor);
 			break;
 		}
+
 		if(do_eat) {
 			++match_it;
 		} else if(do_skip) {
@@ -185,11 +191,12 @@ bool event_handler::matches_name(const std::string &name, const game_data * gd) 
 			skip_count = 0;
 		}
 	}
+
 	if(itor - it_begin - skip_count == match_it - match_begin && match_it == match_end) {
 		return true;
 	}
+
 	return false;
 }
 
 } // end namespace game_events
-
