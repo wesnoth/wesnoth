@@ -360,6 +360,16 @@ if(WIN32)
 	)
 endif(WIN32)
 
+# On apple only
+if(APPLE)
+	set(libwesnoth-game_STAT_SRC
+		${libwesnoth-game_STAT_SRC}
+		desktop/apple_notification.hpp
+		desktop/apple_notification.mm
+	)
+endif(APPLE)
+
+
 # For libdbus (essentially just for linux), this file needs to be linked, as its header is included #ifdef HAVE_LIBDBUS
 if(LIBDBUS_FOUND)
 	set(libwesnoth-game_STAT_SRC
