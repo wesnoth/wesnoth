@@ -92,6 +92,10 @@ namespace game_events {
 			game_data * gamedata_;
 		};
 
+	private:
+		// Performs an assertion check to ensure these members are not null.
+		friend void event_handler::disable();
+
 		const std::unique_ptr<event_handlers> event_handlers_;
 		std::set<std::string> unit_wml_ids_;
 
@@ -118,5 +122,10 @@ namespace game_events {
 		void write_events(config& cfg) const;
 
 		game_events::wml_event_pump & pump();
+
+		game_events::wmi_manager& wml_menu_items()
+		{
+			return wml_menu_items_;
+		}
 	};
 }

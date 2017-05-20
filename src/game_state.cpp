@@ -384,10 +384,10 @@ bool game_state::side_can_recruit_on(int side, map_location hex) const
 
 game_events::wmi_manager& game_state::get_wml_menu_items()
 {
-	return this->events_manager_->wml_menu_items_;
+	return this->events_manager_->wml_menu_items();
 }
 
 const game_events::wmi_manager& game_state::get_wml_menu_items() const
 {
-	return this->events_manager_->wml_menu_items_;
+	return this->events_manager_->wml_menu_items();
 }
