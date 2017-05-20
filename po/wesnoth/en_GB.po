@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2017-05-14 01:47+0300\n"
-"PO-Revision-Date: 2017-03-20 06:39+1100\n"
+"PO-Revision-Date: 2017-05-15 19:44+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.12\n"
+"X-Generator: Poedit 2.0.2\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -7143,7 +7143,7 @@ msgstr "Debug mode deactivated!"
 
 #: src/menu_events.cpp:1719
 msgid "WARNING! Unsafe Lua Mode"
-msgstr ""
+msgstr "WARNING! Unsafe Lua Mode"
 
 #: src/menu_events.cpp:1720
 msgid ""
@@ -7153,6 +7153,11 @@ msgid ""
 "\n"
 "Do not continue unless you really know what you are doing."
 msgstr ""
+"Executing Lua code in in this manner opens your computer to potential "
+"security breaches from any malicious add-ons or other programs you may have "
+"installed.\n"
+"\n"
+"Do not continue unless you really know what you are doing."
 
 #: src/menu_events.cpp:1725
 msgid "Unsafe mode enabled!"
