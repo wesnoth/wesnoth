@@ -17,6 +17,7 @@
 #include "game_events/handlers.hpp"
 #include "game_events/wmi_manager.hpp"
 
+#include <functional>
 #include <set>
 #include <string>
 
