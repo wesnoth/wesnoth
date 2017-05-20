@@ -33,107 +33,125 @@
 
 #include "config.hpp"
 
-#include <string>
 #include <sstream>
+#include <string>
 
 class game_display;
 class vconfig;
 
-namespace lg { class logger; }
+namespace lg
+{
+class logger;
+}
 
 namespace game_events
 {
-	struct queued_event {
-		queued_event(const std::string& name, const std::string& id, const entity_location& loc1,
-		             const entity_location& loc2, const config& data)
-			: name(name), id(id), loc1(loc1), loc2(loc2), data(data)
-		{
-			std::replace(this->name.begin(), this->name.end(), ' ',  '_');
-		}
+struct queued_event
+{
+	queued_event(const std::string& name,
+			const std::string& id,
+			const entity_location& loc1,
+			const entity_location& loc2,
+			const config& data)
+		: name(name)
+		, id(id)
+		, loc1(loc1)
+		, loc2(loc2)
+		, data(data)
+	{
+		std::replace(this->name.begin(), this->name.end(), ' ', '_');
+	}
 
-		std::string name;
-		std::string id;
-		entity_location loc1;
-		entity_location loc2;
-		config data;
-	};
+	std::string name;
+	std::string id;
+	entity_location loc1;
+	entity_location loc2;
+	config data;
+};
 
-	struct pump_impl;
-	class manager;
+struct pump_impl;
+class manager;
 
-	class wml_event_pump {
-		const std::unique_ptr<pump_impl> impl_;
-	public:
-		wml_event_pump(manager &);
-		~wml_event_pump();
-		/// Context: The general environment within which events are processed.
-		/// Returns whether or not we believe WML might have changed something.
-		bool context_mutated();
-		/// Sets whether or not we believe WML might have changed something.
-		void context_mutated(bool mutated);
-		/// Returns whether or not we are skipping messages.
-		bool context_skip_messages();
-		/// Sets whether or not we are skipping messages.
-		void context_skip_messages(bool skip);
+class wml_event_pump
+{
+	const std::unique_ptr<pump_impl> impl_;
 
-		/// Helper function which determines whether a wml_message text can
-		/// really be pushed into the wml_messages_stream, and does it.
-		void put_wml_message(const std::string& logger, const std::string& message, bool in_chat);
+public:
+	wml_event_pump(manager&);
+	~wml_event_pump();
 
-		/**
-		 * Function to fire an event.
-		 *
-		 * Events may have up to two arguments, both of which must be locations.
-		 */
-		bool fire(const std::string& event,
-		          const entity_location& loc1=entity_location::null_entity,
-		          const entity_location& loc2=entity_location::null_entity,
-		          const config& data=config());
+	/**
+	 * Context: The general environment within which events are processed.
+	 * Returns whether or not we believe WML might have changed something.
+	 */
+	bool context_mutated();
 
-		bool fire(const std::string& event,
-				  const std::string& id,
-		          const entity_location& loc1=entity_location::null_entity,
-		          const entity_location& loc2=entity_location::null_entity,
-		          const config& data=config());
+	/** Sets whether or not we believe WML might have changed something. */
+	void context_mutated(bool mutated);
 
-		void raise(const std::string& event,
-				   const std::string& id,
-		           const entity_location& loc1=entity_location::null_entity,
-		           const entity_location& loc2=entity_location::null_entity,
-		           const config& data=config());
+	/** Returns whether or not we are skipping messages. */
+	bool context_skip_messages();
 
-		inline void raise(const std::string& event,
-		           const entity_location& loc1=entity_location::null_entity,
-		           const entity_location& loc2=entity_location::null_entity,
-		           const config& data=config()) {
-			raise(event,"",loc1,loc2,data);
-		}
+	/** Sets whether or not we are skipping messages. */
+	void context_skip_messages(bool skip);
 
-		bool operator()();
+	/*
+	 * Helper function which determines whether a wml_message text can
+	 * really be pushed into the wml_messages_stream, and does it.
+	 */
+	void put_wml_message(const std::string& logger, const std::string& message, bool in_chat);
 
-		/**
-		 * Flushes WML messages and errors.
-		 */
-		void flush_messages();
+	/**
+	 * Function to fire an event.
+	 *
+	 * Events may have up to two arguments, both of which must be locations.
+	 */
+	bool fire(const std::string& event,
+			const entity_location& loc1 = entity_location::null_entity,
+			const entity_location& loc2 = entity_location::null_entity,
+			const config& data = config());
 
-		/**
-		 * This function can be used to detect when no WML/Lua has been executed.
-		 */
-		size_t wml_tracking();
+	bool fire(const std::string& event,
+			const std::string& id,
+			const entity_location& loc1 = entity_location::null_entity,
+			const entity_location& loc2 = entity_location::null_entity,
+			const config& data = config());
 
-	private:
-		bool filter_event(const event_handler& handler, const queued_event& ev);
+	void raise(const std::string& event,
+			const std::string& id,
+			const entity_location& loc1 = entity_location::null_entity,
+			const entity_location& loc2 = entity_location::null_entity,
+			const config& data = config());
 
-		bool process_event(handler_ptr& handler_p, const queued_event& ev);
+	inline void raise(const std::string& event,
+			const entity_location& loc1 = entity_location::null_entity,
+			const entity_location& loc2 = entity_location::null_entity,
+			const config& data = config())
+	{
+		raise(event, "", loc1, loc2, data);
+	}
 
-		void fill_wml_messages_map(std::map<std::string, int>& msg_map, std::stringstream& source);
+	bool operator()();
 
-		void show_wml_messages(std::stringstream& source, const std::string & caption, bool to_cerr);
+	/** Flushes WML messages and errors. */
+	void flush_messages();
 
-		void show_wml_errors();
+	/** This function can be used to detect when no WML/Lua has been executed. */
+	size_t wml_tracking();
 
-		void show_wml_messages();
+private:
+	bool filter_event(const event_handler& handler, const queued_event& ev);
 
-		void put_wml_message(lg::logger& logger, const std::string& prefix, const std::string& message, bool in_chat);
-	};
+	bool process_event(handler_ptr& handler_p, const queued_event& ev);
+
+	void fill_wml_messages_map(std::map<std::string, int>& msg_map, std::stringstream& source);
+
+	void show_wml_messages(std::stringstream& source, const std::string& caption, bool to_cerr);
+
+	void show_wml_errors();
+
+	void show_wml_messages();
+
+	void put_wml_message(lg::logger& logger, const std::string& prefix, const std::string& message, bool in_chat);
+};
 }
