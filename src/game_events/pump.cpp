@@ -553,7 +553,7 @@ bool wml_event_pump::operator()()
 		if ( event_id.empty() ) {
 
 			// Handle events of this name.
-			impl_->my_manager->execute_on_events(event_name, [=](game_events::manager&, handler_ptr ptr) {
+			impl_->my_manager->execute_on_events(event_name, [&](game_events::manager&, handler_ptr ptr) {
 				DBG_EH << "processing event " << event_name << " with id="<<
 				ptr->get_config()["id"] << "\n";
 
