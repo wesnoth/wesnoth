@@ -74,8 +74,7 @@ else()
 	find_package(SDL2 2.0.4 REQUIRED)
 endif()
 
-find_package(Boost 1.36 REQUIRED COMPONENTS iostreams program_options regex system thread)
-find_package(Boost 1.40 REQUIRED COMPONENTS random)
+find_package(Boost 1.48 REQUIRED COMPONENTS iostreams program_options regex system thread random)
 
 # no, gettext executables are not required when NLS is deactivated
 find_package(Gettext)
@@ -636,7 +635,7 @@ if(ENABLE_TOOLS OR ENABLE_GAME OR ENABLE_TESTS)
 endif(ENABLE_TOOLS OR ENABLE_GAME OR ENABLE_TESTS)
 if(ENABLE_GAME OR ENABLE_TESTS)
 	find_package( SDL2_mixer 2.0.0 REQUIRED )
-	find_package( SDL2_ttf 2.0.8 REQUIRED )
+	find_package( SDL2_ttf 2.0.12 REQUIRED )
 	if(NOT MSVC)
 		find_package(VorbisFile REQUIRED)
 		find_package( PkgConfig REQUIRED )
@@ -692,7 +691,7 @@ if(ENABLE_GAME)
 endif(ENABLE_GAME)
 
 if(ENABLE_GAME OR ENABLE_SERVER OR ENABLE_TOOLS OR ENABLE_TESTS)
-	find_package( Boost 1.44 REQUIRED COMPONENTS filesystem )
+	find_package( Boost 1.48 REQUIRED COMPONENTS filesystem )
 
 	find_package( Boost 1.48 REQUIRED COMPONENTS locale )
 endif(ENABLE_GAME OR ENABLE_SERVER OR ENABLE_TOOLS OR ENABLE_TESTS)
