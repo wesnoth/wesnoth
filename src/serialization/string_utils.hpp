@@ -16,6 +16,7 @@
 #pragma once
 
 #include "font/constants.hpp"
+#include "serialization/string_view.hpp"
 
 #include <algorithm>
 #include <map>
@@ -26,61 +27,11 @@
 #include <utility>
 #include <vector>
 
-#if BOOST_VERSION > 106100
-#include <boost/utility/string_view.hpp>
-#endif
-
 class t_string;
 
 namespace utils {
 
 using string_map = std::map<std::string, t_string>;
-
-#if BOOST_VERSION > 106100
-using boost::string_view;
-#else
-class string_view
-{
-public:
-	const char* str;
-	const int size_;
-
-	string_view(const char* str_, size_t len)
-		: str(str_)
-		, size_(len)
-	{
-	}
-
-	string_view(const std::string& str_)
-		: str(str_.c_str())
-		, size_(str_.size())
-	{
-	}
-
-	string_view(const string_view&) = default;
-
-	friend std::ostream& operator<<(std::ostream& stream, const string_view& str)
-	{
-		stream.write(str.str, str.size);
-		return stream;
-	}
-
-	explicit operator std::string() const
-	{
-		return std::string(str, size_);
-	}
-
-	std::string to_string() const
-	{
-		return std::string(str, size_);
-	}
-
-	size_t size() const
-	{
-		return size_;
-	}
-};
-#endif
 
 bool isnewline(const char c);
 bool portable_isspace(const char c);
