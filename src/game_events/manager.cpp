@@ -110,13 +110,13 @@ manager::iteration::iteration(const std::string& event_name, manager& man)
 {
 	// Clean up expired ptrs. This saves us effort later since it ensures every ptr is valid.
 
-	main_list_.remove_if(
-		[](weak_handler_ptr ptr) { return ptr.expired(); }
-	);
+	//main_list_.remove_if(
+	//	[](weak_handler_ptr ptr) { return ptr.expired(); }
+	//);
 
-	var_list_.remove_if(
-		[](weak_handler_ptr ptr) { return ptr.expired(); }
-	);
+	//var_list_.remove_if(
+	//	[](weak_handler_ptr ptr) { return ptr.expired(); }
+	//);
 }
 
 /**
