@@ -45,90 +45,40 @@ static lg::log_domain log_event_handler("event_handler");
 // This file is in the game_events namespace.
 namespace game_events
 {
-/* ** handler_list::iterator ** */
-
-/**
- * Dereference.
- * If the current element has become invalid, we will increment first.
- */
-handler_ptr handler_list::iterator::operator*()
-{
-	// Check for an available handler.
-	while(iter_.derefable()) {
-		// Handler still accessible?
-		if(handler_ptr lock = iter_->lock()) {
-			return lock;
-		} else {
-			// Remove the now-defunct entry.
-			iter_ = list_t::erase(iter_);
-		}
-	}
-
-	// End of the list.
-	return handler_ptr();
-}
-
 /* ** event_handler ** */
 
-event_handler::event_handler(const config& cfg, bool imi, handler_vec::size_type index, manager& man)
+event_handler::event_handler(const config& cfg, bool imi)
 	: first_time_only_(cfg["first_time_only"].to_bool(true))
 	, is_menu_item_(imi)
-	, index_(index)
-	, man_(&man)
+	, disabled_(false)
 	, cfg_(cfg)
 {
 }
 
-/**
- * Disables *this, removing it from the game.
- * (Technically, the handler is only removed once no one is hanging on to a
- * handler_ptr to *this. So be careful how long they persist.)
- *
- * WARNING: *this may be destroyed at the end of this call, unless
- *          the caller maintains a handler_ptr to this.
- */
 void event_handler::disable()
 {
-	assert(man_);
-	assert(man_->event_handlers_);
-
-	// Handlers must have an index after they're created.
-	assert(index_ < man_->event_handlers_->size());
-
-	// Disable this handler.
-	(*man_->event_handlers_)[index_].reset();
+	assert(!disabled_);;
+	disabled_ = true;
 }
 
-/**
- * Handles the queued event, according to our WML instructions.
- * WARNING: *this may be destroyed at the end of this call, unless
- *          the caller maintains a handler_ptr to this.
- *
- * @param[in]     event_info  Information about the event that needs handling.
- * @param[in,out] handler_p   The caller's smart pointer to *this. It may be
- *                            reset() during processing.
- */
-void event_handler::handle_event(const queued_event& event_info, handler_ptr& handler_p, game_lua_kernel& lk)
+
+void event_handler::handle_event(const queued_event& event_info, game_lua_kernel& lk)
 {
-	// We will need our config after possibly self-destructing. Make a copy now.
-	// TODO: instead of copying possibly huge config objects we should use shared things and only increase a refcount
-	// here.
-	vconfig vcfg(cfg_, true);
+	// If this even is disabled, do nothing.
+	if(disabled_) {
+		return;
+	}
 
 	if(is_menu_item_) {
 		DBG_NG << cfg_["name"] << " will now invoke the following command(s):\n" << cfg_;
 	}
 
+	// Disable this handler if it's a one-time event.
 	if(first_time_only_) {
-		// Disable this handler.
 		disable();
-
-		// Also remove our caller's hold on us.
-		handler_p.reset();
 	}
-	// *WARNING*: At this point, dereferencing this could be a memory violation!
 
-	lk.run_wml_action("command", vcfg, event_info);
+	lk.run_wml_action("command", vconfig(cfg_, false), event_info);
 	sound::commit_music_changes();
 }
 

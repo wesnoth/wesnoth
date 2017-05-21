@@ -303,7 +303,7 @@ void wml_event_pump::process_event(handler_ptr& handler_p, const queued_event& e
 	++impl_->internal_wml_tracking;
 	context::scoped evc(impl_->contexts_);
 	assert(resources::lua_kernel != nullptr);
-	handler_p->handle_event(ev, handler_p, *resources::lua_kernel);
+	handler_p->handle_event(ev, *resources::lua_kernel);
 	// NOTE: handler_p may be null at this point!
 
 	if(ev.name == "select") {
@@ -596,8 +596,6 @@ pump_result_t wml_event_pump::operator()()
 
 				// Let this handler process our event.
 				process_event(ptr, ev);
-
-				// NOTE: ptr may be null at this point!
 			});
 		} else {
 			// Get the handler directly via ID

@@ -44,7 +44,7 @@ namespace game_events
 /** Create an event handler. */
 void manager::add_event_handler(const config& handler, bool is_menu_item)
 {
-	event_handlers_->add_event_handler(handler, *this, is_menu_item);
+	event_handlers_->add_event_handler(handler, is_menu_item);
 }
 
 /** Removes an event handler. */
@@ -101,7 +101,6 @@ manager::iteration::iteration(const std::string& event_name, manager& man)
 	: main_list_(man.event_handlers_->get(event_name))
 	, var_list_(man.event_handlers_->get_dynamic())
 	, event_name_(event_name)
-	, end_(man.event_handlers_->size())
 	, current_is_known_(false)
 	, main_is_current_(false)
 	, main_it_(main_list_.begin())
@@ -113,7 +112,7 @@ manager::iteration::iteration(const std::string& event_name, manager& man)
 /**
  * Increment
  * Incrementing guarantees that the next dereference will differ from the
- * previous derference (unless the iteration is exhausted). However, multiple
+ * previous dereference (unless the iteration is exhausted). However, multiple
  * increments between dereferences are allowed to have the same effect as a
  * single increment.
  */
@@ -139,6 +138,20 @@ manager::iteration& manager::iteration::operator++()
 	return *this;
 }
 
+// Small helper function to ensure we don't try to dereference an invalid iterator.
+static handler_ptr lock_ptr(const handler_list& list, handler_list::iterator iter)
+{
+	if(iter != list.end()) {
+		if(handler_ptr ptr = iter->lock()) {
+			return ptr;
+		} else {
+			assert(false && "Found null handler in handler list!");
+		}
+	}
+
+	return nullptr;
+}
+
 /**
  * Dereference
  * Will return a null pointer when the end of the iteration is reached.
@@ -146,22 +159,23 @@ manager::iteration& manager::iteration::operator++()
 handler_ptr manager::iteration::operator*()
 {
 	// Get the candidate for the current element from the main list.
-	handler_ptr main_ptr = *main_it_;
-	handler_vec::size_type main_index = ptr_index(main_ptr);
+	handler_ptr main_ptr = lock_ptr(main_list_, main_it_);
 
 	// Get the candidate for the current element from the var list.
-	handler_ptr var_ptr = *var_it_;
+	handler_ptr var_ptr = lock_ptr(var_list_, var_it_);
 
-	// (Loop while var_ptr would be chosen over main_ptr, but the name does not match.)
-	while(var_ptr && var_ptr->index() < main_index && !var_ptr->matches_name(event_name_, gamedata_)) {
-		var_ptr = *++var_it_;
+	// If we have a variable-name event but its name doesn't match event_name_,
+	// keep iterating until we find a match. If we reach var_list_ end var_ptr
+	// will be nullptr.
+	while(var_ptr && !var_ptr->matches_name(event_name_, gamedata_)) {
+		var_ptr = lock_ptr(var_list_, ++var_it_);
 	}
 
-	handler_vec::size_type var_index = ptr_index(var_ptr);
+	// Are either of the handler ptrs valid?
+	current_is_known_ = main_ptr != nullptr || var_ptr != nullptr;
 
-	// Which list? (Index ties go to the main list.)
-	current_is_known_ = main_index < end_ || var_index < end_;
-	main_is_current_ = main_index <= var_index;
+	// If var_ptr is invalid, we use the ptr from the main list.
+	main_is_current_ = var_ptr == nullptr;
 
 	if(!current_is_known_) {
 		return nullptr; // End of list; return a null pointer.
@@ -212,6 +226,9 @@ void manager::execute_on_events(const std::string& event_id, manager::event_func
 		func(*this, hand);
 		++iter;
 	}
+
+	// Clean up expired ptrs. This saves us effort later since it ensures every ptr is valid.
+	event_handlers_->clean_up_expired_handlers(event_id);
 }
 
 game_events::wml_event_pump& manager::pump()
