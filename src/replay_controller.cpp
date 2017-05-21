@@ -18,7 +18,6 @@
 #include "log.hpp"
 #include "replay.hpp"
 #include "resources.hpp"
-#include "config_assign.hpp"
 #include "playsingle_controller.hpp"
 
 static lg::log_domain log_engine("engine");

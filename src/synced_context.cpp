@@ -17,7 +17,6 @@
 #include "actions/undo.hpp"
 #include "ai/manager.hpp"
 #include "config.hpp"
-#include "config_assign.hpp"
 #include "game_classification.hpp"
 #include "replay.hpp"
 #include "random.hpp"
@@ -185,7 +184,7 @@ namespace
 		/// We are in a game with no mp server and need to do this choice locally
 		virtual config local_choice() const
 		{
-			return config_of("new_seed", seed_rng::next_seed_str());
+			return config {"new_seed", seed_rng::next_seed_str()};
 		}
 		/// the request which is sended to the mp server.
 		virtual config request() const
@@ -268,12 +267,12 @@ std::shared_ptr<randomness::rng> synced_context::get_rng_for_action()
 
 void synced_context::server_choice::send_request() const
 {
-	resources::controller->send_to_wesnothd(config_of
-		("request_choice", config_of
-			("request_id", resources::controller->get_server_request_number())
-			(name(), request())
-		)
-	);
+	resources::controller->send_to_wesnothd(config {
+		"request_choice", config {
+			"request_id", resources::controller->get_server_request_number(),
+			name(), request(),
+		},
+	});
 }
 
 
@@ -439,9 +438,10 @@ void set_scontext_synced::do_final_checkup(bool dont_throw)
 	assert(!did_final_checkup_);
 	std::stringstream msg;
 	config co;
-	config cn = config_of
-		("random_calls", new_rng_->get_random_calls())
-		("next_unit_id", resources::gameboard->unit_id_manager().get_save_id() + 1);
+	config cn {
+		"random_calls", new_rng_->get_random_calls(),
+		"next_unit_id", resources::gameboard->unit_id_manager().get_save_id() + 1,
+	};
 	if(checkup_instance->local_checkup(cn, co))
 	{
 		return;

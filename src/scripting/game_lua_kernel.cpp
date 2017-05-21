@@ -105,7 +105,6 @@
 #include "variable.hpp"                 // for vconfig, etc
 #include "variable_info.hpp"
 #include "wml_exception.hpp"
-#include "config_assign.hpp"
 
 #include "utils/functional.hpp"               // for bind_t, bind
 #include <boost/range/algorithm/copy.hpp>    // boost::copy
@@ -2957,7 +2956,10 @@ static int intf_modify_ai(lua_State *L, const char* action)
 {
 	int side_num = luaL_checkinteger(L, 1);
 	std::string path = luaL_checkstring(L, 2);
-	config cfg = config_of("action", action)("path", path);
+	config cfg {
+		"action", action,
+		"path", path
+	};
 	if(strcmp(action, "delete") == 0) {
 		ai::manager::modify_active_ai_for_side(side_num, cfg);
 		return 0;
@@ -2990,12 +2992,12 @@ static int intf_append_ai(lua_State *L)
 	int side_num = luaL_checkinteger(L, 1);
 	config cfg = luaW_checkconfig(L, 2);
 	if(!cfg.has_child("ai")) {
-		cfg = config_of("ai", cfg);
+		cfg = config {"ai", cfg};
 	}
 	bool added_dummy_stage = false;
 	if(!cfg.child("ai").has_child("stage")) {
 		added_dummy_stage = true;
-		cfg.child("ai").add_child("stage", config_of("name", "empty"));
+		cfg.child("ai").add_child("stage", config {"name", "empty"});
 	}
 	ai::configuration::expand_simplified_aspects(side_num, cfg);
 	if(added_dummy_stage) {

@@ -49,7 +49,6 @@
 
 #include "saved_game.hpp"
 #include "carryover.hpp"
-#include "config_assign.hpp"
 #include "cursor.hpp"
 #include "log.hpp"
 #include "game_config_manager.hpp"
@@ -217,7 +216,7 @@ void saved_game::expand_scenario()
 
 			// Add addon_id information if it exists.
 			if (!scenario["addon_id"].empty() && scenario["require_scenario"].to_bool(false)) {
-				mp_settings_.update_addon_requirements(config_of("id",scenario["addon_id"])("version", scenario["addon_version"])("min_version", scenario["addon_min_version"]));
+				mp_settings_.update_addon_requirements(config {"id",scenario["addon_id"], "version", scenario["addon_version"], "min_version", scenario["addon_min_version"]});
 			}
 
 			update_label();
@@ -269,7 +268,7 @@ void saved_game::load_mod(const std::string& type, const std::string& id)
 		std::string require_attr = "require_" + type;
 		bool require_default = (type == "era"); // By default, eras have "require_era = true", and mods have "require_modification = false"
 		if (!cfg["addon_id"].empty() && cfg[require_attr].to_bool(require_default)) {
-			mp_settings_.update_addon_requirements(config_of("id",cfg["addon_id"])("version", cfg["addon_version"])("min_version", cfg["addon_min_version"]));
+			mp_settings_.update_addon_requirements(config {"id",cfg["addon_id"], "version", cfg["addon_version"], "min_version", cfg["addon_min_version"]});
 		}
 
 		// Copy events

@@ -16,8 +16,6 @@
 
 #include "scripting/plugins/manager.hpp"
 
-#include "config_assign.hpp"
-
 #include <cassert>
 #include <utility>
 #include "utils/functional.hpp"
@@ -74,12 +72,12 @@ void plugins_context::set_accessor(const std::string & name, accessor_function f
 
 void plugins_context::set_accessor_string(const std::string & name, std::function<std::string(config)> func)
 {
-	set_accessor(name, [func, name](const config& cfg) { return config_of(name, func(cfg)); });
+	set_accessor(name, [func, name](const config& cfg) { return config {name, func(cfg)}; });
 }
 
 void plugins_context::set_accessor_int(const std::string & name, std::function<int(config)> func)
 {
-	set_accessor(name, [func, name](const config& cfg) { return config_of(name, func(cfg)); });
+	set_accessor(name, [func, name](const config& cfg) { return config {name, func(cfg)}; });
 }
 
 

@@ -14,7 +14,6 @@
 #include "game_initialization/connect_engine.hpp"
 
 #include "ai/configuration.hpp"
-#include "config_assign.hpp"
 #include "formula/string_utils.hpp"
 #include "game_initialization/mp_game_utils.hpp"
 #include "game_initialization/playcampaign.hpp"
@@ -764,15 +763,15 @@ void connect_engine::send_level_data() const
 {
 	// Send initial information.
 	if(first_scenario_) {
-		send_to_server(config_of
-			("create_game", config_of
-				("name", params_.name)
-				("password", params_.password)
-			)
-		);
+		send_to_server(config {
+			"create_game", config {
+				"name", params_.name,
+				"password", params_.password,
+			},
+		});
 		send_to_server(level_);
 	} else {
-		send_to_server(config_of("update_game", config()));
+		send_to_server(config {"update_game", config()});
 		config next_level;
 		next_level.add_child("store_next_scenario", level_);
 		send_to_server(next_level);
@@ -872,12 +871,12 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine, const
 {
 	// Save default attributes that could be overwirtten by the faction, so that correct faction lists would be
 	// initialized by flg_manager when the new side config is sent over network.
-	cfg_.add_child("default_faction", config_of
-		("type",    cfg_["type"])
-		("gender",  cfg_["gender"])
-		("faction", cfg_["faction"])
-		("recruit", cfg_["recruit"])
-	);
+	cfg_.add_child("default_faction", config {
+		"type",    cfg_["type"],
+		"gender",  cfg_["gender"],
+		"faction", cfg_["faction"],
+		"recruit", cfg_["recruit"],
+	});
 
 	if(cfg_["side"].to_int(index_ + 1) != index_ + 1) {
 		ERR_CF << "found invalid side=" << cfg_["side"].to_int(index_ + 1) << " in definition of side number " << index_ + 1 << std::endl;
@@ -1042,7 +1041,7 @@ config side_engine::new_config() const
 	assert(controller_ != CNTR_LAST);
 	if(controller_ == CNTR_COMPUTER && allow_player_) {
 		// Do not import default ai cfg otherwise - all is set by scenario config.
-		res.add_child_at("ai", config_of("ai_algorithm", ai_algorithm_), 0);
+		res.add_child_at("ai", config {"ai_algorithm", ai_algorithm_}, 0);
 	}
 
 	if(controller_ == CNTR_EMPTY) {

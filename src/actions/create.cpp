@@ -24,7 +24,6 @@
 #include "actions/vision.hpp"
 
 #include "config.hpp"
-#include "config_assign.hpp"
 #include "filter_context.hpp"
 #include "game_display.hpp"
 #include "game_events/pump.hpp"
@@ -511,7 +510,7 @@ namespace { // Helpers for place_recruit()
 		const std::string checksum = get_checksum(new_unit);
 		config original_checksum_config;
 
-		bool checksum_equals = checkup_instance->local_checkup(config_of("checksum", checksum),original_checksum_config);
+		bool checksum_equals = checkup_instance->local_checkup(config {"checksum", checksum},original_checksum_config);
 		if(!checksum_equals)
 		{
 			const std::string old_checksum = original_checksum_config["checksum"];

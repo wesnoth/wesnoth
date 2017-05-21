@@ -42,7 +42,6 @@
 #include "units/types.hpp"
 #include "variable.hpp"
 #include "wml_exception.hpp"
-#include "config_assign.hpp"
 
 #include <cmath>
 
@@ -1792,7 +1791,7 @@ recruitment_aspect::recruitment_aspect(readonly_context &context, const config &
 	parsed_cfg.clear_children("pattern", "total");
 	// Then, if there's no [recruit], add one.
 	if (!parsed_cfg.has_child("recruit")) {
-		parsed_cfg.add_child("recruit", config_of("importance", 0));
+		parsed_cfg.add_child("recruit", config {"importance", 0});
 	}
 	// Finally, populate our lists
 	for (config job : parsed_cfg.child_range("recruit")) {

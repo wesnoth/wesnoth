@@ -16,7 +16,6 @@
 #include "resources.hpp"
 #include "team.hpp"
 
-#include "config_assign.hpp"
 #include "display.hpp"
 #include "editor/map/context_manager.hpp"
 #include "editor/map/map_context.hpp"
@@ -332,7 +331,7 @@ void context_manager::expand_open_maps_menu(std::vector<config>& items, int i)
 		const std::string label = ss.str();
 		const std::string details = get_menu_marker(changed);
 
-		contexts.emplace_back(config_of("label", label)("details", details));
+		contexts.emplace_back(config {"label", label, "details", details});
 	}
 
 	items.insert(pos, contexts.begin(), contexts.end());
@@ -345,7 +344,7 @@ void context_manager::expand_load_mru_menu(std::vector<config>& items, int i)
 	auto pos = items.erase(items.begin() + i);
 
 	if(mru.empty()) {
-		items.insert(pos, config_of("label", _("No Recent Files")));
+		items.insert(pos, config {"label", _("No Recent Files")});
 		return;
 	}
 
@@ -358,7 +357,7 @@ void context_manager::expand_load_mru_menu(std::vector<config>& items, int i)
 
 	std::vector<config> temp;
 	std::transform(mru.begin(), mru.end(), std::back_inserter(temp), [](const std::string& str) {
-		return config_of("label", str);
+		return config {"label", str};
 	});
 
 	items.insert(pos, temp.begin(), temp.end());
@@ -395,7 +394,7 @@ void context_manager::expand_areas_menu(std::vector<config>& items, int i)
 		const std::string label = ss.str();
 		const std::string details = get_menu_marker(changed);
 
-		area_entries.emplace_back(config_of("label", label)("details", details));
+		area_entries.emplace_back(config {"label", label, "details", details});
 	}
 
 	items.insert(pos, area_entries.begin(), area_entries.end());
@@ -419,7 +418,7 @@ void context_manager::expand_sides_menu(std::vector<config>& items, int i)
 			label << teamname;
 		}
 
-		contexts.emplace_back(config_of("label", label.str()));
+		contexts.emplace_back(config {"label", label.str()});
 	}
 
 	items.insert(pos, contexts.begin(), contexts.end());
@@ -435,10 +434,10 @@ void context_manager::expand_time_menu(std::vector<config>& items, int i)
 	assert(tod_m != nullptr);
 
 	for(const time_of_day& time : tod_m->times()) {
-		times.emplace_back(config_of
-			("details", time.name) // Use 'details' field here since the image will take the first column
-			("image", time.image)
-		);
+		times.emplace_back(config {
+			"details", time.name, // Use 'details' field here since the image will take the first column
+			"image", time.image,
+		});
 	}
 
 	items.insert(pos, times.begin(), times.end());
@@ -452,10 +451,10 @@ void context_manager::expand_local_time_menu(std::vector<config>& items, int i)
 	tod_manager* tod_m = get_map_context().get_time_manager();
 
 	for(const time_of_day& time : tod_m->times(get_map_context().get_active_area())) {
-		times.emplace_back(config_of
-			("details", time.name) // Use 'details' field here since the image will take the first column
-			("image", time.image)
-		);
+		times.emplace_back(config {
+			"details", time.name, // Use 'details' field here since the image will take the first column
+			"image", time.image,
+		});
 	}
 
 	items.insert(pos, times.begin(), times.end());

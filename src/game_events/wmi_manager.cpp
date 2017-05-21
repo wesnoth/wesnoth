@@ -24,7 +24,6 @@
 #include "resources.hpp"
 
 #include "config.hpp"
-#include "config_assign.hpp"
 #include "game_data.hpp"
 #include "log.hpp"
 #include "map/location.hpp"
@@ -130,7 +129,7 @@ void wmi_manager::get_items(const map_location& hex,
 				&& item->can_show(hex, gamedata, fc)) {
 			// Include this item.
 			items.push_back(item);
-			descriptions.emplace_back(config_of("id", item->menu_text()));
+			descriptions.emplace_back(config {"id", item->menu_text()});
 		}
 	}
 }

@@ -21,7 +21,6 @@
 
 #include "variable.hpp"
 
-#include "config_assign.hpp"
 #include "formula/string_utils.hpp"
 #include "game_board.hpp"
 #include "game_data.hpp"
@@ -39,7 +38,7 @@ static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
 namespace
 {
-	const config as_nonempty_range_default = config_of("_", config());
+	const config as_nonempty_range_default("_");
 	config::const_child_itors as_nonempty_range(const std::string& varname)
 	{
 		config::const_child_itors range = as_nonempty_range_default.child_range("_");

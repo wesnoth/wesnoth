@@ -16,7 +16,6 @@
 
 #pragma once
 
-#include "config_assign.hpp"
 #include "game_config.hpp"
 
 #include <stdexcept>
@@ -47,7 +46,7 @@ void resolve_negative_value(int size, int& val)
 	}
 }
 
-const config non_empty_const_cfg = config_of("_", config());
+const config non_empty_const_cfg("_");
 
 /**
  * Parses a ']' terminated string.

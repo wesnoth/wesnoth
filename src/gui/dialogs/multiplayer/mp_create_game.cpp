@@ -16,7 +16,6 @@
 
 #include "gui/dialogs/multiplayer/mp_create_game.hpp"
 
-#include "config_assign.hpp"
 #include "game_config_manager.hpp"
 #include "preferences/game.hpp"
 #include "gettext.hpp"
@@ -172,7 +171,7 @@ void mp_create_game::pre_show(window& win)
 	//
 	std::vector<config> game_types;
 	for(level_type_info& type_info : level_types_) {
-		game_types.emplace_back(config_of("label", type_info.second));
+		game_types.emplace_back(config {"label", type_info.second});
 	}
 
 	if(game_types.empty()) {
@@ -205,7 +204,7 @@ void mp_create_game::pre_show(window& win)
 
 	std::vector<config> era_names;
 	for(const auto& era : create_engine_.get_const_extras_by_type(ng::create_engine::ERA)) {
-		era_names.emplace_back(config_of("label", era->name)("tooltip", era->description));
+		era_names.emplace_back(config {"label", era->name, "tooltip", era->description});
 	}
 
 	if(era_names.empty()) {
@@ -272,7 +271,7 @@ void mp_create_game::pre_show(window& win)
 	//
 	std::vector<config> rfm_options;
 	for(const auto& type : rfm_types_) {
-		rfm_options.emplace_back(config_of("label", mp_game_settings::RANDOM_FACTION_MODE::enum_to_string(type)));
+		rfm_options.emplace_back(config {"label", mp_game_settings::RANDOM_FACTION_MODE::enum_to_string(type)});
 	};
 
 	// Manually insert tooltips. Need to find a better way to do this
@@ -398,20 +397,22 @@ void mp_create_game::pre_show(window& win)
 	plugins_context_->set_accessor("game_config",  [this](const config&) {return cfg_; });
 	plugins_context_->set_accessor("get_selected", [this](const config&) {
 		const ng::level& current_level = create_engine_.current_level();
-		return config_of
-			("id", current_level.id())
-			("name", current_level.name())
-			("icon", current_level.icon())
-			("description", current_level.description())
-			("allow_era_choice", current_level.allow_era_choice())
-			("type", create_engine_.current_level_type());
+		return config {
+			"id", current_level.id(),
+			"name", current_level.name(),
+			"icon", current_level.icon(),
+			"description", current_level.description(),
+			"allow_era_choice", current_level.allow_era_choice(),
+			"type", create_engine_.current_level_type(),
+		};
 	});
 
 	plugins_context_->set_accessor("find_level",   [this](const config& cfg) {
 		const std::string id = cfg["id"].str();
-		return config_of
-			("index", create_engine_.find_level_by_id(id))
-			("type", create_engine_.find_level_type_by_id(id));
+		return config {
+			"index", create_engine_.find_level_by_id(id),
+			"type", create_engine_.find_level_type_by_id(id),
+		};
 	});
 
 	plugins_context_->set_accessor_int("find_era", [this](const config& cfg) {

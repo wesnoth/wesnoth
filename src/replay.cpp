@@ -22,7 +22,6 @@
 #include "replay.hpp"
 
 #include "actions/undo.hpp"
-#include "config_assign.hpp"
 #include "display_chat_manager.hpp"
 #include "floating_label.hpp"
 #include "game_display.hpp"
@@ -647,7 +646,7 @@ bool replay::add_start_if_not_there_yet()
 	//since pos is 0, at_end() is equivalent to empty()
 	if(at_end() || !base_->get_command_at(0).has_child("start"))
 	{
-		base_->insert_command(0) = config_of("start", config())("sent", true);
+		base_->insert_command(0) = config {"start", config(), "sent", true};
 		return true;
 	}
 	else

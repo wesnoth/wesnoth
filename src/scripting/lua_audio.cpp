@@ -19,7 +19,6 @@ See the COPYING file for more details.
 #include "scripting/push_check.hpp"
 #include "sound.hpp"
 #include "sound_music_track.hpp"
-#include "config_assign.hpp"
 #include "preferences/general.hpp"
 #include <set>
 
@@ -161,9 +160,10 @@ static int intf_music_add(lua_State* L) {
 		index = lua_tointeger(L, 1);
 		lua_remove(L, 1);
 	}
-	config cfg = config_of
-		("name", luaL_checkstring(L, 1))
-		("append", true);
+	config cfg = config {
+		"name", luaL_checkstring(L, 1),
+		"append", true,
+	};
 	bool found_ms_before = false, found_ms_after = false, found_imm = false;
 	for(int i = 2; i <= lua_gettop(L); i++) {
 		if(lua_isboolean(L, i)) {

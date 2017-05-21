@@ -19,7 +19,6 @@
 
 #include "save_index.hpp"
 #include "carryover.hpp"
-#include "config_assign.hpp"
 #include "format_time_summary.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
@@ -773,12 +772,12 @@ static void convert_old_saves_1_13_0(config& cfg)
 	}
 	//This code is needed because for example otherwise it won't find the (empty) era
 	if(!cfg.has_child("multiplayer")) {
-		cfg.add_child("multiplayer", config_of
-			("mp_era", "era_blank")
-			("show_connect", false)
-			("show_configure", false)
-			("mp_use_map_settings", true)
-		);
+		cfg.add_child("multiplayer", config {
+			"mp_era", "era_blank",
+			"show_connect", false,
+			"show_configure", false,
+			"mp_use_map_settings", true,
+		});
 	}
 }
 

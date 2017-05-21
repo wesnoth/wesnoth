@@ -23,7 +23,6 @@
 #include "gui/core/register_widget.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
-#include "config_assign.hpp"
 #include "sound.hpp"
 
 #include "formula/string_utils.hpp"
@@ -48,7 +47,7 @@ multimenu_button::multimenu_button()
 	, toggle_states_()
 	, droplist_(nullptr)
 {
-	values_.emplace_back(config_of("label", this->get_label()));
+	values_.emplace_back(::config {"label", this->get_label()});
 
 	connect_signal<event::MOUSE_ENTER>(
 			std::bind(&multimenu_button::signal_handler_mouse_enter, this, _2, _3));

@@ -23,7 +23,6 @@
 #include "gui/core/register_widget.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
-#include "config_assign.hpp"
 #include "sound.hpp"
 
 #include "utils/functional.hpp"
@@ -48,7 +47,7 @@ menu_button::menu_button()
 	, keep_open_(false)
 	, droplist_(nullptr)
 {
-	values_.emplace_back(config_of("label", this->get_label()));
+	values_.emplace_back(::config {"label", this->get_label()});
 
 	connect_signal<event::MOUSE_ENTER>(
 			std::bind(&menu_button::signal_handler_mouse_enter, this, _2, _3));

@@ -29,7 +29,6 @@
 #include "ai/manager.hpp"
 #include "chat_command_handler.hpp"
 #include "color.hpp"
-#include "config_assign.hpp"
 #include "display_chat_manager.hpp"
 #include "font/standard_colors.hpp"
 #include "formatter.hpp"
@@ -691,11 +690,12 @@ void create_and_place(game_display&,
 		unit_race::GENDER gender = unit_race::NUM_GENDERS)
 {
 	synced_context::run_and_throw("debug_create_unit",
-		config_of
-			("x", loc.wml_x())
-			("y", loc.wml_y())
-			("type", u_type.id())
-			("gender", gender_string(gender))
+		config {
+			"x", loc.wml_x(),
+			"y", loc.wml_y(),
+			"type", u_type.id(),
+			"gender", gender_string(gender),
+		}
 	);
 }
 
@@ -753,7 +753,7 @@ void menu_handler::change_side(mouse_handler& mousehandler)
 void menu_handler::kill_unit(mouse_handler& mousehandler)
 {
 	const map_location loc = mousehandler.get_last_hex();
-	synced_context::run_and_throw("debug_kill", config_of("x", loc.wml_x())("y", loc.wml_y()));
+	synced_context::run_and_throw("debug_kill", config {"x", loc.wml_x(), "y", loc.wml_y()});
 }
 
 void menu_handler::label_terrain(mouse_handler& mousehandler, bool team_only)
@@ -1001,10 +1001,11 @@ void menu_handler::add_chat_message(const time_t& time,
 	gui_->get_chat_manager().add_chat_message(time, speaker, side, message, type, false);
 
 	plugins_manager::get()->notify_event("chat",
-		config_of
-			("sender", preferences::login())
-			("message", message)
-			("whisper", type == events::chat_handler::MESSAGE_PRIVATE)
+		config {
+			"sender", preferences::login(),
+			"message", message,
+			"whisper", type == events::chat_handler::MESSAGE_PRIVATE,
+		}
 	);
 }
 
@@ -1616,7 +1617,7 @@ void console_handler::do_nosaves()
 
 void console_handler::do_next_level()
 {
-	synced_context::run_and_throw("debug_next_level", config_of("next_level", get_data()));
+	synced_context::run_and_throw("debug_next_level", config {"next_level", get_data()});
 }
 
 void console_handler::do_choose_level()
@@ -1660,7 +1661,7 @@ void console_handler::do_choose_level()
 	}
 
 	if(size_t(choice) < options.size()) {
-		synced_context::run_and_throw("debug_next_level", config_of("next_level", options[choice]));
+		synced_context::run_and_throw("debug_next_level", config {"next_level", options[choice]});
 	}
 }
 
@@ -1673,13 +1674,13 @@ void console_handler::do_turn()
 	if(!data.empty()) {
 		turn = lexical_cast_default<int>(data, 1);
 	}
-	synced_context::run_and_throw("debug_turn", config_of("turn", turn));
+	synced_context::run_and_throw("debug_turn", config {"turn", turn});
 }
 
 void console_handler::do_turn_limit()
 {
 	int limit = get_data().empty() ? -1 : lexical_cast_default<int>(get_data(), 1);
-	synced_context::run_and_throw("debug_turn_limit", config_of("turn_limit", limit));
+	synced_context::run_and_throw("debug_turn_limit", config {"turn_limit", limit});
 }
 
 void console_handler::do_debug()
@@ -1706,7 +1707,7 @@ void console_handler::do_lua()
 		return;
 	}
 
-	synced_context::run_and_throw("debug_lua", config_of("code", get_data()));
+	synced_context::run_and_throw("debug_lua", config {"code", get_data()});
 }
 
 void console_handler::do_unsafe_lua()
@@ -1768,7 +1769,7 @@ void console_handler::do_set_var()
 	if(j != data.end()) {
 		const std::string name(data.begin(), j);
 		const std::string value(j + 1, data.end());
-		synced_context::run_and_throw("debug_set_var", config_of("name", name)("value", value));
+		synced_context::run_and_throw("debug_set_var", config {"name", name, "value", value});
 	} else {
 		command_failed(_("Variable not found"));
 	}
@@ -1826,11 +1827,12 @@ void console_handler::do_unit()
 	}
 
 	synced_context::run_and_throw("debug_unit",
-		config_of
-			("x", loc.wml_x())
-			("y", loc.wml_y())
-			("name", parameters[0])
-			("value", parameters[1])
+		config {
+			"x", loc.wml_x(),
+			"y", loc.wml_y(),
+			"name", parameters[0],
+			"value", parameters[1],
+		}
 	);
 }
 
@@ -1881,12 +1883,12 @@ void console_handler::do_shroud()
 
 void console_handler::do_gold()
 {
-	synced_context::run_and_throw("debug_gold", config_of("gold", lexical_cast_default<int>(get_data(), 1000)));
+	synced_context::run_and_throw("debug_gold", config {"gold", lexical_cast_default<int>(get_data(), 1000)});
 }
 
 void console_handler::do_event()
 {
-	synced_context::run_and_throw("debug_event", config_of("eventname", get_data()));
+	synced_context::run_and_throw("debug_event", config {"eventname", get_data()});
 }
 
 void console_handler::do_toggle_draw_coordinates()
@@ -1950,7 +1952,7 @@ void menu_handler::request_control_change(int side_num, const std::string& playe
 	} else {
 		// The server will (or won't because we aren't allowed to change the controller)
 		// send us a [change_controller] back, which we then handle in playturn.cpp
-		pc_.send_to_wesnothd(config_of("change_controller", config_of("side", side)("player", player)));
+		pc_.send_to_wesnothd(config {"change_controller", config {"side", side, "player", player}});
 	}
 }
 

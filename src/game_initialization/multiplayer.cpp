@@ -15,7 +15,6 @@
 #include "game_initialization/multiplayer.hpp"
 
 #include "addon/manager.hpp" // for installed_addons
-#include "config_assign.hpp"
 #include "formula/string_utils.hpp"
 #include "game_config_manager.hpp"
 #include "game_initialization/mp_game_utils.hpp"
@@ -675,7 +674,7 @@ void start_local_game_commandline(CVideo& video, const config& game_config, save
 
 	game_config_manager::get()->load_game_config_for_game(state.classification());
 	state.set_carryover_sides_start(
-		config_of("next_scenario", parameters.name)
+		config {"next_scenario", parameters.name}
 	);
 
 	state.expand_random_scenario();

@@ -25,7 +25,6 @@
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
 #include "wml_exception.hpp"
-#include "config_assign.hpp"
 
 #include <vector>
 #include <deque>

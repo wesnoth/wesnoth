@@ -24,7 +24,6 @@
 #include "ai/manager.hpp"
 #include "ai/game_info.hpp"
 #include "ai/testing.hpp"
-#include "config_assign.hpp"
 #include "display_chat_manager.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_events/pump.hpp"
@@ -315,12 +314,13 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 		}
 		// If we're a player, and the result is victory/defeat, then send
 		// a message to notify the server of the reason for the game ending.
-		send_to_wesnothd(config_of
-			("info", config_of
-				("type", "termination")
-				("condition", "game over")
-				("result", is_victory ? "victory" : "defeat")
-			));
+		send_to_wesnothd(config {
+			"info", config {
+				"type", "termination",
+				"condition", "game over",
+				"result", is_victory ? "victory" : "defeat",
+			},
+		});
 		// Play victory music once all victory events
 		// are finished, if we aren't observers and the
 		// carryover dialog isn't disabled.

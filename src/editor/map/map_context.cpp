@@ -17,7 +17,6 @@
 #include "preferences/editor.hpp"
 #include "editor/map/map_context.hpp"
 
-#include "config_assign.hpp"
 #include "display.hpp"
 #include "filesystem.hpp"
 #include "game_board.hpp"

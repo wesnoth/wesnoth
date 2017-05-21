@@ -15,7 +15,6 @@
 #include "hotkey/hotkey_handler.hpp"
 
 #include "actions/create.hpp"
-#include "config_assign.hpp"
 #include "font/standard_colors.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
@@ -393,13 +392,13 @@ void play_controller::hotkey_handler::expand_autosaves(std::vector<config>& item
 
 		if(savegame::save_game_exists(name, comp_format)) {
 			newsaves.emplace_back(name + compression::format_extension(comp_format));
-			newitems.emplace_back(config_of("label", _("Back to Turn ") + std::to_string(turn)));
+			newitems.emplace_back(config {"label", _("Back to Turn ") + std::to_string(turn)});
 		}
 	}
 
 	if(savegame::save_game_exists(start_name, comp_format)) {
 		newsaves.emplace_back(start_name + compression::format_extension(comp_format));
-		newitems.emplace_back(config_of("label", _("Back to Start")));
+		newitems.emplace_back(config {"label", _("Back to Start")});
 	}
 
 	// Make sure list doesn't get too long: keep top two, midpoint and bottom.
@@ -438,7 +437,7 @@ void play_controller::hotkey_handler::show_menu(const std::vector<config>& items
 		const hotkey::hotkey_command& command = hotkey::get_hotkey_command(id);
 
 		if(id == "wml" || (can_execute_command(command) && (!context_menu || in_context_menu(command.id)))) {
-			items.emplace_back(config_of("id", id));
+			items.emplace_back(config {"id", id});
 		}
 	}
 

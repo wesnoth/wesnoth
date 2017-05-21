@@ -32,7 +32,6 @@
 #include "units/types.hpp"
 #include "synced_context.hpp"
 #include "whiteboard/side_actions.hpp"
-#include "config_assign.hpp"
 #include "serialization/string_utils.hpp"
 #include <boost/dynamic_bitset.hpp>
 
@@ -488,15 +487,16 @@ namespace
 		/// We are in a game with no mp server and need to do this choice locally
 		virtual config local_choice() const
 		{
-			return config_of("controller", new_controller_)("is_local", true);
+			return config {"controller", new_controller_, "is_local", true};
 		}
 		/// the request which is sended to the mp server.
 		virtual config request() const
 		{
-			return config_of
-				("new_controller", new_controller_)
-				("old_controller", team_.controller())
-				("side", team_.side());
+			return config {
+				"new_controller", new_controller_,
+				"old_controller", team_.controller(),
+				"side", team_.side(),
+			};
 		}
 		virtual const char* name() const
 		{

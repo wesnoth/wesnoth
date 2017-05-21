@@ -15,7 +15,6 @@
 
 #include "gui/dialogs/multiplayer/mp_options_helper.hpp"
 
-#include "config_assign.hpp"
 #include "preferences/game.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/button.hpp"
@@ -328,7 +327,7 @@ config mp_options_helper::get_options_config()
 		mod.add_child("options", options_data_[source.id]);
 #else
 		for(const auto& option : options_data_[source.id].attribute_range()) {
-			mod.add_child("option", config_of("id", option.first)("value", option.second));
+			mod.add_child("option", config {"id", option.first, "value", option.second});
 		}
 #endif
 	}

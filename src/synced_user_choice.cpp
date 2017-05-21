@@ -15,7 +15,6 @@
 #include "synced_user_choice.hpp"
 
 #include "actions/undo.hpp"
-#include "config_assign.hpp"
 #include "floating_label.hpp"
 #include "game_display.hpp"
 #include "game_data.hpp"
@@ -201,7 +200,7 @@ config mp_sync::get_user_choice(const std::string &name, const mp_sync::user_cho
 		//most likely we are in a start event with an empty side 1
 		//but calling [set_global_variable] to an empty side might also cause this.
 		//i think in that case we should better use uch.random_choice(),
-		//which could return something like config_of("invalid", true);
+		//which could return something like config {"invalid", true};
 		side = 1;
 		while ( side <= max_side  &&  resources::gameboard->get_team(side).is_empty() )
 			side++;

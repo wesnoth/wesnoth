@@ -39,7 +39,6 @@
 #include "resources.hpp"
 #include "reports.hpp"
 
-#include "config_assign.hpp"
 #include "desktop/clipboard.hpp"
 #include "floating_label.hpp"
 #include "game_board.hpp"
@@ -651,7 +650,7 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 					sound::play_music_once(music_tracks_[index].id());
 					get_current_map_context().add_to_playlist(music_tracks_[index]);
 					std::vector<config> items;
-					items.emplace_back(config_of("id", "editor-playlist"));
+					items.emplace_back(config {"id", "editor-playlist"});
 					std::shared_ptr<gui::button> b = gui_->find_menu_button("menu-playlist");
 					show_menu(items, b->location().x +1, b->location().y + b->height() +1, false, *gui_);
 					return true;
@@ -1015,7 +1014,7 @@ void editor_controller::show_menu(const std::vector<config>& items_arg, int xloc
 		if((can_execute_command(command) && (!context_menu || in_context_menu(command.id)))
 			|| command.id == hotkey::HOTKEY_NULL)
 		{
-			items.emplace_back(config_of("id", id));
+			items.emplace_back(config {"id", id});
 		}
 	}
 
@@ -1067,7 +1066,7 @@ void editor_controller::show_menu(const std::vector<config>& items_arg, int xloc
 		auto pos = items.erase(items.begin());
 		int dir = 0;
 		std::generate_n(std::inserter<std::vector<config>>(items, pos), int(map_location::NDIRECTIONS), [&dir]() -> config {
-			return config_of("label", map_location::write_translated_direction(map_location::DIRECTION(dir++)));
+			return config {"label", map_location::write_translated_direction(map_location::DIRECTION(dir++))};
 		});
 	}
 
@@ -1075,7 +1074,7 @@ void editor_controller::show_menu(const std::vector<config>& items_arg, int xloc
 		active_menu_ = editor::MUSIC;
 		auto pos = items.erase(items.begin());
 		std::transform(music_tracks_.begin(), music_tracks_.end(), std::inserter<std::vector<config>>(items, pos), [](const sound::music_track& track) -> config {
-			return config_of("label", track.title().empty() ? track.id() : track.title());
+			return config {"label", track.title().empty() ? track.id() : track.title()};
 		});
 	}
 
@@ -1083,7 +1082,7 @@ void editor_controller::show_menu(const std::vector<config>& items_arg, int xloc
 		active_menu_ = editor::SCHEDULE;
 		auto pos = items.erase(items.begin());
 		std::transform(tods_.begin(), tods_.end(), std::inserter<std::vector<config>>(items, pos), [](const tods_map::value_type& tod) -> config {
-			return config_of("label", tod.second.first);
+			return config {"label", tod.second.first};
 		});
 	}
 
@@ -1091,7 +1090,7 @@ void editor_controller::show_menu(const std::vector<config>& items_arg, int xloc
 		active_menu_ = editor::LOCAL_SCHEDULE;
 		auto pos = items.erase(items.begin());
 		std::transform(tods_.begin(), tods_.end(), std::inserter<std::vector<config>>(items, pos), [](const tods_map::value_type& tod) -> config {
-			return config_of("label", tod.second.first);
+			return config {"label", tod.second.first};
 		});
 	}
 

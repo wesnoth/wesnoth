@@ -15,7 +15,6 @@
 
 #include "gui/dialogs/statistics_dialog.hpp"
 
-#include "config_assign.hpp"
 #include "font/constants.hpp"
 #include "formatter.hpp"
 #include "gettext.hpp"
@@ -68,7 +67,7 @@ void statistics_dialog::pre_show(window& window)
 	//
 	std::vector<config> menu_items;
 	for(const auto& scenario : scenarios_) {
-		menu_items.emplace_back(config_of("label", *scenario.first));
+		menu_items.emplace_back(config {"label", *scenario.first});
 	}
 
 	menu_button& scenario_menu = find_widget<menu_button>(&window, "scenario_menu", false);

@@ -17,7 +17,6 @@
 
 #include "commandline_options.hpp"      // for commandline_options
 #include "config.hpp"                   // for config, etc
-#include "config_assign.hpp"
 #include "cursor.hpp"                   // for set, CURSOR_TYPE::NORMAL
 #include "exceptions.hpp"               // for error
 #include "filesystem.hpp"               // for get_user_config_dir, etc
@@ -467,7 +466,7 @@ void game_launcher::set_test(const std::string& id)
 	state_.mp_settings().show_connect = false;
 
 	state_.set_carryover_sides_start(
-		config_of("next_scenario", id)
+		config {"next_scenario", id}
 	);
 }
 
@@ -516,7 +515,7 @@ int game_launcher::unit_test()
 	state_.classification().campaign_type = game_classification::CAMPAIGN_TYPE::TEST;
 	state_.classification().campaign_define = "TEST";
 	state_.set_carryover_sides_start(
-		config_of("next_scenario", test_scenario_)
+		config {"next_scenario", test_scenario_}
 	);
 
 
@@ -701,7 +700,7 @@ void game_launcher::set_tutorial()
 	state_.mp_settings().mp_era = "era_default";
 	state_.mp_settings().show_connect = false;
 	state_.set_carryover_sides_start(
-		config_of("next_scenario", "tutorial")
+		config {"next_scenario", "tutorial"}
 	);
 
 }

@@ -24,7 +24,6 @@
 
 #include "ai/lua/aspect_advancements.hpp"
 #include "attack_prediction.hpp"
-#include "config_assign.hpp"
 #include "game_config.hpp"
 #include "game_events/pump.hpp"
 #include "preferences/game.hpp"
@@ -917,7 +916,7 @@ namespace {
 
 		// Make sure that if we're serializing a game here,
 		// we got the same results as the game did originally.
-		const config local_results = config_of("chance", attacker.cth_)("hits", hits)("damage", damage);
+		const config local_results {"chance", attacker.cth_, "hits", hits, "damage", damage};
 		config replay_results;
 		bool equals_replay = checkup_instance->local_checkup(local_results, replay_results);
 		if (!equals_replay)
@@ -994,7 +993,7 @@ namespace {
 
 		replay_results.clear();
 		// there was also a attribute cfg["unit_hit"] which was never used so i deleted.
-		equals_replay = checkup_instance->local_checkup(config_of("dies", dies), replay_results);
+		equals_replay = checkup_instance->local_checkup(config {"dies", dies}, replay_results);
 		if (!equals_replay)
 		{
 			bool results_dies = replay_results["dies"].to_bool();

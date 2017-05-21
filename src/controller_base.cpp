@@ -15,7 +15,6 @@
 
 #include "controller_base.hpp"
 
-#include "config_assign.hpp"
 #include "show_dialog.hpp" //gui::in_dialog
 #include "display.hpp"
 #include "events.hpp"
@@ -307,7 +306,7 @@ void controller_base::show_menu(const std::vector<config>& items_arg, int xloc, 
 		const hotkey::hotkey_command& command = hotkey::get_hotkey_command(id);
 
 		if(cmd_exec->can_execute_command(command) && (!context_menu || in_context_menu(command.id))) {
-			items.emplace_back(config_of("id", id));
+			items.emplace_back(config {"id", id});
 		}
 	}
 

@@ -13,7 +13,6 @@
 
 #include "game_initialization/singleplayer.hpp"
 #include "config.hpp"
-#include "config_assign.hpp"
 #include "game_config_manager.hpp"
 #include "gui/dialogs/campaign_selection.hpp"
 #include "gui/dialogs/message.hpp"
@@ -101,7 +100,7 @@ bool enter_create_mode(CVideo& video, const config& game_config, saved_game& sta
 
 		if(!jump_to_campaign.scenario_id_.empty()) {
 			state.set_carryover_sides_start(
-				config_of("next_scenario", jump_to_campaign.scenario_id_)
+				config {"next_scenario", jump_to_campaign.scenario_id_}
 			);
 		}
 

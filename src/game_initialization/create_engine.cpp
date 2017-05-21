@@ -14,7 +14,6 @@
 
 #include "game_initialization/create_engine.hpp"
 
-#include "config_assign.hpp"
 #include "filesystem.hpp"
 #include "formula/string_utils.hpp"
 #include "game_config_manager.hpp"
@@ -362,7 +361,7 @@ void create_engine::prepare_for_scenario()
 	state_.classification().scenario_define = current_level().data()["define"].str();
 
 	state_.set_carryover_sides_start(
-		config_of("next_scenario", current_level().data()["id"])
+		config {"next_scenario", current_level().data()["id"]}
 	);
 }
 
@@ -389,7 +388,7 @@ void create_engine::prepare_for_campaign(const std::string& difficulty)
 		utils::split(current_level_data["extra_defines"]);
 
 	state_.set_carryover_sides_start(
-		config_of("next_scenario", current_level_data["first_scenario"])
+		config {"next_scenario", current_level_data["first_scenario"]}
 	);
 }
 

@@ -22,7 +22,6 @@
 #include "actions/undo.hpp"
 #include "actions/vision.hpp"
 
-#include "config_assign.hpp"
 #include "game_events/pump.hpp"
 #include "preferences/game.hpp"
 #include "gettext.hpp"
@@ -1215,10 +1214,11 @@ static size_t move_unit_internal(undo_list* undo_stack,
 	mover.try_actual_movement(show_move);
 
 	config co;
-	config cn = config_of
-		("stopped_early", mover.stopped_early())
-		("final_hex_x", mover.final_hex().wml_x())
-		("final_hex_y", mover.final_hex().wml_y());
+	config cn {
+		"stopped_early", mover.stopped_early(),
+		"final_hex_x", mover.final_hex().wml_x(),
+		"final_hex_y", mover.final_hex().wml_y(),
+	};
 	bool matches_replay = checkup_instance->local_checkup(cn,co);
 	if(!matches_replay)
 	{

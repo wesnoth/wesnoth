@@ -27,7 +27,6 @@
 #include "actions/move.hpp"
 #include "actions/vision.hpp"
 #include "ai/manager.hpp"
-#include "config_assign.hpp"
 #include "fake_unit_ptr.hpp"
 #include "filesystem.hpp"
 #include "game_classification.hpp"
@@ -681,7 +680,7 @@ WML_HANDLER_FUNCTION(set_variables,, cfg)
 
 				for(std::vector<std::string>::iterator i=split_vector.begin(); i!=split_vector.end(); ++i)
 				{
-					data.emplace_back(config_of(key_name, *i));
+					data.emplace_back(config {key_name, *i});
 				}
 			}
 		}

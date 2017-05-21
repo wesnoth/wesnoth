@@ -19,7 +19,6 @@
 
 #include "addon/client.hpp"
 #include "addon/info.hpp"
-#include "config_assign.hpp"
 #include "config_cache.hpp"
 #include "editor/editor_display.hpp" // for dummy display context
 #include "filesystem.hpp"
@@ -588,7 +587,7 @@ struct dialog_tester<campaign_selection>
 {
 	saved_game state;
 	ng::create_engine ng;
-	dialog_tester() : state(config_of("campaign_type", "scenario")), ng(test_utils::get_fake_display(-1, -1).video(), state)
+	dialog_tester() : state(config {"campaign_type", "scenario"}), ng(test_utils::get_fake_display(-1, -1).video(), state)
 	{
 	}
 	campaign_selection* create()
@@ -902,7 +901,7 @@ struct dialog_tester<mp_create_game>
 {
 	saved_game state;
 	ng::create_engine engine;
-	dialog_tester() : state(config_of("campaign_type", "multiplayer")), engine(test_utils::get_fake_display(-1, -1).video(), state)
+	dialog_tester() : state(config {"campaign_type", "multiplayer"}), engine(test_utils::get_fake_display(-1, -1).video(), state)
 	{
 	}
 	mp_create_game* create()

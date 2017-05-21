@@ -16,7 +16,6 @@
 
 #include "editor/palette/editor_palettes.hpp"
 
-#include "config_assign.hpp"
 #include "gettext.hpp"
 #include "font/text_formatting.hpp"
 #include "tooltips.hpp"
@@ -63,10 +62,10 @@ void editor_palette<Item>::expand_palette_groups_menu(std::vector<config>& items
 			img += ".png";
 		}
 
-		groups.emplace_back(config_of
-			("label", groupname)
-			("icon", img)
-		);
+		groups.emplace_back(config {
+			"label", groupname,
+			"icon", img,
+		});
 	}
 
 	items.insert(pos, groups.begin(), groups.end());

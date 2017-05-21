@@ -26,7 +26,6 @@
 #include "units/abilities.hpp"
 #include "wml_exception.hpp"
 #include "resources.hpp"
-#include "config_assign.hpp"
 
 #include <algorithm>
 #include <iterator>
@@ -415,12 +414,12 @@ void tod_manager::update_server_information() const
 		//NOTE: The current implementation does not guarnateee that the server gets informed
 		// about those changes in 100% of cases. But that is ok because the information is only
 		// used to display the turn limit in the lobby (as opposed to things that cause OOS).
-		resources::controller->send_to_wesnothd(config_of
-			("change_turns_wml", config_of
-				("current", turn_)
-				("max", num_turns_)
-			)
-		);
+		resources::controller->send_to_wesnothd(config {
+			"change_turns_wml", config {
+				"current", turn_,
+				"max", num_turns_,
+			},
+		});
 	}
 }
 void tod_manager::modify_turns_by_wml(const std::string& mod)

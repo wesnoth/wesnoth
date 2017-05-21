@@ -15,7 +15,6 @@
 
 #include "gui/dialogs/multiplayer/mp_staging.hpp"
 
-#include "config_assign.hpp"
 #include "font/text_formatting.hpp"
 #include "formatter.hpp"
 #include "game_config.hpp"
@@ -201,7 +200,7 @@ void mp_staging::add_side_node(window& window, ng::side_engine_ptr side)
 	// We use an index-based loop in order to get the index of the selected option
 	std::vector<config> ai_options;
 	for(unsigned i = 0; i < ai_algorithms_.size(); i++) {
-		ai_options.emplace_back(config_of("label", ai_algorithms_[i]->text));
+		ai_options.emplace_back(config {"label", ai_algorithms_[i]->text});
 
 		if(ai_algorithms_[i]->id == side->ai_algorithm()) {
 			selection = i;
@@ -220,7 +219,7 @@ void mp_staging::add_side_node(window& window, ng::side_engine_ptr side)
 	//
 	std::vector<config> controller_names;
 	for(const auto& controller : side->controller_options()) {
-		controller_names.emplace_back(config_of("label", controller.second));
+		controller_names.emplace_back(config {"label", controller.second});
 	}
 
 	menu_button& controller_selection = find_widget<menu_button>(&row_grid, "controller", false);
@@ -246,7 +245,7 @@ void mp_staging::add_side_node(window& window, ng::side_engine_ptr side)
 	//
 	std::vector<config> team_names;
 	for(const auto& team : side->player_teams()) {
-		team_names.emplace_back(config_of("label", team));
+		team_names.emplace_back(config {"label", team});
 	}
 
 	menu_button& team_selection = find_widget<menu_button>(&row_grid, "side_team", false);
@@ -264,10 +263,10 @@ void mp_staging::add_side_node(window& window, ng::side_engine_ptr side)
 	//
 	std::vector<config> color_options;
 	for(const auto& color : side->color_options()) {
-		color_options.emplace_back(config_of
-			("label", font::get_color_string_pango(color))
-			("icon", (formatter() << "misc/status.png~RC(magenta>" << color << ")").str())
-		);
+		color_options.emplace_back(config {
+			"label", font::get_color_string_pango(color),
+			"icon", (formatter() << "misc/status.png~RC(magenta>" << color << ")").str(),
+		});
 	}
 
 	menu_button& color_selection = find_widget<menu_button>(&row_grid, "side_color", false);
@@ -488,7 +487,7 @@ void mp_staging::network_handler(window& window)
 
 		std::vector<config> controller_names;
 		for(const auto& controller : side->controller_options()) {
-			controller_names.emplace_back(config_of("label", controller.second));
+			controller_names.emplace_back(config {"label", controller.second});
 		}
 
 		menu_button& controller_selection = find_widget<menu_button>(&row_grid, "controller", false);

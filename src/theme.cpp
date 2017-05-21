@@ -16,7 +16,6 @@
 
 #include "theme.hpp"
 
-#include "config_assign.hpp"
 #include "font/sdl_ttf.hpp"
 #include "gettext.hpp"
 #include "hotkey/hotkey_command.hpp"
@@ -504,7 +503,7 @@ theme::menu::menu(const config& cfg)
 	, items_()
 {
 	for(const auto& item : utils::split(cfg["items"])) {
-		items_.emplace_back(config_of("id", item));
+		items_.emplace_back(config {"id", item});
 	}
 
 	if(cfg["auto_tooltip"].to_bool() && tooltip_.empty() && items_.size() == 1) {

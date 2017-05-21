@@ -33,7 +33,6 @@
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
 #include "wesnothd_connection.hpp"
-#include "config_assign.hpp"
 #include "preferences/game.hpp"
 #include "preferences/lobby.hpp"
 #include "log.hpp"
@@ -228,7 +227,7 @@ void chatbox::set_self_active(const bool /*active*/)
 void chatbox::send_chat_message(const std::string& message,
 	bool /*allies_only*/)
 {
-	::config c = config_of("message", config_of("message", message)("sender", preferences::login()));
+	::config c {"message", ::config {"message", message, "sender", preferences::login()}};
 	add_chat_message(time(nullptr), preferences::login(), 0, message);
 
 	if(wesnothd_connection_) {

@@ -29,7 +29,6 @@
 #include "gui/widgets/menu_button.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
-#include "config_assign.hpp"
 #include "formatter.hpp"
 #include "gettext.hpp"
 #include "units/types.hpp"
@@ -138,13 +137,13 @@ void faction_select::on_faction_select(window& window)
 
 		if(unit) {
 			const std::string icon = formatter() << unit->image() << "~RC(" << unit->flag_rgb() << ">" << tc_color_ << ")";
-			leaders.emplace_back(config_of("label", unit->type_name())("icon", icon));
+			leaders.emplace_back(config {"label", unit->type_name(), "icon", icon});
 		} else if(leader == "random") {
-			leaders.emplace_back(config_of("label", _("Random"))("icon", ng::random_enemy_picture));
+			leaders.emplace_back(config {"label", _("Random"), "icon", ng::random_enemy_picture});
 		} else if(leader == "null") {
-			leaders.emplace_back(config_of("label", font::unicode_em_dash));
+			leaders.emplace_back(config {"label", font::unicode_em_dash});
 		} else {
-			leaders.emplace_back(config_of("label", "?"));
+			leaders.emplace_back(config {"label", "?"});
 		}
 	}
 
