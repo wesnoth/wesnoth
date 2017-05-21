@@ -3000,7 +3000,11 @@ static int intf_append_ai(lua_State *L)
 	}
 	ai::configuration::expand_simplified_aspects(side_num, cfg);
 	if(added_dummy_stage) {
-		// TODO: Delete the dummy stage
+		for(auto iter = cfg.ordered_begin(); iter != cfg.ordered_end(); iter++) {
+			if(iter->key == "stage" && iter->cfg["name"] == "empty") {
+				iter = cfg.erase(iter);
+			}
+		}
 	}
 	ai::manager::append_active_ai_for_side(side_num, cfg.child("ai"));
 	return 0;
