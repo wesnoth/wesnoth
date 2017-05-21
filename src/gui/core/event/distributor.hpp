@@ -139,6 +139,11 @@ private:
 										 bool& handled,
 										 const point& coordinate);
 
+	void signal_handler_sdl_touch_motion(const event::ui_event event,
+										 bool& handled,
+										 const point& coordinate,
+										 const point& distance);
+
 	void signal_handler_sdl_wheel(const event::ui_event event,
 								  bool& handled,
 								  const point& coordinate);
