@@ -456,6 +456,18 @@ public:
 	 * Returns a reference to the first child with the given @a key.
 	 * Creates the child if it does not yet exist.
 	 */
+
+	/**
+	 * Inserts an attribute into the config
+	 * @param key The name of the attribute
+	 * @param value The attribute value
+	 */
+	template<typename T>
+	void insert(config_key_type key, T&& value)
+	{
+		operator[](key) = std::forward<T>(value);
+	}
+
 	config &child_or_add(config_key_type key);
 
 	bool has_attribute(config_key_type key) const;
@@ -767,8 +779,8 @@ namespace detail {
 	{
 		void visit(config& cfg, K&& key, V&& val, Rest... fwd)
 		{
-			cfg[std::forward<K>(key)] = std::forward<V>(val);
-			detail::config_construct_unpacker<Rest...> unpack;
+			cfg.insert(std::forward<K>(key), std::forward<V>(val));
+			config_construct_unpacker<Rest...> unpack;
 			unpack.visit(cfg, std::forward<Rest>(fwd)...);
 		}
 	};
@@ -779,7 +791,7 @@ namespace detail {
 		void visit(config& cfg, T&& tag, config&& child, Rest... fwd)
 		{
 			cfg.add_child(std::forward<T>(tag), std::forward<config>(child));
-			detail::config_construct_unpacker<Rest...> unpack;
+			config_construct_unpacker<Rest...> unpack;
 			unpack.visit(cfg, std::forward<Rest>(fwd)...);
 		}
 	};
@@ -790,7 +802,7 @@ namespace detail {
 		void visit(config& cfg, T&& tag, config& child, Rest... fwd)
 		{
 			cfg.add_child(std::forward<T>(tag), std::forward<config>(child));
-			detail::config_construct_unpacker<Rest...> unpack;
+			config_construct_unpacker<Rest...> unpack;
 			unpack.visit(cfg, std::forward<Rest>(fwd)...);
 		}
 	};
