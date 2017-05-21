@@ -18,6 +18,7 @@
 
 #include "widgets/scrollarea.hpp"
 #include "sdl/rect.hpp"
+#include <video.hpp>
 
 
 namespace gui {
@@ -25,7 +26,7 @@ namespace gui {
 scrollarea::scrollarea(CVideo &video, const bool auto_join)
 	: widget(video, auto_join), scrollbar_(video),
 	  old_position_(0), recursive_(false), shown_scrollbar_(false),
-	  shown_size_(0), full_size_(0)
+	  shown_size_(0), full_size_(0), swipe_dy_(0)
 {
 	scrollbar_.hide(true);
 }
@@ -153,19 +154,59 @@ void scrollarea::handle_event(const SDL_Event& event)
 	if (mouse_locked() || hidden())
 		return;
 
-	if (event.type != SDL_MOUSEWHEEL)
-		return;
-
-	const SDL_MouseWheelEvent &ev = event.wheel;
-	int x, y;
-	SDL_GetMouseState(&x, &y);
-	if (sdl::point_in_rect(x, y, inner_location())) {
-		if (ev.y > 0) {
-			scrollbar_.scroll_up();
-		} else if (ev.y < 0) {
-			scrollbar_.scroll_down();
+	if (event.type == SDL_MOUSEWHEEL) {
+		const SDL_MouseWheelEvent &ev = event.wheel;
+		int x, y;
+		SDL_GetMouseState(&x, &y);
+		if (sdl::point_in_rect(x, y, inner_location())) {
+			if (ev.y > 0) {
+				scrollbar_.scroll_up();
+			} else if (ev.y < 0) {
+				scrollbar_.scroll_down();
+			}
 		}
 	}
+	
+	if (event.type == SDL_FINGERUP) {
+		swipe_dy_ = 0;
+	}
+	
+	if (event.type == SDL_FINGERDOWN || event.type == SDL_FINGERMOTION) {
+		SDL_Rect r = screen_area();
+		auto tx = (int) (event.tfinger.x * r.w);
+		auto ty = (int) (event.tfinger.y * r.h);
+		auto dy = (int) (event.tfinger.dy * r.h);
+		
+		if (event.type == SDL_FINGERDOWN) {
+			swipe_dy_ = 0;
+			swipe_origin_.x = tx;
+			swipe_origin_.y = ty;
+		}
+
+		if (event.type == SDL_FINGERMOTION) {
+			
+			swipe_dy_ += dy;
+			if (scrollbar_.get_max_position() == 0) {
+				return;
+			}
+
+			int scrollbar_step = scrollbar_.height() / scrollbar_.get_max_position();
+			if (scrollbar_step <= 0) {
+				return;
+			}
+			
+			if (sdl::point_in_rect(swipe_origin_.x, swipe_origin_.y, inner_location())
+				&& abs(swipe_dy_) >= scrollbar_step)
+			{
+				unsigned int pos = (unsigned int) std::max(
+						(int) scrollbar_.get_position() - swipe_dy_ / scrollbar_step,
+						0);
+				scrollbar_.set_position(pos);
+				swipe_dy_ %= scrollbar_step;
+			}
+		}
+	}
+	
 }
 
 } // end namespace gui
