@@ -39,7 +39,7 @@ public:
 
 	part_pointer_type get_part(int index) const
 	{
-		return parts_[index];
+		return parts_.at(index);
 	}
 
 	int max_parts() const
