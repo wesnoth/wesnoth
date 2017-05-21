@@ -25,15 +25,16 @@ namespace game_events
 class event_handlers
 {
 private:
-	typedef std::unordered_map<std::string, handler_list> map_t;
-	typedef std::unordered_map<std::string, std::weak_ptr<event_handler>> id_map_t;
+	using handler_vec_t = std::vector<handler_ptr>;
+	using map_t = std::unordered_map<std::string, handler_list>;
+	using id_map_t = std::unordered_map<std::string, weak_handler_ptr>;
 
 	/**
 	 * Active event handlers. Will not have elements removed unless the event_handlers is clear()ed.
 	 * This is the only container that actually 'owns' any events in the form of shared_ptrs. The other
 	 * three storage methods own weak_ptrs.
 	 */
-	handler_vec active_;
+	handler_vec_t active_;
 
 	/** Active event handlers with fixed event names, organized by event name. */
 	map_t by_name_;
@@ -50,9 +51,6 @@ private:
 	static std::string standardize_name(const std::string& name);
 
 public:
-	// TODO: remove
-	typedef handler_vec::size_type size_type;
-
 	event_handlers()
 		: active_()
 		, by_name_()
@@ -61,40 +59,42 @@ public:
 	{
 	}
 
-	/** Read-only access to the handlers with varying event names. */
-	const handler_list& get_dynamic() const
+	/** Access to the handlers with varying event names. */
+	handler_list& get_dynamic()
 	{
 		return dynamic_;
 	}
 
 	/** Read-only access to the active event handlers. Essentially gives all events. */
-	const handler_vec& get_active() const
+	const handler_vec_t& get_active() const
 	{
 		return active_;
 	}
 
-	/** Read-only access to the handlers with fixed event names, by event name. */
-	const handler_list& get(const std::string& name) const;
+	/** Access to the handlers with fixed event names, by event name. */
+	handler_list& get(const std::string& name);
 
 	/** Adds an event handler. */
-	void add_event_handler(const config& cfg, manager& man, bool is_menu_item = false);
+	void add_event_handler(const config& cfg, bool is_menu_item = false);
 
 	/** Removes an event handler, identified by its ID. */
 	void remove_event_handler(const std::string& id);
+
+	/**
+	 * Removes all expired event handlers and any weak_ptrs to them.
+	 *
+	 * @param event_name      The event name from whose by-name queue to clean
+	 *                        up handlers.
+	 */
+	void clean_up_expired_handlers(const std::string& event_name);
 
 	/** Gets an event handler, identified by its ID. */
 	const handler_ptr get_event_handler_by_id(const std::string& id);
 
 	/** The number of active event handlers. */
-	size_type size() const
+	size_t size() const
 	{
 		return active_.size();
-	}
-
-	/** Access to active event handlers by index. */
-	handler_ptr& operator[](size_type index)
-	{
-		return active_[index];
 	}
 };
 

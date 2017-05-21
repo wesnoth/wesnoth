@@ -70,22 +70,12 @@ private:
 		handler_ptr operator*();
 
 	private:
-		/// Gets the index from a pointer, capped at end_.
-		handler_vec::size_type ptr_index(const handler_ptr& ptr) const
-		{
-			return !bool(ptr) ? end_ : std::min(ptr->index(), end_);
-		}
-
-	private:
 		/// The fixed-name event handlers for this iteration.
-		const handler_list& main_list_;
+		handler_list& main_list_;
 		/// The varying-name event handlers for this iteration.
-		const handler_list& var_list_;
+		handler_list& var_list_;
 		/// The event name for this iteration.
 		const std::string event_name_;
-		/// The end of this iteration. We intentionally exclude handlers
-		/// added after *this is constructed.
-		const handler_vec::size_type end_;
 
 		/// Set to true upon dereferencing.
 		bool current_is_known_;

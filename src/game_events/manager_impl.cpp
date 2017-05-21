@@ -80,10 +80,10 @@ std::string event_handlers::standardize_name(const std::string& name)
 /**
  * Read-only access to the handlers with fixed event names, by event name.
  */
-const handler_list& event_handlers::get(const std::string& name) const
+handler_list& event_handlers::get(const std::string& name)
 {
 	// Empty list for the "not found" case.
-	static const handler_list empty_list;
+	static handler_list empty_list;
 
 	// Look for the name in the name map.
 	auto find_it = by_name_.find(standardize_name(name));
@@ -95,7 +95,7 @@ const handler_list& event_handlers::get(const std::string& name) const
  * An event with a nonempty ID will not be added if an event with that
  * ID already exists.
  */
-void event_handlers::add_event_handler(const config& cfg, manager& man, bool is_menu_item)
+void event_handlers::add_event_handler(const config& cfg, bool is_menu_item)
 {
 	const std::string name = cfg["name"];
 	std::string id = cfg["id"];
@@ -111,7 +111,7 @@ void event_handlers::add_event_handler(const config& cfg, manager& man, bool is_
 
 	// Create a new handler.
 	DBG_EH << "inserting event handler for name=" << name << " with id=" << id << "\n";
-	handler_ptr new_handler(new event_handler(cfg, is_menu_item, active_.size(), man));
+	handler_ptr new_handler(new event_handler(cfg, is_menu_item));
 
 	active_.push_back(new_handler);
 
@@ -160,6 +160,26 @@ void event_handlers::remove_event_handler(const std::string& id)
 	}
 
 	log_handlers();
+}
+
+void event_handlers::clean_up_expired_handlers(const std::string& event_name)
+{
+	// First, remove all disabled handlers from the main list.
+	auto to_remove = std::remove_if(active_.begin(), active_.end(),
+		[](handler_ptr p) { return p->disabled(); }
+	);
+
+	active_.erase(to_remove, active_.end());
+
+	// Then remove any now-unlockable weak_ptrs from tbe by-name list.
+	get(event_name).remove_if(
+		[](weak_handler_ptr ptr) { return ptr.expired(); }
+	);
+
+	// And finally remove any now-unlockable weak_ptrs from the with-variables name list.
+	dynamic_.remove_if(
+		[](weak_handler_ptr ptr) { return ptr.expired(); }
+	);
 }
 
 const handler_ptr event_handlers::get_event_handler_by_id(const std::string& id)
