@@ -121,6 +121,14 @@ public:
 	 */
 	explicit config(config_key_type child);
 
+	/**
+	 * Creates a config with several attributes and children.
+	 * Pass the keys/tags and values/children alternately.
+	 * @example config("key", 42, "value", config())
+	 */
+	template<typename... T>
+	explicit config(config_key_type first, T&&... args);
+
 	~config();
 
 	// Verifies that the string can be used as an attribute or tag name
@@ -743,6 +751,57 @@ private:
 
 	std::vector<child_pos> ordered_children;
 };
+
+namespace detail {
+	template<typename... T>
+	struct config_construct_unpacker;
+
+	template<>
+	struct config_construct_unpacker<>
+	{
+		void visit(config&) {}
+	};
+
+	template<typename K, typename V, typename... Rest>
+	struct config_construct_unpacker<K, V, Rest...>
+	{
+		void visit(config& cfg, K&& key, V&& val, Rest... fwd)
+		{
+			cfg[std::forward<K>(key)] = std::forward<V>(val);
+			detail::config_construct_unpacker<Rest...> unpack;
+			unpack.visit(cfg, std::forward<Rest>(fwd)...);
+		}
+	};
+
+	template<typename T, typename... Rest>
+	struct config_construct_unpacker<T, config, Rest...>
+	{
+		void visit(config& cfg, T&& tag, config&& child, Rest... fwd)
+		{
+			cfg.add_child(std::forward<T>(tag), std::forward<config>(child));
+			detail::config_construct_unpacker<Rest...> unpack;
+			unpack.visit(cfg, std::forward<Rest>(fwd)...);
+		}
+	};
+
+	template<typename T, typename... Rest>
+	struct config_construct_unpacker<T, config&, Rest...>
+	{
+		void visit(config& cfg, T&& tag, config& child, Rest... fwd)
+		{
+			cfg.add_child(std::forward<T>(tag), std::forward<config>(child));
+			detail::config_construct_unpacker<Rest...> unpack;
+			unpack.visit(cfg, std::forward<Rest>(fwd)...);
+		}
+	};
+}
+
+template<typename... T>
+inline config::config(config_key_type first, T&&... args)
+{
+	detail::config_construct_unpacker<config_key_type, T...> unpack;
+	unpack.visit(*this, first, std::forward<T>(args)...);
+}
 
 class variable_set
 {
