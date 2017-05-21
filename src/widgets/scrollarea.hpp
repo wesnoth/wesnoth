@@ -60,6 +60,11 @@ private:
 	bool recursive_, shown_scrollbar_;
 	unsigned shown_size_;
 	unsigned full_size_;
+	int swipe_dy_;
+	struct {
+		int x;
+		int y;
+	} swipe_origin_;
 
 	void test_scrollbar();
 };
