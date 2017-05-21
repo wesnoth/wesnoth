@@ -108,12 +108,21 @@ manager::iteration::iteration(const std::string& event_name, manager& man)
 	, var_it_(event_name.empty() ? var_list_.end() : var_list_.begin())
 	, gamedata_(resources::gamedata)
 {
+	// Clean up expired ptrs. This saves us effort later since it ensures every ptr is valid.
+
+	main_list_.remove_if(
+		[](weak_handler_ptr ptr) { return ptr.expired(); }
+	);
+
+	var_list_.remove_if(
+		[](weak_handler_ptr ptr) { return ptr.expired(); }
+	);
 }
 
 /**
  * Increment
  * Incrementing guarantees that the next dereference will differ from the
- * previous derference (unless the iteration is exhausted). However, multiple
+ * previous dereference (unless the iteration is exhausted). However, multiple
  * increments between dereferences are allowed to have the same effect as a
  * single increment.
  */
@@ -139,6 +148,16 @@ manager::iteration& manager::iteration::operator++()
 	return *this;
 }
 
+// Small helper function to ensure we don't try to dereference an invalid iterator.
+static handler_ptr lock_ptr(const handler_list& list, handler_list::iterator iter)
+{
+	if(iter != list.end()) {
+		return iter->lock();
+	}
+
+	return nullptr;
+}
+
 /**
  * Dereference
  * Will return a null pointer when the end of the iteration is reached.
@@ -146,15 +165,15 @@ manager::iteration& manager::iteration::operator++()
 handler_ptr manager::iteration::operator*()
 {
 	// Get the candidate for the current element from the main list.
-	handler_ptr main_ptr = *main_it_;
+	handler_ptr main_ptr = lock_ptr(main_list_, main_it_);
 	handler_vec::size_type main_index = ptr_index(main_ptr);
 
 	// Get the candidate for the current element from the var list.
-	handler_ptr var_ptr = *var_it_;
+	handler_ptr var_ptr = lock_ptr(var_list_, var_it_);
 
 	// (Loop while var_ptr would be chosen over main_ptr, but the name does not match.)
 	while(var_ptr && var_ptr->index() < main_index && !var_ptr->matches_name(event_name_, gamedata_)) {
-		var_ptr = *++var_it_;
+		var_ptr = lock_ptr(var_list_, ++var_it_);
 	}
 
 	handler_vec::size_type var_index = ptr_index(var_ptr);

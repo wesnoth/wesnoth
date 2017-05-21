@@ -78,9 +78,9 @@ private:
 
 	private:
 		/// The fixed-name event handlers for this iteration.
-		const handler_list& main_list_;
+		handler_list& main_list_;
 		/// The varying-name event handlers for this iteration.
-		const handler_list& var_list_;
+		handler_list& var_list_;
 		/// The event name for this iteration.
 		const std::string event_name_;
 		/// The end of this iteration. We intentionally exclude handlers
