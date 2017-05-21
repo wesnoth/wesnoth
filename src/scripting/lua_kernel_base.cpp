@@ -430,6 +430,7 @@ lua_kernel_base::lua_kernel_base()
 		{ "remove_dialog_item",       &lua_gui2::intf_remove_dialog_item    },
 		{ "dofile", 		      &dispatch<&lua_kernel_base::intf_dofile>           },
 		{ "require", 		      &dispatch<&lua_kernel_base::intf_require>          },
+		{ "kernel_type",	      &dispatch<&lua_kernel_base::intf_kernel_type>          },
 		{ "show_dialog",	      &video_dispatch<lua_gui2::show_dialog>   },
 		{ "show_menu",               &video_dispatch<lua_gui2::show_menu>  },
 		{ "show_message_dialog",     &video_dispatch<lua_gui2::show_message_dialog> },
@@ -765,6 +766,11 @@ int lua_kernel_base::intf_require(lua_State* L)
 
 	lua_settable(L, -4);
 	// stack is now [packagename] [wesnoth] [package] [results]
+	return 1;
+}
+int lua_kernel_base::intf_kernel_type(lua_State* L)
+{
+	lua_push(L, my_name());
 	return 1;
 }
 /**
