@@ -71,6 +71,8 @@ public:
 	 * @param scroll              'step size' to scroll.
 	 */
 	void scroll(const scroll_mode scroll);
+	
+	void scroll_by(const int pixels);
 
 	/** Is the positioner at the beginning of the scrollbar? */
 	bool at_begin() const
