@@ -364,7 +364,6 @@ endif(WIN32)
 if(APPLE)
 	set(libwesnoth-game_STAT_SRC
 		${libwesnoth-game_STAT_SRC}
-		desktop/apple_notification.hpp
 		desktop/apple_notification.mm
 	)
 endif(APPLE)
