@@ -152,7 +152,9 @@ manager::iteration& manager::iteration::operator++()
 static handler_ptr lock_ptr(const handler_list& list, handler_list::iterator iter)
 {
 	if(iter != list.end()) {
-		return iter->lock();
+		if(handler_ptr ptr = iter->lock()) {
+			return ptr;
+		}
 	}
 
 	return nullptr;
