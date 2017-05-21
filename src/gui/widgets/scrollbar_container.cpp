@@ -97,6 +97,15 @@ scrollbar_container::scrollbar_container(
 	connect_signal<event::SDL_WHEEL_RIGHT>(
 		std::bind(&scrollbar_container::signal_handler_sdl_wheel_right, this, _2, _3),
 		event::dispatcher::back_post_child);
+
+	connect_signal<event::SDL_TOUCH_MOTION>(
+			std::bind(&scrollbar_container::signal_handler_sdl_touch_motion,
+						this,
+						_2,
+						_3,
+						_5,
+					    _6),
+			event::dispatcher::back_post_child);
 }
 
 void scrollbar_container::layout_initialize(const bool full_initialization)
@@ -1177,5 +1186,41 @@ void scrollbar_container::signal_handler_sdl_wheel_right(const event::ui_event e
 		handled = true;
 	}
 }
+
+void
+scrollbar_container::signal_handler_sdl_touch_motion(const event::ui_event event,
+													 bool& handled,
+													 const point& position,
+													 const point& distance)
+{
+	(void) position;
+	DBG_GUI_E << LOG_HEADER << event << ".\n";
+
+	bool is_scrollbar_moved = false;
+
+	// Not tested: where do I find this?..
+	if (horizontal_scrollbar_grid_ && horizontal_scrollbar_) {
+
+		if(horizontal_scrollbar_grid_->get_visible() == widget::visibility::visible) {
+			horizontal_scrollbar_->scroll_by(-distance.x);
+			is_scrollbar_moved = true;
+		}
+	}
+
+	if (vertical_scrollbar_grid_ && vertical_scrollbar_) {
+
+		if(vertical_scrollbar_grid_->get_visible() == widget::visibility::visible) {
+			vertical_scrollbar_->scroll_by(-distance.y);
+			is_scrollbar_moved = true;
+		}
+	}
+
+	if (is_scrollbar_moved) {
+		scrollbar_moved();
+		handled = true;
+	}
+}
+
+
 
 } // namespace gui2

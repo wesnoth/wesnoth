@@ -537,6 +537,8 @@ private:
 	void signal_handler_sdl_wheel_down(const event::ui_event event, bool& handled);
 	void signal_handler_sdl_wheel_left(const event::ui_event event, bool& handled);
 	void signal_handler_sdl_wheel_right(const event::ui_event event, bool& handled);
+	void signal_handler_sdl_touch_motion(const event::ui_event event, bool& handled,
+                                         const point& position, const point& distance);
 
 public:
 	scrollbar_base* horizontal_scrollbar()

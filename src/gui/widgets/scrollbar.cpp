@@ -60,6 +60,11 @@ void scrollbar_base::finalize_setup()
 	}
 }
 
+void scrollbar_base::scroll_by(const int pixels)
+{
+	move_positioner(pixels);
+}
+
 void scrollbar_base::scroll(const scroll_mode scroll)
 {
 	switch(scroll) {
