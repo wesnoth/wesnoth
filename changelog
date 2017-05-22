@@ -3,6 +3,10 @@ Version 1.13.8+dev:
    * Updated translations: British English, Italian
  * Lua API:
    * Add wesnoth.format function to substitute variables into a string.
+ * Multiplayer:
+   * When set to remember your password, Wesnoth now encrypts it. It is still
+     possible to obtain the password from preferences, but it's no longer as
+     trivial as before.
  * User Interface:
    * Enable the use of tab to switch between text fields in most dialogs.
  * Miscellaneous and Bug Fixes:
