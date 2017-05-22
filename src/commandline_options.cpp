@@ -542,7 +542,6 @@ std::vector<std::pair<unsigned int,std::string> > commandline_options::parse_to_
 std::vector<std::tuple<unsigned int,std::string,std::string> > commandline_options::parse_to_uint_string_string_tuples_(const std::vector<std::string> &strings, char separator)
 {
 	std::vector<std::tuple<unsigned int,std::string,std::string> > vec;
-	std::tuple<unsigned int,std::string,std::string> elem;
 	const std::string& expected_format
 			= std::string() + "UINT" + separator + "STRING" + separator + "STRING";
 
@@ -559,10 +558,8 @@ std::vector<std::tuple<unsigned int,std::string,std::string> > commandline_optio
 		} catch (bad_lexical_cast &) {
 			throw bad_commandline_tuple(s, expected_format);
 		}
-		std::get<0>(elem) = temp;
-		std::get<1>(elem) = tokens[1];
-		std::get<2>(elem) = tokens[2];
-		vec.push_back(elem);
+
+		vec.emplace_back(temp, tokens[1], tokens[2]);
 	}
 	return vec;
 }

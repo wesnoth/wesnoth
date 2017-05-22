@@ -1786,8 +1786,7 @@ static int load_fake_units(lua_State* L, int arg, T& fake_units)
 		}
 		std::string unit_type = lua_tostring(L, -1);
 
-		std::tuple<map_location, int, std::string> tuple(src, side, unit_type);
-		fake_units.push_back(tuple);
+		fake_units.emplace_back(src, side, unit_type);
 
 		lua_settop(L, entry - 1);
 	}
