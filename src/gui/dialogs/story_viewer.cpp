@@ -361,6 +361,7 @@ void story_viewer::nav_button_callback(window& window, NAV_DIRECTION direction)
 		// Only set full alpha if Forward was pressed.
 		if(direction == DIR_FORWARD) {
 			find_widget<scroll_label>(&window, "part_text", false).set_text_alpha(ALPHA_OPAQUE);
+			flag_stack_as_dirty(window);
 			return;
 		}
 	}
@@ -457,7 +458,7 @@ void story_viewer::draw_callback(window& window)
 	find_widget<scroll_label>(&window, "part_text", false).set_text_alpha(new_alpha);
 
 	// The text stack also needs to be marked dirty so the background panel redraws correctly.
-	find_widget<stacked_widget>(&window, "text_and_control_stack", false).set_is_dirty(true);
+	flag_stack_as_dirty(window);
 
 	if(fade_state_ == FADING_IN) {
 		fade_step_ ++;
@@ -466,6 +467,11 @@ void story_viewer::draw_callback(window& window)
 	}
 
 	set_next_draw();
+}
+
+void story_viewer::flag_stack_as_dirty(window& window)
+{
+	find_widget<stacked_widget>(&window, "text_and_control_stack", false).set_is_dirty(true);
 }
 
 } // namespace dialogs
