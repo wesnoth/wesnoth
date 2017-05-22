@@ -414,11 +414,11 @@ void game_config_manager::load_addons_cfg()
 			cache_.get_config(addon.main_cfg, umc_cfg);
 
 			// Annotate "era", "modification", and scenario tags with addon_id info
-			const char * tags_with_addon_id [] { "era", "modification", "multiplayer", "scenario", "campaign", nullptr };
+			static const std::set<std::string> tags_with_addon_id { "era", "modification", "multiplayer", "scenario", "campaign" };
 
-			for (const char ** type = tags_with_addon_id; *type; type++)
-			{
-				for (config & cfg : umc_cfg.child_range(*type)) {
+			for(auto child : umc_cfg.all_children_range()) {
+				if(tags_with_addon_id.count(child.key) > 0) {
+					auto& cfg = child.cfg;
 					cfg["addon_id"] = addon.addon_id;
 					// Note that this may reformat the string in a canonical form.
 					cfg["addon_version"] = addon.version.str();
