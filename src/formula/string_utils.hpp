@@ -51,6 +51,22 @@ std::string interpolate_variables_into_string(const std::string &str, const vari
  */
 t_string interpolate_variables_into_tstring(const t_string &str, const variable_set& variables);
 
+/**
+ * Format a conjunctive list.
+ * @param empty The string to return for an empty list
+ * @param elems The list of entries in the list
+ * @return The elements of the list joined by "and".
+ */
+std::string format_conjunct_list(const t_string& empty, const std::vector<t_string>& elems);
+
+/**
+ * Format a disjunctive list.
+ * @param empty The string to return for an empty list
+ * @param elems The list of entries in the list
+ * @return The elements of the list joined or "and".
+ */
+std::string format_disjunct_list(const t_string& empty, const std::vector<t_string>& elems);
+
 }
 
 /** Handy wrappers around interpolate_variables_into_string and gettext. */

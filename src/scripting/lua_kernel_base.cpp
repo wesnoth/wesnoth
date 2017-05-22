@@ -318,6 +318,15 @@ static int intf_format(lua_State* L)
 	return 1;
 }
 
+template<bool conjunct>
+static int intf_format_list(lua_State* L)
+{
+	const t_string empty = luaW_checktstring(L, 1);
+	auto values = lua_check<std::vector<t_string>>(L, 2);
+	lua_push(L, (conjunct ? utils::format_conjunct_list : utils::format_disjunct_list)(empty, values));
+	return 1;
+}
+
 // End Callback implementations
 
 // Template which allows to push member functions to the lua kernel base into lua as C functions, using a shim
@@ -447,6 +456,8 @@ lua_kernel_base::lua_kernel_base()
 		{ "get_image_size",           &intf_get_image_size           },
 		{ "get_time_stamp",           &intf_get_time_stamp           },
 		{ "format",                   &intf_format                   },
+		{ "format_conjunct_list",     &intf_format_list<true>        },
+		{ "format_disjunct_list",     &intf_format_list<false>       },
 		{ nullptr, nullptr }
 	};
 

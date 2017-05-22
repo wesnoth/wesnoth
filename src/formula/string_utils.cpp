@@ -13,6 +13,8 @@
    See the COPYING file for more details.
 */
 
+#define GETTEXT_DOMAIN "wesnoth-lib"
+
 #include "formula/string_utils.hpp"
 
 #include "config.hpp"
@@ -238,6 +240,42 @@ t_string interpolate_variables_into_tstring(const t_string &tstr, const variable
 		}
 	}
 	return tstr;
+}
+
+std::string format_conjunct_list(const t_string& empty, const std::vector<t_string>& elems) {
+	switch(elems.size()) {
+	case 0: return empty;
+	case 1: return elems[0];
+		// TRANSLATORS: Formats a two-element conjunctive list.
+	case 2: return VGETTEXT("conjunct pair^$first and $second", {{"first", elems[0]}, {"second", elems[1]}});
+	}
+	// TRANSLATORS: Formats the first two elements of a conjunctive list.
+	std::string prefix = VGETTEXT("conjunct start^$first, $second", {{"first", elems[0]}, {"second", elems[1]}});
+	// For size=3 this loop is not entered
+	for(size_t i = 2; i < elems.size() - 1; i++) {
+		// TRANSLATORS: Formats successive elements of a conjunctive list.
+		prefix = VGETTEXT("conjunct mid^$prefix, $next", {{"prefix", prefix}, {"next", elems[i]}});
+	}
+	// TRANSLATORS: Formats the final element of a conjunctive list.
+	return VGETTEXT("conjunct end^$prefix, and $last", {{"prefix", prefix}, {"last", elems.back()}});
+}
+
+std::string format_disjunct_list(const t_string& empty, const std::vector<t_string>& elems) {
+	switch(elems.size()) {
+	case 0: return empty;
+	case 1: return elems[0];
+		// TRANSLATORS: Formats a two-element disjunctive list.
+	case 2: return VGETTEXT("disjunct pair^$first or $second", {{"first", elems[0]}, {"second", elems[1]}});
+	}
+	// TRANSLATORS: Formats the first two elements of a disjunctive list.
+	std::string prefix = VGETTEXT("disjunct start^$first, $second", {{"first", elems[0]}, {"second", elems[1]}});
+	// For size=3 this loop is not entered
+	for(size_t i = 2; i < elems.size() - 1; i++) {
+		// TRANSLATORS: Formats successive elements of a disjunctive list.
+		prefix = VGETTEXT("disjunct mid^$prefix, $next", {{"prefix", prefix}, {"next", elems[i]}});
+	}
+	// TRANSLATORS: Formats the final element of a disjunctive list.
+	return VGETTEXT("disjunct end^$prefix, or $last", {{"prefix", prefix}, {"last", elems.back()}});
 }
 
 }
