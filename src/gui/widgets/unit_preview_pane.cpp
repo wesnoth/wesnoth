@@ -212,13 +212,13 @@ void unit_preview_pane::print_attack_details(T attacks, tree_view_node& parent_n
 		auto& subsection = add_name_tree_node(
 			header_node,
 			"item",
-			(formatter() << "<span color='#f5e6c1'>" << a.damage() << font::weapon_numbers_sep << a.num_attacks() << " " << a.name() << "</span>").str()
+			(formatter() << font::span_color(font::unit_type_color) << a.damage() << font::weapon_numbers_sep << a.num_attacks() << " " << a.name() << "</span>").str()
 		);
 
 		add_name_tree_node(
 			subsection,
 			"item",
-			(formatter() << "<span color='#a69275'>" << a.range() << font::weapon_details_sep << a.type() << "</span>").str()
+			(formatter() << font::span_color(font::weapon_details_color) << a.range() << font::weapon_details_sep << a.type() << "</span>").str()
 		);
 
 		for(const auto& pair : a.special_tooltips()) {
@@ -285,7 +285,7 @@ void unit_preview_pane::set_displayed_type(const unit_type& type)
 
 		str << "<span size='large'> </span>" << "\n";
 
-		str << "<span color='#a69275'>" << type.type_name() << "</span>" << "\n";
+		str << font::span_color(font::unit_type_color) << type.type_name() << "</span>" << "\n";
 
 		std::string l_str = vgettext("Lvl $lvl", {{"lvl", std::to_string(type.level())}});
 		str << l_str << "\n";
@@ -396,7 +396,7 @@ void unit_preview_pane::set_displayed_unit(const unit& u)
 	if(label_name_) {
 		std::string name;
 		if(!u.name().empty()) {
-			name = "<span size='large'>" + u.name() + "</span>" + "\n" + "<small><span color='#a69275'>" + u.type_name() + "</span></small>";
+			name = "<span size='large'>" + u.name() + "</span>" + "\n" + "<small>" + font::span_color(font::unit_type_color) + u.type_name() + "</span></small>";
 		} else {
 			name = "<span size='large'>" + u.type_name() + "</span>\n";
 		}
@@ -435,7 +435,7 @@ void unit_preview_pane::set_displayed_unit(const unit& u)
 		const std::string name = "<span size='large'>" + (!u.name().empty() ? u.name() : " ") + "</span>";
 		str << name << "\n";
 
-		str << "<span color='#a69275'>" << u.type_name() << "</span>" << "\n";
+		str << font::span_color(font::unit_type_color) << u.type_name() << "</span>" << "\n";
 
 		std::string l_str = vgettext("Lvl $lvl", {{"lvl", std::to_string(u.level())}});
 		str << l_str << "\n";
