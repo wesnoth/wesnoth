@@ -219,7 +219,7 @@ void lobby_info::process_userlist()
 	SCOPE_LB;
 	users_.clear();
 	for(const auto & c : gamelist_.child_range("user")) {
-		users_.push_back(user_info(c));
+		users_.emplace_back(c);
 	}
 
 	for(auto & ui : users_) {
@@ -323,7 +323,7 @@ chat_session& lobby_info::get_whisper_log(const std::string& name)
 void lobby_info::open_room(const std::string& name)
 {
 	if(!has_room(name)) {
-		rooms_.push_back(room_info(name));
+		rooms_.emplace_back(name);
 	}
 }
 

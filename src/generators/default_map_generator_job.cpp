@@ -753,7 +753,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 
 	std::vector<terrain_height_mapper> height_conversion;
 	for(const config& h : cfg.child_range("height")) {
-		height_conversion.push_back(terrain_height_mapper(h));
+		height_conversion.emplace_back(h);
 	}
 
 	terrain_map terrain(data.width, data.height, grassland);

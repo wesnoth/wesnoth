@@ -97,7 +97,7 @@ std::vector<scenario_stats> master_stats;
 static stats &get_stats(const std::string &save_id)
 {
 	if(master_stats.empty()) {
-		master_stats.push_back(scenario_stats(std::string()));
+		master_stats.emplace_back(std::string());
 	}
 
 	team_stats_t& team_stats = master_stats.back().team_stats;
@@ -396,7 +396,7 @@ void stats::read(const config& cfg)
 scenario_context::scenario_context(const std::string& name)
 {
 	if(!mid_scenario || master_stats.empty()) {
-		master_stats.push_back(scenario_stats(name));
+		master_stats.emplace_back(name);
 	}
 
 	mid_scenario = true;
@@ -592,14 +592,13 @@ levels level_stats(const std::string & save_id)
 
 		team_stats_t::const_iterator find_it = team_stats.find(save_id);
 		if ( find_it != team_stats.end() )
-			level_list.push_back(make_pair(&master_stats[level].scenario_name,
-			                               &find_it->second));
+			level_list.emplace_back(&master_stats[level].scenario_name, &find_it->second);
 	}
 
 	// Make sure we do return something (so other code does not have to deal
 	// with an empty list).
 	if ( level_list.empty() )
-			level_list.push_back(make_pair(&null_name, &null_stats));
+			level_list.emplace_back(&null_name, &null_stats);
 
 	return level_list;
 }
@@ -634,7 +633,7 @@ void read_stats(const config& cfg)
 	mid_scenario = cfg["mid_scenario"].to_bool();
 
 	for(const config &s : cfg.child_range("scenario")) {
-		master_stats.push_back(scenario_stats(s));
+		master_stats.emplace_back(s);
 	}
 }
 

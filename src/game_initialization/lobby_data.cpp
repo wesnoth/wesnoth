@@ -61,7 +61,7 @@ void chat_session::add_message(const time_t& timestamp,
 						   const std::string& user,
 						   const std::string& message)
 {
-	history_.push_back(chat_message(timestamp, user, message));
+	history_.emplace_back(timestamp, user, message);
 }
 
 
