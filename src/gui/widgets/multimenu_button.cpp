@@ -176,38 +176,15 @@ void multimenu_button::update_label()
 		selected.push_back(values_[i]["label"]);
 	}
 
-	if(selected.size() == 0) {
-		set_label(_("multimenu^None Selected"));
-	} else if(selected.size() == 1) {
-		set_label(selected[0]);
-	} else if(selected.size() == 2) {
-		const string_map variables {{"first", selected[0]}, {"second", selected[1]}, {"excess", "1"}};
-		if(max_shown_ == 1) {
-			set_label(VNGETTEXT("multimenu^$first and 1 other","multimenu^$first and $excess others", 1, variables));
-		} else {
-			set_label(VGETTEXT("multimenu^$first and $second", variables));
-		}
-	} else if(selected.size() == values_.size()) {
+	if(selected.size() == values_.size()) {
 		set_label(_("multimenu^All Selected"));
 	} else {
-		const int excess = selected.size() - max_shown_;
-		if(max_shown_ > 0 && excess > 0) {
-			selected.resize(max_shown_);
+		if(selected.size() > static_cast<size_t>(max_shown_)) {
+			const int excess = selected.size() - max_shown_;
+			selected.resize(max_shown_ + 1);
+			selected.back() = VNGETTEXT("multimenu excess^1 other", "$excess others", excess, {{"excess", std::to_string(excess)}});
 		}
-
-		std::string first = selected[0];
-		for(size_t i = 1; i < selected.size() - 1; i++) {
-			const string_map variables {{"first", first}, {"second", selected[i]}};
-			first = VGETTEXT("multimenu^$first, $second", variables);
-		}
-
-		if(max_shown_ > 0 && excess > 0) {
-			const string_map variables {{"first", first}, {"excess", std::to_string(excess + 1)}};
-			set_label(VNGETTEXT("multimenu^$first and 1 other","$first and $excess others", excess + 1, variables));
-		} else {
-			const string_map variables {{"first", first}, {"second", selected.back()}};
-			set_label(VGETTEXT("multimenu^$first and $second", variables));
-		}
+		set_label(utils::format_conjunct_list(_("multimenu^None Selected"), selected));
 	}
 }
 

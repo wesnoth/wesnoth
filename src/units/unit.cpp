@@ -1752,25 +1752,18 @@ const std::set<std::string> unit::builtin_effects {
 std::string unit::describe_builtin_effect(std::string apply_to, const config& effect)
 {
 	if(apply_to == "attack") {
-		std::string attack_names;
-		bool first_attack = true;
+		std::vector<t_string> attack_names;
 
 		std::string desc;
 		for(attack_ptr a : attacks_) {
 			bool affected = a->describe_modification(effect, &desc);
 			if(affected && desc != "") {
-				if(first_attack) {
-					first_attack = false;
-				} else {
-					attack_names += t_string(N_(" and "), "wesnoth");
-				}
-
-				attack_names += t_string(a->name(), "wesnoth-units");
+				attack_names.emplace_back(a->name(), "wesnoth-units");
 			}
 		}
 		if(!attack_names.empty()) {
 			utils::string_map symbols;
-			symbols["attack_list"] = attack_names;
+			symbols["attack_list"] = utils::format_conjunct_list("", attack_names);
 			symbols["effect_description"] = desc;
 			return vgettext("$attack_list|: $effect_description", symbols);
 		}
@@ -2249,22 +2242,12 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 
 	// Punctuation should be translatable: not all languages use Latin punctuation.
 	// (However, there maybe is a better way to do it)
-	if(effects_description.empty() == false && generate_description == true) {
+	if(generate_description && !effects_description.empty()) {
 		if(!mod_description.empty()) {
 			description += "\n";
 		}
 
-		for(auto i = effects_description.begin(); i != effects_description.end(); ++i) {
-			if(i->empty()) {
-				continue;
-			}
-
-			description += *i;
-
-			if(std::next(i) != effects_description.end()) {
-				description += t_string(N_(" and "), "wesnoth");
-			}
-		}
+		description += utils::format_conjunct_list("", effects_description);
 	}
 
 	// store trait info
