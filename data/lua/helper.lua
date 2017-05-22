@@ -277,7 +277,10 @@ end
 function helper.deprecate(msg, f)
 	return function(...)
 		if msg then
-			wesnoth.message("warning", msg)
+			if not message_shown and wesnoth.game_config.debug then
+				wesnoth.message("warning", msg)
+			end
+			wesnoth.log("warn", msg)
 			-- trigger the message only once
 			msg = nil
 		end
