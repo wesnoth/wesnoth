@@ -20,6 +20,7 @@
 #include "server/game.hpp"
 #include "server/player_network.hpp"
 #include "serialization/string_utils.hpp"
+#include "preferences/credentials.hpp"
 
 #include <sstream>
 #include <iomanip>

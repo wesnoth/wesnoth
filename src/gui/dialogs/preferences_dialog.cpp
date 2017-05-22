@@ -24,6 +24,7 @@
 #include "preferences/game.hpp"
 #include "hotkey/hotkey_command.hpp"
 #include "hotkey/hotkey_item.hpp"
+#include "preferences/credentials.hpp"
 #include "preferences/lobby.hpp"
 #include "preferences/general.hpp"
 #include "preferences/display.hpp"

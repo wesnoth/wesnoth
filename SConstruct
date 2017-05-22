@@ -363,6 +363,7 @@ if env["prereqs"]:
     have_server_prereqs = (\
         CheckIEEE754(conf) & \
         conf.CheckCPlusPlus(gcc_version = "4.8") & \
+        conf.CheckLib("libcrypto") & \
         conf.CheckBoost("iostreams", require_version = boost_version) & \
         conf.CheckBoostIostreamsGZip() & \
         conf.CheckBoostIostreamsBZip2() & \

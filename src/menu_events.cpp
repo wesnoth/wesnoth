@@ -68,6 +68,7 @@
 #include "mouse_events.hpp"
 #include "play_controller.hpp"
 #include "playsingle_controller.hpp"
+#include "preferences/credentials.hpp"
 #include "preferences/display.hpp"
 #include "replay.hpp"
 #include "replay_helper.hpp"

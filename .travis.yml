@@ -50,6 +50,9 @@ before_install:
 
 install:
     - travis_wait ./utils/travis/install_deps.sh
+    - if [ "$TRAVIS_OS_NAME" = osx ]; then
+          export CXXFLAGS="-I/usr/local/opt/openssl/include $CFLAGS" LDFLAGS="-L/usr/local/opt/openssl/lib $LDFLAGS";
+      fi
 
 script: 
     - ./utils/travis/check_utf8.sh

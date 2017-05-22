@@ -19,6 +19,7 @@
 #include "game_config_manager.hpp"
 #include "game_initialization/mp_game_utils.hpp"
 #include "game_initialization/playcampaign.hpp"
+#include "preferences/credentials.hpp"
 #include "preferences/game.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/lobby/lobby.hpp"
@@ -190,7 +191,7 @@ static std::unique_ptr<wesnothd_connection> open_connection(CVideo& video, const
 			if(!*error) break;
 
 			do {
-				std::string password = preferences::password();
+				std::string password = preferences::password(host, login);
 
 				bool fall_through = (*error)["force_confirmation"].to_bool() ?
 					(gui2::show_message(video, _("Confirm"), (*error)["message"], gui2::dialogs::message::ok_cancel_buttons) == gui2::window::CANCEL) :
@@ -224,8 +225,8 @@ static std::unique_ptr<wesnothd_connection> open_connection(CVideo& video, const
 								throw wesnothd_error(_("Bad data received from server"));
 							}
 
-							sp["password"] = utils::create_hash(utils::create_hash(password, utils::get_salt(salt),
-									utils::get_iteration_count(salt)), salt.substr(12, 8));
+							sp["password"] = utils::md5(utils::md5(password, utils::md5::get_salt(salt),
+									utils::md5::get_iteration_count(salt)).hex_digest(), salt.substr(12, 8)).hex_digest();
 
 						} else {
 							sp["password"] = password;
@@ -288,7 +289,7 @@ static std::unique_ptr<wesnothd_connection> open_connection(CVideo& video, const
 					error_message = (*error)["message"].str();
 				}
 
-				gui2::dialogs::mp_login dlg(error_message, !((*error)["password_request"].empty()));
+				gui2::dialogs::mp_login dlg(host, error_message, !((*error)["password_request"].empty()));
 				dlg.show(video);
 
 				switch(dlg.get_retval()) {

@@ -25,6 +25,7 @@
 #include "hotkey/hotkey_item.hpp"
 #include "lexical_cast.hpp"
 #include "log.hpp"
+#include "credentials.hpp"
 #include "preferences/general.hpp"
 #include "sound.hpp"
 #include "video.hpp" // non_interactive()
@@ -104,6 +105,7 @@ base_manager::base_manager()
 				<< e.what()
 				<< std::endl;
 	}
+	preferences::load_credentials();
 }
 
 base_manager::~base_manager()
@@ -161,6 +163,8 @@ void write_preferences()
 	} catch(filesystem::io_exception&) {
 		ERR_FS << "error writing to preferences file '" << filesystem::get_prefs_file() << "'" << std::endl;
 	}
+
+	preferences::save_credentials();
 
 #ifndef _WIN32
     if(!prefs_file_existed) {

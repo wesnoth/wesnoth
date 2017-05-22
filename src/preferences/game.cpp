@@ -28,20 +28,6 @@
 #include "wml_exception.hpp"
 
 #include <cassert>
-#ifdef _WIN32
-#include <boost/range/iterator_range.hpp>
-#ifdef INADDR_ANY
-	#undef INADDR_ANY
-#endif
-#ifdef INADDR_BROADCAST
-	#undef INADDR_BROADCAST
-#endif
-#ifdef INADDR_NONE
-	#undef INADDR_NONE
-#endif
-#include <windows.h> //GetUserName
-#endif
-
 
 static lg::log_domain log_config("config");
 #define ERR_CFG LOG_STREAM(err , log_config)
@@ -71,28 +57,6 @@ config option_values;
 bool options_initialized = false;
 
 bool authenticated = false;
-
-const char WRAP_CHAR = '@';
-const std::string EMPTY_WRAPPED_STRING = "@@";
-
-std::string wrap_credentials_field_value(const std::string& value)
-{
-	return WRAP_CHAR + value + WRAP_CHAR;
-}
-
-std::string parse_wrapped_credentials_field(const std::string& raw)
-{
-	if(raw.empty() || raw == EMPTY_WRAPPED_STRING) {
-		// empty (wrapped or not)
-		return raw;
-	} else if(raw.length() < 2 || raw[0] != WRAP_CHAR || raw[raw.length() - 1] != WRAP_CHAR ) {
-		// malformed/not wrapped (shouldn't happen)
-		ERR_CFG << "malformed user credentials (did you manually edit the preferences file?)" << std::endl;
-		return raw;
-	}
-
-	return raw.substr(1, raw.length() - 2);
-}
 
 void initialize_modifications(bool mp = true)
 {
@@ -451,117 +415,6 @@ std::string campaign_server()
 void set_campaign_server(const std::string& host)
 {
 	preferences::set("campaign_server", host);
-}
-
-bool wrap_password()
-{
-	const bool have_old_password_format =
-		(!preferences::have_setting("password_is_wrapped")) && preferences::have_setting("password");
-	return have_old_password_format ? false : preferences::get("password_is_wrapped", true);
-}
-
-void set_wrap_password(bool wrap)
-{
-	preferences::set("password_is_wrapped", wrap);
-}
-
-bool wrap_login()
-{
-	const bool have_old_login_format =
-		(!preferences::have_setting("login_is_wrapped")) && preferences::have_setting("login");
-	return have_old_login_format ? false : preferences::get("login_is_wrapped", true);
-}
-
-void set_wrap_login(bool wrap)
-{
-	preferences::set("login_is_wrapped", wrap);
-}
-
-static std::string get_system_username()
-{
-	std::string res;
-#ifdef _WIN32
-	wchar_t buffer[300];
-	DWORD size = 300;
-	if(GetUserNameW(buffer,&size)) {
-		//size includes a terminating null character.
-		assert(size > 0);
-		res = unicode_cast<utf8::string>(boost::iterator_range<wchar_t*>(buffer, buffer + size - 1));
-	}
-#else
-	if(char* const login = getenv("USER")) {
-		res = login;
-	}
-#endif
-	return res;
-}
-
-std::string login()
-{
-	const std::string res = preferences::get("login");
-	if(res.empty() || res == EMPTY_WRAPPED_STRING) {
-		const std::string& login = get_system_username();
-		if(!login.empty()) {
-			return login;
-		}
-
-		if(res.empty()) {
-			return _("player");
-		}
-	}
-
-	if(!wrap_login()) {
-		return res;
-	} else {
-		return parse_wrapped_credentials_field(res);
-	}
-}
-
-void set_login(const std::string& username)
-{
-	set_wrap_login(true);
-	preferences::set("login", wrap_credentials_field_value(username));
-}
-
-namespace prv {
-	std::string password;
-}
-
-std::string password()
-{
-	if(remember_password()) {
-		const std::string saved_pass = preferences::get("password");
-		if(!wrap_password()) {
-			return saved_pass;
-		} else {
-			return parse_wrapped_credentials_field(saved_pass);
-		}
-	} else {
-		return prv::password;
-	}
-}
-
-void set_password(const std::string& password)
-{
-	prv::password = password;
-	if(remember_password()) {
-		set_wrap_password(true);
-		preferences::set("password", wrap_credentials_field_value(password));
-	}
-}
-
-bool remember_password()
-{
-	return preferences::get("remember_password", false);
-}
-
-void set_remember_password(bool remember)
-{
-	preferences::set("remember_password", remember);
-
-	if(!remember) {
-		preferences::set("password", "");
-	}
 }
 
 bool turn_dialog()

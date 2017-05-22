@@ -70,7 +70,7 @@ namespace {
 /* Secure password storage functions */
 bool authenticate(config& campaign, const config::attribute_value& passphrase)
 {
-	return utils::create_hash(passphrase, campaign["passsalt"]) == campaign["passhash"];
+	return utils::md5(passphrase, campaign["passsalt"]).hex_digest() == campaign["passhash"];
 }
 
 std::string generate_salt(size_t len)
@@ -92,7 +92,7 @@ void set_passphrase(config& campaign, std::string passphrase)
 {
 	std::string salt = generate_salt(16);
 	campaign["passsalt"] = salt;
-	campaign["passhash"] = utils::create_hash(passphrase, salt);
+	campaign["passhash"] = utils::md5(passphrase, salt).hex_digest();
 }
 
 } // end anonymous namespace

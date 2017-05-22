@@ -33,6 +33,7 @@
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
 #include "wesnothd_connection.hpp"
+#include "preferences/credentials.hpp"
 #include "preferences/game.hpp"
 #include "preferences/lobby.hpp"
 #include "log.hpp"

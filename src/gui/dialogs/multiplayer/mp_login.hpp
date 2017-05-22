@@ -18,13 +18,15 @@
 
 namespace gui2
 {
+class field_text;
+
 namespace dialogs
 {
 
 class mp_login : public modal_dialog
 {
 public:
-	mp_login(const std::string& label, const bool focus_password);
+	mp_login(const std::string& host, const std::string& label, const bool focus_password);
 
 private:
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
@@ -35,6 +37,13 @@ private:
 
 	/** Inherited from modal_dialog. */
 	virtual void post_show(window& window) override;
+
+	void load_password(window& win) const;
+	void save_password(window& win) const;
+
+	const std::string host_;
+	field_text* username_;
+	bool focus_password_;
 };
 
 } // namespace dialogs
