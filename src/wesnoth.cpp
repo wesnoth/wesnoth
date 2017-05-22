@@ -448,6 +448,11 @@ static int process_command_args(const commandline_options& cmdline_opts) {
 
 		return 0;
 	}
+	if(cmdline_opts.report) {
+		std::cout << "\n========= BUILD INFORMATION =========\n\n"
+				  << game_config::full_build_report();
+		return 0;
+	}
 
 	// Options changing their behavior dependent on some others should be checked below.
 
