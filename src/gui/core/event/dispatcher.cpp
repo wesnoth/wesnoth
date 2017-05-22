@@ -31,6 +31,8 @@ dispatcher::dispatcher()
 	, signal_queue_()
 	, signal_mouse_queue_()
 	, signal_keyboard_queue_()
+	, signal_touch_motion_queue_()
+	, signal_touch_gesture_queue_()
 	, signal_notification_queue_()
 	, signal_message_queue_()
 	, connected_(false)
@@ -64,6 +66,12 @@ bool dispatcher::has_event(const ui_event event, const event_queue_type event_ty
 			<< find<set_event_mouse>(event, dispatcher_implementation
 				::has_handler(event_type, *this))
 			<< " keyboard "
+			<< find<set_event_touch_motion>(event, dispatcher_implementation
+				::has_handler(event_type, *this))
+			<< " touch_motion "
+			<< find<set_event_touch_gesture>(event, dispatcher_implementation
+				::has_handler(event_type, *this))
+			<< " touch_gesture "
 			<< find<set_event_keyboard>(event, dispatcher_implementation
 				::has_handler(event_type, *this))
 			<< " notification "
