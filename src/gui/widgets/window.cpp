@@ -1195,8 +1195,10 @@ namespace
 {
 
 /**
- * Swaps an item in a grid for another one.*/
-void swap_grid(grid* g,
+ * Swaps an item in a grid for another one.
+ * This differs slightly from the standard swap_grid utility, so it's defined by itself here.
+ */
+void window_swap_grid(grid* g,
 			   grid* content_grid,
 			   widget* widget,
 			   const std::string& id)
@@ -1231,7 +1233,7 @@ void swap_grid(grid* g,
 
 void window::finalize(const std::shared_ptr<builder_grid>& content_grid)
 {
-	swap_grid(nullptr, &get_grid(), content_grid->build(), "_window_content_grid");
+	window_swap_grid(nullptr, &get_grid(), content_grid->build(), "_window_content_grid");
 }
 
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS

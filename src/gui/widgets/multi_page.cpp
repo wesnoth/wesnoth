@@ -19,6 +19,7 @@
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/register_widget.hpp"
 #include "gui/widgets/settings.hpp"
+#include "gui/widgets/widget_helpers.hpp"
 #include "gui/widgets/generator.hpp"
 
 #include "gettext.hpp"
@@ -135,40 +136,6 @@ unsigned multi_page::get_state() const
 {
 	return 0;
 }
-
-namespace
-{
-
-/**
- * Swaps an item in a grid for another one.*/
-void swap_grid(grid* g,
-			   grid* content_grid,
-			   widget* widget,
-			   const std::string& id)
-{
-	assert(content_grid);
-	assert(widget);
-
-	// Make sure the new child has same id.
-	widget->set_id(id);
-
-	// Get the container containing the wanted widget.
-	grid* parent_grid = nullptr;
-	if(g) {
-		parent_grid = find_widget<grid>(g, id, false, false);
-	}
-	if(!parent_grid) {
-		parent_grid = find_widget<grid>(content_grid, id, true, false);
-	}
-	parent_grid = dynamic_cast<grid*>(parent_grid->parent());
-	assert(parent_grid);
-
-	// Replace the child.
-	auto old = parent_grid->swap_child(id, widget, false);
-	assert(old);
-}
-
-} // namespace
 
 void multi_page::finalize(const std::vector<string_map>& page_data)
 {

@@ -28,6 +28,7 @@
 #include "gui/widgets/pane.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/selectable_item.hpp"
+#include "gui/widgets/widget_helpers.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/viewport.hpp"
 #include "gui/widgets/window.hpp"
@@ -547,40 +548,6 @@ void listbox::handle_key_right_arrow(SDL_Keymod modifier, bool& handled)
 		scrollbar_container::handle_key_left_arrow(modifier, handled);
 	}
 }
-
-namespace
-{
-
-/**
- * Swaps an item in a grid for another one.*/
-void swap_grid(grid* g,
-			   grid* content_grid,
-			   widget* wgt,
-			   const std::string& id)
-{
-	assert(content_grid);
-	assert(wgt);
-
-	// Make sure the new child has same id.
-	wgt->set_id(id);
-
-	// Get the container containing the wanted widget.
-	grid* parent_grid = nullptr;
-	if(g) {
-		parent_grid = find_widget<grid>(g, id, false, false);
-	}
-	if(!parent_grid) {
-		parent_grid = find_widget<grid>(content_grid, id, true, false);
-	}
-	parent_grid = dynamic_cast<grid*>(parent_grid->parent());
-	assert(parent_grid);
-
-	// Replace the child.
-	auto old = parent_grid->swap_child(id, wgt, false);
-	assert(old);
-}
-
-} // namespace
 
 void listbox::finalize(builder_grid_const_ptr header,
 						builder_grid_const_ptr footer,
