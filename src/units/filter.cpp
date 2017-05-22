@@ -260,7 +260,7 @@ bool basic_unit_filter_impl::internal_matches_filter(const unit & u, const map_l
 		return false;
 	}
 
-	if (!vcfg["id"].empty()) {
+	if (!vcfg["id"].blank()) {
 		std::vector<std::string> id_list = utils::split(vcfg["id"]);
 		if (std::find(id_list.begin(), id_list.end(), u.id()) == id_list.end()) {
 			return false;
