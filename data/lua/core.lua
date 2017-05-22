@@ -158,7 +158,7 @@ local variable_mt = {
 }
 
 local function get_variable_proxy(k)
-	local v = wesnoth.get_variable(k, true)
+	local v = wesnoth.get_variable(k)
 	if type(v) == "table" then
 		v = setmetatable({ __varname = k }, variable_mt)
 	end

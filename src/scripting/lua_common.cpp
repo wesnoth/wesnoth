@@ -861,8 +861,7 @@ bool luaW_pushvariable(lua_State *L, variable_access_const& v)
 		else if(v.exists_as_container())
 		{
 			lua_newtable(L);
-			if (luaW_toboolean(L, 2))
-				luaW_filltable(L, v.as_container());
+			luaW_filltable(L, v.as_container());
 			return true;
 		}
 		else
