@@ -92,12 +92,19 @@ function wesnoth.wml_actions.modify_side(cfg)
 		if cfg.switch_ai then
 			wesnoth.switch_ai(side.side, cfg.switch_ai)
 		end
-		local ai = {}
+		local ai, replace_ai = {}, false
 		for next_ai in helper.child_range(cfg, "ai") do
 			table.insert(ai, T.ai(next_ai))
+			if next_ai.ai_algorithm then
+				replace_ai = true
+			end
 		end
 		if #ai > 0 then
-			wesnoth.append_ai(side.side, ai)
+			if replace_ai then
+				wesnoth.switch_ai(side.side, ai)
+			else
+				wesnoth.append_ai(side.side, ai)
+			end
 		end
 	end
 	for i,key in ipairs(side_changes_needing_redraw) do

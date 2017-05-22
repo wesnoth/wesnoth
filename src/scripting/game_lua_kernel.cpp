@@ -2977,11 +2977,15 @@ static int intf_modify_ai(lua_State *L, const char* action)
 static int intf_switch_ai(lua_State *L)
 {
 	int side_num = luaL_checkinteger(L, 1);
-	std::string file = luaL_checkstring(L, 2);
-	if(!ai::manager::add_ai_for_side_from_file(side_num, file)) {
-		std::string err = formatter() << "Could not load AI for side " << side_num + 1 << " from file " << file;
-		lua_pushlstring(L, err.c_str(), err.length());
-		return lua_error(L);
+	if(lua_isstring(L, 2)) {
+		std::string file = luaL_checkstring(L, 2);
+		if(!ai::manager::add_ai_for_side_from_file(side_num, file)) {
+			std::string err = formatter() << "Could not load AI for side " << side_num << " from file " << file;
+			lua_pushlstring(L, err.c_str(), err.length());
+			return lua_error(L);
+		}
+	} else {
+		ai::manager::add_ai_for_side_from_config(side_num, luaW_checkconfig(L, 2));
 	}
 	return 0;
 }
