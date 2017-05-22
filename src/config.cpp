@@ -804,55 +804,53 @@ void config::get_diff(const config& c, config& res) const
 
 	config* inserts = nullptr;
 
-	attribute_map::const_iterator i;
-	for(i = values_.begin(); i != values_.end(); ++i) {
-		if(i->second.blank()) {
+	for(const auto& v : values_) {
+		if(v.second.blank()) {
 			continue;
 		}
 
-		const attribute_map::const_iterator j = c.values_.find(i->first);
-		if(j == c.values_.end() || (i->second != j->second && !i->second.blank())) {
+		const attribute_map::const_iterator j = c.values_.find(v.first);
+		if(j == c.values_.end() || (v.second != j->second && !v.second.blank())) {
 			if(inserts == nullptr) {
 				inserts = &res.add_child("insert");
 			}
 
-			(*inserts)[i->first] = i->second;
+			(*inserts)[v.first] = v.second;
 		}
 	}
 
 	config* deletes = nullptr;
 
-	for(i = c.values_.begin(); i != c.values_.end(); ++i) {
-		if(i->second.blank()) {
+	for(const auto& v : c.values_) {
+		if(v.second.blank()) {
 			continue;
 		}
 
-		const attribute_map::const_iterator itor = values_.find(i->first);
+		const attribute_map::const_iterator itor = values_.find(v.first);
 		if(itor == values_.end() || itor->second.blank()) {
 			if(deletes == nullptr) {
 				deletes = &res.add_child("delete");
 			}
 
-			(*deletes)[i->first] = "x";
+			(*deletes)[v.first] = "x";
 		}
 	}
 
 	std::vector<std::string> entities;
 
-	child_map::const_iterator ci;
-	for(ci = children_.begin(); ci != children_.end(); ++ci) {
-		entities.push_back(ci->first);
+	for(const auto& child : children_) {
+		entities.push_back(child.first);
 	}
 
-	for(ci = c.children_.begin(); ci != c.children_.end(); ++ci) {
-		if(children_.count(ci->first) == 0) {
-			entities.push_back(ci->first);
+	for(const auto& child : c.children_) {
+		if(children_.count(child.first) == 0) {
+			entities.push_back(child.first);
 		}
 	}
 
-	for(std::vector<std::string>::const_iterator itor = entities.begin(); itor != entities.end(); ++itor) {
-		const child_map::const_iterator itor_a = children_.find(*itor);
-		const child_map::const_iterator itor_b = c.children_.find(*itor);
+	for(const std::string& entity : entities) {
+		const child_map::const_iterator itor_a = children_.find(entity);
+		const child_map::const_iterator itor_b = c.children_.find(entity);
 
 		static const child_list dummy;
 
@@ -878,7 +876,7 @@ void config::get_diff(const config& c, config& res) const
 					config& new_delete = res.add_child("delete_child");
 					buf << bi - ndeletes;
 					new_delete.values_["index"] = buf.str();
-					new_delete.add_child(*itor);
+					new_delete.add_child(entity);
 
 					++ndeletes;
 					++bi;
@@ -890,7 +888,7 @@ void config::get_diff(const config& c, config& res) const
 					config& new_insert = res.add_child("insert_child");
 					buf << ai;
 					new_insert.values_["index"] = buf.str();
-					new_insert.add_child(*itor, *a[ai]);
+					new_insert.add_child(entity, *a[ai]);
 
 					++ai;
 				}
@@ -901,7 +899,7 @@ void config::get_diff(const config& c, config& res) const
 					config& new_change = res.add_child("change_child");
 					buf << bi;
 					new_change.values_["index"] = buf.str();
-					new_change.add_child(*itor, a[ai]->get_diff(*b[bi]));
+					new_change.add_child(entity, a[ai]->get_diff(*b[bi]));
 
 					++ai;
 					++bi;
@@ -1182,8 +1180,8 @@ std::string config::hash() const
 		}
 
 		std::string base_str = val.second.t_str().base_str();
-		for(std::string::const_iterator c = base_str.begin(); c != base_str.end(); ++c) {
-			hash_str[i] ^= *c;
+		for(const char c : base_str) {
+			hash_str[i] ^= c;
 			if(++i == hash_length) {
 				i = 0;
 			}
