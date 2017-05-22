@@ -164,12 +164,6 @@ function helper.get_user_choice(attr, options)
 	return result
 end
 
---! Returns the distance between two tiles given by their WML coordinates.
-function helper.distance_between(...)
-	wesnoth.log("warn", "helper.distance_between is deprecated; use wesnoth.map.distance_between instead")
-	return wesnoth.map.distance_between(...)
-end
-
 local adjacent_offset = {
 	[false] = { {0,-1}, {1,-1}, {1,0}, {0,1}, {-1,0}, {-1,-1} },
 	[true] = { {0,-1}, {1,0}, {1,1}, {0,1}, {-1,1}, {-1,0} }
@@ -317,6 +311,9 @@ end
 
 -- Compatibility and deprecations
 
+helper.distance_between = helper.deprecate(
+	"helper.distance_between is deprecated; use wesnoth.map.distance_between instead",
+	wesnoth.map.distance_between)
 helper.get_child = helper.deprecate(
 	"helper.get_child is deprecated; use wml.get_child instead", wml.get_child)
 helper.get_nth_child = helper.deprecate(
