@@ -133,6 +133,7 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 	userdata_dir(),
 	validcache(false),
 	version(false),
+	report(false),
 	windowed(false),
 	with_replay(false),
 	args_(args.begin() + 1 , args.end()),
@@ -177,6 +178,7 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 		 " Implies --wconsole."
 #endif // _WIN32
 		 )
+		("report,R", "initializes game directories, prints build information suitable for use in bug reports, and exits.")
 		("rng-seed", po::value<unsigned int>(), "seeds the random number generator with number <arg>. Example: --rng-seed 0")
 		("screenshot", po::value<two_strings>()->multitoken(), "takes two arguments: <map> <output>. Saves a screenshot of <map> to <output> without initializing a screen. Editor must be compiled in for this to work."
 #ifdef _WIN32
@@ -435,6 +437,8 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 		username = vm["username"].as<std::string>();
 	if (vm.count("password"))
 		password = vm["password"].as<std::string>();
+	if (vm.count("report"))
+		report = true;
 	if (vm.count("side"))
 		multiplayer_side = parse_to_uint_string_tuples_(vm["side"].as<std::vector<std::string> >());
 	if (vm.count("test"))
