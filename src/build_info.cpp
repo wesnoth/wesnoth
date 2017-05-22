@@ -16,6 +16,9 @@
 
 #include "build_info.hpp"
 
+#include "desktop/version.hpp"
+#include "game_config.hpp"
+#include "filesystem.hpp"
 #include "formatter.hpp"
 #include "gettext.hpp"
 
@@ -341,6 +344,36 @@ std::string optional_features_report()
 
 		o << (f.enabled ? "yes" : "no") << '\n';
 	}
+
+	return o.str();
+}
+
+std::string full_build_report()
+{
+	std::ostringstream o;
+
+	o << "The Battle for Wesnoth version " << game_config::revision << '\n'
+	  << "Running on " << desktop::os_version() << '\n'
+	  << '\n'
+	  << "Game paths\n"
+	  << "==========\n"
+	  << '\n'
+	  << "Data dir:        " << game_config::path << '\n'
+	  << "User config dir: " << filesystem::get_user_config_dir() << '\n'
+	  << "User data dir:   " << filesystem::get_user_data_dir() << '\n'
+	  << "Saves dir:       " << filesystem::get_saves_dir() << '\n'
+	  << "Add-ons dir:     " << filesystem::get_addons_dir() << '\n'
+	  << "Cache dir:       " << filesystem::get_cache_dir() << '\n'
+	  << '\n'
+	  << "Libraries\n"
+	  << "=========\n"
+	  << '\n'
+	  << game_config::library_versions_report()
+	  << '\n'
+	  << "Features\n"
+	  << "========\n"
+	  << '\n'
+	  << game_config::optional_features_report();
 
 	return o.str();
 }

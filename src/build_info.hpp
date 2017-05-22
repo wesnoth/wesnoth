@@ -75,4 +75,9 @@ const std::string& library_name(LIBRARY_ID lib);
  */
 std::string library_versions_report();
 
+/**
+ * Produce a bug report-style info dump.
+ */
+std::string full_build_report();
+
 } // end namespace game_config
