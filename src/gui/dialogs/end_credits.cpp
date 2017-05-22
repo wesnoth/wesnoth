@@ -84,14 +84,13 @@ void end_credits::pre_show(window& window)
 
 	const config& credits_config = about::get_about_config();
 
-	// First, parse all the toplevel [about] tags
-	parse_about_tags(credits_config, ss);
-
-	// Next, parse all the grouped [about] tags (usually by campaign)
 	for(const auto& group : credits_config.child_range("credits_group")) {
 		std::stringstream& group_stream = (group["id"] == focus_on_) ? focus_ss : ss;
 
-		group_stream << "\n" << "<span size='xx-large'>" << group["title"] << "</span>" << "\n";
+		group_stream << "\n";
+		if(group.has_attribute("title")) {
+			group_stream << "<span size='xx-large'>" << group["title"] << "</span>" << "\n";
+		}
 
 		parse_about_tags(group, group_stream);
 	}
