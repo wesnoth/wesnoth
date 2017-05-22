@@ -346,10 +346,10 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 		if(!increase_damage.empty()) {
 			desc.emplace_back(VNGETTEXT(
 				// TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
-				"$number_or_percent damage",
-				"$number_or_percent damage",
+				"<span color=\"$color\">$number_or_percent</span> damage",
+				"<span color=\"$color\">$number_or_percent</span> damage",
 				std::stoi(increase_damage),
-				{{"number_or_percent", utils::print_modifier(increase_damage)}}));
+				{{"number_or_percent", utils::print_modifier(increase_damage)}, {"color", increase_damage[0] == '-' ? "red" : "green"}}));
 		}
 
 		if(!set_damage.empty()) {
@@ -364,10 +364,10 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 		if(!increase_attacks.empty()) {
 			desc.emplace_back(VNGETTEXT(
 				// TRANSLATORS: Current value for WML code increase_attacks, documented in https://wiki.wesnoth.org/EffectWML
-				"$number_or_percent strike",
-				"$number_or_percent strikes",
+				"<span color=\"$color\">$number_or_percent</span> strike",
+				"<span color=\"$color\">$number_or_percent</span> strikes",
 				std::stoi(increase_attacks),
-				{{"number_or_percent", utils::print_modifier(increase_attacks)}}));
+				{{"number_or_percent", utils::print_modifier(increase_attacks)}, {"color", increase_attacks[0] == '-' ? "red" : "green"}}));
 		}
 
 		if(!set_attacks.empty()) {
@@ -382,15 +382,15 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 		if(!set_accuracy.empty()) {
 			desc.emplace_back(VGETTEXT(
 				// TRANSLATORS: Current value for WML code set_accuracy, documented in https://wiki.wesnoth.org/EffectWML
-				"$percent|% accuracy",
-				{{"percent", set_accuracy}}));
+				"$number| accuracy",
+				{{"number", set_accuracy}}));
 		}
 
 		if(!increase_accuracy.empty()) {
 			desc.emplace_back(VGETTEXT(
 				// TRANSLATORS: Current value for WML code increase_accuracy, documented in https://wiki.wesnoth.org/EffectWML
-				"$percent|% accuracy",
-				{{"percent", utils::print_modifier(increase_accuracy)}}));
+				"<span color=\"$color\">$number_or_percent|%</span> accuracy",
+				{{"number_or_percent", utils::print_modifier(increase_accuracy)}, {"color", increase_accuracy[0] == '-' ? "red" : "green"}}));
 		}
 
 		if(!set_parry.empty()) {
@@ -403,8 +403,8 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 		if(!increase_parry.empty()) {
 			desc.emplace_back(VGETTEXT(
 				// TRANSLATORS: Current value for WML code increase_parry, documented in https://wiki.wesnoth.org/EffectWML
-				"$number_or_percent parry",
-				{{"number_or_percent", utils::print_modifier(increase_parry)}}));
+				"<span color=\"$color\">$number_or_percent</span> parry",
+				{{"number_or_percent", utils::print_modifier(increase_parry)}, {"color", increase_parry[0] == '-' ? "red" : "green"}}));
 		}
 
 		if(!set_movement.empty()) {
@@ -419,10 +419,10 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 		if(!increase_movement.empty()) {
 			desc.emplace_back(VNGETTEXT(
 				// TRANSLATORS: Current value for WML code increase_movement, documented in https://wiki.wesnoth.org/EffectWML
-				"$number_or_percent movement point",
-				"$number_or_percent movement points",
+				"<span color=\"$color\">$number_or_percent movement</span> point",
+				"<span color=\"$color\">$number_or_percent movement</span> points",
 				std::stoi(increase_movement),
-				{{"number_or_percent", utils::print_modifier(increase_movement)}}));
+				{{"number_or_percent", utils::print_modifier(increase_movement)}, {"color", increase_movement[0] == '-' ? "red" : "green"}}));
 		}
 
 		*description = utils::format_conjunct_list("", desc);
