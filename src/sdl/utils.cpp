@@ -46,7 +46,7 @@ static SDL_PixelFormat& get_neutral_pixel_format()
 
 		if(first_time) {
 			first_time = false;
-			surface surf(SDL_CreateRGBSurface(SDL_SWSURFACE,1,1,32,SDL_RED_MASK,SDL_GREEN_MASK,
+			surface surf(SDL_CreateRGBSurface(0,1,1,32,SDL_RED_MASK,SDL_GREEN_MASK,
 											  SDL_BLUE_MASK,SDL_ALPHA_MASK));
 			format = *surf->format;
 			format.palette = nullptr;
@@ -62,7 +62,7 @@ surface make_neutral_surface(const surface &surf)
 		return nullptr;
 	}
 
-	surface result = SDL_ConvertSurface(surf,&get_neutral_pixel_format(),SDL_SWSURFACE);
+	surface result = SDL_ConvertSurface(surf,&get_neutral_pixel_format(),0);
 
 	return result;
 }
@@ -75,7 +75,7 @@ surface create_neutral_surface(int w, int h)
 	}
 
 	SDL_PixelFormat format = get_neutral_pixel_format();
-	surface result = SDL_CreateRGBSurface(SDL_SWSURFACE, w, h,
+	surface result = SDL_CreateRGBSurface(0, w, h,
 			format.BitsPerPixel,
 			format.Rmask,
 			format.Gmask,
@@ -1924,7 +1924,7 @@ surface create_compatible_surface(const surface &surf, int width, int height)
 	if(height == -1)
 		height = surf->h;
 
-	surface s = SDL_CreateRGBSurface(SDL_SWSURFACE, width, height, surf->format->BitsPerPixel,
+	surface s = SDL_CreateRGBSurface(0, width, height, surf->format->BitsPerPixel,
 		surf->format->Rmask, surf->format->Gmask, surf->format->Bmask, surf->format->Amask);
 	if (surf->format->palette) {
 		SDL_SetPaletteColors(s->format->palette, surf->format->palette->colors, 0, surf->format->palette->ncolors);

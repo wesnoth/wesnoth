@@ -172,13 +172,13 @@ void CVideo::blit_surface(int x, int y, surface surf, SDL_Rect* srcrect, SDL_Rec
 void CVideo::make_fake()
 {
 	fake_screen_ = true;
-	frameBuffer = SDL_CreateRGBSurface(SDL_SWSURFACE, 16, 16, 24, 0xFF0000, 0xFF00, 0xFF, 0);
+	frameBuffer = SDL_CreateRGBSurface(0, 16, 16, 24, 0xFF0000, 0xFF00, 0xFF, 0);
 	image::set_pixel_format(frameBuffer->format);
 }
 
 void CVideo::make_test_fake(const unsigned width, const unsigned height, const unsigned bpp)
 {
-	frameBuffer = SDL_CreateRGBSurface(SDL_SWSURFACE, width, height, bpp, 0xFF0000, 0xFF00, 0xFF, 0);
+	frameBuffer = SDL_CreateRGBSurface(0, width, height, bpp, 0xFF0000, 0xFF00, 0xFF, 0);
 	image::set_pixel_format(frameBuffer->format);
 
 	fake_interactive = true;
