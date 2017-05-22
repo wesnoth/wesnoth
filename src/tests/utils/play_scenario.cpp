@@ -18,7 +18,6 @@
 #include "tests/utils/game_config_manager.hpp"
 #include "tests/utils/fake_display.hpp"
 
-#include "config_assign.hpp"
 #include "game_display.hpp"
 #include "saved_game.hpp"
 #include "game_initialization/playcampaign.hpp"
