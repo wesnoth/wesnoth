@@ -351,7 +351,7 @@ void calculate_healing(int side, bool update_display)
 		if (!resources::controller->is_skipping_replay() && update_display &&
 		    patient.is_visible_to_team(viewing_team, *resources::gameboard, false) )
 		{
-			unit_list.push_front(heal_unit(patient, healers, healing, curing == POISON_CURE));
+			unit_list.emplace_front(patient, healers, healing, curing == POISON_CURE);
 		}
 		else
 		{
