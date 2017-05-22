@@ -72,9 +72,9 @@ std::string vngettext(const char*, const char*, const char*, int, const utils::s
  */
 
 #ifdef GETTEXT_DOMAIN
-#define	VGETTEXT(msgid, symbols) vgettext(GETTEXT_DOMAIN, msgid, symbols)
-#define	VNGETTEXT(msgid, msgid_plural, count, symbols) vngettext(GETTEXT_DOMAIN, msgid, msgid_plural, count, symbols)
+#define	VGETTEXT(msgid, ...) vgettext(GETTEXT_DOMAIN, msgid, __VA_ARGS__)
+#define	VNGETTEXT(msgid, msgid_plural, count, ...) vngettext(GETTEXT_DOMAIN, msgid, msgid_plural, count, __VA_ARGS__)
 #else
-#define	VGETTEXT(msgid, symbols) vgettext(msgid, symbols)
-#define	VNGETTEXT(msgid, msgid_plural, count, symbols) vngettext(msgid, msgid_plural, count, symbols)
+#define	VGETTEXT(msgid, ...) vgettext(msgid, __VA_ARGS__)
+#define	VNGETTEXT(msgid, msgid_plural, count, ...) vngettext(msgid, msgid_plural, count, __VA_ARGS__)
 #endif
