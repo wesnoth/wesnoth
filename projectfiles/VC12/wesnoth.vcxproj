@@ -743,6 +743,7 @@
     <ClCompile Include="..\..\src\config_cache.cpp" />
     <ClCompile Include="..\..\src\controller_base.cpp" />
     <ClCompile Include="..\..\src\countdown_clock.cpp" />
+    <ClCompile Include="..\..\src\gui\widgets\widget_helpers.cpp" />
     <ClCompile Include="..\..\src\preferences\credentials.cpp" />
     <ClCompile Include="..\..\src\cursor.cpp" />
     <ClCompile Include="..\..\src\desktop\clipboard.cpp">
@@ -3437,6 +3438,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\src\gui\widgets\widget_helpers.hpp" />
     <ClInclude Include="..\..\src\preferences\credentials.hpp" />
     <ClInclude Include="..\..\src\about.hpp" />
     <ClInclude Include="..\..\src\actions\advancement.hpp" />
