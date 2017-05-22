@@ -76,6 +76,7 @@
 			<Add library="libboost_system-mgw51-mt-1_61.a" />
 			<Add library="libboost_thread-mgw51-mt-1_61.a" />
 			<Add library="libboost_zlib-mgw51-mt-1_61.a" />
+			<Add library="libcrypto-1_1" />
 			<Add directory="./" />
 		</Linker>
 		<Unit filename="../../packaging/windows/wesnoth.rc">
@@ -860,8 +861,6 @@
 		<Unit filename="../../src/map/location.hpp" />
 		<Unit filename="../../src/map/map.cpp" />
 		<Unit filename="../../src/map/map.hpp" />
-		<Unit filename="../../src/md5.cpp" />
-		<Unit filename="../../src/md5.hpp" />
 		<Unit filename="../../src/menu_events.cpp" />
 		<Unit filename="../../src/menu_events.hpp" />
 		<Unit filename="../../src/minimap.cpp" />
@@ -905,6 +904,8 @@
 		<Unit filename="../../src/playturn.hpp" />
 		<Unit filename="../../src/playturn_network_adapter.cpp" />
 		<Unit filename="../../src/playturn_network_adapter.hpp" />
+		<Unit filename="../../src/preferences/credentials.cpp" />
+		<Unit filename="../../src/preferences/credentials.hpp" />
 		<Unit filename="../../src/preferences/display.cpp" />
 		<Unit filename="../../src/preferences/display.hpp" />
 		<Unit filename="../../src/preferences/editor.cpp" />
@@ -1129,9 +1130,6 @@
 		<Unit filename="../../src/utils/name_generator_factory.cpp" />
 		<Unit filename="../../src/utils/name_generator_factory.hpp" />
 		<Unit filename="../../src/utils/reference_counter.hpp" />
-		<Unit filename="../../src/utils/sha1.cpp" />
-		<Unit filename="../../src/utils/sha1.hpp" />
-		<Unit filename="../../src/utils/shared_object.hpp" />
 		<Unit filename="../../src/utils/smart_list.hpp" />
 		<Unit filename="../../src/utils/type_trait_aliases.hpp" />
 		<Unit filename="../../src/variable.cpp" />
