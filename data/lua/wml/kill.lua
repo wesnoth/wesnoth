@@ -70,6 +70,13 @@ function wesnoth.wml_actions.kill(cfg)
 		number_killed = number_killed + 1
 	end
 
-	-- TODO: Do I need to check recall lists or  was that covered by the above loop?
+	if (cfg.x == "recall" or cfg.x == nil) and (cfg.y == "recall" or cfg.y == nil) then
+		local dead_men_sleeping = wesnoth.get_recall_units(cfg)
+		for i,unit in ipairs(dead_men_sleeping) do
+			unit:erase()
+		end
+		number_killed = number_killed + #dead_men_sleeping
+	end
+
 	return number_killed
 end
