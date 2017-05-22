@@ -26,6 +26,7 @@
 #include "gui/widgets/scroll_label.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
+#include "gettext.hpp"
 
 #include "utils/functional.hpp"
 
@@ -55,18 +56,16 @@ end_credits::~end_credits()
 	}
 }
 
-static void parse_about_tags(const config& cfg, std::stringstream& ss)
+static void parse_about_tag(const config& cfg, std::stringstream& ss)
 {
-	for(const auto& about : cfg.child_range("about")) {
-		if(!about.has_child("entry")) {
-			continue;
-		}
+	if(!cfg.has_child("entry")) {
+		return;
+	}
 
-		ss << "\n" << "<span size='x-large'>" << about["title"] << "</span>" << "\n";
+	ss << "\n" << "<span size='x-large'>" << cfg["title"] << "</span>" << "\n";
 
-		for(const auto& entry : about.child_range("entry")) {
-			ss << entry["name"] << "\n";
-		}
+	for(const auto& entry : cfg.child_range("entry")) {
+		ss << entry["name"] << "\n";
 	}
 }
 
@@ -92,7 +91,20 @@ void end_credits::pre_show(window& window)
 			group_stream << "<span size='xx-large'>" << group["title"] << "</span>" << "\n";
 		}
 
-		parse_about_tags(group, group_stream);
+		if(group["sort"].to_bool(false)) {
+			auto sections = group.child_range("about");
+			std::vector<config> sorted(sections.begin(), sections.end());
+			std::sort(sorted.begin(), sorted.end(), [](const config& entry1, const config& entry2) {
+				return translation::compare(entry1["title"].str(), entry2["title"].str()) < 0;
+			});
+			for(const auto& about : sorted) {
+				parse_about_tag(about, group_stream);
+			}
+		} else {
+			for(const auto& about : group.child_range("about")) {
+				parse_about_tag(about, group_stream);
+			}
+		}
 	}
 
 	// If a section is focused, move it to the top
