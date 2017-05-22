@@ -1135,6 +1135,7 @@
 		EC64D7661A085F120092EF75 /* mt_rng.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC64D7641A085F120092EF75 /* mt_rng.cpp */; };
 		EC64D7671A085F2F0092EF75 /* seed_rng.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC64D75F1A085CE60092EF75 /* seed_rng.cpp */; };
 		EC64D7681A085F4A0092EF75 /* libboost_random-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC64D75C1A085C990092EF75 /* libboost_random-mt.dylib */; };
+		EC6689811ED3289900D9433A /* widget_helpers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC66897F1ED3289900D9433A /* widget_helpers.cpp */; };
 		EC669C261DFC95AF00172EED /* surface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC669C251DFC95AF00172EED /* surface.cpp */; };
 		EC67F7F01DB3144A0038337E /* constants.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC67F7E91DB3144A0038337E /* constants.cpp */; };
 		EC67F7F11DB3144A0038337E /* font_config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC67F7EB1DB3144A0038337E /* font_config.cpp */; };
@@ -2474,6 +2475,8 @@
 		EC64D75C1A085C990092EF75 /* libboost_random-mt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_random-mt.dylib"; path = "lib/libboost_random-mt.dylib"; sourceTree = "<group>"; };
 		EC64D75F1A085CE60092EF75 /* seed_rng.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = seed_rng.cpp; sourceTree = "<group>"; };
 		EC64D7641A085F120092EF75 /* mt_rng.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mt_rng.cpp; sourceTree = "<group>"; };
+		EC66897F1ED3289900D9433A /* widget_helpers.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = widget_helpers.cpp; sourceTree = "<group>"; };
+		EC6689801ED3289900D9433A /* widget_helpers.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = widget_helpers.hpp; sourceTree = "<group>"; };
 		EC669C251DFC95AF00172EED /* surface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = surface.cpp; sourceTree = "<group>"; };
 		EC67F7E91DB3144A0038337E /* constants.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = constants.cpp; path = font/constants.cpp; sourceTree = "<group>"; };
 		EC67F7EA1DB3144A0038337E /* constants.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = constants.hpp; path = font/constants.hpp; sourceTree = "<group>"; };
@@ -4499,6 +4502,8 @@
 				6216A91C1551CCF700E13C2D /* viewport.hpp */,
 				B5A9BD1F0ECA805A002BE442 /* widget.cpp */,
 				B5A9BD200ECA805A002BE442 /* widget.hpp */,
+				EC66897F1ED3289900D9433A /* widget_helpers.cpp */,
+				EC6689801ED3289900D9433A /* widget_helpers.hpp */,
 				B5A9BD210ECA805A002BE442 /* window.cpp */,
 				B5A9BD220ECA805A002BE442 /* window.hpp */,
 				B54AC6FD0FEA9FA5006F6FBD /* window_private.hpp */,
@@ -5331,6 +5336,7 @@
 				EC62E0B91EA4FB0400BC208E /* multimenu_button.cpp in Sources */,
 				91F860861D90B2E9008FE58F /* mp_staging.cpp in Sources */,
 				9107AE4B1DB3D8FE001927B0 /* standard_colors.cpp in Sources */,
+				EC6689811ED3289900D9433A /* widget_helpers.cpp in Sources */,
 				9107AE4C1DB3D8FE001927B0 /* text_formatting.cpp in Sources */,
 				91EED9661DE0D13D00759295 /* size_lock.cpp in Sources */,
 				9157B6021DE0FCBB00E46192 /* statistics_dialog.cpp in Sources */,
