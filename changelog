@@ -3,15 +3,31 @@ Version 1.13.8+dev:
    * Updated translations: British English, Italian
  * Lua API:
    * Add wesnoth.format function to substitute variables into a string.
+   * Add wesnoth.format_conjunct_list and wesnoth.format_disjunct_list.
+   * New global "wml" table groups together all the functions for working
+     with WML tables, and its subtable "wml.variable" groups functions
+	 for working with WML variables. Most of these are functions previously
+	 found only in helper.lua; they no longer need a require to use.
+   * Warnings for using deprecated Lua functions now only appear in debug mode.
  * Multiplayer:
    * When set to remember your password, Wesnoth now encrypts it. It is still
      possible to obtain the password from preferences, but it's no longer as
      trivial as before.
  * User Interface:
    * Enable the use of tab to switch between text fields in most dialogs.
+   * Color-code modifiers in trait tooltips
+   * Translation teams in credits are now listed in alphabetical order of the
+     localized language name (rather than the English language name).
  * Miscellaneous and Bug Fixes:
    * Add --report/-R command line switch for printing the same report from the
      Game Version dialog's clipboard function to stdout.
+ * WML Engine
+   * If ai_algorithm is used in [modify_side][ai], it now replaces the whole AI
+     with the contents of [modify_side][ai], instead of appending these parameters.
+   * New [credits_group] tag can be used by non-campaign addons to group several
+     [about] tags under a single header. This is a toplevel tag, not a subtag
+	 of [era] or [modification].
+   * An empty id key in SUF no longer matches all units; instead, it matches none.
 
 Version 1.13.8:
   * Campaigns:
