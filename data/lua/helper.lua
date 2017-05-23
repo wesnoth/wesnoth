@@ -277,7 +277,7 @@ end
 function helper.deprecate(msg, f)
 	return function(...)
 		if msg then
-			if not message_shown and wesnoth.game_config.debug then
+			if wesnoth.game_config.debug then
 				wesnoth.message("warning", msg)
 			end
 			wesnoth.log("warn", msg)
