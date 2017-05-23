@@ -777,7 +777,8 @@ namespace detail {
 	template<typename K, typename V, typename... Rest>
 	struct config_construct_unpacker<K, V, Rest...>
 	{
-		void visit(config& cfg, K&& key, V&& val, Rest... fwd)
+		template<typename K2 = K, typename V2 = V>
+		void visit(config& cfg, K2&& key, V2&& val, Rest... fwd)
 		{
 			cfg.insert(std::forward<K>(key), std::forward<V>(val));
 			config_construct_unpacker<Rest...> unpack;
@@ -788,7 +789,8 @@ namespace detail {
 	template<typename T, typename... Rest>
 	struct config_construct_unpacker<T, config, Rest...>
 	{
-		void visit(config& cfg, T&& tag, config&& child, Rest... fwd)
+		template<typename T2 = T, typename C = config>
+		void visit(config& cfg, T2&& tag, C&& child, Rest... fwd)
 		{
 			cfg.add_child(std::forward<T>(tag), std::forward<config>(child));
 			config_construct_unpacker<Rest...> unpack;
@@ -799,7 +801,8 @@ namespace detail {
 	template<typename T, typename... Rest>
 	struct config_construct_unpacker<T, config&, Rest...>
 	{
-		void visit(config& cfg, T&& tag, config& child, Rest... fwd)
+		template<typename T2 = T>
+		void visit(config& cfg, T2&& tag, config& child, Rest... fwd)
 		{
 			cfg.add_child(std::forward<T>(tag), std::forward<config>(child));
 			config_construct_unpacker<Rest...> unpack;
