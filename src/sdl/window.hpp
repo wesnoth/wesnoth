@@ -159,15 +159,12 @@ public:
 	 */
 	operator SDL_Window*();
 
-
-private:
 	/**
 	 * Conversion operator to a SDL_Renderer*.
-	 *
-	 * @todo Evaluate whether the function should become public or not.
 	 */
 	operator SDL_Renderer*();
 
+private:
 	/***** ***** ***** Members. ***** ***** *****/
 
 	/** The @ref SDL_Window we own. */
