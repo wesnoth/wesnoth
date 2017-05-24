@@ -1234,20 +1234,9 @@ int game_lua_kernel::impl_game_config_get(lua_State *L)
 	char const *m = luaL_checkstring(L, 2);
 
 	// Find the corresponding attribute.
-	return_int_attrib("base_income", game_config::base_income);
-	return_int_attrib("village_income", game_config::village_income);
-	return_int_attrib("village_support", game_config::village_support);
-	return_int_attrib("poison_amount", game_config::poison_amount);
-	return_int_attrib("rest_heal_amount", game_config::rest_heal_amount);
-	return_int_attrib("recall_cost", game_config::recall_cost);
-	return_int_attrib("kill_experience", game_config::kill_experience);
 	return_int_attrib("last_turn", tod_man().number_of_turns());
-	return_string_attrib("version", game_config::version);
 	return_string_attrib("next_scenario", gamedata().next_scenario());
 	return_string_attrib("theme", gamedata().get_theme());
-	return_bool_attrib("debug", game_config::debug);
-	return_bool_attrib("debug_lua", game_config::debug_lua);
-	return_bool_attrib("mp_debug", game_config::mp_debug);
 	return_string_attrib("scenario_id", gamedata().get_id());
 	return_vector_string_attrib("defeat_music", gamedata().get_defeat_music());
 	return_vector_string_attrib("victory_music", gamedata().get_victory_music());
@@ -1270,7 +1259,7 @@ int game_lua_kernel::impl_game_config_get(lua_State *L)
 		}
 		return_string_attrib("eras", eras_list);
 	}
-	return 0;
+	return lua_kernel_base::impl_game_config_get(L);
 }
 
 /**
@@ -1301,9 +1290,7 @@ int game_lua_kernel::impl_game_config_set(lua_State *L)
 	);
 	modify_vector_string_attrib("defeat_music", gamedata().set_defeat_music(std::move(value)));
 	modify_vector_string_attrib("victory_music", gamedata().set_victory_music(std::move(value)));
-	std::string err_msg = "unknown modifiable property of game_config: ";
-	err_msg += m;
-	return luaL_argerror(L, 2, err_msg.c_str());
+	return lua_kernel_base::impl_game_config_set(L);
 }
 
 /**
@@ -4110,22 +4097,6 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	cmd_log_ << "Adding ai elements table...\n";
 
 	ai::lua_ai_context::init(L);
-
-	// Create the game_config variable with its metatable.
-	cmd_log_ << "Adding game_config table...\n";
-
-	lua_getglobal(L, "wesnoth");
-	lua_newuserdata(L, 0);
-	lua_createtable(L, 0, 3);
-	lua_pushcfunction(L, &dispatch<&game_lua_kernel::impl_game_config_get>);
-	lua_setfield(L, -2, "__index");
-	lua_pushcfunction(L, &dispatch<&game_lua_kernel::impl_game_config_set>);
-	lua_setfield(L, -2, "__newindex");
-	lua_pushstring(L, "game config");
-	lua_setfield(L, -2, "__metatable");
-	lua_setmetatable(L, -2);
-	lua_setfield(L, -2, "game_config");
-	lua_pop(L, 1);
 
 	// Create the current variable with its metatable.
 	cmd_log_ << "Adding wesnoth current table...\n";

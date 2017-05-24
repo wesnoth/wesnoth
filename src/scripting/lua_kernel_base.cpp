@@ -516,6 +516,22 @@ lua_kernel_base::lua_kernel_base()
 	lua_setfield(L, -2, "map");
 	lua_pop(L, 1);
 
+	// Create the game_config variable with its metatable.
+	cmd_log_ << "Adding game_config table...\n";
+
+	lua_getglobal(L, "wesnoth");
+	lua_newuserdata(L, 0);
+	lua_createtable(L, 0, 3);
+	lua_pushcfunction(L, &dispatch<&lua_kernel_base::impl_game_config_get>);
+	lua_setfield(L, -2, "__index");
+	lua_pushcfunction(L, &dispatch<&lua_kernel_base::impl_game_config_set>);
+	lua_setfield(L, -2, "__newindex");
+	lua_pushstring(L, "game config");
+	lua_setfield(L, -2, "__metatable");
+	lua_setmetatable(L, -2);
+	lua_setfield(L, -2, "game_config");
+	lua_pop(L, 1);
+
 	// Add mersenne twister rng wrapper
 	cmd_log_ << "Adding rng tables...\n";
 	lua_rng::load_tables(L);
@@ -775,6 +791,28 @@ int lua_kernel_base::intf_kernel_type(lua_State* L)
 {
 	lua_push(L, my_name());
 	return 1;
+}
+int lua_kernel_base::impl_game_config_get(lua_State* L)
+{
+	char const *m = luaL_checkstring(L, 2);
+	return_int_attrib("base_income", game_config::base_income);
+	return_int_attrib("village_income", game_config::village_income);
+	return_int_attrib("village_support", game_config::village_support);
+	return_int_attrib("poison_amount", game_config::poison_amount);
+	return_int_attrib("rest_heal_amount", game_config::rest_heal_amount);
+	return_int_attrib("recall_cost", game_config::recall_cost);
+	return_int_attrib("kill_experience", game_config::kill_experience);
+	return_string_attrib("version", game_config::version);
+	return_bool_attrib("debug", game_config::debug);
+	return_bool_attrib("debug_lua", game_config::debug_lua);
+	return_bool_attrib("mp_debug", game_config::mp_debug);
+	return 0;
+}
+int lua_kernel_base::impl_game_config_set(lua_State* L)
+{
+	std::string err_msg = "unknown modifiable property of game_config: ";
+	err_msg += luaL_checkstring(L, 2);
+	return luaL_argerror(L, 2, err_msg.c_str());
 }
 /**
  * Loads the "package" package into the Lua environment.

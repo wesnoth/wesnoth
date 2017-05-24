@@ -139,6 +139,9 @@ protected:
 	int intf_require(lua_State * L);
 
 	int intf_kernel_type(lua_State* L);
+
+	virtual int impl_game_config_get(lua_State* L);
+	virtual int impl_game_config_set(lua_State* L);
 private:
 	static lua_kernel_base*& get_lua_kernel_base_ptr(lua_State *L);
 	std::vector<std::tuple<std::string, std::string>> registered_widget_definitions_;
