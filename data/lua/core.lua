@@ -144,127 +144,129 @@ function wml.shallow_parsed(cfg)
 	end
 end
 
---[========[Basic variable access]========]
+if wesnoth.kernel_type() == "Game Lua Kernel" then
+	--[========[Basic variable access]========]
 
-wml.variable = {}
-wml.variable.get = wesnoth.get_variable
-wml.variable.set = wesnoth.set_variable
-wml.variable.get_all = wesnoth.get_all_vars
+	wml.variable = {}
+	wml.variable.get = wesnoth.get_variable
+	wml.variable.set = wesnoth.set_variable
+	wml.variable.get_all = wesnoth.get_all_vars
 
---[========[Variable Proxy Table]========]
+	--[========[Variable Proxy Table]========]
 
-local variable_mt = {
-	__metatable = "WML variable proxy"
-}
+	local variable_mt = {
+		__metatable = "WML variable proxy"
+	}
 
-local function get_variable_proxy(k)
-	local v = wesnoth.get_variable(k)
-	if type(v) == "table" then
-		v = setmetatable({ __varname = k }, variable_mt)
+	local function get_variable_proxy(k)
+		local v = wesnoth.get_variable(k)
+		if type(v) == "table" then
+			v = setmetatable({ __varname = k }, variable_mt)
+		end
+		return v
 	end
-	return v
-end
 
-local function set_variable_proxy(k, v)
-	if getmetatable(v) == "WML variable proxy" then
-		v = wesnoth.get_variable(v.__varname)
+	local function set_variable_proxy(k, v)
+		if getmetatable(v) == "WML variable proxy" then
+			v = wesnoth.get_variable(v.__varname)
+		end
+		wesnoth.set_variable(k, v)
 	end
-	wesnoth.set_variable(k, v)
-end
 
-function variable_mt.__index(t, k)
-	local i = tonumber(k)
-	if i then
-		k = t.__varname .. '[' .. i .. ']'
-	else
-		k = t.__varname .. '.' .. k
-	end
-	return get_variable_proxy(k)
-end
-
-function variable_mt.__newindex(t, k, v)
-	local i = tonumber(k)
-	if i then
-		k = t.__varname .. '[' .. i .. ']'
-	else
-		k = t.__varname .. '.' .. k
-	end
-	set_variable_proxy(k, v)
-end
-
-local root_variable_mt = {
-	__metatable = "WML variables",
-	__index    = function(t, k)    return get_variable_proxy(k)    end,
-	__newindex = function(t, k, v)
-		if type(v) == "function" then
-			-- User-friendliness when _G is overloaded early.
-			-- FIXME: It should be disabled outside the "preload" event.
-			rawset(t, k, v)
+	function variable_mt.__index(t, k)
+		local i = tonumber(k)
+		if i then
+			k = t.__varname .. '[' .. i .. ']'
 		else
-			set_variable_proxy(k, v)
+			k = t.__varname .. '.' .. k
+		end
+		return get_variable_proxy(k)
+	end
+
+	function variable_mt.__newindex(t, k, v)
+		local i = tonumber(k)
+		if i then
+			k = t.__varname .. '[' .. i .. ']'
+		else
+			k = t.__varname .. '.' .. k
+		end
+		set_variable_proxy(k, v)
+	end
+
+	local root_variable_mt = {
+		__metatable = "WML variables",
+		__index    = function(t, k)    return get_variable_proxy(k)    end,
+		__newindex = function(t, k, v)
+			if type(v) == "function" then
+				-- User-friendliness when _G is overloaded early.
+				-- FIXME: It should be disabled outside the "preload" event.
+				rawset(t, k, v)
+			else
+				set_variable_proxy(k, v)
+			end
+		end
+	}
+
+	wml.variable.proxy = setmetatable({}, root_variable_mt)
+
+	--[========[Variable Array Access]========]
+
+	local function resolve_variable_context(ctx, err_hint)
+		if ctx == nil then
+			return {get = wesnoth.get_variable, set = wesnoth.set_variable}
+		elseif type(ctx) == 'number' and ctx > 0 and ctx <= #wesnoth.sides then
+			return resolve_variable_context(wesnoth.sides[ctx])
+		elseif type(ctx) == 'string' then
+			-- TODO: Treat it as a namespace for a global (persistent) variable
+			-- (Need Lua API for accessing them first, though.)
+		elseif getmetatable(ctx) == "unit" then
+			return {
+				get = function(path) return ctx.variables[path] end,
+				set = function(path, val) ctx.variables[path] = val end,
+			}
+		elseif getmetatable(ctx) == "side" then
+			return {
+				get = function(path) return wesnoth.get_side_variable(ctx.side, path) end,
+				set = function(path, val) wesnoth.set_side_variable(ctx.side, path, val) end,
+			}
+		elseif getmetatable(ctx) == "unit variables" or getmetatable(ctx) == "side variables" then
+			return {
+				get = function(path) return ctx[path] end,
+				set = function(path, val) ctx[path] = val end,
+			}
+		end
+		error(string.format("Invalid context for %s: expected nil, side, or unit", err_hint), 3)
+	end
+
+	--! Fetches all the WML container variables with name @a var.
+	--! @returns a table containing all the variables (starting at index 1).
+	function wml.variable.get_array(var, context)
+		context = resolve_variable_context(context, "get_variable_array")
+		local result = {}
+		for i = 1, context.get(var .. ".length") do
+			result[i] = context.get(string.format("%s[%d]", var, i - 1))
+		end
+		return result
+	end
+
+	--! Puts all the elements of table @a t inside a WML container with name @a var.
+	function wml.variable.set_array(var, t, context)
+		context = resolve_variable_context(context, "set_variable_array")
+		context.set(var)
+		for i, v in ipairs(t) do
+			context.set(string.format("%s[%d]", var, i - 1), v)
 		end
 	end
-}
 
-wml.variable.proxy = setmetatable({}, root_variable_mt)
-
---[========[Variable Array Access]========]
-
-local function resolve_variable_context(ctx, err_hint)
-	if ctx == nil then
-		return {get = wesnoth.get_variable, set = wesnoth.set_variable}
-	elseif type(ctx) == 'number' and ctx > 0 and ctx <= #wesnoth.sides then
-		return resolve_variable_context(wesnoth.sides[ctx])
-	elseif type(ctx) == 'string' then
-		-- TODO: Treat it as a namespace for a global (persistent) variable
-		-- (Need Lua API for accessing them first, though.)
-	elseif getmetatable(ctx) == "unit" then
-		return {
-			get = function(path) return ctx.variables[path] end,
-			set = function(path, val) ctx.variables[path] = val end,
-		}
-	elseif getmetatable(ctx) == "side" then
-		return {
-			get = function(path) return wesnoth.get_side_variable(ctx.side, path) end,
-			set = function(path, val) wesnoth.set_side_variable(ctx.side, path, val) end,
-		}
-	elseif getmetatable(ctx) == "unit variables" or getmetatable(ctx) == "side variables" then
-		return {
-			get = function(path) return ctx[path] end,
-			set = function(path, val) ctx[path] = val end,
-		}
+	--! Creates proxies for all the WML container variables with name @a var.
+	--! This is similar to helper.get_variable_array, except that the elements
+	--! can be used for writing too.
+	--! @returns a table containing all the variable proxies (starting at index 1).
+	function wml.variable.get_proxy_array(var)
+		local result = {}
+		for i = 1, wesnoth.get_variable(var .. ".length") do
+			result[i] = get_variable_proxy(string.format("%s[%d]", var, i - 1))
+		end
+		return result
 	end
-	error(string.format("Invalid context for %s: expected nil, side, or unit", err_hint), 3)
-end
-
---! Fetches all the WML container variables with name @a var.
---! @returns a table containing all the variables (starting at index 1).
-function wml.variable.get_array(var, context)
-	context = resolve_variable_context(context, "get_variable_array")
-	local result = {}
-	for i = 1, context.get(var .. ".length") do
-		result[i] = context.get(string.format("%s[%d]", var, i - 1))
-	end
-	return result
-end
-
---! Puts all the elements of table @a t inside a WML container with name @a var.
-function wml.variable.set_array(var, t, context)
-	context = resolve_variable_context(context, "set_variable_array")
-	context.set(var)
-	for i, v in ipairs(t) do
-		context.set(string.format("%s[%d]", var, i - 1), v)
-	end
-end
-
---! Creates proxies for all the WML container variables with name @a var.
---! This is similar to helper.get_variable_array, except that the elements
---! can be used for writing too.
---! @returns a table containing all the variable proxies (starting at index 1).
-function wml.variable.get_proxy_array(var)
-	local result = {}
-	for i = 1, wesnoth.get_variable(var .. ".length") do
-		result[i] = get_variable_proxy(string.format("%s[%d]", var, i - 1))
-	end
-	return result
 end
