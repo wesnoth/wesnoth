@@ -671,22 +671,22 @@ int window::show(const bool restore, const unsigned auto_close_timeout)
 		suspend_drawing_ = true;
 
 		// restore area
-		if(restore_) {
-			SDL_Rect rect = get_rectangle();
-			sdl_blit(restorer_, 0, video_.getSurface(), &rect);
-			font::undraw_floating_labels(video_.getSurface());
-		}
+	//	if(restore_) {
+	//		SDL_Rect rect = get_rectangle();
+	//		sdl_blit(restorer_, 0, video_.getSurface(), &rect);
+	//		font::undraw_floating_labels(video_.getSurface());
+	//	}
 		throw;
 	}
 
 	suspend_drawing_ = true;
 
 	// restore area
-	if(restore_) {
-		SDL_Rect rect = get_rectangle();
-		sdl_blit(restorer_, 0, video_.getSurface(), &rect);
-		font::undraw_floating_labels(video_.getSurface());
-	}
+	//if(restore_) {
+	//	SDL_Rect rect = get_rectangle();
+	//	sdl_blit(restorer_, 0, video_.getSurface(), &rect);
+	//	font::undraw_floating_labels(video_.getSurface());
+	//}
 
 	if(text_box_base* tb = dynamic_cast<text_box_base*>(event_distributor_->keyboard_focus())) {
 		tb->interrupt_composition();
@@ -697,12 +697,15 @@ int window::show(const bool restore, const unsigned auto_close_timeout)
 
 void window::draw()
 {
+	//const size_t start = SDL_GetTicks();
+
 	/***** ***** ***** ***** Init ***** ***** ***** *****/
 	// Prohibited from drawing?
 	if(suspend_drawing_) {
 		return;
 	}
 
+	// TODO: remove
 	surface& frame_buffer = video_.getSurface();
 
 	/***** ***** Layout and get dirty list ***** *****/
@@ -710,33 +713,35 @@ void window::draw()
 		// Restore old surface. In the future this phase will not be needed
 		// since all will be redrawn when needed with dirty rects. Since that
 		// doesn't work yet we need to undraw the window.
-		if(restore_ && restorer_) {
-			SDL_Rect rect = get_rectangle();
-			sdl_blit(restorer_, 0, frame_buffer, &rect);
-		}
+		//if(restore_ && restorer_) {
+		//	SDL_Rect rect = get_rectangle();
+		//	sdl_blit(restorer_, 0, frame_buffer, &rect);
+		//}
 
 		layout();
 
 		// Get new surface for restoring
-		SDL_Rect rect = get_rectangle();
+		//SDL_Rect rect = get_rectangle();
 
 		// We want the labels underneath the window so draw them and use them
 		// as restore point.
 		if(is_toplevel_) {
-			font::draw_floating_labels(frame_buffer);
+			//font::draw_floating_labels(frame_buffer);
 		}
 
 		if(restore_) {
-			restorer_ = get_surface_portion(frame_buffer, rect);
+			//restorer_ = get_surface_portion(frame_buffer, rect);
 		}
 
 		// Need full redraw so only set ourselves dirty.
-		dirty_list_.emplace_back(1, this);
+		//dirty_list_.emplace_back(1, this);
+
+		need_layout_ = false;
 	} else {
 
 		// Let widgets update themselves, which might dirty some things.
 		layout_children();
-
+#if 0
 		// Now find the widgets that are dirty.
 		std::vector<widget*> call_stack;
 		if(!new_widgets) {
@@ -746,20 +751,24 @@ void window::draw()
 			dirty_list_.clear();
 			dirty_list_.emplace_back(1, this);
 		}
+#endif
 	}
 
-	if (dirty_list_.empty()) {
-		return;
-	}
+	//if (dirty_list_.empty()) {
+	//	return;
+	//}
+
+	dirty_list_.clear();
+	dirty_list_.emplace_back(1, this);
 
 	for(auto & item : dirty_list_)
 	{
 
 		assert(!item.empty());
 
-		const SDL_Rect dirty_rect
-				= new_widgets ? screen_area()
-							  : item.back()->get_dirty_rectangle();
+		//const SDL_Rect dirty_rect
+		//		= new_widgets ? screen_area()
+		//					  : item.back()->get_dirty_rectangle();
 
 // For testing we disable the clipping rect and force the entire screen to
 // update. This way an item rendered at the wrong place is directly visible.
@@ -767,7 +776,7 @@ void window::draw()
 		dirty_list_.clear();
 		dirty_list_.emplace_back(1, this);
 #else
-		clip_rect_setter clip(frame_buffer, &dirty_rect);
+		//clip_rect_setter clip(frame_buffer, &dirty_rect);
 #endif
 
 		/*
@@ -813,8 +822,8 @@ void window::draw()
 
 		// Restore.
 		if(restore_) {
-			SDL_Rect rect = get_rectangle();
-			sdl_blit(restorer_, 0, frame_buffer, &rect);
+			//SDL_Rect rect = get_rectangle();
+			//sdl_blit(restorer_, 0, frame_buffer, &rect);
 		}
 
 		// Background.
@@ -843,8 +852,10 @@ void window::draw()
 	dirty_list_.clear();
 
 	std::vector<widget*> call_stack;
-	populate_dirty_list(*this, call_stack);
-	assert(dirty_list_.empty());
+
+	//std::cerr << "draw took, " << (SDL_GetTicks() - start) << " ms" << std::endl;
+	//populate_dirty_list(*this, call_stack);
+	//assert(dirty_list_.empty());
 
 	if(callback_next_draw_ != nullptr) {
 		callback_next_draw_();
@@ -854,12 +865,14 @@ void window::draw()
 
 void window::undraw()
 {
+#if 0
 	if(restore_ && restorer_) {
 		SDL_Rect rect = get_rectangle();
 		sdl_blit(restorer_, 0, video_.getSurface(), &rect);
 		// Since the old area might be bigger as the new one, invalidate
 		// it.
 	}
+#endif // 0
 }
 
 window::invalidate_layout_blocker::invalidate_layout_blocker(window& window)
@@ -954,6 +967,7 @@ void window::remove_linked_widget(const std::string& id, const widget* wgt)
 
 void window::layout()
 {
+	std::cerr << "calling layout" << std::endl;
 	/***** Initialize. *****/
 
 	std::shared_ptr<const window_definition::resolution>

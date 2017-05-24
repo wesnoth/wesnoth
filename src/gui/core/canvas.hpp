@@ -64,14 +64,15 @@ public:
 		/**
 		 * Draws the canvas.
 		 *
-		 * @param canvas          The resulting image will be blitted upon this
-		 *                        canvas.
 		 * @param variables       The canvas can have formulas in it's
 		 *                        definition, this parameter contains the values
 		 *                        for these formulas.
 		 */
-		virtual void draw(surface& canvas, SDL_Renderer* renderer,
-		                  wfl::map_formula_callable& variables) = 0;
+		virtual void draw(
+				const int canvas_w,
+				const int canvas_h,
+				SDL_Renderer* renderer,
+				wfl::map_formula_callable& variables) = 0;
 
 		bool immutable() const
 		{
@@ -160,11 +161,6 @@ public:
 		return h_;
 	}
 
-	surface& surf()
-	{
-		return canvas_;
-	}
-
 	void set_variable(const std::string& key, const wfl::variant& value)
 	{
 		variables_.add(key, value);
@@ -196,9 +192,10 @@ private:
 	/** Height of the canvas. */
 	unsigned h_;
 
-	/** The surface we draw all items on. */
-	surface canvas_;
+	/** The texture onto which items are drawn. */
+	SDL_Texture* texture_;
 
+	/** A pointer to the window renderer. */
 	SDL_Renderer* renderer_;
 
 	/** The variables of the canvas. */
