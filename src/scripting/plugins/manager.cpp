@@ -48,6 +48,7 @@ plugins_manager::plugins_manager(application_lua_kernel * kernel)
 	assert(!singleton);
 	singleton = this;
 
+	kernel_->load_core();
 	add_plugin("Null Plugin", "return function() end");
 	start_plugin(0);
 }

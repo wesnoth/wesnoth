@@ -553,14 +553,6 @@ lua_kernel_base::lua_kernel_base()
 		cmd_log_ << "Error: failed to load ilua.\n";
 	}
 	lua_settop(L, 0);
-
-	cmd_log_ << "Loading core...\n";
-	luaW_getglobal(L, "wesnoth", "require");
-	lua_pushstring(L, "lua/core.lua");
-	if(!protected_call(1, 1)) {
-		cmd_log_ << "Error: Failed to load core.\n";
-	}
-	lua_settop(L, 0);
 }
 
 lua_kernel_base::~lua_kernel_base()
@@ -796,6 +788,19 @@ void lua_kernel_base::load_package()
 	lua_pushcfunction(L, luaopen_package);
 	lua_pushstring(L, "package");
 	lua_call(L, 1, 0);
+}
+
+void lua_kernel_base::load_core()
+{
+	lua_State* L = mState;
+	lua_settop(L, 0);
+	cmd_log_ << "Loading core...\n";
+	luaW_getglobal(L, "wesnoth", "require");
+	lua_pushstring(L, "lua/core.lua");
+	if(!protected_call(1, 1)) {
+		cmd_log_ << "Error: Failed to load core.\n";
+	}
+	lua_settop(L, 0);
 }
 
 /**

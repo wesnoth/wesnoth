@@ -43,6 +43,10 @@ public:
 
 	/** Loads the `package` library into lua environment. Only in allow in `unsafe` modes. */
 	void load_package();
+	/** Loads the "core" library into the Lua environment. Without this, most Wesnoth Lua won't work.
+	 * Cannot be called from the constructor because it needs to call virtual functions.
+	 */
+	void load_core();
 
 	/** Get tab completion strings */
 	std::vector<std::string> get_global_var_names();

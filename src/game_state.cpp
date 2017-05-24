@@ -59,6 +59,7 @@ game_state::game_state(const config & level, play_controller & pc, const ter_dat
 	server_request_number_(level["server_request_number"].to_int()),
 	first_human_team_(-1)
 {
+	lua_kernel_->load_core();
 	if(const config& endlevel_cfg = level.child("end_level_data")) {
 		end_level_data el_data;
 		el_data.read(endlevel_cfg);
@@ -80,6 +81,7 @@ game_state::game_state(const config & level, play_controller & pc, game_board& b
 	init_side_done_(level["init_side_done"].to_bool(false)),
 	first_human_team_(-1)
 {
+	lua_kernel_->load_core();
 	events_manager_->read_scenario(level);
 	if(const config& endlevel_cfg = level.child("end_level_data")) {
 		end_level_data el_data;
