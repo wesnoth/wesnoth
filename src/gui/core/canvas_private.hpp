@@ -30,9 +30,11 @@ public:
 	explicit line_shape(const config& cfg);
 
 	/** Implement shape::draw(). */
-	void draw(surface& canvas,
-			  SDL_Renderer* renderer,
-			  wfl::map_formula_callable& variables) override;
+	void draw(
+			const int canvas_w,
+			const int canvas_h,
+			SDL_Renderer* renderer,
+			wfl::map_formula_callable& variables) override;
 
 private:
 	typed_formula<unsigned> x1_, /**< The start x coordinate of the line. */
@@ -66,9 +68,11 @@ public:
 	explicit rectangle_shape(const config& cfg);
 
 	/** Implement shape::draw(). */
-	void draw(surface& canvas,
-			  SDL_Renderer* renderer,
-			  wfl::map_formula_callable& variables) override;
+	void draw(
+			const int canvas_w,
+			const int canvas_h,
+			SDL_Renderer* renderer,
+			wfl::map_formula_callable& variables) override;
 
 private:
 	typed_formula<int> x_, /**< The x coordinate of the rectangle. */
@@ -111,10 +115,11 @@ public:
 	explicit round_rectangle_shape(const config& cfg);
 
 	/** Implement shape::draw(). */
-	void draw(surface& canvas,
-			  SDL_Renderer* renderer,
-			  wfl::map_formula_callable& variables) override;
-
+	void draw(
+			const int canvas_w,
+			const int canvas_h,
+			SDL_Renderer* renderer,
+			wfl::map_formula_callable& variables) override;
 private:
 	typed_formula<int> x_, /**< The x coordinate of the rectangle. */
 			y_,			   /**< The y coordinate of the rectangle. */
@@ -157,9 +162,11 @@ public:
 	explicit circle_shape(const config& cfg);
 
 	/** Implement shape::draw(). */
-	void draw(surface& canvas,
-			  SDL_Renderer* renderer,
-			  wfl::map_formula_callable& variables) override;
+	void draw(
+			const int canvas_w,
+			const int canvas_h,
+			SDL_Renderer* renderer,
+			wfl::map_formula_callable& variables) override;
 
 private:
 	typed_formula<unsigned> x_, /**< The center x coordinate of the circle. */
@@ -186,10 +193,11 @@ public:
 	image_shape(const config& cfg, wfl::action_function_symbol_table& functions);
 
 	/** Implement shape::draw(). */
-	void draw(surface& canvas,
-			  SDL_Renderer* renderer,
-			  wfl::map_formula_callable& variables) override;
-
+	void draw(
+			const int canvas_w,
+			const int canvas_h,
+			SDL_Renderer* renderer,
+			wfl::map_formula_callable& variables) override;
 private:
 	typed_formula<unsigned> x_, /**< The x coordinate of the image. */
 			y_,			   /**< The y coordinate of the image. */
@@ -252,9 +260,11 @@ public:
 	explicit text_shape(const config& cfg);
 
 	/** Implement shape::draw(). */
-	void draw(surface& canvas,
-			  SDL_Renderer* renderer,
-			  wfl::map_formula_callable& variables) override;
+	void draw(
+			const int canvas_w,
+			const int canvas_h,
+			SDL_Renderer* renderer,
+			wfl::map_formula_callable& variables) override;
 
 private:
 	typed_formula<unsigned> x_, /**< The x coordinate of the text. */

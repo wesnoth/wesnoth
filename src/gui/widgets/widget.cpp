@@ -431,12 +431,12 @@ void widget::populate_dirty_list(window& caller,
 	}
 
 	call_stack.push_back(this);
-	if(is_dirty_) {
+	//if(is_dirty_) {
 		caller.add_to_dirty_list(call_stack);
-	} else {
+	//} else {
 		// virtual function which only does something for container items.
-		child_populate_dirty_list(caller, call_stack);
-	}
+	//	child_populate_dirty_list(caller, call_stack);
+	//}
 }
 
 void
