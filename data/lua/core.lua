@@ -16,11 +16,10 @@ function wesnoth.confirm(title, msg)
 	return wesnoth.show_message_box(title, msg, "yes_no", true)
 end
 
-wml = {}
-wml.variable = {}
 
 --[========[Config Manipulation Functions]========]
 
+wml = {}
 wml.tovconfig = wesnoth.tovconfig
 wml.tostring = wesnoth.debug
 
@@ -147,6 +146,7 @@ end
 
 --[========[Basic variable access]========]
 
+wml.variable = {}
 wml.variable.get = wesnoth.get_variable
 wml.variable.set = wesnoth.set_variable
 wml.variable.get_all = wesnoth.get_all_vars
@@ -261,7 +261,7 @@ end
 --! This is similar to helper.get_variable_array, except that the elements
 --! can be used for writing too.
 --! @returns a table containing all the variable proxies (starting at index 1).
-function wml.get_proxy_array(var)
+function wml.variable.get_proxy_array(var)
 	local result = {}
 	for i = 1, wesnoth.get_variable(var .. ".length") do
 		result[i] = get_variable_proxy(string.format("%s[%d]", var, i - 1))
