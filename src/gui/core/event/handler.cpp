@@ -31,6 +31,8 @@
 
 #include <boost/range/adaptor/reversed.hpp>
 
+#include <SDL.h>
+
 /**
  * @todo The items below are not implemented yet.
  *
@@ -532,16 +534,36 @@ void sdl_event_handler::activate()
 
 void sdl_event_handler::draw()
 {
+	// Don't display this event since it floods the screen
+	// DBG_GUI_E << "Firing " << DRAW << ".\n";
+
+	// Don't draw anything if we have no dispatcher.
+	if(dispatchers_.empty()) {
+		return;
+	}
+
+	CVideo& video = dynamic_cast<window&>(*dispatchers_.back()).video();
+
+	/**
+	 * Clear the renderer before beginning the draw cycle.
+	 */
+	SDL_Renderer* renderer = *video.get_window();
+
+	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+	SDL_RenderClear(renderer);
+
+	/**
+	 * @todo Need to evaluate which windows really to redraw.
+	 *
+	 * For now we use a hack, but would be nice to rewrite it for 1.9/1.11.
+	 */
 	for(auto dispatcher : dispatchers_)
 	{
 		dispatcher->fire(DRAW, dynamic_cast<widget&>(*dispatcher));
 	}
 
-	if(!dispatchers_.empty()) {
-		CVideo& video = dynamic_cast<window&>(*dispatchers_.back()).video();
-
-		video.flip();
-	}
+	// Finally, render the screen.
+	video.flip();
 }
 
 void sdl_event_handler::draw_everything()
