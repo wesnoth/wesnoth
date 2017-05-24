@@ -55,14 +55,14 @@ compresses a file in bzip2 format, stores it as
 and removes
 .IR infile .
 .TP
-.BI -c,\ --campaign\ [ id_campaign ]
+.BI -c[ id_campaign ],\ --campaign[ =id_campaign ]
 goes directly to the campaign with id <id_campaign>. A selection menu will
 appear if no id was specified.
 .TP
 .BI --core \ id_core
 overrides the loaded core with the one whose id is specified.
 .TP
-.BI --campaign-difficulty\ [ difficulty ]
+.BI --campaign-difficulty[ =difficulty ]
 The difficulty of the specified campaign (1 to max). If none specified,
 the campaign difficulty selection widget will appear.
 .TP
@@ -127,7 +127,7 @@ uses language
 Example:
 .B --language ang_GB@latin
 .TP
-.BI --log- level = domain1 , domain2 , ...
+.BI --log-level= domain1 , domain2 , ...
 sets the severity level of the log domains.
 .B all
 can be used to match any log domain. Available levels:
@@ -145,7 +145,7 @@ of this level or more severe will cause the unit test to fail regardless
 of the victory result. Only relevant when used with
 .BR -u .
 .TP
-.BI --logdomains\ [ filter ]
+.BI --logdomains[ =filter ]
 lists defined log domains (only the ones containing
 .B filter
 if used) and exits
@@ -214,7 +214,7 @@ is in the define list the "data/core" directory won't be preprocessed.
 used only by the '--preprocess' command.
 Specifies a file that contains [preproc_define]s to be included before preprocessing.
 .TP
-.BI --preprocess-output-macros\ [ target-file ]
+.BI --preprocess-output-macros[ =target-file ]
 used only by the '--preprocess' command.
 Will output all preprocessed macros in the target file. If the file is not specified
 the output will be file '_MACROS_.cfg' in the target directory of preprocess's command.
@@ -240,7 +240,7 @@ Example:
 .BI --screenshot \ map \  output
 saves a screenshot of <map> to <output> without initializing a screen.
 .TP
-.BI -s,\ --server\ [ host ]
+.BI -s[ host ],\ --server[ =host ]
 connects to the specified host if any, otherwise connect to the first server in preferences. Example:
 .B --server server.wesnoth.org
 .TP
@@ -251,7 +251,7 @@ runs the game with the GUI, overriding any implicit
 .B --strict-validation
 validation errors are treated as fatal errors.
 .TP
-.BI -t,\ --test\ [ scenario_id ]
+.BI -t[ scenario_id ],\ --test[ =scenario_id ]
 runs the game in a small test scenario. The scenario should be one defined with a
 .B [test]
 WML tag. The default is "test". Implies
