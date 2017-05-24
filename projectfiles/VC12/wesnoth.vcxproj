@@ -743,8 +743,6 @@
     <ClCompile Include="..\..\src\config_cache.cpp" />
     <ClCompile Include="..\..\src\controller_base.cpp" />
     <ClCompile Include="..\..\src\countdown_clock.cpp" />
-    <ClCompile Include="..\..\src\gui\widgets\widget_helpers.cpp" />
-    <ClCompile Include="..\..\src\preferences\credentials.cpp" />
     <ClCompile Include="..\..\src\cursor.cpp" />
     <ClCompile Include="..\..\src\desktop\clipboard.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Desktop\</ObjectFileName>
@@ -2357,6 +2355,13 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\widgets\widget_helpers.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\gui\widgets\window.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
@@ -2525,6 +2530,13 @@
     <ClCompile Include="..\..\src\playturn.cpp" />
     <ClCompile Include="..\..\src\playturn_network_adapter.cpp" />
     <ClCompile Include="..\..\src\play_controller.cpp" />
+    <ClCompile Include="..\..\src\preferences\credentials.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Preferences\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Preferences\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Preferences\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Preferences\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Preferences\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\preferences\display.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Preferences\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Preferences\</ObjectFileName>
@@ -3438,8 +3450,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\gui\widgets\widget_helpers.hpp" />
-    <ClInclude Include="..\..\src\preferences\credentials.hpp" />
     <ClInclude Include="..\..\src\about.hpp" />
     <ClInclude Include="..\..\src\actions\advancement.hpp" />
     <ClInclude Include="..\..\src\actions\attack.hpp" />
@@ -3805,6 +3815,7 @@
     <ClInclude Include="..\..\src\gui\widgets\vertical_scrollbar.hpp" />
     <ClInclude Include="..\..\src\gui\widgets\viewport.hpp" />
     <ClInclude Include="..\..\src\gui\widgets\widget.hpp" />
+    <ClInclude Include="..\..\src\gui\widgets\widget_helpers.hpp" />
     <ClInclude Include="..\..\src\gui\widgets\window.hpp" />
     <ClInclude Include="..\..\src\gui\widgets\window_private.hpp" />
     <ClInclude Include="..\..\src\halo.hpp" />
@@ -3855,6 +3866,7 @@
     <ClInclude Include="..\..\src\playturn.hpp" />
     <ClInclude Include="..\..\src\playturn_network_adapter.hpp" />
     <ClInclude Include="..\..\src\play_controller.hpp" />
+    <ClInclude Include="..\..\src\preferences\credentials.hpp" />
     <ClInclude Include="..\..\src\preferences\display.hpp" />
     <ClInclude Include="..\..\src\preferences\editor.hpp" />
     <ClInclude Include="..\..\src\preferences\game.hpp" />

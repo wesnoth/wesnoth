@@ -530,6 +530,9 @@
     <ClCompile Include="..\..\src\gui\widgets\widget.cpp">
       <Filter>Gui\Widgets</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\widgets\widget_helpers.cpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\gui\widgets\window.cpp">
       <Filter>Gui\Widgets</Filter>
     </ClCompile>
@@ -1184,6 +1187,9 @@
     <ClCompile Include="..\..\src\game_events\pump.cpp">
       <Filter>Game_Events</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\game_events\wmi_manager.cpp">
+      <Filter>Game_Events</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\hotkey\command_executor.cpp">
       <Filter>Hotkeys</Filter>
     </ClCompile>
@@ -1514,6 +1520,9 @@
     <ClCompile Include="..\..\src\font\text_surface.cpp">
       <Filter>Font</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\preferences\credentials.cpp">
+      <Filter>Preferences</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\preferences\display.cpp">
       <Filter>Preferences</Filter>
     </ClCompile>
@@ -1528,15 +1537,6 @@
     </ClCompile>
     <ClCompile Include="..\..\src\preferences\lobby.cpp">
       <Filter>Preferences</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\game_events\wmi_manager.cpp">
-      <Filter>Game_Events</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\preferences\credentials.cpp">
-      <Filter>Preferences</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\gui\widgets\widget_helpers.cpp">
-      <Filter>Gui\Widgets</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1919,6 +1919,9 @@
       <Filter>Gui\Widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\widgets\widget.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\widget_helpers.hpp">
       <Filter>Gui\Widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\widgets\window.hpp">
@@ -2569,6 +2572,9 @@
     <ClInclude Include="..\..\src\game_events\pump.hpp">
       <Filter>Game_Events</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\game_events\wmi_manager.hpp">
+      <Filter>Game_Events</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\hotkey\command_executor.hpp">
       <Filter>Hotkeys</Filter>
     </ClInclude>
@@ -2961,6 +2967,9 @@
     <ClInclude Include="..\..\src\font\pango\stream_ops.hpp">
       <Filter>Font\Pango</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\preferences\credentials.hpp">
+      <Filter>Preferences</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\preferences\display.hpp">
       <Filter>Preferences</Filter>
     </ClInclude>
@@ -2975,15 +2984,6 @@
     </ClInclude>
     <ClInclude Include="..\..\src\preferences\lobby.hpp">
       <Filter>Preferences</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\game_events\wmi_manager.hpp">
-      <Filter>Game_Events</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\preferences\credentials.hpp">
-      <Filter>Preferences</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\gui\widgets\widget_helpers.hpp">
-      <Filter>Gui\Widgets</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
