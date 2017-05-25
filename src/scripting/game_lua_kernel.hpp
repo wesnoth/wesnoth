@@ -193,7 +193,7 @@ public:
 
 	void set_game_display(game_display * gd);
 
-	virtual std::string my_name() { return "Game Lua Kernel"; }
+	virtual std::string my_name() override { return "Game Lua Kernel"; }
 
 	std::string apply_effect(const std::string& name, unit& u, const config& cfg, bool need_apply);
 	void initialize(const config& level);
@@ -210,7 +210,7 @@ public:
 	bool run_filter(char const *name, int nArgs);
 	bool run_wml_conditional(const std::string&, vconfig const &);
 
-	virtual void log_error(char const* msg, char const* context = "Lua error");
+	virtual void log_error(char const* msg, char const* context = "Lua error") override;
 
 	ai::lua_ai_context* create_lua_ai_context(char const *code, ai::engine_lua *engine);
 	ai::lua_ai_action_handler* create_lua_ai_action_handler(char const *code, ai::lua_ai_context &context);
