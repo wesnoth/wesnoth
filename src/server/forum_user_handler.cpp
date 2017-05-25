@@ -75,12 +75,12 @@ bool fuh::login(const std::string& name, const std::string& password, const std:
 	}
 
 	// Check hash prefix, if different than $H$ hash is invalid
-	if(!utils::is_valid_hash(hash)) {
+	if(!utils::md5::is_valid_hash(hash)) {
 		ERR_UH << "Invalid hash for user '" << name << "'" << std::endl;
 		return false;
 	}
 
-	std::string valid_hash = utils::create_hash(hash.substr(12,34), seed);
+	std::string valid_hash = utils::md5(hash.substr(12,34), seed).hex_digest();
 
 	if(password == valid_hash) return true;
 
@@ -103,7 +103,7 @@ std::string fuh::create_pepper(const std::string& name) {
 		return "";
 	}
 
-	if(!utils::is_valid_hash(hash)) return "";
+	if(!utils::md5::is_valid_hash(hash)) return "";
 
 	return hash.substr(0,12);
 }
