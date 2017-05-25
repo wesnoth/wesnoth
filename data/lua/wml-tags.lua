@@ -815,7 +815,7 @@ end
 wml_actions.unstore_unit = function(cfg)
 	local variable = cfg.variable or helper.wml_error("[unstore_unit] missing required 'variable' attribute")
 	local unit_cfg = wesnoth.get_variable(variable) or helper.wml_error("[unstore_unit]: variable '" .. variable .. "' doesn't exist")
-	if type(variable) ~= "table" or variable.type == nil then
+	if type(unit_cfg) ~= "table" or unit_cfg.type == nil then
 		helper.wml_error("[unstore_unit]: variable '" .. variable .. "' doesn't contain unit data")
 	end
 	local unit = wesnoth.create_unit(unit_cfg)
