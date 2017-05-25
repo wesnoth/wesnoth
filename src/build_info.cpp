@@ -23,7 +23,6 @@
 #include "gettext.hpp"
 
 #include <algorithm>
-#include <cstdint>
 
 #include <SDL.h>
 #include <SDL_image.h>
