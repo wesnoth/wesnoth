@@ -24,6 +24,8 @@ enum LIBRARY_ID
 {
 	LIB_BOOST,
 
+	LIB_CRYPTO,
+
 	LIB_CAIRO,
 	LIB_PANGO,
 
