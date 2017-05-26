@@ -27,7 +27,7 @@ namespace gui2
 class progress_bar : public styled_widget
 {
 public:
-	progress_bar() : styled_widget(COUNT), percentage_(static_cast<unsigned>(-1))
+	progress_bar() : styled_widget(), percentage_(static_cast<unsigned>(-1))
 	{
 		// Force canvas update
 		set_percentage(0);
@@ -64,7 +64,6 @@ private:
 	 */
 	enum state_t {
 		ENABLED,
-		COUNT
 	};
 
 	/** The percentage done. */

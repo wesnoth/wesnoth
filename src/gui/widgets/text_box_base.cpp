@@ -33,7 +33,7 @@ namespace gui2
 {
 
 text_box_base::text_box_base()
-	: styled_widget(COUNT)
+	: styled_widget()
 	, state_(ENABLED)
 	, text_()
 	, selection_start_(0)

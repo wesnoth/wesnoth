@@ -120,7 +120,6 @@ public:
 		DISABLED,
 		PRESSED,
 		FOCUSED,
-		COUNT
 	};
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/

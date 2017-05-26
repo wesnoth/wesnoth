@@ -37,7 +37,7 @@ namespace gui2
 REGISTER_WIDGET(toggle_button)
 
 toggle_button::toggle_button()
-	: styled_widget(COUNT)
+	: styled_widget()
 	, state_(ENABLED)
 	, state_num_(0)
 	, retval_(0)

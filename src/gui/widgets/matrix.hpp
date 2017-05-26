@@ -51,7 +51,6 @@ protected:
 	enum state_t {
 		ENABLED,
 		DISABLED,
-		COUNT
 	};
 
 private:
@@ -70,7 +69,7 @@ class control_NEW : public styled_widget, public STATE
 public:
 	control_NEW(const implementation::builder_styled_widget& builder,
 				 const std::string& control_type)
-		: styled_widget(builder, STATE::COUNT, control_type)
+		: styled_widget(builder, control_type)
 
 	{
 	}

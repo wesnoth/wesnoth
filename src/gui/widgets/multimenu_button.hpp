@@ -156,7 +156,6 @@ private:
 		DISABLED,
 		PRESSED,
 		FOCUSED,
-		COUNT
 	};
 
 	void set_state(const state_t state);

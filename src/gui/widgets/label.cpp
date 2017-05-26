@@ -41,7 +41,7 @@ namespace gui2
 REGISTER_WIDGET(label)
 
 label::label()
-		: styled_widget(COUNT)
+		: styled_widget()
 		, state_(ENABLED)
 		, can_wrap_(false)
 		, characters_per_line_(0)

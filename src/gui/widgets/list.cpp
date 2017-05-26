@@ -43,7 +43,7 @@ list_view::list_view(const bool has_minimum,
 			 const generator_base::tplacement placement,
 			 const bool select,
 			 const builder_grid_const_ptr list_builder)
-	: container_base(2) // FIXME magic number
+	: container_base()
 	, state_(ENABLED)
 	, generator_(nullptr)
 	, list_builder_(list_builder)

@@ -38,7 +38,7 @@ namespace gui2
 REGISTER_WIDGET(menu_button)
 
 menu_button::menu_button()
-	: styled_widget(COUNT)
+	: styled_widget()
 	, selectable_item()
 	, state_(ENABLED)
 	, retval_(0)

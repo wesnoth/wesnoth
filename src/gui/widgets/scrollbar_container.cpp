@@ -66,8 +66,8 @@ const std::map<std::string, scrollbar_base::scroll_mode>& scroll_lookup()
 
 } // namespace
 
-scrollbar_container::scrollbar_container(const unsigned canvas_count)
-	: container_base(canvas_count)
+scrollbar_container::scrollbar_container()
+	: container_base()
 	, state_(ENABLED)
 	, vertical_scrollbar_mode_(AUTO_VISIBLE_FIRST_RUN)
 	, horizontal_scrollbar_mode_(AUTO_VISIBLE_FIRST_RUN)

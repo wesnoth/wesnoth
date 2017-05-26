@@ -219,7 +219,6 @@ private:
 	enum state_t {
 		ENABLED,
 		DISABLED,
-		COUNT
 	};
 
 	/**

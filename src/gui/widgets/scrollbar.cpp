@@ -28,7 +28,7 @@ namespace gui2
 {
 
 scrollbar_base::scrollbar_base()
-	: styled_widget(COUNT)
+	: styled_widget()
 	, state_(ENABLED)
 	, item_count_(0)
 	, item_position_(0)

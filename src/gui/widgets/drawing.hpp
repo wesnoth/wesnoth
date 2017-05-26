@@ -35,7 +35,7 @@ namespace gui2
 class drawing : public styled_widget
 {
 public:
-	drawing() : styled_widget(COUNT), best_size_(0, 0)
+	drawing() : styled_widget(), best_size_(0, 0)
 	{
 	}
 
@@ -97,7 +97,6 @@ private:
 	 */
 	enum state_t {
 		ENABLED,
-		COUNT
 	};
 
 	/** When we're used as a fixed size item, this holds the best size. */

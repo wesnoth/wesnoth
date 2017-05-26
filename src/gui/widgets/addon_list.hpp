@@ -39,7 +39,7 @@ class addon_list : public container_base
 
 public:
 	addon_list()
-		: container_base(1)
+		: container_base()
 		, addon_vector_()
 		, install_status_visibility_(visibility::visible)
 		, install_buttons_visibility_(visibility::invisible)

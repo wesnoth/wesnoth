@@ -64,7 +64,7 @@ listbox::listbox(const bool has_minimum,
 				   const bool has_maximum,
 				   const generator_base::placement placement,
 				   const bool select)
-	: scrollbar_container(2) // FIXME magic number
+	: scrollbar_container()
 	, generator_(generator_base::build(has_minimum, has_maximum, placement, select))
 	, is_horizonal_(placement == generator_base::horizontal_list)
 	, list_builder_(nullptr)

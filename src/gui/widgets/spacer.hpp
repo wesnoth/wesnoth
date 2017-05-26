@@ -38,7 +38,7 @@ class spacer : public styled_widget
 {
 public:
 	spacer(const std::string& w = "0", const std::string& h = "0")
-		: styled_widget(0)
+		: styled_widget()
 		, width_(w)
 		, height_(h)
 	{

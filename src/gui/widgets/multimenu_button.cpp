@@ -40,7 +40,7 @@ namespace gui2
 REGISTER_WIDGET(multimenu_button)
 
 multimenu_button::multimenu_button()
-	: styled_widget(COUNT)
+	: styled_widget()
 	, state_(ENABLED)
 	, retval_(0)
 	, values_()

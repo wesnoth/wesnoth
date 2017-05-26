@@ -35,7 +35,7 @@ namespace gui2
 class minimap : public styled_widget
 {
 public:
-	minimap() : styled_widget(1), map_data_(), terrain_(nullptr)
+	minimap() : styled_widget(), map_data_(), terrain_(nullptr)
 	{
 	}
 

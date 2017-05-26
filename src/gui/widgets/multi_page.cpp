@@ -33,7 +33,7 @@ namespace gui2
 
 REGISTER_WIDGET(multi_page)
 multi_page::multi_page()
-	: container_base(0)
+	: container_base()
 	, generator_(
 			  generator_base::build(true, true, generator_base::independent, false))
 	, page_builders_()

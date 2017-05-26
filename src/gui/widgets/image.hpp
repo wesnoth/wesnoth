@@ -28,7 +28,7 @@ namespace gui2
 class image : public styled_widget
 {
 public:
-	image() : styled_widget(COUNT)
+	image() : styled_widget()
 	{
 	}
 
@@ -89,7 +89,6 @@ private:
 	 */
 	enum state_t {
 		ENABLED,
-		COUNT
 	};
 
 	/** See @ref styled_widget::get_control_type. */

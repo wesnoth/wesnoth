@@ -33,7 +33,7 @@ class container_base : public styled_widget
 	friend class debug_layout_graph;
 
 public:
-	explicit container_base(const unsigned canvas_count);
+	container_base();
 
 	/**
 	 * Returns the client rect.

@@ -38,7 +38,7 @@ namespace gui2
 REGISTER_WIDGET(tree_view)
 
 tree_view::tree_view(const std::vector<node_definition>& node_definitions)
-	: scrollbar_container(2)
+	: scrollbar_container()
 	, node_definitions_(node_definitions)
 	, indentation_step_size_(0)
 	, need_layout_(false)

@@ -28,8 +28,8 @@
 namespace gui2
 {
 
-container_base::container_base(const unsigned canvas_count)
-	: styled_widget(canvas_count), grid_()
+container_base::container_base()
+	: styled_widget(), grid_()
 {
 	grid_.set_parent(this);
 	connect_signal<event::REQUEST_PLACEMENT>(

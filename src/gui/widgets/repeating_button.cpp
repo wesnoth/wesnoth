@@ -36,7 +36,7 @@ namespace gui2
 REGISTER_WIDGET(repeating_button)
 
 repeating_button::repeating_button()
-	: styled_widget(COUNT), clickable_item(), state_(ENABLED), repeat_timer_(0)
+	: styled_widget(), clickable_item(), state_(ENABLED), repeat_timer_(0)
 {
 	connect_signal<event::MOUSE_ENTER>(std::bind(
 			&repeating_button::signal_handler_mouse_enter, this, _2, _3));

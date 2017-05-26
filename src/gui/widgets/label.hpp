@@ -85,7 +85,6 @@ private:
 	enum state_t {
 		ENABLED,
 		DISABLED,
-		COUNT
 	};
 
 	void set_state(const state_t state);

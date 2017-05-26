@@ -40,7 +40,7 @@ namespace gui2
 REGISTER_WIDGET(scroll_label)
 
 scroll_label::scroll_label(bool wrap, const PangoAlignment text_alignment)
-	: scrollbar_container(COUNT)
+	: scrollbar_container()
 	, state_(ENABLED)
 	, wrap_on_(wrap)
 	, text_alignment_(text_alignment)

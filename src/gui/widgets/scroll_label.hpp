@@ -80,7 +80,6 @@ private:
 	enum state_t {
 		ENABLED,
 		DISABLED,
-		COUNT
 	};
 
 	// It's not needed for now so keep it disabled, no definition exists yet.

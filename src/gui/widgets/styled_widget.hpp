@@ -36,18 +36,15 @@ class styled_widget : public widget
 
 public:
 	/** @deprecated Used the second overload. */
-	explicit styled_widget(const unsigned canvas_count);
+	styled_widget();
 
 	/**
 	 * Constructor.
 	 *
 	 * @param builder             The builder object with the settings for the
 	 *                            object.
-	 *
-	 * @param canvas_count        The number of canvasses in the styled_widget.
 	 */
 	styled_widget(const implementation::builder_styled_widget& builder,
-			 const unsigned canvas_count,
 			 const std::string& control_type);
 
 	/**

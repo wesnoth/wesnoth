@@ -34,7 +34,7 @@ namespace gui2
 REGISTER_WIDGET(stacked_widget)
 
 stacked_widget::stacked_widget()
-	: container_base(1)
+	: container_base()
 	, generator_(generator_base::build(false, false, generator_base::independent, false))
 	, selected_layer_(-1)
 {

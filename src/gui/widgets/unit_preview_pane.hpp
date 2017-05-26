@@ -42,7 +42,7 @@ class unit_preview_pane : public container_base
 
 public:
 	unit_preview_pane()
-		: container_base(1)
+		: container_base()
 		, current_type_()
 		, icon_type_(nullptr)
 		, icon_race_(nullptr)

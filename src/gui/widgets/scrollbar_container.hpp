@@ -50,7 +50,7 @@ class scrollbar_container : public container_base
 	friend struct scrollbar_container_implementation;
 
 public:
-	explicit scrollbar_container(const unsigned canvas_count);
+	scrollbar_container();
 
 	~scrollbar_container()
 	{
@@ -455,7 +455,6 @@ private:
 	enum state_t {
 		ENABLED,
 		DISABLED,
-		COUNT
 	};
 
 	/**

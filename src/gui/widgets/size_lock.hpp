@@ -37,7 +37,7 @@ class size_lock : public container_base
 
 public:
 	size_lock() :
-		container_base(1),
+		container_base(),
 		widget_(nullptr)
 	{}
 

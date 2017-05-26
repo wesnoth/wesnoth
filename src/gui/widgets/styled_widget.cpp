@@ -43,14 +43,14 @@ namespace gui2
 
 // ------------ WIDGET -----------{
 
-styled_widget::styled_widget(const unsigned canvas_count)
+styled_widget::styled_widget()
 	: definition_("default")
 	, label_()
 	, use_markup_(false)
 	, use_tooltip_on_label_overflow_(true)
 	, tooltip_()
 	, help_message_()
-	, canvas_(canvas_count)
+	, canvas_()
 	, config_(nullptr)
 	, renderer_()
 	, text_maximum_width_(0)
@@ -69,7 +69,6 @@ styled_widget::styled_widget(const unsigned canvas_count)
 }
 
 styled_widget::styled_widget(const implementation::builder_styled_widget& builder,
-				   const unsigned canvas_count,
 				   const std::string& control_type)
 	: widget(builder)
 	, definition_(builder.definition)
@@ -78,7 +77,7 @@ styled_widget::styled_widget(const implementation::builder_styled_widget& builde
 	, use_tooltip_on_label_overflow_(builder.use_tooltip_on_label_overflow)
 	, tooltip_(builder.tooltip)
 	, help_message_(builder.help)
-	, canvas_(canvas_count)
+	, canvas_()
 	, config_(nullptr)
 	, renderer_()
 	, text_maximum_width_(0)
@@ -460,18 +459,19 @@ void styled_widget::impl_draw_foreground(surface& /*frame_buffer*/
 
 void styled_widget::definition_load_configuration(const std::string& control_type)
 {
-	assert(!config());
+	assert(!config_);
 
 	set_config(get_control(control_type, definition_));
-	if(get_canvases().size() != config()->state.size())
-	{
-		// TODO: Some widgets (toggle panel, toggle button) have a variable canvas count which is determined by its definition.
-		// I think we should remove the canvas_count from tcontrols constructor and always read it from the definition.
-		DBG_GUI_L << "Corrected canvas count to " << config()->state.size() << std::endl;
-		get_canvases() = std::vector<canvas>(config()->state.size());
-	}
-	for(size_t i = 0; i < get_canvases().size(); ++i) {
-		get_canvas(i) = config()->state[i].canvas_;
+
+	/**
+	 * Most widgets have a single canvas. However, some widgets such as toggle_panel
+	 * and toggle_button have a variable canvas count determined by their definitions.
+	 */
+	canvas_.resize(config_->state.size());
+
+	// Fill in each canvas.
+	for(size_t i = 0; i < canvas_.size(); ++i) {
+		canvas_[i] = config_->state[i].canvas_;
 	}
 
 	update_canvas();

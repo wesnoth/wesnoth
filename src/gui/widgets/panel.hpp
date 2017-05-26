@@ -36,10 +36,8 @@ class panel : public container_base
 public:
 	/**
 	 * Constructor.
-	 *
-	 * @param canvas_count        The canvas count for styled_widget.
 	 */
-	explicit panel(const unsigned canvas_count = 2) : container_base(canvas_count)
+	panel() : container_base()
 	{
 	}
 

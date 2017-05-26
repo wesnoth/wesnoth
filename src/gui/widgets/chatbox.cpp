@@ -53,7 +53,7 @@ namespace gui2
 REGISTER_WIDGET(chatbox)
 
 chatbox::chatbox()
-	: container_base(1)
+	: container_base()
 	, roomlistbox_(nullptr)
 	, chat_log_container_(nullptr)
 	, chat_input_(nullptr)

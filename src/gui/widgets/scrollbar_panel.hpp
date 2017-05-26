@@ -42,11 +42,9 @@ class scrollbar_panel : public scrollbar_container
 public:
 	/**
 	 * Constructor.
-	 *
-	 * @param canvas_count        The canvas count for styled_widget.
 	 */
-	explicit scrollbar_panel(const unsigned canvas_count = 2)
-		: scrollbar_container(canvas_count)
+	scrollbar_panel()
+		: scrollbar_container()
 	{
 	}
 
