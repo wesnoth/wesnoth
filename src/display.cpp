@@ -1862,8 +1862,8 @@ void display::draw_minimap_units()
 				, round_double(u_w)
 				, round_double(u_h)
 		};
-		const Uint32 mapped_col = SDL_MapRGB(video().getSurface()->format,col.r,col.g,col.b);
-		sdl::fill_rect(video().getSurface(), &r, mapped_col);
+
+		sdl::fill_rectangle(r, col);
 	}
 }
 

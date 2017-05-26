@@ -104,7 +104,7 @@ private:
 
 	void pass_event_to_target(const SDL_Event& event);
 
-	void draw_cursor(int pos, CVideo &video) const;
+	void draw_cursor(int pos) const;
 	void update_text_cache(bool reset = false, const color_t& color =font::NORMAL_COLOR);
 	surface add_text_line(const ucs4::string& text, const color_t& color =font::NORMAL_COLOR);
 	bool is_selection();

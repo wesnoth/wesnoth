@@ -168,7 +168,7 @@ void textbox::set_cursor_pos(const int cursor_pos)
 	set_dirty(true);
 }
 
-void textbox::draw_cursor(int pos, CVideo &video) const
+void textbox::draw_cursor(int pos) const
 {
 	if(show_cursor_ && editable_ && enabled()) {
 		SDL_Rect rect {
@@ -178,8 +178,7 @@ void textbox::draw_cursor(int pos, CVideo &video) const
 				, location().h
 		};
 
-		surface frame_buffer = video.getSurface();
-		sdl::fill_rect(frame_buffer,&rect,SDL_MapRGB(frame_buffer->format,255,255,255));
+		sdl::fill_rectangle(rect, {255, 255, 255, 255});
 	}
 }
 
@@ -253,7 +252,7 @@ void textbox::draw_contents()
 		}
 	}
 
-	draw_cursor((cursor_pos_ == 0 ? 0 : cursor_pos_ - 1), video());
+	draw_cursor(cursor_pos_ == 0 ? 0 : cursor_pos_ - 1);
 }
 
 void textbox::set_editable(bool value)
