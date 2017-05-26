@@ -182,7 +182,7 @@ void multimenu_button::update_label()
 		if(selected.size() > static_cast<size_t>(max_shown_)) {
 			const int excess = selected.size() - max_shown_;
 			selected.resize(max_shown_ + 1);
-			selected.back() = VNGETTEXT("multimenu excess^1 other", "$excess others", excess, {{"excess", std::to_string(excess)}});
+			selected.back() = VNGETTEXT("multimenu^$excess other", "$excess others", excess, {{"excess", std::to_string(excess)}});
 		}
 		set_label(utils::format_conjunct_list(_("multimenu^None Selected"), selected));
 	}
