@@ -18,12 +18,6 @@
 
 namespace sdl
 {
-
-SDL_Rect create_rect(const int x, const int y, const int w, const int h)
-{
-	return {x, y, w, h};
-}
-
 bool point_in_rect(int x, int y, const SDL_Rect& rect)
 {
 	return x >= rect.x && y >= rect.y && x < rect.x + rect.w && y < rect.y + rect.h;

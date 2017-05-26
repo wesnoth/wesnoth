@@ -34,12 +34,15 @@ namespace sdl
 CONSTEXPR const SDL_Rect empty_rect { 0, 0, 0, 0 };
 
 /**
- * Creates an empty SDL_Rect.
+ * Creates an SDL_Rect with the given dimensions.
  *
- * Since SDL_Rect doesn't have a constructor it's not possible to create it as
- * a temporary for a function parameter. This functions overcomes this limit.
+ * This is a simple wrapper in order to avoid the narrowing conversion warnings
+ * that occur when using aggregate initialization and non-int values.
  */
-SDL_Rect create_rect(const int x, const int y, const int w, const int h);
+inline SDL_Rect create_rect(const int x, const int y, const int w, const int h)
+{
+	return {x, y, w, h};
+}
 
 /**
  * Tests whether a point is inside a rectangle.
