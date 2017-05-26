@@ -260,7 +260,55 @@ static int impl_track_eq(lua_State* L) {
 		return 1;
 	}
 	lua_pushboolean(L, false);
-	return 1;
+	return 0;
+}
+
+static int intf_music_get_current(lua_State* L) {
+    lua_music_track track = lua_music_track(sound::get_current_track());
+    config cfg;
+
+    cfg["name"] = track->id();
+    cfg["title"] = track->title();
+    cfg["append"] = track->append();
+    cfg["shuffle"] = track->shuffle();
+    cfg["once"] = track->play_once();
+    cfg["immediate"] = track->immediate();
+    cfg["ms_before"] = track->ms_before();
+    cfg["ms_after"] = track->ms_after();
+    cfg["index"] = sound::get_current_track();
+    luaW_pushconfig(L, cfg);
+    return 1;
+}
+
+static int intf_music_get_previous(lua_State* L) {
+    std::shared_ptr<sound::music_track> track = sound::get_previous_music_track();
+    config cfg;
+
+// check that there exists a previous song - ie: no songs in a new playlist exist
+    if(track != nullptr)
+    {
+        cfg["name"] = track->id();
+        cfg["title"] = track->title();
+        cfg["append"] = track->append();
+        cfg["shuffle"] = track->shuffle();
+        cfg["once"] = track->play_once();
+        cfg["immediate"] = track->immediate();
+        cfg["ms_before"] = track->ms_before();
+        cfg["ms_after"] = track->ms_after();
+    }
+    else
+    {
+        cfg["name"] = "";
+        cfg["title"] = "";
+        cfg["append"] = "";
+        cfg["shuffle"] = "";
+        cfg["once"] = "";
+        cfg["immediate"] = "";
+        cfg["ms_before"] = "";
+        cfg["ms_after"] = "";
+    }
+    luaW_pushconfig(L, cfg);
+    return 1;
 }
 
 namespace lua_audio {
@@ -279,6 +327,8 @@ namespace lua_audio {
 			{ "remove", intf_music_remove },
 			{ "next", intf_music_next },
 			{ "force_refresh", intf_music_commit },
+			{ "get_current", intf_music_get_current },
+			{ "get_previous", intf_music_get_previous },
 			{ nullptr, nullptr },
 		};
 		luaL_setfuncs(L, pl_callbacks, 0);

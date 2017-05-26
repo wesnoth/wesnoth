@@ -177,6 +177,7 @@ std::vector<std::string> played_before;
 std::vector<std::shared_ptr<sound::music_track>> current_track_list;
 std::shared_ptr<sound::music_track> current_track;
 unsigned int current_track_index = 0;
+std::shared_ptr<sound::music_track> previous_track;
 
 std::vector<std::shared_ptr<sound::music_track>>::const_iterator find_track(const sound::music_track& track)
 {
@@ -192,6 +193,14 @@ namespace sound
 unsigned int get_current_track()
 {
 	return current_track_index;
+}
+std::shared_ptr<music_track> get_previous_music_track()
+{
+	return previous_track;
+}
+void set_previous_track(std::shared_ptr<music_track> track)
+{
+    previous_track = track;
 }
 
 unsigned int get_num_tracks()
@@ -541,6 +550,7 @@ void stop_UI_sound()
 
 void play_music_once(const std::string& file)
 {
+    set_previous_track(current_track);
 	current_track = std::make_shared<music_track>(file);
 	current_track->set_play_once(true);
 	current_track_index = current_track_list.size();
@@ -566,6 +576,7 @@ void play_music()
 
 void play_track(unsigned int i)
 {
+    set_previous_track(current_track);
 	if(i >= current_track_list.size()) {
 		current_track = choose_track();
 	} else {
@@ -655,6 +666,7 @@ void play_music_config(const config& music_node, int i)
 
 	// If they say play once, we don't alter playlist.
 	if(track.play_once()) {
+        set_previous_track(current_track);
 		current_track = std::make_shared<music_track>(track);
 		current_track_index = current_track_list.size();
 		play_music();
@@ -690,6 +702,7 @@ void play_music_config(const config& music_node, int i)
 
 	// They can tell us to start playing this list immediately.
 	if(track.immediate()) {
+        set_previous_track(current_track);
 		current_track = *iter;
 		current_track_index = iter - current_track_list.begin();
 		play_music();
@@ -703,6 +716,7 @@ void music_thinker::process(events::pump_info& info)
 	if(preferences::music_on()) {
 		if(!music_start_time && !current_track_list.empty() && !Mix_PlayingMusic()) {
 			// Pick next track, add ending time to its start time.
+			set_previous_track(current_track);
 			current_track = choose_track();
 			music_start_time = info.ticks();
 			no_fading = true;
@@ -774,6 +788,7 @@ void commit_music_changes()
 	}
 
 	// FIXME: we don't pause ms_before on this first track.  Should we?
+	set_previous_track(current_track);
 	current_track = choose_track();
 	play_music();
 }
