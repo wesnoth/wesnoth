@@ -51,6 +51,9 @@ window::window(const std::string& title,
 						 false);
 	}
 
+	// Set default blend mode to blend.
+	SDL_SetRenderDrawBlendMode(*this, SDL_BLENDMODE_BLEND);
+
 	pixel_format_ = info.texture_formats[0];
 
 	fill(0,0,0);
