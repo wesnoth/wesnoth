@@ -21,12 +21,7 @@ namespace sdl
 
 SDL_Rect create_rect(const int x, const int y, const int w, const int h)
 {
-	SDL_Rect rect;
-	rect.x = x;
-	rect.y = y;
-	rect.w = w;
-	rect.h = h;
-	return rect;
+	return {x, y, w, h};
 }
 
 bool point_in_rect(int x, int y, const SDL_Rect& rect)
@@ -36,7 +31,7 @@ bool point_in_rect(int x, int y, const SDL_Rect& rect)
 
 bool point_in_rect(const gui2::point& point, const SDL_Rect& rect)
 {
-	return point.x >= rect.x && point.y >= rect.y && point.x < rect.x + rect.w && point.y < rect.y + rect.h;
+	return point_in_rect(point.x, point.y, rect);
 }
 
 bool rects_overlap(const SDL_Rect& rect1, const SDL_Rect& rect2)
