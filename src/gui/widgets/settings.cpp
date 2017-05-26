@@ -547,34 +547,6 @@ void load_settings()
 	current_gui->second.activate();
 }
 
-/*WIKI
- * @page = GUIToolkitWML
- * @order = 1_widget
- *
- * == State ==
- *
- * @begin{parent}{name="generic/"}
- * @begin{tag}{name="state"}{min=0}{max=1}
- * Definition of a state. A state contains the info what to do in a state.
- * Atm this is rather focused on the drawing part, might change later.
- * Keys:
- * @begin{table}{config}
- *     draw & section & &                 Section with drawing directions for a
- *canvas. $
- * @end{table}
- * @end{tag}{name="state"}
- * @end{parent}{name="generic/"}
- *
- */
-state_definition::state_definition(const config& cfg) : canvas_()
-{
-	const config& draw = *(cfg ? &cfg.child("draw") : &cfg);
-
-	VALIDATE(draw, _("No state or draw section defined."));
-
-	canvas_.set_cfg(draw);
-}
-
 void register_widget(const std::string& id, std::function<styled_widget_definition_ptr(const config&)> f, const char* key)
 {
 	registered_widget_types()[id] = {f, key};

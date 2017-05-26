@@ -27,6 +27,34 @@ namespace gui2
 /*WIKI
  * @page = GUIToolkitWML
  * @order = 1_widget
+ *
+ * == State ==
+ *
+ * @begin{parent}{name="generic/"}
+ * @begin{tag}{name="state"}{min=0}{max=1}
+ * Definition of a state. A state contains the info what to do in a state.
+ * Atm this is rather focused on the drawing part, might change later.
+ * Keys:
+ * @begin{table}{config}
+ *     draw & section & &                 Section with drawing directions for a
+ *canvas. $
+ * @end{table}
+ * @end{tag}{name="state"}
+ * @end{parent}{name="generic/"}
+ *
+ */
+state_definition::state_definition(const config& cfg) : canvas_()
+{
+	const config& draw = *(cfg ? &cfg.child("draw") : &cfg);
+
+	VALIDATE(draw, _("No state or draw section defined."));
+
+	canvas_.set_cfg(draw);
+}
+
+/*WIKI
+ * @page = GUIToolkitWML
+ * @order = 1_widget
  * @begin{parent}{name=generic/widget_definition/}
  * == Resolution ==
  * @begin{tag}{name="resolution"}{min="0"}{max="-1"}
