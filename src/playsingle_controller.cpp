@@ -273,10 +273,8 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 		const bool is_victory = get_end_level_data_const().is_victory;
 
 		if(gamestate().gamedata_.phase() <= game_data::PRESTART) {
-			sdl::draw_solid_tinted_rectangle(
-				0, 0, gui_->video().getx(), gui_->video().gety(), 0, 0, 0, 1.0,
-				gui_->video().getSurface()
-				);
+			// TODO: does this need an if-not-null check?
+			gui_->video().get_window()->fill(0, 0, 0, 255);
 		}
 
 		ai_testing::log_game_end();
