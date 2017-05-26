@@ -443,7 +443,7 @@ std::string urlencode(const std::string &str)
 	res.fill('0');
 
 	for(char c : str) {
-		if(nonresv.count(c) == 0) {
+		if(nonresv.count(c) != 0) {
 			res << c;
 			continue;
 		}
