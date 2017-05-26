@@ -741,8 +741,8 @@ private:
 	/** The color for the debug border. */
 	color_t debug_border_color_;
 
-	void draw_debug_border(surface& frame_buffer);
-	void draw_debug_border(surface& frame_buffer, int x_offset, int y_offset);
+	void draw_debug_border();
+	void draw_debug_border(int x_offset, int y_offset);
 
 	/***** ***** ***** ***** Query functions ***** ***** ***** *****/
 

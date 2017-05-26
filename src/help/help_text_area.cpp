@@ -539,8 +539,14 @@ void help_text_area::draw_contents()
 			dst.y += loc.y;
 			if (it->box) {
 				for (int i = 0; i < box_width; ++i) {
-					sdl::draw_rectangle(dst.x, dst.y, it->rect.w - i * 2, it->rect.h - i * 2,
-					                    0, screen);
+					SDL_Rect draw_rect {
+						dst.x,
+						dst.y,
+						it->rect.w - i * 2,
+						it->rect.h - i * 2
+					};
+	
+					sdl::draw_rectangle(draw_rect, {0, 0, 0, 0});
 					++dst.x;
 					++dst.y;
 				}

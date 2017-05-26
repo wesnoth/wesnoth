@@ -188,8 +188,13 @@ void textbox::draw_contents()
 	SDL_Rect const &loc = inner_location();
 
 	surface& surf = video().getSurface();
-	sdl::draw_solid_tinted_rectangle(loc.x,loc.y,loc.w,loc.h,0,0,0,
-				    focus(nullptr) ? alpha_focus_ : alpha_, surf);
+
+	color_t c(0, 0, 0);
+
+	double& alpha = focus(nullptr) ? alpha_focus_ : alpha_;
+	c.a = 255 * alpha;
+
+	sdl::fill_rectangle(loc, c);
 
 	SDL_Rect src;
 
@@ -228,8 +233,8 @@ void textbox::draw_contents()
 
 				const clip_rect_setter clipper(surf, &loc);
 
-				Uint32 color = SDL_MapRGB(surf->format, 0, 0, 160);
-				sdl::fill_rect_alpha(rect, color, 140, surf);
+				color_t c(0, 0, 160, 140);
+				sdl::fill_rectangle(rect, c);
 
 				starty += int(line_height_);
 				startx = 0;

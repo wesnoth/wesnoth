@@ -89,44 +89,20 @@ SDL_Rect intersect_rects(SDL_Rect const &rect1, SDL_Rect const &rect2);
 SDL_Rect union_rects(const SDL_Rect &rect1, const SDL_Rect &rect2);
 
 /**
- * Fills a specified area of a surface with a given color and opacity.
+ * Draw a rectangle outline.
  *
- * @param rect                    The area that should be filled.
- * @param color                   The color to fill with.
- * @param alpha                   Opacity.
- * @param target                  The surface to operate on.
- */
-void fill_rect_alpha(SDL_Rect &rect, Uint32 color, Uint8 alpha, surface target);
-
-/**
- * Draw a colored rectangle on a surface.
- *
- * @param x                       The x coordinate of the rectangle.
- * @param y                       The y coordinate of the rectangle.
- * @param w                       The width of the rectangle.
- * @param h                       The height of the rectangle.
+ * @param rect                    The dimensions of the rectangle.
  * @param color                   The color of the rectangle.
- * @param tg                      The surface to operate on.
  */
-void draw_rectangle(int x, int y, int w, int h, Uint32 color, surface tg);
+void draw_rectangle(const SDL_Rect& rect, const color_t& color);
 
 /**
- * Fills a specified rectangle area of a surface with a given color and opacity.
- * Shortcut for fill_rect_alpha().
+ * Draws a filled rectangle.
  *
- * @param x                       The x coordinate of the rectangle.
- * @param y                       The y coordinate of the rectangle.
- * @param w                       The width of the rectangle.
- * @param h                       The height of the rectangle.
- * @param r                       The red value of the color to be used.
- * @param g                       The green value of the color to be used.
- * @param b                       The blue value of the color to be used.
- * @param alpha                   Opacity for filling.
- * @param target                  The surface to operate on.
+ * @param rect                    The dimensions of the rectangle.
+ * @param color                   The color of the rectangle.
  */
-void draw_solid_tinted_rectangle(int x, int y, int w, int h,
-								 int r, int g, int b,
-								 double alpha, surface target);
+void fill_rectangle(const SDL_Rect& rect, const color_t& color);
 
 /**
  * Fill a rectangle on a given surface. Alias for SDL_FillRect.

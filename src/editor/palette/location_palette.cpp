@@ -50,10 +50,10 @@ public:
 	void draw_contents() override
 	{
 		if (state_.mouseover) {
-			sdl::draw_solid_tinted_rectangle(location().x, location().y, location().w, location().h, 200, 200, 200, 0.1, video().getSurface());
+			sdl::fill_rectangle(location(), {200, 200, 200, 26});
 		}
 		if (state_.selected) {
-			sdl::draw_rectangle(location().x, location().y, location().w, location().h, 0xFFFFFFFU, video().getSurface());
+			sdl::draw_rectangle(location(), {255, 255, 255, 255});
 		}
 		font::draw_text(&video(), location(), 16, font::NORMAL_COLOR, desc_.empty() ? id_ : desc_, location().x + 2, location().y, 0);
 	}

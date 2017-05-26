@@ -1802,11 +1802,14 @@ void display::draw_minimap()
 	int view_w = static_cast<int>(map_out_rect.w * xscaling);
 	int view_h = static_cast<int>(map_out_rect.h * yscaling);
 
-	const Uint32 box_color = SDL_MapRGB(minimap_->format,0xFF,0xFF,0xFF);
-	sdl::draw_rectangle(minimap_location_.x + view_x - 1,
-                   minimap_location_.y + view_y - 1,
-                   view_w + 2, view_h + 2,
-				   box_color, screen);
+	SDL_Rect outline_rect {
+		minimap_location_.x + view_x - 1,
+		minimap_location_.y + view_y - 1,
+		view_w + 2,
+		view_h + 2
+	};
+
+	sdl::draw_rectangle(outline_rect, {255, 255, 255, 255});
 }
 
 void display::draw_minimap_units()

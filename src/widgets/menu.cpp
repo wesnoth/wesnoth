@@ -851,9 +851,11 @@ void menu::style::draw_row_bg(menu& menu_ref, const size_t /*row_index*/, const 
 		break;
 	}
 
-	sdl::draw_solid_tinted_rectangle(rect.x, rect.y, rect.w, rect.h,
-					(rgb&0xff0000) >> 16,(rgb&0xff00) >> 8,rgb&0xff,alpha,
-					menu_ref.video().getSurface());
+	// FIXME: make this clearer
+	color_t c((rgb & 0xff0000) >> 16, (rgb & 0xff00) >> 8, rgb & 0xff);
+	c.a = 255 * alpha;
+
+	sdl::fill_rectangle(rect, c);
 }
 
 void menu::style::draw_row(menu& menu_ref, const size_t row_index, const SDL_Rect& rect, ROW_TYPE type)
@@ -935,10 +937,17 @@ void menu::draw_row(const size_t row_index, const SDL_Rect& rect, ROW_TYPE type)
 		if(lang_rtl)
 			xpos -= widths[i];
 		if(type == HEADING_ROW) {
+			SDL_Rect draw_rect {
+				xpos,
+				rect.y,
+				widths[i],
+				rect.h
+			};
+
 			if(highlight_heading_ == int(i)) {
-				sdl::draw_solid_tinted_rectangle(xpos,rect.y,widths[i],rect.h,255,255,255,0.3,video().getSurface());
+				sdl::fill_rectangle(draw_rect, {255,255,255,77});
 			} else if(sortby_ == int(i)) {
-				sdl::draw_solid_tinted_rectangle(xpos,rect.y,widths[i],rect.h,255,255,255,0.1,video().getSurface());
+				sdl::fill_rectangle(draw_rect, {255,255,255,26});
 			}
 		}
 

@@ -14,7 +14,7 @@
 
 #include "gui/core/point.hpp"
 #include "sdl/rect.hpp"
-#include "sdl/surface.hpp"
+#include "video.hpp"
 
 namespace sdl
 {
@@ -70,50 +70,21 @@ SDL_Rect union_rects(SDL_Rect const &rect1, SDL_Rect const &rect2)
 	return res;
 }
 
-void fill_rect_alpha(SDL_Rect &rect, Uint32 color, Uint8 alpha, surface target)
+void draw_rectangle(const SDL_Rect& rect, const color_t& color)
 {
-	if(alpha == SDL_ALPHA_OPAQUE) {
-		sdl::fill_rect(target,&rect,color);
-		return;
-	} else if(alpha == SDL_ALPHA_TRANSPARENT) {
-		return;
-	}
+	SDL_Renderer* renderer = *CVideo::get_singleton().get_window();
 
-	surface tmp(create_compatible_surface(target,rect.w,rect.h));
-	if(tmp == nullptr) {
-		return;
-	}
-
-	SDL_SetSurfaceBlendMode (tmp, SDL_BLENDMODE_BLEND);
-
-	SDL_Rect r {0,0,rect.w,rect.h};
-	sdl::fill_rect(tmp,&r,color);
-	adjust_surface_alpha(tmp, alpha);
-	sdl_blit(tmp,nullptr,target,&rect);
+	SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
+	SDL_RenderDrawRect(renderer, &rect);
 }
 
-void draw_rectangle(int x, int y, int w, int h, Uint32 color, surface target)
+void fill_rectangle(const SDL_Rect& rect, const color_t& color)
 {
-	SDL_Rect top {x, y, w, 1};
-	SDL_Rect bot {x, y + h - 1, w, 1};
-	SDL_Rect left {x, y, 1, h};
-	SDL_Rect right {x + w - 1, y, 1, h};
+	SDL_Renderer* renderer = *CVideo::get_singleton().get_window();
 
-	sdl::fill_rect(target,&top,color);
-	sdl::fill_rect(target,&bot,color);
-	sdl::fill_rect(target,&left,color);
-	sdl::fill_rect(target,&right,color);
+	SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
+	SDL_RenderFillRect(renderer, &rect);
 }
-
-void draw_solid_tinted_rectangle(int x, int y, int w, int h,
-								 int r, int g, int b,
-								 double alpha, surface target)
-{
-
-	SDL_Rect rect {x, y, w, h};
-	fill_rect_alpha(rect,SDL_MapRGB(target->format,r,g,b),Uint8(alpha*255),target);
-}
-
 
 } // namespace sdl
 

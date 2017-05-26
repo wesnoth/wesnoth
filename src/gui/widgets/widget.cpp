@@ -379,10 +379,10 @@ void widget::draw_background(surface& frame_buffer, int x_offset, int y_offset)
 				= calculate_clipping_rectangle(x_offset, y_offset);
 
 		clip_rect_setter clip(frame_buffer, &clipping_rectangle);
-		draw_debug_border(frame_buffer, x_offset, y_offset);
+		draw_debug_border(x_offset, y_offset);
 		impl_draw_background(frame_buffer, x_offset, y_offset);
 	} else {
-		draw_debug_border(frame_buffer, x_offset, y_offset);
+		draw_debug_border(x_offset, y_offset);
 		impl_draw_background(frame_buffer, x_offset, y_offset);
 	}
 }
@@ -524,28 +524,21 @@ void widget::set_debug_border_color(const color_t debug_border_color)
 	debug_border_color_ = debug_border_color;
 }
 
-void widget::draw_debug_border(surface& frame_buffer)
+void widget::draw_debug_border()
 {
 	SDL_Rect r = redraw_action_ == redraw_action::partly ? clipping_rectangle_
 														  : get_rectangle();
-
-	// TODO: maybe should make these functions take an color_t
-	Uint32 c = SDL_MapRGBA(frame_buffer->format,
-		debug_border_color_.r,
-		debug_border_color_.g,
-		debug_border_color_.b,
-		debug_border_color_.a);
 
 	switch(debug_border_mode_) {
 		case 0:
 			/* DO NOTHING */
 			break;
 		case 1:
-			sdl::draw_rectangle(r.x, r.y, r.w, r.h, c, frame_buffer);
+			sdl::draw_rectangle(r, debug_border_color_);
 			break;
 
 		case 2:
-			sdl::fill_rect(frame_buffer, &r, c);
+			sdl::fill_rectangle(r, debug_border_color_);
 			break;
 
 		default:
@@ -554,18 +547,11 @@ void widget::draw_debug_border(surface& frame_buffer)
 }
 
 void
-widget::draw_debug_border(surface& frame_buffer, int x_offset, int y_offset)
+widget::draw_debug_border(int x_offset, int y_offset)
 {
 	SDL_Rect r = redraw_action_ == redraw_action::partly
 						 ? calculate_clipping_rectangle(x_offset, y_offset)
 						 : calculate_blitting_rectangle(x_offset, y_offset);
-
-	// TODO: maybe should make these functions take an color_t
-	Uint32 c = SDL_MapRGBA(frame_buffer->format,
-		debug_border_color_.r,
-		debug_border_color_.g,
-		debug_border_color_.b,
-		debug_border_color_.a);
 
 	switch(debug_border_mode_) {
 		case 0:
@@ -573,12 +559,11 @@ widget::draw_debug_border(surface& frame_buffer, int x_offset, int y_offset)
 			break;
 
 		case 1:
-			sdl::draw_rectangle(
-					r.x, r.y, r.w, r.h, c, frame_buffer);
+			sdl::draw_rectangle(r, debug_border_color_);
 			break;
 
 		case 2:
-			sdl::fill_rect(frame_buffer, &r, c);
+			sdl::fill_rectangle(r, debug_border_color_);
 			break;
 
 		default:
