@@ -260,7 +260,7 @@ static int impl_track_eq(lua_State* L) {
 		return 1;
 	}
 	lua_pushboolean(L, false);
-	return 0;
+	return 1;
 }
 
 static int intf_music_get_current(lua_State* L) {
