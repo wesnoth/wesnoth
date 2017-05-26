@@ -2470,9 +2470,7 @@ const map_labels& display::labels() const
 
 void display::clear_screen()
 {
-	surface& disp(screen_.getSurface());
-	SDL_Rect area = screen_area();
-	sdl::fill_rect(disp, &area, SDL_MapRGB(disp->format, 0, 0, 0));
+	screen_.get_window()->fill(0, 0, 0, 255);
 }
 
 const SDL_Rect& display::get_clip_rect()
