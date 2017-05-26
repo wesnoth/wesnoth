@@ -2204,7 +2204,7 @@ void draw_centered_on_background(surface surf, const SDL_Rect& rect, const color
 	Uint32 col = SDL_MapRGBA(target->format, color.r, color.g, color.b, color.a);
 	//TODO: only draw background outside the image
 	SDL_Rect r = rect;
-	sdl::fill_rect(target, &r, col);
+	sdl::fill_surface_rect(target, &r, col);
 
 	if (surf != nullptr) {
 		r.x = rect.x + (rect.w-surf->w)/2;

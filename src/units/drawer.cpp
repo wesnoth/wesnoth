@@ -399,7 +399,7 @@ void unit_drawer::draw_bar(const std::string& image, int xpos, int ypos,
 		const Uint8 r_alpha = std::min<unsigned>(unsigned(fxpmult(alpha,255)),255);
 		surface filled_surf = create_compatible_surface(bar_surf, bar_loc.w, height - unfilled);
 		SDL_Rect filled_area = sdl::create_rect(0, 0, bar_loc.w, height-unfilled);
-		sdl::fill_rect(filled_surf,&filled_area,SDL_MapRGBA(bar_surf->format,col.r,col.g,col.b, r_alpha));
+		sdl::fill_surface_rect(filled_surf,&filled_area,SDL_MapRGBA(bar_surf->format,col.r,col.g,col.b, r_alpha));
 		disp.drawing_buffer_add(display::LAYER_UNIT_BAR, loc, xpos + bar_loc.x, ypos + bar_loc.y + unfilled, filled_surf);
 	}
 }

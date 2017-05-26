@@ -2631,7 +2631,7 @@ void display::draw_hex(const map_location& loc) {
 			surface text = font::get_rendered_text(lexical_cast<std::string>(loc), font::SIZE_SMALL, font::NORMAL_COLOR);
 			surface bg = create_neutral_surface(text->w, text->h);
 			SDL_Rect bg_rect {0, 0, text->w, text->h};
-			sdl::fill_rect(bg, &bg_rect, 0xaa000000);
+			sdl::fill_surface_rect(bg, &bg_rect, 0xaa000000);
 			off_x -= text->w / 2;
 			off_y -= text->h / 2;
 			if (draw_terrain_codes_) {
@@ -2649,7 +2649,7 @@ void display::draw_hex(const map_location& loc) {
 			surface text = font::get_rendered_text(lexical_cast<std::string>(get_map().get_terrain(loc)), font::SIZE_SMALL, font::NORMAL_COLOR);
 			surface bg = create_neutral_surface(text->w, text->h);
 			SDL_Rect bg_rect {0, 0, text->w, text->h};
-			sdl::fill_rect(bg, &bg_rect, 0xaa000000);
+			sdl::fill_surface_rect(bg, &bg_rect, 0xaa000000);
 			off_x -= text->w / 2;
 			off_y -= text->h / 2;
 			if (draw_coordinates_ && !draw_num_of_bitmaps_) {
@@ -2666,7 +2666,7 @@ void display::draw_hex(const map_location& loc) {
 			surface text = font::get_rendered_text(lexical_cast<std::string>(num_images_bg + num_images_fg), font::SIZE_SMALL, font::NORMAL_COLOR);
 			surface bg = create_neutral_surface(text->w, text->h);
 			SDL_Rect bg_rect {0, 0, text->w, text->h};
-			sdl::fill_rect(bg, &bg_rect, 0xaa000000);
+			sdl::fill_surface_rect(bg, &bg_rect, 0xaa000000);
 			off_x -= text->w / 2;
 			off_y -= text->h / 2;
 			if (draw_coordinates_) {

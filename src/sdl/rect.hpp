@@ -111,7 +111,7 @@ void fill_rectangle(const SDL_Rect& rect, const color_t& color);
  * @param dst_rect                The rectangle to fill.
  * @param color                   Color of the rectangle.
  */
-inline void fill_rect(surface& dst, SDL_Rect* dst_rect, const Uint32 color)
+inline void fill_surface_rect(surface& dst, SDL_Rect* dst_rect, const Uint32 color)
 {
 	SDL_FillRect(dst, dst_rect, color);
 }
