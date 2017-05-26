@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2017-05-14 01:46+0300\n"
-"PO-Revision-Date: 2017-01-27 12:29+0100\n"
+"PO-Revision-Date: 2017-05-25 12:49+0100\n"
 "Last-Translator: GunChleoc <fios@foramnagaidhlig.net>\n"
 "Language-Team: Fòram na Gàidhlig\n"
 "Language: gd\n"
@@ -788,24 +788,18 @@ msgstr "Balla cloiche soillseach"
 
 #. [terrain_type]: id=wall_stone_mine
 #: data/core/terrain.cfg:1154
-#, fuzzy
-#| msgid "Mine Wall"
 msgid "Straight Mine Wall"
-msgstr "Balla mèinne"
+msgstr "Balla mèinne dìreach"
 
 #. [terrain_type]: id=wall_stone_white
 #: data/core/terrain.cfg:1164
-#, fuzzy
-#| msgid "Mine Wall"
 msgid "Interior Wall"
-msgstr "Balla mèinne"
+msgstr "Balla mèinne taobh a-staigh"
 
 #. [terrain_type]: id=wall_stone_white
 #: data/core/terrain.cfg:1165
-#, fuzzy
-#| msgid "Lit Stone Wall"
 msgid "Straight White Wall"
-msgstr "Balla cloiche soillseach"
+msgstr "Balla geal dìreach"
 
 #. [terrain_type]: id=portal_gate_rusty
 #. [terrain_type]: id=p_open_rusty
@@ -1432,7 +1426,7 @@ msgstr "Far a’ mhapa"
 #. [terrain_type]: id=off_map2
 #: data/core/terrain.cfg:2407
 msgid "Fake Map Border"
-msgstr ""
+msgstr "Iomall mapa fuadan"
 
 #. [terrain_type]: id=shroud
 #. [toggle_button]: id=shroud
@@ -1882,25 +1876,21 @@ msgstr "Seòrsa"
 #. [button]: id=install
 #: data/gui/widget/addon_list.cfg:363 data/gui/window/addon_manager.cfg:202
 msgid "Install add-on"
-msgstr ""
+msgstr "Stàlaich an tuilleadan"
 
 #. [button]: id=single_update
 #. [button]: id=update
 #: data/gui/widget/addon_list.cfg:386 data/gui/window/addon_manager.cfg:224
-#, fuzzy
-#| msgid "Update Add-ons"
 msgid "Update add-on"
-msgstr "Ùraich tuilleadain"
+msgstr "Ùraich an tuilleadan"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=single_uninstall
 #. [button]: id=uninstall
 #: data/gui/widget/addon_list.cfg:409 data/gui/window/addon_manager.cfg:246
 #: src/gui/dialogs/addon/manager.cpp:708
-#, fuzzy
-#| msgid "Searching for installed add-ons"
 msgid "Uninstall add-on"
-msgstr "A’ sireadh tuilleadain air an stàladh"
+msgstr "Dì-stàlaich an tuilleadan"
 
 #. [label]: id=room
 #: data/gui/widget/chatbox.cfg:22
@@ -2022,7 +2012,7 @@ msgstr "Sguir dheth"
 #. [label]: id=byline
 #: data/gui/window/addon_manager.cfg:83
 msgid "By:"
-msgstr ""
+msgstr "Le:"
 
 #. [label]: id=version_string
 #: data/gui/window/addon_manager.cfg:119
@@ -2038,14 +2028,12 @@ msgstr "Chan eil tuairisgeul ri fhaighinn."
 #. [button]: id=publish
 #: data/gui/window/addon_manager.cfg:269 src/gui/widgets/addon_list.cpp:253
 msgid "Publish add-on"
-msgstr ""
+msgstr "Foillsich an tuilleadan"
 
 #. [button]: id=delete
 #: data/gui/window/addon_manager.cfg:283
-#, fuzzy
-#| msgid "Delete ToD"
 msgid "Delete add-on"
-msgstr "Sguab às àm an latha"
+msgstr "Sguab às an tuilleadan"
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:317 data/gui/window/addon_manager.cfg:731
@@ -2054,10 +2042,8 @@ msgstr "Seòrsa:"
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:343
-#, fuzzy
-#| msgid "date^First uploaded:"
 msgid "date^Uploaded:"
-msgstr "A’ chiad luchdadh suas:"
+msgstr "Air a luchdadh suas:"
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:376
@@ -2066,10 +2052,8 @@ msgstr "Staid:"
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:406
-#, fuzzy
-#| msgid "date^Last updated:"
 msgid "date^Updated:"
-msgstr "An t-ùrachadh mu dheireadh:"
+msgstr "Air ùrachadh:"
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:436
@@ -2137,40 +2121,33 @@ msgstr "Tadhail air an URL seo le brabhsair-lìn"
 #: data/gui/window/addon_manager.cfg:693
 msgid "Filters on addon descripton, version, type or author."
 msgstr ""
+"Criathraich le tuairisgeul, tionndadh, seòrsa no ùghdar an tuilleadain."
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:705
-#, fuzzy
-#| msgid "Status:"
 msgid "State:"
 msgstr "Staid:"
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:819 data/gui/window/addon_manager.cfg:993
-#, fuzzy
-#| msgid "Add-ons"
 msgid "Get Add-ons"
-msgstr "Tuilleadain"
+msgstr "Faigh tuilleadain"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=details_toggle
 #: data/gui/window/addon_manager.cfg:921 src/gui/dialogs/addon/manager.cpp:450
-#, fuzzy
-#| msgid "Details:"
 msgid "Addon Details"
-msgstr "Fiosrachadh: "
+msgstr "Fiosrachadh an tuilleadain"
 
 #. [button]: id=update_all
 #: data/gui/window/addon_manager.cfg:935 data/gui/window/addon_manager.cfg:1096
-#, fuzzy
-#| msgid "Update Add-ons"
 msgid "Update All"
-msgstr "Ùraich tuilleadain"
+msgstr "Ùraich na h-uile"
 
 #. [button]: id=cancel
 #: data/gui/window/addon_manager.cfg:949 data/gui/window/addon_manager.cfg:1110
 msgid "Exit"
-msgstr ""
+msgstr "Fàg an-seo"
 
 #. [scroll_label]
 #: data/gui/window/addon_uninstall_list.cfg:70
@@ -2281,48 +2258,42 @@ msgstr "Ceart ma-thà"
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:82
 msgid "Base damage"
-msgstr ""
+msgstr "Dochann bunasach"
 
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:84
-#, fuzzy
-#| msgid "Switch Time of Day"
 msgid "Time of day modifier"
-msgstr "Atharraich àm an latha"
+msgstr "Atharraichear àm an latha"
 
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:85
-#, fuzzy
-#| msgid "Leader"
 msgid "Leadership bonus"
-msgstr "Ceannard"
+msgstr "Buannachd ceannardais"
 
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:86
 msgid "Slowed penalty"
-msgstr ""
+msgstr "Peanas maille"
 
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:90
 msgid "Total damage"
-msgstr ""
+msgstr "Dochann iomlan"
 
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:94
-#, fuzzy
-#| msgid "Change Hotkey"
 msgid "Chance to hit"
-msgstr "Atharraich hotkey"
+msgstr "Seans bualaidh"
 
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:95
 msgid "Chance of being unscathed"
-msgstr ""
+msgstr "Seans a bhith slàn"
 
 #. [label]
 #: data/gui/window/attack_predictions.cfg:185
 msgid "Expected Battle Result (HP)"
-msgstr ""
+msgstr "An dùil air toradh sabaide (PB)"
 
 #. [label]: id=title
 #: data/gui/window/attack_predictions.cfg:249
@@ -2331,17 +2302,13 @@ msgstr "Cunntas dochainn"
 
 #. [column]
 #: data/gui/window/attack_predictions.cfg:272
-#, fuzzy
-#| msgid "Attack"
 msgid "Attacker"
-msgstr "Thoir ionnsaigh"
+msgstr "Ionnsaighear"
 
 #. [column]
 #: data/gui/window/attack_predictions.cfg:282
-#, fuzzy
-#| msgid "Gender:"
 msgid "Defender"
-msgstr "Gnè:"
+msgstr "Dìonadair"
 
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:174
@@ -2350,10 +2317,8 @@ msgstr "Cluich iomairt"
 
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:224
-#, fuzzy
-#| msgid "Modifications:"
 msgid "Modifications"
-msgstr "Atharraichean:"
+msgstr "Atharraichean"
 
 #. [toggle_button]: id=checkbox_deterministic
 #: data/gui/window/campaign_dialog.cfg:357
@@ -2464,10 +2429,8 @@ msgstr "Rùraich an t-ionad seo le manaidsear fhaidhlichean"
 
 #. [label]
 #: data/gui/window/custom_tod.cfg:147
-#, fuzzy
-#| msgid "Custom Time Schedule"
 msgid "Edit Time Schedule"
-msgstr "Sgeideal ama gnàthaichte"
+msgstr "Deasaich an sgeideal ama"
 
 #. [label]
 #: data/gui/window/custom_tod.cfg:177
@@ -2486,24 +2449,18 @@ msgstr "ID:"
 
 #. [grid]
 #: data/gui/window/custom_tod.cfg:285
-#, fuzzy
-#| msgid "Image"
 msgid "Image:"
-msgstr "Dealbh"
+msgstr "Dealbh:"
 
 #. [grid]
 #: data/gui/window/custom_tod.cfg:286
-#, fuzzy
-#| msgid "Mask"
 msgid "Mask:"
-msgstr "Masg"
+msgstr "Masg:"
 
 #. [grid]
 #: data/gui/window/custom_tod.cfg:287
-#, fuzzy
-#| msgid "Sound"
 msgid "Sound:"
-msgstr "Fuaim"
+msgstr "Fuaim:"
 
 #. [label]
 #: data/gui/window/custom_tod.cfg:316
@@ -2777,7 +2734,7 @@ msgstr "Roghainnean"
 #. [label]
 #: data/gui/window/editor_generate_map.cfg:161
 msgid "Numerical seed:"
-msgstr ""
+msgstr "Àireamh sìl:"
 
 #. [button]: id=ok
 #: data/gui/window/editor_generate_map.cfg:202
@@ -3020,20 +2977,18 @@ msgstr "Na seall seo a-rithist"
 
 #. [grid]
 #: data/gui/window/game_load.cfg:108
-#, fuzzy
-#| msgid "Scroll Left"
 msgid "Gold Left:"
-msgstr "Sgrolaich gu clì"
+msgstr "Òr air fhàgail:"
 
 #. [grid]
 #: data/gui/window/game_load.cfg:111
 msgid "Active Troops:"
-msgstr ""
+msgstr "Feachd gnìomhach:"
 
 #. [grid]
 #: data/gui/window/game_load.cfg:114
 msgid "Reserve Troops:"
-msgstr ""
+msgstr "Feachd cùl-taice:"
 
 #. [toggle_button]: id=sort_1
 #: data/gui/window/game_load.cfg:169
@@ -3384,10 +3339,8 @@ msgstr "Seall na leubailean"
 
 #. [label]
 #: data/gui/window/help_browser.cfg:116
-#, fuzzy
-#| msgid "Show Battle for Wesnoth help"
 msgid "Battle For Wesnoth Help"
-msgstr "Seall a’ chobhair aig Strì Bheasnaid"
+msgstr "Cobhair le Strì Bheasnaid"
 
 #. [label]
 #: data/gui/window/hotkey_bind.cfg:35
@@ -3965,8 +3918,6 @@ msgstr "Am meud dhe dh’eòlas a dh’fheumas aonad gus àrdachadh"
 
 #. [toggle_button]: id=fog
 #: data/gui/window/mp_create_game.cfg:372
-#, fuzzy
-#| msgid "Fog of war"
 msgid "Fog of War"
 msgstr "Ceò cogaidh"
 
@@ -3982,8 +3933,6 @@ msgstr "Tha am mapa neo-aithnichte mus rannsaich na h-aonadan agad e"
 
 #. [toggle_button]: id=random_start_time
 #: data/gui/window/mp_create_game.cfg:405
-#, fuzzy
-#| msgid "Random start time"
 msgid "Random Start Time"
 msgstr "Àm tòiseachaidh air thuaiream"
 
@@ -4214,7 +4163,7 @@ msgstr "Cluicheadairean ceangailte"
 #. [button]: id=cancel
 #: data/gui/window/mp_join_game.cfg:418
 msgid "Leave"
-msgstr ""
+msgstr "Falbh"
 
 #. [label]: id=title
 #: data/gui/window/mp_join_game.cfg:479 data/gui/window/mp_staging.cfg:622
@@ -4339,33 +4288,27 @@ msgstr "Tagh"
 #. [button]: id=select_leader
 #: data/gui/window/mp_staging.cfg:70
 msgid "Select the faction and leader for this side"
-msgstr ""
+msgstr "Tagh buidheann is ceannard an taoibh"
 
 #. [menu_button]: id=controller
 #: data/gui/window/mp_staging.cfg:231
-#, fuzzy
-#| msgid "Change the music volume"
 msgid "Change the side's controller"
-msgstr "Atharraich àirde a’ chiùil"
+msgstr "Atharraich cò stiùiricheas an taobh"
 
 #. [menu_button]: id=ai_controller
 #: data/gui/window/mp_staging.cfg:247
-#, fuzzy
-#| msgid "Change the music volume"
 msgid "Change the AI side's behaviour"
-msgstr "Atharraich àirde a’ chiùil"
+msgstr "Atharraich giùlan IF an taoibh"
 
 #. [menu_button]: id=side_team
 #: data/gui/window/mp_staging.cfg:274
 msgid "Which team this side belongs to"
-msgstr ""
+msgstr "An sgioba ris a bhuineas an taobh seo"
 
 #. [menu_button]: id=side_color
 #: data/gui/window/mp_staging.cfg:290
-#, fuzzy
-#| msgid "Show team colors"
 msgid "The team color"
-msgstr "Seall dathan an sgioba"
+msgstr "Dath an sgioba"
 
 #. [button]: id=ok
 #: data/gui/window/mp_staging.cfg:494
@@ -4528,10 +4471,8 @@ msgstr "Stiùirich tasgadan WML a’ gheama"
 
 #. [label]
 #: data/gui/window/preferences/02_hotkeys.cfg:25
-#, fuzzy
-#| msgid "Category:"
 msgid "Categories:"
-msgstr "Roinn-seòrsa:"
+msgstr "Roinnean-seòrsa:"
 
 #. [toggle_button]: id=sort_0
 #: data/gui/window/preferences/02_hotkeys.cfg:81
@@ -5005,22 +4946,18 @@ msgstr "Rèitich roghainnean nan atharraichean gnàthaichte a thagh thu."
 
 #. [label]
 #: data/gui/window/statistics_dialog.cfg:129
-#, fuzzy
-#| msgid "Image"
 msgid "Damage"
-msgstr "Dealbh"
+msgstr "Dochann"
 
 #. [label]
 #: data/gui/window/statistics_dialog.cfg:141
 msgid "Overall"
-msgstr ""
+msgstr "Iomlan"
 
 #. [label]
 #: data/gui/window/statistics_dialog.cfg:153
-#, fuzzy
-#| msgid "Turn"
 msgid "This Turn"
-msgstr "Cuairt"
+msgstr "A’ chuairt seo"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
@@ -5030,22 +4967,18 @@ msgstr "Staitistearachd"
 
 #. [widget]: id=tab_label
 #: data/gui/window/statistics_dialog.cfg:485
-#, fuzzy
-#| msgid "Scenarios"
 msgid "Scenario"
-msgstr "Cnàmh-sgeulan"
+msgstr "Cnàmh-sgeul"
 
 #. [widget]: id=tab_label
 #: data/gui/window/statistics_dialog.cfg:498
-#, fuzzy
-#| msgid "Campaigns"
 msgid "Campaign"
-msgstr "Iomairtean"
+msgstr "Iomairt"
 
 #. [button]: id=cancel
 #: data/gui/window/story_viewer.cfg:131
 msgid "Skip"
-msgstr ""
+msgstr "Gearr leum"
 
 #. [label]: id=lblTitle
 #: data/gui/window/synced_choice_wait.cfg:40
@@ -5065,7 +4998,7 @@ msgstr "Fàg an geama"
 #. [label]
 #: data/gui/window/terrain_layers.cfg:21
 msgid "#"
-msgstr ""
+msgstr "Àir."
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:33
@@ -5075,43 +5008,37 @@ msgstr "Dealbh"
 #. [label]
 #: data/gui/window/terrain_layers.cfg:57
 msgid "Loc"
-msgstr ""
+msgstr "Ion"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:69
-#, fuzzy
-#| msgid "player"
 msgid "Layer"
-msgstr "cluicheadair"
+msgstr "Breath"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:81
 msgid "Base.x"
-msgstr ""
+msgstr "Bunait.x"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:93
 msgid "Base.y"
-msgstr ""
+msgstr "Bunait.x"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:105
-#, fuzzy
-#| msgid "Centered"
 msgid "Center"
-msgstr "Meadhanaichte"
+msgstr "Meadhan"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:339
-#, fuzzy
-#| msgid "Draw Terrain Codes"
 msgid "Terrain Layers"
-msgstr "Seall còdaichean crutha-thìre"
+msgstr "Breathan crutha-thìre"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:384
 msgid "Flags"
-msgstr ""
+msgstr "Brataich"
 
 #. [label]
 #: data/gui/window/theme_list.cfg:51
@@ -5437,10 +5364,8 @@ msgid "Rectangle doesn't fit on canvas."
 msgstr "Tha an ceart-cheàrnachan ro mhòr airson a’ chanabhais."
 
 #: src/gui/core/canvas.cpp:822
-#, fuzzy
-#| msgid "Rectangle doesn't fit on canvas."
 msgid "Rounded Rectangle doesn't fit on canvas."
-msgstr "Tha an ceart-cheàrnachan ro mhòr airson a’ chanabhais."
+msgstr "Tha an ceart-cheàrnach cruinn ro mhòr airson a’ chanabhais."
 
 #: src/gui/core/canvas.cpp:931 src/gui/core/canvas.cpp:936
 #: src/gui/core/canvas.cpp:941 src/gui/core/canvas.cpp:947
@@ -5594,16 +5519,12 @@ msgid "addon_state^Published ($local_version| installed), outdated on server"
 msgstr "($local_version| air a stàladh), ro shean air an fhrithealaiche"
 
 #: src/gui/dialogs/addon/manager.cpp:310 src/gui/widgets/addon_list.cpp:94
-#, fuzzy
-#| msgid "addon_state^Installed, outdated on server"
 msgid "addon_state^Installed, not ready to publish"
-msgstr "Air a stàladh, ro shean air an fhrithealaiche"
+msgstr "Air a stàladh, chan eil e deiseil ri fhoillseachadh"
 
 #: src/gui/dialogs/addon/manager.cpp:311 src/gui/widgets/addon_list.cpp:94
-#, fuzzy
-#| msgid "addon_state^Published"
 msgid "addon_state^Ready to publish"
-msgstr "Foillsichte"
+msgstr "Deiseil ri fhoillseachadh"
 
 #: src/gui/dialogs/addon/manager.cpp:315 src/gui/widgets/addon_list.cpp:106
 msgid "addon_state^Installed, broken"
@@ -5630,31 +5551,32 @@ msgstr ""
 
 #: src/gui/dialogs/addon/manager.cpp:447
 msgid "addons^Back to List"
-msgstr ""
+msgstr "Air ais dhan liosta"
 
 #: src/gui/dialogs/addon/manager.cpp:463
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr ""
+"Thachair mearachd rè luchdadh a-nuas liosta nan tuilleadan an fhrithealaiche."
 
 #: src/gui/dialogs/addon/manager.cpp:490
-#, fuzzy
-#| msgid "No description available"
 msgid "No Add-ons Available"
-msgstr "Chan eil tuairisgeul ri fhaighinn"
+msgstr "Chan eil tuilleadan ri fhaighinn"
 
 #: src/gui/dialogs/addon/manager.cpp:490
 msgid "There are no add-ons available for download from this server."
-msgstr ""
+msgstr "Chan eil tuilleadan ri luchdadh a-nuas air an fhrithealaiche seo."
 
 #: src/gui/dialogs/addon/manager.cpp:599
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
 msgstr ""
+"A rèir coltais, tha fiosrachadh foillsichidh no smachd nan tionndaidhean mun "
+"tuilleadan seo air stòradh gu h-ionadail is cha dèid a thoirt air falbh:"
 
 #: src/gui/dialogs/addon/manager.cpp:607
 msgid "The following add-on could not be deleted properly:"
-msgstr ""
+msgstr "Cha b’ urrainn dhuinn an tuilleadan seo a sguabadh às mar bu chòir:"
 
 #: src/gui/dialogs/addon/manager.cpp:649
 msgid "Warning"
@@ -5665,19 +5587,24 @@ msgid ""
 "The remote version of this add-on is greater or equal to the version being "
 "uploaded. Do you really wish to continue?"
 msgstr ""
+"Tha an tionndadh cèin dhen tuilleadan seo nas motha no co-ionnann ris an "
+"tionndadh a tha thu airson luchdadh suas. A bheil thu cinnteach gu bheil thu "
+"airson leantainn air adhart?"
 
 #: src/gui/dialogs/addon/manager.cpp:659
 msgid "Invalid icon path. Make sure the path points to a valid image."
 msgstr ""
+"Chan eil slighe na h-ìomhaigheige dligheach. Dèan cinnteach gun tomh an t-"
+"slighe ri dealbh dligheach."
 
 #: src/gui/dialogs/addon/manager.cpp:662 src/gui/dialogs/addon/manager.cpp:666
 #: src/gui/dialogs/addon/manager.cpp:691
 msgid "The server responded with an error:"
-msgstr ""
+msgstr "Dh’fhreagair am frithealaiche le mearachd:"
 
 #: src/gui/dialogs/addon/manager.cpp:663
 msgid "Terms"
-msgstr ""
+msgstr "Teirmichean"
 
 #: src/gui/dialogs/addon/manager.cpp:668 src/gui/dialogs/addon/manager.cpp:694
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:459
@@ -5689,37 +5616,34 @@ msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
 msgstr ""
+"Ma sguabas tu às dha “$addon|,” bheir seo air falbh an cunntas air "
+"luchdaidhean suas is a-nuas air frithealaiche nan tuilleadan. A bheil thu "
+"cinnteach gu bheil thu airson leantainn air adhart?"
 
 #: src/gui/dialogs/addon/manager.cpp:709
-#, fuzzy
-#| msgid "Do you want to open this link?"
 msgid "Do you want to uninstall '$addon|'?"
-msgstr "A bheil thu airson an ceangal seo fhosgladh?"
+msgstr "A bheil thu airson “$addon|” a dhì-stàladh?"
 
 #: src/gui/dialogs/addon/manager.cpp:793 src/gui/dialogs/addon/manager.cpp:807
 #: src/gui/dialogs/campaign_selection.cpp:182
-#, fuzzy
-#| msgid "url^None"
 msgid "None"
-msgstr "Gun làrach-lìn"
+msgstr "Chan eil gin"
 
 #: src/gui/dialogs/advanced_graphics_options.cpp:75
 msgid "No matching widget found for scaling option"
-msgstr ""
+msgstr "Cha each widget a lorg airson na roghainn sgèilidh"
 
 #: src/gui/dialogs/attack_predictions.cpp:116
-#, fuzzy
-#| msgid "Choose weapon:"
 msgid "No usable weapon"
-msgstr "Tagh arm:"
+msgstr "Gun arm feumail"
 
 #: src/gui/dialogs/attack_predictions.cpp:188
 msgid "Defender resistance vs"
-msgstr ""
+msgstr "Seasamh an dìonadair an aghaidh"
 
 #: src/gui/dialogs/attack_predictions.cpp:190
 msgid "Attacker vulnerability vs"
-msgstr ""
+msgstr "Ionnsaighear so-leònta a thaobh"
 
 #: src/gui/dialogs/depcheck_confirm_change.cpp:66
 msgid "$requester requires the following modifications to be enabled:"
@@ -5897,16 +5821,12 @@ msgid "Version: "
 msgstr "Tionndadh: "
 
 #: src/gui/dialogs/game_stats.cpp:78
-#, fuzzy
-#| msgid "controller^None"
 msgid "controller^Computer"
-msgstr "Gun smachdair"
+msgstr "Coimpiutair"
 
 #: src/gui/dialogs/game_stats.cpp:78
-#, fuzzy
-#| msgid "controller^None"
 msgid "controller^Idle"
-msgstr "Gun smachdair"
+msgstr "’Na thàmh"
 
 #: src/gui/dialogs/game_stats.cpp:114 src/gui/dialogs/label_settings.cpp:72
 msgid "Unknown"
@@ -6206,7 +6126,7 @@ msgstr "A’ feitheamh gus an tagh na cluicheadairean na buidhnean…"
 
 #: src/gui/dialogs/outro.cpp:42
 msgid "The End"
-msgstr ""
+msgstr "A’ Chrìoch"
 
 #: src/gui/dialogs/preferences_dialog.cpp:100
 msgid "Saved Games"
@@ -6311,46 +6231,36 @@ msgid "file_size^Unknown"
 msgstr "Chan eil fios"
 
 #: src/gui/dialogs/statistics_dialog.cpp:195
-#, fuzzy
-#| msgid "Recruits:"
 msgid "Recruits"
-msgstr "Luchd-trusaidh:"
+msgstr "Air trusadh"
 
 #: src/gui/dialogs/statistics_dialog.cpp:196
-#, fuzzy
-#| msgid "Recall"
 msgid "Recalls"
-msgstr "Ais-ghairm"
+msgstr "Air ais-ghairm"
 
 #: src/gui/dialogs/statistics_dialog.cpp:197
-#, fuzzy
-#| msgid "Advance Unit"
 msgid "Advancements"
-msgstr "Àrdaich aonad"
+msgstr "Àrdachaidhean"
 
 #: src/gui/dialogs/statistics_dialog.cpp:198
 msgid "Losses"
-msgstr ""
+msgstr "Air chall"
 
 #: src/gui/dialogs/statistics_dialog.cpp:199
-#, fuzzy
-#| msgid "Hills"
 msgid "Kills"
-msgstr "Cnuic"
+msgstr "Air marbhadh"
 
 #: src/gui/dialogs/statistics_dialog.cpp:213
 msgid "Inflicted"
-msgstr ""
+msgstr "Air a thoirt seachad"
 
 #: src/gui/dialogs/statistics_dialog.cpp:221
 msgid "Taken"
-msgstr ""
+msgstr "Air gabhail"
 
 #: src/gui/dialogs/title_screen.cpp:239
-#, fuzzy
-#| msgid "Choose Theme"
 msgid "Choose Test"
-msgstr "Tagh ùrlar"
+msgstr "Tagh deuchainn"
 
 #: src/gui/dialogs/unit_recall.cpp:265
 msgid "This unit is loyal and requires no upkeep."
@@ -6395,14 +6305,12 @@ msgid "addon_state^Published, outdated on server"
 msgstr "Foillsichte, ro shean air an fhrithealaiche"
 
 #: src/gui/widgets/addon_list.cpp:266
-#, fuzzy
-#| msgid "Connecting to server"
 msgid "Send new version to server"
-msgstr "A’ ceangal ris an fhrithealaiche"
+msgstr "Cuir tionndadh ùr dhan fhrithealaiche"
 
 #: src/gui/widgets/addon_list.cpp:279
 msgid "Delete add-on from server"
-msgstr ""
+msgstr "Sguab às an tuilleadan air an fhrithealaiche"
 
 #: src/gui/widgets/chatbox.cpp:264
 msgid "whisper to $receiver"
@@ -6470,7 +6378,7 @@ msgstr "Cha deach duilleag a mhìneachadh."
 #: src/gui/widgets/multimenu_button.cpp:181
 #: src/gui/widgets/multimenu_button.cpp:272
 msgid "multimenu^None Selected"
-msgstr ""
+msgstr "Cha deach gin a thaghadh"
 
 #: src/gui/widgets/multimenu_button.cpp:187
 #: src/gui/widgets/multimenu_button.cpp:207
@@ -6484,15 +6392,15 @@ msgstr[3] ""
 #: src/gui/widgets/multimenu_button.cpp:189
 #: src/gui/widgets/multimenu_button.cpp:210
 msgid "multimenu^$first and $second"
-msgstr ""
+msgstr "$first ’s $second"
 
 #: src/gui/widgets/multimenu_button.cpp:192
 msgid "multimenu^All Selected"
-msgstr ""
+msgstr "Chaidh a nh-uile a thaghadh"
 
 #: src/gui/widgets/multimenu_button.cpp:202
 msgid "multimenu^$first, $second"
-msgstr ""
+msgstr "$first, $second"
 
 #: src/gui/widgets/pane.cpp:432
 msgid "Need at least 1 parallel item."
@@ -6514,16 +6422,12 @@ msgid "No state or draw section defined."
 msgstr "Cha deach staid no roinn tarraing a mhìneachadh."
 
 #: src/gui/widgets/size_lock.cpp:134
-#, fuzzy
-#| msgid "No list defined."
 msgid "No widget defined."
-msgstr "Cha deach liosta a mhìneachadh."
+msgstr "Cha deach widget a mhìneachadh."
 
 #: src/gui/widgets/size_lock.cpp:157
-#, fuzzy
-#| msgid "Invalid username"
 msgid "Invalid size."
-msgstr "Ainm cleachdaiche mì-dhligheach"
+msgstr "Meud mì-dhligheach."
 
 #: src/gui/widgets/slider.cpp:513
 msgid "The number of value_labels and values don't match."
@@ -6555,15 +6459,15 @@ msgstr "Builder id neo-aithnichte airson tree view node."
 
 #: src/gui/widgets/unit_preview_pane.cpp:130
 msgid "Resistances: "
-msgstr ""
+msgstr "Comasan-seasaimh: "
 
 #: src/gui/widgets/unit_preview_pane.cpp:132
 msgid "(Att / Def)"
-msgstr ""
+msgstr "(Ionns / Dìon)"
 
 #: src/gui/widgets/unit_preview_pane.cpp:145
 msgid "Movement Costs:"
-msgstr ""
+msgstr "Cosgais ghluasaid:"
 
 #: src/gui/widgets/unit_preview_pane.cpp:208
 msgid "Attacks"
@@ -6588,10 +6492,8 @@ msgstr "PE: "
 
 #: src/gui/widgets/unit_preview_pane.cpp:296
 #: src/gui/widgets/unit_preview_pane.cpp:446
-#, fuzzy
-#| msgid "Experience Modifier"
 msgid "Experience Modifier: "
-msgstr "Atharraichear eòlais"
+msgstr "Atharraichear eòlais: "
 
 #: src/gui/widgets/unit_preview_pane.cpp:299
 #: src/gui/widgets/unit_preview_pane.cpp:449
@@ -7403,10 +7305,8 @@ msgid "Show Credits"
 msgstr "Seall an cliù"
 
 #: src/hotkey/hotkey_command.cpp:264
-#, fuzzy
-#| msgid "Test scenario"
 msgid "Start Test Scenario"
-msgstr "Deuchainn air cnàmh-sgeul"
+msgstr "Tòisich air cnàmh-sgeul deuchainne"
 
 #: src/hotkey/hotkey_command.cpp:266
 msgid "Show Helptip"

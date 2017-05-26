@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2017-05-13 22:46 UTC\n"
-"PO-Revision-Date: 2017-01-27 13:16+0000\n"
-"Last-Translator: GunChleoc <fios@foranagaidhlig.net>\n"
+"PO-Revision-Date: 2017-05-25 13:08+0100\n"
+"Last-Translator: GunChleoc <fios@foramnagaidhlig.net>\n"
 "Language-Team: Fòram na Gàidhlig\n"
 "Language: gd\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 || n==11) ? 0 : (n==2 || n==12) ? 1 : "
 "(n > 2 && n < 20) ? 2 : 3;\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Virtaal 0.7.1\n"
 
 #. [attack]: type=impact
 #. [attack]: type=arcane
@@ -2609,11 +2609,6 @@ msgstr "Sàirdseant"
 
 #. [unit_type]: id=Sergeant, race=human
 #: data/core/units/humans/Loyalist_Sergeant.cfg:18
-#, fuzzy
-#| msgid ""
-#| "The Sergeant is a low-ranking officer in the ranks of an army. Though "
-#| "academically trained, he will need some experience in the field before "
-#| "his leadership is sound and acknowledged."
 msgid ""
 "Sergeants are low-ranking officers of human armies. Though academically "
 "trained, they need some experience in the field before their leadership is "
@@ -2623,7 +2618,9 @@ msgid ""
 msgstr ""
 "’S e oifigear le rang ìosal san fheachd a th’ anns an t-sàirdseant. Ged a "
 "fhuair e trèanadh acadaimh, tha eòlas air a bhlàr a dhìth air fhathast gus a "
-"bheil a cheannardas stèidhichte is aithnichte."
+"bheil a cheannardas stèidhichte is aithnichte. Gidheadh, on a tha giùlan "
+"dìcheallach agus tuigse bunasach a’ chogaidh aca, tha iad math air "
+"saoranaich is croitearan a thrusadh ann an suidheachaidhean dùbhlanach."
 
 #. [unit_type]: id=Shock Trooper, race=human
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:4
@@ -3199,12 +3196,6 @@ msgstr "Croitear"
 
 #. [unit_type]: id=Peasant, race=human
 #: data/core/units/humans/Peasant.cfg:18
-#, fuzzy
-#| msgid ""
-#| "Peasants are the backbone of the rural economy, and the soldiers of last "
-#| "resort. While not warlike by nature, they will stubbornly defend their "
-#| "homes. However, if you’re hurling peasants at your foes, you’re clearly "
-#| "out of superior forces."
 msgid ""
 "Peasants are the backbone of the rural economy, and the soldiers of last "
 "resort. While not warlike by nature, they will stubbornly defend their "
@@ -3214,9 +3205,10 @@ msgid ""
 msgstr ""
 "Tha croitearan cianail fhèin cudromach dhan eaconamaidh dùthchail is cha "
 "tèid iad ’nan saighdearan mura h-eil cruaidh feum orra. Ged nach eil iad "
-"cogail bho thùs, dìonaidh iad na dachaighean aca gu dàna. Co-dhiù, mura toir "
-"thu ionnsaigh air an nàmhaid ach le croitearan, tha e follaiseach nach eil "
-"saighdearan nas fhearr agad."
+"cogail bho thùs, dìonaidh iad na dachaighean aca gu dàna. O nach d’ fhuair "
+"iad trèanadh, cha dèid leotha seasamh ann an loidhne an aghaidh an nàmhad ge-"
+"tà; agus o nach eil airm ach acainnean croitearachd aca, cha dig iad dhan "
+"blàr ach ann an cruaidh-chàs."
 
 #. [attack]: type=pierce
 #: data/core/units/humans/Peasant.cfg:23 data/core/units/humans/Peasant.cfg:32
@@ -3366,7 +3358,7 @@ msgstr ""
 #. [unit_type]: id=Batal, race=khalifate
 #: data/core/units/khalifate/Batal.cfg:4
 msgid "Batal"
-msgstr ""
+msgstr "Batal"
 
 #. [unit_type]: id=Batal, race=khalifate
 #: data/core/units/khalifate/Batal.cfg:17
@@ -3455,7 +3447,7 @@ msgstr ""
 #. [unit_type]: id=Hadaf, race=khalifate
 #: data/core/units/khalifate/Hadaf.cfg:4
 msgid "Hadaf"
-msgstr ""
+msgstr "Hadaf"
 
 #. [unit_type]: id=Hadaf, race=khalifate
 #: data/core/units/khalifate/Hadaf.cfg:17
@@ -4027,11 +4019,6 @@ msgstr "Trìtean-mara"
 
 #. [unit_type]: id=Merman Triton, race=merman
 #: data/core/units/merfolk/Triton.cfg:19
-#, fuzzy
-#| msgid ""
-#| "Tritons are combat masters of the sea. Skilled in use of the trident, "
-#| "Tritons easily defeat any enemy foolish enough to wander into their "
-#| "preferred environment."
 msgid ""
 "Tritons are combat masters of the sea. Skilled in use of the trident, "
 "Tritons easily defeat any enemy foolish enough to wander into their "
@@ -4039,9 +4026,12 @@ msgid ""
 "flexibility in its use, and the highest-ranking among them use weaponry more "
 "comparable to halberds than simple spears."
 msgstr ""
-"’S e maighstirean cath na mara a th’ anns na trìtein-mhara. Tha iad "
+"’S e maighstirean còmhraige-mara a th’ anns na trìtein-mhara. Tha iad "
 "anabarrach sgileil air a’ mhuirgheadh is cuiridh iad ruaig air gach nàmhaid "
-"a bhios cho gòrach ’s gun tig e dhan àrainneachd as fhearr leotha."
+"a bhios cho gòrach ’s gun tig e dhan àrainneachd as fhearr leotha. Tha iad "
+"glè shùbailte le cleachdadh an airm air a tha iad cho math agus cleachdaidh "
+"an fheadhainn leis an rang as àirde airm a tha nas coltaiche ri aileabart na "
+"sleagh shimplidh."
 
 #. [unit_type]: id=Merman Warrior, race=merman
 #: data/core/units/merfolk/Warrior.cfg:4
@@ -5037,10 +5027,8 @@ msgstr "Gille-dubh"
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:209
 #: data/core/units/undead/Corpse_Walking.cfg:208
-#, fuzzy
-#| msgid "wc_variation^Wose"
 msgid "wc_variation^Wolf"
-msgstr "Gille-dubh"
+msgstr "Madadh-allaidh"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:221

@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2017-05-14 01:47+0300\n"
-"PO-Revision-Date: 2017-01-31 13:11+0100\n"
+"PO-Revision-Date: 2017-05-25 12:42+0100\n"
 "Last-Translator: GunChleoc <fios@foramnagaidhlig.net>\n"
 "Language-Team: Fòram na Gàidhlig\n"
 "Language: gd\n"
@@ -2244,6 +2244,7 @@ msgstr "Kaasa,Kayya,Keyya,Kiire,Korra"
 
 #. Generator for male gryphon names; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:90
+#, fuzzy
 msgid ""
 "\n"
 "main={prefix}{suffix}|{prefix}{centre}{suffix}\n"
@@ -4152,17 +4153,13 @@ msgstr "Stàlaich na h-eisimeileachdan"
 
 #. [button]: id=ok
 #: data/gui/window/install_dependencies.cfg:83
-#, fuzzy
-#| msgid "yes"
 msgid "Yes"
-msgstr "air"
+msgstr "Tha"
 
 #. [button]: id=cancel
 #: data/gui/window/install_dependencies.cfg:94
-#, fuzzy
-#| msgid "Nov"
 msgid "No"
-msgstr "Samh"
+msgstr "Chan eil"
 
 #. [fonts]
 #: data/hardwired/fonts.cfg:7
@@ -4369,7 +4366,7 @@ msgstr "Ath-chluiche"
 #. [action]: id=button-stopreplay, type=image
 #: data/themes/_initial.cfg:623
 msgid "pause"
-msgstr ""
+msgstr "cuir ’na stad"
 
 #. [theme]: id=Classic
 #: data/themes/classic.cfg:11
@@ -5918,10 +5915,8 @@ msgid "<password> <email (optional)>"
 msgstr "<facal-faire> <post-d (roghainneil)>"
 
 #: src/chat_command_handler.hpp:137
-#, fuzzy
-#| msgid "Drop your nickname."
 msgid "Register your nickname"
-msgstr "Tilg d’ fhar-ainm air falbh."
+msgstr "Clàraich d’ fhar-ainm"
 
 #: src/chat_command_handler.hpp:139
 msgid "Drop your nickname."
@@ -6045,10 +6040,8 @@ msgid "%b %d %Y"
 msgstr "%b %d %Y"
 
 #: src/game_config.cpp:503
-#, fuzzy
-#| msgid "Invalid color range: "
 msgid "Invalid color in range: "
-msgstr "Raon datha mì-dhligheach: "
+msgstr "Dath mì-dhligheach san raon: "
 
 #: src/game_config_manager.cpp:196 src/game_config_manager.cpp:204
 #: src/game_config_manager.cpp:215
@@ -6256,7 +6249,7 @@ msgstr ""
 #: src/game_initialization/depcheck.hpp:317
 #: src/game_initialization/depcheck.hpp:329
 msgid "A component"
-msgstr ""
+msgstr "Co-phàirt"
 
 #: src/game_initialization/flg_manager.cpp:190
 msgid "Only random sides in the current era."
@@ -6625,8 +6618,6 @@ msgid "Error while starting server: "
 msgstr "Mearachd ann an tòiseachadh an fhrithealaiche: "
 
 #: src/generators/default_map_generator_job.cpp:692
-#, fuzzy
-#| msgid "Random maps with an odd data.width aren't supported."
 msgid "Random maps with an odd width aren't supported."
 msgstr "Cha chuirear taic ri mapaichean le leud chorr."
 
@@ -6642,6 +6633,8 @@ msgstr ""
 #: src/gui/core/linked_group_definition.cpp:41
 msgid "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
 msgstr ""
+"Tha iuchair “fixed_width” no “fixed_height” a dhìth air a’ bhuidheann "
+"ceangailte “$id|.”"
 
 #: src/gui/dialogs/addon/install_dependencies.cpp:38
 msgid ""
@@ -6668,16 +6661,12 @@ msgid "No Saved Games"
 msgstr "Gun gheama air a shàbhaladh"
 
 #: src/gui/dialogs/game_load.hpp:41
-#, fuzzy
-#| msgid "The file you have tried to load is corrupt"
 msgid "There are no save files to load"
-msgstr "Tha am faidhle a dh’fheuch thu ri luchdadh coirbte"
+msgstr "Chan eil faidhle sàbhalaidh ri luchdadh ann"
 
 #: src/gui/dialogs/game_stats.hpp:43
-#, fuzzy
-#| msgid "No multiplayer sides found"
 msgid "No visible sides found."
-msgstr "Cha deach taobhan ioma-chluicheadair a lorg"
+msgstr "Cha deach taobh so-fhaicsinneach a lorg."
 
 #: src/gui/dialogs/lobby/player_info.cpp:103
 msgid "In game:"
@@ -6716,10 +6705,8 @@ msgid "Error"
 msgstr "Mearachd"
 
 #: src/gui/dialogs/unit_list.hpp:45
-#, fuzzy
-#| msgid "No eras found."
 msgid "No units found."
-msgstr "Cha deach linn a lorg."
+msgstr "Cha deach aonad a lorg."
 
 #: src/gui/widgets/status_label_helper.hpp:33
 msgid "no"
@@ -7499,7 +7486,7 @@ msgstr "Modh dì-bhugaidh air a chur dheth!"
 
 #: src/menu_events.cpp:1719
 msgid "WARNING! Unsafe Lua Mode"
-msgstr ""
+msgstr "RABHADH! Modh Lua nach eil sàbhailte"
 
 #: src/menu_events.cpp:1720
 msgid ""
@@ -7509,6 +7496,11 @@ msgid ""
 "\n"
 "Do not continue unless you really know what you are doing."
 msgstr ""
+"Ma ruitheas tu còd Lua sa mhodh seo, bidh an coimpiutair agad so-leònta a "
+"thaobh bagairtean tèarainteachd o thuilleadain dhroch-rùnach no prògraman "
+"eile a stàlaich thu 's dòcha.\n"
+"\n"
+"Na lean air adhart mu eil tui eòlach air na tha thu a' dèanamh."
 
 #: src/menu_events.cpp:1725
 msgid "Unsafe mode enabled!"
@@ -7562,15 +7554,15 @@ msgstr "Chan eil arm feumail air an aonad seo."
 
 #: src/mp_game_settings.hpp:68
 msgid "Independent"
-msgstr ""
+msgstr "Neo-eisimeileach"
 
 #: src/mp_game_settings.hpp:69
 msgid "No Mirror"
-msgstr ""
+msgstr "Gun sgàthan"
 
 #: src/mp_game_settings.hpp:70
 msgid "No Ally Mirror"
-msgstr ""
+msgstr "Gun sgàthan caidreabhach"
 
 #: src/mp_ui_alerts.cpp:66
 msgid "A player has joined"
@@ -8190,8 +8182,6 @@ msgid "infix_binary^i"
 msgstr "i"
 
 #: src/synced_user_choice.cpp:329
-#, fuzzy
-#| msgid "waiting for $desc from side(s)$sides"
 msgid "waiting for $desc from side(s) $sides"
 msgstr "a’ feitheamh air $desc bhon taobh/bho na taobhan $sides"
 
@@ -8232,83 +8222,71 @@ msgstr " is "
 #: src/units/attack_type.cpp:357
 msgid "$number_or_percent damage"
 msgid_plural "$number_or_percent damage"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "$number_or_percent a dhochann"
+msgstr[1] "$number_or_percent a dhochann"
+msgstr[2] "$number_or_percent a dhochann"
+msgstr[3] "$number_or_percent a dhochann"
 
 #: src/units/attack_type.cpp:367
-#, fuzzy
-#| msgid "damage"
-#| msgid_plural "damage"
 msgid "$number damage"
 msgid_plural "$number damage"
-msgstr[0] "dochann"
-msgstr[1] "dhochann"
-msgstr[2] "dochainn"
-msgstr[3] "dochann"
+msgstr[0] "$number a dhochann"
+msgstr[1] "$number a dhochann"
+msgstr[2] "$number a dhochann"
+msgstr[3] "$number a dhochann"
 
 #. TRANSLATORS: Current value for WML code increase_attacks, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:377
 msgid "$number_or_percent strike"
 msgid_plural "$number_or_percent strikes"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "$number_or_percent bhuille"
+msgstr[1] "$number_or_percent bhuille"
+msgstr[2] "$number_or_percent buillean"
+msgstr[3] "$number_or_percent buille"
 
 #. TRANSLATORS: Current value for WML code set_attacks, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:387
-#, fuzzy
-#| msgid "strike"
-#| msgid_plural "strikes"
 msgid "$number strike"
 msgid_plural "$number strikes"
-msgstr[0] "bhualadh"
-msgstr[1] "bhualadh"
-msgstr[2] "bualaidhean"
-msgstr[3] "bualadh"
+msgstr[0] "$number bhualadh"
+msgstr[1] "$number bhualadh"
+msgstr[2] "$number bualaidhean"
+msgstr[3] "$number bualadh"
 
 #. TRANSLATORS: Current value for WML code set_accuracy, documented in https://wiki.wesnoth.org/EffectWML
 #. TRANSLATORS: Current value for WML code increase_accuracy, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:397 src/units/attack_type.cpp:405
 #, fuzzy, c-format
-#| msgid "% accuracy"
 msgid "$percent|% accuracy"
-msgstr "% pongalachd"
+msgstr "Pongalachd dhe $percent|%"
 
 #. TRANSLATORS: Current value for WML code set_parry, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:413
-#, fuzzy
-#| msgid " parry"
 msgid "$number parry"
-msgstr " cur seachad"
+msgstr "$number s chur seachad"
 
 #. TRANSLATORS: Current value for WML code increase_parry, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:421
 msgid "$number_or_percent parry"
-msgstr ""
+msgstr "$number_or_percent a chur seachad"
 
 #. TRANSLATORS: Current value for WML code set_movement, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:429
-#, fuzzy
-#| msgid "movement point"
-#| msgid_plural "movement points"
 msgid "$number movement point"
 msgid_plural "$number movement points"
-msgstr[0] "phuing gluasaid"
-msgstr[1] "phuing gluasaid"
-msgstr[2] "puingean gluasaid"
-msgstr[3] "puing gluasaid"
+msgstr[0] "$number phuing gluasaid"
+msgstr[1] "$number phuing gluasaid"
+msgstr[2] "%number puingean gluasaid"
+msgstr[3] "%number puing gluasaid"
 
 #. TRANSLATORS: Current value for WML code increase_movement, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:439
 msgid "$number_or_percent movement point"
 msgid_plural "$number_or_percent movement points"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "$number_or_percent phuing gluasaid"
+msgstr[1] "$number_or_percent phuing gluasaid"
+msgstr[2] "$number_or_percent puingean gluasaid"
+msgstr[3] "$number_or_percent puing gluasaid"
 
 #: src/units/types.cpp:462
 msgid "No description available."
@@ -8331,8 +8309,6 @@ msgid "female^liminal"
 msgstr "stairsnich"
 
 #: src/units/types.hpp:157
-#, fuzzy
-#| msgid "female^lawful"
 msgid "lawful"
 msgstr "dligheach"
 
@@ -8353,44 +8329,40 @@ msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
 #: src/units/unit.cpp:1780
-#, fuzzy
-#| msgid "Wesnoth"
 msgid "wesnoth"
 msgstr "Beasnad"
 
 #: src/units/unit.cpp:1791
 msgid "$number_or_percent move"
 msgid_plural "$number_or_percent moves"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "$number_or_percent ghluasad"
+msgstr[1] "$number_or_percent ghluasad"
+msgstr[2] "$number_or_percent gluasadan"
+msgstr[3] "$number_or_percent gluasad"
 
 #: src/units/unit.cpp:1797
 msgid "$number_or_percent vision"
-msgstr ""
+msgstr "$number_or_percent a lèirsinn"
 
 #: src/units/unit.cpp:1801
 msgid "$number_or_percent jamming"
-msgstr ""
+msgstr "$number_or_percent a chasg"
 
 #: src/units/unit.cpp:1805
 msgid "$number_or_percent XP to advance"
-msgstr ""
+msgstr "$number_or_percent PE gus àrdachadh"
 
 #: src/units/unit.cpp:1809
-#, fuzzy
-#| msgid "attack per turn"
 msgid "$number_or_percent attack per turn"
 msgid_plural "$number_or_percent attacks per turn"
-msgstr[0] "ionnsaigh gach cuairt"
-msgstr[1] "ionnsaigh gach cuairt"
-msgstr[2] "ionnsaigh gach cuairt"
-msgstr[3] "ionnsaigh gach cuairt"
+msgstr[0] "$number_or_percent ionnsaigh gach cuairt"
+msgstr[1] "$number_or_percent ionnsaigh gach cuairt"
+msgstr[2] "$number_or_percent ionnsaighean gach cuairt"
+msgstr[3] "$number_or_percent ionnsaigh gach cuairt"
 
 #: src/units/unit.cpp:1815
 msgid "$number_or_percent cost to recall"
-msgstr ""
+msgstr "$number_or_percent a chosgais ais-ghairm"
 
 #: src/units/unit.cpp:2219
 msgid "$effect_description per level"
