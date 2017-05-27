@@ -311,6 +311,23 @@ end
 
 -- Compatibility and deprecations
 
+helper.distance_between = wesnoth.map.distance_between
+helper.get_child = wml.get_child
+helper.get_nth_child = wml.get_nth_child
+helper.child_count = wml.child_count
+helper.child_range = wml.child_range
+helper.child_array = wml.child_array
+if wesnoth.kernel_type() == "Game Lua Kernel" then
+	helper.get_variable_array = wml.variable.get_array
+	helper.set_variable_array = wml.variable.set_array
+	helper.get_variable_proxy_array = wml.variable.get_proxy_array
+end
+helper.literal = wml.literal
+helper.parsed = wml.parsed
+helper.shallow_literal = wml.shallow_literal
+helper.shallow_parsed = wml.shallow_parsed
+
+--[[ Uncomment after 1.14
 helper.distance_between = helper.deprecate(
 	"helper.distance_between is deprecated; use wesnoth.map.distance_between instead",
 	wesnoth.map.distance_between)
@@ -358,5 +375,6 @@ wesnoth.tovconfig = helper.deprecate(
 	"wesnoth.tovconfig is deprecated; use wml.tovconfig instead", wesnoth.tovconfig)
 wesnoth.debug = helper.deprecate(
 	"wesnoth.debug is deprecated; use wml.tostring instead", wesnoth.debug)
+--]]
 
 return helper
