@@ -84,7 +84,8 @@ private:
 	bool read_only_;
 	int compress_level_; /**< Used for add-on archives. */
 
-	static const size_t default_document_size_limit = 100000000;
+	/** Default upload size limit in bytes. */
+	static const size_t default_document_size_limit = 100 * 1024 * 1024;
 
 	std::map<std::string, std::string> hooks_;
 	request_handlers_table handlers_;
