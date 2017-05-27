@@ -371,16 +371,12 @@ const std::string& gui_definition::read(const config& cfg)
 	if(id == "default") {
 		// The default gui needs to define all window types since we're the
 		// fallback in case another gui doesn't define the window type.
-		for(std::vector<std::string>::const_iterator itor
-			= registered_window_types().begin();
-			itor != registered_window_types().end();
-			++itor) {
-
+		for(const auto& window_type : registered_window_types()) {
 			const std::string error_msg(
-					"Window not defined in WML: '" + *itor
+					"Window not defined in WML: '" + window_type
 					+ "'. Perhaps a mismatch between data and source versions."
 					  " Try --data-dir <trunk-dir>");
-			VALIDATE(window_types.find(*itor) != window_types.end(), error_msg);
+			VALIDATE(window_types.find(window_type) != window_types.end(), error_msg);
 		}
 	}
 
@@ -611,17 +607,12 @@ resolution_definition_ptr get_control(const std::string& control_type,
 		}
 	}
 
-	for(std::vector<resolution_definition_ptr>::const_iterator itor
-		= (*control->second).resolutions.begin(),
-		end = (*control->second).resolutions.end();
-		itor != end;
-		++itor) {
+	const auto& resolutions = (*control->second).resolutions;
 
-		if(settings::screen_width <= (**itor).window_width
-		   && settings::screen_height <= (**itor).window_height) {
-
-			return *itor;
-		} else if(itor == end - 1) {
+	for(auto itor = resolutions.begin(); itor != resolutions.end(); ++itor) {
+		if((settings::screen_width  <= (**itor).window_width &&
+		    settings::screen_height <= (**itor).window_height) || itor == resolutions.end() - 1)
+		{
 			return *itor;
 		}
 	}
@@ -648,17 +639,12 @@ get_window_builder(const std::string& type)
 		}
 	}
 
-	for(std::vector<builder_window::window_resolution>::const_iterator itor
-		= window->second.resolutions.begin(),
-		end = window->second.resolutions.end();
-		itor != end;
-		++itor) {
+	const auto& resolutions = window->second.resolutions;
 
-		if(settings::screen_width <= itor->window_width
-		   && settings::screen_height <= itor->window_height) {
-
-			return itor;
-		} else if(itor == end - 1) {
+	for(auto itor = resolutions.begin(); itor != resolutions.end(); ++itor) {
+		if((settings::screen_width  <= itor->window_width &&
+		    settings::screen_height <= itor->window_height) || itor == resolutions.end() - 1)
+		{
 			return itor;
 		}
 	}
