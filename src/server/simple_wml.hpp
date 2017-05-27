@@ -282,6 +282,7 @@ public:
 
 	static std::string stats();
 
+	static size_t document_size_limit;
 private:
 	void generate_root();
 	document(const document&);

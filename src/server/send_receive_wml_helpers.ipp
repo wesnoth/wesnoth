@@ -311,10 +311,10 @@ struct handle_receive_doc : public handle_doc<Handler, ErrorHandler>
 				this->error_handler(this->socket);
 				return;
 			}
-			if(buf_size > 40000000) {
+			if(buf_size > simple_wml::document::document_size_limit) {
 				ERR_SERVER <<
 							  client_address(this->socket) <<
-							  "\treceived packet with payload size over 40MB" << std::endl;
+							  "\treceived packet with payload size over size limit" << std::endl;
 				this->error_handler(this->socket);
 				return;
 			}

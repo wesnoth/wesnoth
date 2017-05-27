@@ -38,6 +38,8 @@ static lg::log_domain log_config("config");
 
 namespace simple_wml {
 
+size_t document::document_size_limit = 40000000;
+
 namespace {
 
 void debug_delete(node* n) {
@@ -68,8 +70,8 @@ char* uncompress_buffer(const string_span& input, string_span* span)
 		size_t len = 0;
 		size_t pos = 0;
 		while(filter.good() && (len = filter.read(&buf[pos], chunk_size).gcount()) == chunk_size) {
-			if(pos + chunk_size > 40000000) {
-				throw error("WML document exceeds 40MB limit");
+			if(pos + chunk_size > document::document_size_limit) {
+				throw error("WML document exceeded size limit during decompression");
 			}
 
 			pos += len;
