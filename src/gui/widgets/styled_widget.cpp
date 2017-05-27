@@ -464,14 +464,13 @@ void styled_widget::definition_load_configuration(const std::string& control_typ
 	set_config(get_control(control_type, definition_));
 
 	/**
+	 * Fill in each canvas from the widget state definitons.
+	 *
 	 * Most widgets have a single canvas. However, some widgets such as toggle_panel
 	 * and toggle_button have a variable canvas count determined by their definitions.
 	 */
-	canvas_.resize(config_->state.size());
-
-	// Fill in each canvas.
-	for(size_t i = 0; i < canvas_.size(); ++i) {
-		canvas_[i] = config_->state[i].canvas_;
+	for(const auto& widget_state : config_->state) {
+		canvas_.emplace_back(std::move(widget_state.canvas_));
 	}
 
 	update_canvas();
