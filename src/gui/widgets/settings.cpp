@@ -12,33 +12,26 @@
    See the COPYING file for more details.
 */
 
-/**
- * @file
- * Implementation of settings.hpp.
- */
-
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "gui/widgets/settings.hpp"
 
-#include "formatter.hpp"
 #include "config_cache.hpp"
 #include "filesystem.hpp"
+#include "formatter.hpp"
+#include "formula/string_utils.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/tips.hpp"
 #include "gui/core/log.hpp"
 #include "gui/widgets/window.hpp"
+#include "preferences/general.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
 #include "serialization/schema_validator.hpp"
-#include "formula/string_utils.hpp"
 #include "wml_exception.hpp"
-#include "gui/core/log.hpp"
-#include "preferences/general.hpp"
 
 namespace gui2
 {
-
 bool new_widgets = false;
 
 namespace settings
@@ -128,9 +121,8 @@ struct gui_definition
 	/** Activates a gui. */
 	void activate() const;
 
-	typedef std::map<std::string /*styled_widget type*/,
-					 std::map<std::string /*id*/, styled_widget_definition_ptr> >
-	styled_widget_definition_map;
+	typedef std::map<std::string /*styled_widget type*/, std::map<std::string /*id*/, styled_widget_definition_ptr>>
+			styled_widget_definition_map;
 
 	styled_widget_definition_map control_definition;
 
@@ -139,8 +131,7 @@ struct gui_definition
 	std::map<std::string, builder_window> window_types;
 
 	void load_widget_definitions(
-			const std::string& definition_type,
-			const std::vector<styled_widget_definition_ptr>& definitions);
+			const std::string& definition_type, const std::vector<styled_widget_definition_ptr>& definitions);
 
 private:
 	unsigned popup_show_delay_;
@@ -342,27 +333,27 @@ const std::string& gui_definition::read(const config& cfg)
 	description = cfg["description"];
 
 	VALIDATE(!id.empty(), missing_mandatory_wml_key("gui", "id"));
-	VALIDATE(!description.empty(),
-			 missing_mandatory_wml_key("gui", "description"));
+	VALIDATE(!description.empty(), missing_mandatory_wml_key("gui", "description"));
 
 	DBG_GUI_P << "Parsing gui " << id << '\n';
 
 	/***** Control definitions *****/
-
-	for(auto& widget_type : registered_widget_types())
-	{
+	for(auto& widget_type : registered_widget_types()) {
 		std::vector<styled_widget_definition_ptr> definitions;
-		for(const auto& definition :
-			cfg.child_range(widget_type.second.key ? widget_type.second.key : widget_type.first + "_definition"))
-		{
-				definitions.push_back(widget_type.second.parser(definition));
+
+		for(const auto& definition : cfg.child_range(
+				widget_type.second.key
+					? widget_type.second.key
+					: widget_type.first + "_definition")
+		) {
+			definitions.push_back(widget_type.second.parser(definition));
 		}
+
 		load_widget_definitions(widget_type.first, definitions);
 	}
 
 	/***** Window types *****/
-	for(const auto& w : cfg.child_range("window"))
-	{
+	for(const auto& w : cfg.child_range("window")) {
 		std::pair<std::string, builder_window> child;
 		child.first = child.second.read(w);
 		window_types.insert(child);
@@ -373,9 +364,9 @@ const std::string& gui_definition::read(const config& cfg)
 		// fallback in case another gui doesn't define the window type.
 		for(const auto& window_type : registered_window_types()) {
 			const std::string error_msg(
-					"Window not defined in WML: '" + window_type
-					+ "'. Perhaps a mismatch between data and source versions."
-					  " Try --data-dir <trunk-dir>");
+				"Window not defined in WML: '" + window_type + "'."
+				"Perhaps a mismatch between data and source versions. Try --data-dir <trunk-dir>");
+
 			VALIDATE(window_types.find(window_type) != window_types.end(), error_msg);
 		}
 	}
@@ -385,8 +376,7 @@ const std::string& gui_definition::read(const config& cfg)
 	/**
 	 * @todo Regarding sounds:
 	 * Need to evaluate but probably we want the widget definition be able to:
-	 * - Override the default (and clear it). This will allow toggle buttons in
-	 * a
+	 * - Override the default (and clear it). This will allow toggle buttons in a
 	 *   listbox to sound like a toggle panel.
 	 * - Override the default and above per instance of the widget, some buttons
 	 *   can give a different sound.
@@ -400,8 +390,7 @@ const std::string& gui_definition::read(const config& cfg)
 
 	repeat_button_repeat_time_ = settings["repeat_button_repeat_time"];
 
-	VALIDATE(double_click_time_,
-			 missing_mandatory_wml_key("settings", "double_click_time"));
+	VALIDATE(double_click_time_, missing_mandatory_wml_key("settings", "double_click_time"));
 
 	sound_button_click_ = settings["sound_button_click"].str();
 	sound_toggle_button_click_ = settings["sound_toggle_button_click"].str();
@@ -410,8 +399,7 @@ const std::string& gui_definition::read(const config& cfg)
 
 	has_helptip_message_ = settings["has_helptip_message"];
 
-	VALIDATE(!has_helptip_message_.empty(),
-			 missing_mandatory_wml_key("[settings]", "has_helptip_message"));
+	VALIDATE(!has_helptip_message_.empty(), missing_mandatory_wml_key("[settings]", "has_helptip_message"));
 
 	tips_ = tip_of_the_day::load(cfg);
 
@@ -434,20 +422,20 @@ void gui_definition::activate() const
 }
 
 void gui_definition::load_widget_definitions(
-		const std::string& definition_type,
-		const std::vector<styled_widget_definition_ptr>& definitions)
+		const std::string& definition_type, const std::vector<styled_widget_definition_ptr>& definitions)
 {
-	for(const auto& def : definitions)
-	{
+	for(const auto& def : definitions) {
 		if(control_definition[definition_type].find(def->id) != control_definition[definition_type].end()) {
-			ERR_GUI_P << "Skipping duplicate styled_widget definition '" << def->id << "' for '" << definition_type << "'\n";
+			ERR_GUI_P << "Skipping duplicate styled_widget definition '" << def->id << "' for '" << definition_type
+					  << "'\n";
 			continue;
 		}
 
 		control_definition[definition_type].emplace(def->id, def);
 	}
 
-	// The default GUI needs to ensure each widget has a default definition, but non-default GUIs can just fall back to the default definition in the default GUI.
+	// The default GUI needs to ensure each widget has a default definition, but non-default GUIs can just fall back to
+	// the default definition in the default GUI.
 	if(this->id != "default") {
 		return;
 	}
@@ -457,9 +445,7 @@ void gui_definition::load_widget_definitions(
 		{"id", "default"}
 	}));
 
-	VALIDATE(control_definition[definition_type].find("default")
-			 != control_definition[definition_type].end(),
-			 msg);
+	VALIDATE(control_definition[definition_type].find("default") != control_definition[definition_type].end(), msg);
 }
 
 /** Map with all known windows, (the builder class builds a window). */
@@ -476,10 +462,9 @@ static std::map<std::string, gui_definition>::iterator default_gui = guis.end();
 
 void register_window(const std::string& id)
 {
-	const std::vector<std::string>::iterator itor
-			= std::find(registered_window_types().begin(),
-						registered_window_types().end(),
-						id);
+	const std::vector<std::string>::iterator itor = std::find(
+		registered_window_types().begin(),
+		registered_window_types().end(), id);
 
 	if(itor == registered_window_types().end()) {
 		registered_window_types().push_back(id);
@@ -498,34 +483,25 @@ void load_settings()
 	// Init.
 	window::update_screen_size();
 
-	// Read file.
+	// Read and validate the WML files.
 	config cfg;
-	try
-	{
-		schema_validation::schema_validator validator(
-				filesystem::get_wml_location("gui/schema.cfg"));
-		preproc_map preproc(
-				game_config::config_cache::instance().get_preproc_map());
-		filesystem::scoped_istream stream = preprocess_file(
-				filesystem::get_wml_location("gui/_main.cfg"), &preproc);
+	try {
+		schema_validation::schema_validator validator(filesystem::get_wml_location("gui/schema.cfg"));
+
+		preproc_map preproc(game_config::config_cache::instance().get_preproc_map());
+		filesystem::scoped_istream stream = preprocess_file(filesystem::get_wml_location("gui/_main.cfg"), &preproc);
 
 		read(cfg, *stream, &validator);
-	}
-	catch(config::error& e)
-	{
+	} catch(config::error& e) {
 		ERR_GUI_P << e.what() << '\n';
-		ERR_GUI_P << "Setting: could not read file 'data/gui/_main.cfg'."
-				  << std::endl;
-	}
-	catch(const abstract_validator::error& e)
-	{
-		ERR_GUI_P << "Setting: could not read file 'data/gui/schema.cfg'."
-				  << std::endl;
+		ERR_GUI_P << "Setting: could not read file 'data/gui/_main.cfg'." << std::endl;
+	} catch(const abstract_validator::error& e) {
+		ERR_GUI_P << "Setting: could not read file 'data/gui/schema.cfg'." << std::endl;
 		ERR_GUI_P << e.message;
 	}
-	// Parse guis
-	for(const auto& g : cfg.child_range("gui"))
-	{
+
+	// Parse GUI definitions.
+	for(const auto& g : cfg.child_range("gui")) {
 		std::pair<std::string, gui_definition> child;
 		child.first = child.second.read(g);
 		guis.insert(child);
@@ -536,39 +512,38 @@ void load_settings()
 
 	std::string current_theme = preferences::gui_theme();
 	current_gui = current_theme.empty() ? default_gui : guis.find(current_theme);
+
 	if(current_gui == guis.end()) {
 		ERR_GUI_P << "Missing [gui] definition for '" << current_theme << "'\n";
 		current_gui = default_gui;
 	}
+
 	current_gui->second.activate();
 }
 
-void register_widget(const std::string& id, std::function<styled_widget_definition_ptr(const config&)> f, const char* key)
+void register_widget(
+		const std::string& id, std::function<styled_widget_definition_ptr(const config&)> f, const char* key)
 {
 	registered_widget_types()[id] = {f, key};
 }
 
-void
-load_widget_definitions(gui_definition& gui,
-						const std::string& definition_type,
-						const std::vector<styled_widget_definition_ptr>& definitions)
+void load_widget_definitions(gui_definition& gui,
+		const std::string& definition_type,
+		const std::vector<styled_widget_definition_ptr>& definitions)
 {
 	DBG_GUI_P << "Load definition '" << definition_type << "'.\n";
 	gui.load_widget_definitions(definition_type, definitions);
 }
 
-resolution_definition_ptr get_control(const std::string& control_type,
-									   const std::string& definition)
+resolution_definition_ptr get_control(const std::string& control_type, const std::string& definition)
 {
 	const gui_definition::styled_widget_definition_map::const_iterator
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
-	control_definition
-			= (control_type == "list")
-					  ? current_gui->second.control_definition.find("listbox")
-					  : current_gui->second.control_definition.find(
-								control_type);
+		control_definition = (control_type == "list")
+			? current_gui->second.control_definition.find("listbox")
+			: current_gui->second.control_definition.find(control_type);
 #else
-	control_definition
+		control_definition
 			= current_gui->second.control_definition.find(control_type);
 #endif
 
@@ -583,26 +558,31 @@ resolution_definition_ptr get_control(const std::string& control_type,
 	if(control == control_definition->second.end()) {
 	fallback:
 		bool found_fallback = false;
+
 		if(current_gui != default_gui) {
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 			auto default_control_definition = (control_type == "list")
-					? default_gui->second.control_definition.find("listbox")
-					: default_gui->second.control_definition.find(control_type);
+				? default_gui->second.control_definition.find("listbox")
+				: default_gui->second.control_definition.find(control_type);
 #else
-			auto default_control_definition = default_gui->second.control_definition.find(control_type);
+			auto default_control_definition
+				= default_gui->second.control_definition.find(control_type);
 #endif
 
-			VALIDATE(control_definition != current_gui->second.control_definition.end(), formatter() << "Type '" << control_type << "' is unknown.");
+			VALIDATE(control_definition != current_gui->second.control_definition.end(),
+					formatter() << "Type '" << control_type << "' is unknown.");
 
 			control = default_control_definition->second.find(definition);
 			found_fallback = control != default_control_definition->second.end();
 		}
+
 		if(!found_fallback) {
 			if(definition != "default") {
-				LOG_GUI_G << "Control: type '" << control_type << "' definition '"
-						  << definition << "' not found, falling back to 'default'.\n";
+				LOG_GUI_G << "Control: type '" << control_type << "' definition '" << definition
+						  << "' not found, falling back to 'default'.\n";
 				return get_control(control_type, "default");
 			}
+
 			FAIL(formatter() << "default definition not found for styled_widget " << control_type);
 		}
 	}
@@ -617,20 +597,20 @@ resolution_definition_ptr get_control(const std::string& control_type,
 		}
 	}
 
-	FAIL(formatter() << "Control: type '" << control_type << "' definition '" << definition << "' has no resolutions.\n");
+	FAIL(formatter() << "Control: type '" << control_type << "' definition '" << definition
+					 << "' has no resolutions.\n");
 }
 
-std::vector<builder_window::window_resolution>::const_iterator
-get_window_builder(const std::string& type)
+std::vector<builder_window::window_resolution>::const_iterator get_window_builder(const std::string& type)
 {
 	window::update_screen_size();
 
-	std::map<std::string, builder_window>::const_iterator window
-			= current_gui->second.window_types.find(type);
+	std::map<std::string, builder_window>::const_iterator window = current_gui->second.window_types.find(type);
 
 	if(window == current_gui->second.window_types.end()) {
 		if(current_gui != default_gui) {
 			window = default_gui->second.window_types.find(type);
+
 			if(window == default_gui->second.window_types.end()) {
 				throw window_builder_invalid_id();
 			}
@@ -666,11 +646,11 @@ bool add_single_widget_definition(const std::string& widget_type, const std::str
 	auto& gui = default_gui->second;
 	auto parser = registered_widget_types().find(widget_type);
 
-	if (parser == registered_widget_types().end()) {
-		throw std::invalid_argument("widget '" + widget_type  + "' doesn't exist");
+	if(parser == registered_widget_types().end()) {
+		throw std::invalid_argument("widget '" + widget_type + "' doesn't exist");
 	}
 
-	if (gui.control_definition[widget_type].find(definition_id) != gui.control_definition[widget_type].end()) {
+	if(gui.control_definition[widget_type].find(definition_id) != gui.control_definition[widget_type].end()) {
 		return false;
 	}
 
@@ -683,7 +663,7 @@ void remove_single_widget_definition(const std::string& widget_type, const std::
 	auto& gui = default_gui->second;
 	auto it = gui.control_definition[widget_type].find(definition_id);
 
-	if ( it != gui.control_definition[widget_type].end()) {
+	if(it != gui.control_definition[widget_type].end()) {
 		gui.control_definition[widget_type].erase(it);
 	}
 }
