@@ -328,6 +328,15 @@ void CVideo::set_window_icon(surface& icon)
 	window->set_icon(icon);
 }
 
+void CVideo::clear_screen()
+{
+	if(!window) {
+		return;
+	}
+
+	window->fill(0, 0, 0, 255);
+}
+
 sdl::window *CVideo::get_window()
 {
 	return window.get();

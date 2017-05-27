@@ -59,7 +59,7 @@ editor_display::editor_display(editor_controller& controller, CVideo& video, rep
 	, brush_locations_()
 	, controller_(controller)
 {
-	clear_screen();
+	video.clear_screen();
 }
 
 void editor_display::add_brush_loc(const map_location& hex)

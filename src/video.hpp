@@ -155,6 +155,9 @@ public:
 	 */
 	void set_window_icon(surface& icon);
 
+	/** Clear the screen contents */
+	void clear_screen();
+
 	sdl::window *get_window();
 
 	/**

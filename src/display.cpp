@@ -2468,11 +2468,6 @@ const map_labels& display::labels() const
 	return *map_labels_;
 }
 
-void display::clear_screen()
-{
-	screen_.get_window()->fill(0, 0, 0, 255);
-}
-
 const SDL_Rect& display::get_clip_rect()
 {
 	return map_area();

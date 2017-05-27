@@ -83,7 +83,7 @@ game_display::game_display(game_board& board, CVideo& video, std::weak_ptr<wb::m
 		needs_rebuild_(false)
 {
 	replace_overlay_map(&overlay_map_);
-	clear_screen();
+	video.clear_screen();
 }
 
 game_display* game_display::create_dummy_display(CVideo& video)
