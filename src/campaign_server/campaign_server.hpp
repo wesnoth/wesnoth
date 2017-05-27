@@ -84,6 +84,8 @@ private:
 	bool read_only_;
 	int compress_level_; /**< Used for add-on archives. */
 
+	static const size_t default_document_size_limit = 100000000;
+
 	std::map<std::string, std::string> hooks_;
 	request_handlers_table handlers_;
 

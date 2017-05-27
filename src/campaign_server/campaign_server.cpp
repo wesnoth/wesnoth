@@ -212,6 +212,12 @@ void server::load_config()
 
 	// But not the listening port number.
 	port_ = cfg_["port"].to_int(default_campaignd_port);
+
+	// Limit the max size of WML documents received from the net to prevent the
+	// possible excessive use of resources due to malformed packets received.
+	// Since an addon is sent in a single WML document this essentially limits
+	// the maximum size of an addon that can be uploaded.
+	simple_wml::document::document_size_limit = cfg_["document_size_limit"].to_int(default_document_size_limit);
 }
 
 void server::handle_new_client(socket_ptr socket)
