@@ -75,7 +75,7 @@ function wml_actions.chat(cfg)
 	)
 
 	for index, side in ipairs(side_list) do
-		if side.controller == "human" then
+		if side.controller == "human" and side.is_local then
 			wesnoth.message(speaker, message)
 			break
 		end
