@@ -345,7 +345,7 @@ function wesnoth.wml_actions.message(cfg)
 		-- Sanity checks on side number and controller
 		for side in utils.split(sides_for) do
 			side = tonumber(side)
-			if side > 0 and side < #wesnoth.sides and wesnoth.sides[side].controller == "human" then
+			if side > 0 and side < #wesnoth.sides and wesnoth.sides[side].controller == "human" and wesnoth.sides[side].is_local then
 				show_for_side = true
 				break
 			end
