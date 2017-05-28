@@ -191,9 +191,6 @@ void CVideo::update_framebuffer()
 	}
 
 	surface fb = SDL_GetWindowSurface(*window);
-    if (fb.get() == NULL) {
-        fprintf(stderr, "SDL_GetWindowSurface failed: %s\n", SDL_GetError());
-    }
 	if(!frameBuffer) {
 		frameBuffer = fb;
 	} else {
