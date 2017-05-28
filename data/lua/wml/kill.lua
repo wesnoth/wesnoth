@@ -44,8 +44,26 @@ function wesnoth.wml_actions.kill(cfg)
 			local anim = wesnoth.create_animator()
 			local primary = helper.get_child(cfg, "primary_attack")
 			local secondary = helper.get_child(cfg, "secondary_attack")
-			if primary then primary = wesnoth.create_weapon(primary) end
-			if secondary then secondary = wesnoth.create_weapon(secondary) end
+			-- Yes, we get the primary attack from the secondary unit and vice versa
+			-- The primary attack in a death animation is the weapon that caused the death
+			-- In other words, the attacker's weapon. The attacker is the secondary unit.
+			-- In the victory animation, this is simply swapped.
+			if primary then
+				if secondary_unit then
+					primary = helper.find_attack(secondary_unit, primary)
+				else
+					primary = wesnoth.create_weapon(primary)
+				end
+				wesnoth.log('err', "Primary weapon:\n" .. wml.tostring(primary.__cfg))
+			end
+			if secondary then
+				if primary_unit then
+					secondary = helper.find_attack(unit, secondary)
+				else
+					secondary = wesnoth.create_weapon(secondary)
+				end
+				wesnoth.log('err', "Secondary weapon:\n" .. wml.tostring(secondary.__cfg))
+			end
 			anim:add(unit, "death", "kill", {primary = primary, secondary = secondary})
 			if secondary_unit then
 				anim:add(secondary_unit, "victory", "kill", {primary = secondary, secondary = primary})

@@ -309,6 +309,12 @@ function helper.shuffle( t, random_func)
 	end
 end
 
+function helper.find_attack(unit, filter)
+	for i, atk in ipairs(unit.attacks) do
+		if atk:matches(filter) then return atk end
+	end
+end
+
 -- Compatibility and deprecations
 
 helper.distance_between = wesnoth.map.distance_between

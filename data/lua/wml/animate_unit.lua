@@ -1,17 +1,6 @@
 local helper = wesnoth.require "helper"
 local T = helper.set_wml_tag_metatable{}
 
-local function get_fake_attack(unit, cfg)
-	-- unit is unused; only needed to get the same signature as get_real_attack
-	return wesnoth.create_weapon(cfg)
-end
-
-local function get_real_attack(unit, filter)
-	for i, atk in ipairs(unit.attacks) do
-		if atk:matches(filter) then return atk end
-	end
-end
-
 local function add_animation(anim, cfg)
 	cfg = helper.shallow_parsed(cfg)
 	local flag = cfg.flag or helper.wml_error("[animate_unit] is missing flag")
@@ -32,18 +21,32 @@ local function add_animation(anim, cfg)
 	if unit and not wesnoth.is_fogged(wesnoth.current.side, unit.x, unit.y) then
 		local primary = helper.get_child(cfg, "primary_attack")
 		local secondary = helper.get_child(cfg, "secondary_attack")
-		local get_attack = get_real_attack
+		-- We don't have access to the secondary unit at this point.
+		-- Thus, for the secondary attack, we just create a dummy attack
+		-- which exactly matches the filter.
+		-- TODO: Is there a way to fix this? Does it even need fixing?
 		if cfg.flag == "death" or cfg.flag == "victory" then
-			-- death and victory animations need a special case
-			-- In order to correctly fire certain animations, a dummy attack
-			-- is required. This is especially evident in Wose death animations.
-			get_attack = get_fake_attack
-		end
-		if primary then
-			primary = get_attack(unit, primary)
-		end
-		if secondary then
-			secondary = get_attack(unit, secondary)
+			-- death and victory animations have their weapons swapped
+			-- The primary weapon in a death animation is the weapon that killed the unit.
+			-- In other words, it's the weapon of the attacker, the secondary unit.
+			-- The secondary weapon is the weapon of the defender, the primary unit.
+			-- In a victory animation, these are reversed, so the primary weapon is
+			-- the weapon of the defender, who is now the secondary unit.
+			-- Similarly, the secondary weapon in a victory animation is the weapon
+			-- of the attacker, who is now the primary unit.
+			if primary then
+				primary = wesnoth.create_weapon(primary)
+			end
+			if secondary then
+				secondary = helper.find_attack(unit, secondary)
+			end
+		else
+			if primary then
+				primary = helper.find_attack(unit, primary)
+			end
+			if secondary then
+				secondary = wesnoth.create_weapon(secondary)
+			end
 		end
 
 		local hits = cfg.hits
