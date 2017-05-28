@@ -46,9 +46,9 @@ function wesnoth.wml_actions.kill(cfg)
 			local secondary = helper.get_child(cfg, "secondary_attack")
 			if primary then primary = wesnoth.create_weapon(primary) end
 			if secondary then secondary = wesnoth.create_weapon(secondary) end
-			anim:add(unit, "death", "kill", "hits", {primary = primary, secondary = secondary})
+			anim:add(unit, "death", "kill", {primary = primary, secondary = secondary})
 			if secondary_unit then
-				anim:add(secondary_unit, "victory", "kill", "hits", {primary = primary, secondary = secondary})
+				anim:add(secondary_unit, "victory", "kill", {primary = secondary, secondary = primary})
 			end
 			anim:run()
 		end
