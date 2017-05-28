@@ -43,6 +43,8 @@ scrollbar_base::scrollbar_base()
 			&scrollbar_base::signal_handler_mouse_enter, this, _2, _3, _4));
 	connect_signal<event::MOUSE_MOTION>(std::bind(
 			&scrollbar_base::signal_handler_mouse_motion, this, _2, _3, _4, _5));
+	connect_signal<event::SDL_TOUCH_MOTION>(std::bind(
+			&scrollbar_base::signal_handler_mouse_motion, this, _2, _3, _4, _5));
 	connect_signal<event::MOUSE_LEAVE>(std::bind(
 			&scrollbar_base::signal_handler_mouse_leave, this, _2, _3));
 	connect_signal<event::LEFT_BUTTON_DOWN>(std::bind(

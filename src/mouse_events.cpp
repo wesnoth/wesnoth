@@ -380,7 +380,6 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 	
 }
 
-// Here's a method handling mouse motion over map logic.
 void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, map_location new_hex)
 {
 	// we ignore the position coming from event handler
