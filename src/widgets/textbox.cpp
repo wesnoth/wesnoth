@@ -232,8 +232,8 @@ void textbox::draw_contents()
 
 				const clip_rect_setter clipper(surf, &loc);
 
-				color_t c(0, 0, 160, 140);
-				sdl::fill_rectangle(rect, c);
+				color_t c2(0, 0, 160, 140);
+				sdl::fill_rectangle(rect, c2);
 
 				starty += int(line_height_);
 				startx = 0;

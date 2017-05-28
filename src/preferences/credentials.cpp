@@ -244,7 +244,7 @@ secure_buffer build_key(const std::string& server, const std::string& login)
 {
 	std::string sysname = get_system_username();
 	secure_buffer result(std::max<size_t>(server.size() + login.size() + sysname.size(), 32));
-	size_t i = 0;
+	unsigned char i = 0;
 	std::generate(result.begin(), result.end(), [&i]() {return 'x' ^ i++;});
 	std::copy(login.begin(), login.end(), result.begin());
 	std::copy(sysname.begin(), sysname.end(), result.begin() + login.size());
