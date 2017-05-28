@@ -433,6 +433,8 @@ static int impl_add_animation(lua_State* L)
 			return luaW_type_error(L, 5, "secondary", "weapon");
 		}
 		lua_pop(L, 1);
+	} else if(!lua_isnoneornil(L, 5)) {
+		return luaW_type_error(L, 5, "table of options");
 	}
 
 	anim.add_animation(&u, which, u.get_location(), dest, v1, bars, text, color, hits, primary, secondary, v2);
