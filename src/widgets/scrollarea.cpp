@@ -18,7 +18,7 @@
 
 #include "widgets/scrollarea.hpp"
 #include "sdl/rect.hpp"
-#include <video.hpp>
+#include "video.hpp"
 
 
 namespace gui {
