@@ -739,7 +739,7 @@ function wml_actions.scroll(cfg)
 		end
 	end
 	if have_human or #sides == 0 then
-		wesnoth.scroll(cfg.x, cfg.y)
+		wesnoth.scroll(cfg.x or 0, cfg.y or 0)
 	end
 end
 
