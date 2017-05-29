@@ -1095,9 +1095,9 @@ color_t unit::xp_color() const
 	const color_t far_amla_color     {139,0,237,0};
 	const color_t amla_color         {170,0,255,0};
 
-	const bool near_advance = max_experience() - experience() <= game_config::kill_experience;
-	const bool mid_advance  = max_experience() - experience() <= game_config::kill_experience*2;
-	const bool far_advance  = max_experience() - experience() <= game_config::kill_experience*3;
+	const bool near_advance = static_cast<int>(experience_differential()) <= game_config::kill_experience;
+	const bool mid_advance  = static_cast<int>(experience_differential()) <= game_config::kill_experience*2;
+	const bool far_advance  = static_cast<int>(experience_differential()) <= game_config::kill_experience*3;
 
 	color_t color = normal_color;
 

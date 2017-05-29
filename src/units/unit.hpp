@@ -409,6 +409,18 @@ public:
 		return max_experience_;
 	}
 
+	/**
+	 * Absolute difference between current and max experience points.
+	 *
+	 * This function can serve two purposes:
+	 * - If current XP < max XP, the result is the amount of XP needed to advance.
+	 * - If current XP > max XP, the result is how much XP the unit will retain once they advance.
+	 */
+	unsigned int experience_differential() const
+	{
+		return std::abs(experience_ - max_experience_);
+	}
+
 	/** Sets the current experience point amount. */
 	void set_experience(int xp)
 	{

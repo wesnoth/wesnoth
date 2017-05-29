@@ -249,7 +249,7 @@ void helper_advance_unit(const map_location& loc){
 			ERR_AI_SIM_ACTIONS << "Simulating advancing to unknown unit type: " << advance_unit_typename;
 			assert(false && "simulating to unknown unit type");
 		}
-		advanced_unit->set_experience(advanced_unit->experience() - advanced_unit->max_experience());
+		advanced_unit->set_experience(advanced_unit->experience_differential());
 		advanced_unit->advance_to(*advanced_type);
 		advanced_unit->heal_fully();
 		advanced_unit->set_state(unit::STATE_POISONED, false);
@@ -257,7 +257,7 @@ void helper_advance_unit(const map_location& loc){
 		advanced_unit->set_state(unit::STATE_PETRIFIED, false);
 	}else{
 		const config &mod_option = mod_options[advance_choice-options.size()];
-		advanced_unit->set_experience(advanced_unit->experience()-advanced_unit->max_experience());
+		advanced_unit->set_experience(advanced_unit->experience_differential());
 		advanced_unit->add_modification("advancement", mod_option);
 	}
 
