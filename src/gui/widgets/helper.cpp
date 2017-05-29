@@ -33,7 +33,6 @@ static bool initialized_ = false;
 
 bool init()
 {
-	const size_t start = SDL_GetTicks();
 	if(initialized_) {
 		return true;
 	}
@@ -41,7 +40,6 @@ bool init()
 	load_settings();
 
 	initialized_ = true;
-	std::cout << "GUI2 init took " << (SDL_GetTicks() - start) << " ms" << std::endl;
 	return initialized_;
 }
 
