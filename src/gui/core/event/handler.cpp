@@ -622,9 +622,6 @@ void sdl_event_handler::mouse_button_up(const point& position, const Uint8 butto
 
 void sdl_event_handler::mouse_button_down(const point& position, const Uint8 button)
 {
-	// NOTE: despite previous code and observations to the contrary, I can no longer seem
-	//       to cause unhandled  event warnings to appear when clicking with the mouse wheel.
-	//       -- vultraz 11/30/16
 	switch(button) {
 		case SDL_BUTTON_LEFT:
 			mouse(SDL_LEFT_BUTTON_DOWN, position);
