@@ -91,8 +91,8 @@ static int impl_music_get(lua_State* L) {
 	}
 
 	if(strcmp(m, "previous") == 0) {
-        push_track(L, sound::get_previous_music_track());
-        return 1;
+		push_track(L, sound::get_previous_music_track());
+		return 1;
 	}
 
 	if(strcmp(m, "current_i") == 0) {
@@ -248,16 +248,15 @@ static int impl_track_get(lua_State* L) {
 	return_string_attrib("name", track->id());
 	return_string_attrib("title", track->title());
 
-    return_cfg_attrib("__cfg",
-                      cfg["append"]=track->append();
-                      cfg["shuffle"]=track->shuffle();
-                      cfg["immediate"]=track->immediate();
-                      cfg["once"]=track->play_once();
-                      cfg["ms_before"]=track->ms_before();
-                      cfg["ms_after"]=track->ms_after();
-                      cfg["name"]=track->id();
-                      cfg["title"]=track->title()
-                     );
+	return_cfg_attrib("__cfg",
+						cfg["append"]=track->append();
+						cfg["shuffle"]=track->shuffle();
+						cfg["immediate"]=track->immediate();
+						cfg["once"]=track->play_once();
+						cfg["ms_before"]=track->ms_before();
+						cfg["ms_after"]=track->ms_after();
+						cfg["name"]=track->id();
+						cfg["title"]=track->title());
 
 	return luaW_getmetafield(L, 1, m);
 }
