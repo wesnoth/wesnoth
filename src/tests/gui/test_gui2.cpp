@@ -519,7 +519,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	};
 	std::sort(list.begin(), list.end());
 	std::sort(omitted.begin(), omitted.end());
-	std::set<std::string> missing;
+	std::vector<std::string> missing;
 	std::set_difference(list.begin(), list.end(), omitted.begin(), omitted.end(), std::back_inserter(missing));
 
 	// Test size() instead of empty() to get the number of offenders
