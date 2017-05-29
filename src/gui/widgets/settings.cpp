@@ -433,7 +433,7 @@ static auto default_gui = guis.end();
 
 void register_window(const std::string& id)
 {
-	registered_window_types().emplace(id);
+	registered_window_types().insert(id);
 }
 
 std::set<std::string> unit_test_access_only::get_registered_window_list()
