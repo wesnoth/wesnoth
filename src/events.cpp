@@ -32,6 +32,7 @@
 
 #include <SDL.h>
 
+#include <boost/range/adaptor/reversed.hpp>
 #include <boost/thread.hpp>
 
 #define ERR_GEN LOG_STREAM(err, lg::general)
@@ -251,11 +252,8 @@ void sdl_handler::join(context& c)
 	has_joined_ = true;
 
 	// instruct members to join
-	sdl_handler_vector members = handler_members();
-	if(!members.empty()) {
-		for(sdl_handler_vector::iterator i = members.begin(); i != members.end(); ++i) {
-			(*i)->join(c);
-		}
+	for(auto member : handler_members()) {
+		member->join(c);
 	}
 }
 
@@ -265,10 +263,10 @@ void sdl_handler::join_same(sdl_handler* parent)
 		leave(); // should not be in multiple event contexts
 	}
 
-	for(std::deque<context>::reverse_iterator i = event_contexts.rbegin(); i != event_contexts.rend(); ++i) {
-		handler_list& handlers = (*i).handlers;
+	for(auto& context : boost::adaptors::reverse(event_contexts)) {
+		handler_list& handlers = context.handlers;
 		if(std::find(handlers.begin(), handlers.end(), parent) != handlers.end()) {
-			join(*i);
+			join(context);
 			return;
 		}
 	}
@@ -279,16 +277,17 @@ void sdl_handler::join_same(sdl_handler* parent)
 void sdl_handler::leave()
 {
 	sdl_handler_vector members = handler_members();
-	if(!members.empty()) {
-		for(sdl_handler_vector::iterator i = members.begin(); i != members.end(); ++i) {
-			(*i)->leave();
-		}
-	} else {
+
+	if(members.empty()) {
 		assert(event_contexts.empty() == false);
 	}
 
-	for(std::deque<context>::reverse_iterator i = event_contexts.rbegin(); i != event_contexts.rend(); ++i) {
-		if(i->remove_handler(this)) {
+	for(auto member : members) {
+		member->leave();
+	}
+
+	for(auto& context : boost::adaptors::reverse(event_contexts)) {
+		if(context.remove_handler(this)) {
 			break;
 		}
 	}
@@ -311,21 +310,15 @@ void sdl_handler::join_global()
 	has_joined_global_ = true;
 
 	// Instruct members to join
-	sdl_handler_vector members = handler_members();
-	if(!members.empty()) {
-		for(sdl_handler_vector::iterator i = members.begin(); i != members.end(); ++i) {
-			(*i)->join_global();
-		}
+	for(auto member : handler_members()) {
+		member->join_global();
 	}
 }
 
 void sdl_handler::leave_global()
 {
-	sdl_handler_vector members = handler_members();
-	if(!members.empty()) {
-		for(sdl_handler_vector::iterator i = members.begin(); i != members.end(); ++i) {
-			(*i)->leave_global();
-		}
+	for(auto member : handler_members()) {
+		member->leave_global();
 	}
 
 	event_contexts.front().remove_handler(this);
@@ -524,14 +517,13 @@ void pump()
 			// make sure this runs in it's own scope.
 			{
 				flip_locker flip_lock(CVideo::get_singleton());
-				for(std::deque<context>::iterator i = event_contexts.begin(); i != event_contexts.end(); ++i) {
-					const handler_list& event_handlers = (*i).handlers;
-					for(auto handler : event_handlers) {
+				for(auto& context : event_contexts) {
+					for(auto handler : context.handlers) {
 						handler->handle_window_event(event);
 					}
 				}
-				const handler_list& event_handlers = event_contexts.front().handlers;
-				for(auto handler : event_handlers) {
+
+				for(auto handler : event_contexts.front().handlers) {
 					handler->handle_window_event(event);
 				}
 			}
@@ -576,10 +568,10 @@ void pump()
 			flip_locker flip_lock(CVideo::get_singleton());
 
 			/* Iterate backwards as the most recent things will be at the top */
-			for(std::deque<context>::iterator i = event_contexts.begin(); i != event_contexts.end(); ++i) {
-				handler_list& event_handlers = (*i).handlers;
-				for(handler_list::iterator i1 = event_handlers.begin(); i1 != event_handlers.end(); ++i1) {
-					(*i1)->handle_event(event);
+			// FIXME? ^ that isn't happening here.
+			for(auto& context : event_contexts) {
+				for(auto handler : context.handlers) {
+					handler->handle_event(event);
 				}
 			}
 
@@ -667,11 +659,10 @@ void raise_draw_event()
 {
 	if(event_contexts.empty() == false) {
 		event_contexts.back().add_staging_handlers();
-		const handler_list& event_handlers = event_contexts.back().handlers;
 
 		// Events may cause more event handlers to be added and/or removed,
 		// so we must use indexes instead of iterators here.
-		for(auto handler : event_handlers) {
+		for(auto handler : event_contexts.back().handlers) {
 			handler->draw();
 		}
 	}
@@ -679,9 +670,8 @@ void raise_draw_event()
 
 void raise_draw_all_event()
 {
-	for(std::deque<context>::iterator i = event_contexts.begin(); i != event_contexts.end(); ++i) {
-		const handler_list& event_handlers = (*i).handlers;
-		for(auto handler : event_handlers) {
+	for(auto& context : event_contexts) {
+		for(auto handler : context.handlers) {
 			handler->draw();
 		}
 	}
@@ -690,11 +680,7 @@ void raise_draw_all_event()
 void raise_volatile_draw_event()
 {
 	if(event_contexts.empty() == false) {
-		const handler_list& event_handlers = event_contexts.back().handlers;
-
-		// Events may cause more event handlers to be added and/or removed,
-		// so we must use indexes instead of iterators here.
-		for(auto handler : event_handlers) {
+		for(auto handler : event_contexts.back().handlers) {
 			handler->volatile_draw();
 		}
 	}
@@ -702,9 +688,8 @@ void raise_volatile_draw_event()
 
 void raise_volatile_draw_all_event()
 {
-	for(std::deque<context>::iterator i = event_contexts.begin(); i != event_contexts.end(); ++i) {
-		const handler_list& event_handlers = (*i).handlers;
-		for(auto handler : event_handlers) {
+	for(auto& context : event_contexts) {
+		for(auto handler : context.handlers) {
 			handler->volatile_draw();
 		}
 	}
@@ -713,11 +698,7 @@ void raise_volatile_draw_all_event()
 void raise_volatile_undraw_event()
 {
 	if(event_contexts.empty() == false) {
-		const handler_list& event_handlers = event_contexts.back().handlers;
-
-		// Events may cause more event handlers to be added and/or removed,
-		// so we must use indexes instead of iterators here.
-		for(auto handler : event_handlers) {
+		for(auto handler : event_contexts.back().handlers) {
 			handler->volatile_undraw();
 		}
 	}
