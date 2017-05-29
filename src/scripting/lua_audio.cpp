@@ -85,8 +85,6 @@ static int impl_music_get(lua_State* L) {
 	}
 	const char* m = luaL_checkstring(L, 2);
 
-	LOG_AUDIO << "Field: " << luaL_checkstring(L, 2) << "\n";
-
 	if(strcmp(m, "current") == 0) {
 		push_track(L, sound::get_current_track());
 		return 1;
