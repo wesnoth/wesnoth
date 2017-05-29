@@ -433,7 +433,10 @@ static auto default_gui = guis.end();
 
 void register_window(const std::string& id)
 {
-	registered_window_types().insert(id);
+	// The second value of emplace is the 'was successfully added' flag.
+	if(!registered_window_types().emplace(id).second) {
+		WRN_GUI_P << "Window '" << id "' already registered. Ignoring." << std::endl;
+	}
 }
 
 std::set<std::string> unit_test_access_only::get_registered_window_list()
