@@ -29,25 +29,23 @@
  * @param id                      Id of the widget
  * @param key                     The id to load if differs from id.
  */
-#define REGISTER_WIDGET3(type, id, key)                                        \
-	namespace                                                                  \
-	{                                                                          \
-                                                                               \
-	namespace ns_##type##id                                                    \
-	{                                                                          \
-                                                                               \
-		struct register_helper                                                 \
-		{                                                                      \
-			register_helper()                                                  \
-			{                                                                  \
-				register_widget(#id, [](const config& cfg) { return std::make_shared<type>(cfg); }, key); \
-                                                                               \
-				register_builder_widget(#id, &build_widget<implementation::builder_##id>); \
-			}                                                                  \
-		};                                                                     \
-                                                                               \
-		static struct register_helper register_helper;                         \
-	}                                                                          \
+#define REGISTER_WIDGET3(type, id, key)                                                                                \
+	namespace                                                                                                          \
+	{                                                                                                                  \
+	namespace ns_##type##id                                                                                            \
+	{                                                                                                                  \
+		struct register_helper                                                                                         \
+		{                                                                                                              \
+			register_helper()                                                                                          \
+			{                                                                                                          \
+				register_widget(#id, [](const config& cfg) { return std::make_shared<type>(cfg); }, key);              \
+                                                                                                                       \
+				register_builder_widget(#id, &build_widget<implementation::builder_##id>);                             \
+			}                                                                                                          \
+		};                                                                                                             \
+                                                                                                                       \
+		static struct register_helper register_helper;                                                                 \
+	}                                                                                                                  \
 	}
 
 /**
