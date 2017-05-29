@@ -150,11 +150,13 @@ typedef std::shared_ptr<const builder_grid> builder_grid_const_ptr;
 class builder_window
 {
 public:
-	builder_window() : resolutions(), id_(), description_()
+	explicit builder_window(const config& cfg)
+		: resolutions()
+		, id_(cfg["id"])
+		, description_(cfg["description"])
 	{
+		read(cfg);
 	}
-
-	const std::string& read(const config& cfg);
 
 	struct window_resolution
 	{
@@ -203,6 +205,8 @@ public:
 	std::vector<window_resolution> resolutions;
 
 private:
+	void read(const config& cfg);
+
 	std::string id_;
 	std::string description_;
 };

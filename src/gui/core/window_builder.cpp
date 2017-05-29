@@ -125,9 +125,8 @@ window* build(CVideo& video, const builder_window::window_resolution* definition
 
 window* build(CVideo& video, const std::string& type)
 {
-	std::vector<builder_window::window_resolution>::const_iterator definition
-			= get_window_builder(type);
-	window* window = build(video, &*definition);
+	const builder_window::window_resolution& definition = get_window_builder(type);
+	window* window = build(video, &definition);
 	window->set_id(type);
 	return window;
 }
@@ -251,11 +250,8 @@ builder_widget_ptr create_builder_widget(const config& cfg)
  *
  *
  */
-const std::string& builder_window::read(const config& cfg)
+void builder_window::read(const config& cfg)
 {
-	id_ = cfg["id"].str();
-	description_ = cfg["description"].str();
-
 	VALIDATE(!id_.empty(), missing_mandatory_wml_key("window", "id"));
 	VALIDATE(!description_.empty(),
 			 missing_mandatory_wml_key("window", "description"));
@@ -268,8 +264,6 @@ const std::string& builder_window::read(const config& cfg)
 	{
 		resolutions.emplace_back(i);
 	}
-
-	return id_;
 }
 
 /*WIKI

@@ -31,7 +31,7 @@
 namespace gui2
 {
 
-struct gui_definition;
+class gui_definition;
 class game_tip;
 
 /** Do we wish to use the new library or not. */
@@ -67,8 +67,11 @@ class unit_test_access_only
 	static std::vector<std::string> get_registered_window_list();
 };
 
+/** Function type alias for @ref register_widget. */
+using widget_parser_t = std::function<styled_widget_definition_ptr(const config&)>;
+
 /**
- * Registers a widgets.
+ * Registers a widget.
  *
  * This function registers the available widgets defined in WML. All widgets
  * need to register themselves before @ref gui2::init) is called.
@@ -78,9 +81,10 @@ class unit_test_access_only
  *
  * @param id                      The id of the widget to register.
  * @param functor                 The function to parse the definition config.
- * @param key                     the tagname to read the widgetsdeiniftion from the game config, nullptr means use the default [<id>_definition].
+ * @param key                     The tagname from which to read the widget's definition in the game config.
+ *                                If nullptr the default [<id>_definition] is used.
  */
-void register_widget(const std::string& id, std::function<styled_widget_definition_ptr(const config&)> f, const char* key = nullptr);
+void register_widget(const std::string& id, widget_parser_t f, const char* key = nullptr);
 
 /**
  * Loads the definitions of a widget.
@@ -97,8 +101,6 @@ void load_widget_definitions(
 		const std::string& definition_type,
 		const std::vector<styled_widget_definition_ptr>& definitions);
 
-
-
 resolution_definition_ptr get_control(const std::string& control_type,
 									   const std::string& definition);
 
@@ -112,10 +114,9 @@ struct window_builder_invalid_id
 };
 
 /**
- * Returns an interator to the requested builder.
+ * Returns an reference to the requested builder.
  *
- * The builder is determined by the @p type and the current screen
- * resolution.
+ * The builder is determined by the @p type and the current screen resolution.
  *
  * @pre                       There is a valid builder for @p type at the
  *                            current resolution.
@@ -127,8 +128,7 @@ struct window_builder_invalid_id
  *
  * @returns                   An iterator to the requested builder.
  */
-std::vector<builder_window::window_resolution>::const_iterator
-get_window_builder(const std::string& type);
+const builder_window::window_resolution& get_window_builder(const std::string& type);
 
 /** Loads the setting for the theme. */
 void load_settings();
