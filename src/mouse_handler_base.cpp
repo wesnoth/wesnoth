@@ -78,6 +78,8 @@ void mouse_handler_base::mouse_motion_event(const SDL_MouseMotionEvent& event, c
 
 void mouse_handler_base::touch_motion_event(const SDL_TouchFingerEvent& event, const bool browse)
 {
+	// This is wrong (needs to be scaled from -1..1 to screen size), but it's discarded in touch_motion anyway.
+	// Let's not waste CPU cycles.
 	touch_motion(event.x, event.y, browse);
 }
 
