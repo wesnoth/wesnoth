@@ -13,6 +13,7 @@ See the COPYING file for more details.
 
 #include "lua_audio.hpp"
 
+#include "log.hpp"
 #include "lua/lua.h"
 #include "lua/lauxlib.h"
 #include "scripting/lua_common.hpp"
@@ -22,12 +23,18 @@ See the COPYING file for more details.
 #include "preferences/general.hpp"
 #include <set>
 
+static lg::log_domain log_audio("audio");
+#define DBG_AUDIO LOG_STREAM(debug, log_audio)
+#define LOG_AUDIO LOG_STREAM(info, log_audio)
+#define ERR_AUDIO LOG_STREAM(err, log_audio)
+
 static const char* Track = "music track";
 
 class lua_music_track {
 	std::shared_ptr<sound::music_track> track;
 public:
 	explicit lua_music_track(int i) : track(sound::get_track(i)) {}
+	explicit lua_music_track(std::shared_ptr<sound::music_track> new_track) : track(new_track) {}
 	bool valid() const {
 		return track && track->valid();
 	}
@@ -47,6 +54,12 @@ public:
 
 static lua_music_track* push_track(lua_State* L, int i) {
 	lua_music_track* trk = new(L) lua_music_track(i);
+	luaL_setmetatable(L, Track);
+	return trk;
+}
+
+static lua_music_track* push_track(lua_State* L, std::shared_ptr<sound::music_track> new_track) {
+	lua_music_track* trk = new(L) lua_music_track(new_track);
 	luaL_setmetatable(L, Track);
 	return trk;
 }
@@ -71,10 +84,17 @@ static int impl_music_get(lua_State* L) {
 		return 1;
 	}
 	const char* m = luaL_checkstring(L, 2);
+
 	if(strcmp(m, "current") == 0) {
 		push_track(L, sound::get_current_track());
 		return 1;
 	}
+
+	if(strcmp(m, "previous") == 0) {
+		push_track(L, sound::get_previous_music_track());
+		return 1;
+	}
+
 	if(strcmp(m, "current_i") == 0) {
 		size_t i = sound::get_current_track();
 		if(i == sound::get_num_tracks()) {
@@ -227,6 +247,17 @@ static int impl_track_get(lua_State* L) {
 	return_int_attrib("ms_after", track->ms_after());
 	return_string_attrib("name", track->id());
 	return_string_attrib("title", track->title());
+
+	return_cfg_attrib("__cfg",
+						cfg["append"]=track->append();
+						cfg["shuffle"]=track->shuffle();
+						cfg["immediate"]=track->immediate();
+						cfg["once"]=track->play_once();
+						cfg["ms_before"]=track->ms_before();
+						cfg["ms_after"]=track->ms_after();
+						cfg["name"]=track->id();
+						cfg["title"]=track->title());
+
 	return luaW_getmetafield(L, 1, m);
 }
 
