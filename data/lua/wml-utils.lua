@@ -72,7 +72,7 @@ function utils.optional_side_filter(cfg, key_name, filter_name)
 	end
 	local sides = utils.get_sides(cfg, key_name, filter_name)
 	for index,side in ipairs(sides) do
-		if side.controller == "human" then
+		if side.controller == "human" and side.is_local then
 			return true
 		end
 	end

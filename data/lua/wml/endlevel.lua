@@ -51,14 +51,14 @@ function wesnoth.wml_actions.endlevel(cfg)
 		if victory_or_defeat ~= "victory" and victory_or_defeat ~= "defeat" then
 			return helper.wml_error("invalid result= key in [endlevel] '" .. victory_or_defeat .."'")
 		end
-		if v.controller == "human" or v.controller == "network" then
+		if v.controller == "human" then
 			if victory then
 				there_is_a_human_victory = true
 			else
 				there_is_a_human_defeat = true
 			end
 		end
-		if v.controller == "human" then
+		if v.controller == "human" and v.is_local then
 			if victory then
 				there_is_a_local_human_victory = true
 			else
