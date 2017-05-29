@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-05-14 01:46+0300\n"
+"POT-Creation-Date: 2017-05-29 21:55+0200\n"
 "PO-Revision-Date: 2017-05-15 19:47+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
@@ -19,8 +19,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 2.0.2\n"
 
-#. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
 #. [terrain_type]: id=fence
+#. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:6
 #: data/core/terrain.cfg:452
 msgid "Fence"
@@ -1825,8 +1825,8 @@ msgstr " (Press '$hotkey' for more information)"
 
 #. [toggle_button]: id=sort_0
 #. [label]: id=name
-#. [label]
 #. [toggle_button]: id=sort_1
+#. [label]
 #: data/gui/widget/addon_list.cfg:78 data/gui/window/game_load.cfg:155
 #: data/gui/window/mp_server_list.cfg:107 data/gui/window/terrain_layers.cfg:45
 #: data/gui/window/unit_list.cfg:93 data/gui/window/unit_recall.cfg:47
@@ -1877,7 +1877,7 @@ msgstr "Update add-on"
 #. [button]: id=single_uninstall
 #. [button]: id=uninstall
 #: data/gui/widget/addon_list.cfg:409 data/gui/window/addon_manager.cfg:246
-#: src/gui/dialogs/addon/manager.cpp:708
+#: src/gui/dialogs/addon/manager.cpp:707
 msgid "Uninstall add-on"
 msgstr "Uninstall add-on"
 
@@ -1891,15 +1891,15 @@ msgstr "Rooms"
 msgid "Messages waiting"
 msgstr "Messages waiting"
 
-#. [button]: id=close_window
 #. [button]: id=click_dismiss
-#. [button]: id=cancel
+#. [button]: id=close_window
 #. [button]: id=ok
+#. [button]: id=cancel
 #: data/gui/widget/chatbox.cfg:64 data/gui/widget/window_default.cfg:106
 #: data/gui/window/attack_predictions.cfg:304 data/gui/window/chat_log.cfg:199
 #: data/gui/window/end_credits.cfg:146
 #: data/gui/window/game_cache_options.cfg:247
-#: data/gui/window/game_stats.cfg:842 data/gui/window/game_version.cfg:643
+#: data/gui/window/game_stats.cfg:842 data/gui/window/game_version.cfg:645
 #: data/gui/window/gamestate_inspector.cfg:397
 #: data/gui/window/generator_settings.cfg:190
 #: data/gui/window/help_browser.cfg:188
@@ -2122,7 +2122,7 @@ msgstr "Get Add-ons"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=details_toggle
-#: data/gui/window/addon_manager.cfg:921 src/gui/dialogs/addon/manager.cpp:450
+#: data/gui/window/addon_manager.cfg:921 src/gui/dialogs/addon/manager.cpp:449
 msgid "Addon Details"
 msgstr "Add-on Details"
 
@@ -2141,8 +2141,8 @@ msgstr "Exit"
 msgid "Choose the add-ons you want to remove."
 msgstr "Choose the add-ons you want to remove."
 
-#. [button]: id=remove
 #. [button]: id=ok
+#. [button]: id=remove
 #: data/gui/window/addon_uninstall_list.cfg:161
 #: data/gui/window/mp_cmd_wrapper.cfg:198
 #: data/gui/window/preferences/05_multiplayer.cfg:317
@@ -2346,8 +2346,8 @@ msgstr "Page:"
 msgid "Last"
 msgstr "Last"
 
-#. [button]: id=previous_page
 #. [button]: id=previous_tip
+#. [button]: id=previous_page
 #: data/gui/window/chat_log.cfg:105 data/gui/window/title_screen.cfg:190
 msgid "Previous"
 msgstr "Previous"
@@ -2357,8 +2357,8 @@ msgstr "Previous"
 msgid "Previous page"
 msgstr "Previous page"
 
-#. [button]: id=next_page
 #. [button]: id=next_tip
+#. [button]: id=next_page
 #: data/gui/window/chat_log.cfg:114 data/gui/window/title_screen.cfg:205
 msgid "Next"
 msgstr "Next"
@@ -2482,7 +2482,7 @@ msgstr "Delete ToD"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/depcheck_confirm_change.cfg:40
-#: src/gui/dialogs/addon/manager.cpp:683 src/gui/dialogs/file_dialog.cpp:319
+#: src/gui/dialogs/addon/manager.cpp:682 src/gui/dialogs/file_dialog.cpp:319
 #: src/gui/dialogs/file_dialog.cpp:746 src/gui/widgets/label.cpp:193
 msgid "Confirm"
 msgstr "Confirm"
@@ -2891,8 +2891,8 @@ msgstr "Continue"
 msgid "Execution trace"
 msgstr "Execution trace"
 
-#. [button]: id=cancel
 #. [grid]
+#. [button]: id=cancel
 #: data/gui/window/formula_debugger.cfg:234
 #: data/gui/window/title_screen.cfg:261
 msgid "Quit"
@@ -3058,9 +3058,9 @@ msgid "Team"
 msgstr "Team"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [toggle_button]: id=sort_2
 #. [image]: id=gold_icon
 #. [label]: id=side_gold
+#. [toggle_button]: id=sort_2
 #: data/gui/window/game_stats.cfg:63 data/gui/window/mp_join_game.cfg:219
 #: data/gui/window/mp_join_game.cfg:232
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:401
@@ -3083,9 +3083,9 @@ msgid "Upkeep"
 msgstr "Upkeep"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [toggle_button]: id=sort_6
 #. [image]: id=income_icon
 #. [label]: id=side_income
+#. [toggle_button]: id=sort_6
 #: data/gui/window/game_stats.cfg:118 data/gui/window/mp_join_game.cfg:250
 #: data/gui/window/mp_join_game.cfg:263
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:407
@@ -3224,27 +3224,27 @@ msgid "The Battle for Wesnoth"
 msgstr "The Battle for Wesnoth"
 
 #. [widget]: id=tab_label
-#: data/gui/window/game_version.cfg:526
+#: data/gui/window/game_version.cfg:528
 msgid "Paths"
 msgstr "Paths"
 
 #. [widget]: id=tab_label
-#: data/gui/window/game_version.cfg:539
+#: data/gui/window/game_version.cfg:541
 msgid "Libraries"
 msgstr "Libraries"
 
 #. [widget]: id=tab_label
-#: data/gui/window/game_version.cfg:552
+#: data/gui/window/game_version.cfg:554
 msgid "Features"
 msgstr "Features"
 
 #. [button]: id=copy_all
-#: data/gui/window/game_version.cfg:627
+#: data/gui/window/game_version.cfg:629
 msgid "page^Copy"
 msgstr "Copy"
 
 #. [button]: id=copy_all
-#: data/gui/window/game_version.cfg:628
+#: data/gui/window/game_version.cfg:630
 msgid "Copy the full report to clipboard"
 msgstr "Copy the full report to clipboard"
 
@@ -3470,9 +3470,9 @@ msgstr "Log Out"
 msgid "Refresh"
 msgstr "Refresh"
 
+#. [button]: id=create
 #. [label]
 #. [button]: id=ok
-#. [button]: id=create
 #: data/gui/window/lobby_main.cfg:557 data/gui/window/lobby_main.cfg:731
 #: data/gui/window/mp_create_game/default_resolution.cfg:43
 #: data/gui/window/mp_create_game/default_resolution.cfg:444
@@ -3484,9 +3484,9 @@ msgid "Create Game"
 msgstr "Create Game"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [grid]
 #. [button]: id=show_preferences
 #. [label]: id=title
-#. [grid]
 #: data/gui/window/lobby_main.cfg:567 data/gui/window/lobby_main.cfg:720
 #: data/gui/window/preferences.cfg:212 data/gui/window/title_screen.cfg:259
 #: src/hotkey/hotkey_command.cpp:88
@@ -3726,8 +3726,8 @@ msgstr "Turn changed:"
 msgid "When a new turn has begun"
 msgstr "When a new turn has begun"
 
-#. [button]: id=btn_reset_hotkeys
 #. [button]: id=revert_to_defaults
+#. [button]: id=btn_reset_hotkeys
 #. [button]: id=orb_defaults
 #: data/gui/window/mp_alerts_options.cfg:234
 #: data/gui/window/preferences/02_hotkeys.cfg:263
@@ -3800,8 +3800,8 @@ msgstr "Reason:"
 msgid "Time:"
 msgstr "Time:"
 
-#. [button]: id=status
 #. [label]
+#. [button]: id=status
 #: data/gui/window/mp_cmd_wrapper.cfg:378 data/gui/window/unit_list.cfg:121
 msgid "Status"
 msgstr "Status"
@@ -4068,19 +4068,19 @@ msgstr "Gender:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [row]
 #: data/gui/window/mp_faction_select.cfg:167
-#: src/gui/dialogs/multiplayer/faction_select.cpp:143
+#: src/gui/dialogs/multiplayer/faction_select.cpp:142
 msgid "Random"
 msgstr "Random"
 
-#. [row]
 #. [toggle_button]: id=male_toggle
+#. [row]
 #: data/gui/window/mp_faction_select.cfg:169
 #: data/gui/window/unit_create.cfg:216
 msgid "Male"
 msgstr "Male"
 
-#. [row]
 #. [toggle_button]: id=female_toggle
+#. [row]
 #: data/gui/window/mp_faction_select.cfg:171
 #: data/gui/window/unit_create.cfg:228
 msgid "Female"
@@ -4149,7 +4149,7 @@ msgstr "Game Lobby"
 #. [label]: id=status_label
 #: data/gui/window/mp_join_game.cfg:548 data/gui/window/mp_staging.cfg:684
 #: data/gui/window/mp_staging.cfg:868
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:447
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:446
 msgid "Waiting for players to join..."
 msgstr "Waiting for players to join..."
 
@@ -4180,7 +4180,10 @@ msgstr "Login:"
 
 #. [toggle_button]: id=remember_password
 #: data/gui/window/mp_login.cfg:199
-msgid "Save password to preferences (clear text)"
+#: data/gui/window/preferences/05_multiplayer.cfg:68
+#, fuzzy
+#| msgid "Save password to preferences (clear text)"
+msgid "Save password locally (encrypted)"
 msgstr "Save password to preferences (clear text)"
 
 #. [button]: id=password_reminder
@@ -4189,12 +4192,12 @@ msgid "Password Reminder"
 msgstr "Password Reminder"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [grid]
 #. [label]
 #. [widget]: id=label
-#. [grid]
 #: data/gui/window/mp_method_selection.cfg:44
 #: data/gui/window/preferences.cfg:364 data/gui/window/title_screen.cfg:253
-#: src/gui/dialogs/game_load.cpp:329
+#: src/gui/dialogs/game_load.cpp:332
 msgid "Multiplayer"
 msgstr "Multiplayer"
 
@@ -4709,11 +4712,6 @@ msgid "Add a timestamp to chat messages"
 msgstr "Add a timestamp to chat messages"
 
 #. [toggle_button]: id=remember_password
-#: data/gui/window/preferences/05_multiplayer.cfg:68
-msgid "Save password to preferences (plain text)"
-msgstr "Save password to preferences (plain text)"
-
-#. [toggle_button]: id=remember_password
 #: data/gui/window/preferences/05_multiplayer.cfg:69
 msgid "Uncheck to delete the saved password (on exit)"
 msgstr "Uncheck to delete the saved password (on exit)"
@@ -5014,14 +5012,14 @@ msgstr "Start a tutorial to familiarize yourself with the game"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
-#: data/gui/window/title_screen.cfg:251 src/gui/dialogs/game_load.cpp:332
+#: data/gui/window/title_screen.cfg:251 src/gui/dialogs/game_load.cpp:335
 msgid "Tutorial"
 msgstr "Tutorial"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #: data/gui/window/title_screen.cfg:252
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:98
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:97
 msgid "Campaigns"
 msgstr "Campaigns"
 
@@ -5176,8 +5174,8 @@ msgstr "XP"
 #. [toggle_button]: id=sort_6
 #. [toggle_button]: id=sort_4
 #: data/gui/window/unit_list.cfg:177 data/gui/window/unit_recall.cfg:89
-#: src/gui/widgets/unit_preview_pane.cpp:319
-#: src/gui/widgets/unit_preview_pane.cpp:459
+#: src/gui/widgets/unit_preview_pane.cpp:340
+#: src/gui/widgets/unit_preview_pane.cpp:481
 msgid "Traits"
 msgstr "Traits"
 
@@ -5229,35 +5227,35 @@ msgstr "Error"
 msgid "Details:"
 msgstr "Details:"
 
-#: src/build_info.cpp:168
+#: src/build_info.cpp:268
 msgid "feature^Experimental OpenMP support"
 msgstr "Experimental OpenMP support"
 
-#: src/build_info.cpp:173
+#: src/build_info.cpp:273
 msgid "feature^PNG screenshots"
 msgstr "PNG screenshots"
 
-#: src/build_info.cpp:178
+#: src/build_info.cpp:278
 msgid "feature^Lua console completion"
 msgstr "Lua console completion"
 
-#: src/build_info.cpp:183
+#: src/build_info.cpp:283
 msgid "feature^Legacy bidirectional rendering"
 msgstr "Legacy bidirectional rendering"
 
-#: src/build_info.cpp:190
+#: src/build_info.cpp:290
 msgid "feature^D-Bus notifications back end"
 msgstr "D-Bus notifications back-end"
 
-#: src/build_info.cpp:199
+#: src/build_info.cpp:299
 msgid "feature^Win32 notifications back end"
 msgstr "Win32 notifications back-end"
 
-#: src/build_info.cpp:205
+#: src/build_info.cpp:305
 msgid "feature^Cocoa notifications back end"
 msgstr "Cocoa notifications back-end"
 
-#: src/build_info.cpp:210
+#: src/build_info.cpp:310
 msgid "feature^Growl notifications back end"
 msgstr "Growl notifications back-end"
 
@@ -5301,6 +5299,54 @@ msgstr "The maximum text width is less than 1."
 msgid "The text contains invalid markup: "
 msgstr "The text contains invalid markup: "
 
+#. TRANSLATORS: Formats a two-element conjunctive list.
+#: src/formula/string_utils.cpp:250
+#, fuzzy
+#| msgid "multimenu^$first and $second"
+msgid "conjunct pair^$first and $second"
+msgstr "$first and $second"
+
+#. TRANSLATORS: Formats the first two elements of a conjunctive list.
+#: src/formula/string_utils.cpp:253
+#, fuzzy
+#| msgid "multimenu^$first, $second"
+msgid "conjunct start^$first, $second"
+msgstr "$first, $second"
+
+#. TRANSLATORS: Formats successive elements of a conjunctive list.
+#: src/formula/string_utils.cpp:257
+msgid "conjunct mid^$prefix, $next"
+msgstr ""
+
+#. TRANSLATORS: Formats the final element of a conjunctive list.
+#: src/formula/string_utils.cpp:260
+msgid "conjunct end^$prefix, and $last"
+msgstr ""
+
+#. TRANSLATORS: Formats a two-element disjunctive list.
+#: src/formula/string_utils.cpp:268
+#, fuzzy
+#| msgid "multimenu^$first and $second"
+msgid "disjunct pair^$first or $second"
+msgstr "$first and $second"
+
+#. TRANSLATORS: Formats the first two elements of a disjunctive list.
+#: src/formula/string_utils.cpp:271
+#, fuzzy
+#| msgid "multimenu^$first, $second"
+msgid "disjunct start^$first, $second"
+msgstr "$first, $second"
+
+#. TRANSLATORS: Formats successive elements of a disjunctive list.
+#: src/formula/string_utils.cpp:275
+msgid "disjunct mid^$prefix, $next"
+msgstr ""
+
+#. TRANSLATORS: Formats the final element of a disjunctive list.
+#: src/formula/string_utils.cpp:278
+msgid "disjunct end^$prefix, or $last"
+msgstr ""
+
 #: src/gui/core/canvas.cpp:620
 msgid "Line doesn't fit on canvas."
 msgstr "Line doesn't fit on canvas."
@@ -5330,7 +5376,11 @@ msgstr "Text has a font size of 0."
 msgid "Text doesn't start on canvas."
 msgstr "Text doesn't start on canvas."
 
-#: src/gui/core/widget_definition.cpp:151 src/gui/core/window_builder.cpp:266
+#: src/gui/core/widget_definition.cpp:50
+msgid "No state or draw section defined."
+msgstr "No state or draw section defined."
+
+#: src/gui/core/widget_definition.cpp:179 src/gui/core/window_builder.cpp:262
 msgid "No resolution defined."
 msgstr "No resolution defined."
 
@@ -5338,153 +5388,153 @@ msgstr "No resolution defined."
 msgid "Linked '$id' group has multiple definitions."
 msgstr "Linked '$id' group has multiple definitions."
 
-#: src/gui/core/window_builder.cpp:407 src/gui/widgets/addon_list.cpp:369
-#: src/gui/widgets/chatbox.cpp:745 src/gui/widgets/listbox.cpp:831
-#: src/gui/widgets/multi_page.cpp:235 src/gui/widgets/panel.cpp:199
+#: src/gui/core/window_builder.cpp:401 src/gui/widgets/addon_list.cpp:369
+#: src/gui/widgets/chatbox.cpp:745 src/gui/widgets/listbox.cpp:798
+#: src/gui/widgets/multi_page.cpp:202 src/gui/widgets/panel.cpp:199
 #: src/gui/widgets/scroll_label.cpp:219 src/gui/widgets/scrollbar_panel.cpp:99
-#: src/gui/widgets/size_lock.cpp:99 src/gui/widgets/stacked_widget.cpp:240
+#: src/gui/widgets/size_lock.cpp:99 src/gui/widgets/stacked_widget.cpp:207
 #: src/gui/widgets/toggle_panel.cpp:421 src/gui/widgets/tree_view.cpp:314
-#: src/gui/widgets/unit_preview_pane.cpp:551
+#: src/gui/widgets/unit_preview_pane.cpp:573
 msgid "No grid defined."
 msgstr "No grid defined."
 
-#: src/gui/core/window_builder.cpp:531
+#: src/gui/core/window_builder.cpp:525
 msgid "A row must have a column."
 msgstr "A row must have a column."
 
-#: src/gui/core/window_builder.cpp:532
+#: src/gui/core/window_builder.cpp:526
 msgid "Number of columns differ."
 msgstr "Number of columns differ."
 
-#: src/gui/dialogs/addon/manager.cpp:215
+#: src/gui/dialogs/addon/manager.cpp:214
 msgid "addons_view^All Add-ons"
 msgstr "All Add-ons"
 
-#: src/gui/dialogs/addon/manager.cpp:216
+#: src/gui/dialogs/addon/manager.cpp:215
 msgid "addons_view^Installed"
 msgstr "Installed"
 
-#: src/gui/dialogs/addon/manager.cpp:217
+#: src/gui/dialogs/addon/manager.cpp:216
 msgid "addons_view^Upgradable"
 msgstr "Upgradable"
 
-#: src/gui/dialogs/addon/manager.cpp:218
+#: src/gui/dialogs/addon/manager.cpp:217
 msgid "addons_view^Not Installed"
 msgstr "Not Installed"
 
-#: src/gui/dialogs/addon/manager.cpp:222
+#: src/gui/dialogs/addon/manager.cpp:221
 msgid "addons_of_type^Campaigns"
 msgstr "Campaigns"
 
-#: src/gui/dialogs/addon/manager.cpp:223
+#: src/gui/dialogs/addon/manager.cpp:222
 msgid "addons_of_type^Scenarios"
 msgstr "Scenarios"
 
-#: src/gui/dialogs/addon/manager.cpp:224
+#: src/gui/dialogs/addon/manager.cpp:223
 msgid "addons_of_type^SP/MP campaigns"
 msgstr "SP/MP campaigns"
 
-#: src/gui/dialogs/addon/manager.cpp:225
+#: src/gui/dialogs/addon/manager.cpp:224
 msgid "addons_of_type^MP campaigns"
 msgstr "MP campaigns"
 
-#: src/gui/dialogs/addon/manager.cpp:226
+#: src/gui/dialogs/addon/manager.cpp:225
 msgid "addons_of_type^MP scenarios"
 msgstr "MP scenarios"
 
-#: src/gui/dialogs/addon/manager.cpp:227
+#: src/gui/dialogs/addon/manager.cpp:226
 msgid "addons_of_type^MP map-packs"
 msgstr "MP map-packs"
 
-#: src/gui/dialogs/addon/manager.cpp:228
+#: src/gui/dialogs/addon/manager.cpp:227
 msgid "addons_of_type^MP eras"
 msgstr "MP eras"
 
-#: src/gui/dialogs/addon/manager.cpp:229
+#: src/gui/dialogs/addon/manager.cpp:228
 msgid "addons_of_type^MP factions"
 msgstr "MP factions"
 
-#: src/gui/dialogs/addon/manager.cpp:230
+#: src/gui/dialogs/addon/manager.cpp:229
 msgid "addons_of_type^MP modifications"
 msgstr "MP modifications"
 
-#: src/gui/dialogs/addon/manager.cpp:231
+#: src/gui/dialogs/addon/manager.cpp:230
 msgid "addons_of_type^Cores"
 msgstr "Cores"
 
-#: src/gui/dialogs/addon/manager.cpp:232
+#: src/gui/dialogs/addon/manager.cpp:231
 msgid "addons_of_type^Resources"
 msgstr "Resources"
 
-#: src/gui/dialogs/addon/manager.cpp:234
+#: src/gui/dialogs/addon/manager.cpp:233
 msgid "addons_of_type^Other"
 msgstr "Other"
 
-#: src/gui/dialogs/addon/manager.cpp:235
+#: src/gui/dialogs/addon/manager.cpp:234
 msgid "addons_of_type^Unknown"
 msgstr "Unknown"
 
-#: src/gui/dialogs/addon/manager.cpp:279 src/gui/widgets/addon_list.cpp:83
+#: src/gui/dialogs/addon/manager.cpp:278 src/gui/widgets/addon_list.cpp:83
 msgid "addon_state^Not installed"
 msgstr "Not installed"
 
-#: src/gui/dialogs/addon/manager.cpp:280 src/gui/widgets/addon_list.cpp:83
+#: src/gui/dialogs/addon/manager.cpp:279 src/gui/widgets/addon_list.cpp:83
 msgid "addon_state^Published, not installed"
 msgstr "Published, not installed"
 
-#: src/gui/dialogs/addon/manager.cpp:284 src/gui/widgets/addon_list.cpp:91
+#: src/gui/dialogs/addon/manager.cpp:283 src/gui/widgets/addon_list.cpp:91
 msgid "addon_state^Installed"
 msgstr "Installed"
 
-#: src/gui/dialogs/addon/manager.cpp:285 src/gui/widgets/addon_list.cpp:91
+#: src/gui/dialogs/addon/manager.cpp:284 src/gui/widgets/addon_list.cpp:91
 msgid "addon_state^Published"
 msgstr "Published"
 
-#: src/gui/dialogs/addon/manager.cpp:289
+#: src/gui/dialogs/addon/manager.cpp:288
 msgid "addon_state^Installed, not tracking local version"
 msgstr "Installed, not tracking local version"
 
-#: src/gui/dialogs/addon/manager.cpp:292
+#: src/gui/dialogs/addon/manager.cpp:291
 msgid "addon_state^Published, not tracking local version"
 msgstr "Published, not tracking local version"
 
-#: src/gui/dialogs/addon/manager.cpp:296
+#: src/gui/dialogs/addon/manager.cpp:295
 msgid "addon_state^Installed ($local_version|), upgradable"
 msgstr "Installed ($local_version|), upgradable"
 
-#: src/gui/dialogs/addon/manager.cpp:297
+#: src/gui/dialogs/addon/manager.cpp:296
 msgid "addon_state^Published ($local_version| installed), upgradable"
 msgstr "Published ($local_version| installed), upgradable"
 
-#: src/gui/dialogs/addon/manager.cpp:303
+#: src/gui/dialogs/addon/manager.cpp:302
 msgid "addon_state^Installed ($local_version|), outdated on server"
 msgstr "Installed ($local_version|), outdated on server"
 
-#: src/gui/dialogs/addon/manager.cpp:304
+#: src/gui/dialogs/addon/manager.cpp:303
 msgid "addon_state^Published ($local_version| installed), outdated on server"
 msgstr "Published ($local_version| installed), outdated on server"
 
-#: src/gui/dialogs/addon/manager.cpp:310 src/gui/widgets/addon_list.cpp:94
+#: src/gui/dialogs/addon/manager.cpp:309 src/gui/widgets/addon_list.cpp:94
 msgid "addon_state^Installed, not ready to publish"
 msgstr "addon_state^Installed, not ready to publish"
 
-#: src/gui/dialogs/addon/manager.cpp:311 src/gui/widgets/addon_list.cpp:94
+#: src/gui/dialogs/addon/manager.cpp:310 src/gui/widgets/addon_list.cpp:94
 msgid "addon_state^Ready to publish"
 msgstr "addon_state^Ready to publish"
 
-#: src/gui/dialogs/addon/manager.cpp:315 src/gui/widgets/addon_list.cpp:106
+#: src/gui/dialogs/addon/manager.cpp:314 src/gui/widgets/addon_list.cpp:106
 msgid "addon_state^Installed, broken"
 msgstr "Installed, broken"
 
-#: src/gui/dialogs/addon/manager.cpp:316 src/gui/widgets/addon_list.cpp:106
+#: src/gui/dialogs/addon/manager.cpp:315 src/gui/widgets/addon_list.cpp:106
 msgid "addon_state^Published, broken"
 msgstr "Published, broken"
 
-#: src/gui/dialogs/addon/manager.cpp:319 src/gui/widgets/addon_list.cpp:110
+#: src/gui/dialogs/addon/manager.cpp:318 src/gui/widgets/addon_list.cpp:110
 msgid "addon_state^Unknown"
 msgstr "Unknown"
 
-#: src/gui/dialogs/addon/manager.cpp:382 src/gui/dialogs/chat_log.cpp:422
+#: src/gui/dialogs/addon/manager.cpp:381 src/gui/dialogs/chat_log.cpp:422
 #: src/gui/dialogs/game_cache_options.cpp:106
 #: src/gui/dialogs/game_version.cpp:188
 #: src/gui/dialogs/gamestate_inspector.cpp:429
@@ -5494,23 +5544,23 @@ msgstr "Unknown"
 msgid "Clipboard support not found, contact your packager"
 msgstr "Clipboard support not found, contact your packager"
 
-#: src/gui/dialogs/addon/manager.cpp:447
+#: src/gui/dialogs/addon/manager.cpp:446
 msgid "addons^Back to List"
 msgstr "Back to List"
 
-#: src/gui/dialogs/addon/manager.cpp:463
+#: src/gui/dialogs/addon/manager.cpp:462
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr "An error occurred while downloading the add-ons list from the server."
 
-#: src/gui/dialogs/addon/manager.cpp:490
+#: src/gui/dialogs/addon/manager.cpp:489
 msgid "No Add-ons Available"
 msgstr "No Add-ons Available"
 
-#: src/gui/dialogs/addon/manager.cpp:490
+#: src/gui/dialogs/addon/manager.cpp:489
 msgid "There are no add-ons available for download from this server."
 msgstr "There are no add-ons available for download from this server."
 
-#: src/gui/dialogs/addon/manager.cpp:599
+#: src/gui/dialogs/addon/manager.cpp:598
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
@@ -5518,15 +5568,15 @@ msgstr ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
 
-#: src/gui/dialogs/addon/manager.cpp:607
+#: src/gui/dialogs/addon/manager.cpp:606
 msgid "The following add-on could not be deleted properly:"
 msgstr "The following add-on could not be deleted properly:"
 
-#: src/gui/dialogs/addon/manager.cpp:649
+#: src/gui/dialogs/addon/manager.cpp:648
 msgid "Warning"
 msgstr "Warning"
 
-#: src/gui/dialogs/addon/manager.cpp:650
+#: src/gui/dialogs/addon/manager.cpp:649
 msgid ""
 "The remote version of this add-on is greater or equal to the version being "
 "uploaded. Do you really wish to continue?"
@@ -5534,25 +5584,25 @@ msgstr ""
 "The remote version of this add-on is greater or equal to the version being "
 "uploaded. Do you really wish to continue?"
 
-#: src/gui/dialogs/addon/manager.cpp:659
+#: src/gui/dialogs/addon/manager.cpp:658
 msgid "Invalid icon path. Make sure the path points to a valid image."
 msgstr "Invalid icon path. Make sure the path points to a valid image."
 
-#: src/gui/dialogs/addon/manager.cpp:662 src/gui/dialogs/addon/manager.cpp:666
-#: src/gui/dialogs/addon/manager.cpp:691
+#: src/gui/dialogs/addon/manager.cpp:661 src/gui/dialogs/addon/manager.cpp:665
+#: src/gui/dialogs/addon/manager.cpp:690
 msgid "The server responded with an error:"
 msgstr "The server responded with an error:"
 
-#: src/gui/dialogs/addon/manager.cpp:663
+#: src/gui/dialogs/addon/manager.cpp:662
 msgid "Terms"
 msgstr "Terms"
 
-#: src/gui/dialogs/addon/manager.cpp:668 src/gui/dialogs/addon/manager.cpp:694
+#: src/gui/dialogs/addon/manager.cpp:667 src/gui/dialogs/addon/manager.cpp:693
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:459
 msgid "Response"
 msgstr "Response"
 
-#: src/gui/dialogs/addon/manager.cpp:678
+#: src/gui/dialogs/addon/manager.cpp:677
 msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
@@ -5560,12 +5610,12 @@ msgstr ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
 
-#: src/gui/dialogs/addon/manager.cpp:709
+#: src/gui/dialogs/addon/manager.cpp:708
 msgid "Do you want to uninstall '$addon|'?"
 msgstr "Do you want to uninstall '$addon|'?"
 
-#: src/gui/dialogs/addon/manager.cpp:793 src/gui/dialogs/addon/manager.cpp:807
-#: src/gui/dialogs/campaign_selection.cpp:182
+#: src/gui/dialogs/addon/manager.cpp:792 src/gui/dialogs/addon/manager.cpp:806
+#: src/gui/dialogs/campaign_selection.cpp:181
 msgid "None"
 msgstr "None"
 
@@ -5724,35 +5774,35 @@ msgstr "The game data cache has been purged."
 msgid "The game data cache could not be purged."
 msgstr "The game data cache could not be purged."
 
-#: src/gui/dialogs/game_load.cpp:293
+#: src/gui/dialogs/game_load.cpp:296
 msgid "(Invalid)"
 msgstr "(Invalid)"
 
-#: src/gui/dialogs/game_load.cpp:320
+#: src/gui/dialogs/game_load.cpp:323
 msgid "Campaign: $campaign_name"
 msgstr "Campaign: $campaign_name"
 
-#: src/gui/dialogs/game_load.cpp:335
+#: src/gui/dialogs/game_load.cpp:338
 msgid "Test scenario"
 msgstr "Test scenario"
 
-#: src/gui/dialogs/game_load.cpp:345
+#: src/gui/dialogs/game_load.cpp:348
 msgid "Replay"
 msgstr "Replay"
 
-#: src/gui/dialogs/game_load.cpp:347
+#: src/gui/dialogs/game_load.cpp:350
 msgid "Turn"
 msgstr "Turn"
 
-#: src/gui/dialogs/game_load.cpp:349
+#: src/gui/dialogs/game_load.cpp:352
 msgid "Scenario start"
 msgstr "Scenario start"
 
-#: src/gui/dialogs/game_load.cpp:352
+#: src/gui/dialogs/game_load.cpp:355
 msgid "Difficulty: "
 msgstr "Difficulty: "
 
-#: src/gui/dialogs/game_load.cpp:356
+#: src/gui/dialogs/game_load.cpp:359
 msgid "Version: "
 msgstr "Version: "
 
@@ -5962,64 +6012,64 @@ msgstr ""
 msgid "Side $side"
 msgstr "Side $side"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:97
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:96
 msgid "Scenarios"
 msgstr "Scenarios"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:99
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:98
 msgid "User Maps"
 msgstr "User Maps"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:100
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:99
 msgid "User Scenarios"
 msgstr "User Scenarios"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:101
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:100
 msgid "Random Maps"
 msgstr "Random Maps"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:105
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:104
 msgid "SP Campaigns"
 msgstr "SP Campaigns"
 
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:178
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:179
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:180
 msgid "No games found."
 msgstr "No games found."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:212
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:211
 msgid "No eras found."
 msgstr "No eras found."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:213
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:212
 msgid "No eras found"
 msgstr "No eras found"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:279
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:278
 msgid "Independent: Random factions assigned independently"
 msgstr "Independent: Random factions assigned independently"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:280
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:279
 msgid "No Mirror: No two players will get the same faction"
 msgstr "No Mirror: No two players will get the same faction"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:281
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:280
 msgid "No Ally Mirror: No two allied players will get the same faction"
 msgstr "No Ally Mirror: No two allied players will get the same faction"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:464
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:465
 msgid "No eras available for this game."
 msgstr "No eras available for this game."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:531
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:532
 msgid "No description available"
 msgstr "No description available"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:805
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:806
 msgid "Choose Starting Scenario"
 msgstr "Choose Starting Scenario"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:805
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:806
 msgid "Select at which point to begin this campaign."
 msgstr "Select at which point to begin this campaign."
 
@@ -6048,11 +6098,11 @@ msgid "empty"
 msgstr "empty"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:334
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:158
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:157
 msgid "Team:"
 msgstr "Team:"
 
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:448
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:447
 msgid "Waiting for players to choose factions..."
 msgstr "Waiting for players to choose factions..."
 
@@ -6161,31 +6211,31 @@ msgstr "∞"
 msgid "file_size^Unknown"
 msgstr "Unknown"
 
-#: src/gui/dialogs/statistics_dialog.cpp:195
+#: src/gui/dialogs/statistics_dialog.cpp:194
 msgid "Recruits"
 msgstr "Recruits"
 
-#: src/gui/dialogs/statistics_dialog.cpp:196
+#: src/gui/dialogs/statistics_dialog.cpp:195
 msgid "Recalls"
 msgstr "Recalls"
 
-#: src/gui/dialogs/statistics_dialog.cpp:197
+#: src/gui/dialogs/statistics_dialog.cpp:196
 msgid "Advancements"
 msgstr "Advancements"
 
-#: src/gui/dialogs/statistics_dialog.cpp:198
+#: src/gui/dialogs/statistics_dialog.cpp:197
 msgid "Losses"
 msgstr "Losses"
 
-#: src/gui/dialogs/statistics_dialog.cpp:199
+#: src/gui/dialogs/statistics_dialog.cpp:198
 msgid "Kills"
 msgstr "Kills"
 
-#: src/gui/dialogs/statistics_dialog.cpp:213
+#: src/gui/dialogs/statistics_dialog.cpp:212
 msgid "Inflicted"
 msgstr "Inflicted"
 
-#: src/gui/dialogs/statistics_dialog.cpp:221
+#: src/gui/dialogs/statistics_dialog.cpp:220
 msgid "Taken"
 msgstr "Taken"
 
@@ -6283,68 +6333,57 @@ msgstr "Do you want to open this link?"
 msgid "Copied link!"
 msgstr "Copied link!"
 
-#: src/gui/widgets/listbox.cpp:940 src/gui/widgets/multi_page.cpp:321
+#: src/gui/widgets/listbox.cpp:907 src/gui/widgets/multi_page.cpp:288
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 
-#: src/gui/widgets/listbox.cpp:984 src/gui/widgets/listbox.cpp:1109
-#: src/gui/widgets/listbox.cpp:1234 src/gui/widgets/scrollbar_panel.cpp:148
+#: src/gui/widgets/listbox.cpp:951 src/gui/widgets/listbox.cpp:1076
+#: src/gui/widgets/listbox.cpp:1201 src/gui/widgets/scrollbar_panel.cpp:148
 msgid "No list defined."
 msgstr "No list defined."
 
-#: src/gui/widgets/listbox.cpp:988 src/gui/widgets/listbox.cpp:1113
-#: src/gui/widgets/listbox.cpp:1238
+#: src/gui/widgets/listbox.cpp:955 src/gui/widgets/listbox.cpp:1080
+#: src/gui/widgets/listbox.cpp:1205
 msgid "A 'list_definition' should contain one row."
 msgstr "A 'list_definition' should contain one row."
 
-#: src/gui/widgets/multi_page.cpp:297
+#: src/gui/widgets/multi_page.cpp:264
 msgid "No page defined."
 msgstr "No page defined."
 
-#: src/gui/widgets/multimenu_button.cpp:181
-#: src/gui/widgets/multimenu_button.cpp:272
-msgid "multimenu^None Selected"
-msgstr "None Selected"
-
-#: src/gui/widgets/multimenu_button.cpp:187
-#: src/gui/widgets/multimenu_button.cpp:207
-msgid "multimenu^$first and 1 other"
-msgid_plural "multimenu^$first and $excess others"
-msgstr[0] "$first and 1 other"
-msgstr[1] "multimenu^$first and $excess others"
-
-#: src/gui/widgets/multimenu_button.cpp:189
-#: src/gui/widgets/multimenu_button.cpp:210
-msgid "multimenu^$first and $second"
-msgstr "$first and $second"
-
-#: src/gui/widgets/multimenu_button.cpp:192
+#: src/gui/widgets/multimenu_button.cpp:180
 msgid "multimenu^All Selected"
 msgstr "All Selected"
 
-#: src/gui/widgets/multimenu_button.cpp:202
-msgid "multimenu^$first, $second"
-msgstr "$first, $second"
+#: src/gui/widgets/multimenu_button.cpp:185
+#, fuzzy
+#| msgid "multimenu^$first and 1 other"
+#| msgid_plural "multimenu^$first and $excess others"
+msgid "multimenu^$excess other"
+msgid_plural "$excess others"
+msgstr[0] "$first and 1 other"
+msgstr[1] "multimenu^$first and $excess others"
+
+#: src/gui/widgets/multimenu_button.cpp:187
+#: src/gui/widgets/multimenu_button.cpp:248
+msgid "multimenu^None Selected"
+msgstr "None Selected"
 
 #: src/gui/widgets/pane.cpp:432
 msgid "Need at least 1 parallel item."
 msgstr "Need at least 1 parallel item."
 
-#: src/gui/widgets/settings.cpp:459
+#: src/gui/widgets/settings.cpp:417
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 
-#: src/gui/widgets/settings.cpp:539
+#: src/gui/widgets/settings.cpp:477
 msgid "No default gui defined."
 msgstr "No default gui defined."
-
-#: src/gui/widgets/settings.cpp:573
-msgid "No state or draw section defined."
-msgstr "No state or draw section defined."
 
 #: src/gui/widgets/size_lock.cpp:134
 msgid "No widget defined."
@@ -6358,11 +6397,11 @@ msgstr "Invalid size."
 msgid "The number of value_labels and values don't match."
 msgstr "The number of value_labels and values don't match."
 
-#: src/gui/widgets/stacked_widget.cpp:277
+#: src/gui/widgets/stacked_widget.cpp:244
 msgid "No stack layers defined."
 msgstr "No stack layers defined."
 
-#: src/gui/widgets/styled_widget.cpp:703
+#: src/gui/widgets/styled_widget.cpp:702
 msgid "Found a widget with a helptip and without a tooltip."
 msgstr "Found a widget with a helptip and without a tooltip."
 
@@ -6382,51 +6421,55 @@ msgstr "No node defined."
 msgid "Unknown builder id for tree view node."
 msgstr "Unknown builder id for tree view node."
 
-#: src/gui/widgets/unit_preview_pane.cpp:130
+#: src/gui/widgets/unit_preview_pane.cpp:129
 msgid "Resistances: "
 msgstr "Resistances: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:132
+#: src/gui/widgets/unit_preview_pane.cpp:131
 msgid "(Att / Def)"
 msgstr "(Att / Def)"
 
-#: src/gui/widgets/unit_preview_pane.cpp:145
+#: src/gui/widgets/unit_preview_pane.cpp:144
 msgid "Movement Costs:"
 msgstr "Movement Costs:"
 
-#: src/gui/widgets/unit_preview_pane.cpp:208
+#: src/gui/widgets/unit_preview_pane.cpp:207
 msgid "Attacks"
 msgstr "Attacks"
 
-#: src/gui/widgets/unit_preview_pane.cpp:261
-#: src/gui/widgets/unit_preview_pane.cpp:388
+#: src/gui/widgets/unit_preview_pane.cpp:260
+#: src/gui/widgets/unit_preview_pane.cpp:290
+#: src/gui/widgets/unit_preview_pane.cpp:409
+#: src/gui/widgets/unit_preview_pane.cpp:440
 msgid "Lvl $lvl"
 msgstr "Lvl $lvl"
 
-#: src/gui/widgets/unit_preview_pane.cpp:289
-#: src/gui/widgets/unit_preview_pane.cpp:426
-#: src/gui/widgets/unit_preview_pane.cpp:439
+#: src/gui/widgets/unit_preview_pane.cpp:297
+#: src/gui/widgets/unit_preview_pane.cpp:310
+#: src/gui/widgets/unit_preview_pane.cpp:448
+#: src/gui/widgets/unit_preview_pane.cpp:461
 msgid "HP: "
 msgstr "HP: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:294
-#: src/gui/widgets/unit_preview_pane.cpp:429
-#: src/gui/widgets/unit_preview_pane.cpp:444
+#: src/gui/widgets/unit_preview_pane.cpp:299
+#: src/gui/widgets/unit_preview_pane.cpp:315
+#: src/gui/widgets/unit_preview_pane.cpp:451
+#: src/gui/widgets/unit_preview_pane.cpp:466
 msgid "XP: "
 msgstr "XP: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:296
-#: src/gui/widgets/unit_preview_pane.cpp:446
+#: src/gui/widgets/unit_preview_pane.cpp:317
+#: src/gui/widgets/unit_preview_pane.cpp:468
 msgid "Experience Modifier: "
 msgstr "Experience Modifier: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:299
-#: src/gui/widgets/unit_preview_pane.cpp:449
+#: src/gui/widgets/unit_preview_pane.cpp:320
+#: src/gui/widgets/unit_preview_pane.cpp:471
 msgid "MP: "
 msgstr "MP: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:337
-#: src/gui/widgets/unit_preview_pane.cpp:477
+#: src/gui/widgets/unit_preview_pane.cpp:358
+#: src/gui/widgets/unit_preview_pane.cpp:499
 msgid "Abilities"
 msgstr "Abilities"
 
@@ -6435,7 +6478,7 @@ msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr "Click dismiss needs a 'click_dismiss' or 'ok' button."
 
 #: src/gui/widgets/window.cpp:1013 src/gui/widgets/window.cpp:1050
-#: src/tests/gui/test_gui2.cpp:541
+#: src/tests/gui/test_gui2.cpp:540
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Failed to show a dialog, which doesn't fit on the screen."
 
@@ -7244,7 +7287,7 @@ msgstr "Unrecognized Command"
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/image.cpp:449
+#: src/image.cpp:497
 msgid "language code for localized resources^en_US"
 msgstr "en_GB"
 
@@ -7266,19 +7309,15 @@ msgstr ""
 msgid "Find Server Application"
 msgstr "Find Server Application"
 
-#: src/preferences/game.cpp:410
+#: src/preferences/game.cpp:374
 msgid "No server has been defined."
 msgstr "No server has been defined."
 
-#: src/preferences/game.cpp:509
-msgid "player"
-msgstr "player"
-
-#: src/preferences/game.cpp:1044
+#: src/preferences/game.cpp:897
 msgid "[%H:%M]"
 msgstr "[%H:%M]"
 
-#: src/preferences/game.cpp:1047
+#: src/preferences/game.cpp:900
 msgid "[%I:%M %p]"
 msgstr "[%I:%M %p]"
 
@@ -7329,6 +7368,12 @@ msgid ""
 msgstr ""
 "The key '$deprecated_key' has been renamed to '$key'. Support for "
 "'$deprecated_key' will be removed in version $removal_version."
+
+#~ msgid "Save password to preferences (plain text)"
+#~ msgstr "Save password to preferences (plain text)"
+
+#~ msgid "player"
+#~ msgstr "player"
 
 #~ msgid "Advanced Settings"
 #~ msgstr "Advanced Settings"

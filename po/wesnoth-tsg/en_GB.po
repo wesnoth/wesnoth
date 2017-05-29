@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-05-13 22:46 UTC\n"
+"POT-Creation-Date: 2017-05-29 21:55+0200\n"
 "PO-Revision-Date: 2016-11-07 21:04+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
@@ -120,8 +120,8 @@ msgstr "Deoran"
 #. [side]: type=Horseman Commander, id=Deoran
 #. [side]: type=Troll Hero, id=Grek
 #. [side]
-#. [side]: type=Lieutenant, id=Plynry
 #. [side]: id=Deoran
+#. [side]: type=Lieutenant, id=Plynry
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:37
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:41
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:37
@@ -147,13 +147,13 @@ msgstr "South Guard"
 msgid "Urza Mathin"
 msgstr "Urza Mathin"
 
-#. [side]: type=Rogue, id=Urza Fastik
-#. [side]: type=Outlaw, id=Urza Afalas
-#. [side]: type=Outlaw, id=Tharzo Kalain
-#. [side]: type=Outlaw, id=Jera Ilras
 #. [side]: type=Bandit, id=Urza Mathin
+#. [side]: type=Rogue, id=Urza Fastik
+#. [side]: type=Outlaw, id=Jera Ilras
 #. [side]: type=Outlaw, id=Urza Nalmath
 #. [side]
+#. [side]: type=Outlaw, id=Tharzo Kalain
+#. [side]: type=Outlaw, id=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:59
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:63
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:102
@@ -1233,13 +1233,13 @@ msgstr "Vale of Tears"
 msgid "Mal A’kai"
 msgstr "Mal A’kai"
 
-#. [side]: type=Soulless, id=Gruth
+#. [side]: type=Ancient Lich, id=Mal M'Brin
 #. [side]: type=Lich, id=Mal M'Brin
 #. [side]: type=Soulless, id=Groth
-#. [side]: type=Ancient Lich, id=Mal M'Brin
-#. [side]: type=Lich, id=Mal Tera
-#. [side]: type=Dark Adept, type=Dark Sorcerer, type=Necromancer, id=Mal A'kai
 #. [side]
+#. [side]: type=Dark Adept, type=Dark Sorcerer, type=Necromancer, id=Mal A'kai
+#. [side]: type=Soulless, id=Gruth
+#. [side]: type=Lich, id=Mal Tera
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:76
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:93
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:129
@@ -1856,8 +1856,8 @@ msgstr "Do not fear, I can lead you out when the time is right."
 msgid "Death of Urza Afalas"
 msgstr "Death of Urza Afalas"
 
-#. [message]: speaker=Urza Afalas
 #. [message]: speaker=unit
+#. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:710
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1110
 msgid "Now I pay for my crimes. But how many others will also suffer for them?"
@@ -2548,8 +2548,8 @@ msgstr "But there was a dark cloud looming behind Deoran and his men..."
 msgid "Into the Depths"
 msgstr "Into the Depths"
 
-#. [side]: type=Lich, id=Mal M'Brin
 #. [side]: type=Ancient Lich, id=Mal M'Brin
+#. [side]: type=Lich, id=Mal M'Brin
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:51
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:55
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:51
@@ -3743,53 +3743,53 @@ msgstr ""
 "them. They are only dangerous in packs..."
 
 #. [part]
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:7
+msgid ""
+"During the reign of Haldric VII, the land of Wesnoth was peaceful. Konrad I "
+"had driven off the orcs in the north. The eastern forts were quiet and "
+"almost deserted. The elves in the western forest kept to their own affairs. "
+"In the prosperous south men built new towns and farms."
+msgstr ""
+"During the reign of Haldric VII, the land of Wesnoth was peaceful. Konrad I "
+"had driven off the orcs in the north. The eastern forts were quiet and "
+"almost deserted. The elves in the western forest kept to their own affairs. "
+"In the prosperous south men built new towns and farms."
+
+#. [part]
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:12
+msgid ""
+"For eight years the South Guard had defended the farms and homes surrounding "
+"the city of Westin, the capital of Wesnoth’s frontier province of Kerlath in "
+"the furthermost south. The fiercest foe they had faced was the occasional "
+"bandit. The orcs were far to the north. In the Aethenwood to the west "
+"dreamed the elves, not foes of humankind but keeping aloof from men. Only "
+"scattered few outlaws lived in the wildlands south of Kerlath, a bastion of "
+"the ancient heart forest of the Great Continent so dense and gloomy that "
+"even elves forbore from dwelling there."
+msgstr ""
+"For eight years the South Guard had defended the farms and homes surrounding "
+"the city of Westin, the capital of Wesnoth’s frontier province of Kerlath in "
+"the furthermost south. The fiercest foe they had faced was the occasional "
+"bandit. The orcs were far to the north. In the Aethenwood to the west "
+"dreamed the elves, not foes of humankind but keeping aloof from men. Only "
+"scattered few outlaws lived in the wildlands south of Kerlath, a bastion of "
+"the ancient heart forest of the Great Continent so dense and gloomy that "
+"even elves forbore from dwelling there."
+
+#. [part]
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:16
+msgid ""
+"Then, in the spring of the ninth year, the reports from the South Guard, "
+"under the command of Sir Loris, suddenly ceased. King Haldric decided to "
+"send someone to investigate."
+msgstr ""
+"Then, in the spring of the ninth year, the reports from the South Guard, "
+"under the command of Sir Loris, suddenly ceased. King Haldric decided to "
+"send someone to investigate."
+
+#. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:20
 msgid ""
-"During the reign of Haldric VII, the land of Wesnoth was peaceful. Konrad I "
-"had driven off the orcs in the north. The eastern forts were quiet and "
-"almost deserted. The elves in the western forest kept to their own affairs. "
-"In the prosperous south men built new towns and farms."
-msgstr ""
-"During the reign of Haldric VII, the land of Wesnoth was peaceful. Konrad I "
-"had driven off the orcs in the north. The eastern forts were quiet and "
-"almost deserted. The elves in the western forest kept to their own affairs. "
-"In the prosperous south men built new towns and farms."
-
-#. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:25
-msgid ""
-"For eight years the South Guard had defended the farms and homes surrounding "
-"the city of Westin, the capital of Wesnoth’s frontier province of Kerlath in "
-"the furthermost south. The fiercest foe they had faced was the occasional "
-"bandit. The orcs were far to the north. In the Aethenwood to the west "
-"dreamed the elves, not foes of humankind but keeping aloof from men. Only "
-"scattered few outlaws lived in the wildlands south of Kerlath, a bastion of "
-"the ancient heart forest of the Great Continent so dense and gloomy that "
-"even elves forbore from dwelling there."
-msgstr ""
-"For eight years the South Guard had defended the farms and homes surrounding "
-"the city of Westin, the capital of Wesnoth’s frontier province of Kerlath in "
-"the furthermost south. The fiercest foe they had faced was the occasional "
-"bandit. The orcs were far to the north. In the Aethenwood to the west "
-"dreamed the elves, not foes of humankind but keeping aloof from men. Only "
-"scattered few outlaws lived in the wildlands south of Kerlath, a bastion of "
-"the ancient heart forest of the Great Continent so dense and gloomy that "
-"even elves forbore from dwelling there."
-
-#. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:29
-msgid ""
-"Then, in the spring of the ninth year, the reports from the South Guard, "
-"under the command of Sir Loris, suddenly ceased. King Haldric decided to "
-"send someone to investigate."
-msgstr ""
-"Then, in the spring of the ninth year, the reports from the South Guard, "
-"under the command of Sir Loris, suddenly ceased. King Haldric decided to "
-"send someone to investigate."
-
-#. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:33
-msgid ""
 "King Haldric summoned a young, undistinguished but promising cavalry officer "
 "named Deoran. Deoran was the grandson of Haldiel, who had fought with "
 "distinction alongside Konrad I in the war to reclaim the throne. The King "
@@ -3801,7 +3801,7 @@ msgstr ""
 "had a mission for him."
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:37
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:24
 msgid ""
 "King Haldric knighted young Deoran, and when he rose tasked him to ride to "
 "Westin, to demand an accounting from Sir Loris, the commander of the South "
@@ -3812,7 +3812,7 @@ msgstr ""
 "Guard..."
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:47
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:34
 msgid ""
 "Having defeated Urza Mathin, Deoran immediately sent scouts out into the "
 "whole countryside. His men reported bandits roaming freely over the border, "
@@ -3825,7 +3825,7 @@ msgstr ""
 "the South Guard."
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:52
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:39
 msgid ""
 "Deoran decided to take action and wipe out the bandits. He gathered the men "
 "of Sir Gerrick’s command and whatever peasants were of strong body and "
@@ -3838,7 +3838,7 @@ msgstr ""
 "the province."
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:56
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:43
 msgid ""
 "Deoran and his men approached the old city, and they saw that their fears "
 "were well founded..."
@@ -3847,7 +3847,7 @@ msgstr ""
 "were well founded..."
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:66
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:53
 msgid ""
 "Ethiliel led the men of the South Guard into the southern forest. Shadows "
 "soon covered their paths day and night, and a thick fog filled the air."
@@ -3856,7 +3856,7 @@ msgstr ""
 "soon covered their paths day and night, and a thick fog filled the air."
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:72
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:59
 msgid ""
 "For many weeks they marched down nameless paths that no man had trod before. "
 "From time to time they saw ghostly images of elven villages and halls in the "
@@ -3867,7 +3867,7 @@ msgstr ""
 "halls in the deep woods, but as they advanced, even those became scarce."
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:77
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:64
 msgid ""
 "Finally Ethiliel told the men to halt and pitch camp — they had reached the "
 "Black River, beyond which no elf or man would willingly pass."
@@ -3876,7 +3876,7 @@ msgstr ""
 "Black River, beyond which no elf or man would willingly pass."
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:86
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:73
 msgid ""
 "After Mal M’Brin’s defeat, Deoran’s troops and their elvish allies turned "
 "north for home. As they re-crossed the Black River, fall was fading into "
@@ -3887,7 +3887,7 @@ msgstr ""
 "winter."
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:92
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:79
 msgid ""
 "Forage and game were scarce in the gloomy woods. The men’s spirits were "
 "lifted by the thought of home, but their bodies became gaunt. The long weeks "
@@ -3898,7 +3898,7 @@ msgstr ""
 "of trudging northwards took its toll."
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:101
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:88
 msgid ""
 "Snow fell as Deoran, Sir Gerrick and Urza Afalas emerged from the great "
 "southern forest. An oppressive silence hung over the land, and an ominous "
@@ -3909,7 +3909,7 @@ msgstr ""
 "gloom followed close behind the men of the South Guard."
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:107
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:94
 msgid ""
 "Finally they arrived at the southern border of Wesnoth and the forts that "
 "guarded it. The undead were close on their heels..."
@@ -3918,7 +3918,7 @@ msgstr ""
 "guarded it. The undead were close on their heels..."
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:116
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:103
 msgid ""
 "Finally the sun broke the horizon and its rays breathed new life into the "
 "weary defenders of Westin. A great cry echoed through the valley as the men "
@@ -3931,7 +3931,7 @@ msgstr ""
 "the field was covered in a great fog..."
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:121
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:108
 msgid ""
 "When the fog broke, Ethiliel stood alone, facing the wall of spears. Bathed "
 "in light, she spoke to the men of Wesnoth, saying, <i>“Stop! Enough blood "
@@ -3944,7 +3944,7 @@ msgstr ""
 "done to the elves is great, but your service also was worthy.”</i>"
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:125
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:112
 msgid ""
 "<i>“These are the terms of the peace between us: any man found in the forest "
 "or hills that belong to the elves will taste death. No more will the elves "
@@ -3957,7 +3957,7 @@ msgstr ""
 "green woods.”</i>"
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:129
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:116
 msgid ""
 "Thus an uneasy peace was consummated between man and elf. For many weeks the "
 "South Guard patrolled the borders of the elven woods and watched over the "
@@ -3970,8 +3970,8 @@ msgstr ""
 "their burdens again, a messenger came from King Haldric."
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:133
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:173
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:120
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:160
 msgid ""
 "Sir Deoran, Knight of Wesnoth, was summoned to Weldyn for a council with "
 "King Haldric himself. Dark clouds were brewing throughout the realm, and "
@@ -3982,7 +3982,7 @@ msgstr ""
 "every commander would be needed to weather the storm..."
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:143
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:130
 msgid ""
 "With bitter spears and grim expression, the men of Wesnoth launched the last "
 "assault on the undead. As they cut through lifeless flesh and shattered "
@@ -3997,7 +3997,7 @@ msgstr ""
 "encampment of Mal M’Brin himself, and threw down the mighty wizard."
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:149
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:136
 msgid ""
 "Exhausted, Deoran dropped his lance to the ground. The men around him slowly "
 "lifted their helmets from their brows. The moans of the wounded overshadowed "
@@ -4008,7 +4008,7 @@ msgstr ""
 "the rustling of the north wind in the distance. The undead were gone."
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:154
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:141
 msgid ""
 "For days the healers of Westin worked feverishly to save as many of the "
 "valiant soldiers as they were able. Many mounds, though, were raised as "
@@ -4021,7 +4021,7 @@ msgstr ""
 "fallen heroes many names were added."
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:159
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:146
 msgid ""
 "The loftiest mound belonged to Sir Gerrick. After the battle, Deoran led an "
 "expedition to the southern border posts, and there he found Sir Gerrick’s "
@@ -4034,7 +4034,7 @@ msgstr ""
 "symbol of loyalty and valour to all the people of Westin."
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:163
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:150
 msgid ""
 "Gerrick’s name was added at the top of the roll of fallen heroes, and read "
 "aloud at the beginning of every great council. The memory of his desperate "
@@ -4047,7 +4047,7 @@ msgstr ""
 "many generations."
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:168
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:155
 msgid ""
 "Deoran spent his days visiting the wounded and directing the men as they "
 "rebuilt the shattered walls and ramparts of the city. Finally, as the snow "

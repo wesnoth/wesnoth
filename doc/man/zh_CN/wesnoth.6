@@ -42,17 +42,17 @@ wesnoth \- 韦诺之战（Battle for Wesnoth），一个回合制奇幻策略游
 \fB\-\-bzip\fP\fI\ infile\fP
 将\fIinfile\fP压缩为bzip2格式文件，文件名为\fIinfile\fP.bz2。文件\fIinfile\fP将被删除。
 .TP 
-\fB\-c,\ \-\-campaign\ [\fP\fIid_campaign\fP\fB]\fP
+\fB\-c[\fP\fIid_campaign\fP\fB],\ \-\-campaign[\fP\fI=id_campaign\fP\fB]\fP
 直接进入ID为 <id_campaign> 的战役。如果没有指定ID，则会出现选择菜单。
 .TP 
-\fB\-\-core\fP\fI\ id_core\fP
-使用指定ID对应的核心作为应读取的核心。
-.TP 
-\fB\-\-campaign\-difficulty\ [\fP\fIdifficulty\fP\fB]\fP
+\fB\-\-campaign\-difficulty[\fP\fI=difficulty\fP\fB]\fP
 指定战役的难度（从1到该战役的最大难度）。如果没有指定，则会出现战役难度选择界面。
 .TP 
 \fB\-\-campaign\-scenario\fP\fI\ id_scenario\fP
 指定战役中的场景ID。默认为第一个场景。
+.TP 
+\fB\-\-core\fP\fI\ id_core\fP
+使用指定ID对应的核心作为应读取的核心。
 .TP 
 \fB\-\-data\-dir\fP\fI\ directory\fP
 使用指定的目录作为数据目录。
@@ -88,7 +88,7 @@ wesnoth \- 韦诺之战（Battle for Wesnoth），一个回合制奇幻策略游
 \fB\-L,\ \-\-language\fP\fI\ lang\fP
 在本次游戏期间使用语言 \fIlang\fP （符号）。例如： \fB\-\-language ang_GB@latin\fP
 .TP 
-\fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
+\fB\-\-log\-level=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
 设置日志域的严重度级别。\fBall\fP可以用来匹配任意日志域。可选的级别有：\fBerror\fP，\ \fBwarning\fP，\ \fBinfo\fP，\ \fBdebug\fP。默认的级别是\fBerror\fP。
 .TP 
 \fB\-\-log\-precise\fP
@@ -97,7 +97,7 @@ wesnoth \- 韦诺之战（Battle for Wesnoth），一个回合制奇幻策略游
 \fB\-\-log\-strict\fP
 设置日志记录器的严格度等级。若有任何信息记入此等级或更高等级日志域，则不论测试结果如何，单元测试都将失败。只有在和 \fB\-u\fP 共同使用时才有意义。
 .TP 
-\fB\-\-logdomains\ [\fP\fIfilter\fP\fB]\fP
+\fB\-\-logdomains[\fP\fI=filter\fP\fB]\fP
 列出游戏中定义的日志域（如果使用了\fBfilter\fP则只列出饱含该字符串的日志域）而后退出。
 .TP 
 \fB\-\-max\-fps\fP\fI\ fps\fP
@@ -148,7 +148,7 @@ wesnoth \- 韦诺之战（Battle for Wesnoth），一个回合制奇幻策略游
 \fB\-\-preprocess\-input\-macros\fP\fI\ source\-file\fP
 仅供“\-\-preprocess“命令使用。用于指定一个包含了[preproce_defines]区块的文件，其中的定义将在预处理开始前生效。
 .TP 
-\fB\-\-preprocess\-output\-macros\ [\fP\fItarget\-file\fP\fB]\fP
+\fB\-\-preprocess\-output\-macros[\fP\fI=target\-file\fP\fB]\fP
 仅供“\-\-preprocess”命令使用。将会输出目标文件中所有经过了预处理的宏。如果没有指定文件，那么目标文件将是preprocess命令所指定的目标目录中的“_MACROS_.cfg”。输出文件可传递给
 \fB\-\-preprocess\-input\-macros\fP 。这个开关选项必须出现在\-\-preprocess命令之前。
 .TP 
@@ -158,13 +158,17 @@ wesnoth \- 韦诺之战（Battle for Wesnoth），一个回合制奇幻策略游
 \fB\-\-render\-image\fP\fI\ image\fP\fB\ \fP\fIoutput\fP
 将有效的韦诺“图片路径字符串”传入图片路径函数中，并输出为Windows .bmp文件。
 .TP 
+\fB\-R,\ \-\-report\fP
+initializes game directories, prints build information suitable for use in
+bug reports, and exits.
+.TP 
 \fB\-\-rng\-seed\fP\fI\ seed\fP
 使用 <arg> 作为随机数生成器的种子。例如： \fB\-\-rng\-seed 0\fP
 .TP 
 \fB\-\-screenshot\fP\fI\ map\fP\fB\ \fP\fIoutput\fP
 将 <map> 的截图存入 <output> 而不在屏幕上显示。
 .TP 
-\fB\-s,\ \-\-server\ [\fP\fIhost\fP\fB]\fP
+\fB\-s[\fP\fIhost\fP\fB],\ \-\-server[\fP\fI=host\fP\fB]\fP
 如果指定了主机的话，连接到指定的主机。否则，连接到首选项中的第一个服务器。例如：\fB\-\-server server.wesnoth.org\fP
 .TP 
 \fB\-\-showgui\fP
@@ -173,7 +177,7 @@ wesnoth \- 韦诺之战（Battle for Wesnoth），一个回合制奇幻策略游
 \fB\-\-strict\-validation\fP
 将验证错误视为致命错误。
 .TP 
-\fB\-t,\ \-\-test\ [\fP\fIscenario_id\fP\fB]\fP
+\fB\-t[\fP\fIscenario_id\fP\fB],\ \-\-test[\fP\fI=scenario_id\fP\fB]\fP
 在小型测试场景中运行游戏。该场景应使用 \fB[test]\fP WML标签定义。默认为“test”。隐含 \fB\-\-nogui\fP 。
 .TP 
 \fB\-u,\ \-\-unit\fP\fI\ scenario\-id\fP

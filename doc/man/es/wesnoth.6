@@ -54,14 +54,11 @@ el sufijo .bz2. El \fIarchivo_de_entrada.bz2\fP será eliminado.
 comprime un archivo en formato bzip2, lo guarda como
 \fIarchivo_de_entrada\fP.bz2 y elimina \fIarchivo_de_entrada\fP.
 .TP 
-\fB\-c,\ \-\-campaign\ [\fP\fIid_de_campaña\fP\fB]\fP
+\fB\-c[\fP\fIid_campaign\fP\fB],\ \-\-campaign[\fP\fI=id_campaign\fP\fB]\fP
 va directamente a la campaña con el id <id_de_campaña>. Si no se
 especifica id aparecerá un menú de selección.
 .TP 
-\fB\-\-core\fP\fI\ id_principal\fP
-reemplaza el principal cargado con aquel cuya id se especifica.
-.TP 
-\fB\-\-campaign\-difficulty\ [\fP\fIdificultad\fP\fB]\fP
+\fB\-\-campaign\-difficulty[\fP\fI=difficulty\fP\fB]\fP
 El nivel de dificultad de la campaña especificada (de 1 al máximo). Si no
 especifica ninguno, aparecerá el diálogo de selección de nivel de
 dificultad.
@@ -69,6 +66,9 @@ dificultad.
 \fB\-\-campaign\-scenario\fP\fI\ id_de_escenario\fP
 El identificador del escenario de la campaña especificada. El valor por
 defecto es el escenario inicial.
+.TP 
+\fB\-\-core\fP\fI\ id_principal\fP
+reemplaza el principal cargado con aquel cuya id se especifica.
 .TP 
 \fB\-\-data\-dir\fP\fI\ directorio\fP
 reemplaza el directorio de datos con el directorio especificado
@@ -113,7 +113,7 @@ editor mostrará un diálogo de selección de archivos apuntando a éste.
 \fB\-L,\ \-\-language\fP\fI\ lang\fP
 usa el idioma \fIlang\fP en esta sesión.  Ejemplo: \fB\-\-language ang_GB@latin\fP
 .TP 
-\fB\-\-log\-\fP\fInivel\fP\fB=\fP\fIdominio1\fP\fB,\fP\fIdominio2\fP\fB,\fP\fI...\fP
+\fB\-\-log\-level=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
 establece el nivel de gravedad de los dominios de registro. \fBall\fP puede
 utilizarse para seleccionar todos los dominios. Los niveles disponibles son:
 \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. Por defecto se utiliza el nivel
@@ -128,7 +128,7 @@ los dominios de registro con este nivel o mayor causará un fallo en el
 análisis de la unidad a pesar de un resultado victorioso. Solo es relevante
 cuando se usa con \fB\-u\fP.
 .TP 
-\fB\-\-logdomains\ [\fP\fIfiltro\fP\fB]\fP
+\fB\-\-logdomains[\fP\fI=filter\fP\fB]\fP
 muestra una lista de dominios de registro definidos (únicamente aquéllos
 conteniendo \fBfiltro\fP si es indicado) y regresa
 .TP 
@@ -194,7 +194,7 @@ no se preprocesará.
 sólo utilizado con '\-\-preprocess'. Especifica un archivo que contiene nodos
 [preproc_define] para ser incluidos antes de la operación.
 .TP 
-\fB\-\-preprocess\-output\-macros\ [\fP\fItarget\-file\fP\fB]\fP
+\fB\-\-preprocess\-output\-macros[\fP\fI=target\-file\fP\fB]\fP
 sólo utilizado con el comando «\-\-preprocess». Escribe todas las macros
 preprocesadas en el archivo especificado. Si omite el nombre de archivo, se
 utilizará el archivo «_MACROS_.cfg» en el directorio de destino de la opción
@@ -208,6 +208,10 @@ establece la resolución de la pantalla. Por ejemplo: \fB\-r 800x600\fP
 toma una cadena con una ruta de imagen válida para Wesnoth con funciones de
 ruta de imagen y la extrae a un archivo .bmp de windows.
 .TP 
+\fB\-R,\ \-\-report\fP
+initializes game directories, prints build information suitable for use in
+bug reports, and exits.
+.TP 
 \fB\-\-rng\-seed\fP\fI\ seed\fP
 inicializa el generador de números aleatorios con el número <arg>.
 Ejemplo: \fB\-\-rng\-seed 0\fP
@@ -216,7 +220,7 @@ Ejemplo: \fB\-\-rng\-seed 0\fP
 guarda una captura de pantalla de <map> a <output> sin
 iniciar una pantalla.
 .TP 
-\fB\-s,\ \-\-server\ [\fP\fIhost\fP\fB]\fP
+\fB\-s[\fP\fIhost\fP\fB],\ \-\-server[\fP\fI=host\fP\fB]\fP
 se conecta a la máquina especificada si la hay, de otro modo se conecta al
 primer servidor seleccionado en las preferencias. Ejemplo: \fB\-\-server
 server.wesnoth.org\fP
@@ -228,7 +232,7 @@ cualquier \fB\-\-nogui.\fP implícito
 \fB\-\-strict\-validation\fP
 trata los errores de validación como fatales.
 .TP 
-\fB\-t,\ \-\-test\ [\fP\fIscenario_id\fP\fB]\fP
+\fB\-t[\fP\fIscenario_id\fP\fB],\ \-\-test[\fP\fI=scenario_id\fP\fB]\fP
 ejecuta el juego en un pequeño escenario de prueba. El escenario debería de
 ser alguno definido con una etiqueta WML \fB[test]\fP. Por omisión es
 "test". Implica \fB\-\-nogui.\fP

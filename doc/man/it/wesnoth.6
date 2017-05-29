@@ -54,22 +54,22 @@ suffisso .bz2. Il file \fIinfile.bz2\fP sarà rimosso.
 comprime un file in formato bzip2, lo memorizza come \fIinfile\fP.bz2 e rimuove
 \fIinfile\fP.
 .TP 
-\fB\-c,\ \-\-campaign\ [\fP\fIid_campagna\fP\fB]\fP
+\fB\-c[\fP\fIid_campaign\fP\fB],\ \-\-campaign[\fP\fI=id_campaign\fP\fB]\fP
 salta direttamente alla campagna con identificatore
 <id_campagna>. Apparirà' un menu selezione se non si specifica alcun
 identificatore.
 .TP 
-\fB\-\-core\fP\fI\ identificatore\fP
-sostituisce la directory base caricata con quella specificata
-nell'identificatore.
-.TP 
-\fB\-\-campaign\-difficulty\ [\fP\fIdifficoltà\fP\fB]\fP
+\fB\-\-campaign\-difficulty[\fP\fI=difficulty\fP\fB]\fP
 La difficoltà di una specifica campagna (da 1 a max). Se non specificato,
 comparirà il widget per la selezione della difficoltà.
 .TP 
 \fB\-\-campaign\-scenario\fP\fI\ id_scenario\fP
 L’identificatore dello scenario della campagna specificata. Il default è il
 primo scenario.
+.TP 
+\fB\-\-core\fP\fI\ identificatore\fP
+sostituisce la directory base caricata con quella specificata
+nell'identificatore.
 .TP 
 \fB\-\-data\-dir\fP\fI\ directory\fP
 sostituisce la directory dei dati con quella specificata
@@ -115,7 +115,7 @@ dialogo con un elenco di mappe caricabili.
 usa il linguaggio \fIlang\fP (simbolo) per questa sessione.  Example:
 \fB\-\-language ang_GB@latin\fP
 .TP 
-\fB\-\-log\-\fP\fIlivello\fP\fB=\fP\fIdominio1\fP\fB,\fP\fIdominio2\fP\fB,\fP\fI...\fP
+\fB\-\-log\-level=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
 imposta il livello di severità dei domini di debug. Puoi usare \fBall\fP per
 selezionare tutti i domini di debug. Livelli disponibili: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. Normalmente è usato il livello \fBerror\fP.
 .TP 
@@ -128,7 +128,7 @@ questo livello o più severo causerà il fallimento del test unità, qualunque
 sia l’esito della vittoria. Ha rilevanza soltanto se utilizzato con
 l’opzione \fB\-u\fP.
 .TP 
-\fB\-\-logdomains\ [\fP\fIfiltro\fP\fB]\fP
+\fB\-\-logdomains[\fP\fI=filter\fP\fB]\fP
 fornisce un elenco dei log domains definiti ( soltanto quelli contenenti
 \fBfilter\fP, se usata) e termina.
 .TP 
@@ -194,7 +194,7 @@ processata.
 usato soltanto dal comando “\-preprocess”. Specifica il file che contiene i
 [preproc_define] che devono essere inclusi prima del preprocessing.
 .TP 
-\fB\-\-preprocess\-output\-macros\ [\fP\fIfile destinazione\fP\fB]\fP
+\fB\-\-preprocess\-output\-macros[\fP\fI=target\-file\fP\fB]\fP
 usato soltanto dal comando “\-preprocess”. Stamperà tutte le macro
 preprocessate nel file destinazione. Se il file non viene specificato verrà
 utilizzato il file “_MACROS.cfg” nella directory destinazione del comando di
@@ -209,6 +209,10 @@ imposta la risoluzione dello schermo. Esempio: \fB\-r 800x600\fP
 prende una 'stringa percorso immagine' di wesnoth valida con funzioni di
 percorso immagine e produce una file windows di tipo .bmp
 .TP 
+\fB\-R,\ \-\-report\fP
+initializes game directories, prints build information suitable for use in
+bug reports, and exits.
+.TP 
 \fB\-\-rng\-seed\fP\fI\ seme\fP
 inizializza il generatore di numeri casuali con il numero <seme>.
 Example: \fB\-\-rng\-seed 0\fP
@@ -217,7 +221,7 @@ Example: \fB\-\-rng\-seed 0\fP
 salva una schermata della <mappa> nel file <output> senza
 inizializzare uno schermo.
 .TP 
-\fB\-s,\ \-\-server\ [\fP\fIhost\fP\fB]\fP
+\fB\-s[\fP\fIhost\fP\fB],\ \-\-server[\fP\fI=host\fP\fB]\fP
 si connette al server specificato se fornito, se no si connette al primo
 server delle preferenze. Esempio: \fB\-\-server server.wesnoth.org\fP
 .TP 
@@ -228,7 +232,7 @@ esegue il gioco con l’interfaccia grafica, sovrascrivendo ogni implicito
 \fB\-\-strict\-validation\fP
 errori di validazione sono trattati come errori fatali.
 .TP 
-\fB\-t,\ \-\-test\ [\fP\fIid_scenario\fP\fB]\fP
+\fB\-t[\fP\fIscenario_id\fP\fB],\ \-\-test[\fP\fI=scenario_id\fP\fB]\fP
 esegue il gioco in un picoclo scenario di test. Lo scenario dovrebbe essere
 uno di quelli definiti con un tag WML \fB[test]\fP. Lo scenario predefinito è
 "test". Implica \fB\-\-nogui.\fP

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en@shaw\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-05-13 22:46 UTC\n"
+"POT-Creation-Date: 2017-05-29 21:55+0200\n"
 "PO-Revision-Date: 2009-10-12 24:50-0400\n"
 "Last-Translator: Arc Riley <arcriley@ubuntu.com>\n"
 "Language-Team: Shavian English <ubuntu-l10n-en-shaw@lists.launchpad.net>\n"
@@ -140,7 +140,7 @@ msgstr "𐑥𐑵𐑝 𐑒𐑭𐑯𐑮𐑩𐑛 𐑑 𐑞 𐑕𐑲𐑯𐑐𐑴𐑕
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:25
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:37
 #: data/campaigns/Heir_To_The_Throne/scenarios/22_Return_to_Wesnoth.cfg:31
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:51
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:73
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:31
 msgid "Death of Konrad"
 msgstr "𐑛𐑧𐑔 𐑝 𐑒𐑭𐑯𐑮𐑩𐑛"
@@ -167,7 +167,7 @@ msgstr "𐑛𐑧𐑔 𐑝 𐑒𐑭𐑯𐑮𐑩𐑛"
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:29
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:41
 #: data/campaigns/Heir_To_The_Throne/scenarios/22_Return_to_Wesnoth.cfg:35
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:55
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:77
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:35
 msgid "Death of Delfador"
 msgstr "𐑛𐑧𐑔 𐑝 ·𐑛𐑧𐑤𐑓𐑩𐑛𐑹"
@@ -200,22 +200,22 @@ msgstr "𐑛𐑧𐑔 𐑝 ·𐑛𐑧𐑤𐑓𐑩𐑛𐑹"
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:67
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:22
 #: data/campaigns/Heir_To_The_Throne/scenarios/22_Return_to_Wesnoth.cfg:165
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:83
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:105
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:97
 #: data/campaigns/Heir_To_The_Throne/scenarios/25_HttT_Epilogue.cfg:46
 msgid "Konrad"
 msgstr "𐑒𐑭𐑯𐑮𐑩𐑛"
 
 #. [side]: type=Commander, id=Konrad
-#. [side]: type=Grand Knight, id=Kaylan
+#. [side]: type=Ancient Wose, id=Haralamdum
+#. [side]: type=Elvish Sylph, id=Bona-Melodia
 #. [side]: type=Fighter, id=Konrad
 #. [side]: type=Elvish Champion, id=Galdrad
 #. [side]: type=Elvish Shyde, id=Chantal
-#. [side]: type=Ancient Wose, id=Haralamdum
-#. [side]: type=Elvish Sylph, id=Bona-Melodia
-#. [side]: id=Relgorn, type=Dwarvish Lord
 #. [side]: id=Geldar, type=Dwarvish Lord
+#. [side]: id=Relgorn, type=Dwarvish Lord
 #. [side]
+#. [side]: type=Grand Knight, id=Kaylan
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:80
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:240
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:259
@@ -247,7 +247,7 @@ msgstr "𐑒𐑭𐑯𐑮𐑩𐑛"
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:128
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:148
 #: data/campaigns/Heir_To_The_Throne/scenarios/22_Return_to_Wesnoth.cfg:172
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:80
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:102
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:105
 msgid "Rebels"
 msgstr "𐑮𐑩𐑚𐑧𐑤𐑟"
@@ -258,26 +258,26 @@ msgstr "𐑮𐑩𐑚𐑧𐑤𐑟"
 msgid "Urug-Telfar"
 msgstr "·𐑻𐑳𐑜-·𐑑𐑧𐑤𐑓𐑸"
 
-#. [side]: type=Orcish Warrior, id=Mokolo Qimur
+#. [side]: type=Orcish Warlord, id=Kojun Herolm
+#. [side]: type=Orcish Warrior, id=Mokho Kimer
+#. [side]: type=Orcish Warlord, id=Urug-Telfar
+#. [side]: type=Orcish Warlord, id=Knafa-Tan
+#. [side]: type=Orcish Warlord, id=Maga-Knafa
 #. [side]: type=Orcish Warrior, id=Usadar Q'kai
-#. [side]: type=Orcish Warlord, id=Gaga-Breuk
 #. [side]: type=Orcish Warlord, id=Kior-Dal
 #. [side]: type=Orcish Slurbow, id=Knafa-Telfar
 #. [side]: type=Orcish Warlord, id=Urug-Tan
 #. [side]: type=Orcish Sovereign, id=Shuuga-Mool
-#. [side]: type=Orcish Warlord, id=Urug-Telfar
-#. [side]: type=Orcish Warlord, id=Knafa-Tan
-#. [side]: type=Orcish Warlord, id=Maga-Knafa
-#. [side]: type=Orcish Warlord, id=Kojun Herolm
-#. [side]: type=Orcish Warrior, id=Mokho Kimer
+#. [side]: type=Orcish Warrior, id=Halgar Du'nar
+#. [side]: type=Orcish Warrior, id=Gorlak
 #. [side]: type=Orcish Warrior, id=Dwaba-Kukai
 #. [side]: type=Orcish Warrior, id=Managa'Gwin
 #. [side]: type=Orcish Warlord, id=Urag-Tifer
-#. [side]: type=Orcish Warrior, id=Halgar Du'nar
-#. [side]: type=Orcish Warrior, id=Gorlak
+#. [side]: type=Orcish Warlord, id=Gaga-Breuk
 #. [side]: type=Goblin Rouser
 #. [side]: type=Orcish Warlord
 #. [side]: type=Troll Warrior
+#. [side]: type=Orcish Warrior, id=Mokolo Qimur
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:181
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:194
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:215
@@ -1543,18 +1543,18 @@ msgstr "𐑥𐑩𐑓 ·𐑥𐑭𐑤𐑨𐑤"
 msgid "Muff Malal"
 msgstr "𐑥𐑩𐑓 ·𐑥𐑭𐑤𐑨𐑤"
 
+#. [side]: type=Ancient Lich, id=Muff Argulak
 #. [side]: type=Lich, id=Galga
 #. [side]: type=Lich, id=Na-alga
 #. [side]: type=Lich, id=Selda-Mana
 #. [side]: type=Dark Sorcerer, id=Muff Malal
-#. [side]: id=Haf-Mal, type=Lich
-#. [side]: id=Jarmal-Gorg, type=Lich
 #. [side]: type=Death Knight, id=Clarustus
 #. [side]: type=Death Knight, id=Merlunius
 #. [side]: type=Lich, id=Aimucasur
 #. [side]: type=Death Knight, id=Secadius
 #. [side]: type=Death Knight, id=Dafeis
-#. [side]: type=Ancient Lich, id=Muff Argulak
+#. [side]: id=Haf-Mal, type=Lich
+#. [side]: id=Jarmal-Gorg, type=Lich
 #: data/campaigns/Heir_To_The_Throne/scenarios/05a_Muff_Malal_Peninsula.cfg:79
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:131
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:148
@@ -1897,9 +1897,9 @@ msgstr "Agadla"
 #. [side]: type=Death Knight, id=Unan-Ka'tall
 #. [side]: type=Orcish Warlord, id=Agadla
 #. [side]: type=Dark Sorcerer, id=Muff Jaanal
-#. [side]: type=Troll Warrior, id=Haaf-Garga
 #. [side]: id=Brugg, type=Troll Warrior
 #. [side]: id=Lionel, type=Death Knight
+#. [side]: type=Troll Warrior, id=Haaf-Garga
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:74
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:116
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:91
@@ -2330,7 +2330,7 @@ msgstr "𐑛𐑦𐑓𐑰𐑑 ·𐑒𐑴𐑡𐑩𐑯 ·𐑣𐑻𐑴𐑤𐑥"
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:37
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:49
 #: data/campaigns/Heir_To_The_Throne/scenarios/22_Return_to_Wesnoth.cfg:43
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:63
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:85
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:43
 msgid "Death of Kalenz"
 msgstr "𐑛𐑧𐑔 𐑝 ·𐑒𐑨𐑤𐑧𐑯𐑟"
@@ -2494,8 +2494,8 @@ msgstr "Elmar's 𐑒𐑮𐑪𐑕𐑦𐑙"
 msgid "Elbridge"
 msgstr "Elbridge"
 
-#. [side]: type=Princess, id=Li'sar
 #. [event]
+#. [side]: type=Princess, id=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:87
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:68
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:751
@@ -2503,16 +2503,16 @@ msgstr "Elbridge"
 msgid "Li’sar"
 msgstr "·𐑤𐑦𐑕𐑸"
 
-#. [side]: type=Princess, id=Li'sar
-#. [side]: type=General, id=Honber
-#. [side]: type=General, id=Robryn
 #. [side]: type=General, id=Josephus
 #. [side]: type=Orcish Warlord, id=Dwar-Ni
 #. [side]: type=General, id=Malatus
+#. [side]: type=General, id=Honber
 #. [side]: type=Orcish Warlord, id=Haliel-Maga
 #. [side]: type=General, id=Heford
 #. [side]: type=Cavalier, id=Sir Kalm
 #. [side]: type=Dark Queen, id=Asheviere
+#. [side]: type=General, id=Robryn
+#. [side]: type=Princess, id=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:161
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:99
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:84
@@ -4648,7 +4648,7 @@ msgstr "𐑣𐑱𐑕𐑑𐑦 𐑩𐑤𐑲𐑩𐑯𐑕"
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:33
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:45
 #: data/campaigns/Heir_To_The_Throne/scenarios/22_Return_to_Wesnoth.cfg:39
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:59
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:81
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:39
 msgid "Death of Li’sar"
 msgstr "𐑛𐑧𐑔 𐑝 ·𐑤𐑦𐑕𐑸"
@@ -6370,9 +6370,9 @@ msgid "Your encampment will be dismantled after the first turn."
 msgstr "𐑯𐑴𐑑: 𐑿𐑼 𐑧𐑯𐑒𐑨𐑥𐑐𐑥𐑧𐑯𐑑 𐑢𐑦𐑤 𐑚𐑰 𐑛𐑦𐑕𐑥𐑨𐑯𐑑𐑩𐑤𐑛 𐑭𐑓𐑑𐑼 𐑞 𐑓𐑻𐑕𐑑 𐑑𐑻𐑯.\n"
 
 #. [side]: type=Commander, id=Konrad
-#. [side]: type=Elvish Marshal, id=El'rien
 #. [side]: type=Elvish Lord, id=Uradredia
 #. [side]: type=Elvish Lady, id=Parandra
+#. [side]: type=Elvish Marshal, id=El'rien
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:61
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:225
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:30
@@ -7787,13 +7787,26 @@ msgstr ""
 msgid "Test of the Clan"
 msgstr "𐑑𐑧𐑕𐑑 𐑝 𐑞 𐑒𐑤𐑨𐑯"
 
-#. [objective]: condition=win
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:42
-msgid "Defeat $units_to_slay enemy units"
-msgstr "𐑛𐑦𐑓𐑰𐑑 $units_to_slay 𐑧𐑯𐑩𐑥𐑦 𐑿𐑯𐑦𐑑𐑕"
+#. [lua]: wesnoth.wml_actions.show_countdown
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:24
+#, fuzzy
+#| msgid "Defeat $units_to_slay enemy units"
+msgid "Defeat one more enemy unit"
+msgid_plural "Defeat $units_to_slay enemy units"
+msgstr[0] "𐑛𐑦𐑓𐑰𐑑 $units_to_slay 𐑧𐑯𐑩𐑥𐑦 𐑿𐑯𐑦𐑑𐑕"
+msgstr[1] "𐑛𐑦𐑓𐑰𐑑 $units_to_slay 𐑧𐑯𐑩𐑥𐑦 𐑿𐑯𐑦𐑑𐑕"
+
+#. [lua]: wesnoth.wml_actions.show_countdown
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:27
+#, fuzzy
+#| msgid "Still $units_to_slay clan members to defeat!"
+msgid "Still $units_to_slay clan member to defeat!"
+msgid_plural "Still $units_to_slay clan members to defeat!"
+msgstr[0] "𐑕𐑑𐑦𐑤 $units_to_slay 𐑒𐑤𐑨𐑯 𐑥𐑧𐑥𐑚𐑼𐑟 𐑑 𐑛𐑦𐑓𐑰𐑑!"
+msgstr[1] "𐑕𐑑𐑦𐑤 $units_to_slay 𐑒𐑤𐑨𐑯 𐑥𐑧𐑥𐑚𐑼𐑟 𐑑 𐑛𐑦𐑓𐑰𐑑!"
 
 #. [objective]: condition=win
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:47
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:69
 #, fuzzy
 #| msgid "Defeat all enemy leaders"
 msgid "Defeat enemy leaders"
@@ -7803,59 +7816,59 @@ msgstr "𐑛𐑦𐑓𐑰𐑑 𐑷𐑤 𐑧𐑯𐑩𐑥𐑦 𐑤𐑰𐑛𐑼𐑟"
 #. [side]: type=Grand Knight, id=Sir Ruga
 #. [side]: type=Grand Knight, id=Sir Daryn
 #. [side]: type=Grand Knight, id=Bayar
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:95
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:124
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:153
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:182
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:117
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:146
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:175
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:204
 #, fuzzy
 msgid "Plainsmen"
 msgstr "Plainsmen"
 
-#. [side]: type=Grand Knight, id=Sir Alric
 #. [then]
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:98
+#. [side]: type=Grand Knight, id=Sir Alric
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:120
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:214
 #, fuzzy
 msgid "Sir Alric"
 msgstr "𐑕𐑻 Alric"
 
-#. [side]: type=Grand Knight, id=Sir Ruga
 #. [then]
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:127
+#. [side]: type=Grand Knight, id=Sir Ruga
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:149
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:205
 #, fuzzy
 msgid "Sir Ruga"
 msgstr "𐑕𐑻 Ruga"
 
-#. [side]: type=Grand Knight, id=Sir Daryn
 #. [then]
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:156
+#. [side]: type=Grand Knight, id=Sir Daryn
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:178
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:196
 #, fuzzy
 msgid "Sir Daryn"
 msgstr "𐑕𐑻 Daryn"
 
-#. [side]: type=Grand Knight, id=Bayar
 #. [then]
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:185
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:523
+#. [side]: type=Grand Knight, id=Bayar
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:207
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:542
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:187
 msgid "Lord Bayar"
 msgstr "𐑤𐑹𐑛 𐑚𐑱𐑻"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:214
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:236
 msgid "Greetings, men of the plains."
 msgstr "𐑜𐑮𐑰𐑑𐑦𐑙𐑟, 𐑥𐑧𐑯 𐑝 𐑞 𐑐𐑤𐑱𐑯𐑟."
 
 #. [message]: speaker=Sir Daryn
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:218
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:240
 msgid ""
 "What do these intruders want? We did not invite them here, that is certain."
 msgstr "𐑢𐑪𐑑 𐑛𐑵 𐑞𐑰𐑟 𐑦𐑯𐑑𐑮𐑵𐑛𐑻𐑟 𐑢𐑪𐑯𐑑? 𐑢𐑰 𐑛𐑦𐑛 𐑯𐑪𐑑 𐑦𐑯𐑝𐑲𐑑 𐑞𐑧𐑥 𐑣𐑽, 𐑞𐑨𐑑 𐑦𐑟 𐑕𐑻𐑑𐑩𐑯."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:222
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:244
 msgid ""
 "We come in peace! We wish for you to aid us in our struggle against "
 "Asheviere, the evil Queen."
@@ -7863,12 +7876,12 @@ msgstr ""
 "𐑢𐑰 𐑒𐑳𐑥 𐑦𐑯 𐑐𐑰𐑕! 𐑢𐑰 𐑢𐑦𐑖 𐑓𐑹 𐑿 𐑑 𐑲𐑛 𐑳𐑕 𐑦𐑯 𐑬𐑼 𐑕𐑑𐑮𐑳𐑜𐑩𐑤 𐑩𐑜𐑱𐑯𐑕𐑑 ·𐑨𐑖𐑧𐑝𐑽, 𐑞 𐑰𐑝𐑩𐑤 𐑒𐑢𐑰𐑯."
 
 #. [message]: speaker=Sir Alric
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:226
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:248
 msgid "We will not join you. You who are led by these youths and this old man."
 msgstr "𐑢𐑰 𐑢𐑦𐑤 𐑯𐑪𐑑 𐑡𐑶𐑯 𐑿. 𐑿 𐑣𐑵 𐑸 𐑤𐑧𐑛 𐑚𐑲 𐑞𐑰𐑟 𐑿𐑞𐑟 𐑯 𐑞𐑦𐑕 𐑴𐑤𐑛 𐑥𐑨𐑯."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:230
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:252
 msgid ""
 "You are for us or against us. If you do not join us to overthrow the evil "
 "Queen, we will strip you of your power, once the throne is rightfully "
@@ -7878,7 +7891,7 @@ msgstr ""
 "𐑿 𐑝 𐑿𐑼 𐑐𐑬𐑼, 𐑢𐑳𐑯𐑕 𐑞 𐑔𐑮𐑴𐑯 𐑦𐑟 𐑮𐑲𐑑𐑓𐑩𐑤𐑰 𐑮𐑦𐑒𐑤𐑱𐑥𐑛."
 
 #. [message]: speaker=Bayar
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:234
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:256
 msgid ""
 "Hah! You think you can seize the throne? Defeat us in battle and we will "
 "join you, or leave now and never return!"
@@ -7887,22 +7900,22 @@ msgstr ""
 "𐑯𐑧𐑝𐑼 𐑮𐑦𐑑𐑻𐑯!"
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:238
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:260
 msgid "Very well. We will fight you."
 msgstr "𐑝𐑧𐑮𐑦 𐑢𐑧𐑤. 𐑢𐑰 𐑢𐑦𐑤 𐑓𐑲𐑑 𐑿."
 
 #. [message]: speaker=Bayar
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:242
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:264
 msgid "Fools! We will run you down like dogs!"
 msgstr "𐑓𐑵𐑤𐑟! 𐑢𐑰 𐑢𐑦𐑤 𐑮𐑳𐑯 𐑿 𐑛𐑬𐑯 𐑤𐑲𐑒 𐑛𐑪𐑜𐑟!"
 
 #. [message]: speaker=Sir Alric
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:246
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:268
 msgid "There is no turning back for you now. This is a fight to the death!"
 msgstr "𐑞𐑺 𐑦𐑟 𐑯𐑴 𐑑𐑻𐑯𐑦𐑙 𐑚𐑨𐑒 𐑓𐑹 𐑿 𐑯𐑬. 𐑞𐑦𐑕 𐑦𐑟 𐑩 𐑓𐑲𐑑 𐑑 𐑞 𐑛𐑧𐑔!"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:254
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:276
 msgid ""
 "Delfador, this is sheer madness. We cannot afford to play games when we "
 "should be marching against the Queen."
@@ -7911,22 +7924,22 @@ msgstr ""
 "𐑩𐑜𐑱𐑯𐑕𐑑 𐑞 𐑒𐑢𐑰𐑯."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:258
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:280
 msgid "Lord Bayar, halt this folly! I challenge you to a personal combat."
 msgstr "𐑤𐑹𐑛 𐑚𐑱𐑻, 𐑣𐑷𐑤𐑑 𐑞𐑦𐑕 𐑓𐑪𐑤𐑦! 𐑲 𐑗𐑨𐑤𐑩𐑯𐑡 𐑿 𐑑 𐑩 𐑐𐑻𐑕𐑩𐑯𐑩𐑤 𐑒𐑪𐑥𐑚𐑨𐑑."
 
 #. [message]: speaker=Bayar
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:262
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:284
 msgid "Ho! You have amused me, young heir. Ho, ho, challenge indeed."
 msgstr "𐑣𐑴! 𐑿 𐑣𐑨𐑝 𐑩𐑥𐑿𐑟𐑛 𐑥𐑰, 𐑘𐑳𐑙 𐑺. 𐑣𐑴, 𐑣𐑴, 𐑗𐑨𐑤𐑩𐑯𐑡 𐑦𐑯𐑛𐑰𐑛."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:266
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:288
 msgid "Young heir? Then you assent to my claim?"
 msgstr "𐑘𐑳𐑙 𐑺? 𐑞𐑧𐑯 𐑿 𐑩𐑕𐑧𐑯𐑑 𐑑 𐑥𐑲 𐑒𐑤𐑱𐑥?"
 
 #. [message]: speaker=Bayar
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:270
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:292
 #, fuzzy
 msgid ""
 "Impudence. Bah! Do you see orcs on our plains? Did we not grant you a test "
@@ -7936,12 +7949,12 @@ msgstr ""
 "𐑕𐑑𐑮𐑧𐑙𐑔?"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:274
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:296
 msgid "I fail to see the purpose of this exercise. It only weakens us."
 msgstr "𐑲 𐑓𐑱𐑤 𐑑 𐑕𐑰 𐑞 𐑐𐑻𐑐𐑩𐑕 𐑝 𐑞𐑦𐑕 𐑧𐑒𐑕𐑩𐑕𐑲𐑟. 𐑦𐑑 𐑴𐑯𐑤𐑦 𐑢𐑰𐑒𐑩𐑯𐑟 𐑳𐑕."
 
 #. [message]: speaker=Bayar
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:278
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:300
 msgid ""
 "No, whelp. You may be weakened, but the horse clans are eternal. I will "
 "promise you this, however. If you can defeat me personally, I myself will "
@@ -7953,14 +7966,14 @@ msgstr ""
 #. [message]: speaker=Sir Ruga
 #. [message]: speaker=Sir Daryn
 #. [message]: speaker=Sir Alric
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:282
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:286
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:290
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:304
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:308
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:312
 msgid "Aye."
 msgstr "𐑲."
 
 #. [message]: speaker=Bayar
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:313
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:335
 msgid ""
 "I cannot believe this! You have defeated me! You are now my liege, and I "
 "leave the battlefield in shame. But the Clan shall fight on!"
@@ -7969,28 +7982,28 @@ msgstr ""
 "𐑖𐑱𐑥. 𐑚𐑳𐑑 𐑞 𐑒𐑤𐑨𐑯 𐑖𐑨𐑤 𐑓𐑲𐑑 𐑪𐑯!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:317
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:339
 msgid "Their leader has fallen but still they fight!"
 msgstr "𐑞𐑺 𐑤𐑰𐑛𐑻 𐑣𐑨𐑟 𐑓𐑷𐑤𐑩𐑯 𐑚𐑳𐑑 𐑕𐑑𐑦𐑤 𐑞𐑱 𐑓𐑲𐑑!"
 
 #. [message]: speaker=Sir Daryn
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:341
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:363
 msgid ""
 "You can defeat me, but the Clan will never fall. Our numbers are endless!"
 msgstr "𐑿 𐑒𐑨𐑯 𐑛𐑦𐑓𐑰𐑑 𐑥𐑰, 𐑚𐑳𐑑 𐑞 𐑒𐑤𐑨𐑯 𐑢𐑦𐑤 𐑯𐑧𐑝𐑼 𐑓𐑷𐑤. 𐑬𐑼 𐑯𐑳𐑥𐑚𐑼𐑟 𐑸 𐑧𐑯𐑛𐑤𐑩𐑕!"
 
 #. [message]: speaker=Sir Ruga
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:365
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:387
 msgid "Even as I pledge my lance to your service, my Clan fights on!"
 msgstr "𐑰𐑝𐑩𐑯 𐑨𐑟 𐑲 𐑐𐑤𐑧𐑡 𐑥𐑲 𐑤𐑭𐑯𐑕 𐑑 𐑿𐑼 𐑕𐑻𐑝𐑦𐑕, 𐑥𐑲 𐑒𐑤𐑨𐑯 𐑓𐑲𐑑𐑕 𐑪𐑯!"
 
 #. [message]: speaker=Sir Alric
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:389
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:411
 msgid "A humiliating defeat, yet you are no match for the might of the Clan!"
 msgstr "𐑩 𐑣𐑿𐑥𐑦𐑤𐑰𐑱𐑑𐑦𐑙 𐑛𐑦𐑓𐑰𐑑, 𐑘𐑧𐑑 𐑿 𐑸 𐑯𐑴 𐑥𐑨𐑗 𐑓𐑹 𐑞 𐑥𐑲𐑑 𐑝 𐑞 𐑒𐑤𐑨𐑯!"
 
 #. [message]: role=clanboss
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:418
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:440
 msgid ""
 "Stop! I cannot believe this! You have defeated us! Indeed, you are worthy, "
 "worthy even to claim the throne. The clans will help you. We will fight with "
@@ -8000,34 +8013,34 @@ msgstr ""
 "𐑞 𐑔𐑮𐑴𐑯. 𐑞 𐑒𐑤𐑨𐑯𐑟 𐑢𐑦𐑤 𐑣𐑧𐑤𐑐 𐑿. 𐑢𐑰 𐑢𐑦𐑤 𐑓𐑲𐑑 𐑢𐑦𐑞 𐑿 𐑩𐑜𐑱𐑯𐑕𐑑 𐑞 𐑒𐑢𐑰𐑯."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:422
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:444
 msgid "So you admit defeat! You will serve me in fighting the evil queen?"
 msgstr "𐑕𐑴 𐑿 𐑩𐑛𐑥𐑦𐑑 𐑛𐑦𐑓𐑰𐑑! 𐑿 𐑢𐑦𐑤 𐑕𐑻𐑝 𐑥𐑰 𐑦𐑯 𐑓𐑲𐑑𐑦𐑙 𐑞 𐑰𐑝𐑩𐑤 𐑒𐑢𐑰𐑯?"
 
 #. [message]: role=clanboss
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:426
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:448
 msgid "We will serve you, my lord. You will make a worthy king."
 msgstr "𐑢𐑰 𐑢𐑦𐑤 𐑕𐑻𐑝 𐑿, 𐑥𐑲 𐑤𐑹𐑛. 𐑿 𐑢𐑦𐑤 𐑥𐑱𐑒 𐑩 𐑢𐑻𐑞𐑰 𐑒𐑦𐑙."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:432
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:454
 msgid ""
 "The mighty riders of the eastern plains, the Knights of the Clans, are now "
 "yours to command!"
 msgstr "𐑞 𐑥𐑲𐑑𐑦 𐑮𐑲𐑛𐑼𐑟 𐑝 𐑞 𐑰𐑕𐑑𐑼𐑯 𐑐𐑤𐑱𐑯𐑟, 𐑞 𐑯𐑲𐑑𐑕 𐑝 𐑞 𐑒𐑤𐑨𐑯𐑟, 𐑸 𐑯𐑬 𐑿𐑼𐑟 𐑑 𐑒𐑩𐑥𐑭𐑯𐑛!"
 
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:441
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:463
 msgid "I think you are mistaken! You will help me be queen."
 msgstr "𐑲 𐑔𐑦𐑙𐑒 𐑿 𐑸 𐑥𐑦𐑕𐑑𐑱𐑒𐑧𐑯! 𐑿 𐑢𐑦𐑤 𐑣𐑧𐑤𐑐 𐑥𐑰 𐑚𐑰 𐑒𐑢𐑰𐑯."
 
 #. [message]: role=clanboss
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:445
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:467
 msgid "Who then is your leader? Whom do we serve?"
 msgstr "𐑣𐑵 𐑞𐑧𐑯 𐑦𐑟 𐑿𐑼 𐑤𐑰𐑛𐑻? 𐑣𐑵 𐑛𐑵 𐑢𐑰 𐑕𐑻𐑝?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:449
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:471
 msgid ""
 "You will serve us. You will protect our flanks while we make way straight "
 "for the queen. With you on either flank, we can surely overcome her."
@@ -8036,12 +8049,12 @@ msgstr ""
 "𐑪𐑯 𐑲𐑞𐑼 𐑓𐑤𐑨𐑙𐑒, 𐑢𐑰 𐑒𐑨𐑯 𐑖𐑫𐑼𐑤𐑦 𐑴𐑝𐑼𐑒𐑳𐑥 𐑣𐑻."
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:453
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:475
 msgid "Delfador, don’t you think it is time we settled this?"
 msgstr "·𐑛𐑧𐑤𐑓𐑩𐑛𐑹, 𐑛𐑴𐑯𐑑 𐑿 𐑔𐑦𐑙𐑒 𐑦𐑑 𐑦𐑟 𐑑𐑲𐑥 𐑢𐑰 𐑕𐑧𐑑𐑩𐑤𐑛 𐑞𐑦𐑕?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:457
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:479
 msgid ""
 "Yes, it is time. It is time for the truth to be told. I had hoped to take "
 "this secret to my grave, but it isn’t to be. You elves live too long, and "
@@ -8052,12 +8065,12 @@ msgstr ""
 "𐑳𐑯𐑛𐑼𐑕𐑑𐑨𐑯𐑛, 𐑿𐑼 𐑢𐑦𐑟𐑛𐑩𐑥 𐑦𐑟 𐑓𐑪𐑮𐑩𐑯 𐑑 𐑥𐑰."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:461
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:483
 msgid "Secret? What secret Delfador? What are you talking about?"
 msgstr "𐑕𐑰𐑒𐑮𐑩𐑑? 𐑢𐑪𐑑 𐑕𐑰𐑒𐑮𐑩𐑑 ·𐑛𐑧𐑤𐑓𐑩𐑛𐑹? 𐑢𐑪𐑑 𐑸 𐑿 𐑑𐑷𐑒𐑦𐑙 𐑩𐑚𐑬𐑑?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:466
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:488
 #, fuzzy
 msgid ""
 "We should not speak of it now. Instead come with me, Konrad and Li’sar, to "
@@ -8068,18 +8081,13 @@ msgstr ""
 "Elnar. 𐑑 𐑤𐑫𐑒 𐑨𐑑 ·𐑢𐑧𐑤𐑛𐑦𐑯. 𐑑 𐑥𐑱𐑒 𐑐𐑤𐑨𐑯𐑟 𐑓𐑹 𐑞 𐑚𐑨𐑑𐑩𐑤, 𐑯 𐑑 𐑑𐑷𐑒."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:499
+#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:521
 msgid ""
 "We are routing their forces! Let’s see if the Clan has had enough. Their "
 "help in guarding our flanks will be invaluable."
 msgstr ""
 "𐑢𐑰 𐑸 𐑮𐑵𐑑𐑦𐑙 𐑞𐑺 𐑓𐑹𐑕𐑩𐑟! 𐑤𐑧𐑑'𐑕 𐑕𐑰 𐑦𐑓 𐑞 𐑒𐑤𐑨𐑯 𐑣𐑨𐑟 𐑣𐑨𐑛 𐑦𐑯𐑳𐑓. 𐑞𐑺 𐑣𐑧𐑤𐑐 𐑦𐑯 𐑜𐑸𐑛𐑦𐑙 𐑬𐑼 "
 "𐑓𐑤𐑨𐑙𐑒𐑕 𐑢𐑦𐑤 𐑚𐑰 𐑦𐑯𐑝𐑨𐑤𐑘𐑩𐑚𐑩𐑤."
-
-#. [print]
-#: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:505
-msgid "Still $units_to_slay clan members to defeat!"
-msgstr "𐑕𐑑𐑦𐑤 $units_to_slay 𐑒𐑤𐑨𐑯 𐑥𐑧𐑥𐑚𐑼𐑟 𐑑 𐑛𐑦𐑓𐑰𐑑!"
 
 #. [scenario]: id=24_Battle_for_Wesnoth
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:4

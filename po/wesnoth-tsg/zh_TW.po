@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-05-13 22:46 UTC\n"
+"POT-Creation-Date: 2017-05-29 21:55+0200\n"
 "PO-Revision-Date: 2009-05-24 18:50+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Ch.Andrew <chandrew1119@gmail.com>\n"
@@ -127,8 +127,8 @@ msgstr "迪奧蘭"
 #. [side]: type=Horseman Commander, id=Deoran
 #. [side]: type=Troll Hero, id=Grek
 #. [side]
-#. [side]: type=Lieutenant, id=Plynry
 #. [side]: id=Deoran
+#. [side]: type=Lieutenant, id=Plynry
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:37
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:41
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:37
@@ -154,13 +154,13 @@ msgstr "南疆哨所"
 msgid "Urza Mathin"
 msgstr "克撒．馬丁"
 
-#. [side]: type=Rogue, id=Urza Fastik
-#. [side]: type=Outlaw, id=Urza Afalas
-#. [side]: type=Outlaw, id=Tharzo Kalain
-#. [side]: type=Outlaw, id=Jera Ilras
 #. [side]: type=Bandit, id=Urza Mathin
+#. [side]: type=Rogue, id=Urza Fastik
+#. [side]: type=Outlaw, id=Jera Ilras
 #. [side]: type=Outlaw, id=Urza Nalmath
 #. [side]
+#. [side]: type=Outlaw, id=Tharzo Kalain
+#. [side]: type=Outlaw, id=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:59
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:63
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:102
@@ -1209,13 +1209,13 @@ msgstr "淚滴谷"
 msgid "Mal A’kai"
 msgstr "麥爾．亞凱"
 
-#. [side]: type=Soulless, id=Gruth
+#. [side]: type=Ancient Lich, id=Mal M'Brin
 #. [side]: type=Lich, id=Mal M'Brin
 #. [side]: type=Soulless, id=Groth
-#. [side]: type=Ancient Lich, id=Mal M'Brin
-#. [side]: type=Lich, id=Mal Tera
-#. [side]: type=Dark Adept, type=Dark Sorcerer, type=Necromancer, id=Mal A'kai
 #. [side]
+#. [side]: type=Dark Adept, type=Dark Sorcerer, type=Necromancer, id=Mal A'kai
+#. [side]: type=Soulless, id=Gruth
+#. [side]: type=Lich, id=Mal Tera
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:76
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:93
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:129
@@ -1797,8 +1797,8 @@ msgstr "別擔心，適當時刻我能帶你們出去。"
 msgid "Death of Urza Afalas"
 msgstr "克撒．亞法拉斯死亡"
 
-#. [message]: speaker=Urza Afalas
 #. [message]: speaker=unit
+#. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:710
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1110
 msgid "Now I pay for my crimes. But how many others will also suffer for them?"
@@ -2455,8 +2455,8 @@ msgstr "但是在迪奧蘭眾人的身後黑雲籠罩......"
 msgid "Into the Depths"
 msgstr "深入地下"
 
-#. [side]: type=Lich, id=Mal M'Brin
 #. [side]: type=Ancient Lich, id=Mal M'Brin
+#. [side]: type=Lich, id=Mal M'Brin
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:51
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:55
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:51
@@ -3592,7 +3592,7 @@ msgstr ""
 "唯一危險在數量優勢…"
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:20
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:7
 msgid ""
 "During the reign of Haldric VII, the land of Wesnoth was peaceful. Konrad I "
 "had driven off the orcs in the north. The eastern forts were quiet and "
@@ -3604,7 +3604,7 @@ msgstr ""
 "新的城鎮和農場。"
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:25
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:12
 #, fuzzy
 msgid ""
 "For eight years the South Guard had defended the farms and homes surrounding "
@@ -3623,7 +3623,7 @@ msgstr ""
 "不願在那邊定居。"
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:29
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:16
 #, fuzzy
 #| msgid ""
 #| "Then, in the spring of the ninth year the reports from the South Guard, "
@@ -3638,7 +3638,7 @@ msgstr ""
 "洛克陛下決定派人調查。"
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:33
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:20
 #, fuzzy
 msgid ""
 "King Haldric summoned a young, undistinguished but promising cavalry officer "
@@ -3651,7 +3651,7 @@ msgstr ""
 "派了一個任務。"
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:37
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:24
 msgid ""
 "King Haldric knighted young Deoran, and when he rose tasked him to ride to "
 "Westin, to demand an accounting from Sir Loris, the commander of the South "
@@ -3661,7 +3661,7 @@ msgstr ""
 "所的統領算帳......"
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:47
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:34
 msgid ""
 "Having defeated Urza Mathin, Deoran immediately sent scouts out into the "
 "whole countryside. His men reported bandits roaming freely over the border, "
@@ -3672,7 +3672,7 @@ msgstr ""
 "竄，驚擾四鄰。而南疆哨所的士兵們遍尋不獲。"
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:52
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:39
 #, fuzzy
 msgid ""
 "Deoran decided to take action and wipe out the bandits. He gathered the men "
@@ -3684,14 +3684,14 @@ msgstr ""
 "部隊隨他一道前往韋斯汀，行省首都。"
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:56
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:43
 msgid ""
 "Deoran and his men approached the old city, and they saw that their fears "
 "were well founded..."
 msgstr "迪奧蘭和部下到達了古老的城市，發現所擔心的事情已經發生了......"
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:66
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:53
 msgid ""
 "Ethiliel led the men of the South Guard into the southern forest. Shadows "
 "soon covered their paths day and night, and a thick fog filled the air."
@@ -3700,7 +3700,7 @@ msgstr ""
 "大霧瀰漫。"
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:72
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:59
 msgid ""
 "For many weeks they marched down nameless paths that no man had trod before. "
 "From time to time they saw ghostly images of elven villages and halls in the "
@@ -3710,7 +3710,7 @@ msgstr ""
 "影，但當他們接近時，一切都消失了。"
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:77
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:64
 #, fuzzy
 msgid ""
 "Finally Ethiliel told the men to halt and pitch camp — they had reached the "
@@ -3719,7 +3719,7 @@ msgstr ""
 "最後依茜麗兒吩咐大家安營紮寨－－他們已經抵達黑河，尚未有精靈或人類曾渡過去。"
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:86
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:73
 #, fuzzy
 msgid ""
 "After Mal M’Brin’s defeat, Deoran’s troops and their elvish allies turned "
@@ -3730,7 +3730,7 @@ msgstr ""
 "到了。"
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:92
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:79
 #, fuzzy
 msgid ""
 "Forage and game were scarce in the gloomy woods. The men’s spirits were "
@@ -3741,7 +3741,7 @@ msgstr ""
 "跋涉相當困窘。"
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:101
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:88
 msgid ""
 "Snow fell as Deoran, Sir Gerrick and Urza Afalas emerged from the great "
 "southern forest. An oppressive silence hung over the land, and an ominous "
@@ -3751,14 +3751,14 @@ msgstr ""
 "在南疆哨所的士兵後，不祥的黑暗正越逼越近。"
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:107
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:94
 msgid ""
 "Finally they arrived at the southern border of Wesnoth and the forts that "
 "guarded it. The undead were close on their heels..."
 msgstr "最後他們來到了韋諾南方邊境負責防衛的要塞，不死族距離他們只有咫尺之遙。"
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:116
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:103
 msgid ""
 "Finally the sun broke the horizon and its rays breathed new life into the "
 "weary defenders of Westin. A great cry echoed through the valley as the men "
@@ -3769,7 +3769,7 @@ msgstr ""
 "精靈敵人的攻城，山谷間迴響著巨大的喊聲。突然戰場上起了大霧......"
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:121
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:108
 #, fuzzy
 msgid ""
 "When the fog broke, Ethiliel stood alone, facing the wall of spears. Bathed "
@@ -3782,7 +3782,7 @@ msgstr ""
 "也足夠償還了。」"
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:125
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:112
 #, fuzzy
 msgid ""
 "<i>“These are the terms of the peace between us: any man found in the forest "
@@ -3794,7 +3794,7 @@ msgstr ""
 "靈不再派遣使節或顧問來韋斯汀，也不允許任何人闖入綠色叢林。"
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:129
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:116
 msgid ""
 "Thus an uneasy peace was consummated between man and elf. For many weeks the "
 "South Guard patrolled the borders of the elven woods and watched over the "
@@ -3805,8 +3805,8 @@ msgstr ""
 "鄰的邊境，監護農田和村莊。最後，當雪融路暢時，海德洛克陛下的信使來了。"
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:133
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:173
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:120
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:160
 #, fuzzy
 #| msgid ""
 #| "Sir Deoran, Knight of Wesnoth, was summoned to Weldyn for a council with "
@@ -3821,7 +3821,7 @@ msgstr ""
 "整個王國，每一個統領都需要面對這次考驗......"
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:143
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:130
 #, fuzzy
 msgid ""
 "With bitter spears and grim expression, the men of Wesnoth launched the last "
@@ -3835,7 +3835,7 @@ msgstr ""
 "般席捲麥爾．莫布林的本陣時，大喊著將強大的巫師拋下了懸崖。"
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:149
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:136
 msgid ""
 "Exhausted, Deoran dropped his lance to the ground. The men around him slowly "
 "lifted their helmets from their brows. The moans of the wounded overshadowed "
@@ -3845,7 +3845,7 @@ msgstr ""
 "北風的呼嘯，不死族終於完蛋了。"
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:154
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:141
 msgid ""
 "For days the healers of Westin worked feverishly to save as many of the "
 "valiant soldiers as they were able. Many mounds, though, were raised as "
@@ -3856,7 +3856,7 @@ msgstr ""
 "的戰死者，英雄們的名字被鐫刻到墓誌上。"
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:159
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:146
 #, fuzzy
 msgid ""
 "The loftiest mound belonged to Sir Gerrick. After the battle, Deoran led an "
@@ -3868,7 +3868,7 @@ msgstr ""
 "里克的劍盾。他把這些放在格里克的公墓上，他們是所有韋斯汀人民忠誠英勇之象徵。"
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:163
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:150
 #, fuzzy
 msgid ""
 "Gerrick’s name was added at the top of the roll of fallen heroes, and read "
@@ -3880,7 +3880,7 @@ msgstr ""
 "所的絕望堅守事跡被編入詩歌，歷代傳唱。"
 
 #. [part]
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:168
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:155
 msgid ""
 "Deoran spent his days visiting the wounded and directing the men as they "
 "rebuilt the shattered walls and ramparts of the city. Finally, as the snow "
