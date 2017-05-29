@@ -182,7 +182,7 @@ bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags, dou
 #endif
 	
 	// TODO: DO edge-scroll when dragging a unit. Wow, that will require more coupling.
-	if (last_mouse_is_touch_) {
+	if (last_mouse_is_touch_ && mouse_flags != 0) {
 		return false;
 	}
 
