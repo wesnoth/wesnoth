@@ -105,6 +105,9 @@ game_load::game_load(const config& cache_config, savegame::load_game_metadata& d
 
 void game_load::pre_show(window& window)
 {
+	// Allow deleting saves with the Delete key.
+	connect_signal_pre_key_press(window, std::bind(&game_load::key_press_callback, this, std::ref(window), _5));
+
 	find_widget<minimap>(&window, "minimap", false).set_config(&cache_config_);
 
 	text_box* filter = find_widget<text_box>(&window, "txtFilter", false, true);
@@ -385,6 +388,13 @@ void game_load::delete_button_callback(window& window)
 		}
 
 		display_savegame(window);
+	}
+}
+
+void game_load::key_press_callback(window& window, const SDL_Keycode key)
+{
+	if(key == SDLK_DELETE) {
+		delete_button_callback(window);
 	}
 }
 

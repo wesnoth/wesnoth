@@ -21,6 +21,8 @@
 #include "tstring.hpp"
 #include "gettext.hpp"
 
+#include <SDL_keycode.h>
+
 namespace gui2
 {
 
@@ -57,6 +59,8 @@ private:
 
 	void display_savegame(window& window);
 	void evaluate_summary_string(std::stringstream& str, const config& cfg_summary);
+
+	void key_press_callback(window& window, const SDL_Keycode key);
 
 	std::string& filename_;
 
