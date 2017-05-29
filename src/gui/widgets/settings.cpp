@@ -435,7 +435,7 @@ void register_window(const std::string& id)
 {
 	// The second value of emplace is the 'was successfully added' flag.
 	if(!registered_window_types().emplace(id).second) {
-		WRN_GUI_P << "Window '" << id "' already registered. Ignoring." << std::endl;
+		WRN_GUI_P << "Window '" << id << "' already registered. Ignoring." << std::endl;
 	}
 }
 
