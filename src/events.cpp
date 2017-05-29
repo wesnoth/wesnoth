@@ -523,8 +523,8 @@ void pump()
 					}
 				}
 
-				for(auto handler : event_contexts.front().handlers) {
-					handler->handle_window_event(event);
+				for(auto global_handler : event_contexts.front().handlers) {
+					global_handler->handle_window_event(event);
 				}
 			}
 
@@ -611,23 +611,20 @@ void pump()
 		}
 		}
 
-		const handler_list& global_handlers = event_contexts.front().handlers;
-		for(auto handler : global_handlers) {
-			handler->handle_event(event);
+		for(auto global_handler : event_contexts.front().handlers) {
+			global_handler->handle_event(event);
 		}
 
 		if(event_contexts.empty() == false) {
-			const handler_list& event_handlers = event_contexts.back().handlers;
-
-			for(auto handler : event_handlers) {
+			for(auto handler : event_contexts.back().handlers) {
 				handler->handle_event(event);
 			}
 		}
 	}
 
 	// Inform the pump monitors that an events::pump() has occurred
-	for(size_t i1 = 0, i2 = pump_monitors.size(); i1 != i2 && i1 < pump_monitors.size(); ++i1) {
-		pump_monitors[i1]->process(info);
+	for(auto monitor : pump_monitors) {
+		monitor->process(info);
 	}
 }
 
@@ -635,9 +632,8 @@ void raise_process_event()
 {
 	if(event_contexts.empty() == false) {
 		event_contexts.back().add_staging_handlers();
-		const handler_list& event_handlers = event_contexts.back().handlers;
 
-		for(auto handler : event_handlers) {
+		for(auto handler : event_contexts.back().handlers) {
 			handler->process_event();
 		}
 	}
@@ -707,9 +703,7 @@ void raise_volatile_undraw_event()
 void raise_help_string_event(int mousex, int mousey)
 {
 	if(event_contexts.empty() == false) {
-		const handler_list& event_handlers = event_contexts.back().handlers;
-
-		for(auto handler : event_handlers) {
+		for(auto handler : event_contexts.back().handlers) {
 			handler->process_help_string(mousex, mousey);
 			handler->process_tooltip_string(mousex, mousey);
 		}
