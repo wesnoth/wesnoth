@@ -77,9 +77,9 @@ std::vector<game_tip> get_tips()
  */
 
 /** Returns the list of registered windows. */
-static std::vector<std::string>& registered_window_types()
+static std::set<std::string>& registered_window_types()
 {
-	static std::vector<std::string> result;
+	static std::set<std::string> result;
 	return result;
 }
 
@@ -433,14 +433,10 @@ static auto default_gui = guis.end();
 
 void register_window(const std::string& id)
 {
-	const auto itor = std::find(registered_window_types().begin(), registered_window_types().end(), id);
-
-	if(itor == registered_window_types().end()) {
-		registered_window_types().push_back(id);
-	}
+	registered_window_types().emplace(id);
 }
 
-std::vector<std::string> unit_test_access_only::get_registered_window_list()
+std::set<std::string> unit_test_access_only::get_registered_window_list()
 {
 	return gui2::registered_window_types();
 }

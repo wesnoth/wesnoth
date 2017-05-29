@@ -128,9 +128,9 @@ using namespace gui2::dialogs;
 
 namespace gui2 {
 
-std::vector<std::string>& unit_test_registered_window_list()
+std::set<std::string>& unit_test_registered_window_list()
 {
-	static std::vector<std::string> result =
+	static std::set<std::string> result =
 			unit_test_access_only::get_registered_window_list();
 
 	return result;
@@ -140,7 +140,7 @@ namespace dialogs {
 
 std::string unit_test_mark_as_tested(const modal_dialog& dialog)
 {
-	std::vector<std::string>& list = unit_test_registered_window_list();
+	std::set<std::string>& list = unit_test_registered_window_list();
 	list.erase(
 			std::remove(list.begin(), list.end(), dialog.window_id())
 			, list.end());
@@ -149,7 +149,7 @@ std::string unit_test_mark_as_tested(const modal_dialog& dialog)
 
 std::string unit_test_mark_popup_as_tested(const modeless_dialog& dialog)
 {
-	std::vector<std::string>& list = unit_test_registered_window_list();
+	std::set<std::string>& list = unit_test_registered_window_list();
 	list.erase(
 			std::remove(list.begin(), list.end(), dialog.window_id())
 			, list.end());
@@ -284,7 +284,7 @@ namespace {
 
 			CVideo& video = test_utils::get_fake_display(resolution.first, resolution.second).video();
 
-			std::vector<std::string>& list =
+			std::set<std::string>& list =
 					gui2::unit_test_registered_window_list();
 			list.erase(std::remove(list.begin(), list.end(), id), list.end());
 
@@ -476,8 +476,8 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test_tip("tooltip_large");
 	test_tip("tooltip");
 
-	std::vector<std::string>& list = gui2::unit_test_registered_window_list();
-	std::vector<std::string> omitted {
+	std::set<std::string>& list = gui2::unit_test_registered_window_list();
+	std::set<std::string> omitted {
 		/*
 		 * The unit attack unit test are disabled for now, they calling parameters
 		 * don't allow 'nullptr's needs to be fixed.
@@ -519,7 +519,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	};
 	std::sort(list.begin(), list.end());
 	std::sort(omitted.begin(), omitted.end());
-	std::vector<std::string> missing;
+	std::set<std::string> missing;
 	std::set_difference(list.begin(), list.end(), omitted.begin(), omitted.end(), std::back_inserter(missing));
 
 	// Test size() instead of empty() to get the number of offenders

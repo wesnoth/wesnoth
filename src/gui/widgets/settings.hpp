@@ -61,10 +61,10 @@ void register_window(const std::string& id);
  */
 class unit_test_access_only
 {
-	friend std::vector<std::string>& unit_test_registered_window_list();
+	friend std::set<std::string>& unit_test_registered_window_list();
 
 	/** Returns a copy of the list of registered windows. */
-	static std::vector<std::string> get_registered_window_list();
+	static std::set<std::string> get_registered_window_list();
 };
 
 /** Function type alias for @ref register_widget. */
