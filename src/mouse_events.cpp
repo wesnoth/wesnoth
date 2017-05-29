@@ -146,8 +146,7 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 	bool selected_hex_has_unit = find_unit(selected_hex_).valid();
 	if (!selected_hex_has_unit && is_dragging() && dragging_started_) {
 		// Here, naive pan. In general, is it a problem that panning is synchronous?
-		// Looks like it can do frameskips.
-		// but does it use CPU? I think on iOS GPU is much more appropriate for panning.
+		// Does it use CPU? I think on iOS GPU is much more appropriate for panning.
 		// What does SDL2 have to offer?
 		
 		SDL_GetMouseState(&mx, &my);
@@ -162,8 +161,6 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 	}
 	
 	// now copy-pasting mouse_handler::mouse_motion()
-	
-	game_board & board = pc_.gamestate().board_;
 	
 	if (new_hex == map_location::null_location())
 		new_hex = gui().hex_clicked_on(x,y);
@@ -240,40 +237,6 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 		
 		// we search if there is an attack possibility and where
 		attack_from = current_unit_attacks_from(new_hex);
-		
-		//see if we should show the normal cursor, the movement cursor, or
-		//the attack cursor
-		//If the cursor is on WAIT, we don't change it and let the setter
-		//of this state end it
-		if (cursor::get() != cursor::WAIT) {
-			if (selected_unit &&
-				selected_unit->side() == side_num_ &&
-				!selected_unit->incapacitated() && !browse)
-			{
-				if (attack_from.valid()) {
-					cursor::set(dragging_started_ ? cursor::ATTACK_DRAG : cursor::ATTACK);
-				}
-				else if (!mouseover_unit &&
-						 current_paths_.destinations.contains(new_hex))
-				{
-					// Is this where left-drag cursor changes? Test.
-					cursor::set(dragging_started_ ? cursor::MOVE_DRAG : cursor::MOVE);
-				} else {
-					// selected unit can't attack or move there
-					cursor::set(cursor::NORMAL);
-				}
-			} else {
-				// no selected unit or we can't move it
-				
-				if ( selected_hex_.valid() && mouseover_unit
-					 && mouseover_unit->side() == side_num_ ) {
-					// empty hex field selected and unit on our site under the cursor
-					cursor::set(dragging_started_ ? cursor::MOVE_DRAG : cursor::MOVE);
-				} else {
-					cursor::set(cursor::NORMAL);
-				}
-			}
-		}
 	} // end planned unit map scope
 	
 	// show (or cancel) the attack direction indicator
@@ -287,6 +250,7 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 	
 	// the destination is the pointed hex or the adjacent hex
 	// used to attack it
+	game_board & board = pc_.gamestate().board_;
 	map_location dest;
 	unit_map::const_iterator dest_un;
 	{ // start planned unit map scope
@@ -371,7 +335,7 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 			
 			wb::future_map_if_active raii;
 			current_paths_ = pathfind::paths(*un, false, true,
-											 viewing_team(), path_turns_);
+											 viewing_team(), 1);
 		}
 		
 		unselected_paths_ = true;
@@ -992,10 +956,9 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse, const
 	if (selected_hex_.valid() && unit.valid() && !unit->get_hidden()) {
 
 		next_unit_ = unit->get_location();
+		bool is_my = unit->side() == gui().viewing_side();
 
-		{
-			current_paths_ = pathfind::paths(*unit, false, true, viewing_team(), path_turns_);
-		}
+		current_paths_ = pathfind::paths(*unit, false, true, viewing_team(), is_my ? path_turns_ : 1);
 		if(highlight) {
 			show_attack_options(unit);
 			gui().highlight_reach(current_paths_);
@@ -1006,7 +969,7 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse, const
 		gui().set_route(nullptr);
 
 		// selection have impact only if we are not observing and it's our unit
-		if ((!commands_disabled || pc_.get_whiteboard()->is_active()) && unit->side() == gui().viewing_side()) {
+		if ((!commands_disabled || pc_.get_whiteboard()->is_active()) && is_my) {
 			if (!(browse || pc_.get_whiteboard()->unit_has_actions(&*unit)))
 			{
 				sound::play_UI_sound("select-unit.wav");
