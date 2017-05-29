@@ -144,8 +144,8 @@ public:
 	/** Map of all known windows (the builder class builds a window). */
 	std::map<std::string, builder_window> window_types;
 
-	void load_widget_types(
-			const std::string& definition_type, const std::vector<styled_widget_definition_ptr>& definitions);
+	void load_widget_definitions(
+			const std::string& widget_type, const std::vector<styled_widget_definition_ptr>& definitions);
 
 private:
 	void read(const config& cfg);
@@ -362,7 +362,7 @@ void gui_definition::read(const config& cfg)
 			definitions.push_back(widget_type.second.parser(definition));
 		}
 
-		load_widget_types(widget_type.first, definitions);
+		load_widget_definitions(widget_type.first, definitions);
 	}
 
 	/** Parse each window. */
@@ -430,17 +430,17 @@ void gui_definition::activate() const
 	settings::tips = tips_;
 }
 
-void gui_definition::load_widget_types(
-		const std::string& definition_type, const std::vector<styled_widget_definition_ptr>& definitions)
+void gui_definition::load_widget_definitions(
+		const std::string& widget_type, const std::vector<styled_widget_definition_ptr>& definitions)
 {
 	for(const auto& def : definitions) {
-		if(widget_types[definition_type].find(def->id) != widget_types[definition_type].end()) {
-			ERR_GUI_P << "Skipping duplicate styled_widget definition '" << def->id << "' for '" << definition_type
+		if(widget_types[widget_type].find(def->id) != widget_types[widget_type].end()) {
+			ERR_GUI_P << "Skipping duplicate styled_widget definition '" << def->id << "' for '" << widget_type
 					  << "'\n";
 			continue;
 		}
 
-		widget_types[definition_type].emplace(def->id, def);
+		widget_types[widget_type].emplace(def->id, def);
 	}
 
 	// The default GUI needs to ensure each widget has a default definition, but
@@ -450,11 +450,11 @@ void gui_definition::load_widget_types(
 	}
 
 	const t_string msg(vgettext("Widget definition '$definition' doesn't contain the definition for '$id'.", {
-		{"definition", definition_type},
+		{"definition", widget_type},
 		{"id", "default"}
 	}));
 
-	VALIDATE(widget_types[definition_type].find("default") != widget_types[definition_type].end(), msg);
+	VALIDATE(widget_types[widget_type].find("default") != widget_types[widget_type].end(), msg);
 }
 
 /** Map with all known GUIs. */
