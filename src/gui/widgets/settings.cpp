@@ -244,41 +244,6 @@ private:
  * Window &                       A window. $
  * @end{table}
  *
- * <span id="window_list"></span>List of available windows:
- * @begin{table}{window_overview}
- *     Addon_connect &               The dialog to connect to the addon server
- *                                   and maintain locally installed addons. $
- *     Addon_list &                  Shows the list of the addons to install or
- *                                   update. $
- *     Campaign_selection &          Shows the list of campaigns, to select one
- *                                   to play. $
- *     Language_selection &          The dialog to select the primary language.
- *                                   $
- *     WML_message_left &            The ingame message dialog with a portrait
- *                                   on the left side. (Used for the WML
- *                                   messages.) $
- *     WML_message_right &           The ingame message dialog with a portrait
- *                                   on the right side. (Used for the WML
- *                                   messages.) $
- *     Message &                     A generic message dialog. $
- *     MP_connect &                  The dialog to connect to the MP server. $
- *     MP_method_selection &         The dialog to select the kind of MP game
- *                                   to play. Official server, local etc. $
- *     MP_server_list &              List of the 'official' MP servers. $
- *     MP_login &                    The dialog to provide a password for
- *                                   registered usernames, request a password
- *                                   reminder or choose a different username. $
- *     MP_cmd_wrapper &              Perform various actions on the selected
- *                                   user (e.g. whispering or kicking). $
- *     MP_create_game &              The dialog to select and create an MP
- *                                   game. $
- *     Title_screen &                The title screen. $
- *     Editor_new_map &              Creates a new map in the editor. $
- *     Editor_generate_map &         Generates a random map in the editor. $
- *     Editor_resize_map &           Resizes a map in the editor. $
- *     Editor_custom_tod &           Creates new ToD schedules for the editor.
- *                                   $
- * @end{table}
  * @end{tag}{name=gui}
  * @end{parent}{name="/"}
  */
