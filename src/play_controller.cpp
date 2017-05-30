@@ -791,7 +791,7 @@ void play_controller::process_keyup_event(const SDL_Event& event)
 
 		}
 	} else if (event.key.keysym.sym == SDLK_TAB) {
-		static CKey keys;
+		CKey keys;
 		if (!keys[SDLK_TAB]) {
 			whiteboard_manager_->set_invert_behavior(false);
 		}
