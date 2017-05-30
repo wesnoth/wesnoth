@@ -12,7 +12,7 @@ def generate(env):
     env.AppendENVPath("PATH", join(env["gettextdir"], "bin"))
     env["MSGFMT"] = WhereIs("msgfmt")
     msgfmt = Builder(
-        action = "$MSGFMT --check-format --check-domain --statistics -o $TARGET $SOURCE",
+        action = "$MSGFMT --check-domain --statistics -o $TARGET $SOURCE",
         src_suffix = ".po",
         suffix = ".mo",
         single_source = True
