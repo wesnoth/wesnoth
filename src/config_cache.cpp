@@ -78,7 +78,6 @@ void config_cache::clear_defines()
 #ifdef __APPLE__
 	defines_map_["APPLE"] = preproc_define();
 
-#define MOUSE_TOUCH_EMULATION
 #ifdef MOUSE_TOUCH_EMULATION
 	defines_map_["IPHONEOS"] = preproc_define();
 #endif

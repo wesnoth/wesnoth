@@ -158,8 +158,6 @@ void controller_base::process_keyup_event(const SDL_Event& /*event*/) {
 	//no action by default
 }
 
-#define MOUSE_TOUCH_EMULATION
-
 bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags, double x_axis, double y_axis)
 {
 	sdl::window* window = CVideo::get_singleton().get_window();

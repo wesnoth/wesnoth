@@ -402,8 +402,6 @@ static bool remove_on_resize(const SDL_Event& a)
 	return false;
 }
 
-#define MOUSE_TOUCH_EMULATION
-
 // TODO: I'm uncertain if this is always safe to call at static init; maybe set in main() instead?
 static const boost::thread::id main_thread = boost::this_thread::get_id();
 
