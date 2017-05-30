@@ -74,9 +74,7 @@ public:
 	virtual void layout_initialize(const bool full_initialization) override;
 
 	/** See @ref widget::impl_draw_children. */
-	virtual void impl_draw_children(surface& frame_buffer,
-									int x_offset,
-									int y_offset) override;
+	virtual void impl_draw_children(int x_offset, int y_offset) override;
 
 	/** See @ref widget::request_reduce_width. */
 	virtual void request_reduce_width(const unsigned maximum_width) override;

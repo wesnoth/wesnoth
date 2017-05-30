@@ -26,6 +26,7 @@
 #include "sdl/rect.hpp"
 #include "terrain/type_data.hpp"
 #include "../../minimap.hpp" // We want the file in src/
+#include "video.hpp"
 
 #include "utils/functional.hpp"
 
@@ -228,9 +229,7 @@ const surface minimap::get_image(const int w, const int h) const
 	return nullptr;
 }
 
-void minimap::impl_draw_background(surface& frame_buffer,
-									int x_offset,
-									int y_offset)
+void minimap::impl_draw_background(int x_offset, int y_offset)
 {
 	if(!terrain_)
 		return;
@@ -248,7 +247,7 @@ void minimap::impl_draw_background(surface& frame_buffer,
 
 	const ::surface surf = get_image(rect.w, rect.h);
 	if(surf) {
-		sdl_blit(surf, nullptr, frame_buffer, &rect);
+		sdl_blit(surf, nullptr, CVideo::get_singleton().getSurface(), &rect);
 	}
 }
 
