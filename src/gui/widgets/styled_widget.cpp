@@ -329,7 +329,6 @@ void styled_widget::set_label(const t_string& label)
 	label_ = label;
 	set_layout_size(point());
 	update_canvas();
-	set_is_dirty(true);
 }
 
 void styled_widget::set_use_markup(bool use_markup)
@@ -340,7 +339,6 @@ void styled_widget::set_use_markup(bool use_markup)
 
 	use_markup_ = use_markup;
 	update_canvas();
-	set_is_dirty(true);
 }
 
 void styled_widget::set_text_alignment(const PangoAlignment text_alignment)
@@ -351,7 +349,6 @@ void styled_widget::set_text_alignment(const PangoAlignment text_alignment)
 
 	text_alignment_ = text_alignment;
 	update_canvas();
-	set_is_dirty(true);
 }
 
 void styled_widget::set_text_ellipse_mode(const PangoEllipsizeMode ellipse_mode)
@@ -362,7 +359,6 @@ void styled_widget::set_text_ellipse_mode(const PangoEllipsizeMode ellipse_mode)
 
 	text_ellipse_mode_ = ellipse_mode;
 	update_canvas();
-	set_is_dirty(true);
 }
 
 void styled_widget::update_canvas()

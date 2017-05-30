@@ -505,12 +505,6 @@ void sdl_event_handler::disconnect(dispatcher* disp)
 		keyboard_focus_ = nullptr;
 	}
 
-	/***** Set proper state for the other dispatchers. *****/
-	for(auto d : dispatchers_)
-	{
-		dynamic_cast<widget&>(*d).set_is_dirty(true);
-	}
-
 	activate();
 
 	/***** Validate post conditions. *****/

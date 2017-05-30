@@ -166,7 +166,6 @@ void toggle_panel::set_value(unsigned selected, bool fire_event)
 		return;
 	}
 	state_num_ = selected;
-	set_is_dirty(true);
 
 	// Check for get_window() is here to prevent the callback from
 	// being called when the initial value is set.
@@ -187,7 +186,6 @@ void toggle_panel::set_state(const state_t state)
 	}
 
 	state_ = state;
-	set_is_dirty(true);
 
 	const auto conf = cast_config_to<toggle_panel_definition>();
 	assert(conf);

@@ -130,16 +130,7 @@ viewport::impl_draw_children(surface& frame_buffer, int x_offset, int y_offset)
 		widget_.draw_background(frame_buffer, x_offset, y_offset);
 		widget_.draw_children(frame_buffer, x_offset, y_offset);
 		widget_.draw_foreground(frame_buffer, x_offset, y_offset);
-		widget_.set_is_dirty(false);
 	}
-}
-
-void
-viewport::child_populate_dirty_list(window& caller,
-									 const std::vector<widget*>& call_stack)
-{
-	std::vector<widget*> child_call_stack = call_stack;
-	widget_.populate_dirty_list(caller, child_call_stack);
 }
 
 void viewport::request_reduce_width(const unsigned /*maximum_width*/)
