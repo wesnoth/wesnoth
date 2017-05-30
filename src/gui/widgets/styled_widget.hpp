@@ -446,14 +446,10 @@ public:
 
 protected:
 	/** See @ref widget::impl_draw_background. */
-	virtual void impl_draw_background(surface& frame_buffer,
-									  int x_offset,
-									  int y_offset) override;
+	virtual void impl_draw_background(int x_offset, int y_offset) override;
 
 	/** See @ref widget::impl_draw_foreground. */
-	virtual void impl_draw_foreground(surface& frame_buffer,
-									  int x_offset,
-									  int y_offset) override;
+	virtual void impl_draw_foreground(int x_offset, int y_offset) override;
 
 	/** Exposes font::pango_text::get_token, for the text label of this styled_widget */
 	std::string get_label_token(const gui2::point & position, const char * delimiters = " \n\r\t") const;

@@ -99,9 +99,7 @@ private:
 	const surface get_image(const int w, const int h) const;
 
 	/** See @ref widget::impl_draw_background. */
-	virtual void impl_draw_background(surface& frame_buffer,
-									  int x_offset,
-									  int y_offset) override;
+	virtual void impl_draw_background(int x_offset, int y_offset) override;
 
 	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;

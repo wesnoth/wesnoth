@@ -687,9 +687,6 @@ void window::draw()
 		return;
 	}
 
-	// TODO: remove
-	surface& frame_buffer = video_.getSurface();
-
 	/***** ***** Layout ***** *****/
 	if(need_layout_) {
 		layout();
@@ -700,13 +697,13 @@ void window::draw()
 	}
 
 	// Draw background.
-	this->draw_background(frame_buffer, 0, 0);
+	this->draw_background(0, 0);
 
 	// Draw children.
-	this->draw_children(frame_buffer, 0, 0);
+	this->draw_children(0, 0);
 
 	// Draw foreground.
-	this->draw_foreground(frame_buffer, 0, 0);
+	this->draw_foreground(0, 0);
 
 	if(callback_next_draw_ != nullptr) {
 		callback_next_draw_();
