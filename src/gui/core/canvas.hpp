@@ -102,15 +102,14 @@ public:
 	void draw(const bool force = false);
 
 	/**
-	 * Blits the canvas unto another surface.
+	 * Copies the canvas texture to the screen renderer.
 	 *
 	 * It makes sure the image on the canvas is up to date. Also executes the
 	 * pre-blitting functions.
 	 *
-	 * @param surf                The surface to blit upon.
 	 * @param rect                The place to blit to.
 	 */
-	void blit(surface& surf, SDL_Rect rect);
+	void render(SDL_Rect rect);
 
 	/**
 	 * Sets the config.
