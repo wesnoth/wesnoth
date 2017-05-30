@@ -18,7 +18,6 @@
 #include <string>
 #include <SDL_platform.h>
 
-// Encrypotion in iOS app complicates its registration.
 #if !defined(__IPHONEOS__)
 
 #include <openssl/sha.h>
