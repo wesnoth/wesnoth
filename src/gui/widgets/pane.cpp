@@ -186,14 +186,14 @@ void pane::layout_initialize(const bool full_initialization)
 }
 
 void
-pane::impl_draw_children(surface& frame_buffer, int x_offset, int y_offset)
+pane::impl_draw_children(int x_offset, int y_offset)
 {
 	DBG_GUI_D << LOG_HEADER << '\n';
 
 	for(auto & item : items_)
 	{
 		if(item.item_grid->get_visible() != widget::visibility::invisible) {
-			item.item_grid->draw_children(frame_buffer, x_offset, y_offset);
+			item.item_grid->draw_children(x_offset, y_offset);
 		}
 	}
 }

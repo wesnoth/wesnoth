@@ -408,9 +408,7 @@ int styled_widget::get_text_maximum_height() const
 	return get_height() - config_->text_extra_height;
 }
 
-void styled_widget::impl_draw_background(surface& /*frame_buffer*/,
-									int x_offset,
-									int y_offset)
+void styled_widget::impl_draw_background(int x_offset, int y_offset)
 {
 	DBG_GUI_D << LOG_HEADER << " label '" << debug_truncate(label_) << "' size "
 			  << get_rectangle() << ".\n";
@@ -418,11 +416,7 @@ void styled_widget::impl_draw_background(surface& /*frame_buffer*/,
 	get_canvas(get_state()).render(calculate_blitting_rectangle(x_offset, y_offset));
 }
 
-void styled_widget::impl_draw_foreground(surface& /*frame_buffer*/
-									,
-									int /*x_offset*/
-									,
-									int /*y_offset*/)
+void styled_widget::impl_draw_foreground(int /*x_offset*/, int /*y_offset*/)
 {
 	/* DO NOTHING */
 }

@@ -280,9 +280,7 @@ public:
 	virtual void set_visible_rectangle(const SDL_Rect& rectangle) override = 0;
 
 	/** See @ref widget::impl_draw_children. */
-	virtual void impl_draw_children(surface& frame_buffer,
-									int x_offset,
-									int y_offset) override = 0;
+	virtual void impl_draw_children(int x_offset, int y_offset) override = 0;
 
 	/** See @ref widget::find_at. */
 	virtual widget* find_at(const point& coordinate,

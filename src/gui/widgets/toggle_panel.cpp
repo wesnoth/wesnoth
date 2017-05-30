@@ -206,22 +206,18 @@ void toggle_panel::set_state(const state_t state)
 	assert(conf);
 }
 
-void toggle_panel::impl_draw_background(surface& frame_buffer,
-										 int x_offset,
-										 int y_offset)
+void toggle_panel::impl_draw_background(int x_offset, int y_offset)
 {
 	// We don't have a fore and background and need to draw depending on
 	// our state, like a styled_widget. So we use the styled_widget's drawing method.
-	styled_widget::impl_draw_background(frame_buffer, x_offset, y_offset);
+	styled_widget::impl_draw_background(x_offset, y_offset);
 }
 
-void toggle_panel::impl_draw_foreground(surface& frame_buffer,
-										 int x_offset,
-										 int y_offset)
+void toggle_panel::impl_draw_foreground(int x_offset, int y_offset)
 {
 	// We don't have a fore and background and need to draw depending on
 	// our state, like a styled_widget. So we use the styled_widget's drawing method.
-	styled_widget::impl_draw_foreground(frame_buffer, x_offset, y_offset);
+	styled_widget::impl_draw_foreground(x_offset, y_offset);
 }
 
 void toggle_panel::signal_handler_mouse_enter(const event::ui_event event,

@@ -144,11 +144,7 @@ void multi_page::finalize(const std::vector<string_map>& page_data)
 	swap_grid(nullptr, &get_grid(), generator_, "_content_grid");
 }
 
-void multi_page::impl_draw_background(surface& /*frame_buffer*/
-									   ,
-									   int /*x_offset*/
-									   ,
-									   int /*y_offset*/)
+void multi_page::impl_draw_background(int /*x_offset*/, int /*y_offset*/)
 {
 	/* DO NOTHING */
 }

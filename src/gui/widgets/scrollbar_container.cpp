@@ -785,14 +785,14 @@ void scrollbar_container::set_horizontal_scrollbar_mode(const scrollbar_mode scr
 	}
 }
 
-void scrollbar_container::impl_draw_children(surface& frame_buffer, int x_offset, int y_offset)
+void scrollbar_container::impl_draw_children(int x_offset, int y_offset)
 {
 	assert(get_visible() == widget::visibility::visible && content_grid_->get_visible() == widget::visibility::visible);
 
 	// Inherited.
-	container_base::impl_draw_children(frame_buffer, x_offset, y_offset);
+	container_base::impl_draw_children(x_offset, y_offset);
 
-	content_grid_->draw_children(frame_buffer, x_offset, y_offset);
+	content_grid_->draw_children( x_offset, y_offset);
 }
 
 void scrollbar_container::layout_children()

@@ -826,7 +826,7 @@ public:
 	}
 
 	/** See @ref widget::impl_draw_children. */
-	virtual void impl_draw_children(surface& frame_buffer, int x_offset, int y_offset) override
+	virtual void impl_draw_children(int x_offset, int y_offset) override
 	{
 		assert(this->get_visible() == widget::visibility::visible);
 
@@ -836,7 +836,7 @@ public:
 			child* item = items_[index].get();
 
 			if(item->child_grid.get_visible() == widget::visibility::visible && item->shown) {
-				item->child_grid.draw_children(frame_buffer, x_offset, y_offset);
+				item->child_grid.draw_children(x_offset, y_offset);
 			}
 		}
 	}

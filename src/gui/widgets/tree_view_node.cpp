@@ -549,18 +549,16 @@ void tree_view_node::set_visible_rectangle(const SDL_Rect& rectangle)
 	}
 }
 
-void tree_view_node::impl_draw_children(surface& frame_buffer,
-										 int x_offset,
-										 int y_offset)
+void tree_view_node::impl_draw_children(int x_offset, int y_offset)
 {
-	grid_.draw_children(frame_buffer, x_offset, y_offset);
+	grid_.draw_children(x_offset, y_offset);
 
 	if(is_folded()) {
 		return;
 	}
 
 	for(auto & node : children_) {
-		node->impl_draw_children(frame_buffer, x_offset, y_offset);
+		node->impl_draw_children(x_offset, y_offset);
 	}
 }
 
