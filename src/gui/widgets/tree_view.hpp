@@ -63,11 +63,6 @@ public:
 
 	void clear();
 
-	/** See @ref widget::child_populate_dirty_list. */
-	virtual void
-	child_populate_dirty_list(window& caller,
-							  const std::vector<widget*>& call_stack) override;
-
 	/** See @ref container_base::set_self_active. */
 	virtual void set_self_active(const bool active) override;
 

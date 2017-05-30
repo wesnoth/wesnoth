@@ -383,21 +383,6 @@ const widget* tree_view_node::find(const std::string& id, const bool must_be_act
 	return nullptr;
 }
 
-void tree_view_node::impl_populate_dirty_list(window& caller, const std::vector<widget*>& call_stack)
-{
-	std::vector<widget*> my_call_stack = call_stack;
-	grid_.populate_dirty_list(caller, my_call_stack);
-
-	if(is_folded()) {
-		return;
-	}
-
-	for(auto& node : children_) {
-		std::vector<widget*> child_call_stack = call_stack;
-		node->impl_populate_dirty_list(caller, child_call_stack);
-	}
-}
-
 point tree_view_node::calculate_best_size() const
 {
 	return calculate_best_size(-1, get_tree_view().indentation_step_size_);
