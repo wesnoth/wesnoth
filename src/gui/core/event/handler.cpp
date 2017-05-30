@@ -421,7 +421,7 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 			/** @todo Convert this to a proper new style event. */
 			DBG_GUI_E << "Firing " << CLOSE_WINDOW << ".\n";
 			
-			window *window = window::window_instance(event.user.code);
+			window* window = window::window_instance(event.user.code);
 			if(window) {
 				window->set_retval(window::AUTO_CLOSE);
 			}
