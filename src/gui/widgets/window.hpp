@@ -545,14 +545,8 @@ private:
 	/** Avoid drawing the window.  */
 	bool suspend_drawing_;
 
-	/** Whether the window should undraw the window using restorer_ */
-	bool restore_;
-
 	/** Whether the window has other windows behind it */
 	bool is_toplevel_;
-
-	/** When the window closes this surface is used to undraw the window. */
-	surface restorer_;
 
 	/** Do we wish to place the widget automatically? */
 	const bool automatic_placement_;
