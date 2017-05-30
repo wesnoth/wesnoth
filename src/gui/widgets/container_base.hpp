@@ -115,11 +115,6 @@ protected:
 	/** See @ref widget::layout_children. */
 	virtual void layout_children() override;
 
-	/** See @ref widget::child_populate_dirty_list. */
-	virtual void
-	child_populate_dirty_list(window& caller,
-							  const std::vector<widget*>& call_stack) override;
-
 public:
 	/** See @ref widget::find_at. */
 	virtual widget* find_at(const point& coordinate,

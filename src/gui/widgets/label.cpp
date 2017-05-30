@@ -81,8 +81,6 @@ void label::set_text_alpha(unsigned short alpha)
 	for(auto& tmp : get_canvases()) {
 		tmp.set_variable("text_alpha", wfl::variant(text_alpha_));
 	}
-
-	set_is_dirty(true);
 }
 
 void label::set_active(const bool active)
@@ -120,7 +118,6 @@ void label::set_link_aware(bool link_aware)
 
 	link_aware_ = link_aware;
 	update_canvas();
-	set_is_dirty(true);
 }
 
 void label::set_link_color(const color_t& color)
@@ -130,14 +127,12 @@ void label::set_link_color(const color_t& color)
 	}
 	link_color_ = color;
 	update_canvas();
-	set_is_dirty(true);
 }
 
 void label::set_state(const state_t state)
 {
 	if(state != state_) {
 		state_ = state;
-		set_is_dirty(true);
 	}
 }
 

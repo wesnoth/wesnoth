@@ -284,7 +284,6 @@ window::window(const builder_window::window_resolution* definition)
 	, variables_()
 	, invalidate_layout_blocked_(false)
 	, suspend_drawing_(true)
-	, is_toplevel_(!is_in_dialog())
 	, automatic_placement_(definition->automatic_placement)
 	, horizontal_placement_(definition->horizontal_placement)
 	, vertical_placement_(definition->vertical_placement)
@@ -303,7 +302,6 @@ window::window(const builder_window::window_resolution* definition)
 	, escape_disabled_(false)
 	, linked_size_()
 	, mouse_button_state_(0) /**< Needs to be initialized in @ref show. */
-	, dirty_list_()
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	, debug_layout_(new debug_layout_graph(this))
 #endif
@@ -1034,17 +1032,6 @@ void window_swap_grid(grid* g,
 }
 
 } // namespace
-
-void window::redraw_windows_on_top() const
-{
-	std::vector<dispatcher*>& dispatchers = event::get_all_dispatchers();
-	auto me = std::find(dispatchers.begin(), dispatchers.end(), this);
-
-	for(auto it = std::next(me); it != dispatchers.end(); ++it) {
-		// Note that setting an entire window dirty like this is expensive.
-		dynamic_cast<widget&>(**it).set_is_dirty(true);
-	}
-}
 
 void window::finalize(const std::shared_ptr<builder_grid>& content_grid)
 {

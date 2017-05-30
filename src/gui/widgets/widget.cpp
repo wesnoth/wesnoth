@@ -39,7 +39,6 @@ widget::widget()
 	, last_best_size_()
 #endif
 	, linked_group_()
-	, is_dirty_(true)
 	, visible_(visibility::visible)
 	, redraw_action_(redraw_action::full)
 	, clipping_rectangle_()
@@ -61,7 +60,6 @@ widget::widget(const builder_widget& builder)
 	, last_best_size_()
 #endif
 	, linked_group_(builder.linked_group)
-	, is_dirty_(true)
 	, visible_(visibility::visible)
 	, redraw_action_(redraw_action::full)
 	, clipping_rectangle_()
@@ -234,8 +232,6 @@ void widget::set_size(const point& size)
 
 	width_ = size.x;
 	height_ = size.y;
-
-	set_is_dirty(true);
 }
 
 void widget::place(const point& origin, const point& size)
@@ -259,8 +255,6 @@ void widget::place(const point& origin, const point& size)
 			<< " screen origin " << x_ << ',' << y_
 			<< ".\n";
 #endif
-
-	set_is_dirty(true);
 }
 
 void widget::move(const int x_offset, const int y_offset)
@@ -417,36 +411,6 @@ void widget::draw_foreground(surface& frame_buffer, int x_offset, int y_offset)
 	}
 }
 
-void widget::populate_dirty_list(window& caller,
-								  std::vector<widget*>& call_stack)
-{
-	assert(call_stack.empty() || call_stack.back() != this);
-
-	if(visible_ != visibility::visible) {
-		return;
-	}
-
-	if(get_drawing_action() == redraw_action::none) {
-		return;
-	}
-
-	call_stack.push_back(this);
-	//if(is_dirty_) {
-		caller.add_to_dirty_list(call_stack);
-	//} else {
-		// virtual function which only does something for container items.
-	//	child_populate_dirty_list(caller, call_stack);
-	//}
-}
-
-void
-widget::child_populate_dirty_list(window& /*caller*/
-								   ,
-								   const std::vector<widget*>& /*call_stack*/)
-{
-	/* DO NOTHING */
-}
-
 SDL_Rect widget::get_dirty_rectangle() const
 {
 	return redraw_action_ == redraw_action::full ? get_rectangle()
@@ -464,16 +428,6 @@ void widget::set_visible_rectangle(const SDL_Rect& rectangle)
 	} else {
 		redraw_action_ = redraw_action::partly;
 	}
-}
-
-void widget::set_is_dirty(const bool is_dirty)
-{
-	is_dirty_ = is_dirty;
-}
-
-bool widget::get_is_dirty() const
-{
-	return is_dirty_;
 }
 
 void widget::set_visible(const visibility visible)
@@ -498,8 +452,6 @@ void widget::set_visible(const visibility visible)
 				window->invalidate_layout();
 			}
 		}
-	} else {
-		set_is_dirty(true);
 	}
 }
 

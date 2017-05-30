@@ -841,15 +841,6 @@ public:
 		}
 	}
 
-	/** See @ref widget::child_populate_dirty_list. */
-	virtual void child_populate_dirty_list(window& caller, const std::vector<widget*>& call_stack) override
-	{
-		for(auto& item : items_) {
-			std::vector<widget*> child_call_stack = call_stack;
-			item->child_grid.populate_dirty_list(caller, child_call_stack);
-		}
-	}
-
 	/** See @ref widget::find_at. */
 	virtual widget* find_at(const point& coordinate, const bool must_be_active) override
 	{
@@ -983,7 +974,6 @@ private:
 	{
 		order_func_ = order;
 		order_dirty_ = true;
-		this->set_is_dirty(true);
 	}
 
 	struct calculate_order_helper

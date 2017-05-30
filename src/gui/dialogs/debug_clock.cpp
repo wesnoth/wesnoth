@@ -153,7 +153,6 @@ void debug_clock::update_time(const bool force)
 			canvas.set_variable("minute", wfl::variant(minute_stamp));
 			canvas.set_variable("second", wfl::variant(second_stamp));
 		}
-		clock_->set_is_dirty(true);
 	}
 
 	const std::map<std::string, std::string> tags;

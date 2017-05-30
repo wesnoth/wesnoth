@@ -122,13 +122,6 @@ void matrix::layout_children()
 	content_.layout_children();
 }
 
-void matrix::child_populate_dirty_list(window& caller,
-										const std::vector<widget*>& call_stack)
-{
-	std::vector<widget*> child_call_stack = call_stack;
-	content_.populate_dirty_list(caller, child_call_stack);
-}
-
 void matrix::request_reduce_width(const unsigned /*maximum_width*/)
 {
 }

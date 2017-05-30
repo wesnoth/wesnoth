@@ -82,7 +82,6 @@ void menu_button::set_state(const state_t state)
 {
 	if(state != state_) {
 		state_ = state;
-		set_is_dirty(true);
 	}
 }
 
@@ -161,10 +160,6 @@ void menu_button::set_values(const std::vector<::config>& values, int selected)
 	assert(static_cast<size_t>(selected) < values.size());
 	assert(static_cast<size_t>(selected_) < values_.size());
 
-	if(values[selected]["label"] != values_[selected_]["label"]) {
-		set_is_dirty(true);
-	}
-
 	values_ = values;
 	selected_ = selected;
 
@@ -175,10 +170,6 @@ void menu_button::set_selected(int selected, bool fire_event)
 {
 	assert(static_cast<size_t>(selected) < values_.size());
 	assert(static_cast<size_t>(selected_) < values_.size());
-
-	if(selected != selected_) {
-		set_is_dirty(true);
-	}
 
 	selected_ = selected;
 

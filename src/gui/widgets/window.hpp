@@ -180,17 +180,6 @@ public:
 	 */
 	void undraw();
 
-	/**
-	 * Adds an item to the dirty_list_.
-	 *
-	 * @param call_stack          The list of widgets traversed to get to the
-	 *                            dirty widget.
-	 */
-	void add_to_dirty_list(const std::vector<widget*>& call_stack)
-	{
-		dirty_list_.push_back(call_stack);
-	}
-
 	/** The status of the window. */
 	enum status {
 		NEW,		   /**< The window is new and not yet shown. */
@@ -419,8 +408,8 @@ public:
 	void set_variable(const std::string& key, const wfl::variant& value)
 	{
 		variables_.add(key, value);
-		set_is_dirty(true);
 	}
+
 	point get_linked_size(const std::string& linked_group_id) const
 	{
 		std::map<std::string, linked_size>::const_iterator it = linked_size_.find(linked_group_id);
@@ -661,22 +650,11 @@ private:
 	virtual const std::string& get_control_type() const override;
 
 	/**
-	 * The list with dirty items in the window.
-	 *
-	 * When drawing only the widgets that are dirty are updated. The draw()
-	 * function has more information about the dirty_list_.
-	 */
-	std::vector<std::vector<widget*>> dirty_list_;
-
-	/**
 	 * In how many consecutive frames the window has changed. This is used to
 	 * detect the situation where the title screen changes in every frame,
 	 * forcing all other windows to redraw everything all the time.
 	 */
 	unsigned int consecutive_changed_frames_ = 0u;
-
-	/** Schedules windows on top of us (if any) to redraw. */
-	void redraw_windows_on_top() const;
 
 	/**
 	 * Finishes the initialization of the grid.

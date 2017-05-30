@@ -85,7 +85,6 @@ public:
 	void set_best_slider_length(const unsigned length)
 	{
 		best_slider_length_ = length;
-		set_is_dirty(true);
 	}
 
 	void set_value_range(int min_value, int max_value);

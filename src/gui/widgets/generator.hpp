@@ -284,14 +284,6 @@ public:
 									int x_offset,
 									int y_offset) override = 0;
 
-protected:
-	/** See @ref widget::child_populate_dirty_list. */
-	virtual void
-	child_populate_dirty_list(window& caller,
-							  const std::vector<widget*>& call_stack) override
-			= 0;
-
-public:
 	/** See @ref widget::find_at. */
 	virtual widget* find_at(const point& coordinate,
 							 const bool must_be_active) override = 0;
