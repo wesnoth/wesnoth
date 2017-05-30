@@ -55,7 +55,7 @@ text_box_base::text_box_base()
 			&text_box_base::signal_handler_sdl_key_down, this, _2, _3, _5, _6));
 	connect_signal<event::SDL_TEXT_INPUT>(std::bind(&text_box_base::handle_commit, this, _3, _5));
 	connect_signal<event::SDL_TEXT_EDITING>(std::bind(&text_box_base::handle_editing, this, _3, _5, _6, _7));
-	
+
 	connect_signal<event::RECEIVE_KEYBOARD_FOCUS>(std::bind(
 			&text_box_base::signal_handler_receive_keyboard_focus, this, _2));
 	connect_signal<event::LOSE_KEYBOARD_FOCUS>(
@@ -104,7 +104,6 @@ void text_box_base::set_maximum_length(const size_t maximum_length)
 			selection_length_ = maximum_length - selection_start_;
 		}
 		update_canvas();
-		set_is_dirty(true);
 	}
 }
 
@@ -117,7 +116,6 @@ void text_box_base::set_value(const std::string& text)
 		selection_start_ = text_.get_length();
 		selection_length_ = 0;
 		update_canvas();
-		set_is_dirty(true);
 	}
 }
 
@@ -138,7 +136,6 @@ void text_box_base::set_cursor(const size_t offset, const bool select)
 		copy_selection(true);
 #endif
 		update_canvas();
-		set_is_dirty(true);
 
 	} else {
 		assert(offset <= text_.get_length());
@@ -146,7 +143,6 @@ void text_box_base::set_cursor(const size_t offset, const bool select)
 		selection_length_ = 0;
 
 		update_canvas();
-		set_is_dirty(true);
 	}
 }
 
@@ -159,7 +155,6 @@ void text_box_base::insert_char(const utf8::string& unicode)
 		// Update status
 		set_cursor(selection_start_ + utf8::size(unicode), false);
 		update_canvas();
-		set_is_dirty(true);
 	}
 }
 
@@ -204,7 +199,6 @@ void text_box_base::paste_selection(const bool mouse)
 	selection_start_ += text_.insert_text(selection_start_, text);
 
 	update_canvas();
-	set_is_dirty(true);
 	fire(event::NOTIFY_MODIFIED, *this, nullptr);
 }
 
@@ -212,7 +206,6 @@ void text_box_base::set_selection_start(const size_t selection_start)
 {
 	if(selection_start != selection_start_) {
 		selection_start_ = selection_start;
-		set_is_dirty(true);
 	}
 }
 
@@ -220,7 +213,6 @@ void text_box_base::set_selection_length(const int selection_length)
 {
 	if(selection_length != selection_length_) {
 		selection_length_ = selection_length;
-		set_is_dirty(true);
 	}
 }
 
@@ -260,7 +252,6 @@ void text_box_base::set_state(const state_t state)
 {
 	if(state != state_) {
 		state_ = state;
-		set_is_dirty(true);
 	}
 }
 
@@ -304,8 +295,6 @@ void text_box_base::cursor_timer_callback()
 	for(auto& tmp : get_canvases()) {
 		tmp.set_variable("cursor_alpha", wfl::variant(cursor_alpha_));
 	}
-
-	set_is_dirty(true);
 }
 
 void text_box_base::reset_cursor_state()
@@ -451,7 +440,6 @@ void text_box_base::handle_editing(bool& handled, const utf8::string& unicode, i
 			set_cursor(ime_start_point_ + ime_cursor_ + len, true);
 		}
 		update_canvas();
-		set_is_dirty(true);
 	}
 }
 
@@ -587,7 +575,7 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 			// The IME will handle it, we just need to make sure nothing else handles it too.
 			handled = true;
 			break;
-		
+
 		case SDLK_ESCAPE:
 			if(!ime_in_progress_ || (modifier & (KMOD_CTRL | KMOD_ALT | KMOD_GUI | KMOD_SHIFT))) {
 				return;
@@ -595,7 +583,7 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 			interrupt_composition();
 			handled = true;
 			break;
-		
+
 		default:
 			// Don't call the text changed callback if nothing happened.
 			return;

@@ -199,7 +199,6 @@ void story_viewer::display_part(window& window)
 
 	// Needed to make the background redraw correctly.
 	window_canvas.set_is_dirty(true);
-	window.set_is_dirty(true);
 
 	//
 	// Title
@@ -336,8 +335,6 @@ void story_viewer::draw_floating_image(window& window, floating_image_list::cons
 	window_canvas.append_cfg(cfg);
 	window_canvas.set_is_dirty(true);
 
-	window.set_is_dirty(true);
-
 	++image_iter;
 
 	// If a delay is specified, schedule the next image draw. This *must* be a non-repeating timer!
@@ -361,7 +358,6 @@ void story_viewer::nav_button_callback(window& window, NAV_DIRECTION direction)
 		// Only set full alpha if Forward was pressed.
 		if(direction == DIR_FORWARD) {
 			find_widget<scroll_label>(&window, "part_text", false).set_text_alpha(ALPHA_OPAQUE);
-			flag_stack_as_dirty(window);
 			return;
 		}
 	}
@@ -457,9 +453,6 @@ void story_viewer::draw_callback(window& window)
 	unsigned short new_alpha = utils::clamp<short>(fade_step_ * 25.5, 0, ALPHA_OPAQUE);
 	find_widget<scroll_label>(&window, "part_text", false).set_text_alpha(new_alpha);
 
-	// The text stack also needs to be marked dirty so the background panel redraws correctly.
-	flag_stack_as_dirty(window);
-
 	if(fade_state_ == FADING_IN) {
 		fade_step_ ++;
 	} else if(fade_state_ == FADING_OUT) {
@@ -467,11 +460,6 @@ void story_viewer::draw_callback(window& window)
 	}
 
 	set_next_draw();
-}
-
-void story_viewer::flag_stack_as_dirty(window& window)
-{
-	find_widget<stacked_widget>(&window, "text_and_control_stack", false).set_is_dirty(true);
 }
 
 } // namespace dialogs

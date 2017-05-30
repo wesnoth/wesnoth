@@ -59,7 +59,6 @@ public:
 	{
 		if(map_data != map_data_) {
 			map_data_ = map_data;
-			set_is_dirty(true);
 		}
 	}
 

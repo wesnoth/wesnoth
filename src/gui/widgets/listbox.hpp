@@ -228,11 +228,6 @@ public:
 	/** See @ref widget::layout_children. */
 	virtual void layout_children() override;
 
-	/** See @ref widget::child_populate_dirty_list. */
-	virtual void
-	child_populate_dirty_list(window& caller,
-							  const std::vector<widget*>& call_stack) override;
-
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 	void
 	set_callback_item_change(const std::function<void(size_t)>& callback)

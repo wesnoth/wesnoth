@@ -455,8 +455,8 @@ public:
 	void set_variable(const std::string& key, const wfl::variant& value)
 	{
 		variables_.add(key, value);
-		set_is_dirty(true);
 	}
+
 	point get_linked_size(const std::string& linked_group_id) const
 	{
 		std::map<std::string, linked_size>::const_iterator it = linked_size_.find(linked_group_id);

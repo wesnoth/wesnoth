@@ -282,14 +282,6 @@ private:
 	void fold_internal();
 	void unfold_internal();
 
-	/**
-	 * "Inherited" from widget.
-	 *
-	 * This version needs to call its children, which are it's child nodes.
-	 */
-	void impl_populate_dirty_list(window& caller,
-								  const std::vector<widget*>& call_stack);
-
 	/** See @ref widget::calculate_best_size. */
 	virtual point calculate_best_size() const override;
 

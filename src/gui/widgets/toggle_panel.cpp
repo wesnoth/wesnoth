@@ -171,7 +171,6 @@ void toggle_panel::set_value(const unsigned selected)
 		return;
 	}
 	state_num_ = selected % num_states();
-	set_is_dirty(true);
 }
 
 void toggle_panel::set_retval(const int retval)
@@ -186,7 +185,6 @@ void toggle_panel::set_state(const state_t state)
 	}
 
 	state_ = state;
-	set_is_dirty(true);
 
 	std::shared_ptr<const toggle_panel_definition::resolution> conf
 			= std::static_pointer_cast<const toggle_panel_definition::

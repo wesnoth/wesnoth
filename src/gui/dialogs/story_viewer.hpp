@@ -74,8 +74,6 @@ private:
 
 	void draw_callback(window& window);
 
-	void flag_stack_as_dirty(window& window);
-
 	storyscreen::controller controller_;
 
 	int part_index_;

@@ -58,8 +58,6 @@ void progress_bar::set_percentage(unsigned percentage)
 		{
 			c.set_variable("percentage", wfl::variant(percentage));
 		}
-
-		set_is_dirty(true);
 	}
 }
 

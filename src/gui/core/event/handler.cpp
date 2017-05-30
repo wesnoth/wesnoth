@@ -501,12 +501,6 @@ void sdl_event_handler::disconnect(dispatcher* disp)
 		keyboard_focus_ = nullptr;
 	}
 
-	/***** Set proper state for the other dispatchers. *****/
-	for(auto d : dispatchers_)
-	{
-		dynamic_cast<widget&>(*d).set_is_dirty(true);
-	}
-
 	activate();
 
 	/***** Validate post conditions. *****/
@@ -548,13 +542,6 @@ void sdl_event_handler::draw(const bool force)
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 	SDL_RenderClear(renderer);
 
-	/*
-	 * In normal draw mode the first window in not forced to be drawn the
-	 * others are. So for forced mode we only need to force the first window to
-	 * be drawn the others are already handled.
-	 */
-	bool first = !force;
-
 	/**
 	 * @todo Need to evaluate which windows really to redraw.
 	 *
@@ -562,18 +549,6 @@ void sdl_event_handler::draw(const bool force)
 	 */
 	for(auto dispatcher : dispatchers_)
 	{
-		if(!first) {
-			/*
-			 * This leaves glitches on window borders if the window beneath it
-			 * has changed, on the other hand invalidating twindown::restorer_
-			 * causes black borders around the window. So there's the choice
-			 * between two evils.
-			 */
-			dynamic_cast<widget&>(*dispatcher).set_is_dirty(true);
-		} else {
-			first = false;
-		}
-
 		dispatcher->fire(DRAW, dynamic_cast<widget&>(*dispatcher));
 	}
 

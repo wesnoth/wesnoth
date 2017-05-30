@@ -518,10 +518,6 @@ void lua_interpreter::controller::input_keypress_callback(bool& handled,
 		handled = true;
 		halt = true;
 
-		// Commands such as `wesnoth.zoom` might cause the display to redraw and leave the window half-drawn.
-		// This preempts that.
-		window.set_is_dirty(true);
-
 		LOG_LUA << "finished executing\n";
 	} else if(key == SDLK_TAB) {	// handle tab completion
 		tab();

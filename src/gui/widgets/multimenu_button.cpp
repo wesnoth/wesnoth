@@ -83,7 +83,6 @@ void multimenu_button::set_state(const state_t state)
 {
 	if(state != state_) {
 		state_ = state;
-		set_is_dirty(true);
 	}
 }
 
@@ -239,8 +238,6 @@ void multimenu_button::select_options(boost::dynamic_bitset<> states)
 
 void multimenu_button::set_values(const std::vector<::config>& values)
 {
-	set_is_dirty(true);
-
 	values_ = values;
 	toggle_states_.resize(values_.size(), false);
 	toggle_states_.reset();

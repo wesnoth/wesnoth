@@ -73,7 +73,6 @@ public:
 	void set_best_slider_length(const unsigned length)
 	{
 		best_slider_length_ = length;
-		set_is_dirty(true);
 	}
 
 	void set_minimum_value_label(const t_string& minimum_value_label)
