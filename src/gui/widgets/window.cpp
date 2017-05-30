@@ -283,9 +283,7 @@ window::window(const builder_window::window_resolution* definition)
 	, variables_()
 	, invalidate_layout_blocked_(false)
 	, suspend_drawing_(true)
-	, restore_(true)
 	, is_toplevel_(!is_in_dialog())
-	, restorer_()
 	, automatic_placement_(definition->automatic_placement)
 	, horizontal_placement_(definition->horizontal_placement)
 	, vertical_placement_(definition->vertical_placement)
@@ -498,7 +496,7 @@ void window::show_non_modal(/*const unsigned auto_close_timeout*/)
 	events::pump();
 }
 
-int window::show(const bool restore, const unsigned auto_close_timeout)
+int window::show(const unsigned auto_close_timeout)
 {
 	/*
 	 * Removes the old tip if one shown. The show_tip doesn't remove
@@ -507,7 +505,6 @@ int window::show(const bool restore, const unsigned auto_close_timeout)
 	dialogs::tip::remove();
 
 	show_mode_ = modal;
-	restore_ = restore;
 
 	log_scope2(log_gui_draw, LOG_SCOPE_HEADER);
 
